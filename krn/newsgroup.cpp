@@ -100,16 +100,14 @@ void Article::formHeader(QString *s)
     }
     if (isMarked())
     {
-//        ss.append("{M}");
-        ss.setStr("{M}");
+        ss.append("{M}");
+//        ss.setStr("{M}");
     }
     if (!canExpire())
     {
-//        ss.append("{L}");
-        ss.setStr("{L}");
+        ss.append("{L}");
+//        ss.setStr("{L}");
     }
-    
-//    ss.append(" ");
     
     if (!From.isEmpty())
     {
