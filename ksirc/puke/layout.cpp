@@ -99,6 +99,7 @@ void LayoutRunner::inputMessage(int fd, PukeMessage *pm){
       pmRet.iArg = 1;
       pmRet.cArg[0] = 0;
       emit outputMessage(fd, &pmRet);
+      warning("PBoxLayout: Attemped to add invalid layout");
       return;
     }
     qlbd->addLayout(qlbs, pm->cArg[0]);

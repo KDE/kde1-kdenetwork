@@ -56,7 +56,9 @@ sub setPixmap {
   $self->sendMessage('iCommand' => $::PUKE_BUTTON_SET_PIXMAP,
 		     'cArg' => $file,
 		     'CallBack' => 
-		     sub {
+                     sub {
+                       my $arg = shift();
+                       $arg || return;
 		       my %ARG = %{shift()};
 		       if($ARG{'iArg'} == 0){
 			 print "*E* Pixmap set failed\n";

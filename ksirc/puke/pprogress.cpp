@@ -83,6 +83,7 @@ void PProgress::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
 }
 
 void PProgress::cancelPressed(){ /*FOLD00*/
+  debug("Cancel Pressed");
   PukeMessage pmRet;
   pmRet.iCommand = PUKE_KSPROGRESS_CANCEL_ACK;
   pmRet.iWinId = widgetIden().iWinId;
@@ -91,10 +92,14 @@ void PProgress::cancelPressed(){ /*FOLD00*/
   emit outputMessage(widgetIden().fd, &pmRet);
 }
 
-void PProgress::setWidget(KSProgress *_f) /*fold00*/
+void PProgress::setWidget(KSProgress *_f) /*FOLD00*/
 {
   //  debug("PProgress setWidget called");
   ksp = _f;
+  if(widget() != 0){
+    connect(widget(), SIGNAL(cancel()),
+            this, SLOT(cancelPressed()));
+  }
   PWidget::setWidget(ksp);
 
 }

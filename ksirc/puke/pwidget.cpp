@@ -136,7 +136,7 @@ void PWidget::messageHandler(int fd, PukeMessage *pm)
 
       pos[0] = (short) widget()->width();
       pos[1] = (short) widget()->height();
-      pmRet.iCommand = PUKE_WIDGET_SETMAXSIZE_ACK;
+      pmRet.iCommand = -pm->iCommand;
       pmRet.iWinId = pm->iWinId;      
       pmRet.iArg = pm->iArg;
       pmRet.cArg[0] = 0;

@@ -53,7 +53,7 @@ void PButton::messageHandler(int fd, PukeMessage *pm)
     widget()->setPixmap(QPixmap(pm->cArg));
 
     pmRet.iCommand = - pm->iCommand;
-    pmRet.iWinId = - pm->iWinId;
+    pmRet.iWinId = pm->iWinId;
     pmRet.iArg = widget()->pixmap()->isNull();
     emit outputMessage(fd, &pmRet);
     break;

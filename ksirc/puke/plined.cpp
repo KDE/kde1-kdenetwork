@@ -42,7 +42,7 @@ void PLineEdit::messageHandler(int fd, PukeMessage *pm)
     }
     widget()->setMaxLength(pm->iArg);
     pmRet.iCommand = - pm->iCommand;
-    pmRet.iWinId = - pm->iWinId;
+    pmRet.iWinId = pm->iWinId;
     pmRet.iArg = widget()->maxLength();
     emit outputMessage(fd, &pmRet);
     break;
@@ -53,7 +53,7 @@ void PLineEdit::messageHandler(int fd, PukeMessage *pm)
     }
     widget()->setEchoMode((QLineEdit::EchoMode) pm->iArg);
     pmRet.iCommand = - pm->iCommand;
-    pmRet.iWinId = - pm->iWinId;
+    pmRet.iWinId = pm->iWinId;
     pmRet.iArg = widget()->echoMode();
     emit outputMessage(fd, &pmRet);
     break;
@@ -66,7 +66,7 @@ void PLineEdit::messageHandler(int fd, PukeMessage *pm)
     debug("PukeLine Edit: Got: %s", pm->cArg);
     widget()->setText(pm->cArg);
     pmRet.iCommand = - pm->iCommand;
-    pmRet.iWinId = - pm->iWinId;
+    pmRet.iWinId = pm->iWinId;
     pmRet.iArg = 0;
     strcpy(pmRet.cArg, widget()->text());
     emit outputMessage(fd, &pmRet);
@@ -77,7 +77,7 @@ void PLineEdit::messageHandler(int fd, PukeMessage *pm)
       return;
     }
     pmRet.iCommand = - pm->iCommand;
-    pmRet.iWinId = - pm->iWinId;
+    pmRet.iWinId = pm->iWinId;
     pmRet.iArg = 0;
     strcpy(pmRet.cArg, widget()->text());
     emit outputMessage(fd, &pmRet);

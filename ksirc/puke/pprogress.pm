@@ -1,5 +1,5 @@
 
-&::PukeSendMessage($PUKE_WIDGET_LOAD, 
+&::PukeSendMessage($PUKE_WIDGET_LOAD,
 		   0, 
 		   $PWIDGET_KSPROGRESS,
 		   "pprogress.so",

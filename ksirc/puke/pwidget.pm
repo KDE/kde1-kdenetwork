@@ -114,7 +114,7 @@ sub setMaximumSize {
 
   $self->sendMessage('iCommand' => $::PUKE_WIDGET_SETMAXSIZE,
 		     'iArg' => $iarg,
-		     'CalBack' => sub {});
+		     'CallBack' => sub {});
 
 }
 

@@ -25,17 +25,26 @@ sub new {
 
   my $widget = shift;
 
-#  print "Widget: " . ref($widget) . "\n";
+  print "Widget: " . ref($widget) . "\n";
 
-  if(ref($widget)){
+  if(ref($widget) eq ''){
+    print "*E* Error Creating PBoxLayout, did not give valid parent\n";
+    return;
+  }
+  elsif(ref($widget) eq 'PBoxLayout'){
     $self->{Parent} = $widget;
+    $self->{ParentType} = 'Layout';
     $self->{Direction} = shift;
     $self->{Border} = shift;
+    $self->{Added} = 0;
   }
-  else {
-    $self->{Parent} = {};
-    $self->{Direction} = $widget;
-    $self->{Border} = shift;    
+  else{
+    print "*\cbE\cb* Generic Widget type\n";
+    $self->{Parent} = $widget;
+    $self->{ParentType} = 'Widget';
+    $self->{Direction} = shift;
+    $self->{Border} = shift;
+    $self->{Added} = 1;
   }
 
   $self->{IAmALayout} = 1;
@@ -54,9 +63,10 @@ sub create {
   # runable, which it shouldn't be if it's iWinId is -1, it'll call
   # our creator after it get's it's iWinId set.
 
-  if($self->{Parent}->{iWinId} == -1){
-    $self->{Parent}->canRun($self, \&PBoxLayout::create, \@_) || return;
-  }
+  #  my @ARG = @_;
+  $self->{Parent}->canRun($self, \&PBoxLayout::create, ()) || return;
+  print "*I* Making Box Layout\n";
+
 
 #  print "*I* Createing Layout with parent " . $self->{Parent}->{iWinId} . "\n";
 
@@ -64,7 +74,7 @@ sub create {
 
   $self->{runable} = 1;
   $self->sendMessage('iCommand' => $::PUKE_LAYOUT_NEW,
-		     'iWinId' => $self->{Parent}->{iWinId},
+		     'iWinId' => $self->{ParentType} == 'Widget' ? $self->{Parent}->{iWinId} : undef,
 		     'cArg' => $self->{initId},
 		     'iArg' => $self->{Direction} + 65536 * $self->{Border},
 		     'CallBack' => sub { });
@@ -77,6 +87,11 @@ sub addWidget {
   my $widget = shift;
   my $stretch = shift;
   my $align = shift;
+
+  if($self->{Added} == 0){
+    print "*I* Delaying Add widget\n";
+    $self->setRunable(0);
+  }
 
   # make sure we can run, and the widget we want to add can run.
   my @ARG = ($widget, $stretch, $align);
@@ -99,7 +114,16 @@ sub addWidget {
 sub addLayout {
   my $self = shift;
 
+  if($self->{Added} == 0){
+    print "*I* In AddLayout: Warning Not added to any layouts/widgets yet\n";
+  }
+
+  
   my $layout = shift;
+  if(ref($layout) ne 'PBoxLayout'){
+    print "*E* Passed non layout type to addLayout\n";
+    return 1;
+  }
 
   # make sure we can run, and the widget we want to add can run.
   my @ARG = ($layout);
@@ -109,9 +133,35 @@ sub addLayout {
   $self->sendMessage('iCommand' => $::PUKE_LAYOUT_ADDLAYOUT,
 		     'iWinId' => $self->{iWinId},
 		     'iArg' => $layout->{iWinId},
-		     'CallBack' => sub { });
-
+		     'CallBack' => sub {
+                       my %ARG = %{shift()};
+                       print "*I* In ADDLAYOUT CALLBACK\n";
+		       if($ARG{'iArg'} != 0){
+			 print "*E* AddLayout call failed\n";
+                       }
+                       else{
+                         print "*I* Added new Layout for " . $layout->{iWinId} . "\n";
+                         $layout->{Added} = 1;
+                       }
+		     });
   
 }
 
+#sub canRun {
+#  my $self = shift;
+#
+#  my $override = 0;
+#  my $first = shift;
+#  if(ref($first) eq ''){
+#    $override = $first;
+#    $first = shift;
+#    print "Doing override\n";
+#  }
+#
+#  if($override == 0 && $self->{Added} == 0) {
+#  $self->setRunable(0);
+#}
+#return PBase::canRun($self, $first, @_);
+#}
 package main;
+1;

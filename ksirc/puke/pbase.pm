@@ -6,6 +6,14 @@ use strict;
 
 $PBase::NO_WIDGET = -1;
 
+$::AlignLeft  = 0x0001;
+$::AlignRight = 0x0002;
+$::AlignHCenter = 0x0004;
+$::AlignTop = 0x0008;
+$::AlignBottom = 0x0010;
+$::AlignVCenter = 0x0020;
+$::AlignCenter = $::AlignVCenter | $::AlignHCenter;
+
 sub sendMessage {
   my $self = shift;
   

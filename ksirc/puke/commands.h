@@ -475,6 +475,135 @@
 // cArg: not defined
 #define PUKE_KSPROGRESS_CANCEL_ACK -1425
 
+// QTable View at 1500
+
+// none yet
+
+// QListBox at 1600
+
+// Desc: insert string item
+// iWinId: window id
+// iArg: number of items now in list
+// cArg: undef
+#define PUKE_LISTBOX_INSERT 1600
+
+// Desc: insert string item ack
+// iWinId: window id
+// iArg: not defined
+// cArg: not defined
+#define PUKE_LISTBOX_INSERT_ACK -1600
+
+
+// Desc: insert string item in sorted order
+// iWinId: window id
+// iArg: number of items in list
+// cArg: undef
+#define PUKE_LISTBOX_INSERT_SORT 1605
+
+// Desc: ack insert string item in sorted order
+// iWinId: window id
+// iArg: not defined
+// cArg: not defined
+#define PUKE_LISTBOX_INSERT_SORT_ACK -1605
+
+// Desc: insert pixmap 
+// iWinId: window id
+// iArg: not defined
+// cArg: file name
+#define PUKE_LISTBOX_INSERT_PIXMAP 1610
+
+// Desc: ack insert pixmap
+// iWinId: window id
+// iArg: not defined
+// cArg: not defined
+#define PUKE_LISTBOX_INSERT_PIXMAP_ACK -1610
+
+// Desc: highligth number
+// iWinId: window id
+// iArg: item index to highlight
+// cArg: undef
+#define PUKE_LISTBOX_HIGHLIGHT 1615
+
+// Desc: ack
+// iWinId: window id
+// iArg: not defined
+// cArg: not defined
+#define PUKE_LISTBOX_HIGHLIGHT_ACK -1615
+
+// Desc: item highlighted, not used signal to dsirc
+// iWinId: undef
+// iArg: undef
+// cArg: undef
+#define PUKE_LISTBOX_HIGHLIGHTED 1690
+
+// Desc: item highlighted
+// iWinId: window id
+// iArg: index
+// cArg: contents
+#define PUKE_LISTBOX_HIGHLIGHTED_ACK -1690
+
+// Desc: item selected
+// iWinId: window id
+// iArg: index
+// cArg: contents
+#define PUKE_LISTBOX_SELECTED 1690
+
+// Desc: send message saying cancel button was pressed
+// iWinId: window id
+// iArg: not defined
+// cArg: not defined
+#define PUKE_LISTBOX_SELECTED_ACK -1690
+
+// *** 1700 goes to the Plabel
+
+// Desc: Set label to text in carg
+// iWinId: window id
+// iArg: not defined
+// cArg: text to be set to
+#define PUKE_LABEL_SETTEXT 1700
+
+// Desc: Set label to text in carg, ack
+// iWinId: window id
+// iArg: not defined
+// cArg: not defined
+#define PUKE_LABEL_SETTEXT_AKC -1700
+
+// Desc: Set label pixmap specified by filane name
+// iWinId: window id
+// iArg: not defined
+// cArg: filena,me for pixmap
+#define PUKE_LABEL_SETPIXMAP 1705
+
+// Desc: Set label pixmap specified by filane name ACK
+// iWinId: window id
+// iArg: not defined
+// cArg: not defined
+#define PUKE_LABEL_SETPIXMAP_ACK -1705
+
+// Desc: Set label to movie specified by filename
+// iWinId: window id
+// iArg: not defined
+// cArg: movie's filename
+#define PUKE_LABEL_SETMOVIE 1710
+
+// Desc: Set label to movie specified by filename, ACK
+// iWinId: window id
+// iArg: not defined
+// cArg: not deefine
+#define PUKE_LABEL_SETMOVIE_ACK -1710
+
+// Desc: Set label's allignment
+// iWinId: window id
+// iArg: alignment
+// cArg: not defined
+#define PUKE_LABEL_SETALIGNMENT 1715
+
+// Desc: Set label's allignment, ACK
+// iWinId: window id
+// iArg: alignment
+// cArg: not defined
+#define PUKE_LABEL_SETALIGNMENT_ACK -1715
+
 
 // ***********************************************************************
 // ***********************************************************************
@@ -501,6 +630,14 @@
 // Progress window for dcc and stuff
 #define PWIDGET_KSPROGRESS 7
 
+// Table view, not really used for much, base class for lots
+#define PWIDGET_TABLEVW 8
+
+// List box
+#define PWIDGET_LISTBOX 9
+
+// Label
+#define PWIDGET_LABEL 10
 
 // Group layout commands exist between 10000 and 11000
 

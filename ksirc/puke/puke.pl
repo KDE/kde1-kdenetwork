@@ -11,6 +11,15 @@ if($PUKEFd != undef){
   $PUKEFd = undef;
 }
 
+#
+# Setup debugging logger, comment out for production use
+#
+$DEBUG = 1 if !$DEBUG;
+if($DEBUG){
+    open(LOG, ">msg-log");
+    print LOG "Start time: ". `date`;
+}
+
 # 
 # Multi operation level handler, winId Based.
 # 
@@ -51,14 +60,16 @@ fcntl($PUKEFd, F_SETFL, O_NONBLOCK);
 sub PukeSendMessage {
   my($cmd, $winid, $iarg, $carg, $handler) = @_;
   print("PUKE: cArg message too long $cArg\n") if(length($carg) > 50);
-  $PUKE_HANDLER{$cmd}{$winid} = $handler;
+  $PUKE_HANDLER{$cmd}{$winid} = $handler if $handler != undef;
   syswrite($PUKEFd, pack($PukePacking, $cmd, $winid, $iarg, $carg), $PukeMSize);
+  print LOG kgettimeofday() . " SEND message: CMD: $PUKE_NUM2NAME{$cmd} WIN: $winid IARG: $iarg CARG: $carg\n" if $DEBUG;
 }
 
 sub sel_PukeRecvMessage {
   my($m);
   my($cmd, $winid, $iarg, $carg, $junk);
   $len = sysread($PUKEFd, $m, $PukeMSize);
+  
   if($len== 0){
     &remsel($PUKEFd);
     close($PUKEFd);
@@ -69,6 +80,9 @@ sub sel_PukeRecvMessage {
 #  print("PUKE: Got => $PUKE_NUM2NAME{$cmd}/$cmd\n");
 #  print("PUKE: Got: $cmd, $winid, $iarg, $carg\n");
   if($winid == undef){ $winid = 0; }
+  $blah = $carg;
+  $blah =~ s/\000//g;
+  print LOG kgettimeofday() . " GOT  message: CMD: $PUKE_NUM2NAME{$cmd} WIN: $winid IARG: $iarg CARG: $blah\n" if $DEBUG;
   #
   # Check both $cmd and the correct reply -$cmd
   #
@@ -79,10 +93,10 @@ sub sel_PukeRecvMessage {
 
 #  print "*I* Def handler: $PUKE_DEF_HANDLER{$cmd}\n";
 
-  if($PUKE_HANDLER{$cmd}{$winid}){ # one shot/command handler
-    &{$PUKE_HANDLER{$cmd}{$winid}}(\%ARG);
-  } elsif ($PUKE_HANDLER{-$cmd}{$winid}){
-    &{$PUKE_HANDLER{-$cmd}{$winid}}; 
+  if($PUKE_HANDLER{-$cmd}{$winid}){ # one shot/command handler
+    &{$PUKE_HANDLER{-$cmd}{$winid}}(\%ARG);
+  } elsif ($PUKE_HANDLER{$cmd}{$winid}){
+    &{$PUKE_HANDLER{$cmd}{$winid}}(\%ARG); 
   } elsif ($PUKE_W_HANDLER{$cmd}{$winid}) { # widget specific handler
     &{$PUKE_W_HANDLER{$cmd}{$winid}}(\%ARG);
   } elsif ($PUKE_DEF_HANDLER{"$cmd"}) {# catch all

@@ -52,7 +52,7 @@ libpuke.c: commands.h
 	@touch libpuke.c
 	@echo "Done"
 
-libpuke: $(libpukeOBJECTS) commands.h pframe.so plined.so pbutton.so ppushbt.so pprogress.so HOWTO-PUKE.txt
+libpuke: $(libpukeOBJECTS) commands.h pframe.so plined.so pbutton.so ppushbt.so pprogress.so ptablevw.so plistbox.so plabel.so HOWTO-PUKE.txt
 	./convert_commands.pl
 	ar cr libpuke.a $(libpukeOBJECTS)
 	ranlib libpuke.a || true
@@ -107,6 +107,36 @@ mpprogress.cpp: pprogress.h
 mpprogress.o: mpprogress.cpp pprogress.h
 	$(CXXCOMPILE) -fPIC -c mpprogress.cpp
 
+ptablevw.so: ptablevw.cpp mptablevw.o
+	$(CXXCOMPILE) -fPIC -c ptablevw.cpp
+	gcc -shared -Wl -o ptablevw.so ptablevw.o mptablevw.o
+
+mptablevw.cpp: ptablevw.h
+	moc ptablevw.h -o mptablevw.cpp
+
+mptablevw.o: mptablevw.cpp ptablevw.h
+	$(CXXCOMPILE) -fPIC -c mptablevw.cpp
+        
+plistbox.so: plistbox.cpp mplistbox.o
+	$(CXXCOMPILE) -fPIC -c plistbox.cpp
+	gcc -shared -Wl -o plistbox.so plistbox.o mplistbox.o
+
+mplistbox.cpp: plistbox.h
+	moc plistbox.h -o mplistbox.cpp
+
+mplistbox.o: mplistbox.cpp plistbox.h
+	$(CXXCOMPILE) -fPIC -c mplistbox.cpp
+
+plabel.so: plabel.cpp mplabel.o
+	$(CXXCOMPILE) -fPIC -c plabel.cpp
+	gcc -shared -Wl -o plabel.so plabel.o mplabel.o
+
+mplabel.cpp: plabel.h
+	moc plabel.h -o mplabel.cpp
+
+mplabel.o: mplabel.cpp plabel.h
+	$(CXXCOMPILE) -fPIC -c mplabel.cpp
+
 HOWTO-PUKE.txt: HOWTO-PUKE.pod
 	pod2text HOWTO-PUKE.pod > HOWTO-PUKE.txt
 
@@ -120,7 +150,10 @@ commands-perl.pl pframe.pm test.pl convert_commands.pl \
 plined.pm tester.pl pbase.pm puke.pl pframe.cpp plined.cpp \
 ppushbt.h ppushbt.cpp \
 pbutton.h pbutton.cpp \
-pprogress.h pprogress.cpp
+pprogress.h pprogress.cpp \
+ptablevw.cpp ptablevw.h \
+plistbox.cpp plistbox.h \
+plabel.cpp plabel.h
 
 
 
