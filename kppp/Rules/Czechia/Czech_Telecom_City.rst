@@ -12,7 +12,7 @@ currency_position=right
 currency_digits=2
 per_connection=0.0
 minimum_costs=0.0
-default=(2.25, 360)
+default=(2.40, 360)
 
 # (for CITY Tarif)
-on (monday..friday)   between (7:00..18:00)  use (2.25, 180)
+on (monday..friday)   between (7:00..19:00)  use (2.40, 180)
