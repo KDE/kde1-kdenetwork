@@ -1,3 +1,11 @@
+1999-07-22  Harri Porten  <porten@kde.org>
+
+	* connect.cpp: visualize \n as <LF> in setExpect()'s debug messages
+	* logviewer: rename `log' variable to `logList' to avoid clash with
+	mathematical function on some systems. 
+	* logview/loginfo.cpp: added mystrsep() function as strsep()
+	replacement which is not POSIX compliant.
+
 1999-07-19  Harri Porten  <porten@kde.org>
 
 	* pppdata.cpp: fixed a cause of those "Timeout expired" errors: if 

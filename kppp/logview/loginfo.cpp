@@ -29,6 +29,8 @@
 #include <string.h>
 #endif
 
+char *mystrsep (char **stringp, const char *delim);
+
 LogInfo::LogInfo(QString data) {
   parse(data);
 }
@@ -94,7 +96,7 @@ void LogInfo::parse(QString s) {
 
   // start of connection time
   csep = c;
-  char *p = strsep(&csep, ":");
+  char *p = mystrsep(&csep, ":");
   int i = 0;
   while(i < 8 && p != 0) {
     QString token = p;
@@ -134,7 +136,7 @@ void LogInfo::parse(QString s) {
     }
 
     i++;
-    p = strsep(&csep, ":");
+    p = mystrsep(&csep, ":");
   }
 
   free(c);
@@ -171,3 +173,25 @@ void LogInfo::dump() {
   printf("\n");
 }
 #endif
+
+char *mystrsep (char **stringp, const char *delim) {
+  char *begin, *end;
+
+  begin = *stringp;
+  if (begin == 0L)
+    return 0L;
+
+  /* Find the end of the token.  */
+  end = strpbrk (begin, delim);
+  if (end) {
+      /* Terminate the token and set *STRINGP past NUL character.  */
+      *end++ = '\0';
+      *stringp = end;
+  } else
+    /* No more delimiters; this is the last token.  */
+    *stringp = 0L;
+
+  return begin;
+}
+
+

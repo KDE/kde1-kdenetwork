@@ -984,6 +984,7 @@ void ConnectWidget::setExpect(const char *n) {
 
   QString ts = i18n("Expecting: ");
   ts += n;
+  ts.replace(QRegExp("\n"), "<LF>");
   emit debugMessage(ts);
 
   // check if the expected string is in the read buffer already.

@@ -133,8 +133,8 @@ void MonthlyWidget::plotMonth() {
   int duration = 0;  
 
   lb->setAutoUpdate(FALSE);
-  for(int i = 0; i < (int)log.count(); i++) {
-    LogInfo *li = log.at(i);
+  for(int i = 0; i < (int)logList.count(); i++) {
+    LogInfo *li = logList.at(i);
 
     if(li->from().date().month() == _month && li->from().date().year() == _year) {
 
