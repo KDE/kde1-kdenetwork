@@ -164,26 +164,20 @@ KAMenu::KAMenu( QWidget *parent, const char *name )
   connect ( sort, SIGNAL(activated(int)),
 	    this, SLOT(slotSort(int)) );
 
-  /*
-  help = new QPopupMenu();
-  CHECK_PTR( help );
-  help->insertItem( "&Using KArchie", this, SLOT(slotHelpUsingKA()) );
-  help->insertSeparator();
-  help->insertItem( "&About", this, SLOT(slotHelpAbout()) );
-  help->insertItem( "&About", this, SLOT(slotHelpAbout()) );
-  */
 
   QString aboutText;
-  ksprintf(&aboutText, i18n("KArchie ver. %s\n\n"
-                         "by Jörg Habenicht <j.habenicht@europemail.com>\n\n"
-                         "based on the work of:\n"
-                         "  - archie prospero client by\n"
-                         "      Clifford Neuman and\n"
-                         "      Brendan Kehoe (brendan@cygnus.com)\n"
-                         "  - and xarchie by\n"
-                         "      George Ferguson (ferguson@cs.rochester.edu)\n"
-                         "(See README files and copyright.h).\n"
-                         "My own code is based on the GPL"), KARCHIE_VERSION);
+  aboutText += i18n("KArchie ver. ");
+  aboutText += KARCHIE_VERSION;
+  aboutText += i18n("\n\n"
+		    "by Jörg Habenicht <j.habenicht@europemail.com>\n\n"
+		    "based on the work of:\n"
+		    "  - archie prospero client by\n"
+		    "      Clifford Neuman and\n"
+		    "      Brendan Kehoe (brendan@cygnus.com)\n"
+		    "  - and xarchie by\n"
+		    "      George Ferguson (ferguson@cs.rochester.edu)\n"
+		    "(See README files and copyright.h).\n"
+		    "My own code is based on the GPL");
   help = kapp->getHelpMenu( TRUE, aboutText );
 
   insertItem( i18n("&File"), file);
