@@ -3,11 +3,13 @@
 Comment=Show Internet Dialer Logfiles
 Comment[pt_BR]=Mostrar arquivos de log do discador Internet
 Comment[sk]=Uká¾e log súbory vytáèacieho programu
+Comment[sv]=Visa logfilerna för internetuppkopplingen
 BinaryPattern=kppplogview;
 Protocols=
 Name=KPPP - Logview
 Name[pt_BR]=KPPP - Ver Log
 Name[sk]=KPPP - prehliadaè logov
+Name[sv]=KPPP - Logvisare
 MimeType=
 Exec=kppplogview
 Icon=kppp.xpm
