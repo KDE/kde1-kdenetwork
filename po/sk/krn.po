@@ -526,12 +526,11 @@ msgstr "Heslo:"
 
 #: NNTPConfigDlg.cpp:91
 msgid "Ask before downloading more than"
-msgstr ""
+msgstr "Spýta» sa pred s»ahovaním viac ako"
 
 #: NNTPConfigDlg.cpp:94
-#, fuzzy
 msgid "articles"
-msgstr "Oznaèi» príspevok"
+msgstr "èlánkov"
 
 #: aboutDlg.cpp:28
 msgid "About KRN"
@@ -758,9 +757,8 @@ msgid "Replace..."
 msgstr "Nahradi»..."
 
 #: kmcomposewin.cpp:477
-#, fuzzy
 msgid "&Spellcheck..."
-msgstr "KMail: Kontrola pravopisu"
+msgstr "Kontrola pravopisu"
 
 #: kmcomposewin.cpp:484
 msgid "&Urgent"
@@ -775,9 +773,8 @@ msgid "&Confirm read"
 msgstr "&Potvrdi» preèítanie"
 
 #: kmcomposewin.cpp:491
-#, fuzzy
 msgid "&Spellchecker..."
-msgstr "KMail: Kontrola pravopisu"
+msgstr "Kontrola pravopisu"
 
 #: kmcomposewin.cpp:494
 msgid "&Charsets..."
@@ -829,7 +826,7 @@ msgstr "Vlo¾&i» súbor"
 
 #: kmcomposewin.cpp:527
 msgid "Insert My &Public Key"
-msgstr ""
+msgstr "Vlo¾i» Môj &Verejný Kµúè"
 
 #: kmcomposewin.cpp:532
 msgid "&Attach..."
@@ -848,9 +845,8 @@ msgid "&Attach"
 msgstr "&Pripoji»"
 
 #: kmcomposewin.cpp:558
-#, fuzzy
 msgid "Send message"
-msgstr "Posielam správu: "
+msgstr "Posla» správu"
 
 #: kmcomposewin.cpp:563
 msgid "Compose new message"
@@ -970,7 +966,7 @@ msgstr "Zvoli» súbor s podpisom"
 
 #: kmcomposewin.cpp:2018
 msgid "Spellcheck - KMail"
-msgstr ""
+msgstr "Kontrola pravopisu - KMail"
 
 #: kmcomposewin.cpp:2044
 msgid ""
@@ -1311,7 +1307,7 @@ msgstr "Varovanie: Zlá signatúra od"
 
 #: kmreaderwin.cpp:451
 msgid "unknown key ID"
-msgstr ""
+msgstr "neznámy kµúè s ID"
 
 #: kmreaderwin.cpp:701
 msgid "Attachment: "
@@ -1374,9 +1370,8 @@ msgid "This person will not be able to\n"
 msgstr ""
 
 #: kpgp.cpp:311
-#, fuzzy
 msgid "decrypt the message."
-msgstr "zakryptova» správu"
+msgstr "dekryptova» správu"
 
 #: kpgp.cpp:326
 msgid ""
@@ -1418,17 +1413,16 @@ msgid "PGP Security Check"
 msgstr "Bezpeènostná kontrola PGP"
 
 #: kpgp.cpp:765
-#, fuzzy
 msgid "Identity"
-msgstr "Identita ..."
+msgstr "Identita"
 
 #: kpgp.cpp:771
 msgid "PGP User Identity:"
-msgstr ""
+msgstr "Identita u¾ívatµa PGP:"
 
 #: kpgp.cpp:782
 msgid "Store passphrase"
-msgstr ""
+msgstr "Ulo¾i» PGP heslo"
 
 #: kpgp.cpp:788
 msgid "Always encrypt to self"
@@ -1636,68 +1630,54 @@ msgstr ""
 
 #: kpgpbase.cpp:410
 msgid "unknown key ID "
-msgstr ""
+msgstr "neznámy kµúè s ID "
 
 #: kpgpbase.cpp:430
 msgid "??? (file ~/.pgp/pubring.pgp not found)"
-msgstr ""
+msgstr "??? (súbor ~/.pgp/pubring.pgp nenájdený)"
 
 #: kpgpbase.cpp:585
-#, fuzzy
 msgid "The passphrase you entered is invalid."
-msgstr "Chýba heslo."
+msgstr "Heslo, ktoré ste zadali je nesprávne."
 
 #: kpgpbase.cpp:611
 msgid ""
 "The key(s) you wan't to encrypt your message\n"
 "to are not trusted. No encryption done."
 msgstr ""
+"Kµúèe, na ktoré chcete zakryptova» va¹u správu\n"
+"nie sú dôveryhodné. Nekryptujem."
 
 #: kpgpbase.cpp:614
-#, fuzzy, c-format
 msgid ""
 "The following key(s) are not trusted:\n"
 "%s\n"
 "They will not be able to decrypt the message"
 msgstr ""
-"verejný kµúè pre %s nebol nájdený.\n"
-"Táto osoba nebude schopná dekryptova» správu."
+"Nasledujúce kµúèe nie sú dôveryhodné:\n"
+"%s\n"
+"Nebudú schopní dekryptova» správu."
 
 #: TooManydlg.cpp:25
-#, fuzzy
 msgid "KRN-Confirmation"
-msgstr "KRN - Nastavenie NNTP"
+msgstr "KRN-Odsúhlasenie"
 
 #: TooManydlg.cpp:30
 msgid "Read how many articles?"
-msgstr ""
+msgstr "Koµko èlánkov preèíta»?"
 
 #: TooManydlg.cpp:36
 msgid "Get them from"
-msgstr ""
+msgstr "Získa» ich z"
 
 #: TooManydlg.cpp:37
-#, fuzzy
 msgid "Oldest articles"
-msgstr "Získa» príspevky"
+msgstr "Najstar¹ie príspevky"
 
 #: TooManydlg.cpp:39
-#, fuzzy
 msgid "Newest articles"
-msgstr "Získa» príspevky"
+msgstr "Najnov¹ie príspevky"
 
 #: TooManydlg.cpp:43
 msgid "Make this the new threshold"
-msgstr ""
-
-#~ msgid "Error during PGP:"
-#~ msgstr "Chyba pri behu PGP:"
-
-#~ msgid "Message signed by"
-#~ msgstr "Správu podpísal"
-
-#~ msgid "Message has a bad signature from"
-#~ msgstr "Správa má zlý podpis od"
-
-#~ msgid "End PGP signed message"
-#~ msgstr "Koniec podpísanej správy PGP"
+msgstr "Spravi» toto nový treshold"
