@@ -4,42 +4,40 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: KBiff 1.1\n"
-"POT-Creation-Date: 1998-12-20 02:10+0100\n"
-"PO-Revision-Date: 1998-11-20 01:02+07:00\n"
+"Project-Id-Version: kbiff\n"
+"POT-Creation-Date: 1998-11-23 01:56+0100\n"
+"PO-Revision-Date: 1998-12-31 07:09+07:00\n"
 "Last-Translator: Const Kaplinsky <const@ce.cctpu.edu.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=koi8-r\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: kbiff.cpp:506
+#: kbiff.cpp:470
 msgid "&UnDock"
 msgstr "&Отстыковать"
 
-#: kbiff.cpp:508
+#: kbiff.cpp:472
 msgid "&Dock"
 msgstr "&Пристыковать"
 
-#: kbiff.cpp:509
+#: kbiff.cpp:473
 msgid "&Setup..."
 msgstr "&Настройка..."
 
-#: kbiff.cpp:511
+#: kbiff.cpp:475
 msgid "&Help..."
 msgstr "&Помощь..."
 
-#: kbiff.cpp:515
-#, fuzzy
+#: kbiff.cpp:479
 msgid "&Check Mail Now"
 msgstr "П&роверить почту"
 
-#: kbiff.cpp:517
-#, fuzzy
+#: kbiff.cpp:481
 msgid "&Read Mail Now"
 msgstr "Пр&очитать почту"
 
-#: kbiff.cpp:523
+#: kbiff.cpp:487
 msgid "&Stop"
 msgstr "&Стоп"
 
@@ -57,165 +55,165 @@ msgstr "Новые сообщения: %d"
 msgid "Mailbox: %s"
 msgstr "Почтовый ящик: %s"
 
-#: setupdlg.cpp:79
+#: setupdlg.cpp:81
 msgid "KBiff Setup"
 msgstr "Настройка KBiff"
 
-#: setupdlg.cpp:82
+#: setupdlg.cpp:84
 msgid "Profile:"
 msgstr "Профиль:"
 
-#: setupdlg.cpp:98
+#: setupdlg.cpp:100
 msgid "&New..."
 msgstr "&Создать..."
 
-#: setupdlg.cpp:105
+#: setupdlg.cpp:107
 msgid "&Rename..."
 msgstr "&Переименовать..."
 
-#: setupdlg.cpp:139
+#: setupdlg.cpp:141
 msgid "General"
 msgstr "Общие установки"
 
-#: setupdlg.cpp:140
+#: setupdlg.cpp:142
 msgid "New Mail"
 msgstr "Новая почта"
 
-#: setupdlg.cpp:141
+#: setupdlg.cpp:143
 msgid "Mailbox"
 msgstr "Почтовый ящик"
 
-#: setupdlg.cpp:356
+#: setupdlg.cpp:358
 msgid "New Profile"
 msgstr "Новый профиль"
 
-#: setupdlg.cpp:388
+#: setupdlg.cpp:390
 #, c-format
 msgid "Rename Profile: %s"
 msgstr "Смена имени профиля: %s"
 
-#: setupdlg.cpp:428
+#: setupdlg.cpp:430
 #, c-format
 msgid "Delete Profile: %s"
 msgstr "Удаление профиля: %s"
 
-#: setupdlg.cpp:429
+#: setupdlg.cpp:431
 msgid "Are you sure you wish to delete this profile?\n"
 msgstr "Вы уверены, что следует удалить данный профиль?\n"
 
-#: setupdlg.cpp:489
+#: setupdlg.cpp:491
 msgid "Poll (sec):"
 msgstr "Опрос (сек.):"
 
-#: setupdlg.cpp:494
+#: setupdlg.cpp:496
 msgid "Mail client:"
 msgstr "Почтовый клиент:"
 
-#: setupdlg.cpp:507
+#: setupdlg.cpp:509
 msgid "Dock in panel"
 msgstr "Стыковать к панели"
 
-#: setupdlg.cpp:512
+#: setupdlg.cpp:514
 msgid "Use session management"
 msgstr "Использовать управление сеансами"
 
-#: setupdlg.cpp:517
+#: setupdlg.cpp:519
 msgid "Icons:"
 msgstr "Пиктограммы:"
 
-#: setupdlg.cpp:535
+#: setupdlg.cpp:537
 msgid "No Mail:"
 msgstr "Нет почты:"
 
-#: setupdlg.cpp:544
+#: setupdlg.cpp:546
 msgid "Old Mail"
 msgstr "Старая почта:"
 
-#: setupdlg.cpp:554
+#: setupdlg.cpp:556
 msgid "New Mail:"
 msgstr "Новая почта:"
 
-#: setupdlg.cpp:691
+#: setupdlg.cpp:693
 msgid "Run Command"
 msgstr "Запуск команды"
 
-#: setupdlg.cpp:698 setupdlg.cpp:711 setupdlg.cpp:1051
+#: setupdlg.cpp:700 setupdlg.cpp:713 setupdlg.cpp:1053
 msgid "Browse"
 msgstr "Просмотр"
 
-#: setupdlg.cpp:704
+#: setupdlg.cpp:706
 msgid "Play Sound"
 msgstr "Проигрывание звука"
 
-#: setupdlg.cpp:717
+#: setupdlg.cpp:719
 msgid "System Beep"
 msgstr "Системный звук"
 
-#: setupdlg.cpp:722
+#: setupdlg.cpp:724
 msgid "Notify"
 msgstr "Уведомление"
 
-#: setupdlg.cpp:853
+#: setupdlg.cpp:855
 msgid "Advanced Options"
 msgstr "Дополнительные установки"
 
-#: setupdlg.cpp:857
+#: setupdlg.cpp:859
 msgid "Mailbox URL:"
 msgstr "URL почтового ящика:"
 
-#: setupdlg.cpp:861
+#: setupdlg.cpp:863
 msgid "Port:"
 msgstr "Порт:"
 
-#: setupdlg.cpp:865
+#: setupdlg.cpp:867
 msgid "PREAUTH"
 msgstr "PREAUTH"
 
-#: setupdlg.cpp:872
+#: setupdlg.cpp:874
 msgid "Keep Alive"
 msgstr ""
 
-#: setupdlg.cpp:998 setupdlg.cpp:1027
+#: setupdlg.cpp:1000 setupdlg.cpp:1029
 msgid "Mailbox:"
 msgstr "Почтовый ящик:"
 
-#: setupdlg.cpp:1011 setupdlg.cpp:1321
+#: setupdlg.cpp:1013 setupdlg.cpp:1323
 msgid "New Mailbox"
 msgstr "Новый почтовый ящик"
 
-#: setupdlg.cpp:1018
+#: setupdlg.cpp:1020
 msgid "Delete Mailbox"
 msgstr "Удалить почтовый ящик"
 
-#: setupdlg.cpp:1024
+#: setupdlg.cpp:1026
 msgid "Protocol:"
 msgstr "Протокол:"
 
-#: setupdlg.cpp:1030
+#: setupdlg.cpp:1032
 msgid "Server:"
 msgstr "Сервер:"
 
-#: setupdlg.cpp:1033
+#: setupdlg.cpp:1035
 msgid "User:"
 msgstr "Пользователь:"
 
-#: setupdlg.cpp:1036
+#: setupdlg.cpp:1038
 msgid "Password:"
 msgstr "Пароль:"
 
-#: setupdlg.cpp:1068
+#: setupdlg.cpp:1070
 msgid "Store password"
 msgstr "Сохранить пароль"
 
-#: setupdlg.cpp:1071
+#: setupdlg.cpp:1073
 msgid "Advanced"
 msgstr "Прочее"
 
-#: setupdlg.cpp:1508
+#: setupdlg.cpp:1510
 msgid "KBiff"
 msgstr "KBiff"
 
-#: setupdlg.cpp:1530
+#: setupdlg.cpp:1532
 #, c-format
 msgid ""
 "Version %s\n"
@@ -228,10 +226,10 @@ msgstr ""
 "Copyright (C) 1998\n"
 "Kurt Granroth"
 
-#: setupdlg.cpp:1579
+#: setupdlg.cpp:1581
 msgid "New Name:"
 msgstr "Новое имя:"
 
-#: setupdlg.cpp:1605
+#: setupdlg.cpp:1607
 msgid "New Name"
 msgstr "Новое имя"

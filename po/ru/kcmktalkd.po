@@ -1,4 +1,4 @@
-# Russian messages for KTalkd.
+# Russian messages for kcmktalkd.
 # Copyright (C) 1998 KDE Team.
 # Const Kaplinsky <const@ce.cctpu.edu.ru>, 1998.
 #
@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmktalkd\n"
 "POT-Creation-Date: 1998-12-12 15:20+0100\n"
-"PO-Revision-Date: 1998-11-20 01:40+07:00\n"
+"PO-Revision-Date: 1998-12-31 07:14+07:00\n"
 "Last-Translator: Const Kaplinsky <const@ce.cctpu.edu.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -23,12 +23,12 @@ msgstr "А&втоответчик"
 
 #: main.cpp:64
 msgid "&Forward"
-msgstr ""
+msgstr "&Переадресация"
 
 #: main.cpp:70
-#, fuzzy
 msgid "usage: kcmktalkd [-init | soundpage | answmachpage | forwmachpage ]\n"
-msgstr "использование: kcmktalkd [-init | soundpage | answmachpage]\n"
+msgstr ""
+"использование: kcmktalkd [-init | soundpage | answmachpage | forwmachpage ]\n"
 
 #: main.cpp:111
 msgid "KTalkd Configuration"
@@ -47,7 +47,6 @@ msgid "&Play sound"
 msgstr "&Проигрывание звука"
 
 #: soundpage.cpp:59
-#, fuzzy
 msgid "&Sound File"
 msgstr "&Звуковой файл"
 
@@ -154,19 +153,19 @@ msgstr "Сообщение от %s"
 #: answmachpage.cpp:172 answmachpage.cpp:191
 #, c-format
 msgid "Message left in the answering machine, by %s@%s"
-msgstr "На автоответчике осталось сообщение от %s@%s"
+msgstr "На автоответчике оставлено сообщение от %s@%s"
 
 #: forwmachpage.cpp:34
 msgid "Activate &forward"
-msgstr ""
+msgstr "Разрешить &переадресацию"
 
 #: forwmachpage.cpp:39
 msgid "&Destination (user or user@host)"
-msgstr ""
+msgstr "&Адресат (пользователь или пользователь@машина)"
 
 #: forwmachpage.cpp:49
 msgid "Forward &method"
-msgstr ""
+msgstr "&Метод переадресации"
 
 #: forwmachpage.cpp:54
 msgid ""
@@ -181,3 +180,13 @@ msgid ""
 "\n"
 "See Help for further explanations.\n"
 msgstr ""
+"FWA : Переадресовывать только анонсы. Прямое соединение. Не рекомендуется.\n"
+"FWR : Переадресовывать все запросы, корректируя информацию. Прямое "
+"соединение.\n"
+"FWT : Переадресовывать все запросы и вести разговор. Без прямого "
+"соединения.\n"
+"\n"
+"Рекомендуется: FWT, если нужно использовать через firewall (и при этом\n"
+"ktalkd имеет доступ к обеим сетям), или FWR в противном случае.\n"
+"\n"
+"Для более подробных разъяснений смотрите Помощь.\n"

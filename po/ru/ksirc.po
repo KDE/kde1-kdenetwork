@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ksirc\n"
-"POT-Creation-Date: 1998-12-28 02:07+0100\n"
-"PO-Revision-Date: 1998-09-14 15:00+0800\n"
+"POT-Creation-Date: 1998-12-16 01:59+0100\n"
+"PO-Revision-Date: 1998-12-31 07:03+07:00\n"
 "Last-Translator: Const Kaplinsky <const@ce.cctpu.edu.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -34,9 +34,8 @@ msgid "&Modify"
 msgstr "&Изменить"
 
 #: FilterRuleEditorData.cpp:126
-#, fuzzy
 msgid "New Rule"
-msgstr "&Новое правило"
+msgstr "Новое правило"
 
 #: FilterRuleEditorData.cpp:145
 msgid "Up"
@@ -102,59 +101,57 @@ msgstr ""
 
 #: open_topData.cpp:39
 msgid "Channel/Nick:"
-msgstr ""
+msgstr "Канал/Ник:"
 
-#: servercontroller.cpp:160
+#: servercontroller.cpp:161
 msgid "&Dock"
 msgstr ""
 
-#: servercontroller.cpp:168 servercontroller.cpp:748
-#, fuzzy
+#: servercontroller.cpp:169 servercontroller.cpp:747
 msgid "New Server..."
-msgstr "&Новый сервер..."
+msgstr "Новый сервер..."
 
-#: servercontroller.cpp:169
+#: servercontroller.cpp:170
 msgid "&Join Channel..."
 msgstr "&Присоединиться к каналу..."
 
-#: servercontroller.cpp:171
+#: servercontroller.cpp:172
 msgid "&Connections"
 msgstr "&Соединения"
 
-#: servercontroller.cpp:188 servercontroller.cpp:737
+#: servercontroller.cpp:189 servercontroller.cpp:736
 msgid "&Colour Preferences..."
 msgstr "&Настройка цвета"
 
-#: servercontroller.cpp:190 servercontroller.cpp:739
+#: servercontroller.cpp:191 servercontroller.cpp:738
 msgid "&Global Fonts..."
 msgstr "&Общие шрифты..."
 
-#: servercontroller.cpp:192 servercontroller.cpp:741
+#: servercontroller.cpp:193 servercontroller.cpp:740
 msgid "&Filter Rule Editor..."
 msgstr "&Редактор правил филтрации..."
 
-#: servercontroller.cpp:194 servercontroller.cpp:743
-#, fuzzy
+#: servercontroller.cpp:195 servercontroller.cpp:742
 msgid "&Web Server Configuration..."
-msgstr "Активные соединения сервера"
+msgstr "Конфигурация Web-сервера..."
 
-#: servercontroller.cpp:197 servercontroller.cpp:745
+#: servercontroller.cpp:198 servercontroller.cpp:744
 msgid "&Preferences..."
 msgstr "&Настройки..."
 
-#: servercontroller.cpp:207
+#: servercontroller.cpp:208
 msgid "Help on Colours..."
 msgstr "Помощь по цветам..."
 
-#: servercontroller.cpp:209
+#: servercontroller.cpp:210
 msgid "Help on Filters..."
 msgstr "Помощь по фильтрам..."
 
-#: servercontroller.cpp:211
+#: servercontroller.cpp:212
 msgid "Help on Keys..."
 msgstr "Помощь по клавишам..."
 
-#: servercontroller.cpp:214
+#: servercontroller.cpp:215
 msgid "About kSirc..."
 msgstr "О программе kSirc..."
 
@@ -170,11 +167,11 @@ msgstr "Каналы"
 msgid "Online"
 msgstr ""
 
-#: servercontroller.cpp:693
+#: servercontroller.cpp:692
 msgid "Active Server Connections"
 msgstr "Активные соединения сервера"
 
-#: servercontroller.cpp:734
+#: servercontroller.cpp:733
 msgid "&Undock"
 msgstr ""
 
@@ -187,7 +184,6 @@ msgid "&Ticker Mode"
 msgstr ""
 
 #: toplevel.cpp:166
-#, fuzzy
 msgid "&Cut Window..."
 msgstr "&Обрезать окно..."
 
@@ -209,16 +205,15 @@ msgstr ""
 
 #: KSColourPicker/kscolourpickerData.cpp:46
 msgid "Sample Colour"
-msgstr ""
+msgstr "Образец цвета"
 
 #: KSCutDialog/KSCutDialogData.cpp:39
 msgid "Cop&y"
-msgstr ""
+msgstr "&Копировать"
 
 #: KSOpenkSirc/open_ksircData.cpp:37
-#, fuzzy
 msgid "&Connect"
-msgstr "&Соединения"
+msgstr "&Соединение"
 
 #: KSOpenkSirc/open_ksircData.cpp:54
 msgid "&Edit Servers"
@@ -226,69 +221,99 @@ msgstr ""
 
 #: KSOpenkSirc/open_ksircData.cpp:86
 msgid "Group:"
-msgstr ""
+msgstr "Группа:"
 
 #: KSOpenkSirc/open_ksircData.cpp:103
-#, fuzzy
 msgid "Server/Quick Connect to:"
-msgstr "Управление сервером"
+msgstr "Сервер/Быстрое соединение:"
 
 #: KSOpenkSirc/open_ksircData.cpp:120
 msgid "Port:"
-msgstr ""
+msgstr "Порт:"
 
 #: KSOpenkSirc/open_ksircData.cpp:147
-#, fuzzy
 msgid "Server Desc:"
-msgstr "Сервер:"
+msgstr "Описание сервера:"
 
 #: KSPrefs/UserMenuRefData.cpp:61
 msgid "Menu Name"
-msgstr ""
+msgstr "Имя меню"
 
 #: KSPrefs/UserMenuRefData.cpp:70
 msgid "Type"
-msgstr ""
+msgstr "Тип"
 
 #: KSPrefs/UserMenuRefData.cpp:79
 msgid "Command"
-msgstr ""
+msgstr "Команда"
 
 #: KSPrefs/UserMenuRefData.cpp:87
 msgid "OP Only"
 msgstr ""
 
 #: KSPrefs/UserMenuRefData.cpp:135
-#, fuzzy
 msgid "Modify"
-msgstr "&Изменить"
+msgstr "Изменить"
+
+#: KSPrefs/generalData.cpp:49
+msgid "Auto Create Windows"
+msgstr "Создавать окна автоматически"
+
+#: KSPrefs/generalData.cpp:58
+msgid "Beep on Notify"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:67
+msgid "Nick Completion"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:76
+msgid "Colour Picker Popup"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:85
+msgid "Auto Rejoin"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:94
+msgid "Enable Background Pixmap"
+msgstr "Разрешить фоновый рисунок"
+
+#: KSPrefs/generalData.cpp:111
+msgid "Browse"
+msgstr "Обзор"
+
+#: KSPrefs/generalData.cpp:119
+msgid "Display Topic in Caption"
+msgstr "Отображать тему в заголовке"
+
+#: KSPrefs/generalData.cpp:128
+msgid "Use MDI Mode (Must restart to take effect, experimental!!)"
+msgstr ""
 
 #: KSPrefs/ksprefs.cpp:9
-#, fuzzy
 msgid "kSirc Prefrences"
-msgstr "&Настройки..."
+msgstr "Настройки kSirc"
 
 #: KSPrefs/ksprefs.cpp:22
 msgid "&General"
-msgstr ""
+msgstr "&Общие"
 
 #: KSPrefs/ksprefs.cpp:23
 msgid "&StartUp"
-msgstr ""
+msgstr "&Запуск"
 
 #: KSPrefs/ksprefs.cpp:24
-#, fuzzy
 msgid "Servers/&Channels"
-msgstr "Каналы"
+msgstr "Серверы/&Каналы"
 
 #: KSPrefs/ksprefs.cpp:25
-#, fuzzy
 msgid "&User Menu"
-msgstr "&Пользователи"
+msgstr "&Меню пользователя"
 
 #: KSPrefs/ksprefs.cpp:26
 msgid "&Default Filters"
-msgstr ""
+msgstr "&Фильтры по умолчанию"
 
 #: KSTicker/speeddialogData.cpp:79
 msgid "Tick Interval"
@@ -301,4 +326,4 @@ msgstr ""
 #: puke/kdynlib.cpp:70
 #, c-format
 msgid "No such file \"%s\"!"
-msgstr ""
+msgstr "Нет такого файла: \"%s\"!"
