@@ -139,24 +139,6 @@ int main( int argc, char **argv )
     outpath=krnpath+"outgoing/";
     mkdir (outpath.data(),S_IREAD|S_IWRITE|S_IEXEC);
 
-    //Check for a lock file before I break things
-    if (QFile::exists(krnpath+"krn_lock"))
-    {
-        int i=KMsgBox::yesNo(0,"KRN - Error",
-                             "I have detected another Krn running\n"
-                             "Do you REALLY want to continue?\n"
-                             "If you are sure there isn't one, press \"Yes\"\n"
-                             "But if there *is* another one, it's going to be UGLY\n");
-        if (i!=1) exit(1);
-    }
-    else
-    {
-        QFile lock(krnpath+"krn_lock");
-        lock.open(IO_WriteOnly);
-        lock.writeBlock("locked",7);
-        lock.close();
-    }
-    
     // Create the articles database
 
 
@@ -167,6 +149,14 @@ int main( int argc, char **argv )
     artinfopath=krnpath+"/scores.db";
     scoredb=gdbm_open(artinfopath.data(),0,GDBM_WRCREAT | GDBM_FAST,448,0);
 
+    if ((!artdb) || (!refsdb) || (!scoredb)) //the gdbm open failed!
+    {
+        int i=KMsgBox::yesNo(0,"KRN - Error",
+                             "I have detected another Krn running\n"
+                             "Do you REALLY want to continue?\n"
+                             "If you are sure there isn't one, press \"Yes\"\n"
+                             "But if there *is* another one, it's going to be UGLY\n");
+    }
     // Fill the unreadDict
     datum key=gdbm_firstkey ( artdb );
     datum nextkey;
@@ -203,7 +193,6 @@ int main( int argc, char **argv )
     gdbm_reorganize(artdb);
     gdbm_sync(artdb);
     gdbm_close(artdb);
-    unlink((krnpath+"krn_lock").data());
     exit(0);
 }
 
