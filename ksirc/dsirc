@@ -342,7 +342,7 @@ sub dgsclose {
   local($sfh, $rfh)=@_;
   &dohooks("dcc_disconnect", $dnick{$sfh}, $dfile{$rfh}, $dtransferred{$sfh},
 	   time-$dstarttime{$rfh});
-  &tell("*\cbD\cb* DCC transfer with $dnick{$sfh} terminated; $dtransferred{$sfh} bytes transferred in ".(time-$dstarttime{$rfh}). " seconds");
+  &tell("*\cbD\cb* DCC transfer with $dnick{$sfh} ($dfile{$rfh}) terminated; $dtransferred{$sfh} bytes transferred in ".(time-$dstarttime{$rfh}). " seconds");
   close($sfh);
   close($rfh);
   delete $dgrfh{$sfh};
@@ -1967,7 +1967,7 @@ while (1) {
 	$dstarttime{$rfh}=time;
 	$dtransferred{$fh}=0;
 	$dnick{$fh}=$dnick{$sfh};
-	&tell("*\cbD\cb* DCC SEND connection with $dnick{$sfh} established");
+	&tell("*\cbD\cb* DCC SEND connection with $dnick{$sfh} ($dfile{$rfh}) established");
       }
       delete $dnick{$sfh};
       delete $dswait{$sfh};
@@ -1980,6 +1980,7 @@ while (1) {
       $a=sysread($sfh, $buf, 4096);
       if ($a) {
 	$dtransferred{$sfh}+=$a;
+	&tell("*\cbD\cb* DCC GET read: $dfile{$rfh} bytes: $dtransferred{$sfh}"); # KSIRC MOD FOR 971217
 	print $rfh $buf;
 	print $sfh pack("N", $dtransferred{$sfh});
       } else {

@@ -35,10 +35,13 @@ void KSircListBox::scrollToBottom()
 
 void KSircListBox::updateScrollBars()
 {
-  vertScroll->setRange(0, count());
   if((int) count() > numItemsVisible()){
-     int scroll = count()*yOffset()/(totalHeight() - height());
-     vertScroll->setValue(scroll);
+    vertScroll->setRange(0, count() - numItemsVisible());
+    int scroll = (count()-numItemsVisible())*yOffset()/(totalHeight() - height());
+    vertScroll->setValue(scroll);
+  }
+  else{
+    vertScroll->setRange(0, 0);
   }
 }
 
@@ -60,8 +63,10 @@ void KSircListBox::setTopItem(int index)
 
 void KSircListBox::scrollTo(int index)
 {
-   int yoff = index*(totalHeight() - height()) / count() + fudge;
-   setYOffset(yoff);
+   int yoff = index*(totalHeight() - height()) / 
+     (count() - numItemsVisible() - 2) + fudge;
+   setYOffset(QMIN(yoff, totalHeight()-height()+fudge));
+   //   setYOffset(yoff);
 }
 
 void KSircListBox::pageUp()
