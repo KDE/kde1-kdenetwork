@@ -12,6 +12,7 @@
 #include <qtimer.h>
 #include <qstring.h>
 #include <kconfig.h>
+#include <kapp.h>
 
 #include "NNTP.h"
 
@@ -31,7 +32,7 @@ extern QString krnpath,cachepath,artinfopath,groupinfopath,dbasepath,outpath;
 ExpireStatusDlg::ExpireStatusDlg()
     :QDialog (0,0,true)
 {
-    QLabel *l=new QLabel ("Please wait a minute, I am expiring!",
+    QLabel *l=new QLabel (i18n("Please wait a minute, I am expiring!"),
                           this);
     l->adjustSize();
     adjustSize();
