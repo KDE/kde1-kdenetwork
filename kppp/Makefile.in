@@ -222,7 +222,7 @@ install: $(TARGET)
 	$(INSTALL_DIR) $(RULESDIR)/Sweden
 	$(INSTALL_DATA) ./Rules/Sweden/*.rst $(RULESDIR)/Sweden
 	$(INSTALL_DATA) ./Rules/TEMPLATE $(DOCSDIR)
-	chmod +s $BINDIR/bin/kppp
+	chmod +s $(BINDIR)/kppp
 	@echo ""
 	@echo "Dont't forget to send me a phone tarif rules file for your"
 	@echo "telecom company/country/region. Thanks."

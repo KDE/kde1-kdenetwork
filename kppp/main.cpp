@@ -319,6 +319,7 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
 
   accounts = new AccountWidget(tabWindow,"accounts");
   modem = new ModemWidget(tabWindow,"modem");
+  modem2 = new ModemWidget2(tabWindow,"modem2");
   general = new GeneralWidget(tabWindow,"general");
   about  = new AboutWidget(tabWindow,"about");
   

@@ -135,6 +135,7 @@ private:
   AccountWidget *accounts;
   GeneralWidget *general;
   ModemWidget *modem;
+  ModemWidget2 *modem2;
   AboutWidget *about;
 };
 

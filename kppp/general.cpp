@@ -335,18 +335,6 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   labeltmp->setText("Seconds");
 
 
-  modemcmds = new QPushButton("Modem Commands", this);
-  modemcmds->setGeometry(40, 198, 120, 25);
-  connect(modemcmds, SIGNAL(clicked()), SLOT(modemcmdsbutton()));
-
-  modeminfo_button = new QPushButton("Query Modem", this);
-  modeminfo_button->setGeometry(180, 198, 120, 25);
-  connect(modeminfo_button, SIGNAL(clicked()), SLOT(query_modem()));
-
-  terminal_button = new QPushButton("Terminal", this);
-  terminal_button->setGeometry(110, 232, 120, 25);
-  connect(terminal_button, SIGNAL(clicked()), SLOT(terminal()));
-
   //set stuff from gpppdata
   for(int i=0; i <= modemdevice->count()-1; i++) {
     if(strcmp(gpppdata.modemDevice(), modemdevice->text(i)) == 0)
@@ -388,39 +376,9 @@ void ModemWidget::busywaitchanged(const char *n) {
 }
 
 
-void ModemWidget::modemcmdsbutton() {
-  ModemCommands mc(this);
-  mc.exec();
-}
-
-void ModemWidget::query_modem() {
-
-  for(int i = 0; i < NUM_OF_ATI; i++){
-    ati_query_strings[i] = "";
-  }
-
-  modemtrans = new ModemTransfer(this,"modemquery");
-  if(  modemtrans->exec() == QDialog::Accepted)
-    query_done();
-
-}
 
 
-void ModemWidget::query_done(){
-    
 
-    ModemInfo mi(NULL,NULL);
-    mi.exec();
-
-
-}
-
-void ModemWidget::terminal(){
-  
-  MiniTerm terminal(NULL,NULL);
-  terminal.exec();
-
-}
 
 
 // Add functions
@@ -432,3 +390,61 @@ char *itoa(int n){
   return buf;
 }
 
+
+
+ModemWidget2::ModemWidget2( QWidget *parent, const char *name)
+  : QWidget(parent, name)
+{
+
+  box = new QGroupBox(this,"box");
+  box->setGeometry(10,10,320,260);
+  box->setTitle("Modem Setup");
+
+  modemcmds = new QPushButton("Modem Commands", this);
+  modemcmds->setGeometry(40, 198, 120, 25);
+  connect(modemcmds, SIGNAL(clicked()), SLOT(modemcmdsbutton()));
+
+  modeminfo_button = new QPushButton("Query Modem", this);
+  modeminfo_button->setGeometry(180, 198, 120, 25);
+  connect(modeminfo_button, SIGNAL(clicked()), SLOT(query_modem()));
+
+  terminal_button = new QPushButton("Terminal", this);
+  terminal_button->setGeometry(110, 232, 120, 25);
+  connect(terminal_button, SIGNAL(clicked()), SLOT(terminal()));
+
+
+
+}
+
+void ModemWidget2::modemcmdsbutton() {
+  ModemCommands mc(this);
+  mc.exec();
+}
+
+void ModemWidget2::query_modem() {
+
+  for(int i = 0; i < NUM_OF_ATI; i++){
+    ati_query_strings[i] = "";
+  }
+
+  modemtrans = new ModemTransfer(this,"modemquery");
+  if(  modemtrans->exec() == QDialog::Accepted)
+    query_done();
+
+}
+
+void ModemWidget2::query_done(){
+    
+
+    ModemInfo mi(NULL,NULL);
+    mi.exec();
+
+
+}
+
+void ModemWidget2::terminal(){
+  
+  MiniTerm terminal(NULL,NULL);
+  terminal.exec();
+
+}

@@ -11,7 +11,7 @@
 CXXFLAGS= -O2 -Wall -I/usr/local/kde/include -I/usr/local/qt/include -I/usr/X11R6/include -DHAVE_CONFIG_H  -I.. -I.
 LDFLAGS	= -s -L/usr/local/kde/lib -L/usr/local/qt/lib -L/usr/X11R6/lib  -lkdecore  -lqt \
 	  -lXext -lX11  -lkdeui -lkdecore
-CXX     = c++
+CXX     = g++
 MOC   	= /usr/local/qt/bin/moc
 
 ############# INSTALL #################
@@ -223,26 +223,13 @@ install: $(TARGET)
 	$(INSTALL_DIR) $(RULESDIR)/Sweden
 	$(INSTALL_DATA) ./Rules/Sweden/*.rst $(RULESDIR)/Sweden
 	$(INSTALL_DATA) ./Rules/TEMPLATE $(DOCSDIR)
-	@echo ""
-	@echo "You must now give kppp permissions appropriate for your modem device."
-	@echo "chmod +s /usr/local/kde/bin/kppp executed as root should do the job."
-	@echo ""
-	@echo "Beginning with version 0.5.7 the configs are kept in .kde/share/apps/kppp"
-	@echo "You can just copy your old configs there, if you are upgrading from"
-	@echo "version 0.5.6. If you are upgrading from an earlier version, you "
-	@echo "can NOT do that and must reconfigure kppp."
+	chmod +s $(BINDIR)/kppp
 	@echo ""
 	@echo "Dont't forget to send me a phone tarif rules file for your"
 	@echo "telecom company/country/region. Thanks."
 	@echo ""
 	@echo "I am mainting an archive on the kppp page at"
 	@echo "http://math.cornell.edu/~wuebben/kde.html"
-	@echo ""
-	@echo "Attention: Due to the ever growing number of .rst files"
-	@echo "the rules files are now installed in directories underneath"
-	@echo "KDEDIR/share/apps/kppp/Rules ."
-	@echo "Make a backup copy of your KDEDIR/share/apps/kppp/Rules"
-	@echo "and remove the Rules directory before you install kppp."	
 	@echo ""
 	@echo "Happy Dialing! -- Bernd Wuebben"
 	@echo ""

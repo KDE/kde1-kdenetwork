@@ -101,10 +101,9 @@ private slots:
 
   void setmodemdc(int);
   void setflowcontrol(int);
-  void modemcmdsbutton();
-  void query_modem();
-  void query_done();
-  void terminal();
+
+
+
   void modemtimeoutchanged(const char*);
   void busywaitchanged(const char*);
   void modemlockfilechanged(const char*);
@@ -117,18 +116,42 @@ private:
   QLabel *label3;
   QLabel *label4;
   QLabel *labeltmp;
-  ModemTransfer *modemtrans;
 
   QComboBox *modemdevice;
   QComboBox *flowcontrol;
 
-  QPushButton *modemcmds;
-  QPushButton *modeminfo_button;
-  QPushButton *terminal_button;
   
   QLineEdit *modemtimeout;
   QLineEdit *busywait;
   QLineEdit *modemlockfile;
+};
+
+
+class ModemWidget2 : public QWidget {
+
+  Q_OBJECT
+
+public:
+
+  ModemWidget2( QWidget *parent=0, const char *name=0 );
+
+
+private slots:
+
+  void modemcmdsbutton();
+  void terminal();
+  void query_modem();
+  void query_done();
+
+private:
+
+  ModemTransfer *modemtrans;
+
+  QGroupBox *box;
+  QPushButton *modemcmds;
+  QPushButton *modeminfo_button;
+  QPushButton *terminal_button;
+
 };
 
 class AboutWidget : public QWidget {
