@@ -23,6 +23,12 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.2  1998/10/29 21:26:28  leconte
+ * Bertrand:
+ * . renamed Matt s traceroute to mtr as asked by the new mtr maintainer
+ * . mtr-0.25 has the diffs included. No more patch here
+ * . updated knu for mtr-0.25
+ *
  * Revision 1.1  1998/10/14 19:32:59  leconte
  * Bertrand: Added mtr support (with a patch to mtr-0.21)
  *
@@ -238,18 +244,19 @@ MtrDlg::slotCmdStdout(KProcess *, char *buffer, int buflen)
 {
   char *p, *q, *line, *pp;
   int  hop, i;
+  QString *receivedLine;
   //  char *hostname, *loss, *rcv, *snt, *best, *avg, *worst;
   
   if (buflen <= 0) {
-    buffer = "--- nothing ---\n";
-    buflen = strlen(buffer);
+    receivedLine = new QString("--- nothing ---\n");
   } else {
-    buffer[buflen] = 0;		// mark eot
+    receivedLine = new QString(buffer, buflen+1);
   }
-  //debug("stdout> %s", buffer);
+  //  debug("stdout> %s", (char *)*receivedLine);
 
   // Split incoming data by line
-  p = buffer;
+  //  p = malloc(receivedLine.length());
+  p = receivedLine->data();
   while ((p != 0) && (*p != 0)) {
     line = p;
     q = p;
@@ -336,6 +343,7 @@ debug("deleting a line not at end");
       //      debug("it was not a correct line. error? = %s", line);
     }
   } // while
+  delete receivedLine;
 }
 
 /**

@@ -11,7 +11,7 @@ Feedback welcome!
 Please send me (or http://buglist.kde.org) all bug reports.
 
 
-Todo:
+Todo: (you can make code submissions... :-) )
 =====
 - in host tab, put nameservers address (from /etc/resolv.conf) to the 
 	combobox
@@ -27,8 +27,7 @@ This program allows somebody to make a ping, a traceroute or a hostname
 resolution without lauching a kvt.
 
 It's a tabbed window with a big multilineedit that receive the output
-of a command (ping, traceroute, host, but it could be also finger, whois,
-...).
+of a command (ping, traceroute, host, finger, whois, ...).
 
 
 History:
@@ -99,6 +98,11 @@ Version 0.5.0:
 --------------
 . added mtr tab (with modifications to mtr-0.21)
 
+Version 0.5.2:
+--------------
+. modified for mtr-0.28
+. memory leak corrected
+. should be able to handle long responses (>1024b)
 
 Author:
 =======

@@ -23,6 +23,10 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.8  1998/11/30 22:58:33  leconte
+ * Bertrand: more than 1024 byte output from child did core. Corrected
+ * 	for all tabs except mtr.
+ *
  * Revision 1.7  1998/10/14 19:32:55  leconte
  * Bertrand: Added mtr support (with a patch to mtr-0.21)
  *
@@ -52,7 +56,6 @@
 #include <errno.h>
 #include <ctype.h>
 
-//#include <qfiledlg.h>
 #include <kfiledialog.h>
 
 #include <kapp.h>
@@ -447,6 +450,8 @@ CommandDlg::slotCmdStdout(KProcess *, char *buffer, int buflen)
   // and insert text here
   commandTextArea->insertAt(*receivedLine, line, col);
   commandTextArea->setCursorPosition(commandTextArea->numLines(), 0);
+
+  delete receivedLine;
 }
 
 /**
@@ -675,7 +680,6 @@ CommandCfgDlg::readConfig()
 void
 CommandCfgDlg::slotBrowse()
 {
-  //  QString f = QFileDialog::getOpenFileName( 0, 0L, this );
   QString f = KFileDialog::getOpenFileName( 0, 0L, this );
   if ( f.isNull() )
     return;
