@@ -12,9 +12,9 @@ KSTicker::KSTicker(QWidget * parent=0, const char * name=0, WFlags f=0)
 
   setFont(QFont("fixed"));
   // ring = "Hi";
-  ring = " ";
+  ring = "";
   SInfo *si = new SInfo;
-  si->length = 1;
+  si->length = 0;
   StrInfo.append(si);  
   setMinimumSize(100, 10);
   setFixedHeight((fontMetrics().ascent()+2)*pHeight);
@@ -35,6 +35,7 @@ void KSTicker::show()
 {
   QFrame::show();
   startTicker();
+  currentChar = display.length() + 1;
   repaint(TRUE);
 }
 
@@ -54,13 +55,16 @@ void KSTicker::setString(QString str)
 {
   ring.truncate(0);
   ring = str;
+  StrInfo.clear();
+  SInfo *si = new SInfo;
+  si->length = str.length();
+  StrInfo.append(si);
   repaint(TRUE);
   startTicker();
 }
 
 void KSTicker::mergeString(QString str)
 {
-  ring += ' ';
   ring += str;
   SInfo *si = new SInfo;
   si->length = str.length();
