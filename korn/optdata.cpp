@@ -16,6 +16,7 @@
 
 #include <qframe.h>
 #include <qlabel.h>
+#include <kapp.h>
 
 KornOptData::KornOptData
 (
@@ -52,7 +53,7 @@ KornOptData::KornOptData
 	okButton = new QPushButton( this, "OkButton" );
 	okButton->setGeometry( 200, 320, 90, 30 );
 	connect( okButton, SIGNAL(clicked()), SLOT(okClicked()) );
-	okButton->setText( "&OK" );
+	okButton->setText( i18n("&OK") );
 	okButton->setAutoRepeat( FALSE );
 	okButton->setAutoResize( FALSE );
 
@@ -65,14 +66,14 @@ KornOptData::KornOptData
 		cancelButton->setFont( font );
 	}
 	connect( cancelButton, SIGNAL(clicked()), SLOT(cancelClicked()) );
-	cancelButton->setText( "&Cancel" );
+	cancelButton->setText( i18n("&Cancel") );
 	cancelButton->setAutoRepeat( FALSE );
 	cancelButton->setAutoResize( FALSE );
 
 	NewBox = new QPushButton( this, "NewBox" );
 	NewBox->setGeometry( 20, 270, 60, 30 );
 	connect( NewBox, SIGNAL(clicked()), SLOT(newBox()) );
-	NewBox->setText( "&New" );
+	NewBox->setText( i18n("&New") );
 	NewBox->setAutoRepeat( FALSE );
 	NewBox->setAutoResize( FALSE );
 
@@ -85,14 +86,14 @@ KornOptData::KornOptData
 		font.setCharSet( (QFont::CharSet)0 );
 		tmpQLabel->setFont( font );
 	}
-	tmpQLabel->setText( "Boxes" );
+	tmpQLabel->setText( i18n("Boxes") );
 	tmpQLabel->setAlignment( 273 );
 	tmpQLabel->setMargin( -1 );
 
 	DeleteBox = new QPushButton( this, "DeleteButton" );
 	DeleteBox->setGeometry( 90, 270, 60, 30 );
 	connect( DeleteBox, SIGNAL(clicked()), SLOT(deleteBox()) );
-	DeleteBox->setText( "&Delete" );
+	DeleteBox->setText( i18n("&Delete") );
 	DeleteBox->setAutoRepeat( FALSE );
 	DeleteBox->setAutoResize( FALSE );
 
@@ -114,13 +115,13 @@ KornOptData::KornOptData
 
 	tmpQLabel = new QLabel( this, "Label_4" );
 	tmpQLabel->setGeometry( 170, 40, 60, 30 );
-	tmpQLabel->setText( "Name" );
+	tmpQLabel->setText( i18n("Name") );
 	tmpQLabel->setAlignment( 265 );
 	tmpQLabel->setMargin( -1 );
 
 	tmpQLabel = new QLabel( this, "Label_5" );
 	tmpQLabel->setGeometry( 170, 80, 70, 30 );
-	tmpQLabel->setText( "Caption" );
+	tmpQLabel->setText( i18n("Caption") );
 	tmpQLabel->setAlignment( 265 );
 	tmpQLabel->setMargin( -1 );
 
@@ -134,7 +135,7 @@ KornOptData::KornOptData
 
 	tmpQLabel = new QLabel( this, "Label_6" );
 	tmpQLabel->setGeometry( 170, 130, 60, 30 );
-	tmpQLabel->setText( "Path" );
+	tmpQLabel->setText( i18n("Path") );
 	tmpQLabel->setAlignment( 265 );
 	tmpQLabel->setMargin( -1 );
 
@@ -148,13 +149,13 @@ KornOptData::KornOptData
 
 	tmpQLabel = new QLabel( this, "Label_7" );
 	tmpQLabel->setGeometry( 170, 170, 70, 30 );
-	tmpQLabel->setText( "Poll time (sec)" );
+	tmpQLabel->setText( i18n("Poll time (sec)") );
 	tmpQLabel->setAlignment( 1289 );
 	tmpQLabel->setMargin( -1 );
 
 	tmpQLabel = new QLabel( this, "Label_8" );
 	tmpQLabel->setGeometry( 170, 220, 70, 30 );
-	tmpQLabel->setText( "Notify Command" );
+	tmpQLabel->setText( i18n("Notify Command") );
 	tmpQLabel->setAlignment( 1289 );
 	tmpQLabel->setMargin( -1 );
 
@@ -176,7 +177,7 @@ KornOptData::KornOptData
 
 	tmpQLabel = new QLabel( this, "Label_9" );
 	tmpQLabel->setGeometry( 170, 260, 70, 30 );
-	tmpQLabel->setText( "Click Command" );
+	tmpQLabel->setText( i18n("Click Command") );
 	tmpQLabel->setAlignment( 1289 );
 	tmpQLabel->setMargin( -1 );
 

@@ -8,7 +8,7 @@
  *********************************************************************/
 
 #include<stdlib.h>
-#include<qapp.h>
+#include<kapp.h>
 
 #ifdef HAVE_CONFIG_H
 #include "../config.h"
@@ -21,7 +21,7 @@
 KornOptions::KornOptions ( QWidget* parent, const char* name)
 	: Inherited( parent, name )
 {
-	setCaption( "korn options" );
+	setCaption( i18n("korn options") );
 
 	_list = 0;
 	_highlighted = false;
@@ -76,13 +76,13 @@ void KornOptions::newBox()
 	int item;
 	KornBox *newBox = new KornBox;
 
-	newBox->name="Untitled";
+	newBox->name= i18n("Untitled");
 	newBox->poll= 240; // default 4min poll
 
 	updateList();
 
 	item = boxList->currentItem();
-	boxList->insertItem( "Untitled", item );
+	boxList->insertItem( i18n("Untitled"), item );
 
 	_list->insert( item, newBox );
 	_list->at( item );

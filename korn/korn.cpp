@@ -48,12 +48,12 @@ Korn::Korn(QWidget *parent, KornSettings *settings, WFlags f)
 	// popup menu
 
 	menu = new QPopupMenu();
-	menu->insertItem("&Setup", this, SLOT( optionDlg() ));
+	menu->insertItem(i18n("&Setup"), this, SLOT( optionDlg() ));
 	menu->insertSeparator();
-	menu->insertItem("&Help", this, SLOT( help() ));
-	menu->insertItem("&About", this, SLOT( about() ));
+	menu->insertItem(i18n("&Help"), this, SLOT( help() ));
+	menu->insertItem(i18n("&About"), this, SLOT( about() ));
 	menu->insertSeparator();
-	menu->insertItem("E&xit", qApp, SLOT( quit() ));
+	menu->insertItem(i18n("E&xit"), qApp, SLOT( quit() ));
 
 	// widget decorations
 	if(settings->layout() == KornSettings::horizontal )
@@ -106,18 +106,18 @@ Korn::Korn(QWidget *parent, KornSettings *settings, WFlags f)
 		_noConfig = true;
 
 		int result =	KMsgBox::yesNo(0, 
-				"korn: configure now?", 
-				"you have not yet configured korn.\n"
-				"would you like to do this now?",
+				i18n("korn: configure now?"), 
+				i18n("you have not yet configured korn.\n"
+				"would you like to do this now?"),
 				KMsgBox::QUESTION,
-				"Yes",
-				"No - Quit");
+				i18n("Yes"),
+				i18n("No - Quit"));
 
 		if( result == 1 ) {
 			// create a list with the default mailbox in it.
 			KornBox *box = new KornBox;
-			box->name	= "personal";
-			box->caption	= "Inbox";
+			box->name	= i18n("personal");
+			box->caption	= i18n("Inbox");
 			box->path	= (const char *)getenv("MAIL");
 			box->poll	= 240;
 			
@@ -241,10 +241,12 @@ void Korn::help()
 
 void Korn::about()
 {
-	KMsgBox::message(0, "About kOrn", "Korn " VERSION 
-					" -- Sirtaj Singh Kang\n" 
+	QString str;
+	str.sprintf(i18n("Korn %s -- Sirtaj Singh Kang\n" 
 					"taj@kde.org, 1997\n\n"
-					"The K Desktop Environment");
+					"The K Desktop Environment"),
+					VERSION);
+	KMsgBox::message(0, i18n("About kOrn"), str);
 }
 
 void Korn::dialogClosed(int ret )
@@ -252,11 +254,11 @@ void Korn::dialogClosed(int ret )
 	QList<KornBox> *list = _optionsDialog->list();
 
 	if( _noConfig && !ret) {
-		ret = KMsgBox::yesNo(0, "korn: no config set", 
-				"Would you like to restart korn with\n"
-				"the automatically generated configuration?",
+		ret = KMsgBox::yesNo(0, i18n("korn: no config set"), 
+				i18n("Would you like to restart korn with\n"
+				"the automatically generated configuration?"),
 				KMsgBox::QUESTION,
-				"Yes, Restart", "No, Exit");
+				i18n("Yes, Restart"), i18n("No, Exit"));
 
 		if( ret == 2 ) {
 			delete _optionsDialog;

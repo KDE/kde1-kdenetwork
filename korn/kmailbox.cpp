@@ -10,7 +10,7 @@
 #include<qobject.h>
 #include<qfileinf.h>
 #include<qdatetm.h>
-#include<qapp.h>
+#include<kapp.h>
 
 #include<strings.h>
 
@@ -147,7 +147,7 @@ int KMailBox::countMail()
 	}
 
 	if(!mbox.open(IO_ReadOnly)) {
-		warning("countMail: file open error");
+		warning(i18n("countMail: file open error"));
 		emit fileError();
 		delete[]buffer;
 		return 0;
