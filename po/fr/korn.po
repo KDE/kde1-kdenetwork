@@ -2,53 +2,52 @@
 # Copyright (C) YEAR Free Software Foundation, Inc.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: korn\n"
 "POT-Creation-Date: 1999-01-10 14:26+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Montel laurent <montell@club-internet.fr>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 1999-01-17 15:00+0100\n"
+"Last-Translator: Francois-Xavier DURANCEAU <Francois-Xavier.Duranceau@loria.fr>\n"
+"Language-Team: Francais <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: ENCODING\n"
 
 #: kmailbox.cpp:150
 msgid "countMail: file open error"
-msgstr ""
+msgstr "countMail : erreur d'ouverture de fichier"
 
 #: korn.cpp:51
-#, fuzzy
 msgid "&Setup"
-msgstr "&Configuration..."
+msgstr "&Configuration"
 
 #: korn.cpp:54
-#, fuzzy
 msgid "&About"
-msgstr "&A propos.."
+msgstr "&A propos"
 
 #: korn.cpp:109
 msgid "korn: configure now?"
-msgstr ""
+msgstr "korn : configurer maintenant ?"
 
 #: korn.cpp:110
 msgid ""
 "you have not yet configured korn.\n"
 "would you like to do this now?"
 msgstr ""
+"Vous n'avez pas encore configuré korn.\n"
+"Voulez-vous le faire maintenant ?"
 
 #: korn.cpp:114
 msgid "No - Quit"
-msgstr ""
+msgstr "Non - Quitter"
 
 #: korn.cpp:119
 msgid "personal"
-msgstr ""
+msgstr "personnelle"
 
 #: korn.cpp:120
 msgid "Inbox"
-msgstr ""
+msgstr "Inbox"
 
 #: korn.cpp:245
 #, c-format
@@ -58,118 +57,69 @@ msgid ""
 "\n"
 "The K Desktop Environment"
 msgstr ""
+"Korn %s -- Sirtaj Singh Kang\n"
+"taj@kde.org, 1997\n"
+"\n"
+"L'Environnement de bureau KDE"
 
 #: korn.cpp:249
-#, fuzzy
 msgid "About kOrn"
 msgstr "A propos de KOrn"
 
 #: korn.cpp:257
 msgid "korn: no config set"
-msgstr ""
+msgstr "korn : aucune configuration"
 
 #: korn.cpp:258
 msgid ""
 "Would you like to restart korn with\n"
 "the automatically generated configuration?"
 msgstr ""
+"Voulez-vous redémarrer korn avec\n"
+"la configuration générée automatiquement ?"
 
 #: korn.cpp:261
 msgid "Yes, Restart"
-msgstr ""
+msgstr "Oui, Redémarrer"
 
 #: korn.cpp:261
 msgid "No, Exit"
 msgstr "Non , Quitter"
 
 #: kornopt.cpp:24
-#, fuzzy
 msgid "korn options"
-msgstr "Korn: Options"
+msgstr "options de korn"
 
 #: optdata.cpp:76
-#, fuzzy
 msgid "&New"
-msgstr "&Nouvelle boîte"
+msgstr "&Nouveau"
 
 #: optdata.cpp:89
 msgid "Boxes"
-msgstr ""
+msgstr "Boîtes aux lettres"
 
 #: optdata.cpp:118
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #: optdata.cpp:124
 msgid "Caption"
-msgstr ""
+msgstr "Légende"
 
 #: optdata.cpp:138
-#, fuzzy
 msgid "Path"
-msgstr "Chemin de la boîte aux lettres"
+msgstr "Emplacement"
 
 #: optdata.cpp:152
 msgid "Poll time (sec)"
-msgstr ""
+msgstr "Vérification (sec)"
 
 #: optdata.cpp:158
 msgid "Notify Command"
-msgstr ""
+msgstr "Commande de notification"
 
 #: optdata.cpp:180
 msgid "Click Command"
-msgstr ""
+msgstr "Commande après un clic"
 
-#~ msgid "Welcome to KOrn"
-#~ msgstr "Bienvenue dans KOrn"
 
-#~ msgid ""
-#~ "You do not appear to have used KOrn before. Would you like a basic "
-#~ "configuration created for you?"
-#~ msgstr ""
-#~ "Il apparaît que vous n'avez pas utiliser KOrn avant.Voulez-vous installer "
-#~ "une configuration de base?"
-
-#~ msgid "Can't find mailbox"
-#~ msgstr "Impossible de trouver la boîte aux lettres"
-
-#~ msgid ""
-#~ "Unable to find $MAIL environment variable. You'll have to configure the "
-#~ "mailboxes yourself."
-#~ msgstr ""
-#~ "Impossibilité de trouver la variable d'environnement $MAIL.Vous devrez "
-#~ "configurer vous-même vos boîtes aux lettres."
-
-#~ msgid "Select a mailbox type..."
-#~ msgstr "Sélectionner un type de boîte aux lettres..."
-
-#~ msgid "O&K"
-#~ msgstr "O&K"
-
-#~ msgid "Horizontal"
-#~ msgstr "Horizontal"
-
-#~ msgid "Vertical"
-#~ msgstr "Vertical"
-
-#~ msgid "&Delete Box"
-#~ msgstr "&Effacer la boîte"
-
-#~ msgid "Mailbox"
-#~ msgstr "Boîte aux lettres"
-
-#~ msgid "Server"
-#~ msgstr "Serveur"
-
-#~ msgid "Port"
-#~ msgstr "Port"
-
-#~ msgid "Username"
-#~ msgstr "Nom d'utilisateur"
-
-#~ msgid "Password"
-#~ msgstr "Mot de passe"
-
-#~ msgid "Save Password"
-#~ msgstr "Enregistrer le mot de passe"
