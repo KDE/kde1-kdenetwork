@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1998-11-23 01:56+0100\n"
+"POT-Creation-Date: 1998-12-02 01:55+0100\n"
 "PO-Revision-Date: 1998-11-28 08:55 +0100\n"
 "Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
 "Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
@@ -956,7 +956,7 @@ msgstr "Datei anhängen"
 msgid "Include File"
 msgstr "Datei einfügen"
 
-#: kmcomposewin.cpp:1239 kmreaderwin.cpp:728
+#: kmcomposewin.cpp:1239 kmreaderwin.cpp:736
 msgid "View..."
 msgstr "Ansehen..."
 
@@ -964,7 +964,7 @@ msgstr "Ansehen..."
 msgid "Save..."
 msgstr "Speichern..."
 
-#: kmcomposewin.cpp:1241 kmreaderwin.cpp:731
+#: kmcomposewin.cpp:1241 kmreaderwin.cpp:739
 msgid "Properties..."
 msgstr "Eigenschaften..."
 
@@ -972,7 +972,7 @@ msgstr "Eigenschaften..."
 msgid "Attach..."
 msgstr "Anhängen..."
 
-#: kmcomposewin.cpp:1287 kmreaderwin.cpp:773
+#: kmcomposewin.cpp:1287 kmreaderwin.cpp:781
 msgid "View Attachment: "
 msgstr "Anlage ansehen: "
 
@@ -1097,20 +1097,20 @@ msgstr "Warnung: Fehlerhafte Signatur von"
 msgid "unknown key ID"
 msgstr "Unbekannte Schlüssel-ID"
 
-#: kmreaderwin.cpp:692
+#: kmreaderwin.cpp:700
 msgid "Attachment: "
 msgstr "Anlage: "
 
-#: kmreaderwin.cpp:804
+#: kmreaderwin.cpp:812
 msgid "Could not create temporary file"
 msgstr "Kann temporäre Datei nicht anlegen"
 
-#: kmreaderwin.cpp:825
+#: kmreaderwin.cpp:833
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "Konnte temporäre Datei %s nicht speichern"
 
-#: kmreaderwin.cpp:854
+#: kmreaderwin.cpp:862
 msgid "Could not save file"
 msgstr "Konnte Datei nicht speichern"
 

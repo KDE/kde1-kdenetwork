@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE 1.0\n"
-"POT-Creation-Date: 1998-11-23 01:56+0100\n"
+"POT-Creation-Date: 1998-12-02 01:55+0100\n"
 "PO-Revision-Date: 1998-06-29 11:00+0200\n"
 "Last-Translator: Makbule SHAKALLA <bbm756@hun.edu.tr>\n"
 "Language-Team: Hacettepe Linux Users Group <hacettepe@linux.org.tr>\n"
@@ -971,7 +971,7 @@ msgstr "Dosya baðlama"
 msgid "Include File"
 msgstr "Dosya Ekle"
 
-#: kmcomposewin.cpp:1239 kmreaderwin.cpp:728
+#: kmcomposewin.cpp:1239 kmreaderwin.cpp:736
 msgid "View..."
 msgstr "Görünüm"
 
@@ -979,7 +979,7 @@ msgstr "Görünüm"
 msgid "Save..."
 msgstr "Kaydet..."
 
-#: kmcomposewin.cpp:1241 kmreaderwin.cpp:731
+#: kmcomposewin.cpp:1241 kmreaderwin.cpp:739
 msgid "Properties..."
 msgstr "Özellikler.."
 
@@ -987,7 +987,7 @@ msgstr "Özellikler.."
 msgid "Attach..."
 msgstr "Ýliþtir..."
 
-#: kmcomposewin.cpp:1287 kmreaderwin.cpp:773
+#: kmcomposewin.cpp:1287 kmreaderwin.cpp:781
 msgid "View Attachment: "
 msgstr "Ýliþiktekini göster:"
 
@@ -1109,20 +1109,20 @@ msgstr "Uyarý: Bozuk imza"
 msgid "unknown key ID"
 msgstr ""
 
-#: kmreaderwin.cpp:692
+#: kmreaderwin.cpp:700
 msgid "Attachment: "
 msgstr "Ýliþik: "
 
-#: kmreaderwin.cpp:804
+#: kmreaderwin.cpp:812
 msgid "Could not create temporary file"
 msgstr "Geçici dosya yaratýlamadý"
 
-#: kmreaderwin.cpp:825
+#: kmreaderwin.cpp:833
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "Geçici dosya %s kayýt edilemedi"
 
-#: kmreaderwin.cpp:854
+#: kmreaderwin.cpp:862
 msgid "Could not save file"
 msgstr "Dosya kayýt edilemedi"
 

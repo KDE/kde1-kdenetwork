@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KMail 0.7.9\n"
-"POT-Creation-Date: 1998-11-23 01:56+0100\n"
+"POT-Creation-Date: 1998-12-02 01:55+0100\n"
 "PO-Revision-Date: 1998-11-20 00:45+07:00\n"
 "Last-Translator: Const Kaplinsky <const@ce.cctpu.edu.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -964,7 +964,7 @@ msgstr "Подцепить файл"
 msgid "Include File"
 msgstr "Вставить файл"
 
-#: kmcomposewin.cpp:1239 kmreaderwin.cpp:728
+#: kmcomposewin.cpp:1239 kmreaderwin.cpp:736
 msgid "View..."
 msgstr "Просмотреть..."
 
@@ -972,7 +972,7 @@ msgstr "Просмотреть..."
 msgid "Save..."
 msgstr "Сохранить..."
 
-#: kmcomposewin.cpp:1241 kmreaderwin.cpp:731
+#: kmcomposewin.cpp:1241 kmreaderwin.cpp:739
 msgid "Properties..."
 msgstr "Свойства..."
 
@@ -980,7 +980,7 @@ msgstr "Свойства..."
 msgid "Attach..."
 msgstr "Подцепить..."
 
-#: kmcomposewin.cpp:1287 kmreaderwin.cpp:773
+#: kmcomposewin.cpp:1287 kmreaderwin.cpp:781
 msgid "View Attachment: "
 msgstr "Просмотр подцепления: "
 
@@ -1103,20 +1103,20 @@ msgstr "Предупреждение: Плохая подпись"
 msgid "unknown key ID"
 msgstr "неизвестный ID ключа"
 
-#: kmreaderwin.cpp:692
+#: kmreaderwin.cpp:700
 msgid "Attachment: "
 msgstr "Подцепление: "
 
-#: kmreaderwin.cpp:804
+#: kmreaderwin.cpp:812
 msgid "Could not create temporary file"
 msgstr "Ошибка создания временнного файла"
 
-#: kmreaderwin.cpp:825
+#: kmreaderwin.cpp:833
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "Ошибка сохранения временного файла %s"
 
-#: kmreaderwin.cpp:854
+#: kmreaderwin.cpp:862
 msgid "Could not save file"
 msgstr "Ошибка сохранения файла"
 

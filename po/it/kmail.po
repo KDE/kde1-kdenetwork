@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSIONPOT-Creation-Date: 1998-01-17 07:40+0100\n"
-"POT-Creation-Date: 1998-11-23 01:56+0100\n"
+"POT-Creation-Date: 1998-12-02 01:55+0100\n"
 "PO-Revision-Date: 1998-01-22 17:20+0100\n"
 "Last-Translator: Andrea Rizzi <BILIBAO@ouverture.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -971,7 +971,7 @@ msgstr "Allega File"
 msgid "Include File"
 msgstr "Inserisci File"
 
-#: kmcomposewin.cpp:1239 kmreaderwin.cpp:728
+#: kmcomposewin.cpp:1239 kmreaderwin.cpp:736
 msgid "View..."
 msgstr "Visualizza..."
 
@@ -979,7 +979,7 @@ msgstr "Visualizza..."
 msgid "Save..."
 msgstr "Salva..."
 
-#: kmcomposewin.cpp:1241 kmreaderwin.cpp:731
+#: kmcomposewin.cpp:1241 kmreaderwin.cpp:739
 msgid "Properties..."
 msgstr "Proprietà..."
 
@@ -987,7 +987,7 @@ msgstr "Proprietà..."
 msgid "Attach..."
 msgstr "Allega..."
 
-#: kmcomposewin.cpp:1287 kmreaderwin.cpp:773
+#: kmcomposewin.cpp:1287 kmreaderwin.cpp:781
 msgid "View Attachment: "
 msgstr "Visualizza Allegato"
 
@@ -1112,20 +1112,20 @@ msgstr "Attenzione: Firma errata da"
 msgid "unknown key ID"
 msgstr ""
 
-#: kmreaderwin.cpp:692
+#: kmreaderwin.cpp:700
 msgid "Attachment: "
 msgstr "Allegato:"
 
-#: kmreaderwin.cpp:804
+#: kmreaderwin.cpp:812
 msgid "Could not create temporary file"
 msgstr "Impossibile creare il file temporaneo"
 
-#: kmreaderwin.cpp:825
+#: kmreaderwin.cpp:833
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "Impossibile salvare il file temporaneo %s"
 
-#: kmreaderwin.cpp:854
+#: kmreaderwin.cpp:862
 msgid "Could not save file"
 msgstr "Impossibile salvare il file"
 

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail 0.4.4\n"
-"POT-Creation-Date: 1998-11-23 01:56+0100\n"
+"POT-Creation-Date: 1998-12-02 01:55+0100\n"
 "PO-Revision-Date: 1998-11-05 09:01+01:00\n"
 "Last-Translator: Miroslav Flídr <flidr@ky.zcu.cz>\n"
 "Language-Team: Czech <sc@li.org>\n"
@@ -964,7 +964,7 @@ msgstr "Pøilo¾it soubor"
 msgid "Include File"
 msgstr "Vlo¾it soubor"
 
-#: kmcomposewin.cpp:1239 kmreaderwin.cpp:728
+#: kmcomposewin.cpp:1239 kmreaderwin.cpp:736
 msgid "View..."
 msgstr "Pohled..."
 
@@ -972,7 +972,7 @@ msgstr "Pohled..."
 msgid "Save..."
 msgstr "Ulo¾it..."
 
-#: kmcomposewin.cpp:1241 kmreaderwin.cpp:731
+#: kmcomposewin.cpp:1241 kmreaderwin.cpp:739
 msgid "Properties..."
 msgstr "Vlastnosti..."
 
@@ -980,7 +980,7 @@ msgstr "Vlastnosti..."
 msgid "Attach..."
 msgstr "Pøilo¾it..."
 
-#: kmcomposewin.cpp:1287 kmreaderwin.cpp:773
+#: kmcomposewin.cpp:1287 kmreaderwin.cpp:781
 msgid "View Attachment: "
 msgstr "Zobrazit pøílohu: "
 
@@ -1104,20 +1104,20 @@ msgstr "Pozor: Vadný podpis od"
 msgid "unknown key ID"
 msgstr "neznámé ID klíèe"
 
-#: kmreaderwin.cpp:692
+#: kmreaderwin.cpp:700
 msgid "Attachment: "
 msgstr "Pøíloha: "
 
-#: kmreaderwin.cpp:804
+#: kmreaderwin.cpp:812
 msgid "Could not create temporary file"
 msgstr "Není mo¾né vytvoøit doèasný soubor"
 
-#: kmreaderwin.cpp:825
+#: kmreaderwin.cpp:833
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "Není mo¾né ulo¾it doèasný soubor %s"
 
-#: kmreaderwin.cpp:854
+#: kmreaderwin.cpp:862
 msgid "Could not save file"
 msgstr "Není mo¾né ulo¾it soubor"
 

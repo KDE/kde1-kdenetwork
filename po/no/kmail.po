@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE NETWORK/kmail\n"
-"POT-Creation-Date: 1998-11-23 01:56+0100\n"
+"POT-Creation-Date: 1998-12-02 01:55+0100\n"
 "PO-Revision-Date: 1998-03-18 22:17+0100\n"
 "Last-Translator: Hans Petter Bieker <zerium@webindex.no>\n"
 "Language-Team: no <LL@li.org>\n"
@@ -963,7 +963,7 @@ msgstr "Legg ved fil"
 msgid "Include File"
 msgstr "Inkluder fil"
 
-#: kmcomposewin.cpp:1239 kmreaderwin.cpp:728
+#: kmcomposewin.cpp:1239 kmreaderwin.cpp:736
 msgid "View..."
 msgstr "Se..."
 
@@ -971,7 +971,7 @@ msgstr "Se..."
 msgid "Save..."
 msgstr "Lagre..."
 
-#: kmcomposewin.cpp:1241 kmreaderwin.cpp:731
+#: kmcomposewin.cpp:1241 kmreaderwin.cpp:739
 msgid "Properties..."
 msgstr "Egenskaper..."
 
@@ -979,7 +979,7 @@ msgstr "Egenskaper..."
 msgid "Attach..."
 msgstr "Legg til..."
 
-#: kmcomposewin.cpp:1287 kmreaderwin.cpp:773
+#: kmcomposewin.cpp:1287 kmreaderwin.cpp:781
 msgid "View Attachment: "
 msgstr "Se på vedlegg: "
 
@@ -1102,20 +1102,20 @@ msgstr "Advarsel: Feil signatur fra"
 msgid "unknown key ID"
 msgstr "ukjent nøkkel-ID"
 
-#: kmreaderwin.cpp:692
+#: kmreaderwin.cpp:700
 msgid "Attachment: "
 msgstr "Vedlegg: "
 
-#: kmreaderwin.cpp:804
+#: kmreaderwin.cpp:812
 msgid "Could not create temporary file"
 msgstr "Kunne ikke lage temporær fil"
 
-#: kmreaderwin.cpp:825
+#: kmreaderwin.cpp:833
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "Kunne ikke lagre temporær fil %s"
 
-#: kmreaderwin.cpp:854
+#: kmreaderwin.cpp:862
 msgid "Could not save file"
 msgstr "Kunne ikke lagre fil"
 
