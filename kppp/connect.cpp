@@ -390,6 +390,8 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
 
 	if(stricmp(gpppdata.script(scriptindex), "password") == 0) {
 	  gpppdata.setPassword(scanvar.data());
+	  if(gpppdata.storePassword())
+	    gpppdata.setStoredPassword(scanvar.data());
 	  firstrunPW = true;
 	}
 
@@ -1512,6 +1514,7 @@ void auto_hostname(){
 
       new_hostname=hostname_entry->h_name;
       new_hostname.remove(0,dot+1);
+
       add_domain(new_hostname);
     }
   }
