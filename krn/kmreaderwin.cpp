@@ -530,6 +530,7 @@ const QString KMReaderWin::strToHtml(const QString aStr, bool aDecodeQP,
       htmlStr += str;
       htmlStr += "</A>";
     }
+/*
     else if (ch=='@')
     {
       for (i=0; *pos && (isalnum(*pos) || *pos=='@' || *pos=='.' ||
@@ -558,7 +559,7 @@ const QString KMReaderWin::strToHtml(const QString aStr, bool aDecodeQP,
       else htmlStr += iStr;
       iStr = "";
     }
-
+*/
     else htmlStr += ch;
   }
 
