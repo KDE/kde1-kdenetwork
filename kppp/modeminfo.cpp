@@ -51,8 +51,7 @@ ModemTransfer::ModemTransfer(QWidget *parent=0, const char *name=0)
   
   progressBar = new KProgress(0, 8, 0, KProgress::Horizontal, this, "bar");
   progressBar->setBarStyle(KProgress::Blocked);
-  progressBar->setFixedHeight(progressBar->sizeHint().height());
-  tl->addWidget(progressBar);
+  //progressBar->setFixedHeight(progressBar->sizeHint().height());
 
   statusBar = new QLabel(this,"sBar");
   statusBar->setFrameStyle(QFrame::Panel|QFrame::Sunken);
@@ -70,6 +69,8 @@ ModemTransfer::ModemTransfer(QWidget *parent=0, const char *name=0)
 
   // set original text
   statusBar->setText(klocale->translate("Looking for Modem ..."));
+  progressBar->setFixedHeight(statusBar->sizeHint().height());
+  tl->addWidget(progressBar);
   tl->addWidget(statusBar);
 
   cancel = new QPushButton(klocale->translate("Cancel"), this);
