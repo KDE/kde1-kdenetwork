@@ -35,14 +35,14 @@ findArtDlg::findArtDlg (QWidget* parent,const char* name):Inherited( parent, nam
     l->newLine();
 
     QStrList *fields=new QStrList;
-    fields->append( "Subject" );
     fields->append( "Sender" );
-    fields->append( "Cached Article" );
-    fields->append( "Article" );
+    fields->append( "Subject" );
     fields->append( "Cached Header" );
-    fields->append( "Header" );
     fields->append( "Cached Body" );
+    fields->append( "Cached Message" );
+    fields->append( "Header" );
     fields->append( "Body" );
+    fields->append( "Message" );
     field=(QComboBox *)(l->addComboBox("field",fields)->widget);
     delete fields;
 

@@ -32,6 +32,7 @@
 #include "kiconloader.h"
 
 class KMReaderWin;
+class KSlider;
 
 class Artdlg : public KTopLevelWidget 
 {
@@ -84,8 +85,9 @@ private:
     QPopupMenu *options;
     KToolBar *tool;
     KPanner *panner;
-    QGridLayout *gl;
+    QVBoxLayout *gl;
     KStatusBar *status;
+    KSlider *minScore;
     bool showlocked;
     bool showcached;
     QStrList IDList;

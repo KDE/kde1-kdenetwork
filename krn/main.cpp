@@ -69,8 +69,8 @@ KBusyPtr *kbp;
 KMAddrBook *addrBook;
 QDict <char> unreadDict(17,TRUE);
 
-QDict <Rule> ruleDict();
-KSimpleConfig *ruleFile;
+QList <Rule> ruleList;
+KSimpleConfig *ruleFile=0;
 
 QString krnpath,cachepath,artinfopath,groupinfopath,pixpath,dbasepath,outpath;
 
@@ -78,6 +78,7 @@ KDecode *decoder;
 
 GDBM_FILE artdb;
 GDBM_FILE old_artdb;
+GDBM_FILE scoredb;
 
 void checkConf();
 void expireCache();
@@ -172,6 +173,8 @@ int main( int argc, char **argv )
     artdb=gdbm_open(artinfopath.data(),0,GDBM_WRCREAT | GDBM_FAST,448,0);
     artinfopath=krnpath+"/old_artinfo.db";
     old_artdb=gdbm_open(artinfopath.data(),0,GDBM_WRCREAT | GDBM_FAST,448,0);
+    artinfopath=krnpath+"/scores.db";
+    scoredb=gdbm_open(artinfopath.data(),0,GDBM_WRCREAT | GDBM_FAST,448,0);
 
     // Fill the unreadDict
     datum key=gdbm_firstkey ( artdb );
@@ -186,6 +189,7 @@ int main( int argc, char **argv )
 
     // Load the rules
     ruleFile=new KSimpleConfig(krnpath+"/rules");
+    Rule::updateGlobals();
     
     Groupdlg k;
     main_widget = &k;

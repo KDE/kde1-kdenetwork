@@ -31,6 +31,7 @@
 
 #include <kapp.h>
 #include <kfm.h>
+#include <kslider.h>
 
 #include <kmsgbox.h>
 #include <kkeyconf.h>
@@ -260,8 +261,8 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     panner->setSeparator(50);
     setView (panner);
     
-    gl = new QGridLayout( panner->child0(), 1, 1 );
-    list=new KTabListBox (panner->child0(),"",4);
+    gl = new QVBoxLayout( panner->child0() );
+    list=new KTabListBox (panner->child0(),"",5);
     list->clearTableFlags(Tbl_hScrollBar);
     list->clearTableFlags(Tbl_autoHScrollBar);
     list->setTableFlags(Tbl_autoVScrollBar);
@@ -270,7 +271,8 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     list->setColumn(0, klocale->translate("Sender"), 150);
     list->setColumn(1, klocale->translate("Date"), 75);
     list->setColumn(2, klocale->translate("Lines"), 50);
-    list->setColumn(3, klocale->translate("Subject"), 50,KTabListBox::MixedColumn);
+    list->setColumn(3, klocale->translate("Score"), 50);
+    list->setColumn(4, klocale->translate("Subject"), 50,KTabListBox::MixedColumn);
     
     list->dict().insert("N",new QPixmap(kapp->getIconLoader()->loadIcon("green-bullet.xpm")));  //Unread message
     list->dict().insert("R",new QPixmap(kapp->getIconLoader()->loadIcon("red-bullet.xpm")));    //Read message
@@ -279,8 +281,17 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     list->dict().insert("L",new QPixmap(kapp->getIconLoader()->loadIcon("locked.xpm")));    //Read message
     
     list->setTabWidth(25);
+
+    minScore=new KSlider(KSlider::Horizontal,panner->child0());
+    minScore->setRange(-25000,25000);
+    minScore->setSteps(10,1000);
+    minScore->setFixedHeight(minScore->height());
+    minScore->setTracking(false);
+
+    connect (minScore,SIGNAL(valueChanged(int)),SLOT(fillTree()));
     
-    gl->addWidget( list, 0, 0 );
+    gl->addWidget( list, 1);
+    gl->addWidget( minScore, 0);
     connect (list,SIGNAL(highlighted(int,int)),this,SLOT(loadArt(int,int)));
     connect (list,SIGNAL(midClick(int,int)),this,SLOT(markReadArt(int,int)));
     connect (list,SIGNAL(popupMenu(int,int)),this,SLOT(popupMenu(int,int)));
@@ -290,10 +301,10 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     delete (filter->pop);
     filter->pop=article;
     
-    gl = new QGridLayout( panner->child1(), 1, 1 ); 
+    gl = new QVBoxLayout( panner->child1());
     messwin=new KMReaderWin(panner->child1(),"messwin");
     messwin->setMsg(0);
-    gl->addWidget( messwin, 0, 0 );
+    gl->addWidget( messwin, 1);
     QObject::connect(messwin,SIGNAL(urlClicked(const char *,int)),this,SLOT(openURL(const char*)));
     
     RmbPop *filter2=new RmbPop(messwin);
@@ -407,6 +418,8 @@ void Artdlg::fillTree ()
 {
     group->getList();
     ArticleList artList;
+
+    int minCoolness=minScore->value();
     
     //save current ID if there is one
     char *currArt=0;
@@ -449,6 +462,8 @@ void Artdlg::fillTree ()
     int i=0;
     for (iter=artList.first();iter!=0;iter=artList.next(),i++)
     {
+        if (iter->score()<minCoolness)
+            continue;
         QString formatted;
         iter->formHeader(&formatted);
         list->insertItem (formatted.data());
@@ -578,6 +593,7 @@ bool Artdlg::actions (int action)
             }
             qApp->restoreOverrideCursor ();
             break;
+            Rule::updateGlobals();
         }
     case CONFIG_SORTING:
         {
@@ -1238,7 +1254,7 @@ void Artdlg::decArt (int index,int)
     {
         if (!s->isEmpty())
         {
-			QString temp( cachepath+"/"+art.ID+".body" );
+            QString temp( cachepath+"/"+art.ID+".body" );
             decoder->load ( temp.data());
             art.setAvailable(true);
         }
@@ -1448,6 +1464,11 @@ void Artdlg::sortHeaders(int column)
             break;
         }
     case 3:
+        {
+            key1=KEY_SCORE;
+            break;
+        }
+    case 4:
         {
             key1=KEY_SUBJECT;
             break;

@@ -1,10 +1,10 @@
 #include "rules.h"
 #include "NNTP.h"
 
-#include <qdict.h>
+#include <qlist.h>
 #include <ksimpleconfig.h>
 
-extern QDict <Rule> ruleDict;
+extern QList <Rule> ruleList;
 extern KSimpleConfig *ruleFile;
 
 
@@ -65,9 +65,7 @@ bool Rule::match(const Article art,NNTP *server)
     bool matches=false;
     if (server)
         server->getMissingParts((MessageParts)missingParts(),art.ID);
-
-    debug ("missingparts-->%d",missingParts());
-
+    
     if (field==Subject)
     {
         if (regex.match(art.Subject.data())>-1)
@@ -82,6 +80,10 @@ bool Rule::match(const Article art,NNTP *server)
             matches=true;
         }
     }
+
+    if (!server)
+        return matches;
+    
     else if ((field==Header && (server->isCached(art.ID)&PART_HEAD)) ||
             (field==Header2))
     {
@@ -144,3 +146,16 @@ void Rule::save(const char *name)
     ruleFile->sync();
 }
 
+void Rule::updateGlobals()
+{
+    ruleList.clear();
+    ruleFile->setGroup("Index");
+    QStrList names;
+    ruleFile->readListEntry("RuleNames",names);
+    for (char *iter=names.first();iter!=0;iter=names.next())
+    {
+        Rule *r=new Rule(0,0,Rule::Sender,false,false);
+        r->load(iter);
+        ruleList.append(r);
+    }
+}

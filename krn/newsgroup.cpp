@@ -37,8 +37,12 @@ extern QString krnpath,cachepath,artinfopath,groupinfopath;
 
 extern GDBM_FILE artdb;
 extern GDBM_FILE old_artdb;
+extern GDBM_FILE scoredb;
 
 extern QDict <char> unreadDict;
+
+extern QList <Rule> ruleList;
+
 
 ////////////////////////////////////////////////////////////////////
 // Article class. Represents an article
@@ -47,7 +51,6 @@ extern QDict <char> unreadDict;
 
 Article::Article (const char *_ID)
 {
-    scored=false;
     lastScore=0;
     isread=false;
     isavail=true;
@@ -65,7 +68,6 @@ Article::Article (const char *_ID)
 
 Article::Article(void)
 {
-    scored=false;
     lastScore=0;
     isread=false;
     isavail=true;
@@ -152,7 +154,10 @@ void Article::formHeader(QString *s)
     s->append(Lines);
     s->append(" ");
     s->append("\n");
-    
+
+    tempbuf.setNum(score());
+    s->append(tempbuf);
+    s->append("\n");
     
     for (int i=0;i<threadDepth;i++)
         s->append("\t");
@@ -298,13 +303,43 @@ void Article::load()
 
 int Article::score()
 {
-    return lastScore;
+    datum key;
+    datum content;
+    int r=0;
+    
+    key.dptr=ID.data();
+    key.dsize=ID.length() + 1;
+    
+    if (!gdbm_exists(scoredb,key))
+        reScore(ruleList);
+    content=gdbm_fetch(scoredb,key);
+    r=atoi(content.dptr);
+    free (content.dptr);
+    return r;
 }
 
 void Article::reScore(RuleList rules)
 {
-    scored=true;
-    lastScore=100;
+    QString s;
+    int sc=0;
+    for (Rule *rule=rules.first();rule!=0;rule=rules.next())
+    {
+        if (rule->match(*this,0))
+        {
+            sc+=rule->value;
+        }
+    }
+
+    s.setNum(sc);
+    
+    datum key;
+    datum content;
+    
+    key.dptr=ID.data();
+    key.dsize=ID.length() + 1;
+    content.dptr=s.data();
+    content.dsize=s.length() + 1;
+    gdbm_store(scoredb,key,content,GDBM_REPLACE);
 }
 
 void Article::setRead(bool b)
@@ -710,6 +745,24 @@ int compareArticles (Article *a1,Article *a2, int key)
                 break;
             }
             if (t2>t1)
+            {
+                i=1;
+                break;
+            }
+            break;
+        }
+    case KEY_SCORE:
+        {
+            int s1=0;
+            int s2=0;
+            s1=a1->score();
+            s2=a2->score();
+            if (s1<s2)
+            {
+                i=-1;
+                break;
+            }
+            if (s2>s1)
             {
                 i=1;
                 break;

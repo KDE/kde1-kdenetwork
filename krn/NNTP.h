@@ -100,7 +100,6 @@ public:
     
 private:
     int lastScore;
-    bool scored;
     bool isread;
     bool isavail;
     bool ismarked;

@@ -15,12 +15,14 @@
 #include "typelayout.h"
 #include "tlform.h"
 #include "asker.h"
+#include "rules.h"
 
 
 #include "rulesDlg.h"
 #include "rulesDlg.moc"
 
 extern KSimpleConfig *ruleFile;
+extern QList <Rule> ruleList;
 
 rulesDlg::rulesDlg():QDialog(0,0,true)
 {
@@ -105,10 +107,14 @@ rulesDlg::rulesDlg():QDialog(0,0,true)
     l->newLine();
 
     QStrList *fields=new QStrList;
-    fields->append( "Subject" );
     fields->append( "Sender" );
+    fields->append( "Subject" );
+    fields->append( "Cached Header" );
     fields->append( "Cached Body" );
+    fields->append( "Cached Message" );
+    fields->append( "Header" );
     fields->append( "Body" );
+    fields->append( "Message" );
     l->addComboBox("field",fields);
     l->setAlign("field",AlignLeft|AlignRight);
     delete fields;

@@ -17,6 +17,7 @@ public:
     Rule(const char *name=0,const char *expr=0,const char *field=0,
          bool casesen=false,bool wildmode=false,int value=0);
     ~Rule();
+    static void updateGlobals();
 
     void load(const char *name);
     void save(const char *name);
