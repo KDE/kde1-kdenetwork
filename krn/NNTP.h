@@ -18,9 +18,13 @@
 #ifndef NNTP_H
 #define NNTP_H
 
+
 #include <stdio.h>
 
+
+#include "rules.h"
 #include <qlist.h>
+
 #include <qstring.h>
 #include <qstrlist.h>
 #include <qdict.h>
@@ -36,9 +40,6 @@
 
 #include "kmmessage.h"
 
-class Rule;
-
-typedef QList <Rule> RuleList;
 
 //These MUST match the "allkeys" combobox in sortDlg.cpp
 #define KEY_SUBJECT 0

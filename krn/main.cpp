@@ -33,9 +33,8 @@
 #include <kstdaccel.h> 
 #include <kmsgbox.h>
 
+#include "rules.h"
 #include "asker.h"
-#include "groupdlg.h" 
-#include "NNTP.h"
 #include "kdecode.h"
 #include "krnsender.h"
 #include "kmidentity.h"
@@ -43,7 +42,8 @@
 #include "kmmessage.h"
 #include "kmaddrbook.h"
 #include "kfileio.h"
-#include "rules.h"
+#include "groupdlg.h" 
+#include "NNTP.h"
 #include <mimelib/mimepp.h>
 
 #include <gdbm.h>
