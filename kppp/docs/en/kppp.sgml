@@ -7,8 +7,8 @@
 
 <title>The <em/kppp/ Handbook
 <author>Bernd Johannes Wuebben, <tt/wuebben@kde.org/
-<date>Version 1.5.43, February 2, 1999
-<abstract>This Handbook describes <em/kppp/ Version 1.5.37
+<date>Version 1.6.2, February 5, 1999
+<abstract>This Handbook describes <em/kppp/ Version 1.6.2
 
 <!-- Table of contents -->
 <toc>
@@ -65,6 +65,8 @@ and other contributions.
 <item><url url="mailto:MABrown@etcconnect.com" name="Martin A. Brown"> for
 proofreading some English text in the program
 <item><url name="Martin Häfner" url="mailto:mh@ap-dec717c.physik.uni-karlsruhe.de"> for the section on <ref id="cb" name="callback">
+<item><url name="Olaf Kirch" url="mailto:okir@caldera.de"> for the introduction
+to the mysteries of file descriptor passing.
 </itemize>
 <p>
 
@@ -1245,14 +1247,14 @@ of your external co-workers, setting up a callback server could be your first
 choice. Think about someone calling the number of your dial-in server and
 cracking a password? Why do you maintain a firewall for your internet
 connection then? Callback software generally asks you for your name and 
-looks up the number to call back from a certain database. Therefore, the 
+looks up the number to call back from a database. Therefore, the 
 number should be stored on the server. After authentication the server will 
 hang up the line and call you back immediately on the number chosen. 
 The client picks up the phone line and continues the dial-in as if
-nothing certain happened. The server will ask for username and password,
+nothing happened. The server will ask for username and password,
 then the connection is established and the pppd could be started. Now,
-how can I tell the client to pick up the phone? Do I need a certain getty
-program like mgetty? Well, the answer is "NO"! You do not need a certain
+how can I tell the client to pick up the phone? Do I need a
+program like mgetty? Well, the answer is "NO"! You do not need a special
 client program. Generally spoken, all clients can be used for callback 
 connections. You can even use an ordinary terminal program like minicom
 to connect to a callback server. The only thing you have to do is to tell
@@ -1263,13 +1265,13 @@ detected by the modem. This is done by using a certain modem command:<p>
 
 <P>
 This means that the modem will pick up the phone after one <tt/RING/.
-Remember, this is done without certain client software interaction. 
-As a lot of other client programs 
+Remember, this is done without any client software interaction. 
+Like a lot of other client programs 
 <em/kppp/ checks if the connection is closed by the server and stops the current 
 session if a <tt/NO CARRIER/ is detected. And this it the next 
 problem:
 <tt/NO CARRIER/ is detected when the callback server hangs up the line after he
-knows on which number to call the client back. Some servers use a certain 
+knows on which number to call the client back. Some servers use a special 
 login program therefore. How can you solve that problem? 
 Tell your modem to show <em/carrier up/ all the time
 (which makes no problems if <em/the client/ hangs up the line) by using the 

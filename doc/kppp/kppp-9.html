@@ -43,14 +43,14 @@ of your external co-workers, setting up a callback server could be your first
 choice. Think about someone calling the number of your dial-in server and
 cracking a password? Why do you maintain a firewall for your internet
 connection then? Callback software generally asks you for your name and 
-looks up the number to call back from a certain database. Therefore, the 
+looks up the number to call back from a database. Therefore, the 
 number should be stored on the server. After authentication the server will 
 hang up the line and call you back immediately on the number chosen. 
 The client picks up the phone line and continues the dial-in as if
-nothing certain happened. The server will ask for username and password,
+nothing happened. The server will ask for username and password,
 then the connection is established and the pppd could be started. Now,
-how can I tell the client to pick up the phone? Do I need a certain getty
-program like mgetty? Well, the answer is "NO"! You do not need a certain
+how can I tell the client to pick up the phone? Do I need a
+program like mgetty? Well, the answer is "NO"! You do not need a special
 client program. Generally spoken, all clients can be used for callback 
 connections. You can even use an ordinary terminal program like minicom
 to connect to a callback server. The only thing you have to do is to tell
@@ -65,13 +65,13 @@ AT&amp;S0=1
 </CODE></BLOCKQUOTE>
 <P>
 <P>This means that the modem will pick up the phone after one <CODE>RING</CODE>.
-Remember, this is done without certain client software interaction. 
-As a lot of other client programs 
+Remember, this is done without any client software interaction. 
+Like a lot of other client programs 
 <EM>kppp</EM> checks if the connection is closed by the server and stops the current 
 session if a <CODE>NO CARRIER</CODE> is detected. And this it the next 
 problem:
 <CODE>NO CARRIER</CODE> is detected when the callback server hangs up the line after he
-knows on which number to call the client back. Some servers use a certain 
+knows on which number to call the client back. Some servers use a special 
 login program therefore. How can you solve that problem? 
 Tell your modem to show <EM>carrier up</EM> all the time
 (which makes no problems if <EM>the client</EM> hangs up the line) by using the 
