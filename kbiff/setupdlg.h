@@ -20,12 +20,15 @@
 #include <qcheckbox.h>
 #include <qpushbutton.h>
 #include <qcombobox.h>
-#include <qlistview.h>
+//#include <qlistview.h>
 #include <qdict.h>
 #include <qlist.h>
 
 #include <kiconloaderdialog.h>
 #include <kurl.h>
+
+class KTreeView;
+class KTreeViewItem;
 
 struct KBiffMailbox
 {
@@ -204,7 +207,8 @@ public slots:
 protected slots:
 	void slotDeleteMailbox();
 	void slotNewMailbox();
-	void slotMailboxSelected(QListViewItem *item);
+//	void slotMailboxSelected(QListViewItem *item);
+	void slotMailboxSelected(int index);
 
 	void protocolSelected(int protocol);
 	void browse();
@@ -216,7 +220,8 @@ protected:
 
 private:
 	QDict<KBiffMailbox> *mailboxHash;
-	QListViewItem       *oldItem;
+//	QListViewItem       *oldItem;
+	KTreeViewItem       *oldItem;
 
 	unsigned int port;
 	bool         preauth;
@@ -227,7 +232,8 @@ private:
 	QLineEdit   *editPassword;
 	QCheckBox   *checkStorePassword;
 	QPushButton *buttonBrowse;
-	QListView   *mailboxes;
+//	QListView   *mailboxes;
+	KTreeView   *mailboxes;
 };
 
 class KBiffAboutTab : public QWidget

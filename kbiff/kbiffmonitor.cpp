@@ -520,12 +520,11 @@ TRACEF("last_modified = %s", last_modified.toString().data());
 		mailState = NewMail;
 		lastRead  = last_read;
 		lastSize  = size;
+		newCount  = 1;
 
-		newCount = mboxMessages();
-TRACEF("new messages = %d\n", newCount);
 		// Let the world know of the new state
 		emit(signal_newMail());
-		emit(signal_newMail(newCount, mailbox));
+		emit(signal_newMail(1, mailbox));
 
 		return;
 	}

@@ -24,8 +24,7 @@
 #include <ktabctl.h>
 #include <ksimpleconfig.h>
 
-#include <qlistview.h> // KBiffMailboxTab
-#include <qheader.h>   // KBiffMailboxTab
+#include <ktreeview.h> // KBiffMailboxtab
 #include <qtooltip.h>  // KBiffMailboxTab
 
 #include <kfiledialog.h> // KBiffNewMailTab
@@ -930,27 +929,25 @@ TRACEINIT("KBiffMailboxTab::KBiffMailboxTab()");
 	QGridLayout *list_layout = new QGridLayout(2, 2);
 	top_layout->addLayout(list_layout);
 
-	mailboxes = new QListView(this);
-	mailboxes->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
-	mailboxes->addColumn(i18n("Mailbox:"));
-	mailboxes->header()->hide();
+	mailboxes = new KTreeView(this);
+	mailboxes->setIndentSpacing(0);
 
 	list_layout->addMultiCellWidget(mailboxes, 0, 0, 0, 1);
 	list_layout->setRowStretch(0, 1);
 
-	connect(mailboxes, SIGNAL(selectionChanged(QListViewItem *)),
-	                   SLOT(slotMailboxSelected(QListViewItem *)));
+	connect(mailboxes, SIGNAL(highlighted(int)),
+	                   SLOT(slotMailboxSelected(int)));
 
 	QPushButton *new_mailbox = new QPushButton(this);
 	new_mailbox->setPixmap(ICON("mailbox.xpm"));
-	new_mailbox->setFixedSize(33, 20);
+	new_mailbox->setFixedSize(35, 20);
 	connect(new_mailbox, SIGNAL(clicked()), SLOT(slotNewMailbox()));
 	QToolTip::add(new_mailbox, i18n("New Mailbox"));
 	list_layout->addWidget(new_mailbox, 1, 0); 
 
 	QPushButton *delete_mailbox = new QPushButton(this);
 	delete_mailbox->setPixmap(ICON("delete.xpm"));
-	delete_mailbox->setFixedSize(33, 20);
+	delete_mailbox->setFixedSize(35, 20);
 	connect(delete_mailbox, SIGNAL(clicked()), SLOT(slotDeleteMailbox()));
 	QToolTip::add(delete_mailbox, i18n("Delete Mailbox"));
 	list_layout->addWidget(delete_mailbox, 1, 1); 
@@ -1072,8 +1069,8 @@ TRACE("After clears");
 				mailbox->url.setPassword(password.data());
 			}
 
-			QListViewItem *item = new QListViewItem(mailboxes, key);
-			item->setPixmap(0, QPixmap(ICON("mailbox.xpm")));
+			KTreeViewItem *item = new KTreeViewItem(key, QPixmap(ICON("mailbox.xpm")));
+			mailboxes->insertItem(item);
 
 			mailboxHash->insert(key.data(), mailbox);
 		}
@@ -1085,12 +1082,11 @@ TRACE("After clears");
 		mailbox->url = defaultMailbox();
 		mailboxHash->insert("Default", mailbox);
 
-		QListViewItem *item = new QListViewItem(mailboxes, "Default");
-		item->setPixmap(0, QPixmap(ICON("mailbox.xpm")));
+		KTreeViewItem *item = new KTreeViewItem(i18n("Default"), QPixmap(ICON("mailbox.xpm")));
+		mailboxes->insertItem(item);
 	}
 
-	TRACEF("Selecting item: %s", mailboxes->firstChild()->text(0));
-	mailboxes->setSelected(mailboxes->firstChild(), true);
+	mailboxes->setCurrentItem(0);
 	delete config;
 }
 
@@ -1104,23 +1100,23 @@ TRACEINIT("KBiffMailboxTab::saveConfig()");
 
 	QStrList mailbox_list;
 
-	for (QListViewItem *item = mailboxes->firstChild();
+	for (KTreeViewItem *item = mailboxes->itemAt(0);
 	     item;
-		  item = item->nextSibling())
+		  item = item->getSibling())
 	{
 		KBiffMailbox *mailbox = new KBiffMailbox();
 
 		// if this mailbox is the current one, then use the current
 		// settings instead of the hash
-		if (item == mailboxes->currentItem())
+		if (item == mailboxes->getCurrentItem())
 		{
 			mailbox->store = checkStorePassword->isChecked();
 			mailbox->url   = getMailbox();
 
-			mailboxHash->replace(item->text(0), mailbox);
+			mailboxHash->replace(item->getText(), mailbox);
 		}
 
-		mailbox = mailboxHash->find(item->text(0));
+		mailbox = mailboxHash->find(item->getText());
 
 		QString password(scramble(mailbox->url.passwd()));
 		KURL url = mailbox->url;
@@ -1129,8 +1125,8 @@ TRACEINIT("KBiffMailboxTab::saveConfig()");
 		if (mailbox->store == false)
 			password = "";
 	
-TRACEF("mailbox: %s -> %s", item->text(0), url.url().data());
-		mailbox_list.append(item->text(0));
+TRACEF("mailbox: %s -> %s", item->getText().data(), url.url().data());
+		mailbox_list.append(item->getText());
 		mailbox_list.append(url.url());
 		mailbox_list.append(password);
 	}
@@ -1207,11 +1203,11 @@ const QList<KURL> KBiffMailboxTab::getMailboxList() const
 TRACEINIT("KBiffMailboxTab::getMailboxList()");	
 	QList<KURL> url_list;
 
-	for (QListViewItem *item = mailboxes->firstChild();
+	for (KTreeViewItem *item = mailboxes->itemAt(0);
 	     item;
-		  item = item->nextSibling())
+		  item = item->getSibling())
 	{
-		KBiffMailbox *mailbox = mailboxHash->find(item->text(0));
+		KBiffMailbox *mailbox = mailboxHash->find(item->getText());
 		KURL *url = new KURL(mailbox->url);
 		url_list.append(url);
 	}
@@ -1221,21 +1217,16 @@ TRACEINIT("KBiffMailboxTab::getMailboxList()");
 void KBiffMailboxTab::slotDeleteMailbox()
 {
 TRACEINIT("KBiffMailboxTab::slotDeleteMailbox()");
-	/* I can't believe QListView doesn't have a 'count' member! */
-	int count = 0;
-	for (QListViewItem *it = mailboxes->firstChild();
-	     it;
-		  it = it->nextSibling(), count++);
-	if (count == 1)
+	if (mailboxes->count() == 1)
 		return;
 
 	/* need some "Are you sure?" code here */
-	QListViewItem *item = mailboxes->currentItem();
+	KTreeViewItem *item = mailboxes->getCurrentItem();
 
-	mailboxHash->remove(item->text(0));
+	mailboxHash->remove(item->getText());
 	delete item;
 
-	mailboxes->setSelected(mailboxes->firstChild(), true);
+	mailboxes->setCurrentItem(0);
 }
 
 void KBiffMailboxTab::slotNewMailbox()
@@ -1252,27 +1243,30 @@ TRACEINIT("KBiffMailboxTab::slotNewMailbox()");
 		// continue only if we received a decent name
 		if (mailbox_name.isEmpty() == false)
 		{
-			QListViewItem *item = new QListViewItem(mailboxes, mailbox_name);
-			item->setPixmap(0, QPixmap(ICON("mailbox.xpm")));
+			KTreeViewItem *item = new KTreeViewItem(mailbox_name, QPixmap(ICON("mailbox.xpm")));
+			mailboxes->insertItem(item);
 
 			KBiffMailbox *mailbox = new KBiffMailbox();
 			mailbox->store = false;
 			mailbox->url   = defaultMailbox();
 
 			mailboxHash->insert(mailbox_name.data(), mailbox);
-			mailboxes->setSelected(item, true);
+			mailboxes->setCurrentItem(mailboxes->count()-1);
 		}
 	}
 }
 
-void KBiffMailboxTab::slotMailboxSelected(QListViewItem *item)
+//void KBiffMailboxTab::slotMailboxSelected(QListViewItem *item)
+void KBiffMailboxTab::slotMailboxSelected(int index)
 {
 TRACEINIT("KBiffMailboxTab::slotMailboxSelected()");
+	KTreeViewItem *item = mailboxes->itemAt(index);
+
 	KBiffMailbox *mailbox;
 	// if an "old" item exists, save the current info as it
-	if (oldItem && oldItem->text(0))
+	if (oldItem && oldItem->getText())
 	{
-		mailbox = mailboxHash->find(oldItem->text(0));
+		mailbox = mailboxHash->find(oldItem->getText());
 
 		if (mailbox)
 		{
@@ -1287,7 +1281,7 @@ TRACEINIT("KBiffMailboxTab::slotMailboxSelected()");
 		}
 	}
 
-	mailbox = mailboxHash->find(item->text(0));
+	mailbox = mailboxHash->find(item->getText());
 
 	if (mailbox)
 	{
@@ -1502,6 +1496,7 @@ KBiffNewDlg::KBiffNewDlg(QWidget* parent, const char* name)
 	: QDialog(parent, name, true, 0)
 {
 	QGridLayout *layout = new QGridLayout(this, 2, 2, 12, 5);
+	layout->activate();
 	
 	QLabel* label1 = new QLabel(i18n("New Name:"), this);
 	label1->setMinimumSize(label1->sizeHint());

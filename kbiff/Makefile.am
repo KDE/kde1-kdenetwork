@@ -11,7 +11,7 @@ DEFS = @DEFS@ -I. -I$(srcdir) -I.. -DDO_TRACE
 bin_PROGRAMS = 	kbiff
 
 # Which sources should be compiled for kbiff.
-kbiff_SOURCES	= setupdlg.cpp kbiff.cpp main.cpp kbiffmonitor.cpp notify.cpp Trace.cpp
+kbiff_SOURCES	= setupdlg.cpp kbiff.cpp main.cpp kbiffmonitor.cpp notify.cpp Trace.cpp ktreeview.cpp
 
 kbiff_METASOURCES = USE_AUTOMOC
 
@@ -23,7 +23,7 @@ kbiff_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 kbiff_LDADD   = -lkfile -lkfm -lkdeui -lkdecore -lmediatool -lqt -lX11 -lXext $(LIBSOCKET)
 
 # this option you can leave out. Just, if you use "make dist", you need it
-noinst_HEADERS = setupdlg.h kbiff.h kbiffmonitor.h notify.h Trace.h
+noinst_HEADERS = setupdlg.h kbiff.h kbiffmonitor.h notify.h Trace.h ktreeview.h
 
 # if you "make distclean", this files get removed. If you want to remove
 # them while "make clean", use CLEANFILES

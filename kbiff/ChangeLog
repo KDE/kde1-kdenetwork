@@ -1,3 +1,8 @@
+10-10-98 - Kurt Granroth
+   o Replaced QListView with KTreeView.  QListView isn't cool enough to
+	  require all kbiff users to upgrade to Qt 1.40.  Maybe after KDE 1.2
+	  is released, I'll put it back...
+
 10-06-98 - Kurt Granroth
 	o Added patch from Ian Denton to use POP3 UIDL to check number of new
 	  messages.  Doesn't quite work perfectly, but it's almost there!  Still
