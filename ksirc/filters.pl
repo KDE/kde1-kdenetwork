@@ -13,12 +13,13 @@ $#KSIRC_FILTER = 0;
 
 print "*** Loading filter parser...\n";
 
+$ksirc_dump = 0;
+
 sub hook_ksircfilter {
   my($i) = 0;
   for(; $i <= $#KSIRC_FILTER; $i++){
     if($_[0] =~ m/$KSIRC_FILTER[$i]{'SEARCH'}/){
        $_[0] =~ s/$KSIRC_FILTER[$i]{'FROM'}/$KSIRC_FILTER[$i]{'TO'}/ee;
-#       print "$i\n";
     }
   }
 }

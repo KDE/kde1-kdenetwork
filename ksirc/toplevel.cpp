@@ -366,6 +366,37 @@ void KSircTopLevel::sirc_line_return()
   if(s.length() == 0)
     return;
 
+
+  // 
+  // Lookup the nick completion
+  // Do this before we append the linefeed!!
+  //
+
+  int pos1 = 0, pos2 = -1;
+  
+  if(s.find(QRegExp("^[^ ]+: "), 0) != -1){
+    pos2 = s.find(": ", 0);
+    if(pos2 < 1){
+      cerr << "Evil string: " << s << endl;
+    }
+    else
+      s.replace(0, pos2, findNick(s.mid(0, pos2)));
+  }
+
+  while(s.find(" ::", pos2) > 0){
+    pos1 = s.find(" ::", 0);
+    pos2 = s.find(" ", pos1);
+    if(pos2 == -1)
+      pos2 = s.length();
+    if(pos2 - pos1 - 3 < 1){
+      cerr << "Evil string: " << s << endl;
+      break;
+    }
+    else
+      s.replace(pos1, pos2 - pos1, findNick(s.mid(pos1 + 3, pos2 - pos1 - 3)));
+  }
+
+
   s += '\n'; // Append a need carriage return :)
 
   /*
@@ -1072,4 +1103,21 @@ void KSircTopLevel::unHide()
   this->recreate(0, getWFlags(), mypoint, TRUE);
   this->show();
   linee->setFocus();  // Give SLE focus
+}
+
+QString KSircTopLevel::findNick(QString part)
+{
+  QStrList matches;
+  for(uint i=0; i < nicks->count(); i++){
+    if(strlen(nicks->text(i)) >= part.length()){
+      if(strnicmp(part, nicks->text(i), part.length()) == 0){
+	matches.append(nicks->text(i));
+      }
+    }
+  }
+  if(matches.count() > 0){
+    return matches.at(0);
+  }
+  return part;
+    
 }

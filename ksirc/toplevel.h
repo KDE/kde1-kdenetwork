@@ -99,6 +99,8 @@ protected:
    virtual void closeEvent(QCloseEvent *);
    virtual void resizeEvent(QResizeEvent *);
 
+   virtual QString findNick(QString);
+
 private:
   int sirc_stdin, sirc_stdout, sirc_stderr;
   char line_buf[1024];

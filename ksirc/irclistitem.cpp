@@ -122,9 +122,9 @@ void ircListItem::setupPainterText()
     uint i;
     int ig = 0;
     for(i = 0; i < text.length() ; i++){
-      if((text[i] == '!') || (text[i] == 0x03) &&
+      if((text[i] == '~') || (text[i] == 0x03) &&
 	 (((text[i+1] >= 0x30) && (text[i+1] <= 0x39)  ||
-	   (text[i] == '!') && ((text[i+1] >= 0x61) || (text[i+1] <= 0x7a))))){ // a->z
+	   (text[i] == '~') && ((text[i+1] >= 0x61) || (text[i+1] <= 0x7a))))){ // a->z
 	if((text[i+1] >= 0x30) && (text[i+1] <= 0x39)){
 	  i += 2; 
 	  ig += 2;
@@ -142,7 +142,7 @@ void ircListItem::setupPainterText()
 	  }
 	  i--; // Move back on since the i++ moves ahead one.
 	}
-	else if((text[i] == '!') && ((text[i+1] >= 0x61) || (text[i+1] <= 0x7a))){
+	else if((text[i] == '~') && ((text[i+1] >= 0x61) || (text[i+1] <= 0x7a))){
 	  i += 1;   // Implicit step forward in for loop
 	  ig += 2;
 	}
@@ -197,7 +197,7 @@ void ircListItem::colourDrawText(QPainter *p, int startx, int starty,
   buf[2] = 0;
 
   for(loc = 0; str[loc] != 0x00 ; loc++){
-    if(str[loc] == 0x03 || str[loc] == '!'){
+    if(str[loc] == 0x03 || str[loc] == '~'){
       i = loc;
       p->drawText(startx, starty, str + offset, i-offset);
       startx += p->fontMetrics().width(str + offset, i-offset);
@@ -248,7 +248,7 @@ void ircListItem::colourDrawText(QPainter *p, int startx, int starty,
 	p->setPen(*colour);
 	p->setBackgroundMode(TransparentMode);
       }
-      else if((str[i] == '!') && ((str[i+1] >= 0x61) || (str[i+1] <= 0x7a))){
+      else if((str[i] == '~') && ((str[i+1] >= 0x61) || (str[i+1] <= 0x7a))){
 	QFont fnt = p->font();
 	switch(str[i+1]){
 	case 'c':
@@ -273,6 +273,9 @@ void ircListItem::colourDrawText(QPainter *p, int startx, int starty,
 	  else
 	    fnt.setUnderline(TRUE);
 	  break;
+	default:
+	  i-=1;
+	  offset -= 1;
 	}
 	p->setFont(fnt);
 	i += 2;
