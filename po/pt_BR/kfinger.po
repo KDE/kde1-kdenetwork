@@ -9,34 +9,29 @@ msgstr ""
 "Files: finger.cpp kfinger.cpp\n"
 
 #: kfinger.C:29
-#, fuzzy
 msgid "F&inger Now"
-msgstr "Finger Agora"
+msgstr "F&inger Agora"
 
 #: kfinger.C:30
-#, fuzzy
 msgid "&Talk..."
-msgstr "Falar..."
+msgstr "&Falar..."
 
 #: kfinger.C:34
 msgid "Setup"
 msgstr "Configuração"
 
 #: kfinger.C:35
-#, fuzzy
 msgid "&Save Options"
-msgstr "Salvar Opções"
+msgstr "&Salvar Opções"
 
 #: kfinger.C:37
-#, fuzzy
 msgid ""
 "kfinger 0.8.0\n"
 "\n"
 "(c) Andrea Rizzi (rizzi@kde.org)"
 msgstr ""
-"Kfinger 0.3.2\n"
-"(c) por Andrea Rizzi\n"
-"rizzi@kde.org"
+"Kfinger 0.8.0\n"
+"(c) por Andrea Rizzi (rizzi@kde.org)"
 
 #: kfinger.C:46
 msgid "KDE finger utility"
@@ -60,7 +55,7 @@ msgstr "AutoFinger On/Off"
 
 #: kfinger.C:65
 msgid "Welcome to KDE Finger\n"
-msgstr ""
+msgstr "Bem-vindo ao Finger do KDE\n"
 
 #: kfinger.C:66
 msgid "Finger result"
@@ -73,17 +68,16 @@ msgstr "Erro no servidor: %s"
 
 #: kfinger.C:287
 #, c-format
-msgid "Finger  %s@%s   --   %s"
-msgstr ""
+msgid  "Finger  %s@%s   --   %s"
+msgstr "Finger  %s@%s   --   %s"
 
 #: kfinger.C:304
-#, fuzzy
 msgid ""
 "Kfinger 0.8.0\n"
 "(c) by Andrea Rizzi\n"
 "rizzi@kde.org"
 msgstr ""
-"Kfinger 0.3.2\n"
+"Kfinger 0.8.0\n"
 "(c) por Andrea Rizzi\n"
 "rizzi@kde.org"
 
@@ -207,48 +201,3 @@ msgstr "Salvar & Sair"
 #: kfinger.C:858
 msgid "Output parameters "
 msgstr "Parâmetros de saída "
-
-#~ msgid "Talk.."
-#~ msgstr "Falar..."
-
-#~ msgid ""
-#~ "Welcome to KDE Finger \n"
-#~ "program by A.Rizzi rizzi@kde.org\n"
-#~ "18/09/1997 \n"
-#~ msgstr ""
-#~ "Bem-vindo ao KDE Finger \n"
-#~ "por A.Rizzi rizzi@kde.org\n"
-#~ "18/09/1997 \n"
-
-#~ msgid "Finger result for : %s@%s"
-#~ msgstr "Resultado do Finger para: %s@%s"
-
-#~ msgid "Quit"
-#~ msgstr "Sair"
-
-#~ msgid "Help"
-#~ msgstr "Ajuda"
-
-#~ msgid "About"
-#~ msgstr "Sobre"
-
-#~ msgid "&File"
-#~ msgstr "&Arquivo"
-
-#~ msgid "&Help"
-#~ msgstr "A&juda"
-
-#~ msgid "Settings"
-#~ msgstr "Configurações"
-
-#~ msgid "&Remove"
-#~ msgstr "&Remover"
-
-#~ msgid "Time"
-#~ msgstr "Tempo"
-
-#~ msgid "Cancel"
-#~ msgstr "Cancelar"
-
-#~ msgid "Ok"
-#~ msgstr "Ok"
