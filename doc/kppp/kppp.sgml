@@ -544,7 +544,8 @@ be afraid though it is really easy. Don't forget to submit your newly created
 rules file to me. The newly created rules file can be checked for valid
 syntax with the -r rule_file command line option to <em/kppp/ and
 must be installed in <tt>&dollar{KDEDIR}/share/apps/kppp/Rules</tt> or in 
-<tt>&dollar{HOME}/.kde/share/apps/kppp/Rules</tt> before you will be able to select it on this
+<tt>&dollar{HOME}/.kde/share/apps/kppp/Rules</tt> before you will be able to
+select it in this
 dialog.
 </descrip>
 <p>
@@ -1168,10 +1169,12 @@ allowed to use <em/kppp/. There are two ways to accomplish this:
 Create a new group (you might want to name it "dialout" or
 similar), put every user that should be allowed to use <em/kppp/
 into that group and type:
+<tscreen>
 <verb>
-        chown root.dialout /usr/local/kde/bin/kppp
-        chmod 4750 /usr/local/kde/bin/kppp
+chown root.dialout /usr/local/kde/bin/kppp
+chmod 4750 /usr/local/kde/bin/kppp
 </verb>
+</tscreen>
 This assumes that KDE was installed in <tt>/usr/local/kde</tt>
 and your new group is named "dialout".
 
@@ -1182,16 +1185,18 @@ in this file are allowed to dial out. This file must be readable
 by every user (of course NOT writable). Only login names are
 recognised, thus you cannot use UID´s in this file. Here´s a
 short example:
+<tscreen>
 <verb>
-        # /etc/kppp.allow
-	# comment lines like this are ignored, 
-	# as well as empty lines
-        fred
-        karl
+# /etc/kppp.allow
+# comment lines like this are ignored, 
+# as well as empty lines
+fred
+karl
 
-        # I put myself in here :-)
-        mweilguni
+# I put myself in here :-)
+mweilguni
 </verb>
+</tscreen>
 In the example above only the users <it/fred/, <it/karl/ and
 <it/mweilguni/ can use <em/kppp/ to dial out, as well as every
 user with a UID of 0. So you don´t need to put <it/root/ in this

@@ -37,10 +37,12 @@ allowed to use <EM>kppp</EM>. There are two ways to accomplish this:
 <P>Create a new group (you might want to name it "dialout" or
 similar), put every user that should be allowed to use <EM>kppp</EM>
 into that group and type:
+<BLOCKQUOTE><CODE>
 <PRE>
-        chown root.dialout /usr/local/kde/bin/kppp
-        chmod 4750 /usr/local/kde/bin/kppp
+chown root.dialout /usr/local/kde/bin/kppp
+chmod 4750 /usr/local/kde/bin/kppp
 </PRE>
+</CODE></BLOCKQUOTE>
 
 This assumes that KDE was installed in <CODE>/usr/local/kde</CODE>
 and your new group is named "dialout".
@@ -53,16 +55,18 @@ in this file are allowed to dial out. This file must be readable
 by every user (of course NOT writable). Only login names are
 recognised, thus you cannot use UID´s in this file. Here´s a
 short example:
+<BLOCKQUOTE><CODE>
 <PRE>
-        # /etc/kppp.allow
-        # comment lines like this are ignored, 
-        # as well as empty lines
-        fred
-        karl
+# /etc/kppp.allow
+# comment lines like this are ignored, 
+# as well as empty lines
+fred
+karl
 
-        # I put myself in here :-)
-        mweilguni
+# I put myself in here :-)
+mweilguni
 </PRE>
+</CODE></BLOCKQUOTE>
 
 In the example above only the users <I>fred</I>, <I>karl</I> and
 <I>mweilguni</I> can use <EM>kppp</EM> to dial out, as well as every
