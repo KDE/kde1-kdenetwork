@@ -894,71 +894,70 @@ msgid "Error during PGP:"
 msgstr ""
 
 #: kmcomposewin.cpp:1178
-#, fuzzy
 msgid "Attach File"
-msgstr "©týl prílohy"
+msgstr "Pripoji» súbor"
 
 #: kmcomposewin.cpp:1200
 msgid "Include File"
-msgstr ""
+msgstr "Vlo¾i» súbor"
 
 #: kmcomposewin.cpp:1223 kmreaderwin.cpp:683
 msgid "View..."
-msgstr ""
+msgstr "Zobrazi»..."
 
 #: kmcomposewin.cpp:1224
 msgid "Save..."
-msgstr ""
+msgstr "Ulo¾i»..."
 
 #: kmcomposewin.cpp:1225 kmreaderwin.cpp:686
-#, fuzzy
 msgid "Properties..."
-msgstr "Triedenie ..."
+msgstr "Vlastnosti..."
 
 #: kmcomposewin.cpp:1229
 msgid "Attach..."
-msgstr ""
+msgstr "Pripoji»..."
 
 #: kmcomposewin.cpp:1271 kmreaderwin.cpp:728
-#, fuzzy
 msgid "View Attachment: "
-msgstr "©týl prílohy"
+msgstr "Zobrazi» prílohu: "
 
 #: kmcomposewin.cpp:1442 kpgp.cpp:357
 msgid ""
 "Sorry, but this feature\n"
 "is still missing"
 msgstr ""
+"Prepáète, ale táto vlastnos»\n"
+"e¹te stále chýba"
 
 #: kmcomposewin.cpp:1450
 msgid "unnamed"
-msgstr ""
+msgstr "nepomenovaný"
 
 #: kmcomposewin.cpp:1465
 msgid "To:"
-msgstr ""
+msgstr "Pre:"
 
 #: kmcomposewin.cpp:1469
-#, fuzzy
 msgid "Subject:"
-msgstr "Predmet"
+msgstr "Predmet:"
 
 #: kmcomposewin.cpp:1472
 msgid "Date:"
-msgstr ""
+msgstr "Dátum:"
 
 #: kmcomposewin.cpp:1549
 msgid "Choose Signature File"
-msgstr ""
+msgstr "Zvoli» súbor s podpisom"
 
 #: kmcomposewin.cpp:1579
 msgid "KMail: Spellcheck"
-msgstr ""
+msgstr "KMail: Kontrola pravopisu"
 
 #: kmcomposewin.cpp:1603
 msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
 msgstr ""
+"Chyba pri spú¹»aní KSpell. Prosím uistite sa, ¾e máte ISpell nakonfigurovaný."
 
 #: kmsender.cpp:108
 msgid ""
@@ -966,6 +965,9 @@ msgid ""
 "method in the settings\n"
 "and try again."
 msgstr ""
+"Prosím ¹pecifikujte metódu\n"
+"zaslania v nastavení\n"
+"a skúste znova."
 
 #: kmsender.cpp:114
 msgid ""
@@ -973,52 +975,54 @@ msgid ""
 "identity settings:\n"
 "user-name and email-address"
 msgstr ""
+"Prosím nastavte po¾adované polo¾ky v\n"
+"nastavení identity:\n"
+"meno u¾ívateµa a e-mailovú adresu"
 
 #: kmsender.cpp:139
 msgid "You must specify a receiver"
-msgstr ""
+msgstr "Musíte ¹pecifikova» adresáta"
 
 #: kmsender.cpp:150
 msgid "Cannot add message to outbox folder"
-msgstr ""
+msgstr "Nemô¾em prida» správu do prieèinku outbox"
 
 #: kmsender.cpp:173
 msgid "Sending still in progress"
-msgstr ""
+msgstr "Zasielanie stále prebieha"
 
 #: kmsender.cpp:225
 msgid "Initiating sender process..."
-msgstr ""
+msgstr "Iniciujem proces posielania..."
 
 #: kmsender.cpp:241
-#, fuzzy
 msgid "Sending message: "
-msgstr "Získavam správy z "
+msgstr "Posielam správu: "
 
 #: kmsender.cpp:269
-#, fuzzy
 msgid "Done sending messages."
-msgstr "Získavam správy z "
+msgstr "Posielanie správ hotové."
 
 #: kmsender.cpp:288
 msgid "Sending failed:"
-msgstr ""
+msgstr "Zaslanie zlyhalo:"
 
 #: kmsender.cpp:441
 msgid ""
 "Please specify a mailer program\n"
 "in the settings."
 msgstr ""
+"Prosím ¹pecifikujte mailovací program\n"
+"v nastavení."
 
 #: kmsender.cpp:481
 #, c-format
 msgid "Failed to execute mailer program %s"
-msgstr ""
+msgstr "Nemô¾em spusti» mailovací program %s"
 
 #: kmsender.cpp:569
-#, fuzzy
 msgid "connecting to server"
-msgstr "Pripojovanie k serveru"
+msgstr "pripájam sa k serveru"
 
 #: kmsender.cpp:574
 #, c-format
@@ -1027,19 +1031,21 @@ msgid ""
 "host %s for sending:\n"
 "%s"
 msgstr ""
+"Nemô¾em otvori» SMTP spojenie na\n"
+"%s pre zaslanie:\n"
+"%s"
 
 #: kmsender.cpp:603
 msgid "Cannot close SMTP connection."
-msgstr ""
+msgstr "Nemô¾em uzavrie» SMTP spojenie."
 
 #: kmsender.cpp:653
-#, fuzzy
 msgid "transmitting message"
-msgstr "Získavam správy z "
+msgstr "prená¹am správu"
 
 #: kmsender.cpp:687
 msgid "network error"
-msgstr ""
+msgstr "chyba siete"
 
 #: kmsender.cpp:689
 #, c-format
@@ -1049,11 +1055,15 @@ msgid ""
 "Response: %s\n"
 "Return code: %d"
 msgstr ""
+"Nastala SMTP chyba.\n"
+"Príkaz: %s\n"
+"Odpoveï: %s\n"
+"Návratový kód: %d"
 
 #: kmsender.cpp:704
 #, c-format
 msgid "Sending SMTP command: %s"
-msgstr ""
+msgstr "Posielam SMTP príkaz: %s"
 
 #: findArtDlg.cpp:22
 msgid "KRN - Article Searcher"
@@ -1069,7 +1079,7 @@ msgstr "V poli:"
 
 #: findArtDlg.cpp:53 rulesDlg.cpp:131
 msgid "Case Sensitive"
-msgstr ""
+msgstr "Rozli¹ova» veµké/malé"
 
 #: findArtDlg.cpp:56 rulesDlg.cpp:132
 msgid "Wildcard Mode"
@@ -1077,7 +1087,7 @@ msgstr "Mód \"divokých kariet\""
 
 #: findArtDlg.cpp:66 rulesDlg.cpp:144
 msgid "Done"
-msgstr ""
+msgstr "Hotovo"
 
 #: kmidentity.cpp:162
 #, c-format
@@ -1086,10 +1096,13 @@ msgid ""
 "%s\n"
 "%s"
 msgstr ""
+"Nemô¾em spusti» skript na signatúru\n"
+"%s\n"
+"%s"
 
 #: kfileio.cpp:26 kmaddrbook.cpp:159
 msgid "File I/O Error"
-msgstr ""
+msgstr "I/O Chyba"
 
 #: kfileio.cpp:47
 #, c-format
@@ -1097,6 +1110,8 @@ msgid ""
 "The specified file does not exist:\n"
 "%s"
 msgstr ""
+"©pecifikovaný súbor neexistuje:\n"
+"%s"
 
 #: kfileio.cpp:54
 #, c-format
@@ -1104,6 +1119,8 @@ msgid ""
 "This is a directory and not a file:\n"
 "%s"
 msgstr ""
+"Toto je prieèinok a nie súbor:\n"
+"%s"
 
 #: kfileio.cpp:61
 #, c-format
@@ -1111,6 +1128,8 @@ msgid ""
 "You do not have read permissions to the file:\n"
 "%s"
 msgstr ""
+"Nemáte právo na èítanie súboru:\n"
+"%s"
 
 #: kfileio.cpp:72 kmaddrbook.cpp:149
 #, c-format
@@ -1118,6 +1137,8 @@ msgid ""
 "Could not read file:\n"
 "%s"
 msgstr ""
+"Nemô¾em èíta» súbor:\n"
+"%s"
 
 #: kfileio.cpp:75 kmaddrbook.cpp:152
 #, c-format
@@ -1125,6 +1146,8 @@ msgid ""
 "Could not open file:\n"
 "%s"
 msgstr ""
+"Nemô¾em otvori» súbor:\n"
+"%s"
 
 #: kfileio.cpp:78
 #, c-format
@@ -1132,11 +1155,13 @@ msgid ""
 "Error while reading file:\n"
 "%s"
 msgstr ""
+"Chyba poèas èítania súboru:\n"
+"%s"
 
 #: kfileio.cpp:95
 #, c-format
 msgid "Could only read %u bytes of %u."
-msgstr ""
+msgstr "Podarilo sa mi preèíta» len %u bajtov z %u."
 
 #: kfileio.cpp:124
 #, c-format
@@ -1144,6 +1169,8 @@ msgid ""
 "File %s exists.\n"
 "Do you want to replace it ?"
 msgstr ""
+"Súbor %s existuje.\n"
+"Chcete ho nahradi» ?"
 
 #: kfileio.cpp:144
 #, c-format
@@ -1151,6 +1178,8 @@ msgid ""
 "Failed to make a backup copy of %s.\n"
 "Continue anyway ?"
 msgstr ""
+"Nepodarilo sa mi spravi» zálohu %s.\n"
+"Pokraèova» aj tak ?"
 
 #: kfileio.cpp:156 kfileio.cpp:174
 #, c-format
