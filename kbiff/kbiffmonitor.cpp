@@ -445,6 +445,7 @@ TRACEINIT("KBiffMonitor::determineState()");
 	QString *UIDL;
 	unsigned int messages = 0;
 
+TRACEF("uidl_list.count() = %d", uidl_list.count());
 	// if the uidl_list is empty then the number of messages = 0  
 	if (uidl_list.isEmpty())
 	{
@@ -863,6 +864,7 @@ TRACEINIT("KBiffPop::command()");
 	// if the command was UIDL then build up the newUidlList
 	if (line == "UIDL\r\n")
 	{
+		uidlList.clear();
 		for (response = readLine(); response.left(1) != ".";
 		     response = readLine())
 		{

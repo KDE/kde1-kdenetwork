@@ -1,3 +1,11 @@
+10-26-98 - Kurt Granroth
+   o Changed width of Advanced button so that certain translations will
+	  fit.
+
+10-24-98 - Kurt Granroth
+   o Fixed bug in POP3 code where it would *never* go back to "no mail"
+	  state if it ever received new mail.
+
 10-13-98 - Kurt Granroth
    o Hideously mangled KTreeView to look exactly like QListView... at least
 	  as far as kbiff is concerned.  It is *very* ugly.. but it works!  And

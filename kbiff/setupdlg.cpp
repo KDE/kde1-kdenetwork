@@ -1071,7 +1071,7 @@ TRACE("Set mailboxes");
 	checkStorePassword->setMinimumSize(checkStorePassword->sizeHint());
 
 	QPushButton *advanced_button = new QPushButton(i18n("Advanced"), this);
-	advanced_button->setMinimumSize(75, 25);
+	advanced_button->setMinimumSize(advanced_button->sizeHint().width(), 25);
 	connect(advanced_button, SIGNAL(clicked()), SLOT(advanced()));
 
 	grid->addWidget(protocol_label, 0, 1);
