@@ -48,6 +48,9 @@ public:
 
 class DwNntpClient : public DwProtocolClient {
 
+//This is just temporary
+friend class NNTP;
+
 public:
    
     DwNntpClient();
