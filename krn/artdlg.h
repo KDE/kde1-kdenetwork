@@ -64,7 +64,7 @@ private slots:
     void FindThis (const char *,const char *);
         
 signals:
-    void needConnection ( );
+    void needConnection ();
         
 private:
     NNTP *server;

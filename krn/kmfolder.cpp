@@ -19,7 +19,9 @@
 
 extern "C" 
 {
+#define _REGEX_RE_COMP
 #include <regex.h>
+#undef _REGEX_RE_COMP
 }
 
 #define MAX_LINE 4096

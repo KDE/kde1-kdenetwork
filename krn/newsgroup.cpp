@@ -253,7 +253,6 @@ NewsGroup::NewsGroup(const char *name)
     :QString(name)
 {
     isVisible=0;
-    isTagged=false;
     lastArticle=0;
 }
 
@@ -538,6 +537,7 @@ void ArticleList::thread(bool sortBySubject=false)
                 sortedThreads.insert (i,thread.current());
             else
                 sortedThreads.append (thread.current());
+            qApp->processEvents();
         }
         threads=sortedThreads;
     }

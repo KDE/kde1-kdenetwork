@@ -71,6 +71,7 @@ extern KMSender *msgSender;
 
 GroupList groups;
 GroupList subscr;
+GroupList tagged;
 
 bool checkPixmap(KTreeListItem *item,void *)
 {
@@ -80,14 +81,10 @@ bool checkPixmap(KTreeListItem *item,void *)
         item->setPixmap(&kapp->getIconLoader()->loadIcon("krnfolder.xpm"));
         return false;
     }
-    int i=groups.find(&NewsGroup(name));
-    if (i!=-1)
+    if (tagged.find(&NewsGroup(name))!=-1) //it's tagged
     {
-        if (groups.at(i)->isTagged)
-        {
-            item->setPixmap(&kapp->getIconLoader()->loadIcon("tagged.xpm"));
-            return false;
-        }
+        item->setPixmap(&kapp->getIconLoader()->loadIcon("tagged.xpm"));
+        return false;
     }
     if (subscr.find(&NewsGroup(name))!=-1) //it's subscribed
     {
@@ -260,7 +257,6 @@ void Groupdlg::openGroup (QString name)
         Artdlg *a = new Artdlg (groups.at(i),server);
         QObject::connect(a->messwin,SIGNAL(spawnGroup(QString)),this,SLOT(openGroup(QString)));
         QObject::connect(a,SIGNAL(needConnection()),this,SLOT(needsConnect()));
-        connect (server,SIGNAL(newStatus(char *)),a,SLOT(updateCounter(char *)));
     }
     else
     {
@@ -318,9 +314,6 @@ void Groupdlg::openGroup (int index)
                     //Add it as a child
                     if (gname.contains('.')==c)
                     {
-                        if (iter->isTagged)
-                            list->addChildItem(iter->data(),&kapp->getIconLoader()->loadIcon("tagged.xpm"),index);
-                        else
                             list->addChildItem(iter->data(),&kapp->getIconLoader()->loadIcon("followup.xpm"),index);
                     }
                     
@@ -335,10 +328,7 @@ void Groupdlg::openGroup (int index)
                             // It's new, so add it to the base list
                             // and insert it as a folder
                             bases.append(iter->data());
-                            if (iter->isTagged)
-                                list->addChildItem(iter->data(),&kapp->getIconLoader()->loadIcon("tagged.xpm"),index);
-                            else
-                                list->addChildItem(iter->data(),&kapp->getIconLoader()->loadIcon("krnfolder.xpm"),index);
+                            list->addChildItem(iter->data(),&kapp->getIconLoader()->loadIcon("krnfolder.xpm"),index);
                         }
                         nextdot[0]=tc;
                     }
@@ -398,10 +388,14 @@ void Groupdlg::subscribe (NewsGroup *group)
 
 void Groupdlg::tag (NewsGroup *group)
 {
-    if(group->isTagged)
-        group->isTagged=false;
+    if(tagged.find(group)>-1)
+    {
+        tagged.remove(group);
+    }
     else
-        group->isTagged=true;
+    {
+        tagged.append(group);
+    }
     list->forEveryVisibleItem(checkPixmap,NULL);
     list->repaint();
 }
@@ -871,32 +865,27 @@ bool Groupdlg::currentActions(int action)
     return success;
 }
 
-bool Groupdlg::taggedActions(int action)
-{
-    int i=0;
-    bool success=true;
-    QListIterator <NewsGroup> it(groups);
-    for (;it.current(); ++it)
-    {
-        i++;
-        if (it.current()->isTagged)
-        {
-            actions(action,it.current());
-        }
-    }
-    return success;
-}
-
-bool Groupdlg::subscrActions(int action)
+bool Groupdlg::listActions(int action ,GroupList _list)
 {
     bool success=true;
-    QListIterator <NewsGroup> it(subscr);
+    QListIterator <NewsGroup> it(_list);
     for (;it.current();++it)
     {
         actions(action,it.current());
     }
-    statusBar ()->changeItem ("Done", 2);
+    statusBar ()->changeItem ("Done.", 2);
     return success;
+}
+
+
+bool Groupdlg::taggedActions(int action)
+{
+    return listActions (action,tagged);
+}
+
+bool Groupdlg::subscrActions(int action)
+{
+    return listActions (action,subscr);
 }
 
 void Groupdlg::getArticles(NewsGroup *group)

@@ -553,6 +553,7 @@ QString *NNTP::article(char *id)
             unlink (p.data());
         }
     }
+    emit newStatus("Article Received");
     return data;
 }
 

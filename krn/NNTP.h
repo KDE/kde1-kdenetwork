@@ -118,9 +118,6 @@ public:
     //A pointer to the article window, or 0.
     //used to be boolean, that's why the name is weird.
     Artdlg *isVisible;
-    //Is it tagged?
-    bool isTagged;
-    
     //List of articles in the newsgroup.
     ArticleList artList;
     void getList();

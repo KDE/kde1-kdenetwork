@@ -97,6 +97,8 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     showlocked=conf->readNumEntry("ShowLockedArticles");
     
     server = _server;
+    QObject::connect (server,SIGNAL(newStatus(char *)),
+                      this,SLOT(updateCounter(char *)));
     
     taggedArticle=new QPopupMenu;
     taggedArticle->insertItem(klocale->translate("Save"),SAVE_ARTICLE);
@@ -397,6 +399,8 @@ bool Artdlg::actions (int action)
 {
     setEnabled (false);
     acc->setEnabled(false);
+    list->setEnabled(false);
+    messwin->setEnabled(false);
     bool success=false;
     qApp->setOverrideCursor (waitCursor);
     switch (action)
@@ -437,7 +441,6 @@ bool Artdlg::actions (int action)
             {
                 i--;
                 list->setCurrentItem(i);
-                i=list->currentItem();
             }
             success=true;
             break;
@@ -449,7 +452,6 @@ bool Artdlg::actions (int action)
             {
                 i++;
                 list->setCurrentItem(i);
-                i=list->currentItem();
             }
             success=true;
             break;
@@ -648,12 +650,13 @@ bool Artdlg::actions (int action)
     qApp->restoreOverrideCursor ();
     setEnabled (true);
     acc->setEnabled(true);
+    list->setEnabled(true);
+    messwin->setEnabled(true);
     return success;
 }
 
 bool Artdlg::loadArt (QString id)
 {
-
     qApp->setOverrideCursor (waitCursor);
 
     int i=list->currentItem();
@@ -665,7 +668,11 @@ bool Artdlg::loadArt (QString id)
         for (;iter.current();++iter,++index)
         {
             if (iter.current()->ID==id)
+            {
                 list->setCurrentItem(index);
+                return true;
+                break;
+            }
         }
     }
     
