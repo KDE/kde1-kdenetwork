@@ -251,6 +251,35 @@ void KMReaderWin::parseMsg(KMMessage* aMsg)
   numParts = aMsg->numBodyParts();
   if (numParts > 0)
   {
+    // ---sven: handle multipart/alternative start ---
+    // This is for multipart/alternative messages WITHOUT attachments
+    // main header has type=multipart/alternative and one attachment is
+    // text/html
+    type = aMsg->typeStr();
+    if (type.find("multipart/alternative") != -1 && numParts == 2)
+    {
+      debug("Alternative message, type: %s",type.data());
+      //Now: Only two attachments one of them is html
+      for (i=0; i<2; i++)                   // count parts...
+      {
+        aMsg->bodyPart(i, &msgPart);        // set part...
+        subtype = msgPart.subtypeStr();     // get subtype...
+        if (stricmp(subtype, "html")==0)    // is it html?
+        {                                   // yes...
+          str = msgPart.bodyDecoded();      // decode it...
+          mViewer->write(str);              // write it...
+          return;                           // return, finshed.
+        }                                   // wasn't html ignore.
+      }                                     // end for.
+      // if we are here we didnt find any html part. Handle it normaly then
+    }
+    // This works only for alternative msgs without attachments. Alternative
+    // messages with attachments are broken with or without this. No need
+    // to bother with strib </body> or </html> here, because if any part
+    // follows this will not be shown correctly. You'll still be able to read the
+    // main message and deal with attachments. Nothing I can do now :-(
+    // ---sven: handle multipart/alternative end ---
+    
     for (i=0; i<numParts; i++)
     {
       aMsg->bodyPart(i, &msgPart);
