@@ -140,7 +140,7 @@ QString KFormatter::htmlPart(QList<int> partno)
     body->Parse();
     int pos;
 
-    QString baseType=body->Headers().ContentType().TypeStr().data();
+    QString baseType=body->Headers().ContentType().TypeStr().c_str();
     //Work-around for bug in mimelib
     pos=baseType.find('\n');
     debug("\\n at %d",pos);
@@ -592,6 +592,7 @@ QString KFormatter::image_jpegFormatter(QByteArray data, QList<int> partno)
 {
     QString part;
     QString name=tmpnam(NULL);
+    debug ("image at-->%s",name.data());
     QFile file(name);
     file.open(IO_WriteOnly);
     file.writeBlock(data.data(),data.size());

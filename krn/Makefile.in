@@ -126,7 +126,9 @@ METASRC =	mgroupdlg.cpp \
                 mNewMsgDlg.cpp\
                 mPartProps.cpp\
                 mfontsDlg.cpp\
-                ktablistbox.moc
+                ktablistbox.moc\
+                kmfolder.moc\
+                kmfoldernode.moc
 
 TARGET	=	krn
 
@@ -219,7 +221,7 @@ $(TARGET): $(METASRC) $(SRCMETA) $(OBJECTS)
 	$(CXX) $(OBJECTS) -o $(TARGET) $(LDFLAGS)
 
 clean:
-	rm -f *.o *.bak *~ *% #*
+	rm -f *.o *.moc *.bak *~ *% #*
 	rm -f $(METASRC) $(TARGET) 
 
 distclean: clean
