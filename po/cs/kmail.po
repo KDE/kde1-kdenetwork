@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail 0.4.4\n"
-"POT-Creation-Date: 1999-04-20 02:30+0200\n"
+"POT-Creation-Date: 1999-04-26 03:29+0200\n"
 "PO-Revision-Date: 1999-04-13 11:39+02:00\n"
 "Last-Translator: Miroslav Flídr <flidr@ky.zcu.cz>\n"
 "Language-Team: Czech <sc@li.org>\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: kmcomposewin.cpp:1516 kmmainwin.cpp:373 kpgp.cpp:546
+#: kmcomposewin.cpp:1516 kmmainwin.cpp:377 kpgp.cpp:546
 msgid ""
 "Sorry, but this feature\n"
 "is still missing"
@@ -21,31 +21,31 @@ msgstr ""
 "Je mi líto, ale tato funkce\n"
 "není je¹tì implementována"
 
-#: kmmainwin.cpp:382
+#: kmmainwin.cpp:386
 msgid "New Folder"
 msgstr "Nový poøadaè"
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:395 kmmainwin.cpp:429 main.cpp:484
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:399 kmmainwin.cpp:433 main.cpp:484
 msgid "KMail error"
 msgstr "Chyba KMailu"
 
-#: kmmainwin.cpp:396 kmmainwin.cpp:430
+#: kmmainwin.cpp:400 kmmainwin.cpp:434
 msgid "Already checking for mail!"
 msgstr "Ji¾ probíhá kontrola, zda nedo¹la nová po¹ta!"
 
-#: kmmainwin.cpp:406 kmmainwin.cpp:440
+#: kmmainwin.cpp:410 kmmainwin.cpp:444
 msgid "No new mail available"
 msgstr "Není k dispozici ¾ádná nová po¹ta"
 
-#: kmmainwin.cpp:470
+#: kmmainwin.cpp:474
 msgid "Modify Folder"
 msgstr "Zmìnit poøadaè"
 
-#: kmmainwin.cpp:493
+#: kmmainwin.cpp:497
 msgid "Moved all messages into trash"
 msgstr "V¹echny zprávy pøesunuty do ko¹e "
 
-#: kmmainwin.cpp:512
+#: kmmainwin.cpp:516
 msgid ""
 "Cannot remove a\n"
 "system folder."
@@ -53,7 +53,7 @@ msgstr ""
 "Není mo¾né odstranit\n"
 "systémový adresáø."
 
-#: kmmainwin.cpp:516
+#: kmmainwin.cpp:520
 #, c-format
 msgid ""
 "Are you sure you want to remove the folder\n"
@@ -62,295 +62,295 @@ msgstr ""
 "Jeste si jist(a), ¾e chcete odstranit poøadaè\n"
 "\"%s\" a tím zru¹it jeho obsah?"
 
-#: kmmainwin.cpp:519
+#: kmmainwin.cpp:523
 msgid "Confirmation"
 msgstr "Potvrzení"
 
-#: kmmainwin.cpp:579
+#: kmmainwin.cpp:583
 msgid "KMail notification!"
 msgstr "Upozornìní programu KMail!"
 
-#: kmmainwin.cpp:580
+#: kmmainwin.cpp:584
 msgid "Only messages in the outbox folder can be edited!"
 msgstr "Pouze zprávy ze slo¾ky outbox mohou být upravovány!"
 
-#: kmmainwin.cpp:615
+#: kmmainwin.cpp:619
 msgid "Message as Plain Text"
 msgstr "Prostá textová zpráva"
 
-#: kmmainwin.cpp:622 kmmainwin.cpp:642
+#: kmmainwin.cpp:626 kmmainwin.cpp:646
 msgid "Select Folder"
 msgstr "Vybrat poøadaè"
 
-#: kmmainwin.cpp:665
+#: kmmainwin.cpp:669
 msgid "Queued messages successfully sent."
 msgstr "Pozdr¾ené zprávy uspì¹nì odeslány."
 
-#: kmmainwin.cpp:667
+#: kmmainwin.cpp:671
 msgid "Failed to send (some) queued messages."
 msgstr "Nepodaøilo se odeslat (nìkteré) pozdr¾ené zprávy."
 
-#: kmmainwin.cpp:798
+#: kmmainwin.cpp:802
 msgid "Opening URL..."
 msgstr "Otevírání URL..."
 
-#: kmmainwin.cpp:853
+#: kmmainwin.cpp:857
 msgid "Address added to addressbook."
 msgstr "Adresa pøidána do adresáøe."
 
-#: kmmainwin.cpp:865
+#: kmmainwin.cpp:869
 msgid "Address copied to clipboard."
 msgstr "Adresa zkopírována do clipboardu."
 
-#: kmmainwin.cpp:870
+#: kmmainwin.cpp:874
 msgid "URL copied to clipboard."
 msgstr "URL zkopírováno do clipboardu."
 
-#: kmmainwin.cpp:897
+#: kmmainwin.cpp:901
 msgid "Send to..."
 msgstr "Poslat na..."
 
-#: kmmainwin.cpp:899
+#: kmmainwin.cpp:903
 msgid "Send reply to..."
 msgstr "Poslat odpovìï na ..."
 
-#: kmmainwin.cpp:901
+#: kmmainwin.cpp:905
 msgid "Forward to..."
 msgstr "Pøedat &dál na..."
 
-#: kmmainwin.cpp:904
+#: kmmainwin.cpp:908
 msgid "Add to addressbook"
 msgstr "Pøidat do adresáøe"
 
-#: kmmainwin.cpp:906 kmmainwin.cpp:915
+#: kmmainwin.cpp:910 kmmainwin.cpp:919
 msgid "Copy to clipboard"
 msgstr "Zkopírovat do clipboardu"
 
-#: kmmainwin.cpp:913
+#: kmmainwin.cpp:917
 msgid "Open URL..."
 msgstr "Otevøít URL..."
 
-#: kmheaders.cpp:984 kmmainwin.cpp:923 kmmainwin.cpp:1040
+#: kmheaders.cpp:1001 kmmainwin.cpp:927 kmmainwin.cpp:1044
 msgid "&Reply..."
 msgstr "&Odpovìdìt..."
 
-#: kmheaders.cpp:986 kmmainwin.cpp:925 kmmainwin.cpp:1042
+#: kmheaders.cpp:1003 kmmainwin.cpp:929 kmmainwin.cpp:1046
 msgid "Reply &All..."
 msgstr "Odpovìdìt &v¹em"
 
-#: kmheaders.cpp:988 kmmainwin.cpp:927 kmmainwin.cpp:1044
+#: kmheaders.cpp:1005 kmmainwin.cpp:931 kmmainwin.cpp:1048
 msgid "&Forward..."
 msgstr "Pøedat &dál..."
 
-#: kmheaders.cpp:991 kmmainwin.cpp:930 kmmainwin.cpp:1054
+#: kmheaders.cpp:1008 kmmainwin.cpp:934 kmmainwin.cpp:1058
 msgid "&Move..."
 msgstr "Pøesu&nout..."
 
-#: kmheaders.cpp:993 kmmainwin.cpp:932 kmmainwin.cpp:1056
+#: kmheaders.cpp:1010 kmmainwin.cpp:936 kmmainwin.cpp:1060
 msgid "&Copy..."
 msgstr "&Kopírovat..."
 
-#: kmmainwin.cpp:959
+#: kmmainwin.cpp:963
 msgid "New Composer"
 msgstr "Nový editor"
 
-#: kmcomposewin.cpp:451 kmmainwin.cpp:961
+#: kmcomposewin.cpp:451 kmmainwin.cpp:965
 msgid "New Mailreader"
 msgstr "Nový prohlí¾eè po¹ty"
 
-#: kmmainwin.cpp:964
+#: kmmainwin.cpp:968
 msgid "Save As..."
 msgstr "Ulo¾it jako..."
 
-#: kmmainwin.cpp:966
+#: kmmainwin.cpp:970
 msgid "Print..."
 msgstr "Tisknout..."
 
-#: kmmainwin.cpp:969
+#: kmmainwin.cpp:973
 msgid "Check Mail..."
 msgstr "Zkontrolovat po¹tu ..."
 
-#: kmmainwin.cpp:978
+#: kmmainwin.cpp:982
 msgid "Check Mail in..."
 msgstr "Zkontrolovat po¹tu v ..."
 
-#: kmmainwin.cpp:980
+#: kmmainwin.cpp:984
 msgid "Send Queued"
 msgstr "Poslat pozdr¾ené"
 
-#: kmmainwin.cpp:983
+#: kmmainwin.cpp:987
 msgid "&Settings..."
 msgstr "Na&stavení..."
 
-#: kmcomposewin.cpp:443 kmmainwin.cpp:985
+#: kmcomposewin.cpp:443 kmmainwin.cpp:989
 msgid "&Addressbook..."
 msgstr "&Adresáø ..."
 
-#: kmmainwin.cpp:987
+#: kmmainwin.cpp:991
 msgid "&Filter..."
 msgstr "&Filtr..."
 
-#: kmmainwin.cpp:1001
+#: kmmainwin.cpp:1005
 msgid "&Find..."
 msgstr "&Najít..."
 
-#: kmfoldertree.cpp:307 kmmainwin.cpp:1006
+#: kmfoldertree.cpp:307 kmmainwin.cpp:1010
 msgid "&Create..."
 msgstr "&Vytvoøit..."
 
-#: kmfoldertree.cpp:309 kmmainwin.cpp:1008
+#: kmfoldertree.cpp:309 kmmainwin.cpp:1012
 msgid "&Modify..."
 msgstr "Z&mìnit..."
 
-#: kmfoldertree.cpp:311 kmmainwin.cpp:1010
+#: kmfoldertree.cpp:311 kmmainwin.cpp:1014
 msgid "C&ompact"
 msgstr "K&omprimovat"
 
-#: kmfoldertree.cpp:314 kmmainwin.cpp:1013
+#: kmfoldertree.cpp:314 kmmainwin.cpp:1017
 msgid "&Empty"
 msgstr "Vy&prázdnit"
 
-#: kmfilterdlg.cpp:149 kmheaders.cpp:974 kmmainwin.cpp:1022
+#: kmfilterdlg.cpp:149 kmheaders.cpp:991 kmmainwin.cpp:1026
 msgid "New"
 msgstr "Nová"
 
-#: kmheaders.cpp:975 kmmainwin.cpp:1023
+#: kmheaders.cpp:992 kmmainwin.cpp:1027
 msgid "Unread"
 msgstr "Nepøeèteno"
 
-#: kmheaders.cpp:976 kmmainwin.cpp:1024
+#: kmheaders.cpp:993 kmmainwin.cpp:1028
 msgid "Read"
 msgstr "Pøeèteno"
 
-#: kmheaders.cpp:977 kmmainwin.cpp:1025
+#: kmheaders.cpp:994 kmmainwin.cpp:1029
 msgid "Replied"
 msgstr "Odpovìzeno"
 
-#: kmheaders.cpp:978 kmmainwin.cpp:1026
+#: kmheaders.cpp:995 kmmainwin.cpp:1030
 msgid "Queued"
 msgstr "Pozdr¾eno"
 
-#: kmheaders.cpp:979 kmmainwin.cpp:1027
+#: kmheaders.cpp:996 kmmainwin.cpp:1031
 msgid "Sent"
 msgstr "Poslat"
 
-#: kmmainwin.cpp:1031
+#: kmmainwin.cpp:1035
 msgid "&Next"
 msgstr "&Následující"
 
-#: kmmainwin.cpp:1033
+#: kmmainwin.cpp:1037
 msgid "Next unread"
 msgstr "Následující nepøeètený"
 
-#: kmmainwin.cpp:1035
+#: kmmainwin.cpp:1039
 msgid "&Previous"
 msgstr "&Pøedchozí"
 
-#: kmmainwin.cpp:1037
+#: kmmainwin.cpp:1041
 msgid "Previous unread"
 msgstr "Pøedchozí nepøeètený"
 
-#: kmmainwin.cpp:1047
+#: kmmainwin.cpp:1051
 msgid "Edi&t..."
 msgstr "Upravi&t..."
 
-#: kmmainwin.cpp:1050
+#: kmmainwin.cpp:1054
 msgid "&Set Status"
 msgstr "N&astavit stav"
 
-#: kmmainwin.cpp:1052
+#: kmmainwin.cpp:1056
 msgid "Mar&k all"
 msgstr "O&znaèit v¹e"
 
-#: kmmainwin.cpp:1061
+#: kmmainwin.cpp:1065
 msgid "Send again..."
 msgstr "Poslat znovu ..."
 
-#: kmmainwin.cpp:1063
+#: kmmainwin.cpp:1067
 msgid "Apply filters"
 msgstr "Aplikovat filtry"
 
-#: kmmainwin.cpp:1066
+#: kmmainwin.cpp:1070
 msgid "View Source..."
 msgstr "Zobrazit zdroj..."
 
-#: kmmainwin.cpp:1073
+#: kmmainwin.cpp:1077
 msgid "&Brief Headers"
 msgstr "S&truèná hlavièka"
 
-#: kmmainwin.cpp:1075
+#: kmmainwin.cpp:1079
 msgid "&Fancy Headers"
 msgstr "&Ozdobná hlavièka"
 
-#: kmmainwin.cpp:1077
+#: kmmainwin.cpp:1081
 msgid "&Standard Headers"
 msgstr "&Standardní hlavièka"
 
-#: kmmainwin.cpp:1079
+#: kmmainwin.cpp:1083
 msgid "&Long Headers"
 msgstr "D&louhá hlavièka"
 
-#: kmmainwin.cpp:1081
+#: kmmainwin.cpp:1085
 msgid "&All Headers"
 msgstr "Plná hl&avièka"
 
-#: kmmainwin.cpp:1084
+#: kmmainwin.cpp:1088
 msgid "Iconic Attachments"
 msgstr "Pøílohy jako ikony"
 
-#: kmmainwin.cpp:1085
+#: kmmainwin.cpp:1089
 msgid "Smart Attachments"
 msgstr "Elegantní pøílohy"
 
-#: kmmainwin.cpp:1086
+#: kmmainwin.cpp:1090
 msgid "Inlined Attachments"
 msgstr "Vlo¾ené pøílohy"
 
-#: kmmainwin.cpp:1097
+#: kmmainwin.cpp:1101
 msgid "F&older"
 msgstr "P&oøadaè"
 
-#: kmmainwin.cpp:1098
+#: kmmainwin.cpp:1102
 msgid "&Message"
 msgstr "&Zpráva"
 
-#: kmcomposewin.cpp:573 kmmainwin.cpp:1117
+#: kmcomposewin.cpp:573 kmmainwin.cpp:1121
 msgid "Compose new message"
 msgstr "Napsat novou zprávu"
 
-#: kmcomposewin.cpp:579 kmmainwin.cpp:1122
+#: kmcomposewin.cpp:579 kmmainwin.cpp:1126
 msgid "Save message to file"
 msgstr "Ulo¾it zprávu do souboru"
 
-#: kmcomposewin.cpp:585 kmmainwin.cpp:1127
+#: kmcomposewin.cpp:585 kmmainwin.cpp:1131
 msgid "Print message"
 msgstr "Tisknout zprávu"
 
-#: kmmainwin.cpp:1134
+#: kmmainwin.cpp:1138
 msgid "Get new mail"
 msgstr "Pøijmout novou po¹tu"
 
-#: kmmainwin.cpp:1140
+#: kmmainwin.cpp:1144
 msgid "Reply to author"
 msgstr "Odpovìdìt autorovi"
 
-#: kmmainwin.cpp:1145
+#: kmmainwin.cpp:1149
 msgid "Reply to all recipients"
 msgstr "Odpovìdìt v¹em pøíjemcùm"
 
-#: kmmainwin.cpp:1150
+#: kmmainwin.cpp:1154
 msgid "Forward message"
 msgstr "Pøedat zprávu dál"
 
-#: kmmainwin.cpp:1155
+#: kmmainwin.cpp:1159
 msgid "Delete message"
 msgstr "Smazat zprávu"
 
-#: kmcomposewin.cpp:609 kmmainwin.cpp:1161
+#: kmcomposewin.cpp:609 kmmainwin.cpp:1165
 msgid "Open addressbook..."
 msgstr "Otevøít adresáø ..."
 
-#: kmmainwin.cpp:1173
+#: kmmainwin.cpp:1177
 msgid "Initializing..."
 msgstr "Inicializace..."
 
@@ -583,7 +583,7 @@ msgstr "Font pro seznam zpráv"
 msgid "Select Account"
 msgstr "Vybìr konta"
 
-#: kmaccount.cpp:76 kmfilterdlg.cpp:472 kmsettings.cpp:676
+#: kmaccount.cpp:77 kmfilterdlg.cpp:472 kmsettings.cpp:676
 msgid "Unnamed"
 msgstr "Nepojmenované"
 
@@ -647,11 +647,11 @@ msgstr "<¾ádný>"
 msgid "Choose Location"
 msgstr "Výbìr umístìní"
 
-#: kmaccount.cpp:115
+#: kmaccount.cpp:116
 msgid "Receipt: "
 msgstr "Pøíjem:"
 
-#: kmaccount.cpp:149
+#: kmaccount.cpp:150
 msgid "Failed to add message:"
 msgstr "Nepodaøilo se pøidat zprávu:"
 
@@ -722,11 +722,11 @@ msgstr "Tøídím zprávy sestupnì podle %s"
 msgid "Sorting messages ascending by %s"
 msgstr "Tøídím zprávy vzestupnì podle %s"
 
-#: kmheaders.cpp:483
+#: kmheaders.cpp:486
 msgid "Message(s) saved."
 msgstr "Zpráva(y) ulo¾ena(y)"
 
-#: kmheaders.cpp:485
+#: kmheaders.cpp:488
 msgid "Failed to save message(s)."
 msgstr "Nepodaøilo se ulo¾it zprávu(y)."
 
@@ -1328,16 +1328,16 @@ msgstr ""
 "Prosím specifikujte v nastaveních\n"
 "program pro pøenos po¹ty"
 
-#: kmsender.cpp:565
+#: kmsender.cpp:574
 #, c-format
 msgid "Failed to execute mailer program %s"
 msgstr "Nepodaøilo se spustit program pro pøenos po¹ty %s"
 
-#: kmsender.cpp:653
+#: kmsender.cpp:662
 msgid "connecting to server"
 msgstr "pøipojování k serveru"
 
-#: kmsender.cpp:658
+#: kmsender.cpp:667
 #, c-format
 msgid ""
 "Cannot open SMTP connection to\n"
@@ -1348,19 +1348,19 @@ msgstr ""
 "k hostiteli %s pro odeslání:\n"
 "%s"
 
-#: kmsender.cpp:687
+#: kmsender.cpp:696
 msgid "Cannot close SMTP connection."
 msgstr "Není mo¾né uzavøít SMTP spojení."
 
-#: kmsender.cpp:737
+#: kmsender.cpp:748
 msgid "transmitting message"
 msgstr "odesílání zprávy"
 
-#: kmsender.cpp:771
+#: kmsender.cpp:785
 msgid "network error"
 msgstr "chyba sítì"
 
-#: kmsender.cpp:773
+#: kmsender.cpp:787
 #, c-format
 msgid ""
 "a SMTP error occured.\n"
@@ -1373,7 +1373,7 @@ msgstr ""
 "Odpovìï: %s\n"
 "Návratový kód: %d"
 
-#: kmsender.cpp:788
+#: kmsender.cpp:802
 #, c-format
 msgid "Sending SMTP command: %s"
 msgstr "Posílám SMTP pøíkaz: %s"
