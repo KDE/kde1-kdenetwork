@@ -178,6 +178,8 @@ int KMFolder::create(void)
   assert(name() != "");
   assert(mOpenCount == 0);
 
+  if (access(location(), F_OK) == 0) return EEXIST;
+  
   old_umask = umask(077);
   mStream = fopen(location(), "w+"); //sven; open RW
   umask(old_umask);
