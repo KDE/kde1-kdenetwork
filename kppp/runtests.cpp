@@ -37,6 +37,18 @@
 #include <sys/wait.h>
 #include <pwd.h>
 
+#ifdef HAVE_NETINET_IN_H
+#include <netinet/in.h>
+#endif
+
+#ifdef HAVE_RESOLV_H
+#include <resolv.h>
+#endif
+
+#ifndef _PATH_RESCONF
+#define _PATH_RESCONF "/etc/resolv.conf"
+#endif
+
 int uidFromName(const char *uname) {
   struct passwd *pw;
 
@@ -183,23 +195,25 @@ int runTests() {
 
   // Test 5: check for existence of /etc/resolv.conf
   int fd;
-  if ((fd = open("/etc/resolv.conf", O_RDONLY)) >= 0)
+  if ((fd = open(_PATH_RESCONF, O_RDONLY)) >= 0)
     close(fd);
   else {
     if (geteuid() == 0) {
-      if ((fd = open("/etc/resolv.conf", O_WRONLY|O_CREAT)) >= 0) {
+      if ((fd = open(_PATH_RESCONF, O_WRONLY|O_CREAT)) >= 0) {
 	// file will be owned by root and world readible
 	fchown(fd, 0, 0);
 	fchmod(fd, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 	close (fd);
       }
     } else {
+      QString msgstr;
+      msgstr = _PATH_RESCONF" ";
+      msgstr += i18n("is missing!\n\n"
+		     "Ask your system administrator to create\n"
+		     "a non-empty file that has appropriate\n"
+		     "read and write permissions.");
       QMessageBox::warning
-	(0, i18n("Error"),
-	 i18n("/etc/resolv.conf is missing!\n\n"
-			    "Ask your system administrator to create\n"
-			    "a non-empty file that has appropriate\n"
-			    "read and write permissions."));
+	(0, i18n("Error"), msgstr);
       warning ++;
     }
   }
