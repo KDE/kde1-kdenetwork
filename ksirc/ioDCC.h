@@ -6,6 +6,8 @@
 #include <qdict.h>
 #include <qprogdlg.h>
 
+#include "KSProgress/ksprogress.h"
+
 #include "messageReceiver.h"
 #include "ksircprocess.h"
 #include "dccDialog.h"
@@ -37,7 +39,7 @@ public:
   virtual void control_message(QString);
 
 protected slots:
-  void cancelTransfer();
+  void cancelTransfer(QString);
   void getFile();
   void forgetFile();
 
@@ -45,7 +47,8 @@ signals:
   void outputLine(QString);
 
 private:
-  QDict<QProgressDialog> DlgList;
+//  QDict<QProgressDialog> DlgList;
+  QDict<KSProgress> DlgList;
   QDict<DCCInfo> DCCStatus;
   
   dccDialog *pending;

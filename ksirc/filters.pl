@@ -11,10 +11,6 @@
 
 $#KSIRC_FILTER = 0;
 
-$KSIRC_FILTER[0]{'SEARCH'} = 'KILL message for';
-$KSIRC_FILTER[0]{'FROM'} = '(\sPath:\s\S+)';
-$KSIRC_FILTER[0]{'TO'} = '. $1';
-
 print "*** Loading filter parser...\n";
 
 sub hook_ksircfilter {
@@ -60,10 +56,10 @@ sub cmd_ksircappendrule {
     while(($key, $value) = each %PARSED){
       $KSIRC_FILTER[$i]{$key} = $value;
     }
-    print "*** Added rule: " . $KSIRC_FILTER[$i]{'DESC'} . "\n";
+    &tell("*** Added rule: " . $KSIRC_FILTER[$i]{'DESC'} . "\n");
   }
   else{
-    print STDOUT "*E* Parse Error in Rule, format is: name !!! search !!! from !!! to\n";
+    print "*E* Parse Error in Rule, format is: name !!! search !!! from !!! to\n";
   }
 }
 
@@ -72,11 +68,15 @@ addcmd("ksircappendrule");
 
 sub cmd_ksircclearrule {
   @KSIRC_FILTER = ();
-  print "*** ALL FILTER RULES ERASED\n";
+  $KSIRC_FILTER[0]{'SEARCH'} = 'DCC';
+  $KSIRC_FILTER[0]{'FROM'} = '^';
+  $KSIRC_FILTER[0]{'TO'} = '"~!dcc~"';  # it MUST be '""'
+  &tell("*** ALL FILTER RULES ERASED - DEFAULTS ADDED\n");
 }
 
 addcmd("ksircclearrule");
 &docommand("^alias crule ksircclearrule");
+&docommand("^crule");
 
 sub cmd_ksircdelrule {
   if($args =~ /^\d+$/){

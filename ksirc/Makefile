@@ -2,14 +2,14 @@
 #######    /usr/local/lib/qt-1.31/Makefile for building on
 #######    linux-gcc-shared on Sun Oct 12 09:16:39 MDT 1997
 
-INCDIR = /usr/local/lib/qt/include
-CFLAGS = -g -Wall -I/usr/X11R6/include -I$(HOME)/include -I/opt/kde/include
-LIBCFLAGS = -fPIC
-YACCCFLAGS = -Wno-unused -Wno-parentheses
-LFLAGS = -g -L/usr/local/lib/qt/lib -lqt -L/opt/kde/lib -lkdecore -lkdeui -L/usr/X11/lib -lXext
-CC = g++
-MOC = /usr/local/lib/qt/bin/moc
-SHELL =	/bin/sh
+export INCDIR = /usr/local/lib/qt/include
+export CFLAGS = -O3 -Wall -I/usr/X11R6/include -I$(HOME)/include -I/opt/kde/include
+export LIBCFLAGS = -fPIC
+export YACCCFLAGS = -Wno-unused -Wno-parentheses
+export LFLAGS = -L/usr/local/lib/qt/lib -lqt -L/opt/kde/lib -lkdecore -lkdeui -L/usr/X11/lib -lXext
+export CC = g++
+export MOC = /usr/local/lib/qt/bin/moc
+export SHELL =	/bin/sh
 
 ####### End of automatically generated section
 #
@@ -68,7 +68,8 @@ mahistlineedit.o \
 KSircColour.o KSircColourData.o mKSircColour.o mKSircColourData.o \
 FilterRuleEditor.o FilterRuleEditorData.o mFilterRuleEditor.o mFilterRuleEditorData.o \
 ioDiscard.o \
-ioDCC.o mioDCC.o dccDialog.o mdccDialog.o dccDialogData.o mdccDialogData.o
+ioDCC.o mioDCC.o dccDialog.o mdccDialog.o dccDialogData.o mdccDialogData.o \
+KSProgress/ksprogress.a
 
 TARGET = ksirc
 
@@ -90,7 +91,7 @@ hstatic: $(OBJECTS)
 -L/opt/kde/lib /opt/kde/lib/libkdeui.a /opt/kde/lib/libkdecore.a \
 -lm  -L/usr/X11R6/lib /usr/local/lib/qt/lib/libqt.a -lX11 -lXext
 
-$(TARGET): $(OBJECTS)
+$(TARGET): $(OBJECTS) KSProgress
 	$(CC) $(OBJECTS) -o $(TARGET) $(LFLAGS) -lm
 
 depend:
@@ -102,6 +103,14 @@ showfiles:
 clean:
 	rm -f *.o *.bak *~ *% core *.orig log.flood
 	rm -f $(TARGET) ksirc-static
+	$(MAKE) -C KSProgress clean
+
+####### BUILD RULES FOR SUB DIRS
+
+KSProgress/ksprogress.a: dummy
+	$(MAKE) -C KSProgress
+
+dummy:
 
 ####### Meta classes
 
@@ -693,7 +702,8 @@ ksircprocess.o: /usr/local/lib/qt/include/qcombo.h irclistbox.h ioBroadcast.h
 ksircprocess.o: ioDiscard.h ioDCC.h /usr/local/lib/qt/include/qprogdlg.h
 ksircprocess.o: /usr/local/lib/qt/include/qsemimodal.h
 ksircprocess.o: /usr/local/lib/qt/include/qlabel.h
-ksircprocess.o: /usr/local/lib/qt/include/qprogbar.h
+ksircprocess.o: /usr/local/lib/qt/include/qprogbar.h KSProgress/ksprogress.h
+ksircprocess.o: KSProgress/ksprogressdata.h dccDialog.h dccDialogData.h
 open_ksirc.o: open_ksirc.h open_ksircData.h
 open_ksirc.o: /usr/local/lib/qt/include/qdialog.h
 open_ksirc.o: /usr/local/lib/qt/include/qwidget.h
@@ -1048,8 +1058,12 @@ ioDCC.o: /usr/local/lib/qt/include/qpushbt.h
 ioDCC.o: /usr/local/lib/qt/include/qbutton.h
 ioDCC.o: /usr/local/lib/qt/include/qlabel.h
 ioDCC.o: /usr/local/lib/qt/include/qframe.h
-ioDCC.o: /usr/local/lib/qt/include/qprogbar.h messageReceiver.h
-ioDCC.o: ksircprocess.h iocontroller.h /usr/local/lib/qt/include/qsocknot.h
+ioDCC.o: /usr/local/lib/qt/include/qprogbar.h KSProgress/ksprogress.h
+ioDCC.o: KSProgress/ksprogressdata.h messageReceiver.h ksircprocess.h
+ioDCC.o: iocontroller.h /usr/local/lib/qt/include/qsocknot.h dccDialog.h
+ioDCC.o: dccDialogData.h /usr/local/lib/qt/include/qlistbox.h
+ioDCC.o: /usr/local/lib/qt/include/qtablevw.h
+ioDCC.o: /usr/local/lib/qt/include/qpixmap.h
 ioDCC.o: /usr/local/lib/qt/include/qregexp.h
 dccDialog.o: dccDialog.h dccDialogData.h /usr/local/lib/qt/include/qframe.h
 dccDialog.o: /usr/local/lib/qt/include/qwidget.h

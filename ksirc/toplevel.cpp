@@ -350,7 +350,10 @@ void KSircTopLevel::sirc_line_return()
   // messages, etc to the right place.  This include /me, etc
   //
 
-  nick_ring.at(nick_ring.count() - 1);
+  if(nick_ring.at() < (nick_ring.count() - 1))
+    nick_ring.next();
+  else
+    nick_ring.last();
 
   sirc_write(s);
 
@@ -785,7 +788,7 @@ void KSircTopLevel::AccelScrollUpPage()
 }
 void KSircTopLevel::AccelPriorMsgNick()
 {
-  linee->setText(QString("/msg ") + nick_ring.current());
+  linee->setText(QString("/msg ") + nick_ring.current() + " ");
 
   if(nick_ring.at() > 0)
     nick_ring.prev();
@@ -795,7 +798,7 @@ void KSircTopLevel::AccelPriorMsgNick()
 void KSircTopLevel::AccelNextMsgNick()
 {
   if(nick_ring.at() < ((int) nick_ring.count() - 1) )
-    linee->setText(QString("/msg ") + nick_ring.next());
+    linee->setText(QString("/msg ") + nick_ring.next() + " ");
 }
 
 void KSircTopLevel::initPopUpMenu()

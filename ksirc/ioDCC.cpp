@@ -36,7 +36,8 @@ void KSircIODCC::sirc_receive(QString str)
       cerr << "SIZE Pos1/Pos2 " << pos1 << '/' << pos2 << endl;
       return;
     }
-    int fileSize = str.mid(pos1, pos2-pos1).toInt(); // Bytes per step
+    QString size = str.mid(pos1, pos2-pos1);
+    int fileSize = size.toInt(); // Bytes per step
     if(fileSize >= 100){
       fileSize /= 100;
     }
@@ -50,11 +51,19 @@ void KSircIODCC::sirc_receive(QString str)
       return;
     }
     QString nick = str.mid(pos1, pos2 - pos1);
-    DlgList.insert(filename, new QProgressDialog("DCC File Xfer: " +
-						 filename,
-						 "Cancel",
-						 100));
-    DlgList[filename]->setProgress(0);
+    DlgList.insert(filename, new KSProgress());
+    DlgList[filename]->setID(filename);
+    DlgList[filename]->setRange(0,100);
+    DlgList[filename]->setTopText("DCC Receving: " + filename);
+    DlgList[filename]->setBotText("Size: " + size);
+    connect(DlgList[filename], SIGNAL(cancel(QString)),
+	    this, SLOT(cancelTransfer(QString)));
+
+    //    "DCC File Xfer: " +
+    //      filename,
+    //      "Cancel",
+    //      100));
+//    DlgList[filename]->setProgress(0);
     DCCInfo *stat = new DCCInfo;
     stat->LastSize = 0;
     stat->PercentSize = fileSize;
@@ -81,7 +90,7 @@ void KSircIODCC::sirc_receive(QString str)
     ASSERT(stat->PercentSize > 0); // We devide by this!
     ASSERT(bytesXfer > 0); // Setting progress back to 0 screws it up
     if(bytesXfer > (stat->LastSize + stat->PercentSize)){
-      DlgList[filename]->setProgress(bytesXfer/(stat->PercentSize));
+      DlgList[filename]->setValue(bytesXfer/(stat->PercentSize));
       stat->LastSize = bytesXfer;
     }
   }
@@ -104,8 +113,15 @@ void KSircIODCC::control_message(QString)
 {
 }
 
-void KSircIODCC::cancelTransfer()
+void KSircIODCC::cancelTransfer(QString filename)
 {
+  if(DlgList[filename]){
+    emit outputLine("/dcc close get " + DCCStatus[filename]->nick + " " + filename + "\n");
+    delete DlgList[filename];
+    DlgList.remove(filename);
+    delete DCCStatus[filename];
+    DCCStatus.remove(filename);
+  }
 }
 
 void KSircIODCC::getFile()
@@ -115,6 +131,8 @@ void KSircIODCC::getFile()
   QString nick = text.mid(0, pos);
   pos = text.find(" ", pos+1) + 1;
   QString filename = text.mid(pos, text.length() - pos);
+  if(DlgList[filename]->isVisible() == FALSE)
+    DlgList[filename]->show();
   emit outputLine("/dcc get " + nick + " " + filename + "\n");
   for(uint i = 0; i < pending->fileListing()->count(); i++)
     if(QString(pending->fileListing()->text(i)) == (nick + " offered " + filename))
