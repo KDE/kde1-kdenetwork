@@ -35,4 +35,6 @@
 /* Define if you have gethostname */
 #undef HAVE_GETHOSTNAME
 
+/* Define if you have usleep */
+#undef HAVE_USLEEP
 
