@@ -57,8 +57,10 @@ void NNTPObserver::Notify()
     client->byteCounter+=client->mTextResponse.length();
     client->partialResponse+=client->mTextResponse;
     qApp->processEvents();
+
     if (client->reportBytes && (client->byteCounter - oldbytes)>1024 )
     {
+
         char *buffer=new char[100];
         sprintf (buffer,klocale->translate("Received %.2f Kb"),
                  ((double)client->byteCounter)/1024);
@@ -67,8 +69,8 @@ void NNTPObserver::Notify()
         delete[] buffer;
         oldbytes=client->byteCounter;
     }
-}
 
+}
 
 /////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
@@ -96,15 +98,11 @@ NNTP::NNTP(char *host): DwNntpClient()
 
 void NNTP::PGetTextResponse()
 {
-    KDEBUG (KDEBUG_INFO,3300,"entered NNTP::PGetTextResponse()");
     partialResponse.clear();
     qApp->processEvents();
-    SetObserver(extendPartialResponse);
     DwNntpClient::PGetTextResponse();
     mTextResponse=partialResponse;
     partialResponse.clear();
-    SetObserver(NULL);
-    KDEBUG (KDEBUG_INFO,3300,"exited NNTP::PGetTextResponse()");
 }
 
 void NNTP::resetCounters( bool byte,bool command)
@@ -429,12 +427,12 @@ void NNTP::groupList(QList <NewsGroup> *grouplist, bool fromserver)
         if (status!=215)
         {
             sprintf (debugbuf,"error getting group list\nServer said %s\n",
-                     StatusResponse().data());
+                     StatusResponse().c_str());
             KDEBUG (KDEBUG_ERROR,3300,debugbuf);
             grouplist->clear();
             return;
         };
-        TextResponse();
+//        TextResponse();
         if (!mTextResponse.length())
         {
             grouplist->clear();
@@ -599,7 +597,7 @@ bool NNTP::postArticle (QString ID)
         SendData("\r\n.\r\n",5);
         f.close();
         unlink (p.data());
-        delete buffer;
+        delete[] buffer;
         return true;
     }
     else

@@ -559,11 +559,7 @@ bool Groupdlg::actions (int action,NewsGroup *group)
         
     case EXIT:
         {
-//            qApp->setOverrideCursor (arrowCursor);
-//            int i = KMsgBox::yesNo (0, klocale->translate("Question"),klocale->translate( "Do you REALLY wanna exit KRN?"));
-//            if (i==1)
                 qApp->exit();
-//            qApp->restoreOverrideCursor ();
             success = true;
             break;
         }

@@ -67,7 +67,6 @@ void Article::formHeader(QString *s)
 // Builds a nice header to put in the header list, which properly
 // Reflects the internal state of the message
 {
-    const char *s1, *s2, *s3;
     s->setStr(" ");
     QString ss;
     
@@ -99,14 +98,12 @@ void Article::formHeader(QString *s)
         DwMailbox fromaddr;
         fromaddr.FromString (From.data());
         fromaddr.Parse();
-        
-        s1=fromaddr.FullName().c_str();
-        s2=fromaddr.LocalPart().c_str();
-        s3=fromaddr.Domain().c_str();
-        if (strlen(s1))
-            sprintf (tempbuf,"%s\n",s1);
+
+        if (fromaddr.FullName().length()>0)
+            sprintf (tempbuf,"%s\n",fromaddr.FullName().c_str());
         else
-            sprintf (tempbuf,"<%s@%s>\n",s2,s3);
+            sprintf (tempbuf,"%s@%s\n",fromaddr.LocalPart().c_str(),
+                            fromaddr.Domain().c_str());
         s->append(tempbuf);
     }
     else
@@ -304,7 +301,7 @@ void NewsGroup::addArticle(QString ID)
         Article *art=new Article();
         art->ID=ID;
         art->load();
-        artSpool.insert(ID.data(),art);
+//        artSpool.insert(ID.data(),art);
         artList.append(art);
     }
     else

@@ -74,13 +74,13 @@ aboutDlgData::aboutDlgData
     tmpQFrame = new QFrame( parent, "Frame_1" );
     tmpQFrame->setGeometry( 87, 5, 225, 113 );
     QPixmap p=kapp->getIconLoader()->loadIcon("logo.xpm");
-    if (c>1)
-    {
-        p.setMask(p.createHeuristicMask());
-        tmpQFrame->setBackgroundPixmap(p);
+//    if (c>1)
+//    {
+//        p.setMask(p.createHeuristicMask());
+//        tmpQFrame->setBackgroundPixmap(p);
 //        tmpQFrame->setBackgroundMode (palette().dark());
-    }
-    else
+//    }
+//    else
         tmpQFrame->setBackgroundPixmap(p);
 
     parent->resize( 400, 300 );
