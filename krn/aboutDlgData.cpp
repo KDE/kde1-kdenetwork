@@ -75,11 +75,9 @@ aboutDlgData::aboutDlgData
     QPixmap p=kapp->getIconLoader()->loadIcon("logo.xpm");
     if (c>1)
     {
-        debug ("egg!!!");
-
         p.setMask(p.createHeuristicMask());
-        tmpQFrame->setBackgroundColor (QColor("black"));
         tmpQFrame->setBackgroundPixmap(p);
+//        tmpQFrame->setBackgroundMode (palette().dark());
     }
     else
         tmpQFrame->setBackgroundPixmap(p);

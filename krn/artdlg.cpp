@@ -439,7 +439,7 @@ bool Artdlg::actions (int action)
                 list->setCurrentItem(i);
                 i=list->currentItem();
                 if ((list->lastRowVisible()-(list->height()/list->cellHeight(i)))
-                    <(i+2))
+                    >(i-2))
                     list->setTopItem(i);
             }
             success=true;

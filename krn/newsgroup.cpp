@@ -506,6 +506,7 @@ void ArticleList::thread(bool sortBySubject=false)
     clear();
 
     //If requested, sort the threads by subject
+
     QList <ArticleList> sortedThreads;
     if (sortBySubject)
     {
@@ -532,6 +533,7 @@ void ArticleList::thread(bool sortBySubject=false)
 
     //Now thread the subthreads
     //And rebuild the list from them
+
     thread.toFirst();
     for (;thread.current();++thread)
     {
@@ -545,6 +547,7 @@ void ArticleList::thread(bool sortBySubject=false)
             }
         }
     }
+
 }
 
 ArticleList::~ArticleList()
