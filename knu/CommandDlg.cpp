@@ -23,6 +23,10 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.4  1998/03/01 19:30:11  leconte
+ * - added a finger tab
+ * - internal mods
+ *
  * Revision 1.3  1997/12/07 23:44:16  leconte
  * - handle the binary's name modification dynamicaly (problem reported
  *   by Conrad Sanderson)
@@ -39,7 +43,8 @@
 #include <errno.h>
 #include <ctype.h>
 
-#include <qfiledlg.h>
+//#include <qfiledlg.h>
+#include <kfiledialog.h>
 
 #include <kapp.h>
 #include <qregexp.h>
@@ -642,7 +647,8 @@ CommandCfgDlg::readConfig()
 void
 CommandCfgDlg::slotBrowse()
 {
-  QString f = QFileDialog::getOpenFileName( 0, 0L, this );
+  //  QString f = QFileDialog::getOpenFileName( 0, 0L, this );
+  QString f = KFileDialog::getOpenFileName( 0, 0L, this );
   if ( f.isNull() )
     return;
   
