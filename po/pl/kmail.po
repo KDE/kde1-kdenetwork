@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmail \n"
 "POT-Creation-Date: 1999-01-24 02:15+0100\n"
-"PO-Revision-Date: 1998-12-27 14:55+0100\n"
+"PO-Revision-Date: 1999-01-24 15:48+0100\n"
 "Last-Translator: Jacek Stolarczyk <jacek@mer.chemia.polsl.gliwice.pl>\n"
 "Content-Type: text/plain; charset=iso8859-2\n"
 
@@ -475,9 +475,8 @@ msgid "Message List Font:"
 msgstr "Czcionka listy wiadomo¶ci"
 
 #: kmsettings.cpp:358
-#, fuzzy
 msgid "Long folder list"
-msgstr "&D³ugie nag³ówki"
+msgstr "D³uga lista folderów"
 
 #: kmsettings.cpp:387
 msgid "Phrases"
@@ -683,7 +682,7 @@ msgstr "Data"
 
 #: kmheaders.cpp:216
 msgid "Receiver"
-msgstr ""
+msgstr "Odbiorca"
 
 #: kmheaders.cpp:219
 #, c-format
@@ -1786,9 +1785,8 @@ msgid "&Abort"
 msgstr "&Przerwij"
 
 #: kmnewiostatuswdg.cpp:24
-#, fuzzy
 msgid "Abort"
-msgstr "&Przerwij"
+msgstr "Przerwij"
 
 #: kmnewiostatuswdg.cpp:41
 msgid "Sending messages to "
