@@ -536,8 +536,7 @@ KPPPWidget::KPPPWidget( QWidget *parent, const char *name )
   MIN_SIZE(PW_Label);
   l1->addWidget(PW_Label, 2, 1);
 
-  PW_Edit= new QLineEdit(this);
-  PW_Edit->setEchoMode(QLineEdit::Password);
+  PW_Edit= new PasswordWidget(this);
   MIN_WIDTH(PW_Edit);
   FIXED_HEIGHT(PW_Edit);
   l1->addWidget(PW_Edit, 2, 2);
@@ -1228,6 +1227,17 @@ void KPPPWidget::resetCosts(const char *s) {
   AccountingBase::resetCosts(s);
 }
 
+PasswordWidget::PasswordWidget(QWidget *parent, const char *name)
+  : QLineEdit(parent, name)
+{
+  setEchoMode(Password);
+}
+
+void PasswordWidget::focusOutEvent(QFocusEvent *e)
+{
+  deselect();
+  QLineEdit::focusOutEvent(e);
+}
 
 pid_t execute_command (const char *command) {
     if(!command || strcmp(command, "") ==0 || strlen(command) > COMMAND_SIZE)

@@ -154,6 +154,14 @@ private:
   AboutWidget *about;
 };
 
+class PasswordWidget : public QLineEdit {
+public:
+  PasswordWidget(QWidget *parent = 0, const char *name = 0);
+protected:
+  void leaveEvent(QEvent *) {}
+  void focusOutEvent(QFocusEvent*);
+};
+
 void killpppd();
 void sigint(int);
 void dieppp(int);

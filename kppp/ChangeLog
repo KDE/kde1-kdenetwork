@@ -1,3 +1,11 @@
+1999-08-25  Harri Porten  <porten@kde.org>
+
+	* main.cpp: work around copy&paste password bug by using a widget
+	derived from QLineEdit that disables that overrides the buggy methods.
+	* runtests.cpp (ppp_available): until our check can cope with the
+	PPP code in 2.3 Linux kernels we'll simply skip that test for
+	versions higher than 2.2.
+
 1999-08-17  Harri Porten  <porten@kde.org>
 
 	* modem.cpp: disabled CD line test. Responsible for too many problems.
