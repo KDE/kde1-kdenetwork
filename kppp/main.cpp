@@ -197,12 +197,11 @@ void make_directories(){
   }
 }
 
+#define MAX_NAME_LENGTH    64
 
 int main( int argc, char **argv ) { 
   int c;
   opterr = 0;
-
-
 
   KApplication a(argc, argv,"kppp");
 
@@ -219,8 +218,16 @@ int main( int argc, char **argv ) {
 	usage(argv[0]);
 	exit(1);	
       case 'c':
-	cmdl_account = optarg;
-	break;
+	{
+	  // copy at most MAX_NAME_LENGTH bytes
+	  char tmp[MAX_NAME_LENGTH];
+	  strncpy(tmp, optarg, MAX_NAME_LENGTH-1);
+	  
+	  // terminate string
+	  tmp[MAX_NAME_LENGTH-1] = 0; 
+	  cmdl_account = tmp;
+	  break;
+	}
       case 'h':
 	usage(argv[0]);
 	break;
@@ -232,8 +239,11 @@ int main( int argc, char **argv ) {
 	break;
       case 'r':
 	{
+	  // drop root
+	  setuid(getuid());
+
 	  // we need a KAppliction for locales, create one
-	  KApplication a(argc, argv);	  
+	  KApplication a(argc, argv);
 	  exit(RuleSet::checkRuleFile(optarg));
 	}
       }
