@@ -23,6 +23,9 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.1  1998/10/14 19:32:59  leconte
+ * Bertrand: Added mtr support (with a patch to mtr-0.21)
+ *
  */
 
 #include <stdlib.h>
@@ -209,7 +212,7 @@ MtrDlg::buildCommandLine(QString args)
       childProcess << "-n";
     }
 #endif
-    childProcess << "--raw";
+    childProcess << "--split";
     childProcess << (const char *)args;
 
     // Remove current lines in the QListView if needed

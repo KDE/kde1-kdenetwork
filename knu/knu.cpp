@@ -21,6 +21,9 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.8  1998/10/14 19:33:03  leconte
+ * Bertrand: Added mtr support (with a patch to mtr-0.21)
+ *
  * Revision 1.7  1998/09/23 16:24:15  bieker
  * Use i18n() instead of _().
  *
@@ -175,7 +178,7 @@ TopLevel::TopLevel(QWidget *, const char *name)
 
   // mtr tab 
   if (isTabEnabled("Mtr", kc)) {
-    md = new MtrDlg("mtr", tabCtrl, i18n("&Matt's traceroute"));
+    md = new MtrDlg("mtr", tabCtrl, i18n("&mtr"));
     CHECK_PTR(md);
     tabCtrl->addTab(md, md->name());
     pages[pagesNumber] = md;
@@ -318,7 +321,7 @@ TopLevel::slotConfig()
   n++;
 
   /* mtr */
-  ccd = new CommandCfgDlg(i18n("&Matt's traceroute"), 0, "mtr_cfg");
+  ccd = new CommandCfgDlg(i18n("&mtr"), 0, "mtr_cfg");
   CHECK_PTR(ccd);
   configPages[n] = ccd;
   n++;
