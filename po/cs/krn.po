@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: krn\n"
-"POT-Creation-Date: 1998-10-09 15:54+0200\n"
-"PO-Revision-Date: 1998-06-18 09:54 MET DST\n"
+"POT-Creation-Date: 1998-10-26 11:11+0100\n"
+"PO-Revision-Date: 1998-11-05 08:41+01:00\n"
 "Last-Translator: Miroslav Flídr <flidr@ky.zcu.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -94,10 +94,6 @@ msgstr "Pøihlásit/Odhlásit"
 msgid "Untag"
 msgstr "Zru¹it oznaèení"
 
-#: artdlg.cpp:159 findArtDlg.cpp:65 groupdlg.cpp:155
-msgid "Find"
-msgstr ""
-
 #: artdlg.cpp:170 groupdlg.cpp:157
 msgid "(Un)Tag"
 msgstr "Oznaèení vypnout/zapnout"
@@ -159,7 +155,6 @@ msgid "Find group"
 msgstr "Najít skupinu"
 
 #: groupdlg.cpp:207
-#, fuzzy
 msgid "(Un)Subscribe"
 msgstr "Pøihlásit/Odhlásit"
 
@@ -291,10 +286,6 @@ msgstr "Zveøejnit odpovìï"
 msgid "Post & Reply"
 msgstr "Zveøejnit a odpovìdìt"
 
-#: artdlg.cpp:167 artdlg.cpp:257
-msgid "Forward"
-msgstr ""
-
 #: artdlg.cpp:173 artdlg.cpp:241
 msgid "Tagged"
 msgstr "Oznaèené"
@@ -357,21 +348,19 @@ msgstr "Obnovit zobrazení"
 
 #: artdlg.cpp:240
 msgid "Current"
-msgstr ""
+msgstr "Souèasný"
 
 #: artdlg.cpp:242 fontsDlg.cpp:52
 msgid "All"
 msgstr "V¹e"
 
 #: artdlg.cpp:243
-#, fuzzy
 msgid "Read"
-msgstr "Pøeètené:"
+msgstr "Pøeètené"
 
 #: artdlg.cpp:244
-#, fuzzy
 msgid "UnRead"
-msgstr "Nepøeètené:"
+msgstr "Nepøeètené"
 
 #: artdlg.cpp:247
 msgid "Save Article"
@@ -408,10 +397,6 @@ msgstr "Oznaèit jako nepøeètené"
 #: artdlg.cpp:291 sortDlg.cpp:34
 msgid "Sender"
 msgstr "Odesilatel"
-
-#: artdlg.cpp:292 sortDlg.cpp:35
-msgid "Date"
-msgstr ""
 
 #: artdlg.cpp:293 sortDlg.cpp:36
 msgid "Lines"
@@ -587,18 +572,6 @@ msgstr "Vlo¾ený"
 msgid "Font Size:"
 msgstr "Velikost fontu:"
 
-#: fontsDlg.cpp:70
-msgid "Small"
-msgstr ""
-
-#: fontsDlg.cpp:71
-msgid "Normal"
-msgstr ""
-
-#: fontsDlg.cpp:72
-msgid "Large"
-msgstr ""
-
 #: fontsDlg.cpp:73
 msgid "Huge"
 msgstr "Obrovský"
@@ -608,18 +581,16 @@ msgid "Standard Font"
 msgstr "Standardní font"
 
 #: fontsDlg.cpp:84
-#, fuzzy
 msgid "Standard Font Test"
-msgstr "Standardní font"
+msgstr "Test standardního fontu"
 
 #: fontsDlg.cpp:86
 msgid "Fixed Font"
 msgstr "Fixovaný font"
 
 #: fontsDlg.cpp:91
-#, fuzzy
 msgid "Fixed Font Test"
-msgstr "Fixovaný font"
+msgstr "Test fixovaného fontu"
 
 #: fontsDlg.cpp:94
 msgid "Background Color"
@@ -647,263 +618,239 @@ msgstr "Rozdìlit okno vertikálnì"
 
 #: kmmessage.cpp:1260
 msgid "On %D, you wrote:"
-msgstr ""
+msgstr "Dne %D jste napsal(a):"
 
 #: kmmessage.cpp:1261
 msgid "On %D, %F wrote:"
-msgstr ""
+msgstr "Dne %D %F napsal(a):"
 
 #: kmmessage.cpp:1262
-#, fuzzy
 msgid "Forwarded Message"
-msgstr "Zobrazit zamèené zprávy"
+msgstr "Pøedaná zpráva"
 
 #: kmcomposewin.cpp:122
 msgid "KMail Composer"
-msgstr ""
+msgstr "Editor KMailu"
 
 #: kmcomposewin.cpp:133
 msgid "F"
-msgstr ""
-
-#: kmcomposewin.cpp:134
-#, fuzzy
-msgid "Name"
-msgstr "Skuteèné jnémo"
-
-#: kmcomposewin.cpp:135
-msgid "Size"
-msgstr ""
+msgstr "F"
 
 #: kmcomposewin.cpp:136
-#, fuzzy
 msgid "Encoding"
-msgstr "&Hondocení"
+msgstr "Kódóvání"
 
 #: kmcomposewin.cpp:137
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 #: kmcomposewin.cpp:344
 msgid "&From:"
-msgstr ""
+msgstr "&Odesílatel:"
 
 #: kmcomposewin.cpp:346
 msgid "&Reply to:"
-msgstr ""
+msgstr "Odpovìdìt auto&rovi:"
 
 #: kmcomposewin.cpp:348
 msgid "&To:"
-msgstr ""
+msgstr "&Komu"
 
 #: kmcomposewin.cpp:350
 msgid "&Cc:"
-msgstr ""
+msgstr "Kop&ie"
 
 #: kmcomposewin.cpp:352
 msgid "&Bcc:"
-msgstr ""
+msgstr "&Dal¹í kopie"
 
 #: kmcomposewin.cpp:354
-#, fuzzy
 msgid "&Subject:"
-msgstr "Pøedmìt"
+msgstr "Pø&edmìt:"
 
 #: kmcomposewin.cpp:357
-#, fuzzy
 msgid "&Newsgroups:"
-msgstr "&Diskusní skupina"
+msgstr "&Diskusní skupiny:"
 
 #: kmcomposewin.cpp:359
-#, fuzzy
 msgid "&Followup-To:"
-msgstr "Zveøejnit odpovìï"
+msgstr "Odpovìdìt &do"
 
 #: kmcomposewin.cpp:431
-#, fuzzy
 msgid "&Send"
-msgstr "Odesilatel"
+msgstr "&Poslat"
 
 #: kmcomposewin.cpp:434
-#, fuzzy
 msgid "S&end later"
-msgstr "Odesilatel"
+msgstr "P&oslat pozdìji"
 
 #: kmcomposewin.cpp:436
 msgid "S&end now"
-msgstr ""
+msgstr "P&oslat nyní"
 
 #: kmcomposewin.cpp:438
 msgid "&Insert File..."
-msgstr ""
+msgstr "Vlo¾it &soubor..."
 
 #: kmcomposewin.cpp:441
 msgid "&Addressbook..."
-msgstr ""
+msgstr "Kniha &adres"
 
 #: kmcomposewin.cpp:446
 msgid "&New Composer..."
-msgstr ""
+msgstr "&Nový editor..."
 
 #: kmcomposewin.cpp:449
 msgid "New Mailreader"
-msgstr ""
+msgstr "Nový prohlí¾eè po¹ty"
 
 #: kmcomposewin.cpp:469 kmcomposewin.cpp:678 kmcomposewin.cpp:1917
-#, fuzzy
 msgid "Mark all"
-msgstr "Oznaèit jako pøeètené"
+msgstr "Oznaèit v¹e"
 
 #: kmcomposewin.cpp:472 kmcomposewin.cpp:680
 msgid "Find..."
-msgstr ""
+msgstr "Nalézt..."
 
 #: kmcomposewin.cpp:474 kmcomposewin.cpp:681
-#, fuzzy
 msgid "Replace..."
-msgstr "Vzhled ..."
+msgstr "Nahradit..."
 
 #: kmcomposewin.cpp:481
 msgid "&Urgent"
-msgstr ""
+msgstr "Nalé&havé"
 
 #: kmcomposewin.cpp:483
 msgid "&Confirm delivery"
-msgstr ""
+msgstr "Po&tvrdit pøíjem"
 
 #: kmcomposewin.cpp:485
 msgid "&Confirm read"
-msgstr ""
+msgstr "Po&tvrdit pøeètení"
 
 #: kmcomposewin.cpp:488
 msgid "&Charsets..."
-msgstr ""
+msgstr "&Kódování..."
 
 #: kmcomposewin.cpp:501
 msgid "&All Fields"
-msgstr ""
+msgstr "&V¹echna pole"
 
 #: kmcomposewin.cpp:503
 msgid "&From"
-msgstr ""
+msgstr "&Odesílatel"
 
 #: kmcomposewin.cpp:504
 msgid "&Reply to"
-msgstr ""
+msgstr "Odpovìdìt auto&rovi"
 
 #: kmcomposewin.cpp:505
 msgid "&To"
-msgstr ""
+msgstr "&Komu"
 
 #: kmcomposewin.cpp:506
 msgid "&Cc"
-msgstr ""
+msgstr "Kop&ie"
 
 #: kmcomposewin.cpp:507
 msgid "&Bcc"
-msgstr ""
+msgstr "&Dal¹í kopie"
 
 #: kmcomposewin.cpp:508
-#, fuzzy
 msgid "&Subject"
-msgstr "Pøedmìt"
+msgstr "Pø&edmìt"
 
 #: kmcomposewin.cpp:510
-#, fuzzy
 msgid "&Newsgroups"
-msgstr "&Diskusní skupina"
+msgstr "&Diskusní skupiny"
 
 #: kmcomposewin.cpp:511
-#, fuzzy
 msgid "&Followup-To"
-msgstr "Zveøejnit odpovìï"
+msgstr "Odpovìï &do"
 
 #: kmcomposewin.cpp:516
 msgid "Append S&ignature"
-msgstr ""
+msgstr "Pøipojit &signaturu"
 
 #: kmcomposewin.cpp:518
 msgid "&Insert File"
-msgstr ""
+msgstr "&Vlo¾it soubor"
 
 #: kmcomposewin.cpp:520
 msgid "&Attach..."
-msgstr ""
+msgstr "&Pøilo¾it..."
 
 #: kmcomposewin.cpp:523
 msgid "&Save..."
-msgstr ""
+msgstr "&Ulo¾it"
 
 #: kmcomposewin.cpp:524
 msgid "Pr&operties..."
-msgstr ""
+msgstr "V&lastnosti..."
 
 #: kmcomposewin.cpp:526
 msgid "&Attach"
-msgstr ""
+msgstr "&Pøilo¾it"
 
 #: kmcomposewin.cpp:551
 msgid "Compose new message"
-msgstr ""
+msgstr "Napsat novou zpávu"
 
 #: kmcomposewin.cpp:556
 msgid "Save message to file"
-msgstr ""
+msgstr "Ulo¾it zprávu do souboru"
 
 #: kmcomposewin.cpp:561
-#, fuzzy
 msgid "Print message"
-msgstr "KRN - Zprávu"
+msgstr "Tisknout zprávu"
 
 #: kmcomposewin.cpp:570
 msgid "Cut selection"
-msgstr ""
+msgstr "Vyøíznout výbìr"
 
 #: kmcomposewin.cpp:573
 msgid "Copy selection"
-msgstr ""
+msgstr "Kopíirovat výbìr"
 
 #: kmcomposewin.cpp:576
 msgid "Paste clipboard contents"
-msgstr ""
+msgstr "Vlo¾it obsah schránky"
 
 #: kmcomposewin.cpp:581
-#, fuzzy
 msgid "Attach file"
-msgstr "Styl pøilohy:"
+msgstr "Pøilo¾it soubor"
 
 #: kmcomposewin.cpp:585
 msgid "Open addressbook..."
-msgstr ""
+msgstr "Otevøít knihu adres"
 
 #: kmcomposewin.cpp:594
-#, fuzzy
 msgid "sign message"
-msgstr "KRN - Zprávu"
+msgstr "Signovat zprávu"
 
 #: kmcomposewin.cpp:599
-#, fuzzy
 msgid "encrypt message"
-msgstr "Následující zpráva"
+msgstr "Za¹ifrovat zprávu"
 
 #: kmcomposewin.cpp:611 kmcomposewin.cpp:627
 msgid "Column"
-msgstr ""
+msgstr "Sloupen"
 
 #: kmcomposewin.cpp:612 kmcomposewin.cpp:625
-#, fuzzy
 msgid "Line"
-msgstr "Øádky"
+msgstr "Øádka"
 
 #: kmcomposewin.cpp:891
 msgid "KMail Confirm"
-msgstr ""
+msgstr "KMail ovìøení"
 
 #: kmcomposewin.cpp:892
 msgid ""
 "Close and discard\n"
 "edited message?"
 msgstr ""
+"Zavøít a odstranit\n"
+"upravovanou zprávu?"
 
 #: kmcomposewin.cpp:937
 #, c-format
@@ -911,77 +858,73 @@ msgid ""
 "public key for %s not found.\n"
 "This person will not be able to decrypt the message."
 msgstr ""
+"veøejný klíè pro %s nenalezen.\n"
+"Tato osoba nebude schopna de¹ifrovat zprávu."
 
 #: kmcomposewin.cpp:958
 msgid "Error during PGP:"
-msgstr ""
+msgstr "Chyba bìhem PGP:"
 
 #: kmcomposewin.cpp:1178
-#, fuzzy
 msgid "Attach File"
-msgstr "Styl pøilohy:"
+msgstr "Pøilo¾it soubor"
 
 #: kmcomposewin.cpp:1200
 msgid "Include File"
-msgstr ""
+msgstr "Vlo¾it soubor"
 
 #: kmcomposewin.cpp:1223 kmreaderwin.cpp:683
 msgid "View..."
-msgstr ""
+msgstr "Zobrazit..."
 
 #: kmcomposewin.cpp:1224
 msgid "Save..."
-msgstr ""
+msgstr "Ulo¾it..."
 
 #: kmcomposewin.cpp:1225 kmreaderwin.cpp:686
-#, fuzzy
 msgid "Properties..."
-msgstr "Tøídìní..."
+msgstr "Vlastnosti..."
 
 #: kmcomposewin.cpp:1229
 msgid "Attach..."
-msgstr ""
+msgstr "Pøilo¾it..."
 
 #: kmcomposewin.cpp:1271 kmreaderwin.cpp:728
-#, fuzzy
 msgid "View Attachment: "
-msgstr "Styl pøilohy:"
+msgstr "Zobrazit pøílohu: "
 
 #: kmcomposewin.cpp:1442 kpgp.cpp:357
 msgid ""
 "Sorry, but this feature\n"
 "is still missing"
 msgstr ""
+"Lituji, ale tato funkce\n"
+"stále chybí"
 
 #: kmcomposewin.cpp:1450
 msgid "unnamed"
-msgstr ""
+msgstr "nepojmenované"
 
 #: kmcomposewin.cpp:1465
 msgid "To:"
-msgstr ""
+msgstr "Komu:"
 
 #: kmcomposewin.cpp:1469
-#, fuzzy
 msgid "Subject:"
-msgstr "Pøedmìt"
-
-#: kmcomposewin.cpp:1472
-msgid "Date:"
-msgstr ""
+msgstr "Pøedmìt:"
 
 #: kmcomposewin.cpp:1549
 msgid "Choose Signature File"
-msgstr ""
+msgstr "Vyberte soubor se signaturou"
 
 #: kmcomposewin.cpp:1579
 msgid "KMail: Spellcheck"
-msgstr ""
+msgstr "KMail: kontrola pravopisu"
 
 #: kmcomposewin.cpp:1603
 msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
-msgstr ""
+msgstr "Chyba pøi spou¹»ení KSpellu. Prosím ujistìte se, ¾e máte správnì nastaven ISpell."
 
 #: kmsender.cpp:108
 msgid ""
@@ -989,6 +932,9 @@ msgid ""
 "method in the settings\n"
 "and try again."
 msgstr ""
+"Prosím specifikujete v nastaveních\n"
+"metodu odesílání a pak operaci\n"
+"skuste znova."
 
 #: kmsender.cpp:114
 msgid ""
@@ -996,52 +942,54 @@ msgid ""
 "identity settings:\n"
 "user-name and email-address"
 msgstr ""
+"Prosím vyplòte po¾adovaná pole\n"
+"v nastavení identity:\n"
+"u¾ivatelské jméno a e-mailová adresa"
 
 #: kmsender.cpp:139
 msgid "You must specify a receiver"
-msgstr ""
+msgstr "Je nutné udat pøíjemce"
 
 #: kmsender.cpp:150
 msgid "Cannot add message to outbox folder"
-msgstr ""
+msgstr "Není mo¾né pøidat zprávu do slo¾ky outbox"
 
 #: kmsender.cpp:173
 msgid "Sending still in progress"
-msgstr ""
+msgstr "Odesílání stále probíhá"
 
 #: kmsender.cpp:225
 msgid "Initiating sender process..."
-msgstr ""
+msgstr "Inicializuji proces odesílání..."
 
 #: kmsender.cpp:241
-#, fuzzy
 msgid "Sending message: "
-msgstr "Získávám zprávy z "
+msgstr "Odesílání zprávy:"
 
 #: kmsender.cpp:269
-#, fuzzy
 msgid "Done sending messages."
-msgstr "Získávám zprávy z "
+msgstr "Odesílání zpráv ukonèeno"
 
 #: kmsender.cpp:288
 msgid "Sending failed:"
-msgstr ""
+msgstr "Odesílání se nezdaøilo:"
 
 #: kmsender.cpp:441
 msgid ""
 "Please specify a mailer program\n"
 "in the settings."
 msgstr ""
+"Prosím specifikujte v nastaveních\n"
+"po¹tovní program."
 
 #: kmsender.cpp:481
 #, c-format
 msgid "Failed to execute mailer program %s"
-msgstr ""
+msgstr "Nezdaøilo se spustit po¹tovní program %s"
 
 #: kmsender.cpp:569
-#, fuzzy
 msgid "connecting to server"
-msgstr "Pøipojování k serveru"
+msgstr "pøipojování k serveru"
 
 #: kmsender.cpp:574
 #, c-format
@@ -1050,19 +998,21 @@ msgid ""
 "host %s for sending:\n"
 "%s"
 msgstr ""
+"Není mo¾né otevøít SMTP spojení\n"
+"k hostiteli %s pro odeslání:\n"
+"%s"
 
 #: kmsender.cpp:603
 msgid "Cannot close SMTP connection."
-msgstr ""
+msgstr "Není mo¾né uzavøít SMTP spojení."
 
 #: kmsender.cpp:653
-#, fuzzy
 msgid "transmitting message"
-msgstr "Získávám zprávy z "
+msgstr "probíhá pøenos zprávy"
 
 #: kmsender.cpp:687
 msgid "network error"
-msgstr ""
+msgstr "chyba sítì"
 
 #: kmsender.cpp:689
 #, c-format
@@ -1072,11 +1022,15 @@ msgid ""
 "Response: %s\n"
 "Return code: %d"
 msgstr ""
+"nastala chyba SMTP.\n"
+"Pøíkaz: %s\n"
+"Odpovìï: %s\n"
+"Návratový kód: %d"
 
 #: kmsender.cpp:704
 #, c-format
 msgid "Sending SMTP command: %s"
-msgstr ""
+msgstr "Odesílám SMTP pøíkaz: %s"
 
 #: findArtDlg.cpp:22
 msgid "KRN - Article Searcher"
@@ -1090,17 +1044,9 @@ msgstr "Najít èláneky s:"
 msgid "In Field:"
 msgstr "V polo¾ce:"
 
-#: findArtDlg.cpp:53 rulesDlg.cpp:131
-msgid "Case Sensitive"
-msgstr ""
-
 #: findArtDlg.cpp:56 rulesDlg.cpp:132
 msgid "Wildcard Mode"
 msgstr "Mód \"divokých karet\""
-
-#: findArtDlg.cpp:66 rulesDlg.cpp:144
-msgid "Done"
-msgstr ""
 
 #: kmidentity.cpp:162
 #, c-format
@@ -1109,10 +1055,13 @@ msgid ""
 "%s\n"
 "%s"
 msgstr ""
+"Nezdaøilo se vykonat skript signatury\n"
+"%s\n"
+"%s"
 
 #: kfileio.cpp:26 kmaddrbook.cpp:159
 msgid "File I/O Error"
-msgstr ""
+msgstr "Chyba vstupu/výstupu souboru"
 
 #: kfileio.cpp:47
 #, c-format
@@ -1120,6 +1069,8 @@ msgid ""
 "The specified file does not exist:\n"
 "%s"
 msgstr ""
+"Specifikovaný soubor neexistuje:\n"
+"%s"
 
 #: kfileio.cpp:54
 #, c-format
@@ -1127,6 +1078,8 @@ msgid ""
 "This is a directory and not a file:\n"
 "%s"
 msgstr ""
+"Toto je adresáø a ne soubor:\n"
+"%s"
 
 #: kfileio.cpp:61
 #, c-format
@@ -1134,6 +1087,8 @@ msgid ""
 "You do not have read permissions to the file:\n"
 "%s"
 msgstr ""
+"Nemáte práva ke ètení tohoto souboru:\n"
+"%s"
 
 #: kfileio.cpp:72 kmaddrbook.cpp:149
 #, c-format
@@ -1141,6 +1096,8 @@ msgid ""
 "Could not read file:\n"
 "%s"
 msgstr ""
+"Není mo¾né èíst soubor:\n"
+"%s"
 
 #: kfileio.cpp:75 kmaddrbook.cpp:152
 #, c-format
@@ -1148,6 +1105,8 @@ msgid ""
 "Could not open file:\n"
 "%s"
 msgstr ""
+"Není mo¾né otevøít soubor:\n"
+"%s"
 
 #: kfileio.cpp:78
 #, c-format
@@ -1155,11 +1114,13 @@ msgid ""
 "Error while reading file:\n"
 "%s"
 msgstr ""
+"Chyba pøi ètení souboru:\n"
+"%s"
 
 #: kfileio.cpp:95
 #, c-format
 msgid "Could only read %u bytes of %u."
-msgstr ""
+msgstr "Bylo mo¾né pøeèíst pouze %u bajtù z %u."
 
 #: kfileio.cpp:124
 #, c-format
@@ -1167,6 +1128,8 @@ msgid ""
 "File %s exists.\n"
 "Do you want to replace it ?"
 msgstr ""
+"Soubor %s existuje.\n"
+"Chcete jej nahradit?"
 
 #: kfileio.cpp:144
 #, c-format
@@ -1174,6 +1137,8 @@ msgid ""
 "Failed to make a backup copy of %s.\n"
 "Continue anyway ?"
 msgstr ""
+"Nezdaøilo se vytvoøit zálo¾ní kopii pro %s.\n"
+"I pøesto pokraèovat?"
 
 #: kfileio.cpp:156 kfileio.cpp:174
 #, c-format
@@ -1181,6 +1146,8 @@ msgid ""
 "Could not write to file:\n"
 "%s"
 msgstr ""
+"Není mo¾né zapisovat do souboru:\n"
+"%s"
 
 #: kfileio.cpp:159
 #, c-format
@@ -1188,6 +1155,8 @@ msgid ""
 "Could not open file for writing:\n"
 "%s"
 msgstr ""
+"Není mo¾né otevøít soiubor pro zápis:\n"
+"%s"
 
 #: kfileio.cpp:163 kmaddrbook.cpp:155
 #, c-format
@@ -1195,155 +1164,155 @@ msgid ""
 "Error while writing file:\n"
 "%s"
 msgstr ""
+"Chyba pøi zápisu do souboru:\n"
+"%s"
 
 #: kfileio.cpp:180
 #, c-format
 msgid "Could only write %d bytes of %d."
-msgstr ""
+msgstr "Bylo mo¾né zapsat pouze %u bajtù z %u."
 
 #: kmmsgpartdlg.cpp:41
 msgid "Message Part Properties"
-msgstr ""
-
-#: kmmsgpartdlg.cpp:62
-msgid "Name:"
-msgstr ""
+msgstr "Vlastnosti èásti zprávy"
 
 #: kmmsgpartdlg.cpp:73
 msgid "Description:"
-msgstr ""
+msgstr "Popis:"
 
 #: kmmsgpartdlg.cpp:83
 msgid "Encoding:"
-msgstr ""
+msgstr "Kódóvání:"
 
 #: kmmsgpartdlg.cpp:89
 msgid "none (8bit)"
-msgstr ""
+msgstr "¾ádné (8bit)"
 
 #: kmmsgpartdlg.cpp:90
 msgid "base 64"
-msgstr ""
+msgstr "base 64"
 
 #: kmmsgpartdlg.cpp:91
 msgid "quoted printable"
-msgstr ""
+msgstr "quoted printable"
 
 #: kmreaderwin.cpp:309 kmreaderwin.cpp:322 kmreaderwin.cpp:341
 #: kmreaderwin.cpp:362
 msgid "Cc: "
-msgstr ""
+msgstr "Kopie: "
 
 #: kmreaderwin.cpp:317 kmreaderwin.cpp:336 kmreaderwin.cpp:357
 msgid "From: "
-msgstr ""
+msgstr "Odesílatel: "
 
 #: kmreaderwin.cpp:319 kmreaderwin.cpp:338 kmreaderwin.cpp:359
 msgid "To: "
-msgstr ""
+msgstr "Komu: "
 
 #: kmreaderwin.cpp:326 kmreaderwin.cpp:347 kmreaderwin.cpp:372
 msgid "References: "
-msgstr ""
+msgstr "Reference: "
 
 #: kmreaderwin.cpp:343 kmreaderwin.cpp:356
 msgid "Date: "
-msgstr ""
+msgstr "Datum: "
 
 #: kmreaderwin.cpp:365
 msgid "Bcc: "
-msgstr ""
+msgstr "Dal¹í kopie: "
 
 #: kmreaderwin.cpp:368
-#, fuzzy
 msgid "Reply to: "
-msgstr "Odpovìdìt po¹tou"
+msgstr "Odpovìdìt autorovi: "
 
 #: kmreaderwin.cpp:375
 msgid "Groups: "
-msgstr ""
+msgstr "Skupiny: "
 
 #: kmreaderwin.cpp:412
 msgid "Encrypted message"
-msgstr ""
+msgstr "Za¹ifrovaná zpráva"
 
 #: kmreaderwin.cpp:418
 msgid "Cannot decrypt message:"
-msgstr ""
+msgstr "Není mo¾né de¹ifrovat zprávu:"
 
 #: kmreaderwin.cpp:436
 msgid "Message was signed by"
-msgstr ""
+msgstr "Zpáva byla signováma od"
 
 #: kmreaderwin.cpp:437
 msgid "Warning: Bad signature from"
-msgstr ""
+msgstr "Varování: Chybná signatura od"
 
 #: kmreaderwin.cpp:647
-#, fuzzy
 msgid "Attachment: "
-msgstr "Styl pøilohy:"
+msgstr "Pøiloha: "
 
 #: kmreaderwin.cpp:759
 msgid "Could not create temporary file"
-msgstr ""
+msgstr "Není mo¾né vytvoøit doèasný soubor"
 
 #: kmreaderwin.cpp:780
 #, c-format
 msgid "Could not save temporary file %s"
-msgstr ""
+msgstr "Není mo¾né ulo¾it doèasný soubor %s"
 
 #: kmreaderwin.cpp:809
-#, fuzzy
 msgid "Could not save file"
-msgstr "Spojení k serveru se nezdaøilo"
+msgstr "Není mo¾né ulo¾it soubor"
 
 #: kpgp.cpp:117
 msgid ""
 "Couldn't find PGP executable.\n"
 "Please check your PATH is set correctly."
 msgstr ""
+"Není mo¾né nalézt program PGP.\n"
+"Prosím zkontrolujte promìnnou PATH."
 
 #: kpgp.cpp:163
 msgid ""
 "Could not find PGP executable.\n"
 "Please check your PATH is set correctly."
 msgstr ""
+"Není mo¾né nalézt program PGP.\n"
+"Prosím zkontrolujte promìnnou PATH."
 
 #: kpgp.cpp:173
 msgid "The pass phrase is missing."
-msgstr ""
+msgstr "Chybí kíè."
 
 #: kpgp.cpp:445
 msgid "Message signed by"
-msgstr ""
+msgstr "Zpráva je signována od"
 
 #: kpgp.cpp:449
 msgid "Message has a bad signature from"
-msgstr ""
+msgstr "Zpráva má chybnou signaturu od"
 
 #: kpgp.cpp:457
 msgid "End PGP signed message"
-msgstr ""
+msgstr "Konec zprávy signované pomocí PGP"
 
 #: kpgp.cpp:622
 msgid "Bad pass Phrase; couldn't decrypt"
-msgstr ""
+msgstr "Chybný klíè; není mo¾né de¹ifrovat"
 
 #: kpgp.cpp:708
 msgid "Bad pass Phrase; couldn't sign"
-msgstr ""
+msgstr "Chybný klíè; není mo¾né provést signování"
 
 #: kpgp.cpp:765
-#, fuzzy
 msgid ""
 "Please enter your\n"
 "PGP passphrase"
-msgstr "Prosím zadejte své jméno"
+msgstr ""
+"Prosím zadejte Vá¹\n"
+"PGP klíè"
 
 #: kpgp.cpp:792
 msgid "PGP Security Check"
-msgstr ""
+msgstr "Kontrola bezpeènosti PGP"
 
 #: krnsender.cpp:59
 msgid "This server is read onlyyou can't post here!"
@@ -1351,27 +1320,27 @@ msgstr "Tento server umo¾òuje pouze ètení, není mo¾né sem posílat!"
 
 #: kmaddrbookdlg.cpp:20
 msgid "Addressbook"
-msgstr ""
+msgstr "Kniha adres"
 
 #: kmaddrbookdlg.cpp:95
 msgid "Addressbook Manager"
-msgstr ""
+msgstr "Správce knihy adres"
 
 #: kmaddrbookdlg.cpp:178
 msgid "KMail error"
-msgstr ""
+msgstr "Chyba KMailu"
 
 #: kmaddrbookdlg.cpp:179
 msgid "Storing addressbook failed"
-msgstr ""
+msgstr "Ukládání knihy adres se nezdaøilo"
 
 #: kmaddrbook.cpp:25
 msgid "KMail Error"
-msgstr ""
+msgstr "Chyba KMailu"
 
 #: kmaddrbook.cpp:26
 msgid "Storing the addressbook failed!\n"
-msgstr ""
+msgstr "Ukládání knihy adres se nezdaøilo!\n"
 
 #: expireDlg.cpp:22 expireDlg.cpp:27
 msgid "KRN - Expire Settings"
@@ -1411,7 +1380,7 @@ msgstr "Obecné"
 
 #: printdlg.cpp:35
 msgid "Printing System"
-msgstr ""
+msgstr "Tiskový systém"
 
 #: printdlg.cpp:37
 msgid "Use HTML Printing"
@@ -1422,9 +1391,8 @@ msgid "Use Direct Printing"
 msgstr "Pou¾ívat pøímý tisk"
 
 #: printdlg.cpp:45
-#, fuzzy
 msgid "Direct Printing"
-msgstr "Pou¾ívat pøímý tisk"
+msgstr "Pøímý tisk"
 
 #: printdlg.cpp:48
 msgid "Print using:"
@@ -1474,10 +1442,6 @@ msgstr "Ulo¾it jako"
 msgid "Match Articles With:"
 msgstr "Porovnat èlánky s:"
 
-#: rulesDlg.cpp:124
-msgid "Weight:"
-msgstr ""
-
 #: rulesDlg.cpp:126
 msgid "Negative"
 msgstr "Negativní"
@@ -1490,10 +1454,6 @@ msgstr "Jnémo pravidla:"
 msgid "KRN - Header Sorting"
 msgstr "KRN - Nastavení tøídìní"
 
-#: sortDlg.cpp:37
-msgid "None"
-msgstr ""
-
 #: sortDlg.cpp:39
 msgid "Sort by:"
 msgstr "Tøídit podle:"
@@ -1503,30 +1463,28 @@ msgid "Use Threading"
 msgstr "Pou¾ívat tøídìní"
 
 #: charsetsDlg.cpp:27
-#, fuzzy
 msgid "KRN - Charset Settings"
-msgstr "KRN - Nastavení tisku"
+msgstr "KRN - Nastavení kódóvání"
 
 #: charsetsDlg.cpp:29
-#, fuzzy
 msgid "KMail - Charset Settings"
-msgstr "KRN - Nastavení tisku"
+msgstr "KMail - Nastavení kódóvání"
 
 #: charsetsDlg.cpp:39
 msgid "Message charset"
-msgstr ""
+msgstr "Kódóvání zprávy"
 
 #: charsetsDlg.cpp:57
 msgid "Composer charset"
-msgstr ""
+msgstr "Kódóvání v editoru"
 
 #: charsetsDlg.cpp:75
 msgid "Set as &default"
-msgstr ""
+msgstr "Nastavit &ipmlicitní"
 
 #: charsetsDlg.cpp:80
 msgid "&7 bit is ASCII"
-msgstr ""
+msgstr "&7 bitové je ASCII"
 
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"

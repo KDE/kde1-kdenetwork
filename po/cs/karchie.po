@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: karchie\n"
 "POT-Creation-Date: 1998-11-03 10:19+0100\n"
-"PO-Revision-Date: 1998-10-28 21:14 CET\n"
+"PO-Revision-Date: 1998-11-05 09:04+01:00\n"
 "Last-Translator: Miroslav Flídr <flidr@kky.zcu.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -22,22 +22,18 @@ msgid "&Open Dir"
 msgstr "O&tevøít adresáø"
 
 #: KAMenu.cpp:88 KAView.cpp:156
-#, fuzzy
 msgid "&Download..."
 msgstr "&Pøijmout..."
 
 #: KAMenu.cpp:91
-#, fuzzy
 msgid "&Load List..."
 msgstr "&Nahrát seznam..."
 
 #: KAMenu.cpp:92
-#, fuzzy
 msgid "&Save List..."
 msgstr "U&lo¾it seznam..."
 
 #: KAMenu.cpp:93
-#, fuzzy
 msgid "Expor&t List..."
 msgstr "&Exportovat seznam..."
 
@@ -110,7 +106,6 @@ msgid "&Nicelevel"
 msgstr ""
 
 #: KAMenu.cpp:143
-#, fuzzy
 msgid "&All..."
 msgstr "&V¹e..."
 
@@ -177,27 +172,27 @@ msgstr "Stav: pøipraven                       "
 #: KAStatusBar.cpp:81
 #, c-format
 msgid "Status: %s"
-msgstr ""
+msgstr "Stav: %s"
 
 #: KAStatusBar.cpp:91
-#, fuzzy, c-format
+#, c-format
 msgid "Hosts: %s"
-msgstr "Hostitel:"
+msgstr "Hostitel: %s"
 
 #: KAStatusBar.cpp:101
 #, c-format
 msgid "%d hits"
-msgstr ""
+msgstr "%d shod"
 
 #: KAStatusBar.cpp:111
 #, c-format
 msgid "Progress: %d"
-msgstr ""
+msgstr "Vývoj: %d"
 
 #: KAStatusBar.cpp:121
 #, c-format
 msgid "%d try."
-msgstr ""
+msgstr "%d pokus."
 
 #: KASettings.cpp:567
 msgid "Reset"
@@ -229,16 +224,15 @@ msgstr "Soubor:"
 
 #: KAView.cpp:275
 msgid "Size:"
-msgstr ""
+msgstr "Velikost:"
 
 #: KAView.cpp:277
 msgid "Mode:"
 msgstr "Mód:"
 
 #: KAView.cpp:279
-#, fuzzy
 msgid "Date:"
-msgstr "podle &data"
+msgstr "Datum:"
 
 #: KArchie.cpp:441 KArchie.cpp:483
 #, c-format

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmail 0.4.4\n"
 "POT-Creation-Date: 1998-11-05 02:07+0100\n"
-"PO-Revision-Date: 1998-06-20 18:07 CEST\n"
+"PO-Revision-Date: 1998-11-05 09:01+01:00\n"
 "Last-Translator: Miroslav Flídr <flidr@ky.zcu.cz>\n"
 "Language-Team: Czech <sc@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -85,11 +85,11 @@ msgstr ""
 
 #: kmmainwin.cpp:479
 msgid "KMail notification!"
-msgstr ""
+msgstr "Upozornìní programu KMail!"
 
 #: kmmainwin.cpp:480
 msgid "Only messages in the outbox folder can be edited!"
-msgstr ""
+msgstr "Pouze zprávy ze slo¾ky outbox mohou být upravovány!"
 
 #: kmmainwin.cpp:515
 msgid "Message as Plain Text"
@@ -229,7 +229,7 @@ msgstr "Vy&prázdnit"
 
 #: kmfilterdlg.cpp:147 kmmainwin.cpp:918
 msgid "New"
-msgstr ""
+msgstr "Nová"
 
 #: kmmainwin.cpp:919
 msgid "Unread"
@@ -253,34 +253,31 @@ msgstr "Poslat"
 
 #: kmmainwin.cpp:927
 msgid "&Next"
-msgstr ""
+msgstr "&Následující"
 
 #: kmmainwin.cpp:929
 msgid "Next unread"
 msgstr "Následující nepøeètený"
 
 #: kmmainwin.cpp:931
-#, fuzzy
 msgid "&Previous"
-msgstr "Pøedchozí nepøeètený"
+msgstr "&Pøedchozí"
 
 #: kmmainwin.cpp:933
 msgid "Previous unread"
 msgstr "Pøedchozí nepøeètený"
 
 #: kmmainwin.cpp:943
-#, fuzzy
 msgid "Edi&t..."
-msgstr "Tisknout..."
+msgstr "Upravi&t..."
 
 #: kmmainwin.cpp:946
 msgid "&Set Status"
 msgstr "N&astavit stav"
 
 #: kmmainwin.cpp:948
-#, fuzzy
 msgid "Mar&k all"
-msgstr "Oznaèit v¹e"
+msgstr "O&znaèit v¹e"
 
 #: kmmainwin.cpp:957
 msgid "Send again..."
@@ -376,9 +373,8 @@ msgstr "Inicializace..."
 
 #: kmfolderdia.cpp:38 kmmsgpartdlg.cpp:62 kmsettings.cpp:175
 #: kmsettings.cpp:870
-#, fuzzy
 msgid "Name:"
-msgstr "Login jméno:"
+msgstr "Jméno:"
 
 #: kmcomposewin.cpp:1447 kmfolderdia.cpp:44 kmfolderdia.cpp:120
 msgid "unnamed"
@@ -450,7 +446,7 @@ msgstr "Konta:  (zalo¾te alespoò jedno konto)"
 
 #: kmcomposewin.cpp:139 kmsettings.cpp:265
 msgid "Name"
-msgstr ""
+msgstr "Jméno"
 
 #: kmcomposewin.cpp:142 kmsettings.cpp:266
 msgid "Type"
@@ -586,15 +582,15 @@ msgstr "vyprázdnit ko¹ pøi ukonèení"
 
 #: kmsettings.cpp:537
 msgid "Send Mail in outbox Folder on Check"
-msgstr ""
+msgstr "Odeslat zprávy ze slo¾ky outbox"
 
 #: kmsettings.cpp:552
 msgid "Misc"
-msgstr ""
+msgstr "Ruzné"
 
 #: kmsettings.cpp:559
 msgid "PGP"
-msgstr ""
+msgstr "PGP"
 
 #: kmsettings.cpp:582
 msgid "Message Body Font"
@@ -621,9 +617,8 @@ msgid "Choose Signature File"
 msgstr "Vybìr souboru s podpisem"
 
 #: kmsettings.cpp:862
-#, fuzzy
 msgid "Type:"
-msgstr "Typ"
+msgstr "Typ:"
 
 #: kmsettings.cpp:875
 msgid "Local Account"
@@ -651,7 +646,7 @@ msgstr "Smazat po¹tu na serveru"
 
 #: kmsettings.cpp:908
 msgid "Enable interval Mail checking"
-msgstr ""
+msgstr "Aktivovat intervalovou kontrolu nové po¹ty"
 
 #: kmsettings.cpp:922
 msgid "Store new mail in account:"
@@ -686,9 +681,8 @@ msgid "Subject"
 msgstr "Pøedmìt"
 
 #: kmheaders.cpp:42
-#, fuzzy
 msgid "Date"
-msgstr "Datum: "
+msgstr "Datum"
 
 #: kmheaders.cpp:187
 #, c-format
@@ -751,7 +745,7 @@ msgstr "Editor KMailu"
 
 #: kmcomposewin.cpp:140
 msgid "Size"
-msgstr ""
+msgstr "Velikost"
 
 #: kmcomposewin.cpp:141
 msgid "Encoding"
@@ -822,9 +816,8 @@ msgid "Replace..."
 msgstr "Nahradit..."
 
 #: kmcomposewin.cpp:476
-#, fuzzy
 msgid "&Spellcheck..."
-msgstr "KMail: Kontrola pravopisu"
+msgstr "&Kontrola pravopisu..."
 
 #: kmcomposewin.cpp:483
 msgid "&Urgent"
@@ -839,9 +832,8 @@ msgid "&Confirm read"
 msgstr "Potvr&zení pøeètení"
 
 #: kmcomposewin.cpp:490
-#, fuzzy
 msgid "&Spellchecker..."
-msgstr "KMail: Kontrola pravopisu"
+msgstr "&Kontrola pravopisu..."
 
 #: kmcomposewin.cpp:493
 msgid "&Charsets..."
@@ -908,9 +900,8 @@ msgid "&Attach"
 msgstr "Pøi&lo¾it"
 
 #: kmcomposewin.cpp:551
-#, fuzzy
 msgid "Send message"
-msgstr "Odeslat zprávy:"
+msgstr "Odeslat zprávu"
 
 #: kmcomposewin.cpp:575
 msgid "Cut selection"
@@ -993,13 +984,12 @@ msgid "Subject:"
 msgstr "Pøedmìt:"
 
 #: kmcomposewin.cpp:1469
-#, fuzzy
 msgid "Date:"
-msgstr "Datum: "
+msgstr "Datum:"
 
 #: kmcomposewin.cpp:1999
 msgid "Spellcheck - KMail"
-msgstr ""
+msgstr "Kontrola pravopisu - KMail"
 
 #: kmcomposewin.cpp:2025
 msgid ""
@@ -1137,13 +1127,15 @@ msgstr "fatální chyba"
 
 #: main.cpp:161
 msgid "KMail notification"
-msgstr ""
+msgstr "Oznámení programu KMail"
 
 #: main.cpp:162
 msgid ""
 "$HOME is not set!\n"
 "KMail cannot start without it.\n"
 msgstr ""
+"Promìnná $HOME není nastravena!\n"
+"KMail bez ní nemù¾e být spu¹tìn.\n"
 
 #: main.cpp:228
 msgid ""
@@ -1165,7 +1157,7 @@ msgstr ""
 
 #: main.cpp:322
 msgid "Loading addressbook failed"
-msgstr ""
+msgstr "Nahrávání knihy adres selhalo"
 
 #: main.cpp:392
 #, c-format
@@ -1173,11 +1165,8 @@ msgid "Unknown command line option: %s"
 msgstr "Neznámý parametr pøíkazové øádky: %s"
 
 #: kmacctlocal.cpp:76
-#, fuzzy
 msgid "Cannot open file:"
-msgstr ""
-"Není mo¾né otevøít soubor:\n"
-"%s"
+msgstr "Není mo¾né otevøít soubor:"
 
 #: kmacctlocal.cpp:105
 #, c-format
@@ -1491,9 +1480,8 @@ msgid "The pass phrase is missing."
 msgstr "Chybí klíè."
 
 #: kpgp.cpp:286 kpgp.cpp:312 kpgp.cpp:325 kpgp.cpp:344 kpgp.cpp:361
-#, fuzzy
 msgid "PGP Warning"
-msgstr "pozor"
+msgstr "Varování PGP"
 
 #: kpgp.cpp:287
 msgid ""
@@ -1501,23 +1489,25 @@ msgid ""
 "recipients of this mail.\n"
 "Message will not be encrypted."
 msgstr ""
+"Není mo¾né nalézt veøejný klíè pro\n"
+"pøíjemte této zprávy.\n"
+"Zpráva nebude ¹ifrována."
 
 #: kpgp.cpp:296
 msgid "Could not find the public keys for\n"
-msgstr ""
+msgstr "není mo¾né nalézt veøejný klíè od\n"
 
 #: kpgp.cpp:307
 msgid "These persons will not be able to\n"
-msgstr ""
+msgstr "Tyto osoby nebudou schopna\n"
 
 #: kpgp.cpp:309
 msgid "This person will not be able to\n"
-msgstr ""
+msgstr "Tato osoba nebude schopna\n"
 
 #: kpgp.cpp:311
-#, fuzzy
 msgid "decrypt the message."
-msgstr "Za¹ifrovat zprávu"
+msgstr "de¹ifrovat zprávu."
 
 #: kpgp.cpp:326
 msgid ""
@@ -1525,26 +1515,33 @@ msgid ""
 "Do you wan't to try again, continue and\n"
 "leave the message unsigned, or cancel sending the message?"
 msgstr ""
+"Zadali jste neplatný klíè. Chcete jej zadat znova, \n"
+"pokraèovat a nechat tuto zprávu nesignovanou\n"
+"nebo pøeru¹it odeslání této zprávy?"
 
 #: kpgp.cpp:331
 msgid "Retry"
-msgstr ""
+msgstr "Opakovat"
 
 #: kpgp.cpp:342
 msgid ""
 "Do you wan't to encrypt anyway, leave the\n"
 "message as is, or cancel the message?"
 msgstr ""
+"Chcete i pøesto ¹ifrovat, ponechat zprávu\n"
+"jak je nebo zru¹it zprávu?"
 
 #: kpgp.cpp:346
 msgid "Encrypt"
-msgstr ""
+msgstr "©ifrovat"
 
 #: kpgp.cpp:359
 msgid ""
 "Do you wan't to leave the message as is,\n"
 "or cancel the message?"
 msgstr ""
+"Chcete nechat zprávu jak je\n"
+"nebo zru¹it zprávu?"
 
 #: kpgp.cpp:711
 msgid ""
@@ -1564,7 +1561,7 @@ msgstr "Identita u¾ivatele PGP:"
 
 #: kpgp.cpp:776
 msgid "Store passphrase"
-msgstr ""
+msgstr "Ulo¾it klíè"
 
 #: kpgp.cpp:782
 msgid "Always encrypt to self"
@@ -1576,7 +1573,7 @@ msgstr "Vadný klíè; nemohu podepsat"
 
 #: kpgpbase.cpp:354
 msgid "error running pgp"
-msgstr ""
+msgstr "chyba pøi bìhu pgp"
 
 #: kpgpbase.cpp:371 kpgpbase.cpp:662
 msgid "Bad pass Phrase; couldn't decrypt"
@@ -1584,36 +1581,38 @@ msgstr "Vadný klíè; nemohu rozkódovat"
 
 #: kpgpbase.cpp:382 kpgpbase.cpp:673
 msgid "Do not have the secret key for this message"
-msgstr ""
+msgstr "Není k dispozici tajný klíè k této zprávì"
 
 #: kpgpbase.cpp:410
 msgid "unknown key ID "
-msgstr ""
+msgstr "neznámé ID klíèe"
 
 #: kpgpbase.cpp:430
 msgid "??? (file ~/.pgp/pubring.pgp not found)"
-msgstr ""
+msgstr "??? (soubor ~/.pgp/pubring.pgp nenalezen)"
 
 #: kpgpbase.cpp:585
-#, fuzzy
 msgid "The passphrase you entered is invalid."
-msgstr "Chybí klíè."
+msgstr "Klíè, který jste zadali je neplatný."
 
 #: kpgpbase.cpp:611
 msgid ""
 "The key(s) you wan't to encrypt your message\n"
 "to are not trusted. No encryption done."
 msgstr ""
+"Klíè(e), kterým chcete ¹ifrovat zprávu\n"
+"není dùvìryhodný. Nebylo provedeno ¹ifrování."
 
 #: kpgpbase.cpp:614
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The following key(s) are not trusted:\n"
 "%s\n"
 "They will not be able to decrypt the message"
 msgstr ""
-"veøejný klíè pro %s nenalezen.\n"
-"Tato osoba nebude schopna de¹ifrovat zprávu."
+"Nasledující klíè(e) jsou nedùvìryhodné:\n"
+"%s\n"
+"Nebudou proto pou¾ity k ¹ifrování zprávy."
 
 #: kfileio.cpp:26 kmaddrbook.cpp:162
 msgid "File I/O Error"
@@ -1729,13 +1728,12 @@ msgid "Could only write %d bytes of %d."
 msgstr "Není mo¾né zapsat %d bytù z %d."
 
 #: kmaddrbook.cpp:25
-#, fuzzy
 msgid "KMail Error"
 msgstr "Chyba KMailu"
 
 #: kmaddrbook.cpp:26
 msgid "Storing the addressbook failed!\n"
-msgstr ""
+msgstr "Nezdaøilo se ukládání knihy adres!\n"
 
 #: kmaddrbookdlg.cpp:20
 msgid "Addressbook"
@@ -1746,9 +1744,8 @@ msgid "Addressbook Manager"
 msgstr "Správce adresáøe"
 
 #: kmaddrbookdlg.cpp:179
-#, fuzzy
 msgid "Storing addressbook failed"
-msgstr "Pøidat do adresáøe"
+msgstr "Nezdaøilo se ukládání knihy adres!"
 
 #: kmiostatusdlg.cpp:32
 msgid "&Abort"
@@ -1801,24 +1798,3 @@ msgstr "&7 bitové je ASCII"
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
 msgstr "&Oznaè neznámé znaky"
-
-#~ msgid "Error during PGP:"
-#~ msgstr "Chyba pøi PGP:"
-
-#~ msgid "Message signed by"
-#~ msgstr "Zpráva podepsána od"
-
-#~ msgid "Message has a bad signature from"
-#~ msgstr "Zpráva má vadný podpis od"
-
-#~ msgid "End PGP signed message"
-#~ msgstr "Konec zprávy podepsané pomocí PGP"
-
-#, fuzzy
-#~ msgid ""
-#~ "Could not find public keys matching the\n"
-#~ "userid(s) %s. These persons won't be able\n"
-#~ "to read the message."
-#~ msgstr ""
-#~ "veøejný klíè pro %s nenalezen.\n"
-#~ "Tato osoba nebude schopna de¹ifrovat zprávu."
