@@ -321,14 +321,10 @@ void ArticleList::clear()
 
 QString noRe(QString subject)
 {
-    if (subject.find("Re: ")==0)
-    {
-        return subject.right(subject.length()-4);
-    }
-    else if (subject.find("Re:")==0)
-    {
-        return subject.right(subject.length()-3);
-    }
+    if (subject.left(3)=="Re:")
+        subject=subject.right(subject.length()-3);
+    if (subject.left(1)==" ")
+        subject=subject.right(subject.length()-1);
     return subject;
 }
 
@@ -341,86 +337,59 @@ bool isParent(Article *parent,Article *child)
         return false;
 }
 
-/*
 void ArticleList::thread(bool sortBySubject=false)
 {
-    //This isn't working
-    return;
-    if (count()<=1)
+
+    if (count()<2)
     {
         return; //not much to thread
     }
-    
     QList <ArticleList> threads;
     QListIterator <ArticleList> thread(threads);
     threads.setAutoDelete(false);
-    
     Article *iter;
     //Make a thread for each article
-    //Sorted by Subjects, ignoring initial "Re:"'s
     for (iter=this->first();iter!=0;iter=this->next())
     {
         ArticleList *l=new ArticleList;
         l->append(iter);
         threads.append(l);
     }
-    
+
+    thread.toFirst();
     //Now consolidate threads
-    bool breaking=false;
-    bool dirty=false;
     ArticleList *parentThread;
     ArticleList *childThread;
     thread.toFirst();
     for (;thread.current();++thread)
     {
-        dirty=false;
-        childThread=thread.current();
-        if (childThread->isEmpty())
+        parentThread=thread.current();
+        if (thread.current()->isEmpty())
+            //thread has already been adopted
             continue;
-        //So I got a thread. What should I do with it?
-        //Look for feasible parents in the thread list
-        //Start with my freshest reference, and go backwards.
-        Article *art=thread.current()->first();
-        //Go over all threads until I find a parent.
+        //look for current's children
         QListIterator <ArticleList> it(threads);
         for (;it.current();++it)
         {
-            parentThread=it.current();
-            QListIterator <Article> it2(*it.current());
-            for (;it2.current();++it2)
+            if (it.current()->isEmpty())
+                //thread has already been adopted
+                continue;
+            childThread=it.current();
+            if (isParent(parentThread->first(),childThread->first()))
             {
-                if (isParent(it2.current(),art))
+                //It's parent's daughter, adopt it
+                QListIterator <Article> it2(*childThread);
+                it2.toFirst();
+                for (;it2.current();++it2)
                 {
-                    //This is a parent, so I'll attach myself to this thread
-                    //and jump out
-                    breaking=true;
-                    break;
+                    parentThread->append(it2.current());
                 }
+                childThread->clear();
             }
-            if (breaking)
-                break;
-        }
-        if (breaking)
-        {
-            //I should put the current thread attached in the end of
-            //parentThread
-
-            //So, remove the child thread from the threads list
-            //Now iterate over childThread, and move the articles to
-            //parentThread
-            QListIterator <Article> it2(*childThread);
-            for (;it2.current();++it2)
-            {
-                parentThread->append(it2.current());
-            }
-            childThread->clear();
-            //And start back from the first thread.
-            //If no threads need reparenting, the outer loop will end
-            dirty=true;
         }
     }
     clear();
-    
+
     //If requested, sort the threads by subject
     QList <ArticleList> sortedThreads;
     if (sortBySubject)
@@ -446,12 +415,6 @@ void ArticleList::thread(bool sortBySubject=false)
         threads=sortedThreads;
     }
 
-    thread.toFirst();
-    for (;thread.current();++thread)
-    {
-        debug (thread.current()->first()->Subject.data());
-    }
-    
     //Now thread the subthreads
     //And rebuild the list from them
     thread.toFirst();
@@ -462,7 +425,7 @@ void ArticleList::thread(bool sortBySubject=false)
         {
             append(thread.current()->first());
             thread.current()->remove(0);
-//            thread.current()->thread();
+            thread.current()->thread();
         }
         //And add all the articles back in.
         QListIterator <Article> it2(*thread.current());
@@ -471,182 +434,7 @@ void ArticleList::thread(bool sortBySubject=false)
             append(it2.current());
         }
     }
-    
-    }
-    */
-
-void ArticleList::thread()
-{
-    if (count()<=1)
-    {
-        return; //not much to thread
-    }
-    //this can take a while
-    qApp->processEvents();
-    
-    QDict <ArticleList> threads;
-    QStrList IDs;
-    QStrList roots;
-    
-    //Make a list of article IDs
-    Article *iter;
-    for (iter=this->first();iter!=0;iter=this->next())
-    {
-        IDs.append(iter->ID.data());
-    }
-    
-    for (iter=this->first();iter!=0;iter=this->next())
-    {
-        bool root=true;
-        
-        //For each reference
-        
-        for (char *ref=iter->Refs.first();ref!=0;ref=iter->Refs.next())
-        {
-            //See if it refers to any of these articles
-            int index=IDs.find(ref);
-            if (index!=-1)
-            {
-                //if it is a loop
-                if (artSpool[IDs.at(index)]->Refs.contains(ref))
-                {
-                    //hate it, and then skip the reference.
-                    debug ("breaking reference loop! (maybe)");
-                    continue;
-                }
-                root=false;
-                break;
-            }
-        }
-        //If it's a root item, start a thread with it
-        if (root)
-        {
-            ArticleList *list=new ArticleList();
-            list->append(iter);
-            threads.insert(iter->ID.data(),list);
-            //Add it to the list of roots, sorted by order of subject!
-            int i=0;
-            for (char *_root=roots.first();_root!=0;_root=roots.next())
-            {
-                if (noRe(threads.find(_root)->first()->Subject) >=
-                    noRe(iter->Subject).data())
-                {
-                    break;
-                }
-                i++;
-            }
-            roots.insert(i,iter->ID.data());
-        }
-    }
-
-    //Remove all roots from the list
-    for (char *s=roots.first();s!=0;s=roots.next())
-    {
-        //Ain't this a fine statement?
-        this->remove(this->findRef(threads[s]->first()));
-    }
-
-    //This shouldn't exist: an article that makes a reference to another
-    //but not to it's ancesters and/or our root article in the
-    //thread of the second.
-    //But.... it happens about 10% of the time
-
-    ArticleList brokenlist;
-    ArticleList notbrokenlist;
-    
-    for (iter=this->first();iter!=0;iter=this->next())
-    {
-        bool broken=true;
-        
-        //For each reference
-        for (char *ref=iter->Refs.first();ref!=0;ref=iter->Refs.next())
-        {
-            //See if it refers to any of these articles
-            if (roots.find(ref)!=-1)
-            {
-                broken=false;
-                break;
-            }
-        }
-        //If it's a broken item, complain
-        if (broken)
-        {
-            debug ("Broken reference, fixing it");
-            //put it in the broken list
-            brokenlist.append(iter);
-        }
-    }
-
-    //add the broken references as roots. this sucks, but inserting
-    //them properly looks like work
-    for (Article *art=brokenlist.first();art!=0;art=brokenlist.next())
-    {
-        ArticleList *list=new ArticleList();
-        list->append(art);
-        threads.insert(art->ID.data(),list);
-        //remove it from the current list
-        this->removeRef(art);
-        //Add it to the list of roots, sorted by order of subject!
-        int i=0;
-        for (char *_root=roots.first();_root!=0;_root=roots.next())
-        {
-            if (noRe(threads.find(_root)->first()->Subject) >=
-                noRe(art->Subject).data())
-            {
-                break;
-            }
-            i++;
-        }
-        roots.insert(i,art->ID.data());
-    }
-
-    
-    for (iter=this->first();iter!=0;)
-    {
-        bool inserted=false;
-        for (char *ref=iter->Refs.first();ref!=0;ref=iter->Refs.next())
-        {
-            //If this ref is to an existing root,
-            //I'll place this article in that thread.
-            int i=roots.find(ref);
-            if (i!=-1)
-            {
-                threads[ref]->append(iter);
-                inserted=true;
-            }
-        }
-        this->remove();
-        iter=this->first();
-    }
-
-    //whack the list
-    clear();
-    //And now reassemble the list from the threads
-    //Iterate all the threads
-    for (char *s=roots.first();s!=0;s=roots.next())
-    {
-        ArticleList *l=threads.find(s);
-        // Thread the thread
-        // I know the first one is the root, but the rest is suspect.
-        // So, I'll take the root, thread the rest, and then add them.
-        if (l->first())
-            this->append(l->first());
-        else
-        {
-            debug ("huh? bad pointer in athread with %d articles!",l->count());
-            continue;
-        }
-        l->remove(0);
-        l->thread();
-        //Add all articles in the thread back to the list
-        for (Article *art=l->first();art!=0;art=l->next())
-        {
-            this->append(art);
-        }
-    }
-
 }
-
 
 ArticleList::~ArticleList()
 {

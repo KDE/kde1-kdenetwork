@@ -299,7 +299,7 @@ void Artdlg::fillTree ()
     debug ("count1-->%d",artList.count());
     statusBar()->changeItem("Threading...",1);
     qApp->processEvents ();
-    artList.thread();
+    artList.thread(true);
     debug ("count2-->%d",artList.count());
 
     //had to split this in two loops because the order of articles is not

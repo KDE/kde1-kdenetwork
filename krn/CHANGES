@@ -4,8 +4,10 @@ Changes made Aug 8
 
 * [Roberto] Placed Aug-9 in the web site.
 
-* [Roberto] Wrote new threading code, but it's too slow.
-  I have some new ideas, but I reverted to the old one by now. 
+* [Roberto] Wrote new threading code, it's no speed demon, but it looks more
+  correct than the old one. It threads 1500 articles in about 12 seconds in
+  my PC. It's still slow, but it's not optimized at all.
+  And it's much shorter than it used to be, too.
 
 -----------------------------------------------------------------------------
 Changes made Aug 8

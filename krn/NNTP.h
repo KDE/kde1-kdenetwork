@@ -78,7 +78,7 @@ public:
     void append(Article *item);
     bool remove(uint index);
     bool remove();
-    void thread();
+    void thread(bool sortBySubject=false);
     virtual void clear();
     
 };
