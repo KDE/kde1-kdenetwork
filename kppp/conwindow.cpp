@@ -109,7 +109,7 @@ void ConWindow::accounting(bool on) {
   MIN_SIZE(session_bill_l);
   MIN_SIZE(total_bill_l);
   MIN_SIZE(info2);
-  MIN_SIZE(timelabel2);
+  MIN_SIZE(timelabel2);  
 
   info2->setAlignment(AlignRight);
   timelabel2->setAlignment(AlignRight);

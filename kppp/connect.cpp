@@ -333,7 +333,7 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
   if(vmain == 101) {
     if(!expecting) {
       modem_in_connect_state=true; // modem will no longer respond to AT commands
- 
+
       p_xppp->startAccounting();
       p_xppp->con_win->startClock();
 

@@ -264,7 +264,7 @@ int main( int argc, char **argv ) {
 
 
 XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
-  : QWidget(parent, name){
+  : QWidget(parent, name) {
 
   bool config;
   config = gpppdata.open(app);
@@ -729,6 +729,11 @@ void XPPPWidget::quitbutton() {
 
 }
 
+void XPPPWidget::rulesetLoadError() {
+  QMessageBox::warning(this, 
+		       klocale->translate("Error"), 
+		       ruleset_load_errmsg.data());
+}
 
 void XPPPWidget::startAccounting() {
   // load the ruleset
@@ -737,17 +742,20 @@ void XPPPWidget::startAccounting() {
     return;
   
   if(!accounting.loadRuleSet(gpppdata.accountingFile())) {
-    QString s = klocale->translate("Can not load the accounting\nruleset \"");
+    QString s= klocale->translate("Can not load the accounting\nruleset \"");
     s += gpppdata.accountingFile();
     s += "\"!";
-    QMessageBox::warning(this, klocale->translate("Error"), s.data());
+
+    // starting the messagebox with a timer will prevent us
+    // from blocking the calling function ConnectWidget::timerEvent
+    ruleset_load_errmsg = s;
+    QTimer::singleShot(0, this, SLOT(rulesetLoadError()));
     return;
-  } 
+    } 
   else
     {
-      accounting.slotStart();
+	accounting.slotStart();
     }
-
 }
 
 void XPPPWidget::stopAccounting() {

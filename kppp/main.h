@@ -92,6 +92,7 @@ private slots:
   void quitbutton();
   void helpbutton();
   void setup();
+  void rulesetLoadError();
 
 public slots:
   void disconnect();
@@ -114,10 +115,10 @@ public:
   ConWindow *con_win;
   PPPStatsDlg *stats;
   Accounting accounting;
-  QPushButton *quit_b;  
+  QPushButton *quit_b;
 
 private:
-
+  QString ruleset_load_errmsg;
 
   QPushButton *help_b;
   QPushButton *setup_b;
