@@ -349,7 +349,7 @@ void PPPData::setSpeed( const char *n ) {
   writeConfig(MODEM_GRP, SPEED_KEY, n);
 }
 
-
+#if 0
 void PPPData::setUseCDLine(const int n) {
   writeConfig(MODEM_GRP,USECDLINE_KEY,n);
 }
@@ -358,7 +358,7 @@ void PPPData::setUseCDLine(const int n) {
 int PPPData::UseCDLine() {
   return  readNumConfig(MODEM_GRP,USECDLINE_KEY,0);
 }
-
+#endif
 
 const char*  PPPData::modemEscapeStr() {
   return readConfig(MODEM_GRP,ESCAPESTR_KEY,"+++");

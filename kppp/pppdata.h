@@ -99,7 +99,7 @@
 #define ESCAPESTR_KEY      "EscapeString"
 #define ESCAPERESP_KEY     "EscapeResponse"
 #define ESCAPEGUARDTIME_KEY "EscapeGuardTime"
-#define USECDLINE_KEY      "UseCDLine"
+// #define USECDLINE_KEY      "UseCDLine"
 #define VOLUME_HIGH        "VolumeHigh"
 #define VOLUME_MEDIUM      "VolumeMedium"
 #define VOLUME_OFF         "VolumeOff"
@@ -287,8 +287,10 @@ public:
   const char* modemAnswerResp();
   void setModemAnswerResp(const char*);
 
+#if 0
   void setUseCDLine(const int n);
   int  UseCDLine();
+#endif
 
   // functions to set/get account information
   int count();

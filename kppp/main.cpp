@@ -878,7 +878,7 @@ void dieppp(int) {
 	
 	KMsgBox msgb(0, 
 		     i18n("Error"), 
-		     i18n(msg),
+		     msg,
 		     KMsgBox::STOP | KMsgBox::DB_FIRST,
 		     i18n("OK"),
 		     i18n("Details..."));

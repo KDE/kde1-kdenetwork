@@ -500,7 +500,6 @@ ModemWidget2::ModemWidget2( QWidget *parent, const char *name)
 		       "The default is 0 seconds, you should not change\n"
 		       "this unless you need to.")));
 
-  // the checkboxes
   l1->addSpacing(10);
   l1->addStretch(1);
 
@@ -526,7 +525,7 @@ ModemWidget2::ModemWidget2( QWidget *parent, const char *name)
 		       "If this does not work for your modem,\n"
 		       "you must modify the modem volume command")));
 
-
+#if 0
   QHBoxLayout *l12 = new QHBoxLayout;
   l1->addLayout(l12);
   l12->addStretch(1);
@@ -543,7 +542,7 @@ ModemWidget2::ModemWidget2( QWidget *parent, const char *name)
 		       "problems with this, do not modify this setting.\n"
 		       "\n"
 		       "<b>Default</b>: off"));
-
+#endif
 
   // add the buttons 
   QHBoxLayout *l11 = new QHBoxLayout;
@@ -609,11 +608,11 @@ void ModemWidget2::terminal() {
   terminal.exec();
 }
 
-
+#if 0
 void ModemWidget2::use_cdline_toggled(bool on) {
     gpppdata.setUseCDLine(on);
 }
-
+#endif
 
 void ModemWidget2::busywaitchanged(const char *n) {
   gpppdata.setbusyWait(n);

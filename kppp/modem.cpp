@@ -120,6 +120,7 @@ bool Modem::opentty() {
     return false;
   }
   
+#if 0
   if(gpppdata.UseCDLine()) {
     if(ioctl(modemfd, TIOCMGET, &flags) == -1) {
       errmsg = i18n("Sorry, can't detect state of CD line.");
@@ -134,6 +135,7 @@ bool Modem::opentty() {
       return false;
     }
   }
+#endif
 	
   tcdrain (modemfd);
   tcflush (modemfd, TCIOFLUSH);
