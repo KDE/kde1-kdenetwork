@@ -217,6 +217,11 @@ Inherited (name)
     msgSender->setNNTP(server);
     
     connect (server,SIGNAL(newStatus(const char *)),this,SLOT(updateCounter(const char *)));
+    conf->setGroup("Geometry");
+    setGeometry(conf->readNumEntry("GroupX",100),
+                conf->readNumEntry("GroupY",40),
+                conf->readNumEntry("GroupW",400),
+                conf->readNumEntry("GroupH",400));
     show();
     actions (LOAD_FILES);
     fillTree();
@@ -246,6 +251,11 @@ Groupdlg::~Groupdlg ()
     }
     conf->setGroup("ArticleListOptions");
     conf->writeEntry("OpenWindows",openwin);
+    conf->setGroup("Geometry");
+    conf->writeEntry("GroupX",x());
+    conf->writeEntry("GroupY",y());
+    conf->writeEntry("GroupW",width());
+    conf->writeEntry("GroupH",height());
 }
 
 void Groupdlg::openGroup (QString name)

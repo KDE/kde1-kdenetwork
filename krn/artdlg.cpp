@@ -285,6 +285,11 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     
     QObject::connect (acc,SIGNAL(activated(int)),this,SLOT(actions(int)));
     QObject::connect (messwin,SIGNAL(statusMsg(const char*)),this,SLOT(updateCounter(const char*)));
+    conf->setGroup("Geometry");
+    setGeometry(conf->readNumEntry("ArtX",100),
+                conf->readNumEntry("ArtY",40),
+                conf->readNumEntry("ArtW",400),
+                conf->readNumEntry("ArtH",400));
     show();
 
     qApp->processEvents ();
@@ -317,6 +322,11 @@ void Artdlg::closeEvent(QCloseEvent *)
 
 Artdlg::~Artdlg ()
 {
+    conf->setGroup("Geometry");
+    conf->writeEntry("ArtX",x());
+    conf->writeEntry("ArtY",y());
+    conf->writeEntry("ArtW",width());
+    conf->writeEntry("ArtH",height());
     conf->sync();
 }
 
