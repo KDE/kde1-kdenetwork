@@ -20,7 +20,7 @@ class ircListItem : public QObject,
   virtual int row();
 
   QString getText(){
-    return text;
+    return itext;
   }
 
   void setWrapping(bool);
@@ -41,8 +41,8 @@ protected:
 private:
 
   QPixmap *pm;
-  QColor *colour;
-  QString text;
+  const QColor *colour;
+  QString itext;
 
   int rows;
 

@@ -29,16 +29,15 @@ ircListItem::ircListItem(QString s, const QColor *c, QListBox *lb, QPixmap *p = 
     
 {
 
-  text = s;
-  colour = (QColor *) c;
+  itext = s.data();
+  setText(s);
+  colour = c;
   pm = p;
   parent_lb = lb;
 
   WantColour = _WantColour;
 
   Wrapping = TRUE;
-
-  setText(s);
 
   rows = 1;
   linewidth = 0;
@@ -52,6 +51,8 @@ ircListItem::ircListItem(QString s, const QColor *c, QListBox *lb, QPixmap *p = 
 ircListItem::~ircListItem()
 {
   delete paint_text;
+  itext.truncate(0);
+  
 }
 
 void ircListItem::paint(QPainter *p)
@@ -121,61 +122,61 @@ void ircListItem::setupPainterText()
 
   paint_text->clear();
   int max_width = parent_lb->width()-35;
-  if((fm.width(text) > max_width) && (Wrapping == TRUE)){
+  if((fm.width(itext) > max_width) && (Wrapping == TRUE)){
     int lastp = 0;
-    int width = xPos - fm.width(text[0]);
+    int width = xPos - fm.width(itext[0]);
     uint i;
     int ig = 0;
-    for(i = 0; i < text.length() ; i++){
-      if((text[i] == '~') || (text[i] == 0x03) &&
-	 (((text[i+1] >= 0x30) && (text[i+1] <= 0x39)  ||
-	   (text[i] == '~') && ((text[i+1] >= 0x61) || (text[i+1] <= 0x7a))))){ // a->z
-	if((text[i+1] >= 0x30) && (text[i+1] <= 0x39)){
+    for(i = 0; i < itext.length() ; i++){
+      if((itext[i] == '~') || (itext[i] == 0x03) &&
+	 (((itext[i+1] >= 0x30) && (itext[i+1] <= 0x39)  ||
+	   (itext[i] == '~') && ((itext[i+1] >= 0x61) || (itext[i+1] <= 0x7a))))){ // a->z
+	if((itext[i+1] >= 0x30) && (itext[i+1] <= 0x39)){
 	  i += 2; 
 	  ig += 2;
-	  if((text[i] >= 0x30) && (text[i] <= 0x39)){
+	  if((itext[i] >= 0x30) && (itext[i] <= 0x39)){
 	    i++;
 	    ig++;
 	  }
-	  if((text[i] == ',') && ((text[i+1] >= 0x30) && (text[i+1] <= 0x39))){
+	  if((itext[i] == ',') && ((itext[i+1] >= 0x30) && (itext[i+1] <= 0x39))){
 	    i+=2;
 	    ig+=2;
-	    if((text[i] >= 0x30) && (text[i] <= 0x39)){
+	    if((itext[i] >= 0x30) && (itext[i] <= 0x39)){
 	      i++;
 	      ig++;
 	    }
 	  }
 	  i--; // Move back on since the i++ moves ahead one.
 	}
-	else if((text[i] == '~') && ((text[i+1] >= 0x61) || (text[i+1] <= 0x7a))){
+	else if((itext[i] == '~') && ((itext[i+1] >= 0x61) || (itext[i+1] <= 0x7a))){
 	  i += 1;   // Implicit step forward in for loop
 	  ig += 2;
 	}
       }
       else{
-	width += fm.width(text[i]);
+	width += fm.width(itext[i]);
 	if(width >= max_width){
 	  int newi = i;
 	  for(; (newi > 0) &&
-		(text[newi] != ' ') &&
-		(text[newi] != '-') &&
-		(text[newi] != '\\'); newi--);
+		(itext[newi] != ' ') &&
+		(itext[newi] != '-') &&
+		(itext[newi] != '\\'); newi--);
 	  if(newi > lastp)
 	    i = newi+1;
-	  paint_text->append(text.mid(lastp, i-lastp));
+	  paint_text->append(itext.mid(lastp, i-lastp));
 	  ig = 0;
 	  width = xPos;
 	  lastp = i;
 	}
       }
     }
-    paint_text->append(text.mid(lastp, i-lastp));
+    paint_text->append(itext.mid(lastp, i-lastp));
     rows = paint_text->count();
   }
   else{
     rows = 1;
-    linewidth = fm.width(text);
-    paint_text->append(text);
+    linewidth = fm.width(itext);
+    paint_text->append(itext);
   }
 }
 

@@ -768,8 +768,12 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	pixmap = pix_star;        // why? looks cool for dorks
 	break;
       case '+':
+	// Basic idea here is simple, go through the mode change and
+	// assign each mode a + or a - and an argument or "" if there is
+	// none.  After that each mode change it looked at to see if
+	// we should handle it in any special way.  
+	pos = string.find("Mode change \"", 0);
 	if(pos > 0){
-	  cerr << "Doing: " << string << endl;
 	  QStrList mode, arg;
 	  char plus[] = "+";
 	  pos += 13;
@@ -807,6 +811,8 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	      arg.append("");
 	    }
 	  }
+	  // We have the modes set in mode and arg, now we go though
+	  // looking at each mode seeing if we should handle it.
 	  for(uint i = 0; i < mode.count(); i++){
 	    if(strcasecmp(mode.at(i), "+o") == 0){
 	      for(uint j = 0; j < nicks->count(); j++){
@@ -834,7 +840,7 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	      }
 	    }
 	    else{
-	      cerr << "Did not handle: " << mode.at(i) << " arg: " << arg.at(i)<<endl;
+	      //	      cerr << "Did not handle: " << mode.at(i) << " arg: " << arg.at(i)<<endl;
 	    }
 	  }
 	}

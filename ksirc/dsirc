@@ -409,7 +409,8 @@ sub describe {
   } elsif ($towho =~ /^[\#\&\+]/) {
     &tell("~${towho}~* $nick $what"); # KSIRC MOD
   } else {
-    &tell("~${towho}~*-> \cb${towho}\cb: $nick $what"); #KSIRC MOD
+    &tell("~${towho}~* $nick $what"); #KSIRC MOD
+#    &tell("~${towho}~*-> \cb${towho}\cb: $nick $what"); #KSIRC MOD
   }
   &sl("PRIVMSG $towho :\caACTION".($what eq "" ? "" : " ").$what."\ca");
 }
@@ -466,7 +467,7 @@ sub ctcp {
   if ($what eq 'ACTION') {
     &dohooks("action", $towho, $args);
     if (&eq($towho, $nick)) {
-      &tell("~$towho~*> \cb${who}\cb$puh1 $args");
+      &tell("~$towho~* \cb${who}\cb$puh1 $args"); # KSIRC MOD
     } elsif (&eq($towho, $talkchannel) && !$printchan) {
       &tell("~$towho~* $who $args");
     } else {
