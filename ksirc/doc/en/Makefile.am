@@ -1,6 +1,6 @@
 
 # add here all files
-data_DATA = colours.html  filters.html  index.html ksirc.gif
+data_DATA = colours.html  filters.html  index.html ksirc.gif keys.html
 
 # this is the directory, where all datas are installed
 # you have given the datas in data_DATA

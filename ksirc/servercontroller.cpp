@@ -136,8 +136,10 @@ servercontroller::servercontroller
 			 this, SLOT(help_general()));
 	help->insertItem("Help on Colours...",
 			 this, SLOT(help_colours()));
-	help->insertItem("Help on Filters",
+	help->insertItem("Help on Filters...",
 			 this, SLOT(help_filters()));
+	help->insertItem("Help on Keys...",
+			 this, SLOT(help_keys()));
 	help->insertSeparator();
 	help->insertItem("About kSirc...",
 			 this, SLOT(about_ksirc()));
@@ -401,5 +403,10 @@ void servercontroller::help_colours()
 void servercontroller::help_filters()
 {
   kApp->invokeHTMLHelp("ksirc/filters.html", "");
+}
+
+void servercontroller::help_keys()
+{
+  kApp->invokeHTMLHelp("ksirc/keys.html", "");
 }
 

@@ -1380,17 +1380,14 @@ void KSircTopLevel::control_message(int command, QString str)
   case SET_LAG:
     if(str.isNull() == FALSE){
       bool ok = TRUE;
+      str.truncate(6);
       double lag = str.toDouble(&ok);
       if(ok == TRUE){
-	lag -= (lag*100.0 - int(lag*100.0))/100.0;
+      	lag -= (lag*100.0 - int(lag*100.0))/100.0;
 	lagmeter->display(lag);
       }
       else{
-	ok = TRUE;
-        int lag2 = str.toInt(&ok);
-	if(ok == TRUE){
-	  lagmeter->display(lag2);
-	}
+	lagmeter->display(str);
       }
     }
     break;

@@ -102,6 +102,10 @@ sub hook_ctcp_lag {
 &addhook("ctcp", "ctcp_lag");
 
 sub cmd_lag {
+  if($away){
+    print "~!lag~*L* AUAY\n";
+    return;
+  }
   my($_t) = kgettimeofday();
   &docommand("^ctcp $nick LAG $_t");
 }
@@ -113,9 +117,10 @@ require 'sys/syscall.ph';
 
 if(! defined(&SYS_gettimeofday)){
   if(open(SYSCALL, "/usr/include/sys/syscall.h")){
-    my($line) = grep(/define\s+SYS_gettimeofday/, <SYSCALL>);
+    my(@line) = grep(/define\s+SYS_gettimeofday/, <SYSCALL>);
     close SYSCALL;
-    chomp($line);
+    print "*E* Strange syscall.h, SYS_gettimeofday defined more than once!\n" if $#line > 1;
+    my($line) = "@line";
     if($line =~ /SYS_gettimeofday\s+(\d+)/){
       eval "sub SYS_gettimeofday () {$1;}";
       print "*** Set time of day to: $1\n";

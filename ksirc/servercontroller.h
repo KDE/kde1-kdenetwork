@@ -114,6 +114,7 @@ public slots:
     virtual void help_general();
     virtual void help_colours();
     virtual void help_filters();
+    virtual void help_keys();
     virtual void about_ksirc();
 
 private:
