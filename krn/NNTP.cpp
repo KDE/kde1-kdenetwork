@@ -41,7 +41,14 @@ void NNTPObserver::Notify()
 {
     client->byteCounter+=client->mTextResponse.length();
     client->partialResponse+=client->mTextResponse.c_str();
-    qApp->processEvents();
+    if (client->reportBytes)
+    {
+        debug ("emitting newStatus bytes");
+        char *buffer=new char[100];
+        sprintf (buffer,"Received %d bytes",client->byteCounter);
+        emit client->newStatus(buffer);
+        delete[] buffer;
+    }
 }
 
 
@@ -60,26 +67,39 @@ NNTP::NNTP(char *host=0): DwNntpClient()
     Connected=false;
     Readonly=false;
     debug (hostname);
+    reportBytes=false;
+    reportCommands=false;
     byteCounter=0;
+    commandCounter=0;
     extendPartialResponse=new NNTPObserver (this);
     SetObserver(extendPartialResponse);
-    resetCounter=true;
+    
 }
 
 void NNTP::PGetTextResponse()
 {
     partialResponse="";
-    if (resetCounter)
-        byteCounter=0;
     qApp->processEvents();
     SetObserver(extendPartialResponse);
     DwNntpClient::PGetTextResponse();
     mTextResponse=partialResponse.data();
     partialResponse="";
-    if (resetCounter)
-        byteCounter=-1;
     SetObserver(NULL);
 }
+
+void NNTP::resetCounters( bool byte=true,bool command=true)
+{
+    if (byte)
+        byteCounter=0;
+    if (command)
+        commandCounter=0;
+}
+void NNTP::reportCounters (bool byte=true,bool command=true)
+{
+    reportBytes=byte;
+    reportCommands=command;
+}
+
 
 NNTP::~NNTP()
 {
@@ -440,7 +460,6 @@ bool NNTP::artList(int from=0,int to=0)
 
 bool NNTP::isCached (char *id)
 {
-    debug ("checking if article is cached");
     QString path=cachepath+"/"+id;
     if (QFile::exists(path.data()))
         return true;
@@ -453,11 +472,9 @@ QString *NNTP::article(char *id)
     QString p=cachepath;
     QString *data=new QString("\n\nError reading Article!");
     p=p+id;
-    printf ("-->%s\n",p.data());
     QFile f(p.data());
     if (isCached (id))//it exists so it's cached
     {
-        printf ("Article cached!\n");
         data->setStr("");
         if(f.open (IO_ReadOnly))
         {
@@ -473,9 +490,7 @@ QString *NNTP::article(char *id)
     }
     else if(f.open (IO_WriteOnly))//get it, write it and return it
     {
-        printf ("Article not cached!\n");
         int status=Article (id);
-        debug ("status-->%d",status);
         if (status==220)
         {
             data->setStr(TextResponse().data());
@@ -491,6 +506,11 @@ QString *NNTP::article(char *id)
             return new QString("");
         }
     }
+    commandCounter++;
+    char *buffer=new char[100];
+    sprintf (buffer,"received %d article(s)",commandCounter);
+    emit newStatus(buffer);
+    delete buffer;
     return data;
 }
 

@@ -47,7 +47,7 @@ public slots:
     void online();
     void offline();
     bool needsConnect();
-    void updateCounter();
+    void updateCounter(char *);
     
 private slots:
     bool actions(int,NewsGroup *group=0);

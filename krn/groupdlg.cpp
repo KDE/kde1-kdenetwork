@@ -186,6 +186,7 @@ Groupdlg::Groupdlg
     conf->setGroup("NNTP");
     QString sname=conf->readEntry("NNTPServer");
     server = new NNTP (sname.data());
+    server->reportCounters (true,false);
 
     
     show ();
@@ -196,9 +197,7 @@ Groupdlg::Groupdlg
         actions(CONNECT);
     fillTree();
 
-    counterTimer = new QTimer (this);
-    counterTimer->changeInterval (1000);
-    connect (counterTimer,SIGNAL(timeout()),this,SLOT(updateCounter()));
+    connect (server,SIGNAL(newStatus(char *)),this,SLOT(updateCounter(char *)));
 }
 
 Groupdlg::~Groupdlg ()
@@ -758,19 +757,9 @@ void Groupdlg::checkUnread()
 }
 
 
-void Groupdlg::updateCounter()
+void Groupdlg::updateCounter(char *s)
 {
-    QString s;
-    if (server->byteCounter>=0)
-    {
-        s.setNum(server->byteCounter);
-        s=QString("Received ")+s+" bytes";
-    }
-    else
-    {
-        s="Received All";
-    }
-    statusBar()->changeItem (s.data(), 1);
+    statusBar()->changeItem (s, 1);
     qApp->processEvents();
 }
 

@@ -289,17 +289,19 @@ void NewsGroup::getSubjects(NNTP *server)
 
 void NewsGroup::getMessages(NNTP *server)
 {
-    server->resetCounter=false;
     debug ("getting articles in %s",data());
     load();
     getSubjects(server);
     getList();
-    int i=0;
+    server->resetCounters (true,true);
+    server->reportCounters (false,true);
     for (Article *art=artList.first();art!=0;art=artList.next())
     {
         server->article(art->ID.data());
+        qApp->processEvents();
     }
-    server->resetCounter=true;
+    server->resetCounters (true,true);
+    server->reportCounters (true,false);
 }
 
 ////////////////////////////////////////////////////////////////////

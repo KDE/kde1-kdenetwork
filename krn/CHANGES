@@ -1,4 +1,11 @@
 -----------------------------------------------------------------------------
+Changes made Aug 12
+-----------------------------------------------------------------------------
+
+* [Roberto] Kinda improved the progress marker. The interface to it sucks
+  rocks now. Hopefully it's not used that much.
+
+-----------------------------------------------------------------------------
 Changes made Aug 9
 -----------------------------------------------------------------------------
 
@@ -14,10 +21,7 @@ Changes made Aug 9
 
 -- things below this line are not in the aug 9 release.
 
-* [Roberto] Implemented "Get messages" command. Sadly it doesn't get along
-  with the progress marker, because it's really a heck of a lot of small
-  commands, so it always says "Done" :-(
-  I'll have to see how to fix it.
+* [Roberto] Implemented "Get messages" command.
 
 * [Roberto] Cleaned groupdlg a little. It's just opinion, though :-)
 

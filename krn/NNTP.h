@@ -24,6 +24,7 @@
 #include <qstring.h>
 #include <qstrlist.h>
 #include <qdict.h>
+#include <qobject.h>
 
 #include <ksock.h>
 #include <ktreelist.h>
@@ -60,7 +61,7 @@ public:
     void save();
     void load();
     int  score();
-
+    
     //This value is valid only for a few moments after running
     //thread() over an article list. It's not really meant to be used...
     int  threadDepth;
@@ -142,8 +143,11 @@ private:
 
 
 
-class NNTP: public DwNntpClient
+class NNTP: public QObject, public DwNntpClient
 {
+    
+    Q_OBJECT
+        
 public:
     friend class NNTPObserver;
     NNTP(char *hostname=0);
@@ -161,19 +165,22 @@ public:
     bool    isCached(char *id);
     int     authinfo(const char *username,const char *password);
     int     setMode (char *mode);
+    QString    	hostname;
     int     first;
     int     last;
     int     howmany;
-    int     byteCounter;
-    
-    QString    	hostname;
     char    *lastStatusResponse() { return Laststatus.data();};
     bool    reConnect();
-    //resetCounter indicates if I should reset the byteCounter
-    //at the end of a command. It's usually true
-    bool    resetCounter;
+    void    resetCounters( bool byte=true,bool command=true);
+    void    reportCounters (bool byte=true,bool command=true);
+    int     byteCounter;
+    int     commandCounter;
+signals:
+    void newStatus(char *status);
     
 private:
+    bool    reportBytes;
+    bool    reportCommands;
     int         listOverview();
     int         listXover(int from=0,int to=0);
     
