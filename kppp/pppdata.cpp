@@ -76,7 +76,6 @@ void PPPData::save() {
 
   if (config) {
     writeConfig(GENERAL_GRP, NUMACCOUNTS_KEY, count());
-    config->writeEntry(ID_KEY,ID);
     config->sync();
   }
 
@@ -175,22 +174,10 @@ const char* PPPData::Password(){
   return password.data();
 }
 
-const char* PPPData::Id(){
-  return ID.data();
-}
-
 void PPPData::setPassword(const char* pw){
 
   password = pw;
   password.detach();
-
-
-}
-
-void PPPData::setId(const char* id){
-
-  ID = id;
-  ID.detach();
 
 
 }
@@ -284,7 +271,7 @@ void PPPData::setpppdPath(const char *n) {
 
 const char* PPPData::logViewer() {
 
-  return readConfig (GENERAL_GRP, LOGVIEWER_KEY, "/usr/local/kde/bin/kedit");
+  return readConfig (GENERAL_GRP, LOGVIEWER_KEY, "kedit");
 
 }
 

@@ -184,7 +184,7 @@ void ConnectWidget::init() {
 
 
   p_xppp->con_speed = "";
-  
+
   reconnect_on_disconnect = gpppdata.get_automatic_redial();
 
   QString tit = klocale->translate("Connecting to: ");
@@ -451,7 +451,7 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
 	messg->setText(bm);
 	p_xppp->debugwindow->statusLabel(bm);
 
-	QString idstring = gpppdata.Id();
+	QString idstring = gpppdata.storedUsername();
 	
 	if(!idstring.isEmpty() && firstrunID){
 	  // the user entered an Id on the main kppp dialog
@@ -1278,7 +1278,7 @@ bool ConnectWidget::execppp() {
   // PAP settings
   if(gpppdata.authMethod() == AUTH_PAP) {
     command += " user ";
-    command += gpppdata.ID.data();
+    command += gpppdata.storedUsername();
     command += " +ua ";
     command += PAP_AuthFile();
   }

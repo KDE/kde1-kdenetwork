@@ -1,3 +1,18 @@
+Wed Jan 21 03:22:43 1998  Harri Porten  <porten@tu-harburg.de>
+
+	* prevented the password from being left in kppprc after the
+ 	option 'Store password' has just been turned off
+	
+	* the ID & password field will be disabled if no account has
+	been created yet
+
+	* pppdata.cpp: removed absolute path for default log viewer
+	to prevent warning messages upon first startup if KDE's location
+ 	differs from /usr/local/kde
+
+	* removed gpppdata.Id() and gpppdata.setId() since they have been
+	replaced by storedUsername() and setStoredUsername()
+
 Tue Jan 20 15:30:08 1998  Mario Weilguni  <mweilguni@sime.com>
 
 	* Sigh. After unintentionally deleting my account for the sixth

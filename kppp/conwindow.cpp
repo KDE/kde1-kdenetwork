@@ -60,10 +60,6 @@ ConWindow::ConWindow(QWidget *parent, const char *name,QWidget *mainwidget)
 
   this->setCaption("kppp");
 
-  //  dockbutton = new QPushButton(this,"dockbutton");
-  //dockbutton->setText(klocale->translate("Dock"));
-  //connect(dockbutton, SIGNAL(clicked()), this, SLOT(dock()));
-
   cancelbutton = new QPushButton(this,"cancelbutton");
   cancelbutton->setText(klocale->translate("Disconnect"));
   connect(cancelbutton, SIGNAL(clicked()), main, SLOT(disconnect()));
@@ -158,10 +154,7 @@ void ConWindow::accounting(bool on) {
   FIXED_HEIGHT(cancelbutton);
   MIN_WIDTH(statsbutton);
   FIXED_HEIGHT(statsbutton);
-  //  MIN_WIDTH(dockbutton);
-  //  FIXED_HEIGHT(dockbutton);
   l2->addWidget(statsbutton);
-  //  l2->addWidget(dockbutton);
   l2->addWidget(cancelbutton);
 
   l2->addStretch(1);

@@ -148,10 +148,7 @@ public:
   // functions to set/get general xppp info
 
   const char* Password();
-  const char* Id();
-
   void setPassword(const char* );
-  void setId(const char*);
 
   const char* defaultAccount();
   void setDefaultAccount(const char *);
@@ -345,7 +342,7 @@ public:
 
 public:
   QString password;
-  QString ID;
+
 private:
 
   int highcount;                         // index of highest account

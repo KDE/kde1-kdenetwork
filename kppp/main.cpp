@@ -317,7 +317,6 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
   l1->addWidget(ID_Label, 1, 1);
 
   ID_Edit = new QLineEdit(this,"idedit");
-  //ID_Edit->setText(gpppdata.Id());
   MIN_WIDTH(ID_Edit);
   FIXED_HEIGHT(ID_Edit);
   l1->addWidget(ID_Edit, 1, 2);
@@ -516,11 +515,15 @@ void XPPPWidget::resetaccounts() {
     connectto_c->setEnabled(false);
     connect_b->setEnabled(false);
     log->setEnabled(false);
+    ID_Edit->setEnabled(false);
+    PW_Edit->setEnabled(false);
   }
   else {
     connectto_c->setEnabled(true);
     connect_b->setEnabled(true);
     log->setEnabled(true);
+    ID_Edit->setEnabled(true);
+    PW_Edit->setEnabled(true);
   }
 
   //load the accounts
@@ -540,7 +543,7 @@ void XPPPWidget::resetaccounts() {
 	PW_Edit->setText(gpppdata.storedPassword());
     }
   }
-  else
+  else 
     if(gpppdata.count() > 0) {
        gpppdata.setDefaultAccount(connectto_c->text(0));
     }
@@ -676,7 +679,7 @@ void XPPPWidget::expandbutton() {
 
 void XPPPWidget::connectbutton() {
   QFileInfo info(gpppdata.pppdPath());
-  
+
   if(!info.exists()){
     QString string;   
     string.sprintf(klocale->translate("kppp can not find:\n %s\nPlease install pppd properly "
@@ -716,7 +719,6 @@ void XPPPWidget::connectbutton() {
     return;
   }
 
-  gpppdata.setId(ID_Edit->text());
   gpppdata.setPassword(PW_Edit->text());
 
   // if this is a PAP account, ensure that password and username are
@@ -824,6 +826,8 @@ void XPPPWidget::quitbutton() {
     }
   }
   else {
+    if (strcmp(gpppdata.accname(), "") != 0 && !gpppdata.storePassword())
+      gpppdata.setStoredPassword("");
     kapp->quit();
   }
 

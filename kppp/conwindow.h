@@ -71,7 +71,6 @@ private:
   QLabel *info2;
   QPushButton *cancelbutton;
   QPushButton *statsbutton;
-  QPushButton *dockbutton;
 
   int minutes;
   int seconds;

@@ -48,7 +48,7 @@ bool PAP_CreateAuthFile() {
 		S_IRUSR|S_IWUSR);
   if(fd > 0) {
     bool err = false;
-    QString s = gpppdata.ID;
+    QString s = gpppdata.storedUsername();
     s += "\n";
     err |= (write(fd, s.data(), s.length()) != (int)s.length());
 
