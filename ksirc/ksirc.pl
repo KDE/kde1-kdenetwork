@@ -47,7 +47,7 @@ Usage: WALLOP [<#channel>] <message>
 Sends a message to all of the channel operators on the given channel.  
 Defaults the the current channel.");
 
-sub cmd_wallop {
+sub cmd_wallop { #fold00
   &getarg;
   unless ($newarg =~ /^#/) {
     $args = $newarg." ".$args;
@@ -58,7 +58,7 @@ sub cmd_wallop {
 &addcmd("wallop");
 
 
-sub modeb {
+sub modeb { #fold00
   ($which) = @_;
   $user =~ s/^~//;
   if (length($user) > 8) {
@@ -76,7 +76,7 @@ sub modeb {
   &docommand("mode $talkchannel ${which}b *!*$user*\@$toban");
 }
 
-sub cmd_ban {
+sub cmd_ban { #fold00
   &getarg;
   if ($newarg) {
     &userhost($newarg, "&modeb(\"+\");");
@@ -86,7 +86,7 @@ sub cmd_ban {
 }
 &addcmd("ban");
 
-sub cmd_unban {
+sub cmd_unban { #fold00
   &getarg;
   if ($newarg) {
     &userhost($newarg, "&modeb(\"-\");");
@@ -96,7 +96,7 @@ sub cmd_unban {
 }
 &addcmd("unban");
 
-sub cmd_k {
+sub cmd_k { #fold00
   &getarg;
   $args = "You have been kicked by a KSirc user." unless $args;
   if ($newarg) {
@@ -107,7 +107,7 @@ sub cmd_k {
 }
 &addcmd("k");
 
-sub cmd_kb {
+sub cmd_kb { #fold00
   &getarg;
   if ($newarg) {
     &docommand("ban $newarg");
@@ -118,7 +118,7 @@ sub cmd_kb {
 }
 &addcmd("kb");
 
-sub cmd_clrban {
+sub cmd_clrban { #fold00
   &getarg;
   $newarg = $talkchannel unless $newarg;
   &addhook("367", "tban"); 
@@ -127,7 +127,7 @@ sub cmd_clrban {
 }
 &addcmd("clrban");
 
-sub hook_tban {
+sub hook_tban { #fold00
   $silent = 1;
   my ($shit, $channel, $mask, $banner, $time) = split(/ +/, $_[0]);
   push @bans, $mask;
@@ -137,13 +137,13 @@ sub hook_tban {
   }
 }
 
-sub hook_rm367 {
+sub hook_rm367 { #fold00
   @bans = ();
   &remhook("367","tban");
   &remhook("368","rm367");
 }
 
-sub hook_disconnectd {
+sub hook_disconnectd { #fold00
   &docommand("server 1");
 }
 &addhook("disconnect","disconnectd");
@@ -153,7 +153,7 @@ sub hook_disconnectd {
 #}
 #&addhook("kick","kickd");
 
-sub cmd_fcmd {
+sub cmd_fcmd { #fold00
   ($names,$mask,$command) = split(/ /, $args,3);
   $mask =~ s/\!/\!/;
   $mask =~ s/\@/\@/;
@@ -166,7 +166,7 @@ sub cmd_fcmd {
 }
 &addcmd("fcmd");
 
-sub hook_filtercommand {
+sub hook_filtercommand { #fold00
   ($shit, $_[0]) = split(/:/, $_[0]);
   my @names = split(/ /, $_[0]);
   for (@names) {
@@ -176,7 +176,7 @@ sub hook_filtercommand {
   $silent=1;
 }
 
-sub dofilter {
+sub dofilter { #fold00
   $s = "$who\!$user\@$host";
   #&tell("$s =~ /$mask/");
   if ($s =~ /$mask/i) {
@@ -186,25 +186,25 @@ sub dofilter {
   }
 }
 
-sub hook_removefiltercommand {
+sub hook_removefiltercommand { #fold00
   &remhook("353","filtercommand");
   &remhook("366","removefiltercommand");
   &tell("~4Filter on $names, /$mask/i, Done.");
 }
 
-sub cmd_fc {
+sub cmd_fc { #fold00
   my ($mask, $cmd) = split(/ /, $args, 2);
   &docommand("fcmd $talkchannel $mask $cmd");
 }
 &addcmd("fc");
 
-sub cmd_pig {
+sub cmd_pig { #fold00
   $_[0] =~ s/^pig //i;
   &say(&topiglatin($_[0]));
 }
 &addcmd("pig");
 
-sub topiglatin {
+sub topiglatin { #fold00
 @words = split(/ /, $_[0]);
 for (@words) {
   if ($_ =~ /^([bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ])([aeiouAEIOU])/) {
@@ -248,7 +248,7 @@ Shows who you are currently following");
 undef %following;
 
 
-sub cmd_follow
+sub cmd_follow #fold00
 {
    my ($fnick) = shift;
    my ($color);
@@ -269,7 +269,7 @@ sub cmd_follow
 }
 
 
-sub cmd_unfollow
+sub cmd_unfollow #fold00
 {
    my ($fnick) = shift;
    my ($filter);
@@ -289,7 +289,7 @@ sub cmd_unfollow
 }
 
 
-sub cmd_showfollows
+sub cmd_showfollows #fold00
 {
    my ($fnick);
 
@@ -308,16 +308,84 @@ sub cmd_showfollows
 
 #### End follow
 
-sub cmd_refresh
+sub cmd_refresh #fold00
 {
   &tell("*** Refresh nick list");
   &docommand("names *");
 }
 &addcmd("refresh");
 
+sub cmd_extnames #FOLD00
+{
+  if($who_active == 0){
+    &addhook("352", "ksirc_who_list");
+    &addhook("315", "ksirc_who_end");
+  }
+  &dosplat;
+  &getarg;
+  &sl("who :$newarg");
+  $who_active++;  
+  $WHO_INFO{$newarg} = " ";
+  $WHO_TIME{$newarg} = 0;
+}
+&addcmd("extnames");
+
+sub hook_ksirc_who_end { #FOLD00
+  $who_active--;
+  if($who_active == 0){
+    &remhook("352", "ksirc_who_list");
+    &remhook("315", "ksirc_who_end");
+  }
+  my @info = split(/\s+/, $_[0]);
+  # 0: our nick
+  # 1: channel
+  # 2 Onwards: misc info
+  chop($WHO_INFO{$info[1]}); # Remove trailing space
+  my $c = $WHO_TIME{$info[1]} == 0 ? "C" : "!";
+  &print("~$info[1]~*$c* ExtUsers on $info[1]: $WHO_INFO{$info[1]}");
+  &print("~!all~*c* Done Parsing Who");
+
+  delete($WHO_INFO{$info[1]});
+  delete($WHO_TIME{$info[1]});
+}
+
+sub hook_ksirc_who_list { #FOLD00
+  my @info = split(/\s+/, $_[0]);
+  # 0: our nick
+  # 1: channel
+  # 2: ident
+  # 3: one server
+  # 4: another server
+  # 5: nick
+  # 6: status
+  # 7: rest is useless
+  $silent = 1;
+  my $who_nick = $info[5];
+  #    print "*I* Parsing: $_[0], info6: $info[6]\n";
+  if($info[6] =~ /G/){
+    $who_nick = "#" . $who_nick;
+  }
+  if($info[6] =~ /\+/){
+    $who_nick = "+" . $who_nick;
+  }
+  if($info[6] =~ /\@/){
+    $who_nick = "@" . $who_nick;
+  }
+  if($info[6] =~ /\*/){
+    $who_nick = "*" . $who_nick;
+  }
+  $WHO_INFO{$info[1]} .= $who_nick . " ";
+  if(length($WHO_INFO{$info[1]}) > 512){
+    my $c = $WHO_TIME{$info[1]} == 0 ? "C" : "!";
+    &print("~$info[1]~*$c* ExtUsers on $info[1]: $WHO_INFO{$info[1]}");
+    $WHO_INFO{$info[1]} = " ";
+    $WHO_TIME{$info[1]}++;
+  }
+}
+
 &tell("*** \0032,4~bLoaded KSirc.pl\003");
 &tell("*** \00313,3~bWith: Super Willy Enhancements, LotR's exec\003");
-sub cmd_exec {
+sub cmd_exec { #fold00
 
 	my $how, $to;
 
@@ -349,7 +417,7 @@ sub cmd_exec {
        "EXEC -MSG <nickname> <shell commands>]\n" .
        "EXEC -NOTICE <nickname> <shell commands>]\n" );
 
-sub hook_fixcolours {
+sub hook_fixcolours { #fold00
   $_[1] =~ tr/[\337\334\237\251\244]/\[\002\037\026\003\170]/;
 }
 

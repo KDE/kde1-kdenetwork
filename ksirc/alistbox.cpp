@@ -184,7 +184,7 @@ void aListBox:: setPalette ( const QPalette &p ) /*fold00*/
   ((QScrollBar*) QTableView::horizontalScrollBar())->setPalette(p_scroll);
 }
 
-int aListBox::findNick(QString str) /*FOLD00*/
+int aListBox::findNick(QString str) /*fold00*/
 {
   bool found;
   int index;
@@ -202,11 +202,13 @@ nickListItem *aListBox::item(int index){ /*fold00*/
   return (nickListItem *) QListBox::item(index);
 }
 
-nickListItem::nickListItem() /*fold00*/
+nickListItem::nickListItem() /*FOLD00*/
   : QListBoxItem()
 {
   is_op = FALSE;
   is_voice = FALSE;
+  is_away = FALSE;
+  is_ircop = FALSE;
 }
 
 nickListItem::~nickListItem() /*fold00*/
@@ -232,19 +234,37 @@ void nickListItem::setVoice(bool _voice) /*fold00*/
 {
   is_voice = _voice;
 }
+void nickListItem::setAway(bool _away) /*FOLD00*/
+{
+  is_away = _away;
+}
 
-void nickListItem::paint(QPainter *p) /*fold00*/
+void nickListItem::setIrcOp(bool _ircop) /*FOLD00*/
+{
+  is_ircop = _ircop;
+}
+
+void nickListItem::paint(QPainter *p) /*FOLD00*/
 {
   QFontMetrics fm = p->fontMetrics();
   int yPos;                       // vertical text position
   QPen pen = p->pen();
+  QFont font = p->font();
   if(is_voice == TRUE)
     p->setPen(*kSircConfig->colour_chan);
   if(is_op == TRUE)
     p->setPen(*kSircConfig->colour_error);
+  if(is_away == TRUE)
+    p->setPen(p->pen().color().dark(150));
+  if(is_ircop == TRUE){
+    QFont bfont = font;
+    bfont.setBold(TRUE);
+    p->setFont(bfont);
+  }
   yPos = fm.ascent() + fm.leading()/2;
   p->drawText( 3, yPos, text() );
   p->setPen(pen);
+  p->setFont(font);
 }
 
 int nickListItem::height(const QListBox *lb ) const /*fold00*/
@@ -275,7 +295,7 @@ void nickListItem::setText(const char *str) /*fold00*/
   string = qstrdup(str);
 }
 
-nickListItem &nickListItem::operator= (const nickListItem &nli) /*fold00*/
+nickListItem &nickListItem::operator= (const nickListItem &nli) /*FOLD00*/
 {
   string = nli.string;
   is_op = nli.is_op;

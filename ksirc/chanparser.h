@@ -92,6 +92,14 @@ public:
     }
 };
 
+class doneModes // Finished parsing modes from the extModes string
+{
+public:
+  doneModes(int i)
+  {
+  }
+};
+
 // End of exceptions
 
 class parseFunc
@@ -105,7 +113,6 @@ public:
 private:
   parseFunc(); // Disable the default no argument constructor
 };
-
 
 
 class ChannelParser {
@@ -138,7 +145,8 @@ private:
    */
 
   bool prompt_active;
-  bool continued_line;
+  int current_item;
+  int top_item;
 
   /**
    * The parser Table holds a list of functions with parse

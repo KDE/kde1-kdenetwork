@@ -19,7 +19,8 @@ ChannelParser::ChannelParser(KSircTopLevel *_top) /*FOLD00*/
    * Initial helper variables
    */
   prompt_active = FALSE;
-  continued_line = FALSE;
+  current_item = -1;
+  top_item = 0;
 
   if(parserTable.isEmpty() == TRUE){
     parserTable.setAutoDelete(TRUE);
@@ -34,7 +35,9 @@ ChannelParser::ChannelParser(KSircTopLevel *_top) /*FOLD00*/
     // The rest are *** info message
     parserTable.insert("***", new parseFunc(&parseINFOInfo));
     parserTable.insert("*E*", new parseFunc(&parseINFOError));
-    parserTable.insert("*#*", new parseFunc(&parseINFONicks));
+    parserTable.insert("*!*", new parseFunc(&parseINFONicks)); // Normal
+    parserTable.insert("*C*", new parseFunc(&parseINFONicks)); // 1st line
+    parserTable.insert("*c*", new parseFunc(&parseINFONicks)); // Last line
     parserTable.insert("*>*", new parseFunc(&parseINFOJoin));
     parserTable.insert("*<*", new parseFunc(&parseINFOPart));
     parserTable.insert("*N*", new parseFunc(&parseINFOChangeNick));
@@ -45,7 +48,7 @@ ChannelParser::ChannelParser(KSircTopLevel *_top) /*FOLD00*/
 
 }
 
-void ChannelParser::parse(QString string) /*FOLD00*/
+void ChannelParser::parse(QString string) /*fold00*/
 {
   parseFunc *pf;
   if(string.length() < 3){
@@ -81,17 +84,6 @@ void ChannelParser::parse(QString string) /*FOLD00*/
 	  string[1] == ' '){
     string.insert(1, ' ');
   }
-  /*
-   * If we are watching for a continued line, check to see if the current
-   * line is not a nick list.  If it isn't the coninued line is finished
-   * so set it false
-   */
-  if(continued_line == TRUE){
-    // Don't switch back for ssfe control messages, but for all the rest
-    if(string[0] != '`' && string[1] != '#')
-      continued_line = FALSE;
-  }
-
   // Pre-parsing is now complete
   
   pf = parserTable[string.mid(0, 3)];
@@ -255,9 +247,26 @@ void ChannelParser::parseINFONicks(QString in_string) /*FOLD00*/
   int start, count;
   char channel_name[101];
 
+  bool clear_box = FALSE;
+
+  // Check to see if it's a continued line
+  if(string[1] == 'C'){
+    string[1] = '!';
+    clear_box = TRUE;
+  }
+  else if(string[1] == 'c'){
+    top->nicks->setAutoUpdate(TRUE);         // clear and repaint the listbox
+    if(current_item > 0)
+      top->nicks->setCurrentItem(current_item);
+    top->nicks->setTopItem(top_item);
+    top->nicks->repaint(TRUE);
+    throw(parseSucc(QString("")));           // Parsing ok, don't print anything though
+  }
+  
+  
   // Get the channel name portion of the string
   // Search for the first space, since : can be embeded into channel names.
-  count = sscanf(string, "*#* Users on %100[^ ]", channel_name);
+  count = sscanf(string, "*!* ExtUsers on %100[^ ]", channel_name);
   if(count < 1)
     throw(parseError(string, QString("Could not find channel name")));
 
@@ -268,11 +277,13 @@ void ChannelParser::parseINFONicks(QString in_string) /*FOLD00*/
     string.remove(0,3);
     throw(parseSucc(string,kSircConfig->colour_info,top->pix_info));
   }
-
+  
   top->nicks->setAutoUpdate(FALSE);        // clear and update nicks
-  if(continued_line == FALSE)
+  if(clear_box == TRUE){
+    current_item = top->nicks->currentItem();
+    top_item = top->nicks->topItem();
     top->nicks->clear();
-  continued_line = TRUE;
+  }
   start = string.find(": ", 0, FALSE); // Find start of nicks
   if(start < 0)
     throw(parseError(string, QString("Could not find start of nicks")));
@@ -281,31 +292,40 @@ void ChannelParser::parseINFONicks(QString in_string) /*FOLD00*/
   nick = strtok(place_holder, " ");
   
   while(nick != 0x0){                     // While there's nick to go...
-    if(nick[0] == '@'){    // Remove the op part if set
-      nick++;              // Skip ahead 1
-      nickListItem *irc = new nickListItem();
-      irc->setText(nick);
-      irc->setOp(TRUE);
-      top->nicks->inSort(irc);
-    }                                  // Remove voice if set
-    else if(nick[0] == '+'){
-      nick++;              // Skip ahead 1
-      nickListItem *irc = new nickListItem();
-      irc->setVoice(TRUE);
-      irc->setText(nick);
-      top->nicks->inSort(irc);
+    nickListItem *irc = new nickListItem();
+
+    try{
+      for(;;){
+        switch(*nick){
+        case '@':
+          irc->setOp(TRUE);
+          break;
+        case '+':
+          irc->setVoice(TRUE);
+          break;
+        case '#':
+          irc->setAway(TRUE);
+          break;
+        case '*':
+          irc->setIrcOp(TRUE);
+          break;
+        default:
+          throw(doneModes(0)); // We're done
+        }
+        nick++; // Move ahead to next character
+      }
     }
-    else{
-      top->nicks->inSort(nick);
+    catch(doneModes &d) {
     }
+
+    irc->setText(nick);
+    top->nicks->inSort(irc);
     nick = strtok(NULL, " ");
   }
-  top->nicks->setAutoUpdate(TRUE);         // clear and repaint the listbox
-  top->nicks->repaint(TRUE);
   throw(parseSucc(QString("")));           // Parsing ok, don't print anything though
 }
 
-void ChannelParser::parseINFOJoin(QString string) /*fold00*/
+void ChannelParser::parseINFOJoin(QString string) /*FOLD00*/
 {
   char nick[101], channel[101];
   string.remove(0, 4);                   // strip *>* to save a few compares
@@ -314,6 +334,7 @@ void ChannelParser::parseINFOJoin(QString string) /*fold00*/
     if(strcasecmp(top->channel_name, chan) == 0)
       top->show();
     emit top->open_toplevel(chan);
+    emit top->outputLine((const QString) QString("/lag\n"));
     throw(parseSucc(" " + string, kSircConfig->colour_chan, top->pix_greenp));
   }
   else if(sscanf(string, "%100s %*s has joined channel %100s", nick, channel) > 0){
@@ -328,7 +349,7 @@ void ChannelParser::parseINFOJoin(QString string) /*fold00*/
 
 }
 
-void ChannelParser::parseINFOPart(QString string) /*FOLD00*/
+void ChannelParser::parseINFOPart(QString string) /*fold00*/
 {
   char nick[101], channel[101];
   
@@ -481,7 +502,7 @@ void ChannelParser::parseINFOChangeNick(QString string) /*fold00*/
 
 }
 
-void ChannelParser::parseINFOMode(QString string) /*FOLD00*/
+void ChannelParser::parseINFOMode(QString string) /*fold00*/
 {
   // Basic idea here is simple, go through the mode change and
   // assign each mode a + or a - and an argument or "" if there is
@@ -640,7 +661,7 @@ void ChannelParser::parseINFOMode(QString string) /*FOLD00*/
 
 }
 
-void ChannelParser::parseCTCPAction(QString string) /*FOLD00*/
+void ChannelParser::parseCTCPAction(QString string) /*fold00*/
 {
   string.remove(0, 2);      // * <something> use fancy * pixmap. Remove 2, leave one for space after te *
                             // why? looks cool for dorks

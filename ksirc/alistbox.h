@@ -27,6 +27,8 @@ class nickListItem : public QListBoxItem
 
   void setOp(bool _op = FALSE);
   void setVoice(bool _voice = FALSE);
+  void setAway(bool _away = FALSE);
+  void setIrcOp(bool _ircop = FALSE);
 
   void setText(const char *str);
 
@@ -38,6 +40,8 @@ class nickListItem : public QListBoxItem
  private:
   bool is_op;
   bool is_voice;
+  bool is_away;
+  bool is_ircop;
 
   QString string;
 };

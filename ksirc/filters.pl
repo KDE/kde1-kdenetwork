@@ -108,6 +108,10 @@ sub cmd_lag {
   }
   my($_t) = kgettimeofday();
   &docommand("^ctcp $nick LAG $_t");
+  my $c;
+  foreach $c (@channels){
+    &docommand("^extnames $c");
+  }
 }
 
 
