@@ -1013,7 +1013,6 @@ msgid "Line Termination:"
 msgstr "Polo¾enie linky :"
 
 #: general.cpp:298
-#, fuzzy
 msgid ""
 "Specifies how AT commands are send to your\n"
 "modem. Most modems will work fine with the\n"
@@ -1025,7 +1024,7 @@ msgid ""
 msgstr ""
 "©pecifikuje, ako sa AT príkazy posielajú do vá¹ho\n"
 "modemu. Väè¹ina modemov bude pracova» bezproblémovo\n"
-"so ¹tandardným <i>CR</i>. Ak vá¹ modem nereaguje\n"
+"so ¹tandardným <i>CR/LF</i>. Ak vá¹ modem nereaguje\n"
 "na inicializaèný re»azec, mali by ste tu vyskú¹a»\n"
 "nastavi» nieèo iné.\n"
 "\n"
@@ -1845,7 +1844,7 @@ msgstr "Dostupné pravidlá"
 
 #: acctselect.cpp:305
 msgid "(none)"
-msgstr ""
+msgstr "(¾iadne)"
 
 #: ruleset.cpp:544
 msgid "kppp: no rulefile specified\n"
@@ -1981,12 +1980,11 @@ msgstr ""
 
 #: loginterm.cpp:120
 msgid "Ca&ncel"
-msgstr ""
+msgstr "Zru¹&i»"
 
 #: loginterm.cpp:125
-#, fuzzy
 msgid "&Continue"
-msgstr "Pripoji»"
+msgstr "&Pokraèova»"
 
 #: ppplog.cpp:136
 msgid ""
@@ -2089,7 +2087,7 @@ msgstr "Zapísa» do súboru"
 
 #: modemdb.cpp:46
 msgid "Select modem type..."
-msgstr ""
+msgstr "Zvoµte druh modemu..."
 
 #: modemdb.cpp:48
 msgid ""
@@ -2097,11 +2095,14 @@ msgid ""
 "then select the model from the right list. If you don´t know which modem you "
 "have, you can try out one of the \"Generic\" modems."
 msgstr ""
+"Aby ste nastavili vá¹ modem, najprv vyberte jeho výrobcu v zozname vµavo a "
+"potom zvoµte model vpravo. Ak neviete, aký máte modem, vyskú¹ajte jeden zo "
+"\"V¹eobecných\" modemov."
 
 #: modemdb.cpp:151 modemdb.cpp:153 modemdb.cpp:223 modemdb.cpp:238
 msgid "<Generic>"
-msgstr ""
+msgstr "<V¹eobecný>"
 
 #: modemdb.cpp:218
 msgid "Hayes(tm) compatible modem"
-msgstr ""
+msgstr "Hayes(tm) kompatibilný modem"

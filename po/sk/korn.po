@@ -15,35 +15,35 @@ msgstr ""
 
 #: kmailbox.cpp:150
 msgid "countMail: file open error"
-msgstr ""
+msgstr "countMail: chyba pri otv. súboru"
 
 #: korn.cpp:51
-#, fuzzy
 msgid "&Setup"
 msgstr "&Nastavenie.."
 
 #: korn.cpp:54
-#, fuzzy
 msgid "&About"
-msgstr "&Informácie.."
+msgstr "&Informácie"
 
 #: korn.cpp:109
 msgid "korn: configure now?"
-msgstr ""
+msgstr "korn: nakonfigurova»?"
 
 #: korn.cpp:110
 msgid ""
 "you have not yet configured korn.\n"
 "would you like to do this now?"
 msgstr ""
+"E¹te ste nenakonfigurovali korn.\n"
+"Chceli by ste to spravi» teraz?"
 
 #: korn.cpp:114
 msgid "No - Quit"
-msgstr ""
+msgstr "Nie - Ukonèi»"
 
 #: korn.cpp:119
 msgid "personal"
-msgstr ""
+msgstr "osobné"
 
 #: korn.cpp:120
 msgid "Inbox"
@@ -57,170 +57,68 @@ msgid ""
 "\n"
 "The K Desktop Environment"
 msgstr ""
+"Korn %s -- Sirtaj Singh Kang\n"
+"taj@kde.org, 1997\n"
+"\n"
+"The K Desktop Environment"
 
 #: korn.cpp:249
-#, fuzzy
 msgid "About kOrn"
-msgstr "O KOrn"
+msgstr "O kOrn"
 
 #: korn.cpp:257
 msgid "korn: no config set"
-msgstr ""
+msgstr "korn: ¾iadne nastavenie"
 
 #: korn.cpp:258
 msgid ""
 "Would you like to restart korn with\n"
 "the automatically generated configuration?"
 msgstr ""
+"Chceli by ste re¹tartova» korn s\n"
+"automaticky vygenerovanou konfiguráciou?"
 
 #: korn.cpp:261
 msgid "Yes, Restart"
-msgstr ""
+msgstr "Áno, re¹tartova»"
 
 #: korn.cpp:261
 msgid "No, Exit"
 msgstr "Nie, ukonèi»"
 
 #: kornopt.cpp:24
-#, fuzzy
 msgid "korn options"
 msgstr "Korn: Nastavenie"
 
 #: optdata.cpp:76
-#, fuzzy
 msgid "&New"
-msgstr "News"
+msgstr "&Nový"
 
 #: optdata.cpp:89
-#, fuzzy
 msgid "Boxes"
-msgstr "&Boxy"
+msgstr "Boxy"
 
 #: optdata.cpp:118
 msgid "Name"
-msgstr ""
+msgstr "Meno"
 
 #: optdata.cpp:124
 msgid "Caption"
 msgstr "Titulok"
 
 #: optdata.cpp:138
-#, fuzzy
 msgid "Path"
-msgstr "Mbox Path"
+msgstr "Cesta"
 
 #: optdata.cpp:152
 msgid "Poll time (sec)"
-msgstr ""
+msgstr "Kontrl. èas (sek)"
 
 #: optdata.cpp:158
 msgid "Notify Command"
-msgstr ""
+msgstr "Oznam. príkaz"
 
 #: optdata.cpp:180
 msgid "Click Command"
-msgstr ""
+msgstr "Klik. príkaz"
 
-#~ msgid "Welcome to KOrn"
-#~ msgstr "Vitajte v KOrn"
-
-#~ msgid ""
-#~ "You do not appear to have used KOrn before. Would you like a basic "
-#~ "configuration created for you?"
-#~ msgstr ""
-#~ "Pravdepodobne ste predtým KOrn nepou¾ívali. Chceli by ste, aby som pre vás "
-#~ "vytvoril základnú konfiguráciu ?"
-
-#~ msgid "Can't find mailbox"
-#~ msgstr "Nemô¾em nájs» mailbox"
-
-#~ msgid ""
-#~ "Unable to find $MAIL environment variable. You'll have to configure the "
-#~ "mailboxes yourself."
-#~ msgstr ""
-#~ "Nemô¾em nájs» premennú prostredia $MAIL. Budete si musie» nakonfigurova» "
-#~ "mailboxy."
-
-#~ msgid " (clone)"
-#~ msgstr " (kolonovaný)"
-
-#~ msgid "Select a mailbox type..."
-#~ msgstr "Zvoµte typ mailboxu..."
-
-#~ msgid "O&K"
-#~ msgstr "O&K"
-
-#~ msgid "Horizontal"
-#~ msgstr "Horizontálne"
-
-#~ msgid "Vertical"
-#~ msgstr "Vertikálne"
-
-#~ msgid "Docked"
-#~ msgstr "V paneli"
-
-#~ msgid "&Layout"
-#~ msgstr "&Layout"
-
-#~ msgid "&Modify Box"
-#~ msgstr "&Modifikova» box"
-
-#~ msgid "&New Box"
-#~ msgstr "&Nový box"
-
-#~ msgid "&Delete Box"
-#~ msgstr "&Zmaza» box"
-
-#~ msgid "&Clone Box"
-#~ msgstr "&Klonova» box"
-
-#~ msgid "New Monitor"
-#~ msgstr "Nový monitor"
-
-#~ msgid "Korn Monitor"
-#~ msgstr "Korn monitor"
-
-#~ msgid "On Receipt"
-#~ msgstr "Pri prijatí"
-
-#~ msgid "On Click"
-#~ msgstr "Pri kliknutí"
-
-#~ msgid "General"
-#~ msgstr "V¹eobecné"
-
-#~ msgid "Poll"
-#~ msgstr "Kontrola"
-
-#~ msgid "Check Frequency (sec)"
-#~ msgstr "Frekvencia kontroly (sek)"
-
-#~ msgid "Mailbox"
-#~ msgstr "Mailbox"
-
-#~ msgid "Maildir"
-#~ msgstr "Maildir"
-
-#~ msgid "Maildir Path"
-#~ msgstr "Cesta k maildir"
-
-#~ msgid "Server"
-#~ msgstr "Server"
-
-#~ msgid "Port"
-#~ msgstr "Port"
-
-#~ msgid "Username"
-#~ msgstr "Meno u¾ívateµa"
-
-#~ msgid "Password"
-#~ msgstr "Heslo"
-
-#~ msgid "Save Password"
-#~ msgstr "Ulo¾i» heslo"
-
-#~ msgid "Group"
-#~ msgstr "Skupina"
-
-#~ msgid "Browse.."
-#~ msgstr "Listova».."

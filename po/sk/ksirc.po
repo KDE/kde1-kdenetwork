@@ -14,7 +14,7 @@ msgstr ""
 
 #: FilterRuleEditor.cpp:29
 msgid "Edit Filter Rules"
-msgstr ""
+msgstr "Editova» filtrovacie pravidlá"
 
 #: FilterRuleEditor.cpp:58 FilterRuleEditor.cpp:79
 #: FilterRuleEditorData.cpp:105
@@ -23,13 +23,15 @@ msgstr "&Zmeni»"
 
 #: FilterRuleEditor.cpp:74
 msgid "Missing Arguments"
-msgstr ""
+msgstr "Chýbajúce argumenty"
 
 #: FilterRuleEditor.cpp:75
 msgid ""
 "Cannot create a Rule since not\n"
 "all the fields are filled in."
 msgstr ""
+"Nemô¾em vytvori» pravidlo, preto¾e\n"
+"nie sú vyplnené v¹etky polo¾ky."
 
 #: FilterRuleEditorData.cpp:33
 msgid "Description:"
@@ -61,7 +63,7 @@ msgstr "Dole"
 
 #: KSircColour.cpp:33
 msgid "Colour Settings"
-msgstr ""
+msgstr "Nastavenie farieb"
 
 #: KSircColourData.cpp:33
 msgid "Generic Text"
@@ -85,7 +87,7 @@ msgstr "Pozadie"
 
 #: dccDialog.cpp:22
 msgid "DCC Files Offered"
-msgstr ""
+msgstr "Boli ponúknuté DCC súbory"
 
 #: dccDialogData.cpp:38
 msgid "&Get"
@@ -122,7 +124,7 @@ msgstr ""
 
 #: open_top.cpp:26
 msgid "New Window For"
-msgstr ""
+msgstr "Nové okno pre"
 
 #: open_topData.cpp:39
 msgid "Channel/Nick:"
@@ -202,7 +204,7 @@ msgstr "&Z panelu"
 
 #: ssfeprompt.cpp:25
 msgid "Prompt"
-msgstr ""
+msgstr "Prompt"
 
 #: toplevel.cpp:140
 msgid "Lag in seconds to the server"
@@ -222,7 +224,7 @@ msgstr "&U¾ívatelia"
 
 #: welcomeWin.cpp:30
 msgid "Welcome to kSirc"
-msgstr ""
+msgstr "Vitajte v kSirc"
 
 #: welcomeWinData.cpp:35
 msgid "Show Again"
@@ -234,7 +236,7 @@ msgstr "Pokraèova»"
 
 #: KSColourPicker/kscolourpicker.cpp:28
 msgid "kSirc Colour Picker"
-msgstr ""
+msgstr "kSirc vyberaè farieb"
 
 #: KSColourPicker/kscolourpickerData.cpp:30
 msgid "Pick"
@@ -245,9 +247,8 @@ msgid "Sample Colour"
 msgstr "Príklad farby"
 
 #: KSCutDialog/KSCutDialog.cpp:27
-#, fuzzy
 msgid "Cut Window"
-msgstr "&Vystihnú» okno..."
+msgstr "Vystihnú» okno"
 
 #: KSCutDialog/KSCutDialogData.cpp:39
 msgid "Cop&y"
@@ -255,11 +256,11 @@ msgstr "Ko&pírova»"
 
 #: KSOpenkSirc/open_ksirc.cpp:38
 msgid "Connect to Server"
-msgstr ""
+msgstr "Pripoji» sa k serveru"
 
 #: KSOpenkSirc/open_ksirc.cpp:186
 msgid "Not Avalable"
-msgstr ""
+msgstr "Nedostupný"
 
 #: KSOpenkSirc/open_ksircData.cpp:37
 msgid "&Connect"
@@ -341,23 +342,3 @@ msgstr "Veµkos» kroku"
 #, c-format
 msgid "No such file \"%s\"!"
 msgstr "Súbor \"%S\" neexistuje!"
-
-#, fuzzy
-#~ msgid "Colour"
-#~ msgstr "Príklad farby"
-
-#, fuzzy
-#~ msgid "Sample"
-#~ msgstr "Príklad farby"
-
-#, fuzzy
-#~ msgid "Servers"
-#~ msgstr "Popis:"
-
-#, fuzzy
-#~ msgid "Nick"
-#~ msgstr "Zvoli»"
-
-#, fuzzy
-#~ msgid "Real Name"
-#~ msgstr "Názov v menu"
