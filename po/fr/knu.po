@@ -5,27 +5,31 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: knu\n"
-"POT-Creation-Date: 1998-02-24 21:40+0100\n"
-"PO-Revision-Date: 1998-01-08 23:00 CET\n"
+"POT-Creation-Date: 1998-03-01 20:02+0100\n"
+"PO-Revision-Date: 1998-03-01 20:15 CET\n"
 "Last-Translator: Bertrand Leconte <B.Leconte@mail.dotcom.fr>\n"
-"Language-Team: Français <fr@kde.org>\n"
+"Language-Team: Français\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso8859-1\n"
-"Content-Transfer-Encoding: 8bits\n"
+"Content-Transfer-Encoding: 8bit\n"
 
-#: knu.cpp:123 knu.cpp:256
+#: knu.cpp:128 knu.cpp:271
 msgid "&Ping"
 msgstr "&Ping"
 
-#: knu.cpp:132 knu.cpp:261
+#: knu.cpp:137 knu.cpp:277
 msgid "&Traceroute"
 msgstr "&Traceroute"
 
-#: knu.cpp:141 knu.cpp:266
+#: knu.cpp:146 knu.cpp:283
 msgid "Host &resolution"
-msgstr "Résolution de noms"
+msgstr "&Résolution de noms"
 
-#: knu.cpp:156
+#: knu.cpp:159 knu.cpp:289
+msgid "&Finger"
+msgstr "F&inger"
+
+#: knu.cpp:170
 msgid ""
 "There is no command enabled\n"
 "in the configuration file.\n"
@@ -37,45 +41,45 @@ msgstr ""
 "\n"
 "Donc je ne peux rien faire...\n"
 
-#: knu.cpp:201
+#: knu.cpp:215
 msgid "&New window"
 msgstr "&Nouvelle fenêtre"
 
-#: knu.cpp:204
+#: knu.cpp:218
 msgid "&Close window"
 msgstr "&Fermer la fenêtre"
 
-#: knu.cpp:215
+#: knu.cpp:229
 msgid "Select &all"
 msgstr "Selectionner &tout"
 
-#: knu.cpp:218
+#: knu.cpp:232
 msgid "C&lear output window"
 msgstr "Effacer la fenêtre d'affichage"
 
-#: knu.cpp:221
+#: knu.cpp:235
 msgid "P&references..."
 msgstr "&Préférences..."
 
-#: knu.cpp:231
+#: knu.cpp:245
 msgid "About &Qt"
 msgstr "About &Qt"
 
-#: knu.cpp:404
+#: knu.cpp:428
 msgid "About..."
-msgstr "A propos..."
+msgstr "&A propos..."
 
 #: CommandDlg.cpp:112
 msgid "H&ost:"
-msgstr "Machine :"
+msgstr "&Machine :"
 
 #: CommandDlg.cpp:121
 msgid "&Go!"
-msgstr "Go !"
+msgstr "&Go !"
 
 #: CommandDlg.cpp:131
 msgid "&Stop"
-msgstr "Stop"
+msgstr "&Stop"
 
 #: CommandDlg.cpp:147
 msgid ""
@@ -85,19 +89,45 @@ msgstr ""
 "Cette commande n'a pas été trouvée. \n"
 "Vous pouvez donner son chemin par le menu Edition->Préférences..."
 
-#: CommandDlg.cpp:453
+#: CommandDlg.cpp:332
+#, c-format
+msgid ""
+"\n"
+"You have a problem in your\n"
+"%s/%src\n"
+"configuration file.\n"
+"In the [%s] group,\n"
+"I can't find a valid \"path=\" entry.\n"
+"\n"
+"Please use Edit->Preferences... menu\n"
+"to configure it again.\n"
+msgstr ""
+"\n"
+"Vous avez un problème dans votre fichier de configuration\n"
+"%s/%src.\n"
+"Dans le groupe [%s], je n'ai pas\n"
+"pu trouver d'entrée \"path=\" valide.\n"
+"\n"
+"Utilisez le menu Edition->Préférence...\n"
+"pour le configurer à nouveau.\n"
+
+#: CommandDlg.cpp:341
+msgid "Error in pathname"
+msgstr "Erreur dans le chemin du fichier"
+
+#: CommandDlg.cpp:474
 msgid "Binary"
 msgstr "Binaire"
 
-#: CommandDlg.cpp:461
+#: CommandDlg.cpp:482
 msgid "Path&name:"
-msgstr "Chemin du programme :"
+msgstr "&Chemin du programme :"
 
-#: CommandDlg.cpp:470
+#: CommandDlg.cpp:491
 msgid "Additional &arguments:"
-msgstr "Arguments additionnels :"
+msgstr "&Arguments additionnels :"
 
-#: CommandDlg.cpp:495
+#: CommandDlg.cpp:516
 msgid "This command had been disabled in the configuration file."
 msgstr "Cette commande a été déactivée dans le fichier de configuration."
 
@@ -107,24 +137,11 @@ msgstr " - configuration"
 
 #: PingDlg.cpp:90 TracerouteDlg.cpp:91
 msgid "Make host &name resolution"
-msgstr "Faire les résolutions de noms"
-
-#: HostDlg.cpp:220 PingDlg.cpp:146 TracerouteDlg.cpp:168
-msgid ""
-"You have a problem in your ~/.kde/share/config/knurc configuration file.\n"
-"In the ["
-msgstr ""
-"You avez un problème dans votre fichier de configuration "
-"~/.kderc/share/config/knurc.\n"
-"Dans le groupe ["
-
-#: HostDlg.cpp:224 PingDlg.cpp:150 TracerouteDlg.cpp:172
-msgid "] group, I cannotfind a correct \"path=\" entry."
-msgstr "], je n'ai pas trouvé une entrée \"path=\" correcte."
+msgstr "Faire les résolutions de &noms"
 
 #: TracerouteDlg.cpp:108
 msgid "&Maximum number of hops:"
-msgstr "Nombre maximum de sauts :"
+msgstr "Nombre ma&ximum de sauts :"
 
 #: HostDlg.cpp:101
 msgid "address (A)"
@@ -156,15 +173,20 @@ msgstr "tous les enregistrements (ANY)"
 
 #: HostDlg.cpp:113
 msgid "Se&arch for:"
-msgstr "Rechercher :"
+msgstr "Re&chercher :"
 
-#: HostDlg.cpp:125 HostDlg.cpp:271
+#: HostDlg.cpp:125 HostDlg.cpp:264
 msgid "default server"
 msgstr "serveur par défaut"
 
 #: HostDlg.cpp:134
 msgid "Ser&ver:"
-msgstr "Serveur :"
+msgstr "Ser&veur :"
 
-#~ msgid "&Contents"
-#~ msgstr "&Contenu"
+#: FingerDlg.cpp:64
+msgid "User:"
+msgstr "&Utilisateur :"
+
+#: FingerDlg.cpp:82
+msgid "Server:"
+msgstr "Ser&veur :"
