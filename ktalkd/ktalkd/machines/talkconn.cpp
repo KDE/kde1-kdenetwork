@@ -59,57 +59,58 @@
 #endif
 #include "../print.h"
 #include "../defs.h" // for hostname
-#include "../process.h" // for prepare_response()
 
 #ifndef SOMAXCONN
 #warning SOMAXCONN not defined in your headers
 #define SOMAXCONN 5
 #endif
 
-void TalkConnection::init()
+TalkConnection::TalkConnection(struct in_addr caller_machine_addr, 
+                               char * r_name,
+                               char * local_user,
+                               ProtocolType _protocol) : 
+   protocol(_protocol), his_machine_addr(caller_machine_addr)
 {
-#ifndef OTALK
-    msg.vers = TALK_VERSION;
-#endif
-    msg.pid = htonl (getpid ()); // is it necessary ?
-    *msg.r_tty = '\0';
-
-    /* find the server's port */
-#ifdef OTALK
-    struct servent * sp = getservbyname("talk", "udp");
-#else
-    struct servent * sp = getservbyname("ntalk", "udp");
-#endif
-    if (sp == 0) {
-        char buff[50];
-        sprintf(buff, "talk: %s/%s: service is not registered.\n",
-                "ntalk", "udp");
-        p_error(buff); /* quit */
-    }
-    daemon_port = sp->s_port; // already in network byte order
-    // message2("Daemon port found : %d",htons(daemon_port));
-
     /* look up the address of the local host */
-    struct hostent *hp = gethostbyname(hostname);
+    struct hostent *hp = gethostbyname(Options::hostname);
     if (!hp) {
-        syslog(LOG_ERR, "GetHostByName failed.");
+        syslog(LOG_ERR, "GetHostByName failed for %s.",Options::hostname);
         exit(-1);
     }
     memcpy(&my_machine_addr, hp->h_addr, hp->h_length);
 
+    if (protocol == noProtocol) {
+        /*        CheckProtocol checkProtocol(my_machine_addr);
+        if (checkProtocol.CheckHost(caller_machine_addr))
+            protocol=checkProtocol.getProtocol();
+        else
+            p_error("No protocol found. Aborting."); */
+        protocol = ntalkProtocol; // HACK FOR THE MOMENT
+    }
+
+    if (protocol == ntalkProtocol) {
+        new_msg.vers = TALK_VERSION;
+        new_msg.pid = htonl (getpid ()); // is it necessary ?
+        *new_msg.r_tty = '\0';
+    } else /* protocol == talkProtocol */ {
+        old_msg.pid = htonl (getpid ()); // is it necessary ?
+        *old_msg.r_tty = '\0';
+    }
+    strncpy(new_msg.l_name,local_user,NEW_NAME_SIZE);
+    strncpy(new_msg.r_name,r_name,NEW_NAME_SIZE);
+    strncpy(old_msg.l_name,local_user,OLD_NAME_SIZE);
+    strncpy(old_msg.r_name,r_name,OLD_NAME_SIZE);
+
+    /* find the server's port */
+    struct servent * sp = 
+        getservbyname((protocol == talkProtocol) ? "talk" : "ntalk", "udp");
+    if (sp == 0)
+        p_error("Service is not registered.\n"); /* quit */
+
+    daemon_port = sp->s_port; // already in network byte order
+    // message2("Daemon port found : %d",htons(daemon_port));
+
     ctl_sockt = -1; // Note that it is not initialized
-}
-
-TalkConnection::TalkConnection(struct in_addr caller_machine_addr, 
-                               char * r_name,
-                               char * local_user)
-{
-    init();
-
-    strncpy(msg.l_name,local_user,NAME_SIZE);
-    strncpy(msg.r_name,r_name,NAME_SIZE);
-
-    his_machine_addr = caller_machine_addr;
 
 #ifdef FvK
     /* I'm not responsible for this patch. I include it because some people
@@ -191,14 +192,18 @@ void TalkConnection::open_sockets()
 
 void TalkConnection::set_addr(const struct sockaddr * addr)
 {
-    msg.addr = *addr;
-    msg.addr.sa_family = htons(AF_INET);
+    old_msg.addr = *addr;
+    old_msg.addr.sa_family = htons(AF_INET);
+    new_msg.addr = *addr;
+    new_msg.addr.sa_family = htons(AF_INET);
 }
 
 void TalkConnection::set_ctl_addr(const struct sockaddr * ctl_addr)
 {
-    msg.ctl_addr = *ctl_addr;
-    msg.ctl_addr.sa_family = htons(AF_INET);
+    old_msg.ctl_addr = *ctl_addr;
+    old_msg.ctl_addr.sa_family = htons(AF_INET);
+    new_msg.ctl_addr = *ctl_addr;
+    new_msg.ctl_addr.sa_family = htons(AF_INET);
 }
 
 void TalkConnection::close_sockets()
@@ -217,15 +222,23 @@ void TalkConnection::close_sockets()
 void TalkConnection::ctl_transact(int type, int id_num)
 {
     fd_set read_mask, ctl_mask;
-    int nready=0, cc;
+    int nready=0, cc, size, ok=0;
     struct timeval wait;
     struct sockaddr_in daemon_addr;
+    char * msg;
 
-    msg.type = type;
-    msg.id_num = htonl(id_num);
-
-    if (debug_mode)
-      print_request("ctl_transact: ",&msg);
+    if (protocol == talkProtocol) {
+        old_msg.type = type;
+        old_msg.id_num = htonl(id_num);
+        msg = (char *)&old_msg;
+        size = sizeof old_msg;
+    } else {
+        new_msg.type = type;
+        new_msg.id_num = htonl(id_num);
+        msg = (char *)&new_msg;
+        size = sizeof new_msg;
+        print_request("ctl_transact: ",&new_msg);
+    }
 
     daemon_addr.sin_family = AF_INET;
     daemon_addr.sin_addr = his_machine_addr;
@@ -239,10 +252,10 @@ void TalkConnection::ctl_transact(int type, int id_num)
     do {
         /* resend message until a response is obtained */
         do {
-            cc = sendto(ctl_sockt, (char *)&msg, sizeof(msg), 0,
+            cc = sendto(ctl_sockt, msg, size, 0,
                         (struct sockaddr *)&daemon_addr,
                         sizeof (daemon_addr));
-            if (cc != sizeof(msg)) {
+            if (cc != size) {
                 if (errno == EINTR)
                     continue;
                 p_error("Error on write to talk daemon");
@@ -264,7 +277,10 @@ void TalkConnection::ctl_transact(int type, int id_num)
          * request/acknowledgements being sent)
          */
         do {
-            cc = ::recv(ctl_sockt, (char *)&response, sizeof (response), 0);
+            if (protocol == talkProtocol)
+                cc = ::recv(ctl_sockt, (char *)&old_resp, sizeof (old_resp), 0);
+            else
+                cc = ::recv(ctl_sockt, (char *)&new_resp, sizeof (new_resp), 0);
             if (cc < 0) {
                 if (errno == EINTR)
                     continue;
@@ -274,34 +290,39 @@ void TalkConnection::ctl_transact(int type, int id_num)
             /* an immediate poll */
             timerclear(&wait);
             nready = ::select(ctl_sockt+1, &read_mask, 0, 0, &wait);
-        } while (nready > 0 && (
-#ifndef OTALK
-                       response.vers != TALK_VERSION || 
-#endif
-                       response.type != type));
-    } while (
-#ifndef OTALK
-                       response.vers != TALK_VERSION || 
-#endif
-                       response.type != type);
-    response.id_num = ntohl(response.id_num);
-    response.addr.sa_family = ntohs(response.addr.sa_family);
+            if (protocol == talkProtocol) ok = (old_resp.type == type);
+            else ok = ((new_resp.type == type) && (new_resp.vers == TALK_VERSION));
+        } while (nready > 0 && (!ok));
+    } while (!ok);
+    if (protocol == talkProtocol) {
+        old_resp.id_num = ntohl(old_resp.id_num);
+        old_resp.addr.sa_family = ntohs(old_resp.addr.sa_family);
+    } else {
+        new_resp.id_num = ntohl(new_resp.id_num);
+        new_resp.addr.sa_family = ntohs(new_resp.addr.sa_family);
+    }
 }
 
 /** Look for an invitation on remote machine */
-int TalkConnection::look_for_invite()
+int TalkConnection::look_for_invite(int mandatory)
 {
     /* Check for invitation on caller's machine */
-
     ctl_transact(LOOK_UP, 0);
 
+    char answer;
+    int id_num;
+    getResponseItems(&answer, &id_num, &lookup_addr);
+
+    if (!mandatory) return 0;
+
     /* the switch is for later options, such as multiple invitations */
-    switch (response.answer) {
+    switch (answer) {
 
 	case SUCCESS:
-            msg.id_num = htonl(response.id_num);
+            new_msg.id_num = htonl(id_num);
+            old_msg.id_num = htonl(id_num);
             message("TalkConnection::look_for_invite : got SUCCESS");
-            if (response.addr.sa_family != AF_INET)
+            if (lookup_addr.sa_family != AF_INET)
                 p_error("Response uses invalid network address");
             return (1);
 
@@ -322,14 +343,14 @@ void TalkConnection::listen()
 /** Accept a connection from another talk client */
 int TalkConnection::accept()
 {
-    int new_sockt;
-    while ((new_sockt = ::accept(sockt, 0, 0)) < 0) {
+    int accept_sockt;
+    while ((accept_sockt = ::accept(sockt, 0, 0)) < 0) {
         if (errno == EINTR)
             continue;
         p_error("Unable to connect with your party");
     }
     ::close(sockt);
-    sockt = new_sockt;
+    sockt = accept_sockt;
     return sockt;
 }
 
@@ -339,7 +360,7 @@ int TalkConnection::connect()
     message("Waiting to connect");
     do {
         errno = 0;
-        if (::connect(sockt, (struct sockaddr *) &response.addr, sizeof (struct sockaddr)) != -1)
+        if (::connect(sockt, &lookup_addr, sizeof (struct sockaddr)) != -1)
             return 1;
     } while (errno == EINTR);
     if (errno == ECONNREFUSED) {
@@ -394,12 +415,21 @@ void TalkConnection::write_banner(char * banner)
                   else nbsent = write(sockt,str,count);
         count -= nbsent;
         str += nbsent;
-        /*        message2("Count rest: %d.",count);
-                  message2("  [ Nbsent : %d.",nbsent); */
-        /* sleep(1); ONLY to debug !! */
         fsync(sockt);
     }
     write(sockt,"\n",1);
+}
+
+void TalkConnection::getResponseItems(char * answer, int * id_num, struct sockaddr * addr) {
+    if (protocol == talkProtocol) {
+        if (answer) *answer = old_resp.answer;
+        if (id_num) *id_num = old_resp.id_num;
+        if (addr) *addr = old_resp.addr;
+    } else {
+        if (answer) *answer = new_resp.answer;
+        if (id_num) *id_num = new_resp.id_num;
+        if (addr) *addr = new_resp.addr;
+    }
 }
 
 /** p_error prints the system error message in the log

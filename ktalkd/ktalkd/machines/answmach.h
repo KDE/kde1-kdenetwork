@@ -51,11 +51,14 @@ class AnswMachine
 
     /** Destructor. */
     virtual ~AnswMachine();
-    
+
     /** Launch the machine */
     virtual void start();
     
-  private:
+    /** Create and start a new answering machine from the given info */
+    static void launchAnswMach(NEW_CTL_MSG msginfo, int mode);
+
+  protected:
 
     /** Read usercfg file to know if user wants it to be launched */
     int LaunchIt(char * key);
@@ -73,9 +76,9 @@ class AnswMachine
     /** Talk Connection to the caller */
     TalkConnection * talkconn;
     /** Local user name */
-    char local_user[NAME_SIZE];
+    char local_user[NEW_NAME_SIZE];
     /** Non-existent user name, to be written in the mail. */
-    char NEUperson[NAME_SIZE];
+    char NEUperson[NEW_NAME_SIZE];
     /** Caller's machine address */
     struct in_addr caller_machine_addr;
     /** User config file */

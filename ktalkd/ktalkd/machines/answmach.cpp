@@ -58,6 +58,7 @@
 #include "../defs.h"
 #include "../print.h"
 #include "../readconf.h"
+#include "check_protocol.h"
 
 #define A_LONG_TIME 10000000  /* seconds before timeout */
 
@@ -77,14 +78,15 @@ AnswMachine::AnswMachine(struct in_addr r_addr,
     /* Create a talk connection */
     talkconn = new TalkConnection(r_addr,
                                   l_name, /* the caller (remote) */
-                                  local_user);     /* the callee (local) */
+                                  local_user,
+                                  ntalkProtocol);     /* the callee (local) */
     if (mode==PROC_REQ_ANSWMACH_NOT_HERE)
     {
         /* The caller is trying to talk to somebody this system doesn't know.
            We can display a NEU banner (non-existent user) and take a message
-           for OPTNEU_user (root?). */                  
-        strncpy(NEUperson,local_user,NAME_SIZE); /* the person the talk was aimed to */
-        strncpy(local_user,OPTNEU_user,NAME_SIZE); /* for mail address, config file... */
+           for Options::NEU_user (root?). */                  
+        strncpy(NEUperson,local_user,NEW_NAME_SIZE); /* the person the talk was aimed to */
+        strncpy(local_user,Options::NEU_user,NEW_NAME_SIZE); /* for mail address, config file... */
     } else *NEUperson='\0';
 }
 
@@ -112,16 +114,16 @@ void AnswMachine::start()
     if (mode==PROC_REQ_ANSWMACH) {
         /* Wait a little. The 'ringing your party again' has just been displayed,
            so it's probably still a bit early to launch the answering machine. */
-        sleep(OPTtime_before_answmach);
+        sleep(Options::time_before_answmach);
     }
     
-    usercfg = init_user_config((mode==PROC_REQ_ANSWMACH_NOT_HERE) ? OPTNEU_user : local_user);
+    usercfg = init_user_config((mode==PROC_REQ_ANSWMACH_NOT_HERE) ? Options::NEU_user : local_user);
     
     if (LaunchIt("Answmach"))
     {
         talkconn->open_sockets();
         
-        if (talkconn->look_for_invite())
+        if (talkconn->look_for_invite(1/*mandatory*/))
             /* otherwise, either the caller gave up before we 
                started or the callee answered ... */
         {
@@ -169,12 +171,12 @@ void AnswMachine::talk()
        strcpy(messg_myaddr,local_user);
 
 #ifdef OLD_POPEN_METHOD   // never defined
-     snprintf(command,S_COMMAND,"%s %s",OPTmailprog,messg_myaddr);
+     snprintf(command,S_COMMAND,"%s %s",Options::mailprog,messg_myaddr);
 
     fd = popen(command,"w");
     if (!fd) 
       {
-	snprintf(customline,S_CFGLINE,"Unable to open a pipe towards %s.",OPTmailprog);
+	snprintf(customline,S_CFGLINE,"Unable to open a pipe towards %s.",Options::mailprog);
 	TalkConnection::p_error(customline);
       }
 #else
@@ -206,14 +208,14 @@ void AnswMachine::talk()
 
     /* No user-config'ed banner */
     if (!usercfg)
-    { /* => Display OPTinvitelines* */
-         talkconn->write_banner(OPTinvitelines);
+    { /* => Display Options::invitelines* */
+         talkconn->write_banner(Options::invitelines);
     }
     else if (mode==PROC_REQ_ANSWMACH_NOT_HERE)
-    { /* => Display OPTNEUBanner* */
-         talkconn->write_banner(OPTNEUBanner1);
-         talkconn->write_banner(OPTNEUBanner2);
-         talkconn->write_banner(OPTNEUBanner3);
+    { /* => Display Options::NEUBanner* */
+         talkconn->write_banner(Options::NEUBanner1);
+         talkconn->write_banner(Options::NEUBanner2);
+         talkconn->write_banner(Options::NEUBanner3);
     } else {
 	 int linenr = 1; 
 	 /* number of the Msg[1-*] line. is set to 0 after displaying banner*/
@@ -239,12 +241,12 @@ void AnswMachine::talk()
     if (something_entered || emptymail)
     { /* Don't send empty message, except if 'EmptyMail' has been set */
         int retcode;
-	snprintf(command,S_COMMAND,"cat %s | %s %s",fname,OPTmailprog,messg_myaddr);
+	snprintf(command,S_COMMAND,"cat %s | %s %s",fname,Options::mailprog,messg_myaddr);
         retcode = system(command);
         if ((retcode==127) || (retcode==-1))
           syslog(LOG_ERR,"system() error : %m");
         else if (retcode!=0)
-          syslog(LOG_WARNING,"cat %s | %s %s : %m", fname, OPTmailprog, messg_myaddr);
+          syslog(LOG_WARNING,"cat %s | %s %s : %m", fname, Options::mailprog, messg_myaddr);
     }
     (void)unlink(fname);
 #endif
@@ -258,7 +260,7 @@ void AnswMachine::write_headers(FILE * fd, struct hostent * hp, char *
     char * r_user = talkconn->get_caller_name();
 
     /* if using mail.local, set 'Date:' and 'From:', because they will be missing otherwise */
-    int ismaillocal = (strstr(OPTmailprog,"mail.local")!=NULL);
+    int ismaillocal = (strstr(Options::mailprog,"mail.local")!=NULL);
     if (ismaillocal)
             /* should we check only the end of the name ? */
       {
@@ -361,9 +363,8 @@ int AnswMachine::read_message(FILE * fd) // returns 1 if something has been ente
      return something; // 1 if something entered.
 }
 
-extern "C" {
-/** C interface for Answering Machine */
-void launchAnswMach(NEW_CTL_MSG msginfo, int mode) 
+/** Create and start a new answering machine from the given info */
+void AnswMachine::launchAnswMach(NEW_CTL_MSG msginfo, int mode) 
  {
   if ((fork()) == 0) /* let's fork to let the daemon process other messages */
     {
@@ -382,4 +383,3 @@ void launchAnswMach(NEW_CTL_MSG msginfo, int mode)
         exit(-1);
     }
  }
-}

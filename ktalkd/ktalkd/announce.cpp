@@ -144,18 +144,15 @@ int announce_proc(NEW_CTL_MSG *request, const char *remote_machine,
   int Xannounceok = 0; /* Set to 1 if at least one Xannounceok succeeded */
   
 #ifdef PROC_FIND_USER
-  if ((OPTXAnnounce) && (strlen(disp) >= 2)) {
+  if ((Options::XAnnounce) && (strlen(disp) >= 2)) {
 #else
-  if ((OPTXAnnounce) && ((int) request->r_tty[3] > (int) 'f')) {
+  if ((Options::XAnnounce) && ((int) request->r_tty[3] > (int) 'f')) {
 #endif /* PROC_FIND_USER */
 
     /*
      * He is in X (probably :-) -> try to connect with external program
      */
       
-      /* message_s("KDEBINDIR is %s",getenv("KDEBINDIR")); */
-      /* just a check */
-
    /*  No more needed : ktalkdlg will play sound itself.
         Other external programs can do whatever they want...
         Maybe a config for this could be useful to know whether the
@@ -169,7 +166,7 @@ int announce_proc(NEW_CTL_MSG *request, const char *remote_machine,
     
     if ((!usercfg) || (!read_user_config("ExtPrg", extprg, S_MESSG)))
         /* try to read extprg from user config file, otherwise : */
-        strcpy(extprg,OPTextprg); /* take default */            
+        strcpy(extprg,Options::extprg); /* take default */            
 
     /* disp can be a LIST of displays, such as ":0 :1", or
          ":0 hostname:0". Let's announce on ALL displays found.
@@ -204,7 +201,7 @@ int announce_proc(NEW_CTL_MSG *request, const char *remote_machine,
                 putenv(env);
 #endif
 
-                if (debug_mode)
+                if (Options::debug_mode)
                 {
                     syslog(LOG_DEBUG, "Trying to run '%s' at '%s' as '%s'", extprg, 
                            getenv("DISPLAY"), request->r_name );
@@ -259,7 +256,7 @@ int announce_proc(NEW_CTL_MSG *request, const char *remote_machine,
                  * we can't wait the reaction of the user
                  */
                 read( readPipe[0], &ch_aux, 1 );
-                if (debug_mode) syslog(LOG_DEBUG, "Child process sent : %c",ch_aux);  
+                if (Options::debug_mode) syslog(LOG_DEBUG, "Child process sent : %c",ch_aux);  
                 close( readPipe[0] );
                 close( readPipe[1] );
                 if (ch_aux == '#') {
@@ -340,7 +337,7 @@ void print_mesg(FILE * tf, NEW_CTL_MSG * request, const char *
 	/* We have to duplicate it because param_remote_machine is contained
 	   in the hostent structure, and will be erased by gethostbyname. */
 	
-	localname = strdup(gethostbyname(hostname)->h_name);
+	localname = strdup(gethostbyname(Options::hostname)->h_name);
 	/* We have to duplicate localname also. Same reasons as above ! */
 	
 	remotename = gethostbyname(remotemach)->h_name;
@@ -353,21 +350,21 @@ void print_mesg(FILE * tf, NEW_CTL_MSG * request, const char *
 	sizes[i] = strlen(line_buf[i]);
 	max_size = max(max_size, sizes[i]);
 	i++;
-	(void)snprintf(line_buf[i], N_CHARS, OPTannounce1,
+	(void)snprintf(line_buf[i], N_CHARS, Options::announce1,
 		      localclock->tm_hour , localclock->tm_min );
 	sizes[i] = strlen(line_buf[i]);
 	max_size = max(max_size, sizes[i]);
 	i++;
 	snprintf(buffer, N_CHARS, "%s@%s", request->l_name, remotename);
-	snprintf(line_buf[i], N_CHARS, OPTannounce2, buffer);
+	snprintf(line_buf[i], N_CHARS, Options::announce2, buffer);
 	sizes[i] = strlen(line_buf[i]);
 	max_size = max(max_size, sizes[i]);
 	i++;
 
 	if (!(strcmp(localname,remotename))) {
-	  snprintf(line_buf[i], N_CHARS, OPTannounce3, request->l_name);
+	  snprintf(line_buf[i], N_CHARS, Options::announce3, request->l_name);
 	} else {
-	  snprintf(line_buf[i], N_CHARS, OPTannounce3, buffer);
+	  snprintf(line_buf[i], N_CHARS, Options::announce3, buffer);
 	}
 
 	sizes[i] = strlen(line_buf[i]);
@@ -410,13 +407,13 @@ int play_sound(int usercfg)
      /* We must absolutely read the configuration before forking,
         because the father will close the file soon !! */
      if ((!usercfg) || (!read_user_config("SoundPlayer",sSoundPlayer,S_CFGLINE)))
-         strcpy(sSoundPlayer,OPTsoundplayer);
+         strcpy(sSoundPlayer,Options::soundplayer);
      message(sSoundPlayer);
      if ((!usercfg) || (!read_user_config("SoundPlayerOpt",sSoundPlayerOpt,S_CFGLINE)))
-         strcpy(sSoundPlayerOpt,OPTsoundplayeropt);
+         strcpy(sSoundPlayerOpt,Options::soundplayeropt);
      message(sSoundPlayerOpt);
      if ((!usercfg) || (!read_user_config("SoundFile",sSoundFile,S_CFGLINE)))
-         strcpy(sSoundFile,OPTsoundfile);
+         strcpy(sSoundFile,Options::soundfile);
      message(sSoundFile);
 
      if ((pid = fork())) {
@@ -457,7 +454,7 @@ int sound_or_beep(int usercfg)
      int bSound;
      int ret;
      if ((!usercfg) || (!read_bool_user_config("Sound",&bSound)))
-         bSound=OPTsound;
+         bSound=Options::sound;
      
      message2("Sound option in sound_or_beep : %d",bSound);
      

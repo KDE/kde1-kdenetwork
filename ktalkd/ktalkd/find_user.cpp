@@ -77,7 +77,8 @@
 char *get_display(pid_t pid) {
     static char buf[1024];
     char *rbuf = 0, *dpy, *c;
-    int fd, n, l, tot = 0, end_of_file = 0;
+    int fd, tot = 0, end_of_file = 0;
+    unsigned int n, l;
 
     sprintf(buf, "/proc/%d/environ", pid);
 
@@ -271,7 +272,7 @@ int find_user(char *name, char *tty, char *disp) {
             
             if (*tty == '\0') {    /* no particular tty was requested */
 
-                if (OPTXAnnounce && ubuf->ut_line[0] == ':') {
+                if (Options::XAnnounce && ubuf->ut_line[0] == ':') {
                     /* this is a XDM login (really?). GREAT! */
                     syslog(LOG_DEBUG, "XDM login: %s at %s", name, ubuf->ut_line);
                     status = SUCCESS;
@@ -287,13 +288,13 @@ int find_user(char *name, char *tty, char *disp) {
                 strcpy(ntty, ubuf->ut_line);
                 if (stat(ftty, &statb) != 0 || (!(statb.st_mode & 020)))
                 {
-                   if (debug_mode) syslog(LOG_DEBUG,"Permission denied on %s", ntty);
+                   message_s("Permission denied on %s", ntty);
                    continue; /* not a char dev */
                 }
 
                 /* device exists and is a character device */
                 status = SUCCESS;
-		if (debug_mode) syslog(LOG_DEBUG, "Found %s at %s", name, ubuf->ut_line);
+		if (Options::debug_mode) syslog(LOG_DEBUG, "Found %s at %s", name, ubuf->ut_line);
                 if (prio < PRIO_LOGIN) {
                     prio = PRIO_LOGIN;
                     strcpy(ttyFound, ubuf->ut_line);
@@ -310,8 +311,8 @@ int find_user(char *name, char *tty, char *disp) {
                     continue; /* not a pty */
 
                 /* device is a pseudo terminal */
-		if (debug_mode) syslog(LOG_DEBUG, "PTY %s, ut_host=%s",
-                                  ubuf->ut_line, ubuf->ut_host);
+		if (Options::debug_mode) syslog(LOG_DEBUG, "PTY %s, ut_host=%s",
+                                                ubuf->ut_line, ubuf->ut_host);
                 if (prio < PRIO_PTY) {
                     prio = PRIO_PTY;
                     strcpy(ttyFound, ubuf->ut_line);
@@ -323,8 +324,8 @@ int find_user(char *name, char *tty, char *disp) {
                 if (!dpy) continue; /* DISPLAY not set or empty */
 
                 /* $DISPLAY is set. */
-                if (debug_mode) syslog(LOG_DEBUG, "Found display %s on %s",
-                                  dpy, ubuf->ut_line);
+                if (Options::debug_mode) syslog(LOG_DEBUG, "Found display %s on %s",
+                                                dpy, ubuf->ut_line);
                 if (prio < PRIO_DISPLAY) {
                     prio = PRIO_DISPLAY;
                     strcpy(ttyFound, ubuf->ut_line);
@@ -343,15 +344,15 @@ int find_user(char *name, char *tty, char *disp) {
     
     message("End of Utmp reading");
 #if defined(HAVE_KDE) && defined(ALL_PROCESSES_AND_PROC_FIND_USER)
-    if (OPTXAnnounce && prio < PRIO_DISPLAY)
+    if (Options::XAnnounce && prio < PRIO_DISPLAY)
         if (find_X_process(name, dispFound))
             { message(dispFound); status=SUCCESS; }
 #endif        
     if (status == SUCCESS) {
         (void) strcpy(tty, ttyFound);
         (void) strcpy(disp, dispFound);
-        if (debug_mode)
-         syslog(LOG_DEBUG, "Returning tty %s, display %s", ttyFound, dispFound);
+        if (Options::debug_mode)
+         syslog(LOG_DEBUG, "Returning tty '%s', display '%s'", ttyFound, dispFound);
     } else message2("Returning status %d",status);
     return (status);
 }

@@ -46,14 +46,8 @@ char copyright[] =
 
 #include "includ.h"
 
-#ifdef HAVE_SYS_PARAM_H
-#include <sys/param.h>
-#endif
-#ifndef MAXHOSTNAMELEN
-#define MAXHOSTNAMELEN  256             /* max hostname size */
-#endif
-
 #include <sys/wait.h>
+#include <sys/utsname.h>
 #include <signal.h>
 #include <syslog.h>
 #include <time.h>
@@ -67,7 +61,8 @@ char copyright[] =
 #include "readconf.h"
 #include "defs.h"
 #include "threads.h"
-#include "machines/machines.h"
+#include "table.h"
+#include "machines/answmach.h"
 
 #define TIMEOUT 20
  /* TIMEOUT was 30, but has been reduced to remove the
@@ -77,38 +72,18 @@ char copyright[] =
 
 #define NB_MAX_CHILD 20 /* Max number of answering / forwarding machines at a time */
 
-int	debug_mode = 0; /* set to 1 to have verbose reports from ktalkd */
-
 long	lastmsgtime;
-char	hostname[MAXHOSTNAMELEN];
 
 void	timeout(int dummy);
 
-/* the following copies defaults values to 'OPT*' variables so that
- * configuration file can overwrite them */
+KTalkdTable * ktable;
 
-int OPTanswmach = 1 ; /* used here */
-int OPTtime_before_answmach = 20; /* in answmach/answmach.c */
-/* used in announce.c : */
-int OPTsound = 0;
-int OPTXAnnounce = 1;
-char OPTsoundfile [S_CFGLINE];
-char OPTsoundplayer [S_CFGLINE];
-char OPTsoundplayeropt [S_CFGLINE];
-char OPTannounce1 [S_CFGLINE] = ANNOUNCE1;
-char OPTannounce2 [S_CFGLINE] = ANNOUNCE2;
-char OPTannounce3 [S_CFGLINE] = ANNOUNCE3;
-char OPTinvitelines [S_INVITE_LINES] = INVITE_LINES;/* used in answmach/io.c */
-char OPTmailprog [S_CFGLINE] = "mail.local"; /* used in answmach/io.c */
-int OPTNEU_behaviour = 2; /* default non-existent-user behaviour */
-char OPTNEU_user[S_CFGLINE];
-char OPTNEUBanner1 [S_CFGLINE] = NEU_BANNER1;
-char OPTNEUBanner2 [S_CFGLINE] = NEU_BANNER2;
-char OPTNEUBanner3 [S_CFGLINE] = NEU_BANNER3;
-char OPTextprg [S_CFGLINE];
+/* the following copies defaults values to 'Options::*' variables so that
+ * configuration file can overwrite them */
 
 int main(int argc, char *argv[])
 {
+        ktable = new KTalkdTable();
         NEW_CTL_MSG		request;
         NEW_CTL_RESPONSE	response;
         NEW_CTL_MSG *mp = &request;
@@ -118,24 +93,34 @@ int main(int argc, char *argv[])
                                 socket 0 for us... */
 
 	if (getuid()) {
-		fprintf(stderr, "%s: getuid: not super-user", argv[0]);
-		exit(1);
+            fprintf(stderr, "%s: getuid: not super-user", argv[0]);
+            exit(1);
 	}
 #ifdef LOG_PERROR
 	openlog(*argv, LOG_PID || LOG_PERROR, LOG_DAEMON);
 #else
 	openlog(*argv, LOG_PID, LOG_DAEMON);
 #endif
-	if (gethostname(hostname, sizeof (hostname) - 1) < 0) {
+
+        /* get local machine name */
+        // using 'uname' instead of 'gethostname', as suggested by Stephan Kulow
+        struct utsname buf;
+        if (uname (&buf) == -1) {
+            syslog (LOG_ERR, "Unable to get name of local host : %m");
+            _exit(1);
+        }
+        strcpy(Options::hostname, buf.nodename);
+
+	/* if (gethostname(Options::hostname, sizeof (Options::hostname) - 1) < 0) {
 		syslog(LOG_ERR, "gethostname: %m");
 		_exit(1);
-	}
+	}*/
 	if (chdir(_PATH_DEV) < 0) {
 		syslog(LOG_ERR, "chdir: %s: %m", _PATH_DEV);
 		_exit(1);
 	}
 	if (argc > 1 && strcmp(argv[1], "-d") == 0)
-		debug_mode = 1;
+		Options::debug_mode = 1;
 
         signal(SIGALRM, timeout);
         alarm(TIMEOUT);
@@ -144,10 +129,10 @@ int main(int argc, char *argv[])
 
 	for (;;) {
 
-                if (OPTanswmach && (ret_value>=PROC_REQ_MIN_A))
+                if (Options::answmach && (ret_value>=PROC_REQ_MIN_A))
                 {
                     message("Launch answer machine.");
-                    launchAnswMach(request, ret_value);
+                    AnswMachine::launchAnswMach(request, ret_value);
                     new_process();
                 }
                 
@@ -161,15 +146,12 @@ int main(int argc, char *argv[])
 		ret_value = process_request(mp, &response);
                 if (ret_value != PROC_REQ_FORWMACH)
                 {
-                    if (debug_mode) print_response("=> response", &response);
                     /* can block here, is this what I want? */
                     cc = sendto(talkd_sockt, (char *)&response,
                                 sizeof (response), 0, (struct sockaddr *)&mp->ctl_addr,
                                 sizeof (mp->ctl_addr));
                     if (cc != sizeof (response))
 			syslog(LOG_WARNING, "sendto: %m");
-                } else {
-                    new_process();  /* fork() in forwarding machine */
                 }
         }
 }
@@ -178,10 +160,8 @@ void timeout(int dummy)
 {
     int ok_exit = ack_process();
     (void)dummy; /* to avoid warning */
-    if (ok_exit && (time(0) - lastmsgtime >= MAXIDLE))
-    {
-        /* We clean the table here - to avoid memory leaks */
-        final_clean();
+    if (ok_exit && (time(0) - lastmsgtime >= MAXIDLE)) {
+        delete ktable;
         _exit(0);
     }
     alarm(TIMEOUT);

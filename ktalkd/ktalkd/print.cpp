@@ -43,11 +43,11 @@
 
 static char *types[] =
     { "leave_invite", "look_up", "delete", "announce" };
-#define	NTYPES	(sizeof (types) / sizeof (types[0]))
+#define	NTYPES	(int) (sizeof (types) / sizeof (types[0]))
 static	char *answers[] = 
     { "success", "not_here", "failed", "machine_unknown", "permission_denied",
       "unknown_request", "badversion", "badaddr", "badctladdr" };
-#define	NANSWERS	(sizeof (answers) / sizeof (answers[0]))
+#define	NANSWERS	(int) (sizeof (answers) / sizeof (answers[0]))
 
 /** Dump a NEW_CTL_MSG structure in the logs.
  * It must be called with network byte order (after calls to hton*)
@@ -55,6 +55,8 @@ static	char *answers[] =
  * @param mp the address of the NEW_CTL_MSG structure */
 void print_request(char *cp,register NEW_CTL_MSG *mp)
 {
+  if (Options::debug_mode)
+    {
 	char tbuf[80], *tp;
 	
 	if (mp->type > NTYPES) {
@@ -66,6 +68,7 @@ void print_request(char *cp,register NEW_CTL_MSG *mp)
 	    cp, tp, ntohl(mp->id_num), mp->l_name, mp->r_name, mp->r_tty, ntohl(mp->pid));
         print_addr("    addr", (struct sockaddr_in *)&mp->addr);
         print_addr("    ctl_addr", (struct sockaddr_in *)&mp->ctl_addr);
+    }
 }
 
 /** Dump a NEW_CTL_RESPONSE structure in the logs.
@@ -74,6 +77,8 @@ void print_request(char *cp,register NEW_CTL_MSG *mp)
  * @param mp the address of the NEW_CTL_RESPONSE structure */
 void print_response(char *cp,register NEW_CTL_RESPONSE *rp)
 {
+  if (Options::debug_mode)
+    {
 	char tbuf[80], *tp, abuf[80], *ap;
 	
 	if (rp->type > NTYPES) {
@@ -89,6 +94,7 @@ void print_response(char *cp,register NEW_CTL_RESPONSE *rp)
 	syslog(LOG_DEBUG, "%s: %s: %s, id %d", cp, tp, ap, ntohl(rp->id_num));
         if ((rp->type == LOOK_UP) && (rp->answer == SUCCESS))
             print_addr("    resp addr", (struct sockaddr_in *)&rp->addr);
+    }
 }
 
 /* print_addr is a debug print routine for sockaddr_in structures.
@@ -119,14 +125,14 @@ void print_addr(char *cp, struct sockaddr_in * addr)
 /* Set to 1 with egcs-1.0.1 or gcc 2.8, or without KDE (c compiling) */
 void message(const char *string)
 {
-  if (debug_mode) syslog(LOG_DEBUG,string);
+  if (Options::debug_mode) syslog(LOG_DEBUG,string);
 }
 
 #else
 
 void message(const char *string)
 {
-  if (debug_mode) {
+  if (Options::debug_mode) {
 	char cmd[250];
 	sprintf(cmd,"echo `date +%%H:%%M:%%S` %s >>/tmp/ktalkd_debug",string);
 	system(cmd);
@@ -137,7 +143,7 @@ void message(const char *string)
 
 void message2(const char *format,int value)
 {
-  if (debug_mode)
+  if (Options::debug_mode)
     {
       int len = strlen(format)+10;
       char * buf = (char *)malloc(len);
@@ -149,7 +155,7 @@ void message2(const char *format,int value)
 
 void message_s(const char *format,const char *value)
 {
-  if (debug_mode)
+  if (Options::debug_mode)
     {
       int len = strlen(format)+strlen(value);
       char * buf = (char *)malloc(len);

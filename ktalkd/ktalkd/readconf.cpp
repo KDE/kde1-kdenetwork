@@ -109,47 +109,47 @@ int process_config_file(void)
 	       result[strlen(result)-1]='\0'; /* get rid of \n */
 		 
 	       if (found("AnswMach:")) {
-		    OPTanswmach=booleanresult(result); 
-		    message2("AnswMach : %d",OPTanswmach);}
+		    Options::answmach=booleanresult(result); 
+		    message2("AnswMach : %d",Options::answmach);}
 		 
 	       if (found("XAnnounce:")) {
-		    OPTXAnnounce=booleanresult(result); 
-		    message2("XAnnounce : %d",OPTXAnnounce); }
+		    Options::XAnnounce=booleanresult(result); 
+		    message2("XAnnounce : %d",Options::XAnnounce); }
 	    
 	       if (found("Time:")) { 
-		    OPTtime_before_answmach=atoi(result); 
-		    message2("Time : %d",OPTtime_before_answmach); }
+		    Options::time_before_answmach=atoi(result); 
+		    message2("Time : %d",Options::time_before_answmach); }
 
 	       if (found("Sound:")) { 
-		    OPTsound=booleanresult(result);
-		    message2("Sound : %d",OPTsound); }
+		    Options::sound=booleanresult(result);
+		    message2("Sound : %d",Options::sound); }
 
 	       if (found("SoundFile:")) { 
-		    strncpy(OPTsoundfile,result,S_CFGLINE);
-		    message("SoundFile =");message(OPTsoundfile); }
+		    strncpy(Options::soundfile,result,S_CFGLINE);
+		    message("SoundFile =");message(Options::soundfile); }
 
 	       if (found("SoundPlayer:")) { 
-                   strncpy(OPTsoundplayer,result,S_CFGLINE);
+                   strncpy(Options::soundplayer,result,S_CFGLINE);
 		    message("SoundPlayer ="); message(result); }
 
 	       if (found("SoundPlayerOpt:")) { 
-                    strncpy(OPTsoundplayeropt,result,S_CFGLINE); 
+                    strncpy(Options::soundplayeropt,result,S_CFGLINE); 
 		    message("SoundPlayerOpt ="); message(result); }
 
 	       if (found("MailProg:")) { 
-		    strncpy(OPTmailprog,result,S_CFGLINE);
+		    strncpy(Options::mailprog,result,S_CFGLINE);
 		    message("Mail prog ="); message(result); }
 
                /* text based announcement */
-               if (found("Announce1")) { strncpy(OPTannounce1,result,S_CFGLINE); }
-               if (found("Announce2")) { strncpy(OPTannounce2,result,S_CFGLINE); }
-               if (found("Announce3")) { strncpy(OPTannounce3,result,S_CFGLINE); }
+               if (found("Announce1")) { strncpy(Options::announce1,result,S_CFGLINE); }
+               if (found("Announce2")) { strncpy(Options::announce2,result,S_CFGLINE); }
+               if (found("Announce3")) { strncpy(Options::announce3,result,S_CFGLINE); }
                
-               if (found("NEUUser"))   { strncpy(OPTNEU_user,result,S_INVITE_LINES); }
-               if (found("NEUBehaviour")) { OPTNEU_behaviour=booleanresult(result); }
-               if (found("NEUBanner1")) { strncpy(OPTNEUBanner1,result,S_CFGLINE); }
-               if (found("NEUBanner2")) { strncpy(OPTNEUBanner2,result,S_CFGLINE); }
-               if (found("NEUBanner3")) { strncpy(OPTNEUBanner3,result,S_CFGLINE); }
+               if (found("NEUUser"))   { strncpy(Options::NEU_user,result,S_INVITE_LINES); }
+               if (found("NEUBehaviour")) { Options::NEU_behaviour=booleanresult(result); }
+               if (found("NEUBanner1")) { strncpy(Options::NEUBanner1,result,S_CFGLINE); }
+               if (found("NEUBanner2")) { strncpy(Options::NEUBanner2,result,S_CFGLINE); }
+               if (found("NEUBanner3")) { strncpy(Options::NEUBanner3,result,S_CFGLINE); }
 	  }
      } while (ret);
      fclose(fd);

@@ -7,7 +7,7 @@
 LIBS			+=	$(LIBSOCKET)
 noinst_LIBRARIES	=	libmach.a
 
-libmach_a_SOURCES	=	answmach.cpp forwmach.cpp talkconn.cpp
-noinst_HEADERS		=	answmach.h   forwmach.h   talkconn.h   machines.h
+libmach_a_SOURCES	=	answmach.cpp forwmach.cpp talkconn.cpp check_protocol.cpp
+noinst_HEADERS		=	answmach.h   forwmach.h   talkconn.h   check_protocol.h
 
 

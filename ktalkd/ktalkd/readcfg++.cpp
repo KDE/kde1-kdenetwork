@@ -45,11 +45,7 @@
 #include "defs.h"
 #include <config.h>
 
-/* C interface */
-extern "C" {
 #include "print.h"
-extern int debug_mode;
-}
 
 int booleanresult(const char * s)
 {
@@ -113,10 +109,10 @@ int init_user_config(char * l_name)
   system(syscmd);
 #endif 
     cfg -> setGroup("ktalkd");
-    if (debug_mode) syslog(LOG_DEBUG,"User config file ok");
+    message("User config file ok");
     return 1;
   } else {
-      if (debug_mode) syslog(LOG_DEBUG,"No user config file %s !",(const char*)aFileName);
+      message_s("No user config file %s !",(const char*)aFileName);
       return 0;
     }
 }
@@ -134,12 +130,12 @@ int read_user_config(char * key, char * result, int max)
     {
         qstrncpy( result, Qresult, max);
 
-        if (debug_mode) syslog(LOG_DEBUG,"User option %s : %s", key, result);
+        if (Options::debug_mode) syslog(LOG_DEBUG,"User option %s : %s", key, result);
         return 1;
     }
     else 
     {
-        if (debug_mode) syslog(LOG_DEBUG,"User option %s NOT found", key);
+        if (Options::debug_mode) syslog(LOG_DEBUG,"User option %s NOT found", key);
         return 0;
     }
 }
@@ -199,58 +195,58 @@ int process_config_file(void)
   //    QString cfgStr = cfgStr0.stripWhiteSpace();
   
   if (found("AnswMach")) {
-    OPTanswmach=booleanresult(result); 
-    message2("AnswMach : %d",OPTanswmach);}
+    Options::answmach=booleanresult(result); 
+    message2("AnswMach : %d",Options::answmach);}
   
   if (found("XAnnounce")) {
-    OPTXAnnounce=booleanresult(result); 
-    message2("XAnnounce : %d",OPTXAnnounce); }
+    Options::XAnnounce=booleanresult(result); 
+    message2("XAnnounce : %d",Options::XAnnounce); }
   
   if (found("Time")) { 
-    OPTtime_before_answmach=atoi(result); 
-    message2("Time : %d",OPTtime_before_answmach); }
+    Options::time_before_answmach=atoi(result); 
+    message2("Time : %d",Options::time_before_answmach); }
   
   if (found("Sound")) { 
-    OPTsound=booleanresult(result);
-    message2("Sound : %d",OPTsound); }
+    Options::sound=booleanresult(result);
+    message2("Sound : %d",Options::sound); }
   
   if (found("SoundFile")) { 
-    qstrncpy(OPTsoundfile,result,S_CFGLINE);
-    message_s("SoundFile = %s",OPTsoundfile); }
+    qstrncpy(Options::soundfile,result,S_CFGLINE);
+    message_s("SoundFile = %s",Options::soundfile); }
   
   if (found("SoundPlayer")) { 
-    qstrncpy(OPTsoundplayer,result,S_CFGLINE); 
-    message_s("SoundPlayer = %s",OPTsoundplayer); }
+    qstrncpy(Options::soundplayer,result,S_CFGLINE); 
+    message_s("SoundPlayer = %s",Options::soundplayer); }
   
   if (found("SoundPlayerOpt")) { 
-    qstrncpy(OPTsoundplayeropt,result,S_CFGLINE);
-    message_s("SoundPlayerOpt = %s",OPTsoundplayeropt); }
+    qstrncpy(Options::soundplayeropt,result,S_CFGLINE);
+    message_s("SoundPlayerOpt = %s",Options::soundplayeropt); }
   
   if (found("MailProg")) { 
-    qstrncpy(OPTmailprog,result,S_CFGLINE);
-    message_s("Mail prog = %s",OPTmailprog); }
+    qstrncpy(Options::mailprog,result,S_CFGLINE);
+    message_s("Mail prog = %s",Options::mailprog); }
   
   /* text based announcement */
-  if (found("Announce1")) { qstrncpy(OPTannounce1,result,S_CFGLINE); }
-  if (found("Announce2")) { qstrncpy(OPTannounce2,result,S_CFGLINE); }
-  if (found("Announce3")) { qstrncpy(OPTannounce3,result,S_CFGLINE); }
+  if (found("Announce1")) { qstrncpy(Options::announce1,result,S_CFGLINE); }
+  if (found("Announce2")) { qstrncpy(Options::announce2,result,S_CFGLINE); }
+  if (found("Announce3")) { qstrncpy(Options::announce3,result,S_CFGLINE); }
 
   if (found("NEUUser"))   { 
-      qstrncpy(OPTNEU_user,result,S_INVITE_LINES); 
-      message(OPTNEU_user); 
+      qstrncpy(Options::NEU_user,result,S_INVITE_LINES); 
+      message(Options::NEU_user); 
   }
   if (found("NEUBehaviour")) {
-      OPTNEU_behaviour=atoi(result); 
-      message2("NEUBehaviour : %d",OPTNEU_behaviour); 
+      Options::NEU_behaviour=atoi(result); 
+      message2("NEUBehaviour : %d",Options::NEU_behaviour); 
   }
   
   if (found("ExtPrg")) { 
-    qstrncpy(OPTextprg,result,S_CFGLINE);
-    message_s("Ext prg = %s",OPTextprg); }
+    qstrncpy(Options::extprg,result,S_CFGLINE);
+    message_s("Ext prg = %s",Options::extprg); }
   else {   /* has to work even without config file at all */
       char buffer [250];
       get_kdebindir(buffer, 250);
-      snprintf(OPTextprg,S_CFGLINE,"%s/ktalkdlg",buffer);
+      snprintf(Options::extprg,S_CFGLINE,"%s/ktalkdlg",buffer);
   }
 
   delete syscfg;

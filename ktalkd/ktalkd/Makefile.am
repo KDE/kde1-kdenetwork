@@ -6,7 +6,7 @@ SUBDIRS 	=	machines
 bin_PROGRAMS	=	ktalkd
 EXTRA_HEADERS	=	readcfg++.h
 INCLUDES	=	$(all_includes)
-noinst_HEADERS	=	defs.h includ.h find_user.h announce.h print.h process.h readconf.h table.h threads.h
+noinst_HEADERS	=	defs.h includ.h find_user.h announce.h print.h process.h readconf.h table.h threads.h options.h
 ktalkd_DEPS	=	machines/libmach.a
 
 ###########################################################
@@ -16,7 +16,7 @@ if KDE_INSTALLED
 TALKD_CONF	=	$(kde_confdir)/ktalkdrc
 TALKD_CONF_NAME	=	ktalkdrc
 DEFS 		+=       -DHAVE_KDE
-ktalkd_SOURCES	=	announce.c print.c process.c readcfg++.cpp table.c talkd.c find_user.c threads.c
+ktalkd_SOURCES	=	announce.cpp print.cpp process.cpp readcfg++.cpp table.cpp talkd.cpp find_user.cpp threads.cpp options.cpp
 LDADD           =       machines/libmach.a -lkdecore -lqt -lXext -lX11 @LIBBSD@ @LIBSOCKET@
 
 ###########################################################
@@ -26,7 +26,7 @@ else
 TALKD_CONF 	=	/etc/talkd.conf
 TALKD_CONF_NAME	=	talkd.conf
 DEFS		+=	-DTALKD_CONF=\"$(TALKD_CONF)\"
-ktalkd_SOURCES	=	announce.c print.c process.c readconf.c table.c talkd.c find_user.c threads.c
+ktalkd_SOURCES	=	announce.cpp print.cpp process.cpp readconf.cpp table.cpp talkd.cpp find_user.cpp threads.cpp options.cpp
 LDADD		=	machines/libmach.a @LIBBSD@ @LIBSOCKET@
 
 endif
@@ -47,5 +47,5 @@ endif
 	@if [ -f $(TALKD_CONF) ]; then \
 	  echo "Please check $(TALKD_CONF) to be up-to-date."; \
 	else \
-	  $(INSTALL_DATA) $(TALKD_CONF_NAME) $(install_root)/$(TALKD_CONF); \
+	  $(INSTALL_DATA) $(TALKD_CONF_NAME) $(TALKD_CONF); \
 	fi

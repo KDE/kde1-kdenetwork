@@ -36,21 +36,10 @@
  * of requests kept by the daemon. Nothing fancy here, linear
  * search on a double-linked list. A time is kept with each 
  * entry so that overly old invitations can be eliminated.
- *
- * Consider this a mis-guided attempt at modularity
  */
 
-#include "includ.h"
-
+#include "table.h"
 #include <sys/param.h>
-#ifdef HAVE_SYS_TIME_H
-#include <sys/time.h>
-#ifdef TIME_WITH_SYS_TIME
-#include <time.h>
-#endif
-#else
-#include <time.h>
-#endif
 #ifdef HAVE_UNISTD_H
 #include <unistd.h>
 #endif
@@ -58,25 +47,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <signal.h>
 #include "print.h"
 #include "defs.h"
-#include "table.h"
-#include "machines/machines.h" /* for forwMachDelete */
+#include "machines/forwmach.h"
 
 #define MAX_ID 16000	/* << 2^15 so I don't have sign troubles */
 
 #define NIL ((TABLE_ENTRY *)0)
 
-struct	timeval tp;
-struct	timezone txp;
-
-TABLE_ENTRY *table = NIL;
-
 /*
  * Look in the table for an invitation that matches the current
  * request looking for an invitation
  */
-NEW_CTL_MSG * find_match(register NEW_CTL_MSG *request)
+NEW_CTL_MSG * KTalkdTable::find_match(register NEW_CTL_MSG *request)
 {
     register TABLE_ENTRY *ptr;
     time_t current_time;
@@ -106,7 +90,7 @@ NEW_CTL_MSG * find_match(register NEW_CTL_MSG *request)
  * Look for an identical request, as opposed to a complimentary
  * one as find_match does 
  */
-NEW_CTL_MSG * find_request(register NEW_CTL_MSG *request)
+NEW_CTL_MSG * KTalkdTable::find_request(register NEW_CTL_MSG *request)
 {
     register TABLE_ENTRY *ptr;
     time_t current_time;
@@ -138,7 +122,7 @@ NEW_CTL_MSG * find_request(register NEW_CTL_MSG *request)
     return ((NEW_CTL_MSG *)0);
 }
 
-void insert_table(NEW_CTL_MSG *request, NEW_CTL_RESPONSE *response, char * fwm)
+void KTalkdTable::insert_table(NEW_CTL_MSG *request, NEW_CTL_RESPONSE *response, ForwMachine * fwm)
 {
     register TABLE_ENTRY *ptr;
     time_t current_time;
@@ -167,7 +151,7 @@ void insert_table(NEW_CTL_MSG *request, NEW_CTL_RESPONSE *response, char * fwm)
 /*
  * Generate a unique non-zero sequence number
  */
-int new_id()
+int KTalkdTable::new_id()
 {
     static int current_id = 0;
 
@@ -181,40 +165,20 @@ int new_id()
 /*
  * Delete the invitation with id 'id_num'
  */
-int delete_invite(unsigned int id_num)
+int KTalkdTable::delete_invite(int id_num)
 {
     register TABLE_ENTRY *ptr;
 
     ptr = table;
-    if (debug_mode)
-        syslog(LOG_DEBUG, "delete_invite(%d)", id_num);
+    message2("delete_invite(%d)", id_num);
     for (ptr = table; ptr != NIL; ptr = ptr->next) {
         if (ptr->request.id_num == id_num)
             break;
     }
     if (ptr != NIL) {
-        message2("Deleted : id %d", ptr->request.id_num);
-        delete_entry(ptr);
-        return (SUCCESS);
-    }
-    return (NOT_HERE);
-}
-
-/*
- * Delete the forwarding machine 'fwm'
- */
-int delete_forwmach(char * fwm)
-{
-    register TABLE_ENTRY *ptr;
-
-    ptr = table;
-    if (debug_mode)
-        syslog(LOG_DEBUG, "delete_forwmach(...)");
-    for (ptr = table; ptr != NIL; ptr = ptr->next) {
-        if (ptr->fwm == fwm)
-            break;
-    }
-    if (ptr != NIL) {
+        if (ptr->fwm) {
+            ptr->fwm->sendDelete(); // Calls processDelete() in the child process.
+        }
         message2("Deleted : id %d", ptr->request.id_num);
         delete_entry(ptr);
         return (SUCCESS);
@@ -225,7 +189,7 @@ int delete_forwmach(char * fwm)
 /*
  * Classic delete from a double-linked list
  */
-void delete_entry(register TABLE_ENTRY *ptr)
+void KTalkdTable::delete_entry(register TABLE_ENTRY *ptr)
 {
     if (table == ptr)
         table = ptr->next;
@@ -234,4 +198,20 @@ void delete_entry(register TABLE_ENTRY *ptr)
     if (ptr->next != NIL)
         ptr->next->last = ptr->last;
     free((char *)ptr);
+}
+
+KTalkdTable::~KTalkdTable()
+{
+      register TABLE_ENTRY *ptr;
+      ptr = table;
+      message("final_clean()");
+      for (ptr = table; ptr != 0L; ptr = ptr->next) {
+          if (ptr->fwm != 0L)
+          {
+              message2("CLEAN : Found a forwarding machine to clean : id %d",ptr->request.id_num);
+              delete ptr->fwm;
+          }
+          message2("CLEAN : Deleting id %d", ptr->request.id_num);
+          delete_entry(ptr);
+      }
 }

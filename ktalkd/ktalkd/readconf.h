@@ -18,11 +18,6 @@
     Boston, MA 02111-1307, USA.  */
 
 
-#ifdef __cplusplus
-extern "C" 
-{
-#endif
-
   /**
         * Initiate user-config-file reading.
         *
@@ -64,6 +59,3 @@ void setenv_kdebindir(void);
         */
 void get_kdebindir(char * buffer, int max);
     
-#ifdef __cplusplus
-}
-#endif
