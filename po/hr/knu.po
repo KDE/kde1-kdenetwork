@@ -18,7 +18,7 @@ msgstr "&Traceroute"
 
 #: knu.cpp:168 knu.cpp:321
 msgid "Host &resolution"
-msgstr "&Razluèi poslu¾itelja"
+msgstr "&Rezolucija raèunala"
 
 #: knu.cpp:181
 msgid "F&inger"
@@ -35,10 +35,10 @@ msgid ""
 "\n"
 "So I can't do anything...\n"
 msgstr ""
-"Nijedna naredba nije omoguæena\n"
+"Nijedna naredba nije omoguæ†ena\n"
 "u postavnoj datoteci.\n"
 "\n"
-"Stoga ne mogu uèiniti ništa...\n"
+"Stoga ne mogu uèiniti ni¹ta...\n"
 
 #: knu.cpp:246
 msgid "&New window"
@@ -54,16 +54,16 @@ msgstr "Iz&aberi sve"
 
 #: knu.cpp:263
 msgid "C&lear output window"
-msgstr "Oèisti iz&lazni prozor"
+msgstr "&Oèisti izlazni prozor"
 
 #: knu.cpp:266
 msgid "P&references..."
-msgstr "P&ostavke..."
+msgstr "P&odesi..."
 
 #: knu.cpp:281
 #, c-format
 msgid "&About %s"
-msgstr "O progr&amu %s"
+msgstr "&O %s"
 
 #: knu.cpp:283
 msgid "About &Qt"
@@ -82,7 +82,7 @@ msgid ""
 "Bertrand"
 msgstr ""
 "Knu\n"
-"inaèica %s\n"
+"Inaèica %s\n"
 "\n"
 "Bertrand"
 
@@ -92,15 +92,15 @@ msgstr "O programu..."
 
 #: knu.cpp:602
 msgid "Network utilities"
-msgstr "Mre¾ni uslu¾nici"
+msgstr "Mre¾ni uslu¾ni programi"
 
 #: CommandDlg.cpp:131
 msgid "H&ost:"
-msgstr "D&omaæin:"
+msgstr "&Raèunalo:"
 
 #: CommandDlg.cpp:140
 msgid "&Go!"
-msgstr "&Kreni!"
+msgstr "&Idi!"
 
 #: CommandDlg.cpp:150
 msgid "&Stop"
@@ -111,8 +111,8 @@ msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
 msgstr ""
-"Ova naredbena datoteka nije naðena. \n"
-"Mo¾ete zadati stazu u izborniku Uredi->Postavke..."
+"Ova izvr¹na datoteka nije naðena. \n"
+"Mo¾ete zadati stazu u izborniku Uredi->Podesi..."
 
 #: CommandDlg.cpp:351
 #, c-format
@@ -128,22 +128,22 @@ msgid ""
 "to configure it again.\n"
 msgstr ""
 "\n"
-"Postoji problem u vašoj\n"
+"Postoji problem u va¹oj\n"
 "%s/%src\n"
 "postavnoj datoteci.\n"
-"U grupi [%s],\n"
-"ne mogu naæi valjanu \"path=\" stavku.\n"
+"U [%s] grupi,\n"
+"ne mogu naæi ispravni \"path=\" unos.\n"
 "\n"
-"Molim koristite izbornik Uredi->Postavke...\n"
-"za ponovnu postavu.\n"
+"Molim koristite Uredi->Podesi... i\n"
+"da provjerite unesene vrijednosti.\n"
 
 #: CommandDlg.cpp:360
 msgid "Error in pathname"
-msgstr "Pogrešna staza"
+msgstr "Pogre¹na putanja"
 
 #: CommandDlg.cpp:516
 msgid "Binary"
-msgstr "Binarna datoteka"
+msgstr "Izvr¹na datoteka"
 
 #: CommandDlg.cpp:524
 msgid "Path&name:"
@@ -167,39 +167,39 @@ msgstr "#"
 
 #: MtrDlg.cpp:88
 msgid "Hostname"
-msgstr "Domaæin"
+msgstr "Ime raèunala"
 
 #: MtrDlg.cpp:89
 msgid "Loss"
-msgstr "Gbtk"
+msgstr "Gubitak"
 
 #: MtrDlg.cpp:91
 msgid "Rcv"
-msgstr "Prm"
+msgstr "Rcv"
 
 #: MtrDlg.cpp:93
 msgid "Snt"
-msgstr "Psl"
+msgstr "Snt"
 
 #: MtrDlg.cpp:95
 msgid "Best"
-msgstr "Najb"
+msgstr "Najbolje"
 
 #: MtrDlg.cpp:97
 msgid "Avg"
-msgstr "Prs"
+msgstr "Prosjeèno"
 
 #: MtrDlg.cpp:99
 msgid "Worst"
-msgstr "Najgo"
+msgstr "Najgore"
 
 #: MtrDlg.cpp:142 PingDlg.cpp:100 TracerouteDlg.cpp:98
 msgid "Make host &name resolution"
-msgstr "Razluèi &naziv domaæina"
+msgstr "Izvr¹i rezoluciju raèunala"
 
 #: HostDlg.cpp:331 PingDlg.cpp:227
 msgid "hos&t"
-msgstr "do&maæin"
+msgstr "raèuna&lo"
 
 #: HostDlg.cpp:335 PingDlg.cpp:231
 msgid "ns&lookup"
@@ -223,7 +223,7 @@ msgstr "poslu¾itelj naziva (NS)"
 
 #: HostDlg.cpp:115
 msgid "mail exchanger (MX)"
-msgstr "promjenitelj po¹te (MX)"
+msgstr "izmjenjivaè po¹te (MX)"
 
 #: HostDlg.cpp:116
 msgid "alias (CNAME)"
@@ -231,7 +231,7 @@ msgstr "zamjensko ime (CNAME)"
 
 #: HostDlg.cpp:117
 msgid "start of authority (SOA)"
-msgstr "poèetak authoritya (SOA)"
+msgstr "start of authority (SOA)"
 
 #: HostDlg.cpp:118
 msgid "any record (ANY)"
@@ -252,3 +252,6 @@ msgstr "Pos&lu¾itelj:"
 #: FingerDlg.cpp:77
 msgid "&User:"
 msgstr "&Korisnik:"
+
+#~ msgid "&Matt's traceroute"
+#~ msgstr "&Mattov Traceroute"
