@@ -13,8 +13,11 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-#include <regex.h>
 
+//Fix for the weird bug!
+extern "C" {
+#include <regex.h>
+}
 
 #define MAX_LINE 4096
 #define INIT_MSGS 32
