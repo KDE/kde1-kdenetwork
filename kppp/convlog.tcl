@@ -18,6 +18,9 @@ foreach i [glob -nocomplain ~/.kde/share/apps/kppp/Log/*-199?] {
 	continue
     }    
 
+    puts -nonewline "converting $i... "
+    flush stdout
+    
     while {[eof $fin] == 0} {
 	gets $fin line
 
@@ -38,4 +41,10 @@ foreach i [glob -nocomplain ~/.kde/share/apps/kppp/Log/*-199?] {
     }
     close $fin
     close $fout
+
+    catch {
+	exec chmod 600 ${i}.log
+    }
+
+    puts "done"
 }
