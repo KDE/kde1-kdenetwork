@@ -31,6 +31,7 @@
 #include <qtimer.h>
 #include <assert.h>
 
+#include <config.h>
 #include "modem.h"
 #include "pppdata.h"
 #include "log.h"

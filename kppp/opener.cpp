@@ -170,7 +170,7 @@ void Opener::mainLoop() {
     case SetSecret:
       Debug("Opener: received SetSecret");
       assert(len == sizeof(struct SetSecretRequest));
-      response.status = createAuthFile(request.secret.authMethod,
+      response.status = !createAuthFile(request.secret.authMethod,
                                        request.secret.username,
                                        request.secret.password);
       sendResponse(&response);

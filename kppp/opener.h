@@ -16,7 +16,7 @@ public:
          SetSecret, RemoveSecret,
          Stop };
   enum { PAP = 1, CHAP };
-  enum { MaxPathLen = 30, MaxStrLen = 20 };
+  enum { MaxPathLen = 30, MaxStrLen = 40 };
 
 private:
   void mainLoop();

@@ -1,3 +1,7 @@
+1998-11-23  Harri Porten  <hp@omico.rz.tu-harburg.de>
+
+
+
 1998-11-22  Harri Porten  <porten@kde.org>
 
 	* main.cpp: fixed freeze on disconnect by using waitpid(...,
@@ -5,6 +9,10 @@
 	* main.cpp: forgot to convert gpppdata.password to char*
 	* opener.cpp: close file descriptors after being sent. Left out
 	dup() call. Did it serve any special purpose ?
+	* opener.h: increased allow size for username and passwords
+	* modem.cpp: included config.h for HAVE_USLEEP
+	(thanks to hpj.lisa@t-online.de (hpj) for reporting this)
+	* PAP/CHAP: fixed typo and return value
 		
 1998-11-20  Harri Porten  <porten@kde.org>
 

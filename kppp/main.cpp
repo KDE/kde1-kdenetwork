@@ -996,7 +996,7 @@ void KPPPWidget::connectbutton() {
 
   // if this is a CHAP account, ensure that password and username are
   // supplied
-  if(gpppdata.authMethod() == AUTH_PAP) {
+  if(gpppdata.authMethod() == AUTH_CHAP) {
     if(strlen(ID_Edit->text()) == 0 || strlen(PW_Edit->text()) == 0) {
       QMessageBox::warning(this,
 			   i18n("Error"),
@@ -1207,7 +1207,7 @@ void killpppd() {
       return;
     }
 
-    waitpid(pid, &stat, WNOHANG);
+    waitpid(&stat);
   }
 }
 
