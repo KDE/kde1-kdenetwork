@@ -233,12 +233,11 @@ msgstr "Lähetetty"
 
 #: kmmainwin.cpp:863
 msgid "Next unread"
-msgstr ""
+msgstr "Seuraava lukematon"
 
 #: kmmainwin.cpp:867
-#, fuzzy
 msgid "Previous unread"
-msgstr "&Edellinen"
+msgstr "Edellinen lukematon"
 
 #: kmmainwin.cpp:877
 msgid "&Set Status"
@@ -941,9 +940,9 @@ msgid "Writing index file"
 msgstr ""
 
 #: kmfolder.cpp:870
-#, fuzzy, c-format
+#, c-format
 msgid "Compacting folder: %d messages done"
-msgstr "Luon indeksitiedostoa %d viestiä valmiina"
+msgstr "Tiivistän kansiota %d viestiä tehty"
 
 #: kmmsgpartdlg.cpp:41
 msgid "Message Part Properties"
