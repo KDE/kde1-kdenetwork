@@ -211,7 +211,7 @@ AboutWidget::AboutWidget( QWidget *parent, const char *name)
 
   QString string2;
   string2 = 
-    "\n\n\nWith contributions from:\n"\
+    "\n\nWith contributions from:\n"\
     "Mario Weilguni\n"
     "Markus Wuebben\n"\
     "Jesus Fuentes Saavedra\n\n";
@@ -250,6 +250,11 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   modemdevice->insertItem("/dev/cua1");
   modemdevice->insertItem("/dev/cua2");
   modemdevice->insertItem("/dev/cua3");
+  modemdevice->insertItem("/dev/ttyS0");
+  modemdevice->insertItem("/dev/ttyS1");
+  modemdevice->insertItem("/dev/ttyS2");
+  modemdevice->insertItem("/dev/ttyS3");
+   
   connect(modemdevice, SIGNAL(activated(int)), SLOT(setmodemdc(int)));
 
 
@@ -266,8 +271,8 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
 
 
   labelenter = new QLabel(this,"enter");
-  labelenter->setText("Enter is:");
-  labelenter->setGeometry(30,102,80,20);
+  labelenter->setText("Line Termination:");
+  labelenter->setGeometry(30,102,120,20);
 
   enter = new QComboBox(false,this);
   enter->setGeometry(155, 100, 150, 25);
