@@ -24,6 +24,7 @@
 #include <ktablistbox.h>
 #include <ktoolbar.h>
 #include <kstdaccel.h>
+#include <kcharsets.h>
 #include <mimelib/mimepp.h>
 #include <html.h>
 #include <qfiledlg.h>
@@ -169,12 +170,31 @@ void KMComposeWin::readConfig(void)
   mShowToolBar = config->readNumEntry("show-toolbar", 1);
   mSendImmediate = config->readNumEntry("send-immediate", -1);
   mDefEncoding = config->readEntry("encoding", "base64");
+#ifdef KRN  
+  m8BitEncoding = config->readEntry("8bit-encoding", "8bit");
+#else  
+  m8BitEncoding = config->readEntry("8bit-encoding", "quoted-printable");
+#endif  
   mShowHeaders = config->readNumEntry("headers", HDR_STANDARD);
   mWordWrap = config->readNumEntry("word-wrap", 1);
   mLineBreak = config->readNumEntry("break-at", 80);
   mBackColor = config->readEntry( "Back-Color","#ffffff");
   mForeColor = config->readEntry( "Fore-Color","#000000");
   mAutoPgpSign = config->readNumEntry("pgp-auto-sign", 0);
+  
+  m7BitAscii = config->readNumEntry("7bit-is-ascii",1);
+  
+  str = config->readEntry("default-charset", "");
+  if (str.isNull() || str=="default" || !KCharset(str).ok())
+      mDefaultCharset="default";
+  else
+      mDefaultCharset=str;
+      
+  str = config->readEntry("composer-charset", "");
+  if (str.isNull() || str=="default" || !KCharset(str).ok())
+      mComposeCharset="default";
+  else
+      mComposeCharset=str;
 
   config->setGroup("Geometry");
   str = config->readEntry("composer", "480 510");
@@ -196,7 +216,11 @@ void KMComposeWin::writeConfig(bool aWithSync)
   config->writeEntry("show-toolbar", mShowToolBar);
   config->writeEntry("send-immediate", mSendImmediate);
   config->writeEntry("encoding", mDefEncoding);
+  config->writeEntry("8bit-encoding", m8BitEncoding);
   config->writeEntry("headers", mShowHeaders);
+  config->writeEntry("7bit-is-ascii",m7BitAscii);
+  config->writeEntry("default-charset",mDefaultCharset);
+  config->writeEntry("compose-charset",mComposeCharset);
 
   config->writeEntry("Fore-Color",mForeColor);
   config->writeEntry("Back-Color",mBackColor);
@@ -506,7 +530,11 @@ void KMComposeWin::setupEditor(void)
 
 
   // Font setup
-
+  QFont fnt=mEditor->font();
+  KCharset charset;
+  if (mComposeCharset=="default") charset=klocale->charset();
+  else charset=mComposeCharset;
+  mEditor->setFont(charset.setQFont(fnt));
 
   // Color setup
   if( mForeColor.isEmpty())
@@ -576,7 +604,7 @@ void KMComposeWin::setMsg(KMMessage* newMsg)
   if (num > 0)
   {
     mMsg->bodyPart(0, &bodyPart);
-    mEditor->setText(bodyPart.body());
+    mEditor->setText(convertToLocal(bodyPart.body(),bodyPart.charset()));
     mEditor->insertLine("\n", -1);
 
     for(i=1; i<num; i++)
@@ -586,7 +614,7 @@ void KMComposeWin::setMsg(KMMessage* newMsg)
       addAttach(msgPart);
     }
   }
-  else mEditor->setText(mMsg->body());
+  else mEditor->setText(convertToLocal(mMsg->body(),mMsg->charset()));
   mEditor->toggleModified(FALSE);
 }
 
@@ -613,7 +641,12 @@ void KMComposeWin::applyChanges(void)
   {
     // If there are no attachments in the list waiting it is a simple 
     // text message.
-    mMsg->setBody(pgpProcessedMsg());
+    QString charset=mMsg->charset();
+    const QString str=convertToSend(pgpProcessedMsg(),charset);
+    mMsg->setCharset(charset);
+    if (is8Bit(str)) mMsg->setCteStr(m8BitEncoding); 
+    else mMsg->setCteStr("7bit");
+    mMsg->setBodyEncoded(str);
   }
   else 
   { 
@@ -624,10 +657,13 @@ void KMComposeWin::applyChanges(void)
     mMsg->setBody("This message is in MIME format.\n\n");
 
     // create bodyPart for editor text.
-    bodyPart.setCteStr("7bit"); 
     bodyPart.setTypeStr("text");
     bodyPart.setSubtypeStr("plain");
-    bodyPart.setBody(pgpProcessedMsg());
+    QString charset=bodyPart.charset();
+    const QString str=convertToSend(pgpProcessedMsg(),charset);
+    bodyPart.setCharset(charset);
+    if (is8Bit(str)) bodyPart.setCteStr(m8BitEncoding); 
+    bodyPart.setEncodedBody(str);
     mMsg->addBodyPart(&bodyPart);
 
     // Since there is at least one more attachment create another bodypart
@@ -1173,6 +1209,60 @@ void KMComposeWin::slotHelp()
   app->invokeHTMLHelp("","");
 }
 
+//-----------------------------------------------------------------------------
+bool KMComposeWin::is8Bit(const QString str){
+ 
+  const char *ptr=str;
+  while(*ptr){
+    if ( (*ptr)&0x80 ) return TRUE;
+    else if ( (*ptr)=='&' && ptr[1]=='#' ){
+      int code=atoi(ptr+2);
+      if (code>0x7f) return TRUE;
+    }  
+    ptr++;
+  }   
+  return FALSE;
+}
+
+//-----------------------------------------------------------------------------
+QString KMComposeWin::convertToLocal(const QString str,const QString charset){
+
+  if (m7BitAscii && !is8Bit(str)) return str.copy();
+  KCharset destCharset;
+  KCharset srcCharset;
+  if (charset==""){
+     if (mDefaultCharset=="default") srcCharset=klocale->charset();
+     else srcCharset=mDefaultCharset;
+  }   
+  else srcCharset=charset; 
+  if (mComposeCharset=="default") destCharset=klocale->charset();
+  else destCharset=mComposeCharset;
+  if (srcCharset==destCharset) return str.copy();
+  KCharsetConverter conv(srcCharset,destCharset
+                          ,KCharsetConverter::AMP_SEQUENCES);
+  KCharsetConversionResult result=conv.convert(str);
+  return result.copy();			  
+}
+
+//-----------------------------------------------------------------------------
+QString KMComposeWin::convertToSend(const QString str,QString& charset){
+
+  if (m7BitAscii && !is8Bit(str)){ charset="us-ascii"; return str.copy(); }
+  if (charset==""){
+     if (mDefaultCharset=="default") charset=klocale->charset();
+     else charset=mDefaultCharset;
+  }   
+  KCharset srcCharset;
+  KCharset destCharset(charset);
+  if (mComposeCharset=="default") srcCharset=klocale->charset();
+  else srcCharset=mComposeCharset;
+  if (srcCharset==destCharset) return str.copy();
+  KCharsetConverter conv(srcCharset,destCharset
+                          ,KCharsetConverter::AMP_SEQUENCES);
+  KCharsetConversionResult result=conv.convert(str);
+  return result.copy();			  
+}
+
 //Class KMLineEdit ------------------------------------------------------------
 
 KMLineEdit::KMLineEdit(QWidget *parent, const char *name)
@@ -1227,8 +1317,6 @@ void KMLineEdit::markAll()
 {
   selectAll();
 }
-
-
 
 
 
