@@ -7,6 +7,8 @@
 #include "startup.h"
 #include "serverchannel.h"
 
+#include "UserMenuRef.h"
+
 struct KSPrefsSettings
 {
   QString nick;
@@ -39,6 +41,7 @@ protected slots:
 private:
   QTabDialog *pTab;
   StartUp *pStart;
+  UserMenuRef *pMenu;
   ServerChannel *pServerChannel;
   
 };

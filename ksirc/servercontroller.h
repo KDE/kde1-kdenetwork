@@ -48,7 +48,8 @@ class ServCommand // ServerController message
 {
  public:
   static enum {
-    updateFilters
+    updateFilters,
+    updatePrefs
   } command;
 };
 

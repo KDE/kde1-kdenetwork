@@ -2,7 +2,6 @@
 #define KSIRCTOPLEVEL_H
 
 class KSircTopLevel;
-class UserControlMenu;
 
 #include <unistd.h>
 #include <sys/types.h>
@@ -33,53 +32,7 @@ class UserControlMenu;
 #include "messageReceiver.h"
 #include "ksircprocess.h"
 #include "KSTicker/ksticker.h"
-
-class UserControlMenu {
- public:
-  /** 
-      Basic constructor, everything defaults to a Seperator.  All data
-      is public so there is no problems changing it in the future.
-      Data is copied internally and deleted when finished.
-  */
-  UserControlMenu(char *_title = 0, 
-		  char *_action = 0, 
-		  int _accel = 0, 
-		  int _type = 0, 
-		  bool _op_only = FALSE) 
-    { title = qstrdup(_title); 
-      action = qstrdup(_action); 
-      accel = _accel; 
-      type = (itype) _type; 
-      op_only = _op_only; }
-  ~UserControlMenu()
-    {
-      delete title;
-      delete action;
-    }
-  /**
-    * title in the popup menu
-  */
-  char *title;
-  /** 
-    * Action to preform, must be of the format "blah lbah %s blah"
-    * where %s will be expanded into the selected nick.
-    */
-  char *action;
-  /**
-    * Accelerator key, currently does nothing.
-    */
-  int accel;
-  /** 
-    * is this function only available to ops?
-    */
-  bool op_only;
-  /**
-    * What type of menu item is this? a Seperator of Text?
-    */
-  enum itype { Seperator, Text } type;
-};
-
-#include "UserMenuRef.h"
+#include "usercontrolmenu.h"
 #include "irclistbox.h"
 
 class KSircTopLevel : public KTopLevelWidget,
@@ -191,11 +144,6 @@ protected slots:
      * Slot to termiate (close) the window.
      */
    void terminate() { close(1); }
-   /**
-     * Opens the UserMenu editor dialog and allows the user to
-     * edit/update it, etc.
-     */
-   void startUserMenuRef();
    /** 
      * Called when the user menu is finished and the popup menu needs
      * to be updated.
@@ -286,12 +234,8 @@ private:
   void sirc_write(QString &str);
 
   QPopupMenu *user_controls;
-  static QList<QPopupMenu> user_menu_list;
-  static QList<UserControlMenu> user_menu;
-  static void initPopUpMenu();
-  static void writePopUpMenu();
+  static QList<UserControlMenu> *user_menu;
   int opami;
-  bool popup_have_control;
 
   QAccel *accel;
   QStrIList nick_ring;

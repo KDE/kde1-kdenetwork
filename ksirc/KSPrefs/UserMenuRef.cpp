@@ -62,18 +62,19 @@
 
 #include "UserMenuRef.h"
 
+extern KConfig *kConfig;
+
 #define Inherited UserMenuRefData
 
 UserMenuRef::UserMenuRef
 (
-        QList<UserControlMenu> *_user_menu,
 	QWidget* parent,
 	const char* name
 )
 	:
 	Inherited( parent, name )
 {
-  user_menu = _user_menu;
+  user_menu = UserControlMenu::parseKConfig();
 
   updateMainListBox();
 
@@ -157,6 +158,7 @@ void UserMenuRef::updateMainListBox()
   MainListBox->setAutoUpdate(TRUE);
   MainListBox->repaint(TRUE);
 
+  UserControlMenu::writeKConfig();  
   emit updateMenu();
 
 }

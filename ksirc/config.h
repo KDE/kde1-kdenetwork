@@ -2,6 +2,7 @@
 #define GLOBAL_CONFIG
 
 #include <qcolor.h>
+#include <qfont.h>
 
 class global_config {
  public:

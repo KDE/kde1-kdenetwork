@@ -512,8 +512,6 @@ scInside::scInside ( QWidget * parent=0, const char * name=0, WFlags
   : QFrame(parent, name, f, allowLines)
 {
   ASConn = new QLabel("Active Server Connections", this);
-  ASConn->move(10,10);
-  ASConn->setFixedWidth(width() - 20);
   QColorGroup cg = QColorGroup(colorGroup().foreground(), 
 			       colorGroup().background(),
                                colorGroup().light(), 
@@ -525,12 +523,8 @@ scInside::scInside ( QWidget * parent=0, const char * name=0, WFlags
   QFont asfont = ASConn->font();
   asfont.setBold(TRUE);
   ASConn->setFont(asfont);
-  ASConn->setFixedHeight(ASConn->fontMetrics().height()+5);
 
   ConnectionTree = new KTreeList(this, "connectiontree");
-  ConnectionTree->setGeometry(10, 10 + ASConn->height(),
-			      width(), height() - 10 - ASConn->height());
-  
 }
 
 scInside::~scInside()
@@ -542,9 +536,8 @@ scInside::~scInside()
 void scInside::resizeEvent ( QResizeEvent *e )
 {
   QFrame::resizeEvent(e);
-  ASConn->move(10,10);
-  ASConn->setFixedHeight(ASConn->fontMetrics().height()+5);
-  ASConn->setFixedWidth(width() - 20);
+  ASConn->setGeometry(10,10, width() - 20,
+		      ASConn->fontMetrics().height()+5);
   ConnectionTree->setGeometry(10, 10 + ASConn->height(),
 			      width() - 20, height() - 20 - ASConn->height());
   

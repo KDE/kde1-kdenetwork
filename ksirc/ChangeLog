@@ -1,3 +1,14 @@
+1998-01-20  Andrew Stanley-Jones  <asj@chowtown.cban.com>
+
+	* Moved all UserMenu support into the prefrences list box, and all
+ 	that it entails.  Not 100% clean, but it's pretty good.
+
+	* toplevel.cpp (control_message): Added support for changing the
+ 	font size of the line edit.
+
+	* cleaned up support for the user menu in toplevel, and remove all
+ 	the extra classes.
+
 1998-01-18  Andrew Stanley-Jones  <asj@chowtown.cban.com>
 
 	* KSPrefs/ksprefs.cpp: New Preferences and settings window.  The
@@ -119,6 +130,21 @@
 $Revision$
 	
 $Log$
+Revision 1.16  1998/01/18 17:19:11  asj
+	* KSPrefs/ksprefs.cpp: New Preferences and settings window.  The
+	basic window and idea has been set out, it simply needs more pages
+	plugged into it now.
+
+	* ksircprocess.cpp (KSircProcess): Added support for the new
+	startup settings, etc.
+
+	* ksircprocess/servercontroller/toplevel: Now starts with channel
+	name !no_channel so that deletes go through correctly. (we never
+	delete !default).
+
+	* servercontroller.h: Updated and fixed so the window resizes
+ 	correctly.
+
 Revision 1.15  1998/01/16 05:51:02  asj
 	* Ticker now starts with data right away, heck, I just plug it
  	with the last 5 lines!

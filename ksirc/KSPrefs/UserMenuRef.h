@@ -10,8 +10,9 @@
 #ifndef UserMenuRef_included
 #define UserMenuRef_included
 
-#include "toplevel.h"
 #include "UserMenuRefData.h"
+
+#include "../usercontrolmenu.h"
 
 class UserMenuRef : public UserMenuRefData
 {
@@ -21,7 +22,6 @@ public:
 
     UserMenuRef
     (
-        QList<UserControlMenu> *_user_menu,
         QWidget* parent = NULL,
         const char* name = NULL
     );

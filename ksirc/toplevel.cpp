@@ -52,13 +52,11 @@
 #include <knewpanner.h>
 #include <kiconloader.h>
 
-
 extern KConfig *kConfig;
 extern KApplication *kApp;
 
 //QPopupMenu *KSircTopLevel::user_controls = 0L;
-QList<UserControlMenu> KSircTopLevel::user_menu;
-QList<QPopupMenu> KSircTopLevel::user_menu_list;
+QList<UserControlMenu> *KSircTopLevel::user_menu = 0L;
 QPixmap *KSircTopLevel::pix_info = 0L;
 QPixmap *KSircTopLevel::pix_star = 0L;
 QPixmap *KSircTopLevel::pix_bball = 0L;
@@ -121,9 +119,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
   QToolTip::add(lagmeter, "Lag in seconds to the server");
   
   QPopupMenu *file = new QPopupMenu();
-  file->insertItem("&User Menu...", this, SLOT(startUserMenuRef()));
   file->insertItem("&New Window...", this, SLOT(newWindow()), CTRL + Key_N);
-  file->insertSeparator();
   file->insertItem("&Ticker Mode", this, SLOT(showTicker()), CTRL + Key_T);
   file->insertSeparator();
   file->insertItem("&Quit", this, SLOT(terminate()), CTRL + Key_Q );
@@ -158,7 +154,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
 
   gm = new QVBoxLayout(f, 5); // Main top layout
   gm2 = new QHBoxLayout(10);   // Layout for users text and users box
-  gm->addLayout(gm2);
+  gm->addLayout(gm2, 10);
 
   //  mainw = new QListBox(f, "mle");          // Make a flat QListBox.  I want the
 
@@ -201,11 +197,13 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
   pan->setAbsSeparatorPos(width() - 100);
   //  mainw->setMinimumWidth(0);             // matched the main text window
 
-  //  linee = new QLineEdit(f, "qle");
-  linee = new aHistLineEdit(f, "qle");     // aHistEdit is a QLineEdit with 
-  linee->setMaximumHeight(this->fontMetrics().height()+5); // arrows for 
+  linee = new aHistLineEdit(f, "qle");        // aHistEdit is a QLineEdit with 
+                                              // arrows for 
   linee->setFocusPolicy(QWidget::StrongFocus); // scroll back abillity
   linee->setPalette(QPalette(cg,cg,cg));   // HARD CODED COLOURS AGAIN!!!! (last time I hope!)
+  linee->setFont(kSircConfig->defaultfont);
+  linee->resize(width(), linee->fontMetrics().height() + 8);
+  linee->setMinimumHeight(linee->fontMetrics().lineSpacing()+8);
   connect(linee, SIGNAL(gotFocus()),
 	  this, SLOT(gotFocus()));
   connect(linee, SIGNAL(lostFocus()),
@@ -215,7 +213,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
   connect(linee, SIGNAL(textChanged(const char *)),
 	  this, SLOT(lineeTextChanged(const char *)));
 
-  gm->addWidget(linee);                    // No special controls are needed.
+  gm->addWidget(linee, 0);                    // No special controls are needed.
 
   connect(linee, SIGNAL(returnPressed()), // Connect return in sle to send
   	  this, SLOT(sirc_line_return()));// the line to dsirc
@@ -260,12 +258,11 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
   //  if(!user_controls)
   //    user_controls = new QPopupMenu();
 
-  user_controls = new QPopupMenu();
-  user_menu_list.append(user_controls);
-  kmenu->insertItem("&Users", user_controls);
+  if(user_menu == 0)
+    user_menu = UserControlMenu::parseKConfig();
 
-  if(user_menu_list.count() < 2)
-    initPopUpMenu();
+  user_controls = new QPopupMenu();
+  kmenu->insertItem("&Users", user_controls);
 
   connect(user_controls, SIGNAL(activated(int)), 
 	  this, SLOT(UserParseMenu(int)));
@@ -274,7 +271,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
 	  SLOT(UserSelected(int)));
 
 
-  UserUpdateMenu();  // Must call after each change to either user_menu_list or user_controls
+  UserUpdateMenu();  // Must call to update Popup.
 
   accel = new QAccel(this, "accel");
 
@@ -1097,13 +1094,8 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 
 void KSircTopLevel::UserSelected(int index)
 {
-  if(index >= 0){
-    popup_have_control = TRUE;
+  if(index >= 0)
     user_controls->popup(this->cursor().pos());
-  }
-  else{
-    popup_have_control = FALSE;
-  }
 }
 
 void KSircTopLevel::UserParseMenu(int id)
@@ -1113,7 +1105,7 @@ void KSircTopLevel::UserParseMenu(int id)
     return;
   }
   QString s;
-  s.sprintf(user_menu.at(id)->action, nicks->text(nicks->currentItem()));
+  s.sprintf(user_menu->at(id)->action, nicks->text(nicks->currentItem()));
   QString txt = linee->text();
   linee->setText(s);
   sirc_line_return();
@@ -1127,7 +1119,7 @@ void KSircTopLevel::UserUpdateMenu()
   //  QPopupMenu *umenu;
 
   user_controls->clear();
-  for(ucm = user_menu.first(); ucm != 0; ucm = user_menu.next(), i++){
+  for(ucm = user_menu->first(); ucm != 0; ucm = user_menu->next(), i++){
     if(ucm->type == UserControlMenu::Seperator){
       user_controls->insertSeparator();
     }
@@ -1139,34 +1131,7 @@ void KSircTopLevel::UserUpdateMenu()
 	user_controls->setItemEnabled(i, FALSE);
     }
   }
-  /*
-  for(umenu = user_menu_list.first(); umenu != 0; 
-      umenu = user_menu_list.next()){
-    umenu->clear();
-    for(ucm = user_menu.first(), i=0; ucm != 0; ucm = user_menu.next(), i++){
-      if(ucm->type == UserControlMenu::Seperator){
-	umenu->insertSeparator();
-      }
-      else{
-	umenu->insertItem(ucm->title, i);
-	if(ucm->accel)
-	  umenu->setAccel(i, ucm->accel);
-	if((ucm->op_only == TRUE) && (opami == FALSE)){
-	  umenu->setItemEnabled(i, FALSE);
-	}
-	cerr << channel_name << " " << opami << endl;
-      }
-    }
-  }
-  */
-  writePopUpMenu();
-}
-
-void KSircTopLevel::startUserMenuRef()
-{
-   UserMenuRef *umr = new UserMenuRef(&user_menu);
-   connect(umr, SIGNAL(updateMenu()), this, SLOT(UserUpdateMenu()));
-   umr->show();
+  //  writePopUpMenu();
 }
 
 void KSircTopLevel::AccelScrollDownPage()
@@ -1191,125 +1156,6 @@ void KSircTopLevel::AccelNextMsgNick()
 {
   if(nick_ring.at() < ((int) nick_ring.count() - 1) )
     linee->setText(QString("/msg ") + nick_ring.next() + " ");
-}
-
-void KSircTopLevel::initPopUpMenu()
-{
-
-  kConfig->setGroup("UserMenu");
-
-  int items = kConfig->readNumEntry("Number");
-
-  user_menu.clear();
-
-  if(items == 0){
-
-    user_menu.setAutoDelete(TRUE);
-    user_menu.append(new UserControlMenu("Whois", 
-					 "/whois %s",
-					 0, UserControlMenu::Text));
-    user_menu.append(new UserControlMenu("Ping", 
-					 "/ping %s",
-					 0, UserControlMenu::Text));
-    user_menu.append(new UserControlMenu("Version", 
-					 "/ctcp %s VERSION",
-					 0, UserControlMenu::Text));
-    user_menu.append(new UserControlMenu); // Defaults to a seperator
-    user_menu.append(new UserControlMenu("Abuse", 
-					 "/me slaps %s around with a small 50lb Unix Manual",
-					 0, UserControlMenu::Text));
-    user_menu.append(new UserControlMenu); // Defaults to a seperator
-    user_menu.append(new UserControlMenu("Kick",
-					 "/kick %s",
-					 CTRL + Key_K,
-					 UserControlMenu::Text,
-					 TRUE));
-    user_menu.append(new UserControlMenu("Ban",
-					 "/ban %s",
-					 CTRL + Key_B,
-					 UserControlMenu::Text,
-					 TRUE));
-    user_menu.append(new UserControlMenu("UnBan",
-					 "/unban %s",
-					 CTRL + Key_B,
-					 UserControlMenu::Text,
-					 TRUE));
-    user_menu.append(new UserControlMenu());
-    user_menu.append(new UserControlMenu("Op",
-					 "/op %s",
-					 CTRL + Key_O,
-					 UserControlMenu::Text,
-					 TRUE));
-    user_menu.append(new UserControlMenu("Deop",
-					 "/deop %s",
-					 CTRL + Key_B,
-					 UserControlMenu::Text,
-					 TRUE));
-  }
-  else{
-    QString key;
-    QString cindex;
-    QString title;
-    QString action;
-    int accel;
-    int type;
-    int oponly;
-    for(int i = 0; i < items; i++){
-      cindex.sprintf("%d", i);
-      key = "MenuType-" + cindex;
-      type = kConfig->readNumEntry(key);
-      if(type == UserControlMenu::Seperator)
-	user_menu.append(new UserControlMenu());
-      else if(type == UserControlMenu::Text){
-	key = "MenuTitle-" + cindex;
-	title = kConfig->readEntry(key);
-	key = "MenuAction-" + cindex;
-	action = kConfig->readEntry(key);
-	key = "MenuAccel-" + cindex;
-	accel = kConfig->readNumEntry(key); 
-	key = "MenuOpOnly-" + cindex;
-	oponly = kConfig->readNumEntry(key); 
-	
-	user_menu.append(new UserControlMenu(title.data(), action.data(), accel, type, (bool) oponly));
-      }
-    }
-  }
-}
-
-void KSircTopLevel::writePopUpMenu()
-{
-
-  kConfig->setGroup("UserMenu");
-
-  int items = (int) user_menu.count();
-
-  kConfig->writeEntry("Number", items);
-
-  QString key;
-  QString cindex;
-  UserControlMenu *ucm;
-  int type;
-
-  for(int i = 0; i < items; i++){
-    ucm = user_menu.at(i);
-    cindex.sprintf("%d", i);
-    key = "MenuType-" + cindex;
-    type = ucm->type;
-    kConfig->writeEntry(key, (int) type);
-    // Do nothing for a seperator since it defaults accross
-    if(type == UserControlMenu::Text){
-      key = "MenuTitle-" + cindex;
-      kConfig->writeEntry(key, ucm->title);
-      key = "MenuAction-" + cindex;
-      kConfig->writeEntry(key, ucm->action);
-      key = "MenuAccel-" + cindex;
-      kConfig->writeEntry(key, (int) ucm->accel);
-      key = "MenuOpOnly-" + cindex;
-      kConfig->writeEntry(key, (int) ucm->op_only);
-    }
-  }
-  kConfig->sync();
-
 }
 
 void KSircTopLevel::newWindow() 
@@ -1337,6 +1183,7 @@ void KSircTopLevel::closeEvent(QCloseEvent *)
 
 void KSircTopLevel::resizeEvent(QResizeEvent *e)
 {
+  bool update = mainw->autoUpdate();
   mainw->setAutoUpdate(FALSE);
   KTopLevelWidget::resizeEvent(e);
 //  cerr << "Updating list box\n";
@@ -1347,7 +1194,7 @@ void KSircTopLevel::resizeEvent(QResizeEvent *e)
   pan->setAbsSeparatorPos(width()-100);
   emit changeSize();
   mainw->scrollToBottom();
-  mainw->setAutoUpdate(TRUE);
+  mainw->setAutoUpdate(update);
   emit changeSize();
   mainw->repaint(TRUE);
   repaint();
@@ -1400,9 +1247,17 @@ void KSircTopLevel::control_message(int command, QString str)
       sirc_receive(QString(""));
     break;
   case REREAD_CONFIG:
+    mainw->setUpdatesEnabled(FALSE); // Let's try and reduce the flicker
+    nicks->setUpdatesEnabled(FALSE); // just a little bit.
+    linee->setUpdatesEnabled(FALSE);
+    setUpdatesEnabled(FALSE);
     mainw->setFont(kSircConfig->defaultfont);
     nicks->setFont(kSircConfig->defaultfont);
-    emit changeSize();
+    linee->setFont(kSircConfig->defaultfont);
+    linee->resize(width(), linee->fontMetrics().lineSpacing() + 8);
+    linee->setMinimumHeight(linee->fontMetrics().lineSpacing() + 8);
+    resize(size()); // Make the Layout manager make everything fit right.
+    //    emit changeSize();
     {
       QColorGroup cg = QColorGroup(*kSircConfig->colour_text, colorGroup().mid(), 
 				   colorGroup().light(), colorGroup().dark(),
@@ -1413,6 +1268,11 @@ void KSircTopLevel::control_message(int command, QString str)
       nicks->setPalette(QPalette(cg, cg, cg));
       linee->setPalette(QPalette(cg, cg, cg));
     }
+    UserUpdateMenu();  // Must call to update Popup.
+    mainw->setUpdatesEnabled(TRUE);
+    nicks->setUpdatesEnabled(TRUE);
+    linee->setUpdatesEnabled(TRUE);
+    setUpdatesEnabled(TRUE);
     repaint(TRUE);
     mainw->scrollToBottom();
     break;

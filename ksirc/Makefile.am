@@ -34,7 +34,6 @@ alistbox.cpp \
 mtoplevel.cpp \
 ahistlineedit.cpp mahistlineedit.cpp \
 malistbox.cpp \
-UserMenuRef.cpp UserMenuRefData.cpp mUserMenuRef.cpp mUserMenuRefData.cpp \
 iocontroller.cpp miocontroller.cpp \
 open_top.cpp open_topData.cpp mopen_top.cpp mopen_topData.cpp \
 messageReceiver.cpp \
@@ -49,7 +48,8 @@ ioDCC.cpp mioDCC.cpp dccDialog.cpp mdccDialog.cpp dccDialogData.cpp mdccDialogDa
 linelistitem.cpp \
 ioLAG.cpp mioLAG.cpp \
 ioNotify.cpp mioNotify.cpp \
-ssfeprompt.cpp mssfeprompt.cpp ssfepromptdata.cpp mssfepromptdata.cpp
+ssfeprompt.cpp mssfeprompt.cpp ssfepromptdata.cpp mssfepromptdata.cpp \
+usercontrolmenu.cpp
 
 ksircstatic_SOURCES = $(ksirc_SOURCES)
 
@@ -77,14 +77,14 @@ FilterRuleEditor.h        control_message.h         linelistitem.h \
 FilterRuleEditorData.h    dccDialog.h               messageReceiver.h \
 KSircColour.h             dccDialogData.h           open_ksirc.h \
 KSircColourData.h         ioBroadcast.h             open_ksircData.h \
-UserMenuRef.h             ioDCC.h                   open_top.h \
-UserMenuRefData.h         ioDiscard.h               open_topData.h \
+ioDCC.h                   open_top.h                usercontrolmenu.h \
+ioDiscard.h               open_topData.h \
 ahistlineedit.h           iocontroller.h            servercontroller.h \
 alistbox.h                irclistbox.h              \
 config.h                  irclistitem.h             toplevel.h \
 ksircprocess.h            ksirc.kdelnk \
 ioLAG.h                   ioNotify.h                ssfeprompt.h \
-ssfepromptdata.h \
+ssfepromptdata.h          usercontrolmenu.h \
 dsirc                     filters.pl                ksirc.pl
 
 
