@@ -1,3 +1,7 @@
+1998-08-09  Harri Porten  <porten@tu-harburg.de>
+
+	* miniterm.cpp: switched to QMenuBar, fixed memory leak
+
 1998-08-08  Harri Porten  <porten@tu-harburg.de>
 
 	* modem.cpp: fixed hangup that occured if the modem power was off.

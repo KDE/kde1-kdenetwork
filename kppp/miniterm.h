@@ -31,27 +31,16 @@
 #include <qpixmap.h>
 #include <qmenubar.h> 
 #include <qpopmenu.h> 
-#include <qgrpbox.h> 
 #include <qdialog.h>
-#include <qlined.h>
-#include <qmlined.h>
-#include <qpushbt.h>
 #include <qlabel.h>
 #include <qevent.h>
 #include <qtimer.h>
-#include <qsignal.h>
 #include <qframe.h>
-#include <qmsgbox.h>
-#include <qrangect.h>
 #include <qmlined.h> 
 #include <qtooltip.h> 
 
 #include <unistd.h>
-#include <termios.h>
 #include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <termios.h>
 
 #include <ktoolbar.h>
 #include <kmenubar.h>
@@ -68,7 +57,6 @@ class MyTerm : public QMultiLineEdit, public Modem {
 public:
 
   MyTerm(QWidget *parent=0, const char *name=0);
-  ~MyTerm() {}
 
   void keyPressEvent (QKeyEvent*);
   void insertChar(char c);
@@ -82,7 +70,6 @@ signals:
 
   void got_a_line();
 private:
-  bool return_pressed;  // was the last key pressed a "return" ?
   MiniTerm *p_parent;
 
 
@@ -97,6 +84,7 @@ class MiniTerm : public QDialog, public Modem {
 public:
 
   MiniTerm(QWidget *parent=0, const char *name=0);
+  ~MiniTerm();
 
 
 void closeEvent( QCloseEvent *e );
@@ -121,7 +109,7 @@ protected:
   QTimer *inittimer;
   QTimer *readtimer;
 
-  KMenuBar    * menubar;
+  QMenuBar    * menubar;
   KToolBar     * toolbar;
   QPopupMenu  * m_file;
   QPopupMenu  * m_edit;

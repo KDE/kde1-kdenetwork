@@ -48,13 +48,12 @@ MiniTerm::MiniTerm(QWidget *parent, const char *name)
 
   m_file = new QPopupMenu;
   m_file->insertItem( i18n("&Quit"),this, SLOT(cancelbutton()) );
-  m_edit = new QPopupMenu;
   m_options = new QPopupMenu;
   m_options->insertItem(i18n("&Reset Modem"),this,SLOT(resetModem()));
   m_help = new QPopupMenu;
   m_help->insertItem( i18n("&Help"),this, SLOT(help()) );
   
-  menubar = new KMenuBar( this );
+  menubar = new QMenuBar( this );
   menubar->insertItem( i18n("&File"), m_file );
   menubar->insertItem( i18n("&Modem"), m_options );
   menubar->insertItem( i18n("&Help"), m_help);
@@ -87,6 +86,13 @@ MiniTerm::MiniTerm(QWidget *parent, const char *name)
 
 }  
 
+MiniTerm::~MiniTerm() {
+
+  delete toolbar;
+  delete statusbar;
+  delete statusbar2;
+
+}
 
 void MiniTerm::setupToolbar(){
 
@@ -100,7 +106,6 @@ void MiniTerm::setupToolbar(){
   toolbar->insertButton(pixmap, 0,
 		      SIGNAL(clicked()), this,
 		      SLOT(cancelbutton()), TRUE, i18n("Quit MiniTerm"));
-
 
   pixmap = loader->loadIcon("back.xpm");
   toolbar->insertButton(pixmap, 0,
@@ -282,6 +287,8 @@ MyTerm::MyTerm(QWidget *parent, const char* name)
 
 void MyTerm::keyPressEvent(QKeyEvent *k) {
 
+  // ignore meta keys
+  if (k->ascii() == 0) return;
 
   if(k->ascii() == 13){
     myreturn();
