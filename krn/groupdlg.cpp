@@ -173,12 +173,16 @@ Inherited (name)
     options->insertItem(klocale->translate("Expire Options..."),CONFIG_EXPIRE);
     options->insertItem(klocale->translate("Printing Options..."),CONFIG_PRINT);
     connect (options,SIGNAL(activated(int)),SLOT(currentActions(int)));
-    
+
+    /*
     QPopupMenu *help = new QPopupMenu;
     help->insertItem(klocale->translate("Contents"),HELP_CONTENTS);
     help->insertSeparator();
     help->insertItem(klocale->translate("About Krn..."),HELP_ABOUT);
     connect (help,SIGNAL(activated(int)),SLOT(currentActions(int)));
+    */
+
+    QPopupMenu *help = kapp->getHelpMenu(true,"Krn 0.2.5");
     
     KMenuBar *menu = new KMenuBar (this, "menu");
     

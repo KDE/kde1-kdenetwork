@@ -9,6 +9,7 @@ class QComboBox;
 class QCheckBox;
 class QLineEdit;
 class QListBox;
+class KTypeLayout;
 
 class rulesDlg : public QDialog
 {
@@ -23,10 +24,12 @@ public:
     QListBox *list;
 
 public slots:
-    void editRule(char *name);
-    void saveRule(char *name);
+    void editRule(const char *name);
     void saveRuleAs();
-    void loadRule(char *name);
+    void saveRule();
+    void deleteRule();
+private:
+    KTypeLayout *l;
 };
 
 #endif
