@@ -205,7 +205,7 @@ bool Accounting::loadRuleSet(const char *name) {
    }
   
   // load from KDE directory if file is found there
-  d = KApplication::kdedir();
+  d = KApplication::kdedir().copy();
   d += "/share/apps/kppp/Rules/";
   d += name;
 

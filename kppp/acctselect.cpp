@@ -69,7 +69,7 @@ AccountingSelector::AccountingSelector(QWidget *parent, const char *name)
 //  selected->setBackgroundColor(QColor("white"));
 
   // load the pmfolder pixmap from KDEdir
-  QString fname = KApplication::kdedir();
+  QString fname = KApplication::kdedir().copy();
   fname += "/share/apps/kppp/pics/folder.xpm";
   pmfolder.load(fname.data());
   
@@ -81,7 +81,7 @@ AccountingSelector::AccountingSelector(QWidget *parent, const char *name)
   }
 
   // load the pmfolder pixmap from KDEdir
-  fname = KApplication::kdedir();
+  fname = KApplication::kdedir().copy();
   fname += "/share/apps/kppp/pics/phone.xpm";
   pmfile.load(fname.data());
   
@@ -243,7 +243,7 @@ void AccountingSelector::setupTreeWidget() {
   insertDir(QDir(s.data()), i);
 
   // look in $KDEDIR/lib/kppp/Accounting
-  s = KApplication::kdedir();
+  s = KApplication::kdedir().copy();
   s += "/share/apps/kppp/Rules/";
   insertDir(QDir(s.data()), i);
 
