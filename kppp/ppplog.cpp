@@ -274,13 +274,14 @@ void PPPL_ShowLog() {
   if(dlg->exec()) {
     QDir d = QDir::home();
     QString s = d.absPath() + "/PPP-logfile";
+    int old_umask = umask(0077);
+    
     FILE *f = fopen(s.data(), "w");
     for(uint i = 0; i < sl.count(); i++)
       fprintf(f, "%s\n", sl.at(i));
     fclose(f);
-    if(geteuid() == 0)
-      chown(s.data(), getuid(), getgid());
-
+    umask(old_umask);
+    
     QString msg;
     msg.sprintf("The PPP log has been saved\nas \"%s\"!\n\nIf you want to send a bug report or have\nproblems connecting to the internet, please\nattach this file. It will help the maintainers\nto find the bug and to improve KPPP", s.data());
     KMsgBox::message(0,

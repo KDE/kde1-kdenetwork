@@ -28,12 +28,12 @@
 #ifndef _CHAP_H_
 #define _CHAP_H_
 
-#include <qstring.h>
-#include "auth.h"
-#include "kpppconfig.h"
+// #include <qstring.h>
+// #include "auth.h"
+// #include "kpppconfig.h"
 
-bool CHAP_UseCHAP();
-bool CHAP_CreateAuthFile();
-bool CHAP_RemoveAuthFile();
+// bool CHAP_UseCHAP();
+// bool CHAP_CreateAuthFile();
+// bool CHAP_RemoveAuthFile();
 
 #endif

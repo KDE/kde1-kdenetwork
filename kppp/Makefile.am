@@ -26,11 +26,7 @@ INCLUDES= $(all_includes)
 SUBDIRS = docs pixmaps icons logview Rules
 
 # This one gets installed 
-bin_PROGRAMS = 	kppp #kpppsetup
-
-#kpppsetup_SOURCES= setup.cpp pppdata.cpp general.cpp edit.cpp scriptedit.cpp accounts.cpp  modeminfo.cpp miniterm.cpp modem.cpp modemcmds.cpp iplined.cpp pppdargs.cpp acctselect.cpp
-
-#kpppsetup_CFLAGS= -DSETUPMODE
+bin_PROGRAMS = 	kppp
 
 # Which sources should be compiled for kppp.
 kppp_SOURCES	= accounts.cpp \
@@ -68,12 +64,10 @@ kppp_SOURCES	= accounts.cpp \
 
 # the library search path
 kppp_LDFLAGS = $(all_libraries) $(KDE_RPATH)
-#kpppsetup_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 
 # the libraries to link against. Be aware of the order. First the libraries,
 # that depend on the following ones.
 kppp_LDADD   =       -lm $(LIB_KDEUI)
-#kpppsetup_LDADD   =       -lm $(LIB_KDEUI)
 
 # this option you can leave out. Just, if you use "make dist", you need it
 noinst_HEADERS = accounts.h \
@@ -246,10 +240,6 @@ pwentry.moc: pwentry.h
 scriptedit.cpp: scriptedit.moc;
 scriptedit.moc: scriptedit.h
 	$(MOC) scriptedit.h -o scriptedit.moc
-
-setup.cpp: setup.moc
-setup.moc: setup.h
-	$(MOC) setup.h -o setup.moc
 
 groupbox.cpp: groupbox.moc
 groupbox.moc: groupbox.h

@@ -22,18 +22,18 @@
  * Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-#include <qdir.h>
-#include "chap.h"
-#include "pap.h"
+// #include <qdir.h>
+// #include "chap.h"
+// #include "pap.h"
 
-bool CHAP_UseCHAP() {
-  //  return (bool)(gpppdata.authMethod() == AUTH_CHAP);  FIX
-}
+// bool CHAP_UseCHAP() {
+//   //  return (bool)(gpppdata.authMethod() == AUTH_CHAP);  FIX
+// }
 
-bool CHAP_CreateAuthFile() {
-  //  return PAP_CreateAuthFile(CHAP_AUTH_FILE);
-}
+// bool CHAP_CreateAuthFile() {
+//   //  return PAP_CreateAuthFile(CHAP_AUTH_FILE);
+// }
 
-bool CHAP_RemoveAuthFile() {
-  //  return PAP_RemoveAuthFile(CHAP_AUTH_FILE);
-}
+// bool CHAP_RemoveAuthFile() {
+//   //  return PAP_RemoveAuthFile(CHAP_AUTH_FILE);
+// }

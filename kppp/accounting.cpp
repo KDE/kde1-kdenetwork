@@ -53,13 +53,13 @@ extern PPPData gpppdata;
 extern int ibytes;
 extern int obytes;
 
-Accounting::Accounting(QObject *parent) : QObject(parent) {
-
-  _total = 0;
-  _session = 0;
-  acct_timer_id = 0;
-  update_timer_id = 0;
-
+Accounting::Accounting(QObject *parent) : 
+  QObject(parent),
+  _total(0),
+  _session(0),
+  acct_timer_id(0),
+  update_timer_id(0)
+{
   QDate dt = QDate::currentDate();
   LogFileName.sprintf("%s-%4d.log",
 		      dt.monthName(dt.month()),
@@ -75,17 +75,13 @@ Accounting::Accounting(QObject *parent) : QObject(parent) {
 
 
 Accounting::~Accounting() {
-
   if(running())
     slotStop();
-
 }
 
 
 bool Accounting::running() {
-
   return (bool)(acct_timer_id != 0);
-
 }
 
 
@@ -131,11 +127,10 @@ void Accounting::timerEvent(QTimerEvent *t) {
   if(t->timerId() == update_timer_id) {
     // just to be sure, save the current costs
     // every n seconds (see UPDATE_TIME)
-
     saveCosts();
   }
-
 }
+
 
 QString timet2qstring(time_t t) {
   QString s;
@@ -146,7 +141,6 @@ QString timet2qstring(time_t t) {
 
 
 void Accounting::slotStart() {
-
   if(!running()) {
     loadCosts();
     _lastcosts = 0.0;
@@ -165,13 +159,11 @@ void Accounting::slotStart() {
     s += rules.currencySymbol();
 
     logMessage(s, TRUE);
-
   }
 }
 
 
 void Accounting::slotStop() {
-
   if(running()) {
     killTimer(acct_timer_id);
     if(update_timer_id != 0)
@@ -229,11 +221,12 @@ bool Accounting::loadRuleSet(const char *name) {
 
 
 void Accounting::logMessage(QString s, bool newline) {
+  int old_umask = umask(0077);
+
   QFile f(LogFileName.data());
 
   bool result = f.open(IO_ReadWrite);
   if(result) {
-
     // move to eof, and place \n if necessary
     if(f.size() > 0) {
       if(newline) {
@@ -247,30 +240,30 @@ void Accounting::logMessage(QString s, bool newline) {
     }
 
     f.writeBlock(s.data(), s.length());
-
     f.close();
-    chown(LogFileName.data(),getuid(),getgid());
-    chmod(LogFileName.data(),S_IRUSR | S_IWUSR);
   }
+
+  // restore umask
+  umask(old_umask);
 }
+
 
 double Accounting::total() {
   if(rules.minimumCosts() <= _session)
     return _total + _session;
   else
     return _total + rules.minimumCosts();
- }
+}
 
 
 
 double Accounting::session() {
-
   if(rules.minimumCosts() <= _session)
     return _session;
   else
     return rules.minimumCosts();
-
 }
+
 
 // set costs back to zero ( typically once per month)
 void Accounting::resetCosts(const char *accountname){
@@ -284,7 +277,6 @@ void Accounting::resetCosts(const char *accountname){
 
 
 bool Accounting::saveCosts() {
-
   if(!rules.name().isNull() && (rules.name().length() > 0)) {
     QString val;
     val.setNum(total());
@@ -293,9 +285,7 @@ bool Accounting::saveCosts() {
     gpppdata.save();
 
     return TRUE;
-
   } else
-
     return FALSE;
 }
 
@@ -314,12 +304,10 @@ bool Accounting::loadCosts() {
   }
 
   return TRUE;
-
 }
 
 
 QString Accounting::getCosts(const char* accountname) {
-
   QString prev_account = gpppdata.accname();
 
   gpppdata.setAccount(accountname);
@@ -328,7 +316,6 @@ QString Accounting::getCosts(const char* accountname) {
   gpppdata.setAccount(prev_account);
 
   return val;
-
 }
 
 #include "accounting.moc"

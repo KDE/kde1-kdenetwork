@@ -28,12 +28,11 @@
 
 #include <qobject.h>
 #include <qmsgbox.h>
+#include <qsocketnotifier.h>
 #include "ruleset.h"
 
 class Accounting : public QObject {
-
   Q_OBJECT
-
 public:
 
   Accounting(QObject *parent = 0);
@@ -59,7 +58,6 @@ public slots:
   void slotStop();
 
 private:
-
   RuleSet rules;
   QString LogFileName;
   double _total, _session;

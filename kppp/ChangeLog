@@ -1,3 +1,12 @@
+1998-12-08  Mario Weilguni <mweilguni@kde.org>
+
+	* added Denmark rules
+	* added Luxembourg rules
+	* commented out the no-longer need CHAP_* functions
+	* removed the old/never used setup program
+	* cleaned up accounting (set umask, no chown/chmod)
+	* cleaned up PPP log (set umask, no SUID check)
+
 1998-12-05  Harri Porten  <porten@kde.org>
 
 	* connect.cpp: killpppd() and stop if_timeout_timer in cancelbutton()
