@@ -55,7 +55,6 @@ protected:
 private: 
   QString ring; 
   QString display;
-  QString display_old;
   QList<SInfo> StrInfo;
 
   int onechar;

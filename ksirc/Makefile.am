@@ -68,6 +68,12 @@ ksircstatic_LDADD = $(ksirc_LDADD)
 kdoc:
 	kdoc -ddoc ksirc *.h
 
+ksircstatic: $(ksircstatic_OBJECTS) $(ksircstatic_DEPENDENCIES)
+	@rm -f ksircstatic
+	@echo "*** Ignore any failures ***"
+	$(CXXLINK) $(ksircstatic_LDFLAGS) $(ksircstatic_OBJECTS) $(ksircstatic_LDADD) $(LIBS) || true
+	@touch ksircstatic
+	@echo "*** Ignore previous failure, if any ***"
 
 # this option you can leave out. Just, if you use "make dist", you need it
 #

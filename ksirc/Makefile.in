@@ -304,10 +304,6 @@ maintainer-clean-compile:
 ksirc: $(ksirc_OBJECTS) $(ksirc_DEPENDENCIES)
 	@rm -f ksirc
 	$(CXXLINK) $(ksirc_LDFLAGS) $(ksirc_OBJECTS) $(ksirc_LDADD) $(LIBS)
-
-ksircstatic: $(ksircstatic_OBJECTS) $(ksircstatic_DEPENDENCIES)
-	@rm -f ksircstatic
-	$(CXXLINK) $(ksircstatic_LDFLAGS) $(ksircstatic_OBJECTS) $(ksircstatic_LDADD) $(LIBS)
 .cpp.o:
 	$(CXXCOMPILE) -c $<
 
@@ -476,6 +472,13 @@ maintainer-clean-generic clean mostlyclean distclean maintainer-clean
 
 kdoc:
 	kdoc -ddoc ksirc *.h
+
+ksircstatic: $(ksircstatic_OBJECTS) $(ksircstatic_DEPENDENCIES)
+	@rm -f ksircstatic
+	@echo "*** Ignore any failures ***"
+	$(CXXLINK) $(ksircstatic_LDFLAGS) $(ksircstatic_OBJECTS) $(ksircstatic_LDADD) $(LIBS) || true
+	@touch ksircstatic
+	@echo "*** Ignore previous failure, if any ***"
 
 # make messages.po. Move this one to ../po/ and "make merge" in po
 messages:
