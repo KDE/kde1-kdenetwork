@@ -26,7 +26,7 @@ class global_config {
   QString BackgroundFile;
   bool transparent;
   bool DisplayTopic;
-  bool MDIMode;
+  int DisplayMode;
 
   bool filterKColour;
   bool filterMColour;

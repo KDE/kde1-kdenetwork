@@ -13,17 +13,17 @@ QDict<QObject> *objFinder::objList = new QDict<QObject>;
  */
 objFinder *objFind = new objFinder();
 
-objFinder::objFinder()
+objFinder::objFinder() /*fold00*/
   : QObject()
 {
 }
 
-objFinder::~objFinder()
+objFinder::~objFinder() /*fold00*/
 {
 }
 
-void objFinder::insert(QObject *obj, const char *key = 0){
-  const char *name;
+void objFinder::insert(QObject *obj, const char *key = 0){ /*FOLD00*/
+  QString name;
 
   if(obj == 0x0){
     warning("objFinder: Passed Null Object");
@@ -39,14 +39,14 @@ void objFinder::insert(QObject *obj, const char *key = 0){
       name = randString();
     }
   }
-  objList->insert(name, obj);
+  objList->insert(name.data(), obj);
   connect(obj, SIGNAL(destroyed()),
           objFind, SLOT(objDest()));
   
   emit objFind->inserted(obj);
 }
 
-QObject *objFinder::find(const char *name, const char *inherits){
+QObject *objFinder::find(const char *name, const char *inherits){ /*FOLD00*/
   QObject *found;
   QDictIterator<QObject> it(*objList);
   uint len = strlen(name);
@@ -79,12 +79,12 @@ QObject *objFinder::find(const char *name, const char *inherits){
     }
     ++itW;
   }
-
+  delete all;
   
   return 0x0;
 }
 
-void objFinder::dumpTree(){
+void objFinder::dumpTree(){ /*fold00*/
   QDictIterator<QObject> it(*objList);
   while(it.current()){
     it.current()->dumpObjectTree();
@@ -99,7 +99,7 @@ void objFinder::dumpTree(){
 
 }
 
-QStrList objFinder::allObjects(){
+QStrList objFinder::allObjects(){ /*fold00*/
   QStrList allNames;
   QDictIterator<QObject> it(*objList);
   while(it.current()){
@@ -130,7 +130,7 @@ QStrList objFinder::allObjects(){
   return allNames;
 }
 
-QString objFinder::randString(){
+QString objFinder::randString(){ /*FOLD00*/
   static bool runSrand = 0;
   QString str = "";
   if(runSrand == 0){
@@ -142,7 +142,7 @@ QString objFinder::randString(){
   return str;
 }
 
-void objFinder::objDest(){
+void objFinder::objDest(){ /*fold00*/
   if(sender() == 0x0){
     return;
   }

@@ -99,6 +99,7 @@
 #include "config.h"
 #include "../config.h"
 #include "objFinder.h"
+#include "displayMgr.h"
 
 #include <qmsgbox.h>
 
@@ -110,6 +111,7 @@
 extern KApplication *kApp;
 extern KConfig *kConfig;
 extern global_config *kSircConfig;
+extern DisplayMgr *displayMgr;
 
 KSircProcess::KSircProcess( char *_server, QObject * parent, const char * name ) /*FOLD00*/
   : QObject(parent, name)
@@ -344,18 +346,10 @@ void KSircProcess::new_toplevel(QString str) /*FOLD00*/
             this,SLOT(clean_toplevel(KSircTopLevel *)));
     default_window(wm); // Set it to the default window.
     emit ProcMessage(QString(server), ProcCommand::addTopLevel, str);
-    if(kSircConfig->MDIMode == TRUE && MDIMgr != 0x0){
-      wm->recreate(MDIMgr, 0x0, QPoint(0,0));
-      KMDIWindow *mdiWnd=MDIMgr->addWindow(wm,MDI_SHOW,NULL);
-      connect(mdiWnd, SIGNAL(selected(KMDIWindow *)),
-              wm, SLOT(gotMDIFocus(KMDIWindow *)));
-      wm->gotMDIFocus(mdiWnd);
-      mdiWnd->setCaption(str);
-      mdiWnd->show();
-    }
-    else{
-      wm->show(); // Pop her up
-    }
+
+    displayMgr->newTopLevel(wm, TRUE);
+    displayMgr->setCaption(wm, str);
+    displayMgr->show(wm);
   }
   else{
     debug("Window %s already exists", str.data());
@@ -371,13 +365,16 @@ void KSircProcess::close_toplevel(KSircTopLevel *wm, char *name) /*FOLD00*/
       turn_on_autocreate();
 
   // Do this now or we get junk left on the screen
+  displayMgr->removeTopLevel(wm);
+  /*
   if(kSircConfig->MDIMode == TRUE && MDIMgr != 0x0){
     KMDIWindow *km = MDIMgr->getWindowByName(wm->original_name());
     if(km != 0x0){
       MDIMgr->removeWindow(km);
       km->hide();
     }
-  }
+    }
+    */
 
   if(TopList.count() <= 8){ // If this is the last window shut down
     QString command = "/quit\n";

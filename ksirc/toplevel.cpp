@@ -40,6 +40,7 @@
 #include "KSCutDialog/KSCutDialog.h"
 #include "ssfeprompt.h"
 #include "estring.h"
+#include "displayMgr.h"
 
 #include <iostream.h>
 #include <termios.h>
@@ -57,7 +58,8 @@
 
 extern KConfig *kConfig;
 extern KApplication *kApp;
-extern KMDIMgr *MDIMgr;
+//extern KMDIMgr *MDIMgr;
+extern DisplayMgr *displayMgr;
 //QPopupMenu *KSircTopLevel::user_controls = 0L;
 QList<UserControlMenu> *KSircTopLevel::user_menu = 0L;
 QPixmap *KSircTopLevel::pix_info = 0L;
@@ -1015,19 +1017,22 @@ void KSircTopLevel::showTicker() /*FOLD00*/
   connect(ticker, SIGNAL(doubleClick()), 
 	  this, SLOT(unHide()));
   connect(ticker, SIGNAL(closing()), 
-	  this, SLOT(terminate()));
-  this->hide();
+          this, SLOT(terminate()));
+
+  this->recreate(0, 0, QPoint(0,0));
+  displayMgr->removeTopLevel(this);
+  
   if(tickerrect.isEmpty() == FALSE){
     ticker->setGeometry(tickerrect);
     ticker->recreate(0, 0, tickerpoint, TRUE);
   }
   for(int i = 5; i > 0; i--)
     ticker->mergeString(QString(mainw->text(mainw->count()-i)) + " // ");
-  
+
   ticker->show();
 }
 
-void KSircTopLevel::unHide() /*fold00*/
+void KSircTopLevel::unHide() /*FOLD00*/
 {
   tickerrect = ticker->geometry();
   tickerpoint = ticker->pos();
@@ -1040,9 +1045,10 @@ void KSircTopLevel::unHide() /*fold00*/
   kConfig->sync();
   delete ticker;
   ticker = 0;
-  this->setGeometry(myrect);
-  this->recreate(0, getWFlags(), mypoint, TRUE);
-  this->show();
+  displayMgr->newTopLevel(this, TRUE);
+//  this->setGeometry(myrect);
+//  this->recreate(0, getWFlags(), mypoint, TRUE);
+//  this->show();
   linee->setFocus();  // Give SLE focus
 }
 
@@ -1165,11 +1171,7 @@ void KSircTopLevel::gotMDIFocus(KMDIWindow *win)
 
 void KSircTopLevel::setCaption(const char *str)
 {
-  if(kSircConfig->MDIMode == TRUE && MDIMgr != 0x0){
-    KMDIWindow *w = MDIMgr->getWindowByName(orig_name);
-    if(w != 0x0)
-      w->setCaption(str);
-  }
+  displayMgr->setCaption(this, str);
   KTopLevelWidget::setCaption(str);
 }
 

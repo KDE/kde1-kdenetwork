@@ -271,8 +271,7 @@ void KMDITitleLabel::paintState(bool only_label, bool colors_have_changed,
 //    return;
 //  int x;
 
-
-  w=(KMDIWindow *)parent();
+  w=(KMDIWindow *)(parent()->parent()->parent());
   is_active=w->IsSelected();
 
   TITLEBAR_LOOK look = options.TitlebarLook;
@@ -1100,6 +1099,7 @@ void KMDIWindow::resizeEvent ( QResizeEvent *)
 
     QString Geometry;
     Geometry.sprintf("%dx%d", geometry().width(), geometry().height());
+    kapp->getConfig()->setGroup("KMDIMgrBase");
     kapp->getConfig()->writeEntry(
         "MDIWindowGeometry", Geometry);
 }
@@ -1165,6 +1165,7 @@ KMDIMgrBase::KMDIMgrBase ( QWidget* p, const char *name)
     windowList->setAutoDelete(false);
     numWindows = 0;
 
+    kapp->getConfig()->setGroup("KMDIMgrBase");
     QString geometry=
         kapp->getConfig()->readEntry(
             "MDIWindowGeometry", "" );
@@ -1207,14 +1208,11 @@ void KMDIMgrBase::setDefaultWindowPos ( int x, int y )
    
 void KMDIMgrBase::handleWindowSelect(KMDIWindow *win)
 {
-  KMDIWindow* old=selectedWnd;
   for (KMDIWindow* w=windowList->first(); w!=0L; w=windowList->next()){
       if (w == win){
-	 w->isSelected=true;
 	 selectedWnd = w;
-	 if (old!=w){
-	    w->changeColorSelect(true);
-	 }
+         w->changeColorSelect(true);
+         w->getTitlebar()->caption->paintState();
       }
       else{   
 	 if (w->isMinimized)
@@ -1223,10 +1221,8 @@ void KMDIMgrBase::handleWindowSelect(KMDIWindow *win)
 	    if (!w->isVisible())
 	       w->show();
 	 }
-	 if (w==old){
-	    w->changeColorSelect(false);
-	    w->isSelected=false;
-	 }
+         w->changeColorSelect(false);
+         w->getTitlebar()->caption->paintState();
       }
   }
 }
@@ -1284,6 +1280,7 @@ void KMDIMgrBase::addWindow(KMDIWindow *w, int flag)
     }
     w->move(x, y);
 
+    kapp->getConfig()->setGroup("KMDIMgrBase");
     QString geometry =
         kapp->getConfig()->readEntry(
             "MDIWindowGeometry", "" ); 
@@ -1314,6 +1311,7 @@ void KMDIMgrBase::addWindow(KMDIWindow *w, int flag)
        w->slotSelect();
     }
     emit windowAdded(w);
+    handleWindowSelect(w);
 }
 
 void KMDIMgrBase::removeWindow ( KMDIWindow *win )
@@ -1329,6 +1327,14 @@ void KMDIMgrBase::removeWindow ( KMDIWindow *win )
     }
     else
         warning("KMDIMgrBase::RemoveWindow: window not found.");
+
+    KMDIWindow *w=windowList->first();
+    if(w){
+        w->slotSelect(TRUE);
+        w->raise();
+        handleWindowSelect(w);
+    }
+    
 }
 
 void KMDIMgrBase::removeWindow(const char* name)
@@ -1343,6 +1349,7 @@ void KMDIMgrBase::cascade()
     int posX = 0;
     int posY = 0;
 
+    kapp->getConfig()->setGroup("KMDIMgrBase");
     QString geometry =
         kapp->getConfig()->readEntry(
             "MDIWindowGeometry", "" );
@@ -1371,7 +1378,8 @@ void KMDIMgrBase::cascade()
        
 void KMDIMgrBase::tile()
 {
-    QString geometry = 
+      kapp->getConfig()->setGroup("KMDIMgrBase");
+      QString geometry =
         kapp->getConfig()->readEntry(
             "MDIWindowGeometry", "" );
 
@@ -1486,7 +1494,7 @@ KMDIWindow *KMDIMgrBase::getWindowByName ( const char *name, bool caseSensitive 
         name1 = name1.lower();
     QString name2;
     while ( w ){
-      name2 = w->name();
+        name2 = w->name();
         if (!caseSensitive)
            name2 = name2.lower();
         if (name1 == name2){

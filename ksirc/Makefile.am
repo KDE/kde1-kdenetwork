@@ -67,7 +67,8 @@ estring.cpp \
 chanparser.cpp \
 objFinder.cpp \
 mobjFinder.cpp \
-KMDIMgr.cpp KMDIMgrBase.cpp mKMDIMgr.cpp mKMDIMgrBase.cpp
+KMDIMgr.cpp KMDIMgrBase.cpp mKMDIMgr.cpp mKMDIMgrBase.cpp \
+displayMgr.cpp displayMgrMDI.cpp displayMgrSDI.cpp 
 
 ksircstaticSOURCES = $(ksirc_SOURCES)
 ksircstaticOBJECTS = $(ksirc_OBJECTS)
@@ -130,7 +131,8 @@ ioLAG.h                   ioNotify.h                ssfeprompt.h \
 ssfepromptdata.h          usercontrolmenu.h         objFinder.h \
 dsirc                     filters.pl                ksirc.pl \
 sirc.help.gz              baserules.h               estring.h \
-KMDIMgr.h KMDIMgrBase.h  
+KMDIMgr.h KMDIMgrBase.h  \
+displayMgr.h displayMgrMDI.h displayMgrSDI.h
 
 
 # just to make sure, automake makes them 
@@ -157,7 +159,8 @@ mservercontroller.cpp \
 mssfeprompt.cpp \
 mssfepromptdata.cpp \
 mtoplevel.cpp \
-mKMDIMgr.cpp mKMDIMgrBase.cpp
+mKMDIMgr.cpp mKMDIMgrBase.cpp \
+mdisplayMgr.cpp mdisplayMgrMDI.cpp mdisplayMgrSDI.cpp 
 
 # if you "make distclean", this files get removed. If you want to remove
 # them while "make clean", use CLEANFILES

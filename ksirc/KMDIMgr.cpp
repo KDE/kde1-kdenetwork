@@ -32,7 +32,7 @@ KMDIMgr::~KMDIMgr()
 {
 }
 
-KMDIWindow* KMDIMgr::addWindow (QWidget *p,   int flag , const char* icon)
+KMDIWindow* KMDIMgr::addWindow (QWidget *p, int flag , const char* icon)
 {
     KMDIWindow *result=KMDIMgrBase::addWindow (p,flag,icon);
 
@@ -50,15 +50,19 @@ void KMDIMgr::slotWindowMaximized(KMDIWindow *w)
     w->getFrame()->setFrameStyle( QFrame::Panel | QFrame::Plain );
     w->getFrame()->setLineWidth( 0 );
 
-    toolMin=top_toolbar->insertButton(
-        *w->getTitlebar()->getMinbtn()->pixmap(),
-        2,SIGNAL(clicked()),w,SLOT(slotMinimize()));
-    toolMax=top_toolbar->insertButton(
-        *w->getTitlebar()->getMaxbtn()->pixmap(),
-        3,SIGNAL(clicked()),w,SLOT(slotMaximize()));
     toolClose=top_toolbar->insertButton(
         *w->getTitlebar()->getClosebtn()->pixmap(),
-        4,SIGNAL(clicked()),w,SLOT(slotClose()));
+        55,SIGNAL(clicked()),w,SLOT(slotClose()));
+    top_toolbar->alignItemRight(55,true);
+    toolMax=top_toolbar->insertButton(
+        *w->getTitlebar()->getMaxbtn()->pixmap(),
+        54,SIGNAL(clicked()),w,SLOT(slotMaximize()));
+    top_toolbar->alignItemRight(54,true);
+    toolMin=top_toolbar->insertButton(
+        *w->getTitlebar()->getMinbtn()->pixmap(),
+        53,SIGNAL(clicked()),w,SLOT(slotMinimize()));
+    top_toolbar->alignItemRight(53,true);
+
 }
 
 void KMDIMgr::slotWindowRestored(KMDIWindow *w)
@@ -67,7 +71,7 @@ void KMDIMgr::slotWindowRestored(KMDIWindow *w)
     w->getFrame()->setFrameStyle( QFrame::Panel | QFrame::Raised );
     w->getFrame()->setLineWidth( 2 );
 
-    top_toolbar->removeItem(2);
-    top_toolbar->removeItem(3);
-    top_toolbar->removeItem(4);
+    top_toolbar->removeItem(53);
+    top_toolbar->removeItem(54);
+    top_toolbar->removeItem(55);
 }

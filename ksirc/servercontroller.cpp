@@ -76,6 +76,8 @@
 
 #include "pws-0.5/pws/pws.h"
 
+#include "KMDIMgr.h"
+
 #include <kfontdialog.h>
 #include <kiconloader.h>
 #include <kwm.h>
@@ -83,6 +85,10 @@
 #include <qkeycode.h>
 
 #include "puke/controller.h"
+
+#include "displayMgr.h"
+#include "displayMgrMDI.h"
+#include "displayMgrSDI.h"
 
 #ifdef HAVE_PATHS_H
 #include <paths.h>
@@ -95,7 +101,7 @@
 extern KConfig *kConfig;
 extern KApplication *kApp;
 extern global_config *kSircConfig;
-KMDIMgr *MDIMgr;
+DisplayMgr *displayMgr;
 
 servercontroller::servercontroller /*FOLD00*/
 (
@@ -110,22 +116,33 @@ servercontroller::servercontroller /*FOLD00*/
   MenuBar = new KMenuBar(this, QString(name) + "_menu");
   setMenu(MenuBar);
 
-  if(kSircConfig->MDIMode == FALSE){
+  if(kSircConfig->DisplayMode == 0){
+  SDI:
+    displayMgr = new DisplayMgrSDI();
     sci = new scInside(this, QString(name) + "_mainview");
     setView(sci, TRUE);
-    MDIMgr = 0;
+  }
+  else if(kSircConfig->DisplayMode == 1){
+    DisplayMgrMDI *displayMgrMDI = new DisplayMgrMDI(this);
+    sci = new scInside(this, QString(name) + "_mainview");
+    displayMgrMDI->newTopLevel(sci, TRUE);
+    
+    displayMgrMDI->setCaption(sci, "Server Controller");
+    KMDIMgrBase *mgr = (KMDIMgrBase *)displayMgrMDI->getMGR();
+    KMDIWindow *km = mgr->getWindowByName((char *) sci->name());
+    if(km != 0)
+      connect(km, SIGNAL(minimized(KMDIWindow *)),
+              this, SLOT(MDIMinimized(KMDIWindow *)));
+    else
+        warning("Failed to retreive Window, do not minimize the server controller!!");
+
+    displayMgr = displayMgrMDI;
   }
   else{
-    MDIMgr = new KMDIMgr(this,"MDI Mananager", toolBar());
-    setView(MDIMgr, TRUE);
-    sci = new scInside(MDIMgr, QString(name) + "_mainview");
-    KMDIWindow *mdiWnd=MDIMgr->addWindow(sci,MDI_SHOW,NULL);
-    mdiWnd->setCaption("Server Controller");
-    connect(mdiWnd, SIGNAL(minimized(KMDIWindow *)),
-            this, SLOT(MDIMinimized(KMDIWindow *)));
-    mdiWnd->show();
+      warning("Game mode Indeterminate, defaulting to SDI");
+      goto SDI;
   }
-
+    
   sci->setFrameStyle(QFrame::Box | QFrame::Raised);
   ConnectionTree = sci->ConnectionTree;
 
@@ -214,7 +231,7 @@ servercontroller::servercontroller /*FOLD00*/
   setIcon(*pic_icon);
   KWM::setMiniIcon(winId(), *pic_server);
 
-  if(kSircConfig->MDIMode == FALSE)
+  if(kSircConfig->DisplayMode == 0)
     resize( 450,200 );
 
   // Server Controller is done setting up, create Puke interface.
@@ -261,7 +278,7 @@ void servercontroller::new_connection() /*fold00*/
   w.exec();                                       // show the sucker!
 }
 
-void servercontroller::new_ksircprocess(QString str) /*FOLD00*/
+void servercontroller::new_ksircprocess(QString str) /*fold00*/
 {
 
   if(str.isEmpty() == TRUE)  // nothing entered, nothing done
@@ -323,7 +340,7 @@ void servercontroller::new_toplevel(QString str) /*fold00*/
   }
 }
 
-void servercontroller::ToggleAutoCreate() /*FOLD00*/
+void servercontroller::ToggleAutoCreate() /*fold00*/
 {
   kConfig->setGroup("General");
   if(kConfig->readNumEntry("AutoCreateWin", FALSE) == FALSE){
@@ -431,7 +448,7 @@ void servercontroller::help_keys() /*fold00*/
   kApp->invokeHTMLHelp("ksirc/keys.html", "");
 }
 
-void servercontroller::ProcMessage(QString server, int command, QString args) /*FOLD00*/
+void servercontroller::ProcMessage(QString server, int command, QString args) /*fold00*/
 {
   QString online(i18n("Online")), channels(i18n("Channels"));
   KPath path;
@@ -628,7 +645,7 @@ void servercontroller::toggleDocking(){ /*fold00*/
   }
 }
 
-void servercontroller::endksirc(){ /*FOLD00*/
+void servercontroller::endksirc(){ /*fold00*/
   kConfig->sync();
   exit(0);
 
@@ -659,21 +676,14 @@ void servercontroller::WindowSelected(int index){
   }
     
   if(obj != 0x0){
-    if(kSircConfig->MDIMode == TRUE && MDIMgr != 0x0){
-      KMDIWindow *w = MDIMgr->getWindowByName(obj->original_name());
-      if(w != 0x0){
-	debug("Restoring window");
-	w->slotRestore();
-	w->raise();
-      }
-    }
-    else{
-      obj->raise();
-    }
+    displayMgr->raise(obj);
+  }
+  else {
+    warning("Did not find widget ptr to raise it");
   }
 }
 
-scInside::scInside ( QWidget * parent, const char * name, WFlags /*FOLD00*/
+scInside::scInside ( QWidget * parent, const char * name, WFlags /*fold00*/
 		     f, bool allowLines )
   : QFrame(parent, name, f, allowLines)
 {
@@ -699,7 +709,7 @@ scInside::~scInside() /*fold00*/
   delete ConnectionTree;
 }
 
-void scInside::resizeEvent ( QResizeEvent *e ) /*FOLD00*/
+void scInside::resizeEvent ( QResizeEvent *e ) /*fold00*/
 {
   QFrame::resizeEvent(e);
   ASConn->setGeometry(10,10, width() - 20,

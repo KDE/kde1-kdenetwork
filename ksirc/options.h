@@ -11,7 +11,7 @@
 #ifndef OPTIONS_H
 #define OPTIONS_H
 
-extern int BORDER;
+//extern int BORDER;
 #define BORDER_THIN 4
 #define TITLEWINDOW_SEPARATION  2
 #define BUTTON_SIZE    20
@@ -134,7 +134,7 @@ struct kwmOptions {
 };
 
 
-extern kwmOptions options;
+//extern kwmOptions options;
 
 #define CLASSIC_FOCUS  (options.FocusPolicy == CLASSIC_FOCUS_FOLLOWS_MOUSE \
 			|| options.FocusPolicy == CLASSIC_SLOPPY_FOCUS)
