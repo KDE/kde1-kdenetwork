@@ -31,9 +31,16 @@
  * SUCH DAMAGE.
  *
  */
+#ifndef ANNOUNCE_H
+#define ANNOUNCE_H
 
 int announce(NEW_CTL_MSG * request, const char *remote_machine, char *disp, int usercfg, char * callee);
 int announce_proc(NEW_CTL_MSG * request, const char * remote_machine, char *disp, int usercfg, char * callee);
 int print_std_mesg(NEW_CTL_MSG *request, const char *remote_machine, int usercfg, int force_no_sound);
 void print_mesg(FILE * tf,NEW_CTL_MSG * request, const char * remote_machine, int usercfg, int force_no_sound);
 int sound_or_beep(int usercfg);
+
+/* Maximum char length for announcement lines */
+#define N_CHARS 120
+
+#endif
