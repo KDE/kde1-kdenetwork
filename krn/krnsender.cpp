@@ -27,6 +27,10 @@ bool KRNSender::doSendNNTP (KMMessage *msg)
 {
     QString str, msgStr;
     assert(msg != NULL);
+
+    //Empty bodies make news servers and readers go insane
+    if (msg->body().isEmpty())
+        msg->setBody("\n\n\n");
     
     msgStr = prepareStr(msg->asString(), TRUE);
     int errcode=server->Post();
@@ -34,6 +38,7 @@ bool KRNSender::doSendNNTP (KMMessage *msg)
     if (!errcode)
     {
         warning ("The server closed the connection!");
+        return false;
     }
     if (errcode!=340)
     {
