@@ -10,14 +10,14 @@ class PTableView;
 
 // Init and setup code
 extern "C" {
-PWidget *createWidget(widgetId *pwi, PWidget *parent);
+PObject *createWidget(CreateArgs &ca);
 }
 
 class PTableView : public PFrame
 {
   Q_OBJECT
  public:
-  PTableView ( PWidget * parent );
+  PTableView ( PObject * parent );
   virtual ~PTableView ();
   
   virtual void messageHandler(int fd, PukeMessage *pm);

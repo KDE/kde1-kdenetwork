@@ -193,6 +193,9 @@ sub ackWinId {
   my $self = shift;
   my %ARG = @_;
 
+  if($ARG{'iWinId'} <= 1){
+      die("Failed on ack'ing Window ID, stopping!");
+  }
   $self->{iWinId} = $ARG{'iWinId'};
 }
 

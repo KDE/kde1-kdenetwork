@@ -1,21 +1,21 @@
 #include "ppushbt.h"
 #include <stdio.h>
 
-PWidget *createWidget(widgetId *pwi, PWidget *parent)
+PObject *createWidget(CreateArgs &ca)
 {
-  PPushButton *pb = new PPushButton(parent);
+  PPushButton *pb = new PPushButton(ca.parent);
   QPushButton *qb;
-  if(parent != 0)
-    qb = new QPushButton(parent->widget());
+  if(ca.parent != 0 && ca.parent->widget()->isWidgetType() == TRUE)
+    qb = new QPushButton((QWidget *) ca.parent->widget());
   else
     qb = new QPushButton();
   pb->setWidget(qb);
-  pb->setWidgetId(pwi);
+  pb->setWidgetId(ca.pwI);
   return pb;
 }
 
 
-PPushButton::PPushButton(PWidget *parent)
+PPushButton::PPushButton(PObject *parent)
   : PButton(parent)
 {
   //  debug("PLineEdit PLineEdit called");
@@ -33,7 +33,7 @@ PPushButton::~PPushButton()
 
 void PPushButton::messageHandler(int fd, PukeMessage *pm)
 {
-  PukeMessage pmRet;
+//  PukeMessage pmRet;
   switch(pm->iCommand){
   default:
     PButton::messageHandler(fd, pm);

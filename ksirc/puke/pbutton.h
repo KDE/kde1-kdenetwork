@@ -6,18 +6,19 @@ class PButton;
 #include <qbutton.h>
 #include "pmessage.h"
 #include "pwidget.h"
+#include "pobject.h"
 #include "controller.h"
 
 // Init and setup code
 extern "C" {
-PWidget *createWidget(widgetId *pwi, PWidget *parent);
+PObject *createWidget(CreateArgs &ca);
 }
 
 class PButton : public PWidget
 {
   Q_OBJECT
  public:
-  PButton ( PWidget * parent );
+  PButton ( PObject * parent );
   virtual ~PButton ();
   
   virtual void messageHandler(int fd, PukeMessage *pm);

@@ -78,7 +78,7 @@ sub PukeSendMessage {
 }
 
 sub sel_PukeRecvMessage {
-  my($wait, $wait_winid, $wait_cmd, $wait_carg) = @_;
+  ($wait, $wait_winid, $wait_cmd, $wait_carg) = @_;
   my($m);
   my($cmd, $winid, $iarg, $carg, $junk);
 
@@ -110,6 +110,7 @@ sub sel_PukeRecvMessage {
 
     if($wait == 1 && $winid == $wait_winid && $wait_cmd == $cmd){
       print LOG kgettimeofday() . " WAIT message: CMD: $PUKE_NUM2NAME{$cmd} WIN: $winid IARG: $iarg CARG: $blah\n" if $DEBUG;
+      ($wait, $wait_winid, $wait_cmd, $wait_carg) = ();
       return %ARG;
     }
 
@@ -128,7 +129,8 @@ sub sel_PukeRecvMessage {
       #
 
       if($wait == 1 && (substr($wait_carg,0,7) eq substr($carg,0,7))){
-        print LOG kgettimeofday() . " WAI2 message: CMD: $PUKE_NUM2NAME{$cmd} WIN: $winid IARG: $iarg CARG: $blah\n" if $DEBUG;
+	print LOG kgettimeofday() . " WAI2 message: CMD: $PUKE_NUM2NAME{$cmd} WIN: $winid IARG: $iarg CARG: $blah\n" if $DEBUG;
+	($wait, $wait_winid, $wait_cmd, $wait_carg) = ();
         return %ARG;
       }
       # No handler at all, unkown reply
@@ -140,6 +142,7 @@ sub sel_PukeRecvMessage {
     # If we're not waiting for a message, return
     #
     if(!$wait){
+      ($wait, $wait_winid, $wait_cmd, $wait_carg) = ();
       return ();
     }
     
@@ -148,10 +151,10 @@ sub sel_PukeRecvMessage {
     $nfound = select($rout=$rin, undef, undef, 1);
     if($nfound < 1){
       print "*E* PUKE: Timed out waiting for reply, returning null\n";
+      print LOG kgettimeofday() . " FAIL message: CMD: $PUKE_NUM2NAME{$wait_cmd} WIN: $wait_winid IARG: ### CARG: $wait_carg\n" if $DEBUG;
       return ();
     }
   }
-
 }
 
 &addsel($PUKEFd, "PukeRecvMessage", 0);

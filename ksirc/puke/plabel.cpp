@@ -1,21 +1,21 @@
 #include <qmovie.h> 
 #include "plabel.h"
 
-PWidget *createWidget(widgetId *pwi, PWidget *parent)
+PObject *createWidget(CreateArgs &ca)
 {
-  PLabel *pw = new PLabel(parent);
+  PLabel *pw = new PLabel(ca.parent);
   QLabel *le;
-  if(parent != 0)
-    le = new QLabel(parent->widget());
+  if(ca.parent != 0 && ca.parent->widget()->isWidgetType() == TRUE)
+    le = new QLabel((QWidget *) ca.parent->widget());
   else
     le = new QLabel();
   pw->setWidget(le);
-  pw->setWidgetId(pwi);
+  pw->setWidgetId(ca.pwI);
   return pw;
 }
 
 
-PLabel::PLabel(PWidget *parent)
+PLabel::PLabel(PObject *parent)
   : PFrame(parent)
 {
   //  debug("PLabel PLabel called");

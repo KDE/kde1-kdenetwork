@@ -1,6 +1,6 @@
 
 &::PukeSendMessage($::PUKE_WIDGET_LOAD,
-                     0,
+                     $::PUKE_CONTROLLER,
                      $::PWIDGET_TABLEVW,
                      "ptablevw.so",
                      sub { my %ARG = %{shift()};

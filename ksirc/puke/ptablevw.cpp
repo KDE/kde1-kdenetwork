@@ -1,16 +1,16 @@
 #include "ptablevw.h"
 
-PWidget *createWidget(widgetId *pwi, PWidget *parent)
+PObject *createWidget(CreateArgs &ca)
 {
   warning("Table View is abstract class, cannot create an object from it!!!");
-  PTableView *pt = new PTableView(parent);
+  PTableView *pt = new PTableView(ca.parent);
   pt->setWidget(0);
-  pt->setWidgetId(pwi);
+  pt->setWidgetId(ca.pwI);
   return pt;
 }
 
 
-PTableView::PTableView(PWidget *parent)
+PTableView::PTableView(PObject *parent)
   : PFrame(parent)
 {
   //  debug("PTableView PTableView called");
@@ -28,7 +28,7 @@ PTableView::~PTableView()
 
 void PTableView::messageHandler(int fd, PukeMessage *pm)
 {
-  PukeMessage pmRet;
+//  PukeMessage pmRet;
   switch(pm->iCommand){
       /*
        case PUKE_LINED_SET_MAXLENGTH:

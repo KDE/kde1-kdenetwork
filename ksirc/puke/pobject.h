@@ -2,9 +2,26 @@
 #define POBJECT_H
 
 class PObject;
+class CreateArgs;
+class PukeController;
 
 #include <qobject.h>
 #include "pmessage.h"
+
+
+class CreateArgs {
+public:
+  CreateArgs(PukeController *_pc, PukeMessage *_pm, widgetId *_pwI, PObject *_parent){
+    pc = _pc;
+    pwI = _pwI;
+    parent = _parent;
+    pm = _pm;
+  }
+  PukeController *pc;
+  widgetId *pwI;
+  PObject *parent;
+  PukeMessage *pm;
+};
 
 class PObject : public QObject
 {
@@ -16,7 +33,7 @@ class PObject : public QObject
   /**
    * Creates a new QObject and returns a PObject
    */
-  static PObject *createWidget(widgetId *pwI, PObject *parent);
+  static PObject *createWidget(CreateArgs &ca);
 
   /**
    * Handles messages from dsirc
@@ -43,18 +60,28 @@ class PObject : public QObject
    */
   virtual widgetId widgetIden();
 
+  /**
+   * Set's the puke controller for the widget
+   */
+  void setPukeController(PukeController *pc){
+    pController = pc;
+  }
+
  signals:
   void outputMessage(int fd, PukeMessage *pm);
   void widgetDestroyed(widgetId wI);
 
  protected slots:
-  void swidgetDestroyed();
+   void swidgetDestroyed();
 
- private:
+protected:
+  PukeController *controller();
 
+private:
   QObject *obj;
-
+  PukeController *pController;
   widgetId wI;
 };
 
+#include "controller.h"
 #endif

@@ -1,20 +1,20 @@
 #include "pprogress.h"
 
-PWidget *createWidget(widgetId *pwi, PWidget *parent) /*fold00*/
+PObject *createWidget(CreateArgs &ca) /*FOLD00*/
 {
-  PProgress *pw = new PProgress(parent);
+  PProgress *pw = new PProgress(ca.parent);
   KSProgress *ksp;
-  if(parent != 0)
-    ksp = new KSProgress(parent->widget());
+  if(ca.parent != 0 && ca.parent->widget()->isWidgetType() == TRUE)
+    ksp = new KSProgress((QWidget *) ca.parent->widget());
   else
     ksp = new KSProgress();
   pw->setWidget(ksp);
-  pw->setWidgetId(pwi);
+  pw->setWidgetId(ca.pwI);
   return pw;
 }
 
 
-PProgress::PProgress( PWidget *parent) /*fold00*/
+PProgress::PProgress( PObject *parent) /*fold00*/
   : PWidget(parent)
 {
   //  debug("PProgress PProgress called");

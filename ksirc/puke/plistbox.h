@@ -10,14 +10,14 @@ class PListBox;
 
 // Init and setup code
 extern "C" {
-PWidget *createWidget(widgetId *pwi, PWidget *parent);
+PObject *createWidget(CreateArgs &ca);
 }
 
 class PListBox : public PTableView
 {
   Q_OBJECT
  public:
-  PListBox ( PWidget * parent );
+  PListBox ( PObject * parent );
   virtual ~PListBox ();
   
   virtual void messageHandler(int fd, PukeMessage *pm);

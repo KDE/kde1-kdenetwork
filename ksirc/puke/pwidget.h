@@ -12,11 +12,11 @@ class PWidget : public PObject
 {
   Q_OBJECT
  public:
-  PWidget(PWidget *parent = 0);
+  PWidget(PObject *parent = 0);
   virtual ~PWidget();
 
   // Init and setup code
-  static PObject *createWidget(widgetId *pwI, PObject *parent);
+  static PObject *createWidget(CreateArgs &ca);
 
   virtual void messageHandler(int fd, PukeMessage *pm);
 

@@ -20,7 +20,8 @@ class PukeController;
 #include "../servercontroller.h"
 
 #include "commands.h"
-#include "layout.h"
+#include "pobject.h"
+#include "pwidget.h"
 
 typedef struct {
   QString server;
@@ -39,7 +40,7 @@ typedef struct {
 } WidgetS;          // WidgetStruct
 
 typedef struct {
-  PObject *(*wc)(widgetId *wI, PObject *parent);
+  PObject *(*wc)(CreateArgs &ca);
   void *dlhandle;
 } widgetCreate;
 
@@ -76,14 +77,36 @@ class PukeController : public PObject
   Q_OBJECT
 public:
   PukeController(QString socket = "", QObject *parent=0, const char *name=0);
-  ~PukeController();
+  virtual ~PukeController();
   bool running;
+
+  /**
+   * Verifies the widgetId exists and is a valid widget.
+   * True is valid, false if invalid.
+   */
+  bool checkWidgetId(widgetId *pwI);
+
+  /**
+   * id2pobject takes a window id and returns the reuired object
+   * it throw an errorNoSuchWidget on failures
+   */
+  PObject *id2pobject(int fd, int iWinId);
+  PObject *id2pobject(widgetId *pwi);
+  /**
+   * Return a PWidget if it's a widget, throws an exception if not found
+   */
+  PWidget *id2pwidget(widgetId *pwi);
+
 
 signals:
   void PukeMessages(QString server, int command, QString args);
 
 public slots:
   void ServMessage(QString, int, QString);
+  /**
+   * Closes a widget, checking for sanity
+   */
+  void closeWidget(widgetId);
 
 protected slots:
   void Traffic(int);
@@ -103,9 +126,6 @@ private:
   QSocketNotifier *qsnListen;
   QIntDict<fdStatus> qidConnectFd;
 
-  WidgetRunner *wrControl;
-  LayoutRunner *lrControl;
-  
   QIntDict<commandStruct> qidCommandTable;
 
 
@@ -133,16 +153,10 @@ private:
   static uint uiBaseWinId;
   
   /**
-   * Verifies the widgetId exists and is a valid widget.
-   * True is valid, false if invalid.
-   */
-  bool checkWidgetId(widgetId *pwI);
-
-  /**
    * Create new Widget, returns new iWinId for it.
    * Takes server fd and parent winid, and type as arguments
    */
-  widgetId createWidget(widgetId wI, int iType);
+  widgetId createWidget(widgetId wI, PukeMessage *pm);
 
   /**
    * Used to process messages going to controller, winId #1
@@ -157,7 +171,7 @@ private:
   /**
    * NOT APPLICAABLE
    */
-  virtual QObject *widget() { return this; }
+  virtual QObject *widget() { return 0x0; }
 
   /**
    * Inserts a PObject into our internal list
@@ -165,19 +179,10 @@ private:
   void insertPObject(int fd, int iWinId, WidgetS *obj);
 
   /**
-   * id2pobject takes a window id and returns the reuired object
-   * it throw an errorNoSuchWidget on failures
-   */
-  PObject *id2pobject(int fd, int iWinId);
-  PObject *id2pobject(widgetId *pwi);
-
-  /**
    * Closes a widget, checking for sanity
    */
-  void closeWidget(widgetId wI);
+//  void closeWidget(widgetId wI);
    
-
-
   // Message handlers
   void hdlrPukeSetup(int fd, PukeMessage *pm);
   void hdlrPukeInvalid(int fd, PukeMessage *pm);

@@ -1,20 +1,20 @@
 #include "plistbox.h"
 
-PWidget *createWidget(widgetId *pwi, PWidget *parent) /*FOLD00*/
+PObject *createWidget(CreateArgs &ca) /*FOLD00*/
 {
-  PListBox *plb = new PListBox(parent);
+  PListBox *plb = new PListBox(ca.parent);
   QListBox *lb;
-  if(parent != 0)
-    lb = new QListBox(parent->widget());
+  if(ca.parent != 0 && ca.parent->widget()->isWidgetType() == TRUE)
+    lb = new QListBox((QWidget *) ca.parent->widget());
   else
     lb = new QListBox();
   plb->setWidget(lb);
-  plb->setWidgetId(pwi);
+  plb->setWidgetId(ca.pwI);
   return plb;
 }
 
 
-PListBox::PListBox(PWidget *parent) /*FOLD00*/
+PListBox::PListBox(PObject *parent) /*FOLD00*/
   : PTableView(parent)
 {
   //  debug("PListBox PListBox called");

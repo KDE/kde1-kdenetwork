@@ -10,14 +10,14 @@ class PFrame;
 
 // Init and setup code
 extern "C" {
-PWidget *createWidget(widgetId *pwi, PWidget *parent);
+PObject *createWidget(CreateArgs &ca);
 }
 
 class PFrame : public PWidget
 {
   Q_OBJECT
  public:
-  PFrame ( PWidget * parent );
+  PFrame ( PObject * parent );
   virtual ~PFrame ();
   
   virtual void messageHandler(int fd, PukeMessage *pm);

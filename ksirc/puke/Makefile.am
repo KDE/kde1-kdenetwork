@@ -30,7 +30,9 @@ mcontroller.cpp \
 pwidget.cpp \
 mpwidget.cpp \
 pobject.cpp \
-mpobject.cpp
+mpobject.cpp \
+playout.cpp \
+mplayout.cpp 
 
 
 libpukeSOURCES = $(libkscutdialog_SOURCES)
@@ -41,7 +43,10 @@ mcontroller.o \
 pwidget.o \
 mpwidget.o \
 pobject.o \
-mpobject.o
+mpobject.o \
+playout.o \
+mplayout.o 
+
 
 
 libpuke.c: commands.h

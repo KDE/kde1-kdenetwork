@@ -139,7 +139,9 @@ mcontroller.cpp \
 pwidget.cpp \
 mpwidget.cpp \
 pobject.cpp \
-mpobject.cpp
+mpobject.cpp \
+playout.cpp \
+mplayout.cpp 
 
 libpukeSOURCES = $(libkscutdialog_SOURCES)
 
@@ -149,7 +151,9 @@ mcontroller.o \
 pwidget.o \
 mpwidget.o \
 pobject.o \
-mpobject.o
+mpobject.o \
+playout.o \
+mplayout.o 
 
 # no install headers
 
@@ -182,7 +186,7 @@ DEFS = @DEFS@ -I. -I$(srcdir) -I../..
 CPPFLAGS = @CPPFLAGS@
 LIBS = @LIBS@
 libpuke_OBJECTS =  controller.o mcontroller.o pwidget.o mpwidget.o \
-pobject.o mpobject.o
+pobject.o mpobject.o playout.o mplayout.o
 libpuke_LDADD = $(LDADD)
 libpuke_LDFLAGS = 
 CXXCOMPILE = $(CXX) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
@@ -196,8 +200,9 @@ DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
 
 TAR = tar
 GZIP = --best
-DEP_FILES =  .deps/controller.P .deps/mcontroller.P .deps/mpobject.P \
-.deps/mpwidget.P .deps/pobject.P .deps/pwidget.P
+DEP_FILES =  .deps/controller.P .deps/mcontroller.P .deps/mplayout.P \
+.deps/mpobject.P .deps/mpwidget.P .deps/playout.P .deps/pobject.P \
+.deps/pwidget.P
 CXXMKDEP = $(CXX) -M $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
 SOURCES = $(libpuke_SOURCES)
 OBJECTS = $(libpuke_OBJECTS)

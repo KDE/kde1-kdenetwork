@@ -1,5 +1,9 @@
 sub puke_invalid_cmd {
-  print "*E* Puke: Invalid command 0 ack'ed\n";
+    print "*E* Puke: Invalid command 0 ack'ed\n";
+    #
+    # Stop waiting, things are messed up
+    #
+    $wait = 0;
 }
 $PUKE_DEF_HANDLER{"$PUKE_INVALID"} = \&puke_invalid_cmd;
 

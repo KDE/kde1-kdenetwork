@@ -5,18 +5,19 @@ class PProgress;
 
 #include "../KSProgress/ksprogress.h"
 #include "pmessage.h"
-#include "pwidget.h"
+//#include "pwidget.h"
+#include "pobject.h"
 #include "controller.h"
 
 // Init and setup code
 extern "C" {
-PWidget *createWidget(widgetId *pwi, PWidget *parent);
+PObject *createWidget(CreateArgs &ca);
 }
 
 class PProgress : public PWidget {
   Q_OBJECT
 public:
-  PProgress ( PWidget * parent = 0);
+  PProgress ( PObject * parent = 0);
   virtual ~PProgress ();
 
   virtual void messageHandler(int fd, PukeMessage *pm);

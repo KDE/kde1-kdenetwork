@@ -3,12 +3,13 @@
 
 #include <qevent.h>
 
-PWidget::PWidget(PWidget *)
+PWidget::PWidget(PObject *)
   : PObject()
 {
   //  debug("PWidget constructor called");
 
   w = 0;
+  setWidget(0);
 
   eventList[0] = &eventNone;
   eventList[1] = &eventTimer;
@@ -43,16 +44,17 @@ PWidget::~PWidget()
   setWidget(0);
 }
 
-PObject *PWidget::createWidget(widgetId *pwi, PObject *parent)
+PObject *PWidget::createWidget(CreateArgs &ca)
 {
   PWidget *pw = new PWidget();
   QWidget *tw;
-  if(parent != 0 && parent->widget()->isWidgetType() == TRUE)
-    tw = new QWidget((QWidget *) parent->widget());
+  if(ca.parent != 0 && ca.parent->widget()->isWidgetType() == TRUE)
+    tw = new QWidget((QWidget *) ca.parent->widget());
   else
     tw = new QWidget();
   pw->setWidget(tw);
-  pw->setWidgetId(pwi);
+  pw->setWidgetId(ca.pwI);
+  pw->setPukeController(ca.pc);
   return pw;
 }
 
@@ -152,12 +154,14 @@ void PWidget::messageHandler(int fd, PukeMessage *pm)
     break;
 
   default:
-    warning("PWidget: Unkown Command: %d", pm->iCommand);
+    PObject::messageHandler(fd, pm);
+/*  warning("PWidget: Unkown Command: %d", pm->iCommand);
     pmRet.iCommand = PUKE_INVALID;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = 0;
     pmRet.cArg[0] = 0;
     emit outputMessage(fd, &pmRet);
+*/
   }
 }
 
@@ -168,6 +172,7 @@ void PWidget::setWidget(QWidget *_w)
   if(w != 0){
     widget()->installEventFilter(this);
   }
+  PObject::setWidget(_w);
 }
 
 QWidget *PWidget::widget()

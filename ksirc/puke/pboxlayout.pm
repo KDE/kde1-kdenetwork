@@ -68,18 +68,17 @@ sub new {
 sub create {
   my $self = shift;
 
-  # Create a layout box, and wait for an ack reply.
-  # The ack contains all needed information for this window.
-  #  print "*I* Making Box Layout\n";
-
+  #
+  # PLayout redefines create since it uses a special cArg
+  #
   my($paren_id) = 0;
   $paren_id = $self->{Parent}->{iWinId} if $self->{Parent} != -1;
 
   my %REPLY;
-  %REPLY = $self->sendMessage('iCommand' => $::PUKE_LAYOUT_NEW,
-                              'iWinId' => $paren_id,
-                              'cArg' => $self->{initId},
-                              'iArg' => $self->{Direction} + 65536 * $self->{Border},
+  %REPLY = $self->sendMessage('iCommand' => $::PUKE_WIDGET_CREATE,
+                              'iWinId' => $::PUKE_CONTROLLER,
+                              'iArg' => $::POBJECT_LAYOUT + $paren_id * 2**16,
+                              'cArg' => "-" . $self->{Direction} . "-" . $self->{Border} . "-" . $self->{initId},
                               'CallBack' => sub { },
                               'WaitFor' => 1);
   
@@ -111,7 +110,6 @@ sub addWidget {
   my $cArg = pack("CC", $stretch, $align);
   
   $self->sendMessage('iCommand' => $::PUKE_LAYOUT_ADDWIDGET,
-		     'iWinId' => $self->{iWinId},
 		     'iArg' => $widget->{iWinId},
 		     'cArg' => $cArg,
                      'CallBack' => sub { },
@@ -168,10 +166,10 @@ sub DESTROY {
 
   #  print "*I* Layout Deleted\n";
 
-  if($self->{DESTROYED} != 1){
-    $self->sendMessage('iCommand' => $::PUKE_LAYOUT_DELETE,
-		       'CallBack' => sub { print "Deleted\n"; });
-  }
+  #  if($self->{DESTROYED} != 1){
+  #  $self->sendMessage('iCommand' => $::PUKE_WIDGET_DELETE,
+  #      	       'CallBack' => sub { print "Deleted\n"; });
+  #}
 
   $self->{iWinId} = -1;
   $self->{DESTROYED} = 1;
@@ -186,7 +184,7 @@ sub activate {
     return;
   }
 
-  $self->sendMessage('iCommand' => $::PUKE_LAYOUT_ADDLAYOUT,
+  $self->sendMessage('iCommand' => $::PUKE_LAYOUT_ACTIVATE,
                      'CallBack' => sub { },
                      'WaitFor' => 1);
 

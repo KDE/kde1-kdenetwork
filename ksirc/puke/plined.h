@@ -10,14 +10,14 @@ class PLineEdit;
 
 // Init and setup code
 extern "C" {
-PWidget *createWidget(widgetId *pwi, PWidget *parent);
+PObject *createWidget(CreateArgs &ca);
 }
 
 class PLineEdit : public PWidget
 {
   Q_OBJECT
  public:
-  PLineEdit ( PWidget * parent );
+  PLineEdit ( PObject * parent );
   virtual ~PLineEdit ();
   
   virtual void messageHandler(int fd, PukeMessage *pm);

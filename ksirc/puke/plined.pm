@@ -1,6 +1,6 @@
 
 &::PukeSendMessage($PUKE_WIDGET_LOAD, 
-		   0, 
+		   $::PUKE_CONTROLLER, 
 		   $PWIDGET_LINED,
 		   "plined.so",
 		   sub { my %ARG = %{shift()};

@@ -1,21 +1,21 @@
 #include "plined.h"
 #include <stdio.h>
 
-PWidget *createWidget(widgetId *pwi, PWidget *parent)
+PObject *createWidget(CreateArgs &ca)
 {
-  PLineEdit *pw = new PLineEdit(parent);
+  PLineEdit *pw = new PLineEdit(ca.parent);
   QLineEdit *le;
-  if(parent != 0)
-    le = new QLineEdit(parent->widget());
+  if(ca.parent != 0 && ca.parent->widget()->isWidgetType() == TRUE)
+    le = new QLineEdit((QWidget *) ca.parent->widget());
   else
     le = new QLineEdit();
   pw->setWidget(le);
-  pw->setWidgetId(pwi);
+  pw->setWidgetId(ca.pwI);
   return pw;
 }
 
 
-PLineEdit::PLineEdit(PWidget *parent)
+PLineEdit::PLineEdit(PObject *parent)
   : PWidget(parent)
 {
   //  debug("PLineEdit PLineEdit called");

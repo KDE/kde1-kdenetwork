@@ -10,14 +10,14 @@ class PLabel;
 
 // Init and setup code
 extern "C" {
-PWidget *createWidget(widgetId *pwi, PWidget *parent);
+PObject *createWidget(CreateArgs &ca);
 }
 
 class PLabel : public PFrame
 {
   Q_OBJECT
  public:
-  PLabel ( PWidget * parent );
+  PLabel ( PObject * parent );
   virtual ~PLabel ();
   
   virtual void messageHandler(int fd, PukeMessage *pm);

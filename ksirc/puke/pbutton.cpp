@@ -1,26 +1,26 @@
 #include "pbutton.h"
 #include <stdio.h>
 
-PWidget *createWidget(widgetId *pwi, PWidget *parent)
+PObject *createWidget(CreateArgs &ca)
 {
-  PButton *pb = new PButton(parent);
+  PButton *pb = new PButton(ca.parent);
   QButton *qb;
-  if(parent != 0)
-    qb = new QButton(parent->widget());
+  if(ca.parent != 0 && ca.parent->widget()->isWidgetType() == TRUE)
+    qb = new QButton((QWidget *) ca.parent->widget());
   else
     qb = new QButton();
   pb->setWidget(qb);
-  pb->setWidgetId(pwi);
+  pb->setWidgetId(ca.pwI);
   return pb;
 }
 
 
-PButton::PButton(PWidget *parent)
+PButton::PButton(PObject *parent)
   : PWidget(parent)
 {
   //  debug("PLineEdit PLineEdit called");
   button = 0;
-  setWidget(button);
+  setWidget(0);
 }
 
 PButton::~PButton()

@@ -1,20 +1,21 @@
 #include "pframe.h"
 
-PWidget *createWidget(widgetId *pwi, PWidget *parent)
+PObject *createWidget(CreateArgs &ca)
 {
-  PFrame *pw = new PFrame(parent);
+  PFrame *pw = new PFrame(ca.parent);
   QFrame *tf;
-  if(parent != 0)
-    tf = new QFrame(parent->widget());
+  if(ca.parent != 0 &&
+     ca.parent->widget()->isWidgetType() == TRUE)
+    tf = new QFrame((QWidget *) ca.parent->widget());
   else
     tf = new QFrame();
   pw->setWidget(tf);
-  pw->setWidgetId(pwi);
+  pw->setWidgetId(ca.pwI);
   return pw;
 }
 
 
-PFrame::PFrame( PWidget *parent)
+PFrame::PFrame( PObject *parent)
   : PWidget(parent)
 {
   //  debug("PFrame PFrame called");

@@ -655,6 +655,9 @@
 // Label
 #define PWIDGET_LABEL 10
 
+// BoxLayout
+#define POBJECT_LAYOUT 11
+
 // Group layout commands exist between 10000 and 11000
 
 // Desc: create new box layout
