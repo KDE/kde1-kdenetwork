@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KPPP\n"
-"POT-Creation-Date: 1998-12-19 02:18+0100\n"
+"POT-Creation-Date: 1998-12-21 02:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Kim Enkovaara <kim.enkovaara@iki.fi>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1935,7 +1935,7 @@ msgstr ""
 "Pyydä systeemisi ylläpitäjää luomaan tämä\n"
 "tiedosto sopivilla käyttöoikeuksilla."
 
-#: ppplog.cpp:149
+#: ppplog.cpp:136
 msgid ""
 "You have launched pppd before the remote server was ready to establish a PPP "
 "connection.\n"
@@ -1945,19 +1945,15 @@ msgstr ""
 "PPP-yhteyden.\n"
 "Käytä terminaalipohjaista kirjautumista varmistaaksesi"
 
-#: ppplog.cpp:154
-msgid ""
-"Do you use /dev/modem ? If so, you should specify the real device instead, "
-"e.g. /dev/ttyS1 (COM2)."
+#: ppplog.cpp:141
+msgid "You haven't started the PPP software on the peer system."
 msgstr ""
-"Käytäkö /dev/modem laitetta ?. Jos käytät sinun tulisi määritellä, "
-"todellinen laite esim. /dev/ttyS1 (COM2)."
 
-#: ppplog.cpp:158
+#: ppplog.cpp:144
 msgid "Check that you supplied the correct username and password!"
 msgstr "Tarkista että annoit oikean käyttäjänimen ja salasanan!"
 
-#: ppplog.cpp:161
+#: ppplog.cpp:147
 msgid ""
 "You shouldn't pass 'lock' as an argument to pppd. Check /etc/ppp/options and "
 "~/.ppprc"
@@ -1965,7 +1961,7 @@ msgstr ""
 "Sinun ei tule antaa 'lock' parametria pppd:lle. Tarkista /etc/ppp/options ja "
 "~/.ppprc"
 
-#: ppplog.cpp:165
+#: ppplog.cpp:151
 msgid ""
 "The remote system does not seem to answer to\n"
 "configuration request! Contact your provider!"
@@ -1973,7 +1969,13 @@ msgstr ""
 "Vastapään systeemi ei näytä vastaavan asetuspyyntöösi!\n"
 "Ota yhteyttä palveluntarjoajaasi!"
 
-#: ppplog.cpp:180
+#: ppplog.cpp:155
+msgid ""
+"You have passed an invalid option to pppd. See `man pppd' for a complete "
+"list of valid arguments."
+msgstr ""
+
+#: ppplog.cpp:170
 #, c-format
 msgid ""
 "Notice that the remote system has sent the following message:\n"
@@ -1984,11 +1986,11 @@ msgstr ""
 "\"%s\"\n"
 "Viesti voi antaa vinkkejä miksi yhteys epäonnistui."
 
-#: ppplog.cpp:199
+#: ppplog.cpp:189
 msgid "Sorry. Can't help you here."
 msgstr "Valitettavasti en voi auttaa tässä."
 
-#: ppplog.cpp:216
+#: ppplog.cpp:206
 msgid ""
 "KPPP could not prepare a PPP log. It´s very likely\n"
 "that pppd was started without the \"debug\" option.\n"
@@ -2006,7 +2008,7 @@ msgstr ""
 "\n"
 "Laitanko sen päälle nyt?"
 
-#: ppplog.cpp:227
+#: ppplog.cpp:217
 msgid ""
 "The \"debug\" option has been added. You\n"
 "should now try to reconnect. If that fails\n"
@@ -2017,17 +2019,24 @@ msgstr ""
 "yhteyttä. Jos se taas epäonnistuu saat PPP-\n"
 "lokin josta voi olla apua ongelman jäljittämisessä."
 
-#: ppplog.cpp:242
+#: ppplog.cpp:232
 msgid "PPP log"
 msgstr "PPP loki"
 
-#: ppplog.cpp:246
+#: ppplog.cpp:236
 msgid "kppp's diagnosis (just guessing):"
 msgstr "kppp:n diagnoosi (arvailua):"
 
-#: ppplog.cpp:251
+#: ppplog.cpp:241
 msgid "Write to file"
 msgstr "Kirjoita tiedostoon"
+
+#~ msgid ""
+#~ "Do you use /dev/modem ? If so, you should specify the real device instead, "
+#~ "e.g. /dev/ttyS1 (COM2)."
+#~ msgstr ""
+#~ "Käytäkö /dev/modem laitetta ?. Jos käytät sinun tulisi määritellä, "
+#~ "todellinen laite esim. /dev/ttyS1 (COM2)."
 
 #~ msgid "Lock File Directory:"
 #~ msgstr "Lukkotiedoston hakemisto:"
