@@ -30,7 +30,10 @@
 #include <qtstream.h>
 #include <qapp.h>
 
+#include <gdbm.h>
+
 extern QString krnpath,cachepath,artinfopath;
+extern GDBM_FILE artdb;
 
 #include <mimelib/mimepp.h>
 
@@ -284,6 +287,7 @@ int NNTP::setMode (char *mode)
 
 int NNTP::listXover(int from,int to)
 {
+    datum key;
     char buffer[1024];
     int counter=0;
     DwString gi;
@@ -354,6 +358,12 @@ int NNTP::listXover(int from,int to)
                     art.Date=templ.at(OffsetDate);
                     art.Lines=templ.at(OffsetLines);
                     art.ID=templ.at(OffsetID);
+
+                    key.dptr=art.ID.data();
+                    key.dsize=art.ID.length()+1;
+                    
+                    if (gdbm_exists(artdb,key))
+                        continue;
 
                     //convert Refs to a strlist
                     art.Refs.clear();
@@ -528,7 +538,7 @@ QString *NNTP::article(char *id)
         int status=Article (id);
         if (status==220)
         {
-            data->setStr(TextResponse().data());
+            data->setStr(TextResponse().c_str());
             f.writeBlock(data->data(),data->length());
             f.close();
             return article(id);
