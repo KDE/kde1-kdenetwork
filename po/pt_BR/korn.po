@@ -15,35 +15,33 @@ msgstr ""
 
 #: kmailbox.cpp:150
 msgid "countMail: file open error"
-msgstr ""
+msgstr "countMail: erro na abertura do arquivo"
 
 #: korn.cpp:51
-#, fuzzy
 msgid "&Setup"
-msgstr "&Configuração..."
+msgstr "&Configuração"
 
 #: korn.cpp:54
-#, fuzzy
 msgid "&About"
-msgstr "&Sobre..."
+msgstr "&Sobre"
 
 #: korn.cpp:109
 msgid "korn: configure now?"
-msgstr ""
+msgstr "korn: configurar agora?"
 
 #: korn.cpp:110
 msgid ""
 "you have not yet configured korn.\n"
 "would you like to do this now?"
-msgstr ""
+msgstr "você ainda não configurou o korn.\nvocê gostaria de fazer isso agora ?"
 
 #: korn.cpp:114
 msgid "No - Quit"
-msgstr ""
+msgstr "Não - Sair"
 
 #: korn.cpp:119
 msgid "personal"
-msgstr ""
+msgstr "pessoal"
 
 #: korn.cpp:120
 msgid "Inbox"
@@ -57,170 +55,65 @@ msgid ""
 "\n"
 "The K Desktop Environment"
 msgstr ""
+"Korn %s -- Sirtaj Singh Kang\n"
+"taj@kde.org, 1997\n"
+"\n"
+"O Ambiente de Trabalho K"
 
 #: korn.cpp:249
-#, fuzzy
 msgid "About kOrn"
 msgstr "Sobre o KOrn"
 
 #: korn.cpp:257
 msgid "korn: no config set"
-msgstr ""
+msgstr "korn: nenhuma configuração feita"
 
 #: korn.cpp:258
 msgid ""
 "Would you like to restart korn with\n"
 "the automatically generated configuration?"
-msgstr ""
+msgstr "Você gostaria de reiniciar o korn com a\nconfiguração gerada automaticamente ?"
 
 #: korn.cpp:261
 msgid "Yes, Restart"
-msgstr ""
+msgstr "Sim, Reiniciar"
 
 #: korn.cpp:261
 msgid "No, Exit"
 msgstr "Não, sair"
 
 #: kornopt.cpp:24
-#, fuzzy
 msgid "korn options"
-msgstr "Korn: Opções"
+msgstr "Opções do korn"
 
 #: optdata.cpp:76
-#, fuzzy
 msgid "&New"
-msgstr "Notícias"
+msgstr "&Novo"
 
 #: optdata.cpp:89
-#, fuzzy
 msgid "Boxes"
-msgstr "&Caixas"
+msgstr "Caixas"
 
 #: optdata.cpp:118
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 #: optdata.cpp:124
 msgid "Caption"
 msgstr "Nome"
 
 #: optdata.cpp:138
-#, fuzzy
 msgid "Path"
-msgstr "Caminho da caixa postal"
+msgstr "Caminho"
 
 #: optdata.cpp:152
 msgid "Poll time (sec)"
-msgstr ""
+msgstr "Tempo de consulta (seg)"
 
 #: optdata.cpp:158
 msgid "Notify Command"
-msgstr ""
+msgstr "Comando de Notificação"
 
 #: optdata.cpp:180
 msgid "Click Command"
-msgstr ""
-
-#~ msgid "Welcome to KOrn"
-#~ msgstr "Bem-vindo ao KOrn"
-
-#~ msgid ""
-#~ "You do not appear to have used KOrn before. Would you like a basic "
-#~ "configuration created for you?"
-#~ msgstr ""
-#~ "Aparentemente, você nunca usou o KOrn antes. Você gostaria que lhe fosse "
-#~ "criada uma configuração básica ?"
-
-#~ msgid "Can't find mailbox"
-#~ msgstr "Caixa não encontrada"
-
-#~ msgid ""
-#~ "Unable to find $MAIL environment variable. You'll have to configure the "
-#~ "mailboxes yourself."
-#~ msgstr ""
-#~ "Variável de ambiente $MAIL não encontrada. Você terá de configurar as caixas "
-#~ "de correio por si."
-
-#~ msgid " (clone)"
-#~ msgstr " (clone)"
-
-#~ msgid "Select a mailbox type..."
-#~ msgstr "Selecione um tipo de caixa de correio..."
-
-#~ msgid "O&K"
-#~ msgstr "&OK"
-
-#~ msgid "Horizontal"
-#~ msgstr "Horizontal"
-
-#~ msgid "Vertical"
-#~ msgstr "Vertical"
-
-#~ msgid "Docked"
-#~ msgstr "Embutido"
-
-#~ msgid "&Layout"
-#~ msgstr "&Disposição"
-
-#~ msgid "&Modify Box"
-#~ msgstr "&Modificar caixa"
-
-#~ msgid "&New Box"
-#~ msgstr "&Nova caixa"
-
-#~ msgid "&Delete Box"
-#~ msgstr "&Apagar caixa"
-
-#~ msgid "&Clone Box"
-#~ msgstr "&Clonar caixa"
-
-#~ msgid "New Monitor"
-#~ msgstr "Novo Monitor"
-
-#~ msgid "Korn Monitor"
-#~ msgstr "Monitor do Korn"
-
-#~ msgid "On Receipt"
-#~ msgstr "Ao Receber"
-
-#~ msgid "On Click"
-#~ msgstr "Ao Clicar"
-
-#~ msgid "General"
-#~ msgstr "Geral"
-
-#~ msgid "Poll"
-#~ msgstr "Teste"
-
-#~ msgid "Check Frequency (sec)"
-#~ msgstr "Freqüêncua de checagem (seg)"
-
-#~ msgid "Mailbox"
-#~ msgstr "Caixa postal"
-
-#~ msgid "Maildir"
-#~ msgstr "Maildir"
-
-#~ msgid "Maildir Path"
-#~ msgstr "Caminho do Maildir"
-
-#~ msgid "Server"
-#~ msgstr "Servidor"
-
-#~ msgid "Port"
-#~ msgstr "Porta"
-
-#~ msgid "Username"
-#~ msgstr "Nome de usuário"
-
-#~ msgid "Password"
-#~ msgstr "Senha"
-
-#~ msgid "Save Password"
-#~ msgstr "Salvar Senha"
-
-#~ msgid "Group"
-#~ msgstr "Grupo"
-
-#~ msgid "Browse.."
-#~ msgstr "Navegar..."
+msgstr "Comando ao Clicar"
