@@ -30,7 +30,6 @@ msgid "&Save Options"
 msgstr "&Gem indstillinger"
 
 #: kfinger.C:38
-#, fuzzy
 msgid ""
 "kfinger 0.8.1\n"
 "\n"
@@ -76,7 +75,7 @@ msgstr "Fejl på serveren : %s"
 #: kfinger.C:284
 #, c-format
 msgid "Connection refused by  %s"
-msgstr ""
+msgstr "Forbindelse nægtet af %s"
 
 #: kfinger.C:296
 #, c-format
@@ -84,7 +83,6 @@ msgid "Finger  %s@%s   --   %s"
 msgstr "Finger  %s@%s    --   %s"
 
 #: kfinger.C:317
-#, fuzzy
 msgid ""
 "Kfinger 0.8.1\n"
 "(c) by Andrea Rizzi\n"
