@@ -1,24 +1,32 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
 msgid ""
 msgstr ""
-"Date: 1997-10-28 22:45:13+0100\n"
-"From: Bertrand Leconte,,, <leconteb@arthur>\n"
-"Content-Type: text/plain; charset=\n"
-"Xgettext-Options: -C -k_\n"
-"Files: knu.cpp CommandDlg.cpp OptionsDlg.cpp ktabctl.cpp PingDlg.cpp TracerouteDlg.cpp HostDlg.cpp\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 1997-12-17 22:54+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ENCODING\n"
 
-#: knu.cpp:107 knu.cpp:242
+#: knu.cpp:123 knu.cpp:256
 msgid "&Ping"
 msgstr ""
 
-#: knu.cpp:116 knu.cpp:247
+#: knu.cpp:132 knu.cpp:261
 msgid "&Traceroute"
 msgstr ""
 
-#: knu.cpp:125 knu.cpp:252
+#: knu.cpp:141 knu.cpp:266
 msgid "Host &resolution"
 msgstr ""
 
-#: knu.cpp:140
+#: knu.cpp:156
 msgid ""
 "There is no command enabled\n"
 "in the configuration file.\n"
@@ -26,162 +34,166 @@ msgid ""
 "So I can't do anything...\n"
 msgstr ""
 
-#: knu.cpp:187
+#: knu.cpp:201
 msgid "&New window"
 msgstr ""
 
-#: knu.cpp:190
+#: knu.cpp:204
 msgid "&Close window"
 msgstr ""
 
-#: knu.cpp:193
+#: knu.cpp:207
 msgid "&Quit"
 msgstr ""
 
-#: knu.cpp:198
+#: knu.cpp:212
 msgid "&Copy"
 msgstr ""
 
-#: knu.cpp:201
+#: knu.cpp:215
 msgid "Select &all"
 msgstr ""
 
-#: knu.cpp:204
+#: knu.cpp:218
 msgid "C&lear output window"
 msgstr ""
 
-#: knu.cpp:207
+#: knu.cpp:221
 msgid "P&references..."
 msgstr ""
 
-#: knu.cpp:212
+#: knu.cpp:226
 msgid "&Contents"
 msgstr ""
 
-#: knu.cpp:215
+#: knu.cpp:229
 msgid "&About"
 msgstr ""
 
-#: knu.cpp:217
+#: knu.cpp:231
 msgid "About &Qt"
 msgstr ""
 
-#: knu.cpp:221
+#: knu.cpp:235
 msgid "&File"
 msgstr ""
 
-#: knu.cpp:222
+#: knu.cpp:236
 msgid "&Edit"
 msgstr ""
 
-#: OptionsDlg.cpp:83 knu.cpp:224
+#: OptionsDlg.cpp:97 knu.cpp:238
 msgid "&Help"
 msgstr ""
 
-#: knu.cpp:374
+#: knu.cpp:404
 msgid "About..."
 msgstr ""
 
-#: CommandDlg.cpp:115
+#: CommandDlg.cpp:121
 msgid "H&ost:"
 msgstr ""
 
-#: CommandDlg.cpp:127
+#: CommandDlg.cpp:130
 msgid "&Go!"
 msgstr ""
 
-#: CommandDlg.cpp:136
+#: CommandDlg.cpp:140
 msgid "&Stop"
 msgstr ""
 
-#: CommandDlg.cpp:151
+#: CommandDlg.cpp:156
 msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
 msgstr ""
 
-#: CommandDlg.cpp:421
+#: CommandDlg.cpp:462
 msgid "Binary"
 msgstr ""
 
-#: CommandDlg.cpp:432
+#: CommandDlg.cpp:470
 msgid "Path&name:"
 msgstr ""
 
-#: CommandDlg.cpp:444
+#: CommandDlg.cpp:479
 msgid "Additional &arguments:"
 msgstr ""
 
-#: CommandDlg.cpp:466
+#: CommandDlg.cpp:484
+msgid "Browse..."
+msgstr ""
+
+#: CommandDlg.cpp:504
 msgid "This command had been disabled in the configuration file."
 msgstr ""
 
-#: OptionsDlg.cpp:53
+#: OptionsDlg.cpp:68
 msgid " - configuration"
 msgstr ""
 
-#: OptionsDlg.cpp:77
-msgid "&Ok"
+#: OptionsDlg.cpp:91
+msgid "&OK"
 msgstr ""
 
-#: OptionsDlg.cpp:88
+#: OptionsDlg.cpp:102
 msgid "&Cancel"
 msgstr ""
 
-#: PingDlg.cpp:67 TracerouteDlg.cpp:68
+#: PingDlg.cpp:87 TracerouteDlg.cpp:88
 msgid "Make host &name resolution"
 msgstr ""
 
-#: HostDlg.cpp:171 PingDlg.cpp:102 TracerouteDlg.cpp:124
+#: HostDlg.cpp:217 PingDlg.cpp:143 TracerouteDlg.cpp:165
 msgid ""
 "You have a problem if your ~/.kderc/share/config/knurc configuration file.\n"
 "In the ["
 msgstr ""
 
-#: HostDlg.cpp:175 PingDlg.cpp:106 TracerouteDlg.cpp:128
+#: HostDlg.cpp:221 PingDlg.cpp:147 TracerouteDlg.cpp:169
 msgid "] group, I cannotfind a correct \"path=\" entry."
 msgstr ""
 
-#: TracerouteDlg.cpp:85
+#: TracerouteDlg.cpp:105
 msgid "&Maximum number of hops:"
 msgstr ""
 
-#: HostDlg.cpp:94
+#: HostDlg.cpp:98
 msgid "address (A)"
 msgstr ""
 
-#: HostDlg.cpp:95
+#: HostDlg.cpp:99
 msgid "name (PTR)"
 msgstr ""
 
-#: HostDlg.cpp:96
+#: HostDlg.cpp:100
 msgid "name server (NS)"
 msgstr ""
 
-#: HostDlg.cpp:97
+#: HostDlg.cpp:101
 msgid "mail exchanger (MX)"
 msgstr ""
 
-#: HostDlg.cpp:98
+#: HostDlg.cpp:102
 msgid "alias (CNAME)"
 msgstr ""
 
-#: HostDlg.cpp:99
+#: HostDlg.cpp:103
 msgid "start of authority (SOA)"
 msgstr ""
 
-#: HostDlg.cpp:100
+#: HostDlg.cpp:104
 msgid "any record (ANY)"
 msgstr ""
 
-#: HostDlg.cpp:106
+#: HostDlg.cpp:110
 msgid "Se&arch for:"
 msgstr ""
 
-#: HostDlg.cpp:118 HostDlg.cpp:222
+#: HostDlg.cpp:122 HostDlg.cpp:268
 msgid "default server"
 msgstr ""
 
-#: HostDlg.cpp:127
+#: HostDlg.cpp:131
 msgid "Ser&ver:"
 msgstr ""
