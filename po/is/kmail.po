@@ -1,18 +1,26 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# Thorarinn R. Einarsson <thori@mindspring.com>, 1999
+#
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: kmail 1,31\n"
+"Project-Id-Version: kmail\n"
 "POT-Creation-Date: 1999-01-02 02:11+0100\n"
-"PO-Revision-Date: 1999-01-01 23:39+0100\n"
-"Last-Translator: Thorarinn R. Einarsson <thori@mindspring.com>\n"
-"Translator: Thorarinn R. Einarsson <thori@mindspring.com>\n"
+"PO-Revision-Date: 1999-01-12 19:05+0000\n"
+"Last-Translator: Richard Allen <ra@hp.is>\n"
+"Language-Team: is <kde-isl@mmedia.is>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: ISO-8859-1\n"
 
 #: kmcomposewin.cpp:1514 kmmainwin.cpp:263 kpgp.cpp:546
 msgid ""
 "Sorry, but this feature\n"
 "is still missing"
 msgstr ""
-"Því miður þá er ekki búið\n"
-"að smíða þessa aðgerð."
+"Því miður þá vantar\n"
+"enn þessa aðgerð."
 
 #: kmmainwin.cpp:272
 msgid "New Folder"
@@ -98,23 +106,23 @@ msgstr "Skilaboð í biðröð voru send."
 
 #: kmmainwin.cpp:567
 msgid "Failed to send (some) queued messages."
-msgstr "Það tókst ekki að senda (sum) skilaboð í biðröðinni."
+msgstr "Ekki tókst ekki að senda (sum) skilaboð í biðröðinni."
 
 #: kmmainwin.cpp:694
 msgid "Opening URL..."
-msgstr "Opna slóð (URL)..."
+msgstr "Opna slóð..."
 
 #: kmmainwin.cpp:749
 msgid "Address added to addressbook."
-msgstr "Póstfangi var bætt við í póstfangabókinni."
+msgstr "Netfangi bætt í netfangaskrána."
 
 #: kmmainwin.cpp:761
 msgid "Address copied to clipboard."
-msgstr "Póstfang var afritað yfir á klemmuspjald."
+msgstr "Netfang afritað á klemmuspjaldið."
 
 #: kmmainwin.cpp:766
 msgid "URL copied to clipboard."
-msgstr "Slóð (URL) var afrituð yfir á klemmuspjald."
+msgstr "Slóð afrituð á klemmuspjaldið."
 
 #: kmmainwin.cpp:793
 msgid "Send to..."
@@ -126,19 +134,19 @@ msgstr "Senda svar til..."
 
 #: kmmainwin.cpp:797
 msgid "Forward to..."
-msgstr "Senda áfram til..."
+msgstr "Áframsenda til..."
 
 #: kmmainwin.cpp:800
 msgid "Add to addressbook"
-msgstr "Setja í póstfangabók"
+msgstr "Setja í netfangaskrána"
 
 #: kmmainwin.cpp:802 kmmainwin.cpp:811
 msgid "Copy to clipboard"
-msgstr "Afrita yfir á klemmuspjald"
+msgstr "Afrita á klemmuspjaldið"
 
 #: kmmainwin.cpp:809
 msgid "Open URL..."
-msgstr "Opna slóð (URL)..."
+msgstr "Opna slóð..."
 
 #: kmmainwin.cpp:819 kmmainwin.cpp:936
 msgid "&Reply..."
@@ -150,11 +158,11 @@ msgstr "S&vara öllum..."
 
 #: kmmainwin.cpp:823 kmmainwin.cpp:940
 msgid "&Forward..."
-msgstr "Senda áfra&m..."
+msgstr "Áfra&msenda..."
 
 #: kmmainwin.cpp:826 kmmainwin.cpp:950
 msgid "&Move..."
-msgstr "&Flytja til..."
+msgstr "&Færa..."
 
 #: kmmainwin.cpp:828 kmmainwin.cpp:952
 msgid "&Copy..."
@@ -166,7 +174,7 @@ msgstr "&Nýr ritill"
 
 #: kmcomposewin.cpp:451 kmmainwin.cpp:857
 msgid "New Mailreader"
-msgstr "Nýr &póstlesari"
+msgstr "Nýr &kmail gluggi"
 
 #: kmmainwin.cpp:860
 msgid "Save As..."
@@ -194,7 +202,7 @@ msgstr "Stillingar..."
 
 #: kmcomposewin.cpp:443 kmmainwin.cpp:881
 msgid "&Addressbook..."
-msgstr "&Póstfangabók..."
+msgstr "&Netfangaskrá..."
 
 #: kmmainwin.cpp:883
 msgid "&Filter..."
@@ -230,7 +238,7 @@ msgstr "Óle&sið"
 
 #: kmmainwin.cpp:920
 msgid "Read"
-msgstr "&Lesið"
+msgstr "Lesið"
 
 #: kmmainwin.cpp:921
 msgid "Replied"
@@ -262,7 +270,7 @@ msgstr "Fyrra ólesið"
 
 #: kmmainwin.cpp:943
 msgid "Edi&t..."
-msgstr "&Breyta..."
+msgstr "&Sýsla..."
 
 #: kmmainwin.cpp:946
 msgid "&Set Status"
@@ -358,7 +366,7 @@ msgstr "Eyða bréfi"
 
 #: kmcomposewin.cpp:607 kmmainwin.cpp:1057
 msgid "Open addressbook..."
-msgstr "Opna póstfangabók..."
+msgstr "Opna netfangaskrá..."
 
 #: kmmainwin.cpp:1069
 msgid "Initializing..."
@@ -375,7 +383,7 @@ msgstr "nafnlaust"
 
 #: kmfolderdia.cpp:47
 msgid "Associated with"
-msgstr "Tengt..."
+msgstr "Tengt"
 
 #: kmfolderdia.cpp:57
 msgid "Unassociated Accounts"
@@ -395,11 +403,11 @@ msgstr "Fyrirtæki/félag:"
 
 #: kmsettings.cpp:179
 msgid "Email Address:"
-msgstr "Póstfang:"
+msgstr "Netfang:"
 
 #: kmsettings.cpp:182
 msgid "Reply-To Address:"
-msgstr "Svar-Póstfang:"
+msgstr "Svar-netfang:"
 
 #: kmsettings.cpp:184
 msgid "Signature File:"
@@ -427,7 +435,7 @@ msgstr "SMTP"
 
 #: kmsettings.cpp:232
 msgid "Server:"
-msgstr "Miðlari (Server):"
+msgstr "Þjónn:"
 
 #: kmsettings.cpp:234 kmsettings.cpp:898
 msgid "Port:"
@@ -479,7 +487,7 @@ msgid ""
 "window is opened or kmail is restarted"
 msgstr ""
 "Breytingar á letri taka gildi þegar nýr gluggi\n"
-"er opnaður eða kmail er keyrt upp aftur"
+"er opnaður eða kmail er endurræst"
 
 #: kmsettings.cpp:377
 msgid "Phrases"
@@ -503,7 +511,7 @@ msgstr "Svara öllum:"
 
 #: kmsettings.cpp:396
 msgid "Forward:"
-msgstr "Senda áfram:"
+msgstr "Áframsenda:"
 
 #: kmsettings.cpp:399
 msgid "Indentation:"
@@ -1172,7 +1180,7 @@ msgstr ""
 
 #: main.cpp:335
 msgid "Loading addressbook failed"
-msgstr "Tókst ekki að sækja póstfangabók"
+msgstr "Tókst ekki að sækja netfangaskrá"
 
 #: main.cpp:405
 #, c-format
@@ -1288,7 +1296,7 @@ msgid ""
 msgstr ""
 "Vinsamlega settu inn nauðsynleg atriði\n"
 "í persónupplýsingunum:\n"
-"notandanafn og póstfang"
+"notandanafn og netfang"
 
 #: kmsender.cpp:147
 msgid "You must specify a receiver"
@@ -1745,7 +1753,7 @@ msgid ""
 "Could not open file for writing:\n"
 "%s"
 msgstr ""
-"Gat ekki opnað skrá til að skrifa:\n"
+"Gat ekki opnað skrá til skriftar:\n"
 "%s"
 
 #: kfileio.cpp:163 kmaddrbook.cpp:158
@@ -1768,19 +1776,19 @@ msgstr "KMail Villa"
 
 #: kmaddrbook.cpp:26
 msgid "Storing the addressbook failed!\n"
-msgstr "Vistun á póstfangabókinni mistókst!\n"
+msgstr "Vistun á netfangaskránni mistókst!\n"
 
 #: kmaddrbookdlg.cpp:20
 msgid "Addressbook"
-msgstr "Póstfangabók"
+msgstr "Netfangaskrá"
 
 #: kmaddrbookdlg.cpp:95
 msgid "Addressbook Manager"
-msgstr "Póstfangastjórinn"
+msgstr "Netfangastjórinn"
 
 #: kmaddrbookdlg.cpp:179
 msgid "Storing addressbook failed"
-msgstr "Vistun á póstfangabók mistókst"
+msgstr "Vistun á netfangaskrá mistókst"
 
 #: kmiostatusdlg.cpp:32
 msgid "&Abort"
