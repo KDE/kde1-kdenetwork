@@ -43,6 +43,7 @@ Modem *Modem::modem = 0;
 Modem::Modem() : 
   modemfd(-1), 
   data_mode(false),
+  dataMask(0xFF),
   modem_is_locked(false)
 {
   sn = 0L;
@@ -139,10 +140,22 @@ bool Modem::opentty() {
   tcflush (modemfd, TCIOFLUSH);
 
   if(tcgetattr(modemfd, &tty) < 0){
-    errmsg = i18n("Sorry, the modem is busy.");
-    ::close(modemfd);
-    modemfd = -1;
-    return false;
+    // try if that helps
+    tcsendbreak(modemfd, 0);
+    sleep(1);
+    if(tcgetattr(modemfd, &tty) < 0){
+      errmsg = i18n("Sorry, the modem is busy.");
+      ::close(modemfd);
+      modemfd = -1;
+      return false;
+    }
+    // Ask for success stories since we don't know if the tcsendbreak()
+    // makes any difference. No serious need for a translation.
+    QMessageBox::warning(0L, "Warning", 
+			 "kppp had to resort to an experimental method to get "
+			 "the terminal attributes.\n\nPlease send me "
+			 "(porten@kde.org) a short note so we can make this "
+			 "fix\npermanent in the next release. Thanks.");
   }
 
   memset(&initial_tty,'\0',sizeof(initial_tty));
@@ -213,17 +226,28 @@ bool Modem::closetty() {
   return true;
 }
 
-void Modem::readtty(int) {
-  unsigned char c;
 
-  if(read(modemfd, &c, 1) == 1) {
-    emit charWaiting(c);
-    // if this is a newline or carriage return, disable the notifier
-    // for a short time and then re-enable it (avoid reading too much)
-    if(sn != 0 && (c == '\n' || c == '\r')) {
-      sn->setEnabled(false);
-      //      Debug("QSocketNotifier disabled!");
-      QTimer::singleShot(20, this, SLOT(resumeNotifier()));
+void Modem::setReadMask(unsigned char mask) {
+  // this is a dirty hack to allow connecting to some CompuServe servers.
+  // To read their 7E1 data we'll just strip of the 8th bit by setting the
+  // mask to 0x7F instead of 0xFF.
+  // Configuring the serial port would be the cleaner solution, of course.
+  
+  dataMask = mask;
+}
+
+
+void Modem::readtty(int) {
+  char buffer[200];
+  unsigned char c;
+  int len;
+
+  // read data in chunks of up to 200 bytes
+  while((len = ::read(modemfd, buffer, 200)) > 0) {
+    // split buffer into single characters for further processing
+    for(int i = 0; i < len; i++) {
+      c = buffer[i] & dataMask;
+      emit charWaiting(c);
     }
   }
 }
