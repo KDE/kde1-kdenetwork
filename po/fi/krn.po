@@ -156,7 +156,6 @@ msgid "Find group"
 msgstr "Hae ryhmä"
 
 #: groupdlg.cpp:208
-#, fuzzy
 msgid "(Un)Subscribe"
 msgstr "Lisää/Poista tilaus"
 
@@ -350,21 +349,19 @@ msgstr "Päivitä näyttö"
 
 #: artdlg.cpp:241
 msgid "Current"
-msgstr ""
+msgstr "Nykyinen"
 
 #: artdlg.cpp:243 fontsDlg.cpp:52
 msgid "All"
 msgstr "Kaikki"
 
 #: artdlg.cpp:244
-#, fuzzy
 msgid "Read"
-msgstr "Luetut:"
+msgstr "Luetut"
 
 #: artdlg.cpp:245
-#, fuzzy
 msgid "UnRead"
-msgstr "Lukemattomat:"
+msgstr "Lukemattomat"
 
 #: artdlg.cpp:248
 msgid "Save Article"
@@ -585,18 +582,16 @@ msgid "Standard Font"
 msgstr "Vakiofontti"
 
 #: fontsDlg.cpp:84
-#, fuzzy
 msgid "Standard Font Test"
-msgstr "Vakiofontti"
+msgstr "Vakiofonttitesti"
 
 #: fontsDlg.cpp:86
 msgid "Fixed Font"
 msgstr "Kiinteävälinen fontti"
 
 #: fontsDlg.cpp:91
-#, fuzzy
 msgid "Fixed Font Test"
-msgstr "Kiinteävälinen fontti"
+msgstr "Kiinteävälinen fonttitesti"
 
 #: fontsDlg.cpp:94
 msgid "Background Color"
@@ -680,7 +675,7 @@ msgstr "Yleistä"
 
 #: printdlg.cpp:35
 msgid "Printing System"
-msgstr ""
+msgstr "Tulostussysteemi"
 
 #: printdlg.cpp:37
 msgid "Use HTML Printing"
@@ -691,9 +686,8 @@ msgid "Use Direct Printing"
 msgstr "Käytä suoraa tulostusta"
 
 #: printdlg.cpp:45
-#, fuzzy
 msgid "Direct Printing"
-msgstr "Käytä suoraa tulostusta"
+msgstr "Suora tulostus"
 
 #: printdlg.cpp:48
 msgid "Print using:"

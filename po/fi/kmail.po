@@ -76,13 +76,12 @@ msgstr ""
 "ja kaikki sen alikansiot?"
 
 #: kmmainwin.cpp:478
-#, fuzzy
 msgid "KMail notification!"
-msgstr "KMail muistutus"
+msgstr "KMail muistutus!"
 
 #: kmmainwin.cpp:479
 msgid "Only messages in the outbox folder can be edited!"
-msgstr ""
+msgstr "Vain viestejä outbox:ssa voidaanmuokata!"
 
 #: kmmainwin.cpp:514
 msgid "Message as Plain Text"
@@ -249,9 +248,8 @@ msgid "Previous unread"
 msgstr "Edellinen lukematon"
 
 #: kmmainwin.cpp:940
-#, fuzzy
 msgid "Edi&t..."
-msgstr "Tul&osta..."
+msgstr "&Muokkaa..."
 
 #: kmmainwin.cpp:943
 msgid "&Set Status"
@@ -355,9 +353,8 @@ msgstr "Alustan..."
 
 #: kmfolderdia.cpp:38 kmmsgpartdlg.cpp:62 kmsettings.cpp:176
 #: kmsettings.cpp:869
-#, fuzzy
 msgid "Name:"
-msgstr "Käyttäjätunnus:"
+msgstr "Nimi:"
 
 #: kmcomposewin.cpp:1451 kmfolderdia.cpp:44 kmfolderdia.cpp:120
 msgid "unnamed"
@@ -433,7 +430,7 @@ msgstr "Profiilit: (lisää ainakin yksi profiili!)"
 
 #: kmcomposewin.cpp:135 kmsettings.cpp:269
 msgid "Name"
-msgstr ""
+msgstr "Nimi"
 
 #: kmcomposewin.cpp:138 kmsettings.cpp:270
 msgid "Type"
@@ -569,11 +566,11 @@ msgstr "tyhjennä roskakori lopetetettaessa"
 
 #: kmsettings.cpp:541
 msgid "Send Mail in outbox Folder on Check"
-msgstr ""
+msgstr "Lähetä posti outbox:ta tarkastettaessa"
 
 #: kmsettings.cpp:556
 msgid "Misc"
-msgstr ""
+msgstr "Sekalaista"
 
 #: kmsettings.cpp:580
 msgid "Message Body Font"
@@ -600,9 +597,8 @@ msgid "Choose Signature File"
 msgstr "Valitse allekirjoitustiedosto"
 
 #: kmsettings.cpp:861
-#, fuzzy
 msgid "Type:"
-msgstr "Tyyppi"
+msgstr "Tyyppi:"
 
 #: kmsettings.cpp:874
 msgid "Local Account"
@@ -630,7 +626,7 @@ msgstr "Tuhoa posti palvelimelta"
 
 #: kmsettings.cpp:907
 msgid "Enable interval Mail checking"
-msgstr ""
+msgstr "Käytä tasavälistä postintarkistusta"
 
 #: kmsettings.cpp:921
 msgid "Store new mail in account:"
@@ -665,9 +661,8 @@ msgid "Subject"
 msgstr "Aihe"
 
 #: kmheaders.cpp:42
-#, fuzzy
 msgid "Date"
-msgstr "Päivä:"
+msgstr "Päivä"
 
 #: kmheaders.cpp:187
 #, c-format
@@ -730,7 +725,7 @@ msgstr "KMail Kirjoitusohjelma"
 
 #: kmcomposewin.cpp:136
 msgid "Size"
-msgstr ""
+msgstr "Koko"
 
 #: kmcomposewin.cpp:137
 msgid "Encoding"
@@ -877,9 +872,8 @@ msgid "&Attach"
 msgstr "&Liitä"
 
 #: kmcomposewin.cpp:547
-#, fuzzy
 msgid "Send message"
-msgstr "Viestin lähetys: "
+msgstr "Lähetä viesti"
 
 #: kmcomposewin.cpp:571
 msgid "Cut selection"
@@ -975,7 +969,6 @@ msgid "Subject:"
 msgstr "Aihe:"
 
 #: kmcomposewin.cpp:1473
-#, fuzzy
 msgid "Date:"
 msgstr "Päivä:"
 
@@ -1156,11 +1149,8 @@ msgid "Unknown command line option: %s"
 msgstr "Tuntematon komentorivioptio: %s"
 
 #: kmacctlocal.cpp:76
-#, fuzzy
 msgid "Cannot open file:"
-msgstr ""
-"En voi avata tiedostoa:\n"
-"%s"
+msgstr "En voi avata tiedostoa:"
 
 #: kmacctlocal.cpp:105
 #, c-format
@@ -1490,18 +1480,19 @@ msgid "Bad pass Phrase; couldn't decrypt"
 msgstr "Väärä salasana; en voi purkaa"
 
 #: kpgp.cpp:836
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not find public keys matching the\n"
 "userid(s) %s. These persons won't be able\n"
 "to read the message."
 msgstr ""
-"julkista avainta %s ei löydy.\n"
-"Tämä käyttäjä ei voi purkaa salattuja viestejä."
+"En löydä julkista avainta joka liittyy\n"
+"käyttäjätunnuskeen %s. Nämä henkilöt eivät voi\n"
+"lukea viestiä."
 
 #: kpgp.cpp:848
 msgid "Could not find public keys for some persons.\n"
-msgstr ""
+msgstr "En löytänyt julkisia avaimia joillekin henkilöille.\n"
 
 #: kpgp.cpp:861
 msgid "Bad pass Phrase; couldn't sign"
