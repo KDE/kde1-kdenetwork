@@ -146,10 +146,8 @@ void checkConf()
     char *username = getpwuid(getuid())->pw_name;
     char hostname[1024];
     gethostname(hostname,1023);
-    char domainname[1024];
-    getdomainname(domainname,1023);
     char mailaddr[1024];
-    sprintf (mailaddr,"%s@%s.%s",username,hostname,domainname);
+    sprintf (mailaddr,"%s@%s",username,hostname);
     char *realname = getpwuid(getuid())->pw_gecos;
 
     Asker ask;
