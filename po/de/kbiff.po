@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kbiff\n"
 "POT-Creation-Date: 1999-06-05 11:50-0700\n"
-"PO-Revision-Date: 1999-04-22 08:31+MET\n"
+"PO-Revision-Date: 1999-06-06 15:33+MET\n"
 "Last-Translator: Matthias Kiefer <matthias.kiefer@gmx.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -55,7 +55,7 @@ msgstr "Postfach: %s"
 # This is on a button.  It launches the user's mail client
 #: notify.cpp:73
 msgid "Mailer"
-msgstr ""
+msgstr "Emailprogramm"
 
 #: setupdlg.cpp:83
 msgid "KBiff Setup"
@@ -92,12 +92,12 @@ msgstr "Neues Profil"
 #: setupdlg.cpp:423
 #, c-format
 msgid "Rename Profile: %s"
-msgstr "Profil umbennen: %s"
+msgstr "Profil umbenennen: %s"
 
 #: setupdlg.cpp:463
 #, c-format
 msgid "Delete Profile: %s"
-msgstr "Lösche Profil: %s"
+msgstr "Profil löschen: %s"
 
 #: setupdlg.cpp:464
 msgid "Are you sure you wish to delete this profile?\n"
@@ -109,7 +109,7 @@ msgstr "Prüfintervall (sec):"
 
 #: setupdlg.cpp:529
 msgid "Mail client:"
-msgstr "EMail-Programm:"
+msgstr "Emailprogramm:"
 
 #: setupdlg.cpp:542
 msgid "Dock in panel"
@@ -117,7 +117,7 @@ msgstr "An Kontrolleiste andocken"
 
 #: setupdlg.cpp:547
 msgid "Use session management"
-msgstr "Benutze Sitzungs-Management"
+msgstr "Benutze Sitzungsmanagement"
 
 #: setupdlg.cpp:552
 msgid "Icons:"
@@ -139,7 +139,7 @@ msgstr "Neue Mail:"
 # to a remote server
 #: setupdlg.cpp:599
 msgid "No Conn.:"
-msgstr ""
+msgstr "Keine Verb.:"
 
 #: setupdlg.cpp:756
 msgid "Run Command"
@@ -155,7 +155,7 @@ msgstr "Klang abspielen"
 
 #: setupdlg.cpp:789
 msgid "System Beep"
-msgstr "System-Ton"
+msgstr "Signalton"
 
 #: setupdlg.cpp:794
 msgid "Notify"
@@ -165,7 +165,7 @@ msgstr "Benachrichtigen"
 # number of new mail whenever the user puts the cursor of a KBiff icon.
 #: setupdlg.cpp:798
 msgid "Floating Status"
-msgstr ""
+msgstr "Dynamische Statusanzeige"
 
 #: setupdlg.cpp:948
 msgid "Advanced Options"
@@ -192,7 +192,7 @@ msgstr "Verbindung halten"
 # given command... it will receive the response as an event, later.
 #: setupdlg.cpp:974
 msgid "Asynchronous"
-msgstr ""
+msgstr "Asynchron"
 
 #: setupdlg.cpp:1123 setupdlg.cpp:1152
 msgid "Mailbox:"
@@ -257,6 +257,5 @@ msgstr "Neuer Name"
 
 # This displays the number of new messages for a given mailbox
 #: status.cpp:34
-#, fuzzy
 msgid "New"
 msgstr "Neu"
