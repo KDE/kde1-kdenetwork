@@ -2,7 +2,7 @@
 // File:       smtp.cpp
 // Contents:   Definitions for DwSmtpClient
 // Maintainer: Doug Sauder <dwsauder@fwb.gulf.net>
-// WWW:        http://www.fwb.gulf.net/~dwsauder/<<mimepp.html
+// WWW:        http://www.fwb.gulf.net/~dwsauder/mimepp.html
 // $Revision$
 // $Date$
 //

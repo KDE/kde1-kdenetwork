@@ -2,7 +2,7 @@
 // File:       token.cpp
 // Contents:   Definitions for DwTokenizer, DwRfc822Tokenizer
 // Maintainer: Doug Sauder <dwsauder@fwb.gulf.net>
-// WWW:        http://www.fwb.gulf.net/~dwsauder/<<mimepp.html
+// WWW:        http://www.fwb.gulf.net/~dwsauder/mimepp.html
 // $Revision$
 // $Date$
 //

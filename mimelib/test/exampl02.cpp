@@ -2,7 +2,7 @@
 // File:       exampl02.cpp
 // Contents:   Source code for Example 2 -- Parsing a simple message
 // Maintainer: Doug Sauder <dwsauder@fwb.gulf.net>
-// WWW:        http://www.fwb.gulf.net/~dwsauder/<<mimepp.html
+// WWW:        http://www.fwb.gulf.net/~dwsauder/mimepp.html
 // $Revision$
 // $Date$
 //

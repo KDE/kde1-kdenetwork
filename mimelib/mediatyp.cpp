@@ -2,7 +2,7 @@
 // File:       mediatyp.cpp
 // Contents:   Definitions for DwMediaType
 // Maintainer: Doug Sauder <dwsauder@fwb.gulf.net>
-// WWW:        http://www.fwb.gulf.net/~dwsauder/<<mimepp.html
+// WWW:        http://www.fwb.gulf.net/~dwsauder/mimepp.html
 // $Revision$
 // $Date$
 //

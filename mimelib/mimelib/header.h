@@ -2,7 +2,7 @@
 // File:       header.h
 // Contents:   Declarations for DwHeader
 // Maintainer: Doug Sauder <dwsauder@fwb.gulf.net>
-// WWW:        http://www.fwb.gulf.net/~dwsauder/<<mimepp.html
+// WWW:        http://www.fwb.gulf.net/~dwsauder/mimepp.html
 // $Revision$
 // $Date$
 //
