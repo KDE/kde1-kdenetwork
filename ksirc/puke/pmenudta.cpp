@@ -37,7 +37,10 @@ bool PMenuData::menuMessageHandler(int fd, PukeMessage *pm)
   case PUKE_MENUDATA_INSERT_TEXT:
     {
       QPopupMenu *widget = (QPopupMenu *) child->widget();
-      id = widget->insertItem(pm->cArg, (QObject *) NULL, NULL, pm->iArg);
+      id = widget->insertItem(pm->cArg);
+      if(pm->iArg > 0){
+          widget->setAccel(pm->iArg, id);
+      }
 
       pmRet.iCommand = PUKE_MENUDATA_INSERT_TEXT_ACK;
       pmRet.iWinId = pm->iWinId;
@@ -49,9 +52,12 @@ bool PMenuData::menuMessageHandler(int fd, PukeMessage *pm)
   case PUKE_MENUDATA_INSERT_PIXMAP:
     {
       QPopupMenu *widget = (QPopupMenu *) child->widget();
-      id = widget->insertItem(QPixmap(pm->cArg), (QObject *) NULL, NULL, pm->iArg);
+      id = widget->insertItem(QPixmap(pm->cArg));
+      if(pm->iArg > 0){
+          widget->setAccel(pm->iArg, id);
+      }
     
-      pmRet.iCommand = PUKE_MENUDATA_INSERT_TEXT_ACK;
+      pmRet.iCommand = PUKE_MENUDATA_INSERT_PIXMAP_ACK;
       pmRet.iWinId = pm->iWinId;
       pmRet.iArg = id;
       pmRet.cArg[0] = 0;

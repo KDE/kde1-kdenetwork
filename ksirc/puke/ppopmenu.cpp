@@ -51,6 +51,20 @@ void PPopupMenu::messageHandler(int fd, PukeMessage *pm)
     emit outputMessage(fd, &pmRet);
     break;
     */
+  case PUKE_POPUPMENU_POPUP_CURRENT:
+    if(widget() == 0){
+      debug("PPopupMenu: No Widget set");
+      return;
+    }
+    
+    widget()->popup(widget()->mapToGlobal(widget()->pos()), 0);
+    
+    pmRet.iCommand = - pm->iCommand;
+    pmRet.iWinId = pm->iWinId;
+    pmRet.iArg = 1;
+    emit outputMessage(fd, &pmRet);
+    break;
+
   default:
     if(pmd->menuMessageHandler(fd, pm) == FALSE) // Call pmd's even filter
       PTableView::messageHandler(fd, pm);

@@ -704,7 +704,19 @@
 // iWinId: window id
 // iArg: item id
 // cArg: undef
-#define  PUKE_POPUPMENU_ACTIVATED_ACK -1805
+#define PUKE_POPUPMENU_ACTIVATED_ACK -1805
+
+// Desc: Popup to current cursor position
+// iWinId: menu id
+// iArg: undef
+// cArg: uidef
+#define PUKE_POPUPMENU_POPUP_CURRENT 1810
+
+// Desc: Ack for popup
+// iWinId: window id
+// iArg: 1 for success
+// cArg: undef
+#define PUKE_POPUPMENU_POPUP_CURRENT_ACK -1810
 
 
 

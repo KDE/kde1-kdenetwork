@@ -869,7 +869,7 @@ void KSircTopLevel::resizeEvent(QResizeEvent *e) /*FOLD00*/
   // The ListBox will get an implicit size change
 
   // Delete QPopup menus
-  delete file;
+  //delete file;
 }
 
 void KSircTopLevel::gotFocus() /*fold00*/

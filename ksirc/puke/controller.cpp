@@ -402,7 +402,7 @@ void PukeController::hdlrPukeFetchWidget(int fd, PukeMessage *pm)
   iaArg = (unsigned short int *) &pm->iArg;
   int iParent = iaArg[1];
   int iType = iaArg[0];
-  bool bRegex = iParent > 0 ? TRUE : FALSE;
+//  bool bRegex = iParent > 0 ? TRUE : FALSE;
 
   char rand[50],name[50];
   sscanf(pm->cArg, "%s\t%s", rand, name);
