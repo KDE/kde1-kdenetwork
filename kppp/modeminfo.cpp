@@ -51,8 +51,7 @@ ModemTransfer::ModemTransfer(QWidget *parent=0, const char *name=0)
   
   progressBar = new KProgress(0, 8, 0, KProgress::Horizontal, this, "bar");
   progressBar->setBarStyle(KProgress::Blocked);
-  //progressBar->setFixedHeight(progressBar->sizeHint().height());
-
+  
   statusBar = new QLabel(this,"sBar");
   statusBar->setFrameStyle(QFrame::Panel|QFrame::Sunken);
   statusBar->setAlignment(AlignCenter);
@@ -65,11 +64,11 @@ ModemTransfer::ModemTransfer(QWidget *parent=0, const char *name=0)
   statusBar->setText(klocale->
 		     translate("Sorry, can't create modem lock file."));
   statusBar->setMinimumWidth((statusBar->sizeHint().width() * 12) / 10);
-  MIN_HEIGHT(statusBar);
+  statusBar->setMinimumHeight(statusBar->sizeHint().height() + 4);
 
   // set original text
   statusBar->setText(klocale->translate("Looking for Modem ..."));
-  progressBar->setFixedHeight(statusBar->sizeHint().height());
+  progressBar->setFixedHeight(statusBar->minimumSize().height());
   tl->addWidget(progressBar);
   tl->addWidget(statusBar);
 

@@ -278,49 +278,58 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
   fline1->setFixedHeight(3);
   tl->addWidget(fline1);
 
-  QGridLayout *l1 = new QGridLayout(3, 2);
+  QGridLayout *l1 = new QGridLayout(3, 4);
   tl->addLayout(l1);
+  l1->addColSpacing(0, 10);
+  l1->addColSpacing(3, 10);
+  l1->setColStretch(1, 3);
+  l1->setColStretch(2, 4);
 
   label1 = new QLabel(this,"lable1");
   label1->setText(klocale->translate("Connect to: "));
   MIN_SIZE(label1);
-  l1->addWidget(label1, 0, 0);
+  l1->addWidget(label1, 0, 1);
 
   connectto_c = new QComboBox(true,this, "connectto_c");
   connect(connectto_c, SIGNAL(activated(int)), 
 	  SLOT(newdefaultaccount(int)));
   MIN_SIZE(connectto_c);
-  l1->addWidget(connectto_c, 0, 1);
+  l1->addWidget(connectto_c, 0, 2);
 
   ID_Label = new QLabel(this,"lableid");
   ID_Label->setText(klocale->translate("Login ID:"));
   MIN_SIZE(ID_Label);
-  l1->addWidget(ID_Label, 1, 0);
+  l1->addWidget(ID_Label, 1, 1);
 
   ID_Edit = new QLineEdit(this,"idedit");
   ID_Edit->setText(gpppdata.Id());
   MIN_WIDTH(ID_Edit);
   FIXED_HEIGHT(ID_Edit);
-  l1->addWidget(ID_Edit, 1, 1);
+  l1->addWidget(ID_Edit, 1, 2);
 
   PW_Label = new QLabel(this,"lablepw");
   PW_Label->setText(klocale->translate("Password:"));
   MIN_SIZE(PW_Label);
-  l1->addWidget(PW_Label, 2, 0);
+  l1->addWidget(PW_Label, 2, 1);
 
   PW_Edit= new QLineEdit(this,"pwedit");
   PW_Edit->setGeometry(120, 97,189,24);
   PW_Edit->setEchoMode(QLineEdit::Password);
   MIN_WIDTH(PW_Edit);
   FIXED_HEIGHT(PW_Edit);
-  l1->addWidget(PW_Edit, 2, 1);
+  l1->addWidget(PW_Edit, 2, 2);
 
+  QHBoxLayout *l3 = new QHBoxLayout;
+  tl->addSpacing(5);
+  tl->addLayout(l3);
+  tl->addSpacing(5);
+  l3->addSpacing(10);
   log = new QCheckBox(klocale->translate("Show Log Window"), this,"log");
   connect(log, SIGNAL(toggled(bool)), 
 	  this, SLOT(log_window_toggled(bool)));
   log->setChecked(gpppdata.get_show_log_window());
   MIN_SIZE(log);
-  tl->addWidget(log);
+  l3->addWidget(log);
 
   fline = new QFrame(this,"line");
   fline->setFrameStyle(QFrame::HLine |QFrame::Sunken);
@@ -330,30 +339,45 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
   QHBoxLayout *l2 = new QHBoxLayout;
   tl->addLayout(l2);
 
+  int minw = 0;
   quit_b = new QPushButton(klocale->translate("Quit"), this, "quit");
   connect( quit_b, SIGNAL(clicked()), SLOT(quitbutton()));
-  MIN_SIZE(quit_b);
-  l2->addWidget(quit_b);
+  MIN_HEIGHT(quit_b);
+  if(quit_b->sizeHint().width() > minw)
+    minw = quit_b->sizeHint().width();
 
   setup_b = new QPushButton(klocale->translate("Setup"), this, "setup");
   connect( setup_b, SIGNAL(clicked()), SLOT(expandbutton()));
-  MIN_SIZE(setup_b);
-  l2->addWidget(setup_b);
+  MIN_HEIGHT(setup_b);
+  if(setup_b->sizeHint().width() > minw)
+    minw = setup_b->sizeHint().width();
 
   if (!config) 
     setup_b->setEnabled(false);
 
   help_b = new QPushButton(klocale->translate("Help"), this, "help");
   connect( help_b, SIGNAL(clicked()), SLOT(helpbutton()));
-  MIN_SIZE(help_b);
-  l2->addWidget(help_b);
-  l2->addSpacing(20);
+  MIN_HEIGHT(help_b);
+  if(help_b->sizeHint().width() > minw)
+    minw = help_b->sizeHint().width();
 
   connect_b = new QPushButton(klocale->translate("Connect"), 
 			      this, "connect_b");
   connect_b->setFocus();
   connect(connect_b, SIGNAL(clicked()), SLOT(connectbutton()));
-  MIN_SIZE(connect_b);
+  MIN_HEIGHT(connect_b);
+  if(connect_b->sizeHint().width() > minw)
+    minw = connect_b->sizeHint().width();
+
+  quit_b->setMinimumWidth(minw);
+  setup_b->setMinimumWidth(minw);
+  help_b->setMinimumWidth(minw);
+  connect_b->setMinimumWidth(minw);
+
+  l2->addWidget(quit_b);
+  l2->addWidget(setup_b);
+  l2->addWidget(help_b);
+  l2->addSpacing(20);
   l2->addWidget(connect_b);
 
   tl->freeze();

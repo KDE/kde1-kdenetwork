@@ -90,7 +90,11 @@ void ConWindow::accounting(bool on) {
     delete tl;
 
   // add layout now  
-  tl = new QHBoxLayout(this, 10, 10);
+  QVBoxLayout *tl1 = new QVBoxLayout(this, 10, 10);
+  tl1->addSpacing(5);
+  QHBoxLayout *tl = new QHBoxLayout;
+  tl1->addLayout(tl);
+  tl->addSpacing(20);
   QGridLayout *l1;
   if(on)
     l1 = new QGridLayout(4, 2, 5);
@@ -106,12 +110,21 @@ void ConWindow::accounting(bool on) {
   MIN_SIZE(total_bill_l);
   MIN_SIZE(info2);
   MIN_SIZE(timelabel2);
-  MIN_SIZE(session_bill);
 
-  // make sure that there's enough space for the total bill
+  info2->setAlignment(AlignRight);
+  timelabel2->setAlignment(AlignRight);
+  session_bill->setAlignment(AlignRight);
+  total_bill->setAlignment(AlignRight);
+
+  // make sure that there's enough space for the bills
+  QString s1 = session_bill->text();
+  QString s2 = total_bill->text();
+  session_bill->setText("888888.88 XXX");
   total_bill->setText("888888.88 XXX");
+  MIN_SIZE(session_bill);
   MIN_SIZE(total_bill);
-  total_bill->setText("");
+  session_bill->setText(s1.data());
+  total_bill->setText(s2.data());
 
   l1->addWidget(info1, 0, 0);
   l1->addWidget(info2, 0, 1);
@@ -133,9 +146,10 @@ void ConWindow::accounting(bool on) {
     total_bill->hide();
   }
 
-  QVBoxLayout *l2 = new QVBoxLayout;
+  tl->addSpacing(10);
+  QVBoxLayout *l2 = new QVBoxLayout(5);
   tl->addLayout(l2);
-  l2->addStretch(1);
+  l2->addStretch(1);  
   MIN_WIDTH(cancelbutton);
   FIXED_HEIGHT(cancelbutton);
   MIN_WIDTH(statsbutton);
@@ -144,7 +158,8 @@ void ConWindow::accounting(bool on) {
   l2->addWidget(cancelbutton);
   l2->addStretch(1);
 
-  tl->freeze();
+  tl1->addSpacing(5); 
+  tl1->freeze();
   setGeometry((QApplication::desktop()->width() - width()) / 2,
 	      (QApplication::desktop()->height() - height())/2,
 	      width(),

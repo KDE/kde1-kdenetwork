@@ -29,12 +29,14 @@
 
 
 #include <qpainter.h>
-#include <qlined.h>
+#include <krestrictedline.h>
 
-class IPLineEdit : public QLineEdit {
+class IPLineEdit : public KRestrictedLine {
 public:
   IPLineEdit( QWidget *parent=0, const char *name=0 );
   ~IPLineEdit() {}
+
+  virtual QSize sizeHint() const;
 };
 
 #endif

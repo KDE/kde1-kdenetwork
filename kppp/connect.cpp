@@ -87,7 +87,7 @@ ConnectWidget::ConnectWidget(QWidget *parent, const char *name)
   messg->setFrameStyle(QFrame::Panel|QFrame::Sunken);
   messg->setAlignment(AlignCenter);
   messg->setText(klocale->translate("Sorry, can't create modem lock file."));  
-  MIN_HEIGHT(messg);
+  messg->setMinimumHeight(messg->sizeHint().height() + 4);
   messg->setMinimumWidth((messg->sizeHint().width() * 12) / 10);
   tl->addWidget(messg);
   messg->setText(klocale->translate("Looking for Modem ..."));
@@ -96,15 +96,21 @@ ConnectWidget::ConnectWidget(QWidget *parent, const char *name)
   QHBoxLayout *l1 = new QHBoxLayout(10);
   tl->addLayout(l1);
   l1->addStretch(1);
+  
   debug = new QPushButton(klocale->translate("Log"), this);
-  FIXED_SIZE(debug);
+  FIXED_HEIGHT(debug);
   connect(debug, SIGNAL(clicked()), SLOT(debugbutton()));
-  l1->addWidget(debug);
 
   cancel = new QPushButton(klocale->translate("Cancel"), this);
-  FIXED_SIZE(cancel);
+  FIXED_HEIGHT(cancel);
   cancel->setFocus();
   connect(cancel, SIGNAL(clicked()), SLOT(cancelbutton()));
+
+  int maxw = MAX(cancel->sizeHint().width(),
+		 debug->sizeHint().width());  
+  debug->setFixedWidth(maxw);
+  cancel->setFixedWidth(maxw);
+  l1->addWidget(debug);
   l1->addWidget(cancel);
 
   tl->freeze();

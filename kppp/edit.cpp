@@ -175,46 +175,36 @@ IPWidget::IPWidget( QWidget *parent, const char *name )
 {
 
   box1 = new QGroupBox(this,"box1");
-  box1->setGeometry(10,10,345,310);
   box1->setTitle(klocale->translate("IP Setup"));
 
   box = new QGroupBox(this,"box");
-  box->setGeometry(50,87,270,120);
-  box->setTitle("          ");
 
   ipaddress_l = new IPLineEdit(this, "ipaddress_l");
-  ipaddress_l->setGeometry(160, 120, 110, 25);
-  ipaddress_l->setMaxLength(IPADDR_SIZE);
 
   ipaddress_label = new QLabel(this);
-  ipaddress_label->setGeometry(70,120,80,30);
   ipaddress_label->setText(klocale->translate("IP Address:"));
 
   subnetmask_l = new IPLineEdit(this, "subnetmask_l");
-  subnetmask_l->setGeometry(160, 150, 110, 25);
-  subnetmask_l->setMaxLength(IPADDR_SIZE);
 
   sub_label = new QLabel(this);
-  sub_label->setGeometry(70,150,80,30);
   sub_label->setText(klocale->translate("Subnet Mask:"));
 
   rb = new QButtonGroup(this, "rb");
-  rb->setFrameStyle(QFrame::NoFrame);
-  rb->setGeometry(75, 40, 135, 70);
-  connect(rb, SIGNAL(clicked(int)), SLOT(hitIPSelect(int)));
+  rb->hide();
+  connect(rb, SIGNAL(clicked(int)), 
+	  SLOT(hitIPSelect(int)));  
 
-  dynamicadd_rb = new QRadioButton(rb, "dynamicadd_rb");
+  dynamicadd_rb = new QRadioButton(this, "dynamicadd_rb");
   dynamicadd_rb->setText(klocale->translate("Dynamic IP Address"));
-  dynamicadd_rb->setGeometry(0, 0, 200, 30);
 
-  staticadd_rb = new QRadioButton(rb, "dynamicadd_rb");
+  staticadd_rb = new QRadioButton(this, "staticadd_rb");
   staticadd_rb->setText(klocale->translate("Static IP Address"));
-  staticadd_rb->setGeometry(0, 40, 200, 30);
+  rb->insert(dynamicadd_rb, 0);
+  rb->insert(staticadd_rb, 1);
 
   autoname=new QCheckBox(klocale->translate("Auto-configure hostname from this IP"),
 	this,"autoname");
   autoname->adjustSize();
-  autoname->setGeometry(75,260,250,autoname->height());
   autoname->setChecked(gpppdata.autoname());
   connect(autoname,SIGNAL(toggled(bool)),this,SLOT(autoname_t(bool)));
 
@@ -242,6 +232,49 @@ IPWidget::IPWidget( QWidget *parent, const char *name )
 
 void IPWidget::resizeEvent(QResizeEvent *) {
   box1->setGeometry(10, 10, width() - 20, height() - 20);
+
+  // calculate the best with for the frame
+  int minw = MAX(ipaddress_label->sizeHint().width() + 6,
+		 sub_label->sizeHint().width() + 6) +
+    MAX(ipaddress_l->sizeHint().width(),
+	subnetmask_l->sizeHint().width()) + 10 + 20;
+
+  int minh = 2 * ipaddress_l->sizeHint().height() + 
+    fontMetrics().lineSpacing() + 20;
+
+  // resize the frame
+  int box_x = (width() - minw)/2;
+  int box_y = (height() - minh)/2 - 20;
+  box->setGeometry(box_x, box_y, minw, minh);
+
+  // now move the lineedits into the frame
+  ipaddress_l->resize(ipaddress_l->sizeHint());
+  ipaddress_l->move(box->geometry().right() - ipaddress_l->width() - 15,
+		    box_y + fontMetrics().lineSpacing()/2 + 10);
+  subnetmask_l->resize(ipaddress_l->sizeHint());
+  subnetmask_l->move(ipaddress_l->geometry().left(),
+		     ipaddress_l->geometry().bottom() + 10);
+
+  // the labels
+  ipaddress_label->resize(ipaddress_label->sizeHint().width(),
+			  ipaddress_l->height());
+  ipaddress_label->move(box_x + 15, ipaddress_l->geometry().top());		
+  sub_label->resize(sub_label->sizeHint().width(),
+		    ipaddress_l->height());
+  sub_label->move(box_x + 15, subnetmask_l->geometry().top());
+
+  // move the radiobuttons
+  staticadd_rb->resize(staticadd_rb->sizeHint());
+  dynamicadd_rb->resize(dynamicadd_rb->sizeHint());  
+  staticadd_rb->move(box_x + 25, 
+		     box_y - staticadd_rb->sizeHint().height()/2);
+  dynamicadd_rb->move(box_x + 25,
+		      staticadd_rb->geometry().top() - 
+		      dynamicadd_rb->sizeHint().height() - 20);
+
+  autoname->resize(autoname->sizeHint());
+  autoname->move((width() - autoname->width())/2,
+		 (box->geometry().bottom() + height())/2);
 }
 
 void IPWidget::autoname_t(bool on){
@@ -318,7 +351,6 @@ DNSWidget::DNSWidget( QWidget *parent, const char *name )
   QHBoxLayout *l110 = new QHBoxLayout;
   l11->addLayout(l110, 2, 1);
   dnsipaddr = new IPLineEdit(this, "dnsipaddr");
-  dnsipaddr->setMaxLength(IPADDR_SIZE);
   connect(dnsipaddr, SIGNAL(returnPressed()), SLOT(adddns()));
   FIXED_HEIGHT(dnsipaddr);
   l110->addWidget(dnsipaddr, 4);
@@ -403,39 +435,30 @@ GatewayWidget::GatewayWidget( QWidget *parent, const char *name )
   : QWidget(parent, name)
 {
   box1 = new QGroupBox(this,"box1");
-  box1->setGeometry(10,10,345,310);
   box1->setTitle(klocale->translate("Gateway Setup"));
 
   box = new QGroupBox(this,"box");
-  box->setGeometry(50,85,270,120);
-  box->setTitle("            ");
 
   rb = new QButtonGroup(this, "rb");
-  rb->setFrameStyle(QFrame::NoFrame);
-  rb->setGeometry(80, 40, 135, 60);
+  rb->hide();
   connect(rb, SIGNAL(clicked(int)), SLOT(hitGatewaySelect(int)));
 
-  defaultgateway = new QRadioButton(rb, "defaultgateway");
-  defaultgateway->setGeometry(0, 0, 135, 20);
+  defaultgateway = new QRadioButton(this, "defaultgateway");
   defaultgateway->setText(klocale->translate("Default Gateway"));
+  rb->insert(defaultgateway, 0);
 
-  staticgateway = new QRadioButton(rb, "staticgateway");
-  staticgateway->setGeometry(0, 40, 135, 20);
+  staticgateway = new QRadioButton(this, "staticgateway");
   staticgateway->setText(klocale->translate("Static Gateway"));
+  rb->insert(staticgateway, 1);
 
   gatewayaddr = new IPLineEdit(this, "gatewayaddr");
-  gatewayaddr->setGeometry(160, 130, 110, 25);
-  gatewayaddr->setMaxLength(IPADDR_SIZE);
-
 
   gate_label = new QLabel(this, "label");
-  gate_label->setGeometry(70,125,70,30);
   gate_label->setText(klocale->translate("Gateway\nIP Address:"));
 
   defaultroute=new QCheckBox(klocale->translate("Assign the Default Route to this Gateway"),
 	this,"defaultroute");
   defaultroute->adjustSize();
-  defaultroute->setGeometry(55,260,250,defaultroute->height());
   defaultroute->setChecked(gpppdata.defaultroute());
   connect(defaultroute,SIGNAL(toggled(bool)),this,SLOT(defaultroute_t(bool)));
 
@@ -461,6 +484,42 @@ GatewayWidget::GatewayWidget( QWidget *parent, const char *name )
 
 void GatewayWidget::resizeEvent(QResizeEvent *) {
   box1->setGeometry(10, 10, width() - 20, height() - 20);
+
+  // calculate the best with for the frame
+  int minw = gate_label->sizeHint().width() + 6 + 
+    gatewayaddr->sizeHint().width() + 40;
+
+  int minh = 
+    MAX(gatewayaddr->sizeHint().height(),
+	gate_label->sizeHint().height()) +
+	fontMetrics().lineSpacing() + 20;
+
+  // resize the frame
+  int box_x = (width() - minw)/2;
+  int box_y = (height() - minh)/2 - 20;
+  box->setGeometry(box_x, box_y, minw, minh);
+
+  // now move the lineedits into the frame
+  gatewayaddr->resize(gatewayaddr->sizeHint());
+  gatewayaddr->move(box->geometry().right() - gatewayaddr->width() - 15,
+		    box_y + fontMetrics().lineSpacing()/2 + 10);
+
+  // the labels
+  gate_label->resize(gate_label->sizeHint());
+  gate_label->move(box_x + 15, gatewayaddr->geometry().top());		
+
+  // move the radiobuttons
+  staticgateway->resize(staticgateway->sizeHint());
+  defaultgateway->resize(defaultgateway->sizeHint());  
+  staticgateway->move(box_x + 25, 
+		     box_y - staticgateway->sizeHint().height()/2);
+  defaultgateway->move(box_x + 25,
+		      staticgateway->geometry().top() - 
+		      defaultgateway->sizeHint().height() - 20);
+
+  defaultroute->resize(defaultroute->sizeHint());
+  defaultroute->move((width() - defaultroute->width())/2,
+		 (box->geometry().bottom() + height())/2);
 }
 
 void GatewayWidget::defaultroute_t(bool on){

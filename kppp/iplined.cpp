@@ -27,6 +27,16 @@
 #include "iplined.h"
 
 IPLineEdit::IPLineEdit( QWidget *parent, const char *name )
-  : QLineEdit(parent, name)
+  : KRestrictedLine(parent, name, "0123456789.")
 {
+  setMaxLength(3 * 4 + 1 * 3);
+}
+
+QSize IPLineEdit::sizeHint() const {
+  QFontMetrics fm = fontMetrics();
+  
+  QSize s;
+  s.setHeight(QLineEdit::sizeHint().height());
+  s.setWidth(fm.boundingRect("888.888.888.888XX").width());
+  return s;
 }
