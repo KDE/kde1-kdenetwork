@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp 0.9.6\n"
-"POT-Creation-Date: 1998-03-09 00:28+0100\n"
+"POT-Creation-Date: 1998-03-19 22:13+0100\n"
 "PO-Revision-Date: 1998-03-12 19:37 MET\n"
 "Last-Translator: Miroslav Flídr <flidr@kky.zcu.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -114,7 +114,7 @@ msgstr ""
 msgid "Login script has unbalanced Loop Start/End"
 msgstr "Pøihla¹ovací skript má nevyvá¾enou smyèku start/konec"
 
-#: connect.cpp:98 connect.cpp:200 main.cpp:769
+#: connect.cpp:98 connect.cpp:200 main.cpp:777
 msgid "Connecting to: "
 msgstr "Pøipojování k: "
 
@@ -127,7 +127,7 @@ msgstr "Lituji, není mo¾né vytvoøit soubor pro zamknutí modemu."
 msgid "Looking for Modem ..."
 msgstr "Hledání modemu ..."
 
-#: connect.cpp:121 debug.cpp:86 main.cpp:782
+#: connect.cpp:121 debug.cpp:86 main.cpp:790
 msgid "Log"
 msgstr "Záznam"
 
@@ -143,147 +143,147 @@ msgstr "Modem pøipraven"
 msgid "Initializing Modem..."
 msgstr "Inicializace modemu ..."
 
-#: connect.cpp:278
+#: connect.cpp:274
 msgid "Dialing"
 msgstr "Vytáèím èíslo"
 
-#: connect.cpp:308
+#: connect.cpp:304
 msgid "Line Busy. Hanging up ..."
 msgstr "Linka obsazena, zavì¹uji ..."
 
-#: connect.cpp:314
+#: connect.cpp:310
 msgid "Line Busy. Waiting: "
 msgstr "Linka obsazena. Èekám: "
 
-#: connect.cpp:316 connect.cpp:415 connect.cpp:434
+#: connect.cpp:312 connect.cpp:411 connect.cpp:430
 msgid " seconds"
 msgstr " sekund"
 
-#: connect.cpp:334
+#: connect.cpp:330
 msgid "No Dialtone"
 msgstr "®ádný vyzvánìcí tón"
 
-#: connect.cpp:344
+#: connect.cpp:340
 msgid "No Carrier"
 msgstr "®ádný nosiè"
 
-#: connect.cpp:379
+#: connect.cpp:375
 msgid "Scanning "
 msgstr "Zkoumám "
 
-#: connect.cpp:390
+#: connect.cpp:386
 msgid "Sending "
 msgstr "Posílám "
 
-#: connect.cpp:401
+#: connect.cpp:397
 msgid "Expecting "
 msgstr "Oèekávám "
 
-#: connect.cpp:413
+#: connect.cpp:409
 msgid "Pause "
 msgstr "Pauza "
 
-#: connect.cpp:432
+#: connect.cpp:428
 msgid "Timeout "
 msgstr "Timemout"
 
-#: connect.cpp:446 connect.cpp:447
+#: connect.cpp:442 connect.cpp:443
 msgid "Hangup"
 msgstr "Zavì¹ení"
 
-#: connect.cpp:460 connect.cpp:461
+#: connect.cpp:456 connect.cpp:457
 msgid "Answer"
 msgstr "Odpovìï"
 
-#: connect.cpp:469
+#: connect.cpp:465
 msgid "ID "
 msgstr "ID"
 
-#: connect.cpp:506
+#: connect.cpp:502
 msgid "Password "
 msgstr "Heslo "
 
-#: connect.cpp:543
+#: connect.cpp:539
 msgid "Prompting "
 msgstr "Dotázat se na "
 
-#: connect.cpp:580
+#: connect.cpp:576
 msgid "PW Prompt "
 msgstr "PW Prompt "
 
-#: connect.cpp:606
+#: connect.cpp:602
 msgid "Loop Start "
 msgstr "Start smyèky "
 
-#: connect.cpp:610
+#: connect.cpp:606
 msgid "ERROR: Nested too deep, ignored."
 msgstr "CHYBA: Smyèka vnoøena pøíli¹ hluboko, ignoruji."
 
-#: connect.cpp:615
+#: connect.cpp:611
 msgid "Loops nested too deeply!"
 msgstr "Smyèky vnoøeny pøíli¹ hluboko!"
 
-#: connect.cpp:633
+#: connect.cpp:629
 msgid "LoopEnd without mathing Start! Line: "
 msgstr "Konec smyèky bez odpovídajícího startu! Øádka: "
 
-#: connect.cpp:710
+#: connect.cpp:706
 msgid "Starting pppd ..."
 msgstr "Startuji pppd ..."
 
-#: connect.cpp:770 connect.cpp:796
+#: connect.cpp:766 connect.cpp:792
 msgid "unknown speed"
 msgstr "neznámá rychlost"
 
-#: connect.cpp:834
+#: connect.cpp:830
 msgid "Scan Var: "
 msgstr "Zkoumat Var:"
 
-#: connect.cpp:845
+#: connect.cpp:841
 msgid "Found: "
 msgstr "Nalezeno: "
 
-#: connect.cpp:857
+#: connect.cpp:853
 msgid "Looping: "
 msgstr "Cyklus: "
 
-#: connect.cpp:888 modeminfo.cpp:333
+#: connect.cpp:884 modeminfo.cpp:333
 msgid "One Moment Please ..."
 msgstr "Okam¾ik prosím ..."
 
-#: connect.cpp:931
+#: connect.cpp:927
 msgid "Script timed out!"
 msgstr "Timeout skriptu!"
 
-#: connect.cpp:956
+#: connect.cpp:952
 msgid "Scanning: "
 msgstr "Zkoumání: "
 
-#: connect.cpp:967
+#: connect.cpp:963
 msgid "Expecting: "
 msgstr "Oèekávám: "
 
-#: connect.cpp:1001
+#: connect.cpp:997
 msgid "Logging on to Network ..."
 msgstr "Pøihla¹ování do sítì ..."
 
-#: connect.cpp:1027
+#: connect.cpp:1023
 msgid "Running Startup Command ..."
 msgstr "Vykonávám startovní pøíkaz ..."
 
-#: connect.cpp:1092
+#: connect.cpp:1088
 msgid "Sorry, can't open modem."
 msgstr "Lituji, není mo¾né otevøít modem."
 
-#: connect.cpp:1099
+#: connect.cpp:1095
 msgid "Sorry, the modem is not ready."
 msgstr "Lituji, modem je zaneprázdnìn."
 
-#: connect.cpp:1107 connect.cpp:1148 modeminfo.cpp:375
+#: connect.cpp:1103 connect.cpp:1144 modeminfo.cpp:375
 msgid "Sorry, the modem is busy."
 msgstr "Lituji, modem je zaneprázdnìn."
 
-#: connect.cpp:1382
+#: connect.cpp:1375
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
@@ -569,7 +569,7 @@ msgstr "Zámek modemu:"
 msgid "Modem Timeout:"
 msgstr "Timemout modemu:"
 
-#: general.cpp:433 main.cpp:479
+#: general.cpp:433 main.cpp:487
 msgid "Modem"
 msgstr "Modem"
 
@@ -577,51 +577,47 @@ msgstr "Modem"
 msgid "Busy Wait:"
 msgstr "Èekaní pøi obsazení:"
 
-#: general.cpp:471
-msgid "Modem sustains fast initialization."
-msgstr "Modem podporuje rychlou inicializaci."
-
-#: general.cpp:484
+#: general.cpp:473
 msgid "Modem Asserts CD Line."
 msgstr "Modem kontroluje CD"
 
-#: general.cpp:500
+#: general.cpp:489
 msgid "Modem Commands"
 msgstr "Modemové pøíkazy"
 
-#: general.cpp:501
+#: general.cpp:490
 msgid "Query Modem"
 msgstr "Dotázat se modemu"
 
-#: general.cpp:502
+#: general.cpp:491
 msgid "Terminal"
 msgstr "Terminál"
 
-#: main.cpp:306
+#: main.cpp:311
 msgid "Connect to: "
 msgstr "Pøipojit k: "
 
-#: main.cpp:317
+#: main.cpp:322
 msgid "Login ID:"
 msgstr "Login ID:"
 
-#: main.cpp:329
+#: main.cpp:334
 msgid "Password:"
 msgstr "Heslo:"
 
-#: main.cpp:346
+#: main.cpp:351
 msgid "Show Log Window"
 msgstr "Zobrazovat okno se záznamem"
 
-#: main.cpp:368
+#: main.cpp:373
 msgid "Setup"
 msgstr "Nastavení"
 
-#: main.cpp:383
+#: main.cpp:388
 msgid "Connect"
 msgstr "Pøipojit"
 
-#: main.cpp:448
+#: main.cpp:456
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -630,23 +626,23 @@ msgstr ""
 "Toto konto neexistuje:\n"
 "%s"
 
-#: main.cpp:465
+#: main.cpp:473
 msgid "kppp Configuration"
 msgstr "Konfigurace kppp"
 
-#: main.cpp:477
+#: main.cpp:485
 msgid "Accounts"
 msgstr "Konta"
 
-#: main.cpp:478
+#: main.cpp:486
 msgid "Device"
 msgstr "Zaøízení"
 
-#: main.cpp:480
+#: main.cpp:488
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:704
+#: main.cpp:712
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -663,7 +659,7 @@ msgstr ""
 "konfiguraèním dialogu\n"
 " Dìkuji vám"
 
-#: main.cpp:716
+#: main.cpp:724
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -676,7 +672,7 @@ msgstr ""
 "Prosím ujistìte se, ¾e jste nastavili setuid právo pro kppp\n"
 "a ¾e je pppd vykonavatelný."
 
-#: main.cpp:730
+#: main.cpp:738
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -697,7 +693,7 @@ msgstr ""
 "v konfiguraèním dialogu.\n"
 " Dìkuji vám"
 
-#: main.cpp:750
+#: main.cpp:758
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -707,7 +703,7 @@ msgstr ""
 "Toto vy¾aduje, aby jste poskytli\n"
 "u¾ivatelské jméno a heslo!"
 
-#: main.cpp:757
+#: main.cpp:765
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -716,15 +712,15 @@ msgstr ""
 "Není mo¾né vytvoøit ovìøovací soubor\n"
 "pro PAP \"%s\""
 
-#: main.cpp:834
+#: main.cpp:842
 msgid "Quit kPPP?"
 msgstr "Ukonèit kPPP?"
 
-#: main.cpp:835
+#: main.cpp:843
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Ukonèení kPPP uzavøe va¹e PPP sezení."
 
-#: main.cpp:868
+#: main.cpp:876
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
@@ -744,55 +740,59 @@ msgstr "Inicializaèní øetìzec:"
 msgid "Init Response:"
 msgstr "Poèáteèní odezva:"
 
-#: modemcmds.cpp:68
+#: modemcmds.cpp:86
+msgid "Init Delay (sec/100):"
+msgstr ""
+
+#: modemcmds.cpp:91
 msgid "Dial String:"
 msgstr "Vytáèecí øetìzec:"
 
-#: modemcmds.cpp:75
+#: modemcmds.cpp:98
 msgid "Connect Response:"
 msgstr "Odezva pøi pøipojení:"
 
-#: modemcmds.cpp:82
+#: modemcmds.cpp:105
 msgid "Busy Response:"
 msgstr "Obsazovací odezva:"
 
-#: modemcmds.cpp:89
+#: modemcmds.cpp:112
 msgid "No Carrier Resonse:"
 msgstr "Odezva pøi nepøítomnosti nosièe:"
 
-#: modemcmds.cpp:96
+#: modemcmds.cpp:119
 msgid "No Dialtone Response:"
 msgstr "Odezva pøi nepøítomnosti vyzvánìcího tónu:"
 
-#: modemcmds.cpp:103
+#: modemcmds.cpp:126
 msgid "Hangup String:"
 msgstr "Øetìzec pro zavì¹ení:"
 
-#: modemcmds.cpp:110
+#: modemcmds.cpp:133
 msgid "Hangup Response:"
 msgstr "Odezva pro zavì¹ení:"
 
-#: modemcmds.cpp:117
+#: modemcmds.cpp:140
 msgid "Answer String:"
 msgstr "Odpovídací øetìzec:"
 
-#: modemcmds.cpp:124
+#: modemcmds.cpp:147
 msgid "Ring Response:"
 msgstr "Vyzvánìcí odezva:"
 
-#: modemcmds.cpp:131
+#: modemcmds.cpp:154
 msgid "Answer Response:"
 msgstr "Odpovídací odezva:"
 
-#: modemcmds.cpp:138
+#: modemcmds.cpp:161
 msgid "Escape String:"
 msgstr "Ukonèovací øetìzec:"
 
-#: modemcmds.cpp:145
+#: modemcmds.cpp:168
 msgid "Escape Response:"
 msgstr "Ukonèovací odezva:"
 
-#: modemcmds.cpp:172
+#: modemcmds.cpp:195
 msgid "Guard Time (sec/50):"
 msgstr "Èas støe¾ení (sec/50)"
 
@@ -1021,7 +1021,7 @@ msgstr "Obnovit"
 msgid "Minimize"
 msgstr "Minimalizovat"
 
-#: runtests.cpp:97
+#: runtests.cpp:98
 msgid ""
 "Cannot find the pppd-daemon!\n"
 "\n"
@@ -1033,7 +1033,7 @@ msgstr ""
 "Ujistìte se, ¾e je nainstalován pppd\n"
 "a ¾e jste zadali správnou cestu.\n"
 
-#: runtests.cpp:109
+#: runtests.cpp:110
 msgid ""
 "You do not have the permission\n"
 "to start pppd!\n"
@@ -1047,7 +1047,7 @@ msgstr ""
 "Kontaktujte svého systémového administrátora,\n"
 "aby vám udìlil pøístup k pppd."
 
-#: runtests.cpp:120
+#: runtests.cpp:121
 msgid ""
 "pppd is not properly installed!\n"
 "\n"
@@ -1061,7 +1061,7 @@ msgstr ""
 "s nastaveným SUID bitem. Kontaktujte\n"
 "svého systémového administrátora."
 
-#: runtests.cpp:141
+#: runtests.cpp:142
 #, c-format
 msgid ""
 "The logviewer \"%s\" was not found!\n"
@@ -1071,3 +1071,14 @@ msgstr ""
 "Prohlí¾eè záznamù \"%s\" nebyl nalezen!\n"
 "\n"
 "Nastavuji zpìt na implicitní \"%s\"."
+
+#: runtests.cpp:166
+msgid ""
+"kppp has detected a 'lock' option in /etc/ppp/options.\n"
+"\n"
+"This option has to removed since kppp takes care of device locking itself.\n"
+"Contact your system administrator."
+msgstr ""
+
+#~ msgid "Modem sustains fast initialization."
+#~ msgstr "Modem podporuje rychlou inicializaci."

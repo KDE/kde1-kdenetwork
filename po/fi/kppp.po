@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KPPP\n"
-"POT-Creation-Date: 1998-03-09 00:28+0100\n"
+"POT-Creation-Date: 1998-03-19 22:13+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Kim Enkovaara <kim.enkovaara@iki.fi>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -115,7 +115,7 @@ msgstr ""
 msgid "Login script has unbalanced Loop Start/End"
 msgstr "Sis‰‰nkirjottautumis skriptiss‰ on eri m‰‰r‰ Loop Start/End pareja"
 
-#: connect.cpp:98 connect.cpp:200 main.cpp:769
+#: connect.cpp:98 connect.cpp:200 main.cpp:777
 msgid "Connecting to: "
 msgstr "Yhdist‰:"
 
@@ -128,7 +128,7 @@ msgstr "Valitettavasti en voi luoda modeemin lukitustiedostoa."
 msgid "Looking for Modem ..."
 msgstr "Etsin modeemia..."
 
-#: connect.cpp:121 debug.cpp:86 main.cpp:782
+#: connect.cpp:121 debug.cpp:86 main.cpp:790
 msgid "Log"
 msgstr "Loki"
 
@@ -144,149 +144,149 @@ msgstr "Modeemi valmis"
 msgid "Initializing Modem..."
 msgstr "Asetan modeemia..."
 
-#: connect.cpp:278
+#: connect.cpp:274
 msgid "Dialing"
 msgstr "Soitan"
 
-#: connect.cpp:308
+#: connect.cpp:304
 msgid "Line Busy. Hanging up ..."
 msgstr "Linja varattu. Katkaisen ..."
 
-#: connect.cpp:314
+#: connect.cpp:310
 msgid "Line Busy. Waiting: "
 msgstr "Linja varattu. Odotan: "
 
-#: connect.cpp:316 connect.cpp:415 connect.cpp:434
+#: connect.cpp:312 connect.cpp:411 connect.cpp:430
 msgid " seconds"
 msgstr " sekuntia"
 
-#: connect.cpp:334
+#: connect.cpp:330
 msgid "No Dialtone"
 msgstr "Ei soitto‰‰nt‰"
 
-#: connect.cpp:344
+#: connect.cpp:340
 msgid "No Carrier"
 msgstr "Ei linja‰‰nt‰"
 
-#: connect.cpp:379
+#: connect.cpp:375
 #, fuzzy
 msgid "Scanning "
 msgstr "L‰het‰n "
 
-#: connect.cpp:390
+#: connect.cpp:386
 msgid "Sending "
 msgstr "L‰het‰n "
 
-#: connect.cpp:401
+#: connect.cpp:397
 msgid "Expecting "
 msgstr "Odotan "
 
-#: connect.cpp:413
+#: connect.cpp:409
 msgid "Pause "
 msgstr "Paussi"
 
-#: connect.cpp:432
+#: connect.cpp:428
 msgid "Timeout "
 msgstr "Aika loppu "
 
-#: connect.cpp:446 connect.cpp:447
+#: connect.cpp:442 connect.cpp:443
 msgid "Hangup"
 msgstr "Katkaise"
 
-#: connect.cpp:460 connect.cpp:461
+#: connect.cpp:456 connect.cpp:457
 msgid "Answer"
 msgstr "Vastaa"
 
-#: connect.cpp:469
+#: connect.cpp:465
 msgid "ID "
 msgstr "ID"
 
-#: connect.cpp:506
+#: connect.cpp:502
 msgid "Password "
 msgstr "Salasana "
 
-#: connect.cpp:543
+#: connect.cpp:539
 msgid "Prompting "
 msgstr "Kysyn "
 
-#: connect.cpp:580
+#: connect.cpp:576
 msgid "PW Prompt "
 msgstr "Salasana "
 
-#: connect.cpp:606
+#: connect.cpp:602
 msgid "Loop Start "
 msgstr "Loopin alku "
 
-#: connect.cpp:610
+#: connect.cpp:606
 msgid "ERROR: Nested too deep, ignored."
 msgstr "VIRHE: Liian paljon sis‰kk‰isi‰ tasoja, ohitan."
 
-#: connect.cpp:615
+#: connect.cpp:611
 msgid "Loops nested too deeply!"
 msgstr "Loopeissa liian sis‰kk‰ist‰ monta tasoa!"
 
-#: connect.cpp:633
+#: connect.cpp:629
 msgid "LoopEnd without mathing Start! Line: "
 msgstr "LoopEnd ilman vastaavaa Starttia! Rivi: "
 
-#: connect.cpp:710
+#: connect.cpp:706
 msgid "Starting pppd ..."
 msgstr "K‰ynnist‰n pppd:n ..."
 
-#: connect.cpp:770 connect.cpp:796
+#: connect.cpp:766 connect.cpp:792
 msgid "unknown speed"
 msgstr "ei nopeutta"
 
-#: connect.cpp:834
+#: connect.cpp:830
 msgid "Scan Var: "
 msgstr ""
 
-#: connect.cpp:845
+#: connect.cpp:841
 msgid "Found: "
 msgstr "Lˆysin: "
 
-#: connect.cpp:857
+#: connect.cpp:853
 msgid "Looping: "
 msgstr "Alusta: "
 
-#: connect.cpp:888 modeminfo.cpp:333
+#: connect.cpp:884 modeminfo.cpp:333
 msgid "One Moment Please ..."
 msgstr "Pieni hetki ..."
 
-#: connect.cpp:931
+#: connect.cpp:927
 msgid "Script timed out!"
 msgstr "Ohjelman aika loppui!"
 
-#: connect.cpp:956
+#: connect.cpp:952
 #, fuzzy
 msgid "Scanning: "
 msgstr "L‰het‰n "
 
-#: connect.cpp:967
+#: connect.cpp:963
 msgid "Expecting: "
 msgstr "Odotan: "
 
-#: connect.cpp:1001
+#: connect.cpp:997
 msgid "Logging on to Network ..."
 msgstr "Kirjottaudun verkkoon ..."
 
-#: connect.cpp:1027
+#: connect.cpp:1023
 msgid "Running Startup Command ..."
 msgstr "Ajan k‰ynnistyskomennon ..."
 
-#: connect.cpp:1092
+#: connect.cpp:1088
 msgid "Sorry, can't open modem."
 msgstr "En saa avattua modeemia."
 
-#: connect.cpp:1099
+#: connect.cpp:1095
 msgid "Sorry, the modem is not ready."
 msgstr "Modeemi ei ole valmis"
 
-#: connect.cpp:1107 connect.cpp:1148 modeminfo.cpp:375
+#: connect.cpp:1103 connect.cpp:1144 modeminfo.cpp:375
 msgid "Sorry, the modem is busy."
 msgstr "Modeemi on jo k‰ytˆss‰"
 
-#: connect.cpp:1382
+#: connect.cpp:1375
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
@@ -572,7 +572,7 @@ msgstr "Modeemin lukkotiedosto:"
 msgid "Modem Timeout:"
 msgstr "Modeemin odotusaika:"
 
-#: general.cpp:433 main.cpp:479
+#: general.cpp:433 main.cpp:487
 msgid "Modem"
 msgstr "Modeemi"
 
@@ -580,51 +580,47 @@ msgstr "Modeemi"
 msgid "Busy Wait:"
 msgstr "Varatun j‰lkeen odotus:"
 
-#: general.cpp:471
-msgid "Modem sustains fast initialization."
-msgstr "Modeemi siet‰‰ nopean asetuksen."
-
-#: general.cpp:484
+#: general.cpp:473
 msgid "Modem Asserts CD Line."
 msgstr "Modeemi v‰litt‰‰ CD linjasta."
 
-#: general.cpp:500
+#: general.cpp:489
 msgid "Modem Commands"
 msgstr "Modeemin komennot"
 
-#: general.cpp:501
+#: general.cpp:490
 msgid "Query Modem"
 msgstr "Kysele modeemilta"
 
-#: general.cpp:502
+#: general.cpp:491
 msgid "Terminal"
 msgstr "Terminaali"
 
-#: main.cpp:306
+#: main.cpp:311
 msgid "Connect to: "
 msgstr "Yhdist‰: "
 
-#: main.cpp:317
+#: main.cpp:322
 msgid "Login ID:"
 msgstr "K‰ytt‰j‰ ID:"
 
-#: main.cpp:329
+#: main.cpp:334
 msgid "Password:"
 msgstr "Salasana:"
 
-#: main.cpp:346
+#: main.cpp:351
 msgid "Show Log Window"
 msgstr "N‰yt‰ loki-ikkuna"
 
-#: main.cpp:368
+#: main.cpp:373
 msgid "Setup"
 msgstr "Asetukset"
 
-#: main.cpp:383
+#: main.cpp:388
 msgid "Connect"
 msgstr "Yhdist‰"
 
-#: main.cpp:448
+#: main.cpp:456
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -633,23 +629,23 @@ msgstr ""
 "Profiilia ei ole olemassa:\n"
 "%s"
 
-#: main.cpp:465
+#: main.cpp:473
 msgid "kppp Configuration"
 msgstr "kppp Asetukset"
 
-#: main.cpp:477
+#: main.cpp:485
 msgid "Accounts"
 msgstr "Profiilit"
 
-#: main.cpp:478
+#: main.cpp:486
 msgid "Device"
 msgstr "Laite"
 
-#: main.cpp:480
+#: main.cpp:488
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:704
+#: main.cpp:712
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -666,7 +662,7 @@ msgstr ""
 "Asetukset dialogissa.\n"
 " Kiitos"
 
-#: main.cpp:716
+#: main.cpp:724
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -679,7 +675,7 @@ msgstr ""
 "Varmista ett‰ kppp:lla on setuid oikeudet ja\n"
 "pppd on suoritettavissa."
 
-#: main.cpp:730
+#: main.cpp:738
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -700,7 +696,7 @@ msgstr ""
 "asetukset dialogissa.\n"
 " Kiitos"
 
-#: main.cpp:750
+#: main.cpp:758
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -710,7 +706,7 @@ msgstr ""
 "PAP:n. T‰m‰ vaatii sen, ett‰ annat\n"
 "k‰ytt‰j‰nimen sek‰ salasanasi!"
 
-#: main.cpp:757
+#: main.cpp:765
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -719,15 +715,15 @@ msgstr ""
 "En saa luotua PAP tunnistusta\n"
 "tiedostoon \"%s\""
 
-#: main.cpp:834
+#: main.cpp:842
 msgid "Quit kPPP?"
 msgstr "Lopeta kPPP?"
 
-#: main.cpp:835
+#: main.cpp:843
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "kPPP:n lopetus sulkee PPP-istuntosi."
 
-#: main.cpp:868
+#: main.cpp:876
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
@@ -747,55 +743,59 @@ msgstr "Asetusrivi:"
 msgid "Init Response:"
 msgstr "Asetuksen vastaus:"
 
-#: modemcmds.cpp:68
+#: modemcmds.cpp:86
+msgid "Init Delay (sec/100):"
+msgstr ""
+
+#: modemcmds.cpp:91
 msgid "Dial String:"
 msgstr "Soittorivi:"
 
-#: modemcmds.cpp:75
+#: modemcmds.cpp:98
 msgid "Connect Response:"
 msgstr "Yhteydenmuodostusvastaus:"
 
-#: modemcmds.cpp:82
+#: modemcmds.cpp:105
 msgid "Busy Response:"
 msgstr "Varatun linjan vastaus:"
 
-#: modemcmds.cpp:89
+#: modemcmds.cpp:112
 msgid "No Carrier Resonse:"
 msgstr "Ei yhteys‰‰nt‰ vastaus"
 
-#: modemcmds.cpp:96
+#: modemcmds.cpp:119
 msgid "No Dialtone Response:"
 msgstr "Ei soitto‰‰nt‰ vastaus:"
 
-#: modemcmds.cpp:103
+#: modemcmds.cpp:126
 msgid "Hangup String:"
 msgstr "Lopetusrivi:"
 
-#: modemcmds.cpp:110
+#: modemcmds.cpp:133
 msgid "Hangup Response:"
 msgstr "Lopetusvastaus:"
 
-#: modemcmds.cpp:117
+#: modemcmds.cpp:140
 msgid "Answer String:"
 msgstr "Vastausrivi:"
 
-#: modemcmds.cpp:124
+#: modemcmds.cpp:147
 msgid "Ring Response:"
 msgstr "Soittoon vastaus:"
 
-#: modemcmds.cpp:131
+#: modemcmds.cpp:154
 msgid "Answer Response:"
 msgstr "Vastauksen vastaus:"
 
-#: modemcmds.cpp:138
+#: modemcmds.cpp:161
 msgid "Escape String:"
 msgstr "Lopetusrivi:"
 
-#: modemcmds.cpp:145
+#: modemcmds.cpp:168
 msgid "Escape Response:"
 msgstr "Lopetusvastaus:"
 
-#: modemcmds.cpp:172
+#: modemcmds.cpp:195
 msgid "Guard Time (sec/50):"
 msgstr "Valvonta-aika (sek/50):"
 
@@ -1024,7 +1024,7 @@ msgstr "Palauta"
 msgid "Minimize"
 msgstr "Pienenn‰"
 
-#: runtests.cpp:97
+#: runtests.cpp:98
 msgid ""
 "Cannot find the pppd-daemon!\n"
 "\n"
@@ -1036,7 +1036,7 @@ msgstr ""
 "Varmista ett‰ pppd on asennettu\n"
 "ja olet antanut oikean polun.\n"
 
-#: runtests.cpp:109
+#: runtests.cpp:110
 msgid ""
 "You do not have the permission\n"
 "to start pppd!\n"
@@ -1050,7 +1050,7 @@ msgstr ""
 "Ota yhteys systeemin yll‰pit‰j‰‰n ja\n"
 "pyyd‰ oikeudet pppd ohjelmaan."
 
-#: runtests.cpp:120
+#: runtests.cpp:121
 msgid ""
 "pppd is not properly installed!\n"
 "\n"
@@ -1064,7 +1064,7 @@ msgstr ""
 "SUID bitti asetettuna. Ota yhteys\n"
 "systeemin yll‰pit‰j‰‰n."
 
-#: runtests.cpp:141
+#: runtests.cpp:142
 #, c-format
 msgid ""
 "The logviewer \"%s\" was not found!\n"
@@ -1074,6 +1074,17 @@ msgstr ""
 "Lokinn‰ytt‰j‰‰ \"%s\" ei lˆydy!\n"
 "\n"
 "Asetan oletuksen takaisin \"%s\":n."
+
+#: runtests.cpp:166
+msgid ""
+"kppp has detected a 'lock' option in /etc/ppp/options.\n"
+"\n"
+"This option has to removed since kppp takes care of device locking itself.\n"
+"Contact your system administrator."
+msgstr ""
+
+#~ msgid "Modem sustains fast initialization."
+#~ msgstr "Modeemi siet‰‰ nopean asetuksen."
 
 #~ msgid "The pppd daemon died unexpectedly!"
 #~ msgstr "pppd daemoni kuoli odottamatta!"

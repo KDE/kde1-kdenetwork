@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1998-03-09 00:27+0100\n"
+"POT-Creation-Date: 1998-03-19 22:13+0100\n"
 "PO-Revision-Date: 1998-02-25 22:31 CET\n"
 "Last-Translator: Bertrand Leconte <B.Leconte@mail.dotcom.fr>\n"
 "Language-Team: Français\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain;\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: kmcomposewin.cpp:1370 kmmainwin.cpp:265 kpgp.cpp:349
+#: kmcomposewin.cpp:1376 kmmainwin.cpp:265 kpgp.cpp:349
 msgid ""
 "Sorry, but this feature\n"
 "is still missing"
@@ -175,7 +175,7 @@ msgstr "Envoyer les messages mis en queue"
 msgid "&Settings..."
 msgstr "&Configuration..."
 
-#: kmcomposewin.cpp:426 kmmainwin.cpp:756
+#: kmcomposewin.cpp:429 kmmainwin.cpp:756
 msgid "&Addressbook..."
 msgstr "&Carnet d'adresses..."
 
@@ -203,7 +203,7 @@ msgstr "C&ompacter"
 msgid "&Empty"
 msgstr "&Vider"
 
-#: kmcomposewin.cpp:506 kmmainwin.cpp:785
+#: kmcomposewin.cpp:509 kmmainwin.cpp:785
 msgid "&Remove"
 msgstr "&Effacer"
 
@@ -291,15 +291,15 @@ msgstr "&Dossier"
 msgid "&Message"
 msgstr "&Message"
 
-#: kmcomposewin.cpp:535 kmmainwin.cpp:878
+#: kmcomposewin.cpp:538 kmmainwin.cpp:878
 msgid "Compose new message"
 msgstr "Composer un message"
 
-#: kmcomposewin.cpp:540 kmmainwin.cpp:883
+#: kmcomposewin.cpp:543 kmmainwin.cpp:883
 msgid "Save message to file"
 msgstr "Enregistrer dans un fichier"
 
-#: kmcomposewin.cpp:545 kmmainwin.cpp:888
+#: kmcomposewin.cpp:548 kmmainwin.cpp:888
 msgid "Print message"
 msgstr "Imprimer message"
 
@@ -323,7 +323,7 @@ msgstr "Réacheminer message"
 msgid "Delete message"
 msgstr "Effacer message"
 
-#: kmcomposewin.cpp:569 kmmainwin.cpp:922
+#: kmcomposewin.cpp:572 kmmainwin.cpp:922
 msgid "Open addressbook..."
 msgstr "Ouvrir le carnet d'adresses..."
 
@@ -336,7 +336,7 @@ msgstr "Initialisation en cours..."
 msgid "Name:"
 msgstr "Nom :"
 
-#: kmcomposewin.cpp:1378 kmfolderdia.cpp:44 kmfolderdia.cpp:120
+#: kmcomposewin.cpp:1384 kmfolderdia.cpp:44 kmfolderdia.cpp:120
 msgid "unnamed"
 msgstr "sans nom"
 
@@ -408,11 +408,11 @@ msgstr "Messages entrants"
 msgid "Accounts:   (add at least one account!)"
 msgstr "Boîtes aux lettres :   (ajouter-en au moins une !)"
 
-#: kmcomposewin.cpp:124 kmsettings.cpp:221
+#: kmcomposewin.cpp:125 kmsettings.cpp:221
 msgid "Name"
 msgstr "Nom"
 
-#: kmcomposewin.cpp:127 kmsettings.cpp:222
+#: kmcomposewin.cpp:128 kmsettings.cpp:222
 msgid "Type"
 msgstr "Genre"
 
@@ -461,15 +461,15 @@ msgstr "Réacheminer :"
 msgid "Indentation:"
 msgstr "Indentation :"
 
-#: kmmessage.cpp:1218 kmsettings.cpp:308
+#: kmmessage.cpp:1233 kmsettings.cpp:308
 msgid "On %D, you wrote:"
 msgstr "Le %D, vous avez écrit :"
 
-#: kmmessage.cpp:1219 kmsettings.cpp:312
+#: kmmessage.cpp:1234 kmsettings.cpp:312
 msgid "On %D, %F wrote:"
 msgstr "Le %D, %F à écrit :"
 
-#: kmmessage.cpp:1220 kmsettings.cpp:316
+#: kmmessage.cpp:1235 kmsettings.cpp:316
 msgid "Forwarded Message"
 msgstr "Message réacheminé"
 
@@ -549,7 +549,7 @@ msgstr "Sans nom"
 msgid "Choose Sendmail Location"
 msgstr "Choisir l'emplacement de Sendmail"
 
-#: kmcomposewin.cpp:1485 kmsettings.cpp:552
+#: kmcomposewin.cpp:1491 kmsettings.cpp:552
 msgid "Choose Signature File"
 msgstr "Choisir le fichier de signature"
 
@@ -601,225 +601,258 @@ msgstr "Reçu : "
 msgid "Failed to add message:"
 msgstr "Echec dans l'ajout du message :"
 
-#: kmcomposewin.cpp:123 kmheaders.cpp:37
+#: kmcomposewin.cpp:124 kmheaders.cpp:38
 msgid "F"
 msgstr "F"
 
-#: kmheaders.cpp:38
+#: kmheaders.cpp:39
 msgid "Sender"
 msgstr "Emetteur"
 
-#: kmheaders.cpp:39
+#: kmheaders.cpp:40
 msgid "Subject"
 msgstr "Sujet"
 
-#: kmheaders.cpp:40
+#: kmheaders.cpp:41
 msgid "Date"
 msgstr "Date"
 
-#: kmheaders.cpp:299
+#: kmheaders.cpp:223
+msgid "order of arrival"
+msgstr ""
+
+#: kmheaders.cpp:232
+#, fuzzy
+msgid "subject"
+msgstr "Sujet"
+
+#: kmheaders.cpp:233
+#, fuzzy
+msgid "date"
+msgstr "Date"
+
+#: kmheaders.cpp:234
+#, fuzzy
+msgid "sender"
+msgstr "Emetteur"
+
+#: kmheaders.cpp:235
+msgid "status"
+msgstr ""
+
+#: kmheaders.cpp:237
+#, c-format
+msgid "Sorting messages descending by %s"
+msgstr ""
+
+#: kmheaders.cpp:238
+#, c-format
+msgid "Sorting messages ascending by %s"
+msgstr ""
+
+#: kmheaders.cpp:328
 msgid "Message(s) saved."
 msgstr "Message(s) enregistré(s)."
 
-#: kmheaders.cpp:301
+#: kmheaders.cpp:330
 msgid "Failed to save message(s)."
 msgstr "Echac dans l'enregistrement du(des) message(s)"
 
-#: kmheaders.cpp:614
+#: kmheaders.cpp:643
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d messages, %d non-lus."
 
-#: kmheaders.cpp:616
+#: kmheaders.cpp:645
 msgid "Folder is read-only."
 msgstr "Le dossier est en lecture-seule"
 
-#: kmcomposewin.cpp:112
+#: kmcomposewin.cpp:113
 msgid "KMail Composer"
 msgstr "Écrire message"
 
-#: kmcomposewin.cpp:126
+#: kmcomposewin.cpp:127
 msgid "Encoding"
 msgstr "Encodage"
 
-#: kmcomposewin.cpp:333
+#: kmcomposewin.cpp:334
 msgid "&From:"
 msgstr "&De :"
 
-#: kmcomposewin.cpp:335
+#: kmcomposewin.cpp:336
 msgid "&Reply to:"
 msgstr "&Répondre à :"
 
-#: kmcomposewin.cpp:337
+#: kmcomposewin.cpp:338
 msgid "&To:"
 msgstr "&À :"
 
-#: kmcomposewin.cpp:339
+#: kmcomposewin.cpp:340
 msgid "&Cc:"
 msgstr "&Cc :"
 
-#: kmcomposewin.cpp:341
+#: kmcomposewin.cpp:342
 msgid "&Bcc:"
 msgstr "&Bcc :"
 
-#: kmcomposewin.cpp:343
+#: kmcomposewin.cpp:344
 msgid "&Subject:"
 msgstr "&Sujet :"
 
-#: kmcomposewin.cpp:346
+#: kmcomposewin.cpp:347
 msgid "&Newsgroups:"
 msgstr "&Forums :"
 
-#: kmcomposewin.cpp:348
+#: kmcomposewin.cpp:349
 msgid "&Followup-To:"
 msgstr "&Suite dans :"
 
-#: kmcomposewin.cpp:416
+#: kmcomposewin.cpp:419
 msgid "&Send"
 msgstr "&Envoyer"
 
-#: kmcomposewin.cpp:419
+#: kmcomposewin.cpp:422
 msgid "S&end later"
 msgstr "Envoyer plus &tard"
 
-#: kmcomposewin.cpp:421
+#: kmcomposewin.cpp:424
 msgid "S&end now"
 msgstr "Envoyer &maintenant"
 
-#: kmcomposewin.cpp:423
+#: kmcomposewin.cpp:426
 msgid "&Insert File..."
 msgstr "&Insérer fichier..."
 
-#: kmcomposewin.cpp:431
+#: kmcomposewin.cpp:434
 msgid "&New Composer..."
 msgstr "&Créer message..."
 
-#: kmcomposewin.cpp:453 kmcomposewin.cpp:668 kmcomposewin.cpp:1800
+#: kmcomposewin.cpp:456 kmcomposewin.cpp:673 kmcomposewin.cpp:1814
 msgid "Mark all"
 msgstr "Marquer tout"
 
-#: kmcomposewin.cpp:456 kmcomposewin.cpp:670
+#: kmcomposewin.cpp:459 kmcomposewin.cpp:675
 msgid "Find..."
 msgstr "Trouver..."
 
-#: kmcomposewin.cpp:458 kmcomposewin.cpp:671
+#: kmcomposewin.cpp:461 kmcomposewin.cpp:676
 msgid "Replace..."
 msgstr "Remplacer..."
 
-#: kmcomposewin.cpp:465
+#: kmcomposewin.cpp:468
 msgid "&Urgent"
 msgstr "&Urgent"
 
-#: kmcomposewin.cpp:467
+#: kmcomposewin.cpp:470
 msgid "&Confirm delivery"
 msgstr "Confirmer la &distribution"
 
-#: kmcomposewin.cpp:469
+#: kmcomposewin.cpp:472
 msgid "&Confirm read"
 msgstr "Confirmer la &lecture"
 
-#: kmcomposewin.cpp:472
+#: kmcomposewin.cpp:475
 #, fuzzy
 msgid "&Charsets..."
 msgstr "&Créer..."
 
-#: kmcomposewin.cpp:485
+#: kmcomposewin.cpp:488
 msgid "&All Fields"
 msgstr "&Tous les champs"
 
-#: kmcomposewin.cpp:487
+#: kmcomposewin.cpp:490
 msgid "&From"
 msgstr "&De"
 
-#: kmcomposewin.cpp:488
+#: kmcomposewin.cpp:491
 msgid "&Reply to"
 msgstr "&Répondre à"
 
-#: kmcomposewin.cpp:489
+#: kmcomposewin.cpp:492
 msgid "&To"
 msgstr "&À"
 
-#: kmcomposewin.cpp:490
+#: kmcomposewin.cpp:493
 msgid "&Cc"
 msgstr "&Cc"
 
-#: kmcomposewin.cpp:491
+#: kmcomposewin.cpp:494
 msgid "&Bcc"
 msgstr "&Bcc"
 
-#: kmcomposewin.cpp:492
+#: kmcomposewin.cpp:495
 msgid "&Subject"
 msgstr "&Sujet"
 
-#: kmcomposewin.cpp:494
+#: kmcomposewin.cpp:497
 msgid "&Newsgroups"
 msgstr "&Forums"
 
-#: kmcomposewin.cpp:495
+#: kmcomposewin.cpp:498
 msgid "&Followup-To"
 msgstr "&Suite dans"
 
-#: kmcomposewin.cpp:500
+#: kmcomposewin.cpp:503
 msgid "Append S&ignature"
 msgstr "Ajouter la si&gnature"
 
-#: kmcomposewin.cpp:502
+#: kmcomposewin.cpp:505
 msgid "&Insert File"
 msgstr "&Insérer fichier"
 
-#: kmcomposewin.cpp:504
+#: kmcomposewin.cpp:507
 msgid "&Attach..."
 msgstr "&Attacher..."
 
-#: kmcomposewin.cpp:507
+#: kmcomposewin.cpp:510
 msgid "&Save..."
 msgstr "&Enregistrer..."
 
-#: kmcomposewin.cpp:508
+#: kmcomposewin.cpp:511
 msgid "Pr&operties..."
 msgstr "&Propriétés..."
 
-#: kmcomposewin.cpp:510
+#: kmcomposewin.cpp:513
 msgid "&Attach"
 msgstr "&Attacher"
 
-#: kmcomposewin.cpp:554
+#: kmcomposewin.cpp:557
 msgid "Cut selection"
 msgstr "Couper la sélection"
 
-#: kmcomposewin.cpp:557
+#: kmcomposewin.cpp:560
 msgid "Copy selection"
 msgstr "Copier la sélection"
 
-#: kmcomposewin.cpp:560
+#: kmcomposewin.cpp:563
 msgid "Paste clipboard contents"
 msgstr "Coller le presse-papier"
 
-#: kmcomposewin.cpp:565
+#: kmcomposewin.cpp:568
 msgid "Attach file"
 msgstr "Attacher un fichier"
 
-#: kmcomposewin.cpp:578
+#: kmcomposewin.cpp:581
 msgid "sign message"
 msgstr "signer le message"
 
-#: kmcomposewin.cpp:583
+#: kmcomposewin.cpp:586
 msgid "encrypt message"
 msgstr "chiffrer le message"
 
-#: kmcomposewin.cpp:595 kmcomposewin.cpp:609
+#: kmcomposewin.cpp:598 kmcomposewin.cpp:614
 msgid "Column"
 msgstr "Colonne"
 
-#: kmcomposewin.cpp:596 kmcomposewin.cpp:607
+#: kmcomposewin.cpp:599 kmcomposewin.cpp:612
 msgid "Line"
 msgstr "Ligne"
 
-#: kmcomposewin.cpp:862
+#: kmcomposewin.cpp:867
 msgid "KMail Confirm"
 msgstr "Confirmation"
 
-#: kmcomposewin.cpp:863
+#: kmcomposewin.cpp:868
 msgid ""
 "Close and discard\n"
 "edited message?"
@@ -827,7 +860,7 @@ msgstr ""
 "Fermer et abondonner\n"
 "le message modifié ?"
 
-#: kmcomposewin.cpp:905
+#: kmcomposewin.cpp:910
 #, c-format
 msgid ""
 "public key for %s not found.\n"
@@ -836,55 +869,55 @@ msgstr ""
 "la clé publique pour %s n'a pas été trouvée.\n"
 "Cette personne ne sera pas capable de déchiffrer le message."
 
-#: kmcomposewin.cpp:926
+#: kmcomposewin.cpp:931
 msgid "Error during PGP:"
 msgstr "Erreur pendant PGP :"
 
-#: kmcomposewin.cpp:1137
+#: kmcomposewin.cpp:1143
 msgid "Attach File"
 msgstr "Attacher un fichier"
 
-#: kmcomposewin.cpp:1154
+#: kmcomposewin.cpp:1160
 msgid "Include File"
 msgstr "Insérer fichier"
 
-#: kmcomposewin.cpp:1175 kmreaderwin.cpp:627
+#: kmcomposewin.cpp:1181 kmreaderwin.cpp:654
 msgid "View..."
 msgstr "Afficher..."
 
-#: kmcomposewin.cpp:1176
+#: kmcomposewin.cpp:1182
 msgid "Save..."
 msgstr "Enregistrer..."
 
-#: kmcomposewin.cpp:1177 kmreaderwin.cpp:630
+#: kmcomposewin.cpp:1183 kmreaderwin.cpp:657
 msgid "Properties..."
 msgstr "Propriétés..."
 
-#: kmcomposewin.cpp:1181
+#: kmcomposewin.cpp:1187
 msgid "Attach..."
 msgstr "Attacher..."
 
-#: kmcomposewin.cpp:1223 kmreaderwin.cpp:652
+#: kmcomposewin.cpp:1229 kmreaderwin.cpp:699
 msgid "View Attachment: "
 msgstr "Afficher les pièces-jointes :"
 
-#: kmcomposewin.cpp:1393
+#: kmcomposewin.cpp:1399
 msgid "To:"
 msgstr "A :"
 
-#: kmcomposewin.cpp:1397
+#: kmcomposewin.cpp:1403
 msgid "Subject:"
 msgstr "Sujet :"
 
-#: kmcomposewin.cpp:1400
+#: kmcomposewin.cpp:1406
 msgid "Date:"
 msgstr "Date :"
 
-#: kmcomposewin.cpp:1515
+#: kmcomposewin.cpp:1521
 msgid "KMail: Spellcheck"
 msgstr "Correction d'orthographe"
 
-#: kmcomposewin.cpp:1539
+#: kmcomposewin.cpp:1545
 msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
 msgstr ""
@@ -900,7 +933,7 @@ msgstr ""
 "Le contenu du dossier %s a changé.\n"
 "Recréation du fichier d'index."
 
-#: kmfolder.cpp:344
+#: kmfolder.cpp:351
 #, c-format
 msgid "Creating index file: %d messages done"
 msgstr "Création du fichier d'index : %d messages faits"
@@ -929,68 +962,68 @@ msgstr "base 64"
 msgid "quoted printable"
 msgstr "quoted printable"
 
-#: kmreaderwin.cpp:287 kmreaderwin.cpp:303 kmreaderwin.cpp:324
+#: kmreaderwin.cpp:299 kmreaderwin.cpp:315 kmreaderwin.cpp:336
 msgid "From: "
 msgstr "De : "
 
-#: kmreaderwin.cpp:289 kmreaderwin.cpp:305 kmreaderwin.cpp:326
+#: kmreaderwin.cpp:301 kmreaderwin.cpp:317 kmreaderwin.cpp:338
 msgid "To: "
 msgstr "A : "
 
-#: kmreaderwin.cpp:293 kmreaderwin.cpp:314 kmreaderwin.cpp:339
+#: kmreaderwin.cpp:305 kmreaderwin.cpp:326 kmreaderwin.cpp:351
 msgid "References: "
 msgstr "Références : "
 
-#: kmreaderwin.cpp:308 kmreaderwin.cpp:329
+#: kmreaderwin.cpp:320 kmreaderwin.cpp:341
 msgid "Cc: "
 msgstr "Cc : "
 
-#: kmreaderwin.cpp:310 kmreaderwin.cpp:323
+#: kmreaderwin.cpp:322 kmreaderwin.cpp:335
 msgid "Date: "
 msgstr "Date : "
 
-#: kmreaderwin.cpp:332
+#: kmreaderwin.cpp:344
 msgid "Bcc: "
 msgstr "Bcc : "
 
-#: kmreaderwin.cpp:335
+#: kmreaderwin.cpp:347
 msgid "Reply to: "
 msgstr "Répondre à : "
 
-#: kmreaderwin.cpp:342
+#: kmreaderwin.cpp:354
 msgid "Groups: "
 msgstr "Groupes : "
 
-#: kmreaderwin.cpp:377
+#: kmreaderwin.cpp:389
 msgid "Encrypted message"
 msgstr "Message chiffré"
 
-#: kmreaderwin.cpp:383
+#: kmreaderwin.cpp:395
 msgid "Cannot decrypt message:"
 msgstr "Déchiffrage du message impossible :"
 
-#: kmreaderwin.cpp:401
+#: kmreaderwin.cpp:413
 msgid "Message was signed by"
 msgstr "Le message a été signé par"
 
-#: kmreaderwin.cpp:402
+#: kmreaderwin.cpp:414
 msgid "Warning: Bad signature from"
 msgstr "Attention : mauvaise signature de"
 
-#: kmreaderwin.cpp:591
+#: kmreaderwin.cpp:618
 msgid "Attachment: "
 msgstr "Pièces-jointes : "
 
-#: kmreaderwin.cpp:676
+#: kmreaderwin.cpp:730
 msgid "Could not create temporary file"
 msgstr "Impossible de créer le fichier temporaire"
 
-#: kmreaderwin.cpp:696
+#: kmreaderwin.cpp:751
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "Impossible d'enregistrer le fichier temporaire %s"
 
-#: kmreaderwin.cpp:722
+#: kmreaderwin.cpp:778
 msgid "Could not save file"
 msgstr "Impossible d'enregistrer le fichier"
 
@@ -1029,6 +1062,11 @@ msgstr ""
 "dans le répertoire ~/Mail (par exemple inbox).\n"
 "\n"
 "Dois-je déplacer les dossiers de messages maintenant ?"
+
+#: main.cpp:378
+#, c-format
+msgid "Unknown command line option: %s"
+msgstr ""
 
 #: kmacctlocal.cpp:91
 #, c-format
