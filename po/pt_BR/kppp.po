@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1998-12-31 02:00+0100\n"
+"POT-Creation-Date: 1999-01-05 02:12+0100\n"
 "PO-Revision-Date: 1998-06-23 09:00-0300\n"
 "Last-Translator: Elvis Pfützenreuter<epx@netville.com.br>\n"
 
@@ -1290,6 +1290,10 @@ msgstr ""
 "\n"
 "Verifique que você não está rodando outro kppp,\n"
 "apague o arquivo pid, e reinicie o kppp."
+
+#: main.cpp:352
+msgid "Exit"
+msgstr ""
 
 #: main.cpp:413
 msgid "Connect to: "

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: karchie\n"
-"POT-Creation-Date: 1998-12-08 02:14+0100\n"
+"POT-Creation-Date: 1999-01-05 02:12+0100\n"
 "PO-Revision-Date: 1998-12-08 18:00+0100\n"
 "Last-Translator: Wolfram Diestel <diestel@rzaix340.rz-uni-leipzig.de>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 msgid "O&pen in editor"
 msgstr "Malfermu &redaktilon"
 
-#: KAMenu.cpp:87 KAView.cpp:155
+#: KAMenu.cpp:87 KAView.cpp:154
 msgid "&Open Dir"
 msgstr "&Malfermu dosierujon"
 
-#: KAMenu.cpp:88 KAView.cpp:156
+#: KAMenu.cpp:88 KAView.cpp:155
 msgid "&Download..."
 msgstr "&Deþutu..."
 
@@ -199,39 +199,43 @@ msgstr "Progreso: %d"
 msgid "%d try."
 msgstr "%da provo."
 
-#: KAView.cpp:69
+#: KAView.cpp:66
+msgid "Searchstring, press <ENTER> to start search"
+msgstr ""
+
+#: KAView.cpp:68
 msgid "Search &Term"
 msgstr "Se&ræa¼o"
 
-#: KAView.cpp:135
+#: KAView.cpp:134
 msgid "Host"
 msgstr "Komputilo"
 
-#: KAView.cpp:136
+#: KAView.cpp:135
 msgid "Path"
 msgstr ""
 
-#: KAView.cpp:269
+#: KAView.cpp:268
 msgid "Host:"
 msgstr "Komputilo:"
 
-#: KAView.cpp:271
+#: KAView.cpp:270
 msgid "Path:"
 msgstr "Pado:"
 
-#: KAView.cpp:273
+#: KAView.cpp:272
 msgid "File:"
 msgstr "Dosiero:"
 
-#: KAView.cpp:275
+#: KAView.cpp:274
 msgid "Size:"
 msgstr "Grandeco:"
 
-#: KAView.cpp:277
+#: KAView.cpp:276
 msgid "Mode:"
 msgstr "Maniero:"
 
-#: KAView.cpp:279
+#: KAView.cpp:278
 msgid "Date:"
 msgstr "Dato:"
 

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KPPP\n"
-"POT-Creation-Date: 1998-12-31 02:00+0100\n"
+"POT-Creation-Date: 1999-01-05 02:12+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Kim Enkovaara <kim.enkovaara@iki.fi>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1285,6 +1285,10 @@ msgstr ""
 "\n"
 "Varmista ettei toinen kppp ole käynnissä,\n"
 "ja tuhoa tiedosto, ja käynnistä kppp uudelleen."
+
+#: main.cpp:352
+msgid "Exit"
+msgstr ""
 
 #: main.cpp:413
 msgid "Connect to: "

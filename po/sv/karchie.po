@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-12-08 02:14+0100\n"
+"POT-Creation-Date: 1999-01-05 02:12+0100\n"
 "PO-Revision-Date: 1998-12-29 22:13+0100\n"
 "Last-Translator: Karl Backström <backstrom@kde.org>\n"
 "Language-Team: Sv <LL@li.org>\n"
@@ -16,11 +16,11 @@ msgstr ""
 msgid "O&pen in editor"
 msgstr "Ö&ppna i editor"
 
-#: KAMenu.cpp:87 KAView.cpp:155
+#: KAMenu.cpp:87 KAView.cpp:154
 msgid "&Open Dir"
 msgstr "&Öppna katalog"
 
-#: KAMenu.cpp:88 KAView.cpp:156
+#: KAMenu.cpp:88 KAView.cpp:155
 msgid "&Download..."
 msgstr "&Ladda ner..."
 
@@ -197,39 +197,43 @@ msgstr "Framgång: %d"
 msgid "%d try."
 msgstr "%d försök."
 
-#: KAView.cpp:69
+#: KAView.cpp:66
+msgid "Searchstring, press <ENTER> to start search"
+msgstr ""
+
+#: KAView.cpp:68
 msgid "Search &Term"
 msgstr "Sök &Term"
 
-#: KAView.cpp:135
+#: KAView.cpp:134
 msgid "Host"
 msgstr "Värd"
 
-#: KAView.cpp:136
+#: KAView.cpp:135
 msgid "Path"
 msgstr "Sökväg"
 
-#: KAView.cpp:269
+#: KAView.cpp:268
 msgid "Host:"
 msgstr "Värd:"
 
-#: KAView.cpp:271
+#: KAView.cpp:270
 msgid "Path:"
 msgstr "Sökväg:"
 
-#: KAView.cpp:273
+#: KAView.cpp:272
 msgid "File:"
 msgstr "Fil:"
 
-#: KAView.cpp:275
+#: KAView.cpp:274
 msgid "Size:"
 msgstr "Storlek:"
 
-#: KAView.cpp:277
+#: KAView.cpp:276
 msgid "Mode:"
 msgstr "Format:"
 
-#: KAView.cpp:279
+#: KAView.cpp:278
 msgid "Date:"
 msgstr "Datum:"
 

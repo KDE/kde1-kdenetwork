@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp 0.9.6\n"
-"POT-Creation-Date: 1998-12-31 02:00+0100\n"
+"POT-Creation-Date: 1999-01-05 02:12+0100\n"
 "PO-Revision-Date: 1998-06-12 08:32 MET DST\n"
 "Last-Translator: Wang Jian <lark@linux.ustc.edu.cn>\n"
 "Language-Team: zh_CN ( gb2312)\n"
@@ -1048,6 +1048,10 @@ msgid ""
 "\n"
 "Make sure that you are not running another kppp,\n"
 "delete the pid file, and restart kppp."
+msgstr ""
+
+#: main.cpp:352
+msgid "Exit"
 msgstr ""
 
 #: main.cpp:413

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KARCHIE\n"
-"POT-Creation-Date: 1998-12-08 02:14+0100\n"
+"POT-Creation-Date: 1999-01-05 02:12+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Kim Enkovaara <kim.enkovaara@iki.fi>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 msgid "O&pen in editor"
 msgstr "Avaa &editorissa"
 
-#: KAMenu.cpp:87 KAView.cpp:155
+#: KAMenu.cpp:87 KAView.cpp:154
 msgid "&Open Dir"
 msgstr "&Avaa hakemisto"
 
-#: KAMenu.cpp:88 KAView.cpp:156
+#: KAMenu.cpp:88 KAView.cpp:155
 msgid "&Download..."
 msgstr "&Siirrä..."
 
@@ -199,39 +199,43 @@ msgstr "Edistyminen: %d"
 msgid "%d try."
 msgstr "%d yritys."
 
-#: KAView.cpp:69
+#: KAView.cpp:66
+msgid "Searchstring, press <ENTER> to start search"
+msgstr ""
+
+#: KAView.cpp:68
 msgid "Search &Term"
 msgstr "&Hakusana"
 
-#: KAView.cpp:135
+#: KAView.cpp:134
 msgid "Host"
 msgstr "Isäntä"
 
-#: KAView.cpp:136
+#: KAView.cpp:135
 msgid "Path"
 msgstr "Polku"
 
-#: KAView.cpp:269
+#: KAView.cpp:268
 msgid "Host:"
 msgstr "Isäntä:"
 
-#: KAView.cpp:271
+#: KAView.cpp:270
 msgid "Path:"
 msgstr "Polku:"
 
-#: KAView.cpp:273
+#: KAView.cpp:272
 msgid "File:"
 msgstr "Tiedosto:"
 
-#: KAView.cpp:275
+#: KAView.cpp:274
 msgid "Size:"
 msgstr "Koko:"
 
-#: KAView.cpp:277
+#: KAView.cpp:276
 msgid "Mode:"
 msgstr "Tila:"
 
-#: KAView.cpp:279
+#: KAView.cpp:278
 msgid "Date:"
 msgstr "Päivä:"
 

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: karchie\n"
-"POT-Creation-Date: 1998-12-08 02:14+0100\n"
+"POT-Creation-Date: 1999-01-05 02:12+0100\n"
 "Last-Translator: Juraj Bednar <bednar@isternet.sk>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,11 +16,11 @@ msgstr ""
 msgid "O&pen in editor"
 msgstr "O&tvori» v editore"
 
-#: KAMenu.cpp:87 KAView.cpp:155
+#: KAMenu.cpp:87 KAView.cpp:154
 msgid "&Open Dir"
 msgstr "&Otvori» prieèinok"
 
-#: KAMenu.cpp:88 KAView.cpp:156
+#: KAMenu.cpp:88 KAView.cpp:155
 msgid "&Download..."
 msgstr "&Stiahnu»..."
 
@@ -197,39 +197,43 @@ msgstr "Postup: %d"
 msgid "%d try."
 msgstr "%d pokus."
 
-#: KAView.cpp:69
+#: KAView.cpp:66
+msgid "Searchstring, press <ENTER> to start search"
+msgstr ""
+
+#: KAView.cpp:68
 msgid "Search &Term"
 msgstr "Hµ&ada»"
 
-#: KAView.cpp:135
+#: KAView.cpp:134
 msgid "Host"
 msgstr "Host"
 
-#: KAView.cpp:136
+#: KAView.cpp:135
 msgid "Path"
 msgstr "Cesta"
 
-#: KAView.cpp:269
+#: KAView.cpp:268
 msgid "Host:"
 msgstr "Host:"
 
-#: KAView.cpp:271
+#: KAView.cpp:270
 msgid "Path:"
 msgstr "Cesta:"
 
-#: KAView.cpp:273
+#: KAView.cpp:272
 msgid "File:"
 msgstr "Súbor:"
 
-#: KAView.cpp:275
+#: KAView.cpp:274
 msgid "Size:"
 msgstr "Veµkos»:"
 
-#: KAView.cpp:277
+#: KAView.cpp:276
 msgid "Mode:"
 msgstr "Mód:"
 
-#: KAView.cpp:279
+#: KAView.cpp:278
 msgid "Date:"
 msgstr "Dátum:"
 

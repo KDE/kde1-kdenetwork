@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp 0.9.6\n"
-"POT-Creation-Date: 1998-12-31 02:00+0100\n"
+"POT-Creation-Date: 1999-01-05 02:12+0100\n"
 "PO-Revision-Date: 1998-12-26 20:50 CET\n"
 "Last-Translator: Miroslav Flídr <flidr@kky.zcu.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -1301,6 +1301,10 @@ msgstr ""
 "\n"
 "Ujistìte se, ¾e není spu¹tìn jiný kppp,\n"
 "sma¾te pid soubor a restartujte kppp."
+
+#: main.cpp:352
+msgid "Exit"
+msgstr ""
 
 #: main.cpp:413
 msgid "Connect to: "
