@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp \n"
-"POT-Creation-Date: 1998-12-06 01:58+0100\n"
+"POT-Creation-Date: 1998-12-14 01:59+0100\n"
 "PO-Revision-Date: 1998-10-25 23:05+0100\n"
 "Last-Translator: Jacek Stolarczyk <jacek@mer.chemia.polsl.gliwice.pl>\n"
 "Content-Type: text/plain; charset=iso-8859-2\n"
@@ -687,15 +687,15 @@ msgstr ""
 msgid "Edit Script"
 msgstr "Edycja skryptu logowania"
 
-#: general.cpp:49
+#: general.cpp:50
 msgid "kppp Setup"
 msgstr "Ustawienia kppp"
 
-#: general.cpp:55
+#: general.cpp:56
 msgid "pppd Timeout:"
 msgstr "Limit czasu pppd:"
 
-#: general.cpp:68
+#: general.cpp:69
 msgid ""
 "<i>kppp</i> will wait this number of seconds\n"
 "to see if a PPP connection is established.\n"
@@ -703,15 +703,15 @@ msgid ""
 "<i>kppp</i> will give up and kill pppd."
 msgstr ""
 
-#: general.cpp:73 general.cpp:428 general.cpp:517
+#: general.cpp:74 general.cpp:400 general.cpp:489
 msgid "Seconds"
 msgstr "sekund"
 
-#: general.cpp:86
+#: general.cpp:87
 msgid "Dock into Panel on Connect"
 msgstr "Poka¿ na panelu po po³±czeniu"
 
-#: general.cpp:88
+#: general.cpp:89
 msgid ""
 "After a connection is established, the\n"
 "window is minimized and a small icon\n"
@@ -722,11 +722,11 @@ msgid ""
 "size."
 msgstr ""
 
-#: general.cpp:101
+#: general.cpp:102
 msgid "Automatic Redial on Disconnect"
 msgstr "Dzwoñ ponownie po roz³±czeniu"
 
-#: general.cpp:107
+#: general.cpp:108
 msgid ""
 "When a connection is established and\n"
 "it somehow gets disconnected, <i>kppp</i>\n"
@@ -735,11 +735,11 @@ msgid ""
 "See <link #redial>here</link> for more on this topic."
 msgstr ""
 
-#: general.cpp:113
+#: general.cpp:114
 msgid "Show Clock on Caption"
 msgstr "Poka¿ czas po³±czenia na pasku zadañ"
 
-#: general.cpp:119
+#: general.cpp:120
 msgid ""
 "When this option is checked, the window\n"
 "title shows the time since a connection\n"
@@ -747,11 +747,11 @@ msgid ""
 "should turn this on"
 msgstr ""
 
-#: general.cpp:124
+#: general.cpp:125
 msgid "Disconnect on X-server shutdown"
 msgstr "Roz³±cz przy zamkniêciu KDE"
 
-#: general.cpp:130
+#: general.cpp:131
 msgid ""
 "Checking this option will close any\n"
 "open connection when the X-server is\n"
@@ -761,32 +761,32 @@ msgid ""
 "See <link #disxserver>here</link> for more on this."
 msgstr ""
 
-#: general.cpp:137
+#: general.cpp:138
 #, fuzzy
 msgid "Quit on Disconnect"
 msgstr "Zakoñcz przy roz³±czeniu"
 
-#: general.cpp:143
+#: general.cpp:144
 msgid ""
 "When this option is turned on, <i>kppp</i>\n"
 "will be closed when you disconnect"
 msgstr ""
 
-#: general.cpp:146
+#: general.cpp:147
 msgid "Minimize Window on Connect"
 msgstr "Minimalizuj okno w czasie po³±czenia"
 
-#: general.cpp:152
+#: general.cpp:153
 msgid ""
 "Iconifies <i>kppp</i>'s window when a\n"
 "connection is established"
 msgstr ""
 
-#: general.cpp:201
+#: general.cpp:202
 msgid "About kppp"
 msgstr "Informacje o kppp"
 
-#: general.cpp:209
+#: general.cpp:210
 msgid ""
 "\n"
 "A dialer and front-end to pppd\n"
@@ -805,15 +805,15 @@ msgid ""
 "(GNU General Public License)."
 msgstr ""
 
-#: general.cpp:237
+#: general.cpp:238
 msgid "Serial device"
 msgstr "Port szeregowy"
 
-#: general.cpp:240
+#: general.cpp:241
 msgid "Modem Device:"
 msgstr "Port szeregowy:"
 
-#: general.cpp:280
+#: general.cpp:255
 msgid ""
 "This specifies the serial port your modem is attached \n"
 "to. On Linux/x86, typically this is either /dev/ttyS0 \n"
@@ -824,15 +824,15 @@ msgid ""
 "should select one of the /dev/ttyIx devices."
 msgstr ""
 
-#: general.cpp:289
+#: general.cpp:264
 msgid "Flow Control:"
 msgstr "Kontrola przep³ywu:"
 
-#: general.cpp:295
+#: general.cpp:270
 msgid "None"
 msgstr "¯aden"
 
-#: general.cpp:304
+#: general.cpp:279
 msgid ""
 "Specifies how the serial port and modem\n"
 "communicate. You should not change this unless\n"
@@ -841,11 +841,11 @@ msgid ""
 "<b>Default</b>: CRTSCTS"
 msgstr ""
 
-#: general.cpp:310
+#: general.cpp:285
 msgid "Line Termination:"
 msgstr "Znak koñca linii:"
 
-#: general.cpp:323
+#: general.cpp:298
 msgid ""
 "Specifies how AT commands are send to your\n"
 "modem. Most modems will work fine with the\n"
@@ -856,11 +856,11 @@ msgid ""
 "<b>Default</b>: CR/LF"
 msgstr ""
 
-#: general.cpp:331
+#: general.cpp:306
 msgid "Connection Speed:"
 msgstr "Szybko¶æ portu:"
 
-#: general.cpp:374
+#: general.cpp:349
 msgid ""
 "Specifies the speed your modem and the serial\n"
 "port talk to each other. You should begin with\n"
@@ -870,43 +870,39 @@ msgid ""
 "that your serial port supports higher speeds)."
 msgstr ""
 
-#: general.cpp:389
-msgid "Lock File Directory:"
-msgstr "Kartoteka pliku blokuj±cego"
-
-#: general.cpp:403
+#: general.cpp:375
 msgid ""
 "To prevent other programs from accessing the\n"
 "modem while a connection is established, a\n"
-"file is created to indicate that the modem\n"
-"is in use. Here you can select the directory\n"
-"where this file is created.\n"
+"file can be created to indicate that the modem\n"
+"is in use. On Linux an example file would be\n"
+"<i>/var/lock/LCK..ttyS1</i>\n"
+"Here you can select whether this locking will\n"
+"be done.\n"
 "\n"
-"Don't touch this unless you know what you are\n"
-"doing. There is no default because it depends\n"
-"on the operating system."
+"<b>Default</b>: On"
 msgstr ""
 
-#: general.cpp:414
+#: general.cpp:386
 msgid "Modem Timeout:"
 msgstr "Limit czasu modemu:"
 
-#: general.cpp:432
+#: general.cpp:404
 msgid ""
 "This specifies how long <i>kppp</i> waits for a\n"
 "<i>CONNECT</i> response from your modem. The\n"
 "recommended value is 30 seconds."
 msgstr ""
 
-#: general.cpp:493 main.cpp:648
+#: general.cpp:465 main.cpp:648
 msgid "Modem"
 msgstr "Modem"
 
-#: general.cpp:504
+#: general.cpp:476
 msgid "Busy Wait:"
 msgstr "Czekaj, gdy zajêty:"
 
-#: general.cpp:522
+#: general.cpp:494
 msgid ""
 "Specifies the number of seconds to wait before\n"
 "redial if all dialed numbers are busy. This is\n"
@@ -917,12 +913,12 @@ msgid ""
 "this unless you need to."
 msgstr ""
 
-#: general.cpp:536
+#: general.cpp:508
 #, fuzzy
 msgid "Modem volume"
 msgstr "Plik blokuj±cy modem:"
 
-#: general.cpp:548
+#: general.cpp:520
 msgid ""
 "Most modems have a speaker which makes\n"
 "a lot of noise when dialing. Here you can\n"
@@ -933,34 +929,34 @@ msgid ""
 "you must modify the modem volume command"
 msgstr ""
 
-#: general.cpp:560
+#: general.cpp:532
 msgid "Modem Asserts CD Line."
 msgstr "Modem kontroluje liniê CD"
 
-#: general.cpp:568
+#: general.cpp:540
 msgid ""
 "This controls how <i>kppp</i> detects that the modem\n"
 "is not responding. Unless you are having\n"
 "problems with this, do not modify this setting.\n"
 "\n"
-"<b>Default</b>: on"
+"<b>Default</b>: off"
 msgstr ""
 
-#: general.cpp:581
+#: general.cpp:553
 msgid "Modem Commands"
 msgstr "Polecenia modemu"
 
-#: general.cpp:583
+#: general.cpp:555
 msgid ""
 "Allows you to change the AT command for\n"
 "your modem."
 msgstr ""
 
-#: general.cpp:586
+#: general.cpp:558
 msgid "Query Modem"
 msgstr "Testuj modem"
 
-#: general.cpp:588
+#: general.cpp:560
 msgid ""
 "Most modems support the ATI command set to\n"
 "find out vendor and revision of your modem.\n"
@@ -970,34 +966,34 @@ msgid ""
 "you setup the modem"
 msgstr ""
 
-#: general.cpp:595
+#: general.cpp:567
 msgid "Terminal"
 msgstr "Terminal"
 
-#: general.cpp:597
+#: general.cpp:569
 msgid ""
 "Opens the built-in terminal program. You\n"
 "can use this if you want to play around\n"
 "with your modem's AT command set"
 msgstr ""
 
-#: general.cpp:661
+#: general.cpp:633
 msgid "Throughput graph"
 msgstr ""
 
-#: general.cpp:670
+#: general.cpp:642
 msgid "Background color"
 msgstr ""
 
-#: general.cpp:677
+#: general.cpp:649
 msgid "Text color"
 msgstr ""
 
-#: general.cpp:684
+#: general.cpp:656
 msgid "Input bytes color"
 msgstr ""
 
-#: general.cpp:691
+#: general.cpp:663
 msgid "Output bytes color"
 msgstr ""
 
@@ -1758,6 +1754,9 @@ msgstr ""
 #: ppplog.cpp:251
 msgid "Write to file"
 msgstr ""
+
+#~ msgid "Lock File Directory:"
+#~ msgstr "Kartoteka pliku blokuj±cego"
 
 #, fuzzy
 #~ msgid "Verify your password."
