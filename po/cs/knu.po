@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: knu 0.3.4\n"
 "POT-Creation-Date: 1998-06-16 14:20+0200\n"
-"PO-Revision-Date: 1998-06-12 08:33 MET DST\n"
+"PO-Revision-Date: 1998-06-18 09:55 MET DST\n"
 "Last-Translator: Miroslav Flídr <flidr@kky.zcu.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -26,14 +26,12 @@ msgid "Host &resolution"
 msgstr "&Resoluce hostitele"
 
 #: knu.cpp:170
-#, fuzzy
 msgid "F&inger"
-msgstr "&Finger"
+msgstr "F&inger"
 
 #: knu.cpp:180 knu.cpp:325
-#, fuzzy
 msgid "&Matt's traceroute"
-msgstr "&Traceroute"
+msgstr "&Mattovo traceroute"
 
 #: knu.cpp:192
 msgid ""
@@ -68,9 +66,9 @@ msgid "P&references..."
 msgstr "P&reference..."
 
 #: knu.cpp:272
-#, fuzzy, c-format
+#, c-format
 msgid "&About %s"
-msgstr "Informace o &Qt"
+msgstr "Informace o %s"
 
 #: knu.cpp:274
 msgid "About &Qt"
