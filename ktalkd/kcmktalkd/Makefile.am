@@ -6,7 +6,7 @@ LDADD = $(all_libraries) -lkdeui -lkdecore -lmediatool -lqt -lXext -lX11 $(LIBSO
 
 bin_PROGRAMS = kcmktalkd
 
-kcmktalkd_SOURCES = main.cpp soundpage.cpp answmachpage.cpp
+kcmktalkd_SOURCES = main.cpp soundpage.cpp answmachpage.cpp forwmachpage.cpp
 kcmktalkd_METASOURCES = USE_AUTOMOC 
 
 install-data-local: 
@@ -17,7 +17,7 @@ uninstall-local:
 	-rm -f $(APPSDIR)/syssound.kdelnk
 
 messages:
-	$(XGETTEXT) -C -ktranslate -ki18n -x $(includedir)/kde.pot $(kcmktalkd_SOURCES) && mv messages.po ../../po/kcmktalkd.pot
+	$(XGETTEXT) -C -ktranslate -ki18n $(kcmktalkd_SOURCES) && mv messages.po kcmktalkd.pot
 
 DISTCLEANFILES = $(kcmktalkd_METASOURCES)
 

@@ -57,7 +57,7 @@ KSoundPageConfig::KSoundPageConfig( QWidget *parent, const char* name )
 
     sound_cb = new QCheckBox(i18n("&Play sound"), this);
     sound_list = new QListBox(this);
-    sound_label = new QLabel(sound_list,i18n("Sound &File"), this);
+    sound_label = new QLabel(sound_list,i18n("&Sound File"), this);
     sound_tip = new QLabel(i18n(
                "Additional WAV files can be dropped onto the sound list."
                ),this);  

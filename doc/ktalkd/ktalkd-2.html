@@ -3,8 +3,8 @@
 <HEAD>
 <TITLE>The ktalkd Handbook: Supported Platforms</TITLE>
 <META HTTP-EQUIV="content-type" CONTENT="text/html; charset=iso-8859-1">
-<META NAME="keywords" CONTENT="KTALKD talk talkd ntalk">
-<META NAME="description" CONTENT="KTALKD talk talkd ntalk">
+<META NAME="keywords" CONTENT="KTALKD talk talkd otalk ntalk">
+<META NAME="description" CONTENT="KTALKD talk talkd otalk ntalk">
 </HEAD>
 <BODY BGCOLOR="#ffffff" LINK="#aa0000" TEXT="#000000" > 
 <FONT FACE="Helvetica">
@@ -20,16 +20,15 @@
 <H3><A NAME="s2">2. Supported Platforms</A></H3>
 
 <P>
-<P><CODE>ktalkd</CODE> has been explicitely tested on the following platforms: 
 <P>
   <UL>
-  <LI>RedHat Linux 5.0</LI>
+  <LI><B>RedHat Linux 5.0</B> : My development platform. Fully tested on it.</LI>
+  <LI><B>Other Linux, BSD</B> : Should compile and run well.</LI>
+  <LI><B>Solaris</B> : It won't work until somebody makes a replacement for snprintf. Of course, one should be able to install another libc to solve this...
+  <LI><B>AIX</B> : I've heard about problems about localtime, ctime, and assorted functions.
   </UL>
-
-  but should compile on many others. It was compiled on S.u.S.E. Linux.
-  I would be glad to receive comments about running <CODE>ktalkd</CODE>
+  I would be glad to receive comments about compiling and running <CODE>ktalkd</CODE>
   on other systems.
-  It won't work on Solaris and AIX until I rewrite the talkd.h file.
 <P>
 <P>
 <P ALIGN="RIGHT">

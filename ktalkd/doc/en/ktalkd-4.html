@@ -18,10 +18,32 @@
   <A HREF="index.html#toc4">Table of Contents</A>
 </P>
 <H3><A NAME="s4">4. Usage</A></H3>
-Not much to say about this : ktalkd is a daemon. No user interface for it.
-The announcement dialog box is trivial : respond or ignore.
-The configuration dialog should be straight forward, but tell me if you 
-experience any problem with it.
+<P>Not much to say about ktalkd : it is a daemon. No user interface for it.<BR>
+The announcement dialog box is trivial : respond or ignore.</P>
+<P>The configuration dialog should be rather straight forward, except for setting up a
+forward to another user (or even to another host).</P>
+<H4>Choosing a forward method</H4>
+<P>None is perfect, they all have pros (+) and cons (-).</P>
+
+<P><B>FWA</B> : Forward announcement only. Direct connection. Not recommended.<BR>
+       (+) You know who is the caller, but<BR>
+       (-) Caller will have to respond to an announcement from you. Annoying.<BR>
+       (-) Don't use if you have an answering machine on your 'away' location<BR>
+ (The answering machine can't popup an announcement, it would be confusing!)
+</P>
+<P><B>FWR</B> : Forward all requests, changing info when necessary. Direct connection.<BR>
+       (+) Caller won't know that you're away, but<BR>
+       (-) You won't really know who's the caller - only his username,<BR>
+           (so you might see "talk from Wintalk@my_host")
+</P>
+<P><B>FWT</B> : Forward all requests and take the talk. No direct connection.<BR>
+       (+) Same as above, but works also if you and caller can't be in direct 
+           contact one with the other (e.g. firewall).<BR>
+       (+) You'll be told who's really talking to you when you accept the talk<BR>
+       (-) But as in FWR, you won't know his machine name in the announcement
+</P>
+<P>In short, use <B>FWT</B> it you want to use it behind a firewall (and if ktalkd
+can access both networks), and <B>FWR</B> otherwise.</P>
 
 <P ALIGN="RIGHT">
   <A HREF="ktalkd-5.html">Next</A>

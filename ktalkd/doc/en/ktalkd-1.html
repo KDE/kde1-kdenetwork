@@ -3,8 +3,8 @@
 <HEAD>
 <TITLE> The ktalkd Handbook: Introduction</TITLE>
 <META HTTP-EQUIV="content-type" CONTENT="text/html; charset=iso-8859-1">
-<META NAME="keywords" CONTENT="KTALKD talk talkd ntalk">
-<META NAME="description" CONTENT="KTALKD talk talkd ntalk">
+<META NAME="keywords" CONTENT="KTALKD talk talkd otalk ntalk">
+<META NAME="description" CONTENT="KTALKD talk talkd otalk ntalk">
 </HEAD>
 <BODY BGCOLOR="#ffffff" LINK="#aa0000" TEXT="#000000" > 
 <FONT FACE="Helvetica">
@@ -40,6 +40,9 @@ message, and mails it to the callee.<BR>
 <LI><B>Multiple displays annoucement</B>: If you are logged remotely (e.g. with an
 <CODE>export DISPLAY=... &lt;command&gt;</CODE>), the X announcement will be made on
 this display too. Answer on the one you want ! <I>New in 0.5.6 !</I><BR>
+<LI><B>Forwarding</B>: You can set up a forward to another user even to another host
+if you're away. There are 3 different forwarding methods. See <A HREF="ktalkd-4.html">this page</A>.
+<I>New in 0.8.0 !</I><BR>
 <LI><B>Configuration</B>: If KDE-compiled, it reads config from KDE config files,
 the sitewide ($KDEDIR/share/config/ktalkdrc) and the user one, in its home directory.
 The sitewide one has to be manually edited by the administrator, but there is now
@@ -48,7 +51,7 @@ be found in the KDE Control Center after installing <CODE>ktalkd</CODE>.
 On non-KDE systems, <CODE>ktalkd</CODE> will read /etc/talkd.conf.<BR>
 <LI><B>Internationalization</B>: Under KDE, the announcement will be in your language provided that
 you set it in the KDE menus and that someone translated <CODE>ktalkdlg</CODE> to your language.<BR>
-Internationalization still has to be done for the configuration dialog...
+<LI><B>Support for otalk and ntalk</B>: ktalkd now supports both protocols. So does ktalk.
 </UL>
 <P>
 <P>
