@@ -3,7 +3,7 @@
 #define _NEW_ASJ_H
 #include <stdlib.h>
 
-void* operator new(unsigned int sizeofX, char *id);
+void* operator new(size_t sizeofX, char *id);
 void* operator new(size_t sizeofX);
 void* operator new[](size_t sizeofX);
 void* operator new[](size_t sizeofX, char *id);
