@@ -161,7 +161,9 @@ public:
     void catchup();
     void addArticle(QString ID,bool onlyUnread=false);
     int countNew(NNTP *server);
+    void clean();
     char *name;
+    bool dirty;
 private:
     KSimpleConfig *sconf;
 };

@@ -7,6 +7,9 @@ Changes made Apr 3
             members), now it uses Icon(), too.
             Removed some painful debug()s.
             Little cleanups of groupdlg's code.
+            Groups now remove old ID's from their article list,
+            not immediately, but it's done in a way to be not
+            too anoying.
 -----------------------------------------------------------------------------
 Changes made Apr 2
 -----------------------------------------------------------------------------

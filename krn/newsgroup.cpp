@@ -403,6 +403,7 @@ NewsGroup::NewsGroup(const char *_name)
     isVisible=0;
     sconf=0;
     name=qstrdup(_name);
+    dirty=false;
 }
 
 
@@ -415,6 +416,28 @@ NewsGroup::~NewsGroup()
     }
     free (name);
 }
+
+void NewsGroup::clean()
+{
+    debug ("cleaning %s",name);
+    getList();
+    
+    Article *iter;
+    QString s;
+    if (artList.isEmpty())
+        s="\n";
+    else for (iter=artList.first();iter!=0;iter=artList.next())
+    {
+        s+=iter->ID;
+        s+="\n";
+    }
+    QString ac=krnpath+name;
+    unlink(ac);
+    kStringToFile (s,ac,false,false);
+    
+    dirty=false;
+}
+
 void NewsGroup::addArticle(QString ID,bool onlyUnread)
 {
     if (ID.isEmpty())
@@ -438,7 +461,10 @@ void NewsGroup::addArticle(QString ID,bool onlyUnread)
         if(art->load())
             artList.append(art);
         else
+        {
+            dirty=true;
             delete art;
+        }
     }
 }
 
