@@ -4,6 +4,10 @@
 
 	File: servercontroller.h
 	Last generated: Sat Nov 29 08:50:19 1997
+	
+ Now Under CVS control.
+
+ $$Id$$
 
  *********************************************************************/
 
@@ -31,7 +35,8 @@ public:
     virtual ~servercontroller();
 
 public slots:
-    virtual void new_connection();
+    // All slots are described in servercontroll.cpp file
+    virtual void new_connection(); 
     virtual void new_ksircprocess(QString);
     virtual void add_toplevel(QString, QString); 
     virtual void delete_toplevel(QString, QString); 
@@ -40,6 +45,8 @@ public slots:
     virtual void recvChangeChannel(QString, QString, QString);
 
 private:
+    // Hold a list of all KSircProcess's for access latter.  Index by server 
+    // name
     QDict<KSircProcess> proc_list;
 
 };

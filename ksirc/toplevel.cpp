@@ -10,7 +10,6 @@
 #include "toplevel.h"
 #include "iocontroller.h"
 #include "open_top.h"
-#include "open_ksirc.h"
 #include <iostream.h>
 #include <termios.h>
 #include <unistd.h>

@@ -30,19 +30,6 @@ Label {
 		MinimumSize {10 10}
 		MaximumSize {32767 32767}
 }
-LineEdit {
-		Text {}
-		EchoMode {Normal}
-		MaxLength {32767}
-		FrameShown {TRUE}
-		Rect {110 10 280 30}
-		Name {LineEdit_1}
-		Variable {nameSLE}
-		Signal {[Protected]  returnPressed --> create_toplevel  ()}
-		LayoutStatus {NoLayout}
-		MinimumSize {10 10}
-		MaximumSize {32767 32767}
-}
 PushButton {
 		ToggleButton {FALSE}
 		Default {FALSE}
@@ -52,6 +39,7 @@ PushButton {
 		AutoResize {FALSE}
 		Rect {200 50 190 30}
 		Name {PushButton_1}
+		Variable {okButton}
 		Font {"helvetica" 12 63 0 0 0 0 0 0}
 		Signal {[Protected]  clicked --> create_toplevel  ()}
 		LayoutStatus {NoLayout}
@@ -68,6 +56,18 @@ PushButton {
 		Rect {10 50 180 30}
 		Name {PushButton_2}
 		Signal {[Protected]  clicked --> terminate  ()}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+ComboBox {
+		Style {ReadWrite}
+		SizeLimit {10}
+		Policy {NoInsertion}
+		AutoResize {FALSE}
+		Rect {100 10 290 30}
+		Name {ComboBox_2}
+		Variable {nameSLE}
 		LayoutStatus {NoLayout}
 		MinimumSize {10 10}
 		MaximumSize {32767 32767}

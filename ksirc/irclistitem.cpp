@@ -17,7 +17,7 @@ ircListItem::ircListItem(QString s, const QColor c, QPixmap *p = 0, QListBox *lb
 
   if(lb){
     rows = 0;
-    uint length = (lb->width()-20) / lb->fontMetrics().width("X");
+    uint length = (lb->width()-35) / lb->fontMetrics().width("X");
     uint sChar = 0;
     uint eChar = length;
     uint eChar_h;
@@ -74,8 +74,8 @@ void ircListItem::paint(QPainter *p)
      lineheight = p->fontMetrics().lineSpacing();
   }
 
-  if(fm.width(text) > (p->window().width()-20)){
-    uint length = (p->window().width()-20) / fm.width("X");
+  if(fm.width(text) > (p->window().width()-35)){
+    uint length = (p->window().width()-35) / fm.width("X");
     uint sChar = 0;
     uint eChar = length;
     uint eChar_h;

@@ -1,6 +1,8 @@
 /**********************************************************************
 
- Server Controller $$Id$$
+ Server Controller 
+
+ $$Id$$
 
  Main Server Controller.  Displays server connection window, and makes 
  new server connection on demand.
@@ -21,7 +23,7 @@
    add_toplevel(QString parent, QString child):
       Args:
 	   parent: the server name that the new channel is being joined on
-	   child: the new channle name
+	   child: the new channel name
       Action:
          Adds "child" to the list of joined channles in the main 
 	 window.  Always call this on new window creation!
@@ -103,7 +105,7 @@ void servercontroller::new_connection()
 void servercontroller::new_ksircprocess(QString str)
 {
 
-  if(str.isEmptry() == TRUE)  // nothing entered, nothing done
+  if(str.isEmpty() == TRUE)  // nothing entered, nothing done
     return;
   if(proc_list[str.data()])   // if it already exists, quit
     return;
