@@ -20,6 +20,7 @@
 
 #include "NNTP.h"
 
+#include <qdir.h>
 #include <qlistbox.h>
 #include <qstrlist.h>
 #include <qaccel.h>
@@ -45,8 +46,8 @@ public:
     
     KMReaderWin *messwin;
     bool unread;
-protected:
-    virtual void closeEvent (QCloseEvent *e);
+//protected:
+//    virtual void closeEvent (QCloseEvent *e);
 
 public slots:
     void updateCounter(const char *);
@@ -56,6 +57,9 @@ public slots:
 private slots:
     bool actions(int);
     bool taggedActions(int);
+    bool allActions(int);
+    bool readActions(int);
+    bool unreadActions(int);
     void fillTree();
     void getSubjects();
     void loadArt (int index,int column);
@@ -69,6 +73,7 @@ private slots:
     void FindThis (const char *,const char *,bool casesen,bool wildmode);
     void goTo (int row);
     void updateScores ();
+    void setTarget(int);
         
 signals:
     void needConnection ();
@@ -85,6 +90,7 @@ private:
     QPopupMenu *taggedArticle;
     QPopupMenu *options;
     KToolBar *tool;
+    KToolBar *tool2;
     KPanner *panner;
     QVBoxLayout *gl;
     KStatusBar *status;

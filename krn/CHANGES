@@ -1,4 +1,15 @@
 -----------------------------------------------------------------------------
+Changes made Apr 2
+-----------------------------------------------------------------------------
+* [Roberto] Switched to kfiledialog.
+            This caused some weird #include trouble, ended #includeing
+            qdir.h in a header file.
+* [Roberto] Now uses toolBar() menuBar() and statusBar()
+            It now also segfaults when closing last window, maybe
+            because of all the latest ktopwidget movement :-(
+* [Roberto] New toolbar for the article window. A little more
+            complex, but I think it's cool.
+-----------------------------------------------------------------------------
 Changes made Apr 1
 -----------------------------------------------------------------------------
 * [Roberto] Updates.

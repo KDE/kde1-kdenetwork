@@ -15,11 +15,11 @@
 // Magnus Reftel  <d96reftl@dtek.chalmers.se>                               //
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
-#include <qfiledlg.h>
 #include "artdlg.h"
 
 
 #define Inherited KTopLevelWidget
+
 
 #include <kapp.h>
 #include <qfile.h>
@@ -53,6 +53,10 @@
 #include "kmcomposewin.h"
 #include "kmreaderwin.h"
 #include "kfileio.h"
+
+
+#include <kfiledialog.h>
+
 
 #include "artdlg.moc"
 
@@ -182,73 +186,80 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     scoring->insertItem(klocale->translate("Update"),UPDATE_SCORES);
     connect (scoring,SIGNAL(activated(int)),SLOT(actions(int)));
     
-    menu = new KMenuBar (this, klocale->translate("menu"));
+    menu = menuBar();
     menu->insertItem (klocale->translate("&File"), article);
     menu->insertItem (klocale->translate("&Tagged"), taggedArticle);
     menu->insertItem (klocale->translate("&Options"), options);
     menu->insertItem (klocale->translate("&Scoring"), scoring);
-    setMenu (menu);
     
     
     QPixmap pixmap;
     
-    tool = new KToolBar (this, "tool");
+    tool = toolBar ();
     QObject::connect (tool, SIGNAL (clicked (int)), this, SLOT (actions (int)));
+
     
     pixmap=kapp->getIconLoader()->loadIcon("left.xpm");
     tool->insertButton (pixmap, PREV, true, klocale->translate("Previous Message"));
     
     pixmap=kapp->getIconLoader()->loadIcon("right.xpm");
     tool->insertButton (pixmap, NEXT, true, klocale->translate("Next Message"));
-    
-    tool->insertSeparator ();
-    
-    pixmap=kapp->getIconLoader()->loadIcon("save.xpm");
-    tool->insertButton(pixmap,SAVE_ARTICLE,true,klocale->translate("Save Article"));
-    
-    pixmap=kapp->getIconLoader()->loadIcon("fileprint.xpm");
-    tool->insertButton(pixmap,PRINT_ARTICLE,true,klocale->translate("Print Article"));
-    
+
     pixmap=kapp->getIconLoader()->loadIcon("find.xpm");
     tool->insertButton(pixmap,FIND_ARTICLE,true,klocale->translate("Find Article"));
     tool->insertSeparator ();
-    
+
     pixmap=kapp->getIconLoader()->loadIcon("filenew.xpm");
     tool->insertButton (pixmap, POST, true, klocale->translate("Post New Article"));
-    
-    pixmap=kapp->getIconLoader()->loadIcon("filemail.xpm");
-    tool->insertButton (pixmap, REP_MAIL, true, klocale->translate("Reply by Mail"));
-    
-    pixmap=kapp->getIconLoader()->loadIcon("followup.xpm");
-    tool->insertButton (pixmap, FOLLOWUP, true, klocale->translate("Post a Followup"));
-    
-    pixmap=kapp->getIconLoader()->loadIcon("mailpost.xpm");
-    tool->insertButton (pixmap, POSTANDMAIL, true, klocale->translate("Post & Mail"));
-    
-    pixmap=kapp->getIconLoader()->loadIcon("fileforward.xpm");
-    tool->insertButton (pixmap, FORWARD, true, klocale->translate("Forward"));
-    
-    tool->insertSeparator ();
-    
-    
+
     pixmap=kapp->getIconLoader()->loadIcon("previous.xpm");
     tool->insertButton (pixmap, ARTLIST, true, klocale->translate("Get Article List"));
+
+    tool2 = toolBar (1);
+    QObject::connect (tool2, SIGNAL (clicked (int)), this, SLOT (actions (int)));
+    
+    QStrList *comboContents=new QStrList();
+    comboContents->append("Current");
+    comboContents->append("Tagged");
+    comboContents->append("All");
+    comboContents->append("Read");
+    comboContents->append("UnRead");
+    tool2->insertCombo(comboContents,1,false,SIGNAL(activated(int)),this,SLOT(setTarget(int)));
+    
+    pixmap=kapp->getIconLoader()->loadIcon("save.xpm");
+    tool2->insertButton(pixmap,SAVE_ARTICLE,true,klocale->translate("Save Article"));
+    
+    pixmap=kapp->getIconLoader()->loadIcon("fileprint.xpm");
+    tool2->insertButton(pixmap,PRINT_ARTICLE,true,klocale->translate("Print Article"));
+
+    pixmap=kapp->getIconLoader()->loadIcon("filemail.xpm");
+    tool2->insertButton (pixmap, REP_MAIL, true, klocale->translate("Reply by Mail"));
+    
+    pixmap=kapp->getIconLoader()->loadIcon("followup.xpm");
+    tool2->insertButton (pixmap, FOLLOWUP, true, klocale->translate("Post a Followup"));
+    
+    pixmap=kapp->getIconLoader()->loadIcon("mailpost.xpm");
+    tool2->insertButton (pixmap, POSTANDMAIL, true, klocale->translate("Post & Mail"));
+    
+    pixmap=kapp->getIconLoader()->loadIcon("fileforward.xpm");
+    tool2->insertButton (pixmap, FORWARD, true, klocale->translate("Forward"));
+    
+    tool2->insertSeparator ();
     
     pixmap=kapp->getIconLoader()->loadIcon("tagged.xpm");
-    tool->insertButton (pixmap, TAG_ARTICLE, true, klocale->translate("Tag Article"));
+    tool2->insertButton (pixmap, TAG_ARTICLE, true, klocale->translate("Tag Article"));
     
     pixmap=kapp->getIconLoader()->loadIcon("locked.xpm");
-    tool->insertButton (pixmap, TOGGLE_EXPIRE, true, klocale->translate("Lock (keep in cache)"));
+    tool2->insertButton (pixmap, TOGGLE_EXPIRE, true, klocale->translate("Lock (keep in cache)"));
     
     pixmap=kapp->getIconLoader()->loadIcon("deco.xpm");
-    tool->insertButton (pixmap, DECODE_ONE_ARTICLE, true, klocale->translate("Decode Article"));
+    tool2->insertButton (pixmap, DECODE_ONE_ARTICLE, true, klocale->translate("Decode Article"));
     
-    pixmap=kapp->getIconLoader()->loadIcon("catch.xpm");
-    tool->insertButton (pixmap, CATCHUP, true, klocale->translate("Catchup"));
-    
-    addToolBar (tool);
-    tool->setBarPos( KToolBar::Top );
-    tool->show();
+    pixmap=kapp->getIconLoader()->loadIcon("red-bullet.xpm");
+    tool2->insertButton (pixmap, MARK_READ, true, klocale->translate("Mark Read"));
+
+    pixmap=kapp->getIconLoader()->loadIcon("green-bullet.xpm");
+    tool2->insertButton (pixmap, MARK_UNREAD, true, klocale->translate("Mark UnRead"));
     
     if (conf->readNumEntry("VerticalSplit",false))
     {
@@ -314,12 +325,9 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     filter2->pop=article;
     
     
-    status = new KStatusBar (this, "status");
+    status = statusBar ();
     status->insertItem ("                 ", 1);
     status->insertItem ("", 2);
-    status->show ();
-    setStatusBar (status);
-    
     
     acc=new QAccel (this);
     acc->insertItem(Key_N,NEXT);
@@ -397,16 +405,11 @@ void Artdlg::copyText(bool)
 {
 }
 
-void Artdlg::closeEvent(QCloseEvent *)
+Artdlg::~Artdlg ()
 {
     group->artList.clear();
     IDList.clear();
     group->isVisible=0;
-    delete this;
-} 
-
-Artdlg::~Artdlg ()
-{
     conf->setGroup("Geometry");
     conf->writeEntry("ArtX",x());
     conf->writeEntry("ArtY",y());
@@ -537,6 +540,108 @@ bool Artdlg::taggedActions (int action)
     return success;
 }
 
+bool Artdlg::readActions (int action)
+{
+    bool success=false;
+    qApp->setOverrideCursor (waitCursor);
+    int c=0;
+    
+    if (action!=PRINT_ARTICLE)
+    {
+        disconnect (list,SIGNAL(highlighted(int,int)),this,SLOT(loadArt(int,int)));
+    }
+    
+    for (char *iter=IDList.first();iter!=0;iter=IDList.next())
+    {
+        if (Article(iter).isRead())
+        {
+            list->setCurrentItem(c);
+            success=actions(action);
+        }
+        c++;
+    }
+    
+    if (action!=PRINT_ARTICLE)
+    {
+        connect (list,SIGNAL(highlighted(int,int)),this,SLOT(loadArt(int,int)));
+    }
+    
+    qApp->restoreOverrideCursor ();
+    switch (action)
+    {
+    case DECODE_ARTICLE:
+        decoder->showWindow();
+    }
+    return success;
+}
+
+bool Artdlg::unreadActions (int action)
+{
+    bool success=false;
+    qApp->setOverrideCursor (waitCursor);
+    int c=0;
+    
+    if (action!=PRINT_ARTICLE)
+    {
+        disconnect (list,SIGNAL(highlighted(int,int)),this,SLOT(loadArt(int,int)));
+    }
+    
+    for (char *iter=IDList.first();iter!=0;iter=IDList.next())
+    {
+        if (!(Article(iter).isRead()))
+        {
+            list->setCurrentItem(c);
+            success=actions(action);
+        }
+        c++;
+    }
+    
+    if (action!=PRINT_ARTICLE)
+    {
+        connect (list,SIGNAL(highlighted(int,int)),this,SLOT(loadArt(int,int)));
+    }
+    
+    qApp->restoreOverrideCursor ();
+    switch (action)
+    {
+    case DECODE_ARTICLE:
+        decoder->showWindow();
+    }
+    return success;
+}
+
+bool Artdlg::allActions (int action)
+{
+    bool success=false;
+    qApp->setOverrideCursor (waitCursor);
+    int c=0;
+    
+    if (action!=PRINT_ARTICLE)
+    {
+        disconnect (list,SIGNAL(highlighted(int,int)),this,SLOT(loadArt(int,int)));
+    }
+    
+    for (char *iter=IDList.first();iter!=0;iter=IDList.next())
+    {
+        list->setCurrentItem(c);
+        success=actions(action);
+        c++;
+    }
+    
+    if (action!=PRINT_ARTICLE)
+    {
+        connect (list,SIGNAL(highlighted(int,int)),this,SLOT(loadArt(int,int)));
+    }
+    
+    qApp->restoreOverrideCursor ();
+    switch (action)
+    {
+    case DECODE_ARTICLE:
+        decoder->showWindow();
+    }
+    return success;
+}
+
 void Artdlg::updateScores()
 {
     Article art;
@@ -556,6 +661,8 @@ bool Artdlg::actions (int action)
     messwin->setEnabled(false);
     bool success=false;
     qApp->setOverrideCursor (waitCursor);
+    int index=list->currentItem();
+    goTo(index);
     switch (action)
     {
     case UPDATE_SCORES:
@@ -571,14 +678,12 @@ bool Artdlg::actions (int action)
         }
     case LOOKUP_ALTAVISTA:
         {
-            int index=list->currentItem();
             Article art(IDList.at(index));
             art.lookupAltavista();
             break;
         }
     case MARK_READ:
         {
-            int index=list->currentItem();
             Article art(IDList.at(index));
             art.threadDepth=*depths.at(index);
             art.setRead(true);
@@ -591,7 +696,6 @@ bool Artdlg::actions (int action)
         }
     case MARK_UNREAD:
         {
-            int index=list->currentItem();
             Article art(IDList.at(index));
             art.threadDepth=*depths.at(index);
             art.setRead(false);
@@ -721,7 +825,6 @@ bool Artdlg::actions (int action)
         }
     case SAVE_ARTICLE:
         {
-            int index=list->currentItem();
             if (index<0)
                 break;
             saveArt(IDList.at(index));
@@ -799,8 +902,6 @@ bool Artdlg::actions (int action)
         }
     case FOLLOWUP:
         {
-            int index = list->currentItem();
-            
             if(index < 0)
                 break;
             
@@ -832,8 +933,6 @@ bool Artdlg::actions (int action)
         }
     case REP_MAIL:
         {
-            int index = list->currentItem();
-            
             if(index < 0)
                 break;
             
@@ -856,8 +955,6 @@ bool Artdlg::actions (int action)
         }
     case FORWARD:
         {
-            int index = list->currentItem();
-            
             if(index < 0)
                 break;
             
@@ -881,8 +978,6 @@ bool Artdlg::actions (int action)
         }
     case POSTANDMAIL:
         {
-            int index = list->currentItem();
-            
             if(index < 0)
                 break;
             Article *art=new Article(IDList.at(index));
@@ -935,8 +1030,6 @@ bool Artdlg::actions (int action)
         
     case TOGGLE_EXPIRE:
         {
-            int index = list->currentItem();
-            
             if(index < 0)
                 break;
             
@@ -972,7 +1065,6 @@ bool Artdlg::actions (int action)
         }
     case DOWNLOAD_ARTICLE:
         {
-            int index = list->currentItem();
             if(index < 0)
                 break;
             QString id=IDList.at(index);
@@ -1144,7 +1236,7 @@ void Artdlg::saveArt (QString id)
         if (!s->isEmpty())
         {
             qApp->setOverrideCursor (arrowCursor);
-            QString f=QFileDialog::getSaveFileName(0,"*",this);
+            QString f=KFileDialog::getSaveFileName(0,"*",this);
             if (!f.isEmpty())
             {
                 int i=QMessageBox::Yes;
@@ -1494,4 +1586,19 @@ void Artdlg::sortHeaders(int column)
         }
     }
     fillTree();
+}
+
+void Artdlg::setTarget(int target)
+{
+    QObject::disconnect (tool2,0,0,0);
+    if (target==0)
+        QObject::connect (tool2, SIGNAL (clicked (int)), this, SLOT (actions (int)));
+    else if (target==1)
+        QObject::connect (tool2, SIGNAL (clicked (int)), this, SLOT (taggedActions (int)));
+    else if (target==2)
+        QObject::connect (tool2, SIGNAL (clicked (int)), this, SLOT (allActions (int)));
+    else if (target==3)
+        QObject::connect (tool2, SIGNAL (clicked (int)), this, SLOT (readActions (int)));
+    else if (target==4)
+        QObject::connect (tool2, SIGNAL (clicked (int)), this, SLOT (unreadActions (int)));
 }

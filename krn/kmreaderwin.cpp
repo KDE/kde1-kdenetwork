@@ -1,7 +1,7 @@
 // kmreaderwin.cpp
 // Author: Markus Wuebben <markus.wuebben@kde.org>
 
-#include <qfiledlg.h>
+#include <kfiledialog.h>
 #include <stdlib.h>
 #include <sys/stat.h>
 
@@ -769,7 +769,7 @@ void KMReaderWin::slotAtmSave()
   mMsg->bodyPart(mAtmCurrent, &msgPart);
   
   fileName = msgPart.name();
-  fileName = QFileDialog::getSaveFileName(NULL, "*", this);
+  fileName = KFileDialog::getSaveFileName(NULL, "*", this);
   if(fileName.isEmpty()) return;
 
   kbp->busy();

@@ -243,7 +243,6 @@ bool Article::load()
     }
     if (!content.dptr)
     {
-        debug ("couldn't load");
         return false; //Couldn't load it
     }
     

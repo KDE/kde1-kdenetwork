@@ -26,7 +26,7 @@
 #include <kstdaccel.h>
 #include <mimelib/mimepp.h>
 #include <html.h>
-#include <qfiledlg.h>
+#include <kfiledialog.h>
 #include <qlabel.h>
 #include <qlayout.h>
 #include <qlist.h>
@@ -1138,7 +1138,7 @@ void KMComposeWin::slotAttachFile()
   // We will not care about any permissions, existence or whatsoever in 
   // this function.
   QString fileName;
-  QFileDialog fdlg(".","*",this,NULL,TRUE);
+  KFileDialog fdlg(".","*",this,NULL,TRUE);
 
   fdlg.setCaption(i18n("Attach File"));
   if (!fdlg.exec()) return;
@@ -1156,7 +1156,7 @@ void KMComposeWin::slotInsertFile()
   QString fileName, str;
   int col, line;
 
-  QFileDialog fdlg(".", "*", this, NULL, TRUE);
+  KFileDialog fdlg(".", "*", this, NULL, TRUE);
   fdlg.setCaption(i18n("Include File"));
   if (!fdlg.exec()) return;
 
@@ -1248,7 +1248,7 @@ void KMComposeWin::slotAttachSave()
   pname = msgPart->name();
   if (pname.isEmpty()) pname="unnamed";
 
-  fileName = QFileDialog::getSaveFileName(".", "*", NULL, pname);
+  fileName = KFileDialog::getSaveFileName(".", "*", NULL, pname);
   if (fileName.isEmpty()) return;
   kStringToFile(msgPart->bodyDecoded(), fileName, TRUE);
 }
@@ -1487,7 +1487,7 @@ void KMComposeWin::slotAppendSignature()
   if (sigFileName.isEmpty())
   {
     // open a file dialog and let the user choose manually
-    QFileDialog dlg;
+    KFileDialog dlg(0);
     dlg.setCaption(i18n("Choose Signature File"));
     if (!dlg.exec()) return;
     sigFileName = dlg.selectedFile();

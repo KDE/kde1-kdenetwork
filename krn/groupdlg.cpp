@@ -115,12 +115,7 @@ bool checkPixmap(KTreeViewItem *item,void *)
     return false;
 }
 
-Groupdlg::Groupdlg
-(
- const char *name
-)
-:
-Inherited (name)
+Groupdlg::Groupdlg(const char *name):Inherited (name)
 {
     groups.setAutoDelete(true);
     subscr.setAutoDelete(false);
@@ -185,7 +180,7 @@ Inherited (name)
      QPopupMenu *help = kapp->getHelpMenu(true,"Krn 0.2.5");
     */
     
-    KMenuBar *menu = new KMenuBar (this, "menu");
+    KMenuBar *menu = menuBar ();
     
     menu->insertItem (klocale->translate("&File"), file);
     menu->insertItem (klocale->translate("&Newsgroup"), newsgroup);
@@ -193,11 +188,9 @@ Inherited (name)
     menu->insertSeparator();
     menu->insertItem (klocale->translate("&Help"), help);
     
-    setMenu (menu);
-    
     QPixmap pixmap;
     
-    KToolBar *tool = new KToolBar (this, "tool");
+    KToolBar *tool = toolBar ();
     QObject::connect (tool, SIGNAL (clicked (int)), this, SLOT (currentActions (int)));
     
     pixmap=kapp->getIconLoader()->loadIcon("connected.xpm");
@@ -214,7 +207,6 @@ Inherited (name)
     tool->insertSeparator ();
     
     tool->insertButton (kapp->getIconLoader()->loadIcon("subscr.xpm"), SUBSCRIBE, true, "(Un)Subscribe");
-    addToolBar (tool);
     tool->insertSeparator ();
     
     pixmap=kapp->getIconLoader()->loadIcon("reload.xpm");
@@ -232,11 +224,9 @@ Inherited (name)
     filter->pop=newsgroup;
     
     
-    KStatusBar *status = new KStatusBar (this, "status");
+    KStatusBar *status =statusBar ();
     status->insertItem ("                               ", 1);
     status->insertItem ("", 2);
-    status->show ();
-    setStatusBar (status);
     
     conf->setGroup("NNTP");
     QString sname=conf->readEntry("NNTPServer");

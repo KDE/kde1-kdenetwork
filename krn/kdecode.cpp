@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #undef Unsorted
-#include <qfiledlg.h>
+#include <kfiledialog.h>
 #include <qfile.h>
 #include <qstring.h>
 #include <qstrlist.h>
@@ -132,7 +132,7 @@ void KDecode::decode(int line,const char *destName)
     l=UUGetFileListItem(i);
     QString f;
     if (!destName)
-        f= QFileDialog::getSaveFileName(0,0,0,l->filename);
+        f= KFileDialog::getSaveFileName(0,0,0,l->filename);
     else
     {
         f=destName;
