@@ -16,7 +16,7 @@ make
 make install
 
 o Once kppp is in place you have to give kppp setuid permission:
-  cd /usr/local/kde/bin ; chmod +s kppp. This might not 
+  cd $(KDEDIR)/bin ; chmod +s kppp. This might not 
   be absolutely necessary ( depending on the permissions 
   set on the modem device and /etc/resolv.conf but if you can 
   affort to, this will make your life much esier.
