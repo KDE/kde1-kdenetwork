@@ -24,28 +24,19 @@
 
 
 #include <unistd.h>
-#include "main.h"
 #include <sys/ioctl.h>
 #include <termios.h>
 #include <sys/types.h>
-#include "miniterm.h"
-#include "finishpic.h"
-#include "resetpic.h"
-#include "optionspic.h"
-#include "helppic.h"
+
 #include <kmsgbox.h>
+
+
+#include "main.h"
 #include "connect.h"
+#include "miniterm.h"
 
-#define TOOLBAR_HEIGHT 26
-#define TOOLBAR_X_OFFSET 10
-#define TOOLBAR_Y_OFFSET 5
-#define TOOLBAR_BUTTON_HEIGHT 28
-#define TOOLBAR_BUTTON_WIDTH 28
-
-#define BUTTON_HEIGHT		25
-#define BUTTON_WIDTH		25
-#define BUTTON_SEPARATION	6
-
+#define T_WIDTH 550
+#define T_HEIGHT 400
 
 #ifdef NO_USLEEP
 extern int usleep( long usec );
@@ -62,20 +53,19 @@ MiniTerm::MiniTerm(QWidget *parent=0, const char *name=0)
   col = line = col_start = line_start = 0;
   modemfd = -1;
 
-  setCaption("kppp mini terminal");
+  setCaption("Kppp Mini-Terminal");
 
   m_file = new QPopupMenu;
   m_file->insertItem( "&Quit",this, SLOT(cancelbutton()) );
   m_edit = new QPopupMenu;
   m_options = new QPopupMenu;
-  m_options->insertItem("&Options");
+  m_options->insertItem("&Reset Modem",this,SLOT(resetModem()));
   m_help = new QPopupMenu;
   m_help->insertItem( "&Help",this, SLOT(help()) );
   
-  menubar = new QMenuBar( this );
+  menubar = new KMenuBar( this );
   menubar->insertItem( "&File", m_file );
-  //  menubar->insertItem( "&Edit", m_edit );
-  menubar->insertItem( "&Options", m_options );
+  menubar->insertItem( "&Modem", m_options );
   menubar->insertItem( "&Help", m_help);
   
   statusbar = new QLabel(this);
@@ -87,66 +77,16 @@ MiniTerm::MiniTerm(QWidget *parent=0, const char *name=0)
   terminal = new MyTerm(this,"term");
   connect(terminal,SIGNAL(got_a_line()),this,SLOT(process_line()));
 
-  pb1 = new QPushButton(this);
-  QToolTip::add(pb1,"Options");
-  //connect( pb1, SIGNAL( clicked() ), SLOT( options() ) );
+  setupToolbar();
 
-  if ( !pb1_pixmap.loadFromData(options_xpm_data, options_xpm_len) ) {
-    QMessageBox::warning(this, "Error", "Could not load option.xpm");
-  }
-
-  pb1->setPixmap( pb1_pixmap );
-
-  pb2 = new QPushButton(this);
-  QToolTip::add(pb2,"Quit Mini-Terminal");
-  connect( pb2, SIGNAL( clicked() ), SLOT( cancelbutton() ) );
-
-  if ( !pb2_pixmap.loadFromData(finish_xpm_data, finish_xpm_len) ) {
-   QMessageBox::warning(this, "Error", "Could not load finish.xpm");
-  }
-  pb2->setPixmap( pb2_pixmap );
-
-  pb3 = new QPushButton( this);
-  QToolTip::add(pb3,"Reset Modem");
-
-  connect( pb3, SIGNAL( clicked() ), SLOT( resetModem() ) );
-
-  if ( !pb3_pixmap.loadFromData(reset_xpm_data, reset_xpm_len) ) {
-    QMessageBox::warning(this, "Error", "Could not load reset.xpm");
-  }
-  pb3->setPixmap( pb3_pixmap );
-
-  pb4 = new QPushButton( this);
-  QToolTip::add(pb4,"Help");
-  connect( pb4, SIGNAL( clicked() ), SLOT( help() ) );
-
-  if ( !pb4_pixmap.loadFromData(help_xpm_data, help_xpm_len) ) {
-    QMessageBox::warning(this, "Error", "Could not load help.xpm");
-  }
-  pb4->setPixmap( pb4_pixmap );
-
-
-#define T_WIDTH 550
-#define T_HEIGHT 400
-#define B_XOFFSET 3
-#define B_YOFFSET 2
-
-
-  menubar->setGeometry(0,0,T_WIDTH,30);
-  pb1->setGeometry( B_XOFFSET, menubar->height() + B_YOFFSET, 
-		    BUTTON_WIDTH, BUTTON_HEIGHT );
-  pb2->setGeometry( 2*B_XOFFSET + BUTTON_WIDTH, menubar->height() + B_YOFFSET, 
-		    BUTTON_WIDTH, BUTTON_HEIGHT );
-  pb3->setGeometry( 3*B_XOFFSET + 2*BUTTON_WIDTH, menubar->height() + B_YOFFSET, 
-		    BUTTON_WIDTH, BUTTON_HEIGHT );
-  pb4->setGeometry( 4*B_XOFFSET + 3*BUTTON_WIDTH, menubar->height() + B_YOFFSET, 
-		    BUTTON_WIDTH, BUTTON_HEIGHT );
-
-  terminal->setGeometry(0, menubar->height() + 2*B_YOFFSET + BUTTON_HEIGHT , 
-   T_WIDTH,  T_HEIGHT - menubar->height() - 22 - 2*B_YOFFSET - BUTTON_HEIGHT);
   statusbar->setGeometry(0, T_HEIGHT - 20, T_WIDTH - 70, 20);
   statusbar2->setGeometry(T_WIDTH - 70, T_HEIGHT - 20, 70, 20);
 
+  menubar->setGeometry(0,0,T_WIDTH,30);
+
+  terminal->setGeometry(0, menubar->height() + toolbar->height() , 
+   T_WIDTH,  T_HEIGHT - menubar->height() - toolbar->height() - statusbar->height());
+ 
   readtimer = new QTimer(this);
   connect(readtimer,SIGNAL(timeout()),this,SLOT(readtty()));
 
@@ -157,6 +97,33 @@ MiniTerm::MiniTerm(QWidget *parent=0, const char *name=0)
 }  
 
 
+void MiniTerm::setupToolbar(){
+
+  toolbar = new KToolBar( this );
+
+  KIconLoader *loader = kapp->getIconLoader();
+
+  QPixmap pixmap;
+
+  pixmap = loader->loadIcon("exit.xpm");
+  toolbar->insertButton(pixmap, 0,
+		      SIGNAL(clicked()), this,
+		      SLOT(cancelbutton()), TRUE, klocale->translate("Quit MiniTerm"));
+
+
+  pixmap = loader->loadIcon("back.xpm");
+  toolbar->insertButton(pixmap, 0,
+		      SIGNAL(clicked()), this,
+		      SLOT(resetModem()), TRUE, klocale->translate("Reset Modem"));
+
+  pixmap = loader->loadIcon("help.xpm");
+  toolbar->insertButton(pixmap, 0,
+		      SIGNAL(clicked()), this,
+		      SLOT(help()), TRUE, klocale->translate("Help"));
+
+  toolbar->setBarPos( KToolBar::Top );
+
+}
 
 void MiniTerm::process_line(){
 
@@ -164,28 +131,19 @@ void MiniTerm::process_line(){
   newline = terminal->textLine(line);
   newline = newline.remove(0,col_start);
   newline = newline.stripWhiteSpace();
-
-  //  printf("write:%s\n",newline.data());
   writeline(newline.data());
 
 }
 
-void MiniTerm::resizeEvent(QResizeEvent *e){
-
-  (void) e;
+void MiniTerm::resizeEvent(QResizeEvent*){
 
   menubar->setGeometry(0,0,width(),30);
-  pb1->setGeometry( B_XOFFSET, menubar->height() + B_YOFFSET, 
-		    BUTTON_WIDTH, BUTTON_HEIGHT );
-  pb2->setGeometry( 2*B_XOFFSET + BUTTON_WIDTH, menubar->height() + B_YOFFSET, 
-		    BUTTON_WIDTH, BUTTON_HEIGHT );
-  pb3->setGeometry( 3*B_XOFFSET + 2*BUTTON_WIDTH, menubar->height() + B_YOFFSET, 
-		    BUTTON_WIDTH, BUTTON_HEIGHT );
-  pb4->setGeometry( 4*B_XOFFSET + 3*BUTTON_WIDTH, menubar->height() + B_YOFFSET, 
-		    BUTTON_WIDTH, BUTTON_HEIGHT );
 
-  terminal->setGeometry(0, menubar->height() + 2*B_YOFFSET + BUTTON_HEIGHT , 
-     width(),  height() - menubar->height() - 22 - 2*B_YOFFSET - BUTTON_HEIGHT);
+  toolbar->setGeometry(0,menubar->height(),width(),toolbar->height());
+
+  terminal->setGeometry(0, menubar->height() + toolbar->height() , 
+   width(),  height() - menubar->height() - toolbar->height() - statusbar->height());
+
   statusbar->setGeometry(0, height() - 20, width() - 70, 20);
   statusbar2->setGeometry(width() - 70, height() - 20, 70, 20);
 
@@ -260,9 +218,10 @@ void MiniTerm::cancelbutton() {
 
 
   readtimer->stop();
-  //  statusBar->setText("One Moment Please ...");
+  statusbar->setText("Hanging up ...");
   app->processEvents();
-  
+  app->flushX();
+
   if(modemfd >= 0) {
     writeline(gpppdata.modemHangupStr());
     usleep(100000); // 0.1 sec
@@ -271,7 +230,7 @@ void MiniTerm::cancelbutton() {
 
   closetty();
   unlockdevice();
-  //  delete terminal;
+
   reject();
 }
 
@@ -280,7 +239,10 @@ void MiniTerm::cancelbutton() {
 void MiniTerm::resetModem(){
  
   statusbar->setText("Resetting Modem");
+  terminal->newLine();
   app->processEvents();
+  app->flushX();
+
   if(modemfd >= 0) {
     writeline(gpppdata.modemHangupStr());
     usleep(100000); // 0.1 sec
@@ -299,30 +261,24 @@ bool MiniTerm::closetty(){
     }
 
     ::close(modemfd);
+    modemfd = -1;
   return TRUE;
 }
 
 
 bool MiniTerm::opentty() {
 
-  // just in case we get a modemfd
-  // but can't tcgetattr and then call closetty()
-
-  memset(&initial_tty,'\0',sizeof(initial_tty)); 
-
-
+ memset(&initial_tty,'\0',sizeof(initial_tty)); 
+ 
  if((modemfd = open(gpppdata.modemDevice(), O_RDWR|O_NDELAY)) < 0){
 
     statusbar->setText("Can't open Modem");
     return FALSE;
   }
  
- /* n = fcntl(modemfd, F_GETFL, 0);
- (void) fcntl(modemfd, F_SETFL, n & ~O_NDELAY);*/
-
   if(tcgetattr(modemfd, &tty) < 0){
 
-    statusbar->setText("Can't tcgetattr()\n");
+    statusbar->setText("tcgetattr() failed\n");
     return FALSE;
   }
 
@@ -336,18 +292,17 @@ bool MiniTerm::opentty() {
   // clearing CLOCAL as below ensures we observe the modem status lines
   //  tty.c_cflag &= ~(CSIZE | CSTOPB | PARENB | CLOCAL);  
  
-  //experimental
+ 
   tty.c_cflag &= ~(CSIZE | CSTOPB | PARENB);
   tty.c_cflag |= CLOCAL ; //ignore modem satus lines
   tty.c_oflag &= ~OPOST; //no outline processing -- transparent output
-  //end exerimental
-
+ 
   tty.c_cflag |= CS8 | CREAD;       
   tty.c_iflag = IGNBRK | IGNPAR | ISTRIP;       // added ISTRIP
   tty.c_lflag &= ~ICANON;  			// non-canonical mode
   tty.c_lflag &= ~(ECHO|ECHOE|ECHOK|ECHOKE);
 
-  // flow control 
+ 
   if(strcmp(gpppdata.flowcontrol(), "None") != 0) {
     if(strcmp(gpppdata.flowcontrol(), "CRTSCTS") == 0) {
       tty.c_cflag |= CRTSCTS;
@@ -370,7 +325,7 @@ bool MiniTerm::opentty() {
 
   if(tcsetattr(modemfd, TCSANOW, &tty) < 0){
 
-    statusbar->setText("Can't tcsetattr()\n");
+    statusbar->setText("tcsetattr() failed\n");
     return FALSE;
   }
 
@@ -438,21 +393,41 @@ void MiniTerm::hangup() {
 
   struct termios temptty;
 
-  // TODO:
-  // does temptty need to be memset with zeroes ?????
+  if(modemfd >= 0) {
 
+    // Properly bracketed escape code  
+    tcflush(modemfd,TCOFLUSH);
+    // +3 because quiet time must be greater than guard time.
+    usleep((gpppdata.modemEscapeGuardTime()+3)*20000);
 
-  tcsendbreak(modemfd, 0);
-  tcgetattr(modemfd, &temptty);
-  cfsetospeed(&temptty, B0);
-  cfsetispeed(&temptty, B0);
-  tcsetattr(modemfd, TCSAFLUSH, &temptty);
+    write(modemfd, gpppdata.modemEscapeStr(), strlen(gpppdata.modemEscapeStr()) );  
 
-  usleep(100000); // wait 0.1 secs 
+    tcflush(modemfd,TCOFLUSH);
+    usleep((gpppdata.modemEscapeGuardTime()+3)*20000);
 
-  cfsetospeed(&temptty, modemspeed());
-  cfsetispeed(&temptty, modemspeed());
-  tcsetattr(modemfd, TCSAFLUSH, &temptty);
+    // Then hangup command
+    writeline(gpppdata.modemHangupStr());
+    
+    if(gpppdata.FastModemInit())
+      usleep(10000); // 0.01 sec
+    else
+      usleep(1000000); // 1 sec
+
+    tcsendbreak(modemfd, 0);
+
+    tcgetattr(modemfd, &temptty);
+    cfsetospeed(&temptty, B0);
+    cfsetispeed(&temptty, B0);
+    tcsetattr(modemfd, TCSAFLUSH, &temptty);
+
+    usleep(10000); // wait 0.01 secs 
+
+    cfsetospeed(&temptty, modemspeed());
+    cfsetispeed(&temptty, modemspeed());
+    tcsetattr(modemfd, TCSAFLUSH, &temptty);
+   
+  }
+
 
 }
 
@@ -460,17 +435,12 @@ void MiniTerm::hangup() {
 bool MiniTerm::writeChar(char c){
 
   write(modemfd,&c,1);
-  //  printf("%x\n",c);
   return true;
+
 }
 
 bool MiniTerm::writeline(const char *buf) {
 
-  /*  struct termios tty;
-  tcgetattr(modemfd, &tty);
-  tty.c_lflag &= ~(ECHO);
-  tcsetattr(modemfd,TCSANOW,&tty);
-  */
 
   write(modemfd, buf, strlen(buf));
 
@@ -483,8 +453,6 @@ bool MiniTerm::writeline(const char *buf) {
   if(strcmp(gpppdata.enter(), "CR") == 0)
     write(modemfd, "\r", 1);
 
-  //  ioctl(modemfd, TIOCFLUSH, (void *)0);
-  //  ioctl(modemfd, TCFLSH, 2);
   return true;
 }
 
@@ -499,14 +467,7 @@ void MiniTerm::closeEvent( QCloseEvent *e ){
 void MiniTerm::help(){
 
   app->invokeHTMLHelp("kppp/kppp.html","");
-  /*  if ( fork() == 0 )
-        {
-                QString path = DOCS_PATH;
-                path += "/kppp.html";
-                execlp( "kdehelp", "kdehelp", path.data(), 0 );
-                ::exit( 1 );
-        }
-	*/
+
 }
 
 
@@ -514,7 +475,7 @@ MyTerm::MyTerm(QWidget *parent=0 ,const char* name=0)
   : QMultiLineEdit(parent, name)
 {
    p_parent =   (MiniTerm*)  parent;
-   this->setFont(QFont("fixed",10,QFont::Normal));
+   this->setFont(QFont("courier",12,QFont::Normal));
   
 }
 
@@ -527,12 +488,8 @@ void MyTerm::keyPressEvent(QKeyEvent *k) {
     return;
   }
 
-  if((k->ascii() ==8) || k->ascii() == 127){ //delete and backspace
-    //    return;
-  }
-  p_parent->writeChar((char) k->ascii());
 
-  //  QMultiLineEdit::keyPressEvent(k);
+  p_parent->writeChar((char) k->ascii());
 
 }
 
@@ -565,19 +522,18 @@ void MyTerm::myreturn() {
   
     int column;
     int line;
-    //  setAutoUpdate(FALSE);
+
     getCursorPosition(&line,&column);
     for (int i = 0; i < column;i++)
       QMultiLineEdit::cursorLeft();
-    //  setAutoUpdate(TRUE);
+
 }
 
 void MyTerm::mynewline() {
   
-  //  setAutoUpdate(FALSE);
+
     QMultiLineEdit::end(FALSE);
     QMultiLineEdit::newLine();
-    //setAutoUpdate(TRUE);
 
 }
 

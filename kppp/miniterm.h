@@ -45,12 +45,18 @@
 #include <qrangect.h>
 #include <qmlined.h> 
 #include <qtooltip.h> 
+
 #include <unistd.h>
 #include <termios.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <termios.h>
+
+#include <ktoolbar.h>
+#include <kmenubar.h>
+#include <kiconloader.h>
+
 #include "pppdata.h"
 
 class MiniTerm;
@@ -92,7 +98,6 @@ public:
 
   MiniTerm(QWidget *parent=0, const char *name=0);
 
-//signals:
 
 void closeEvent( QCloseEvent *e );
 void resizeEvent(QResizeEvent *e);
@@ -111,7 +116,10 @@ public slots:
   void help();
   void resetModem();
   bool writeChar(char c);
+
 protected:
+
+  void setupToolbar();
 
   QPushButton *cancel;
   MyTerm *terminal;
@@ -120,7 +128,8 @@ protected:
 
   struct termios tty;
   struct termios initial_tty;
-  QMenuBar    * menubar;
+  KMenuBar    * menubar;
+  KToolBar     * toolbar;
   QPopupMenu  * m_file;
   QPopupMenu  * m_edit;
   QPopupMenu  * m_options;
