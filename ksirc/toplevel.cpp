@@ -64,15 +64,16 @@ QPixmap *KSircTopLevel::pix_greenp = 0L;
 QPixmap *KSircTopLevel::pix_bluep = 0L;
 QPixmap *KSircTopLevel::pix_madsmile = 0L;
 
-KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name) 
+KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name)  /*fold00*/
   : KTopLevelWidget(name),
     KSircMessageReceiver(_proc)
    
 {
-
-  /*
-   * Setup window for operation.  We don't handle io!
+  /* 
+   * Make sure we tell others when we are destroyed
    */
+  connect(this, SIGNAL(destroyed()),
+	  this, SLOT(iamDestroyed()));
 
   /*
    * QPopup title bar, does not actually do anything at this time
@@ -318,7 +319,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
 }
 
 
-KSircTopLevel::~KSircTopLevel()
+KSircTopLevel::~KSircTopLevel() /*fold00*/
 {
 
   // Cleanup and shutdown
@@ -359,7 +360,7 @@ KSircTopLevel::~KSircTopLevel()
 
 }
 
-void KSircTopLevel::show()
+void KSircTopLevel::show() /*fold00*/
 {
   if(ticker){
     ticker->show();
@@ -384,7 +385,7 @@ void KSircTopLevel::show()
 //  }
 //}
 
-void KSircTopLevel::TabNickCompletion() 
+void KSircTopLevel::TabNickCompletion()  /*fold00*/
 {
   /* 
    * Gets current text from lined find the last item and try and perform
@@ -435,7 +436,7 @@ void KSircTopLevel::TabNickCompletion()
 
 }
   
-void KSircTopLevel::sirc_receive(QString str)
+void KSircTopLevel::sirc_receive(QString str) /*fold00*/
 {
 
   /* 
@@ -517,7 +518,7 @@ void KSircTopLevel::sirc_receive(QString str)
   }
 }
 
-void KSircTopLevel::sirc_line_return()
+void KSircTopLevel::sirc_line_return() /*fold00*/
 {
 
   /* Take line from SLE, and output if to dsirc */
@@ -626,7 +627,7 @@ void KSircTopLevel::sirc_line_return()
   
 }
 
-void KSircTopLevel::sirc_write(QString &str)
+void KSircTopLevel::sirc_write(QString &str) /*fold00*/
 {
   if(channel_name[0] != '!'){
     if(str[0] != '/'){
@@ -646,7 +647,7 @@ void KSircTopLevel::sirc_write(QString &str)
 
 }
 
-ircListItem *KSircTopLevel::parse_input(QString &string)
+ircListItem *KSircTopLevel::parse_input(QString &string) /*FOLD00*/
 {
 
   /* 
@@ -690,13 +691,6 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
   // \002: control character of some kinda, used for bold? -> ""
   // \037: bold or underline, evil messy char              -> Not Used
   // \000: terminating null
-  char evil[] = {'\n', '\r', '\002', '\037', '\000'};
-  char *evil_rep[] = {
-    " ",
-    "",
-    "",
-    ""
-  };
   QString s3, s4, channel;
   int pos, pos2;
   QColor *color = kSircConfig->colour_text;
@@ -708,16 +702,6 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
    */
 
   int no_output = 0;
-
-  for(int i = 0; evil[i] != 0; i++){
-    pos = string.find(evil[i], 0, FALSE);  // look for first occurance
-    while(pos >= 0){                       // If found, start stepping
-      string.remove(pos, 1);               // Remove evil char
-      string.insert(pos, evil_rep[i]);     // insert replacement
-      pos = string.find(evil[i], pos+strlen(evil_rep[i]), FALSE);
-					   // find next
-    }
-  }
 
   //  if(string[0] == '~'){
   //    pos = 1;
@@ -892,41 +876,53 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	color = kSircConfig->colour_error;  // set the clour to red
 	break;
       case '#':                             // Channel listing of who's in it
-	nicks->setAutoUpdate(FALSE);        // clear and update nicks
-	if(continued_line == FALSE)
-	  nicks->clear();
-	continued_line = TRUE;
-	pos = string.find(": ", 0, FALSE) + 1; // Find start of nicks
-	while(pos > 0){                     // While there's nick to go...
-	  pos2 = string.find(" ", pos + 1, FALSE); // Find end of nick
-	  if(pos2 < pos)
-	    pos2 = string.length();         // If the end's not found, 
-	                                    // set to end of the string
-	  s3 = string.mid(pos+1, pos2 - pos - 1); // Get nick
-	  if(s3[0] == '@'){    // Remove the op part if set
-	    s3.remove(0, 1);
-	    nickListItem *irc = new nickListItem();
-	    irc->setText(s3);
-	    irc->setOp(TRUE);
-	    nicks->inSort(irc);
-	  }
-	  else if(s3[0] == '+'){
-	    s3.remove(0, 1);
-	    nickListItem *irc = new nickListItem();
-	    irc->setVoice(TRUE);
-	    irc->setText(s3);
-	    nicks->inSort(irc);	    
-	  }
-	  else{
-	    nicks->inSort(s3);
-	  }
-	  pos = string.find(" ", pos2, FALSE); // find next nick
-	}
-	nicks->setAutoUpdate(TRUE);         // clear and repaint the listbox
-	nicks->repaint(TRUE);
-	color = kSircConfig->colour_info;    // set to cyan colouring
-	no_output = 1;
-	break;
+        // Get the channel name portion of the string
+        pos = string.find("#",1,FALSE);
+        pos2 = string.find(":",pos,FALSE);
+        if(pos2 > pos){
+          QString chan_name = string.mid(pos, pos2-pos);
+          if (strcasecmp(channel_name,chan_name.data()) != 0){
+            string.remove(0,2);
+            pixmap = pix_info;
+            color = kSircConfig->colour_info;
+            break; // If it's not for us, bail out
+          }
+        }
+        nicks->setAutoUpdate(FALSE);        // clear and update nicks
+        if(continued_line == FALSE)
+          nicks->clear();
+        continued_line = TRUE;
+        pos = string.find(": ", 0, FALSE) + 1; // Find start of nicks
+        while(pos > 0){                     // While there's nick to go...
+          pos2 = string.find(" ", pos + 1, FALSE); // Find end of nick
+          if(pos2 < pos)
+            pos2 = string.length();         // If the end's not found,
+          // set to end of the string
+          s3 = string.mid(pos+1, pos2 - pos - 1); // Get nick
+          if(s3[0] == '@'){    // Remove the op part if set
+            s3.remove(0, 1);
+            nickListItem *irc = new nickListItem();
+            irc->setText(s3);
+            irc->setOp(TRUE);
+            nicks->inSort(irc);
+          }                                  // Remove voice if set
+          else if(s3[0] == '+'){
+            s3.remove(0, 1);
+            nickListItem *irc = new nickListItem();
+            irc->setVoice(TRUE);
+            irc->setText(s3);
+            nicks->inSort(irc);
+          }
+          else{
+            nicks->inSort(s3);
+          }
+          pos = string.find(" ", pos2, FALSE); // find next nick
+        }
+        nicks->setAutoUpdate(TRUE);         // clear and repaint the listbox
+        nicks->repaint(TRUE);
+        color = kSircConfig->colour_info;    // set to cyan colouring
+        no_output = 1;
+        break;
       case '<':
 	string.remove(0, 2);                // clear junk
 	pixmap = pix_greenp;                // For joins and leave use green
@@ -1194,13 +1190,13 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	       // getting to the end of a non-void func
 }
 
-void KSircTopLevel::UserSelected(int index)
+void KSircTopLevel::UserSelected(int index) /*fold00*/
 {
   if(index >= 0)
     user_controls->popup(this->cursor().pos());
 }
 
-void KSircTopLevel::UserParseMenu(int id)
+void KSircTopLevel::UserParseMenu(int id) /*fold00*/
 {
   if(nicks->currentItem() < 0){
     QMessageBox::warning(this, "Warning, dork at the helm Captain!\n",
@@ -1228,7 +1224,7 @@ void KSircTopLevel::UserParseMenu(int id)
   sirc_write(s);
 }
 
-void KSircTopLevel::UserUpdateMenu()
+void KSircTopLevel::UserUpdateMenu() /*fold00*/
 {
   int i = 0;
   UserControlMenu *ucm;
@@ -1250,16 +1246,16 @@ void KSircTopLevel::UserUpdateMenu()
   //  writePopUpMenu();
 }
 
-void KSircTopLevel::AccelScrollDownPage()
+void KSircTopLevel::AccelScrollDownPage() /*fold00*/
 {
     mainw->pageDown();
 }
 
-void KSircTopLevel::AccelScrollUpPage()
+void KSircTopLevel::AccelScrollUpPage() /*fold00*/
 {
     mainw->pageUp();
 }
-void KSircTopLevel::AccelPriorMsgNick()
+void KSircTopLevel::AccelPriorMsgNick() /*fold00*/
 {
   linee->setText(QString("/msg ") + nick_ring.current() + " ");
 
@@ -1268,13 +1264,13 @@ void KSircTopLevel::AccelPriorMsgNick()
 
 }
 
-void KSircTopLevel::AccelNextMsgNick()
+void KSircTopLevel::AccelNextMsgNick() /*fold00*/
 {
   if(nick_ring.at() < ((int) nick_ring.count() - 1) )
     linee->setText(QString("/msg ") + nick_ring.next() + " ");
 }
 
-void KSircTopLevel::newWindow() 
+void KSircTopLevel::newWindow()  /*fold00*/
 { 
   open_top *w = new open_top(); 
   connect(w, SIGNAL(open_toplevel(QString)),
@@ -1282,7 +1278,7 @@ void KSircTopLevel::newWindow()
   w->show();
 }
 
-void KSircTopLevel::closeEvent(QCloseEvent *)
+void KSircTopLevel::closeEvent(QCloseEvent *) /*fold00*/
 {
   // Let's not part the channel till we are acutally delete.
   // We should always get a close event, *BUT* we will always be deleted.
@@ -1297,7 +1293,7 @@ void KSircTopLevel::closeEvent(QCloseEvent *)
   // This line is NEVER reached.
 }
 
-void KSircTopLevel::resizeEvent(QResizeEvent *e)
+void KSircTopLevel::resizeEvent(QResizeEvent *e) /*fold00*/
 {
   bool update = mainw->autoUpdate();
   mainw->setAutoUpdate(FALSE);
@@ -1317,7 +1313,7 @@ void KSircTopLevel::resizeEvent(QResizeEvent *e)
   // The ListBox will get an implicit size change
 }
 
-void KSircTopLevel::gotFocus()
+void KSircTopLevel::gotFocus() /*fold00*/
 {
   if(isVisible() == TRUE){
     if(have_focus == 0){
@@ -1332,7 +1328,7 @@ void KSircTopLevel::gotFocus()
   }
 }
 
-void KSircTopLevel::lostFocus()
+void KSircTopLevel::lostFocus() /*fold00*/
 {
   if(have_focus == 1){
     have_focus = 0;
@@ -1341,7 +1337,7 @@ void KSircTopLevel::lostFocus()
 
 }
 
-void KSircTopLevel::control_message(int command, QString str)
+void KSircTopLevel::control_message(int command, QString str) /*fold00*/
 {
   switch(command){
   case CHANGE_CHANNEL: // 001 is defined as changeChannel
@@ -1414,7 +1410,7 @@ void KSircTopLevel::control_message(int command, QString str)
   }
 }
 
-void KSircTopLevel::showTicker()
+void KSircTopLevel::showTicker() /*FOLD00*/
 {
   myrect = geometry();
   mypoint = pos();
@@ -1446,7 +1442,7 @@ void KSircTopLevel::showTicker()
   ticker->show();
 }
 
-void KSircTopLevel::unHide()
+void KSircTopLevel::unHide() /*fold00*/
 {
   tickerrect = ticker->geometry();
   tickerpoint = ticker->pos();
@@ -1465,7 +1461,7 @@ void KSircTopLevel::unHide()
   linee->setFocus();  // Give SLE focus
 }
 
-QString KSircTopLevel::findNick(QString part, uint which)
+QString KSircTopLevel::findNick(QString part, uint which) /*fold00*/
 {
   QStrList matches;
   for(uint i=0; i < nicks->count(); i++){
@@ -1485,7 +1481,7 @@ QString KSircTopLevel::findNick(QString part, uint which)
     
 }
 
-void KSircTopLevel::openCutWindow()
+void KSircTopLevel::openCutWindow() /*fold00*/
 {
   KSCutDialog *kscd = new KSCutDialog();
   QString buffer;
@@ -1499,7 +1495,7 @@ void KSircTopLevel::openCutWindow()
   // kscd deletes it self.
 }
 
-void KSircTopLevel::pasteToWindow()
+void KSircTopLevel::pasteToWindow() /*fold00*/
 {
   QString text = kApp->clipboard()->text();
   text += "\n";
@@ -1537,16 +1533,21 @@ void KSircTopLevel::pasteToWindow()
   }
 }
 
-void KSircTopLevel::lineeTextChanged(const char *)
+void KSircTopLevel::lineeTextChanged(const char *) /*fold00*/
 {
   tab_pressed = 0;
 }
 
-void KSircTopLevel::toggleRootWindow()
+void KSircTopLevel::toggleRootWindow() /*fold00*/
 {
 }
 
-kstInside::kstInside ( QWidget * parent, const char * name, WFlags f, 
+void KSircTopLevel::iamDestroyed() /*fold00*/
+{
+  emit objDestroyed(this);
+}
+
+kstInside::kstInside ( QWidget * parent, const char * name, WFlags f,  /*fold00*/
 		       bool allowLines )
   : QFrame(parent, name, f, allowLines)
 {
@@ -1568,7 +1569,7 @@ kstInside::kstInside ( QWidget * parent, const char * name, WFlags f,
 
 }
 
-kstInside::~kstInside()
+kstInside::~kstInside() /*fold00*/
 {
   delete mainw;
   delete nicks;
@@ -1577,7 +1578,7 @@ kstInside::~kstInside()
 }
 
 
-void kstInside::resizeEvent(QResizeEvent *e)
+void kstInside::resizeEvent(QResizeEvent *e) /*fold00*/
 {
   QFrame::resizeEvent(e);
 
@@ -1589,3 +1590,4 @@ void kstInside::resizeEvent(QResizeEvent *e)
 		   width() - 10, real_height - linee_height - 15);
   
 }
+

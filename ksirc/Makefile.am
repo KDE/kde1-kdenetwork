@@ -58,13 +58,15 @@ ksircstatic_SOURCES = $(ksirc_SOURCES)
 # the library search path
 ksirc_LDFLAGS = -rdynamic @all_libraries@ -L./KSProgress/ -L./KSTicker/ -L./KSCutDialog/ -LKSPrefs -Lpuke
 
-ksircstatic_LDFLAGS = -rdynamic -ldl $(ksirc_LDFLAGS)
+ksircstatic_LDFLAGS = $(ksirc_LDFLAGS)
 
 # the libraries to link against. Be aware of the order. First the libraries,
 # that depend on the following ones.
 ksirc_LDADD   = -lksprogress -lksticker -lkscutdialog -lksprefs -lkdeui -lkdecore -lpuke -lqt -lX11 -lXext @LIBSOCKET@ -ldl
 
-ksircstatic_LDADD = -lksprogress -lksticker -lkscutdialog -lksprefs /opt/kde/lib/libkdeui.a /opt/kde/lib/libkdecore.a -lpuke /usr/local/lib/qt/lib/libqt.a -lX11 -lXext @LIBSOCKET@ -ldl /usr/lib/libc.a /usr/lib/libm.a /usr/lib/libstdc++.a
+ksircstatic_LDADD = -lksprogress -lksticker -lkscutdialog -lksprefs -lpuke
+
+STATIC_LIBS = /opt/kde/lib/libkdeui.a /opt/kde/lib/libkdecore.a /usr/local/lib/qt/lib/libqt.a -lX11 -lXext @LIBSOCKET@ -ldl
 
 kdoc:
 	kdoc -ddoc ksirc *.h
@@ -79,7 +81,7 @@ time:
 ksircstatic: $(ksircstatic_OBJECTS) $(ksircstatic_DEPENDENCIES)
 	@rm -f ksircstatic
 	@echo "*** Ignore any failures ***"
-	$(CXXLINK) $(ksircstatic_LDFLAGS) $(ksircstatic_OBJECTS) $(ksircstatic_LDADD) $(LIBS) || true
+	$(CXXLINK) $(ksircstatic_LDFLAGS) $(ksircstatic_OBJECTS) $(ksircstatic_LDADD) $(STATIC_LIBS) $(LIBS) || true
 	@touch ksircstatic
 	@echo "*** Ignore previous failure, if any ***"
 

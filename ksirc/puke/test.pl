@@ -45,7 +45,8 @@ $pp->installHandler($::PUKE_BUTTON_CLICKED_ACK, sub
 		   );
 $pb2->addWidget($pp, 0, $PBoxLayout::AlignRight);
 
-$pw->onNext(sub{$pw->show()});
+#$pw->onNext(sub{$pw->show()});
+$pw->show();
 #$pf->show();
 #$pf2->show();
 

@@ -72,6 +72,7 @@ signals:
 protected:
   virtual void mousePressEvent ( QMouseEvent * );
   virtual int findSep();
+  virtual int searchFor(QString nick, bool &found, bool top);
 
 private:
   QPalette p_scroll;

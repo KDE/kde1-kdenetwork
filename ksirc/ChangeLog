@@ -1,3 +1,10 @@
+1998-03-13  Andrew Stanley-Jones  <asj@chowtown.cban.com>
+
+	* Nick list sorting works much better, still broken when
+	there's only a couple of entries, but it's better.
+
+        * Fixed /names problem.
+
 1998-03-07  Andrew Stanley-Jones  <asj@chowtown.cban.com>
 
 	* Majour update comes in the form of the puke sub directory.  This
@@ -248,6 +255,9 @@
 $Revision$
 	
 $Log$
+Revision 1.29  1998/03/08 17:18:48  asj
+Modifications to Puke.
+
 Revision 1.28  1998/02/17 20:51:59  asj
 1998-02-17  Andrew Stanley-Jones  <asj@chowtown.cban.com>
 

@@ -18,7 +18,7 @@
 #include "config.h"
 #include <qscrbar.h>
 
-void aListBox::mousePressEvent(QMouseEvent *e)
+void aListBox::mousePressEvent(QMouseEvent *e) /*fold00*/
 {
 
   QListBox::mousePressEvent(e);
@@ -29,61 +29,25 @@ void aListBox::mousePressEvent(QMouseEvent *e)
 }
 
 
-void aListBox::clear()
+void aListBox::clear() /*fold00*/
 {
   QListBox::clear();
 }
 
 
-void aListBox::inSort ( nickListItem *lbi)
+void aListBox::inSort ( nickListItem *lbi) /*fold00*/
 {
-  int min = -1, max = count() - 1;
-  int current, compare;
-
-  bool top = lbi->op();
-
-  int sep = findSep();
-
-  // Max get's set to one more than we want since the binary search never
-  // checks the last value.
-
-  if(sep >= 0){
-    if(top == TRUE){
-      min = 0;
-      max = sep;
-    }
-    else{
-      min = sep;
-      max = count() + 1;
-    }
+  int insert;
+  bool found;
+  insert = searchFor(lbi->text(), found, lbi->op());
+  if(found == TRUE){
+    debug("%s is already in nick list!", lbi->text());
+    return;
   }
-  else
-    current = -1;
-
-  current = min;
-  int last_current = -1;
-  while(min != max){
-    current = (max - min)/2 + min;
-    if(current == last_current){
-      current++;
-      break; // we're looping, so stop
-    }
-    compare = strncasecmp(text(current), lbi->text(),
-			  QMIN(strlen(text(current)),
-			       strlen(lbi->text())));
-    if(compare < 0)
-      min = current;
-    else if(compare > 0)
-      max = current;
-    else // We got a match?
-      break;
-    last_current = current;
-  }
-
-  insertItem(lbi, current);
+  insertItem(lbi, insert);
 }
 
-void aListBox::inSort ( const char * text, bool top) 
+void aListBox::inSort ( const char * text, bool top)  /*fold00*/
 {
   nickListItem *nli = new nickListItem();
   nli->setText(text);
@@ -92,7 +56,7 @@ void aListBox::inSort ( const char * text, bool top)
   inSort(nli);
 }
 
-int aListBox::findSep()
+int aListBox::findSep() /*fold00*/
 {
   uint i = 0;
   for(; i < count(); i++)
@@ -102,8 +66,89 @@ int aListBox::findSep()
   return i;
 
 }
+int aListBox::searchFor(QString nick, bool &found, bool top) /*FOLD00*/
+{
+  int min = 0, max = 0;
+  int current = 0, compare = 0;
+  int delta = 0;
+  int insert;
 
-bool aListBox::isTop(int index)
+  found = FALSE;
+
+  // If there's nothing in the list, don't try and search it, etc
+  
+  if(count() == 0){
+    insert = 0;
+  }
+  else{
+    int sep = findSep();
+    if(sep >= 0){
+      if(top == TRUE){
+        min = 0;
+        max = (sep >= 1) ? sep - 1 : 0;
+      }
+      else{
+        min = sep;
+        max = count();
+      }
+    }
+    else
+      current = -1;
+
+    debug("Top: %d min: %d max: %d", top, min, max);
+
+    delta = (max - min)/2;
+    current = min + delta + (max-min)%2;
+    insert = current;
+    int last_current = -1;
+    while(delta > 0){
+      delta = delta >> 1;
+      if(current == last_current){
+        debug("Insert looping on %s", nick.data());
+        //      current++;
+        //      break; // we're looping, so stop
+      }
+      last_current = current;
+      insert = current;
+      //    compare = strncasecmp(text(current), lbi->text(),
+      //			  QMIN(strlen(text(current)),
+      //			       strlen(lbi->text())));
+
+      compare = strcasecmp(text(current), nick.data());
+      if(compare < 0){
+        debug("%s is greater than: %s, %d", nick.data(), text(current), delta);
+        current += delta;
+        insert = current+1;
+      }
+      else if(compare > 0){
+        debug("%s is less then: %s, %d", nick.data(), text(current), delta);
+        current -= delta;
+        insert = current;
+      }
+      else {// We got a match?
+        found = TRUE;
+        break;
+      }
+    }
+    compare = strcasecmp(text(min), nick.data());
+    if(compare > 0)
+      insert = min;
+    else if(compare == 0){
+      found = TRUE;
+      insert = min;
+    }
+
+
+    if(found == TRUE){
+      debug("Found %s", nick.data());
+      return current;
+    }
+  }
+  debug("%s is at %d", nick.data(), insert);
+  return insert;
+       
+}
+bool aListBox::isTop(int index) /*fold00*/
 {
   if(index >= findSep())
     return FALSE;
@@ -111,89 +156,62 @@ bool aListBox::isTop(int index)
     return TRUE;
 }
 
-void aListBox:: setPalette ( const QPalette &p )
+void aListBox:: setPalette ( const QPalette &p ) /*fold00*/
 {
   QListBox::setPalette(p);
   ((QScrollBar*) QTableView::verticalScrollBar())->setPalette(p_scroll);
   ((QScrollBar*) QTableView::horizontalScrollBar())->setPalette(p_scroll);
 }
 
-int aListBox::findNick(QString str)
+int aListBox::findNick(QString str) /*fold00*/
 {
-  int min = 0;
-  int max = findSep();
-  int last_current = -1;
-  int compare;
-  int current = min;
-  int loop = 0;
-
-  do{
-    while(min != max){
-      current = (max - min)/2 + min;
-      if(current == last_current){
-	if(loop == 0)
-	  break; // we're looping, so stop
-	warning("alistbox: in findNick, looping on second loop for %s",
-		str.data());
-      }
-      
-      compare = strncasecmp(text(current), str,
-			    QMIN(strlen(text(current)),
-				 str.length()));
-      if(compare < 0)
-	min = current;
-      else if(compare > 0)
-	max = current;
-      else // We got a match
-	return current; // Return the match number
-      last_current = current;
-    }
-    min = findSep() - 1;
-    max = count();
-    current = min;
-    loop++;
-  } while(loop <= 1);
-
-  return -1; // we've failed to find a match, return -1
-
+  bool found;
+  int index;
+  index = searchFor(str, found, TRUE);
+  if(found == TRUE)
+    return index;
+  index = searchFor(str, found, FALSE);
+  if(found == TRUE)
+    return index;
+  return -1;
 }
 
-nickListItem *aListBox::item(int index){
+nickListItem *aListBox::item(int index){ /*fold00*/
   return (nickListItem *) QListBox::item(index);
 }
 
-nickListItem::nickListItem()
+nickListItem::nickListItem() /*fold00*/
   : QListBoxItem()
 {
   is_op = FALSE;
   is_voice = FALSE;
 }
 
-nickListItem::~nickListItem()
+nickListItem::~nickListItem() /*fold00*/
 {
 }
 
-bool nickListItem::op()
+bool nickListItem::op() /*fold00*/
 {
   return is_op;
 }
 
-bool nickListItem::voice()
+bool nickListItem::voice() /*fold00*/
 {
   return is_voice;
 }
 
-void nickListItem::setOp(bool _op)
+void nickListItem::setOp(bool _op) /*fold00*/
 {
   is_op = _op;
 }
 
-void nickListItem::setVoice(bool _voice)
+void nickListItem::setVoice(bool _voice) /*fold00*/
 {
   is_voice = _voice;
 }
 
-void nickListItem::paint(QPainter *p)
+void nickListItem::paint(QPainter *p) /*fold00*/
 {
   QFontMetrics fm = p->fontMetrics();
   int yPos;                       // vertical text position
@@ -207,34 +225,35 @@ void nickListItem::paint(QPainter *p)
   p->setPen(pen);
 }
 
-int nickListItem::height(const QListBox *lb ) const
+int nickListItem::height(const QListBox *lb ) const /*fold00*/
 {
   return lb->fontMetrics().lineSpacing() + 1;
 }
 
-int nickListItem::width(const QListBox *lb ) const
+int nickListItem::width(const QListBox *lb ) const /*fold00*/
 {
   return lb->fontMetrics().width( 
 				 text() 
 				 ) + 6;
 }
 
-const char* nickListItem::text() const
+const char* nickListItem::text() const /*fold00*/
 {
   return string;
 }
 
-const QPixmap* nickListItem::pixmap() const
+const QPixmap* nickListItem::pixmap() const /*fold00*/
 {
   return 0l;
 }
 
-void nickListItem::setText(const char *str)
+void nickListItem::setText(const char *str) /*fold00*/
+
 {
   string = qstrdup(str);
 }
 
-nickListItem &nickListItem::operator= (const nickListItem &nli)
+nickListItem &nickListItem::operator= (const nickListItem &nli) /*fold00*/
 {
   string = nli.string;
   is_op = nli.is_op;

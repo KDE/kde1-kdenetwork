@@ -117,6 +117,10 @@ signals:
    *
    */
   void freezeUpdates(bool);
+  /** 
+   * Emitted when we get object destroyed
+   */
+  void objDestroyed(KSircTopLevel *);
 
 public slots:
   /**
@@ -222,6 +226,10 @@ protected slots:
      *
      */
    void toggleRootWindow();
+   /**
+    * Slot connected to destroy signal
+    */
+   void iamDestroyed();
 
 protected:
    /**
