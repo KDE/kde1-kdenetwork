@@ -663,11 +663,13 @@ bool KMSendSMTP::start(void)
   mClient->Open(mSender->smtpHost(), mSender->smtpPort()); // Open connection
   if(!mClient->IsOpen()) // Check if connection succeded
   {
-    QString str(256);
+//WABA: sprintf KILLS everytime! Don't use it! (Bug #1676)
+    const char *response = mClient->Response().c_str();
+    const char *host = mSender->smtpHost();
+    QString str(256+strlen(host)+strlen(response));
     str.sprintf(i18n("Cannot open SMTP connection to\n"
 			       "host %s for sending:\n%s"), 
-		(const char*)mSender->smtpHost(),
-		(const char*)mClient->Response().c_str());
+		host, response);
     warning((const char*)str);
     return FALSE;
   }
@@ -778,17 +780,20 @@ bool KMSendSMTP::addOneRecipient(const QString aRcpt)
 bool KMSendSMTP::smtpFailed(const char* inCommand,
 			  int replyCode)
 {
-  QString str(256);
   const char* errorStr = mClient->Response().c_str();
 
   if (replyCode==0 && (!errorStr || !*errorStr))
     errorStr = i18n("network error");
 
+  if (!errorStr)
+      errorStr = "(nothing)";
+//WABA: sprintf KILLS everytime! Don't use it! (Bug #1676)
+  QString str(256+strlen(inCommand)+strlen(errorStr));
   str.sprintf(i18n("a SMTP error occured.\n"
 			     "Command: %s\n"
 			     "Response: %s\n" 
 			     "Return code: %d"),
-	      inCommand, errorStr ? errorStr : "(nothing)", replyCode);
+	      inCommand, errorStr, replyCode);
   mMsg = str;
 
   return FALSE;
@@ -798,9 +803,10 @@ bool KMSendSMTP::smtpFailed(const char* inCommand,
 //-----------------------------------------------------------------------------
 void KMSendSMTP::smtpInCmd(const char* inCommand)
 {
-  char str[80];
-  sprintf(str,i18n("Sending SMTP command: %s"), inCommand);
-  statusMsg(str);
+//WABA: sprintf KILLS everytime! Don't use it! (Bug #1676)
+  QString str(80+strlen(inCommand));
+  str.sprintf(i18n("Sending SMTP command: %s"), inCommand);
+  statusMsg((const char *)str);
 }
 
 
