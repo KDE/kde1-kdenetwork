@@ -6,16 +6,23 @@
 #include <qlabel.h>
 #include <qlistbox.h>
 #include <qpixmap.h>
+#include <qbitmap.h>
+#include <qcolor.h>
 
 #include <kapp.h>
+#include <kiconloader.h>
+
 
 extern QString pixpath;
+
+int c=0;
 
 aboutDlgData::aboutDlgData
     (
      QWidget* parent
     )
 {
+    c++;
     b1 = new QPushButton( parent, "PushButton_1" );
     b1->setGeometry( 10, 260, 380, 30 );
     b1->setText( klocale->translate("OK") );
@@ -65,8 +72,17 @@ aboutDlgData::aboutDlgData
     QFrame* tmpQFrame;
     tmpQFrame = new QFrame( parent, "Frame_1" );
     tmpQFrame->setGeometry( 87, 5, 225, 113 );
-    tmpQFrame->setBackgroundPixmap(QPixmap(pixpath+"logo.xpm"));
-    
-    
+    QPixmap p=kapp->getIconLoader()->loadIcon("logo.xpm");
+    if (c>1)
+    {
+        debug ("egg!!!");
+
+        p.setMask(p.createHeuristicMask());
+        tmpQFrame->setBackgroundColor (QColor("black"));
+        tmpQFrame->setBackgroundPixmap(p);
+    }
+    else
+        tmpQFrame->setBackgroundPixmap(p);
+
     parent->resize( 400, 300 );
 }
