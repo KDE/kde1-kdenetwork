@@ -921,6 +921,9 @@
 // cArg: not defined
 #define PUKE_KSIRCLISTBOX_TOBOTTOM_ACK -2100
 
+// 2200 for PKFileDialog
+// 2300 for PObjFinder
+
 
 // ***********************************************************************
 // ***********************************************************************
@@ -984,6 +987,10 @@
 // PKFileDialog
 
 #define PWIDGET_KFILEDIALOG 17
+
+// PObjFinder
+
+#define PWIDGET_OBJFINDER 18
 
 
 // Group layout commands exist between 10000 and 11000

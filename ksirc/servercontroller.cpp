@@ -115,7 +115,6 @@ servercontroller::servercontroller /*FOLD00*/
 
   QPopupMenu *file = new QPopupMenu(0, QString(name) + "_menu_file");
   //  insertChild(file);
-  objFinder::insert(file);
   file->insertItem(i18n("&Dock"), this, SLOT(toggleDocking()));
   file->insertSeparator();
   file->insertItem(i18n("&Quit"), kApp, SLOT(quit()), ALT + Key_F4);
@@ -141,7 +140,6 @@ servercontroller::servercontroller /*FOLD00*/
   kConfig->setGroup("GlobalOptions");
   options = new QPopupMenu(0, QString(name) + "_menu_options");
   //insertChild(options);
-  objFinder::insert(options);
   options->setCheckable(TRUE);
 
   options->insertItem(i18n("&Colour Preferences..."),
@@ -159,7 +157,6 @@ servercontroller::servercontroller /*FOLD00*/
   
   QPopupMenu *help = new QPopupMenu(0, QString(name) + "_menu_help");
   //insertChild(help);
-  objFinder::insert(help);
   //  help->insertItem("Help...",
   //		   this, SLOT(help_general()));
   help->insertItem(i18n("Help on Colours..."),
@@ -213,7 +210,6 @@ servercontroller::servercontroller /*FOLD00*/
 
   docked = FALSE;
   dockWidget = new dockServerController(this, "servercontroller_dock");
-  objFinder::insert(dockWidget);
 
 
 }
@@ -236,7 +232,7 @@ void servercontroller::new_connection() /*fold00*/
   w.exec();                                       // show the sucker!
 }
 
-void servercontroller::new_ksircprocess(QString str) /*fold00*/
+void servercontroller::new_ksircprocess(QString str) /*FOLD00*/
 {
 
   if(str.isEmpty() == TRUE)  // nothing entered, nothing done
@@ -260,7 +256,6 @@ void servercontroller::new_ksircprocess(QString str) /*fold00*/
   KSircProcess *proc = new KSircProcess(str.data(), 0, QString(name()) + "_" + str + "_ksp"); // Create proc
   //this->insertChild(proc);                           // Add it to out inheritance tree so we can retreive child widgets from it.
   objFinder::insert(proc);
-  debug("Done objFinder::insert");
   proc_list.insert(str.data(), proc);                      // Add proc to hash
   connect(proc, SIGNAL(ProcMessage(QString, int, QString)),
 	  this, SLOT(ProcMessage(QString, int, QString)));
@@ -313,7 +308,7 @@ void servercontroller::ToggleAutoCreate() /*fold00*/
   kConfig->sync();
 }
 
-void servercontroller::colour_prefs() /*fold00*/
+void servercontroller::colour_prefs() /*FOLD00*/
 {
   KSircColour *kc = new KSircColour();
   connect(kc, SIGNAL(update()),
@@ -624,14 +619,13 @@ void scInside::resizeEvent ( QResizeEvent *e ) /*fold00*/
   
 }
 
-dockServerController::dockServerController(servercontroller *_sc, const char *_name) /*fold00*/
+dockServerController::dockServerController(servercontroller *_sc, const char *_name) /*FOLD00*/
 : QFrame(0x0, _name)
 {
   sc = _sc;
 
   pop = new QPopupMenu;
   pop->setName("dockServerController_menu_pop");
-  objFinder::insert(pop);
 
   pop->insertItem(i18n("&Quit"), kApp, SLOT(quit()));
   pop->insertItem(i18n("&Undock"),
@@ -649,7 +643,8 @@ dockServerController::dockServerController(servercontroller *_sc, const char *_n
   pop->insertItem(i18n("&New Server..."),
                   sc, SLOT(new_connection()));
 
-  setFrameStyle(QFrame::Box | QFrame::Raised);
+  //  setFrameStyle(QFrame::Box | QFrame::Raised);
+  setFrameStyle(QFrame::NoFrame);
 }
 
 dockServerController::~dockServerController() /*FOLD00*/
@@ -658,11 +653,20 @@ dockServerController::~dockServerController() /*FOLD00*/
   delete pop;
 }
 
-void dockServerController::mousePressEvent(QMouseEvent *) /*fold00*/
+void dockServerController::mousePressEvent(QMouseEvent *) /*FOLD00*/
 {
-  QPoint pt = this->cursor().pos();
-  pt.setY(pt.y());
-  pop->popup(pt);
+//  QPoint pt = this->cursor().pos();
+//  pt.setY(pt.y());
+//  pop->popup(pt);
+  pop->move(-1000,-1000);
+  pop->show();
+  pop->hide();
+  QRect g = KWM::geometry( this->winId() );
+  if ( g.x() > QApplication::desktop()->width()/2 &&
+       g.y()+pop->height() > QApplication::desktop()->height() )
+      pop->popup(QPoint( g.x(), g.y() - pop->height()));
+  else
+      pop->popup(QPoint( g.x() + g.width(), g.y() + g.height()));
 }
 
 void dockServerController::paintEvent(QPaintEvent *pe) /*fold00*/

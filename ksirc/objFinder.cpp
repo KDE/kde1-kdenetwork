@@ -1,7 +1,10 @@
 #include "objFinder.h"
 #include <qobjcoll.h>
+#include <qwidcoll.h>
 #include <stdlib.h>
 #include <time.h>
+#include <iostream.h>
+
 
 QDict<QObject> *objFinder::objList = new QDict<QObject>;
 
@@ -39,13 +42,16 @@ void objFinder::insert(QObject *obj, const char *key = 0){
   objList->insert(name, obj);
   connect(obj, SIGNAL(destroyed()),
           objFind, SLOT(objDest()));
+  
+  emit objFind->inserted(obj);
 }
 
 QObject *objFinder::find(const char *name, const char *inherits){
   QObject *found;
   QDictIterator<QObject> it(*objList);
+  uint len = strlen(name);
   while(it.current()){
-    if(strlen(name) == strlen(it.current()->name()) &&
+    if(len == strlen(it.current()->name()) &&
        strcmp(it.current()->name(), name) == 0)
       return it.current();
     QObjectList *qobl = it.current()->queryList(inherits, name, FALSE);
@@ -58,6 +64,23 @@ QObject *objFinder::find(const char *name, const char *inherits){
     delete qobl;
     ++it;
   }
+  QWidgetList *all = QApplication::allWidgets();
+  QWidgetListIt itW(*all);
+  while(itW.current()){
+    if(len == strlen(itW.current()->name()) &&
+       strcmp(itW.current()->name(), name) == 0){
+      if(inherits != 0x0 && itW.current()->inherits(inherits) == FALSE){
+        ++itW;
+        continue;
+      }
+      found = itW.current();
+      delete all;
+      return found;
+    }
+    ++itW;
+  }
+
+  
   return 0x0;
 }
 
@@ -67,6 +90,44 @@ void objFinder::dumpTree(){
     it.current()->dumpObjectTree();
     ++it;
   }
+  QWidgetList *all = QApplication::allWidgets();
+  QWidgetListIt itW(*all);
+  while(itW.current()){
+    cerr << itW.current()->className() << "::" << itW.current()->name("unnamed") << endl;
+    ++itW;
+  }
+
+}
+
+QStrList objFinder::allObjects(){
+  QStrList allNames;
+  QDictIterator<QObject> it(*objList);
+  while(it.current()){
+    QObjectList *qobl = it.current()->queryList(); // Matches everything
+    QObjectListIt itql( *qobl );
+    while(itql.current()){
+      QString name;
+      name = itql.current()->className();
+      name += "::";
+      name += itql.current()->name("unnamed");
+      allNames.append(name);
+      ++itql;
+    }
+    delete qobl;
+    ++it;
+  }
+  QWidgetList *all = QApplication::allWidgets();
+  QWidgetListIt itW(*all);
+  while(itW.current()){
+    QString name;
+    name = itW.current()->className();
+    name += "::";
+    name += itW.current()->name("unnamed");
+    allNames.append(name);
+    ++itW;
+  }
+  delete all;
+  return allNames;
 }
 
 QString objFinder::randString(){

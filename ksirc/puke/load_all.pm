@@ -12,4 +12,5 @@
 &docommand("/load ppopmenu.pm");
 &docommand("/load ksirclistbox.pm");
 &docommand("/load ptabdialog.pm");
-&docommand("/load pkfiledialog.pm");  
+&docommand("/load pkfiledialog.pm");
+&docommand("/load pobjfinder.pm");  

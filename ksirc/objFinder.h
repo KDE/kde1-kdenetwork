@@ -1,11 +1,13 @@
 #ifndef OBJFINGER_H
 #define OBJFINGER_H
 
+#include <qapp.h>
 #include <qobject.h>
 #include <qdict.h>
 #include <qstring.h>
+#include <qstrlist.h>
 
-class objFinder : QObject {
+class objFinder : public QObject {
   Q_OBJECT
 public:
 
@@ -15,7 +17,11 @@ public:
   static void insert(QObject *obj, const char *key = 0);
   static QObject *find(const char *name, const char *inherits);
   static void dumpTree();
+  static QStrList allObjects();
 
+signals:
+  void inserted(QObject *obj);
+  
 protected slots:
   void objDest();
 

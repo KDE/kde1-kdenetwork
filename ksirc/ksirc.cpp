@@ -33,7 +33,6 @@
 
 #include "config.h"
 #include "cdate.h"
-#include "objFinder.h"
 
 KApplication *kApp;
 KConfig *kConfig;
@@ -108,7 +107,6 @@ int main( int argc, char ** argv )
     int n = 1;
     while (servercontroller::canBeRestored(n)) {
       servercontroller *sc = new servercontroller(0, "servercontroller");
-      objFinder::insert(sc);
       CHECK_PTR(sc);
       sc->restore(n);
       kApp->setMainWidget(sc);
@@ -117,12 +115,10 @@ int main( int argc, char ** argv )
   }
   else{
     servercontroller *control = new servercontroller(0, "servercontroller");
-    objFinder::insert(control);
     control->show();
     kApp->setMainWidget(control);
   }
-
-again:
+  
   try {
       kApp->exec();
   }

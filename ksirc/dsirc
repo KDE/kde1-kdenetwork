@@ -117,6 +117,8 @@ if (open(H, "$libdir/sirc.help") || ((-f "$libdir/sirc.help.gz") &&
 
 sub exit {
   &dohooks("quit");
+  $args || ($args="using \cbsirc\cb version $version$add_ons");
+  &sl("QUIT :$args") if $connected;
   close LOG if $logging;
   exit 0;
 }
@@ -124,6 +126,7 @@ sub exit {
 $SIG{'PIPE'}='IGNORE';
 $SIG{'QUIT'}='IGNORE';
 $SIG{'INT'}='exit';
+$SIG{'TERM'}='exit'; # KSIRC MOD
 
 sub eq {
   local($a, $b)=@_;

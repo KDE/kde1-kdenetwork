@@ -158,7 +158,7 @@ sub DESTROY {
   my $self = shift;
 
   #  print "*I* Widget Deleted\n";
-  $self->hide();
+  eval{  $self->hide(); }; # Hide doesn't exist for all PBase's
 
   #  $self->setRunable(1);
 

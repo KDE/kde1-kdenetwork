@@ -28,7 +28,7 @@ INCLUDES= @all_includes@
 lib_LTLIBRARIES = libpuke.la libpframe.la libplined.la libpbutton.la libppushbt.la \
                   libpprogress.la libptablevw.la libplistbox.la libplabel.la \
                   libpmenudta.la libppopmenu.la libpalistbox.la libptabdialog.la \
-                  libksirclistbox.la libpkfiledialog.la
+                  libksirclistbox.la libpkfiledialog.la libpobjfinder.la
 
 libpuke_la_SOURCES = \
 controller.cpp \
@@ -125,7 +125,14 @@ libpkfiledialog_la_SOURCES = \
 pkfiledialog.cpp \
 mpkfiledialog.cpp
 
-libpkfiledialog_la_LDFLAGS = -export-dynamic  -nostdlib
+libpkfiledialog_la_LDFLAGS = -export-dynamic
+
+libpobjfinder_la_SOURCES = \
+pobjfinder.cpp \
+mpobjfinder.cpp
+
+libpobjfinder_la_LDFLAGS = -export-dynamic
+
 
 
 HOWTO-PUKE.txt: HOWTO-PUKE.pod
@@ -185,7 +192,7 @@ data_DATA = commands-handler.pl commands-perl.pl convert_commands.pl \
 	palistbox.pm pbase.pm pboxlayout.pm pbutton.pm pframe.pm \
 	pkfiledialog.pm plabel.pm plined.pm plistbox.pm pmenudta.pm \
 	ppopmenu.pm pprogress.pm ppushbt.pm ptabdialog.pm ptablevw.pm \
-	pwidget.pm 
+	pwidget.pm pkfiledialog.pm pobjfinder.pm
 
 # Where to install them
 datadir = $(kde_datadir)/ksirc

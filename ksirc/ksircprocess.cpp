@@ -254,6 +254,10 @@ KSircProcess::~KSircProcess() /*FOLD00*/
   QString quit_cmd = "/eval &dohooks(\"quit\");\n";
   proc->writeStdin(quit_cmd.data(), quit_cmd.length());
   sleep(1);
+  if(proc->isRunning()){
+      proc->kill(SIGTERM);
+      sleep(1);
+  }
   
   delete proc;               // Delete process, seems to kill sirc, good.
   delete iocontrol;          // Take out io controller
@@ -318,7 +322,6 @@ void KSircProcess::new_toplevel(QString str) /*FOLD00*/
     debug("Calling new toplevel for: -%s-", str.data());
     KSircTopLevel *wm = new KSircTopLevel(this, str.data(), QString(server) +"_" + str);
     //    insertChild(wm); // Keep ineheratence going so we can find children
-    objFinder::insert(wm);
     installEventFilter(wm);
     TopList.insert(str, wm);
 //    TopList.replace(str, wm);

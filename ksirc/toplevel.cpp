@@ -41,8 +41,6 @@
 #include "ssfeprompt.h"
 #include "estring.h"
 
-#include "objFinder.h"
-
 #include <iostream.h>
 #include <termios.h>
 #include <unistd.h>
@@ -136,8 +134,6 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
   QToolTip::add(lagmeter, i18n("Lag in seconds to the server"));
   
   file = new QPopupMenu(0x0, QString(QObject::name()) + "_popup_file");
-  //  this->insertChild(file);
-  objFinder::insert(file);
   file->insertItem(i18n("&New Window..."), this, SLOT(newWindow()), CTRL + Key_N);
   file->insertItem(i18n("&Ticker Mode"), this, SLOT(showTicker()), CTRL + Key_T);
   //  file->insertItem("&Root Window Mode", this, SLOT(toggleRootWindow()), CTRL + Key_Z);
