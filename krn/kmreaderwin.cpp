@@ -7,6 +7,7 @@
 #ifndef KRN
 #include "kmglobal.h"
 #include "kmmainwin.h"
+#else
 #endif
 
 #include "kmimemagic.h"
@@ -26,9 +27,11 @@
 #include <qstring.h>
 #include <errno.h>
 #include <stdio.h>
+#include <ctype.h>
 #include <string.h>
 #include <qbitmap.h>
 #include <qcursor.h>
+#include <qmlined.h>
 
 #define hand_width 16
 #define hand_height 16
@@ -57,8 +60,8 @@ KMReaderWin::KMReaderWin(QWidget *aParent, const char *aName, int aFlags)
   mPicsDir = app->kdedir()+"/share/apps/kmail/pics/";
   mMsg = NULL;
 
-  readConfig();
   initHtmlWidget();
+  readConfig();
 }
 
 
@@ -78,6 +81,23 @@ void KMReaderWin::readConfig(void)
   mHeaderStyle = (HeaderStyle)config->readNumEntry("hdr-style", HdrFancy);
   mAttachmentStyle = (AttachmentStyle)config->readNumEntry("attmnt-style",
 							IconicAttmnt);
+#ifdef KRN
+  config->setGroup("ArticleListOptions");
+  QColor c1=QColor("black");
+  QColor c2=QColor("blue");
+  QColor c3=QColor("red");
+  QColor c4=QColor("white");
+  mViewer->setDefaultBGColor(config->readColorEntry("BackgroundColor",&c4));
+  mViewer->setDefaultTextColors(config->readColorEntry("ForegroundColor",&c1)
+                                ,config->readColorEntry("LinkColor",&c2)
+                                ,config->readColorEntry("FollowedColor",&c3));
+  mViewer->setDefaultFontBase(config->readNumEntry("DefaultFontBase",3));
+  mViewer->setStandardFont(config->readEntry("StandardFont",
+                                           QString("helvetica").data()));
+  mViewer->setFixedFont(config->readEntry("FixedFont",
+                                        QString("courier").data()));
+#endif
+
 }
 
 
@@ -190,8 +210,6 @@ void KMReaderWin::parseMsg(void)
 
   mViewer->begin(mPicsDir);
   mViewer->write("<HTML><BODY>");
-  printf("mMsg->charset()=%s\n",(const char *)mMsg->charset());
-  if (mMsg->charset()!="") mViewer->setCharset(mMsg->charset());
 
   writeMsgHeader();
 
@@ -313,9 +331,8 @@ void KMReaderWin::writeMsgHeader(void)
     break;
 
   case HdrAll:
-    t = mMsg->headerAsString();
-    t = t.replace(QRegExp("\n"),"<br>");
-    mViewer->write(t+"<br><br>");
+    mViewer->write(strToHtml(mMsg->headerAsString()));
+    mViewer->write("<br><br>");
     break;
 
   default:
@@ -364,6 +381,7 @@ void KMReaderWin::writeBodyStr(const QString aStr)
     if (*pos=='\n') beg = pos+1;
   }
 
+  // check for PGP encryption/signing
   if (pgp->isSigned())
   {
     if (pgp->goodSignature()) sig = nls->translate("Message was signed by");
@@ -381,11 +399,10 @@ void KMReaderWin::writeBodyStr(const QString aStr)
     if (ch=='\n' || ch=='\0')
     {
       *pos = '\0';
-      line = strToHtml(beg);
-      *pos='\n';
+      line = strToHtml(beg,TRUE,TRUE);
+      *pos = ch;
       if (quoted && !lastQuoted) line.prepend("<I>");
       else if (!quoted && lastQuoted) line.prepend("</I>");
-
       mViewer->write(line + "<BR>");
 
       beg = pos+1;
@@ -430,20 +447,40 @@ void KMReaderWin::writePartIcon(KMMessagePart* aMsgPart, int aPartNum)
 
 
 //-----------------------------------------------------------------------------
-const QString KMReaderWin::strToHtml(const QString aStr, bool aDecodeQP) const
+const QString KMReaderWin::strToHtml(const QString aStr, bool aDecodeQP,
+				     bool aPreserveBlanks) const
 {
-  QString htmlStr, qpstr, iStr,tStr;
+  QString htmlStr, qpstr, iStr;
   char ch, *pos, str[256];
-  int i,i1;
+  int i,i1, x;
 
   if (aDecodeQP) qpstr = KMMsgBase::decodeQuotedPrintableString(aStr);
   else qpstr = aStr;
 
-  for (pos=qpstr.data(); *pos; pos++)
+  for (pos=qpstr.data(),x=0; *pos; pos++,x++)
   {
     ch = *pos;
+    if (aPreserveBlanks)
+    {
+      if (ch==' ')
+      {
+	htmlStr += "&nbsp;";
+	continue;
+      }
+      else if (ch=='\t')
+      {
+	do
+	{
+	  htmlStr += "&nbsp;";
+	  x++;
+	}
+	while((x&7) != 0);
+      }
+      else aPreserveBlanks = FALSE;
+    }
     if (ch=='<') htmlStr += "&lt;";
     else if (ch=='>') htmlStr += "&gt;";
+    else if (ch=='\n') htmlStr += "<BR>";
     else if (ch=='&') htmlStr += "&amp;";
     else if ((ch=='h' && strncmp(pos,"http:",5)==0) ||
 	     (ch=='f' && strncmp(pos,"ftp:",4)==0) ||
@@ -461,21 +498,21 @@ const QString KMReaderWin::strToHtml(const QString aStr, bool aDecodeQP) const
     }
     else if (ch=='@')
       {
-	for (i=0; *pos && *pos > ' ' && i<255; i++, pos--);
+	for (i=0; *pos && (isalnum(*pos) || *pos=='@' || *pos=='.' ||
+			   *pos=='-') && i<255; i++, pos--)
+	{
+	}
 	i1 = i;
 	pos++; 
-	for (i=0; *pos && *pos > ' ' && i<255; i++, pos++)
+	for (i=0; *pos && (isalnum(*pos)||*pos=='@' || *pos=='.' ||
+			   *pos=='-') && i<255; i++, pos++)
+	{
 	  iStr += *pos;
+	}
 	pos--; 
-	tStr = iStr.copy();
-	tStr.prepend("<A HREF=\"mailto:");
-	tStr += "\">";
-	tStr.append(iStr);
-	tStr += "</A>";
-	htmlStr.truncate(htmlStr.length() -i1);
-	htmlStr += tStr + " " ;
+	htmlStr.truncate(htmlStr.length() - i1 + 1);
+	htmlStr += "<A HREF=\"mailto:" + iStr + "\">" + iStr + "</A>";
 	iStr = "";
-	tStr = "";
       }	
 
     else htmlStr += ch;
@@ -571,6 +608,7 @@ void KMReaderWin::slotUrlPopup(const char* aUrl, const QPoint& aPos)
     mAtmCurrent = id-1;
     menu = new QPopupMenu();
     menu->insertItem(nls->translate("Open..."), this, SLOT(slotAtmOpen()));
+    menu->insertItem(nls->translate("View..."), this, SLOT(slotAtmView()));
     menu->insertItem(nls->translate("Save as..."), this, SLOT(slotAtmSave()));
     //menu->insertItem(nls->translate("Print..."), this, SLOT(slotAtmPrint()));
     menu->insertItem(nls->translate("Properties..."), this,
@@ -581,13 +619,37 @@ void KMReaderWin::slotUrlPopup(const char* aUrl, const QPoint& aPos)
 
 
 //-----------------------------------------------------------------------------
+void KMReaderWin::slotAtmView()
+{
+  QString str, pname;
+  KMMessagePart msgPart;
+  QMultiLineEdit* edt = new QMultiLineEdit;
+
+  mMsg->bodyPart(mAtmCurrent, &msgPart);
+  pname = msgPart.name();
+  if (pname.isEmpty()) pname=msgPart.contentDescription();
+  if (pname.isEmpty()) pname="unnamed";
+
+  kbp->busy();
+  str = msgPart.bodyDecoded();
+
+  edt->setCaption(nls->translate("View Attachment: ") + pname);
+  edt->insertLine(str);
+  edt->setReadOnly(TRUE);
+  edt->show();
+
+  kbp->idle();
+}
+
+
+//-----------------------------------------------------------------------------
 void KMReaderWin::slotAtmOpen()
 {
   QString str, pname, cmd, fileName;
+  KMMessagePart msgPart;
   char* tmpName;
   int c;
 
-  KMMessagePart msgPart;
   mMsg->bodyPart(mAtmCurrent, &msgPart);
 
   pname = msgPart.name();
