@@ -1,3 +1,11 @@
+1998-09-16  Mario Weilguni <mweilguni@kde.org>
+
+	* Added some more QuickHelp
+	* The QLineEdit for fixed IP and netmask is not re-initialized
+	with  "0.0.0.0" whenever you select "dynamic IP"
+	* the scripting widget is disabled if authentication PAP or CHAP
+	is selected
+	
 1998-09-15  Mario Weilguni <mweilguni@kde.org>
 
 	* replaced strings that span several lines with multiple

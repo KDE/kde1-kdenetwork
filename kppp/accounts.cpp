@@ -343,6 +343,8 @@ int AccountWidget::doTab(){
   gateway_w = new GatewayWidget(tabWindow, isnewaccount);
   script_w = new ScriptWidget(tabWindow, isnewaccount);
   acct = new AccountingSelector(tabWindow, isnewaccount);
+  connect(dial_w, SIGNAL(authChanged(int)),
+	  script_w, SLOT(authSelected(int)));
 
   tabWindow->addTab(dial_w, i18n("Dial"));
   tabWindow->addTab(ip_w, i18n("IP"));

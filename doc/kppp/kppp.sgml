@@ -70,8 +70,11 @@ and other contributions.
 
 
 <sect1>License and warranty<p>
-<em/kppp/ is published under the terms of the <ref id="GPL" name="GNU  General Public License"> (GPL). There is no warranty that this program works or for whatever.
+<em/kppp/ is published under the terms of the <ref id="GPL" name="GNU  General
+Public License"> (GPL). There is <ref id=warranty name="no warranty"> that this program works or for whatever.
 <p>
+
+
 
 <sect>Installation
 <p>
@@ -164,6 +167,8 @@ pppd daemon. <p>
 The following site may be of interest for further information about the 
 ppp protocol and pppd <url url="http://www.thoughtport.com:8080/PPP/index.html">
 <p>
+
+
 
 <sect>Setting up <em/kppp/
 <p>
@@ -265,6 +270,7 @@ X-server exits and <em/kppp/ terminates.
 This option overrides <em>Minimize Window on Connect</em>.
 </descrip>
 <p>
+
 
 
 <sect>Configuring an Account<p>
@@ -549,35 +555,7 @@ caching news server (like nntpcached), the volume reported by <em/kppp/ may be
 higher.
 
 
-<sect>Using <em/kppp/<p>
-<sect1>Command Line Options<p>
-<em/kppp/ supports the following command line options:<p>
 
-<tscreen><verb>
-% wuebben: kppp -h
-% kppp -- Valid options:
-% -h describe command line options
-% -c account_name : connect to account account_name
-% -k terminate an existing connection
-% -r rule_file: check syntax of rule_file
-% -q quit after connection has been terminated
-</verb></tscreen>
-<p>
-
-<itemize>
-<item> -h will describe the available command line options.
-<item> -c will try to connect straight away to the given account without
-bringing up <em/kppp/'s main dialog. This option may be interesting to the impatient.
-<item> -k will look for another instance of <em/kppp/ and signal it to terminate any connection.
-<item> -r will check the specified rules file for valid syntax. This
-options is very useful when writing new phone time rules files.
-</itemize>
-<p>
-
-<sect1>Normal Usage<p>
-To be written .... ( Make sure to fill in all the necessary information in the
-<em/kppp/ dialogs and create an account before trying to use <em/kppp/ )
-<p>
 
 <sect>Modem Tricks & Hints<p>
 This section should get the fearful started on the (not so) arcane art
@@ -950,8 +928,7 @@ Increase the 'Init Delay Time' that can be found under 'Modem Commands' on the M
 
 <p>
 
-<sect2>The connection works fine but I can´t start any applications.
-<p>
+<sect2>The connection works fine but I can´t start any applications.<label id="autohostname"<p>
 
 You probably have activated the <ref id="Auto-configure hostname"> option and the X Server has problems connecting to your newly named host. If you really need this option (chances are that you don´t) you are on your own to setup the appropriate authorizations.
 Issuing <it>xhost +</it> before starting the connection would do the job, but be <bf>warned</bf> of any security risks that involves since everyone else is granted access to your X Server.
@@ -1112,8 +1089,9 @@ contain <it>pppd</it>, instead. Make sure that this file does <bf>not</bf> conta
 
 <p>
 
-<label id="GPL">
+
 <sect>The GNU General Public License<p>
+<label id="GPL">
 <verb>
 		    GNU GENERAL PUBLIC LICENSE
 		       Version 2, June 1991
@@ -1372,6 +1350,9 @@ make exceptions for this.  Our decision will be guided by the two goals
 of preserving the free status of all derivatives of our free software and
 of promoting the sharing and reuse of software generally.
 
+</verb>
+<label id=warranty>
+<verb>
 			    NO WARRANTY
 
   11. BECAUSE THE PROGRAM IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY

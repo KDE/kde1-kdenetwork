@@ -26,6 +26,8 @@
 #include "edit.h"
 #include "termios.h"
 #include <qlayout.h>
+#include <kquickhelp.h>
+#include <qregexp.h>
 
 #include "macros.h"
 
@@ -50,6 +52,10 @@ DialWidget::DialWidget( QWidget *parent, bool isnewaccount, const char *name )
   FIXED_HEIGHT(connectname_l);
   MIN_WIDTH(connectname_l);
   tl->addWidget(connectname_l, 1, 2);
+  KQuickHelp::add(connect_label,
+  KQuickHelp::add(connectname_l,
+		  "Choose a unique name for this connection"));
+
   
   number_label = new QLabel(this);
   number_label->setText(i18n("Phone Number:"));
@@ -58,6 +64,12 @@ DialWidget::DialWidget( QWidget *parent, bool isnewaccount, const char *name )
 
   number_l = new QLineEdit(this);
   number_l->setMaxLength(PHONENUMBER_SIZE);
+  KQuickHelp::add(number_label,
+  KQuickHelp::add(number_l,
+		  "Specifies the phone number to dial. You\n"
+		  "can supply multiple numbers separated by\n"
+		  "a colon. When a number is busy or fails,\n"
+		  "<i>kppp</i>will try the next number and so on"));
   
   FIXED_WIDTH(number_l);
   FIXED_HEIGHT(number_l);
@@ -73,14 +85,26 @@ DialWidget::DialWidget( QWidget *parent, bool isnewaccount, const char *name )
   auth->insertItem(i18n("PAP"));
   auth->insertItem(i18n("Terminal-based"));
   auth->insertItem(i18n("CHAP"));
+  connect(auth, SIGNAL(activated(int)),
+	  this, SLOT(authSelected(int)));
   MIN_WIDTH(auth);
   FIXED_HEIGHT(auth);
   tl->addWidget(auth, 4, 2);
+  KQuickHelp::add(auth_l,
+  KQuickHelp::add(auth,
+		  "Specifies the method to identify yourself to\n"
+		  "the PPP server. Most universities still use\n"
+		  "<b>Terminal</b>- or <b>Script</b>-based authtentication,\n"
+		  "while most ISP use <b>PAP</b> and/or <b>CHAP</b>. If\n"
+		  "unsure, contact your ISP.\n"
+		  "\n"
+		  "If you can choose between PAP and CHAP,\n"
+		  "choose CHAP, because it's much safer."));
 
   store_password = new QCheckBox(this);
   store_password->setText(i18n("Store password"));
   MIN_SIZE(store_password);
-  store_password->setChecked(TRUE);
+  store_password->setChecked(true);
   tl->addMultiCellWidget(store_password, 5, 5, 1, 2);
 
   command_label = new QLabel(this);
@@ -94,6 +118,15 @@ DialWidget::DialWidget( QWidget *parent, bool isnewaccount, const char *name )
   FIXED_HEIGHT(command);
   MIN_WIDTH(command);
   tl->addWidget(command, 6, 2);
+  KQuickHelp::add(command_label,
+  KQuickHelp::add(command,
+		  "Allows you to run a program <b>after</b> a connection\n"
+		  "is established. When your program is called, all\n"
+		  "all preparations for an internet connection are\n"
+		  "finished.\n"
+		  "\n"
+		  "Very usefull for fetching mail and news"));
+
 
   predisconnect_label = new QLabel(this);
   predisconnect_label->setText(i18n("Execute program\nbefore disconnect:"));
@@ -106,6 +139,11 @@ DialWidget::DialWidget( QWidget *parent, bool isnewaccount, const char *name )
   FIXED_HEIGHT(predisconnect);
   MIN_WIDTH(predisconnect);
   tl->addWidget(predisconnect, 7, 2);
+  KQuickHelp::add(predisconnect_label,
+  KQuickHelp::add(predisconnect,
+		  "Allows you to run a program <b>before</b> a connection\n"
+		  "is closed. The connection will stay open until\n"
+		  "the program exits."));
 
   discommand_label = new QLabel(this);
   discommand_label->setText(i18n("Execute program\nupon disconnect:"));
@@ -118,6 +156,11 @@ DialWidget::DialWidget( QWidget *parent, bool isnewaccount, const char *name )
   FIXED_HEIGHT(discommand);
   MIN_WIDTH(discommand);
   tl->addWidget(discommand, 8, 2);
+  KQuickHelp::add(discommand_label,
+  KQuickHelp::add(discommand,
+		  "Allows you to run a program <b>after</b> a connection\n"
+		  "is closed."));
+
 
   pppd_label = new QLabel(this);
   pppd_label->setText(i18n("Edit pppd arguments:"));
@@ -142,21 +185,31 @@ DialWidget::DialWidget( QWidget *parent, bool isnewaccount, const char *name )
     predisconnect->setText(gpppdata.command_before_disconnect());
     auth->setCurrentItem(gpppdata.authMethod());
     store_password->setChecked(gpppdata.storePassword());
+  } else {
+    auth->setCurrentItem(1);
   }
 
   tl->activate();
 }
 
 
+void DialWidget::authSelected(int i) {
+  emit authChanged(i);
+}
+
+
+void DialWidget::show() {
+  authSelected(auth->currentItem());
+  QWidget::show();
+}
+
 
 bool DialWidget::save() {
-
   //first check to make sure that the account name is unique!
   if(strcmp(connectname_l->text(), "") == 0 ||
      !gpppdata.isUniqueAccname(connectname_l->text())) {
     return false;
-  }
-  else {
+  } else {
     gpppdata.setAccname(connectname_l->text());
     gpppdata.setPhonenumber(number_l->text());
     gpppdata.setCommand_on_connect(command->text());
@@ -191,11 +244,24 @@ IPWidget::IPWidget( QWidget *parent, bool isnewaccount, const char *name )
 
   ipaddress_label = new QLabel(this);
   ipaddress_label->setText(i18n("IP Address:"));
+  KQuickHelp::add(ipaddress_label,
+  KQuickHelp::add(ipaddress_l,
+		  "If your computer has a static Internet address,\n"
+		  "you must supply this adress here"));
 
   subnetmask_l = new IPLineEdit(this);
 
   sub_label = new QLabel(this);
   sub_label->setText(i18n("Subnet Mask:"));
+  KQuickHelp::add(sub_label,
+  KQuickHelp::add(subnetmask_l,
+		  "If your computer has a static Internet address,\n"
+		  "you must supply a network mask here. In almost\n"
+		  "all cases this netmask will be <b>255.255.255.0</b>,\n"
+		  "but your mileage may vary.\n"
+		  "\n"
+		  "If unsure, contact your Internet Service Provider"));
+
 
   rb = new QButtonGroup(this);
   rb->hide();
@@ -204,13 +270,36 @@ IPWidget::IPWidget( QWidget *parent, bool isnewaccount, const char *name )
 
   dynamicadd_rb = new QRadioButton(this);
   dynamicadd_rb->setText(i18n("Dynamic IP Address"));
+  KQuickHelp::add(dynamicadd_rb,
+		  "Select this option when your computer gets a\n"
+		  "new internet address (IP) everytime when a\n"
+		  "connection is made.\n"
+		  "\n"
+		  "Allmost every Internet Service uses this\n"
+		  "method, so this should be turned on.");
 
   staticadd_rb = new QRadioButton(this);
   staticadd_rb->setText(i18n("Static IP Address"));
   rb->insert(dynamicadd_rb, 0);
   rb->insert(staticadd_rb, 1);
+  KQuickHelp::add(staticadd_rb,
+		  "Select this option when your computer has a\n"
+		  "fixed internet address (IP). Most computers\n"
+		  "don't have this, so you should better select\n"
+		  "dynamic IP addresses unless you know what you\n"
+		  "are doing");
 
   autoname=new QCheckBox(i18n("Auto-configure hostname from this IP"), this);
+  KQuickHelp::add(autoname,
+		  "Whenever you connect, this reconfigures\n"
+		  "your hostname to match the IP address you\n"
+		  "got from the PPP server. This may be useful\n"
+		  "if you need to use a protocol which depends\n"
+		  "on this information, but it brings several\n"
+		  "<link kppp-7.html#autohostname>problems</link> with.\n"
+		  "\n"
+		  "Don't enable unless you really need it");
+  
   autoname->adjustSize();
   autoname->setChecked(gpppdata.autoname());
   connect(autoname,SIGNAL(toggled(bool)),
@@ -220,19 +309,19 @@ IPWidget::IPWidget( QWidget *parent, bool isnewaccount, const char *name )
   if(!isnewaccount) {
     if(strcmp(gpppdata.ipaddr(),"0.0.0.0")==0 && 
        strcmp(gpppdata.subnetmask(),"0.0.0.0")==0) {
-      dynamicadd_rb->setChecked(TRUE);
+      dynamicadd_rb->setChecked(true);
       hitIPSelect(0);
       autoname->setChecked(gpppdata.autoname());
     }
     else {
       ipaddress_l->setText(gpppdata.ipaddr());
       subnetmask_l->setText(gpppdata.subnetmask());
-      staticadd_rb->setChecked(TRUE);
-      autoname->setChecked(FALSE);
+      staticadd_rb->setChecked(true);
+      autoname->setChecked(false);
     }
   }
   else {
-    dynamicadd_rb->setChecked(TRUE);
+    dynamicadd_rb->setChecked(true);
     hitIPSelect(0);
   }
 
@@ -290,29 +379,29 @@ void IPWidget::autoname_t(bool on) {
 }
 
 void IPWidget::save() {
-  gpppdata.setIpaddr(ipaddress_l->text());
-  gpppdata.setSubnetmask(subnetmask_l->text());
+  if(dynamicadd_rb->isChecked()) {
+    gpppdata.setIpaddr("0.0.0.0");
+    gpppdata.setSubnetmask("0.0.0.0");
+  } else {
+    gpppdata.setIpaddr(ipaddress_l->text());
+    gpppdata.setSubnetmask(subnetmask_l->text());
+  }
   gpppdata.setAutoname(autoname->isChecked()); 
 }
 
 
 void IPWidget::hitIPSelect( int i ) {
   if(i == 0) {
-    ipaddress_label->setEnabled(FALSE);
-    sub_label->setEnabled(FALSE);
-    ipaddress_l->setText("0.0.0.0");
-    ipaddress_l->setEnabled(FALSE);
-    subnetmask_l->setText("0.0.0.0");
-    subnetmask_l->setEnabled(FALSE);
+    ipaddress_label->setEnabled(false);
+    sub_label->setEnabled(false);
+    ipaddress_l->setEnabled(false);
+    subnetmask_l->setEnabled(false);
   }
   else {
-
-    ipaddress_label->setEnabled(TRUE);
-    sub_label->setEnabled(TRUE);
-    ipaddress_l->setEnabled(TRUE);
-    ipaddress_l->setText("");
-    subnetmask_l->setEnabled(TRUE);
-    subnetmask_l->setText("");
+    ipaddress_label->setEnabled(true);
+    sub_label->setEnabled(true);
+    ipaddress_l->setEnabled(true);
+    subnetmask_l->setEnabled(true);
   }
 }
 
@@ -350,6 +439,16 @@ DNSWidget::DNSWidget( QWidget *parent, bool isnewaccount, const char *name )
   MIN_WIDTH(dnsdomain);
   l11->addWidget(dnsdomain, 0, 1);
   l11->addRowSpacing(1, 15);
+  KQuickHelp::add(dnsdomain_label,
+  KQuickHelp::add(dnsdomain, 
+		  "If you enter a domain name here, this domain\n"
+		  "name is used for your computer while your are\n"
+		  "connected. When the connection is closed, the\n"
+		  "original domain name of your computer is\n"
+		  "restored.\n"
+		  "\n"
+		  "If you leave this field blank, no changes are\n"
+		  "made to the domain name."));
 
   dns_label = new QLabel(this);
   dns_label->setText(i18n("DNS IP Address:"));
@@ -359,10 +458,22 @@ DNSWidget::DNSWidget( QWidget *parent, bool isnewaccount, const char *name )
   QHBoxLayout *l110 = new QHBoxLayout;
   l11->addLayout(l110, 2, 1);
   dnsipaddr = new IPLineEdit(this);
-  connect(dnsipaddr, SIGNAL(returnPressed()), SLOT(adddns()));
+  connect(dnsipaddr, SIGNAL(returnPressed()), 
+	  SLOT(adddns()));
+  connect(dnsipaddr, SIGNAL(textChanged(const char *)), 
+	  SLOT(DNS_Edit_Changed(const char *)));
   FIXED_HEIGHT(dnsipaddr);
   l110->addWidget(dnsipaddr, 4);
   l110->addStretch(3);
+  KQuickHelp::add(dns_label, 
+  KQuickHelp::add(dnsipaddr, 
+		  "Allows you to specify a new DNS server which\n"
+		  "is used while you are connected. When the\n"
+		  "connection is closed, this DNS entry will be\n"
+		  "removed again.\n"
+		  "\n"
+		  "To add a DNS server type in the IP address of\n"
+		  "of the DNS server here and click on <b>Add</b>"));
 
   QHBoxLayout *l111 = new QHBoxLayout;
   l11->addLayout(l111, 3, 1);
@@ -374,6 +485,10 @@ DNSWidget::DNSWidget( QWidget *parent, bool isnewaccount, const char *name )
   add->setMinimumWidth(width);
   l111->addWidget(add);
   l111->addStretch(1);
+  KQuickHelp::add(add,
+		  "Click this button to add the DNS server\n"
+		  "specified in the field above. The entry\n"
+		  "will then be added to the list below");
 
   remove = new QPushButton(i18n("Remove"), this);
   connect(remove, SIGNAL(clicked()), SLOT(removedns()));
@@ -381,8 +496,10 @@ DNSWidget::DNSWidget( QWidget *parent, bool isnewaccount, const char *name )
   width = remove->sizeHint().width();
   width = QMAX(width,60);
   remove->setMinimumWidth(width);
-
   l111->addWidget(remove);
+  KQuickHelp::add(remove,
+		  "Click this button to remove the DNS server\n"
+		  "from the list below");
 
   servers_label = new QLabel(this);
   servers_label->setText(i18n("DNS Address List:"));
@@ -392,16 +509,33 @@ DNSWidget::DNSWidget( QWidget *parent, bool isnewaccount, const char *name )
  
   dnsservers = new QListBox(this);
   dnsservers->setMinimumSize(150, 100);
+  connect(dnsservers, SIGNAL(highlighted(int)),
+	  SLOT(DNS_Entry_Selected(int)));
   l11->addWidget(dnsservers, 4, 1);
+  KQuickHelp::add(servers_label,
+  KQuickHelp::add(dnsservers,
+		  "This shows all defined DNS servers to use\n"
+		  "while you are connected. Use the <b>Add</b> and\n"
+		  "<b>Remove</b> buttons to modify the list"));
 
   exdnsdisabled_toggle = new QCheckBox(i18n(
-     "Disable existing DNS Servers during Connection"), 
+     "Disable existing DNS Servers during Connection"),
 				       this);
   MIN_SIZE(exdnsdisabled_toggle);
   exdnsdisabled_toggle->setChecked(gpppdata.exDNSDisabled());
   l1->addStretch(2);
   l1->addWidget(exdnsdisabled_toggle);
-  l1->addStretch(1);   
+  l1->addStretch(1);
+  KQuickHelp::add(exdnsdisabled_toggle,
+		  "When this option is selected, all DNS\n"
+		  "servers specified in <i>/etc/resolv.conf</i> are\n"
+		  "temporary disabled while a connection\n"
+		  "is established. After the connection is\n"
+		  "closed, the servers will be re-enabled\n"
+		  "\n"
+		  "Typically, there is no reason to use this\n"
+		  "option, but it may become usefull under \n"
+		  "some circumstances");
  
   // restore data if editing
   if(!isnewaccount) {
@@ -411,7 +545,21 @@ DNSWidget::DNSWidget( QWidget *parent, bool isnewaccount, const char *name )
     dnsdomain->setText(gpppdata.domain());
   }
 
+  // disable buttons
+  DNS_Edit_Changed("");
+  remove->setEnabled(false);
+
   tl->activate();
+}
+
+void DNSWidget::DNS_Edit_Changed(const char *text) {
+  QRegExp r("[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+");
+  QString s(text);
+  add->setEnabled(s.find(r) != -1);
+}
+
+void DNSWidget::DNS_Entry_Selected(int idx) {
+  remove->setEnabled(true);
 }
 
 void DNSWidget::save() {
@@ -459,10 +607,23 @@ GatewayWidget::GatewayWidget( QWidget *parent, bool isnewaccount, const char *na
   defaultgateway = new QRadioButton(this);
   defaultgateway->setText(i18n("Default Gateway"));
   rb->insert(defaultgateway, 0);
+  KQuickHelp::add(defaultgateway,
+		  "This makes the PPP peer computer (the computer\n"
+		  "you are connected to with your modem) to act as\n"
+		  "gateway. Your computer will send all packets not\n"
+		  "going to a computer inside your local net to this\n"
+		  "computer, which will route this packets.\n"
+		  "\n"
+		  "This is default for most ISP, so better leave this\n"
+		  "option on");
+		  
 
   staticgateway = new QRadioButton(this);
   staticgateway->setText(i18n("Static Gateway"));
   rb->insert(staticgateway, 1);
+  KQuickHelp::add(staticgateway,
+		  "Allows you to specify which computer you want\n"
+		  "to use as gateway (see <i>Default Gateway</i> above");
 
   gatewayaddr = new IPLineEdit(this);
 
@@ -470,25 +631,31 @@ GatewayWidget::GatewayWidget( QWidget *parent, bool isnewaccount, const char *na
   gate_label->setText(i18n("Gateway\nIP Address:"));
 
   defaultroute=new QCheckBox(i18n("Assign the Default Route to this Gateway"),
-	this);
+			     this);
   defaultroute->adjustSize();
+  KQuickHelp::add(defaultroute,
+		  "If this option is enabled, all packets not\n"
+		  "going to the local net are routed through\n"
+		  "the PPP connection.\n"
+		  "\n"
+		  "Normally, you should turn this on");
 
   //load info from gpppdata
   if(!isnewaccount) {
     if(strcmp(gpppdata.gateway(),"0.0.0.0")==0 ) {
-      defaultgateway->setChecked(TRUE);
+      defaultgateway->setChecked(true);
       hitGatewaySelect(0);
     }
     else {
       gatewayaddr->setText(gpppdata.gateway());
-      staticgateway->setChecked(TRUE);
+      staticgateway->setChecked(true);
     }
     defaultroute->setChecked(gpppdata.defaultroute());
   }
   else {
-    defaultgateway->setChecked(TRUE);
+    defaultgateway->setChecked(true);
     hitGatewaySelect(0);
-    defaultroute->setChecked(TRUE);
+    defaultroute->setChecked(true);
   }
 }
 
@@ -542,13 +709,13 @@ void GatewayWidget::save() {
 void GatewayWidget::hitGatewaySelect( int i ) {
   if(i == 0) {
     gatewayaddr->setText("0.0.0.0");
-    gatewayaddr->setEnabled(FALSE);
-    gate_label->setEnabled(FALSE);
+    gatewayaddr->setEnabled(false);
+    gate_label->setEnabled(false);
   }
   else {
-    gatewayaddr->setEnabled(TRUE);
+    gatewayaddr->setEnabled(true);
     gatewayaddr->setText("");
-    gate_label->setEnabled(TRUE);
+    gate_label->setEnabled(true);
   }
 }
 
@@ -629,10 +796,10 @@ ScriptWidget::ScriptWidget( QWidget *parent, bool isnewaccount, const char *name
   l12->addWidget(sl, 3);
   l12->addWidget(slb, 0);
 
-  //  default_script->setChecked(TRUE);
+  //  default_script->setChecked(true);
   //  connect(default_script, SIGNAL(toggled(bool)),
   //	  this, SLOT(default_script_toggled(bool)));
-  //  default_script_toggled(TRUE);
+  //  default_script_toggled(true);
 
   //load data from gpppdata
   if(!isnewaccount) {
@@ -650,6 +817,18 @@ ScriptWidget::ScriptWidget( QWidget *parent, bool isnewaccount, const char *name
   adjustScrollBar();
 
   tl->activate();
+}
+
+
+void ScriptWidget::authSelected(int i) {
+  bool b = (i != 1) && (i != 3);
+
+  se->setEnabled(b);
+  add->setEnabled(b);
+  insert->setEnabled(b);
+  remove->setEnabled(b);
+  stl->setEnabled(b);
+  sl->setEnabled(b);
 }
 
 
@@ -897,17 +1076,12 @@ void ScriptWidget::insertButton() {
 
 
 void ScriptWidget::removeButton() {
-
- int stlc;
-
-  if(sl->currentItem() < 0)
-    return;
-
-  stlc = stl->currentItem();
-  sl->removeItem(sl->currentItem());
-  stl->removeItem(stlc);
-  adjustScrollBar();
-
+ if(sl->currentItem() >= 0) {
+   int stlc = stl->currentItem();
+   sl->removeItem(sl->currentItem());
+   stl->removeItem(stlc);
+   adjustScrollBar();
+ }
 }
 
 #include "edit.moc"
