@@ -213,7 +213,7 @@ int main( int argc, char **argv ) {
   // until we drop this status a few lines below.
   int sockets[2];
   pid_t fpid;
-  if(socketpair(AF_UNIX, SOCK_DGRAM, 0, sockets) != 0) {
+  if(socketpair(AF_UNIX, SOCK_STREAM, 0, sockets) != 0) {
     fprintf(stderr, "error creating socketpair !\n");
     exit(1);
   }
@@ -223,7 +223,8 @@ int main( int argc, char **argv ) {
     exit(1);
   }
 
-  if(fpid==0) {
+  switch(fpid==0) {
+  case 0:
     // child process
     // make process leader of new group
     setsid();
@@ -231,7 +232,12 @@ int main( int argc, char **argv ) {
     (void) new Opener(sockets[1]);
     // we should never get here
     _exit(1);
+
+  case -1:
+    perror("fork() failed: ");
+    exit(1);
   }
+  
   // parent process
   close(sockets[1]);
 
@@ -833,6 +839,7 @@ void dieppp(int sig) {
 	emit p_kppp->cmdl_start();
       }
     }
+
     if(id == gpppdata.suidChildPid() && gpppdata.suidChildPid() != -1) {
       Debug("It was the setuid child that died\n");
       gpppdata.setSuidChildPid(-1);

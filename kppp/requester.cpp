@@ -44,10 +44,6 @@
 #include "pppdata.h"
 #include "requester.h"
 
-#ifdef linux
-#include <linux/version.h>
-#endif
-
 #include "log.h"
 
 Requester *Requester::rq = 0L;
@@ -82,7 +78,6 @@ int Requester::recvFD(char *filename, int size) {
   iov[0].iov_len = sizeof(struct ResponseHeader);
   iov[1].iov_base = filename;
   iov[1].iov_len = size;
-// #if defined(linux) && (LINUX_VERSION_CODE >= KERNEL_VERSION(2,1,0))
 #ifdef CMSG_LEN
   cmsglen = CMSG_LEN(sizeof(int));
 #else
@@ -107,8 +102,7 @@ int Requester::recvFD(char *filename, int size) {
     perror("recvmsg: truncated message");
     exit(1);
   } else {
-    filename[size-1] = '\0'; 
-// #if defined(linux) && (LINUX_VERSION_CODE >= KERNEL_VERSION(2,1,0))
+    filename[size-1] = '\0';
 #ifdef CMSG_DATA
     fd = *((int *)CMSG_DATA(&control));
 #else
