@@ -38,13 +38,16 @@ Kmessage::Kmessage
      const char* name
     )
     :
-    QWidget(parent,name)
+    KHTMLView(parent,name)
 
 {
     setFocusPolicy(QWidget::NoFocus);
 
-    view=new KHTMLWidget( parent, name,"/lib/pics/");
-    view->begin();
+    view=this;
+
+    view->setScrolling(-1);
+    view->resize(400,300);
+    view->begin("file:/tmp/xxx");
     view->write ("<html><head><title>Krn message view</title></head>\n"
                  "<body bgcolor=#ffffff><hr><h4>Krn:&nbsp;A&nbsp;Newsreader&nbsp;for&nbsp;KDE</h4><hr>");
     debug("HTML Header=\""
@@ -68,16 +71,6 @@ Kmessage::Kmessage
     KApplication::connect(kapp,SIGNAL(kdisplayPaletteChanged()),this, SLOT(renderWidgets()));
     KApplication::connect(kapp,SIGNAL(kdisplayStyleChanged()),this, SLOT(renderWidgets()));
     KApplication::connect(kapp,SIGNAL(kdisplayFontChanged()),this, SLOT(renderWidgets()));
-    QObject::connect( view, SIGNAL( documentChanged() ), SLOT( adjustScrollers() ) );
-    vertScroller=new QScrollBar(0, view->docHeight(), 16, height(), 0,
-                                QScrollBar::Vertical,this);
-    CHECK_PTR(vertScroller);
-    KApplication::connect(vertScroller, SIGNAL(valueChanged(int)), view, SLOT(slotScrollVert(int)));
-
-    horzScroller=new QScrollBar(0, view->docWidth(), 16, width(), 0,
-                                QScrollBar::Horizontal,this );
-    CHECK_PTR(horzScroller);
-    KApplication::connect(horzScroller, SIGNAL(valueChanged(int)), view, SLOT(slotScrollHorz(int)));
 }
 
 Kmessage::~Kmessage()
@@ -85,8 +78,6 @@ Kmessage::~Kmessage()
     debug("DTOR");
     for(char* s=tmpFiles.first(); s!=NULL; s=tmpFiles.next())
         unlink(s);
-    delete vertScroller;
-    delete horzScroller;
 }
 
 void Kmessage::loadMessage( QString message, bool complete=TRUE )
@@ -94,116 +85,16 @@ void Kmessage::loadMessage( QString message, bool complete=TRUE )
     format=new KFormatter(saveWidgetName,viewWidgetName,message,complete);
     CHECK_PTR(format);
 
-    view->begin();
+    view->begin("file:/tmp/xxx");
     QString header=format->htmlHeader();
     view->write(header+"<hr>");
     view->parse();
-    QString body=format->htmlAll()+"</body>\n";
+    QString body=format->htmlAll();
     view->write(body+"</html>\n");
     view->end();
     view->repaint();
     view->show();
 
-    //debug("\n\nHTML body=\"%s\"",QString(header+body+"</html>").data());
-
-    view->slotScrollVert(0);
-    view->slotScrollHorz(0);
-}
-
-void Kmessage::adjustScrollers()
-{
-#ifndef OLD_SCROLLER_CODE
-    //Trying to hide and show the scrollers won't work
-    //because docHeight() anddocWidth() always return 0 at this
-    //point. Why???? kdehelp seems to have the same problem.
-
-    vertScroller->setRange(0,view->docHeight()-height());
-    vertScroller->resize(16,height()-16);
-    vertScroller->move(width()-vertScroller->width(), 0);
-    vertScroller->setValue(view->yOffset());
-
-    horzScroller->move(0, height() - horzScroller->height());
-    horzScroller->resize(width()-16,16);
-    horzScroller->setRange(0,view->docWidth()-width());
-    horzScroller->setValue(view->xOffset());
-#endif
-
-    int x_amount = 0;
-    int y_amount = 0;
-
-    if (view->docHeight() <= height()) vertScroller->hide();
-    else
-    {
-        vertScroller->show();
-        y_amount = 16;                  // Scrollbar cannot be full length
-    }
-
-    if (view->docWidth() <= width()) horzScroller->hide();
-    else
-    {
-        horzScroller->show();
-        x_amount = 16;
-    }
-
-    vertScroller->setRange(0, (view->docHeight() < height() ? height() : view->docHeight()-height()));
-    vertScroller->resize(16,height()-x_amount);
-    vertScroller->move(width()-vertScroller->width(), 0);
-    vertScroller->setValue(view->yOffset());
-
-    horzScroller->move(0, height() - horzScroller->height());
-    horzScroller->resize(width()-y_amount,16);
-    horzScroller->setRange(0,(view->docWidth() < width() ? width() : view->docWidth()-width()));
-    horzScroller->setValue(view->xOffset());
-}
-
-void Kmessage::pageUp()
-{
-    if ( view->docHeight() < (height()-16) )
-        return;
-    int newY = view->yOffset() + height() - 20;
-    if ( newY > view->docHeight() - (height()-16) )
-        newY = view->docHeight() - height();
-    view->slotScrollVert( newY );
-    adjustScrollers();
-}
-
-void Kmessage::pageDown()
-{
-    if ( view->docHeight() < (height()-16) )
-        return;
-    int newY = view->yOffset() - height() + 20;
-    if ( newY<0 )
-        newY = 0;
-    view->slotScrollVert( newY );
-    adjustScrollers();
-}
-
-void Kmessage::scrollUp()
-{
-    if ( view->docHeight() < (height()-16) )
-        return;
-    int newY = view->yOffset() + 50 - 20;
-    if ( newY > view->docHeight() - (height()-16) )
-        newY = view->docHeight() - height();
-    view->slotScrollVert( newY );
-    adjustScrollers();
-}
-
-void Kmessage::scrollDown()
-{
-    if ( view->docHeight() < (height()-16) )
-        return;
-    int newY = view->yOffset() - 50 + 20;
-    if ( newY<0 )
-        newY = 0;
-    view->slotScrollVert( newY );
-    adjustScrollers();
-}
-
-void Kmessage::resizeEvent(QResizeEvent*)
-{
-    view->resize(width()-vertScroller->width(), height()-horzScroller->height());
-    adjustScrollers();
 }
 
 void Kmessage::URLClicked(const char* s,int)

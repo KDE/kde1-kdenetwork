@@ -19,13 +19,13 @@
 #define kmessage_included
 
 #undef Unsorted
-#include <html.h>
+#include <htmlview.h>
 #include <qstring.h>
 #include <qstrlist.h>
 #include <qscrbar.h>
 #include "kformatter.h"
 
-class Kmessage : public QWidget
+class Kmessage : public KHTMLView
 {
     Q_OBJECT
 
@@ -41,10 +41,6 @@ public:
 
 public slots:
     void loadMessage (QString message, bool complete=TRUE);
-    void pageUp();
-    void pageDown();
-    void scrollUp();
-    void scrollDown();
 
 signals:
     void spawnGroup(QString);
@@ -53,10 +49,8 @@ signals:
 private slots:
     void URLClicked(const char*,int);
     void renderWidgets();
-    void adjustScrollers();
 
 private:
-    void resizeEvent(class QResizeEvent *e=NULL);
 
     KFormatter* format;
 
@@ -65,8 +59,7 @@ private:
 
     QStrList tmpFiles;
 
-    KHTMLWidget *view;
-    QScrollBar *vertScroller, *horzScroller;
+    KHTMLView *view;
 };
 
 #endif // kmessage_included

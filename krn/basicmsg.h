@@ -38,7 +38,7 @@
 #define BASICMSG_H
 
 #ifndef MIMEPP_H
-#include <mimepp/mimepp.h>
+#include <mimelib/mimepp.h>
 #endif
 
 

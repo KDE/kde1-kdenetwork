@@ -336,18 +336,6 @@ bool Artdlg::actions (int action)
             success=true;
             break;
         }
-    case PAGE_DOWN_ARTICLE:
-        {
-            messwin->pageUp();
-            success=true;
-            break;
-        }
-    case PAGE_UP_ARTICLE:
-        {
-            messwin->pageDown();
-            success=true;
-            break;
-        }
     case DECODE_ARTICLE:
         {
             decArt(list->currentItem(),0);
@@ -367,20 +355,6 @@ bool Artdlg::actions (int action)
         {
             PostDialog p(groupname,"",this);
             p.show();
-            break;
-        }
-    case REP_MAIL:
-        KMsgBox::message (0,"Sorry!","Not implemented");
-    case SCROLL_UP_ARTICLE:
-        {
-            messwin->scrollUp();
-            success=true;
-            break;
-        }
-    case SCROLL_DOWN_ARTICLE:
-        {
-            messwin->scrollDown();
-            success=true;
             break;
         }
     case SAVE_ARTICLE:
@@ -414,6 +388,8 @@ bool Artdlg::actions (int action)
             success = true;
             break;
         }
+    case REP_MAIL:
+        KMsgBox::message (0,"Sorry!","Not implemented");
     }
     qApp->restoreOverrideCursor ();
     return success;

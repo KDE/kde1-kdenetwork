@@ -451,7 +451,7 @@ QString KFormatter::searchLink(QString subj, QString group)
 
 QString KFormatter::htmlHeader()
 {
-    QString header;
+    QString header("<table>");
     //Build the header
     QStrIList visheaders;
     visheaders.setAutoDelete(true);
@@ -476,7 +476,7 @@ QString KFormatter::htmlHeader()
             int npos=headerContents.find('\n');
             if(npos!=-1) headerContents=headerContents.left(npos);
             debug("Header contents: %s",headerContents.data());
-            header+="<b>"+headerName+": </b>";
+            header+="<tr><td><b>"+headerName+": </b></td><td>";
 
             if(headerName=="Newsgroups" || headerName=="Followup-to")
             {
@@ -492,7 +492,7 @@ QString KFormatter::htmlHeader()
                     index+=len+1;
                 }
             }
-            if(headerName=="References")
+            else if(headerName=="References")
             {
                 QString articles=headerContents;
                 articles.simplifyWhiteSpace();
@@ -582,9 +582,10 @@ QString KFormatter::htmlHeader()
                 header=header+s+"\n";
             }
 
-            header+=+"<br>\n";
+            header+=+"</td>\n";
         }
     }
+    header+="</table>";
     return header;
 }
 
