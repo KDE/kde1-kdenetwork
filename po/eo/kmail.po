@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1999-03-29 02:57+0200\n"
+"POT-Creation-Date: 1999-04-02 02:46+0200\n"
 "PO-Revision-Date: 1998-12-09 18:00+0100\n"
 "Last-Translator: Wolfram Diestel <diestel@rzaix340.rz-uni-leipzig.de>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
@@ -962,7 +962,7 @@ msgstr ""
 msgid "pgp key"
 msgstr ""
 
-#: kmcomposewin.cpp:1297 kmreaderwin.cpp:811
+#: kmcomposewin.cpp:1297 kmreaderwin.cpp:840
 msgid "View..."
 msgstr "Rigardu..."
 
@@ -970,7 +970,7 @@ msgstr "Rigardu..."
 msgid "Save..."
 msgstr "Sekurigu..."
 
-#: kmcomposewin.cpp:1299 kmreaderwin.cpp:814
+#: kmcomposewin.cpp:1299 kmreaderwin.cpp:843
 msgid "Properties..."
 msgstr "Ecoj..."
 
@@ -978,7 +978,7 @@ msgstr "Ecoj..."
 msgid "Attach..."
 msgstr "Kunsendu..."
 
-#: kmcomposewin.cpp:1345 kmreaderwin.cpp:857
+#: kmcomposewin.cpp:1345 kmreaderwin.cpp:912 kmreaderwin.cpp:928
 msgid "View Attachment: "
 msgstr "Montru kunsenda¼ojn: "
 
@@ -1008,21 +1008,21 @@ msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
 msgstr "Eraro dum lanæo de KSpell. Certigu, ke vi øuste agordis ISpell."
 
-#: kmfolder.cpp:146
+#: kmfolder.cpp:147
 #, c-format
 msgid "Folder `%s' changed. Recreating index."
 msgstr "Dosierujo '%s' þanøita. Rekreante indekson."
 
-#: kmfolder.cpp:387
+#: kmfolder.cpp:388
 #, c-format
 msgid "Creating index file: %d messages done"
 msgstr "Kreante indeksdosieron: %d mesaøoj traktitaj"
 
-#: kmfolder.cpp:476
+#: kmfolder.cpp:477
 msgid "Writing index file"
 msgstr "Skribante indeksdosieron"
 
-#: kmfolder.cpp:920
+#: kmfolder.cpp:934
 #, c-format
 msgid "Compacting folder: %d messages done"
 msgstr "Kunpremante dosierujon: %d mesaøoj traktitaj"
@@ -1051,64 +1051,64 @@ msgstr "base 64"
 msgid "quoted printable"
 msgstr "quoted printable"
 
-#: kmreaderwin.cpp:310 kmreaderwin.cpp:323 kmreaderwin.cpp:342
-#: kmreaderwin.cpp:363
+#: kmreaderwin.cpp:336 kmreaderwin.cpp:349 kmreaderwin.cpp:368
+#: kmreaderwin.cpp:389
 msgid "Cc: "
 msgstr "Kopio: "
 
-#: kmreaderwin.cpp:318 kmreaderwin.cpp:337 kmreaderwin.cpp:358
+#: kmreaderwin.cpp:344 kmreaderwin.cpp:363 kmreaderwin.cpp:384
 msgid "From: "
 msgstr "De: "
 
-#: kmreaderwin.cpp:320 kmreaderwin.cpp:339 kmreaderwin.cpp:360
+#: kmreaderwin.cpp:346 kmreaderwin.cpp:365 kmreaderwin.cpp:386
 msgid "To: "
 msgstr "Al: "
 
-#: kmreaderwin.cpp:327 kmreaderwin.cpp:348 kmreaderwin.cpp:373
+#: kmreaderwin.cpp:353 kmreaderwin.cpp:374 kmreaderwin.cpp:399
 msgid "References: "
 msgstr "Referencoj: "
 
-#: kmreaderwin.cpp:344 kmreaderwin.cpp:357
+#: kmreaderwin.cpp:370 kmreaderwin.cpp:383
 msgid "Date: "
 msgstr "Dato: "
 
-#: kmreaderwin.cpp:366
+#: kmreaderwin.cpp:392
 msgid "Bcc: "
 msgstr "Krome al: "
 
-#: kmreaderwin.cpp:369
+#: kmreaderwin.cpp:395
 msgid "Reply to: "
 msgstr "Respondo al:"
 
-#: kmreaderwin.cpp:376
+#: kmreaderwin.cpp:402
 msgid "Groups: "
 msgstr "Grupoj: "
 
-#: kmreaderwin.cpp:414
+#: kmreaderwin.cpp:440
 msgid "Encrypted message"
 msgstr "Æifrita mesaøo"
 
-#: kmreaderwin.cpp:420
+#: kmreaderwin.cpp:446
 msgid "Cannot decrypt message:"
 msgstr "Ne eblas malæifri mesaøon:"
 
-#: kmreaderwin.cpp:429
+#: kmreaderwin.cpp:455
 msgid "Message was signed by"
 msgstr "Mesaøo signaturita de"
 
-#: kmreaderwin.cpp:430
+#: kmreaderwin.cpp:456
 msgid "Warning: Bad signature from"
 msgstr "Averto: Malbona signaturo de"
 
-#: kmreaderwin.cpp:440
+#: kmreaderwin.cpp:466
 msgid "unknown key ID"
 msgstr "nekonata þlosil-identigilo"
 
-#: kmreaderwin.cpp:775
+#: kmreaderwin.cpp:804
 msgid "Attachment: "
 msgstr "Kunsenda¼o: "
 
-#: kmreaderwin.cpp:945
+#: kmreaderwin.cpp:1016
 msgid "Could not save file"
 msgstr "Ne eblis sekurigi dosieron"
 

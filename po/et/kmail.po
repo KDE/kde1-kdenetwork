@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1999-03-29 02:57+0200\n"
+"POT-Creation-Date: 1999-04-02 02:46+0200\n"
 "PO-Revision-Date: 1999-02-05 21:13+0200\n"
 "Last-Translator: Hasso C. Tepper <heathcliff@iname.com>\n"
 "Language-Team: Estonian <heathcliff@iname.com>\n"
@@ -959,7 +959,7 @@ msgstr "minu pgp võti"
 msgid "pgp key"
 msgstr "pgp võti"
 
-#: kmcomposewin.cpp:1297 kmreaderwin.cpp:811
+#: kmcomposewin.cpp:1297 kmreaderwin.cpp:840
 msgid "View..."
 msgstr "Vaata..."
 
@@ -967,7 +967,7 @@ msgstr "Vaata..."
 msgid "Save..."
 msgstr "Salvesta..."
 
-#: kmcomposewin.cpp:1299 kmreaderwin.cpp:814
+#: kmcomposewin.cpp:1299 kmreaderwin.cpp:843
 msgid "Properties..."
 msgstr "Omadused..."
 
@@ -975,7 +975,7 @@ msgstr "Omadused..."
 msgid "Attach..."
 msgstr "Kaasa..."
 
-#: kmcomposewin.cpp:1345 kmreaderwin.cpp:857
+#: kmcomposewin.cpp:1345 kmreaderwin.cpp:912 kmreaderwin.cpp:928
 msgid "View Attachment: "
 msgstr "Vaata kaasatud faili: "
 
@@ -1006,21 +1006,21 @@ msgid ""
 msgstr ""
 "Viga KSpell'i käivitamisel. Tee kindlaks, et ISpell on õieti konfigureeritud."
 
-#: kmfolder.cpp:146
+#: kmfolder.cpp:147
 #, c-format
 msgid "Folder `%s' changed. Recreating index."
 msgstr "Kausta '%s' on muudetud. Indeksi uuesti loomine."
 
-#: kmfolder.cpp:387
+#: kmfolder.cpp:388
 #, c-format
 msgid "Creating index file: %d messages done"
 msgstr "Indeksfaili loomine: %d sõnumit tehtud"
 
-#: kmfolder.cpp:476
+#: kmfolder.cpp:477
 msgid "Writing index file"
 msgstr "Indeksfaili kirjutamine"
 
-#: kmfolder.cpp:920
+#: kmfolder.cpp:934
 #, c-format
 msgid "Compacting folder: %d messages done"
 msgstr "Kausta tihendamine: %d sõnumit tehtud"
@@ -1049,64 +1049,64 @@ msgstr "base 64"
 msgid "quoted printable"
 msgstr "quoted printable"
 
-#: kmreaderwin.cpp:310 kmreaderwin.cpp:323 kmreaderwin.cpp:342
-#: kmreaderwin.cpp:363
+#: kmreaderwin.cpp:336 kmreaderwin.cpp:349 kmreaderwin.cpp:368
+#: kmreaderwin.cpp:389
 msgid "Cc: "
 msgstr "Cc: "
 
-#: kmreaderwin.cpp:318 kmreaderwin.cpp:337 kmreaderwin.cpp:358
+#: kmreaderwin.cpp:344 kmreaderwin.cpp:363 kmreaderwin.cpp:384
 msgid "From: "
 msgstr "Kellelt: "
 
-#: kmreaderwin.cpp:320 kmreaderwin.cpp:339 kmreaderwin.cpp:360
+#: kmreaderwin.cpp:346 kmreaderwin.cpp:365 kmreaderwin.cpp:386
 msgid "To: "
 msgstr "Kellele: "
 
-#: kmreaderwin.cpp:327 kmreaderwin.cpp:348 kmreaderwin.cpp:373
+#: kmreaderwin.cpp:353 kmreaderwin.cpp:374 kmreaderwin.cpp:399
 msgid "References: "
 msgstr "Viited: "
 
-#: kmreaderwin.cpp:344 kmreaderwin.cpp:357
+#: kmreaderwin.cpp:370 kmreaderwin.cpp:383
 msgid "Date: "
 msgstr "Kuupäev: "
 
-#: kmreaderwin.cpp:366
+#: kmreaderwin.cpp:392
 msgid "Bcc: "
 msgstr "Bcc: "
 
-#: kmreaderwin.cpp:369
+#: kmreaderwin.cpp:395
 msgid "Reply to: "
 msgstr "Vastus: "
 
-#: kmreaderwin.cpp:376
+#: kmreaderwin.cpp:402
 msgid "Groups: "
 msgstr "Grupid: "
 
-#: kmreaderwin.cpp:414
+#: kmreaderwin.cpp:440
 msgid "Encrypted message"
 msgstr "Kodeeritud sõnum"
 
-#: kmreaderwin.cpp:420
+#: kmreaderwin.cpp:446
 msgid "Cannot decrypt message:"
 msgstr "Sõnumit pole võimalik dekodeerida:"
 
-#: kmreaderwin.cpp:429
+#: kmreaderwin.cpp:455
 msgid "Message was signed by"
 msgstr "Sõnumi oli signeerinud"
 
-#: kmreaderwin.cpp:430
+#: kmreaderwin.cpp:456
 msgid "Warning: Bad signature from"
 msgstr "Hoiatus: Vigane signatuuri vorm"
 
-#: kmreaderwin.cpp:440
+#: kmreaderwin.cpp:466
 msgid "unknown key ID"
 msgstr "tundmatu võtme ID"
 
-#: kmreaderwin.cpp:775
+#: kmreaderwin.cpp:804
 msgid "Attachment: "
 msgstr "Kaasatud fail: "
 
-#: kmreaderwin.cpp:945
+#: kmreaderwin.cpp:1016
 msgid "Could not save file"
 msgstr "Faili pole võimalik salvestada"
 

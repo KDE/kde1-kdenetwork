@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kdenetwork 1.1\n"
-"POT-Creation-Date: 1999-03-29 02:57+0200\n"
+"POT-Creation-Date: 1999-04-02 02:46+0200\n"
 "PO-Revision-Date: Tue Mar 9 1999 12:59:50+0100\n"
 "Last-Translator: Marcell Lengyel <miketkf@yahoo.com>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -1050,7 +1050,7 @@ msgid "pgp key"
 msgstr "pgp kulcs"
 
 #
-#: kmcomposewin.cpp:1297 kmreaderwin.cpp:811
+#: kmcomposewin.cpp:1297 kmreaderwin.cpp:840
 msgid "View..."
 msgstr "Nézet..."
 
@@ -1060,7 +1060,7 @@ msgid "Save..."
 msgstr "Mentés..."
 
 #
-#: kmcomposewin.cpp:1299 kmreaderwin.cpp:814
+#: kmcomposewin.cpp:1299 kmreaderwin.cpp:843
 msgid "Properties..."
 msgstr "Tulajdonságok..."
 
@@ -1070,7 +1070,7 @@ msgid "Attach..."
 msgstr "Csatolás..."
 
 #
-#: kmcomposewin.cpp:1345 kmreaderwin.cpp:857
+#: kmcomposewin.cpp:1345 kmreaderwin.cpp:912 kmreaderwin.cpp:928
 msgid "View Attachment: "
 msgstr "Csatolás megtekintése: "
 
@@ -1100,21 +1100,21 @@ msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
 msgstr "Hiba a KSpell indításakor. Ellenõrizze, az ISpell beállításait."
 
-#: kmfolder.cpp:146
+#: kmfolder.cpp:147
 #, c-format
 msgid "Folder `%s' changed. Recreating index."
 msgstr "A `%s' mappa megváltozott. Index fájl újragenerálás."
 
-#: kmfolder.cpp:387
+#: kmfolder.cpp:388
 #, c-format
 msgid "Creating index file: %d messages done"
 msgstr "Index fájl készül: %d üzenet kész"
 
-#: kmfolder.cpp:476
+#: kmfolder.cpp:477
 msgid "Writing index file"
 msgstr "Index fájl mentése"
 
-#: kmfolder.cpp:920
+#: kmfolder.cpp:934
 #, c-format
 msgid "Compacting folder: %d messages done"
 msgstr "Mappa tömörítése: %d üzenet kész"
@@ -1146,71 +1146,71 @@ msgid "quoted printable"
 msgstr "idézett, nyomtatható"
 
 #
-#: kmreaderwin.cpp:310 kmreaderwin.cpp:323 kmreaderwin.cpp:342
-#: kmreaderwin.cpp:363
+#: kmreaderwin.cpp:336 kmreaderwin.cpp:349 kmreaderwin.cpp:368
+#: kmreaderwin.cpp:389
 msgid "Cc: "
 msgstr "Másolat: "
 
 #
-#: kmreaderwin.cpp:318 kmreaderwin.cpp:337 kmreaderwin.cpp:358
+#: kmreaderwin.cpp:344 kmreaderwin.cpp:363 kmreaderwin.cpp:384
 msgid "From: "
 msgstr "Feladó: "
 
 #
-#: kmreaderwin.cpp:320 kmreaderwin.cpp:339 kmreaderwin.cpp:360
+#: kmreaderwin.cpp:346 kmreaderwin.cpp:365 kmreaderwin.cpp:386
 msgid "To: "
 msgstr "Címzett: "
 
-#: kmreaderwin.cpp:327 kmreaderwin.cpp:348 kmreaderwin.cpp:373
+#: kmreaderwin.cpp:353 kmreaderwin.cpp:374 kmreaderwin.cpp:399
 msgid "References: "
 msgstr "Hivatkozások: "
 
 #
-#: kmreaderwin.cpp:344 kmreaderwin.cpp:357
+#: kmreaderwin.cpp:370 kmreaderwin.cpp:383
 msgid "Date: "
 msgstr "Dátum: "
 
 #
-#: kmreaderwin.cpp:366
+#: kmreaderwin.cpp:392
 msgid "Bcc: "
 msgstr "Titkos másolat: "
 
 #
-#: kmreaderwin.cpp:369
+#: kmreaderwin.cpp:395
 msgid "Reply to: "
 msgstr "Válaszcím: "
 
-#: kmreaderwin.cpp:376
+#: kmreaderwin.cpp:402
 msgid "Groups: "
 msgstr "Csoportok: "
 
 #
-#: kmreaderwin.cpp:414
+#: kmreaderwin.cpp:440
 msgid "Encrypted message"
 msgstr "Titkosított üzenet"
 
-#: kmreaderwin.cpp:420
+#: kmreaderwin.cpp:446
 msgid "Cannot decrypt message:"
 msgstr "Az üzenet nem dekódolható:"
 
-#: kmreaderwin.cpp:429
+#: kmreaderwin.cpp:455
 msgid "Message was signed by"
 msgstr "Üzenet aláírója:"
 
-#: kmreaderwin.cpp:430
+#: kmreaderwin.cpp:456
 msgid "Warning: Bad signature from"
 msgstr "Figyelem: Rossz aláírás:"
 
-#: kmreaderwin.cpp:440
+#: kmreaderwin.cpp:466
 msgid "unknown key ID"
 msgstr "ismeretlen kulcs azonosító"
 
 #
-#: kmreaderwin.cpp:775
+#: kmreaderwin.cpp:804
 msgid "Attachment: "
 msgstr "Függelék: "
 
-#: kmreaderwin.cpp:945
+#: kmreaderwin.cpp:1016
 msgid "Could not save file"
 msgstr "Fájlba mentés nem sikerült"
 

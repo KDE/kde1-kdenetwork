@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1999-03-29 02:57+0200\n"
+"POT-Creation-Date: 1999-04-02 02:46+0200\n"
 "PO-Revision-Date: 1999-02-05 21:54+01:00\n"
 "Last-Translator: Karl Backstrom <backstrom@kde.org>\n"
 "Language-Team: Sv\n"
@@ -957,7 +957,7 @@ msgstr "min PGP-nyckel"
 msgid "pgp key"
 msgstr "PGP-nyckel"
 
-#: kmcomposewin.cpp:1297 kmreaderwin.cpp:811
+#: kmcomposewin.cpp:1297 kmreaderwin.cpp:840
 msgid "View..."
 msgstr "Visa..."
 
@@ -965,7 +965,7 @@ msgstr "Visa..."
 msgid "Save..."
 msgstr "Spara..."
 
-#: kmcomposewin.cpp:1299 kmreaderwin.cpp:814
+#: kmcomposewin.cpp:1299 kmreaderwin.cpp:843
 msgid "Properties..."
 msgstr "Egenskaper..."
 
@@ -973,7 +973,7 @@ msgstr "Egenskaper..."
 msgid "Attach..."
 msgstr "Bifoga..."
 
-#: kmcomposewin.cpp:1345 kmreaderwin.cpp:857
+#: kmcomposewin.cpp:1345 kmreaderwin.cpp:912 kmreaderwin.cpp:928
 msgid "View Attachment: "
 msgstr "Visa bilaga: "
 
@@ -1003,21 +1003,21 @@ msgid ""
 msgstr ""
 "Fel då KSpell startades. Se till att du har ISpell korrekt installerat."
 
-#: kmfolder.cpp:146
+#: kmfolder.cpp:147
 #, c-format
 msgid "Folder `%s' changed. Recreating index."
 msgstr "Mappen `%s' har ändrats. Återskapar index."
 
-#: kmfolder.cpp:387
+#: kmfolder.cpp:388
 #, c-format
 msgid "Creating index file: %d messages done"
 msgstr "Skapar indexeringsfilen: %d meddelanden färdiga"
 
-#: kmfolder.cpp:476
+#: kmfolder.cpp:477
 msgid "Writing index file"
 msgstr "Skriver indexfil"
 
-#: kmfolder.cpp:920
+#: kmfolder.cpp:934
 #, c-format
 msgid "Compacting folder: %d messages done"
 msgstr "Komprimerar mappen: %d meddelanden färdiga"
@@ -1046,64 +1046,64 @@ msgstr "base 64"
 msgid "quoted printable"
 msgstr "quoted printable"
 
-#: kmreaderwin.cpp:310 kmreaderwin.cpp:323 kmreaderwin.cpp:342
-#: kmreaderwin.cpp:363
+#: kmreaderwin.cpp:336 kmreaderwin.cpp:349 kmreaderwin.cpp:368
+#: kmreaderwin.cpp:389
 msgid "Cc: "
 msgstr "Kopia:"
 
-#: kmreaderwin.cpp:318 kmreaderwin.cpp:337 kmreaderwin.cpp:358
+#: kmreaderwin.cpp:344 kmreaderwin.cpp:363 kmreaderwin.cpp:384
 msgid "From: "
 msgstr "Från:"
 
-#: kmreaderwin.cpp:320 kmreaderwin.cpp:339 kmreaderwin.cpp:360
+#: kmreaderwin.cpp:346 kmreaderwin.cpp:365 kmreaderwin.cpp:386
 msgid "To: "
 msgstr "Till:"
 
-#: kmreaderwin.cpp:327 kmreaderwin.cpp:348 kmreaderwin.cpp:373
+#: kmreaderwin.cpp:353 kmreaderwin.cpp:374 kmreaderwin.cpp:399
 msgid "References: "
 msgstr "Referenser:"
 
-#: kmreaderwin.cpp:344 kmreaderwin.cpp:357
+#: kmreaderwin.cpp:370 kmreaderwin.cpp:383
 msgid "Date: "
 msgstr "Datum:"
 
-#: kmreaderwin.cpp:366
+#: kmreaderwin.cpp:392
 msgid "Bcc: "
 msgstr "Dold Kopia:"
 
-#: kmreaderwin.cpp:369
+#: kmreaderwin.cpp:395
 msgid "Reply to: "
 msgstr "Svara till:"
 
-#: kmreaderwin.cpp:376
+#: kmreaderwin.cpp:402
 msgid "Groups: "
 msgstr "Grupper:"
 
-#: kmreaderwin.cpp:414
+#: kmreaderwin.cpp:440
 msgid "Encrypted message"
 msgstr "Kryptera meddelande"
 
-#: kmreaderwin.cpp:420
+#: kmreaderwin.cpp:446
 msgid "Cannot decrypt message:"
 msgstr "Kan inte dekryptera meddelande:"
 
-#: kmreaderwin.cpp:429
+#: kmreaderwin.cpp:455
 msgid "Message was signed by"
 msgstr "Meddelandet var signerat av"
 
-#: kmreaderwin.cpp:430
+#: kmreaderwin.cpp:456
 msgid "Warning: Bad signature from"
 msgstr "Varning: Felaktig signatur av"
 
-#: kmreaderwin.cpp:440
+#: kmreaderwin.cpp:466
 msgid "unknown key ID"
 msgstr "okänt nyckel ID"
 
-#: kmreaderwin.cpp:775
+#: kmreaderwin.cpp:804
 msgid "Attachment: "
 msgstr "Bilaga:"
 
-#: kmreaderwin.cpp:945
+#: kmreaderwin.cpp:1016
 msgid "Could not save file"
 msgstr "Kan inte spara filen"
 

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kdenetwork\n"
-"POT-Creation-Date: 1999-03-29 02:57+0200\n"
+"POT-Creation-Date: 1999-04-02 02:46+0200\n"
 "PO-Revision-Date: 1999-02-27 21:38+0200\n"
 "Last-Translator: Jaime Robles <ea4abw@amsat.org>\n"
 "Language-Team: Spanish <kde-es@kde.org>\n"
@@ -954,7 +954,7 @@ msgstr "my llave pgp"
 msgid "pgp key"
 msgstr "llave pgp"
 
-#: kmcomposewin.cpp:1297 kmreaderwin.cpp:811
+#: kmcomposewin.cpp:1297 kmreaderwin.cpp:840
 msgid "View..."
 msgstr "Ver..."
 
@@ -962,7 +962,7 @@ msgstr "Ver..."
 msgid "Save..."
 msgstr "Guardar..."
 
-#: kmcomposewin.cpp:1299 kmreaderwin.cpp:814
+#: kmcomposewin.cpp:1299 kmreaderwin.cpp:843
 msgid "Properties..."
 msgstr "Propiedades..."
 
@@ -970,7 +970,7 @@ msgstr "Propiedades..."
 msgid "Attach..."
 msgstr "Adjuntar..."
 
-#: kmcomposewin.cpp:1345 kmreaderwin.cpp:857
+#: kmcomposewin.cpp:1345 kmreaderwin.cpp:912 kmreaderwin.cpp:928
 msgid "View Attachment: "
 msgstr "Ver Adjuntos: "
 
@@ -1001,21 +1001,21 @@ msgstr ""
 "Error iniciando KSpell. Por favor asegúrese de que tiene \n"
 "ISpell instalado en el sistema y configurado correctamente."
 
-#: kmfolder.cpp:146
+#: kmfolder.cpp:147
 #, c-format
 msgid "Folder `%s' changed. Recreating index."
 msgstr "La carpeta `%s' ha cambiado. Regenerando índice."
 
-#: kmfolder.cpp:387
+#: kmfolder.cpp:388
 #, c-format
 msgid "Creating index file: %d messages done"
 msgstr "Creando archivo índice: %d mensajes procesados"
 
-#: kmfolder.cpp:476
+#: kmfolder.cpp:477
 msgid "Writing index file"
 msgstr "Escribiendo archivo de índice"
 
-#: kmfolder.cpp:920
+#: kmfolder.cpp:934
 #, c-format
 msgid "Compacting folder: %d messages done"
 msgstr "Compactando carpeta: %d mensajes procesados"
@@ -1044,64 +1044,64 @@ msgstr "base 64"
 msgid "quoted printable"
 msgstr "quoted printable"
 
-#: kmreaderwin.cpp:310 kmreaderwin.cpp:323 kmreaderwin.cpp:342
-#: kmreaderwin.cpp:363
+#: kmreaderwin.cpp:336 kmreaderwin.cpp:349 kmreaderwin.cpp:368
+#: kmreaderwin.cpp:389
 msgid "Cc: "
 msgstr "Cc: "
 
-#: kmreaderwin.cpp:318 kmreaderwin.cpp:337 kmreaderwin.cpp:358
+#: kmreaderwin.cpp:344 kmreaderwin.cpp:363 kmreaderwin.cpp:384
 msgid "From: "
 msgstr "De: "
 
-#: kmreaderwin.cpp:320 kmreaderwin.cpp:339 kmreaderwin.cpp:360
+#: kmreaderwin.cpp:346 kmreaderwin.cpp:365 kmreaderwin.cpp:386
 msgid "To: "
 msgstr "Para: "
 
-#: kmreaderwin.cpp:327 kmreaderwin.cpp:348 kmreaderwin.cpp:373
+#: kmreaderwin.cpp:353 kmreaderwin.cpp:374 kmreaderwin.cpp:399
 msgid "References: "
 msgstr "Referencias: "
 
-#: kmreaderwin.cpp:344 kmreaderwin.cpp:357
+#: kmreaderwin.cpp:370 kmreaderwin.cpp:383
 msgid "Date: "
 msgstr "Fecha: "
 
-#: kmreaderwin.cpp:366
+#: kmreaderwin.cpp:392
 msgid "Bcc: "
 msgstr "Bcc: "
 
-#: kmreaderwin.cpp:369
+#: kmreaderwin.cpp:395
 msgid "Reply to: "
 msgstr "Reply to: "
 
-#: kmreaderwin.cpp:376
+#: kmreaderwin.cpp:402
 msgid "Groups: "
 msgstr "Grupos de noticias: "
 
-#: kmreaderwin.cpp:414
+#: kmreaderwin.cpp:440
 msgid "Encrypted message"
 msgstr "Mensaje encriptado"
 
-#: kmreaderwin.cpp:420
+#: kmreaderwin.cpp:446
 msgid "Cannot decrypt message:"
 msgstr "No se pudo desencriptar mensaje:"
 
-#: kmreaderwin.cpp:429
+#: kmreaderwin.cpp:455
 msgid "Message was signed by"
 msgstr "Mensaje firmado por"
 
-#: kmreaderwin.cpp:430
+#: kmreaderwin.cpp:456
 msgid "Warning: Bad signature from"
 msgstr "Advertencia: Firma del emisor errónea"
 
-#: kmreaderwin.cpp:440
+#: kmreaderwin.cpp:466
 msgid "unknown key ID"
 msgstr "ID de llave desconocido"
 
-#: kmreaderwin.cpp:775
+#: kmreaderwin.cpp:804
 msgid "Attachment: "
 msgstr "Adjuntos: "
 
-#: kmreaderwin.cpp:945
+#: kmreaderwin.cpp:1016
 msgid "Could not save file"
 msgstr "No se pudo guardar archivo"
 
