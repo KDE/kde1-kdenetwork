@@ -144,7 +144,6 @@ msgid "Accounting"
 msgstr "Contabilidade"
 
 #: accounts.cpp:371
-#, fuzzy
 msgid ""
 "You must enter an unique\n"
 "account name"
@@ -153,7 +152,6 @@ msgstr ""
 "conta único"
 
 #: accounts.cpp:376
-#, fuzzy
 msgid "Login script has unbalanced loop Start/End"
 msgstr "Script login tem um Ciclo incorreto"
 
@@ -271,7 +269,6 @@ msgid "Loops nested too deeply!"
 msgstr "Ciclos demasiadamente encadeados!"
 
 #: connect.cpp:670
-#, fuzzy
 msgid "LoopEnd without matching Start! Line: "
 msgstr "LoopEnd sem linha de Start:"
 
@@ -915,7 +912,7 @@ msgstr ""
 #: general.cpp:535
 #, fuzzy
 msgid "Modem volume"
-msgstr "Arquivo de Travamento do Modem:"
+msgstr "Volume do modem"
 
 #: general.cpp:547
 msgid ""
@@ -1135,12 +1132,10 @@ msgid "Graph"
 msgstr ""
 
 #: main.cpp:875
-#, fuzzy
 msgid "Details..."
-msgstr "Detalhes"
+msgstr "Detalhes..."
 
 #: main.cpp:930
-#, fuzzy, c-format
 msgid ""
 "kppp can not find:\n"
 " %s\n"
@@ -1231,9 +1226,8 @@ msgstr ""
 "autenticação CHAP \"%s\""
 
 #: main.cpp:1024
-#, fuzzy
 msgid "You must specify a telephone number!"
-msgstr "Você precisa especificar um telefone.\n"
+msgstr "Você precisa especificar um telefone."
 
 #: main.cpp:1111
 msgid "Quit kPPP?"
@@ -1256,9 +1250,8 @@ msgid "Sorry, can't open modem."
 msgstr "Desculpe, não consegui localizar o modem."
 
 #: modem.cpp:120
-#, fuzzy
 msgid "Sorry, can't detect state of CD line."
-msgstr "Desculpe, não consegui criar arquivo de travamento do modem."
+msgstr "Desculpe, não consegui detectar estado da linha CD."
 
 #: modem.cpp:126
 msgid "Sorry, the modem is not ready."
@@ -1269,41 +1262,36 @@ msgid "Sorry, the modem is busy."
 msgstr "Desculpe, o modem está ocupado."
 
 #: modem.cpp:187
-#, fuzzy
 msgid "Modem Ready."
-msgstr "Modem Pronto"
+msgstr "Modem Pronto."
 
 #: modem.cpp:198
 msgid "Can't restore tty settings: tcsetattr()\n"
 msgstr "Não foi possível restaurar configurações do tty: tcsetattr()\n"
 
 #: modem.cpp:324
-#, fuzzy
 msgid "Sorry, the modem doesn't respond."
-msgstr "Desculpe, mas o modem não está pronto."
+msgstr "Desculpe, mas o modem não responde."
 
 #: modem.cpp:425
-#, fuzzy
 msgid "Unknown speed"
-msgstr "velocidade desconhecida"
+msgstr "Velocidade desconhecida"
 
 #: modemcmds.cpp:43
 msgid "Edit Modem Commands"
 msgstr "Editar Comandos do Modem"
 
 #: modemcmds.cpp:70
-#, fuzzy
 msgid "Pre-Init Delay (sec/100):"
-msgstr "Demora de Resposta (sec/100):"
+msgstr "Atraso de Pré-inic. (seg/100):"
 
 #: modemcmds.cpp:75
 msgid "Initialization String:"
 msgstr "Cadeia de Inicialização:"
 
 #: modemcmds.cpp:93
-#, fuzzy
 msgid "Post-Init Delay (sec/100):"
-msgstr "Demora de Resposta (sec/100):"
+msgstr "Atraso de Pós-inic. (seg/100):"
 
 #: modemcmds.cpp:98
 msgid "Init Response:"
@@ -1322,9 +1310,8 @@ msgid "Busy Response:"
 msgstr "Resposta de Ocupado:"
 
 #: modemcmds.cpp:126
-#, fuzzy
 msgid "No Carrier Response:"
-msgstr "Resposta de Sem Portadora"
+msgstr "Resposta de Sem Portadora:"
 
 #: modemcmds.cpp:133
 msgid "No Dialtone Response:"
@@ -1375,9 +1362,8 @@ msgid "Argument:"
 msgstr "Argumento:"
 
 #: pppdargs.cpp:78
-#, fuzzy
 msgid "Defaults"
-msgstr "Detalhes"
+msgstr "Padrões"
 
 #: pppdata.cpp:108
 msgid ""
@@ -1495,9 +1481,8 @@ msgid "&Modem"
 msgstr "&Modem"
 
 #: miniterm.cpp:105
-#, fuzzy
 msgid "Close MiniTerm"
-msgstr "Sair do MiniTerm"
+msgstr "Fechar MiniTerm"
 
 #: miniterm.cpp:110
 msgid "Reset Modem"
@@ -1663,7 +1648,6 @@ msgstr ""
 "dispositivos."
 
 #: runtests.cpp:487
-#, fuzzy
 msgid ""
 "is missing!\n"
 "\n"
@@ -1671,7 +1655,7 @@ msgid ""
 "a non-empty file that has appropriate\n"
 "read and write permissions."
 msgstr ""
-"/etc/resolv.conf está faltando.\n"
+"está faltando.\n"
 "\n"
 "Peça a seu administrador de sistemas para\n"
 "criar um arquivo não vazio que tenha as\n"
@@ -1715,9 +1699,8 @@ msgid ""
 msgstr ""
 
 #: ppplog.cpp:198
-#, fuzzy
 msgid "Sorry. Can't help you here."
-msgstr "Desculpe, não consegui localizar o modem."
+msgstr "Desculpe, não posso ajudar você aqui."
 
 #: ppplog.cpp:215
 msgid ""
@@ -1761,57 +1744,3 @@ msgstr ""
 #: security.cpp:50
 msgid "Allowed groups"
 msgstr ""
-
-#, fuzzy
-#~ msgid "Verify your password."
-#~ msgstr "Guardar password"
-
-#~ msgid "Insert"
-#~ msgstr "Inserir"
-
-#~ msgid ""
-#~ "\n"
-#~ "A dialer and front-end to pppd\n"
-#~ "\n"
-#~ "Copyright (c) 1997\n"
-#~ "Bernd Johannes Wuebben\n"
-#~ "wuebben@math.cornell.edu"
-#~ msgstr ""
-#~ "\n"
-#~ "Um dialer e interface para o pppd\n"
-#~ "\n"
-#~ "Copyright (c) 1997\n"
-#~ "Bernd Johannes Wuebben\n"
-#~ "wuebben@math.cornell.edu"
-
-#~ msgid ""
-#~ "With contributions from:\n"
-#~ "\n"
-#~ "Mario Weilguni\n"
-#~ "Markus Wuebben\n"
-#~ "Jesus Fuentes Saavedra\n"
-#~ "Harri Porten\n"
-#~ "Peter Silva"
-#~ msgstr ""
-#~ "Com contribuições de:\n"
-#~ "\n"
-#~ "Mario Weilguni\n"
-#~ "Markus Wuebben\n"
-#~ "Jesus Fuentes Saavedra\n"
-#~ "Harri Porten\n"
-#~ "Peter Silva"
-
-#~ msgid "Restore Defaults"
-#~ msgstr "Restaurar Padrão"
-
-#~ msgid "Can't open Modem"
-#~ msgstr "Não foi possível abrir Modem"
-
-#~ msgid "Sorry, the modem is busy"
-#~ msgstr "Desculpe, o modem está ocupado"
-
-#~ msgid "tcgetattr() failed\n"
-#~ msgstr "tcgetattr() falhou\n"
-
-#~ msgid "tcsetattr() failed\n"
-#~ msgstr "tcsetattr() falhou\n"

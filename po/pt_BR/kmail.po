@@ -635,9 +635,8 @@ msgid "Delete mail from server"
 msgstr "Apagar mail do servidor"
 
 #: kmsettings.cpp:906
-#, fuzzy
 msgid "Retrieve all mail from server"
-msgstr "Apagar mail do servidor"
+msgstr "Buscar todas mensagens do servidor"
 
 #: kmsettings.cpp:918
 msgid "Enable interval Mail checking"
@@ -1085,9 +1084,8 @@ msgid "Warning: Bad signature from"
 msgstr "Aviso: Assinatura inválida de"
 
 #: kmreaderwin.cpp:450
-#, fuzzy
 msgid "unknown key ID"
-msgstr "Chave de identificação desconhecida "
+msgstr "chave de identificação desconhecida"
 
 #: kmreaderwin.cpp:692
 msgid "Attachment: "
@@ -1180,15 +1178,15 @@ msgstr ""
 
 #: kmacctpop.cpp:100
 msgid "Please set Password and Username"
-msgstr ""
+msgstr "Queira preencher a Senha e o Nome do Usuário"
 
 #: kmacctpop.cpp:135
 msgid "Incorrect Username"
-msgstr ""
+msgstr "Nome de usuário incorreto"
 
 #: kmacctpop.cpp:148
 msgid "Incorrect Password"
-msgstr ""
+msgstr "Senha incorreta"
 
 #: kmacctpop.cpp:184
 msgid ""
@@ -1605,7 +1603,6 @@ msgid "??? (file ~/.pgp/pubring.pgp not found)"
 msgstr "??? (arquivo ~/.pgp/pubring.pgp não encontrado)"
 
 #: kpgpbase.cpp:585
-#, fuzzy
 msgid "The passphrase you entered is invalid."
 msgstr "A frase de senha que você digitou é inválida."
 
