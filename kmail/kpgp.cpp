@@ -676,7 +676,7 @@ Kpgp::canonicalAdress(QString _adress)
   if((index = _adress.find("@")) == -1)
   { 
     // local adress
-    char* hostname = (char *)malloc(1024*sizeof(char));
+    char hostname[1024];
     gethostname(hostname,1024);
     QString adress = '<';
     adress += _adress;
