@@ -3,6 +3,7 @@
 
 #include <qfiledlg.h>
 #include <stdlib.h>
+#include <sys/stat.h>
 
 #ifndef KRN
 #include "kmglobal.h"
@@ -59,6 +60,7 @@ KMReaderWin::KMReaderWin(QWidget *aParent, const char *aName, int aFlags)
   initMetaObject();
 
   mPicsDir = app->kde_datadir()+"/kmail/pics/";
+  mAutoDelete = FALSE;
   mMsg = NULL;
 
   initHtmlWidget();
@@ -69,6 +71,7 @@ KMReaderWin::KMReaderWin(QWidget *aParent, const char *aName, int aFlags)
 //-----------------------------------------------------------------------------
 KMReaderWin::~KMReaderWin()
 {
+  if (mAutoDelete) delete mMsg;
 }
 
 
@@ -96,8 +99,7 @@ void KMReaderWin::readConfig(void)
   mViewer->setStandardFont(config->readEntry("StandardFont",
                                            QString("helvetica").data()));
   mViewer->setFixedFont(config->readEntry("FixedFont",
-                                          QString("courier").data()));
-  mViewer->parse();
+                                        QString("courier").data()));
 #endif
 
 }
@@ -204,26 +206,40 @@ void KMReaderWin::setMsg(KMMessage* aMsg)
 //-----------------------------------------------------------------------------
 void KMReaderWin::parseMsg(void)
 {
-  KMMessagePart msgPart;
-  int i, numParts;
-  QString type, subtype, str, contDisp;
-  bool asIcon;
   assert(mMsg!=NULL);
 
   mViewer->begin(mPicsDir);
   mViewer->write("<HTML><BODY>");
 #ifdef CHARSETS  
+  printf("Setting viewer charset to %s\n",(const char *)mMsg->charset());
   mViewer->setCharset(mMsg->charset());
 #endif  
 
+  parseMsg(mMsg);
+
+  mViewer->write("<BR></BODY></HTML>");
+  mViewer->end();
+  mViewer->parse();
+}
+
+
+//-----------------------------------------------------------------------------
+void KMReaderWin::parseMsg(KMMessage* aMsg)
+{
+  KMMessagePart msgPart;
+  int i, numParts;
+  QString type, subtype, str, contDisp;
+  bool asIcon;
+
+  assert(aMsg!=NULL);
   writeMsgHeader();
 
-  numParts = mMsg->numBodyParts();
+  numParts = aMsg->numBodyParts();
   if (numParts > 0)
   {
     for (i=0; i<numParts; i++)
     {
-      mMsg->bodyPart(i, &msgPart);
+      aMsg->bodyPart(i, &msgPart);
       type = msgPart.typeStr();
       subtype = msgPart.subtypeStr();
       contDisp = msgPart.contentDisposition();
@@ -241,7 +257,7 @@ void KMReaderWin::parseMsg(void)
 
       if (!asIcon)
       {
-	if (i<=0 || stricmp(type, "text")==0 || stricmp(type, "message")==0)
+	if (i<=0 || stricmp(type, "text")==0)//||stricmp(type, "message")==0)
 	{
 	  str = msgPart.bodyDecoded();
 	  if (i>0) mViewer->write("<BR><HR><BR>");
@@ -259,12 +275,8 @@ void KMReaderWin::parseMsg(void)
   }
   else
   {
-    writeBodyStr(mMsg->bodyDecoded());
+    writeBodyStr(aMsg->bodyDecoded());
   }
-
-  mViewer->write("<BR></BODY></HTML>");
-  mViewer->end();
-  mViewer->parse();
 }
 
 
@@ -466,7 +478,7 @@ const QString KMReaderWin::strToHtml(const QString aStr, bool aDecodeQP,
 {
   QString htmlStr, qpstr, iStr;
   char ch, *pos, str[256];
-  int i,i1, x;
+  int i, i1, x, len;
 
   if (aDecodeQP) qpstr = KMMsgBase::decodeRFC1522String(aStr);
   else qpstr = aStr;
@@ -504,8 +516,13 @@ const QString KMReaderWin::strToHtml(const QString aStr, bool aDecodeQP,
     {
       for (i=0; *pos && *pos>' ' && i<255; i++, pos++)
 	str[i] = *pos;
-      str[i] = '\0';
       pos--;
+      while (i>0 && ispunct(str[i-1]) && str[i-1]!='/')
+      {
+	i--;
+	pos--;
+      }
+      str[i] = '\0';
       htmlStr += "<A HREF=\"";
       htmlStr += str;
       htmlStr += "\">";
@@ -513,23 +530,33 @@ const QString KMReaderWin::strToHtml(const QString aStr, bool aDecodeQP,
       htmlStr += "</A>";
     }
     else if (ch=='@')
+    {
+      for (i=0; *pos && (isalnum(*pos) || *pos=='@' || *pos=='.' ||
+			 *pos=='_'||*pos=='-') && i<255; i++, pos--)
       {
-	for (i=0; *pos && (isalnum(*pos) || *pos=='@' || *pos=='.' ||
-			   *pos=='-') && i<255; i++, pos--)
-	{
-	}
-	i1 = i;
-	pos++; 
-	for (i=0; *pos && (isalnum(*pos)||*pos=='@' || *pos=='.' ||
-			   *pos=='-') && i<255; i++, pos++)
-	{
-	  iStr += *pos;
-	}
-	pos--; 
-	htmlStr.truncate(htmlStr.length() - i1 + 1);
+      }
+      i1 = i;
+      pos++; 
+      for (i=0; *pos && (isalnum(*pos)||*pos=='@'||*pos=='.'||
+			 *pos=='_'||*pos=='-') && i<255; i++, pos++)
+      {
+	iStr += *pos;
+      }
+      pos--;
+      len = iStr.length();
+      while (len>2 && ispunct(*pos))
+      {
+	len--;
+	pos--;
+      }
+      iStr.truncate(len);
+
+      htmlStr.truncate(htmlStr.length() - i1 + 1);
+      if (iStr.length()>3) 
 	htmlStr += "<A HREF=\"mailto:" + iStr + "\">" + iStr + "</A>";
-	iStr = "";
-      }	
+      else htmlStr += iStr;
+      iStr = "";
+    }
 
     else htmlStr += ch;
   }
@@ -635,6 +662,20 @@ void KMReaderWin::slotUrlPopup(const char* aUrl, const QPoint& aPos)
 
 
 //-----------------------------------------------------------------------------
+void KMReaderWin::atmViewMsg(KMMessagePart* aMsgPart)
+{
+  KMMessage* msg = new KMMessage;
+  KMReaderWin* win = new KMReaderWin;
+  assert(aMsgPart!=NULL);
+
+  msg->fromString(aMsgPart->bodyDecoded());
+  win->setMsg(msg);
+  win->setAutoDelete(TRUE);
+  win->show();
+}
+
+
+//-----------------------------------------------------------------------------
 void KMReaderWin::slotAtmView()
 {
   QString str, pname;
@@ -645,6 +686,12 @@ void KMReaderWin::slotAtmView()
   pname = msgPart.name();
   if (pname.isEmpty()) pname=msgPart.contentDescription();
   if (pname.isEmpty()) pname="unnamed";
+
+  if (stricmp(msgPart.typeStr(), "message")==0)
+  {
+    atmViewMsg(&msgPart);
+    return;
+  }
 
   kbp->busy();
   str = msgPart.bodyDecoded();
@@ -664,9 +711,16 @@ void KMReaderWin::slotAtmOpen()
   QString str, pname, cmd, fileName;
   KMMessagePart msgPart;
   char* tmpName;
+  int old_umask;
   int c;
 
   mMsg->bodyPart(mAtmCurrent, &msgPart);
+
+  if (stricmp(msgPart.typeStr(), "message")==0)
+  {
+    atmViewMsg(&msgPart);
+    return;
+  }
 
   pname = msgPart.name();
   if (pname.isEmpty()) pname="unnamed";
@@ -692,9 +746,11 @@ void KMReaderWin::slotAtmOpen()
 
   kbp->busy();
   str = msgPart.bodyDecoded();
+  old_umask = umask(077);
   if (!kStringToFile(str, fileName, TRUE))
     warning(i18n("Could not save temporary file %s"),
 	    (const char*)fileName);
+  umask(old_umask);
   kbp->idle();
   cmd = "kfmclient openURL \'";
   cmd += fileName;

@@ -16,6 +16,7 @@
 #include <qpalette.h>
 #include <kmsgbox.h>
 #include "kmmsgpart.h"
+#include <keditcl.h>
 #ifdef HAS_KSPELL
 #include <kspell.h>
 #endif
@@ -34,17 +35,34 @@ class QPushButton;
 class QCloseEvent;
 class KSpell;
 class KSpellConfig;
+class KMComposeWin;
 
 typedef QList<KMMessagePart> KMMsgPartList;
 
 
 //-----------------------------------------------------------------------------
+#define KMEditInherited KEdit
+class KMEdit: public KEdit
+{
+  Q_OBJECT
+public:
+  KMEdit(KApplication *a=NULL,QWidget *parent=NULL,KMComposeWin* composer=NULL,
+	 const char *name=NULL, const char *filename=NULL);
+protected:
+  virtual void keyPressEvent(QKeyEvent*);
+  KMComposeWin* mComposer;
+};
+
+
+//-----------------------------------------------------------------------------
+#define KMLineEditInherited QLineEdit
 class KMLineEdit : public QLineEdit
 {
   Q_OBJECT
 
 public:
-  KMLineEdit(QWidget *parent = NULL, const char *name = NULL);
+  KMLineEdit(KMComposeWin* composer = NULL, QWidget *parent = NULL, 
+	     const char *name = NULL);
 
 public slots:
   void copy();
@@ -52,10 +70,10 @@ public slots:
   void paste();
   void markAll();
 
-private:
-
 protected:
   virtual void mousePressEvent(QMouseEvent *);
+  virtual void keyPressEvent(QKeyEvent*);
+  KMComposeWin* mComposer;
 };
 
 
@@ -165,13 +183,14 @@ public slots:
   /** Append current message to ~/dead.letter */
   virtual void deadLetter(void);
 
-   void updateCursorPosition();
+  void updateCursorPosition();
 
-#ifdef CHARSETS
-   void slotConfigureCharsets();
-   void slotSetCharsets(const char *message,const char *composer
-                        ,bool ascii,bool quote,bool def);
-#endif
+  void slotConfigureCharsets();
+  void slotSetCharsets(const char *message,const char *composer,
+		       bool ascii,bool quote,bool def);
+
+  /** Move focus to next/prev edit widget */
+  virtual void focusNextPrevEdit(const QLineEdit* current, bool next);
 
 protected:
   /** Install grid management and header fields. If fields exist that
@@ -231,8 +250,14 @@ private:
   /** Converts message text for sending. */
   QString convertToSend(const QString str);
  
+  /** Converts message text for sending. */
+  void transcodeMessageTo(const QString newCharset);
+ 
   /** Test if string has any 8-bit characters */
   bool is8Bit(const QString str);
+ 
+  /** Set edit widget charset */
+  void setEditCharset();
 #endif  
 
 protected:
@@ -246,7 +271,7 @@ protected:
   /* end Added for KRN */
   
   QPopupMenu *mMnuView, *mMnuOptions;
-  KEdit* mEditor;
+  KMEdit* mEditor;
   QGridLayout* mGrid;
   KDNDDropZone *mDropZone;
   KMMessage *mMsg;
@@ -265,6 +290,7 @@ protected:
   short mBtnIdSign, mBtnIdEncrypt;
   short mMnuIdUrgent, mMnuIdConfDeliver, mMnuIdConfRead;
   QString mForeColor, mBackColor;
+  QList<QLineEdit> mEdtList;
 #ifdef HAS_KSPELL
   KSpell* mKSpell;
   KSpellConfig* mKSpellConfig;
@@ -276,6 +302,7 @@ protected:
   QString mDefComposeCharset; 
   QString mComposeCharset; 
   int mQuoteUnknownCharacters;
+  QFont mSavedEditorFont;
 #endif  
 
 private:

@@ -2,7 +2,6 @@
 // Author: Markus Wuebben <markus.wuebben@kde.org>
 // This code is published under the GPL.
 
-#include <keditcl.h>
 #include "kmcomposewin.h"
 #include "kmmessage.h"
 #include "kmmsgpart.h"
@@ -90,8 +89,9 @@ WindowList* windowList=new WindowList;
 //-----------------------------------------------------------------------------
 KMComposeWin::KMComposeWin(KMMessage *aMsg) : KMComposeWinInherited(),
   mMainWidget(this), 
-  mEdtFrom(&mMainWidget), mEdtReplyTo(&mMainWidget), mEdtTo(&mMainWidget),
-  mEdtCc(&mMainWidget), mEdtBcc(&mMainWidget), mEdtSubject(&mMainWidget),
+  mEdtFrom(this,&mMainWidget), mEdtReplyTo(this,&mMainWidget), 
+  mEdtTo(this,&mMainWidget),  mEdtCc(this,&mMainWidget), 
+  mEdtBcc(this,&mMainWidget), mEdtSubject(this,&mMainWidget),
   mLblFrom(&mMainWidget), mLblReplyTo(&mMainWidget), mLblTo(&mMainWidget),
   mLblCc(&mMainWidget), mLblBcc(&mMainWidget), mLblSubject(&mMainWidget),
   mBtnTo("...",&mMainWidget), mBtnCc("...",&mMainWidget), 
@@ -99,7 +99,7 @@ KMComposeWin::KMComposeWin(KMMessage *aMsg) : KMComposeWinInherited(),
   mBtnReplyTo("...",&mMainWidget)
 #ifdef KRN
   /* start added for KRN */
-  ,mEdtNewsgroups(&mMainWidget),mEdtFollowupTo(&mMainWidget),
+  ,mEdtNewsgroups(this,&mMainWidget),mEdtFollowupTo(this,&mMainWidget),
   mLblNewsgroups(&mMainWidget),mLblFollowupTo(&mMainWidget)
   /* end added for KRN */
 #endif
@@ -152,11 +152,15 @@ KMComposeWin::KMComposeWin(KMMessage *aMsg) : KMComposeWinInherited(),
 	  SLOT(slotDropAction()));
 
   mMainWidget.resize(480,510);
-  //menu
   setView(&mMainWidget, FALSE);
   rethinkFields();
 
   windowList->append(this);
+
+#ifdef CHARSETS  
+  // As family may change with charset, we must save original settings
+  mSavedEditorFont=mEditor->font();
+#endif
 
   mMsg = NULL;
   if (aMsg) setMsg(aMsg);
@@ -165,13 +169,13 @@ KMComposeWin::KMComposeWin(KMMessage *aMsg) : KMComposeWinInherited(),
   mKSpellConfig = new KSpellConfig;
   mKSpell = NULL;
 #endif
-
 }
 
 
 //-----------------------------------------------------------------------------
 KMComposeWin::~KMComposeWin()
 {
+  printf("~KMComposeWin\n");
   windowList->remove(this);
 
   if (mAutoDeleteMsg && mMsg) delete mMsg;
@@ -201,7 +205,6 @@ void KMComposeWin::readConfig(void)
   mBackColor = config->readEntry( "Back-Color","#ffffff");
   mForeColor = config->readEntry( "Fore-Color","#000000");
   mAutoPgpSign = config->readNumEntry("pgp-auto-sign", 0);
-  
 #ifdef CHARSETS  
   m7BitAscii = config->readNumEntry("7bit-is-ascii",1);
   mQuoteUnknownCharacters = config->readNumEntry("quote-unknown",0);
@@ -326,6 +329,7 @@ void KMComposeWin::rethinkFields(void)
   mGrid->setColStretch(2, 1);
   mGrid->setRowStretch(mNumHeaders, 100);
 
+  mEdtList.clear();
   row = 0;
   rethinkHeaderLine(showHeaders,HDR_FROM, row, i18n("&From:"),
 		    &mLblFrom, &mEdtFrom, &mBtnFrom);
@@ -376,7 +380,9 @@ void KMComposeWin::rethinkHeaderLine(int aValue, int aMask, int& aRow,
     aEdt->show();
     aEdt->setMinimumSize(100, aLbl->height()+2);
     aEdt->setMaximumSize(1000, aLbl->height()+2);
-    aEdt->setFocusPolicy(QWidget::StrongFocus);
+    aEdt->setFocusPolicy(QWidget::ClickFocus);
+    //aEdt->setFocusPolicy(QWidget::StrongFocus);
+    mEdtList.append(aEdt);
 
     if (aBtn)
     {
@@ -396,6 +402,8 @@ void KMComposeWin::rethinkHeaderLine(int aValue, int aMask, int& aRow,
     aEdt->setFocusPolicy(QWidget::NoFocus);
     if (aBtn) aBtn->hide();
   }
+
+  mMnuView->setItemEnabled(aMask, (aValue!=HDR_ALL));
 }
 
 
@@ -544,12 +552,12 @@ void KMComposeWin::setupToolBar(void)
 			SIGNAL(clicked()),this,
 			SLOT(slotCopyText()),TRUE,"Undo last change");
 #endif
-  mToolBar->insertButton(loader->loadIcon("editcopy.xpm"),3,
-			SIGNAL(clicked()),this,
-			SLOT(slotCopy()),TRUE,i18n("Copy selection"));
   mToolBar->insertButton(loader->loadIcon("editcut.xpm"),4,
 			SIGNAL(clicked()),this,
 			SLOT(slotCut()),TRUE,i18n("Cut selection"));
+  mToolBar->insertButton(loader->loadIcon("editcopy.xpm"),3,
+			SIGNAL(clicked()),this,
+			SLOT(slotCopy()),TRUE,i18n("Copy selection"));
   mToolBar->insertButton(loader->loadIcon("editpaste.xpm"),5,
 			SIGNAL(clicked()),this,
 			SLOT(slotPaste()),TRUE,i18n("Paste clipboard contents"));
@@ -587,31 +595,34 @@ void KMComposeWin::setupStatusBar(void)
 {
   mStatusBar = new KStatusBar(this);
   mStatusBar->setInsertOrder(KStatusBar::RightToLeft);
-  mStatusBar->insertItem("Column:     ",2);
-  mStatusBar->insertItem("Line:     ",1);
-  mStatusBar->insertItem("Status:",0);
+  mStatusBar->insertItem(QString(i18n("Column"))+":     ",2);
+  mStatusBar->insertItem(QString(i18n("Line"))+":     ",1);
+  mStatusBar->insertItem("  ",0);
   setStatusBar(mStatusBar);
 }
 
-void KMComposeWin::updateCursorPosition() {
 
+//-----------------------------------------------------------------------------
+void KMComposeWin::updateCursorPosition()
+{
   int col,line;
   QString temp;
   line = mEditor->currentLine();
   col = mEditor->currentColumn();
-  temp.sprintf("Line: %i",(line+1));
+  temp.sprintf("%s: %i", i18n("Line"), (line+1));
   mStatusBar->changeItem(temp,1);
-  temp.sprintf("Column: %i",(col+1));
+  temp.sprintf("%s: %i", i18n("Column"), (col+1));
   mStatusBar->changeItem(temp,2);
-
 }
+
 
 //-----------------------------------------------------------------------------
 void KMComposeWin::setupEditor(void)
 {
   QPopupMenu* menu;
-  mEditor = new KEdit(kapp, &mMainWidget);
+  mEditor = new KMEdit(kapp, &mMainWidget, this);
   mEditor->toggleModified(FALSE);
+  mEditor->setFocusPolicy(QWidget::ClickFocus);
 
   // Word wrapping setup
   if(mWordWrap) 
@@ -691,7 +702,7 @@ void KMComposeWin::setMsg(KMMessage* newMsg, bool mayAutoSign)
   if (num > 0)
   {
     mMsg->bodyPart(0, &bodyPart);
-    
+
 #ifdef CHARSETS    
     mCharset=bodyPart.charset();
     cout<<"Charset: "<<mCharset<<"\n";
@@ -738,15 +749,9 @@ void KMComposeWin::setMsg(KMMessage* newMsg, bool mayAutoSign)
 
   if (mAutoSign && mayAutoSign) slotAppendSignature();
   mEditor->toggleModified(FALSE);
-  
+ 
  #ifdef CHARSETS 
-  // Jacek: We must set proper font for displaing message in known charset
-  QFont fnt=mEditor->font();
-  KCharset kcharset;
-  if (mComposeCharset=="default") kcharset=klocale->charset();
-  else kcharset=mComposeCharset;
-  cout<<"Setting font to: "<<kcharset.name()<<"\n";
-  mEditor->setFont(kcharset.setQFont(fnt));
+  setEditCharset();
 #endif  
 }
 
@@ -955,6 +960,7 @@ void KMComposeWin::addAttach(const QString aUrl)
   msgPart->setCteStr(mDefEncoding);
   msgPart->setBodyEncoded(str);
   msgPart->magicSetType();
+  msgPart->setContentDisposition("attachment; filename=\""+name+"\"");
 
   // show properties dialog
   kbp->idle();
@@ -967,6 +973,7 @@ void KMComposeWin::addAttach(const QString aUrl)
 
   // add the new attachment to the list
   addAttach(msgPart);
+  rethinkFields(); //work around initial-size bug in Qt-1.32
 }
 
 
@@ -1616,48 +1623,53 @@ void KMComposeWin::slotSpellMispelling(char *word, QStrList *, long pos)
 #endif //HAS_KSPELL
 }
 
-#ifdef CHARSETS
 
 //-----------------------------------------------------------------------------
-void KMComposeWin::slotConfigureCharsets(){
-   
-   CharsetsDlg *dlg=new CharsetsDlg(mCharset,mComposeCharset
-                                    ,m7BitAscii,mQuoteUnknownCharacters);
+void KMComposeWin::slotConfigureCharsets()
+{
+#ifdef CHARSETS
+   CharsetsDlg *dlg=new CharsetsDlg((const char*)mCharset,
+				    (const char*)mComposeCharset,
+                                    m7BitAscii,mQuoteUnknownCharacters);
    connect(dlg,SIGNAL( setCharsets(const char *,const char *,bool,bool,bool) )
            ,this,SLOT(slotSetCharsets(const char *,const char *,bool,bool,bool)));
    dlg->show();
    delete dlg;	   
+#endif
 }
 
-//-----------------------------------------------------------------------------
-void KMComposeWin::slotSetCharsets(const char *message,const char *composer
-                                  ,bool ascii,bool quote,bool def){
 
+//-----------------------------------------------------------------------------
+void KMComposeWin::slotSetCharsets(const char *message,const char *composer,
+                                   bool ascii,bool quote,bool def)
+{
+#ifdef CHARSETS
   mCharset=message;
-  mComposeCharset=composer;
   m7BitAscii=ascii;
+  if (composer!=mComposeCharset && quote)
+     transcodeMessageTo(composer);
+  mComposeCharset=composer;
   mQuoteUnknownCharacters=quote;
-  if (def){
+  if (def)
+  {
     mDefaultCharset=message;
     mDefComposeCharset=composer;
   }  
-  
-  // Jacek: We must set proper font for displaing message in known charset
-  QFont fnt=mEditor->font();
-  KCharset kcharset;
-  if (mComposeCharset=="default") kcharset=klocale->charset();
-  else kcharset=mComposeCharset;
-  cout<<"Setting font to: "<<kcharset.name()<<"\n";
-  mEditor->setFont(kcharset.setQFont(fnt));
+  setEditCharset();  
+#endif
 }
 
+
+#ifdef CHARSETS
 //-----------------------------------------------------------------------------
-bool KMComposeWin::is8Bit(const QString str){
- 
+bool KMComposeWin::is8Bit(const QString str)
+{
   const char *ptr=str;
-  while(*ptr){
+  while(*ptr)
+  {
     if ( (*ptr)&0x80 ) return TRUE;
-    else if ( (*ptr)=='&' && ptr[1]=='#' ){
+    else if ( (*ptr)=='&' && ptr[1]=='#' )
+    {
       int code=atoi(ptr+2);
       if (code>0x7f) return TRUE;
     }  
@@ -1666,13 +1678,15 @@ bool KMComposeWin::is8Bit(const QString str){
   return FALSE;
 }
 
-//-----------------------------------------------------------------------------
-QString KMComposeWin::convertToLocal(const QString str){
 
+//-----------------------------------------------------------------------------
+QString KMComposeWin::convertToLocal(const QString str)
+{
   if (m7BitAscii && !is8Bit(str)) return str.copy();
   KCharset destCharset;
   KCharset srcCharset;
-  if (mCharset==""){
+  if (mCharset=="")
+  {
      if (mDefaultCharset=="default") mCharset=klocale->charset();
      else mCharset=mDefaultCharset;
   }   
@@ -1687,12 +1701,18 @@ QString KMComposeWin::convertToLocal(const QString str){
 }
 
 //-----------------------------------------------------------------------------
-QString KMComposeWin::convertToSend(const QString str){
-
+QString KMComposeWin::convertToSend(const QString str)
+{
   cout<<"Converting to send...\n";
-  if (m7BitAscii && !is8Bit(str)){ mCharset="us-ascii"; return str.copy(); }
-  if (mCharset==""){
-     if (mDefaultCharset=="default") mCharset=klocale->charset();
+  if (m7BitAscii && !is8Bit(str))
+  { 
+    mCharset="us-ascii";
+    return str.copy();
+  }
+  if (mCharset=="")
+  {
+     if (mDefaultCharset=="default") 
+          mCharset=klocale->charset();
      else mCharset=mDefaultCharset;
   }   
   cout<<"mCharset: "<<mCharset<<"\n";
@@ -1707,20 +1727,75 @@ QString KMComposeWin::convertToSend(const QString str){
   KCharsetConversionResult result=conv.convert(str);
   return result.copy();			  
 }
-#endif
+
+//-----------------------------------------------------------------------------
+void KMComposeWin::transcodeMessageTo(const QString charset)
+{
+
+  cout<<"Transcoding message...\n";
+  QString inputStr=mEditor->text();
+  KCharset srcCharset;
+  KCharset destCharset(charset);
+  if (mComposeCharset=="default") srcCharset=klocale->charset();
+  else srcCharset=mComposeCharset;
+  cout<<"srcCharset: "<<srcCharset<<"\n";
+  if (srcCharset==destCharset) return;
+  int flags=mQuoteUnknownCharacters?KCharsetConverter::AMP_SEQUENCES:0;
+  KCharsetConverter conv(srcCharset,destCharset,flags);
+  KCharsetConversionResult result=conv.convert(inputStr);
+  mComposeCharset=charset;
+  mEditor->setText(result.copy());			  
+}
+
+
+//-----------------------------------------------------------------------------
+void KMComposeWin::setEditCharset()
+{
+  QFont fnt=mSavedEditorFont;
+  KCharset kcharset;
+  if (mComposeCharset=="default") kcharset=klocale->charset();
+  else if (mComposeCharset!="") kcharset=mComposeCharset;
+  cout<<"Setting font to: "<<kcharset.name()<<"\n";
+  mEditor->setFont(kcharset.setQFont(fnt));
+}
+#endif //CHARSETS
+
+
+//-----------------------------------------------------------------------------
+void KMComposeWin::focusNextPrevEdit(const QLineEdit* aCur, bool aNext)
+{
+  QLineEdit* cur;
+
+  if (!aCur)
+  {
+    cur=mEdtList.last();
+  }
+  else
+  {
+    for (cur=mEdtList.first(); aCur!=cur && cur; cur=mEdtList.next())
+      ;
+    if (!cur) return;
+    if (aNext) cur = mEdtList.next();
+    else cur = mEdtList.prev();
+  }
+  if (cur) cur->setFocus();
+  else mEditor->setFocus();
+}
+
+
 
 //=============================================================================
 //
 //   Class  KMLineEdit
 //
 //=============================================================================
-KMLineEdit::KMLineEdit(QWidget *parent, const char *name)
-  :QLineEdit(parent,name)
+KMLineEdit::KMLineEdit(KMComposeWin* composer, QWidget *parent, 
+		       const char *name): KMLineEditInherited(parent,name)
 {
+  mComposer = composer;
 }
 
 //-----------------------------------------------------------------------------
-
 void KMLineEdit::mousePressEvent(QMouseEvent *e)
 {
   if(e->button() == MidButton)
@@ -1744,6 +1819,16 @@ void KMLineEdit::mousePressEvent(QMouseEvent *e)
 }
 
 //-----------------------------------------------------------------------------
+void KMLineEdit::keyPressEvent(QKeyEvent* e)
+{
+  if (e->key()==Key_Backtab && mComposer)
+    mComposer->focusNextPrevEdit(this,FALSE);
+  else if ((e->key()==Key_Tab || e->key()==Key_Return) && mComposer)
+    mComposer->focusNextPrevEdit(this,TRUE);
+  else KMLineEditInherited::keyPressEvent(e);
+}
+
+//-----------------------------------------------------------------------------
 void KMLineEdit::copy()
 {
   QString t = markedText();
@@ -1756,7 +1841,7 @@ void KMLineEdit::cut()
   if(hasMarkedText())
   {
     QString t = markedText();
-    QKeyEvent k( Event_KeyPress, Key_D , 0 , ControlButton);
+    QKeyEvent k(Event_KeyPress, Key_D, 0, ControlButton);
     keyPressEvent(&k);
     QApplication::clipboard()->setText(t);
   }
@@ -1765,7 +1850,7 @@ void KMLineEdit::cut()
 //-----------------------------------------------------------------------------
 void KMLineEdit::paste()
 {
-  QKeyEvent k( Event_KeyPress, Key_V , 0 , ControlButton);
+  QKeyEvent k(Event_KeyPress, Key_V, 0, ControlButton);
   keyPressEvent(&k);
 }
 
@@ -1777,7 +1862,23 @@ void KMLineEdit::markAll()
 
 
 
+//=============================================================================
+//
+//   Class  KMEdit
+//
+//=============================================================================
+KMEdit::KMEdit(KApplication *a,QWidget *parent, KMComposeWin* composer,
+	       const char *name, const char *filename):
+  KMEditInherited(a, parent, name, filename)
+{
+  initMetaObject();
+  mComposer = composer;
+}
 
-
-
-
+//-----------------------------------------------------------------------------
+void KMEdit::keyPressEvent(QKeyEvent* e)
+{
+  if (e->key()==Key_Backtab && mComposer)
+    mComposer->focusNextPrevEdit(NULL,FALSE);
+  else KMEditInherited::keyPressEvent(e);
+}
