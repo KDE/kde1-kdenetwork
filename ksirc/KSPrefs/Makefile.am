@@ -20,7 +20,7 @@ INCLUDES= @all_includes@
 # SUBDIRS = 
 # KSTicker KSprogress
 
-####### This part is very khexdit specific
+####### This part is very ksirc specific
 # you can add here more. This one gets installed 
 noinst_LIBRARIES = libksprefs.a
 
@@ -43,8 +43,6 @@ UserMenuRef.cpp \
 mUserMenuRef.cpp \
 UserMenuRefData.cpp \
 mUserMenuRefData.cpp \
-../kspainter.cpp \
-../mkspainter.cpp \
 defaultfilters.cpp \
 mdefaultfilters.cpp \
 defaultfiltersdata.cpp \
@@ -72,7 +70,6 @@ mdefaultfilters.cpp \
 mdefaultfiltersdata.cpp \
 mgeneral.cpp \
 mgeneralData.cpp \
-mkspainter.cpp \
 mksprefs.cpp \
 mserverchannel.cpp \
 mserverchanneldata.cpp \

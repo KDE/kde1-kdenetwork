@@ -144,7 +144,7 @@ INCLUDES= @all_includes@
 # SUBDIRS = 
 # KSTicker KSprogress
 
-####### This part is very khexdit specific
+####### This part is very ksirc specific
 # you can add here more. This one gets installed 
 noinst_LIBRARIES = libksprefs.a
 
@@ -167,8 +167,6 @@ UserMenuRef.cpp \
 mUserMenuRef.cpp \
 UserMenuRefData.cpp \
 mUserMenuRefData.cpp \
-../kspainter.cpp \
-../mkspainter.cpp \
 defaultfilters.cpp \
 mdefaultfilters.cpp \
 defaultfiltersdata.cpp \
@@ -196,7 +194,6 @@ mdefaultfilters.cpp \
 mdefaultfiltersdata.cpp \
 mgeneral.cpp \
 mgeneralData.cpp \
-mkspainter.cpp \
 mksprefs.cpp \
 mserverchannel.cpp \
 mserverchanneldata.cpp \
@@ -221,8 +218,8 @@ libksprefs_a_OBJECTS =  ksprefs.o mksprefs.o general.o mgeneral.o \
 generalData.o mgeneralData.o startup.o mstartup.o startupdata.o \
 mstartupdata.o serverchannel.o mserverchannel.o serverchanneldata.o \
 mserverchanneldata.o UserMenuRef.o mUserMenuRef.o UserMenuRefData.o \
-mUserMenuRefData.o kspainter.o mkspainter.o defaultfilters.o \
-mdefaultfilters.o defaultfiltersdata.o mdefaultfiltersdata.o
+mUserMenuRefData.o defaultfilters.o mdefaultfilters.o \
+defaultfiltersdata.o mdefaultfiltersdata.o
 AR = ar
 CXXFLAGS = @CXXFLAGS@
 CXXCOMPILE = $(CXX) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
@@ -239,13 +236,12 @@ TAR = tar
 GZIP = --best
 DEP_FILES =  .deps/UserMenuRef.P .deps/UserMenuRefData.P \
 .deps/defaultfilters.P .deps/defaultfiltersdata.P .deps/general.P \
-.deps/generalData.P .deps/kspainter.P .deps/ksprefs.P \
-.deps/mUserMenuRef.P .deps/mUserMenuRefData.P .deps/mdefaultfilters.P \
+.deps/generalData.P .deps/ksprefs.P .deps/mUserMenuRef.P \
+.deps/mUserMenuRefData.P .deps/mdefaultfilters.P \
 .deps/mdefaultfiltersdata.P .deps/mgeneral.P .deps/mgeneralData.P \
-.deps/mkspainter.P .deps/mksprefs.P .deps/mserverchannel.P \
-.deps/mserverchanneldata.P .deps/mstartup.P .deps/mstartupdata.P \
-.deps/serverchannel.P .deps/serverchanneldata.P .deps/startup.P \
-.deps/startupdata.P
+.deps/mksprefs.P .deps/mserverchannel.P .deps/mserverchanneldata.P \
+.deps/mstartup.P .deps/mstartupdata.P .deps/serverchannel.P \
+.deps/serverchanneldata.P .deps/startup.P .deps/startupdata.P
 CXXMKDEP = $(CXX) -M $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
 SOURCES = $(libksprefs_a_SOURCES)
 OBJECTS = $(libksprefs_a_OBJECTS)
