@@ -113,7 +113,8 @@ PukeController::~PukeController() /*fold00*/
 
 void PukeController::NewConnect(int) /*fold00*/
 {
-  int cfd, len = 0;
+  int cfd;
+  uint len = 0;
   struct sockaddr_un unix_addr;
 
   cfd = accept(iListenFd, (struct sockaddr *)&unix_addr, &len);

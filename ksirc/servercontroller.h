@@ -139,6 +139,7 @@ public slots:
     virtual void filter_rule_editor();
     virtual void configChange();
     virtual void nickcompletion();
+    virtual void autorejoin();
     virtual void help_general();
     virtual void help_colours();
     virtual void help_filters();
@@ -167,7 +168,7 @@ private:
     // name
     QDict<KSircProcess> proc_list;
     QPopupMenu *options, *connections;
-    int join_id, server_id, auto_id, nickc_id;
+    int join_id, server_id, auto_id, nickc_id, autor_id;
     
     int open_toplevels;
 

@@ -137,6 +137,12 @@ servercontroller::servercontroller /*FOLD00*/
 			  kConfig->readNumEntry("NickCompletion", TRUE));
   kSircConfig->nickcompletion = 
     kConfig->readNumEntry("NickCompletion", TRUE);
+  autor_id = options->insertItem("Auto Rejoin",
+                                 this, SLOT(autorejoin()));
+  options->setItemChecked(autor_id,
+                          kConfig->readNumEntry("AutoRejoin", TRUE));
+  kSircConfig->autorejoin =
+    kConfig->readNumEntry("AutoRejoin", TRUE);
   options->insertSeparator();
   options->insertItem("&Colour Preferences...",
 		      this, SLOT(colour_prefs()));
@@ -360,6 +366,21 @@ void servercontroller::nickcompletion() /*fold00*/
   kConfig->sync();
 }
 
+void servercontroller::autorejoin()
+{
+  kConfig->setGroup("GlobalOptions");
+  if(kConfig->readNumEntry("AutoRejoin", FALSE) == FALSE){
+    options->setItemChecked(autor_id, TRUE);
+    kConfig->writeEntry("AutoRejoin", TRUE);
+    kSircConfig->autorejoin = TRUE;
+  }
+  else{
+    options->setItemChecked(autor_id, FALSE);
+    kConfig->writeEntry("AutoRejoin", FALSE);
+    kSircConfig->autorejoin = FALSE;
+  }
+  kConfig->sync();
+}
 
 void servercontroller::about_ksirc() /*fold00*/
 {

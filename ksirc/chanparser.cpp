@@ -133,8 +133,11 @@ void ChannelParser::parseSSFEStatus(QString string) /*fold00*/
       top->opami = FALSE;                 // FALSE, were not an ops
     top->UserUpdateMenu();                // update the menu
     top->setCaption(status);
-    if(top->ticker)
+    top->setIconText(status);
+    if(top->ticker) {
       top->ticker->setCaption(status);
+      top->ticker->setIconText(status);
+    }
     top->caption = status;           // Make copy so we're not
     top->caption.detach();
     // constantly changing the title bar
@@ -358,29 +361,38 @@ void ChannelParser::parseINFOPart(QString string) /*FOLD00*/
     else if(sscanf(string, "You have been kicked off channel %100s", channel) >= 1){
       if(strcasecmp(top->channel_name, channel) != 0)
         throw(parseWrongChannel(string, kSircConfig->colour_error, top->pix_madsmile));
-      if(top->KickWinOpen != false)
-        throw(parseError(" " + string, QString("Kick window Open")));
-      top->KickWinOpen = true;
-      top->hide();
-      switch(QMessageBox::information(top, "You have Been Kicked",
-                                      string.data(),
-                                      "Rejoin", "Leave", 0, 0, 1)){
-                                      case 0:
-                                        {
-                                          QString str = "/join " + QString(top->channel_name) + "\n";
-                                          emit top->outputLine(str);
-                                          if(top->ticker)
-                                            top->ticker->show();
-                                          else
-					    top->show();
-					  throw(parseSucc(" " + string, kSircConfig->colour_chan, top->pix_greenp));
-                                        }
-                                      break;
-                                      case 1:
-                                        QApplication::postEvent(top, new QCloseEvent()); // WE'RE DEAD
-                                        break;
+      if (kSircConfig->autorejoin == TRUE) {
+        QString str = "/join " + QString(top->channel_name) + "\n";
+        emit top->outputLine(str);
+        if(top->ticker)
+          top->ticker->show();
+        else
+          top->show();
       }
-      top->KickWinOpen = false;
+      else {
+        if(top->KickWinOpen != false)
+          throw(parseError(" " + string, QString("Kick window Open")));
+        top->KickWinOpen = true;
+        switch(QMessageBox::information(top, "You have Been Kicked",
+                                        string.data(),
+                                        "Rejoin", "Leave", 0, 0, 1)){
+                                        case 0:
+                                          {
+                                            QString str = "/join " + QString(top->channel_name) + "\n";
+                                            emit top->outputLine(str);
+                                            if(top->ticker)
+                                              top->ticker->show();
+                                            else
+  					      top->show();
+					    throw(parseSucc(" " + string, kSircConfig->colour_chan, top->pix_greenp));
+                                          }
+                                        break;
+                                        case 1:
+                                          QApplication::postEvent(top, new QCloseEvent()); // WE'RE DEAD
+                                          break;
+        }
+        top->KickWinOpen = false;
+      }
     }
     else if(sscanf(string, "%100s has left channel %100s", nick, channel) >= 2){
       if(strcasecmp(top->channel_name, channel) == 0){
