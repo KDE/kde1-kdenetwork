@@ -3,8 +3,8 @@
 <HEAD>
 <TITLE>The ktalkd Handbook: Installation</TITLE>
 <META HTTP-EQUIV="content-type" CONTENT="text/html; charset=iso-8859-1">
-<META NAME="keywords" CONTENT="KTALKD talk talkd ntalk">
-<META NAME="description" CONTENT="KTALKD talk talkd ntalk">
+<META NAME="keywords" CONTENT="KTALKD talk talkd otalk ntalk">
+<META NAME="description" CONTENT="KTALKD talk talkd otalk ntalk">
 </HEAD>
 <BODY BGCOLOR="#ffffff" LINK="#aa0000" TEXT="#000000" > 
 <FONT FACE="Helvetica">
@@ -54,10 +54,13 @@
 <P>
 As <CODE>ktalkd</CODE> is a daemon, <CODE>make install</CODE> will require root privileges.
 <br>
-<p>Don't forget to change the line concerning ntalk in /etc/inetd.conf.
-For ex., on a linux system, if kde is in /opt/kde, set it to : <br>
-<CODE>"ntalk  dgram   udp     wait    root    /usr/sbin/tcpd  /opt/kde/bin/ktalkd"
-</CODE><br>
+<p>Don't forget to update /etc/inetd.conf.
+For example, on a linux system, if kde is in /opt/kde, change the lines 
+concerning talk and ntalk to :
+<BLOCKQUOTE><CODE><PRE>
+talk   dgram   udp     wait    root    /usr/sbin/tcpd  /opt/kde/bin/kotalkd
+ntalk  dgram   udp     wait    root    /usr/sbin/tcpd  /opt/kde/bin/ktalkd
+</PRE></CODE></BLOCKQUOTE><br>
 A script is provided, to make the necessary change automatically. <br>Update your inetd.conf file 
 just by running 
 <BLOCKQUOTE><CODE><PRE>
@@ -65,9 +68,9 @@ just by running
 </PRE>
 </CODE></BLOCKQUOTE>
 Anyway, you'll have to <b>restart inetd</b> after this.
-On a Redhat 5 system, do :
+On most Linux systems, do :
 <BLOCKQUOTE><CODE><PRE>
-% /etc/rc.d/init.d/inet restart
+% killall -HUP inetd
 </PRE>
 </CODE></BLOCKQUOTE>
 </P>

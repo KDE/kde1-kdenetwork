@@ -49,7 +49,11 @@ static	char *answers[] =
       "unknown_request", "badversion", "badaddr", "badctladdr" };
 #define	NANSWERS	(sizeof (answers) / sizeof (answers[0]))
 
-void print_request(char *cp,register CTL_MSG *mp)
+/** Dump a NEW_CTL_MSG structure in the logs.
+ * It must be called with network byte order (after calls to hton*)
+ * @param cp a string to identify the log output
+ * @param mp the address of the NEW_CTL_MSG structure */
+void print_request(char *cp,register NEW_CTL_MSG *mp)
 {
 	char tbuf[80], *tp;
 	
@@ -58,11 +62,17 @@ void print_request(char *cp,register CTL_MSG *mp)
 		tp = tbuf;
 	} else
 		tp = types[mp->type];
-	syslog(LOG_DEBUG, "%s: %s: id %d, l_user %s, r_user %s, r_tty %s",
-	    cp, tp, mp->id_num, mp->l_name, mp->r_name, mp->r_tty);
+	syslog(LOG_DEBUG, "%s: %s: id %d, l_user %s, r_user %s, r_tty %s, pid %d",
+	    cp, tp, ntohl(mp->id_num), mp->l_name, mp->r_name, mp->r_tty, ntohl(mp->pid));
+        print_addr("    addr", (struct sockaddr_in *)&mp->addr);
+        print_addr("    ctl_addr", (struct sockaddr_in *)&mp->ctl_addr);
 }
 
-void print_response(char *cp,register CTL_RESPONSE *rp)
+/** Dump a NEW_CTL_RESPONSE structure in the logs.
+ * It must be called with network byte order (before calls to ntoh*)
+ * @param cp a string to identify the log output
+ * @param mp the address of the NEW_CTL_RESPONSE structure */
+void print_response(char *cp,register NEW_CTL_RESPONSE *rp)
 {
 	char tbuf[80], *tp, abuf[80], *ap;
 	
@@ -77,6 +87,26 @@ void print_response(char *cp,register CTL_RESPONSE *rp)
 	} else
 		ap = answers[rp->answer];
 	syslog(LOG_DEBUG, "%s: %s: %s, id %d", cp, tp, ap, ntohl(rp->id_num));
+        if ((rp->type == LOOK_UP) && (rp->answer == SUCCESS))
+            print_addr("    resp addr", (struct sockaddr_in *)&rp->addr);
+}
+
+/* print_addr is a debug print routine for sockaddr_in structures.
+ * Call with a structure in network byte order.
+ * @param cp a string to identify the log output
+ * @param addr the address to read */
+void print_addr(char *cp, struct sockaddr_in * addr)
+{
+	int i;
+        unsigned int s_add = addr->sin_addr.s_addr;
+        char s[20] = "", d[5];
+	for (i = 0; i<4; i++) {
+            sprintf(d, "%ld.", s_add % 256L);
+            strcat(s, d);
+            s_add = s_add / 256L;
+        }
+	syslog(LOG_DEBUG,"%s: addr = %s port = %o, family = %o",
+		cp, s, ntohs(addr->sin_port), ntohs(addr->sin_family));
 }
 
 /*

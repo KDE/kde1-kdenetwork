@@ -6,7 +6,7 @@ LDADD = $(all_libraries) -lkdeui -lkdecore -lmediatool -lqt -lXext -lX11 $(LIBSO
 
 bin_PROGRAMS = kcmktalkd
 
-kcmktalkd_SOURCES = main.cpp soundpage.cpp answmachpage.cpp
+kcmktalkd_SOURCES = main.cpp soundpage.cpp answmachpage.cpp forwmachpage.cpp
 kcmktalkd_METASOURCES = USE_AUTOMOC 
 
 install-data-local: 

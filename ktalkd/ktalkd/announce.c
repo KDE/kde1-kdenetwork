@@ -61,6 +61,7 @@
 #include "announce.h"
 #include "readconf.h"
 #include "defs.h"
+#include "threads.h"
 
 #ifdef HAVE_SGTTY_H
 #include <sgtty.h>
@@ -81,11 +82,11 @@
  * process to any terminal that it writes on, we must fork a child
  * to protect ourselves
  */
-int announce(CTL_MSG *request, const char *remote_machine, char *disp) {
+int announce(NEW_CTL_MSG *request, const char *remote_machine, char *disp, int
+             usercfg, char * callee) {
 
-	int pid, val, status;
-        int usercfg = 0;    /* set if a user config file exists */
-        int returncode;
+    int pid, status;
+    int returncode;
         
      if ((strstr(request->l_name,"\033"))||(strstr(remote_machine,"\033")))
 	  {
@@ -103,29 +104,16 @@ int announce(CTL_MSG *request, const char *remote_machine, char *disp) {
 	    if ((pid = fork())) {
 		/* we are the parent, so wait for the child */
 		if (pid == -1)		/* the fork failed */
-			return (FAILED);
-		do {
-			val = wait(&status);
-			if (val == -1) {
-				if (errno == EINTR)
-					continue;
-				/* shouldn't happen */
-				syslog(LOG_WARNING, "announce: wait: %m");
-				return (FAILED);
-			}
-		} while (val != pid);
+                    return (FAILED);
+                status = wait_process(pid);
 		if ((status&0377) > 0)	/* we were killed by some signal */
-			return (FAILED);
+                    return (FAILED);
 		/* Get the second byte, this is the exit/return code */
 		return ((status >> 8) & 0377);
 	    }
 	    /* we are the child, go and do it */
 
-                /* Open user config file. */
-            usercfg = init_user_config(request->r_name);
-
-            returncode = announce_proc(request, remote_machine, disp, usercfg);
-            if (!usercfg) end_user_config();
+            returncode = announce_proc(request, remote_machine, disp, usercfg, callee);
             _exit(returncode);
 
 	  }
@@ -137,8 +125,8 @@ int announce(CTL_MSG *request, const char *remote_machine, char *disp) {
  * a talk is requested.
  */
 
-int announce_proc(CTL_MSG *request, const char *remote_machine,
-                  char *disp, int usercfg) {
+int announce_proc(NEW_CTL_MSG *request, const char *remote_machine,
+                  char *disp, int usercfg, char * callee) {
 
 #ifdef HAVE_KDE
 
@@ -165,7 +153,7 @@ int announce_proc(CTL_MSG *request, const char *remote_machine,
      * He is in X (probably :-) -> try to connect with external program
      */
       
-      message_s("KDEBINDIR is %s",getenv("KDEBINDIR"));
+      // message_s("KDEBINDIR is %s",getenv("KDEBINDIR"));
       /* just a check */
 
    /*  No more needed : ktalkdlg will play sound itself.
@@ -182,12 +170,11 @@ int announce_proc(CTL_MSG *request, const char *remote_machine,
     if ((!usercfg) || (!read_user_config("ExtPrg", extprg, S_MESSG)))
         /* try to read extprg from user config file, otherwise : */
         strcpy(extprg,OPTextprg); /* take default */            
-    message_s("extprg is %s",extprg);
 
     /* disp can be a LIST of displays, such as ":0 :1", or
          ":0 hostname:0". Let's announce on ALL displays found.
        disp_end is the end of the display list (saved because we'll
-         insert zeros.
+         insert zeros).
        adisp_begin will point to a display in the list.
        disp_ptr will go char by char through disp.*/
 
@@ -216,13 +203,13 @@ int announce_proc(CTL_MSG *request, const char *remote_machine,
 		strcat (env, adisp_begin);
                 putenv(env);
 #endif
- 
- 		#ifndef NDEBUG
-                  syslog(LOG_DEBUG, "Trying to run '%s' at '%s' as '%s'", extprg, 
- 		                                                          getenv("DISPLAY"),
- 									  callee_name );
- 		#endif	 
-                
+
+                if (debug_mode)
+                {
+                    syslog(LOG_DEBUG, "Trying to run '%s' at '%s' as '%s'", extprg, 
+                           getenv("DISPLAY"), request->r_name );
+                    if (callee) message_s("With mention of callee : %s",callee);
+                }
                 /*
                  * point stdout, stderr of external program to the pipe
                  * announce a talk request by execing external program
@@ -235,7 +222,7 @@ int announce_proc(CTL_MSG *request, const char *remote_machine,
                  * If the display uses Xauth, we will not be able to connect...
                  * We try by changing the user ID...
                  */
-                pw_buf = getpwnam(callee_name);
+                pw_buf = getpwnam(request->r_name);
                 if (setgid(pw_buf -> pw_gid) || setuid(pw_buf -> pw_uid))
                     syslog(LOG_WARNING, "Warning: setuid: %m");
                 else
@@ -248,11 +235,11 @@ int announce_proc(CTL_MSG *request, const char *remote_machine,
                 putenv(env);
 #endif
 		}
-                /* might be already done by init_user_config, but doesn't hurt */
-                
-                if ( OPTNEU_set_user_name[0]!=0 && 
-		     strcasecmp( request->r_name, callee_name )!=0 ) execl( extprg, extprg, OPTNEU_set_user_name, request->r_name, line_buf, 0 );
-		else               	  	                     execl( extprg, extprg, line_buf, 0 );
+
+                if (callee)
+                    execl( extprg, extprg, line_buf, callee, 0 );
+                else
+                    execl( extprg, extprg, line_buf, 0 );
                 
                 /*
                  * failure - tell it to father
@@ -263,6 +250,8 @@ int announce_proc(CTL_MSG *request, const char *remote_machine,
                 _exit( 0 );
             }
             default: {
+                /* Register the new process for waitpid */
+                new_process();
                 /*
                  * I don't know any way how to find that external program run ok
                  * so parent returns always SUCCESS
@@ -270,31 +259,13 @@ int announce_proc(CTL_MSG *request, const char *remote_machine,
                  * we can't wait the reaction of the user
                  */
                 read( readPipe[0], &ch_aux, 1 );
-                if (debug_mode) syslog(LOG_WARNING, "Child process sent : %c",ch_aux);  
+                if (debug_mode) syslog(LOG_DEBUG, "Child process sent : %c",ch_aux);  
                 close( readPipe[0] );
                 close( readPipe[1] );
                 if (ch_aux == '#') {
                     message("OK - Child process responded"); /* for debugging */
                     Xannounceok = 1;
-                } else {
-                    message("KO - External program failed");
-#if 0  /* Why was this code here ? We don't have to wait for the child ! */
-                    do {
-                        val = waitpid( pid, &status, 0 );
-                        if (val == -1) {
-                            if (errno == EINTR)
-                                continue;
-                            /* shouldn't happen */
-                            syslog(LOG_WARNING, "announce: wait: %m");
-                            return (FAILED);
-                        }
-                    } while (val != pid);
-                    if ((status&0377) > 0)	/* we were killed by some signal */
-                        return (FAILED);
-                    /* Get the second byte, this is the exit/return code */
-                    return ((status >> 8) & 0377);
-#endif
-                }
+                } else message("KO - External program failed");
             } /* default */
         } /* switch */
         adisp_begin=disp_ptr+1;
@@ -317,7 +288,7 @@ int announce_proc(CTL_MSG *request, const char *remote_machine,
   }
 }
 
-int print_std_mesg( CTL_MSG *request, const char *remote_machine, int usercfg ) {
+int print_std_mesg( NEW_CTL_MSG *request, const char *remote_machine, int usercfg ) {
 
   char full_tty[32];
   FILE *tf;
@@ -349,7 +320,7 @@ int print_std_mesg( CTL_MSG *request, const char *remote_machine, int usercfg ) 
  * try to keep the message in one piece if the recipient
  * in in vi at the time
  */
-void print_mesg(FILE * tf, CTL_MSG * request, const char *
+void print_mesg(FILE * tf, NEW_CTL_MSG * request, const char *
                 remote_machine, int usercfg)
 {
 	struct timeval clock;
@@ -427,11 +398,13 @@ void print_mesg(FILE * tf, CTL_MSG * request, const char *
 	fprintf(tf, big_buf);
 	fflush(tf);
 	ioctl(fileno(tf), TIOCNOTTY, (struct sgttyb *) 0);
+        free(localname);
+        free(remotemach);
 }
 
 int play_sound(int usercfg)
 {
-     int pid, val, status, returncode;
+     int pid, status, returncode;
      char sSoundPlayer[S_CFGLINE], sSoundFile[S_CFGLINE];
      char sSoundPlayerOpt[S_CFGLINE];
      /* We must absolutely read the configuration before forking,
@@ -447,31 +420,24 @@ int play_sound(int usercfg)
      message(sSoundFile);
 
      if ((pid = fork())) {
-	  /* we are the parent, so wait for the child */
-	  if (pid == -1)          /* the fork failed */
-	       syslog(LOG_ERR,"Fork before play_sound : FAILED.");
-	       return (FAILED);
-	  do {
-	       val = wait(&status);
-	       if (val == -1) {
-		    if (errno == EINTR)
-			 continue;
-		    /* shouldn't happen */
-		    syslog(LOG_WARNING, "announce: wait: %m");
-		    return (FAILED);
-	       }
-	  } while (val != pid);
-	  if ((status&0377) > 0)    /* we were killed by some signal */
-	       return (FAILED);
-	  /* Get the second byte, this is the exit/return code */
-	  return ((status >> 8) & 0377);
+         /* we are the parent, so wait for the child */
+         if (pid == -1)          /* the fork failed */
+         {
+             syslog(LOG_ERR,"Fork before play_sound : FAILED.");
+             return (FAILED);
+         }
+         status = wait_process(pid);
+         if ((status&0377) > 0)    /* we were killed by some signal */
+             return (FAILED);
+         /* Get the second byte, this is the exit/return code */
+         return ((status >> 8) & 0377);
      }
      /* we are the child, go and do it */
 
      if (strlen(sSoundPlayerOpt)>0)
-       returncode = execl(sSoundPlayer,sSoundPlayer/*arg0*/,sSoundPlayerOpt,sSoundFile,NULL);
+         returncode = execl(sSoundPlayer,sSoundPlayer/*arg0*/,sSoundPlayerOpt,sSoundFile,NULL);
      else
-       returncode = execl(sSoundPlayer,sSoundPlayer/*arg0*/,sSoundFile,NULL);
+         returncode = execl(sSoundPlayer,sSoundPlayer/*arg0*/,sSoundFile,NULL);
 
      message(strerror(errno));
      syslog(LOG_ERR,"ERROR PLAYING SOUND FILE !!!");

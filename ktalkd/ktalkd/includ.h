@@ -11,10 +11,6 @@
 #include "talkd.h"
 #include <netinet/in.h> 
 
-/* Use ntalk protocol */
-#define CTL_MSG NEW_CTL_MSG
-#define CTL_RESPONSE NEW_CTL_RESPONSE
-
 #ifdef HAVE_PATHS_H
 #include <paths.h>
 #else

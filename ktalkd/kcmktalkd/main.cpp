@@ -22,6 +22,7 @@
 
 #include "soundpage.h"
 #include "answmachpage.h"
+#include "forwmachpage.h"
 #include <kcontrol.h>
 #include <ksimpleconfig.h>
 
@@ -42,6 +43,7 @@ private:
 
     KSoundPageConfig *soundpage;
     KAnswmachPageConfig *answmachpage;
+    KForwmachPageConfig *forwmachpage;
 };
 
 KKTalkdApplication::KKTalkdApplication(int &argc, char **argv, 
@@ -56,12 +58,15 @@ KKTalkdApplication::KKTalkdApplication(int &argc, char **argv,
 	    if (!pages || pages->contains("answmachpage"))
 		addPage(answmachpage = new KAnswmachPageConfig(dialog, "answmachpage"),
 			i18n("Ans&wering machine"), "");
+	    if (!pages || pages->contains("forwmachpage"))
+		addPage(forwmachpage = new KForwmachPageConfig(dialog, "forwmachpage"),
+			i18n("&Forward"), "");
 	    
-	    if (soundpage || answmachpage) {
+	    if (soundpage || answmachpage || forwmachpage) {
 		dialog->show();
 	    }
 	    else {
-		fprintf(stderr, i18n("usage: kcmktalkd [-init | soundpage | answmachpage]\n"));
+		fprintf(stderr, i18n("usage: kcmktalkd [-init | soundpage | answmachpage | forwmachpage ]\n"));
 		justInit = true;
 	    }
 	    
@@ -83,6 +88,8 @@ void KKTalkdApplication::defaultValues()
         soundpage->defaultSettings();
     if (answmachpage)
         answmachpage->defaultSettings();    
+    if (forwmachpage)
+        forwmachpage->defaultSettings();    
 }
 
 void KKTalkdApplication::apply()
@@ -91,6 +98,8 @@ void KKTalkdApplication::apply()
         soundpage->saveSettings();
     if (answmachpage)
         answmachpage->saveSettings();
+    if (forwmachpage)
+        forwmachpage->saveSettings();
 }
 
 int main(int argc, char **argv)

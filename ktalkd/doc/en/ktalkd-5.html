@@ -3,8 +3,8 @@
 <HEAD>
 <TITLE>The ktalkd Handbook: Questions and answers</TITLE>
 <META HTTP-EQUIV="content-type" CONTENT="text/html; charset=iso-8859-1">
-<META NAME="keywords" CONTENT="KTALKD talk talkd ntalk">
-<META NAME="description" CONTENT="KTALKD talk talkd ntalk">
+<META NAME="keywords" CONTENT="KTALKD talk talkd otalk ntalk">
+<META NAME="description" CONTENT="KTALKD talk talkd otalk ntalk">
 </HEAD>
 <BODY BGCOLOR="#ffffff" LINK="#aa0000" TEXT="#000000" > 
 <FONT FACE="Helvetica">
@@ -62,6 +62,29 @@ user when using startx... Any hint about that ?
 log him into utmp and the linux based (/proc) detection is disabled.
 The solution is the same as in section 5.1, provided that you run kdm
 or xdm to log into X.
+</P>
+<H4><A NAME="s5.3">5.3 How to get debug output from ktalkd ?</A></H4>
+<P>
+As it is a daemon, there is no debug output on standard output. To get 
+debugging output (for instance before submitting me a bug report !), update 
+the lines in inetd.conf which launches ktalkd and kotalkd to be :
+<BLOCKQUOTE><CODE>
+talk   dgram   udp     wait    root    /usr/sbin/tcpd  /opt/kde/bin/kotalkd -d
+ntalk  dgram   udp     wait    root    /usr/sbin/tcpd  /opt/kde/bin/ktalkd -d
+</CODE></BLOCKQUOTE><br>
+(notice the <B>-d</B> option)</P>
+<P>Then edit /etc/syslog.conf to add the following line :
+<BLOCKQUOTE><CODE>
+*.*         /var/log/all_messages
+</CODE></BLOCKQUOTE></P>
+<P>To make it work, you then have to restart inetd and syslogd :
+<BLOCKQUOTE><CODE><PRE>
+% killall -HUP inetd
+% killall -HUP syslogd
+</PRE>
+</CODE></BLOCKQUOTE>
+Finally, run a talk session and see the result in /var/log/all_messages
+
 </P>
 <P ALIGN="RIGHT">
   <A HREF="ktalkd-6.html">Next</A>

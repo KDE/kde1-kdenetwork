@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 1983 Regents of the University of California.
+ * Copyright (c) 1983 Regents of the University of California, (c) 1998 David Faure.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -66,23 +66,23 @@ char copyright[] =
 #include "print.h"
 #include "readconf.h"
 #include "defs.h"
+#include "threads.h"
+#include "machines/machines.h"
 
 #define TIMEOUT 20
  /* TIMEOUT was 30, but has been reduced to remove the
     zombie process (answering machine) as soon as possible */
 #define MAXIDLE 120
  /* #define MAXIDLE 30     for debugging purposes */
-#define NB_MAX_CHILD 10
 
-int	debug_mode = 0; /* set to one to have verbose reports from ktalkd */
+#define NB_MAX_CHILD 20 /* Max number of answering / forwarding machines at a time */
+
+int	debug_mode = 0; /* set to 1 to have verbose reports from ktalkd */
 
 long	lastmsgtime;
 char	hostname[MAXHOSTNAMELEN];
-int	nb_child_to_wait=0;
 
 void	timeout(int dummy);
-/* in answmach.c : */
-void launch_ans_mach(CTL_MSG msginfo, int mode);
 
 /* the following copies defaults values to 'OPT*' variables so that
  * configuration file can overwrite them */
@@ -106,28 +106,25 @@ char OPTNEUBanner1 [S_CFGLINE] = NEU_BANNER1;
 char OPTNEUBanner2 [S_CFGLINE] = NEU_BANNER2;
 char OPTNEUBanner3 [S_CFGLINE] = NEU_BANNER3;
 char OPTextprg [S_CFGLINE];
-char		OPTNEU_set_user_name [S_CFGLINE] = "";
-char		callee_name[NAME_SIZE];
-
-extern int errno;
 
 int main(int argc, char *argv[])
 {
-        CTL_MSG		request;
-        CTL_RESPONSE	response;
-        CTL_MSG *mp = &request;
+        NEW_CTL_MSG		request;
+        NEW_CTL_RESPONSE	response;
+        NEW_CTL_MSG *mp = &request;
         int  ret_value = PROC_REQ_OK; /* return value from process_request */
 	int cc;
-        int talkd_sockt = 0;
+        int talkd_sockt = 0; /* if I understand well, it's inetd that opens the 
+                                socket 0 for us... */
 
 	if (getuid()) {
 		fprintf(stderr, "%s: getuid: not super-user", argv[0]);
 		exit(1);
 	}
 #ifdef LOG_PERROR
-	openlog("ktalkd", LOG_PID || LOG_PERROR, LOG_DAEMON);
+	openlog(*argv, LOG_PID || LOG_PERROR, LOG_DAEMON);
 #else
-	openlog("ktalkd", LOG_PID, LOG_DAEMON);
+	openlog(*argv, LOG_PID, LOG_DAEMON);
 #endif
 	if (gethostname(hostname, sizeof (hostname) - 1) < 0) {
 		syslog(LOG_ERR, "gethostname: %m");
@@ -147,45 +144,45 @@ int main(int argc, char *argv[])
 
 	for (;;) {
 
-                if (OPTanswmach && (ret_value>=PROC_REQ_MIN_A) && 
-                     (ret_value<=PROC_REQ_MAX_A)
-                     && (nb_child_to_wait<NB_MAX_CHILD))
+                if (OPTanswmach && (ret_value>=PROC_REQ_MIN_A))
                 {
                     message("Launch answer machine.");
-                    launch_ans_mach(request, ret_value);
-                    nb_child_to_wait++;
+                    launchAnswMach(request, ret_value);
+                    new_process();
                 }
                 
                 cc = recv(talkd_sockt, (char *)mp, sizeof (*mp), 0);
 		if (cc != sizeof (*mp)) {
-			if (cc < 0 && errno != EINTR)
-				syslog(LOG_WARNING, "recv: %m");
+			if ((cc < 0) && (errno != EINTR))
+                            syslog(LOG_WARNING, "recv: %m");
 			continue;
 		}
 		lastmsgtime = time(0);
 		ret_value = process_request(mp, &response);
-                if (debug_mode) print_response("process_request", &response);
-		/* can block here, is this what I want? */
-		cc = sendto(talkd_sockt, (char *)&response,
-		    sizeof (response), 0, (struct sockaddr *)&mp->ctl_addr,
-		    sizeof (mp->ctl_addr));
-		if (cc != sizeof (response))
+                if (ret_value != PROC_REQ_FORWMACH)
+                {
+                    if (debug_mode) print_response("=> response", &response);
+                    /* can block here, is this what I want? */
+                    cc = sendto(talkd_sockt, (char *)&response,
+                                sizeof (response), 0, (struct sockaddr *)&mp->ctl_addr,
+                                sizeof (mp->ctl_addr));
+                    if (cc != sizeof (response))
 			syslog(LOG_WARNING, "sendto: %m");
+                } else {
+                    new_process();  // fork() in forwarding machine
+                }
         }
 }
 
 void timeout(int dummy)
 {
+    int ok_exit = ack_process();
     (void)dummy; // to avoid warning
-    if (nb_child_to_wait>0)
+    if (ok_exit && (time(0) - lastmsgtime >= MAXIDLE))
     {
-        int pid;
-        pid = waitpid(-1,0,WNOHANG);
-        if (pid==-1)
-            syslog(LOG_ERR,"Timeout. Error waiting for answering machine.");
-        if ((pid!=0) & (nb_child_to_wait>0)) nb_child_to_wait--;
-    }
-    else if (time(0) - lastmsgtime >= MAXIDLE)
+        /* We clean the table here - to avoid memory leaks */
+        final_clean();
         _exit(0);
+    }
     alarm(TIMEOUT);
 }

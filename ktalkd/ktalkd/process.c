@@ -62,61 +62,93 @@
 #include "table.h"
 #include "announce.h"
 #include "find_user.h"
+#include "readconf.h"
 #include "defs.h"
+#include "machines/machines.h"
 
-int  process_request(register CTL_MSG *mp, register CTL_RESPONSE *rp)
+int prepare_response(register NEW_CTL_MSG *mp, register NEW_CTL_RESPONSE *rp)
 {
-	register CTL_MSG *ptr;
-
-	rp->vers = TALK_VERSION;
 	rp->type = mp->type;
 	rp->id_num = htonl(0);
+#ifndef OTALK
+	rp->vers = TALK_VERSION;
 	if (mp->vers != TALK_VERSION) {
 		syslog(LOG_WARNING, "Bad protocol version %d", mp->vers);
 		rp->answer = BADVERSION;
-		return PROC_REQ_ERR;
+		return 0;
 	}
+#endif
 	mp->id_num = ntohl(mp->id_num);
 	mp->addr.sa_family = ntohs(mp->addr.sa_family);
 	if (mp->addr.sa_family != AF_INET) {
 		syslog(LOG_WARNING, "Bad address, family %d",
 		    mp->addr.sa_family);
 		rp->answer = BADADDR;
-		return PROC_REQ_ERR;
+		return 0;
 	}
 	mp->ctl_addr.sa_family = ntohs(mp->ctl_addr.sa_family);
 	if (mp->ctl_addr.sa_family != AF_INET) {
 		syslog(LOG_WARNING, "Bad control address, family %d",
 		    mp->ctl_addr.sa_family);
 		rp->answer = BADCTLADDR;
-		return PROC_REQ_ERR;
+		return 0;
 	}
 	mp->pid = ntohl(mp->pid);
+        return 1; /* Ok */
+}
+
+int  process_request(register NEW_CTL_MSG *mp, register NEW_CTL_RESPONSE *rp)
+{
+	register NEW_CTL_MSG *ptr;
+        int ret;
+        int usercfg = 0;    /* set if a user config file exists */
+
 	if (debug_mode)
-		print_request("process_request", mp);
+            print_request("process_request", mp);
+
+        if (!prepare_response(mp, rp))
+            return PROC_REQ_ERR;
+        
+        /* Ensure names end with '\0' */
+        mp->l_name[NAME_SIZE-1] = '\0';
+        mp->r_name[NAME_SIZE-1] = '\0';
+        
 	switch (mp->type) {
 
 	case ANNOUNCE:
-		return do_announce(mp, rp);
+                /* Open user config file. */
+                usercfg = init_user_config(mp->r_name);
+		ret = do_announce(mp, rp, usercfg);
+                if (!usercfg) end_user_config();
+
+                /* Store in table if normal announce or answmach replacing it.
+                   Not if re-announce, nor if error, nor for forwarding machine */
+                if ((ret == PROC_REQ_OK) || (ret == PROC_REQ_ANSWMACH_NOT_LOGGED) || (ret == PROC_REQ_ANSWMACH_NOT_HERE))
+                    insert_table(mp, rp, 0L);
+                return ret;
 
 	case LEAVE_INVITE:
 		ptr = find_request(mp);
-		if (ptr != (CTL_MSG *)0) {
+		if (ptr != (NEW_CTL_MSG *)0) {
 			rp->id_num = htonl(ptr->id_num);
 			rp->answer = SUCCESS;
 		} else
-			insert_table(mp, rp);
+			insert_table(mp, rp, 0L);
 		break;
 
 	case LOOK_UP:
-		ptr = find_match(mp);
-		if (ptr != (CTL_MSG *)0) {
+                ptr = find_match(mp);
+		if (ptr != (NEW_CTL_MSG *)0) {
 			rp->id_num = htonl(ptr->id_num);
 			rp->addr = ptr->addr;
 			rp->addr.sa_family = htons(ptr->addr.sa_family);
 			rp->answer = SUCCESS;
-		} else
-			rp->answer = NOT_HERE;
+		} else {
+                    if (forwMachProcessLookup(mp, rp)) {
+                        return PROC_REQ_FORWMACH; /* Don't send any response, forwmach will do it */
+                    } else
+                        rp->answer = NOT_HERE;
+                }
 		break;
 
 	case DELETE:
@@ -130,15 +162,43 @@ int  process_request(register CTL_MSG *mp, register CTL_RESPONSE *rp)
         return PROC_REQ_OK;
 }
 
-int do_announce(register CTL_MSG *mp,CTL_RESPONSE *rp)
+int do_announce(register NEW_CTL_MSG *mp, NEW_CTL_RESPONSE *rp, int usercfg)
 {
-	struct hostent *hp;
-	CTL_MSG *ptr;
-	int result;
-	char disp[DISPLAYS_LIST_MAX];
+    struct hostent *hp;
+    NEW_CTL_MSG *ptr;
+    int result;
+    char disp[DISPLAYS_LIST_MAX];
+    char forward[S_CFGLINE], forwardMethod[4];
+    char * callee;
+    char * fwm;
+
+    /* Check if already in the table */
+    ptr = find_request(mp);
+
+    if ((ptr != NULL) && ((mp->id_num <= ptr->id_num) || (mp->id_num == ~0x0L))) {
+        /* a duplicated request, so ignore it */
+        message2("dupannounce %d", mp->id_num);
+        rp->id_num = htonl(ptr->id_num);
+        rp->answer = SUCCESS;
+        return PROC_REQ_ERR;
+
+    } else {
+        /* see if a forward has been set up */
+        if (   (usercfg)
+               && (read_user_config("Forward",       forward, S_CFGLINE))
+               && (read_user_config("ForwardMethod", forwardMethod, 4  )) )
+        {
+            fwm = launchForwMach(mp, rp, forward, forwardMethod);
+            if (ptr == (NEW_CTL_MSG *) 0) {  /* Not already in the table */
+                /* Store in table, because :
+                   (Any method) : this allows to detect dupannounces.
+                   (FWR & FWT) : we'll receive the LOOK_UP */
+                insert_table(mp, 0L, fwm);
+            }
+            return PROC_REQ_FORWMACH;
+        }
 
         /* see if the user is logged */
-        strncpy(callee_name, mp->r_name, NAME_SIZE);
 	result = find_user(mp->r_name, mp->r_tty, disp);
         message2("find_user : result = %d",result);
         
@@ -159,30 +219,23 @@ int do_announce(register CTL_MSG *mp,CTL_RESPONSE *rp)
 
                     syslog(LOG_ERR,"User unknown : %s.",mp->r_name);
                     syslog(LOG_ERR,"The caller is : %s.",mp->l_name);
-
+                    message2("OPTNEU_behaviour : %d",OPTNEU_behaviour);
+                    
                     switch (OPTNEU_behaviour) {
-		    case 2: /* Paranoid setting. Do nothing. */
-                        message("Paranoid setting. Do nothing.");
-	                rp->answer = NOT_HERE;
-			return PROC_REQ_ERR;
-		    case 0: /* Launch answering machine. */
-                        message("Not here.");
-                        rp->answer = SUCCESS;
-                        return PROC_REQ_ANSWMACH_NOT_HERE;
-		    case 1: /* NEU_user will take the talk. */
-                        message("Not here. I ll take the talk.");
-
-                        /* Is he here ? */
-                        result = find_user(OPTNEU_user, mp->r_tty, disp);
-                        message2("find_user again : result = %d",result);
-                        if ((result == NOT_HERE) || (*OPTNEU_user=='\0'))
-                        { /* He isn't here => proc_req_answmach */
+                        case 2: /* Paranoid setting. Do nothing. */
+                            message("Paranoid setting. Do nothing.");
+                            rp->answer = NOT_HERE;
+                            return PROC_REQ_ERR;
+                        case 0: /* Launch answering machine. */
+                            message("Not here.");
                             rp->answer = SUCCESS;
-                            return PROC_REQ_ANSWMACH_NOT_HERE; /* answer machine. */
-                        } else
-                        { /* He's here => ok, proceed */
-                          strncpy(callee_name, OPTNEU_user, NAME_SIZE);
-                        }
+                            return PROC_REQ_ANSWMACH_NOT_HERE;
+                        case 1: /* NEU_user will take the talk. */
+                            message("Not here. I ll take the talk.");
+                            fwm = launchForwMach(mp, rp, OPTNEU_user, "FWR");
+                            /* store in table, because we'll receive the LOOK_UP */
+                            insert_table(mp, 0L, fwm);
+                            return PROC_REQ_FORWMACH;
                     } /* switch */
                 } /* getpwnam */
             } /* result */
@@ -195,37 +248,33 @@ int do_announce(register CTL_MSG *mp,CTL_RESPONSE *rp)
 
 #define	satosin(sa)	((struct sockaddr_in *)(sa))
 	hp = gethostbyaddr((char *)&satosin(&mp->ctl_addr)->sin_addr,
-		sizeof (struct in_addr), AF_INET);
+                           sizeof (struct in_addr), AF_INET);
 	if (hp == (struct hostent *)0) {
-		rp->answer = MACHINE_UNKNOWN;
-		return PROC_REQ_ERR;
+            rp->answer = MACHINE_UNKNOWN;
+            return PROC_REQ_ERR;
 	}
-	ptr = find_request(mp);
-
-	if (ptr == (CTL_MSG *) 0) {
-		rp->answer = announce(mp, hp->h_name, disp);
-		if (rp->answer != PERMISSION_DENIED) insert_table(mp, rp);
-		if (debug_mode) print_response("Announce done", rp);
-		return PROC_REQ_OK;
-	}
-
-	if ((mp->id_num > ptr->id_num) &&  (mp->id_num != ~0x0L)) {
-	  /*
-	   * This is an explicit re-announce, so update the id_num
-	   * field to avoid duplicates and re-announce the talk.
-	   */
-
-            syslog(LOG_WARNING, "reannounce %d", mp->id_num);
-            ptr->id_num = new_id();
-            rp->id_num = htonl(ptr->id_num);
-            rp->answer = announce(mp, hp->h_name, disp);
-            return PROC_REQ_ANSWMACH;
-
-        } else {
-            /* a duplicated request, so ignore it */
-            syslog(LOG_WARNING, "dupannounce %d", mp->id_num);
-            rp->id_num = htonl(ptr->id_num);
-            rp->answer = SUCCESS;
+        
+        /* Check if there is a forwarding machine on this machine,
+           matching answerer = r_name and caller = l_name
+           Then set callee to the initial callee, to display in ktalkdlg */
+        callee = forwMachFindMatch(mp);
+        
+	if (ptr == (NEW_CTL_MSG *) 0) {  /* Not already in the table => announce */
+            rp->answer = announce(mp, hp->h_name, disp, usercfg, callee);
+            if (rp->answer == PERMISSION_DENIED) return PROC_REQ_ERR;
+            message("Announce done.");
             return PROC_REQ_OK;
-	}
+	} else {            
+            /* This is an explicit re-announce, so update the id_num
+             * field to avoid duplicates and re-announce the talk. */
+            int new_id_num = new_id();
+            if (debug_mode)
+                syslog(LOG_WARNING, "reannounce : updating id %d to id %d",
+                       ptr->id_num, new_id_num);
+            ptr->id_num = new_id_num; /* update in the table */
+            rp->id_num = htonl(ptr->id_num);
+            rp->answer = announce(mp, hp->h_name, disp, usercfg, callee);
+            return PROC_REQ_ANSWMACH;
+        }
+    }
 }

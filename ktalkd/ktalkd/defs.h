@@ -55,8 +55,6 @@ extern char OPTNEUBanner1[];
 extern char OPTNEUBanner2[];
 extern char OPTNEUBanner3[];
 extern char OPTNEU_user[];
-extern char	OPTNEU_set_user_name[];
-extern char	callee_name[];
 extern int OPTanswmach;
 extern int OPTtime_before_answmach;
 extern char OPTinvitelines[];
@@ -68,12 +66,13 @@ extern int debug_mode;
 
 /* return value from process_request : */
 #define PROC_REQ_OK 0
-#define PROC_REQ_ANSWMACH 1
-#define PROC_REQ_ANSWMACH_NOT_LOGGED 2
-#define PROC_REQ_ANSWMACH_NOT_HERE 3
-#define PROC_REQ_ERR 4
-/* Min and max to launch answer machine : */
-#define PROC_REQ_MIN_A 1
-#define PROC_REQ_MAX_A 3
+#define PROC_REQ_ERR 1
+#define PROC_REQ_FORWMACH 2
+#define PROC_REQ_ANSWMACH 3
+#define PROC_REQ_ANSWMACH_NOT_LOGGED 4
+#define PROC_REQ_ANSWMACH_NOT_HERE 5
+
+/* Min value to launch answer machine : */
+#define PROC_REQ_MIN_A 3
 
 #endif /* __DEFS_H */
