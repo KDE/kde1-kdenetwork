@@ -1003,17 +1003,17 @@ void killpppd() {
 
 #ifdef MY_DEBUG
     printf("In killpppd(): Sending SIGTERM to %d\n", pid);
-#endif MY_DEBUG
+#endif // MY_DEBUG
     
     if(kill(pid, SIGTERM) < 0) {
 #ifdef MY_DEBUG
       printf("Error terminating %d. Sending SIGKILL\n", pid);
-#endif MY_DEBUG
+#endif // MY_DEBUG
       
       if(kill(pid, SIGKILL) < 0)
 #ifdef MY_DEBUG
         printf("Error killing %d\n", pid);
-#endif MY_DEBUG
+#endif // MY_DEBUG
       KApplication::beep();
       return;
     }
