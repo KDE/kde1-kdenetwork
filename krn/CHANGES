@@ -2,7 +2,14 @@
 Changes made Apr 15
 -----------------------------------------------------------------------------
 * [Roberto] Small statusbar fixes.
-*           Fixed ::connect warnings
+*           Fixed ::connect warnings.
+*           Better illusion of multithreading (doesn't work AT ALL).
+*           Infrastructure for detection of disconnection is there.
+            It catches disconnections on request for articles.
+            Adding it to every other NNTP action is just a matter of patience.
+*           Added "Close" to articles window menu.
+*           Bugfix. Avoid segfault when trying to access a newsgroup that's
+            not in the active file.
 -----------------------------------------------------------------------------
 Changes made Apr 13
 -----------------------------------------------------------------------------

@@ -225,6 +225,7 @@ Groupdlg::Groupdlg(const char *name):Inherited (name)
     conf->setGroup("NNTP");
     QString sname=conf->readEntry("NNTPServer");
     server = new NNTP (sname.data());
+    connect (server,SIGNAL(lostServer()),SLOT(lostConnection()));
     server->reportCounters (true,false);
     
     msgSender->setNNTP(server);
@@ -275,12 +276,12 @@ void Groupdlg::openGroup (QString name)
 {
     NewsGroup n(name);
     int i=groups.find(&n);
-    if (groups.at(i)->isVisible)
-    {
-        return;
-    }
     if (i!=-1)
     {
+        if (groups.at(i)->isVisible)
+        {
+            return;
+        }
         groups.at(i)->load();
         Artdlg *a=0;
         QListIterator <NewsGroup> it(groups);
@@ -315,9 +316,11 @@ void Groupdlg::openGroup (QString name)
     }
     else
     {
+        qApp->setOverrideCursor(arrowCursor);
         KMsgBox:: message (0, klocale->translate("Sorry!"),
                            klocale->translate("That newsgroup is not in the current active file\n Krn can't handle this gracefully right now"),
                            KMsgBox::INFORMATION);
+        qApp->restoreOverrideCursor();
     }
 }
 
@@ -1092,5 +1095,19 @@ void Groupdlg::updateCounter(const char *s)
 {
     statusBar()->changeItem (s, 1);
     qApp->processEvents();
+}
+
+
+void Groupdlg::lostConnection()
+{
+    debug ("lost connection!");
+    offline();
+    qApp->setOverrideCursor (arrowCursor);
+    int i=KMsgBox::yesNo(0,"KRN - Error",
+                         "Lost the connection to the server\n"
+                         "Want to reconnect?\n");
+    if (i==1)
+        online();
+    qApp->restoreOverrideCursor ();
 }
 

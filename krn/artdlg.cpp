@@ -95,6 +95,7 @@
 #define QUIT 33
 #define SCOREFRAME 34
 #define FILL_TREE 35
+#define CLOSE_WINDOW 36
 
 extern QString pixpath,cachepath;
 
@@ -160,11 +161,12 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     article->insertSeparator();
     article->insertItem(klocale->translate("Decode"),DECODE_ONE_ARTICLE);
     article->insertItem(klocale->translate("(Un)Tag"),TAG_ARTICLE);
+    article->insertItem(klocale->translate("Don't expire"), TOGGLE_EXPIRE);  // robert's cache stuff
     article->insertSeparator();
     article->insertItem(klocale->translate("Tagged"),taggedArticle);
     article->insertSeparator(); // robert
-    article->insertItem(klocale->translate("Don't expire"), TOGGLE_EXPIRE);  // robert's cache stuff
     article->setItemChecked(TOGGLE_EXPIRE, false);
+    article->insertItem(klocale->translate("Close"), CLOSE_WINDOW);
     article->insertItem(klocale->translate("Quit"), QUIT);
     connect (article,SIGNAL(activated(int)),SLOT(defaultActions(int)));
     
@@ -691,6 +693,11 @@ bool Artdlg::actions (int action,int index)
             fillTree();
             break;
         }
+    case CLOSE_WINDOW:
+        {
+            this->close();
+            break;
+        }
     case QUIT:
         {
             main_widget->close();
@@ -1187,6 +1194,7 @@ bool Artdlg::loadArt (QString id)
                        "\n"
                        "This article seems to have expired or be missing from both"
                        "your news server and Krn's local cache\n"
+                       "Or for some reason I just can't get it now.\n"
                        "However, if you have a functional Internet connection, you may"
                        "be able to find it at Altavista following this link:\n"
                        "%s\n\n\n",url.url().data());
@@ -1621,4 +1629,10 @@ void Artdlg::setTarget(int target)
         QObject::connect (toolBar(1), SIGNAL (clicked (int)), this, SLOT (readActions (int)));
     else if (target==4)
         QObject::connect (toolBar(1), SIGNAL (clicked (int)), this, SLOT (unreadActions (int)));
+}
+
+void Artdlg::closeEvent (QCloseEvent *e)
+{
+    group->isVisible=0;
+    KTopLevelWidget::closeEvent(e);
 }

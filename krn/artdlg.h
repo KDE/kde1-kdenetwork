@@ -46,8 +46,8 @@ public:
     
     KMReaderWin *messwin;
     bool unread;
-//protected:
-//    virtual void closeEvent (QCloseEvent *e);
+protected:
+    virtual void closeEvent (QCloseEvent *e);
 
 public slots:
     void updateCounter(const char *);

@@ -50,6 +50,7 @@ public slots:
     void online();
     void offline();
     bool needsConnect();
+    void lostConnection();
     void updateCounter(const char *);
     
 private slots:

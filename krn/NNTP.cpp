@@ -31,6 +31,8 @@
 #include <qapp.h>
 #include <qregexp.h>
 
+#include <kalarmtimer.h>
+
 #include <gdbm.h>
 
 extern QString krnpath,cachepath,artinfopath;
@@ -45,6 +47,8 @@ char debugbuf[1024];
 #include "kfileio.h"
 
 #include "NNTP.moc"
+
+KAlarmTimer *refreshGUI;
 
 extern KConfig *conf;
 
@@ -102,6 +106,9 @@ NNTP::NNTP(char *host): DwNntpClient()
 
 void NNTP::PGetTextResponse()
 {
+//    refreshGUI=new KAlarmTimer();
+//    QObject::connect (refreshGUI,SIGNAL(timeout(int)),SLOT(refresh()));
+//    refreshGUI->start(100,TRUE);
     SetObserver(extendPartialResponse);
     partialResponse.clear();
     qApp->processEvents();
@@ -109,6 +116,8 @@ void NNTP::PGetTextResponse()
     mTextResponse=partialResponse;
     partialResponse.clear();
     SetObserver(NULL);
+//    refreshGUI->stop();
+//    delete refreshGUI;
 }
 
 void NNTP::resetCounters( bool byte,bool command)
@@ -564,6 +573,14 @@ QString *NNTP::article(const char *_id)
         debug ("has nothing, getting all");
         bool success=false;
         int status=Article (id);
+
+        if (!status)
+        {
+            emit lostServer();
+            return data;
+        }
+        
+        debug ("status-->%d",status);
         if (status==220)
         {
             QString a(TextResponse().c_str());
@@ -695,3 +712,18 @@ QString NNTP::saneID(const char *id)
     // A virtual cookie to who guess which one does this...
     return r.replace (QRegExp("/"),"\\#slash#\\");
 }
+
+void NNTP::refresh()
+{
+    debug ("refreshing");
+    qApp->processEvents();
+    debug ("refreshed");
+}
+
+bool NNTP::checkDisconnection()
+{
+    if (!mReplyCode)
+        return false;
+    return true;
+}
+

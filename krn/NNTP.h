@@ -228,8 +228,13 @@ public:
     int     commandCounter;
 signals:
     void newStatus(const char *status);
+    void lostServer();
+
+public slots:
+    void refresh();
     
 private:
+    bool checkDisconnection();
     bool    reportBytes;
     bool    reportCommands;
     int         listOverview();
