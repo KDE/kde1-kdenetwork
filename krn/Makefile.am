@@ -52,7 +52,6 @@ krn_SOURCES = 	main.cpp\
                 ktempfile.cpp\
                 kscorer.cpp\
                 fontsDlg.cpp\
-                fontsDlgData.cpp\
                 kmmessage.cpp\
                 kmmsgpart.cpp\
                 kmmsginfo.cpp\
@@ -91,7 +90,6 @@ noinst_HEADERS = 	NNTP.h\
 		ktempfile.h\
 		kscorer.h\
                 fontsDlg.h\
-                fontsDlgData.h\
                 kmmsgpart.h\
                 kmmsginfo.h\
                 kmcomposewin.h\

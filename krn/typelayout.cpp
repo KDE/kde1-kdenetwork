@@ -12,6 +12,7 @@
 #include <qlistbox.h>
 #include <qcombo.h>
 #include <keditcl.h>
+#include <kcolorbtn.h>
 
 #include <ktabctl.h>
 
@@ -213,6 +214,23 @@ TLObj *KTypeLayout::addButton(const char *ID,const char *text)
     int h=l->fontMetrics().height()+8;
     if (h<25) h=25;
     g->setFixedHeight(h);
+    
+    TLObj *o=addWidget(ID,g);
+    o->align=AlignCenter;
+    return o;
+}
+
+TLObj *KTypeLayout::addColorButton(const char *ID,const QColor *c)
+{
+
+    KColorButton *l;
+    QWidget *g;
+    l=new KColorButton(windowStack.top()->widget);
+    g=l;
+
+    g->show();
+
+    g->setMinimumHeight(30);
     
     TLObj *o=addWidget(ID,g);
     o->align=AlignCenter;

@@ -11,6 +11,7 @@
 
 class QPixmap;
 class TLForm;
+class QColor;
 
 /** Class to create dialogs, using typographical layout
  */
@@ -85,6 +86,10 @@ public:
      */
     TLObj *addButton(const char *ID,const QPixmap &p);
 
+    /** Adds a KColorButton
+     */
+    TLObj *addColorButton(const char *ID,const QColor *c=0);
+
     /**
      Adds a Checkbox, with the usual respect for the environment
      */
@@ -131,7 +136,7 @@ public:
       */
      
      TLObj *addComboBox (const char *ID,const QStrList *contents=0);
-    
+
     /** Ends a line of widgets, and starts a new one. Think about it
      as pressing "return" in a word processor
      */
