@@ -58,6 +58,9 @@ ksirc_LDFLAGS = @all_libraries@ -L./KSProgress/ -L./KSTicker/
 ksirc_LDADD   = -lksprogress -lksticker -lkfm -lkdeui -lkdecore -lqt -lX11 -lXext @LIBSOCKET@     
 
 # this option you can leave out. Just, if you use "make dist", you need it
+#
+# DSIRC is on the bottom so make dist includes it!!!!!!!!!
+#
 noinst_HEADERS = \
 FilterRuleEditor.h        control_message.h         linelistitem.h \
 FilterRuleEditorData.h    dccDialog.h               messageReceiver.h \
@@ -68,7 +71,8 @@ UserMenuRefData.h         ioDiscard.h               open_topData.h \
 ahistlineedit.h           iocontroller.h            servercontroller.h \
 alistbox.h                irclistbox.h              servercontrollerData.h \
 config.h                  irclistitem.h             toplevel.h \
-control.h                 ksircprocess.h            ksirc.kdelnk
+control.h                 ksircprocess.h            ksirc.kdelnk \
+dsirc                     filters.pl
 
 
 # just to make sure, automake makes them 
