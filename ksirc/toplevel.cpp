@@ -486,9 +486,9 @@ void KSircTopLevel::TabNickCompletion()  /*FOLD00*/
   
 }
   
-void KSircTopLevel::sirc_receive(const char *string, int len) /*FOLD00*/
+void KSircTopLevel::sirc_receive(QString str) /*FOLD00*/
 {
-  QString str(string, len);
+
   /* 
    * read and parse output from dsirc.
    * call reader, split the read input into lines, parse the lines
@@ -939,7 +939,7 @@ void KSircTopLevel::control_message(int command, QString str) /*FOLD00*/
   case RESUME_UPDATES:
     Buffer = FALSE;
     if(LineBuffer->isEmpty() == FALSE)
-      sirc_receive("", 0);
+      sirc_receive(QString(""));
     break;
   case REREAD_CONFIG:
     emit freezeUpdates(TRUE); // Stop the list boxes update

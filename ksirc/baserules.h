@@ -18,7 +18,7 @@ public:
     {
     }
 
-  virtual void sirc_receive(const char *, int);
+  virtual void sirc_receive(QString str);
 
   virtual void control_message(int, QString);
 

@@ -99,7 +99,7 @@ public:
    * ready processing.  This is a single line, and it NOT \n
    * terminated.
    */
-  virtual void sirc_receive(const char *, int);
+  virtual void sirc_receive(QString str);
 
   /**
     * Reimplement the ksircmessagereceiver control messages.  These

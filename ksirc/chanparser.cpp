@@ -50,7 +50,7 @@ ChannelParser::ChannelParser(KSircTopLevel *_top) /*fold00*/
 
 }
 
-void ChannelParser::parse(QString string) /*FOLD00*/
+void ChannelParser::parse(QString string) /*fold00*/
 {
   string.detach(); // for older Qts
 
@@ -105,7 +105,7 @@ void ChannelParser::parse(QString string) /*FOLD00*/
   // If it's unkown we just fall out of the function
 }
 
-void ChannelParser::parseSSFEClear(QString string) /*FOLD00*/
+void ChannelParser::parseSSFEClear(QString string) /*fold00*/
 {
   string.detach();
   top->mainw->clear();
@@ -186,7 +186,7 @@ void ChannelParser::parseSSFEMsg(QString string) /*fold00*/
 }
 
 
-void ChannelParser::parseSSFEPrompt(QString string) /*FOLD00*/
+void ChannelParser::parseSSFEPrompt(QString string) /*fold00*/
 {
   if(prompt_active == FALSE){
     QString prompt, caption;
@@ -197,7 +197,7 @@ void ChannelParser::parseSSFEPrompt(QString string) /*FOLD00*/
     // (it's garunteed to be the first one)
     top->LineBuffer->removeFirst();
     top->Buffer = FALSE;
-    top->sirc_receive("", 0);
+    top->sirc_receive(QString(""));
 
     caption = top->mainw->text(top->mainw->count() - 1);
     if(caption.length() < 3){

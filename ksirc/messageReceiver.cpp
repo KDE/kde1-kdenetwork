@@ -5,7 +5,7 @@ KSircMessageReceiver::~KSircMessageReceiver()
 {
 }
 
-void KSircMessageReceiver::sirc_receive(const char *, int)
+void KSircMessageReceiver::sirc_receive(QString)
 {
   warning("Pure virtual sirc_receive called!!!!");
 }

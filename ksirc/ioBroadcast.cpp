@@ -27,22 +27,20 @@ KSircIOBroadcast::~KSircIOBroadcast()
 {
 }
 
-void KSircIOBroadcast::sirc_receive(const char *string, int len)
+void KSircIOBroadcast::sirc_receive(QString str)
 {
 
-  QString str(string, len);
-    
   QDictIterator<KSircMessageReceiver> it(proc->getWindowList());
 
   KSircMessageReceiver *dflt = (proc->getWindowList())["!default"];
   if(dflt->getBroadcast() == TRUE)
-    dflt->sirc_receive(string, len);
+    dflt->sirc_receive(str);
 
   it.toFirst();
 
   while(it.current()){
     if((it.current()->getBroadcast() == TRUE) && (it.current() != dflt))
-      it.current()->sirc_receive(string, len);
+      it.current()->sirc_receive(str);
     ++it;
   }
 

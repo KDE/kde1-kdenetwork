@@ -16,7 +16,7 @@ public:
   KSircIOLAG(KSircProcess *_proc);
   virtual ~KSircIOLAG();
 
-  virtual void sirc_receive(const char *, int);
+  virtual void sirc_receive(QString);
   virtual void control_message(int, QString);
 
 protected slots:
