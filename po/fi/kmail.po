@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1998-11-09 02:23+0100\n"
+"POT-Creation-Date: 1998-11-11 02:09+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Kim Enkovaara <kim.enkovaara@iki.fi>\n"
 
@@ -17,7 +17,7 @@ msgstr ""
 msgid "New Folder"
 msgstr "Uusi kansio"
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:284 kmmainwin.cpp:318 main.cpp:321
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:284 kmmainwin.cpp:318 main.cpp:332
 msgid "KMail error"
 msgstr "KMail virhe"
 
@@ -1148,11 +1148,11 @@ msgstr ""
 "\n"
 "Saako KMail siirt‰‰ postikansiot nyt ?"
 
-#: main.cpp:322
+#: main.cpp:333
 msgid "Loading addressbook failed"
 msgstr "Osoitekirjan lataaminen ep‰onnistui"
 
-#: main.cpp:392
+#: main.cpp:403
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr "Tuntematon komentorivioptio: %s"

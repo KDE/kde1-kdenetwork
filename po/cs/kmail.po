@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail 0.4.4\n"
-"POT-Creation-Date: 1998-11-09 02:23+0100\n"
+"POT-Creation-Date: 1998-11-11 02:09+0100\n"
 "PO-Revision-Date: 1998-11-05 09:01+01:00\n"
 "Last-Translator: Miroslav Flídr <flidr@ky.zcu.cz>\n"
 "Language-Team: Czech <sc@li.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "New Folder"
 msgstr "Nový poøadaè"
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:284 kmmainwin.cpp:318 main.cpp:321
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:284 kmmainwin.cpp:318 main.cpp:332
 msgid "KMail error"
 msgstr "Chyba KMailu"
 
@@ -1155,11 +1155,11 @@ msgstr ""
 "\n"
 "Má KMail pøesunout adresáøe nyní?"
 
-#: main.cpp:322
+#: main.cpp:333
 msgid "Loading addressbook failed"
 msgstr "Nahrávání knihy adres selhalo"
 
-#: main.cpp:392
+#: main.cpp:403
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr "Neznámý parametr pøíkazové øádky: %s"

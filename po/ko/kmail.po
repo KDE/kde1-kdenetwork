@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-11-09 02:23+0100\n"
+"POT-Creation-Date: 1998-11-11 02:09+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: LinuxKorea Co. <kde@linuxkorea.co.kr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "New Folder"
 msgstr "새 폴더"
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:284 kmmainwin.cpp:318 main.cpp:321
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:284 kmmainwin.cpp:318 main.cpp:332
 msgid "KMail error"
 msgstr "KMail 오류"
 
@@ -1164,11 +1164,11 @@ msgstr ""
 "\n"
 "지금 전자우편 폴더를 옮기시겠습니까?"
 
-#: main.cpp:322
+#: main.cpp:333
 msgid "Loading addressbook failed"
 msgstr ""
 
-#: main.cpp:392
+#: main.cpp:403
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr "알 수 없는 명령행 선택사항: %s"

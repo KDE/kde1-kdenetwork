@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail 0.4.4\n"
-"POT-Creation-Date: 1998-11-09 02:23+0100\n"
+"POT-Creation-Date: 1998-11-11 02:09+0100\n"
 "PO-Revision-Date: 1998-06-12 08:40 MET DST\n"
 "Last-Translator: Wang Jian <lark@linux.ustc.edu.cn>\n"
 "Language-Team: zh_CN (gb2312 )\n"
@@ -22,7 +22,7 @@ msgstr ""
 msgid "New Folder"
 msgstr "新建邮件夹"
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:284 kmmainwin.cpp:318 main.cpp:321
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:284 kmmainwin.cpp:318 main.cpp:332
 msgid "KMail error"
 msgstr "KMail 错误"
 
@@ -1157,11 +1157,11 @@ msgstr ""
 "\n"
 "现在要 KMail 移动邮件夹吗 ?"
 
-#: main.cpp:322
+#: main.cpp:333
 msgid "Loading addressbook failed"
 msgstr ""
 
-#: main.cpp:392
+#: main.cpp:403
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr "未知的命令行选项: %s"

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KMail 0.7.9\n"
-"POT-Creation-Date: 1998-11-09 02:23+0100\n"
+"POT-Creation-Date: 1998-11-11 02:09+0100\n"
 "PO-Revision-Date: 1998-09-14 15:00+0800\n"
 "Last-Translator: Const Kaplinsky <const@ce.cctpu.edu.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "New Folder"
 msgstr "Новая папка"
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:284 kmmainwin.cpp:318 main.cpp:321
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:284 kmmainwin.cpp:318 main.cpp:332
 msgid "KMail error"
 msgstr "Ошибка KMail"
 
@@ -1163,11 +1163,11 @@ msgstr ""
 "\n"
 "Следует ли переместить папки с почтой сейчас ?"
 
-#: main.cpp:322
+#: main.cpp:333
 msgid "Loading addressbook failed"
 msgstr "Ошибка при загрузке адресной книги"
 
-#: main.cpp:392
+#: main.cpp:403
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr "Неизвестный ключ командной строки: %s"
