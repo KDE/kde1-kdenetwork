@@ -64,6 +64,7 @@ up dialogs
 and other contributions.
 <item><url url="mailto:MABrown@etcconnect.com" name="Martin A. Brown"> for
 proofreading some English text in the program
+<item><url name="Martin Häfner" url="mailto:mh@ap-dec717c.physik.uni-karlsruhe.de"> for the section on <ref id="cb" name="callback">
 </itemize>
 <p>
 
@@ -1223,6 +1224,196 @@ it for security holes.
 
 Many thanks to Harri Porten for writing this excellent piece of
 code. I thought it was impossible - he made it within a week.
+
+<sect>Configuring <em/kppp/ for callback<label id="cb"><p>
+The following section was provided by <htmlurl name="Martin Häfner" url="mailto:mh@ap-dec717c.physik.uni-karlsruhe.de">.
+
+This chapter descibes the configuration of kppp for callback. The following
+servers are supported: 
+
+<sect1> Unix (Linux) callback server<p>
+This section introduces in Unix (Linux) callback proceeding and how kppp 
+can be configured to connect to a Unix callback server, especially to a 
+scripting based Linux <ref id="cb_ressources" name="callback server">.<p>
+If you have any questions or problems please feel free  to contact the <htmlurl name="author" url="mailto:mh@ap-dec717c.physik.uni-karlsruhe.de"> of this section.
+
+<label id="cb_intro">
+<sect2>Introduction in callback<p>
+
+To increase the security of your local network or to reduce the expenses
+of your external co-workers, setting up a callback server could be your first
+choice. Think about someone calling the number of your dial-in server and
+cracking a password? Why do you maintain a firewall for your internet
+connection then? Callback software generally asks you for your name and 
+looks up the number to call back from a certain database. Therefore, the 
+number should be stored on the server. After authentication the server will 
+hang up the line and call you back immediately on the number chosen. 
+The client picks up the phone line and continues the dial-in as if
+nothing certain happened. The server will ask for username and password,
+then the connection is established and the pppd could be started. Now,
+how can I tell the client to pick up the phone? Do I need a certain getty
+program like mgetty? Well, the answer is "NO"! You do not need a certain
+client program. Generally spoken, all clients can be used for callback 
+connections. You can even use an ordinary terminal program like minicom
+to connect to a callback server. The only thing you have to do is to tell
+your modem to <tt/AutoAnswer/ the phone when a <tt/RING/ is 
+detected by the modem. This is done by using a certain modem command:<p>
+
+<tscreen><verb>AT&amp;S0=1</verb></tscreen>
+
+<P>
+This means that the modem will pick up the phone after one <tt/RING/.
+Remember, this is done without certain client software interaction. 
+As a lot of other client programs 
+<em/kppp/ checks if the connection is closed by the server and stops the current 
+session if a <tt/NO CARRIER/ is detected. And this it the next 
+problem:
+<tt/NO CARRIER/ is detected when the callback server hangs up the line after he
+knows on which number to call the client back. Some servers use a certain 
+login program therefore. How can you solve that problem? 
+Tell your modem to show <em/carrier up/ all the time
+(which makes no problems if <em/the client/ hangs up the line) by using the 
+modem command:
+<tscreen><verb>AT&amp;C0</verb></tscreen>
+
+If you want to test this you can first use an ordinary terminal program like
+minicom and call your callback server.
+
+<label id="cb_kppp">
+<sect2>The <em/kppp/ setup<p>
+Setting up <em/kppp/ to connect to a Linux callback server is quite straight 
+forward. 
+
+<enum>
+<item>You only have to tell the modem to accept connections 
+(<ref id="cb_intro" name="see above">) and not to stop the dialing when the 
+callback server hangs up the line for the first time to initialize for the 
+callback attempt. Both are modem settings which have to be configured in
+the "Modem" tab of the configuration. Make sure your setup looks like the 
+following:
+<tscreen><verb>
+Dial String:   AT&amp;C0S0=1DT
+</verb></tscreen>
+
+All the other configuration issues will remain as-is.
+<em/kppp/ has some problems with modem init and reset. See the 
+<ref id="cb_trouble" name="troubleshooting section"> if you are confronted with trouble.
+<P>
+
+<item>Think about your server a moment. Remember that Unix and Windows operating
+systems have a different opinion about how to make line termination in text
+files (and in login procedures): simple CR or CR/LF or LF if you want to 
+connect to a Macintosh server. Use <em/CR/ as your line termination.
+<P>
+
+<item>The next sections describes the callback setup of <em/kppp/ on base of the Linux
+callback package (<ref id="cb_ressources" name="see below">) which uses an ordinary 
+user login (no PAP or whatever). Therefore you have to set up the
+following authentication style within the "Dial" tab of the account 
+configuration:
+<tscreen><verb>
+Authentication:   Script-based
+</verb></tscreen>
+
+Of course, you can first choose "Terminal based" and test your connection.
+Have a look on what the server asks you so you can write your login script
+afterwards.
+<P>
+
+<label id="cb_scripting">
+<item>Now you have to build the login script. This is a quite cool feature
+of <em/kppp/. Just click around a little in the "Login Script" tab of your
+Account setup. For my server, the user "xyz" needs the following script
+to be called back at home (the callback server knows a table of names and
+numbers, so that you will select your phonenumber by an alias (security!)):
+
+<tscreen><verb>
+Expect      ogin:       # remember, we do ordinary terminal login
+ID          ""          # kppp sends the id you have configured in the main dialog
+Expect      for xyz:    # a list of avaiable numbers is shown. The user must select one
+Send        xyz-home    # the user wants to be called back at home
+Expect      ogin:       # the callback process is running, a new connect, a new login
+ID
+Expect      assword:
+Password                # now your password authentication
+Expect      >           # wait for the command prompt (this may vary)
+Send        start_ppp   # start_ppp starts the pppd
+
+</verb></tscreen>
+
+Just ignore the comments beginning with "#".
+After waiting for the login request he sends his user ID and waits for
+the list of available connections for his user ID. Then he tells the server on
+which number he wants to be called back. <em/kppp/ can open a dialog for that (very
+nice feature) if your domicile changes rapidely (e.g. you are a 
+representative and you are travelling from hotel to hotel). Now the server 
+expects the
+login and Password authentication. In the meanwhile the server hangs up
+the line and calls the user back. <em/kppp/ expects the commandline prompt and 
+starts a small script which fires up the pppd on the server. The script may
+look like the following:
+
+<tscreen><verb>
+  #!/bin/sh
+
+  stty -echo
+
+  exec /usr/sbin/pppd -detach silent modem
+</verb></tscreen>
+
+Of course, setting up a PPP-server is not within the scope of this document.
+For detailed information see the pppd man pages. An example callback server
+is described 
+<url url="http://ap-dec717c.physik.uni-karlsruhe.de/~mh/callback" name="here">.
+</enum>
+
+All the other configuration issues (e.g. pppd config or IP settings) work as 
+usual. Remember, no special software is needed to pick up the line.
+
+<em/Notice:/ <em/kppp/ callback and other programs like mgetty or any other faxgetty
+can be run on the same serial port. There are no problems with the dial-in
+as <em/kppp/ creates a Lock-file which will indicate the getty program that another
+program (<em/kppp/) is using the line at the moment. See problems with mgetty in 
+the general <ref name="troubleshooting" id="cb_trouble"> below.
+<label id="cb_trouble">
+<sect2>Troubleshooting<p>
+
+There are some known problems with <em/kppp/ in callback mode:
+
+<itemize>
+<item>As you initialize the modem with AutoAnswer you would need to reset the
+      modem after your connection closed. Otherwise your modem will continue
+      to pick up the line for you.
+<item>As already described in the <ref id="cb_kppp" name="setup section"> you will
+      have to initialize the modem with the dial string. The normal 
+      <em/kppp/ "initialization string" does not take more complex init strings 
+      needed for a callback setup.
+<item>The next topic is more general and not related with callback: <em/kppp/ has 
+      some slight problems when sharing the modem line with another program
+      like mgetty. If mgetty is running on the same modem line, <em/kppp/ is not 
+      able to initialize the modem correctly. This only happens on the second 
+      attempt.
+<item><em/kppp/ is able to prompt for certain user input during a scripting based
+      connetion. Unfortunately <em/kppp/ also asks me for my user ID the second
+      time the user ID will be asked for by the server (see the login script
+      section <ref id="cb_scripting" name="above">). If you want to
+      get rid of that you will have to hardcode your user ID within your
+      login script (not very nice, but it helps).
+</itemize>
+
+<label id="cb_ressources">
+<sect2>Internet Resources for server software<p>
+
+Linux callback server software bundles are available throughout the
+internet. Of course, the all known mgetty is a very powerful program which 
+is also able to handle callback connections. There is a description for how 
+to set up mgetty for that purpose <url name="here" url="http://www.dyer.demon.co.uk/slug/tipscrip.htm">.
+The site is maintained by <htmlurl name="Colin Mc Kinnon" url="mailto:colin@wew.co.uk">, so please don't ask me if you have any problems. But there is also a ready-to-use package for a Linux callback server available <url url="http://www.icce.rug.nl/docs/programs/callback/callback.html" name="here">. The package is maintained by <htmlurl url="mailto:frank@icce.rug.nl" name="Frank B. Brokken">. As the package is not very easy to set up (although the setup is straight forward), I have written a <url url="http://ap-dec717c.physik.uni-karlsruhe.de/~mh/callback/" name="short introduction"> for it. 
+Also have a look in it if you need further general introduction to callback.
+<sect1>Windows NT RAS callback<p>
+
+Windows NT uses a completly different approach than the one described here (as usual). NT requires an extension to the PPP protocol itself called CBCP (Call Back Control Protocol). <tt/pppd/ has support for this protocol, but you have to recompile <tt/pppd/.<p>
+If anybody has experience how to do this with <em/kppp/, please drop <htmlurl url="mailto:mweilguni@kde.org" name="me"> a line.
 
 <sect>Appendix
 <p>
