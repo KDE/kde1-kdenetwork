@@ -34,7 +34,7 @@ void PRINTDEBUG(char *file, int line, const char *fmt, ...) {
   
   // strip newlines
   int len = strlen(fmt);
-  char *sfmt = malloc(len+1);
+  char *sfmt = (char*)malloc(len+1);
   strcpy(sfmt, fmt);
   while(len && sfmt[len-1] == '\0')
     sfmt[--len] = 0;

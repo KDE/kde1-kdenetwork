@@ -6,6 +6,9 @@
 	* replace Debug() calls in opener.cpp with the function
 	provided by log.cpp
 	* clarified comments in opener.cpp
+	* replaced the button "Ok" with a "Exit" button when another
+	instance of kppp was found. This clarifies the action when
+	pressing the button.
 
 1998-12-28  Harri Porten  <porten@kde.org>
 

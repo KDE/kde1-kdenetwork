@@ -349,7 +349,7 @@ int main( int argc, char **argv ) {
                      "Make sure that you are not running another "
                      "kppp,\ndelete the pid file, and restart kppp."),
                 pidfile.data(), pid);
-    QMessageBox::warning(0L, i18n("Error"), msg.data());
+    QMessageBox::warning(0L, i18n("Error"), msg.data(), i18n("Exit"));
     shutDown(1);
   }
   
