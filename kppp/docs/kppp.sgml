@@ -463,30 +463,30 @@ all modems are not equal, so your mileage may vary.
 A Modem session allows you to interact with the modem directly.
 You type commands, and it will respond.  To obtain a modem session, when no 
 connection is active, go into Settings/More/Terminal dialog.  This will open 
-a window for interactive configuration of the modem.  Try typing ATZ (which 
-resets your modem)  Your should get an OK response.  use File/Quit to 
+a window for interactive configuration of the modem.  Try typing <bf>ATZ</bf> (which 
+resets your modem)  Your should get an <br>OK</bf> response.  use File/Quit to 
 end the session.
 
 <sect1>Modem Profiles<p>
 One reason you might want to send the modem commands directly is
 if you have a set of modem configurations you want to keep, and not
 have to specify for every connection.  A good way to do that is via modem
-profiles.   Modems can have several stored profiles numbered 0,1,...  AT&amp;V
+profiles.   Modems can have several stored profiles numbered 0,1,...  <bf>AT&amp;V</bf>
 can be used to view them all.  The default profile is usually 0 (this 
-can be changed via AT&amp;Y.) The profile currently in use is called the "active" 
+can be changed via <bf>AT&amp;Y</bf>.) The profile currently in use is called the "active" 
 profile.
 <P>
-When you change a setting, the active profile is modified.  The ATZ command 
+When you change a setting, the active profile is modified.  The <bf>ATZ</bf> command 
 will have the modem load the default profile, erasing any changes you 
 have made.  To save changes,  Load the profile you
-want to change via ATZn (where n is the profile number).  Make the
-changes you want, then save it with AT&amp;Wn.  To have kppp use the profile
-you want, change the modem initialisation string
-(Settings/More/Modem/Modem Commands/Initialisation String.)  For example
-ATZ1 will have the kppp reset the modem and use stored profile #1.
+want to change via <bf>ATZ</bf><em>n</em> (where <em>n</em> is the profile number).  Make the
+changes you want, then save it with <bf>AT&amp;W<em>n</em></bf>.  To have kppp use the profile
+you want, change the modem initialization string
+(Settings/More/Modem/Modem Commands/Initialization String.)  For example
+<bf>ATZ1</bf> will have the kppp reset the modem and use stored profile #1.
 <p>
 If you want reset you modem to get back to some known starting point, use
-AT&amp;F&amp;W to set the active profile to the factory defaults, and store those
+<bf>AT&amp;F&amp;W</bf> to set the active profile to the factory defaults, and store those
 settings as the default profile.  
 <p>
 Example of profile changes are in the next section.
@@ -551,7 +551,9 @@ is defined by S12 (in fiftieths of a second.)
 
 <item>Quiet (must last more than S12/50 seconds)
 
-<item>Escape character (S2, default is "+") repeated three times (less than S12/50 seconds between each)
+<item>Escape character (defined by register S2, default is "+") 
+<P>
+repeated three times (less than S12/50 seconds between each)
 
 <item>Quiet (must last more than S12/50 seconds)
 
@@ -562,7 +564,7 @@ it hang up. Sent ATH.  The escape codes and hangup string used by kppp
 are shown in the Setup/More/Modem Commands dialogs.  These should match
 your modem.
 
-<sect1>Make Tone Dial Faster<p>
+<sect1>Make Tone Dialing Faster<p>
 
 If you can use tone dialing, the amount of time it takes to dial can be 
 changed using the S11 register.  It gives the duration (in 100ths of a second)
@@ -574,8 +576,8 @@ that speed often works.
 <tscreen><verb>
 ATZ		# reset to default profile
 ATS11=50	# fastest possible dialing, use a higher number if it doesn't work.
-AT&amp;W	# Write to default profile
-</verb></tscreen>
+AT&amp;W		# Write to default profile
+</tscreen></verb>
 
 <sect>Questions and answers<p>
 
