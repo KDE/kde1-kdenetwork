@@ -1,7 +1,3 @@
-<!-- LinuxDoc file was created by LyX 0.12 (C) 1995-1998 by <granroth> Fri Oct 16 20:49:05 1998
- -->
-<!-- Export filter v0.6 by Pascal Andre/Bernhard Iselborn-->
-
 <!doctype linuxdoc system>
 
 <article>
@@ -9,7 +5,7 @@
 <title>The KBiff Handbook
 <author>Kurt Granroth 
 <htmlurl url="mailto:granroth@kde.org" name="&lt;granroth@kde.org&gt;">
-<date>Version 1.1.5 Oct 16, 1998
+<date>Version 1.1.6 Oct 30, 1998
 <abstract>KBiff is a KDE aware mail notification utility. It supports MBOX (Unix
  style), Maildir (Qmail), POP3, and IMAP mailboxes.
 <toc>
@@ -101,20 +97,223 @@ KBiff revolves around something called a "profile" A profile is simply
 
 KBiff supports three command line parameters. They are: <bf>profile</bf>, <bf>debug</bf>,
  and <bf>secure</bf>.
-<verb>-profile &lt;profile_name&gt; Bypass the Setup dialog and start KBiff directly
- in the 
+<verb>
+-profile &lt;profile_name&gt; Bypass the Setup dialog and start KBiff directly in the 
                         given profile. e.g., 'kbiff -profile Inbox'
--debug                  Turns
- on verbose debugging. Use this only if you are
-                        having
- problems with KBiff
--secure                 Disables the setup dialog. Usefull
- when you want KBiff
-                        displayed but don't want others
- to modify it.
+-debug                  Turns on verbose debugging. Use this only if you are
+                        having problems with KBiff
+-secure                 Disables the setup dialog. Useful when you want KBiff
+                        displayed but don't want others to modify it.
 </verb>
-<sect><label id="sec: setup dialog">The Setup Dialog
+<sect>The Setup Dialog
 <p>
+The setup dialog handles all configuration items for KBiff. As a result,
+there is no need for command line parameters in nearly all cases.
+<sect1>Profile Name
+<p>
+The top part of the dialog consists of a drop down list and three buttons.
+The drop down list contains the names of all the "profiles." A profile is a
+set of configuration settings for one mailbox under one name. The three
+buttons are New, Rename, and Delete. The buttons work on the profiles,
+only. They do not touch the actual mailbox files. When KBiff is started for
+the first time, there will be one profile automatically created. This is
+the Inbox profile which monitors the system mailbox.
+
+<sect1>Preference Tabs
+<p>
+There are four preference tabs. These are full of options that apply to the
+current profile. The current profile is the one that is currently displayed
+in the drop down list. There are no global settings.
+
+<sect2>General Preferences
+<p>
+The general preferences for each profile are contained in this tab. There
+are five fields here:
+
+<sect3>Poll
+<p>
+This setting controls how much time KBiff will wait until it checks the
+mailbox again. The time is in seconds. The default is 60 seconds (one
+minute).
+<p>
+
+To choose a time other than the default, here, it is a good idea to analyze
+the frequency in which your mail arrives. If, for instance, you have
+<tt>fetchmail</tt> downloading new mail every 5 minutes, then it doesn't make sense
+to set the time for less than that. On the other hand, if you are using the
+POP3 or IMAP4 feature of KBiff, you should probably use a higher interval. Setting
+it less than 60 might give you unexpected results if your network
+connection isn't very fast.
+
+<sect3>Mail client
+<p>
+This field specifies what command will run when KBiff is left-clicked.
+While this is typically a mail client, it does not have to be. It can be
+any command that can be run with its own X window. In other words, putting
+<tt>elm</tt> in this field will not work. Putting <tt>kvt -e elm</tt> would.
+The default is <tt>kmail -check</tt>
+
+<sect3>Dock in panel
+<p>
+This controls whether or not KBiff will start docked into the panel or not
+when the user exits the setup dialog. Note that it is still possible to
+switch between docked and undocked regardless of this option. This only
+controls the initial state. This is checked by default.
+
+<sect3>Enable session management
+<p>
+This controls whether or not KDE session management is enabled. This should
+be turned off only in rare cases. The most common case where session
+management is disabled is when a user is running KDE under the same account
+on several different computers at the same time. In this case, it would
+probably be desirable to turn off session management and use the <tt>-profile</tt>
+command line option instead.
+<p>
+In all other cases, session management should probably be left on.
+
+<sect3>Icons
+<p>
+KBiff uses three icons to represent the three states: No Mail, Old Mail,
+and New Mail. The icons shown are the "large" icons. To select new ones,
+click on the buttons and a icon loader dialog will pop up. Note that even
+though KBiff supports animated GIFs, they will not appear animated here.
+
+<sect2>New Mail Preferences
+<p>
+This tab groups together the options that control what happen when new mail
+arrives.
+
+<sect3>Run Command
+<p>
+This is a shell command that will be executed when new mail arrives. A
+typical example of this would be play newmail.au. This would cause the file
+newmail.au to be played whenever new mail arrives. By default, this is
+turned off.
+
+<sect3>Play Sound
+<p>
+This specifies a sound to play when new mail arrives. As of this version,
+it will only play .wav files. Simply specify the path to the file to have
+it played. By default, this is turned off.
+
+<sect3>System Beep
+<p>
+Enabling this will cause KBiff to beep whenever new mail arrives. This is
+probably the least intrusive, yet still active, method of alerting the user
+that new mail as arrived. By default, this is on.
+
+<sect3>Notify
+<p>
+Enabling this will cause KBiff to popup a window when new mail arrives. The
+"notify" message box will list both the mailbox in question and the number of
+new mails.  This option is not recommended on mailboxes that receive lots of
+mail.
+
+<sect2>Mailbox Preferences
+<p>
+This groups together the options controlling the physical mailboxs themself.
+<p>
+All options on this tab are PER mailbox.  So if you have three mailboxes in
+this profile, each mailbox will have its own settings on this tab.  However,
+all settings in the other tabs apply profile-wide.  This means that if you
+have the Notify option checking the the New Mail tab, then KBiff will notify
+you that new mail has arrived in all of the mailboxes in this profile.
+<p>
+<sect3>Mailbox list
+<p>
+The listbox on the left of the tab contains the list of mailboxes that the
+current profile will monitor. In most cases, there will be only one (the
+"Default" mailbox).  However, you may have as many mailboxes per profile as
+you wish.
+<p>
+There are two buttons below the mailbox list.  The button with the mailbox on
+it will create a new mailbox.  The button with the cross will delete a
+mailbox.  If you wish to rename a mailbox, you must delete the old one and
+create a new one with identical properties.
+<p>
+<sect3>Protocol
+<p>
+This determines the protocol for the currently selected mailbox. There are 4
+(and a half) protocols - mbox (Unix style), maildir (Qmail), POP3, and IMAP4.
+The 'file' protocol can be used to monitor any local file as it uses only
+the last read and last modified times to determine the state.
+<p>
+<sect3>Mailbox
+<p>
+This field will not be active with the POP3 protocol.  In all other cases, put
+the path to your mailbox here. In the case of mbox, this will be a file.  With
+maildir, this will be a directory.  It is a folder with IMAP4.
+<p>
+<sect3>Server
+<p>
+This is active only for the IMAP4 and POP3 protocols.
+<p>
+<sect3>User
+
+This is active only for the IMAP4 and POP3 protocols.
+<p>
+<sect3>Password
+<p>
+This is active only for the IMAP4 and POP3 protocols.
+<p>
+<sect3>Store Password
+<p>
+This will save the password between sessions.
+<p>
+KBiff does not encrypt the password when it is saved! It will scramble it a
+little, but anybody with the source code (or a little patience) could
+unscramble it in an instant. If you are on an insecure network, it is
+strongly recommended that the store password option be turned off
+<p>
+<sect3>Advanced
+<p>
+This will popup a dialog containing advanced features.
+<sect4>Mailbox URL
+<p>
+KBiff handles mailboxes internally as a URL. If you know what you are doing,
+you can directly modify the URL here.  Modifying this is discouraged unless
+you are familiar with the code,
+<p>
+<sect4>Port
+<p>
+Set this to whatever port your server is at.  By default, it will be 110 for
+POP3 and 143 for IMAP4
+<p>
+<sect4>PREAUTH
+<p>
+If you don't know what this means, you probably don't need to use it.
+Basically, it will start checking for new mail in IMAP4 without logging in.
+<p>
+<sect4>Keep Alive
+<p>
+When checked in POP3 or IMAP4 mode, this will keep the connection "alive".
+That is, KBiff will login once and stay logged in. This is not recommended if
+your POP3 or IMAP4 server uses locks.  If locks are in place and KBiff does
+not log out then your mail client will not be able to access your account.
+
+<sect2>About
+<p>
+This tab has information about KBiff.
+
+<sect3>About KBiff
+<p>
+This contains information about which version of KBiff is being used. It
+also has contact information about the author.
+<p>
+Note that the email address is a hyperlink. Clicking on it is supposed to
+pop up your mail client in order to send mail to the author. Unfortunately,
+there is no automated way of doing this in KBiff at the present time. There
+is some code here, though. To send email using this hyperlink, KBiff looks
+for the environment variable <tt>MAILER</tt>. If it finds it, it will use the
+contents of this variable as the email program to use.
+<p>
+For example, if <tt>MAILER</tt> is set like so:
+<verb>
+  % setenv MAILER "kvt -e mutt"
+</verb>
+then KBiff will use <tt>kvt -e mutt</tt> as the default mail client, here.
+<p>
+
 <sect>The Popup Menu
 <p>
 
@@ -129,8 +328,8 @@ This docks or undocks KBiff from the panel. This option will only work
 <sect1>Setup
 <p>
 
-This will activate the setup dialog. See the 
-<ref id="sec: setup dialog" name="Setup Dialog">section for more details.
+This will activate the setup dialog. See the Setup Dialog section for more details.
+
 <sect1>Help
 <p>
 
