@@ -470,22 +470,22 @@ end the session.
 One reason you might want to send the modem commands directly is
 if you have a set of modem configurations you want to keep, and not
 have to specify for every connection.  A good way to do that is via modem
-profiles.   Modems can have several stored profiles numbered 0,1,...  AT&V 
+profiles.   Modems can have several stored profiles numbered 0,1,...  AT&amp;V
 can be used to view them all.  The default profile is usually 0 (this 
-can be changed via AT&Y.) The profile currently in use is called the "active" 
+can be changed via AT&amp;Y.) The profile currently in use is called the "active" 
 profile.
 <P>
 When you change a setting, the active profile is modified.  The ATZ command 
 will have the modem load the default profile, erasing any changes you 
 have made.  To save changes,  Load the profile you
 want to change via ATZn (where n is the profile number).  Make the
-changes you want, then save it with AT&Wn.  To have kppp use the profile
+changes you want, then save it with AT&amp;Wn.  To have kppp use the profile
 you want, change the modem initialization string
 (Settings/More/Modem/Modem Commands/Initialization String.)  For example
 ATZ1 will have the kppp reset the modem and use stored profile #1.
 <p>
 If you want reset you modem to get back to some known starting point, use
-AT&F&W to set the active profile to the factory defaults, and store those
+AT&amp;F&amp;W to set the active profile to the factory defaults, and store those
 settings as the default profile.  
 <p>
 Example of profile changes are in the next section.
@@ -502,17 +502,17 @@ to use the command method, so that one can exit a terminal session, and then
 start pppd without having the modem hangup.  In most other situations, the
 DTR method is preferred, as it is simpler.
 
-<sect2>DTR (AT&Dn) method<p>
+<sect2>DTR (AT&amp;Dn) method<p>
 The DTR method will have the modem hangup whenever kppp stops using the modem. 
-If you obtain a modem session, and query the state via AT&V, and the among
-the settings displayed for the active profile are &D0, then the DTR hangup
+If you obtain a modem session, and query the state via AT&amp;V, and the among
+the settings displayed for the active profile are &amp;D0, then the DTR hangup
 method is disabled.  To enable the DTR method Use the Setup/More/Terminal to 
 get a modem session. Then:
 
 <tscreen><verb>
 ATZ		# reset to default profile
-AT&D2		# Set to hang up on DTR drop.
-AT&W		# Write to default profile
+AT&amp;D2		# Set to hang up on DTR drop.
+AT&amp;W		# Write to default profile
 </tscreen></verb>
 
 <sect3>How The DTR Method Works<P>
@@ -523,7 +523,7 @@ come on when this happens.  When the TR light goes out (because kppp has closed
 the serial port, or something worse!), the modem will hangup.
 
 <sect2>Command Method<p>
-The other way to have a modem hang up when connected (used when AT&Dn where n is 
+The other way to have a modem hang up when connected (used when AT&amp;Dn where n is 
 not 2) is to have the modem accept the command when a session is in progress.  To 
 have it hangup properly, Get a modem session, and set the guard time to a short 
 interval like so:
@@ -531,7 +531,7 @@ interval like so:
 <tscreen><verb>
 ATZ
 ATS12=5
-AT&W
+AT&amp;W
 </tscreen></verb>
 
 Then use the Settings/More/Modem Commands/Guard Time slider to match the register
@@ -573,7 +573,7 @@ that speed often works.
 <tscreen><verb>
 ATZ		# reset to default profile
 ATS11=50	# fastest possible dialing, use a higher number if it doesn't work.
-AT&W		# Write to default profile
+AT&amp;W		# Write to default profile
 </tscreen></verb>
 
 <sect>Questions and answers<p>
