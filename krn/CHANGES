@@ -15,6 +15,9 @@ Changes made Apr 2
             introduced another.
             If I have to convert a string to time_t, is it ok
             to always use atol()?
+* [Roberto] Ok, now there's a window while this thing expires
+            its database. I know, it's ugly as sin, but it's
+            there, so learn to like it ;-)
 -----------------------------------------------------------------------------
 Changes made Apr 1
 -----------------------------------------------------------------------------

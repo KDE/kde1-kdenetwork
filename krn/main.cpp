@@ -54,10 +54,6 @@
 #include <time.h>
 #include <stdlib.h>
 
-#define SECOND 1
-#define MINUTE SECOND*60
-#define HOUR   MINUTE*60
-#define DAY    HOUR*24
 
 KApplication *app;
 Groupdlg  *main_widget;
@@ -289,138 +285,8 @@ void checkConf()
 void expireCache()   // robert's cache stuff
 {
 
+    main_widget->hide();
     ExpireStatusDlg *dlg=new ExpireStatusDlg();
-    dlg->show();
-    conf->setGroup("Cache");
-    int expireTime=conf->readNumEntry("ExpireBodies",5);
-    
-    QDir d(cachepath.data());
-    d.setFilter(QDir::Files);
-    QStrList *files=new QStrList (*d.entryList("*"));
-    
-    struct stat st;
-    time_t currenttime = time(NULL);
-    char filename[255];
-    
-    for (char *fname=files->first();fname!=0;fname=files->next())
-    {
-        sprintf(filename, "%s%s", cachepath.data(), fname);
-        
-        
-        if(stat(filename, &st))
-        {
-            debug("couldn't stat %s", filename);
-        } else {
-            if((currenttime-st.st_atime) > DAY*expireTime)
-            {
-                debug(filename);
-                Article *art = new Article();
-                
-                art->ID = fname;
-                
-                art->load();
-                
-                if(art->canExpire())
-                    unlink(filename);
-                
-                delete art;
-            }
-        }
-    }
-    delete files;
-
-    datum key,nextkey;
-    datum content;
-    int index;
-    
-    QStrList tl;
-    tl.setAutoDelete(true);
-    QString t,s;
-
-    time_t threshold;
-
-    // Expire old articles
-    conf->setGroup("Cache");
-    threshold=time(NULL)-24*60*conf->readNumEntry("ExpireReadHeaders",5);
-    debug ("threshold->%ld",threshold);
-    key= gdbm_firstkey(old_artdb);
-    while (key.dptr)
-    {
-        nextkey=gdbm_nextkey (old_artdb,key);
-
-        content=gdbm_fetch(old_artdb,key);
-        s=(char *)content.dptr;
-
-        while (1)
-        {
-            index=s.find("\n");
-            if (index==-1)
-            {
-                tl.append(s);
-                break;
-            }
-            t=s.left (index);
-            s=s.right(s.length()-index-1);
-            if (t.isEmpty())
-                continue;
-            tl.append (t.data());
-        }
-        
-        time_t lastAccess=atol(tl.at(8));
-        debug ("%ld",lastAccess);
-
-        if (threshold>lastAccess)
-        {
-            debug ("deleting");
-            gdbm_delete(old_artdb,key);
-            free (key.dptr);
-        }
-
-        tl.clear();
-        key=nextkey;
-    }
-
-    // Expire new articles
-
-    conf->setGroup("Cache");
-    threshold=time(NULL)-24*60*conf->readNumEntry("ExpireUnreadHeaders",5);
-    debug ("threshold->%ld",threshold);
-    key= gdbm_firstkey(artdb);
-    while (key.dptr)
-    {
-        nextkey=gdbm_nextkey (artdb,key);
-
-        content=gdbm_fetch(artdb,key);
-        s=(char *)content.dptr;
-
-        while (1)
-        {
-            index=s.find("\n");
-            if (index==-1)
-            {
-                tl.append(s);
-                break;
-            }
-            t=s.left (index);
-            s=s.right(s.length()-index-1);
-            if (t.isEmpty())
-                continue;
-            tl.append (t.data());
-        }
-        
-        time_t lastAccess=atol(tl.at(8));
-        
-        if (threshold>lastAccess)
-        {
-            debug ("deleting");
-            gdbm_delete(artdb,key);
-            free (key.dptr);
-        }
-        tl.clear();
-        key=nextkey;
-    }
-    dlg->hide();
-    delete dlg;
 }
 
 

@@ -9,6 +9,8 @@ class ExpireStatusDlg: public QDialog
 public:
     ExpireStatusDlg();
     ~ExpireStatusDlg();
+private slots:
+    void doExpire();
 };
 
 #endif
