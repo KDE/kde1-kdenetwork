@@ -84,6 +84,7 @@
 #define CONFIG_SORTING 29
 #define MARK_READ 30
 #define MARK_UNREAD 31
+#define LOOKUP_ALTAVISTA 32
 
 extern QString pixpath,cachepath;
 
@@ -104,16 +105,6 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     depths.setAutoDelete(true);
     group=0;
     server=0;
-    if (!FindDlg)
-        FindDlg=new findArtDlg(0);
-    
-    connect (FindDlg,SIGNAL(FindThis(const char *,const char*,bool,bool)),
-             this,SLOT(FindThis(const char *,const char*,bool,bool)));
-
-    if (!RulesDlg)
-        RulesDlg=new rulesDlg();
-    if (!SortDlg)
-        SortDlg=new sortDlg();
     
     conf->setGroup("Sorting");
     threaded=conf->readNumEntry("Threaded",true);
@@ -146,6 +137,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     article->insertItem(klocale->translate("Save"),SAVE_ARTICLE);
     article->insertItem(klocale->translate("Download"),DOWNLOAD_ARTICLE);
     article->insertItem(klocale->translate("Find"),FIND_ARTICLE);
+    article->insertItem(klocale->translate("Lookup in Altavista"),LOOKUP_ALTAVISTA);
     article->insertSeparator();
     article->insertItem(klocale->translate("Print"),PRINT_ARTICLE);
     article->insertItem(klocale->translate("Post New Article"),POST);
@@ -534,6 +526,13 @@ bool Artdlg::actions (int action)
     qApp->setOverrideCursor (waitCursor);
     switch (action)
     {
+    case LOOKUP_ALTAVISTA:
+        {
+            int index=list->currentItem();
+            Article art(IDList.at(index));
+            art.lookupAltavista();
+            break;
+        }
     case MARK_READ:
         {
             int index=list->currentItem();
@@ -562,6 +561,8 @@ bool Artdlg::actions (int action)
         }
     case EDIT_RULES:
         {
+            if (!RulesDlg)
+                RulesDlg=new rulesDlg();
             qApp->setOverrideCursor (arrowCursor);
             if (RulesDlg->exec()==1)
             {
@@ -571,6 +572,8 @@ bool Artdlg::actions (int action)
         }
     case CONFIG_SORTING:
         {
+            if (!SortDlg)
+                SortDlg=new sortDlg();
             qApp->setOverrideCursor (arrowCursor);
             if (SortDlg->exec()==1)
             {
@@ -913,6 +916,13 @@ bool Artdlg::actions (int action)
         }
     case FIND_ARTICLE:
         {
+            if (!FindDlg)
+            {
+                FindDlg=new findArtDlg(0);
+                disconnect(FindDlg);
+                connect (FindDlg,SIGNAL(FindThis(const char *,const char*,bool,bool)),
+                         this,SLOT(FindThis(const char *,const char*,bool,bool)));
+            }
             FindDlg->show();
             break;
         }

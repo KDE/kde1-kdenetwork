@@ -21,6 +21,7 @@
 #include <qstrlist.h>
 #include <qlist.h>
 #include <qbuffer.h>
+#include <kfm.h>
 
 #include <gdbm.h>
 #include <mimelib/mimepp.h>
@@ -58,6 +59,7 @@ Article::Article (const char *_ID)
     load();
 }
 
+
 Article::Article(void)
 {
     isread=false;
@@ -73,6 +75,16 @@ Article::Article(void)
 
 Article::~Article()
 {
+}
+
+void Article::lookupAltavista()
+{
+    QString buffer(2048);
+    QString urldata("http://ww2.altavista.digital.com/cgi-bin/news.cgi?id@");
+    urldata+=ID.mid(1,ID.length()-2);
+    KFM fm;
+    fm.openURL(urldata);
+    return;
 }
 
 

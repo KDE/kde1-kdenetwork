@@ -80,8 +80,8 @@ krn_SOURCES = 	main.cpp\
                 typelayout.cpp\
                 printdlg.cpp\
                 rulesDlg.cpp\
-                sortDlg.cpp
-
+                sortDlg.cpp\
+                rules.cpp
 
 noinst_HEADERS = 	NNTP.h\
                 kmmessage.h\
@@ -122,7 +122,8 @@ noinst_HEADERS = 	NNTP.h\
                 typelayout.h\
                 printdlg.h\
                 rulesDlg.h\
-                sortDlg.h
+                sortDlg.h\
+                rules.h
 
 
 SUBDIRS = docs pics

@@ -72,6 +72,7 @@ public:
     void save();
     void load();
     int  score();
+    void lookupAltavista();
     bool refsLoaded;
     KMMessage *createMessage();
     
