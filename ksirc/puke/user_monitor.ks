@@ -20,7 +20,9 @@ my %ALLOW_MULT = ();
 $ALLOW_MULT{'asj'} = 1;
 $ALLOW_MULT{'administrator'} = 1;
 
-@PAGE_PPL = ('andrew', 'lee', 'william', 'seamus', 'gerry', 'jason');
+@PAGE_PPL = ('andrew', 'lee', 'william', 'seamus', 'gerry', 'jason', 'derik');
+
+$PUKE_DEF_HANDLER{-999} = sub {};
 
 package UserList;
 
@@ -62,7 +64,7 @@ sub new {
   $gm_but->addWidget($refresh_but, 5);
 
   my $page_dialog = new pageDialog();
-  $page_dialog->resize(400, 250);
+  $page_dialog->resize(265, 250);
   
   my $page_but = new PPushButton($self);
   $page_but->setMaximumSize(25, 2000);
@@ -92,8 +94,11 @@ sub new {
      my $user = $self->{'list_box'}->currentText();
      my $count = $self->{'list_box'}->current();
      $self->{'list_box'}->removeItem($count);
-     if($users_online{$user} > 0){
-         $users_online{$user}--;
+     if($users_online->{$user} > 0){
+         $users_online->{$user}--;
+     }
+     if($users_online->{$user} == 0){
+         delete $users_online->{$user};
      }
   });
   my $menu_kill = $menu->insertText("Disconnect User");
@@ -229,6 +234,8 @@ sub new {
   my $page_msg = new PLineEdit($self);
   $page_msg->setMaximumSize(25, 2000);
   $page_msg->setMinimumSize(25, 25);
+  $page_msg->setMaxLength(49);
+  $page_msg->installHandler($::PUKE_EVENT_UNKOWN, sub {});
   $gm->addWidget($page_msg, 5);
   
   my $send_but = new PPushButton($self);
@@ -239,6 +246,8 @@ sub new {
   $send_but->installHandler($::PUKE_BUTTON_CLICKED_ACK, sub { &::docommand("msg #polarcom page " . $self->{'page_ppl'}->currentText() . " " . $self->{'page_msg'}->text()); $self->hide() } );
   $send_but->setText("&Send");
   $gm->addWidget($send_but, 5);
+
+  $self->setCaption("Page User");
 
   @$self{'gm', 'page_ppl', 'page_msg', 'send_but', 'msg_label', 'ppl_label'} =
         ($gm,  $page_ppl,  $page_msg,  $send_but,  $msg_label, $ppl_label);
@@ -251,13 +260,21 @@ sub show {
   my $self = shift;
   my $page_ppl = $self->{'page_ppl'};
 
+  $self->hide();
+
+  my $c = $page_ppl->current();
+
   $page_ppl->clear();
   my $person;
   foreach $person (@main::PAGE_PPL) {
     $page_ppl->insertText($person, -1);
   }
+  $page_ppl->setCurrentItem($c);
 
   $self->SUPER::show();
+
+  $self->resize(265,250);
+  $self->move(400,270);
   
 }
 
@@ -271,7 +288,7 @@ if($online == undef){
   $online->resize(250, 450);
   $online->show();
 
-  %users_online = ();
+  $users_online = {};
 }
 
 sub hook_online_mon {
@@ -279,17 +296,18 @@ sub hook_online_mon {
   my $msg = shift;
   return unless $channel eq '#polarcom';
   return unless $msg =~ /Login|Logoff/;
+  return if $msg =~ /administrator/;
 
   if($msg =~ /ice: Login (\S+)/){
     my $nick = $1;
     #return if $nick =~ /administrator/;
     $nick =~ s/(\S+)\@\S+/$1/g;
     $online->addEvent("On: $nick");
-    if($users_online{$nick} > 0){
+    if($users_online->{$nick} > 0){
       my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime(time);
       my $date;
       chomp($date = `date`);
-      my $times = $users_online{$nick} + 1;
+      my $times = $users_online->{$nick} + 1;
       &say("$date Duplicate login for $nick, logged on $times times") if (($main::nick eq 'action') || ($nick eq 'administrator'));
       $online->addEvent("Duplicate: $nick");
       if($ALLOW_MULT{$nick} != 1){
@@ -303,6 +321,7 @@ sub hook_online_mon {
         $smtp->datasend("To: $nick\@polarcom.com\n");
         $smtp->datasend("From: Polarcom System Admin <sysadmin\@polarcom.com>\n");
         $smtp->datasend("Subject: Security Alert\n\n\n");
+        $smtp->datasend("To: $nick\n");
         $smtp->datasend("Your account was simultaneously access by 2 or more users.\n");
         $smtp->datasend("The second user was automatically terminated.\n\n");
         $smtp->datasend("If you have any question, please email sysadmin\@polarcom.com\n");
@@ -324,7 +343,7 @@ sub hook_online_mon {
       $i++;
     }
     $online->insertText($nick, $i);
-    $users_online{$nick}++;
+    $users_online->{$nick}++;
   }
   elsif($msg =~ /ice: Logoff (\S+)/){
     my $i = 0;
@@ -332,9 +351,12 @@ sub hook_online_mon {
     $nick =~ s/(\S+)\@\S+/$1/g;
     #    print "Trying to logoff: $nick\n";
     $online->addEvent("Off: $nick");
-    if($users_online{$nick} > 0){
+    if($users_online->{$nick} > 0){
       # print "$nick in list\n";
-      $users_online{$nick}--;
+      $users_online->{$nick}--;
+      if($users_online->{$nick} == 0){
+         delete $users_online->{$nick};
+      }
       while($online->text($i) ne undef){
 	if($online->text($i) eq $nick){
           #   print "Removing $i for $nick which is really: " . $online->text($i) . "\n";
@@ -366,9 +388,9 @@ sub hook_get_users {
     while($online->count() > 0){
         $online->removeItem(0);
     }
-    %users_online = ();
+    $users_online = {};
     foreach $user (split(/\s+/, $users)){
-      $users_online{$user}++;
+      $users_online->{$user}++;
       $online->insertText($user, -1);
     }
   }
@@ -378,7 +400,7 @@ sub hook_get_users {
 
 sub cmd_refresh_users {
   $online->clear();
-  %users_online = ();
+  $users_online = {};
   my $output = `$WHO list`;
   my @users = split(/\n/, $output);
   #    while($online->count() > 0){
@@ -388,7 +410,7 @@ sub cmd_refresh_users {
     $user =~ s/(\S+)\@\S+/$1/g;
     next if $user eq '';
     next if $user =~ /administrator/;
-    $users_online{$user}++;
+    $users_online->{$user}++;
     $online->insertText($user, -1);
   }
 }
