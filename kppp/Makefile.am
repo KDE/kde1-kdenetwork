@@ -63,7 +63,9 @@ kppp_SOURCES	= accounts.cpp \
 		log.cpp \
 		groupbox.cpp \
 		newwidget.cpp \
-		security.cpp
+		security.cpp \
+		requester.cpp \
+		opener.cpp 
 
 # the library search path
 kppp_LDFLAGS = $(all_libraries) $(KDE_RPATH)

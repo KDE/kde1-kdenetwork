@@ -381,6 +381,9 @@ public:
   pid_t pppdpid();
   void setpppdpid(pid_t);
 
+  pid_t suidChildPid();
+  void setSuidChildPid(pid_t);
+
   int pppdError();
   void setpppdError(int err);
 
@@ -418,6 +421,7 @@ private:
 
   KConfig* config;                       // configuration object   
 
+  pid_t suidprocessid;                   // process ID of setuid child
   pid_t pppdprocessid;                   // process ID of the child pppd
                                          // daemon
   int pppderror;                         // error encounterd running pppd

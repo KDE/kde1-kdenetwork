@@ -92,6 +92,7 @@ PPPData::PPPData() {
   caccount = -1;       // set the current account index also
   cgroup = 0L;         // current group for config file
 
+  suidprocessid = -1;  // process ID of setuid child 
   pppdprocessid = -1;  // process ID of the child pppd daemon
   pppderror = 0;       
 }
@@ -1308,6 +1309,14 @@ pid_t PPPData::pppdpid() {
 
 void PPPData::setpppdpid(pid_t id) {
   pppdprocessid = id;
+}
+
+pid_t PPPData::suidChildPid() {
+  return suidprocessid;
+}
+
+void PPPData::setSuidChildPid(pid_t id) {
+  suidprocessid = id;
 }
 
 int PPPData::pppdError() {

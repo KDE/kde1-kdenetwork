@@ -34,6 +34,7 @@
 #include "modem.h"
 #include "pppdata.h"
 #include "log.h"
+#include "requester.h"
 
 static jmp_buf jmp_buffer;
 static bool expect_alarm = false;
@@ -109,7 +110,7 @@ speed_t Modem::modemspeed() {
 bool Modem::opentty() {
   int flags;
 
-  if((modemfd = open(gpppdata.modemDevice(), O_RDWR|O_NDELAY)) < 0){
+  if((modemfd = Requester::rq->openModem(gpppdata.modemDevice()))<0) {
     errmsg = i18n("Sorry, can't open modem.");
     return false;
   }
@@ -474,7 +475,7 @@ int Modem::lockdevice() {
   }
 
 
-  if ((fd = open(lockfile.data(), O_RDONLY)) >= 0) {
+  if ((fd = Requester::rq->openLockfile(lockfile.data(), O_RDONLY)) >= 0) {
     // Mario: it's not necessary to read more than lets say 32 bytes. If
     // file has more than 32 bytes, skip the rest
     char oldlock[33]; // safe
@@ -502,7 +503,9 @@ int Modem::lockdevice() {
     Debug("lockfile is stale\n");
   }
 
-  if((fd = open(lockfile.data(), O_WRONLY|O_TRUNC|O_CREAT,0644)) >= 0) {
+  fd = Requester::rq->openLockfile(lockfile.data(),
+                                   O_WRONLY|O_TRUNC|O_CREAT);
+  if(fd >= 0) {
     sprintf(newlock,"%05d %s %s\n", getpid(), "kppp", "user" );
     Debug("Locking Device: %s\n",newlock);
 
@@ -521,9 +524,9 @@ int Modem::lockdevice() {
 // UnLock modem device
 void Modem::unlockdevice() {
   if (modem_is_locked) {
-    unlink(lockfile);
-    modem_is_locked=false;
     Debug("UnLocking Modem Device\n");
+    Requester::rq->removeLockfile();
+    modem_is_locked=false;
   }
 }  
 

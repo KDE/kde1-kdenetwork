@@ -53,47 +53,35 @@
 
 #include "macros.h"
 #include "pppdata.h"
+#include "requester.h"
 
-
-const char *PPPL_findLogFile() {
-  FILE *f;
-
-  // access() cannot be used here, because access also
-  // test the uid of the current user. So I use fopen()
-  // here as long as nothing better is found
-  if((f = fopen("/var/log/messages", "r")) != NULL) {
-    fclose(f);
-    return "/var/log/messages";
-  }
-
-  if((f = fopen("/var/log/syslog.ppp", "r")) != 0) {
-    fclose(f);
-    return "/var/log/syslog.ppp";
-  }
-
-  return 0;
-}
 
 int PPPL_MakeLog(QStrList &list) {
-  FILE *f;
   int pid = -1, newpid;
-  char buffer[1024];
-  char *p;
+  char buffer[1024], *p, *pbuf;
+  char c;
   const char *pidp;
+  int fd;
+  uint i;
 
-  const char *fname = PPPL_findLogFile();
-  if(fname == 0) {
-    fprintf(stderr, "Cannot find logfile!\n");
-    return 1;
-  }
-
-  f = fopen(fname, "r");
-  if(f == 0) {
+  fd = Requester::rq->openSysLog();
+  if(fd < 0) {
     fprintf(stderr, "Cannot open logfile!\n");
     return 1;
   }
+  pbuf = buffer;
+  i = 0;
+  // while(fgets(buffer, sizeof(buffer), f) != 0) { 
+  while(read(fd, &c, 1) != 0) {
+    if(c != '\n' && i++ < sizeof(buffer)-1) {
+      *pbuf++ = c;
+      continue;
+    }
+    *pbuf = '\0';
+    // reset pointer
+    pbuf = buffer;
+    i = 0;
 
-  while(fgets(buffer, sizeof(buffer), f) != 0) {
     // pppd line ?
     p = (char *)strstr(buffer, "pppd[");
     if(p == 0)
@@ -114,7 +102,7 @@ int PPPL_MakeLog(QStrList &list) {
       buffer[strlen(buffer)-1] = '\0';
     list.append(buffer);
   }
-  fclose(f);
+  close(fd);
 
   if(list.isEmpty())
     return 2;

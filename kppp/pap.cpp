@@ -22,29 +22,38 @@
  * Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
+#include <sys/types.h>
+#include <sys/stat.h>
+
 #include <qdir.h>
 #include <unistd.h>
 #include <qregexp.h>
-#include "pap.h"
-#include "chap.h"
-#include "pppdata.h"
+#include <qtextstream.h>
 
+#include "pap.h"
+#include "opener.h"
 
 bool PAP_UsePAP() {
-  return (bool)(gpppdata.authMethod() == AUTH_PAP);
+  //  return (bool)(gpppdata.authMethod() == AUTH_PAP);
 }
 
-bool PAP_CreateAuthFile(char *authfile) {
+bool createAuthFile(int authMethod, char *username, char *password) {
   QFile fin, fout;
-  QString fname = authfile;
+  QString fname;
+  char *authfile;
+
+  if(!(authfile = authFile(authMethod)))
+    return false;
+
+  fname = authfile;
   fname += ".new";
   
   // copy to new file pap-secrets  
   fout.setName(fname.data());
   if(fout.open(IO_WriteOnly)) {
-    QString user = gpppdata.storedUsername();
-    QString pass = gpppdata.password;
-    //    QRegExp r_user((user + "[ \t]").data());
+    QString user = username;
+    QString pass = password;
+
     QRegExp r_user("\\s*" + user + "[ \t]");		
     QRegExp r_user2("\\s*[\"\']" + user + "[\"\']");
 
@@ -87,12 +96,14 @@ bool PAP_CreateAuthFile(char *authfile) {
   return TRUE;
 }
 
-bool PAP_RemoveAuthFile(char *authfile) {
-  if(!PAP_UsePAP() && strcmp(authfile, PAP_AUTH_FILE) == 0)
-    return FALSE;
+bool removeAuthFile(int authMethod) {
 
-  if(!CHAP_UseCHAP() && strcmp(authfile, CHAP_AUTH_FILE) == 0)
-    return FALSE;
+  char *authfile;
+
+  if(!(authfile = authFile(authMethod)))
+    return false;
+
+  // FIX: Add check if we really modified the secrets file before
 
   QString oldName = authfile;
   oldName += ".old";
@@ -103,4 +114,16 @@ bool PAP_RemoveAuthFile(char *authfile) {
     return d.rename(oldName.data(), authfile);
   } else
     return FALSE;
+}
+
+char *authFile(int authMethod) {
+  
+  if(authMethod == Opener::PAP)
+    return PAP_AUTH_FILE;
+  else {
+    if(authMethod == Opener::CHAP)
+      return CHAP_AUTH_FILE;
+    else
+      return 0L;
+  }
 }

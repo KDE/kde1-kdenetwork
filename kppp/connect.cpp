@@ -43,16 +43,12 @@
 #include <sys/param.h>
 #endif
 
-#ifdef HAVE_RESOLV_H
-#include <resolv.h>
-#endif
-
 #ifdef linux
 #include "runtests.h"
 #endif
 
 #include "pap.h"
-#include "chap.h"
+#include "requester.h"
 #include "connect.h"
 #include "main.h"
 #include "kpppconfig.h"
@@ -62,9 +58,6 @@
 #include "log.h"
 #include "modem.h"
 
-#ifndef _PATH_RESCONF
-#define _PATH_RESCONF "/etc/resolv.conf"
-#endif
 
 const int MAX_ARGS = 100;
 
@@ -882,8 +875,8 @@ void ConnectWidget::cancelbutton() {
   messg->setText(i18n("One Moment Please ..."));
 
   // just to be sure
-  PAP_RemoveAuthFile();
-  CHAP_RemoveAuthFile();
+  Requester::rq->removeSecret(AUTH_PAP);
+  Requester::rq->removeSecret(AUTH_CHAP);
   
   kapp->processEvents();
   
@@ -1012,8 +1005,8 @@ void ConnectWidget::if_waiting_slot() {
   }
 
   // remove the authentication file
-  PAP_RemoveAuthFile();
-  CHAP_RemoveAuthFile();
+  Requester::rq->removeSecret(AUTH_PAP);
+  Requester::rq->removeSecret(AUTH_CHAP);
 
   emit debugMessage(i18n("Done"));
   set_con_speed_string();
@@ -1234,7 +1227,7 @@ void add_domain(const char *domain) {
   if (domain == 0L || ! strcmp(domain, "")) 
     return;
 
-  if((fd = open(_PATH_RESCONF, O_RDONLY)) >= 0) {
+  if((fd = Requester::rq->openResolv(O_RDONLY)) >= 0) {
 
     int i=0;
     while((read(fd, &c, 1) == 1) && (i < MAX_RESOLVCONF_LINES)) {
@@ -1248,7 +1241,7 @@ void add_domain(const char *domain) {
     close(fd);
     if ((c != '\n') && (i < MAX_RESOLVCONF_LINES)) i++;
 
-    if((fd = open(_PATH_RESCONF, O_WRONLY|O_TRUNC)) >= 0) {
+    if((fd = Requester::rq->openResolv(O_WRONLY|O_TRUNC)) >= 0) {
 
       write(fd, "domain ", 7);
       write(fd, domain, strlen(domain));
@@ -1280,7 +1273,7 @@ void add_domain(const char *domain) {
 void adddns() {
   int fd;
 
-  if((fd = open(_PATH_RESCONF, O_WRONLY|O_APPEND)) >= 0) {
+  if((fd = Requester::rq->openResolv(O_WRONLY|O_APPEND)) >= 0) {
 
     QStrList &dnslist = gpppdata.dns();
     for(char *dns = dnslist.first(); dns; dns = dnslist.next()) {
@@ -1301,7 +1294,7 @@ void removedns() {
   char c;
   QString resolv[MAX_RESOLVCONF_LINES];
 
-  if((fd = open(_PATH_RESCONF, O_RDONLY)) >= 0) {
+  if((fd = Requester::rq->openResolv(O_RDONLY)) >= 0) {
 
     int i=0;
     while(read(fd, &c, 1) == 1 && i < MAX_RESOLVCONF_LINES) {
@@ -1314,7 +1307,7 @@ void removedns() {
     }
     close(fd);
 
-    if((fd = open(_PATH_RESCONF, O_WRONLY|O_TRUNC)) >= 0) {
+    if((fd = Requester::rq->openResolv(O_WRONLY|O_TRUNC)) >= 0) {
       for(int j=0; j < i; j++) {
 	if(resolv[j].contains("#kppp temp entry")) continue;
 	if(resolv[j].contains("#entry disabled by kppp")) {

@@ -32,7 +32,6 @@
 
 class QStrList;
 
-const char *PPPL_findLogFile();
 int PPPL_MakeLog(QStrList &list);
 void PPPL_AnalyseLog(QStrList &list, QStrList &result);
 void PPPL_ShowLog();

@@ -69,6 +69,8 @@
 #include <sys/types.h>
 #include <net/ppp_defs.h>
 #include "if_ppp.h"
+#include "requester.h"
+#include "main.h"
 #endif // linux
 
 
@@ -118,8 +120,8 @@ bool ppp_registered(void) {
   int local_fd;
   int init_disc = -1;
   int initfdflags;
-
-  local_fd = open(gpppdata.modemDevice(), O_NONBLOCK | O_RDWR, 0);
+  printf("ppp_registered: device %s\n", gpppdata.modemDevice());
+  local_fd = Requester::rq->openModem(gpppdata.modemDevice());
   if (local_fd < 0)
     {
       return false;
@@ -352,7 +354,7 @@ int runTests() {
 		 i18n("You´re not allowed to dial out with "
 				    "kppp.\nContact your system administrator."
 				    ));
-      exit(1);
+      shutDown(1);
     }
   }
 
@@ -372,7 +374,7 @@ int runTests() {
 				"  * contact your system adminstrator\n"
 				"or\n"
 				"  * install a kernel with PPP support\n"));
-      exit(1);
+      shutDown(1);
   }
   }
 #endif

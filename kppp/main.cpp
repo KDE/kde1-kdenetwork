@@ -30,6 +30,7 @@
 #include <qfileinf.h>
 #include <unistd.h>
 #include <stdio.h>
+#include <sys/socket.h>
 #include <locale.h>
 #include <errno.h>
 
@@ -61,6 +62,7 @@
 #include "log.h"
 #include "groupbox.h"
 #include "newwidget.h"
+#include "requester.h"
 
 #include <X11/Xlib.h>
 
@@ -87,8 +89,8 @@ void usage(char* progname) {
   fprintf(stderr, " -c account_name : connect to account account_name\n");
   fprintf(stderr, " -k : terminate an existing connection\n");
   fprintf(stderr, " -q : quit after end of connection\n");
-  fprintf(stderr, " -r rule_file: check syntax of rule_file\n");
-  exit(1);
+  fprintf(stderr, " -r rule_file : check syntax of rule_file\n");
+  shutDown(1);
 }
 
 void banner(char* progname){
@@ -99,7 +101,7 @@ void banner(char* progname){
   fprintf(stderr,"<mweilguni@kde.org>\n");
   fprintf(stderr,"(c) 1998 Harri Porten <porten@kde.org>\n");
   fprintf(stderr,"Use -h for the list of valid command line options.\n\n");
-  exit(0);
+  shutDown(0);
 }
 
 void showNews() {
@@ -261,19 +263,56 @@ void make_directories() {
 }
 
 #define MAX_NAME_LENGTH    64
+pid_t fpid; // TODO: use gpppdata.suidChildPid() instead
 
-int main( int argc, char **argv ) { 
-  int c;
-  opterr = 0;
+int main( int argc, char **argv ) {
+
+  // Don't insert anything above this line unless you really know what
+  // you're doing. We're most likely running setuid root here,
+  // until we drop this status a few lines below.
+  int sockets[2];
+  //  pid_t fpid;
+  if(socketpair(AF_UNIX, SOCK_DGRAM, 0, sockets) != 0) {
+    fprintf(stderr, "error creating socketpair !\n");
+    exit(1);
+  }
+
+  if((fpid = fork())<0) {
+    perror("kppp: fork() failed");
+    exit(1);
+  }
+
+  if(fpid==0) {
+    // child process
+    // make process leader of new group
+    setsid();
+    close(sockets[0]);
+    (void *) new Opener(sockets[1]);
+    // we should never get here
+    _exit(1);
+  }
+  // parent process
+  close(sockets[1]);
+
+  // drop setuid status
+  setuid(getuid());
+  setgid(getgid());
+  //
+  // end of setuid-dropping block.
+  // 
+
+  (void *) new Requester(sockets[0]);
 
   if(securityTests() != TEST_OK)
-    exit(1);
+    shutDown(1);
 
   KApplication a(argc, argv, "kppp");
 
   // set portable locale for decimal point
   setlocale(LC_NUMERIC ,"C");
 
+  int c;
+  opterr = 0;
   while ((c = getopt(argc, argv, "c:khvr:qt")) != EOF) {
     switch (c)
       {
@@ -282,7 +321,7 @@ int main( int argc, char **argv ) {
 	fprintf(stderr, "%s: unknown option \"%s\"\n", 
 		argv[0], argv[optind-1]);
 	usage(argv[0]);
-	exit(1);
+	shutDown(1);
       case 'c':
 	{
 	  // copy at most MAX_NAME_LENGTH bytes
@@ -313,7 +352,7 @@ int main( int argc, char **argv ) {
           setgid(getgid());
 
 	  // we need a KAppliction for locales, create one
-	  exit(RuleSet::checkRuleFile(optarg));
+	  shutDown(RuleSet::checkRuleFile(optarg));
 	}
       case 't':
 	TESTING=true;
@@ -340,7 +379,7 @@ int main( int argc, char **argv ) {
   if(pid < 0) {
     msg.sprintf(i18n("kppp can't create or read from\n%s."), pidfile.data());
     QMessageBox::warning(0L, i18n("Error"), msg.data());
-    exit(1);
+    shutDown(1);
   }
   
   if (terminate_connection) {
@@ -350,7 +389,7 @@ int main( int argc, char **argv ) {
       kill(pid, SIGINT);
     else
       remove_pidfile();
-    exit(0);
+    shutDown(0);
   }
   
   if (pid > 0) {
@@ -361,17 +400,22 @@ int main( int argc, char **argv ) {
                      "kppp,\ndelete the pid file, and restart kppp."),
                 pidfile.data(), pid);
     QMessageBox::warning(0L, i18n("Error"), msg.data());
-    exit(1);
+    shutDown(1);
   }
   
   // Mario: testing
   if(TESTING) {
     //    gpppdata.open();
-    return a.exec();
+    //    PPPL_ShowLog();
+    //    return a.exec();
   }
 
   KPPPWidget kppp;
   p_kppp = &kppp;
+
+  // store id of fork()'ed process
+  gpppdata.setSuidChildPid(fpid);
+  Debug("suidChildPid: %i\n", (int) gpppdata.suidChildPid());
 
   // keep user informed about recent changes
   if(!have_cmdl_account)
@@ -390,12 +434,13 @@ int main( int argc, char **argv ) {
 
   XSetErrorHandler( kppp_x_errhandler );
   XSetIOErrorHandler( kppp_xio_errhandler );
-                                                 
+
   int ret = a.exec();
 
   remove_pidfile();
 
-  return ret;
+  //  return ret;
+  shutDown(ret); // okay ?
 }
 
 
@@ -409,9 +454,10 @@ KPPPWidget::KPPPWidget( QWidget *parent, const char *name )
   config = gpppdata.open();
 
   // before doing anything else, run a few tests
+
   int result = runTests();
   if(result == TEST_CRITICAL)
-    exit(4);
+    shutDown(4);
 
   QVBoxLayout *tl = new QVBoxLayout(this, 10, 10);
 
@@ -779,8 +825,8 @@ void dieppp(int sig) {
       // enter this block
 
       // just to be sure
-      PAP_RemoveAuthFile();
-      CHAP_RemoveAuthFile();
+      Requester::rq->removeSecret(AUTH_PAP);
+      Requester::rq->removeSecret(AUTH_CHAP);
 
       gpppdata.setpppdpid(-1);
       
@@ -832,11 +878,12 @@ void dieppp(int sig) {
       } else { /* reconnect on disconnect */
 	Debug("Trying to reconnect ... \n");
 
-        if(PAP_UsePAP())
-	  PAP_CreateAuthFile();
-
-        if(CHAP_UseCHAP())
-	  CHAP_CreateAuthFile();
+        if(gpppdata.authMethod() == AUTH_PAP)
+          Requester::rq->setPAPSecret(gpppdata.storedUsername(),
+                                      gpppdata.password);
+        if(gpppdata.authMethod() == AUTH_CHAP)
+          Requester::rq->setCHAPSecret(gpppdata.storedUsername(),
+                                       gpppdata.password);
 
 	p_kppp->con_win->hide();
 	p_kppp->con_win->stopClock();
@@ -845,6 +892,13 @@ void dieppp(int sig) {
 	KApplication::beep();
 	emit p_kppp->cmdl_start();
       }
+    }
+    //    if(id == gpppdata.suiChildPid() && gpppdata.suidChildPid() != -1) {
+    if(id == fpid && fpid != -1) {
+      Debug("It was the setuid child that died\n");
+
+      //      gpppdata.setSuidChildPid(-1);
+      fpid = -1;
     }
   }
 }
@@ -917,7 +971,7 @@ void KPPPWidget::connectbutton() {
 
   // if this is a PAP account, ensure that password and username are
   // supplied
-  if(PAP_UsePAP()) {
+  if(gpppdata.authMethod() == AUTH_PAP) {
     if(strlen(ID_Edit->text()) == 0 || strlen(PW_Edit->text()) == 0) {
       QMessageBox::warning(this,
 			   i18n("Error"),
@@ -927,7 +981,8 @@ void KPPPWidget::connectbutton() {
 			   "supply a username and a password!"));
       return;
     } else {      
-      if(!PAP_CreateAuthFile()) {
+      if(!Requester::rq->setPAPSecret(gpppdata.storedUsername(),
+                                      gpppdata.password)) {
 	QString s;
 	s.sprintf(i18n("Cannot create PAP authentication\n"
 				     "file \"%s\""), PAP_AUTH_FILE);
@@ -941,7 +996,7 @@ void KPPPWidget::connectbutton() {
 
   // if this is a CHAP account, ensure that password and username are
   // supplied
-  if(CHAP_UseCHAP()) {
+  if(gpppdata.authMethod() == AUTH_PAP) {
     if(strlen(ID_Edit->text()) == 0 || strlen(PW_Edit->text()) == 0) {
       QMessageBox::warning(this,
 			   i18n("Error"),
@@ -951,7 +1006,8 @@ void KPPPWidget::connectbutton() {
 			   "supply a username and a password!"));
       return;
     } else {      
-      if(!CHAP_CreateAuthFile()) {
+      if(!Requester::rq->setCHAPSecret(gpppdata.storedUsername(),
+                                       gpppdata.password)) {
 	QString s;
 	s.sprintf(i18n("Cannot create CHAP authentication\n"
 				     "file \"%s\""), CHAP_AUTH_FILE);
@@ -1021,8 +1077,8 @@ void KPPPWidget::disconnect() {
 
   execute_command(gpppdata.command_on_disconnect());
   
-  PAP_RemoveAuthFile();
-  CHAP_RemoveAuthFile();
+  Requester::rq->removeSecret(AUTH_PAP);
+  Requester::rq->removeSecret(AUTH_CHAP);
 
   removedns();
   Modem::modem->unlockdevice();
@@ -1246,6 +1302,23 @@ bool remove_pidfile() {
 
   fprintf(stderr, "error removing pidfile.\n");
   return false;
+}
+
+
+void shutDown(int status) {
+
+  pid_t pid;
+  Debug("shutDown(%i)", status);
+  //  pid = gpppdata.suidChildPid();
+  pid = fpid;
+  printf("pid=%i\n", pid);
+  if(pid > 0) {
+    //  gpppdata.setSuidChildPid(-1);
+    fpid = -1;
+    //   kill(pid, SIGTERM);
+    kill(pid, SIGKILL);
+  }
+  exit(status);
 }
 
 #include "main.moc"

@@ -33,7 +33,8 @@
 #include "auth.h"
 
 bool PAP_UsePAP();
-bool PAP_CreateAuthFile(char *authfile = PAP_AUTH_FILE);
-bool PAP_RemoveAuthFile(char *authfile = PAP_AUTH_FILE);
+bool createAuthFile(int authMethod, char *username, char *password);
+bool removeAuthFile(int authMethod);
+char *authFile(int authMethod);
 
 #endif

@@ -1,3 +1,18 @@
+1998-11-20  Harri Porten  <porten@kde.org>
+
+	* First draft of a client&server archicture consisting of setuid
+	child process that will serve requests for file manipulation from
+	the parent. The parent is doing all the GUI operations is running
+	with normal user privileges. Assuming the approx. 300 lines still
+	running setuid root will be intensively reviewed this should
+	result in a kppp far less vulnerable to security exploits.
+	* added requester.* and opener.*
+	* TODO: - handle signals (SIGCHLD, SIGPIPE?)
+	        - replace usage Qt in pap.cpp with standard library calls
+		- get ppp_available() running (presumably broken now)
+		- speed up reading the syslog (reading single chars now)
+		- Test, debug, test ....
+
 1998-11-17  Mario Weilguni <mweilguni@kde.org>
 
 	* Security fix: fixed possible buffer overflow in findFileInPath()

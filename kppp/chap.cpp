@@ -24,17 +24,16 @@
 
 #include <qdir.h>
 #include "chap.h"
-#include "pppdata.h"
 #include "pap.h"
 
 bool CHAP_UseCHAP() {
-  return (bool)(gpppdata.authMethod() == AUTH_CHAP);
+  //  return (bool)(gpppdata.authMethod() == AUTH_CHAP);  FIX
 }
 
 bool CHAP_CreateAuthFile() {
-  return PAP_CreateAuthFile(CHAP_AUTH_FILE);
+  //  return PAP_CreateAuthFile(CHAP_AUTH_FILE);
 }
 
 bool CHAP_RemoveAuthFile() {
-  return PAP_RemoveAuthFile(CHAP_AUTH_FILE);
+  //  return PAP_RemoveAuthFile(CHAP_AUTH_FILE);
 }
