@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: knu\n"
-"POT-Creation-Date: 1999-01-10 02:04+0100\n"
+"POT-Creation-Date: 1999-01-23 02:09+0100\n"
 "PO-Revision-Date: 1999-01-28 11:45+0000\n"
 "Last-Translator: Richard Allen <ra@hp.is>\n"
 "Language-Team: is <kde-isl@mmedia.is>\n"
@@ -100,19 +100,19 @@ msgstr "Um..."
 msgid "Network utilities"
 msgstr "Nettól"
 
-#: CommandDlg.cpp:128
+#: CommandDlg.cpp:131
 msgid "H&ost:"
 msgstr "&Vél:"
 
-#: CommandDlg.cpp:137
+#: CommandDlg.cpp:140
 msgid "&Go!"
 msgstr "&Byrja!"
 
-#: CommandDlg.cpp:147
+#: CommandDlg.cpp:150
 msgid "&Stop"
 msgstr "&Stöðva"
 
-#: CommandDlg.cpp:163
+#: CommandDlg.cpp:166
 msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
@@ -120,7 +120,7 @@ msgstr ""
 "Keyrsluskrá fyrir skipunina fannst ekki. \n"
 "Þú getur gefið upp slóð að henni í Sýsl->Eiginleikar... valmyndinni."
 
-#: CommandDlg.cpp:348
+#: CommandDlg.cpp:351
 #, c-format
 msgid ""
 "\n"
@@ -142,23 +142,23 @@ msgstr ""
 "Vinsamlegast notaðu Sýsl->Eiginleikar... valmyndina\n"
 "til að endurstilla hana.\n"
 
-#: CommandDlg.cpp:357
+#: CommandDlg.cpp:360
 msgid "Error in pathname"
 msgstr "Villa í skráarslóð"
 
-#: CommandDlg.cpp:511
+#: CommandDlg.cpp:516
 msgid "Binary"
 msgstr "Keyrsluskrá"
 
-#: CommandDlg.cpp:519
+#: CommandDlg.cpp:524
 msgid "Path&name:"
 msgstr "Skráar&slóð"
 
-#: CommandDlg.cpp:528
+#: CommandDlg.cpp:533
 msgid "Additional &arguments:"
 msgstr "Viðbót&ar viðföng:"
 
-#: CommandDlg.cpp:553
+#: CommandDlg.cpp:558
 msgid "This command had been disabled in the configuration file."
 msgstr "Búið var að óvirkja þessa skipun í stillingaskránni."
 
@@ -166,39 +166,39 @@ msgstr "Búið var að óvirkja þessa skipun í stillingaskránni."
 msgid " - configuration"
 msgstr " - stillingar"
 
-#: MtrDlg.cpp:83
+#: MtrDlg.cpp:87
 msgid "#"
 msgstr "#"
 
-#: MtrDlg.cpp:84
+#: MtrDlg.cpp:88
 msgid "Hostname"
 msgstr "Vélarheiti"
 
-#: MtrDlg.cpp:85
+#: MtrDlg.cpp:89
 msgid "Loss"
 msgstr "Tap"
 
-#: MtrDlg.cpp:87
+#: MtrDlg.cpp:91
 msgid "Rcv"
 msgstr "Mótt."
 
-#: MtrDlg.cpp:89
+#: MtrDlg.cpp:93
 msgid "Snt"
 msgstr "Sent"
 
-#: MtrDlg.cpp:91
+#: MtrDlg.cpp:95
 msgid "Best"
 msgstr "Best"
 
-#: MtrDlg.cpp:93
+#: MtrDlg.cpp:97
 msgid "Avg"
 msgstr "Meðal."
 
-#: MtrDlg.cpp:95
+#: MtrDlg.cpp:99
 msgid "Worst"
 msgstr "Verst"
 
-#: MtrDlg.cpp:138 PingDlg.cpp:100 TracerouteDlg.cpp:98
+#: MtrDlg.cpp:142 PingDlg.cpp:100 TracerouteDlg.cpp:98
 msgid "Make host &name resolution"
 msgstr "Fletta upp &vélarheitum"
 
