@@ -55,7 +55,7 @@ ksirc_LDFLAGS = @all_libraries@ -L./KSProgress/ -L./KSTicker/
 
 # the libraries to link against. Be aware of the order. First the libraries,
 # that depend on the following ones.
-ksirc_LDADD   = -lksprogress -lksticker -lkfm -lkdeui -lkdecore -lqt -lX11 -lXext @LIBSOCKET@     
+ksirc_LDADD   = -lksprogress -lksticker -lkdeui -lkdecore -lqt -lX11 -lXext @LIBSOCKET@     
 
 # this option you can leave out. Just, if you use "make dist", you need it
 #
