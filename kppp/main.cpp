@@ -219,12 +219,7 @@ int main( int argc, char **argv ) {
     exit(1);
   }
 
-  if((fpid = fork())<0) {
-    perror("kppp: fork() failed");
-    exit(1);
-  }
-
-  switch(fpid) {
+  switch(fpid = fork()) {
   case 0:
     // child process
     // make process leader of new group
@@ -236,7 +231,7 @@ int main( int argc, char **argv ) {
     _exit(1);
 
   case -1:
-    perror("fork() failed: ");
+    perror("fork() failed");
     exit(1);
   }
   

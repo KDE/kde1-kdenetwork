@@ -50,8 +50,6 @@ kppp_SOURCES	= accounts.cpp \
 		accounting.cpp \
 		acctselect.cpp\
 		ruleset.cpp \
-		pap.cpp \
-		chap.cpp \
 		docking.cpp \
 		runtests.cpp \
 		loginterm.cpp \
@@ -91,8 +89,6 @@ noinst_HEADERS = accounts.h \
 		accounting.h \
 		acctselect.h\
 		ruleset.h \
-		pap.h \
-		chap.h \
 		docking.h \
 		runtests.h \
 		loginterm.h \

@@ -1,3 +1,10 @@
+1998-12-18  Harri Porten  <porten@kde.org>
+
+	* removed pap.* and chap.* files and moved their code in
+	requester.cpp where all setuid root stuff is gathered now.
+	* requester.cpp: rewrote PAP/CHAP so that the setuid part is free
+	of any Qt/X calls. 
+
 1998-12-16  Mario Weilguni <mweilguni@kde.org>
 
 	* added Indonesia rule files

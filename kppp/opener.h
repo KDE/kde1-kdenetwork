@@ -27,6 +27,11 @@ private:
   int sendFD(const char *ttypath, int ttyfd, struct ResponseHeader *response);
   int sendResponse(struct ResponseHeader *response);
   const char *deviceByIndex(int idx);
+  bool createAuthFile(int authMethod, char *username, char *password);
+  bool removeAuthFile(int authMethod);
+  const char* authFile(int authMethod, int version = Original);
+
+  enum { Original=0x100, New=0x200, Old=0x400 } Version;
   int socket;
   char lockfile[MaxPathLen+1];
 };

@@ -31,6 +31,7 @@
 #include <stdio.h>
 #include <sys/uio.h>
 #include <sys/socket.h> 
+#include <sys/stat.h>
 #include <sys/types.h>
 #include <sys/socket.h> 
 #include <sys/un.h>
@@ -38,6 +39,7 @@
 #include <assert.h>
 #include <string.h>
 #include <errno.h>
+#include <regex.h>
 
 #ifdef HAVE_RESOLV_H
 #include <resolv.h>
@@ -45,7 +47,6 @@
 
 #include "opener.h"
 #include "kpppconfig.h"
-#include "pap.h"
 #include "devices.h"
 
 #ifndef _PATH_RESCONF
@@ -297,6 +298,95 @@ const char* Opener::deviceByIndex(int idx) {
   return device;
 }
 
+bool Opener::createAuthFile(int authMethod, char *username, char *password) {
+  const char *authfile, *oldName, *newName;
+  char line[100];
+  char regexp[2*MaxStrLen+30];
+  regex_t preg;
+
+  if(!(authfile = authFile(authMethod)))
+    return false;
+
+  if(!(newName = authFile(authMethod, New)))
+    return false;
+
+  // look for username, "username" or 'username'
+  // if you modify this RE you have to adapt regexp's size above
+  sprintf(regexp, "^[ \t]*%s[ \t]\\|^[ \t]*[\"\']%s[\"\']",
+          username,username);
+  assert(regcomp(&preg, regexp, 0) == 0);
+
+  // copy to new file pap-secrets
+  FILE *fout = fopen(newName, "w");
+  if(fout) {
+    // copy old file
+    FILE *fin = fopen(authfile, "r");
+    if(fin) {
+      while(fgets(line, sizeof(line), fin)) {
+        if(regexec(&preg, line, 0, 0L, 0) == 0)
+           continue;
+        fputs(line, fout);
+      }
+      fclose(fin);    
+    }
+
+    // append user/pass pair
+    fprintf(fout, "\"%s\"\t*\t\"%s\"\n", username, password);
+    fclose(fout);
+  }
+
+  if(!(oldName = authFile(authMethod, Old)))
+    return false;
+
+  // delete old file if any
+  unlink(oldName);
+
+  rename(authfile, oldName);
+  rename(newName, authfile);
+  chmod(authfile, 0600);
+
+  regfree(&preg);
+  return true;
+}
 
 
+bool Opener::removeAuthFile(int authMethod) {
+  const char *authfile, *oldName;
 
+  if(!(authfile = authFile(authMethod)))
+    return false;
+  if(!(oldName = authFile(authMethod, Old)))
+    return false;
+
+  if(access(oldName, F_OK) == 0) {
+    unlink(authfile);
+    return (rename(oldName, authfile) == 0);
+  } else
+    return false;
+}
+
+
+const char* Opener::authFile(int authMethod, int version) {
+  switch(authMethod|version) {
+  case PAP|Original:
+    return PAP_AUTH_FILE;
+    break;
+  case PAP|New:
+    return PAP_AUTH_FILE".new";
+    break;
+  case PAP|Old:
+    return PAP_AUTH_FILE".old";
+    break;
+  case CHAP|Original:
+    return CHAP_AUTH_FILE;
+    break;
+  case CHAP|New:
+    return CHAP_AUTH_FILE".new";
+    break;
+  case CHAP|Old:
+    return CHAP_AUTH_FILE".old";
+    break;
+  default:
+    return 0L;
+  }
+}

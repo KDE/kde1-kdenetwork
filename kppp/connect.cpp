@@ -1156,7 +1156,6 @@ bool ConnectWidget::execppp() {
 
   if(id == 0) {
     /*    printf("In child: fork() %d\n",id);*/
-    /*    close(modemfd);*/
     Debug("%s \n",command.data());
 
 #ifdef BSD
