@@ -11,9 +11,29 @@
 
 	* Cleaned up nick completion, etc.
 
-$$Revision$$
+$Revision$
 	
 $$Log$
+$Revision 1.3  1997/12/26 05:54:36  asj
+$Added ordering of ops to the top of the nick list.  Design is pretty simple:
+$
+$1. Added a seperator with know uniq text.
+$
+$2. If the nick is an op (passed by a flag) add them before the sep
+$
+$3. If not after the sep.
+$
+$Adding in each section is done alphabertically, again pretty easy.
+$Step through each nick and use strcmp, if is returns <, then we should
+$keep going since our word is furthur down the alphabet.  If it's >=
+$stop, backup one and add the word into that location.
+$
+$We have to check for the end of the list since we can't insert max+1, it
+$has to be -1.
+$
+$The Seperator is a custom list item of height 3 and width of the listbox.
+$It simply draws a straight line, and off it goes.
+$
 $Revision 1.2  1997/12/25 07:54:42  asj
 $Added Revision...
 $
