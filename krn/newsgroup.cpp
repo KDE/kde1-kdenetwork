@@ -166,18 +166,12 @@ void Article::save()
     // end robert;s cache stuff
     //
 
-    if (Refs.isEmpty())
+    for (char *iter=Refs.first();iter!=0;iter=Refs.next())
     {
-            _content+="\n";
+        _content+=iter;
+        _content+="\n";
     }
-    else
-    {
-        for (char *iter=Refs.first();iter!=0;iter=Refs.next())
-        {
-            _content+=iter;
-            _content+=" ";
-        }
-    }
+    
     datum content;
     content.dptr=_content.data();
     content.dsize=_content.length()+1;
@@ -214,7 +208,7 @@ void Article::load()
     char *p;
     while (1)
     {
-        p=strtok(NULL," ");
+        p=strtok(NULL,"\n");
         if (!p)
             break;
         Refs.append(p);

@@ -363,7 +363,7 @@ int NNTP::listXover(int from,int to)
                     key.dptr=art.ID.data();
                     key.dsize=art.ID.length()+1;
                     
-                    if (gdbm_exists(artdb,key))
+                    if (!gdbm_exists(artdb,key))
                     {
                         
                         //convert Refs to a strlist
@@ -397,6 +397,7 @@ int NNTP::listXover(int from,int to)
                 }
                 f.writeBlock(gi.data(),gi.length());
                 f.close();
+                gdbm_sync(artdb);
             }
         }
         else
@@ -521,7 +522,7 @@ bool NNTP::isCached (char *id)
 QString *NNTP::article(char *id)
 {
     QString p=cachepath;
-    QString *data=new QString(klocale->translate("\n\nError reading Article!"));
+    QString *data=new QString("");
     p=p+id;
     QFile f(p.data());
     if (isCached (id))//it exists so it's cached
@@ -540,24 +541,18 @@ QString *NNTP::article(char *id)
         int status=Article (id);
         if (status==220)
         {
-            data->setStr(TextResponse().c_str());
-            f.writeBlock(data->data(),data->length());
+            f.writeBlock(TextResponse().data(),TextResponse().length());
             f.close();
-            return article(id);
+            delete data;
+            data=article(id);
         }
         else
         {
-            warning ("error getting data\nserver said %s\n",StatusResponse().data());
+            warning ("error getting data\nserver said %s\n",StatusResponse().c_str());
             f.close();
             unlink (p.data());
-            return new QString("");
         }
     }
-    commandCounter++;
-    char *buffer=new char[100];
-    sprintf (buffer,klocale->translate("received %d article(s)"),commandCounter);
-    emit newStatus(buffer);
-    delete buffer;
     return data;
 }
 

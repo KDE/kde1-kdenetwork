@@ -654,6 +654,7 @@ bool Artdlg::actions (int action)
 
 bool Artdlg::loadArt (QString id)
 {
+    setEnabled(false);
     if (!server->isConnected())
     {
         if (!server->isCached(id.data()))
@@ -696,6 +697,7 @@ bool Artdlg::loadArt (QString id)
         return false;
     }
     qApp->restoreOverrideCursor ();
+    setEnabled(true);
     return true;
 }
 

@@ -274,6 +274,7 @@ void Groupdlg::openGroup (QString name)
 
 void Groupdlg::openGroup (int index)
 {
+    qApp->setOverrideCursor(waitCursor);
     QString base;
     KTreeListItem *it=list->itemAt(index);
     if (it->getText()[strlen(it->getText())-1]!='.')
@@ -355,6 +356,7 @@ void Groupdlg::openGroup (int index)
                 list->expandItem(index);
         }
     }
+    qApp->restoreOverrideCursor();
 }
 
 
