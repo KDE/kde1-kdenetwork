@@ -1,3 +1,8 @@
+1998-10-14  Harri Porten  <porten@kde.org>
+
+	* pppdata.cpp: don't care about CD line by default. We'll receive
+	too many "bug reports" otherwise.
+
 1998-10-13  Harri Porten  <porten@kde.org>
 
 	* ppplog.cpp: offer some advice based on keywords found in the log
