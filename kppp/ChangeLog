@@ -1,15 +1,15 @@
-Sat Jan 10 21:23:10 1998  Mario Weilguni  <mario@loki.valhalla.at>
+Sat Jan 10 21:23:10 1998  Mario Weilguni  <mweilguni@sime.com>
 
 	* main.cpp: fixed a bug that cause kppp to go wild and display
 	hundreds of windows when it cannot load a ruleset file
 
-Wed Jan  7 13:00:24 1998  Mario Weilguni  <mario@loki.valhalla.at>
+Wed Jan  7 13:00:24 1998  Mario Weilguni  <mweilguni@sime.com>
 
 	* edit.cpp: improved the IP and Gateway widgets
 
 	* various improvements for the geometry managements
 
-Tue Jan  6 12:56:14 1998  Mario Weilguni  <mario@loki.valhalla.at>
+Tue Jan  6 12:56:14 1998  Mario Weilguni  <mweilguni@sime.com>
 
 	* main.cpp: the main kppp window has now layout control
 
@@ -25,7 +25,7 @@ Mon Jan  5 20:59:00 1998  Harri Porten  <porten@tu-harburg.de>
 	* pppdata.cpp: added totalCosts() and setTotalCosts().
 	  Several small cosmetic changes.  
 	
-Mon Jan  5 14:25:37 1998  Mario Weilguni  <mario@loki.valhalla.at>
+Mon Jan  5 14:25:37 1998  Mario Weilguni  <mweilguni@sime.com>
 
 	* docs/kppp.sgml: updated the docs for the new KDE file system
 	  standard. Ispell'ed the docu.
