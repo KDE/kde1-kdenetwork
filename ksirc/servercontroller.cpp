@@ -220,7 +220,7 @@ servercontroller::servercontroller /*FOLD00*/
   
   KIconLoader *kicl = kApp->getIconLoader();
   QStrList *strlist = kicl->getDirList();
-  kicl->insertDirectory(strlist->count(), kSircConfig->kdedir + "/share/apps/ksirc/icons"); 
+  kicl->insertDirectory(strlist->count(), kapp->kde_datadir() + "/ksirc/icons"); 
   pic_server = new("QPixmap") QPixmap(kicl->loadIcon("server.xpm"));
   pic_channel = new("QPixmap") QPixmap(kicl->loadIcon("channel.xpm"));
   pic_gf = new("QPixmap") QPixmap(kicl->loadIcon("ksirc_a.xpm"));

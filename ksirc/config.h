@@ -33,8 +33,6 @@ class global_config {
   int nickBHighlight; // Background
   int usHighlight; // Background
 
-  QString kdedir;
-
   QString pukeSocket;
 };
 

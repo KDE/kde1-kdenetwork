@@ -11,6 +11,7 @@
 #include <errno.h>
 #include <sys/stat.h>
 #include <string.h>
+#include <kapp.h>
 
 //#include <dlfcn.h>
 
@@ -803,7 +804,8 @@ void PukeController::messageHandler(int fd, PukeMessage *pm) { /*FOLD00*/
       return;
     }
 
-    handle = KDynamicLibrary::loadLibrary(kSircConfig->kdedir + "/lib/ksirc/lib" + QString(pm->cArg), KDynamicLibrary::ResolveLazy);
+    // coolo: I concider this a major hack, but KApplication doesn't provide the libpath ;(
+    handle = KDynamicLibrary::loadLibrary(kapp->kde_bindir() + "/../lib/ksirc/lib" + QString(pm->cArg), KDynamicLibrary::ResolveLazy);
     if (!handle) {
       emit(errorCommandFailed(-pm->iCommand, 1));
       return;

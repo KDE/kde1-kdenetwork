@@ -143,7 +143,7 @@ KSircProcess::KSircProcess( char *_server, QObject * parent, const char * name )
     putenv(qstrdup(env.data()));
   }
 
-  QString env = "SIRCLIB=" + kSircConfig->kdedir + "/share/apps/ksirc";
+  QString env = "SIRCLIB=" + kapp->kde_datadir() + "/ksirc";
   putenv(qstrdup(env.data()));
 
   QString sock_env = "PUKE_SOCKET=" +  kSircConfig->pukeSocket;
@@ -158,7 +158,7 @@ KSircProcess::KSircProcess( char *_server, QObject * parent, const char * name )
 //  insertChild(proc);
 
   proc->setExecutable("perl");
-  *proc << kSircConfig->kdedir + QString("/bin/dsirc") << "-8" << "-r" << "-s" << server;
+  *proc << kapp->kde_bindir() + "/dsirc" << "-8" << "-r" << "-s" << server;
 
   // Finally start the iocontroller.
 
@@ -205,13 +205,13 @@ KSircProcess::KSircProcess( char *_server, QObject * parent, const char * name )
   
   command = "/eval $version .= \"+4KSIRC/" + QString(KSIRC_VERSION) + "\"\n";
   iocontrol->stdin_write(command);
-  command = "/load " + kSircConfig->kdedir + "/share/apps/ksirc/filters.pl\n";
+  command = "/load " + kapp->kde_datadir() + "/ksirc/filters.pl\n";
   iocontrol->stdin_write(command);
-  command = "/load " + kSircConfig->kdedir + "/share/apps/ksirc/ksirc.pl\n";
+  command = "/load " + kapp->kde_datadir() + "/ksirc/ksirc.pl\n";
   iocontrol->stdin_write(command);
-  command = "/load " + kSircConfig->kdedir + "/share/apps/ksirc/puke.pl\n";
+  command = "/load " + kapp->kde_datadir() + "/ksirc/puke.pl\n";
   iocontrol->stdin_write(command);
-  command = "/load " + kSircConfig->kdedir + "/share/apps/ksirc/dcc_status.pm\n";
+  command = "/load " + kapp->kde_datadir() + "/ksirc/dcc_status.pm\n";
   iocontrol->stdin_write(command);
 
 

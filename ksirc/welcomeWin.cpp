@@ -28,7 +28,7 @@ welcomeWin::welcomeWin
 {
   DisplayDialog->show();
   setCaption( i18n("Welcome to kSirc") );
-  QFile f(kSircConfig->kdedir + "/share/apps/ksirc/relnotes");
+  QFile f(kapp->kde_datadir() + "/ksirc/relnotes");
   if(f.open(IO_ReadOnly)){
     QTextStream t(&f);
     QString s;

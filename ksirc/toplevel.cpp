@@ -262,7 +262,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
   if(pix_info == 0){
     KIconLoader *kicl = kApp->getIconLoader();
     QStrList *strlist = kicl->getDirList();
-    kicl->insertDirectory(strlist->count(), kSircConfig->kdedir + "/share/apps/ksirc/icons");
+    kicl->insertDirectory(strlist->count(), kapp->kde_datadir() + "/ksirc/icons");
     pix_info = new("QPixmap") QPixmap(kicl->loadIcon("info.gif"));
     pix_star = new("QPixmap") QPixmap(kicl->loadIcon("star.gif"));
     pix_bball = new("QPixmap") QPixmap(kicl->loadIcon("blueball.gif"));

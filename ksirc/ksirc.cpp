@@ -99,30 +99,8 @@ int main( int argc, char ** argv )
   kSircConfig->usHighlight = kConfig->readNumEntry("uscolour", -1);
   kSircConfig->transparent = kConfig->readNumEntry("Transparent", false);
 
-  kSircConfig->kdedir = getenv("KDEDIR");
-  if(kSircConfig->kdedir.isEmpty()){
-    QStrList dirs;
-    dirs.append("/opt/kde");
-    dirs.append("/usr/local/kde");
-    dirs.append("/usr/X11R6");
-    dirs.append(kApp->kde_bindir() + "/..");
-    char *dir = 0x0;
-    for(dir=dirs.first(); dir != 0x0; dir=dirs.next()){
-      QString dsirc_loc = QString(dir) + "/bin/dsirc";
-      if(access(dsirc_loc.data(), X_OK|R_OK) == 0)
-        break;
-    }
-    if(dir != 0){
-      warning("Found dsirc, using KDEDIR=%s", dir);
-      kSircConfig->kdedir = qstrdup(dir);
-    }
-    else{
-      warning("Could not find dsirc, proceeding anyways with KDEDIR=/usr/local/kde");
-      kSircConfig->kdedir = "/usr/local/kde";
-    }
-  }
   QString ld_path = getenv("LD_LIBRARY_PATH");
-  ld_path += ":" + kSircConfig->kdedir + "/share/apps/ksirc/:";
+  ld_path += ":" + kapp->kde_datadir() + "/ksirc/:";
   ld_path.prepend("LD_LIBRARY_PATH=");
   putenv(ld_path.data());
 
