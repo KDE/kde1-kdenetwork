@@ -1,0 +1,1113 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: KDE 1.0\n"
+"POT-Creation-Date: 1998-02-25 18:08+0100\n"
+"PO-Revision-Date: 1998-06-29 11:00+0200\n"
+"Last-Translator: Kerem ERZURUMLU <kerem@linux.org.tr>\n"
+"Language-Team: Hacettepe Linux Users Group <hacettepe@linux.org.tr>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ISO 8859-9\n"
+
+#: accounts.cpp:53
+msgid "Account Setup"
+msgstr "Hesap ayarý"
+
+#: accounts.cpp:72
+msgid "Edit..."
+msgstr "Düzenle..."
+
+#: accounts.cpp:83
+msgid "New..."
+msgstr "Yeni..."
+
+#: accounts.cpp:105
+msgid "Phone Costs:"
+msgstr "Telefon Faturasý:"
+
+#: accounts.cpp:116 conwindow.cpp:55
+msgid "Volume:"
+msgstr "Ses:"
+
+#: accounts.cpp:131
+msgid "Reset Costs"
+msgstr "Faturayý sýfýrla"
+
+#: accounts.cpp:138
+msgid "View Logs"
+msgstr "Kayýtlara bak"
+
+#: accounts.cpp:235
+msgid "Reset Total"
+msgstr "Toplamý Sýfýrla"
+
+#: accounts.cpp:236
+msgid ""
+"Are you sure you want to reset the accumulated\n"
+"telephone costs for the selected account to zero?"
+msgstr ""
+"Seçilen hesap için tüm toplanan masrafý sýfýrlamak\n"
+"istediðinizden emin misiniz?"
+
+
+#: accounts.cpp:271 accounts.cpp:294
+msgid "Maximum number of accounts reached."
+msgstr "Eriþilen en fazla hesap sayýsý."
+
+#: accounts.cpp:300
+msgid "No account selected."
+msgstr "Seçilmiþ hesap yok."
+
+#: accounts.cpp:316
+#, c-format
+msgid ""
+"Are you sure you want to delete\n"
+"the account \"%s\"?"
+msgstr ""
+"\"%s\" hesabýný silmek istediðinizden\n"
+"emin misiniz?"
+
+
+#: accounts.cpp:321
+msgid "Confirm"
+msgstr "Onayla"
+
+#: accounts.cpp:343
+msgid "New Account"
+msgstr "Yeni Hesap"
+
+#: accounts.cpp:347
+msgid "Edit Account: "
+msgstr "Hesap Düzenle: "
+
+#: accounts.cpp:367
+msgid "Dial"
+msgstr "Ara"
+
+#: accounts.cpp:368
+msgid "IP"
+msgstr "IP"
+
+#: accounts.cpp:369
+msgid "DNS"
+msgstr "DNS"
+
+#: accounts.cpp:370
+msgid "Gateway"
+msgstr "Að Geçidi"
+
+#: accounts.cpp:371
+msgid "Login Script"
+msgstr "Oturum açma komutlarý"
+
+#: accounts.cpp:372
+msgid "Accounting"
+msgstr "Hesaplama"
+
+#: accounts.cpp:391
+msgid ""
+"You must enter a unique\n"
+"account name"
+msgstr ""
+"Eþi olmayan bir isim\n"
+"girmelisiniz"
+
+
+#: accounts.cpp:396
+msgid "Login script has unbalanced Loop Start/End"
+msgstr "Oturum açma komutlarý dengesiz"
+
+#: connect.cpp:108 connect.cpp:212 main.cpp:829
+msgid "Connecting to: "
+msgstr "Baðlanýlýyor: "
+
+#: connect.cpp:117 connect.cpp:228 miniterm.cpp:162 modeminfo.cpp:62
+#: modeminfo.cpp:149
+msgid "Sorry, can't create modem lock file."
+msgstr "Üzgünüm, model kitleme dosyasýný yaratamýyorum."
+
+#: connect.cpp:122 connect.cpp:185 modeminfo.cpp:67
+msgid "Looking for Modem ..."
+msgstr "Modem'e bakýyorum..."
+
+#: connect.cpp:131 debug.cpp:86 main.cpp:842
+msgid "Log"
+msgstr "Kayýt"
+
+#: connect.cpp:222 miniterm.cpp:157 modeminfo.cpp:144
+msgid "Sorry, modem device is locked."
+msgstr "Üzgünüm, modem cihazý kilitli."
+
+#: connect.cpp:234 miniterm.cpp:176 miniterm.cpp:253 modeminfo.cpp:164
+msgid "Modem Ready"
+msgstr "Modem Hazýr"
+
+#: connect.cpp:266 connect.cpp:267
+msgid "Initializing Modem..."
+msgstr "Modem Hazýrlanýyor..."
+
+#: connect.cpp:292
+msgid "Dialing"
+msgstr "Aranýyor"
+
+#: connect.cpp:325
+msgid "Line Busy. Hanging up ..."
+msgstr "Hat Dolu. Kapatýlýyor..."
+
+#: connect.cpp:331
+msgid "Line Busy. Waiting: "
+msgstr "Hat Dolu. Bekleniyor: "
+
+#: connect.cpp:333 connect.cpp:451 connect.cpp:470
+msgid " seconds"
+msgstr " saniye"
+
+#: connect.cpp:351
+msgid "No Dialtone"
+msgstr "Ara Tonu Yok"
+
+#: connect.cpp:361
+msgid "No Carrier"
+msgstr "Taþýyýcý yok"
+
+#: connect.cpp:396
+msgid "Scanning "
+msgstr "Taranýyor"
+
+#: connect.cpp:407
+msgid "Saving "
+msgstr "Kaydediliyor "
+
+#: connect.cpp:426
+msgid "Sending "
+msgstr "Gönderiliyor "
+
+#: connect.cpp:437
+msgid "Expecting "
+msgstr "Kabul ediliyor"
+
+#: connect.cpp:449
+msgid "Pause "
+msgstr "Dondur "
+
+#: connect.cpp:468
+msgid "Timeout "
+msgstr "Zaman doldu"
+
+#: connect.cpp:482 connect.cpp:483
+msgid "Hangup"
+msgstr "Kapatýlýyor"
+
+#: connect.cpp:496 connect.cpp:497
+msgid "Answer"
+msgstr "Cevap ver"
+
+#: connect.cpp:505
+msgid "ID "
+msgstr "ID "
+
+#: connect.cpp:542
+msgid "Password "
+msgstr "Parola "
+
+#: connect.cpp:580
+msgid "Prompting "
+msgstr "Ýstemler"
+
+#: connect.cpp:617
+msgid "PW Prompt "
+msgstr "Parola Ýstemi"
+
+#: connect.cpp:643
+msgid "Loop Start "
+msgstr "Döngü Baþlangýcý"
+
+#: connect.cpp:647
+msgid "ERROR: Nested too deep, ignored."
+msgstr "HATA: Çok derine iniyor, görmezden gelindi."
+
+#: connect.cpp:652
+msgid "Loops nested too deeply!"
+msgstr "Döngü çok derine indi!"
+
+#: connect.cpp:670
+msgid "LoopEnd without mathing Start! Line: "
+msgstr "Baþý belirtilmeden döngü bitti! Satýr: "
+
+#: connect.cpp:747
+msgid "Starting pppd ..."
+msgstr "pppd baþlýyor..."
+
+#: connect.cpp:807 connect.cpp:833
+msgid "unknown speed"
+msgstr "bilinmeyen hýz"
+
+#: connect.cpp:871
+msgid "Scan Var: "
+msgstr "Deðiþken tara: "
+
+#: connect.cpp:882
+msgid "Found: "
+msgstr "Bulundu:"
+
+#: connect.cpp:894
+msgid "Looping: "
+msgstr "Döngüleniyor: "
+
+#: connect.cpp:925 modeminfo.cpp:332
+msgid "One Moment Please ..."
+msgstr "Bir Saniye Lütfen..."
+
+#: connect.cpp:969
+msgid "Script timed out!"
+msgstr "Komut kümesi zaman aþýmýna uðradý!"
+
+#: connect.cpp:995
+msgid "Scanning: "
+msgstr "Taranýyor: "
+
+#: connect.cpp:1006
+msgid "Expecting: "
+msgstr "Kabul ediliyor: "
+
+#: connect.cpp:1040
+msgid "Logging on to Network ..."
+msgstr "Að'a baðlanýlýyor..."
+
+#: connect.cpp:1067
+msgid "Running Startup Command ..."
+msgstr "Baþlangýç Komutlarý Çalýþtýrýlýyor..."
+
+#: connect.cpp:1133
+msgid "Sorry, can't open modem."
+msgstr "Modem açýlamýyor."
+
+#: connect.cpp:1140
+msgid "Sorry, the modem is not ready."
+msgstr "Üzgünüm, modem hazýr deðil."
+
+#: connect.cpp:1148 connect.cpp:1189 modeminfo.cpp:374
+msgid "Sorry, the modem is busy."
+msgstr "Üzgünüm. Modem meþgul."
+
+#: connect.cpp:1424
+msgid ""
+"pppd command + command-line arguments exeed\n"
+"2024 characters in length. What are you doing?"
+msgstr ""
+"pppd komutu ve komut satýrý parametreleri 2024\n"
+"karakteri aþtý, Ne yapýyorsunuz?"
+
+
+#: conwindow.cpp:44
+msgid "Connected at:"
+msgstr "Baðlanýldý:"
+
+#: conwindow.cpp:50
+msgid "Time connected:"
+msgstr "Baðlanýlan zaman:"
+
+#: conwindow.cpp:59
+msgid "Session Bill:"
+msgstr "Oturum Faturasý:"
+
+#: conwindow.cpp:61
+msgid "Total Bill:"
+msgstr "Toplam Fatura:"
+
+#: conwindow.cpp:67 docking.cpp:74
+msgid "Disconnect"
+msgstr "Baðlantý kesildi"
+
+#: conwindow.cpp:71 docking.cpp:72
+msgid "Details"
+msgstr "Ayrýntýlar"
+
+#: debug.cpp:49
+msgid "Login Script Debug Window"
+msgstr "Oturum Açma Komutlarý Ayarlama Penceresi"
+
+#: edit.cpp:42
+msgid "Dial Setup"
+msgstr "Arama Ayarlarý"
+
+#: edit.cpp:46
+msgid "Connection Name:"
+msgstr "Baðlanma Adý:"
+
+#: edit.cpp:57
+msgid "Phone Number:"
+msgstr "Telefon Numarasý: "
+
+#: edit.cpp:68
+msgid "Authentication:"
+msgstr "Onaylama:"
+
+#: edit.cpp:73
+msgid "Script-based"
+msgstr "Betik tabanlý"
+
+#: edit.cpp:74
+msgid "PAP"
+msgstr "PAP"
+
+#: edit.cpp:75
+msgid "Terminal-based"
+msgstr "Uçbirim tabanlý"
+
+#: edit.cpp:76
+msgid "CHAP"
+msgstr "CHAP"
+
+#: edit.cpp:82
+msgid "Store password"
+msgstr "Parolayý sakla"
+
+#: edit.cpp:88
+msgid ""
+"Execute program\n"
+"upon connect:"
+msgstr ""
+"Baðlanýnca çalýþtýrýlacak\n"
+"yazýlým:"
+
+
+#: edit.cpp:100
+msgid ""
+"Execute program\n"
+"upon disconnect:"
+msgstr ""
+"Baðlantý kopunca\n"
+"programý çalýþtýr:"
+
+#: edit.cpp:112
+msgid "Edit pppd arguments:"
+msgstr "pppd parametrelerini düzenle:"
+
+#: edit.cpp:118
+msgid "Arguments"
+msgstr "Parametreler"
+
+#: edit.cpp:173
+msgid "IP Setup"
+msgstr "IP Ayarlarý"
+
+#: edit.cpp:180
+msgid "IP Address:"
+msgstr "IP Adresi:"
+
+#: edit.cpp:185
+msgid "Subnet Mask:"
+msgstr "Altað Maskesi:"
+
+#: edit.cpp:193
+msgid "Dynamic IP Address"
+msgstr "Dinamik IP Adresi"
+
+#: edit.cpp:196
+msgid "Static IP Address"
+msgstr "Statik IP Adresi"
+
+#: edit.cpp:200
+msgid "Auto-configure hostname from this IP"
+msgstr "Sunucu adýný IP'den ayarla"
+
+#: edit.cpp:314
+msgid "DNS Servers"
+msgstr "DNS Sunucularý"
+
+#: edit.cpp:330
+msgid "Domain Name:"
+msgstr "Alan Adý:"
+
+#: edit.cpp:342
+msgid "DNS IP Address:"
+msgstr "DNS IP Adresi:"
+
+#: edit.cpp:375
+msgid "DNS Address List:"
+msgstr "DNS Adres Listesi:"
+
+#: edit.cpp:385
+msgid "Disable existing DNS Servers during Connection"
+msgstr "Baðlantý süresince mevcut DNS sunucularýný ulaþýlamaz yap"
+
+#: edit.cpp:437
+msgid "Gateway Setup"
+msgstr "Að Geçidi Ayarý"
+
+#: edit.cpp:446
+msgid "Default Gateway"
+msgstr "Öntanýmlý Að Geçidi"
+
+#: edit.cpp:450
+msgid "Static Gateway"
+msgstr "Statik Að Geçidi"
+
+#: edit.cpp:456
+msgid ""
+"Gateway\n"
+"IP Address:"
+msgstr ""
+"Að geçidi\n"
+"IP Adresi:"
+
+
+#: edit.cpp:458
+msgid "Assign the Default Route to this Gateway"
+msgstr "Bu Að Çýkýþýna Öntanýmlý Yol Tanýmla"
+
+#: edit.cpp:557
+msgid "Edit Script"
+msgstr "Betik'i Düzenle"
+
+#: edit.cpp:580
+msgid "Insert"
+msgstr "Ekle"
+
+#: general.cpp:41
+msgid "kppp Setup"
+msgstr "kppp Ayarlarý"
+
+#: general.cpp:62
+msgid "pppd Timeout:"
+msgstr "pppd Zaman Aþýmý:"
+
+#: general.cpp:78 general.cpp:390 general.cpp:487
+msgid "Seconds"
+msgstr "Saniye"
+
+#: general.cpp:98
+msgid "Dock into Panel on Connect"
+msgstr "Baðlantýda Panele Ekle"
+
+#: general.cpp:104
+msgid "Automatic Redial on Disconnect"
+msgstr "Baðlantý Kopmasýnda Otomatik Yeniden Ara"
+
+#: general.cpp:111
+msgid "Show Clock on Caption"
+msgstr "Baþlýkta Saati Göster"
+
+#: general.cpp:118
+msgid "Disconnect on X-server shutdown"
+msgstr "X-sunucu kapanmasýnda baðlantýyý kes"
+
+#: general.cpp:124
+msgid "Quit on Disconnect"
+msgstr "Baðlantý kopunca programdan çýk"
+
+#: general.cpp:130
+msgid "Minimize Window on Connect"
+msgstr "Baðlantýda Pencereyi Küçült"
+
+#: general.cpp:199
+msgid "About kppp"
+msgstr "kppp Hakkýnda"
+
+#: general.cpp:207
+msgid ""
+"\n"
+"A dialer and front-end to pppd\n"
+"\n"
+"Copyright (c) 1997\n"
+"Bernd Johannes Wuebben\n"
+"wuebben@math.cornell.edu"
+"\n"
+"pppd için arayüz\n"
+"\n"
+"Telif Hakký (c) 1997\n"
+"Bernd Johannes Wuebben\n"
+"wuebben@math.cornell.edu"
+msgstr ""
+
+
+#: general.cpp:224
+msgid ""
+"With contributions from:\n"
+"\n"
+"Mario Weilguni\n"
+"Markus Wuebben\n"
+"Jesus Fuentes Saavedra\n"
+"Harri Porten\n"
+"Peter Silva"
+msgstr ""
+"Mario Weilguni\n"
+"Markus Wuebben\n"
+"Jesus Fuentes Saavedra\n"
+"Harri Porten\n"
+"Peter Silva\n"
+"\n"
+"Katkýlarýyla"
+
+#: general.cpp:248
+msgid "Serial device"
+msgstr "Seri Aygýt"
+
+#: general.cpp:251
+msgid "Modem Device:"
+msgstr "Modem Aygýtý:"
+
+#: general.cpp:285
+msgid "Flow Control:"
+msgstr "Akýþ Denetimi:"
+
+#: general.cpp:300
+msgid "Line Termination:"
+msgstr "Satýr Sonu:"
+
+#: general.cpp:315
+msgid "Connection Speed:"
+msgstr "Baðlanma Hýzý:"
+
+#: general.cpp:358
+msgid "Modem Lock File:"
+msgstr "Modem Kitleme Dosyasý:"
+
+#: general.cpp:375
+msgid "Modem Timeout:"
+msgstr "Modem Zaman Aþýmý:"
+
+#: general.cpp:460 main.cpp:503
+msgid "Modem"
+msgstr "Modem"
+
+#: general.cpp:472
+msgid "Busy Wait:"
+msgstr "Meþgul Bekle:"
+
+#: general.cpp:500
+msgid "Modem Asserts CD Line."
+msgstr "CD çizgisi ile Modem Çakýþýyor."
+
+#: general.cpp:516
+msgid "Modem Commands"
+msgstr "Modem Komutlarý"
+
+#: general.cpp:517
+msgid "Query Modem"
+msgstr "Modem Sorgula"
+
+#: general.cpp:518
+msgid "Terminal"
+msgstr "Uçbirim"
+
+#: main.cpp:327
+msgid "Connect to: "
+msgstr "Baðlan : "
+
+#: main.cpp:338
+msgid "Login ID:"
+msgstr "Kullanýcý No:"
+
+#: main.cpp:350
+msgid "Password:"
+msgstr "Parola:"
+
+#: main.cpp:367
+msgid "Show Log Window"
+msgstr "Kayýt Penceresini Göster"
+
+#: main.cpp:389
+msgid "Setup"
+msgstr "Ayar"
+
+#: main.cpp:404
+msgid "Connect"
+msgstr "Baðlan"
+
+#: main.cpp:472
+#, c-format
+msgid ""
+"No such Account:\n"
+"%s"
+msgstr ""
+"%s\n"
+"isimli hesap yok"
+
+#: main.cpp:489
+msgid "kppp Configuration"
+msgstr "kppp Yapýlandýrmasý"
+
+#: main.cpp:501
+msgid "Accounts"
+msgstr "Hesaplar"
+
+#: main.cpp:502
+msgid "Device"
+msgstr "Aygýt"
+
+#: main.cpp:504
+msgid "PPP"
+msgstr "PPP"
+
+#: main.cpp:732
+#, c-format
+msgid ""
+"kppp can not find:\n"
+" %s\n"
+"Please install pppd properly and/or adjust\n"
+" the location of the pppd executable on the PPP tab of\n"
+"the setup dialog.\n"
+" Thank You"
+msgstr ""
+"kppp:\n"
+" %s\n"
+"bulamýyor. Lütfen ppd'yi düzgün olarak yapýlandýrýn ya da\n"
+" pppd dosyaalrýnýn yolunu Yapýlandýrma menüsünün PPP kýsmýnda\n"
+"doðru olarak belirtin.\n"
+" Teþekkürler"
+
+#: main.cpp:744
+#, c-format
+msgid ""
+"kppp can not execute:\n"
+" %s\n"
+"Please make sure thatyou have given kppp setuid permission and that\n"
+"pppd is executable."
+msgstr ""
+"kppp %s'i\n"
+"çalýþtýramýyor. kppp'nin SUID olduðundan ve çalýþtýrma hakký \n"
+"bulundurduðundan emin olunuz!"
+
+#: main.cpp:758
+#, c-format
+msgid ""
+"kppp can not find:\n"
+" %s\n"
+"Please make sure you have setup\n"
+"your modem device properly\n"
+"and/or adjust\n"
+" the location of the modem device on the modem tab of\n"
+"the setup dialog.\n"
+" Thank You"
+msgstr ""
+"kppp %s'i\n"
+"bulamadý. Modeminizi doðru ayarladýðýnýza emin olunuz\n"
+"Teþekkürler"
+
+#: main.cpp:778
+msgid ""
+"You have selected the authentication\n"
+"method PAP. This requires that you\n"
+"supply a username and a password!"
+msgstr ""
+"Onaylama isteyen PAP methodu seçtiniz\n"
+"Bunun için bir kullanýcý adý ve parolasý\n"
+"girmeniz gerekecek."
+
+#: main.cpp:785
+#, c-format
+msgid ""
+"Cannot create PAP authentication\n"
+"file \"%s\""
+msgstr ""
+"PAP Onaylama Dosyasý\n"
+"%s yaratýlamýyor."
+
+#: main.cpp:802
+msgid ""
+"You have selected the authentication\n"
+"method CHAP. This requires that you\n"
+"supply a username and a password!"
+msgstr ""
+"Onaylama isteyen bir CHAP methodu seçtiniz\n"
+"Bunun için bir kullanýcý adý ve parolasý\n"
+"girmeniz gerekecek."
+
+
+#: main.cpp:809
+#, c-format
+msgid ""
+"Cannot create CHAP authentication\n"
+"file \"%s\""
+msgstr ""
+"CHAP Onaylama Dosyasý\n"
+"%s yaratýlamýyor."
+
+#: main.cpp:821
+msgid "You have to specify a telephone number !\n"
+msgstr "Bir telefon numarsý belirtmeniz gerekiyor !\n"
+
+#: main.cpp:895
+msgid "Quit kPPP?"
+msgstr "kppp'den çýk?"
+
+#: main.cpp:896
+msgid "Exiting kPPP will close your PPP Session."
+msgstr "kppp'den çýkmak PPP oturumunuzu kapatacaktýr."
+
+#: main.cpp:931
+msgid ""
+"Can not load the accounting\n"
+"ruleset \""
+msgstr ""
+"Masraf hesaplama kurallarýný\n"
+"yükleyemedim: \""
+
+
+#: modemcmds.cpp:40
+msgid "Edit Modem Commands"
+msgstr "Modem komutlarýný düzenle"
+
+#: modemcmds.cpp:54
+msgid "Initialization String:"
+msgstr "Kurma Dizgesi:"
+
+#: modemcmds.cpp:61
+msgid "Init Response:"
+msgstr "Kur cevabý:"
+
+#: modemcmds.cpp:86
+msgid "Init Delay (sec/100):"
+msgstr "Kur gecikmesi (sn/100):"
+
+#: modemcmds.cpp:91
+msgid "Dial String:"
+msgstr "Arama Dizgesi:"
+
+#: modemcmds.cpp:98
+msgid "Connect Response:"
+msgstr "Baðlan Yanýtý:"
+
+#: modemcmds.cpp:105
+msgid "Busy Response:"
+msgstr "Meþgul Yanýtý:"
+
+#: modemcmds.cpp:112
+msgid "No Carrier Resonse:"
+msgstr "Taþýyýcý Yok:"
+
+#: modemcmds.cpp:119
+msgid "No Dialtone Response:"
+msgstr "Arama Tonu Yanýtý Yok:"
+
+#: modemcmds.cpp:126
+msgid "Hangup String:"
+msgstr "Kapat Dizgesi:"
+
+#: modemcmds.cpp:133
+msgid "Hangup Response:"
+msgstr "Kapat Yanýtý:"
+
+#: modemcmds.cpp:140
+msgid "Answer String:"
+msgstr "Cevap Ver Dizgesi"
+
+#: modemcmds.cpp:147
+msgid "Ring Response:"
+msgstr "Çalma Yanýtý:"
+
+#: modemcmds.cpp:154
+msgid "Answer Response:"
+msgstr "Cevap Karþýlýðý:"
+
+#: modemcmds.cpp:161
+msgid "Escape String:"
+msgstr "Kaçýþ Dizgesi:"
+
+#: modemcmds.cpp:168
+msgid "Escape Response:"
+msgstr "Kaçýþ Yanýtý:"
+
+#: modemcmds.cpp:195
+msgid "Guard Time (sec/50):"
+msgstr "Bekçi Zamaný (sn/50):"
+
+#: pppdargs.cpp:33
+msgid "Customize pppd Arguments"
+msgstr "pppd Parametrelerini özelleþtir"
+
+#: pppdargs.cpp:41
+msgid "Argument:"
+msgstr "Parametre:"
+
+#: pppdargs.cpp:58
+msgid "Restore Defaults"
+msgstr "Öntanýmlýlarý Geri Yükle"
+
+#: pppdata.cpp:52
+msgid ""
+"The application-specific config file\n"
+"could not be opened neither\n"
+"read-write nor read-only"
+msgstr ""
+"Uygulamaya özgü yapýlandýrma dosyasý\n"
+"okuma yazma veya salt oku kipinde\n"
+"açýlamadý"
+
+#: modeminfo.cpp:46
+msgid "ATI Query"
+msgstr "ATI Sorgusu"
+
+#: modeminfo.cpp:130
+msgid "Modem Query timed out."
+msgstr "Modem Sorgusu Zaman Aþýmýna Uðradý"
+
+#: miniterm.cpp:277 modeminfo.cpp:368
+msgid "Can't open Modem"
+msgstr "Modem Açýlamýyor"
+
+#: modeminfo.cpp:414
+msgid "Sorry, the modem is busy"
+msgstr "Modem Meþgul"
+
+#: modeminfo.cpp:533
+msgid "Modem Query Results"
+msgstr "Modem Sorgu Sonuçlarý"
+
+#: pppstatdlg.cpp:70
+msgid "kppp Statistics"
+msgstr "kppp Ýstatistikleri"
+
+#: pppstatdlg.cpp:75
+msgid "Statistics"
+msgstr "Ýstatistikler"
+
+#: pppstatdlg.cpp:148
+msgid "Local Addr:"
+msgstr "Yerel Adres:"
+
+#: pppstatdlg.cpp:154
+msgid "Remote Addr:"
+msgstr "Uzak Adres:"
+
+#: pppstatdlg.cpp:186
+msgid "bytes in"
+msgstr "gelen byte"
+
+#: pppstatdlg.cpp:187
+msgid "bytes out"
+msgstr "giden byte"
+
+#: pppstatdlg.cpp:189
+msgid "packets in"
+msgstr "gelen paketler"
+
+#: pppstatdlg.cpp:190
+msgid "packets out"
+msgstr "giden paketler"
+
+#: pppstatdlg.cpp:192
+msgid "vjcomp in"
+msgstr "gelen vjcomp"
+
+#: pppstatdlg.cpp:193
+msgid "vjcomp out"
+msgstr "giden vjcomp"
+
+#: pppstatdlg.cpp:195
+msgid "vjunc in"
+msgstr "gelen vjunc"
+
+#: pppstatdlg.cpp:196
+msgid "vjunc out"
+msgstr "giden vjunc"
+
+#: pppstatdlg.cpp:198
+msgid "vjerr"
+msgstr "vjerr"
+
+#: pppstatdlg.cpp:199
+msgid "non-vj"
+msgstr "non-vj"
+
+#: pppstatdlg.cpp:370 pppstatdlg.cpp:377
+msgid "unavailable"
+msgstr "mümkün deðil"
+
+#: miniterm.cpp:52
+msgid "Kppp Mini-Terminal"
+msgstr "kppp mini-uçbirim"
+
+#: miniterm.cpp:58
+msgid "&Reset Modem"
+msgstr "Modem'i &Sýfýrla"
+
+#: miniterm.cpp:64
+msgid "&Modem"
+msgstr "&Modem"
+
+#: miniterm.cpp:107
+msgid "Quit MiniTerm"
+msgstr "MiniTerm Çýkýþ"
+
+#: miniterm.cpp:113
+msgid "Reset Modem"
+msgstr "Modemi Sýfýrla"
+
+#: miniterm.cpp:151
+msgid "Initializing Modem"
+msgstr "Modem Hazýrlanýyor"
+
+#: miniterm.cpp:223
+msgid "Hanging up ..."
+msgstr "Kapatýyorum ..."
+
+#: miniterm.cpp:243
+msgid "Resetting Modem"
+msgstr "Modem Sýfýrlanýyor"
+
+#: miniterm.cpp:262
+msgid "Can't restore tty settings: tcsetattr()\n"
+msgstr "tty ayarlarý geri yüklenemiyor: tcsetattr()\n"
+
+#: miniterm.cpp:283
+msgid "tcgetattr() failed\n"
+msgstr "tcgetattr() baþarýsýz\n"
+
+#: miniterm.cpp:330
+msgid "tcsetattr() failed\n"
+msgstr "tcsetattr() baþarýsýz\n"
+
+#: acctselect.cpp:48
+msgid "Accounting Setup"
+msgstr "Hesaplama Ayarý"
+
+#: acctselect.cpp:56
+msgid "Enable accounting"
+msgstr "Hesaplama seçilmiþ"
+
+#: acctselect.cpp:74
+msgid "Selected:"
+msgstr "Seçilmiþ:"
+
+#: acctselect.cpp:88
+msgid "Volume accounting:"
+msgstr "Ses Hesaplama:"
+
+#: acctselect.cpp:92
+msgid "No accounting"
+msgstr "Hesaplama yok"
+
+#: acctselect.cpp:93
+msgid "Bytes in"
+msgstr "Gelen byte"
+
+#: acctselect.cpp:94
+msgid "Bytes out"
+msgstr "Giden byte"
+
+#: acctselect.cpp:95
+msgid "Bytes in and out"
+msgstr "Gelen ve giden byte"
+
+#: acctselect.cpp:165 acctselect.cpp:271
+msgid "Available rules"
+msgstr "Mümkün kurallar"
+
+#: ruleset.cpp:541
+msgid "kppp: no rulefile specified\n"
+msgstr "kppp: Kural dosyasý belirtilmemiþ\n"
+
+#: ruleset.cpp:547
+#, c-format
+msgid "kppp: rulefile \"%s\" not found\n"
+msgstr "kppp: Kural dosyasý \"%s\" bulunamadý\n"
+
+#: ruleset.cpp:552
+msgid "kppp: rulefiles must have the extension \".rst\"\n"
+msgstr "kppp: kural dosyalarý \".rst\" uzantýsýna sahip olmalý\n"
+
+#: ruleset.cpp:561
+msgid "kppp: error parsing the ruleset\n"
+msgstr "kppp: Hata\n"
+
+#: ruleset.cpp:566
+#, c-format
+msgid "kppp: parse error in line %d\n"
+msgstr "kppp: %d satýrýnda ayrýþtýrma hatasý\n"
+
+#: ruleset.cpp:572
+msgid "kppp: rulefile does not contain a default rule\n"
+msgstr "kppp: kural dosyasý bir önatnýmlý kural içermiyor\n"
+
+#: ruleset.cpp:577
+msgid "kppp: rulefile does not contain a \"name=...\" line\n"
+msgstr "kppp: kural dosyasý bir \"name=...\" satýrý içermiyor\n"
+
+#: ruleset.cpp:581
+msgid "kppp: rulefile is ok\n"
+msgstr "kppp: kural dosyasý tamam\n"
+
+#: docking.cpp:220
+msgid "Minimize"
+msgstr "Küçült"
+
+#: runtests.cpp:121
+msgid ""
+"You´re not allowed to dial out with kppp.\n"
+"Contact your system administrator."
+msgstr ""
+"kppp ile telefon baðlantýsý kurma izniniz yok.\n"
+"Sistem sorumlunuzla görüþün."
+
+#: runtests.cpp:137
+msgid ""
+"Cannot find the pppd-daemon!\n"
+"\n"
+"Make sure that pppd is installed and\n"
+"you have entered the correct path.\n"
+msgstr ""
+"pppd-deamon bulunamýyor!\n"
+"\n"
+"pppd'nin yüklendiðine ve doðru yolun\n"
+"belirtildiðine emin olunuz\n"
+
+#: runtests.cpp:149
+msgid ""
+"You do not have the permission\n"
+"to start pppd!\n"
+"\n"
+"Contact your system administrator\n"
+"and ask to get access to pppd."
+msgstr ""
+"pppd'yi baþlatmak için gerekli\n"
+"izne sahip deðilsiniz\n"
+"\n"
+"Sistem yöneticinize danýþýnýz."
+
+#: runtests.cpp:160 runtests.cpp:175
+msgid ""
+"pppd is not properly installed!\n"
+"\n"
+"The pppd binary must be installed\n"
+"with the SUID bit set. Contact your\n"
+"system administrator."
+msgstr ""
+"pppd doðru yüklenmemiþ!"
+"\n"
+"pppd programý SUID biti kurulu olacak\n"
+"þekilde yüklenmeli. Sistem yöneticinize\n"
+"danýþýnýz."
+
+#: runtests.cpp:220
+msgid ""
+"kppp has detected a 'lock' option in /etc/ppp/options.\n"
+"\n"
+"This option has to be removed since kppp takes care of device locking "
+"itself.\n"
+"Contact your system administrator."
+msgstr ""
+"kppp /etc/ppp/options'da bir 'lock' seçeneði buldu\n"
+"\n"
+"Bu seçenek kaldýrýlmalý\n"
+"Sistem Yöneticinize Baþvurunuz"
+
+#: runtests.cpp:245
+msgid ""
+"/etc/resolv.conf is missing!\n"
+"\n"
+"Ask your system administrator to create\n"
+"a non-empty file that has appropriate\n"
+"read and write permissions."
+msgstr ""
+"/etc/resolv.conf dosyasý yok!\n"
+"\n"
+"Sistem yöneticinizden okuma ve yazma hakký\n"
+"bulunan düzgün bir /etc/resolv.conf \n"
+"dosyasý yaratmasýný isteyin."
