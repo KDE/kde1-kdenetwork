@@ -190,23 +190,21 @@ void PPPL_ShowLog() {
   if(!foundLCP) {
     int result = KMsgBox::yesNo(0,
 				i18n("Warning"),
-				i18n("
-KPPP could not prepare a PPP log. It큦 very likely
-that pppd was started without the \"debug\" option.\n
-Without this option it큦 difficult to find out PPP
-problems, so you should turn on the debug option.\n
-Shall I turn it on now?"),
+				i18n("KPPP could not prepare a PPP log. It큦 very likely\n"
+				     "that pppd was started without the \"debug\" option.\n\n"
+				     "Without this option it큦 difficult to find out PPP\n"
+				     "problems, so you should turn on the debug option.\n\n"
+				     "Shall I turn it on now?"),
 				KMsgBox::QUESTION);
 
     if(result != 0) {
       gpppdata.setPPPDebug(TRUE);
       KMsgBox::message(0,
 		       i18n("Information"),
-		       i18n("
-The \"debug\" option has been added. You
-should now try to reconnect. If that fails
-again, you will get a PPP log that may help
-you to track down the connection problem."),
+		       i18n("The \"debug\" option has been added. You\n"
+			    "should now try to reconnect. If that fails\n"
+			    "again, you will get a PPP log that may help\n"
+			    "you to track down the connection problem."),
 		       KMsgBox::INFORMATION);
     }
     
@@ -223,12 +221,11 @@ you to track down the connection problem."),
       if(strlen(p)) {
         // found a remote message
         QString msg(2048);
-        msg.sprintf(i18n("
-The remote system system has sent the following message:
-
-\"%s\"
-
-This may give you a hint why the connection has failed."), p);
+        msg.sprintf(i18n("The remote system system has sent the following message:\n"
+			 "\n"
+			 "\"%s\"\n"
+			 "\n"
+			 "This may give you a hint why the connection has failed."), p);
       
         KMsgBox::message(0,
                          i18n("Error"),
@@ -270,6 +267,8 @@ This may give you a hint why the connection has failed."), p);
     for(i = 0; i < (int)sl.count(); i++)
       fprintf(f, "%s\n", sl.at(i));
     fclose(f);
+    if(geteuid() == 0)
+      chown(s.data(), getuid(), getgid());
 
     QString msg;
     msg.sprintf("The PPP log has been saved\nas \"%s\"!\n\nIf you want to send a bug report or have\nproblems connecting to the internet, please\nattach this file. It will help the maintainers\nto find the bug and to improve KPPP", s.data());

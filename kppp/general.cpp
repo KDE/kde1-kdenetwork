@@ -1,4 +1,4 @@
-/*
+#/*
  *            kPPP: A pppd front end for the KDE project
  *
  * $Id$
@@ -616,7 +616,7 @@ void ModemWidget2::query_modem() {
 
 
 void ModemWidget2::terminal() {
-    MiniTerm terminal(NULL,NULL);
+  MiniTerm terminal(NULL,NULL);
   terminal.exec();
 }
 

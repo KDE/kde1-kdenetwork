@@ -1,3 +1,12 @@
+1998-09-26  Mario Weilguni <mweilguni@kde.org>
+
+	* cosmetic changes in ppplog.cpp
+
+1998-09-24  Mario Weilguni <mweilguni@kde.org>
+
+	* Ownership of PPP logfiles corrected to the real, not the
+	effective user id
+
 1998-09-23  Harri Porten  <porten@kde.org>
 
 	* ppplog.cpp: skip remote message if empty
