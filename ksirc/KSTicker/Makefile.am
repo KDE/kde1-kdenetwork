@@ -12,11 +12,9 @@
 # kde_toolbardir    Where general toolbar icons should go to.
 # kde_wallpaperdir  Where general wallpapers should go to.
 
-# just set the variable
-#APPSDIR = $(kde_appsdir)/Internet
 # set the include path for X, qt and KDE
-DEFS = @DEFS@ -I. -I$(srcdir) -I../.. -include ../kplunger/kplunger.h 
-INCLUDES= $(all_includes)
+INCLUDES= -I. -I$(srcdir) -I../.. -include ../kplunger/kplunger.h $(all_includes)
+
 # claim, which subdirectories you want to install
 # SUBDIRS = 
 # KSTicker KSprogress
@@ -48,11 +46,11 @@ speeddialogData.cpp \
 mspeeddialogData.cpp
 
 # the library search path
-ksticker_LDFLAGS =  @all_libraries@
+ksticker_LDFLAGS =  $(all_libraries)
 
 # the libraries to link against. Be aware of the order. First the libraries,
 # that depend on the following ones.
-ksticker_LDADD   = ../kplunger/libkplunger.a -lkdeui -lkdecore -lqt -lX11 -lXext @LIBSOCKET@     
+ksticker_LDADD   = ../kplunger/libkplunger.a $(LIB_KDEUI)     
 
 # this option you can leave out. Just, if you use "make dist", you need it
 noinst_HEADERS = ksticker.h          main.h              speeddialog.h       speeddialogData.h kspainter.h
