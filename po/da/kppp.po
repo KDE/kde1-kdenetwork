@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-11-27 01:56+0100\n"
+"POT-Creation-Date: 1998-11-29 01:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -165,7 +165,7 @@ msgstr ""
 msgid "Login script has unbalanced loop Start/End"
 msgstr ""
 
-#: connect.cpp:97 connect.cpp:195 main.cpp:977
+#: connect.cpp:97 connect.cpp:195 main.cpp:979
 msgid "Connecting to: "
 msgstr "Forbinder til: "
 
@@ -178,7 +178,7 @@ msgstr "Kan desværre ikke oprette låse fil."
 msgid "Looking for Modem ..."
 msgstr "Leder efter modem ..."
 
-#: connect.cpp:120 debug.cpp:80 main.cpp:990
+#: connect.cpp:120 debug.cpp:80 main.cpp:992
 msgid "Log"
 msgstr ""
 
@@ -206,7 +206,7 @@ msgstr "Linien er optaget. Lægger på ..."
 msgid "Line Busy. Waiting: "
 msgstr "Linien er optaget. Venter: "
 
-#: connect.cpp:332 connect.cpp:451 connect.cpp:470
+#: connect.cpp:332 connect.cpp:452 connect.cpp:471
 msgid " seconds"
 msgstr " sekunder"
 
@@ -218,119 +218,119 @@ msgstr "Ingen ringetone"
 msgid "No Carrier"
 msgstr "Ingen forbindelse"
 
-#: connect.cpp:396
+#: connect.cpp:397
 #, fuzzy
 msgid "Scanning "
 msgstr "Sender "
 
-#: connect.cpp:407
+#: connect.cpp:408
 #, fuzzy
 msgid "Saving "
 msgstr "Sender "
 
-#: connect.cpp:426
+#: connect.cpp:427
 msgid "Sending "
 msgstr "Sender "
 
-#: connect.cpp:437
+#: connect.cpp:438
 msgid "Expecting "
 msgstr "Venter på "
 
-#: connect.cpp:449
+#: connect.cpp:450
 msgid "Pause "
 msgstr ""
 
-#: connect.cpp:468
+#: connect.cpp:469
 msgid "Timeout "
 msgstr ""
 
-#: connect.cpp:482 connect.cpp:483
+#: connect.cpp:483 connect.cpp:484
 msgid "Hangup"
 msgstr "Lægger på"
 
-#: connect.cpp:496 connect.cpp:497
+#: connect.cpp:497 connect.cpp:498
 msgid "Answer"
 msgstr "Svar"
 
-#: connect.cpp:505
+#: connect.cpp:506
 msgid "ID "
 msgstr ""
 
-#: connect.cpp:542
+#: connect.cpp:543
 msgid "Password "
 msgstr "Kodeord "
 
-#: connect.cpp:580
+#: connect.cpp:581
 msgid "Prompting "
 msgstr ""
 
-#: connect.cpp:617
+#: connect.cpp:618
 msgid "PW Prompt "
 msgstr ""
 
-#: connect.cpp:643
+#: connect.cpp:644
 msgid "Loop Start "
 msgstr ""
 
-#: connect.cpp:647
+#: connect.cpp:648
 msgid "ERROR: Nested too deep, ignored."
 msgstr ""
 
-#: connect.cpp:652
+#: connect.cpp:653
 msgid "Loops nested too deeply!"
 msgstr ""
 
-#: connect.cpp:670
+#: connect.cpp:671
 msgid "LoopEnd without matching Start! Line: "
 msgstr ""
 
-#: connect.cpp:745
+#: connect.cpp:746
 msgid "Starting pppd ..."
 msgstr "Starter pppd ..."
 
-#: connect.cpp:823
+#: connect.cpp:824
 msgid "Scan Var: "
 msgstr ""
 
-#: connect.cpp:833
+#: connect.cpp:834
 msgid "Found: "
 msgstr "Fundet: "
 
-#: connect.cpp:846
+#: connect.cpp:847
 msgid "Looping: "
 msgstr ""
 
-#: connect.cpp:875 modeminfo.cpp:225
+#: connect.cpp:876 modeminfo.cpp:225
 msgid "One Moment Please ..."
 msgstr "Et øjeblik ..."
 
-#: connect.cpp:917
+#: connect.cpp:918
 msgid "Script timed out!"
 msgstr ""
 
-#: connect.cpp:936
+#: connect.cpp:937
 #, fuzzy
 msgid "Scanning: "
 msgstr "Sender "
 
-#: connect.cpp:946
+#: connect.cpp:947
 msgid "Expecting: "
 msgstr "Forventer: "
 
-#: connect.cpp:973
+#: connect.cpp:974
 msgid "Logging on to Network ..."
 msgstr "Logger på netværket ..."
 
-#: connect.cpp:999
+#: connect.cpp:1000
 msgid "Running Startup Command ..."
 msgstr "Kører opstarts kommando ..."
 
-#: connect.cpp:1004 connect.cpp:1011
+#: connect.cpp:1005 connect.cpp:1012
 #, fuzzy
 msgid "Done"
 msgstr "Ingen"
 
-#: connect.cpp:1120
+#: connect.cpp:1121
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
@@ -1200,7 +1200,7 @@ msgstr ""
 "i opsætningsdialogen.\n"
 "Tak"
 
-#: main.cpp:922
+#: main.cpp:924
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1210,7 +1210,7 @@ msgstr ""
 "Dette kræver at du skriver\n"
 "brugernavn og kodeord!"
 
-#: main.cpp:931
+#: main.cpp:933
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1219,7 +1219,7 @@ msgstr ""
 "Kan ikke oprette PAP identifikationsfil\n"
 "\"%s\""
 
-#: main.cpp:948
+#: main.cpp:950
 #, fuzzy
 msgid ""
 "You have selected the authentication\n"
@@ -1230,7 +1230,7 @@ msgstr ""
 "Dette kræver at du skriver\n"
 "brugernavn og kodeord!"
 
-#: main.cpp:957
+#: main.cpp:959
 #, fuzzy, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1239,19 +1239,19 @@ msgstr ""
 "Kan ikke oprette PAP identifikationsfil\n"
 "\"%s\""
 
-#: main.cpp:969
+#: main.cpp:971
 msgid "You must specify a telephone number!"
 msgstr ""
 
-#: main.cpp:1056
+#: main.cpp:1058
 msgid "Quit kPPP?"
 msgstr "Afslut kPPP"
 
-#: main.cpp:1057
+#: main.cpp:1059
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Hvis du afslutter kPPP vil det afbryde din PPP forbindelse."
 
-#: main.cpp:1092
+#: main.cpp:1094
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""

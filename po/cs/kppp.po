@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp 0.9.6\n"
-"POT-Creation-Date: 1998-11-27 01:56+0100\n"
+"POT-Creation-Date: 1998-11-29 01:52+0100\n"
 "PO-Revision-Date: 1998-10-24 23:59 CEST\n"
 "Last-Translator: Miroslav Flídr <flidr@kky.zcu.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -165,7 +165,7 @@ msgstr ""
 msgid "Login script has unbalanced loop Start/End"
 msgstr "Pøihla¹ovací skript má nevyvá¾enou smyèku start/konec"
 
-#: connect.cpp:97 connect.cpp:195 main.cpp:977
+#: connect.cpp:97 connect.cpp:195 main.cpp:979
 msgid "Connecting to: "
 msgstr "Pøipojování k: "
 
@@ -178,7 +178,7 @@ msgstr "Lituji, není mo¾né vytvoøit soubor pro zamknutí modemu."
 msgid "Looking for Modem ..."
 msgstr "Hledání modemu ..."
 
-#: connect.cpp:120 debug.cpp:80 main.cpp:990
+#: connect.cpp:120 debug.cpp:80 main.cpp:992
 msgid "Log"
 msgstr "Záznam"
 
@@ -206,7 +206,7 @@ msgstr "Linka obsazena, zavì¹uji ..."
 msgid "Line Busy. Waiting: "
 msgstr "Linka obsazena. Èekám: "
 
-#: connect.cpp:332 connect.cpp:451 connect.cpp:470
+#: connect.cpp:332 connect.cpp:452 connect.cpp:471
 msgid " seconds"
 msgstr " sekund"
 
@@ -218,116 +218,116 @@ msgstr "®ádný vyzvánìcí tón"
 msgid "No Carrier"
 msgstr "®ádný nosiè"
 
-#: connect.cpp:396
+#: connect.cpp:397
 msgid "Scanning "
 msgstr "Zkoumám "
 
-#: connect.cpp:407
+#: connect.cpp:408
 msgid "Saving "
 msgstr "Ukládám "
 
-#: connect.cpp:426
+#: connect.cpp:427
 msgid "Sending "
 msgstr "Posílám "
 
-#: connect.cpp:437
+#: connect.cpp:438
 msgid "Expecting "
 msgstr "Oèekávám "
 
-#: connect.cpp:449
+#: connect.cpp:450
 msgid "Pause "
 msgstr "Pauza "
 
-#: connect.cpp:468
+#: connect.cpp:469
 msgid "Timeout "
 msgstr "Timemout"
 
-#: connect.cpp:482 connect.cpp:483
+#: connect.cpp:483 connect.cpp:484
 msgid "Hangup"
 msgstr "Zavì¹ení"
 
-#: connect.cpp:496 connect.cpp:497
+#: connect.cpp:497 connect.cpp:498
 msgid "Answer"
 msgstr "Odpovìï"
 
-#: connect.cpp:505
+#: connect.cpp:506
 msgid "ID "
 msgstr "ID"
 
-#: connect.cpp:542
+#: connect.cpp:543
 msgid "Password "
 msgstr "Heslo "
 
-#: connect.cpp:580
+#: connect.cpp:581
 msgid "Prompting "
 msgstr "Dotázat se na "
 
-#: connect.cpp:617
+#: connect.cpp:618
 msgid "PW Prompt "
 msgstr "PW Prompt "
 
-#: connect.cpp:643
+#: connect.cpp:644
 msgid "Loop Start "
 msgstr "Start smyèky "
 
-#: connect.cpp:647
+#: connect.cpp:648
 msgid "ERROR: Nested too deep, ignored."
 msgstr "CHYBA: Smyèka vnoøena pøíli¹ hluboko, ignoruji."
 
-#: connect.cpp:652
+#: connect.cpp:653
 msgid "Loops nested too deeply!"
 msgstr "Smyèky vnoøeny pøíli¹ hluboko!"
 
-#: connect.cpp:670
+#: connect.cpp:671
 #, fuzzy
 msgid "LoopEnd without matching Start! Line: "
 msgstr "Konec smyèky bez odpovídajícího startu! Øádka: "
 
-#: connect.cpp:745
+#: connect.cpp:746
 msgid "Starting pppd ..."
 msgstr "Startuji pppd ..."
 
-#: connect.cpp:823
+#: connect.cpp:824
 msgid "Scan Var: "
 msgstr "Zkoumat Var:"
 
-#: connect.cpp:833
+#: connect.cpp:834
 msgid "Found: "
 msgstr "Nalezeno: "
 
-#: connect.cpp:846
+#: connect.cpp:847
 msgid "Looping: "
 msgstr "Cyklus: "
 
-#: connect.cpp:875 modeminfo.cpp:225
+#: connect.cpp:876 modeminfo.cpp:225
 msgid "One Moment Please ..."
 msgstr "Okam¾ik prosím ..."
 
-#: connect.cpp:917
+#: connect.cpp:918
 msgid "Script timed out!"
 msgstr "Timeout skriptu!"
 
-#: connect.cpp:936
+#: connect.cpp:937
 msgid "Scanning: "
 msgstr "Zkoumání: "
 
-#: connect.cpp:946
+#: connect.cpp:947
 msgid "Expecting: "
 msgstr "Oèekávám: "
 
-#: connect.cpp:973
+#: connect.cpp:974
 msgid "Logging on to Network ..."
 msgstr "Pøihla¹ování do sítì ..."
 
-#: connect.cpp:999
+#: connect.cpp:1000
 msgid "Running Startup Command ..."
 msgstr "Vykonávám startovní pøíkaz ..."
 
-#: connect.cpp:1004 connect.cpp:1011
+#: connect.cpp:1005 connect.cpp:1012
 msgid "Done"
 msgstr ""
 
-#: connect.cpp:1120
+#: connect.cpp:1121
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
@@ -1196,7 +1196,7 @@ msgstr ""
 "v konfiguraèním dialogu.\n"
 " Dìkuji vám"
 
-#: main.cpp:922
+#: main.cpp:924
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1206,7 +1206,7 @@ msgstr ""
 "Toto vy¾aduje, aby jste poskytli\n"
 "u¾ivatelské jméno a heslo!"
 
-#: main.cpp:931
+#: main.cpp:933
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1215,7 +1215,7 @@ msgstr ""
 "Není mo¾né vytvoøit ovìøovací soubor\n"
 "pro PAP \"%s\""
 
-#: main.cpp:948
+#: main.cpp:950
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -1225,7 +1225,7 @@ msgstr ""
 "Toto vy¾aduje, aby jste poskytli\n"
 "u¾ivatelské jméno a heslo!"
 
-#: main.cpp:957
+#: main.cpp:959
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1234,20 +1234,20 @@ msgstr ""
 "Není mo¾né vytvoøit ovìøovací soubor\n"
 "pro CHAP \"%s\""
 
-#: main.cpp:969
+#: main.cpp:971
 #, fuzzy
 msgid "You must specify a telephone number!"
 msgstr "Je nutné zadat telefonní èíslo !\n"
 
-#: main.cpp:1056
+#: main.cpp:1058
 msgid "Quit kPPP?"
 msgstr "Ukonèit kPPP?"
 
-#: main.cpp:1057
+#: main.cpp:1059
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Ukonèení kPPP uzavøe va¹e PPP sezení."
 
-#: main.cpp:1092
+#: main.cpp:1094
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""

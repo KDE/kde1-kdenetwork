@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-11-27 01:56+0100\n"
+"POT-Creation-Date: 1998-11-29 01:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: LinuxKorea Co. <kde@linuxkorea.co.kr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -166,7 +166,7 @@ msgstr ""
 msgid "Login script has unbalanced loop Start/End"
 msgstr "로그인 스트립트 내부에 Start/End가 올바르지 않게 사용되었습니다"
 
-#: connect.cpp:97 connect.cpp:195 main.cpp:977
+#: connect.cpp:97 connect.cpp:195 main.cpp:979
 msgid "Connecting to: "
 msgstr "연결 대상:"
 
@@ -179,7 +179,7 @@ msgstr "모뎀 잠금 파일을 생성할 수 없읍니다"
 msgid "Looking for Modem ..."
 msgstr "모뎀 찾는 중..."
 
-#: connect.cpp:120 debug.cpp:80 main.cpp:990
+#: connect.cpp:120 debug.cpp:80 main.cpp:992
 msgid "Log"
 msgstr "접속기록"
 
@@ -207,7 +207,7 @@ msgstr "통화중입니다. 전화를 끊습니다 ..."
 msgid "Line Busy. Waiting: "
 msgstr "통화중입니다. 잠시 대기합니다: "
 
-#: connect.cpp:332 connect.cpp:451 connect.cpp:470
+#: connect.cpp:332 connect.cpp:452 connect.cpp:471
 msgid " seconds"
 msgstr " 초"
 
@@ -219,116 +219,116 @@ msgstr "다이얼톤이 감지되지 않음"
 msgid "No Carrier"
 msgstr "캐리어가 검출되지 않음"
 
-#: connect.cpp:396
+#: connect.cpp:397
 msgid "Scanning "
 msgstr "검색중 "
 
-#: connect.cpp:407
+#: connect.cpp:408
 msgid "Saving "
 msgstr "저장중 "
 
-#: connect.cpp:426
+#: connect.cpp:427
 msgid "Sending "
 msgstr "전송중 "
 
-#: connect.cpp:437
+#: connect.cpp:438
 msgid "Expecting "
 msgstr "대기중 "
 
-#: connect.cpp:449
+#: connect.cpp:450
 msgid "Pause "
 msgstr "잠시 멈춤 "
 
-#: connect.cpp:468
+#: connect.cpp:469
 msgid "Timeout "
 msgstr "시간초과 "
 
-#: connect.cpp:482 connect.cpp:483
+#: connect.cpp:483 connect.cpp:484
 msgid "Hangup"
 msgstr "전화끊기"
 
-#: connect.cpp:496 connect.cpp:497
+#: connect.cpp:497 connect.cpp:498
 msgid "Answer"
 msgstr "응답"
 
-#: connect.cpp:505
+#: connect.cpp:506
 msgid "ID "
 msgstr "아이디"
 
-#: connect.cpp:542
+#: connect.cpp:543
 msgid "Password "
 msgstr "비밀번호"
 
-#: connect.cpp:580
+#: connect.cpp:581
 msgid "Prompting "
 msgstr ""
 
-#: connect.cpp:617
+#: connect.cpp:618
 msgid "PW Prompt "
 msgstr "암호 행"
 
-#: connect.cpp:643
+#: connect.cpp:644
 msgid "Loop Start "
 msgstr "루프 시작 "
 
-#: connect.cpp:647
+#: connect.cpp:648
 msgid "ERROR: Nested too deep, ignored."
 msgstr "오류: 너무 깊게 설정되어 있습니다, 무시합니다."
 
-#: connect.cpp:652
+#: connect.cpp:653
 msgid "Loops nested too deeply!"
 msgstr "루프가 너무 깊게 설정되어 있습니다!"
 
-#: connect.cpp:670
+#: connect.cpp:671
 #, fuzzy
 msgid "LoopEnd without matching Start! Line: "
 msgstr "LoopEnd에 Start가 없습니다! 행: "
 
-#: connect.cpp:745
+#: connect.cpp:746
 msgid "Starting pppd ..."
 msgstr "pppd를 시작합니다..."
 
-#: connect.cpp:823
+#: connect.cpp:824
 msgid "Scan Var: "
 msgstr "검색 값: "
 
-#: connect.cpp:833
+#: connect.cpp:834
 msgid "Found: "
 msgstr "발견: "
 
-#: connect.cpp:846
+#: connect.cpp:847
 msgid "Looping: "
 msgstr "루프: "
 
-#: connect.cpp:875 modeminfo.cpp:225
+#: connect.cpp:876 modeminfo.cpp:225
 msgid "One Moment Please ..."
 msgstr "잠시만 기다려 주십시오 ..."
 
-#: connect.cpp:917
+#: connect.cpp:918
 msgid "Script timed out!"
 msgstr "연결시간이 초과됨!"
 
-#: connect.cpp:936
+#: connect.cpp:937
 msgid "Scanning: "
 msgstr "검색중: "
 
-#: connect.cpp:946
+#: connect.cpp:947
 msgid "Expecting: "
 msgstr "대기중: "
 
-#: connect.cpp:973
+#: connect.cpp:974
 msgid "Logging on to Network ..."
 msgstr "네트웍으로 로그인중 ..."
 
-#: connect.cpp:999
+#: connect.cpp:1000
 msgid "Running Startup Command ..."
 msgstr "시작 명령을 실행중 ..."
 
-#: connect.cpp:1004 connect.cpp:1011
+#: connect.cpp:1005 connect.cpp:1012
 msgid "Done"
 msgstr ""
 
-#: connect.cpp:1120
+#: connect.cpp:1121
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
@@ -1196,7 +1196,7 @@ msgstr ""
 "조정하십시오.\n"
 " 고맙습니다"
 
-#: main.cpp:922
+#: main.cpp:924
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1206,7 +1206,7 @@ msgstr ""
 "이 방법을 사용하려면 사용자 이름과 암호를\n"
 "제공하셔야 합니다!"
 
-#: main.cpp:931
+#: main.cpp:933
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1215,14 +1215,14 @@ msgstr ""
 "다음의 PAP 인증 파일을 생성할 수 없습니다:\n"
 "\"%s\""
 
-#: main.cpp:948
+#: main.cpp:950
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
 "supply a username and a password!"
 msgstr ""
 
-#: main.cpp:957
+#: main.cpp:959
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1231,20 +1231,20 @@ msgstr ""
 "다음의 CHAP 인증 파일을 생성할 수 없습니다:\n"
 "\"%s\""
 
-#: main.cpp:969
+#: main.cpp:971
 #, fuzzy
 msgid "You must specify a telephone number!"
 msgstr "전화번호가 빠져있습니다 !\n"
 
-#: main.cpp:1056
+#: main.cpp:1058
 msgid "Quit kPPP?"
 msgstr "kPPP를 종료하시겠습니까?"
 
-#: main.cpp:1057
+#: main.cpp:1059
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "kPPP가 종료되면 해당 PPP 세션이 닫히게 됩니다."
 
-#: main.cpp:1092
+#: main.cpp:1094
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
