@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-01-03 16:30+0100\n"
+"POT-Creation-Date: 1998-01-03 22:57+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1256,132 +1256,34 @@ msgstr ""
 msgid "Could only write %d bytes of %d."
 msgstr ""
 
-#: keditcl1.cpp:128
-msgid "The specified File does not exist"
-msgstr ""
-
-#: keditcl1.cpp:141 keditcl1.cpp:413 keditcl1.cpp:494 keditcl1.cpp:1625
-#, fuzzy
-msgid "Sorry:"
-msgstr "Palvelin:"
-
-#: keditcl1.cpp:142
-msgid "You have specificated a directory"
-msgstr ""
-
-#: keditcl1.cpp:157 keditcl1.cpp:178
-msgid "You do not have read permission to this file."
-msgstr ""
-
-#: keditcl1.cpp:191
-msgid "An Error occured while trying to open this Document"
-msgstr ""
-
-#: keditcl1.cpp:356
-msgid "Select Document to Insert"
-msgstr ""
-
-#: keditcl1.cpp:392 keditcl1.cpp:474 keditcl1.cpp:1568
-#, fuzzy
-msgid "Warning:"
-msgstr "varoitus"
-
-#: keditcl1.cpp:393 keditcl1.cpp:475
-msgid ""
-"The current Document has been modified.\n"
-"Would you like to save it?"
-msgstr ""
-
-#: keditcl1.cpp:414
-msgid ""
-"Could not save the document.\n"
-"Open a new document anyways?"
-msgstr ""
-
-#: keditcl1.cpp:445
-msgid "Select Document to Open"
-msgstr ""
-
-#: keditcl1.cpp:495
-msgid ""
-"Could not save the document.\n"
-"Create a new document anyways?"
-msgstr ""
-
-#: keditcl1.cpp:1470
-msgid "Could not save the document\n"
-msgstr ""
-
-#: keditcl1.cpp:1540
-msgid "Save Document As"
-msgstr ""
-
-#: keditcl1.cpp:1569
-msgid ""
-"A Document with this Name exists already\n"
-"Do you want to overwrite it ?"
-msgstr ""
-
 #: keditcl1.cpp:1626
 msgid "You do not have write permissionto this file.\n"
-msgstr ""
-
-#: keditcl2.cpp:105 keditcl2.cpp:122 keditcl2.cpp:362 keditcl2.cpp:379
-#: keditcl2.cpp:678 keditcl2.cpp:687 keditcl2.cpp:788
-#, fuzzy
-msgid "Find"
-msgstr "Etsi..."
-
-#: keditcl2.cpp:106 keditcl2.cpp:363 keditcl2.cpp:456
-msgid ""
-"End of document reached.\n"
-"Continue from the beginning?"
-msgstr ""
-
-#: keditcl2.cpp:123 keditcl2.cpp:380 keditcl2.cpp:426 keditcl2.cpp:473
-msgid ""
-"Beginning of document reached.\n"
-"Continue from the end?"
-msgstr ""
-
-#: keditcl2.cpp:425 keditcl2.cpp:455 keditcl2.cpp:472 keditcl2.cpp:791
-msgid "Replace"
-msgstr ""
-
-#: keditcl2.cpp:684 keditcl2.cpp:782
-msgid "Case Sensitive"
-msgstr ""
-
-#: keditcl2.cpp:685 keditcl2.cpp:785
-msgid "Find Backwards"
-msgstr ""
-
-#: keditcl2.cpp:770
-#, fuzzy
-msgid "Find:"
-msgstr "Etsi..."
-
-#: keditcl2.cpp:780
-msgid "Replace with:"
-msgstr ""
-
-#: keditcl2.cpp:794
-#, fuzzy
-msgid "Replace All"
-msgstr "Vastaa &kaikille..."
-
-#: keditcl2.cpp:891
-msgid "Goto Line"
-msgstr ""
-
-#: keditcl2.cpp:896
-msgid "Go"
 msgstr ""
 
 #: kmiostatusdlg.cpp:32
 #, fuzzy
 msgid "&Abort"
 msgstr "&Tietoja"
+
+#, fuzzy
+#~ msgid "Sorry:"
+#~ msgstr "Palvelin:"
+
+#, fuzzy
+#~ msgid "Warning:"
+#~ msgstr "varoitus"
+
+#, fuzzy
+#~ msgid "Find"
+#~ msgstr "Etsi..."
+
+#, fuzzy
+#~ msgid "Find:"
+#~ msgstr "Etsi..."
+
+#, fuzzy
+#~ msgid "Replace All"
+#~ msgstr "Vastaa &kaikille..."
 
 #, fuzzy
 #~ msgid "&Cancel"

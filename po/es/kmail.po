@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-01-03 16:30+0100\n"
+"POT-Creation-Date: 1998-01-03 22:57+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1256,138 +1256,112 @@ msgstr ""
 msgid "Could only write %d bytes of %d."
 msgstr "Sólo se pudieron escribir %d bytes de %d."
 
-#: keditcl1.cpp:128
-msgid "The specified File does not exist"
-msgstr "El fichero especificado no existe"
-
-#: keditcl1.cpp:141 keditcl1.cpp:413 keditcl1.cpp:494 keditcl1.cpp:1625
-msgid "Sorry:"
-msgstr "Lo siento:"
-
-#: keditcl1.cpp:142
-msgid "You have specificated a directory"
-msgstr "Ha especificado un directorio"
-
-#: keditcl1.cpp:157 keditcl1.cpp:178
-msgid "You do not have read permission to this file."
-msgstr "No tiene permisos de lectura sobre este fichero."
-
-#: keditcl1.cpp:191
-msgid "An Error occured while trying to open this Document"
-msgstr "Ocurrió un error al intentar abrir este Documento"
-
-#: keditcl1.cpp:356
-msgid "Select Document to Insert"
-msgstr "Selecciona Documento a Insertar"
-
-#: keditcl1.cpp:392 keditcl1.cpp:474 keditcl1.cpp:1568
-msgid "Warning:"
-msgstr "Advertencia:"
-
-#: keditcl1.cpp:393 keditcl1.cpp:475
-msgid ""
-"The current Document has been modified.\n"
-"Would you like to save it?"
-msgstr ""
-"El Documento ha sido modificado.\n"
-"¿Desea guardarlo?"
-
-#: keditcl1.cpp:414
-msgid ""
-"Could not save the document.\n"
-"Open a new document anyways?"
-msgstr ""
-"No se pudo guardar el documento.\n"
-"¿Desea abrir de cualquier forma un nuevo documento?"
-
-#: keditcl1.cpp:445
-msgid "Select Document to Open"
-msgstr "Seleccione el Documento que desee abrir"
-
-#: keditcl1.cpp:495
-msgid ""
-"Could not save the document.\n"
-"Create a new document anyways?"
-msgstr ""
-"No se pudo guardar el documento.\n"
-"¿Desea crear de cualquier forma un nuevo documento?"
-
-#: keditcl1.cpp:1470
-msgid "Could not save the document\n"
-msgstr "No se pudo guardar el documento\n"
-
-#: keditcl1.cpp:1540
-msgid "Save Document As"
-msgstr "Guardar Documento Como"
-
-#: keditcl1.cpp:1569
-msgid ""
-"A Document with this Name exists already\n"
-"Do you want to overwrite it ?"
-msgstr ""
-"Ya existe un documento con ese nombre\n"
-"¿Desea sobreescribirlo?"
-
 #: keditcl1.cpp:1626
 msgid "You do not have write permissionto this file.\n"
 msgstr "No tiene permisos de escritura sobre este fichero.\n"
 
-#: keditcl2.cpp:105 keditcl2.cpp:122 keditcl2.cpp:362 keditcl2.cpp:379
-#: keditcl2.cpp:678 keditcl2.cpp:687 keditcl2.cpp:788
-msgid "Find"
-msgstr "Buscar"
-
-#: keditcl2.cpp:106 keditcl2.cpp:363 keditcl2.cpp:456
-msgid ""
-"End of document reached.\n"
-"Continue from the beginning?"
-msgstr ""
-"Se ha alcanzado el final del documento.\n"
-"¿Desea continuar desde el comienzo?"
-
-#: keditcl2.cpp:123 keditcl2.cpp:380 keditcl2.cpp:426 keditcl2.cpp:473
-msgid ""
-"Beginning of document reached.\n"
-"Continue from the end?"
-msgstr ""
-"Se ha alcanzado el comienzo del documento.\n"
-"¿Desea continuar desde el final?"
-
-#: keditcl2.cpp:425 keditcl2.cpp:455 keditcl2.cpp:472 keditcl2.cpp:791
-msgid "Replace"
-msgstr "Reemplazar"
-
-#: keditcl2.cpp:684 keditcl2.cpp:782
-msgid "Case Sensitive"
-msgstr "Sensible a Mayúsculas/Minusculas"
-
-#: keditcl2.cpp:685 keditcl2.cpp:785
-msgid "Find Backwards"
-msgstr "Buscar hacia Atrás"
-
-#: keditcl2.cpp:770
-msgid "Find:"
-msgstr "Buscar:"
-
-#: keditcl2.cpp:780
-msgid "Replace with:"
-msgstr "Reemplazar con:"
-
-#: keditcl2.cpp:794
-msgid "Replace All"
-msgstr "Reemplazar Todo"
-
-#: keditcl2.cpp:891
-msgid "Goto Line"
-msgstr "Ir a Línea"
-
-#: keditcl2.cpp:896
-msgid "Go"
-msgstr "Ir"
-
 #: kmiostatusdlg.cpp:32
 msgid "&Abort"
 msgstr ""
+
+#~ msgid "The specified File does not exist"
+#~ msgstr "El fichero especificado no existe"
+
+#~ msgid "Sorry:"
+#~ msgstr "Lo siento:"
+
+#~ msgid "You have specificated a directory"
+#~ msgstr "Ha especificado un directorio"
+
+#~ msgid "You do not have read permission to this file."
+#~ msgstr "No tiene permisos de lectura sobre este fichero."
+
+#~ msgid "An Error occured while trying to open this Document"
+#~ msgstr "Ocurrió un error al intentar abrir este Documento"
+
+#~ msgid "Select Document to Insert"
+#~ msgstr "Selecciona Documento a Insertar"
+
+#~ msgid "Warning:"
+#~ msgstr "Advertencia:"
+
+#~ msgid ""
+#~ "The current Document has been modified.\n"
+#~ "Would you like to save it?"
+#~ msgstr ""
+#~ "El Documento ha sido modificado.\n"
+#~ "¿Desea guardarlo?"
+
+#~ msgid ""
+#~ "Could not save the document.\n"
+#~ "Open a new document anyways?"
+#~ msgstr ""
+#~ "No se pudo guardar el documento.\n"
+#~ "¿Desea abrir de cualquier forma un nuevo documento?"
+
+#~ msgid "Select Document to Open"
+#~ msgstr "Seleccione el Documento que desee abrir"
+
+#~ msgid ""
+#~ "Could not save the document.\n"
+#~ "Create a new document anyways?"
+#~ msgstr ""
+#~ "No se pudo guardar el documento.\n"
+#~ "¿Desea crear de cualquier forma un nuevo documento?"
+
+#~ msgid "Could not save the document\n"
+#~ msgstr "No se pudo guardar el documento\n"
+
+#~ msgid "Save Document As"
+#~ msgstr "Guardar Documento Como"
+
+#~ msgid ""
+#~ "A Document with this Name exists already\n"
+#~ "Do you want to overwrite it ?"
+#~ msgstr ""
+#~ "Ya existe un documento con ese nombre\n"
+#~ "¿Desea sobreescribirlo?"
+
+#~ msgid "Find"
+#~ msgstr "Buscar"
+
+#~ msgid ""
+#~ "End of document reached.\n"
+#~ "Continue from the beginning?"
+#~ msgstr ""
+#~ "Se ha alcanzado el final del documento.\n"
+#~ "¿Desea continuar desde el comienzo?"
+
+#~ msgid ""
+#~ "Beginning of document reached.\n"
+#~ "Continue from the end?"
+#~ msgstr ""
+#~ "Se ha alcanzado el comienzo del documento.\n"
+#~ "¿Desea continuar desde el final?"
+
+#~ msgid "Replace"
+#~ msgstr "Reemplazar"
+
+#~ msgid "Case Sensitive"
+#~ msgstr "Sensible a Mayúsculas/Minusculas"
+
+#~ msgid "Find Backwards"
+#~ msgstr "Buscar hacia Atrás"
+
+#~ msgid "Find:"
+#~ msgstr "Buscar:"
+
+#~ msgid "Replace with:"
+#~ msgstr "Reemplazar con:"
+
+#~ msgid "Replace All"
+#~ msgstr "Reemplazar Todo"
+
+#~ msgid "Goto Line"
+#~ msgstr "Ir a Línea"
+
+#~ msgid "Go"
+#~ msgstr "Ir"
 
 #, fuzzy
 #~ msgid "&Cancel"
