@@ -1,18 +1,21 @@
+# KTranslator Generated File
+
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Free Software Foundation, Inc.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSIONPOT-Creation-Date: 1998-01-03 "
 "22:39+0100PO-Revision-Date: 1998-02-05 16:00+0100\n"
-"POT-Creation-Date: 1998-06-18 22:50+0200\n"
-"Last-Translator: Andrea Rizzi <Bilibao@ouverture.it>\n"
+"PO-Revision-Date: Mon Jun 29 1998 11:05:51+0200\n"
+"Last-Translator: Francesco Lotti <goo@hey.to>\n"
 "Language-Team: Italiano <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: ENCODING\n"
+"X-Generator: KTranslator v 0.3.0"
 
 #: main.cpp:212 main.cpp:224 main.cpp:236 main.cpp:251 main.cpp:263
 msgid "KRN-Missing Configuration info"
@@ -44,14 +47,14 @@ msgid "Received %.2f Kb"
 msgstr "Ricevuti %.2f Kb"
 
 #: NNTP.cpp:557
-#, fuzzy
+#
 msgid "Getting Article"
-msgstr "Recupero Lista Articoli"
+msgstr "Recupero Articolo"
 
 #: NNTP.cpp:643
 #, fuzzy
 msgid "Article Received"
-msgstr "Corpo Articolo:"
+msgstr "Articolo Ricevuto"
 
 #: groupdlg.cpp:129
 msgid "Connect to Server"
@@ -63,7 +66,7 @@ msgstr "Disconnessione dal Server"
 
 #: groupdlg.cpp:131
 msgid "Get Active File"
-msgstr "Prendi File Attivi"
+msgstr "Prendi File Active"
 
 #: groupdlg.cpp:133
 msgid "Post Queued Messages"
@@ -130,9 +133,9 @@ msgid "Expire Options..."
 msgstr "Opzioni Scadenza..."
 
 #: groupdlg.cpp:173
-#, fuzzy
+#
 msgid "Printing Options..."
-msgstr "Opzioni NNTP...."
+msgstr "Opzioni Stampa...."
 
 #: groupdlg.cpp:180
 msgid "About Krn..."
@@ -255,14 +258,14 @@ msgid "Download"
 msgstr "DownLoad "
 
 #: artdlg.cpp:146 artdlg.cpp:268
-#, fuzzy
+#
 msgid "Mark Read"
-msgstr "Segna tutti"
+msgstr "Segna Come Letti"
 
 #: artdlg.cpp:147
-#, fuzzy
+#
 msgid "Mark Unread"
-msgstr "Segna tutti"
+msgstr "Segna Come Non Letti"
 
 #: artdlg.cpp:150 artdlg.cpp:170
 msgid "Decode"
@@ -274,7 +277,7 @@ msgstr "Senza Scadenza"
 
 #: artdlg.cpp:161
 msgid "Lookup in Altavista"
-msgstr ""
+msgstr "Cerca in Altavista"
 
 #: artdlg.cpp:165 artdlg.cpp:252
 msgid "Reply by Mail"
@@ -313,23 +316,23 @@ msgid "Appearance..."
 msgstr "Aspetto..."
 
 #: artdlg.cpp:193
-#, fuzzy
+#
 msgid "Sorting..."
-msgstr "Proprietà..."
+msgstr "Sto ordinando..."
 
 #: artdlg.cpp:197
 msgid "Edit Rules"
-msgstr ""
+msgstr "Modifica Regole"
 
 #: artdlg.cpp:198
-#, fuzzy
+#
 msgid "Update"
-msgstr "Data"
+msgstr "Aggiorna"
 
 #: artdlg.cpp:207
-#, fuzzy
+#
 msgid "&Scoring"
-msgstr "Codifica"
+msgstr "&Scoring"
 
 #: artdlg.cpp:214
 msgid "Previous Message"
@@ -349,7 +352,7 @@ msgstr "Prendi Lista Articoli"
 
 #: artdlg.cpp:225
 msgid "Refresh Display"
-msgstr ""
+msgstr "Aggiorna il Video"
 
 #: artdlg.cpp:248
 msgid "Save Article"
@@ -365,7 +368,7 @@ msgstr "Spedisce un messaggio a seguito"
 
 #: artdlg.cpp:256
 msgid "Post & Mail"
-msgstr ""
+msgstr "Spedisci nelle news e rispondi in email"
 
 #: artdlg.cpp:262
 msgid "Tag Article"
@@ -380,13 +383,13 @@ msgid "Decode Article"
 msgstr "Decifra articolo"
 
 #: artdlg.cpp:270
-#, fuzzy
+#
 msgid "Mark UnRead"
-msgstr "Segna tutti"
+msgstr "Segna Non Letto"
 
 #: artdlg.cpp:292 sortDlg.cpp:34
 msgid "Sender"
-msgstr "Sender"
+msgstr "Mittente"
 
 #: artdlg.cpp:294 sortDlg.cpp:36
 msgid "Lines"
@@ -394,15 +397,15 @@ msgstr "Linee"
 
 #: artdlg.cpp:295 sortDlg.cpp:33
 msgid "Score"
-msgstr ""
+msgstr "Score"
 
 #: artdlg.cpp:296 sortDlg.cpp:32
 msgid "Subject"
-msgstr "Soggetto"
+msgstr "Oggetto"
 
 #: artdlg.cpp:462
 msgid "Threading..."
-msgstr ""
+msgstr "Sto Ordinando..."
 
 #: artdlg.cpp:471
 msgid "Showing Article List"
@@ -422,10 +425,10 @@ msgstr "SovraScrivi"
 
 #: artdlg.cpp:1325
 msgid "Append"
-msgstr "Append"
+msgstr "Appendi"
 
 #: artdlg.cpp:1360 artdlg.cpp:1425
-#, fuzzy
+#
 msgid ""
 "From: Krn\n"
 "To: You\n"
@@ -433,6 +436,8 @@ msgid ""
 "Error getting article.\n"
 "Server said:\n"
 msgstr ""
+"Da: Krn\n"
+"A: Te\n"
 "\n"
 "Errore nel recupero dell'articolo.\n"
 "Il server ha detto:\n"
@@ -447,11 +452,11 @@ msgstr "KRN-Configurazione Identità"
 
 #: identDlg.cpp:50
 msgid "Here you should enter your personal information"
-msgstr ""
+msgstr "Qui dovresti inserire le tue informazioni personali"
 
 #: identDlg.cpp:52
 msgid "You should know what these are!"
-msgstr ""
+msgstr "Dovresti sapere a cosa servono queste!"
 
 #: identDlg.cpp:61
 msgid "Real Name"
@@ -463,7 +468,7 @@ msgstr "Indirizzo E-Mail"
 
 #: identDlg.cpp:73
 msgid "Organization"
-msgstr "Organizazione"
+msgstr "Organizzazione"
 
 #: NNTPConfigDlg.cpp:29
 msgid "KRN-NNTP configuration"
@@ -487,9 +492,9 @@ msgid "Connect on Startup"
 msgstr "Connessione all'avvio"
 
 #: NNTPConfigDlg.cpp:70
-#, fuzzy
+#
 msgid "Connect without asking"
-msgstr "Connesione al server"
+msgstr "Connesione senza richiesta"
 
 #: NNTPConfigDlg.cpp:74
 msgid "Authenticate"
@@ -522,49 +527,49 @@ msgstr "E molti ringraziamenti a:"
 #: fontsDlg.cpp:39
 #, fuzzy
 msgid "Message Display Settings"
-msgstr "Tipo Carattere Messaggio"
+msgstr "Configurazione Display Messaggi"
 
 #: fontsDlg.cpp:46
 msgid "Header Style"
-msgstr ""
+msgstr "Stile Intestazione"
 
 #: fontsDlg.cpp:48
 msgid "Fancy"
-msgstr ""
+msgstr "Fantasioso"
 
 #: fontsDlg.cpp:49
 msgid "Brief"
-msgstr ""
+msgstr "Breve"
 
 #: fontsDlg.cpp:50
-#, fuzzy
+#
 msgid "Standard"
-msgstr "Carattere predefinito"
+msgstr "Predefinito"
 
 #: fontsDlg.cpp:51
 msgid "Long"
-msgstr ""
+msgstr "Lungo"
 
 #: fontsDlg.cpp:52
 msgid "All"
-msgstr ""
+msgstr "Tutti"
 
 #: fontsDlg.cpp:56
-#, fuzzy
+#
 msgid "Attachment Style"
-msgstr "Allegato:"
+msgstr "Stile Allegati"
 
 #: fontsDlg.cpp:58
 msgid "Iconic"
-msgstr ""
+msgstr "Iconificato"
 
 #: fontsDlg.cpp:59
 msgid "Smart"
-msgstr ""
+msgstr "Elegante"
 
 #: fontsDlg.cpp:60
 msgid "Inline"
-msgstr ""
+msgstr "All'interno della linea"
 
 #: fontsDlg.cpp:67
 msgid "Font Size:"
@@ -600,34 +605,34 @@ msgstr "Colore Seguiti"
 
 #: fontsDlg.cpp:107
 msgid "Use only one window"
-msgstr ""
+msgstr "Usa soltanto una finestra"
 
 #: fontsDlg.cpp:109
 msgid "Split window vertically"
-msgstr ""
+msgstr "Dividi la finestra verticalmente"
 
 #: findArtDlg.cpp:22
-#, fuzzy
+#
 msgid "KRN - Article Searcher"
-msgstr "Intestazione Articolo:"
+msgstr "KRN - Cerca Articoli"
 
 #: findArtDlg.cpp:29
-#, fuzzy
+#
 msgid "Find Articles With:"
-msgstr "Trova Articolo"
+msgstr "Trova Articoli Con:"
 
 #: findArtDlg.cpp:34 rulesDlg.cpp:106
 #, fuzzy
 msgid "In Field:"
-msgstr "&Tutti i campi"
+msgstr "Nel Campo:"
 
 #: findArtDlg.cpp:56 rulesDlg.cpp:132
 msgid "Wildcard Mode"
-msgstr ""
+msgstr "Modalità Caratteri Jolly"
 
 #: krnsender.cpp:59
 msgid "This server is read onlyyou can't post here!"
-msgstr ""
+msgstr "Questo server è a sola lettura, non puoi postare qui!"
 
 #: expireDlg.cpp:22 expireDlg.cpp:27
 msgid "KRN - Expire Settings"
@@ -639,12 +644,12 @@ msgstr "Per quanto dobbiamo tenere le cose(in giorni)?"
 
 #: expireDlg.cpp:46
 msgid "Read:"
-msgstr ""
+msgstr "Letti:"
 
 #: expireDlg.cpp:47
-#, fuzzy
+#
 msgid "Unread:"
-msgstr "Segna tutti"
+msgstr "Non Letti:"
 
 #: expireDlg.cpp:50
 msgid "Article Bodies:"
@@ -655,100 +660,100 @@ msgid "Article Headers:"
 msgstr "Intestazione Articolo:"
 
 #: printdlg.cpp:21
-#, fuzzy
+#
 msgid "KRN - Print Settings"
-msgstr "KRN- Impostazioni Scadenze"
+msgstr "KRN- Impostazione Stampa"
 
 #: printdlg.cpp:26
-#, fuzzy
+#
 msgid "KRN - Printing Settings"
-msgstr "KRN- Impostazioni Scadenze"
+msgstr "KRN- Impostazioni Stampante"
 
 #: printdlg.cpp:33
-#, fuzzy
+#
 msgid "General"
-msgstr "Sender"
+msgstr "Generale"
 
 #: printdlg.cpp:37
 msgid "Use HTML Printing"
-msgstr ""
+msgstr "Usa Stampa HTML"
 
 #: printdlg.cpp:40
 msgid "Use Direct Printing"
-msgstr ""
+msgstr "Usa Stampa Diretta"
 
 #: printdlg.cpp:48
-#, fuzzy
+#
 msgid "Print using:"
-msgstr "Stampa messaggio"
+msgstr "Stampa usando:"
 
 #: printdlg.cpp:52
 msgid "Feed it with:"
-msgstr ""
+msgstr "Alimentalo con:"
 
 #: printdlg.cpp:54
 msgid "Postscript"
-msgstr ""
+msgstr "Postscript"
 
 #: printdlg.cpp:55
 msgid "HTML"
-msgstr ""
+msgstr "HTML"
 
 #: printdlg.cpp:56
 msgid "Text"
-msgstr ""
+msgstr "Testo"
 
 #: rulesDlg.cpp:38
 msgid "KRN - Scoring Rules Editor"
-msgstr ""
+msgstr "KRN - Editor delle regole di scoring"
 
 #: rulesDlg.cpp:45
 msgid "Global Rules"
-msgstr ""
+msgstr "Regole Generali"
 
 #: rulesDlg.cpp:47
 msgid "All Rules"
-msgstr ""
+msgstr "Tutte le Regole"
 
 #: rulesDlg.cpp:63
-#, fuzzy
+#
 msgid "Active Rules"
-msgstr "Prendi File Attivi"
+msgstr "Regole Attive"
 
 #: rulesDlg.cpp:70
 msgid "Rule Editor"
-msgstr ""
+msgstr "Editor delle Regole"
 
 #: rulesDlg.cpp:87
 msgid "Save as"
-msgstr ""
+msgstr "Salva come"
 
 #: rulesDlg.cpp:101
-#, fuzzy
+#
 msgid "Match Articles With:"
-msgstr "Trova Articolo"
+msgstr "Identifica Articoli con:"
 
 #: rulesDlg.cpp:126
 msgid "Negative"
-msgstr ""
+msgstr "Negativo"
 
 #: rulesDlg.cpp:190
 #, fuzzy
 msgid "Rule name:"
-msgstr "Nome Vero"
+msgstr "Regole nome:"
 
 #: sortDlg.cpp:23
 #, fuzzy
 msgid "KRN - Header Sorting"
-msgstr "KRN- Impostazioni Scadenze"
+msgstr "KRN- Ordinamento Intestazione"
 
 #: sortDlg.cpp:39
 msgid "Sort by:"
-msgstr ""
+msgstr "Ordina per:"
 
 #: sortDlg.cpp:56
 msgid "Use Threading"
-msgstr ""
+msgstr "Usa ordinamento ad albero"
 
 #~ msgid "Print"
 #~ msgstr "Stampa"
