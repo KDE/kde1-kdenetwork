@@ -927,7 +927,7 @@ void ConnectWidget::if_waiting_slot(){
   p_xppp->stats->take_stats(); // start taking ppp statistics
   auto_hostname();
 
-  if(gpppdata.command_on_connect()) {
+  if(strcmp(gpppdata.command_on_connect(), "") != 0) {
     
     pid_t id;
     messg->setText(klocale->translate("Running Startup Command ..."));

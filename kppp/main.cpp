@@ -601,7 +601,7 @@ void dieppp(int sig) {
       gpppdata.setpppdpid(-1);
 
       
-      if(gpppdata.command_on_disconnect()) {
+      if(strcmp(gpppdata.command_on_disconnect(), "") != 0) {
     
 	pid_t id;
 
