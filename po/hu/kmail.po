@@ -1,4 +1,3 @@
-
 #: kmacctlocal.cpp:90
 #, c-format
 msgid ""
@@ -43,9 +42,9 @@ msgstr ""
 "a könyvtár nem olvasható"
 
 #: kmacctmgr.cpp:115
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"Cannot read configuration of account `%s'\n"
+"Cannot read configuration of account '%s'\n"
 "from broken file %s\n"
 "Account type: %s\n"
 msgstr ""
@@ -162,7 +161,8 @@ msgstr ""
 msgid ""
 "Sorry, but this feature\n"
 "is still missing"
-msgstr "Elnézést, ez a funkció\n"
+msgstr ""
+"Elnézést, ez a funkció\n"
 "még nem mûködik."
 
 #: kmcomposewin.cpp:773

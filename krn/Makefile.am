@@ -209,3 +209,6 @@ kpgp.moc: kpgp.h
 krnsender.cpp:krnsender.moc
 krnsender.moc: krnsender.h
 	$(MOC) krnsender.h -o krnsender.moc
+
+messages:
+	@XGETTEXT@ -ktranslate -C -x../../kdelibs/po/kde.pot $(krn_SOURCES)  && mv messages.po ../po/krn.pot

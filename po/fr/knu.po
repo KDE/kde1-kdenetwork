@@ -1,193 +1,204 @@
 msgid ""
 msgstr ""
+"POT-Creation-Date: 1997-12-17 22:54+0100\n"
+"Content-Type: text/plain; charset=\n"
 "Date: 1997-10-26 20:32:21+0100\n"
 "From: Bertrand Leconte,,, <leconteb@arthur>\n"
-"Content-Type: text/plain; charset=\n"
 "Xgettext-Options: -C -a --keyword=_\n"
-"Files: CommandDlg.cpp HostDlg.cpp OptionsDlg.cpp PingDlg.cpp TracerouteDlg.cpp knu.cpp mCommandDlg.cpp mHostDlg.cpp mOptionsDlg.cpp mPingDlg.cpp mTracerouteDlg.cpp mknu.cpp\n"
+"Files: CommandDlg.cpp HostDlg.cpp OptionsDlg.cpp PingDlg.cpp "
+"TracerouteDlg.cpp knu.cpp mCommandDlg.cpp mHostDlg.cpp mOptionsDlg.cpp "
+"mPingDlg.cpp mTracerouteDlg.cpp mknu.cpp\n"
 
-#: CommandDlg.cpp:115
-msgid "H&ost:"
-msgstr "Machine :"
-
-#: CommandDlg.cpp:127
-msgid "&Go!"
-msgstr "Go !"
-
-#: CommandDlg.cpp:136
-msgid "&Stop"
-msgstr "Stop"
-
-#: CommandDlg.cpp:151
-msgid ""
-"This command binary was not found. \n"
-"You can give its path in the Edit->Preferences... menu."
-msgstr "Cette commande n'a pas été trouvée. \n"
-	"Vous pouvez donner son chemin par le menu Edition->Preferences..."
-
-#: CommandDlg.cpp:421
-msgid "Binary"
-msgstr "Binaire"
-
-#: CommandDlg.cpp:432
-msgid "Path&name:"
-msgstr "Chemin du programme :"
-
-#: CommandDlg.cpp:444
-msgid "Additional &arguments:"
-msgstr "Arguments additionnels :"
-
-#: CommandDlg.cpp:464
-msgid "This command had been disabled in the configuration file."
-msgstr "Cette commande a été disablé dans le fichier de configuration."
-
-#: HostDlg.cpp:94
-msgid "address (A)"
-msgstr "adresse (A)"
-
-#: HostDlg.cpp:95
-msgid "name (PTR)"
-msgstr "nom (PTR)"
-
-#: HostDlg.cpp:96
-msgid "name server (NS)"
-msgstr "serveur de noms (NS)"
-
-#: HostDlg.cpp:97
-msgid "mail exchanger (MX)"
-msgstr "échangeur de messages (MX)"
-
-#: HostDlg.cpp:98
-msgid "alias (CNAME)"
-msgstr "alias (CNAME)"
-
-#: HostDlg.cpp:99
-msgid "start of authority (SOA)"
-msgstr "début d'autorité (SOA)"
-
-#: HostDlg.cpp:100
-msgid "any record (ANY)"
-msgstr "tous les enregistrements (ANY)"
-
-#: HostDlg.cpp:106
-msgid "Se&arch for:"
-msgstr "Rechercher :"
-
-#: HostDlg.cpp:121 HostDlg.cpp:219
-msgid "default server"
-msgstr "serveur par défaut"
-
-#: HostDlg.cpp:126
-msgid "Ser&ver:"
-msgstr "Serveur :"
-
-#: HostDlg.cpp:168 PingDlg.cpp:102 TracerouteDlg.cpp:124
-msgid ""
-"You have a problem if your ~/.kderc/share/config/knurc configuration file.\n"
-"In the ["
-msgstr "You avez un problème dans votre fichier de configuration ~/.kderc/share/config/knurc.\n"
-"Dans le groupe ["
-
-#: HostDlg.cpp:172 PingDlg.cpp:106 TracerouteDlg.cpp:128
-msgid "] group, I cannotfind a correct \"path=\" entry."
-msgstr "], je n'ai pas trouvé un entrée \"path=\" correcte."
-
-#: OptionsDlg.cpp:53
-msgid " - configuration"
-msgstr " - configuration"
-
-#: OptionsDlg.cpp:77
-msgid "&Ok"
-msgstr "Ok"
-
-#: OptionsDlg.cpp:83 knu.cpp:215
-msgid "&Help"
-msgstr "Aide"
-
-#: OptionsDlg.cpp:88
-msgid "&Cancel"
-msgstr "Annuler"
-
-#: PingDlg.cpp:67 TracerouteDlg.cpp:68
-msgid "Make host &name resolution"
-msgstr "Faire les résolutions de noms"
-
-#: TracerouteDlg.cpp:85
-msgid "&Maximum number of hops:"
-msgstr "Nombre maximum de sauts :"
-
-#: knu.cpp:108 knu.cpp:233
+#: knu.cpp:123 knu.cpp:256
 msgid "&Ping"
 msgstr ""
 
-#: knu.cpp:117 knu.cpp:238
+#: knu.cpp:132 knu.cpp:261
 msgid "&Traceroute"
 msgstr ""
 
-#: knu.cpp:126 knu.cpp:243
+#: knu.cpp:141 knu.cpp:266
 msgid "Host &resolution"
 msgstr "Résolution de noms"
 
-#: knu.cpp:141
+#: knu.cpp:156
 msgid ""
 "There is no command enabled\n"
 "in the configuration file.\n"
 "\n"
 "So I can't do anything...\n"
-msgstr "Il n'y a aucune commande autorisée\n"
-	"dans le fichier de configuration.\n"
-	"\n"
-	"Donc je ne peux rien faire...\n"
+msgstr ""
+"Il n'y a aucune commande autorisée\n"
+"dans le fichier de configuration.\n"
+"\n"
+"Donc je ne peux rien faire...\n"
 
-#: knu.cpp:178
+#: knu.cpp:201
 msgid "&New window"
 msgstr "Nouvelle fenêtre"
 
-#: knu.cpp:181
+#: knu.cpp:204
 msgid "&Close window"
 msgstr "Fermer la fenêtre"
 
-#: knu.cpp:184
+#: knu.cpp:207
 msgid "&Quit"
 msgstr "Quitter"
 
-#: knu.cpp:189
+#: knu.cpp:212
 msgid "&Copy"
 msgstr "Copier"
 
-#: knu.cpp:192
+#: knu.cpp:215
 msgid "Select &all"
 msgstr "Selectionner tout"
 
-#: knu.cpp:195
+#: knu.cpp:218
 msgid "C&lear output window"
 msgstr "Effacer la fenêtre d'affichage"
 
-#: knu.cpp:198
+#: knu.cpp:221
 msgid "P&references..."
 msgstr "Préférences..."
 
-#: knu.cpp:203
+#: knu.cpp:226
 msgid "&Contents"
 msgstr "Contenu"
 
-#: knu.cpp:206
+#: knu.cpp:229
 msgid "&About"
 msgstr "A propos"
 
-#: knu.cpp:208
+#: knu.cpp:231
 msgid "About &Qt"
 msgstr "About &Qt"
 
-#: knu.cpp:212
+#: knu.cpp:235
 msgid "&File"
 msgstr "Fichier"
 
-#: knu.cpp:213
+#: knu.cpp:236
 msgid "&Edit"
 msgstr "Edition"
 
-#: knu.cpp:365
+#: OptionsDlg.cpp:97 knu.cpp:238
+msgid "&Help"
+msgstr "Aide"
+
+#: knu.cpp:404
 msgid "About..."
 msgstr "A propos..."
 
+#: CommandDlg.cpp:121
+msgid "H&ost:"
+msgstr "Machine :"
+
+#: CommandDlg.cpp:130
+msgid "&Go!"
+msgstr "Go !"
+
+#: CommandDlg.cpp:140
+msgid "&Stop"
+msgstr "Stop"
+
+#: CommandDlg.cpp:156
+msgid ""
+"This command binary was not found. \n"
+"You can give its path in the Edit->Preferences... menu."
+msgstr ""
+"Cette commande n'a pas été trouvée. \n"
+"Vous pouvez donner son chemin par le menu Edition->Preferences..."
+
+#: CommandDlg.cpp:462
+msgid "Binary"
+msgstr "Binaire"
+
+#: CommandDlg.cpp:470
+msgid "Path&name:"
+msgstr "Chemin du programme :"
+
+#: CommandDlg.cpp:479
+msgid "Additional &arguments:"
+msgstr "Arguments additionnels :"
+
+#: CommandDlg.cpp:484
+msgid "Browse..."
+msgstr ""
+
+#: CommandDlg.cpp:504
+msgid "This command had been disabled in the configuration file."
+msgstr "Cette commande a été disablé dans le fichier de configuration."
+
+#: OptionsDlg.cpp:68
+msgid " - configuration"
+msgstr " - configuration"
+
+#: OptionsDlg.cpp:91
+#, fuzzy
+msgid "&OK"
+msgstr "Ok"
+
+#: OptionsDlg.cpp:102
+msgid "&Cancel"
+msgstr "Annuler"
+
+#: PingDlg.cpp:87 TracerouteDlg.cpp:88
+msgid "Make host &name resolution"
+msgstr "Faire les résolutions de noms"
+
+#: HostDlg.cpp:217 PingDlg.cpp:143 TracerouteDlg.cpp:165
+msgid ""
+"You have a problem if your ~/.kderc/share/config/knurc configuration file.\n"
+"In the ["
+msgstr ""
+"You avez un problème dans votre fichier de configuration "
+"~/.kderc/share/config/knurc.\n"
+"Dans le groupe ["
+
+#: HostDlg.cpp:221 PingDlg.cpp:147 TracerouteDlg.cpp:169
+msgid "] group, I cannotfind a correct \"path=\" entry."
+msgstr "], je n'ai pas trouvé un entrée \"path=\" correcte."
+
+#: TracerouteDlg.cpp:105
+msgid "&Maximum number of hops:"
+msgstr "Nombre maximum de sauts :"
+
+#: HostDlg.cpp:98
+msgid "address (A)"
+msgstr "adresse (A)"
+
+#: HostDlg.cpp:99
+msgid "name (PTR)"
+msgstr "nom (PTR)"
+
+#: HostDlg.cpp:100
+msgid "name server (NS)"
+msgstr "serveur de noms (NS)"
+
+#: HostDlg.cpp:101
+msgid "mail exchanger (MX)"
+msgstr "échangeur de messages (MX)"
+
+#: HostDlg.cpp:102
+msgid "alias (CNAME)"
+msgstr "alias (CNAME)"
+
+#: HostDlg.cpp:103
+msgid "start of authority (SOA)"
+msgstr "début d'autorité (SOA)"
+
+#: HostDlg.cpp:104
+msgid "any record (ANY)"
+msgstr "tous les enregistrements (ANY)"
+
+#: HostDlg.cpp:110
+msgid "Se&arch for:"
+msgstr "Rechercher :"
+
+#: HostDlg.cpp:122 HostDlg.cpp:268
+msgid "default server"
+msgstr "serveur par défaut"
+
+#: HostDlg.cpp:131
+msgid "Ser&ver:"
+msgstr "Serveur :"
