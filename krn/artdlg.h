@@ -33,7 +33,7 @@
 #include "kiconloader.h"
 
 class KMReaderWin;
-class KSlider;
+class KNumericSpinBox;
 
 class Artdlg : public KTopLevelWidget
 {
@@ -92,7 +92,7 @@ private:
     KPanner *panner;
     QVBoxLayout *gl;
     KStatusBar *status;
-    KSlider *minScore;
+    KNumericSpinBox *minScore;
     bool showlocked;
     bool showcached;
     QStrList IDList;

@@ -6,6 +6,9 @@ Changes made Apr 13
             required), I am fixing the bug when opening article windows.
             I can't make KTMainWindow work at all (get weird errors when
             inheriting), so I reverted to traditional KTW style.
+*           KTabListBox doesn't seem to resize the last column anymore...
+            Oh, well, that's rather easy to fix.
+*           Just found KSpinBox.... time to remove that ugly score slider!
 
 -----------------------------------------------------------------------------
 Changes made Apr 5

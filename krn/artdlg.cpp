@@ -31,7 +31,7 @@
 
 #include <kapp.h>
 #include <kfm.h>
-#include <kslider.h>
+#include <kspinbox.h>
 
 #include <kmsgbox.h>
 #include <kkeyconf.h>
@@ -93,6 +93,7 @@
 #define MARK_UNREAD 31
 #define LOOKUP_ALTAVISTA 32
 #define QUIT 33
+#define SCOREFRAME 34
 
 extern QString pixpath,cachepath;
 
@@ -210,6 +211,17 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
 
     t1->insertButton (Icon("previous.xpm"), ARTLIST, true, klocale->translate("Get Article List"));
 
+    t1->insertButton (Icon("previous.xpm"), UPDATE_SCORES, true, klocale->translate("Update Scores"));
+    t1->alignItemRight(UPDATE_SCORES);
+    t1->insertFrame(SCOREFRAME,100);
+    t1->alignItemRight(SCOREFRAME);
+    minScore= new KNumericSpinBox(t1->getFrame(SCOREFRAME));
+    minScore->show();
+    minScore->setRange(-25000,25000);
+    minScore->setStep(100);
+    minScore->setValue(0);
+    minScore->setFixedHeight(t1->getFrame(SCOREFRAME)->height()-2);
+
     KToolBar *t2=new KToolBar(this);
     addToolBar(t2,1);
     QObject::connect (t2, SIGNAL (clicked (int)), this, SLOT (actions (int)));
@@ -280,16 +292,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     
     list->setTabWidth(25);
 
-    minScore=new KSlider(KSlider::Horizontal,panner->child0());
-    minScore->setRange(-25000,25000);
-    minScore->setSteps(10,1000);
-    minScore->setFixedHeight(minScore->height());
-    minScore->setTracking(false);
-
-    connect (minScore,SIGNAL(valueChanged(int)),SLOT(fillTree()));
-    
     gl->addWidget( list, 1);
-    gl->addWidget( minScore, 0);
     connect (list,SIGNAL(highlighted(int,int)),this,SLOT(loadArt(int,int)));
     connect (list,SIGNAL(midClick(int,int)),this,SLOT(markReadArt(int,int)));
     connect (list,SIGNAL(popupMenu(int,int)),this,SLOT(popupMenu(int,int)));
@@ -413,7 +416,7 @@ void Artdlg::fillTree ()
     group->getList();
     ArticleList artList;
 
-    int minCoolness=minScore->value();
+    int minCoolness=minScore->getValue();
     
     //save current ID if there is one
     char *currArt=0;
@@ -633,11 +636,19 @@ bool Artdlg::allActions (int action)
 void Artdlg::updateScores()
 {
     Article art;
-    for (char *ID=IDList.first();ID!=0;ID=IDList.next())
+    int i=0;
+    QString s;
+    for (char *ID=IDList.first();ID!=0;ID=IDList.next(),i++)
     {
         art.ID=ID;
         art.load();
         art.reScore(ruleList);
+        if (!(i%10))
+        {
+            s.sprintf ("Calculating score for article %d",i);
+            statusBar()->changeItem(s.data(),2);
+            qApp->processEvents();
+        }
     }
 }
 
