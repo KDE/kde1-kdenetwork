@@ -10,8 +10,8 @@
 
 <title>The <em/kppp/ Handbook
 <author>Bernd Johannes Wuebben, <tt/wuebben@kde.org/
-<date>Version 1.4.8, September 11, 1998
-<abstract>This Handbook describes <em/kppp/ Version 1.4.8
+<date>Version 1.5.22, December 22, 1998
+<abstract>This Handbook describes <em/kppp/ Version 1.5.22
 
 <!-- Table of contents -->
 <toc>
@@ -66,7 +66,7 @@ Many thanks to the following people who have contributed code to <em/kppp/
 up dialogs
 and other contributions.
 <item><url url="mailto:MABrown@etcconnect.com" name="Martin A. Brown" for
-proofreading some english text in the program
+proofreading some English text in the program
 </itemize>
 <p>
 
@@ -167,10 +167,14 @@ pppd daemon. <p>
 
 <sect1>More about ppp/pppd
 <p>
-The following site may be of interest for further information about the 
-ppp protocol and pppd <url url="http://www.thoughtport.com:8080/PPP/index.html">
+The following sites may be of interest for further information about the 
+ppp protocol, pppd and networking in general:
+<itemize>
+<item> Linux PPP FAQ: <url url="http://metalab.unc.edu/mdw/FAQ/PPP-FAQ.html">
+<item> <url url="http://www.thoughtport.com:8080/PPP/index.html">
+<item> The Network Administrators' Guide: <url url="http://metalab.unc.edu/mdw/LDP/nag/nag.html">
 <p>
-
+</itemize>
 
 
 <sect>Setting up <em/kppp/
@@ -201,15 +205,13 @@ If you experience trouble while running a script: Play with this parameter.
 your serial port.
 
 <label id="lock files"> 
-<tag/Lock File Directory/ 
-Enter the path-name of the desired modem lock file.
-Under Linux this is typically /var/lock and you shouldn't change this
-to anything else unless you know what you are doing. Programs such
-as mgetty depend on the existence of such lock files and <em/kppp/ will
-not work with mgetty if the lock file is not set correctly.
-If you leave this edit-box empty, <em/kppp/ will not attempt to create a 
-lockfile. Make sure that you don't use the option "lock" to pppd
-if you entered a modem lock file and thus want <em/kppp/ to lock the modem,
+<tag/Lock File Directory/
+Activate this option if you want <em/kppp/ to create a lockfile. Under Linux
+the directory for such a file will be <tt>/var/lock</tt>.
+Programs such as mgetty depend on the existence of such lock files and
+<em/kppp/ will not work with mgetty if the lock file is not set.
+Make sure that you don't use the option "lock" to pppd
+if you want <em/kppp/ to lock the modem,
 since the pppd option "lock" will induce pppd to try to lock the
 modemdevice. However since <em/kppp/ already locked the device pppd
 will fail and <em/kppp/ will display "pppd died unexpectedly".
@@ -1093,6 +1095,26 @@ Then send <url url="mailto:wuebben@math.cornell.edu" name="me"> the patches.
 Short answer: You haven't started the PPP software on the peer system.<p>
 See a posting from Al Longyear on <url url="http://www.dejanews.com/getdoc.xp?AN=184945314"> for a more detailed explanation.
 <p>
+<sect2>Signal 15</sect2>
+If you see the following lines you've probably just received a timeout error
+from <em/kppp/, too. <em/kppp/ has been waiting for the PPP interface to
+come up and gave up after the specified timeout. pppd was signaled to shut
+down with signal number 15, i.e. SIGTERM.
+<tscreen><verb>
+pppd[26921]: pppd 2.3.5 started by me, uid 500
+pppd[26921]: Using interface ppp0
+pppd[26921]: Connect: ppp0 <--> /dev/ttyS0
+pppd[26921]: Terminating on signal 15.
+pppd[26921]: Connection terminated.
+pppd[26921]: Exit.
+</tscreen></verb>
+<sect2>Receive serial link is not 8-bit clean</sect2>
+The PPP daemon is alarmed by the fact that all data it receives has bit 8 set
+to zero. In most cases this simply indicates that the remote PPP server isn't
+running yet. You might be still confronted with a login prompt that echoes
+back all data sent by your pppd.
+<p>
+
 <sect>Appendix
 <p>
 <sect1>The Hayes Modem Command Set
