@@ -1,5 +1,6 @@
 #include <sys/time.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <fcntl.h>
 #include <unistd.h>
 
@@ -68,7 +69,9 @@ int main (int argc, char **argv) {
 
     a.setTopWidget (&dialog);
 
-    debug ("#"); // don't erase this! - ktalkd waits for it!
+    // don't erase this! - ktalkd waits for it!
+    printf("#\n");
+    fflush(stdout);
     
     KConfig *cfg = a.getConfig();
     cfg->setGroup ("ktalkannounce");

@@ -58,6 +58,7 @@
 #include <syslog.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <fcntl.h>
 #include <stdio.h>
 #include <string.h>
 #include <pwd.h>
@@ -226,14 +227,11 @@ int try_Xannounce(NEW_CTL_MSG *request, const char *remote_machine,
                     if (callee) message("With mention of callee : %s",callee);
                 }
                 /*
-                 * point stdout, stderr of external program to the pipe
+                 * point stdout of external program to the pipe
                  * announce a talk request by execing external program
                  */
-                close( 1 );
-                dup( readPipe[1] );
-                close( 2 );
-                dup( readPipe[1] );
-                /* =============================================== */
+                dup2( readPipe[1], STDOUT_FILENO );
+
                 if (callee)
                     execl( extprg, extprg, line_buf, callee, 0 );
                 else
