@@ -1,6 +1,7 @@
 #include "chanparser.h"
 #include "estring.h"
 #include "alistbox.h"
+#include <qmsgbox.h>
 #include <iostream.h>
 #include <stdio.h>
 #include <ssfeprompt.h>
@@ -9,7 +10,7 @@
 QDict<parseFunc> ChannelParser::parserTable;
 
 
-ChannelParser::ChannelParser(KSircTopLevel *_top) /*fold00*/
+ChannelParser::ChannelParser(KSircTopLevel *_top) /*FOLD00*/
 {
   top = _top;
 
@@ -33,11 +34,13 @@ ChannelParser::ChannelParser(KSircTopLevel *_top) /*fold00*/
     parserTable.insert("***", new parseFunc(&parseINFOInfo));
     parserTable.insert("*E*", new parseFunc(&parseINFOError));
     parserTable.insert("*#*", new parseFunc(&parseINFONicks));
+    parserTable.insert("*>*", new parseFunc(&parseINFOJoin));
+    parserTable.insert("*<*", new parseFunc(&parseINFOPart));
   }
 
 }
 
-void ChannelParser::parse(QString string) /*FOLD00*/
+void ChannelParser::parse(QString string) /*fold00*/
 {
   parseFunc *pf;
   if(string.length() < 3){
@@ -221,7 +224,7 @@ void ChannelParser::parseINFOError(QString string) /*fold00*/
   throw(parseSucc(string,kSircConfig->colour_error, top->pix_madsmile)); // Null string, don't display anything
 }
 
-void ChannelParser::parseINFONicks(QString in_string) /*FOLD00*/
+void ChannelParser::parseINFONicks(QString in_string) /*fold00*/
 {
 
   EString string = in_string;
@@ -282,4 +285,111 @@ void ChannelParser::parseINFONicks(QString in_string) /*FOLD00*/
   top->nicks->setAutoUpdate(TRUE);         // clear and repaint the listbox
   top->nicks->repaint(TRUE);
   throw(parseSucc(QString("")));           // Parsing ok, don't print anything though
+}
+
+void ChannelParser::parseINFOJoin(QString string) /*FOLD00*/
+{
+  char nick[101], channel[101];
+  string.remove(0, 4);                   // strip *>* to save a few compares
+  if(sscanf(string, "You have joined channel %100s", channel) > 0){
+    QString chan = QString(channel).lower();
+    if(strcasecmp(top->channel_name, chan) == 0)
+      top->show();
+    emit top->open_toplevel(chan);
+    throw(parseSucc(" " + string, kSircConfig->colour_chan, top->pix_greenp));
+  }
+  else if(sscanf(string, "%100s %*s has joined channel %100s", nick, channel) > 0){
+    if(strcasecmp(top->channel_name, channel) != 0){
+      throw(parseWrongChannel(" " + string, kSircConfig->colour_error, top->pix_greenp));
+    }
+    //	nicks->insertItem(s3, 0);      // add the sucker
+    top->nicks->inSort(nick);
+    throw(parseSucc(" " + string, kSircConfig->colour_chan, top->pix_greenp));
+  }
+
+
+}
+
+void ChannelParser::parseINFOPart(QString string) /*FOLD00*/
+{
+  char nick[101], channel[101];
+  
+  string.remove(0, 4);                // clear junk
+
+  // Multiple type of parts, a signoff or a /part
+  // Each get's get nick in a diffrent localtion
+  // Set we search and find the nick and the remove it from the nick list
+  // 1. /quit, signoff, nick after "^Singoff: "
+  // 2. /part, leave the channek, nick after "has left \w+$"
+  // 3. /kick, kicked off the channel, nick after "kicked off \w+$"
+  //
+
+
+  try {
+    if(sscanf(string, "Signoff: %100s", nick) >= 1){
+      infoFoundNick ifn(nick);
+      throw(ifn);
+    }
+    else if(sscanf(string, "%100s has left channel %100s", nick, channel) >= 2){
+      if(strcasecmp(top->channel_name, channel) == 0){
+        infoFoundNick ifn(nick);
+        throw(ifn);
+      }
+      else{
+        throw(parseWrongChannel(QString("")));
+      }
+    }
+    else if(sscanf(string, "%100s has been kicked off channel %100s", nick, channel) >= 2){
+      if(strcasecmp(top->channel_name, channel) == 0){
+        infoFoundNick ifn(nick);
+        throw(ifn);
+      }
+      else
+        throw(parseWrongChannel(QString("")));
+    }
+    else if(sscanf(string, "You have left channel %100s", channel)){
+      if(strcasecmp(top->channel_name, channel) == 0){
+        QApplication::postEvent(top, new QCloseEvent()); // WE'RE DEAD
+        throw(parseSucc(QString("")));
+      }
+    }
+    else if(sscanf(string, "You have been kicked off channel %100s", channel) >= 1){
+      if(strcasecmp(top->channel_name, channel) != 0)
+        throw(parseWrongChannel(string, kSircConfig->colour_error, top->pix_madsmile));
+      if(top->KickWinOpen != false)
+        throw(parseError(0, string, "Kick window Open"));
+      top->KickWinOpen = true;
+      switch(QMessageBox::information(top, "You have Been Kicked",
+                                      string.data(),
+                                      "Rejoin", "Leave", 0, 0, 1)){
+                                      case 0:
+                                        {
+                                          QString str = "/join " + QString(top->channel_name) + "\n";
+                                          emit top->outputLine(str);
+                                          if(top->ticker)
+                                            top->ticker->show();
+                                          else
+                                            top->show();
+                                        }
+                                      break;
+                                      case 1:
+                                        QApplication::postEvent(top, new QCloseEvent()); // WE'RE DEAD
+                                        break;
+      }
+      top->KickWinOpen = false;
+    }
+    else{                                // uhoh, something we missed?
+      throw(parseError(0, string, "Failed to parse part/kick/leave/quit message"));
+    }
+  }
+  catch(infoFoundNick &ifn){
+    int index = top->nicks->findNick(ifn.nick);
+    if(index >= 0){
+      top->nicks->removeItem(index);
+      throw(parseSucc(" " + string, kSircConfig->colour_chan, top->pix_greenp));
+    }
+    else{
+      throw(parseSucc(QString("")));
+    }
+  }
 }

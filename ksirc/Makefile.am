@@ -69,7 +69,7 @@ ksirc_LDADD   = -lksprogress -lksticker -lkscutdialog -lksprefs -lkdeui -lkdecor
 
 ksircstatic_LDADD = -lksprogress -lksticker -lkscutdialog -lksprefs -lpuke
 
-STATIC_LIBS = /opt/kde/lib/libkdeui.a /opt/kde/lib/libkdecore.a /usr/local/lib/qt/lib/libqt.a -lX11 -lXext @LIBSOCKET@ -ldl
+STATIC_LIBS = /opt/kde/lib/libkdeui.a /opt/kde/lib/libkdecore.a /usr/local/lib/qt/lib/libqt.a /usr/lib/libstdc++.a -lX11 -lXext @LIBSOCKET@ -ldl
 
 kdoc:
 	kdoc -ddoc ksirc *.h
@@ -84,7 +84,7 @@ time:
 ksircstatic: dummy
 	@rm -f ksircstatic
 	@echo "*** Ignore any failures ***"        
-	$(CXXLINK) $(ksircstatic_LDFLAGS) $(ksircstatic_OBJECTS) $(ksircstatic_LDADD) $(STATIC_LIBS) $(LIBS) || true
+	$(LINK) $(ksircstatic_LDFLAGS) $(ksircstatic_OBJECTS) $(ksircstatic_LDADD) $(STATIC_LIBS) $(LIBS) || true
 	@touch ksircstatic
 	@echo "*** Ignore previous failure, if any ***"
 

@@ -48,6 +48,23 @@ public:
     }
 };
 
+class parseWrongChannel : public parseSucc {
+public:
+  parseWrongChannel(QString _s, QColor *_c = 0, QPixmap *_pm = 0)
+    : parseSucc(_s, _c, _pm)
+    {
+    }
+  
+};
+
+class infoFoundNick {
+public:
+  char nick[101];
+  infoFoundNick(char *_n){
+    strncpy(nick, _n, 100);
+  }
+};
+
 class badModeChangeError // Mode change barfed up, exit out
 {
 public:
@@ -205,6 +222,23 @@ private:
    * the current channel.
    */
   void parseINFONicks(QString in_string);
+
+  /**
+   * *>* is a join message.  If it's for the current channel
+   */
+  void parseINFOJoin(QString string);
+
+  /**
+   * *<* is a part message, if it's for the current channel remove it.
+   * There's multiple part types, so parsing it more complicated.
+   */
+  void parseINFOPart(QString string);
+
+  /**
+   * *N* Is a nick change, update the nick list if needed
+   */
+  void parseINFONick(QString string);
+  
   
 };
 
