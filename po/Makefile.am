@@ -1,6 +1,6 @@
 # $Id$
 
-SUBDIRS = de pt fr fi hu
+SUBDIRS = de pt fr fi hu es
 
 # this is a general list for merging!
 APPS = knu kmail krn
@@ -23,3 +23,4 @@ merge:
 	  fi ;\
 	 done ;\
 	done
+

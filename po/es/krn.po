@@ -1,11 +1,11 @@
 
 #: main.cpp:210 main.cpp:222 main.cpp:234 main.cpp:248 main.cpp:260
 msgid "KRN-Missing Configuration info"
-msgstr "Falta la configuraci"n del KRN"
+msgstr "Falta la configuracin del KRN"
 
 #: main.cpp:211
 msgid "Please enter your email adress"
-msgstr "Por favor, introduzca su direcci"n de correo"
+msgstr "Por favor, introduzca su direccin de correo"
 
 #: main.cpp:223
 msgid "Please enter your real name"
@@ -13,7 +13,7 @@ msgstr "Por favor, introduzca su nombre real"
 
 #: main.cpp:235
 msgid "Please enter your organization's name"
-msgstr "Por favor, introduzca el nombre de su organizaci"n"
+msgstr "Por favor, introduzca el nombre de su organizacin"
 
 #: main.cpp:249
 msgid "Please enter your NNTP server name"
@@ -43,7 +43,7 @@ msgstr "Obtener Fichero de Grupos Activos"
 #: groupdlg.cpp:123
 msgid "Exit"
 msgstr "Salir"
-       
+
 #: groupdlg.cpp:126
 msgid "KRN - Group List"
 msgstr "KRN - Lista de Grupos"
@@ -174,15 +174,15 @@ msgstr "No se puede conectar con el servidor"
 
 #: groupdlg.cpp:461
 msgid "Connection to server failed"
-msgstr "La conexi"n con el servidor ha fallado"
+msgstr "La conexin con el servidor ha fallado"
 
 #: groupdlg.cpp:470
 msgid "Authentication Failed"
-msgstr "Ha fallado la Autentificaci"n"
+msgstr "Ha fallado la Autentificacin"
 
 #: groupdlg.cpp:473
 msgid "Connection to server failed: Authentication problem"
-msgstr "La conexi"n con el servidor ha fallado: Problema de Autentificaci"n"
+msgstr "La conexin con el servidor ha fallado: Problema de Autentificacin"
 
 #: groupdlg.cpp:510
 msgid "Krn-Question"
@@ -193,7 +193,7 @@ msgid ""
 "The operation you requested needs a connection to the News server\n"
 "Should I attempt one?"
 msgstr ""
-"La operaci"n seleccionada requiere una conexi"n con el servidor de noticias\"
+"La operacin seleccionada requiere una conexin con el servidor de noticias\n"
 "(Desea conectar ahora?"
 
 #: groupdlg.cpp:769
@@ -266,7 +266,7 @@ msgstr "No expirar"
 
 #: artdlg.cpp:140
 msgid "Show Only Unread Messages"
-msgstr "Mostrar s"lo art!culos no le!dos"
+msgstr "Mostrar slo art!culos no le!dos"
 
 #: artdlg.cpp:142
 msgid "Show Locked Messages"
@@ -372,7 +372,7 @@ msgstr "Obteniendo listado de art!culos"
 
 #: identDlg.cpp:40
 msgid "KRN-Identity Configuration"
-msgstr "KRN Configuraci"n Identidad"
+msgstr "KRN Configuracin Identidad"
 
 #: identDlgData.cpp:14
 msgid "Real Name"
@@ -380,15 +380,15 @@ msgstr "Nombre Real"
 
 #: identDlgData.cpp:22
 msgid "E-mail Address"
-msgstr "Direcci"n e-mail"
+msgstr "Direccin e-mail"
 
 #: identDlgData.cpp:30
 msgid "Organization"
-msgstr "Organizaci"n"
+msgstr "Organizacin"
 
 #: NNTPConfigDlg.cpp:23
 msgid "KRN-NNTP configuration"
-msgstr "KRN Configuraci"n del servidor de noticias"
+msgstr "KRN Configuracin del servidor de noticias"
 
 #: NNTPConfigDlgData.cpp:30
 msgid "NNTP Server"
@@ -433,7 +433,7 @@ msgstr "Decodificador KRN"
 #: kdecode.cpp:190
 #, c-format
 msgid "Unsupported encoding type: %s."
-msgstr "Tipo de codificaci"n no soportado: %s."
+msgstr "Tipo de codificacin no soportado: %s."
 
 #: aboutDlg.cpp:18
 msgid "About KRN"
@@ -453,7 +453,7 @@ msgstr "Crditos y agradecimientos"
 
 #: fontsDlg.cpp:29
 msgid "Message Display Fonts"
-msgstr "Fuentes para la Visualizaci"n de Art!culos"
+msgstr "Fuentes para la Visualizacin de Art!culos"
 
 #: fontsDlgData.cpp:23
 msgid "Small"
@@ -505,7 +505,7 @@ msgstr "El %D, escribiste:"
 
 #: kmmessage.cpp:1065
 msgid "On %D, %F wrote:"
-msgstr "El %D, %F escribi":"
+msgstr "El %D, %F escribi:"
 
 #: kmmessage.cpp:1066
 msgid "Forwarded Message"
@@ -729,7 +729,7 @@ msgstr "Fuente"
 
 #: kmcomposewin.cpp:576
 msgid "KMail Confirm"
-msgstr "Confirmaci"n KMail"
+msgstr "Confirmacin KMail"
 
 #: kmcomposewin.cpp:577
 msgid ""
@@ -795,7 +795,7 @@ msgid ""
 msgstr ""
 "Por favor, complete los campos requeridos en\n"
 "las opciones de Identidad:\n"
-"Nombre de usuario y direcci"n e-mail"
+"Nombre de usuario y direccin e-mail"
 
 #: kmsender.cpp:134
 msgid ""
@@ -814,7 +814,7 @@ msgid ""
 "host %s for sending:\n"
 "%s"
 msgstr ""
-"No se pudo abrir una conexi"n SMTP a la\n"
+"No se pudo abrir una conexin SMTP a la\n"
 "m quina %s para enviar:\n"
 "%s"
 
@@ -830,14 +830,14 @@ msgid ""
 msgstr ""
 "Fallo al enviar el mensaje\n"
 "debido a un error con el SMTP\n"
-"durante el comando \W%s\".\n"
+"durante el comando \"%s\".\n"
 "\n"
-"C"digo de Retorno: %d\n"
+"Cdigo de Retorno: %d\n"
 "Respuesta: `%s'"
 
 #: kmsender.cpp:251
 msgid "Cannot close SMTP connection."
-msgstr "No se pudo cerrar la conexi"n SMTP."
+msgstr "No se pudo cerrar la conexin SMTP."
 
 #: kmsender.cpp:262
 msgid ""
@@ -888,7 +888,7 @@ msgid ""
 msgstr ""
 "No tiene permisos de lectura sobre el fichero:\n"
 "%s"
-  
+
 #: kfileio.cpp:68
 #, c-format
 msgid ""
@@ -919,7 +919,7 @@ msgstr ""
 #: kfileio.cpp:91
 #, c-format
 msgid "Could only read %u bytes of %u."
-msgstr "S"lo se pudieron leer %u bytes de %u."
+msgstr "Slo se pudieron leer %u bytes de %u."
 
 #: kfileio.cpp:118 kfileio.cpp:134
 #, c-format
@@ -933,7 +933,7 @@ msgstr ""
 #: kfileio.cpp:140
 #, c-format
 msgid "Could only write %d bytes of %d."
-msgstr "S"lo se pudieron escribir %d bytes de %d."
+msgstr "Slo se pudieron escribir %d bytes de %d."
 
 #: kmmsgpartdlg.cpp:37
 msgid "Message Part Properties"
@@ -945,11 +945,11 @@ msgstr "Nombre:"
 
 #: kmmsgpartdlg.cpp:69
 msgid "Description:"
-msgstr "Descripci"n:"
+msgstr "Descripcin:"
 
 #: kmmsgpartdlg.cpp:79
 msgid "Encoding:"
-msgstr "Codificaci"n:"
+msgstr "Codificacin:"
 
 #: kmmsgpartdlg.cpp:85
 msgid "none (8bit)"
@@ -989,7 +989,7 @@ msgstr "Mensaje firmado por"
 
 #: kmreaderwin.cpp:326
 msgid "Warning: Bad signature from"
-msgstr "Atenci"n: Firma digital err"nea"
+msgstr "Atencin: Firma digital errnea"
 
 #: kmreaderwin.cpp:505
 msgid "Open..."
@@ -1038,11 +1038,11 @@ msgstr "Final de mensaje firmado con PGP"
 
 #: kpgp.cpp:563
 msgid "Bad pass Phrase; couldn't decrypt"
-msgstr "Contrase$a err"nea; no se puede desencriptar"
+msgstr "Contrase$a errnea; no se puede desencriptar"
 
 #: kpgp.cpp:655
 msgid "Bad pass Phrase; couldn't sign"
-msgstr "Contrase$a err"nea; no se puede firmar"
+msgstr "Contrase$a errnea; no se puede firmar"
 
 #: kpgp.cpp:719
 msgid "Please enter passphrase"
