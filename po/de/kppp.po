@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1998-05-30 17:38+0200\n"
+"POT-Creation-Date: 1998-05-30 21:35+0200\n"
 "PO-Revision-Date: 1998-04-21 15:44+0100\n"
 "Last-Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
 
@@ -489,7 +489,7 @@ msgstr "Trennen bei Schließen des X-Servers"
 
 #: general.cpp:125
 msgid "Quit on Disconnect"
-msgstr "Beenden beim Trennen"
+msgstr "Bei Trennung beenden"
 
 #: general.cpp:131
 msgid "Minimize Window on Connect"
@@ -695,7 +695,7 @@ msgid ""
 "method PAP. This requires that you\n"
 "supply a username and a password!"
 msgstr ""
-"Sie haben tie Authetifikationsmethode\n"
+"Sie haben die Authentifikationsmethode\n"
 "PAP gewählt. Deshalb müssen Sie einen\n"
 "Benutzernamen und ein Passwort angeben!"
 
@@ -714,7 +714,7 @@ msgid ""
 "method CHAP. This requires that you\n"
 "supply a username and a password!"
 msgstr ""
-"Sie haben tie Authetifikationsmethode\n"
+"Sie haben die Authentifikationsmethode\n"
 "CHAP gewählt. Deshalb müssen Sie einen\n"
 "Benutzernamen und ein Passwort angeben!"
 
@@ -729,7 +729,7 @@ msgstr ""
 
 #: main.cpp:825
 msgid "You have to specify a telephone number !\n"
-msgstr "Sie müssen eine Telephon-Number angeben!\n"
+msgstr "Sie müssen eine Telefonnummer angeben!\n"
 
 #: main.cpp:899
 msgid "Quit kPPP?"
@@ -1111,38 +1111,6 @@ msgid ""
 msgstr ""
 "/etc/resolv.conf fehlt!\n"
 "\n"
-"Fragen Sie ihren System-Adminstrator, \n"
-"eine nicht-leere Datei mit den entsprechenden\n"
-"Lese- und Schreibe-Rechten anzulegen."
-
-#~ msgid "pppd Path:"
-#~ msgstr "pppd-Pfad:"
-
-#~ msgid "Log Viewer:"
-#~ msgstr "Logdatei-Betrachter:"
-
-#~ msgid "started PPP connection:%s:%s"
-#~ msgstr "PPP-Verbindung gestartet:%s:%s"
-
-#~ msgid ""
-#~ "terminated PPP connection\n"
-#~ "COST OF SESSION: "
-#~ msgstr ""
-#~ "PPP-Verbindug beendet\n"
-#~ "KOSTEN DER SITZUNG: "
-
-#~ msgid ""
-#~ "\n"
-#~ "SUBTOTAL FOR:"
-#~ msgstr ""
-#~ "\n"
-#~ "TEILSUMME FÜR:"
-
-#~ msgid ""
-#~ "The logviewer \"%s\" was not found!\n"
-#~ "\n"
-#~ "Setting default back to \"%s\"."
-#~ msgstr ""
-#~ "Der Logdatei-Betrachter \"%s\" wurde nicht gefunden!\n"
-#~ "\n"
-#~ "Setze auf Standard zurück: \"%s\"."
+"Bitten Sie Ihren Systemadministrator,\n"
+"eine nicht-leere Datei zu erstellen, die\n"
+"die passenden Lese- und Schreibrechte hat."
