@@ -29,6 +29,7 @@
 #include <ksock.h>
 #include <ktreelist.h>
 #include <kconfig.h>
+#include <ksimpleconfig.h>
 
 
 #include <mimelib/mimepp.h>
@@ -111,9 +112,9 @@ public:
     ~NewsGroup();
     void save();
     void load();
-    
-    // Last article number of which the group has info.
-    int lastArticle;
+
+    int lastArticle(NNTP *server);
+    void saveLastArticle(NNTP *server,int i);
     
     //A pointer to the article window, or 0.
     //used to be boolean, that's why the name is weird.
@@ -127,6 +128,7 @@ public:
     void catchup();
     int countNew(NNTP *server);
 private:
+    KSimpleConfig *sconf;
 };
 
 typedef QListT<NewsGroup> GroupListBase;

@@ -253,12 +253,17 @@ NewsGroup::NewsGroup(const char *name)
     :QString(name)
 {
     isVisible=0;
-    lastArticle=0;
+    sconf=0;
 }
 
 
 NewsGroup::~NewsGroup()
 {
+    if (sconf)
+    {
+        save();
+        delete sconf;
+    }
 }
 
 void NewsGroup::getList()
@@ -303,26 +308,37 @@ void NewsGroup::updateList()
 
 void NewsGroup::save()
 {
-    QString p=groupinfopath+data();
-    QFile f(p.data());
-    if(f.open (IO_WriteOnly))
-    {
-        QTextStream st(&f);
-        st<<lastArticle;
-        f.close();
-    }
 }
 
 void NewsGroup::load()
 {
+}
+
+int NewsGroup::lastArticle(NNTP *server)
+{
     QString p=groupinfopath+data();
-    QFile f(p.data());
-    if(f.open (IO_ReadOnly))
+    if (!sconf)
     {
-        QTextStream st(&f);
-        lastArticle=st.readLine().toInt();
-        f.close();
+        QString q=p+".conf";
+        sconf=new KSimpleConfig(q);
     }
+    sconf->setGroup(server->hostname.data());
+    return sconf->readNumEntry("LastArticle",0);
+
+}
+
+void NewsGroup::saveLastArticle(NNTP *server,int i)
+{
+    QString p=groupinfopath+data();
+    if (!sconf)
+    {
+        QString q=p+".conf";
+        sconf=new KSimpleConfig(q);
+    }
+    sconf->setGroup(server->hostname.data());
+    sconf->writeEntry("LastArticle",i);
+    sconf->sync();
+
 }
 
 void NewsGroup::getSubjects(NNTP *server)
@@ -332,11 +348,11 @@ void NewsGroup::getSubjects(NNTP *server)
     {
         server->setGroup(data());
     }
-    if (server->last>lastArticle)
+    if (server->last>lastArticle(server))
     {
-        debug ("xover from %d to %d",lastArticle+1,server->last+5);
-        server->artList(lastArticle,server->last);
-        lastArticle=server->last;
+        debug ("xover from %d to %d",lastArticle(server)+1,server->last+5);
+        server->artList(lastArticle(server),server->last);
+        saveLastArticle(server,server->last);
         save();
     }
 }
@@ -382,8 +398,8 @@ int NewsGroup::countNew(NNTP *server)
   if(strcmp(server->group(), data()))
     server->setGroup(data());
 
-  if(server->last > lastArticle)
-    count = server->last - lastArticle;
+  if(server->last > lastArticle(server))
+    count = server->last - lastArticle(server);
 
   for(Article *art=artList.first(); art!=0; art=artList.next()) {
     if(!art->isRead())

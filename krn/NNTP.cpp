@@ -397,6 +397,10 @@ int NNTP::listXover(int from,int to)
                 }
                 f.writeBlock(gi.data(),gi.length());
                 f.close();
+                QString command="cat ";
+                command=command+p+"| sort |uniq >"+p+"1; mv "+p+"1 "+p;
+                system (command.data());
+                
                 gdbm_sync(artdb);
             }
         }
