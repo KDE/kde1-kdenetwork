@@ -37,6 +37,7 @@
 
 #if defined(__unix__) || defined(__unix)
 #   define DW_UNIX
+# include <config.h>
 #endif
 
 //-----------------------------------------------------------------------------
