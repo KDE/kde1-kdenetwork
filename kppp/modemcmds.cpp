@@ -165,6 +165,7 @@ ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
   connect(slider, SIGNAL(valueChanged(int)),
 	  lslider, SLOT(setNum(int)));
   slider->setValue(gpppdata.modemEscapeGuardTime());
+  lslider->setNum(gpppdata.modemEscapeGuardTime());
   l2->addWidget(lslider, 0);
   l2->addWidget(slider, 1);
   
