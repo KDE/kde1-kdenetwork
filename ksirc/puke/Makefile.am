@@ -178,8 +178,14 @@ mpwidget.cpp
 # them while "make clean", use CLEANFILES
 DISTCLEANFILES = $(BUILTSOURCES)
 
-# Datafiles to install / uninstall 
-data_DATA = *.pl *.pm
+# Datafiles to install / uninstall : *.pl *.pm
+data_DATA = commands-handler.pl commands-perl.pl convert_commands.pl \
+	puke.pl small.pl test.pl tester.pl \
+	dcc_progress.pm dcc_status.pm ksirclistbox.pm load_all.pm \
+	palistbox.pm pbase.pm pboxlayout.pm pbutton.pm pframe.pm \
+	pkfiledialog.pm plabel.pm plined.pm plistbox.pm pmenudta.pm \
+	ppopmenu.pm pprogress.pm ppushbt.pm ptabdialog.pm ptablevw.pm \
+	pwidget.pm 
 
 # Where to install them
 datadir = $(kde_datadir)/ksirc
