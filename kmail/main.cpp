@@ -501,6 +501,11 @@ static void cleanup(void)
   KConfig* config =  kapp->getConfig();
   shuttingDown = TRUE;
 
+  // Hm. When I think again, the whole cleanup lasts too long. Destructing
+  // and config may take some time, so we better mark us as busy
+  // on the beginning of cleanup.
+  serverReady(false);      // Knock again, but you won't come in!
+
   if (trashFolder)
   {
     trashFolder->close(TRUE);
@@ -508,6 +513,12 @@ static void cleanup(void)
     if (config->readNumEntry("empty-trash-on-exit", 0))
       trashFolder->expunge();
   }
+  if (folderMgr)
+  {
+    if (config->readNumEntry("compact-all-on-exit", 0))
+      folderMgr->compactAll(); // I can compact for ages in peace now!
+  }
+    
   if (inboxFolder) inboxFolder->close(TRUE);
   if (outboxFolder) outboxFolder->close(TRUE);
   if (sentFolder) sentFolder->close(TRUE);
@@ -537,6 +548,11 @@ static void cleanup(void)
   unlink(cmd.data()); // delete your owns only
   cmd.sprintf("%s.kmail%d.msg", _PATH_TMP, getuid());
   unlink(cmd.data()); // delete your owns only
+  // Compacting all and whole cleanup () may take some time;
+  // What if message about new kmail comes in the meantime?
+  // We're marked as busy and client might leave the message, but we
+  // didn't answer; we are beyond all destructors and can't wake any more.
+  // What to do? Ignore? Let's ignore. He can press that button again!
   //--- Sven's pseudo IPC&locking end ---
 }
 

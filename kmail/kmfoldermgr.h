@@ -51,6 +51,10 @@ public:
   /** Reloads all folders, discarding the existing ones. */
   virtual void reload(void);
 
+public slots:
+  /** Compacts all folders (they know is it needed) */
+  void compactAll(); //Why is here everything virtual?
+
 signals:
   /** Emitted when the list of folders has changed. This signal is a hook
     where clients like the KMFolderTree tree-view can connect. The signal

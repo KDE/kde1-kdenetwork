@@ -279,7 +279,7 @@ protected:
   bool mIsSystemFolder;
   KMAcctList* mAcctList;
   long unreadMsgs; // number of unread messages, -1 if not yet set
-
+  bool needsCompact; //sven: true if on destruct folder needs to be compacted.
 };
 
 #endif /*kmfolder_h*/

@@ -69,7 +69,7 @@ private:
   QLineEdit *phraseReplyEdit, *phraseReplyAllEdit, *phraseForwardEdit;
   QLineEdit *indentPrefixEdit, *wrapColumnEdit;
   QCheckBox *autoAppSignFile, *wordWrap, *monospFont, *pgpAutoSign;
-  QCheckBox *emptyTrashOnExit, *sendOnCheck, *longFolderList, *sendReceipts;
+  QCheckBox *emptyTrashOnExit, *sendOnCheck, *longFolderList, *sendReceipts, *compactOnExit;
   QRadioButton *smtpRadio, *sendmailRadio, *sendNow, *sendLater;
   QRadioButton *allow8Bit, *quotedPrintable;
   QButtonGroup *incomingGroup,*outgoingGroup;

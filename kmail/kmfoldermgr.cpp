@@ -47,6 +47,20 @@ KMFolderMgr::~KMFolderMgr()
 
 
 //-----------------------------------------------------------------------------
+void KMFolderMgr::compactAll()
+{
+  KMFolderNode* node;
+
+  for (node=mDir.first(); node; node=mDir.next())
+  {
+    if (node->isDir()) continue;
+    ((KMFolder*)node)->compact(); // compact know if it's needed
+  }
+}
+
+
+
+//-----------------------------------------------------------------------------
 void KMFolderMgr::setBasePath(const char* aBasePath)
 {
   QDir dir;

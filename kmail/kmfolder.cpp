@@ -75,6 +75,7 @@ KMFolder :: KMFolder(KMFolderDir* aParent, const char* aName) :
   mDirty          = FALSE;
   mWhoField       = 0;
   unreadMsgs      = -1;
+  needsCompact    = false;
 }
 
 
@@ -565,6 +566,7 @@ void KMFolder::readIndex(void)
     {
       delete mi;  // skip messages that are marked as deleted
       mDirty = TRUE;
+      needsCompact = true;  //We have deleted messages - needs to be compacted
       continue;
     }
 #ifdef OBSOLETE
@@ -656,6 +658,7 @@ KMMessage* KMFolder::take(int idx)
   }
   msg->setParent(NULL);
   mDirty = TRUE;
+  needsCompact=true; // message is taken from here - needs to be compacted
   if (!mQuiet) emit msgRemoved(idx);
 
   return msg;
@@ -870,6 +873,7 @@ int KMFolder::remove(void)
   if (rc) return rc;
 
   mMsgList.reset(INIT_MSGS);
+  needsCompact = false; //we are dead - no need to compact us
   return 0;
 }
 	
@@ -890,7 +894,8 @@ int KMFolder::expunge(void)
   mDirty = FALSE;
 
   mMsgList.reset(INIT_MSGS);
-
+  needsCompact = false; //we're cleared and truncated no need to compact
+  
   if (openCount > 0)
   {
     open();
@@ -913,13 +918,30 @@ int KMFolder::compact(void)
   int openCount = mOpenCount;
   int num, numStatus;
 
+
+  if (!needsCompact)
+  {
+    debug ("Not compacting %s; it's clean", name().data());
+    return 0;
+  }
+  if (count() == 0)
+  {
+    debug ("Expunging %s, it's empty ", name().data());
+    expunge();
+    return 0;
+  }
+  
+  debug ("Compacting %s ", name().data());
+  
   tempName = "." + name();
   tempName.detach();
   tempName += ".compacted";
   unlink(tempName);
-  tempFolder = parent()->createFolder(tempName);
-  if(!tempFolder) {
+  //tempFolder = parent()->createFolder(tempName); //sven: shouldn't be in list
+  tempFolder = new KMFolder(parent(), tempName);   //sven: we create it
+  if(tempFolder->create()) {
     debug("KMFolder::compact() Creating tempFolder failed!\n");
+    delete tempFolder;                             //sven: and we delete it
     return 0;
   }
 
@@ -949,7 +971,7 @@ int KMFolder::compact(void)
   _rename(tempFolder->indexLocation(), indexLocation());
 
   // Now really free all memory
-  parent()->remove(tempFolder);
+  delete tempFolder;                //sven: we delete it, not the manager
 
   if (openCount > 0)
   {
@@ -959,6 +981,7 @@ int KMFolder::compact(void)
   quiet(FALSE);
 
   if (!mQuiet) emit changed();
+  needsCompact = false;             // We are clean now
   return 0;
 }
 
@@ -1001,6 +1024,18 @@ void KMFolder::sort(KMMsgList::SortField aField, bool aDesc)
   debug("KMFolder::sort() after");
   if (!mQuiet) emit changed();
   mDirty = TRUE;
+  // Set needs compact to true? Why? We care only about size.
+  // But what about other  mailers? They could touch something and
+  // sort wont be the same after kmail comes again
+  // On the other hand: We call sort every time we visit a folder;
+  // Therefore if pine did something to folder and we have sor by time:
+  //  - kmail recreates index from contents
+  //  - it sorts messages by time
+  //  - on exit it doesn't need to write the whole folder sorted by time
+  //    again, 'cause, it'll call sort regardless of was folder phisically sorted
+  //    or not.
+  //  So don't flag as dirty. Opinions?
+  // needsCompact = true;
 }
 
 

@@ -540,7 +540,7 @@ void KMSettings::createTabMisc(QWidget *parent)
   //---------- group: folders
   grp = new QGroupBox(i18n("Folders"), tab);
   box->addWidget(grp);
-  grid = new QGridLayout(grp, 3, 3, 20, 4);
+  grid = new QGridLayout(grp, 4, 4, 20, 4);
 
   emptyTrashOnExit=new QCheckBox(i18n("empty trash on exit"),grp);
   emptyTrashOnExit->setMinimumSize(emptyTrashOnExit->sizeHint());
@@ -554,11 +554,20 @@ void KMSettings::createTabMisc(QWidget *parent)
   sendReceipts->setMinimumSize(sendReceipts->sizeHint());
   grid->addMultiCellWidget(sendReceipts, 2, 2, 0, 2);
 
+  QString s(i18n("C&ompact"));
+  s += " ";
+  s += i18n("Folders");
+  s += i18n(" on exit"); //sorry!
+  compactOnExit = new QCheckBox(i18n(s.data()),grp);
+  compactOnExit->setMinimumSize(compactOnExit->sizeHint());
+  grid->addMultiCellWidget(compactOnExit, 3, 3, 0, 2);
+  
   grid->activate();
 
   //---------- set values
   config->setGroup("General");
   emptyTrashOnExit->setChecked(config->readNumEntry("empty-trash-on-exit", 0));
+  compactOnExit->setChecked(config->readNumEntry("compact-all-on-exit", 0));
   sendOnCheck->setChecked(config->readBoolEntry("sendOnCheck", false));
   sendReceipts->setChecked(config->readBoolEntry("send-receipts", true));
 
@@ -838,6 +847,7 @@ void KMSettings::doApply()
   //----- misc
   config->setGroup("General");
   config->writeEntry("empty-trash-on-exit", emptyTrashOnExit->isChecked());
+  config->writeEntry("compact-all-on-exit", compactOnExit->isChecked());
   config->writeEntry("first-start", FALSE);
   config->writeEntry("sendOnCheck", sendOnCheck->isChecked());
   config->writeEntry("send-receipts", sendReceipts->isChecked());

@@ -970,6 +970,12 @@ void KMMainWin::setupMenuBar()
   fileMenu->insertItem(i18n("Print..."), this,
 		       SLOT(slotPrintMsg()), keys->print());
   fileMenu->insertSeparator();
+  QString s(i18n("C&ompact"));
+  s += " ";
+  s += i18n("Folders");
+  fileMenu->insertItem(i18n(s.data()), folderMgr,
+		       SLOT(compactAll()));
+  fileMenu->insertSeparator();
   fileMenu->insertItem(i18n("Check Mail..."), this,
 		       SLOT(slotCheckMail()), CTRL+Key_L);
   actMenu = new QPopupMenu();
