@@ -233,12 +233,11 @@ msgstr "Gesendet"
 
 #: kmmainwin.cpp:863
 msgid "Next unread"
-msgstr ""
+msgstr "Nächste ungelesene"
 
 #: kmmainwin.cpp:867
-#, fuzzy
 msgid "Previous unread"
-msgstr "&Vorherige"
+msgstr "Letzte ungelesene"
 
 #: kmmainwin.cpp:877
 msgid "&Set Status"
@@ -941,12 +940,12 @@ msgstr "Erzeuge Indexdatei: %d Nachrichten erledigt"
 
 #: kmfolder.cpp:444
 msgid "Writing index file"
-msgstr ""
+msgstr "Schreibe Indexdatei"
 
 #: kmfolder.cpp:870
-#, fuzzy, c-format
+#, c-format
 msgid "Compacting folder: %d messages done"
-msgstr "Erzeuge Indexdatei: %d Nachrichten erledigt"
+msgstr "Komprimiere Ordner: %d Nachrichten erledigt"
 
 #: kmmsgpartdlg.cpp:41
 msgid "Message Part Properties"
