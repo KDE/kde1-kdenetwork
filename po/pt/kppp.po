@@ -972,29 +972,24 @@ msgid "Selected:"
 msgstr "Seleccionada:"
 
 #: acctselect.cpp:88
-#, fuzzy
 msgid "Volume accounting:"
-msgstr "Contabilidade de volume"
+msgstr "Contabilidade de volume:"
 
 #: acctselect.cpp:92
-#, fuzzy
 msgid "No accounting"
-msgstr "Contabilidade de volume"
+msgstr "Sem contabilidade"
 
 #: acctselect.cpp:93
-#, fuzzy
 msgid "Bytes in"
-msgstr "bytes recebidos"
+msgstr "Bytes recebidos"
 
 #: acctselect.cpp:94
-#, fuzzy
 msgid "Bytes out"
-msgstr "bytes enviados"
+msgstr "Bytes enviados"
 
 #: acctselect.cpp:95
-#, fuzzy
 msgid "Bytes in and out"
-msgstr "bytes enviados"
+msgstr "Bytes recebidos e enviados"
 
 #: acctselect.cpp:165 acctselect.cpp:271
 msgid "Available rules"
@@ -1043,16 +1038,12 @@ msgid "Minimize"
 msgstr "Minimizar"
 
 #: runtests.cpp:122
-#, fuzzy
 msgid ""
 "You´re not allowed to dial out with kppp.\n"
 "Contact your system administrator."
 msgstr ""
-"Não tem permissão\n"
-"para iniciar o pppd!\n"
-"\n"
-"Contacte o seu administrador de sistemas\n"
-"e peça-lhe acesso ao pppd."
+"Não tem permissão para ligar usando o kppp.\n"
+"Contacte o seu administrador de sistemas."
 
 #: runtests.cpp:148
 msgid ""
@@ -1117,6 +1108,3 @@ msgstr ""
 "\n"
 "Esta opção tem de ser removida uma vez que kppp toma conta do locking de "
 "dispositivos."
-
-#~ msgid "Dismiss"
-#~ msgstr "Sair"

@@ -35,9 +35,8 @@ msgid "Received %.2f Kb"
 msgstr "Recebi %.2f Kb"
 
 #: NNTP.cpp:552
-#, fuzzy
 msgid "Getting Article"
-msgstr "A Receber Lista de Artigos"
+msgstr "A Receber Artigo"
 
 #: NNTP.cpp:638
 msgid "Article Received"
@@ -337,7 +336,7 @@ msgstr "Receber Lista de Mensagens"
 
 #: artdlg.cpp:217
 msgid "Refresh Display"
-msgstr ""
+msgstr "Refrescar Écran"
 
 #: artdlg.cpp:240
 msgid "Save Article"
@@ -757,19 +756,3 @@ msgstr "Ordenar por:"
 #: sortDlg.cpp:56
 msgid "Use Threading"
 msgstr "Utilizar Threads"
-
-#~ msgid "Sorry!"
-#~ msgstr "Desculpe!"
-
-#~ msgid ""
-#~ "That newsgroup is not in the current active file\n"
-#~ " Krn can't handle this gracefully right now"
-#~ msgstr ""
-#~ "Esse newsgroup não está no ficheiro actualmente activo\n"
-#~ " Krn não consegue ligar com isso graciosamente"
-
-#~ msgid "Date"
-#~ msgstr "Data"
-
-#~ msgid "Name"
-#~ msgstr "Nome"
