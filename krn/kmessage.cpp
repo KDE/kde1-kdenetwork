@@ -97,13 +97,13 @@ void Kmessage::loadMessage( QString message, bool complete )
 
     QString header=format->htmlHeader();
     QString body=format->htmlAll();
+//    this->loadSettings();
     this->begin();
     this->write(header+"<hr>"+body);
-    this->end();
     this->parse();
-    this->loadSettings();
-    this->repaint();
-    this->show();
+    this->end();
+//    this->repaint();
+//    this->show();
 }
 void Kmessage::URLClicked(KHTMLView *, const char *s, int , const char * )
 {
