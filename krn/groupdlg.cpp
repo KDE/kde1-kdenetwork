@@ -629,6 +629,11 @@ bool Groupdlg::actions (int action,NewsGroup *group)
             success = true;
             break;
         }
+    case HELP_CONTENTS:
+        {
+            kapp->invokeHTMLHelp("","");
+            break;
+        }
     case CATCHUP:
         {
             if (!group)

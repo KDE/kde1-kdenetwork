@@ -428,7 +428,6 @@ void NNTP::groupList(QList <NewsGroup> *grouplist, bool fromserver)
                 QString s(buffer);
                 int t=s.find(' ');
                 NewsGroup *gr=new NewsGroup(s.left(t).data());
-                debug ("group-->%s",s.left(t).data());
                 grouplist->append(gr);
             };
             f.close();
