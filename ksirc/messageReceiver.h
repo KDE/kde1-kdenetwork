@@ -12,6 +12,7 @@ public:
   KSircMessageReceiver(KSircProcess *_proc)
     {
       proc = _proc;
+      broadcast = TRUE;
     }
   virtual ~KSircMessageReceiver();
 
@@ -19,9 +20,12 @@ public:
 
   virtual void control_message(QString str) = 0;
 
+  bool getBroadcast();
+  void setBroadcast(bool bd);
 
 private:
   KSircProcess *proc;
+  bool broadcast;
 
 };
 

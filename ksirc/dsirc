@@ -1109,7 +1109,7 @@ sub docommand {
       $sz=(-s $f);
       &sl("PRIVMSG $n :\caDCC SEND $tf $mynumber $myport $sz\ca");
       &dohooks("send_ctcp", $n, "DCC SEND $tf $mynumber $myport $sz");
-      &tell("*\cbD\cb* Sent DCC SEND request to $n");
+      &tell("*\cbD\cb* Sent DCC SEND request to $n ($f,$sz)");
       $dfile{$fh}=$f;
       $dswait{$lfh}=$fh;
       $dnick{$lfh}=$n;
@@ -2000,6 +2000,7 @@ while (1) {
       next if $csa<0;
       $l=read($rfh, $buf, 512+$csa);
       $w=syswrite($sfh, $buf, $l) if $l;
+      &tell("*\cbD\cb* DCC SEND write: $dfile{$rfh} bytes: $dtransferred{$sfh}"); # KSIRC MOD FOR 971218
       next if $l==0 && $ack<$dtransferred{$sfh};
       $dtransferred{$sfh}+=$w;
       &dgsclose($sfh, $rfh), next if ($w<$l || $l==0);
@@ -2119,7 +2120,7 @@ while (1) {
     } elsif ($cmd eq 'PART') {
       &yetonearg;
       if (&eq($who, $nick)) {
-	&tell("~${newarg}~*\cb<\cb* $who have left channel $newarg");   # MOD FOR KSIRC
+	&tell("~!discard~*\cb<\cb* $who have left channel $newarg");   # MOD FOR KSIRC
 	@channels=grep(!&eq($_, $newarg), @channels);
 	if (@channels) {
 	  $talkchannel=$channels[$#channels];

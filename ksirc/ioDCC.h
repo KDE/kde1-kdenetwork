@@ -14,8 +14,10 @@
 
 struct DCCInfo {
   QString nick;
+  QString cancelMessage;
   int LastSize;
   int PercentSize;
+  bool inProgress;
 };
 
 class KSircIODCC : public QObject,
@@ -32,6 +34,7 @@ public:
 	      this, SLOT(getFile()));
       connect(pending, SIGNAL(forgetFile()),
 	      this, SLOT(forgetFile()));
+      setBroadcast(FALSE);
     }
   virtual ~KSircIODCC();
 

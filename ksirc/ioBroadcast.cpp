@@ -35,7 +35,7 @@ void KSircIOBroadcast::sirc_receive(QString str)
   it.toFirst();
 
   while(it.current()){
-    if(it.current() != this)
+    if(it.current()->getBroadcast() == TRUE)
       it.current()->sirc_receive(QString(qstrdup(str.data())));
     ++it;
   }

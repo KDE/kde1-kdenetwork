@@ -18,6 +18,10 @@ class ircListItem : public QObject,
 
   virtual int row();
 
+  QString getText(){
+    return text;
+  }
+
 public slots:
   virtual void updateSize();
   

@@ -3,7 +3,7 @@
 #######    linux-gcc-shared on Sun Oct 12 09:16:39 MDT 1997
 
 export INCDIR = /usr/local/lib/qt/include
-export CFLAGS = -O3 -Wall -I/usr/X11R6/include -I$(HOME)/include -I/opt/kde/include
+export CFLAGS = -g -ggdb -Wall -I/usr/X11R6/include -I$(HOME)/include -I/opt/kde/include
 export LIBCFLAGS = -fPIC
 export YACCCFLAGS = -Wno-unused -Wno-parentheses
 export LFLAGS = -L/usr/local/lib/qt/lib -lqt -L/opt/kde/lib -lkdecore -lkdeui -L/usr/X11/lib -lXext
@@ -69,7 +69,7 @@ KSircColour.o KSircColourData.o mKSircColour.o mKSircColourData.o \
 FilterRuleEditor.o FilterRuleEditorData.o mFilterRuleEditor.o mFilterRuleEditorData.o \
 ioDiscard.o \
 ioDCC.o mioDCC.o dccDialog.o mdccDialog.o dccDialogData.o mdccDialogData.o \
-KSProgress/ksprogress.a
+KSProgress/ksprogress.a KSTicker/ksticker.a
 
 TARGET = ksirc
 
@@ -91,7 +91,7 @@ hstatic: $(OBJECTS)
 -L/opt/kde/lib /opt/kde/lib/libkdeui.a /opt/kde/lib/libkdecore.a \
 -lm  -L/usr/X11R6/lib /usr/local/lib/qt/lib/libqt.a -lX11 -lXext
 
-$(TARGET): $(OBJECTS) KSProgress
+$(TARGET): $(OBJECTS) KSProgress KSTicker
 	$(CC) $(OBJECTS) -o $(TARGET) $(LFLAGS) -lm
 
 depend:
@@ -104,11 +104,17 @@ clean:
 	rm -f *.o *.bak *~ *% core *.orig log.flood
 	rm -f $(TARGET) ksirc-static
 	$(MAKE) -C KSProgress clean
+	$(MAKE) -C KSTicker clean
 
 ####### BUILD RULES FOR SUB DIRS
 
 KSProgress/ksprogress.a: dummy
 	$(MAKE) -C KSProgress
+
+KSTicker/ksticker.a: dummy
+	$(MAKE) -C KSTicker
+
+
 
 dummy:
 
@@ -179,7 +185,8 @@ toplevel.o: /usr/local/lib/qt/include/qstrlist.h
 toplevel.o: /usr/local/lib/qt/include/qdstream.h
 toplevel.o: /usr/local/lib/qt/include/qiodev.h ahistlineedit.h alistbox.h
 toplevel.o: messageReceiver.h ksircprocess.h iocontroller.h
-toplevel.o: /usr/local/lib/qt/include/qdict.h UserMenuRef.h UserMenuRefData.h
+toplevel.o: /usr/local/lib/qt/include/qdict.h KSTicker/ksticker.h
+toplevel.o: UserMenuRef.h UserMenuRefData.h
 toplevel.o: /usr/local/lib/qt/include/qchkbox.h
 toplevel.o: /usr/local/lib/qt/include/qbutton.h
 toplevel.o: /usr/local/lib/qt/include/qpushbt.h
@@ -484,12 +491,12 @@ iocontroller.o: /usr/local/lib/qt/include/qkeycode.h irclistitem.h
 iocontroller.o: /usr/local/lib/qt/include/qstrlist.h
 iocontroller.o: /usr/local/lib/qt/include/qdstream.h
 iocontroller.o: /usr/local/lib/qt/include/qiodev.h ahistlineedit.h alistbox.h
-iocontroller.o: UserMenuRef.h UserMenuRefData.h
+iocontroller.o: KSTicker/ksticker.h UserMenuRef.h UserMenuRefData.h
 iocontroller.o: /usr/local/lib/qt/include/qchkbox.h
 iocontroller.o: /usr/local/lib/qt/include/qbutton.h
 iocontroller.o: /usr/local/lib/qt/include/qpushbt.h
 iocontroller.o: /usr/local/lib/qt/include/qcombo.h irclistbox.h
-iocontroller.o: control_message.h
+iocontroller.o: control_message.h config.h
 open_top.o: open_top.h open_topData.h /usr/local/lib/qt/include/qdialog.h
 open_top.o: /usr/local/lib/qt/include/qwidget.h
 open_top.o: /usr/local/lib/qt/include/qwindefs.h
@@ -552,7 +559,7 @@ open_top.o: /usr/local/lib/qt/include/qstrlist.h
 open_top.o: /usr/local/lib/qt/include/qdstream.h
 open_top.o: /usr/local/lib/qt/include/qiodev.h ahistlineedit.h alistbox.h
 open_top.o: ksircprocess.h iocontroller.h /usr/local/lib/qt/include/qdict.h
-open_top.o: UserMenuRef.h UserMenuRefData.h
+open_top.o: KSTicker/ksticker.h UserMenuRef.h UserMenuRefData.h
 open_top.o: /usr/local/lib/qt/include/qchkbox.h irclistbox.h
 open_topData.o: open_topData.h /usr/local/lib/qt/include/qdialog.h
 open_topData.o: /usr/local/lib/qt/include/qwidget.h
@@ -694,7 +701,7 @@ ksircprocess.o: /usr/local/lib/qt/include/qkeycode.h irclistitem.h
 ksircprocess.o: /usr/local/lib/qt/include/qstrlist.h
 ksircprocess.o: /usr/local/lib/qt/include/qdstream.h
 ksircprocess.o: /usr/local/lib/qt/include/qiodev.h ahistlineedit.h alistbox.h
-ksircprocess.o: UserMenuRef.h UserMenuRefData.h
+ksircprocess.o: KSTicker/ksticker.h UserMenuRef.h UserMenuRefData.h
 ksircprocess.o: /usr/local/lib/qt/include/qchkbox.h
 ksircprocess.o: /usr/local/lib/qt/include/qbutton.h
 ksircprocess.o: /usr/local/lib/qt/include/qpushbt.h
@@ -833,10 +840,10 @@ servercontroller.o: /usr/local/lib/qt/include/qkeycode.h irclistitem.h
 servercontroller.o: /usr/local/lib/qt/include/qstrlist.h
 servercontroller.o: /usr/local/lib/qt/include/qdstream.h
 servercontroller.o: /usr/local/lib/qt/include/qiodev.h ahistlineedit.h
-servercontroller.o: alistbox.h UserMenuRef.h UserMenuRefData.h
-servercontroller.o: /usr/local/lib/qt/include/qchkbox.h irclistbox.h
-servercontroller.o: KSircColour.h KSircColourData.h FilterRuleEditor.h
-servercontroller.o: FilterRuleEditorData.h
+servercontroller.o: alistbox.h KSTicker/ksticker.h UserMenuRef.h
+servercontroller.o: UserMenuRefData.h /usr/local/lib/qt/include/qchkbox.h
+servercontroller.o: irclistbox.h KSircColour.h KSircColourData.h config.h
+servercontroller.o: FilterRuleEditor.h FilterRuleEditorData.h
 servercontrollerData.o: servercontrollerData.h control.h
 servercontrollerData.o: /usr/local/lib/qt/include/qframe.h
 servercontrollerData.o: /usr/local/lib/qt/include/qwidget.h

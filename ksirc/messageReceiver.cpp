@@ -15,4 +15,12 @@ void KSircMessageReceiver::control_message(QString)
   warning("Pure virutal control_messaga called for a message_receiver!\n");
 }
 
+void KSircMessageReceiver::setBroadcast(bool bd)
+{
+  broadcast = bd;
+}
 
+bool KSircMessageReceiver::getBroadcast()
+{
+  return broadcast;
+}

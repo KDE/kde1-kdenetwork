@@ -14,6 +14,7 @@ public:
   KSircIOBroadcast(KSircProcess *_proc) : KSircMessageReceiver(_proc)
     {
       proc = _proc;
+      setBroadcast(FALSE);
     }
   virtual ~KSircIOBroadcast();
 

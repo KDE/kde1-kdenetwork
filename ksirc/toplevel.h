@@ -30,6 +30,7 @@ class UserControlMenu;
 #include "alistbox.h"
 #include "messageReceiver.h"
 #include "ksircprocess.h"
+#include "KSTicker/ksticker.h"
 
 class UserControlMenu {
  public:
@@ -90,6 +91,8 @@ protected slots:
    void newWindow();
    void gotFocus();
    void lostFocus();
+   void showTicker();
+   void unHide();
 
 protected:
    virtual void closeEvent(QCloseEvent *);
@@ -137,6 +140,12 @@ private:
   QString caption;
 
   int have_focus;
+
+  KSTicker *ticker;
+  QRect myrect;
+  QPoint mypoint;
+  QRect tickerrect;
+  QPoint tickerpoint;
 
 };
 

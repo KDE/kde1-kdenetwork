@@ -68,7 +68,7 @@ addcmd("ksircappendrule");
 
 sub cmd_ksircclearrule {
   @KSIRC_FILTER = ();
-  $KSIRC_FILTER[0]{'SEARCH'} = 'DCC';
+  $KSIRC_FILTER[0]{'SEARCH'} = '\*\cbD\cb\*.*DCC';
   $KSIRC_FILTER[0]{'FROM'} = '^';
   $KSIRC_FILTER[0]{'TO'} = '"~!dcc~"';  # it MUST be '""'
   &tell("*** ALL FILTER RULES ERASED - DEFAULTS ADDED\n");

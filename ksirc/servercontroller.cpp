@@ -107,6 +107,7 @@ servercontroller::servercontroller
 				! kConfig->readNumEntry("Reuse", TRUE));
 	auto_id = options->insertItem("Auto Create Windows", 
 			    this, SLOT(autocreate()));
+	options->insertSeparator();
 	options->setItemChecked(auto_id, 
 				kConfig->readNumEntry("AutoCreate", FALSE));
 	kSircConfig->autocreate = kConfig->readNumEntry("AutoCreate", FALSE);

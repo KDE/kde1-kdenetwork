@@ -65,12 +65,15 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
   have_focus = 0;
   
   QPopupMenu *file = new QPopupMenu();
-  file->insertItem("User Menu...", this, SLOT(startUserMenuRef()));
-  file->insertItem("New Window...", this, SLOT(newWindow()));
-  file->insertItem("Quit...", this, SLOT(terminate()), CTRL + Key_Q );
+  file->insertItem("&User Menu...", this, SLOT(startUserMenuRef()));
+  file->insertItem("&New Window...", this, SLOT(newWindow()));
+  file->insertSeparator();
+  file->insertItem("&Ticker Mode", this, SLOT(showTicker()));
+  file->insertSeparator();
+  file->insertItem("&Quit", this, SLOT(terminate()), CTRL + Key_Q );
 
   KMenuBar *menu = new KMenuBar(this, "menubar");
-  menu->insertItem("File", file, 2, -1);
+  menu->insertItem("&File", file, 2, -1);
   setMenu(menu);
 
   /*
@@ -95,7 +98,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
   mainw->setFocusPolicy(QWidget::NoFocus); // Background and base colour of
   mainw->setEnabled(FALSE);                // the lb to be the same as the main
   mainw->setSmoothScrolling(TRUE);         // ColourGroup, but this is BAD BAD
-  mainw->setFont(QFont("fixed", 10));      // Since we don't use KDE requested
+  mainw->setFont(QFont("fixed"));      // Since we don't use KDE requested
   QColorGroup cg = QColorGroup(colorGroup().foreground(), colorGroup().mid(), 
     			       colorGroup().light(), colorGroup().dark(),
   			       colorGroup().midlight(), 
@@ -127,6 +130,12 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
 
   lines = 0;          // Set internal line counter to 0
   contents.setAutoDelete( TRUE ); // Have contents, the line holder nuke everything on exit
+
+  ticker = new KSTicker(0, "ticker", WStyle_NormalBorder);
+  connect(ticker, SIGNAL(doubleClick()), 
+	  this, SLOT(unHide()));
+  connect(ticker, SIGNAL(closing()), 
+	  this, SLOT(terminate()));
 
   /*
    * Set generic run time variables
@@ -279,6 +288,7 @@ void KSircTopLevel::sirc_receive(QString str)
 	connect(this, SIGNAL(changeSize()),
 		item, SLOT(updateSize()));
 	mainw->insertItem(item, -1);
+	ticker->mergeString(item->getText() + " // ");
 	lines++; // Mode up lin counter
 	update = TRUE;
       }
@@ -350,7 +360,7 @@ void KSircTopLevel::sirc_line_return()
   // messages, etc to the right place.  This include /me, etc
   //
 
-  if(nick_ring.at() < (nick_ring.count() - 1))
+  if((uint) nick_ring.at() < (nick_ring.count() - 1))
     nick_ring.next();
   else
     nick_ring.last();
@@ -992,4 +1002,28 @@ void KSircTopLevel::control_message(QString str)
       cerr << "Unkown control message: " << str << endl;
     }
   }
+}
+
+void KSircTopLevel::showTicker()
+{
+  myrect = geometry();
+  mypoint = pos();
+  this->hide();
+  if(tickerrect.isEmpty() == TRUE)
+    ticker->show();
+  else{
+    ticker->setGeometry(tickerrect);
+    ticker->recreate(0, 0, tickerpoint, TRUE);
+  }
+}
+
+void KSircTopLevel::unHide()
+{
+  tickerrect = ticker->geometry();
+  tickerpoint = ticker->pos();
+  ticker->hide();
+  this->setGeometry(myrect);
+  this->recreate(0, getWFlags(), mypoint, TRUE);
+  this->show();
+  linee->setFocus();  // Give SLE focus
 }
