@@ -31,15 +31,20 @@ decoderDlg::decoderDlg (const char* name ) :Inherited( 0,name,true )
     setCaption(klocale->translate( "KRN - Decoder"));
     
     list = new KTabListBox(this,"",4);
+    list->clearTableFlags(Tbl_hScrollBar);
+    list->clearTableFlags(Tbl_autoHScrollBar);
+    list->setTableFlags(Tbl_autoVScrollBar);
+    list->setSeparator('\n');
+
     list->setColumn(0,klocale->translate("ID"),40);
-    list->setColumn(1,"",20,KTabListBox::PixmapColumn);
+    list->setColumn(1,"",20,KTabListBox::MixedColumn);
     list->setColumn(2,klocale->translate("Size"),100);
-    list->setColumn(3,klocale->translate("Name"),1);
+    list->setColumn(3,klocale->translate("Name"),1000);
     
     KIconLoader *loader = kapp->getIconLoader();
-    list->dict().insert("G", &loader->loadIcon("green-bullet.xpm"));//GOOD
-    list->dict().insert("B", &loader->loadIcon("red-bullet.xpm"));  //BAD
-    list->dict().insert("U", &loader->loadIcon("black-bullet.xpm"));//UGLY
+    list->dict().insert("G", new QPixmap(loader->loadIcon("green-bullet.xpm")));//GOOD
+    list->dict().insert("B", new QPixmap(loader->loadIcon("red-bullet.xpm")));  //BAD
+    list->dict().insert("U", new QPixmap(loader->loadIcon("black-bullet.xpm")));//UGLY
 
     QLabel *l1=new QLabel(klocale->translate("Destination directory:"),this);
     destdir=new QLineEdit(this);

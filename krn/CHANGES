@@ -5,7 +5,9 @@ Changes made Apr 18
             ktablistbox. Now I remove the { but that's not nice.
 *           Implemented sane behaviour for "saving multiple". Now it saves
             all messages in a single file.
-*           Fixed ugly bug in multiple actions.
+*           Fixed ugly bugs in multiple actions.
+*           Fixed bug in decoding multiparts.
+*           Fixed segfault in decoding dialog.
 -----------------------------------------------------------------------------
 Changes made Apr 17
 -----------------------------------------------------------------------------

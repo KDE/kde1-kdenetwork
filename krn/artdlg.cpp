@@ -258,7 +258,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     
     t2->insertButton (Icon("locked.xpm"), TOGGLE_EXPIRE, true, klocale->translate("Lock (keep in cache)"));
     
-    t2->insertButton (Icon("deco.xpm"), DECODE_ONE_ARTICLE, true, klocale->translate("Decode Article"));
+    t2->insertButton (Icon("deco.xpm"), DECODE_ARTICLE, true, klocale->translate("Decode Article"));
     
     t2->insertButton (Icon("red-bullet.xpm"), MARK_READ, true, klocale->translate("Mark Read"));
 
@@ -873,7 +873,7 @@ bool Artdlg::actions (int action,int index)
         }
     case DECODE_ONE_ARTICLE:
         {
-            actions(DECODE_ARTICLE);
+            actions(DECODE_ARTICLE,index);
             decoder->showWindow();
             break;
         }
@@ -1473,6 +1473,7 @@ void Artdlg::markArt (int index,int)
 
 void Artdlg::decArt (int index,int)
 {
+    debug ("decart->%d",index);
     if (index<0) return;
     QString *s;
     Article art(IDList.at(index));

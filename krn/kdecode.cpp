@@ -64,8 +64,10 @@ void KDecode::showWindow()
 
     UUSetOption (UUOPT_DESPERATE,1);
 
+    debug ("filecount-->%d",filenames.count());
     for (char *iter=filenames.first();iter!=0;iter=filenames.next())
     {
+        debug ("iter");
         UULoadFile(iter,NULL,0);
     }
 
@@ -88,12 +90,12 @@ void KDecode::showWindow()
             if (l->state&UUFILE_MISPART || l->state&UUFILE_NOEND)
             {
                 KDEBUG (KDEBUG_INFO,3300,"Found file with missing parts");
-                formatted="B\n";
+                formatted="{B}\n";
             }
             else if (l->state&UUFILE_OK)
             {
                 KDEBUG (KDEBUG_INFO,3300,"Found ok file");
-                formatted="G\n";
+                formatted="{G}\n";
             }
             else if (l->state&UUFILE_NOBEGIN || l->state&UUFILE_NODATA)
             {
