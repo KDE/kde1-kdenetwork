@@ -1,7 +1,6 @@
 # KDE Config File
 [KDE Desktop Entry]
 Comment=Show Internet Dialer Logfiles
-Comment[br]=Kerzlevr ar gevreadurioù ouzh ar genrouedad
 Comment[ca]=Mostra els registres del marcador Internet
 Comment[cs]=Zobrazuje záznamy o pøipojení na internet
 Comment[da]=Vis internetopringerens logfiler
@@ -17,6 +16,7 @@ Comment[no]=Vis Internett-oppkoblerens loggfiler
 Comment[pl]=Poka¿ zapisane informacje o po³±czeniach
 Comment[pt]=Mostra os registos de ligação à Internet
 Comment[pt_BR]=Mostrar arquivos de log do discador Internet
+Comment[ro]=Aratã istoricul conectãrii la internet cu programul Kppp
 Comment[ru]=õÔÉÌÉÔÁ ÄÌÑ ĞÒÏÓÍÏÔÒÁ ÖÕÒÎÁÌÏ× KPPP
 Comment[sk]=Uká¾e log súbory vytáèacieho programu
 Comment[sl]=Dnevni¹ke datoteke o priklopu na internet
@@ -24,7 +24,6 @@ Comment[sv]=Visa logfilerna för internetuppkopplingen
 BinaryPattern=kppplogview;
 Protocols=
 Name=KPPP - Logview
-Name[br]=KPPP - Kerzlevr
 Name[ca]=Vista del registre KPPP
 Name[cs]=Prohlí¾eè záznamù programu Kppp
 Name[da]=KPPP systemovervåger
@@ -39,6 +38,7 @@ Name[no]=KPPP - loggvisning
 Name[pl]=KPPP - Przegl±darka logów
 Name[pt]=KPPP - Registos
 Name[pt_BR]=KPPP - Ver Log
+Name[ro]=Istoric Kppp
 Name[ru]=ğÒÏÓÍÏÔÒİÉË ÖÕÒÎÁÌÁ KPPP
 Name[sk]=KPPP - prehliadaè logov
 Name[sl]=KPPP - Pregled dnevni¹kih datotek
