@@ -33,10 +33,8 @@ protocol = 0L;
    QPopupMenu *options = new QPopupMenu;
     options->insertItem(klocale->translate("Setup"), this, SLOT(setup()), CTRL+Key_S );
     options->insertItem(klocale->translate("&Save Options"), this, SLOT(save()));
-   QPopupMenu *help = new QPopupMenu;
-    help->insertItem(klocale->translate("&Contents"), this, SLOT(HtmlHelp()), CTRL+Key_H );
-    help->insertSeparator();
-    help->insertItem(klocale->translate("&About kfinger..."), this, SLOT(about()) );
+   QPopupMenu *help = kapp->getHelpMenu( TRUE,
+    i18n("kfinger 0.8.0\n\n(c) Andrea Rizzi (rizzi@kde.org)"));
   menubar->insertItem( klocale->translate("&File"), file );
   menubar->insertItem( klocale->translate("&Options"), options, ALT+Key_O );
   menubar->insertSeparator();
