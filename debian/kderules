@@ -27,6 +27,11 @@ find(\&docwanted,".");
 if (! -d "debian/tmp/usr/doc/$package") {
 	mkdir("-p", "debian/tmp/usr/doc/$package") ;
 }
+
+if (! -d "debian/tmp/usr/X11R6/include/X11/pixmaps") {
+       mkdir("-p", "debian/tmp/usr/X11R6/include/X11/pixmaps");
+}
+
 cp( "-aP", @docs, "debian/tmp/usr/doc/$package") ;
 
 # copy shlibs to local directory
@@ -115,7 +120,13 @@ foreach $file (@lnkfiles) {
 		next ;
 	}
 	if (defined $kdelnk{"Icon"}) {
-		$icon="/usr/share/icons/" . $kdelnk{"Icon"} ;
+   	        $icon=$kdelnk{"Icon"} ;
+		if (! -f "debian/tmp/usr/share/icons/$icon" ) {
+                   $icon="";
+	        } else {
+	          system("convert -map /usr/X11R6/include/X11/pixmaps/cmap.xpm debian/tmp/usr/share/icons/$icon debian/tmp/usr/X11R6/include/X11/pixmaps/$icon");
+	  	  $icon="/usr/X11R6/include/X11/pixmaps/" . $icon ;
+               }
 	}
 	($kdelnk=$file) =~ s/^.*tmp// ;
 	print MENU "?package($package):\\\n" ;
@@ -140,34 +151,4 @@ close MENU;
 if (-z "debian/menu") {
 	rm("debian/menu");
 }
-
-# add missing files to conffiles
-
-if (-f "debian/conffiles") {
-	open CONFFILES, "debian/conffiles" ;
-	while (<CONFFILES>) {
-		chop ;
-		$conffiles{$_}=1 ;
-	}
-	close CONFFILES ;
-}
-
-sub findconffiles {
-	if (-f $_) {
-		$path = $File::Find::dir . "/" . $_;
-		$path =~ s/^debian\/tmp// ;
-		$conffiles{$path}=1 ;
-	}
-}
-
-if ( -d "debian/tmp/etc" ) {
-	find(\&findconffiles,"debian/tmp/etc");
-}
-
-open CONFFILES, ">debian/conffiles" ;
-foreach $conffile (keys %conffiles) {
-	print CONFFILES $conffile . "\n"; 
-}
-close CONFFILES ;
-
 
