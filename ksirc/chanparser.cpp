@@ -115,7 +115,7 @@ void ChannelParser::parseSSFEClear(QString string) /*fold00*/
   throw(parseSucc(QString(""))); // Null string, don't display anything
 }
 
-void ChannelParser::parseSSFEStatus(QString string) /*fold00*/
+void ChannelParser::parseSSFEStatus(QString string) /*FOLD00*/
 {
   string.detach();
   string.remove(0, 4); // strip off the first 4 characters
@@ -144,8 +144,22 @@ void ChannelParser::parseSSFEStatus(QString string) /*fold00*/
     }
     modes[0] = 0x0; modes[1] = 0x0; // No mode set for user
   }
+  
   QString status_line = chan;
   status_line += QString(" (") + chanmode + ") " +  nick +  " (" + modes + ") ";
+
+  /*
+   * Go srearching for key and limit messages
+   */
+  int start_kl = -1, end_kl = -1;
+  start_kl = string.find('<');
+  if(start_kl != -1){
+    end_kl = string.findRev('>');
+    if(end_kl != -1){
+      status_line += string.mid(start_kl, end_kl - start_kl + 1) + " ";
+    }
+  }
+  
   if(kSircConfig->DisplayTopic){
     if(top->topic.length() > 0)
       status_line += "T: " + top->topic;
@@ -552,7 +566,7 @@ void ChannelParser::parseINFOChangeNick(QString string) /*fold00*/
 
 }
 
-void ChannelParser::parseINFOMode(QString string) /*FOLD00*/
+void ChannelParser::parseINFOMode(QString string) /*fold00*/
 {
   // Basic idea here is simple, go through the mode change and
   // assign each mode a + or a - and an argument or "" if there is

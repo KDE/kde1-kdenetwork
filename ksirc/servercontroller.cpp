@@ -221,12 +221,13 @@ servercontroller::servercontroller /*FOLD00*/
   KIconLoader *kicl = kApp->getIconLoader();
   QStrList *strlist = kicl->getDirList();
   kicl->insertDirectory(strlist->count(), kSircConfig->kdedir + "/share/apps/ksirc/icons"); 
-  pic_server = new("QPixmap") QPixmap(kicl->loadIcon("mini-display.gif"));
-  pic_channel = new("QPixmap") QPixmap(kicl->loadIcon("mini-edit.gif"));
-  pic_gf = new("QPixmap") QPixmap(kicl->loadIcon("gf.gif"));
+  pic_server = new("QPixmap") QPixmap(kicl->loadIcon("server.xpm"));
+  pic_channel = new("QPixmap") QPixmap(kicl->loadIcon("channel.xpm"));
+  pic_gf = new("QPixmap") QPixmap(kicl->loadIcon("ksirc_a.xpm"));
   pic_run = new("QPixmap") QPixmap(kicl->loadIcon("mini-run.gif"));
-  pic_ppl = new("QPixmap") QPixmap(kicl->loadIcon("ppl.gif"));
-  pic_icon = new("QPixmap") QPixmap(kicl->loadIcon("ksirc.gif"));
+  pic_ppl = new("QPixmap") QPixmap(kicl->loadIcon("channels.xpm"));
+  pic_icon = new("QPixmap") QPixmap(kicl->loadIcon("ksirc_b.xpm"));
+  pic_dock = new("QPixmap") QPixmap(kicl->loadIcon("ksirc_dock.xpm"));
 
   setCaption( i18n("Server Control") );
   setIcon(*pic_icon);
@@ -587,7 +588,7 @@ void servercontroller::slot_filters_update() /*fold00*/
   emit ServMessage(QString(), ServCommand::updateFilters, QString());
 }
 
-void servercontroller::saveProperties(KConfig *ksc) /*fold00*/
+void servercontroller::saveProperties(KConfig *ksc) /*FOLD00*/
 {
   // ksc hos the K Session config
   // ksp == current KSircProcess
@@ -773,12 +774,12 @@ void dockServerController::mousePressEvent(QMouseEvent *) /*fold00*/
       pop->popup(QPoint( g.x() + g.width(), g.y() + g.height()));
 }
 
-void dockServerController::paintEvent(QPaintEvent *pe) /*fold00*/
+void dockServerController::paintEvent(QPaintEvent *pe) /*FOLD00*/
 {
 //  QFrame::paintEvent(pe);
   QPainter p(this);
   QFrame::drawFrame(&p);
-  QPixmap *pic = sc->pic_ppl;
+  QPixmap *pic = sc->pic_dock;
   int x = this->lineWidth() + 1 + (12 - pic->width()/2);
   int y = this->lineWidth() + 1 + (12 - pic->height()/2);
   p.drawPixmap(x , y, *pic);

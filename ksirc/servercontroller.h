@@ -221,6 +221,7 @@ private:
     QPixmap *pic_gf;
     QPixmap *pic_run;
     QPixmap *pic_ppl;
+    QPixmap *pic_dock;
 
     PukeController *PukeC;
 
