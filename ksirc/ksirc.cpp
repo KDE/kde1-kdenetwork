@@ -107,7 +107,7 @@ int main( int argc, char ** argv )
     cerr << "KDEDIR set to: " << kApp->kdedir() << endl;
   }
   QString ld_path = getenv("LD_LIBRARY_PATH");
-  ld_path += ":" + kSircConfig->kdedir + "/share/apps/ksirc/dl/:";
+  ld_path += ":" + kSircConfig->kdedir + "/share/apps/ksirc/:";
   ld_path.prepend("LD_LIBRARY_PATH=");
   putenv(ld_path.data());
 

@@ -126,7 +126,8 @@ sub close {
 }
 
 sub runable {
-  return shift()->{runable};
+  my $self = shift;
+  return $self->{runable};
 }
 
 sub setRunable {

@@ -3,6 +3,8 @@
 
 #include "pwidget.h"
 
+#include "../config.h"
+
 #include <dlfcn.h>
 
 uint WidgetRunner::uiBaseWinId = 0;
@@ -92,9 +94,10 @@ void WidgetRunner::inputMessage(int fd, PukeMessage *pm){
     widgetCreate *wC;
 
     pm->cArg[49] = 0;
-    handle = dlopen(pm->cArg, RTLD_LAZY|RTLD_GLOBAL);
+    handle = dlopen(kSircConfig->kdedir + "/share/apps/ksirc/" + QString(pm->cArg), RTLD_LAZY|RTLD_GLOBAL);
     if (!handle) {
       fputs(dlerror(), stderr);
+      fputs("\n", stderr);
       goto load_barfed; // OK I SHOULD USE EXCEPTIONS!!!
     }
     wc =  (PWidget *(*)(widgetId *wI, PWidget *parent) )

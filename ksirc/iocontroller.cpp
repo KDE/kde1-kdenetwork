@@ -86,11 +86,18 @@ KSircIOController::KSircIOController(KProcess *_proc, KSircProcess *_ksircproc)
   proc = _proc;              // save proc
   ksircproc = _ksircproc;    // save ksircproce
 
+  // Connect the data arrived
+  // to sirc receive for adding
+  // the main text window
   connect(proc, SIGNAL(receivedStdout(KProcess *, char *, int)),
           this, SLOT(stdout_read(KProcess*, char*, int))); 
-                                              // Connect the data arrived
-                                              // to sirc receive for adding
-                                              // the main text window  
+
+  // Connect the stderr data
+  // to sirc receive for adding
+  // the main text window
+  connect(proc, SIGNAL(receivedStderr(KProcess *, char *, int)),
+          this, SLOT(stderr_read(KProcess*, char*, int)));
+  
   connect(proc, SIGNAL(processExited(KProcess *)),
 	  this, SLOT(sircDied(KProcess *)));
                                               // Notify on sirc dying
