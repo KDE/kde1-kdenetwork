@@ -41,22 +41,22 @@ PPPdArguments::PPPdArguments(QWidget *parent, const char *name)
   argument_label->setText(klocale->translate("Argument:"));
 
   add = new QPushButton(klocale->translate("Add"), this);
-  add->setGeometry(15, 55, 110, 30);
+  add->setGeometry(15, 55, 110, add->sizeHint().height());
   connect(add, SIGNAL(clicked()), SLOT(addbutton()));
 
   remove = new QPushButton(klocale->translate("Remove"), this);
-  remove->setGeometry(155, 55, 110, 30);
+  remove->setGeometry(155, 55, 110, remove->sizeHint().height());
   connect(remove, SIGNAL(clicked()), SLOT(removebutton()));
 
   arguments = new QListBox(this);
   arguments->setGeometry(15, 105, 250, 100);
 
   closebtn = new QPushButton(klocale->translate("Close"), this);
-  closebtn->setGeometry(15, 225, 110, 30);
+  closebtn->setGeometry(15, 225, 110, closebtn->sizeHint().height());
   connect(closebtn, SIGNAL(clicked()), SLOT(closebutton()));
 
   defaults = new QPushButton(klocale->translate("Restore Defaults"), this);
-  defaults->setGeometry(155, 225, 110, 30);
+  defaults->setGeometry(155, 225, 110, defaults->sizeHint().height());
   connect(defaults, SIGNAL(clicked()), SLOT(defaultsbutton()));
 
   setFixedSize(280,270);
