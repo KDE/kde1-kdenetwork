@@ -1,11 +1,6 @@
 KDE network utilities
 =====================
 
-knu is now ready for beta-testing!!!
-
-I've found bugs in ktabctl of libkdeui. They are corrected
-in the current (18nov97) version of kdeui.
-
 Please, tell me on which plateforms ping needs -s as argument to
 be useful... (I know there is Solaris in this case).
 I know:
@@ -21,7 +16,7 @@ Todo:
 - in host tab, put nameservers address (from /etc/resolv.conf) to the 
 	combobox
 - improve/update doc
-- translate documentation in french
+- translate documentation into french
 - have the host: lineedit of all tools to be a combobox
   and remember old tries
 
@@ -88,7 +83,14 @@ Version 0.3.1:
 
 Version 0.3.2:
 --------------
-. reday for beta testing
+. ready for beta testing
+
+Version 0.3.4:
+--------------
+. handle the binary's name modification dynamicaly
+. better fallback to "nslookup" if "host" is not found
+. code clean-up
+. added browse button to the option dialog
 
 
 Author:

@@ -15,7 +15,7 @@
 # just set the variable
 APPSDIR = $(kde_appsdir)/Network
 # set the include path for X, qt and KDE
-INCLUDES= @all_includes@
+INCLUDES= $(all_includes)
 # claim, which subdirectories you want to install
 SUBDIRS = doc
 
@@ -27,14 +27,14 @@ bin_PROGRAMS = 	knu
 knu_SOURCES	= knu.cpp CommandDlg.cpp OptionsDlg.cpp \
 			PingDlg.cpp TracerouteDlg.cpp HostDlg.cpp
 
-# the library search path
-knu_LDFLAGS = @all_libraries@
+# the library search path.
+knu_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 
 # the libraries to link against. Be aware of the order. First the libraries,
 # that depend on the following ones.
-knu_LDADD   = -lkdeui -lkdecore -lqt -lXext -lX11 $(LIBSOCKET) $(KDE_RPATH)
+knu_LDADD   = -lkdeui -lkdecore -lqt -lXext -lX11 $(LIBSOCKET)
 
-## this option you can leave out. Just, if you use "make dist", you need it
+# this option you can leave out. Just, if you use "make dist", you need it
 noinst_HEADERS = knu.h CommandDlg.h OptionsDlg.h \
                         PingDlg.h TracerouteDlg.h HostDlg.h
 
@@ -48,11 +48,11 @@ BUILTSOURCES =	knu.moc CommandDlg.moc OptionsDlg.moc \
 # them while "make clean", use CLEANFILES
 DISTCLEANFILES = $(BUILTSOURCES)
 
-# make messages.po. Move this one to ../po/
-	$(XGETTEXT) -C -k_ $(knu_SOURCES)
-	mv messages.po ../po/knu.pot
+# make messages.po. Move this one to ../po/ and "make merge" in po
+messages:
+	$(XGETTEXT) -C -k_ $(knu_SOURCES) && mv messages.po ../po/knu.pot
 
-# just install datas here. Use install-exec-data for scripts and etc.
+# just install datas here. Use install-exec-local for scripts and etc.
 # the binary itself is already installed from automake
 # use mkinstalldirs, not "install -d"
 # don't install a list of file. Just one file per install.
