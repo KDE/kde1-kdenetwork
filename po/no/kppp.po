@@ -1016,7 +1016,6 @@ msgid "Line Termination:"
 msgstr "Linjeslutt:"
 
 #: general.cpp:298
-#, fuzzy
 msgid ""
 "Specifies how AT commands are send to your\n"
 "modem. Most modems will work fine with the\n"
@@ -1026,7 +1025,7 @@ msgid ""
 "\n"
 "<b>Default</b>: CR/LF"
 msgstr ""
-"Forteller hvisdan AT-kommandoer skal sendes til ditt\n"
+"Forteller hvordan AT-kommandoer skal sendes til ditt\n"
 "modem. De fleste modemer vil fungere fint med\n"
 "standard <i>CR</i>. Hvis ditt modem ikke kommer til\n"
 "init-strengen, skal du prøve et annet valg her\n"
