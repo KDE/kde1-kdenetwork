@@ -64,7 +64,7 @@ QPixmap *KSircTopLevel::pix_greenp = 0L;
 QPixmap *KSircTopLevel::pix_bluep = 0L;
 QPixmap *KSircTopLevel::pix_madsmile = 0L;
 
-KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * name=0) 
+KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name) 
   : KTopLevelWidget(name),
     KSircMessageReceiver(_proc)
    
@@ -1445,7 +1445,7 @@ void KSircTopLevel::unHide()
   linee->setFocus();  // Give SLE focus
 }
 
-QString KSircTopLevel::findNick(QString part, uint which = 0)
+QString KSircTopLevel::findNick(QString part, uint which)
 {
   QStrList matches;
   for(uint i=0; i < nicks->count(); i++){
@@ -1526,8 +1526,8 @@ void KSircTopLevel::toggleRootWindow()
 {
 }
 
-kstInside::kstInside ( QWidget * parent=0, const char * name=0, WFlags
-		       f=0, bool allowLines=TRUE )
+kstInside::kstInside ( QWidget * parent, const char * name, WFlags f, 
+		       bool allowLines )
   : QFrame(parent, name, f, allowLines)
 {
   pan = new KNewPanner(this, "knewpanner", KNewPanner::Vertical);

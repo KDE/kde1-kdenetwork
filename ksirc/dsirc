@@ -2156,7 +2156,7 @@ while (1) {
 	&dostatus;
       } else {
 	&dohooks("leave", $newarg);
-	&tell("~!all~*\cb<\cb* $who$puh2 has left channel $newarg");   # MOD FOR KSIRC
+	&tell("~${newarg}~*\cb<\cb* $who$puh2 has left channel $newarg");   # MOD FOR KSIRC
       }
     } elsif ($cmd eq 'JOIN') {
       &yetonearg;

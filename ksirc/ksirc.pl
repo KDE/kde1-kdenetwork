@@ -262,7 +262,7 @@ sub cmd_follow
    {
       $color = $follow_colors [int (rand scalar (@follow_colors))];
       &docommand ("^ksircappendrule DESC==Follow $fnick !!! " .
-                  "SEARCH==<\\S*$fnick\\S*> !!! FROM==<(?:~\\d{1,2},*\\d*)(\\S+)> !!! TO==\"<$color\$1~c>\"");
+                  "SEARCH==<\\S*$fnick\\S*> !!! FROM==<\\S*($fnick)\\S*> !!! TO==\"<$color\$1~c>\"");
       $following {lc ($fnick)} = "${color}${fnick}~c";
       &tell ("Following ${color}$fnick~c ...");
    }

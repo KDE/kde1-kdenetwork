@@ -40,7 +40,7 @@ void aListBox::clear()
 }
 
 
-void aListBox::inSort ( const QListBoxItem *lbi, bool top = false)
+void aListBox::inSort ( const QListBoxItem *lbi, bool top )
 {
   int min = -1, max = count() - 1;
 
@@ -67,7 +67,7 @@ void aListBox::inSort ( const QListBoxItem *lbi, bool top = false)
   insertItem(lbi, min);
 }
 
-void aListBox::inSort ( const char * text, bool top = false) 
+void aListBox::inSort ( const char * text, bool top) 
 {
   inSort(new QListBoxText(text), top);
 }

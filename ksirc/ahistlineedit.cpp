@@ -43,7 +43,7 @@
 #include "ahistlineedit.h"
 #include <iostream.h>
 
-aHistLineEdit::aHistLineEdit(QWidget *parent=0, const char *name=0)
+aHistLineEdit::aHistLineEdit(QWidget *parent, const char *name)
   : QLineEdit(parent, name)
 {
   current = 0;

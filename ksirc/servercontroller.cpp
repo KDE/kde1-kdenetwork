@@ -531,8 +531,8 @@ void servercontroller::readProperties(KConfig *ksc)
   }
 }
 
-scInside::scInside ( QWidget * parent=0, const char * name=0, WFlags
-		     f=0, bool allowLines=TRUE )
+scInside::scInside ( QWidget * parent, const char * name, WFlags
+		     f, bool allowLines )
   : QFrame(parent, name, f, allowLines)
 {
   ASConn = new QLabel("Active Server Connections", this);

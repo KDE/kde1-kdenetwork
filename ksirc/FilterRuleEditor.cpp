@@ -92,7 +92,7 @@ void FilterRuleEditor::OkPressed()
   }
 }
 
-void FilterRuleEditor::updateListBox(int citem = 0)
+void FilterRuleEditor::updateListBox(int citem )
 {
   kConfig->setGroup("FilterRules");
   int number = kConfig->readNumEntry("Rules", 0);

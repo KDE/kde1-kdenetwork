@@ -7,11 +7,11 @@ extern KConfig *kConfig;
 
 QList<UserControlMenu> UserControlMenu::UserMenu;
 
-UserControlMenu::UserControlMenu(char *_title = 0, 
-				 char *_action = 0, 
-				 int _accel = 0, 
-				 int _type = 0, 
-				 bool _op_only = FALSE) 
+UserControlMenu::UserControlMenu(char *_title, 
+				 char *_action, 
+				 int _accel, 
+				 int _type, 
+				 bool _op_only) 
 { 
   title = qstrdup(_title); 
   action = qstrdup(_action); 
@@ -41,10 +41,10 @@ QList<UserControlMenu> *UserControlMenu::parseKConfig()
 
     UserMenu.setAutoDelete(TRUE);
     UserMenu.append(new UserControlMenu("Follow", 
-					 "/follow $$dest_nick",
+					 "follow $$dest_nick",
 					 0, UserControlMenu::Text));
     UserMenu.append(new UserControlMenu("unFollow", 
-					 "/unfollow $$dest_nick",
+					 "unfollow $$dest_nick",
 					 0, UserControlMenu::Text));
     UserMenu.append(new UserControlMenu); // Defaults to a seperator
     UserMenu.append(new UserControlMenu("Whois", 

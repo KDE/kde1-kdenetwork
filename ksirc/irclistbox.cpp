@@ -7,7 +7,7 @@
 
 static const int fudge = 5;
 
-KSircListBox::KSircListBox(QWidget * parent=0, const char * name=0, WFlags f=0) : QListBox(parent,name,f)
+KSircListBox::KSircListBox(QWidget * parent, const char * name, WFlags f) : QListBox(parent,name,f)
 {
   setAutoScrollBar(FALSE);
   setAutoBottomScrollBar(FALSE);
@@ -39,7 +39,7 @@ KSircListBox::~KSircListBox()
   delete vertScroll;
 }
 
-bool KSircListBox::scrollToBottom(bool force = false)
+bool KSircListBox::scrollToBottom(bool force)
 {
   if(force == TRUE)
     ScrollToBottom = TRUE;
@@ -161,20 +161,20 @@ int KSircListBox::totalHeight ()
   return theightCache;
 }
 
-void KSircListBox::insertItem ( const QListBoxItem *lbi, int index=-1 )
+void KSircListBox::insertItem ( const QListBoxItem *lbi, int index )
 {
   QListBox::insertItem(lbi, index);
   theightCache += lbi->height(this);
   //  thDirty = TRUE;
 }
 
-void KSircListBox::insertItem ( const char * text, int index=-1 )
+void KSircListBox::insertItem ( const char * text, int index )
 {
   QListBox::insertItem(text, index);
   thDirty = TRUE;
 }
 
-void KSircListBox::insertItem ( const QPixmap & pixmap, int index=-1 )
+void KSircListBox::insertItem ( const QPixmap & pixmap, int index )
 {
   QListBox::insertItem(pixmap, index);
   thDirty = TRUE;

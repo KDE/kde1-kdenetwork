@@ -3,7 +3,7 @@
 
 #include <stdlib.h> 
 
-ircListItem::ircListItem(QString s, const QColor *c, QListBox *lb, QPixmap *p = 0)
+ircListItem::ircListItem(QString s, const QColor *c, QListBox *lb, QPixmap *p)
   : QObject(),
     QListBoxItem()
     
