@@ -62,14 +62,14 @@ install-data-local:
 	$(INSTALL_DATA) knu.kdelnk $(APPSDIR)
 	$(mkinstalldirs) $(kde_icondir)
 	$(INSTALL_DATA) knu.xpm $(kde_icondir)
-#	$(mkinstalldirs) $(kde_minidir)
-#	$(INSTALL_DATA) mini-knu.xpm $(kde_minidir)/knu.xpm
+	$(mkinstalldirs) $(kde_minidir)
+	$(INSTALL_DATA) mini-knu.xpm $(kde_minidir)/knu.xpm
 
 # remove ALL you have installed in install-data-local or install-exec-local
 uninstall-local:
 	-rm -f $(APPSDIR)/knu.kdelnk
 	-rm -f $(kde_icondir)/knu.xpm
-#	-rm -f $(kde_minidir)/knu.xpm
+	-rm -f $(kde_minidir)/knu.xpm
 
 # add a dependency for every moc file to be full portable
 # I've added a key binding to emacs for this. 
