@@ -23,6 +23,10 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.2  1998/06/09 21:18:03  leconte
+ * Bertrand: correction of bug #745 (reported by Duncan Haldane):
+ * 	arguments are now added to the command line
+ *
  * Revision 1.1  1998/03/01 19:30:10  leconte
  * - added a finger tab
  * - internal mods
@@ -65,7 +69,7 @@ FingerDlg::FingerDlg(QString commandName,
   CHECK_PTR(layout3);
   
   // Make the layout of CommandDlg
-  commandLbl1->setText(_("User:"));
+  commandLbl1->setText(_("&User:"));
   commandLbl1->setFixedSize(commandLbl1->sizeHint());
   layout2->addWidget(commandLbl1);
   layout2->addWidget(commandArgs);
@@ -83,7 +87,7 @@ FingerDlg::FingerDlg(QString commandName,
 
   fingerCb2->insertItem("localhost");
 
-  fingerLbl2 = new QLabel(fingerCb2, _("Server:"), frame1, "Label_1");
+  fingerLbl2 = new QLabel(fingerCb2, _("Ser&ver:"), frame1, "Label_1");
   fingerLbl2->setFixedSize(fingerLbl2->sizeHint());
 
   layout3->addWidget(fingerLbl2, 0);

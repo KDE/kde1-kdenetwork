@@ -21,6 +21,10 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.5  1998/06/09 21:18:05  leconte
+ * Bertrand: correction of bug #745 (reported by Duncan Haldane):
+ * 	arguments are now added to the command line
+ *
  * Revision 1.4  1998/03/01 19:30:22  leconte
  * - added a finger tab
  * - internal mods
@@ -159,7 +163,7 @@ TopLevel::TopLevel(QWidget *, const char *name)
 
   // finger tab 
   if (isTabEnabled("Finger", kc)) {
-    fd = new FingerDlg("finger", tabCtrl, _("&Finger"));
+    fd = new FingerDlg("finger", tabCtrl, _("F&inger"));
     CHECK_PTR(fd);
     tabCtrl->addTab(fd, fd->name());
     pages[pagesNumber] = fd;

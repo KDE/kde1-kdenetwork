@@ -23,6 +23,10 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.7  1998/06/09 21:18:02  leconte
+ * Bertrand: correction of bug #745 (reported by Duncan Haldane):
+ * 	arguments are now added to the command line
+ *
  * Revision 1.6  1998/03/01 19:30:13  leconte
  * - added a finger tab
  * - internal mods
@@ -127,7 +131,7 @@ HostDlg::HostDlg(QString commandName,
   hostCb2 = new QComboBox(TRUE, frame1, "ComboBox_2");
   CHECK_PTR(hostCb2);
   hostCb2->insertItem(_("default server"));
-  hostCb2->insertItem("111.111.111.111");
+  hostCb2->insertItem("888.888.888.888");
   hostCb2->adjustSize();
   hostCb2->setFixedSize(hostCb2->size());
   hostCb2->removeItem(1);
@@ -321,11 +325,11 @@ HostCfgDlg::makeWidget(QWidget *parent, bool makeLayouts)
   cfgBG = new QButtonGroup(cfgWidget);
   CHECK_PTR(cfgBG);
   
-  cfgHostBtn = new QRadioButton("hos&t", cfgBG);
+  cfgHostBtn = new QRadioButton(_("hos&t"), cfgBG);
   CHECK_PTR(cfgHostBtn);
   SET_ADJUSTED_FIXED_SIZE(cfgHostBtn);
 
-  cfgNslookupBtn = new QRadioButton("ns&lookup", cfgBG);
+  cfgNslookupBtn = new QRadioButton(_("ns&lookup"), cfgBG);
   CHECK_PTR(cfgNslookupBtn);
   SET_ADJUSTED_FIXED_SIZE(cfgNslookupBtn);
 
