@@ -1,3 +1,6 @@
+06-06-99 - Kurt Granroth (2.3.7)
+   o Passwords with '(' in them should now work...
+
 06-03-99 - Kurt Granroth (2.3.6)
    o POP3 protocol now exits properly when closing.  This should fix a bevy
      of irritating socket problems.

@@ -300,10 +300,6 @@ void KBiffSetup::readConfig(const char* profile)
 
 	config->setGroup("General");
 
-	// see if we have the new mailboxes
-//	ConvertWizard *wizard = new ConvertWizard;
-//	wizard->exec();
-
 	// read in the mailboxes
 	int number_of_mailboxes = config->readListEntry("Profiles", profile_list);
 	delete config;
@@ -1233,6 +1229,7 @@ TRACEINIT("KBiffMailboxTab::readConfig()");
 
 	// open the config file
 	KSimpleConfig *config = new KSimpleConfig(CONFIG_FILE, true);
+	config->setDollarExpansion(false);
 
 TRACE("Before clears");
 	mailboxHash->clear();
@@ -1288,6 +1285,7 @@ void KBiffMailboxTab::saveConfig(const char *profile)
 TRACEINIT("KBiffMailboxTab::saveConfig()");
 	// open the config file
 	KSimpleConfig *config = new KSimpleConfig(CONFIG_FILE);
+	config->setDollarExpansion(false);
 
 	config->setGroup(profile);
 
@@ -1694,7 +1692,7 @@ TRACEINIT("KBiffAboutTab::KBiffAboutTab()");
 	QLabel *version = new QLabel(this);
 	version->setFont(QFont("helvetica", 12));
 	QString ver_str;
-	ver_str.sprintf(i18n("Version %s\n\nCopyright (C) 1999\nKurt Granroth"), "2.3.6");
+	ver_str.sprintf(i18n("Version %s\n\nCopyright (C) 1999\nKurt Granroth"), "2.3.7");
 	version->setText(ver_str);
 	version->setAutoResize(true);
 	version->move(x, y);
