@@ -189,21 +189,25 @@ const QString KMMessagePart::iconName(void) const
   {
     QString mime;
     mime = mType + "/" + mSubtype;
+
     dir.setPath(KApplication::kde_mimedir() + "/" + mType);
-    unsigned int i;
-    QString fqn;
-    for (i=0; i<dir.count(); i++)
+    if (dir.exists())
     {
-      if (strcmp (dir[i], ".") == 0 || strcmp (dir[i], "..") == 0)
-        continue;
-      fqn = dir.path();
-      fqn += "/";
-      fqn += dir[i];
-      //debug ("try: %s", fqn.data());
-      KSimpleConfig conf(fqn.data(), true);
-      conf.setGroup("KDE Desktop Entry");
-      if (conf.readEntry ("MimeType") == mime)
-        icon = conf.readEntry("Icon");
+      unsigned int i;
+      QString fqn;
+      for (i=0; i<dir.count(); i++)
+      {
+        if (strcmp (dir[i], ".") == 0 || strcmp (dir[i], "..") == 0)
+          continue;
+        fqn = dir.path();
+        fqn += "/";
+        fqn += dir[i];
+        //debug ("try: %s", fqn.data());
+        KSimpleConfig conf(fqn.data(), true);
+        conf.setGroup("KDE Desktop Entry");
+        if (conf.readEntry ("MimeType") == mime)
+          icon = conf.readEntry("Icon");
+      }
     }
   }
 
