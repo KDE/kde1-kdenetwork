@@ -8,6 +8,7 @@
 #include <iostream.h>
 #include <fcntl.h>
 #include <errno.h>
+#include <sys/stat.h>
 
 #include <dlfcn.h>
 
@@ -16,10 +17,13 @@
 PukeController::PukeController(QString sock, QObject *parent=0, const char *name=0)
   : QObject(parent, name)
 {
-  int len;
+  int len, prev_umask;
   struct sockaddr_un unix_addr;
 
   running = FALSE; // Running has to be true before we do any work
+
+  // Set the umask to something sane that doesn't allow others to take over ksirc
+  prev_umask = umask(0177);
 
   if(sock.length() == 0){
     qsPukeSocket = getenv("HOME");
@@ -73,7 +77,10 @@ PukeController::PukeController(QString sock, QObject *parent=0, const char *name
   
   lrControl = new LayoutRunner(wrControl, this, "layoutrunner");
   connect(lrControl, SIGNAL(outputMessage(int, PukeMessage *)),
-	  this,  SLOT(writeBuffer(int, PukeMessage *)));  
+          this,  SLOT(writeBuffer(int, PukeMessage *)));
+
+  // Set umask back so it doesn't affect dcc's and so forth.
+  umask(prev_umask);
 
 }
 
