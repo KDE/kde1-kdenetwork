@@ -194,7 +194,7 @@ int aListBox::findNick(QString str) /*FOLD00*/
   index = searchFor(str, found, FALSE);
   if(found == TRUE)
     return index;
-  debug("Did not find: %s", str.data());
+//  debug("Did not find: %s", str.data());
   return -1;
 }
 

@@ -142,6 +142,8 @@ KSircProcess::KSircProcess( char *_server, QObject * parent, const char * name )
   // though. started bellow though.
 
   proc = new KProcess();
+  proc->setName(QString(name) + "_kprocess");
+  insertChild(proc);
 
   proc->setExecutable("perl");
   *proc << kSircConfig->kdedir + QString("/bin/dsirc") << "-8" << "-r" << "-s" << server;
@@ -149,6 +151,7 @@ KSircProcess::KSircProcess( char *_server, QObject * parent, const char * name )
   // Finally start the iocontroller.
 
   iocontrol = new KSircIOController(proc, this);
+  iocontrol->setName(QString(name) + "_iocontrol");
 
   // Create toplevel before iocontroller so it has somewhere to write stuff.
 
@@ -289,6 +292,7 @@ void KSircProcess::new_toplevel(QString str) /*FOLD00*/
     //    TopList.insert(str, faker); // Insert place holder since the constructor for kSircTopLevel may parse the event queue which will cause us to try and create trhe window several times!!!
     debug("Calling new toplevel for: -%s-", str.data());
     KSircTopLevel *wm = new KSircTopLevel(this, str.data());
+    insertChild(wm); // Keep ineheratence going so we can find children
     TopList.insert(str, wm);
 //    TopList.replace(str, wm);
 //    delete faker;

@@ -52,6 +52,7 @@ class kstInside : QFrame
 	     f=0, bool allowLines=TRUE );
   ~kstInside();
 
+  void setName(const char *);
 
  protected:
   virtual void resizeEvent ( QResizeEvent * );
@@ -60,6 +61,13 @@ class kstInside : QFrame
   KSircListBox *mainw;
   aHistLineEdit *linee;
   aListBox *nicks;
+
+  QString my_name;
+  QString panner_name;
+  QString mainw_name;
+  QString nicks_name;
+  QString linee_name;
+
 
 };
 
@@ -294,6 +302,7 @@ private:
   static QPixmap *pix_greenp;
   static QPixmap *pix_bluep;
   static QPixmap *pix_madsmile;
+  static QPixmap *pix_server;
 
   /**
     * The channel name that we belong too.

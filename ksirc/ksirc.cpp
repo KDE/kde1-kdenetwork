@@ -118,7 +118,7 @@ int main( int argc, char ** argv )
   if(kApp->isRestored()){
     int n = 1;
     while (servercontroller::canBeRestored(n)) {
-      servercontroller *sc = new servercontroller();
+      servercontroller *sc = new servercontroller(0, "servercontroller");
       CHECK_PTR(sc);
       sc->restore(n);
       kApp->setMainWidget(sc);
@@ -126,7 +126,7 @@ int main( int argc, char ** argv )
     }
   }
   else{
-    servercontroller *control = new servercontroller();
+    servercontroller *control = new servercontroller(0, "servercontroller");
     control->show();
     kApp->setMainWidget(control);
   }

@@ -59,13 +59,13 @@ chanparser.cpp
 ksircstatic_SOURCES = $(ksirc_SOURCES)
 
 # the library search path
-ksirc_LDFLAGS = -rdynamic @all_libraries@ -L./KSProgress/ -L./KSTicker/ -L./KSCutDialog/ -LKSPrefs -Lpuke
+ksirc_LDFLAGS = -rdynamic @all_libraries@ # -L$(srcdir)/KSProgress -L$(srcdir)/KSTicker -L$(srcdir)/KSCutDialog -L$(srcdir)/KSPrefs -L$(srcdir)/puke
 
 ksircstatic_LDFLAGS = $(ksirc_LDFLAGS)
 
 # the libraries to link against. Be aware of the order. First the libraries,
 # that depend on the following ones.
-ksirc_LDADD   = -lksprogress -lksticker -lkscutdialog -lksprefs -lkdeui -lkdecore -lpuke -lqt -lX11 -lXext @LIBSOCKET@ -ldl
+ksirc_LDADD   = ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a ./puke/libpuke.a -lkdeui -lkdecore -lqt -lX11 -lXext @LIBSOCKET@ -ldl
 
 ksircstatic_LDADD = -lksprogress -lksticker -lkscutdialog -lksprefs -lpuke
 
@@ -105,11 +105,11 @@ ioDiscard.h               open_topData.h            kspainter.h \
 ahistlineedit.h           iocontroller.h            servercontroller.h \
 alistbox.h                irclistbox.h              chanparser.h \
 config.h                  irclistitem.h             toplevel.h \
-ksircprocess.h            ksirc.kdelnk \
+ksircprocess.h            ksirc.kdelnk              cdate.h \
 ioLAG.h                   ioNotify.h                ssfeprompt.h \
-ssfepromptdata.h          usercontrolmenu.h         \
+ssfepromptdata.h          usercontrolmenu.h          \
 dsirc                     filters.pl                ksirc.pl \
-sirc.help.gz              baserules.h               estring.h
+sirc.help.gz              baserules.h               estring.h 
 
 
 # just to make sure, automake makes them 

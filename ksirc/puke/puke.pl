@@ -21,7 +21,7 @@ $SYNC = 0;
 #
 # Setup debugging logger, comment out for production use
 #
-$DEBUG = 0;
+$DEBUG = 1;
 if($DEBUG){
   open(LOG, ">msg-log");
   select(LOG); $| = 1; select(STDOUT);

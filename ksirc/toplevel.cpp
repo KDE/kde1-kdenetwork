@@ -53,6 +53,8 @@
 #include <knewpanner.h>
 #include <kiconloader.h>
 
+#include <kwm.h>
+
 extern KConfig *kConfig;
 extern KApplication *kApp;
 
@@ -64,8 +66,9 @@ QPixmap *KSircTopLevel::pix_bball = 0L;
 QPixmap *KSircTopLevel::pix_greenp = 0L;
 QPixmap *KSircTopLevel::pix_bluep = 0L;
 QPixmap *KSircTopLevel::pix_madsmile = 0L;
+QPixmap *KSircTopLevel::pix_server = 0L;
 
-KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name)  /*fold00*/
+KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name)  /*FOLD00*/
   : KTopLevelWidget(name),
     KSircMessageReceiver(_proc)
    
@@ -95,6 +98,9 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
   else
     caption = "";
 
+  QString kstl_name = QString(channel_name) + "_" + "toplevel";
+  setName(kstl_name);
+  
   LineBuffer = new QStrList();
   Buffer = FALSE;
 
@@ -109,13 +115,14 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
    */
   ktool = new KToolBar(this, "toolbar");
   ktool->setFullWidth(TRUE);
-  ktool->insertFrame(0, 200, 0);
+  ktool->insertFrame(0, 200);
   ktool->setItemAutoSized(0, TRUE);
-  ktool->insertFrame(10, 100, -1);
+  ktool->insertFrame(10, 100);
   ktool->alignItemRight(10, TRUE);
   addToolBar(ktool);
 
-  lagmeter = new QLCDNumber(6, ktool->getFrame(10), "lagmeter");
+  ktool->getFrame(10)->setName(QString(channel_name) + "_ktoolframe");
+  lagmeter = new QLCDNumber(6, ktool->getFrame(10), QString(channel_name) + "_lagmeter");
   lagmeter->setFrameStyle(QFrame::NoFrame);
   lagmeter->setFixedHeight(ktool->height() - 2);
   lagmeter->display("      ");
@@ -166,7 +173,8 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
 
   // kstInside does not setup fonts, etc, it simply handles sizing
 
-  f = new kstInside(this, "frame");
+  QString kst_name = QString(channel_name) + "_" + "kstIFrame";
+  f = new kstInside(this, kst_name);
   setView(f);  // Tell the KApplication what the main widget is.
 
   if(kSircConfig->colour_background == 0){
@@ -253,7 +261,10 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
     pix_greenp = new QPixmap(kicl->loadIcon("greenpin.gif"));
     pix_bluep = new QPixmap(kicl->loadIcon("bluepin.gif"));
     pix_madsmile = new QPixmap(kicl->loadIcon("madsmiley.gif"));
+    pix_server = new QPixmap(kicl->loadIcon("mini-edit.gif"));
   }
+  setIcon(*pix_server);
+  KWM::setMiniIcon(winId(), *pix_server);
 
   /*
    * Create our basic parser object
@@ -327,7 +338,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
 }
 
 
-KSircTopLevel::~KSircTopLevel() /*fold00*/
+KSircTopLevel::~KSircTopLevel() /*FOLD00*/
 {
 
   // Cleanup and shutdown
@@ -446,7 +457,7 @@ void KSircTopLevel::TabNickCompletion()  /*fold00*/
 
 }
   
-void KSircTopLevel::sirc_receive(QString str) /*fold00*/
+void KSircTopLevel::sirc_receive(QString str) /*FOLD00*/
 {
 
   /* 
@@ -637,7 +648,7 @@ void KSircTopLevel::sirc_line_return() /*fold00*/
   
 }
 
-void KSircTopLevel::sirc_write(QString &str) /*fold00*/
+void KSircTopLevel::sirc_write(QString &str) /*FOLD00*/
 {
   if(channel_name[0] != '!'){
     if(str[0] != '/'){
@@ -816,7 +827,7 @@ void KSircTopLevel::newWindow()  /*fold00*/
   w->show();
 }
 
-void KSircTopLevel::closeEvent(QCloseEvent *) /*fold00*/
+void KSircTopLevel::closeEvent(QCloseEvent *) /*FOLD00*/
 {
   // Let's not part the channel till we are acutally delete.
   // We should always get a close event, *BUT* we will always be deleted.
@@ -832,7 +843,7 @@ void KSircTopLevel::closeEvent(QCloseEvent *) /*fold00*/
   // This line is NEVER reached.
 }
 
-void KSircTopLevel::resizeEvent(QResizeEvent *e) /*fold00*/
+void KSircTopLevel::resizeEvent(QResizeEvent *e) /*FOLD00*/
 {
   bool update = mainw->autoUpdate();
   mainw->setAutoUpdate(FALSE);
@@ -852,7 +863,7 @@ void KSircTopLevel::resizeEvent(QResizeEvent *e) /*fold00*/
   // The ListBox will get an implicit size change
 }
 
-void KSircTopLevel::gotFocus() /*fold00*/
+void KSircTopLevel::gotFocus() /*FOLD00*/
 {
   if(isVisible() == TRUE){
     if(have_focus == 0){
@@ -867,7 +878,7 @@ void KSircTopLevel::gotFocus() /*fold00*/
   }
 }
 
-void KSircTopLevel::lostFocus() /*fold00*/
+void KSircTopLevel::lostFocus() /*FOLD00*/
 {
   if(have_focus == 1){
     have_focus = 0;
@@ -876,7 +887,7 @@ void KSircTopLevel::lostFocus() /*fold00*/
 
 }
 
-void KSircTopLevel::control_message(int command, QString str) /*fold00*/
+void KSircTopLevel::control_message(int command, QString str) /*FOLD00*/
 {
   switch(command){
   case CHANGE_CHANNEL: // 001 is defined as changeChannel
@@ -884,6 +895,10 @@ void KSircTopLevel::control_message(int command, QString str) /*fold00*/
     if(channel_name)
       delete channel_name;
     channel_name = qstrdup(str.data());
+    setName(QString(QString(channel_name) + "_" + "toplevel"));
+    f->setName(QString(QString(channel_name) + "_" + "kstIFrame"));
+    ktool->getFrame(10)->setName(QString(channel_name) + "_ktoolframe");
+    lagmeter->setName(QString(channel_name) + "_lagmeter");
     have_focus = 0;
     setCaption(channel_name);
     mainw->scrollToBottom();
@@ -949,7 +964,7 @@ void KSircTopLevel::control_message(int command, QString str) /*fold00*/
   }
 }
 
-void KSircTopLevel::showTicker() /*fold00*/
+void KSircTopLevel::showTicker() /*FOLD00*/
 {
   myrect = geometry();
   mypoint = pos();
@@ -1090,21 +1105,24 @@ kstInside::kstInside ( QWidget * parent, const char * name, WFlags f,  /*fold00*
 		       bool allowLines )
   : QFrame(parent, name, f, allowLines)
 {
-  pan = new KNewPanner(this, "knewpanner", KNewPanner::Vertical);
+  
+  pan = new KNewPanner(this, "", KNewPanner::Vertical);
 
-  mainw = new KSircListBox(pan, "mle");
+  mainw = new KSircListBox(pan, "");
   mainw->setFocusPolicy(QWidget::NoFocus);
   mainw->setEnabled(FALSE);              
   mainw->setSmoothScrolling(TRUE);       
 
-  nicks = new aListBox(pan, "qlb");      
+  nicks = new aListBox(pan, "");
   nicks->setFocusPolicy(QWidget::NoFocus);
 
-  linee = new aHistLineEdit(this, "qle");
+  linee = new aHistLineEdit(this, "");
 
   pan->activate(mainw, nicks);
 
   pan->setSeparatorPos(85);
+
+  setName(name);
 
 }
 
@@ -1130,4 +1148,17 @@ void kstInside::resizeEvent(QResizeEvent *e) /*fold00*/
   
 }
 
+void kstInside::setName(const char *name) /*fold00*/
+{
+  QObject::setName(name);
+  my_name = name;
+  panner_name = my_name + "_" + "Panner";
+  mainw_name = my_name + "_" + "MainIrc";
+  nicks_name = my_name + "_" + "NickListBox";
+  linee_name = my_name + "_" + "LineEnter";
 
+  pan->setName(panner_name);
+  mainw->setName(mainw_name);
+  nicks->setName(nicks_name);
+  linee->setName(linee_name);
+}

@@ -71,24 +71,29 @@ host_triplet = @host@
 target_alias = @target_alias@
 target_triplet = @target@
 CC = @CC@
-CFLAGS = @CFLAGS@
 CPP = @CPP@
 CXX = @CXX@
-CXXFLAGS = @CXXFLAGS@
 GLINC = @GLINC@
 GLLIB = @GLLIB@
 GMSGFMT = @GMSGFMT@
+KDE_EXTRA_RPATH = @KDE_EXTRA_RPATH@
 KDE_INCLUDES = @KDE_INCLUDES@
 KDE_LDFLAGS = @KDE_LDFLAGS@
-LDFLAGS = @LDFLAGS@
+KDE_RPATH = @KDE_RPATH@
+LD = @LD@
 LIBCOMPAT = @LIBCOMPAT@
+LIBCRYPT = @LIBCRYPT@
+LIBDL = @LIBDL@
 LIBJPEG = @LIBJPEG@
 LIBOBJS = @LIBOBJS@
 LIBSOCKET = @LIBSOCKET@
+LIBTOOL = @LIBTOOL@
+LIBUCB = @LIBUCB@
 LN_S = @LN_S@
 MAKEINFO = @MAKEINFO@
 MOC = @MOC@
 MSGFMT = @MSGFMT@
+NM = @NM@
 PACKAGE = @PACKAGE@
 PAMINC = @PAMINC@
 PAMLIBPATHS = @PAMLIBPATHS@
@@ -101,11 +106,14 @@ VERSION = @VERSION@
 XGETTEXT = @XGETTEXT@
 XPMINC = @XPMINC@
 XPMLIB = @XPMLIB@
+X_EXTRA_LIBS = @X_EXTRA_LIBS@
 X_INCLUDES = @X_INCLUDES@
 X_LDFLAGS = @X_LDFLAGS@
 all_includes = @all_includes@
 all_libraries = @all_libraries@
+install_root = @install_root@
 kde_appsdir = @kde_appsdir@
+kde_bindir = @kde_bindir@
 kde_cgidir = @kde_cgidir@
 kde_confdir = @kde_confdir@
 kde_datadir = @kde_datadir@
@@ -116,11 +124,14 @@ kde_libraries = @kde_libraries@
 kde_locale = @kde_locale@
 kde_mimedir = @kde_mimedir@
 kde_minidir = @kde_minidir@
+kde_partsdir = @kde_partsdir@
+kde_sounddir = @kde_sounddir@
 kde_toolbardir = @kde_toolbardir@
 kde_wallpaperdir = @kde_wallpaperdir@
 qt_includes = @qt_includes@
 qt_libraries = @qt_libraries@
-topdir = @topdir@
+x_includes = @x_includes@
+x_libraries = @x_libraries@
 
 APPSDIR = $(kde_appsdir)/Internet
 # set the include path for X, qt and KDE
@@ -168,13 +179,13 @@ chanparser.cpp
 ksircstatic_SOURCES = $(ksirc_SOURCES)
 
 # the library search path
-ksirc_LDFLAGS = -rdynamic @all_libraries@ -L./KSProgress/ -L./KSTicker/ -L./KSCutDialog/ -LKSPrefs -Lpuke
+ksirc_LDFLAGS = -rdynamic @all_libraries@ # -L$(srcdir)/KSProgress -L$(srcdir)/KSTicker -L$(srcdir)/KSCutDialog -L$(srcdir)/KSPrefs -L$(srcdir)/puke
 
 ksircstatic_LDFLAGS = $(ksirc_LDFLAGS)
 
 # the libraries to link against. Be aware of the order. First the libraries,
 # that depend on the following ones.
-ksirc_LDADD   = -lksprogress -lksticker -lkscutdialog -lksprefs -lkdeui -lkdecore -lpuke -lqt -lX11 -lXext @LIBSOCKET@ -ldl
+ksirc_LDADD   = ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a ./puke/libpuke.a -lkdeui -lkdecore -lqt -lX11 -lXext @LIBSOCKET@ -ldl
 
 ksircstatic_LDADD = -lksprogress -lksticker -lkscutdialog -lksprefs -lpuke
 
@@ -194,11 +205,11 @@ ioDiscard.h               open_topData.h            kspainter.h \
 ahistlineedit.h           iocontroller.h            servercontroller.h \
 alistbox.h                irclistbox.h              chanparser.h \
 config.h                  irclistitem.h             toplevel.h \
-ksircprocess.h            ksirc.kdelnk \
+ksircprocess.h            ksirc.kdelnk              cdate.h \
 ioLAG.h                   ioNotify.h                ssfeprompt.h \
-ssfepromptdata.h          usercontrolmenu.h         \
+ssfepromptdata.h          usercontrolmenu.h          \
 dsirc                     filters.pl                ksirc.pl \
-sirc.help.gz              baserules.h               estring.h
+sirc.help.gz              baserules.h               estring.h 
 
 # just to make sure, automake makes them 
 BUILTSOURCES =	
@@ -212,6 +223,7 @@ CONFIG_CLEAN_FILES =
 PROGRAMS =  $(bin_PROGRAMS)
 
 CPPFLAGS = @CPPFLAGS@
+LDFLAGS = @LDFLAGS@
 LIBS = @LIBS@
 getdate_SOURCES = getdate.c
 getdate_OBJECTS =  getdate.o
@@ -230,7 +242,9 @@ mioDCC.o dccDialog.o mdccDialog.o dccDialogData.o mdccDialogData.o \
 linelistitem.o ioLAG.o mioLAG.o ioNotify.o mioNotify.o ssfeprompt.o \
 mssfeprompt.o ssfepromptdata.o mssfepromptdata.o usercontrolmenu.o \
 kspainter.o baserules.o estring.o chanparser.o
-ksirc_DEPENDENCIES = 
+ksirc_DEPENDENCIES =  ./KSProgress/libksprogress.a \
+./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a \
+./KSPrefs/libksprefs.a ./puke/libpuke.a
 ksircstatic_OBJECTS =  toplevel.o ksirc.o irclistbox.o mirclistbox.o \
 irclistitem.o mirclistitem.o alistbox.o mtoplevel.o ahistlineedit.o \
 mahistlineedit.o malistbox.o iocontroller.o miocontroller.o open_top.o \
@@ -245,10 +259,14 @@ linelistitem.o ioLAG.o mioLAG.o ioNotify.o mioNotify.o ssfeprompt.o \
 mssfeprompt.o ssfepromptdata.o mssfepromptdata.o usercontrolmenu.o \
 kspainter.o baserules.o estring.o chanparser.o
 ksircstatic_DEPENDENCIES = 
+CXXFLAGS = @CXXFLAGS@
 CXXCOMPILE = $(CXX) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
-CXXLINK = $(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@
+LTCXXCOMPILE = $(LIBTOOL) --mode=compile $(CXX) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
+CXXLINK = $(LIBTOOL) --mode=link $(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@
+CFLAGS = @CFLAGS@
 COMPILE = $(CC) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CFLAGS)
-LINK = $(CC) $(CFLAGS) $(LDFLAGS) -o $@
+LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CFLAGS)
+LINK = $(LIBTOOL) --mode=link $(CC) $(CFLAGS) $(LDFLAGS) -o $@
 HEADERS =  $(noinst_HEADERS)
 
 DIST_COMMON =  ChangeLog Makefile.am Makefile.in
@@ -284,7 +302,7 @@ OBJECTS = getdate.o $(ksirc_OBJECTS) $(ksircstatic_OBJECTS)
 default: all
 
 .SUFFIXES:
-.SUFFIXES: .c .cpp .o
+.SUFFIXES: .c .cpp .lo .o
 $(srcdir)/Makefile.in: Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4) 
 	cd $(top_srcdir) && $(AUTOMAKE) --gnu ksirc/Makefile
 
@@ -307,8 +325,8 @@ install-binPROGRAMS: $(bin_PROGRAMS)
 	$(mkinstalldirs) $(bindir)
 	@list='$(bin_PROGRAMS)'; for p in $$list; do \
 	  if test -f $$p; then \
-	    echo "  $(INSTALL_PROGRAM) $$p $(bindir)/`echo $$p|sed '$(transform)'`"; \
-	     $(INSTALL_PROGRAM) $$p $(bindir)/`echo $$p|sed '$(transform)'`; \
+	    echo " $(LIBTOOL)  --mode=install $(INSTALL_PROGRAM) $$p $(bindir)/`echo $$p|sed '$(transform)'`"; \
+	    $(LIBTOOL)  --mode=install $(INSTALL_PROGRAM) $$p $(bindir)/`echo $$p|sed '$(transform)'`; \
 	  else :; fi; \
 	done
 
@@ -331,11 +349,26 @@ distclean-compile:
 
 maintainer-clean-compile:
 
+.c.lo:
+	$(LIBTOOL) --mode=compile $(COMPILE) -c $<
+
+mostlyclean-libtool:
+	rm -f *.lo
+
+clean-libtool:
+	rm -rf .libs
+
+distclean-libtool:
+
+maintainer-clean-libtool:
+
 ksirc: $(ksirc_OBJECTS) $(ksirc_DEPENDENCIES)
 	@rm -f ksirc
 	$(CXXLINK) $(ksirc_LDFLAGS) $(ksirc_OBJECTS) $(ksirc_LDADD) $(LIBS)
 .cpp.o:
 	$(CXXCOMPILE) -c $<
+.cpp.lo:
+	$(LTCXXCOMPILE) -c $<
 
 # This directory's subdirectories are mostly independent; you can cd
 # into them and run `make' without going through this Makefile.
@@ -498,18 +531,20 @@ maintainer-clean-generic:
 	test -z "$(MAINTAINERCLEANFILES)" || rm -f $(MAINTAINERCLEANFILES)
 	test -z "$(BUILT_SOURCES)" || rm -f $(BUILT_SOURCES)
 mostlyclean-am:  mostlyclean-binPROGRAMS mostlyclean-compile \
-		mostlyclean-tags mostlyclean-depend mostlyclean-generic
+		mostlyclean-libtool mostlyclean-tags mostlyclean-depend \
+		mostlyclean-generic
 
-clean-am:  clean-binPROGRAMS clean-compile clean-tags clean-depend \
-		clean-generic mostlyclean-am
+clean-am:  clean-binPROGRAMS clean-compile clean-libtool clean-tags \
+		clean-depend clean-generic mostlyclean-am
 
-distclean-am:  distclean-binPROGRAMS distclean-compile distclean-tags \
-		distclean-depend distclean-generic clean-am
+distclean-am:  distclean-binPROGRAMS distclean-compile distclean-libtool \
+		distclean-tags distclean-depend distclean-generic \
+		clean-am
 
 maintainer-clean-am:  maintainer-clean-binPROGRAMS \
-		maintainer-clean-compile maintainer-clean-tags \
-		maintainer-clean-depend maintainer-clean-generic \
-		distclean-am
+		maintainer-clean-compile maintainer-clean-libtool \
+		maintainer-clean-tags maintainer-clean-depend \
+		maintainer-clean-generic distclean-am
 
 mostlyclean:  mostlyclean-recursive mostlyclean-am
 
@@ -517,6 +552,7 @@ clean:  clean-recursive clean-am
 
 distclean:  distclean-recursive distclean-am
 	rm -f config.status
+	rm -f libtool
 
 maintainer-clean:  maintainer-clean-recursive maintainer-clean-am
 	@echo "This command is intended for maintainers to use;"
@@ -525,7 +561,8 @@ maintainer-clean:  maintainer-clean-recursive maintainer-clean-am
 .PHONY: default mostlyclean-binPROGRAMS distclean-binPROGRAMS \
 clean-binPROGRAMS maintainer-clean-binPROGRAMS uninstall-binPROGRAMS \
 install-binPROGRAMS mostlyclean-compile distclean-compile clean-compile \
-maintainer-clean-compile install-data-recursive \
+maintainer-clean-compile mostlyclean-libtool distclean-libtool \
+clean-libtool maintainer-clean-libtool install-data-recursive \
 uninstall-data-recursive install-exec-recursive \
 uninstall-exec-recursive installdirs-recursive uninstalldirs-recursive \
 all-recursive check-recursive installcheck-recursive info-recursive \

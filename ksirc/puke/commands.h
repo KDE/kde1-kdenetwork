@@ -40,6 +40,18 @@
 
 #define PUKE_EVENT_UNKOWN -999
 
+// Dumps object tree
+// iWinId: puke controller
+// iArg: not defined
+// cArg: undef
+#define PUKE_DUMPTREE 997
+
+// Desc: dump object tree ack
+// iWinId: undef
+// iArg: undef
+// cArg: undef
+#define PUKE_DUMPTREE_ACK -997
+
 // Fetch widgets
 // Desc: get widget from parent
 // iWinId: not defined

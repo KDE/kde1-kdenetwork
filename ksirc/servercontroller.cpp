@@ -74,6 +74,7 @@
 
 #include <kfontdialog.h>
 #include <kiconloader.h>
+#include <kwm.h>
 
 #include <qkeycode.h>
 
@@ -92,20 +93,23 @@ servercontroller::servercontroller
   KTopLevelWidget( name )
 {
 
-  sci = new scInside(this, "mainview");
+  sci = new scInside(this, QString(name) + "_mainview");
   sci->setFrameStyle(QFrame::Box | QFrame::Raised);
   ConnectionTree = sci->ConnectionTree;
 
-  MenuBar = new KMenuBar(this, "Menu");
+  MenuBar = new KMenuBar(this, QString(name) + "_menu");
 
   setMenu(MenuBar);
   setView(sci, TRUE);
   setFrameBorderWidth(5);
 
-  QPopupMenu *file = new QPopupMenu();
+  QPopupMenu *file = new QPopupMenu(0, QString(name) + "_menu_file");
+  insertChild(file);
   file->insertItem("&Quit", kApp, SLOT(quit()), ALT + Key_F4);
   MenuBar->insertItem("&File", file);
-  connections = new QPopupMenu();
+  
+  connections = new QPopupMenu(0, QString(name) + "_menu_connections");
+  insertChild(connections);
   server_id = connections->insertItem("&New Server...", this, SLOT(new_connection()), CTRL + Key_N );
   join_id = connections->insertItem("&Join Channel...", this, SLOT(new_channel()), CTRL + Key_J);
   connections->setItemEnabled(join_id, FALSE);
@@ -113,7 +117,8 @@ servercontroller::servercontroller
   
   
   kConfig->setGroup("GlobalOptions");
-  options = new QPopupMenu();
+  options = new QPopupMenu(0, QString(name) + "_menu_options");
+  insertChild(options);
   options->setCheckable(TRUE);
 
   auto_id = options->insertItem("Auto Create Windows", 
@@ -141,7 +146,8 @@ servercontroller::servercontroller
   MenuBar->insertItem("&Options", options);
   
   
-  QPopupMenu *help = new QPopupMenu();
+  QPopupMenu *help = new QPopupMenu(0, QString(name) + "_menu_help");
+  insertChild(help);
   //  help->insertItem("Help...",
   //		   this, SLOT(help_general()));
   help->insertItem("Help on Colours...",
@@ -170,12 +176,13 @@ servercontroller::servercontroller
 
   setCaption( "Server Control" );
   setIcon(*pic_icon);
+  KWM::setMiniIcon(winId(), *pic_server);
 
   resize( 450,200 );
 
   // Server Controller is done setting up, create Puke interface.
 
-  PukeC = new PukeController(QString(), this, "Main Puke Controller");
+  PukeC = new PukeController(QString(), this, "pukecontroller");
   if(PukeC->running == TRUE){
     cerr << "Puke running\n";
     connect(PukeC, SIGNAL(PukeMessages(QString, int, QString)),
@@ -224,7 +231,8 @@ void servercontroller::new_ksircprocess(QString str)
   // do the dirty work here.
   ProcMessage(str, ProcCommand::addTopLevel, QString("no_channel"));
   
-  KSircProcess *proc = new KSircProcess(str.data()); // Create proc
+  KSircProcess *proc = new KSircProcess(str.data(), 0, QString(name()) + "_" + str + "_ksp"); // Create proc
+  this->insertChild(proc);                           // Add it to out inheritance tree so we can retreive child widgets from it.
   proc_list.insert(str.data(), proc);                      // Add proc to hash
   connect(proc, SIGNAL(ProcMessage(QString, int, QString)),
 	  this, SLOT(ProcMessage(QString, int, QString)));
@@ -552,7 +560,7 @@ scInside::scInside ( QWidget * parent, const char * name, WFlags
 		     f, bool allowLines )
   : QFrame(parent, name, f, allowLines)
 {
-  ASConn = new QLabel("Active Server Connections", this);
+  ASConn = new QLabel("Active Server Connections", this, "servercontroller_label");
   QColorGroup cg = QColorGroup(colorGroup().foreground(), 
 			       colorGroup().background(),
                                colorGroup().light(), 

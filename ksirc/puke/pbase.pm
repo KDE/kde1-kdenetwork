@@ -32,7 +32,7 @@ sub sendMessage {
 sub rndchr {
   my $string = "";
   for(my $i = 0; $i < 8; $i++){
-    $string .= chr(int(rand(94)) + 0x20);
+    $string .= chr(int(rand(93)) + 0x21);  # 0x21 since we don't want spaces and 0x20 is space.
   }
   return $string;
 }
@@ -55,6 +55,10 @@ sub new {
   $self->{initId} = $self->rndchr();
   $self->{widgetType} = $PBase::NO_WIDGET;
   $self->{messageQueue} = ();
+
+  if($::PUKE_FETCH_WIDGET == 1) {
+    $self->{Fetch} = 1;
+  }
 
   #  $self->installHandler($::PUKE_WIDGET_DELETE_ACK, sub{$self->DESTROY});
   
@@ -85,18 +89,54 @@ sub create {
 
   my %REPLY = $self->sendMessage('iCommand' => $::PUKE_WIDGET_CREATE,
                                  'iArg' => $self->{widgetType} +  $parent * 2**16,
-                                 'iWinId' => $::PUKE_CONTROLLER, 
+                                 'iWinId' => $::PUKE_CONTROLLER,
                                  'cArg' => $self->{initId},
                                  'CallBack' => sub { },
                                  'WaitFor' => 1);
-  
-  if($REPLY{iWinId} <= 0){
+
+    if($REPLY{iWinId} <= 0){
     print "*E* Widget Create Failed!\n";
+    }
+
+    $self->ackWinId(%REPLY);
+    #  $self->setRunable(0);
+}
+
+sub fetchWidget {
+  my $self = shift;
+
+  $self->{objName} = shift;
+  my $regex = shift;
+
+#  $self->sendMessage('iCommand' => $::PUKE_WIDGET_DELETE,
+#                     'CallBack' => sub { print "Deleted\n"; });
+
+  my %REPLY = $self->sendMessage('iCommand' => $::PUKE_FETCHWIDGET,
+                                 'iArg' => $self->{widgetType} +  $regex * 2**16,
+                                 'iWinId' => $::PUKE_CONTROLLER,
+                                 'cArg' => $self->{initId} . "\t" . $self->{objName} ,
+                                 'CallBack' => sub { },
+                                 'WaitFor' => 1);
+
+  if($REPLY{iWinId} <= 0){
+    print "*E* Widget Fetch Failed!\n";
   }
-  
+
   $self->ackWinId(%REPLY);
   #  $self->setRunable(0);
+
 }
+
+sub treeInfo {
+  my $self = shift;
+  
+  my %REPLY = $self->sendMessage('iCommand' => $::PUKE_DUMPTREE,
+                                 'iWinId' => $::PUKE_CONTROLLER,
+                                 'CallBack' => sub { },
+                                 'WaitFor' => 0);
+
+}
+
 
 sub DESTROY {
   my $self = shift;

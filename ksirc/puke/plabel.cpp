@@ -5,7 +5,9 @@ PObject *createWidget(CreateArgs &ca)
 {
   PLabel *pw = new PLabel(ca.parent);
   QLabel *le;
-  if(ca.parent != 0 && ca.parent->widget()->isWidgetType() == TRUE)
+  if(ca.fetchedObj != 0 && ca.fetchedObj->inherits("QLabel") == TRUE)
+    le = (QLabel *) ca.fetchedObj;
+  else if(ca.parent != 0 && ca.parent->widget()->isWidgetType() == TRUE)
     le = new QLabel((QWidget *) ca.parent->widget());
   else
     le = new QLabel();

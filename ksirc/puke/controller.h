@@ -188,6 +188,7 @@ private:
   void hdlrPukeSetup(int fd, PukeMessage *pm);
   void hdlrPukeInvalid(int fd, PukeMessage *pm);
   void hdlrPukeEcho(int fd, PukeMessage *pm);
+  void hdlrPukeDumpTree(int fd, PukeMessage *pm);
   void hdlrPukeFetchWidget(int fd, PukeMessage *pm);
 
 };

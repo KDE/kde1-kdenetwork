@@ -10,6 +10,8 @@
 
 #include "../kspainter.h"
 
+#include <kwm.h>
+
 KSTicker::KSTicker(QWidget * parent=0, const char * name=0, WFlags f=0) 
 : QFrame(parent, name, f)
 {
@@ -50,6 +52,11 @@ KSTicker::KSTicker(QWidget * parent=0, const char * name=0, WFlags f=0)
   popup->insertItem("Hide...", this, SIGNAL(doubleClick()));
 
   display = " ";
+
+  /*
+   * Tell KWM to use only minimum decurations
+   */
+  KWM::setDecoration(winId(), KWM::tinyDecoration);
 
   /*
    * Setup basic colours and background status info for ticker.
@@ -259,8 +266,15 @@ void KSTicker::resizeEvent( QResizeEvent *e)
   onechar = fontMetrics().width("X");
   chars = this->width() / onechar;
   killTimers();
-  pic->resize(width() + onechar, height());
-  pic->fill(backgroundColor());
+  QPixmap *new_pic = new QPixmap(width() + onechar, height());
+  new_pic->fill(backgroundColor());
+  bitBlt(new_pic,
+	 new_pic->width() - pic->width(), 0,
+	 pic, 0, 0,
+	 pic->width(), pic->height(),
+	 CopyROP, TRUE);
+  delete pic;
+  pic = new_pic;
   //  if(ring.length() > (uint) chars)
     startTicker();
 }

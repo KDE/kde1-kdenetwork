@@ -73,24 +73,29 @@ host_triplet = @host@
 target_alias = @target_alias@
 target_triplet = @target@
 CC = @CC@
-CFLAGS = @CFLAGS@
 CPP = @CPP@
 CXX = @CXX@
-CXXFLAGS = @CXXFLAGS@
 GLINC = @GLINC@
 GLLIB = @GLLIB@
 GMSGFMT = @GMSGFMT@
+KDE_EXTRA_RPATH = @KDE_EXTRA_RPATH@
 KDE_INCLUDES = @KDE_INCLUDES@
 KDE_LDFLAGS = @KDE_LDFLAGS@
-LDFLAGS = @LDFLAGS@
+KDE_RPATH = @KDE_RPATH@
+LD = @LD@
 LIBCOMPAT = @LIBCOMPAT@
+LIBCRYPT = @LIBCRYPT@
+LIBDL = @LIBDL@
 LIBJPEG = @LIBJPEG@
 LIBOBJS = @LIBOBJS@
 LIBSOCKET = @LIBSOCKET@
+LIBTOOL = @LIBTOOL@
+LIBUCB = @LIBUCB@
 LN_S = @LN_S@
 MAKEINFO = @MAKEINFO@
 MOC = @MOC@
 MSGFMT = @MSGFMT@
+NM = @NM@
 PACKAGE = @PACKAGE@
 PAMINC = @PAMINC@
 PAMLIBPATHS = @PAMLIBPATHS@
@@ -103,11 +108,14 @@ VERSION = @VERSION@
 XGETTEXT = @XGETTEXT@
 XPMINC = @XPMINC@
 XPMLIB = @XPMLIB@
+X_EXTRA_LIBS = @X_EXTRA_LIBS@
 X_INCLUDES = @X_INCLUDES@
 X_LDFLAGS = @X_LDFLAGS@
 all_includes = @all_includes@
 all_libraries = @all_libraries@
+install_root = @install_root@
 kde_appsdir = @kde_appsdir@
+kde_bindir = @kde_bindir@
 kde_cgidir = @kde_cgidir@
 kde_confdir = @kde_confdir@
 kde_datadir = @kde_datadir@
@@ -118,11 +126,14 @@ kde_libraries = @kde_libraries@
 kde_locale = @kde_locale@
 kde_mimedir = @kde_mimedir@
 kde_minidir = @kde_minidir@
+kde_partsdir = @kde_partsdir@
+kde_sounddir = @kde_sounddir@
 kde_toolbardir = @kde_toolbardir@
 kde_wallpaperdir = @kde_wallpaperdir@
 qt_includes = @qt_includes@
 qt_libraries = @qt_libraries@
-topdir = @topdir@
+x_includes = @x_includes@
+x_libraries = @x_libraries@
 
 INCLUDES= @all_includes@
 # claim, which subdirectories you want to install
@@ -168,13 +179,16 @@ LIBRARIES =  $(noinst_LIBRARIES)
 
 DEFS = @DEFS@ -I. -I$(srcdir) -I../..
 CPPFLAGS = @CPPFLAGS@
+LDFLAGS = @LDFLAGS@
 LIBS = @LIBS@
 libkscutdialog_a_LIBADD = 
 libkscutdialog_a_OBJECTS =  KSCutDialog.o mKSCutDialog.o \
 KSCutDialogData.o mKSCutDialogData.o cutmle.o mcutmle.o
 AR = ar
+CXXFLAGS = @CXXFLAGS@
 CXXCOMPILE = $(CXX) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
-CXXLINK = $(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@
+LTCXXCOMPILE = $(LIBTOOL) --mode=compile $(CXX) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
+CXXLINK = $(LIBTOOL) --mode=link $(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@
 HEADERS =  $(noinst_HEADERS)
 
 DIST_COMMON =  Makefile.am Makefile.in
@@ -193,7 +207,7 @@ OBJECTS = $(libkscutdialog_a_OBJECTS)
 default: all
 
 .SUFFIXES:
-.SUFFIXES: .c .cpp .o
+.SUFFIXES: .c .cpp .lo .o
 $(srcdir)/Makefile.in: Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4) 
 	cd $(top_srcdir) && $(AUTOMAKE) --gnu ksirc/KSCutDialog/Makefile
 
@@ -224,12 +238,27 @@ distclean-compile:
 
 maintainer-clean-compile:
 
+.c.lo:
+	$(LIBTOOL) --mode=compile $(COMPILE) -c $<
+
+mostlyclean-libtool:
+	rm -f *.lo
+
+clean-libtool:
+	rm -rf .libs
+
+distclean-libtool:
+
+maintainer-clean-libtool:
+
 libkscutdialog.a: $(libkscutdialog_a_OBJECTS) $(libkscutdialog_a_DEPENDENCIES)
 	rm -f libkscutdialog.a
 	$(AR) cru libkscutdialog.a $(libkscutdialog_a_OBJECTS) $(libkscutdialog_a_LIBADD)
 	$(RANLIB) libkscutdialog.a
 .cpp.o:
 	$(CXXCOMPILE) -c $<
+.cpp.lo:
+	$(LTCXXCOMPILE) -c $<
 
 tags: TAGS
 
@@ -337,31 +366,36 @@ maintainer-clean-generic:
 	test -z "$(MAINTAINERCLEANFILES)" || rm -f $(MAINTAINERCLEANFILES)
 	test -z "$(BUILT_SOURCES)" || rm -f $(BUILT_SOURCES)
 mostlyclean:  mostlyclean-noinstLIBRARIES mostlyclean-compile \
-		mostlyclean-tags mostlyclean-depend mostlyclean-generic
+		mostlyclean-libtool mostlyclean-tags mostlyclean-depend \
+		mostlyclean-generic
 
-clean:  clean-noinstLIBRARIES clean-compile clean-tags clean-depend \
-		clean-generic mostlyclean
+clean:  clean-noinstLIBRARIES clean-compile clean-libtool clean-tags \
+		clean-depend clean-generic mostlyclean
 
-distclean:  distclean-noinstLIBRARIES distclean-compile distclean-tags \
-		distclean-depend distclean-generic clean
+distclean:  distclean-noinstLIBRARIES distclean-compile \
+		distclean-libtool distclean-tags distclean-depend \
+		distclean-generic clean
 	rm -f config.status
+	rm -f libtool
 
 maintainer-clean:  maintainer-clean-noinstLIBRARIES \
-		maintainer-clean-compile maintainer-clean-tags \
-		maintainer-clean-depend maintainer-clean-generic \
-		distclean
+		maintainer-clean-compile maintainer-clean-libtool \
+		maintainer-clean-tags maintainer-clean-depend \
+		maintainer-clean-generic distclean
 	@echo "This command is intended for maintainers to use;"
 	@echo "it deletes files that may require special tools to rebuild."
 
 .PHONY: default mostlyclean-noinstLIBRARIES distclean-noinstLIBRARIES \
 clean-noinstLIBRARIES maintainer-clean-noinstLIBRARIES \
 mostlyclean-compile distclean-compile clean-compile \
-maintainer-clean-compile tags mostlyclean-tags distclean-tags \
-clean-tags maintainer-clean-tags distdir mostlyclean-depend \
-distclean-depend clean-depend maintainer-clean-depend info dvi \
-installcheck install-exec install-data install uninstall all \
-installdirs mostlyclean-generic distclean-generic clean-generic \
-maintainer-clean-generic clean mostlyclean distclean maintainer-clean
+maintainer-clean-compile mostlyclean-libtool distclean-libtool \
+clean-libtool maintainer-clean-libtool tags mostlyclean-tags \
+distclean-tags clean-tags maintainer-clean-tags distdir \
+mostlyclean-depend distclean-depend clean-depend \
+maintainer-clean-depend info dvi installcheck install-exec install-data \
+install uninstall all installdirs mostlyclean-generic distclean-generic \
+clean-generic maintainer-clean-generic clean mostlyclean distclean \
+maintainer-clean
 
 
 libkscutdialog.c:

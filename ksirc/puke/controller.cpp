@@ -329,6 +329,13 @@ void PukeController::initHdlr() /*FOLD00*/
   cs->dlhandle = 0x0;
   qidCommandTable.insert(PUKE_FETCHWIDGET, cs);
 
+  // Fetch widget gets the requested widget from the ServerController
+  cs = new commandStruct;
+  cs->cmd = &hdlrPukeDumpTree;
+  cs->dlhandle = 0x0;
+  qidCommandTable.insert(PUKE_DUMPTREE, cs);
+
+
 
 }
 
@@ -368,6 +375,19 @@ void PukeController::hdlrPukeEcho(int fd, PukeMessage *pm) /*FOLD00*/
   this->writeBuffer(fd, &pmOut);
 }
 
+void PukeController::hdlrPukeDumpTree(int fd, PukeMessage *pm)
+{
+  parent()->dumpObjectTree();
+  
+  PukeMessage pmOut;
+  memcpy(&pmOut, pm, sizeof(PukeMessage));
+  pmOut.iCommand = -pm->iCommand;
+  pmOut.iWinId = pm->iWinId;
+  pmOut.iArg = pm->iArg;
+  this->writeBuffer(fd, &pmOut);
+}
+
+
 void PukeController::hdlrPukeFetchWidget(int fd, PukeMessage *pm)
 {
   widgetId wIret;
@@ -381,6 +401,7 @@ void PukeController::hdlrPukeFetchWidget(int fd, PukeMessage *pm)
   iaArg = (unsigned short int *) &pm->iArg;
   int iParent = iaArg[1];
   int iType = iaArg[0];
+  bool bRegex = iParent > 0 ? TRUE : FALSE;
 
   char rand[50],name[50];
   sscanf(pm->cArg, "%s\t%s", rand, name);
@@ -398,14 +419,20 @@ void PukeController::hdlrPukeFetchWidget(int fd, PukeMessage *pm)
 
   // Let's go looking for the widget
   // Match any class with the right name
-  QObjectList *list = parent()->queryList( 0, name );
-  QObjectListIt it( *list );          // iterate over the widgets
-  if(it.current() == 0){
-    wIret.fd = 0;
-    wIret.iWinId = 0;
-    throw(errorCommandFailed(PUKE_INVALID,5));
+  QObject *obj = 0x0;
+  if(strcmp(name, parent()->name()) == 0){
+    obj = parent();
   }
-  QObject *obj = it.current();
+  else {
+    QObjectList *list = parent()->queryList( 0, name, bRegex, TRUE );
+    QObjectListIt it( *list );          // iterate over the widgets
+    if(it.current() == 0){
+      wIret.fd = 0;
+      wIret.iWinId = 0;
+      throw(errorCommandFailed(PUKE_INVALID,5));
+    }
+    obj = it.current();
+  }
   debug("Found: %s", obj->name());
   obj->dumpObjectInfo();
   obj->dumpObjectTree();
@@ -530,7 +557,7 @@ PObject *PukeController::id2pobject(widgetId *pwi){ /*fold00*/
   return 0; // never reached
 }
 
-PObject *PukeController::id2pobject(int fd, int iWinId){ /*fold00*/
+PObject *PukeController::id2pobject(int fd, int iWinId){ /*FOLD00*/
   widgetId wi;
   wi.fd = fd;
   wi.iWinId = iWinId;

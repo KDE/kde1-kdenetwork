@@ -315,5 +315,36 @@ sub cmd_refresh
 }
 &addcmd("refresh");
 
-&tell("*** ~2,4~bLoaded KSirc.pl~c");
-&tell("*** ~13,3~bWith Super Willy Enhancements~c");
+&tell("*** \0032,4~bLoaded KSirc.pl\003");
+&tell("*** \00313,3~bWith: Super Willy Enhancements, LotR's exec\003");
+sub cmd_exec {
+
+	my $how, $to;
+
+	&getarg;
+	$how = "x";
+	if (&eq($newarg, "-OUT")) { $how = 'c'; }
+	if (&eq($newarg, "-MSG")) { $how = 'm'; &getarg; $to = $newarg; }
+	if (&eq($newarg, "-NOTICE")) { $how = 'n'; &getarg; $to = $newarg; }
+	if ($how eq "x") { $args = $newarg . " " . $args; }
+	open (CMD, "$args|");
+	while (<CMD>) {
+		chomp;
+		if ($how eq 'c') {
+			&say(" $_");
+		} elsif ($how eq 'm') {
+			&msg($to, $_);
+		} elsif ($how eq 'n') {
+			&notice($to, $_);
+		} else {
+			print;
+		}
+	}
+	close CMD;
+}
+
+&addcmd("exec");
+&addhelp("exec", "Usage: EXEC <shell commands>\n" .
+       "EXEC -OUT <shell commands]\n" .
+       "EXEC -MSG <nickname> <shell commands>]\n" .
+       "EXEC -NOTICE <nickname> <shell commands>]\n" );
