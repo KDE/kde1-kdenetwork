@@ -234,6 +234,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     
     gl->addWidget( list, 0, 0 );
     connect (list,SIGNAL(highlighted(int,int)),this,SLOT(loadArt(int,int)));
+    connect (list,SIGNAL(midClick(int,int)),this,SLOT(markReadArt(int,int)));
     connect (list,SIGNAL(popupMenu(int,int)),this,SLOT(popupMenu(int,int)));
     
     RmbPop *filter=new RmbPop(list);
@@ -951,4 +952,20 @@ void Artdlg::FindThis (const char *expr,const char *field)
         }
         return;
     }
+}
+void Artdlg::markReadArt (int index,int)
+{
+    if (index<0) return;
+    Article *art=artList.at(index);
+    if (art->isRead())
+    {
+        art->setRead(false);
+    }
+    else
+    {
+        art->setRead(true);
+    }
+    QString formatted;
+    art->formHeader(&formatted);
+    list->changeItem (formatted.data(),index);
 }

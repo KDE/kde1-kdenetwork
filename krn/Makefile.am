@@ -136,9 +136,13 @@ fontsDlg.cpp:fontsDlg.moc
 fontsDlg.moc: fontsDlg.h
 	$(MOC) fontsDlg.h -o fontsDlg.moc
 
-artldlg.cpp:artldlg.moc
-artldlg.moc: artldlg.h
-	$(MOC) artldlg.h -o artldlg.moc
+artdlg.cpp:artdlg.moc
+artdlg.moc: artdlg.h
+	$(MOC) artdlg.h -o artdlg.moc
+
+kdecode.cpp:kdecode.moc
+kdecode.moc: kdecode.h
+	$(MOC) kdecode.h -o kdecode.moc
 
 kmessage.cpp:kmessage.moc
 kmessage.moc: kmessage.h
@@ -151,6 +155,10 @@ asker.moc: asker.h
 identDlg.cpp:identDlg.moc
 identDlg.moc: identDlg.h
 	$(MOC) identDlg.h -o identDlg.moc
+
+decoderDlg.cpp:decoderDlg.moc
+decoderDlg.moc: decoderDlg.h
+	$(MOC) decoderDlg.h -o decoderDlg.moc
 
 groupdlg.cpp:groupdlg.moc
 groupdlg.moc: groupdlg.h

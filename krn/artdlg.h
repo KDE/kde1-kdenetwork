@@ -57,6 +57,7 @@ private slots:
     void loadArt (int index,int column);
     bool loadArt (QString id);
     void markArt (int index,int column);
+    void markReadArt (int index,int column);
     void decArt (int index,int column);
     void saveArt (QString id);
     void copyText(bool b);
