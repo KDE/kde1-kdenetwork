@@ -1,0 +1,234 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# JAIME ROBLES <ea4abw@amsat.org>, 1998.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kdenetwork\n"
+"POT-Creation-Date: 1998-12-20 02:10+0100\n"
+"PO-Revision-Date: 1998-12-21 21:45+1\n"
+"Last-Translator: Jaime Robles <ea4abw@amsat.org>\n"
+"Language-Team: SPANISH <kde-es@kyb.ml.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ENCODING\n"
+
+#: kbiff.cpp:506
+msgid "&UnDock"
+msgstr "&Soltar"
+
+#: kbiff.cpp:508
+msgid "&Dock"
+msgstr "&Fijar"
+
+#: kbiff.cpp:509
+msgid "&Setup..."
+msgstr "&Configurar..."
+
+#: kbiff.cpp:511
+msgid "&Help..."
+msgstr "&Ayuda..."
+
+#: kbiff.cpp:515
+msgid "&Check Mail Now"
+msgstr "&Comprobar ahora si hay correo nuevo"
+
+#: kbiff.cpp:517
+msgid "&Read Mail Now"
+msgstr "&Leer correo ahora"
+
+#: kbiff.cpp:523
+msgid "&Stop"
+msgstr "&Parar"
+
+#: notify.cpp:28 notify.cpp:45
+msgid "You have new mail!"
+msgstr "¡Tienes correo nuevo!"
+
+#: notify.cpp:53
+#, c-format
+msgid "New Messages: %d"
+msgstr "Mensajes nuevos: %d"
+
+#: notify.cpp:58
+#, c-format
+msgid "Mailbox: %s"
+msgstr "Buzón %s"
+
+#: setupdlg.cpp:79
+msgid "KBiff Setup"
+msgstr "Configuración del KBiff"
+
+#: setupdlg.cpp:82
+msgid "Profile:"
+msgstr "Perfil"
+
+#: setupdlg.cpp:98
+msgid "&New..."
+msgstr "&Nuevo..."
+
+#: setupdlg.cpp:105
+msgid "&Rename..."
+msgstr "&Renombrar..."
+
+#: setupdlg.cpp:139
+msgid "General"
+msgstr "General..."
+
+#: setupdlg.cpp:140
+msgid "New Mail"
+msgstr "Correo nuevo"
+
+#: setupdlg.cpp:141
+msgid "Mailbox"
+msgstr "Buzón"
+
+#: setupdlg.cpp:356
+msgid "New Profile"
+msgstr "Nuevo perfil"
+
+#: setupdlg.cpp:388
+#, c-format
+msgid "Rename Profile: %s"
+msgstr "Renombrar perfil: %s"
+
+#: setupdlg.cpp:428
+#, c-format
+msgid "Delete Profile: %s"
+msgstr "Borrar perfil: %s"
+
+#: setupdlg.cpp:429
+msgid "Are you sure you wish to delete this profile?\n"
+msgstr "¿Estás seguro de que quieres borrar este perfil?\n"
+
+#: setupdlg.cpp:489
+msgid "Poll (sec):"
+msgstr "Revisar (seg)"
+
+#: setupdlg.cpp:494
+msgid "Mail client:"
+msgstr "Cliente de correo:"
+
+#: setupdlg.cpp:507
+msgid "Dock in panel"
+msgstr "Fijar en el panel"
+
+#: setupdlg.cpp:512
+msgid "Use session management"
+msgstr "Usar sesión de mantenimiento"
+
+#: setupdlg.cpp:517
+msgid "Icons:"
+msgstr "Iconos:"
+
+#: setupdlg.cpp:535
+msgid "No Mail:"
+msgstr "No hay correo"
+
+#: setupdlg.cpp:544
+msgid "Old Mail"
+msgstr "Correo antiguo"
+
+#: setupdlg.cpp:554
+msgid "New Mail:"
+msgstr "Correo nuevo:"
+
+#: setupdlg.cpp:691
+msgid "Run Command"
+msgstr "Ejecutar comando"
+
+#: setupdlg.cpp:698 setupdlg.cpp:711 setupdlg.cpp:1051
+msgid "Browse"
+msgstr "Navegar"
+
+#: setupdlg.cpp:704
+msgid "Play Sound"
+msgstr "Tocar sonido"
+
+#: setupdlg.cpp:717
+msgid "System Beep"
+msgstr "Pitido del sistema"
+
+#: setupdlg.cpp:722
+msgid "Notify"
+msgstr "Avisar"
+
+#: setupdlg.cpp:853
+msgid "Advanced Options"
+msgstr "Opciones avanzadas"
+
+#: setupdlg.cpp:857
+msgid "Mailbox URL:"
+msgstr "URL del buzón:"
+
+#: setupdlg.cpp:861
+msgid "Port:"
+msgstr "Puerto"
+
+#: setupdlg.cpp:865
+msgid "PREAUTH"
+msgstr "Preautentificación"
+
+#: setupdlg.cpp:872
+msgid "Keep Alive"
+msgstr "Mantener vivo"
+
+#: setupdlg.cpp:998 setupdlg.cpp:1027
+msgid "Mailbox:"
+msgstr "Buzón"
+
+#: setupdlg.cpp:1011 setupdlg.cpp:1321
+msgid "New Mailbox"
+msgstr "Nuevo Buzón"
+
+#: setupdlg.cpp:1018
+msgid "Delete Mailbox"
+msgstr "Borrar buzón"
+
+#: setupdlg.cpp:1024
+msgid "Protocol:"
+msgstr "Protocolo:"
+
+#: setupdlg.cpp:1030
+msgid "Server:"
+msgstr "Servidor:"
+
+#: setupdlg.cpp:1033
+msgid "User:"
+msgstr "Usuario:"
+
+#: setupdlg.cpp:1036
+msgid "Password:"
+msgstr "Contraseña:"
+
+#: setupdlg.cpp:1068
+msgid "Store password"
+msgstr "Guardar contraseña"
+
+#: setupdlg.cpp:1071
+msgid "Advanced"
+msgstr "Avanzado"
+
+#: setupdlg.cpp:1508
+msgid "KBiff"
+msgstr "KBiff"
+
+#: setupdlg.cpp:1530
+#, c-format
+msgid ""
+"Version %s\n"
+"\n"
+"Copyright (C) 1998\n"
+"Kurt Granroth"
+msgstr "Versión %s\n"
+"\n"
+"Copyright (C) 1998\n"
+"Kurt Granroth"
+
+#: setupdlg.cpp:1579
+msgid "New Name:"
+msgstr "Nuevo nombre:"
+
+#: setupdlg.cpp:1605
+msgid "New Name"
+msgstr "Nuevo nombre"
