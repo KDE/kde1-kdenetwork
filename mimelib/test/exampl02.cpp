@@ -33,19 +33,21 @@
 int main()
 {
     // Initialize the library
+
     DwInitialize();
 
     // Read message from file
-    char* buff = new char[10000];
-    int buffPos = 0;
-    ifstream istrm("test02.txt");
-    while (1) {
-        char ch;
-        istrm.get(ch);
-        if (!istrm || buffPos == 9999) break;
-        buff[buffPos++] = ch;
+
+    DwString messageStr = "";
+    DwString line;
+    ifstream istrm("exampl02.txt");
+    while (DwTrue) {
+        getline(istrm, line);
+        if (istrm.eof()) {
+            break;
+        }
+        messageStr += line + DW_EOL;
     }
-    DwString messageStr(buff, 10000, 0, buffPos);
     istrm.close();
     
     // Create a DwMessage and parse it.  The DwMessage should be created on
@@ -63,6 +65,7 @@ int main()
     ofstream ostrm("exampl02.out");
 
     // Print the header fields
+
     ostrm << "Type -> " << message.TypeStr() << "\n";
     ostrm << "Subtype -> " << message.SubtypeStr() << "\n";
     ostrm << "Content-Transfer-Encoding -> " << message.CteStr() << "\n";
@@ -74,6 +77,7 @@ int main()
     ostrm << "Subject -> " << message.Subject() << "\n";
 
     // Print the body
+
     ostrm << "\nBody ->\n";
     ostrm << message.Body() << "\n";
 

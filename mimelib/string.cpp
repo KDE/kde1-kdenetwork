@@ -36,70 +36,6 @@
 #define DW_MAX(a,b) ((a) >= (b) ? (a) : (b))
 
 
-// Allocate buffer whose size is a power of 2
-
-static char* mem_alloc(size_t* aSize)
-{
-    assert(aSize != 0);
-    // minimum size is 32
-    size_t size = 32;
-    while (size < *aSize) {
-        size <<= 1;
-    }
-    char* buf = new char[size];
-    *aSize = size;
-    return buf;
-}
-
-
-// Free buffer
-
-inline void mem_free(char* buf)
-{
-    assert(buf != 0);
-    if (buf && buf != DwString::sEmptyBuffer)
-        delete [] buf;
-}
-
-
-// Copy
-
-inline void mem_copy(const char* src, size_t n, char* dest)
-{
-    assert(src != 0);
-    assert(dest != 0);
-    assert(src != dest);
-    if (n == 0 || src == dest || !src || !dest) return;
-    memmove(dest, src, n);
-}
-
-
-inline DwStringRep* new_rep_reference(DwStringRep* rep)
-{
-    assert(rep != 0);
-    ++rep->mRefCount;
-    return rep;
-}
-
-
-inline void delete_rep_safely(DwStringRep* rep)
-{
-    assert(rep != 0);
-#if defined(DW_DEBUG_VERSION) || defined(DW_DEVELOPMENT_VERSION)
-    if (rep->mRefCount <= 0) {
-        cerr << "Error: attempt to delete a DwStringRep "
-            "with ref count <= 0\n";
-        cerr << "(Possibly 'delete' was called twice for same object)\n";
-        abort();
-    }
-#endif //  defined(DW_DEBUG_VERSION) || defined(DW_DEVELOPMENT_VERSION)
-    --rep->mRefCount;
-    if (rep->mRefCount == 0) {
-        delete rep;
-    }
-}
-
-
 static int dw_strcasecmp(const char* s1, size_t len1, const char* s2,
     size_t len2)
 {
@@ -146,6 +82,72 @@ static int dw_strcmp(const char* s1, size_t len1, const char* s2, size_t len2)
         return 1;
     }
     return 0;
+}
+
+
+// Copy
+
+inline void mem_copy(const char* src, size_t n, char* dest)
+{
+    assert(src != 0);
+    assert(dest != 0);
+    assert(src != dest);
+    if (n == 0 || src == dest || !src || !dest) return;
+    memmove(dest, src, n);
+}
+
+#if !defined(DW_USE_ANSI_STRING)
+
+
+// Allocate buffer whose size is a power of 2
+
+static char* mem_alloc(size_t* aSize)
+{
+    assert(aSize != 0);
+    // minimum size is 32
+    size_t size = 32;
+    while (size < *aSize) {
+        size <<= 1;
+    }
+    char* buf = new char[size];
+    *aSize = size;
+    return buf;
+}
+
+
+// Free buffer
+
+inline void mem_free(char* buf)
+{
+    assert(buf != 0);
+    if (buf && buf != DwString::sEmptyBuffer)
+        delete [] buf;
+}
+
+
+inline DwStringRep* new_rep_reference(DwStringRep* rep)
+{
+    assert(rep != 0);
+    ++rep->mRefCount;
+    return rep;
+}
+
+
+inline void delete_rep_safely(DwStringRep* rep)
+{
+    assert(rep != 0);
+#if defined(DW_DEBUG_VERSION) || defined(DW_DEVELOPMENT_VERSION)
+    if (rep->mRefCount <= 0) {
+        cerr << "Error: attempt to delete a DwStringRep "
+            "with ref count <= 0\n";
+        cerr << "(Possibly 'delete' was called twice for same object)\n";
+        abort();
+    }
+#endif //  defined(DW_DEBUG_VERSION) || defined(DW_DEVELOPMENT_VERSION)
+    --rep->mRefCount;
+    if (rep->mRefCount == 0) {
+        delete rep;
+    }
 }
 
 
@@ -229,9 +231,6 @@ void DwStringRep::operator delete(void* aRep, size_t)
 const size_t DwString::kEmptyBufferSize = 4;
 char DW_EXPORT DwString::sEmptyBuffer[4];
 DwStringRep* DW_EXPORT DwString::sEmptyRep = 0;
-#if defined(DW_V080_STRING)
-DwString DwString::sEmptyString;
-#endif //  defined(DW_V080_STRING)
 
 const size_t DwString::npos = (size_t) -1;
 
@@ -1663,6 +1662,8 @@ istream& getline(istream& aIstrm, DwString& aStr)
     return getline(aIstrm, aStr, '\n');
 }
 
+#endif // !defined(DW_USE_ANSI_STRING)
+
 
 int DwStrcasecmp(const DwString& aStr1, const DwString& aStr2)
 {
@@ -1862,143 +1863,3 @@ char* DwStrdup(const DwString& aStr)
     }
     return buf;
 }
-
-#if defined(DW_V080_STRING)
-int DwString::Length() const
-{
-    return mLength;
-}
-
-
-const char* DwString::AsCharBuf(int* aLen) const
-{
-    *aLen = mLength;
-    return data();
-}
-
-
-DwString DwString::Substring(int aPos, int aLen) const
-{
-    size_t pos = DW_MAX(aPos, 0);
-    size_t len = DW_MAX(aLen, 0);
-    return substr(pos, len);
-}
-
-
-void DwString::Substring(int aPos, int aLen, DwString* aStr) const
-{
-    size_t pos = DW_MAX(aPos, 0);
-    size_t len = DW_MAX(aLen, 0);
-    *aStr = substr(pos, len);
-}
-
-
-DwString DwString::Prefix(int aLen) const
-{
-    size_t len = DW_MAX(aLen, 0);
-    return substr(0, len);
-}
-
-
-void DwString::Prefix(int aLen, DwString* aStr) const
-{
-    *aStr = Prefix(aLen);
-}
-
-
-DwString DwString::Suffix(int aLen) const
-{
-    size_t len = DW_MAX(aLen, 0);
-    len = DW_MIN(aLen, mLength);
-    return substr(mLength-len, len);
-}
-
-
-void DwString::Suffix(int aLen, DwString* aStr) const
-{
-    *aStr = Suffix(aLen);
-}
-
-
-void DwString::Prepend(const DwString& aStr)
-{
-    insert(0, aStr);
-}
-
-
-void DwString::Prepend(const char* aCstr, int aLen)
-{
-    if (aLen < 0) {
-        insert(0, aCstr);
-    }
-    else {
-        insert(0, aCstr, aLen);
-    }
-}
-
-
-void DwString::Append(const DwString& aStr)
-{
-    append(aStr);
-}
-
-
-void DwString::Append(const char* aCstr, int aLen)
-{
-    if (aLen < 0) {
-        append(aCstr);
-    }
-    else {
-        append(aCstr, aLen);
-    }
-}
-
-
-void DwString::Insert(int aPos, const DwString& aStr)
-{
-    size_t pos = DW_MAX(aPos, 0);
-    insert(pos, aStr);
-}
-
-
-void DwString::Insert(int aPos, const char* aCstr, int aLen)
-{
-    size_t pos = DW_MAX(aPos, 0);
-    if (aLen < 0) {
-        insert(pos, aCstr);
-    }
-    else {
-        insert(pos, aCstr, aLen);
-    }
-}
-
-              
-void DwString::Replace(int aPos, int aLen, const DwString& aStr)
-{
-    size_t pos = DW_MAX(aPos, 0);
-    size_t len = DW_MAX(aLen, 0);
-    replace(pos, len, aStr);
-}
-
-
-void DwString::Replace(int aPos, int aLen, const char* aCstr, int aCstrLen)
-{
-    size_t pos = DW_MAX(aPos, 0);
-    size_t len = DW_MAX(aLen, 0);
-    if (aLen < 0) {
-        replace(pos, len, aCstr);
-    }
-    else {
-        replace(pos, len, aCstr, aCstrLen);
-    }
-}
-
-              
-void DwString::Delete(int aPos, int aLen)
-{
-    size_t pos = DW_MAX(aPos, 0);
-    size_t len = DW_MAX(aLen, 0);
-    erase(pos, len);
-}
-
-#endif // defined(DW_V080_STRING)

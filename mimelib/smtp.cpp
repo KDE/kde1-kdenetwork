@@ -31,13 +31,7 @@
 #include <mimelib/smtp.h>
 
 #if defined(DW_UNIX)
-#if defined(HAVE_UNISTD_H)
 #include <unistd.h>
-#endif
-
-#if defined(HAVE_SYSENT_H)
-#include <sysent.h>
-#endif
 #endif
 
 #define SMTP_PORT 25
@@ -77,7 +71,7 @@ DwSmtpClient::~DwSmtpClient()
 int DwSmtpClient::Open(const char* aServer, DwUint16 aPort)
 {
     mReplyCode = 0;
-    mResponse.clear();
+    mResponse = "";
     int err = DwProtocolClient::Open(aServer, aPort);
     if (! err) {
         PGetResponse();
@@ -101,7 +95,7 @@ const DwString& DwSmtpClient::Response() const
 int DwSmtpClient::Helo()
 {
     mReplyCode = 0;
-    mResponse.clear();
+    mResponse = "";
     mLastCommand = kCmdHelo;
     strcpy(mSendBuffer, "HELO ");
     gethostname(&mSendBuffer[5], SEND_BUFFER_SIZE-32);
@@ -119,7 +113,7 @@ int DwSmtpClient::Helo()
 int DwSmtpClient::Mail(const char* aFrom)
 {
     mReplyCode = 0;
-    mResponse.clear();
+    mResponse = "";
     mLastCommand = kCmdMail;
     strcpy(mSendBuffer, "MAIL FROM:<");
     strncat(mSendBuffer, aFrom, SEND_BUFFER_SIZE-32);
@@ -137,7 +131,7 @@ int DwSmtpClient::Mail(const char* aFrom)
 int DwSmtpClient::Rcpt(const char* aTo)
 {
     mReplyCode = 0;
-    mResponse.clear();
+    mResponse = "";
     mLastCommand = kCmdRcpt;
     strcpy(mSendBuffer, "RCPT TO:<");
     strncat(mSendBuffer, aTo, SEND_BUFFER_SIZE-32);
@@ -155,7 +149,7 @@ int DwSmtpClient::Rcpt(const char* aTo)
 int DwSmtpClient::Data()
 {
     mReplyCode = 0;
-    mResponse.clear();
+    mResponse = "";
     mLastCommand = kCmdData;
     strcpy(mSendBuffer, "DATA\r\n");
     DBG_SMTP_STMT(cout << "C: " << mSendBuffer << flush;)
@@ -171,7 +165,7 @@ int DwSmtpClient::Data()
 int DwSmtpClient::Rset()
 {
     mReplyCode = 0;
-    mResponse.clear();
+    mResponse = "";
     mLastCommand = kCmdRset;
     strcpy(mSendBuffer, "RSET\r\n");
     DBG_SMTP_STMT(cout << "C: " << mSendBuffer << flush;)
@@ -187,7 +181,7 @@ int DwSmtpClient::Rset()
 int DwSmtpClient::Send(const char* aFrom)
 {
     mReplyCode = 0;
-    mResponse.clear();
+    mResponse = "";
     mLastCommand = kCmdSend;
     strcpy(mSendBuffer, "SEND FROM:<");
     strncat(mSendBuffer, aFrom, SEND_BUFFER_SIZE-32);
@@ -205,7 +199,7 @@ int DwSmtpClient::Send(const char* aFrom)
 int DwSmtpClient::Soml(const char* aFrom)
 {
     mReplyCode = 0;
-    mResponse.clear();
+    mResponse = "";
     mLastCommand = kCmdSoml;
     strcpy(mSendBuffer, "SOML FROM:<");
     strncat(mSendBuffer, aFrom, SEND_BUFFER_SIZE-32);
@@ -223,7 +217,7 @@ int DwSmtpClient::Soml(const char* aFrom)
 int DwSmtpClient::Saml(const char* aFrom)
 {
     mReplyCode = 0;
-    mResponse.clear();
+    mResponse = "";
     mLastCommand = kCmdSaml;
     strcpy(mSendBuffer, "SAML FROM:<");
     strncat(mSendBuffer, aFrom, SEND_BUFFER_SIZE-32);
@@ -241,7 +235,7 @@ int DwSmtpClient::Saml(const char* aFrom)
 int DwSmtpClient::Vrfy(const char* aName)
 {
     mReplyCode = 0;
-    mResponse.clear();
+    mResponse = "";
     mLastCommand = kCmdVrfy;
     strcpy(mSendBuffer, "VRFY ");
     strncat(mSendBuffer, aName, SEND_BUFFER_SIZE-32);
@@ -259,7 +253,7 @@ int DwSmtpClient::Vrfy(const char* aName)
 int DwSmtpClient::Expn(const char* aName)
 {
     mReplyCode = 0;
-    mResponse.clear();
+    mResponse = "";
     mLastCommand = kCmdExpn;
     strcpy(mSendBuffer, "EXPN ");
     strncat(mSendBuffer, aName, SEND_BUFFER_SIZE-32);
@@ -277,7 +271,7 @@ int DwSmtpClient::Expn(const char* aName)
 int DwSmtpClient::Help(const char* aArg)
 {
     mReplyCode = 0;
-    mResponse.clear();
+    mResponse = "";
     mLastCommand = kCmdHelp;
     strcpy(mSendBuffer, "HELP");
     if (aArg) {
@@ -298,7 +292,7 @@ int DwSmtpClient::Help(const char* aArg)
 int DwSmtpClient::Noop()
 {
     mReplyCode = 0;
-    mResponse.clear();
+    mResponse = "";
     mLastCommand = kCmdNoop;
     strcpy(mSendBuffer, "NOOP\r\n");
     DBG_SMTP_STMT(cout << "C: " << mSendBuffer << flush;)
@@ -314,7 +308,7 @@ int DwSmtpClient::Noop()
 int DwSmtpClient::Quit()
 {
     mReplyCode = 0;
-    mResponse.clear();
+    mResponse = "";
     mLastCommand = kCmdQuit;
     strcpy(mSendBuffer, "QUIT\r\n");
     DBG_SMTP_STMT(cout << "C: " << mSendBuffer << flush;)
@@ -330,7 +324,7 @@ int DwSmtpClient::Quit()
 int DwSmtpClient::Turn()
 {
     mReplyCode = 0;
-    mResponse.clear();
+    mResponse = "";
     mLastCommand = kCmdTurn;
     strcpy(mSendBuffer, "TURN\r\n");
     DBG_SMTP_STMT(cout << "C: " << mSendBuffer << flush;)
@@ -352,7 +346,7 @@ int DwSmtpClient::SendData(const DwString& aStr)
 int DwSmtpClient::SendData(const char* aBuf, int aBufLen)
 {
     mReplyCode = 0;
-    mResponse.clear();
+    mResponse = "";
 
     int pos = 0;
     int len = 0;
@@ -408,7 +402,7 @@ int DwSmtpClient::SendData(const char* aBuf, int aBufLen)
                     }
                     mSendBuffer[iDst++] = '.';
                 }
-                mSendBuffer[iDst++] = ch;
+                mSendBuffer[iDst++] = (char) ch;
                 ++iSrc;
                 tLastLastChar = tLastChar;
                 tLastChar = ch;
@@ -449,7 +443,6 @@ int DwSmtpClient::SendData(const char* aBuf, int aBufLen)
 void DwSmtpClient::PGetResponse()
 {
     mReplyCode = 0;
-    mResponse.clear();
     char* ptr = 0;
     int len = 0;
     int err = 0;

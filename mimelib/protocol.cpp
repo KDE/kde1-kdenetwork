@@ -44,6 +44,10 @@
 #include <errno.h>
 #include <sys/time.h>
 
+#if defined(_AIX)
+#include <strings.h>
+#endif
+
 #ifndef INADDR_NONE
 #define INADDR_NONE (-1)
 #endif

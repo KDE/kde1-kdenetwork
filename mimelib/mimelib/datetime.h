@@ -36,7 +36,7 @@
 #endif
 
 //=============================================================================
-//+ Name DwDateTime -- Class representing a MIME date-time
+//+ Name DwDateTime -- Class representing an RFC-822 date-time
 //+ Description
 //. {\tt DwDatetime} represents a {\it date-time} as described in RFC-822
 //. and RFC-1123.  The parse method for {\tt DwDateTime} parses the
@@ -44,6 +44,10 @@
 //. second, and time zone.  {\tt DwDateTime} provides member functions
 //. to set or get the individual components of the date-time.
 //=============================================================================
+// Last modified 1997-08-23
+//+ Noentry ~DwDateTime mYear mMonth mDay mHour mMinute mSecond mZone
+//+ Noentry sDefaultZone sIsDefaultZoneSet _PrintDebugInfo
+
 
 class DW_EXPORT DwDateTime : public DwFieldBody {
 
@@ -56,26 +60,30 @@ public:
     //. the current date and time as reported by the operating system. 
     //.
     //. The second constructor is the copy constructor.  The parent of
-    //. the new {\tt DwDateTime} object will be set to NULL.
+    //. the new {\tt DwDateTime} object is set to {\tt NULL}.
     //.
     //. The third constructor sets {\tt aStr} as the {\tt DwDateTime}
     //. object's string representation and sets {\tt aParent} as its parent.
     //. The virtual member function {\tt Parse()} should be called after
     //. this constructor to extract the date and time information from the
-    //. string representation.  Unless it is NULL, {\tt aParent} should point
-    //. to an object of a class derived from {\tt DwField}.
+    //. string representation.  Unless it is {\tt NULL}, {\tt aParent} should
+    //. point to an object of a class derived from {\tt DwField}.
 
     virtual ~DwDateTime();
 
     const DwDateTime& operator = (const DwDateTime& aDateTime);
-    //. This is the assignment operator, which follows regular semantics.
+    //. This is the assignment operator, which sets this {\tt DwDateTime}
+    //. object to the same value as {\tt aDateTime}.
 
     virtual void Parse();
     //. This virtual function, inherited from {\tt DwMessageComponent},
-    //. executes the parse method for {\tt DwDateTime} objects.
-    //. It should be called immediately after the string representation
-    //. is modified and before the parts of the broken-down
-    //. representation are accessed.
+    //. executes the parse method for {\tt DwDateTime} objects. The parse
+    //. method creates or updates the broken-down representation from the
+    //. string representation.  For {\tt DwDateTime} objects, the parse
+    //. method parses the string representation to extract the year,
+    //. month, day, hour, minute, second, and time zone.
+    //.
+    //. This function clears the is-modified flag.
 
     virtual void Assemble();
     //. This virtual function, inherited from {\tt DwMessageComponent},
@@ -85,12 +93,14 @@ public:
     //. its broken-down representation.  It will be called
     //. automatically for this object by the parent object's
     //. {\tt Assemble()} member function if the is-modified flag is set.
+    //.
+    //. This function clears the is-modified flag.
 
     virtual DwMessageComponent* Clone() const;
     //. This virtual function, inherited from {\tt DwMessageComponent},
     //. creates a new {\tt DwDateTime} on the free store that has the same
     //. value as this {\tt DwDateTime} object.  The basic idea is that of
-    //. a ``virtual copy constructor.''
+    //. a virtual copy constructor.
 
     DwUint32 AsUnixTime() const;
     //. Returns the date and time as a UNIX (POSIX) time, defined as the
@@ -160,7 +170,7 @@ public:
     //. Values range from 0 to 23.
 
     void SetHour(int aHour);
-    //. Sets the hour from {\tt aHour} base on the 24-hour clock. {\tt aHour}
+    //. Sets the hour from {\tt aHour} based on the 24-hour clock. {\tt aHour}
     //. should be in the range 0 to 23.
 
     int Minute() const;
@@ -194,7 +204,7 @@ public:
 
     static DwDateTime* NewDateTime(const DwString&, DwMessageComponent*);
     //. Creates a new {\tt DwDateTime} object on the free store.
-    //. If the static data member {\tt sNewDateTime} is NULL, 
+    //. If the static data member {\tt sNewDateTime} is {\tt NULL}, 
     //. this member function will create a new {\tt DwDateTime}
     //. and return it.  Otherwise, {\tt NewDateTime()} will call
     //. the user-supplied function pointed to by {\tt sNewDateTime},
@@ -203,7 +213,7 @@ public:
 
     //+ Var sNewDateTime
     static DwDateTime* (*sNewDateTime)(const DwString&, DwMessageComponent*);
-    //. If {\tt sNewDateTime} is not NULL, it is assumed to point to a 
+    //. If {\tt sNewDateTime} is not {\tt NULL}, it is assumed to point to a 
     //. user-supplied function that returns an object from a class derived
     //. from {\tt DwDateTime}.
 
@@ -238,8 +248,6 @@ public:
     virtual void PrintDebugInfo(ostream& aStrm, int aDepth=0) const;
     //. This virtual function, inherited from {\tt DwMessageComponent},
     //. prints debugging information about this object to {\tt aStrm}.
-    //. It will also call {\tt PrintDebugInfo()} for any of its child
-    //. components down to a level of {\tt aDepth}.
     //.
     //. This member function is available only in the debug version of
     //. the library.

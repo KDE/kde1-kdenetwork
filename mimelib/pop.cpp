@@ -68,8 +68,7 @@ DwPopClient::~DwPopClient()
 int DwPopClient::Open(const char* aServer, DwUint16 aPort)
 {
     mStatusCode = 0;
-    mSingleLineResponse.clear();
-    mMultiLineResponse.clear();
+    mSingleLineResponse = mMultiLineResponse = "";
     int err = DwProtocolClient::Open(aServer, aPort);
     if (! err) {
         PGetSingleLineResponse();
@@ -107,8 +106,7 @@ const DwString& DwPopClient::MultiLineResponse() const
 int DwPopClient::User(const char* aName)
 {
     mStatusCode = 0;
-    mSingleLineResponse.clear();
-    mMultiLineResponse.clear();
+    mSingleLineResponse = mMultiLineResponse = "";
     mLastCommand = kCmdUser;
     strcpy(mSendBuffer, "USER ");
     strncat(mSendBuffer, aName, SEND_BUFFER_SIZE-32);
@@ -126,8 +124,7 @@ int DwPopClient::User(const char* aName)
 int DwPopClient::Pass(const char* aPasswd)
 {
     mStatusCode = 0;
-    mSingleLineResponse.clear();
-    mMultiLineResponse.clear();
+    mSingleLineResponse = mMultiLineResponse = "";
     mLastCommand = kCmdPass;
     strcpy(mSendBuffer, "PASS ");
     strncat(mSendBuffer, aPasswd, SEND_BUFFER_SIZE-32);
@@ -145,8 +142,7 @@ int DwPopClient::Pass(const char* aPasswd)
 int DwPopClient::Quit()
 {
     mStatusCode = 0;
-    mSingleLineResponse.clear();
-    mMultiLineResponse.clear();
+    mSingleLineResponse = mMultiLineResponse = "";
     mLastCommand = kCmdQuit;
     strcpy(mSendBuffer, "QUIT\r\n");
     DBG_POP_STMT(cout << "C: " << mSendBuffer << flush;)
@@ -162,8 +158,7 @@ int DwPopClient::Quit()
 int DwPopClient::Stat()
 {
     mStatusCode = 0;
-    mSingleLineResponse.clear();
-    mMultiLineResponse.clear();
+    mSingleLineResponse = mMultiLineResponse = "";
     mLastCommand = kCmdStat;
     strcpy(mSendBuffer, "STAT\r\n");
     DBG_POP_STMT(cout << "C: " << mSendBuffer << flush;)
@@ -179,8 +174,7 @@ int DwPopClient::Stat()
 int DwPopClient::List()
 {
     mStatusCode = 0;
-    mSingleLineResponse.clear();
-    mMultiLineResponse.clear();
+    mSingleLineResponse = mMultiLineResponse = "";
     mLastCommand = kCmdList;
     strcpy(mSendBuffer, "LIST\r\n");
     DBG_POP_STMT(cout << "C: " << mSendBuffer << flush;)
@@ -199,8 +193,7 @@ int DwPopClient::List()
 int DwPopClient::List(int aMsg)
 {
     mStatusCode = 0;
-    mSingleLineResponse.clear();
-    mMultiLineResponse.clear();
+    mSingleLineResponse = mMultiLineResponse = "";
     mLastCommand = kCmdList;
     sprintf(mSendBuffer, "LIST %d\r\n", aMsg);
     DBG_POP_STMT(cout << "C: " << mSendBuffer << flush;)
@@ -216,8 +209,7 @@ int DwPopClient::List(int aMsg)
 int DwPopClient::Retr(int aMsg)
 {
     mStatusCode = 0;
-    mSingleLineResponse.clear();
-    mMultiLineResponse.clear();
+    mSingleLineResponse = mMultiLineResponse = "";
     mLastCommand = kCmdRetr;
     sprintf(mSendBuffer, "RETR %d\r\n", aMsg);
     DBG_POP_STMT(cout << "C: " << mSendBuffer << flush;)
@@ -236,8 +228,7 @@ int DwPopClient::Retr(int aMsg)
 int DwPopClient::Dele(int aMsg)
 {
     mStatusCode = 0;
-    mSingleLineResponse.clear();
-    mMultiLineResponse.clear();
+    mSingleLineResponse = mMultiLineResponse = "";
     mLastCommand = kCmdDele;
     sprintf(mSendBuffer, "DELE %d\r\n", aMsg);
     DBG_POP_STMT(cout << "C: " << mSendBuffer << flush;)
@@ -253,8 +244,7 @@ int DwPopClient::Dele(int aMsg)
 int DwPopClient::Noop()
 {
     mStatusCode = 0;
-    mSingleLineResponse.clear();
-    mMultiLineResponse.clear();
+    mSingleLineResponse = mMultiLineResponse = "";
     mLastCommand = kCmdNoop;
     strcpy(mSendBuffer, "NOOP\r\n");
     DBG_POP_STMT(cout << "C: " << mSendBuffer << flush;)
@@ -270,8 +260,7 @@ int DwPopClient::Noop()
 int DwPopClient::Rset()
 {
     mStatusCode = 0;
-    mSingleLineResponse.clear();
-    mMultiLineResponse.clear();
+    mSingleLineResponse = mMultiLineResponse = "";
     mLastCommand = kCmdRset;
     strcpy(mSendBuffer, "RSET\r\n");
     DBG_POP_STMT(cout << "C: " << mSendBuffer << flush;)
@@ -287,8 +276,7 @@ int DwPopClient::Rset()
 int DwPopClient::Apop(const char* aName, const char* aDigest)
 {
     mStatusCode = 0;
-    mSingleLineResponse.clear();
-    mMultiLineResponse.clear();
+    mSingleLineResponse = mMultiLineResponse = "";
     mLastCommand = kCmdApop;
     strcpy(mSendBuffer, "APOP ");
     strncat(mSendBuffer, aName, 256);
@@ -308,8 +296,7 @@ int DwPopClient::Apop(const char* aName, const char* aDigest)
 int DwPopClient::Top(int aMsg, int aNumLines)
 {
     mStatusCode = 0;
-    mSingleLineResponse.clear();
-    mMultiLineResponse.clear();
+    mSingleLineResponse = mMultiLineResponse = "";
     mLastCommand = kCmdTop;
     sprintf(mSendBuffer, "TOP %d %d\r\n", aMsg, aNumLines);
     DBG_POP_STMT(cout << "C: " << mSendBuffer << flush;)
@@ -328,8 +315,7 @@ int DwPopClient::Top(int aMsg, int aNumLines)
 int DwPopClient::Uidl()
 {
     mStatusCode = 0;
-    mSingleLineResponse.clear();
-    mMultiLineResponse.clear();
+    mSingleLineResponse = mMultiLineResponse = "";
     mLastCommand = kCmdUidl;
     strcpy(mSendBuffer, "UIDL\r\n");
     DBG_POP_STMT(cout << "C: " << mSendBuffer << flush;)
@@ -348,8 +334,7 @@ int DwPopClient::Uidl()
 int DwPopClient::Uidl(int aMsg)
 {
     mStatusCode = 0;
-    mSingleLineResponse.clear();
-    mMultiLineResponse.clear();
+    mSingleLineResponse = mMultiLineResponse = "";
     mLastCommand = kCmdUidl;
     sprintf(mSendBuffer, "UIDL %d\r\n", aMsg);
     DBG_POP_STMT(cout << "C: " << mSendBuffer << flush);
@@ -368,7 +353,7 @@ int DwPopClient::Uidl(int aMsg)
 void DwPopClient::PGetSingleLineResponse()
 {
     mStatusCode = 0;
-    mSingleLineResponse.clear();
+    mSingleLineResponse = "";
     char* ptr;
     int len;
     int err = PGetLine(&ptr, &len);
@@ -385,7 +370,7 @@ void DwPopClient::PGetSingleLineResponse()
 
 void DwPopClient::PGetMultiLineResponse()
 {
-    mMultiLineResponse.clear();
+    mMultiLineResponse = "";
 
     // Get a line at a time until we get CR LF . CR LF
 

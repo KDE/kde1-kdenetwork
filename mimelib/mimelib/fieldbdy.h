@@ -40,17 +40,34 @@
 #endif
 
 //=============================================================================
-//+ Name DwFieldBody -- Class representing a MIME header field-body
+//+ Name DwFieldBody -- Class representing a MIME header field body
 //+ Description
-//. {\tt DwFieldBody} represents the field-body element in the grammar
-//. specified by RFC-822.  It is an abstract base class that defines
-//. the interface common to all structured field bodies.
+//. {\tt DwFieldBody} represents the field-body element in the BNF grammar
+//. specified by RFC-822.  It is an abstract base class that defines the
+//. interface common to all structured field bodies.
+//.
+//. In the tree (broken-down) representation of a message, a {\tt DwFieldBody}
+//. object may be either a leaf node, having a parent but no child nodes, or
+//. an intermediate node, having a parent and one or more child nodes.  The
+//. parent node is the {\tt DwField} object that contains it.  Child nodes,
+//. if present, depend on the particular subclass of {\tt DwFieldBody} that
+//. is instantiated.  A {\tt DwAddressList} object, for example, has
+//. {\tt DwAddress} objects as its child nodes.
+//.
+//. Since {\tt DwFieldBody} is an abstract base class, you cannot create
+//. instances of it directly.  Normally, objects of classes derived from
+//. {\tt DwFieldBody} are obtained by calling convenience member functions
+//. in the class {\tt DwHeaders}.
 //.
 //. Some MIME parsers are broken in that they do not handle the folding of
 //. some fields properly.  {\tt DwFieldBody} folds its string representation
 //. by default.  You can disable folding, however, by calling the
-//. {\tt SetFolding()} member function.
+//. {\tt SetFolding()} member function.  To determine if folding is enabled,
+//. call {\tt IsFolding()}.
 //=============================================================================
+// Last updated 1997-08-24
+//+ Noentry ~DwFieldBody mLineOffset mDoFolding _PrintDebugInfo
+
 
 class DW_EXPORT DwFieldBody : public DwMessageComponent {
 
@@ -63,31 +80,30 @@ public:
     DwFieldBody(const DwString& aStr, DwMessageComponent* aParent=0);
     //. The first constructor is the default constructor, which sets the
     //. {\tt DwFieldBody} object's string representation to the empty
-    //. string and set its parent to NULL.
+    //. string and sets its parent to {\tt NULL}.
     //.
-    //. The second constructor is the copy constructor, which
-    //. copies string representation and all elements of the broken-down
-    //. represenation from {\tt aFieldBody}.
-    //. The parent of the new {\tt DwHeader} object is set to NULL.
+    //. The second constructor is the copy constructor, which performs a
+    //. deep copy of {\tt aFieldBody}.
+    //. The parent of the new {\tt DwFieldBody} object is set to {\tt NULL}.
     //.
     //. The third constructor copies {\tt aStr} to the {\tt DwFieldBody}
-    //. object's string
-    //. representation and sets {\tt aParent} as the object's parent.
-    //. The virtual member function {\tt Parse()} should be called
-    //. immediately after this constructor in order to parse the string
-    //. representation.
-    //. Unless it is NULL, {\tt aParent} should point to an object of a class
-    //. derived from {\tt DwField}.
+    //. object's string representation and sets {\tt aParent} as its parent.
+    //. The virtual member function {\tt Parse()} should be called immediately
+    //. after this constructor in order to parse the string representation.
+    //. Unless it is {\tt NULL}, {\tt aParent} should point to an object of
+    //. a class derived from {\tt DwField}.
 
     virtual ~DwFieldBody();
 
     const DwFieldBody& operator = (const DwFieldBody& aFieldBody);
-    //. This is the assignment operator, which follows regular semantics.
+    //. This is the assignment operator, which performs a deep copy of
+    //. {\tt aFieldBody}.  The parent node of the {\tt DwFieldBody} object
+    //. is not changed.
 
     void SetOffset(int aOffset);
     //. Sets the offset to {\tt aOffset}.  The offset is used when folding
     //. lines.  It indicates how much the first line should be offset to
-    //. account for the {\it field-name}, colon, and initial white space.
+    //. account for the field name, colon, and initial white space.
 
     void SetFolding(DwBool aTrueOrFalse);
     //. Enables ({\tt aTrueOrFalse = DwTrue}) or disables

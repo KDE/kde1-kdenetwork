@@ -37,7 +37,8 @@ public:
 
     // Get or set the 'Content-Type' header field
     // + The member functions that involve enumerated types (ints)
-    //   will work only for well-known types or subtypes.
+    //   will work only for well-known types or subtypes.  The enum
+    //   values are defined in <mimepp/enum.h>.
     // Type
     const DwString& TypeStr() const;
     int Type() const;
@@ -51,7 +52,8 @@ public:
 
     // Get or set the 'Content-Transfer-Encoding' header field
     // + The member functions that involve enumerated types (ints)
-    //   will work only for well-known encodings
+    //   will work only for well-known encodings.  The enum values
+    //   are defined in <mimepp/enum.h>.
     const DwString& ContentTransferEncodingStr() const;
     int ContentTransferEncoding() const;
     void SetContentTransferEncodingStr(const DwString& aStr);

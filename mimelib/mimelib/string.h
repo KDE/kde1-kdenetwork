@@ -33,6 +33,13 @@
 #include <mimelib/config.h>
 #endif
 
+#if defined(DW_USE_ANSI_STRING)
+
+#include <string>
+typedef std::string DwString;
+
+#else // ! defined(DW_USE_ANSI_STRING)
+
 //=============================================================================
 // DwStringRep is an implementation class that should not be used externally.
 //=============================================================================
@@ -59,7 +66,7 @@ public:
 //+ Name DwString -- String class
 //+ Description
 //. {\tt DwString} is the workhorse of the MIME++ library.  Creating, parsing,
-//. or otherwise manipulating MIME messages is basically a matter of 
+//. or otherwise manipulating MIME messages is basically a matter of
 //. manipulating strings.  {\tt DwString} provides all the basic functionality
 //. required of a string object, including copying, comparing, concatenating,
 //. and so on.
@@ -81,9 +88,10 @@ public:
 //. other string classes.  {\tt DwString} also handles binary data, which can
 //. contain embedded NUL characters.
 //=============================================================================
-
 //+ Noentry _copy _replace Length AsCharBuf Substring Prefix Suffix Prepend
 //+ Noentry Append Insert Replace Delete mRep mStart mLength sEmptyString
+//+ Noentry ~DwString
+
 
 class DW_EXPORT DwString {
 
@@ -574,92 +582,8 @@ public:
     //. This member function is available only in the debug version of
     //. the library.
 
-#if defined(DW_V080_STRING)
-public:
-    int Length() const;
-    const char* AsCharBuf(int* aLen) const;
-    DwString Substring(int aPos, int aLen) const;
-    void Substring(int aPos, int aLen, DwString* aStr) const;
-    DwString Prefix(int aLen) const;
-    void Prefix(int aLen, DwString* aStr) const;
-    DwString Suffix(int aLen) const;
-    void Suffix(int aLen, DwString* aStr) const;
-    void Prepend(const DwString& aStr);
-    void Prepend(const char* aCstr, int aLen=-1);
-    void Append(const DwString& aStr);
-    void Append(const char* aCstr, int aLen=-1);
-    void Insert(int aPos, const DwString& aStr);
-    void Insert(int aPos, const char* aCstr, int aLen=-1);
-    void Replace(int aPos, int aLen, const DwString& aStr);
-    void Replace(int aPos, int aLen, const char* aCstr, int aCstrLen=-1);
-    void Delete(int aPos, int aLen);
-    static DwString sEmptyString;
-#endif // defined(DW_V080_STRING)
-
 };
 
-DW_EXPORT DwString operator + (const DwString& aStr1, const DwString& aStr2);
-DW_EXPORT DwString operator + (const char* aCstr, const DwString& aStr2);
-DW_EXPORT DwString operator + (char aChar, const DwString& aStr2);
-DW_EXPORT DwString operator + (const DwString& aStr1, const char* aCstr);
-DW_EXPORT DwString operator + (const DwString& aStr1, char aChar);
-
-DW_EXPORT DwBool operator == (const DwString& aStr1, const DwString& aStr2);
-DW_EXPORT DwBool operator == (const DwString& aStr1, const char* aCstr);
-DW_EXPORT DwBool operator == (const char* aCstr, const DwString& aStr2);
-
-DW_EXPORT DwBool operator != (const DwString& aStr1, const DwString& aStr2);
-DW_EXPORT DwBool operator != (const DwString& aStr1, const char* aCstr);
-DW_EXPORT DwBool operator != (const char* aCstr, const DwString& aStr2);
-
-DW_EXPORT DwBool operator < (const DwString& aStr1, const DwString& aStr2);
-DW_EXPORT DwBool operator < (const DwString& aStr1, const char* aCstr);
-DW_EXPORT DwBool operator < (const char* aCstr, const DwString& aStr2);
-
-DW_EXPORT DwBool operator > (const DwString& aStr1, const DwString& aStr2);
-DW_EXPORT DwBool operator > (const DwString& aStr1, const char* aCstr);
-DW_EXPORT DwBool operator > (const char* aCstr, const DwString& aStr2);
-
-DW_EXPORT DwBool operator <= (const DwString& aStr1, const DwString& aStr2);
-DW_EXPORT DwBool operator <= (const DwString& aStr1, const char* aCstr);
-DW_EXPORT DwBool operator <= (const char* aCstr, const DwString& aStr2);
-
-DW_EXPORT DwBool operator >= (const DwString& aStr1, const DwString& aStr2);
-DW_EXPORT DwBool operator >= (const DwString& aStr1, const char* aCstr);
-DW_EXPORT DwBool operator >= (const char* aCstr, const DwString& aStr2);
-
-DW_EXPORT ostream& operator << (ostream& aOstrm, const DwString& aStr);
-//. Writes the contents of {\tt aStr} to the stream {\tt aOstrm}.
-
-DW_EXPORT istream& getline (istream& aIstrm, DwString& aStr, char aDelim);
-DW_EXPORT istream& getline (istream& aIstrm, DwString& aStr);
-
-DW_EXPORT int DwStrcasecmp(const DwString& aStr1, const DwString& aStr2);
-DW_EXPORT int DwStrcasecmp(const DwString& aStr1, const char* aCstr);
-DW_EXPORT int DwStrcasecmp(const char* aCstr, const DwString& aStr2);
-
-DW_EXPORT int DwStrncasecmp(const DwString& aStr1, const DwString& aStr2,
-    size_t aLen);
-DW_EXPORT int DwStrncasecmp(const DwString& aStr, const char* aCstr, size_t aLen);
-DW_EXPORT int DwStrncasecmp(const char* aCstr, const DwString& aStr, size_t aLen);
-
-DW_EXPORT int DwStrcmp(const DwString& aStr1, const DwString& aStr2);
-DW_EXPORT int DwStrcmp(const DwString& aStr, const char* aCstr);
-DW_EXPORT int DwStrcmp(const char* aCstr, const DwString& aStr);
-
-DW_EXPORT int DwStrncmp(const DwString& aStr1, const DwString& aStr2, size_t aLen);
-DW_EXPORT int DwStrncmp(const DwString& aStr, const char* aCstr, size_t aLen);
-DW_EXPORT int DwStrncmp(const char* aCstr, const DwString& aStr, size_t aLen);
-
-DW_EXPORT void DwStrcpy(DwString& aStrDest, const DwString& aStrSrc);
-DW_EXPORT void DwStrcpy(DwString& aStrDest, const char* aCstrSrc);
-DW_EXPORT void DwStrcpy(char* aCstrDest, const DwString& aStrSrc);
-
-DW_EXPORT void DwStrncpy(DwString& aStrDest, const DwString& aStrSrc, size_t aLen);
-DW_EXPORT void DwStrncpy(DwString& aStrDest, const char* aCstrSrc, size_t aLen);
-DW_EXPORT void DwStrncpy(char* aCstrDest, const DwString& aStrSrc, size_t aLen);
-
-DW_EXPORT char* DwStrdup(const DwString& aStr);
 
 //---------------------------------------------------------------------------
 // inline functions
@@ -779,6 +703,71 @@ inline DwString& DwString::operator += (char aChar)
 {
     return append(1, aChar);
 }
+
+#endif // ! defined(DW_USE_ANSI_STRING)
+
+DW_EXPORT DwString operator + (const DwString& aStr1, const DwString& aStr2);
+DW_EXPORT DwString operator + (const char* aCstr, const DwString& aStr2);
+DW_EXPORT DwString operator + (char aChar, const DwString& aStr2);
+DW_EXPORT DwString operator + (const DwString& aStr1, const char* aCstr);
+DW_EXPORT DwString operator + (const DwString& aStr1, char aChar);
+
+DW_EXPORT DwBool operator == (const DwString& aStr1, const DwString& aStr2);
+DW_EXPORT DwBool operator == (const DwString& aStr1, const char* aCstr);
+DW_EXPORT DwBool operator == (const char* aCstr, const DwString& aStr2);
+
+DW_EXPORT DwBool operator != (const DwString& aStr1, const DwString& aStr2);
+DW_EXPORT DwBool operator != (const DwString& aStr1, const char* aCstr);
+DW_EXPORT DwBool operator != (const char* aCstr, const DwString& aStr2);
+
+DW_EXPORT DwBool operator < (const DwString& aStr1, const DwString& aStr2);
+DW_EXPORT DwBool operator < (const DwString& aStr1, const char* aCstr);
+DW_EXPORT DwBool operator < (const char* aCstr, const DwString& aStr2);
+
+DW_EXPORT DwBool operator > (const DwString& aStr1, const DwString& aStr2);
+DW_EXPORT DwBool operator > (const DwString& aStr1, const char* aCstr);
+DW_EXPORT DwBool operator > (const char* aCstr, const DwString& aStr2);
+
+DW_EXPORT DwBool operator <= (const DwString& aStr1, const DwString& aStr2);
+DW_EXPORT DwBool operator <= (const DwString& aStr1, const char* aCstr);
+DW_EXPORT DwBool operator <= (const char* aCstr, const DwString& aStr2);
+
+DW_EXPORT DwBool operator >= (const DwString& aStr1, const DwString& aStr2);
+DW_EXPORT DwBool operator >= (const DwString& aStr1, const char* aCstr);
+DW_EXPORT DwBool operator >= (const char* aCstr, const DwString& aStr2);
+
+DW_EXPORT ostream& operator << (ostream& aOstrm, const DwString& aStr);
+//. Writes the contents of {\tt aStr} to the stream {\tt aOstrm}.
+
+DW_EXPORT istream& getline (istream& aIstrm, DwString& aStr, char aDelim);
+DW_EXPORT istream& getline (istream& aIstrm, DwString& aStr);
+
+DW_EXPORT int DwStrcasecmp(const DwString& aStr1, const DwString& aStr2);
+DW_EXPORT int DwStrcasecmp(const DwString& aStr1, const char* aCstr);
+DW_EXPORT int DwStrcasecmp(const char* aCstr, const DwString& aStr2);
+
+DW_EXPORT int DwStrncasecmp(const DwString& aStr1, const DwString& aStr2,
+    size_t aLen);
+DW_EXPORT int DwStrncasecmp(const DwString& aStr, const char* aCstr, size_t aLen);
+DW_EXPORT int DwStrncasecmp(const char* aCstr, const DwString& aStr, size_t aLen);
+
+DW_EXPORT int DwStrcmp(const DwString& aStr1, const DwString& aStr2);
+DW_EXPORT int DwStrcmp(const DwString& aStr, const char* aCstr);
+DW_EXPORT int DwStrcmp(const char* aCstr, const DwString& aStr);
+
+DW_EXPORT int DwStrncmp(const DwString& aStr1, const DwString& aStr2, size_t aLen);
+DW_EXPORT int DwStrncmp(const DwString& aStr, const char* aCstr, size_t aLen);
+DW_EXPORT int DwStrncmp(const char* aCstr, const DwString& aStr, size_t aLen);
+
+DW_EXPORT void DwStrcpy(DwString& aStrDest, const DwString& aStrSrc);
+DW_EXPORT void DwStrcpy(DwString& aStrDest, const char* aCstrSrc);
+DW_EXPORT void DwStrcpy(char* aCstrDest, const DwString& aStrSrc);
+
+DW_EXPORT void DwStrncpy(DwString& aStrDest, const DwString& aStrSrc, size_t aLen);
+DW_EXPORT void DwStrncpy(DwString& aStrDest, const char* aCstrSrc, size_t aLen);
+DW_EXPORT void DwStrncpy(char* aCstrDest, const DwString& aStrSrc, size_t aLen);
+
+DW_EXPORT char* DwStrdup(const DwString& aStr);
 
 #endif
 

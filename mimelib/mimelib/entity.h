@@ -43,26 +43,30 @@ class DwBody;
 //=============================================================================
 //+ Name DwEntity -- Abstract class representing a MIME entity
 //+ Description
-//. RFC-1521 defines an {\it entity} as either a {\it message} or a 
-//. {\it body-part}, both of which have a collection of {\it headers}
-//. and a {\it body}.  
-//. In the MIME++ class hierarchy, an {\it entity} is represented by the
-//. class {\tt DwEntity}.  A {\tt DwEntity} is characterized by the fact
-//. that it contains both a {\tt DwHeaders} and a {\tt DwBody}, just like
-//. an {\it entity} has {\it headers} and a {\it body}.  These contained
-//. objects are the children of a {\tt DwEntity} object.  (See the discussion
-//. in the entry for {\tt DwMessageComponent}.)
+//. RFC-2045 defines an {\it entity} as either a {\it message} or a
+//. {\it body part}, both of which have a collection of headers and
+//. a {\it body}.  In MIME++, an entity is represented by the class
+//. {\tt DwEntity}, which contains both a {\tt DwHeaders} object and
+//. a {\tt DwBody} object.
 //.
-//. Since {\tt DwEntity} is an abstract base class, you may not
-//. instantiate objects of type
-//. {\tt DwEntity}.  Instead, you must instantiate objects of a class
-//. derived from {\tt DwEntity}.  Just as RFC-1521 specifies that both 
-//. {\it messages} and {\it body-parts} are {\it entities}, so also MIME++
-//. provides classes {\tt DwMessage} and {\tt DwBodyPart} as subclasses
-//. of {\tt DwEntity}.
+//. In the tree (broken-down) representation of message, a {\tt DwEntity}
+//. object may be either a root node, having child nodes but no parent
+//. node, or an intermediate node, having both a parent node and child nodes.
+//. A {\tt DwEntity} object that is a root node must also be a {\tt DwMessage}
+//. object.  If a {\tt DwEntity} object is an intermediate node, its parent
+//. must be a {\tt DwBody} object.  The child nodes of a {\tt DwEntity}
+//. object are the {\tt DwHeaders} and {\tt DwBody} objects it contains.
 //.
-//. See also: {\tt DwMessageComponent}, {\tt DwMessage}, {\tt DwBodyPart}
+//. Since {\tt DwEntity} is an abstract base class, you cannot create
+//. instances of it directly.  {\tt DwEntity} has two derived classes,
+//. {\tt DwMessage} and {\tt DwBodyPart}, which are concrete classes.
+//.
+//. To access the contained {\tt DwHeaders} object, use the member function
+//. {\tt Headers()}.  To access the contained {\tt DwBody} object, use the
+//. member function {\tt Body()}.
 //=============================================================================
+// Last updated 1997-08-23
+//+ Noentry ~DwEntity mHeaders mBody _PrintDebugInfo
 
 class DW_EXPORT DwEntity : public DwMessageComponent {
 
@@ -73,64 +77,64 @@ public:
     DwEntity(const DwString& aStr, DwMessageComponent* aParent=0);
     //. The first constructor is the default constructor, which sets the
     //. {\tt DwEntity} object's string representation to the empty string
-    //. and sets its parent to NULL.
+    //. and sets its parent to {\tt NULL}.
     //.
-    //. The second constructor is the copy constructor, which copies the
-    //. string representation from {\tt aEntity} and all of its children.
-    //. The parent of the new {\tt DwEntity} object is set to NULL.
+    //. The second constructor is the copy constructor, which performs
+    //. a deep copy of {\tt aEntity}.
+    //. The parent of the new {\tt DwEntity} object is set to {\tt NULL}.
     //.
     //. The third constructor copies {\tt aStr} to the {\tt DwEntity} 
     //. object's string representation and sets {\tt aParent} as its parent.
     //. The virtual member function {\tt Parse()} should be called immediately
     //. after this constructor in order to parse the string representation.
+    //. Unless it is {\tt NULL}, {\tt aParent} should point to an object of
+    //. a class derived from {\tt DwBody}.
 
     virtual ~DwEntity();
 
     const DwEntity& operator = (const DwEntity& aEntity);
-    //. This is the assignment operator, which follows regular semantics.
+    //. This is the assignment operator, which performs a deep copy of
+    //. {\tt aEntity}.  The parent node of the {\tt DwEntity} object
+    //. is not changed.
 
     virtual void Parse();
     //. This virtual function, inherited from {\tt DwMessageComponent},
-    //. executes the parse method for {\tt DwEntity} objects.
-    //. The parse method parses the string representation of
-    //. the {\tt DwEntity} object into its broken-down representation, which
-    //. consists of {\it headers} and a {\it body}.  The broken-down
-    //. representation is implemented as contained {\tt DwHeaders} and
-    //. {\tt DwBody} objects, which are the children of a {\tt DwEntity}.
-    //. (See the discussion in the entry for {\tt DwMessageComponent}.)
-    //. After the {\it headers} and {\it body} are parsed, this member function
-    //. calls the {\tt Parse()} member function of the contained 
-    //. {\tt DwHeaders} and {\tt DwBody} objects; you do not have to explicitly
-    //. parse the {\tt DwHeaders} and {\tt DwBody} objects.
+    //. executes the parse method for {\tt DwEntity} objects.  The parse
+    //. method creates or updates the broken-down representation from the
+    //. string representation.  For {\tt DwEntity} objects, the parse
+    //. method parses the string representation and sets the values of
+    //. the {\tt DwHeaders} and {\tt DwBody} objects it contains. This
+    //. member function also calls the {\tt Parse()} member functions
+    //. of the contained {\tt DwHeaders} and {\tt DwBody} objects.
     //.
-    //. This member function must be called after the string representation is
-    //. set or modified, and before the {\tt headers} or {\tt body] of the entity are
-    //. accessed.
+    //. You should call this member function after you set or modify the
+    //. string representation, and before you access either the contained
+    //. headers or body.
+    //.
+    //. This function clears the is-modified flag.
 
     virtual void Assemble();
     //. This virtual function, inherited from {\tt DwMessageComponent},
-    //. executes the assemble method for {\tt DwEntity} objects.
-    //. The assemble method assembles the
-    //. broken-down representation of the {\tt DwEntity} object into its
-    //. string representation.  The broken-down representation consists
-    //. of {\it headers} and a {\it body}, and is implemented
-    //. as contained {\tt DwHeaders} and
-    //. {\tt DwBody} objects, which are the children of a {\tt DwEntity}.
-    //. (See the discussion in the entry for {\tt DwMessageComponent}.)
-    //. Before the string representation is assembled, this member function
-    //. will call the {\tt Assemble()} member function of the contained
-    //. {\tt DwHeaders} and {\tt DwBody} objects; you do not have to explicitly
-    //. assemble the {\tt DwHeaders} and {\tt DwBody} objects.
+    //. executes the assemble method for {\tt DwEntity} objects.  The
+    //. assemble method creates or updates the string representation from
+    //. the broken-down representation.  In more concrete terms, the
+    //. assemble method builds the string representation from the string
+    //. representations of the contained {\tt DwHeaders} and {\tt DwBody}
+    //. objects.  This member function calls the {\tt Assemble()} member
+    //. functions of its {\tt DwHeaders} and {\tt DwBody} objects.
     //.
-    //. This member function should be called after
-    //. any component of the broken-down representation is set or changed
-    //. and before the string representation is retrieved.
+    //. You should call this member function after you modify either the
+    //. contained headers or body, and before you retrieve the string 
+    //. representation.
+    //.
+    //. This function clears the is-modified flag.
 
     DwHeaders& Headers() const;
-    //. This function returns the {\tt DwHeaders} contained by this object.
+    //. This function returns the {\tt DwHeaders} object contained by
+    //. this object.
 
     DwBody& Body() const;
-    //. This function returns the {\tt DwBody} contained by this object.
+    //. This function returns the {\tt DwBody} object contained by this object.
 
 protected:
 

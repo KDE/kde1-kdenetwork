@@ -189,15 +189,16 @@ void DwMediaType::SetSubtypeStr(const DwString& aStr)
 
 const DwString& DwMediaType::Boundary() const
 {
+    // Implementation note: this member function is const, which
+    // forbids us from assigning to mBoundaryStr.  The following
+    // trick gets around this.  (ANSI implementations could use the
+    // "mutable" declaration).
+    DwMediaType* _this = (DwMediaType*) this;
+    _this->mBoundaryStr = "";
     DwParameter* param = mFirstParameter;
     while (param) {
         if (DwStrcasecmp(param->Attribute(), "boundary") == 0) {
             // Boundary parameter found. Return its value.
-            // Implementation note: this member function is const, which
-            // forbids us from assigning to mBoundaryStr.  The following
-            // trick gets around this.  (ANSI implementations could use the
-            // "mutable" declaration).
-            DwMediaType* _this = (DwMediaType*) this;
             _this->mBoundaryStr = param->Value();
             break;
         }
@@ -237,28 +238,70 @@ void DwMediaType::CreateBoundary(unsigned aLevel)
     if (aLevel > 0) {
         int n = aLevel / 100;
         if (n != 0) {
-            buf[pos++] = (n % 10) + '0';
+            buf[pos++] = (char) ((n % 10) + '0');
         }
         n = aLevel / 10;
         if (n != 0) {
-           buf[pos++] = (n % 10) + '0';
+           buf[pos++] = (char) ((n % 10) + '0');
         }
         n = aLevel;
-        buf[pos++] = (n % 10) + '0';
+        buf[pos++] = (char) ((n % 10) + '0');
     }
     buf[pos++] = '=';
     buf[pos++] = '_';
     while (pos < 39) {
         int ch = rand() % 52;
         if (ch < 26) {
-            buf[pos++] = 'A' + ch;
+            buf[pos++] = (char) ('A' + ch);
         }
         else {
-            buf[pos++] = 'a' + ch - 26;
+            buf[pos++] = (char) ('a' + ch - 26);
         }
     }
     buf[pos] = 0;
     SetBoundary(buf);
+}
+
+
+const DwString& DwMediaType::Name() const
+{
+    // Implementation note: this member function is const, which
+    // forbids us from assigning to mNameStr.  The following
+    // trick gets around this.  (ANSI implementations could use the
+    // "mutable" declaration).
+    DwMediaType* _this = (DwMediaType*) this;
+    _this->mNameStr = "";
+    DwParameter* param = mFirstParameter;
+    while (param) {
+        if (DwStrcasecmp(param->Attribute(), "name") == 0) {
+            // Name parameter found. Return its value.
+            _this->mNameStr = param->Value();
+            break;
+        }
+        param = param->Next();
+    }
+    return mNameStr;
+}
+
+
+void DwMediaType::SetName(const DwString& aStr)
+{
+    mNameStr = aStr;
+    // Search for name parameter in parameter list.  If found, set its
+    // value.
+    DwParameter* param = mFirstParameter;
+    while (param) {
+        if (DwStrcasecmp(param->Attribute(), "name") == 0) {
+            param->SetValue(mNameStr);
+            return;
+        }
+        param = param->Next();
+    }
+    // Name parameter not found. Add it.
+    param = DwParameter::NewParameter("", 0);
+    param->SetAttribute("name");
+    param->SetValue(aStr);
+    AddParameter(param);
 }
 
 

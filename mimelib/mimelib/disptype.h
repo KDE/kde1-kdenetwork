@@ -40,35 +40,26 @@
 class DwParameter;
 
 //=============================================================================
-//+ Name DwDispositionType -- Class representing a MIME content-disposition field-body
+//+ Name DwDispositionType -- Class representing a MIME content-disposition field body
 //+ Description
-//. {\tt DwDispositionType} represents a {\it field-body} for the 
-//. Content-Disposition header {\it field} as described in RFC-1806.  The
-//. parse method for {\tt DwDispositionType} extracts the
-//. {\it disposition-type} and optional {\it filename-parm} from the string
-//. representation.  The {\it filename-parm} is represented by a reference
-//. to a {\tt DwParameter} object.  Since RFC-1806 specifically states that
-//. new parameters may be added in the future, a {\tt DwDispositionType}
-//. object actually contains a list of {\tt DwParameters} objects.
+//. {\tt DwDispositionType} represents a field body for the 
+//. Content-Disposition header field as described in RFC-1806.  This header
+//. field specifies whether the content of a message or body part should
+//. be displayed automatically to a user.  A disposition-type of inline
+//. indicates that the content should be displayed; a disposition-type
+//. of attachment indicates that it should not be.  RFC-1806 specifies
+//. that a filename parameter may be optionally included in the field
+//. body; the filename parameter suggests a file name for saving the
+//. message or body part's content.
 //.
-//. {\tt DwContentType} provides a member function {\tt DispositionType()}
-//. to retrieve the {\it disposition-type} as an enumerated value and a
-//. member function {\tt SetDispositionType()} to set the 
-//. {\it disposition-type} from an enumerated value.  Enumerated values are
-//. defined only for the standard types.  For standard or non-standard types,
-//. you can get or set the {\it disposition-type} using the member functions
-//. {\tt DispositionTypeStr()} and {\tt SetDispositionTypeStr()}.  The 
-//. member function {\tt FirstParameter()} returns the first
-//. {\tt DwParameter} object, if any, contained by the
-//. {\tt DwDispositionType} object, or NULL if no {\tt DwParameter} objects
-//. are present.  For the special case of the filename parameter,
-//. {\tt DwDispositionType} provides convenience functions {\tt Filename()}
-//. and {\tt SetFilename()} to get or set it.
+//. {\tt DwDispositionType} provides convenience functions that allow you
+//. to set or get the disposition-type as an enumerated value, to set or
+//. get the filename parameter, or to manage a list of parameters.
 //.
 //. RFC-1806 specifically states that the Content-Disposition header field
 //. is experimental and not a proposed standard.
 //=============================================================================
-
+// Last modified 1997-08-23
 //+ Noentry ~DwDispositionType _AddParameter EnumToStr StrToEnum
 //+ Noentry DeleteParameterList CopyParameterList mDispositionType
 //+ Noentry mDispositionTypeStr mFilenameStr mFirstParameter
@@ -84,23 +75,26 @@ public:
     DwDispositionType(const DwString& aStr, DwMessageComponent* aParent=0);
     //. The first constructor is the default constructor, which sets the
     //. {\tt DwDispositionType} object's string representation to the empty
-    //. string and sets its parent to NULL.
+    //. string and sets its parent to {\tt NULL}.
     //.
-    //. The second constructor is the copy constructor, which copies the
-    //. string representation from {\tt aDispType} and all of its children.
-    //. The parent of the new {\tt DwDispositionType} object is set to NULL.
+    //. The second constructor is the copy constructor, which performs
+    //. deep copy of {\tt aDispType}.
+    //. The parent of the new {\tt DwDispositionType} object is set to
+    //. {\tt NULL}.
     //.
     //. The third constructor copies {\tt aStr} to the {\tt DwDispositionType}
     //. object's string representation and sets {\tt aParent} as its parent.
     //. The virtual member function {\tt Parse()} should be called immediately
     //. after this constructor in order to parse the string representation.
-    //. Unless it is NULL, {\tt aParent} should point to an object of a class
-    //. derived from {\tt DwField}.
+    //. Unless it is {\tt NULL}, {\tt aParent} should point to an object of
+    //. a class derived from {\tt DwField}.
 
     virtual ~DwDispositionType();
 
     const DwDispositionType& operator = (const DwDispositionType& aDispType);
-    //. This is the assignment operator, which follows regular semantics.
+    //. This is the assignment operator, which performs a deep copy of
+    //. {\tt aDispType}.  The parent node of the {\tt DwDipositionType}
+    //. object is not changed.
 
     virtual void Parse();
     //. This virtual function, inherited from {\tt DwMessageComponent},
@@ -108,6 +102,8 @@ public:
     //. It should be called immediately after the string representation
     //. is modified and before the parts of the broken-down
     //. representation are accessed.
+    //.
+    //. This function clears the is-modified flag.
 
     virtual void Assemble();
     //. This virtual function, inherited from {\tt DwMessageComponent},
@@ -117,43 +113,45 @@ public:
     //. its broken-down representation.  It will be called
     //. automatically for this object by the parent object's
     //. {\tt Assemble()} member function if the is-modified flag is set.
+    //.
+    //. This function clears the is-modified flag.
 
     virtual DwMessageComponent* Clone() const;
     //. This virtual function, inherited from {\tt DwMessageComponent},
     //. creates a new {\tt DwDispositionType} object on the free store that
     //. has the same value as this {\tt DwDispositionType} object.  The basic
-    //. idea is that of a ``virtual copy constructor.''
+    //. idea is that of a virtual copy constructor.
 
     int DispositionType() const;
-    //. Returns the {\it disposition-type} as an enumerated value.
-    //. Valid enumerated types, which are defined in dw_mime.h, include
-    //. eDispTypeNull, eDispTypeUnknown, eDispTypeInline, and
-    //. eDispTypeAttachment.
+    //. Returns the disposition-type as an enumerated value. Valid
+    //. enumerated types, which are defined in enum.h, include
+    //. {\tt DwMime::kDispTypeNull}, {\tt DwMime::kDispTypeUnknown},
+    //. {\tt DwMime::kDispTypeInline}, and {\tt DwMime::kDispTypeAttachment}.
 
     void SetDispositionType(int aType);
-    //. Sets the {\it disposition-type} from the enumerated value {\tt aType}.
-    //. Valid enumerated types, which are defined in dw_mime.h, include
-    //. eDispTypeNull, eDispTypeUnknown, eDispTypeInline, and
-    //. eDispTypeAttachment.
+    //. Sets the disposition-type from the enumerated value {\tt aType}.
+    //. Valid enumerated types, which are defined in enum.h, include
+    //. {\tt DwMime::kDispTypeNull}, {\tt DwMime::kDispTypeUnknown},
+    //. {\tt DwMime::kDispTypeInline}, and {\tt DwMime::kDispTypeAttachment}.
 
     const DwString& DispositionTypeStr() const;
-    //. Returns the {\it disposition-type} as a string.
+    //. Returns the disposition-type as a string.
 
     void SetDispositionTypeStr(const DwString& aStr);
-    //. Sets the {\it disposition-type} from a string.
+    //. Sets the disposition-type from a string.
 
     const DwString& Filename() const;
-    //. This convenience function returns the {\it value} from the
-    //. {\it filename-parm} (filename parameter), if present.  If no
-    //. {\it filename-parm} is present, the empty string is returned.
+    //. This convenience function returns the value from the filename
+    //. parameter, if present.  If no filename parameter is present,
+    //. an empty string is returned.
 
     void SetFilename(const DwString& aStr);
-    //. This convenience function sets the {\it value} of the
-    //. {\it filename-parm} (filename parameter) to {\tt aStr}.
+    //. This convenience function sets the value of the filename parameter
+    //. to {\tt aStr}.
 
     DwParameter* FirstParameter() const;
     //. Returns the first {\tt DwParameter} object in the list managed by
-    //. this {\tt DwDispositionType} object, or NULL if no parameters are
+    //. this {\tt DwDispositionType} object, or {\tt NULL} if no parameters are
     //. present.  Use {\tt DwParameter::Next()} to iterate through the list.
 
     void AddParameter(DwParameter* aParam);
@@ -163,7 +161,7 @@ public:
     static DwDispositionType* NewDispositionType(const DwString& aStr,
         DwMessageComponent* aParent);
     //. Creates a new {\tt DwDispositionType} object on the free store.
-    //. If the static data member {\tt sNewDispositionType} is NULL, 
+    //. If the static data member {\tt sNewDispositionType} is {\tt NULL}, 
     //. this member function will create a new {\tt DwDispositionType}
     //. and return it.  Otherwise, {\tt NewDispositionType()} will call
     //. the user-supplied function pointed to by {\tt sNewDispositionType},
@@ -173,14 +171,14 @@ public:
     //+ Var sNewDispositionType
     static DwDispositionType* (*sNewDispositionType)(const DwString&,
         DwMessageComponent*);
-    //. If {\tt sNewDispositionType} is not NULL, it is assumed to point
-    //. to a  user-supplied function that returns an object from a class
-    //. derived from {\tt DwDispositionType}.
+    //. If {\tt sNewDispositionType} is not {\tt NULL}, it is assumed to
+    //. point to a  user-supplied function that returns an object from a
+    //. class derived from {\tt DwDispositionType}.
 
 protected:
 
     void _AddParameter(DwParameter* aParam);
-    //. Add parameter.  Don't set is-modified flag.
+    //. Adds a parameter to the list without setting the is-modified flag.
 
     virtual void EnumToStr();
     virtual void StrToEnum();

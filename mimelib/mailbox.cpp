@@ -34,6 +34,8 @@
 #include <mimelib/mailbox.h>
 #include <mimelib/token.h>
 
+void RemoveCrAndLf(DwString& aStr);
+
 const char* const DwMailbox::sClassName = "DwMailbox";
     
 
@@ -162,17 +164,17 @@ void DwMailbox::SetDomain(const DwString& aDomain)
 void DwMailbox::Parse()
 {
     mIsModified = 0;
-    DwString space(" ");
-    DwString firstPhrase("");
-    int isFirstPhraseNull = 1;
-    DwString lastComment("");
     DwString emptyString("");
+    DwString space(" ");
+    int isFirstPhraseNull = 1;
+    int isSimpleAddress = 1;
+    DwString firstPhrase(emptyString);
+    DwString lastComment(emptyString);
     mRoute     = emptyString;
     mLocalPart = emptyString;
     mDomain    = emptyString;
     mFullName  = emptyString;
     DwRfc822Tokenizer tokenizer(mString);
-    int isSimpleAddress = 1;
     int ch;
     
     enum {
@@ -367,6 +369,11 @@ void DwMailbox::Parse()
     else {
         mIsValid = 0;
     }
+
+    // Remove CR or LF from local-part or full name
+
+    RemoveCrAndLf(mFullName);
+    RemoveCrAndLf(mLocalPart);
 }
 
 
@@ -433,4 +440,40 @@ void DwMailbox::CheckInvariants() const
     mLocalPart.CheckInvariants();
     mDomain.CheckInvariants();
 #endif // defined(DW_DEBUG_VERSION)
+}
+
+
+void RemoveCrAndLf(DwString& aStr)
+{
+    // Do a quick check to see if at least one CR or LF is present
+
+    size_t n = aStr.find_first_of("\r\n");
+    if (n == DwString::npos)
+        return;
+
+    // At least one CR or LF is present, so copy the string
+
+    const DwString& in = aStr;
+    size_t inLen = in.length();
+    DwString out;
+    out.reserve(inLen);
+    int lastChar = 0;
+    size_t i = 0;
+    while (i < inLen) {
+        int ch = in[i];
+        if (ch == (int) '\r') {
+            out += ' ';
+        }
+        else if (ch == (int) '\n') {
+            if (lastChar != (int) '\r') {
+                out += ' ';
+            }
+        }
+        else {
+            out += (char) ch;
+        }
+        lastChar = ch;
+        ++i;
+    }
+    aStr = out;
 }

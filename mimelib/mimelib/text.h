@@ -38,13 +38,15 @@
 #endif
 
 //=============================================================================
-//+ Name DwText -- Class representing text in a MIME header field-body
+//+ Name DwText -- Class representing text in a RFC-822 header field-body
 //+ Description
-//. {\tt DwText} represents an unstructured {\it field-body} in a {\it header}
-//. {\it field}.
+//. {\tt DwText} represents an unstructured field body in a header field.
 //. It roughly corresponds to the {\it text} element of the BNF grammar
 //. defined in RFC-822.
 //=============================================================================
+// Last modified 1997-07-30
+//+ Noentry ~DwText sClassName _PrintDebugInfo
+
 
 class DW_EXPORT DwText : public DwFieldBody {
 
@@ -71,7 +73,7 @@ public:
     virtual ~DwText();
 
     const DwText& operator = (const DwText& aText);
-    //. This is the assignment operator, which follows regular semantics.
+    //. This is the assignment operator.
 
     virtual void Parse();
     //. This virtual member function is inherited from
@@ -83,6 +85,8 @@ public:
     //.
     //. Note, however, that this function should still be called consistently,
     //. since a subclass of {\tt DwText} may implement a parse method.
+    //.
+    //. This function clears the is-modified flag.
 
     virtual void Assemble();
     //. This virtual member function is inherited from
@@ -94,6 +98,8 @@ public:
     //.
     //. Note, however, that this function should still be called consistently,
     //. since a subclass of {\tt DwText} may implement an assemble method.
+    //.
+    //. This function clears the is-modified flag.
 
     virtual DwMessageComponent* Clone() const;
     //. This virtual function, inherited from {\tt DwMessageComponent},

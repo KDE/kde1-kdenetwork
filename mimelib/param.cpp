@@ -173,6 +173,18 @@ void DwParameter::Parse()
         }
         ++tokenizer;
     }
+    // Some nonstandard MIME implementations use single quotes to quote
+    // the boundary string.  This is incorrect, but we will try to detect
+    // it and work with it.
+    //
+	// If the first character and last character of the boundary string
+    // are single quote, strip them off.
+    if (DwStrcasecmp(mAttribute, "boundary") == 0) {
+        size_t len = mValue.length();
+        if (len > 2 && mValue[0] == '\'' && mValue[len-1] == '\'') {
+            mValue = mValue.substr(1, len-2);
+        }
+    }
 }
 
 

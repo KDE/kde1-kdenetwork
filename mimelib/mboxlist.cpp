@@ -105,7 +105,7 @@ const DwMailboxList& DwMailboxList::operator = (const DwMailboxList& aList)
         CopyList(firstMailbox);
     }
     if (mParent && mIsModified) {
-    mParent->SetModified();
+        mParent->SetModified();
     }
     return *this;
 }

@@ -31,19 +31,21 @@
 int main()
 {
     // Initialize the library
+
     DwInitialize();
 
     // Read message from file
-    char* buff = new char[10000];
-    int buffPos = 0;
-    ifstream istrm("test04.txt");
-    while (istrm) {
-        char ch;
-        istrm.get(ch);
-        buff[buffPos++] = ch;
-        if (buffPos == 10000) break;
+
+    DwString messageStr = "";
+    DwString line;
+    ifstream istrm("exampl04.txt");
+    while (DwTrue) {
+        getline(istrm, line);
+        if (istrm.eof()) {
+            break;
+        }
+        messageStr += line + DW_EOL;
     }
-    DwString messageStr(buff, 10000, 0, buffPos);
     istrm.close();
     
     // Create a DwMessage and parse it.  The DwMessage should be created on

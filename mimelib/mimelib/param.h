@@ -39,11 +39,19 @@
 
 
 //=============================================================================
-//+ Name DwParameter -- Class representing a MIME Content-Type parameter
+//+ Name DwParameter -- Class representing a MIME field body parameter
 //+ Description
 //. {\tt DwParameter} represents the {\it parameter} component of the
-//. Content-Type header field as described in RFC-1521.
+//. Content-Type header field as described in RFC-2045.  A parameter
+//. consists of an attribute/value pair.  {\tt DwParameter} has member
+//. functions for getting or setting a parameter's attribute and value.
+//.
+//. A {\tt DwParameter} object may be included in a list of {\tt DwParameter}
+//. objects.  You can get the next {\tt DwParameter} object in the list by
+//. calling the member function {\tt Next()}.
 //=============================================================================
+// Last modified 1997-08-13
+//+ Noentry ~DwParameter _PrintDebugInfo
 
 class DW_EXPORT DwParameter : public DwMessageComponent {
 
@@ -59,7 +67,7 @@ public:
     //. and sets its parent to NULL.
     //.
     //. The second constructor is the copy constructor, which copies the
-    //. string representation from {\tt aParam} and all of its children.
+    //. string representation, attribute, and value from {\tt aParam}.
     //. The parent of the new {\tt DwParameter} object is set to NULL.
     //.
     //. The third constructor copies {\tt aStr} to the {\tt DwParameter}
@@ -72,7 +80,7 @@ public:
     virtual ~DwParameter();
 
     const DwParameter& operator = (const DwParameter& aParam);
-    //. This is the assignment operator, which follows regular semantics.
+    //. This is the assignment operator.
 
     virtual void Parse();
     //. This virtual function, inherited from {\tt DwMessageComponent},
@@ -97,16 +105,16 @@ public:
     //. a ``virtual copy constructor.''
 
     const DwString& Attribute() const;
-    //. Returns the {\it attribute} contained by this {\it parameter}.
+    //. Returns the attribute contained by this parameter.
 
     void SetAttribute(const DwString& aAttribute);
-    //. Sets the {\it attribute} contained by this {\it parameter}.
+    //. Sets the attribute contained by this parameter.
 
     const DwString& Value() const;
-    //. Returns the {\it value} contained by this {\it parameter}.
+    //. Returns the value contained by this parameter.
 
     void SetValue(const DwString& aValue);
-    //. Sets the {\it value} contained by this {\it parameter}.
+    //. Sets the value contained by this parameter.
 
     DwParameter* Next() const ;
     //. Returns the next {\tt DwParameter} object in the list.

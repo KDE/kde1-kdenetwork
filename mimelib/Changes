@@ -2,6 +2,34 @@
 MIME++ Change Log
 =================
 
+September 1, 1997
+
+o Convenience member functions added to DwMediaType to access the name
+  parameter
+
+o Added configuration option to typedef DwBool to bool
+
+o Compiles as a DLL under Borland C++ 5.0 (as well as VC++ 4 and 5).  I am
+  not completely convinced that I got the correct command line switches for
+  BCC32.  If you use Borland, you might want to double check the makefile.
+
+o Will handle multipart boundary parameters from nonstandard MIME
+  implementations that quote the boundary parameters with single quotes.
+  (This is in violation of the MIME++ standard.)
+
+o Fixed a bug where CRLF would be included in the full name part of a
+  mailbox if the name was quoted and split across two lines
+
+o DwBinhex class for performing conversion to and from Binhex 4.0 format
+  for Macintosh files.
+
+o Much of the documentation has been rewritten or brought up to date.
+
+o Minor changes to DwUuencode.
+
+o The deprecated member functions in DwString are no longer available.
+
+
 July 26, 1997
 
 o New classes in this release:

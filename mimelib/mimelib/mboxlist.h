@@ -41,12 +41,18 @@ class DwGroup;
 
 
 //=============================================================================
-//+ Name DwMailboxList -- Class for containing DwMailbox objects
+//+ Name DwMailboxList -- Class representing a list of RFC-822 mailboxes
 //+ Description
 //. {\tt DwMailboxList} represents a list of {\it mailboxes} as described
-//. in RFC-822.
+//. in RFC-822.  In MIME++, {\tt DwMailboxList} is a container for objects
+//. of type {\tt DwMailbox}, and it contains various member functions to
+//. manage its contained objects.  {\tt DwAddressList} is also a
+//. {\tt DwFieldBody}.  This reflects the fact that certain RFC-822 header
+//. fields, such as the "From" header field, have a list of mailboxes as
+//. their field bodies.
 //=============================================================================
-
+// Last modified 1997-08-30
+//+ Noentry ~DwMailboxList _PrintDebugInfo
 
 class DW_EXPORT DwMailboxList : public DwFieldBody {
 
@@ -57,50 +63,69 @@ public:
     DwMailboxList(const DwString& aStr, DwMessageComponent* aParent=0);
     //. The first constructor is the default constructor, which sets the
     //. {\tt DwMailboxList} object's string representation to the empty string
-    //. and sets its parent to NULL.
+    //. and sets its parent to {\tt NULL}.
     //.
     //. The second constructor is the copy constructor, which copies the
-    //. string representation and all {\tt DwMailbox}es from {\tt aList}.
-    //. The parent of the new {\tt DwMailboxList} object is set to NULL.
+    //. string representation and all {\tt DwMailbox} objects from {\tt aList}.
+    //. The parent of the new {\tt DwMailboxList} object is set to {\tt NULL}.
     //.
     //. The third constructor copies {\tt aStr} to the {\tt DwMailboxList}
     //. object's string representation and sets {\tt aParent} as its parent.
     //. The virtual member function {\tt Parse()} should be called immediately
     //. after this constructor in order to parse the string representation.
-    //. Unless it is NULL, {\tt aParent} should point to an object of a class
-    //. derived from {\tt DwField}.
+    //. Unless it is {\tt NULL}, {\tt aParent} should point to an object of
+    //. a class derived from {\tt DwField}.
 
     virtual ~DwMailboxList();
 
     const DwMailboxList& operator = (const DwMailboxList& aList);
-    //. This is the assignment operator, which follows regular semantics.
+    //. This is the assignment operator, which performs a deep copy of
+    //. {\tt aList}.  The parent node of the {\tt DwMailboxList} object
+    //. is not changed.
 
     virtual void Parse();
     //. This virtual function, inherited from {\tt DwMessageComponent},
-    //. executes the parse method for {\tt DwMailboxList} objects.
-    //. It should be called immediately after the string representation
-    //. is modified and before the parts of the broken-down
-    //. representation are accessed.
+    //. executes the parse method for {\tt DwMailboxList} objects. The parse
+    //. method creates or updates the broken-down representation from the
+    //. string representation.  For {\tt DwMailboxList} objects, the parse
+    //. method parses the string representation to create a list of
+    //. {\tt DwMailbox} objects.  This member function also calls the
+    //. {\tt Parse()} member function of each {\tt DwMailbox} object in
+    //. its list.
+    //.
+    //. You should call this member function after you set or modify the
+    //. string representation, and before you access any of the contained
+    //. {\tt DwMailbox} objects.
+    //.
+    //. This function clears the is-modified flag.
 
     virtual void Assemble();
     //. This virtual function, inherited from {\tt DwMessageComponent},
-    //. executes the assemble method for {\tt DwMailboxList} objects.
-    //. It should be called whenever one of the object's attributes
-    //. is changed in order to assemble the string representation from
-    //. its broken-down representation.  It will be called
-    //. automatically for this object by the parent object's
-    //. {\tt Assemble()} member function if the is-modified flag is set.
+    //. executes the assemble method for {\tt DwMailboxList} objects. The
+    //. assemble method creates or updates the string representation from
+    //. the broken-down representation.  For {\tt DwMailboxList} objects,
+    //. the assemble method builds the string representation from its list
+    //. of {\tt DwMailbox} objects. Before it builds the string representation
+    //. for the {\tt DwMailboxList} object, this function first calls the
+    //. {\tt Assemble()} member function of each {\tt DwMailbox} object
+    //. in its list.
+    //.
+    //. You should call this member function after you set or modify any
+    //. of the contained {\tt DwMailbox} objects, and before you retrieve
+    //. the string representation.
+    //.
+    //. This function clears the is-modified flag.
 
     virtual DwMessageComponent* Clone() const;
     //. This virtual function, inherited from {\tt DwMessageComponent},
     //. creates a new {\tt DwMailboxList} on the free store that has the same
     //. value as this {\tt DwMailboxList} object.  The basic idea is that of
-    //. a ``virtual copy constructor.''
+    //. a virtual copy constructor.
 
     DwMailbox* FirstMailbox() const;
     //. Gets the first {\tt DwMailbox} object in the list.  
     //. Use the member function {\tt DwMailbox::Next()} to iterate.  
-    //. Returns NULL if the list is empty.
+    //. Returns {\tt NULL} if the list is empty.
 
     void Add(DwMailbox* aMailbox);
     //. Adds {\tt aMailbox} to the end of the list of {\tt DwMailbox} objects
@@ -109,16 +134,16 @@ public:
     void Remove(DwMailbox* aMailbox);
     //. Removes {\tt aMailbox} from the list of {\tt DwMailbox} objects
     //. maintained by this {\tt DwMailboxList} object.  The {\tt DwMailbox}
-    //. object is not freed by this member function.
+    //. object is not deleted by this member function.
 
     void DeleteAll();
-    //. Removes and frees all {\tt DwMailbox} objects from the list
+    //. Removes and deletes all {\tt DwMailbox} objects from the list
     //. maintained by this {\tt DwMailboxList} object.
 
     static DwMailboxList* NewMailboxList(const DwString& aStr,
         DwMessageComponent* aParent);
     //. Creates a new {\tt DwMailboxList} object on the free store.
-    //. If the static data member {\tt sNewMailboxList} is NULL, 
+    //. If the static data member {\tt sNewMailboxList} is {\tt NULL}, 
     //. this member function will create a new {\tt DwMailboxList}
     //. and return it.  Otherwise, {\tt NewMailboxList()} will call
     //. the user-supplied function pointed to by {\tt sNewMailboxList},
@@ -128,17 +153,17 @@ public:
     //+ Var sNewMailboxList
     static DwMailboxList* (*sNewMailboxList)(const DwString&,
         DwMessageComponent*);
-    //. If {\tt sNewMailboxList} is not NULL, it is assumed to point to a 
-    //. user-supplied function that returns an object from a class derived from 
-    //. {\tt DwMailboxList}.
+    //. If {\tt sNewMailboxList} is not {\tt NULL}, it is assumed to point
+    //. to a user-supplied function that returns an object from a class
+    //. derived from {\tt DwMailboxList}.
 
 protected:
 
     DwMailbox* mFirstMailbox;
-    // points to first {\tt DwMailbox} object in list
+    //. Points to first {\tt DwMailbox} object in list.
 
     void _AddMailbox(DwMailbox* aMailbox);
-    //. Adds a mailbox, but does not set the is-modified flag
+    //. Adds a mailbox, but does not set the is-modified flag.
 
     void _DeleteAll();
     //. Removes and deletes all {\tt DwMailbox} objects from the list

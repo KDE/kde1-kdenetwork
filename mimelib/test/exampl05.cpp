@@ -35,7 +35,7 @@ int main()
 
     DwInitialize();
 
-    // Create a MultipartMessage
+    // Create a MessageWithAttachements
 
     MessageWithAttachments msg;
 
@@ -47,28 +47,28 @@ int main()
 
     DwUint32 t = (DwUint32) time(NULL);
     msg.SetDate(t);
-    msg.SetFrom("Alfred <alfred@batcave.us>");
-    msg.SetTo("Bruce Wayne <bwayne@mega.com>");
-    msg.SetCc("Robin");
-    msg.SetBcc("Penguin");
-    msg.SetSubject("Here's a multipart message");
+    msg.SetFrom("Emily Postnews <emily.postnews@usenet.com>");
+    msg.SetTo("verbose@noisy");
+    msg.SetCc("forgetful@myvax");
+    msg.SetBcc("eager@beaver.dam");
+    msg.SetSubject("Re: How long should my signature be?");
 
     // Add text
     
-    DwString text = "Some files are attached\n";
+    DwString text = "Read the attached files\n";
     msg.SetText(text);
 
     // Add 7bit attachment
 
-    msg.Attach7bitFile("test05.txt");
+    msg.Attach7bitFile("exampl05.txt");
 
     // Add 8bit attachment
 
-    msg.Attach8bitFile("test05.txt");
+    msg.Attach8bitFile("exampl05.txt");
 
     // Add binary attachment
 
-    msg.AttachBinaryFile("test05.txt");
+    msg.AttachBinaryFile("exampl05.txt");
 
     // Write it to a file
 

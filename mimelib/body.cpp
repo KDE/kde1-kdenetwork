@@ -301,7 +301,7 @@ DwBody::DwBody(const DwBody& aBody)
     const DwMessage* message = aBody.mMessage;
     if (message) {
         DwMessage* msg = (DwMessage*) message->Clone();
-        _AddMessage(msg);
+        _SetMessage(msg);
     }
     mClassId = kCidBody;
     mClassName = sClassName;
@@ -348,7 +348,7 @@ const DwBody& DwBody::operator = (const DwBody& aBody)
     const DwMessage* message = aBody.Message();
     if (message) {
         DwMessage* msg = (DwMessage*) message->Clone();
-        _AddMessage(msg);
+        _SetMessage(msg);
     }
     if (mParent) {
         mParent->SetModified();
@@ -457,9 +457,9 @@ DwMessage* DwBody::Message() const
 }
 
 
-void DwBody::AddMessage(DwMessage* aMessage)
+void DwBody::SetMessage(DwMessage* aMessage)
 {
-    _AddMessage(aMessage);
+    _SetMessage(aMessage);
     SetModified();
 }
 
@@ -479,9 +479,12 @@ void DwBody::_AddBodyPart(DwBodyPart* aPart)
 }
 
 
-void DwBody::_AddMessage(DwMessage* aMessage)
+void DwBody::_SetMessage(DwMessage* aMessage)
 {
     aMessage->SetParent(this);
+    if (mMessage && mMessage != aMessage) {
+        delete mMessage;
+    }
     mMessage = aMessage;
 }
 

@@ -49,7 +49,8 @@ libmimelib_la_SOURCES = \
     string.cpp \
     text.cpp \
     token.cpp \
-    uuencode.cpp
+    uuencode.cpp \
+    binhex.cpp
 
 mimelib_headers = \
    address.h \
@@ -84,7 +85,8 @@ mimelib_headers = \
    text.h \
    token.h \
    utility.h \
-   uuencode.h
+   uuencode.h \
+   binhex.h
 
 CXXFLAGS = -D$(LIBVERSION)  @CXXFLAGS@
 

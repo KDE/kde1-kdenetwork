@@ -28,7 +28,6 @@
 #include <mimelib/debug.h>
 #include <string.h>
 #include <mimelib/boyermor.h>
-#include <mimelib/string.h>
 
 
 DwBoyerMoore::DwBoyerMoore(const char* aCstr)
@@ -71,9 +70,9 @@ void DwBoyerMoore::_Assign(const char* aPat, size_t aPatLen)
     // Initialize the jump table for Boyer-Moore-Horspool algorithm
     size_t i;
     for (i=0; i < 256; ++i)
-        mSkipAmt[i] = mPatLen;
+        mSkipAmt[i] = (unsigned char) mPatLen;
     for (i=0; i < mPatLen-1; ++i)
-        mSkipAmt[(unsigned)mPat[i]] = mPatLen - i - 1;
+        mSkipAmt[(unsigned)mPat[i]] = (unsigned char) (mPatLen - i - 1);
 }
 
 

@@ -42,29 +42,35 @@ class DwParameter;
 //=============================================================================
 //+ Name DwMediaType -- Class representing a MIME media-type
 //+ Description
-//. {\tt DwMediaType} represents a {\it field-body} for the Content-Type
-//. header field as described in RFC-2045.  (The term {\it media-type}
-//. does not appear in RFC-2045 -- it was borrowed from RFC-2068, which
-//. describes HTTP.)  The parse method for
-//. {\tt DwMediaType} extracts the type and subtype from the string
-//. representation and sets the corresponding attributes in the
-//. {\tt DwMediaType} object.  It also creates a list of {\tt DwParameter}
-//. objects, which are children of the {\tt DwMediaType} object.
-//. {\tt DwMediaType} provides methods to set or get its type and
-//. subtype attributes, plus methods to manage its list of {\tt DwParameter}
-//. objects.
+//. {\tt DwMediaType} represents a field body for the Content-Type header
+//. field as described in RFC-2045. This field body specifies the kind of
+//. data contained in the body of a message or a body part.  A media type
+//. is described by two keywords: a primary type (or just {\it type}) and
+//. a {\it subtype}.  RFC-2046 specifies the seven primary types text,
+//. multipart, message, image, audio, video, and application.  RFC-2077
+//. adds the new primary type model.
+//.
+//. {\tt DwMediaType} has member functions that allow you to set or get
+//. the type and subtype as either enumerated values or as strings.  It
+//. also contains a list of {\tt DwParameter} objects that represent the
+//. parameters of the field body.  You can use convenience functions to
+//. directly access the boundary parameter of a multipart media type, or
+//. to access the name parameter that is often used with several media
+//. types, such as application/octet-stream.
 //.
 //. Some MIME parsers have problems with folded header fields, and this
 //. especially seems to be a problem with the Content-Type field.
 //. To disable folding when the {\tt DwMediaType} object is assembled,
 //. call the inherited member function {\tt DwFieldBody::SetFolding()}
-//. with an argument of {\tt DwFalse} to disable it.
+//. with an argument of {\tt DwFalse}.
 //=============================================================================
-
+// Last updated 1997-08-30
 //+ Noentry ~DwMediaType
 //+ Noentry _AddParameter TypeEnumToStr TypeStrToEnum SubtypeEnumToStr
 //+ Noentry SubtypeStrToEnum DeleteParameterList CopyParameterList
 //+ Noentry mType mSubtype mTypeStr mSubtypeStr mBoundaryStr mFirstParameter
+//+ Noentry _PrintDebugInfo mNameStr
+
 
 class DW_EXPORT DwMediaType : public DwFieldBody {
 
@@ -75,23 +81,25 @@ public:
     DwMediaType(const DwString& aStr, DwMessageComponent* aParent=0);
     //. The first constructor is the default constructor, which sets the
     //. {\tt DwMediaType} object's string representation to the empty string
-    //. and sets its parent to NULL.
+    //. and sets its parent to {\tt NULL}.
     //.
-    //. The second constructor is the copy constructor, which copies the
-    //. string representation from {\tt aMediaType} and all of its children.
-    //. The parent of the new {\tt DwMediaType} object is set to NULL.
+    //. The second constructor is the copy constructor, which performs
+    //. deep copy of {\tt aMediaType}.
+    //. The parent of the new {\tt DwMediaType} object is set to {\tt NULL}.
     //.
     //. The third constructor copies {\tt aStr} to the {\tt DwMediaType}
     //. object's string representation and sets {\tt aParent} as its parent.
     //. The virtual member function {\tt Parse()} should be called immediately
     //. after this constructor in order to parse the string representation.
-    //. Unless it is NULL, {\tt aParent} should point to an object of a class
-    //. derived from {\tt DwField}.
+    //. Unless it is {\tt NULL}, {\tt aParent} should point to an object of
+    //. a class derived from {\tt DwField}.
 
     virtual ~DwMediaType();
 
     const DwMediaType& operator = (const DwMediaType& aMediaType);
-    //. This is the assignment operator, which follows regular semantics.
+    //. This is the assignment operator, which performs a deep copy of
+    //. {\tt aMediaType}.  The parent node of the {\tt DwMediaType}
+    //. object is not changed.
 
     virtual void Parse();
     //. This virtual function, inherited from {\tt DwMessageComponent},
@@ -99,6 +107,8 @@ public:
     //. It should be called immediately after the string representation
     //. is modified and before the parts of the broken-down
     //. representation are accessed.
+    //.
+    //. This function clears the is-modified flag.
 
     virtual void Assemble();
     //. This virtual function, inherited from {\tt DwMessageComponent},
@@ -108,77 +118,91 @@ public:
     //. its broken-down representation.  It will be called
     //. automatically for this object by the parent object's
     //. {\tt Assemble()} member function if the is-modified flag is set.
+    //.
+    //. This function clears the is-modified flag.
 
     virtual DwMessageComponent* Clone() const;
     //. This virtual function, inherited from {\tt DwMessageComponent},
     //. creates a new {\tt DwMediaType} object on the free store that
     //. has the same value as this {\tt DwMediaType} object.  The basic
-    //. idea is that of a ``virtual copy constructor.''
+    //. idea is that of a virtual copy constructor.
 
     int Type() const;
-    //. Returns the type from the Content-Type {\it field-body} as an
-    //. enumerated value.  Enumerated values are defined for all
-    //. standard types in the file dw_mime.h.  If the type is non-standard
-    //. {\tt eTypeUnknown} is returned.  The member function
-    //. {\tt TypeStr()} may be used to get the value of any type,
+    //. Returns the primary type as an enumerated value.  Enumerated values
+    //. are defined for all standard types in the file enum.h.  If the type
+    //. is non-standard, {\tt DwMime::kTypeUnknown} is returned.  The member
+    //. function {\tt TypeStr()} may be used to get the value of any type,
     //. standard or non-standard, as a string.
 
     void SetType(int aType);
-    //. Sets the type for the Content-Type {\it field-body} from the
-    //. enumerated value {\tt aType}.  Enumerated values are defined for
-    //. all standard types in the file dw_mime.h.  The member function
-    //. {\tt SetTypeStr()} may be used to set the value of any type,
-    //. standard or non-standard, from a string.
+    //. Sets the primary type from the enumerated value {\tt aType}.
+    //. Enumerated values are defined for all standard types in the file
+    //. enum.h.  The member function {\tt SetTypeStr()} may be used to
+    //. set the value of any type, standard or non-standard, from a string.
 
     const DwString& TypeStr() const;
-    //. Returns the type from the Content-Type {\it field-body} as a
-    //. string.
+    //. Returns the primary type as a string.
 
     void SetTypeStr(const DwString& aStr);
-    //. Sets the type for the Content-Type {\it field-body} from a
-    //. string.
+    //. Sets the primary type from a string.
 
     int Subtype() const;
-    //. Returns the subtype from the Content-Type {\it field-body} as an
-    //. enumerated value.  Enumerated values are defined for all
-    //. standard subtypes in the file dw_mime.h.  If the subtype is
-    //. non-standard {\tt eSubtypeUnknown} is returned.  The member function
-    //. {\tt SubtypeStr()} may be used to get the value of any subtype,
-    //. standard or non-standard, as a string.
+    //. Returns the subtype as an enumerated value.  Enumerated values
+    //. are defined for all standard subtypes in the file enum.h.  If
+    //. the subtype is non-standard, {\tt DwMime::kSubtypeUnknown} is
+    //. returned.  The member function {\tt SubtypeStr()} may be used
+    //. to get the value of any subtype, standard or non-standard, as
+    //. a string.
 
     void SetSubtype(int aSubtype);
-    //. Sets the subtype for the Content-Type {\it field-body} from the
-    //. enumerated value {\tt aSubtype}.  Enumerated values are defined for
-    //. all standard subtypes in the file dw_mime.h.  The member function
-    //. {\tt SetSubtypeStr()} may be used to set the value of any subtype,
-    //. standard or non-standard, from a string.
+    //. Sets the subtype from the enumerated value {\tt aSubtype}.
+    //. Enumerated values are defined for all standard subtypes in the
+    //. file enum.h.  The member function {\tt SetSubtypeStr()} may be
+    //. used to set the value of any subtype, standard or non-standard,
+    //. from a string.
 
     const DwString& SubtypeStr() const;
-    //. Returns the subtype from the Content-Type {\it field-body} as a
-    //. string.
+    //. Returns the subtype as a string.
 
     void SetSubtypeStr(const DwString& aStr);
-    //. Sets the subtype for the Content-Type {\it field-body} from a
-    //. string.
+    //. Sets the subtype from a string.
 
     const DwString& Boundary() const;
-    //. For the multipart type only, returns the value of the {\it boundary}
-    //. {\it parameter}.  This member function is a convenience function
-    //. that searches the {\tt DwParameter} children of this
-    //. {\tt DwMediaType}.
+    //. For the multipart type only, returns the value of the boundary
+    //. parameter.  This member function is a convenience function
+    //. that searches the list of {\tt DwParameter} objects.
 
     void SetBoundary(const DwString& aStr);
-    //. For the multipart type only, sets the value of the {\it boundary}
-    //. {\it parameter}.
+    //. For the multipart type only, sets the value of the boundary
+    //. parameter.
     //. This member function is a convenience function that accesses the
-    //. list of child {\tt DwParameter} objects for you.
+    //. list of {\tt DwParameter} objects.
 
     virtual void CreateBoundary(unsigned aLevel=0);
-    //. For the multipart type only, creates a {\it boundary}.  {\tt aLevel}
-    //. indicates the level of a nested multipart {\it body part}; if it
-    //. is positive, it is used to form part of the created boundary string.
+    //. For the multipart type only, creates a boundary string. {\tt aLevel}
+    //. indicates the level of a nested multipart body part; if it is
+    //. positive, it is used to form part of the created boundary string.
     //. This member function is a convenience function that accesses the
-    //. list of child {\tt DwParameter} objects for you.
+    //. list of child {\tt DwParameter} objects.
+
+    const DwString& Name() const;
+    //. Returns the value of the "name" parameter, if such a parameter
+    //. is present.  The name parameter is often found in several media
+    //. types, including the application/octet-stream media type; it
+    //. suggests a file name for saving to a disk file.  (The filename
+    //. parameter in the Content-Disposition header field is an alternative
+    //. way to indicate a file name.)  This member function is a convenience
+    //. function that searches the list of {\tt DwParameter} objects.
+
+    void SetName(const DwString& aStr);
+    //. Sets the value of the "name" parameter.  If a name parameter is
+    //. not already present, it is added.  The name parameter is often
+    //. found in several media types, including the application/octet-stream
+    //. media type; it suggests a file name for saving to a disk file.
+    //. (The filename parameter in the Content-Disposition header field
+    //. is an alternative way to indicate a file name.)  This member
+    //. function is a convenience function that accesses the list of
+    //. {\tt DwParameter} objects.
 
     DwParameter* FirstParameter() const;
     //. Returns the first {\tt DwParameter} object in the list managed by
@@ -192,7 +216,7 @@ public:
     static DwMediaType* NewMediaType(const DwString& aStr,
         DwMessageComponent* aParent);
     //. Creates a new {\tt DwMediaType} object on the free store.
-    //. If the static data member {\tt sNewMediaType} is NULL, 
+    //. If the static data member {\tt sNewMediaType} is {\tt NULL}, 
     //. this member function will create a new {\tt DwMediaType}
     //. and return it.  Otherwise, {\tt NewMediaType()} will call
     //. the user-supplied function pointed to by {\tt sNewMediaType},
@@ -202,14 +226,15 @@ public:
     //+ Var sNewMediaType
     static DwMediaType* (*sNewMediaType)(const DwString&,
         DwMessageComponent*);
-    //. If {\tt sNewMediaType} is not NULL, it is assumed to point to a 
+    //. If {\tt sNewMediaType} is not {\tt NULL}, it is assumed to point to a 
     //. user-supplied function that returns an object from a class derived
     //. from {\tt DwMediaType}.
 
 protected:
 
-    // Add parameter.  Don't set is-modified flag.
     void _AddParameter(DwParameter* aParam);
+    //. Adds a parameter without setting the is-modified flag.
+
     virtual void TypeEnumToStr();
     virtual void TypeStrToEnum();
     virtual void SubtypeEnumToStr();
@@ -222,6 +247,7 @@ protected:
     DwString mTypeStr;
     DwString mSubtypeStr;
     DwString mBoundaryStr;
+    DwString mNameStr;
     DwParameter* mFirstParameter;
 
 private:

@@ -145,7 +145,7 @@ public:
         kErrTryAgain     = 0x5001,  // UNIX
         kErrNoRecovery   = 0x5002,  // UNIX
         kErrNoData       = 0x5003,  // UNIX
-        kErrNoAddress    = 0x5004,  // UNIX
+        kErrNoAddress    = 0x5004   // UNIX
     };
     //. MIME++-defined error codes.
 

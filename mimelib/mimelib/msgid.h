@@ -34,10 +34,25 @@
 #endif
 
 //=============================================================================
-//+ Name DwMsgId -- Class representing a MIME msg-id
+//+ Name DwMsgId -- Class representing an RFC-822 msg-id
 //+ Description
-//. {\tt DwMsgId} represents a {\it msg-id} as described in RFC-822.
+//. {\tt DwMsgId} represents a {\it msg-id} as described in RFC-822.  In
+//. the BNF grammar in RFC-822, a msg-id has a {\it local-part} and a
+//. {\it domain}.  In MIME++, a {\tt DwMsgId} contains strings that
+//. contain the local-part and the domain.
+//.
+//. In the tree (broken-down) representation of message, a {\tt DwMsgId}
+//. object may only be a leaf node, having a parent but no child nodes.
+//. Its parent node must be a {\tt DwField} object.
+//.
+//. {\tt DwMsgId} has member functions for getting or setting its local-part
+//. and its domain.  You can have the library to create the contents of a
+//. {\tt DwMsgId} object for you by calling the member function
+//. {\tt CreateDefault()}.
 //=============================================================================
+// Last modified 1997-07-28
+//+ Noentry ~DwMsgId mLocalPart mDomain sClassName _PrintDebugInfo
+
 
 class DW_EXPORT DwMsgId : public DwFieldBody {
 
@@ -50,8 +65,8 @@ public:
     //. {\tt DwMsgId} object's string representation to the empty string
     //. and sets its parent to NULL.
     //.
-    //. The second constructor is the copy constructor, which copies the
-    //. string representation and all attributes from {\tt aMsgId}.
+    //. The second constructor is the copy constructor, which performs
+    //. a deep copy of {\tt aMsgId}.
     //. The parent of the new {\tt DwMsgId} object is set to NULL.
     //.
     //. The third constructor copies {\tt aStr} to the {\tt DwMsgId}
@@ -64,23 +79,33 @@ public:
     virtual ~DwMsgId();
 
     const DwMsgId& operator = (const DwMsgId& aMsgId);
-    //. This is the assignment operator, which follows regular semantics.
+    //. This is the assignment operator, which performs a deep copy of
+    //. {\tt aMsgId}.  The parent node of the {\tt DwMsgId} object
+    //. is not changed.
 
     virtual void Parse();
     //. This virtual function, inherited from {\tt DwMessageComponent},
-    //. executes the parse method for {\tt DwMsgId} objects.
-    //. It should be called immediately after the string representation
-    //. is modified and before the parts of the broken-down
-    //. representation are accessed.
+    //. executes the parse method for {\tt DwMsgId} objects.  The parse
+    //. method parses the local-part and the domain from the string
+    //. representation.
+    //.
+    //. You should call this member function after you set or modify the
+    //. string representation, and before you retrieve local-part or
+    //. domain.
+    //.
+    //. This function clears the is-modified flag.
 
     virtual void Assemble();
     //. This virtual function, inherited from {\tt DwMessageComponent},
-    //. executes the assemble method for {\tt DwMsgId} objects.
-    //. It should be called whenever one of the object's attributes
-    //. is changed in order to assemble the string representation from
-    //. its broken-down representation.  It will be called
-    //. automatically for this object by the parent object's
-    //. {\tt Assemble()} member function if the is-modified flag is set.
+    //. executes the assemble method for {\tt DwMsgId} objects.  The
+    //. assemble method creates or updates the string representation
+    //. from the local-part and the domain.
+    //.
+    //. You should call this member function after you modify the
+    //. local-part or the domain, and before you retrieve the string
+    //. representation.
+    //.
+    //. This function clears the is-modified flag.
 
     virtual DwMessageComponent* Clone() const;
     //. This virtual function, inherited from {\tt DwMessageComponent},
@@ -89,24 +114,20 @@ public:
     //. a ``virtual copy constructor.''
 
     virtual void CreateDefault();
-    //. Creates a value for the {\it msg-id}.  Uses the current time,
+    //. Creates a value for the msg-id.  Uses the current time,
     //. process id, and fully qualified domain name for the host.
 
     const DwString& LocalPart() const;
-    //. Returns the {\it local-part} of the {\it msg-id} as described in
-    //. RFC-822.
+    //. Returns the local-part of the msg-id.
 
     void SetLocalPart(const DwString& aLocalPart);
-    //. Sets the {\it local-part} of the {\it msg-id} as described in
-    //. RFC-822.
+    //. Sets the local-part of the msg-id.
 
     const DwString& Domain() const;
-    //. Returns the {\it domain} of the {\it msg-id} as described in
-    //. RFC-822.
+    //. Returns the domain of the msg-id.
 
     void SetDomain(const DwString& aDomain);
-    //. Sets the {\it domain} of the {\it msg-id} as described in
-    //. RFC-822.
+    //. Sets the domain of the msg-id.
 
     static DwMsgId* NewMsgId(const DwString& aStr,
         DwMessageComponent* aParent);

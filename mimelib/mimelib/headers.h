@@ -79,51 +79,56 @@ class DwMechanism;
 class DwText;
 
 //=============================================================================
-//+ Name DwHeaders -- Class representing collection of MIME headers
+//+ Name DwHeaders -- Class representing the collection of header fields in a message or body part
 //+ Description
-//. {\tt DwHeaders} represents the collection of {\it headers} of a
-//. {\it message}, or 
-//. a {\it body part} in a multipart {\it message}, as described in RFC-822
-//. and RFC-1521.  The {\it headers} consist of a collection of {\it fields}.
-//. In MIME++, a {\tt DwHeaders} object contains a list of {\tt DwField}
-//. objects.  These contained {\tt DwField} objects are the children of
-//. a {\tt DwHeaders} object.  The parent of a {\tt DwHeaders} object is
-//. the {\tt DwEntity} that contains it.  (See the discussion or children
-//. and parents in the entry for {\tt DwMessageComponent}.)
-//. 
-//. {\tt DwHeaders} provides a member function {\tt Parse()} for parsing it;
-//. that is, creating the list of {\tt DwField} objects corresponding to the
-//. {\it fields} it contains.  It also provides a member function
-//. {\tt Assemble()} for combining its {\it fields} to create its string
-//. representation.
+//. {\tt DwHeaders} represents the collection of {\it header fields} (often
+//. called just {\it headers}) in an {\it entity} (either a message or body
+//. part), as described in RFC-822 and RFC-2045.  A {\tt DwHeaders} object
+//. manages a list of {\tt DwField} objects, which represent the individual
+//. header fields.
 //.
-//. You can access the {\it field-body} for a specific well-known {\it field}
+//. In the tree (broken-down) representation of a message, a {\tt DwHeaders}
+//. object is an intermediate node, having both a parent node and several
+//. child nodes.  The parent node is the {\tt DwEntity} object that contains
+//. it.  The child nodes are the {\tt DwField} objects in the list it manages.
+//. (See the man page for {\tt DwMessageComponent} for a discussion of
+//. the tree representation of a message.)
+//.
+//. Normally, you do not create a {\tt DwHeaders} object directly, but you
+//. access it through the {\tt Headers()} member function of {\tt DwEntity},
+//. which creates the {\tt DwHeaders} object for you.
+//.
+//. While {\tt DwHeaders} has public member functions for managing the list
+//. of {\tt DwField} objects it contains, you will normally use convenience
+//. functions to access the field bodies of the header fields directly.
+//. You can access the field body for a specific well-known header field
 //. by using the member function {\tt <Field>()}, where {\tt <Field>} is
-//. the {\it field-name} of the {\it field} with hyphens removed and the
-//. first word following a hyphen capitalized.  For example, to access the
-//. {\it field-body} for the ``MIME-version'' {\it field}, use {\tt MimeVersion()}.
-//. The member function {\tt <Field>()} will create a field with
-//. {\it field-name} {\tt <Field>} if such a {\it field} does not exist.
-//. You can check for the existence of a specific well-known {\it field} by
-//. using the member function {\tt Has<Field>()}.  For example, to check
-//. for the existence of the MIME-version {\it field}, use 
-//. {\tt HasMimeVersion()}.  Well-known {\it field}s are those documented in
-//. RFC-822, RFC-1036, RFC-1521, and possibly other RFCs.
+//. the field name of the header field with hyphens removed and the first
+//. word following a hyphen capitalized.  For example, to access the field
+//. body for the "MIME-version" header field, use {\tt MimeVersion()}.
+//. The member function {\tt <Field>()} will create a header field with
+//. field name {\tt <Field>} if such a header field does not already exist.
+//. You can check for the existence of a particular well-known header field
+//. by using the member function {\tt Has<Field>()}.  For example, to check
+//. for the existence of the MIME-version header field, use
+//. {\tt HasMimeVersion()}.  Well-known header fields are those documented in
+//. RFC-822 (standard email), RFC-1036 (USENET messages), RFC-2045 (MIME
+//. messages), and possibly other RFCs.
 //.
-//. In the case of an {\it extension-field} or {\it user-defined-field}, 
-//. you can access the {\it field-body} of the {\it field} by calling the
-//. member function {\tt FieldBody()} with the {\it field-name} as an
-//. argument.  If the {\it extension-field} or {\it user-defined-field}
-//. does not exist, {\tt FieldBody()} will create it.  You check for the
-//. existence of an {\it extension-field} or {\it user-defined-field} by
-//. using the member function {\tt HasField()} with the {\it field-name}
-//. as its argument.
+//. In the case of an extension field or user-defined field, you can access
+//. the field body of the header field by calling the member function
+//. {\tt FieldBody()} with the field name as its argument.  If the extension
+//. field or user-defined field does not exist, {\tt FieldBody()} will
+//. create it.  You can check for the existence of an extension field or
+//. user-defined field by using the member function {\tt HasField()} with
+//. the field name as its argument.
 //.
-//. You can iterate over all {\it fields} in the {\it headers} by using
-//. the member function {\tt FirstField()} to get the first {\tt DwField}
-//. object in the list, and then using {\tt DwField::Next()} to iterate
-//. through the list.
+//. {\tt DwHeaders} has several other member functions provided for the
+//. sake of completeness that are not required for most applications.
+//. These functions are documented below.
 //=============================================================================
+// Last updated 1997-08-26
+//+ Noentry ~DwHeaders sClassName CopyFields mFirstField _AddField
 
 
 class DW_EXPORT DwHeaders : public DwMessageComponent {
@@ -135,58 +140,62 @@ public:
     DwHeaders(const DwString& aStr, DwMessageComponent* aParent=0);
     //. The first constructor is the default constructor, which sets the
     //. {\tt DwHeaders} object's string representation to the empty string
-    //. and sets its parent to NULL.
+    //. and sets its parent to {\tt NULL}.
     //.
-    //. The second constructor is the copy constructor, which copies the
-    //. string representation from {\tt aHeaders} and all of its children.
-    //. The parent of the new {\tt DwHeaders} object is set to NULL.
+    //. The second constructor is the copy constructor, which performs a
+    //. deep copy of {\tt aHeaders}.
+    //. The parent of the new {\tt DwHeaders} object is set to {\tt NULL}.
     //.
     //. The third constructor copies {\tt aStr} to the {\tt DwHeaders}
     //. object's string representation and sets {\tt aParent} as its parent.
     //. The virtual member function {\tt Parse()} should be called immediately
     //. after this constructor in order to parse the string representation.
-    //. Unless it is NULL, {\tt aParent} should point to an object of a class
+    //. Unless it is {\tt NULL}, {\tt aParent} should point to an object of a class
     //. derived from {\tt DwEntity}.
 
     virtual ~DwHeaders();
 
     const DwHeaders& operator = (const DwHeaders& aHeaders);
-    //. This is the assignment operator, which follows regular semantics.
+    //. This is the assignment operator, which performs a deep copy of
+    //. {\tt aHeaders}.  The parent node of the {\tt DwHeaders} object
+    //. is not changed.
 
     virtual void Parse();
     //. This virtual function, inherited from {\tt DwMessageComponent},
-    //. executes the parse method for {\tt DwHeaders} objects.
-    //. The parse method parses the string representation of
-    //. the {\tt DwHeaders} object into its broken-down representation,
-    //. which consists of a collection of {\it fields}.  The broken-down
-    //. representation is implemented as a list of {\tt DwField} objects,
-    //. which are the children of a {\tt DwHeaders} object.
-    //. (See the discussion in the entry for {\tt DwMessageComponent}.)
-    //. 
-    //. This member function must be called after the string representation
-    //. is set or modified, and before the fields of the headers are accessed.
+    //. executes the parse method for {\tt DwHeaders} objects.  The parse
+    //. method creates or updates the broken-down representation from the
+    //. string representation.  For {\tt DwHeaders} objects,
+    //. {\tt DwHeaders::Parse()} parses the string representation to create
+    //. a list of {\tt DwField} objects.  This member function also calls
+    //. the {\tt Parse()} member function of each {\tt DwField} object in
+    //. its list.
+    //.
+    //. You should call this member function after you set or modify the
+    //. string representation, and before you access any of the header fields.
+    //.
+    //. This function clears the is-modified flag.
 
     virtual void Assemble();
     //. This virtual function, inherited from {\tt DwMessageComponent},
-    //. executes the assemble method for {\tt DwHeaders} objects.
-    //. The assemble method assembles the
-    //. broken-down representation of the {\tt DwHeaders} object into its
-    //. string representation.  The broken-down representation consists of
-    //. a collection of {\it fields} implemented as a list of
-    //. {\tt DwField} objects.  Before the string representation is assembled,
-    //. this member function will call the {\tt Assemble()} member function of
-    //. each {\tt DwField} object in its list; you do not have to explicitly
-    //. assemble each {\tt DwField} object.
+    //. executes the assemble method for {\tt DwHeaders} objects.  The
+    //. assemble method creates or updates the string representation from
+    //. the broken-down representation.  That is, the assemble method
+    //. builds the string representation from its list of {\tt DwField}
+    //. objects.  Before it builds the string representation, this function
+    //. first calls the {\tt Assemble()} member function of each {\tt DwField}
+    //. object in its list.
     //.
-    //. This member function should be called after any component of the
-    //. broken-down representation is set or modified and before the string
-    //. representation is accessed.
+    //. You should call this member function after you set or modify any
+    //. of the header fields, and before you retrieve the string
+    //. representation.
+    //.
+    //. This function clears the is-modified flag.
 
     virtual DwMessageComponent* Clone() const;
     //. This virtual function, inherited from {\tt DwMessageComponent},
     //. creates a new {\tt DwHeaders} on the free store that has the same
     //. value as this {\tt DwHeaders} object.  The basic idea is that of
-    //. a ``virtual copy constructor.''
+    //. a virtual copy constructor.
 
     DwBool HasBcc() const;
     DwBool HasCc() const;
@@ -233,20 +242,20 @@ public:
     DwBool HasCte() const;
     DwBool HasContentType() const;
     DwBool HasMimeVersion() const;
-    // RFC-1521 fields
+    // RFC-2045 fields
     //
     DwBool HasContentDisposition() const;
     // RFC-1806
     //
-    //. This group of member functions return a boolean value indicating
-    //. whether a particular well-known {\it field} is present in the
-    //. {\it headers}.
+    //. Each member function in this group returns a boolean value indicating
+    //. whether a particular well-known header field is present in this
+    //. object's collection of header fields.
 
     DwBool HasField(const char* aFieldName) const;
     DwBool HasField(const DwString& aFieldName) const;
-    //. Returns true if the {\it field} specified by {\tt aFieldName} is
-    //. present in the {\it headers}.  These member function are used for
-    //. {\it extension-fields} or {\it user-defined-fields}.
+    //. Returns true if the header field specified by {\tt aFieldName} is
+    //. present in this object's collection of header fields.  These member
+    //. functions are used for extension fields or user-defined fields.
 
     DwAddressList&  Bcc();
     DwAddressList&  Cc();
@@ -293,91 +302,90 @@ public:
     DwMechanism&    Cte();
     DwMediaType&    ContentType();
     DwText&         MimeVersion();
-    // RFC-1521 fields
+    // RFC-2045 fields
     //
     DwDispositionType& ContentDisposition();
     // RFC-1806 Content-Disposition field
     //
-    //. Returns a reference to the {\tt DwFieldBody} object that is associated
-    //. with a particular {\it field}.  If the {\it field} is not already
-    //. present in the {\it headers}, it is created.  Use the corresponding
-    //. {\tt Has<Field>()} function to test if the {\it field} already
-    //. exists without creating it.
+    //. Each member function in this group returns a reference to a
+    //. {\tt DwFieldBody} object for a particular header field.  If the
+    //. header field does not already exist, it is created.  Use the
+    //. corresponding {\tt Has<Field>()} function to test if the header
+    //. field already exists without creating it.
 
     DwFieldBody& FieldBody(const DwString& aFieldName);
-    //. Returns a reference to the {\tt DwFieldBody} object that is associated
-    //. with a particular {\it field}.  If the {\it field} is not already
-    //. present in the {\it headers}, it is created.  Use {\tt HasField()}
-    //. to test if the {\it field} already exists without creating it.
-    //. This member function allows access to {\it extension-field}s or
-    //. {\it user-defined-field}s.
+    //. Returns a reference to the {\tt DwFieldBody} object for a particular
+    //. header field with field name {\tt aFieldName}.  If the header field
+    //. does not already exist, it is created.  Use {\tt HasField()}
+    //. to test if the header field already exists without creating it.
+    //. This member function allows access to extension fields or
+    //. user-defined fields.
 
     int NumFields() const;
-    //. Returns the number of {\it fields} contained by this collection
-    //. of {\it headers}.
+    //. Returns the number of {\tt DwField} objects contained by this
+    //. {\tt DwHeaders} object.
 
     DwField* FirstField() const;
-    //. Return a pointer to the first {\tt DwField} object contained by this
-    //. {\tt DwHeaders} object.  Use this member function to begin an
-    //. iteration over the entire list of {tt DwField} objects.  
-    //. Continue the iteration by calling {\tt DwField::Next()} on the returned
-    // {\tt DwField} object.
+    //. Returns a pointer to the first {\tt DwField} object contained by
+    //. this {\tt DwHeaders} object.  Use this member function to begin an
+    //. iteration over the entire list of {\tt DwField} objects.
+    //. Continue the iteration by calling {\tt DwField::Next()} on each
+    //. {\tt DwField} object.
 
     DwField* FindField(const char* aFieldName) const;
     DwField* FindField(const DwString& aFieldName) const;
-    //. Searches for a {\it field} by its {\it field-name}.  Returns NULL
+    //. Searches for a header field by its field name.  Returns {\tt NULL}
     //. if the field is not found.  This is an {\it advanced} function:
-    //. most applications should use the {\tt Find<Field>()} family of
-    //. functions, or the functions {\tt HasField()}.
+    //. most applications should use the {\tt <Field>()} or
+    //. {\tt Has<Field>()} family of functions.
 
     void AddOrReplaceField(DwField* aField);
-    //. Adds a {\it field}, implemented as a {\tt DwField} object, to this
-    //. {\it headers}.  If a {\it field} with the same {\it field-name}
-    //. is already present in the {\it headers}, it is replaced by the new
-    //. {\it field}.
+    //. Adds a {\tt DwField} object to the list.  If a header field with
+    //. the same field name already exists, it is replaced by the new
+    //. header field.
     //.
     //. {\tt DwHeaders} takes responsibility for deleting the added
     //. {\tt DwField} object.
     //.
     //. This is an advanced function.  Consider using the member functions
     //. {\tt <Field>()} (e.g. {\tt To()}, {\tt ContentType()}, and so on)
-    //. and {\tt FieldBody()} for adding {\it field}s to the {\it header}.
+    //. and {\tt FieldBody()} to add header fields.
 
     void AddField(DwField* aField);
-    //. Add a {\it field}, implemented as a {\tt DwField} object, to this
-    //. {\it headers}.  If a {\it field} with the same {\it field-name}
-    //. is already present in the {\it headers}, it is {\it not} replaced;
-    //. thus, duplicate {\it fields} may occur when using this member
-    //. function.
+    //. Adds a {\tt DwField} object to the list. If a header field with
+    //. the same field name already exists, it is {\it not} replaced;
+    //. thus, duplicate header fields may occur when using this member
+    //. function.  (This is what you want for some header fields, such as
+    //. the "Received" header field).
     //.
     //. {\tt DwHeaders} takes responsibility for deleting the added
     //. {\tt DwField} object.
     //.
     //. This is an advanced function.  Consider using the member functions
     //. {\tt <Field>()} (e.g. {\tt To()}, {\tt ContentType()}, and so on)
-    //. and {\tt FieldBody()} for adding {\it field}s to the {\it headers}.
+    //. and {\tt FieldBody()} for adding header fields.
 
     void AddFieldAt(int aPos, DwField* aField);
     //. This member functions follows the semantics of {\tt AddField()}
-    //. except that {\tt aPos} specifies a position for adding the {\it field}.
-    //. A position of 1 indicates the beginning of the list.  A position of 0
-    //. indicates the end of the list.
+    //. except that {\tt aPos} specifies a position for adding the field.
+    //. A position of 1 indicates the beginning of the list.  A position of
+    //. 0 indicates the end of the list.
     //.
     //. This is an advanced function.  Consider using the member functions
     //. {\tt <Field>()} (e.g. {\tt To()}, {\tt ContentType()}, and so on)
-    //. and {\tt FieldBody()} for adding {\it field}s to the {\it headers}.
+    //. and {\tt FieldBody()} for adding header fields.
 
     void RemoveField(DwField* aField);
-    //. Remove the {\tt DwField} object from the list.  The {\tt DwField}
+    //. Removes the {\tt DwField} object from the list.  The {\tt DwField}
     //. object is not deleted.
 
     void DeleteAllFields();
-    //. Remove all {\tt DwField} objects from the list and {\tt delete} them.
+    //. Removes all {\tt DwField} objects from the list and deletes them.
 
     static DwHeaders* NewHeaders(const DwString& aStr,
         DwMessageComponent* aParent);
     //. Creates a new {\tt DwHeaders} object on the free store.
-    //. If the static data member {\tt sNewHeaders} is NULL, 
+    //. If the static data member {\tt sNewHeaders} is {\tt NULL}, 
     //. this member function will create a new {\tt DwHeaders}
     //. and return it.  Otherwise, {\tt NewHeaders()} will call
     //. the user-supplied function pointed to by {\tt sNewHeaders},
@@ -386,7 +394,7 @@ public:
 
     //+ Var sNewHeaders
     static DwHeaders* (*sNewHeaders)(const DwString&, DwMessageComponent*);
-    //. If {\tt sNewHeaders} is not NULL, it is assumed to point to a 
+    //. If {\tt sNewHeaders} is not {\tt NULL}, it is assumed to point to a 
     //. user-supplied function that returns an object from a class derived from 
     //. {\tt DwHeaders}.
 

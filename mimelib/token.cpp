@@ -358,9 +358,9 @@ void DwRfc822Tokenizer::ParseAtom()
     size_t pos = mTokenStart;
     while (1) {
         ++pos;
-        char ch = (pos < mString.length()) ? mString[pos] : 0;
+        char ch = (pos < mString.length()) ? mString[pos] : (char) 0;
         if (pos >= mString.length()
-            || isspace(ch) 
+            || isspace(ch)
             || iscntrl(ch)
             || isspecial(ch)) {
 
@@ -470,9 +470,9 @@ void DwRfc1521Tokenizer::ParseAtom()
     size_t pos = mTokenStart;
     while (1) {
         ++pos;
-        char ch = (pos < mString.length()) ? mString[pos] : 0;
+        char ch = (pos < mString.length()) ? mString[pos] : (char) 0;
         if (pos >= mString.length()
-            || isspace(ch) 
+            || isspace(ch)
             || iscntrl(ch)
             || istspecial(ch)) {
 

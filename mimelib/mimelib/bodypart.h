@@ -43,21 +43,23 @@ class DwBody;
 
 
 //=============================================================================
-//+ Name DwBodyPart -- Class representing MIME message body-part
+//+ Name DwBodyPart -- Class representing a MIME body-part
 //+ Description
-//. {\tt DwBodyPart} represents a {\it body part}, as described in RFC-1521.
-//. Just as a {\it body part} in RFC-1521 is a type of {\it entity}, so
-//. in MIME++ {\tt DwBodyPart} is a subclass of {\tt DwEntity}.  While a
-//. {\it message} is also an {\it entity}, a {\it body part} is different
-//. from a {\it message} in that it appears only in the {\it body} of a
-//. multipart {\it entity}.  MIME++ generally enforces this rule.  The
-//. primary difference, though, between a {\tt DwBodyPart} and a
-//. {\tt DwMessage} is that a {\tt DwBodyPart} has the necessary
-//. attributes that permit its inclusion in a list.
+//. {\tt DwBodyPart} represents a {\it body part}, as described in RFC-2045
+//. and RFC-2046.  A body part is an {\it entity}, so it has a collection
+//. of headers and a {\it body}.  A body part is different from a {\it message}
+//. in that a body part is part of a multipart body.
+//.
+//. In MIME++, a {\tt DwBodyPart} is a subclass of {\tt DwEntity}; therefore,
+//. it contains both a {\tt DwHeaders} object and a {\tt DwBody} object,
+//. and it is contained in a multipart {\tt DwBody} object.
 //.
 //. As with {\tt DwMessage}, most of the functionality of {\tt DwBodyPart} is
 //. implemented by the abstract class {\tt DwEntity}.
 //=============================================================================
+// Last modified 1997-08-23
+//+ Noentry ~DwBodyPart _PrintDebugInfo mNext sClassName
+
 
 class DW_EXPORT DwBodyPart : public DwEntity {
 
@@ -68,32 +70,36 @@ public:
     DwBodyPart(const DwString& aStr, DwMessageComponent* aParent=0);
     //. The first constructor is the default constructor, which sets the
     //. {\tt DwBodyPart} object's string representation to the empty string
-    //. and sets its parent to NULL.
+    //. and sets its parent to {\tt NULL}.
     //.
-    //. The second constructor is the copy constructor, which copies the
-    //. string representation from {\tt aPart} and all of its children.
-    //. The parent of the new {\tt DwBodyPart} object is set to NULL.
+    //. The second constructor is the copy constructor, which performs
+    //. a deep copy of {\tt aPart}.
+    //. The parent of the new {\tt DwBodyPart} object is set to {\tt NULL}.
     //.
     //. The third constructor copies {\tt aStr} to the {\tt DwBodyPart} 
     //. object's string representation and sets {\tt aParent} as its parent.
     //. The virtual member function {\tt Parse()} should be called immediately
     //. after this constructor in order to parse the string representation.
+    //. Unless it is {\tt NULL}, {\tt aParent} should point to an object of
+    //. a class derived from {\tt DwBody}.
 
     virtual ~DwBodyPart();
 
     const DwBodyPart& operator = (const DwBodyPart& aPart);
-    //. This is the assignment operator, which follows regular semantics.
+    //. This is the assignment operator, which performs a deep copy of
+    //. {\tt aPart}.  The parent node of the {\tt DwBodyPart} object
+    //. is not changed.
 
     virtual DwMessageComponent* Clone() const;
     //. This virtual function, inherited from {\tt DwMessageComponent},
     //. creates a new {\tt DwBodyPart} on the free store that has the same
     //. value as this {\tt DwBodyPart} object.  The basic idea is that of
-    //. a ``virtual copy constructor.''
+    //. a virtual copy constructor.
 
     static DwBodyPart* NewBodyPart(const DwString& aStr,
         DwMessageComponent* aParent);
-    //. Create a new {\tt DwBodyPart} on the free store.
-    //. If the static data member {\tt sNewBodyPart} is NULL, 
+    //. Creates a new {\tt DwBodyPart} on the free store.
+    //. If the static data member {\tt sNewBodyPart} is {\tt NULL}, 
     //. this member function will create a new {\tt DwBodyPart}
     //. and return it.  Otherwise, {\tt NewBodyPart()} will call
     //. the user-supplied function pointed to by {\tt sNewBodyPart},
@@ -101,20 +107,20 @@ public:
     //. {\tt DwBodyPart}, and return that object.
 
     DwBodyPart* Next() const;
-    //. This member function returns the next {\it body part} following
-    //. this {\it body part} in the list of {\it body parts} contained
-    //. in a multipart {\it body}.
+    //. This member function returns the next {\tt DwBodyPart} object
+    //. following this {\tt DwBodyPart} in the list of {\tt DwBodyPart}
+    //. objects contained in a multipart {\tt DwBody}.
 
     void SetNext(const DwBodyPart* aPart);
-    //. This advanced function sets {\tt aPart} as the next {\it body part}
-    //. following this {\it body part} in the list of {\it body parts}
-    //. contained in a multipart {\it body}.  Since {\tt DwBody} contains
-    //. a member function for adding a {\tt DwBodyPart} object to its
-    //. list, this function is not useful for most applications.
+    //. This advanced function sets {\tt aPart} as the next {\tt DwBodyPart}
+    //. object following this {\tt DwBodyPart} in the list of {\tt DwBodyPart}
+    //. objects contained in a multipart {\tt DwBody}.  Since {\tt DwBody}
+    //. contains a member function for adding a {\tt DwBodyPart} object to
+    //. its list, this function should be avoided for most applications.
 
     //+ Var sNewBodyPart
     static DwBodyPart* (*sNewBodyPart)(const DwString&, DwMessageComponent*);
-    //. If {\tt sNewBodyPart} is not NULL, it is assumed to point to a
+    //. If {\tt sNewBodyPart} is not {\tt NULL}, it is assumed to point to a
     //. user-supplied function that returns an object from a class
     //. derived from {\tt DwBodyPart}.
 

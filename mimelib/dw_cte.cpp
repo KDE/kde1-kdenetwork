@@ -620,7 +620,7 @@ static int encode_qp(const char* aIn, size_t aInLen, char* aOut,
         }
         /* Normal printable char */
         else if ((62 <= ch && ch <= 126) || (33 <= ch && ch <= 60)) {
-            aOut[outPos++] = ch;
+            aOut[outPos++] = (char) ch;
             ++lineLen;
         }
         /* Space */
@@ -753,7 +753,7 @@ static int decode_qp(const char* aIn, size_t aInLen, char* aOut,
             ch = aIn[inPos++] & 0x7F;
             if (ch != '=') {
                 /* Normal printable char */
-                aOut[outPos++] = ch;
+                aOut[outPos++] = (char) ch;
             }
             else /* if (ch == '=') */ {
                 /* Soft line break */
@@ -781,7 +781,7 @@ static int decode_qp(const char* aIn, size_t aInLen, char* aOut,
                         c2 = c2 - 'a' + 10;
                     else
                         isError = 1;
-                    aOut[outPos++] = (c1 << 4) + c2;
+                    aOut[outPos++] = (char) ((c1 << 4) + c2);
                 }
                 else /* if (inPos == charsEnd-1) */ {
                     isError = 1;

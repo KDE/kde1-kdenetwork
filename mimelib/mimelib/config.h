@@ -28,16 +28,15 @@
 //-----------------------------------------------------------------------------
 // Platform
 //
-// Make sure the the following lines define either DW_UNIX or DW_WIN32.
+// Make sure that the following lines define either DW_UNIX or DW_WIN32.
 //-----------------------------------------------------------------------------
 
 #if defined(_WIN32) || defined(__WIN32__)
 #   define DW_WIN32
 #endif
 
-#if defined(__unix__) || defined(__unix)
+#if defined(__unix__) || defined(__unix) || defined(_AIX)
 #   define DW_UNIX
-# include <config.h>
 #endif
 
 //-----------------------------------------------------------------------------
@@ -45,6 +44,11 @@
 //
 // Uncomment one of the following to indicate whether you want the library to
 // use LF or CR LF as the end of line characters.
+//
+// I strongly recommend using LF ('\n') alone as the end of line character,
+// since that is the normal end of line character for C and C++ libraries.
+// Then you can do the conversion to and from the CR LF end of line
+// characters at the interface to the transport system.
 //-----------------------------------------------------------------------------
 
 #define DW_EOL_LF
@@ -61,22 +65,60 @@
 //-----------------------------------------------------------------------------
 // C++ namespaces
 //
-// Uncomment the following line if you want the DwMime namespace to be defined
+// Uncomment the following line if you want the DwMime namespace to be defined.
+// If the namespace is not defined, then enums are specified as part of a
+// DwMime class.
 //-----------------------------------------------------------------------------
 
-// #define DW_USE_NAMESPACES
+//#define DW_USE_NAMESPACES
+
+
+//-----------------------------------------------------------------------------
+// C++ library string class
+//
+// Uncomment the following line if you want DwString typedef-ed to the
+// ANSI/ISO string class.
+//
+// *** Important: This option is not working or not fully tested yet ***
+//-----------------------------------------------------------------------------
+
+//#define DW_USE_ANSI_STRING
+
+
+//-----------------------------------------------------------------------------
+// bool type
+//
+// Uncomment the following line if you want DwBool typedef-ed to int instead
+// of bool.
+//-----------------------------------------------------------------------------
+
+#define DW_NO_BOOL
+
+#if defined(DW_NO_BOOL)
+
+typedef int            DwBool;
+#define DwFalse  0
+#define DwTrue   1
+
+#else
+
+typedef bool           DwBool;
+#define DwFalse  false
+#define DwTrue   true
+
+#endif
 
 
 //-----------------------------------------------------------------------------
 // DLL vs static library
 //
-// WIN32 users: Uncomment out the following line to create a static library
+// Win32 users: Uncomment out the following line to create a static library
 // instead of a DLL.
 //-----------------------------------------------------------------------------
 
 // #define DW_NO_DLL
 
-#if defined(_MSC_VER) && !defined(DW_NO_DLL)
+#if defined(DW_WIN32) && !defined(DW_NO_DLL)
 #   ifdef DW_IMPLEMENTATION
 #      define DW_EXPORT __declspec(dllexport)
 #   else
@@ -108,8 +150,6 @@ typedef char           DwChar7;  // type for ASCII characters
 typedef unsigned char  DwChar8;  // type for 8-bit characters
 typedef signed char    DwInt8;   // type for 8-bit signed integers
 typedef unsigned char  DwUint8;  // type for 8-bit unsigned integers
-typedef int            DwBool;   // type for true (1) or false (0)
-                                 // (ANSI C++ compilers can use bool)
 
 #if defined(DW_STD_16_BIT)
 typedef int            DwInt16;  // 16-bit signed integers
@@ -127,8 +167,5 @@ typedef unsigned short DwUint16;
 typedef int            DwInt32;
 typedef unsigned int   DwUint32;
 #endif
-
-#define DwFalse  0
-#define DwTrue   1
 
 #endif

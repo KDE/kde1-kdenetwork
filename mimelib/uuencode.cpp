@@ -65,13 +65,13 @@ const char* DwUuencode::FileName() const
 }
 
 
-void DwUuencode::SetMode(DwUint16 aMode)
+void DwUuencode::SetFileMode(DwUint16 aMode)
 {
 	mMode = aMode;
 }
 
 
-DwUint16 DwUuencode::Mode() const
+DwUint16 DwUuencode::FileMode() const
 {
 	return mMode;
 }
@@ -101,13 +101,11 @@ const DwString& DwUuencode::AsciiChars() const
 }
 
 
-#define ENC(c) ((c) ? ((c) & 0x3F) + ' ' : 96 )
+#define ENC(c) ((char) ((c) ? ((c) & 0x3F) + ' ' : 96 ))
 
 
-DwBool DwUuencode::Encode()
+void DwUuencode::Encode()
 {
-	DwBool retVal = DwFalse;
-
 	// Get input buffer
 
 	size_t binLen = mBinaryChars.length();
@@ -116,7 +114,7 @@ DwBool DwUuencode::Encode()
 
 	// Allocate buffer for binary chars
 
-	size_t ascSize = (binLen+2)/3*4 
+	size_t ascSize = (binLen+2)/3*4
 		+ ((binLen+44)/45+1)*(strlen(DW_EOL)+1)
 		+ strlen(mFileName)
 		+ 13 + 2*strlen(DW_EOL)
@@ -213,17 +211,15 @@ DwBool DwUuencode::Encode()
 	ascBuf[ascPos] = 0;
 
 	mAsciiChars.assign(ascStr, 0, ascPos);
-
-	return retVal;
 }
 
 
 #define DEC(c)  (((c) - ' ') & 0x3F)
 
 
-DwBool DwUuencode::Decode()
+int DwUuencode::Decode()
 {
-    DwBool retVal = DwFalse;
+    int retVal = -1;
 
 	// Get input buffer
 
@@ -233,10 +229,8 @@ DwBool DwUuencode::Decode()
 
     // Allocate destination buffer
 
-    size_t binSize = ascLen/4*3 + 32;
-    DwString binStr(binSize, (char)0);
-    char* binBuf = (char*) binStr.data();
-	size_t binPos = 0;
+    size_t binSize = (ascLen+3)/4*3;
+    mBinaryChars.reserve(binSize);
 
 	// Look for "begin " at beginning of buffer
 
@@ -250,7 +244,7 @@ DwBool DwUuencode::Decode()
 		// Find "\nbegin " or "\rbegin "
 
 		while (ascPos < ascLen) {
-			int ch = ascBuf[ascPos++];
+			int ch = ascBuf[ascPos++] & 0xff;
 			switch (ch) {
 			case '\n':
 			case '\r':
@@ -268,168 +262,167 @@ DwBool DwUuencode::Decode()
 	}
 LOOP_EXIT_1:
 
-	// Get mode
+    // Get mode
 
-	mMode = 0;
-	while (ascPos < ascLen && isdigit(ascBuf[ascPos])) {
-		mMode <<= 3;
-		mMode += ascBuf[ascPos++] - '0';
-	}
+    mMode = 0;
+    while (ascPos < ascLen && isdigit(ascBuf[ascPos])) {
+        mMode <<= 3;
+        mMode += (DwUint16) (ascBuf[ascPos++] - '0');
+    }
 
-	// Get file name
+    // Get file name
 
-	while (ascPos < ascLen &&
-		(ascBuf[ascPos] == ' ' || ascBuf[ascPos] == '\t')) {
+    while (ascPos < ascLen &&
+        (ascBuf[ascPos] == ' ' || ascBuf[ascPos] == '\t')) {
 
-		++ascPos;
-	}
-	size_t p1 = 0;
-	while (ascPos < ascLen && p1 < sizeof(mFileName)-1 &&
-		!isspace(ascBuf[ascPos])) {
+        ++ascPos;
+    }
+    size_t p1 = 0;
+    while (ascPos < ascLen && p1 < sizeof(mFileName)-1 &&
+        !isspace(ascBuf[ascPos])) {
 
-		mFileName[p1++] = ascBuf[ascPos++];
-	}
-	mFileName[p1] = 0;
+        mFileName[p1++] = ascBuf[ascPos++];
+    }
+    mFileName[p1] = 0;
 
-	// Advance to beginning of next line
+    // Advance to beginning of next line
 
-	while (ascPos < ascLen) {
-		int ch = ascBuf[ascPos++];
-		switch (ch) {
-		case '\n':
-			goto LOOP_EXIT_2;
-		case '\r':
-			if (ascPos < ascLen && ascBuf[ascPos] == '\n') {
-				++ascPos;
-			}
-			goto LOOP_EXIT_2;
-		default:
-			break;
-		}
-	}
+    while (ascPos < ascLen) {
+        int ch = ascBuf[ascPos++];
+        switch (ch) {
+        case '\n':
+            goto LOOP_EXIT_2;
+        case '\r':
+            if (ascPos < ascLen && ascBuf[ascPos] == '\n') {
+                ++ascPos;
+            }
+            goto LOOP_EXIT_2;
+        default:
+            break;
+        }
+    }
 LOOP_EXIT_2:
 
-	// Decode chars
+    // Decode chars
 
-	while (ascPos < ascLen) {
-		int asc, bin;
+    while (ascPos < ascLen) {
+        int asc, bin;
 
-		// Get number of binary chars in this line
+        // Get number of binary chars in this line
 
-		asc = ascBuf[ascPos++];
-		size_t numBinChars = DEC(asc);
-		if (numBinChars == 0) {
-			break;
-		}
+        asc = ascBuf[ascPos++] & 0xff;
+        size_t numBinChars = DEC(asc);
+        if (numBinChars == 0) {
+            break;
+        }
 
-		// Decode this line
+        // Decode this line
 
-		size_t binCharsEaten = 0;
-		while (binCharsEaten <= numBinChars - 3 && ascPos <= ascLen - 4) {
+        size_t binCharsEaten = 0;
+        while (binCharsEaten <= numBinChars - 3 && ascPos <= ascLen - 4) {
 
-			asc = ascBuf[ascPos++];
-			bin = (DEC(asc) & 0x3F) << 2;
-			asc = ascBuf[ascPos++];
-			bin |= (DEC(asc) & 0x30) >> 4;
-			binBuf[binPos++] = (char) bin;
+            asc = ascBuf[ascPos++] & 0xff;
+            bin = (DEC(asc) & 0x3F) << 2;
+            asc = ascBuf[ascPos++] & 0xff;
+            bin |= (DEC(asc) & 0x30) >> 4;
+            mBinaryChars.append((size_t) 1, (char) bin);
 
-			bin = (DEC(asc) & 0x0F) << 4;
-			asc = ascBuf[ascPos++];
-			bin |= (DEC(asc) & 0x3C) >> 2;
-			binBuf[binPos++] = (char) bin;
+            bin = (DEC(asc) & 0x0F) << 4;
+            asc = ascBuf[ascPos++] & 0xff;
+            bin |= (DEC(asc) & 0x3C) >> 2;
+            mBinaryChars.append((size_t) 1, (char) bin);
 
-			bin = (DEC(asc) & 0x03) << 6;
-			asc = ascBuf[ascPos++];
-			bin |= (DEC(asc) & 0x3F);
-			binBuf[binPos++] = (char) bin;
+            bin = (DEC(asc) & 0x03) << 6;
+            asc = ascBuf[ascPos++] & 0xff;
+            bin |= (DEC(asc) & 0x3F);
+            mBinaryChars.append((size_t) 1, (char) bin);
 
-			binCharsEaten += 3;
-		}
+            binCharsEaten += 3;
+        }
 
-		// Special case if number of binary chars is not divisible by 3
+    	// Special case if number of binary chars is not divisible by 3
 
-		if (binCharsEaten < numBinChars) {
-			int binCharsLeft = numBinChars - binCharsEaten;
-			switch (binCharsLeft) {
-			case 2:
-				if (ascPos >= ascLen)
-					break;
-				asc = ascBuf[ascPos++];
-				bin = (DEC(asc) & 0x3F) << 2;
-				if (ascPos >= ascLen)
-					break;
-				asc = ascBuf[ascPos++];
-				bin |= (DEC(asc) & 0x30) >> 4;
-				binBuf[binPos++] = (char) bin;
+    	if (binCharsEaten < numBinChars) {
+    	    int binCharsLeft = numBinChars - binCharsEaten;
+    	    switch (binCharsLeft) {
+    	    case 2:
+    	        if (ascPos >= ascLen)
+    	            break;
+    	        asc = ascBuf[ascPos++] & 0xff;
+    	        bin = (DEC(asc) & 0x3F) << 2;
+    	        if (ascPos >= ascLen)
+    	            break;
+    	        asc = ascBuf[ascPos++] & 0xff;
+    	        bin |= (DEC(asc) & 0x30) >> 4;
+                mBinaryChars.append((size_t) 1, (char) bin);
 
-				bin = (DEC(asc) & 0x0F) << 4;
-				if (ascPos >= ascLen)
-					break;
-				asc = ascBuf[ascPos++];
-				bin |= (DEC(asc) & 0x3C) >> 2;
-				binBuf[binPos++] = (char) bin;
-				break;
-			case 1:
-				if (ascPos >= ascLen)
-					break;
-				asc = ascBuf[ascPos++];
-				bin = (DEC(asc) & 0x3F) << 2;
-				if (ascPos >= ascLen)
-					break;
-				asc = ascBuf[ascPos++];
-				bin |= (DEC(asc) & 0x30) >> 4;
-				binBuf[binPos++] = (char) bin;
-				break;
-			default:
-				break;
-			}
-		}
+    	        bin = (DEC(asc) & 0x0F) << 4;
+    	        if (ascPos >= ascLen)
+    	            break;
+    	        asc = ascBuf[ascPos++] & 0xff;
+    	        bin |= (DEC(asc) & 0x3C) >> 2;
+                mBinaryChars.append((size_t) 1, (char) bin);
+    	        break;
+    	    case 1:
+    	        if (ascPos >= ascLen)
+    	            break;
+    	        asc = ascBuf[ascPos++] & 0xff;
+    	        bin = (DEC(asc) & 0x3F) << 2;
+    	        if (ascPos >= ascLen)
+    	            break;
+    	        asc = ascBuf[ascPos++] & 0xff;
+    	        bin |= (DEC(asc) & 0x30) >> 4;
+                mBinaryChars.append((size_t) 1, (char) bin);
+    	        break;
+    	    default:
+    	        break;
+    	    }
+    	}
 
-		// Advance to beginning of next line
+        // Advance to beginning of next line
 
-		while (ascPos < ascLen) {
-			int ch = ascBuf[ascPos++];
-			switch (ch) {
-			case '\n':
-				goto LOOP_EXIT_3;
-			case '\r':
-				if (ascPos < ascLen &&
-					ascBuf[ascPos] == '\n') {
+        while (ascPos < ascLen) {
+            int ch = ascBuf[ascPos++];
+            switch (ch) {
+            case '\n':
+                goto LOOP_EXIT_3;
+            case '\r':
+                if (ascPos < ascLen &&
+                    ascBuf[ascPos] == '\n') {
 
-					++ascPos;
-				}
-				goto LOOP_EXIT_3;
-			default:
-				break;
-			}
-		}
+                    ++ascPos;
+                }
+                goto LOOP_EXIT_3;
+            default:
+                break;
+            }
+        }
 LOOP_EXIT_3:
-		;
-	}
-	while (ascPos < ascLen) {
-		int ch = ascBuf[ascPos++];
-		switch (ch) {
-		case '\n':
-			goto LOOP_EXIT_4;
-		case '\r':
-			if (ascPos < ascLen &&
-				ascBuf[ascPos] == '\n') {
-					++ascPos;
-			}
-			goto LOOP_EXIT_4;
-		default:
-			break;
-		}
-	}
-LOOP_EXIT_4:
-	if (ascPos + 3 <= ascLen && 
-		strncmp(&ascBuf[ascPos], "end", 3) == 0) {
+    	;
+    }
+    while (ascPos < ascLen) {
+        int ch = ascBuf[ascPos++];
+        switch (ch) {
+        case '\n':
+            goto LOOP_EXIT_4;
+        case '\r':
+            if (ascPos < ascLen &&
+                ascBuf[ascPos] == '\n') {
 
-		retVal = DwTrue;
-	}
-	binBuf[binPos] = 0;
-	mBinaryChars.assign(binStr, 0, binPos);
-	return retVal;
+                ++ascPos;
+            }
+            goto LOOP_EXIT_4;
+        default:
+            break;
+        }
+    }
+LOOP_EXIT_4:
+    if (ascPos + 3 <= ascLen && 
+        strncmp(&ascBuf[ascPos], "end", 3) == 0) {
+
+        retVal = 0;
+    }
+    return retVal;
 }
 
 

@@ -70,8 +70,7 @@ DwNntpClient::~DwNntpClient()
 int DwNntpClient::Open(const char* aServer, DwUint16 aPort)
 {
     mReplyCode = 0;
-    mStatusResponse.clear();
-    mTextResponse.clear();
+    mStatusResponse = mTextResponse = "";
     int err = DwProtocolClient::Open(aServer, aPort);
     if (! err) {
         PGetStatusResponse();
@@ -109,8 +108,7 @@ const DwString& DwNntpClient::TextResponse() const
 int DwNntpClient::Article(int aArticleNum)
 {
     mReplyCode = 0;
-    mStatusResponse.clear();
-    mTextResponse.clear();
+    mStatusResponse = mTextResponse = "";
     mLastCommand = kCmdArticle;
     if (aArticleNum >= 0) {
         sprintf(mSendBuffer, "ARTICLE %d\r\n", aArticleNum);
@@ -134,8 +132,7 @@ int DwNntpClient::Article(int aArticleNum)
 int DwNntpClient::Article(const char* aMsgId)
 {
     mReplyCode = 0;
-    mStatusResponse.clear();
-    mTextResponse.clear();
+    mStatusResponse = mTextResponse = "";
     mLastCommand = kCmdArticle;
     if (!aMsgId || !*aMsgId) {
         // error!
@@ -160,8 +157,7 @@ int DwNntpClient::Article(const char* aMsgId)
 int DwNntpClient::Head(int aArticleNum)
 {
     mReplyCode = 0;
-    mStatusResponse.clear();
-    mTextResponse.clear();
+    mStatusResponse = mTextResponse = "";
     mLastCommand = kCmdHead;
     if (aArticleNum >= 0) {
         sprintf(mSendBuffer, "HEAD %d\r\n", aArticleNum);
@@ -185,8 +181,7 @@ int DwNntpClient::Head(int aArticleNum)
 int DwNntpClient::Head(const char* aMsgId)
 {
     mReplyCode = 0;
-    mStatusResponse.clear();
-    mTextResponse.clear();
+    mStatusResponse = mTextResponse = "";
     mLastCommand = kCmdHead;
     if (!aMsgId || !*aMsgId) {
         return mReplyCode;
@@ -210,8 +205,7 @@ int DwNntpClient::Head(const char* aMsgId)
 int DwNntpClient::Body(int articleNum)
 {
     mReplyCode = 0;
-    mStatusResponse.clear();
-    mTextResponse.clear();
+    mStatusResponse = mTextResponse = "";
     mLastCommand = kCmdBody;
     if (articleNum >= 0) {
         sprintf(mSendBuffer, "BODY %d\r\n", articleNum);
@@ -235,8 +229,7 @@ int DwNntpClient::Body(int articleNum)
 int DwNntpClient::Body(const char* aMsgId)
 {
     mReplyCode = 0;
-    mStatusResponse.clear();
-    mTextResponse.clear();
+    mStatusResponse = mTextResponse = "";
     mLastCommand = kCmdBody;
     if (!aMsgId || !*aMsgId) {
         return mReplyCode;
@@ -260,8 +253,7 @@ int DwNntpClient::Body(const char* aMsgId)
 int DwNntpClient::Stat(int articleNum)
 {
     mReplyCode = 0;
-    mStatusResponse.clear();
-    mTextResponse.clear();
+    mStatusResponse = mTextResponse = "";
     mLastCommand = kCmdStat;
     if (articleNum >= 0) {
         sprintf(mSendBuffer, "STAT %d\r\n", articleNum);
@@ -282,8 +274,7 @@ int DwNntpClient::Stat(int articleNum)
 int DwNntpClient::Stat(const char* aMsgId)
 {
     mReplyCode = 0;
-    mStatusResponse.clear();
-    mTextResponse.clear();
+    mStatusResponse = mTextResponse = "";
     mLastCommand = kCmdStat;
     if (!aMsgId || !*aMsgId) {
         return mReplyCode;
@@ -304,8 +295,7 @@ int DwNntpClient::Stat(const char* aMsgId)
 int DwNntpClient::Group(const char* aNewsgroupName)
 {
     mReplyCode = 0;
-    mStatusResponse.clear();
-    mTextResponse.clear();
+    mStatusResponse = mTextResponse = "";
     mLastCommand = kCmdGroup;
     if (!aNewsgroupName || !*aNewsgroupName) {
         return mReplyCode;
@@ -326,8 +316,7 @@ int DwNntpClient::Group(const char* aNewsgroupName)
 int DwNntpClient::Help()
 {
     mReplyCode = 0;
-    mStatusResponse.clear();
-    mTextResponse.clear();
+    mStatusResponse = mTextResponse = "";
     mLastCommand = kCmdHelp;
     strcpy(mSendBuffer, "HELP\r\n");
     DBG_NNTP_STMT(cout << "C: " << mSendBuffer << flush;)
@@ -346,8 +335,7 @@ int DwNntpClient::Help()
 int DwNntpClient::Last()
 {
     mReplyCode = 0;
-    mStatusResponse.clear();
-    mTextResponse.clear();
+    mStatusResponse = mTextResponse = "";
     mLastCommand = kCmdLast;
     strcpy(mSendBuffer, "LAST\r\n");
     DBG_NNTP_STMT(cout << "C: " << mSendBuffer << flush;)
@@ -363,8 +351,7 @@ int DwNntpClient::Last()
 int DwNntpClient::List()
 {
     mReplyCode = 0;
-    mStatusResponse.clear();
-    mTextResponse.clear();
+    mStatusResponse = mTextResponse = "";
     mLastCommand = kCmdList;
     strcpy(mSendBuffer, "LIST\r\n");
     DBG_NNTP_STMT(cout << "C: " << mSendBuffer << flush;)
@@ -384,8 +371,7 @@ int DwNntpClient::Newgroups(const char* aDate, const char* aTime,
     DwBool aIsGmt, const char* aDistribution)
 {
     mReplyCode = 0;
-    mStatusResponse.clear();
-    mTextResponse.clear();
+    mStatusResponse = mTextResponse = "";
     mLastCommand = kCmdNewgroups;
     strcpy(mSendBuffer, "NEWGROUPS ");
     strncat(mSendBuffer, aDate, 16);
@@ -416,8 +402,7 @@ int DwNntpClient::Newnews(const char* aNewsgroups, const char* aDate,
     const char* aTime, DwBool aIsGmt, const char* aDistribution)
 {
     mReplyCode = 0;
-    mStatusResponse.clear();
-    mTextResponse.clear();
+    mStatusResponse = mTextResponse = "";
     mLastCommand = kCmdNewnews;
     strcpy(mSendBuffer, "NEWNEWS ");
     strncat(mSendBuffer, aNewsgroups, SEND_BUFFER_SIZE-64);
@@ -450,8 +435,7 @@ int DwNntpClient::Newnews(const char* aNewsgroups, const char* aDate,
 int DwNntpClient::Next()
 {
     mReplyCode = 0;
-    mStatusResponse.clear();
-    mTextResponse.clear();
+    mStatusResponse = mTextResponse = "";
     mLastCommand = kCmdNext;
     strcpy(mSendBuffer, "NEXT\r\n");
     DBG_NNTP_STMT(cout << "C: " << mSendBuffer << flush;)
@@ -467,8 +451,7 @@ int DwNntpClient::Next()
 int DwNntpClient::Post()
 {
     mReplyCode = 0;
-    mStatusResponse.clear();
-    mTextResponse.clear();
+    mStatusResponse = mTextResponse = "";
     mLastCommand = kCmdPost;
     strcpy(mSendBuffer, "POST\r\n");
     DBG_NNTP_STMT(cout << "C: " << mSendBuffer << flush;)
@@ -484,8 +467,7 @@ int DwNntpClient::Post()
 int DwNntpClient::Quit()
 {
     mReplyCode = 0;
-    mStatusResponse.clear();
-    mTextResponse.clear();
+    mStatusResponse = mTextResponse = "";
     mLastCommand = kCmdQuit;
     strcpy(mSendBuffer, "QUIT\r\n");
     DBG_NNTP_STMT(cout << "C: " << mSendBuffer << flush;)
@@ -501,8 +483,7 @@ int DwNntpClient::Quit()
 int DwNntpClient::Slave()
 {
     mReplyCode = 0;
-    mStatusResponse.clear();
-    mTextResponse.clear();
+    mStatusResponse = mTextResponse = "";
     mLastCommand = kCmdSlave;
     strcpy(mSendBuffer, "SLAVE\r\n");
     DBG_NNTP_STMT(cout << "C: " << mSendBuffer << flush;)
@@ -524,8 +505,7 @@ int DwNntpClient::SendData(const DwString& aStr)
 int DwNntpClient::SendData(const char* aBuf, int aBufLen)
 {
     mReplyCode = 0;
-    mStatusResponse.clear();
-    mTextResponse.clear();
+    mStatusResponse = mTextResponse = "";
 
     int pos = 0;
     int len = 0;
@@ -581,7 +561,7 @@ int DwNntpClient::SendData(const char* aBuf, int aBufLen)
                     }
                     mSendBuffer[iDst++] = '.';
                 }
-                mSendBuffer[iDst++] = ch;
+                mSendBuffer[iDst++] = (char) ch;
                 ++iSrc;
                 tLastLastChar = tLastChar;
                 tLastChar = ch;
@@ -622,7 +602,7 @@ int DwNntpClient::SendData(const char* aBuf, int aBufLen)
 void DwNntpClient::PGetStatusResponse()
 {
     mReplyCode = 0;
-    mStatusResponse.clear();
+    mStatusResponse = "";
     char* ptr;
     int len;
     int err = PGetLine(&ptr, &len);
@@ -639,7 +619,7 @@ void DwNntpClient::PGetStatusResponse()
 
 void DwNntpClient::PGetTextResponse()
 {
-    mTextResponse.clear();
+    mTextResponse = "";
 
     // Get a line at a time until we get CR LF . CR LF
 

@@ -32,59 +32,64 @@
 int main()
 {
     // Initialize the library
+
     DwInitialize();
-    
+
     // Get a buffer of data from a text file
-    char* buff = new char[10000];
-    int buffPos = 0;
-    ifstream istrm("test03.txt");
-    while (1) {
-        char ch;
-        istrm.get(ch);
-        if (!istrm || buffPos == 9999) break;
-        buff[buffPos++] = ch;
+
+    DwString buffer = "";
+    DwString line;
+    ifstream istrm("exampl03.txt");
+    while (DwTrue) {
+        getline(istrm, line);
+        if (istrm.eof()) {
+            break;
+        }
+        buffer += line + DW_EOL;
     }
-    buff[buffPos] = 0;
     istrm.close();
 
-    // Add the buffer to a DwString
-    DwString data(buff, 10000, 0, buffPos);
-
     // Create a MultipartMessage
+
     MultipartMessage msg;
 
     // Create MIME-Version and Message-id header fields
+
     msg.SetAutomaticFields();
 
     // Set header fields
+
     DwUint32 t = (DwUint32) time(NULL);
     msg.SetDate(t);
-    msg.SetFrom("Alfred <alfred@batcave.us>");
-    msg.SetTo("Bruce Wayne <bwayne@mega.com>");
-    msg.SetCc("Robin");
-    msg.SetBcc("Penguin");
-    msg.SetSubject("Here's a multipart message");
+    msg.SetFrom("Emily Postnews <emily.postnews@usenet.com>");
+    msg.SetTo("verbose@noisy");
+    msg.SetCc("forgetful@myvax");
+    msg.SetBcc("eager@beaver.dam");
+    msg.SetSubject("Getting email through");
 
     // Add body part 1
+
     MultipartBodyPart part;
     part.SetType(DwMime::kTypeText);
     part.SetSubtype(DwMime::kSubtypePlain);
     part.SetContentTransferEncoding(DwMime::kCte7bit);
     part.SetContentDescription("text, unencoded");
-    part.SetBody(data);
+    part.SetBody(buffer);
     msg.AddBodyPart(part);
 
     // Add body part 2
+
     part.SetType(DwMime::kTypeText);
     part.SetSubtype(DwMime::kSubtypePlain);
     part.SetContentTransferEncoding(DwMime::kCteBase64);
     part.SetContentDescription("text, base64 encoded");
     DwString ascData;
-    DwEncodeBase64(data, ascData);
+    DwEncodeBase64(buffer, ascData);
     part.SetBody(ascData);
     msg.AddBodyPart(part);
 
     // Write it to a file
+
     ofstream ostrm("exampl03.out");
     ostrm << msg.AsString();
 

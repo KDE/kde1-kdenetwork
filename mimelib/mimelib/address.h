@@ -48,7 +48,19 @@ class DwMailboxList;
 //. {\tt DwAddress} is an abstract base class.  Instead, you must instantiate
 //. objects of type {\tt DwMailbox} or {\tt DwGroup}, which are subclasses
 //. of {\tt DwAddress}.
+//.
+//. To determine the actual type of a {\tt DwAddress} object, you can use
+//. the member functions {\tt IsMailbox()} and {\tt IsGroup()}.
+//.
+//. If the string representation assigned to a {\tt DwAddress} is improperly
+//. formed, the parse method will fail.  To determine if the parse method
+//. failed, call the member function {\tt IsValid()}.
+//.
+//. A {\tt DwAddress} object can be contained in list.  To get the next
+//. {\tt DwAddress} object in the list, call the member function {\tt Next()}.
 //=============================================================================
+// Last modified 1997-08-23
+//+ Noentry ~DwAddress mNext mIsValid sClassName _PrintDebugInfo
 
 
 class DW_EXPORT DwAddress : public DwFieldBody {
@@ -60,14 +72,14 @@ public:
     virtual ~DwAddress();
 
     DwBool IsMailbox() const;
-    //. Returns true (non-zero value) if this object is a {\tt DwMailbox}.
+    //. Returns true value if this object is a {\tt DwMailbox}.
 
     DwBool IsGroup() const;
-    //. Returns true (non-zero value) if this object is a {\tt DwGroup}.
+    //. Returns true value if this object is a {\tt DwGroup}.
 
     inline DwBool IsValid() const;
-    //. Returns true (non-zero value) if the last parse was successful.
-    //. Returns false (zero) if the last parse failed (bad address) or
+    //. Returns true value if the last parse was successful.
+    //. Returns false if the last parse failed (bad address) or
     //. the {\tt Parse()} member function was never called.
 
     DwAddress* Next() const;
@@ -87,21 +99,23 @@ protected:
     DwAddress(const DwString& aStr, DwMessageComponent* aParent=0);
     //. The first constructor is the default constructor, which sets the
     //. {\tt DwAddress} object's string representation to the empty string
-    //. and sets its parent to NULL.
+    //. and sets its parent to {\tt NULL}.
     //.
     //. The second constructor is the copy constructor, which copies the
     //. string representation and all attributes from {\tt aAddress}.
-    //. The parent of the new {\tt DwAddress} object is set to NULL.
+    //. The parent of the new {\tt DwAddress} object is set to {\tt NULL}.
     //.
     //. The third constructor copies {\tt aStr} to the {\tt DwAddress}
     //. object's string representation and sets {\tt aParent} as its parent.
     //. The virtual member function {\tt Parse()} should be called immediately
     //. after this constructor in order to parse the string representation.
-    //. Unless it is NULL, {\tt aParent} should point to an object of a class
-    //. derived from {\tt DwField}.
+    //. Unless it is {\tt NULL}, {\tt aParent} should point to an object of
+    //. a class derived from {\tt DwField}.
 
     const DwAddress& operator = (const DwAddress& aAddr);
-    //. This is the assignment operator, which follows regular semantics.
+    //. This is the assignment operator, which performs a deep copy of
+    //. {\tt aAddr}.  The parent node of the {\tt DwAddress} object
+    //. is not changed.
 
     int mIsValid;
     //. This data member is set to true if the parse method was successful.

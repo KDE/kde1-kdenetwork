@@ -58,7 +58,8 @@ class ostream;
 //.    time zone as elements of its broken-down representation.
 //.    {\tt DwMessageComponent} does not deal directly with the
 //.    broken-down representation, since it is component-specific.
-//.    Instead, it leaves the job up to derived classes.
+//.    Derived classes bear all the responsibility for their broken-down
+//.    representations.
 //.
 //. \item
 //.    A parse method to extract the broken-down representation from
@@ -70,7 +71,7 @@ class ostream;
 //.    the parse method for a derived class.
 //.
 //. \item
-//.    A assemble method to convert the broken-down representation to
+//.    An assemble method to convert the broken-down representation to
 //.    a string representation.  This is the opposite of the parse method.
 //.    In the {\tt DwDateTime} class, for example, the assemble method
 //.    creates an RFC-822 {\it date-time} string from values of the
@@ -87,15 +88,16 @@ class ostream;
 //.    when they are inconsistent.  The flag is set automatically
 //.    whenever a {\tt DwMessageComponent} object's broken-down
 //.    representation is changed by calling one of the object's member
-//.    functions, and it is cleared when the assemble method is executed.
-//.    {\tt DwMessageComponent} also provides a member function
-//.    {\tt SetModified()} which forces the is-modified flag to be set.
+//.    functions, and it is cleared when the assemble or parse method
+//.    is executed.  {\tt DwMessageComponent} also provides a member
+//.    function {\tt SetModified()} which forces the is-modified flag
+//.    to be set.
 //.
 //. \item
 //.    A parent.  Most message components are part of another component.
-//.    A {\it header} is part of a {\it message} or {\it body part}, a
-//.    {\it field} is part of a {\it header}, a {\it field-body} is part
-//.    of a {\it field}, and so on.  The parent of
+//.    A collection of headers is part of a message or body part, a header
+//.    field is part of a collection of headers, a field-body is part
+//.    of a header field, and so on.  The parent of
 //.    a component is the component that contains it.  This tree structure
 //.    is important, since a component's parent must be parsed before the
 //.    component can be.  Also, a component's string representation must
@@ -108,17 +110,19 @@ class ostream;
 //. \item
 //.    Children.  The preceding discussion about a component's parent is
 //.    relevant to an understanding of a component's children.  A component's
-//.    parse method typically calls the parse methods of its children
+//.    parse method calls the parse methods of its children
 //.    after it has executed its own parse method (and, in some cases, created
 //.    all of its children).
 //.    Also, a component typically calls the assemble method of its
 //.    children before it executes its own.  A component's child may request
 //.    that the component set its is-modified flag.
-//.    {\tt DwMessageComponent} does not deal directly with children.  Instead,
-//.    it leaves the job up to derived classes.
+//.    {\tt DwMessageComponent} does not deal directly with children.
+//.    Derived classes bear all the responsibility for handling their
+//.    children.
 //. \end{enumerate}
 //=============================================================================
-
+//+ Noentry ~DwMessageComponent _PrintDebugInfo mString mIsModified mParent
+//+ Noentry mClassId mClassName
 
 class DW_EXPORT DwMessageComponent {
 
@@ -161,8 +165,8 @@ public:
     //. {\tt DwMessageComponent} object's string representation to the
     //. empty string and sets its parent to NULL.
     //.
-    //. The second constructor is the copy constructor, which copies the
-    //. string representation of {\tt aCmp}.  The parent of the new
+    //. The second constructor is the copy constructor, which performs
+    //. a deep copy of {\tt aCmp}.  The parent of the new
     //. {\tt DwMessageComponent} object is set to NULL.
     //.
     //. The third constructor copies {\tt aStr} to the new
@@ -175,7 +179,8 @@ public:
     virtual ~DwMessageComponent();
 
     const DwMessageComponent& operator = (const DwMessageComponent& aCmp);
-    //. This is the assignment operator, which follows regular semantics.
+    //. This is the assignment operator, which performs a deep copy of
+    //. {\tt aCmp}.
 
     virtual void Parse() = 0;
     //. A pure virtual function which provides an interface to the parse

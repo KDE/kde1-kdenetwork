@@ -31,44 +31,49 @@
 int main()
 {
     // Initialize the library
+
     DwInitialize();
-    
+
     // Get a buffer of data from a text file
-    char* buff = new char[10000];
-    int buffPos = 0;
-    ifstream istrm("test01.txt");
-    while (1) {
-        char ch;
-        istrm.get(ch);
-        if (!istrm || buffPos == 9999) break;
-        buff[buffPos++] = ch;
+
+    DwString buffer = "";
+    DwString line;
+    ifstream istrm("exampl01.txt");
+    while (DwTrue) {
+        getline(istrm, line);
+        if (istrm.eof()) {
+            break;
+        }
+        buffer += line + DW_EOL;
     }
     istrm.close();
-    
-    // Add the buffer to a DwString
-    DwString data(buff, 10000, 0, buffPos);
 
     // Create a message
+
     BasicMessage msg;
-    
+
     // Create MIME-Version and Message-id header fields
+
     msg.SetAutomaticFields();
 
     // Set header fields
+
     msg.SetDate(time(NULL));
     msg.SetTypeStr("Text");
     msg.SetSubtypeStr("Plain");
     msg.SetCteStr("7bit");
-    msg.SetFrom("Alfred <alfred@batcave.us>");
-    msg.SetTo("Bruce Wayne <bwayne@mega.com>");
-    msg.SetCc("Robin");
-    msg.SetBcc("Penguin");
-    msg.SetSubject("Here's a simple message");
+    msg.SetFrom("Emily Postnews <emily.postnews@usenet.com>");
+    msg.SetTo("verbose@noisy");
+    msg.SetCc("forgetful@myvax");
+    msg.SetBcc("eager@beaver.dam");
+    msg.SetSubject("Re: How long should my signature be?");
 
     // Set body
-    msg.SetBody(data);
+
+    msg.SetBody(buffer);
 
     // Write it to a file
+	
     ofstream ostrm("exampl01.out");
     ostrm << msg.AsString();
 
