@@ -180,7 +180,7 @@ void
 HostDlg::buildCommandLine(QString args)
 {
   QString s, queryType;
-		   << this.name() 
+  QRegExp *regexp;
   int len, start;
   QString bin;
   KConfig *kc = kapp->getConfig();

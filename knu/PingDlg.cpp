@@ -111,7 +111,7 @@ PingDlg::~PingDlg()
  * build the command line from widgets
  */
 void
-		   << this.name() 
+PingDlg::buildCommandLine(QString args)
 {
   QString s;
   KConfig *kc = kapp->getConfig();

@@ -133,7 +133,7 @@ TracerouteDlg::~TracerouteDlg()
 void
 TracerouteDlg::buildCommandLine(QString args)
 {
-		   << this.name() 
+  int     iMaxHops;
   QString sMaxHops;
   QString s;
   KConfig *kc = kapp->getConfig();
