@@ -2,6 +2,8 @@ pkg_DATA =	Telekom_200km.rst \
 		Telekom_50km.rst \
 		Telekom_City.rst \
 		Telekom_Ferntarif.rst \
-		Telekom_Regio_Call.rst
+		Telekom_Regio_Call.rst \
+		NetCologne_50km.rst NetCologne_Germany.rst \
+		NetCologne_City.rst NetCologne_Time_Line.rst    
 
 pkgdir = $(kde_datadir)/kppp/Rules/Germany
