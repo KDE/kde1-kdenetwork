@@ -369,9 +369,9 @@ private:
     DwString    mTextResponse;
     DwObserver* mObserver;
 
-    int PGetLine(char** aPtr, int* aLen);
-    void PGetStatusResponse();
-    void PGetTextResponse();
+    virtual int PGetLine(char** aPtr, int* aLen);
+    virtual void PGetStatusResponse();
+    virtual void PGetTextResponse();
 
 };
 
