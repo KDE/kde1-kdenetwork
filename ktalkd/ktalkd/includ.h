@@ -13,18 +13,15 @@
 
 #ifdef HAVE_PATHS_H
 #include <paths.h>
-#else
-#ifdef HAVE_UTMP_H
-#include <utmp.h>
-#define _PATH_DEV "/dev/"
-#define _PATH_UTMP UTMP_FILE
-#define _PATH_TMP "/tmp/"
-#else
-#warning paths.h not found : using /dev/ and /var/run/utmp as default
-#define _PATH_DEV "/dev/"
-#define _PATH_UTMP "/var/run/utmp"
-#define _PATH_TMP "/tmp/"
 #endif
+#ifndef _PATH_UTMP
+#define _PATH_UTMP UTMP
+#endif
+#ifndef _PATH_DEV
+#define _PATH_DEV "/dev/"
+#endif
+#ifndef _PATH_TMP
+#define _PATH_TMP "/tmp/"
 #endif
 
 #endif /* __INCLUD_H */
