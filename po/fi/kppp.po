@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KPPP\n"
-"POT-Creation-Date: 1998-11-29 01:52+0100\n"
+"POT-Creation-Date: 1998-11-30 01:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Kim Enkovaara <kim.enkovaara@iki.fi>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -822,7 +822,7 @@ msgstr ""
 "ei synny t‰ss‰ ajassa <i>kppp</i>,\n"
 "luovuttaa ja lopettaa pppd:n."
 
-#: general.cpp:73 general.cpp:427 general.cpp:516
+#: general.cpp:73 general.cpp:428 general.cpp:517
 msgid "Seconds"
 msgstr "sekuntia"
 
@@ -929,6 +929,7 @@ msgid "About kppp"
 msgstr "Tietoja kppp:ta"
 
 #: general.cpp:209
+#, fuzzy
 msgid ""
 "\n"
 "A dialer and front-end to pppd\n"
@@ -938,6 +939,7 @@ msgid ""
 "    Harri Porten <porten@kde.org>\n"
 "    Mario Weilguni <mweilguni@kde.org>\n"
 "\n"
+"Original author: Bernd Johannes Wuebben\n"
 "Currently maintained by Harri Porten and Mario\n"
 "Weilguni. Please send all bug reports to the\n"
 "current maintainer.\n"
@@ -945,16 +947,24 @@ msgid ""
 "This program is distributed under the GNU GPL\n"
 "(GNU General Public License)."
 msgstr ""
+"MiniTerm - Terminaaliemulaattori KPPP:lle\n"
+"\n"
+"(c) 1997 Bernd Johannes Wuebben <wuebben@kde.org>\n"
+"(c) 1998 Harri Porten <porten@kde.org>\n"
+"(c) 1998 Mario Weilguni <mweilguni@kde.org>\n"
+"\n"
+"T‰m‰ ohjelma on julkaistu GNU GPL\n"
+"(GNU General Public License) lisenssill‰."
 
-#: general.cpp:236
+#: general.cpp:237
 msgid "Serial device"
 msgstr "Sarjaliikennelaite"
 
-#: general.cpp:239
+#: general.cpp:240
 msgid "Modem Device:"
 msgstr "Modeemin Laite:"
 
-#: general.cpp:279
+#: general.cpp:280
 msgid ""
 "This specifies the serial port your modem is attached \n"
 "to. On Linux/x86, typically this is either /dev/ttyS0 \n"
@@ -972,15 +982,15 @@ msgstr ""
 "emulaatio (useimmat kortit Linuxilla tukevat t‰t‰), valitse\n"
 "yksi /dev/ttyIx laitteista."
 
-#: general.cpp:288
+#: general.cpp:289
 msgid "Flow Control:"
 msgstr "Vuonohjaus:"
 
-#: general.cpp:294
+#: general.cpp:295
 msgid "None"
 msgstr ""
 
-#: general.cpp:303
+#: general.cpp:304
 msgid ""
 "Specifies how the serial port and modem\n"
 "communicate. You should not change this unless\n"
@@ -994,11 +1004,11 @@ msgstr ""
 "\n"
 "<b>Oletusarvo</b>: CRTSCTS"
 
-#: general.cpp:309
+#: general.cpp:310
 msgid "Line Termination:"
 msgstr "Linjan Terminointi:"
 
-#: general.cpp:322
+#: general.cpp:323
 msgid ""
 "Specifies how AT commands are send to your\n"
 "modem. Most modems will work fine with the\n"
@@ -1016,11 +1026,11 @@ msgstr ""
 "\n"
 "<b>Oletusarvo</b>: CR/LF"
 
-#: general.cpp:330
+#: general.cpp:331
 msgid "Connection Speed:"
 msgstr "Yhteysnopeus:"
 
-#: general.cpp:373
+#: general.cpp:374
 msgid ""
 "Specifies the speed your modem and the serial\n"
 "port talk to each other. You should begin with\n"
@@ -1036,11 +1046,11 @@ msgstr ""
 "bit/s (ellet ole varma ett‰ sarjaportti tukee\n"
 "suurempia nopeuksia)."
 
-#: general.cpp:388
+#: general.cpp:389
 msgid "Lock File Directory:"
 msgstr "Lukkotiedoston hakemisto:"
 
-#: general.cpp:402
+#: general.cpp:403
 msgid ""
 "To prevent other programs from accessing the\n"
 "modem while a connection is established, a\n"
@@ -1060,11 +1070,11 @@ msgstr ""
 "ƒl‰ koskea t‰h‰n ellet tied‰ mit‰ teet. Arvolle\n"
 "ei ole oletusta koska se vaihtelee systeemist‰ toiseen."
 
-#: general.cpp:413
+#: general.cpp:414
 msgid "Modem Timeout:"
 msgstr "Modeemin odotusaika:"
 
-#: general.cpp:431
+#: general.cpp:432
 msgid ""
 "This specifies how long <i>kppp</i> waits for a\n"
 "<i>CONNECT</i> response from your modem. The\n"
@@ -1074,15 +1084,15 @@ msgstr ""
 "<i>CONNECT</i> vastausta modeemilta. Suositeltu\n"
 "arvo on 30 sekuntia"
 
-#: general.cpp:492 main.cpp:646
+#: general.cpp:493 main.cpp:646
 msgid "Modem"
 msgstr "Modeemi"
 
-#: general.cpp:503
+#: general.cpp:504
 msgid "Busy Wait:"
 msgstr "Varatun j‰lkeen odotus:"
 
-#: general.cpp:521
+#: general.cpp:522
 msgid ""
 "Specifies the number of seconds to wait before\n"
 "redial if all dialed numbers are busy. This is\n"
@@ -1100,11 +1110,11 @@ msgstr ""
 "Oletusarvo on 0 sekuntia, sinun ei tule muuttaa t‰t‰\n"
 "ellei sinulla ole tarvetta t‰h‰n."
 
-#: general.cpp:535
+#: general.cpp:536
 msgid "Modem volume"
 msgstr "ƒ‰nenvoimakkuus"
 
-#: general.cpp:547
+#: general.cpp:548
 msgid ""
 "Most modems have a speaker which makes\n"
 "a lot of noise when dialing. Here you can\n"
@@ -1122,11 +1132,11 @@ msgstr ""
 "Jos t‰m‰ ei toimi modeemillasi sinun tulee\n"
 "muokata modeemin ‰‰nenvoimakkuuskomentoa."
 
-#: general.cpp:559
+#: general.cpp:560
 msgid "Modem Asserts CD Line."
 msgstr "Modeemi asettaa CD-linjan."
 
-#: general.cpp:567
+#: general.cpp:568
 msgid ""
 "This controls how <i>kppp</i> detects that the modem\n"
 "is not responding. Unless you are having\n"
@@ -1140,21 +1150,21 @@ msgstr ""
 "\n"
 "<b>Oletusarvo</b>: on"
 
-#: general.cpp:580
+#: general.cpp:581
 msgid "Modem Commands"
 msgstr "Modeemin komennot"
 
-#: general.cpp:582
+#: general.cpp:583
 msgid ""
 "Allows you to change the AT command for\n"
 "your modem."
 msgstr "Mahdollistaa AT-komentojen muuttamisen."
 
-#: general.cpp:585
+#: general.cpp:586
 msgid "Query Modem"
 msgstr "Kysele modeemilta"
 
-#: general.cpp:587
+#: general.cpp:588
 msgid ""
 "Most modems support the ATI command set to\n"
 "find out vendor and revision of your modem.\n"
@@ -1169,11 +1179,11 @@ msgstr ""
 "Paina nappia hakeaksi modeemilta n‰m‰ tiedot.\n"
 "tiedoista voi olla apua modeemia asettaessasi."
 
-#: general.cpp:594
+#: general.cpp:595
 msgid "Terminal"
 msgstr "P‰‰te"
 
-#: general.cpp:596
+#: general.cpp:597
 msgid ""
 "Opens the built-in terminal program. You\n"
 "can use this if you want to play around\n"
@@ -1183,23 +1193,23 @@ msgstr ""
 "k‰ytt‰‰ terminaalia jos haluat antaa\n"
 "modeemille AT-komentoja."
 
-#: general.cpp:660
+#: general.cpp:661
 msgid "Throughput graph"
 msgstr "Nopeusgraafi"
 
-#: general.cpp:669
+#: general.cpp:670
 msgid "Background color"
 msgstr "Taustan v‰ri"
 
-#: general.cpp:676
+#: general.cpp:677
 msgid "Text color"
 msgstr "Tekstin v‰ri"
 
-#: general.cpp:683
+#: general.cpp:684
 msgid "Input bytes color"
 msgstr "Sis‰‰ntulevien v‰ri"
 
-#: general.cpp:690
+#: general.cpp:691
 msgid "Output bytes color"
 msgstr "Ulosmenevien v‰ri"
 

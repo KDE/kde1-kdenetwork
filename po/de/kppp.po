@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1998-11-29 01:52+0100\n"
+"POT-Creation-Date: 1998-11-30 01:53+0100\n"
 "PO-Revision-Date: 1998-11-21 15:12+0100\n"
 "Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
 "Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
@@ -826,7 +826,7 @@ msgstr ""
 "Wenn in diesem Zeitraum keine Verbindung besteht,\n"
 "gibt <i>kppp</i> auf und schickt ein Killsignal an pppd."
 
-#: general.cpp:73 general.cpp:427 general.cpp:516
+#: general.cpp:73 general.cpp:428 general.cpp:517
 msgid "Seconds"
 msgstr "Sekunden"
 
@@ -935,6 +935,7 @@ msgid "About kppp"
 msgstr "Über kppp"
 
 #: general.cpp:209
+#, fuzzy
 msgid ""
 "\n"
 "A dialer and front-end to pppd\n"
@@ -944,6 +945,7 @@ msgid ""
 "    Harri Porten <porten@kde.org>\n"
 "    Mario Weilguni <mweilguni@kde.org>\n"
 "\n"
+"Original author: Bernd Johannes Wuebben\n"
 "Currently maintained by Harri Porten and Mario\n"
 "Weilguni. Please send all bug reports to the\n"
 "current maintainer.\n"
@@ -966,15 +968,15 @@ msgstr ""
 "Das Programm ist unter der GNU GPL veröffentlicht\n"
 "(GNU General Public License)."
 
-#: general.cpp:236
+#: general.cpp:237
 msgid "Serial device"
 msgstr "Serielles Gerät"
 
-#: general.cpp:239
+#: general.cpp:240
 msgid "Modem Device:"
 msgstr "Modemgerät:"
 
-#: general.cpp:279
+#: general.cpp:280
 msgid ""
 "This specifies the serial port your modem is attached \n"
 "to. On Linux/x86, typically this is either /dev/ttyS0 \n"
@@ -992,15 +994,15 @@ msgstr ""
 "besitzen (die meisten Karten unter Linux unterstützen das),\n"
 "dann sollten Sie eines der /dev/ttyIx-Geräte auswählen."
 
-#: general.cpp:288
+#: general.cpp:289
 msgid "Flow Control:"
 msgstr "Flußkontrolle:"
 
-#: general.cpp:294
+#: general.cpp:295
 msgid "None"
 msgstr "Keine"
 
-#: general.cpp:303
+#: general.cpp:304
 msgid ""
 "Specifies how the serial port and modem\n"
 "communicate. You should not change this unless\n"
@@ -1014,11 +1016,11 @@ msgstr ""
 "\n"
 "<b>Voreinstellung</b>: CRTSCTS"
 
-#: general.cpp:309
+#: general.cpp:310
 msgid "Line Termination:"
 msgstr "Zeilenende:"
 
-#: general.cpp:322
+#: general.cpp:323
 msgid ""
 "Specifies how AT commands are send to your\n"
 "modem. Most modems will work fine with the\n"
@@ -1036,11 +1038,11 @@ msgstr ""
 "\n"
 "<b>Voreinstellung</b>: CR/LF"
 
-#: general.cpp:330
+#: general.cpp:331
 msgid "Connection Speed:"
 msgstr "Geschwindigkeit:"
 
-#: general.cpp:373
+#: general.cpp:374
 msgid ""
 "Specifies the speed your modem and the serial\n"
 "port talk to each other. You should begin with\n"
@@ -1056,11 +1058,11 @@ msgstr ""
 "versuchen, aber nicht auf mehr als 115200 bits/sec (wenn Ihr\n"
 "serieller Port nicht sicher höhere Geschwindigkeiten unterstützt)."
 
-#: general.cpp:388
+#: general.cpp:389
 msgid "Lock File Directory:"
 msgstr "Verzeichnis für Lock-Datei:"
 
-#: general.cpp:402
+#: general.cpp:403
 msgid ""
 "To prevent other programs from accessing the\n"
 "modem while a connection is established, a\n"
@@ -1082,11 +1084,11 @@ msgstr ""
 "Sie tun. Es gibt keine Voreinstellung, weil das Ganze\n"
 "vom jeweiligen Betriebssystem abhängt."
 
-#: general.cpp:413
+#: general.cpp:414
 msgid "Modem Timeout:"
 msgstr "Modem-Timeout:"
 
-#: general.cpp:431
+#: general.cpp:432
 msgid ""
 "This specifies how long <i>kppp</i> waits for a\n"
 "<i>CONNECT</i> response from your modem. The\n"
@@ -1096,15 +1098,15 @@ msgstr ""
 "<i>CONNECT</i>-Signal Ihres Modems wartet.\n"
 "Empfohlener Wert ist 30 Sekunden."
 
-#: general.cpp:492 main.cpp:646
+#: general.cpp:493 main.cpp:646
 msgid "Modem"
 msgstr "Modem"
 
-#: general.cpp:503
+#: general.cpp:504
 msgid "Busy Wait:"
 msgstr "Besetzt-Wartezeit:"
 
-#: general.cpp:521
+#: general.cpp:522
 msgid ""
 "Specifies the number of seconds to wait before\n"
 "redial if all dialed numbers are busy. This is\n"
@@ -1122,11 +1124,11 @@ msgstr ""
 "Die Voreinstellung ist 0 Sekunden. Sie sollten das nicht\n"
 "ändern, wenn Sie nicht müssen."
 
-#: general.cpp:535
+#: general.cpp:536
 msgid "Modem volume"
 msgstr "Modem-Lautstärke"
 
-#: general.cpp:547
+#: general.cpp:548
 msgid ""
 "Most modems have a speaker which makes\n"
 "a lot of noise when dialing. Here you can\n"
@@ -1144,11 +1146,11 @@ msgstr ""
 "Wenn das mit Ihrem Modem nicht funktioniert, dann\n"
 "müssen Sie den Befehl für den Modem-Lautsprecher ändern."
 
-#: general.cpp:559
+#: general.cpp:560
 msgid "Modem Asserts CD Line."
 msgstr "Modem fügt Trägererkennung ein."
 
-#: general.cpp:567
+#: general.cpp:568
 msgid ""
 "This controls how <i>kppp</i> detects that the modem\n"
 "is not responding. Unless you are having\n"
@@ -1162,11 +1164,11 @@ msgstr ""
 "\n"
 "<b>Voreinstellung</b>: ein"
 
-#: general.cpp:580
+#: general.cpp:581
 msgid "Modem Commands"
 msgstr "Modembefehle"
 
-#: general.cpp:582
+#: general.cpp:583
 msgid ""
 "Allows you to change the AT command for\n"
 "your modem."
@@ -1174,11 +1176,11 @@ msgstr ""
 "Erlaubt Ihnen, die AT-Befehle für Ihr Modem\n"
 "zu ändern."
 
-#: general.cpp:585
+#: general.cpp:586
 msgid "Query Modem"
 msgstr "Modem abfragen"
 
-#: general.cpp:587
+#: general.cpp:588
 msgid ""
 "Most modems support the ATI command set to\n"
 "find out vendor and revision of your modem.\n"
@@ -1194,11 +1196,11 @@ msgstr ""
 "abzufragen.. Sie kann nützlich sein, um bei der Einrichtung\n"
 "des Modems zu helfen."
 
-#: general.cpp:594
+#: general.cpp:595
 msgid "Terminal"
 msgstr "Terminal"
 
-#: general.cpp:596
+#: general.cpp:597
 msgid ""
 "Opens the built-in terminal program. You\n"
 "can use this if you want to play around\n"
@@ -1208,23 +1210,23 @@ msgstr ""
 "können das benutzen, wenn Sie mit dem AT-Befehlssatz\n"
 "Ihres Modems experimentieren möchten."
 
-#: general.cpp:660
+#: general.cpp:661
 msgid "Throughput graph"
 msgstr "Durchsatz-Graphik"
 
-#: general.cpp:669
+#: general.cpp:670
 msgid "Background color"
 msgstr "Hintergrundfarbe"
 
-#: general.cpp:676
+#: general.cpp:677
 msgid "Text color"
 msgstr "Textfarbe"
 
-#: general.cpp:683
+#: general.cpp:684
 msgid "Input bytes color"
 msgstr "Farbe der Input-Bytes"
 
-#: general.cpp:690
+#: general.cpp:691
 msgid "Output bytes color"
 msgstr "Farbe der Output-Bytes"
 

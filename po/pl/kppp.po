@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp \n"
-"POT-Creation-Date: 1998-11-29 01:52+0100\n"
+"POT-Creation-Date: 1998-11-30 01:53+0100\n"
 "PO-Revision-Date: 1998-10-25 23:05+0100\n"
 "Last-Translator: Jacek Stolarczyk <jacek@mer.chemia.polsl.gliwice.pl>\n"
 "Content-Type: text/plain; charset=iso-8859-2\n"
@@ -703,7 +703,7 @@ msgid ""
 "<i>kppp</i> will give up and kill pppd."
 msgstr ""
 
-#: general.cpp:73 general.cpp:427 general.cpp:516
+#: general.cpp:73 general.cpp:428 general.cpp:517
 msgid "Seconds"
 msgstr "sekund"
 
@@ -796,6 +796,7 @@ msgid ""
 "    Harri Porten <porten@kde.org>\n"
 "    Mario Weilguni <mweilguni@kde.org>\n"
 "\n"
+"Original author: Bernd Johannes Wuebben\n"
 "Currently maintained by Harri Porten and Mario\n"
 "Weilguni. Please send all bug reports to the\n"
 "current maintainer.\n"
@@ -804,15 +805,15 @@ msgid ""
 "(GNU General Public License)."
 msgstr ""
 
-#: general.cpp:236
+#: general.cpp:237
 msgid "Serial device"
 msgstr "Port szeregowy"
 
-#: general.cpp:239
+#: general.cpp:240
 msgid "Modem Device:"
 msgstr "Port szeregowy:"
 
-#: general.cpp:279
+#: general.cpp:280
 msgid ""
 "This specifies the serial port your modem is attached \n"
 "to. On Linux/x86, typically this is either /dev/ttyS0 \n"
@@ -823,15 +824,15 @@ msgid ""
 "should select one of the /dev/ttyIx devices."
 msgstr ""
 
-#: general.cpp:288
+#: general.cpp:289
 msgid "Flow Control:"
 msgstr "Kontrola przep³ywu:"
 
-#: general.cpp:294
+#: general.cpp:295
 msgid "None"
 msgstr "¯aden"
 
-#: general.cpp:303
+#: general.cpp:304
 msgid ""
 "Specifies how the serial port and modem\n"
 "communicate. You should not change this unless\n"
@@ -840,11 +841,11 @@ msgid ""
 "<b>Default</b>: CRTSCTS"
 msgstr ""
 
-#: general.cpp:309
+#: general.cpp:310
 msgid "Line Termination:"
 msgstr "Znak koñca linii:"
 
-#: general.cpp:322
+#: general.cpp:323
 msgid ""
 "Specifies how AT commands are send to your\n"
 "modem. Most modems will work fine with the\n"
@@ -855,11 +856,11 @@ msgid ""
 "<b>Default</b>: CR/LF"
 msgstr ""
 
-#: general.cpp:330
+#: general.cpp:331
 msgid "Connection Speed:"
 msgstr "Szybko¶æ portu:"
 
-#: general.cpp:373
+#: general.cpp:374
 msgid ""
 "Specifies the speed your modem and the serial\n"
 "port talk to each other. You should begin with\n"
@@ -869,11 +870,11 @@ msgid ""
 "that your serial port supports higher speeds)."
 msgstr ""
 
-#: general.cpp:388
+#: general.cpp:389
 msgid "Lock File Directory:"
 msgstr "Kartoteka pliku blokuj±cego"
 
-#: general.cpp:402
+#: general.cpp:403
 msgid ""
 "To prevent other programs from accessing the\n"
 "modem while a connection is established, a\n"
@@ -886,26 +887,26 @@ msgid ""
 "on the operating system."
 msgstr ""
 
-#: general.cpp:413
+#: general.cpp:414
 msgid "Modem Timeout:"
 msgstr "Limit czasu modemu:"
 
-#: general.cpp:431
+#: general.cpp:432
 msgid ""
 "This specifies how long <i>kppp</i> waits for a\n"
 "<i>CONNECT</i> response from your modem. The\n"
 "recommended value is 30 seconds."
 msgstr ""
 
-#: general.cpp:492 main.cpp:646
+#: general.cpp:493 main.cpp:646
 msgid "Modem"
 msgstr "Modem"
 
-#: general.cpp:503
+#: general.cpp:504
 msgid "Busy Wait:"
 msgstr "Czekaj, gdy zajêty:"
 
-#: general.cpp:521
+#: general.cpp:522
 msgid ""
 "Specifies the number of seconds to wait before\n"
 "redial if all dialed numbers are busy. This is\n"
@@ -916,12 +917,12 @@ msgid ""
 "this unless you need to."
 msgstr ""
 
-#: general.cpp:535
+#: general.cpp:536
 #, fuzzy
 msgid "Modem volume"
 msgstr "Plik blokuj±cy modem:"
 
-#: general.cpp:547
+#: general.cpp:548
 msgid ""
 "Most modems have a speaker which makes\n"
 "a lot of noise when dialing. Here you can\n"
@@ -932,11 +933,11 @@ msgid ""
 "you must modify the modem volume command"
 msgstr ""
 
-#: general.cpp:559
+#: general.cpp:560
 msgid "Modem Asserts CD Line."
 msgstr "Modem kontroluje liniê CD"
 
-#: general.cpp:567
+#: general.cpp:568
 msgid ""
 "This controls how <i>kppp</i> detects that the modem\n"
 "is not responding. Unless you are having\n"
@@ -945,21 +946,21 @@ msgid ""
 "<b>Default</b>: on"
 msgstr ""
 
-#: general.cpp:580
+#: general.cpp:581
 msgid "Modem Commands"
 msgstr "Polecenia modemu"
 
-#: general.cpp:582
+#: general.cpp:583
 msgid ""
 "Allows you to change the AT command for\n"
 "your modem."
 msgstr ""
 
-#: general.cpp:585
+#: general.cpp:586
 msgid "Query Modem"
 msgstr "Testuj modem"
 
-#: general.cpp:587
+#: general.cpp:588
 msgid ""
 "Most modems support the ATI command set to\n"
 "find out vendor and revision of your modem.\n"
@@ -969,34 +970,34 @@ msgid ""
 "you setup the modem"
 msgstr ""
 
-#: general.cpp:594
+#: general.cpp:595
 msgid "Terminal"
 msgstr "Terminal"
 
-#: general.cpp:596
+#: general.cpp:597
 msgid ""
 "Opens the built-in terminal program. You\n"
 "can use this if you want to play around\n"
 "with your modem's AT command set"
 msgstr ""
 
-#: general.cpp:660
+#: general.cpp:661
 msgid "Throughput graph"
 msgstr ""
 
-#: general.cpp:669
+#: general.cpp:670
 msgid "Background color"
 msgstr ""
 
-#: general.cpp:676
+#: general.cpp:677
 msgid "Text color"
 msgstr ""
 
-#: general.cpp:683
+#: general.cpp:684
 msgid "Input bytes color"
 msgstr ""
 
-#: general.cpp:690
+#: general.cpp:691
 msgid "Output bytes color"
 msgstr ""
 

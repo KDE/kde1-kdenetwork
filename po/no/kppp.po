@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE NETWORK/kppp\n"
-"POT-Creation-Date: 1998-11-29 01:52+0100\n"
+"POT-Creation-Date: 1998-11-30 01:53+0100\n"
 "PO-Revision-Date: 1998-03-24 19:24+0100\n"
 "Last-Translator: Hans Petter Bieker <zerium@webindex.no>\n"
 "Language-Team: no <LL@li.org>\n"
@@ -824,7 +824,7 @@ msgstr ""
 "Hvis ingen forbindelse er laget i dette tidsrommet, vil\n"
 "<i>kppp</i> gi opp og drepe pppd."
 
-#: general.cpp:73 general.cpp:427 general.cpp:516
+#: general.cpp:73 general.cpp:428 general.cpp:517
 msgid "Seconds"
 msgstr "Sekunder"
 
@@ -931,6 +931,7 @@ msgid "About kppp"
 msgstr "Om kppp"
 
 #: general.cpp:209
+#, fuzzy
 msgid ""
 "\n"
 "A dialer and front-end to pppd\n"
@@ -940,6 +941,7 @@ msgid ""
 "    Harri Porten <porten@kde.org>\n"
 "    Mario Weilguni <mweilguni@kde.org>\n"
 "\n"
+"Original author: Bernd Johannes Wuebben\n"
 "Currently maintained by Harri Porten and Mario\n"
 "Weilguni. Please send all bug reports to the\n"
 "current maintainer.\n"
@@ -962,15 +964,15 @@ msgstr ""
 "Dette programmet er gitt ut under GNU GPL\n"
 "(GNU General Public License)."
 
-#: general.cpp:236
+#: general.cpp:237
 msgid "Serial device"
 msgstr "Seriell enhet"
 
-#: general.cpp:239
+#: general.cpp:240
 msgid "Modem Device:"
 msgstr "Modemenhet"
 
-#: general.cpp:279
+#: general.cpp:280
 msgid ""
 "This specifies the serial port your modem is attached \n"
 "to. On Linux/x86, typically this is either /dev/ttyS0 \n"
@@ -987,15 +989,15 @@ msgstr ""
 "Hvis du har et internt ISDN-kort med AT-kommandoemulering\n"
 "(de fleste kort under Linux støtter det), skal du velge /dev/ttyIx-enheter."
 
-#: general.cpp:288
+#: general.cpp:289
 msgid "Flow Control:"
 msgstr "Flytkontroll"
 
-#: general.cpp:294
+#: general.cpp:295
 msgid "None"
 msgstr "Ingen"
 
-#: general.cpp:303
+#: general.cpp:304
 msgid ""
 "Specifies how the serial port and modem\n"
 "communicate. You should not change this unless\n"
@@ -1009,11 +1011,11 @@ msgstr ""
 "\n"
 "<b>Standard</b>: CRTSCTS"
 
-#: general.cpp:309
+#: general.cpp:310
 msgid "Line Termination:"
 msgstr "Linjeslutt:"
 
-#: general.cpp:322
+#: general.cpp:323
 msgid ""
 "Specifies how AT commands are send to your\n"
 "modem. Most modems will work fine with the\n"
@@ -1030,11 +1032,11 @@ msgstr ""
 "\n"
 "<b>Standard</b>:CR/LF"
 
-#: general.cpp:330
+#: general.cpp:331
 msgid "Connection Speed:"
 msgstr "Oppkoplingshastighet:"
 
-#: general.cpp:373
+#: general.cpp:374
 msgid ""
 "Specifies the speed your modem and the serial\n"
 "port talk to each other. You should begin with\n"
@@ -1050,11 +1052,11 @@ msgstr ""
 "115200 bits/sek (med mindre du vet at serieporten\n"
 "støtter høyere hastigheter)."
 
-#: general.cpp:388
+#: general.cpp:389
 msgid "Lock File Directory:"
 msgstr "Katalog for låsfil:"
 
-#: general.cpp:402
+#: general.cpp:403
 msgid ""
 "To prevent other programs from accessing the\n"
 "modem while a connection is established, a\n"
@@ -1072,11 +1074,11 @@ msgstr ""
 "modemeter i bruk. Her kan du velge katalog\n"
 "hvor denne filen er opprettet."
 
-#: general.cpp:413
+#: general.cpp:414
 msgid "Modem Timeout:"
 msgstr "Timeout for modem:"
 
-#: general.cpp:431
+#: general.cpp:432
 msgid ""
 "This specifies how long <i>kppp</i> waits for a\n"
 "<i>CONNECT</i> response from your modem. The\n"
@@ -1086,15 +1088,15 @@ msgstr ""
 "<i>CONNECT</i>-response fra modemet ditt.\n"
 "Anvefalt verdi er 30 sekunder."
 
-#: general.cpp:492 main.cpp:646
+#: general.cpp:493 main.cpp:646
 msgid "Modem"
 msgstr "Modem"
 
-#: general.cpp:503
+#: general.cpp:504
 msgid "Busy Wait:"
 msgstr "Ventetid etter opptatt:"
 
-#: general.cpp:521
+#: general.cpp:522
 msgid ""
 "Specifies the number of seconds to wait before\n"
 "redial if all dialed numbers are busy. This is\n"
@@ -1113,11 +1115,11 @@ msgstr ""
 "Standard er 0 sekunder. Du skal ikke endre\n"
 "dette hvis ikke du må."
 
-#: general.cpp:535
+#: general.cpp:536
 msgid "Modem volume"
 msgstr "Modemvolum"
 
-#: general.cpp:547
+#: general.cpp:548
 msgid ""
 "Most modems have a speaker which makes\n"
 "a lot of noise when dialing. Here you can\n"
@@ -1135,11 +1137,11 @@ msgstr ""
 "Hvis dette ikke fungerer for ditt modem,\n"
 "må du endre modemvolumkommandoen"
 
-#: general.cpp:559
+#: general.cpp:560
 msgid "Modem Asserts CD Line."
 msgstr "Modem Asserts CD Line."
 
-#: general.cpp:567
+#: general.cpp:568
 msgid ""
 "This controls how <i>kppp</i> detects that the modem\n"
 "is not responding. Unless you are having\n"
@@ -1151,11 +1153,11 @@ msgstr ""
 "ikke svarer. Dette skal ikke endres hvis du ikke har problemer\n"
 "med denne innstillingen."
 
-#: general.cpp:580
+#: general.cpp:581
 msgid "Modem Commands"
 msgstr "Modemkommandoer"
 
-#: general.cpp:582
+#: general.cpp:583
 msgid ""
 "Allows you to change the AT command for\n"
 "your modem."
@@ -1163,11 +1165,11 @@ msgstr ""
 "Tillat deg å endre AT-kommandoen for\n"
 "modemet ditt."
 
-#: general.cpp:585
+#: general.cpp:586
 msgid "Query Modem"
 msgstr "Spør modem"
 
-#: general.cpp:587
+#: general.cpp:588
 msgid ""
 "Most modems support the ATI command set to\n"
 "find out vendor and revision of your modem.\n"
@@ -1184,11 +1186,11 @@ msgstr ""
 "ditt for denne informasjonen. Det kan være\n"
 "nyttig for å hjelpe deg å sette opp modemet ditt."
 
-#: general.cpp:594
+#: general.cpp:595
 msgid "Terminal"
 msgstr "Terminal"
 
-#: general.cpp:596
+#: general.cpp:597
 msgid ""
 "Opens the built-in terminal program. You\n"
 "can use this if you want to play around\n"
@@ -1198,23 +1200,23 @@ msgstr ""
 "kan bruke det hvis du ønsker å leke med\n"
 "modemets AT-kommandosett"
 
-#: general.cpp:660
+#: general.cpp:661
 msgid "Throughput graph"
 msgstr "Graf over overføringshastighet"
 
-#: general.cpp:669
+#: general.cpp:670
 msgid "Background color"
 msgstr "Bakgrunnsfarge"
 
-#: general.cpp:676
+#: general.cpp:677
 msgid "Text color"
 msgstr "Tekstfarge"
 
-#: general.cpp:683
+#: general.cpp:684
 msgid "Input bytes color"
 msgstr "Farge på innbyter"
 
-#: general.cpp:690
+#: general.cpp:691
 msgid "Output bytes color"
 msgstr "Farge på utbyter"
 
@@ -1235,8 +1237,9 @@ msgid ""
 "\n"
 "To test it, right-click somewhere in this text."
 msgstr ""
-"Fra og med versjon 1.4.8 har kpp en ny egenskap som kalles \"Hurtighjelp\"."
-"Det er det samme som verktøytips, men du kan starte det hvor du vil.\n"
+"Fra og med versjon 1.4.8 har kpp en ny egenskap som kalles "
+"\"Hurtighjelp\".Det er det samme som verktøytips, men du kan starte det hvor "
+"du vil.\n"
 "\n"
 "For å starte det, klikk på en kontroll som knapper eller etiketter med\n"
 "høyre musknapp. Hvis det du klikker på støtter Hurtighjelp, vil en meny\n"
