@@ -12,6 +12,7 @@ all:
 	echo $$mfs")" >> configure.in ;\
 	automake
 	cat configure.in.1 configure.in.2 > configure.in
+	./automoc
 	autoconf
 	touch -r configure.in.1 configure.in
 	touch configure
@@ -34,6 +35,7 @@ dist:
 	echo $$mfs")" >> configure.in ;\
 	automake  --foreign --include-deps;\
 	cat configure.in.1 configure.in.2 > configure.in ;\
+	./automoc ;\
 	autoconf ;\
 	touch -r configure.in.1 configure.in ;\
 	touch configure ;\
