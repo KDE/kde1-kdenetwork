@@ -62,8 +62,8 @@ on (01/01, easter, 05/30, 08/04, 08/15, 12/25) between () use (0.1677, 72)
 # a range of dates and one weekday
 #on (12/25..12/27, 12/31, 07/04, monday) between () use (0.4, 72)
 
-# easter + 60 days (Pfingstmontag/ Pentecost Monday )
-#on (easter+60) between () use (0.3,72)
+# easter + 50 days (Pfingstmontag/ Pentecost Monday )
+#on (easter+50) between () use (0.3,72)
 
 
 
