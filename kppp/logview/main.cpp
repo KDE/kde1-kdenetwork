@@ -84,7 +84,7 @@ void TopWidget::menuCallback(int id) {
   }
 }
 
-main(int argc, char **argv) {
+int main(int argc, char **argv) {
   KApplication a(argc, argv, "kppplogview");
 
   loadLogs();
