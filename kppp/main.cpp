@@ -223,7 +223,7 @@ int main( int argc, char **argv ) {
     exit(1);
   }
 
-  switch(fpid==0) {
+  switch(fpid) {
   case 0:
     // child process
     // make process leader of new group
