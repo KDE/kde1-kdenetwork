@@ -1,7 +1,10 @@
 1998-11-26  Harri Porten  <porten@kde.org>
 
 	* requester.cpp: made the ifdef's for cmsg_data more portable
-
+	* requester.cpp, opener.cpp: include sys/uio.h to define struct
+	iovec. As far as I can see this should work for systems with and
+	without glibc. If it doesn't, please mail me directly.
+ 	
 1998-11-25  Mario Weilguni <mweilguni@kde.org>
 
 	* fixed a lot of rulefiles. Pentecost Monday is NOT easter+60,
