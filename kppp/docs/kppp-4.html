@@ -1,0 +1,156 @@
+<HTML>
+<HEAD>
+<TITLE>The Kppp Handbook: Configuring an Account</TITLE>
+</HEAD>
+<BODY>
+<A HREF="kppp-3.html">Previous</A>
+<A HREF="kppp-5.html">Next</A>
+<A HREF="kppp.html#toc4">Table of Contents</A>
+<HR>
+<H2><A NAME="s4">4. Configuring an Account</A></H2>
+
+
+<H2><A NAME="ss4.1">4.1 Dial</A></H2>
+
+<P>
+<DL>
+<DT><B>Connection Name</B><DD><P>You must give the account a name</P>
+<DT><B>Phone Number</B><DD><P>Specify the phone number to dial. You may use character such
+as ``-'' to make the number more legible.</P>
+<DT><B>Connection Speed</B><DD><P>Choose from the list of connections speeds supported by
+your serial port.</P>
+<DT><B>Execute Program upon Connect</B><DD><P>kppp will attempt to execute the command specified
+here once a ppp link has been set up. </P>
+
+<DT><B>Edit default pppd</B><DD><P>This will bring up the pppd arguments dialog. You may use
+this dialog to add any desired options that you want kppp to hand to pppd. Make
+sure that it always contains the -detach option. See the pppd man page for a
+list of available options. Unless you know exactly what you are doing you should
+restrain from tinkering with the pppd options.</P>
+
+</DL>
+</P>
+
+
+
+
+<H2><A NAME="ss4.2">4.2 IP</A></H2>
+
+
+<P>
+<DL>
+<DT><B>Dynamic IP Address</B><DD><P>Check this if your ISP uses dynamic ip address assignment.
+That is your ip address will most likely change every time you establish a connection.</P>
+
+<DT><B>Static IP Address</B><DD><P>Check this is your ISP has given you a static ip address.
+In that case you will also need to fill in that address and any Subnet Mask
+if applicable. Ask your ISP if unsure.</P>
+
+<DT><B>Auto-configure Hostname form this IP</B><DD><P>Select this option if you want 
+kppp to set the hostname and domain for your machine after successful
+setup of a ppp link on connect.
+This is done by querying the defined Domain Name Server with the ip
+assigned for the ppp link.
+This option is useful for those stand-alone machines which want to
+use protocols like talk which require the hostname to be the same as your
+machine is known in the Internet.
+It overrides the Domain Name Option in the  DNS Section.
+The machine defaults are restored to the original values 
+when you close the ppp link 
+Be careful when choosing this option: It may prove useful to you, but
+it may also cause lots of undesired side effect. Just play with it ...</P>
+
+</DL>
+</P>
+
+
+
+<H2><A NAME="ss4.3">4.3 DNS</A></H2>
+
+<P>
+<DL>
+<DT><B>Domain Name</B><DD><P>Specify the domain name for your machine.
+As with DNS Addresses it is restored to the original specified in /etc/resolv.conf
+when the connection goes down.
+If it is left blank no changes are made to the domain name specified
+in /etc/resolv.conf</P>
+
+<DT><B>DNS Servers</B><DD><P>Add the Domain Name servers assigned to you by your ISP.
+You must specify at least a Domain Name server for your OS to be able
+to resolve human readable ip addresses such as ftp.kde.org. The DNS server
+addresses supplied must be in numeric form, e.g 128.231.231.233. The
+addresses will be added at runtime to /etc/resolv.config.</P>
+</DL>
+</P>
+
+
+
+<H2><A NAME="ss4.4">4.4 Gateway</A></H2>
+
+<P>
+<DL>
+<DT><B>Default Gateway</B><DD><P>Check this if you want pppd to use the default Gateway
+for your machine.</P>
+<DT><B>Static Gateway</B><DD><P>Check this if you want to specify the Gateway to be used.</P>
+
+</DL>
+</P>
+
+
+
+<H2><A NAME="ss4.5">4.5 Login Script</A></H2>
+
+<P>
+<DL>
+<DT><B>Edit Script</B><DD><P>Use this dialog to compose a dial in script for your ISP
+dialup connection. Use the mini-terminal and the information supplied by
+your ISP to understand which sequence of actions needs to be executed.</P>
+<P>
+<UL>
+<LI>Expect: kppp will wait for the specified string to be received.</LI>
+<LI>Send: kppp will send the specified string.</LI>
+<LI>Pause: pause for the specified number of seconds</LI>
+<LI>Hangup: kppp will send the hangup command to the modem</LI>
+<LI>Answer: kppp will set the modem into answer mode</LI>
+<LI>Timeout: change the default timeout to the specified number of seconds
+dynamically during script execution. You can change the timeout several times
+during script execution if necessary.</LI>
+</UL>
+</P>
+
+
+</DL>
+</P>
+
+
+
+
+<H2><A NAME="ss4.6">4.6 Accounting</A></H2>
+
+<P>
+<DL>
+<DT><B>Accounting Setup</B><DD><P>Use the ``Enable accounting'' button to enable/disable
+phone cost accounting. Select a rule  appropriate for your region. If
+you can't find a rule for your region you will have to write one by following
+the supplied <CODE>TEMPLATE</CODE> in <CODE>$(KDEDIR)/doc/HTML/.../kppp/</CODE>. Don't
+be afraid though it is really easy. Don't forget to submit your newly created
+rules file to me. The newly created rules file can be checked for valid
+syntax with the -r rule_file command line option to kppp. and
+must be installed in <CODE>$(KDEDIR)/lib/kppp/Rules</CODE> or in 
+<CODE>$(HOME)/.kde/kppp/Rules</CODE> before you will be able to select it on this
+dialog.</P>
+
+</DL>
+</P>
+
+
+
+
+
+
+<HR>
+<A HREF="kppp-3.html">Previous</A>
+<A HREF="kppp-5.html">Next</A>
+<A HREF="kppp.html#toc4">Table of Contents</A>
+</BODY>
+</HTML>

@@ -1,0 +1,117 @@
+<HTML>
+<HEAD>
+<TITLE>The Kppp Handbook: Appendix</TITLE>
+</HEAD>
+<BODY>
+<A HREF="kppp-7.html">Previous</A>
+Next
+<A HREF="kppp.html#toc8">Table of Contents</A>
+<HR>
+<H2><A NAME="s8">8. Appendix</A></H2>
+
+
+<H2><A NAME="ss8.1">8.1 The Hayes Modem Command Set</A></H2>
+
+<P>
+<A HREF="hayes.html">The Hayes Command Set</A> might come handy if you 
+need to fine-tune your modem commands.</P>
+
+
+
+<H2><A NAME="PAP"></A> <A NAME="ss8.2">8.2 PAP and CHAP with Kppp</A></H2>
+
+
+<P>The following is based on an email by 
+<A HREF="kbrown@pdq.net">Keith Brown</A></P>
+
+<P>PAP seems a lot more complicated at first glance than it really is.
+The server (the machine you are connecting to) basically tells the client
+(your machine) to authenticate using PAP. The client (pppd) looks in a
+specific file for an entry that contains a matching server name and client's
+name for this connection, and then sends the password it finds there. That's
+about it! Now, here's how to make that happen. I am assuming a pppd version
+of 2.2.0 and a standard installation of configuration files under /etc/ppp.</P>
+
+<P>For the purposes of illustration, pretend that I have an Internet account
+with 'glob.net', under the user name 'booger', and a password of 'foobar'.
+First, I need to add all this to the file <CODE>/etc/ppp/pap-secrets </CODE>. 
+The format of an entry for our purposes, is:</P>
+
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+USERNAME  SERVERNAME   PASSWORD
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+
+<P>so I add the line:</P>
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+booger  glob  foobar
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+
+<P>to the file and save it. Note: I can use any name for the server I wish
+as long as I use the same name in the pppd arguments, as we'll see shortly.
+I have shortened it to 'glob'. This name is just used to locate the correct
+password.</P>
+
+<P>Now, I need to set up my connection in kppp. The basics are the same
+as any other connection, and I won't go into details here, except to say
+that you probably want to make sure that the <CODE>/etc/ppp/options,</CODE> is empty,
+and you probably don't want any login script either. Now, in the settings
+dialog, at the bottom, is the pppd arguments button. This brings up a dialog
+similar to the one used for editing the login script. Here we enter values that
+will be sent to pppd as command line arguments, and in the case of multiple-value
+arguments, we need to enter each value as a separate entry in the listbox,
+in the correct order.</P>
+
+<P>We can put any other arguments in here we want first. In addition to
+the default '-detach' and 'defaultroute', you might want to add 'lock'.
+Now we need to add arguments that pppd needs to handle PAP authentication.
+In this example I am going to add 'user', 'booger', 'remotename', 'glob',
+in that order. The user argument tells pppd what user name to look for
+in pap-secrets, and send to the server. The remotename is only used by
+pppd to match the entry in the pap-secrets file, and is not sent to the
+server, so once again, it can be anything I want as long as it is consistent
+with the entry in the pap-secrets file.</P>
+
+<P>That's all there is to it. You should now be able to set up your own
+connection to a server with PAP authentication. CHAP should not be much
+different. See the Linux Network Adminstrators' Guide for chap-secrets
+file format and pppd arguments used. The rest should be gravy, but...your
+mileage, ah you know the rest.</P>
+
+<H2><A NAME="ss8.3">8.3 kppp related files</A></H2>
+
+<P>By default Kppp makes use of the following files and directories. The location
+of some of those can be changed at compile time.</P>
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+$(KDEDIR)/bin/kppp
+$(KDEDIR)/share/doc/HTML/.../kppp/*
+$(KDEDIR)/share/apps/kppp
+$(KDEDIR)/share/apps/kppp/Rules
+$(HOMEDIR)/.kde/share/apps/kppp
+$(HOMEDIR)/.kde/share/apps/kppp/Costs
+$(HOMEDIR)/.kde/share/apps/kppp/Rules/*.rst
+$(HOMEDIR)/.kde/share/apps/kppp/Log/*
+$(HOMEDIR)/.kde/share/apps/kppp/kpppdata
+$(HOMEDIR)/.kde/share/config/kppprc
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+
+
+
+
+<HR>
+<A HREF="kppp-7.html">Previous</A>
+Next
+<A HREF="kppp.html#toc8">Table of Contents</A>
+</BODY>
+</HTML>

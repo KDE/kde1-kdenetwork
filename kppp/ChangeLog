@@ -1,0 +1,23 @@
+Sun Nov  2 14:02:31 1997  Bernd Johannes Wuebben  <wuebben@petit.cornell.edu>
+
+	* accounts.cpp: applied mario's patches to the rulessets. Now deals
+	  with fractions too. 
+	* accounts.cpp: fixed the bug that caused kppp to reset the costs 
+	  even if you chose cancel.
+	* docs/kppp.sgml: doc updates and corrections
+
+Fri Aug 15 21:25:05 1997  Bernd Johannes Wuebben  <wuebben@petit.cornell.edu>
+
+	* connect.cpp: leaving the lock file name edit blank will cause
+	kppp not to create lock files. That is this turn the use of lock files off
+
+	* added option to not disconnect on xserver exit/crash
+
+Sun Aug 10 19:07:07 1997  Bernd Johannes Wuebben  <wuebben@petit.cornell.edu>
+
+	* kppp will no automatically disconnect on X-server exit
+
+Sun Jul 20 17:26:58 1997  Bernd Johannes Wuebben  <wuebben@petit.cornell.edu>
+
+	* fixed bug in phone cost accounting
+
