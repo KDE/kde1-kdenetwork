@@ -29,6 +29,9 @@ signals:
   virtual void delete_toplevel(QString, QString);
   virtual void changeChannel(QString, QString, QString);
 
+  virtual void notify_nick_online(QString, QString);
+  virtual void notify_nick_offline(QString, QString);
+
 public slots:
   virtual void new_toplevel(QString);
 //  virtual void new_ksircprocess(QString);
@@ -37,6 +40,9 @@ public slots:
   virtual void recvChangeChannel(QString, QString);
 
   virtual void filters_update();
+
+  virtual void notify_forw_online(QString);
+  virtual void notify_forw_offline(QString);
 
 private:
   KSircIOController *iocontrol;

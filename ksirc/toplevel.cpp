@@ -912,10 +912,10 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	pixmap = pix_greenp;                   // set green pin
 	color =   kSircConfig->colour_chan;     // set green
 	if(string.contains("You have joined channel")){
-
 	  int chan = string.findRev(" ", -1) + 1;
 	  ASSERT(chan > 0);
 	  s3 = string.mid(chan, string.length() - chan);
+	  s3 = s3.lower();
 	  this->show();
 	  emit open_toplevel(s3);
 	}

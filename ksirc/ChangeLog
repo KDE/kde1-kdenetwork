@@ -1,3 +1,15 @@
+1998-01-13  Andrew Stanley-Jones  <asj@chowtown.cban.com>
+
+	* servercontroller.cpp (notify_nick_online): Added grahical notify
+ 	list.  It uses the server controller and adds an Online brancs
+ 	with the nicks of people currently online on each server.
+
+1998-01-12  Andrew Stanley-Jones  <asj@chowtown.cban.com>
+
+	* Fixed filters.pl so being "away" doesn't mess up the lag'o'meter.
+
+	* Updated docs added keys.help and updates servercontroller for it.
+
 1998-01-10  Andrew Stanley-Jones  <asj@chowtown.cban.com>
 
 	* toplevel.cpp (KSircTopLevel): Menus updated and working correctly.
@@ -7,7 +19,7 @@
 
 1998-01-09  Andrew Stanley-Jones  <asj@chowtown.cban.com>
 
-	* toplevel.cpp (pasteToWindow): Fxied ut & paste to work correctly.
+	* toplevel.cpp (pasteToWindow): Fixed ut & paste to work correctly.
 
 1998-01-02  Andrew Stanley-Jones  <asj@chowtown.cban.com>
 
@@ -75,6 +87,16 @@
 $Revision$
 	
 $Log$
+Revision 1.13  1998/01/11 19:48:00  asj
+Fixed deleting of toplevel windows.  Toplevel windows are now always deleted
+on close, etc.
+
+Fixed segfaulting in ktreelist when everything was mostly deleted.  Added
+a clear() call when there are no process's.  Hopefully this will stop
+ktreelist from trying to paint "nothing".
+
+Added html documention and help, hopefully this works ok.
+
 Revision 1.12  1998/01/10 18:34:41  asj
 Updated filters.pl to do better searching for SYS_gettimeofday
 

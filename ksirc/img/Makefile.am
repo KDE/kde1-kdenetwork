@@ -23,7 +23,8 @@
 noinst_HEADERS = \
 arrow.gif         greenpin.gif      madsmiley.gif     smiley.gif \
 blueball.gif      info.gif          mini-display.gif  star.gif \
-bluepin.gif       info1.gif         mini-edit.gif
+bluepin.gif       info1.gif         mini-edit.gif \
+mini-run.gif      gf.gif
 
 # just to make sure, automake makes them 
 #BUILTSOURCES =	

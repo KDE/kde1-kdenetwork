@@ -48,7 +48,8 @@ FilterRuleEditor.cpp FilterRuleEditorData.cpp mFilterRuleEditor.cpp mFilterRuleE
 ioDiscard.cpp \
 ioDCC.cpp mioDCC.cpp dccDialog.cpp mdccDialog.cpp dccDialogData.cpp mdccDialogData.cpp \
 linelistitem.cpp \
-ioLAG.cpp mioLAG.cpp
+ioLAG.cpp mioLAG.cpp \
+ioNotify.cpp mioNotify.cpp
 
 ksircstatic_SOURCES = $(ksirc_SOURCES)
 
@@ -82,7 +83,7 @@ ahistlineedit.h           iocontroller.h            servercontroller.h \
 alistbox.h                irclistbox.h              servercontrollerData.h \
 config.h                  irclistitem.h             toplevel.h \
 control.h                 ksircprocess.h            ksirc.kdelnk \
-ioLAG.h \
+ioLAG.h                   ioNotify.h \
 dsirc                     filters.pl                ksirc.pl
 
 

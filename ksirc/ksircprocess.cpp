@@ -91,6 +91,7 @@
 #include "ioDiscard.h"
 #include "ioDCC.h"
 #include "ioLAG.h"
+#include "ioNotify.h"
 #include "iocontroller.h"
 #include <iostream.h>
 
@@ -145,6 +146,13 @@ KSircProcess::KSircProcess( char *_server=0L, QObject * parent=0, const char * n
   connect(lag, SIGNAL(outputLine(QString&)),
 	  iocontrol, SLOT(stdin_write(QString&)));
   TopList.insert("!lag", lag);
+  KSircIONotify *notify = new KSircIONotify(this);
+  connect(notify, SIGNAL(notify_online(QString)),
+	  this, SLOT(notify_forw_online(QString)));
+  connect(notify, SIGNAL(notify_offline(QString)),
+	  this, SLOT(notify_forw_offline(QString)));
+  TopList.insert("!notify", notify);
+
   filters_update();
   
   //  wm->show();
@@ -210,7 +218,7 @@ void KSircProcess::close_toplevel(KSircTopLevel *wm, char *name)
 
   bool is_default = FALSE; // Assume it's no default
 
-  if(TopList.count() <= 6){ // If this is the last window shut down
+  if(TopList.count() <= 7){ // If this is the last window shut down
     QString command = "/quit\n";
     iocontrol->stdin_write(command); // kill sirc
     delete this; // Delete ourself, WARNING MUST RETURN SINCE WE NO
@@ -323,4 +331,15 @@ void KSircProcess::filters_update()
     command += next_part;
     iocontrol->stdin_write(command);
   }
+}
+
+
+void KSircProcess::notify_forw_online(QString nick)
+{
+  emit notify_nick_online(QString(server), nick);
+}
+
+void KSircProcess::notify_forw_offline(QString nick)
+{
+  emit notify_nick_offline(QString(server), nick);
 }

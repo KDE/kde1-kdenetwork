@@ -1535,6 +1535,9 @@ sub appeared {
       &dohooks("notify_signon", $_[0]);
       &tell("*\cb)\cb* Signon by $_[0] detected!");
     }
+    else {
+#      &tell("*\cb(\cb* Signoff by $_[0] detected!");
+    }
     $notify{$n}=$t;
   }
 }

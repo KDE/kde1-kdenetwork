@@ -156,6 +156,8 @@ servercontroller::servercontroller
         kicl->insertDirectory(strlist->count(), kSircConfig->kdedir + "/share/apps/ksirc/icons"); 
 	pic_server = new QPixmap(kicl->loadIcon("mini-display.gif"));
 	pic_channel = new QPixmap(kicl->loadIcon("mini-edit.gif"));
+	pic_gf = new QPixmap(kicl->loadIcon("gf.gif"));
+	pic_run = new QPixmap(kicl->loadIcon("mini-run.gif"));
 
 }
 
@@ -191,6 +193,10 @@ void servercontroller::new_ksircprocess(QString str)
 	  this, SLOT(delete_toplevel(QString, QString)));  //
   connect(proc, SIGNAL(changeChannel(QString, QString, QString)), //Name change
 	  this, SLOT(recvChangeChannel(QString, QString, QString)));
+  connect(proc, SIGNAL(notify_nick_online(QString, QString)),
+	  this, SLOT(notify_nick_online(QString, QString)));
+  connect(proc, SIGNAL(notify_nick_offline(QString, QString)),
+	  this, SLOT(notify_nick_offline(QString, QString)));
   connect(this, SIGNAL(filters_update()),
 	  proc, SLOT(filters_update()));
   
@@ -233,6 +239,7 @@ void servercontroller::add_toplevel(QString parent, QString child)
     child.remove(0, 1); // If the first char is !, it's control, remove it
   // add a new child item with parent as it's parent
   ConnectionTree->addChildItem(child.data(), pic_channel, &path);
+  //  ConnectionTree->addChildItem("Online", pic_channel, &path);
   //cerr << "Added child for: " << parent << "->" << child << endl;
   open_toplevels++;
 }
@@ -410,3 +417,30 @@ void servercontroller::help_keys()
   kApp->invokeHTMLHelp("ksirc/keys.html", "");
 }
 
+void servercontroller::notify_nick_online(QString server, QString nick)
+{
+  static bool running = FALSE;
+  // Add new channel, first add the parent to the path
+  QString online("Online");
+  KPath path;
+  path.push(&server);
+  if(running == FALSE){
+    ConnectionTree->addChildItem(online.data(), pic_gf, &path);
+    running = TRUE;
+  }
+  path.push(&online);
+  // add a new child item with parent as it's parent
+  ConnectionTree->addChildItem(nick.data(), pic_run, &path);
+}
+
+void servercontroller::notify_nick_offline(QString server, QString nick)
+{
+  // Add new channel, first add the parent to the path
+  QString online("Online");
+  KPath path;
+  path.push(&server);
+  path.push(&online);
+  path.push(&nick);
+  // add a new child item with parent as it's parent
+  ConnectionTree->removeItem(&path); // Remove the item
+}

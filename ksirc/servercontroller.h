@@ -117,6 +117,12 @@ public slots:
     virtual void help_keys();
     virtual void about_ksirc();
 
+    /** When a new nick comes online via the nick notify, we add them
+      * to the Online list.  
+      */ 
+    virtual void notify_nick_online(QString, QString); 
+    virtual void notify_nick_offline(QString, QString);
+
 private:
     // Hold a list of all KSircProcess's for access latter.  Index by server 
     // name
@@ -128,6 +134,8 @@ private:
 
   QPixmap *pic_channel;
   QPixmap *pic_server;
+  QPixmap *pic_gf;
+  QPixmap *pic_run;
 
 };
 #endif // servercontroller_included
