@@ -438,9 +438,6 @@ bool Artdlg::actions (int action)
                 i--;
                 list->setCurrentItem(i);
                 i=list->currentItem();
-                if ((list->lastRowVisible()-(list->height()/list->cellHeight(i)))
-                    >(i-2))
-                    list->setTopItem(i);
             }
             success=true;
             break;
@@ -453,8 +450,6 @@ bool Artdlg::actions (int action)
                 i++;
                 list->setCurrentItem(i);
                 i=list->currentItem();
-                if (((uint)(list->lastRowVisible()))<i)
-                    list->setTopItem(i+2-(list->height()/list->cellHeight(i)));
             }
             success=true;
             break;
@@ -658,7 +653,38 @@ bool Artdlg::actions (int action)
 
 bool Artdlg::loadArt (QString id)
 {
-    setEnabled(false);
+
+    qApp->setOverrideCursor (waitCursor);
+
+    int i=list->currentItem();
+
+    if (artList.at(i)->ID!=id)
+    {
+        int index=0;
+        QListIterator <Article> iter(artList);
+        for (;iter.current();++iter,++index)
+        {
+            if (iter.current()->ID==id)
+                list->setCurrentItem(index);
+        }
+    }
+    
+    if (artList.at(i)->ID==id)
+    {
+        if ((list->lastRowVisible()-(list->height()/list->cellHeight(i)))
+            >(i-2))
+        {
+            list->setTopItem(i);
+        }
+        else
+        {
+            if (list->lastRowVisible()<i)
+            {
+                list->setTopItem(i+2-(list->height()/list->cellHeight(i)));
+            }
+        }
+    }
+    
     if (!server->isConnected())
     {
         if (!server->isCached(id.data()))
@@ -671,7 +697,6 @@ bool Artdlg::loadArt (QString id)
             }
         }
     }
-    qApp->setOverrideCursor (waitCursor);
     QString *s;
     s=server->article(id.data());
     if (s->isEmpty())
@@ -683,8 +708,8 @@ bool Artdlg::loadArt (QString id)
         messwin->loadMessage(*s);
     }
     delete s;
+
     qApp->restoreOverrideCursor ();
-    setEnabled(true);
     return true;
 }
 
@@ -872,8 +897,6 @@ void Artdlg::FindThis (const char *expr,const char *field)
             {
                 list->setCurrentItem(index);
                 debug (iter.current()->Subject.data());
-                if (list->lastRowVisible()<index)
-                    list->setTopItem(index+2-(list->height()/list->cellHeight(index)));
                 break;
             }
         }
@@ -886,9 +909,6 @@ void Artdlg::FindThis (const char *expr,const char *field)
             if (regex.match(iter.current()->From.data())>-1)
             {
                 list->setCurrentItem(index);
-                debug (iter.current()->Subject.data());
-                if (list->lastRowVisible()<index)
-                    list->setTopItem(index+2-(list->height()/list->cellHeight(index)));
                 break;
             }
         }

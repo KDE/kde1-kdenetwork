@@ -449,23 +449,33 @@ void collectChildren(ArticleList *parentThread,QList<ArticleList> *children)
     QListIterator <ArticleList> it(*children);
     for (;it.current();++it)
     {
-        if (it.current()->isEmpty())
-            //thread has already been adopted
-            continue;
-//        ArticleList *childThread=it.current();
-        if (isParent(parentThread->first(),it.current()->first()))
+        if (it.current()==parentThread)
         {
-            //It's parent's daughter, make it collect its own kids,
-            collectChildren(it.current(),children);
-            //and then adopt it
-            QListIterator <Article> it2(*it.current());
-            it2.toFirst();
-            for (;it2.current();++it2)
+            //I can't be my own parent
+        }
+        else
+        {
+            if (it.current()->isEmpty())
             {
-                it2.current()->threadDepth++;
-                parentThread->append(it2.current());
+                //thread has already been adopted
             }
-            it.current()->clear();
+            else
+            {
+                if (isParent(parentThread->first(),it.current()->first()))
+                {
+                    //It's parent's daughter, make it collect its own kids,
+                    collectChildren(it.current(),children);
+                    //and then adopt it
+                    QListIterator <Article> it2(*it.current());
+                    it2.toFirst();
+                    for (;it2.current();++it2)
+                    {
+                        it2.current()->threadDepth++;
+                        parentThread->append(it2.current());
+                    }
+                    it.current()->clear();
+                }
+            }
         }
     }
 }
@@ -489,6 +499,7 @@ void ArticleList::thread(bool sortBySubject=false)
         threads.append(l);
         iter->threadDepth=0;
     }
+
 
     thread.toFirst();
     //Now consolidate threads
@@ -530,6 +541,7 @@ void ArticleList::thread(bool sortBySubject=false)
         }
         threads=sortedThreads;
     }
+
 
     //Now thread the subthreads
     //And rebuild the list from them
