@@ -714,6 +714,7 @@ PWidget *PukeController::id2pwidget(widgetId *pwi){ /*fold00*/
     return (PWidget *) obj;
   else
     throw(errorNoSuchWidget(*pwi));
+  return NULL;
 }
 void PukeController::insertPObject(int fd, int iWinId, WidgetS *obj){ /*FOLD00*/
   // If no widget list exists for this fd, create one
