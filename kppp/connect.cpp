@@ -88,6 +88,8 @@ ConnectWidget::ConnectWidget(QWidget *parent, const char *name)
   modem_in_connect_state = false;
   scriptindex = 0;
   myreadbuffer = "";
+  scanning = false;
+  scanvar = "";
   main_timer_ID = 0;
   modemfd = -1;
   semaphore = false;
@@ -186,6 +188,8 @@ void ConnectWidget::init() {
   pausing = false;
   scriptindex = 0;
   myreadbuffer = "";
+  scanning = false;
+  scanvar = "";
   firstrunID = true;
   firstrunPW = true;
 
@@ -371,6 +375,17 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
         return;
       }
 
+      if(strcmp(gpppdata.scriptType(scriptindex), "Scan") == 0) {
+	QString bm = klocale->translate("Scanning ");
+	bm += gpppdata.script(scriptindex);
+	messg->setText(bm);
+	p_xppp->debugwindow->statusLabel(bm);
+
+        setScan(gpppdata.script(scriptindex));
+	scriptindex++;
+        return;
+      }
+
       if(strcmp(gpppdata.scriptType(scriptindex), "Send") == 0) {
 	QString bm = klocale->translate("Sending ");
 	bm += gpppdata.script(scriptindex);
@@ -381,7 +396,6 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
 	scriptindex++;
         return;
       }
-
 
       if(strcmp(gpppdata.scriptType(scriptindex), "Expect") == 0) {
         QString bm = klocale->translate("Expecting ");
@@ -527,14 +541,26 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
  
       if(strcmp(gpppdata.scriptType(scriptindex), "Prompt") == 0) {
 	QString bm = klocale->translate("Prompting ");
-	bm += gpppdata.script(scriptindex);
+
+        // if the scriptindex (aka the prompt text) includes a ## marker 
+        // this marker should get substituted with the contents of our stored 
+        // variable (from the subsequent scan).
+	
+	QString ts = gpppdata.script(scriptindex);
+	int vstart = ts.find( "##" );
+	if( vstart != -1 ) {
+		ts.remove( vstart, 2 );
+		ts.insert( vstart, scanvar );
+	}
+
+	bm += ts;
 	messg->setText(bm);
 	p_xppp->debugwindow->statusLabel(bm);
 
 	/* if not around yet, then post window... */
 	if (prompt->Consumed()) {
 	   if (!(prompt->isVisible())) {
-		prompt->setPrompt(gpppdata.script(scriptindex));
+		prompt->setPrompt( ts );
 		prompt->setEchoModeNormal();
 	        prompt->show();
 	   }
@@ -784,7 +810,30 @@ void ConnectWidget::readtty() {
     c = ((int)c & 0x7F);
     readbuffer += c;
     myreadbuffer += c;
+    
+    // While in scanning mode store each char to the scan buffer
+    // for use in the prompt command
+    if( scanning ) {
+       scanbuffer += c;
+    }
+ 
     p_xppp->debugwindow->readchar(c); 
+  }
+
+  // Let's check if we are finished with scanning:
+  // The scanstring have to be in the buffer and the latest character
+  // was a carriage return or an linefeed (depending on modem setup)
+  if( scanning && scanbuffer.contains(scanstr) && (c == '\n' || c == '\r') ) {
+      scanning = false;
+
+      int vstart = scanbuffer.find( scanstr ) + scanstr.length();
+      scanvar = scanbuffer.mid( vstart, readbuffer.length() - vstart);
+      scanvar.stripWhiteSpace();
+
+      // Show the Variabel content in the debug window
+      QString sv = klocale->translate("Scan Var: ");
+      sv += scanvar;
+      p_xppp->debugwindow->statusLabel(sv);
   }
 
   if(expecting) {
@@ -796,6 +845,7 @@ void ConnectWidget::readtty() {
       QString ts = klocale->translate("Found: ");
       ts += expectstr;
       p_xppp->debugwindow->statusLabel(ts);
+
       if (loopend) {
 	loopend=false;
       }
@@ -812,7 +862,6 @@ void ConnectWidget::readtty() {
       loopnest++;
     }
   }
-  
 }
 
 
@@ -898,6 +947,15 @@ void ConnectWidget::debugbutton() {
     p_xppp->debugwindow->hide();
   }
 
+}
+
+void ConnectWidget::setScan(const char *n) {
+  scanning = true;
+  scanstr = n;
+
+  QString ts = klocale->translate("Scanning: ");
+  ts += n;
+  p_xppp->debugwindow->statusLabel(ts);
 }
 
 

@@ -47,6 +47,7 @@ ScriptEdit::ScriptEdit( QWidget *parent, const char *name )
   st->insertItem("PWPrompt");
   st->insertItem("LoopStart");
   st->insertItem("LoopEnd");
+  st->insertItem("Scan");
   connect(st, SIGNAL(activated(int)), SLOT(setType(int)));
   st->setMinimumSize(st->sizeHint());
   st->setFixedHeight(st->sizeHint().height());
@@ -148,6 +149,11 @@ void ScriptEdit::setType(int i) {
     break;
 
   case LoopEnd:
+    se->setText("");
+    se->setEnabled(TRUE);
+    break;
+
+  case Scan:
     se->setText("");
     se->setEnabled(TRUE);
     break;

@@ -779,6 +779,11 @@ void ScriptWidget::addButton() {
       sl->insertItem(se->text());
       break;
 
+    case ScriptEdit::Scan:
+      stl->insertItem("Scan");
+      sl->insertItem(se->text());
+      break;
+
     default:
       break;
   }
@@ -858,6 +863,11 @@ void ScriptWidget::insertButton() {
 
     case ScriptEdit::LoopEnd:
       stl->insertItem("LoopEnd", stl->currentItem());
+      sl->insertItem(se->text(), sl->currentItem());
+      break;
+
+    case ScriptEdit::Scan:
+      stl->insertItem("Scan", stl->currentItem());
       sl->insertItem(se->text(), sl->currentItem());
       break;
 

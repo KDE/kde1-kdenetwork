@@ -68,7 +68,8 @@ public:
 		 Prompt = 8,
 		 PWPrompt = 9,
 		 LoopStart = 10,
-		 LoopEnd = 11 };
+		 LoopEnd = 11, 
+		 Scan = 12 };
 };
 
 #endif

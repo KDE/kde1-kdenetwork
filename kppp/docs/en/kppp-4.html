@@ -121,6 +121,9 @@ your ISP to understand which sequence of actions needs to be executed.
 <UL>
 <LI>Expect: kppp will wait for the specified string to be received.</LI>
 <LI>Send: kppp will send the specified string.</LI>
+<LI>Scan: kppp will scan the the input stream for the specified string and 
+store any character after the string up to the first newline in an internal
+buffer. Trailing and leading whitespace will be stripped off.</LI>
 <LI>Pause: pause for the specified number of seconds</LI>
 <LI>Hangup: kppp will send the hangup command to the modem</LI>
 <LI>Answer: kppp will set the modem into answer mode</LI>
@@ -129,7 +132,9 @@ dynamically during script execution. You can change the timeout several times
 during script execution if necessary.
 </LI>
 <LI>Prompt: Prompt the kppp user to enter a string, given the specified
-string as a hint.  The user will see what is typed.
+string as a hint.  The user will see what is typed. 
+If the specified string includes the mark ## the mark will be replaced with
+the current content of the internal scan buffer.
 </LI>
 <LI>PWPrompt: Prompt the kppp user to enter a string, given the specified
 string as a hint.  An asterisk will be printed for each character typed.
@@ -208,7 +213,25 @@ Send        ppp                        # This starts a ppp connection for me
                                        # on the ISP side
 </PRE>
 </CODE></BLOCKQUOTE>
+<P>Here is a script that I use to connect to an ISP which is using some sort of
+challenge/reponse authentication. Ususally you got a hardware token (a smart
+card with a display and calculator like keypad) from the ISP. You have to know
+a password to use the token. After dialing in your ISP displays your challenge.
+You have to type in the challenge to your token and get a dynamic password
+as a response. Then you have to enter that password.
 <P>
+<BLOCKQUOTE><CODE>
+<PRE>
+LoopStart   ID:                        # wait for ID:
+ID          Enter ID:                  # Prompt me for my ID and send it off.
+Scan        Challenge:                 # Scan for 'Challenge' and store everything behind up to the next newline.
+Expect      PassWord:                  # wait for 'password'
+Prompt      Your token is ## - Enter Password  # Prompt me for my password and send it off.
+LoopEnd     granted                    # My ISP send 'Permission granted' on login success.
+Send        ppp                        # This starts a ppp connection for me
+                                       # on the ISP side
+</PRE>
+</CODE></BLOCKQUOTE>
 <P>
 <P>
 <P>

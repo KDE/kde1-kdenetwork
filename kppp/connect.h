@@ -125,6 +125,12 @@ private:
   QTimer *readtimer;
   QString readbuffer;
 
+  void setScan(const char *);
+  QString scanvar;
+  QString scanstr;
+  QString scanbuffer;
+  bool scanning;
+
   bool pausing;
   PWEntry *prompt;
 
