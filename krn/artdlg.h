@@ -63,6 +63,7 @@ private slots:
     void copyText(bool b);
     void popupMenu(int index,int column);
     void FindThis (const char *,const char *);
+    void goTo (int row);
         
 signals:
     void needConnection ();

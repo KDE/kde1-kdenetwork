@@ -720,18 +720,7 @@ bool Artdlg::loadArt (QString id)
     
     if (artList.at(i)->ID==id)
     {
-        if ((list->lastRowVisible()-(list->height()/list->cellHeight(i)))
-            >(i-2))
-        {
-            list->setTopItem(i);
-        }
-        else
-        {
-            if (list->lastRowVisible()<(i+1))
-            {
-                list->setTopItem(i+2-(list->height()/list->cellHeight(i)));
-            }
-        }
+        goTo(i);
     }
     
     if (!server->isConnected())
@@ -768,6 +757,23 @@ bool Artdlg::loadArt (QString id)
     statusBar()->changeItem(sb.data(),1);
     return true;
 }
+
+void Artdlg::goTo (int i)
+{
+    if ((list->lastRowVisible()-(list->height()/list->cellHeight(i)))
+        >(i-2))
+    {
+        list->setTopItem(i);
+    }
+    else
+    {
+        if (list->lastRowVisible()<(i+1))
+        {
+            list->setTopItem(i+2-(list->height()/list->cellHeight(i)));
+        }
+    }
+}
+
 
 void Artdlg::saveArt (QString id)
 {
@@ -929,6 +935,11 @@ void Artdlg::popupMenu(int index,int)
 
 void Artdlg::FindThis (const char *expr,const char *field)
 {
+    static int lastfound=-1;
+    static QString lastexpr="";
+    static QString lastfield="";
+
+    bool sameQuery=false;
     
     QRegExp regex(expr,false);
     QListIterator <Article> iter(artList);
@@ -944,6 +955,18 @@ void Artdlg::FindThis (const char *expr,const char *field)
     {
         index=0;
     }
+
+    sameQuery=(lastexpr==expr) && (lastfield==field);
+    if (sameQuery)
+    {
+        index=lastfound+1;
+        iter.toFirst();
+        iter+=index;
+    }
+
+    lastexpr=expr;
+    lastfield=field;
+    
     
     if (!strcmp(field,"Subject"))
     {
@@ -951,7 +974,10 @@ void Artdlg::FindThis (const char *expr,const char *field)
         {
             if (regex.match(iter.current()->Subject.data())>-1)
             {
-                list->setCurrentItem(index);
+                list->changeItemColor(QColor(0,0,0),lastfound);
+                list->changeItemColor(QColor(255,0,0),index);
+                goTo(index);
+                lastfound=index;
                 break;
             }
         }
@@ -963,7 +989,10 @@ void Artdlg::FindThis (const char *expr,const char *field)
         {
             if (regex.match(iter.current()->From.data())>-1)
             {
-                list->setCurrentItem(index);
+                list->changeItemColor(QColor(0,0,0),lastfound);
+                list->changeItemColor(QColor(255,0,0),index);
+                goTo(index);
+                lastfound=index;
                 break;
             }
         }

@@ -758,6 +758,8 @@ void Groupdlg::findGroup()
     qApp->setOverrideCursor (arrowCursor);
     ask.exec();
     qApp->restoreOverrideCursor ();
+    if (QString (ask.entry->text()).isEmpty())
+        return;
     int index=-1;
     index=subscr.find (&NewsGroup(ask.entry->text()));
     if (index!=-1)
