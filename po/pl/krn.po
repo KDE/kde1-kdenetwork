@@ -1,32 +1,32 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: krn \n"
-"POT-Creation-Date: 1998-01-31 15:51+0100\n"
+"POT-Creation-Date: 1998-02-09 11:34+0100\n"
 "PO-Revision-Date: 1998-01-24 20:33+0100\n"
 "Last-Translator: Pawe³ Jab³oñski <pawel.jablonski@mail.lze.lodz.pl>\n"
 "Content-Type: text/plain; charset=iso8859-2\n"
 
-#: main.cpp:214 main.cpp:226 main.cpp:238 main.cpp:253 main.cpp:265
+#: main.cpp:218 main.cpp:230 main.cpp:242 main.cpp:257 main.cpp:269
 msgid "KRN-Missing Configuration info"
 msgstr "Nie odnaleziono o konfiguracji KRN"
 
-#: main.cpp:215
+#: main.cpp:219
 msgid "Please enter your email adress"
 msgstr "Podaj swój adres pocztowy"
 
-#: main.cpp:227
+#: main.cpp:231
 msgid "Please enter your real name"
 msgstr "Podaj imiê i nazwisko"
 
-#: main.cpp:239
+#: main.cpp:243
 msgid "Please enter your organization's name"
 msgstr "Podaj nazwê organizacji"
 
-#: main.cpp:254
+#: main.cpp:258
 msgid "Please enter your NNTP server name"
 msgstr "Podaj nazwê serwera NNTP"
 
-#: main.cpp:266
+#: main.cpp:270
 msgid "Please enter your SMTP server name"
 msgstr "Podaj nazwê serwera pocztowego"
 
@@ -35,115 +35,120 @@ msgstr "Podaj nazwê serwera pocztowego"
 msgid "Received %.2f Kb"
 msgstr "Odebrano %.2f Kb"
 
-#: groupdlg.cpp:125
+#: groupdlg.cpp:130
 msgid "Connect to Server"
 msgstr "&Po³±cz z serwerem"
 
-#: groupdlg.cpp:126
+#: groupdlg.cpp:131
 msgid "Disconnect From Server"
 msgstr "&Roz³±cz siê z serwerem"
 
-#: groupdlg.cpp:127
+#: groupdlg.cpp:132
 msgid "Get Active File"
 msgstr "Pobierz listê &grup"
 
-#: groupdlg.cpp:129
+#: groupdlg.cpp:134
 msgid "Post Queued Messages"
 msgstr "&Og³o¶ wiadomo¶ci z kolejki"
 
-#: groupdlg.cpp:131
+#: groupdlg.cpp:136
 msgid "Exit"
 msgstr "&Wyj¶cie"
 
-#: groupdlg.cpp:134
+#: groupdlg.cpp:139
 msgid "KRN - Group List"
 msgstr "KRN - Lista grup"
 
-#: groupdlg.cpp:137 groupdlg.cpp:143
+#: groupdlg.cpp:142 groupdlg.cpp:148
 msgid "Get Subjects"
 msgstr "Pobierz tematy"
 
-#: groupdlg.cpp:138 groupdlg.cpp:144
+#: groupdlg.cpp:143 groupdlg.cpp:149
 msgid "Get Articles"
 msgstr "Pobierz wiadomo¶ci"
 
-#: artdlg.cpp:214 groupdlg.cpp:139 groupdlg.cpp:147 groupdlg.cpp:155
+#: artdlg.cpp:242 groupdlg.cpp:144 groupdlg.cpp:152 groupdlg.cpp:160
 msgid "Catchup"
 msgstr "Na&d±¿aj"
 
-#: groupdlg.cpp:145 groupdlg.cpp:153
+#: groupdlg.cpp:150 groupdlg.cpp:158
 msgid "(un)Subscribe"
 msgstr "(nie)&Subskrybuj"
 
-#: artdlg.cpp:112 groupdlg.cpp:146
+#: artdlg.cpp:133 groupdlg.cpp:151
 msgid "Untag"
 msgstr "Odznacz"
 
-#: artdlg.cpp:131 groupdlg.cpp:154
+#: artdlg.cpp:152 groupdlg.cpp:159
 msgid "(Un)Tag"
 msgstr "Z&mieñ zaznaczenie"
 
-#: artdlg.cpp:124 artdlg.cpp:184 groupdlg.cpp:157 groupdlg.cpp:213
+#: artdlg.cpp:145 artdlg.cpp:212 groupdlg.cpp:162 groupdlg.cpp:219
 msgid "Post New Article"
 msgstr "Og³o¶ &now± wiadomo¶æ"
 
-#: groupdlg.cpp:158
+#: groupdlg.cpp:163
 msgid "Post All Queued Articles"
 msgstr "Og³o¶ &wiadomo¶ci z kolejki"
 
-#: groupdlg.cpp:160
+#: groupdlg.cpp:165
 msgid "&Subscribed"
 msgstr "Subskrybowane"
 
-#: artdlg.cpp:155 groupdlg.cpp:161
+#: artdlg.cpp:182 groupdlg.cpp:166
 msgid "&Tagged"
 msgstr "Zaznaczone"
 
-#: groupdlg.cpp:166
+#: groupdlg.cpp:171
 msgid "Identity..."
 msgstr "&Identyfikacja..."
 
-#: groupdlg.cpp:167
+#: groupdlg.cpp:172
 msgid "NNTP Options..."
 msgstr "Opcje &NNTP..."
 
-#: groupdlg.cpp:168
+#: groupdlg.cpp:173
 msgid "Expire Options..."
 msgstr "Opcje &wygasania..."
 
 #: groupdlg.cpp:174
+#, fuzzy
+msgid "Printing Options..."
+msgstr "Opcje &NNTP..."
+
+#: groupdlg.cpp:180
 msgid "About Krn..."
 msgstr "Informacje o KRN"
 
-#: groupdlg.cpp:180
+#: groupdlg.cpp:186
 msgid "&Newsgroup"
 msgstr "&Grupy dyskusyjne"
 
-#: groupdlg.cpp:193
+#: groupdlg.cpp:199
 msgid "Connect to server"
 msgstr "&Po³±cz z serwerem"
 
-#: groupdlg.cpp:196
+#: groupdlg.cpp:202
 msgid "Disconnect from server"
 msgstr "&Roz³±cz siê z serwerem"
 
-#: groupdlg.cpp:200
+#: groupdlg.cpp:206
 msgid "Get list of active groups"
 msgstr "Pobierz &listê aktywnych grup"
 
-#: groupdlg.cpp:202
+#: groupdlg.cpp:208
 msgid "Find group"
 msgstr "Szukaj grupy"
 
-#: groupdlg.cpp:210
+#: groupdlg.cpp:216
 msgid "Check for Unread Articles"
 msgstr "Sprawd¼ nieprzeczytane wiadomo¶ci"
 
-#: groupdlg.cpp:297
+#: groupdlg.cpp:330
 msgid "Sorry!"
 msgstr "Niestety!"
 
-#: groupdlg.cpp:298
+#: groupdlg.cpp:331
 msgid ""
 "That newsgroup is not in the current active file\n"
 " Krn can't handle this gracefully right now"
@@ -151,51 +156,51 @@ msgstr ""
 "Tej grupy nie ma w aktualnie aktywnym pliku\n"
 "Krn nie mo¿e jej teraz obs³u¿yæ"
 
-#: groupdlg.cpp:325 groupdlg.cpp:523 groupdlg.cpp:854
+#: groupdlg.cpp:358 groupdlg.cpp:556 groupdlg.cpp:890
 msgid "All Newsgroups."
 msgstr "Wszystkie grupy"
 
-#: groupdlg.cpp:417 groupdlg.cpp:511
+#: groupdlg.cpp:450 groupdlg.cpp:544
 msgid "Subscribed Newsgroups."
 msgstr "Subskrybowane grupy"
 
-#: groupdlg.cpp:466
+#: groupdlg.cpp:499
 msgid "Disconnected"
 msgstr "Roz³±czono"
 
-#: groupdlg.cpp:473
+#: groupdlg.cpp:506
 msgid "Connecting to server"
 msgstr "£±czê siê z serwerem"
 
-#: groupdlg.cpp:478
+#: groupdlg.cpp:511
 msgid "Connected to server - Posting not allowed"
 msgstr "Po³±czono z serwerem - og³aszanie nie umo¿liwione ?"
 
-#: groupdlg.cpp:480
+#: groupdlg.cpp:513
 msgid "Connected to server - Posting allowed"
 msgstr "Po³±czono z serwerem - og³aszanie umo¿liwione"
 
-#: groupdlg.cpp:485
+#: groupdlg.cpp:519
 msgid "Can't connect to server"
 msgstr "Nie mogê po³±czyæ siê z serwerem"
 
-#: groupdlg.cpp:487
+#: groupdlg.cpp:521
 msgid "Connection to server failed"
 msgstr "Po³±czenie z serwerem nie powiod³o siê"
 
-#: groupdlg.cpp:496
+#: groupdlg.cpp:530
 msgid "Authentication Failed"
 msgstr "Autoryzacja nie powiod³a siê!"
 
-#: groupdlg.cpp:499
+#: groupdlg.cpp:533
 msgid "Connection to server failed: Authentication problem"
 msgstr "Po³±czenie z serwerem nie powiod³o siê: problem z autoryzacj±"
 
-#: groupdlg.cpp:536
+#: groupdlg.cpp:573
 msgid "Krn-Question"
 msgstr "Pytanie KRN"
 
-#: groupdlg.cpp:537
+#: groupdlg.cpp:574
 msgid ""
 "The operation you requested needs a connection to the News server\n"
 "Should I attempt one?"
@@ -203,7 +208,7 @@ msgstr ""
 "Ta operacja wymaga po³±czenia z serwerem.\n"
 "Po³±czyæ siê?"
 
-#: groupdlg.cpp:800
+#: groupdlg.cpp:836
 msgid ""
 "You don't have an active groups list.\n"
 " get it from server?"
@@ -211,175 +216,193 @@ msgstr ""
 "Nie masz listy aktywnych grup.\n"
 "Pobraæ z serwera?"
 
-#: groupdlg.cpp:816
+#: groupdlg.cpp:852
 msgid "Listing active newsgroups"
 msgstr "Przegl±dam aktywne grupy"
 
-#: groupdlg.cpp:828
+#: groupdlg.cpp:864
 msgid "KRN - Find a Newsgroup"
 msgstr "KRN - szukanie grup"
 
-#: groupdlg.cpp:829
+#: groupdlg.cpp:865
 msgid "Enter the name of the Newsgroup"
 msgstr "Podaj nazwê grupy"
 
-#: groupdlg.cpp:914
+#: groupdlg.cpp:950
 msgid "Krn - Message"
 msgstr "KRN - Wiadomo¶æ"
 
-#: groupdlg.cpp:915
+#: groupdlg.cpp:951
 msgid "I can't find the group you want!"
 msgstr "Nie mogê odnale¼æ szukanej grupy"
 
-#: groupdlg.cpp:1006
+#: groupdlg.cpp:1042
 msgid "Getting messages in "
 msgstr "Pobieram wiadomo¶ci z "
 
-#: groupdlg.cpp:1019
+#: groupdlg.cpp:1055
 msgid "Getting list of messages in "
 msgstr "Pobieram listê wiadomo¶ci w "
 
-#: artdlg.cpp:108 artdlg.cpp:120
+#: artdlg.cpp:129 artdlg.cpp:141
 msgid "Download"
 msgstr "Pobierz"
 
-#: artdlg.cpp:110 artdlg.cpp:123
+#: artdlg.cpp:131 artdlg.cpp:144
 msgid "Print"
 msgstr "Drukuj"
 
-#: artdlg.cpp:111 artdlg.cpp:130
+#: artdlg.cpp:132 artdlg.cpp:151
 msgid "Decode"
 msgstr "Dekoduj"
 
-#: artdlg.cpp:113 artdlg.cpp:135
+#: artdlg.cpp:134 artdlg.cpp:156
 msgid "Don't expire"
 msgstr "Zapamiêtaj"
 
-#: artdlg.cpp:125 artdlg.cpp:187
+#: artdlg.cpp:146 artdlg.cpp:215
 msgid "Reply by Mail"
 msgstr "Odpowiedz autorowi"
 
-#: artdlg.cpp:126
+#: artdlg.cpp:147
 msgid "Post Followup"
 msgstr "Odpowiedz grupie"
 
-#: artdlg.cpp:127
+#: artdlg.cpp:148
 msgid "Post & Reply"
 msgstr "Odpowiedz autorowi i grupie"
 
-#: artdlg.cpp:133
+#: artdlg.cpp:154
 msgid "Tagged"
 msgstr "Zaznaczone"
 
-#: artdlg.cpp:143
+#: artdlg.cpp:164
 msgid "Show Only Unread Messages"
 msgstr "Poka¿ tylko nieprzeczytane"
 
-#: artdlg.cpp:145
+#: artdlg.cpp:166
 msgid "Show Only Cached Messages"
 msgstr "Poka¿ wiadomo¶ci tylko z pamiêci podrêcznej"
 
-#: artdlg.cpp:147
+#: artdlg.cpp:168
 msgid "Show Locked Messages"
 msgstr "Poka¿ zapamiêtane wiadomo¶ci"
 
-#: artdlg.cpp:149
+#: artdlg.cpp:170
 msgid "Expunge"
 msgstr "Usuñ"
 
-#: artdlg.cpp:150
+#: artdlg.cpp:171
 msgid "Appearance..."
 msgstr "Wygl±d..."
 
-#: artdlg.cpp:153
+#: artdlg.cpp:172
+#, fuzzy
+msgid "Sorting..."
+msgstr "Porz±dkujê w±tki..."
+
+#: artdlg.cpp:176
+msgid "Edit Rules"
+msgstr ""
+
+#: artdlg.cpp:177
+msgid "Update"
+msgstr ""
+
+#: artdlg.cpp:180
 msgid "menu"
 msgstr "menu"
 
-#: artdlg.cpp:166
+#: artdlg.cpp:184
+#, fuzzy
+msgid "&Scoring"
+msgstr "Kodowanie"
+
+#: artdlg.cpp:194
 msgid "Previous Message"
 msgstr "Poprzednia wiadomo¶c"
 
-#: artdlg.cpp:169
+#: artdlg.cpp:197
 msgid "Next Message"
 msgstr "Nastêpna wiadomo¶æ"
 
-#: artdlg.cpp:174
+#: artdlg.cpp:202
 msgid "Save Article"
 msgstr "Zapisz wiadomo¶æ"
 
-#: artdlg.cpp:177
+#: artdlg.cpp:205
 msgid "Print Article"
 msgstr "Drukuj wiadomo¶æ"
 
-#: artdlg.cpp:180
+#: artdlg.cpp:208
 msgid "Find Article"
 msgstr "Szukaj wiadomo¶ci"
 
-#: artdlg.cpp:190
+#: artdlg.cpp:218
 msgid "Post a Followup"
 msgstr "Odpowiedz grupie"
 
-#: artdlg.cpp:193
+#: artdlg.cpp:221
 msgid "Post & Mail"
 msgstr "Odpowiedz autorowi i grupie"
 
-#: artdlg.cpp:202
+#: artdlg.cpp:230
 msgid "Get Article List"
 msgstr "Pobierz listê wiadomo¶ci"
 
-#: artdlg.cpp:205
+#: artdlg.cpp:233
 msgid "Tag Article"
 msgstr "Zaznacz wiadomo¶ci"
 
-#: artdlg.cpp:208
+#: artdlg.cpp:236
 msgid "Lock (keep in cache)"
 msgstr "Zapamiêtaj (w pamieci podrêcznej)"
 
-#: artdlg.cpp:211
+#: artdlg.cpp:239
 msgid "Decode Article"
 msgstr "Dekoduj wiadomo¶æ"
 
-#: artdlg.cpp:234
+#: artdlg.cpp:268 sortDlg.cpp:28
 msgid "Sender"
 msgstr "Nadawca"
 
-#: artdlg.cpp:235
+#: artdlg.cpp:269 sortDlg.cpp:29
 msgid "Date"
 msgstr "Data"
 
-#: artdlg.cpp:236
+#: artdlg.cpp:270
 msgid "Lines"
 msgstr "Linii"
 
-#: artdlg.cpp:237
+#: artdlg.cpp:271 sortDlg.cpp:26
 msgid "Subject"
 msgstr "Temat"
 
-#: artdlg.cpp:398
+#: artdlg.cpp:436
 msgid "Threading..."
 msgstr "Porz±dkujê w±tki..."
 
-#: artdlg.cpp:405
+#: artdlg.cpp:445
 msgid "Showing Article List"
 msgstr "Pokazujê listê wiadomo¶ci"
 
-#: artdlg.cpp:968
+#: artdlg.cpp:1051
 msgid "KRN - Existing File"
 msgstr "KRN - istniej±ce pliki"
 
-#: artdlg.cpp:969
+#: artdlg.cpp:1052
 msgid "The File you selected already exists"
 msgstr "Plik, który wybra³e¶, ju¿ istnieje"
 
-#: artdlg.cpp:975
+#: artdlg.cpp:1058
 msgid "OverWrite"
 msgstr "Nadpisz"
 
-#: artdlg.cpp:977
+#: artdlg.cpp:1060
 msgid "Append"
 msgstr "Do³±cz"
 
-#: artdlg.cpp:1024
+#: artdlg.cpp:1107
 msgid ""
 "\n"
 "Error getting article.\n"
@@ -389,7 +412,7 @@ msgstr ""
 "B³±d podczas pobierania wiadomo¶ci.\n"
 "Serwer odpowiedzia³:\n"
 
-#: artdlg.cpp:1122
+#: artdlg.cpp:1208
 msgid "Getting Article List"
 msgstr "Pobieranie listy wiadomo¶ci"
 
@@ -434,19 +457,24 @@ msgstr "Serwer pocztowy"
 msgid "NNTP Server"
 msgstr "Serwer NNTP"
 
-#: NNTPConfigDlg.cpp:51
-msgid "Authenticate"
-msgstr "Wymaga logowania"
-
-#: NNTPConfigDlg.cpp:55
+#: NNTPConfigDlg.cpp:52
 msgid "Connect on Startup"
 msgstr "Po³±cz przy uruchomieniu"
 
+#: NNTPConfigDlg.cpp:56
+#, fuzzy
+msgid "Connect without asking"
+msgstr "&Po³±cz z serwerem"
+
 #: NNTPConfigDlg.cpp:60
+msgid "Authenticate"
+msgstr "Wymaga logowania"
+
+#: NNTPConfigDlg.cpp:65
 msgid "User Name"
 msgstr "U¿ytkownik"
 
-#: NNTPConfigDlg.cpp:64
+#: NNTPConfigDlg.cpp:69
 msgid "Password"
 msgstr "Has³o"
 
@@ -458,7 +486,7 @@ msgstr "Dekoder KRN"
 msgid "ID"
 msgstr "ID"
 
-#: decoderDlg.cpp:27 kmcomposewin.cpp:114
+#: decoderDlg.cpp:27
 msgid "Name"
 msgstr "Nazwa"
 
@@ -475,11 +503,11 @@ msgstr "Nieznany sposób kodowania: %s."
 msgid "About KRN"
 msgstr "O KRN"
 
-#: aboutDlg.cpp:37
+#: aboutDlg.cpp:39
 msgid "Part of the KDE project."
 msgstr "Czê¶æ projektu KDE."
 
-#: aboutDlg.cpp:40
+#: aboutDlg.cpp:42
 msgid "Credits & Thanks"
 msgstr "Podziêkowania"
 
@@ -487,751 +515,81 @@ msgstr "Podziêkowania"
 msgid "And Many thanks to:"
 msgstr "Wielkie dziêki tak¿e dla:"
 
-#: fontsDlg.cpp:29
-msgid "Message Display Fonts"
+#: fontsDlg.cpp:40
+#, fuzzy
+msgid "Message Display Settings"
 msgstr "Wy¶wietlane czcionki"
 
-#: fontsDlgData.cpp:23
-msgid "Small"
-msgstr "Ma³a"
-
-#: fontsDlgData.cpp:25
-msgid "Large"
-msgstr "Du¿a"
-
-#: fontsDlgData.cpp:26
-msgid "Huge"
-msgstr "Wielka"
-
-#: fontsDlgData.cpp:31
+#: fontsDlg.cpp:47
 msgid "Font Size:"
 msgstr "Rozmiar czcionki:"
 
-#: fontsDlgData.cpp:35 fontsDlgData.cpp:39
-msgid "test"
-msgstr "test"
+#: fontsDlg.cpp:50
+msgid "Small"
+msgstr "Ma³a"
 
-#: fontsDlgData.cpp:51
+#: fontsDlg.cpp:52
+msgid "Large"
+msgstr "Du¿a"
+
+#: fontsDlg.cpp:53
+msgid "Huge"
+msgstr "Wielka"
+
+#: fontsDlg.cpp:58
 msgid "Standard Font"
 msgstr "Domy¶lna czcionka"
 
-#: fontsDlgData.cpp:55
+#: fontsDlg.cpp:66
 msgid "Fixed Font"
 msgstr "Czcionka o sta³ej szer."
 
-#: fontsDlgData.cpp:67
+#: fontsDlg.cpp:74
 msgid "Background Color"
 msgstr "Kolor t³a"
 
-#: fontsDlgData.cpp:71
+#: fontsDlg.cpp:77
 msgid "Foreground Color"
 msgstr "Kolor tekstu"
 
-#: fontsDlgData.cpp:75
+#: fontsDlg.cpp:80
 msgid "Link Color"
 msgstr "Kolor linków"
 
-#: fontsDlgData.cpp:79
+#: fontsDlg.cpp:83
 msgid "Followed Color"
 msgstr "Nastêpny kolor"
 
-#: kmmessage.cpp:1154
-msgid "On %D, you wrote:"
-msgstr "On %D, you wrote:"
-
-#: kmmessage.cpp:1155
-msgid "On %D, %F wrote:"
-msgstr "On %D, %F wrote:"
-
-#: kmmessage.cpp:1156
-msgid "Forwarded Message"
-msgstr "Przekazywana wiadomo¶æ"
-
-#: kmcomposewin.cpp:103
-msgid "KMail Composer"
-msgstr "Nowa wiadomo¶æ"
-
-#: kmcomposewin.cpp:113
-msgid "F"
-msgstr "F"
-
-#: kmcomposewin.cpp:116
-msgid "Encoding"
-msgstr "Kodowanie"
-
-#: kmcomposewin.cpp:117
-msgid "Type"
-msgstr "Typ"
-
-#: kmcomposewin.cpp:258
-msgid "&From:"
-msgstr "&Od:"
-
-#: kmcomposewin.cpp:260
-msgid "&Reply to:"
-msgstr "Ad&res zwrotny:"
-
-#: kmcomposewin.cpp:262
-msgid "&To:"
-msgstr "&Do:"
-
-#: kmcomposewin.cpp:264
-msgid "&Cc:"
-msgstr "Dw:"
-
-#: kmcomposewin.cpp:266
-msgid "&Bcc:"
-msgstr "&Udw:"
-
-#: kmcomposewin.cpp:268
-msgid "&Subject:"
-msgstr "&Temat:"
-
-#: kmcomposewin.cpp:271
-msgid "&Newsgroups:"
-msgstr "&Grupy dyskusyjne:"
-
-#: kmcomposewin.cpp:273
-msgid "&Followup-To:"
-msgstr "&Nastêpnie do:"
-
-#: kmcomposewin.cpp:339
-msgid "&Send"
-msgstr "&Wy¶lij"
-
-#: kmcomposewin.cpp:342
-msgid "S&end later"
-msgstr "Wy¶lij &pó¼niej"
-
-#: kmcomposewin.cpp:344
-msgid "S&end now"
-msgstr "Wy¶lij &teraz"
-
-#: kmcomposewin.cpp:346
-msgid "&Insert File..."
-msgstr "Wstaw &plik..."
-
-#: kmcomposewin.cpp:349
-msgid "&Addressbook..."
-msgstr "Ksi±¿ka adresowa..."
-
-#: kmcomposewin.cpp:354
-msgid "&New Composer..."
-msgstr "&Nowa wiadomo¶æ..."
-
-#: kmcomposewin.cpp:374 kmcomposewin.cpp:1493
-msgid "Mark all"
-msgstr "Zaznacz wszystkie"
-
-#: kmcomposewin.cpp:376
-#, fuzzy
-msgid "Replace..."
-msgstr "Wygl±d..."
-
-#: kmcomposewin.cpp:380
-msgid "Find..."
-msgstr "Szukaj..."
-
-#: kmcomposewin.cpp:387
-msgid "&Urgent"
-msgstr "&Pilny"
-
-#: kmcomposewin.cpp:389
-msgid "&Confirm delivery"
-msgstr "&Potwierd¼ dostarczenie"
-
-#: kmcomposewin.cpp:391
-msgid "&Confirm read"
-msgstr "&Potwierd¼ przeczytanie"
-
-#: kmcomposewin.cpp:403
-msgid "&All Fields"
-msgstr "Wszystkie &pola"
-
-#: kmcomposewin.cpp:405
-msgid "&From"
-msgstr "&Od"
-
-#: kmcomposewin.cpp:406
-msgid "&Reply to"
-msgstr "Adres zwrotn&y"
-
-#: kmcomposewin.cpp:407
-msgid "&To"
-msgstr "&Do"
-
-#: kmcomposewin.cpp:408
-msgid "&Cc"
-msgstr "D&w"
-
-#: kmcomposewin.cpp:409
-msgid "&Bcc"
-msgstr "&Udw"
-
-#: kmcomposewin.cpp:410
-msgid "&Subject"
-msgstr "&Temat"
-
-#: kmcomposewin.cpp:412
-msgid "&Newsgroups"
-msgstr "&Grupy dyskusyjne"
-
-#: kmcomposewin.cpp:413
-msgid "&Followup-To"
-msgstr "Nastê&pnie do"
-
-#: kmcomposewin.cpp:418
-msgid "Append S&ignature"
-msgstr "&Podpisz"
-
-#: kmcomposewin.cpp:420
-msgid "&Insert File"
-msgstr "Wstaw &plik..."
-
-#: kmcomposewin.cpp:422
-msgid "&Attach..."
-msgstr "Z&a³±cz..."
-
-#: kmcomposewin.cpp:424
-msgid "&Remove"
-msgstr "&Usuñ"
-
-#: kmcomposewin.cpp:425
-msgid "&Save..."
-msgstr "&Zachowaj..."
-
-#: kmcomposewin.cpp:426
-msgid "Pr&operties..."
-msgstr "&W³a¶ciwo¶ci..."
-
-#: kmcomposewin.cpp:428
-msgid "&Attach"
-msgstr "Za³±czni&ki"
-
-#: kmcomposewin.cpp:453
-msgid "Compose new message"
-msgstr "Nowa wiadomo¶æ"
-
-#: kmcomposewin.cpp:458
-msgid "Save message to file"
-msgstr "Zapisz wiadomo¶æ do pliku"
-
-#: kmcomposewin.cpp:463
-msgid "Print message"
-msgstr "Drukuj wiadomo¶æ"
-
-#: kmcomposewin.cpp:486
-msgid "Open addressbook..."
-msgstr "Otwórz ksi±¿kê adresow±..."
-
-#: kmcomposewin.cpp:495
-msgid "sign message"
-msgstr "Podpisz wiadomo¶æ u¿ywaj±c PGP"
-
-#: kmcomposewin.cpp:500
-msgid "encrypt message"
-msgstr "Zaszyfruj wiadomo¶æ u¿ywaj±c PGP"
-
-#: kmcomposewin.cpp:562
-msgid "Send now"
-msgstr "Wy¶lij teraz"
-
-#: kmcomposewin.cpp:564
-msgid "Send later"
-msgstr "Wy¶lij pó¼niej"
-
-#: kmcomposewin.cpp:573
-msgid "Mark All"
-msgstr "Zaznacz wszystkie"
-
-#: kmcomposewin.cpp:706
-msgid "KMail Confirm"
-msgstr "KRN Potwierdzenie"
-
-#: kmcomposewin.cpp:707
-msgid ""
-"Close and discard\n"
-"edited message?"
+#: fontsDlg.cpp:87
+msgid "Use only one window"
 msgstr ""
-"Porzuciæ edycjê\n"
-"wiadomosci?"
 
-#: kmcomposewin.cpp:749
-#, c-format
-msgid ""
-"public key for %s not found.\n"
-"This person will not be able to decrypt the message."
+#: fontsDlg.cpp:89
+msgid "Split window vertically"
 msgstr ""
-"Brak klucza publicznego dla %s.\n"
-" Nie mo¿na zaszyfrowaæ wiadomo¶ci dla tej osob."
 
-#: kmcomposewin.cpp:770
-msgid "Error during PGP:"
-msgstr "B³±d PGP"
-
-#: kmcomposewin.cpp:980 kmcomposewin.cpp:1001
-msgid "Attach File"
-msgstr "Za³±cz plik"
-
-#: kmcomposewin.cpp:1032 kmreaderwin.cpp:611
-msgid "View..."
-msgstr "Widok..."
-
-#: kmcomposewin.cpp:1033
-msgid "Save..."
-msgstr "Zapisz..."
-
-#: kmcomposewin.cpp:1034 kmreaderwin.cpp:614
-msgid "Properties..."
-msgstr "W³a¶ciwo¶ci..."
-
-#: kmcomposewin.cpp:1038
-msgid "Attach..."
-msgstr "Za³±cz..."
-
-#: kmcomposewin.cpp:1080 kmreaderwin.cpp:636
-msgid "View Attachment: "
-msgstr "Poka¿ za³±czniki: "
-
-#: kmcomposewin.cpp:1214 kpgp.cpp:351
-msgid ""
-"Sorry, but this feature\n"
-"is still missing"
-msgstr "Ta opcja jest jeszcze niedostêpna"
-
-#: kmcomposewin.cpp:1222
-msgid "unnamed"
-msgstr "nienazwany"
-
-#: kmcomposewin.cpp:1237
-msgid "To:"
-msgstr "Do:"
-
-#: kmcomposewin.cpp:1241
-msgid "Subject:"
-msgstr "Temat:"
-
-#: kmcomposewin.cpp:1244
-msgid "Date:"
-msgstr "Data:"
-
-#: kmcomposewin.cpp:1329
-msgid "Choose Signature File"
-msgstr "Wybierz plik podpisu"
-
-#: kmcomposewin.cpp:1359
-msgid "KMail: Spellcheck"
-msgstr "KMail: Sprawdzanie pisowni"
-
-#: kmcomposewin.cpp:1383
-msgid ""
-"Error starting KSpell. Please make sure you have ISpell properly configured."
-msgstr ""
-"B³±d uruchamienia KSpell. Upewniæ siê, ¿e masz poprawnie skonfigurowany "
-"ISpell."
-
-#: kmsender.cpp:108
-msgid ""
-"Please specify a send\n"
-"method in the settings\n"
-"and try again."
-msgstr ""
-"Proszê  wybraæ w ustawieniach\n"
-"sposób wysy³ania poczty\n"
-"i spróbowaæ jeszcze raz."
-
-#: kmsender.cpp:114
-msgid ""
-"Please set the required fields in the\n"
-"identity settings:\n"
-"user-name and email-address"
-msgstr ""
-"Proszê uzupe³niæ w ustawieniach\n"
-"dane u¿ytkownika:\n"
-"pola: Nazwisko i adres e-mail"
-
-#: kmsender.cpp:135
-msgid "You must specify a receiver"
-msgstr "Musisz wpisaæ adres odbiorcy"
-
-#: kmsender.cpp:146
-msgid "Cannot add message to outbox folder"
-msgstr "Nie mo¿na dodaæ wiadomo¶ci do foldera outbox"
-
-#: kmsender.cpp:169
-msgid "Sending still in progress"
-msgstr "Ciagle trwa wysy³anie"
-
-#: kmsender.cpp:221
-msgid "Initiating sender process..."
-msgstr "Inicjalizacja procesu wysy³ania..."
-
-#: kmsender.cpp:237
-msgid "Sending message: "
-msgstr "Wysy³anie wiadomo¶ci: "
-
-#: kmsender.cpp:261
-msgid "Done sending messages."
-msgstr "Zakoñczono wysy³anie wiadomo¶ci."
-
-#: kmsender.cpp:281
-msgid "Sending failed:"
-msgstr "Wysy³anie nie powiod³o siê: "
-
-#: kmsender.cpp:409
-msgid ""
-"Please specify a mailer program\n"
-"in the settings."
-msgstr ""
-"Proszê wpisaæ w ustawieniach\n"
-"scie¿kê do sendmaila."
-
-#: kmsender.cpp:449
-#, c-format
-msgid "Failed to execute mailer program %s"
-msgstr "Nie mo¿na uruchomiæ %s"
-
-#: kmsender.cpp:558
-msgid "connecting to server"
-msgstr "³±czenie z serwerem "
-
-#: kmsender.cpp:563
-#, c-format
-msgid ""
-"Cannot open SMTP connection to\n"
-"host %s for sending:\n"
-"%s"
-msgstr ""
-"Nie mo¿na po³±czyæ siê z serwerem\n"
-" %s i wys³aæ wiadomosci:\n"
-"%s"
-
-#: kmsender.cpp:592
-msgid "Cannot close SMTP connection."
-msgstr "Nie mo¿na zamkn±æ po³±czenia SMTP."
-
-#: kmsender.cpp:642
-msgid "transmitting message"
-msgstr "transmisja wiadomo¶ci"
-
-#: kmsender.cpp:696
-msgid "network error"
-msgstr "b³±d sieciowy"
-
-#: kmsender.cpp:698
-#, c-format
-msgid ""
-"a SMTP error occured.\n"
-"Command: %s\n"
-"Response: %s\n"
-"Return code: %d"
-msgstr ""
-"wyst±pi³ b³±d SMTP.\n"
-"Polecenie: %s\n"
-"Odpowied¼: %s\n"
-"Kod powrotu: %d"
-
-#: kmsender.cpp:713
-#, c-format
-msgid "Sending SMTP command: %s"
-msgstr "Wysy³am polecenie SMTP: %s"
-
-#: findArtDlg.cpp:21
+#: findArtDlg.cpp:22
 #, fuzzy
 msgid "KRN - Article Searcher"
 msgstr "Nag³owki widomo¶æi:"
 
-#: findArtDlg.cpp:28
+#: findArtDlg.cpp:29 rulesDlg.cpp:35
 #, fuzzy
 msgid "Find Articles With:"
 msgstr "Szukaj wiadomo¶ci"
 
-#: findArtDlg.cpp:33
+#: findArtDlg.cpp:34 rulesDlg.cpp:40
 #, fuzzy
 msgid "In Field:"
 msgstr "Wszystkie &pola"
 
-#: kmidentity.cpp:162
-#, c-format
-msgid ""
-"Failed to execute signature script\n"
-"%s\n"
-"%s"
+#: findArtDlg.cpp:52 rulesDlg.cpp:55
+msgid "Wildcard Mode"
 msgstr ""
-"Nie mo¿na wykonaæ skrypu podpisuj±cego\n"
-"%s\n"
-"%s"
 
-#: kfileio.cpp:26 kmaddrbook.cpp:150
-msgid "File I/O Error"
-msgstr "File I/O Error"
-
-#: kfileio.cpp:45
-#, c-format
-msgid ""
-"The specified file does not exist:\n"
-"%s"
+#: krnsender.cpp:46
+msgid "This server is read onlyyou can't post here!"
 msgstr ""
-"Wskazany plik nie istnieje:\n"
-"%sPlik nie istnieje:\n"
-"%s"
-
-#: kfileio.cpp:52
-#, c-format
-msgid ""
-"This is a directory and not a file:\n"
-"%s"
-msgstr ""
-"To jest katalog, nie plik:\n"
-"%s"
-
-#: kfileio.cpp:59
-#, c-format
-msgid ""
-"You do not have read permissions to the file:\n"
-"%s"
-msgstr ""
-"Nie masz prawa odczytu do pliku:\n"
-"%s"
-
-#: kfileio.cpp:69 kmaddrbook.cpp:140
-#, c-format
-msgid ""
-"Could not read file:\n"
-"%s"
-msgstr ""
-"Nie mo¿na czytac pliku:\n"
-"%s"
-
-#: kfileio.cpp:72 kmaddrbook.cpp:143
-#, c-format
-msgid ""
-"Could not open file:\n"
-"%s"
-msgstr ""
-"Nie mo¿na otworzyæ pliku:\n"
-"%s"
-
-#: kfileio.cpp:75
-#, c-format
-msgid ""
-"Error while reading file:\n"
-"%s"
-msgstr ""
-"B³±d podczas odczytu pliku:\n"
-"%s"
-
-#: kfileio.cpp:92
-#, c-format
-msgid "Could only read %u bytes of %u."
-msgstr "Przeczytano tylko %u bajtów z %u."
-
-#: kfileio.cpp:121
-#, c-format
-msgid ""
-"File %s exists.\n"
-"Do you want to replace it ?"
-msgstr ""
-"Plik %s istnieje.\n"
-"Zast±piæ go ?"
-
-#: kfileio.cpp:124 kfileio.cpp:142
-msgid "&Ok"
-msgstr "&Ok"
-
-#: kfileio.cpp:141
-#, c-format
-msgid ""
-"Failed to make a backup copy of %s.\n"
-"Continue anyway ?"
-msgstr ""
-"Nie powiod³o sie wykonanie kopii \n"
-"zapasowej z %s. Kontynuowaæ?"
-
-#: kfileio.cpp:153 kfileio.cpp:170
-#, c-format
-msgid ""
-"Could not write to file:\n"
-"%s"
-msgstr ""
-"Nie mo¿na pisaæ do pliku:\n"
-"%s"
-
-#: kfileio.cpp:156
-#, c-format
-msgid ""
-"Could not open file for writing:\n"
-"%s"
-msgstr ""
-"Nie mo¿na otworzyæ pliku do zapisu:\n"
-"%s"
-
-#: kfileio.cpp:160 kmaddrbook.cpp:146
-#, c-format
-msgid ""
-"Error while writing file:\n"
-"%s"
-msgstr ""
-"B³±d podczas zapisu do pliku:\n"
-"%s"
-
-#: kfileio.cpp:176
-#, c-format
-msgid "Could only write %d bytes of %d."
-msgstr "Mo¿na by³o zapisaæ tylko %d bajtów z %d"
-
-#: kmmsgpartdlg.cpp:41
-msgid "Message Part Properties"
-msgstr "W³asciwo¶ci za³±cznika"
-
-#: kmmsgpartdlg.cpp:62
-msgid "Name:"
-msgstr "Nazwa:"
-
-#: kmmsgpartdlg.cpp:73
-msgid "Description:"
-msgstr "Opis:"
-
-#: kmmsgpartdlg.cpp:83
-msgid "Encoding:"
-msgstr "Kodowanie:"
-
-#: kmmsgpartdlg.cpp:89
-msgid "none (8bit)"
-msgstr "brak (8bit)"
-
-#: kmmsgpartdlg.cpp:90
-msgid "base 64"
-msgstr "base 64"
-
-#: kmmsgpartdlg.cpp:91
-msgid "quoted printable"
-msgstr "quoted printable"
-
-#: kmreaderwin.cpp:273 kmreaderwin.cpp:289 kmreaderwin.cpp:310
-msgid "From: "
-msgstr "Od:"
-
-#: kmreaderwin.cpp:275 kmreaderwin.cpp:291 kmreaderwin.cpp:312
-msgid "To: "
-msgstr "Do:"
-
-#: kmreaderwin.cpp:279 kmreaderwin.cpp:300 kmreaderwin.cpp:325
-msgid "References: "
-msgstr "Odniesienia:"
-
-#: kmreaderwin.cpp:294 kmreaderwin.cpp:315
-msgid "Cc: "
-msgstr "Dw:"
-
-#: kmreaderwin.cpp:296 kmreaderwin.cpp:309
-msgid "Date: "
-msgstr "Data:"
-
-#: kmreaderwin.cpp:318
-msgid "Bcc: "
-msgstr "Udw: "
-
-#: kmreaderwin.cpp:321
-msgid "Reply to: "
-msgstr "Adres zwrotny: "
-
-#: kmreaderwin.cpp:328
-msgid "Groups: "
-msgstr "Grupy dyskusyjne:"
-
-#: kmreaderwin.cpp:363
-msgid "Encrypted message"
-msgstr "Wiadomo¶æ zaszyfrowana"
-
-#: kmreaderwin.cpp:369
-msgid "Cannot decrypt message:"
-msgstr "Nie mo¿na odszyfrowaæ wiadomo¶ci: "
-
-#: kmreaderwin.cpp:387
-msgid "Message was signed by"
-msgstr "Wiadomo¶æ zosta³a podpisana przez"
-
-#: kmreaderwin.cpp:388
-msgid "Warning: Bad signature from"
-msgstr "Ostrzerzenie: Z³y podpis od"
-
-#: kmreaderwin.cpp:575
-msgid "Attachment: "
-msgstr "Za³±cznik:"
-
-#: kmreaderwin.cpp:660
-msgid "Could not create temporary file"
-msgstr "Nie mo¿na utworzyæ pliku tymczasowego"
-
-#: kmreaderwin.cpp:680
-#, c-format
-msgid "Could not save temporary file %s"
-msgstr "Nie mo¿na zapisaæ pliku tymczasowego %s"
-
-#: kmreaderwin.cpp:706
-msgid "Could not save file"
-msgstr "Nie mo¿na zapisaæ pliku"
-
-#: kpgp.cpp:112
-msgid ""
-"Couldn't find PGP executable.\n"
-"Please check your PATH is set correctly."
-msgstr ""
-"Nie mo¿na odnale¼æ pliku wykonywalnego PGP.\n"
-"Sprawd¼, czy masz dobrze ustawione ¶cie¿ki."
-
-#: kpgp.cpp:157
-msgid ""
-"Could not find PGP executable.\n"
-"Please check your PATH is set correctly."
-msgstr ""
-"Nie mo¿na odnale¼æ pliku wykonywalnego PGP.\n"
-"Sprawd¼, czy masz dobrze ustawione ¶cie¿ki."
-
-#: kpgp.cpp:167
-msgid "The pass phrase is missing."
-msgstr "Brakuje has³a PGP"
-
-#: kpgp.cpp:439
-msgid "Message signed by"
-msgstr "Wiadomo¶æ podpisana przez"
-
-#: kpgp.cpp:443
-msgid "Message has a bad signature from"
-msgstr "Wiadomo¶æ ma z³y podpis od"
-
-#: kpgp.cpp:451
-msgid "End PGP signed message"
-msgstr "Koniec wiadomo¶ci podpisanej PGP"
-
-#: kpgp.cpp:645
-msgid "Bad pass Phrase; couldn't decrypt"
-msgstr "Z³e has³o PGP: nie mogê odszyfrowaæ"
-
-#: kpgp.cpp:734
-msgid "Bad pass Phrase; couldn't sign"
-msgstr "Z³e has³o; nie mogê podpisaæ"
-
-#: kpgp.cpp:791
-msgid ""
-"Please enter your\n"
-"PGP passphrase"
-msgstr ""
-"Proszê wpisaæ\n"
-"swoje has³o PGP "
-
-#: kpgp.cpp:818
-msgid "PGP Security Check"
-msgstr "Kontrola PGP"
-
-#: kmaddrbookdlg.cpp:20
-msgid "Addressbook"
-msgstr "Ksi±¿ka adresowa"
-
-#: kmaddrbookdlg.cpp:95
-msgid "Addressbook Manager"
-msgstr "Zarz±dzanie ksia¿k± adresow±"
 
 #: expireDlg.cpp:22 expireDlg.cpp:27
 msgid "KRN - Expire Settings"
@@ -1248,6 +606,601 @@ msgstr "Zawarto¶æ wiadomo¶æi:"
 #: expireDlg.cpp:49
 msgid "Article Headers:"
 msgstr "Nag³owki widomo¶æi:"
+
+#: printdlg.cpp:21
+#, fuzzy
+msgid "KRN - Print Settings"
+msgstr "KRN - Ustawienia wygasania"
+
+#: printdlg.cpp:26
+#, fuzzy
+msgid "KRN - Printing Settings"
+msgstr "KRN - Ustawienia wygasania"
+
+#: printdlg.cpp:33
+#, fuzzy
+msgid "General"
+msgstr "Nadawca"
+
+#: printdlg.cpp:37
+msgid "Use HTML Printing"
+msgstr ""
+
+#: printdlg.cpp:40
+msgid "Use Direct Printing"
+msgstr ""
+
+#: printdlg.cpp:48
+#, fuzzy
+msgid "Print using:"
+msgstr "Drukuj wiadomo¶æ"
+
+#: printdlg.cpp:52
+msgid "Feed it with:"
+msgstr ""
+
+#: printdlg.cpp:54
+msgid "Postscript"
+msgstr ""
+
+#: printdlg.cpp:55
+msgid "HTML"
+msgstr ""
+
+#: printdlg.cpp:56
+msgid "Text"
+msgstr ""
+
+#: rulesDlg.cpp:18
+msgid "KRN - Scoring Rules Editor"
+msgstr ""
+
+#: rulesDlg.cpp:29
+msgid "Save as"
+msgstr ""
+
+#: sortDlg.cpp:18
+#, fuzzy
+msgid "KRN - Header Sorting"
+msgstr "KRN - Ustawienia wygasania"
+
+#: sortDlg.cpp:27
+msgid "Score"
+msgstr ""
+
+#: sortDlg.cpp:30
+msgid "None"
+msgstr ""
+
+#: sortDlg.cpp:32
+msgid "Sort by:"
+msgstr ""
+
+#: sortDlg.cpp:51
+#, fuzzy
+msgid "Use Threading"
+msgstr "Porz±dkujê w±tki..."
+
+#~ msgid "test"
+#~ msgstr "test"
+
+#~ msgid "On %D, you wrote:"
+#~ msgstr "On %D, you wrote:"
+
+#~ msgid "On %D, %F wrote:"
+#~ msgstr "On %D, %F wrote:"
+
+#~ msgid "Forwarded Message"
+#~ msgstr "Przekazywana wiadomo¶æ"
+
+#~ msgid "KMail Composer"
+#~ msgstr "Nowa wiadomo¶æ"
+
+#~ msgid "F"
+#~ msgstr "F"
+
+#~ msgid "Type"
+#~ msgstr "Typ"
+
+#~ msgid "&From:"
+#~ msgstr "&Od:"
+
+#~ msgid "&Reply to:"
+#~ msgstr "Ad&res zwrotny:"
+
+#~ msgid "&To:"
+#~ msgstr "&Do:"
+
+#~ msgid "&Cc:"
+#~ msgstr "Dw:"
+
+#~ msgid "&Bcc:"
+#~ msgstr "&Udw:"
+
+#~ msgid "&Subject:"
+#~ msgstr "&Temat:"
+
+#~ msgid "&Newsgroups:"
+#~ msgstr "&Grupy dyskusyjne:"
+
+#~ msgid "&Followup-To:"
+#~ msgstr "&Nastêpnie do:"
+
+#~ msgid "&Send"
+#~ msgstr "&Wy¶lij"
+
+#~ msgid "S&end later"
+#~ msgstr "Wy¶lij &pó¼niej"
+
+#~ msgid "S&end now"
+#~ msgstr "Wy¶lij &teraz"
+
+#~ msgid "&Insert File..."
+#~ msgstr "Wstaw &plik..."
+
+#~ msgid "&Addressbook..."
+#~ msgstr "Ksi±¿ka adresowa..."
+
+#~ msgid "&New Composer..."
+#~ msgstr "&Nowa wiadomo¶æ..."
+
+#~ msgid "Mark all"
+#~ msgstr "Zaznacz wszystkie"
+
+#, fuzzy
+#~ msgid "Replace..."
+#~ msgstr "Wygl±d..."
+
+#~ msgid "Find..."
+#~ msgstr "Szukaj..."
+
+#~ msgid "&Urgent"
+#~ msgstr "&Pilny"
+
+#~ msgid "&Confirm delivery"
+#~ msgstr "&Potwierd¼ dostarczenie"
+
+#~ msgid "&Confirm read"
+#~ msgstr "&Potwierd¼ przeczytanie"
+
+#~ msgid "&All Fields"
+#~ msgstr "Wszystkie &pola"
+
+#~ msgid "&From"
+#~ msgstr "&Od"
+
+#~ msgid "&Reply to"
+#~ msgstr "Adres zwrotn&y"
+
+#~ msgid "&To"
+#~ msgstr "&Do"
+
+#~ msgid "&Cc"
+#~ msgstr "D&w"
+
+#~ msgid "&Bcc"
+#~ msgstr "&Udw"
+
+#~ msgid "&Subject"
+#~ msgstr "&Temat"
+
+#~ msgid "&Newsgroups"
+#~ msgstr "&Grupy dyskusyjne"
+
+#~ msgid "&Followup-To"
+#~ msgstr "Nastê&pnie do"
+
+#~ msgid "Append S&ignature"
+#~ msgstr "&Podpisz"
+
+#~ msgid "&Insert File"
+#~ msgstr "Wstaw &plik..."
+
+#~ msgid "&Attach..."
+#~ msgstr "Z&a³±cz..."
+
+#~ msgid "&Remove"
+#~ msgstr "&Usuñ"
+
+#~ msgid "&Save..."
+#~ msgstr "&Zachowaj..."
+
+#~ msgid "Pr&operties..."
+#~ msgstr "&W³a¶ciwo¶ci..."
+
+#~ msgid "&Attach"
+#~ msgstr "Za³±czni&ki"
+
+#~ msgid "Compose new message"
+#~ msgstr "Nowa wiadomo¶æ"
+
+#~ msgid "Save message to file"
+#~ msgstr "Zapisz wiadomo¶æ do pliku"
+
+#~ msgid "Open addressbook..."
+#~ msgstr "Otwórz ksi±¿kê adresow±..."
+
+#~ msgid "sign message"
+#~ msgstr "Podpisz wiadomo¶æ u¿ywaj±c PGP"
+
+#~ msgid "encrypt message"
+#~ msgstr "Zaszyfruj wiadomo¶æ u¿ywaj±c PGP"
+
+#~ msgid "Send now"
+#~ msgstr "Wy¶lij teraz"
+
+#~ msgid "Send later"
+#~ msgstr "Wy¶lij pó¼niej"
+
+#~ msgid "Mark All"
+#~ msgstr "Zaznacz wszystkie"
+
+#~ msgid "KMail Confirm"
+#~ msgstr "KRN Potwierdzenie"
+
+#~ msgid ""
+#~ "Close and discard\n"
+#~ "edited message?"
+#~ msgstr ""
+#~ "Porzuciæ edycjê\n"
+#~ "wiadomosci?"
+
+#~ msgid ""
+#~ "public key for %s not found.\n"
+#~ "This person will not be able to decrypt the message."
+#~ msgstr ""
+#~ "Brak klucza publicznego dla %s.\n"
+#~ " Nie mo¿na zaszyfrowaæ wiadomo¶ci dla tej osob."
+
+#~ msgid "Error during PGP:"
+#~ msgstr "B³±d PGP"
+
+#~ msgid "Attach File"
+#~ msgstr "Za³±cz plik"
+
+#~ msgid "View..."
+#~ msgstr "Widok..."
+
+#~ msgid "Save..."
+#~ msgstr "Zapisz..."
+
+#~ msgid "Properties..."
+#~ msgstr "W³a¶ciwo¶ci..."
+
+#~ msgid "Attach..."
+#~ msgstr "Za³±cz..."
+
+#~ msgid "View Attachment: "
+#~ msgstr "Poka¿ za³±czniki: "
+
+#~ msgid ""
+#~ "Sorry, but this feature\n"
+#~ "is still missing"
+#~ msgstr "Ta opcja jest jeszcze niedostêpna"
+
+#~ msgid "unnamed"
+#~ msgstr "nienazwany"
+
+#~ msgid "To:"
+#~ msgstr "Do:"
+
+#~ msgid "Subject:"
+#~ msgstr "Temat:"
+
+#~ msgid "Date:"
+#~ msgstr "Data:"
+
+#~ msgid "Choose Signature File"
+#~ msgstr "Wybierz plik podpisu"
+
+#~ msgid "KMail: Spellcheck"
+#~ msgstr "KMail: Sprawdzanie pisowni"
+
+#~ msgid ""
+#~ "Error starting KSpell. Please make sure you have ISpell properly configured."
+#~ msgstr ""
+#~ "B³±d uruchamienia KSpell. Upewniæ siê, ¿e masz poprawnie skonfigurowany "
+#~ "ISpell."
+
+#~ msgid ""
+#~ "Please specify a send\n"
+#~ "method in the settings\n"
+#~ "and try again."
+#~ msgstr ""
+#~ "Proszê  wybraæ w ustawieniach\n"
+#~ "sposób wysy³ania poczty\n"
+#~ "i spróbowaæ jeszcze raz."
+
+#~ msgid ""
+#~ "Please set the required fields in the\n"
+#~ "identity settings:\n"
+#~ "user-name and email-address"
+#~ msgstr ""
+#~ "Proszê uzupe³niæ w ustawieniach\n"
+#~ "dane u¿ytkownika:\n"
+#~ "pola: Nazwisko i adres e-mail"
+
+#~ msgid "You must specify a receiver"
+#~ msgstr "Musisz wpisaæ adres odbiorcy"
+
+#~ msgid "Cannot add message to outbox folder"
+#~ msgstr "Nie mo¿na dodaæ wiadomo¶ci do foldera outbox"
+
+#~ msgid "Sending still in progress"
+#~ msgstr "Ciagle trwa wysy³anie"
+
+#~ msgid "Initiating sender process..."
+#~ msgstr "Inicjalizacja procesu wysy³ania..."
+
+#~ msgid "Sending message: "
+#~ msgstr "Wysy³anie wiadomo¶ci: "
+
+#~ msgid "Done sending messages."
+#~ msgstr "Zakoñczono wysy³anie wiadomo¶ci."
+
+#~ msgid "Sending failed:"
+#~ msgstr "Wysy³anie nie powiod³o siê: "
+
+#~ msgid ""
+#~ "Please specify a mailer program\n"
+#~ "in the settings."
+#~ msgstr ""
+#~ "Proszê wpisaæ w ustawieniach\n"
+#~ "scie¿kê do sendmaila."
+
+#~ msgid "Failed to execute mailer program %s"
+#~ msgstr "Nie mo¿na uruchomiæ %s"
+
+#~ msgid "connecting to server"
+#~ msgstr "³±czenie z serwerem "
+
+#~ msgid ""
+#~ "Cannot open SMTP connection to\n"
+#~ "host %s for sending:\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Nie mo¿na po³±czyæ siê z serwerem\n"
+#~ " %s i wys³aæ wiadomosci:\n"
+#~ "%s"
+
+#~ msgid "Cannot close SMTP connection."
+#~ msgstr "Nie mo¿na zamkn±æ po³±czenia SMTP."
+
+#~ msgid "transmitting message"
+#~ msgstr "transmisja wiadomo¶ci"
+
+#~ msgid "network error"
+#~ msgstr "b³±d sieciowy"
+
+#~ msgid ""
+#~ "a SMTP error occured.\n"
+#~ "Command: %s\n"
+#~ "Response: %s\n"
+#~ "Return code: %d"
+#~ msgstr ""
+#~ "wyst±pi³ b³±d SMTP.\n"
+#~ "Polecenie: %s\n"
+#~ "Odpowied¼: %s\n"
+#~ "Kod powrotu: %d"
+
+#~ msgid "Sending SMTP command: %s"
+#~ msgstr "Wysy³am polecenie SMTP: %s"
+
+#~ msgid ""
+#~ "Failed to execute signature script\n"
+#~ "%s\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Nie mo¿na wykonaæ skrypu podpisuj±cego\n"
+#~ "%s\n"
+#~ "%s"
+
+#~ msgid "File I/O Error"
+#~ msgstr "File I/O Error"
+
+#~ msgid ""
+#~ "The specified file does not exist:\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Wskazany plik nie istnieje:\n"
+#~ "%sPlik nie istnieje:\n"
+#~ "%s"
+
+#~ msgid ""
+#~ "This is a directory and not a file:\n"
+#~ "%s"
+#~ msgstr ""
+#~ "To jest katalog, nie plik:\n"
+#~ "%s"
+
+#~ msgid ""
+#~ "You do not have read permissions to the file:\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Nie masz prawa odczytu do pliku:\n"
+#~ "%s"
+
+#~ msgid ""
+#~ "Could not read file:\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Nie mo¿na czytac pliku:\n"
+#~ "%s"
+
+#~ msgid ""
+#~ "Could not open file:\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Nie mo¿na otworzyæ pliku:\n"
+#~ "%s"
+
+#~ msgid ""
+#~ "Error while reading file:\n"
+#~ "%s"
+#~ msgstr ""
+#~ "B³±d podczas odczytu pliku:\n"
+#~ "%s"
+
+#~ msgid "Could only read %u bytes of %u."
+#~ msgstr "Przeczytano tylko %u bajtów z %u."
+
+#~ msgid ""
+#~ "File %s exists.\n"
+#~ "Do you want to replace it ?"
+#~ msgstr ""
+#~ "Plik %s istnieje.\n"
+#~ "Zast±piæ go ?"
+
+#~ msgid "&Ok"
+#~ msgstr "&Ok"
+
+#~ msgid ""
+#~ "Failed to make a backup copy of %s.\n"
+#~ "Continue anyway ?"
+#~ msgstr ""
+#~ "Nie powiod³o sie wykonanie kopii \n"
+#~ "zapasowej z %s. Kontynuowaæ?"
+
+#~ msgid ""
+#~ "Could not write to file:\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Nie mo¿na pisaæ do pliku:\n"
+#~ "%s"
+
+#~ msgid ""
+#~ "Could not open file for writing:\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Nie mo¿na otworzyæ pliku do zapisu:\n"
+#~ "%s"
+
+#~ msgid ""
+#~ "Error while writing file:\n"
+#~ "%s"
+#~ msgstr ""
+#~ "B³±d podczas zapisu do pliku:\n"
+#~ "%s"
+
+#~ msgid "Could only write %d bytes of %d."
+#~ msgstr "Mo¿na by³o zapisaæ tylko %d bajtów z %d"
+
+#~ msgid "Message Part Properties"
+#~ msgstr "W³asciwo¶ci za³±cznika"
+
+#~ msgid "Name:"
+#~ msgstr "Nazwa:"
+
+#~ msgid "Description:"
+#~ msgstr "Opis:"
+
+#~ msgid "Encoding:"
+#~ msgstr "Kodowanie:"
+
+#~ msgid "none (8bit)"
+#~ msgstr "brak (8bit)"
+
+#~ msgid "base 64"
+#~ msgstr "base 64"
+
+#~ msgid "quoted printable"
+#~ msgstr "quoted printable"
+
+#~ msgid "From: "
+#~ msgstr "Od:"
+
+#~ msgid "To: "
+#~ msgstr "Do:"
+
+#~ msgid "References: "
+#~ msgstr "Odniesienia:"
+
+#~ msgid "Cc: "
+#~ msgstr "Dw:"
+
+#~ msgid "Date: "
+#~ msgstr "Data:"
+
+#~ msgid "Bcc: "
+#~ msgstr "Udw: "
+
+#~ msgid "Reply to: "
+#~ msgstr "Adres zwrotny: "
+
+#~ msgid "Groups: "
+#~ msgstr "Grupy dyskusyjne:"
+
+#~ msgid "Encrypted message"
+#~ msgstr "Wiadomo¶æ zaszyfrowana"
+
+#~ msgid "Cannot decrypt message:"
+#~ msgstr "Nie mo¿na odszyfrowaæ wiadomo¶ci: "
+
+#~ msgid "Message was signed by"
+#~ msgstr "Wiadomo¶æ zosta³a podpisana przez"
+
+#~ msgid "Warning: Bad signature from"
+#~ msgstr "Ostrzerzenie: Z³y podpis od"
+
+#~ msgid "Attachment: "
+#~ msgstr "Za³±cznik:"
+
+#~ msgid "Could not create temporary file"
+#~ msgstr "Nie mo¿na utworzyæ pliku tymczasowego"
+
+#~ msgid "Could not save temporary file %s"
+#~ msgstr "Nie mo¿na zapisaæ pliku tymczasowego %s"
+
+#~ msgid "Could not save file"
+#~ msgstr "Nie mo¿na zapisaæ pliku"
+
+#~ msgid ""
+#~ "Couldn't find PGP executable.\n"
+#~ "Please check your PATH is set correctly."
+#~ msgstr ""
+#~ "Nie mo¿na odnale¼æ pliku wykonywalnego PGP.\n"
+#~ "Sprawd¼, czy masz dobrze ustawione ¶cie¿ki."
+
+#~ msgid ""
+#~ "Could not find PGP executable.\n"
+#~ "Please check your PATH is set correctly."
+#~ msgstr ""
+#~ "Nie mo¿na odnale¼æ pliku wykonywalnego PGP.\n"
+#~ "Sprawd¼, czy masz dobrze ustawione ¶cie¿ki."
+
+#~ msgid "The pass phrase is missing."
+#~ msgstr "Brakuje has³a PGP"
+
+#~ msgid "Message signed by"
+#~ msgstr "Wiadomo¶æ podpisana przez"
+
+#~ msgid "Message has a bad signature from"
+#~ msgstr "Wiadomo¶æ ma z³y podpis od"
+
+#~ msgid "End PGP signed message"
+#~ msgstr "Koniec wiadomo¶ci podpisanej PGP"
+
+#~ msgid "Bad pass Phrase; couldn't decrypt"
+#~ msgstr "Z³e has³o PGP: nie mogê odszyfrowaæ"
+
+#~ msgid "Bad pass Phrase; couldn't sign"
+#~ msgstr "Z³e has³o; nie mogê podpisaæ"
+
+#~ msgid ""
+#~ "Please enter your\n"
+#~ "PGP passphrase"
+#~ msgstr ""
+#~ "Proszê wpisaæ\n"
+#~ "swoje has³o PGP "
+
+#~ msgid "PGP Security Check"
+#~ msgstr "Kontrola PGP"
+
+#~ msgid "Addressbook"
+#~ msgstr "Ksi±¿ka adresowa"
+
+#~ msgid "Addressbook Manager"
+#~ msgstr "Zarz±dzanie ksia¿k± adresow±"
 
 #~ msgid "Failed to pipe mail message into mailer program %s"
 #~ msgstr "Nie mo¿na przes³aæ wiadomo¶ci przez %s"
