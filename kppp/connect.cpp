@@ -68,6 +68,7 @@ ConnectWidget::ConnectWidget(QWidget *parent, const char *name)
   loopend = false;
 
   pausing = false;
+  modem_in_connect_state = false;
   scriptindex = 0;
   myreadbuffer = "";
   main_timer_ID = 0;
@@ -305,7 +306,8 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
   // wait for newline after CONNECT response (so we get the speed)
   if(vmain == 101) {
     if(!expecting) {
-
+      modem_in_connect_state=true; // modem will no longer respond to AT commands
+ 
       p_xppp->startAccounting();
       p_xppp->con_win->startClock();
 
@@ -914,6 +916,7 @@ void ConnectWidget::if_waiting_slot(){
   }
 
   set_con_speed_string();
+
   p_xppp->con_win->setConnectionSpeed();
   this->hide();
   messg->setText("");
@@ -1052,6 +1055,28 @@ speed_t ConnectWidget::modemspeed() {
 
 
 
+void ConnectWidget::escape_to_command_mode() {
+
+// Send Properly bracketed escape code to put the modem back into command state.
+// A modem will accept AT commands only when it is in command state.
+// When a modem sends the host the CONNECT string, that signals
+// that the modem is now in the connect state (no long accepts AT commands.)
+// Need to send properly timed escape sequence to put modem in command state.
+// Escape codes and guard times are controlled by S2 and S12 values.
+// 
+
+  tcflush(modemfd,TCOFLUSH);
+  // +3 because quiet time must be greater than guard time.
+  usleep((gpppdata.modemEscapeGuardTime()+3)*20000);
+  write(modemfd, gpppdata.modemEscapeStr(), strlen(gpppdata.modemEscapeStr()) );  
+  tcflush(modemfd,TCOFLUSH);
+  usleep((gpppdata.modemEscapeGuardTime()+3)*20000);
+
+  modem_in_connect_state = false;   // side-effect?
+
+}
+
+
 void ConnectWidget::hangup() {
 
 
@@ -1063,16 +1088,9 @@ void ConnectWidget::hangup() {
 
   struct termios temptty;
 
-
   if(modemfd >= 0) {
 
-    // Properly bracketed escape code  
-    tcflush(modemfd,TCOFLUSH);
-    // +3 because quiet time must be greater than guard time.
-    usleep((gpppdata.modemEscapeGuardTime()+3)*20000);
-    write(modemfd, gpppdata.modemEscapeStr(), strlen(gpppdata.modemEscapeStr()) );  
-    tcflush(modemfd,TCOFLUSH);
-    usleep((gpppdata.modemEscapeGuardTime()+3)*20000);
+    if ( modem_in_connect_state ) escape_to_command_mode(); 
 
     // Then hangup command
     writeline(gpppdata.modemHangupStr());

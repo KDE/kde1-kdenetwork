@@ -111,6 +111,7 @@ private:
   bool semaphore;
   QTimer *inittimer;
   QTimer *timeout_timer;
+  void escape_to_command_mode();
   void hangup();
   speed_t modemspeed();
   bool opentty();
@@ -138,6 +139,7 @@ private:
   bool firstrunID;
   bool firstrunPW;
 
+  bool modem_in_connect_state; 
   int modemfd;
   struct termios initial_tty;
   struct termios tty;

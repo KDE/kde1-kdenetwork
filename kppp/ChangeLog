@@ -1,3 +1,10 @@
+Thu Jan  2 00:25:03 1998  Peter Silva <peter.silva@videotron.ca>
+	* added modem_in_connect_state, and checks for it
+          to avoid unneccessary delays on modem initialization.
+	  delay of 2 seconds will still occur on hangup by default.
+	  I think that's bearable.
+	* Added modem tricks section, gentle introduction.
+
 Thu Dec 25 11:46:34 1997  Bernd Johannes Wuebben  <wuebben@petit.cornell.edu>
 
         * Added new script keywords: PwPrompt and ID

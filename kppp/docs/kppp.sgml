@@ -453,6 +453,9 @@ kppp dialogs and create an account before trying to use kppp )
 <p>
 
 <sect>Modem Tricks & Hints<p>
+This section should get the fearful started on the (not so) arcane art
+of modem tweaking.  The commands here are all Hayes AT standard, but
+all modems are not equal, so your mileage may vary.
 
 <sect1>Modem Sessions<p>
 
@@ -499,7 +502,7 @@ to use the command method, so that one can exit a terminal session, and then
 start pppd without having the modem hangup.  In most other situations, the
 DTR method is preferred, as it is simpler.
 
-<sect1>DTR (AT&Dn) method<p>
+<sect2>DTR (AT&Dn) method<p>
 The DTR method will have the modem hangup whenever kppp stops using the modem. 
 If you obtain a modem session, and query the state via AT&V, and the among
 the settings displayed for the active profile are &D0, then the DTR hangup
@@ -508,31 +511,33 @@ get a modem session. Then:
 
 <tscreen><verb>
 ATZ		# reset to default profile
-AT&D2		# Set to hangup on DTR drop.
+AT&D2		# Set to hang up on DTR drop.
 AT&W		# Write to default profile
 </tscreen></verb>
 
-<sect2> How DTR method works<P>
+<sect3>How The DTR Method Works<P>
 Whenever the Data Terminal Ready (DTR) line on the serial line between the host computer
 and the modem goes high, the modem hangs up.  When kppp opens the serial port, the 
 DTR line is pulled low, on an external modem, you can see the DTR (or TR) light 
 come on when this happens.  When the TR light goes out (because kppp has closed
 the serial port, or something worse!), the modem will hangup.
 
-<sect1>Command Method<p>
+<sect2>Command Method<p>
 The other way to have a modem hang up when connected (used when AT&Dn where n is 
 not 2) is to have the modem accept the command when a session is in progress.  To 
 have it hangup properly, Get a modem session, and set the guard time to a short 
 interval like so:
+
 <tscreen><verb>
 ATZ
 ATS12=5
 AT&W
 </tscreen></verb>
+
 Then use the Settings/More/Modem Commands/Guard Time slider to match the register
 (S12) value to match (5)  The modem should then hangup properly.
 
-<sect2>How The Command Method Works<P>
+<sect3>How The Command Method Works<P>
 When the local modem is connected to a remote modem, it is in the "connect" state, where
 it passes all the characters it receives to the remote modem without interpretation.
 To have the modem accept the characters as commands for itself, one must put the 
@@ -545,7 +550,7 @@ is defined by S12 (in fifieths of a second.)
 
 <item>Quiet (must last more than S12/50 seconds)
 
-<item>Escape character (S2, default is "+") repeated three times (must last less than S12/50 seconds)
+<item>Escape character (S2, default is "+") repeated three times (less than S12/50 seconds between each)
 
 <item>Quiet (must last more than S12/50 seconds)
 
@@ -555,6 +560,21 @@ Once the modem is in the command state, you can send it commands.  To have
 it hang up. Sent ATH.  The escape codes and hangup string used by kppp
 are shown in the Setup/More/Modem Commands dialogs.  These should match
 your modem.
+
+<sect1>Make Tone Dial Faster<p>
+
+If you can use tone dialing, the amount of time it takes to dial can be 
+changed using the S11 register.  It gives the duration (in 100ths of a second)
+to send each tone while dialing.  The default is usually 95 (almost a second.)
+How fast you can dial depends on the phone company's swithing equipment which
+handles your line.  The minimum duration is 50, almost twice as fast, and
+that speed often works. 
+
+<tscreen><verb>
+ATZ		# reset to default profile
+ATS11=50	# fastest possible dialing, use a higher number if it doesn't work.
+AT&W		# Write to default profile
+</tscreen></verb>
 
 <sect>Questions and answers<p>
 

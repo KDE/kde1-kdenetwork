@@ -361,7 +361,7 @@ void PPPData::setModemEscapeResp(const char* n){
 
 int  PPPData::modemEscapeGuardTime(){
 
-  return readNumConfig(MODEM_GRP,ESCAPEGUARDTIME_KEY,60);
+  return readNumConfig(MODEM_GRP,ESCAPEGUARDTIME_KEY,50);
 
 }
 

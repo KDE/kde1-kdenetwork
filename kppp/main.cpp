@@ -674,6 +674,7 @@ void XPPPWidget::quitbutton() {
 
 void XPPPWidget::startAccounting() {
   // load the ruleset
+
   if(!gpppdata.AcctEnabled())
     return;
   
