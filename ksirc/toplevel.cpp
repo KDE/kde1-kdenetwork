@@ -154,7 +154,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
 
   connect(mainw, SIGNAL(updateSize()),
 	  this, SIGNAL(changeSize()));
-  QColorGroup cg = QColorGroup(colorGroup().foreground(), colorGroup().mid(), 
+  QColorGroup cg = QColorGroup(*kSircConfig->colour_text, colorGroup().mid(), 
     			       colorGroup().light(), colorGroup().dark(),
   			       colorGroup().midlight(), 
   			       *kSircConfig->colour_text, 
@@ -1237,7 +1237,7 @@ void KSircTopLevel::control_message(int command, QString str)
     nicks->setFont(kSircConfig->defaultfont);
     emit changeSize();
     {
-      QColorGroup cg = QColorGroup(colorGroup().foreground(), colorGroup().mid(), 
+      QColorGroup cg = QColorGroup(*kSircConfig->colour_text, colorGroup().mid(), 
 				   colorGroup().light(), colorGroup().dark(),
 				   colorGroup().midlight(), 
 				   *kSircConfig->colour_text, 
