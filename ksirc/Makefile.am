@@ -18,7 +18,7 @@ APPSDIR = $(kde_appsdir)/Internet
 INCLUDES= @all_includes@
 DEFS = @DEFS@ -I. -I$(srcdir) -I..
 # claim, which subdirectories you want to install
-SUBDIRS = KSTicker KSProgress KSCutDialog KSPrefs KSColourPicker puke img doc
+SUBDIRS = KSTicker KSProgress KSCutDialog KSPrefs KSColourPicker puke img doc pws-0.5
 
 ####### This part is very ksirc specific
 # you can add here more. This one gets installed 
@@ -81,7 +81,7 @@ ksircstaticLDFLAGS = --nostdlib $(ksirc_LDFLAGS)
 # that depend on the following ones.
 ksirc_LDADD   = ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a ./KSColourPicker/libkscolourpicker.a puke/libpuke.la -lkdeui -lkdecore -lkfile -lkfm -lqt -lX11 -lXext @LIBSOCKET@  $(LIBDL)  $(KDE_RPATH)
 
-ksircstaticLDADD = ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a ./KSColourPicker/libkscolourpicker.a ./puke/.libs/libpuke.a
+ksircstaticLDADD = ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a ./KSColourPicker/libkscolourpicker.a pws-0.5/pws/libpws.a
 
 #if COMPILE_KSIRC_STATIC
 STATIC_LIBS = $(static_libkde) $(static_libqt) $(static_libstdc) $(static_pthread) -lX11 -lXext @LIBSOCKET@ $(LIBDL) -lm -lc
