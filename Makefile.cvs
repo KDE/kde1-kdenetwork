@@ -2,7 +2,14 @@ all:
 	@echo "This Makefile is only for the CVS repository"
 	@echo "I will delete it before making the distribution"
 	@echo ""
-	cat acinclude.m4.in libtool.m4.in acincktalk.m4 > acinclude.m4
+	@if test ! -d admin; then \
+	   echo "Please recheckout this module!" ;\
+	   echo "for cvs: use checkout once and after that update again" ;\
+	   echo "for cvsup: checkout kde-common from cvsup and" ;\
+	   echo "   link kde-common/admin to ./admin" ;\
+	   exit ;\
+	fi
+	cat admin/acinclude.m4.in admin/libtool.m4.in acincktalk.m4 > acinclude.m4
 	cp configure.in.1 configure.in
 	aclocal
 	autoheader
@@ -26,7 +33,7 @@ all:
 
 dist:
 	@cp configure.in.1 configure.in; \
-	cat acinclude.m4.in libtool.m4.in acincktalk.m4 > acinclude.m4; \
+	cat admin/acinclude.m4.in admin/libtool.m4.in acincktalk.m4 > acinclude.m4; \
 	aclocal; \
 	autoheader; \
 	cat configure.in.1 > configure.in; \
