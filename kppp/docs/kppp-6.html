@@ -2,20 +2,30 @@
 <HTML>
 <HEAD>
 <TITLE>The Kppp Handbook: Modem Tricks &amp; Hints</TITLE>
+<META HTTP-EQUIV="content-type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="keywords" CONTENT="PPP KDE dialer UNIX">
+<META NAME="description" CONTENT="kppp dialer help">
 </HEAD>
-<BODY>
+<BODY BGCOLOR="#ffffff" LINK="#aa0000" TEXT="#000000" > 
+<FONT FACE="Helvetica">
+<A HREF="http://www.kde.org/"><IMG SRC="logotp3.gif" BORDER="0" ALT="The K Desktop Environment"></A>
+<HR WIDTH="100%" SIZE=2 ALIGN="CENTER" NOSHADE>
+
+ 
+<P ALIGN="RIGHT">
+
 <A HREF="kppp-7.html">Next</A>
 <A HREF="kppp-5.html">Previous</A>
-<A HREF="kppp.html#toc6">Contents</A>
-<HR>
-<H2><A NAME="s6">6. Modem Tricks &amp; Hints</A></H2>
+<A HREF="kppp.html#toc6">Table of Contents</A>
+</P>
+<H3><A NAME="s6">6. Modem Tricks &amp; Hints</A></H3>
 
 <P>This section should get the fearful started on the (not so) arcane art
 of modem tweaking.  The commands here are all Hayes AT standard, but
 all modems are not equal, so your mileage may vary.
 <P>
-<H2><A NAME="ss6.1">6.1 Modem Sessions</A>
-</H2>
+<H3><A NAME="ss6.1">6.1 Modem Sessions</A>
+</H3>
 
 <P>
 <P>A Modem session allows you to interact with the modem directly.
@@ -25,8 +35,8 @@ a window for interactive configuration of the modem.  Try typing ATZ (which
 resets your modem)  Your should get an OK response.  use File/Quit to 
 end the session.
 <P>
-<H2><A NAME="ss6.2">6.2 Modem Profiles</A>
-</H2>
+<H3><A NAME="ss6.2">6.2 Modem Profiles</A>
+</H3>
 
 <P>One reason you might want to send the modem commands directly is
 if you have a set of modem configurations you want to keep, and not
@@ -48,8 +58,8 @@ AT&amp;F&amp;W to set the active profile to the factory defaults, and store thos
 settings as the default profile.  
 <P>Example of profile changes are in the next section.
 <P>
-<H2><A NAME="ss6.3">6.3 Getting the modem to hang up</A>
-</H2>
+<H3><A NAME="ss6.3">6.3 Getting the modem to hang up</A>
+</H3>
 
 <P>Sometimes, you may find kppp has difficulties hanging up the modem.  This
 is likely the result of a mismatch between kppp settings and those of the modem.
@@ -61,7 +71,7 @@ to use the command method, so that one can exit a terminal session, and then
 start pppd without having the modem hangup.  In most other situations, the
 DTR method is preferred, as it is simpler.
 <P>
-<H3>DTR (AT&amp;Dn) method</H3>
+<H4>DTR (AT&amp;Dn) method</H4>
 
 <P>The DTR method will have the modem hangup whenever kppp stops using the modem. 
 If you obtain a modem session, and query the state via AT&amp;V, and the among
@@ -77,7 +87,7 @@ AT&amp;W                # Write to default profile
 </PRE>
 </CODE></BLOCKQUOTE>
 <P>
-<H3>How The DTR Method Works</H3>
+<H4>How The DTR Method Works</H4>
 
 <P>Whenever the Data Terminal Ready (DTR) line on the serial line between the host computer
 and the modem goes high, the modem hangs up.  When kppp opens the serial port, the 
@@ -85,7 +95,7 @@ DTR line is pulled low, on an external modem, you can see the DTR (or TR) light
 come on when this happens.  When the TR light goes out (because kppp has closed
 the serial port, or something worse!), the modem will hangup.
 <P>
-<H3>Command Method</H3>
+<H4>Command Method</H4>
 
 <P>The other way to have a modem hang up when connected (used when AT&amp;Dn where n is 
 not 2) is to have the modem accept the command when a session is in progress.  To 
@@ -102,7 +112,7 @@ AT&amp;W
 <P>Then use the Settings/More/Modem Commands/Guard Time slider to match the register
 (S12) value to match (5)  The modem should then hangup properly.
 <P>
-<H3>How The Command Method Works</H3>
+<H4>How The Command Method Works</H4>
 
 <P>When the local modem is connected to a remote modem, it is in the "connect" state, where
 it passes all the characters it receives to the remote modem without interpretation.
@@ -124,8 +134,8 @@ it hang up. Sent ATH.  The escape codes and hangup string used by kppp
 are shown in the Setup/More/Modem Commands dialogs.  These should match
 your modem.
 <P>
-<H2><A NAME="ss6.4">6.4 Make Tone Dial Faster</A>
-</H2>
+<H3><A NAME="ss6.4">6.4 Make Tone Dial Faster</A>
+</H3>
 
 <P>
 <P>If you can use tone dialing, the amount of time it takes to dial can be 
@@ -143,9 +153,17 @@ AT&amp;W        # Write to default profile
 </PRE>
 </CODE></BLOCKQUOTE>
 <P>
-<HR>
+<P ALIGN="RIGHT">
+
 <A HREF="kppp-7.html">Next</A>
 <A HREF="kppp-5.html">Previous</A>
-<A HREF="kppp.html#toc6">Contents</A>
+<A HREF="kppp.html#toc6">Table of Contents</A>
+</P>
+<CENTER>
+<HR WIDTH="100%" SIZE=3 ALIGN=CENTER NOSHADE>
+</CENTER>    
+</FONT>
+
+ 
 </BODY>
 </HTML>

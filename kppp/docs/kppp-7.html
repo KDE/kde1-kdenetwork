@@ -2,22 +2,32 @@
 <HTML>
 <HEAD>
 <TITLE>The Kppp Handbook: Questions and answers</TITLE>
+<META HTTP-EQUIV="content-type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="keywords" CONTENT="PPP KDE dialer UNIX">
+<META NAME="description" CONTENT="kppp dialer help">
 </HEAD>
-<BODY>
+<BODY BGCOLOR="#ffffff" LINK="#aa0000" TEXT="#000000" > 
+<FONT FACE="Helvetica">
+<A HREF="http://www.kde.org/"><IMG SRC="logotp3.gif" BORDER="0" ALT="The K Desktop Environment"></A>
+<HR WIDTH="100%" SIZE=2 ALIGN="CENTER" NOSHADE>
+
+ 
+<P ALIGN="RIGHT">
+
 <A HREF="kppp-8.html">Next</A>
 <A HREF="kppp-6.html">Previous</A>
-<A HREF="kppp.html#toc7">Contents</A>
-<HR>
-<H2><A NAME="s7">7. Questions and answers</A></H2>
+<A HREF="kppp.html#toc7">Table of Contents</A>
+</P>
+<H3><A NAME="s7">7. Questions and answers</A></H3>
 
 <P>
 <P>
-<H2><A NAME="ss7.1">7.1 Frequently Asked Questions about kppp</A>
-</H2>
+<H3><A NAME="ss7.1">7.1 Frequently Asked Questions about kppp</A>
+</H3>
 
 <P>
 <P>
-<H3>I can't get kppp to work. kppp tells me that pppd has died! </H3>
+<H4>I can't get kppp to work. kppp tells me that pppd has died! </H4>
 
 <P>Did you read the this manual carefully? Here once more the most common
 pitfalls.
@@ -40,7 +50,7 @@ be creating a "modem" group.
 </LI>
 </UL>
 <P>
-<H3>kppp tells me ``Sorry, can't open the modem''.</H3>
+<H4>kppp tells me ``Sorry, can't open the modem''.</H4>
 
 <P>
 <P>This means that kppp doesn't have permissions to open the modem
@@ -64,7 +74,7 @@ kppp setuid root permissions do the following:
 </CODE></BLOCKQUOTE>
 <P>
 <P>
-<H3>Why is Kppp installed with the SETUID bit on?</H3>
+<H4>Why is Kppp installed with the SETUID bit on?</H4>
 
 <P>
 <P>There is no need for the SETUID bit, if you know a bit of Unix systems 
@@ -79,7 +89,7 @@ desperate users who had problems getting kppp to work because they
 didn't understand enough about Unix and device permissions.
 <P>
 <P>
-<H3>kppp just sits there and waits: Expecting OK</H3>
+<H4>kppp just sits there and waits: Expecting OK</H4>
 
 <P>Have you played with the CR/LF setting?
 <P>
@@ -88,7 +98,7 @@ a fast initialisation. Turn off the 'Modem sustains fast initialisation'
 button on the Modem tab dialog.
 <P>
 <P>
-<H3>How do I make kppp send a \n or a \r?</H3>
+<H4>How do I make kppp send a \n or a \r?</H4>
 
 <P>Just send an empty string such as in the following script:
 <BLOCKQUOTE><CODE>
@@ -104,7 +114,7 @@ Send        ppp
 </PRE>
 </CODE></BLOCKQUOTE>
 <P>
-<H3>kppp complains: "Can't create lock file"</H3>
+<H4>kppp complains: "Can't create lock file"</H4>
 
 <P>
 <P>This means that you don't have permissions to create a lock file.
@@ -116,7 +126,7 @@ given kppp setuid permissions. Please read the section on
 .
 <P>
 <P>
-<H3>Can I do PAP and CHAP with kppp?</H3>
+<H4>Can I do PAP and CHAP with kppp?</H4>
 
 <P>Yes you can. Please the see the section on using 
 <A HREF="kppp-9.html#PAP">PAP and CHAP</A> 
@@ -130,7 +140,7 @@ this would be of help to a great number of beginners. Please consider
 helping out and giving something back in return for kppp. Thanks!
 <P>
 <P>
-<H3>How do I write a telephone cost rules file?</H3>
+<H4>How do I write a telephone cost rules file?</H4>
 
 <P>Just follow the TEMPLATE rules files supplied with kppp. You should be
 able to find a copy in the <CODE>$(KDEDIR)/doc/HTML/kppp</CODE>. 
@@ -138,7 +148,7 @@ Use the -r kppp command line options to check the syntax of your proposed
 rules file.
 <P>
 <P>
-<H3>I have written a telephone cost rules file for my region. Where can I submit it so that others can make use of it?</H3>
+<H4>I have written a telephone cost rules file for my region. Where can I submit it so that others can make use of it?</H4>
 
 <P>I would love to receive any rule files written. I will make them available
 on my kppp 
@@ -148,7 +158,7 @@ the kppp web page. Then email the new rules file  to
 <A HREF="mailto:wuebben@math.cornell.edu">me</A>.
 <P>
 <P>
-<H3>My country observes a moving holiday different from easter.</H3>
+<H4>My country observes a moving holiday different from easter.</H4>
 
 <P>In that case you need to write new code that allows for the computation of that
 holiday. Please have a look at ruleset.cpp and emulate the ``easter'' example.
@@ -156,9 +166,17 @@ Then send
 <A HREF="mailto:wuebben@math.cornell.edu">me</A> the patches.
 <P>
 <P>
-<HR>
+<P ALIGN="RIGHT">
+
 <A HREF="kppp-8.html">Next</A>
 <A HREF="kppp-6.html">Previous</A>
-<A HREF="kppp.html#toc7">Contents</A>
+<A HREF="kppp.html#toc7">Table of Contents</A>
+</P>
+<CENTER>
+<HR WIDTH="100%" SIZE=3 ALIGN=CENTER NOSHADE>
+</CENTER>    
+</FONT>
+
+ 
 </BODY>
 </HTML>

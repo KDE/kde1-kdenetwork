@@ -434,7 +434,8 @@ kppp supports the following command line options:<p>
 % kppp -- Valid options:
 % -h describe command line options
 % -c account_name : connect to account account_name
-% -r rule_file: check syntax of rule_file  
+% -r rule_file: check syntax of rule_file
+% -q quit after connection has been terminated
 </verb></tscreen>
 <p>
 
