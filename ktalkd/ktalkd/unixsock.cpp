@@ -35,6 +35,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <stdio.h>
+#include <dirent.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/socket.h>
@@ -44,52 +45,65 @@
 #else
 #include <time.h>
 #endif
+#include <qstring.h>
+#include <qstrlist.h>
 #include "print.h"
 #include "announce.h" // for N_CHARS
 
-int sendToKtalk (const char *username, const char *announce)
+bool sendToKtalk (const char *username, const char *announce)
 /*
-   sends an announcement to a running ktalk client.
+   sends an announcement to all running ktalk clients.
       username: name of the user who shall receive the announce
       announce: name and IP address of the one who requests the talk
 
-      return value: 1 if ktalk was found and was running
-                    0 otherwise
+      return value: TRUE if at least one ktalk was found and running
+                    FALSE otherwise
 */
 
 {
-  int sock = -1;
-  struct sockaddr_un ktalkAddr, tempAddr;
-  int result = 0;
+    // Create a socket
+    int sock;
+    if ((sock = socket (AF_UNIX, SOCK_DGRAM, 0)) < 0) return FALSE;
+    // Bind it to a temporary file in /tmp
+    struct sockaddr_un tempAddr;
+    tempAddr.sun_family = AF_UNIX;
+    if (tmpnam (tempAddr.sun_path) == 0 || 
+        bind (sock, (struct sockaddr *) &tempAddr, sizeof (tempAddr)) == -1) {
+        close (sock);
+        message("Couldn't create temporary socket!");
+        return FALSE;
+    }
 
-  ktalkAddr.sun_family = AF_UNIX;
-  strcpy (ktalkAddr.sun_path, "/tmp/ktalk-");
-  strcat (ktalkAddr.sun_path, username);
-  if ((sock = socket (AF_UNIX, SOCK_DGRAM, 0)) < 0) return 0;
-  if (bind (sock, (struct sockaddr *) &ktalkAddr, 
-            sizeof (ktalkAddr)) == 0) {
-    /* bind succeeds => socket didn't exists, so no ktalk is running */
-    close (sock);
-    unlink (ktalkAddr.sun_path);
-    message("Socket not found. No ktalk running.");
-    return 0;
-  }
-
-  tempAddr.sun_family = AF_UNIX;
-  if (tmpnam (tempAddr.sun_path) == 0 || 
-      bind (sock, (struct sockaddr *) &tempAddr, sizeof (tempAddr)) == -1) {
-      close (sock);
-      return 0;
-  }
-
-  char buffer [N_CHARS+2];
-  buffer [0] = 1;
-  strcpy (buffer + 1, announce); // announce is at most N_CHARS long.
-  unsigned int announcelen = strlen(buffer);
-  unsigned int len;
-  len = sendto (sock, buffer, announcelen, 0,
-                (struct sockaddr *) &ktalkAddr, sizeof (ktalkAddr));
-  if (len == announcelen) {
+    // find sockets of running ktalk clients
+    QString tempDir = "/tmp";
+    QString templ = QString ("ktalk-") + username + "-";
+    bool announceok = FALSE;
+    char buffer [N_CHARS+2];
+    buffer [0] = 1;
+    strcpy (buffer + 1, announce); // announce is at most N_CHARS long.
+    unsigned int announcelen = strlen(buffer);
+    unsigned int len;
+ 
+    DIR *dir = opendir (tempDir);
+    struct dirent *entry;
+    QStrList dirList;
+    struct sockaddr_un ktalkAddr;
+    ktalkAddr.sun_family = AF_UNIX;
+    while ((entry = readdir (dir))) {
+        // send announce to each of them
+        if (strncmp (templ.data (), entry->d_name, templ.length ()) == 0) {
+            QString path = tempDir + "/" + entry->d_name;
+            strncpy (ktalkAddr.sun_path, path.data (), sizeof (ktalkAddr.sun_path));
+            len = sendto (sock, buffer, announcelen, 0,
+                          (struct sockaddr *) &ktalkAddr, sizeof (ktalkAddr));
+            if (len == announcelen)
+                announceok = TRUE;
+        }
+    }
+    closedir (dir);
+    if (!announceok) return FALSE;
+    // at least one accepted the packet, wait for response :
+    bool result = FALSE;
     fd_set readFDs;
     FD_ZERO (&readFDs);
     FD_SET (sock, &readFDs);
@@ -101,8 +115,8 @@ int sendToKtalk (const char *username, const char *announce)
          (recv (sock, &answer, 1, 0) == 1) ) {
         result = ( answer == 42 ); // Answer from ktalk has to be 42.
     }
-  }
-  close (sock);
-  unlink (tempAddr.sun_path);
-  return result;
+    close (sock);
+    unlink (tempAddr.sun_path);
+    message("Announce to ktalk : result = %d",result);
+    return result;
 }
