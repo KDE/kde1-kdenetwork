@@ -135,6 +135,9 @@ private:
   QLabel *messg;
   QPushButton *cancel;
 
+  bool firstrunID;
+  bool firstrunPW;
+
   int modemfd;
   struct termios initial_tty;
   struct termios tty;

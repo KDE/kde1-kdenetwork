@@ -134,12 +134,16 @@ string as a hint.  An asterisk will be printed for each character typed.
 </LI>
 <LI>ID: If the ID field on Kppp's main dialog is filled in, send that ID.
 If the ID field is not filled in, prompt the kppp user to enter an ID, 
-given the specified string as a hint. The user will see what is typed
+given the specified string as a hint. The user will see what is typed.
+On a second passs, such as in a loop on the second iteration, a prompt
+will be displayed, given the specified string as a hint.
 </LI>
 <LI>Password: If the password field on Kppp's main dialog is filled in, send that 
 password. If the password  field is not filled in, prompt the kppp user to enter 
 a password given the specified
 string as a hint.  An asterisk will be printed for each character typed.
+On a second passs, such as in a loop on the second iteration, a prompt
+will be displayed, given the specified string as a hint.
 </LI>
 <LI>LoopStart: kppp will wait for the specified string to be received.
 It will save the string for use by LoopEnd
@@ -157,6 +161,7 @@ enabling repetition of username/password style paired dialogs.
 
 <P>
 <P>Here is a simple script I could use to connect to my ISP:
+<P>
 <BLOCKQUOTE><CODE>
 <PRE>
 Expect      ID:                        # wait for ID:
@@ -168,8 +173,7 @@ Send        ppp                        # This starts a ppp connection for
                                        # me on the ISP side.
 </PRE>
 </CODE></BLOCKQUOTE>
-
-Here a script for the same account with ID and password prompt: This 
+<P>Here a script for the same account with ID and password prompt: This 
 script will prompt for ID and password each time, no matter what is
 typed into the ID and password field on Kppp's main dialog. This script
 also illustrated the use of the LoopStart/LoopEnd structure. If something
@@ -177,6 +181,7 @@ goes wrong during the login proceedure, for example if I mistype the password,
 my ISP will print an error message and restart the id/password loop by issuing
 the string "ID:" again. If the string "ID" is caught before the LoopEnd keyword
 was parsed, kppp will start the script again after the LoopStart keyword.
+<P>
 <BLOCKQUOTE><CODE>
 <PRE>
 LoopStart   ID:                        # wait for ID:
@@ -187,10 +192,10 @@ LoopEnd     granted                    # My ISP send 'Permission granted' on log
 Send        ppp                        # This starts a ppp connection for me
 </PRE>
 </CODE></BLOCKQUOTE>
-
-Here is the script that I actually use to connect to my ISP: This 
+<P>Here is the script that I actually use to connect to my ISP: This 
 script will prompt for ID and password only if I haven't filled in 
 the respective fields on kppp's main dialog.
+<P>
 <BLOCKQUOTE><CODE>
 <PRE>
 LoopStart   ID:                        # wait for ID:

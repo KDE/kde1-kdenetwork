@@ -145,6 +145,8 @@ void ConnectWidget::init() {
   pausing = false;
   scriptindex = 0;
   myreadbuffer = "";
+  firstrunID = true;
+  firstrunPW = true;
 
   p_xppp->con_speed = "";
   
@@ -414,9 +416,10 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
 
 	QString idstring = gpppdata.Id();
 	
-	if(!idstring.isEmpty()){
+	if(!idstring.isEmpty() && firstrunID){
 	  // the user entered an Id on the main kppp dialog
 	  writeline(idstring.data());
+	  firstrunID = false;
 	  scriptindex++;
 	}
 	else{
@@ -450,9 +453,10 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
 
 	QString pwstring = gpppdata.Password();
 	
-	if(!pwstring.isEmpty()){
+	if(!pwstring.isEmpty() && firstrunPW){
 	  // the user entered an Id on the main kppp dialog
 	  writeline(pwstring.data());
+	  firstrunPW = false;
 	  scriptindex++;
 	}
 	else{
