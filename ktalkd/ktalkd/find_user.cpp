@@ -267,6 +267,9 @@ int find_user(char *name, char *tty, char *disp) {
                     !strchr("pqrstuvwxyzabcde", ubuf->ut_line[3])) 
                     continue; /* not a pty */
 
+                if (!strchr(ubuf->ut_host, ':'))
+                    continue; /* ut_host is not a display (e.g. telnet connection) */
+
                 /* device is a pseudo terminal (ex : a xterm) */
 		if (Options.debug_mode) syslog(LOG_DEBUG, "PTY %s, ut_host=%s",
                                                 ubuf->ut_line, ubuf->ut_host);
