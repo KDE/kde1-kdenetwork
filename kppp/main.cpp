@@ -109,7 +109,7 @@ static int kppp_xio_errhandler( Display * ){
 
   if(gpppdata.get_xserver_exit_disconnect()){
 
-    printf("Bernd:error!");
+    printf("X11 Error!");
     if(gpppdata.pppdpid() >= 0) {
       kill(gpppdata.pppdpid(), SIGTERM);
     }
@@ -241,6 +241,7 @@ int main( int argc, char **argv ) {
   p_xppp = &xppp;
 
   a.setMainWidget(&xppp);
+  a.setTopWidget(&xppp);
 
   // we really don't want to die accidentally, since that would leave the
   // modem connected. If you really really want to kill me you must send 
