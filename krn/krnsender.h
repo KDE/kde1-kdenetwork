@@ -12,6 +12,7 @@ class KRNSender: public KMSender
 public:
     void setNNTP(NNTP *);
     bool send(KMMessage *aMsg, short sendNow=-1);
+    bool sendQueued (const char *fname);
 private:
     bool doSendNNTP(KMMessage *msg);
     bool sendNow(KMMessage *aMsg);

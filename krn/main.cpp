@@ -140,7 +140,7 @@ int main( int argc, char **argv )
     mkdir (cachepath.data(),S_IREAD|S_IWRITE|S_IEXEC);
     groupinfopath=krnpath+"/groupinfo/";
     mkdir (groupinfopath.data(),S_IREAD|S_IWRITE|S_IEXEC);
-    outpath=krnpath+"/outgoing/";
+    outpath=krnpath+"outgoing/";
     mkdir (outpath.data(),S_IREAD|S_IWRITE|S_IEXEC);
 
     //Check for a lock file before I break things

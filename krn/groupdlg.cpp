@@ -27,6 +27,7 @@
 #include <qstring.h>
 #include <qtstream.h>
 #include <qevent.h>
+#include <qdir.h>
 
 #include <kapp.h>
 #include <kmsgbox.h>
@@ -45,6 +46,8 @@
 #include "kmcomposewin.h"
 #include "kmreaderwin.h"
 #include "kmidentity.h"
+#include "kfileio.h"
+#include "kbusyptr.h"
 
 #define CONNECT 1
 #define DISCONNECT 5
@@ -66,11 +69,12 @@
 #define POST 18
 #define POST_QUEUED 19
 
-extern QString krnpath,cachepath,artinfopath,pixpath;
+extern QString krnpath,cachepath,artinfopath,pixpath,outpath;
 extern KConfig *conf;
 
 extern KMIdentity *identity;
 extern KRNSender *msgSender;
+extern KBusyPtr *kbp;
 
 GroupList groups;
 GroupList subscr;
@@ -119,6 +123,8 @@ Inherited (name)
     file->insertItem(klocale->translate("Connect to Server"),CONNECT);
     file->insertItem(klocale->translate("Disconnect From Server"),DISCONNECT);
     file->insertItem(klocale->translate("Get Active File"),GET_ACTIVE);
+    file->insertSeparator();
+    file->insertItem(klocale->translate("Post Queued Messages"),POST_QUEUED);
     file->insertSeparator();
     file->insertItem(klocale->translate("Exit"),EXIT);
     connect (file,SIGNAL(activated(int)),SLOT(currentActions(int)));
@@ -694,11 +700,6 @@ bool Groupdlg::actions (int action,NewsGroup *group)
             success=true;
             break;
         }
-    case POST_QUEUED:
-        {
-            success=msgSender->sendQueued();
-            break;
-        }
     };
     
     
@@ -885,6 +886,34 @@ void Groupdlg::findGroup()
     qApp->restoreOverrideCursor ();
 }
 
+bool Groupdlg::postQueued()
+{
+    debug ("entered postqueued");
+    bool success=false;
+    if (needsConnect())
+    {
+        debug ("outpath--%s",outpath.data());
+        debug ("have connected");
+        QDir d(outpath.data());
+        d.setFilter(QDir::Files);
+        const QStrList *files=d.entryList("*");
+
+        debug ("%d files waiting",files->count());
+        for (char *fname=files->first();fname!=0;fname=files->next())
+        {
+            debug ("Sending %s",fname);
+            updateCounter(QString("Sending ")+fname);
+            if (!msgSender->sendQueued(fname))
+            {
+                success=false;
+                break;
+            }
+        }
+        success=true;
+    }
+    return success;
+}
+
 bool Groupdlg::currentActions(int action)
 {
     bool success=true;
@@ -892,6 +921,11 @@ bool Groupdlg::currentActions(int action)
     if (action==OPENGROUP)
     {
         openGroup(list->currentItem());
+        return success;
+    }
+    else if (action==POST_QUEUED)
+    {
+        bool success=postQueued();
         return success;
     }
     else

@@ -1,5 +1,9 @@
 #include "krnsender.h"
 
+#include <unistd.h>
+
+#include "kfileio.h"
+
 #include "krnsender.moc"
 
 extern QString outpath;
@@ -104,4 +108,16 @@ bool KRNSender::queue(KMMessage *aMsg)
     f.close();
     
     return true;
+}
+
+
+bool KRNSender::sendQueued(const char *fname)
+{
+    bool success=false;
+    KMMessage *mm=new KMMessage;
+    mm->fromString(kFileToString(outpath+fname,TRUE,TRUE));
+    success=sendNow(mm);
+    delete mm;
+    unlink(QString(outpath+fname).data());
+    return success;
 }

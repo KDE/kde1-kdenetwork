@@ -64,6 +64,7 @@ private slots:
     void getSubjects(NewsGroup *group);
     void getArticles(NewsGroup *group);
     void findGroup ();
+    bool postQueued();
 private:
     NNTP *server;
 //    KTreeList *list;
