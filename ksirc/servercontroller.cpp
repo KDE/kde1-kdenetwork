@@ -1,10 +1,60 @@
 /**********************************************************************
 
-	--- Qt Architect generated file ---
+ Server Controller
 
-	File: servercontroller.cpp
-	Last generated: Sat Nov 29 08:50:19 1997
+ Main Server Controller.  Displays server connection window, and makes 
+ new server connection on demand.
 
+ Signals: NONE
+
+ Slots: 
+
+   new_connection(): Creates popup asking for new connection
+
+   new_ksircporcess(QString): 
+      Args:
+         QString: new server name or IP to connect to.
+      Action:
+	 Creates a new sirc process and window !default connected to the 
+	 server.  Does nothing if a server connection already exists.
+   
+   add_toplevel(QString parent, QString child):
+      Args:
+	   parent: the server name that the new channel is being joined on
+	   child: the new channle name
+      Action:
+         Adds "child" to the list of joined channles in the main 
+	 window.  Always call this on new window creation!
+
+   delete_toplevel(QString parent, QString child):
+      Args:
+         parent: the server name of which channel is closing
+	         child: the channle that is closing. IFF Emtpy, parent is 
+		 deleted.
+      Action:
+	 Deletes the "child" window from the list of connections.  If 
+	 the child is Empty the whole tree is removed since it is assumed 
+         the parent has disconnected and is closing.
+
+   new_channel:  Creates popup asking for new channel name
+
+   new_toplevel(QString str): 
+      Args:
+         str: name of the new channel to be created
+      Action:
+         Sends a signal to the currently selected server in the tree
+         list and join the requested channel.  Does nothing if nothing
+         is selected in the tree list.
+
+   recvChangeChanel(QString parent, QString old, QString new):
+      Args:
+         parent: parent server connection
+         old: the old name for the window
+         new: the new name for the window
+      Action:
+          Changes the old window name to the new window name in the tree
+          list box.  Call for all name change!
+ 
  *********************************************************************/
 
 #include <qpopmenu.h>
@@ -44,43 +94,53 @@ servercontroller::~servercontroller()
 
 void servercontroller::new_connection()
 {
-  open_ksirc *w = new open_ksirc();
-  connect(w, SIGNAL(open_ksircprocess(QString)),
-          this, SLOT(new_ksircprocess(QString)));
-  w->show();
+  open_ksirc *w = new open_ksirc();              // Create new ksirc popup
+  connect(w, SIGNAL(open_ksircprocess(QString)), // connected ok to process
+          this, SLOT(new_ksircprocess(QString)));// start
+  w->show();                                     // show the sucker!
 }
 
 void servercontroller::new_ksircprocess(QString str)
 {
-  if(proc_list[str.data()])
+
+  if(str.isEmptry() == TRUE)  // nothing entered, nothing done
     return;
-  ConnectionTree->insertItem(str.data(), NULL, -1, FALSE);
-  add_toplevel(str, QString("default"));
-  KSircProcess *proc = new KSircProcess(qstrdup(str.data()));
-  proc_list.insert(str.data(), proc);
-  connect(proc, SIGNAL(made_toplevel(QString, QString)),
-	  this, SLOT(add_toplevel(QString, QString)));
-  connect(proc, SIGNAL(delete_toplevel(QString, QString)),
-	  this, SLOT(delete_toplevel(QString, QString)));
-  connect(proc, SIGNAL(changeChannel(QString, QString, QString)),
+  if(proc_list[str.data()])   // if it already exists, quit
+    return;
+
+  ConnectionTree->insertItem(str.data(), NULL, -1, FALSE); // Insert new base
+                                                           // level parent
+  add_toplevel(str, QString("default"));                   // Set a dflt chan
+  KSircProcess *proc = new KSircProcess(qstrdup(str.data())); // Create proc
+  proc_list.insert(str.data(), proc);                      // Add proc to hash
+  connect(proc, SIGNAL(made_toplevel(QString, QString)),   // Connect new 
+	  this, SLOT(add_toplevel(QString, QString)));     //
+  connect(proc, SIGNAL(delete_toplevel(QString, QString)), // Connect delete
+	  this, SLOT(delete_toplevel(QString, QString)));  //
+  connect(proc, SIGNAL(changeChannel(QString, QString, QString)), //Name change
 	  this, SLOT(recvChangeChannel(QString, QString, QString)));
+  
+  if(!ConnectionTree->getCurrentItem()){   // If nothing's highlighted
+    ConnectionTree->setCurrentItem(0);     // highlight it.
+  }
 }
 
 void servercontroller::new_channel()
 {
-  open_top *w = new open_top();
-  connect(w, SIGNAL(open_toplevel(QString)),
+  open_top *w = new open_top();                // Create new channel popup
+  connect(w, SIGNAL(open_toplevel(QString)),   // Connect ok to right slot
 	  this, SLOT(new_toplevel(QString)));
-  w->show();
+  w->show();                                   // Show me baby!
 }
 
 void servercontroller::new_toplevel(QString str)
 {
-  KTreeListItem *citem = ConnectionTree->getCurrentItem();
-  if(citem){
-    if(proc_list[citem->getText()]){
+  KTreeListItem *citem = ConnectionTree->getCurrentItem(); // get item
+  if(citem){ // if it exist, ie something is highlighted, continue
+    if(proc_list[citem->getText()]){ // If it's a match with a server, ok
       proc_list[citem->getText()]->new_toplevel(str);
     }
+    // Otherwise, check the parent to see it's perhaps a server.
     else if(proc_list[citem->getParent()->getText()]){
       proc_list[citem->getParent()->getText()]->new_toplevel(str);
     }
@@ -90,8 +150,10 @@ void servercontroller::new_toplevel(QString str)
 
 void servercontroller::add_toplevel(QString parent, QString child)
 {
+  // Add new channel, first add the parent to the path
   KPath path;
   path.push(&parent);
+  // add a new child item with parent as it's parent
   ConnectionTree->addChildItem(child.data(), NULL, &path);
   cerr << "Added child for: " << parent << "->" << child << endl;
 
@@ -99,18 +161,21 @@ void servercontroller::add_toplevel(QString parent, QString child)
 
 void servercontroller::delete_toplevel(QString parent, QString child)
 {
+
+  // Add parent to path
   KPath path;
   path.push(&parent);
 
+  // If the child is emtpy, delete the whole tree, otherwise just the child
   if(child.isEmpty() == FALSE){
     if(child[0] == '!')
-      child.remove(0, 1);
-    path.push(&child);
+      child.remove(0, 1); // If the first char is !, it's control, remove it
+    path.push(&child);    // Since it's not null, add the child to be deleted
   }
   else
-    proc_list.remove(parent);
+    proc_list.remove(parent); // Remove process entry while we are at it
 
-  ConnectionTree->removeItem(&path);
+  ConnectionTree->removeItem(&path); // Remove the item
   cerr << "Removed child for: " << parent << "->" << child << endl;
 
 }
@@ -119,14 +184,22 @@ void servercontroller::delete_toplevel(QString parent, QString child)
 void servercontroller::recvChangeChannel(QString parent, QString old_chan, QString new_chan)
 {
 
+  //  If the channel has a !, it's a control channel, remove the !
+
   if(old_chan[0] == '!')
     old_chan.remove(0, 1);
-  
+  if(new_chan[0] == '!')
+    new_chan.remove(0, 1);
+
+  // The path to the old one it parent->old_chan, create it
   KPath path;
   path.push(&parent);
   path.push(&old_chan);
+  // Delete the old one
   cerr << "Deleteing " << old_chan << endl;
   ConnectionTree->removeItem(&path);
+  // Only create with the parent in the path
   path.pop();
+  // Add new child.  Delete/creates wrecks the "random" sort order though.
   ConnectionTree->addChildItem(new_chan.data(), NULL, &path);
 }
