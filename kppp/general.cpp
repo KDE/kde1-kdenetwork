@@ -25,6 +25,7 @@
  */
 
 #include <kapp.h>
+#include <qlayout.h>
 #include "general.h"
 #include "version.h"
 #include "kintedit.h"
@@ -36,72 +37,85 @@ extern KApplication*	app;
 GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
   : QWidget(parent, name)
 {
-
-  box = new QGroupBox(this,"box");
-  box->setGeometry(10,10,320,260);
-  box->setTitle(klocale->translate("kppp Setup"));
+  QGridLayout *tl = new QGridLayout(this, 9, 4, 10, 10);
+  tl->addRowSpacing(0, fontMetrics().lineSpacing() - 10); // magic
+  box = new QGroupBox(klocale->translate("kppp Setup"), this,"box");
+  tl->addMultiCellWidget(box, 0, 8, 0, 3);
   
   label1 = new QLabel(this,"path");
   label1->setText(klocale->translate("pppd Path:"));
-  label1->setGeometry(25,45,80,20);
+  label1->setMinimumSize(label1->sizeHint());
+  tl->addWidget(label1, 1, 1);
 
   //pppd Path Line Edit Box
   pppdpath = new QLineEdit(this, "pppdpath");
-  pppdpath->setGeometry(130, 40, 150, 23);
+  pppdpath->setMinimumWidth(pppdpath->sizeHint().width());
+  pppdpath->setFixedHeight(pppdpath->sizeHint().height());
   pppdpath->setMaxLength(PATH_SIZE);
   pppdpath->setText(gpppdata.pppdPath());
   connect(pppdpath, SIGNAL(textChanged(const char*)),
 	  SLOT(pppdpathchanged(const char*)));
+  tl->addWidget(pppdpath, 1, 2);
 
   //pppd Timeout Line Edit Box
 
   label6 = new QLabel(this,"timeout");
   label6->setText(klocale->translate("pppd Timeout:"));
-  label6->setGeometry(25,85,80,20);
-
+  label6->setMinimumSize(label6->sizeHint());
+  tl->addWidget(label6, 2, 1);
+  
+  QHBoxLayout *l1 = new QHBoxLayout;
+  tl->addLayout(l1, 2, 2);
   pppdtimeout = new KIntLineEdit(this, "pppdtimeout");
-  pppdtimeout->setGeometry(130, 80, 35, 23);
+  pppdtimeout->setFixedHeight(pppdtimeout->sizeHint().height());
   pppdtimeout->setMaxLength(TIMEOUT_SIZE);
   pppdtimeout->setText(gpppdata.pppdTimeout());
   connect(pppdtimeout, SIGNAL(textChanged(const char*)),
 	  SLOT(pppdtimeoutchanged(const char*)));
+  l1->addWidget(pppdtimeout, 1);
 
   labeltmp = new QLabel(this,"seconds");
   labeltmp->setText(klocale->translate("Seconds"));
-  labeltmp->setGeometry(175,85,50,20);
-
+  labeltmp->setMinimumSize(labeltmp->sizeHint());
+  l1->addWidget(labeltmp, 2);
 
   logviewerlabel = new QLabel(this,"logviewerlabel");
   logviewerlabel->setText(klocale->translate("Log Viewer:"));
-  logviewerlabel->setGeometry(25,125,80,20);
-
+  logviewerlabel->setMinimumSize(logviewerlabel->sizeHint());
+  tl->addWidget(logviewerlabel, 3, 1);
 
   logviewer = new QLineEdit(this, "logvieweredit");
-  logviewer->setGeometry(130, 120, 150, 23);
+  logviewer->setMinimumWidth(logviewer->sizeHint().width());
+  logviewer->setFixedHeight(logviewer->sizeHint().height());
   logviewer->setMaxLength(PATH_SIZE);
   logviewer->setText(gpppdata.logViewer());
   connect(logviewer, SIGNAL(textChanged(const char*)),
 	  SLOT(logviewerchanged(const char*)));
+  tl->addWidget(logviewer, 3, 2);
+
+  tl->addRowSpacing(3, 15);
 
   chkbox2 = new QCheckBox(klocale->translate("Automatic Redial on Disconnect"),
 			  this,"redialbox");
-  chkbox2->adjustSize();
-  chkbox2->setGeometry(25,160,chkbox2->width(),chkbox2->height());
+  chkbox2->setMinimumSize(chkbox2->sizeHint());
   chkbox2->setChecked(gpppdata.get_automatic_redial());
   connect(chkbox2,SIGNAL(toggled(bool)),this,SLOT(redial_toggled(bool)));
+  tl->addMultiCellWidget(chkbox2, 5, 5, 1, 2);
 
   chkbox3 = new QCheckBox(klocale->translate("Show Clock on Caption"),
 			  this,"captionbox");
-  chkbox3->adjustSize();
-  chkbox3->setGeometry(25,180,160,chkbox3->height());
+  chkbox3->setMinimumSize(chkbox2->sizeHint());
   chkbox3->setChecked(gpppdata.get_show_clock_on_caption());
   connect(chkbox3,SIGNAL(toggled(bool)),this,SLOT(caption_toggled(bool)));
+  tl->addMultiCellWidget(chkbox3, 6, 6, 1, 2);
 
   chkbox4 = new QCheckBox(klocale->translate("Disconnect on X-server shutdown"),this,"captionbox");
-  chkbox4->adjustSize();
-  chkbox4->setGeometry(25,200,240,chkbox4->height());
+  chkbox4->setMinimumSize(chkbox2->sizeHint());
   chkbox4->setChecked(gpppdata.get_xserver_exit_disconnect());
   connect(chkbox4,SIGNAL(toggled(bool)),this,SLOT(xserver_toggled(bool)));
+  tl->addMultiCellWidget(chkbox4, 7, 7, 1, 2);
+
+  tl->activate();
 }
 
 void GeneralWidget::caption_toggled(bool on){
@@ -146,45 +160,46 @@ void GeneralWidget::pppdtimeoutchanged(const char *n) {
 AboutWidget::AboutWidget( QWidget *parent, const char *name)
   : QWidget(parent, name)
 {
-
+  QGridLayout *tl = new QGridLayout(this, 4, 4, 10, 10);
+  tl->addRowSpacing(0, fontMetrics().lineSpacing() - 10); // magic
   box = new QGroupBox(this,"box");
-  box->setGeometry(10,10,320,260);
   box->setTitle(klocale->translate("About kppp"));
+  tl->addMultiCellWidget(box, 0, 3, 0, 3);
 
-  label1 = new QLabel(this,klocale->translate("About"));
-  label1->setAlignment(AlignLeft|WordBreak|ExpandTabs);
+  label1 = new QLabel(this, "About");
+  label1->setAlignment(AlignLeft|ExpandTabs);
 
   QString string;
   string = "kppp "KPPPVERSION;
-  string += klocale->translate(" a dialer and front-end to pppd\n\n"
-			       "Copyright (c) 1997 Bernd Johannes Wuebben\n"
-			       "wuebben@math.cornell.edu\n"
-			       "\n");
+  string += klocale->translate("\nA dialer and front-end to pppd\n\n"
+			       "Copyright (c) 1997\n\tBernd Johannes Wuebben\n"
+			       "\twuebben@math.cornell.edu");
   label1->setText(string);
-
-
-  label1->setGeometry(25,45,300,60);
-
-  QString string2;
-  string2 = 
-    klocale->translate("\nWith contributions from:\n"
-		       "Mario Weilguni\n"
-		       "Markus Wuebben\n"
-		       "Jesus Fuentes Saavedra\n"
-		       "Harri Porten\n"
-		       "Peter Silva\n");
-  
-  label2 = new QLabel(this,"About2");
-  label2->setAlignment(AlignLeft|WordBreak|ExpandTabs);
-  label2->setText(string2);
-  label2->setGeometry(150,120,150,130);
-
+  label1->setMinimumSize(label1->sizeHint());
+  tl->addMultiCellWidget(label1, 1, 1, 1, 2);
 
   QString pixdir = app->kdedir() + QString("/share/apps/kppp/pics/");  
   QPixmap pm((pixdir + "kppplogo.xpm").data());
   QLabel *logo = new QLabel(this);
   logo->setPixmap(pm);
-  logo->setGeometry(30, 130, pm.width(), pm.height());
+  logo->setFixedSize(pm.size());
+  tl->addWidget(logo, 2, 1);
+
+  QString string2 = 
+    klocale->translate("With contributions from:\n"
+		       "   Mario Weilguni\n"
+		       "   Markus Wuebben\n"
+		       "   Jesus Fuentes Saavedra\n"
+		       "   Harri Porten\n"
+		       "   Peter Silva");
+  
+  label2 = new QLabel(this,"About2");
+  label2->setAlignment(AlignLeft|ExpandTabs);
+  label2->setText(string2);
+  label2->setMinimumSize(label2->sizeHint());
+  tl->addWidget(label2, 2, 2);
+  
+  tl->activate();
 }
 
 
@@ -192,17 +207,17 @@ AboutWidget::AboutWidget( QWidget *parent, const char *name)
 ModemWidget::ModemWidget( QWidget *parent, const char *name)
   : QWidget(parent, name)
 {
+  QGridLayout *tl = new QGridLayout(this, 9, 4, 10, 10);
+  tl->addRowSpacing(0, fontMetrics().lineSpacing() - 10); // magic
 
-  box = new QGroupBox(this,"box");
-  box->setGeometry(10,10,320,260);
-  box->setTitle(klocale->translate("Modem Setup"));
+  box = new QGroupBox(klocale->translate("Modem Setup"), this,"box");
+  tl->addMultiCellWidget(box, 0, 8, 0, 3);
 
-  label1 = new QLabel(this,"modem");
-  label1->setGeometry(30,30,100,30);
-  label1->setText(klocale->translate("Modem Device:"));
-
+  label1 = new QLabel(klocale->translate("Modem Device:"), this,"modem");
+  label1->setMinimumSize(label1->sizeHint());
+  tl->addWidget(label1, 1, 1);
+  
   modemdevice = new QComboBox(false,this, "modemdevice");
-  modemdevice->setGeometry(155, 30, 150, 25);
   modemdevice->insertItem("/dev/modem");
   modemdevice->insertItem("/dev/cua0");
   modemdevice->insertItem("/dev/cua1");
@@ -212,31 +227,39 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   modemdevice->insertItem("/dev/ttyS1");
   modemdevice->insertItem("/dev/ttyS2");
   modemdevice->insertItem("/dev/ttyS3");
+  modemdevice->setMinimumWidth(modemdevice->sizeHint().width());
+  modemdevice->setFixedHeight(modemdevice->sizeHint().height());
+  tl->addWidget(modemdevice, 1, 2);
    
   connect(modemdevice, SIGNAL(activated(int)), SLOT(setmodemdc(int)));
 
-
-  label2 = new QLabel(this,"Flow");
-  label2->setGeometry(30,65,100,25);
-  label2->setText(klocale->translate("Flow Control:"));
+  label2 = new QLabel(klocale->translate("Flow Control:"), this,"Flow");
+  label2->setMinimumSize(label2->sizeHint());
+  tl->addWidget(label2, 2, 1);
 
   flowcontrol = new QComboBox(false,this);
-  flowcontrol->setGeometry(155, 65, 150, 25);
   flowcontrol->insertItem("CRTSCTS");
   flowcontrol->insertItem("XON/XOFF");
   flowcontrol->insertItem(klocale->translate("None"));
+  flowcontrol->setMinimumWidth(flowcontrol->sizeHint().width());
+  flowcontrol->setFixedHeight(flowcontrol->sizeHint().height());
+  tl->addWidget(flowcontrol, 2, 2);
+
   connect(flowcontrol, SIGNAL(activated(int)), SLOT(setflowcontrol(int)));
 
 
-  labelenter = new QLabel(this,"enter");
-  labelenter->setText(klocale->translate("Line Termination:"));
-  labelenter->setGeometry(30,102,120,20);
+  labelenter = new QLabel(klocale->translate("Line Termination:"), 
+			  this,"enter");
+  labelenter->setMinimumSize(labelenter->sizeHint());
+  tl->addWidget(labelenter, 3, 1);
 
   enter = new QComboBox(false,this);
-  enter->setGeometry(155, 100, 150, 25);
   enter->insertItem("CR");
   enter->insertItem("LF");
   enter->insertItem("CR/LF");
+  enter->setMinimumWidth(enter->sizeHint().width());
+  enter->setFixedHeight(enter->sizeHint().height());
+  tl->addWidget(enter, 3, 2);
   connect(enter, SIGNAL(activated(int)), SLOT(setenter(int)));
   
   for(int i=0; i <= enter->count()-1; i++) {
@@ -245,51 +268,69 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   }
 
   //Modem Lock File
-  label4 = new QLabel(this,"modemlockfilelabel");
-  label4->setGeometry(30,132,100,30);
-  label4->setText(klocale->translate("Modem Lock File:"));
+  label4 = new QLabel(klocale->translate("Modem Lock File:"),
+		      this,"modemlockfilelabel");
+  label4->setMinimumSize(label4->sizeHint());
+  tl->addWidget(label4, 4, 1);
 
   modemlockfile = new QLineEdit(this, "modemlockfile");
-  modemlockfile->setGeometry(155, 134, 150, 23);
   modemlockfile->setMaxLength(PATH_SIZE);
+  modemlockfile->setText("XXXXXXXXXXXX");
+  modemlockfile->setMinimumWidth(modemlockfile->sizeHint().width());
+  modemlockfile->setFixedHeight(modemlockfile->sizeHint().height());
   modemlockfile->setText(gpppdata.modemLockFile());
   connect(modemlockfile, SIGNAL(textChanged(const char*)),
 	  SLOT(modemlockfilechanged(const char*)));
-
-
+  tl->addWidget(modemlockfile, 4, 2);
 
   //Modem Timeout Line Edit Box
   label3 = new QLabel(this,"modemtimeoutlabel");
-  label3->setGeometry(30,164,100,30);
   label3->setText(klocale->translate("Modem Timeout:"));
+  label3->setMinimumSize(label3->sizeHint());
+  tl->addWidget(label3, 5, 1);
+
+  QHBoxLayout *l1 = new QHBoxLayout;
+  tl->addLayout(l1, 5, 2);
 
   modemtimeout = new KIntLineEdit(this, "modemtimeout");
-  modemtimeout->setGeometry(155, 166, 40, 23);
+  modemtimeout->setFixedHeight(modemtimeout->sizeHint().height());
   modemtimeout->setMaxLength(TIMEOUT_SIZE);
   modemtimeout->setText(gpppdata.modemTimeout());
   connect(modemtimeout, SIGNAL(textChanged(const char*)),
-	  SLOT(modemtimeoutchanged(const char*)));
+	  SLOT(modemtimeoutchanged(const char*)));  
+  l1->addWidget(modemtimeout, 1);
+
+  labeltmp = new QLabel(klocale->translate("Seconds"), this,"seconds");
+  labeltmp->setMinimumSize(labeltmp->sizeHint());
+  l1->addWidget(labeltmp, 2);
 
   label4 = new QLabel(this,"busywaitlabel");
-  label4->setGeometry(30,196,100,30);
   label4->setText(klocale->translate("Busy Wait:"));
+  label4->setMinimumSize(label4->sizeHint());
+  tl->addWidget(label4, 6, 1);
 
+  l1 = new QHBoxLayout;
+  tl->addLayout(l1, 6, 2);
+  
   busywait = new KIntLineEdit(this, "busywait");
-  busywait->setGeometry(155, 198, 40, 23);
+  busywait->setFixedHeight(busywait->sizeHint().height());
   busywait->setMaxLength(TIMEOUT_SIZE);
   busywait->setText(gpppdata.busyWait());
   connect(busywait, SIGNAL(textChanged(const char*)),
 	  SLOT(busywaitchanged(const char*)));
-
-
-  labeltmp = new QLabel(this,"seconds");
-  labeltmp->setGeometry(210,164,50,30);
-  labeltmp->setText(klocale->translate("Seconds"));
+  l1->addWidget(busywait, 1);
 
   labeltmp = new QLabel(this,"seconds");
-  labeltmp->setGeometry(210,196,50,30);
   labeltmp->setText(klocale->translate("Seconds"));
+  labeltmp->setMinimumSize(labeltmp->sizeHint());
+  l1->addWidget(labeltmp, 2);
 
+  chkbox = new QCheckBox(klocale->translate("Modem sustains fast initialization."), 
+			 this, "fastinit");
+  chkbox->setMinimumSize(chkbox->sizeHint());
+  chkbox->setChecked(gpppdata.FastModemInit());
+  connect(chkbox,SIGNAL(toggled(bool)),this,SLOT(fast_modem_toggled(bool)));
+  tl->addMultiCellWidget(chkbox, 7, 7, 1, 2);
 
   //set stuff from gpppdata
   for(int i=0; i <= modemdevice->count()-1; i++) {
@@ -302,12 +343,7 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
       flowcontrol->setCurrentItem(i);
   }
 
-  chkbox = new QCheckBox(klocale->translate("Modem sustains fast initialization."),this,"fastinit");
-  chkbox->adjustSize();
-  chkbox->setGeometry(30,235,240,chkbox->height());
-  chkbox->setChecked(gpppdata.FastModemInit());
-  connect(chkbox,SIGNAL(toggled(bool)),this,SLOT(fast_modem_toggled(bool)));
-
+  tl->activate();
 }
 
 void ModemWidget::fast_modem_toggled(bool on){
@@ -360,26 +396,34 @@ char *itoa(int n){
 ModemWidget2::ModemWidget2( QWidget *parent, const char *name)
   : QWidget(parent, name)
 {
+  QGridLayout *tl = new QGridLayout(this, 7, 5, 10, 10);
+  tl->addRowSpacing(0, fontMetrics().lineSpacing() - 10); // magic
 
-  box = new QGroupBox(this,"box");
-  box->setGeometry(10,10,320,260);
-  box->setTitle(klocale->translate("More ..."));
+  box = new QGroupBox(klocale->translate("More ..."), this,"box");
+  tl->addMultiCellWidget(box, 0, 6, 0, 4);
 
   modemcmds = new QPushButton(klocale->translate("Modem Commands"), this);
-  modemcmds->setGeometry(100, 60, 150, 25);
-  connect(modemcmds, SIGNAL(clicked()), SLOT(modemcmdsbutton()));
-
   modeminfo_button = new QPushButton(klocale->translate("Query Modem"), this);
-  modeminfo_button->setGeometry(100, 100, 150, 25);
-  connect(modeminfo_button, SIGNAL(clicked()), SLOT(query_modem()));
-
   terminal_button = new QPushButton(klocale->translate("Terminal"), this);
-  terminal_button->setGeometry(100, 140, 150, 25);
+  modemcmds->setMinimumWidth(modemcmds->sizeHint().width());
+  modemcmds->setFixedHeight(modemcmds->sizeHint().height());
+  modeminfo_button->setMinimumWidth(modeminfo_button->sizeHint().width());
+  modeminfo_button->setFixedHeight(modeminfo_button->sizeHint().height());
+  terminal_button->setMinimumWidth(terminal_button->sizeHint().width());
+  terminal_button->setFixedHeight(terminal_button->sizeHint().height());
+  tl->addWidget(modemcmds, 2, 2);
+  tl->addWidget(modeminfo_button, 3, 2);
+  tl->addWidget(terminal_button, 4, 2);
+  tl->activate();
+
+  connect(modemcmds, SIGNAL(clicked()), SLOT(modemcmdsbutton()));
+  connect(modeminfo_button, SIGNAL(clicked()), SLOT(query_modem()));
   connect(terminal_button, SIGNAL(clicked()), SLOT(terminal()));
 
-  fline = new QFrame(this,"line");
-  fline->setFrameStyle(QFrame::HLine |QFrame::Sunken);
-  fline->setGeometry(20,195,295,3);
+
+//   fline = new QFrame(this,"line");
+//   fline->setFrameStyle(QFrame::HLine |QFrame::Sunken);
+//   fline->setGeometry(20,195,295,3);
 
 }
 

@@ -23,6 +23,8 @@
  * License along with this program; if not, write to the Free
  * Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
+
+#include <qlayout.h>
 #include <qfiledlg.h>
 #include <kmsgbox.h>
 
@@ -41,51 +43,87 @@ bool isnewaccount;
 void parseargs(char* buf, char** args);
 
 AccountWidget::AccountWidget( QWidget *parent, const char *name )
-  : QWidget( parent, name ){
-
+  : QWidget( parent, name )
+{
+  QGridLayout *tl = new QGridLayout(this, 3, 3, 10, 10);  
+  tl->addRowSpacing(0, fontMetrics().lineSpacing() - 10); // magic
   box = new QGroupBox(this,"box");
-  box->setGeometry(10,10,320,260);
   box->setTitle(klocale->translate("Account Setup"));
+  tl->addMultiCellWidget(box, 0, 2, 0, 2);
+
+  // add a vbox in the middle of the grid
+  QVBoxLayout *l1 = new QVBoxLayout;
+  tl->addLayout(l1, 1, 1);
+
+  // add a hbox
+  QHBoxLayout *l11 = new QHBoxLayout;
+  l1->addLayout(l11);
     
   accountlist_l = new QListBox(this, "accountlist_l");
-  accountlist_l->setGeometry(30, 40, 160, 130);
+  accountlist_l->setMinimumSize(160, 128);
   connect(accountlist_l, SIGNAL(highlighted(int)),
 	  this, SLOT(slotListBoxSelect(int)));
+  l11->addWidget(accountlist_l, 10);
 
+  QVBoxLayout *l111 = new QVBoxLayout;
+  l11->addLayout(l111, 1);  
   edit_b = new QPushButton(klocale->translate("Edit..."), this, "edit_b");
-  edit_b->setGeometry(220, 40, 80, 25);
   connect(edit_b, SIGNAL(clicked()), SLOT(editaccount()));
+  edit_b->setMinimumSize(edit_b->sizeHint());
+  l111->addWidget(edit_b);
 
   new_b = new QPushButton(klocale->translate("New..."), this, "new_b");
-  new_b->setGeometry(220, 75, 80, 25);
   connect(new_b, SIGNAL(clicked()), SLOT(newaccount()));
+  new_b->setMinimumSize(new_b->sizeHint());
+  l111->addWidget(new_b);
 
   copy_b = new QPushButton(klocale->translate("Copy"), this, "copy_b");
-  copy_b->setGeometry(220, 110, 80, 25);
   connect(copy_b, SIGNAL(clicked()), SLOT(copyaccount()));
-
+  copy_b->setMinimumSize(copy_b->sizeHint());
+  l111->addWidget(copy_b);
 
   delete_b = new QPushButton(klocale->translate("Delete"), this, "delete_b");
-  delete_b->setGeometry(220, 145, 80, 25);
   connect(delete_b, SIGNAL(clicked()), SLOT(deleteaccount()));
+  delete_b->setMinimumSize(delete_b->sizeHint());
+  l111->addWidget(delete_b);
 
-  reset = new QPushButton(klocale->translate("Reset Costs"),this,"resetbutton");
-  reset->setGeometry(220,187,80,25);
-  reset->setEnabled(FALSE);
-  connect(reset,SIGNAL(clicked()),this,SLOT(resetClicked()));
+  QHBoxLayout *l12 = new QHBoxLayout;
+  l1->addStretch(1);
+  l1->addLayout(l12);
 
-  log = new QPushButton(klocale->translate("View Logs"),this,"logbutton");
-  log->setGeometry(220,222,80,25);
-  //  log->setEnabled(FALSE);
-  connect(log,SIGNAL(clicked()),this,SLOT(viewLogClicked()));
-
+  QVBoxLayout *l121 = new QVBoxLayout;
+  l12->addLayout(l121);
+  l121->addStretch(1);
   costlabel = new QLabel(klocale->translate("Phone Costs:"),this,"costlable");
-  costlabel->setGeometry(30,185,100,30);
+  costlabel->setMinimumSize(costlabel->sizeHint());
   costlabel->setEnabled(FALSE);
+  l121->addWidget(costlabel);
 
   costedit = new QLineEdit(this,"costedit");
-  costedit->setGeometry(110,187,80,25);
+  costedit->setFixedHeight(costedit->sizeHint().height());
   costedit->setEnabled(FALSE);
+  l121->addWidget(costedit);
+  l121->addStretch(1);
+
+  QVBoxLayout *l122 = new QVBoxLayout;
+  l12->addStretch(1);
+  l12->addLayout(l122);
+  
+  l122->addStretch(1);
+  reset = new QPushButton(klocale->translate("Reset Costs"),
+			  this, "resetbutton");
+  reset->setMinimumSize(reset->sizeHint());
+  reset->setEnabled(FALSE);
+  connect(reset,SIGNAL(clicked()),this,SLOT(resetClicked()));
+  l122->addWidget(reset);
+
+  log = new QPushButton(klocale->translate("View Logs"),
+			this, "logbutton");
+  log->setMinimumSize(log->sizeHint());
+  //  log->setEnabled(FALSE);
+  connect(log,SIGNAL(clicked()),this,SLOT(viewLogClicked()));
+  l122->addWidget(log);
+  l122->addStretch(1);
 
   //load up account list from gppdata to the list box
 
@@ -97,6 +135,8 @@ AccountWidget::AccountWidget( QWidget *parent, const char *name )
   }
 
   slotListBoxSelect(accountlist_l->currentItem());
+
+  tl->activate();
 }
 
 
