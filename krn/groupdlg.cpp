@@ -203,10 +203,10 @@ Groupdlg::Groupdlg
     server = new NNTP (sname.data());
     server->reportCounters (true,false);
 
+    connect (server,SIGNAL(newStatus(char *)),this,SLOT(updateCounter(char *)));
     show();
     actions (LOAD_FILES);
     fillTree();
-    connect (server,SIGNAL(newStatus(char *)),this,SLOT(updateCounter(char *)));
 
     conf->setGroup("NNTP");
     if (conf->readNumEntry("ConnectAtStart"))
@@ -664,7 +664,6 @@ bool Groupdlg::loadSubscribed()
             if (st.eof())
                 break;
             subscr.append (new NewsGroup(ac.data()));
-            debug ("subscr-->%s",ac.data());
         };
         f.close ();
         return true;
@@ -856,6 +855,7 @@ void Groupdlg::checkUnread()
 
 void Groupdlg::updateCounter(char *s)
 {
+//    debug ("actualizando contador");
     statusBar()->changeItem (s, 1);
     qApp->processEvents();
 }

@@ -55,6 +55,7 @@ void NNTPObserver::Notify()
         sprintf (buffer,"Received %d bytes",client->byteCounter);
         emit client->newStatus(buffer);
         delete[] buffer;
+        qApp->processEvents();
     }
 }
 
@@ -382,6 +383,7 @@ int NNTP::listXover(int from,int to)
 
 void NNTP::groupList(QList <NewsGroup> *grouplist, bool fromserver)
 {
+    reportCounters (true,false);
     grouplist->clear();
     QString ac;
     ac=krnpath+"/active";
