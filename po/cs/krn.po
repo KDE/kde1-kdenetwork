@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: krn\n"
 "POT-Creation-Date: 1998-03-09 00:28+0100\n"
-"PO-Revision-Date: 1998-01-27 14:47 MET\n"
+"PO-Revision-Date: 1998-03-12 20:11 MET\n"
 "Last-Translator: Miroslav Flídr <flidr@ky.zcu.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -43,9 +43,8 @@ msgid "Received %.2f Kb"
 msgstr "Pøijato %.2f Kb"
 
 #: NNTP.cpp:620
-#, fuzzy
 msgid "Article Received"
-msgstr "Obsah èlánkù:"
+msgstr "Èlánek pøijat"
 
 #: groupdlg.cpp:130
 msgid "Connect to Server"
@@ -124,9 +123,8 @@ msgid "Expire Options..."
 msgstr "Nastavení expirace ..."
 
 #: groupdlg.cpp:174
-#, fuzzy
 msgid "Printing Options..."
-msgstr "Volby NNTP ..."
+msgstr "Nastavení tisku ..."
 
 #: groupdlg.cpp:181
 msgid "About Krn..."
@@ -246,7 +244,7 @@ msgstr "KRN - Zprávu"
 
 #: groupdlg.cpp:967
 msgid "I can't find the group you want!"
-msgstr "Nemohu nalézt vámi po¾adovanou skupinu!"
+msgstr "Nemohu nalézt Vámi po¾adovanou skupinu!"
 
 #: groupdlg.cpp:1058
 msgid "Getting messages in "
@@ -258,17 +256,15 @@ msgstr "Získávám seznam zpráv z "
 
 #: artdlg.cpp:129 artdlg.cpp:144
 msgid "Download"
-msgstr "Pøimout"
+msgstr "Pøijmout"
 
 #: artdlg.cpp:131
-#, fuzzy
 msgid "Mark Read"
-msgstr "Oznaèit v¹e"
+msgstr "Oznaèit jako pøeètené"
 
 #: artdlg.cpp:132
-#, fuzzy
 msgid "Mark Unread"
-msgstr "Oznaèit v¹e"
+msgstr "Oznaèit jako nepøeètené"
 
 #: artdlg.cpp:134 artdlg.cpp:148
 msgid "Print"
@@ -284,7 +280,7 @@ msgstr "Ponechat si"
 
 #: artdlg.cpp:146
 msgid "Lookup in Altavista"
-msgstr ""
+msgstr "Vyhledat na Altavistì"
 
 #: artdlg.cpp:150 artdlg.cpp:220
 msgid "Reply by Mail"
@@ -323,26 +319,24 @@ msgid "Appearance..."
 msgstr "Vzhled ..."
 
 #: artdlg.cpp:177
-#, fuzzy
 msgid "Sorting..."
-msgstr "Tøídìní ..."
+msgstr "Tøídìní..."
 
 #: artdlg.cpp:181
 msgid "Edit Rules"
-msgstr ""
+msgstr "Nastavit pravidla"
 
 #: artdlg.cpp:182
 msgid "Update"
-msgstr ""
+msgstr "Aktualizovat"
 
 #: artdlg.cpp:185
 msgid "menu"
 msgstr "menu"
 
 #: artdlg.cpp:189
-#, fuzzy
 msgid "&Scoring"
-msgstr "Kódování"
+msgstr "&Hondocení"
 
 #: artdlg.cpp:199
 msgid "Previous Message"
@@ -402,7 +396,7 @@ msgstr "Øádky"
 
 #: artdlg.cpp:276 sortDlg.cpp:33
 msgid "Score"
-msgstr ""
+msgstr "Skóre"
 
 #: artdlg.cpp:277 sortDlg.cpp:32
 msgid "Subject"
@@ -433,7 +427,6 @@ msgid "Append"
 msgstr "Pøipojit"
 
 #: artdlg.cpp:1197
-#, fuzzy
 msgid ""
 "From: Krn\n"
 "To: You\n"
@@ -441,6 +434,8 @@ msgid ""
 "Error getting article.\n"
 "Server said:\n"
 msgstr ""
+"Odesílatel: Krn\n"
+"Komu: Vy\n"
 "\n"
 "Chyba pøi získávání èlánku.\n"
 "Server odpovìdìl:\n"
@@ -455,11 +450,11 @@ msgstr "KRN - Nastavení identity"
 
 #: identDlg.cpp:50
 msgid "Here you should enter your personal information"
-msgstr ""
+msgstr "Zde by jste mìl(a) vlo¾it Va¹e osobní informace"
 
 #: identDlg.cpp:52
 msgid "You should know what these are!"
-msgstr ""
+msgstr "Mìl by jste vìdet, které to jsou!"
 
 #: identDlg.cpp:61
 msgid "Real Name"
@@ -467,37 +462,35 @@ msgstr "Skuteèné jnémo"
 
 #: identDlg.cpp:67
 msgid "E-mail Address"
-msgstr "Emailová adresa:"
+msgstr "Emailová adresa"
 
 #: identDlg.cpp:73
 msgid "Organization"
-msgstr "Organizace:"
+msgstr "Organizace"
 
 #: NNTPConfigDlg.cpp:28
 msgid "KRN-NNTP configuration"
 msgstr "KRN - Nastavení NNTP"
 
 #: NNTPConfigDlg.cpp:33
-#, fuzzy
 msgid "Servers"
-msgstr "NNTP server:"
+msgstr "Servery"
 
 #: NNTPConfigDlg.cpp:35
 msgid "SMTP server"
-msgstr "SMTP server:"
+msgstr "SMTP server"
 
 #: NNTPConfigDlg.cpp:40
 msgid "NNTP Server"
-msgstr "NNTP server:"
+msgstr "NNTP server"
 
 #: NNTPConfigDlg.cpp:52
 msgid "Connect on Startup"
 msgstr "Spojit pøi startu"
 
 #: NNTPConfigDlg.cpp:56
-#, fuzzy
 msgid "Connect without asking"
-msgstr "Pøipojit k serveru"
+msgstr "Pøipojit bez dotazu"
 
 #: NNTPConfigDlg.cpp:60
 msgid "Authenticate"
@@ -509,7 +502,7 @@ msgstr "Jnémo u¾ivatele"
 
 #: NNTPConfigDlg.cpp:69
 msgid "Password"
-msgstr "Heslo:"
+msgstr "Heslo"
 
 #: decoderDlg.cpp:31
 msgid "KRN - Decoder"
@@ -525,12 +518,11 @@ msgstr "Jnémo"
 
 #: decoderDlg.cpp:44
 msgid "Destination directory:"
-msgstr ""
+msgstr "Cílový adresáø:"
 
 #: decoderDlg.cpp:47
-#, fuzzy
 msgid "Decode All"
-msgstr "Dekódovat"
+msgstr "Dekódovat v¹e"
 
 #: kdecode.cpp:29
 msgid "KRN-Decoder"
@@ -558,51 +550,48 @@ msgid "And Many thanks to:"
 msgstr "Podìkování pro:"
 
 #: fontsDlg.cpp:39
-#, fuzzy
 msgid "Message Display Settings"
-msgstr "Fonty zobrazované zprávy"
+msgstr "Nastavení zobrazovaní zprávy"
 
 #: fontsDlg.cpp:46
 msgid "Header Style"
-msgstr ""
+msgstr "Styl hlavièky"
 
 #: fontsDlg.cpp:48
 msgid "Fancy"
-msgstr ""
+msgstr "Ozdobný"
 
 #: fontsDlg.cpp:49
 msgid "Brief"
-msgstr ""
+msgstr "Jednoduchý"
 
 #: fontsDlg.cpp:50
-#, fuzzy
 msgid "Standard"
-msgstr "Standardní font"
+msgstr "Standardní"
 
 #: fontsDlg.cpp:51
 msgid "Long"
-msgstr ""
+msgstr "Dlouhý"
 
 #: fontsDlg.cpp:52
 msgid "All"
-msgstr ""
+msgstr "V¹e"
 
 #: fontsDlg.cpp:56
-#, fuzzy
 msgid "Attachment Style"
-msgstr "Pøiloha:"
+msgstr "Styl pøilohy:"
 
 #: fontsDlg.cpp:58
 msgid "Iconic"
-msgstr ""
+msgstr "Ikona"
 
 #: fontsDlg.cpp:59
 msgid "Smart"
-msgstr ""
+msgstr "Rozumný"
 
 #: fontsDlg.cpp:60
 msgid "Inline"
-msgstr ""
+msgstr "Vlo¾ený"
 
 #: fontsDlg.cpp:67
 msgid "Font Size:"
@@ -646,34 +635,31 @@ msgstr "Barva pou¾itého odkazu"
 
 #: fontsDlg.cpp:107
 msgid "Use only one window"
-msgstr ""
+msgstr "Pou¾ívat jen jedno okno"
 
 #: fontsDlg.cpp:109
 msgid "Split window vertically"
-msgstr ""
+msgstr "Rozdìlit okno vertikálnì"
 
 #: findArtDlg.cpp:22
-#, fuzzy
 msgid "KRN - Article Searcher"
-msgstr "Hlavièky èlánkù:"
+msgstr "KRN - Vyhledávaè èlánkù:"
 
 #: findArtDlg.cpp:29
-#, fuzzy
 msgid "Find Articles With:"
-msgstr "Najít èlánek"
+msgstr "Najít èláneky s:"
 
 #: findArtDlg.cpp:34 rulesDlg.cpp:106
-#, fuzzy
 msgid "In Field:"
-msgstr "&V¹echna pole"
+msgstr "V polo¾ce:"
 
 #: findArtDlg.cpp:56 rulesDlg.cpp:132
 msgid "Wildcard Mode"
-msgstr ""
+msgstr "Mód \"divokých karet\""
 
 #: krnsender.cpp:48
 msgid "This server is read onlyyou can't post here!"
-msgstr ""
+msgstr "Tento server umo¾òuje pouze ètení, není mo¾né sem posílat!"
 
 #: expireDlg.cpp:22 expireDlg.cpp:27
 msgid "KRN - Expire Settings"
@@ -692,654 +678,93 @@ msgid "Article Headers:"
 msgstr "Hlavièky èlánkù:"
 
 #: printdlg.cpp:21
-#, fuzzy
 msgid "KRN - Print Settings"
-msgstr "KRN - Nastavení expirace"
+msgstr "KRN - Nastavení tisku"
 
 #: printdlg.cpp:26
-#, fuzzy
 msgid "KRN - Printing Settings"
-msgstr "KRN - Nastavení expirace"
+msgstr "KRN - Nastavení tisknu"
 
 #: printdlg.cpp:33
-#, fuzzy
 msgid "General"
-msgstr "Odesilatel"
+msgstr "Obecné"
 
 #: printdlg.cpp:37
 msgid "Use HTML Printing"
-msgstr ""
+msgstr "Pou¾ívat tisknutí pøes HTML"
 
 #: printdlg.cpp:40
 msgid "Use Direct Printing"
-msgstr ""
+msgstr "Pou¾ívat pøímý tisk"
 
 #: printdlg.cpp:48
-#, fuzzy
 msgid "Print using:"
-msgstr "Tisknout zprávu"
+msgstr "Tisknout pomocí:"
 
 #: printdlg.cpp:52
 msgid "Feed it with:"
-msgstr ""
+msgstr "Naplnit to:"
 
 #: printdlg.cpp:54
 msgid "Postscript"
-msgstr ""
+msgstr "Postscriptem"
 
 #: printdlg.cpp:55
 msgid "HTML"
-msgstr ""
+msgstr "HTML"
 
 #: printdlg.cpp:56
 msgid "Text"
-msgstr ""
+msgstr "Textem"
 
 #: rulesDlg.cpp:38
 msgid "KRN - Scoring Rules Editor"
-msgstr ""
+msgstr "KRN - Pravidla bodování"
 
 #: rulesDlg.cpp:45
 msgid "Global Rules"
-msgstr ""
+msgstr "Globální pravidla"
 
 #: rulesDlg.cpp:47
 msgid "All Rules"
-msgstr ""
+msgstr "V¹echna pravidla"
 
 #: rulesDlg.cpp:63
-#, fuzzy
 msgid "Active Rules"
-msgstr "Získat aktivní soubor"
+msgstr "Aktivní pravidla"
 
 #: rulesDlg.cpp:70
 msgid "Rule Editor"
-msgstr ""
+msgstr "Editor pravidel"
 
 #: rulesDlg.cpp:87
 msgid "Save as"
-msgstr ""
+msgstr "Ulo¾it jako"
 
 #: rulesDlg.cpp:101
-#, fuzzy
 msgid "Match Articles With:"
-msgstr "Najít èlánek"
+msgstr "Porovnat èlánky s:"
 
 #: rulesDlg.cpp:126
 msgid "Negative"
-msgstr ""
+msgstr "Negativní"
 
 #: rulesDlg.cpp:189
-#, fuzzy
 msgid "Rule name:"
-msgstr "Skuteèné jnémo"
+msgstr "Jnémo pravidla:"
 
 #: sortDlg.cpp:23
-#, fuzzy
 msgid "KRN - Header Sorting"
-msgstr "KRN - Nastavení expirace"
+msgstr "KRN - Nastavení tøídìní"
 
 #: sortDlg.cpp:37
 msgid "None"
-msgstr ""
+msgstr "®ádný"
 
 #: sortDlg.cpp:39
 msgid "Sort by:"
-msgstr ""
+msgstr "Tøídit podle:"
 
 #: sortDlg.cpp:56
-#, fuzzy
 msgid "Use Threading"
-msgstr "Tøídìní ..."
-
-#, fuzzy
-#~ msgid "KRN - Charset Settings"
-#~ msgstr "KRN - Nastavení expirace"
-
-#, fuzzy
-#~ msgid "KMail - Charset Settings"
-#~ msgstr "KRN - Nastavení expirace"
-
-#, fuzzy
-#~ msgid "Message charset"
-#~ msgstr "Vlastnosti souèásti zprávy"
-
-#~ msgid "test"
-#~ msgstr "test"
-
-#~ msgid "On %D, you wrote:"
-#~ msgstr "Dne %D jste napsal(a):"
-
-#~ msgid "On %D, %F wrote:"
-#~ msgstr "Dne %D %F napsal(a):"
-
-#~ msgid "Forwarded Message"
-#~ msgstr "Pøedaná zpráva"
-
-#~ msgid "KMail Composer"
-#~ msgstr "KMail Composer"
-
-#~ msgid "F"
-#~ msgstr "F"
-
-#~ msgid "Type"
-#~ msgstr "Typ"
-
-#~ msgid "&From:"
-#~ msgstr "&Odesílatel:"
-
-#~ msgid "&Reply to:"
-#~ msgstr "Odpovìdìt auto&rovi:"
-
-#~ msgid "&To:"
-#~ msgstr "&Komu:"
-
-#~ msgid "&Cc:"
-#~ msgstr "&Kopie:"
-
-#~ msgid "&Bcc:"
-#~ msgstr "&Dal¹í kopie:"
-
-#~ msgid "&Subject:"
-#~ msgstr "&Pøedmìt:"
-
-#~ msgid "&Newsgroups:"
-#~ msgstr "&Diskuzní skupiny:"
-
-#~ msgid "&Followup-To:"
-#~ msgstr "&Odvovìï do"
-
-#~ msgid "&Send"
-#~ msgstr "Po&slat"
-
-#~ msgid "S&end later"
-#~ msgstr "Poslat p&ozdìji"
-
-#~ msgid "S&end now"
-#~ msgstr "Poslat &nyní"
-
-#~ msgid "&Insert File..."
-#~ msgstr "Vlo¾it &soubor..."
-
-#~ msgid "&Addressbook..."
-#~ msgstr "&Adresáø..."
-
-#~ msgid "&New Composer..."
-#~ msgstr "Nový &Composer..."
-
-#, fuzzy
-#~ msgid "Replace..."
-#~ msgstr "Vzhled ..."
-
-#~ msgid "Find..."
-#~ msgstr "Najít..."
-
-#~ msgid "&Urgent"
-#~ msgstr "Na&lehávé"
-
-#~ msgid "&Confirm delivery"
-#~ msgstr "Po&tvrdit pøíjem"
-
-#~ msgid "&Confirm read"
-#~ msgstr "Pot&vrdit pøeètení"
-
-#~ msgid "&All Fields"
-#~ msgstr "&V¹echna pole"
-
-#~ msgid "&From"
-#~ msgstr "&Odesílatel:"
-
-#~ msgid "&Reply to"
-#~ msgstr "Zpáteèní ad&resa"
-
-#~ msgid "&To"
-#~ msgstr "&Komu:"
-
-#~ msgid "&Cc"
-#~ msgstr "&Kopie:"
-
-#~ msgid "&Bcc"
-#~ msgstr "&Dal¹í kopie"
-
-#~ msgid "&Subject"
-#~ msgstr "&Téma:"
-
-#~ msgid "&Newsgroups"
-#~ msgstr "&Diskuzní skupina"
-
-#~ msgid "&Followup-To"
-#~ msgstr "&Odpovìï do"
-
-#~ msgid "Append S&ignature"
-#~ msgstr "Pøipojit po&dpis"
-
-#~ msgid "&Insert File"
-#~ msgstr "Vlo¾it &soubor"
-
-#~ msgid "&Attach..."
-#~ msgstr "&Pøilo¾it..."
-
-#~ msgid "&Remove"
-#~ msgstr "&Odstranit"
-
-#~ msgid "&Save..."
-#~ msgstr "U&lo¾it..."
-
-#~ msgid "Pr&operties..."
-#~ msgstr "Vlastn&osti..."
-
-#~ msgid "&Attach"
-#~ msgstr "&Pøilo¾it"
-
-#~ msgid "Compose new message"
-#~ msgstr "Napsat novou zprávu"
-
-#~ msgid "Save message to file"
-#~ msgstr "Ulo¾it zprávu do souboru"
-
-#~ msgid "Open addressbook..."
-#~ msgstr "Otevøít adresáø ..."
-
-#~ msgid "sign message"
-#~ msgstr "podepsat zprávu"
-
-#~ msgid "encrypt message"
-#~ msgstr "za¹ifrovat zprávu"
-
-#~ msgid "Send now"
-#~ msgstr "Poslat nyní"
-
-#~ msgid "Send later"
-#~ msgstr "Poslat pozdìji"
-
-#~ msgid "Mark All"
-#~ msgstr "Oznaèit sve"
-
-#~ msgid "KMail Confirm"
-#~ msgstr "KMail potvrzení"
-
-#~ msgid ""
-#~ "Close and discard\n"
-#~ "edited message?"
-#~ msgstr ""
-#~ "Zavøít a zru¹it\n"
-#~ "editovanou zprávu?"
-
-#~ msgid ""
-#~ "public key for %s not found.\n"
-#~ "This person will not be able to decrypt the message."
-#~ msgstr ""
-#~ "veøejný klíè pro %s nenalezen.\n"
-#~ "Tato osoba nebude schopna de¹ifrovat zprávu."
-
-#~ msgid "Error during PGP:"
-#~ msgstr "Chyba pøi PGP:"
-
-#~ msgid "Attach File"
-#~ msgstr "Pøilo¾it soubor"
-
-#~ msgid "View..."
-#~ msgstr "Pohled..."
-
-#~ msgid "Save..."
-#~ msgstr "Ulo¾it..."
-
-#~ msgid "Properties..."
-#~ msgstr "Vlastnosti..."
-
-#~ msgid "Attach..."
-#~ msgstr "Pøilo¾it..."
-
-#~ msgid "View Attachment: "
-#~ msgstr "Zobrazit pøilohu: "
-
-#~ msgid ""
-#~ "Sorry, but this feature\n"
-#~ "is still missing"
-#~ msgstr ""
-#~ "Je mi líto, ale tato funkce\n"
-#~ "není je¹tì implementována"
-
-#~ msgid "unnamed"
-#~ msgstr "nepojmenované"
-
-#~ msgid "To:"
-#~ msgstr "Komu:"
-
-#~ msgid "Subject:"
-#~ msgstr "Pøedmìt:"
-
-#~ msgid "Date:"
-#~ msgstr "Datum:"
-
-#~ msgid "Choose Signature File"
-#~ msgstr "Vybìr souboru s podpisem"
-
-#~ msgid "KMail: Spellcheck"
-#~ msgstr "KMail: Kontola pravopisu"
-
-#~ msgid ""
-#~ "Error starting KSpell. Please make sure you have ISpell properly configured."
-#~ msgstr ""
-#~ "Chyba pøi startu kontroly pravopisu.Prosím ujistìte se, ¾e mate správnì "
-#~ "nastaven ISpell."
-
-#~ msgid ""
-#~ "Please specify a send\n"
-#~ "method in the settings\n"
-#~ "and try again."
-#~ msgstr ""
-#~ "Prosím specifikujte metodu\n"
-#~ "posílání po¹ty v nastaveních\n"
-#~ "a opakujte akci."
-
-#~ msgid ""
-#~ "Please set the required fields in the\n"
-#~ "identity settings:\n"
-#~ "user-name and email-address"
-#~ msgstr ""
-#~ "Prosím vyplòte po¾adované záznamy\n"
-#~ "v nastavení identity:\n"
-#~ "u¾ivatelské jméno a e-mailovou adresu"
-
-#~ msgid "You must specify a receiver"
-#~ msgstr "Je nutné specifikovat pøíjemce"
-
-#~ msgid "Cannot add message to outbox folder"
-#~ msgstr "Není mo¾né pøidat zprávu do poøadaèe outbox"
-
-#~ msgid "Sending still in progress"
-#~ msgstr "Odesílání stále probíhá"
-
-#~ msgid "Initiating sender process..."
-#~ msgstr "Inicializace odesílání..."
-
-#~ msgid "Sending message: "
-#~ msgstr "Odesílání zprávy:"
-
-#~ msgid "Done sending messages."
-#~ msgstr "Zprávy odeslány."
-
-#~ msgid "Sending failed:"
-#~ msgstr "Odesílání se nezdaøilo:"
-
-#~ msgid ""
-#~ "Please specify a mailer program\n"
-#~ "in the settings."
-#~ msgstr ""
-#~ "Prosím specifikujte v nastaveních\n"
-#~ "program pro pøenos po¹ty"
-
-#~ msgid "Failed to execute mailer program %s"
-#~ msgstr "Nepodaøilo se spustit program pro pøenos po¹ty %s"
-
-#~ msgid "connecting to server"
-#~ msgstr "pøipojování k serveru"
-
-#~ msgid ""
-#~ "Cannot open SMTP connection to\n"
-#~ "host %s for sending:\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Není mo¾né otevøít SMTP spojení\n"
-#~ "k hostiteli %s pro odeslání:\n"
-#~ "%s"
-
-#~ msgid "Cannot close SMTP connection."
-#~ msgstr "Není mo¾né uzavøít SMTP spojení."
-
-#~ msgid "transmitting message"
-#~ msgstr "odesílání zprávy"
-
-#~ msgid "network error"
-#~ msgstr "chyba sítì"
-
-#~ msgid ""
-#~ "a SMTP error occured.\n"
-#~ "Command: %s\n"
-#~ "Response: %s\n"
-#~ "Return code: %d"
-#~ msgstr ""
-#~ "nastala SMTP chyba.\n"
-#~ "Pøíkaz: %s\n"
-#~ "Odpovìï: %s\n"
-#~ "Návratový kód: %d"
-
-#~ msgid "Sending SMTP command: %s"
-#~ msgstr "Posílám SMTP pøíkaz: %s"
-
-#~ msgid ""
-#~ "Failed to execute signature script\n"
-#~ "%s\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Nepodaøilo se provést podpisový skript\n"
-#~ "%s\n"
-#~ "%s"
-
-#~ msgid "File I/O Error"
-#~ msgstr "Chyba pøi vstupu/výstupu do souboru"
-
-#~ msgid ""
-#~ "The specified file does not exist:\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Specifikovaný soubor neexistuje:\n"
-#~ "%s"
-
-#~ msgid ""
-#~ "This is a directory and not a file:\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Toto je adresáø a ne soubor:\n"
-#~ "%s"
-
-#~ msgid ""
-#~ "You do not have read permissions to the file:\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Nemáte pøístupová práva ke ètení souboru:\n"
-#~ "%s"
-
-#~ msgid ""
-#~ "Could not read file:\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Není mo¾né èíst soubor:\n"
-#~ "%s"
-
-#~ msgid ""
-#~ "Could not open file:\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Není mo¾né otevøít soubor:\n"
-#~ "%s"
-
-#~ msgid ""
-#~ "Error while reading file:\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Chyba pøi ètení souboru:\n"
-#~ "%s"
-
-#~ msgid "Could only read %u bytes of %u."
-#~ msgstr "Je mo¾né naèíst pouze %u bytù z %u."
-
-#~ msgid ""
-#~ "File %s exists.\n"
-#~ "Do you want to replace it ?"
-#~ msgstr ""
-#~ "Soubor %s existuje.\n"
-#~ "Pøejete si jej nahradit?"
-
-#~ msgid "&Ok"
-#~ msgstr "&Ok"
-
-#~ msgid ""
-#~ "Failed to make a backup copy of %s.\n"
-#~ "Continue anyway ?"
-#~ msgstr ""
-#~ "Nepodaøilo se vytvoøit zálo¾ní kopii %s.\n"
-#~ "I pøesto pokraèovat?"
-
-#~ msgid ""
-#~ "Could not write to file:\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Není mo¾né zapsat do souboru:\n"
-#~ "%s"
-
-#~ msgid ""
-#~ "Could not open file for writing:\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Není mo¾né otevøít pro zápis soubor:\n"
-#~ "%s"
-
-#~ msgid ""
-#~ "Error while writing file:\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Chyba pøi zápisu souboru:\n"
-#~ "%s"
-
-#~ msgid "Could only write %d bytes of %d."
-#~ msgstr "Není mo¾né zapsat %d bytù z %d."
-
-#~ msgid "Name:"
-#~ msgstr "Jméno:"
-
-#~ msgid "Description:"
-#~ msgstr "Popis:"
-
-#~ msgid "Encoding:"
-#~ msgstr "Kódování"
-
-#~ msgid "none (8bit)"
-#~ msgstr "¾ádné (8-mi bitové))"
-
-#~ msgid "base 64"
-#~ msgstr "Base 64"
-
-#~ msgid "quoted printable"
-#~ msgstr "quoted printable"
-
-#~ msgid "From: "
-#~ msgstr "Odesílatel:"
-
-#~ msgid "To: "
-#~ msgstr "Komu:"
-
-#~ msgid "References: "
-#~ msgstr "Odkazy:"
-
-#~ msgid "Cc: "
-#~ msgstr "Kopie:"
-
-#~ msgid "Date: "
-#~ msgstr "Datum:"
-
-#~ msgid "Bcc: "
-#~ msgstr "Dal¹í kopie:"
-
-#~ msgid "Reply to: "
-#~ msgstr "Odpovìdìt autorovi:"
-
-#~ msgid "Groups: "
-#~ msgstr "Diskuzní skupiny:"
-
-#~ msgid "Encrypted message"
-#~ msgstr "Za¹ifrovaná zpráva"
-
-#~ msgid "Cannot decrypt message:"
-#~ msgstr "Není mo¾né de¹ifrovat zprávu:"
-
-#~ msgid "Message was signed by"
-#~ msgstr "Zpráva byla podepsána"
-
-#~ msgid "Warning: Bad signature from"
-#~ msgstr "Pozor: Vadný podpis od"
-
-#~ msgid "Could not create temporary file"
-#~ msgstr "Není mo¾né vytvoøit doèasný soubor"
-
-#~ msgid "Could not save temporary file %s"
-#~ msgstr "Není mo¾né ulo¾it doèasný soubor %s"
-
-#~ msgid "Could not save file"
-#~ msgstr "Není mo¾né ulo¾it soubor"
-
-#~ msgid ""
-#~ "Couldn't find PGP executable.\n"
-#~ "Please check your PATH is set correctly."
-#~ msgstr ""
-#~ "Není mo¾né nalést PGP program.\n"
-#~ "Prosím zkontrolujte, zda-li je promìnná PATH korektnì nastavena."
-
-#~ msgid ""
-#~ "Could not find PGP executable.\n"
-#~ "Please check your PATH is set correctly."
-#~ msgstr ""
-#~ "Není mo¾né nalést PGP program.\n"
-#~ "Prosím zkontrolujte, zda-li je promìnná PATH korektnì nastavena."
-
-#~ msgid "The pass phrase is missing."
-#~ msgstr "Chybí klíè."
-
-#~ msgid "Message signed by"
-#~ msgstr "Zpráva podepsáno od"
-
-#~ msgid "Message has a bad signature from"
-#~ msgstr "Zpráva má vadný podpis od"
-
-#~ msgid "End PGP signed message"
-#~ msgstr "Konec zprávy podepsané pomocí PGP"
-
-#~ msgid "Bad pass Phrase; couldn't decrypt"
-#~ msgstr "Vadný klíè; nemohu rozkódovat"
-
-#~ msgid "Bad pass Phrase; couldn't sign"
-#~ msgstr "Vadný klíè; nemohu podepsat"
-
-#~ msgid ""
-#~ "Please enter your\n"
-#~ "PGP passphrase"
-#~ msgstr ""
-#~ "Prosím vlo¾te\n"
-#~ "vá¹ PGP klíè"
-
-#~ msgid "PGP Security Check"
-#~ msgstr "Kontrola bezpeènosti PGP"
-
-#~ msgid "Addressbook"
-#~ msgstr "Adresáø"
-
-#~ msgid "Addressbook Manager"
-#~ msgstr "Správce adresáøe"
-
-#~ msgid "Failed to pipe mail message into mailer program %s"
-#~ msgstr "Nepodaøilo se pøedat zprávu programu pro pøenos po¹ty %s"
-
-#~ msgid "KRN Composer"
-#~ msgstr "KRN Composer"
-
-#~ msgid "Send &later"
-#~ msgstr "Pos&lat pozdìji"
-
-#~ msgid "Recip&ients..."
-#~ msgstr "Pøíjemc&i..."
-
-#~ msgid "Insert &File"
-#~ msgstr "Vlo¾it &soubor"
-
-#~ msgid "High"
-#~ msgstr "Vysoká"
-
-#~ msgid "Low"
-#~ msgstr "Nízká"
-
-#~ msgid "Priority"
-#~ msgstr "Priorita"
-
-#~ msgid "&Message"
-#~ msgstr "&Zpráva"
+msgstr "Pou¾ívat tøídìní"

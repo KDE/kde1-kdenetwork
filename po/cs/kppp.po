@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kppp 0.9.6\n"
 "POT-Creation-Date: 1998-03-09 00:28+0100\n"
-"PO-Revision-Date: 1998-01-27 14:48 MET\n"
+"PO-Revision-Date: 1998-03-12 19:37 MET\n"
 "Last-Translator: Miroslav Flídr <flidr@kky.zcu.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -112,7 +112,7 @@ msgstr ""
 
 #: accounts.cpp:374
 msgid "Login script has unbalanced Loop Start/End"
-msgstr "Pøihla¹ovací skript má nevyvá¾enout smyky strat/konec"
+msgstr "Pøihla¹ovací skript má nevyvá¾enou smyèku start/konec"
 
 #: connect.cpp:98 connect.cpp:200 main.cpp:769
 msgid "Connecting to: "
@@ -121,7 +121,7 @@ msgstr "Pøipojování k: "
 #: connect.cpp:107 connect.cpp:215 miniterm.cpp:162 modeminfo.cpp:63
 #: modeminfo.cpp:150
 msgid "Sorry, can't create modem lock file."
-msgstr "Lituji, není mo¾né vytvoøit soubor pro zámknutí modemu."
+msgstr "Lituji, není mo¾né vytvoøit soubor pro zamknutí modemu."
 
 #: connect.cpp:112 connect.cpp:175 modeminfo.cpp:68
 msgid "Looking for Modem ..."
@@ -157,7 +157,7 @@ msgstr "Linka obsazena. Èekám: "
 
 #: connect.cpp:316 connect.cpp:415 connect.cpp:434
 msgid " seconds"
-msgstr "sekund"
+msgstr " sekund"
 
 #: connect.cpp:334
 msgid "No Dialtone"
@@ -168,13 +168,12 @@ msgid "No Carrier"
 msgstr "®ádný nosiè"
 
 #: connect.cpp:379
-#, fuzzy
 msgid "Scanning "
-msgstr "Poslám "
+msgstr "Zkoumám "
 
 #: connect.cpp:390
 msgid "Sending "
-msgstr "Poslám "
+msgstr "Posílám "
 
 #: connect.cpp:401
 msgid "Expecting "
@@ -186,7 +185,7 @@ msgstr "Pauza "
 
 #: connect.cpp:432
 msgid "Timeout "
-msgstr "Tiemout"
+msgstr "Timemout"
 
 #: connect.cpp:446 connect.cpp:447
 msgid "Hangup"
@@ -202,7 +201,7 @@ msgstr "ID"
 
 #: connect.cpp:506
 msgid "Password "
-msgstr "Heslo"
+msgstr "Heslo "
 
 #: connect.cpp:543
 msgid "Prompting "
@@ -210,11 +209,11 @@ msgstr "Dotázat se na "
 
 #: connect.cpp:580
 msgid "PW Prompt "
-msgstr "PW Prompt"
+msgstr "PW Prompt "
 
 #: connect.cpp:606
 msgid "Loop Start "
-msgstr "Start smyèky"
+msgstr "Start smyèky "
 
 #: connect.cpp:610
 msgid "ERROR: Nested too deep, ignored."
@@ -226,7 +225,7 @@ msgstr "Smyèky vnoøeny pøíli¹ hluboko!"
 
 #: connect.cpp:633
 msgid "LoopEnd without mathing Start! Line: "
-msgstr "Konec smyèky bez odpovídajícího stratu! Rádka: "
+msgstr "Konec smyèky bez odpovídajícího startu! Øádka: "
 
 #: connect.cpp:710
 msgid "Starting pppd ..."
@@ -238,7 +237,7 @@ msgstr "neznámá rychlost"
 
 #: connect.cpp:834
 msgid "Scan Var: "
-msgstr ""
+msgstr "Zkoumat Var:"
 
 #: connect.cpp:845
 msgid "Found: "
@@ -257,13 +256,12 @@ msgid "Script timed out!"
 msgstr "Timeout skriptu!"
 
 #: connect.cpp:956
-#, fuzzy
 msgid "Scanning: "
-msgstr "Poslám "
+msgstr "Zkoumání: "
 
 #: connect.cpp:967
 msgid "Expecting: "
-msgstr "Oèekávám:"
+msgstr "Oèekávám: "
 
 #: connect.cpp:1001
 msgid "Logging on to Network ..."
@@ -350,9 +348,8 @@ msgid "PAP"
 msgstr "PAP"
 
 #: edit.cpp:75
-#, fuzzy
 msgid "Terminal-based"
-msgstr "Terminál"
+msgstr "Terminálem"
 
 #: edit.cpp:81
 msgid "Store password"
@@ -1074,9 +1071,3 @@ msgstr ""
 "Prohlí¾eè záznamù \"%s\" nebyl nalezen!\n"
 "\n"
 "Nastavuji zpìt na implicitní \"%s\"."
-
-#~ msgid "The pppd daemon died unexpectedly!"
-#~ msgstr "pppd démon neoèekávanì skonèil!"
-
-#~ msgid "Dock"
-#~ msgstr "Dokování"

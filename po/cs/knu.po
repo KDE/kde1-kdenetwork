@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: knu 0.3.4\n"
 "POT-Creation-Date: 1998-03-09 00:28+0100\n"
-"PO-Revision-Date: 1998-01-20 11:56 MET\n"
+"PO-Revision-Date: 1998-03-12 19:24 MET\n"
 "Last-Translator: Miroslav Flídr <flidr@kky.zcu.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -15,7 +15,7 @@ msgstr ""
 
 #: knu.cpp:132 knu.cpp:275
 msgid "&Ping"
-msgstr "&Ping"
+msgstr "P&ing"
 
 #: knu.cpp:141 knu.cpp:281
 msgid "&Traceroute"
@@ -26,9 +26,8 @@ msgid "Host &resolution"
 msgstr "&Resoluce hostitele"
 
 #: knu.cpp:163 knu.cpp:293
-#, fuzzy
 msgid "&Finger"
-msgstr "&Ping"
+msgstr "&Finger"
 
 #: knu.cpp:174
 msgid ""
@@ -103,10 +102,19 @@ msgid ""
 "Please use Edit->Preferences... menu\n"
 "to configure it again.\n"
 msgstr ""
+"\n"
+"Máte problém ve va¹em\n"
+"konfiguraèním souboru\n"
+"%s/%src.\n"
+"Ve skupinì [%s] není mo¾né \n"
+"nalézt správnou polo¾ku \"path=\".\n"
+"\n"
+"Prosím pou¾ijte menu Úpravy->Preference\n"
+"a proveïte znovu nastavení.\n"
 
 #: CommandDlg.cpp:345
 msgid "Error in pathname"
-msgstr ""
+msgstr "Chyba ve jménu cesty"
 
 #: CommandDlg.cpp:478
 msgid "Binary"
@@ -134,7 +142,7 @@ msgstr "Provádìt resoluci j&ména hostitele"
 
 #: TracerouteDlg.cpp:112
 msgid "&Maximum number of hops:"
-msgstr "&Maximalní poèet skokù:"
+msgstr "M&aximalní poèet skokù:"
 
 #: HostDlg.cpp:105
 msgid "address (A)"
@@ -178,22 +186,8 @@ msgstr "Ser&ver:"
 
 #: FingerDlg.cpp:68
 msgid "User:"
-msgstr ""
+msgstr "U¾ivatel:"
 
 #: FingerDlg.cpp:86
-#, fuzzy
 msgid "Server:"
-msgstr "Ser&ver:"
-
-#~ msgid ""
-#~ "You have a problem in your ~/.kde/share/config/knurc configuration file.\n"
-#~ "In the ["
-#~ msgstr ""
-#~ "Máte problém ve va¹em konfiguraèním souboru ~/.kde/share/config/knurc.\n"
-#~ "Ve skupinì ["
-
-#~ msgid "] group, I cannotfind a correct \"path=\" entry."
-#~ msgstr "] není mo¾né nalézt korektní polo¾ku \"path=\"."
-
-#~ msgid "&Contents"
-#~ msgstr "&Obsah"
+msgstr "Server:"
