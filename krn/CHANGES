@@ -1,4 +1,13 @@
 -----------------------------------------------------------------------------
+Changes made Apr 13
+-----------------------------------------------------------------------------
+
+* [Roberto] Now that my KDE finally builds ok (It seems now qt 1.33 is
+            required), I am fixing the bug when opening article windows.
+            I can't make KTMainWindow work at all (get weird errors when
+            inheriting), so I reverted to traditional KTW style.
+
+-----------------------------------------------------------------------------
 Changes made Apr 5
 -----------------------------------------------------------------------------
 

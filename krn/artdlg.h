@@ -20,6 +20,7 @@
 
 #include "NNTP.h"
 
+#include <ktopwidget.h>
 #include <qdir.h>
 #include <qlistbox.h>
 #include <qstrlist.h>
@@ -27,7 +28,6 @@
 #include <qevent.h>
 #include <qlayout.h>
 
-#include <ktopwidget.h>
 #include <kpanner.h>
 #include "ktablistbox.h"
 #include "kiconloader.h"
@@ -35,7 +35,7 @@
 class KMReaderWin;
 class KSlider;
 
-class Artdlg : public KTopLevelWidget 
+class Artdlg : public KTopLevelWidget
 {
     Q_OBJECT
         

@@ -185,28 +185,34 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     scoring->insertItem(klocale->translate("Edit Rules"),EDIT_RULES);
     scoring->insertItem(klocale->translate("Update"),UPDATE_SCORES);
     connect (scoring,SIGNAL(activated(int)),SLOT(actions(int)));
-    
+
+    menu=new KMenuBar (this);
+    setMenu(menu);
     menu = menuBar();
     menu->insertItem (klocale->translate("&File"), article);
     menu->insertItem (klocale->translate("&Tagged"), taggedArticle);
     menu->insertItem (klocale->translate("&Options"), options);
     menu->insertItem (klocale->translate("&Scoring"), scoring);
-    
-    QObject::connect (toolBar(), SIGNAL (clicked (int)), this, SLOT (actions (int)));
+
+    KToolBar *t1=new KToolBar(this);
+    addToolBar(t1,0);
+    QObject::connect (t1, SIGNAL (clicked (int)), this, SLOT (actions (int)));
 
     
-    toolBar()->insertButton (Icon("left.xpm"), PREV, true, klocale->translate("Previous Message"));
+    t1->insertButton (Icon("left.xpm"), PREV, true, klocale->translate("Previous Message"));
     
-    toolBar()->insertButton (Icon("right.xpm"), NEXT, true, klocale->translate("Next Message"));
+    t1->insertButton (Icon("right.xpm"), NEXT, true, klocale->translate("Next Message"));
 
-    toolBar()->insertButton(Icon("find.xpm"),FIND_ARTICLE,true,klocale->translate("Find Article"));
-    toolBar()->insertSeparator ();
+    t1->insertButton(Icon("find.xpm"),FIND_ARTICLE,true,klocale->translate("Find Article"));
+    t1->insertSeparator ();
 
-    toolBar()->insertButton (Icon("filenew.xpm"), POST, true, klocale->translate("Post New Article"));
+    t1->insertButton (Icon("filenew.xpm"), POST, true, klocale->translate("Post New Article"));
 
-    toolBar()->insertButton (Icon("previous.xpm"), ARTLIST, true, klocale->translate("Get Article List"));
+    t1->insertButton (Icon("previous.xpm"), ARTLIST, true, klocale->translate("Get Article List"));
 
-    QObject::connect (toolBar(1), SIGNAL (clicked (int)), this, SLOT (actions (int)));
+    KToolBar *t2=new KToolBar(this);
+    addToolBar(t2,1);
+    QObject::connect (t2, SIGNAL (clicked (int)), this, SLOT (actions (int)));
     
     QStrList *comboContents=new QStrList();
     comboContents->append("Current");
@@ -214,31 +220,31 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     comboContents->append("All");
     comboContents->append("Read");
     comboContents->append("UnRead");
-    toolBar(1)->insertCombo(comboContents,1,false,SIGNAL(activated(int)),this,SLOT(setTarget(int)));
+    t2->insertCombo(comboContents,1,false,SIGNAL(activated(int)),this,SLOT(setTarget(int)));
     
-    toolBar(1)->insertButton(Icon("save.xpm"),SAVE_ARTICLE,true,klocale->translate("Save Article"));
+    t2->insertButton(Icon("save.xpm"),SAVE_ARTICLE,true,klocale->translate("Save Article"));
     
-    toolBar(1)->insertButton(Icon("fileprint.xpm"),PRINT_ARTICLE,true,klocale->translate("Print Article"));
+    t2->insertButton(Icon("fileprint.xpm"),PRINT_ARTICLE,true,klocale->translate("Print Article"));
 
-    toolBar(1)->insertButton (Icon("filemail.xpm"), REP_MAIL, true, klocale->translate("Reply by Mail"));
+    t2->insertButton (Icon("filemail.xpm"), REP_MAIL, true, klocale->translate("Reply by Mail"));
     
-    toolBar(1)->insertButton (Icon("followup.xpm"), FOLLOWUP, true, klocale->translate("Post a Followup"));
+    t2->insertButton (Icon("followup.xpm"), FOLLOWUP, true, klocale->translate("Post a Followup"));
     
-    toolBar(1)->insertButton (Icon("mailpost.xpm"), POSTANDMAIL, true, klocale->translate("Post & Mail"));
+    t2->insertButton (Icon("mailpost.xpm"), POSTANDMAIL, true, klocale->translate("Post & Mail"));
     
-    toolBar(1)->insertButton (Icon("fileforward.xpm"), FORWARD, true, klocale->translate("Forward"));
+    t2->insertButton (Icon("fileforward.xpm"), FORWARD, true, klocale->translate("Forward"));
     
-    toolBar(1)->insertSeparator ();
+    t2->insertSeparator ();
     
-    toolBar(1)->insertButton (Icon("tagged.xpm"), TAG_ARTICLE, true, klocale->translate("Tag Article"));
+    t2->insertButton (Icon("tagged.xpm"), TAG_ARTICLE, true, klocale->translate("Tag Article"));
     
-    toolBar(1)->insertButton (Icon("locked.xpm"), TOGGLE_EXPIRE, true, klocale->translate("Lock (keep in cache)"));
+    t2->insertButton (Icon("locked.xpm"), TOGGLE_EXPIRE, true, klocale->translate("Lock (keep in cache)"));
     
-    toolBar(1)->insertButton (Icon("deco.xpm"), DECODE_ONE_ARTICLE, true, klocale->translate("Decode Article"));
+    t2->insertButton (Icon("deco.xpm"), DECODE_ONE_ARTICLE, true, klocale->translate("Decode Article"));
     
-    toolBar(1)->insertButton (Icon("red-bullet.xpm"), MARK_READ, true, klocale->translate("Mark Read"));
+    t2->insertButton (Icon("red-bullet.xpm"), MARK_READ, true, klocale->translate("Mark Read"));
 
-    toolBar(1)->insertButton (Icon("green-bullet.xpm"), MARK_UNREAD, true, klocale->translate("Mark UnRead"));
+    t2->insertButton (Icon("green-bullet.xpm"), MARK_UNREAD, true, klocale->translate("Mark UnRead"));
     
     if (conf->readNumEntry("VerticalSplit",false))
     {
@@ -264,7 +270,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     list->setColumn(1, klocale->translate("Date"), 75);
     list->setColumn(2, klocale->translate("Lines"), 50);
     list->setColumn(3, klocale->translate("Score"), 50);
-    list->setColumn(4, klocale->translate("Subject"), 50,KTabListBox::MixedColumn);
+    list->setColumn(4, klocale->translate("Subject"), 1000,KTabListBox::MixedColumn);
     
     list->dict().insert("N",new QPixmap(kapp->getIconLoader()->loadIcon("green-bullet.xpm")));  //Unread message
     list->dict().insert("R",new QPixmap(kapp->getIconLoader()->loadIcon("red-bullet.xpm")));    //Read message
@@ -303,8 +309,9 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     delete (filter2->pop);
     filter2->pop=article;
     
-    
-    status = statusBar ();
+
+    status=new KStatusBar(this);
+    setStatusBar(status);
     status->insertItem ("                 ", 1);
     status->insertItem ("", 2);
     
