@@ -24,7 +24,7 @@ SUBDIRS = doc
 bin_PROGRAMS = 	knu
 
 # Which sources should be compiled for knu.
-knu_SOURCES	= knu.cpp CommandDlg.cpp OptionsDlg.cpp MtrDlg.cpp \
+knu_SOURCES	= knu.cpp CommandDlg.cpp OptionsDlg.cpp \
 			PingDlg.cpp TracerouteDlg.cpp HostDlg.cpp FingerDlg.cpp
 
 # the library search path.
@@ -89,10 +89,6 @@ OptionsDlg.moc: OptionsDlg.h
 PingDlg.cpp: PingDlg.moc
 PingDlg.moc: PingDlg.h
 	$(MOC) PingDlg.h -o PingDlg.moc
-
-MtrDlg.cpp: MtrDlg.moc
-MtrDlg.moc: MtrDlg.h
-	$(MOC) MtrDlg.h -o MtrDlg.moc
 
 TracerouteDlg.cpp: TracerouteDlg.moc
 TracerouteDlg.moc: TracerouteDlg.h
