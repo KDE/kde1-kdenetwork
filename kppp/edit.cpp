@@ -116,6 +116,7 @@ DialWidget::DialWidget( QWidget *parent, const char *name )
 }
 
 
+
 bool DialWidget::save() {
   //fist check to make sure that the account name is unique!
   if(strcmp(connectname_l->text(), "") == 0 ||
@@ -247,14 +248,14 @@ void IPWidget::hitIPSelect( int i ) {
 DNSWidget::DNSWidget( QWidget *parent, const char *name )
   : QWidget(parent, name)
 {
-
-
+  
+  
   box = new QGroupBox(this,"box");
   box->setGeometry(10,70,345,250);
   box->setTitle("DNS Servers");
 
   dnsdomain = new QLineEdit(this, "dnsdomain");
-  dnsdomain->setGeometry(160, 30, 140, 25);
+  dnsdomain->setGeometry(160, 30, 147, 25);
   dnsdomain->setMaxLength(DOMAIN_SIZE);
 
   dnsdomain_label = new QLabel(this,"dnsdomainlabel");
@@ -262,7 +263,7 @@ DNSWidget::DNSWidget( QWidget *parent, const char *name )
   dnsdomain_label->setText("Domain Name:");
 
   dnsipaddr = new IPLineEdit(this, "dnsipaddr");
-  dnsipaddr->setGeometry(160, 95, 140, 25);
+  dnsipaddr->setGeometry(160, 95, 147, 25);
   dnsipaddr->setMaxLength(IPADDR_SIZE);
   connect(dnsipaddr, SIGNAL(returnPressed()), SLOT(adddns()));
 
@@ -275,15 +276,23 @@ DNSWidget::DNSWidget( QWidget *parent, const char *name )
   connect(add, SIGNAL(clicked()), SLOT(adddns()));
 
   remove = new QPushButton("Remove", this, "remove");
-  remove->setGeometry(160, 285, 70, 25);
+  remove->setGeometry(237, 140, 70, 25);
   connect(remove, SIGNAL(clicked()), SLOT(removedns()));
-
+  
   dnsservers = new QListBox(this, "dnsservers");
-  dnsservers->setGeometry(160, 175, 140, 100);
+  dnsservers->setGeometry(160, 175, 147, 100);
 
   servers_label = new QLabel(this,"servers");
   servers_label->setGeometry(30,175,120,25);
   servers_label->setText("DNS Address List:");
+  
+  exdnsdisabled_toggle=new QCheckBox(
+				     "Disable existing DNS Servers during Connection", 
+				     this);
+
+  exdnsdisabled_toggle->adjustSize();
+  exdnsdisabled_toggle->setGeometry(30,285,300,exdnsdisabled_toggle->height());
+  exdnsdisabled_toggle->setChecked(gpppdata.exDNSDisabled());
  
   // restore data if editing
   if(!isnewaccount){
@@ -298,6 +307,7 @@ void DNSWidget::save() {
   for(uint i=0; i < dnsservers->count(); i++)
     gpppdata.setDns(i, dnsservers->text(i));
   gpppdata.setDomain(dnsdomain->text());
+  gpppdata.setExDNSDisabled(exdnsdisabled_toggle->isChecked());
 }
 
 
@@ -459,6 +469,27 @@ ScriptWidget::ScriptWidget( QWidget *parent, const char *name )
 }
 
 
+bool ScriptWidget::check() {
+  uint lstart = 0;
+  uint lend  = 0;
+  uint errcnt = 0;
+
+  if(sl->count() > 0)   {
+    for( uint i=0; i <= sl->count()-1; i++) {
+	if ( 0 == strcmp( "LoopStart", stl->text(i)) )  {
+		lstart++;
+        }
+	if ( 0 == strcmp( "LoopEnd", stl->text(i)) )  {
+		lend++;
+        }
+	if ( lend > lstart ) errcnt++;
+    }
+    return ( (errcnt == 0 ) && (lstart == lend) );
+  } 
+  return true;
+}
+
+
 void ScriptWidget::save() {
 
   if(sl->count() > 0)   
@@ -534,6 +565,26 @@ void ScriptWidget::addButton() {
       sl->insertItem(se->text());
       break;
 
+    case ScriptEdit::Prompt:
+      stl->insertItem("Prompt");
+      sl->insertItem(se->text());
+      break;
+
+    case ScriptEdit::Password:
+      stl->insertItem("Password");
+      sl->insertItem(se->text());
+      break;
+
+    case ScriptEdit::LoopStart:
+      stl->insertItem("LoopStart");
+      sl->insertItem(se->text());
+      break;
+
+    case ScriptEdit::LoopEnd:
+      stl->insertItem("LoopEnd");
+      sl->insertItem(se->text());
+      break;
+
     default:
       break;
   }
@@ -582,6 +633,26 @@ void ScriptWidget::insertButton() {
 
     case ScriptEdit::Timeout:
       stl->insertItem("Timeout", stl->currentItem());
+      sl->insertItem(se->text(), sl->currentItem());
+      break;
+
+    case ScriptEdit::Prompt:
+      stl->insertItem("Prompt", stl->currentItem());
+      sl->insertItem(se->text(), sl->currentItem());
+      break;
+
+    case ScriptEdit::Password:
+      stl->insertItem("Password", stl->currentItem());
+      sl->insertItem(se->text(), sl->currentItem());
+      break;
+
+    case ScriptEdit::LoopStart:
+      stl->insertItem("LoopStart", stl->currentItem());
+      sl->insertItem(se->text(), sl->currentItem());
+      break;
+
+    case ScriptEdit::LoopEnd:
+      stl->insertItem("LoopEnd", stl->currentItem());
       sl->insertItem(se->text(), sl->currentItem());
       break;
 

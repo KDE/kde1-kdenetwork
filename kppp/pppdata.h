@@ -122,6 +122,7 @@
 #define DEFAULTROUTE_KEY   "DefaultRoute"
 #define DOMAIN_KEY         "Domain"
 #define DNS_KEY            "DNS"
+#define EXDNSDISABLED_KEY  "ExDNSDisabled"
 #define SCRIPTCOM_KEY      "ScriptCommands"
 #define SCRIPTARG_KEY      "ScriptArguments"
 #define PPPDARG_KEY        "pppdArguments"
@@ -173,6 +174,7 @@ struct accdata {
   char autoname[ARGUMENT_SIZE+1];		  // enable autoconfig hostname
   char domain[DOMAIN_SIZE+1];       		  // domain name
   char dns[MAX_DNS_ENTRIES][IPADDR_SIZE+1];       // dns ip address
+  char exdnsdisabled[BOOLEAN_SIZE+1];	          // existing dns servers are disabled during connection
   char gateway[IPADDR_SIZE+1];                    // gateway ip address
   char defaultroute[ARGUMENT_SIZE+1];		  // enable defaultroute
   char stype[MAX_SCRIPT_ENTRIES][SCRIPT_TYPE_SIZE+1]; // type of script entry
@@ -329,6 +331,9 @@ public:
 
   const char* domain();
   void setDomain(const char *);
+  
+  const bool exDNSDisabled();
+  void setExDNSDisabled(bool set);
 
   const char* scriptType(int);
   void setScriptType(int, const char*);

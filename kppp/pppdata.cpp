@@ -112,7 +112,8 @@ void PPPData::load(const KApplication* a) {
     setGateway(config->readEntry(GATEWAY_KEY));
     setDefaultroute(config->readEntry(DEFAULTROUTE_KEY));
     setDomain(config->readEntry(DOMAIN_KEY));
-
+    setExDNSDisabled(config->readNumEntry(EXDNSDISABLED_KEY,false));
+    
     // read lists
     config->readListEntry(DNS_KEY, dnslist);
     config->readListEntry(SCRIPTCOM_KEY, scriptcomlist);
@@ -220,6 +221,7 @@ void PPPData::save() {
     config->writeEntry(GATEWAY_KEY, gateway());
     config->writeEntry(DEFAULTROUTE_KEY, (int) defaultroute());
     config->writeEntry(DOMAIN_KEY, domain());
+    config->writeEntry(EXDNSDISABLED_KEY, exDNSDisabled());
     // write lists
     config->writeEntry(DNS_KEY, dnslist);
     config->writeEntry(SCRIPTCOM_KEY, scriptcomlist);
@@ -892,6 +894,32 @@ void PPPData::setDns(int i, const char *n) {
   }
 }
 
+void PPPData::setExDNSDisabled(bool _set){
+
+  if(_set){
+    strcpy(ad[caccount].exdnsdisabled,"TRUE");
+  }
+  else{	
+    strcpy(ad[caccount].exdnsdisabled,"FALSE");
+  }
+
+  return;
+}
+
+
+const bool PPPData::exDNSDisabled(){
+  
+  bool result;
+  
+  if(strcmp(ad[caccount].exdnsdisabled,"TRUE") == 0 ){
+    result = true;
+  }
+  else{
+    result = false;
+  }
+
+  return result;
+}
 
 const char* PPPData::domain() {
   return ad[caccount].domain;

@@ -1,51 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
 <HTML>
 <HEAD>
 <TITLE>The Kppp Handbook: Configuring an Account</TITLE>
 </HEAD>
 <BODY>
-<A HREF="kppp-3.html">Previous</A>
 <A HREF="kppp-5.html">Next</A>
-<A HREF="kppp.html#toc4">Table of Contents</A>
+<A HREF="kppp-3.html">Previous</A>
+<A HREF="kppp.html#toc4">Contents</A>
 <HR>
 <H2><A NAME="s4">4. Configuring an Account</A></H2>
 
-
-<H2><A NAME="ss4.1">4.1 Dial</A></H2>
+<P>
+<H2><A NAME="ss4.1">4.1 Dial</A>
+</H2>
 
 <P>
 <DL>
-<DT><B>Connection Name</B><DD><P>You must give the account a name</P>
+<DT><B>Connection Name</B><DD><P>You must give the account a name
 <DT><B>Phone Number</B><DD><P>Specify the phone number to dial. You may use character such
-as ``-'' to make the number more legible.</P>
+as ``-'' to make the number more legible.
 <DT><B>Connection Speed</B><DD><P>Choose from the list of connections speeds supported by
-your serial port.</P>
+your serial port.
 <DT><B>Execute Program upon Connect</B><DD><P>kppp will attempt to execute the command specified
-here once a ppp link has been set up. </P>
-
+here once a ppp link has been set up. 
+<P>
 <DT><B>Edit default pppd</B><DD><P>This will bring up the pppd arguments dialog. You may use
 this dialog to add any desired options that you want kppp to hand to pppd. Make
 sure that it always contains the -detach option. See the pppd man page for a
 list of available options. Unless you know exactly what you are doing you should
-restrain from tinkering with the pppd options.</P>
-
+restrain from tinkering with the pppd options.
+<P>
 </DL>
-</P>
+<H2><A NAME="ss4.2">4.2 IP</A>
+</H2>
 
-
-
-
-<H2><A NAME="ss4.2">4.2 IP</A></H2>
-
-
+<P>
 <P>
 <DL>
 <DT><B>Dynamic IP Address</B><DD><P>Check this if your ISP uses dynamic ip address assignment.
-That is your ip address will most likely change every time you establish a connection.</P>
-
+That is your ip address will most likely change every time you establish a connection.
+<P>
 <DT><B>Static IP Address</B><DD><P>Check this is your ISP has given you a static ip address.
 In that case you will also need to fill in that address and any Subnet Mask
-if applicable. Ask your ISP if unsure.</P>
-
+if applicable. Ask your ISP if unsure.
+<P>
 <DT><B>Auto-configure Hostname form this IP</B><DD><P>Select this option if you want 
 kppp to set the hostname and domain for your machine after successful
 setup of a ppp link on connect.
@@ -58,14 +56,13 @@ It overrides the Domain Name Option in the  DNS Section.
 The machine defaults are restored to the original values 
 when you close the ppp link 
 Be careful when choosing this option: It may prove useful to you, but
-it may also cause lots of undesired side effect. Just play with it ...</P>
-
+it may also cause lots of undesired side effect. Just play with it ...
+<P>
 </DL>
-</P>
-
-
-
-<H2><A NAME="ss4.3">4.3 DNS</A></H2>
+<P>
+<P>
+<H2><A NAME="ss4.3">4.3 DNS</A>
+</H2>
 
 <P>
 <DL>
@@ -73,38 +70,41 @@ it may also cause lots of undesired side effect. Just play with it ...</P>
 As with DNS Addresses it is restored to the original specified in /etc/resolv.conf
 when the connection goes down.
 If it is left blank no changes are made to the domain name specified
-in /etc/resolv.conf</P>
-
+in /etc/resolv.conf
+<P>
 <DT><B>DNS Servers</B><DD><P>Add the Domain Name servers assigned to you by your ISP.
 You must specify at least a Domain Name server for your OS to be able
 to resolve human readable ip addresses such as ftp.kde.org. The DNS server
 addresses supplied must be in numeric form, e.g 128.231.231.233. The
-addresses will be added at runtime to /etc/resolv.config.</P>
+addresses will be added at runtime to /etc/resolv.config.
+<P>
+<DT><B>Disable existing DNS Servers during Connection</B><DD><P>Select this option if 
+you want kppp to disable already existing nameserver entries
+in /etc/resolv.conf during connection.
+<P>
 </DL>
-</P>
-
-
-
-<H2><A NAME="ss4.4">4.4 Gateway</A></H2>
+<P>
+<P>
+<H2><A NAME="ss4.4">4.4 Gateway</A>
+</H2>
 
 <P>
 <DL>
 <DT><B>Default Gateway</B><DD><P>Check this if you want pppd to use the default Gateway
-for your machine.</P>
-<DT><B>Static Gateway</B><DD><P>Check this if you want to specify the Gateway to be used.</P>
-
+for your machine.
+<DT><B>Static Gateway</B><DD><P>Check this if you want to specify the Gateway to be used.
+<P>
 </DL>
-</P>
-
-
-
-<H2><A NAME="ss4.5">4.5 Login Script</A></H2>
+<P>
+<P>
+<H2><A NAME="ss4.5">4.5 Login Script</A>
+</H2>
 
 <P>
 <DL>
 <DT><B>Edit Script</B><DD><P>Use this dialog to compose a dial in script for your ISP
 dialup connection. Use the mini-terminal and the information supplied by
-your ISP to understand which sequence of actions needs to be executed.</P>
+your ISP to understand which sequence of actions needs to be executed.
 <P>
 <UL>
 <LI>Expect: kppp will wait for the specified string to be received.</LI>
@@ -114,18 +114,58 @@ your ISP to understand which sequence of actions needs to be executed.</P>
 <LI>Answer: kppp will set the modem into answer mode</LI>
 <LI>Timeout: change the default timeout to the specified number of seconds
 dynamically during script execution. You can change the timeout several times
-during script execution if necessary.</LI>
+during script execution if necessary.
+</LI>
+<LI>Prompt: Prompt the kppp user to enter a string, given the specified
+string as a hint.  The user will see what is typed.
+</LI>
+<LI>Password: Prompt the kppp user to enter a string, given the specified
+string as a hint.  An asterisk will be printed for each character typed.
+</LI>
+<LI>LoopStart: kppp will wait for the specified string to be received.
+It will save the string for use by LoopEnd
+</LI>
+<LI>LoopEnd: kppp will wait for the specified string to be received to
+exit the loop.  If the string given by the corresponding LoopStart is
+received first, it will trigger a jump to the line after the LoopStart,
+enabling repetition of username/password style paired dialogs.
+</LI>
 </UL>
-</P>
-
-
+<P>
+<P>
 </DL>
-</P>
+<H3>Example scripts</H3>
 
+<P>
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+Here is the script I use to connect to my ISP:
 
+Expect      ID:                        # wait for ID:
+Send        myid                       # you have to substitue myid with your id
+Expect      word:                      # wait for 'password'
+Send        4u3fjkl                    # send my password '4u3fjkl'
+Expect      granted                    # My ISP send 'Permission granted' on login succes.
+Send        ppp                        # This starts a ppp connection for 
+                                       # me on the ISP side
 
+Here a script for the same account with ID and password prompt:
 
-<H2><A NAME="ss4.6">4.6 Accounting</A></H2>
+LoopStart   ID:                        # wait for ID:
+Prompt      Please Enter User ID       # Prompt me for my ID and send it off.
+Expect      word:                      # wait for 'password'
+Password    Please Enter your Password # Prompt me for my password and send it off.
+LoopEnd     granted                    # My ISP send 'Permission granted' on login succes.
+Send        ppp                        # This starts a ppp connection for me
+                                       # on the ISP side
+</PRE>
+</CODE></BLOCKQUOTE>
+<P>
+<P>
+<P>
+<H2><A NAME="ss4.6">4.6 Accounting</A>
+</H2>
 
 <P>
 <DL>
@@ -138,19 +178,17 @@ rules file to me. The newly created rules file can be checked for valid
 syntax with the -r rule_file command line option to kppp. and
 must be installed in <CODE>$(KDEDIR)/lib/kppp/Rules</CODE> or in 
 <CODE>$(HOME)/.kde/kppp/Rules</CODE> before you will be able to select it on this
-dialog.</P>
-
+dialog.
+<P>
 </DL>
-</P>
-
-
-
-
-
-
+<P>
+<P>
+<P>
+<P>
+<P>
 <HR>
-<A HREF="kppp-3.html">Previous</A>
 <A HREF="kppp-5.html">Next</A>
-<A HREF="kppp.html#toc4">Table of Contents</A>
+<A HREF="kppp-3.html">Previous</A>
+<A HREF="kppp.html#toc4">Contents</A>
 </BODY>
 </HTML>

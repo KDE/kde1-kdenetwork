@@ -1,42 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
 <HTML>
 <HEAD>
 <TITLE>The Kppp Handbook: Setting up kppp</TITLE>
 </HEAD>
 <BODY>
-<A HREF="kppp-2.html">Previous</A>
 <A HREF="kppp-4.html">Next</A>
-<A HREF="kppp.html#toc3">Table of Contents</A>
+<A HREF="kppp-2.html">Previous</A>
+<A HREF="kppp.html#toc3">Contents</A>
 <HR>
 <H2><A NAME="s3">3. Setting up kppp</A></H2>
 
-
-<P> <CODE> PLEASE DON'T FORGET TO READ THE FREQUENTLY ASKED QUESTIONS ! THANK YOU!</CODE></P>
+<P>
+<P> <CODE> PLEASE DON'T FORGET TO READ THE FREQUENTLY ASKED QUESTIONS ! THANK YOU!</CODE>
 <P>In order to set up kppp, start kppp and push the <CODE>Setup</CODE> button on kppp's
-main window. A new tab dialog will appear. </P>
-
-<H2><A NAME="ss3.1">3.1 Accounts</A></H2>
+main window. A new tab dialog will appear. 
+<P>
+<H2><A NAME="ss3.1">3.1 Accounts</A>
+</H2>
 
 <P>This dialog will display the accounts you have created. You must create at least
 one account.  The ``Reset Button'' will
 reset the accumulated cost for the selected account to zero. Typically you 
 want to press this button once a month after having consolidated your 
-telephone costs. </P>
-
-
-<H2><A NAME="ss3.2">3.2 Modem</A></H2>
+telephone costs. 
+<P>
+<H2><A NAME="ss3.2">3.2 Modem</A>
+</H2>
 
 <P>
 <DL>
-
-<DT><B>Modem Device</B><DD><P>Select the device appropriate for you hardware.</P>
-
+<P>
+<DT><B>Modem Device</B><DD><P>Select the device appropriate for you hardware.
+<P>
 <DT><B>Flow Control</B><DD><P>Select from Hardware (CRTSCTS), Software (XON/XOFF) and
-no flow control. The recommended setting is Hardware flow control.</P>
-
+no flow control. The recommended setting is Hardware flow control.
+<P>
 <DT><B>Modem Timeout</B><DD><P>This is the time in seconds that kppp waits for the 
 ``CONNECT'' response from your modem after dialing into another modem. (Typically a modem
-of your IPS's modem pool ) I recommend a setting of about 30 seconds.</P>
-
+of your IPS's modem pool ) I recommend a setting of about 30 seconds.
+<P>
+<P>
 <DT><B>Modem Lock File</B><DD><P>Enter the path-name of the desired modem lock file.
 This is typically /var/lock/LCK.modem and you shouldn't change this
 to anything else unless you know what you are doing. Program such
@@ -44,56 +47,55 @@ as mgetty depend on the existence of such lock files and kppp will
 not work with mgetty if the lock file name is not set corretly.
 If you leave this editbox empty, kppp will not attempt to create a 
 lockfile. Make sure that you don't use the option "lock" to pppd
-if you entered a modem lock file and thus want kppp to lock the modem.</P>
-
-
+if you entered a modem lock file and thus want kppp to lock the modem.
+<P>
+<P>
 <DT><B>Edit Modem Commands</B><DD><P>This will bring up a dialog which you will need
 to fill with modem commands appropriate for you particular modem. If you
 own a Hayes compatible modem you most likely won't need to change any of
 the defaults. I encourage you however to read  about the Hayes command
 in the Appendix of this documentation. The information supplied there 
 should also be of help in case  you experience trouble setting up a stable 
-connection with your ISP's modems.</P>
-
+connection with your ISP's modems.
+<P>
 <DT><B>Query Modem</B><DD><P>Pushing the Query Modem Button will induce kppp to ask
 your modem to identify itself. On success your modems response will be
 displayed in a dialog. This may or may not prove to be informative depending
-on your modem.</P>
-
+on your modem.
+<P>
 <DT><B>Termial</B><DD><P>Pushing the <CODE>Terminal</CODE> button will bring up a mini terminal.
 You can use the mini terminal to test your modem and experiment with  the 
 negotiation protocol for initiating a ppp connection with you ISP. You no 
-longer need a terminal program such as minicom or seyon.</P>
-
+longer need a terminal program such as minicom or seyon.
+<P>
 </DL>
-</P>
-
-
-
-<H2><A NAME="ss3.3">3.3 More ...</A></H2>
+<P>
+<P>
+<H2><A NAME="ss3.3">3.3 More ...</A>
+</H2>
 
 <P>
 <DL>
-
+<P>
 <DT><B>pppd Path</B><DD><P>Specify the location of your pppd binary. It is very
 important that you are sure that this is
 in fact the pppd binary and not a pointer to a script which invokes pppd. 
-Otherwise kppp will not function properly.</P>
-
+Otherwise kppp will not function properly.
+<P>
 <DT><B>pppd Timeout</B><DD><P>kppp will wait this amount of time after running the script
 and starting pppd for pppd to establish a valid ppp link before giving up
-and killing pppd.</P>
-
+and killing pppd.
+<P>
 <DT><B>Enter is:</B><DD><P>Choose the correct ``Enter'' character sequence for your modem.
 Most modems will use ``CR/LF''. However some modems need a different setting.
-If you experience trouble while running a script: Play with this parameter.</P>
-
+If you experience trouble while running a script: Play with this parameter.
+<P>
 <DT><B>Automatic Redial on Disconnect</B><DD><P>Selecting this will have kppp try to 
-reconnect in case you inadvertently got disconnected while online.</P>
-
+reconnect in case you inadvertently got disconnected while online.
+<P>
 <DT><B>Show Clock on Caption</B><DD><P>This will have kppp display the time connected
-on the caption of the kppp window displayed while being online.</P>
-
+on the caption of the kppp window displayed while being online.
+<P>
 <DT><B>Disconnect on X-server shutdown</B><DD><P>Checking this option will cause kppp
 to terminate the ppp link, disconnect the modem and terminate accounting
 in an orderly fashion when the X-server shuts down. This is useful if
@@ -103,17 +105,15 @@ If you don't want kppp to hang up the modem on X-server exit, you should
 leave this checkbox unchecked. Be aware however, that if you have accounting
 enabled, and you don't want kppp to hang up on X-server exit,  you will 
 have a nonterminated accounting entry in you accounting logs, when the
-X-server exits and kppp terminates.</P>
-
+X-server exits and kppp terminates.
+<P>
 </DL>
-</P>
-
-
-
-
+<P>
+<P>
+<P>
 <HR>
-<A HREF="kppp-2.html">Previous</A>
 <A HREF="kppp-4.html">Next</A>
-<A HREF="kppp.html#toc3">Table of Contents</A>
+<A HREF="kppp-2.html">Previous</A>
+<A HREF="kppp.html#toc3">Contents</A>
 </BODY>
 </HTML>

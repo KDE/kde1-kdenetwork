@@ -138,6 +138,7 @@ private:
   QListBox *dnsservers;
   QLineEdit *dnsdomain;
   QLabel *dnsdomain_label;
+  QCheckBox *exdnsdisabled_toggle;
 };
 
 
@@ -175,6 +176,7 @@ public:
 
 public slots:
   void save();
+  bool check();
 
 private slots:
   void addButton();

@@ -211,10 +211,12 @@ AboutWidget::AboutWidget( QWidget *parent, const char *name)
 
   QString string2;
   string2 = 
-    "\n\nWith contributions from:\n"\
+    "\nWith contributions from:\n"\
     "Mario Weilguni\n"
     "Markus Wuebben\n"\
-    "Jesus Fuentes Saavedra\n\n";
+    "Jesus Fuentes Saavedra\n"
+    "Harri Porten\n"\
+    "Peter Silva\n";
   
   label2 = new QLabel(this,"About2");
   label2->setAlignment(AlignLeft|WordBreak|ExpandTabs);

@@ -63,6 +63,10 @@ ConnectWidget::ConnectWidget(QWidget *parent, const char *name)
 
   vmain = 0;
   expecting = false;
+
+  loopnest = 0;
+  loopend = false;
+
   pausing = false;
   scriptindex = 0;
   myreadbuffer = "";
@@ -110,6 +114,7 @@ ConnectWidget::ConnectWidget(QWidget *parent, const char *name)
   
   connect(this,SIGNAL(if_waiting_signal()),this,SLOT(if_waiting_slot()));
 
+  prompt = new PWEntry( this, "pw" );         
   if_timer = new QTimer(this);
   connect(if_timer,SIGNAL(timeout()),SLOT(if_waiting_slot()));
 
@@ -326,6 +331,7 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
         return;
       }
 
+
       if(strcmp(gpppdata.scriptType(scriptindex), "Expect") == 0) {
         QString bm = "Expecting ";
         bm += gpppdata.script(scriptindex);
@@ -394,6 +400,100 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
 	return;
       }
  
+      if(strcmp(gpppdata.scriptType(scriptindex), "Prompt") == 0) {
+	QString bm = "prompting ";
+	bm += gpppdata.script(scriptindex);
+	messg->setText(bm);
+	p_xppp->debugwindow->statusLabel(bm);
+
+	/* if not around yet, then post window... */
+	if (prompt->Consumed()) {
+	   if (!(prompt->isVisible())) {
+		prompt->setPrompt(gpppdata.script(scriptindex));
+		prompt->setEchoModeNormal();
+	        prompt->show();
+	   }
+	} else {
+	    /* if prompt withdrawn ... then, */
+	    if (!(prompt->isVisible())) {
+	    	writeline(prompt->text());
+	        prompt->setConsumed();
+	        scriptindex++;
+        	return;
+	    }
+	    /* replace timeout value */
+	}
+      }
+
+      if(strcmp(gpppdata.scriptType(scriptindex), "Password") == 0) {
+	QString bm = "pwprompting ";
+	bm += gpppdata.script(scriptindex);
+	messg->setText(bm);
+	p_xppp->debugwindow->statusLabel(bm);
+
+	/* if not around yet, then post window... */
+	if (prompt->Consumed()) {
+	   if (!(prompt->isVisible())) {
+		prompt->setPrompt(gpppdata.script(scriptindex));
+		prompt->setEchoModePassword();
+	        prompt->show();
+	   }
+	} else {
+	    /* if prompt withdrawn ... then, */
+	    if (!(prompt->isVisible())) {
+	    	writeline(prompt->text());
+	        prompt->setConsumed();
+	        scriptindex++;
+        	return;
+	    }
+	    /* replace timeout value */
+	}
+      }
+
+      if(strcmp(gpppdata.scriptType(scriptindex), "LoopStart") == 0) {
+
+        QString bm = "LoopStart ";
+        bm += gpppdata.script(scriptindex);
+
+	if ( loopnest > (maxloopnest-2) ) {
+		bm += "ERROR: Nested too deep, ignored.";
+		vmain=20;
+		scriptindex++;
+		cancelbutton();
+	        QMessageBox::warning( 0, "Error", "Loops nested too deeply!");
+	} else {
+        	setExpect(gpppdata.script(scriptindex));
+		loopstartindex[loopnest] = scriptindex + 1;
+		loopstr[loopnest] = gpppdata.script(scriptindex);
+		loopend = false;
+		loopnest++;
+	}
+	messg->setText(bm);
+	p_xppp->debugwindow->statusLabel(bm);
+
+	scriptindex++;
+      }
+
+      if(strcmp(gpppdata.scriptType(scriptindex), "LoopEnd") == 0) {
+        QString bm = "LoopEnd ";
+        bm += gpppdata.script(scriptindex);
+	if ( loopnest <= 0 ) {
+		bm = "LoopEnd without mathing Start! Line: " + bm ;
+		vmain=20;
+		scriptindex++;
+		cancelbutton();
+	        QMessageBox::warning( 0, "Error", bm );
+		return;
+	} else {
+        	setExpect(gpppdata.script(scriptindex));
+		loopnest--;
+		loopend = true;
+	}
+	messg->setText(bm);
+	p_xppp->debugwindow->statusLabel(bm);
+
+	scriptindex++;
+      }
    }
   }
 
@@ -547,8 +647,23 @@ void ConnectWidget::readtty() {
       QString ts = "Found: ";  
       ts += expectstr;                 
       p_xppp->debugwindow->statusLabel(ts);
+      if (loopend) {
+	loopend=false;
+      }
+      return;
+    }
+    if (loopend && readbuffer.contains(loopstr[loopnest])) {
+      expecting = false;
+      readbuffer = "";
+      QString ts = "Looping: ";  
+      ts += loopstr[loopnest];
+      p_xppp->debugwindow->statusLabel(ts);
+      scriptindex = loopstartindex[loopnest];
+      loopend = false;
+      loopnest++;
     }
   }
+  
 }
 
 
@@ -557,6 +672,7 @@ void ConnectWidget::pause() {
   pausing = false;
   pausetimer->stop();
 }
+
 
 
 void ConnectWidget::cancelbutton() {
@@ -579,6 +695,12 @@ void ConnectWidget::cancelbutton() {
   p_xppp->con_win->stopClock();
   closetty();
   unlockdevice();
+
+  //abort prompt window...
+  if (prompt->isVisible()) {
+  	prompt->hide();
+  }
+  prompt->setConsumed();
 }
 
 
@@ -884,7 +1006,7 @@ void ConnectWidget::hangup() {
 bool ConnectWidget::writeline(const char *buf) {
 
   // TODO check return code and think out how to proceed
-  // in that case.
+  // in case of trouble.
 
    write(modemfd, buf, strlen(buf));
 
@@ -1114,7 +1236,8 @@ void auto_hostname(){
 
 }  
 
-// Replace the DNS domain entry in the /etc/resolv.conf file
+// Replace the DNS domain entry in the /etc/resolv.conf file and
+// disable the nameserver entries if option is enabled
 void add_domain(const char *domain) {
 
   int fd;
@@ -1144,8 +1267,11 @@ void add_domain(const char *domain) {
       write(fd, " \t\t#kppp temp entry\n", 20);
 
       for(int j=0; j < i; j++) {
-	if(resolv[j].contains("domain") && 
-              ! resolv[j].contains("#entry disabled by kppp")) {
+	if((resolv[j].contains("domain") ||
+	      ( resolv[j].contains("nameserver") 
+		&& !resolv[j].contains("#kppp temp entry") 
+		&& gpppdata.exDNSDisabled())) 
+	        && !resolv[j].contains("#entry disabled by kppp")) {
 
           write(fd, "# ", 2);
 	  write(fd, resolv[j], resolv[j].length());

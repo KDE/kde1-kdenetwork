@@ -3,6 +3,11 @@
 kppp is a dialer and front end for pppd. It allows for interactive script
 generation and network connection setup.
 
+Version 0.7.1
+
+o New option to disable existing nameservers in /etc/resolv.conf
+
+o Looping, prompt and password dialogs in the scripting module
 
 This is version 0.5.9
 

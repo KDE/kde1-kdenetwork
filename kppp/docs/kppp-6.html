@@ -1,24 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
 <HTML>
 <HEAD>
 <TITLE>The Kppp Handbook: Questions and answers</TITLE>
 </HEAD>
 <BODY>
-<A HREF="kppp-5.html">Previous</A>
 <A HREF="kppp-7.html">Next</A>
-<A HREF="kppp.html#toc6">Table of Contents</A>
+<A HREF="kppp-5.html">Previous</A>
+<A HREF="kppp.html#toc6">Contents</A>
 <HR>
 <H2><A NAME="s6">6. Questions and answers</A></H2>
 
+<P>
+<P>
+<H2><A NAME="ss6.1">6.1 Frequently Asked Questions about kppp</A>
+</H2>
 
-
-<H2><A NAME="ss6.1">6.1 Frequently Asked Questions about kppp</A></H2>
-
-
-
+<P>
+<P>
 <H3>I can't get kppp to work. kppp tells me that pppd has died! </H3>
 
 <P>You didn't read the docs carefully. Here once more the most common
-pitfalls.</P>
+pitfalls.
 <P>
 <UL>
 <LI> Make sure that pppd is the actual pppd binary not a script
@@ -37,11 +39,10 @@ afford to run kppp setuid root. The proper way to proceed would probably
 be creating a "modem" group.
 </LI>
 </UL>
-</P>
-
+<P>
 <H3>kppp tells me ``Sorry, can't open the modem''.</H3>
 
-
+<P>
 <P>This means that kppp doesn't have permissions to open the modem
 device or that you selected a modem device on the Modem Tab Dialog that is
 not valid. First make sure you selected the right modem device. Once you are
@@ -51,7 +52,7 @@ device and to be able to modify /etc/resolv.conf in case you want kppp to
 configure DNS correctly for you. If you can afford to run kppp setuid root
 this would solve all access problems for you, if not you will have to figure
 out what the right permissions are for your purposes. In order to give
-kppp setuid root permissions do the following:</P>
+kppp setuid root permissions do the following:
 <P>
 <BLOCKQUOTE><CODE>
 <PRE>
@@ -61,31 +62,30 @@ kppp setuid root permissions do the following:</P>
 % exit
 </PRE>
 </CODE></BLOCKQUOTE>
-</P>
-
-
-
+<P>
+<P>
+<P>
 <H3>kppp just sits there and waits: Expecting OK</H3>
 
-<P>Have you played with the CR/LF setting?</P>
-
-
-
+<P>Have you played with the CR/LF setting?
+<P>
+<P>
+<P>
 <H3>Can I do PAP and CHAP with kppp?</H3>
 
 <P>Yes you can. Please the see the section on using 
 <A HREF="kppp-8.html#PAP">PAP and CHAP</A> 
-with kppp in the appendix.</P>
-
-
+with kppp in the appendix.
+<P>
+<P>
 <H3>How do I write a telephone cost rules file?</H3>
 
 <P>Just follow the TEMPLATE rules files supplied with kppp. You should be
 able to find a copy in the <CODE>$(KDEDIR)/doc/HTML/kppp</CODE>. 
 Use the -r kppp command line options to check the syntax of your proposed
-rules file.</P>
-
-
+rules file.
+<P>
+<P>
 <H3>I have written a telephone cost rules file for my region. Where can I submit it so that others can make use of it?</H3>
 
 <P>I would love to receive any rule files written. I will make them available
@@ -93,21 +93,20 @@ on my kppp
 <A HREF="http://math.cornell.edu/~wuebben/kppp/kppp.html">web page</A>.
 Before you send me a new rules file make sure it is not already available on 
 the kppp web page. Then email the new rules file  to 
-<A HREF="mailto:wuebben@math.cornell.edu">me</A>.</P>
-
-
+<A HREF="mailto:wuebben@math.cornell.edu">me</A>.
+<P>
+<P>
 <H3>My country observes a moving holiday different from easter.</H3>
 
 <P>In that case you need to write new code that allows for the computation of that
 holiday. Please have a look at ruleset.cpp and emulate the ``easter'' example.
 Then send 
-<A HREF="mailto:wuebben@math.cornell.edu">me</A> the patches.</P>
-
-
-
+<A HREF="mailto:wuebben@math.cornell.edu">me</A> the patches.
+<P>
+<P>
 <HR>
-<A HREF="kppp-5.html">Previous</A>
 <A HREF="kppp-7.html">Next</A>
-<A HREF="kppp.html#toc6">Table of Contents</A>
+<A HREF="kppp-5.html">Previous</A>
+<A HREF="kppp.html#toc6">Contents</A>
 </BODY>
 </HTML>

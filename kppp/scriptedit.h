@@ -60,7 +60,11 @@ public:
 		 Pause = 2,
 		 Hangup = 3,
 		 Answer = 4,
-		 Timeout = 5 };
+		 Timeout = 5, 
+		 Password = 6,
+		 Prompt = 7,
+		 LoopStart = 8,
+		 LoopEnd = 9 };
 };
 
 #endif

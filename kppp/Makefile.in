@@ -63,6 +63,7 @@ SOURCES =	accounts.cpp \
 		pppdargs.cpp \
 		pppdata.cpp \
 		scriptedit.cpp\
+		pwentry.cpp \
 		modeminfo.cpp\
 		pppstatdlg.cpp\
 		pppstats.cpp\
@@ -87,6 +88,7 @@ HEADERS =		accounts.h \
 		pppdargs.h \
 		pppdata.h \
 		scriptedit.h\
+		pwentry.h \
 		modeminfo.h\
 		pppstatdlg.h\
 		miniterm.h\
@@ -109,6 +111,7 @@ OBJECTS =		accounts.o \
 		pppdargs.o \
 		pppdata.o \
 		scriptedit.o\
+		pwentry.o\
 		modeminfo.o\
 		pppstatdlg.o\
 		pppstats.o\
@@ -129,6 +132,7 @@ OBJECTS =		accounts.o \
 		moc_modemcmds.o \
 		moc_pppdargs.o \
 		moc_scriptedit.o\
+		moc_pwentry.o\
 		moc_modeminfo.o\
 		moc_pppstatdlg.o\
 		moc_miniterm.o\
@@ -147,6 +151,7 @@ SRCMETA =	moc_accounts.cpp \
 		moc_modemcmds.cpp \
 		moc_pppdargs.cpp \
 		moc_scriptedit.cpp\
+		moc_pwentry.cpp\
 		moc_modeminfo.cpp\
 		moc_pppstatdlg.cpp\
 		moc_miniterm.cpp\
@@ -235,6 +240,7 @@ install: $(TARGET)
 	@echo ""
 	@echo "I am mainting an archive on the kppp page at"
 	@echo "http://math.cornell.edu/~wuebben/kde.html"
+	@echo "WARNING: kppp is by default installed with SETUID bit on!"
 	@echo ""
 	@echo "Happy Dialing! -- Bernd Wuebben"
 	@echo ""
@@ -262,6 +268,9 @@ moc_pppstatdlg.o: moc_pppstatdlg.cpp\
 
 moc_scriptedit.o: moc_scriptedit.cpp \
 		scriptedit.h \
+
+moc_pwentry.o: moc_pwentry.cpp \
+		pwentry.h \
 
 moc_miniterm.cpp : miniterm.cpp miniterm.h
 	$(MOC) miniterm.h -o moc_miniterm.cpp
@@ -298,6 +307,9 @@ moc_pppdargs.cpp: pppdargs.h
 
 moc_scriptedit.cpp: scriptedit.h
 	$(MOC) scriptedit.h -o moc_scriptedit.cpp
+
+moc_pwentry.cpp: pwentry.h
+	$(MOC) pwentry.h -o moc_pwentry.cpp
 
 moc_modeminfo.cpp: modeminfo.h
 	$(MOC) modeminfo.h -o moc_modeminfo.cpp

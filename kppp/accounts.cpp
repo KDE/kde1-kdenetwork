@@ -291,19 +291,24 @@ int AccountWidget::doTab(){
     ok = true;
 
     if(result == QDialog::Accepted) {
-      if(dial_w->save()) {
-	ip_w->save();
-	dns_w->save();
-	gateway_w->save();
-	script_w->save();
-	acct->save();
-      }
-      else {
-	QMessageBox::warning(this, "Error", 
+      if (script_w->check()) {
+          if(dial_w->save()) {
+		ip_w->save();
+		dns_w->save();
+		gateway_w->save();
+		script_w->save();
+		acct->save();
+         } else {
+		QMessageBox::warning(this, "Error", 
 			 "You must enter a unique\naccount name");
-	ok = false;
+		ok = false;
+	 }
+      } else {
+	      QMessageBox::warning(this, "Error", 
+			"Login script has unbalanced Loop Start/End" );
+	      ok = false;
       }
-    }    
+    }
   }
   
  delete tabWindow;

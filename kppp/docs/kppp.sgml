@@ -10,8 +10,8 @@
 
 <title>The Kppp Handbook
 <author>Bernd Johannes Wuebben, <tt/wuebben@kde.org/
-<date>Version 0.5.9, 1 November 1997
-<abstract>This Handbook describes Kppp Version 0.5.9
+<date>Version 0.7, 16 December 1997
+<abstract>This Handbook describes Kppp Version 0.7
 
 <!-- Table of contents -->
 <toc>
@@ -160,6 +160,7 @@ no flow control. The recommended setting is Hardware flow control.
 ``CONNECT'' response from your modem after dialing into another modem. (Typically a modem
 of your IPS's modem pool ) I recommend a setting of about 30 seconds.
 
+
 <tag/Modem Lock File/ Enter the path-name of the desired modem lock file.
 This is typically /var/lock/LCK.modem and you shouldn't change this
 to anything else unless you know what you are doing. Program such
@@ -246,9 +247,6 @@ list of available options. Unless you know exactly what you are doing you should
 restrain from tinkering with the pppd options.
 
 </descrip>
-<p>
-
-
 <sect1>IP<p>
 
 <descrip>
@@ -289,6 +287,11 @@ You must specify at least a Domain Name server for your OS to be able
 to resolve human readable ip addresses such as ftp.kde.org. The DNS server
 addresses supplied must be in numeric form, e.g 128.231.231.233. The
 addresses will be added at runtime to /etc/resolv.config.
+
+<tag/Disable existing DNS Servers during Connection/ Select this option if 
+you want kppp to disable already existing nameserver entries
+in /etc/resolv.conf during connection.
+
 </descrip>
 <p>
 
@@ -316,10 +319,49 @@ your ISP to understand which sequence of actions needs to be executed.
 <item>Timeout: change the default timeout to the specified number of seconds
 dynamically during script execution. You can change the timeout several times
 during script execution if necessary.
+
+<item>Prompt: Prompt the kppp user to enter a string, given the specified
+ string as a hint.  The user will see what is typed.
+
+<item>Password: Prompt the kppp user to enter a string, given the specified
+ string as a hint.  An asterisk will be printed for each character typed.
+
+<item>LoopStart: kppp will wait for the specified string to be received.
+ It will save the string for use by LoopEnd
+
+<item>LoopEnd: kppp will wait for the specified string to be received to
+exit the loop.  If the string given by the corresponding LoopStart is
+received first, it will trigger a jump to the line after the LoopStart,
+enabling repetition of username/password style paired dialogs.
+
 </itemize>
 <p>
 
 </descrip>
+<sect2>Example scripts<p>
+
+<tscreen><verb>
+Here is the script I use to connect to my ISP:
+
+Expect      ID:                        # wait for ID:
+Send        myid                       # you have to substitue myid with your id
+Expect      word:                      # wait for 'password'
+Send        4u3fjkl                    # send my password '4u3fjkl'
+Expect      granted                    # My ISP send 'Permission granted' on login succes.
+Send        ppp                        # This starts a ppp connection for 
+                                       # me on the ISP side
+
+Here a script for the same account with ID and password prompt:
+
+LoopStart   ID:                        # wait for ID:
+Prompt      Please Enter User ID       # Prompt me for my ID and send it off.
+Expect      word:                      # wait for 'password'
+Password    Please Enter your Password # Prompt me for my password and send it off.
+LoopEnd     granted                    # My ISP send 'Permission granted' on login succes.
+Send        ppp                        # This starts a ppp connection for me
+                                       # on the ISP side
+
+</verb></tscreen>
 <p>
 
 

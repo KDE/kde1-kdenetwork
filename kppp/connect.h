@@ -50,6 +50,8 @@
 #include "debug.h"
 #include "pppdata.h"
 
+#include "pwentry.h"
+
 extern QApplication *qApp;
 
 class ConnectWidget : public QWidget {
@@ -60,7 +62,7 @@ public:
   
   ConnectWidget(QWidget *parent=0, const char *name=0);
   ~ConnectWidget();
-
+  
 
 
 public:
@@ -97,6 +99,13 @@ public:
 private:
   int vmain;
   int scriptindex;
+
+  static const int maxloopnest=(MAX_SCRIPT_ENTRIES/2);
+  int loopnest;
+  int loopstartindex[maxloopnest];
+  bool loopend;
+  QString loopstr[maxloopnest];
+
   bool semaphore;
   QTimer *inittimer;
   QTimer *timeout_timer;
@@ -114,6 +123,7 @@ private:
   QString readbuffer;
 
   bool pausing;
+  PWEntry *prompt;
 
   int scriptTimeout;
   QTimer *pausetimer;
