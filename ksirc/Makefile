@@ -3,7 +3,7 @@
 #######    linux-gcc-shared on Sun Oct 12 09:16:39 MDT 1997
 
 INCDIR = /usr/local/lib/qt/include
-CFLAGS = -g -O3 -Wall -I/usr/X11R6/include -I$(HOME)/include -I/opt/kde/include
+CFLAGS = -g -Wall -I/usr/X11R6/include -I$(HOME)/include -I/opt/kde/include
 LIBCFLAGS = -fPIC
 YACCCFLAGS = -Wno-unused -Wno-parentheses
 LFLAGS = -g -L/usr/local/lib/qt/lib -lqt -L/opt/kde/lib -lkdecore -lkdeui -lkfm

@@ -1938,7 +1938,7 @@ while (1) {
       print "`#ssfe#t/m =$who \n" if $ssfe;
       print "`#ssfe#o=${who}= $what\n" if $ssfe;
       &dohooks("dcc_chat", $who, $what);
-      &tell("=\cb${who}\cb= $what");
+      &tell("~${who}~=\cb${who}\cb= $what"); # KSIRC MOD
       $silent='';
     }
   }

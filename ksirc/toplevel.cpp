@@ -250,6 +250,8 @@ void KSircTopLevel::sirc_receive(QString str)
    * If we have to many lines, nuke the top 100, leave us with 100
    */
 
+  int lines = 0;
+
   if(Buffer == FALSE){
     if(LineBuffer->count() >= 2){
       mainw->setAutoUpdate(FALSE);
@@ -262,6 +264,7 @@ void KSircTopLevel::sirc_receive(QString str)
     ircListItem *item = 0;
     char *pchar;
     QString string;
+    bool update = FALSE;
 
     for(pchar = LineBuffer->first(); pchar != 0; pchar=LineBuffer->next()){
       // Get the need list box item, with colour, etc all set
@@ -274,19 +277,22 @@ void KSircTopLevel::sirc_receive(QString str)
 	// Insert line to the end
 	mainw->insertItem(item, -1);
 	lines++; // Mode up lin counter
+	update = TRUE;
       }
     }
     LineBuffer->clear(); // Clear it since it's been added
 
     if(mainw->count() > 200){
       mainw->setAutoUpdate(FALSE);
+      update = TRUE;
       while(mainw->count() > 100)
 	mainw->removeItem(0);
     }
 
     // If we need to scroll, we, scroll =)
-    if((mainw->count() > (uint) mainw->numItemsVisible()) && (item != 0))
-      mainw->setTopItem(mainw->count() - mainw->numItemsVisible() + 1 + item->row());
+    if((mainw->count() > (uint) mainw->numItemsVisible()) && (update == TRUE) && (item != 0))
+      mainw->setTopItem(mainw->count()-1);
+    //      mainw->setTopItem(mainw->count() - mainw->numItemsVisible() + 3 + item->row());
 
     if(mainw->autoUpdate() == FALSE){
       mainw->setAutoUpdate(TRUE);
@@ -549,7 +555,7 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	  s3 = string.mid(pos+1, pos2 - pos - 1); // Get nick
 	  if(s3[0] == '@'){    // Remove the op part if set
 	    s3.remove(0, 1);
-	    nicks->inSort(new ircListItem(s3, red));
+	    nicks->inSort(new ircListItem(s3, red, nicks));
 	  }
 	  else{
 	    nicks->inSort(s3);
@@ -636,7 +642,7 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	    if(strcmp(s3, nicks->text(i)) == 0){
 	      nicks->setAutoUpdate(FALSE);
 	      nicks->removeItem(i);           // remove old nick
-	      nicks->inSort(new ircListItem(s3, red));    // add new nick in sorted pass,with colour
+	      nicks->inSort(new ircListItem(s3, red, nicks));    // add new nick in sorted pass,with colour
 	      nicks->setAutoUpdate(TRUE);
 	      nicks->repaint();
 	    }
@@ -675,7 +681,7 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 				   // anull pointer
     return NULL;
   else                             // otherwise create a new IrcListItem...
-    return new ircListItem(string,color,pixmap, mainw);
+    return new ircListItem(string,color,mainw,pixmap);
 
   return NULL; // make compiler happy or else it complans about
 	       // getting to the end of a non-void func

@@ -86,8 +86,20 @@ void KSircIOController::stdout_read(KProcess *, char *_buffer, int buflen)
     }
     if(!(ksircproc->TopList)[name]){
       name = "!default";
-      if(line[0] == '`')
+      cerr << line[0] << endl;
+      switch(line[0]){
+      case '`':
 	line.prepend("*** ");
+	break;
+      case '>':
+      case '[':
+      case '=':
+      case '|':
+	if(ksircproc->TopList["!messages"]){
+	  name = "!messages";
+	}
+	break;
+      }
     }
     //    cerr << "Output: " << line << endl;
     ksircproc->TopList[name]->sirc_receive(line);

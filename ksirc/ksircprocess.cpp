@@ -26,12 +26,18 @@ KSircProcess::KSircProcess( char *_server=0L, QObject * parent=0, const char * n
 
   kConfig->setGroup("GlobalOptions");
   if(kConfig->readNumEntry("Reuse", TRUE) == TRUE){
-    running_window = FALSE;       // set false so next changes the first name
-    default_follow_focus = TRUE;
   }
   else{
-    default_follow_focus = FALSE;
+    running_window = TRUE;        // True so we do create the a new message
+    new_toplevel("!messages");
+    //    QObject::disconnect((QObject *) TopList["!messages"],
+    //	       SIGNAL(currentWindow(KSircTopLevel *)));
+    //    QObject::disconnect((QObject *) TopList["!messages"], 
+    //    	       SIGNAL(changeChannel(QString, QString)));
   }
+
+  running_window = FALSE;       // set false so next changes the first name
+  default_follow_focus = TRUE;
 
   TopList.insert("!all", new KSircIOBroadcast(this));
   
@@ -62,10 +68,12 @@ void KSircProcess::new_toplevel(QString str)
 	    this,SLOT(new_toplevel(QString)));
     connect(wm, SIGNAL(closing(KSircTopLevel *, char *)),
 	  this,SLOT(close_toplevel(KSircTopLevel *, char *)));
-    connect(wm, SIGNAL(currentWindow(KSircTopLevel *)),
-	  this,SLOT(default_window(KSircTopLevel *)));
-    connect(wm, SIGNAL(changeChannel(QString, QString)),
-	  this,SLOT(recvChangeChannel(QString, QString)));
+    if(str != QString("!messages")){
+      connect(wm, SIGNAL(currentWindow(KSircTopLevel *)),
+	      this,SLOT(default_window(KSircTopLevel *)));
+      connect(wm, SIGNAL(changeChannel(QString, QString)),
+	      this,SLOT(recvChangeChannel(QString, QString)));
+    }
     emit made_toplevel(QString(server), str);
     wm->show();
   }

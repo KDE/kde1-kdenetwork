@@ -1,50 +1,23 @@
 #include "irclistitem.h"
 #include "iostream.h"
 
-ircListItem::ircListItem(QString s, const QColor c, QPixmap *p = 0, QListBox *lb = 0)
+ircListItem::ircListItem(QString s, const QColor c, QListBox *lb, QPixmap *p = 0)
   : QListBoxItem()
 {
 
   text = s;
   colour = c;
   pm = p;
+  parent_lb = lb;
 
   setText(s);
 
   rows = 1;
   linewidth = 0;
 
-
-  if(lb){
-    rows = 0;
-    uint length = (lb->width()-35) / lb->fontMetrics().width("X");
-    uint sChar = 0;
-    uint eChar = length;
-    uint eChar_h;
-    uint tlength = text.length();
-
-    while(sChar < tlength){
-      if(eChar < tlength){
-	eChar_h = text.findRev(' ', eChar);
-	if( !((eChar_h == (uint) -1) || (eChar_h < sChar)))
-	  eChar = eChar_h;
-      }
-      else{
-	eChar = tlength;
-      }
-      if((int) (eChar - sChar) > linewidth)
-	linewidth = eChar - sChar;
-      sChar = eChar + 1;
-      eChar += length;
-      rows++;
-    }
-    linewidth = lb->fontMetrics().width("X")*linewidth;
-    lineheight = lb->fontMetrics().lineSpacing();
-  }
-  else{
-    lineheight = 0;
-  }
-  //  cerr << linewidth << endl;
+  paint_text = new QStrList();
+  
+  setupPainterText();
 
 }
 
@@ -52,9 +25,38 @@ void ircListItem::paint(QPainter *p)
 {
   QPen pen = p->pen();
   p->setPen(colour);
-  QFontMetrics fm = p->fontMetrics();
-  int yPos;                       // vertical text position
-  int xPos;
+
+  if(pm)
+    p->drawPixmap(1,0,*pm);
+
+  char *txt;
+  int row = 0;
+  for(txt = paint_text->first(); txt != 0; txt = paint_text->next(), row++){
+    p->drawText(xPos,yPos+lineheight*row, txt);
+  }
+  p->setPen(pen);
+}
+
+int ircListItem::height(const QListBox *) const
+{
+  return rows*(lineheight) + 2;
+}
+
+int ircListItem::width(const QListBox *) const
+{
+  return linewidth;
+}
+
+int ircListItem::row()
+{
+  return rows;
+}
+
+void ircListItem::setupPainterText()
+{
+
+  lineheight = parent_lb->fontMetrics().lineSpacing();
+  QFontMetrics fm = parent_lb->fontMetrics();
 
   if(pm){
     if ( pm->height() < fm.height() )
@@ -62,7 +64,6 @@ void ircListItem::paint(QPainter *p)
     else
       yPos = pm->height()/2 - fm.height()/2 + fm.ascent(); 
 
-    p->drawPixmap(1,0,*pm);
     xPos = pm->width()+5;
   }
   else{
@@ -70,12 +71,11 @@ void ircListItem::paint(QPainter *p)
     xPos = 3;
   }
 
-  if(!lineheight){
-     lineheight = p->fontMetrics().lineSpacing();
-  }
+  paint_text->clear();
 
-  if(fm.width(text) > (p->window().width()-35)){
-    uint length = (p->window().width()-35) / fm.width("X");
+  if(fm.width(text) > (parent_lb->width()-35)){
+    uint length = (parent_lb->width()-35) / fm.width("X");
+    linewidth = length;
     uint sChar = 0;
     uint eChar = length;
     uint eChar_h;
@@ -89,8 +89,7 @@ void ircListItem::paint(QPainter *p)
       else{
 	eChar = text.length();
       }
-      //      cerr << sChar << '-' << eChar << '-' << eChar - sChar << endl;
-      p->drawText(xPos,yPos+lineheight*rows, text.mid(sChar, eChar - sChar));
+      paint_text->append(text.mid(sChar, eChar - sChar));
       sChar = eChar + 1;
       eChar += length;
       rows++;
@@ -98,39 +97,7 @@ void ircListItem::paint(QPainter *p)
   }
   else{
     rows = 1;
-    p->drawText(xPos,yPos, text);
+    linewidth = fm.width(text);
+    paint_text->append(text);
   }
-  //    p->drawText(pm->width()+5,yPos,text, text.length());
-  //    cerr << pm->width() << endl;
-  //  cerr << text << endl;
-  p->setPen(pen);
-}
-
-int ircListItem::height(const QListBox *lb) const
-{
-  //  if(pm)
-  //    return QMAX( pm->height(), lb->fontMetrics().lineSpacing() + 1 );
-  //  else
-
-  if(!lineheight)
-    return rows*(lb->fontMetrics().lineSpacing())+2;
-  else
-    return rows*(lineheight) + 2;
-}
-
-int ircListItem::width(const QListBox *lb) const
-{
-  //  if(pm)
-  //    return pm->width() + lb->fontMetrics().width(text) + 1;
-  //  else
-
-  if(linewidth > 0)
-    return linewidth;
-  else
-    return (lb->fontMetrics().width(text) + 1);
-}
-
-int ircListItem::row()
-{
-  return rows;
 }
