@@ -749,9 +749,8 @@ msgid "Replace..."
 msgstr "Erstatt..."
 
 #: kmcomposewin.cpp:477
-#, fuzzy
 msgid "&Spellcheck..."
-msgstr "KMail: Stavekontroll"
+msgstr "&Stavekontroll..."
 
 #: kmcomposewin.cpp:484
 msgid "&Urgent"
@@ -766,9 +765,8 @@ msgid "&Confirm read"
 msgstr "&Bekreft lesing"
 
 #: kmcomposewin.cpp:491
-#, fuzzy
 msgid "&Spellchecker..."
-msgstr "KMail: Stavekontroll"
+msgstr "&Stavekontroll..."
 
 #: kmcomposewin.cpp:494
 msgid "&Charsets..."
@@ -820,7 +818,7 @@ msgstr "&Sett inn fil"
 
 #: kmcomposewin.cpp:527
 msgid "Insert My &Public Key"
-msgstr ""
+msgstr "Sett inn min &offentlige nøkkel"
 
 #: kmcomposewin.cpp:532
 msgid "&Attach..."
@@ -839,9 +837,8 @@ msgid "&Attach"
 msgstr "&Vedlegg"
 
 #: kmcomposewin.cpp:558
-#, fuzzy
 msgid "Send message"
-msgstr "Sender melding: "
+msgstr "Send melding"
 
 #: kmcomposewin.cpp:563
 msgid "Compose new message"
@@ -961,7 +958,7 @@ msgstr "Velg signaturfil"
 
 #: kmcomposewin.cpp:2018
 msgid "Spellcheck - KMail"
-msgstr ""
+msgstr "Stavekontroll - KMail"
 
 #: kmcomposewin.cpp:2044
 msgid ""
@@ -1302,7 +1299,7 @@ msgstr "Varsel: Feil signatur fra"
 
 #: kmreaderwin.cpp:451
 msgid "unknown key ID"
-msgstr ""
+msgstr "ukjent nøkkel"
 
 #: kmreaderwin.cpp:701
 msgid "Attachment: "
@@ -1343,7 +1340,7 @@ msgstr "Passfrasen mangler."
 
 #: kpgp.cpp:286 kpgp.cpp:312 kpgp.cpp:325 kpgp.cpp:344 kpgp.cpp:361
 msgid "PGP Warning"
-msgstr ""
+msgstr "PGP-advarsel"
 
 #: kpgp.cpp:287
 msgid ""
@@ -1351,23 +1348,25 @@ msgid ""
 "recipients of this mail.\n"
 "Message will not be encrypted."
 msgstr ""
+"Kunne ikke finne offentlig nøkkel for\n"
+"mottageren av denne posten.\n"
+"Meldingen vil ikke bli kryptert."
 
 #: kpgp.cpp:296
 msgid "Could not find the public keys for\n"
-msgstr ""
+msgstr "Kunne ikke finne offentlig nøkkel for\n"
 
 #: kpgp.cpp:307
 msgid "These persons will not be able to\n"
-msgstr ""
+msgstr "Disse personene vil ikke kunne\n"
 
 #: kpgp.cpp:309
 msgid "This person will not be able to\n"
-msgstr ""
+msgstr "Denne personen vil ikke kunne\n"
 
 #: kpgp.cpp:311
-#, fuzzy
 msgid "decrypt the message."
-msgstr "kyrptert melding"
+msgstr "kyrpter meldingen."
 
 #: kpgp.cpp:326
 msgid ""
@@ -1375,26 +1374,33 @@ msgid ""
 "Do you wan't to try again, continue and\n"
 "leave the message unsigned, or cancel sending the message?"
 msgstr ""
+"Du skrev nettopp inn en ugyldig passfrase.\n"
+"Vil du prøve igjen, fortsette og la meldingen være usignert, eller vil\n"
+"du avbryte sendingen av meldingen?"
 
 #: kpgp.cpp:331
 msgid "Retry"
-msgstr ""
+msgstr "Prøv igjen"
 
 #: kpgp.cpp:342
 msgid ""
 "Do you wan't to encrypt anyway, leave the\n"
 "message as is, or cancel the message?"
 msgstr ""
+"Vil du kryptere likevel og la meldingen slik den er,\n"
+"eller vil du avbryte meldingen?"
 
 #: kpgp.cpp:346
 msgid "Encrypt"
-msgstr ""
+msgstr "Krypter"
 
 #: kpgp.cpp:359
 msgid ""
 "Do you wan't to leave the message as is,\n"
 "or cancel the message?"
 msgstr ""
+"Vil du la meldigen være slik den er,\n"
+"eller vil du avbryte meldingen?"
 
 #: kpgp.cpp:717
 msgid ""
@@ -1409,21 +1415,20 @@ msgid "PGP Security Check"
 msgstr "PGP-sikkerhetssjekk"
 
 #: kpgp.cpp:765
-#, fuzzy
 msgid "Identity"
-msgstr "Identitet..."
+msgstr "Identitet"
 
 #: kpgp.cpp:771
 msgid "PGP User Identity:"
-msgstr ""
+msgstr "PGP-brukeridentitet:"
 
 #: kpgp.cpp:782
 msgid "Store passphrase"
-msgstr ""
+msgstr "Lagre passfrase"
 
 #: kpgp.cpp:788
 msgid "Always encrypt to self"
-msgstr ""
+msgstr "Krypter alltid til deg selv"
 
 #: krnsender.cpp:60
 msgid "This server is read onlyyou can't post here!"
@@ -1615,7 +1620,7 @@ msgstr "Feil passfrase; kunne ikke signere"
 
 #: kpgpbase.cpp:354
 msgid "error running pgp"
-msgstr ""
+msgstr "feil under kjøring av pgp"
 
 #: kpgpbase.cpp:371 kpgpbase.cpp:662
 msgid "Bad pass Phrase; couldn't decrypt"
@@ -1623,45 +1628,35 @@ msgstr "Feil passfrase; kunne ikke dekryptere"
 
 #: kpgpbase.cpp:382 kpgpbase.cpp:673
 msgid "Do not have the secret key for this message"
-msgstr ""
+msgstr "Du har ikke sikkerhetsnøkkelen for denne meldingen"
 
 #: kpgpbase.cpp:410
 msgid "unknown key ID "
-msgstr ""
+msgstr "ukjent nøkkel-ID "
 
 #: kpgpbase.cpp:430
 msgid "??? (file ~/.pgp/pubring.pgp not found)"
-msgstr ""
+msgstr "??? (fil ~/.pgp/pubring.pgp finnes ikke)"
 
 #: kpgpbase.cpp:585
-#, fuzzy
 msgid "The passphrase you entered is invalid."
-msgstr "Passfrasen mangler."
+msgstr "Passfrasen du skrev inn er ugyldig."
 
 #: kpgpbase.cpp:611
 msgid ""
 "The key(s) you wan't to encrypt your message\n"
 "to are not trusted. No encryption done."
 msgstr ""
+"Nøklene du vil kryptere meldingen din til har ikke tillitt. Ingen\n"
+"kryptering blir utført."
 
 #: kpgpbase.cpp:614
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The following key(s) are not trusted:\n"
 "%s\n"
 "They will not be able to decrypt the message"
 msgstr ""
-"offentlig nøkkel for %s ble ikke funnet.\n"
-"Denne personen vil ikke kunne dekryptere meldingen."
-
-#~ msgid "Error during PGP:"
-#~ msgstr "Feil under PGP:"
-
-#~ msgid "Message signed by"
-#~ msgstr "Melding signert av"
-
-#~ msgid "Message has a bad signature from"
-#~ msgstr "Melding har feil signatur fra"
-
-#~ msgid "End PGP signed message"
-#~ msgstr "Slutt PGP-signert melding"
+"Følgende nøkkeler har ikke tillitt:\n"
+"%s\n"
+"De vil ikke kunne dekryptere meldingen"

@@ -1053,7 +1053,6 @@ msgstr ""
 "støtter høyere hastigheter)."
 
 #: general.cpp:375
-#, fuzzy
 msgid ""
 "To prevent other programs from accessing the\n"
 "modem while a connection is established, a\n"
@@ -1065,11 +1064,14 @@ msgid ""
 "\n"
 "<b>Default</b>: On"
 msgstr ""
-"For å ungå at andre programmer prøver å bruke\n"
+"For å unngå at andre programmer prøver å bruke\n"
 "modemet mend forbindelsen er opprettet, vil\n"
 "en fil bli opprettet for å indikere at\n"
-"modemeter i bruk. Her kan du velge katalog\n"
-"hvor denne filen er opprettet."
+"modemet er i bruk. På Linux vil filen for eksempel 
+være <i>/var/lock/LCK..ttyS1</i>\n"
+"Her kan du velge katalog hvor denne filen er opprettet."
+"\n"
+"<b>Standard</b>: På"
 
 #: general.cpp:386
 msgid "Modem Timeout:"
@@ -1149,7 +1151,9 @@ msgid ""
 msgstr ""
 "Dette bestemmer hvordan <i>kppp</i> påviser at modemet\n"
 "ikke svarer. Dette skal ikke endres hvis du ikke har problemer\n"
-"med denne innstillingen."
+"med denne innstillingen.\n"
+"\n"
+"<b>Standard</b>: av"
 
 #: general.cpp:553
 msgid "Modem Commands"
