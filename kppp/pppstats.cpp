@@ -67,6 +67,7 @@
 #include <net/pppio.h>		/* SVR4, Solaris 2, etc. */
 
 #else
+#include <sys/time.h>
 #include <sys/socket.h>
 #include <net/if.h>
 
