@@ -147,3 +147,14 @@ for the first substring, etc.  In this case, $1 gets the nick/user-info
 of the person killed.  $2 is then filled with the name of the killer.
 Between the () we have the reason for the kill.  Here the ( and \( get
 a little confusing.  Remember \( matchin the actual character '('.
+
+7. How to colourize your life. Ok, you want to add some colour to ksirc.  See
+README.colours for colour info, but here's a filter ruls to highlight the nick
+between <NICK> on each line:
+
+Match: ^(?:~\S+~)<\S+>
+From: <(\S+)>
+To: <!4$$1!c>
+
+Takes the nick and adds colour #4 between the two <> !c clears the colour.
+

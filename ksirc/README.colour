@@ -1,0 +1,30 @@
+KSirc does Colours?
+
+KSirc follows the colour scheme used by mIrc and a slight modification
+for more powerfull in house use.
+
+<fg> == foreground
+<bg> == background
+[] == optional
+
+** mIrc compatibility:
+
+Format: 0x03<fg>[,<bg>]   sets the foreground and background
+        0x03              resets to defaults for THAT line
+        
+        
+Nothing special is done, there's no way to enter mirc colours right now.
+
+** KSirc native:
+
+Format: !<fg>[,<bg>]      sets the foreground and background
+        !c                resets tp defaults
+        !b                sets bold font (not implemented yet)
+        !u                sets underline (not implemented yet)
+        !i                sets italics
+        
+Why did I change ksirc to use ! instead of 0x03? Well, it's hard to
+use 0x03 in scripts and not all C functions seem to like it.
+!<letter> also alows more commands while not stomping on mirc's future
+changes.
+

@@ -116,7 +116,8 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
   QColorGroup cg = QColorGroup(colorGroup().foreground(), colorGroup().mid(), 
     			       colorGroup().light(), colorGroup().dark(),
   			       colorGroup().midlight(), 
-  			       colorGroup().text(), *kSircConfig->colour_background); 
+  			       *kSircConfig->colour_text, 
+			       *kSircConfig->colour_background); 
   mainw->setPalette(QPalette(cg,cg,cg));   // colours.  Font it also hard coded
   mainw->setMinimumWidth(width() - 100);
   //  gm2->addWidget(mainw, 10);               // which is bad bad.
@@ -125,6 +126,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
   //  nicks->setMaximumWidth(100);             // Would be nice if it was flat and
   //  nicks->setMinimumWidth(100);             // matched the main text window
   nicks->setPalette(QPalette(cg,cg,cg));   // HARD CODED COLOURS AGAIN!!!!
+  nicks->setFont(kSircConfig->defaultfont);
   //  gm2->addWidget(nicks, 0);
 
   pan->activate(mainw, nicks);
@@ -868,7 +870,7 @@ void KSircTopLevel::initPopUpMenu()
 					 0, UserControlMenu::Text));
     user_menu.append(new UserControlMenu); // Defaults to a seperator
     user_menu.append(new UserControlMenu("Kick",
-					 "/sk %s",
+					 "/kick %s",
 					 CTRL + Key_K,
 					 UserControlMenu::Text,
 					 TRUE));
@@ -1029,12 +1031,14 @@ void KSircTopLevel::control_message(int command, QString str)
     break;
   case REREAD_CONFIG:
     mainw->setFont(kSircConfig->defaultfont);
+    nicks->setFont(kSircConfig->defaultfont);
     emit changeSize();
     {
       QColorGroup cg = QColorGroup(colorGroup().foreground(), colorGroup().mid(), 
 				   colorGroup().light(), colorGroup().dark(),
 				   colorGroup().midlight(), 
-				   colorGroup().text(), *kSircConfig->colour_background); 
+				   *kSircConfig->colour_text, 
+				   *kSircConfig->colour_background); 
       mainw->setPalette(QPalette(cg, cg, cg));
       nicks->setPalette(QPalette(cg, cg, cg));
       linee->setPalette(QPalette(cg, cg, cg));
