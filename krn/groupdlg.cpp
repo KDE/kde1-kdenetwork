@@ -316,11 +316,16 @@ void Groupdlg::openGroup (QString name)
     }
     else
     {
+        i=subscr.find(&n);
+        groups.append(subscr.at(i));
+        openGroup(name);
+        /*
         qApp->setOverrideCursor(arrowCursor);
         KMsgBox:: message (0, klocale->translate("Sorry!"),
                            klocale->translate("That newsgroup is not in the current active file\n Krn can't handle this gracefully right now"),
                            KMsgBox::INFORMATION);
         qApp->restoreOverrideCursor();
+        */
     }
 }
 
