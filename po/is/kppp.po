@@ -2,7 +2,6 @@
 # Copyright (C) 1999 Free Software Foundation, Inc.
 # Thorarinn R. Einarsson <thori@mindspring.com>, 1998
 #
-
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
@@ -491,7 +490,7 @@ msgid ""
 "\n"
 "Very usefull for fetching mail and news"
 msgstr ""
-"Gerir þér kleyft að keyra forrit <b>eftir</b> að\n" 
+"Gerir þér kleyft að keyra forrit <b>eftir</b> að\n"
 "tengt er.  Forritið sjálft er keyrt þegar\n"
 "nettengingu hefur verið komið á.\n"
 "\n"
@@ -687,7 +686,6 @@ msgstr ""
 "\n"
 "Til að gefa upp nafnamiðlara sláðu þá inn IP\n"
 "vistfangið og smelltu síðan á <b>Bæta við</b>."
-
 
 #: edit.cpp:465
 msgid ""
@@ -892,7 +890,7 @@ msgid ""
 "was established. Very useful, so you \n"
 "should turn this on"
 msgstr ""
-"Þegar þessi möguleiki er valinn þá sést klukkan\n" 
+"Þegar þessi möguleiki er valinn þá sést klukkan\n"
 "í titilslánni og sýnir þar hvað langur tími\n"
 "er liðinn síðan tenging byrjaði. Þetta er mjög\n"
 "gagnlegt þannig að þú ættir að nota þetta."
@@ -978,7 +976,6 @@ msgstr ""
 "               (thori@mindspring.com)\n"
 "Þessu forriti er dreyft samkvæmt GNU GPL\n"
 "höfundarréttinum (GNU General Public License)."
-
 
 #: general.cpp:238
 msgid "Serial device"
@@ -1443,7 +1440,8 @@ msgid ""
 msgstr ""
 "Því miður dó hjálparaðgerð Kppp.\n"
 "\n"
-"Það er því engin ástæða fyrir Kppp að halda áfram þannig að við lokum því bara."
+"Það er því engin ástæða fyrir Kppp að halda áfram þannig að við lokum því "
+"bara."
 
 #: main.cpp:949
 #, c-format
@@ -1499,7 +1497,6 @@ msgstr ""
 "staðsetningu módemsins á módemflipanum\n"
 "í uppsetningarglugganum.\n"
 " Þakka þér."
-
 
 #: main.cpp:999
 msgid ""
@@ -1697,7 +1694,6 @@ msgstr ""
 "\n"
 "chown {ÞittNotandanafn} .kde/share/config/kppprc"
 
-
 #: modeminfo.cpp:38
 msgid "ATI Query"
 msgstr "ATI spurn"
@@ -1875,38 +1871,31 @@ msgstr "(Engin)"
 msgid "kppp: no rulefile specified\n"
 msgstr "Kppp: Engin regluskrá tilgreind\n"
 
-
 #: ruleset.cpp:550
 #, c-format
 msgid "kppp: rulefile \"%s\" not found\n"
 msgstr "Kppp: Regluskrá \"%s\" fannst ekki\n"
 
-
 #: ruleset.cpp:555
 msgid "kppp: rulefiles must have the extension \".rst\"\n"
 msgstr "Kppp: Regluskrár verða að hafa endinguna \".rst\"\n"
 
-
 #: ruleset.cpp:564
 msgid "kppp: error parsing the ruleset\n"
 msgstr "Kppp: Villa við lestur á reglum\n"
-
 
 #: ruleset.cpp:569
 #, c-format
 msgid "kppp: parse error in line %d\n"
 msgstr "Kppp: Lestrarvilla í línu %d\n"
 
-
 #: ruleset.cpp:575
 msgid "kppp: rulefile does not contain a default rule\n"
 msgstr "Kppp: Regluskrá hefur ekki sjálfgefna reglu\n"
 
-
 #: ruleset.cpp:580
 msgid "kppp: rulefile does not contain a \"name=...\" line\n"
 msgstr "Kppp: Regluskrá hefur enga \"name=...\" línu\n"
-
 
 #: ruleset.cpp:584
 msgid "kppp: rulefile is ok\n"
@@ -1944,7 +1933,6 @@ msgstr ""
 "eða\n"
 "  * Bættu PPP við kjarnann\n"
 
-
 #: runtests.cpp:394
 msgid ""
 "Cannot find the pppd-daemon!\n"
@@ -1956,7 +1944,6 @@ msgstr ""
 "\n"
 "Athugaðu hvort þú sért með hann á\n"
 "á þessari vél og að slóðin sé rétt.\n"
-
 
 #: runtests.cpp:406
 msgid ""
@@ -1972,7 +1959,6 @@ msgstr ""
 "Hafðu samband við kerfisstjórann\n"
 "og fáðu aðgang að pppd."
 
-
 #: runtests.cpp:417 runtests.cpp:432
 msgid ""
 "pppd is not properly installed!\n"
@@ -1987,7 +1973,6 @@ msgstr ""
 "settan á.  Hafðu samband við kerfisstjóra\n"
 "til að laga þetta."
 
-
 #: runtests.cpp:466
 msgid ""
 "kppp has detected a 'lock' option in /etc/ppp/options.\n"
@@ -1998,10 +1983,9 @@ msgid ""
 msgstr ""
 "Kppp fann 'lock' læsistillingu í /etc/ppp/options.\n"
 "\n"
-"Þú verður að láta fjarlægja þetta því Kppp sér sjálft um "
-"allar tækjalæsingar.\n"
+"Þú verður að láta fjarlægja þetta því Kppp sér sjálft um allar "
+"tækjalæsingar.\n"
 "Hafðu samband við kerfisstjóra."
-
 
 #: runtests.cpp:490
 msgid ""
@@ -2031,8 +2015,8 @@ msgid ""
 "connection.\n"
 "Please use the terminal-based login to verify"
 msgstr ""
-"Þú ræstir ppp púkann áður en þjónninn var tilbúinn með PPP tengingu "
-"handa þér.\n"
+"Þú ræstir ppp púkann áður en þjónninn var tilbúinn með PPP tengingu handa "
+"þér.\n"
 "Tengdu með skjáhermisaðferðinni til að staðfesta þetta."
 
 #: ppplog.cpp:141
@@ -2048,8 +2032,8 @@ msgid ""
 "You shouldn't pass 'lock' as an argument to pppd. Check /etc/ppp/options and "
 "~/.ppprc"
 msgstr ""
-"Þú ættir ekki að senda stillinguna 'lock' á ppp púkann. Skoðaðu /etc/ppp/options og"
-"~/.ppprc"
+"Þú ættir ekki að senda stillinguna 'lock' á ppp púkann. Skoðaðu "
+"/etc/ppp/options og~/.ppprc"
 
 #: ppplog.cpp:151
 msgid ""
@@ -2095,7 +2079,7 @@ msgstr ""
 "KPPP gat ekki útbúið PPP færslu.  Það eru líklegt að\n"
 "ppp púkinn hafi verið ræstur án \"debug\" möguleikans.\n"
 "\n"
-"Án þessa möguleika er mjög erfitt að finna út hverskonar\n" 
+"Án þessa möguleika er mjög erfitt að finna út hverskonar\n"
 "PPP vandamál er um að ræða og því er betra að nota sér þetta.\n"
 "\n"
 "Á ég að stilla þetta fyrir þig núna?"
@@ -2109,7 +2093,7 @@ msgid ""
 msgstr ""
 "\"debug\" möguleikanum hefur nú verið bætt við.\n"
 "Þú ættir því að prófa aftur að tengja.  Ef það\n"
-"mistekst aftur, þá færðu færslu í PPP færsluskrá\n" 
+"mistekst aftur, þá færðu færslu í PPP færsluskrá\n"
 "sem gerir þér kleyft að athuga nánar hvað gerðist."
 
 #: ppplog.cpp:232
@@ -2129,14 +2113,15 @@ msgid "Select modem type..."
 msgstr "Veldu gerð módems..."
 
 #: modemdb.cpp:48
+#, fuzzy
 msgid ""
-"To setup your modem, first choose it´s vendor in the list to the left, and "
+"To setup your modem, first choose its vendor in the list to the left, and "
 "then select the model from the right list. If you don´t know which modem you "
-"have,you can try out one of the \"Generic\" modems."
+"have, you can try out one of the \"Generic\" modems."
 msgstr ""
-"Til að stilla módemið, veldu fyrst framleiðanda á listanum til vinstri og"
-"síðan módemið sjálft á listanum til hægri.  Ef þú veist ekki hvernig módem"
-"þú ert með, veldu þá \"Venjulegt\" módem."
+"Til að stilla módemið, veldu fyrst framleiðanda á listanum til vinstri "
+"ogsíðan módemið sjálft á listanum til hægri.  Ef þú veist ekki hvernig "
+"módemþú ert með, veldu þá \"Venjulegt\" módem."
 
 #: modemdb.cpp:151 modemdb.cpp:153 modemdb.cpp:223 modemdb.cpp:238
 msgid "<Generic>"
@@ -2145,4 +2130,3 @@ msgstr "<Venjulegt>"
 #: modemdb.cpp:218
 msgid "Hayes(tm) compatible modem"
 msgstr "Hayes(tm) staðlað módem"
-
