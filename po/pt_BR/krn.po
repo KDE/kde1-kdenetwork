@@ -741,9 +741,8 @@ msgid "Replace..."
 msgstr "Trocar..."
 
 #: kmcomposewin.cpp:477
-#, fuzzy
 msgid "&Spellcheck..."
-msgstr "KMail: checagem ortográfica"
+msgstr "&Checagem ortográfica..."
 
 #: kmcomposewin.cpp:484
 msgid "&Urgent"
@@ -758,9 +757,8 @@ msgid "&Confirm read"
 msgstr "&Confirmar leitura"
 
 #: kmcomposewin.cpp:491
-#, fuzzy
 msgid "&Spellchecker..."
-msgstr "KMail: checagem ortográfica"
+msgstr "&Verificador ortográfico..."
 
 #: kmcomposewin.cpp:494
 msgid "&Charsets..."
@@ -812,7 +810,7 @@ msgstr "&Inserir Arquivo"
 
 #: kmcomposewin.cpp:527
 msgid "Insert My &Public Key"
-msgstr ""
+msgstr "Inserir minha Chave &Pública"
 
 #: kmcomposewin.cpp:532
 msgid "&Attach..."
@@ -831,9 +829,8 @@ msgid "&Attach"
 msgstr "&Anexar"
 
 #: kmcomposewin.cpp:558
-#, fuzzy
 msgid "Send message"
-msgstr "Mandando mensagem: "
+msgstr "Remeter mensagem"
 
 #: kmcomposewin.cpp:563
 msgid "Compose new message"
@@ -953,7 +950,7 @@ msgstr "Escolher Arquivo de Assinatura"
 
 #: kmcomposewin.cpp:2018
 msgid "Spellcheck - KMail"
-msgstr ""
+msgstr "Verificação Ortográfica - KMail"
 
 #: kmcomposewin.cpp:2044
 msgid ""
@@ -1294,7 +1291,7 @@ msgstr "Aviso: Assinatura inválida de"
 
 #: kmreaderwin.cpp:451
 msgid "unknown key ID"
-msgstr ""
+msgstr "ID da chave desconhecida"
 
 #: kmreaderwin.cpp:701
 msgid "Attachment: "
@@ -1335,58 +1332,57 @@ msgstr "A frase-senha está faltando."
 
 #: kpgp.cpp:286 kpgp.cpp:312 kpgp.cpp:325 kpgp.cpp:344 kpgp.cpp:361
 msgid "PGP Warning"
-msgstr ""
+msgstr "Aviso do PGP"
 
 #: kpgp.cpp:287
 msgid ""
 "Could not find the public keys for the\n"
 "recipients of this mail.\n"
 "Message will not be encrypted."
-msgstr ""
+msgstr "Não pude encontrar as chaves públicas dos\ndestinatários desta mensagem.\nA mensagem não será encriptada."
 
 #: kpgp.cpp:296
 msgid "Could not find the public keys for\n"
-msgstr ""
+msgstr "Não pude encontrar as chaves públicas de\n"
 
 #: kpgp.cpp:307
 msgid "These persons will not be able to\n"
-msgstr ""
+msgstr "Estas pessoas não poderão\n"
 
 #: kpgp.cpp:309
 msgid "This person will not be able to\n"
-msgstr ""
+msgstr "Esta pessoa não poderá\n"
 
 #: kpgp.cpp:311
-#, fuzzy
 msgid "decrypt the message."
-msgstr "encriptar mensagem"
+msgstr "decriptar a mensagem."
 
 #: kpgp.cpp:326
 msgid ""
 "You just entered an invalid passphrase.\n"
 "Do you wan't to try again, continue and\n"
 "leave the message unsigned, or cancel sending the message?"
-msgstr ""
+msgstr "Você digitou uma frase-senha inválida.\nVocê quer tentar novamente, continuar e\ndeixar a mensagem sem assinatura, ou\ncancelar a mensagem ?"
 
 #: kpgp.cpp:331
 msgid "Retry"
-msgstr ""
+msgstr "Tentar novamente"
 
 #: kpgp.cpp:342
 msgid ""
 "Do you wan't to encrypt anyway, leave the\n"
 "message as is, or cancel the message?"
-msgstr ""
+msgstr "Você quer encriptar de qualquer maneira, deixar a\nmensagem como está, ou cancelar a mensagem ?"
 
 #: kpgp.cpp:346
 msgid "Encrypt"
-msgstr ""
+msgstr "Encriptar"
 
 #: kpgp.cpp:359
 msgid ""
 "Do you wan't to leave the message as is,\n"
 "or cancel the message?"
-msgstr ""
+msgstr "Você quer deixar a mensagem como está,\nou cancelá-la ?"
 
 #: kpgp.cpp:717
 msgid ""
@@ -1401,21 +1397,20 @@ msgid "PGP Security Check"
 msgstr "Checagem de segurança PGP"
 
 #: kpgp.cpp:765
-#, fuzzy
 msgid "Identity"
-msgstr "Identidade..."
+msgstr "Identidade"
 
 #: kpgp.cpp:771
 msgid "PGP User Identity:"
-msgstr ""
+msgstr "Identidade do usuário PGP:"
 
 #: kpgp.cpp:782
 msgid "Store passphrase"
-msgstr ""
+msgstr "Armazenar frase-senha"
 
 #: kpgp.cpp:788
 msgid "Always encrypt to self"
-msgstr ""
+msgstr "Sempre encriptar para si"
 
 #: krnsender.cpp:60
 msgid "This server is read onlyyou can't post here!"
@@ -1607,7 +1602,7 @@ msgstr "Frase-senha inválida; impossível assinar"
 
 #: kpgpbase.cpp:354
 msgid "error running pgp"
-msgstr ""
+msgstr "erro na execução do pgp"
 
 #: kpgpbase.cpp:371 kpgpbase.cpp:662
 msgid "Bad pass Phrase; couldn't decrypt"
@@ -1615,66 +1610,34 @@ msgstr "Frase-senha inválida; impossível decriptar"
 
 #: kpgpbase.cpp:382 kpgpbase.cpp:673
 msgid "Do not have the secret key for this message"
-msgstr ""
+msgstr "Não usar a chave secreta para esta mensagem"
 
 #: kpgpbase.cpp:410
 msgid "unknown key ID "
-msgstr ""
+msgstr "ID da chave desconhecida "
 
 #: kpgpbase.cpp:430
 msgid "??? (file ~/.pgp/pubring.pgp not found)"
-msgstr ""
+msgstr "??? (arquivo ~/.pgp/pubring.pgp não encontrado)"
 
 #: kpgpbase.cpp:585
-#, fuzzy
 msgid "The passphrase you entered is invalid."
-msgstr "A frase-senha está faltando."
+msgstr "A frase-senha que você digitou é inválida."
 
 #: kpgpbase.cpp:611
 msgid ""
 "The key(s) you wan't to encrypt your message\n"
 "to are not trusted. No encryption done."
-msgstr ""
+msgstr "A(s) chave(s) com que você quer encriptar sua mensagem\n"
+       "não são confiáveis. A encriptação não foi feita."
 
 #: kpgpbase.cpp:614
-#, fuzzy, c-format
 msgid ""
 "The following key(s) are not trusted:\n"
 "%s\n"
 "They will not be able to decrypt the message"
 msgstr ""
-"Chave pública para %s não encontrada.\n"
-"Esta pessoa não poderá decriptar a mensagem."
+"A(s) seguinte(s) chave(s) não são confiáveis:\n"
+"%s\n"
+"Elas não serão capazes de decriptar a mensagem"
 
-#~ msgid "Error during PGP:"
-#~ msgstr "Erro durante PGP:"
-
-#~ msgid "Message signed by"
-#~ msgstr "Mensagem assinada por"
-
-#~ msgid "Message has a bad signature from"
-#~ msgstr "Mensagem tem uma assinatura inválida de"
-
-#~ msgid "End PGP signed message"
-#~ msgstr "Fim de mensagem PGP assinada"
-
-#~ msgid "Print"
-#~ msgstr "Imprimir"
-
-#~ msgid "KRN - Decoder"
-#~ msgstr "KRN - Decodificador"
-
-#~ msgid "ID"
-#~ msgstr "ID"
-
-#~ msgid "Destination directory:"
-#~ msgstr "Diretório de destino:"
-
-#~ msgid "Decode All"
-#~ msgstr "Decodificar Tudo"
-
-#~ msgid "KRN-Decoder"
-#~ msgstr "KRN-Decodificador"
-
-#~ msgid "Unsupported encoding type: %s."
-#~ msgstr "Tipo de codificação não suportado : %s."
