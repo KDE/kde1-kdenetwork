@@ -52,6 +52,7 @@ XPPPWidget*	p_xppp;
 KApplication*	app;
 DockWidget*     dock_widget;
 QString 	cmdl_account;
+QPixmap *miniIcon = 0;
 
 bool	have_cmdl_account;
 bool 	pppd_has_died = false;
@@ -240,6 +241,9 @@ int main( int argc, char **argv ) {
 
   KApplication a(argc, argv,"kppp");
 
+  // load mini-icon
+  miniIcon = new QPixmap(a.getMiniIcon());
+
   // make sure that nobody can read the password from the
   // config file
   QString configFile = a.localconfigdir() + "/" + a.appName() + "rc";
@@ -407,6 +411,7 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
   connect(this,SIGNAL(cmdl_start()),this,SLOT(connectbutton())); 
 
   con_win = new ConWindow(0,"conw",this);
+  KWM::setMiniIcon(con_win->winId(), *miniIcon);
   con_win->setGeometry(QApplication::desktop()->width()/2-160,
 		    QApplication::desktop()->height()/2-55,
 		    320,110);
@@ -422,6 +427,7 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
   dock_widget = new DockWidget("dockw");
 
   debugwindow = new DebugWidget(0,"debugwindow");
+  KWM::setMiniIcon(debugwindow->winId(), *miniIcon);
   debugwindow->setGeometry(QApplication::desktop()->width()/2+190,
 		    QApplication::desktop()->height()/2-55,
 		    debugwindow->width(),debugwindow->height());
@@ -431,6 +437,7 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
 
   resetaccounts();
   con = new ConnectWidget(0, "con");
+  KWM::setMiniIcon(con->winId(), *miniIcon);
   connect(this, SIGNAL(begin_connect()),con, SLOT(preinit()));
   con->setGeometry(QApplication::desktop()->width()/2-175,
 		    QApplication::desktop()->height()/2-55,
