@@ -1,0 +1,198 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 1998-04-05 14:26+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Case Roole <cjr@xs4all.nl>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ENCODING\n"
+
+#: knu.cpp:132 knu.cpp:275
+msgid "&Ping"
+msgstr ""
+
+#: knu.cpp:141 knu.cpp:281
+msgid "&Traceroute"
+msgstr ""
+
+#: knu.cpp:150 knu.cpp:287
+msgid "Host &resolution"
+msgstr ""
+
+#: knu.cpp:163 knu.cpp:293
+msgid "&Finger"
+msgstr ""
+
+#: knu.cpp:174
+msgid ""
+"There is no command enabled\n"
+"in the configuration file.\n"
+"\n"
+"So I can't do anything...\n"
+msgstr ""
+"Er is geen commando aangezet\n"
+"in het configuratie bestand\n"
+"\n"
+"Daarom kan ik niets doen...\n"
+
+
+#: knu.cpp:219
+msgid "&New window"
+msgstr "&Nieuw venster"
+
+#: knu.cpp:222
+msgid "&Close window"
+msgstr "&Sluit venster"
+
+#: knu.cpp:233
+msgid "Select &all"
+msgstr "Kies &Alles"
+
+#: knu.cpp:236
+msgid "C&lear output window"
+msgstr "Maak het output venster schoon"
+
+#: knu.cpp:239
+msgid "P&references..."
+msgstr "Voo&rkeuren..."
+
+#: knu.cpp:249
+msgid "About &Qt"
+msgstr "Over &Qt"
+
+#: knu.cpp:432
+msgid "About..."
+msgstr "Info..."
+
+#: CommandDlg.cpp:116
+msgid "H&ost:"
+msgstr ""
+
+#: CommandDlg.cpp:125
+msgid "&Go!"
+msgstr "&Start!"
+
+#: CommandDlg.cpp:135
+msgid "&Stop"
+msgstr ""
+
+#: CommandDlg.cpp:151
+msgid ""
+"This command binary was not found. \n"
+"You can give its path in the Edit->Preferences... menu."
+msgstr ""
+"Dit programma werd niet gevonden.\n"
+"U kunt een pad specificeren in het Wijzig->Voorkeuren... menu."
+
+#: CommandDlg.cpp:336
+#, c-format
+msgid ""
+"\n"
+"You have a problem in your\n"
+"%s/%src\n"
+"configuration file.\n"
+"In the [%s] group,\n"
+"I can't find a valid \"path=\" entry.\n"
+"\n"
+"Please use Edit->Preferences... menu\n"
+"to configure it again.\n"
+msgstr ""
+"\n"
+"U hebt een probleem met uw\n"
+"%s/%src\n"
+"configuratie bestand.\n"
+"In de [%s] groep,\n"
+"Ik kan geen geldige \"path=\" ingang vinden.\n"
+"\n"
+"Gebruik a.u.b. het Wijzig->Voorkeuren... menu\n"
+"om het weer in te stellen.\n"
+
+
+#: CommandDlg.cpp:345
+msgid "Error in pathname"
+msgstr "Fout in pad naam"
+
+#: CommandDlg.cpp:478
+msgid "Binary"
+msgstr "Binair"
+
+#: CommandDlg.cpp:486
+msgid "Path&name:"
+msgstr "Padnaam:"
+
+#: CommandDlg.cpp:495
+msgid "Additional &arguments:"
+msgstr "Verdere &argumenten:"
+
+#: CommandDlg.cpp:520
+msgid "This command had been disabled in the configuration file."
+msgstr "Dit commando is uitgezet in het configuratie bestand."
+
+#: OptionsDlg.cpp:68
+msgid " - configuration"
+msgstr " - configuratie"
+
+#: PingDlg.cpp:94 TracerouteDlg.cpp:95
+msgid "Make host &name resolution"
+msgstr "Doe een host &naam resolutie"
+
+#: TracerouteDlg.cpp:112
+msgid "&Maximum number of hops:"
+msgstr "&Maximaal aantal sprongen:"
+
+#: HostDlg.cpp:105
+msgid "address (A)"
+msgstr "adres (A)"
+
+#: HostDlg.cpp:106
+msgid "name (PTR)"
+msgstr "naam (PTR)"
+
+#: HostDlg.cpp:107
+msgid "name server (NS)"
+msgstr "naam server (NS)"
+
+#: HostDlg.cpp:108
+msgid "mail exchanger (MX)"
+msgstr ""
+
+#: HostDlg.cpp:109
+msgid "alias (CNAME)"
+msgstr ""
+
+#: HostDlg.cpp:110
+msgid "start of authority (SOA)"
+msgstr ""
+
+#: HostDlg.cpp:111
+msgid "any record (ANY)"
+msgstr ""
+
+#: HostDlg.cpp:117
+msgid "Se&arch for:"
+msgstr "Zoek naar:"
+
+#: HostDlg.cpp:129 HostDlg.cpp:268
+msgid "default server"
+msgstr "standaard server"
+
+#: HostDlg.cpp:138
+msgid "Ser&ver:"
+msgstr ""
+
+#: FingerDlg.cpp:68
+msgid "User:"
+msgstr "Gebruiker:"
+
+#: FingerDlg.cpp:86
+msgid "Server:"
+msgstr ""
+
+
