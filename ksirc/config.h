@@ -4,7 +4,7 @@
 #include <qcolor.h>
 #include <qfont.h>
 
-#define KSIRC_VERSION "980825"
+#define KSIRC_VERSION "980901"
 
 class global_config {
  public:
