@@ -220,7 +220,7 @@ public:
   const char* modemInitResp();
   void setModemInitResp(const char *);
 
-  int modemInitDelay();
+  const int modemInitDelay();
   void setModemInitDelay(int);
 
   const char* modemDialStr();

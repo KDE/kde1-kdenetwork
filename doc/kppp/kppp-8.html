@@ -35,9 +35,11 @@ pitfalls.
 </LI>
 <LI> Make sure that your /etc/ppp/options file exists, but is empty!
 </LI>
-<LI> Make sure that you DON'T use the options "lock" as an argument
-for pppd (kppp is already taking care of device locking )</LI>
-<LI> Remove the "lock" option from your /etc/ppp/options file!
+<LI> Make sure that you DON'T use the option "lock" as an argument
+for pppd (kppp is already taking care of device locking )
+</LI>
+<LI> Remove the "lock" option from your <CODE> /etc/ppp/options </CODE>
+and <CODE> ~/.ppprc </CODE> files!
 </LI>
 <LI> Make sure you set the right permission. In case of trouble
 you might want to run it as root first and then later, when
@@ -45,7 +47,20 @@ everything is working o.k give it less harmful permission if you can not
 afford to run kppp setuid root. The proper way to proceed would probably
 be creating a "modem" group.
 </LI>
+<LI> You might be launching pppd too early, i.e. before the remote server is
+ready to negotiate a PPP connection. If you are using a login script, you
+should use the built-in terminal to verify your login procedure. Some 
+providers will require you to issue a simple "Send" or "Send ppp" to
+launch PPP. Some users even reported, that they had to append "Pause 1" or
+"Pause 2" to their script to solve timing conflicts.
+</LI>
 </UL>
+<P>If nothing helps, you might obtain some debugging info from your systems log by issuing:
+<BLOCKQUOTE><CODE>
+<PRE>
+% tail /var/log/messages
+</PRE>
+</CODE></BLOCKQUOTE>
 <P>
 <H4>kppp tells me ``Sorry, can't open the modem''.</H4>
 

@@ -361,7 +361,7 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
   // execute the script
 
   if(vmain == 2) {
-    if(!expecting && !pausing) {
+    if(!expecting && !pausing && !scanning) {
 
       timeout_timer->stop();
       timeout_timer->start(scriptTimeout);
@@ -381,6 +381,22 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
 	scriptindex++;
         return;
       }
+
+      if(strcmp(gpppdata.scriptType(scriptindex), "Save") == 0) {
+	QString bm = klocale->translate("Saving ");
+	bm += gpppdata.script(scriptindex);
+	messg->setText(bm);
+	p_xppp->debugwindow->statusLabel(bm);
+
+	if(stricmp(gpppdata.script(scriptindex), "password") == 0) {
+	  gpppdata.setPassword(scanvar.data());
+	  firstrunPW = true;
+	}
+
+	scriptindex++;
+        return;
+      }
+
 
       if(strcmp(gpppdata.scriptType(scriptindex), "Send") == 0) {
 	QString bm = klocale->translate("Sending ");
@@ -823,8 +839,8 @@ void ConnectWidget::readtty() {
       scanning = false;
 
       int vstart = scanbuffer.find( scanstr ) + scanstr.length();
-      scanvar = scanbuffer.mid( vstart, readbuffer.length() - vstart);
-      scanvar.stripWhiteSpace();
+      QString tmp = scanbuffer.mid( vstart, readbuffer.length() - vstart);
+      scanvar = tmp.stripWhiteSpace().copy();
 
       // Show the Variabel content in the debug window
       QString sv = klocale->translate("Scan Var: ");
@@ -1540,11 +1556,11 @@ void add_domain(const char *domain) {
 	        && !resolv[j].contains("#entry disabled by kppp")) {
 
           write(fd, "# ", 2);
-	  write(fd, resolv[j], resolv[j].length());
+	  write(fd, resolv[j].data(), resolv[j].length());
           write(fd, " \t#entry disabled by kppp\n", 26);
 	}
 	else {
-	  write(fd, resolv[j], resolv[j].length());
+	  write(fd, resolv[j].data(), resolv[j].length());
 	  write(fd, "\n", 1);
 	}
       }
@@ -1596,11 +1612,11 @@ void removedns() {
       for(int j=0; j < i; j++) {
 	if(resolv[j].contains("#kppp temp entry")) continue;
 	if(resolv[j].contains("#entry disabled by kppp")){
-	  write(fd, ((const char*)resolv[j])+2, resolv[j].length() - 27);
+	  write(fd, resolv[j].data()+2, resolv[j].length() - 27);
 	  write(fd, "\n", 1);
 	}
 	else{
-	  write(fd, resolv[j], resolv[j].length());
+	  write(fd, resolv[j].data(), resolv[j].length());
 	  write(fd, "\n", 1);
 	}
       }

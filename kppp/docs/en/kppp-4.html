@@ -124,6 +124,7 @@ your ISP to understand which sequence of actions needs to be executed.
 <LI>Scan: kppp will scan the the input stream for the specified string and 
 store any character after the string up to the first newline in an internal
 buffer. Trailing and leading whitespace will be stripped off.</LI>
+<LI>Save: permanently store the previously scanned string in the specified register. So far, the only valid register is 'password'.  </LI>
 <LI>Pause: pause for the specified number of seconds</LI>
 <LI>Hangup: kppp will send the hangup command to the modem</LI>
 <LI>Answer: kppp will set the modem into answer mode</LI>
@@ -227,13 +228,47 @@ ID          Enter ID:                  # Prompt me for my ID and send it off.
 Scan        Challenge:                 # Scan for 'Challenge' and store everything behind up to the next newline.
 Expect      PassWord:                  # wait for 'password'
 Prompt      Your token is ## - Enter Password  # Prompt me for my password and send it off.
-LoopEnd     granted                    # My ISP send 'Permission granted' on login success.
+LoopEnd     granted                    # My ISP sends 'Permission granted' on login success.
 Send        ppp                        # This starts a ppp connection for me
                                        # on the ISP side
 </PRE>
 </CODE></BLOCKQUOTE>
+<P>The following log shows the login procedure of a fictitious ISP that provides a new password on each login. The new password has to be verified and recorded for the next session.
 <P>
-<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+University of Lummerland
+
+Login:mylogin
+Password: 
+The password for your next session is: YLeLfkZb
+Please record and enter it for verification.
+Verification:YLeLfkZb
+
+1 = telnet
+2 = SLIP
+3 = PPP
+
+Your choice:
+</PRE>
+</CODE></BLOCKQUOTE>
+<P>kppp can be used to do that cumbersome task for you (eliminating the risk of losing that little sheet of paper that holds your current password at the same time). The key part of the following script is a combination of the Scan/Save keywords:     
+<BLOCKQUOTE><CODE>
+<PRE>
+Expect      Login:                     # wait for login prompt
+ID                                     # send ID
+Expect      Password:                  # wait for password prompt
+Password                               # send password
+Scan        is:                        # wait for '... next session is:' and
+                                       # scan the preceding password
+Save        password                   # save the new password for next login
+Expect      Verification:              # wait for 'Verification:'
+Password                               # send new password
+Expect      choice:                    # wait for a prompt that let's you choose
+                                       # between different options (telnet, SLIP, PPP)
+Send        3                          # choose option 3, i.e. PPP
+</PRE>
+</CODE></BLOCKQUOTE>
 <P>
 <H3><A NAME="ss4.6">4.6 Accounting</A>
 </H3>
@@ -246,7 +281,7 @@ you can't find a rule for your region you will have to write one by following
 the supplied <CODE>TEMPLATE</CODE> in <CODE>$(KDEDIR)/share/doc/HTML/en/kppp/</CODE>. Don't
 be afraid though it is really easy. Don't forget to submit your newly created
 rules file to me. The newly created rules file can be checked for valid
-syntax with the -r rule_file command line option to kppp. and
+syntax with the -r rule_file command line option to kppp and
 must be installed in <CODE>$(KDEDIR)/share/apps/kppp/Rules</CODE> or in 
 <CODE>$(HOME)/.kde/share/apps/kppp/Rules</CODE> before you will be able to select it on this
 dialog.

@@ -165,8 +165,8 @@ int runTests() {
 		   klocale->translate("Error"),
 		   klocale->translate("kppp has detected a 'lock' option in "
 				      "/etc/ppp/options.\n\nThis option has "
-				      "to removed since kppp takes care of "
-				      "device locking itself.\n"
+				      "to be removed since kppp takes care "
+				      "of device locking itself.\n"
 				      "Contact your system administrator."));
       warning++;
     }

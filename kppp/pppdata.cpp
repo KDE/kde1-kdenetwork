@@ -444,13 +444,13 @@ void PPPData::setModemInitResp(const char *n) {
 
 } 
 
-int PPPData::modemInitDelay() {
+const int PPPData::modemInitDelay() {
 
   return readNumConfig(MODEM_GRP, INITDELAY_KEY, 1);
 
 }
 
-void PPPData::setModemInitDelay(int n) {
+void PPPData::setModemInitDelay(const int n) {
 
   writeConfig(MODEM_GRP, INITDELAY_KEY, n);
 

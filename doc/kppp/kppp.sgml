@@ -10,8 +10,8 @@
 
 <title>The Kppp Handbook
 <author>Bernd Johannes Wuebben, <tt/wuebben@kde.org/
-<date>Version 0.9.16, 15 February 1998
-<abstract>This Handbook describes Kppp Version 0.9.16
+<date>Version 1.0.6, 31 March 1998
+<abstract>This Handbook describes Kppp Version 1.0.6
 
 <!-- Table of contents -->
 <toc>
@@ -332,6 +332,7 @@ your ISP to understand which sequence of actions needs to be executed.
 <item>Scan: kppp will scan the the input stream for the specified string and 
 store any character after the string up to the first newline in an internal
 buffer. Trailing and leading whitespace will be stripped off.
+<item>Save: permanently store the previously scanned string in the specified register. So far, the only valid register is 'password'.  
 <item>Pause: pause for the specified number of seconds
 <item>Hangup: kppp will send the hangup command to the modem
 <item>Answer: kppp will set the modem into answer mode
@@ -430,12 +431,44 @@ ID          Enter ID:                  # Prompt me for my ID and send it off.
 Scan        Challenge:                 # Scan for 'Challenge' and store everything behind up to the next newline.
 Expect      PassWord:                  # wait for 'password'
 Prompt      Your token is ## - Enter Password  # Prompt me for my password and send it off.
-LoopEnd     granted                    # My ISP send 'Permission granted' on login success.
+LoopEnd     granted                    # My ISP sends 'Permission granted' on login success.
 Send        ppp                        # This starts a ppp connection for me
                                        # on the ISP side
 </verb></tscreen>
-<p>
 
+The following log shows the login procedure of a fictitious ISP that provides a new password on each login. The new password has to be verified and recorded for the next session.
+
+<tscreen><verb>
+University of Lummerland
+
+Login:mylogin
+Password: 
+The password for your next session is: YLeLfkZb
+Please record and enter it for verification.
+Verification:YLeLfkZb
+
+1 = telnet
+2 = SLIP
+3 = PPP
+
+Your choice:
+</verb></tscreen>
+
+kppp can be used to do that cumbersome task for you (eliminating the risk of losing that little sheet of paper that holds your current password at the same time). The key part of the following script is a combination of the Scan/Save keywords:     
+<tscreen><verb>
+Expect      Login:                     # wait for login prompt
+ID                                     # send ID
+Expect      Password:                  # wait for password prompt
+Password                               # send password
+Scan        is:                        # wait for '... next session is:' and
+                                       # scan the preceding password
+Save        password                   # save the new password for next login
+Expect      Verification:              # wait for 'Verification:'
+Password                               # send new password
+Expect      choice:                    # wait for a prompt that let's you choose
+                                       # between different options (telnet, SLIP, PPP)
+Send        3                          # choose option 3, i.e. PPP
+</verb></tscreen>
 
 <sect1>Accounting<p>
 <descrip>
@@ -445,7 +478,7 @@ you can't find a rule for your region you will have to write one by following
 the supplied <tt>TEMPLATE</tt> in <tt>&dollar(KDEDIR)/share/doc/HTML/en/kppp/</tt>. Don't
 be afraid though it is really easy. Don't forget to submit your newly created
 rules file to me. The newly created rules file can be checked for valid
-syntax with the -r rule_file command line option to kppp. and
+syntax with the -r rule_file command line option to kppp and
 must be installed in <tt>&dollar(KDEDIR)/share/apps/kppp/Rules</tt> or in 
 <tt>&dollar(HOME)/.kde/share/apps/kppp/Rules</tt> before you will be able to select it on this
 dialog.
@@ -758,7 +791,9 @@ pitfalls.
 
 <item> Make sure that you DON'T use the option "lock" as an argument
     for pppd (kppp is already taking care of device locking )
-<item> Remove the "lock" option from your /etc/ppp/options file!
+
+<item> Remove the "lock" option from your <tt> /etc/ppp/options </tt>
+    and <tt> ~/.ppprc </tt> files!
 
 <item> Make sure you set the right permission. In case of trouble
     you might want to run it as root first and then later, when
@@ -766,7 +801,19 @@ pitfalls.
     afford to run kppp setuid root. The proper way to proceed would probably
     be creating a "modem" group.
 
+<item> You might be launching pppd too early, i.e. before the remote server is
+    ready to negotiate a PPP connection. If you are using a login script, you
+    should use the built-in terminal to verify your login procedure. Some 
+    providers will require you to issue a simple "Send" or "Send ppp" to
+    launch PPP. Some users even reported, that they had to append "Pause 1" or
+    "Pause 2" to their script to solve timing conflicts.
+
 </itemize>
+
+If nothing helps, you might obtain some debugging info from your systems log by issuing:
+<tscreen><verb>
+% tail /var/log/messages
+</verb></tscreen>
 
 <sect2>kppp tells me ``Sorry, can't open the modem''.
 <p>
@@ -931,7 +978,7 @@ of some of those can be changed at compile time.
 <!-- Mario -->
 <sect1>Reporting problems with kppp<p>
 Before reporting a problem or potential bug to the 
-<htmlurl url="mailto:wuebben@kde.org" name="maintainer"> of kPPP, 
+<htmlurl url="mailto:wuebben@kde.org" name="maintainer"> of kppp, 
 please make sure that you have read the section <ref id="kppp FAQ"
 name="Frequently asked Questions"> carefully.
 

@@ -69,7 +69,9 @@ public:
 		 PWPrompt = 9,
 		 LoopStart = 10,
 		 LoopEnd = 11, 
-		 Scan = 12 };
+		 Scan = 12,
+                 Save = 13 };
 };
 
 #endif
+
