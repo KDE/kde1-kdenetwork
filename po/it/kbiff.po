@@ -1,0 +1,231 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 1999-01-15 02:07+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Andrea Rizzi <rizzi@kde.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ENCODING\n"
+
+#: kbiff.cpp:461
+msgid "&UnDock"
+msgstr "&Aggiungi al pannello"
+
+#: kbiff.cpp:463
+msgid "&Dock"
+msgstr "&Rimuovi dal pannello"
+
+#: kbiff.cpp:464
+msgid "&Setup..."
+msgstr "&Impostazioni..."
+
+#: kbiff.cpp:466
+msgid "&Help..."
+msgstr "&Aiuto..."
+
+#: kbiff.cpp:470
+msgid "&Check Mail Now"
+msgstr "&Controlla la Posta Ora"
+
+#: kbiff.cpp:472
+msgid "&Read Mail Now"
+msgstr "&Leggi la Posta Ora"
+
+#: kbiff.cpp:478
+msgid "&Stop"
+msgstr "&Ferma"
+
+#: notify.cpp:28 notify.cpp:45
+msgid "You have new mail!"
+msgstr "Hai ricevuto nuova posta!"
+
+#: notify.cpp:53
+#, c-format
+msgid "New Messages: %d"
+msgstr "Messaggi nuovi: %d"
+
+#: notify.cpp:58
+#, c-format
+msgid "Mailbox: %s"
+msgstr "Casella postale: %s"
+
+#: setupdlg.cpp:79
+msgid "KBiff Setup"
+msgstr "Impostazioni di KBiff"
+
+#: setupdlg.cpp:82
+msgid "Profile:"
+msgstr "Profilo:"
+
+#: setupdlg.cpp:98
+msgid "&New..."
+msgstr "&Nuovo..."
+
+#: setupdlg.cpp:105
+msgid "&Rename..."
+msgstr "&Rinomina..."
+
+#: setupdlg.cpp:139
+msgid "General"
+msgstr "Generale"
+
+#: setupdlg.cpp:140
+msgid "New Mail"
+msgstr "Nuova Posta"
+
+#: setupdlg.cpp:141
+msgid "Mailbox"
+msgstr "Casella Postale"
+
+#: setupdlg.cpp:356
+msgid "New Profile"
+msgstr "Nuovo profilo"
+
+#: setupdlg.cpp:388
+#, c-format
+msgid "Rename Profile: %s"
+msgstr "Rinomina Profilo: %s"
+
+#: setupdlg.cpp:428
+#, c-format
+msgid "Delete Profile: %s"
+msgstr "Elimina Profilo: %s"
+
+#: setupdlg.cpp:429
+msgid "Are you sure you wish to delete this profile?\n"
+msgstr "Sei sicuro di voler eliminare questo profilo?\n"
+
+#: setupdlg.cpp:489
+msgid "Poll (sec):"
+msgstr "Controllo (sec):"
+
+#: setupdlg.cpp:494
+msgid "Mail client:"
+msgstr "Client Posta:"
+
+#: setupdlg.cpp:507
+msgid "Dock in panel"
+msgstr "Aggiungi al pannello"
+
+#: setupdlg.cpp:512
+msgid "Use session management"
+msgstr "Usa session management"
+
+#: setupdlg.cpp:517
+msgid "Icons:"
+msgstr "Icone:"
+
+#: setupdlg.cpp:535
+msgid "No Mail:"
+msgstr "Vuota:"
+
+#: setupdlg.cpp:544
+msgid "Old Mail"
+msgstr "Vecchia posta:"
+
+#: setupdlg.cpp:554
+msgid "New Mail:"
+msgstr "Nuova posta:"
+
+#: setupdlg.cpp:691
+msgid "Run Command"
+msgstr "Esegui Comando"
+
+#: setupdlg.cpp:698 setupdlg.cpp:711 setupdlg.cpp:1051
+msgid "Browse"
+msgstr "Sfoglia"
+
+#: setupdlg.cpp:704
+msgid "Play Sound"
+msgstr "Suono"
+
+#: setupdlg.cpp:717
+msgid "System Beep"
+msgstr "Beep di sistema"
+
+#: setupdlg.cpp:722
+msgid "Notify"
+msgstr "Notifica"
+
+#: setupdlg.cpp:853
+msgid "Advanced Options"
+msgstr "Opzioni Avanzate"
+
+#: setupdlg.cpp:857
+msgid "Mailbox URL:"
+msgstr "URL Casella postale:"
+
+#: setupdlg.cpp:861
+msgid "Port:"
+msgstr "Porta:"
+
+#: setupdlg.cpp:865
+msgid "PREAUTH"
+msgstr "PREAUTH"
+
+#: setupdlg.cpp:872
+msgid "Keep Alive"
+msgstr "Mantieni in vita"
+
+#: setupdlg.cpp:998 setupdlg.cpp:1027
+msgid "Mailbox:"
+msgstr "Casella postale:"
+
+#: setupdlg.cpp:1011 setupdlg.cpp:1321
+msgid "New Mailbox"
+msgstr "Nuova casella postale"
+
+#: setupdlg.cpp:1018
+msgid "Delete Mailbox"
+msgstr "Elimina casella postale"
+
+#: setupdlg.cpp:1024
+msgid "Protocol:"
+msgstr "Protocollo:"
+
+#: setupdlg.cpp:1030
+msgid "Server:"
+msgstr "Server:"
+
+#: setupdlg.cpp:1033
+msgid "User:"
+msgstr "Utente:"
+
+#: setupdlg.cpp:1036
+msgid "Password:"
+msgstr "Password:"
+
+#: setupdlg.cpp:1068
+msgid "Store password"
+msgstr "Salva password"
+
+#: setupdlg.cpp:1071
+msgid "Advanced"
+msgstr "Avanzate"
+
+#: setupdlg.cpp:1508
+msgid "KBiff"
+msgstr "KBiff"
+
+#: setupdlg.cpp:1530
+#, c-format
+msgid ""
+"Version %s\n"
+"\n"
+"Copyright (C) 1998\n"
+"Kurt Granroth"
+msgstr ""
+"Versione %s\n"
+"\n"
+"Copyright (C) 1998\n"
+"Kurt Granroth"
+
+#: setupdlg.cpp:1579
+msgid "New Name:"
+msgstr "Nuovo nome:"
+
+#: setupdlg.cpp:1605
+msgid "New Name"
+msgstr "Nuovo nome"
