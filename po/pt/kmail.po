@@ -431,24 +431,24 @@ msgid "Network"
 msgstr "Rede"
 
 #: kmsettings.cpp:311
-#, fuzzy
 msgid "Fonts"
-msgstr "contêm"
+msgstr "Fontes"
 
 #: kmsettings.cpp:316
 msgid "Message Body Font:"
-msgstr ""
+msgstr "Fonte do Corpo da Mensagem:"
 
 #: kmsettings.cpp:321
-#, fuzzy
 msgid "Message List Font:"
-msgstr "Mensagem como Texto"
+msgstr "Fontes da Lista de Mensagens:"
 
 #: kmsettings.cpp:325
 msgid ""
 "Changing fonts currently only occurs when a new\n"
 "window is opened or kmail is restarted"
 msgstr ""
+"A mudança de fonte só acontece quando uma\n"
+"nova janela é aberta ou o kmail reiniciado"
 
 #: kmsettings.cpp:341 kmsettings.cpp:411
 msgid "Appearance"
@@ -552,12 +552,11 @@ msgstr "esvaziar lixo ao sair"
 
 #: kmsettings.cpp:556
 msgid "Message Body Font"
-msgstr ""
+msgstr "Fontes do Corpo da Mensagem"
 
 #: kmsettings.cpp:568
-#, fuzzy
 msgid "Message List Font"
-msgstr "Mensagem como Texto"
+msgstr "Fontes da Lista de Mensagem"
 
 #: kmsettings.cpp:618
 msgid "Select Account"
@@ -632,14 +631,12 @@ msgid "Subject"
 msgstr "Assunto"
 
 #: kmheaders.cpp:209
-#, fuzzy
 msgid "Unknown"
-msgstr "Erro desconhecido"
+msgstr "Desconhecido"
 
 #: kmheaders.cpp:212
-#, fuzzy
 msgid "No Subject"
-msgstr "Assunto"
+msgstr "Sem Assunto"
 
 #: kmheaders.cpp:259
 msgid "order of arrival"
@@ -940,11 +937,9 @@ msgstr ""
 "Erro ao iniciar KSpell. Por favor verifique que tem o ISpell configurado."
 
 #: kmfolder.cpp:144
-#, fuzzy, c-format
+#, c-format
 msgid "Folder `%s' changed. Recreating index."
-msgstr ""
-"Conteúdo da pasta `%s' mudou.\n"
-"A recrear o ficheiro de índice."
+msgstr "Pasta `%s' mudou. A recrear índice."
 
 #: kmfolder.cpp:351
 #, c-format
@@ -1294,9 +1289,8 @@ msgstr ""
 "%s"
 
 #: kmfolderseldlg.cpp:29
-#, fuzzy
 msgid "Select folder"
-msgstr "Seleccione Pasta"
+msgstr "Seleccione a pasta"
 
 #: kmfilter.cpp:190
 #, c-format
