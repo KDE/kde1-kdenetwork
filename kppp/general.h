@@ -52,7 +52,7 @@ public:
 
 private slots:
   
-  void 	pppdpathchanged(const char*);
+//  void 	pppdpathchanged(const char*);
   void 	pppdtimeoutchanged(const char *n);
   void 	logviewerchanged(const char*);
   void 	caption_toggled(bool);
@@ -65,7 +65,7 @@ private slots:
 private:
 
   QGroupBox 	*box;
-  QLabel 	*label1;
+  //  QLabel 	*label1;
 
   QLabel 	*label3;
   QLabel 	*label4;
@@ -83,7 +83,7 @@ private:
   QLineEdit 	*pppdtimeout;
   QLineEdit 	*logviewer;
   QLabel    	*logviewerlabel;
-  QLineEdit 	*pppdpath;
+  //  QLineEdit 	*pppdpath;
 
 
 };

@@ -260,7 +260,7 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
     // TODO
     // carriage return and then wait a second so that the modem will
     // let us issue commands.
-//     writeline("\r");
+//     writeline("");
 //     usleep(gpppdata.modemInitDelay() * 10000); // 0.01 - 3.0 sec
 
     writeline(gpppdata.modemInitStr());

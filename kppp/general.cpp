@@ -37,35 +37,35 @@ extern KApplication*	app;
 GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
   : QWidget(parent, name)
 {
-  QGridLayout *tl = new QGridLayout(this, 11, 4, 10, 10);
+  QGridLayout *tl = new QGridLayout(this, 10, 4, 10, 10);
   tl->addRowSpacing(0, fontMetrics().lineSpacing() - 10); // magic
   box = new QGroupBox(klocale->translate("kppp Setup"), this,"box");
-  tl->addMultiCellWidget(box, 0, 10, 0, 3);
+  tl->addMultiCellWidget(box, 0, 9, 0, 3);
   
-  label1 = new QLabel(this,"path");
-  label1->setText(klocale->translate("pppd Path:"));
-  label1->setMinimumSize(label1->sizeHint());
-  tl->addWidget(label1, 1, 1);
+//   label1 = new QLabel(this,"path");
+//   label1->setText(klocale->translate("pppd Path:"));
+//   label1->setMinimumSize(label1->sizeHint());
+//   tl->addWidget(label1, 1, 1);
 
-  //pppd Path Line Edit Box
-  pppdpath = new QLineEdit(this, "pppdpath");
-  pppdpath->setMinimumWidth(pppdpath->sizeHint().width());
-  pppdpath->setFixedHeight(pppdpath->sizeHint().height());
-  pppdpath->setMaxLength(PATH_SIZE);
-  pppdpath->setText(gpppdata.pppdPath());
-  connect(pppdpath, SIGNAL(textChanged(const char*)),
-	  SLOT(pppdpathchanged(const char*)));
-  tl->addWidget(pppdpath, 1, 2);
+//   //pppd Path Line Edit Box
+//   pppdpath = new QLineEdit(this, "pppdpath");
+//   pppdpath->setMinimumWidth(pppdpath->sizeHint().width());
+//   pppdpath->setFixedHeight(pppdpath->sizeHint().height());
+//   pppdpath->setMaxLength(PATH_SIZE);
+//   pppdpath->setText(gpppdata.pppdPath());
+//   connect(pppdpath, SIGNAL(textChanged(const char*)),
+// 	  SLOT(pppdpathchanged(const char*)));
+//   tl->addWidget(pppdpath, 1, 2);
 
   //pppd Timeout Line Edit Box
 
   label6 = new QLabel(this,"timeout");
   label6->setText(klocale->translate("pppd Timeout:"));
   label6->setMinimumSize(label6->sizeHint());
-  tl->addWidget(label6, 2, 1);
+  tl->addWidget(label6, 1, 1);
   
   QHBoxLayout *l1 = new QHBoxLayout;
-  tl->addLayout(l1, 2, 2);
+  tl->addLayout(l1, 1, 2);
   pppdtimeout = new KIntegerLine(this, "pppdtimeout");
   pppdtimeout->setFixedHeight(pppdtimeout->sizeHint().height());
   pppdtimeout->setMaxLength(TIMEOUT_SIZE);
@@ -82,7 +82,7 @@ GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
   logviewerlabel = new QLabel(this,"logviewerlabel");
   logviewerlabel->setText(klocale->translate("Log Viewer:"));
   logviewerlabel->setMinimumSize(logviewerlabel->sizeHint());
-  tl->addWidget(logviewerlabel, 3, 1);
+  tl->addWidget(logviewerlabel, 2, 1);
 
   logviewer = new QLineEdit(this, "logvieweredit");
   logviewer->setMinimumWidth(logviewer->sizeHint().width());
@@ -91,9 +91,15 @@ GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
   logviewer->setText(gpppdata.logViewer());
   connect(logviewer, SIGNAL(textChanged(const char*)),
 	  SLOT(logviewerchanged(const char*)));
-  tl->addWidget(logviewer, 3, 2);
+  tl->addWidget(logviewer, 2, 2);
 
-  tl->addRowSpacing(3, 15);
+  tl->addRowSpacing(3, 5);
+
+  chkbox6 = new QCheckBox(klocale->translate("Dock into Panel on Connect"),this,"dockingbox");
+  chkbox6->setMinimumSize(chkbox6->sizeHint());
+  chkbox6->setChecked(gpppdata.get_dock_into_panel());
+  connect(chkbox6,SIGNAL(toggled(bool)),this,SLOT(docking_toggled(bool)));
+  tl->addMultiCellWidget(chkbox6, 4, 4, 1, 2);
 
   chkbox2 = new QCheckBox(klocale->translate("Automatic Redial on Disconnect"),
 			  this,"redialbox");
@@ -120,12 +126,6 @@ GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
   chkbox5->setChecked(gpppdata.get_iconify_on_connect());
   connect(chkbox5,SIGNAL(toggled(bool)),this,SLOT(iconify_toggled(bool)));
   tl->addMultiCellWidget(chkbox5, 8, 8, 1, 2);
-
-  chkbox6 = new QCheckBox(klocale->translate("Dock into Panel on Connect"),this,"dockingbox");
-  chkbox6->setMinimumSize(chkbox6->sizeHint());
-  chkbox6->setChecked(gpppdata.get_dock_into_panel());
-  connect(chkbox6,SIGNAL(toggled(bool)),this,SLOT(docking_toggled(bool)));
-  tl->addMultiCellWidget(chkbox6, 9, 9, 1, 2);
 
   tl->activate();
 }
@@ -165,11 +165,11 @@ void GeneralWidget::logviewerchanged(const char *n){
 }
 
 
-void GeneralWidget::pppdpathchanged(const char *n) {
+// void GeneralWidget::pppdpathchanged(const char *n) {
 
-  gpppdata.setpppdPath(n);
+//   gpppdata.setpppdPath(n);
 
-}
+// }
 
 
 
