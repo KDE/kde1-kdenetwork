@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE NETWORK/kmail\n"
-"POT-Creation-Date: 1998-12-04 01:58+0100\n"
+"POT-Creation-Date: 1998-12-05 02:03+0100\n"
 "PO-Revision-Date: 1998-03-18 22:17+0100\n"
 "Last-Translator: Hans Petter Bieker <zerium@webindex.no>\n"
 "Language-Team: no <LL@li.org>\n"
@@ -388,6 +388,10 @@ msgstr "Assosiert med"
 msgid "Unassociated Accounts"
 msgstr "Konto uten assosiasjon"
 
+#: kmfoldertree.cpp:47 kmsettings.cpp:529
+msgid "Folders"
+msgstr "Mapper"
+
 #: kmsettings.cpp:54
 msgid "Settings"
 msgstr "Innstillinger"
@@ -571,10 +575,6 @@ msgstr "MIME-kompilant (Quoted Printable)"
 #: kmsettings.cpp:512
 msgid "Composer"
 msgstr "Composer"
-
-#: kmsettings.cpp:529
-msgid "Folders"
-msgstr "Mapper"
 
 #: kmsettings.cpp:533
 msgid "empty trash on exit"

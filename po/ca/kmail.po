@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1998-12-04 01:58+0100\n"
+"POT-Creation-Date: 1998-12-05 02:03+0100\n"
 "PO-Revision-Date: 1998-07-03 16:01+0100\n"
 "Last-Translator: Sebastià Pla <sastia@redestb.es>\n"
 "Language-Team: CATALAN <LL@li.org>\n"
@@ -392,6 +392,10 @@ msgstr "Associat amb"
 msgid "Unassociated Accounts"
 msgstr "Comptes sense associació"
 
+#: kmfoldertree.cpp:47 kmsettings.cpp:529
+msgid "Folders"
+msgstr "Carpetes"
+
 #: kmsettings.cpp:54
 msgid "Settings"
 msgstr "Valors"
@@ -575,10 +579,6 @@ msgstr "Conforme MIME (Quoted Printable)"
 #: kmsettings.cpp:512
 msgid "Composer"
 msgstr "Compositor"
-
-#: kmsettings.cpp:529
-msgid "Folders"
-msgstr "Carpetes"
 
 #: kmsettings.cpp:533
 msgid "empty trash on exit"

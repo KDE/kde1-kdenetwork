@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-12-04 01:58+0100\n"
+"POT-Creation-Date: 1998-12-05 02:03+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: LinuxKorea Co. <kde@linuxkorea.co.kr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -394,6 +394,10 @@ msgstr "그룹설정"
 msgid "Unassociated Accounts"
 msgstr "그룹에서 제외"
 
+#: kmfoldertree.cpp:47 kmsettings.cpp:529
+msgid "Folders"
+msgstr "폴더"
+
 #: kmsettings.cpp:54
 msgid "Settings"
 msgstr "설정"
@@ -577,10 +581,6 @@ msgstr "Mime 편집 ("
 #: kmsettings.cpp:512
 msgid "Composer"
 msgstr "작성기"
-
-#: kmsettings.cpp:529
-msgid "Folders"
-msgstr "폴더"
 
 #: kmsettings.cpp:533
 msgid "empty trash on exit"

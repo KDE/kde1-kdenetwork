@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-12-04 01:58+0100\n"
+"POT-Creation-Date: 1998-12-05 02:03+0100\n"
 "PO-Revision-Date: 1998-01-21 15:18+CET\n"
 "Last-Translator: Marcell Lengyel <mike.tkf@ibm.net>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -412,6 +412,11 @@ msgstr "Társítva: "
 msgid "Unassociated Accounts"
 msgstr "Nem társított ügyfelek"
 
+#: kmfoldertree.cpp:47 kmsettings.cpp:529
+#, fuzzy
+msgid "Folders"
+msgstr "Mappa"
+
 #: kmsettings.cpp:54
 msgid "Settings"
 msgstr "Beállítások"
@@ -608,11 +613,6 @@ msgstr "MIME kódolt üzenetek"
 #, fuzzy
 msgid "Composer"
 msgstr "Üzenetszerkesztõ"
-
-#: kmsettings.cpp:529
-#, fuzzy
-msgid "Folders"
-msgstr "Mappa"
 
 #: kmsettings.cpp:533
 msgid "empty trash on exit"

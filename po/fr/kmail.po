@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1998-12-04 01:58+0100\n"
+"POT-Creation-Date: 1998-12-05 02:03+0100\n"
 "PO-Revision-Date: 1998-02-25 22:31 CET\n"
 "Last-Translator: Serge \"sergio\" Tellène <tells@mygale.org>\n"
 "Language-Team: Français\n"
@@ -391,6 +391,10 @@ msgstr "Lié avec"
 msgid "Unassociated Accounts"
 msgstr "Boîtes aux lettres non liées"
 
+#: kmfoldertree.cpp:47 kmsettings.cpp:529
+msgid "Folders"
+msgstr "Dossiers"
+
 #: kmsettings.cpp:54
 msgid "Settings"
 msgstr "Configuration"
@@ -575,10 +579,6 @@ msgstr "Conformité MIME (Quoted Printable)"
 #: kmsettings.cpp:512
 msgid "Composer"
 msgstr "Composer"
-
-#: kmsettings.cpp:529
-msgid "Folders"
-msgstr "Dossiers"
 
 #: kmsettings.cpp:533
 msgid "empty trash on exit"

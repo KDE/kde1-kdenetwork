@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail 0.4.4\n"
-"POT-Creation-Date: 1998-12-04 01:58+0100\n"
+"POT-Creation-Date: 1998-12-05 02:03+0100\n"
 "PO-Revision-Date: 1998-06-12 08:40 MET DST\n"
 "Last-Translator: Wang Jian <lark@linux.ustc.edu.cn>\n"
 "Language-Team: zh_CN (gb2312 )\n"
@@ -390,6 +390,10 @@ msgstr "与联系起来"
 msgid "Unassociated Accounts"
 msgstr "未联系的帐号"
 
+#: kmfoldertree.cpp:47 kmsettings.cpp:529
+msgid "Folders"
+msgstr "文件夹"
+
 #: kmsettings.cpp:54
 msgid "Settings"
 msgstr "设置"
@@ -573,10 +577,6 @@ msgstr "MIME 兼容 (Quoted Printable)"
 #: kmsettings.cpp:512
 msgid "Composer"
 msgstr "编辑器"
-
-#: kmsettings.cpp:529
-msgid "Folders"
-msgstr "文件夹"
 
 #: kmsettings.cpp:533
 msgid "empty trash on exit"

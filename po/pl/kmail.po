@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail \n"
-"POT-Creation-Date: 1998-12-04 01:58+0100\n"
+"POT-Creation-Date: 1998-12-05 02:03+0100\n"
 "PO-Revision-Date: 1998-10-24 05:55+0200\n"
 "Last-Translator: Jacek Stolarczyk <jacek@mer.chemia.polsl.gliwice.pl>\n"
 "Content-Type: text/plain; charset=iso8859-2\n"
@@ -389,6 +389,10 @@ msgstr "Skojarzony z"
 msgid "Unassociated Accounts"
 msgstr "Nieskojarzone konta"
 
+#: kmfoldertree.cpp:47 kmsettings.cpp:529
+msgid "Folders"
+msgstr "Foldery"
+
 #: kmsettings.cpp:54
 msgid "Settings"
 msgstr "Ustawienia"
@@ -575,10 +579,6 @@ msgstr "MIME Compilant (Quoted Printable)"
 #: kmsettings.cpp:512
 msgid "Composer"
 msgstr "Format"
-
-#: kmsettings.cpp:529
-msgid "Folders"
-msgstr "Foldery"
 
 #: kmsettings.cpp:533
 msgid "empty trash on exit"

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KMail 0.7.9\n"
-"POT-Creation-Date: 1998-12-04 01:58+0100\n"
+"POT-Creation-Date: 1998-12-05 02:03+0100\n"
 "PO-Revision-Date: 1998-11-20 00:45+07:00\n"
 "Last-Translator: Const Kaplinsky <const@ce.cctpu.edu.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -388,6 +388,10 @@ msgstr "Связано с аккаунтами"
 msgid "Unassociated Accounts"
 msgstr "Доступные аккаунты"
 
+#: kmfoldertree.cpp:47 kmsettings.cpp:529
+msgid "Folders"
+msgstr "Папки"
+
 #: kmsettings.cpp:54
 msgid "Settings"
 msgstr "Настройка"
@@ -571,10 +575,6 @@ msgstr "Кодировать в стандарте MIME (Quoted Printable)"
 #: kmsettings.cpp:512
 msgid "Composer"
 msgstr "Окно редактора"
-
-#: kmsettings.cpp:529
-msgid "Folders"
-msgstr "Папки"
 
 #: kmsettings.cpp:533
 msgid "empty trash on exit"

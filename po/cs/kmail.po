@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail 0.4.4\n"
-"POT-Creation-Date: 1998-12-04 01:58+0100\n"
+"POT-Creation-Date: 1998-12-05 02:03+0100\n"
 "PO-Revision-Date: 1998-11-05 09:01+01:00\n"
 "Last-Translator: Miroslav Flídr <flidr@ky.zcu.cz>\n"
 "Language-Team: Czech <sc@li.org>\n"
@@ -388,6 +388,10 @@ msgstr "Pøiøazen k"
 msgid "Unassociated Accounts"
 msgstr "Nepøiøazené konto"
 
+#: kmfoldertree.cpp:47 kmsettings.cpp:529
+msgid "Folders"
+msgstr "Poøadaèe"
+
 #: kmsettings.cpp:54
 msgid "Settings"
 msgstr "Nastavení"
@@ -571,10 +575,6 @@ msgstr "Vyhovujicí MIME (Quoted Printable)"
 #: kmsettings.cpp:512
 msgid "Composer"
 msgstr "Nový editor"
-
-#: kmsettings.cpp:529
-msgid "Folders"
-msgstr "Poøadaèe"
 
 #: kmsettings.cpp:533
 msgid "empty trash on exit"

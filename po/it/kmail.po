@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSIONPOT-Creation-Date: 1998-01-17 07:40+0100\n"
-"POT-Creation-Date: 1998-12-04 01:58+0100\n"
+"POT-Creation-Date: 1998-12-05 02:03+0100\n"
 "PO-Revision-Date: 1998-01-22 17:20+0100\n"
 "Last-Translator: Andrea Rizzi <BILIBAO@ouverture.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -390,6 +390,10 @@ msgstr "Associato a"
 msgid "Unassociated Accounts"
 msgstr "Account non associati"
 
+#: kmfoldertree.cpp:47 kmsettings.cpp:529
+msgid "Folders"
+msgstr "Cartelle"
+
 #: kmsettings.cpp:54
 msgid "Settings"
 msgstr "Impostazioni"
@@ -573,10 +577,6 @@ msgstr "MIME Compatibile (Quoted Printable)"
 #: kmsettings.cpp:512
 msgid "Composer"
 msgstr "Compositore messaggi"
-
-#: kmsettings.cpp:529
-msgid "Folders"
-msgstr "Cartelle"
 
 #: kmsettings.cpp:533
 msgid "empty trash on exit"

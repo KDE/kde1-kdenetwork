@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-12-04 01:58+0100\n"
+"POT-Creation-Date: 1998-12-05 02:03+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Theodore J. Soldatos <theodore@eexi.gr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -395,6 +395,10 @@ msgstr "Σχετισμένο με"
 msgid "Unassociated Accounts"
 msgstr "Μη σχετισμένοι λογαριασμοί"
 
+#: kmfoldertree.cpp:47 kmsettings.cpp:529
+msgid "Folders"
+msgstr "Φάκελλοι"
+
 #: kmsettings.cpp:54
 msgid "Settings"
 msgstr "Ρυθμίσεις"
@@ -577,10 +581,6 @@ msgstr "Συβατότητα MIME"
 #: kmsettings.cpp:512
 msgid "Composer"
 msgstr "Σύνταξη"
-
-#: kmsettings.cpp:529
-msgid "Folders"
-msgstr "Φάκελλοι"
 
 #: kmsettings.cpp:533
 msgid "empty trash on exit"

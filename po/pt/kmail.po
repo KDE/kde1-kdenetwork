@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1998-12-04 01:58+0100\n"
+"POT-Creation-Date: 1998-12-05 02:03+0100\n"
 "PO-Revision-Date: 1998-01-26 20:00+0000\n"
 "Last-Translator: Pedro Morais <pmmm@camoes.rnl.ist.utl.pt>\n"
 
@@ -383,6 +383,10 @@ msgstr "Associado com"
 msgid "Unassociated Accounts"
 msgstr "Contas sem associações"
 
+#: kmfoldertree.cpp:47 kmsettings.cpp:529
+msgid "Folders"
+msgstr "Pastas"
+
 #: kmsettings.cpp:54
 msgid "Settings"
 msgstr "Definições"
@@ -566,10 +570,6 @@ msgstr "MIME (Imprimível)"
 #: kmsettings.cpp:512
 msgid "Composer"
 msgstr "Compositor"
-
-#: kmsettings.cpp:529
-msgid "Folders"
-msgstr "Pastas"
 
 #: kmsettings.cpp:533
 msgid "empty trash on exit"

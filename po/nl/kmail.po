@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-12-04 01:58+0100\n"
+"POT-Creation-Date: 1998-12-05 02:03+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Case Roole <cjr@xs4all.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -396,6 +396,10 @@ msgstr "Verbonden met"
 msgid "Unassociated Accounts"
 msgstr "Niet-verbonden accounts"
 
+#: kmfoldertree.cpp:47 kmsettings.cpp:529
+msgid "Folders"
+msgstr "Mappen"
+
 #: kmsettings.cpp:54
 msgid "Settings"
 msgstr "Instellingen"
@@ -579,10 +583,6 @@ msgstr "MIME Gehoorzamend (\"Quoted Printable\")"
 #: kmsettings.cpp:512
 msgid "Composer"
 msgstr "Opsteller"
-
-#: kmsettings.cpp:529
-msgid "Folders"
-msgstr "Mappen"
 
 #: kmsettings.cpp:533
 msgid "empty trash on exit"

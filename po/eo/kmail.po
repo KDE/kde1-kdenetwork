@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail 1.0pre2\n"
-"POT-Creation-Date: 1998-12-04 01:58+0100\n"
+"POT-Creation-Date: 1998-12-05 02:03+0100\n"
 "PO-Revision-Date: 1998-07-19 16:00+0100\n"
 "Last-Translator: Wolfram Diestel <diestel@rzaix340.rz-uni-leipzig.de>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
@@ -393,6 +393,10 @@ msgstr "Kunligita kun"
 msgid "Unassociated Accounts"
 msgstr "Neligitaj kontoj"
 
+#: kmfoldertree.cpp:47 kmsettings.cpp:529
+msgid "Folders"
+msgstr "Dosierujoj"
+
 #: kmsettings.cpp:54
 msgid "Settings"
 msgstr "Konfigura¼o"
@@ -576,10 +580,6 @@ msgstr "MIME-kongrua (\"quoted printable\")"
 #: kmsettings.cpp:512
 msgid "Composer"
 msgstr "Mesaøredaktilo"
-
-#: kmsettings.cpp:529
-msgid "Folders"
-msgstr "Dosierujoj"
 
 #: kmsettings.cpp:533
 msgid "empty trash on exit"

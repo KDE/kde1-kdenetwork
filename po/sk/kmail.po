@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail 0.4.4\n"
-"POT-Creation-Date: 1998-12-04 01:58+0100\n"
+"POT-Creation-Date: 1998-12-05 02:03+0100\n"
 "PO-Revision-Date: 1998-03-08 10:42 MET\n"
 "Last-Translator: Juraj Bednár <bednar@isternet.sk>\n"
 "Language-Team: Slovak <bednar@isternet.sk>\n"
@@ -388,6 +388,10 @@ msgstr "Priradený k"
 msgid "Unassociated Accounts"
 msgstr "Nepriradené konto"
 
+#: kmfoldertree.cpp:47 kmsettings.cpp:529
+msgid "Folders"
+msgstr "Prieèinky"
+
 #: kmsettings.cpp:54
 msgid "Settings"
 msgstr "Nastavenie"
@@ -571,10 +575,6 @@ msgstr "Vyhovujúce MIME (Quoted Printable)"
 #: kmsettings.cpp:512
 msgid "Composer"
 msgstr "Editor správ"
-
-#: kmsettings.cpp:529
-msgid "Folders"
-msgstr "Prieèinky"
 
 #: kmsettings.cpp:533
 msgid "empty trash on exit"

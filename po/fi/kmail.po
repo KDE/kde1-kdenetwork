@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1998-12-04 01:58+0100\n"
+"POT-Creation-Date: 1998-12-05 02:03+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Kim Enkovaara <kim.enkovaara@iki.fi>\n"
 
@@ -380,6 +380,10 @@ msgstr "Liittyy "
 msgid "Unassociated Accounts"
 msgstr "Liittämättömät profiilit"
 
+#: kmfoldertree.cpp:47 kmsettings.cpp:529
+msgid "Folders"
+msgstr "Kansiot"
+
 #: kmsettings.cpp:54
 msgid "Settings"
 msgstr "Asetukset"
@@ -563,10 +567,6 @@ msgstr "MIME Yhteensopiva (QP)"
 #: kmsettings.cpp:512
 msgid "Composer"
 msgstr "Kirjoitusohjelma"
-
-#: kmsettings.cpp:529
-msgid "Folders"
-msgstr "Kansiot"
 
 #: kmsettings.cpp:533
 msgid "empty trash on exit"
