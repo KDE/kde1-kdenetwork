@@ -95,6 +95,9 @@ bool PPPData::open() {
 
   config = kapp->getConfig();
 
+  // don't expand shell variables
+  config->setDollarExpansion(false);
+
   highcount = readNumConfig(GENERAL_GRP, NUMACCOUNTS_KEY, 0) - 1;
 
   if (highcount > MAX_ACCOUNTS)
@@ -184,16 +187,8 @@ bool PPPData::readListConfig(const char* group, const char* key,
 void PPPData::writeConfig(const char* group, const char* key,
 			  const char* value) {
   if (config) {
-    // substiute dollar signs
-    QString s = "";
-    for(unsigned i = 0; i < strlen(value); i++)
-      if(value[i] == '$')
-	s += "$$";
-      else
-	s += value[i];
-
     config->setGroup(group);
-    config->writeEntry(key, s.data());
+    config->writeEntry(key, value);
   }
   
 }

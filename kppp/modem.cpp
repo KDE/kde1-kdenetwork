@@ -113,6 +113,9 @@ bool Modem::opentty() {
     }
   }
 	
+  tcdrain (modemfd);
+  tcflush (modemfd, TCIOFLUSH);
+
   if(tcgetattr(modemfd, &tty) < 0){
     errmsg = i18n("Sorry, the modem is busy.");
     ::close(modemfd);
@@ -154,6 +157,8 @@ bool Modem::opentty() {
 
   cfsetospeed(&tty, modemspeed());
   cfsetispeed(&tty, modemspeed());
+
+  tcdrain(modemfd);	
 
   if(tcsetattr(modemfd, TCSANOW, &tty) < 0){
     errmsg = i18n("Sorry, the modem is busy.");
@@ -328,12 +333,12 @@ void Modem::escape_to_command_mode() {
   // Need to send properly timed escape sequence to put modem in command state.
   // Escape codes and guard times are controlled by S2 and S12 values.
   // 
-  tcflush(modemfd,TCOFLUSH);
+  tcflush(modemfd, TCIOFLUSH);
 
   // +3 because quiet time must be greater than guard time.
   usleep((gpppdata.modemEscapeGuardTime()+3)*20000);
   write(modemfd, gpppdata.modemEscapeStr(), strlen(gpppdata.modemEscapeStr()) );  
-  tcflush(modemfd,TCOFLUSH);
+  tcflush(modemfd, TCIOFLUSH);
   usleep((gpppdata.modemEscapeGuardTime()+3)*20000);
 
   data_mode = false;

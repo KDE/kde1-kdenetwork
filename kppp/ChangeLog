@@ -1,3 +1,8 @@
+1998-10-09  Harri Porten  <porten@kde.org>
+
+	* modem.cpp: additional data flushes
+	* pppdata.cpp: don't need workaround for '$' with recent kde libraries
+
 1998-10-05  Mario Weilguni <mweilguni@kde.org>
 
 	* better QuickHelp text, proof-read by a native english
