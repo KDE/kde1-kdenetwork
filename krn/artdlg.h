@@ -89,8 +89,6 @@ private:
     QPopupMenu *article;
     QPopupMenu *taggedArticle;
     QPopupMenu *options;
-    KToolBar *tool;
-    KToolBar *tool2;
     KPanner *panner;
     QVBoxLayout *gl;
     KStatusBar *status;

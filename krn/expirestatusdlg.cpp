@@ -133,7 +133,7 @@ void ExpireStatusDlg::doExpire()
     // Expire new articles
     
     conf->setGroup("Cache");
-    threshold=time(NULL)-24*60*conf->readNumEntry("ExpireUnreadHeaders",5);
+    threshold=time(NULL)-DAY*conf->readNumEntry("ExpireUnreadHeaders",5);
     debug ("threshold->%ld",threshold);
     key= gdbm_firstkey(artdb);
     while (key.dptr)

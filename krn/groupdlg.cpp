@@ -190,30 +190,29 @@ Groupdlg::Groupdlg(const char *name):Inherited (name)
     
     QPixmap pixmap;
     
-    KToolBar *tool = toolBar ();
-    QObject::connect (tool, SIGNAL (clicked (int)), this, SLOT (currentActions (int)));
+    QObject::connect (toolBar(), SIGNAL (clicked (int)), this, SLOT (currentActions (int)));
     
     pixmap=kapp->getIconLoader()->loadIcon("connected.xpm");
-    tool->insertButton (pixmap, CONNECT, true, klocale->translate("Connect to server"));
+    toolBar()->insertButton (pixmap, CONNECT, true, klocale->translate("Connect to server"));
     
     pixmap=kapp->getIconLoader()->loadIcon("disconnected.xpm");
-    tool->insertButton (pixmap, DISCONNECT, false, klocale->translate("Disconnect from server"));
-    tool->insertSeparator ();
+    toolBar()->insertButton (pixmap, DISCONNECT, false, klocale->translate("Disconnect from server"));
+    toolBar()->insertSeparator ();
     
     pixmap=kapp->getIconLoader()->loadIcon("previous.xpm");
-    tool->insertButton (pixmap, GET_ACTIVE, true, klocale->translate("Get list of active groups"));
+    toolBar()->insertButton (pixmap, GET_ACTIVE, true, klocale->translate("Get list of active groups"));
     pixmap=kapp->getIconLoader()->loadIcon("find.xpm");
-    tool->insertButton (pixmap, FIND_GROUP, true, klocale->translate("Find group"));
-    tool->insertSeparator ();
+    toolBar()->insertButton (pixmap, FIND_GROUP, true, klocale->translate("Find group"));
+    toolBar()->insertSeparator ();
     
-    tool->insertButton (kapp->getIconLoader()->loadIcon("subscr.xpm"), SUBSCRIBE, true, "(Un)Subscribe");
-    tool->insertSeparator ();
+    toolBar()->insertButton (kapp->getIconLoader()->loadIcon("subscr.xpm"), SUBSCRIBE, true, "(Un)Subscribe");
+    toolBar()->insertSeparator ();
     
     pixmap=kapp->getIconLoader()->loadIcon("reload.xpm");
-    tool->insertButton (pixmap, CHECK_UNREAD, true, klocale->translate("Check for Unread Articles"));
+    toolBar()->insertButton (pixmap, CHECK_UNREAD, true, klocale->translate("Check for Unread Articles"));
     
     pixmap=kapp->getIconLoader()->loadIcon("filenew.xpm");
-    tool->insertButton (pixmap, POST, true, klocale->translate("Post New Article"));
+    toolBar()->insertButton (pixmap, POST, true, klocale->translate("Post New Article"));
     
     list = new MyTreeList (this, "");
     QObject::connect (list, SIGNAL (selected (int)), this, SLOT (openGroup (int)));

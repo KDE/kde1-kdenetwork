@@ -192,31 +192,21 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     menu->insertItem (klocale->translate("&Options"), options);
     menu->insertItem (klocale->translate("&Scoring"), scoring);
     
-    
-    QPixmap pixmap;
-    
-    tool = toolBar ();
-    QObject::connect (tool, SIGNAL (clicked (int)), this, SLOT (actions (int)));
+    QObject::connect (toolBar(), SIGNAL (clicked (int)), this, SLOT (actions (int)));
 
     
-    pixmap=kapp->getIconLoader()->loadIcon("left.xpm");
-    tool->insertButton (pixmap, PREV, true, klocale->translate("Previous Message"));
+    toolBar()->insertButton (Icon("left.xpm"), PREV, true, klocale->translate("Previous Message"));
     
-    pixmap=kapp->getIconLoader()->loadIcon("right.xpm");
-    tool->insertButton (pixmap, NEXT, true, klocale->translate("Next Message"));
+    toolBar()->insertButton (Icon("right.xpm"), NEXT, true, klocale->translate("Next Message"));
 
-    pixmap=kapp->getIconLoader()->loadIcon("find.xpm");
-    tool->insertButton(pixmap,FIND_ARTICLE,true,klocale->translate("Find Article"));
-    tool->insertSeparator ();
+    toolBar()->insertButton(Icon("find.xpm"),FIND_ARTICLE,true,klocale->translate("Find Article"));
+    toolBar()->insertSeparator ();
 
-    pixmap=kapp->getIconLoader()->loadIcon("filenew.xpm");
-    tool->insertButton (pixmap, POST, true, klocale->translate("Post New Article"));
+    toolBar()->insertButton (Icon("filenew.xpm"), POST, true, klocale->translate("Post New Article"));
 
-    pixmap=kapp->getIconLoader()->loadIcon("previous.xpm");
-    tool->insertButton (pixmap, ARTLIST, true, klocale->translate("Get Article List"));
+    toolBar()->insertButton (Icon("previous.xpm"), ARTLIST, true, klocale->translate("Get Article List"));
 
-    tool2 = toolBar (1);
-    QObject::connect (tool2, SIGNAL (clicked (int)), this, SLOT (actions (int)));
+    QObject::connect (toolBar(1), SIGNAL (clicked (int)), this, SLOT (actions (int)));
     
     QStrList *comboContents=new QStrList();
     comboContents->append("Current");
@@ -224,42 +214,31 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     comboContents->append("All");
     comboContents->append("Read");
     comboContents->append("UnRead");
-    tool2->insertCombo(comboContents,1,false,SIGNAL(activated(int)),this,SLOT(setTarget(int)));
+    toolBar(1)->insertCombo(comboContents,1,false,SIGNAL(activated(int)),this,SLOT(setTarget(int)));
     
-    pixmap=kapp->getIconLoader()->loadIcon("save.xpm");
-    tool2->insertButton(pixmap,SAVE_ARTICLE,true,klocale->translate("Save Article"));
+    toolBar(1)->insertButton(Icon("save.xpm"),SAVE_ARTICLE,true,klocale->translate("Save Article"));
     
-    pixmap=kapp->getIconLoader()->loadIcon("fileprint.xpm");
-    tool2->insertButton(pixmap,PRINT_ARTICLE,true,klocale->translate("Print Article"));
+    toolBar(1)->insertButton(Icon("fileprint.xpm"),PRINT_ARTICLE,true,klocale->translate("Print Article"));
 
-    pixmap=kapp->getIconLoader()->loadIcon("filemail.xpm");
-    tool2->insertButton (pixmap, REP_MAIL, true, klocale->translate("Reply by Mail"));
+    toolBar(1)->insertButton (Icon("filemail.xpm"), REP_MAIL, true, klocale->translate("Reply by Mail"));
     
-    pixmap=kapp->getIconLoader()->loadIcon("followup.xpm");
-    tool2->insertButton (pixmap, FOLLOWUP, true, klocale->translate("Post a Followup"));
+    toolBar(1)->insertButton (Icon("followup.xpm"), FOLLOWUP, true, klocale->translate("Post a Followup"));
     
-    pixmap=kapp->getIconLoader()->loadIcon("mailpost.xpm");
-    tool2->insertButton (pixmap, POSTANDMAIL, true, klocale->translate("Post & Mail"));
+    toolBar(1)->insertButton (Icon("mailpost.xpm"), POSTANDMAIL, true, klocale->translate("Post & Mail"));
     
-    pixmap=kapp->getIconLoader()->loadIcon("fileforward.xpm");
-    tool2->insertButton (pixmap, FORWARD, true, klocale->translate("Forward"));
+    toolBar(1)->insertButton (Icon("fileforward.xpm"), FORWARD, true, klocale->translate("Forward"));
     
-    tool2->insertSeparator ();
+    toolBar(1)->insertSeparator ();
     
-    pixmap=kapp->getIconLoader()->loadIcon("tagged.xpm");
-    tool2->insertButton (pixmap, TAG_ARTICLE, true, klocale->translate("Tag Article"));
+    toolBar(1)->insertButton (Icon("tagged.xpm"), TAG_ARTICLE, true, klocale->translate("Tag Article"));
     
-    pixmap=kapp->getIconLoader()->loadIcon("locked.xpm");
-    tool2->insertButton (pixmap, TOGGLE_EXPIRE, true, klocale->translate("Lock (keep in cache)"));
+    toolBar(1)->insertButton (Icon("locked.xpm"), TOGGLE_EXPIRE, true, klocale->translate("Lock (keep in cache)"));
     
-    pixmap=kapp->getIconLoader()->loadIcon("deco.xpm");
-    tool2->insertButton (pixmap, DECODE_ONE_ARTICLE, true, klocale->translate("Decode Article"));
+    toolBar(1)->insertButton (Icon("deco.xpm"), DECODE_ONE_ARTICLE, true, klocale->translate("Decode Article"));
     
-    pixmap=kapp->getIconLoader()->loadIcon("red-bullet.xpm");
-    tool2->insertButton (pixmap, MARK_READ, true, klocale->translate("Mark Read"));
+    toolBar(1)->insertButton (Icon("red-bullet.xpm"), MARK_READ, true, klocale->translate("Mark Read"));
 
-    pixmap=kapp->getIconLoader()->loadIcon("green-bullet.xpm");
-    tool2->insertButton (pixmap, MARK_UNREAD, true, klocale->translate("Mark UnRead"));
+    toolBar(1)->insertButton (Icon("green-bullet.xpm"), MARK_UNREAD, true, klocale->translate("Mark UnRead"));
     
     if (conf->readNumEntry("VerticalSplit",false))
     {
@@ -1590,15 +1569,15 @@ void Artdlg::sortHeaders(int column)
 
 void Artdlg::setTarget(int target)
 {
-    QObject::disconnect (tool2,0,0,0);
+    QObject::disconnect (toolBar(1),0,0,0);
     if (target==0)
-        QObject::connect (tool2, SIGNAL (clicked (int)), this, SLOT (actions (int)));
+        QObject::connect (toolBar(1), SIGNAL (clicked (int)), this, SLOT (actions (int)));
     else if (target==1)
-        QObject::connect (tool2, SIGNAL (clicked (int)), this, SLOT (taggedActions (int)));
+        QObject::connect (toolBar(1), SIGNAL (clicked (int)), this, SLOT (taggedActions (int)));
     else if (target==2)
-        QObject::connect (tool2, SIGNAL (clicked (int)), this, SLOT (allActions (int)));
+        QObject::connect (toolBar(1), SIGNAL (clicked (int)), this, SLOT (allActions (int)));
     else if (target==3)
-        QObject::connect (tool2, SIGNAL (clicked (int)), this, SLOT (readActions (int)));
+        QObject::connect (toolBar(1), SIGNAL (clicked (int)), this, SLOT (readActions (int)));
     else if (target==4)
-        QObject::connect (tool2, SIGNAL (clicked (int)), this, SLOT (unreadActions (int)));
+        QObject::connect (toolBar(1), SIGNAL (clicked (int)), this, SLOT (unreadActions (int)));
 }

@@ -1,4 +1,11 @@
 -----------------------------------------------------------------------------
+Changes made Apr 3
+-----------------------------------------------------------------------------
+* [Roberto] Fixed yet another expiring bug (minutes DON'T have
+            1 second!)
+            More usage of toolBar() (removed a couple of private
+            members), now it uses Icon(), too.
+-----------------------------------------------------------------------------
 Changes made Apr 2
 -----------------------------------------------------------------------------
 * [Roberto] Switched to kfiledialog.
