@@ -1,34 +1,34 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1998-11-17 11:08+0100\n"
+"POT-Creation-Date: 1998-11-20 01:55+0100\n"
 "PO-Revision-Date: 1998-11-16 13:12+0100\n"
 "Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
 "Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
 
-#: accounts.cpp:51
+#: accounts.cpp:49
 msgid "Account Setup"
 msgstr "Zugangseinstellungen"
 
-#: accounts.cpp:70
+#: accounts.cpp:68
 msgid "Edit..."
 msgstr "Bearbeiten..."
 
-#: accounts.cpp:72
+#: accounts.cpp:70
 msgid "Allows you to modify the selected account"
 msgstr ""
 
-#: accounts.cpp:82
+#: accounts.cpp:80
 msgid "New..."
 msgstr "Neu..."
 
-#: accounts.cpp:86
+#: accounts.cpp:84
 msgid ""
 "Create a new dialup connection\n"
 "to the internet"
 msgstr ""
 
-#: accounts.cpp:94
+#: accounts.cpp:92
 msgid ""
 "Makes a copy of the selected account. All\n"
 "settings of the selected account are copied\n"
@@ -36,18 +36,18 @@ msgid ""
 "needs"
 msgstr ""
 
-#: accounts.cpp:104
+#: accounts.cpp:102
 msgid ""
 "Deletes the selected account\n"
 "\n"
 "<red><b>Use with care!"
 msgstr ""
 
-#: accounts.cpp:113
+#: accounts.cpp:111
 msgid "Phone Costs:"
 msgstr "Telefonkosten:"
 
-#: accounts.cpp:125
+#: accounts.cpp:123
 msgid ""
 "This shows the accumulated phone costs\n"
 "for the selected account.\n"
@@ -57,11 +57,11 @@ msgid ""
 "of the phone costs of all your accounts!"
 msgstr ""
 
-#: accounts.cpp:132 conwindow.cpp:54
+#: accounts.cpp:130 conwindow.cpp:54
 msgid "Volume:"
 msgstr "Volumen:"
 
-#: accounts.cpp:143
+#: accounts.cpp:141
 msgid ""
 "This shows the number of bytes transferred\n"
 "for the selected account (not for all of your\n"
@@ -71,19 +71,19 @@ msgid ""
 "<link #volaccounting>More on volume accounting</link>"
 msgstr ""
 
-#: accounts.cpp:155
+#: accounts.cpp:153
 msgid "Reset Costs"
 msgstr "Kosten zurücksetzen"
 
-#: accounts.cpp:161
+#: accounts.cpp:159
 msgid "View Logs"
 msgstr "Logdateien ansehen"
 
-#: accounts.cpp:227
+#: accounts.cpp:224
 msgid "Reset Total"
 msgstr "Alle zurücksetzen"
 
-#: accounts.cpp:228
+#: accounts.cpp:225
 msgid ""
 "Are you sure you want to reset the accumulated\n"
 "telephone costs for the selected account to zero?"
@@ -91,15 +91,15 @@ msgstr ""
 "Sind Sie sicher, daß Sie die aufgelaufenen\n"
 "Telefonkosten für den gewählten Zugang zurücksetzen möchten?"
 
-#: accounts.cpp:257 accounts.cpp:278
+#: accounts.cpp:254 accounts.cpp:275
 msgid "Maximum number of accounts reached."
 msgstr "Maximale Anzahl von Zugängen erreicht."
 
-#: accounts.cpp:284
+#: accounts.cpp:281
 msgid "No account selected."
 msgstr "Kein Zugang ausgewählt"
 
-#: accounts.cpp:299
+#: accounts.cpp:296
 #, c-format
 msgid ""
 "Are you sure you want to delete\n"
@@ -108,43 +108,43 @@ msgstr ""
 "Sind Sie sicher, daß Sie den\n"
 "Zugang \"%s\" löschen möchten?"
 
-#: accounts.cpp:304
+#: accounts.cpp:301
 msgid "Confirm"
 msgstr "Bestätigen"
 
-#: accounts.cpp:325
+#: accounts.cpp:322
 msgid "New Account"
 msgstr "Neuer Zugang"
 
-#: accounts.cpp:328
+#: accounts.cpp:325
 msgid "Edit Account: "
 msgstr "Zugang bearbeiten: "
 
-#: accounts.cpp:350
+#: accounts.cpp:347
 msgid "Dial"
 msgstr "Wählen"
 
-#: accounts.cpp:351
+#: accounts.cpp:348
 msgid "IP"
 msgstr "IP"
 
-#: accounts.cpp:352
+#: accounts.cpp:349
 msgid "DNS"
 msgstr "DNS"
 
-#: accounts.cpp:353
+#: accounts.cpp:350
 msgid "Gateway"
 msgstr "Gateway"
 
-#: accounts.cpp:354
+#: accounts.cpp:351
 msgid "Login Script"
 msgstr "Login-Script"
 
-#: accounts.cpp:355
+#: accounts.cpp:352
 msgid "Accounting"
 msgstr "Gebührenzähler"
 
-#: accounts.cpp:374
+#: accounts.cpp:371
 #, fuzzy
 msgid ""
 "You must enter an unique\n"
@@ -153,7 +153,7 @@ msgstr ""
 "Sie müssen einen eindeutigen\n"
 "Zugangsnamen angeben"
 
-#: accounts.cpp:379
+#: accounts.cpp:376
 #, fuzzy
 msgid "Login script has unbalanced loop Start/End"
 msgstr "Login-Script hat unausgewogenen Schleifenanfang/-ende"
@@ -1380,7 +1380,7 @@ msgstr "Argument:"
 msgid "Defaults"
 msgstr "Details"
 
-#: pppdata.cpp:90
+#: pppdata.cpp:107
 msgid ""
 "The application-specific config file\n"
 "could not be opened neither\n"
@@ -1679,19 +1679,11 @@ msgstr ""
 "eine nicht-leere Datei zu erstellen, die\n"
 "die passenden Lese- und Schreibrechte hat."
 
-#: ppplog.cpp:153
-#, c-format
-msgid ""
-"Notice that the remote system has sent the following message:\n"
-"\"%s\"\n"
-"This may give you a hint why the the connection has failed."
-msgstr ""
-
 #: ppplog.cpp:160
 msgid ""
 "You have launched pppd before the remote server was ready to establish a PPP "
 "connection.\n"
-"Please use the terminal-based login to verify your login procedure."
+"Please use the terminal-based login to verify"
 msgstr ""
 
 #: ppplog.cpp:165
@@ -1700,23 +1692,36 @@ msgid ""
 "e.g. /dev/ttyS1 (COM2)."
 msgstr ""
 
-#: ppplog.cpp:168
-#, fuzzy
-msgid "Verify your password."
-msgstr "Speichere Paßwort"
+#: ppplog.cpp:169
+msgid "Check that you supplied the correct username and password!"
+msgstr ""
 
-#: ppplog.cpp:170
+#: ppplog.cpp:172
 msgid ""
 "You shouldn't pass 'lock' as an argument to pppd. Check /etc/ppp/options and "
 "~/.ppprc"
 msgstr ""
 
-#: ppplog.cpp:175
+#: ppplog.cpp:176
+msgid ""
+"The remote system does not seem to answer to\n"
+"configuration request! Contact your provider!"
+msgstr ""
+
+#: ppplog.cpp:191
+#, c-format
+msgid ""
+"Notice that the remote system has sent the following message:\n"
+"\"%s\"\n"
+"This may give you a hint why the the connection has failed."
+msgstr ""
+
+#: ppplog.cpp:210
 #, fuzzy
 msgid "Sorry. Can't help you here."
 msgstr "Sorry, kann auf Modem nicht zugreifen."
 
-#: ppplog.cpp:192
+#: ppplog.cpp:227
 msgid ""
 "KPPP could not prepare a PPP log. It´s very likely\n"
 "that pppd was started without the \"debug\" option.\n"
@@ -1727,7 +1732,7 @@ msgid ""
 "Shall I turn it on now?"
 msgstr ""
 
-#: ppplog.cpp:203
+#: ppplog.cpp:238
 msgid ""
 "The \"debug\" option has been added. You\n"
 "should now try to reconnect. If that fails\n"
@@ -1735,15 +1740,15 @@ msgid ""
 "you to track down the connection problem."
 msgstr ""
 
-#: ppplog.cpp:218
+#: ppplog.cpp:253
 msgid "PPP log"
 msgstr ""
 
-#: ppplog.cpp:222
+#: ppplog.cpp:257
 msgid "kppp's diagnosis (just guessing):"
 msgstr ""
 
-#: ppplog.cpp:227
+#: ppplog.cpp:262
 msgid "Write to file"
 msgstr ""
 
@@ -1758,6 +1763,10 @@ msgstr ""
 #: security.cpp:50
 msgid "Allowed groups"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Verify your password."
+#~ msgstr "Speichere Paßwort"
 
 #~ msgid "Insert"
 #~ msgstr "Einfügen"

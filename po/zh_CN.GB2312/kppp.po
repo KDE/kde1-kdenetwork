@@ -5,34 +5,34 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp 0.9.6\n"
-"POT-Creation-Date: 1998-11-17 11:08+0100\n"
+"POT-Creation-Date: 1998-11-20 01:55+0100\n"
 "PO-Revision-Date: 1998-06-12 08:32 MET DST\n"
 "Last-Translator: Wang Jian <lark@linux.ustc.edu.cn>\n"
 "Language-Team: zh_CN ( gb2312)\n"
 
-#: accounts.cpp:51
+#: accounts.cpp:49
 msgid "Account Setup"
 msgstr "帐号设置"
 
-#: accounts.cpp:70
+#: accounts.cpp:68
 msgid "Edit..."
 msgstr "编辑..."
 
-#: accounts.cpp:72
+#: accounts.cpp:70
 msgid "Allows you to modify the selected account"
 msgstr ""
 
-#: accounts.cpp:82
+#: accounts.cpp:80
 msgid "New..."
 msgstr "新的..."
 
-#: accounts.cpp:86
+#: accounts.cpp:84
 msgid ""
 "Create a new dialup connection\n"
 "to the internet"
 msgstr ""
 
-#: accounts.cpp:94
+#: accounts.cpp:92
 msgid ""
 "Makes a copy of the selected account. All\n"
 "settings of the selected account are copied\n"
@@ -40,18 +40,18 @@ msgid ""
 "needs"
 msgstr ""
 
-#: accounts.cpp:104
+#: accounts.cpp:102
 msgid ""
 "Deletes the selected account\n"
 "\n"
 "<red><b>Use with care!"
 msgstr ""
 
-#: accounts.cpp:113
+#: accounts.cpp:111
 msgid "Phone Costs:"
 msgstr "电话费:"
 
-#: accounts.cpp:125
+#: accounts.cpp:123
 msgid ""
 "This shows the accumulated phone costs\n"
 "for the selected account.\n"
@@ -61,11 +61,11 @@ msgid ""
 "of the phone costs of all your accounts!"
 msgstr ""
 
-#: accounts.cpp:132 conwindow.cpp:54
+#: accounts.cpp:130 conwindow.cpp:54
 msgid "Volume:"
 msgstr "音量:"
 
-#: accounts.cpp:143
+#: accounts.cpp:141
 msgid ""
 "This shows the number of bytes transferred\n"
 "for the selected account (not for all of your\n"
@@ -75,33 +75,33 @@ msgid ""
 "<link #volaccounting>More on volume accounting</link>"
 msgstr ""
 
-#: accounts.cpp:155
+#: accounts.cpp:153
 msgid "Reset Costs"
 msgstr "复位话费"
 
-#: accounts.cpp:161
+#: accounts.cpp:159
 msgid "View Logs"
 msgstr "查看记录"
 
-#: accounts.cpp:227
+#: accounts.cpp:224
 msgid "Reset Total"
 msgstr "完全复位"
 
-#: accounts.cpp:228
+#: accounts.cpp:225
 msgid ""
 "Are you sure you want to reset the accumulated\n"
 "telephone costs for the selected account to zero?"
 msgstr "你确定要把选中的帐号的累计话费复位到零 ?"
 
-#: accounts.cpp:257 accounts.cpp:278
+#: accounts.cpp:254 accounts.cpp:275
 msgid "Maximum number of accounts reached."
 msgstr "达到了最大帐号数."
 
-#: accounts.cpp:284
+#: accounts.cpp:281
 msgid "No account selected."
 msgstr "没有选中的帐号."
 
-#: accounts.cpp:299
+#: accounts.cpp:296
 #, c-format
 msgid ""
 "Are you sure you want to delete\n"
@@ -110,43 +110,43 @@ msgstr ""
 "你确定要删除帐号\n"
 "\"%s\"?"
 
-#: accounts.cpp:304
+#: accounts.cpp:301
 msgid "Confirm"
 msgstr "确认"
 
-#: accounts.cpp:325
+#: accounts.cpp:322
 msgid "New Account"
 msgstr "新建帐号"
 
-#: accounts.cpp:328
+#: accounts.cpp:325
 msgid "Edit Account: "
 msgstr "编辑帐号: "
 
-#: accounts.cpp:350
+#: accounts.cpp:347
 msgid "Dial"
 msgstr "拨号"
 
-#: accounts.cpp:351
+#: accounts.cpp:348
 msgid "IP"
 msgstr "IP"
 
-#: accounts.cpp:352
+#: accounts.cpp:349
 msgid "DNS"
 msgstr "DNS"
 
-#: accounts.cpp:353
+#: accounts.cpp:350
 msgid "Gateway"
 msgstr "网关"
 
-#: accounts.cpp:354
+#: accounts.cpp:351
 msgid "Login Script"
 msgstr "登录脚本"
 
-#: accounts.cpp:355
+#: accounts.cpp:352
 msgid "Accounting"
 msgstr "记帐"
 
-#: accounts.cpp:374
+#: accounts.cpp:371
 #, fuzzy
 msgid ""
 "You must enter an unique\n"
@@ -155,7 +155,7 @@ msgstr ""
 "你必须输入一个唯一的\n"
 "帐号名"
 
-#: accounts.cpp:379
+#: accounts.cpp:376
 #, fuzzy
 msgid "Login script has unbalanced loop Start/End"
 msgstr "登录脚本有不配对的循环 开始/结束"
@@ -1376,7 +1376,7 @@ msgstr "参数:"
 msgid "Defaults"
 msgstr "详细资料"
 
-#: pppdata.cpp:90
+#: pppdata.cpp:107
 msgid ""
 "The application-specific config file\n"
 "could not be opened neither\n"
@@ -1670,19 +1670,11 @@ msgstr ""
 "请要求你的系统管理员建立一个非空的文件,\n"
 "并设好正确的读写权限."
 
-#: ppplog.cpp:153
-#, c-format
-msgid ""
-"Notice that the remote system has sent the following message:\n"
-"\"%s\"\n"
-"This may give you a hint why the the connection has failed."
-msgstr ""
-
 #: ppplog.cpp:160
 msgid ""
 "You have launched pppd before the remote server was ready to establish a PPP "
 "connection.\n"
-"Please use the terminal-based login to verify your login procedure."
+"Please use the terminal-based login to verify"
 msgstr ""
 
 #: ppplog.cpp:165
@@ -1691,23 +1683,36 @@ msgid ""
 "e.g. /dev/ttyS1 (COM2)."
 msgstr ""
 
-#: ppplog.cpp:168
-#, fuzzy
-msgid "Verify your password."
-msgstr "保存密码"
+#: ppplog.cpp:169
+msgid "Check that you supplied the correct username and password!"
+msgstr ""
 
-#: ppplog.cpp:170
+#: ppplog.cpp:172
 msgid ""
 "You shouldn't pass 'lock' as an argument to pppd. Check /etc/ppp/options and "
 "~/.ppprc"
 msgstr ""
 
-#: ppplog.cpp:175
+#: ppplog.cpp:176
+msgid ""
+"The remote system does not seem to answer to\n"
+"configuration request! Contact your provider!"
+msgstr ""
+
+#: ppplog.cpp:191
+#, c-format
+msgid ""
+"Notice that the remote system has sent the following message:\n"
+"\"%s\"\n"
+"This may give you a hint why the the connection has failed."
+msgstr ""
+
+#: ppplog.cpp:210
 #, fuzzy
 msgid "Sorry. Can't help you here."
 msgstr "抱歉,无法打开调制解调器."
 
-#: ppplog.cpp:192
+#: ppplog.cpp:227
 msgid ""
 "KPPP could not prepare a PPP log. It磗 very likely\n"
 "that pppd was started without the \"debug\" option.\n"
@@ -1718,7 +1723,7 @@ msgid ""
 "Shall I turn it on now?"
 msgstr ""
 
-#: ppplog.cpp:203
+#: ppplog.cpp:238
 msgid ""
 "The \"debug\" option has been added. You\n"
 "should now try to reconnect. If that fails\n"
@@ -1726,15 +1731,15 @@ msgid ""
 "you to track down the connection problem."
 msgstr ""
 
-#: ppplog.cpp:218
+#: ppplog.cpp:253
 msgid "PPP log"
 msgstr ""
 
-#: ppplog.cpp:222
+#: ppplog.cpp:257
 msgid "kppp's diagnosis (just guessing):"
 msgstr ""
 
-#: ppplog.cpp:227
+#: ppplog.cpp:262
 msgid "Write to file"
 msgstr ""
 
@@ -1749,6 +1754,10 @@ msgstr ""
 #: security.cpp:50
 msgid "Allowed groups"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Verify your password."
+#~ msgstr "保存密码"
 
 #~ msgid "Insert"
 #~ msgstr "插入"
