@@ -1,5 +1,8 @@
 1999-04-25  Stefan Taferner  <taferner@kde.org> (KMail-1.0.21)
 
+	* Added a semaphore to not start interval checking when
+	already an interval check is running.
+
 	* Removing Bcc header field before sending messages (and adding
 	it afterwards).
 
