@@ -1,3 +1,8 @@
+Mon Jan  5 04:55:58 1998  Bernd Johannes Wuebben  <wuebben@petit.cornell.edu>
+
+	* fixed the while(*it) problem in pppdata.cpp it should be
+	  while(it->current()).
+
 Sun Jan  4 13:54:12 1998  Mario Weilguni <mweilguni@sime.com>
 	* modified the modemcommands dialog to use the layout
 	  classes of Qt. Replaced the scrollbar with a slider,

@@ -639,7 +639,7 @@ bool PPPData::deleteAccount() {
 
   // set all entries of the current account to "" 
   it = config->entryIterator(cgroup);
-  while (*it) {
+  while (it->current() != 0L) {
     key = it->currentKey();
     config->writeEntry(key, "");
     ++(*it);
@@ -652,7 +652,7 @@ bool PPPData::deleteAccount() {
     it = config->entryIterator(cgroup);
     setAccountbyIndex(i-1);
     config->setGroup(cgroup);
-    while (*it) {
+    while (it->current() != 0L) {
       key = it->currentKey();
       value = it->current()->aValue;    
       config->writeEntry(key, value);
