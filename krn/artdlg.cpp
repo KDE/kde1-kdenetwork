@@ -68,6 +68,7 @@
 #define FORWARD 21
 #define POST 22
 #define FIND_ARTICLE 23
+#define EXPUNGE 24
 
 extern QString pixpath,cachepath;
 
@@ -137,6 +138,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     options->setItemChecked(NO_READ,unread);
     options->insertItem(klocale->translate("Show Locked Messages"), NO_LOCKED);
     options->setItemChecked(NO_LOCKED,showlocked);
+    options->insertItem(klocale->translate("Expunge"), EXPUNGE);
     options->insertItem(klocale->translate("Appearance..."),CONFIG_FONTS);
     connect (options,SIGNAL(activated(int)),SLOT(actions(int)));
     
@@ -270,6 +272,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     acc->insertItem(ALT + Key_Down, NEXT);
     acc->insertItem(Key_Up, SCROLL_UP_ARTICLE);
     acc->insertItem(Key_Down, SCROLL_DOWN_ARTICLE);
+    acc->insertItem(Key_X, EXPUNGE);
     
     QObject::connect (acc,SIGNAL(activated(int)),this,SLOT(actions(int)));
     QObject::connect (messwin,SIGNAL(spawnArticle(QString)),this,SLOT(loadArt(QString)));
@@ -619,6 +622,12 @@ bool Artdlg::actions (int action)
                 }
             }
             fillTree();
+            break;
+        }     
+    case EXPUNGE:
+        {
+            unread=false;
+            actions(NO_READ);
             break;
         }     
         
