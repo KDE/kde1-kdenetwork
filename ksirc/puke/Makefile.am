@@ -27,7 +27,9 @@ ksirclibdir = $(kde_libraries)/ksirc
 #bin_PROGRAMS = 	libpuke
 #noinst_LIBRARIES = libpuke.a
 
-ksirclib_LTLIBRARIES = libpuke.la libpframe.la libplined.la libpbutton.la libppushbt.la \
+lib_LTLIBRARIES = libpuke.la
+
+ksirclib_LTLIBRARIES = libpframe.la libplined.la libpbutton.la libppushbt.la \
                   libpprogress.la libptablevw.la libplistbox.la libplabel.la \
                   libpmenudta.la libppopmenu.la libpalistbox.la libptabdialog.la \
                   libksirclistbox.la libpkfiledialog.la libpobjfinder.la
