@@ -7,7 +7,7 @@ build:
 ## prefix is useless and leads to problems, since configure looks for
 ## $prefix/include only, if it's given
 	( CFLAGS="-O2 -g -Wall" \
-	 CXXFLAGS="-g -Wall" \
+	 CXXFLAGS="-O2 -g -Wall" \
 	./configure --enable-debug --with-install-root=`pwd`/debian/tmp \
 	--disable-rpath )
 
@@ -36,8 +36,6 @@ binary-arch:	build
 	dh_testdir
 	dh_clean -k
 	make install 
-	mkdir debian/tmp/etc
-	mkdir debian/tmp/etc/kde
 	echo "\# KDE Config File\n[Traceroute]\npath=/usr/sbin/traceroute\n" > debian/tmp/etc/kde/knurc
 	chmod +x debian/kderules
 	debian/kderules
