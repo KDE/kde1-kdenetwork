@@ -24,6 +24,15 @@ extern KConfig *conf;
 fontsDlg::fontsDlg(QWidget* parent,const char* name):Inherited( parent, name, TRUE )
 {
 
+
+    QStrList *stdfl=new QStrList;
+    QStrList *fixedfl=new QStrList;
+    getFontList( *stdfl, "-*-*-*-*-*-*-*-*-*-*-p-*-*-*" );
+    //I add these, because some people may prefer all-fixed width fonts
+    //(for ascii art, I suppose)
+    getFontList( *stdfl, "-*-*-*-*-*-*-*-*-*-*-m-*-*-*" );
+    getFontList( *fixedfl, "-*-*-*-*-*-*-*-*-*-*-m-*-*-*" );
+
     conf->setGroup("ArticleListOptions");
 
 
@@ -36,10 +45,18 @@ fontsDlg::fontsDlg(QWidget* parent,const char* name):Inherited( parent, name, TR
     l->addGroup("entries","",true);
     
     l->addLabel("l1",klocale->translate("Font Size:"));
-    fontSize=(QComboBox *)(l->addComboBox("fontSize")->widget);
+
+    QStrList *sizel=new QStrList;
+    sizel->append(klocale->translate( "Small") );
+    sizel->append(klocale->translate( "Normal" ));
+    sizel->append(klocale->translate( "Large" ));
+    sizel->append(klocale->translate( "Huge" ));
+    fontSize=(QComboBox *)(l->addComboBox("fontSize",sizel)->widget);
+    delete sizel;
+    
     l->newLine();
     l->addLabel("l2", klocale->translate("Standard Font"));
-    stdFontName=(QComboBox *)(l->addComboBox("stdFontName")->widget);
+    stdFontName=(QComboBox *)(l->addComboBox("stdFontName",stdfl)->widget);
     l->newLine();
     l->skip();
     samp1=(QLineEdit *)(l->addLineEdit("samp1",
@@ -47,7 +64,7 @@ fontsDlg::fontsDlg(QWidget* parent,const char* name):Inherited( parent, name, TR
                                                        QString("Standard Font Test").data()))->widget);
     l->newLine();
     l->addLabel("l3", klocale->translate("Fixed Font"));
-    fixedFontName=(QComboBox *)(l->addComboBox("fixedFontName")->widget);
+    fixedFontName=(QComboBox *)(l->addComboBox("fixedFontName",fixedfl)->widget);
     l->newLine();
     l->skip();
     samp2=(QLineEdit *)(l->addLineEdit("samp2",
@@ -82,32 +99,23 @@ fontsDlg::fontsDlg(QWidget* parent,const char* name):Inherited( parent, name, TR
 
     l->activate();
     
-    fontSize->insertItem(klocale->translate( "Small") );
-    fontSize->insertItem(klocale->translate( "Normal" ));
-    fontSize->insertItem(klocale->translate( "Large" ));
-    fontSize->insertItem(klocale->translate( "Huge" ));
 
 
     connect (b1,SIGNAL(clicked()),this,SLOT(accept()));
     connect (b1,SIGNAL(clicked()),this,SLOT(save()));
     connect (b2,SIGNAL(clicked()),this,SLOT(reject()));
     fontSize->setCurrentItem(conf->readNumEntry("DefaultFontBase",3)-2);
-    QStrList stdfl,fixedfl;
-    getFontList( stdfl, "-*-*-*-*-*-*-*-*-*-*-p-*-*-*" );
-    //I add these, because some people may prefer all-fixed width fonts
-    //(for ascii art, I suppose)
-    getFontList( stdfl, "-*-*-*-*-*-*-*-*-*-*-m-*-*-*" );
-    stdFontName->insertStrList(&stdfl);
-    getFontList( fixedfl, "-*-*-*-*-*-*-*-*-*-*-m-*-*-*" );
-    fixedFontName->insertStrList(&fixedfl);
 
     connect (fixedFontName,SIGNAL(activated(int)),this,SLOT(syncFonts(int)));
     connect (stdFontName,SIGNAL(activated(int)),this,SLOT(syncFonts(int)));
-    stdFontName->setCurrentItem(stdfl.find
+    stdFontName->setCurrentItem(stdfl->find
                                 (conf->readEntry("StandardFont",QString("helvetica").data())));
-    fixedFontName->setCurrentItem(fixedfl.find
+    fixedFontName->setCurrentItem(fixedfl->find
                                   (conf->readEntry("FixedFont",QString("courier").data())));
     syncFonts(0);
+    delete stdfl;
+    delete fixedfl;
+    
     QColor c;
     c=QColor("white");
     bgColor->setColor(conf->readColorEntry("BackgroundColor",&c));

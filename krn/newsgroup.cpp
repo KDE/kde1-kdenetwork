@@ -638,7 +638,7 @@ void addToList(node *n,int dep,ArticleList *l)
     }
 }
 
-void ArticleList::thread(bool)
+void ArticleList::thread(bool threaded,int key1,int key2,int key3,int key4)
 {
     debug ("entered with-->%d",count());
     d=new QDict <node> (10271);

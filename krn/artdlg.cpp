@@ -45,6 +45,7 @@
 #include "fontsDlg.h"
 #include "findArtDlg.h"
 #include "rulesDlg.h"
+#include "sortDlg.h"
 
 #include "kmcomposewin.h"
 #include "kmreaderwin.h"
@@ -80,6 +81,7 @@
 #define NO_CACHED 26
 #define EDIT_RULES 27
 #define UPDATE_SCORES 28
+#define CONFIG_SORTING 29
 
 extern QString pixpath,cachepath;
 
@@ -91,6 +93,7 @@ extern KConfig *conf;
 
 findArtDlg *FindDlg=0;
 rulesDlg *RulesDlg=0;
+sortDlg *SortDlg=0;
 
 Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     :Inherited (_group->name)
@@ -107,12 +110,19 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
 
     if (!RulesDlg)
         RulesDlg=new rulesDlg();
+    if (!SortDlg)
+        SortDlg=new sortDlg();
     
     conf->setGroup("ArticleListOptions");
     unread=conf->readNumEntry("ShowOnlyUnread");
     showlocked=conf->readNumEntry("ShowLockedArticles");
     showcached=conf->readNumEntry("ShowCachedArticles");
-    
+
+    threaded=conf->readNumEntry("Threaded",true);
+    key1=conf->readNumEntry("SortKey1");
+    key2=conf->readNumEntry("SortKey2");
+    key3=conf->readNumEntry("SortKey3");
+    key4=conf->readNumEntry("SortKey4");
     
     taggedArticle=new QPopupMenu;
     taggedArticle->insertItem(klocale->translate("Save"),SAVE_ARTICLE);
@@ -159,6 +169,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     options->setItemChecked(NO_LOCKED,showlocked);
     options->insertItem(klocale->translate("Expunge"), EXPUNGE);
     options->insertItem(klocale->translate("Appearance..."),CONFIG_FONTS);
+    options->insertItem(klocale->translate("Sorting..."),CONFIG_SORTING);
     connect (options,SIGNAL(activated(int)),SLOT(actions(int)));
 
     QPopupMenu *scoring=new QPopupMenu;
@@ -271,6 +282,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     connect (list,SIGNAL(highlighted(int,int)),this,SLOT(loadArt(int,int)));
     connect (list,SIGNAL(midClick(int,int)),this,SLOT(markReadArt(int,int)));
     connect (list,SIGNAL(popupMenu(int,int)),this,SLOT(popupMenu(int,int)));
+    connect (list,SIGNAL(headerClicked(int)),this,SLOT(sortHeaders(int)));
     
     RmbPop *filter=new RmbPop(list);
     delete (filter->pop);
@@ -423,7 +435,7 @@ void Artdlg::fillTree ()
     
     statusBar()->changeItem(klocale->translate("Threading..."),2);
     qApp->processEvents ();
-    artList.thread(true);
+    artList.thread(true,key1,key2,key3,key4);
     
     //had to split this in two loops because the order of articles is not
     //the same in both article lists
@@ -519,6 +531,11 @@ bool Artdlg::actions (int action)
     case EDIT_RULES:
         {
             RulesDlg->show();
+            break;
+        }
+    case CONFIG_SORTING:
+        {
+            SortDlg->show();
             break;
         }
     case CONFIG_FONTS:
@@ -1387,4 +1404,10 @@ void Artdlg::openURL (const char *s)
         KMComposeWin *comp=new KMComposeWin(m);
         comp->show();
     }
+}
+
+
+void Artdlg::sortHeaders(int column)
+{
+    debug ("should sort");
 }

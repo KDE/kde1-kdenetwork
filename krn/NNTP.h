@@ -36,6 +36,13 @@
 
 #include "kmmessage.h"
 
+
+#define KEY_SUBJECT 1
+#define KEY_SCORE 2
+#define KEY_DATE 3
+#define KEY_SENDER 4
+#define KEY_STATUS 5
+
 class NNTP;
 
 class Article
@@ -92,7 +99,7 @@ class ArticleList: public ArticleListBase
 public:
     ArticleList();
     ~ArticleList();
-    void thread(bool sortBySubject=false);
+    void thread(bool threaded,int key1,int key2,int key3,int key4);
 };
 
 typedef QDictT<Article>ArticleDictBase;

@@ -14,7 +14,7 @@
 
 rulesDlg::rulesDlg():QWidget()
 {
-    TLForm *f=new TLForm("expiration",
+    TLForm *f=new TLForm("rules",
                          klocale->translate("KRN - Scoring Rules Editor"),
                          this);
     

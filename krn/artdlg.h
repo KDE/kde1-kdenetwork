@@ -51,6 +51,7 @@ public slots:
     void updateCounter(const char *);
     void openURL(const char *);
     void init (NewsGroup *_group, NNTP* _server);
+    void sortHeaders(int column);
 private slots:
     bool actions(int);
     bool taggedActions(int);
@@ -89,6 +90,11 @@ private:
     bool showcached;
     QStrList IDList;
     QList <int> depths;
+    bool threaded;
+    int key1;
+    int key2;
+    int key3;
+    int key4;
 };
 
 #endif // Artdlg_included
