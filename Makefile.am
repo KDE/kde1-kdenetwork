@@ -23,3 +23,9 @@ install-data-local:
 	@echo "****************************************************"
 	@echo ""
 
+messages:
+	@for subdir in $(SUBDIRS); do \
+	echo "Making messages in $$subdir"; \
+	  (cd $$subdir && $(MAKE) messages) \
+	done 
+	(cd po && $(MAKE) merge)

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1997-12-30 13:15+0100\n"
+"POT-Creation-Date: 1998-01-03 16:30+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -91,10 +91,6 @@ msgstr ""
 msgid "&Copy..."
 msgstr ""
 
-#: kmmainwin.cpp:552 kmmainwin.cpp:649
-msgid "&Delete"
-msgstr ""
-
 #: kmmainwin.cpp:563
 msgid "New Composer"
 msgstr ""
@@ -129,10 +125,6 @@ msgstr ""
 
 #: kmmainwin.cpp:582
 msgid "&Addressbook..."
-msgstr ""
-
-#: kmmainwin.cpp:593
-msgid "&Undo"
 msgstr ""
 
 #: kmmainwin.cpp:596
@@ -237,10 +229,6 @@ msgstr ""
 
 #: kmcomposewin.cpp:364 kmmainwin.cpp:684
 msgid "&Message"
-msgstr ""
-
-#: kmcomposewin.cpp:384 kmmainwin.cpp:685
-msgid "&View"
 msgstr ""
 
 #: kmcomposewin.cpp:422 kmmainwin.cpp:703
@@ -402,15 +390,15 @@ msgstr ""
 msgid "Indentation:"
 msgstr ""
 
-#: kmmessage.cpp:1088 kmsettings.cpp:302
+#: kmmessage.cpp:1102 kmsettings.cpp:302
 msgid "On %D, you wrote:"
 msgstr ""
 
-#: kmmessage.cpp:1089 kmsettings.cpp:306
+#: kmmessage.cpp:1103 kmsettings.cpp:306
 msgid "On %D, %F wrote:"
 msgstr ""
 
-#: kmmessage.cpp:1090 kmsettings.cpp:310
+#: kmmessage.cpp:1104 kmsettings.cpp:310
 msgid "Forwarded Message"
 msgstr ""
 
@@ -438,7 +426,7 @@ msgstr ""
 msgid "Select Account"
 msgstr ""
 
-#: kmaccount.cpp:64 kmfilterdlg.cpp:364 kmsettings.cpp:405
+#: kmaccount.cpp:64 kmfilterdlg.cpp:371 kmsettings.cpp:405
 msgid "Unnamed"
 msgstr ""
 
@@ -446,7 +434,7 @@ msgstr ""
 msgid "Choose Sendmail Location"
 msgstr ""
 
-#: kmcomposewin.cpp:1025 kmsettings.cpp:433
+#: kmcomposewin.cpp:1030 kmsettings.cpp:433
 msgid "Choose Signature File"
 msgstr ""
 
@@ -577,10 +565,6 @@ msgstr ""
 
 #: kmcomposewin.cpp:325
 msgid "New &Composer"
-msgstr ""
-
-#: kmcomposewin.cpp:337
-msgid "Undo"
 msgstr ""
 
 #: kmcomposewin.cpp:346
@@ -881,21 +865,53 @@ msgid ""
 "in %s"
 msgstr ""
 
-#: kmsender.cpp:101
-msgid ""
-"Please set the required fields in the\n"
-"identity settings:\n"
-"user-name and email-address"
-msgstr ""
-
-#: kmsender.cpp:120
+#: kmsender.cpp:87
 msgid ""
 "Please specify a send\n"
 "method in the settings\n"
 "and try again."
 msgstr ""
 
-#: kmsender.cpp:164
+#: kmsender.cpp:93
+msgid ""
+"Please set the required fields in the\n"
+"identity settings:\n"
+"user-name and email-address"
+msgstr ""
+
+#: kmsender.cpp:112
+msgid "You must specify a receiver"
+msgstr ""
+
+#: kmsender.cpp:123
+msgid "Cannot add message to outbox folder"
+msgstr ""
+
+#: kmsender.cpp:142
+msgid "Sending still in progress"
+msgstr ""
+
+#: kmsender.cpp:243
+msgid "Sending failed:"
+msgstr ""
+
+#: kmsender.cpp:357
+msgid ""
+"Please specify a mailer program\n"
+"in the settings."
+msgstr ""
+
+#: kmsender.cpp:395
+#, c-format
+msgid "Failed to execute mailer program %s"
+msgstr ""
+
+#: kmsender.cpp:403
+#, c-format
+msgid "Failed to pipe mail message into mailer program %s"
+msgstr ""
+
+#: kmsender.cpp:456
 #, c-format
 msgid ""
 "Cannot open SMTP connection to\n"
@@ -903,7 +919,15 @@ msgid ""
 "%s"
 msgstr ""
 
-#: kmsender.cpp:221
+#: kmsender.cpp:484
+msgid "Cannot close SMTP connection."
+msgstr ""
+
+#: kmsender.cpp:562
+msgid "network error"
+msgstr ""
+
+#: kmsender.cpp:564
 #, c-format
 msgid ""
 "Failed to send mail message\n"
@@ -912,16 +936,6 @@ msgid ""
 "\n"
 "Return code: %d\n"
 "Response: `%s'"
-msgstr ""
-
-#: kmsender.cpp:238
-msgid "Cannot close SMTP connection."
-msgstr ""
-
-#: kmsender.cpp:249
-msgid ""
-"Please specify a mailer program\n"
-"in the settings."
 msgstr ""
 
 #: kmacctseldlg.cpp:26
@@ -972,55 +986,55 @@ msgstr ""
 msgid "Down"
 msgstr ""
 
-#: kmfilterdlg.cpp:422
+#: kmfilterdlg.cpp:429
 msgid "<nothing>"
 msgstr ""
 
-#: kmfilterdlg.cpp:433
+#: kmfilterdlg.cpp:440
 msgid "ignore"
 msgstr ""
 
-#: kmfilterdlg.cpp:434
+#: kmfilterdlg.cpp:441
 msgid "and"
 msgstr ""
 
-#: kmfilterdlg.cpp:435
+#: kmfilterdlg.cpp:442
 msgid "unless"
 msgstr ""
 
-#: kmfilterdlg.cpp:436
+#: kmfilterdlg.cpp:443
 msgid "or"
 msgstr ""
 
-#: kmfilterdlg.cpp:442
+#: kmfilterdlg.cpp:449
 msgid "equals"
 msgstr ""
 
-#: kmfilterdlg.cpp:443
+#: kmfilterdlg.cpp:450
 msgid "not equal"
 msgstr ""
 
-#: kmfilterdlg.cpp:444
+#: kmfilterdlg.cpp:451
 msgid "contains"
 msgstr ""
 
-#: kmfilterdlg.cpp:445
+#: kmfilterdlg.cpp:452
 msgid "doesn't contain"
 msgstr ""
 
-#: kmfilterdlg.cpp:446
+#: kmfilterdlg.cpp:453
 msgid "regular expression"
 msgstr ""
 
-#: kmfilterdlg.cpp:452
+#: kmfilterdlg.cpp:459
 msgid "<message>"
 msgstr ""
 
-#: kmfilterdlg.cpp:453
+#: kmfilterdlg.cpp:460
 msgid "<body>"
 msgstr ""
 
-#: kmfilterdlg.cpp:454
+#: kmfilterdlg.cpp:461
 msgid "<any header>"
 msgstr ""
 
@@ -1062,65 +1076,97 @@ msgstr ""
 msgid "Please enter passphrase"
 msgstr ""
 
-#: kfileio.cpp:25
+#: kfileio.cpp:26
 msgid "File I/O Error"
 msgstr ""
 
-#: kfileio.cpp:44
+#: kfileio.cpp:45
 #, c-format
 msgid ""
 "The specified file does not exist:\n"
 "%s"
 msgstr ""
 
-#: kfileio.cpp:51
+#: kfileio.cpp:52
 #, c-format
 msgid ""
 "This is a directory and not a file:\n"
 "%s"
 msgstr ""
 
-#: kfileio.cpp:58
+#: kfileio.cpp:59
 #, c-format
 msgid ""
 "You do not have read permissions to the file:\n"
 "%s"
 msgstr ""
 
-#: kfileio.cpp:68
+#: kfileio.cpp:69
 #, c-format
 msgid ""
 "Could not read file:\n"
 "%s"
 msgstr ""
 
-#: kfileio.cpp:71 kfileio.cpp:121
+#: kfileio.cpp:72
 #, c-format
 msgid ""
 "Could not open file:\n"
 "%s"
 msgstr ""
 
-#: kfileio.cpp:74 kfileio.cpp:124
+#: kfileio.cpp:75
 #, c-format
 msgid ""
 "Error while reading file:\n"
 "%s"
 msgstr ""
 
-#: kfileio.cpp:91
+#: kfileio.cpp:92
 #, c-format
 msgid "Could only read %u bytes of %u."
 msgstr ""
 
-#: kfileio.cpp:118 kfileio.cpp:134
+#: kfileio.cpp:121
+#, c-format
+msgid ""
+"File %s exists.\n"
+"Do you want to replace it ?"
+msgstr ""
+
+#: kfileio.cpp:124 kfileio.cpp:142
+msgid "&Ok"
+msgstr ""
+
+#: kfileio.cpp:141
+#, c-format
+msgid ""
+"Failed to make a backup copy of %s.\n"
+"Continue anyway ?"
+msgstr ""
+
+#: kfileio.cpp:153 kfileio.cpp:170
 #, c-format
 msgid ""
 "Could not write to file:\n"
 "%s"
 msgstr ""
 
-#: kfileio.cpp:140
+#: kfileio.cpp:156
+#, c-format
+msgid ""
+"Could not open file for writing:\n"
+"%s"
+msgstr ""
+
+#: kfileio.cpp:160
+#, c-format
+msgid ""
+"Error while writing file:\n"
+"%s"
+msgstr ""
+
+#: kfileio.cpp:176
 #, c-format
 msgid "Could only write %d bytes of %d."
 msgstr ""
@@ -1240,4 +1286,8 @@ msgstr ""
 
 #: keditcl2.cpp:896
 msgid "Go"
+msgstr ""
+
+#: kmiostatusdlg.cpp:32
+msgid "&Abort"
 msgstr ""

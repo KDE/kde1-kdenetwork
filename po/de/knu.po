@@ -1,25 +1,21 @@
 msgid ""
 msgstr ""
+"Project-Id-Version: knu\n"
 "POT-Creation-Date: 1998-01-03 16:35+0100\n"
-"Content-Type: text/plain; charset=\n"
-"Date: 1997-10-26 20:32:21+0100\n"
-"From: Bertrand Leconte,,, <leconteb@arthur>\n"
-"Xgettext-Options: -C -a --keyword=_\n"
-"Files: CommandDlg.cpp HostDlg.cpp OptionsDlg.cpp PingDlg.cpp "
-"TracerouteDlg.cpp knu.cpp mCommandDlg.cpp mHostDlg.cpp mOptionsDlg.cpp "
-"mPingDlg.cpp mTracerouteDlg.cpp mknu.cpp\n"
+"PO-Revision-Date: 1997-01-03 16:14+0100\n"
+"Last-Translator: Stephan Kulow <coolo@kde.org>\n"
 
 #: knu.cpp:123 knu.cpp:256
 msgid "&Ping"
-msgstr ""
+msgstr "&Ping"
 
 #: knu.cpp:132 knu.cpp:261
 msgid "&Traceroute"
-msgstr ""
+msgstr "&Traceroute"
 
 #: knu.cpp:141 knu.cpp:266
 msgid "Host &resolution"
-msgstr "Résolution de noms"
+msgstr "Rechner-Namen"
 
 #: knu.cpp:156
 msgid ""
@@ -28,166 +24,141 @@ msgid ""
 "\n"
 "So I can't do anything...\n"
 msgstr ""
-"Il n'y a aucune commande autorisée\n"
-"dans le fichier de configuration.\n"
+"Es ist alle Kommandos in der\n"
+"Konfigurationsdatei ausgeschaltet.\n"
 "\n"
-"Donc je ne peux rien faire...\n"
+"Dann kann das Programm nichts tun...\n"
 
 #: knu.cpp:201
 msgid "&New window"
-msgstr "Nouvelle fenêtre"
+msgstr "&Neues Fenster"
 
 #: knu.cpp:204
 msgid "&Close window"
-msgstr "Fermer la fenêtre"
+msgstr "&Fenster schliessen"
 
 #: knu.cpp:215
 msgid "Select &all"
-msgstr "Selectionner tout"
+msgstr "&Alle auswählen"
 
 #: knu.cpp:218
 msgid "C&lear output window"
-msgstr "Effacer la fenêtre d'affichage"
+msgstr "Lösche Ausgabe-Fenster"
 
 #: knu.cpp:221
 msgid "P&references..."
-msgstr "Préférences..."
+msgstr "&Eigenschaften"
 
 #: knu.cpp:226
 msgid "&Contents"
-msgstr "Contenu"
+msgstr "&Inhalt"
 
 #: knu.cpp:231
 msgid "About &Qt"
-msgstr "About &Qt"
+msgstr "Über &Qt"
 
 #: knu.cpp:404
 msgid "About..."
-msgstr "A propos..."
+msgstr "Über..."
 
 #: CommandDlg.cpp:112
 msgid "H&ost:"
-msgstr "Machine :"
+msgstr "&Rechner:"
 
 #: CommandDlg.cpp:121
 msgid "&Go!"
-msgstr "Go !"
+msgstr "&Start"
 
 #: CommandDlg.cpp:131
 msgid "&Stop"
-msgstr "Stop"
+msgstr "Sto&p"
 
 #: CommandDlg.cpp:147
 msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
 msgstr ""
-"Cette commande n'a pas été trouvée. \n"
-"Vous pouvez donner son chemin par le menu Edition->Preferences..."
+"Das Programm für dies Kommando wurde nicht gefunden.\n"
+"Der Pfad für dieses kann im Eigenschaften-Menu geändert werden."
 
 #: CommandDlg.cpp:453
 msgid "Binary"
-msgstr "Binaire"
+msgstr "Programm"
 
 #: CommandDlg.cpp:461
 msgid "Path&name:"
-msgstr "Chemin du programme :"
+msgstr "P&fad:"
 
 #: CommandDlg.cpp:470
 msgid "Additional &arguments:"
-msgstr "Arguments additionnels :"
+msgstr "Zusätzliche Argumente:"
 
 #: CommandDlg.cpp:495
 msgid "This command had been disabled in the configuration file."
-msgstr "Cette commande a été disablé dans le fichier de configuration."
+msgstr "Dieses Kommando wurde in der Konfigurationsdatei ausgeschaltet."
 
 #: OptionsDlg.cpp:68
 msgid " - configuration"
-msgstr " - configuration"
+msgstr " -  Einstellungen"
 
 #: PingDlg.cpp:87 TracerouteDlg.cpp:88
 msgid "Make host &name resolution"
-msgstr "Faire les résolutions de noms"
+msgstr "Löse Rechner-Namen auf"
 
 #: HostDlg.cpp:217 PingDlg.cpp:143 TracerouteDlg.cpp:165
-#, fuzzy
 msgid ""
 "You have a problem in your ~/.kde/share/config/knurc configuration file.\n"
 "In the ["
-msgstr ""
-"You avez un problème dans votre fichier de configuration "
-"~/.kderc/share/config/knurc.\n"
-"Dans le groupe ["
+msgstr "Sie haben ein Problem in der Konfigurationsdatei ~/.kde/share/config/knurc.\n"
+"In der Gruppe ["
 
 #: HostDlg.cpp:221 PingDlg.cpp:147 TracerouteDlg.cpp:169
 msgid "] group, I cannotfind a correct \"path=\" entry."
-msgstr "], je n'ai pas trouvé un entrée \"path=\" correcte."
+msgstr ""
+"] ist kein korrekter \"path=\"-Eintrag."
 
 #: TracerouteDlg.cpp:105
 msgid "&Maximum number of hops:"
-msgstr "Nombre maximum de sauts :"
+msgstr "&Maximale Anzahl an Sprüngen"
 
 #: HostDlg.cpp:98
 msgid "address (A)"
-msgstr "adresse (A)"
+msgstr "Adresse (A)"
 
 #: HostDlg.cpp:99
 msgid "name (PTR)"
-msgstr "nom (PTR)"
+msgstr "Namen (PTR)"
 
 #: HostDlg.cpp:100
 msgid "name server (NS)"
-msgstr "serveur de noms (NS)"
+msgstr "Namens-Server (NS)"
 
 #: HostDlg.cpp:101
 msgid "mail exchanger (MX)"
-msgstr "échangeur de messages (MX)"
+msgstr "Server für Mail (MX)"
 
 #: HostDlg.cpp:102
 msgid "alias (CNAME)"
-msgstr "alias (CNAME)"
+msgstr "Alias (CNAME)"
 
 #: HostDlg.cpp:103
 msgid "start of authority (SOA)"
-msgstr "début d'autorité (SOA)"
+msgstr "Start der Autentifizierung (SOA)"
 
 #: HostDlg.cpp:104
 msgid "any record (ANY)"
-msgstr "tous les enregistrements (ANY)"
+msgstr "Alle Einträge (ANY)"
 
 #: HostDlg.cpp:110
 msgid "Se&arch for:"
-msgstr "Rechercher :"
+msgstr "Su&che nach:"
 
 #: HostDlg.cpp:122 HostDlg.cpp:268
 msgid "default server"
-msgstr "serveur par défaut"
+msgstr "Standard-Server"
 
 #: HostDlg.cpp:131
 msgid "Ser&ver:"
-msgstr "Serveur :"
+msgstr "Ser&ver:"
 
-#, fuzzy
-#~ msgid "&OK"
-#~ msgstr "Ok"
 
-#~ msgid "&Cancel"
-#~ msgstr "Annuler"
-
-#~ msgid "&About"
-#~ msgstr "A propos"
-
-#~ msgid "&Quit"
-#~ msgstr "Quitter"
-
-#~ msgid "&Copy"
-#~ msgstr "Copier"
-
-#~ msgid "&File"
-#~ msgstr "Fichier"
-
-#~ msgid "&Edit"
-#~ msgstr "Edition"
-
-#~ msgid "&Help"
-#~ msgstr "Aide"
