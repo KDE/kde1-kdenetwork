@@ -84,13 +84,12 @@ msgstr ""
 "\"%s\", og dermed slette dens innhold ?"
 
 #: kmmainwin.cpp:476
-#, fuzzy
 msgid "KMail notification!"
-msgstr "KMail-varsel"
+msgstr "KMail-varsel!"
 
 #: kmmainwin.cpp:477
 msgid "Only messages in the outbox folder can be edited!"
-msgstr ""
+msgstr "Kun meldinger i outboksen kan blir endret!"
 
 #: kmmainwin.cpp:512
 msgid "Message as Plain Text"
@@ -257,9 +256,8 @@ msgid "Previous unread"
 msgstr "Forrige ulest"
 
 #: kmmainwin.cpp:932
-#, fuzzy
 msgid "Edi&t..."
-msgstr "Skriv ut..."
+msgstr "Re&diger..."
 
 #: kmmainwin.cpp:935
 msgid "&Set Status"
@@ -567,7 +565,7 @@ msgstr "tøm søppelkurv ved avslutning"
 
 #: kmsettings.cpp:533
 msgid "Send Mail in outbox Folder on Check"
-msgstr ""
+msgstr "Send post i utboksmappen ved sjekking av mail"
 
 #: kmsettings.cpp:572
 msgid "Message Body Font"
@@ -1121,11 +1119,8 @@ msgid "Unknown command line option: %s"
 msgstr "Ukjent kommandolinjevalg: %s"
 
 #: kmacctlocal.cpp:69
-#, fuzzy
 msgid "Cannot open file:"
-msgstr ""
-"Kunne ikke åpne fil:\n"
-"%s"
+msgstr "Kan ikke åpne fil:"
 
 #: kmacctlocal.cpp:95
 #, c-format
