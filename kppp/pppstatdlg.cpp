@@ -36,7 +36,7 @@
 
 
 #include "pppstatdlg.h"
-#include "config.h"
+#include "kpppconfig.h"
 
 extern XPPPWidget *p_xppp;
 extern KApplication *app;

@@ -1,3 +1,20 @@
+Thu Jan 15 20:31:14 1998  Mario Weilguni  <mweilguni@sime.com>
+
+	* Ported kppp to use automake. 
+
+	* Since the rulefiles now have separate subdirectories, I have
+	removed the prefix (i.e. Spain/Spain_Inovia.rst -->
+	Spain/Inovia.rst). Since the old files still exist it should be no
+	problem for users of former kppp versions.
+
+	* renamed config.h to kpppconfig.h because it conflicts with the
+	default include file config.h, generated from autoconf
+
+Wed Jan 14 12:12:29 1998  Mario Weilguni  <mweilguni@sime.com>
+
+	* main.cpp: pressing Enter in ID_Edit moves focus to PW_Edit, in
+	PW_Edit moves focus to the connect-button
+
 Wed Jan 14 04:13:57 1998  Harri Porten  <porten@tu-harburg.de>
 
 	* fixed a bug that caused passwords to be spread among other accounts.

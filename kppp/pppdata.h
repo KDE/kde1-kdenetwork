@@ -39,7 +39,7 @@
 #include <unistd.h>
 #include <pwd.h>
 
-#include "config.h"
+#include "kpppconfig.h"
 
 // string lengths
 

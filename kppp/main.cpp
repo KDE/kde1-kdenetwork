@@ -312,6 +312,8 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
   MIN_WIDTH(ID_Edit);
   FIXED_HEIGHT(ID_Edit);
   l1->addWidget(ID_Edit, 1, 2);
+  connect(ID_Edit, SIGNAL(returnPressed()),
+	  this, SLOT(enterPressedInID()));
 
   PW_Label = new QLabel(this,"lablepw");
   PW_Label->setText(klocale->translate("Password:"));
@@ -323,6 +325,8 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
   MIN_WIDTH(PW_Edit);
   FIXED_HEIGHT(PW_Edit);
   l1->addWidget(PW_Edit, 2, 2);
+  connect(PW_Edit, SIGNAL(returnPressed()),
+	  this, SLOT(enterPressedInPW()));
 
   QHBoxLayout *l3 = new QHBoxLayout;
   tl->addSpacing(5);
@@ -462,6 +466,13 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
   }
 }
 
+void XPPPWidget::enterPressedInID() {
+  PW_Edit->setFocus();
+}
+
+void XPPPWidget::enterPressedInPW() {
+  connect_b->setFocus();
+}
 
 void XPPPWidget::log_window_toggled(bool on){
   

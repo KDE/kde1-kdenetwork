@@ -1,0 +1,936 @@
+<!doctype linuxdoc system>
+
+<!-- The Kppp Handbook.
+
+ -->
+
+<article>
+
+<!-- Title information -->
+
+<title>The Kppp Handbook
+<author>Bernd Johannes Wuebben, <tt/wuebben@kde.org/
+<date>Version 0.8.0, 25 December 1997
+<abstract>This Handbook describes Kppp Version 0.8.0
+
+<!-- Table of contents -->
+<toc>
+
+<!-- Begin the document -->
+
+
+<sect>Introduction
+<p>
+<p> <tt> PLEASE DON'T FORGET TO READ THE FREQUENTLY ASKED QUESTIONS! THANK YOU! </tt><p>
+kppp is a dialer and front end for pppd. It allows for interactive
+script generation and network setup. It will automate the dialing in
+process to your ISP while letting you conveniently monitor the entire
+process. Once connected kppp will provide a rich set of statistics
+and keep track of the time spent online for you. A build in terminal
+and script generator will enable you to set up your connection with ease.
+You will no longer need an additional terminal program such as seyon
+or minicom to test and setup your connection. kppp features elaborate
+phone cost accounting, which enables you to easily track you online
+costs.
+
+<p>
+I hope you will enjoy this dialer.
+<p>
+<tt>Bernd Johannes Wuebben</tt>
+<p>
+<htmlurl url="mailto:wuebben@kde.org" name="wuebben@kde.org"><p>
+<htmlurl url="mailto:wuebben@math.cornell.edu" name="wuebben@math.cornell.edu">
+<p>
+
+<sect>Installation
+<p>
+<p> <tt> PLEASE DON'T FORGET TO READ THE FREQUENTLY ASKED QUESTIONS! THANK YOU! </tt><p>
+<sect1>How to obtain Kppp
+<p>
+Kppp is an application for the KDE project <url url="http://www.kde.org">.
+Kppp can be found on <url url="ftp://ftp.kde.org/pub/kde/">, the main ftp site
+of the KDE project.
+
+<sect1>Requirements
+<p>
+In order to successfully compile Kppp, you need the latest versions of <tt> libkdecore</tt>
+and <tt> libkdeui</tt>. All required libraries as well as Kppp itself can be found
+on <url url="ftp://ftp.kde.org/pub/kde/">. 
+
+<sect1>Compilation and installation
+<p>
+<p> <tt> PLEASE DON'T FORGET TO READ THE FREQUENTLY ASKED QUESTIONS! THANK YOU! </tt><p>
+
+I haven't been able to test kppp on anything else but Linux, but you should
+be able to get pppd to work on a variety of platforms including but not
+limited to SVR4, Solaris 2, Linux, FreeBSD, NetBSD, SunOS 4, AIX 4, OSF/1 as long
+as you have pppd installed on those systems.
+
+<p>
+If wish to compile kppp on a platform  different from Linux, please check briefly the
+first couple of lines of  pppstats.cpp and make sure the defines and includes are O.K.
+Most like however they should be fine. Please inform me of any necessary changes.
+
+<p>
+Kppp needs write permission to /etc/resolv.conf if you want to be able
+to take advantage of its capability to let you specify the DNS addresses 
+in the DNS dialog.
+
+<p>
+Make sure that the pppd's option file which usually resides in <tt> /etc/ppp/</tt>
+exists, but is empty. pppd requires it to exist, but it must be empty otherwise
+pppd will not take its options from kppp.
+
+<p>
+In order to compile and install Kppp on your system, type the following in the base 
+directory of the Kppp distribution:
+<tscreen><verb>
+% ./configure
+% make
+% make install
+% chmod +s &dollar(KDE)/bin/kppp
+</verb></tscreen>
+
+<bf/Again:/ Should you run into problems, please report them to me. 
+
+<p>
+<sect1>Preparing Your Linux System for a PPP Connection
+<p>
+<p> <tt> PLEASE DON'T FORGET TO READ THE FREQUENTLY ASKED QUESTIONS! THANK YOU!</tt><p>
+In order for kppp/pppd to work your kernel must have ppp support compiled in. If this is
+not the case get yourself the latest version of 
+<url url="ftp://sunsite.unc.edu/pub/Linux/system/Network/serial/ppp/" name=pppd>
+from any of the popular Linux archives and recompile your kernel with ppp
+support enabled. Don't fret since this sounds scarier than it actually is.
+Don't forget to install pppd afterwards. If unsure whether you
+have a kernel with ppp support issue <tt>dmesg</tt> at the command prompt
+and look for something like this:<p>
+
+<tscreen><verb>
+PPP: version 2.3.0 (demand dialling)
+TCP compression code copyright 1989 Regents of the University of California
+PPP Dynamic channel allocation code copyright 1995 Caldera, Inc.
+PPP line discipline registered
+</verb></tscreen>
+
+<p>There were changes in the kernel PPP from Linux version 1.2.x to 2.0.x
+which forced the programming of a new pppd daemon. In most distributions,
+the pppd daemon can be found in <tt>/usr/sbin</tt>. For kernel versions 1.2.x, the
+correct version of the pppd daemon is 2.1; for kernel versions 2.0.x, the
+correct version is 2.2. or newer. If you don't know what version of the
+pppd daemon your system has, you can type:<p>
+
+<tscreen><verb>
+% pppd --version
+</verb></tscreen>
+
+<p>None of the pppd daemons actually have a --version option, but putting
+the option in will cause the pppd daemon to error out from a unrecognised
+option and print out a list of options, which includes the version of the
+pppd daemon. <p>
+
+<sect1>More about ppp/pppd
+<p>
+The following site may be of interest for further information about the 
+ppp protocol and pppd <url url="http://www.thoughtport.com:8080/PPP/index.html">
+<p>
+
+<sect>Setting up kppp
+<p>
+<p> <tt> PLEASE DON'T FORGET TO READ THE FREQUENTLY ASKED QUESTIONS ! THANK YOU!</tt><p>
+In order to set up kppp, start kppp and push the <tt>Setup</tt> button on kppp's
+main window. A new tab dialog will appear. 
+
+<sect1>Accounts<p>
+This dialog will display the accounts you have created. You must create at least
+one account.  The ``Reset Button'' will
+reset the accumulated cost for the selected account to zero. Typically you 
+want to press this button once a month after having consolidated your 
+telephone costs. 
+
+<sect1>Modem<p>
+<descrip>
+
+<tag/Modem Device/ Select the device appropriate for you hardware.
+
+<tag/Flow Control/ Select from Hardware (CRTSCTS), Software (XON/XOFF) and
+no flow control. The recommended setting is Hardware flow control.
+
+<tag/Modem Timeout/ This is the time in seconds that kppp waits for the 
+``CONNECT'' response from your modem after dialing into another modem. (Typically a modem
+of your IPS's modem pool ) I recommend a setting of about 30 seconds.
+
+<label id="lock files"> 
+<tag/Modem Lock File/ 
+Enter the path-name of the desired modem lock file.
+This is typically /var/lock/LCK.modem and you shouldn't change this
+to anything else unless you know what you are doing. Programs such
+as mgetty depend on the existence of such lock files and kppp will
+not work with mgetty if the lock file name is not set corretly.
+If you leave this edit-box empty, kppp will not attempt to create a 
+lockfile. Make sure that you don't use the option "lock" to pppd
+if you entered a modem lock file and thus want kppp to lock the modem,
+since the pppd option "lock" will induce pppd to try to lock the
+modemdevice. However since kppp already locked the device pppd
+will fail and kppp will display "pppd died unexpectedly".
+Make sure that you have permission to write to the lock file
+directory or kppp will display the error message:"Can't create lock file".
+
+
+<tag/Edit Modem Commands/ This will bring up a dialog which you will need
+to fill with modem commands appropriate for you particular modem. If you
+own a Hayes compatible modem you most likely won't need to change any of
+the defaults. I encourage you however to read  about the Hayes command
+in the Appendix of this documentation. The information supplied there 
+should also be of help in case  you experience trouble setting up a stable 
+connection with your ISP's modems.
+
+<tag/Query Modem/ Pushing the Query Modem Button will induce kppp to ask
+your modem to identify itself. On success your modems response will be
+displayed in a dialog. This may or may not prove to be informative depending
+on your modem.
+
+<tag/Termial/ Pushing the <tt>Terminal</tt> button will bring up a mini terminal.
+You can use the mini terminal to test your modem and experiment with  the 
+negotiation protocol for initiating a ppp connection with you ISP. You no 
+longer need a terminal program such as minicom or seyon.
+
+</descrip>
+<p>
+
+<sect1>More ...<p>
+<descrip>
+
+<tag/pppd Path/ Specify the location of your pppd binary. It is very
+important that you are sure that this is
+in fact the pppd binary and not a pointer to a script which invokes pppd. 
+Otherwise kppp will not function properly.
+ 
+<tag/pppd Timeout/ kppp will wait this amount of time after running the script
+and starting pppd for pppd to establish a valid ppp link before giving up
+and killing pppd.
+
+<tag/Enter is:/ Choose the correct ``Enter'' character sequence for your modem.
+Most modems will use ``CR/LF''. However some modems need a different setting.
+If you experience trouble while running a script: Play with this parameter.
+
+<tag/Automatic Redial on Disconnect/ Selecting this will have kppp try to 
+reconnect in case you inadvertently got disconnected while online.
+
+<tag/Show Clock on Caption/ This will have kppp display the time connected
+on the caption of the kppp window displayed while being online.
+
+<tag/Disconnect on X-server shutdown/ Checking this option will cause kppp
+to terminate the ppp link, disconnect the modem and terminate accounting
+in an orderly fashion when the X-server shuts down. This is useful if
+you are prone to forget to shut down kppp on X-server exit or simply
+don't want to have to worry about disconnecting your connection.
+If you don't want kppp to hang up the modem on X-server exit, you should
+leave this checkbox unchecked. Be aware however, that if you have accounting
+enabled, and you don't want kppp to hang up on X-server exit,  you will 
+have a nonterminated accounting entry in you accounting logs, when the
+X-server exits and kppp terminates.
+
+</descrip>
+<p>
+
+
+<sect>Configuring an Account<p>
+<sect1>Dial<p>
+<descrip>
+<tag/Connection Name/ You must give the account a name
+<tag/Phone Number/ Specify the phone number to dial. You may use character such
+as ``-'' to make the number more legible.
+<tag/Connection Speed/ Choose from the list of connections speeds supported by
+your serial port.
+<tag/Execute Program upon Connect/ kppp will attempt to execute the command specified
+here once a ppp link has been set up. 
+
+<label id="pppd arguments"><tag/Edit default pppd/ This will bring up the pppd arguments dialog. You may use
+this dialog to add any desired options that you want kppp to hand to pppd. Make
+sure that it always contains the -detach option. See the pppd man page for a
+list of available options. Unless you know exactly what you are doing you should
+restrain from tinkering with the pppd options.
+
+</descrip>
+<sect1>IP<p>
+
+<descrip>
+<tag/Dynamic IP Address/ Check this if your ISP uses dynamic IP address assignment.
+That is your IP address will most likely change every time you establish a connection.
+
+<tag/Static IP Address/ Check this is your ISP has given you a static IP address.
+In that case you will also need to fill in that address and any Subnet Mask
+if applicable. Ask your ISP if unsure.
+
+<tag/Auto-configure Hostname form this IP/ Select this option if you want 
+kppp to set the hostname and domain for your machine after successful
+setup of a ppp link on connect.
+This is done by querying the defined Domain Name Server with the ip
+assigned for the ppp link.
+This option is useful for those stand-alone machines which want to
+use protocols like talk which require the hostname to be the same as your
+machine is known in the Internet.
+It overrides the Domain Name Option in the  DNS Section.
+The machine defaults are restored to the original values 
+when you close the ppp link 
+Be careful when choosing this option: It may prove useful to you, but
+it may also cause lots of undesired side effect. Just play with it ...
+
+</descrip>
+<p>
+
+<sect1>DNS<p>
+<descrip>
+<tag/Domain Name/ Specify the domain name for your machine.
+  As with DNS Addresses it is restored to the original specified in /etc/resolv.conf
+  when the connection goes down.
+  If it is left blank no changes are made to the domain name specified
+  in /etc/resolv.conf
+
+<tag/DNS Servers/ Add the Domain Name servers assigned to you by your ISP.
+You must specify at least a Domain Name server for your OS to be able
+to resolve human readable IP addresses such as ftp.kde.org. The DNS server
+addresses supplied must be in numeric form, e.g 128.231.231.233. The
+addresses will be added at runtime to /etc/resolv.config.
+
+<tag/Disable existing DNS Servers during Connection/ Select this option if 
+you want kppp to disable already existing nameserver entries
+in /etc/resolv.conf during connection.
+
+</descrip>
+<p>
+
+<sect1>Gateway<p>
+<descrip>
+<tag/Default Gateway/ Check this if you want pppd to use the default Gateway
+for your machine.
+<tag/Static Gateway/ Check this if you want to specify the Gateway to be used.
+
+</descrip>
+<p>
+
+<sect1>Login Script<p>
+<descrip>
+<tag/Edit Script/ Use this dialog to compose a dial in script for your ISP
+dialup connection. Use the mini-terminal and the information supplied by
+your ISP to understand which sequence of actions needs to be executed.
+<p>
+<itemize>
+<item>Expect: kppp will wait for the specified string to be received.
+<item>Send: kppp will send the specified string.
+<item>Pause: pause for the specified number of seconds
+<item>Hangup: kppp will send the hangup command to the modem
+<item>Answer: kppp will set the modem into answer mode
+<item>Timeout: change the default timeout to the specified number of seconds
+dynamically during script execution. You can change the timeout several times
+during script execution if necessary.
+
+<item>Prompt: Prompt the kppp user to enter a string, given the specified
+ string as a hint.  The user will see what is typed.
+
+<item>PWPrompt: Prompt the kppp user to enter a string, given the specified
+ string as a hint.  An asterisk will be printed for each character typed.
+
+<item>ID: If the ID field on Kppp's main dialog is filled in, send that ID.
+ If the ID field is not filled in, prompt the kppp user to enter an ID, 
+ given the specified string as a hint. The user will see what is typed.
+ On a second pass, such as in a loop on the second iteration, a prompt
+ will be displayed, given the specified string as a hint.
+
+<item>Password: If the password field on Kppp's main dialog is filled in, send that 
+ password. If the password  field is not filled in, prompt the kppp user to enter 
+ a password given the specified
+ string as a hint.  An asterisk will be printed for each character typed.
+ On a second pass, such as in a loop on the second iteration, a prompt
+ will be displayed, given the specified string as a hint.
+
+<item>LoopStart: kppp will wait for the specified string to be received.
+ It will save the string for use by LoopEnd
+
+<item>LoopEnd: kppp will wait for the specified string to be received to
+exit the loop.  If the string given by the corresponding LoopStart is
+received first, it will trigger a jump to the line after the LoopStart,
+enabling repetition of username/password style paired dialogs.
+
+</itemize>
+<p>
+
+</descrip>
+<sect2>Example scripts<p>
+
+Here is a simple script I could use to connect to my ISP:
+
+<tscreen><verb>
+Expect      ID:                        # wait for ID:
+Send        myid                       # you have to substitute myid with your id
+Expect      word:                      # wait for 'password'
+Send        4u3fjkl                    # send my password '4u3fjkl'
+Expect      granted                    # My ISP send 'Permission granted' on login success.
+Send        ppp                        # This starts a ppp connection for 
+                                       # me on the ISP side.
+</verb></tscreen>
+
+Here a script for the same account with ID and password prompt: This 
+script will prompt for ID and password each time, no matter what is
+typed into the ID and password field on Kppp's main dialog. This script
+also illustrated the use of the LoopStart/LoopEnd structure. If something
+goes wrong during the login procedure, for example if I mistype the password,
+my ISP will print an error message and restart the id/password loop by issuing
+the string "ID:" again. If the string "ID" is caught before the LoopEnd keyword
+was parsed, kppp will start the script again after the LoopStart keyword.
+
+<tscreen><verb>
+LoopStart   ID:                        # wait for ID:
+Prompt      Enter ID:                  # Prompt me for my ID and send it off.
+Expect      word:                      # wait for 'password'
+PWPrompt    Enter Password:            # Prompt me for my password and send it off.
+LoopEnd     granted                    # My ISP send 'Permission granted' on login success.
+Send        ppp                        # This starts a ppp connection for me
+</verb></tscreen>
+
+Here is the script that I actually use to connect to my ISP: This 
+script will prompt for ID and password only if I haven't filled in 
+the respective fields on kppp's main dialog.
+
+<tscreen><verb>
+LoopStart   ID:                        # wait for ID:
+ID          Enter ID:                  # Prompt me for my ID and send it off.
+Expect      word:                      # wait for 'password'
+Password    Enter Password             # Prompt me for my password and send it off.
+LoopEnd     granted                    # My ISP send 'Permission granted' on login success.
+Send        ppp                        # This starts a ppp connection for me
+                                       # on the ISP side
+</verb></tscreen>
+
+<p>
+
+
+<sect1>Accounting<p>
+<descrip>
+<tag/Accounting Setup/ Use the ``Enable accounting'' button to enable/disable
+phone cost accounting. Select a rule  appropriate for your region. If
+you can't find a rule for your region you will have to write one by following
+the supplied <tt>TEMPLATE</tt> in <tt>&dollar(KDEDIR)/share/doc/HTML/en/kppp/</tt>. Don't
+be afraid though it is really easy. Don't forget to submit your newly created
+rules file to me. The newly created rules file can be checked for valid
+syntax with the -r rule_file command line option to kppp. and
+must be installed in <tt>&dollar(KDEDIR)/share/apps/kppp/Rules</tt> or in 
+<tt>&dollar(HOME)/.kde/share/apps/kppp/Rules</tt> before you will be able to select it on this
+dialog.
+
+</descrip>
+<p>
+
+
+
+
+<sect>Using kppp<p>
+<sect1>Command Line Options<p>
+kppp supports the following command line options:<p>
+
+<tscreen><verb>
+% wuebben: kppp -h
+% kppp -- Valid options:
+% -h describe command line options
+% -c account_name : connect to account account_name
+% -r rule_file: check syntax of rule_file
+% -q quit after connection has been terminated
+</verb></tscreen>
+<p>
+
+<itemize>
+<item> -h will describe the available command line options.
+<item> -c will try to connect straight away to the given account without
+bringing up kppp's main dialog. This option may be interesting to the impatient.
+<item> -r will check the specified rules file for valid syntax. This
+options is very useful when writing new phone time rules files.
+</itemize>
+<p>
+
+<sect1>Normal Usage<p>
+To be written .... ( Make sure to fill in all the necessary information in the
+kppp dialogs and create an account before trying to use kppp )
+<p>
+
+<sect>Modem Tricks & Hints<p>
+This section should get the fearful started on the (not so) arcane art
+of modem tweaking.  The commands here are all Hayes AT standard, but
+all modems are not equal, so your mileage may vary.
+
+<sect1>Modem Sessions<p>
+
+A Modem session allows you to interact with the modem directly.
+You type commands, and it will respond.  To obtain a modem session, when no 
+connection is active, go into Settings/More/Terminal dialog.  This will open 
+a window for interactive configuration of the modem.  Try typing <bf>ATZ</bf> (which 
+resets your modem)  Your should get an <bf>OK</bf> response.  use File/Quit to 
+end the session.
+
+<sect1>Modem Profiles<p>
+One reason you might want to send the modem commands directly is
+if you have a set of modem configurations you want to keep, and not
+have to specify for every connection.  A good way to do that is via modem
+profiles.   Modems can have several stored profiles numbered 0,1,...  <bf>AT&amp;V</bf>
+can be used to view them all.  The default profile is usually 0 (this 
+can be changed via <bf>AT&amp;Y</bf>.) The profile currently in use is called the "active" 
+profile.
+<P>
+When you change a setting, the active profile is modified.  The <bf>ATZ</bf> command 
+will have the modem load the default profile, erasing any changes you 
+have made.  To save changes,  Load the profile you
+want to change via <bf>ATZ</bf><em>n</em> (where <em>n</em> is the profile number).  Make the
+changes you want, then save it with <bf>AT&amp;W<em>n</em></bf>.  To have kppp use the profile
+you want, change the modem initialization string
+(Settings/More/Modem/Modem Commands/Initialization String.)  For example
+<bf>ATZ1</bf> will have the kppp reset the modem and use stored profile #1.
+<p>
+If you want reset you modem to get back to some known starting point, use
+<bf>AT&amp;F&amp;W</bf> to set the active profile to the factory defaults, and store those
+settings as the default profile.  
+<p>
+Example of profile changes are in the next section.
+
+<sect1>Getting the modem to hang up<p>
+Sometimes, you may find kppp has difficulties hanging up the modem.  This
+is likely the result of a mismatch between kppp settings and those of the modem.
+A standard modem uses two methods to decide to hangup:  Command, and DTR.
+The Command method involves sending an escape sequence to the modem, which puts 
+it in command mode, then issuing the hangup command (ATH).   
+<P>
+Outside of kppp, when configuring the pppd package manually, it's often helpful
+to use the command method, so that one can exit a terminal session, and then
+start pppd without having the modem hangup.  In most other situations, the
+DTR method is preferred, as it is simpler.
+
+<sect2>DTR (AT&amp;Dn) method<p>
+The DTR method will have the modem hangup whenever kppp stops using the modem. 
+If you obtain a modem session, and query the state via AT&amp;V, and the among
+the settings displayed for the active profile are &amp;D0, then the DTR hangup
+method is disabled.  To enable the DTR method Use the Setup/More/Terminal to 
+get a modem session. Then:
+
+<tscreen><verb>
+ATZ		# reset to default profile
+AT&amp;D2		# Set to hang up on DTR drop.
+AT&amp;W		# Write to default profile
+</verb></tscreen>
+
+<sect3>How The DTR Method Works<P>
+Whenever the Data Terminal Ready (DTR) line on the serial line between the host computer
+and the modem goes high, the modem hangs up.  When kppp opens the serial port, the 
+DTR line is pulled low, on an external modem, you can see the DTR (or TR) light 
+come on when this happens.  When the TR light goes out (because kppp has closed
+the serial port, or something worse!), the modem will hangup.
+
+<sect2>Command Method<p>
+The other way to have a modem hang up when connected (used when AT&amp;Dn where n is 
+not 2) is to have the modem accept the command when a session is in progress.  To 
+have it hangup properly, Get a modem session, and set the guard time to a short 
+interval like so:
+
+<tscreen><verb>
+ATZ
+ATS12=5
+AT&amp;W
+</verb></tscreen>
+
+Then use the Settings/More/Modem Commands/Guard Time slider to match the register
+(S12) value to match (5)  The modem should then hangup properly.
+
+<sect3>How The Command Method Works<P>
+When the local modem is connected to a remote modem, it is in the "connect" state, where
+it passes all the characters it receives to the remote modem without interpretation.
+To have the modem accept the characters as commands for itself, one must put the 
+modem into the command state.  The escape code does this.
+<P>
+The escape code is defined as a being three intervals of time whose length
+is defined by S12 (in fiftieths of a second.)
+
+<itemize>
+
+<item>Quiet (must last more than S12/50 seconds)
+
+<item>Escape character (defined by register S2, default is "+") 
+<P>
+repeated three times (less than S12/50 seconds between each)
+
+<item>Quiet (must last more than S12/50 seconds)
+
+</itemize>
+<P>
+Once the modem is in the command state, you can send it commands.  To have
+it hang up. Sent ATH.  The escape codes and hangup string used by kppp
+are shown in the Setup/More/Modem Commands dialogs.  These should match
+your modem.
+
+<sect1>Make Tone Dialing Faster<p>
+
+If you can use tone dialing, the amount of time it takes to dial can be 
+changed using the S11 register.  It gives the duration (in 100ths of a second)
+to send each tone while dialing.  The default is usually 95 (almost a second.)
+How fast you can dial depends on the phone company's switching equipment which
+handles your line.  The minimum duration is 50, almost twice as fast, and
+that speed often works. 
+
+<tscreen><verb>
+ATZ		# reset to default profile
+ATS11=50	# fastest possible dialing, use a higher number if it doesn't work.
+AT&amp;W		# Write to default profile
+</verb></tscreen>
+
+
+<p>
+<sect>PAP and CHAP<p>
+
+Starting with version 0.9.1 kppp supports directly the most commonly used
+form of PAP authentification. The section 'PAP and CHAP with Kppp' will
+descript how to make PAP and CHAP work with Kppp in general, while the
+section 'PAP with Kppp' will describe in detail how take advantage
+of Kppp's build in support for the most commonly encounter version of
+PAP wich is  widely used by commercial Internet Service Providers (ISP). 
+
+<sect1>PAP and CHAP with Kppp<label id="PAP">
+<p>
+
+The following is based on an email by <url url="kbrown@pdq.net" name="Keith Brown">
+and explains how to make kppp work for a generic PAP or CHAP account. If
+your ISP just gave you a user id and a password for a PAP account the odds
+are that you can skip this section and that you will get by just reading the 
+next one entitled 'PAP with kppp'.
+<p>
+
+PAP seems a lot more complicated at first glance than it really is.
+The server (the machine you are connecting to) basically tells the client
+(your machine) to authenticate using PAP. The client (pppd) looks in a
+specific file for an entry that contains a matching server name and client's
+name for this connection, and then sends the password it finds there. That's
+about it! Now, here's how to make that happen. I am assuming a pppd version
+of 2.2.0 and a standard installation of configuration files under /etc/ppp.
+<p>
+
+For the purposes of illustration, pretend that I have an Internet account
+with 'glob.net', under the user name 'booger', and a password of 'foobar'.
+First, I need to add all this to the file <tt>/etc/ppp/pap-secrets </tt>. 
+The format of an entry for our purposes, is:<p>
+
+<tscreen><verb>
+USERNAME  SERVERNAME   PASSWORD
+</verb></tscreen>
+
+<p>
+so I add the line:
+
+<tscreen><verb>
+booger  glob  foobar
+</verb></tscreen>
+
+<p>
+to the file and save it. Note: I can use any name for the server I wish
+as long as I use the same name in the pppd arguments, as we'll see shortly.
+I have shortened it to 'glob'. This name is just used to locate the correct
+password.<p>
+
+Now, I need to set up my connection in kppp. The basics are the same
+as any other connection, and I won't go into details here, except to say
+that you probably want to make sure that the <tt>/etc/ppp/options,</tt> is empty,
+and you probably don't want any login script either. Now, in the settings
+dialog, at the bottom, is the pppd arguments button. This brings up a dialog
+similar to the one used for editing the login script. Here we enter values that
+will be sent to pppd as command line arguments, and in the case of multiple-value
+arguments, we need to enter each value as a separate entry in the listbox,
+in the correct order.
+<p>
+
+We can put any other arguments in here we want first. Usually you would
+want to hand kppp 
+the default options '-detach' and 'defaultroute'.
+Now we need to add arguments that pppd needs to handle PAP authentication.
+In this example I am going to add 'user', 'booger', 'remotename', 'glob',
+in that order. The user argument tells pppd what user name to look for
+in pap-secrets, and send to the server. The remotename is only used by
+pppd to match the entry in the pap-secrets file, and is not sent to the
+server, so once again, it can be anything I want as long as it is consistent
+with the entry in the pap-secrets file.<p>
+
+That's all there is to it. You should now be able to set up your own
+connection to a server with PAP authentication. CHAP should not be much
+different. See the Linux Network Administrators' Guide for chap-secrets
+file format and pppd arguments used. The rest should be gravy, but...your
+mileage, ah you know the rest.</P>
+
+
+<sect1>PAP with Kppp<p>
+
+There are two different ways to use PAP:
+
+<sect2> Client side authentication<p> 
+This variant is used by many
+commercial ISPs. It basically means that you (or your computer) must
+authenticate yourself to the ISPs PPP server. The PPP server must not
+authenticate himself to your computer, but typically this is not necessary
+since you know which computer you are connected to (because the connection was
+estableshed by yourself). So this is no major security issue. kPPP supports
+this variant directly. See below for instruction how use this one.
+
+<p>If your ISP just gives you a username and a password and tells you to use
+PAP authentication you must use this variant.
+
+<sect2> Two way authentication<p> 
+Same as above, but your computer requires the
+ISP PPP server to authenticate himself. In order to establish a connection, 
+you must choose the authentication method <it>Script based</it>,
+not <it>PAP</it>, and you will have to manually have edit
+<tt>/etc/ppp/pap-secrets</tt>. While kppp doesn't provide build in support
+for this variant -- it is nevertheless easy to establish a connection
+using this variant of PAP with kppp. The details are described in the
+previous section 'Using PAP and CHAP with kppp'.
+
+
+<sect2>Preparing kPPP for PAP<p>
+<enum>
+<item> Make sure that the <tt>/etc/ppp/options</tt> (and <tt>~/.ppprc</tt> if
+you do have such a file) does <bf>not</bf> contain one of the arguments:
+<itemize>
+<item>+pap
+<item>-pap
+<item>papcrypt
+<item>+chap
+<item>+ua
+<item>remotename
+</itemize><p>
+It is very unlikely that one of those arguments is already in there, but just
+to be sure.
+
+<item>Start kPPP
+<item>Click on <it>Setup</it>
+<item>Choose the account you want to use PAP with and click on <it>Edit</it>
+<item>Click on the <it>Dial</it> tab.
+<item>Select <it>PAP</it> in the checkbox <it>Authentication</it>
+<item>If do not want to retype the password each time you dial in, select
+<it>Store password</it>. This will save the password. Make sure that nobody
+other than you has access to your account, otherwise this person will have
+access to your password.
+<item>That's it. Close the dialogs, type in your the username and password
+your ISP supplied to you and dial.
+</enum>
+
+<p>
+<sect>Questions and answers<p>
+<sect1>Frequently Asked Questions<p><label id="kppp FAQ">
+<sect2>I can't get kppp to work. kppp tells me that pppd has died! <p>
+Did you read the this manual carefully? Here once more the most common
+pitfalls.
+
+<itemize>
+
+<item> Make sure that pppd is the actual pppd binary not a script
+
+<item> Make sure that your /etc/ppp/options file exists, but is empty!
+
+<item> Make sure that you DON'T use the options "lock" as an argument
+    for pppd (kppp is already taking care of device locking )
+<item> RedHat users: remove the "lock" option from your /etc/ppp/options 
+       file!
+
+<item> Make sure you set the right permission. In case of trouble
+    you might want to run it as root first and then later, when
+    everything is working o.k give it less harmful permission if you can not
+    afford to run kppp setuid root. The proper way to proceed would probably
+    be creating a "modem" group.
+
+</itemize>
+
+<sect2>kppp tells me ``Sorry, can't open the modem''.
+<p>
+
+This means that kppp doesn't have permissions to open the modem
+device or that you selected a modem device on the Modem Tab Dialog that is
+not valid. First make sure you selected the right modem device. Once you are
+sure you have selected the right modem device, you must 
+give kppp the right permission to access the modem 
+device and to be able to modify /etc/resolv.conf in case you want kppp to 
+configure DNS correctly for you. If you can afford to run kppp setuid root
+this would solve all access problems for you, if not you will have to figure
+out what the right permissions are for your purposes. In order to give
+kppp setuid root permissions do the following:
+
+<tscreen><verb>
+% su root
+% chown root:root &dollar(KDEDIR)/bin/kppp
+% chmod +s &dollar(KDEDIR)/bin/kppp
+% exit
+</verb></tscreen>
+<p>
+
+<sect2>kppp tells me it can't create a modem lock file.<p>
+This in most instances means that you have installed kppp
+without SETUID bit on while you, the person executing kppp, 
+doesn't have write access to the lock file directory which
+by default is /var/lock. This for example is the case on 
+RedHat systems. Check the modem dialog for the
+precise location you have chosen. The solution is easy --
+either run kppp SETUID if you can afford to, or give regular
+users write access to /var/lock or create a modem group
+that will have access to the /var/lock file.
+<p>
+
+<sect2>Why is Kppp installed with the SETUID bit on?
+<p>
+
+There is no need for the SETUID bit, if you know a bit of Unix systems 
+administration. Simply create a modem group, add all users that you
+want to give access to the modem to that group and make the modem
+device read/writeable for that group. Also if you wnat DNS configuration
+to work with Kppp, then /etc/resolf.conf must be read/writeable by the
+members of that group. 
+
+Please do not critisize me for installing Kppp with setuid bit
+on, I simply can no longer handle the amount of mail I used to get from
+desperate users who had problems getting kppp to work because they 
+didn't understand enough about Unix and device permissions.
+
+
+<sect2>kppp just sits there and waits: Expecting OK
+<p>
+Have you played with the CR/LF setting?
+
+<p> Your modem might not sustain
+a fast initialisation. Turn off the 'Modem sustains fast initialisation'
+button on the Modem tab dialog.
+<p>
+
+<sect2>How do I make kppp send a \n or a \r?
+<p>
+Just send an empty string such as in the following script:
+<tscreen><verb>
+Send                                   # send an empty string
+Expect      ID:                        
+Send        itsme                     
+Expect      word:                      
+Send        forgot                    
+Expect      granted                    
+Send        ppp                        
+                                       
+</verb></tscreen>
+
+<sect2>kppp complains: "Can't create lock file"
+<p>
+
+This means that you don't have permissions to create a lock file.
+If for example you have specified '/var/lock/LCK..modem" on the
+modem dialog tab, you must have write permission to write
+to /var/lock/. This is of course no problem if you have
+given kppp setuid permissions. Please read the section on <ref id="lock files">.
+
+<p>
+<sect2>Can I do PAP and CHAP with kppp?
+<p>
+Yes you can. Please the see the section on using <ref id="PAP" name="PAP and CHAP"> 
+with kppp in the appendix. Actually, I receive more an more requests for
+detailed information about how to use PAP nor CHAP with kppp. 
+If you are using PAP and CHAP with kppp, I would very much appreciate 
+submissions of
+detailed step by step explanations of how to do PAP and/or CHAP with kppp.
+I would then include this here in the kppp documentation. I am sure
+this would be of help to a great number of beginners. Please consider
+helping out and giving something back in return for kppp. Thanks!
+<p>
+
+<sect2>How do I write a telephone cost rules file?<p>
+Just follow the TEMPLATE rules files supplied with kppp. You should be
+able to find a copy in the <tt>&dollar(KDEDIR)/doc/HTML/kppp</tt>. 
+Use the -r kppp command line options to check the syntax of your proposed
+rules file.
+<p>
+
+<sect2>I have written a telephone cost rules file for my region. Where can I 
+submit it so that others can make use of it?
+<p>
+I would love to receive any rule files written. I will make them available
+on my kppp <url url="http://math.cornell.edu/~wuebben/kppp/kppp.html" name="web page">.
+Before you send me a new rules file make sure it is not already available on 
+the kppp web page. Then email the new rules file  to 
+<url url="mailto:wuebben@math.cornell.edu" name="me">.
+<p>
+
+<sect2>My country observes a moving holiday different from easter.<p>
+In that case you need to write new code that allows for the computation of that
+holiday. Please have a look at ruleset.cpp and emulate the ``easter'' example.
+Then send <url url="mailto:wuebben@math.cornell.edu" name="me"> the patches.
+<p>
+
+<sect>Thanks
+<p>
+I would like to thank the following people for contributions to kppp:<p>
+<itemize>
+<item><url url="mailto:jesus.fuentes@etsi.tel.uva.es" name="Jesus Fuentes Saaverdra"> for implementing several options and miscellaneous work.
+
+<item><url url="mailto:mweilguni@sime.com" name="Mario Weilguni">  for his work one phone time accounting.
+
+<item><url url="mailto:wuebben@eure.de" name="Markus Wuebben"> for the ATI query dialog.
+<item><url url="mailto:porten@tu-harburg.de" name="Harri Porten"> for his kconfig related work.
+
+<item><url url="mailto:peter.silva@videotron.ca" name="Peter Silva"> for pop up dialogs
+and other contributions.
+</itemize>
+<p>
+
+
+<sect>Appendix
+<p>
+<sect1>The Hayes Modem Command Set
+<p>
+<url url="hayes.html" name="The Hayes Command Set"> might come handy if you 
+need to fine-tune your modem commands.
+<p>
+
+
+<sect1>kppp related files<p>
+By default Kppp makes use of the following files and directories. The location
+of some of those can be changed at compile time.
+
+<tscreen><verb>
+&dollar(KDEDIR)/bin/kppp
+&dollar(KDEDIR)/share/doc/HTML/.../kppp/*
+&dollar(KDEDIR)/share/apps/kppp
+&dollar(KDEDIR)/share/apps/kppp/Rules
+&dollar(HOMEDIR)/.kde/share/apps/kppp
+&dollar(HOMEDIR)/.kde/share/apps/kppp/Rules/*.rst
+&dollar(HOMEDIR)/.kde/share/apps/kppp/Log/*
+&dollar(HOMEDIR)/.kde/share/config/kppprc
+</verb></tscreen>
+
+<!-- Mario -->
+<sect1>Reporting problems with kppp<p>
+Before reporting a problem or potential but to the 
+<htmlurl url="mailto:wuebben@kde.org" name="maintainer"> of kPPP, 
+please make sure that you have read the section <ref id="kppp FAQ"
+name="Frequently asked Questions"> carefully.
+
+If you still have problems, you need to include the following informations
+with your report:
+<itemize>
+<item>The version of kPPP you are using. <it>kppp -v</it> will show the
+version number.
+<item>The version of pppd you are using. <it>/usr/sbin/pppd -h</it> will show
+the number.
+<item>What operating system and version you use. <it>uname -a</it> will tell you this
+information on most UNIX systems.
+<item>If kPPP reports "pppd died unexpectedly", add the <it>debug</it> option
+to the <ref id="pppd arguments" name="pppd arguments">. Dial again to
+reproduce the error.<p>
+Now the file <tt>/var/log/messages</tt> (this depends on your system and
+configuration, but a typically installed Linux system will have this. Of
+course you must have root permissions to read this file) will have a lot of
+debugging output at the end. <bf>Don't send us the whole file</bf>. It
+typically has several thousands of lines and we neither have time nor are we
+willing to process such a file. Instead of send us just the last lines that
+contain <it>pppd</it>. Make sure that this file does <bf>not</bf> contain
+security compromising information such as passwords or usernames. Replace such
+entries with something like "myusername" and "mypassword"
+</itemize>
+
+<p>
+<p>
+</article>

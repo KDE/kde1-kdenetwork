@@ -60,7 +60,7 @@
 #include <net/ppp_defs.h>
 #include <netinet/in.h>
 
-#include "config.h"
+#include "kpppconfig.h"
 
 #ifdef __svr4__
 #include <sys/stropts.h>

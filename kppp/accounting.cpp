@@ -40,7 +40,7 @@
 
 #include "accounting.h"
 #include "homedir.h"
-#include "config.h"
+#include "kpppconfig.h"
 #include "pppdata.h"
 
 #ifdef MY_DEBUG

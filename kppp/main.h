@@ -95,6 +95,8 @@ private slots:
   void rulesetLoadError();
   void usernameChanged( const char *);
   void passwordChanged( const char *);
+  void enterPressedInID();
+  void enterPressedInPW();
 
 public slots:
   void disconnect();

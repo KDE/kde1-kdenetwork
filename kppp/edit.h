@@ -44,7 +44,7 @@
 #include <string.h>
 #include "scriptedit.h"
 #include "iplined.h"
-#include "config.h"
+#include "kpppconfig.h"
 #include "pppdargs.h"
 #include "pppdata.h"
 #include "edit.h"

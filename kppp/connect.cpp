@@ -41,7 +41,7 @@
 #include "homedir.h"
 #include "connect.h"
 #include "main.h"
-#include "config.h"
+#include "kpppconfig.h"
 #include "macros.h"
 
 #ifdef NO_USLEEP

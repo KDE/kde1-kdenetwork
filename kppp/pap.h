@@ -29,7 +29,7 @@
 #define _PAP_H_
 
 #include <qstring.h>
-#include "config.h"
+#include "kpppconfig.h"
 
 #define AUTH_SCRIPT     0
 #define AUTH_PAP        1

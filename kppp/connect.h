@@ -46,7 +46,7 @@
 #include<qlabel.h>
 #include<qevent.h>
 
-#include "config.h"
+#include "kpppconfig.h"
 #include "debug.h"
 #include "pppdata.h"
 
