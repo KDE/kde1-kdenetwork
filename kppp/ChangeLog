@@ -1,3 +1,10 @@
+1998-12-13  Harri Porten  <porten@kde.org>
+
+	* use hardcoded lock file path (kpppconfig.h)
+	* tighten interface between Requester/Opener by transmitting
+	device index instead of device path 
+	* do a fchown(fd, 0, 0) on lock file
+
 1998-12-08  Mario Weilguni <mweilguni@kde.org>
 
 	* added Denmark rules

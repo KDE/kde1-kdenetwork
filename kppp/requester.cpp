@@ -39,12 +39,13 @@
 #include <assert.h>
 #include <string.h>
 
-#include "qtimer.h"
+#include "kpppconfig.h"
 #include "auth.h"
 #include "pppdata.h"
 #include "opener.h"
 #include "requester.h"
 #include "log.h"
+#include "devices.h"
 
 Requester *Requester::rq = 0L;
 
@@ -87,8 +88,8 @@ int Requester::recvFD(char *filename, int size) {
   fd = -1;
 
   // set alarm in case recvmsg() hangs 
-  //  signal(SIGALRM, recv_timeout);
-  //  alarm(2);
+  signal(SIGALRM, recv_timeout);
+  alarm(2);
 
   len = recvmsg(socket, &msg, flags);
 
@@ -149,21 +150,21 @@ int Requester::openModem(const char *dev) {
 
   struct OpenModemRequest req;
   req.header.type = Opener::OpenDevice;
-  strncpy(req.modemPath, dev, Opener::MaxPathLen);
-  req.modemPath[Opener::MaxPathLen] = '\0';
+  if((req.deviceNum = indexDevice(dev)) < 0)
+    return -1;
 
   sendRequest((struct RequestHeader *) &req, sizeof(req));
   return recvFD(buffer, sizeof(buffer));
 }
 
 
-int Requester::openLockfile(char *file, int flags) {
+int Requester::openLockfile(const char *dev, int flags) {
 
   struct OpenLockRequest req;
 
   req.header.type = Opener::OpenLock;
-  strncpy(req.file, file, Opener::MaxPathLen);
-  req.file[Opener::MaxPathLen] = '\0';
+  if((req.deviceNum = indexDevice(dev)) < 0)
+    return -1;
   req.flags = flags;
 
   sendRequest((struct RequestHeader *) &req, sizeof(req));
@@ -290,6 +291,18 @@ bool Requester::sendRequest(struct RequestHeader *request, int len) {
 
   return true;
 }
+
+
+int Requester::indexDevice(const char *dev) {
+
+  int index = -1;
+
+  for(int i = 0; devices[i]; i++)
+    if(strcmp(dev, devices[i]) == 0)
+      index = i;
+  return index;
+}
+
 
 void recv_timeout(int) {
   Debug("timeout()");

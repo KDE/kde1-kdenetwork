@@ -8,7 +8,7 @@ public:
   ~Requester();
 
   int  openModem(const char *dev);
-  int  openLockfile(char *file, int flags = 0);
+  int  openLockfile(const char *dev, int flags = 0);
   bool removeLockfile();
   int  openResolv(int flags);
   int  openSysLog();
@@ -24,6 +24,7 @@ private:
   bool sendRequest(struct RequestHeader *request, int len);
   bool recvResponse();
   int  recvFD(char *filename, int size);
+  int  indexDevice(const char *dev);
   int  socket;
   char buffer[100];
   bool expect_alarm;

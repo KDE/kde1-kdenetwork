@@ -1,4 +1,4 @@
-#/*
+/*
  *            kPPP: A pppd front end for the KDE project
  *
  * $Id$
@@ -38,6 +38,7 @@
 #include "miniterm.h"
 #include "modeminfo.h"
 #include "modemcmds.h"
+#include "devices.h"
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -242,32 +243,6 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   
   modemdevice = new QComboBox(false,this);
 
-  static char *devices[] = {
-#ifdef __FreeBSD__
-  "/dev/cuaa0",
-  "/dev/cuaa1",
-  "/dev/cuaa2",
-  "/dev/cuaa3",
-#else
-  "/dev/modem",
-  "/dev/cua0",
-  "/dev/cua1",
-  "/dev/cua2",
-  "/dev/cua3",
-  "/dev/ttyS0",
-  "/dev/ttyS1",
-  "/dev/ttyS2",
-  "/dev/ttyS3",
-
-#ifndef NOISDNSUPPORT
-  "/dev/ttyI0",
-  "/dev/ttyI1",
-  "/dev/ttyI2",
-  "/dev/ttyI3",
-#endif
-#endif
-  0};
-
   for(k = 0; devices[k]; k++)
     modemdevice->insertItem(devices[k]);
 
@@ -386,29 +361,26 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
 
 
   //Modem Lock File
-  label4 = newLabel(i18n("Lock File Directory:"), this);
-  tl->addWidget(label4, 6, 1);
+  modemlockfile = newCheckBox("Use Lock File", this);
 
-  modemlockdir = new QLineEdit(this);
-  modemlockdir->setMaxLength(PATH_SIZE);
-  modemlockdir->setText("XXXXXXXXXXXX");
-  modemlockdir->setMinimumWidth(modemlockdir->sizeHint().width());
-  modemlockdir->setFixedHeight(modemlockdir->sizeHint().height());
-  modemlockdir->setText(gpppdata.modemLockDir());
-  connect(modemlockdir, SIGNAL(textChanged(const char*)),
-	  SLOT(modemlockdirchanged(const char*)));
-  tl->addWidget(modemlockdir, 6, 2);
-  KQuickHelp::add(label4,
-  KQuickHelp::add(modemlockdir, 
+  modemlockfile->setChecked(gpppdata.modemLockFile());
+  connect(modemlockfile, SIGNAL(toggled(bool)),
+          SLOT(modemlockfilechanged(bool)));
+  QHBoxLayout *l12 = new QHBoxLayout;
+  tl->addLayout(l12, 6, 1);
+  //  l12->addStretch(1);
+  l12->addWidget(modemlockfile);
+  //  l12->addStretch(1);
+  KQuickHelp::add(modemlockfile, 
 		  i18n("To prevent other programs from accessing the\n"
 		       "modem while a connection is established, a\n"
-		       "file is created to indicate that the modem\n"
-		       "is in use. Here you can select the directory\n"
-		       "where this file is created.\n"
+		       "file can be created to indicate that the modem\n"
+		       "is in use. On Linux an example file would be\n"
+                       "<i>/var/lock/LCK..ttyS1</i>\n"
+                       "Here you can select whether this locking will\n"
+		       "be done.\n"
 		       "\n"
-		       "Don't touch this unless you know what you are\n"
-		       "doing. There is no default because it depends\n"
-		       "on the operating system.")));
+                       "<b>Default</b>: On"));
   
   // Modem Timeout Line Edit Box
   label3 = newLabel(i18n("Modem Timeout:"), this);
@@ -474,8 +446,8 @@ void ModemWidget::setflowcontrol(int i) {
 }
 
 
-void ModemWidget::modemlockdirchanged(const char *n) {
-  gpppdata.setModemLockDir(n);
+void ModemWidget::modemlockfilechanged(bool set) {
+  gpppdata.setModemLockFile(set);
 }
 
 
@@ -569,7 +541,7 @@ ModemWidget2::ModemWidget2( QWidget *parent, const char *name)
 		       "is not responding. Unless you are having\n"
 		       "problems with this, do not modify this setting.\n"
 		       "\n"
-		       "<b>Default</b>: on"));
+		       "<b>Default</b>: off"));
 
 
   // add the buttons 

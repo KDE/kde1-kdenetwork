@@ -46,6 +46,7 @@
 #include "opener.h"
 #include "kpppconfig.h"
 #include "pap.h"
+#include "devices.h"
 
 #ifndef _PATH_RESCONF
 #define _PATH_RESCONF "/etc/resolv.conf"
@@ -62,6 +63,7 @@ void Opener::mainLoop() {
   int len;
   int fd = -1;
   int flags, mode;
+  const char *device;
   union AllRequests request;
   struct ResponseHeader response;
   struct msghdr	msg;
@@ -77,7 +79,6 @@ void Opener::mainLoop() {
   msg.msg_control = 0L;
   msg.msg_controllen = 0;
 
-  char filename[MaxPathLen+1+1]; // +1 just to be sure
   lockfile[0] = '\0';
 
   // loop forever
@@ -93,39 +94,55 @@ void Opener::mainLoop() {
     case OpenDevice:
       Debug("Opener: received OpenDevice");
       assert(len == sizeof(struct OpenModemRequest));
-      strncpy(filename, request.modem.modemPath, MaxPathLen);
-      filename[MaxPathLen] = '\0';
+      device = deviceByIndex(request.modem.deviceNum);
       response.status = 0;
-      if ((fd = open(filename, O_RDWR|O_NDELAY)) == -1) {
+      if ((fd = open(device, O_RDWR|O_NDELAY)) == -1) {
         Debug("error opening modem device !");
         fd = open(DEVNULL, O_RDONLY);
         response.status = -errno;
         sendFD(DEVNULL, fd, &response);
       } else
-        sendFD(filename, fd, &response);
+        sendFD(device, fd, &response);
       close(fd);
       break;
 
     case OpenLock:
       Debug("Opener: received OpenLock");
       assert(len == sizeof(struct OpenLockRequest));
-      strncpy(lockfile, request.lock.file, MaxPathLen);
-      lockfile[MaxPathLen] = '\0';
       flags = request.lock.flags;
       assert(flags == O_RDONLY || flags == O_WRONLY|O_TRUNC|O_CREAT); 
       if(flags == O_WRONLY|O_TRUNC|O_CREAT)
         mode = 0644;
       else
         mode = 0;
+
+      device = deviceByIndex(request.lock.deviceNum);
+      assert(strlen(LOCK_DIR)+strlen(device) < MaxPathLen);
+      strncpy(lockfile, LOCK_DIR"/LCK..", MaxPathLen);
+      strncat(lockfile, device + strlen("/dev/"),
+              MaxPathLen - strlen(lockfile));
+      lockfile[MaxPathLen] = '\0';
       response.status = 0;
+      // TODO:
+//   struct stat st;
+//   if(stat(lockfile.data(), &st) == -1) {
+//     if(errno == EBADF)
+//       return -1;
+//   } else {
+//     // make sure that this is a regular file
+//     if(!S_ISREG(st.st_mode)) 
+//       return -1;
+//   }
       if ((fd = open(lockfile, flags, mode)) == -1) {
         Debug("error opening lockfile!");
         lockfile[0] = '\0';
         fd = open(DEVNULL, O_RDONLY);
         response.status = -errno;
         sendFD(DEVNULL, fd, &response);
-      } else
+      } else {
+	fchown(fd, 0, 0);
         sendFD(lockfile, fd, &response);
+      }
       close(fd);
       break;
 
@@ -148,7 +165,7 @@ void Opener::mainLoop() {
         response.status = -errno;
         sendFD(DEVNULL, fd, &response);
       } else
-        sendFD(filename, fd, &response);
+        sendFD(_PATH_RESCONF, fd, &response);
       close(fd);
       break;
 
@@ -266,4 +283,18 @@ int Opener::sendResponse(struct ResponseHeader *response) {
 
   return 0;
 }
+
+const char* Opener::deviceByIndex(int idx) {
+
+  const char *device = 0L;
+
+  for(int i = 0; devices[i]; i++)
+    if(i == idx)
+      device = devices[i];
+  assert(device);
+  return device;
+}
+
+
+
 

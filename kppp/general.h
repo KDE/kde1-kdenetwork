@@ -87,7 +87,7 @@ private slots:
   void 	setmodemdc(int);
   void 	setflowcontrol(int);
   void 	modemtimeoutchanged(const char*);
-  void 	modemlockdirchanged(const char*);
+  void 	modemlockfilechanged(bool);
   void 	setenter(int);
   void  speed_selection(int);
 
@@ -97,7 +97,6 @@ private:
   QLabel 	*label1;
   QLabel 	*label2;
   QLabel 	*label3;
-  QLabel 	*label4;
   QLabel 	*labeltmp;
   QLabel 	*labelenter;
   QComboBox 	*modemdevice;
@@ -107,7 +106,7 @@ private:
   QLabel *baud_label;
 
   QLineEdit 	*modemtimeout;
-  QLineEdit 	*modemlockdir;
+  QCheckBox     *modemlockfile;
 };
 
 

@@ -472,15 +472,15 @@ void PPPData::setModemEscapeGuardTime(int n){
 
 }
 
-const char* PPPData::modemLockDir() {
+const bool PPPData::modemLockFile() {
 
-  return readConfig(MODEM_GRP, LOCKDIR_KEY, LOCK_DIR);
+  return readNumConfig(MODEM_GRP, LOCKFILE_KEY, 1);
 
 }
 
-void PPPData::setModemLockDir(const char *n) {
+void PPPData::setModemLockFile(bool set) {
 
-  writeConfig(MODEM_GRP, LOCKDIR_KEY, n);
+  writeConfig(MODEM_GRP, LOCKFILE_KEY, set);
 
 }
 

@@ -26,6 +26,7 @@ private:
   void mainLoop();
   int sendFD(const char *ttypath, int ttyfd, struct ResponseHeader *response);
   int sendResponse(struct ResponseHeader *response);
+  const char *deviceByIndex(int idx);
   int socket;
   char lockfile[MaxPathLen+1];
 };
@@ -45,7 +46,7 @@ struct ResponseHeader {
 
 struct OpenModemRequest {
   struct RequestHeader header;
-  char   modemPath[Opener::MaxPathLen+1];
+  int    deviceNum;
 };
 
 struct RemoveLockRequest {
@@ -54,7 +55,7 @@ struct RemoveLockRequest {
 
 struct OpenLockRequest {
   struct RequestHeader header;
-  char   file[Opener::MaxPathLen+1];
+  int    deviceNum;
   int    flags;
 };
 

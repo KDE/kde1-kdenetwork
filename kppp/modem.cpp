@@ -443,37 +443,13 @@ int Modem::lockdevice() {
   int fd;
   char newlock[80]=""; // safe
 
-  QDir lockdir(gpppdata.modemLockDir());
-  
-  if(lockdir == ".") {
-    Debug("gpppdata.modemLockDir is empty ..."\
-	   "assuming the user doesn't want a lockfile.\n");
+  if(!gpppdata.modemLockFile()) {
+    Debug("The user doesn't want a lockfile.");
     return 0;
   }
 
-  QString device = gpppdata.modemDevice();
-
-  // bail out if we encounter anything else than /dev/xxx
-  if (device.left(5) != "/dev/" || device.findRev('/') != 4)
-    return -1;
-
-  lockfile = lockdir.absPath();
-
-  lockfile += "/LCK.."; 
-  lockfile += device.right(device.length() - 5);
-
   if (modem_is_locked) 
     return 1;
-
-  struct stat st;
-  if(stat(lockfile.data(), &st) == -1) {
-    if(errno == EBADF)
-      return -1;
-  } else {
-    // make sure that this is a file, not a special file
-    if(!S_ISREG(st.st_mode)) 
-      return -1;
-  }
 
   if(access(lockfile.data(), F_OK) == 0) {
     if ((fd = Requester::rq->openLockfile(lockfile.data(), O_RDONLY)) >= 0) {
@@ -505,7 +481,7 @@ int Modem::lockdevice() {
     }
   }
 
-  fd = Requester::rq->openLockfile(lockfile.data(),
+  fd = Requester::rq->openLockfile(gpppdata.modemDevice(),
                                    O_WRONLY|O_TRUNC|O_CREAT);
   if(fd >= 0) {
     sprintf(newlock,"%05d %s %s\n", getpid(), "kppp", "user" );
