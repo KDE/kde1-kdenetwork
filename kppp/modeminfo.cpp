@@ -141,7 +141,7 @@ void ModemTransfer::init() {
 
       statusBar->setText(i18n("Modem Ready"));
       kapp->processEvents();
-
+      usleep(100000);  // wait 0.1 secs
       kapp->processEvents();
       scripttimer->start(1000);	 	// this one does the ati query
 
@@ -170,7 +170,6 @@ void ModemTransfer::do_script() {
     statusBar->setText("ATI ...");
     progressBar->advance(1);
     Modem::modem->writeLine("ATI\n");
-    step++;
     break;
 
   case 1:
@@ -192,6 +191,7 @@ void ModemTransfer::do_script() {
     readtty();
     ati_done();
   }
+  step++;
 }
 
 void ModemTransfer::readChar(char c) {
@@ -213,7 +213,6 @@ void ModemTransfer::readtty() {
     ati_query_strings[step-1] = readbuffer.copy();
 
   readbuffer = "";
-  step++;
 }
 
 
