@@ -37,6 +37,7 @@
 #include <fcntl.h>
 #include <assert.h>
 #include <string.h>
+#include <errno.h>
 
 #ifdef HAVE_RESOLV_H
 #include <resolv.h>
@@ -229,7 +230,7 @@ int Opener::sendFD(const char *path, int fd,
 
 // Let's try it this way. Should work on FreeBSD, too.
 #ifdef CMSG_DATA
-  *((int *)CMSG_DATA(&control)) = fd;
+  *((int *)CMSG_DATA(&control.cmsg)) = fd;
 #else
   *((int *) &control.cmsg.cmsg_data) = fd;
 #endif

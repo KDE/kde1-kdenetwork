@@ -1,3 +1,11 @@
+1998-11-26  Harri Porten  <porten@kde.org>
+
+	* included errno.h in opener.cpp and modified CMSG_DATA()'s
+	argument (as suggested by Andreas Pour).
+	* had to revert to SOCK_DGRAM since I keep getting failed
+	assertions. Using a stream seems to require some attention in
+	terms of ensuring that the correct length is received.
+
 1998-11-26  Mario Weilguni <mweilguni@kde.org>
 	
 	* added missing rules for Switzerland, and added kppp.sh

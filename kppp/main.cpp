@@ -213,7 +213,7 @@ int main( int argc, char **argv ) {
   // until we drop this status a few lines below.
   int sockets[2];
   pid_t fpid;
-  if(socketpair(AF_UNIX, SOCK_STREAM, 0, sockets) != 0) {
+  if(socketpair(AF_UNIX, SOCK_DGRAM, 0, sockets) != 0) {
     fprintf(stderr, "error creating socketpair !\n");
     exit(1);
   }

@@ -104,7 +104,7 @@ int Requester::recvFD(char *filename, int size) {
   } else {
     filename[size-1] = '\0';
 #ifdef CMSG_DATA
-    fd = *((int *)CMSG_DATA(&control));
+    fd = *((int *)CMSG_DATA(&control.cmsg));
 #else
     fd = *((int *) control.cmsg.cmsg_data);
 #endif
