@@ -693,21 +693,23 @@ void KMMainWin::slotViewChange()
 //-----------------------------------------------------------------------------
 void KMMainWin::slotSetHeaderStyle(int id)
 {
-  if (!mHeaders->getMsg()) return;
-  if (!mMsgView) return;
-  if(id <= 5)
+  if(mHeaders->currentItem() >= 0)
   {
-    mViewMenu->setItemChecked((int)mMsgView->headerStyle(), FALSE);
-    mMsgView->setHeaderStyle((KMReaderWin::HeaderStyle)id);
-    mViewMenu->setItemChecked(id, TRUE);
+    if (!mMsgView) return;
+    if(id <= 5)
+    {
+      mViewMenu->setItemChecked((int)mMsgView->headerStyle(), FALSE);
+      mMsgView->setHeaderStyle((KMReaderWin::HeaderStyle)id);
+      mViewMenu->setItemChecked(id, TRUE);
+    }
+    else
+    {
+      mViewMenu->setItemChecked((int)mMsgView->attachmentStyle()+5, FALSE);
+      mViewMenu->setItemChecked(id, TRUE);
+      mMsgView->setAttachmentStyle(id-5);
+    }
+    mMsgView->update(true);
   }
-  else
-  {
-    mViewMenu->setItemChecked((int)mMsgView->attachmentStyle()+5, FALSE);
-    mViewMenu->setItemChecked(id, TRUE);
-    mMsgView->setAttachmentStyle(id-5);
-  }
-  mMsgView->update(true);
 }
 
 
