@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1999-04-02 02:46+0200\n"
+"POT-Creation-Date: 1999-04-12 02:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: LinuxKorea Co. <kde@linuxkorea.co.kr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -502,15 +502,15 @@ msgstr "전달:"
 msgid "Indentation:"
 msgstr "들여쓰기:"
 
-#: kmmessage.cpp:1379 kmsettings.cpp:420
+#: kmmessage.cpp:1383 kmsettings.cpp:420
 msgid "On %D, you wrote:"
 msgstr "%D에 귀하가 작성한 글:"
 
-#: kmmessage.cpp:1380 kmsettings.cpp:424
+#: kmmessage.cpp:1384 kmsettings.cpp:424
 msgid "On %D, %F wrote:"
 msgstr "%D에, %F 작성한 글:"
 
-#: kmmessage.cpp:1381 kmsettings.cpp:428
+#: kmmessage.cpp:1385 kmsettings.cpp:428
 msgid "Forwarded Message"
 msgstr "전달된 메시지"
 
@@ -619,7 +619,7 @@ msgstr "Pop 계정"
 msgid "Login:"
 msgstr "로그인:"
 
-#: kmacctpop.cpp:468 kmsettings.cpp:902
+#: kmacctpop.cpp:481 kmsettings.cpp:902
 msgid "Password:"
 msgstr "암호:"
 
@@ -628,27 +628,31 @@ msgid "Host:"
 msgstr "호스트:"
 
 #: kmsettings.cpp:914
+msgid "Store POP password in config file"
+msgstr ""
+
+#: kmsettings.cpp:919
 msgid "Delete mail from server"
 msgstr "서버의 전자우편 지우기"
 
-#: kmsettings.cpp:919
+#: kmsettings.cpp:924
 #, fuzzy
 msgid "Retrieve all mail from server"
 msgstr "서버의 전자우편 지우기"
 
-#: kmsettings.cpp:931
+#: kmsettings.cpp:936
 msgid "Enable interval Mail checking"
 msgstr ""
 
-#: kmsettings.cpp:941
+#: kmsettings.cpp:946
 msgid "Store new mail in account:"
 msgstr "계정에 새 전자우편 저장:"
 
-#: kmsettings.cpp:955
+#: kmsettings.cpp:960
 msgid "<none>"
 msgstr "<없음>"
 
-#: kmsettings.cpp:1004
+#: kmsettings.cpp:1009
 msgid "Choose Location"
 msgstr "위치 선택"
 
@@ -1250,7 +1254,7 @@ msgstr ""
 "In %s:\n"
 "%s"
 
-#: kmacctpop.cpp:459
+#: kmacctpop.cpp:472
 msgid "Login Name:"
 msgstr "로그인 이름:"
 

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1999-04-02 02:46+0200\n"
+"POT-Creation-Date: 1999-04-12 02:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Case Roole <cjr@xs4all.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -505,15 +505,15 @@ msgstr "Zend door:"
 msgid "Indentation:"
 msgstr "Indentatie:"
 
-#: kmmessage.cpp:1379 kmsettings.cpp:420
+#: kmmessage.cpp:1383 kmsettings.cpp:420
 msgid "On %D, you wrote:"
 msgstr "Op %D, schreef u:"
 
-#: kmmessage.cpp:1380 kmsettings.cpp:424
+#: kmmessage.cpp:1384 kmsettings.cpp:424
 msgid "On %D, %F wrote:"
 msgstr "Op %D, schreef %F:"
 
-#: kmmessage.cpp:1381 kmsettings.cpp:428
+#: kmmessage.cpp:1385 kmsettings.cpp:428
 msgid "Forwarded Message"
 msgstr "Doorgezonden boodschap"
 
@@ -623,7 +623,7 @@ msgstr ""
 msgid "Login:"
 msgstr ""
 
-#: kmacctpop.cpp:468 kmsettings.cpp:902
+#: kmacctpop.cpp:481 kmsettings.cpp:902
 msgid "Password:"
 msgstr "Wachtwoord:"
 
@@ -632,27 +632,31 @@ msgid "Host:"
 msgstr ""
 
 #: kmsettings.cpp:914
+msgid "Store POP password in config file"
+msgstr ""
+
+#: kmsettings.cpp:919
 msgid "Delete mail from server"
 msgstr "Verwijder post van de server"
 
-#: kmsettings.cpp:919
+#: kmsettings.cpp:924
 #, fuzzy
 msgid "Retrieve all mail from server"
 msgstr "Verwijder post van de server"
 
-#: kmsettings.cpp:931
+#: kmsettings.cpp:936
 msgid "Enable interval Mail checking"
 msgstr ""
 
-#: kmsettings.cpp:941
+#: kmsettings.cpp:946
 msgid "Store new mail in account:"
 msgstr "Sla nieuwe post op in account:"
 
-#: kmsettings.cpp:955
+#: kmsettings.cpp:960
 msgid "<none>"
 msgstr "<niets>"
 
-#: kmsettings.cpp:1004
+#: kmsettings.cpp:1009
 msgid "Choose Location"
 msgstr "Kies lokatie"
 
@@ -1253,7 +1257,7 @@ msgid ""
 "%s"
 msgstr ""
 
-#: kmacctpop.cpp:459
+#: kmacctpop.cpp:472
 msgid "Login Name:"
 msgstr "Login Naam:"
 

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1999-04-02 02:46+0200\n"
+"POT-Creation-Date: 1999-04-12 02:58+0200\n"
 "PO-Revision-Date: 1999-01-30 17:30 CET\n"
 "Last-Translator: Francois-Xavier DURANCEAU "
 "<Francois-Xavier.Duranceau@loria.fr>\n"
@@ -497,15 +497,15 @@ msgstr "Réacheminer :"
 msgid "Indentation:"
 msgstr "Indentation :"
 
-#: kmmessage.cpp:1379 kmsettings.cpp:420
+#: kmmessage.cpp:1383 kmsettings.cpp:420
 msgid "On %D, you wrote:"
 msgstr "Le %D, vous avez écrit :"
 
-#: kmmessage.cpp:1380 kmsettings.cpp:424
+#: kmmessage.cpp:1384 kmsettings.cpp:424
 msgid "On %D, %F wrote:"
 msgstr "Le %D, %F a écrit :"
 
-#: kmmessage.cpp:1381 kmsettings.cpp:428
+#: kmmessage.cpp:1385 kmsettings.cpp:428
 msgid "Forwarded Message"
 msgstr "Message réacheminé"
 
@@ -613,7 +613,7 @@ msgstr "Boîte aux lettres POP"
 msgid "Login:"
 msgstr "Utilisateur :"
 
-#: kmacctpop.cpp:468 kmsettings.cpp:902
+#: kmacctpop.cpp:481 kmsettings.cpp:902
 msgid "Password:"
 msgstr "Mot de passe :"
 
@@ -622,26 +622,30 @@ msgid "Host:"
 msgstr "Serveur :"
 
 #: kmsettings.cpp:914
+msgid "Store POP password in config file"
+msgstr ""
+
+#: kmsettings.cpp:919
 msgid "Delete mail from server"
 msgstr "Détruire les messages du serveur"
 
-#: kmsettings.cpp:919
+#: kmsettings.cpp:924
 msgid "Retrieve all mail from server"
 msgstr "Charger tous les messages du serveur"
 
-#: kmsettings.cpp:931
+#: kmsettings.cpp:936
 msgid "Enable interval Mail checking"
 msgstr "Activer la vérification périodique"
 
-#: kmsettings.cpp:941
+#: kmsettings.cpp:946
 msgid "Store new mail in account:"
 msgstr "Stocker les nouveaux messages dans le dossier :"
 
-#: kmsettings.cpp:955
+#: kmsettings.cpp:960
 msgid "<none>"
 msgstr "<aucun>"
 
-#: kmsettings.cpp:1004
+#: kmsettings.cpp:1009
 msgid "Choose Location"
 msgstr "Choisir l'emplacement"
 
@@ -1239,7 +1243,7 @@ msgstr ""
 "Dans %s :\n"
 "%s"
 
-#: kmacctpop.cpp:459
+#: kmacctpop.cpp:472
 msgid "Login Name:"
 msgstr "Utilisateur :"
 
