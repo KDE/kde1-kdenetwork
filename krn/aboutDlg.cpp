@@ -68,10 +68,10 @@ aboutDlg::aboutDlg
     tmpQListBox->insertItem( "Doug Sauder <dwsauder@fwb.gulf.net>" );
     tmpQListBox->insertItem( "Stephan Kulow <coolo@kde.org>" );
     tmpQListBox->insertItem( "Bernd Wuebben <wuebben@math.cornell.edu>" );
-    tmpQListBox->insertItem( "All KDE developers" );
+    tmpQListBox->insertItem( i18n("All KDE developers") );
     tmpQListBox->insertItem( "Troll Tech" );
-    tmpQListBox->insertItem( "Chuck, for helping in time of need");
-    tmpQListBox->insertItem( "All testers" );
+    tmpQListBox->insertItem( i18n("Chuck, for helping in time of need") );
+    tmpQListBox->insertItem( i18n("All testers") );
     tmpQListBox->setScrollBar( TRUE );
 
     l->newLine();
