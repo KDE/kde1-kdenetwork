@@ -121,7 +121,7 @@ int read_user_config(char * key, char * result, int max)
 
     if (!cfg) return 0; // file doesn't exist
     QString Qresult;
-    if (!(Qresult = cfg -> readEntry(key)).isEmpty())
+    if ((Qresult = cfg -> readEntry(key, "unset")) != "unset")
     {
         qstrncpy( result, Qresult, max);
 
