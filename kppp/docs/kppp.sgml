@@ -463,13 +463,24 @@ kppp setuid root permissions do the following:
 <sect2>kppp just sits there and waits: Expecting OK
 <p>
 Have you played with the CR/LF setting?
+
+<p> Your modem might not sustain
+a fast initialization. Turn off the 'Modem sustains fast initializiation'
+button on the Modem tab dialog.
 <p>
 
 
 <sect2>Can I do PAP and CHAP with kppp?
 <p>
 Yes you can. Please the see the section on using <ref id="PAP" name="PAP and CHAP"> 
-with kppp in the appendix.
+with kppp in the appendix. Actually, I receive more an more requests for
+detailed information about how to use PAP nor CHAP with kppp. 
+If you are using PAP and CHAP with kppp, I would very much appreciate 
+submissions of
+detailed step by step explanations of how to do PAP and/or CHAP with kppp.
+I would then include this here in the kppp documentation. I am sure
+this would be of help to a great number of beginners. Please consider
+helping out and giving something back in return for kppp. Thanks!
 <p>
 
 <sect2>How do I write a telephone cost rules file?<p>
