@@ -4,6 +4,8 @@
 #include <qcolor.h>
 #include <qfont.h>
 
+#define KSIRC_VERSION "980825"
+
 class global_config {
  public:
   QColor *colour_text;

@@ -38,3 +38,15 @@
 /* Define if you have usleep */
 #undef HAVE_USLEEP
 
+/* Define if you have dl*() */
+#undef HAVE_DLFCN
+
+/* Define if you have shload() */
+#undef HAVE_SHLOAD
+
+/* Define if you have the <dl.h> header file.  */
+#undef HAVE_DL_H
+
+/* Define if you have the <dlfcn.h> header file.  */
+#undef HAVE_DLFCN_H
+ 

@@ -198,7 +198,7 @@ KSircProcess::KSircProcess( char *_server, QObject * parent, const char * name )
   QString command = "/eval $ssfe=1\n";
   iocontrol->stdin_write(command);
   
-  command = "/eval $version .= \"+4KSIRC/" + QString(VERSION) + "\"\n";
+  command = "/eval $version .= \"+4KSIRC/" + QString(KSIRC_VERSION) + "\"\n";
   iocontrol->stdin_write(command);
   command = "/load " + kSircConfig->kdedir + "/share/apps/ksirc/filters.pl\n";
   iocontrol->stdin_write(command);

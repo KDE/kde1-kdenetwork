@@ -47,28 +47,10 @@ PObject *PLayout::createWidget(CreateArgs &ca)
 void PLayout::messageHandler(int fd, PukeMessage *pm)
 {
   PukeMessage pmRet;
+
+  debug("In PLayout: %d", pm->iCommand);
   
-  if(pm->iCommand == PUKE_LAYOUT_DELETE){
-    /**
-     * Delete is diabled right now
-     */
-    /*
-    if((pm->iArg < 0 ||
-	(uint) pm->iArg > uiBaseLayoutId) ){
-      pmRet.iArg = 1;
-    }
-    else{
-      LayoutList.remove(pm->iArg);
-      pmRet.iArg = 0;
-      }
-      */
-    // Everything's done, generate reply
-    pmRet.iCommand = PUKE_LAYOUT_DELETE_ACK;
-    pmRet.iWinId = pm->iArg;
-    pmRet.iArg = 0;
-    emit outputMessage(fd, &pmRet);
-  }
-  else if(pm->iCommand == PUKE_LAYOUT_ADDWIDGET){
+  if(pm->iCommand == PUKE_LAYOUT_ADDWIDGET){
     if(pm->iTextSize != 2*sizeof(char)){
       warning("PLayout/addwidget: incorrent cArg size, bailing out.  Needed: %d wanted: %d\n", sizeof(int), pm->iTextSize);
       pmRet.iCommand = PUKE_LAYOUT_ADDWIDGET_ACK; // ack the add widget

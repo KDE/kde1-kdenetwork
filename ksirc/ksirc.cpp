@@ -44,7 +44,6 @@
 #include <kconfig.h>
 
 #include "config.h"
-#include "../config.h"
 #include "cdate.h"
 #include "objFinder.h"
 
@@ -59,7 +58,7 @@ int main( int argc, char ** argv )
   // Start the KDE application
   kApp = new KApplication( argc, argv, QString("ksirc") );
 
-  QString ver = VERSION;
+  QString ver = KSIRC_VERSION;
   if(ver.contains(".") == 0){
     // This is a development version
     // 4 week timeout, warn after 2

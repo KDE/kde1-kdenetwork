@@ -640,7 +640,7 @@ PWidget *PukeController::id2pwidget(widgetId *pwi){ /*fold00*/
   else
     throw(errorNoSuchWidget(*pwi));
 }
-void PukeController::insertPObject(int fd, int iWinId, WidgetS *obj){ /*FOLD00*/
+void PukeController::insertPObject(int fd, int iWinId, WidgetS *obj){ /*fold00*/
     if(WidgetList[fd] == NULL){
         QIntDict<WidgetS> *qidWS = new QIntDict<WidgetS>;
         qidWS->setAutoDelete(FALSE);
@@ -649,7 +649,7 @@ void PukeController::insertPObject(int fd, int iWinId, WidgetS *obj){ /*FOLD00*/
     WidgetList[fd]->insert(iWinId, obj);
 }
 
-void PukeController::messageHandler(int fd, PukeMessage *pm) { /*fold00*/
+void PukeController::messageHandler(int fd, PukeMessage *pm) { /*FOLD00*/
   widgetId wI, wIret;
   wI.fd = fd;
   wI.iWinId = pm->iWinId;
@@ -728,6 +728,7 @@ void PukeController::messageHandler(int fd, PukeMessage *pm) { /*fold00*/
     wC->wc = wc;
     wC->dlhandle = handle;
     widgetCF.insert(pm->iArg, wC);
+    warning("New widget: %d with wc: %p and handle: %p", pm->iArg, wc, handle);
 
     pmRet.iCommand = -pm->iCommand;
     pmRet.iTextSize = 0;
@@ -767,7 +768,7 @@ void PukeController::messageHandler(int fd, PukeMessage *pm) { /*fold00*/
   }
 }
 
-widgetId PukeController::createWidget(widgetId wI, PukeMessage *pm) /*fold00*/
+widgetId PukeController::createWidget(widgetId wI, PukeMessage *pm) /*FOLD00*/
 {
   widgetId wIret;
   PWidget *parent = 0; // Defaults to no parent
@@ -823,7 +824,7 @@ widgetId PukeController::createWidget(widgetId wI, PukeMessage *pm) /*fold00*/
   return wIret;
 }
 
-void PukeController::closeWidget(widgetId wI){ /*FOLD00*/
+void PukeController::closeWidget(widgetId wI){ /*fold00*/
   // Check to make sure we have a valid widget
   // Then remove it from the list.
   // Don't delete it since well, we're being called since it's already 

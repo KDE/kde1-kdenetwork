@@ -995,19 +995,6 @@
 // cArg: same random m character string as PUKE_LAYOUT_NEW
 #define PUKE_LAYOUT_NEW_ACK -11000
 
-// Desc: deletes layout
-// iWinId: layout id to delete
-// iArg: undef
-// cArg: undef
-#define PUKE_LAYOUT_DELETE 11001
-
-// Desc: deletes layout ack
-// iWinId: layout id to deleted
-// iArg: undef
-// cArg: undef
-#define PUKE_LAYOUT_DELETE_ACK -11001
-
-
 #define PUKE_LAYOUT_ADDLAYOUT 11005
 #define PUKE_LAYOUT_ADDLAYOUT_ACK -11005
 

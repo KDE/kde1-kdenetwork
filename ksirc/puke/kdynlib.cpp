@@ -21,6 +21,8 @@
 
 // $Id$
 
+#include <iostream.h>
+
 #ifdef HAVE_CONFIG_H
 #include "../../config.h"
 #endif
@@ -71,8 +73,20 @@ KDynamicHandle KDynamicLibrary::loadLibrary(QString fileName, LoadOption opt)
 
 #ifdef HAVE_DLFCN_H
 
-    return (KDynamicHandle)dlopen(fileName.data(), 
-	  RTLD_GLOBAL | ((opt == ResolveLazy) ? RTLD_LAZY : RTLD_NOW));
+    KDynamicHandle handle;
+
+    handle = (KDynamicHandle) dlopen(fileName.data(),
+                    RTLD_GLOBAL | ((opt == ResolveLazy) ? RTLD_LAZY : RTLD_NOW));
+
+    if(handle == NULL){
+      warning("Failed to open %s: %s", fileName.data(), dlerror());
+      last_error = dlerror();
+    }
+    else {
+      last_error = "";
+    }
+
+    return handle;
 
 #elif HAVE_SHLOAD
 
@@ -91,10 +105,19 @@ void *KDynamicLibrary::getSymbol(KDynamicHandle handle, QString symName)
 #endif
 {
 #ifdef HAVE_DLFCN_H
-    if (handle)
-	return dlsym(handle, symName.data());
-    else
-	return 0L;
+  if (handle){
+    void *sym = dlsym(handle, symName.data());
+    if(sym == NULL){
+      warning("Failed to find %s: %s", symName.data(), dlerror());
+      last_error = dlerror();
+    }
+    else {
+      last_error = "";
+    }
+    return sym;
+  }
+  else
+    return 0L;
 #elif  HAVE_SHLOAD
   void *address = 0;
 		

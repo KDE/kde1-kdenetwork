@@ -47,7 +47,9 @@ public:
 
     static KDynamicHandle loadLibrary(QString libName, LoadOption opt);
     static void unloadLibrary(KDynamicHandle);
-    static void *getSymbol(KDynamicHandle handle, QString symName);    
+    static void *getSymbol(KDynamicHandle handle, QString symName);
+
+    static QString last_error;
 };
 
 

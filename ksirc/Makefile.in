@@ -76,21 +76,29 @@ CXX = @CXX@
 GLINC = @GLINC@
 GLLIB = @GLLIB@
 GMSGFMT = @GMSGFMT@
+IDL = @IDL@
 KDE_EXTRA_RPATH = @KDE_EXTRA_RPATH@
 KDE_INCLUDES = @KDE_INCLUDES@
 KDE_LDFLAGS = @KDE_LDFLAGS@
 KDE_RPATH = @KDE_RPATH@
 LD = @LD@
+LIBBSD = @LIBBSD@
 LIBCOMPAT = @LIBCOMPAT@
 LIBCRYPT = @LIBCRYPT@
 LIBDL = @LIBDL@
 LIBJPEG = @LIBJPEG@
+LIBKHTMLW = @LIBKHTMLW@
+LIBMICO = @LIBMICO@
 LIBOBJS = @LIBOBJS@
+LIBPTHREAD = @LIBPTHREAD@
+LIBPYTHON = @LIBPYTHON@
 LIBSOCKET = @LIBSOCKET@
 LIBTOOL = @LIBTOOL@
 LIBUCB = @LIBUCB@
 LN_S = @LN_S@
 MAKEINFO = @MAKEINFO@
+MICO_INCLUDES = @MICO_INCLUDES@
+MICO_LDFLAGS = @MICO_LDFLAGS@
 MOC = @MOC@
 MSGFMT = @MSGFMT@
 NM = @NM@
@@ -98,6 +106,8 @@ PACKAGE = @PACKAGE@
 PAMINC = @PAMINC@
 PAMLIBPATHS = @PAMLIBPATHS@
 PAMLIBS = @PAMLIBS@
+PYTHONINC = @PYTHONINC@
+PYTHONLIB = @PYTHONLIB@
 QT_INCLUDES = @QT_INCLUDES@
 QT_LDFLAGS = @QT_LDFLAGS@
 RANLIB = @RANLIB@
@@ -133,7 +143,7 @@ qt_libraries = @qt_libraries@
 static_libkde = @static_libkde@
 static_libqt = @static_libqt@
 static_libstdc = @static_libstdc@
-static_pthread = @static_pthread@
+topdir = @topdir@
 x_includes = @x_includes@
 x_libraries = @x_libraries@
 
@@ -146,10 +156,14 @@ SUBDIRS = KSTicker KSProgress KSCutDialog KSPrefs KSColourPicker puke img doc
 
 ####### This part is very ksirc specific
 # you can add here more. This one gets installed 
-@COMPILE_KSIRC_SHARED_TRUE@KSIRC_PROGRAM = ksirc
-@COMPILE_KSIRC_STATIC_TRUE@KSIRCSTATIC_PROGRAM = ksircstatic
+#if COMPILE_KSIRC_SHARED
+KSIRC_PROGRAM = ksirc
+#endif
+#if COMPILE_KSIRC_STATIC
+#KSIRCSTATIC_PROGRAM = ksircstatic
+#endif
 
-bin_PROGRAMS = ${KSIRC_PROGRAM} ${KSIRCSTATIC_PROGRAM}
+bin_PROGRAMS = ${KSIRC_PROGRAM} # ${KSIRCSTATIC_PROGRAM}
 
 noinst_PROGRAMS = getdate
 
@@ -188,20 +202,22 @@ chanparser.cpp \
 objFinder.cpp \
 mobjFinder.cpp
 
-ksircstatic_SOURCES = $(ksirc_SOURCES)
+ksircstaticSOURCES = $(ksirc_SOURCES)
+ksircstaticOBJECTS = $(ksirc_OBJECTS)
 
 # the library search path
 ksirc_LDFLAGS = -export-dynamic @all_libraries@ # -L$(srcdir)/KSProgress -L$(srcdir)/KSTicker -L$(srcdir)/KSCutDialog -L$(srcdir)/KSPrefs -L$(srcdir)/KSColourPicker -L$(srcdir)/puke 
 
-ksircstatic_LDFLAGS = --nostdlib $(ksirc_LDFLAGS)
+ksircstaticLDFLAGS = --nostdlib $(ksirc_LDFLAGS)
 
 # the libraries to link against. Be aware of the order. First the libraries,
 # that depend on the following ones.
 ksirc_LDADD   = ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a ./KSColourPicker/libkscolourpicker.a puke/libpuke.la -lkdeui -lkdecore -lkfile -lkfm -lqt -lX11 -lXext @LIBSOCKET@ -ldl $(KDE_RPATH)
 
-ksircstatic_LDADD = ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a ./KSColourPicker/libkscolourpicker.a ./puke/.libs/libpuke.a
+ksircstaticLDADD = ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a ./KSColourPicker/libkscolourpicker.a ./puke/.libs/libpuke.a
 
-@COMPILE_KSIRC_STATIC_TRUE@STATIC_LIBS = $(static_libkde) $(static_libqt) $(static_libstdc) $(static_pthread) -lX11 -lXext @LIBSOCKET@ -ldl -lm -lc
+#if COMPILE_KSIRC_STATIC
+STATIC_LIBS = $(static_libkde) $(static_libqt) $(static_libstdc) $(static_pthread) -lX11 -lXext @LIBSOCKET@ -ldl -lm -lc
 
 getdate_SOURCES = getdate.c
 
@@ -282,23 +298,6 @@ ksirc_DEPENDENCIES =  ./KSProgress/libksprogress.a \
 ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a \
 ./KSPrefs/libksprefs.a ./KSColourPicker/libkscolourpicker.a \
 puke/libpuke.la
-ksircstatic_OBJECTS =  toplevel.o ksirc.o irclistbox.o mirclistbox.o \
-irclistitem.o mirclistitem.o alistbox.o mtoplevel.o ahistlineedit.o \
-mahistlineedit.o malistbox.o iocontroller.o miocontroller.o open_top.o \
-open_topData.o mopen_top.o mopen_topData.o messageReceiver.o \
-ioBroadcast.o ksircprocess.o mksircprocess.o open_ksirc.o \
-open_ksircData.o mopen_ksirc.o mopen_ksircData.o servercontroller.o \
-mservercontroller.o KSircColour.o KSircColourData.o mKSircColour.o \
-mKSircColourData.o FilterRuleEditor.o FilterRuleEditorData.o \
-mFilterRuleEditor.o mFilterRuleEditorData.o ioDiscard.o ioDCC.o \
-mioDCC.o dccDialog.o mdccDialog.o dccDialogData.o mdccDialogData.o \
-linelistitem.o ioLAG.o mioLAG.o ioNotify.o mioNotify.o ssfeprompt.o \
-mssfeprompt.o ssfepromptdata.o mssfepromptdata.o usercontrolmenu.o \
-kspainter.o baserules.o estring.o chanparser.o objFinder.o mobjFinder.o
-ksircstatic_DEPENDENCIES =  ./KSProgress/libksprogress.a \
-./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a \
-./KSPrefs/libksprefs.a ./KSColourPicker/libkscolourpicker.a \
-./puke/.libs/libpuke.a
 getdate_OBJECTS =  getdate.o
 getdate_LDADD = $(LDADD)
 getdate_LDFLAGS = 
@@ -340,8 +339,8 @@ DEP_FILES =  .deps/FilterRuleEditor.P .deps/FilterRuleEditorData.P \
 .deps/ssfeprompt.P .deps/ssfepromptdata.P .deps/toplevel.P \
 .deps/usercontrolmenu.P
 CXXMKDEP = $(CXX) -M $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
-SOURCES = $(ksirc_SOURCES) $(ksircstatic_SOURCES) $(getdate_SOURCES)
-OBJECTS = $(ksirc_OBJECTS) $(ksircstatic_OBJECTS) $(getdate_OBJECTS)
+SOURCES = $(ksirc_SOURCES) $(getdate_SOURCES)
+OBJECTS = $(ksirc_OBJECTS) $(getdate_OBJECTS)
 
 default: all
 
@@ -633,6 +632,7 @@ uninstall all installdirs mostlyclean-generic distclean-generic \
 clean-generic maintainer-clean-generic clean mostlyclean distclean \
 maintainer-clean
 
+#endif
 
 kdoc:
 	kdoc -ddoc ksirc *.h
@@ -643,9 +643,9 @@ getdate: getdate.c
 cdate.h: getdate
 	./getdate > cdate.h
 
-ksircstatic: cdate.h $(ksircstatic_OBJECTS) $(ksircstatic_DEPENDENCIES) $(static_libkde) $(static_libqt)
+ksircstatic: cdate.h $(ksircstaticOBJECTS) $(ksircstaticDEPENDENCIES) $(static_libkde) $(static_libqt)
 	@rm -f ksircstatic
-	$(LIBTOOL) --mode=link $(CC) $(CXXFLAGS) $(LDFLAGS) -o $@ $(ksircstatic_LDFLAGS) $(ksircstatic_OBJECTS) $(ksircstatic_LDADD) $(STATIC_LIBS) $(LIBS)
+	$(LIBTOOL) --mode=link $(CC) $(CXXFLAGS) $(LDFLAGS) -o $@ $(ksircstaticLDFLAGS) $(ksircstaticOBJECTS) $(ksircstaticLDADD) $(STATIC_LIBS) $(LIBS)
 
 # make messages.po. Move this one to ../po/ and "make merge" in po
 messages:

@@ -348,11 +348,11 @@ void servercontroller::configChange() /*fold00*/
   }
 }
 
-void servercontroller::about_ksirc() /*fold00*/
+void servercontroller::about_ksirc() /*FOLD00*/
 {
   QString caption = PACKAGE;
   caption += "-";
-  caption += VERSION;
+  caption += KSIRC_VERSION;
   caption += "\n\n(c) Copyright 1997,1998, Andrew Stanley-Jones (asj@ksirc.org)\n\nkSirc Irc Client";
   QMessageBox::about(this, "About kSirc", caption);
 }
