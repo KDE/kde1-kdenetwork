@@ -37,11 +37,7 @@ kfinger_LDADD   =         $(LIB_KFM) $(LIB_KDEUI)
 #noinst_HEADERS = hexfile.h hexwidget.h
 
 # just to make sure, automake makes them 
-BUILTSOURCES =	kfinger.moc finger.moc
-
-# if you "make distclean", this files get removed. If you want to remove
-# them while "make clean", use CLEANFILES
-DISTCLEANFILES = $(BUILTSOURCES)
+METASOURCES =	kfinger.moc finger.moc
 
 messages:
 	$(XGETTEXT) -C -ktranslate -ki18n -x $(includedir)/kde.pot $(kfinger_SOURCES) && mv messages.po ../po/kfinger.pot
@@ -61,18 +57,7 @@ install-data-local:
 
 # remove ALL you have installed in install-data-local or install-exec-local
 uninstall-local:
-#	-rm -f $(APPSDIR)/khexdit.kdelnk
-#	-rm -f $(kde_icondir)/khexdit.xpm
+	-rm -f $(APPSDIR)/kfinger.kdelnk
+	-rm -f $(kde_confdir)/kfingerrc.xpm
 #	-rm -f $(kde_minidir)/khexdit.xpm
-
-# add a dependency for every moc file to be full portable
-# I've added a key binding to emacs for this. 
-finger.C  :finger.moc
-kfinger.C  :kfinger.moc
-
-finger.moc: finger.h
-	$(MOC) finger.h -o finger.moc
-	
-kfinger.moc: kfinger.h
-	$(MOC) kfinger.h -o kfinger.moc
 

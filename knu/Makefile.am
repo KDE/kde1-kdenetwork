@@ -41,12 +41,8 @@ noinst_HEADERS = knu.h CommandDlg.h OptionsDlg.h MtrDlg.h\
 EXTRA_DIST = version.h knu.kdelnk knu.xpm knu.lsm mini-knu.xpm
 
 # just to make sure, automake makes them 
-BUILTSOURCES =	knu.moc CommandDlg.moc OptionsDlg.moc MtrDlg.moc\
+METASOURCES =	knu.moc CommandDlg.moc OptionsDlg.moc MtrDlg.moc\
 			PingDlg.moc TracerouteDlg.moc HostDlg.moc FingerDlg.moc
-
-# if you "make distclean", this files get removed. If you want to remove
-# them while "make clean", use CLEANFILES
-DISTCLEANFILES = $(BUILTSOURCES)
 
 messages:
 	$(XGETTEXT) -C -ki18n -x $(includedir)/kde.pot $(knu_SOURCES) && mv messages.po ../po/knu.pot
@@ -70,37 +66,3 @@ uninstall-local:
 	-rm -f $(kde_icondir)/knu.xpm
 	-rm -f $(kde_minidir)/knu.xpm
 
-# add a dependency for every moc file to be full portable
-# I've added a key binding to emacs for this. 
-
-knu.cpp: knu.moc
-knu.moc: knu.h
-	$(MOC) knu.h -o knu.moc
-
-CommandDlg.cpp: CommandDlg.moc
-CommandDlg.moc: CommandDlg.h
-	$(MOC) CommandDlg.h -o CommandDlg.moc
-
-OptionsDlg.cpp: OptionsDlg.moc
-OptionsDlg.moc: OptionsDlg.h
-	$(MOC) OptionsDlg.h -o OptionsDlg.moc
-
-PingDlg.cpp: PingDlg.moc
-PingDlg.moc: PingDlg.h
-	$(MOC) PingDlg.h -o PingDlg.moc
-
-TracerouteDlg.cpp: TracerouteDlg.moc
-TracerouteDlg.moc: TracerouteDlg.h
-	$(MOC) TracerouteDlg.h -o TracerouteDlg.moc
-
-HostDlg.cpp: HostDlg.moc
-HostDlg.moc: HostDlg.h
-	$(MOC) HostDlg.h -o HostDlg.moc
-
-FingerDlg.cpp: FingerDlg.moc
-FingerDlg.moc: FingerDlg.h
-	$(MOC) FingerDlg.h -o FingerDlg.moc
-
-MtrDlg.cpp: MtrDlg.moc
-MtrDlg.moc: MtrDlg.h
-	$(MOC) MtrDlg.h -o MtrDlg.moc
