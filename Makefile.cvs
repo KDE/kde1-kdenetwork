@@ -10,67 +10,37 @@ all:
 	   exit 1 ;\
 	fi
 	@echo "*** Concatenating configure tests into acinclude.m4"
-	@cat admin/acinclude.m4.in admin/libtool.m4.in acincktalk.m4 > acinclude.m4
-	@echo "*** Creating first part of configure.in from configure.in.1"
-	@cp configure.in.1 configure.in
+	@make -f Makefile.am acinclude.m4
+	@echo "*** Creating list of subdirectories in subdirs"
+	@make -f Makefile.am subdirs
+	@echo "*** Searching for subdirectories..."
+	@make -f Makefile.am configure.in
 	@echo "*** Retreiving configure tests needed by configure.in"
 	@aclocal
 	@echo "*** Scanning for include statements"
 	@autoheader
-	@echo "*** Creating first part of configure.in from configure.in.1 (again)"
-	@cat configure.in.1 > configure.in 
-	@echo "AC_OUTPUT(" >> configure.in
-	@echo "*** Searching for subdirectories..."
-	@mfs=`find . -name Makefile.am -print | sed -e "s#\.am##" | sed -e "s#\./##"`; \
-	echo $$mfs")" >> configure.in
 	@echo "*** Building Makefile templates (step one)"
 	@automake
-	@echo "*** Creating remaining part of configure.in from configure.in.2"
-	@cat configure.in.1 configure.in.2 > configure.in
 	@echo "*** Scanning for moc files"
 	@perl admin/automoc
 	@echo "*** Building Makefile templates (step two)"
 	@autoconf
-	@touch -r configure.in.1 configure.in
-	@touch configure
 	@echo "*** Creating date/time stamp"
 	@touch stamp-h.in
-	@echo "*** Creating list of subdirectories in SUBDIRS"
-	@rm -f ./SUBDIRS
-	@files=`ls -1`; \
-	dirs=`for i in $$files; do if test -d $$i; then echo $$i; fi; done`; \
-	for i in $$dirs; do \
-	echo $$i >> ./SUBDIRS; \
-	done
 	@echo "*** Finished"
 	@echo "    Don't forget to run ./configure"
 	@echo "    If you haven't done so in a while, run ./configure --help"
 
 dist:
-	@cp configure.in.1 configure.in; \
-	cat admin/acinclude.m4.in admin/libtool.m4.in acincktalk.m4 > acinclude.m4; \
+	@make -f Makefile.am subdirs acinclude.m4 configure.in
 	aclocal; \
 	autoheader; \
-	cat configure.in.1 > configure.in; \
-	echo "AC_OUTPUT(" >> configure.in; \
-	mfs=`find . -name Makefile.am -print | sed -e "s#\.am##" | sed -e "s#\./##"`; \
-	echo $$mfs")" >> configure.in; \
 	automake --foreign --include-deps; \
-	cat configure.in.1 configure.in.2 > configure.in; \
 	perl admin/automoc; \
 	autoconf; \
-	touch -r configure.in.1 configure.in; \
-	touch configure; \
 	touch stamp-h.in; \
-	rm -f ./SUBDIRS; \
-	files=`ls -1`; \
-	dirs=`for i in $$files; do if test -d $$i; then echo $$i; fi; done`; \
-	for i in $$dirs; do \
-	echo $$i >> ./SUBDIRS; \
-	done; \
 	LIST=`find ./po -name "*.po"`; \
 	for i in $$LIST; do \
 	 file2=`echo $$i | sed -e "s#\.po#\.gmo#"`; \
 	 msgfmt -o $$file2 $$i || touch $$file2; \
-	done; \
-	rm -f configure.in.1 configure.in.2 Makefile.cvs
+	done

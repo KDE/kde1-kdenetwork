@@ -47,3 +47,29 @@ messages:
 	rm -f temp.pot
 	rm -rf po.backup
 	(cd po && $(MAKE) -f Makefile.am merge)
+
+configure.in: configure.in.in subdirs
+	@mfs=`find . -name Makefile.am -print | sed -e "s#\.am##" | sed -e "s#\./##" | sort -r`; \
+	cp -f configure.in.in configure.in ;\
+	for i in $$mfs; do \
+	sed -e "s#AC_OUTPUT(#AC_OUTPUT($$i #" configure.in > configure.in.new \
+	 && mv configure.in.new configure.in ;\
+	done 
+
+subdirs:
+	@files=`ls -1 | sort`; \
+	dirs=`for i in $$files; do if test -d $$i; then echo $$i; fi; done`; \
+	rm -f SUBDIRS ;\
+	for i in $$dirs; do \
+	echo $$i >> ./SUBDIRS; \
+	done
+	@if test -r subdirs && diff subdirs SUBDIRS > /dev/null; then \
+	  rm -f SUBDIRS.new; \
+	fi
+	@test -r SUBDIRS && mv SUBDIRS subdirs
+
+acinclude.m4: admin/acinclude.m4.in admin/libtool.m4.in acincktalk.m4
+	cat admin/acinclude.m4.in admin/libtool.m4.in acincktalk.m4 > acinclude.m4
+
+MAINTAINERCLEANFILES = subdirs configure.in acinclude.m4 SUBDIRS
+
