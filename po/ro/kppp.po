@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-12-23 02:05+0100\n"
+"POT-Creation-Date: 1998-12-24 02:00+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Marian Rãdulescu <marian-r@usa.net>\n"
 "Language-Team: ROMANIAN <??@li.org>\n"
@@ -1143,6 +1143,14 @@ msgstr "PPP"
 msgid "Graph"
 msgstr ""
 
+#: main.cpp:805
+msgid "Timeout expired while waiting for the PPP interface to come up!"
+msgstr ""
+
+#: main.cpp:810
+msgid "The pppd daemon died unexpectedly!"
+msgstr "Execuþia pppd s-a terminat în mod neºteptat!"
+
 #: main.cpp:818
 #, fuzzy
 msgid "Details..."
@@ -1866,9 +1874,6 @@ msgstr ""
 
 #~ msgid "Modem sustains fast initialization."
 #~ msgstr "Modemul suportã iniþializare rapidã."
-
-#~ msgid "The pppd daemon died unexpectedly!"
-#~ msgstr "Execuþia pppd s-a terminat în mod neºteptat!"
 
 #~ msgid "ªir pt. apel:"
 #~ msgstr "Sir pt. apel"

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1998-12-23 02:05+0100\n"
+"POT-Creation-Date: 1998-12-24 02:00+0100\n"
 "PO-Revision-Date: 1998-11-19 23:46+07:00\n"
 "Last-Translator: Const Kaplinsky <const@ce.cctpu.edu.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -1132,6 +1132,14 @@ msgstr "PPP"
 
 #: main.cpp:644
 msgid "Graph"
+msgstr ""
+
+#: main.cpp:805
+msgid "Timeout expired while waiting for the PPP interface to come up!"
+msgstr ""
+
+#: main.cpp:810
+msgid "The pppd daemon died unexpectedly!"
 msgstr ""
 
 #: main.cpp:818

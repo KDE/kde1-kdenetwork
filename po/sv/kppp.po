@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-12-23 02:05+0100\n"
+"POT-Creation-Date: 1998-12-24 02:00+0100\n"
 "PO-Revision-Date: 1998-08-09 14:55+0200\n"
 "Last-Translator: Anders Bengtsson <d96-abe@nada.kth.se>\n"
 "MIME-Version: 1.0\n"
@@ -1134,6 +1134,14 @@ msgstr "PPP"
 
 #: main.cpp:644
 msgid "Graph"
+msgstr ""
+
+#: main.cpp:805
+msgid "Timeout expired while waiting for the PPP interface to come up!"
+msgstr ""
+
+#: main.cpp:810
+msgid "The pppd daemon died unexpectedly!"
 msgstr ""
 
 #: main.cpp:818

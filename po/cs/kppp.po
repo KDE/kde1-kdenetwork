@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp 0.9.6\n"
-"POT-Creation-Date: 1998-12-22 02:11+0100\n"
+"POT-Creation-Date: 1998-12-24 02:00+0100\n"
 "PO-Revision-Date: 1998-12-23 20:42 CET\n"
 "Last-Translator: Miroslav Flídr <flidr@kky.zcu.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -1405,6 +1405,14 @@ msgstr "PPP"
 msgid "Graph"
 msgstr "Graf"
 
+#: main.cpp:805
+msgid "Timeout expired while waiting for the PPP interface to come up!"
+msgstr ""
+
+#: main.cpp:810
+msgid "The pppd daemon died unexpectedly!"
+msgstr ""
+
 #: main.cpp:818
 msgid "Details..."
 msgstr "Detaily..."
@@ -1644,13 +1652,14 @@ msgstr "Implicitní"
 
 #: pppdata.cpp:109
 msgid ""
-"The application-specific config file\n"
-"could not be opened neither\n"
-"read-write nor read-only"
+"The application-specific config file could not be\n"
+"opened neither read-write nor read-only.\n"
+"\n"
+"The superuser might have to change its ownership\n"
+"by issuing the following command in your home directory:\n"
+"\n"
+"chown {YourUsername} .kde/share/config/kppprc"
 msgstr ""
-"Konfiguraèní soubor aplikace\n"
-"není mo¾né otevøít a to ani\n"
-"pro zapis ani pro ètení."
 
 #: modeminfo.cpp:38
 msgid "ATI Query"
@@ -1961,7 +1970,8 @@ msgid ""
 "connection.\n"
 "Please use the terminal-based login to verify"
 msgstr ""
-"Spustili jste pppd døíve ne¾ byl vzdálený server pøipraven na vytvoøení PPP spojení.\n"
+"Spustili jste pppd døíve ne¾ byl vzdálený server pøipraven na vytvoøení PPP "
+"spojení.\n"
 "Prosím pou¾ijte pro kontrolu terminálové pøihlá¹ení."
 
 #: ppplog.cpp:141
@@ -1976,7 +1986,9 @@ msgstr "Zkontrolujte, zda jste doplnili správné u¾ivatelské jméno a heslo!"
 msgid ""
 "You shouldn't pass 'lock' as an argument to pppd. Check /etc/ppp/options and "
 "~/.ppprc"
-msgstr "Nemìli by jste pøedávat hodnotu 'lock' jako parametr pro pppd. Zkontrolujte soubory /etc/ppp/options a ~/.ppprc"
+msgstr ""
+"Nemìli by jste pøedávat hodnotu 'lock' jako parametr pro pppd. Zkontrolujte "
+"soubory /etc/ppp/options a ~/.ppprc"
 
 #: ppplog.cpp:151
 msgid ""
@@ -2051,3 +2063,12 @@ msgstr "Diagnostika kppp (pouze hádám):"
 #: ppplog.cpp:241
 msgid "Write to file"
 msgstr "Zapsat do souboru"
+
+#~ msgid ""
+#~ "The application-specific config file\n"
+#~ "could not be opened neither\n"
+#~ "read-write nor read-only"
+#~ msgstr ""
+#~ "Konfiguraèní soubor aplikace\n"
+#~ "není mo¾né otevøít a to ani\n"
+#~ "pro zapis ani pro ètení."
