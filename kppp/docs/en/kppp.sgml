@@ -7,8 +7,8 @@
 
 <title>The <em/kppp/ Handbook
 <author>Bernd Johannes Wuebben, <tt/wuebben@kde.org/
-<date>Version 1.6.10, April 23, 1999
-<abstract>This Handbook describes <em/kppp/ Version 1.6.10
+<date>Version 1.6.11, April 25, 1999
+<abstract>This Handbook describes <em/kppp/ Version 1.6.11
 
 <!-- Table of contents -->
 <toc>
@@ -241,11 +241,6 @@ Activate this option if you want <em/kppp/ to create a lockfile. Under Linux
 the directory for such a file will be <tt>/var/lock</tt>.
 Programs such as mgetty depend on the existence of such lock files and
 <em/kppp/ will not work with mgetty if the lock file is not set.
-Make sure that you don't use the option "lock" to pppd
-if you want <em/kppp/ to lock the modem,
-since the pppd option "lock" will induce pppd to try to lock the
-modemdevice. However since <em/kppp/ already locked the device pppd
-will fail and <em/kppp/ will display "pppd died unexpectedly".
 
 <tag/Modem Timeout/ This is the time in seconds that <em/kppp/ waits for the 
 ``CONNECT'' response from your modem after dialing into another modem (typically a modem
@@ -269,7 +264,7 @@ interval of 0.
 
 If you intend to use the ISDN pseudo devices (/dev/ttyIx) you should remove
 the volume commands, choose ATD as dial string and specify your local phone
-number with AT&Ex (see "man ttyI" for further details).
+number with AT&amp;Ex (see "man ttyI" for further details).
 
 <tag/Query Modem/ Pushing the Query Modem Button will induce <em/kppp/ to ask
 your modem to identify itself. On success your modems response will be
@@ -797,7 +792,7 @@ your ISP supplied to you and dial.
 
 <sect1>PAP and CHAP with <em/kppp/ (alternate method)<label id="PAP">
 <p>
-The following is based on an email by <url url="kbrown@pdq.net" name="Keith Brown">
+The following is based on an email by <url url="mailto:kbrown@pdq.net" name="Keith Brown">
 and explains how to make <em/kppp/ work for a generic PAP or CHAP account. If
 your ISP just gave you a user id and a password for a PAP account the odds
 are that you can skip this section and that you will get by just reading the 
@@ -861,8 +856,43 @@ different. See the Linux Network Administrators' Guide for chap-secrets
 file format and pppd arguments used. The rest should be gravy, but...your
 mileage, ah you know the rest.</P>
 
-
+<sect1> MS-CHAP
 <p>
+<url url="mailto:birchallr@aecl.ca" name="Richard Birchall"> provided us with
+details about how he configured kppp to connect to a NT RAS server that
+required MS-CHAP authentication:
+
+Instructions on how to patch pppd and install the DES library can be found in
+the <url url="http://www.xs4all.nl/~diedvdyk/PPP-NT-HOWTO/PPP-NT-HOWTO.html"
+name="PPP-NT-HOWTO"> and in README.MSCHAP80 from the pppd package.
+
+If your NT RAS server is not a PDC (primary domain controller), it is
+necessary to include the NT domain name as part of the username, separated
+by a backslash.   Because the "\" character has a special meaning to pppd,
+it is necessary to use "\\".   This is explained here:
+<url url="http://metalab.unc.edu/LDP/FAQ/PPP-FAQ.html#ss12.2">
+
+My kppp settings:
+<itemize>
+<item>no ID & password
+<item>script-based
+<item>no pppd arguments
+<item>no login script
+</itemize>
+
+My /etc/ppp/chap-secrets file:
+<tscreen><verb>
+NTDOMAIN\\username   *       password
+</verb></tscreen>
+
+My /etc/ppp/options file:
+<tscreen><verb>
+debug
+name 'NTDOMAIN\\username'
+remotename *
+</verb></tscreen>
+<p>
+
 <sect>Questions and answers<p>
 <sect1>Frequently Asked Questions<p><label id="<em/kppp/ FAQ">
 <sect2>I can't get <em/kppp/ to work. <em/kppp/ tells me that pppd has died or that 
@@ -881,12 +911,6 @@ distributions). The log will help you to track down the bug.
 <item> Make sure that pppd is setuid root. You may set this mode by issuing <it>chmod u+s pppd</it> as root.
 
 <item> Make sure that your <tt>/etc/ppp/options</tt> file exists and that it doesn´t contain any conflicting entries. If in doubt: Leave this file empty. 
-
-<item> Make sure that you DON'T use the option "lock" as an argument
-    for pppd (<em/kppp/ is already taking care of device locking )
-
-<item> Remove the "lock" option from your <tt>/etc/ppp/options</tt>
-    and <tt>~/.ppprc</tt> files!
 
 <item> Using the symbolic link <tt>/dev/modem</tt> may cause some conflicts.
     Eliminate this source of trouble by using the real device, i.e. <tt>/dev/cuaX</tt>

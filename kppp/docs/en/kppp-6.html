@@ -97,7 +97,7 @@ your ISP supplied to you and dial.</LI>
 </H3>
 
 <P>The following is based on an email by 
-<A HREF="kbrown@pdq.net">Keith Brown</A>
+<A HREF="mailto:kbrown@pdq.net">Keith Brown</A>
 and explains how to make <EM>kppp</EM> work for a generic PAP or CHAP account. If
 your ISP just gave you a user id and a password for a PAP account the odds
 are that you can skip this section and that you will get by just reading the 
@@ -160,6 +160,43 @@ connection to a server with PAP authentication. CHAP should not be much
 different. See the Linux Network Administrators' Guide for chap-secrets
 file format and pppd arguments used. The rest should be gravy, but...your
 mileage, ah you know the rest.
+<P>
+<H3><A NAME="ss6.3">6.3 MS-CHAP</A>
+</H3>
+
+<P>
+<A HREF="mailto:birchallr@aecl.ca">Richard Birchall</A> provided us with
+details about how he configured kppp to connect to a NT RAS server that
+required MS-CHAP authentication:
+<P>Instructions on how to patch pppd and install the DES library can be found in
+the 
+<A HREF="http://www.xs4all.nl/~diedvdyk/PPP-NT-HOWTO/PPP-NT-HOWTO.html">PPP-NT-HOWTO</A> and in README.MSCHAP80 from the pppd package.
+<P>If your NT RAS server is not a PDC (primary domain controller), it is
+necessary to include the NT domain name as part of the username, separated
+by a backslash.   Because the "\" character has a special meaning to pppd,
+it is necessary to use "\\".   This is explained here:
+<A HREF="http://metalab.unc.edu/LDP/FAQ/PPP-FAQ.html#ss12.2">http://metalab.unc.edu/LDP/FAQ/PPP-FAQ.html#ss12.2</A><P>My kppp settings:
+<UL>
+<LI>no ID &amp; password</LI>
+<LI>script-based</LI>
+<LI>no pppd arguments</LI>
+<LI>no login script</LI>
+</UL>
+<P>My /etc/ppp/chap-secrets file:
+<BLOCKQUOTE><CODE>
+<PRE>
+NTDOMAIN\\username   *       password
+</PRE>
+</CODE></BLOCKQUOTE>
+<P>My /etc/ppp/options file:
+<BLOCKQUOTE><CODE>
+<PRE>
+debug
+name 'NTDOMAIN\\username'
+remotename *
+</PRE>
+</CODE></BLOCKQUOTE>
+<P>
 <P>
 <P ALIGN="RIGHT">
 

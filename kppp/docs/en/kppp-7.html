@@ -41,12 +41,6 @@ distributions). The log will help you to track down the bug.
 </LI>
 <LI> Make sure that your <CODE>/etc/ppp/options</CODE> file exists and that it doesn´t contain any conflicting entries. If in doubt: Leave this file empty. 
 </LI>
-<LI> Make sure that you DON'T use the option "lock" as an argument
-for pppd (<EM>kppp</EM> is already taking care of device locking )
-</LI>
-<LI> Remove the "lock" option from your <CODE>/etc/ppp/options</CODE>
-and <CODE>~/.ppprc</CODE> files!
-</LI>
 <LI> Using the symbolic link <CODE>/dev/modem</CODE> may cause some conflicts.
 Eliminate this source of trouble by using the real device, i.e. <CODE>/dev/cuaX</CODE>
 or <CODE>/dev/ttySX</CODE>.

@@ -79,11 +79,6 @@ your serial port.
 the directory for such a file will be <CODE>/var/lock</CODE>.
 Programs such as mgetty depend on the existence of such lock files and
 <EM>kppp</EM> will not work with mgetty if the lock file is not set.
-Make sure that you don't use the option "lock" to pppd
-if you want <EM>kppp</EM> to lock the modem,
-since the pppd option "lock" will induce pppd to try to lock the
-modemdevice. However since <EM>kppp</EM> already locked the device pppd
-will fail and <EM>kppp</EM> will display "pppd died unexpectedly".
 <P>
 <DT><B>Modem Timeout</B><DD><P>This is the time in seconds that <EM>kppp</EM> waits for the 
 ``CONNECT'' response from your modem after dialing into another modem (typically a modem
@@ -110,7 +105,7 @@ interval of 0.
 <P>
 If you intend to use the ISDN pseudo devices (/dev/ttyIx) you should remove
 the volume commands, choose ATD as dial string and specify your local phone
-number with AT&Ex (see "man ttyI" for further details).
+number with AT&amp;Ex (see "man ttyI" for further details).
 <P>
 <DT><B>Query Modem</B><DD><P>Pushing the Query Modem Button will induce <EM>kppp</EM> to ask
 your modem to identify itself. On success your modems response will be
