@@ -561,7 +561,7 @@ bool Artdlg::actions (int action)
             m->Parse();
             
             KMMessage *mm=new KMMessage(m);
-            KMComposeWin *comp=new KMComposeWin();
+            KMComposeWin *comp=new KMComposeWin(mm);
             comp->show();
             break;
         }
@@ -580,7 +580,7 @@ bool Artdlg::actions (int action)
             m->Parse();
             
             KMMessage *mm=new KMMessage(m);
-            KMComposeWin *comp=new KMComposeWin();
+            KMComposeWin *comp=new KMComposeWin(mm->createReply());
             comp->show();
             break;
         }
@@ -599,7 +599,7 @@ bool Artdlg::actions (int action)
             m->Parse();
             
             KMMessage *mm=new KMMessage(m);
-            KMComposeWin *comp=new KMComposeWin();
+            KMComposeWin *comp=new KMComposeWin(mm->createForward());
             comp->show();
             break;
         }
@@ -618,7 +618,7 @@ bool Artdlg::actions (int action)
             m->Parse();
             
             KMMessage *mm=new KMMessage(m);
-            KMComposeWin *comp=new KMComposeWin();
+            KMComposeWin *comp=new KMComposeWin(mm->createReply());
             comp->show();
             break;
         }
