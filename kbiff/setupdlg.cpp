@@ -931,6 +931,7 @@ TRACEINIT("KBiffMailboxTab::KBiffMailboxTab()");
 	top_layout->addLayout(list_layout);
 
 	mailboxes = new QListView(this);
+	mailboxes->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
 	mailboxes->addColumn(i18n("Mailbox:"));
 	mailboxes->header()->hide();
 
@@ -978,6 +979,7 @@ TRACEINIT("KBiffMailboxTab::KBiffMailboxTab()");
 	comboProtocol->insertItem("maildir");
 	comboProtocol->insertItem("imap4");
 	comboProtocol->insertItem("pop3");
+	comboProtocol->insertItem("file");
 	comboProtocol->setMinimumSize(comboProtocol->sizeHint());
 
 	connect(comboProtocol, SIGNAL(highlighted(int)),
@@ -1150,6 +1152,8 @@ TRACEINIT("KBiffMailboxTab::setMailbox()");
 		protocolSelected(3);
 	else if (prot == "pop3")
 		protocolSelected(4);
+	else if (prot == "file")
+		protocolSelected(5);
 	else
 		return;
 
@@ -1304,6 +1308,7 @@ TRACEINIT("KBiffMailboxTab::protocolSelected()");
 	{
 		case 1: // mbox
 		case 2: // maildir
+		case 5: // file
 			port = 0;
 			buttonBrowse->setEnabled(true);
 			editMailbox->setEnabled(true);
@@ -1364,7 +1369,7 @@ void KBiffMailboxTab::advanced()
 	KBiffMailboxAdvanced advanced_dlg;
 	QString prot(getMailbox().protocol());
 	
-	if (prot == "mbox" || prot == "maildir")
+	if (prot == "mbox" || prot == "maildir" || prot == "file")
 		advanced_dlg.setPort(port, false);
 	else
 		advanced_dlg.setPort(port);

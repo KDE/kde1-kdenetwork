@@ -62,7 +62,7 @@ class Trace
 {
 public:
 	Trace(bool do_trace);
-	Trace(const QString& function_name);
+	Trace(const char* function_name);
 	virtual ~Trace();
 
 	static int traceIndent;

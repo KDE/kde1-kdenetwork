@@ -9,7 +9,7 @@ Trace::Trace(bool do_trace)
 	traceOn = do_trace;
 }
 
-Trace::Trace(const QString& function_name)
+Trace::Trace(const char* function_name)
 {
 	if(traceOn)
 	{

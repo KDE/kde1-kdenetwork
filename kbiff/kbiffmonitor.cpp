@@ -17,8 +17,15 @@
 #include <string.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdio.h>
+
+#include <kurl.h>
 
 #include <qapp.h>
+#include <qstring.h>
+#include <qregexp.h>
+#include <qdir.h>
+#include <qdatetm.h>
 
 #include "Trace.h"
 
@@ -33,6 +40,7 @@ KBiffMonitor::KBiffMonitor()
 	  oldTimer(0),
 	  started(false),
 	  newCount(0),
+	  protocol(""),
 	  mailbox(""),
 	  server(""),
 	  user(""),
@@ -43,6 +51,7 @@ KBiffMonitor::KBiffMonitor()
 {
 TRACEINIT("KBiffMonitor::KBiffMonitor()");
 	lastRead.setTime_t(0);
+	lastModified.setTime_t(0);
 }
 
 KBiffMonitor::~KBiffMonitor()
@@ -69,6 +78,8 @@ TRACEINIT("KBiffMonitor::stop()");
 	mailState  = UnknownState;
 	started    = false;
 	lastRead.setTime_t(0);
+	lastModified.setTime_t(0);
+	uidlList.clear();
 }
 
 void KBiffMonitor::setPollInterval(const int interval)
@@ -101,8 +112,9 @@ TRACEINIT("KBiffMonitor::setMailbox()");
 void KBiffMonitor::setMailbox(KURL& url)
 {
 TRACEINIT("KBiffMonitor::setMailbox()");
+	protocol = url.protocol();
 
-	if (!strcmp(url.protocol(), "imap4"))
+	if (protocol == "imap4")
 	{
 		disconnect(this);
 
@@ -115,7 +127,7 @@ TRACEINIT("KBiffMonitor::setMailbox()");
 		port     = (url.port() > 0) ? url.port() : 143;
 	}
 
-	if (!strcmp(url.protocol(), "pop3"))
+	if (protocol == "pop3")
 	{
 		disconnect(this);
 
@@ -127,7 +139,15 @@ TRACEINIT("KBiffMonitor::setMailbox()");
 		port     = (url.port() > 0) ? url.port() : 110;
 	}
 
-	if (!strcmp(url.protocol(), "mbox"))
+	if (protocol == "mbox")
+	{
+		disconnect(this);
+
+		connect(this, SIGNAL(signal_checkMail()), SLOT(checkMbox()));
+		mailbox = url.path();
+	}
+
+	if (protocol == "file")
 	{
 		disconnect(this);
 
@@ -135,7 +155,7 @@ TRACEINIT("KBiffMonitor::setMailbox()");
 		mailbox = url.path();
 	}
 
-	if (!strcmp(url.protocol(), "maildir"))
+	if (protocol == "maildir")
 	{
 		disconnect(this);
 
@@ -183,15 +203,46 @@ TRACEINIT("KBiffMonitor::checkLocal()");
 	determineState(mbox.size(), mbox.lastRead(), mbox.lastModified());
 }
 
+void KBiffMonitor::checkMbox()
+{
+TRACEINIT("KBiffMonitor::checkMbox()");
+	// get the information about this local mailbox
+	QFileInfo mbox(mailbox);
+
+	// handle the NoMail case
+	if (mbox.size() == 0)
+	{
+		determineState(NoMail);
+		return;
+	}
+
+	// see if the state has changed
+	if ((mbox.lastModified() != lastModified) || (mbox.size() != lastSize))
+	{
+		lastModified = mbox.lastModified();
+		lastSize     = mbox.size();
+
+		// ok, the state *has* changed.  see if the number of
+		// new messages has, too.
+		newCount = mboxMessages();
+
+		// if there are any new messages, consider the state New
+		if (newCount > 0)
+			determineState(NewMail);
+		else
+			determineState(OldMail);
+	}
+}
+
 void KBiffMonitor::checkPop()
 {
 TRACEINIT("KBiffMonitor::checkPop()");
 	QString command;
 	KBiffPop pop;
 
-	if (pop.connectSocket(server, port) == false)
+	if(pop.connectSocket(server, port) == false)
 		return;
-	
+
 	command = "USER " + user + "\r\n";
 	if (pop.command(command) == false)
 		return;
@@ -200,7 +251,22 @@ TRACEINIT("KBiffMonitor::checkPop()");
 	if (pop.command(command) == false)
 		return;
 
-	determineState(pop.numberOfMessages());
+	command = "UIDL\r\n";
+	if (pop.command(command) == false)
+	{
+		command = "STAT\r\n";
+		if (pop.command(command) == false)
+		{
+			command = "LIST\r\n";
+			if (pop.command(command) == false)
+				return;
+		}
+	}
+
+	if (command == "UIDL\r\n")
+		determineState(pop.getUidlList());
+	else
+		determineState(pop.numberOfMessages());
 }
 
 void KBiffMonitor::checkImap()
@@ -345,6 +411,55 @@ TRACEINIT("KBiffMonitor::determineState()");
 	}
 }
 
+void KBiffMonitor::determineState(KBiffUidlList uidl_list)
+{
+TRACEINIT("KBiffMonitor::determineState()");    
+	QString *UIDL;
+	unsigned int messages = 0;
+
+	// if the uidl_list is empty then the number of messages = 0  
+	if (uidl_list.isEmpty())
+	{
+		if (mailState != NoMail)
+		{
+			lastSize  = 0;
+			mailState = NoMail;
+			emit(signal_noMail());
+			emit(signal_noMail(mailbox));
+		}
+	}
+	else
+	{
+		// if a member of uidl_list is not in the old uidlList then we have 
+		// new mail
+		for (UIDL = uidl_list.first(); UIDL != 0; UIDL = uidl_list.next())
+		{
+			if (uidlList.find(UIDL) == -1)
+				messages++;
+		}
+TRACEF("new messages = %d", messages);
+
+		// if there are any new messages, then notify
+		if (messages > 0) 
+		{
+			lastSize  = newCount = messages;
+			mailState = NewMail;
+			emit(signal_newMail());
+			emit(signal_newMail(newCount, mailbox));
+		}
+		/*
+		else
+		{
+			mailState = OldMail;
+			emit(signal_oldMail());
+			emit(signal_oldMail(mailbox));
+		}
+		*/
+	}
+
+	uidlList = uidl_list;
+}
+    
 void KBiffMonitor::determineState(KBiffMailState state)
 {
 TRACEINIT("KBiffMonitor::determineState()");
@@ -683,7 +798,7 @@ TRACEF("new_user = %s", new_user.data());
 bool KBiffPop::command(const QString& line)
 {
 TRACEINIT("KBiffPop::command()");
-	int len, match;
+	int len;
 
 	if (writeLine(line) <= 0)
 		return false;
@@ -691,16 +806,40 @@ TRACEINIT("KBiffPop::command()");
 	QString response;
 	response = readLine();
 
-	// check the number of messages
-	QRegExp message_re("[0-9]* messages");
-	if ((match = message_re.match(response, 0, &len)) > -1)
-		messages = response.mid(match, len - 9).toInt();
+	// check if the response was bad.  if so, return now
+	if (response.left(4) == "-ERR")
+		return false;
 
-	// if the response is either good or bad, then return
-	if (response.left(3) == "+OK")
-		return true;
+	// if the command was UIDL then build up the newUidlList
+	if (line == "UIDL\r\n")
+	{
+		for (response = readLine(); response.left(1) != ".";
+		     response = readLine())
+		{
+			uidlList.append(new QString(response.right(response.length() -
+					response.find(" ") - 1)));
+		}
+	}
+	else
+	// get all response lines from the LIST command    
+	// LIST and UIDL are return multilines so we have to loop around
+	if (line == "LIST\r\n")
+	{
+		for (messages = 0, response = readLine(); response.left(1) != ".";
+		     messages++, response = readLine());
+	}
+	else
+	if (line == "STAT\r\n")
+	{
+		sscanf(response.data(), "+OK %d", &messages);
+	}
 
-	return false;
+	return true;
+}
+
+KBiffUidlList KBiffPop::getUidlList() const
+{
+	return uidlList;
 }
 
 /////////////////////////////////////////////////////////////////////////

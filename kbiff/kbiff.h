@@ -62,6 +62,7 @@ protected slots:
 	void setup();
 	void checkMailNow();
 	void readMailNow();
+	void readPop3MailNow();
 	void stop();
 	void start();
 

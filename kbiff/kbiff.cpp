@@ -151,6 +151,7 @@ TRACEINIT("KBiff::mousePressEvent()");
 
 			client.start(KProcess::DontCare);
 		}
+		readPop3MailNow();
 	}
 }
 
@@ -409,6 +410,19 @@ TRACEINIT("KBiff::readMailNow()");
 		  monitor = monitorList.next())
 	{
 		monitor->setMailboxIsRead();
+	}
+}
+
+void KBiff::readPop3MailNow()
+{
+TRACEINIT("KBiff::readPop3MailNow()");
+	KBiffMonitor *monitor;
+	for (monitor = monitorList.first();
+	     monitor != 0;
+		  monitor = monitorList.next())
+	{
+		if (!strcmp(monitor->getProtocol(), "pop3"))
+			monitor->setMailboxIsRead();
 	}
 }
 

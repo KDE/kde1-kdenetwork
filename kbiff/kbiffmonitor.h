@@ -9,14 +9,30 @@
 #define KBIFFMONITOR_H
 
 #include <qobject.h>
-#include <kurl.h>
-
+#include <qlist.h>
 #include <qfileinf.h>
-#include <qdir.h>
-#include <qdatetm.h>
-#include <stdio.h>
-#include <qregexp.h>
-#include <qstring.h>
+
+class KURL;
+class QString;
+
+/**
+ * @internal
+ * Internal class to store UIDL list
+ */
+class KBiffUidlList : public QList<QString>
+{
+protected:
+	int compareItems(GCI s1, GCI s2)
+	{
+		QString *str1, *str2;
+		str1 = (QString *)s1;
+		str2 = (QString *)s2;
+		if((*str1) == (*str2))
+			return 0;
+		else
+			return -1;
+	}
+};
 
 typedef enum
 {
@@ -31,7 +47,7 @@ typedef enum
  * mail.  KBiffMonitor currently supports four protocols.
  * 
  * <UL>
- * <LI>mbox</LI> Local mbox style files
+ * <LI>mbox</LI> Unix style mailbox files
  * <LI>pop3</LI> POP3 
  * <LI>imap4</LI> imap4 
  * <LI>maildir</LI> Mailboxes in maildir format
@@ -82,6 +98,10 @@ public:
 	const char* getMailbox() const { return mailbox; }
 
 	/**
+	 * Returns the type of mailbox being monitored
+	 */
+	const char* getProtocol() const { return protocol; }
+	/**
 	 * Returns <CODE>true</CODE> is KBiffMonitor is currently monitoring
 	 * a mailbox.
 	 */
@@ -99,7 +119,7 @@ public slots:
 	 * protocol type).  KBiffMonitor recognizes four protocols:
 	 * 
 	 * <UL>
-	 * <LI>mbox</LI> Local files
+	 * <LI>mbox</LI> Unix style mailbox files
 	 * <LI>pop3</LI> POP3 
 	 * <LI>imap4</LI> IMAP4 
 	 * <LI>maildir</LI> Mailboxes in maildir format
@@ -205,7 +225,9 @@ protected:
 
 protected slots:
 	void checkLocal();
+	void checkMbox();
 	void checkPop();
+    
 	void checkMaildir();
 	void checkImap();
 
@@ -214,6 +236,8 @@ protected:
 	void determineState(unsigned int size, const QDateTime& last_read,
 	                    const QDateTime& last_modified);
 	void determineState(unsigned int size);
+    
+	void determineState(KBiffUidlList uidl_list);
 	void determineState(KBiffMailState state);
 	int  mboxMessages();
 
@@ -225,6 +249,7 @@ private:
 	int     newCount;
 
 	// Mailbox stuff
+	QString protocol;
 	QString mailbox;
 	QString server;
 	QString user;
@@ -235,7 +260,10 @@ private:
 	KBiffMailState mailState;
 	unsigned int   lastSize;
 	QDateTime      lastRead;
+	QDateTime      lastModified;
+	KBiffUidlList  uidlList;
 };
+
 
 /**
  * @internal
@@ -278,5 +306,9 @@ class KBiffPop : public KBiffSocket
 {
 public:
 	bool command(const QString& line);
+	KBiffUidlList getUidlList() const;
+
+protected:
+	KBiffUidlList  uidlList;    
 };
 #endif // KBIFFMONITOR_H

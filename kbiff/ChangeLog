@@ -1,3 +1,22 @@
+10-06-98 - Kurt Granroth
+	o Added patch from Ian Denton to use POP3 UIDL to check number of new
+	  messages.  Doesn't quite work perfectly, but it's almost there!  Still
+	  problems with knowing when POP3 mailbox was "read", though...
+	  POP3 code now will attempt to figure out the number of new messages
+	  by checking UIDL, then if that fails, it checks STAT, then if that
+	  fails, it checks LIST.
+
+10-04-98 - Kurt Granroth
+   o Checking for new messages in mbox breaks the code!  Added a work-around
+	  that may or may not work (didn't test yet).  This will also break
+	  random file monitoring (file *must* be in mbox format), so I added
+	  a new protocol: "file"
+	o Modified Trace class so that it will work with egcs.
+
+09-25-98 - Kurt Granroth
+   o Changed POP3 code back to using STAT.  Apparently some servers don't
+	  return the number of messages with a successful USER/PASS
+
 09-24-98 - Kurt Granroth
    o Added code from 'korn' to check number of new messages in mbox.  'Notify'
 	  should not correctly list the number of new messages in all four
