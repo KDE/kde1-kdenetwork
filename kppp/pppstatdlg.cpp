@@ -242,14 +242,17 @@ void PPPStatsDlg::take_stats() {
     bout[i] = -1;
   }
   clocktimer->start(PPP_STATS_INTERVAL);
-  graphTimer->start(GRAPH_UPDATE_TIME);
-  updateGraph();
+  if(gpppdata.graphingEnabled()) {
+    graphTimer->start(GRAPH_UPDATE_TIME);
+    updateGraph();
+  }
 }
 
 
 void PPPStatsDlg::stop_stats() {
   clocktimer->stop();
-  graphTimer->stop();
+  if(gpppdata.graphingEnabled())
+    graphTimer->stop();
 }
 
 void PPPStatsDlg::paintGraph() {
@@ -324,7 +327,8 @@ void PPPStatsDlg::updateGraph() {
 void PPPStatsDlg::paintEvent (QPaintEvent *) {
   need_to_paint = true;
   paintIcon();
-  paintGraph();
+  if(gpppdata.graphingEnabled())
+    paintGraph();
 }
 
 

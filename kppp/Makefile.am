@@ -158,7 +158,7 @@ install-data-local:
 
 # kppp wants to be installed suid root
 install-exec-hook:
-	(chown root $(bindir)/kppp && chmod 4555 $(bindir)/kppp) || echo "Was not able to make kppp setuid root"
+	(chown root $(bindir)/kppp && chmod 4755 $(bindir)/kppp) || echo "Was not able to make kppp setuid root"
 
 # remove ALL you have installed in install-data-local or install-exec-local
 #uninstall-local:
