@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kdenetwork 1.1\n"
-"POT-Creation-Date: 1999-04-12 02:58+0200\n"
+"POT-Creation-Date: 1999-04-13 02:48+0200\n"
 "PO-Revision-Date: Tue Mar 9 1999 12:59:50+0100\n"
 "Last-Translator: Marcell Lengyel <miketkf@yahoo.com>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -34,7 +34,7 @@ msgid "New Folder"
 msgstr "Új mappa"
 
 #
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:393 kmmainwin.cpp:427 main.cpp:471
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:393 kmmainwin.cpp:427 main.cpp:484
 msgid "KMail error"
 msgstr "KMail hiba"
 
@@ -1054,7 +1054,7 @@ msgid "pgp key"
 msgstr "pgp kulcs"
 
 #
-#: kmcomposewin.cpp:1297 kmreaderwin.cpp:840
+#: kmcomposewin.cpp:1297 kmreaderwin.cpp:880
 msgid "View..."
 msgstr "Nézet..."
 
@@ -1064,7 +1064,7 @@ msgid "Save..."
 msgstr "Mentés..."
 
 #
-#: kmcomposewin.cpp:1299 kmreaderwin.cpp:843
+#: kmcomposewin.cpp:1299 kmreaderwin.cpp:883
 msgid "Properties..."
 msgstr "Tulajdonságok..."
 
@@ -1074,7 +1074,7 @@ msgid "Attach..."
 msgstr "Csatolás..."
 
 #
-#: kmcomposewin.cpp:1345 kmreaderwin.cpp:912 kmreaderwin.cpp:928
+#: kmcomposewin.cpp:1345 kmreaderwin.cpp:952 kmreaderwin.cpp:969
 msgid "View Attachment: "
 msgstr "Csatolás megtekintése: "
 
@@ -1150,71 +1150,71 @@ msgid "quoted printable"
 msgstr "idézett, nyomtatható"
 
 #
-#: kmreaderwin.cpp:336 kmreaderwin.cpp:349 kmreaderwin.cpp:368
-#: kmreaderwin.cpp:389
+#: kmreaderwin.cpp:376 kmreaderwin.cpp:389 kmreaderwin.cpp:408
+#: kmreaderwin.cpp:429
 msgid "Cc: "
 msgstr "Másolat: "
 
 #
-#: kmreaderwin.cpp:344 kmreaderwin.cpp:363 kmreaderwin.cpp:384
+#: kmreaderwin.cpp:384 kmreaderwin.cpp:403 kmreaderwin.cpp:424
 msgid "From: "
 msgstr "Feladó: "
 
 #
-#: kmreaderwin.cpp:346 kmreaderwin.cpp:365 kmreaderwin.cpp:386
+#: kmreaderwin.cpp:386 kmreaderwin.cpp:405 kmreaderwin.cpp:426
 msgid "To: "
 msgstr "Címzett: "
 
-#: kmreaderwin.cpp:353 kmreaderwin.cpp:374 kmreaderwin.cpp:399
+#: kmreaderwin.cpp:393 kmreaderwin.cpp:414 kmreaderwin.cpp:439
 msgid "References: "
 msgstr "Hivatkozások: "
 
 #
-#: kmreaderwin.cpp:370 kmreaderwin.cpp:383
+#: kmreaderwin.cpp:410 kmreaderwin.cpp:423
 msgid "Date: "
 msgstr "Dátum: "
 
 #
-#: kmreaderwin.cpp:392
+#: kmreaderwin.cpp:432
 msgid "Bcc: "
 msgstr "Titkos másolat: "
 
 #
-#: kmreaderwin.cpp:395
+#: kmreaderwin.cpp:435
 msgid "Reply to: "
 msgstr "Válaszcím: "
 
-#: kmreaderwin.cpp:402
+#: kmreaderwin.cpp:442
 msgid "Groups: "
 msgstr "Csoportok: "
 
 #
-#: kmreaderwin.cpp:440
+#: kmreaderwin.cpp:480
 msgid "Encrypted message"
 msgstr "Titkosított üzenet"
 
-#: kmreaderwin.cpp:446
+#: kmreaderwin.cpp:486
 msgid "Cannot decrypt message:"
 msgstr "Az üzenet nem dekódolható:"
 
-#: kmreaderwin.cpp:455
+#: kmreaderwin.cpp:495
 msgid "Message was signed by"
 msgstr "Üzenet aláírója:"
 
-#: kmreaderwin.cpp:456
+#: kmreaderwin.cpp:496
 msgid "Warning: Bad signature from"
 msgstr "Figyelem: Rossz aláírás:"
 
-#: kmreaderwin.cpp:466
+#: kmreaderwin.cpp:506
 msgid "unknown key ID"
 msgstr "ismeretlen kulcs azonosító"
 
 #
-#: kmreaderwin.cpp:804
+#: kmreaderwin.cpp:844
 msgid "Attachment: "
 msgstr "Függelék: "
 
-#: kmreaderwin.cpp:1016
+#: kmreaderwin.cpp:1058
 msgid "Could not save file"
 msgstr "Fájlba mentés nem sikerült"
 
@@ -1238,20 +1238,20 @@ msgstr ""
 "Meg kell adni egy ügyfelet a beállítások\n"
 "hálózat-nál, hogy üzeneteket fogadhass."
 
-#: main.cpp:109 main.cpp:358
+#: main.cpp:121 main.cpp:371
 msgid "warning"
 msgstr "figyelmeztetés"
 
 #
-#: main.cpp:116 main.cpp:117
+#: main.cpp:128 main.cpp:129
 msgid "fatal error"
 msgstr "súlyos hiba"
 
-#: main.cpp:293
+#: main.cpp:306
 msgid "KMail notification"
 msgstr "KMail figyelmeztetés"
 
-#: main.cpp:294
+#: main.cpp:307
 msgid ""
 "$HOME is not set!\n"
 "KMail cannot start without it.\n"
@@ -1259,7 +1259,7 @@ msgstr ""
 "A $HOME nincs beállítva!\n"
 "KMail nem indítható el ennélkül.\n"
 
-#: main.cpp:360
+#: main.cpp:373
 msgid ""
 "The directory ~/KMail exists. From now on, KMail uses the\n"
 "directory ~/Mail for it's messages.\n"
@@ -1275,11 +1275,11 @@ msgstr ""
 "~/Mail könyvtárba, de így felülírja a ~/Mail könyvtárban\n"
 "lévõ, már létezõ fájlokat (pl. inbox)."
 
-#: main.cpp:472
+#: main.cpp:485
 msgid "Loading addressbook failed"
 msgstr "A címjegyzék betöltése nem sikerült"
 
-#: main.cpp:573 main.cpp:704
+#: main.cpp:588 main.cpp:729
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr "Ismeretlen parancssori opció: %s"

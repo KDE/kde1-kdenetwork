@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KMail\n"
-"POT-Creation-Date: 1999-04-12 02:58+0200\n"
+"POT-Creation-Date: 1999-04-13 02:48+0200\n"
 "PO-Revision-Date: 1998-04-29 20:00-0500\n"
 "Last-Translator: Vladimir Vuksan <vuksan@veus.hr>\n"
 "Language-Team: Croatian\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "New Folder"
 msgstr "Novi direktorij"
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:393 kmmainwin.cpp:427 main.cpp:471
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:393 kmmainwin.cpp:427 main.cpp:484
 msgid "KMail error"
 msgstr "KMail gre¹ka"
 
@@ -964,7 +964,7 @@ msgstr "moj javni kljuè"
 msgid "pgp key"
 msgstr ""
 
-#: kmcomposewin.cpp:1297 kmreaderwin.cpp:840
+#: kmcomposewin.cpp:1297 kmreaderwin.cpp:880
 msgid "View..."
 msgstr "&Pogled..."
 
@@ -972,7 +972,7 @@ msgstr "&Pogled..."
 msgid "Save..."
 msgstr "Spremi..."
 
-#: kmcomposewin.cpp:1299 kmreaderwin.cpp:843
+#: kmcomposewin.cpp:1299 kmreaderwin.cpp:883
 msgid "Properties..."
 msgstr "Svojstva..."
 
@@ -980,7 +980,7 @@ msgstr "Svojstva..."
 msgid "Attach..."
 msgstr "Prilo¾i..."
 
-#: kmcomposewin.cpp:1345 kmreaderwin.cpp:912 kmreaderwin.cpp:928
+#: kmcomposewin.cpp:1345 kmreaderwin.cpp:952 kmreaderwin.cpp:969
 msgid "View Attachment: "
 msgstr "Pogledaj Prilog: "
 
@@ -1055,64 +1055,64 @@ msgstr "Base 64"
 msgid "quoted printable"
 msgstr "Quoted Printable"
 
-#: kmreaderwin.cpp:336 kmreaderwin.cpp:349 kmreaderwin.cpp:368
-#: kmreaderwin.cpp:389
+#: kmreaderwin.cpp:376 kmreaderwin.cpp:389 kmreaderwin.cpp:408
+#: kmreaderwin.cpp:429
 msgid "Cc: "
 msgstr "Kopija: "
 
-#: kmreaderwin.cpp:344 kmreaderwin.cpp:363 kmreaderwin.cpp:384
+#: kmreaderwin.cpp:384 kmreaderwin.cpp:403 kmreaderwin.cpp:424
 msgid "From: "
 msgstr "Od: "
 
-#: kmreaderwin.cpp:346 kmreaderwin.cpp:365 kmreaderwin.cpp:386
+#: kmreaderwin.cpp:386 kmreaderwin.cpp:405 kmreaderwin.cpp:426
 msgid "To: "
 msgstr "Za: "
 
-#: kmreaderwin.cpp:353 kmreaderwin.cpp:374 kmreaderwin.cpp:399
+#: kmreaderwin.cpp:393 kmreaderwin.cpp:414 kmreaderwin.cpp:439
 msgid "References: "
 msgstr "Reference:"
 
-#: kmreaderwin.cpp:370 kmreaderwin.cpp:383
+#: kmreaderwin.cpp:410 kmreaderwin.cpp:423
 msgid "Date: "
 msgstr "Datum: "
 
-#: kmreaderwin.cpp:392
+#: kmreaderwin.cpp:432
 msgid "Bcc: "
 msgstr "Slijepa kopija: "
 
-#: kmreaderwin.cpp:395
+#: kmreaderwin.cpp:435
 msgid "Reply to: "
 msgstr "Odgovori na: "
 
-#: kmreaderwin.cpp:402
+#: kmreaderwin.cpp:442
 msgid "Groups: "
 msgstr "Grupe: "
 
-#: kmreaderwin.cpp:440
+#: kmreaderwin.cpp:480
 msgid "Encrypted message"
 msgstr "©ifriraj poruku"
 
-#: kmreaderwin.cpp:446
+#: kmreaderwin.cpp:486
 msgid "Cannot decrypt message:"
 msgstr "Ne mogu de¹ifrirati poruku:"
 
-#: kmreaderwin.cpp:455
+#: kmreaderwin.cpp:495
 msgid "Message was signed by"
 msgstr "Poruku je potpisao"
 
-#: kmreaderwin.cpp:456
+#: kmreaderwin.cpp:496
 msgid "Warning: Bad signature from"
 msgstr "Upozorenje: Lo¹ potpis od"
 
-#: kmreaderwin.cpp:466
+#: kmreaderwin.cpp:506
 msgid "unknown key ID"
 msgstr "nepoznati key ID"
 
-#: kmreaderwin.cpp:804
+#: kmreaderwin.cpp:844
 msgid "Attachment: "
 msgstr "Prilog: "
 
-#: kmreaderwin.cpp:1016
+#: kmreaderwin.cpp:1058
 msgid "Could not save file"
 msgstr "Ne mogu spremiti datoteku"
 
@@ -1134,19 +1134,19 @@ msgstr ""
 "mre¾noj postavi da bi mogli primati\n"
 "po¹tu."
 
-#: main.cpp:109 main.cpp:358
+#: main.cpp:121 main.cpp:371
 msgid "warning"
 msgstr "upozorenje"
 
-#: main.cpp:116 main.cpp:117
+#: main.cpp:128 main.cpp:129
 msgid "fatal error"
 msgstr "nepovratna pogre¹ka"
 
-#: main.cpp:293
+#: main.cpp:306
 msgid "KMail notification"
 msgstr "KMail obavijest"
 
-#: main.cpp:294
+#: main.cpp:307
 msgid ""
 "$HOME is not set!\n"
 "KMail cannot start without it.\n"
@@ -1154,7 +1154,7 @@ msgstr ""
 "$HOME (poèetni direktorij) nije pode¹en!\n"
 "KMail ne mo¾e startati bez njega.\n"
 
-#: main.cpp:360
+#: main.cpp:373
 msgid ""
 "The directory ~/KMail exists. From now on, KMail uses the\n"
 "directory ~/Mail for it's messages.\n"
@@ -1172,11 +1172,11 @@ msgstr ""
 "\n"
 "Da li da KMail pomakne direktorije sada ?"
 
-#: main.cpp:472
+#: main.cpp:485
 msgid "Loading addressbook failed"
 msgstr "Uèitavanje adresara nije uspjelo"
 
-#: main.cpp:573 main.cpp:704
+#: main.cpp:588 main.cpp:729
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr "Nepoznata opcija na komandoj liniji: %s"

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE 1.0\n"
-"POT-Creation-Date: 1999-04-12 02:58+0200\n"
+"POT-Creation-Date: 1999-04-13 02:48+0200\n"
 "PO-Revision-Date: 1998-06-29 11:00+0200\n"
 "Last-Translator: Makbule SHAKALLA <bbm756@hun.edu.tr>\n"
 "Language-Team: Hacettepe Linux Users Group <hacettepe@linux.org.tr>\n"
@@ -23,7 +23,7 @@ msgstr "Üzgünüm ama bu özellik hala yok"
 msgid "New Folder"
 msgstr " Yeni Doysa  "
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:393 kmmainwin.cpp:427 main.cpp:471
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:393 kmmainwin.cpp:427 main.cpp:484
 msgid "KMail error"
 msgstr "Kmail hatasý"
 
@@ -972,7 +972,7 @@ msgstr ""
 msgid "pgp key"
 msgstr ""
 
-#: kmcomposewin.cpp:1297 kmreaderwin.cpp:840
+#: kmcomposewin.cpp:1297 kmreaderwin.cpp:880
 msgid "View..."
 msgstr "Görünüm"
 
@@ -980,7 +980,7 @@ msgstr "Görünüm"
 msgid "Save..."
 msgstr "Kaydet..."
 
-#: kmcomposewin.cpp:1299 kmreaderwin.cpp:843
+#: kmcomposewin.cpp:1299 kmreaderwin.cpp:883
 msgid "Properties..."
 msgstr "Özellikler.."
 
@@ -988,7 +988,7 @@ msgstr "Özellikler.."
 msgid "Attach..."
 msgstr "Ýliþtir..."
 
-#: kmcomposewin.cpp:1345 kmreaderwin.cpp:912 kmreaderwin.cpp:928
+#: kmcomposewin.cpp:1345 kmreaderwin.cpp:952 kmreaderwin.cpp:969
 msgid "View Attachment: "
 msgstr "Ýliþiktekini göster:"
 
@@ -1062,64 +1062,64 @@ msgstr "base 64"
 msgid "quoted printable"
 msgstr "quoted printable"
 
-#: kmreaderwin.cpp:336 kmreaderwin.cpp:349 kmreaderwin.cpp:368
-#: kmreaderwin.cpp:389
+#: kmreaderwin.cpp:376 kmreaderwin.cpp:389 kmreaderwin.cpp:408
+#: kmreaderwin.cpp:429
 msgid "Cc: "
 msgstr "Cc: "
 
-#: kmreaderwin.cpp:344 kmreaderwin.cpp:363 kmreaderwin.cpp:384
+#: kmreaderwin.cpp:384 kmreaderwin.cpp:403 kmreaderwin.cpp:424
 msgid "From: "
 msgstr "Kimden: "
 
-#: kmreaderwin.cpp:346 kmreaderwin.cpp:365 kmreaderwin.cpp:386
+#: kmreaderwin.cpp:386 kmreaderwin.cpp:405 kmreaderwin.cpp:426
 msgid "To: "
 msgstr "Kime: "
 
-#: kmreaderwin.cpp:353 kmreaderwin.cpp:374 kmreaderwin.cpp:399
+#: kmreaderwin.cpp:393 kmreaderwin.cpp:414 kmreaderwin.cpp:439
 msgid "References: "
 msgstr "Atýflar: "
 
-#: kmreaderwin.cpp:370 kmreaderwin.cpp:383
+#: kmreaderwin.cpp:410 kmreaderwin.cpp:423
 msgid "Date: "
 msgstr "Tarih: "
 
-#: kmreaderwin.cpp:392
+#: kmreaderwin.cpp:432
 msgid "Bcc: "
 msgstr "Bcc: "
 
-#: kmreaderwin.cpp:395
+#: kmreaderwin.cpp:435
 msgid "Reply to: "
 msgstr "Yanýt adresi: "
 
-#: kmreaderwin.cpp:402
+#: kmreaderwin.cpp:442
 msgid "Groups: "
 msgstr "Gruplar: "
 
-#: kmreaderwin.cpp:440
+#: kmreaderwin.cpp:480
 msgid "Encrypted message"
 msgstr "Þifreli ileti"
 
-#: kmreaderwin.cpp:446
+#: kmreaderwin.cpp:486
 msgid "Cannot decrypt message:"
 msgstr "Ýleti deþifre olamýyor"
 
-#: kmreaderwin.cpp:455
+#: kmreaderwin.cpp:495
 msgid "Message was signed by"
 msgstr "Ýletiyi imzalayan"
 
-#: kmreaderwin.cpp:456
+#: kmreaderwin.cpp:496
 msgid "Warning: Bad signature from"
 msgstr "Uyarý: Bozuk imza"
 
-#: kmreaderwin.cpp:466
+#: kmreaderwin.cpp:506
 msgid "unknown key ID"
 msgstr ""
 
-#: kmreaderwin.cpp:804
+#: kmreaderwin.cpp:844
 msgid "Attachment: "
 msgstr "Ýliþik: "
 
-#: kmreaderwin.cpp:1016
+#: kmreaderwin.cpp:1058
 msgid "Could not save file"
 msgstr "Dosya kayýt edilemedi"
 
@@ -1141,25 +1141,25 @@ msgstr ""
 "bir kullanýcý hesabý belirtmiþ olmanýz \n"
 "gerekiyor."
 
-#: main.cpp:109 main.cpp:358
+#: main.cpp:121 main.cpp:371
 msgid "warning"
 msgstr "uyarý"
 
-#: main.cpp:116 main.cpp:117
+#: main.cpp:128 main.cpp:129
 msgid "fatal error"
 msgstr "Ölümcül hata"
 
-#: main.cpp:293
+#: main.cpp:306
 msgid "KMail notification"
 msgstr ""
 
-#: main.cpp:294
+#: main.cpp:307
 msgid ""
 "$HOME is not set!\n"
 "KMail cannot start without it.\n"
 msgstr ""
 
-#: main.cpp:360
+#: main.cpp:373
 msgid ""
 "The directory ~/KMail exists. From now on, KMail uses the\n"
 "directory ~/Mail for it's messages.\n"
@@ -1177,11 +1177,11 @@ msgstr ""
 "\n"
 "Kmail ileti dizinlerini taþýsýn mý?"
 
-#: main.cpp:472
+#: main.cpp:485
 msgid "Loading addressbook failed"
 msgstr ""
 
-#: main.cpp:573 main.cpp:704
+#: main.cpp:588 main.cpp:729
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr "Bilinmeyen komut satýrý seçeneði: %s"

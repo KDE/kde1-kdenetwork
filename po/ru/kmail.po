@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1999-04-12 02:58+0200\n"
+"POT-Creation-Date: 1999-04-13 02:48+0200\n"
 "PO-Revision-Date: 1998-12-31 07:09+07:00\n"
 "Last-Translator: Const Kaplinsky <const@ce.cctpu.edu.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "New Folder"
 msgstr "Новая папка"
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:393 kmmainwin.cpp:427 main.cpp:471
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:393 kmmainwin.cpp:427 main.cpp:484
 msgid "KMail error"
 msgstr "Ошибка KMail"
 
@@ -965,7 +965,7 @@ msgstr ""
 msgid "pgp key"
 msgstr ""
 
-#: kmcomposewin.cpp:1297 kmreaderwin.cpp:840
+#: kmcomposewin.cpp:1297 kmreaderwin.cpp:880
 msgid "View..."
 msgstr "Просмотреть..."
 
@@ -973,7 +973,7 @@ msgstr "Просмотреть..."
 msgid "Save..."
 msgstr "Сохранить..."
 
-#: kmcomposewin.cpp:1299 kmreaderwin.cpp:843
+#: kmcomposewin.cpp:1299 kmreaderwin.cpp:883
 msgid "Properties..."
 msgstr "Свойства..."
 
@@ -981,7 +981,7 @@ msgstr "Свойства..."
 msgid "Attach..."
 msgstr "Подцепить..."
 
-#: kmcomposewin.cpp:1345 kmreaderwin.cpp:912 kmreaderwin.cpp:928
+#: kmcomposewin.cpp:1345 kmreaderwin.cpp:952 kmreaderwin.cpp:969
 msgid "View Attachment: "
 msgstr "Просмотр подцепления: "
 
@@ -1055,64 +1055,64 @@ msgstr "base 64"
 msgid "quoted printable"
 msgstr "quoted printable"
 
-#: kmreaderwin.cpp:336 kmreaderwin.cpp:349 kmreaderwin.cpp:368
-#: kmreaderwin.cpp:389
+#: kmreaderwin.cpp:376 kmreaderwin.cpp:389 kmreaderwin.cpp:408
+#: kmreaderwin.cpp:429
 msgid "Cc: "
 msgstr "Cc: "
 
-#: kmreaderwin.cpp:344 kmreaderwin.cpp:363 kmreaderwin.cpp:384
+#: kmreaderwin.cpp:384 kmreaderwin.cpp:403 kmreaderwin.cpp:424
 msgid "From: "
 msgstr "Отправитель: "
 
-#: kmreaderwin.cpp:346 kmreaderwin.cpp:365 kmreaderwin.cpp:386
+#: kmreaderwin.cpp:386 kmreaderwin.cpp:405 kmreaderwin.cpp:426
 msgid "To: "
 msgstr "Получатель: "
 
-#: kmreaderwin.cpp:353 kmreaderwin.cpp:374 kmreaderwin.cpp:399
+#: kmreaderwin.cpp:393 kmreaderwin.cpp:414 kmreaderwin.cpp:439
 msgid "References: "
 msgstr "Ссылки: "
 
-#: kmreaderwin.cpp:370 kmreaderwin.cpp:383
+#: kmreaderwin.cpp:410 kmreaderwin.cpp:423
 msgid "Date: "
 msgstr "Дата: "
 
-#: kmreaderwin.cpp:392
+#: kmreaderwin.cpp:432
 msgid "Bcc: "
 msgstr "Bcc: "
 
-#: kmreaderwin.cpp:395
+#: kmreaderwin.cpp:435
 msgid "Reply to: "
 msgstr "Адрес для ответа: "
 
-#: kmreaderwin.cpp:402
+#: kmreaderwin.cpp:442
 msgid "Groups: "
 msgstr "Группы: "
 
-#: kmreaderwin.cpp:440
+#: kmreaderwin.cpp:480
 msgid "Encrypted message"
 msgstr "Шифрованное сообщение"
 
-#: kmreaderwin.cpp:446
+#: kmreaderwin.cpp:486
 msgid "Cannot decrypt message:"
 msgstr "Невозможно дешифровать сообщение:"
 
-#: kmreaderwin.cpp:455
+#: kmreaderwin.cpp:495
 msgid "Message was signed by"
 msgstr "Сообщение было подписано"
 
-#: kmreaderwin.cpp:456
+#: kmreaderwin.cpp:496
 msgid "Warning: Bad signature from"
 msgstr "Предупреждение: Плохая подпись"
 
-#: kmreaderwin.cpp:466
+#: kmreaderwin.cpp:506
 msgid "unknown key ID"
 msgstr "неизвестный ID ключа"
 
-#: kmreaderwin.cpp:804
+#: kmreaderwin.cpp:844
 msgid "Attachment: "
 msgstr "Подцепление: "
 
-#: kmreaderwin.cpp:1016
+#: kmreaderwin.cpp:1058
 msgid "Could not save file"
 msgstr "Ошибка сохранения файла"
 
@@ -1134,19 +1134,19 @@ msgstr ""
 "добавить аккаунт в резделе `Сеть'\n"
 "настроек программы."
 
-#: main.cpp:109 main.cpp:358
+#: main.cpp:121 main.cpp:371
 msgid "warning"
 msgstr "предупреждение"
 
-#: main.cpp:116 main.cpp:117
+#: main.cpp:128 main.cpp:129
 msgid "fatal error"
 msgstr "фатальная ошибка"
 
-#: main.cpp:293
+#: main.cpp:306
 msgid "KMail notification"
 msgstr "Уведомление KMail"
 
-#: main.cpp:294
+#: main.cpp:307
 msgid ""
 "$HOME is not set!\n"
 "KMail cannot start without it.\n"
@@ -1154,7 +1154,7 @@ msgstr ""
 "Не установлена переменная $HOME !\n"
 "KMail без нее работать не может.\n"
 
-#: main.cpp:360
+#: main.cpp:373
 msgid ""
 "The directory ~/KMail exists. From now on, KMail uses the\n"
 "directory ~/Mail for it's messages.\n"
@@ -1172,11 +1172,11 @@ msgstr ""
 "\n"
 "Следует ли переместить папки с почтой сейчас ?"
 
-#: main.cpp:472
+#: main.cpp:485
 msgid "Loading addressbook failed"
 msgstr "Ошибка при загрузке адресной книги"
 
-#: main.cpp:573 main.cpp:704
+#: main.cpp:588 main.cpp:729
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr "Неизвестный ключ командной строки: %s"

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1999-04-12 02:58+0200\n"
+"POT-Creation-Date: 1999-04-13 02:48+0200\n"
 "PO-Revision-Date: 1999-03-26 03:25-0500\n"
 "Last-Translator: Thorarinn R. Einarsson <thori@mindspring.com>\n"
 "Language-Team: is <kde-isl@mmedia.is>\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "New Folder"
 msgstr "Nýja möppu"
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:393 kmmainwin.cpp:427 main.cpp:471
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:393 kmmainwin.cpp:427 main.cpp:484
 msgid "KMail error"
 msgstr "KPóstur: Villa"
 
@@ -962,7 +962,7 @@ msgstr "pgp lykillinn minn"
 msgid "pgp key"
 msgstr "pgp lykill"
 
-#: kmcomposewin.cpp:1297 kmreaderwin.cpp:840
+#: kmcomposewin.cpp:1297 kmreaderwin.cpp:880
 msgid "View..."
 msgstr "Skoða..."
 
@@ -970,7 +970,7 @@ msgstr "Skoða..."
 msgid "Save..."
 msgstr "Vista..."
 
-#: kmcomposewin.cpp:1299 kmreaderwin.cpp:843
+#: kmcomposewin.cpp:1299 kmreaderwin.cpp:883
 msgid "Properties..."
 msgstr "Stillingar..."
 
@@ -978,7 +978,7 @@ msgstr "Stillingar..."
 msgid "Attach..."
 msgstr "Hengja við..."
 
-#: kmcomposewin.cpp:1345 kmreaderwin.cpp:912 kmreaderwin.cpp:928
+#: kmcomposewin.cpp:1345 kmreaderwin.cpp:952 kmreaderwin.cpp:969
 msgid "View Attachment: "
 msgstr "Skoða viðhengingu: "
 
@@ -1050,64 +1050,64 @@ msgstr "base64"
 msgid "quoted printable"
 msgstr "quoted printable"
 
-#: kmreaderwin.cpp:336 kmreaderwin.cpp:349 kmreaderwin.cpp:368
-#: kmreaderwin.cpp:389
+#: kmreaderwin.cpp:376 kmreaderwin.cpp:389 kmreaderwin.cpp:408
+#: kmreaderwin.cpp:429
 msgid "Cc: "
 msgstr "Afrit (Cc): "
 
-#: kmreaderwin.cpp:344 kmreaderwin.cpp:363 kmreaderwin.cpp:384
+#: kmreaderwin.cpp:384 kmreaderwin.cpp:403 kmreaderwin.cpp:424
 msgid "From: "
 msgstr "Frá:"
 
-#: kmreaderwin.cpp:346 kmreaderwin.cpp:365 kmreaderwin.cpp:386
+#: kmreaderwin.cpp:386 kmreaderwin.cpp:405 kmreaderwin.cpp:426
 msgid "To: "
 msgstr "Til:"
 
-#: kmreaderwin.cpp:353 kmreaderwin.cpp:374 kmreaderwin.cpp:399
+#: kmreaderwin.cpp:393 kmreaderwin.cpp:414 kmreaderwin.cpp:439
 msgid "References: "
 msgstr "Tilvísanir: "
 
-#: kmreaderwin.cpp:370 kmreaderwin.cpp:383
+#: kmreaderwin.cpp:410 kmreaderwin.cpp:423
 msgid "Date: "
 msgstr "Dags: "
 
-#: kmreaderwin.cpp:392
+#: kmreaderwin.cpp:432
 msgid "Bcc: "
 msgstr "Blint afrit (Bcc): "
 
-#: kmreaderwin.cpp:395
+#: kmreaderwin.cpp:435
 msgid "Reply to: "
 msgstr "Senda svar til: "
 
-#: kmreaderwin.cpp:402
+#: kmreaderwin.cpp:442
 msgid "Groups: "
 msgstr "Umræðuhópar: "
 
-#: kmreaderwin.cpp:440
+#: kmreaderwin.cpp:480
 msgid "Encrypted message"
 msgstr "Dulritað bréf"
 
-#: kmreaderwin.cpp:446
+#: kmreaderwin.cpp:486
 msgid "Cannot decrypt message:"
 msgstr "Skil ekki dulritun þessa bréfs:"
 
-#: kmreaderwin.cpp:455
+#: kmreaderwin.cpp:495
 msgid "Message was signed by"
 msgstr "Bréf var undirritað af"
 
-#: kmreaderwin.cpp:456
+#: kmreaderwin.cpp:496
 msgid "Warning: Bad signature from"
 msgstr "Varúð: Skemmd undirritun frá"
 
-#: kmreaderwin.cpp:466
+#: kmreaderwin.cpp:506
 msgid "unknown key ID"
 msgstr "óþekkt lykiltala"
 
-#: kmreaderwin.cpp:804
+#: kmreaderwin.cpp:844
 msgid "Attachment: "
 msgstr "Viðhenging: "
 
-#: kmreaderwin.cpp:1016
+#: kmreaderwin.cpp:1058
 msgid "Could not save file"
 msgstr "Vistun ekki möguleg"
 
@@ -1132,19 +1132,19 @@ msgstr ""
 "hlutanum í stillingunum til að geta tekið\n"
 "á móti tölvupósti."
 
-#: main.cpp:109 main.cpp:358
+#: main.cpp:121 main.cpp:371
 msgid "warning"
 msgstr "aðvörun"
 
-#: main.cpp:116 main.cpp:117
+#: main.cpp:128 main.cpp:129
 msgid "fatal error"
 msgstr "slæm villa"
 
-#: main.cpp:293
+#: main.cpp:306
 msgid "KMail notification"
 msgstr "KPóstur: Tilkynning"
 
-#: main.cpp:294
+#: main.cpp:307
 msgid ""
 "$HOME is not set!\n"
 "KMail cannot start without it.\n"
@@ -1152,7 +1152,7 @@ msgstr ""
 "$HOME er ekki til/tilbúið !\n"
 "KPóstur getur ekki keyrt án þess.\n"
 
-#: main.cpp:360
+#: main.cpp:373
 msgid ""
 "The directory ~/KMail exists. From now on, KMail uses the\n"
 "directory ~/Mail for it's messages.\n"
@@ -1170,11 +1170,11 @@ msgstr ""
 "\n"
 "Viltu að KPóstur færi þessar póstmöppur núna ?"
 
-#: main.cpp:472
+#: main.cpp:485
 msgid "Loading addressbook failed"
 msgstr "Tókst ekki að sækja netfangaskrá"
 
-#: main.cpp:573 main.cpp:704
+#: main.cpp:588 main.cpp:729
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr "Óþekktur skipanarofi: %s"
