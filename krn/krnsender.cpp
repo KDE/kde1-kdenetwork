@@ -1,6 +1,8 @@
 #include "krnsender.h"
 
 #include <unistd.h>
+#include <kmsgbox.h>
+#include <kapp.h>
 
 #include "kfileio.h"
 
@@ -38,6 +40,13 @@ bool KRNSender::doSendNNTP (KMMessage *msg)
         msg->setBody("\n\n\n");
     
     msgStr = msg->asString();
+    if (server->isReadOnly())
+    {
+        KMsgBox::message(0,"KRN - Error",
+                         klocale->translate("This server is read only"
+                                            "you can't post here!"));
+        return false;
+    }
     int errcode=server->myPost();
     debug ("post/errcode-->%d",errcode);
     if (!errcode)
@@ -85,9 +94,9 @@ bool KRNSender::sendNow(KMMessage *aMsg)
     }
     if (!aMsg->groups().isEmpty())//It has destination groups
     {
-        doSendNNTP(aMsg);
+        success=doSendNNTP(aMsg);
     }
-    return true;
+    return success;
 }
 
 bool KRNSender::queue(KMMessage *aMsg)
