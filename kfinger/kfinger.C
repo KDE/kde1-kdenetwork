@@ -13,6 +13,7 @@
 
 #include "kfinger.h"
 #include "kiconloader.h"
+#include <kstdaccel.h>
 #include <qdatetime.h>
 
 NetutilView::NetutilView(const char *name )
@@ -23,22 +24,22 @@ protocol = 0L;
 //  setCaption( klocale->translate("KDE finger utility") );
   app=KApplication::getKApplication();
   config=app->getConfig();
-
+  KStdAccel keys(config);
   menubar = new KMenuBar( this, "menubar" );
    QPopupMenu *file = new QPopupMenu;
-    file->insertItem(klocale->translate("F&inger Now"), this, SLOT(button1Clicked()), CTRL+Key_F);
-    file->insertItem(klocale->translate("&Talk..."),this,SLOT(talk()),CTRL+Key_T);
+    file->insertItem(klocale->translate("F&inger Now"), this, SLOT(button1Clicked()));
+    file->insertItem(klocale->translate("&Talk..."),this,SLOT(talk()));
     file->insertSeparator();
-    file->insertItem(klocale->translate("&Quit"), qApp, SLOT(quit()), ALT+Key_Q);
+    file->insertItem(klocale->translate("&Quit"), qApp, SLOT(quit()),keys.quit());
    QPopupMenu *options = new QPopupMenu;
-    options->insertItem(klocale->translate("Setup"), this, SLOT(setup()), CTRL+Key_S );
+    options->insertItem(klocale->translate("Setup"), this, SLOT(setup()) );
     options->insertItem(klocale->translate("&Save Options"), this, SLOT(save()));
    QPopupMenu *help = kapp->getHelpMenu( TRUE,
     i18n("kfinger 0.8.0\n\n(c) Andrea Rizzi (rizzi@kde.org)"));
   menubar->insertItem( klocale->translate("&File"), file );
-  menubar->insertItem( klocale->translate("&Options"), options, ALT+Key_O );
+  menubar->insertItem( klocale->translate("&Options"), options  );
   menubar->insertSeparator();
-  menubar->insertItem( klocale->translate("&Help"), help, ALT+Key_H );
+  menubar->insertItem( klocale->translate("&Help"), help );
 
 
     config->setGroup("Options");
