@@ -464,7 +464,7 @@ A Modem session allows you to interact with the modem directly.
 You type commands, and it will respond.  To obtain a modem session, when no 
 connection is active, go into Settings/More/Terminal dialog.  This will open 
 a window for interactive configuration of the modem.  Try typing <bf>ATZ</bf> (which 
-resets your modem)  Your should get an <br>OK</bf> response.  use File/Quit to 
+resets your modem)  Your should get an <bf>OK</bf> response.  use File/Quit to 
 end the session.
 
 <sect1>Modem Profiles<p>
@@ -577,7 +577,7 @@ that speed often works.
 ATZ		# reset to default profile
 ATS11=50	# fastest possible dialing, use a higher number if it doesn't work.
 AT&amp;W		# Write to default profile
-</tscreen></verb>
+</verb></tscreen>
 
 <sect>Questions and answers<p>
 
