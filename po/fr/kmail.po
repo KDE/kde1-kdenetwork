@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
 "POT-Creation-Date: 1998-02-24 21:39+0100\n"
-"PO-Revision-Date: 1998-01-25 21:27 CET\n"
+"PO-Revision-Date: 1998-02-25 22:31 CET\n"
 "Last-Translator: Bertrand Leconte <B.Leconte@mail.dotcom.fr>\n"
 "Language-Team: Français\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr "Nouveau dossier"
 
 #: kmmainwin.cpp:289
 msgid "No new mail available"
-msgstr ""
+msgstr "Pas de nouveau message disponible"
 
 #: kmmainwin.cpp:313
 msgid ""
@@ -236,7 +236,7 @@ msgstr "Envoyer encore"
 
 #: kmmainwin.cpp:812
 msgid "Apply filters"
-msgstr ""
+msgstr "Appliquer les filtres"
 
 #: kmmainwin.cpp:815
 msgid "View Source..."
@@ -397,7 +397,7 @@ msgstr "Messages entrants"
 
 #: kmsettings.cpp:216
 msgid "Accounts:   (add at least one account!)"
-msgstr "Boîtes aux lettres :   (ajouter en au moins une !)"
+msgstr "Boîtes aux lettres :   (ajouter-en au moins une !)"
 
 #: kmcomposewin.cpp:120 kmsettings.cpp:221
 msgid "Name"
@@ -694,9 +694,8 @@ msgid "Find..."
 msgstr "Trouver..."
 
 #: kmcomposewin.cpp:419 kmcomposewin.cpp:627
-#, fuzzy
 msgid "Replace..."
-msgstr "&Répondre..."
+msgstr "Remplacer..."
 
 #: kmcomposewin.cpp:426
 msgid "&Urgent"
@@ -772,19 +771,17 @@ msgstr "&Attacher"
 
 #: kmcomposewin.cpp:511
 msgid "Cut selection"
-msgstr ""
+msgstr "Couper la sélection"
 
 #: kmcomposewin.cpp:514
-#, fuzzy
 msgid "Copy selection"
-msgstr "Choisir l'emplacement"
+msgstr "Copier la sélection"
 
 #: kmcomposewin.cpp:517
 msgid "Paste clipboard contents"
-msgstr ""
+msgstr "Coller le presse-papier"
 
 #: kmcomposewin.cpp:522
-#, fuzzy
 msgid "Attach file"
 msgstr "Attacher un fichier"
 
@@ -798,12 +795,11 @@ msgstr "chiffrer le message"
 
 #: kmcomposewin.cpp:552 kmcomposewin.cpp:566
 msgid "Column"
-msgstr ""
+msgstr "Colonne"
 
 #: kmcomposewin.cpp:553 kmcomposewin.cpp:564
-#, fuzzy
 msgid "Line"
-msgstr "Utilisateur :"
+msgstr "Ligne"
 
 #: kmcomposewin.cpp:759
 msgid "KMail Confirm"
@@ -835,9 +831,8 @@ msgid "Attach File"
 msgstr "Attacher un fichier"
 
 #: kmcomposewin.cpp:1050
-#, fuzzy
 msgid "Include File"
-msgstr "&Insérer fichier"
+msgstr "Insérer fichier"
 
 #: kmcomposewin.cpp:1071 kmreaderwin.cpp:623
 msgid "View..."
@@ -991,6 +986,9 @@ msgid ""
 "section of the settings in order to\n"
 "receive mail."
 msgstr ""
+"Vous devez ajouter une boîte aux lettres \n"
+"dans la section réseau de la configuration \n"
+"pour pouvoir recevoir des messages."
 
 #: main.cpp:97 main.cpp:214
 msgid "warning"
@@ -998,7 +996,7 @@ msgstr "attention"
 
 #: main.cpp:103 main.cpp:104
 msgid "fatal error"
-msgstr "Erreur fatale"
+msgstr "erreur fatale"
 
 #: main.cpp:216
 msgid ""
@@ -1484,23 +1482,3 @@ msgstr "Gestionnaire du carnet d'adresses"
 #: kmiostatusdlg.cpp:32
 msgid "&Abort"
 msgstr "&Abandonner"
-
-#~ msgid "&Cut"
-#~ msgstr "Co&uper"
-
-#~ msgid "Send now"
-#~ msgstr "Envoyer maintenant"
-
-#~ msgid "Send later"
-#~ msgstr "Envoyer plus tard"
-
-#~ msgid "Mark All"
-#~ msgstr "Marquer tout"
-
-#~ msgid "Failed to pipe mail message into mailer program %s"
-#~ msgstr ""
-#~ "Echec de l'envoi du message (pipe) vers le programme \n"
-#~ "d'émission des messages %s"
-
-#~ msgid "You do not have write permissionto this file.\n"
-#~ msgstr "Vous n'avez pas la permission d'écrire dans ce fichier.\n"
