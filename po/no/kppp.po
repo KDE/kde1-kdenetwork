@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE NETWORK/kppp\n"
-"POT-Creation-Date: 1998-11-30 01:53+0100\n"
+"POT-Creation-Date: 1998-12-01 01:56+0100\n"
 "PO-Revision-Date: 1998-03-24 19:24+0100\n"
 "Last-Translator: Hans Petter Bieker <zerium@webindex.no>\n"
 "Language-Team: no <LL@li.org>\n"
@@ -183,7 +183,7 @@ msgstr ""
 msgid "Login script has unbalanced loop Start/End"
 msgstr "Innloggingskriptet har ubalansert loopstart/-slutt"
 
-#: connect.cpp:97 connect.cpp:195 main.cpp:979
+#: connect.cpp:97 connect.cpp:195 main.cpp:984
 msgid "Connecting to: "
 msgstr "Oppkopling til: "
 
@@ -196,7 +196,7 @@ msgstr "Beklager, kan ikke lage låsefil for modem."
 msgid "Looking for Modem ..."
 msgstr "Ser etter modem ..."
 
-#: connect.cpp:120 debug.cpp:80 main.cpp:992
+#: connect.cpp:120 debug.cpp:80 main.cpp:997
 msgid "Log"
 msgstr "Logg"
 
@@ -1395,7 +1395,7 @@ msgstr "Graf"
 msgid "Details..."
 msgstr "Detaljer..."
 
-#: main.cpp:875
+#: main.cpp:880
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1416,7 +1416,7 @@ msgstr ""
 "PPP-tjenesteprogrammet.\n"
 "Takk"
 
-#: main.cpp:890
+#: main.cpp:895
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1429,7 +1429,7 @@ msgstr ""
 "Vennligst forsikre deg om at du har gitt kppp setuid tillatelse og at\n"
 "pppd er kjørbar."
 
-#: main.cpp:904
+#: main.cpp:909
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1450,7 +1450,7 @@ msgstr ""
 "oppsettsdialogen.\n"
 "Takk"
 
-#: main.cpp:924
+#: main.cpp:929
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1460,7 +1460,7 @@ msgstr ""
 "PAP. Dette krver at du oppgitt\n"
 "et brukernavn og et passord!"
 
-#: main.cpp:933
+#: main.cpp:938
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1469,7 +1469,7 @@ msgstr ""
 "Kan ikke lage PAP-autentiseringsfil\n"
 "\"%s\""
 
-#: main.cpp:950
+#: main.cpp:955
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -1479,7 +1479,7 @@ msgstr ""
 "PAP. Dette krver at du oppgir\n"
 "et brukernavn og et passord!"
 
-#: main.cpp:959
+#: main.cpp:964
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1488,19 +1488,19 @@ msgstr ""
 "Kan ikke lage CHAP-autentiseringsfil\n"
 "\"%s\""
 
-#: main.cpp:971
+#: main.cpp:976
 msgid "You must specify a telephone number!"
 msgstr "Du må oppgi et telefonnummer!"
 
-#: main.cpp:1058
+#: main.cpp:1063
 msgid "Quit kPPP?"
 msgstr "Avslutte kppp?"
 
-#: main.cpp:1059
+#: main.cpp:1064
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Går du ut av kppp vil dette lukke din PPP-sesjon."
 
-#: main.cpp:1094
+#: main.cpp:1099
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""

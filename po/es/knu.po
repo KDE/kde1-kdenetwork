@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kdenetwork\n"
-"POT-Creation-Date: 1998-10-30 12:57+0100\n"
+"POT-Creation-Date: 1998-12-01 01:56+0100\n"
 "PO-Revision-Date: 1998-06-21 13:23+0200\n"
 "Last-Translator: Raimundo Alba <raimon@alcavia.net>\n"
 
@@ -74,19 +74,19 @@ msgstr "&Finger"
 msgid "About..."
 msgstr "Acerca de..."
 
-#: CommandDlg.cpp:124
+#: CommandDlg.cpp:128
 msgid "H&ost:"
 msgstr "&Servidor:"
 
-#: CommandDlg.cpp:133
+#: CommandDlg.cpp:137
 msgid "&Go!"
 msgstr "&Iniciar"
 
-#: CommandDlg.cpp:143
+#: CommandDlg.cpp:147
 msgid "&Stop"
 msgstr "&Detener"
 
-#: CommandDlg.cpp:159
+#: CommandDlg.cpp:163
 msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
@@ -94,7 +94,7 @@ msgstr ""
 "El ejecutable del comando no se encontró. \n"
 "Puede indicar su ubicación en el menú Editar->Preferencias..."
 
-#: CommandDlg.cpp:344
+#: CommandDlg.cpp:348
 #, c-format
 msgid ""
 "\n"
@@ -117,23 +117,23 @@ msgstr ""
 "Use el menú Editar->Preferencias...\n"
 "para configurarlo de nuevo.\n"
 
-#: CommandDlg.cpp:353
+#: CommandDlg.cpp:357
 msgid "Error in pathname"
 msgstr "Error en el nombre de la ruta"
 
-#: CommandDlg.cpp:506
+#: CommandDlg.cpp:511
 msgid "Binary"
 msgstr "Binario"
 
-#: CommandDlg.cpp:514
+#: CommandDlg.cpp:519
 msgid "Path&name:"
 msgstr "&Directorio:"
 
-#: CommandDlg.cpp:523
+#: CommandDlg.cpp:528
 msgid "Additional &arguments:"
 msgstr "&Argumentos adicionales:"
 
-#: CommandDlg.cpp:548
+#: CommandDlg.cpp:553
 msgid "This command had been disabled in the configuration file."
 msgstr "Este comando se ha inhabilitado en el fichero de configuración."
 

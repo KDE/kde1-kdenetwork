@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-11-30 01:53+0100\n"
+"POT-Creation-Date: 1998-12-01 01:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Theodore J. Soldatos <theodore@eexi.gr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -166,7 +166,7 @@ msgid "Login script has unbalanced loop Start/End"
 msgstr ""
 "Το αρχείο εντολών σύνδεσης περιέχει μη ισσοροπημένη ανακύκλωση Start/End"
 
-#: connect.cpp:97 connect.cpp:195 main.cpp:979
+#: connect.cpp:97 connect.cpp:195 main.cpp:984
 msgid "Connecting to: "
 msgstr "Σύνδεση στο: "
 
@@ -179,7 +179,7 @@ msgstr "Συγγνώμη, δεν μπορώ να δημιουργήσω αρχείο κλειδώματος modem."
 msgid "Looking for Modem ..."
 msgstr "Ψάξιμο για modem..."
 
-#: connect.cpp:120 debug.cpp:80 main.cpp:992
+#: connect.cpp:120 debug.cpp:80 main.cpp:997
 msgid "Log"
 msgstr "Αρχείο"
 
@@ -1148,7 +1148,7 @@ msgstr ""
 msgid "Details..."
 msgstr "Λεπτομέρειες"
 
-#: main.cpp:875
+#: main.cpp:880
 #, fuzzy, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1167,7 +1167,7 @@ msgstr ""
 " του διαλόγου ρυθμίσεων.\n"
 " Ευχαριστώ."
 
-#: main.cpp:890
+#: main.cpp:895
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1180,7 +1180,7 @@ msgstr ""
 "Παρακαλώ βεβαιωθείτε ότι έχετε δώσει στο kppp άδεια setuid και ότι\n"
 "το pppd είναι εκτελέσιμο."
 
-#: main.cpp:904
+#: main.cpp:909
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1199,7 +1199,7 @@ msgstr ""
 "συσκευής modem στην ετικέττα modem του διαλόγου ρυθμίσεων.\n"
 " Ευχαριστώ."
 
-#: main.cpp:924
+#: main.cpp:929
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1209,7 +1209,7 @@ msgstr ""
 "Αυτό προϋποθέτει την εισαγωγή ονόματος χρήστη\n"
 "και λέξης κλειδί!"
 
-#: main.cpp:933
+#: main.cpp:938
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1218,7 +1218,7 @@ msgstr ""
 "Δεν μπορώ να δημιουργήσω το αρχείο \n"
 "πιστοποίησης PAP \"%s\""
 
-#: main.cpp:950
+#: main.cpp:955
 #, fuzzy
 msgid ""
 "You have selected the authentication\n"
@@ -1229,7 +1229,7 @@ msgstr ""
 "Αυτό προϋποθέτει την εισαγωγή ονόματος χρήστη\n"
 "και λέξης κλειδί!"
 
-#: main.cpp:959
+#: main.cpp:964
 #, fuzzy, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1238,19 +1238,19 @@ msgstr ""
 "Δεν μπορώ να δημιουργήσω το αρχείο \n"
 "πιστοποίησης PAP \"%s\""
 
-#: main.cpp:971
+#: main.cpp:976
 msgid "You must specify a telephone number!"
 msgstr ""
 
-#: main.cpp:1058
+#: main.cpp:1063
 msgid "Quit kPPP?"
 msgstr "Επιβεβαίωση εξόδου από το kPPP;"
 
-#: main.cpp:1059
+#: main.cpp:1064
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Η έξοδος από το kPPP θα κλεισει την σύνδεσή σας."
 
-#: main.cpp:1094
+#: main.cpp:1099
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""

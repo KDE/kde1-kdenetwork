@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp 0.9.6\n"
-"POT-Creation-Date: 1998-11-30 01:53+0100\n"
+"POT-Creation-Date: 1998-12-01 01:56+0100\n"
 "PO-Revision-Date: 1998-10-24 23:59 CEST\n"
 "Last-Translator: Miroslav Flídr <flidr@kky.zcu.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -165,7 +165,7 @@ msgstr ""
 msgid "Login script has unbalanced loop Start/End"
 msgstr "Pøihla¹ovací skript má nevyvá¾enou smyèku start/konec"
 
-#: connect.cpp:97 connect.cpp:195 main.cpp:979
+#: connect.cpp:97 connect.cpp:195 main.cpp:984
 msgid "Connecting to: "
 msgstr "Pøipojování k: "
 
@@ -178,7 +178,7 @@ msgstr "Lituji, není mo¾né vytvoøit soubor pro zamknutí modemu."
 msgid "Looking for Modem ..."
 msgstr "Hledání modemu ..."
 
-#: connect.cpp:120 debug.cpp:80 main.cpp:992
+#: connect.cpp:120 debug.cpp:80 main.cpp:997
 msgid "Log"
 msgstr "Záznam"
 
@@ -1144,7 +1144,7 @@ msgstr ""
 msgid "Details..."
 msgstr "Detaily"
 
-#: main.cpp:875
+#: main.cpp:880
 #, fuzzy, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1163,7 +1163,7 @@ msgstr ""
 "konfiguraèním dialogu\n"
 " Dìkuji vám"
 
-#: main.cpp:890
+#: main.cpp:895
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1176,7 +1176,7 @@ msgstr ""
 "Prosím ujistìte se, ¾e jste nastavili setuid právo pro kppp\n"
 "a ¾e je pppd vykonavatelný."
 
-#: main.cpp:904
+#: main.cpp:909
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1197,7 +1197,7 @@ msgstr ""
 "v konfiguraèním dialogu.\n"
 " Dìkuji vám"
 
-#: main.cpp:924
+#: main.cpp:929
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1207,7 +1207,7 @@ msgstr ""
 "Toto vy¾aduje, aby jste poskytli\n"
 "u¾ivatelské jméno a heslo!"
 
-#: main.cpp:933
+#: main.cpp:938
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1216,7 +1216,7 @@ msgstr ""
 "Není mo¾né vytvoøit ovìøovací soubor\n"
 "pro PAP \"%s\""
 
-#: main.cpp:950
+#: main.cpp:955
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -1226,7 +1226,7 @@ msgstr ""
 "Toto vy¾aduje, aby jste poskytli\n"
 "u¾ivatelské jméno a heslo!"
 
-#: main.cpp:959
+#: main.cpp:964
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1235,20 +1235,20 @@ msgstr ""
 "Není mo¾né vytvoøit ovìøovací soubor\n"
 "pro CHAP \"%s\""
 
-#: main.cpp:971
+#: main.cpp:976
 #, fuzzy
 msgid "You must specify a telephone number!"
 msgstr "Je nutné zadat telefonní èíslo !\n"
 
-#: main.cpp:1058
+#: main.cpp:1063
 msgid "Quit kPPP?"
 msgstr "Ukonèit kPPP?"
 
-#: main.cpp:1059
+#: main.cpp:1064
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Ukonèení kPPP uzavøe va¹e PPP sezení."
 
-#: main.cpp:1094
+#: main.cpp:1099
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""

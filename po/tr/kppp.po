@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE 1.0\n"
-"POT-Creation-Date: 1998-11-30 01:53+0100\n"
+"POT-Creation-Date: 1998-12-01 01:56+0100\n"
 "PO-Revision-Date: 1998-06-29 11:00+0200\n"
 "Last-Translator: Kerem ERZURUMLU <kerem@linux.org.tr>\n"
 "Language-Team: Hacettepe Linux Users Group <hacettepe@linux.org.tr>\n"
@@ -165,7 +165,7 @@ msgstr ""
 msgid "Login script has unbalanced loop Start/End"
 msgstr "Oturum açma komutlarý dengesiz"
 
-#: connect.cpp:97 connect.cpp:195 main.cpp:979
+#: connect.cpp:97 connect.cpp:195 main.cpp:984
 msgid "Connecting to: "
 msgstr "Baðlanýlýyor: "
 
@@ -178,7 +178,7 @@ msgstr "Üzgünüm, model kitleme dosyasýný yaratamýyorum."
 msgid "Looking for Modem ..."
 msgstr "Modem'e bakýyorum..."
 
-#: connect.cpp:120 debug.cpp:80 main.cpp:992
+#: connect.cpp:120 debug.cpp:80 main.cpp:997
 msgid "Log"
 msgstr "Kayýt"
 
@@ -1145,7 +1145,7 @@ msgstr ""
 msgid "Details..."
 msgstr "Ayrýntýlar"
 
-#: main.cpp:875
+#: main.cpp:880
 #, fuzzy, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1164,7 +1164,7 @@ msgstr ""
 "doðru olarak belirtin.\n"
 " Teþekkürler"
 
-#: main.cpp:890
+#: main.cpp:895
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1176,7 +1176,7 @@ msgstr ""
 "çalýþtýramýyor. kppp'nin SUID olduðundan ve çalýþtýrma hakký \n"
 "bulundurduðundan emin olunuz!"
 
-#: main.cpp:904
+#: main.cpp:909
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1192,7 +1192,7 @@ msgstr ""
 "bulamadý. Modeminizi doðru ayarladýðýnýza emin olunuz\n"
 "Teþekkürler"
 
-#: main.cpp:924
+#: main.cpp:929
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1202,7 +1202,7 @@ msgstr ""
 "Bunun için bir kullanýcý adý ve parolasý\n"
 "girmeniz gerekecek."
 
-#: main.cpp:933
+#: main.cpp:938
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1211,7 +1211,7 @@ msgstr ""
 "PAP Onaylama Dosyasý\n"
 "%s yaratýlamýyor."
 
-#: main.cpp:950
+#: main.cpp:955
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -1221,7 +1221,7 @@ msgstr ""
 "Bunun için bir kullanýcý adý ve parolasý\n"
 "girmeniz gerekecek."
 
-#: main.cpp:959
+#: main.cpp:964
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1230,20 +1230,20 @@ msgstr ""
 "CHAP Onaylama Dosyasý\n"
 "%s yaratýlamýyor."
 
-#: main.cpp:971
+#: main.cpp:976
 #, fuzzy
 msgid "You must specify a telephone number!"
 msgstr "Bir telefon numarsý belirtmeniz gerekiyor !\n"
 
-#: main.cpp:1058
+#: main.cpp:1063
 msgid "Quit kPPP?"
 msgstr "kppp'den çýk?"
 
-#: main.cpp:1059
+#: main.cpp:1064
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "kppp'den çýkmak PPP oturumunuzu kapatacaktýr."
 
-#: main.cpp:1094
+#: main.cpp:1099
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""

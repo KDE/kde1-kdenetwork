@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp 1.0pre2\n"
-"POT-Creation-Date: 1998-11-30 01:53+0100\n"
+"POT-Creation-Date: 1998-12-01 01:56+0100\n"
 "PO-Revision-Date: 1998-07-24 16:00+0100\n"
 "Last-Translator: Wolfram Diestel <diestel@rzaix340.rz-uni-leipzig.de>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
@@ -166,7 +166,7 @@ msgstr ""
 msgid "Login script has unbalanced loop Start/End"
 msgstr "Salutprogrameto havas nekongruan blokon Start/End"
 
-#: connect.cpp:97 connect.cpp:195 main.cpp:979
+#: connect.cpp:97 connect.cpp:195 main.cpp:984
 msgid "Connecting to: "
 msgstr "Kontaktita al: "
 
@@ -179,7 +179,7 @@ msgstr "Padonu, ne eblas krei þlosodosieron por modemo"
 msgid "Looking for Modem ..."
 msgstr "Rigardante je modemo..."
 
-#: connect.cpp:120 debug.cpp:80 main.cpp:992
+#: connect.cpp:120 debug.cpp:80 main.cpp:997
 msgid "Log"
 msgstr "Raporto"
 
@@ -1146,7 +1146,7 @@ msgstr ""
 msgid "Details..."
 msgstr "Detaloj"
 
-#: main.cpp:875
+#: main.cpp:880
 #, fuzzy, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1165,7 +1165,7 @@ msgstr ""
 "la konfigurodialogo.\n"
 "Dankon"
 
-#: main.cpp:890
+#: main.cpp:895
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1178,7 +1178,7 @@ msgstr ""
 "bonvolu certigi, ke vi donis al kppp SUID-permeson kaj ke\n"
 "pppd estas rulebla."
 
-#: main.cpp:904
+#: main.cpp:909
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1199,7 +1199,7 @@ msgstr ""
 "de la konfigurodialogo.\n"
 "Dankon"
 
-#: main.cpp:924
+#: main.cpp:929
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1208,7 +1208,7 @@ msgstr ""
 "Vi elektis la identigmetodon PAP. Tio\n"
 "necesigas, ke vi donas uzantonomon kaj pasvorton!"
 
-#: main.cpp:933
+#: main.cpp:938
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1217,7 +1217,7 @@ msgstr ""
 "Ne eblis krei PAP-identig-dosieron\n"
 "\"%s\""
 
-#: main.cpp:950
+#: main.cpp:955
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -1226,7 +1226,7 @@ msgstr ""
 "Vi elektis la identigmetodon CHAP. Tio\n"
 "necesigas, ke vi donas uzantonomon kaj pasvorton!"
 
-#: main.cpp:959
+#: main.cpp:964
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1235,20 +1235,20 @@ msgstr ""
 "Ne eblis krei CHAP-identig-dosieron\n"
 "\"%s\""
 
-#: main.cpp:971
+#: main.cpp:976
 #, fuzzy
 msgid "You must specify a telephone number!"
 msgstr "Vi devas doni telefonnumeron!\n"
 
-#: main.cpp:1058
+#: main.cpp:1063
 msgid "Quit kPPP?"
 msgstr "Æu fini kPPP"
 
-#: main.cpp:1059
+#: main.cpp:1064
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Se vi finas kPPP ankaý finiøos via PPP-seanco."
 
-#: main.cpp:1094
+#: main.cpp:1099
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""

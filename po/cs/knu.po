@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: knu 0.3.4\n"
-"POT-Creation-Date: 1998-10-30 12:57+0100\n"
+"POT-Creation-Date: 1998-12-01 01:56+0100\n"
 "PO-Revision-Date: 1998-11-05 08:42+01:00\n"
 "Last-Translator: Miroslav Flídr <flidr@kky.zcu.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -82,19 +82,19 @@ msgstr "&Finger"
 msgid "About..."
 msgstr "Informace..."
 
-#: CommandDlg.cpp:124
+#: CommandDlg.cpp:128
 msgid "H&ost:"
 msgstr "&Hostitel:"
 
-#: CommandDlg.cpp:133
+#: CommandDlg.cpp:137
 msgid "&Go!"
 msgstr "Vy&konat!"
 
-#: CommandDlg.cpp:143
+#: CommandDlg.cpp:147
 msgid "&Stop"
 msgstr "St&op"
 
-#: CommandDlg.cpp:159
+#: CommandDlg.cpp:163
 msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
@@ -102,7 +102,7 @@ msgstr ""
 "Program vykonávající tuto funkci nebyl nalezen. \n"
 "Je mo¾né zadat jeho jméno a cestu v menu Úpravy->Preference..."
 
-#: CommandDlg.cpp:344
+#: CommandDlg.cpp:348
 #, c-format
 msgid ""
 "\n"
@@ -125,23 +125,23 @@ msgstr ""
 "Prosím pou¾ijte menu Úpravy->Preference\n"
 "a proveïte znovu nastavení.\n"
 
-#: CommandDlg.cpp:353
+#: CommandDlg.cpp:357
 msgid "Error in pathname"
 msgstr "Chyba ve jménu cesty"
 
-#: CommandDlg.cpp:506
+#: CommandDlg.cpp:511
 msgid "Binary"
 msgstr "Program"
 
-#: CommandDlg.cpp:514
+#: CommandDlg.cpp:519
 msgid "Path&name:"
 msgstr "U&místìní:"
 
-#: CommandDlg.cpp:523
+#: CommandDlg.cpp:528
 msgid "Additional &arguments:"
 msgstr "&Dal¹í parametry"
 
-#: CommandDlg.cpp:548
+#: CommandDlg.cpp:553
 msgid "This command had been disabled in the configuration file."
 msgstr "Tento pøíkaz byl vypnut v konfiguraèním souboru."
 

@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 1998-10-30 12:57+0100\n"
+"POT-Creation-Date: 1998-12-01 01:56+0100\n"
 "PO-Revision-Date: 1998-01-12 12:21+CET\n"
 "Last-Translator: John Zero <johnzero@telnet.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -83,19 +83,19 @@ msgstr "&Ping"
 msgid "About..."
 msgstr "A programról..."
 
-#: CommandDlg.cpp:124
+#: CommandDlg.cpp:128
 msgid "H&ost:"
 msgstr "Gép:"
 
-#: CommandDlg.cpp:133
+#: CommandDlg.cpp:137
 msgid "&Go!"
 msgstr "&Mehet!"
 
-#: CommandDlg.cpp:143
+#: CommandDlg.cpp:147
 msgid "&Stop"
 msgstr "&Allj"
 
-#: CommandDlg.cpp:159
+#: CommandDlg.cpp:163
 msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
@@ -103,7 +103,7 @@ msgstr ""
 "A parancsnak megfelelõ binárist nem találom.Az elérési útvonalát a "
 "Szerkesztés->Beállítások alatt adhatod meg."
 
-#: CommandDlg.cpp:344
+#: CommandDlg.cpp:348
 #, c-format
 msgid ""
 "\n"
@@ -117,23 +117,23 @@ msgid ""
 "to configure it again.\n"
 msgstr ""
 
-#: CommandDlg.cpp:353
+#: CommandDlg.cpp:357
 msgid "Error in pathname"
 msgstr ""
 
-#: CommandDlg.cpp:506
+#: CommandDlg.cpp:511
 msgid "Binary"
 msgstr "Bináris"
 
-#: CommandDlg.cpp:514
+#: CommandDlg.cpp:519
 msgid "Path&name:"
 msgstr "&Utvonal:"
 
-#: CommandDlg.cpp:523
+#: CommandDlg.cpp:528
 msgid "Additional &arguments:"
 msgstr "&További paraméterek:"
 
-#: CommandDlg.cpp:548
+#: CommandDlg.cpp:553
 msgid "This command had been disabled in the configuration file."
 msgstr "Ez a parancs ki lett kapcsolva a konfigurációs file-ban."
 

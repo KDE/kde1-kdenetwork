@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1998-11-30 01:53+0100\n"
+"POT-Creation-Date: 1998-12-01 01:56+0100\n"
 "PO-Revision-Date: 1998-11-21 15:12+0100\n"
 "Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
 "Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
@@ -177,7 +177,7 @@ msgstr ""
 msgid "Login script has unbalanced loop Start/End"
 msgstr "In einer Schleife des Login-Skripts fehlt Anfang oder Ende"
 
-#: connect.cpp:97 connect.cpp:195 main.cpp:979
+#: connect.cpp:97 connect.cpp:195 main.cpp:984
 msgid "Connecting to: "
 msgstr "Verbinde mit: "
 
@@ -190,7 +190,7 @@ msgstr "Sorry, kann keine Sperrdatei für Modem erzeugen."
 msgid "Looking for Modem ..."
 msgstr "Suche Modem..."
 
-#: connect.cpp:120 debug.cpp:80 main.cpp:992
+#: connect.cpp:120 debug.cpp:80 main.cpp:997
 msgid "Log"
 msgstr "Log-Datei"
 
@@ -1411,7 +1411,7 @@ msgstr "Graphik"
 msgid "Details..."
 msgstr "Details..."
 
-#: main.cpp:875
+#: main.cpp:880
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1432,7 +1432,7 @@ msgstr ""
 "PPP-Dämon findet.\n"
 "Danke schön."
 
-#: main.cpp:890
+#: main.cpp:895
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1445,7 +1445,7 @@ msgstr ""
 "Bitte stellen Sie sicher, daß Sie kppp setuid-Berechtigung gegeben haben\n"
 "und daß pppd ausführbar ist."
 
-#: main.cpp:904
+#: main.cpp:909
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1466,7 +1466,7 @@ msgstr ""
 "Ihrer Einstellungen.\n"
 "Danke schön."
 
-#: main.cpp:924
+#: main.cpp:929
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1476,7 +1476,7 @@ msgstr ""
 "PAP gewählt. Deshalb müssen Sie einen\n"
 "Benutzernamen und ein Paßwort angeben!"
 
-#: main.cpp:933
+#: main.cpp:938
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1485,7 +1485,7 @@ msgstr ""
 "Kann PAP-Authentifizierungsdatei\n"
 "\"%s\" nicht erzeugen"
 
-#: main.cpp:950
+#: main.cpp:955
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -1495,7 +1495,7 @@ msgstr ""
 "CHAP gewählt. Deshalb müssen Sie einen\n"
 "Benutzernamen und ein Paßwort angeben!"
 
-#: main.cpp:959
+#: main.cpp:964
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1504,19 +1504,19 @@ msgstr ""
 "Kann CHAP-Authentifizierungsdatei\n"
 "\"%s\" nicht erzeugen"
 
-#: main.cpp:971
+#: main.cpp:976
 msgid "You must specify a telephone number!"
 msgstr "Sie müssen eine Telefonnummer angeben!"
 
-#: main.cpp:1058
+#: main.cpp:1063
 msgid "Quit kPPP?"
 msgstr "kppp beenden?"
 
-#: main.cpp:1059
+#: main.cpp:1064
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Das Verlassen von kPPP wird die Verbindung trennen."
 
-#: main.cpp:1094
+#: main.cpp:1099
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""

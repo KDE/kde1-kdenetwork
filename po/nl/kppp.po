@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-11-30 01:53+0100\n"
+"POT-Creation-Date: 1998-12-01 01:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Case Roole <cjr@xs4all.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -165,7 +165,7 @@ msgstr ""
 msgid "Login script has unbalanced loop Start/End"
 msgstr ""
 
-#: connect.cpp:97 connect.cpp:195 main.cpp:979
+#: connect.cpp:97 connect.cpp:195 main.cpp:984
 msgid "Connecting to: "
 msgstr "Maak een verbinding met: "
 
@@ -178,7 +178,7 @@ msgstr ""
 msgid "Looking for Modem ..."
 msgstr "Zoek naar Mode ..."
 
-#: connect.cpp:120 debug.cpp:80 main.cpp:992
+#: connect.cpp:120 debug.cpp:80 main.cpp:997
 msgid "Log"
 msgstr ""
 
@@ -1130,7 +1130,7 @@ msgstr ""
 msgid "Details..."
 msgstr ""
 
-#: main.cpp:875
+#: main.cpp:880
 #, fuzzy, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1150,7 +1150,7 @@ msgstr ""
 "Dank u"
 
 # FIXME: 'thatyou' should be 'that you'
-#: main.cpp:890
+#: main.cpp:895
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1163,7 +1163,7 @@ msgstr ""
 "Verzeker u ervan dat u kppp setuid permissie hebt gegeven en dat\n"
 "kpp uitvoerbaar is."
 
-#: main.cpp:904
+#: main.cpp:909
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1182,7 +1182,7 @@ msgstr ""
 "de modem in de modem tab van de instel dialoog.\n"
 "Dank u"
 
-#: main.cpp:924
+#: main.cpp:929
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1192,7 +1192,7 @@ msgstr ""
 "Dit vereist dat u een gebruikersnaam\n"
 "en een wachtwoord invoert!"
 
-#: main.cpp:933
+#: main.cpp:938
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1201,7 +1201,7 @@ msgstr ""
 "Kan PAP authorisatie bestand\n"
 "`%s' niet aanmaken"
 
-#: main.cpp:950
+#: main.cpp:955
 #, fuzzy
 msgid ""
 "You have selected the authentication\n"
@@ -1212,7 +1212,7 @@ msgstr ""
 "Dit vereist dat u een gebruikersnaam\n"
 "en een wachtwoord invoert!"
 
-#: main.cpp:959
+#: main.cpp:964
 #, fuzzy, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1221,19 +1221,19 @@ msgstr ""
 "Kan PAP authorisatie bestand\n"
 "`%s' niet aanmaken"
 
-#: main.cpp:971
+#: main.cpp:976
 msgid "You must specify a telephone number!"
 msgstr ""
 
-#: main.cpp:1058
+#: main.cpp:1063
 msgid "Quit kPPP?"
 msgstr "Verlaat kPPP ?"
 
-#: main.cpp:1059
+#: main.cpp:1064
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Bij het verlaten van kPPP wordt uw PPP sessie afgesloten."
 
-#: main.cpp:1094
+#: main.cpp:1099
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""

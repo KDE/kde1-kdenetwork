@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-11-30 01:53+0100\n"
+"POT-Creation-Date: 1998-12-01 01:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: LinuxKorea Co. <kde@linuxkorea.co.kr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -166,7 +166,7 @@ msgstr ""
 msgid "Login script has unbalanced loop Start/End"
 msgstr "로그인 스트립트 내부에 Start/End가 올바르지 않게 사용되었습니다"
 
-#: connect.cpp:97 connect.cpp:195 main.cpp:979
+#: connect.cpp:97 connect.cpp:195 main.cpp:984
 msgid "Connecting to: "
 msgstr "연결 대상:"
 
@@ -179,7 +179,7 @@ msgstr "모뎀 잠금 파일을 생성할 수 없읍니다"
 msgid "Looking for Modem ..."
 msgstr "모뎀 찾는 중..."
 
-#: connect.cpp:120 debug.cpp:80 main.cpp:992
+#: connect.cpp:120 debug.cpp:80 main.cpp:997
 msgid "Log"
 msgstr "접속기록"
 
@@ -1146,7 +1146,7 @@ msgstr ""
 msgid "Details..."
 msgstr "세부사항"
 
-#: main.cpp:875
+#: main.cpp:880
 #, fuzzy, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1165,7 +1165,7 @@ msgstr ""
 "하십시오.\n"
 " 고맙습니다."
 
-#: main.cpp:890
+#: main.cpp:895
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1178,7 +1178,7 @@ msgstr ""
 "kppp에 setuid 권한을 설정하였는 지를 확인하신 후, pppd가 실행가능한지\n"
 "확인하십시오."
 
-#: main.cpp:904
+#: main.cpp:909
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1197,7 +1197,7 @@ msgstr ""
 "조정하십시오.\n"
 " 고맙습니다"
 
-#: main.cpp:924
+#: main.cpp:929
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1207,7 +1207,7 @@ msgstr ""
 "이 방법을 사용하려면 사용자 이름과 암호를\n"
 "제공하셔야 합니다!"
 
-#: main.cpp:933
+#: main.cpp:938
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1216,14 +1216,14 @@ msgstr ""
 "다음의 PAP 인증 파일을 생성할 수 없습니다:\n"
 "\"%s\""
 
-#: main.cpp:950
+#: main.cpp:955
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
 "supply a username and a password!"
 msgstr ""
 
-#: main.cpp:959
+#: main.cpp:964
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1232,20 +1232,20 @@ msgstr ""
 "다음의 CHAP 인증 파일을 생성할 수 없습니다:\n"
 "\"%s\""
 
-#: main.cpp:971
+#: main.cpp:976
 #, fuzzy
 msgid "You must specify a telephone number!"
 msgstr "전화번호가 빠져있습니다 !\n"
 
-#: main.cpp:1058
+#: main.cpp:1063
 msgid "Quit kPPP?"
 msgstr "kPPP를 종료하시겠습니까?"
 
-#: main.cpp:1059
+#: main.cpp:1064
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "kPPP가 종료되면 해당 PPP 세션이 닫히게 됩니다."
 
-#: main.cpp:1094
+#: main.cpp:1099
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
