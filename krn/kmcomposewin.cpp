@@ -204,6 +204,7 @@ void KMComposeWin::readConfig(void)
   
 #ifdef CHARSETS  
   m7BitAscii = config->readNumEntry("7bit-is-ascii",1);
+  mQuoteUnknownCharacters = config->readNumEntry("quote-unknown",0);
   
   str = config->readEntry("default-charset", "");
   if (str.isNull() || str=="default" || !KCharset(str).ok())
@@ -245,8 +246,9 @@ void KMComposeWin::writeConfig(bool aWithSync)
   config->writeEntry("headers", mShowHeaders);
 #ifdef CHARSETS  
   config->writeEntry("7bit-is-ascii",m7BitAscii);
+  config->writeEntry("quote-unknown",mQuoteUnknownCharacters);
   config->writeEntry("default-charset",mDefaultCharset);
-  config->writeEntry("compose-charset",mDefComposeCharset);
+  config->writeEntry("composer-charset",mDefComposeCharset);
 #endif  
 
   config->writeEntry("Fore-Color",mForeColor);
@@ -1619,19 +1621,22 @@ void KMComposeWin::slotSpellMispelling(char *word, QStrList *, long pos)
 //-----------------------------------------------------------------------------
 void KMComposeWin::slotConfigureCharsets(){
    
-   CharsetsDlg *dlg=new CharsetsDlg(mCharset,mComposeCharset);
-   connect(dlg,SIGNAL( setCharsets(const char *,const char *,bool) ), this
-           ,SLOT(slotSetCharsets(const char *,const char *,bool)));
+   CharsetsDlg *dlg=new CharsetsDlg(mCharset,mComposeCharset
+                                    ,m7BitAscii,mQuoteUnknownCharacters);
+   connect(dlg,SIGNAL( setCharsets(const char *,const char *,bool,bool,bool) )
+           ,this,SLOT(slotSetCharsets(const char *,const char *,bool,bool,bool)));
    dlg->show();
    delete dlg;	   
 }
 
 //-----------------------------------------------------------------------------
 void KMComposeWin::slotSetCharsets(const char *message,const char *composer
-                                  ,bool def){
+                                  ,bool ascii,bool quote,bool def){
 
   mCharset=message;
   mComposeCharset=composer;
+  m7BitAscii=ascii;
+  mQuoteUnknownCharacters=quote;
   if (def){
     mDefaultCharset=message;
     mDefComposeCharset=composer;
@@ -1675,8 +1680,8 @@ QString KMComposeWin::convertToLocal(const QString str){
   if (mComposeCharset=="default") destCharset=klocale->charset();
   else destCharset=mComposeCharset;
   if (srcCharset==destCharset) return str.copy();
-  KCharsetConverter conv(srcCharset,destCharset
-                          ,KCharsetConverter::AMP_SEQUENCES);
+  int flags=mQuoteUnknownCharacters?KCharsetConverter::OUTPUT_AMP_SEQUENCES:0;
+  KCharsetConverter conv(srcCharset,destCharset,flags);
   KCharsetConversionResult result=conv.convert(str);
   return result.copy();			  
 }
@@ -1697,8 +1702,8 @@ QString KMComposeWin::convertToSend(const QString str){
   else srcCharset=mComposeCharset;
   cout<<"srcCharset: "<<srcCharset<<"\n";
   if (srcCharset==destCharset) return str.copy();
-  KCharsetConverter conv(srcCharset,destCharset
-                          ,KCharsetConverter::AMP_SEQUENCES);
+  int flags=mQuoteUnknownCharacters?KCharsetConverter::INPUT_AMP_SEQUENCES:0;
+  KCharsetConverter conv(srcCharset,destCharset,flags);
   KCharsetConversionResult result=conv.convert(str);
   return result.copy();			  
 }

@@ -12,12 +12,14 @@ class CharsetsDlg: public QDialog
 {
     Q_OBJECT
 public:
-    CharsetsDlg(const char *message,const char *composer);
+    CharsetsDlg(const char *message,const char *composer
+                ,bool ascii,bool quote);
     ~CharsetsDlg();
 public slots:
     void save();
 signals:
-    void setCharsets(const char *message,const char *composer,bool def);
+    void setCharsets(const char *message,const char *composer
+                     ,bool ascii,bool quote,bool def);
 private:
     QComboBox *messageCharset;
     QComboBox *composerCharset;

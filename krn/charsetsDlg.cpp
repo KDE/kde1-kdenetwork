@@ -21,11 +21,12 @@
 
 extern KConfig *conf;
 
-CharsetsDlg::CharsetsDlg(const char *message,const char *composer) :
+CharsetsDlg::CharsetsDlg(const char *message,const char *composer,
+                         bool ascii,bool quote) :
 #ifdef KRN
-    QDialog (0,klocale->translate("KRN - Charset Settings"),true)
+    QDialog (0,i18n("KRN - Charset Settings"),true)
 #else
-    QDialog (0,klocale->translate("KMail - Charset Settings"),true)
+    QDialog (0,i18n("KMail - Charset Settings"),true)
 #endif
 {
 int i;
@@ -35,7 +36,7 @@ int i;
     KCharsets *charsets=kapp->getCharsets();
     
       
-    QLabel *l=new QLabel(klocale->translate("Message charset"),this,"l1");
+    QLabel *l=new QLabel(i18n("Message charset"),this,"l1");
     l->setAlignment(AlignCenter);
     mainl->addWidget(l);
     
@@ -53,7 +54,7 @@ int i;
 	break;
       }	
  
-    l=new QLabel(klocale->translate("Composer charset"),this,"l2");
+    l=new QLabel(i18n("Composer charset"),this,"l2");
     l->setAlignment(AlignCenter);
     mainl->addWidget(l);
 
@@ -70,24 +71,25 @@ int i;
         composerCharset->setCurrentItem(i);
 	break;
        }	
-        
       
-    setDefault=new QCheckBox("Set as &default",this,"cb");
+    setDefault=new QCheckBox(i18n("Set as &default"),this,"cb");
     mainl->addWidget(setDefault);
     
     mainl->addLayout(optl);
     
-    is7BitASCII=new QCheckBox("&7 bit is ASCII",this,"7b");
+    is7BitASCII=new QCheckBox(i18n("&7 bit is ASCII"),this,"7b");
+    is7BitASCII->setChecked(ascii);
     optl->addWidget(is7BitASCII);
     
-    quoteUnknown=new QCheckBox("&Qute unknonw characters",this,"qu");
+    quoteUnknown=new QCheckBox(i18n("&Qute unknonw characters"),this,"qu");
+    quoteUnknown->setChecked(quote);
     optl->addWidget(quoteUnknown);
 
     mainl->addLayout(buttonsl);
 
-    QPushButton *b1=new QPushButton(klocale->translate("OK"),this,"b1");
+    QPushButton *b1=new QPushButton(i18n("OK"),this,"b1");
     buttonsl->addWidget(b1);
-    QPushButton *b2=new QPushButton(klocale->translate("Cancel"),this,"b2");
+    QPushButton *b2=new QPushButton(i18n("Cancel"),this,"b2");
     buttonsl->addWidget(b2);
 
     connect (b1,SIGNAL(clicked()),SLOT(save()));
@@ -101,6 +103,8 @@ void CharsetsDlg::save()
 {
     emit setCharsets(messageCharset->currentText()
                      ,composerCharset->currentText()
+		     ,is7BitASCII->isChecked()
+		     ,quoteUnknown->isChecked()
 		     ,setDefault->isChecked());
     accept();
 }

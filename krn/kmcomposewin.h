@@ -169,7 +169,8 @@ public slots:
 
 #ifdef CHARSETS
    void slotConfigureCharsets();
-   void slotSetCharsets(const char *message,const char *composer,bool def);
+   void slotSetCharsets(const char *message,const char *composer
+                        ,bool ascii,bool quote,bool def);
 #endif
 
 protected:
@@ -274,6 +275,7 @@ protected:
   QString mCharset;
   QString mDefComposeCharset; 
   QString mComposeCharset; 
+  int mQuoteUnknownCharacters;
 #endif  
 
 private:
