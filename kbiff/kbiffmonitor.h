@@ -52,7 +52,7 @@ typedef enum
  *
  * @short A "biff" class that monitors local and remote mailboxes
  * @author Kurt Granroth <granroth@kde.org>
- * @version 0.4.8
+ * @version 0.5
  */
 class KBiffMonitor : public QObject
 {
@@ -86,6 +86,11 @@ public:
 	 * a mailbox.
 	 */
 	bool isRunning() { return started; }
+
+	/**
+	 * Returns the number of new messages for the current mailbox
+	 */
+	int newMessages() { return newCount; }
 
 public slots:
 	/**
@@ -209,13 +214,15 @@ protected:
 	void determineState(unsigned int size, const QDateTime& last_read,
 	                    const QDateTime& last_modified);
 	void determineState(unsigned int size);
-	void determineState(KBiffMailState state, const int num = -1);
+	void determineState(KBiffMailState state);
+	int  mboxMessages();
 
 private:
 	// General stuff
 	int     poll;
 	int     oldTimer;
 	bool    started;
+	int     newCount;
 
 	// Mailbox stuff
 	QString mailbox;

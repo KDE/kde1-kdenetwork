@@ -25,6 +25,7 @@
 #include <ksimpleconfig.h>
 
 #include <qlistview.h> // KBiffMailboxTab
+#include <qheader.h>   // KBiffMailboxTab
 #include <qtooltip.h>  // KBiffMailboxTab
 
 #include <kfiledialog.h> // KBiffNewMailTab
@@ -33,6 +34,10 @@
 #include <kfm.h>       // KBiffAboutTab
 #include <kprocess.h>  // KBiffAboutTab
 #include <stdlib.h>    // KBiffAboutTab
+
+#include <unistd.h>
+#include <pwd.h>
+#include <sys/types.h>
 
 #define CONFIG_FILE QString(KApplication::localconfigdir() + "/kbiffrc")
 
@@ -927,6 +932,7 @@ TRACEINIT("KBiffMailboxTab::KBiffMailboxTab()");
 
 	mailboxes = new QListView(this);
 	mailboxes->addColumn(i18n("Mailbox:"));
+	mailboxes->header()->hide();
 
 	list_layout->addMultiCellWidget(mailboxes, 0, 0, 0, 1);
 	list_layout->setRowStretch(0, 1);
@@ -1394,7 +1400,7 @@ const KURL KBiffMailboxTab::defaultMailbox() const
 	{
 		QString s(_PATH_MAILDIR);
 		s += "/";
-		s += getlogin();
+		s += getpwuid(getuid())->pw_name;
 		mailbox_info.setFile(s);
 	}
 
@@ -1444,7 +1450,7 @@ TRACEINIT("KBiffAboutTab::KBiffAboutTab()");
 	QLabel *version = new QLabel(this);
 	version->setFont(QFont("helvetica", 12));
 	QString ver_str;
-	ver_str.sprintf(i18n("Version %s\n\nCopyright (C) 1998\nKurt Granroth"), "1.1.2");
+	ver_str.sprintf(i18n("Version %s\n\nCopyright (C) 1998\nKurt Granroth"), "1.1.3");
 	version->setText(ver_str);
 	version->setAutoResize(true);
 	version->move(x, y);

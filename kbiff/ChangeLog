@@ -1,3 +1,11 @@
+09-24-98 - Kurt Granroth
+   o Added code from 'korn' to check number of new messages in mbox.  'Notify'
+	  should not correctly list the number of new messages in all four
+	  mailbox types.
+   o Changed 'getlogin()' to more general form.  Hopefully doesn't break on
+	  non-Linux systems.
+   o Some bug fixes.
+
 09-23-98 - Kurt Granroth
    o Quite a few bug fixes.
 

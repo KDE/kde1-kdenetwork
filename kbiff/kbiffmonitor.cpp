@@ -16,19 +16,32 @@
 #include <netdb.h>
 #include <string.h>
 #include <unistd.h>
+#include <stdlib.h>
+
+#include <qapp.h>
 
 #include "Trace.h"
 
+#define MAXSTR (1024)
+
+static bool real_from(const char *buffer);
+static const char *compare_header(const char *header, const char *field);
+
 KBiffMonitor::KBiffMonitor()
-	: QObject()
+	: QObject(),
+	  poll(60),
+	  oldTimer(0),
+	  started(false),
+	  newCount(0),
+	  mailbox(""),
+	  server(""),
+	  user(""),
+	  password(""),
+	  port(0),
+	  mailState(UnknownState),
+	  lastSize(0)
 {
 TRACEINIT("KBiffMonitor::KBiffMonitor()");
-	// Initialize variables
-	poll       = 60;
-	lastSize   = 0;
-	oldTimer   = 0;
-	mailState  = UnknownState;
-	started    = false;
 	lastRead.setTime_t(0);
 }
 
@@ -225,17 +238,59 @@ TRACEINIT("KBiffMonitor::checkImap()");
 	else
 	{
 		if (imap.numberOfNewMessages() > 0)
-			determineState(NewMail, imap.numberOfNewMessages());
+		{
+			newCount = imap.numberOfNewMessages();
+			determineState(NewMail);
+		}
 		else
 			determineState(OldMail);
+	}
+}
+
+void KBiffMonitor::checkMaildir()
+{
+TRACEINIT("KBiffMonitor::checkMaildir()");
+	// get the information about this local mailbox
+	QDir mbox(mailbox);
+
+	// make sure the mailbox exists
+	if (mbox.exists())
+	{
+		// maildir stores its mail in MAILDIR/new and MAILDIR/cur
+		QDir new_mailbox(mailbox + "/new");
+		QDir cur_mailbox(mailbox + "/cur");
+
+		// make sure both exist
+		if (new_mailbox.exists() && cur_mailbox.exists())
+		{
+			// check only files
+			new_mailbox.setFilter(QDir::Files);
+			cur_mailbox.setFilter(QDir::Files);
+
+			// get the number of messages in each
+			newCount = new_mailbox.count();
+			int cur_count = cur_mailbox.count();
+
+			// all messages in 'new' are new
+			if (newCount > 0)
+			{
+				determineState(NewMail);
+			}
+			// failing that, we look for any old ones
+			else if (cur_count > 0)
+			{
+				determineState(OldMail);
+			}
+			// failing that, we have no mail
+			else
+				determineState(NoMail);
+		}
 	}
 }
 
 void KBiffMonitor::determineState(unsigned int size)
 {
 TRACEINIT("KBiffMonitor::determineState()");
-	int new_size = 0;
-
 	// check for no mail
 	if (size == 0)
 	{
@@ -256,10 +311,10 @@ TRACEINIT("KBiffMonitor::determineState()");
 		if (mailState != NewMail)
 		{
 			mailState = NewMail;
-			new_size  = size - lastSize;
+			newCount  = size - lastSize;
 			lastSize  = size;
 			emit(signal_newMail());
-			emit(signal_newMail(new_size, mailbox));
+			emit(signal_newMail(newCount, mailbox));
 		}
 
 		return;
@@ -290,14 +345,14 @@ TRACEINIT("KBiffMonitor::determineState()");
 	}
 }
 
-void KBiffMonitor::determineState(KBiffMailState state, const int num)
+void KBiffMonitor::determineState(KBiffMailState state)
 {
 TRACEINIT("KBiffMonitor::determineState()");
 	if ((state == NewMail) && (mailState != NewMail))
 	{
 		mailState = NewMail;
 		emit(signal_newMail());
-		emit(signal_newMail(num, mailbox));
+		emit(signal_newMail(newCount, mailbox));
 	}
 	else
 	if ((state == NoMail) && (mailState != NoMail))
@@ -318,6 +373,10 @@ TRACEINIT("KBiffMonitor::determineState()");
 void KBiffMonitor::determineState(unsigned int size, const QDateTime& last_read, const QDateTime& last_modified)
 {
 TRACEINIT("KBiffMonitor::determineState()");
+TRACEF("mailState = %d", mailState);
+TRACEF("last_read = %s", (const char*)last_read.toString());
+TRACEF("lastRead = %s", (const char*)lastRead.toString());
+TRACEF("last_modified = %s", last_modified.toString().data());
 	// Check for NoMail
 	if (size == 0)
 	{
@@ -340,23 +399,22 @@ TRACEINIT("KBiffMonitor::determineState()");
 	// There is some mail.  See if it is new or not.  To be new, the
 	// mailbox must have been modified after it was last read AND the
 	// current size must be greater then it was before.
-	if ((last_modified > last_read) && (size > lastSize))
+	if ((last_modified >= last_read) && (size > lastSize))
 	{
 		// We have new mail!
 		mailState = NewMail;
 		lastRead  = last_read;
 		lastSize  = size;
 
+		newCount = mboxMessages();
+TRACEF("new messages = %d\n", newCount);
 		// Let the world know of the new state
 		emit(signal_newMail());
-		emit(signal_newMail(1, mailbox));
+		emit(signal_newMail(newCount, mailbox));
 
 		return;
 	}
 
-TRACEF("mailState = %d", mailState);
-TRACEF("last_read = %s", (const char*)last_read.toString());
-TRACEF("lastRead = %s", (const char*)lastRead.toString());
 	// Finally, check if the state needs to change to OldMail
 	if ((mailState != OldMail) && (last_read > lastRead))
 	{
@@ -376,45 +434,96 @@ TRACEF("lastRead = %s", (const char*)lastRead.toString());
 	// point.
 }
 
-void KBiffMonitor::checkMaildir()
+/**
+ * The following function is lifted from unixdrop.cpp in the korn
+ * distribution.  It is (C) Sirtaj Singh Kang <taj@kde.org> and is
+ * used under the GPL license (and the author's permission).  It has
+ * been slightly modified for formatting reasons.
+ */
+int KBiffMonitor::mboxMessages()
 {
-TRACEINIT("KBiffMonitor::checkMaildir()");
-	// get the information about this local mailbox
-	QDir mbox(mailbox);
+	QFile mbox(mailbox);
+	char *buffer         = new char[MAXSTR];
+	int count            = 0;
+	int msg_count        = 0;
+	bool in_header       = false;
+	bool has_content_len = false;
+	bool msg_read        = false;
+	long content_length  = 0;
 
-	// make sure the mailbox exists
-	if (mbox.exists())
+	if (mbox.open(IO_ReadOnly) == false)
 	{
-		// maildir stores its mail in MAILDIR/new and MAILDIR/cur
-		QDir new_mailbox(mailbox + "/new");
-		QDir cur_mailbox(mailbox + "/cur");
-
-		// make sure both exist
-		if (new_mailbox.exists() && cur_mailbox.exists())
-		{
-			// check only files
-			new_mailbox.setFilter(QDir::Files);
-			cur_mailbox.setFilter(QDir::Files);
-
-			// get the number of messages in each
-			int new_count = new_mailbox.count();
-			int cur_count = cur_mailbox.count();
-
-			// all messages in 'new' are new
-			if (new_count > 0)
-			{
-				determineState(NewMail, new_count);
-			}
-			// failing that, we look for any old ones
-			else if (cur_count > 0)
-			{
-				determineState(OldMail);
-			}
-			// failing that, we have no mail
-			else
-				determineState(NoMail);
-		}
+		warning("countMail: file open error");
+		return 0;
 	}
+
+	buffer[MAXSTR-1] = 0;
+
+	while (mbox.readLine(buffer, MAXSTR-2) > 0)
+	{
+		// read a line from the mailbox
+
+		if (!strchr(buffer, '\n') && !mbox.atEnd())
+		{
+			// read till the end of the line if we
+			// haven't already read all of it.
+
+			int c;
+
+			while((c=mbox.getch()) >=0 && c !='\n');
+		}
+
+		if (!in_header && real_from(buffer))
+		{
+			// check if this is the start of a message
+			has_content_len = false;
+			in_header       = true;
+			msg_read        = false;
+		}
+		else if (in_header)
+		{
+			// check header fields if we're already in one
+
+			if (compare_header(buffer, "Content-Length"))
+			{
+				has_content_len = true;
+				content_length  = atol(buffer + 15);
+			}
+
+			if (compare_header(buffer, "Status"))
+			{
+				const char *field = buffer;
+				field += 7;
+				while (field && (*field== ' ' || *field == '\t'))
+					field++;
+
+				if (*field == 'N' || *field == 'U')
+					msg_read = false;
+				else
+					msg_read = true;
+			}
+			else if (buffer[0] == '\n' )
+			{
+				if (has_content_len)
+					mbox.at(mbox.at() + content_length);
+
+				in_header = false;
+
+				if (!msg_read)
+					count++;
+			} 
+		}//in header
+
+		if(++msg_count >= 100 )
+		{
+			qApp->processEvents();
+			msg_count = 0;
+		}
+	}//while
+
+	mbox.close();
+
+	return count;
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -592,4 +701,98 @@ TRACEINIT("KBiffPop::command()");
 		return true;
 
 	return false;
+}
+
+/////////////////////////////////////////////////////////////////////////
+/* The following is a (C) Sirtaj Singh Kang <taj@kde.org> */
+
+#define whitespace(c)    (c == ' ' || c == '\t')
+
+#define skip_white(c)	 while(c && (*c) && whitespace(*c) ) c++
+#define skip_nonwhite(c) while(c && (*c) && !whitespace(*c) ) c++
+
+#define skip_token(buf) skip_nonwhite(buf); if(!*buf) return false; \
+	skip_white(buf); if(!*buf) return false;
+
+static char *month_name[13] = {
+	"jan", "feb", "mar", "apr", "may", "jun",
+	"jul", "aug", "sep", "oct", "nov", "dec", NULL
+};
+
+static char *day_name[8] = {
+	"sun", "mon", "tue", "wed", "thu", "fri", "sat", 0
+};
+
+static bool real_from(const char *buffer)
+{
+	/*
+		A valid from line will be in the following format:
+
+		From <user> <weekday> <month> <day> <hr:min:sec> [TZ1 [TZ2]] <year>
+	 */
+
+	int day;
+	int i;
+	int found;
+
+	/* From */
+
+	if(!buffer || !*buffer)
+		return false;
+
+	if (strncmp(buffer, "From ", 5))
+		return false;
+
+	buffer += 5;
+
+	skip_white(buffer);
+
+	/* <user> */
+	if(*buffer == 0) return false;
+	skip_token(buffer);
+
+	/* <weekday> */
+	found = 0;
+	for (i = 0; day_name[i] != NULL; i++)
+		found = found || (strnicmp(day_name[i], buffer, 3) == 0);
+
+	if (!found)
+		return false;
+
+	skip_token(buffer);
+
+	/* <month> */
+	found = 0;
+	for (i = 0; month_name[i] != NULL; i++)
+		found = found || (strnicmp(month_name[i], buffer, 3) == 0);
+	if (!found)
+		return false;
+
+	skip_token(buffer);
+
+	/* <day> */
+	if ( (day = atoi(buffer)) < 0 || day < 1 || day > 31)
+		return false;
+
+	return true;
+}
+
+static const char *compare_header(const char *header, const char *field)
+{
+	int len = strlen(field);
+
+	if (strnicmp(header, field, len))
+		return NULL;
+
+	header += len;
+
+	if( *header != ':' )
+		return NULL;
+
+	header++;
+
+	while( *header && ( *header == ' ' || *header == '\t') )
+		header++;
+
+	return header;
 }
