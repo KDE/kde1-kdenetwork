@@ -10,6 +10,7 @@
 #include <qradiobt.h>
 #include <qpixmap.h>
 #include <qlistbox.h>
+#include <qcombo.h>
 #include <keditcl.h>
 
 #include <ktabctl.h>
@@ -351,7 +352,7 @@ TLObj *KTypeLayout::addIntLineEdit(const char *ID,const char *text,int maxlen)
     return addWidget(ID,g);
 }
 
-TLObj *KTypeLayout::addListBox (const char *ID,const QStrList *contents=0,int minRows=5)
+TLObj *KTypeLayout::addListBox (const char *ID,const QStrList *contents,int minRows)
 {
     QWidget *g;
     QListBox *l=new QListBox(windowStack.top()->widget);
@@ -361,6 +362,19 @@ TLObj *KTypeLayout::addListBox (const char *ID,const QStrList *contents=0,int mi
         l->insertStrList(contents);
     g->show();
     g->setMinimumHeight((l->fontMetrics().height()+1)*minRows+6);
+    return addWidget(ID,g);
+}
+
+TLObj *KTypeLayout::addComboBox (const char *ID,const QStrList *contents)
+{
+    QWidget *g;
+    QComboBox *l=new QComboBox(windowStack.top()->widget);
+    g=l;
+
+    if (contents)
+        l->insertStrList(contents);
+    g->show();
+    g->setMinimumHeight(l->fontMetrics().height()+10);
     return addWidget(ID,g);
 }
 
@@ -405,7 +419,7 @@ void KTypeLayout::setAlign (char *ID,int align)
 }
 
 
-void KTypeLayout::setSpawn (char *ID,int vSpawn=1,int hSpawn=1)
+void KTypeLayout::setSpawn (char *ID,int vSpawn,int hSpawn)
 {
     TLObj *o=findObject(ID);
     if (!o)

@@ -3,22 +3,24 @@
 
 #include <qwidget.h>
 
-#include "findArtDlgData.h"
+class QPushButton;
+class QComboBox;
+class QLineEdit;
 
-class findArtDlg : public QWidget,
-    private findArtDlgData
+class findArtDlg : public QWidget
 {
     Q_OBJECT
         
 public:
     
-    findArtDlg
-        (
-         QWidget* parent = NULL,
-         const char* name = NULL
-        );
+    findArtDlg(QWidget* parent = NULL,const char* name = NULL);
     
     virtual ~findArtDlg();
+
+    QPushButton* b1;
+    QPushButton* b2;
+    QComboBox* field;
+    QLineEdit* expr;
 
 signals:
     void FindThis(const char *,const char *);

@@ -60,7 +60,6 @@ krn_SOURCES = 	main.cpp\
                 kmcomposewin.cpp\
                 kmimemagic.cpp\
                 kmsender.cpp\
-                findArtDlgData.cpp\
                 findArtDlg.cpp\
                 kmmsgbase.cpp\
                 kmidentity.cpp\
@@ -101,7 +100,6 @@ noinst_HEADERS = 	NNTP.h\
                 kmimemagic.h\
                 kmsender.h\
                 mytree.h\
-                findArtDlgData.h\
                 findArtDlg.h\
                 kmmsgbase.h\
                 kmidentity.h\

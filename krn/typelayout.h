@@ -125,6 +125,12 @@ public:
      better widget choice.
      */
      TLObj *addListBox (const char *ID,const QStrList *contents=0,int minRows=5);
+
+     /**
+      Similar to addListBox, but creates a QComboBox instead of a QListBox
+      */
+     
+     TLObj *addComboBox (const char *ID,const QStrList *contents=0);
     
     /** Ends a line of widgets, and starts a new one. Think about it
      as pressing "return" in a word processor
