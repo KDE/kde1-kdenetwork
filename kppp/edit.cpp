@@ -80,8 +80,6 @@ DialWidget::DialWidget( QWidget *parent, bool isnewaccount, const char *name )
   auth->insertItem(i18n("PAP"));
   auth->insertItem(i18n("Terminal-based"));
   auth->insertItem(i18n("CHAP"));
-  connect(auth, SIGNAL(activated(int)),
-	  this, SLOT(authSelected(int)));
   MIN_WIDTH(auth);
   FIXED_HEIGHT(auth);
   tl->addWidget(auth, 4, 2);
@@ -187,17 +185,6 @@ DialWidget::DialWidget( QWidget *parent, bool isnewaccount, const char *name )
   }
 
   tl->activate();
-}
-
-
-void DialWidget::authSelected(int i) {
-  emit authChanged(i);
-}
-
-
-void DialWidget::show() {
-  authSelected(auth->currentItem());
-  QWidget::show();
 }
 
 
@@ -796,18 +783,6 @@ ScriptWidget::ScriptWidget( QWidget *parent, bool isnewaccount, const char *name
   adjustScrollBar();
 
   tl->activate();
-}
-
-
-void ScriptWidget::authSelected(int i) {
-  bool b = (i != 1) && (i != 3);
-
-  se->setEnabled(b);
-  add->setEnabled(b);
-  insert->setEnabled(b);
-  remove->setEnabled(b);
-  stl->setEnabled(b);
-  sl->setEnabled(b);
 }
 
 

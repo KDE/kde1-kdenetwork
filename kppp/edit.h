@@ -57,18 +57,10 @@ public:
   DialWidget( QWidget *parent=0, bool isnewaccount = true, const char *name=0 );
   ~DialWidget() {}
 
-  virtual void show();
-
 public slots:
   bool save();
   void pppdargsbutton();
   
-signals:
-  void authChanged(int);
-
-private slots:
-  void authSelected(int);
-
 private:
   QGroupBox *box;
   QLineEdit *connectname_l;
@@ -208,10 +200,6 @@ private slots:
   //signals to keep the two listboxes highlighted in sync
   void slhighlighted(int);
   void stlhighlighted(int);
-
-  // an authentication method was selected, disable or enable
-  // GUI items
-  void authSelected(int);
 
 private:
   void adjustScrollBar();

@@ -2,6 +2,8 @@
 
 	* opener.cpp: using umask now instead of chmod (more safe)
 	* opener.cpp: regfree was called too late. Fixed.
+	* re-enable scripts when using CHAP or PAP
+	* cosmetic changes in the "Accounts" widget
 
 1998-12-21  Harri Porten  <porten@kde.org>
 

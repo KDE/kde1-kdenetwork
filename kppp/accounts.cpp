@@ -33,10 +33,6 @@
 #include "main.h"
 
 
-//so we can call the function in the KPPPWidget to reset the dial-out
-//account combo box
-
-
 void parseargs(char* buf, char** args);
 
 AccountWidget::AccountWidget( QWidget *parent, const char *name )
@@ -74,7 +70,6 @@ AccountWidget::AccountWidget( QWidget *parent, const char *name )
   MIN_HEIGHT(edit_b);
   edit_b->setMinimumWidth(min);
 
-  //  edit_b->setMinimumSize(edit_b->sizeHint());
   l111->addWidget(edit_b);
 
   new_b = new QPushButton(i18n("New..."), this);
@@ -332,8 +327,6 @@ int AccountWidget::doTab(){
   tabWindow->setOKButton(i18n("OK"));
   tabWindow->setCancelButton(i18n("Cancel"));
 
-  //  tabWindow->setApplyButton();
-
   dial_w = new DialWidget(tabWindow, isnewaccount);
 
   ip_w = new IPWidget(tabWindow, isnewaccount);
@@ -341,8 +334,6 @@ int AccountWidget::doTab(){
   gateway_w = new GatewayWidget(tabWindow, isnewaccount);
   script_w = new ScriptWidget(tabWindow, isnewaccount);
   acct = new AccountingSelector(tabWindow, isnewaccount);
-  connect(dial_w, SIGNAL(authChanged(int)),
-	  script_w, SLOT(authSelected(int)));
 
   tabWindow->addTab(dial_w, i18n("Dial"));
   tabWindow->addTab(ip_w, i18n("IP"));
