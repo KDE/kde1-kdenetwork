@@ -94,6 +94,7 @@
 #define LOOKUP_ALTAVISTA 32
 #define QUIT 33
 #define SCOREFRAME 34
+#define FILL_TREE 35
 
 extern QString pixpath,cachepath;
 
@@ -211,8 +212,8 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
 
     t1->insertButton (Icon("previous.xpm"), ARTLIST, true, klocale->translate("Get Article List"));
 
-    t1->insertButton (Icon("previous.xpm"), UPDATE_SCORES, true, klocale->translate("Update Scores"));
-    t1->alignItemRight(UPDATE_SCORES);
+    t1->insertButton (Icon("reload.xpm"), FILL_TREE, true, klocale->translate("Refresh Display"));
+    t1->alignItemRight(FILL_TREE);
     t1->insertFrame(SCOREFRAME,100);
     t1->alignItemRight(SCOREFRAME);
     minScore= new KNumericSpinBox(t1->getFrame(SCOREFRAME));
@@ -664,6 +665,11 @@ bool Artdlg::actions (int action)
     goTo(index);
     switch (action)
     {
+    case FILL_TREE:
+        {
+            fillTree();
+            break;
+        }
     case UPDATE_SCORES:
         {
             updateScores();
