@@ -62,6 +62,8 @@ msgid ""
 "Sorry, this type of URL is currently unsupportedby the KDE System Sound "
 "Module"
 msgstr ""
+"Beklager, denne typen URL er foreløbig ikke støttet av "
+"KDE-lydsystemmodulen"
 
 #: soundpage.cpp:165
 #, c-format
@@ -70,10 +72,13 @@ msgid ""
 "%s\n"
 "does not seem to be a WAV--file."
 msgstr ""
+"Beklager, men \n"
+"%s\n"
+"ser ikke ut til å være en WAV--fil."
 
 #: soundpage.cpp:168
 msgid "Improper File Extension"
-msgstr ""
+msgstr "Feilaktig filendelse"
 
 #: soundpage.cpp:176
 #, c-format

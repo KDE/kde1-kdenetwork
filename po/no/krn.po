@@ -1,10 +1,10 @@
-# SOME DESCRIPTIVE TITLE.
+# Norwegian translations for KDE Network, krn
 # Copyright (C) 1998 Free Software Foundation, Inc.
 # Hans Petter Bieker <zerium@webindex.no>, 1998.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: KDE NETWORK/krn\n"
 "POT-Creation-Date: 1998-10-09 15:54+0200\n"
 "PO-Revision-Date: 1998-03-19 00:00+0100\n"
 "Last-Translator: Hans Petter Bieker <zerium@webindex.no>\n"
@@ -1059,6 +1059,10 @@ msgid ""
 "Response: %s\n"
 "Return code: %d"
 msgstr ""
+"en SMTP-feil oppstod.\n"
+"Kommando: %s\n"
+"Respons: %s\n"
+"Returkode: %d"
 
 #: kmsender.cpp:704
 #, c-format
@@ -1128,6 +1132,8 @@ msgid ""
 "You do not have read permissions to the file:\n"
 "%s"
 msgstr ""
+"Du har ikke lesetilgang til filen:\n"
+"%s"
 
 #: kfileio.cpp:72 kmaddrbook.cpp:149
 #, c-format
@@ -1135,6 +1141,8 @@ msgid ""
 "Could not read file:\n"
 "%s"
 msgstr ""
+"Kan ikke lese fel:\n"
+"%s"
 
 #: kfileio.cpp:75 kmaddrbook.cpp:152
 #, c-format
@@ -1142,6 +1150,8 @@ msgid ""
 "Could not open file:\n"
 "%s"
 msgstr ""
+"Kunne ikke åpne fil:\n"
+"%s"
 
 #: kfileio.cpp:78
 #, c-format
@@ -1149,6 +1159,8 @@ msgid ""
 "Error while reading file:\n"
 "%s"
 msgstr ""
+"Feil under lesing av fil:\n"
+"%s"
 
 #: kfileio.cpp:95
 #, c-format
@@ -1170,6 +1182,8 @@ msgid ""
 "Failed to make a backup copy of %s.\n"
 "Continue anyway ?"
 msgstr ""
+"Mislyktes å lage sikkerhetskopi av %s.\n"
+"Fortsett likevel?"
 
 #: kfileio.cpp:156 kfileio.cpp:174
 #, c-format
@@ -1177,6 +1191,8 @@ msgid ""
 "Could not write to file:\n"
 "%s"
 msgstr ""
+"Kunne ikke skrive til fil:\n"
+"%s"
 
 #: kfileio.cpp:159
 #, c-format
@@ -1184,6 +1200,8 @@ msgid ""
 "Could not open file for writing:\n"
 "%s"
 msgstr ""
+"Kunne ikke åpne fil for skriving:\n"
+"%s"
 
 #: kfileio.cpp:163 kmaddrbook.cpp:155
 #, c-format
@@ -1191,11 +1209,13 @@ msgid ""
 "Error while writing file:\n"
 "%s"
 msgstr ""
+"Feil under skriving av fil:\n"
+"%s"
 
 #: kfileio.cpp:180
 #, c-format
 msgid "Could only write %d bytes of %d."
-msgstr ""
+msgstr "Kunne bare skrive %d bytes av %d."
 
 #: kmmsgpartdlg.cpp:41
 msgid "Message Part Properties"
@@ -1296,12 +1316,16 @@ msgid ""
 "Couldn't find PGP executable.\n"
 "Please check your PATH is set correctly."
 msgstr ""
+"Kan ikke finne PGP-program.\n"
+"Vennligst forviss deg om at PATH er satt korrekt."
 
 #: kpgp.cpp:163
 msgid ""
 "Could not find PGP executable.\n"
 "Please check your PATH is set correctly."
 msgstr ""
+"Kan ikke finne PGP-program.\n"
+"Vennligst forviss deg om at PATH er satt korrekt."
 
 #: kpgp.cpp:173
 msgid "The pass phrase is missing."
@@ -1521,4 +1545,4 @@ msgstr "&7-bitt er ASCII"
 
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
-msgstr ""
+msgstr "&Sett ukjente tegn i klammer"

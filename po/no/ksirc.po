@@ -1,34 +1,33 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Norwegian translations for KDE Network, ksirc
+# Copyright (C) 1998 Free Software Foundation, Inc.
+# Hans Petter Bieker <zerium@webindex.no>, 1998.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: KDE NETWORK/ksirc\n"
 "POT-Creation-Date: 1998-10-02 00:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: Hans Petter Bieker <zerium@webindex.no>\n"
+"Language-Team: no <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
-"Content-Transfer-Encoding: ENCODING\n"
+"Content-Type: text/plain; charset=ISO_8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: toplevel.cpp:134
 msgid "Lag in seconds to the server"
-msgstr ""
+msgstr "Forsinkelse i sekunder til tjeneren"
 
 #: toplevel.cpp:138
 msgid "&Ticker Mode"
-msgstr ""
+msgstr "&Ur-modus"
 
 #: toplevel.cpp:160
 msgid "&Cut Window..."
-msgstr ""
+msgstr "&Klipp ut vindu..."
 
 #: toplevel.cpp:291
 msgid "&Users"
-msgstr ""
+msgstr "&Brukere"
 
 #: ksirc.cpp:56
 msgid ""
@@ -38,6 +37,11 @@ msgid ""
 "kSirc-ALPHA HAS EXPIRED!!\n"
 "Please upgrade or use a beta release"
 msgstr ""
+"kSirc Alpha-utgaver har en 8-ukers\n"
+"datofrist.\n"
+"\n"
+"kSirc-ALPHA HAR GÅTT UT!!\n"
+"Vennligst oppgrader eller bruk en beta-utgave"
 
 #: ksirc.cpp:64
 msgid ""
@@ -46,139 +50,143 @@ msgid ""
 "\n"
 "THIS VERSION WILL EXPIRE IN UNDER 4 WEEKS"
 msgstr ""
+"kSirc Alpha-utgaver har en 8-ukers\n"
+"datofrist.\n"
+"\n"
+"DENNE VERSJONEN VIL GÅ UT OM UNDER 4 UKER"
 
 #: open_topData.cpp:39
 msgid "Channel/Nick:"
-msgstr ""
+msgstr "Kanal/Kallenavn:"
 
 #: open_ksircData.cpp:39
 msgid "Server:"
-msgstr ""
+msgstr "Tjener:"
 
 #: servercontroller.cpp:118
 msgid "&Dock"
-msgstr ""
+msgstr "&Dokk"
 
 #: servercontroller.cpp:126 servercontroller.cpp:643
 msgid "&New Server..."
-msgstr ""
+msgstr "&Ny tjener..."
 
 #: servercontroller.cpp:127
 msgid "&Join Channel..."
-msgstr ""
+msgstr "&Gi inn i kanal..."
 
 #: servercontroller.cpp:129
 msgid "&Connections"
-msgstr ""
+msgstr "&Forbindelser"
 
 #: servercontroller.cpp:145 servercontroller.cpp:634
 msgid "&Colour Preferences..."
-msgstr ""
+msgstr "&Fargepreferanser..."
 
 #: servercontroller.cpp:147 servercontroller.cpp:636
 msgid "&Global Fonts..."
-msgstr ""
+msgstr "&Global skrifttype..."
 
 #: servercontroller.cpp:149 servercontroller.cpp:638
 msgid "&Filter Rule Editor..."
-msgstr ""
+msgstr "&Filterregelredigerer..."
 
 #: servercontroller.cpp:152 servercontroller.cpp:640
 msgid "&Preferences..."
-msgstr ""
+msgstr "&Preferanser..."
 
 #: servercontroller.cpp:162
 msgid "Help on Colours..."
-msgstr ""
+msgstr "Hjelp om fager..."
 
 #: servercontroller.cpp:164
 msgid "Help on Filters..."
-msgstr ""
+msgstr "Hjelp om filter..."
 
 #: servercontroller.cpp:166
 msgid "Help on Keys..."
-msgstr ""
+msgstr "Hjelp om taster..."
 
 #: servercontroller.cpp:169
 msgid "About kSirc..."
-msgstr ""
+msgstr "Om kSirc..."
 
 #: servercontroller.cpp:186
 msgid "Server Control"
-msgstr ""
+msgstr "Tjener-kontroll"
 
 #: servercontroller.cpp:243 servercontroller.cpp:395
 msgid "Channels"
-msgstr ""
+msgstr "Kanaler"
 
 #: servercontroller.cpp:243 servercontroller.cpp:395
 msgid "Online"
-msgstr ""
+msgstr "På nett"
 
 #: servercontroller.cpp:589
 msgid "Active Server Connections"
-msgstr ""
+msgstr "Aktive tjenerforbindelser"
 
 #: servercontroller.cpp:631
 msgid "&Undock"
-msgstr ""
+msgstr "&Udokk"
 
 #: KSircColourData.cpp:33
 msgid "Generic Text"
-msgstr ""
+msgstr "Generell tekst"
 
 #: KSircColourData.cpp:62
 msgid "Info"
-msgstr ""
+msgstr "Info"
 
 #: KSircColourData.cpp:71
 msgid "Chan Messages"
-msgstr ""
+msgstr "Kanalmeldinger"
 
 #: KSircColourData.cpp:80
 msgid "Errors"
-msgstr ""
+msgstr "Feil"
 
 #: KSircColourData.cpp:115
 msgid "Background"
-msgstr ""
+msgstr "Bakgrunn"
 
 #: FilterRuleEditorData.cpp:33
 msgid "Description:"
-msgstr ""
+msgstr "Beskrivelse:"
 
 #: FilterRuleEditorData.cpp:51
 msgid "Match:"
-msgstr ""
+msgstr "Passer:"
 
 #: FilterRuleEditorData.cpp:69
 msgid "From:"
-msgstr ""
+msgstr "Fra:"
 
 #: FilterRuleEditorData.cpp:78
 msgid "To:"
-msgstr ""
+msgstr "Til:"
 
 #: FilterRuleEditorData.cpp:105
 msgid "&Modify"
-msgstr ""
+msgstr "&Rediger"
 
 #: FilterRuleEditorData.cpp:126
 msgid "&New Rule"
-msgstr ""
+msgstr "&Ny regel"
 
 #: FilterRuleEditorData.cpp:145
 msgid "Up"
-msgstr ""
+msgstr "Opp"
 
 #: FilterRuleEditorData.cpp:155
 msgid "Down"
-msgstr ""
+msgstr "Ned"
 
 #: dccDialogData.cpp:38
 msgid "&Get"
-msgstr ""
+msgstr "&Hent"
 
 #: dccDialogData.cpp:46
 msgid "&Forget"
-msgstr ""
+msgstr "&Glem"

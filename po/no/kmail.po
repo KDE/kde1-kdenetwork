@@ -1,13 +1,13 @@
-# SOME DESCRIPTIVE TITLE.
+# Norwegian translations for KDE Network, kmail
 # Copyright (C) 1998 Free Software Foundation, Inc.
 # Hans Petter Bieker <zerium@webindex.no>, 1998.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: KDE NETWORK/kmail\n"
 "POT-Creation-Date: 1998-10-30 12:57+0100\n"
 "PO-Revision-Date: 1998-03-18 22:17+0100\n"
-"Last-Translator: Svein Olav Aasen <svein.aasen@caa.no / soaasen@online.no>\n"
+"Last-Translator: Hans Petter Bieker <zerium@webindex.no>\n"
 "Language-Team: no <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO_8859-1\n"
@@ -590,7 +590,7 @@ msgstr "Forskjellig"
 
 #: kmsettings.cpp:559
 msgid "PGP"
-msgstr ""
+msgstr "PGP"
 
 #: kmsettings.cpp:582
 msgid "Message Body Font"
@@ -1470,9 +1470,8 @@ msgid "The pass phrase is missing."
 msgstr "Passord-frasen mangler"
 
 #: kpgp.cpp:286 kpgp.cpp:312 kpgp.cpp:325 kpgp.cpp:344 kpgp.cpp:361
-#, fuzzy
 msgid "PGP Warning"
-msgstr "advarsel"
+msgstr "PGP-varsel"
 
 #: kpgp.cpp:287
 msgid ""
@@ -1480,24 +1479,25 @@ msgid ""
 "recipients of this mail.\n"
 "Message will not be encrypted."
 msgstr ""
+"Kunne ikke finne offentlig nøkkel for\n"
+"mottaker av denne eposten.\n"
+"Meldingen vil ikke bli kryptert."
 
 #: kpgp.cpp:296
-#, fuzzy
 msgid "Could not find the public keys for\n"
-msgstr "Kunne ikke finne offentlig nøkkel for noen av personer.\n"
+msgstr "Kunne ikke finne offentlig nøkkel for\n"
 
 #: kpgp.cpp:307
 msgid "These persons will not be able to\n"
-msgstr ""
+msgstr "Disse personene vil ikke kunne:\n"
 
 #: kpgp.cpp:309
 msgid "This person will not be able to\n"
-msgstr ""
+msgstr "Denne personen vil ikke kunne\n"
 
 #: kpgp.cpp:311
-#, fuzzy
 msgid "decrypt the message."
-msgstr "krypter melding"
+msgstr "dekrypter meldingen."
 
 #: kpgp.cpp:326
 msgid ""
@@ -1505,26 +1505,33 @@ msgid ""
 "Do you wan't to try again, continue and\n"
 "leave the message unsigned, or cancel sending the message?"
 msgstr ""
+"Du har nettopp skrevet inne en ugyldig pass-frase.\n"
+"Ønsker å prøve igjen, fortsette og\n"
+"la meldingen være usignert, eller avbryte sendingen av meldingen?"
 
 #: kpgp.cpp:331
 msgid "Retry"
-msgstr ""
+msgstr "Prøv igjen"
 
 #: kpgp.cpp:342
 msgid ""
 "Do you wan't to encrypt anyway, leave the\n"
 "message as is, or cancel the message?"
 msgstr ""
+"Ønsker du å kryptere likevel, la meldinge\n"
+"være slik den er nå, eller avbryte meldingen?"
 
 #: kpgp.cpp:346
 msgid "Encrypt"
-msgstr ""
+msgstr "Krypterer"
 
 #: kpgp.cpp:359
 msgid ""
 "Do you wan't to leave the message as is,\n"
 "or cancel the message?"
 msgstr ""
+"Ønsker du la være slik den er nå,\n"
+"eller avbryte meldingen?"
 
 #: kpgp.cpp:711
 msgid ""
@@ -1544,11 +1551,11 @@ msgstr "PGP-brukeridentitet:"
 
 #: kpgp.cpp:776
 msgid "Store passphrase"
-msgstr ""
+msgstr "Lagre pass-frase"
 
 #: kpgp.cpp:782
 msgid "Always encrypt to self"
-msgstr ""
+msgstr "Alltid kryptere til selv"
 
 #: kpgpbase.cpp:315
 msgid "Bad pass Phrase; couldn't sign"
@@ -1556,7 +1563,7 @@ msgstr "Gal passord-frase; kunne ikke signere"
 
 #: kpgpbase.cpp:354
 msgid "error running pgp"
-msgstr ""
+msgstr "feil under kjøring av pgp"
 
 #: kpgpbase.cpp:371 kpgpbase.cpp:662
 msgid "Bad pass Phrase; couldn't decrypt"
@@ -1564,36 +1571,38 @@ msgstr "Galt passord-frase; kunne ikke dekryptere"
 
 #: kpgpbase.cpp:382 kpgpbase.cpp:673
 msgid "Do not have the secret key for this message"
-msgstr ""
+msgstr "Du har ikke sikkerhetsnøkkelen for denne meldingen"
 
 #: kpgpbase.cpp:410
 msgid "unknown key ID "
-msgstr ""
+msgstr "Ukjent nøkkel-ID"
 
 #: kpgpbase.cpp:430
 msgid "??? (file ~/.pgp/pubring.pgp not found)"
-msgstr ""
+msgstr "??? (filen ~/.pgp/pubring.pgp ikke funnet)"
 
 #: kpgpbase.cpp:585
-#, fuzzy
 msgid "The passphrase you entered is invalid."
-msgstr "Passord-frasen mangler"
+msgstr "Passord-frasen du skrev inn er ugyldig."
 
 #: kpgpbase.cpp:611
 msgid ""
 "The key(s) you wan't to encrypt your message\n"
 "to are not trusted. No encryption done."
 msgstr ""
+"Nøklene du ønsker å kryptere meldingen din med har ikke tillit. Ingen\n"
+"kryptering utført."
 
 #: kpgpbase.cpp:614
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The following key(s) are not trusted:\n"
 "%s\n"
 "They will not be able to decrypt the message"
 msgstr ""
-"Offentlig nøkkel for %s ikke funnet.\n"
-"Denne person vil ikke være i stand til dekryptere meldingen."
+"Følgende nøkler har ikke tillit:\n"
+"%s\n"
+"De vil ikke kunne dekryptere meldingen"
 
 #: kfileio.cpp:26 kmaddrbook.cpp:162
 msgid "File I/O Error"
