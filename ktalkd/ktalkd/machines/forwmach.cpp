@@ -49,21 +49,28 @@
 #include <errno.h>
 #include <netdb.h>
 #include <malloc.h>
+#include <signal.h>
 #include "../print.h"
 #include "../defs.h"
-#include "../table.h"
 #include "../readconf.h"
 #include "../process.h"
+#include "../threads.h"
+#include "check_protocol.h"
+
+ForwMachine * ForwMachine::pForwMachine = 0L;
+
+void sig_handler(int signum);
 
 ForwMachine::ForwMachine(const NEW_CTL_MSG * mp,
                          char * forward,
-                         char * _forwardMethod)
+                         char * _forwardMethod,
+                         int c_id_num) : pid(0), caller_id_num(c_id_num)
 {
     // Store callee as 'local_user'
-    strncpy(local_user, mp->r_name, NAME_SIZE);
+    strncpy(local_user, mp->r_name, NEW_NAME_SIZE);
          // -1 is to be sure to have a '\0' at the end
     // Store caller's name
-    strncpy(caller_username, mp->l_name, NAME_SIZE);
+    strncpy(caller_username, mp->l_name, NEW_NAME_SIZE);
 
     // Forward method : from string to enumerate
     if (!strcmp(_forwardMethod,"FWA"))
@@ -82,7 +89,8 @@ ForwMachine::ForwMachine(const NEW_CTL_MSG * mp,
         tcAnsw = new TalkConnection(answ_machine_addr,
                                     answ_user,
                                     // from caller's username
-                                    (char *) mp->l_name);
+                                    (char *) mp->l_name,
+                                    mp->vers==0 ? talkProtocol : ntalkProtocol);
         tcAnsw->open_sockets();        
         // and from here if FWT or ...
         if (forwardMethod != FWT) {
@@ -101,6 +109,7 @@ ForwMachine::~ForwMachine()
 {
     free(answ_machine_name);
     delete tcAnsw;
+    if (pid) kill(pid,SIGTERM);
 }
 
 /** Fills private fields from forward
@@ -114,25 +123,25 @@ int ForwMachine::getNames(char * forward)
         ;
     if (*cp == '\0') {
         /* this is a forward to a local user */
-        strncpy(answ_user, forward, NAME_SIZE);
-        answ_machine_name = strdup(hostname); /* set by the daemon */
+        strncpy(answ_user, forward, NEW_NAME_SIZE);
+        answ_machine_name = strdup(Options::hostname); /* set by the daemon */
     } else {
         if (*cp == '@') {
             /* user@host */
             *cp++ = '\0';
-            strncpy(answ_user, forward, NAME_SIZE);
+            strncpy(answ_user, forward, NEW_NAME_SIZE);
             answ_machine_name = strdup(cp);
         } else {
             /* host.user or host!user or host:user */
             *cp++ = '\0';
-            strncpy(answ_user, cp, NAME_SIZE);
+            strncpy(answ_user, cp, NEW_NAME_SIZE);
             answ_machine_name = strdup(forward);
         }
     }
 
     struct hostent * hp = gethostbyname(answ_machine_name);
     if (!hp) {
-        syslog(LOG_ERR, "%s: %m", answ_machine_name);
+        syslog(LOG_ERR, "gethostbyname for %s: %m", answ_machine_name);
         return 0;
     }
     memcpy(&answ_machine_addr, hp->h_addr, hp->h_length);
@@ -148,7 +157,7 @@ int ForwMachine::isLookupForMe(const NEW_CTL_MSG * mp)
         mp->addr.sin_addr is 0.0.0.0, can't be tested ...
         mp->ctl_addr.sin_addr could be tested but how ?
     */
-    if (debug_mode)
+    if (Options::debug_mode)
     { 
         syslog(LOG_DEBUG,"-- mp->l_name : '%s' answerer : '%s' mp->r_name : '%s' caller : '%s'",
                mp->l_name, answ_user, mp->r_name, caller_username);
@@ -165,6 +174,11 @@ char * ForwMachine::findMatch(NEW_CTL_MSG * mp)
      * matching answerer = r_name and caller = l_name
      * Then return the initial callee (local_user), to display in ktalkdlg 
      * This is used by local forwards, and therefore also if NEUBehaviour=1 */
+    if (Options::debug_mode)
+    { 
+        syslog(LOG_DEBUG,"-- mp->l_name : '%s' caller : '%s' mp->r_name : '%s' answerer : '%s'",
+               mp->l_name, caller_username, mp->r_name, answ_user);
+    }
     if ((!strcmp(mp->l_name, caller_username)) &&
         (!strcmp(mp->r_name, answ_user)) )
         return local_user;
@@ -245,153 +259,176 @@ void ForwMachine::connect_FWT(TalkConnection * tcCaller)
 
 void ForwMachine::sendResponse(const struct sockaddr target, NEW_CTL_RESPONSE * rp)
 {
-        int cc = sendto(0 /*talkd_sockt*/, (char *) rp,
-                        sizeof (NEW_CTL_RESPONSE), 0, &target,
-                        sizeof (struct sockaddr));
-        if (cc != sizeof (NEW_CTL_RESPONSE))
-            syslog(LOG_WARNING, "sendto: %m");
+    if (rp->vers == 0) { // otalk protocol (internal coding for it)
+        rp->vers /*type in otalk*/ = rp->type;
+        rp->type /*answer in otalk*/ = rp->answer;
+    }
+    int cc = sendto(0 /*talkd_sockt*/, (char *) rp,
+                    sizeof (NEW_CTL_RESPONSE), 0, &target,
+                    sizeof (struct sockaddr));
+    if (cc != sizeof (NEW_CTL_RESPONSE))
+        syslog(LOG_WARNING, "sendto: %m");
 }
 
-void ForwMachine::processLookup(const NEW_CTL_MSG * mp, NEW_CTL_RESPONSE * rp)
+/** processAnnounce is done by a child (to let the daemon process other
+ * messages, including ours). Then the child is left running (he only knows the
+ * value of answ_id_num) and waits for SIGDELETE to use this value. */ 
+void ForwMachine::processAnnounce()
 {
-    if (fork()==0) /* let the daemon process other messages, including ours */
+    if ((pid=fork())==0) // store pid in the parent
     {
+        // Send announce to the answerer, and wait for response
+        message_s("-------------- ForwMachine : sending ANNOUNCE to %s",answ_user);
+        tcAnsw->ctl_transact(ANNOUNCE, caller_id_num);
+        // Copy answer and id_num from the response struct
+        message("-------------- ForwMachine : got a response");
+        NEW_CTL_RESPONSE rp; // build our response struct
+        tcAnsw->getResponseItems(&rp.answer, &answ_id_num, 0L);
+        // answ_id_num stores id_num for delete.
+	rp.type = ANNOUNCE;
+	rp.vers = TALK_VERSION;
+        rp.id_num = htonl(our_id_num);
+
+        message2("STORING response id_num %d",answ_id_num);
+        // Now send the response to the caller
+        print_response("-- => response (processAnnounce)", &rp);
+        sendResponse(caller_ctl_addr, &rp);
+        // -- Now wait for SIGDELETE
+
+        // store static ref to this forwmachine in this child.
+        pForwMachine = this;
+        // register signal hander
+        if (signal(SIGDELETE,&sig_handler)==SIG_ERR) message("ERROR for SIGUSR2");
+        message("Signal handler registered. Waiting...");
+        // infinite loop waiting for signals
+        while(1)
+            sleep(100);
+    }
+    message2("Forwmachine started for Lookup (now) and Delete (later). pid : %d",pid);
+    // new_process(); // We DON'T register new process.
+    // in case of re-announce, this forwmach will be forgotten.
+    // we don't want ktalkd to wait infinitely for it to die, it won't.
+}
+
+/** Process the lookup in a child process. The current running child can't do
+ * it with a signal, but we need the answerer's ctl_addr to respond... */
+void ForwMachine::processLookup(const NEW_CTL_MSG * mp)
+{
+    if (fork()==0)
+    { // here we are the child
         message_s("------------- Got LOOKUP : send it to caller (%s)", caller_username);
         // Let's send a LOOK_UP on caller's machine, to make sure he still 
         // wants to speak to the callee...
         TalkConnection * tcCaller = new TalkConnection(caller_machine_addr,
                                                        caller_username,
-                                                       local_user);
+                                                       local_user,
+                                                       noProtocol); // has to be checked
         tcCaller->open_sockets();
-        tcCaller->ctl_transact(LOOK_UP, 0);
-        NEW_CTL_RESPONSE * resp = tcCaller->getResponse();
+        tcCaller->look_for_invite(0/*no error if no invite*/);
+        NEW_CTL_RESPONSE rp;
+        tcCaller->getResponseItems(&rp.answer, &rp.id_num, &rp.addr);
         message("------------- Done. Forward response to answerer");
-        
-        rp->answer = resp->answer;
-        rp->id_num = htonl(resp->id_num);
+
+	rp.type = LOOK_UP;
+	rp.vers = mp->vers;
+        rp.id_num = htonl(rp.id_num);
         // Now send the response to the answerer
         if (forwardMethod == FWR)
         {        
             // with caller's addr copied in the NEW_CTL_RESPONSE (if FWR),
             // so that they can talk to each other.
-            rp->addr = resp->addr;
-            rp->addr.sa_family = htons(resp->addr.sa_family);
+            /* rp.addr filled by getResponseItems */
+            rp.addr.sa_family = htons(rp.addr.sa_family);
         }
         else // FWT. (FWA doesn't let us get the LOOK_UP)
         {
             // in this case, we copy in the NEW_CTL_RESPONSE the address
             // of the connection socket set up here for the answerer
-            rp->addr = tcAnsw->get_addr();
-            rp->addr.sa_family = htons(AF_INET);
+            rp.addr = tcAnsw->get_addr();
+            rp.addr.sa_family = htons(AF_INET);
         }
-        if (debug_mode) print_response("-- => response (processLookup)", rp);
-        tcAnsw->listen(); // start listening before we send the response,
-        // just in case the answerer is very fast (ex: answ mach)
-        sendResponse(mp->ctl_addr, rp);
+        print_response("-- => response (processLookup)", &rp);
+        if (forwardMethod == FWT)
+            tcAnsw->listen(); // start listening before we send the response,
+                              // just in case the answerer is very fast (ex: answ mach)
+        sendResponse(mp->ctl_addr, &rp);
         if (forwardMethod == FWT)
             connect_FWT(tcCaller);
         delete tcCaller;
         _exit(0);
     }
+    new_process();
 }
 
-void ForwMachine::processAnnounce(NEW_CTL_RESPONSE * rp, int id_num)
+/** Done by the forwmachine child that processed the ANNOUNCE. (He know answ_id_num)
+ * Exits at the end of the method */
+void ForwMachine::processDelete()
 {
-    if (fork()==0) /* let the daemon process other messages, including ours */
-    {
-        // Send announce to the answerer, and wait for response
-        message_s("-------------- ForwMachine : sending ANNOUNCE to %s",answ_user);
-        tcAnsw->ctl_transact(ANNOUNCE, id_num);
-        // Copy answer and id_num from the response struct
-        message("-------------- ForwMachine : got a response");
-        NEW_CTL_RESPONSE * resp = tcAnsw->getResponse();
-        rp->answer = resp->answer;
-        rp->id_num = htonl(resp->id_num);
-        // Now send the response to the caller
-        if (debug_mode) print_response("-- => response (processAnnounce)", rp);
-        sendResponse(caller_ctl_addr, rp);
-        _exit(0);
-    }
+        // Send DELETE to the answerer, and don't wait for response
+        message_s("-------------- ForwMachine : sending DELETE to %s",answ_user);
+        message2("USING resp->id_num %d",answ_id_num);
+        tcAnsw->ctl_transact(DELETE, answ_id_num);
+        _exit(0); // We exit the child, we have finished.
 }
 
-extern "C" {
-/** C interface for the Forwarding Machine */
-char * launchForwMach(const NEW_CTL_MSG * mp, NEW_CTL_RESPONSE * rp, char * forward, char * forwardMethod)
-  {
-      message_s("-- launchForwMach : forward=%s",forward);
-      message_s("-- launchForwMach : method=%s",forwardMethod);
-      ForwMachine * fwm = new ForwMachine(mp, forward, forwardMethod);
-      fwm->processAnnounce(rp, mp->id_num);
-      return (char *) fwm;
-  }
+// Static functions
 
-/** C interface for a lookup in the forwarding machines */
-int forwMachProcessLookup(const NEW_CTL_MSG * mp, NEW_CTL_RESPONSE * rp)
-  {
-      /** This goes through the table, looking for non-NULL fwm entries.
-       * After a cast to (ForwMachine *), the fwm entries allows us to
-       * speak to currently availabe ForwMachines, to handle correctly 
-       * this LOOK_UP */
-      message("-- forwMachProcessLookup(mp,rp)");
-      extern TABLE_ENTRY * table;
-      TABLE_ENTRY *ptr;  
-      for (ptr = table; ptr != 0L; ptr = ptr->next) {
-          if (ptr->fwm != 0L)
-          {
-              ForwMachine * fwm = (ForwMachine *) ptr->fwm;
-              if (fwm->isLookupForMe(mp)) {
-                  message2("-- Found match : id %d", ptr->request.id_num);
-                  fwm->processLookup(mp, rp);
-                  /* We don't need the forwarding machine anymore. Delete it. */
-                  delete_forwmach((char*)fwm); // delete from table
-                  delete fwm;                  // delete the forwmach itself  
-                  return 1;
-              }
-          }
-      }
-      return 0;
-  }
+int ForwMachine::forwMachProcessLookup(TABLE_ENTRY * table, const NEW_CTL_MSG * mp)
+{
+    /** This goes through the table, looking for non-NULL fwm entries.
+     * After a cast to (ForwMachine *), the fwm entries allows us to
+     * speak to currently availabe ForwMachines, to handle correctly 
+     * this LOOK_UP */
+    message("-- forwMachProcessLookup(mp,rp)");
+    TABLE_ENTRY *ptr;  
+    for (ptr = table; ptr != 0L; ptr = ptr->next) {
+        if (ptr->fwm != 0L)
+        {
+            ForwMachine * fwm = (ForwMachine *) ptr->fwm;
+            if (fwm->isLookupForMe(mp)) {
+                message2("-- Found match : id %d", ptr->request.id_num);
+                fwm->processLookup(mp);
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
 
 /** Check if there is a forwarding machine on this machine,
  * matching answerer = r_name and caller = l_name
  * Then set callee to the initial callee, to display in ktalkdlg */
-char * forwMachFindMatch(NEW_CTL_MSG * mp)
-  {
-      message("-- forwMachFindMatch(mp)");
-      extern TABLE_ENTRY * table;
-      TABLE_ENTRY *ptr;  
-      char * callee;
-      for (ptr = table; ptr != 0L; ptr = ptr->next) {
-          if (ptr->fwm != 0L)
-          {
-              ForwMachine * fwm = (ForwMachine *) ptr->fwm;
-              callee = fwm->findMatch(mp);
-              if (callee) {
-                  message2("-- Found match : id %d", ptr->request.id_num);
-                  return callee;
-              }
-          }
-      }
-      return NULL;
-  }
-
-/** Cleans every remaining forwarding machine in the table.
- * Called before the _exit(0) in the daemon. */
-void final_clean()
-  {
-      register TABLE_ENTRY *ptr;
-      extern TABLE_ENTRY *table; // in table.c
-      ptr = table;
-      if (debug_mode)
-          syslog(LOG_DEBUG, "final_clean()");
-      for (ptr = table; ptr != 0L; ptr = ptr->next) {
-          if (ptr->fwm != 0L)
-          {
-              message2("CLEAN : Found a forwarding machine to clean : id %d",ptr->request.id_num);
-              delete (ForwMachine *) ptr->fwm;
-          }
-          message2("CLEAN : Deleting id %d", ptr->request.id_num);
-          delete_entry(ptr);
-      }
-  }
+char * ForwMachine::forwMachFindMatch(TABLE_ENTRY * table, NEW_CTL_MSG * mp)
+{
+    message("-- forwMachFindMatch(mp)");
+    TABLE_ENTRY *ptr;  
+    char * callee;
+    for (ptr = table; ptr != 0L; ptr = ptr->next) {
+        if (ptr->fwm != 0L)
+        {
+            ForwMachine * fwm = (ForwMachine *) ptr->fwm;
+            callee = fwm->findMatch(mp);
+            if (callee) {
+                message2("-- Found match : id %d", ptr->request.id_num);
+                return callee;
+            }
+        }
+    }
+    return NULL;
 }
+
+void sig_handler(int signum)
+{
+    message2("SIGNAL received : %d",signum);
+    ForwMachine * fwm = ForwMachine::getForwMachine();
+    if (signum==SIGDELETE)
+        fwm->processDelete();
+}
+
+void ForwMachine::start(int o_id_num)
+{
+    our_id_num = o_id_num;
+    processAnnounce();
+
+}
+

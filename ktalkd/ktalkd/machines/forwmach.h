@@ -31,10 +31,18 @@
  * SUCH DAMAGE.
  *
  */
+#ifndef FORWMACH_H
+#define FORWMACH_H
 
 #include "../includ.h"
+#include "../table.h"
 #include "talkconn.h"
 #include <stdio.h>
+#include <signal.h>
+
+// Strangely enough, SIGUSR1 doesn't get caught ... Why ??
+
+#define SIGDELETE SIGUSR2
 
 /* Forwarding machine scheme : (ANNOUNCE request only)
 
@@ -43,6 +51,8 @@
                     \      |        \                        
    Caller (daemon)   ----ktalkd      ------Answerer (daemon)
 
+   Caller always talks to us using ntalk (if otalk then kotalkd translates it)
+   But answerer might be using otalk. Let's check for it in processLookup.
  */
 /** Implements the forwarding machine. */
 class ForwMachine
@@ -53,30 +63,59 @@ class ForwMachine
      * @param mp Request received
      * @param forward User@host to forward the talk
      * @param _forwardMethod 3 letters to choose the method (see .talkdrc)
+     * @param c_id_num announce id_num, got from caller
+     * @param o_id_num our id_num in our table
      * */
     ForwMachine(const NEW_CTL_MSG * mp,
                 char * forward,
-                char * _forwardMethod);
+                char * _forwardMethod,
+                int c_id_num);
 
     /** Destructor. */
     virtual ~ForwMachine();
 
-    /** Process the incoming ANNOUNCE request
-     * @param rp the response structure to fill in 
-     * @param id_num announce id_num */
-    void processAnnounce(NEW_CTL_RESPONSE * rp, int id_num);
+    // Child methods
+    
+    /** Process the incoming ANNOUNCE request. */
+    void processAnnounce();
 
+    /** Processes the LOOK_UP request from answerer. */
+    void processLookup(const NEW_CTL_MSG * mp);
+
+    /** Processes the DELETE request from caller. Called by sig_handler. */
+    void processDelete();
+
+    // Parent methods
+
+    /** Send a DELETE signal to the child */
+    void sendDelete() { kill(pid, SIGDELETE); pid = 0; }
+    
     /** Checks if a LOOK_UP concerns this Forwarding Machine */
     int isLookupForMe(const NEW_CTL_MSG * mp);
     /** Used by forwMachFindMatch for NEUuser or local forward */
     char * findMatch(NEW_CTL_MSG * mp);
     
-    /** Processes the LOOK_UP request from answerer
-     * @param mp answerer's message (look_up)
-     * @param rp the response structure to fill in */
-    void processLookup(const NEW_CTL_MSG * mp, NEW_CTL_RESPONSE * rp);
+    /** Calls processLookup after finding the correct forwmachine instance in the table */
+    static int forwMachProcessLookup(TABLE_ENTRY * table, const NEW_CTL_MSG * mp);
 
-  protected:  
+    /** Tries to find a match in the table for the given REQUEST structure.
+     * @see findMatch */
+    static char * forwMachFindMatch(TABLE_ENTRY * table, NEW_CTL_MSG * mp);
+
+    /** Get static ref to current ForwMachine. For sig_handler */
+    static ForwMachine * getForwMachine() { return pForwMachine; }
+
+    /** Start the ForwMachine process. Processes the announcement and waits for signals
+     * @param o_id_num Our id num in our table. */
+    void start(int o_id_num);
+    
+  protected:
+    /** Static ref to current forwmachine. For sig_handler */
+    static ForwMachine * pForwMachine;
+
+    /** Pid of the child forwmachine */
+    int pid;
+    
     /** Fills privates fields from forward
      * @param forward user@host to forward the talk */
     int getNames(char * forward);
@@ -96,22 +135,28 @@ class ForwMachine
     enum {FWA, FWR, FWT} forwardMethod;
 
     /** Answerer user name */
-    char answ_user[NAME_SIZE];
+    char answ_user[NEW_NAME_SIZE];
     /** Answerer machine name */
     char * answ_machine_name;
     /** Answerer machine address */
     struct in_addr answ_machine_addr;
     /** Talk Connection to the answerer */
     TalkConnection * tcAnsw;
+    /** id_num for the announce on answerer's machine. */
+    int answ_id_num;
     
     /** Local user name, the original 'callee' */
-    char local_user[NAME_SIZE];
+    char local_user[NEW_NAME_SIZE];
+    /** Our id_num (in our table) */
+    int our_id_num;
 
     /** Caller's user name */
-    char caller_username[NAME_SIZE];
+    char caller_username[NEW_NAME_SIZE];
     /** Caller's ctl_addr*/
     struct sockaddr caller_ctl_addr;
     /** Caller's machine address */
     struct in_addr caller_machine_addr;
-
+    /** Caller's announce id_num */
+    int caller_id_num;
 };
+#endif

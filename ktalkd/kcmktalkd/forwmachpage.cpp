@@ -50,15 +50,15 @@ KForwmachPageConfig::KForwmachPageConfig( QWidget *parent, const char* name )
     method_label->adjustSize();
     method_label->setAlignment( ShowPrefix | AlignVCenter );
 
-    expl_label = new QLabel(i18n("
-FWA : Forward announcement only. Direct connection. Not recommended.
-FWR : Forward all requests, changing info when necessary. Direct connection.
-FWT : Forward all requests and take the talk. No direct connection.
-
-Recommended use : FWT it you want to use it behind a firewall (and if ktalkd
-can access both networks), and FWR otherwise.
-
-See Help for further explanations.
+    expl_label = new QLabel(i18n(
+"FWA : Forward announcement only. Direct connection. Not recommended.\n\
+FWR : Forward all requests, changing info when necessary. Direct connection.\n\
+FWT : Forward all requests and take the talk. No direct connection.\n\
+\n\
+Recommended use : FWT it you want to use it behind a firewall (and if ktalkd\n\
+can access both networks), and FWR otherwise.\n\
+\n\
+See Help for further explanations.\n\
 "),this);
     expl_label->adjustSize();
 
