@@ -32,7 +32,7 @@ msgstr ""
 
 #: kmmainwin.cpp:299 kmmainwin.cpp:329
 msgid "No new mail available"
-msgstr ""
+msgstr "Nessuna nuova lettera"
 
 #: kmmainwin.cpp:354
 msgid ""
@@ -260,7 +260,7 @@ msgstr "Spedisci di nuovo..."
 
 #: kmmainwin.cpp:898
 msgid "Apply filters"
-msgstr ""
+msgstr "Applica filtri"
 
 #: kmmainwin.cpp:901
 msgid "View Source..."
@@ -445,7 +445,7 @@ msgstr "Caratteri"
 
 #: kmsettings.cpp:316
 msgid "Message Body Font:"
-msgstr ""
+msgstr "Caratteri corpo del messaggio:"
 
 #: kmsettings.cpp:321
          
@@ -457,6 +457,8 @@ msgid ""
 "Changing fonts currently only occurs when a new\n"
 "window is opened or kmail is restarted"
 msgstr ""
+"Il cambiamento di caratteri viene reso attivo\n"
+"all'apertura di una nuova finestra o al riavvio"
 
 #: kmsettings.cpp:341 kmsettings.cpp:411
 msgid "Appearance"
@@ -557,11 +559,11 @@ msgstr "Cartelle"
 
 #: kmsettings.cpp:519
 msgid "empty trash on exit"
-msgstr ""
+msgstr "svuota cestino in uscita"
 
 #: kmsettings.cpp:556
 msgid "Message Body Font"
-msgstr ""
+msgstr "Caratteri corpo del messaggio"
 
 #: kmsettings.cpp:568
          
@@ -652,7 +654,7 @@ msgstr "Senza  Oggetto"
 
 #: kmheaders.cpp:259
 msgid "order of arrival"
-msgstr ""
+msgstr "ordine di arrivo"
 
 #: kmheaders.cpp:268
          
@@ -671,17 +673,17 @@ msgstr "mittente"
 
 #: kmheaders.cpp:271
 msgid "status"
-msgstr ""
+msgstr "stato"
 
 #: kmheaders.cpp:273
 #, c-format
 msgid "Sorting messages descending by %s"
-msgstr ""
+msgstr "Ordini i messaggi decrescenti per %s"
 
 #: kmheaders.cpp:274
 #, c-format
 msgid "Sorting messages ascending by %s"
-msgstr ""
+msgstr "Ordino i messaggi crescenti per %s"
 
 #: kmheaders.cpp:364
 msgid "Message(s) saved."
@@ -852,7 +854,7 @@ msgstr "&Allega"
 
 #: kmcomposewin.cpp:567
 msgid "Cut selection"
-msgstr ""
+msgstr "Taglia selezione"
 
 #: kmcomposewin.cpp:570
          
@@ -861,7 +863,7 @@ msgstr "Copia selezione"
 
 #: kmcomposewin.cpp:573
 msgid "Paste clipboard contents"
-msgstr ""
+msgstr "Incolla contenuto appunti"
 
 #: kmcomposewin.cpp:578
          
@@ -878,7 +880,7 @@ msgstr "cifra messaggio"
 
 #: kmcomposewin.cpp:608 kmcomposewin.cpp:624
 msgid "Column"
-msgstr ""
+msgstr "Colonna"
 
 #: kmcomposewin.cpp:609 kmcomposewin.cpp:622
         
@@ -1087,7 +1089,7 @@ msgstr ""
 #: main.cpp:383
 #, c-format
 msgid "Unknown command line option: %s"
-msgstr ""
+msgstr "Opzione '%' sulla linea di comando sconosciuta"
 
 #: kmacctlocal.cpp:91
 #, c-format
@@ -1399,7 +1401,7 @@ msgstr ""
 
 #: kpgp.cpp:166
 msgid "The pass phrase is missing."
-msgstr ""
+msgstr "Manca la frase-pass"
 
 #: kpgp.cpp:438
 msgid "Message signed by"
@@ -1574,23 +1576,23 @@ msgstr "Ricezione messaggio da "
 
 #: kmnewiostatuswdg.cpp:50
 msgid "Preparing transmission..."
-msgstr ""
+msgstr "Preparazione trasmissione..."
 
 #: kmnewiostatuswdg.cpp:56
 msgid "Transmission completed..."
-msgstr ""
+msgstr "Trasmissione completa..."
 
 #: kmnewiostatuswdg.cpp:91
 msgid "Aborting transmission...\n"
-msgstr ""
+msgstr "Annullamento trasmissione...\n"
 
 #: charsetsDlg.cpp:27
 msgid "KRN - Charset Settings"
-msgstr ""
+msgstr "KRN - Impostazioni Charset"
 
 #: charsetsDlg.cpp:29
 msgid "KMail - Charset Settings"
-msgstr ""
+msgstr "KMail - Impostazioni Charset"
 
 #: charsetsDlg.cpp:39
         
@@ -1604,7 +1606,7 @@ msgstr "Set di caratteri del  compositore messaggi"
 
 #: charsetsDlg.cpp:75
 msgid "Set as &default"
-msgstr ""
+msgstr "Imposta come &predefinito"
 
 #: charsetsDlg.cpp:80
 msgid "&7 bit is ASCII"
@@ -1613,37 +1615,3 @@ msgstr ""
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
 msgstr ""
-
-#~ msgid "Name:"
-#~ msgstr "Nome:"
-
-#~ msgid "Name"
-#~ msgstr "Nome"
-
-#~ msgid "Type:"
-#~ msgstr "Tipo:"
-
-#~ msgid "Date"
-#~ msgstr "Data"
-
-#~ msgid "Date:"
-#~ msgstr "Data:"
-
-#~ msgid "&Cut"
-#~ msgstr "&Taglia"
-
-#~ msgid "Send now"
-#~ msgstr "Spedisci ora"
-
-#~ msgid "Send later"
-#~ msgstr "Spedisci dopo"
-
-#~ msgid "Mark All"
-#~ msgstr "Segna Tutti"
-
-#~ msgid "Failed to pipe mail message into mailer program %s"
-#~ msgstr ""
-#~ "Fallimento nel trasferimento(pipe) del messaggio al programma mailer %s"
-
-#~ msgid "You do not have write permissionto this file.\n"
-#~ msgstr "Non hai il permesso di scrittura per questo file.\n"
