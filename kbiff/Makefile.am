@@ -30,7 +30,7 @@ noinst_HEADERS = setupdlg.h kbiff.h kbiffmonitor.h notify.h Trace.h
 DISTCLEANFILES = $(kbiff_METASOURCES)
 
 messages:
-	$(XGETTEXT) -C -ki18n -x $(includedir)/kde.pot $(kbiff_SOURCES) && mv messages.po ../po/kbiff.pot
+	$(XGETTEXT) -C -ki18n -x $(includedir)/kde.pot *.cpp && mv messages.po ../po/kbiff.pot
 
 # just install datas here. Use install-exec-data for scripts and etc.
 # the binary itself is already installed from automake
