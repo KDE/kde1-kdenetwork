@@ -40,7 +40,7 @@ class KBiffStatus : public QFrame
 {
 	Q_OBJECT
 public:
-	KBiffStatus(const QString& profile, const KBiffStatusList& list);
+	KBiffStatus(const QString& profile, KBiffStatusList& list);
 	virtual ~KBiffStatus();
 
 	void popup(const QPoint& pos);

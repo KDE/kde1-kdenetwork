@@ -18,7 +18,7 @@
 #include <qlabel.h>
 #include <qpoint.h>
 
-KBiffStatus::KBiffStatus(const QString& profile, const KBiffStatusList& list)
+KBiffStatus::KBiffStatus(const QString& profile, KBiffStatusList& list)
 	: QFrame(0, 0, WStyle_Customize | WStyle_NoBorder),
 	  _listView(new QListView(this))
 {
