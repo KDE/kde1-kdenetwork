@@ -45,6 +45,9 @@ public:
     Kmessage *messwin;
 protected:
     virtual void closeEvent (QCloseEvent *e);
+
+public slots:
+    void updateCounter(char *);
     
 private slots:
     bool actions(int);

@@ -250,6 +250,7 @@ void Groupdlg::openGroup (QString name)
         Artdlg *a = new Artdlg (groups.at(i),server);
         QObject::connect(a->messwin,SIGNAL(spawnGroup(QString)),this,SLOT(openGroup(QString)));
         QObject::connect(a,SIGNAL(needConnection()),this,SLOT(needsConnect()));
+        connect (server,SIGNAL(newStatus(char *)),a,SLOT(updateCounter(char *)));
     }
     else
     {

@@ -810,3 +810,8 @@ void Artdlg::getSubjects()
     qApp->processEvents ();
     qApp->restoreOverrideCursor();
 }
+void Artdlg::updateCounter(char *s)
+{
+    statusBar()->changeItem (s, 1);
+    qApp->processEvents();
+}
