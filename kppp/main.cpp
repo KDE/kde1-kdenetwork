@@ -430,6 +430,7 @@ int main( int argc, char **argv ) {
     ModemSelector *c = new ModemSelector(0);
     c->exec();
     delete c;
+    remove_pidfile();
     exit(0);
     
     return a.exec();
