@@ -102,25 +102,27 @@ noinst_HEADERS = accounts.h \
 		newwidget.h \
 		modemdb.h
 
-METASOURCES = accounts.moc \
-		connect.moc \
-		conwindow.moc \
-		debug.moc \
-		edit.moc \
-		general.moc \
-		main.moc \
-		modemcmds.moc \
-		pppdargs.moc \
-		scriptedit.moc\
-		pwentry.moc\
-		modeminfo.moc\
-		pppstatdlg.moc\
-		miniterm.moc\
-		accounting.moc\
-		acctselect.moc\
-		docking.moc \
-		groupbox.moc \
-		modemdb.moc
+METASOURCES = accounting.moc \
+	accounts.moc \
+	acctselect.moc \
+	connect.moc \
+	conwindow.moc \
+	debug.moc \
+	docking.moc \
+	edit.moc \
+	general.moc \
+	groupbox.moc \
+	loginterm.moc \
+	main.moc \
+	miniterm.moc \
+	modem.moc \
+	modemcmds.moc \
+	modemdb.moc \
+	modeminfo.moc \
+	pppdargs.moc \
+	pppstatdlg.moc \
+	pwentry.moc \
+	scriptedit.moc  
 
 messages:
 	$(XGETTEXT) -C -ktranslate -ki18n -x $(includedir)/kde.pot $(kppp_SOURCES) && mv messages.po ../po/kppp.pot
