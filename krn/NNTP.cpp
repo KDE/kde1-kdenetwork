@@ -85,13 +85,15 @@ NNTP::NNTP(char *host): DwNntpClient()
 
 void NNTP::PGetTextResponse()
 {
+    debug ("entered NNTP::PGetTextResponse()");
     partialResponse="";
     qApp->processEvents();
     SetObserver(extendPartialResponse);
     DwNntpClient::PGetTextResponse();
-    mTextResponse=partialResponse.data();
+    mTextResponse=qstrdup(partialResponse.data());
     partialResponse="";
     SetObserver(NULL);
+    debug ("exited NNTP::PGetTextResponse()");
 }
 
 void NNTP::resetCounters( bool byte,bool command)
@@ -397,7 +399,8 @@ void NNTP::groupList(QList <NewsGroup> *grouplist, bool fromserver)
             grouplist->clear();
             return;
         };
-        groups=TextResponse().data();
+        groups=TextResponse().c_str();
+        debug (groups.data());
         if (groups.isEmpty())
         {
             grouplist->clear();
@@ -408,7 +411,7 @@ void NNTP::groupList(QList <NewsGroup> *grouplist, bool fromserver)
             f.writeBlock(groups.data(),groups.length());
             f.close();
             QString command="sort <";
-            command=command+ac+">"+ac+"1;mv "+ac+"1 "+ac;
+            command=command+ac+">"+ac+"1; mv "+ac+"1 "+ac;
             system (command.data());
         }
         groupList(grouplist,false);
@@ -425,6 +428,7 @@ void NNTP::groupList(QList <NewsGroup> *grouplist, bool fromserver)
                 QString s(buffer);
                 int t=s.find(' ');
                 NewsGroup *gr=new NewsGroup(s.left(t).data());
+                debug ("group-->%s",s.left(t).data());
                 grouplist->append(gr);
             };
             f.close();
@@ -539,11 +543,6 @@ bool NNTP::checkStatus( QString start)
     else
         success=true;
     return success;
-}
-
-void NNTP::getResponse(QString *r )
-{
-    r->setStr(TextResponse().data());
 }
 
 bool NNTP::postArticle (QString ID)

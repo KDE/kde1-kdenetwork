@@ -202,7 +202,6 @@ private:
     bool    	Connected;
     bool       	Readonly;
     bool       	checkStatus( QString start);
-    void       	getResponse( QString *r);
     bool       	connected;
     void       	overviewFmt( QString of );
     int		OffsetArticleNumber;
