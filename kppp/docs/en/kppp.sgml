@@ -1105,12 +1105,31 @@ the <em/kppp/ web page. Then email the new rules file  to
 Yes this is possible. But you should not use unusual small time units (below
 tenth of a second), because this would result in higher CPU load (though I
 doubt you'll notice with a modern CPU :-)
+<p>
 
 <sect2>My country observes a moving holiday different from easter.<p>
 In that case you need to write new code that allows for the computation of that
 holiday. Please have a look at ruleset.cpp and emulate the ``easter'' example.
 Then send <url url="mailto:wuebben@math.cornell.edu" name="me"> the patches.
 <p>
+
+<sect2><em/kppp/ tells me "Sorry, the modem is not ready".<p>
+Uncheck the "Modem Asserts CD Line" option you will find on the Modem tab.
+Your hardware seems to be missing support for sensing the "Carrier Detect"
+line.
+<p>
+
+<sect2>The connection fails with "Timeout expired while waiting for the PPP interface to come up!"<p>
+The PPP daemon didn't get into contact with the remote server in time.
+Listed below are a few hints that helped several users:
+<itemize>
+<item> Play with the setting of Line Termination (Device tab)
+<item> Add a "Pause 1" scripting command (even if you're using PAP/CHAP)
+<item> Increase the pppd timeout (PPP tab)
+<item> Uncheck "Use Lock File" (Device tab)
+</itemize>
+<p>
+
 
 <sect1>How to interpret the system's log<p>
 <sect2>Serial line is looped back<p>

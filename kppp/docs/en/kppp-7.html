@@ -304,6 +304,26 @@ Then send
 <A HREF="mailto:wuebben@math.cornell.edu">me</A> the patches.
 <P>
 <P>
+<H4><EM>kppp</EM> tells me "Sorry, the modem is not ready".</H4>
+
+<P>Uncheck the "Modem Asserts CD Line" option you will find on the Modem tab.
+Your hardware seems to be missing support for sensing the "Carrier Detect"
+line.
+<P>
+<P>
+<H4>The connection fails with "Timeout expired while waiting for the PPP interface to come up!"</H4>
+
+<P>The PPP daemon didn't get into contact with the remote server in time.
+Listed below are a few hints that helped several users:
+<UL>
+<LI> Play with the setting of Line Termination (Device tab)</LI>
+<LI> Add a "Pause 1" scripting command (even if you're using PAP/CHAP)</LI>
+<LI> Increase the pppd timeout (PPP tab)</LI>
+<LI> Uncheck "Use Lock File" (Device tab)</LI>
+</UL>
+<P>
+<P>
+
 <H3><A NAME="ss7.2">7.2 How to interpret the system's log</A>
 </H3>
 
