@@ -251,7 +251,7 @@ void KMComposeWin::readConfig(void)
 
 
 //-----------------------------------------------------------------------------
-void KMComposeWin::writeConfig(bool aWithSync)
+void KMComposeWin::writeConfig(void)
 {
   KConfig *config = kapp->getConfig();
   QString str(32);
@@ -275,8 +275,6 @@ void KMComposeWin::writeConfig(bool aWithSync)
   config->setGroup("Geometry");
   str.sprintf("%d %d", width(), height());
   config->writeEntry("composer", str);
-
-  if (aWithSync) config->sync();
 }
 
 
@@ -449,9 +447,11 @@ void KMComposeWin::setupMenuBar(void)
 		   SLOT(slotPrint()), keys->print());
   menu->insertSeparator();
   menu->insertItem(i18n("&New Composer..."),this,
-		   SLOT(slotNewComposer()), keys->openNew());
+                   SLOT(slotNewComposer()), keys->openNew());
+#ifndef KRN
   menu->insertItem(i18n("New Mailreader"), this, 
 		   SLOT(slotNewMailReader()));
+#endif
   menu->insertSeparator();
   menu->insertItem(i18n("&Close"),this,
 		   SLOT(slotClose()), keys->close());
@@ -869,17 +869,18 @@ void KMComposeWin::applyChanges(void)
 
 
 //-----------------------------------------------------------------------------
-void KMComposeWin::closeEvent(QCloseEvent* )
+void KMComposeWin::closeEvent(QCloseEvent* e)
 {
   if(mEditor->isModified())
+  {
     if((KMsgBox::yesNo(0,i18n("KMail Confirm"),
 		       i18n("Close and discard\nedited message?")) == 2))
+    {
+      e->ignore();
       return;
-  writeConfig();
-  delete this;
-
-  // KTW closEvent does nothing
-  //KMComposeWinInherited::closeEvent(e);
+    }
+  }
+  KMComposeWinInherited::closeEvent(e);
 }
 
 
@@ -1404,6 +1405,7 @@ void KMComposeWin::slotNewComposer()
 //-----------------------------------------------------------------------------
 void KMComposeWin::slotNewMailReader()
 {
+
 #ifndef KRN
   KMMainWin *d;
 
@@ -1411,6 +1413,7 @@ void KMComposeWin::slotNewMailReader()
   d->show();
   d->resize(d->size());
 #endif
+
 }
 
 
@@ -1877,7 +1880,7 @@ bool KMLineEdit::eventFilter(QObject*, QEvent* e)
   {
     QKeyEvent* k = (QKeyEvent*)e;
 
-    if (k->state()==ControlButton && k->key()==Key_Period)
+    if (k->state()==ControlButton && k->key()==Key_T)
     {
       emit completion();
       cursorAtEnd();

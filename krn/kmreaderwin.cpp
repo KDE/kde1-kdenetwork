@@ -90,9 +90,6 @@ void KMReaderWin::readConfig(void)
 							SmartAttmnt);
 #ifdef KRN
   config->setGroup("ArticleListOptions");
-  config->setGroup("ArticleListOptions");
-  mViewer->setStandardFont(config->readEntry("StandardFont","helvetica"));
-  mViewer->setFixedFont(config->readEntry("FixedFont","courier"));
 #endif
   QColor c1=QColor("black");
   QColor c2=QColor("blue");
@@ -110,6 +107,9 @@ void KMReaderWin::readConfig(void)
   mBodyFont = config->readEntry("body-font", "helvetica-medium-r-12");
   mViewer->setStandardFont(kstrToFont(mBodyFont).family());
   //mViewer->setFixedFont(mFixedFont);
+#else
+  mViewer->setStandardFont(config->readEntry("StandardFont","helvetica"));
+  mViewer->setFixedFont(config->readEntry("FixedFont","courier"));
 #endif
   update();
 }
@@ -202,19 +202,7 @@ void KMReaderWin::setInlineAttach(int aAtmInline)
 //-----------------------------------------------------------------------------
 void KMReaderWin::setMsg(KMMessage* aMsg)
 {
-  if (!parent())
-  {
-    // do some additional work for a standalone window.
-    
-  }
-
   mMsg = aMsg;
-
-  if (!parent())
-  {
-    // do some additional work for a standalone window.
-    
-  }
 
   if (mMsg) parseMsg();
   else
@@ -241,7 +229,7 @@ void KMReaderWin::parseMsg(void)
 
   parseMsg(mMsg);
 
-  mViewer->write("<BR></BODY></HTML>");
+  mViewer->write("</BODY></HTML>");
   mViewer->end();
   mViewer->parse();
 }
@@ -312,18 +300,25 @@ void KMReaderWin::writeMsgHeader(void)
   switch (mHeaderStyle)
   {
   case HdrBrief:
-    mViewer->write("<B>" + strToHtml(mMsg->subject()) + "</B> (" +
-		   KMMessage::emailAddrAsAnchor(mMsg->from()) + ", " +
-		   strToHtml(mMsg->dateShortStr()) + ")<BR><BR>");
+    mViewer->write("<FONT SIZE=+1><B>" + strToHtml(mMsg->subject()) + 
+		   "</B></FONT>&nbsp; (" +
+		   KMMessage::emailAddrAsAnchor(mMsg->from(),TRUE) + ", ");
+    if (!mMsg->cc().isEmpty())
+      mViewer->write(i18n("Cc: ")+
+		     KMMessage::emailAddrAsAnchor(mMsg->cc(),TRUE) + ", ");
+    mViewer->write(strToHtml(mMsg->dateShortStr()) + ")<BR>\n");
     break;
 
   case HdrStandard:
     mViewer->write("<FONT SIZE=+1><B>" +
-		   strToHtml(mMsg->subject()) + "</B></FONT><BR>");
+		   strToHtml(mMsg->subject()) + "</B></FONT><BR>\n");
     mViewer->write(i18n("From: ") +
-		   KMMessage::emailAddrAsAnchor(mMsg->from()) + "<BR>");
+		   KMMessage::emailAddrAsAnchor(mMsg->from(),FALSE) + "<BR>\n");
     mViewer->write(i18n("To: ") +
-                   KMMessage::emailAddrAsAnchor(mMsg->to()) + "<BR>");
+                   KMMessage::emailAddrAsAnchor(mMsg->to(),FALSE) + "<BR>\n");
+    if (!mMsg->cc().isEmpty())
+      mViewer->write(i18n("Cc: ")+
+		     KMMessage::emailAddrAsAnchor(mMsg->cc(),FALSE) + "<BR>\n");
 #ifdef KRN
     if (!mMsg->references().isEmpty())
         mViewer->write(i18n("References: ") +
@@ -333,24 +328,24 @@ void KMReaderWin::writeMsgHeader(void)
     break;
 
   case HdrFancy:
-    mViewer->write(QString("<TABLE width=100%><TR><TD><IMG SRC=") + mPicsDir +
-		   "kdelogo.xpm></TD><TD HSPACE=50><B><FONT SIZE=+1>");
-    mViewer->write(strToHtml(mMsg->subject()) + "</FONT><BR>");
+    mViewer->write(QString("<TABLE><TR><TD><IMG SRC=") + mPicsDir +
+		   "kdelogo.xpm></TD><TD HSPACE=50><B><FONT SIZE=+2>");
+    mViewer->write(strToHtml(mMsg->subject()) + "</FONT></B><BR>");
     mViewer->write(i18n("From: ")+
-		   KMMessage::emailAddrAsAnchor(mMsg->from()) + "<BR>");
+		   KMMessage::emailAddrAsAnchor(mMsg->from(),FALSE) + "<BR>\n");
     mViewer->write(i18n("To: ")+
-		   KMMessage::emailAddrAsAnchor(mMsg->to()) + "<BR>");
+		   KMMessage::emailAddrAsAnchor(mMsg->to(),FALSE) + "<BR>\n");
     if (!mMsg->cc().isEmpty())
       mViewer->write(i18n("Cc: ")+
-		     KMMessage::emailAddrAsAnchor(mMsg->cc()) + "<BR>");
+		     KMMessage::emailAddrAsAnchor(mMsg->cc(),FALSE) + "<BR>\n");
     mViewer->write(i18n("Date: ")+
-		   strToHtml(mMsg->dateStr()) + "<BR>");
+		   strToHtml(mMsg->dateStr()) + "<BR>\n");
 #ifdef KRN
     if (!mMsg->references().isEmpty())
         mViewer->write(i18n("References: ") +
-                       KMMessage::refsAsAnchor(mMsg->references()) + "<BR><BR>");
+                       KMMessage::refsAsAnchor(mMsg->references()) + "<BR><BR>\n");
 #endif
-    mViewer->write("</B></TD></TR></TABLE><BR>");
+    mViewer->write("</B></TD></TR></TABLE><BR>\n");
     break;
 
   case HdrLong:
@@ -358,37 +353,38 @@ void KMReaderWin::writeMsgHeader(void)
 		   strToHtml(mMsg->subject()) + "</B></FONT><BR>");
     mViewer->write(i18n("Date: ")+strToHtml(mMsg->dateStr())+"<BR>");
     mViewer->write(i18n("From: ")+
-		   KMMessage::emailAddrAsAnchor(mMsg->from()) + "<BR>");
+		   KMMessage::emailAddrAsAnchor(mMsg->from(),FALSE) + "<BR>");
     mViewer->write(i18n("To: ")+
-                   KMMessage::emailAddrAsAnchor(mMsg->to()) + "<BR>");
+                   KMMessage::emailAddrAsAnchor(mMsg->to(),FALSE) + "<BR>");
     if (!mMsg->cc().isEmpty())
       mViewer->write(i18n("Cc: ")+
-		     KMMessage::emailAddrAsAnchor(mMsg->cc()) + "<BR>");
+		     KMMessage::emailAddrAsAnchor(mMsg->cc(),FALSE) + "<BR>");
     if (!mMsg->bcc().isEmpty())
       mViewer->write(i18n("Bcc: ")+
-		     KMMessage::emailAddrAsAnchor(mMsg->bcc()) + "<BR>");
+		     KMMessage::emailAddrAsAnchor(mMsg->bcc(),FALSE) + "<BR>");
     if (!mMsg->replyTo().isEmpty())
       mViewer->write(i18n("Reply to: ")+
-		     KMMessage::emailAddrAsAnchor(mMsg->replyTo()) + "<BR>");
+		     KMMessage::emailAddrAsAnchor(mMsg->replyTo(),FALSE) + "<BR>");
 #ifdef KRN
     if (!mMsg->references().isEmpty())
         mViewer->write(i18n("References: ")+
-                       KMMessage::refsAsAnchor(mMsg->references()) + "<BR>");
+                       KMMessage::refsAsAnchor(mMsg->references()) + "<BR>\n");
     if (!mMsg->groups().isEmpty())
-        mViewer->write(i18n("Groups: ") + mMsg->groups()+"<BR>");
+        mViewer->write(i18n("Groups: ") + mMsg->groups()+"<BR>\n");
 #endif
-    mViewer->write("<BR>");
+    mViewer->write("<BR>\n");
     break;
 
   case HdrAll:
     str = strToHtml(mMsg->headerAsString());
     mViewer->write(str);
-    mViewer->write("<br><br>");
+    mViewer->write("\n<BR>\n");
     break;
 
   default:
     warning("Unsupported header style %d", mHeaderStyle);
   }
+  mViewer->write("<BR>\n");
 }
 
 
@@ -399,7 +395,7 @@ void KMReaderWin::writeBodyStr(const QString aStr)
   bool atStart = TRUE;
   bool quoted = FALSE;
   bool lastQuoted = FALSE;
-  QString line(256), sig;
+  QString line(256), sig, htmlStr;
   Kpgp* pgp = Kpgp::getKpgp();
   assert(pgp != NULL);
   assert(!aStr.isNull());
@@ -412,14 +408,14 @@ void KMReaderWin::writeBodyStr(const QString aStr)
       {
 	line.sprintf("<B>%s</B><BR>",
 		     (const char*)i18n("Encrypted message"));
-	mViewer->write(line);
+	htmlStr += line;
       }
       else
       {
 	line.sprintf("<B>%s</B><BR>%s<BR><BR>",
 		     (const char*)i18n("Cannot decrypt message:"),
 		     (const char*)pgp->lastErrorMsg());
-	mViewer->write(line);
+	htmlStr += line;
       }
     }
     pos = pgp->message().data();
@@ -440,7 +436,7 @@ void KMReaderWin::writeBodyStr(const QString aStr)
     
     line.sprintf("<B>%s %s</B><BR>", sig.data(), 
 		 pgp->signedBy().data());
-    mViewer->write(line);
+    htmlStr += line;
   }
 
   pos = beg;
@@ -454,7 +450,7 @@ void KMReaderWin::writeBodyStr(const QString aStr)
       *pos = ch;
       if (quoted && !lastQuoted) line.prepend("<I>");
       else if (!quoted && lastQuoted) line.prepend("</I>");
-      mViewer->write(line + "<BR>");
+      htmlStr += line + "<BR>\n";
 
       beg = pos+1;
       atStart = TRUE;
@@ -463,12 +459,14 @@ void KMReaderWin::writeBodyStr(const QString aStr)
     }
     else if (ch > ' ' && atStart)
     {
-      if (ch=='>' || ch==':' || ch=='|') quoted = TRUE;
+      if (ch=='>' || /*ch==':' ||*/ ch=='|') quoted = TRUE;
       atStart = FALSE;
     }
     if (!ch) break;
     pos++;
   }
+
+  mViewer->write(htmlStr);
 }
 
 

@@ -35,6 +35,15 @@ KMTopLevelWidget::~KMTopLevelWidget()
 
 
 //-----------------------------------------------------------------------------
+void KMTopLevelWidget::closeEvent(QCloseEvent* e)
+{
+  e->ignore();
+  writeConfig();
+  delete this;
+}
+
+
+//-----------------------------------------------------------------------------
 bool KMTopLevelWidget::close(bool aForceKill)
 {
   static bool rc;
