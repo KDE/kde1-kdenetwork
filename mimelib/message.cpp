@@ -28,7 +28,7 @@
 #include <mimelib/debug.h>
 #include <mimelib/string.h>
 #include <mimelib/message.h>
-#include <mimelib/header.h>
+#include <mimelib/headers.h>
 #include <mimelib/body.h>
 
 
@@ -53,7 +53,7 @@ DwMessage* DwMessage::NewMessage(const DwString& aStr,
 
 DwMessage::DwMessage()
 {
-    mClassId = eMessage;
+    mClassId = kCidMessage;
     mClassName = sClassName;
 }
 
@@ -61,7 +61,7 @@ DwMessage::DwMessage()
 DwMessage::DwMessage(const DwMessage& aMessage)
   : DwEntity(aMessage)
 {
-    mClassId = eMessage;
+    mClassId = kCidMessage;
     mClassName = sClassName;
 }
 
@@ -69,7 +69,7 @@ DwMessage::DwMessage(const DwMessage& aMessage)
 DwMessage::DwMessage(const DwString& aStr, DwMessageComponent* aParent)
   : DwEntity(aStr, aParent)
 {
-    mClassId = eMessage;
+    mClassId = kCidMessage;
     mClassName = sClassName;
 }
 
@@ -101,7 +101,7 @@ void DwMessage::PrintDebugInfo(ostream& aStrm, int aDepth) const
     int depth = aDepth - 1;
     depth = (depth >= 0) ? depth : 0;
     if (aDepth == 0 || depth > 0) {
-        mHeader->PrintDebugInfo(aStrm, depth);
+        mHeaders->PrintDebugInfo(aStrm, depth);
         mBody->PrintDebugInfo(aStrm, depth);
     }
 #endif // defined(DW_DEBUG_VERSION)

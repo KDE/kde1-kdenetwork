@@ -32,7 +32,7 @@
 #include <stdlib.h>
 #include <iostream.h>
 #include <mimelib/string.h>
-#include <mimelib/header.h>
+#include <mimelib/headers.h>
 #include <mimelib/bodypart.h>
 #include <mimelib/body.h>
 #include <mimelib/message.h>
@@ -59,7 +59,7 @@ DwBodyPart* DwBodyPart::NewBodyPart(const DwString& aStr,
 DwBodyPart::DwBodyPart()
 {
     mNext = 0;
-    mClassId = eBodyPart;
+    mClassId = kCidBodyPart;
     mClassName = sClassName;
 }
 
@@ -68,7 +68,7 @@ DwBodyPart::DwBodyPart(const DwBodyPart& aPart)
   : DwEntity(aPart)
 {
     mNext = 0;
-    mClassId = eBodyPart;
+    mClassId = kCidBodyPart;
     mClassName = sClassName;
 }
 
@@ -77,7 +77,7 @@ DwBodyPart::DwBodyPart(const DwString& aStr, DwMessageComponent* aParent)
   : DwEntity(aStr, aParent)
 {
     mNext = 0;
-    mClassId = eBodyPart;
+    mClassId = kCidBodyPart;
     mClassName = sClassName;
 }
 
@@ -123,7 +123,7 @@ void DwBodyPart::PrintDebugInfo(ostream& aStrm, int aDepth) const
     int depth = aDepth - 1;
     depth = (depth >= 0) ? depth : 0;
     if (aDepth == 0 || depth > 0) {
-        mHeader->PrintDebugInfo(aStrm, depth);
+        mHeaders->PrintDebugInfo(aStrm, depth);
         mBody->PrintDebugInfo(aStrm, depth);
     }
 #endif // defined(DW_DEBUG_VERSION)

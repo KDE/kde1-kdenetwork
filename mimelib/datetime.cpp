@@ -106,7 +106,7 @@ DwDateTime::DwDateTime(const DwString& aStr, DwMessageComponent* aParent)
 
 void DwDateTime::Init()
 {
-    mClassId = eDateTime;
+    mClassId = kCidDateTime;
     mClassName = DwDateTime::sClassName;
     // Check if default time zone is set
     if (sIsDefaultZoneSet == 0) {

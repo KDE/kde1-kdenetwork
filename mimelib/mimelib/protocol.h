@@ -130,15 +130,22 @@ public:
         kFailTimedOut       = 6, // Timed out while waiting for an operation
                                  // to complete
         kFailConnDropped    = 7,
-        kFailConnRefused    = 8
+        kFailConnRefused    = 8,
+        kFailNoResources    = 9
     };
     //. Enumerated values for failures.
 
     enum Error {
         kErrNoError = 0,
+        kErrUnknownError = 0x4000,
         kErrBadParameter = 0x4001,
         kErrBadUsage     = 0x4002,
-        kErrNoWinsock    = 0x4003
+        kErrNoWinsock    = 0x4003,  // Win32
+        kErrHostNotFound = 0x5000,  // UNIX
+        kErrTryAgain     = 0x5001,  // UNIX
+        kErrNoRecovery   = 0x5002,  // UNIX
+        kErrNoData       = 0x5003,  // UNIX
+        kErrNoAddress    = 0x5004,  // UNIX
     };
     //. MIME++-defined error codes.
 
@@ -208,16 +215,19 @@ public:
 protected:
 
     enum {
-        kWSAStartup,
+        kWSAStartup=1,  // Win32
         kgethostbyname,
         ksocket,
         ksetsockopt,
         kconnect,
         ksend,
         krecv,
-        kclosesocket
+        kclose,         // UNIX
+        kclosesocket,   // Win32
+        kselect
     };
-    // Enumerated values that indicate the last system call called.
+    // Enumerated values that indicate the system call that detected
+    // an error
 
     DwBool      mIsDllOpen;
     DwBool      mIsOpen;
@@ -238,7 +248,7 @@ protected:
     //. defined by {\tt DwProtocolClient} that indicates the last system
     //. call made, which should be the system call that set the error code.
     //. {\tt HandleError()} sets values for {\tt mErrorStr},
-	//. {\tt mFailureCode}, and {\tt mFailureStr}.
+    //. {\tt mFailureCode}, and {\tt mFailureStr}.
 
     int PSend(const char* aBuf, int aBufLen);
     //. Sends {\tt aBufLen} characters from the buffer {\tt aBuf}.  Returns

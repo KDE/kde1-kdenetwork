@@ -37,18 +37,19 @@
 #include <mimelib/msgcmp.h>
 #endif
 
-class DwHeader;
+class DwHeaders;
 class DwBody;
 
 //=============================================================================
 //+ Name DwEntity -- Abstract class representing a MIME entity
 //+ Description
 //. RFC-1521 defines an {\it entity} as either a {\it message} or a 
-//. {\it body-part}, both of which have a {\it header} and a {\it body}.  
+//. {\it body-part}, both of which have a collection of {\it headers}
+//. and a {\it body}.  
 //. In the MIME++ class hierarchy, an {\it entity} is represented by the
 //. class {\tt DwEntity}.  A {\tt DwEntity} is characterized by the fact
-//. that it contains both a {\tt DwHeader} and a {\tt DwBody}, just like
-//. an {\it entity} has a {\it header} and a {\it body}.  These contained
+//. that it contains both a {\tt DwHeaders} and a {\tt DwBody}, just like
+//. an {\it entity} has {\it headers} and a {\it body}.  These contained
 //. objects are the children of a {\tt DwEntity} object.  (See the discussion
 //. in the entry for {\tt DwMessageComponent}.)
 //.
@@ -93,17 +94,17 @@ public:
     //. executes the parse method for {\tt DwEntity} objects.
     //. The parse method parses the string representation of
     //. the {\tt DwEntity} object into its broken-down representation, which
-    //. consists of a {\it header} and a {\it body}.  The broken-down
-    //. representation is implemented as contained {\tt DwHeader} and
+    //. consists of {\it headers} and a {\it body}.  The broken-down
+    //. representation is implemented as contained {\tt DwHeaders} and
     //. {\tt DwBody} objects, which are the children of a {\tt DwEntity}.
     //. (See the discussion in the entry for {\tt DwMessageComponent}.)
-    //. After the {\it header} and {\it body} are parsed, this member function
+    //. After the {\it headers} and {\it body} are parsed, this member function
     //. calls the {\tt Parse()} member function of the contained 
-    //. {\tt DwHeader} and {\tt DwBody} objects; you do not have to explicitly
-    //. parse the {\tt DwHeader} and {\tt DwBody} objects.
+    //. {\tt DwHeaders} and {\tt DwBody} objects; you do not have to explicitly
+    //. parse the {\tt DwHeaders} and {\tt DwBody} objects.
     //.
     //. This member function must be called after the string representation is
-    //. set or modified, and before the {\tt header} or {\tt body] of the entity are
+    //. set or modified, and before the {\tt headers} or {\tt body] of the entity are
     //. accessed.
 
     virtual void Assemble();
@@ -112,29 +113,29 @@ public:
     //. The assemble method assembles the
     //. broken-down representation of the {\tt DwEntity} object into its
     //. string representation.  The broken-down representation consists
-    //. of a {\it header} and a {\it body}, and is implemented
-    //. as contained {\tt DwHeader} and
+    //. of {\it headers} and a {\it body}, and is implemented
+    //. as contained {\tt DwHeaders} and
     //. {\tt DwBody} objects, which are the children of a {\tt DwEntity}.
     //. (See the discussion in the entry for {\tt DwMessageComponent}.)
     //. Before the string representation is assembled, this member function
     //. will call the {\tt Assemble()} member function of the contained
-    //. {\tt DwHeader} and {\tt DwBody} objects; you do not have to explicitly
-    //. assemble the {\tt DwHeader} and {\tt DwBody} objects.
+    //. {\tt DwHeaders} and {\tt DwBody} objects; you do not have to explicitly
+    //. assemble the {\tt DwHeaders} and {\tt DwBody} objects.
     //.
     //. This member function should be called after
     //. any component of the broken-down representation is set or changed
     //. and before the string representation is retrieved.
 
-    DwHeader& Header() const;
-    //. This function returns the {\tt DwHeader} contained by this object.
+    DwHeaders& Headers() const;
+    //. This function returns the {\tt DwHeaders} contained by this object.
 
     DwBody& Body() const;
     //. This function returns the {\tt DwBody} contained by this object.
 
 protected:
 
-    DwHeader* mHeader;
-    DwBody*   mBody;
+    DwHeaders* mHeaders;
+    DwBody*    mBody;
 
 private:
 

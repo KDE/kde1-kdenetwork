@@ -58,7 +58,7 @@ DwAddressList* DwAddressList::NewAddressList(const DwString& aStr,
 DwAddressList::DwAddressList()
 {
     mFirstAddress = 0;
-    mClassId = eAddressList;
+    mClassId = kCidAddressList;
     mClassName = sClassName;
 }
 
@@ -71,7 +71,7 @@ DwAddressList::DwAddressList(const DwAddressList& aList)
     if (addr) {
         CopyList(addr);
     }
-    mClassId = eAddressList;
+    mClassId = kCidAddressList;
     mClassName = sClassName;
 }
 
@@ -80,7 +80,7 @@ DwAddressList::DwAddressList(const DwString& aStr, DwMessageComponent* aParent)
   : DwFieldBody(aStr, aParent)
 {
     mFirstAddress = 0;
-    mClassId = eAddressList;
+    mClassId = kCidAddressList;
     mClassName = sClassName;
 }
 

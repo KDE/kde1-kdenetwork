@@ -40,7 +40,7 @@ DwFieldBody::DwFieldBody()
 {
     mLineOffset = 0;
     mDoFolding = DwTrue;
-    mClassId = eFieldBody;
+    mClassId = kCidFieldBody;
     mClassName = sClassName;
 }
 
@@ -50,7 +50,7 @@ DwFieldBody::DwFieldBody(const DwFieldBody& aFieldBody)
 {
     mLineOffset = aFieldBody.mLineOffset;
     mDoFolding = aFieldBody.mDoFolding;
-    mClassId = eFieldBody;
+    mClassId = kCidFieldBody;
     mClassName = sClassName;
 }
 
@@ -60,7 +60,7 @@ DwFieldBody::DwFieldBody(const DwString& aStr, DwMessageComponent* aParent)
 {
     mLineOffset = 0;
     mDoFolding = DwTrue;
-    mClassId = eFieldBody;
+    mClassId = kCidFieldBody;
     mClassName = sClassName;
 }
 

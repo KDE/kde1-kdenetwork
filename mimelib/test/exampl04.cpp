@@ -56,7 +56,7 @@ int main()
     // If is not a multipart message, we could create a BasicMessage instead,
     // but we won't do that in this example.
     
-    if (msg->Header().ContentType().Type() != DwMime::kTypeMultipart) {
+    if (msg->Headers().ContentType().Type() != DwMime::kTypeMultipart) {
         cerr << "Not a multipart message\n";
         return 0;
     }

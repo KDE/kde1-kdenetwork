@@ -42,7 +42,7 @@ DwMessageComponent::DwMessageComponent()
     mObjectId = sNextObjectId++;
     mIsModified = 0;
     mParent = 0;
-    mClassId = eMessageComponent;
+    mClassId = kCidMessageComponent;
     mClassName = sClassName;
 }
 
@@ -54,7 +54,7 @@ DwMessageComponent::DwMessageComponent(const DwMessageComponent& aCmp)
     mObjectId = sNextObjectId++;
     mIsModified = aCmp.mIsModified;
     mParent = 0;
-    mClassId = eMessageComponent;
+    mClassId = kCidMessageComponent;
     mClassName = sClassName;
 }
 
@@ -67,7 +67,7 @@ DwMessageComponent::DwMessageComponent(const DwString& aStr,
     mObjectId = sNextObjectId++;
     mIsModified = 0;
     mParent = aParent;
-    mClassId = eMessageComponent;
+    mClassId = kCidMessageComponent;
     mClassName = sClassName;
 }
 
@@ -145,8 +145,7 @@ void DwMessageComponent::SetModified()
 }
 
 
-//int DwMessageComponent::ClassId() const
-DwMessageComponent::componentType DwMessageComponent::ClassId() const
+int DwMessageComponent::ClassId() const
 {
     return mClassId;
 }
@@ -178,71 +177,71 @@ void DwMessageComponent::_PrintDebugInfo(ostream& aStrm) const
     aStrm << "ObjectId:         " << ObjectId() << '\n';
     aStrm << "ClassId:          ";
 	switch (ClassId()) {
-	case eError:
-		aStrm << "eError";
+	case kCidError:
+		aStrm << "kCidError";
 		break;
-	case eUnknown:
-        aStrm << "eUnknown";
+	case kCidUnknown:
+        aStrm << "kCidUnknown";
 		break;
-	case eAddress:
-        aStrm << "eAddress";
+	case kCidAddress:
+        aStrm << "kCidAddress";
 		break;
-	case eAddressList:
-        aStrm << "eAddressList";
+	case kCidAddressList:
+        aStrm << "kCidAddressList";
 		break;
-	case eBody:
-        aStrm << "v";
+	case kCidBody:
+        aStrm << "kCidBody";
 		break;
-	case eBodyPart:
-        aStrm << "eBodyPart";
+	case kCidBodyPart:
+        aStrm << "kCidBodyPart";
 		break;
-	case eDispositionType:
-        aStrm << "eDispositionType";
+	case kCidDispositionType:
+        aStrm << "kCidDispositionType";
 		break;
-	case eMechanism:
-        aStrm << "eMechanism";
+	case kCidMechanism:
+        aStrm << "kCidMechanism";
 		break;
-	case eMediaType:
-        aStrm << "eMediaType";
+	case kCidMediaType:
+        aStrm << "kCidMediaType";
 		break;
-	case eParameter:
-        aStrm << "eParameter";
+	case kCidParameter:
+        aStrm << "kCidParameter";
 		break;
-	case eDateTime:
-        aStrm << "eDateTime";
+	case kCidDateTime:
+        aStrm << "kCidDateTime";
 		break;
-	case eEntity:
-        aStrm << "eEntity";
+	case kCidEntity:
+        aStrm << "kCidEntity";
 		break;
-	case eField:
-        aStrm << "eField";
+	case kCidField:
+        aStrm << "kCidField";
 		break;
-	case eFieldBody:
-        aStrm << "eFieldBody";
+	case kCidFieldBody:
+        aStrm << "kCidFieldBody";
 		break;
-	case eGroup:
-        aStrm << "eGroup";
+	case kCidGroup:
+        aStrm << "kCidGroup";
 		break;
-	case eHeader:
-        aStrm << "eHeader";
+	case kCidHeaders:
+        aStrm << "kCidHeaders";
 		break;
-	case eMailbox:
-        aStrm << "eMailbox";
+	case kCidMailbox:
+        aStrm << "kCidMailbox";
 		break;
-	case eMailboxList:
-        aStrm << "eMailboxList";
+	case kCidMailboxList:
+        aStrm << "kCidMailboxList";
 		break;
-	case eMessage:
-        aStrm << "eMessage";
+	case kCidMessage:
+        aStrm << "kCidMessage";
 		break;
-	case eMessageComponent:
-        aStrm << "eUnknown";
+	case kCidMessageComponent:
+        aStrm << "kCidMessageComponent";
 		break;
-	case eMsgId:
-        aStrm << "eMsgId";
+	case kCidMsgId:
+        aStrm << "kCidMsgId";
 		break;
-	case eText:
-        aStrm << "eText";
+	case kCidText:
+        aStrm << "kCidText";
 		break;
 	}
     aStrm << '\n';

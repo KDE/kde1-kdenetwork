@@ -34,7 +34,7 @@ libmimelib_la_SOURCES = \
     field.cpp \
     fieldbdy.cpp \
     group.cpp \
-    header.cpp \
+    headers.cpp \
     mailbox.cpp \
     mboxlist.cpp \
     mechansm.cpp \
@@ -66,7 +66,7 @@ mimelib_headers = \
    field.h \
    fieldbdy.h \
    group.h \
-   header.h \
+   headers.h \
    mailbox.h \
    mboxlist.h \
    mechansm.h \

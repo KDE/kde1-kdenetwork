@@ -178,7 +178,7 @@ public:
     DwNntpClient();
     //. Initializes the {\tt DwNntpClient} object.
     //. It is possible for the constructor to fail.  To verify that the
-	//. constructor succeeded, call the member function {\tt LastError()}
+    //. constructor succeeded, call the member function {\tt LastError()}
     //. and check that it returns zero.  (In the Win32 implementation, the
     //. constructor calls the Winsock function {\tt WSAStartup()}, which
     //. may fail.)

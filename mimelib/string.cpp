@@ -226,9 +226,8 @@ void DwStringRep::operator delete(void* aRep, size_t)
 
 //--------------------------------------------------------------------------
 
-#define _kEmptyBufferSize_ 4
-const size_t DwString::kEmptyBufferSize = _kEmptyBufferSize_;
-char DW_EXPORT DwString::sEmptyBuffer[_kEmptyBufferSize_];
+const size_t DwString::kEmptyBufferSize = 4;
+char DW_EXPORT DwString::sEmptyBuffer[4];
 DwStringRep* DW_EXPORT DwString::sEmptyRep = 0;
 #if defined(DW_V080_STRING)
 DwString DwString::sEmptyString;

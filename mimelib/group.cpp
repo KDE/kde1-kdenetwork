@@ -53,7 +53,7 @@ DwGroup::DwGroup()
 {
     mMailboxList =
         DwMailboxList::NewMailboxList("", this);
-    mClassId = eGroup;
+    mClassId = kCidGroup;
     mClassName = sClassName;
 }
 
@@ -64,7 +64,7 @@ DwGroup::DwGroup(const DwGroup& aGroup)
 {
     mMailboxList = (DwMailboxList*) aGroup.mMailboxList->Clone();
     mMailboxList->SetParent(this);
-    mClassId = eGroup;
+    mClassId = kCidGroup;
     mClassName = sClassName;
 }
 
@@ -74,7 +74,7 @@ DwGroup::DwGroup(const DwString& aStr, DwMessageComponent* aParent)
 {
     mMailboxList =
         DwMailboxList::NewMailboxList("", this);
-    mClassId = eGroup;
+    mClassId = kCidGroup;
     mClassName = sClassName;
 }
 

@@ -58,6 +58,15 @@
 #endif
 
 //-----------------------------------------------------------------------------
+// C++ namespaces
+//
+// Uncomment the following line if you want the DwMime namespace to be defined
+//-----------------------------------------------------------------------------
+
+// #define DW_USE_NAMESPACES
+
+
+//-----------------------------------------------------------------------------
 // DLL vs static library
 //
 // WIN32 users: Uncomment out the following line to create a static library

@@ -28,7 +28,7 @@
 #include <mimelib/debug.h>
 #include <mimelib/string.h>
 #include <mimelib/entity.h>
-#include <mimelib/header.h>
+#include <mimelib/headers.h>
 #include <mimelib/body.h>
 #include <mimelib/mediatyp.h>
 
@@ -39,7 +39,7 @@ private:
     DwEntityParser(const DwString&);
     void Parse();
     const DwString mString;
-    DwString mHeader;
+    DwString mHeaders;
     DwString mBody;
 };
 
@@ -56,11 +56,11 @@ void DwEntityParser::Parse()
     const char* buf = mString.data();
     size_t bufEnd = mString.length();
     size_t pos = 0;
-    size_t headerStart = 0;
-    size_t headerLength = 0;
+    size_t headersStart = 0;
+    size_t headersLength = 0;
     // If first character is a LF (ANSI C or UNIX)
     // or if first two characters are CR LF (MIME or DOS),
-    // there is no header.
+    // there are no headers.
     if (pos < bufEnd && buf[pos] != '\n' 
         && ! (buf[pos] == '\r' && pos+1 < bufEnd && buf[pos+1] == '\n')) {
 
@@ -69,7 +69,7 @@ void DwEntityParser::Parse()
             if (buf[pos] == '\n'
                 && pos+1 < bufEnd && buf[pos+1] == '\n') {
 
-                ++headerLength;
+                ++headersLength;
                 ++pos;
                 break;
             }
@@ -79,15 +79,15 @@ void DwEntityParser::Parse()
                 && buf[pos+2] == '\r'
                 && buf[pos+3] == '\n') {
 
-                headerLength += 2;
+                headersLength += 2;
                 pos += 2;
                 break;
             }
             ++pos;
-            ++headerLength;
+            ++headersLength;
         }
     }
-    mHeader = mString.substr(headerStart, headerLength);
+    mHeaders = mString.substr(headersStart, headersLength);
     // Skip blank line
     // LF (ANSI C or UNIX)
     if (pos < bufEnd && buf[pos] == '\n') {
@@ -113,11 +113,11 @@ const char* const DwEntity::sClassName = "DwEntity";
 
 DwEntity::DwEntity()
 {
-    mHeader = DwHeader::NewHeader("", this);
-    ASSERT(mHeader != 0);
+    mHeaders = DwHeaders::NewHeaders("", this);
+    ASSERT(mHeaders != 0);
     mBody = DwBody::NewBody("", this);
     ASSERT(mBody != 0);
-    mClassId = eEntity;
+    mClassId = kCidEntity;
     mClassName = sClassName;
 }
 
@@ -125,13 +125,13 @@ DwEntity::DwEntity()
 DwEntity::DwEntity(const DwEntity& aEntity)
   : DwMessageComponent(aEntity)
 {
-    mHeader = (DwHeader*) aEntity.mHeader->Clone();
-    ASSERT(mHeader != 0);
-    mHeader->SetParent(this);
+    mHeaders = (DwHeaders*) aEntity.mHeaders->Clone();
+    ASSERT(mHeaders != 0);
+    mHeaders->SetParent(this);
     mBody = (DwBody*) aEntity.mBody->Clone();
     ASSERT(mBody != 0);
     mBody->SetParent(this);
-    mClassId = eEntity;
+    mClassId = kCidEntity;
     mClassName = sClassName;
 }
 
@@ -139,18 +139,18 @@ DwEntity::DwEntity(const DwEntity& aEntity)
 DwEntity::DwEntity(const DwString& aStr, DwMessageComponent* aParent)
   : DwMessageComponent(aStr, aParent)
 {
-    mHeader = DwHeader::NewHeader("", this);
-    ASSERT(mHeader != 0);
+    mHeaders = DwHeaders::NewHeaders("", this);
+    ASSERT(mHeaders != 0);
     mBody = DwBody::NewBody("", this);
     ASSERT(mBody != 0);
-    mClassId = eEntity;
+    mClassId = kCidEntity;
     mClassName = sClassName;
 }
 
 
 DwEntity::~DwEntity()
 {
-    delete mHeader;
+    delete mHeaders;
     delete mBody;
 }
 
@@ -160,11 +160,11 @@ const DwEntity& DwEntity::operator = (const DwEntity& aEntity)
     if (this == &aEntity) return *this;
     DwMessageComponent::operator = (aEntity);
     // Note: Because of the derived assignment problem, we cannot use the
-    // assignment operator for DwHeader and DwBody in the following.
-    delete mHeader;
-    mHeader = (DwHeader*) aEntity.mHeader->Clone();
-    ASSERT(mHeader != 0);
-    mHeader->SetParent(this);
+    // assignment operator for DwHeaders and DwBody in the following.
+    delete mHeaders;
+    mHeaders = (DwHeaders*) aEntity.mHeaders->Clone();
+    ASSERT(mHeaders != 0);
+    mHeaders->SetParent(this);
     delete mBody;
     mBody = (DwBody*) aEntity.mBody->Clone();
     ASSERT(mBody != 0);
@@ -180,8 +180,8 @@ void DwEntity::Parse()
 {
     mIsModified = 0;
     DwEntityParser parser(mString);
-    mHeader->FromString(parser.mHeader);
-    mHeader->Parse();
+    mHeaders->FromString(parser.mHeaders);
+    mHeaders->Parse();
     mBody->FromString(parser.mBody);
     mBody->Parse();
 }
@@ -191,17 +191,17 @@ void DwEntity::Assemble()
 {
     if (!mIsModified) return;
     mBody->Assemble();
-    mHeader->Assemble();
+    mHeaders->Assemble();
     mString = "";
-    mString += mHeader->AsString();
+    mString += mHeaders->AsString();
     mString += mBody->AsString();
     mIsModified = 0;
 }
 
 
-DwHeader& DwEntity::Header() const
+DwHeaders& DwEntity::Headers() const
 {
-    return *mHeader;
+    return *mHeaders;
 }
 
 
@@ -219,7 +219,7 @@ void DwEntity::PrintDebugInfo(ostream& aStrm, int aDepth) const
     int depth = aDepth - 1;
     depth = (depth >= 0) ? depth : 0;
     if (aDepth == 0 || depth > 0) {
-        mHeader->PrintDebugInfo(aStrm, depth);
+        mHeaders->PrintDebugInfo(aStrm, depth);
         mBody->PrintDebugInfo(aStrm, depth);
     }
 #endif // defined(DW_DEBUG_VERSION)
@@ -230,7 +230,7 @@ void DwEntity::_PrintDebugInfo(ostream& aStrm) const
 {
 #if defined(DW_DEBUG_VERSION)
     DwMessageComponent::_PrintDebugInfo(aStrm);
-    aStrm << "Header:           " << mHeader->ObjectId() << '\n';
+    aStrm << "Headers:          " << mHeaders->ObjectId() << '\n';
     aStrm << "Body:             " << mBody->ObjectId() << '\n';
 #endif // defined(DW_DEBUG_VERSION)
 }
@@ -240,8 +240,8 @@ void DwEntity::CheckInvariants() const
 {
 #if defined(DW_DEBUG_VERSION)
     DwMessageComponent::CheckInvariants();
-    mHeader->CheckInvariants();
-    assert((DwMessageComponent*) this == mHeader->Parent());
+    mHeaders->CheckInvariants();
+    assert((DwMessageComponent*) this == mHeaders->Parent());
     mBody->CheckInvariants();
     assert((DwMessageComponent*) this == mBody->Parent());
 #endif // defined(DW_DEBUG_VERSION)

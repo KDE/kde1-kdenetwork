@@ -33,7 +33,7 @@
 #include <string.h>
 #include <mimelib/string.h>
 #include <mimelib/field.h>
-#include <mimelib/header.h>
+#include <mimelib/headers.h>
 #include <mimelib/fieldbdy.h>
 #include <mimelib/datetime.h>
 #include <mimelib/mailbox.h>
@@ -150,7 +150,7 @@ DwField::DwField()
 {
     mNext = 0;
     mFieldBody = 0;
-    mClassId = eField;
+    mClassId = kCidField;
     mClassName = sClassName;
 }
 
@@ -167,7 +167,7 @@ DwField::DwField(const DwField& aField)
     else {
         mFieldBody = 0;
     }
-    mClassId = eField;
+    mClassId = kCidField;
     mClassName = sClassName;
 }
 
@@ -177,7 +177,7 @@ DwField::DwField(const DwString& aStr, DwMessageComponent* aParent)
 {
     mNext = 0;
     mFieldBody = 0;
-    mClassId = eField;
+    mClassId = kCidField;
     mClassName = sClassName;
 }
 

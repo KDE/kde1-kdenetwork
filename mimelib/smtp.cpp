@@ -34,16 +34,6 @@
 #include <unistd.h>
 #endif
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
-#ifdef HAVE_GETHOSTNAME
-extern "C" {
-  int gethostname(char *name, int namelen);
-}
-#endif
-
 #define SMTP_PORT 25
 #define RECV_BUFFER_SIZE  8192
 #define SEND_BUFFER_SIZE  1024

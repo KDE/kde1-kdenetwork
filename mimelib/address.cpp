@@ -41,7 +41,7 @@ DwAddress::DwAddress()
 {
     mIsValid = 0;
     mNext = 0;
-    mClassId = eAddress;
+    mClassId = kCidAddress;
     mClassName = sClassName;
 }
 
@@ -51,7 +51,7 @@ DwAddress::DwAddress(const DwAddress& aAddr)
 {
     mIsValid = aAddr.mIsValid;
     mNext = 0;
-    mClassId = eAddress;
+    mClassId = kCidAddress;
     mClassName = sClassName;
 }
 
@@ -61,7 +61,7 @@ DwAddress::DwAddress(const DwString& aStr, DwMessageComponent* aParent)
 {
     mIsValid = 0;
     mNext = 0;
-    mClassId = eAddress;
+    mClassId = kCidAddress;
     mClassName = sClassName;
 }
 
@@ -82,14 +82,14 @@ const DwAddress& DwAddress::operator = (const DwAddress& aAddr)
 
 DwBool DwAddress::IsMailbox() const
 {
-    DwBool r = (mClassId == eMailbox) ? 1 : 0;
+    DwBool r = (mClassId == kCidMailbox) ? 1 : 0;
     return r;
 }
 
 
 DwBool DwAddress::IsGroup() const
 {
-    DwBool r = (mClassId == eGroup) ? 1 : 0;
+    DwBool r = (mClassId == kCidGroup) ? 1 : 0;
     return r;
 }
 

@@ -82,7 +82,7 @@
 #endif
 
 #ifndef DW_HEADER_H
-#include <mimelib/header.h>
+#include <mimelib/headers.h>
 #endif
 
 #ifndef DW_MAILBOX_H

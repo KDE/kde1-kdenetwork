@@ -51,7 +51,7 @@ DwText* DwText::NewText(const DwString& aStr, DwMessageComponent* aParent)
 
 DwText::DwText()
 {
-    mClassId = eText;
+    mClassId = kCidText;
     mClassName = sClassName;
 }
 
@@ -59,7 +59,7 @@ DwText::DwText()
 DwText::DwText(const DwText& aText)
   : DwFieldBody(aText)
 {
-    mClassId = eText;
+    mClassId = kCidText;
     mClassName = sClassName;
 }
 
@@ -67,7 +67,7 @@ DwText::DwText(const DwText& aText)
 DwText::DwText(const DwString& aStr, DwMessageComponent* aParent)
   : DwFieldBody(aStr, aParent)
 {
-    mClassId = eText;
+    mClassId = kCidText;
     mClassName = sClassName;
 }
 

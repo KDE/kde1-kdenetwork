@@ -74,7 +74,7 @@ DwMsgId* DwMsgId::NewMsgId(const DwString& aStr, DwMessageComponent* aParent)
 
 DwMsgId::DwMsgId()
 {
-    mClassId = eMsgId;
+    mClassId = kCidMsgId;
     mClassName = sClassName;
 }
 
@@ -84,7 +84,7 @@ DwMsgId::DwMsgId(const DwMsgId& aMsgId)
     mLocalPart(aMsgId.mLocalPart),
     mDomain(aMsgId.mDomain)
 {
-    mClassId = eMsgId;
+    mClassId = kCidMsgId;
     mClassName = sClassName;
 }
 
@@ -92,7 +92,7 @@ DwMsgId::DwMsgId(const DwMsgId& aMsgId)
 DwMsgId::DwMsgId(const DwString& aStr, DwMessageComponent* aParent)
   : DwFieldBody(aStr, aParent)
 {
-    mClassId = eMsgId;
+    mClassId = kCidMsgId;
     mClassName = sClassName;
 }
 

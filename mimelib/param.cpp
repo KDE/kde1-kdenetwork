@@ -56,7 +56,7 @@ DwParameter* DwParameter::NewParameter(const DwString& aStr,
 DwParameter::DwParameter()
 {
     mNext = 0;
-    mClassId = eParameter;
+    mClassId = kCidParameter;
     mClassName = sClassName;
 }
 
@@ -67,7 +67,7 @@ DwParameter::DwParameter(const DwParameter& aParam)
     mValue(aParam.mValue)
 {
     mNext = 0;
-    mClassId = eParameter;
+    mClassId = kCidParameter;
     mClassName = sClassName;
 }
 
@@ -76,7 +76,7 @@ DwParameter::DwParameter(const DwString& aStr, DwMessageComponent* aParent)
     : DwMessageComponent(aStr, aParent)
 {
     mNext = 0;
-    mClassId = eParameter;
+    mClassId = kCidParameter;
     mClassName = sClassName;
 }
 

@@ -37,7 +37,6 @@
 #include <mimelib/address.h>
 #endif
 
-class DwHeaderField;
 class DwGroup;
 
 //=============================================================================

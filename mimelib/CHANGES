@@ -2,6 +2,30 @@
 MIME++ Change Log
 =================
 
+July 26, 1997
+
+o New classes in this release:
+  DwUuencode       - for uuencode and uudecode operations
+  DwBoyerMoore     - for BoyerMoore algorithm in string searches
+  DwProtocolClient - Base class for SMTP, NNTP, and POP protocol classes
+  DwSmtpClient     - Implements client side of SMTP session
+  DwNntpClient     - Implements client side of NNTP session
+  DwPopClient      - Implements client side of POP session
+
+o Full support for Win32 with MS Visual C++ 4 or 5, and Borland C++.
+
+o DwHeader renamed to DwHeaders to eliminate confusion, since people usually
+  use the term header to refer to a single header field.
+
+o Compiles as a DLL under Visual C++ (default option)
+
+o There is a config.h file for establishing configuration options at
+  compile time. This is safer than requiring you to specify options as
+  defines in a makefile.
+
+o Support for namespaces. Alternatively, global enums are encapsulated
+  in a class declaration.
+
 Mar 29, 1997
 
 o The class DwString has been rewritten almost from scratch and is much
@@ -125,3 +149,5 @@ o All *.h files have been extensively commented.  These files will serve
   as a poor man's reference manual until the real reference manual is
   completed.
 
+$Revision$
+$Date$

@@ -55,7 +55,7 @@ DwMechanism* DwMechanism::NewMechanism(const DwString& aStr,
 DwMechanism::DwMechanism()
 {
     mCteEnum = DwMime::kCteNull;
-    mClassId = eMechanism;
+    mClassId = kCidMechanism;
     mClassName = sClassName;
 }
 
@@ -64,7 +64,7 @@ DwMechanism::DwMechanism(const DwMechanism& aMech)
   : DwFieldBody(aMech)
 {
     mCteEnum = aMech.mCteEnum;
-    mClassId = eMechanism;
+    mClassId = kCidMechanism;
     mClassName = sClassName;
 }
 
@@ -73,7 +73,7 @@ DwMechanism::DwMechanism(const DwString& aStr, DwMessageComponent* aParent)
   : DwFieldBody(aStr, aParent)
 {
     mCteEnum = DwMime::kCteNull;
-    mClassId = eMechanism;
+    mClassId = kCidMechanism;
     mClassName = sClassName;
 }
 

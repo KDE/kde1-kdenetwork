@@ -49,7 +49,7 @@ class DwBodyPart;
 
 class DW_EXPORT DwBody : public DwMessageComponent {
 
-    friend class DwHeader;
+    friend class DwHeaders;
     friend class DwEntity;
     friend class DwBodyPart;
 
@@ -85,7 +85,7 @@ public:
     //. is modified and before the parts of the broken-down
     //. representation are accessed.  Only {\it bodies} with content-type
     //. of multipart or message require parsing.  In either case, the
-    //. {\tt DwBody} object must be able to find the message header.
+    //. {\tt DwBody} object must be able to find the message headers.
     //. Therefore, if the {\tt DwBody} object is not the child of a
     //. {\tt DwEntity} ({\it i.e.}, {\tt DwMessage} or {\tt DwBodyPart})
     //. object, the {\it body} cannot be parsed because the content-type
@@ -101,7 +101,7 @@ public:
     //. {\tt Assemble()} member function if the is-modified flag is set.
     //. Only {\it bodies} with content-type of
     //. multipart or message require assembling.  In either case, the
-    //. {\tt DwBody} object must be able to find the message header.
+    //. {\tt DwBody} object must be able to find the message headers.
     //. Therefore, if the {\tt DwBody} object is not the child of a
     //. {\tt DwEntity} ({\it i.e.}, {\tt DwMessage} or {\tt DwBodyPart})
     //. object, the {\it body} cannot be assembled because the content-type
@@ -152,7 +152,7 @@ private:
 
     DwString    mBoundaryStr;
     //. A cache for the boundary string, which is obtained from the
-    //. header associated with this body.
+    //. headers associated with this body.
 
     DwString    mPreamble;
     //. Contains the preamble -- the text preceding the first boundary --

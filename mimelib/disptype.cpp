@@ -56,7 +56,7 @@ DwDispositionType::DwDispositionType()
 {
     mDispositionType = DwMime::kDispTypeNull;
     mFirstParameter = 0;
-    mClassId = eDispositionType;
+    mClassId = kCidDispositionType;
     mClassName = sClassName;
 }
 
@@ -70,7 +70,7 @@ DwDispositionType::DwDispositionType(const DwDispositionType& aDispType)
     if (aDispType.mFirstParameter) {
         CopyParameterList(aDispType.mFirstParameter);
     }
-    mClassId = eDispositionType;
+    mClassId = kCidDispositionType;
     mClassName = sClassName;
 }
 
@@ -81,7 +81,7 @@ DwDispositionType::DwDispositionType(const DwString& aStr,
 {
     mDispositionType = DwMime::kDispTypeNull;
     mFirstParameter = 0;
-    mClassId = eDispositionType;
+    mClassId = kCidDispositionType;
     mClassName = sClassName;
 }
 

@@ -32,7 +32,7 @@
 #include <stdlib.h>
 #include <iostream.h>
 #include <mimelib/string.h>
-#include <mimelib/header.h>
+#include <mimelib/headers.h>
 #include <mimelib/bodypart.h>
 #include <mimelib/body.h>
 #include <mimelib/message.h>
@@ -281,7 +281,7 @@ DwBody::DwBody()
 {
     mFirstBodyPart = 0;
     mMessage = 0;
-    mClassId = eBody;
+    mClassId = kCidBody;
     mClassName = sClassName;
 }
 
@@ -303,7 +303,7 @@ DwBody::DwBody(const DwBody& aBody)
         DwMessage* msg = (DwMessage*) message->Clone();
         _AddMessage(msg);
     }
-    mClassId = eBody;
+    mClassId = kCidBody;
     mClassName = sClassName;
 }
 
@@ -313,7 +313,7 @@ DwBody::DwBody(const DwString& aStr, DwMessageComponent* aParent)
 {
     mFirstBodyPart = 0;
     mMessage = 0;
-    mClassId = eBody;
+    mClassId = kCidBody;
     mClassName = sClassName;
 }
 
@@ -365,31 +365,30 @@ void DwBody::Parse()
     if (!mParent) {
         return;
     }
-    // Get the content type from the header
+    // Get the content type from the headers
     DwEntity* entity = (DwEntity*) mParent;
-    const DwMediaType& contentType = entity->Header().ContentType();
-    int type = contentType.Type();
-    if (type == DwMime::kTypeMultipart) {
-        mBoundaryStr = contentType.Boundary();
-        // Now parse body into body parts
-        DwBodyParser parser(mString, mBoundaryStr);
-        mPreamble = parser.Preamble();
-        mEpilogue = parser.Epilogue();
-        DwBodyPartStr* partStr = parser.FirstBodyPart();
-        while (partStr) {
-            DwBodyPart* part =
-                DwBodyPart::NewBodyPart(partStr->mString, this);
-            part->Parse();
-            _AddBodyPart(part);
-            partStr = partStr->mNext;
+    if (entity->Headers().HasContentType()) {
+        const DwMediaType& contentType = entity->Headers().ContentType();
+        int type = contentType.Type();
+        if (type == DwMime::kTypeMultipart) {
+            mBoundaryStr = contentType.Boundary();
+            // Now parse body into body parts
+            DwBodyParser parser(mString, mBoundaryStr);
+            mPreamble = parser.Preamble();
+            mEpilogue = parser.Epilogue();
+            DwBodyPartStr* partStr = parser.FirstBodyPart();
+            while (partStr) {
+                DwBodyPart* part =
+                    DwBodyPart::NewBodyPart(partStr->mString, this);
+                part->Parse();
+                _AddBodyPart(part);
+                partStr = partStr->mNext;
+            }
         }
-    }
-    else if (type == DwMime::kTypeMessage) {
-        mMessage = DwMessage::NewMessage(mString, this);
-        mMessage->Parse();
-    }
-    else {
-        // Empty block
+        else if (type == DwMime::kTypeMessage) {
+            mMessage = DwMessage::NewMessage(mString, this);
+            mMessage->Parse();
+        }
     }
 }
 
@@ -401,7 +400,7 @@ void DwBody::Assemble()
     if (!mParent) return;
 
     DwEntity* entity = (DwEntity*) mParent;
-    const DwMediaType& contentType = entity->Header().ContentType();
+    const DwMediaType& contentType = entity->Headers().ContentType();
     int type = contentType.Type();
     if (type == DwMime::kTypeMultipart) {
         mBoundaryStr = contentType.Boundary();

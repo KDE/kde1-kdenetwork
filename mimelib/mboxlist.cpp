@@ -58,7 +58,7 @@ DwMailboxList* DwMailboxList::NewMailboxList(const DwString& aStr,
 DwMailboxList::DwMailboxList()
 {
     mFirstMailbox = 0;
-    mClassId = eMailboxList;
+    mClassId = kCidMailboxList;
     mClassName = sClassName;
 }
 
@@ -71,7 +71,7 @@ DwMailboxList::DwMailboxList(const DwMailboxList& aList)
     if (firstMailbox) {
         CopyList(firstMailbox);
     }
-    mClassId = eMailboxList;
+    mClassId = kCidMailboxList;
     mClassName = sClassName;
 }
 
@@ -80,7 +80,7 @@ DwMailboxList::DwMailboxList(const DwString& aStr, DwMessageComponent* aParent)
   : DwFieldBody(aStr, aParent)
 {
     mFirstMailbox = 0;
-    mClassId = eMailboxList;
+    mClassId = kCidMailboxList;
     mClassName = sClassName;
 }
 

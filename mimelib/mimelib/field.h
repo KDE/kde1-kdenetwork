@@ -39,7 +39,7 @@
 #include <mimelib/msgcmp.h>
 #endif
 
-class DwHeader;
+class DwHeaders;
 class DwFieldBody;
 
 //=============================================================================
@@ -53,18 +53,18 @@ class DwFieldBody;
 //. {\it field-body}.
 //. A {\tt DwField} object has only one child, which is the {\tt DwFieldBody}
 //. object it contains.  The parent of a {\tt DwField} object is the 
-//. {\tt DwHeader} object that contains it.  (See the discussion in the entry
+//. {\tt DwHeaders} object that contains it.  (See the discussion in the entry
 //. for {\tt DwMessageComponent}.)
 //.
 //. A {\tt DwField} object can be included in a list of {\tt DwField}
 //. objects; usually this is the list of {\tt DwField} objects maintained
-//. by its parent {\tt DwHeader} object.
+//. by its parent {\tt DwHeaders} object.
 //=============================================================================
 
 
 class DW_EXPORT DwField : public DwMessageComponent {
 
-    friend class DwHeader;
+    friend class DwHeaders;
 
 public:
 
@@ -88,7 +88,7 @@ public:
     //. immediately after this constructor in order to parse the string
     //. representation.
     //. Unless it is NULL, {\tt aParent} should point to an object of a class
-    //. derived from {\tt DwHeader}.
+    //. derived from {\tt DwHeaders}.
 
     virtual ~DwField();
 
@@ -133,7 +133,7 @@ public:
 
     DwField* Next() const;
     //. Returns the next {\tt DwField} object following this
-    //. {\tt DwField} object in the list contained in a {\tt DwHeader}.
+    //. {\tt DwField} object in the list contained in a {\tt DwHeaders}.
     //. Returns NULL if this object is last in the list.
 
     void SetFieldBody(DwFieldBody* aFieldBody);
@@ -147,9 +147,8 @@ public:
 
     void SetNext(const DwField* aField);
     //. This {\it advanced} function sets {\tt aField} as the next 
-    //. {\it field} following this
-    //. {\it field} in the list of {\it field}s contained in a {\it header}.  
-    //. Since {\tt DwHeader}
+    //. {\it field} following this {\it field} in the list of
+    //. {\it field}s contained in the {\it headers}. Since {\tt DwHeaders}
     //. contains member functions for adding {\tt DwField} objects 
     //. to its list, this function is not useful for most applications.
 

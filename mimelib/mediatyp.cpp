@@ -62,7 +62,7 @@ DwMediaType::DwMediaType()
     mType = DwMime::kTypeNull;
     mSubtype = DwMime::kSubtypeNull;
     mFirstParameter = 0;
-    mClassId = eMediaType;
+    mClassId = kCidMediaType;
     mClassName = sClassName;
 }
 
@@ -75,12 +75,13 @@ DwMediaType::DwMediaType(const DwMediaType& aCntType)
 {
     mType = aCntType.mType;
     mSubtype = aCntType.mSubtype;
+    mFirstParameter = 0;
 
     if (aCntType.mFirstParameter) {
         CopyParameterList(aCntType.mFirstParameter);
     }
 
-    mClassId = eMediaType;
+    mClassId = kCidMediaType;
     mClassName = sClassName;
 }
 
@@ -91,7 +92,7 @@ DwMediaType::DwMediaType(const DwString& aStr, DwMessageComponent* aParent)
     mType = DwMime::kTypeNull;
     mSubtype = DwMime::kSubtypeNull;
     mFirstParameter = 0;
-    mClassId = eMediaType;
+    mClassId = kCidMediaType;
     mClassName = sClassName;
 }
 

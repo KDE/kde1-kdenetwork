@@ -54,7 +54,7 @@ DwMailbox* DwMailbox::NewMailbox(const DwString& aStr,
 
 DwMailbox::DwMailbox()
 {
-    mClassId = eMailbox;
+    mClassId = kCidMailbox;
     mClassName = sClassName;
 }
 
@@ -66,7 +66,7 @@ DwMailbox::DwMailbox(const DwMailbox& aMailbox)
     mLocalPart(aMailbox.mLocalPart),
     mDomain(aMailbox.mDomain)
 {
-    mClassId = eMailbox;
+    mClassId = kCidMailbox;
     mClassName = sClassName;
 }
 
@@ -74,7 +74,7 @@ DwMailbox::DwMailbox(const DwMailbox& aMailbox)
 DwMailbox::DwMailbox(const DwString& aStr, DwMessageComponent* aParent)
   : DwAddress(aStr, aParent)
 {
-    mClassId = eMailbox;
+    mClassId = kCidMailbox;
     mClassName = sClassName;
 }
 

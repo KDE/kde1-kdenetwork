@@ -129,28 +129,28 @@ private:
 public:
 
     enum componentType {
-        eError=-1,
-        eUnknown=0,
-        eAddress,
-        eAddressList,
-        eBody,
-        eBodyPart,
-        eDispositionType,
-        eMechanism,
-        eMediaType,
-        eParameter,
-        eDateTime,
-        eEntity,
-        eField,
-        eFieldBody,
-        eGroup,
-        eHeader,
-        eMailbox,
-        eMailboxList,
-        eMessage,
-        eMessageComponent,
-        eMsgId,
-        eText
+        kCidError=-1,
+        kCidUnknown=0,
+        kCidAddress,
+        kCidAddressList,
+        kCidBody,
+        kCidBodyPart,
+        kCidDispositionType,
+        kCidMechanism,
+        kCidMediaType,
+        kCidParameter,
+        kCidDateTime,
+        kCidEntity,
+        kCidField,
+        kCidFieldBody,
+        kCidGroup,
+        kCidHeaders,
+        kCidMailbox,
+        kCidMailboxList,
+        kCidMessage,
+        kCidMessageComponent,
+        kCidMsgId,
+        kCidText
     };
     //. Class identifier enumeration
 
@@ -182,10 +182,10 @@ public:
     //. method.  The parse method, implemented in derived classes, is
     //. responsible for extracting the broken-down representation from
     //. the string representation.  In some derived classes, such as
-    //. {\tt DwHeader}, the parse method is also responsible for creating the
-    //. children of the object.  (In the case of {\tt DwHeader}, the children
+    //. {\tt DwHeaders}, the parse method is also responsible for creating the
+    //. children of the object.  (In the case of {\tt DwHeaders}, the children
     //. created are the {\tt DwField} objects that represent the {\it field}s
-    //. contained in the {\it header}.)  The {\tt Parse()} function always
+    //. contained in the {\it headers}.)  The {\tt Parse()} function always
     //. calls the {\tt Parse()} function of all of its children.
 
     virtual void Assemble() = 0;
@@ -240,7 +240,7 @@ public:
     //. object and notifies the object's parent to also set its is-modified
     //. flag.
 
-    componentType ClassId() const;
+    int ClassId() const;
     //. Returns an integer id for the object's class.
 
     const char* ClassName() const;
