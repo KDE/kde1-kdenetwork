@@ -153,7 +153,7 @@ const char* PPPData::readConfig(const char* group, const char* key,
     s = config->readEntry(key);
     return s.data();
   } else
-    return 0L;
+    return defvalue;
   
 }
 
@@ -164,7 +164,7 @@ int PPPData::readNumConfig(const char* group, const char* key,
     if (!config->hasKey(key)) config->writeEntry(key, defvalue);
     return config->readNumEntry(key);
   } else
-    return 0;
+    return defvalue;
 
 }
 
@@ -1233,12 +1233,14 @@ void PPPData::setGraphingOptions(bool enable,
 				 QColor in,
 				 QColor out) 
 {
-  config->setGroup("Graph");
-  config->writeEntry(GENABLED, enable);
-  config->writeEntry(GCOLOR_BG, bg);
-  config->writeEntry(GCOLOR_TEXT, text);
-  config->writeEntry(GCOLOR_IN, in);
-  config->writeEntry(GCOLOR_OUT, out);
+  if(config) {
+    config->setGroup(GRAPH_GRP);
+    config->writeEntry(GENABLED, enable);
+    config->writeEntry(GCOLOR_BG, bg);
+    config->writeEntry(GCOLOR_TEXT, text);
+    config->writeEntry(GCOLOR_IN, in);
+    config->writeEntry(GCOLOR_OUT, out);
+  }
 }
 
 void PPPData::graphingOptions(bool &enable,
@@ -1249,22 +1251,23 @@ void PPPData::graphingOptions(bool &enable,
 {
   QColor c;
 
-  config->setGroup("Graph");
-  enable = config->readBoolEntry(GENABLED, true);
-  c = white;
-  bg = config->readColorEntry(GCOLOR_BG, &c);
-  c = black;
-  text = config->readColorEntry(GCOLOR_TEXT, &c);
-  c = blue;
-  in = config->readColorEntry(GCOLOR_IN, &c);
-  c = red;
-  out = config->readColorEntry(GCOLOR_OUT, &c);
+  if(config) {
+    config->setGroup(GRAPH_GRP);
+    enable = config->readBoolEntry(GENABLED, true);
+    c = white;
+    bg = config->readColorEntry(GCOLOR_BG, &c);
+    c = black;
+    text = config->readColorEntry(GCOLOR_TEXT, &c);
+    c = blue;
+    in = config->readColorEntry(GCOLOR_IN, &c);
+    c = red;
+    out = config->readColorEntry(GCOLOR_OUT, &c);
+  }
 }
 
 
 bool PPPData::graphingEnabled() {
-  config->setGroup("Graph");
-  return config->readBoolEntry(GENABLED, true);
+  return (bool) readNumConfig(GRAPH_GRP, GENABLED, true);
 }
 
 

@@ -1,5 +1,10 @@
 1998-09-28  Harri Porten  <porten@kde.org>
 
+	* ppplog.cpp: reduce memory consumption, small fixes
+	* pppdata.cpp: fixed segfaults caused by non-readable kppprc
+
+1998-09-28  Harri Porten  <porten@kde.org>
+
 	* runtests.cpp: bail out if some evil-doer has manipulated $HOME
 
 1998-09-26  Mario Weilguni <mweilguni@kde.org>

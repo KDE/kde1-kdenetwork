@@ -62,6 +62,7 @@
 #define GENERAL_GRP        "General"
 #define MODEM_GRP          "Modem"
 #define ACCOUNT_GRP        "Account"
+#define GRAPH_GRP          "Graph"
 
 // general
 #define DEFAULTACCOUNT_KEY "DefaultAccount"

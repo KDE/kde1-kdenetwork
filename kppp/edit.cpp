@@ -544,7 +544,7 @@ void DNSWidget::DNS_Edit_Changed(const char *text) {
   add->setEnabled(s.find(r) != -1);
 }
 
-void DNSWidget::DNS_Entry_Selected(int idx) {
+void DNSWidget::DNS_Entry_Selected(int) {
   remove->setEnabled(true);
 }
 

@@ -47,24 +47,6 @@
 #include "macros.h"
 #include "pppdata.h"
 
-bool PPPL_is_pppd_line(const char *s) {
-  char *p;
-
-  if(s == 0)
-    return FALSE;
-
-  p = (char *)strstr(s, "pppd[");
-  if(p == 0)
-    return FALSE;
-  p += strlen("pppd[");
-  while(isdigit(*p))
-    p++;
-
-  if(*p == ']')
-    return TRUE;
-
-  return FALSE;
-}
 
 const char *PPPL_findLogFile() {
   FILE *f;
@@ -87,8 +69,9 @@ const char *PPPL_findLogFile() {
 
 int PPPL_MakeLog(QStrList &list) {
   FILE *f;
-  int pid, newpid;
+  int pid = -1, newpid;
   char buffer[1024], *p;
+  const char *pidp;
 
   const char *fname = PPPL_findLogFile();
   if(fname == 0) {
@@ -102,45 +85,31 @@ int PPPL_MakeLog(QStrList &list) {
     return 1;
   }
 
-  while(fgets(buffer, sizeof(buffer)-1, f) != 0) {
-    if(!PPPL_is_pppd_line(buffer))
-      continue;    
+  while(fgets(buffer, sizeof(buffer), f) != 0) {
+    // pppd line ?
+    p = (char *)strstr(buffer, "pppd[");
+    if(p == 0)
+      continue;
+    pidp = p += strlen("pppd[");
+    while(isdigit(*p))
+      p++;
+    if(*p != ']')
+      continue;
 
-    if(strlen(buffer) && buffer[strlen(buffer)-1] == '\n')
+    /* find out pid of pppd */
+    sscanf(pidp, "%d", &newpid);
+    if(newpid != pid) {
+      pid = newpid;
+      list.clear();
+    }
+    if(buffer[strlen(buffer)-1] == '\n')
       buffer[strlen(buffer)-1] = '\0';
     list.append(buffer);
   }
   fclose(f);
 
-  if(list.count() == 0)
+  if(list.isEmpty())
     return 2;
-
-  /* find out pid of pppd */
-  p = (char *)strchr(list.last(), '[');
-  if(p == 0)
-    return 3;
-
-  p++;
-  sscanf(p, "%d", &pid);
-
-  // position at EOL
-  list.last();
-
-  while(list.prev()) {
-    p = (char *)strchr(list.current(), '[');
-    if(p != 0) {
-      p++;
-      sscanf(p, "%d", &newpid);
-
-      /* truncate list */
-      if(newpid != pid) {
-	int cnt = list.at();
-
-	for(int i = 0; i <= cnt; i++)
-	  list.removeFirst();
-      }
-    }
-  }
 
   /* clear security related info */
   list.first();
@@ -169,23 +138,13 @@ int PPPL_MakeLog(QStrList &list) {
 
 void PPPL_ShowLog() {
   QStrList sl;
-  int i;
+
   PPPL_MakeLog(sl);
 
-//   if(ret != 0 || sl.count() == 0) {
-//     KMsgBox::message(0,
-// 		     i18n("Error"),
-// 		     i18n("KPPP is not able to generate a PPP log.\n\nPossible reasons:\n   * the \"debug\" option has not been used\n   * an unusual syslogd configuration\n   * a KPPP bug"),
-// 		     KMsgBox::STOP);
-//     return;
-//   }
-
   bool foundLCP = gpppdata.getPPPDebug();
-  for(i = 0; !foundLCP && i < (int)sl.count(); i++) {
-    fprintf(stderr, "LINE=%s\n", sl.at(i));
-    if(strstr("[LCP", sl.at(i)) == NULL)
+  for(uint i = 0; !foundLCP && i < sl.count(); i++)
+    if(strstr(sl.at(i), "[LCP") != 0)
       foundLCP = TRUE;
-}
 
   if(!foundLCP) {
     int result = KMsgBox::yesNo(0,
@@ -197,7 +156,7 @@ void PPPL_ShowLog() {
 				     "Shall I turn it on now?"),
 				KMsgBox::QUESTION);
 
-    if(result != 0) {
+    if(result == 1) {
       gpppdata.setPPPDebug(TRUE);
       KMsgBox::message(0,
 		       i18n("Information"),
@@ -206,14 +165,15 @@ void PPPL_ShowLog() {
 			    "again, you will get a PPP log that may help\n"
 			    "you to track down the connection problem."),
 		       KMsgBox::INFORMATION);
+      return;
     }
     
-    return;
+    //    return;
   }
 
   // scan for remote messages
   const char *rmsg = "Remote message: ";
-  for(i = sl.count()-1; i >=0 ; i--) {
+  for(uint i = 0; i < sl.count() ; i++) {
     char *p = strstr(sl.at(i), rmsg);
 
     if(p) {
@@ -252,7 +212,7 @@ void PPPL_ShowLog() {
   tl->addWidget(bbox);
   tl->freeze();
 
-  for(i = 0; i < (int)sl.count(); i++)
+  for(uint i = 0; i < sl.count(); i++)
     edit->append(sl.at(i));
   
   dlg->connect(close, SIGNAL(clicked()),
@@ -264,7 +224,7 @@ void PPPL_ShowLog() {
     QDir d = QDir::home();
     QString s = d.absPath() + "/PPP-logfile";
     FILE *f = fopen(s.data(), "w");
-    for(i = 0; i < (int)sl.count(); i++)
+    for(uint i = 0; i < sl.count(); i++)
       fprintf(f, "%s\n", sl.at(i));
     fclose(f);
     if(geteuid() == 0)
