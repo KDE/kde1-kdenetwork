@@ -9,6 +9,12 @@ Changes made Apr 2
             because of all the latest ktopwidget movement :-(
 * [Roberto] New toolbar for the article window. A little more
             complex, but I think it's cool.
+* [Roberto] Started working in expire status dialog, so Krn
+            exits more gracefully.
+* [Roberto] Fixed a bug in expiring code, and probably
+            introduced another.
+            If I have to convert a string to time_t, is it ok
+            to always use atol()?
 -----------------------------------------------------------------------------
 Changes made Apr 1
 -----------------------------------------------------------------------------

@@ -43,6 +43,7 @@
 #include "kmaddrbook.h"
 #include "kfileio.h"
 #include "groupdlg.h" 
+#include "expirestatusdlg.h"
 #include "NNTP.h"
 #include <mimelib/mimepp.h>
 
@@ -287,7 +288,9 @@ void checkConf()
 
 void expireCache()   // robert's cache stuff
 {
-    
+
+    ExpireStatusDlg *dlg=new ExpireStatusDlg();
+    dlg->show();
     conf->setGroup("Cache");
     int expireTime=conf->readNumEntry("ExpireBodies",5);
     
@@ -363,7 +366,7 @@ void expireCache()   // robert's cache stuff
             tl.append (t.data());
         }
         
-        time_t lastAccess=atoi(tl.at(8));
+        time_t lastAccess=atol(tl.at(8));
         debug ("%ld",lastAccess);
 
         if (threshold>lastAccess)
@@ -405,7 +408,7 @@ void expireCache()   // robert's cache stuff
             tl.append (t.data());
         }
         
-        time_t lastAccess=atoi(tl.at(8));
+        time_t lastAccess=atol(tl.at(8));
         
         if (threshold>lastAccess)
         {
@@ -416,6 +419,8 @@ void expireCache()   // robert's cache stuff
         tl.clear();
         key=nextkey;
     }
+    dlg->hide();
+    delete dlg;
 }
 
 

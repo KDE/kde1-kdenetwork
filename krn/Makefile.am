@@ -36,7 +36,8 @@ BUILTSOURCES =	groupdlg.moc \
                 printdlg.moc\
                 rulesDlg.moc\
                 sortDlg.moc\
-		charsetsDlg.moc
+		charsetsDlg.moc\
+                expirestatusdlg.moc
 
 DISTCLEANFILES = $(BUILTSOURCES)
 
@@ -84,7 +85,9 @@ krn_SOURCES = 	main.cpp\
                 rulesDlg.cpp\
                 sortDlg.cpp\
                 rules.cpp\
-		charsetsDlg.cpp
+		charsetsDlg.cpp\
+                expirestatusdlg.cpp
+
 
 noinst_HEADERS = 	NNTP.h\
                 kmmessage.h\
@@ -127,7 +130,9 @@ noinst_HEADERS = 	NNTP.h\
                 rulesDlg.h\
                 sortDlg.h\
                 rules.h\
-		charsetsDlg.cpp
+		charsetsDlg.h\
+                expirestatusdlg.h
+
 
 
 SUBDIRS = docs pics
@@ -256,6 +261,10 @@ sortDlg.moc: sortDlg.h
 charsetsDlg.cpp:charsetsDlg.moc
 charsetsDlg.moc: charsetsDlg.h
 	$(MOC) charsetsDlg.h -o charsetsDlg.moc
+
+charsetsDlg.cpp:expirestatusdlg.moc
+expirestatusdlg.moc: expirestatusdlg.h
+	$(MOC) expirestatusdlg.h -o expirestatusdlg.moc
 	
 messages:
 	@XGETTEXT@ -ktranslate -C -x../../kdelibs/po/kde.pot $(krn_SOURCES)  && mv messages.po ../po/krn.pot
