@@ -1,12 +1,12 @@
-# New ports collection makefile for:   kdeutils
-# Version required:    Beta4
-# Date created:        28 October 1997
-# Whom:                Stefan Eßer <se@freebsd.org>
+# New ports collection makefile for:   kdenetwork
+# Version required:    1.0
+# Date created:        18 June 1998
+# Whom:                Alex Zepeda <garbanzo@hooked.net
 #
 # $Id$
 #
-PKGNAME=	kdeutils-`date "+%y%m%d"`
-CATEGORIES=	misc kde
+PKGNAME=	kdenetwork-`date "+%y%m%d"`
+CATEGORIES=	net kde
 
 MAINTAINER=	garbanzo@hooked.net
 
@@ -17,12 +17,14 @@ INSTALL_ROOT?=	${.CURDIR}/${PKGNAME}
 LIB_DEPENDS=	qt\\.1\\.3[0-9]:${PORTSDIR}/x11/qt \
 		gif\\.[23]\\.:${PORTSDIR}/graphics/giflib \
 		jpeg\\.8\\.:${PORTSDIR}/graphics/jpeg \
+		uu\\.1\\.:${PORTSDIR}/converters/uulib \
 		kdecore\\.0\\.9[1-9]:${PORTSDIR}/x11/kdelibs \
 		kdeui\\.0\\.9[1-9]:${PORTSDIR}/x11/kdelibs \
 		jscript\\.0\\.9[0-9]:${PORTSDIR}/x11/kdelibs \
 		khtmlw\\.0\\.9[1-9]:${PORTSDIR}/x11/kdelibs \
 		kfm\\.0\\.9[0-9]:${PORTSDIR}/x11/kdelibs \
 		mediatool\\.0\\.9[1-9]:${PORTSDIR}/x11/kdelibs
+		mimelib\\.1\\.9[0-9]:${PORTSDIR}/converters/kdesupport \
 NO_MTREE=	yup
 USE_GMAKE=	"without a doubt"
 NO_WRKDIR=	"Cause, you've obviously got the source in the parent directory"
