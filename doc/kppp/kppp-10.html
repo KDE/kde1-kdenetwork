@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<TITLE>The Kppp Handbook: Appendix</TITLE>
+</HEAD>
+<BODY>
+<A HREF="kppp-9.html">Previous</A>
+Next
+<A HREF="kppp.html#toc10">Table of Contents</A>
+<HR>
+<H2><A NAME="s10">10. Appendix</A></H2>
+
+
+<H2><A NAME="ss10.1">10.1 The Hayes Modem Command Set</A></H2>
+
+<P>
+<A HREF="hayes.html">The Hayes Command Set</A> might come handy if you 
+need to fine-tune your modem commands.</P>
+
+
+
+
+<H2><A NAME="ss10.2">10.2 kppp related files</A></H2>
+
+<P>By default Kppp makes use of the following files and directories. The location
+of some of those can be changed at compile time.</P>
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+$(KDEDIR)/bin/kppp
+$(KDEDIR)/share/doc/HTML/.../kppp/*
+$(KDEDIR)/share/apps/kppp
+$(KDEDIR)/share/apps/kppp/Rules
+$(HOMEDIR)/.kde/share/apps/kppp
+$(HOMEDIR)/.kde/share/apps/kppp/Rules/*.rst
+$(HOMEDIR)/.kde/share/apps/kppp/Log/*
+$(HOMEDIR)/.kde/share/config/kppprc
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+
+
+<H2><A NAME="ss10.3">10.3 Reporting problems with kppp</A></H2>
+
+<P>Before reporting a problem or potential but to the 
+<A HREF="mailto:wuebben@kde.org">maintainer</A> of kPPP, 
+please make sure that you have read the section 
+<A HREF="kppp-8.html#kppp FAQ">Frequently asked Questions</A> carefully.</P>
+<P>If you still have problems, you need to include the following informations
+with your report:
+<UL>
+<LI>The version of kPPP you are using. <I>kppp -v</I> will show the
+version number.</LI>
+<LI>The version of pppd you are using. <I>/usr/sbin/pppd -h</I> will show
+the number.</LI>
+<LI>What operating system and version you use. <I>uname -a</I> will tell you this
+information on most UNIX systems.</LI>
+<LI>If kPPP reports "pppd died unexpectedly", add the <I>debug</I> option
+to the 
+<A HREF="kppp-4.html#pppd arguments">pppd arguments</A>. Dial again to
+reproduce the error.<P>Now the file <CODE>/var/log/messages</CODE> (this depends on your system and
+configuration, but a typically installed Linux system will have this. Of
+course you must have root permissions to read this file) will have a lot of
+debugging output at the end. <B>Don't send us the whole file</B>. It
+typically has several thousands of lines and we neither have time nor are we
+willing to process such a file. Instead of send us just the last lines that
+contain <I>pppd</I>. Make sure that this file does <B>not</B> contain
+security compromising information such as passwords or usernames. Replace such
+entries with something like "myusername" and "mypassword"</P>
+</LI>
+</UL>
+</P>
+
+
+
+
+<HR>
+<A HREF="kppp-9.html">Previous</A>
+Next
+<A HREF="kppp.html#toc10">Table of Contents</A>
+</BODY>
+</HTML>
