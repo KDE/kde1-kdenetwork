@@ -947,6 +947,23 @@ Issuing <it>xhost +</it> before starting the connection would do the job, but be
 <p> 
 
 
+<sect2><em/kppp/ reports a successful connection, but Netscape just says "The
+server does not have a DNS entry"<p>
+Try pinging another server by its IP number, e.g. <tt>ping </tt>. If that
+works you should
+
+<itemize>
+
+<item> check if you provided <em/kppp/ with at least one DNS address
+<item> check the contents of <tt>/etc/host.conf</tt>. There should be a line
+saying something similar to <tt>order hosts, bind</tt>. The <tt>bind</tt>
+keyword advises the resolver library to include a nameserver query when
+performing an address lookup.
+
+</itemize>
+
+<p>
+
 <sect2>How do I make <em/kppp/ send a \n or a \r?
 <p>
 Just send an empty string such as in the following script:

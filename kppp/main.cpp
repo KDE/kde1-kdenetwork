@@ -68,7 +68,6 @@ KPPPWidget*	p_kppp;
 QString 	cmdl_account;
 
 bool	have_cmdl_account;
-bool 	pppd_has_died = false;
 bool    quit_on_disconnect = false;
 bool    terminate_connection = false;
 
@@ -794,7 +793,8 @@ void dieppp(int sig) {
       DockWidget::dock_widget->stop_stats();
       DockWidget::dock_widget->undock();      
 
-      pppd_has_died = true;
+      if(!gpppdata.pppdError())
+        gpppdata.setpppdError(E_PPPD_DIED);
       removedns();
       Modem::modem->unlockdevice();      
       

@@ -115,7 +115,12 @@ bool Modem::opentty() {
   }
   
   if(gpppdata.UseCDLine()) {
-    ioctl( modemfd, TIOCMGET, &flags ); 
+    if(ioctl(modemfd, TIOCMGET, &flags) == -1) {
+      errmsg = i18n("Sorry, can't detect state of CD line.");
+      ::close(modemfd);
+      modemfd = -1;
+      return false;
+    }
     if ((flags&TIOCM_CD) == 0) {
       errmsg = i18n("Sorry, the modem is not ready.");
       ::close(modemfd);

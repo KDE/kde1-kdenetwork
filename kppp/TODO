@@ -6,10 +6,8 @@ o separate setup and dialer
 o better FAQ
 o modem-setup wizard
 o provider-setup wizard
-o Some parts of the code are really a mess. Clean it up, especially
-  * Create an own dialer communicating with slots. This will allow non-X
-    kppp´s
-  * Separate GUI and non-GUI code in different classes
+o Create an own dialer communicating with slots. This will allow non-X kppp´s
+o Separate GUI and non-GUI code in different classes
 
 
 Done/Removed
@@ -18,3 +16,5 @@ o MS-CHAP support (since this relies on pppd, we cannot do it) (REMOVED)
 o signal catching for accounting
 o help users with those "pppd died unexpected..." bugs
 o CHAP support
+o All modem related code should be put in one class
+

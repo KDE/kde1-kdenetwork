@@ -59,7 +59,6 @@
 #include "pppdata.h"
 #include "macros.h"
 #include "docking.h"
-#include "loginterm.h"
 #include "log.h"
 #include "modem.h"
 
@@ -73,14 +72,11 @@ void parseargs(char* buf, char** args);
 
 extern KPPPWidget *p_kppp;
 extern int if_is_up();
-extern bool pppd_has_died;
 extern QString local_ip_address;
 extern bool quit_on_disconnect;
 
 QString old_hostname;
 bool modified_hostname;
-
-LoginTerm *termwindow = 0L;
 
 extern int totalbytes;
 
@@ -99,6 +95,7 @@ ConnectWidget::ConnectWidget(QWidget *parent, const char *name)
     scanvar(""),
     scanning(false),
     pausing(false),
+    termwindow(0),
     dialnumber(0)
 {
   modified_hostname = false;
@@ -181,7 +178,6 @@ void ConnectWidget::preinit() {
 
 
 void ConnectWidget::init() {
-  pppd_has_died = false;
   gpppdata.setpppdError(0);
   inittimer->stop();
   vmain = 0;
@@ -270,9 +266,9 @@ void ConnectWidget::timerEvent(QTimerEvent *) {
     // send a carriage return and then wait a bit so that the modem will
     // let us issue commands.
     if(gpppdata.modemPreInitDelay() > 0) {
-      usleep(gpppdata.modemPreInitDelay() * 10000);
+      usleep(gpppdata.modemPreInitDelay() * 5000);
       writeline("");
-      usleep(gpppdata.modemPreInitDelay() * 10000);
+      usleep(gpppdata.modemPreInitDelay() * 5000);
     }
     setExpect(gpppdata.modemInitResp());
     writeline(gpppdata.modemInitStr());
@@ -984,7 +980,8 @@ void ConnectWidget::if_waiting_slot() {
 
   if(!if_is_up()) {
 
-    if(pppd_has_died) { // we are here if pppd died immediately after starting it.
+    if(gpppdata.pppdError() != 0) {
+      // we are here if pppd died immediately after starting it.
 
       if_timer->stop();
       // error message handled in main.cpp: die_ppp()

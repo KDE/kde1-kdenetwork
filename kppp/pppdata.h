@@ -147,6 +147,7 @@
 
 // pppd errors
 #define E_IF_TIMEOUT       1
+#define E_PPPD_DIED        2
 
 class PPPData {
 public:

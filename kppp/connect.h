@@ -49,6 +49,7 @@
 #include "debug.h"
 #include "pwentry.h"
 #include "docking.h"
+#include "loginterm.h"
 
 #define MAXLOOPNEST (MAX_SCRIPT_ENTRIES/2)
 
@@ -129,6 +130,7 @@ private:
 
   bool pausing;
   PWEntry *prompt;
+  LoginTerm *termwindow;
 
   int scriptTimeout;
   QTimer *pausetimer;
