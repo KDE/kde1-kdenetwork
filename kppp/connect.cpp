@@ -938,6 +938,9 @@ void ConnectWidget::if_waiting_slot(){
 
     app->flushX(); /* make sure that we don't get any asyn errors*/
 
+    // remove the authenticion file
+    PAP_RemoveAuthFile();
+
     if((id = fork()) == 0) {
       setuid(getuid());
       system(gpppdata.command());
