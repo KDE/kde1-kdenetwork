@@ -35,7 +35,9 @@
 #   define DW_WIN32
 #endif
 
-#define DW_UNIX
+#if defined(__unix__) || defined(__unix)
+#   define DW_UNIX
+#endif
 
 //-----------------------------------------------------------------------------
 // End of line characters

@@ -80,18 +80,37 @@ static int CommentLength(const char *str)
 }
 
 
+/*
+ * ParseRfc822Date() -- Parse a date in RFC-822 (RFC-1123) format
+ * 
+ * If the parsing succeeds:
+ *  - tms is set to contain the year, month, day, hour, minute, and second
+ *  - z is set to contain the time zone in minutes offset from UTC
+ *  - 0 is returned
+ * If the parsing fails:
+ *  - (-1) is returned
+ *  - the information in tms and z is undefined
+ */
 #ifdef __cplusplus
 extern "C"
 #endif
-void ParseRfc822Date(const char *str, struct tm *tms, int *z)
+int ParseRfc822Date(const char *str, struct tm *tms, int *z)
 {
-    int pos, ch, n, sgn;
+    int pos, ch, n, sgn, numDigits;
     int day=1, month=0, year=1970, hour=0, minute=0, second=0, zone=0;
+    int isValid = 1;
 
+    if (!str) {
+        return -1;
+    }
     /*
      * Ignore optional day of the week.
+     */
+
+    /*
      * Day -- one or two digits
      */
+    /* -- skip over non-digits */
     pos = 0;
     ch = str[pos];
     while (ch && !('0' <= ch && ch <= '9')) {
@@ -103,7 +122,8 @@ void ParseRfc822Date(const char *str, struct tm *tms, int *z)
         }
         ch = str[pos];
     }
-    n = 0;
+    /* -- convert next one or two digits */
+    n = -1;
     if ('0' <= ch && ch <= '9') {
         n = ch - '0';
         ++pos;
@@ -115,10 +135,16 @@ void ParseRfc822Date(const char *str, struct tm *tms, int *z)
         ++pos;
         ch = str[pos];
     }
-    day = n;
+    if (1 <= n && n <= 31) {
+        day = n;
+    }
+    else {
+        isValid = 0;
+    }
     /*
      * Month.  Use case-insensitive string compare for added robustness
      */
+    /* -- skip over chars to first possible month char */
     while (ch && !('A' <= ch && ch <= 'S') && !('a' <= ch && ch <= 's')) {
         if (ch == '(') {
             pos += CommentLength(&str[pos]);
@@ -128,20 +154,22 @@ void ParseRfc822Date(const char *str, struct tm *tms, int *z)
         }
         ch = str[pos];
     }
+    /* -- convert the month name */
+    n = -1;
     switch (ch) {
     case 'A':
     case 'a':
         /* Apr */
         if ((str[pos+1] == 'p' || str[pos+1] == 'P')
             && (str[pos+2] == 'r' || str[pos+2] == 'R')) {
-            month = 3;
+            n = 3;
             pos += 3;
             ch = str[pos];
         }
         /* Aug */
         else if ((str[pos+1] == 'u' || str[pos+1] == 'U')
             && (str[pos+2] == 'g' || str[pos+2] == 'G')) {
-            month = 7;
+            n = 7;
             pos += 3;
             ch = str[pos];
         }
@@ -151,7 +179,7 @@ void ParseRfc822Date(const char *str, struct tm *tms, int *z)
         /* Dec */
         if ((str[pos+1] == 'e' || str[pos+1] == 'E')
             && (str[pos+2] == 'c' || str[pos+2] == 'C')) {
-            month = 11;
+            n = 11;
             pos += 3;
             ch = str[pos];
         }
@@ -161,7 +189,7 @@ void ParseRfc822Date(const char *str, struct tm *tms, int *z)
         /* Feb */
         if ((str[pos+1] == 'e' || str[pos+1] == 'E')
             && (str[pos+2] == 'b' || str[pos+2] == 'B')) {
-            month = 1;
+            n = 1;
             pos += 3;
             ch = str[pos];
         }
@@ -171,21 +199,21 @@ void ParseRfc822Date(const char *str, struct tm *tms, int *z)
         /* Jan */
         if ((str[pos+1] == 'a' || str[pos+1] == 'A')
             && (str[pos+2] == 'n' || str[pos+2] == 'N')) {
-            month = 0;
+            n = 0;
             pos += 3;
             ch = str[pos];
         }
         /* Jul */
         else if ((str[pos+1] == 'u' || str[pos+1] == 'U')
             && (str[pos+2] == 'l' || str[pos+2] == 'L')) {
-            month = 6;
+            n = 6;
             pos += 3;
             ch = str[pos];
         }
         /* Jun */
         else if ((str[pos+1] == 'u' || str[pos+1] == 'U')
             && (str[pos+2] == 'n' || str[pos+2] == 'N')) {
-            month = 5;
+            n = 5;
             pos += 3;
             ch = str[pos];
         }
@@ -195,14 +223,14 @@ void ParseRfc822Date(const char *str, struct tm *tms, int *z)
         /* Mar */
         if ((str[pos+1] == 'a' || str[pos+1] == 'A')
             && (str[pos+2] == 'r' || str[pos+2] == 'R')) {
-            month = 2;
+            n = 2;
             pos += 3;
             ch = str[pos];
         }
         /* May */
         else if ((str[pos+1] == 'a' || str[pos+1] == 'A')
             && (str[pos+2] == 'y' || str[pos+2] == 'Y')) {
-            month = 4;
+            n = 4;
             pos += 3;
             ch = str[pos];
         }
@@ -212,7 +240,7 @@ void ParseRfc822Date(const char *str, struct tm *tms, int *z)
         /* Nov */
         if ((str[pos+1] == 'o' || str[pos+1] == 'O')
             && (str[pos+2] == 'v' || str[pos+2] == 'V')) {
-            month = 10;
+            n = 10;
             pos += 3;
             ch = str[pos];
         }
@@ -222,7 +250,7 @@ void ParseRfc822Date(const char *str, struct tm *tms, int *z)
         /* Oct */
         if ((str[pos+1] == 'c' || str[pos+1] == 'c')
             && (str[pos+2] == 't' || str[pos+2] == 'T')) {
-            month = 9;
+            n = 9;
             pos += 3;
             ch = str[pos];
         }
@@ -232,15 +260,22 @@ void ParseRfc822Date(const char *str, struct tm *tms, int *z)
         /* Sep */
         if ((str[pos+1] == 'e' || str[pos+1] == 'E')
             && (str[pos+2] == 'p' || str[pos+2] == 'P')) {
-            month = 8;
+            n = 8;
             pos += 3;
             ch = str[pos];
         }
         break;
     }
+    if (0 <= n && n <= 11) {
+        month = n;
+    }
+    else {
+        isValid = 0;
+    }
     /*
      * Year -- two or four digits (four preferred)
      */
+    /* -- skip over non-digits */
     while (ch && !('0' <= ch && ch <= '9')) {
         if (ch == '(') {
             pos += CommentLength(&str[pos]);
@@ -250,7 +285,8 @@ void ParseRfc822Date(const char *str, struct tm *tms, int *z)
         }
         ch = str[pos];
     }
-    n = 0;
+    /* -- convert up to four digits */
+    n = -1;
     if ('0' <= ch && ch <= '9') {
         n = ch - '0';
         ++pos;
@@ -274,10 +310,16 @@ void ParseRfc822Date(const char *str, struct tm *tms, int *z)
         ++pos;
         ch = str[pos];
     }
-    year = (n < 1900) ? n+1900 : n;
+    if (n != -1) {
+        year = (n < 1900) ? n+1900 : n;
+    }
+    else {
+        isValid = 0;
+    }
     /* 
      * Hour -- two digits
      */
+    /* -- skip over non-digits */
     while (ch && !('0' <= ch && ch <= '9')) {
         if (ch == '(') {
             pos += CommentLength(&str[pos]);
@@ -287,7 +329,8 @@ void ParseRfc822Date(const char *str, struct tm *tms, int *z)
         }
         ch = str[pos];
     }
-    n = 0;
+    /* -- convert next one or two digits */
+    n = -1;
     if ('0' <= ch && ch <= '9') {
         n = ch - '0';
         ++pos;
@@ -299,11 +342,17 @@ void ParseRfc822Date(const char *str, struct tm *tms, int *z)
         ++pos;
         ch = str[pos];
     }
-    hour = n;
+    if (0 <= n && n <= 23) {
+        hour = n;
+    }
+    else {
+        isValid = 0;
+    }
     /*
      * Minute -- two digits
      */
-    while (ch != ':') {
+    /* -- scan for ':' */
+    while (ch && ch != ':') {
         if (ch == '(') {
             pos += CommentLength(&str[pos]);
         }
@@ -312,6 +361,7 @@ void ParseRfc822Date(const char *str, struct tm *tms, int *z)
         }
         ch = str[pos];
     }
+    /* -- skip over non-digits */
     while (ch && !('0' <= ch && ch <= '9')) {
         if (ch == '(') {
             pos += CommentLength(&str[pos]);
@@ -321,7 +371,8 @@ void ParseRfc822Date(const char *str, struct tm *tms, int *z)
         }
         ch = str[pos];
     }
-    n = 0;
+    /* -- convert next one or two digits */
+    n = -1;
     if ('0' <= ch && ch <= '9') {
         n = ch - '0';
         ++pos;
@@ -333,10 +384,16 @@ void ParseRfc822Date(const char *str, struct tm *tms, int *z)
         ++pos;
         ch = str[pos];
     }
-    minute = n;
+    if (0 <= n && n <= 59) {
+        minute = n;
+    }
+    else {
+        isValid = 0;
+    }
     /*
      * Second (optional) -- two digits
      */
+    /* -- scan for ':' or start of time zone */
     while (ch && !(ch == ':' || ch == '+' || ch == '-' || isalpha(ch))) {
         if (ch == '(') {
             pos += CommentLength(&str[pos]);
@@ -346,8 +403,10 @@ void ParseRfc822Date(const char *str, struct tm *tms, int *z)
         }
         ch = str[pos];
     }
+    /* -- get the seconds, if it's there */
     if (ch == ':') {
         ++pos;
+        /* -- skip non-digits */
         ch = str[pos];
         while (ch && !('0' <= ch && ch <= '9')) {
             if (ch == '(') {
@@ -358,7 +417,8 @@ void ParseRfc822Date(const char *str, struct tm *tms, int *z)
             }
             ch = str[pos];
         }
-        n = 0;
+        /* -- convert next one or two digits */
+        n = -1;
         if ('0' <= ch && ch <= '9') {
             n = ch - '0';
             ++pos;
@@ -370,7 +430,13 @@ void ParseRfc822Date(const char *str, struct tm *tms, int *z)
             ++pos;
             ch = str[pos];
         }
-        second = n;
+        if (0 <= n && n <= 59) {
+            second = n;
+        }
+        else {
+            isValid = 0;
+        }
+        /* -- scan for start of time zone */
         while (ch && !(ch == '+' || ch == '-' || isalpha(ch))) {
             if (ch == '(') {
                 pos += CommentLength(&str[pos]);
@@ -380,6 +446,9 @@ void ParseRfc822Date(const char *str, struct tm *tms, int *z)
             }
             ch = str[pos];
         }
+    }
+    else /* if (ch != ':') */ {
+        second = 0;
     }
     /*
      * Time zone
@@ -397,31 +466,43 @@ void ParseRfc822Date(const char *str, struct tm *tms, int *z)
         /* fall through */
     case '+':
         ++pos;
+        /* -- skip non-digits */
         ch = str[pos];
         while (ch && !('0' <= ch && ch <= '9')) {
             ++pos;
             ch = str[pos];
         }
+        /* -- convert next four digits */
+        numDigits = 0;
         n = 0;
         if ('0' <= ch && ch <= '9') {
             n = (ch - '0')*600;
             ++pos;
             ch = str[pos];
+            ++numDigits;
         }
         if ('0' <= ch && ch <= '9') {
             n += (ch - '0')*60;
             ++pos;
             ch = str[pos];
+            ++numDigits;
         }
         if ('0' <= ch && ch <= '9') {
             n += (ch - '0')*10;
             ++pos;
             ch = str[pos];
+            ++numDigits;
         }
         if ('0' <= ch && ch <= '9') {
             n += ch - '0';
+            ++numDigits;
         }
-        zone = sgn*n;
+        if (numDigits == 4) {
+            zone = sgn*n;
+        }
+        else {
+            isValid = 0;
+        }
         break;
     case 'U':
     case 'u':
@@ -519,20 +600,40 @@ void ParseRfc822Date(const char *str, struct tm *tms, int *z)
         else if ('N' <= ch && ch <= 'Y') {
             zone = ch - 'N' + 1;
         }
+        else {
+            isValid = 0;
+        }
         break;
     }
-    if (tms) {
-        tms->tm_year = year - 1900;
-        tms->tm_mon  = month;
-        tms->tm_mday = day;
-        tms->tm_hour = hour;
-        tms->tm_min  = minute;
-        tms->tm_sec  = second;
+    if (isValid) {
+        if (tms) {
+            tms->tm_year = year - 1900;
+            tms->tm_mon  = month;
+            tms->tm_mday = day;
+            tms->tm_hour = hour;
+            tms->tm_min  = minute;
+            tms->tm_sec  = second;
+        }
+        if (z) {
+            *z = zone;
+        }
     }
-    if (z) {
-        *z = zone;
+    else {
+        if (tms) {
+            tms->tm_year = 70;
+            tms->tm_mon  = 0;
+            tms->tm_mday = 1;
+            tms->tm_hour = 0;
+            tms->tm_min  = 0;
+            tms->tm_sec  = 0;
+        }
+        if (z) {
+            *z = 0;
+        }
     }
+    return isValid ? 0 : -1;
 }
+
 
 #ifdef DW_TESTING_DATEPARSER
 

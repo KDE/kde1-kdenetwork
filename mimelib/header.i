@@ -535,7 +535,7 @@ DW_INLINE DwText& DwHeader::MimeVersion()
 }
 
 
-DW_INLINE DwText& DwHeader::ContentDisposition()
+DW_INLINE DwDispositionType& DwHeader::ContentDisposition()
 {
-    return (DwText&) FieldBody("Content-Disposition");
+    return (DwDispositionType&) FieldBody("Content-Disposition");
 }

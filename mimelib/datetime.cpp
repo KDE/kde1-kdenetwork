@@ -39,7 +39,7 @@ static char lMonth[12][4]
     = {"Jan", "Feb", "Mar", "Apr", "May", "Jun",
        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
-extern "C" void ParseRfc822Date(const char *str, struct tm *tms, int *z);
+extern "C" int ParseRfc822Date(const char *str, struct tm *tms, int *z);
 static DwInt32 ymd_to_jdnl(int year, int mon, int day, int julian);
 static void jdnl_to_ymd(DwInt32 jdn, int *year, int *mon, int *day, int julian);
 static DwUint32 my_inv_gmtime(struct tm* ptms);
@@ -295,14 +295,25 @@ void DwDateTime::Parse()
     str[79] = 0;
     struct tm tms;
     int zone;
-    ParseRfc822Date(str, &tms, &zone);
-    mYear   = tms.tm_year + 1900;
-    mMonth  = tms.tm_mon+1;
-    mDay    = tms.tm_mday;
-    mHour   = tms.tm_hour;
-    mMinute = tms.tm_min;
-    mSecond = tms.tm_sec;
-    mZone   = zone;
+    int err = ParseRfc822Date(str, &tms, &zone);
+    if (!err) {
+        mYear   = tms.tm_year + 1900;
+        mMonth  = tms.tm_mon+1;
+        mDay    = tms.tm_mday;
+        mHour   = tms.tm_hour;
+        mMinute = tms.tm_min;
+        mSecond = tms.tm_sec;
+        mZone   = zone;
+    }
+    else /* if (err) */ {
+        mYear   = 1970;
+        mMonth  = 1;
+        mDay    = 1;
+        mHour   = 0;
+        mMinute = 0;
+        mSecond = 0;
+        mZone   = 0;
+    }
     if (mustDelete) {
         delete str;
     }

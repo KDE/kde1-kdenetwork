@@ -34,20 +34,25 @@
 #define RECV_BUFFER_SIZE  8192
 #define SEND_BUFFER_SIZE  1024
 
+#if defined(DW_DEBUG_NNTP)
+#  define DBG_NNTP_STMT(x) x
+#else
+#  define DBG_NNTP_STMT(x)
+#endif
+
+
 // To do: create a private Initialize() member function that is called from
 // the constructor and from Open() and that initializes the state.
 
-// To do: change SendData() to accept a DwString
-
 DwNntpClient::DwNntpClient()
 {
-    mSendBuffer = new char[SEND_BUFFER_SIZE+1];
-    mRecvBuffer = new char[RECV_BUFFER_SIZE+1];
+    mSendBuffer = new char[SEND_BUFFER_SIZE];
+    mRecvBuffer = new char[RECV_BUFFER_SIZE];
     mLastChar = -1;
     mLastLastChar = -1;
     mNumRecvBufferChars = 0;
     mRecvBufferPos = 0;
-    mResponseCode = 0;
+    mReplyCode = 0;
     mObserver = 0;
 }
 
@@ -68,12 +73,13 @@ DwNntpClient::~DwNntpClient()
 int DwNntpClient::Open(const char* aServer, DwUint16 aPort)
 {
     mSingleLineResponse.clear();
-    mResponseCode = -1;
+    mMultiLineResponse.clear();
+    mReplyCode = 0;
     int err = DwProtocolClient::Open(aServer, aPort);
     if (! err) {
         PGetSingleLineResponse();
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
@@ -85,9 +91,9 @@ DwObserver* DwNntpClient::SetObserver(DwObserver* aObserver)
 }
 
 
-int DwNntpClient::ResponseCode() const
+int DwNntpClient::ReplyCode() const
 {
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
@@ -105,276 +111,267 @@ const DwString& DwNntpClient::MultiLineResponse() const
 
 int DwNntpClient::Article(int aArticleNum)
 {
+    mReplyCode = 0;
+    mSingleLineResponse.clear();
+    mMultiLineResponse.clear();
     if (aArticleNum >= 0) {
         sprintf(mSendBuffer, "ARTICLE %d\r\n", aArticleNum);
     }
     else {
         strcpy(mSendBuffer, "ARTICLE\r\n");
     }
-
-    // for debugging
-    cout << "C: " << mSendBuffer << endl;
-
-    mResponseCode = -1;
+    DBG_NNTP_STMT(cout << "C: " << mSendBuffer << endl;)
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
-        if (mResponseCode/100%10 == 2) {
+        if (mReplyCode/100%10 == 2) {
             PGetMultiLineResponse();
         }
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
 int DwNntpClient::Article(const char* aMsgId)
 {
+    mReplyCode = 0;
+    mSingleLineResponse.clear();
+    mMultiLineResponse.clear();
     if (!aMsgId || !*aMsgId) {
         // error!
-        return -1;
+        return mReplyCode;
     }
     strcpy(mSendBuffer, "ARTICLE ");
     strncat(mSendBuffer, aMsgId, 80);
     strcat(mSendBuffer, "\r\n");
-
-    // for debugging
-    cout << "C: " << mSendBuffer << endl;
-
-    mResponseCode = -1;
+    DBG_NNTP_STMT(cout << "C: " << mSendBuffer << endl;)
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
-        if (mResponseCode/100%10 == 2) {
+        if (mReplyCode/100%10 == 2) {
             PGetMultiLineResponse();
         }
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
 int DwNntpClient::Head(int aArticleNum)
 {
+    mReplyCode = 0;
+    mSingleLineResponse.clear();
+    mMultiLineResponse.clear();
     if (aArticleNum >= 0) {
         sprintf(mSendBuffer, "HEAD %d\r\n", aArticleNum);
     }
     else {
         strcpy(mSendBuffer, "HEAD\r\n");
     }
-
-    // for debugging
-    cout << "C: " << mSendBuffer << endl;
-
-    mResponseCode = -1;
+    DBG_NNTP_STMT(cout << "C: " << mSendBuffer << endl;)
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
-        if (mResponseCode/100%10 == 2) {
+        if (mReplyCode/100%10 == 2) {
             PGetMultiLineResponse();
         }
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
 int DwNntpClient::Head(const char* aMsgId)
 {
+    mReplyCode = 0;
+    mSingleLineResponse.clear();
+    mMultiLineResponse.clear();
     if (!aMsgId || !*aMsgId) {
-        return -1;
+        return mReplyCode;
     }
     strcpy(mSendBuffer, "HEAD ");
     strncat(mSendBuffer, aMsgId, 80);
     strcat(mSendBuffer, "\r\n");
-
-    // for debugging
-    cout << "C: " << mSendBuffer << endl;
-
-    mResponseCode = -1;
+    DBG_NNTP_STMT(cout << "C: " << mSendBuffer << endl;)
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
-        if (mResponseCode/100%10 == 2) {
+        if (mReplyCode/100%10 == 2) {
             PGetMultiLineResponse();
         }
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
 int DwNntpClient::Body(int articleNum)
 {
+    mReplyCode = 0;
+    mSingleLineResponse.clear();
+    mMultiLineResponse.clear();
     if (articleNum >= 0) {
         sprintf(mSendBuffer, "BODY %d\r\n", articleNum);
     }
     else {
         strcpy(mSendBuffer, "BODY\r\n");
     }
-
-    // for debugging
-    cout << "C: " << mSendBuffer << endl;
-
-    mResponseCode = -1;
+    DBG_NNTP_STMT(cout << "C: " << mSendBuffer << endl;)
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
-        if (mResponseCode/100%10 == 2) {
+        if (mReplyCode/100%10 == 2) {
             PGetMultiLineResponse();
         }
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
 int DwNntpClient::Body(const char* aMsgId)
 {
+    mReplyCode = 0;
+    mSingleLineResponse.clear();
+    mMultiLineResponse.clear();
     if (!aMsgId || !*aMsgId) {
-        return -1;
+        return mReplyCode;
     }
     strcpy(mSendBuffer, "BODY ");
     strncat(mSendBuffer, aMsgId, 80);
     strcat(mSendBuffer, "\r\n");
-
-    // for debugging
-    cout << "C: " << mSendBuffer << endl;
-
-    mResponseCode = -1;
+    DBG_NNTP_STMT(cout << "C: " << mSendBuffer << endl;)
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
-        if (mResponseCode/100%10 == 2) {
+        if (mReplyCode/100%10 == 2) {
             PGetMultiLineResponse();
         }
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
 int DwNntpClient::Stat(int articleNum)
 {
+    mReplyCode = 0;
+    mSingleLineResponse.clear();
+    mMultiLineResponse.clear();
     if (articleNum >= 0) {
         sprintf(mSendBuffer, "STAT %d\r\n", articleNum);
     }
     else {
         strcpy(mSendBuffer, "STAT\r\n");
     }
-
-    // for debugging
-    cout << "C: " << mSendBuffer << endl;
-
-    mResponseCode = -1;
+    DBG_NNTP_STMT(cout << "C: " << mSendBuffer << endl;)
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
 int DwNntpClient::Stat(const char* aMsgId)
 {
+    mReplyCode = 0;
+    mSingleLineResponse.clear();
+    mMultiLineResponse.clear();
     if (!aMsgId || !*aMsgId) {
-        return -1;
+        return mReplyCode;
     }
     strcpy(mSendBuffer, "STAT ");
     strncat(mSendBuffer, aMsgId, 80);
     strcat(mSendBuffer, "\r\n");
-
-    // for debugging
-    cout << "C: " << mSendBuffer << endl;
-
-    mResponseCode = -1;
+    DBG_NNTP_STMT(cout << "C: " << mSendBuffer << endl;)
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
 int DwNntpClient::Group(const char* aNewsgroupName)
 {
+    mReplyCode = 0;
+    mSingleLineResponse.clear();
+    mMultiLineResponse.clear();
     sprintf(mSendBuffer, "GROUP %s\r\n", aNewsgroupName);
-
-    // for debugging
-    cout << "C: " << mSendBuffer << endl;
-
-    mResponseCode = -1;
+    DBG_NNTP_STMT(cout << "C: " << mSendBuffer << endl;)
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
 int DwNntpClient::Help()
 {
+    mReplyCode = 0;
+    mSingleLineResponse.clear();
+    mMultiLineResponse.clear();
     strcpy(mSendBuffer, "HELP\r\n");
-
-    // for debugging
-    cout << "C: " << mSendBuffer << endl;
-
-    mResponseCode = -1;
+    DBG_NNTP_STMT(cout << "C: " << mSendBuffer << endl;)
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
-        if (mResponseCode/100%10 == 1) {
+        if (mReplyCode/100%10 == 1) {
             PGetMultiLineResponse();
         }
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
 int DwNntpClient::Last()
 {
+    mReplyCode = 0;
+    mSingleLineResponse.clear();
+    mMultiLineResponse.clear();
     strcpy(mSendBuffer, "LAST\r\n");
-
-    // for debugging
-    cout << "C: " << mSendBuffer << endl;
-
-    mResponseCode = -1;
+    DBG_NNTP_STMT(cout << "C: " << mSendBuffer << endl;)
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
 int DwNntpClient::List()
 {
+    mReplyCode = 0;
+    mSingleLineResponse.clear();
+    mMultiLineResponse.clear();
     strcpy(mSendBuffer, "LIST\r\n");
-
-    // for debugging
-    cout << "C: " << mSendBuffer << endl;
-
-    mResponseCode = -1;
+    DBG_NNTP_STMT(cout << "C: " << mSendBuffer << endl;)
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
-        if (mResponseCode/100%10 == 2) {
+        if (mReplyCode/100%10 == 2) {
             PGetMultiLineResponse();
         }
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
 int DwNntpClient::Newgroups(const char* aDate, const char* aTime,
     DwBool aIsGmt, const char* aDistribution)
 {
+    mReplyCode = 0;
+    mSingleLineResponse.clear();
+    mMultiLineResponse.clear();
     strcpy(mSendBuffer, "NEWGROUPS ");
     strcat(mSendBuffer, aDate);
     strcat(mSendBuffer, " ");
@@ -387,26 +384,25 @@ int DwNntpClient::Newgroups(const char* aDate, const char* aTime,
         strcat(mSendBuffer, aDistribution);
     }
     strcat(mSendBuffer, "\r\n");
-
-    // for debugging
-    cout << "C: " << mSendBuffer << endl;
-
-    mResponseCode = -1;
+    DBG_NNTP_STMT(cout << "C: " << mSendBuffer << endl;)
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
-        if (mResponseCode/100%10 == 2) {
+        if (mReplyCode/100%10 == 2) {
             PGetMultiLineResponse();
         }
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
 int DwNntpClient::Newnews(const char* aNewsgroups, const char* aDate,
     const char* aTime, DwBool aIsGmt, const char* aDistribution)
 {
+    mReplyCode = 0;
+    mSingleLineResponse.clear();
+    mMultiLineResponse.clear();
     strcpy(mSendBuffer, "NEWNEWS ");
     strcat(mSendBuffer, aNewsgroups);
     strcat(mSendBuffer, " ");
@@ -421,110 +417,111 @@ int DwNntpClient::Newnews(const char* aNewsgroups, const char* aDate,
         strcat(mSendBuffer, aDistribution);
     }
     strcat(mSendBuffer, "\r\n");
-
-    // for debugging
-    cout << "C: " << mSendBuffer << endl;
-
-    mResponseCode = -1;
+    DBG_NNTP_STMT(cout << "C: " << mSendBuffer << endl;)
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
-        if (mResponseCode/100%10 == 2) {
+        if (mReplyCode/100%10 == 2) {
             PGetMultiLineResponse();
         }
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
 int DwNntpClient::Next()
 {
+    mReplyCode = 0;
+    mSingleLineResponse.clear();
+    mMultiLineResponse.clear();
     strcpy(mSendBuffer, "NEXT\r\n");
-
-    // for debugging
-    cout << "C: " << mSendBuffer << endl;
-
-    mResponseCode = -1;
+    DBG_NNTP_STMT(cout << "C: " << mSendBuffer << endl;)
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
 int DwNntpClient::Post()
 {
+    mReplyCode = 0;
+    mSingleLineResponse.clear();
+    mMultiLineResponse.clear();
     strcpy(mSendBuffer, "POST\r\n");
-
-    // for debugging
-    cout << "C: " << mSendBuffer << endl;
-
-    mResponseCode = -1;
+    DBG_NNTP_STMT(cout << "C: " << mSendBuffer << endl;)
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
 int DwNntpClient::Quit()
 {
+    mReplyCode = 0;
+    mSingleLineResponse.clear();
+    mMultiLineResponse.clear();
     strcpy(mSendBuffer, "QUIT\r\n");
-
-    // for debugging
-    cout << "C: " << mSendBuffer << endl;
-
-    mResponseCode = -1;
+    DBG_NNTP_STMT(cout << "C: " << mSendBuffer << endl;)
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
 int DwNntpClient::Slave()
 {
+    mReplyCode = 0;
+    mSingleLineResponse.clear();
+    mMultiLineResponse.clear();
     strcpy(mSendBuffer, "SLAVE\r\n");
-
-    // for debugging
-    cout << "C: " << mSendBuffer << endl;
-
-    mResponseCode = -1;
+    DBG_NNTP_STMT(cout << "C: " << mSendBuffer << endl;)
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
-int DwNntpClient::Date()
+//int DwNntpClient::Date()
+//{
+//    mReplyCode = 0;
+//    mSingleLineResponse.clear();
+//    mMultiLineResponse.clear();
+//    strcpy(mSendBuffer, "DATE\r\n");
+//    DBG_NNTP_STMT(cout << "C: " << mSendBuffer << endl;)
+//    int bufferLen = strlen(mSendBuffer);
+//    int numSent = PSend(mSendBuffer, bufferLen);
+//    if (numSent == bufferLen) {
+//        PGetSingleLineResponse();
+//    }
+//    return mReplyCode;
+//}
+
+
+int DwNntpClient::SendData(const DwString& aStr)
 {
-    strcpy(mSendBuffer, "DATE\r\n");
-
-    // for debugging
-    cout << "C: " << mSendBuffer << endl;
-
-    mResponseCode = -1;
-    int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
-    if (numSent == bufferLen) {
-        PGetSingleLineResponse();
-    }
-    return mResponseCode;
+    return SendData(aStr.data(), aStr.length());
 }
 
 
 int DwNntpClient::SendData(const char* aBuf, int aBufLen)
 {
+    mReplyCode = 0;
+    mSingleLineResponse.clear();
+    mMultiLineResponse.clear();
+
     int pos = 0;
     int len = 0;
     const char* buf = 0;
@@ -593,43 +590,44 @@ int DwNntpClient::SendData(const char* aBuf, int aBufLen)
 
         // Send the buffer
 
-        // To do: check for error from Send()
-        Send(buf, len);
+        int numSent = PSend(buf, len);
+        if (numSent != len) {
+            mReplyCode = 0;
+            return mReplyCode;
+        }
     }
 
     // Send final '.' CR LF.  If CR LF are not at the end of the buffer, then
     // send a CR LF '.' CR LF.
 
     if (lastLastChar == '\r' && lastChar == '\n') {
-        Send(".\r\n", 3);
+        PSend(".\r\n", 3);
     }
     else {
-        Send("\r\n.\r\n", 5);
+        PSend("\r\n.\r\n", 5);
     }
 
     // Get the server's response
 
     PGetSingleLineResponse();
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
 void DwNntpClient::PGetSingleLineResponse()
 {
-    mResponseCode = -1;
+    mReplyCode = 0;
     mSingleLineResponse.clear();
     char* ptr;
     int len;
     int err = PGetLine(&ptr, &len);
     if (! err) {
-        mResponseCode = strtol(ptr, NULL, 10);
+        mReplyCode = strtol(ptr, NULL, 10);
         mSingleLineResponse.assign(ptr, len);
-
-        // for debugging
-        char buffer[256];
-        strncpy(buffer, ptr, len);
-        buffer[len] = 0;
-        cout << "S: " << buffer;
+        DBG_NNTP_STMT(char buffer[256];)
+        DBG_NNTP_STMT(strncpy(buffer, ptr, len);)
+        DBG_NNTP_STMT(buffer[len] = 0;)
+        DBG_NNTP_STMT(cout << "S: " << buffer;)
     }
 }
 
@@ -648,7 +646,7 @@ void DwNntpClient::PGetMultiLineResponse()
         // Check for an error
 
         if (err) {
-            mResponseCode = -1;
+            mReplyCode = 0;
             return;
         }
 
@@ -718,7 +716,7 @@ int DwNntpClient::PGetLine(char** aPtr, int* aLen)
         mNumRecvBufferChars -= startPos;
         mRecvBufferPos = mNumRecvBufferChars;
         int bufLen = RECV_BUFFER_SIZE - mRecvBufferPos;
-        int n = Receive(&mRecvBuffer[mRecvBufferPos], bufLen);
+        int n = PReceive(&mRecvBuffer[mRecvBufferPos], bufLen);
         if (n == 0) {
             // The connection has been closed or an error occurred
             return -1;
@@ -728,3 +726,4 @@ int DwNntpClient::PGetLine(char** aPtr, int* aLen)
         pos = mRecvBufferPos;
     }
 }
+

@@ -36,13 +36,13 @@
 #if defined (DW_DEBUG_VERSION)
 #define DBG_STMT(x) x;
 #else
-#define DBG_STMT(x)
+#define DBG_STMT(x) ;
 #endif
 
 #if defined (DW_DEBUG_VERSION) || defined (DW_DEVELOPMENT_VERSION)
 #define DEV_STMT(x) x;
 #else
-#define DEV_STMT(x)
+#define DEV_STMT(x) ;
 #endif
 
 #include <assert.h>

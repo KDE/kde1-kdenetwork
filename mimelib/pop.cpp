@@ -34,14 +34,20 @@
 #define RECV_BUFFER_SIZE  8192
 #define SEND_BUFFER_SIZE  1024
 
+#if defined(DW_DEBUG_POP)
+#  define DBG_POP_STMT(x) x
+#else
+#  define DBG_POP_STMT(x)
+#endif
+
 
 DwPopClient::DwPopClient()
 {
-    mSendBuffer = new char[SEND_BUFFER_SIZE+1];
-    mRecvBuffer = new char[RECV_BUFFER_SIZE+1];
+    mSendBuffer = new char[SEND_BUFFER_SIZE];
+    mRecvBuffer = new char[RECV_BUFFER_SIZE];
     mNumRecvBufferChars = 0;
     mRecvBufferPos = 0;
-    mResponseCode = 0;
+    mReplyCode = 0;
     mObserver = 0;
 }
 
@@ -61,13 +67,14 @@ DwPopClient::~DwPopClient()
 
 int DwPopClient::Open(const char* aServer, DwUint16 aPort)
 {
+    mReplyCode = 0;
     mSingleLineResponse.clear();
-    mResponseCode = -1;
+    mMultiLineResponse.clear();
     int err = DwProtocolClient::Open(aServer, aPort);
     if (! err) {
         PGetSingleLineResponse();
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
@@ -79,9 +86,9 @@ DwObserver* DwPopClient::SetObserver(DwObserver* aObserver)
 }
 
 
-int DwPopClient::ResponseCode() const
+int DwPopClient::ReplyCode() const
 {
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
@@ -99,277 +106,261 @@ const DwString& DwPopClient::MultiLineResponse() const
 
 int DwPopClient::User(const char* aName)
 {
+    mReplyCode = 0;
+    mSingleLineResponse.clear();
+    mMultiLineResponse.clear();
     strcpy(mSendBuffer, "USER ");
     strcat(mSendBuffer, aName);
     strcat(mSendBuffer, "\r\n");
-
-    // for debugging
-    cout << "C: " << mSendBuffer << endl;
-
-    mResponseCode = -1;
+    DBG_POP_STMT(cout << "C: " << mSendBuffer << endl;)
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
 int DwPopClient::Pass(const char* aPasswd)
 {
+    mReplyCode = 0;
+    mSingleLineResponse.clear();
+    mMultiLineResponse.clear();
     strcpy(mSendBuffer, "PASS ");
     strcat(mSendBuffer, aPasswd);
     strcat(mSendBuffer, "\r\n");
-
-    // for debugging
-    cout << "C: " << mSendBuffer << endl;
-
-    mResponseCode = -1;
+    DBG_POP_STMT(cout << "C: " << mSendBuffer << endl;)
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
 int DwPopClient::Quit()
 {
+    mReplyCode = 0;
+    mSingleLineResponse.clear();
+    mMultiLineResponse.clear();
     strcpy(mSendBuffer, "QUIT\r\n");
-
-    // for debugging
-    cout << "C: " << mSendBuffer << endl;
-
-    mResponseCode = -1;
+    DBG_POP_STMT(cout << "C: " << mSendBuffer << endl;)
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
 int DwPopClient::Stat()
 {
+    mReplyCode = 0;
+    mSingleLineResponse.clear();
+    mMultiLineResponse.clear();
     strcpy(mSendBuffer, "STAT\r\n");
-
-    // for debugging
-    cout << "C: " << mSendBuffer << endl;
-
-    mResponseCode = -1;
+    DBG_POP_STMT(cout << "C: " << mSendBuffer << endl;)
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
 int DwPopClient::List()
 {
+    mReplyCode = 0;
+    mSingleLineResponse.clear();
+    mMultiLineResponse.clear();
     strcpy(mSendBuffer, "LIST\r\n");
-
-    // for debugging
-    cout << "C: " << mSendBuffer << endl;
-
-    mResponseCode = -1;
+    DBG_POP_STMT(cout << "C: " << mSendBuffer << endl;)
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
-        if (mResponseCode == '+') {
+        if (mReplyCode == '+') {
             PGetMultiLineResponse();
         }
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
 int DwPopClient::List(int aMsg)
 {
+    mReplyCode = 0;
+    mSingleLineResponse.clear();
+    mMultiLineResponse.clear();
     sprintf(mSendBuffer, "LIST %d\r\n", aMsg);
-
-    // for debugging
-    cout << "C: " << mSendBuffer << endl;
-
-    mResponseCode = -1;
+    DBG_POP_STMT(cout << "C: " << mSendBuffer << endl;)
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
 int DwPopClient::Retr(int aMsg)
 {
+    mReplyCode = 0;
+    mSingleLineResponse.clear();
+    mMultiLineResponse.clear();
     sprintf(mSendBuffer, "RETR %d\r\n", aMsg);
-
-    // for debugging
-    cout << "C: " << mSendBuffer << endl;
-
-    mResponseCode = -1;
+    DBG_POP_STMT(cout << "C: " << mSendBuffer << endl;)
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
-        if (mResponseCode == '+') {
+        if (mReplyCode == '+') {
             PGetMultiLineResponse();
         }
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
 int DwPopClient::Dele(int aMsg)
 {
+    mReplyCode = 0;
+    mSingleLineResponse.clear();
+    mMultiLineResponse.clear();
     sprintf(mSendBuffer, "DELE %d\r\n", aMsg);
-
-    // for debugging
-    cout << "C: " << mSendBuffer << endl;
-
-    mResponseCode = -1;
+    DBG_POP_STMT(cout << "C: " << mSendBuffer << endl;)
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
 int DwPopClient::Noop()
 {
+    mReplyCode = 0;
+    mSingleLineResponse.clear();
+    mMultiLineResponse.clear();
     strcpy(mSendBuffer, "NOOP\r\n");
-
-    // for debugging
-    cout << "C: " << mSendBuffer << endl;
-
-    mResponseCode = -1;
+    DBG_POP_STMT(cout << "C: " << mSendBuffer << endl;)
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
 int DwPopClient::Rset()
 {
+    mReplyCode = 0;
+    mSingleLineResponse.clear();
+    mMultiLineResponse.clear();
     strcpy(mSendBuffer, "RSET\r\n");
-
-    // for debugging
-    cout << "C: " << mSendBuffer << endl;
-
-    mResponseCode = -1;
+    DBG_POP_STMT(cout << "C: " << mSendBuffer << endl;)
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
 int DwPopClient::Apop(const char* aName, const char* aDigest)
 {
+    mReplyCode = 0;
+    mSingleLineResponse.clear();
+    mMultiLineResponse.clear();
     sprintf(mSendBuffer, "APOP %s %s\r\n", aName, aDigest);
-
-    // for debugging
-    cout << "C: " << mSendBuffer << endl;
-
-    mResponseCode = -1;
+    DBG_POP_STMT(cout << "C: " << mSendBuffer << endl;)
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
 int DwPopClient::Top(int aMsg, int aNumLines)
 {
+    mReplyCode = 0;
+    mSingleLineResponse.clear();
+    mMultiLineResponse.clear();
     sprintf(mSendBuffer, "TOP %d %d\r\n", aMsg, aNumLines);
-
-    // for debugging
-    cout << "C: " << mSendBuffer << endl;
-
-    mResponseCode = -1;
+    DBG_POP_STMT(cout << "C: " << mSendBuffer << endl;)
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
-        if (mResponseCode == '+') {
+        if (mReplyCode == '+') {
             PGetMultiLineResponse();
         }
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
 int DwPopClient::Uidl()
 {
+    mReplyCode = 0;
+    mSingleLineResponse.clear();
+    mMultiLineResponse.clear();
     strcpy(mSendBuffer, "UIDL\r\n");
-
-    // for debugging
-    cout << "C: " << mSendBuffer << endl;
-
-    mResponseCode = -1;
+    DBG_POP_STMT(cout << "C: " << mSendBuffer << endl;)
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
-        if (mResponseCode == '+') {
+        if (mReplyCode == '+') {
             PGetMultiLineResponse();
         }
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
 int DwPopClient::Uidl(int aMsg)
 {
+    mReplyCode = 0;
+    mSingleLineResponse.clear();
+    mMultiLineResponse.clear();
     sprintf(mSendBuffer, "UIDL %d\r\n", aMsg);
-
-    // for debugging
-    cout << "C: " << mSendBuffer << endl;
-
-    mResponseCode = -1;
+    DBG_POP_STMT(cout << "C: " << mSendBuffer << endl);
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
-        if (mResponseCode == '+') {
+        if (mReplyCode == '+') {
             PGetMultiLineResponse();
         }
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
 void DwPopClient::PGetSingleLineResponse()
 {
-    mResponseCode = -1;
+    mReplyCode = 0;
     mSingleLineResponse.clear();
     char* ptr;
     int len;
     int err = PGetLine(&ptr, &len);
     if (! err) {
-        mResponseCode = ptr[0];
+        mReplyCode = ptr[0];
         mSingleLineResponse.assign(ptr, len);
-
-        // for debugging
-        char buffer[256];
-        strncpy(buffer, ptr, len);
-        buffer[len] = 0;
-        printf("S: %s", buffer);
+        DBG_POP_STMT(char buffer[256];)
+        DBG_POP_STMT(strncpy(buffer, ptr, len);)
+        DBG_POP_STMT(buffer[len] = 0;)
+        DBG_POP_STMT(cout << "S: " << buffer;)
     }
 }
 
@@ -388,7 +379,7 @@ void DwPopClient::PGetMultiLineResponse()
         // Check for an error
 
         if (err) {
-            mResponseCode = -1;
+            mReplyCode = 0;
             return;
         }
 
@@ -458,7 +449,7 @@ int DwPopClient::PGetLine(char** aPtr, int* aLen)
         mNumRecvBufferChars -= startPos;
         mRecvBufferPos = mNumRecvBufferChars;
         int bufLen = RECV_BUFFER_SIZE - mRecvBufferPos;
-        int n = Receive(&mRecvBuffer[mRecvBufferPos], bufLen);
+        int n = PReceive(&mRecvBuffer[mRecvBufferPos], bufLen);
         if (n == 0) {
             // The connection has been closed or an error occurred
             return -1;

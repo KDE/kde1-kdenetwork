@@ -48,14 +48,24 @@
 #define INADDR_NONE (-1)
 #endif
 
+#if defined(DW_DEBUG_PROTO)
+#  define DBG_PROTO_STMT(x) x
+#else
+#  define DBG_PROTO_STMT(x)
+#endif
+
 
 DwProtocolClient::DwProtocolClient()
 {
-    mIsOpen = 0;
-	mSocket = -1;
-	mServerName = 0;
-    memset(&mServerAddr, 0, sizeof(struct sockaddr_in));
-    mErrorCode = 0;
+    mIsOpen         = DwFalse;
+    mSocket         = -1;
+    mPort           = 0;
+    mServerName     = 0;
+    mReceiveTimeout = 90;
+    mFailureCode    = 0;
+    mFailureStr     = 0;
+    mErrorCode      = 0;
+    mErrorStr       = 0;
 }
 
 
@@ -64,30 +74,25 @@ DwProtocolClient::~DwProtocolClient()
     if (mIsOpen) {
         Close();
     }
-}
-
-
-DwBool DwProtocolClient::IsOpen() const
-{
-    return mIsOpen;
-}
-
-
-int DwProtocolClient::LastError() const
-{
-    return mErrorCode;
+    if (mServerName) {
+        delete [] mServerName;
+    }
 }
 
 
 int DwProtocolClient::Open(const char* aServer, DwUint16 aPort)
 {
-    mErrorCode = 0;
+    mFailureCode = kFailNoFailure;
+    mErrorCode = kErrNoError;
+
     if (mIsOpen) {
         // error!
+        mErrorCode = kErrBadUsage;
         return -1;
     }
     if (aServer == 0 || aServer[0] == 0) {
         // error!
+        mErrorCode = kErrBadParameter;
         return -1;
     }
     if (mServerName) {
@@ -102,71 +107,145 @@ int DwProtocolClient::Open(const char* aServer, DwUint16 aPort)
     // First assume address is in dotted-decimal notation.  If that fails, do
     // a hostname lookup.
 
-    memset(&mServerAddr, 0, sizeof(struct sockaddr_in));
-    mServerAddr.sin_family = AF_INET;
-    mServerAddr.sin_port = htons(mPort);
-    mServerAddr.sin_addr.s_addr = inet_addr(mServerName);
-    if (mServerAddr.sin_addr.s_addr != INADDR_NONE) {
-        // for debugging
-        cout << "Opening connection to " << mServerName << endl;
+    struct sockaddr_in serverAddr;
+    memset(&serverAddr, 0, sizeof(struct sockaddr_in));
+    serverAddr.sin_family = AF_INET;
+    serverAddr.sin_port = htons(mPort);
+    serverAddr.sin_addr.s_addr = inet_addr(mServerName);
+    if (serverAddr.sin_addr.s_addr != INADDR_NONE) {
+        DBG_PROTO_STMT(cout << "Opening connection to " << mServerName << endl;)
     }
     else {
         struct hostent* hostentp = gethostbyname(mServerName);
         if (hostentp == NULL) {
             // error!
-            mErrorCode = h_errno;
+            int err = h_errno;
+            HandleError(err, kgethostbyname);
             return -1;
         }
         struct in_addr* in_addrp = (struct in_addr*)*hostentp->h_addr_list;
-        memcpy(&mServerAddr.sin_addr.s_addr, in_addrp, sizeof(struct in_addr));
-        // for debugging
-        cout << "Opening connection to " << mServerName
-            << " (" << inet_ntoa(*in_addrp) << ')' << endl;
+        memcpy(&serverAddr.sin_addr.s_addr, in_addrp, sizeof(struct in_addr));
+        DBG_PROTO_STMT(cout << "Opening connection to " << mServerName;)
+        DBG_PROTO_STMT(cout << " (" << inet_ntoa(*in_addrp) << ')' << endl;)
     }
 
     // Open the socket
     mSocket = socket(PF_INET, SOCK_STREAM, 0);
     if (mSocket == -1) {
         // error!
-        mErrorCode = errno;
+        int err = errno;
+        HandleError(err, ksocket);
+        return -1;
+    }
+
+    // Set socket option to timeout on receives
+    int millisecs = mReceiveTimeout * 1000;
+    int err = setsockopt(mSocket, SOL_SOCKET, SO_RCVTIMEO,
+        (const char*)&millisecs, sizeof(millisecs));
+    if (err == -1) {
+        // error!
+        int err = errno;
+        HandleError(err, ksetsockopt);
         return -1;
     }
 
     // Establish a connection to the server
-    int err = connect(mSocket, (struct sockaddr*)&mServerAddr,
+    err = connect(mSocket, (struct sockaddr*)&serverAddr,
         sizeof(struct sockaddr_in));
     if (err == -1) {
         // error!
         mErrorCode = errno;
+        HandleError(err, kconnect);
         return -1;
     }
-    // for debugging
-    cout << "Connection okay" << endl;
-    mIsOpen = 1;
+    DBG_PROTO_STMT(cout << "Connection okay" << endl;)
+    mIsOpen = DwTrue;
     return 0;
+}
+
+
+DwBool DwProtocolClient::IsOpen() const
+{
+    return mIsOpen;
 }
 
 
 int DwProtocolClient::Close()
 {
-    mErrorCode = 0;
+    mFailureCode = kFailNoFailure;
+    mErrorCode = kErrNoError;
+
     if (! mIsOpen) {
-        return 0;
+        // error!
+        mErrorCode = kErrBadUsage;
+        return -1;
     }
     int err = close(mSocket);
     if (err < 0) {
-        mErrorCode = errno;
+        // error!
+        int err = errno;
+        HandleError(err, kclosesocket);
+        return -1;
     }
-    mIsOpen = 0;
+    mIsOpen = DwFalse;
     return 0;
 }
 
 
-int DwProtocolClient::Send(const char* aBuf, int aBufLen)
+int DwProtocolClient::SetReceiveTimeout(int aSecs)
 {
-    mErrorCode = 0;
+    // Receive timeout must not be so large that we get an integer overflow when
+    // we multiply by 1000.
+    mReceiveTimeout = (int)(0x80000000u/1000);
+    mReceiveTimeout = (aSecs < mReceiveTimeout) ? aSecs : mReceiveTimeout;
+    if (mIsOpen) {
+        // Set socket option to timeout on receives
+        int millisecs = mReceiveTimeout * 1000;
+        int err = setsockopt(mSocket, SOL_SOCKET, SO_RCVTIMEO,
+            (const char*)&millisecs, sizeof(millisecs));
+        if (err == -1) {
+            // error!
+            int err = errno;
+            HandleError(err, ksetsockopt);
+            return -1;
+        }
+    }
+    return 0;
+}
+
+
+int DwProtocolClient::LastFailure() const
+{
+    return mFailureCode;
+}
+
+
+const char* DwProtocolClient::LastFailureStr() const
+{
+    return mFailureStr;
+}
+
+
+int DwProtocolClient::LastError() const
+{
+    return mErrorCode;
+}
+
+
+const char* DwProtocolClient::LastErrorStr() const
+{
+    return mErrorStr;
+}
+
+
+int DwProtocolClient::PSend(const char* aBuf, int aBufLen)
+{
+    mFailureCode = kFailNoFailure;
+    mErrorCode = kErrNoError;
+
     if (! mIsOpen) {
         // error!
+        mErrorCode = kErrBadUsage;
         return 0;
     }
     int ret;
@@ -176,8 +255,9 @@ int DwProtocolClient::Send(const char* aBuf, int aBufLen)
         ret = send(mSocket, &aBuf[numSent], numToSend, 0);
         if (ret == -1) {
             // error!
-            mErrorCode = errno;
-            return numSent;
+            int err = errno;
+            HandleError(err, ksend);
+            break;
         }
         else {
             numSent += ret;
@@ -188,18 +268,23 @@ int DwProtocolClient::Send(const char* aBuf, int aBufLen)
 }
 
 
-int DwProtocolClient::Receive(char* aBuf, int aBufSize)
+int DwProtocolClient::PReceive(char* aBuf, int aBufSize)
 {
+    mFailureCode = kFailNoFailure;
+    mErrorCode = kErrNoError;
+
     if (! mIsOpen) {
         // error!
+        mErrorCode = kErrBadUsage;
         return 0;
     }
-    mErrorCode = 0;
+    // To do: if SO_RCVTIMEO is not implemented, should we use select here?
     int numReceived;
     int ret = recv(mSocket, aBuf, aBufSize, 0);
     if (ret == -1) {
         // error!
-        mErrorCode = errno;
+        int err = errno;
+        HandleError(err, krecv);
         numReceived = 0;
     }
     else {
@@ -208,3 +293,9 @@ int DwProtocolClient::Receive(char* aBuf, int aBufSize)
     return numReceived;
 }
 
+
+void DwProtocolClient::HandleError(int aErrorCode, int aFunc)
+{
+    // To do: this function is not finished
+    mErrorCode = aErrorCode;
+}

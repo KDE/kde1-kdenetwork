@@ -32,10 +32,13 @@
 
 // UNIX specific includes
 
-#include <unistd.h>
-#if defined(__SUNPRO_CC)
-#  include <sysent.h>
-#endif // defined(__SUNPRO_CC)
+//#if defined(__unix__) || defined(__unix)
+#if defined(DW_UNIX)
+#  include <unistd.h>
+#  if defined(__SUNPRO_CC)
+#    include <sysent.h>
+#  endif // defined(__SUNPRO_CC)
+#endif // defined (DW_UNIX)
 
 // WIN32 specific includes
 
@@ -371,6 +374,7 @@ static DwUint32 GetPid()
 // UNIX
 //----------------------------------------------------------------------------
 
+#if defined(DW_UNIX)
 
 static void GetHostName(char* buf, int bufLen)
 {
@@ -382,3 +386,4 @@ static DwUint32 GetPid()
     return getpid();
 }
 
+#endif // defined(DW_UNIX)

@@ -40,12 +40,6 @@
 #endif
 
 
-class DwObserver {
-public:
-    virtual void Notify() const = 0;
-};
-
-
 class DwPopClient : public DwProtocolClient {
 
 public:
@@ -59,7 +53,7 @@ public:
 
     // Server reponses
 
-    int ResponseCode() const;
+    int ReplyCode() const;
     const DwString& SingleLineResponse() const;
     const DwString& MultiLineResponse() const;
 
@@ -231,7 +225,7 @@ private:
     char*       mRecvBuffer;
     int         mNumRecvBufferChars;
     int         mRecvBufferPos;
-    int         mResponseCode;
+    int         mReplyCode;
     DwString    mSingleLineResponse;
     DwString    mMultiLineResponse;
     DwObserver* mObserver;
@@ -245,14 +239,14 @@ private:
 
     void PGetSingleLineResponse();
     // Gets a single line of input, assigns that line {\tt mSingleLineResponse}, and
-    // sets {\tt mResponseCode}.  On failure, clears {\tt mSingleLineResonse}
-    // and sets {\tt mResponseCode} to -1.
+    // sets {\tt mReplyCode}.  On failure, clears {\tt mSingleLineResonse}
+    // and sets {\tt mReplyCode} to -1.
 
     void PGetMultiLineResponse();
     // Gets a complete multiline response and assigns it to {\tt mMultiLineResponse},
     // or interacts with the {\tt DwObserver} object to deliver a multiline response
     // one line at a time.
-    // If an error occurs, its sets {\tt mResponseCode} to -1.
+    // If an error occurs, its sets {\tt mReplyCode} to -1.
 
 };
 

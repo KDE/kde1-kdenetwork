@@ -63,6 +63,10 @@
 #include <mimelib/mechansm.h>
 #endif
 
+#ifndef DW_DISPTYPE_H
+#include <mimelib/disptype.h>
+#endif
+
 class DwMessage;
 class DwBodyPart;
 class DwField;
@@ -290,7 +294,7 @@ public:
     DwText&         MimeVersion();
     // RFC-1521 fields
     //
-    DwText&         ContentDisposition();
+    DwDispositionType& ContentDisposition();
     // RFC-1806 Content-Disposition field
     //
     //. Returns a reference to the {\tt DwFieldBody} object that is associated
@@ -298,7 +302,6 @@ public:
     //. present in the {\it header}, it is created.  Use the corresponding
     //. {\tt Has<Field>()} function to test if the {\it field} already
     //. exists without creating it.
-
 
     DwFieldBody& FieldBody(const DwString& aFieldName);
     //. Returns a reference to the {\tt DwFieldBody} object that is associated

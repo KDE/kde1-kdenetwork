@@ -1,5 +1,5 @@
 //=============================================================================
-// File:       <<mimepp.h
+// File:       mimepp.h
 // Contents:   MIME++ library include file
 // Maintainer: Doug Sauder <dwsauder@fwb.gulf.net>
 // WWW:        http://www.fwb.gulf.net/~dwsauder/mimepp.html
