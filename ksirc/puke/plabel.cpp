@@ -5,8 +5,10 @@ PObject *createWidget(CreateArgs &ca)
 {
   PLabel *pw = new("PLabel") PLabel(ca.parent);
   QLabel *le;
-  if(ca.fetchedObj != 0 && ca.fetchedObj->inherits("QLabel") == TRUE)
+  if(ca.fetchedObj != 0 && ca.fetchedObj->inherits("QLabel") == TRUE){
     le = (QLabel *) ca.fetchedObj;
+    pw->setDeleteAble(FALSE);
+  }
   else if(ca.parent != 0 && ca.parent->widget()->isWidgetType() == TRUE)
     le = new("QLabel") QLabel((QWidget *) ca.parent->widget());
   else
@@ -27,10 +29,12 @@ PLabel::PLabel(PObject *parent)
 
 PLabel::~PLabel()
 {
-  //  debug("PLabel: in destructor"); 
+  //  debug("PLabel: in destructor");
+  /*
   delete widget();     // Delete the frame
   label=0;          // Set it to 0
   setWidget(label); // Now set all widget() calls to 0.
+  */
 }
 
 void PLabel::messageHandler(int fd, PukeMessage *pm)

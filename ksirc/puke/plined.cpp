@@ -25,10 +25,12 @@ PLineEdit::PLineEdit(PObject *parent)
 
 PLineEdit::~PLineEdit()
 {
-  //  debug("PLineEdit: in destructor"); 
+  //  debug("PLineEdit: in destructor");
+  /*
   delete widget();     // Delete the frame
   lineedit=0;          // Set it to 0
   setWidget(lineedit); // Now set all widget() calls to 0.
+  */
 }
 
 void PLineEdit::messageHandler(int fd, PukeMessage *pm)

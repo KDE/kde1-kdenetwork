@@ -24,10 +24,12 @@ PProgress::PProgress( PObject *parent) /*FOLD00*/
 
 PProgress::~PProgress() /*FOLD00*/
 {
-  //  debug("PProgress: in destructor"); 
+  //  debug("PProgress: in destructor");
+  /*
   delete widget(); // Delete the frame
   ksp=0;      // Set it to 0
   setWidget(ksp); // Now set all widget() calls to 0.
+  */
 }
 
 void PProgress::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/

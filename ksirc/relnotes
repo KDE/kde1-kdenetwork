@@ -1,3 +1,27 @@
+~b~12,4             kSirc Release Notes for 981220                             
+
+Work over the past month or so has concentrated in 2 majour areas,
+memory consumption and Puke. There's also been some minor features
+etc.
+
+~2Misc Features:
+
+~4~b*~C If you bring up a menu, ctrl+letter generates an on the fly accelerator
+~4~b*~C Scroll back size if setable through the Prefrences
+~4~b*~C Setable background pixmap, it ~b~ureally~b~u sucks
+~4~b*~C New icons for the server controller/docking.  Thanks mosfet
+
+~2Memory:
+
+~4~b*~C The last few release kSirc has had a gradual memory leak, fixed.
+~4~b*~C Created KPlunger a generic memory debugger and leak tracker for C++.
+~4~b*~C Fixed a bunch of bufffer problems which caused kSirc die on non-intel
+~4~b*~C Reduced memory footprint, and effeciency.
+
+~2Puke:
+~4~b*~C Reduced endian dependance
+~4~b*~C Lots to come soon
+
 ~b~12,4             kSirc Release Notes for 981107                             
 
 This release is mostly a bug fix release.

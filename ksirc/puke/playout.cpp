@@ -13,9 +13,11 @@ PLayout::PLayout(QObject *pobject)
 PLayout::~PLayout()
 {
   //  debug("PObject: in destructor");
+  /*
   delete widget();
   layout = 0;
   setWidget();
+  */
 }
 
 PObject *PLayout::createWidget(CreateArgs &ca)

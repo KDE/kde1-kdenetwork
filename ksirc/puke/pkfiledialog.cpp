@@ -6,8 +6,10 @@ PObject *createWidget(CreateArgs &ca)
 {
   PKFileDialog *pw = new("PKFileDialog") PKFileDialog(ca.parent);
   KFileDialog *kfbd;
-  if(ca.fetchedObj != 0 && ca.fetchedObj->inherits("KFileDialog") == TRUE)
+  if(ca.fetchedObj != 0 && ca.fetchedObj->inherits("KFileDialog") == TRUE){
     kfbd = (KFileDialog *) ca.fetchedObj;
+    pw->setDeleteAble(FALSE);
+  }
   else // Never takes a parent in Puke
     kfbd = new("KFileDialog") KFileDialog("/", 0x0, 0x0, "PukeKFileDialog", TRUE, TRUE);
   pw->setWidget(kfbd);
@@ -25,10 +27,12 @@ PKFileDialog::PKFileDialog(PObject *parent)
 
 PKFileDialog::~PKFileDialog()
 {
-  //  debug("PLineEdit: in destructor"); 
+  //  debug("PLineEdit: in destructor");
+  /*
   delete widget();     // Delete the frame
   kfbd=0;          // Set it to 0
   setWidget(kfbd); // Now set all widget() calls to 0.
+  */
 }
 
 void PKFileDialog::messageHandler(int fd, PukeMessage *pm)

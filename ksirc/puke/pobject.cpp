@@ -1,18 +1,20 @@
 #include "pobject.h"
 #include "commands.h"
 
-PObject::PObject(QObject *pobject, const char *name) /*fold00*/
+PObject::PObject(QObject *pobject, const char *name) /*FOLD00*/
   : QObject(pobject, name)
 {
   // Connect slots as needed
   obj = 0;
   setWidget(0);
   manualTerm = FALSE;
+  deleteAble = TRUE;
 }
 
 PObject::~PObject() /*FOLD00*/
 {
-  delete widget();
+  if(isDeleteAble())
+    delete widget();
   obj = 0;
   setWidget(0);
 }

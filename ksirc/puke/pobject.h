@@ -74,6 +74,19 @@ class PObject : public QObject
   }
 
   /**
+   * If we cannot delete the widget, check this (ie fetched widgets)
+   */
+  bool isDeleteAble(){
+      return deleteAble;
+  }
+
+  /**
+   * Set this for fetched widgets and such that cannot be deleted
+   */
+  bool setDeleteAble(bool _d){
+      deleteAble = _d;
+  }
+  /**
    * Before deleting the widget, call manTerm() to signal manual
    * termination of the widget
    */
@@ -96,6 +109,7 @@ private:
   widgetId wI;
 
   bool manualTerm;
+  bool deleteAble;
 };
 
 #include "controller.h"

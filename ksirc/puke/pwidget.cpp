@@ -44,17 +44,21 @@ PWidget::PWidget(PObject *)
 PWidget::~PWidget()
 {
   //  debug("PWidget: in destructor");
+  /*
   delete widget();
   w = 0;
   setWidget(0);
+  */
 }
 
 PObject *PWidget::createWidget(CreateArgs &ca)
 {
   PWidget *pw = new("PWidget") PWidget();
   QWidget *tw;
-  if(ca.fetchedObj != 0 && ca.fetchedObj->inherits("QWidget") == TRUE)
+  if(ca.fetchedObj != 0 && ca.fetchedObj->inherits("QWidget") == TRUE){
     tw = (QWidget *) ca.fetchedObj;
+    pw->setDeleteAble(FALSE);
+  }
   else if(ca.parent != 0 && ca.parent->widget()->isWidgetType() == TRUE)
       tw = new("QWidget") QWidget((QWidget *) ca.parent->widget());
   else

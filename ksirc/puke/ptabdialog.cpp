@@ -10,8 +10,10 @@ PObject *createWidget(CreateArgs &ca)
   QTabDialog *qtd;
   // Retreive the border and direction information out of the
   // carg string
-  if(ca.fetchedObj != 0 && ca.fetchedObj->inherits("QTabDialog") == TRUE)
+  if(ca.fetchedObj != 0 && ca.fetchedObj->inherits("QTabDialog") == TRUE){
     qtd = (QTabDialog *) ca.fetchedObj;
+    ptd->setDeleteAble(FALSE);
+  }
   else if(ca.parent != 0 && ca.parent->widget()->isWidgetType() == TRUE)
     qtd = new("QTabDialog") QTabDialog((QWidget *) ca.parent->widget());
   else
@@ -32,9 +34,11 @@ PTabDialog::PTabDialog(QObject *pobject)
 PTabDialog::~PTabDialog()
 {
   //  debug("PObject: in destructor");
+  /*
   delete widget();
   tab = 0;
   setWidget(0);
+  */
 }
 
 void PTabDialog::messageHandler(int fd, PukeMessage *pm)

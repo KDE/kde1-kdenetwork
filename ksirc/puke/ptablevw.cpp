@@ -23,7 +23,7 @@ PTableView::~PTableView()
   // don't delete the widget since none acutally exists.
   // delete widget();     // Delete the frame
   //  tbl=0;          // Set it to 0
-  setWidget(tbl); // Now set all widget() calls to 0.
+//  setWidget(tbl); // Now set all widget() calls to 0.
 }
 
 void PTableView::messageHandler(int fd, PukeMessage *pm)

@@ -6,8 +6,10 @@ PObject *createWidget(CreateArgs &ca) /*FOLD00*/
 {
   PKSircListBox *plb = new("PKSircListBox") PKSircListBox(ca.parent);
   KSircListBox *lb;
-  if(ca.fetchedObj != 0 && ca.fetchedObj->inherits("KSircListBox") == TRUE)
+  if(ca.fetchedObj != 0 && ca.fetchedObj->inherits("KSircListBox") == TRUE){
     lb = (KSircListBox *) ca.fetchedObj;
+    plb->setDeleteAble(FALSE);
+  }
   else if(ca.parent != 0 && ca.parent->widget()->isWidgetType() == TRUE)
     lb = new("KSircListBox") KSircListBox((QWidget *) ca.parent->widget());
   else
@@ -29,10 +31,12 @@ PKSircListBox::PKSircListBox(PObject *parent) /*FOLD00*/
 
 PKSircListBox::~PKSircListBox() /*FOLD00*/
 {
-  //  debug("PListBox: in destructor"); 
+  //  debug("PListBox: in destructor");
+  /*
   delete widget();     // Delete the frame
   lb=0;          // Set it to 0
   setWidget(lb); // Now set all widget() calls to 0.
+  */
 }
 
 void PKSircListBox::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/

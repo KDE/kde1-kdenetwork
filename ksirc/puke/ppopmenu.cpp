@@ -4,8 +4,10 @@ PObject *createWidget(CreateArgs &ca)
 {
   PPopupMenu *pm = new("PPopupMenu") PPopupMenu(ca.parent);
   QPopupMenu *qpm;
-  if(ca.fetchedObj != 0 && ca.fetchedObj->inherits("QPopupMenu") == TRUE)
+  if(ca.fetchedObj != 0 && ca.fetchedObj->inherits("QPopupMenu") == TRUE){
     qpm= (QPopupMenu *) ca.fetchedObj;
+    pm->setDeleteAble(FALSE);
+  }
   else if(ca.parent != 0 && ca.parent->widget()->isWidgetType() == TRUE)
     qpm = new("QPopupMenu") QPopupMenu((QWidget *) ca.parent->widget());
   else
@@ -28,9 +30,10 @@ PPopupMenu::PPopupMenu(PObject *parent)
 PPopupMenu::~PPopupMenu()
 {
   //  debug("PLineEdit: in destructor"); 
-  delete widget();     // Delete the frame
+/*  delete widget();     // Delete the frame
   menu = 0;          // Set it to 0
   setWidget(menu); // Now set all widget() calls to 0.
+*/
   delete pmd;
 }
 

@@ -26,9 +26,10 @@ PPushButton::PPushButton(PObject *parent)
 PPushButton::~PPushButton()
 {
   //  debug("PLineEdit: in destructor"); 
-  delete widget();     // Delete the frame
+/*  delete widget();     // Delete the frame
   button=0;          // Set it to 0
   setWidget(button); // Now set all widget() calls to 0.
+  */
 }
 
 void PPushButton::messageHandler(int fd, PukeMessage *pm)

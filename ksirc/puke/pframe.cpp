@@ -25,10 +25,12 @@ PFrame::PFrame( PObject *parent)
 
 PFrame::~PFrame()
 {
-  //  debug("PFrame: in destructor"); 
+  //  debug("PFrame: in destructor");
+  /*
   delete frame; // Delete the frame
   frame=0;      // Set it to 0
   setWidget(frame); // Now set all widget() calls to 0.
+  */
 }
 
 void PFrame::messageHandler(int fd, PukeMessage *pm)

@@ -4,8 +4,10 @@ PObject *createWidget(CreateArgs &ca) /*FOLD00*/
 {
   PAListBox *plb = new("PAListBox") PAListBox(ca.parent);
   aListBox *lb;
-  if(ca.fetchedObj != 0 && ca.fetchedObj->inherits("aListBox") == TRUE)
+  if(ca.fetchedObj != 0 && ca.fetchedObj->inherits("aListBox") == TRUE){
     lb = (aListBox *) ca.fetchedObj;
+    plb->setDeleteAble(FALSE);
+  }
   else if(ca.parent != 0 && ca.parent->widget()->isWidgetType() == TRUE)
     lb = new("aListBox") aListBox((QWidget *) ca.parent->widget());
   else
@@ -27,9 +29,11 @@ PAListBox::PAListBox(PObject *parent) /*FOLD00*/
 PAListBox::~PAListBox() /*FOLD00*/
 {
   //  debug("PListBox: in destructor"); 
+  /*
   delete widget();     // Delete the frame
   lb=0;          // Set it to 0
   setWidget(lb); // Now set all widget() calls to 0.
+  */
 }
 
 void PAListBox::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
