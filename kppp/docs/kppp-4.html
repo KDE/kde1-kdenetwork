@@ -1,59 +1,50 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
 <HTML>
 <HEAD>
 <TITLE>The Kppp Handbook: Configuring an Account</TITLE>
-<META HTTP-EQUIV="content-type" CONTENT="text/html; charset=iso-8859-1">
-<META NAME="keywords" CONTENT="PPP KDE dialer UNIX">
-<META NAME="description" CONTENT="kppp dialer help">
 </HEAD>
-<BODY BGCOLOR="#ffffff" LINK="#aa0000" TEXT="#000000" > 
-<FONT FACE="Helvetica">
-<A HREF="http://www.kde.org/"><IMG SRC="logotp3.gif" BORDER="0" ALT="The K Desktop Environment"></A>
-<HR WIDTH="100%" SIZE=2 ALIGN="CENTER" NOSHADE>
-
- 
-<P ALIGN="RIGHT">
-
-<A HREF="kppp-5.html">Next</A>
+<BODY>
 <A HREF="kppp-3.html">Previous</A>
+<A HREF="kppp-5.html">Next</A>
 <A HREF="kppp.html#toc4">Table of Contents</A>
-</P>
-<H3><A NAME="s4">4. Configuring an Account</A></H3>
+<HR>
+<H2><A NAME="s4">4. Configuring an Account</A></H2>
 
-<P>
-<H3><A NAME="ss4.1">4.1 Dial</A>
-</H3>
+
+<H2><A NAME="ss4.1">4.1 Dial</A></H2>
 
 <P>
 <DL>
-<DT><B>Connection Name</B><DD><P>You must give the account a name
+<DT><B>Connection Name</B><DD><P>You must give the account a name</P>
 <DT><B>Phone Number</B><DD><P>Specify the phone number to dial. You may use character such
-as ``-'' to make the number more legible.
+as ``-'' to make the number more legible.</P>
 <DT><B>Connection Speed</B><DD><P>Choose from the list of connections speeds supported by
-your serial port.
+your serial port.</P>
 <DT><B>Execute Program upon Connect</B><DD><P>kppp will attempt to execute the command specified
-here once a ppp link has been set up. 
+here once a ppp link has been set up. </P>
 <P>
+<A NAME="pppd arguments"></A> 
+</P>
 <DT><B>Edit default pppd</B><DD><P>This will bring up the pppd arguments dialog. You may use
 this dialog to add any desired options that you want kppp to hand to pppd. Make
 sure that it always contains the -detach option. See the pppd man page for a
 list of available options. Unless you know exactly what you are doing you should
-restrain from tinkering with the pppd options.
-<P>
-</DL>
-<H3><A NAME="ss4.2">4.2 IP</A>
-</H3>
+restrain from tinkering with the pppd options.</P>
 
-<P>
+</DL>
+</P>
+
+<H2><A NAME="ss4.2">4.2 IP</A></H2>
+
+
 <P>
 <DL>
 <DT><B>Dynamic IP Address</B><DD><P>Check this if your ISP uses dynamic IP address assignment.
-That is your IP address will most likely change every time you establish a connection.
-<P>
+That is your IP address will most likely change every time you establish a connection.</P>
+
 <DT><B>Static IP Address</B><DD><P>Check this is your ISP has given you a static IP address.
 In that case you will also need to fill in that address and any Subnet Mask
-if applicable. Ask your ISP if unsure.
-<P>
+if applicable. Ask your ISP if unsure.</P>
+
 <DT><B>Auto-configure Hostname form this IP</B><DD><P>Select this option if you want 
 kppp to set the hostname and domain for your machine after successful
 setup of a ppp link on connect.
@@ -66,13 +57,14 @@ It overrides the Domain Name Option in the  DNS Section.
 The machine defaults are restored to the original values 
 when you close the ppp link 
 Be careful when choosing this option: It may prove useful to you, but
-it may also cause lots of undesired side effect. Just play with it ...
-<P>
+it may also cause lots of undesired side effect. Just play with it ...</P>
+
 </DL>
-<P>
-<P>
-<H3><A NAME="ss4.3">4.3 DNS</A>
-</H3>
+</P>
+
+
+
+<H2><A NAME="ss4.3">4.3 DNS</A></H2>
 
 <P>
 <DL>
@@ -80,41 +72,43 @@ it may also cause lots of undesired side effect. Just play with it ...
 As with DNS Addresses it is restored to the original specified in /etc/resolv.conf
 when the connection goes down.
 If it is left blank no changes are made to the domain name specified
-in /etc/resolv.conf
-<P>
+in /etc/resolv.conf</P>
+
 <DT><B>DNS Servers</B><DD><P>Add the Domain Name servers assigned to you by your ISP.
 You must specify at least a Domain Name server for your OS to be able
 to resolve human readable IP addresses such as ftp.kde.org. The DNS server
 addresses supplied must be in numeric form, e.g 128.231.231.233. The
-addresses will be added at runtime to /etc/resolv.config.
-<P>
+addresses will be added at runtime to /etc/resolv.config.</P>
+
 <DT><B>Disable existing DNS Servers during Connection</B><DD><P>Select this option if 
 you want kppp to disable already existing nameserver entries
-in /etc/resolv.conf during connection.
-<P>
+in /etc/resolv.conf during connection.</P>
+
 </DL>
-<P>
-<P>
-<H3><A NAME="ss4.4">4.4 Gateway</A>
-</H3>
+</P>
+
+
+
+<H2><A NAME="ss4.4">4.4 Gateway</A></H2>
 
 <P>
 <DL>
 <DT><B>Default Gateway</B><DD><P>Check this if you want pppd to use the default Gateway
-for your machine.
-<DT><B>Static Gateway</B><DD><P>Check this if you want to specify the Gateway to be used.
-<P>
+for your machine.</P>
+<DT><B>Static Gateway</B><DD><P>Check this if you want to specify the Gateway to be used.</P>
+
 </DL>
-<P>
-<P>
-<H3><A NAME="ss4.5">4.5 Login Script</A>
-</H3>
+</P>
+
+
+
+<H2><A NAME="ss4.5">4.5 Login Script</A></H2>
 
 <P>
 <DL>
 <DT><B>Edit Script</B><DD><P>Use this dialog to compose a dial in script for your ISP
 dialup connection. Use the mini-terminal and the information supplied by
-your ISP to understand which sequence of actions needs to be executed.
+your ISP to understand which sequence of actions needs to be executed.</P>
 <P>
 <UL>
 <LI>Expect: kppp will wait for the specified string to be received.</LI>
@@ -154,13 +148,15 @@ received first, it will trigger a jump to the line after the LoopStart,
 enabling repetition of username/password style paired dialogs.
 </LI>
 </UL>
-<P>
-<P>
-</DL>
-<H4>Example scripts</H4>
+</P>
 
-<P>
-<P>Here is a simple script I could use to connect to my ISP:
+
+</DL>
+</P>
+<H3>Example scripts</H3>
+
+
+<P>Here is a simple script I could use to connect to my ISP:</P>
 <P>
 <BLOCKQUOTE><CODE>
 <PRE>
@@ -173,6 +169,7 @@ Send        ppp                        # This starts a ppp connection for
                                        # me on the ISP side.
 </PRE>
 </CODE></BLOCKQUOTE>
+</P>
 <P>Here a script for the same account with ID and password prompt: This 
 script will prompt for ID and password each time, no matter what is
 typed into the ID and password field on Kppp's main dialog. This script
@@ -180,7 +177,7 @@ also illustrated the use of the LoopStart/LoopEnd structure. If something
 goes wrong during the login procedure, for example if I mistype the password,
 my ISP will print an error message and restart the id/password loop by issuing
 the string "ID:" again. If the string "ID" is caught before the LoopEnd keyword
-was parsed, kppp will start the script again after the LoopStart keyword.
+was parsed, kppp will start the script again after the LoopStart keyword.</P>
 <P>
 <BLOCKQUOTE><CODE>
 <PRE>
@@ -192,9 +189,10 @@ LoopEnd     granted                    # My ISP send 'Permission granted' on log
 Send        ppp                        # This starts a ppp connection for me
 </PRE>
 </CODE></BLOCKQUOTE>
+</P>
 <P>Here is the script that I actually use to connect to my ISP: This 
 script will prompt for ID and password only if I haven't filled in 
-the respective fields on kppp's main dialog.
+the respective fields on kppp's main dialog.</P>
 <P>
 <BLOCKQUOTE><CODE>
 <PRE>
@@ -207,12 +205,13 @@ Send        ppp                        # This starts a ppp connection for me
                                        # on the ISP side
 </PRE>
 </CODE></BLOCKQUOTE>
-<P>
-<P>
-<P>
-<P>
-<H3><A NAME="ss4.6">4.6 Accounting</A>
-</H3>
+</P>
+
+
+
+
+
+<H2><A NAME="ss4.6">4.6 Accounting</A></H2>
 
 <P>
 <DL>
@@ -225,25 +224,19 @@ rules file to me. The newly created rules file can be checked for valid
 syntax with the -r rule_file command line option to kppp. and
 must be installed in <CODE>$(KDEDIR)/share/apps/kppp/Rules</CODE> or in 
 <CODE>$(HOME)/.kde/share/apps/kppp/Rules</CODE> before you will be able to select it on this
-dialog.
-<P>
+dialog.</P>
+
 </DL>
-<P>
-<P>
-<P>
-<P>
-<P>
-<P ALIGN="RIGHT">
-
-<A HREF="kppp-5.html">Next</A>
-<A HREF="kppp-3.html">Previous</A>
-<A HREF="kppp.html#toc4">Table of Contents</A>
 </P>
-<CENTER>
-<HR WIDTH="100%" SIZE=3 ALIGN=CENTER NOSHADE>
-</CENTER>    
-</FONT>
 
- 
+
+
+
+
+
+<HR>
+<A HREF="kppp-3.html">Previous</A>
+<A HREF="kppp-5.html">Next</A>
+<A HREF="kppp.html#toc4">Table of Contents</A>
 </BODY>
 </HTML>

@@ -48,6 +48,8 @@
 int usleep( long usec );
 #endif 
 
+const int MAX_ARGS = 100;
+
 void parseargs(char* buf, char** args);
 
 extern XPPPWidget *p_xppp;
@@ -1197,8 +1199,9 @@ bool ConnectWidget::execppp() {
   pid_t id;
 
   QString command;
-  char buf[2024];
-  char *args[100];
+  const int MAX_CMDLEN = 2024;
+  char buf[MAX_CMDLEN];
+  char *args[MAX_ARGS];
 
 
   command = "pppd";
@@ -1268,11 +1271,10 @@ bool ConnectWidget::execppp() {
     command += " user ";
     command += gpppdata.ID.data();
     command += " +ua ";
-    command += getHomeDir();
-    command += PAP_AUTH_FILE;
+    command += PAP_AuthFile();
   }
 
-  if (command.length() > 2023){
+  if (command.length() > MAX_CMDLEN){
     QMessageBox::warning(this, 
 			 klocale->translate("Error"), 
 			 klocale->translate(
@@ -1544,8 +1546,9 @@ int usleep( long usec ){
 
 
 void parseargs(char* buf, char** args){
+  int nargs = 0;
 
-  while(*buf != '\0'){
+  while(nargs < MAX_ARGS -1 && *buf != '\0') {
     
     // Strip whitespace. Use nulls, so that the previous argument is terminated 
     // automatically.
@@ -1556,14 +1559,14 @@ void parseargs(char* buf, char** args){
     // save the argument
     if(*buf != '\0')
     *args++ = buf;
+    nargs++;
     
     while ((*buf != '\0') && (*buf != '\n') && (*buf != '\t') && (*buf != ' '))
       buf++;
     
   }
  
-  *args ='\0';;
-
+  *args ='\0';
 }
 
 // Lock modem device. Returns 0 on success 1 if the modem is locked and -1 if

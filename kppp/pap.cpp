@@ -31,11 +31,15 @@ bool PAP_UsePAP() {
   return (bool)(gpppdata.authMethod() == AUTH_PAP);
 }
 
+QString PAP_AuthFile() {
+  return QString(getHomeDir() + PAP_AUTH_FILE);
+}
+
 bool PAP_CreateAuthFile() {  
   // Create the pap authentication file. PPPD requires that the file is
   // owned by the real user. If we are running SETUID root, simply make
   // a chown on it
-  QString fname = getHomeDir() + PAP_AUTH_FILE;
+  QString fname = PAP_AuthFile();
   int fd = open(fname.data(), 
 		O_CREAT|O_TRUNC|O_WRONLY,
 		S_IRUSR|S_IWUSR);
@@ -64,7 +68,7 @@ bool PAP_RemoveAuthFile() {
   if(!PAP_UsePAP())
     return FALSE;
 
-  QString fname = getHomeDir() + PAP_AUTH_FILE;
+  QString fname = PAP_AuthFile();
   if(access(fname.data(), F_OK) == 0)
     return (bool)(unlink(fname.data()) != -1);
   else

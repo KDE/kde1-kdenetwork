@@ -6,6 +6,15 @@ Tue Jan 13 17:50:07 1998  Bernd Johannes Wuebben  <wuebben@math.cornell.edu>
 	* CD is by default off. It doesn't work on my internal modem 
 	  and I suspect it might not even work on most (all) internal modems ..
 
+Tue Jan 13 12:02:33 1998  Mario Weilguni <mweilguni@sime.com>
+	* the PAP authentication file is now created in the users
+	  homedirectory. Otherwise I'd have to create the directory 
+	  myself and fix the permissions if kppp runs suid root - 
+	  I'm too lazy for that.
+
+	* fixed a security bug in connect.cpp, a typical buffer
+	  overflow. Very bad for setuid root programs
+
 Thu Jan 13 06:58:29 1998  Peter Silva <peter.silva@videotron.ca>
 
 	* make new behaviour optional (in response to Bernd's worry 
@@ -14,6 +23,7 @@ Thu Jan 13 06:58:29 1998  Peter Silva <peter.silva@videotron.ca>
 Thu Jan 13 06:58:29 1998  Peter Silva <peter.silva@videotron.ca>
 
 	* patch to prevent kppp hang if modem is off when connecting.
+
 
 Tue Jan 13 02:48:55 1998  Bernd Johannes Wuebben  <wuebben@math.cornell.edu>
 
@@ -180,4 +190,3 @@ Sun Aug 10 19:07:07 1997  Bernd Johannes Wuebben  <wuebben@petit.cornell.edu>
 Sun Jul 20 17:26:58 1997  Bernd Johannes Wuebben  <wuebben@petit.cornell.edu>
 
 	* fixed bug in phone cost accounting
-

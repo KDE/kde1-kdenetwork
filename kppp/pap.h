@@ -28,19 +28,14 @@
 #ifndef _PAP_H_
 #define _PAP_H_
 
-#include <sys/types.h>
-#include <signal.h>
+#include <qstring.h>
 #include "config.h"
 
 #define AUTH_SCRIPT     0
 #define AUTH_PAP        1
 
-// file used for PAP authetication purposes
-// moved to config.h -- Bernd
-
-// #define PAP_AUTH_FILE ".kde/share/apps/kppp/.pap-auth"
-
 bool PAP_UsePAP();
+QString PAP_AuthFile();
 bool PAP_CreateAuthFile();
 bool PAP_RemoveAuthFile();
 
