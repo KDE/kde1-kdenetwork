@@ -718,6 +718,18 @@
 // cArg: undef
 #define PUKE_POPUPMENU_POPUP_CURRENT_ACK -1810
 
+// Desc: Remvoes an item from a popup menu
+// iWinId: menu id
+// iArg: undef
+// cArg: uidef
+#define PUKE_MENUDATA_REMOVE_ITEM 1815
+
+// Desc: Ack for remove item
+// iWinId: window id
+// iArg: 1 for success
+// cArg: undef
+#define PUKE_MENUDATA_REMOVE_ITEM_ACK -1815
+
 
 
 

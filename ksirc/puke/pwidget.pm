@@ -17,7 +17,13 @@ sub new {
   $self->installHandler($::PUKE_WIDGET_EVENT_MOVE, 
 			sub {$self->moveEvent(@_)});
   $self->installHandler($::PUKE_EVENT_UNKOWN, 
-			sub {$self->miscEvent(@_)});
+                          sub {$self->miscEvent(@_)});
+  # Examplesto listen for mouse events
+  #  $self->installHandler($::PUKE_WIDGET_EVENT_MOUSEBUTTONPRESS,
+  #                        sub {$self->mousePressEvent(@_)});
+  #$self->installHandler($::PUKE_WIDGET_EVENT_MOUSEBUTTONRELEASE,
+  #                        sub {$self->mouseReleaseEvent(@_)});
+
 
 
   if($class eq 'PWidget'){

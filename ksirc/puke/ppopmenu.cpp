@@ -57,7 +57,7 @@ void PPopupMenu::messageHandler(int fd, PukeMessage *pm)
       return;
     }
     
-    widget()->popup(widget()->mapToGlobal(widget()->pos()), 0);
+    widget()->popup(QCursor::pos(), 0);
     
     pmRet.iCommand = - pm->iCommand;
     pmRet.iWinId = pm->iWinId;

@@ -186,7 +186,8 @@ QWidget *PWidget::widget()
 // PWidget specific
 bool PWidget::eventFilter(QObject *o, QEvent *e)
 {
-  //  debug("PWidget: Got event: %d", e->type());
+//  debug("PWidget(%d): Got event: %d", widget(), e->type());
+//  fprintf(stderr, "Blah\n");
   if(e->type() < 20 && e->type() >= 0){
     (this->*(eventList[e->type()]))(o,e);
   }

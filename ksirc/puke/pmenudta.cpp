@@ -64,6 +64,19 @@ bool PMenuData::menuMessageHandler(int fd, PukeMessage *pm)
       emit outputMessage(fd, &pmRet);
       break;
     }
+  case PUKE_MENUDATA_REMOVE_ITEM:
+    {
+      QPopupMenu *widget = (QPopupMenu *) child->widget();
+      widget->removeItem(pm->iArg);
+    
+      pmRet.iCommand = PUKE_MENUDATA_REMOVE_ITEM_ACK;
+      pmRet.iWinId = pm->iWinId;
+      pmRet.iArg = pm->iArg;
+      pmRet.cArg[0] = 0;
+      emit outputMessage(fd, &pmRet);
+      break;
+    }
+
   default:
     return FALSE;
   }

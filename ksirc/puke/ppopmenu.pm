@@ -34,22 +34,29 @@ sub new {
 sub activated {
   my $self = shift;
 
-  my %ARG = shift;
+  my %ARG = %{shift()};
 
   if($self->{'menu_id'}[$ARG{'iArg'}]){
     &{$self->{'menu_id'}[$ARG{'iArg'}]}(%ARG);
   }
   else {
-   &say("*E* No handler for id: $ARG{iArg}\n");
+   &::tell("*E* No handler for id: $ARG{iArg}\n");
   }
 }
 
-sub install_menu {
+sub installMenu {
   my $self = shift;
 
   my $id = shift;
   my $func = shift;
   $self->{'menu_id'}[$id] = $func;
+}
+
+sub popupAtCurrent {
+  my $self = shift;
+
+  $self->sendMessage('iCommand' => $::PUKE_POPUPMENU_POPUP_CURRENT,
+		     'CallBack' => sub {});
 }
 
 

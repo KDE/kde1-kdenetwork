@@ -45,6 +45,16 @@ sub insertPixmap {
 
 }
 
+sub removeItem {
+  my $self = shift;
+
+  my $id = shift;
+  
+  my %ARG = $self->sendMessage('iCommand' => $::PUKE_MENUDATA_REMOVE_ITEM,
+                               'iArg' => $id);
+
+}
+
 package main;
 
 1;
