@@ -33,6 +33,8 @@ host is running at least a TCP/IP network stack and indicates that the network
 route to go to this host is opened. The <it>ping</it> tab allows the execution
 of the <tt>ping(8)</tt> command.
 
+<IMG SRC="knu-ping.gif">
+
 <sect1>Description
 <P>
 Ping uses the ICMP protocol's mandatory <tt>ECHO_REQUEST</tt> datagram to
@@ -67,6 +69,8 @@ use ping during normal operations or for too long.</bf>
 The <tt><htmlurl url="man:traceroute" name="traceroute(8)"></tt> command
 prints the route that packets take to network host. The <it>Traceroute</it> tab
 allows the execution of the <tt>traceroute(8)</tt> command.
+
+<IMG SRC="knu-traceroute.gif">
 
 <sect1>Description
 <p>
@@ -126,6 +130,8 @@ resolution program (<tt><htmlurl url="man:host" name="host(1)"></tt>
 or <tt><htmlurl url="man:nslookup" name="nslookup(8)"></tt>).  This
 host resolution program will asks the Domain Name Server the answer to
 the question asked.
+
+<IMG SRC="knu-host.gif">
 
 <sect1>Description
 <p>
@@ -206,6 +212,8 @@ command displays information about the system users.
 <p>
 The command output will depends on the server which will make the reply.
 
+<IMG SRC="knu-finger.gif">
+
 <sect1>Options
 <p>
 <descrip>
@@ -222,6 +230,9 @@ The <it>finger</it> command appeared in 3.0BSD.
 
 <sect>Configuration
 <p>
+
+<IMG SRC="knu-config.gif">
+
 You can configure the pathname of the command used by <it>KDE network
 utilities </it> if you don't want the command found in the
 <tt>PATH</TT> variable to be used or if the command in not found the
