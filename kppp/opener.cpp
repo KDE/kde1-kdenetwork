@@ -229,8 +229,6 @@ int Opener::sendFD(const char *path, int fd,
   msg.msg_namelen = 0;
   msg.msg_iov = &iov[0];
   msg.msg_iovlen = 2;
-  msg.msg_control = &control;
-  msg.msg_controllen = sizeof(control);
 
   // Send data
   iov[0].iov_base = (void *) response;
@@ -242,6 +240,10 @@ int Opener::sendFD(const char *path, int fd,
   control.cmsg.cmsg_len = sizeof(struct cmsghdr) + sizeof(int);
   control.cmsg.cmsg_level = SOL_SOCKET;
   control.cmsg.cmsg_type = SCM_RIGHTS;
+
+  msg.msg_control = &control;
+  msg.msg_controllen = control.cmsg.cmsg_len;
+
   // What's the duplicating good for ?
   //  *((int *) &control.cmsg.cmsg_data) = dup(ttyfd);
 

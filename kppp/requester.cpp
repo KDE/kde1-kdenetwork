@@ -72,8 +72,6 @@ int Requester::recvFD(char *filename, int size) {
   msg.msg_namelen = 0;
   msg.msg_iov = &iov[0];
   msg.msg_iovlen = 2;
-  msg.msg_control = &control;
-  msg.msg_controllen = sizeof(control);
 
   iov[0].iov_base = &response;
   iov[0].iov_len = sizeof(struct ResponseHeader);
@@ -84,6 +82,12 @@ int Requester::recvFD(char *filename, int size) {
 #else
   cmsglen = sizeof(struct cmsghdr) + sizeof(int);
 #endif
+  control.cmsg.cmsg_len = cmsglen;
+  control.cmsg.cmsg_level = SOL_SOCKET;
+  control.cmsg.cmsg_type = SCM_RIGHTS;
+
+  msg.msg_control = &control;
+  msg.msg_controllen = control.cmsg.cmsg_len;
 
   fd = -1;
 

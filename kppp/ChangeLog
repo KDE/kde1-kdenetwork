@@ -1,3 +1,10 @@
+1998-12-14  Harri Porten  <porten@kde.org>
+
+	* runtests.cpp: fixed test for pppd's suid bit
+	* requester.cpp: initialize struct control (may be necessary for
+	some kernel versions)
+	* runtests.cpp: use Requester to check write access to modem (PPP Test)
+
 1998-12-13  Harri Porten  <porten@kde.org>
 
 	* use hardcoded lock file path (kpppconfig.h)

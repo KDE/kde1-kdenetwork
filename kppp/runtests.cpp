@@ -120,8 +120,9 @@ bool ppp_registered(void) {
   int local_fd;
   int init_disc = -1;
   int initfdflags;
-  printf("ppp_registered: device %s\n", gpppdata.modemDevice());
+
   local_fd = Requester::rq->openModem(gpppdata.modemDevice());
+
   if (local_fd < 0)
     {
       return false;
@@ -363,7 +364,9 @@ int runTests() {
   if(!ppp_available()) {
     // make sure that the problem does not come from missing permission to avoid false
     // alarms
-    if(access(gpppdata.modemDevice(), W_OK) == 0) {
+    int fd = Requester::rq->openModem(gpppdata.modemDevice());
+    if(fd>0) {
+      close(fd);
       QMessageBox::warning(0,
 			   i18n("Error"),
 			   i18n("This kernel has no PPP support, neither\n"
@@ -375,7 +378,7 @@ int runTests() {
 				"or\n"
 				"  * install a kernel with PPP support\n"));
       shutDown(1);
-  }
+    }
   }
 #endif
 
@@ -397,7 +400,7 @@ int runTests() {
 
   // Test 2: check access to the pppd binary
   if(pppdFound) {
-    if(access(f.data(), X_OK) != 0 && geteuid() != 0) {
+    if(access(f.data(), X_OK) != 0 /* && geteuid() != 0 */) {
       QMessageBox::critical(0,
 		   i18n("Error"),
 		   i18n("You do not have the permission\n"
@@ -408,7 +411,7 @@ int runTests() {
     } else {
       struct stat st;
       stat(f.data(), &st);
-      if(st.st_mode & S_ISUID == 0 && getuid() != 0) {
+      if((st.st_mode & S_ISUID) == 0 /* && getuid() != 0 */) {
 	QMessageBox::warning(0,
 		     i18n("Error"),
 		     i18n("pppd is not properly installed!\n\n"
