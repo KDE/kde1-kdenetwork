@@ -1,28 +1,30 @@
 msgid ""
 msgstr ""
-"Date: 1997-10-28 22:45:13+0100\n"
-"From: Bertrand Leconte,,, <leconteb@arthur>\n"
-"Files: knu.cpp CommandDlg.cpp OptionsDlg.cpp ktabctl.cpp PingDlg.cpp TracerouteDlg.cpp HostDlg.cpp\n"
+"POT-Creation-Date: 1998-01-04 18:20+0100\n"
 "PO-Revision-Date: 1998-01-12 12:21+CET\n"
 "Last-Translator: John Zero <johnzero@telnet.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-2\n"
 "Content-Transfer-Encoding: 8-bit\n"
+"Date: 1997-10-28 22:45:13+0100\n"
+"From: Bertrand Leconte,,, <leconteb@arthur>\n"
+"Files: knu.cpp CommandDlg.cpp OptionsDlg.cpp ktabctl.cpp PingDlg.cpp "
+"TracerouteDlg.cpp HostDlg.cpp\n"
 
-#: knu.cpp:107 knu.cpp:242
+#: knu.cpp:123 knu.cpp:256
 msgid "&Ping"
 msgstr "&Ping"
 
-#: knu.cpp:116 knu.cpp:247
+#: knu.cpp:132 knu.cpp:261
 msgid "&Traceroute"
 msgstr "&Traceroute"
 
-#: knu.cpp:125 knu.cpp:252
+#: knu.cpp:141 knu.cpp:266
 msgid "Host &resolution"
 msgstr "&Gépnév feloldása"
 
-#: knu.cpp:140
+#: knu.cpp:156
 msgid ""
 "There is no command enabled\n"
 "in the configuration file.\n"
@@ -34,168 +36,157 @@ msgstr ""
 "\n"
 "Úgyhogy nem tehetek semmit...\n"
 
-#: knu.cpp:187
+#: knu.cpp:201
 msgid "&New window"
 msgstr "&Uj ablak"
 
-#: knu.cpp:190
+#: knu.cpp:204
 msgid "&Close window"
 msgstr "Albak &bezárása"
 
-#: knu.cpp:193
-msgid "&Quit"
-msgstr "&Kilépés"
-
-#: knu.cpp:198
-msgid "&Copy"
-msgstr "&Másol"
-
-#: knu.cpp:201
+#: knu.cpp:215
 msgid "Select &all"
 msgstr "&Mindent kijelöl"
 
-#: knu.cpp:204
+#: knu.cpp:218
 msgid "C&lear output window"
 msgstr "Eredményablak törlése"
 
-#: knu.cpp:207
+#: knu.cpp:221
 msgid "P&references..."
 msgstr "&Beállítások"
 
-#: knu.cpp:212
+#: knu.cpp:226
 msgid "&Contents"
 msgstr "&Tartalom"
 
-#: knu.cpp:215
-msgid "&About"
-msgstr "&A programról"
-
-#: knu.cpp:217
+#: knu.cpp:231
 msgid "About &Qt"
 msgstr "A &Qt-rõl"
 
-#: knu.cpp:221
-msgid "&File"
-msgstr "&File"
-
-#: knu.cpp:222
-msgid "&Edit"
-msgstr "&Szerkesztés"
-
-#: OptionsDlg.cpp:83 knu.cpp:224
-msgid "&Help"
-msgstr "&Segítség"
-
-#: knu.cpp:374
+#: knu.cpp:404
 msgid "About..."
 msgstr "A programról..."
 
-#: CommandDlg.cpp:115
+#: CommandDlg.cpp:112
 msgid "H&ost:"
 msgstr "Gép:"
 
-#: CommandDlg.cpp:127
+#: CommandDlg.cpp:121
 msgid "&Go!"
 msgstr "&Mehet!"
 
-#: CommandDlg.cpp:136
+#: CommandDlg.cpp:131
 msgid "&Stop"
 msgstr "&Allj"
 
-#: CommandDlg.cpp:151
+#: CommandDlg.cpp:147
 msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
 msgstr ""
-"A parancsnak megfelelõ binárist nem találom."
-"Az elérési útvonalát a Szerkesztés->Beállítások alatt adhatod meg."
-""
+"A parancsnak megfelelõ binárist nem találom.Az elérési útvonalát a "
+"Szerkesztés->Beállítások alatt adhatod meg."
 
-#: CommandDlg.cpp:421
+#: CommandDlg.cpp:453
 msgid "Binary"
 msgstr "Bináris"
 
-#: CommandDlg.cpp:432
+#: CommandDlg.cpp:461
 msgid "Path&name:"
 msgstr "&Utvonal:"
 
-#: CommandDlg.cpp:444
+#: CommandDlg.cpp:470
 msgid "Additional &arguments:"
 msgstr "&További paraméterek:"
 
-#: CommandDlg.cpp:466
+#: CommandDlg.cpp:495
 msgid "This command had been disabled in the configuration file."
 msgstr "Ez a parancs ki lett kapcsolva a konfigurációs file-ban."
 
-#: OptionsDlg.cpp:53
+#: OptionsDlg.cpp:68
 msgid " - configuration"
 msgstr " - konfiguráció"
 
-#: OptionsDlg.cpp:77
-msgid "&Ok"
-msgstr "&Ok"
-
-#: OptionsDlg.cpp:88
-msgid "&Cancel"
-msgstr "&Mégsem"
-
-#: PingDlg.cpp:67 TracerouteDlg.cpp:68
+#: PingDlg.cpp:90 TracerouteDlg.cpp:91
 msgid "Make host &name resolution"
 msgstr "&Oldd fel a gépneveket"
 
-#: HostDlg.cpp:171 PingDlg.cpp:102 TracerouteDlg.cpp:124
+#: HostDlg.cpp:220 PingDlg.cpp:146 TracerouteDlg.cpp:168
+#, fuzzy
 msgid ""
-"You have a problem if your ~/.kderc/share/config/knurc configuration file.\n"
+"You have a problem in your ~/.kde/share/config/knurc configuration file.\n"
 "In the ["
-msgstr ""
-"Probéma van a ~/.kderc/share/config/knurc file-ban,"
-"a ["
+msgstr "Probéma van a ~/.kderc/share/config/knurc file-ban,a ["
 
-#: HostDlg.cpp:175 PingDlg.cpp:106 TracerouteDlg.cpp:128
+#: HostDlg.cpp:224 PingDlg.cpp:150 TracerouteDlg.cpp:172
 msgid "] group, I cannotfind a correct \"path=\" entry."
 msgstr "] csoportban nem találok egy jó \"path=\" bejegyzést."
 
-#: TracerouteDlg.cpp:85
+#: TracerouteDlg.cpp:108
 msgid "&Maximum number of hops:"
 msgstr "&Maximum ennyit ugorj:"
 
-#: HostDlg.cpp:94
+#: HostDlg.cpp:101
 msgid "address (A)"
 msgstr "cím (A)"
 
-#: HostDlg.cpp:95
+#: HostDlg.cpp:102
 msgid "name (PTR)"
 msgstr "név (PTR)"
 
-#: HostDlg.cpp:96
+#: HostDlg.cpp:103
 msgid "name server (NS)"
 msgstr "névszerver (NS)"
 
-#: HostDlg.cpp:97
+#: HostDlg.cpp:104
 msgid "mail exchanger (MX)"
 msgstr "levél cserélõ (MX)"
 
-#: HostDlg.cpp:98
+#: HostDlg.cpp:105
 msgid "alias (CNAME)"
 msgstr "álnév (CNAME)"
 
-#: HostDlg.cpp:99
+#: HostDlg.cpp:106
 msgid "start of authority (SOA)"
 msgstr "hivatalosság kezdete (SOA)"
 
-#: HostDlg.cpp:100
+#: HostDlg.cpp:107
 msgid "any record (ANY)"
 msgstr "bármi (ANY)"
 
-#: HostDlg.cpp:106
+#: HostDlg.cpp:113
 msgid "Se&arch for:"
 msgstr "&Keress:"
 
-#: HostDlg.cpp:118 HostDlg.cpp:222
+#: HostDlg.cpp:125 HostDlg.cpp:271
 msgid "default server"
 msgstr "alapért szerver"
 
-#: HostDlg.cpp:127
+#: HostDlg.cpp:134
 msgid "Ser&ver:"
 msgstr "&Szerver:"
 
+#~ msgid "&Quit"
+#~ msgstr "&Kilépés"
+
+#~ msgid "&Copy"
+#~ msgstr "&Másol"
+
+#~ msgid "&About"
+#~ msgstr "&A programról"
+
+#~ msgid "&File"
+#~ msgstr "&File"
+
+#~ msgid "&Edit"
+#~ msgstr "&Szerkesztés"
+
+#~ msgid "&Help"
+#~ msgstr "&Segítség"
+
+#~ msgid "&Ok"
+#~ msgstr "&Ok"
+
+#~ msgid "&Cancel"
+#~ msgstr "&Mégsem"
