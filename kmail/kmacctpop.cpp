@@ -173,7 +173,8 @@ bool KMAcctPop::doProcessNewMail(KMIOStatus *wid)
   KMMessage* msg;
   gotMsgs = FALSE;
   bool doFetchMsg;
-
+  bool addedOk;   //Flag if msg was delivered succesfully
+  
   wid->prepareTransmission(host(), KMIOStatus::RETRIEVE);
 
   // is everything specified ?
@@ -208,8 +209,11 @@ bool KMAcctPop::doProcessNewMail(KMIOStatus *wid)
   // workaround but still is no good. If msgs are too big in size
   // we will get a timeout.
   client.SetReceiveTimeout(40);
-	
-  while (id <= num)
+
+  addedOk = true;
+  
+  // do while there are mesages to take and last msg wass added succesfully
+  while (id <= num && addedOk)
   {
     if(wid->abortRequested()) {
       client.Quit();
@@ -256,11 +260,12 @@ bool KMAcctPop::doProcessNewMail(KMIOStatus *wid)
       msg = new KMMessage;
       msg->fromString(response,TRUE);
       if (mRetrieveAll || msg->status()!=KMMsgStatusOld)
-	processNewMsg(msg);
+	addedOk = processNewMsg(msg); //added ok? Error displayed if not.
       else delete msg;
     }
 
-    if(!mLeaveOnServer)
+    // If we should delete from server _and_ we added ok then delete it
+    if(!mLeaveOnServer && addedOk)
     {
       if(client.Dele(id) != '+')
 	return popError("DELE",client);

@@ -126,7 +126,7 @@ void KMAccount::sendReceipt(KMMessage* aMsg, const QString aReceiptTo) const
 
 
 //-----------------------------------------------------------------------------
-void KMAccount::processNewMsg(KMMessage* aMsg)
+bool KMAccount::processNewMsg(KMMessage* aMsg)
 {
   QString receiptTo;
   int rc;
@@ -147,8 +147,12 @@ void KMAccount::processNewMsg(KMMessage* aMsg)
     rc = mFolder->addMsg(aMsg);
     if (rc) perror("failed to add message");
     if (rc) warning(i18n("Failed to add message:")+
-		    '\n' + QString(strerror(rc)));
+                    '\n' + QString(strerror(rc)));
+    if (rc) return false;
+    else return true;
   }
+  // What now -  are we owner or not?
+  return true; //Everything's fine - message has been added by filter
 }
 
 

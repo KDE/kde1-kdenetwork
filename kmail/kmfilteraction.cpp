@@ -102,7 +102,13 @@ bool KMFilterActionMove::process(KMMessage* msg, bool&stop)
 {
   if (!mDest) return TRUE;
   KMFilterAction::tempOpenFolder(mDest);
-  mDest->moveMsg(msg);
+  if (mDest->moveMsg(msg) == 0) return false; // ok, added
+  else
+  {
+    debug ("KMfilteraction - couldn't move msg");
+    return true; // error: couldn't add
+  }
+    
   //stop = TRUE;  //Stefan: no, we do not want to stop here!
 
   return FALSE;

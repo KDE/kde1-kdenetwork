@@ -1,4 +1,13 @@
-1999-04-8  Sven Radej <radej@kde.org> (KMail-1.0.20)
+
+1999-04-19  Sven Radej <radej@kde.org> (KMail-1.0.20)
+
+        * Fixed #179. KMail checks now if message is deliverd to folder
+          before delteing it from spool/pop server. Care has been taken
+          also for filter - filter checks if message has been
+          added to the folder - if not it returns failure status
+          so message goes to non-filter folder (inbox).
+
+1999-04-18  Sven Radej <radej@kde.org> (KMail-1.0.20)
 
         * Patches from Don Sanders:
           - Fixed  bug #1218: Stopped the checking mail dialog
