@@ -140,8 +140,8 @@ servercontroller::servercontroller
   
   
   QPopupMenu *help = new QPopupMenu();
-  help->insertItem("Help...",
-		   this, SLOT(help_general()));
+  //  help->insertItem("Help...",
+  //		   this, SLOT(help_general()));
   help->insertItem("Help on Colours...",
 		   this, SLOT(help_colours()));
   help->insertItem("Help on Filters...",

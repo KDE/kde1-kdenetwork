@@ -178,12 +178,13 @@ void ircListItem::setupPainterText()
   QPainter p;
   if((dbuffer->isNull() == FALSE) && 
      (p.begin(dbuffer) == TRUE)){
+
     need_update = FALSE;
 
     p.setFont(parent_lb->font());
     p.setPen(*colour);
     p.setBackgroundColor(parent_lb->backgroundColor());
-    
+
     if(pm)
       p.drawPixmap(1,0,*pm);
     
@@ -194,6 +195,7 @@ void ircListItem::setupPainterText()
     }
     
     p.end();
+
   }
   else{
     cerr << "Start failed!\n";

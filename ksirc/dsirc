@@ -1716,7 +1716,7 @@ sub donumeric {
     &tell("*\cbE\cb* $w is not on channel $c$from");
   } elsif ($cmd eq '442') {
     local($w, $c)=split(/ +/, $args);
-    &tell("*\cbE\cb* You're not on channel $c$from");
+#    &tell("*\cbE\cb* You're not on channel $c$from");  # KSIRC MOD
   } elsif ($cmd eq '443') {
     local($w, $o, $c)=split(/ +/, $args);
     &tell("*\cbE\cb* $o is already on channel $c$from");
