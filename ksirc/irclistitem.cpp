@@ -2,7 +2,9 @@
 #include "iostream.h"
 
 ircListItem::ircListItem(QString s, const QColor *c, QListBox *lb, QPixmap *p = 0)
-  : QListBoxItem()
+  : QObject(),
+    QListBoxItem()
+    
 {
 
   text = s;
@@ -101,3 +103,8 @@ void ircListItem::setupPainterText()
     paint_text->append(text);
   }
 }
+
+void ircListItem::updateSize(){
+  setupPainterText();
+}
+

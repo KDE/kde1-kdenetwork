@@ -51,19 +51,7 @@ class UserControlMenu {
 };
 
 #include "UserMenuRef.h"
-
-class KSircListBox : public QListBox
-{
- public:
-  KSircListBox(QWidget * parent=0, const char * name=0, WFlags f=0) 
-    : QListBox(parent,name,f)
-    {
-    }
-  const QScrollBar* verticalScrollBar () const
-    {
-      return QListBox::verticalScrollBar();
-    }
-};
+#include "irclistbox.h"
 
 class KSircTopLevel : public KTopLevelWidget,
 		      public KSircMessageReceiver
@@ -79,6 +67,7 @@ signals:
   void closing(KSircTopLevel *, char *);
   void changeChannel(QString, QString);
   void currentWindow(KSircTopLevel *);
+  void changeSize();
 
 public slots:
   void sirc_receive(QString str);

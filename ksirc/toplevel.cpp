@@ -276,28 +276,33 @@ void KSircTopLevel::sirc_receive(QString str)
       
       if(item){
 	// Insert line to the end
+	connect(this, SIGNAL(changeSize()),
+		item, SLOT(updateSize()));
 	mainw->insertItem(item, -1);
 	lines++; // Mode up lin counter
 	update = TRUE;
       }
+//      if(mainw->count() > 100)
+//	mainw->removeItem(0);
     }
     LineBuffer->clear(); // Clear it since it's been added
 
     if(mainw->count() > 200){
-      mainw->setAutoUpdate(FALSE);
-      update = TRUE;
-      while(mainw->count() > 100)
-	mainw->removeItem(0);
+        mainw->setAutoUpdate(FALSE);
+        update = TRUE;
+        while(mainw->count() > 100)
+           mainw->removeItem(0);
+	mainw->update();
     }
 
     // If we need to scroll, we, scroll =)
-    if((mainw->count() > (uint) mainw->numItemsVisible()) && (update == TRUE) && (item != 0))
-      mainw->setTopItem(mainw->count()-1);
-    //      mainw->setTopItem(mainw->count() - mainw->numItemsVisible() + 3 + item->row());
+    mainw->scrollToBottom();
 
     if(mainw->autoUpdate() == FALSE){
       mainw->setAutoUpdate(TRUE);
-      mainw->repaint(TRUE);
+      mainw->repaint();
+      //      mainw->repaint(TRUE);
+      //mainw->update();
     }
     
   }
@@ -771,22 +776,12 @@ void KSircTopLevel::startUserMenuRef()
 
 void KSircTopLevel::AccelScrollDownPage()
 {
-
-  int topItem = ((int) mainw->topItem() + mainw->numItemsVisible()) + 1;
-
-  if(topItem > ((int) mainw->count()))
-    mainw->setTopItem(mainw->count()-mainw->numItemsVisible());
-  else
-    mainw->setTopItem(topItem);
+    mainw->pageDown();
 }
 
 void KSircTopLevel::AccelScrollUpPage()
 {
-
-  mainw->setTopItem(((mainw->topItem() - mainw->numItemsVisible() + 1) < 0)
-		     ? 0
-		     : (mainw->topItem() - mainw->numItemsVisible() + 1));
-
+    mainw->pageUp();
 }
 void KSircTopLevel::AccelPriorMsgNick()
 {
@@ -932,6 +927,7 @@ void KSircTopLevel::resizeEvent(QResizeEvent *e)
   KTopLevelWidget::resizeEvent(e);
 //  cerr << "Updating list box\n";
   mainw->setTopItem(mainw->count()-1);
+  emit changeSize();
   mainw->setAutoUpdate(TRUE);
   repaint(TRUE);
 }

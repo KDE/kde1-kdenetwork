@@ -1,6 +1,7 @@
 #ifndef IRCLISTITEM_H
 #define IRCLISTITEM_H
 
+#include <qobject.h>
 #include <qcolor.h>  
 #include <qlistbox.h>
 #include <qpainter.h>  
@@ -8,12 +9,17 @@
 #include <qstrlist.h>
 
 
-class ircListItem : public QListBoxItem
+class ircListItem : public QObject, 
+		    public QListBoxItem
 {
+ Q_OBJECT;
  public:
   ircListItem(QString s, const QColor *c, QListBox *lb, QPixmap *p=0);
 
   virtual int row();
+
+public slots:
+  virtual void updateSize();
   
 protected:
   virtual void paint(QPainter *);
