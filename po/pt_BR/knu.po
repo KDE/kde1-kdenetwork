@@ -1,9 +1,13 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
 msgid ""
-msgstr ""
-"Project-Id-Version: kuser\n"
-"POT-Creation-Date: 1998-06-16 14:20+0200\n"
-"PO-Revision-Date: 1998-03-23 00:00+0100\n"
-"Last-Translator: Sandro Henrique <sandro@conectiva.com.br>\n"
+msgstr "Project-Id-Version: knu\n"
+       "POT-Creation-Date: 1998-03-21 18:32+0300\n"
+       "PO-Revision-Date: 1998-06-23 09:00-0300\n"
+       "Last-Translator: Elvis Pfützenreuter<epx@netville.com.br>\n"
 
 #: knu.cpp:139 knu.cpp:300
 msgid "&Ping"
@@ -18,14 +22,12 @@ msgid "Host &resolution"
 msgstr "&Resolução de host"
 
 #: knu.cpp:170
-#, fuzzy
 msgid "F&inger"
-msgstr "&Finger"
+msgstr "F&inger"
 
 #: knu.cpp:180 knu.cpp:325
-#, fuzzy
 msgid "&Matt's traceroute"
-msgstr "&Traçar rota"
+msgstr "Traceroute do &Matt"
 
 #: knu.cpp:192
 msgid ""
@@ -33,11 +35,10 @@ msgid ""
 "in the configuration file.\n"
 "\n"
 "So I can't do anything...\n"
-msgstr ""
-"Não há nenhum comando ativado\n"
-"no arquivo de configuração.\n"
-"\n"
-"Por isso não posso fazer nada...\n"
+msgstr "Não há nenhum comando ativado\n"
+       "no arquivo de configuração.\n"
+       "\n"
+       "Por isso não posso fazer nada...\n"
 
 #: knu.cpp:237
 msgid "&New window"
@@ -60,9 +61,9 @@ msgid "P&references..."
 msgstr "P&referências"
 
 #: knu.cpp:272
-#, fuzzy, c-format
+#, c-format
 msgid "&About %s"
-msgstr "Sobre o &Qt"
+msgstr "&Sobre %s"
 
 #: knu.cpp:274
 msgid "About &Qt"
@@ -92,9 +93,8 @@ msgstr "&Parar"
 msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
-msgstr ""
-"O executável deste comando não foi encontrado. \n"
-"Pode inserir a sua localização no menu Editar->Preferências."
+msgstr "O executável deste comando não foi encontrado. \n"
+       "Pode inserir a sua localização no menu Editar->Preferências."
 
 #: CommandDlg.cpp:340
 #, c-format
@@ -109,15 +109,15 @@ msgid ""
 "Please use Edit->Preferences... menu\n"
 "to configure it again.\n"
 msgstr ""
-"\n"
-"Há um problema em seu\n"
-"arquivo de configuração\n"
-"%s/%src.\n"
-"No grupo [%s], não consigo\n"
-"encontrar uma entrada \"path=\" válida.\n"
-"\n"
-"Por favor use o menu Editar->Preferências\n"
-"para configurá-lo novamente.\n"
+       "\n"
+       "Há um problema em seu\n"
+       "arquivo de configuração\n"
+       "%s/%src.\n"
+       "No grupo [%s], não consigo\n"
+       "encontrar uma entrada \"path=\" válida.\n"
+       "\n"
+       "Por favor use o menu Editar->Preferências\n"
+       "para configurá-lo novamente.\n"
 
 #: CommandDlg.cpp:349
 msgid "Error in pathname"
@@ -193,16 +193,12 @@ msgstr "Ser&vidor:"
 
 #: HostDlg.cpp:332
 msgid "hos&t"
-msgstr ""
+msgstr "hos&t"
 
 #: HostDlg.cpp:336
 msgid "ns&lookup"
-msgstr ""
+msgstr "ns&lookup"
 
 #: FingerDlg.cpp:76
-#, fuzzy
 msgid "&User:"
-msgstr "Usuário:"
-
-#~ msgid "Server:"
-#~ msgstr "Servidor:"
+msgstr "&Usuário:"
