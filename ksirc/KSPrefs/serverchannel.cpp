@@ -34,7 +34,7 @@ ServerChannel::ServerChannel
   for(int i = 0; i < items; i++){
     cindex.setNum(i);
     server = "Server-" + cindex;
-    LB_Servers->insertItem(kConfig->readEntry(server));
+    LB_Servers->insertItem(kConfig->readEntry(server), 0);
   }
   LB_Servers->setCurrentItem(0);
 
@@ -44,7 +44,7 @@ ServerChannel::ServerChannel
   for(int i = 0; i < items; i++){
     cindex.setNum(i);
     server = "Channel-" + cindex;
-    LB_Channels->insertItem(kConfig->readEntry(server));
+    LB_Channels->insertItem(kConfig->readEntry(server), 0);
   }
   LB_Channels->setCurrentItem(0);
 }

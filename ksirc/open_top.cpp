@@ -33,7 +33,7 @@ open_top::open_top
 	for(int i = 0; i < items; i++){
 	  cindex.setNum(i);
 	  server = "Channel-" + cindex;
-	  nameSLE->insertItem(kConfig->readEntry(server), -1);
+	  nameSLE->insertItem(kConfig->readEntry(server), 0);
 	}
 	nameSLE->setCurrentItem(0);	
 }

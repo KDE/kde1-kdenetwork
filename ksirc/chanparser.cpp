@@ -243,7 +243,7 @@ void ChannelParser::parseINFOError(QString string) /*fold00*/
   throw(parseSucc(string,kSircConfig->colour_error, top->pix_madsmile)); // Null string, don't display anything
 }
 
-void ChannelParser::parseINFONicks(QString in_string) /*fold00*/
+void ChannelParser::parseINFONicks(QString in_string) /*FOLD00*/
 {
 
   EString string = in_string;
@@ -321,7 +321,7 @@ void ChannelParser::parseINFOJoin(QString string) /*fold00*/
 
 }
 
-void ChannelParser::parseINFOPart(QString string) /*fold00*/
+void ChannelParser::parseINFOPart(QString string) /*FOLD00*/
 {
   char nick[101], channel[101];
   
@@ -361,6 +361,7 @@ void ChannelParser::parseINFOPart(QString string) /*fold00*/
       if(top->KickWinOpen != false)
         throw(parseError(" " + string, QString("Kick window Open")));
       top->KickWinOpen = true;
+      top->hide();
       switch(QMessageBox::information(top, "You have Been Kicked",
                                       string.data(),
                                       "Rejoin", "Leave", 0, 0, 1)){

@@ -348,7 +348,7 @@ sub dcerror {
 sub dgsclose {
   local($sfh, $rfh)=@_;
   &dohooks("dcc_disconnect", $dnick{$sfh}, $dfile{$rfh}, $dtransferred{$sfh},
-	   time-$dstarttime{$rfh});
+	   time-$dstarttime{$rfh}, $rfh);
   &tell("*\cbD\cb* DCC transfer with $dnick{$sfh} ($dfile{$rfh}) terminated; $dtransferred{$sfh} bytes transferred in ".(time-$dstarttime{$rfh}). " seconds");
   close($sfh);
   close($rfh);
@@ -1083,7 +1083,8 @@ sub docommand {
 	$dfile{$fh}=$file;
 	$dstarttime{$fh}=time;
 	$dtransferred{$sfh}=0;
-	&tell("*\cbD\cb* DCC GET connection with $n established");
+        &tell("*\cbD\cb* DCC GET connection with $n established");
+        &dohooks("dcc_get", $n, $file, $fh);
       } else {
 	if ($newarg) {
 	  &tell("*\cbE\cb* No pending DCC GET from $newarg");
@@ -1131,6 +1132,7 @@ sub docommand {
       $sz=(-s $f);
       &sl("PRIVMSG $n :\caDCC SEND $tf $mynumber $myport $sz\ca");
       &dohooks("send_ctcp", $n, "DCC SEND $tf $mynumber $myport $sz");
+      &dohooks("dcc_send", $n, $f, $sz, $fh);
       &tell("*\cbD\cb* Sent DCC SEND request to $n ($f,$sz)");
       $dfile{$fh}=$f;
       $dswait{$lfh}=$fh;
@@ -1469,7 +1471,8 @@ sub remsel {
 	"server_notice", "notify_signoff", "notify_signon", "public",
 	"raw_irc", "send_action", "send_dcc_chat", "send_text", "send_notice",
 	"signoff", "topic", "disconnect", "status", "print", "command",
-	"chat_disconnect", "dcc_disconnect", "send_ctcp");
+        "chat_disconnect", "dcc_disconnect", "send_ctcp",
+        "dcc_send", "dcc_send_status", "dcc_get", "dcc_get_status");
 
 sub addhook {
   local($type, $name)=@_;
@@ -2004,8 +2007,9 @@ while (1) {
       local($a, $buf)=(0, '');
       $a=sysread($sfh, $buf, 4096);
       if ($a) {
-	$dtransferred{$sfh}+=$a;
-	&tell("*\cbD\cb* DCC GET read: $dfile{$rfh} bytes: $dtransferred{$sfh}"); # KSIRC MOD FOR 971217
+        $dtransferred{$sfh}+=$a;
+        &dohooks("dcc_get_status", $dfile{$rfh}, $dtransferred{$sfh}, $rfh);
+        #	&tell("*\cbD\cb* DCC GET read: $dfile{$rfh} bytes: $dtransferred{$sfh}"); # KSIRC MOD FOR 971217
 	print $rfh $buf;
 	print $sfh pack("N", $dtransferred{$sfh});
       } else {
@@ -2025,7 +2029,8 @@ while (1) {
       next if $csa<0;
       $l=read($rfh, $buf, 512+$csa);
       $w=syswrite($sfh, $buf, $l) if $l;
-      &tell("*\cbD\cb* DCC SEND write: $dfile{$rfh} bytes: $dtransferred{$sfh}"); # KSIRC MOD FOR 971218
+      &dohooks("dcc_send_status", $dfile{$rfh}, $dtransferred{$sfh}, $rfh);
+      #      &tell("*\cbD\cb* DCC SEND write: $dfile{$rfh} bytes: $dtransferred{$sfh}"); # KSIRC MOD FOR 971218
       next if $l==0 && $ack<$dtransferred{$sfh};
       $dtransferred{$sfh}+=$w;
       &dgsclose($sfh, $rfh), next if ($w<$l || $l==0);
