@@ -294,7 +294,7 @@ void servercontroller::new_toplevel(QString str) /*fold00*/
   }
 }
 
-void servercontroller::ToggleAutoCreate() /*fold00*/
+void servercontroller::ToggleAutoCreate() /*FOLD00*/
 {
   kConfig->setGroup("General");
   if(kConfig->readNumEntry("AutoCreateWin", FALSE) == FALSE){
@@ -645,6 +645,7 @@ dockServerController::dockServerController(servercontroller *_sc, const char *_n
 
   //  setFrameStyle(QFrame::Box | QFrame::Raised);
   setFrameStyle(QFrame::NoFrame);
+  resize(24,24);
 }
 
 dockServerController::~dockServerController() /*FOLD00*/

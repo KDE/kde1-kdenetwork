@@ -44,6 +44,9 @@ class KSircListBox : public QListBox
 protected slots:
   virtual void clearSelection();
 
+  virtual void mouseSelScrollUp();
+  virtual void mouseSelScrollDown();
+
  protected:
   virtual void resizeEvent(QResizeEvent *);
   virtual int totalHeight ();
@@ -83,9 +86,11 @@ protected slots:
   int imin(int, int);
 
   /**
-   * If we are selection this is true. otherwise it's false
+   * selectMode: If we are selection this is true. otherwise it's false
+   * waitForClear: screen is dirty and we're waiting for a clear signal
+   * selecting: everything is set and we're waiting for a selection to be made or is being made.  We use this so that we can know if the right mouse button was pressed durring mouseMove
    */
-  bool selectMode, waitForClear;
+  bool selectMode, waitForClear, selecting;
   QPoint spoint;
   int srow, sline, schar, lrow;
   int max, min;
