@@ -79,7 +79,7 @@ public:
     bool remove();
     void thread();
     virtual void clear();
-
+    
 };
 
 typedef QDictT<Article>ArticleDictBase;
@@ -97,10 +97,10 @@ public:
     ~NewsGroup();
     void save();
     void load();
-
+    
     // Last article number of which the group has info.
     int lastArticle;
-
+    
     //Is this group's window visible?
     bool isVisible;
     //Is it tagged?
@@ -126,10 +126,21 @@ protected:
 };
 
 
+class NNTPObserver:public DwObserver
+{
+public:
+    NNTPObserver (NNTP *_client);
+    virtual void Notify();
+private:
+    NNTP *client;
+};
+
+
 
 class NNTP: public DwNntpClient
 {
 public:
+    friend class NNTPObserver;
     NNTP(char *hostname=0);
     ~NNTP();
     
@@ -148,15 +159,16 @@ public:
     int     first;
     int     last;
     int     howmany;
+    int     byteCounter;
     
     QString    	hostname;
     char    *lastStatusResponse() { return Laststatus.data();};
     bool    reConnect();
-        
+    
 private:
     int         listOverview();
     int         listXover(int from=0,int to=0);
-
+    
     QString 	Laststatus;
     QString 	GroupName;
     bool    	Connected;
@@ -174,7 +186,9 @@ private:
     int         OffsetRef;
     FILE      	*server;
     KSocket    	*sock;
-    
+    QString     partialResponse;
+    NNTPObserver  *extendPartialResponse;
+    void        PGetTextResponse();
 };
 
 #endif

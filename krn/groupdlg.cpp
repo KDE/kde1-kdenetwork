@@ -176,7 +176,8 @@ Groupdlg::Groupdlg
     
     
     KStatusBar *status = new KStatusBar (this, "status");
-    status->insertItem ("", 1);
+    status->insertItem ("Received 00000000 bytes", 1);
+    status->insertItem ("", 2);
     status->show ();
     setStatusBar (status);
 
@@ -192,6 +193,10 @@ Groupdlg::Groupdlg
     if (conf->readNumEntry("ConnectAtStart"))
         actions(CONNECT);
     fillTree();
+
+    counterTimer = new QTimer (this);
+    counterTimer->changeInterval (1000);
+    connect (counterTimer,SIGNAL(timeout()),this,SLOT(updateCounter()));
 }
 
 Groupdlg::~Groupdlg ()
@@ -367,28 +372,28 @@ void Groupdlg::offline()
     toolBar()->setItemEnabled (DISCONNECT,false);
     server->disconnect();
     toolBar()->setItemEnabled (CONNECT,true);
-    statusBar ()->changeItem ("Disconnected", 1);
+    statusBar ()->changeItem ("Disconnected", 2);
     qApp->processEvents ();
 }
 
 void Groupdlg::online()
 {
     toolBar()->setItemEnabled (CONNECT,false);
-    statusBar ()->changeItem ("Connecting to server", 1);
+    statusBar ()->changeItem ("Connecting to server", 2);
     qApp->processEvents ();
     if (server->connect ())
     {
         if (server->isReadOnly ())
-            statusBar ()->changeItem ("Connected to server - Posting not allowed", 1);
+            statusBar ()->changeItem ("Connected to server - Posting not allowed", 2);
         else
-            statusBar ()->changeItem ("Connected to server - Posting allowed", 1);
+            statusBar ()->changeItem ("Connected to server - Posting allowed", 2);
     }
     else
     {
         qApp->setOverrideCursor (arrowCursor);
         KMsgBox:: message (0, "Error", "Can't connect to server", KMsgBox::INFORMATION);
         qApp->restoreOverrideCursor ();
-        statusBar ()->changeItem ("Connection to server failed", 1);
+        statusBar ()->changeItem ("Connection to server failed", 2);
         qApp->processEvents ();
         toolBar()->setItemEnabled (CONNECT,true);
     }
@@ -401,7 +406,7 @@ void Groupdlg::online()
             KMsgBox:: message (0, "Error", "Authentication Failed", KMsgBox::INFORMATION);
             qApp->restoreOverrideCursor ();
             actions(DISCONNECT);
-            statusBar ()->changeItem ("Connection to server failed: Authentication problem", 1);
+            statusBar ()->changeItem ("Connection to server failed: Authentication problem", 2);
             qApp->processEvents ();
             toolBar()->setItemEnabled (CONNECT,true);
         }
@@ -529,7 +534,7 @@ bool Groupdlg::actions (int action)
         {
             if (needsConnect())
             {
-                statusBar ()->changeItem ("Getting active list from server", 1);
+                statusBar ()->changeItem ("Getting active list from server", 2);
                 qApp->processEvents ();
                 server->groupList (&groups,true);
                 loadActive();
@@ -645,21 +650,31 @@ bool Groupdlg::loadActive()
     {
         f.close ();
         debug ("loading %s\n",ac.data());
-        statusBar ()->changeItem ("Listing active newsgroups", 1);
+        statusBar ()->changeItem ("Listing active newsgroups", 2);
         qApp->processEvents ();
         server->groupList (&groups,false);
     };
-    statusBar ()->changeItem ("", 1);
+    statusBar ()->changeItem ("", 2);
     return success;
 };
 
 void Groupdlg::getSubjects()
 {
-    debug ("Getting subjects");
-    for (NewsGroup *group=subscr.first();group!=0;group=subscr.next())
+    if (needsConnect())
     {
-        debug ("Getting subjects in %s",group->data());
-        group->getSubjects(server);
+        QString s;
+        debug ("Getting subjects");
+        for (NewsGroup *group=subscr.first();group!=0;group=subscr.next())
+        {
+            s="Getting list of messages in ";
+            s+=group->data();
+            statusBar ()->changeItem (s.data(), 2);
+            qApp->processEvents();
+            debug ("Getting subjects in %s",group->data());
+            group->getSubjects(server);
+        }
+        s="Got Subects";
+        statusBar ()->changeItem (s.data(), 2);
     }
 }
 
@@ -689,5 +704,23 @@ void Groupdlg::checkUnread()
     }
     list->repaint();
     
+}
+
+
+void Groupdlg::updateCounter()
+{
+    QString s;
+    if (server->byteCounter>=0)
+    {
+        s.setNum(server->byteCounter);
+        s.rightJustify(8,'0');
+        s=QString("Received ")+s+" bytes";
+    }
+    else
+    {
+        s="Received All";
+    }
+    statusBar()->changeItem (s.data(), 1);
+    qApp->processEvents();
 }
 

@@ -22,6 +22,7 @@
 #include <qlistbox.h>
 #include <qlist.h>
 #include <qpopmenu.h>
+#include <qtimer.h>
 
 #include <ktopwidget.h>
 #include <ktreelist.h>
@@ -46,7 +47,7 @@ public slots:
     void online();
     void offline();
     bool needsConnect();
-
+    void updateCounter();
     
 private slots:
     bool actions(int);
@@ -63,5 +64,6 @@ private:
     bool loadSubscribed();
     bool saveSubscribed();
     bool loadActive();
+    QTimer *counterTimer;
 };
 #endif // Groupdlg_included

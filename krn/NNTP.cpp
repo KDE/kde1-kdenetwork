@@ -30,6 +30,21 @@ extern QString krnpath,cachepath,artinfopath;
 
 extern KConfig *conf;
 
+// NNTPObserver class. Used to get feedback from NNTP
+
+NNTPObserver::NNTPObserver (NNTP *_client)
+{
+    client=_client;
+}
+
+void NNTPObserver::Notify()
+{
+    client->partialResponse+=client->mTextResponse.c_str();
+    client->byteCounter=client->partialResponse.length();
+    qApp->processEvents();
+}
+
+
 /////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -45,7 +60,24 @@ NNTP::NNTP(char *host=0): DwNntpClient()
     Connected=false;
     Readonly=false;
     debug (hostname);
+    byteCounter=0;
+    extendPartialResponse=new NNTPObserver (this);
+    SetObserver(extendPartialResponse);
 }
+
+void NNTP::PGetTextResponse()
+{
+    partialResponse="";
+    byteCounter=0;
+    qApp->processEvents();
+    SetObserver(extendPartialResponse);
+    DwNntpClient::PGetTextResponse();
+    mTextResponse=partialResponse.data();
+    partialResponse="";
+    byteCounter=-1;
+    SetObserver(NULL);
+}
+
 NNTP::~NNTP()
 {
 }

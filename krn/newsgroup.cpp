@@ -206,6 +206,7 @@ NewsGroup::~NewsGroup()
 
 void NewsGroup::getList()
 {
+    int c=0;
     QString ID;
     artList.clear();
     QString ac;
@@ -216,6 +217,9 @@ void NewsGroup::getList()
         QTextStream st(&f);
         while (!st.eof())
         {
+            c++;
+            if (!(c%100))
+                qApp->processEvents();
             ID=st.readLine();
             if (ID.isEmpty())
                 break;
@@ -331,6 +335,8 @@ void ArticleList::thread()
     {
         return; //not much to thread
     }
+    //this can take a while
+    qApp->processEvents();
     
     QDict <ArticleList> threads;
     QStrList IDs;
