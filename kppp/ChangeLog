@@ -1,3 +1,9 @@
+1998-08-06  Harri Porten  <porten@tu-harburg.de>
+
+	* runtests.cpp: scan up to 100 lines when searching for the
+	unwanted 'lock' in /etc/ppp/options and recognize the '#' sign
+	to avoid a false alarm
+	
 1998-08-04  Harri Porten  <porten@tu-harburg.de>
 
 	* fixed replacement for systems without a BSD 4.2 style usleep()
@@ -45,6 +51,8 @@
 	* main.cpp: replaced ~/.kde with kdelocaldir() 
 	* connect.cpp: hardcoded ´-detach´ as pppd argument
 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>> KDE 1.0 released <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+	
 1998-06-21  Harri Porten  <porten@tu-harburg.de>
 
 	* general.cpp (GeneralWidget): modified checkbox-size to avoid

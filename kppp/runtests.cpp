@@ -181,54 +181,42 @@ int runTests() {
     }
   }
 
-//   // Test 3: search the logviewer
-//   if(strlen(gpppdata.logViewer()) > 0) {
-//     f = findFileInPath( gpppdata.logViewer() );
-//     if( f.length() == 0 || access(f.data(), X_OK) != 0 ) {
-//       QString s;
-//       QString dflt;
-
-//       // search default
-//       dflt = findFileInPath( "kedit" );
-//       if( dflt.length() == 0 || access(dflt.data(), X_OK) != 0 )
-// 	dflt = "kvt -e less";
-
-//       s.sprintf(i18n("The logviewer \"%s\" was not found!\n\n"
-// 				   "Setting default back to \"%s\"."),
-// 		gpppdata.logViewer(), dflt.data());
-//       QMessageBox::information(0,
-// 			       i18n("Information"),
-// 			       s.data());
-//       gpppdata.setlogViewer(dflt.data());
-//       gpppdata.save();
-//     }
-//   }
-
   // Test 4: check for undesired 'lock' option in /etc/ppp/options
-  int fd;
-  if ((fd = open(SYSOPTIONS, O_RDONLY)) >= 0) {
-    QString str;
-    char c;
-    while (str.length() < 50 && read(fd, &c, 1) == 1) 
-      str+=c;
+  QFile opt(SYSOPTIONS);
+  if (opt.open(IO_ReadOnly)) {
+    QTextStream t(&opt);
     QRegExp r1("^lock");
     QRegExp r2("\\slock$");   // \s matches white space (9,10,11,12,13,32) 
     QRegExp r3("\\slock\\s");
-    if (r1.match(str) >= 0 || r2.match(str) >= 0 || r3.match(str) >= 0) {
+    QString s;
+    int lines = 0;
+    bool match = false;
+    
+    while (!t.eof() && lines++ < 100) {
+      s = t.readLine();
+      
+      // truncate comments
+      if (s.find('#') >= 0)
+        s.truncate(s.find('#'));
+
+      if (r1.match(s) >= 0 || r2.match(s) >= 0 || r3.match(s) >= 0)
+        match = true;
+    }
+    opt.close();
+    if (match) {
       QMessageBox::warning(0,
-		   i18n("Error"),
-		   i18n("kppp has detected a 'lock' option in "
-				      "/etc/ppp/options.\n\nThis option has "
-				      "to be removed since kppp takes care "
-				      "of device locking itself.\n"
-				      "Contact your system administrator."));
+                           i18n("Error"),
+                           i18n("kppp has detected a 'lock' option in "
+                                "/etc/ppp/options.\n\nThis option has "
+                                "to be removed since kppp takes care "
+                                "of device locking itself.\n"
+                                "Contact your system administrator."));
       warning++;
     }
-    close(fd);
   } 
 
   // Test 5: check for existence of /etc/resolv.conf
-  
+  int fd;
   if ((fd = open("/etc/resolv.conf", O_RDONLY)) >= 0)
     close(fd);
   else {
