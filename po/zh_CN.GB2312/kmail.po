@@ -5,12 +5,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail 0.4.4\n"
-"POT-Creation-Date: 1999-02-04 02:05+0100\n"
+"POT-Creation-Date: 1999-02-06 02:07+0100\n"
 "PO-Revision-Date: 1998-06-12 08:40 MET DST\n"
 "Last-Translator: Wang Jian <lark@linux.ustc.edu.cn>\n"
 "Language-Team: zh_CN (gb2312 )\n"
 
-#: kmcomposewin.cpp:1516 kmmainwin.cpp:364 kpgp.cpp:546
+#: kmcomposewin.cpp:1516 kmmainwin.cpp:371 kpgp.cpp:546
 msgid ""
 "Sorry, but this feature\n"
 "is still missing"
@@ -18,31 +18,31 @@ msgstr ""
 "±§Ç¸ , Õâ¸öÌØÉ«»¹Ã»ÓĞ\n"
 "ÊµÏÖ"
 
-#: kmmainwin.cpp:373
+#: kmmainwin.cpp:380
 msgid "New Folder"
 msgstr "ĞÂ½¨ÓÊ¼ş¼Ğ"
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:386 kmmainwin.cpp:420 main.cpp:339
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:393 kmmainwin.cpp:427 main.cpp:471
 msgid "KMail error"
 msgstr "KMail ´íÎó"
 
-#: kmmainwin.cpp:387 kmmainwin.cpp:421
+#: kmmainwin.cpp:394 kmmainwin.cpp:428
 msgid "Already checking for mail!"
 msgstr "ÒÑ¾­ÔÚ¼ì²éµç×ÓÓÊ¼ş !"
 
-#: kmmainwin.cpp:397 kmmainwin.cpp:431
+#: kmmainwin.cpp:404 kmmainwin.cpp:438
 msgid "No new mail available"
 msgstr "Ã»ÓĞĞÂµÄÓÊ¼ş"
 
-#: kmmainwin.cpp:458
+#: kmmainwin.cpp:465
 msgid "Modify Folder"
 msgstr "ĞŞ¸ÄÓÊ¼ş¼Ğ"
 
-#: kmmainwin.cpp:481
+#: kmmainwin.cpp:488
 msgid "Moved all messages into trash"
 msgstr "½«ËùÓĞÓÊ¼ş·ÅÈë·ÏÖ½Â¨"
 
-#: kmmainwin.cpp:500
+#: kmmainwin.cpp:507
 msgid ""
 "Cannot remove a\n"
 "system folder."
@@ -50,7 +50,7 @@ msgstr ""
 "²»ÄÜÒÆ¶¯ÏµÍ³\n"
 "ÓÊ¼ş¼Ğ"
 
-#: kmmainwin.cpp:504
+#: kmmainwin.cpp:511
 #, c-format
 msgid ""
 "Are you sure you want to remove the folder\n"
@@ -59,299 +59,299 @@ msgstr ""
 "ÄãÈ·¶¨ÒªÉ¾³ıÓÊ¼ş¼Ğ \"%s\"\n"
 "¶ªÆúËüµÄÄÚÈİ ?"
 
-#: kmmainwin.cpp:507
+#: kmmainwin.cpp:514
 msgid "Confirmation"
 msgstr "È·ÈÏ"
 
-#: kmmainwin.cpp:567
+#: kmmainwin.cpp:574
 msgid "KMail notification!"
 msgstr ""
 
-#: kmmainwin.cpp:568
+#: kmmainwin.cpp:575
 msgid "Only messages in the outbox folder can be edited!"
 msgstr ""
 
-#: kmmainwin.cpp:603
+#: kmmainwin.cpp:610
 msgid "Message as Plain Text"
 msgstr "ÆÕÍ¨ÎÄ±¾ÏûÏ¢"
 
-#: kmmainwin.cpp:610 kmmainwin.cpp:630
+#: kmmainwin.cpp:617 kmmainwin.cpp:637
 msgid "Select Folder"
 msgstr "Ñ¡ÔñÓÊ¼ş¼Ğ"
 
-#: kmmainwin.cpp:653
+#: kmmainwin.cpp:660
 msgid "Queued messages successfully sent."
 msgstr "ÅÅ¶ÓµÄÏûÏ¢³É¹¦µÄ·¢³ö."
 
-#: kmmainwin.cpp:655
+#: kmmainwin.cpp:662
 msgid "Failed to send (some) queued messages."
 msgstr "²»ÄÜ·¢³ö(Ò»Ğ©)ÅÅ¶ÓµÄÏûÏ¢."
 
-#: kmmainwin.cpp:782
+#: kmmainwin.cpp:789
 msgid "Opening URL..."
 msgstr "Õı´ò¿ª URL..."
 
-#: kmmainwin.cpp:837
+#: kmmainwin.cpp:844
 msgid "Address added to addressbook."
 msgstr "µØÖ·Ìí¼Óµ½ÁËµØÖ·²¾ÖĞ."
 
-#: kmmainwin.cpp:849
+#: kmmainwin.cpp:856
 msgid "Address copied to clipboard."
 msgstr "µØÖ·¸´ÖÆµ½ÁË¼ôÌù°åÖĞ."
 
-#: kmmainwin.cpp:854
+#: kmmainwin.cpp:861
 msgid "URL copied to clipboard."
 msgstr "URL ¸´ÖÆµ½ÁË¼ôÌù°åÖĞ."
 
-#: kmmainwin.cpp:881
+#: kmmainwin.cpp:888
 msgid "Send to..."
 msgstr "·¢¸ø ..."
 
-#: kmmainwin.cpp:883
+#: kmmainwin.cpp:890
 msgid "Send reply to..."
 msgstr "·¢»Ø¸´¸ø ..."
 
-#: kmmainwin.cpp:885
+#: kmmainwin.cpp:892
 msgid "Forward to..."
 msgstr "×ª·¢¸ø ..."
 
-#: kmmainwin.cpp:888
+#: kmmainwin.cpp:895
 msgid "Add to addressbook"
 msgstr "Ìí¼Óµ½µØÖ·²¾ÖĞ"
 
-#: kmmainwin.cpp:890 kmmainwin.cpp:899
+#: kmmainwin.cpp:897 kmmainwin.cpp:906
 msgid "Copy to clipboard"
 msgstr "¸´ÖÆµ½¼ôÌù°åÖĞ"
 
-#: kmmainwin.cpp:897
+#: kmmainwin.cpp:904
 msgid "Open URL..."
 msgstr "´ò¿ª URL..."
 
-#: kmmainwin.cpp:907 kmmainwin.cpp:1024
+#: kmmainwin.cpp:914 kmmainwin.cpp:1031
 msgid "&Reply..."
 msgstr "»Ø¸´[&R]..."
 
-#: kmmainwin.cpp:909 kmmainwin.cpp:1026
+#: kmmainwin.cpp:916 kmmainwin.cpp:1033
 msgid "Reply &All..."
 msgstr "»Ø¸´ËùÓĞµÄ[&A]..."
 
-#: kmmainwin.cpp:911 kmmainwin.cpp:1028
+#: kmmainwin.cpp:918 kmmainwin.cpp:1035
 msgid "&Forward..."
 msgstr "×ª·¢¸ø[&F]..."
 
-#: kmmainwin.cpp:914 kmmainwin.cpp:1038
+#: kmmainwin.cpp:921 kmmainwin.cpp:1045
 msgid "&Move..."
 msgstr "ÒÆ¶¯[&M]..."
 
-#: kmmainwin.cpp:916 kmmainwin.cpp:1040
+#: kmmainwin.cpp:923 kmmainwin.cpp:1047
 msgid "&Copy..."
 msgstr "¸´ÖÆ[&C]..."
 
-#: kmmainwin.cpp:943
+#: kmmainwin.cpp:950
 msgid "New Composer"
 msgstr "´ò¿ªÁíÒ»¸ö±à¼­Æ÷"
 
-#: kmcomposewin.cpp:451 kmmainwin.cpp:945
+#: kmcomposewin.cpp:451 kmmainwin.cpp:952
 msgid "New Mailreader"
 msgstr "´ò¿ªÁíÒ»¸öÓÊ¼şÔÄ¶ÁÆ÷"
 
-#: kmmainwin.cpp:948
+#: kmmainwin.cpp:955
 msgid "Save As..."
 msgstr "±£´æÎª ..."
 
-#: kmmainwin.cpp:950
+#: kmmainwin.cpp:957
 msgid "Print..."
 msgstr "´òÓ¡..."
 
-#: kmmainwin.cpp:953
+#: kmmainwin.cpp:960
 msgid "Check Mail..."
 msgstr "¼ì²éÓÊ¼ş ..."
 
-#: kmmainwin.cpp:962
+#: kmmainwin.cpp:969
 msgid "Check Mail in..."
 msgstr "ÔÚ...Àï¼ì²éÓÊ¼ş"
 
-#: kmmainwin.cpp:964
+#: kmmainwin.cpp:971
 msgid "Send Queued"
 msgstr "·¢³öÅÅ¶ÓµÄĞÅ¼ş"
 
-#: kmmainwin.cpp:967
+#: kmmainwin.cpp:974
 msgid "&Settings..."
 msgstr "ÉèÖÃ[&S]..."
 
-#: kmcomposewin.cpp:443 kmmainwin.cpp:969
+#: kmcomposewin.cpp:443 kmmainwin.cpp:976
 msgid "&Addressbook..."
 msgstr "µØÖ·²¾[&A]..."
 
-#: kmmainwin.cpp:971
+#: kmmainwin.cpp:978
 msgid "&Filter..."
 msgstr "¹ıÂËÆ÷[&F]..."
 
-#: kmmainwin.cpp:985
+#: kmmainwin.cpp:992
 msgid "&Find..."
 msgstr "ËÑË÷[&F]..."
 
-#: kmmainwin.cpp:990
+#: kmmainwin.cpp:997
 msgid "&Create..."
 msgstr "½¨Á¢[&C]..."
 
-#: kmmainwin.cpp:992
+#: kmmainwin.cpp:999
 msgid "&Modify..."
 msgstr "ĞŞ¸Ä[&M]..."
 
-#: kmmainwin.cpp:994
+#: kmmainwin.cpp:1001
 msgid "C&ompact"
 msgstr "¼ò½àµÄ[&O]"
 
-#: kmmainwin.cpp:997
+#: kmmainwin.cpp:1004
 msgid "&Empty"
 msgstr "¿ÕµÄ[&E]"
 
-#: kmfilterdlg.cpp:149 kmmainwin.cpp:1006
+#: kmfilterdlg.cpp:149 kmmainwin.cpp:1013
 msgid "New"
 msgstr ""
 
-#: kmmainwin.cpp:1007
+#: kmmainwin.cpp:1014
 msgid "Unread"
 msgstr "Î´¶Á"
 
-#: kmmainwin.cpp:1008
+#: kmmainwin.cpp:1015
 msgid "Read"
 msgstr "ÒÑ¶Á"
 
-#: kmmainwin.cpp:1009
+#: kmmainwin.cpp:1016
 msgid "Replied"
 msgstr "»Ø¸´¹ı"
 
-#: kmmainwin.cpp:1010
+#: kmmainwin.cpp:1017
 msgid "Queued"
 msgstr "ÒÑÅÅ¶Ó"
 
-#: kmmainwin.cpp:1011
+#: kmmainwin.cpp:1018
 msgid "Sent"
 msgstr "ÒÑ·¢³ö"
 
-#: kmmainwin.cpp:1015
+#: kmmainwin.cpp:1022
 msgid "&Next"
 msgstr "ÏÂÒ»¸ö[&N]"
 
-#: kmmainwin.cpp:1017
+#: kmmainwin.cpp:1024
 msgid "Next unread"
 msgstr ""
 
-#: kmmainwin.cpp:1019
+#: kmmainwin.cpp:1026
 #, fuzzy
 msgid "&Previous"
 msgstr "ÉÏÒ»¸ö[&P]"
 
-#: kmmainwin.cpp:1021
+#: kmmainwin.cpp:1028
 #, fuzzy
 msgid "Previous unread"
 msgstr "ÉÏÒ»¸ö[&P]"
 
-#: kmmainwin.cpp:1031
+#: kmmainwin.cpp:1038
 #, fuzzy
 msgid "Edi&t..."
 msgstr "´òÓ¡..."
 
-#: kmmainwin.cpp:1034
+#: kmmainwin.cpp:1041
 msgid "&Set Status"
 msgstr "ÉèÖÃ×´Ì¬[&S]"
 
-#: kmmainwin.cpp:1036
+#: kmmainwin.cpp:1043
 #, fuzzy
 msgid "Mar&k all"
 msgstr "±ê¼ÇËùÓĞ"
 
-#: kmmainwin.cpp:1045
+#: kmmainwin.cpp:1052
 msgid "Send again..."
 msgstr "ÔÙ´Î·¢³ö..."
 
-#: kmmainwin.cpp:1047
+#: kmmainwin.cpp:1054
 msgid "Apply filters"
 msgstr "²ÉÓÃ¹ıÂËÆ÷"
 
-#: kmmainwin.cpp:1050
+#: kmmainwin.cpp:1057
 msgid "View Source..."
 msgstr "¹Û¿´Ô­Ê¼Ñù×Ó..."
 
-#: kmmainwin.cpp:1057
+#: kmmainwin.cpp:1064
 msgid "&Brief Headers"
 msgstr "¼òµ¥ĞÅÍ·[&B]"
 
-#: kmmainwin.cpp:1059
+#: kmmainwin.cpp:1066
 msgid "&Fancy Headers"
 msgstr "»¨Ê½ĞÅÍ·[&F]"
 
-#: kmmainwin.cpp:1061
+#: kmmainwin.cpp:1068
 msgid "&Standard Headers"
 msgstr "±ê×¼ĞÅÍ·[&S]"
 
-#: kmmainwin.cpp:1063
+#: kmmainwin.cpp:1070
 msgid "&Long Headers"
 msgstr "³¤ĞÅÍ·[&L]"
 
-#: kmmainwin.cpp:1065
+#: kmmainwin.cpp:1072
 msgid "&All Headers"
 msgstr "È«²¿ĞÅÍ·[&A]"
 
-#: kmmainwin.cpp:1068
+#: kmmainwin.cpp:1075
 msgid "Iconic Attachments"
 msgstr "Í¼±êÊ½¸½¼ş"
 
-#: kmmainwin.cpp:1069
+#: kmmainwin.cpp:1076
 msgid "Smart Attachments"
 msgstr "ÖÇÄÜ¸½¼ş"
 
-#: kmmainwin.cpp:1070
+#: kmmainwin.cpp:1077
 msgid "Inlined Attachments"
 msgstr "²åÈëµÄ¸½¼ş"
 
-#: kmmainwin.cpp:1081
+#: kmmainwin.cpp:1088
 msgid "F&older"
 msgstr "ÓÊ¼ş¼Ğ[&O]"
 
-#: kmmainwin.cpp:1082
+#: kmmainwin.cpp:1089
 msgid "&Message"
 msgstr "ÏûÏ¢[&M]"
 
-#: kmcomposewin.cpp:573 kmmainwin.cpp:1101
+#: kmcomposewin.cpp:573 kmmainwin.cpp:1108
 msgid "Compose new message"
 msgstr "Ğ´ĞÂµÄĞÅ¼ş"
 
-#: kmcomposewin.cpp:579 kmmainwin.cpp:1106
+#: kmcomposewin.cpp:579 kmmainwin.cpp:1113
 msgid "Save message to file"
 msgstr "°ÑĞÅ¼ş´æÈëÎÄ¼ş"
 
-#: kmcomposewin.cpp:585 kmmainwin.cpp:1111
+#: kmcomposewin.cpp:585 kmmainwin.cpp:1118
 msgid "Print message"
 msgstr "´òÓ¡ĞÅ¼ş"
 
-#: kmmainwin.cpp:1118
+#: kmmainwin.cpp:1125
 msgid "Get new mail"
 msgstr "È¡ĞÂµÄÓÊ¼ş"
 
-#: kmmainwin.cpp:1124
+#: kmmainwin.cpp:1131
 msgid "Reply to author"
 msgstr "»ØĞÅ¸ø×÷Õß"
 
-#: kmmainwin.cpp:1129
+#: kmmainwin.cpp:1136
 msgid "Reply to all recipients"
 msgstr "»ØĞÅ¸øËùÓĞµÄÊÕĞÅÈË"
 
-#: kmmainwin.cpp:1134
+#: kmmainwin.cpp:1141
 msgid "Forward message"
 msgstr "×ª·¢ĞÅ¼ş"
 
-#: kmmainwin.cpp:1139
+#: kmmainwin.cpp:1146
 msgid "Delete message"
 msgstr "É¾³ıĞÅ¼ş"
 
-#: kmcomposewin.cpp:609 kmmainwin.cpp:1145
+#: kmcomposewin.cpp:609 kmmainwin.cpp:1152
 msgid "Open addressbook..."
 msgstr "´ò¿ªµØÖ·²¾..."
 
-#: kmmainwin.cpp:1157
+#: kmmainwin.cpp:1164
 msgid "Initializing..."
 msgstr "³õÊ¼»¯..."
 
@@ -640,11 +640,11 @@ msgstr ""
 msgid "Store new mail in account:"
 msgstr "°ÑĞÂÓÊ¼ş·ÅÔÚÕÊºÅ:"
 
-#: kmsettings.cpp:949
+#: kmsettings.cpp:955
 msgid "<none>"
 msgstr "<none>"
 
-#: kmsettings.cpp:996
+#: kmsettings.cpp:1004
 msgid "Choose Location"
 msgstr "Ñ¡ÔñÎ»ÖÃ"
 
@@ -1029,7 +1029,7 @@ msgstr "½¨Á¢Ë÷ÒıÎÄ¼ş: Íê³É %d ¸öĞÅ¼ş"
 msgid "Writing index file"
 msgstr ""
 
-#: kmfolder.cpp:916
+#: kmfolder.cpp:920
 #, fuzzy, c-format
 msgid "Compacting folder: %d messages done"
 msgstr "½¨Á¢Ë÷ÒıÎÄ¼ş: Íê³É %d ¸öĞÅ¼ş"
@@ -1119,7 +1119,15 @@ msgstr "¸½¼ş: "
 msgid "Could not save file"
 msgstr "²»ÄÜ±£´æÎÄ¼ş"
 
-#: kmacctmgr.cpp:194 kmacctmgr.cpp:240
+#: kmacctmgr.cpp:116 kmacctmgr.cpp:223 kmacctmgr.cpp:285
+#, c-format
+msgid ""
+"Account %s has no mailbox defined!\n"
+"Mail checking aborted\n"
+"Check your account settings!"
+msgstr ""
+
+#: kmacctmgr.cpp:207 kmacctmgr.cpp:264
 msgid ""
 "You need to add an account in the network\n"
 "section of the settings in order to\n"
@@ -1128,25 +1136,25 @@ msgstr ""
 "ÄãĞèÒªÔÚÉèÖÃµÄÍøÂç²¿·ÖÌí¼ÓÒ»¸öÕÊºÅ\n"
 "ÒÔ±ãÓÚ½ÓÊÜÓÊ¼ş."
 
-#: main.cpp:105 main.cpp:228
+#: main.cpp:109 main.cpp:358
 msgid "warning"
 msgstr "¾¯¸æ"
 
-#: main.cpp:112 main.cpp:113
+#: main.cpp:116 main.cpp:117
 msgid "fatal error"
 msgstr "ÖÂÃü´íÎó"
 
-#: main.cpp:163
+#: main.cpp:293
 msgid "KMail notification"
 msgstr ""
 
-#: main.cpp:164
+#: main.cpp:294
 msgid ""
 "$HOME is not set!\n"
 "KMail cannot start without it.\n"
 msgstr ""
 
-#: main.cpp:230
+#: main.cpp:360
 msgid ""
 "The directory ~/KMail exists. From now on, KMail uses the\n"
 "directory ~/Mail for it's messages.\n"
@@ -1163,11 +1171,11 @@ msgstr ""
 "\n"
 "ÏÖÔÚÒª KMail ÒÆ¶¯ÓÊ¼ş¼ĞÂğ ?"
 
-#: main.cpp:340
+#: main.cpp:472
 msgid "Loading addressbook failed"
 msgstr ""
 
-#: main.cpp:416
+#: main.cpp:554 main.cpp:630
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr "Î´ÖªµÄÃüÁîĞĞÑ¡Ïî: %s"
@@ -1265,7 +1273,7 @@ msgstr ""
 "²»ÄÜ½¨Á¢ÎÄ¼ş¼Ğ `%s'\n"
 "ÔÚ %s"
 
-#: kmsender.cpp:116
+#: kmsender.cpp:124
 msgid ""
 "Please specify a send\n"
 "method in the settings\n"
@@ -1274,7 +1282,7 @@ msgstr ""
 "ÇëÔÚÉèÖÃÖĞÖ¸¶¨Ò»¸ö·¢ËÍ\n"
 "·½·¨,È»ºóÖØÊÔ."
 
-#: kmsender.cpp:122
+#: kmsender.cpp:130
 msgid ""
 "Please set the required fields in the\n"
 "identity settings:\n"
@@ -1283,50 +1291,50 @@ msgstr ""
 "ÇëÔÚÉí·İÉèÖÃÖĞÉè¶¨±ØĞèµÄÓò:\n"
 "ÓÃ»§ÃûºÍµç×ÓÓÊ¼şµØÖ·"
 
-#: kmsender.cpp:147
+#: kmsender.cpp:155
 msgid "You must specify a receiver"
 msgstr "Äã±ØĞëÖ¸¶¨Ò»¸ö½ÓÊÕÕß"
 
-#: kmsender.cpp:158
+#: kmsender.cpp:166
 msgid "Cannot add message to outbox folder"
 msgstr "²»ÄÜ°ÑĞÅ¼şÌí¼Óµ½ outbox ÓÊ¼ş¼Ğ"
 
-#: kmsender.cpp:189
+#: kmsender.cpp:197
 msgid "Sending still in progress"
 msgstr "»¹ÔÚ·¢ĞÅ¹ı³ÌÖĞ"
 
-#: kmsender.cpp:245
+#: kmsender.cpp:255 kmsender.cpp:259
 msgid "Initiating sender process..."
 msgstr "Inicializuji odesílání..."
 
-#: kmsender.cpp:261
+#: kmsender.cpp:275
 msgid "Sending message: "
 msgstr "ÕıÔÚ·¢ĞÅ: "
 
-#: kmsender.cpp:289
+#: kmsender.cpp:303
 msgid "Done sending messages."
 msgstr "·¢ĞÅÍê³É."
 
-#: kmsender.cpp:308
+#: kmsender.cpp:335
 msgid "Sending failed:"
 msgstr "·¢ĞÅÊ§°Ü:"
 
-#: kmsender.cpp:491
+#: kmsender.cpp:525
 msgid ""
 "Please specify a mailer program\n"
 "in the settings."
 msgstr "ÇëÔÚÉèÖÃÖĞÖ¸¶¨Ò»¸öÓÊ¼ş·¢ËÍ³ÌĞò."
 
-#: kmsender.cpp:531
+#: kmsender.cpp:565
 #, c-format
 msgid "Failed to execute mailer program %s"
 msgstr "ÎŞ·¨Ö´ĞĞÓÊ¼ş·¢ËÍ³ÌĞò %s"
 
-#: kmsender.cpp:619
+#: kmsender.cpp:653
 msgid "connecting to server"
 msgstr "ÕıÔÚÁ¬½Ó·şÎñÆ÷"
 
-#: kmsender.cpp:624
+#: kmsender.cpp:658
 #, c-format
 msgid ""
 "Cannot open SMTP connection to\n"
@@ -1337,19 +1345,19 @@ msgstr ""
 "SMTP Á¬½Ó½øĞĞ·¢ĞÅ:\n"
 "%s"
 
-#: kmsender.cpp:653
+#: kmsender.cpp:687
 msgid "Cannot close SMTP connection."
 msgstr "²»ÄÜ¹Ø±Õ SMTP Á¬½Ó."
 
-#: kmsender.cpp:703
+#: kmsender.cpp:737
 msgid "transmitting message"
 msgstr "´«ËÍĞÅ¼ş"
 
-#: kmsender.cpp:737
+#: kmsender.cpp:771
 msgid "network error"
 msgstr "ÍøÂç´íÎó"
 
-#: kmsender.cpp:739
+#: kmsender.cpp:773
 #, c-format
 msgid ""
 "a SMTP error occured.\n"
@@ -1362,7 +1370,7 @@ msgstr ""
 "Ó¦´ğ: %s\n"
 "·µ»Ø´úÂë: %d"
 
-#: kmsender.cpp:754
+#: kmsender.cpp:788
 #, c-format
 msgid "Sending SMTP command: %s"
 msgstr "ÕıÔÚ·¢³ö SMTP ÃüÁî: %s"
@@ -1712,7 +1720,7 @@ msgstr ""
 "²»ÄÜ½¨Á¢ %s µÄ¸´ÖÆ±¸·İ.\n"
 "Òª¼ÌĞøÂğ ?"
 
-#: kfileio.cpp:156 kfileio.cpp:174
+#: kfileio.cpp:156 kfileio.cpp:175
 #, c-format
 msgid ""
 "Could not write to file:\n"
@@ -1739,7 +1747,7 @@ msgstr ""
 "Ğ´ÈëÎÄ¼şÊ±·¢Éú´íÎó:\n"
 "%s"
 
-#: kfileio.cpp:180
+#: kfileio.cpp:181
 #, c-format
 msgid "Could only write %d bytes of %d."
 msgstr "Ö»ÄÜĞ´ %d ×Ö½Ú(¹² %d ×Ö½Ú)."

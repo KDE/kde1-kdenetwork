@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KMail\n"
-"POT-Creation-Date: 1999-02-04 02:05+0100\n"
+"POT-Creation-Date: 1999-02-06 02:07+0100\n"
 "PO-Revision-Date: 1998-04-29 20:00-0500\n"
 "Last-Translator: Vladimir Vuksan <vuksan@veus.hr>\n"
 "Language-Team: Croatian\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: iso-8859-2\n"
 
-#: kmcomposewin.cpp:1516 kmmainwin.cpp:364 kpgp.cpp:546
+#: kmcomposewin.cpp:1516 kmmainwin.cpp:371 kpgp.cpp:546
 msgid ""
 "Sorry, but this feature\n"
 "is still missing"
@@ -21,31 +21,31 @@ msgstr ""
 "®alim, ali ta moguænost\n"
 "jo¹ ne postoji"
 
-#: kmmainwin.cpp:373
+#: kmmainwin.cpp:380
 msgid "New Folder"
 msgstr "Novi direktorij"
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:386 kmmainwin.cpp:420 main.cpp:339
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:393 kmmainwin.cpp:427 main.cpp:471
 msgid "KMail error"
 msgstr "KMail gre¹ka"
 
-#: kmmainwin.cpp:387 kmmainwin.cpp:421
+#: kmmainwin.cpp:394 kmmainwin.cpp:428
 msgid "Already checking for mail!"
 msgstr "Veæ provjeravam po¹tu!"
 
-#: kmmainwin.cpp:397 kmmainwin.cpp:431
+#: kmmainwin.cpp:404 kmmainwin.cpp:438
 msgid "No new mail available"
 msgstr "Nema novih poruka"
 
-#: kmmainwin.cpp:458
+#: kmmainwin.cpp:465
 msgid "Modify Folder"
 msgstr "Izmijeni direktorij"
 
-#: kmmainwin.cpp:481
+#: kmmainwin.cpp:488
 msgid "Moved all messages into trash"
 msgstr "Premjesti sve poruke u smeæe"
 
-#: kmmainwin.cpp:500
+#: kmmainwin.cpp:507
 msgid ""
 "Cannot remove a\n"
 "system folder."
@@ -53,7 +53,7 @@ msgstr ""
 "Ne mogu obrisati\n"
 "sistemski direktorij."
 
-#: kmmainwin.cpp:504
+#: kmmainwin.cpp:511
 #, c-format
 msgid ""
 "Are you sure you want to remove the folder\n"
@@ -62,295 +62,295 @@ msgstr ""
 "Jeste li sigurni da ¾elite obrisati direktorij\n"
 "\"%s\", sa cijelim sadr¾ajem ?"
 
-#: kmmainwin.cpp:507
+#: kmmainwin.cpp:514
 msgid "Confirmation"
 msgstr "Potvrda"
 
-#: kmmainwin.cpp:567
+#: kmmainwin.cpp:574
 msgid "KMail notification!"
 msgstr "KMail obavijest!"
 
-#: kmmainwin.cpp:568
+#: kmmainwin.cpp:575
 msgid "Only messages in the outbox folder can be edited!"
 msgstr "Mo¾ete mijenjati samo poruke koje su u odlazeæem direktoriju!"
 
-#: kmmainwin.cpp:603
+#: kmmainwin.cpp:610
 msgid "Message as Plain Text"
 msgstr "Poruka kao Èisti Tekst"
 
-#: kmmainwin.cpp:610 kmmainwin.cpp:630
+#: kmmainwin.cpp:617 kmmainwin.cpp:637
 msgid "Select Folder"
 msgstr "Izaberi direktorij"
 
-#: kmmainwin.cpp:653
+#: kmmainwin.cpp:660
 msgid "Queued messages successfully sent."
 msgstr "Poredane poruke uspje¹no poslane."
 
-#: kmmainwin.cpp:655
+#: kmmainwin.cpp:662
 msgid "Failed to send (some) queued messages."
 msgstr "Nisam mogao poslati (neke) od poredanih poruka."
 
-#: kmmainwin.cpp:782
+#: kmmainwin.cpp:789
 msgid "Opening URL..."
 msgstr "Otvaram URL..."
 
-#: kmmainwin.cpp:837
+#: kmmainwin.cpp:844
 msgid "Address added to addressbook."
 msgstr "Adresa dodana u adresar."
 
-#: kmmainwin.cpp:849
+#: kmmainwin.cpp:856
 msgid "Address copied to clipboard."
 msgstr "Adresa iskopirana na odlagali¹te (clipboard)."
 
-#: kmmainwin.cpp:854
+#: kmmainwin.cpp:861
 msgid "URL copied to clipboard."
 msgstr "URL iskopiran na odlagali¹te (clipboard)."
 
-#: kmmainwin.cpp:881
+#: kmmainwin.cpp:888
 msgid "Send to..."
 msgstr "Po¹alji..."
 
-#: kmmainwin.cpp:883
+#: kmmainwin.cpp:890
 msgid "Send reply to..."
 msgstr "Po¹alji odgovor..."
 
-#: kmmainwin.cpp:885
+#: kmmainwin.cpp:892
 msgid "Forward to..."
 msgstr "Proslijedi..."
 
-#: kmmainwin.cpp:888
+#: kmmainwin.cpp:895
 msgid "Add to addressbook"
 msgstr "Dodaj u adresar"
 
-#: kmmainwin.cpp:890 kmmainwin.cpp:899
+#: kmmainwin.cpp:897 kmmainwin.cpp:906
 msgid "Copy to clipboard"
 msgstr "Iskopiraj na odlagali¹te (clipboard)."
 
-#: kmmainwin.cpp:897
+#: kmmainwin.cpp:904
 msgid "Open URL..."
 msgstr "Otvori URL..."
 
-#: kmmainwin.cpp:907 kmmainwin.cpp:1024
+#: kmmainwin.cpp:914 kmmainwin.cpp:1031
 msgid "&Reply..."
 msgstr "Odgovo&ri..."
 
-#: kmmainwin.cpp:909 kmmainwin.cpp:1026
+#: kmmainwin.cpp:916 kmmainwin.cpp:1033
 msgid "Reply &All..."
 msgstr "Odgovori svim&a"
 
-#: kmmainwin.cpp:911 kmmainwin.cpp:1028
+#: kmmainwin.cpp:918 kmmainwin.cpp:1035
 msgid "&Forward..."
 msgstr "Prosli&jedi"
 
-#: kmmainwin.cpp:914 kmmainwin.cpp:1038
+#: kmmainwin.cpp:921 kmmainwin.cpp:1045
 msgid "&Move..."
 msgstr "Pre&mjesti..."
 
-#: kmmainwin.cpp:916 kmmainwin.cpp:1040
+#: kmmainwin.cpp:923 kmmainwin.cpp:1047
 msgid "&Copy..."
 msgstr "Is&kopiraj..."
 
-#: kmmainwin.cpp:943
+#: kmmainwin.cpp:950
 msgid "New Composer"
 msgstr "Novi Sastavljaè poruka"
 
-#: kmcomposewin.cpp:451 kmmainwin.cpp:945
+#: kmcomposewin.cpp:451 kmmainwin.cpp:952
 msgid "New Mailreader"
 msgstr "Novi Èitaè"
 
-#: kmmainwin.cpp:948
+#: kmmainwin.cpp:955
 msgid "Save As..."
 msgstr "Spremi pod drugim imenom..."
 
-#: kmmainwin.cpp:950
+#: kmmainwin.cpp:957
 msgid "Print..."
 msgstr "Ispis..."
 
-#: kmmainwin.cpp:953
+#: kmmainwin.cpp:960
 msgid "Check Mail..."
 msgstr "Provjeri po¹tu"
 
-#: kmmainwin.cpp:962
+#: kmmainwin.cpp:969
 msgid "Check Mail in..."
 msgstr "Provjeri po¹tu na..."
 
-#: kmmainwin.cpp:964
+#: kmmainwin.cpp:971
 msgid "Send Queued"
 msgstr "Po¹alji poredane poruke"
 
-#: kmmainwin.cpp:967
+#: kmmainwin.cpp:974
 msgid "&Settings..."
 msgstr "Po&stava..."
 
-#: kmcomposewin.cpp:443 kmmainwin.cpp:969
+#: kmcomposewin.cpp:443 kmmainwin.cpp:976
 msgid "&Addressbook..."
 msgstr "&Adresar"
 
-#: kmmainwin.cpp:971
+#: kmmainwin.cpp:978
 msgid "&Filter..."
 msgstr "&Filter..."
 
-#: kmmainwin.cpp:985
+#: kmmainwin.cpp:992
 msgid "&Find..."
 msgstr "&Naði..."
 
-#: kmmainwin.cpp:990
+#: kmmainwin.cpp:997
 msgid "&Create..."
 msgstr "&Naèini..."
 
-#: kmmainwin.cpp:992
+#: kmmainwin.cpp:999
 msgid "&Modify..."
 msgstr "Iz&mijeni..."
 
-#: kmmainwin.cpp:994
+#: kmmainwin.cpp:1001
 msgid "C&ompact"
 msgstr "Sa¾&mi"
 
-#: kmmainwin.cpp:997
+#: kmmainwin.cpp:1004
 msgid "&Empty"
 msgstr "I&sprazni"
 
-#: kmfilterdlg.cpp:149 kmmainwin.cpp:1006
+#: kmfilterdlg.cpp:149 kmmainwin.cpp:1013
 msgid "New"
 msgstr "Nova"
 
-#: kmmainwin.cpp:1007
+#: kmmainwin.cpp:1014
 msgid "Unread"
 msgstr "Neproèitana"
 
-#: kmmainwin.cpp:1008
+#: kmmainwin.cpp:1015
 msgid "Read"
 msgstr "Proèitana"
 
-#: kmmainwin.cpp:1009
+#: kmmainwin.cpp:1016
 msgid "Replied"
 msgstr "Odgovorena"
 
-#: kmmainwin.cpp:1010
+#: kmmainwin.cpp:1017
 msgid "Queued"
 msgstr "Naredana"
 
-#: kmmainwin.cpp:1011
+#: kmmainwin.cpp:1018
 msgid "Sent"
 msgstr "Poslana"
 
-#: kmmainwin.cpp:1015
+#: kmmainwin.cpp:1022
 msgid "&Next"
 msgstr "&Slijedeæa"
 
-#: kmmainwin.cpp:1017
+#: kmmainwin.cpp:1024
 msgid "Next unread"
 msgstr "Slijedeæa neproèitana"
 
-#: kmmainwin.cpp:1019
+#: kmmainwin.cpp:1026
 msgid "&Previous"
 msgstr "&Prethodna"
 
-#: kmmainwin.cpp:1021
+#: kmmainwin.cpp:1028
 msgid "Previous unread"
 msgstr "Prethodna neproèitana"
 
-#: kmmainwin.cpp:1031
+#: kmmainwin.cpp:1038
 msgid "Edi&t..."
 msgstr "Promije&ni..."
 
-#: kmmainwin.cpp:1034
+#: kmmainwin.cpp:1041
 msgid "&Set Status"
 msgstr "Podesi &status"
 
-#: kmmainwin.cpp:1036
+#: kmmainwin.cpp:1043
 msgid "Mar&k all"
 msgstr "O&znaèi sve"
 
-#: kmmainwin.cpp:1045
+#: kmmainwin.cpp:1052
 msgid "Send again..."
 msgstr "Po¹alji ponovo..."
 
-#: kmmainwin.cpp:1047
+#: kmmainwin.cpp:1054
 msgid "Apply filters"
 msgstr "Primjeni filtere"
 
-#: kmmainwin.cpp:1050
+#: kmmainwin.cpp:1057
 msgid "View Source..."
 msgstr "Pogledaj Izvor..."
 
-#: kmmainwin.cpp:1057
+#: kmmainwin.cpp:1064
 msgid "&Brief Headers"
 msgstr "&Kratko Zaglavlje"
 
-#: kmmainwin.cpp:1059
+#: kmmainwin.cpp:1066
 msgid "&Fancy Headers"
 msgstr "&Ukrasno Zaglavlje"
 
-#: kmmainwin.cpp:1061
+#: kmmainwin.cpp:1068
 msgid "&Standard Headers"
 msgstr "&Standardno Zaglavlje"
 
-#: kmmainwin.cpp:1063
+#: kmmainwin.cpp:1070
 msgid "&Long Headers"
 msgstr "&Dugo zaglavlje"
 
-#: kmmainwin.cpp:1065
+#: kmmainwin.cpp:1072
 msgid "&All Headers"
 msgstr "&Cijelo zaglavlje"
 
-#: kmmainwin.cpp:1068
+#: kmmainwin.cpp:1075
 msgid "Iconic Attachments"
 msgstr "Prilozi u obliku ikona"
 
-#: kmmainwin.cpp:1069
+#: kmmainwin.cpp:1076
 msgid "Smart Attachments"
 msgstr "Pametni Prilozi"
 
-#: kmmainwin.cpp:1070
+#: kmmainwin.cpp:1077
 msgid "Inlined Attachments"
 msgstr "Ugraðeni Prilozi"
 
-#: kmmainwin.cpp:1081
+#: kmmainwin.cpp:1088
 msgid "F&older"
 msgstr "Direkt&orij"
 
-#: kmmainwin.cpp:1082
+#: kmmainwin.cpp:1089
 msgid "&Message"
 msgstr "Poru&ka"
 
-#: kmcomposewin.cpp:573 kmmainwin.cpp:1101
+#: kmcomposewin.cpp:573 kmmainwin.cpp:1108
 msgid "Compose new message"
 msgstr "Sastavi novu poruku"
 
-#: kmcomposewin.cpp:579 kmmainwin.cpp:1106
+#: kmcomposewin.cpp:579 kmmainwin.cpp:1113
 msgid "Save message to file"
 msgstr "Spremi poruku u datoteku"
 
-#: kmcomposewin.cpp:585 kmmainwin.cpp:1111
+#: kmcomposewin.cpp:585 kmmainwin.cpp:1118
 msgid "Print message"
 msgstr "Ispi¹i poruku"
 
-#: kmmainwin.cpp:1118
+#: kmmainwin.cpp:1125
 msgid "Get new mail"
 msgstr "Pokupi novu po¹tu"
 
-#: kmmainwin.cpp:1124
+#: kmmainwin.cpp:1131
 msgid "Reply to author"
 msgstr "Odgovori autoru"
 
-#: kmmainwin.cpp:1129
+#: kmmainwin.cpp:1136
 msgid "Reply to all recipients"
 msgstr "Odgovori svim primateljima"
 
-#: kmmainwin.cpp:1134
+#: kmmainwin.cpp:1141
 msgid "Forward message"
 msgstr "Proslijedi poruku"
 
-#: kmmainwin.cpp:1139
+#: kmmainwin.cpp:1146
 msgid "Delete message"
 msgstr "Obri¹i poruku"
 
-#: kmcomposewin.cpp:609 kmmainwin.cpp:1145
+#: kmcomposewin.cpp:609 kmmainwin.cpp:1152
 msgid "Open addressbook..."
 msgstr "Otvori adresar..."
 
-#: kmmainwin.cpp:1157
+#: kmmainwin.cpp:1164
 msgid "Initializing..."
 msgstr "Inicijalizacija..."
 
@@ -636,11 +636,11 @@ msgstr "Podesi interval za provjeru po¹te"
 msgid "Store new mail in account:"
 msgstr "Spremi novu po¹tu u korisnièki raèun:"
 
-#: kmsettings.cpp:949
+#: kmsettings.cpp:955
 msgid "<none>"
 msgstr "<nijedan>"
 
-#: kmsettings.cpp:996
+#: kmsettings.cpp:1004
 msgid "Choose Location"
 msgstr "Odaberite lokaciju"
 
@@ -1022,7 +1022,7 @@ msgstr "Stvaram indeksnu datoteku: %d poruka gotovo"
 msgid "Writing index file"
 msgstr "Zapisujem indeksnu datoteku"
 
-#: kmfolder.cpp:916
+#: kmfolder.cpp:920
 #, c-format
 msgid "Compacting folder: %d messages done"
 msgstr "Zbijam direktorij: %d poruka gotovo"
@@ -1112,7 +1112,15 @@ msgstr "Prilog: "
 msgid "Could not save file"
 msgstr "Ne mogu spremiti datoteku"
 
-#: kmacctmgr.cpp:194 kmacctmgr.cpp:240
+#: kmacctmgr.cpp:116 kmacctmgr.cpp:223 kmacctmgr.cpp:285
+#, c-format
+msgid ""
+"Account %s has no mailbox defined!\n"
+"Mail checking aborted\n"
+"Check your account settings!"
+msgstr ""
+
+#: kmacctmgr.cpp:207 kmacctmgr.cpp:264
 msgid ""
 "You need to add an account in the network\n"
 "section of the settings in order to\n"
@@ -1122,19 +1130,19 @@ msgstr ""
 "mre¾noj postavi da bi mogli primati\n"
 "po¹tu."
 
-#: main.cpp:105 main.cpp:228
+#: main.cpp:109 main.cpp:358
 msgid "warning"
 msgstr "upozorenje"
 
-#: main.cpp:112 main.cpp:113
+#: main.cpp:116 main.cpp:117
 msgid "fatal error"
 msgstr "nepovratna pogre¹ka"
 
-#: main.cpp:163
+#: main.cpp:293
 msgid "KMail notification"
 msgstr "KMail obavijest"
 
-#: main.cpp:164
+#: main.cpp:294
 msgid ""
 "$HOME is not set!\n"
 "KMail cannot start without it.\n"
@@ -1142,7 +1150,7 @@ msgstr ""
 "$HOME (poèetni direktorij) nije pode¹en!\n"
 "KMail ne mo¾e startati bez njega.\n"
 
-#: main.cpp:230
+#: main.cpp:360
 msgid ""
 "The directory ~/KMail exists. From now on, KMail uses the\n"
 "directory ~/Mail for it's messages.\n"
@@ -1160,11 +1168,11 @@ msgstr ""
 "\n"
 "Da li da KMail pomakne direktorije sada ?"
 
-#: main.cpp:340
+#: main.cpp:472
 msgid "Loading addressbook failed"
 msgstr "Uèitavanje adresara nije uspjelo"
 
-#: main.cpp:416
+#: main.cpp:554 main.cpp:630
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr "Nepoznata opcija na komandoj liniji: %s"
@@ -1260,7 +1268,7 @@ msgstr ""
 "Ne mogu stvoriti direktorij `%s'\n"
 "na %s"
 
-#: kmsender.cpp:116
+#: kmsender.cpp:124
 msgid ""
 "Please specify a send\n"
 "method in the settings\n"
@@ -1270,7 +1278,7 @@ msgstr ""
 "slanja u postavi\n"
 "i poku¹ajte opet."
 
-#: kmsender.cpp:122
+#: kmsender.cpp:130
 msgid ""
 "Please set the required fields in the\n"
 "identity settings:\n"
@@ -1280,35 +1288,35 @@ msgstr ""
 "kod postave identiteta:\n"
 "korisnièko ime i e-mail adresu"
 
-#: kmsender.cpp:147
+#: kmsender.cpp:155
 msgid "You must specify a receiver"
 msgstr "Morate navesti primatelja"
 
-#: kmsender.cpp:158
+#: kmsender.cpp:166
 msgid "Cannot add message to outbox folder"
 msgstr "Ne mogu dodati poruku u odlazeæi direktorij"
 
-#: kmsender.cpp:189
+#: kmsender.cpp:197
 msgid "Sending still in progress"
 msgstr "Slanje u toku"
 
-#: kmsender.cpp:245
+#: kmsender.cpp:255 kmsender.cpp:259
 msgid "Initiating sender process..."
 msgstr "Poèinjem sa slanjem..."
 
-#: kmsender.cpp:261
+#: kmsender.cpp:275
 msgid "Sending message: "
 msgstr "©aljem poruku: "
 
-#: kmsender.cpp:289
+#: kmsender.cpp:303
 msgid "Done sending messages."
 msgstr "Slanje poruka zavr¹eno."
 
-#: kmsender.cpp:308
+#: kmsender.cpp:335
 msgid "Sending failed:"
 msgstr "Slanje nije uspjelo:"
 
-#: kmsender.cpp:491
+#: kmsender.cpp:525
 msgid ""
 "Please specify a mailer program\n"
 "in the settings."
@@ -1316,16 +1324,16 @@ msgstr ""
 "Molim, navedite program za po¹tu\n"
 "u postavi."
 
-#: kmsender.cpp:531
+#: kmsender.cpp:565
 #, c-format
 msgid "Failed to execute mailer program %s"
 msgstr "Ne mogu izvr¹iti program za po¹tu %s"
 
-#: kmsender.cpp:619
+#: kmsender.cpp:653
 msgid "connecting to server"
 msgstr "spajam se na poslu¾itelj"
 
-#: kmsender.cpp:624
+#: kmsender.cpp:658
 #, c-format
 msgid ""
 "Cannot open SMTP connection to\n"
@@ -1336,19 +1344,19 @@ msgstr ""
 "raèunalo %s za slanje:\n"
 "%s"
 
-#: kmsender.cpp:653
+#: kmsender.cpp:687
 msgid "Cannot close SMTP connection."
 msgstr "Ne mogu prekinuti SMTP vezu."
 
-#: kmsender.cpp:703
+#: kmsender.cpp:737
 msgid "transmitting message"
 msgstr "prenosim poruku"
 
-#: kmsender.cpp:737
+#: kmsender.cpp:771
 msgid "network error"
 msgstr "mre¾na gre¹ka"
 
-#: kmsender.cpp:739
+#: kmsender.cpp:773
 #, c-format
 msgid ""
 "a SMTP error occured.\n"
@@ -1361,7 +1369,7 @@ msgstr ""
 "Odgovor: %s\n"
 "Povratni kod: %d"
 
-#: kmsender.cpp:754
+#: kmsender.cpp:788
 #, c-format
 msgid "Sending SMTP command: %s"
 msgstr "©aljem SMTP naredbu: %s"
@@ -1721,7 +1729,7 @@ msgstr ""
 "Nisam uspio napraviti sigurnosnu kopiju %s.\n"
 "Nastaviti unatoè tome?"
 
-#: kfileio.cpp:156 kfileio.cpp:174
+#: kfileio.cpp:156 kfileio.cpp:175
 #, c-format
 msgid ""
 "Could not write to file:\n"
@@ -1748,7 +1756,7 @@ msgstr ""
 "Gre¹ka prilikom pisanja datoteke:\n"
 "%s"
 
-#: kfileio.cpp:180
+#: kfileio.cpp:181
 #, c-format
 msgid "Could only write %d bytes of %d."
 msgstr "Uspio sam pisati %d bajtova od %d."

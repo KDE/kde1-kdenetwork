@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1999-02-04 02:05+0100\n"
+"POT-Creation-Date: 1999-02-06 02:07+0100\n"
 "PO-Revision-Date: 1999-02-01 01:05-0500\n"
 "Last-Translator: Thorarinn R. Einarsson <thori@mindspring.com>\n"
 "Language-Team: is <kde-isl@mmedia.is>\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: ISO-8859-1\n"
 
-#: kmcomposewin.cpp:1516 kmmainwin.cpp:364 kpgp.cpp:546
+#: kmcomposewin.cpp:1516 kmmainwin.cpp:371 kpgp.cpp:546
 msgid ""
 "Sorry, but this feature\n"
 "is still missing"
@@ -22,31 +22,31 @@ msgstr ""
 "Því miður þá vantar\n"
 "enn þessa aðgerð."
 
-#: kmmainwin.cpp:373
+#: kmmainwin.cpp:380
 msgid "New Folder"
 msgstr "Nýja möppu"
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:386 kmmainwin.cpp:420 main.cpp:339
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:393 kmmainwin.cpp:427 main.cpp:471
 msgid "KMail error"
 msgstr "KPóstur: Villa"
 
-#: kmmainwin.cpp:387 kmmainwin.cpp:421
+#: kmmainwin.cpp:394 kmmainwin.cpp:428
 msgid "Already checking for mail!"
 msgstr "Póstathugun nú þegar í gangi!"
 
-#: kmmainwin.cpp:397 kmmainwin.cpp:431
+#: kmmainwin.cpp:404 kmmainwin.cpp:438
 msgid "No new mail available"
 msgstr "Enginn nýr póstur"
 
-#: kmmainwin.cpp:458
+#: kmmainwin.cpp:465
 msgid "Modify Folder"
 msgstr "Breyta möppu"
 
-#: kmmainwin.cpp:481
+#: kmmainwin.cpp:488
 msgid "Moved all messages into trash"
 msgstr "Flutti öll skilaboð í ruslakörfuna"
 
-#: kmmainwin.cpp:500
+#: kmmainwin.cpp:507
 msgid ""
 "Cannot remove a\n"
 "system folder."
@@ -54,7 +54,7 @@ msgstr ""
 "Get ekki fjarlægt\n"
 "kerfismöppu."
 
-#: kmmainwin.cpp:504
+#: kmmainwin.cpp:511
 #, c-format
 msgid ""
 "Are you sure you want to remove the folder\n"
@@ -63,295 +63,295 @@ msgstr ""
 "Ertu viss um að þú viljir fjarlægja möppuna\n"
 " \"%s\" og eyða innihaldinu ?"
 
-#: kmmainwin.cpp:507
+#: kmmainwin.cpp:514
 msgid "Confirmation"
 msgstr "Staðfesting"
 
-#: kmmainwin.cpp:567
+#: kmmainwin.cpp:574
 msgid "KMail notification!"
 msgstr "KPóstur: Tilkynning!"
 
-#: kmmainwin.cpp:568
+#: kmmainwin.cpp:575
 msgid "Only messages in the outbox folder can be edited!"
 msgstr "Það er bara hægt að breyta skilaboðum sem eru í ÚT-möppunni!"
 
-#: kmmainwin.cpp:603
+#: kmmainwin.cpp:610
 msgid "Message as Plain Text"
 msgstr "Skilaboð sem venjulegan texta"
 
-#: kmmainwin.cpp:610 kmmainwin.cpp:630
+#: kmmainwin.cpp:617 kmmainwin.cpp:637
 msgid "Select Folder"
 msgstr "Velja möppu"
 
-#: kmmainwin.cpp:653
+#: kmmainwin.cpp:660
 msgid "Queued messages successfully sent."
 msgstr "Skilaboð í biðröð voru send."
 
-#: kmmainwin.cpp:655
+#: kmmainwin.cpp:662
 msgid "Failed to send (some) queued messages."
 msgstr "Ekki tókst ekki að senda (sum) skilaboð í biðröðinni."
 
-#: kmmainwin.cpp:782
+#: kmmainwin.cpp:789
 msgid "Opening URL..."
 msgstr "Opna slóð..."
 
-#: kmmainwin.cpp:837
+#: kmmainwin.cpp:844
 msgid "Address added to addressbook."
 msgstr "Netfangi bætt í netfangaskrána."
 
-#: kmmainwin.cpp:849
+#: kmmainwin.cpp:856
 msgid "Address copied to clipboard."
 msgstr "Netfang afritað á klemmuspjaldið."
 
-#: kmmainwin.cpp:854
+#: kmmainwin.cpp:861
 msgid "URL copied to clipboard."
 msgstr "Slóð afrituð á klemmuspjaldið."
 
-#: kmmainwin.cpp:881
+#: kmmainwin.cpp:888
 msgid "Send to..."
 msgstr "Senda til..."
 
-#: kmmainwin.cpp:883
+#: kmmainwin.cpp:890
 msgid "Send reply to..."
 msgstr "Senda svar til..."
 
-#: kmmainwin.cpp:885
+#: kmmainwin.cpp:892
 msgid "Forward to..."
 msgstr "Áframsenda til..."
 
-#: kmmainwin.cpp:888
+#: kmmainwin.cpp:895
 msgid "Add to addressbook"
 msgstr "Setja í netfangaskrána"
 
-#: kmmainwin.cpp:890 kmmainwin.cpp:899
+#: kmmainwin.cpp:897 kmmainwin.cpp:906
 msgid "Copy to clipboard"
 msgstr "Afrita á klemmuspjaldið"
 
-#: kmmainwin.cpp:897
+#: kmmainwin.cpp:904
 msgid "Open URL..."
 msgstr "Opna slóð..."
 
-#: kmmainwin.cpp:907 kmmainwin.cpp:1024
+#: kmmainwin.cpp:914 kmmainwin.cpp:1031
 msgid "&Reply..."
 msgstr "&Svara..."
 
-#: kmmainwin.cpp:909 kmmainwin.cpp:1026
+#: kmmainwin.cpp:916 kmmainwin.cpp:1033
 msgid "Reply &All..."
 msgstr "S&vara öllum..."
 
-#: kmmainwin.cpp:911 kmmainwin.cpp:1028
+#: kmmainwin.cpp:918 kmmainwin.cpp:1035
 msgid "&Forward..."
 msgstr "Áfra&msenda..."
 
-#: kmmainwin.cpp:914 kmmainwin.cpp:1038
+#: kmmainwin.cpp:921 kmmainwin.cpp:1045
 msgid "&Move..."
 msgstr "&Færa..."
 
-#: kmmainwin.cpp:916 kmmainwin.cpp:1040
+#: kmmainwin.cpp:923 kmmainwin.cpp:1047
 msgid "&Copy..."
 msgstr "&Afrita..."
 
-#: kmmainwin.cpp:943
+#: kmmainwin.cpp:950
 msgid "New Composer"
 msgstr "&Nýr ritill"
 
-#: kmcomposewin.cpp:451 kmmainwin.cpp:945
+#: kmcomposewin.cpp:451 kmmainwin.cpp:952
 msgid "New Mailreader"
 msgstr "Nýr &KPósts gluggi"
 
-#: kmmainwin.cpp:948
+#: kmmainwin.cpp:955
 msgid "Save As..."
 msgstr "Vista &sem..."
 
-#: kmmainwin.cpp:950
+#: kmmainwin.cpp:957
 msgid "Print..."
 msgstr "&Prenta..."
 
-#: kmmainwin.cpp:953
+#: kmmainwin.cpp:960
 msgid "Check Mail..."
 msgstr "Sækja póst..."
 
-#: kmmainwin.cpp:962
+#: kmmainwin.cpp:969
 msgid "Check Mail in..."
 msgstr "Sækja póst í..."
 
-#: kmmainwin.cpp:964
+#: kmmainwin.cpp:971
 msgid "Send Queued"
 msgstr "Senda biðröð"
 
-#: kmmainwin.cpp:967
+#: kmmainwin.cpp:974
 msgid "&Settings..."
 msgstr "S&tillingar..."
 
-#: kmcomposewin.cpp:443 kmmainwin.cpp:969
+#: kmcomposewin.cpp:443 kmmainwin.cpp:976
 msgid "&Addressbook..."
 msgstr "&Netfangaskrá..."
 
-#: kmmainwin.cpp:971
+#: kmmainwin.cpp:978
 msgid "&Filter..."
 msgstr "&Sía..."
 
-#: kmmainwin.cpp:985
+#: kmmainwin.cpp:992
 msgid "&Find..."
 msgstr "&Finna..."
 
-#: kmmainwin.cpp:990
+#: kmmainwin.cpp:997
 msgid "&Create..."
 msgstr "&Nýtt..."
 
-#: kmmainwin.cpp:992
+#: kmmainwin.cpp:999
 msgid "&Modify..."
 msgstr "&Breyta..."
 
-#: kmmainwin.cpp:994
+#: kmmainwin.cpp:1001
 msgid "C&ompact"
 msgstr "Þjappa saman"
 
-#: kmmainwin.cpp:997
+#: kmmainwin.cpp:1004
 msgid "&Empty"
 msgstr "&Tæma"
 
-#: kmfilterdlg.cpp:149 kmmainwin.cpp:1006
+#: kmfilterdlg.cpp:149 kmmainwin.cpp:1013
 msgid "New"
 msgstr "Ný/Nýtt"
 
-#: kmmainwin.cpp:1007
+#: kmmainwin.cpp:1014
 msgid "Unread"
 msgstr "Óle&sið"
 
-#: kmmainwin.cpp:1008
+#: kmmainwin.cpp:1015
 msgid "Read"
 msgstr "Lesið"
 
-#: kmmainwin.cpp:1009
+#: kmmainwin.cpp:1016
 msgid "Replied"
 msgstr "Svarað"
 
-#: kmmainwin.cpp:1010
+#: kmmainwin.cpp:1017
 msgid "Queued"
 msgstr "Í biðröð"
 
-#: kmmainwin.cpp:1011
+#: kmmainwin.cpp:1018
 msgid "Sent"
 msgstr "Sent"
 
-#: kmmainwin.cpp:1015
+#: kmmainwin.cpp:1022
 msgid "&Next"
 msgstr "&Næsta"
 
-#: kmmainwin.cpp:1017
+#: kmmainwin.cpp:1024
 msgid "Next unread"
 msgstr "Næsta ólesna"
 
-#: kmmainwin.cpp:1019
+#: kmmainwin.cpp:1026
 msgid "&Previous"
 msgstr "&Fyrra"
 
-#: kmmainwin.cpp:1021
+#: kmmainwin.cpp:1028
 msgid "Previous unread"
 msgstr "Fyrra ólesið"
 
-#: kmmainwin.cpp:1031
+#: kmmainwin.cpp:1038
 msgid "Edi&t..."
 msgstr "&Sýsla..."
 
-#: kmmainwin.cpp:1034
+#: kmmainwin.cpp:1041
 msgid "&Set Status"
 msgstr "&Tilgreina stöðu"
 
-#: kmmainwin.cpp:1036
+#: kmmainwin.cpp:1043
 msgid "Mar&k all"
 msgstr "&Velja öll"
 
-#: kmmainwin.cpp:1045
+#: kmmainwin.cpp:1052
 msgid "Send again..."
 msgstr "Senda aftur..."
 
-#: kmmainwin.cpp:1047
+#: kmmainwin.cpp:1054
 msgid "Apply filters"
 msgstr "Nota síur"
 
-#: kmmainwin.cpp:1050
+#: kmmainwin.cpp:1057
 msgid "View Source..."
 msgstr "Skoða handrit..."
 
-#: kmmainwin.cpp:1057
+#: kmmainwin.cpp:1064
 msgid "&Brief Headers"
 msgstr "&Stuttir hausar"
 
-#: kmmainwin.cpp:1059
+#: kmmainwin.cpp:1066
 msgid "&Fancy Headers"
 msgstr "&Fínir hausar"
 
-#: kmmainwin.cpp:1061
+#: kmmainwin.cpp:1068
 msgid "&Standard Headers"
 msgstr "&Venjulegir hausar"
 
-#: kmmainwin.cpp:1063
+#: kmmainwin.cpp:1070
 msgid "&Long Headers"
 msgstr "&Langir hausar"
 
-#: kmmainwin.cpp:1065
+#: kmmainwin.cpp:1072
 msgid "&All Headers"
 msgstr "&Allir hausar"
 
-#: kmmainwin.cpp:1068
+#: kmmainwin.cpp:1075
 msgid "Iconic Attachments"
 msgstr "Viðhengingar sem táknmyndir"
 
-#: kmmainwin.cpp:1069
+#: kmmainwin.cpp:1076
 msgid "Smart Attachments"
 msgstr "&Flottar viðhengingar"
 
-#: kmmainwin.cpp:1070
+#: kmmainwin.cpp:1077
 msgid "Inlined Attachments"
 msgstr "Áfestar viðhengingar"
 
-#: kmmainwin.cpp:1081
+#: kmmainwin.cpp:1088
 msgid "F&older"
 msgstr "&Mappa"
 
-#: kmmainwin.cpp:1082
+#: kmmainwin.cpp:1089
 msgid "&Message"
 msgstr "&Bréf"
 
-#: kmcomposewin.cpp:573 kmmainwin.cpp:1101
+#: kmcomposewin.cpp:573 kmmainwin.cpp:1108
 msgid "Compose new message"
 msgstr "Skrifa nýtt bréf"
 
-#: kmcomposewin.cpp:579 kmmainwin.cpp:1106
+#: kmcomposewin.cpp:579 kmmainwin.cpp:1113
 msgid "Save message to file"
 msgstr "Vista bréf í skrá"
 
-#: kmcomposewin.cpp:585 kmmainwin.cpp:1111
+#: kmcomposewin.cpp:585 kmmainwin.cpp:1118
 msgid "Print message"
 msgstr "Prenta út bréf"
 
-#: kmmainwin.cpp:1118
+#: kmmainwin.cpp:1125
 msgid "Get new mail"
 msgstr "Sækja nýjan póst"
 
-#: kmmainwin.cpp:1124
+#: kmmainwin.cpp:1131
 msgid "Reply to author"
 msgstr "Svara höfundi"
 
-#: kmmainwin.cpp:1129
+#: kmmainwin.cpp:1136
 msgid "Reply to all recipients"
 msgstr "Svara öllum"
 
-#: kmmainwin.cpp:1134
+#: kmmainwin.cpp:1141
 msgid "Forward message"
 msgstr "Áframsenda bréf"
 
-#: kmmainwin.cpp:1139
+#: kmmainwin.cpp:1146
 msgid "Delete message"
 msgstr "Eyða bréfi"
 
-#: kmcomposewin.cpp:609 kmmainwin.cpp:1145
+#: kmcomposewin.cpp:609 kmmainwin.cpp:1152
 msgid "Open addressbook..."
 msgstr "Opna netfangaskrá..."
 
-#: kmmainwin.cpp:1157
+#: kmmainwin.cpp:1164
 msgid "Initializing..."
 msgstr "Frumstilling..."
 
@@ -636,11 +636,11 @@ msgstr "Nota reglubundna póstflutninga"
 msgid "Store new mail in account:"
 msgstr "Geyma nýjan póst í:"
 
-#: kmsettings.cpp:949
+#: kmsettings.cpp:955
 msgid "<none>"
 msgstr "<engin>"
 
-#: kmsettings.cpp:996
+#: kmsettings.cpp:1004
 msgid "Choose Location"
 msgstr "Veldu staðsetningu"
 
@@ -1018,7 +1018,7 @@ msgstr "Bý til tilvísunarskrá:  %d bréf búin"
 msgid "Writing index file"
 msgstr "Vista tilvísunarskrá"
 
-#: kmfolder.cpp:916
+#: kmfolder.cpp:920
 #, c-format
 msgid "Compacting folder: %d messages done"
 msgstr "Þjappa möppur: %d bréf búin"
@@ -1108,7 +1108,15 @@ msgstr "Viðhenging: "
 msgid "Could not save file"
 msgstr "Vistun ekki möguleg"
 
-#: kmacctmgr.cpp:194 kmacctmgr.cpp:240
+#: kmacctmgr.cpp:116 kmacctmgr.cpp:223 kmacctmgr.cpp:285
+#, c-format
+msgid ""
+"Account %s has no mailbox defined!\n"
+"Mail checking aborted\n"
+"Check your account settings!"
+msgstr ""
+
+#: kmacctmgr.cpp:207 kmacctmgr.cpp:264
 msgid ""
 "You need to add an account in the network\n"
 "section of the settings in order to\n"
@@ -1118,19 +1126,19 @@ msgstr ""
 "hlutanum í stillingunum til að geta tekið\n"
 "á móti tölvupósti."
 
-#: main.cpp:105 main.cpp:228
+#: main.cpp:109 main.cpp:358
 msgid "warning"
 msgstr "aðvörun"
 
-#: main.cpp:112 main.cpp:113
+#: main.cpp:116 main.cpp:117
 msgid "fatal error"
 msgstr "slæm villa"
 
-#: main.cpp:163
+#: main.cpp:293
 msgid "KMail notification"
 msgstr "KPóstur: Tilkynning"
 
-#: main.cpp:164
+#: main.cpp:294
 msgid ""
 "$HOME is not set!\n"
 "KMail cannot start without it.\n"
@@ -1138,7 +1146,7 @@ msgstr ""
 "$HOME er ekki til/tilbúið !\n"
 "KPóstur getur ekki keyrt án þess.\n"
 
-#: main.cpp:230
+#: main.cpp:360
 msgid ""
 "The directory ~/KMail exists. From now on, KMail uses the\n"
 "directory ~/Mail for it's messages.\n"
@@ -1156,11 +1164,11 @@ msgstr ""
 "\n"
 "Viltu að KPóstur færi þessar póstmöppur núna ?"
 
-#: main.cpp:340
+#: main.cpp:472
 msgid "Loading addressbook failed"
 msgstr "Tókst ekki að sækja netfangaskrá"
 
-#: main.cpp:416
+#: main.cpp:554 main.cpp:630
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr "Óþekktur skipanarofi: %s"
@@ -1256,7 +1264,7 @@ msgstr ""
 "Get ekki búið til möppu '%s'\n"
 "í %s."
 
-#: kmsender.cpp:116
+#: kmsender.cpp:124
 msgid ""
 "Please specify a send\n"
 "method in the settings\n"
@@ -1266,7 +1274,7 @@ msgstr ""
 "sendingaraðferð í stillingunum,\n"
 "og reyndu síðan aftur."
 
-#: kmsender.cpp:122
+#: kmsender.cpp:130
 msgid ""
 "Please set the required fields in the\n"
 "identity settings:\n"
@@ -1276,35 +1284,35 @@ msgstr ""
 "í persónupplýsingunum:\n"
 "notandanafn og netfang"
 
-#: kmsender.cpp:147
+#: kmsender.cpp:155
 msgid "You must specify a receiver"
 msgstr "Þú verður að tilgreina móttakanda"
 
-#: kmsender.cpp:158
+#: kmsender.cpp:166
 msgid "Cannot add message to outbox folder"
 msgstr "Gat ekki sett bréfið í ÚT-möppuna"
 
-#: kmsender.cpp:189
+#: kmsender.cpp:197
 msgid "Sending still in progress"
 msgstr "Ennþá að senda..."
 
-#: kmsender.cpp:245
+#: kmsender.cpp:255 kmsender.cpp:259
 msgid "Initiating sender process..."
 msgstr "Set póstflutning af stað..."
 
-#: kmsender.cpp:261
+#: kmsender.cpp:275
 msgid "Sending message: "
 msgstr "Sendi bréfið: "
 
-#: kmsender.cpp:289
+#: kmsender.cpp:303
 msgid "Done sending messages."
 msgstr "Sending yfirstaðin."
 
-#: kmsender.cpp:308
+#: kmsender.cpp:335
 msgid "Sending failed:"
 msgstr "Sending mistókst:"
 
-#: kmsender.cpp:491
+#: kmsender.cpp:525
 msgid ""
 "Please specify a mailer program\n"
 "in the settings."
@@ -1312,16 +1320,16 @@ msgstr ""
 "Vinsamlega tilgreindu póstforrit\n"
 "í stillingunum."
 
-#: kmsender.cpp:531
+#: kmsender.cpp:565
 #, c-format
 msgid "Failed to execute mailer program %s"
 msgstr "Gat ekki keyrt póstforritið %s"
 
-#: kmsender.cpp:619
+#: kmsender.cpp:653
 msgid "connecting to server"
 msgstr "kalla í miðlarann"
 
-#: kmsender.cpp:624
+#: kmsender.cpp:658
 #, c-format
 msgid ""
 "Cannot open SMTP connection to\n"
@@ -1332,19 +1340,19 @@ msgstr ""
 "%s vélina til að senda:\n"
 "%s"
 
-#: kmsender.cpp:653
+#: kmsender.cpp:687
 msgid "Cannot close SMTP connection."
 msgstr "Get ekki lokað SMTP tengingu."
 
-#: kmsender.cpp:703
+#: kmsender.cpp:737
 msgid "transmitting message"
 msgstr "sendi bréfið"
 
-#: kmsender.cpp:737
+#: kmsender.cpp:771
 msgid "network error"
 msgstr "netvilla"
 
-#: kmsender.cpp:739
+#: kmsender.cpp:773
 #, c-format
 msgid ""
 "a SMTP error occured.\n"
@@ -1357,7 +1365,7 @@ msgstr ""
 "Svar: %s\n"
 "Svar nr.: %d"
 
-#: kmsender.cpp:754
+#: kmsender.cpp:788
 #, c-format
 msgid "Sending SMTP command: %s"
 msgstr "Sendi SMTP skipun: %s"
@@ -1716,7 +1724,7 @@ msgstr ""
 "Gat ekki tekið afrit af %s\n"
 "Viltu halda áfram samt sem áður ?"
 
-#: kfileio.cpp:156 kfileio.cpp:174
+#: kfileio.cpp:156 kfileio.cpp:175
 #, c-format
 msgid ""
 "Could not write to file:\n"
@@ -1743,7 +1751,7 @@ msgstr ""
 "Villa við vistun á skránni:\n"
 "%s"
 
-#: kfileio.cpp:180
+#: kfileio.cpp:181
 #, c-format
 msgid "Could only write %d bytes of %d."
 msgstr "Gat aðeins vistað %u bæta af alls %u."

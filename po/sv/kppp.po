@@ -2008,7 +2008,8 @@ msgid ""
 "connection.\n"
 "Please use the terminal-based login to verify"
 msgstr ""
-"Du har startat pppd innan servern var beredd att upprätta en PPP-förbindelse.\n"
+"Du har startat pppd innan servern var beredd att upprätta en "
+"PPP-förbindelse.\n"
 "Var god använd den terminalbaserade inloggningen för att kolla"
 
 #: ppplog.cpp:141
@@ -2023,7 +2024,9 @@ msgstr "Kolla att du har angett rätt användarnamn och lösenord!"
 msgid ""
 "You shouldn't pass 'lock' as an argument to pppd. Check /etc/ppp/options and "
 "~/.ppprc"
-msgstr "Du bör inte skicka 'lock' som parameter till pppd. Kolla /etc/ppp/options och ~/.ppprc"
+msgstr ""
+"Du bör inte skicka 'lock' som parameter till pppd. Kolla /etc/ppp/options "
+"och ~/.ppprc"
 
 #: ppplog.cpp:151
 msgid ""
@@ -2037,7 +2040,9 @@ msgstr ""
 msgid ""
 "You have passed an invalid option to pppd. See `man pppd' for a complete "
 "list of valid arguments."
-msgstr "Du har skickat en ogiltig parameter till pppd. Kolla 'man pppd' för en fullständig lista med tillåtna parametrar."
+msgstr ""
+"Du har skickat en ogiltig parameter till pppd. Kolla 'man pppd' för en "
+"fullständig lista med tillåtna parametrar."
 
 #: ppplog.cpp:170
 #, c-format
@@ -2105,7 +2110,10 @@ msgid ""
 "To setup your modem, first choose its vendor in the list to the left, and "
 "then select the model from the right list. If you don´t know which modem you "
 "have, you can try out one of the \"Generic\" modems."
-msgstr "För att ställa in ditt modem, välj först tillverkare i den vänstra listan, och sedan modell från den högra listan. Om du inte vet vad du har för något modem så kan du försöka med någon av \"Generic\"-modemen."
+msgstr ""
+"För att ställa in ditt modem, välj först tillverkare i den vänstra listan, "
+"och sedan modell från den högra listan. Om du inte vet vad du har för något "
+"modem så kan du försöka med någon av \"Generic\"-modemen."
 
 #: modemdb.cpp:151 modemdb.cpp:153 modemdb.cpp:223 modemdb.cpp:238
 msgid "<Generic>"
