@@ -222,11 +222,11 @@ void KSircListBox::mousePressEvent(QMouseEvent *me){ /*FOLD00*/
 void KSircListBox::mouseReleaseEvent(QMouseEvent *me){ /*FOLD00*/
   int erow; // End row
 
+  ScrollToBottom = TRUE; // Unlock window THIS HAS TO BE FIRST SINCE THE WINDOW IS LOCKED ON A MOUSE CLICK
+  
 //  cerr << "Mouse release event!\n";
   if(selectMode == FALSE)
     return;
-
-  ScrollToBottom = TRUE; // Unlock window
   
   selectMode = FALSE;
   int row, line, rchar;
