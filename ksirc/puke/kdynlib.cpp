@@ -53,7 +53,7 @@ extern "C" { // this is necessary, because the libc on Alpha/Linux is broken
 #define RTLD_GLOBAL 0
 #endif
 
-QString KDynamicLibrary::last_error = "";
+QString *KDynamicLibrary::last_error = 0;
 
 KDynamicLibrary::KDynamicLibrary() {}
 KDynamicLibrary::~KDynamicLibrary() {}
@@ -79,12 +79,15 @@ KDynamicHandle KDynamicLibrary::loadLibrary(QString fileName, LoadOption opt)
     handle = (KDynamicHandle) dlopen(fileName.data(),
                     RTLD_GLOBAL | ((opt == ResolveLazy) ? RTLD_LAZY : RTLD_NOW));
 
+    if (last_error == 0)
+       last_error = new QString();
+
     if(handle == NULL){
       warning("Failed to open %s: %s", fileName.data(), dlerror());
-      last_error = dlerror();
+      *last_error = dlerror();
     }
     else {
-      last_error = "";
+      *last_error = "";
     }
 
     return handle;
@@ -108,12 +111,16 @@ void *KDynamicLibrary::getSymbol(KDynamicHandle handle, QString symName)
 #ifdef HAVE_DLFCN_H
   if (handle){
     void *sym = dlsym(handle, symName.data());
+     
+    if (!last_error)
+       last_error = new QString();
+
     if(sym == NULL){
       warning("Failed to find %s: %s", symName.data(), dlerror());
-      last_error = dlerror();
+      *last_error = dlerror();
     }
     else {
-      last_error = "";
+      *last_error = "";
     }
     return sym;
   }

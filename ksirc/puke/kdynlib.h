@@ -49,7 +49,7 @@ public:
     static void unloadLibrary(KDynamicHandle);
     static void *getSymbol(KDynamicHandle handle, QString symName);
 
-    static QString last_error;
+    static QString *last_error;
 };
 
 
