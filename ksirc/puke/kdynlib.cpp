@@ -53,6 +53,7 @@ extern "C" { // this is necessary, because the libc on Alpha/Linux is broken
 #define RTLD_GLOBAL 0
 #endif
 
+QString KDynamicLibrary::last_error = "";
 
 KDynamicLibrary::KDynamicLibrary() {}
 KDynamicLibrary::~KDynamicLibrary() {}
