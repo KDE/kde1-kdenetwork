@@ -42,7 +42,7 @@ binary-arch: build
 	dh_testdir
 	dh_testroot
 	dh_clean -k
-	make -C $(BUILDDIR) prefix=`pwd`/../debian/tmp/usr install 
+	make -C $(BUILDDIR) prefix=`pwd`/debian/tmp/usr install 
 	echo "# KDE Config File"          > debian/tmp/etc/kde/knurc
 	echo "[Traceroute]"              >> debian/tmp/etc/kde/knurc
 	echo "path=/usr/sbin/traceroute" >> debian/tmp/etc/kde/knurc
