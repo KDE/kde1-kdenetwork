@@ -278,7 +278,7 @@ void ChannelParser::parseINFONicks(QString in_string) /*FOLD00*/
     throw(parseError(string, QString("Could not find start of nicks")));
   
   place_holder = &string[start]+2;
-  nick = strsep(&place_holder, " ");
+  nick = strtok(place_holder, " ");
   
   while(nick != 0x0){                     // While there's nick to go...
     if(nick[0] == '@'){    // Remove the op part if set
@@ -298,7 +298,7 @@ void ChannelParser::parseINFONicks(QString in_string) /*FOLD00*/
     else{
       top->nicks->inSort(nick);
     }
-    nick = strsep(&place_holder, " ");
+    nick = strtok(NULL, " ");
   }
   top->nicks->setAutoUpdate(TRUE);         // clear and repaint the listbox
   top->nicks->repaint(TRUE);
@@ -481,7 +481,7 @@ void ChannelParser::parseINFOChangeNick(QString string) /*fold00*/
 
 }
 
-void ChannelParser::parseINFOMode(QString string) /*fold00*/
+void ChannelParser::parseINFOMode(QString string) /*FOLD00*/
 {
   // Basic idea here is simple, go through the mode change and
   // assign each mode a + or a - and an argument or "" if there is
@@ -524,8 +524,7 @@ void ChannelParser::parseINFOMode(QString string) /*fold00*/
    *          this means unless modes[pos] is a valid mode don't rely on fmode.  (it might be ++ or -- for example)
    */
   char fmode[] = "+X";// The full mode with +X where X is the mode
-  next_token = args;    // Setup next_arg to start of arg list
-  next_arg = strsep(&next_token, " ");
+  next_arg = strtok(args, " ");
   for(int pos = 0; modes[pos] != 0; pos++){
     fmode[1] = modes[pos];
     switch(modes[pos]){
@@ -550,7 +549,7 @@ void ChannelParser::parseINFOMode(QString string) /*fold00*/
       if(next_arg == NULL)
         throw(parseError(" Unable to parse mode change: " + string, QString("")));
       arg.append(next_arg);
-      next_arg = strsep(&next_token, " ");
+      next_arg = strtok(NULL, " ");
       break;
     case 'i': // Invite only
     case 'n': // No message to chan 

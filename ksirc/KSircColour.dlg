@@ -13,8 +13,8 @@ Dialog {
 WidgetLayout {
 InitialPos {-1 -1}
 Size {230 250}
-MinSize {230 250}
-MaxSize {230 250}
+MinSize {0 0}
+MaxSize {32767 32767}
 Grid {10}
 
 Label {
@@ -145,12 +145,5 @@ Label {
 		MinimumSize {10 10}
 		MaximumSize {32767 32767}
 }
-Layout {Box}
-Box_Layout-1{
-		Direction {TopToBottom}
-		Border {5}
-		AutoBorder {5}
-		Name {}
-		Strut {0}
-}
+Layout {None}
 }

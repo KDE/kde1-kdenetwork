@@ -27,7 +27,8 @@ INCLUDES= @all_includes@
 
 lib_LTLIBRARIES = libpuke.la libpframe.la libplined.la libpbutton.la libppushbt.la \
                   libpprogress.la libptablevw.la libplistbox.la libplabel.la \
-                  libpmenudta.la libppopmenu.la libpalistbox.la libptabdialog.la
+                  libpmenudta.la libppopmenu.la libpalistbox.la libptabdialog.la \
+                  libksirclistbox.la
 
 libpuke_la_SOURCES = \
 controller.cpp \
@@ -46,73 +47,80 @@ libpframe_la_SOURCES = \
 pframe.cpp \
 mpframe.cpp
 
-libpframe_la_LDFLAGS = -export-dynamic
+libpframe_la_LDFLAGS =  -export-dynamic  -nostdlib
 
 libplined_la_SOURCES = \
 plined.cpp \
 mplined.cpp
 
-libplined_la_LDFLAGS = -export-dynamic
+libplined_la_LDFLAGS = -export-dynamic  -nostdlib
 
 libpbutton_la_SOURCES = \
 pbutton.cpp \
 mpbutton.cpp
 
-libpbutton_la_LDFLAGS = -export-dynamic
+libpbutton_la_LDFLAGS = -export-dynamic  -nostdlib
 
 libppushbt_la_SOURCES = \
 ppushbt.cpp \
 mppushbt.cpp
 
-libppushbt_la_LDFLAGS = -export-dynamic
+libppushbt_la_LDFLAGS = -export-dynamic  -nostdlib
 
 libpprogress_la_SOURCES = \
 pprogress.cpp \
 mpprogress.cpp
 
-libpprogress_la_LDFLAGS = -export-dynamic
+libpprogress_la_LDFLAGS = -export-dynamic  -nostdlib
 
 libptablevw_la_SOURCES = \
 ptablevw.cpp \
 mptablevw.cpp
 
-libptablevw_la_LDFLAGS = -export-dynamic
+libptablevw_la_LDFLAGS = -export-dynamic -nostdlib
 
 libplistbox_la_SOURCES = \
 plistbox.cpp \
 mplistbox.cpp
 
-libplistbox_la_LDFLAGS = -export-dynamic
+libplistbox_la_LDFLAGS = -export-dynamic  -nostdlib
 
 libplabel_la_SOURCES = \
 plabel.cpp \
 mplabel.cpp
 
-libplabel_la_LDFLAGS = -export-dynamic
+libplabel_la_LDFLAGS = -export-dynamic  -nostdlib
 
 libpmenudta_la_SOURCES = \
 pmenudta.cpp \
 mpmenudta.cpp
 
-libpmenudta_la_LDFLAGS = -export-dynamic
+libpmenudta_la_LDFLAGS = -export-dynamic  -nostdlib
 
 libppopmenu_la_SOURCES = \
 ppopmenu.cpp  \
 mppopmenu.cpp
 
-libppopmenu_la_LDFLAGS = -export-dynamic
+libppopmenu_la_LDFLAGS = -export-dynamic  -nostdlib
 
 libpalistbox_la_SOURCES = \
 palistbox.cpp \
 mpalistbox.cpp
 
-libpalistbox_la_LDFLAGS = -export-dynamic
+libpalistbox_la_LDFLAGS = -export-dynamic -nostdlib
 
 libptabdialog_la_SOURCES = \
 ptabdialog.cpp  \
 mptabdialog.cpp
 
-libptabdialog_la_LDFLAGS = -export-dynamic
+libptabdialog_la_LDFLAGS = -export-dynamic  -nostdlib
+
+libksirclistbox_la_SOURCES = \
+ksirclistbox.cpp \
+mksirclistbox.cpp
+
+libksirclistbox_la_LDFLAGS = -export-dynamic
+
 
 HOWTO-PUKE.txt: HOWTO-PUKE.pod
 	pod2text HOWTO-PUKE.pod > HOWTO-PUKE.txt
@@ -137,7 +145,8 @@ pmenudta.h \
 ppopmenu.h \
 kdynlib.h \
 palistbox.h \
-ptabdialog.h
+ptabdialog.h \
+ksirclistbox.h
 
 # just to make sure, automake makes them 
 BUILTSOURCES =	

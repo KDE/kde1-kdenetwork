@@ -147,7 +147,8 @@ INCLUDES= @all_includes@
 
 lib_LTLIBRARIES = libpuke.la libpframe.la libplined.la libpbutton.la libppushbt.la \
                   libpprogress.la libptablevw.la libplistbox.la libplabel.la \
-                  libpmenudta.la libppopmenu.la libpalistbox.la libptabdialog.la
+                  libpmenudta.la libppopmenu.la libpalistbox.la libptabdialog.la \
+                  libksirclistbox.la
 
 libpuke_la_SOURCES = \
 controller.cpp \
@@ -166,73 +167,79 @@ libpframe_la_SOURCES = \
 pframe.cpp \
 mpframe.cpp
 
-libpframe_la_LDFLAGS = -export-dynamic
+libpframe_la_LDFLAGS =  -export-dynamic  -nostdlib
 
 libplined_la_SOURCES = \
 plined.cpp \
 mplined.cpp
 
-libplined_la_LDFLAGS = -export-dynamic
+libplined_la_LDFLAGS = -export-dynamic  -nostdlib
 
 libpbutton_la_SOURCES = \
 pbutton.cpp \
 mpbutton.cpp
 
-libpbutton_la_LDFLAGS = -export-dynamic
+libpbutton_la_LDFLAGS = -export-dynamic  -nostdlib
 
 libppushbt_la_SOURCES = \
 ppushbt.cpp \
 mppushbt.cpp
 
-libppushbt_la_LDFLAGS = -export-dynamic
+libppushbt_la_LDFLAGS = -export-dynamic  -nostdlib
 
 libpprogress_la_SOURCES = \
 pprogress.cpp \
 mpprogress.cpp
 
-libpprogress_la_LDFLAGS = -export-dynamic
+libpprogress_la_LDFLAGS = -export-dynamic  -nostdlib
 
 libptablevw_la_SOURCES = \
 ptablevw.cpp \
 mptablevw.cpp
 
-libptablevw_la_LDFLAGS = -export-dynamic
+libptablevw_la_LDFLAGS = -export-dynamic -nostdlib
 
 libplistbox_la_SOURCES = \
 plistbox.cpp \
 mplistbox.cpp
 
-libplistbox_la_LDFLAGS = -export-dynamic
+libplistbox_la_LDFLAGS = -export-dynamic  -nostdlib
 
 libplabel_la_SOURCES = \
 plabel.cpp \
 mplabel.cpp
 
-libplabel_la_LDFLAGS = -export-dynamic
+libplabel_la_LDFLAGS = -export-dynamic  -nostdlib
 
 libpmenudta_la_SOURCES = \
 pmenudta.cpp \
 mpmenudta.cpp
 
-libpmenudta_la_LDFLAGS = -export-dynamic
+libpmenudta_la_LDFLAGS = -export-dynamic  -nostdlib
 
 libppopmenu_la_SOURCES = \
 ppopmenu.cpp  \
 mppopmenu.cpp
 
-libppopmenu_la_LDFLAGS = -export-dynamic
+libppopmenu_la_LDFLAGS = -export-dynamic  -nostdlib
 
 libpalistbox_la_SOURCES = \
 palistbox.cpp \
 mpalistbox.cpp
 
-libpalistbox_la_LDFLAGS = -export-dynamic
+libpalistbox_la_LDFLAGS = -export-dynamic -nostdlib
 
 libptabdialog_la_SOURCES = \
 ptabdialog.cpp  \
 mptabdialog.cpp
 
-libptabdialog_la_LDFLAGS = -export-dynamic
+libptabdialog_la_LDFLAGS = -export-dynamic  -nostdlib
+
+libksirclistbox_la_SOURCES = \
+ksirclistbox.cpp \
+mksirclistbox.cpp
+
+libksirclistbox_la_LDFLAGS = -export-dynamic
 
 # no install headers
 
@@ -299,6 +306,8 @@ libpalistbox_la_LIBADD =
 libpalistbox_la_OBJECTS =  palistbox.lo mpalistbox.lo
 libptabdialog_la_LIBADD = 
 libptabdialog_la_OBJECTS =  ptabdialog.lo mptabdialog.lo
+libksirclistbox_la_LIBADD = 
+libksirclistbox_la_OBJECTS =  ksirclistbox.lo mksirclistbox.lo
 CXXFLAGS = @CXXFLAGS@
 CXXCOMPILE = $(CXX) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
 LTCXXCOMPILE = $(LIBTOOL) --mode=compile $(CXX) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
@@ -312,18 +321,19 @@ DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
 
 TAR = tar
 GZIP = --best
-DEP_FILES =  .deps/controller.P .deps/kdynlib.P .deps/mcontroller.P \
-.deps/mpalistbox.P .deps/mpbutton.P .deps/mpframe.P .deps/mplabel.P \
-.deps/mplayout.P .deps/mplined.P .deps/mplistbox.P .deps/mpmenudta.P \
-.deps/mpobject.P .deps/mppopmenu.P .deps/mpprogress.P .deps/mppushbt.P \
+DEP_FILES =  .deps/controller.P .deps/kdynlib.P .deps/ksirclistbox.P \
+.deps/mcontroller.P .deps/mksirclistbox.P .deps/mpalistbox.P \
+.deps/mpbutton.P .deps/mpframe.P .deps/mplabel.P .deps/mplayout.P \
+.deps/mplined.P .deps/mplistbox.P .deps/mpmenudta.P .deps/mpobject.P \
+.deps/mppopmenu.P .deps/mpprogress.P .deps/mppushbt.P \
 .deps/mptabdialog.P .deps/mptablevw.P .deps/mpwidget.P \
 .deps/palistbox.P .deps/pbutton.P .deps/pframe.P .deps/plabel.P \
 .deps/playout.P .deps/plined.P .deps/plistbox.P .deps/pmenudta.P \
 .deps/pobject.P .deps/ppopmenu.P .deps/pprogress.P .deps/ppushbt.P \
 .deps/ptabdialog.P .deps/ptablevw.P .deps/pwidget.P
 CXXMKDEP = $(CXX) -M $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
-SOURCES = $(libpuke_la_SOURCES) $(libpframe_la_SOURCES) $(libplined_la_SOURCES) $(libpbutton_la_SOURCES) $(libppushbt_la_SOURCES) $(libpprogress_la_SOURCES) $(libptablevw_la_SOURCES) $(libplistbox_la_SOURCES) $(libplabel_la_SOURCES) $(libpmenudta_la_SOURCES) $(libppopmenu_la_SOURCES) $(libpalistbox_la_SOURCES) $(libptabdialog_la_SOURCES)
-OBJECTS = $(libpuke_la_OBJECTS) $(libpframe_la_OBJECTS) $(libplined_la_OBJECTS) $(libpbutton_la_OBJECTS) $(libppushbt_la_OBJECTS) $(libpprogress_la_OBJECTS) $(libptablevw_la_OBJECTS) $(libplistbox_la_OBJECTS) $(libplabel_la_OBJECTS) $(libpmenudta_la_OBJECTS) $(libppopmenu_la_OBJECTS) $(libpalistbox_la_OBJECTS) $(libptabdialog_la_OBJECTS)
+SOURCES = $(libpuke_la_SOURCES) $(libpframe_la_SOURCES) $(libplined_la_SOURCES) $(libpbutton_la_SOURCES) $(libppushbt_la_SOURCES) $(libpprogress_la_SOURCES) $(libptablevw_la_SOURCES) $(libplistbox_la_SOURCES) $(libplabel_la_SOURCES) $(libpmenudta_la_SOURCES) $(libppopmenu_la_SOURCES) $(libpalistbox_la_SOURCES) $(libptabdialog_la_SOURCES) $(libksirclistbox_la_SOURCES)
+OBJECTS = $(libpuke_la_OBJECTS) $(libpframe_la_OBJECTS) $(libplined_la_OBJECTS) $(libpbutton_la_OBJECTS) $(libppushbt_la_OBJECTS) $(libpprogress_la_OBJECTS) $(libptablevw_la_OBJECTS) $(libplistbox_la_OBJECTS) $(libplabel_la_OBJECTS) $(libpmenudta_la_OBJECTS) $(libppopmenu_la_OBJECTS) $(libpalistbox_la_OBJECTS) $(libptabdialog_la_OBJECTS) $(libksirclistbox_la_OBJECTS)
 
 default: all
 
@@ -426,6 +436,9 @@ libpalistbox.la: $(libpalistbox_la_OBJECTS) $(libpalistbox_la_DEPENDENCIES)
 
 libptabdialog.la: $(libptabdialog_la_OBJECTS) $(libptabdialog_la_DEPENDENCIES)
 	$(CXXLINK) -rpath $(libdir) $(libptabdialog_la_LDFLAGS) $(libptabdialog_la_OBJECTS) $(libptabdialog_la_LIBADD) $(LIBS)
+
+libksirclistbox.la: $(libksirclistbox_la_OBJECTS) $(libksirclistbox_la_DEPENDENCIES)
+	$(CXXLINK) -rpath $(libdir) $(libksirclistbox_la_LDFLAGS) $(libksirclistbox_la_OBJECTS) $(libksirclistbox_la_LIBADD) $(LIBS)
 .cpp.o:
 	$(CXXCOMPILE) -c $<
 .cpp.lo:

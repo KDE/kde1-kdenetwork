@@ -50,7 +50,7 @@ if($DEBUG){
 #require 'commands-handler.pl';
 &docommand("/load commands-handler.pl");
 
-$PukeHeader = 2863311530; # Alternating 1010 for 32 bits
+$PukeHeader = 42; # Alternating 1010 for 32 bits
 $PukePacking = "Iiiiia*";  # 4 ints, followed by any number of of characters
 $PukeMSize = length(pack($PukePacking, $PukeHeader, 0, 0, 0, 0, ""));
 
@@ -119,7 +119,7 @@ sub sel_PukeRecvMessage {
     #  print "Length: $len " . length($m) . "\n";
     ($header, $cmd, $winid, $iarg, $length, $carg) = unpack($PukePacking, $m);
     if($header != $PukeHeader){
-      print("*E* Invalid message received! Discarding!\n");
+      print("*E* Invalid message received! Discarding! Got: $header wanted: $PukeHeader\n");
       #      return;
     }
     if($length > 0){

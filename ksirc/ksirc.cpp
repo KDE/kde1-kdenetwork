@@ -100,6 +100,7 @@ int main( int argc, char ** argv )
   kSircConfig->nickFHighlight = kConfig->readNumEntry("nickfcolour", -1);
   kSircConfig->nickBHighlight = kConfig->readNumEntry("nickbcolour", -1);
   kSircConfig->usHighlight = kConfig->readNumEntry("uscolour", -1);
+  kSircConfig->transparent = kConfig->readNumEntry("Transparent", false);
 
   kSircConfig->kdedir = getenv("KDEDIR");
   if(kSircConfig->kdedir.isEmpty()){

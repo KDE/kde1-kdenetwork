@@ -90,8 +90,8 @@ sub new {
   $menu->installMenu($menu_online, sub { &::say("online " . $self->{'list_box'}->currentText() . "\n"); });
   my $menu_info = $menu->insertText("User Information");
   $menu->installMenu($menu_info, sub { my $user =  $self->{'list_box'}->currentText(); print `$INFO $user`; });
-  my $menu_info = $menu->insertText("Connection Information");
-  $menu->installMenu($menu_info, sub { my $exec = "$WHO info " . $self->{'list_box'}->currentText(); print `$exec`; });
+  my $menu_info2 = $menu->insertText("Connection Information");
+  $menu->installMenu($menu_info2, sub { my $exec = "$WHO info " . $self->{'list_box'}->currentText(); print `$exec`; });
 
   my $menu_rem = $menu->insertText("Remove User From List");
   $menu->installMenu($menu_rem, sub {
@@ -275,10 +275,13 @@ sub show {
   }
   $page_ppl->setCurrentItem($c);
 
-  $self->SUPER::show();
+  $self->resize(265, 250);
+  $self->recreate(0, 0, 265, 250, 1);
 
-  $self->resize(265,250);
-  $self->move(400,270);
+#  $self->SUPER::show();
+#
+#  $self->resize(265,250);
+#  $self->move(400,270);
   
 }
 

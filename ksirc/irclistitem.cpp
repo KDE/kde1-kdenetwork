@@ -1,7 +1,12 @@
 #include "irclistitem.h"
 #include "iostream.h"
 
-#include <stdlib.h> 
+#include <stdlib.h>
+
+#include <qbitmap.h>
+#include <qimage.h>
+
+#include "config.h"
 
 ircListItem::ircListItem(QString s, const QColor *c, QListBox *lb, QPixmap *p)
   : QObject(),
@@ -185,16 +190,38 @@ void ircListItem::setupPainterText()
     p.setPen(*colour);
     p.setBackgroundColor(parent_lb->backgroundColor());
 
-    if(pm)
+    if(pm){
       p.drawPixmap(1,0,*pm);
+    }
     
     char *txt;
     int row = 0;
     for(txt = paint_text->first(); txt != 0; txt = paint_text->next(), row++){
       KSPainter::colourDrawText(&p, xPos,yPos+lineheight*row, txt);
     }
-    
     p.end();
+
+    if(kSircConfig->transparent == TRUE){
+      QImage Imask(dbuffer->width(), dbuffer->height(), 8, 2);
+      QImage Ipix = dbuffer->convertToImage();
+      Imask.setColor(0, QRgb(0x00000000));
+      Imask.setColor(1, QRgb(0x00ffffff));
+      for(int i = 0; i < Ipix.height(); i++){
+	for(int j = 0; j < Ipix.width(); j++){
+	  QRgb c = Ipix.pixel(j, i);
+	  if(c != 0x00000000){
+	    Imask.setPixel(j, i, 0);
+	  }
+	  else{
+	    Imask.setPixel(j, i, 1);
+	  }
+	}
+      }
+      QImage Imask1 = Imask.convertDepth(1);
+      QBitmap mask(dbuffer->width(), dbuffer->height());
+      mask.convertFromImage(Imask1);
+      dbuffer->setMask(mask);
+    }
 
   }
   else{

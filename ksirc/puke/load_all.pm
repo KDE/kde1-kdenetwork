@@ -10,4 +10,5 @@
 &docommand("/load plistbox.pm");
 &docommand("/load pmenudta.pm");
 &docommand("/load ppopmenu.pm");
-&docommand("/load ptabdialog.pm");  
+&docommand("/load ptabdialog.pm");
+&docommand("/load ksirclistbox.pm");  

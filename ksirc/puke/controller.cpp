@@ -19,6 +19,8 @@
 #include "../config.h"
 #include "../objFinder.h"
 
+#undef DEBUG
+
 uint PukeController::uiBaseWinId = 10; // Gives a little seperation from the controller id
 
 PukeController::PukeController(QString sock, QObject *parent=0, const char *name=0) /*FOLD00*/
@@ -256,7 +258,7 @@ void PukeController::Traffic(int fd) /*FOLD00*/
     }
     if(pm.iTextSize > 0){
       pm.cArg = new char[pm.iTextSize + 1];
-      int tbytes = read(fd, pm.cArg, pm.iTextSize * sizeof(char));
+      read(fd, pm.cArg, pm.iTextSize * sizeof(char));
       pm.cArg[pm.iTextSize] = 0x0; // Null terminate the string.
       printf(" %s\n", pm.cArg);
     }

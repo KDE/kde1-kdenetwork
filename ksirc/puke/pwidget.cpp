@@ -180,6 +180,16 @@ void PWidget::messageHandler(int fd, PukeMessage *pm)
     pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
     break;
+  case PUKE_WIDGET_SET_BACKGROUND_MODE:
+    widget()->setBackgroundMode((QWidget::BackgroundMode) pm->iArg);
+
+    pmRet.iCommand = -pm->iCommand;
+    pmRet.iWinId = pm->iWinId;
+    pmRet.iArg = (int) widget()->backgroundMode();
+    pmRet.cArg = 0;
+    emit outputMessage(fd, &pmRet);
+    break;
+
   case PUKE_WIDGET_SET_BACKGROUND_COLOUR:
     {
       int *pos;
@@ -224,6 +234,8 @@ void PWidget::messageHandler(int fd, PukeMessage *pm)
     }
     int *point_show = (int *) pm->cArg;
 
+    warning("Recreate: %d %d %d", point_show[0], point_show[1], point_show[3]);
+    
     widget()->recreate(nparent, (WFlags) 0, QPoint(point_show[0], point_show[1]), point_show[3]);
 
    pmRet.iCommand = PUKE_WIDGET_RECREATE_ACK;

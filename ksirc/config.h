@@ -23,6 +23,7 @@ class global_config {
   bool autocreate;
   bool nickcompletion;
   bool autorejoin;
+  bool transparent;
 
   bool filterKColour;
   bool filterMColour;

@@ -195,6 +195,14 @@ sub setBackgroundPixmap {
                      'CallBack' => sub {});
 }
 
+sub setBackgroundMode {
+  my $self = shift;
+
+  $self->sendMessage('iCommand' => $::PUKE_WIDGET_SET_BACKGROUND_MODE,
+                     'iArg' => shift(),
+                     'CallBack' => sub {});
+}
+
 
 sub setEnabled {
   my $self = shift;
@@ -212,7 +220,7 @@ sub recreate {
   my $wflags = shift; # Not used!
   
   $self->sendMessage('iCommand' => $::PUKE_WIDGET_RECREATE,
-                     'iArg' => $nparent->{'iWinId'},
+                     'iArg' => $nparent ? $nparent->{'iWinId'} : 0,
 		     'cArg' => pack("iii", shift(), shift(), shift()),
 		     'CallBack' => sub {});
 

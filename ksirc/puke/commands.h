@@ -311,6 +311,18 @@
 // cArg: not defined
 #define PUKE_WIDGET_SET_BACKGROUND_PIXMAP_ACK -1086
 
+// Desc: set background mode
+// iWinid: window id
+// iArg: mode
+// cArg: not defined
+#define PUKE_WIDGET_SET_BACKGROUND_MODE 1087
+
+// Desc: set background mode ack
+// iWinid: window id
+// iArg: new mode
+// cArg: not defined
+#define PUKE_WIDGET_SET_BACKGROUND_MODE_ACK -1087
+
 // Desc: set widget enabled or disabled
 // iWinid: window id
 // iArg: 0 for disabled, 1 for enabled
@@ -894,6 +906,21 @@
 // cArg: not defined
 #define PUKE_TABDIALOG_ADDTAB_ACK -2001
 
+// -----------------------------------------------------------------------
+// PKSircListBox
+
+// Desc: is the item in the top of the list?
+// iWinId: window id
+// iArg: index
+// cArg: not defined
+#define PUKE_KSIRCLISTBOX_TOBOTTOM 2100
+
+// Desc: ack for istop
+// iWinId: window id
+// iArg: 1 for top, 0 for bottom
+// cArg: not defined
+#define PUKE_KSIRCLISTBOX_TOBOTTOM_ACK -2100
+
 
 // ***********************************************************************
 // ***********************************************************************
@@ -945,6 +972,11 @@
 // PAListBox
 
 #define PWIDGET_ALISTBOX 14
+
+// PKSircListBox
+
+#define PWIDGET_KSIRCLISTBOX 15
+
 
 // PTabDialog
 

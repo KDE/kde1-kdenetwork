@@ -15,6 +15,6 @@ typedef struct {
   int iWinId;
 } widgetId;
 
-const uint iPukeHeader = 2863311530U;
+const uint iPukeHeader = 42U;
 
 #endif
