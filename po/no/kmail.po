@@ -169,7 +169,7 @@ msgstr "&Kopier..."
 
 #: kmmainwin.cpp:855
 msgid "New Composer"
-msgstr "Ny composer"
+msgstr "Ny komponist"
 
 #: kmcomposewin.cpp:451 kmmainwin.cpp:857
 msgid "New Mailreader"
@@ -574,7 +574,7 @@ msgstr "MIME-kompilant (Quoted Printable)"
 
 #: kmsettings.cpp:512
 msgid "Composer"
-msgstr "Composer"
+msgstr "Komponist"
 
 #: kmsettings.cpp:533
 msgid "empty trash on exit"
@@ -682,7 +682,7 @@ msgstr "Avsender"
 
 #: kmheaders.cpp:42
 msgid "Subject"
-msgstr "Subjekt"
+msgstr "Emne"
 
 #: kmheaders.cpp:43
 msgid "Date"
@@ -691,7 +691,7 @@ msgstr "Dato"
 #: kmheaders.cpp:215
 #, c-format
 msgid "%d Messages, %d unread."
-msgstr "%d meldinger, %d ulest."
+msgstr "%d meldinger, %d uleste."
 
 #: kmheaders.cpp:217
 msgid "Folder is read-only."
@@ -703,7 +703,7 @@ msgstr "Ukjent"
 
 #: kmheaders.cpp:267
 msgid "No Subject"
-msgstr "Intet subjekt"
+msgstr "Intet emne"
 
 #: kmheaders.cpp:327
 msgid "order of arrival"
@@ -711,7 +711,7 @@ msgstr "rekkefølge for ankomst"
 
 #: kmheaders.cpp:336
 msgid "subject"
-msgstr "subjekt"
+msgstr "emne"
 
 #: kmheaders.cpp:337
 msgid "date"
@@ -745,7 +745,7 @@ msgstr "Mislykkes å lagre melding(er)."
 
 #: kmcomposewin.cpp:128
 msgid "KMail Composer"
-msgstr "KMail Composer"
+msgstr "KMail Komponist"
 
 #: kmcomposewin.cpp:141
 msgid "Size"
@@ -777,7 +777,7 @@ msgstr "&Bcc:"
 
 #: kmcomposewin.cpp:355
 msgid "&Subject:"
-msgstr "&Subjekt:"
+msgstr "&Emne:"
 
 #: kmcomposewin.cpp:358
 msgid "&Newsgroups:"
@@ -805,7 +805,7 @@ msgstr "&Sett inn fil..."
 
 #: kmcomposewin.cpp:448
 msgid "&New Composer..."
-msgstr "&Ny Composer..."
+msgstr "&Ny komponist..."
 
 #: kmcomposewin.cpp:471 kmcomposewin.cpp:703 kmcomposewin.cpp:1892
 msgid "Mark all"
@@ -869,7 +869,7 @@ msgstr "&Bcc"
 
 #: kmcomposewin.cpp:516
 msgid "&Subject"
-msgstr "&Subjekt"
+msgstr "&Emne"
 
 #: kmcomposewin.cpp:518
 msgid "&Newsgroups"
@@ -1001,7 +1001,7 @@ msgstr "Til:"
 
 #: kmcomposewin.cpp:1541
 msgid "Subject:"
-msgstr "Subjekt:"
+msgstr "Emne:"
 
 #: kmcomposewin.cpp:1544
 msgid "Date:"
@@ -1015,7 +1015,7 @@ msgstr "Stavekontroll - KMail"
 msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
 msgstr ""
-"Feil ved start av KSpell. Vennligst forsikre om at ISpell er korrekt "
+"Feil ved start av KSpell. Vennligst forviss deg om at ISpell er korrekt "
 "konfigurert."
 
 #: kmfolder.cpp:145
@@ -1229,7 +1229,7 @@ msgstr "Pop-postfeil"
 
 #: kmacctpop.cpp:291
 msgid "Pop Mail Network Error"
-msgstr "Pop-postnettverksfeil"
+msgstr "Nettverksfeil ved bruk av pop-post"
 
 #: kmacctpop.cpp:307
 msgid "Unknown error"
@@ -1767,7 +1767,7 @@ msgstr ""
 #: kfileio.cpp:180
 #, c-format
 msgid "Could only write %d bytes of %d."
-msgstr "Kunne bare skrive %d bytes av %d."
+msgstr "Kunne bare skrive %d byter av %d."
 
 #: kmaddrbook.cpp:25
 msgid "KMail Error"
@@ -1827,7 +1827,7 @@ msgstr "Melding som enkel tekst"
 
 #: charsetsDlg.cpp:57
 msgid "Composer charset"
-msgstr "Composer-tegnsett"
+msgstr "Komponist-tegnsett"
 
 #: charsetsDlg.cpp:75
 msgid "Set as &default"
