@@ -78,7 +78,7 @@ noinst_HEADERS = \
 METASOURCES = controller.moc ksirclistbox.moc palistbox.moc pbutton.moc \
 	pframe.moc plabel.moc playout.moc plined.moc plistbox.moc \
 	pmenudta.moc pobject.moc ppopmenu.moc pprogress.moc ppushbt.moc \
-	ptabdialog.moc ptablevw.moc pwidget.moc
+	ptabdialog.moc ptablevw.moc pwidget.moc pkfiledialog.moc
 
 # Datafiles to install / uninstall : *.pl *.pm
 data_DATA = commands-handler.pl commands-perl.pl convert_commands.pl \

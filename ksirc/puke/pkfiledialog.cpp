@@ -104,3 +104,5 @@ KFileDialog *PKFileDialog::widget()
 {
   return kfbd;
 }
+
+#include <pkfiledialog.moc>
