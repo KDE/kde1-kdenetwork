@@ -2,11 +2,10 @@
 # Copyright (C) 1999 Free Software Foundation, Inc.
 # Thorarinn R. Einarsson <thori@mindspring.com>, 1998
 #
-
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1999-02-01 02:02+0100\n"
+"POT-Creation-Date: 1999-02-03 01:59+0100\n"
 "PO-Revision-Date: 1999-02-01 00:19-0500\n"
 "Last-Translator: Thorarinn R. Einarsson <thori@mindspring.com>\n"
 "Language-Team: is <kde-isl@mmedia.is>\n"
@@ -18,19 +17,19 @@ msgstr ""
 msgid "Account Setup"
 msgstr "Uppsetning á tengingu"
 
-#: accounts.cpp:64
+#: accounts.cpp:66
 msgid "Edit..."
 msgstr "Breyta..."
 
-#: accounts.cpp:66
+#: accounts.cpp:68
 msgid "Allows you to modify the selected account"
 msgstr "Gerir þér kleyft að breyta tengingunni"
 
-#: accounts.cpp:75
+#: accounts.cpp:77
 msgid "New..."
 msgstr "Ný..."
 
-#: accounts.cpp:79
+#: accounts.cpp:81
 msgid ""
 "Create a new dialup connection\n"
 "to the internet"
@@ -38,7 +37,7 @@ msgstr ""
 "Setja upp nýja\n"
 "nettengingu"
 
-#: accounts.cpp:87
+#: accounts.cpp:89
 msgid ""
 "Makes a copy of the selected account. All\n"
 "settings of the selected account are copied\n"
@@ -50,7 +49,7 @@ msgstr ""
 "yfir í nýju tenginguna þar sem þú getur\n"
 "breytt þeim að vild."
 
-#: accounts.cpp:97
+#: accounts.cpp:99
 msgid ""
 "Deletes the selected account\n"
 "\n"
@@ -60,11 +59,11 @@ msgstr ""
 "\n"
 "<red><b>Notist með varkárni!"
 
-#: accounts.cpp:106
+#: accounts.cpp:108
 msgid "Phone Costs:"
 msgstr "Símakostnaður:"
 
-#: accounts.cpp:118
+#: accounts.cpp:121
 msgid ""
 "This shows the accumulated phone costs\n"
 "for the selected account.\n"
@@ -80,11 +79,11 @@ msgstr ""
 "við netið hafðu þá í huga að þetta er <b>EKKI</b>\n"
 "samanlagður kostnaður á öllum tengingum!"
 
-#: accounts.cpp:125 conwindow.cpp:54
+#: accounts.cpp:128 conwindow.cpp:54
 msgid "Volume:"
 msgstr "Gagnaflutningar:"
 
-#: accounts.cpp:136
+#: accounts.cpp:140
 msgid ""
 "This shows the number of bytes transferred\n"
 "for the selected account (not for all of your\n"
@@ -100,19 +99,19 @@ msgstr ""
 "\n"
 "<link #volaccounting>Meira um gagnaflutningabókhald</link>"
 
-#: accounts.cpp:148
+#: accounts.cpp:152
 msgid "Reset Costs"
 msgstr "Núllstilla"
 
-#: accounts.cpp:154
+#: accounts.cpp:158
 msgid "View Logs"
 msgstr "Sýna færslur"
 
-#: accounts.cpp:220
+#: accounts.cpp:224
 msgid "Reset Total"
 msgstr "Samtals á núll"
 
-#: accounts.cpp:221
+#: accounts.cpp:225
 msgid ""
 "Are you sure you want to reset the accumulated\n"
 "telephone costs for the selected account to zero?"
@@ -120,15 +119,15 @@ msgstr ""
 "Ertu viss um að þú viljir núllstilla uppsafnaðan\n"
 "kostnað á þessari tengingu?"
 
-#: accounts.cpp:250 accounts.cpp:271
+#: accounts.cpp:259 accounts.cpp:280
 msgid "Maximum number of accounts reached."
 msgstr "Fleiri tengingar eru ekki leyfðar."
 
-#: accounts.cpp:277
+#: accounts.cpp:286
 msgid "No account selected."
 msgstr "Engin tenging valin."
 
-#: accounts.cpp:292
+#: accounts.cpp:301
 #, c-format
 msgid ""
 "Are you sure you want to delete\n"
@@ -137,43 +136,43 @@ msgstr ""
 "Ertu viss um að þú viljir þurrka\n"
 "út tenginguna \"%s\"?"
 
-#: accounts.cpp:297
+#: accounts.cpp:306
 msgid "Confirm"
 msgstr "Staðfesta"
 
-#: accounts.cpp:318
+#: accounts.cpp:328
 msgid "New Account"
 msgstr "Nýja tengingu"
 
-#: accounts.cpp:321
+#: accounts.cpp:331
 msgid "Edit Account: "
 msgstr "Breyta tengingu:"
 
-#: accounts.cpp:339
+#: accounts.cpp:348
 msgid "Dial"
 msgstr "Hringja"
 
-#: accounts.cpp:340
+#: accounts.cpp:349
 msgid "IP"
 msgstr "IP"
 
-#: accounts.cpp:341
+#: accounts.cpp:350
 msgid "DNS"
 msgstr "DNS"
 
-#: accounts.cpp:342
+#: accounts.cpp:351
 msgid "Gateway"
 msgstr "Gátt"
 
-#: accounts.cpp:343
+#: accounts.cpp:352
 msgid "Login Script"
 msgstr "Tengiforskrift"
 
-#: accounts.cpp:344
+#: accounts.cpp:353
 msgid "Accounting"
 msgstr "Bókhald"
 
-#: accounts.cpp:363
+#: accounts.cpp:372
 msgid ""
 "You must enter an unique\n"
 "account name"
@@ -181,28 +180,28 @@ msgstr ""
 "Þú verður að gefa tengingunni\n"
 "áður ónotað nafn."
 
-#: accounts.cpp:368
+#: accounts.cpp:377
 msgid "Login script has unbalanced loop Start/End"
 msgstr "Tengiforskriftin er með ójafnvægi í Start/End lykkju"
 
-#: connect.cpp:92 connect.cpp:190 main.cpp:1054
+#: connect.cpp:92 connect.cpp:190 main.cpp:1059
 msgid "Connecting to: "
 msgstr "Tengist: "
 
-#: connect.cpp:101 connect.cpp:205 miniterm.cpp:146 modeminfo.cpp:54
-#: modeminfo.cpp:132
+#: connect.cpp:101 connect.cpp:205 miniterm.cpp:148 modeminfo.cpp:56
+#: modeminfo.cpp:135
 msgid "Sorry, can't create modem lock file."
 msgstr "Get ekki búið til læsiskrá fyrir módemið."
 
-#: connect.cpp:106 connect.cpp:163 modeminfo.cpp:59
+#: connect.cpp:106 connect.cpp:163 modeminfo.cpp:61
 msgid "Looking for Modem ..."
 msgstr "Leita að módemi..."
 
-#: connect.cpp:115 debug.cpp:80 main.cpp:1067
+#: connect.cpp:115 debug.cpp:80 main.cpp:1072
 msgid "Log"
 msgstr "Færslur"
 
-#: connect.cpp:199 miniterm.cpp:141 modeminfo.cpp:126
+#: connect.cpp:199 miniterm.cpp:143 modeminfo.cpp:129
 msgid "Sorry, modem device is locked."
 msgstr "Módemið er læst!"
 
@@ -318,7 +317,7 @@ msgstr "Fann: "
 msgid "Looping: "
 msgstr "Þræði lykkju: "
 
-#: connect.cpp:872 modeminfo.cpp:224
+#: connect.cpp:872 modeminfo.cpp:227
 msgid "One Moment Please ..."
 msgstr "Augnablik..."
 
@@ -491,7 +490,7 @@ msgid ""
 "\n"
 "Very usefull for fetching mail and news"
 msgstr ""
-"Gerir þér kleyft að keyra forrit <b>eftir</b> að\n" 
+"Gerir þér kleyft að keyra forrit <b>eftir</b> að\n"
 "tengt er.  Forritið sjálft er keyrt þegar\n"
 "nettengingu hefur verið komið á.\n"
 "\n"
@@ -688,7 +687,6 @@ msgstr ""
 "Til að gefa upp nafnamiðlara sláðu þá inn IP\n"
 "vistfangið og smelltu síðan á <b>Bæta við</b>."
 
-
 #: edit.cpp:465
 msgid ""
 "Click this button to add the DNS server\n"
@@ -837,7 +835,7 @@ msgstr ""
 "hafi tekist.  Ef tengingin heppnast ekki þá\n"
 "gefst <i>Kppp</i> upp og drepur ppp púkann."
 
-#: general.cpp:74 general.cpp:400 general.cpp:489
+#: general.cpp:74 general.cpp:401 general.cpp:490
 msgid "Seconds"
 msgstr "sekúndur"
 
@@ -892,7 +890,7 @@ msgid ""
 "was established. Very useful, so you \n"
 "should turn this on"
 msgstr ""
-"Þegar þessi möguleiki er valinn þá sést klukkan\n" 
+"Þegar þessi möguleiki er valinn þá sést klukkan\n"
 "í titilslánni og sýnir þar hvað langur tími\n"
 "er liðinn síðan tenging byrjaði. Þetta er mjög\n"
 "gagnlegt þannig að þú ættir að nota þetta."
@@ -978,7 +976,6 @@ msgstr ""
 "               (thori@mindspring.com)\n"
 "Þessu forriti er dreyft samkvæmt GNU GPL\n"
 "höfundarréttinum (GNU General Public License)."
-
 
 #: general.cpp:238
 msgid "Serial device"
@@ -1100,7 +1097,7 @@ msgstr ""
 msgid "Modem Timeout:"
 msgstr "Módemtími rennur út eftir:"
 
-#: general.cpp:404
+#: general.cpp:405
 msgid ""
 "This specifies how long <i>kppp</i> waits for a\n"
 "<i>CONNECT</i> response from your modem. The\n"
@@ -1110,15 +1107,15 @@ msgstr ""
 "svari við <i>CONNECT</i> frá módeminu. Mælti er með\n"
 "30 sekúndna bið."
 
-#: general.cpp:465 main.cpp:724
+#: general.cpp:466 main.cpp:729
 msgid "Modem"
 msgstr "Módem"
 
-#: general.cpp:476
+#: general.cpp:477
 msgid "Busy Wait:"
 msgstr "Upptekið-Bíðið í:"
 
-#: general.cpp:494
+#: general.cpp:495
 msgid ""
 "Specifies the number of seconds to wait before\n"
 "redial if all dialed numbers are busy. This is\n"
@@ -1136,11 +1133,11 @@ msgstr ""
 "Sjálfgefið gildi er 0 sekúndur.  Þú ættir ekki að\n"
 "breyta þessu nema þú nauðsynlega þurfir."
 
-#: general.cpp:508
+#: general.cpp:509
 msgid "Modem volume"
 msgstr "Hljóðstyrkur módems"
 
-#: general.cpp:520
+#: general.cpp:521
 msgid ""
 "Most modems have a speaker which makes\n"
 "a lot of noise when dialing. Here you can\n"
@@ -1158,11 +1155,11 @@ msgstr ""
 "í þínu módemi, þá verður þú að breyta\n"
 "hljóðstyrksskipun módemsins."
 
-#: general.cpp:532
+#: general.cpp:533
 msgid "Modem Asserts CD Line."
 msgstr "Módem framfylgir CD."
 
-#: general.cpp:540
+#: general.cpp:541
 msgid ""
 "This controls how <i>kppp</i> detects that the modem\n"
 "is not responding. Unless you are having\n"
@@ -1176,11 +1173,11 @@ msgstr ""
 "\n"
 "<b>Sjálfgefið</b>: Af"
 
-#: general.cpp:553
+#: general.cpp:554
 msgid "Modem Commands"
 msgstr "Módemskipanir"
 
-#: general.cpp:555
+#: general.cpp:556
 msgid ""
 "Allows you to change the AT command for\n"
 "your modem."
@@ -1188,11 +1185,11 @@ msgstr ""
 "Gerir þér kleyft að breyta AT skipuninni fyrir\n"
 "módemið þitt."
 
-#: general.cpp:558
+#: general.cpp:559
 msgid "Query Modem"
 msgstr "Prófa módem"
 
-#: general.cpp:560
+#: general.cpp:561
 msgid ""
 "Most modems support the ATI command set to\n"
 "find out vendor and revision of your modem.\n"
@@ -1208,11 +1205,11 @@ msgstr ""
 "um þessar upplýsingar.  Þú gætir þurft að hafa\n"
 "þær til hliðsjónar við uppsetningu á módeminu."
 
-#: general.cpp:567
+#: general.cpp:568
 msgid "Terminal"
 msgstr "Skjáhermir"
 
-#: general.cpp:569
+#: general.cpp:570
 msgid ""
 "Opens the built-in terminal program. You\n"
 "can use this if you want to play around\n"
@@ -1222,23 +1219,23 @@ msgstr ""
 "getur notað það ef þú vilt eitthvað\n"
 "vasast í AT skipunum módemsins."
 
-#: general.cpp:633
+#: general.cpp:634
 msgid "Throughput graph"
 msgstr "Gagnaflutningalínurit"
 
-#: general.cpp:642
+#: general.cpp:643
 msgid "Background color"
 msgstr "Bakgrunnslitur"
 
-#: general.cpp:649
+#: general.cpp:650
 msgid "Text color"
 msgstr "Leturlitur"
 
-#: general.cpp:656
+#: general.cpp:657
 msgid "Input bytes color"
 msgstr "Litur á bætum inn"
 
-#: general.cpp:663
+#: general.cpp:664
 msgid "Output bytes color"
 msgstr "Litur á bætum út"
 
@@ -1284,7 +1281,7 @@ msgstr ""
 "Þessi gluggi helst opinn þar til þú\n"
 "notar músina eða lyklaborðið.\n"
 
-#: main.cpp:405
+#: main.cpp:409
 #, c-format
 msgid ""
 "kppp can't create or read from\n"
@@ -1293,7 +1290,7 @@ msgstr ""
 "Kppp getur ekki búið til eða lesið frá\n"
 "%s."
 
-#: main.cpp:435
+#: main.cpp:439
 #, c-format
 msgid ""
 "kppp has detected a %s file.\n"
@@ -1312,19 +1309,19 @@ msgstr ""
 "Ekki keyra fleiri en eitt eintak af Kppp í einu.\n"
 "Hættu báðum og ræstu Kppp síðan aftur."
 
-#: main.cpp:441
+#: main.cpp:445
 msgid "Exit"
 msgstr "Loka"
 
-#: main.cpp:504
+#: main.cpp:508
 msgid "Connect to: "
 msgstr "Tengja við: "
 
-#: main.cpp:516
+#: main.cpp:520
 msgid "Login ID:"
 msgstr "Notandanafn:"
 
-#: main.cpp:529
+#: main.cpp:533
 msgid ""
 "Type in the username that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1342,11 +1339,11 @@ msgstr ""
 "<b>Áríðandi</b>: há/lágstafir skipta máli:\n"
 "<i>notandinn</i> er ekki það sama og <i>NoTandiNN</i>!"
 
-#: main.cpp:538
+#: main.cpp:542
 msgid "Password:"
 msgstr "Lykilorð"
 
-#: main.cpp:552
+#: main.cpp:556
 msgid ""
 "Type in the password that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1364,11 +1361,11 @@ msgstr ""
 "<b>Áríðandi</b>: há/lágstafir skipta máli:\n"
 "<i>lykilord</i> er ekki það sama og <i>LyKilOrd</i>!"
 
-#: main.cpp:566
+#: main.cpp:570
 msgid "Show Log Window"
 msgstr "Sýna færsluglugga"
 
-#: main.cpp:573
+#: main.cpp:577
 msgid ""
 "This controls whether a log window is shown.\n"
 "A log window shows the communication between\n"
@@ -1386,15 +1383,15 @@ msgstr ""
 "Þú getur sleppt þessu ef <i>Kppp</i> tengir\n"
 "alltaf án vandkvæða."
 
-#: main.cpp:596
+#: main.cpp:600
 msgid "Setup"
 msgstr "Uppsetning"
 
-#: main.cpp:612
+#: main.cpp:616
 msgid "Connect"
 msgstr "Tengja"
 
-#: main.cpp:692
+#: main.cpp:696
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -1403,39 +1400,39 @@ msgstr ""
 "Engin svona tenging:\n"
 "%s"
 
-#: main.cpp:706
+#: main.cpp:711
 msgid "kppp Configuration"
 msgstr "Kppp stillingar"
 
-#: main.cpp:722
+#: main.cpp:727
 msgid "Accounts"
 msgstr "Tengingar"
 
-#: main.cpp:723
+#: main.cpp:728
 msgid "Device"
 msgstr "Tæki"
 
-#: main.cpp:725
+#: main.cpp:730
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:726
+#: main.cpp:731
 msgid "Graph"
 msgstr "Línurit"
 
-#: main.cpp:870
+#: main.cpp:875
 msgid "Timeout expired while waiting for the PPP interface to come up!"
 msgstr "Tíminn rann út meðan beðið var eftir PPP tengingunni!"
 
-#: main.cpp:875
+#: main.cpp:880
 msgid "The pppd daemon died unexpectedly!"
 msgstr "Það lítur út fyrir að ppp púkinn hafi dáið!"
 
-#: main.cpp:883
+#: main.cpp:888
 msgid "Details..."
 msgstr "Smáatriði..."
 
-#: main.cpp:915
+#: main.cpp:920
 msgid ""
 "Sorry. kppp's helper process just died.\n"
 "\n"
@@ -1443,9 +1440,10 @@ msgid ""
 msgstr ""
 "Því miður dó hjálparaðgerð Kppp.\n"
 "\n"
-"Það er því engin ástæða fyrir Kppp að halda áfram þannig að við lokum því bara."
+"Það er því engin ástæða fyrir Kppp að halda áfram þannig að við lokum því "
+"bara."
 
-#: main.cpp:949
+#: main.cpp:954
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1466,7 +1464,7 @@ msgstr ""
 "\n"
 "Þakka þér."
 
-#: main.cpp:964
+#: main.cpp:969
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1479,7 +1477,7 @@ msgstr ""
 "Athugaðu hvort Kppp hafi s-bita aðgang (chmod u+s pppd) og að\n"
 "ppp púkinn sé keyranlegur (chmod u+x pppd)."
 
-#: main.cpp:979
+#: main.cpp:984
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1500,8 +1498,7 @@ msgstr ""
 "í uppsetningarglugganum.\n"
 " Þakka þér."
 
-
-#: main.cpp:999
+#: main.cpp:1004
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1511,7 +1508,7 @@ msgstr ""
 "PAP.  Þessi aðferð krefst þess að þú\n"
 "gefir upp notandanafn og lykilorð!"
 
-#: main.cpp:1008
+#: main.cpp:1013
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1520,7 +1517,7 @@ msgstr ""
 "Get ekki skrifað PAP auðkenningar-\n"
 "skrána \"%s\""
 
-#: main.cpp:1025
+#: main.cpp:1030
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -1530,7 +1527,7 @@ msgstr ""
 "CHAP.  Þessi aðferð krefst þess að þú\n"
 "gefir upp notandanafn og lykilorð!"
 
-#: main.cpp:1034
+#: main.cpp:1039
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1539,19 +1536,19 @@ msgstr ""
 "Get ekki skrifað CHAP auðkenningar-\n"
 "skrána \"%s\""
 
-#: main.cpp:1046
+#: main.cpp:1051
 msgid "You must specify a telephone number!"
 msgstr "Þú verður að gefa upp símanúmer!"
 
-#: main.cpp:1133
+#: main.cpp:1138
 msgid "Quit kPPP?"
 msgstr "Loka Kppp?"
 
-#: main.cpp:1134
+#: main.cpp:1139
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Ef þú lokar Kppp þá rofnar PPP sambandið."
 
-#: main.cpp:1179
+#: main.cpp:1184
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
@@ -1591,91 +1588,91 @@ msgstr "Því miður, módemið svarar ekki."
 msgid "Unknown speed"
 msgstr "Óþekktur hraði"
 
-#: modemcmds.cpp:43
+#: modemcmds.cpp:44
 msgid "Edit Modem Commands"
 msgstr "Breyta módemskipunum"
 
-#: modemcmds.cpp:70
+#: modemcmds.cpp:72
 msgid "Pre-Init Delay (sec/100):"
 msgstr "Pre-Init töf (sek/100):"
 
-#: modemcmds.cpp:75
+#: modemcmds.cpp:77
 msgid "Initialization String:"
 msgstr "Frumstillingarstrengur:"
 
-#: modemcmds.cpp:93
+#: modemcmds.cpp:95
 msgid "Post-Init Delay (sec/100):"
 msgstr "Post-Init töf (sek/100):"
 
-#: modemcmds.cpp:98
+#: modemcmds.cpp:100
 msgid "Init Response:"
 msgstr "Frumstilling - svar:"
 
-#: modemcmds.cpp:105
+#: modemcmds.cpp:107
 msgid "Dial String:"
 msgstr "Innhringistrengur"
 
-#: modemcmds.cpp:112
+#: modemcmds.cpp:114
 msgid "Connect Response:"
 msgstr "Tenging - svar:"
 
-#: modemcmds.cpp:119
+#: modemcmds.cpp:121
 msgid "Busy Response:"
 msgstr "Á tali - svar:"
 
-#: modemcmds.cpp:126
+#: modemcmds.cpp:128
 msgid "No Carrier Response:"
 msgstr "Engin lína - svar:"
 
-#: modemcmds.cpp:133
+#: modemcmds.cpp:135
 msgid "No Dialtone Response:"
 msgstr "Engin sónn - svar:"
 
-#: modemcmds.cpp:140
+#: modemcmds.cpp:142
 msgid "Hangup String:"
 msgstr "Leggja á strengur:"
 
-#: modemcmds.cpp:147
+#: modemcmds.cpp:149
 msgid "Hangup Response:"
 msgstr "Leggja á - svar:"
 
-#: modemcmds.cpp:154
+#: modemcmds.cpp:156
 msgid "Answer String:"
 msgstr "Svarstrengur:"
 
-#: modemcmds.cpp:161
+#: modemcmds.cpp:163
 msgid "Ring Response:"
 msgstr "Hringingarstrengur:"
 
-#: modemcmds.cpp:168
+#: modemcmds.cpp:170
 msgid "Answer Response:"
 msgstr "Svörun - svar:"
 
-#: modemcmds.cpp:175
+#: modemcmds.cpp:177
 msgid "Escape String:"
 msgstr "Escape strengur:"
 
-#: modemcmds.cpp:182
+#: modemcmds.cpp:184
 msgid "Escape Response:"
 msgstr "Escape - svar"
 
-#: modemcmds.cpp:201
+#: modemcmds.cpp:203
 msgid "Guard Time (sec/50):"
 msgstr "Varnartími (sek/50):"
 
-#: modemcmds.cpp:205
+#: modemcmds.cpp:207
 msgid "Volume off/low/high"
 msgstr "Hljóð af/lágt/hátt"
 
-#: pppdargs.cpp:37
+#: pppdargs.cpp:38
 msgid "Customize pppd Arguments"
 msgstr "Stilla pppd breytur"
 
-#: pppdargs.cpp:49
+#: pppdargs.cpp:51
 msgid "Argument:"
 msgstr "Breyta:"
 
-#: pppdargs.cpp:78
+#: pppdargs.cpp:80
 msgid "Defaults"
 msgstr "Sjálfgefið"
 
@@ -1697,97 +1694,96 @@ msgstr ""
 "\n"
 "chown {ÞittNotandanafn} .kde/share/config/kppprc"
 
-
-#: modeminfo.cpp:38
+#: modeminfo.cpp:39
 msgid "ATI Query"
 msgstr "ATI spurn"
 
-#: modeminfo.cpp:114
+#: modeminfo.cpp:117
 msgid "Modem Query timed out."
 msgstr "Módemspurnartími rann út."
 
-#: miniterm.cpp:162 miniterm.cpp:226 modeminfo.cpp:142
+#: miniterm.cpp:164 miniterm.cpp:228 modeminfo.cpp:145
 msgid "Modem Ready"
 msgstr "Módemið er tilbúið"
 
-#: modeminfo.cpp:246
+#: modeminfo.cpp:249
 msgid "Modem Query Results"
 msgstr "Niðurstöður spurnar"
 
-#: pppstatdlg.cpp:64
+#: pppstatdlg.cpp:65
 msgid "kppp Statistics"
 msgstr "Kppp tölfræði"
 
-#: pppstatdlg.cpp:69
+#: pppstatdlg.cpp:71
 msgid "Statistics"
 msgstr "Tölulegar uppl."
 
-#: pppstatdlg.cpp:113
+#: pppstatdlg.cpp:115
 msgid "Local Addr:"
 msgstr "Staðbundið viðfang:"
 
-#: pppstatdlg.cpp:119
+#: pppstatdlg.cpp:121
 msgid "Remote Addr:"
 msgstr "Fjartengt viðfang:"
 
-#: pppstatdlg.cpp:151
+#: pppstatdlg.cpp:153
 msgid "bytes in"
 msgstr "bætar inn"
 
-#: pppstatdlg.cpp:152
+#: pppstatdlg.cpp:154
 msgid "bytes out"
 msgstr "bætar út"
 
-#: pppstatdlg.cpp:154
+#: pppstatdlg.cpp:156
 msgid "packets in"
 msgstr "pakkar inn"
 
-#: pppstatdlg.cpp:155
+#: pppstatdlg.cpp:157
 msgid "packets out"
 msgstr "pakkar út"
 
-#: pppstatdlg.cpp:157
+#: pppstatdlg.cpp:159
 msgid "vjcomp in"
 msgstr "vjcomp inn"
 
-#: pppstatdlg.cpp:158
+#: pppstatdlg.cpp:160
 msgid "vjcomp out"
 msgstr "vjcomp út"
 
-#: pppstatdlg.cpp:160
+#: pppstatdlg.cpp:162
 msgid "vjunc in"
 msgstr "vjunc inn"
 
-#: pppstatdlg.cpp:161
+#: pppstatdlg.cpp:163
 msgid "vjunc out"
 msgstr "vjunc út"
 
-#: pppstatdlg.cpp:163
+#: pppstatdlg.cpp:165
 msgid "vjerr"
 msgstr "vjerr"
 
-#: pppstatdlg.cpp:164
+#: pppstatdlg.cpp:166
 msgid "non-vj"
 msgstr "non-vj"
 
-#: pppstatdlg.cpp:284
+#: pppstatdlg.cpp:285
 #, c-format
 msgid "%d kb/s"
 msgstr "%d kb/s"
 
-#: pppstatdlg.cpp:431 pppstatdlg.cpp:436
+#: pppstatdlg.cpp:432 pppstatdlg.cpp:437
 msgid "unavailable"
 msgstr "ónothæft"
 
-#: miniterm.cpp:43
+#: miniterm.cpp:44
 msgid "Kppp Mini-Terminal"
 msgstr "Kppp SmáSkjárinn"
 
-#: miniterm.cpp:48
+#: miniterm.cpp:50
 msgid "&Reset Modem"
 msgstr "Endu&rstilla módem"
 
-#: miniterm.cpp:51
+#: miniterm.cpp:53
 msgid ""
 "MiniTerm - A terminal emulation for KPPP\n"
 "\n"
@@ -1807,27 +1803,27 @@ msgstr ""
 "Þetta forrit er gefið út samkvæmt GNU GPL\n"
 "höfundarréttinum (GNU General Public License)."
 
-#: miniterm.cpp:61
+#: miniterm.cpp:63
 msgid "&Modem"
 msgstr "&Módem"
 
-#: miniterm.cpp:105
+#: miniterm.cpp:107
 msgid "Close MiniTerm"
 msgstr "Loka SmjáSkjánum"
 
-#: miniterm.cpp:110
+#: miniterm.cpp:112
 msgid "Reset Modem"
 msgstr "Endurstilla módem"
 
-#: miniterm.cpp:136
+#: miniterm.cpp:138
 msgid "Initializing Modem"
 msgstr "Frumstilli módem"
 
-#: miniterm.cpp:205
+#: miniterm.cpp:207
 msgid "Hanging up ..."
 msgstr "Legg á... "
 
-#: miniterm.cpp:219
+#: miniterm.cpp:221
 msgid "Resetting Modem"
 msgstr "Endurstilli módem"
 
@@ -1875,38 +1871,31 @@ msgstr "(Engin)"
 msgid "kppp: no rulefile specified\n"
 msgstr "Kppp: Engin regluskrá tilgreind\n"
 
-
 #: ruleset.cpp:550
 #, c-format
 msgid "kppp: rulefile \"%s\" not found\n"
 msgstr "Kppp: Regluskrá \"%s\" fannst ekki\n"
 
-
 #: ruleset.cpp:555
 msgid "kppp: rulefiles must have the extension \".rst\"\n"
 msgstr "Kppp: Regluskrár verða að hafa endinguna \".rst\"\n"
 
-
 #: ruleset.cpp:564
 msgid "kppp: error parsing the ruleset\n"
 msgstr "Kppp: Villa við lestur á reglum\n"
-
 
 #: ruleset.cpp:569
 #, c-format
 msgid "kppp: parse error in line %d\n"
 msgstr "Kppp: Lestrarvilla í línu %d\n"
 
-
 #: ruleset.cpp:575
 msgid "kppp: rulefile does not contain a default rule\n"
 msgstr "Kppp: Regluskrá hefur ekki sjálfgefna reglu\n"
 
-
 #: ruleset.cpp:580
 msgid "kppp: rulefile does not contain a \"name=...\" line\n"
 msgstr "Kppp: Regluskrá hefur enga \"name=...\" línu\n"
-
 
 #: ruleset.cpp:584
 msgid "kppp: rulefile is ok\n"
@@ -1916,7 +1905,7 @@ msgstr "Kppp: Regluskrá er í lagi\n"
 msgid "Minimize"
 msgstr "Smækka"
 
-#: runtests.cpp:355
+#: runtests.cpp:383
 msgid ""
 "You´re not allowed to dial out with kppp.\n"
 "Contact your system administrator."
@@ -1924,7 +1913,7 @@ msgstr ""
 "Þú hefur ekki leyfi til að hringja út með Kppp.\n"
 "Hafðu samband við kerfisstjóra."
 
-#: runtests.cpp:372
+#: runtests.cpp:400
 msgid ""
 "This kernel has no PPP support, neither\n"
 "compiled in nor via the kernel module\n"
@@ -1944,8 +1933,7 @@ msgstr ""
 "eða\n"
 "  * Bættu PPP við kjarnann\n"
 
-
-#: runtests.cpp:394
+#: runtests.cpp:422
 msgid ""
 "Cannot find the pppd-daemon!\n"
 "\n"
@@ -1957,8 +1945,7 @@ msgstr ""
 "Athugaðu hvort þú sért með hann á\n"
 "á þessari vél og að slóðin sé rétt.\n"
 
-
-#: runtests.cpp:406
+#: runtests.cpp:434
 msgid ""
 "You do not have the permission\n"
 "to start pppd!\n"
@@ -1972,8 +1959,7 @@ msgstr ""
 "Hafðu samband við kerfisstjórann\n"
 "og fáðu aðgang að pppd."
 
-
-#: runtests.cpp:417 runtests.cpp:432
+#: runtests.cpp:445 runtests.cpp:460
 msgid ""
 "pppd is not properly installed!\n"
 "\n"
@@ -1987,8 +1973,7 @@ msgstr ""
 "settan á.  Hafðu samband við kerfisstjóra\n"
 "til að laga þetta."
 
-
-#: runtests.cpp:466
+#: runtests.cpp:494
 msgid ""
 "kppp has detected a 'lock' option in /etc/ppp/options.\n"
 "\n"
@@ -1998,12 +1983,11 @@ msgid ""
 msgstr ""
 "Kppp fann 'lock' læsistillingu í /etc/ppp/options.\n"
 "\n"
-"Þú verður að láta fjarlægja þetta því Kppp sér sjálft um "
-"allar tækjalæsingar.\n"
+"Þú verður að láta fjarlægja þetta því Kppp sér sjálft um allar "
+"tækjalæsingar.\n"
 "Hafðu samband við kerfisstjóra."
 
-
-#: runtests.cpp:490
+#: runtests.cpp:518
 msgid ""
 "is missing!\n"
 "\n"
@@ -2031,8 +2015,8 @@ msgid ""
 "connection.\n"
 "Please use the terminal-based login to verify"
 msgstr ""
-"Þú ræstir ppp púkann áður en þjónninn var tilbúinn með PPP tengingu "
-"handa þér.\n"
+"Þú ræstir ppp púkann áður en þjónninn var tilbúinn með PPP tengingu handa "
+"þér.\n"
 "Tengdu með skjáhermisaðferðinni til að staðfesta þetta."
 
 #: ppplog.cpp:141
@@ -2048,8 +2032,8 @@ msgid ""
 "You shouldn't pass 'lock' as an argument to pppd. Check /etc/ppp/options and "
 "~/.ppprc"
 msgstr ""
-"Þú ættir ekki að senda stillinguna 'lock' á ppp púkann. Skoðaðu /etc/ppp/options og"
-"~/.ppprc"
+"Þú ættir ekki að senda stillinguna 'lock' á ppp púkann. Skoðaðu "
+"/etc/ppp/options og~/.ppprc"
 
 #: ppplog.cpp:151
 msgid ""
@@ -2095,7 +2079,7 @@ msgstr ""
 "KPPP gat ekki útbúið PPP færslu.  Það eru líklegt að\n"
 "ppp púkinn hafi verið ræstur án \"debug\" möguleikans.\n"
 "\n"
-"Án þessa möguleika er mjög erfitt að finna út hverskonar\n" 
+"Án þessa möguleika er mjög erfitt að finna út hverskonar\n"
 "PPP vandamál er um að ræða og því er betra að nota sér þetta.\n"
 "\n"
 "Á ég að stilla þetta fyrir þig núna?"
@@ -2109,7 +2093,7 @@ msgid ""
 msgstr ""
 "\"debug\" möguleikanum hefur nú verið bætt við.\n"
 "Þú ættir því að prófa aftur að tengja.  Ef það\n"
-"mistekst aftur, þá færðu færslu í PPP færsluskrá\n" 
+"mistekst aftur, þá færðu færslu í PPP færsluskrá\n"
 "sem gerir þér kleyft að athuga nánar hvað gerðist."
 
 #: ppplog.cpp:232
@@ -2129,14 +2113,15 @@ msgid "Select modem type..."
 msgstr "Veldu gerð módems..."
 
 #: modemdb.cpp:48
+#, fuzzy
 msgid ""
-"To setup your modem, first choose it´s vendor in the list to the left, and "
+"To setup your modem, first choose its vendor in the list to the left, and "
 "then select the model from the right list. If you don´t know which modem you "
-"have,you can try out one of the \"Generic\" modems."
+"have, you can try out one of the \"Generic\" modems."
 msgstr ""
-"Til að stilla módemið, veldu fyrst framleiðanda á listanum til vinstri og"
-"síðan módemið sjálft á listanum til hægri.  Ef þú veist ekki hvernig módem"
-"þú ert með, veldu þá \"Venjulegt\" módem."
+"Til að stilla módemið, veldu fyrst framleiðanda á listanum til vinstri "
+"ogsíðan módemið sjálft á listanum til hægri.  Ef þú veist ekki hvernig "
+"módemþú ert með, veldu þá \"Venjulegt\" módem."
 
 #: modemdb.cpp:151 modemdb.cpp:153 modemdb.cpp:223 modemdb.cpp:238
 msgid "<Generic>"
@@ -2145,4 +2130,3 @@ msgstr "<Venjulegt>"
 #: modemdb.cpp:218
 msgid "Hayes(tm) compatible modem"
 msgstr "Hayes(tm) staðlað módem"
-

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp 0.9.6\n"
-"POT-Creation-Date: 1999-02-01 02:02+0100\n"
+"POT-Creation-Date: 1999-02-03 01:59+0100\n"
 "PO-Revision-Date: 1998-06-12 08:32 MET DST\n"
 "Last-Translator: Wang Jian <lark@linux.ustc.edu.cn>\n"
 "Language-Team: zh_CN ( gb2312)\n"
@@ -14,25 +14,25 @@ msgstr ""
 msgid "Account Setup"
 msgstr "帐号设置"
 
-#: accounts.cpp:64
+#: accounts.cpp:66
 msgid "Edit..."
 msgstr "编辑..."
 
-#: accounts.cpp:66
+#: accounts.cpp:68
 msgid "Allows you to modify the selected account"
 msgstr ""
 
-#: accounts.cpp:75
+#: accounts.cpp:77
 msgid "New..."
 msgstr "新的..."
 
-#: accounts.cpp:79
+#: accounts.cpp:81
 msgid ""
 "Create a new dialup connection\n"
 "to the internet"
 msgstr ""
 
-#: accounts.cpp:87
+#: accounts.cpp:89
 msgid ""
 "Makes a copy of the selected account. All\n"
 "settings of the selected account are copied\n"
@@ -40,18 +40,18 @@ msgid ""
 "needs"
 msgstr ""
 
-#: accounts.cpp:97
+#: accounts.cpp:99
 msgid ""
 "Deletes the selected account\n"
 "\n"
 "<red><b>Use with care!"
 msgstr ""
 
-#: accounts.cpp:106
+#: accounts.cpp:108
 msgid "Phone Costs:"
 msgstr "电话费:"
 
-#: accounts.cpp:118
+#: accounts.cpp:121
 msgid ""
 "This shows the accumulated phone costs\n"
 "for the selected account.\n"
@@ -61,11 +61,11 @@ msgid ""
 "of the phone costs of all your accounts!"
 msgstr ""
 
-#: accounts.cpp:125 conwindow.cpp:54
+#: accounts.cpp:128 conwindow.cpp:54
 msgid "Volume:"
 msgstr "音量:"
 
-#: accounts.cpp:136
+#: accounts.cpp:140
 msgid ""
 "This shows the number of bytes transferred\n"
 "for the selected account (not for all of your\n"
@@ -75,33 +75,33 @@ msgid ""
 "<link #volaccounting>More on volume accounting</link>"
 msgstr ""
 
-#: accounts.cpp:148
+#: accounts.cpp:152
 msgid "Reset Costs"
 msgstr "复位话费"
 
-#: accounts.cpp:154
+#: accounts.cpp:158
 msgid "View Logs"
 msgstr "查看记录"
 
-#: accounts.cpp:220
+#: accounts.cpp:224
 msgid "Reset Total"
 msgstr "完全复位"
 
-#: accounts.cpp:221
+#: accounts.cpp:225
 msgid ""
 "Are you sure you want to reset the accumulated\n"
 "telephone costs for the selected account to zero?"
 msgstr "你确定要把选中的帐号的累计话费复位到零 ?"
 
-#: accounts.cpp:250 accounts.cpp:271
+#: accounts.cpp:259 accounts.cpp:280
 msgid "Maximum number of accounts reached."
 msgstr "达到了最大帐号数."
 
-#: accounts.cpp:277
+#: accounts.cpp:286
 msgid "No account selected."
 msgstr "没有选中的帐号."
 
-#: accounts.cpp:292
+#: accounts.cpp:301
 #, c-format
 msgid ""
 "Are you sure you want to delete\n"
@@ -110,43 +110,43 @@ msgstr ""
 "你确定要删除帐号\n"
 "\"%s\"?"
 
-#: accounts.cpp:297
+#: accounts.cpp:306
 msgid "Confirm"
 msgstr "确认"
 
-#: accounts.cpp:318
+#: accounts.cpp:328
 msgid "New Account"
 msgstr "新建帐号"
 
-#: accounts.cpp:321
+#: accounts.cpp:331
 msgid "Edit Account: "
 msgstr "编辑帐号: "
 
-#: accounts.cpp:339
+#: accounts.cpp:348
 msgid "Dial"
 msgstr "拨号"
 
-#: accounts.cpp:340
+#: accounts.cpp:349
 msgid "IP"
 msgstr "IP"
 
-#: accounts.cpp:341
+#: accounts.cpp:350
 msgid "DNS"
 msgstr "DNS"
 
-#: accounts.cpp:342
+#: accounts.cpp:351
 msgid "Gateway"
 msgstr "网关"
 
-#: accounts.cpp:343
+#: accounts.cpp:352
 msgid "Login Script"
 msgstr "登录脚本"
 
-#: accounts.cpp:344
+#: accounts.cpp:353
 msgid "Accounting"
 msgstr "记帐"
 
-#: accounts.cpp:363
+#: accounts.cpp:372
 #, fuzzy
 msgid ""
 "You must enter an unique\n"
@@ -155,29 +155,29 @@ msgstr ""
 "你必须输入一个唯一的\n"
 "帐号名"
 
-#: accounts.cpp:368
+#: accounts.cpp:377
 #, fuzzy
 msgid "Login script has unbalanced loop Start/End"
 msgstr "登录脚本有不配对的循环 开始/结束"
 
-#: connect.cpp:92 connect.cpp:190 main.cpp:1054
+#: connect.cpp:92 connect.cpp:190 main.cpp:1059
 msgid "Connecting to: "
 msgstr "正在连接到: "
 
-#: connect.cpp:101 connect.cpp:205 miniterm.cpp:146 modeminfo.cpp:54
-#: modeminfo.cpp:132
+#: connect.cpp:101 connect.cpp:205 miniterm.cpp:148 modeminfo.cpp:56
+#: modeminfo.cpp:135
 msgid "Sorry, can't create modem lock file."
 msgstr "抱歉 , 不能建立调制解调器的锁文件."
 
-#: connect.cpp:106 connect.cpp:163 modeminfo.cpp:59
+#: connect.cpp:106 connect.cpp:163 modeminfo.cpp:61
 msgid "Looking for Modem ..."
 msgstr "正在寻找调制解调器..."
 
-#: connect.cpp:115 debug.cpp:80 main.cpp:1067
+#: connect.cpp:115 debug.cpp:80 main.cpp:1072
 msgid "Log"
 msgstr "记录"
 
-#: connect.cpp:199 miniterm.cpp:141 modeminfo.cpp:126
+#: connect.cpp:199 miniterm.cpp:143 modeminfo.cpp:129
 msgid "Sorry, modem device is locked."
 msgstr "抱歉, 调制解调器设备被锁住了."
 
@@ -294,7 +294,7 @@ msgstr "找到: "
 msgid "Looping: "
 msgstr "循环: "
 
-#: connect.cpp:872 modeminfo.cpp:224
+#: connect.cpp:872 modeminfo.cpp:227
 msgid "One Moment Please ..."
 msgstr "请稍等 ..."
 
@@ -705,7 +705,7 @@ msgid ""
 "<i>kppp</i> will give up and kill pppd."
 msgstr ""
 
-#: general.cpp:74 general.cpp:400 general.cpp:489
+#: general.cpp:74 general.cpp:401 general.cpp:490
 msgid "Seconds"
 msgstr "秒"
 
@@ -892,22 +892,22 @@ msgstr ""
 msgid "Modem Timeout:"
 msgstr "调制解调器超时:"
 
-#: general.cpp:404
+#: general.cpp:405
 msgid ""
 "This specifies how long <i>kppp</i> waits for a\n"
 "<i>CONNECT</i> response from your modem. The\n"
 "recommended value is 30 seconds."
 msgstr ""
 
-#: general.cpp:465 main.cpp:724
+#: general.cpp:466 main.cpp:729
 msgid "Modem"
 msgstr "调制解调器"
 
-#: general.cpp:476
+#: general.cpp:477
 msgid "Busy Wait:"
 msgstr "忙等待:"
 
-#: general.cpp:494
+#: general.cpp:495
 msgid ""
 "Specifies the number of seconds to wait before\n"
 "redial if all dialed numbers are busy. This is\n"
@@ -918,12 +918,12 @@ msgid ""
 "this unless you need to."
 msgstr ""
 
-#: general.cpp:508
+#: general.cpp:509
 #, fuzzy
 msgid "Modem volume"
 msgstr "调制解调器锁文件:"
 
-#: general.cpp:520
+#: general.cpp:521
 msgid ""
 "Most modems have a speaker which makes\n"
 "a lot of noise when dialing. Here you can\n"
@@ -934,11 +934,11 @@ msgid ""
 "you must modify the modem volume command"
 msgstr ""
 
-#: general.cpp:532
+#: general.cpp:533
 msgid "Modem Asserts CD Line."
 msgstr "调制解调器声明 CD 线路."
 
-#: general.cpp:540
+#: general.cpp:541
 msgid ""
 "This controls how <i>kppp</i> detects that the modem\n"
 "is not responding. Unless you are having\n"
@@ -947,21 +947,21 @@ msgid ""
 "<b>Default</b>: off"
 msgstr ""
 
-#: general.cpp:553
+#: general.cpp:554
 msgid "Modem Commands"
 msgstr "调制解调器命令"
 
-#: general.cpp:555
+#: general.cpp:556
 msgid ""
 "Allows you to change the AT command for\n"
 "your modem."
 msgstr ""
 
-#: general.cpp:558
+#: general.cpp:559
 msgid "Query Modem"
 msgstr "查询调制解调器"
 
-#: general.cpp:560
+#: general.cpp:561
 msgid ""
 "Most modems support the ATI command set to\n"
 "find out vendor and revision of your modem.\n"
@@ -971,34 +971,34 @@ msgid ""
 "you setup the modem"
 msgstr ""
 
-#: general.cpp:567
+#: general.cpp:568
 msgid "Terminal"
 msgstr "终端"
 
-#: general.cpp:569
+#: general.cpp:570
 msgid ""
 "Opens the built-in terminal program. You\n"
 "can use this if you want to play around\n"
 "with your modem's AT command set"
 msgstr ""
 
-#: general.cpp:633
+#: general.cpp:634
 msgid "Throughput graph"
 msgstr ""
 
-#: general.cpp:642
+#: general.cpp:643
 msgid "Background color"
 msgstr ""
 
-#: general.cpp:649
+#: general.cpp:650
 msgid "Text color"
 msgstr ""
 
-#: general.cpp:656
+#: general.cpp:657
 msgid "Input bytes color"
 msgstr ""
 
-#: general.cpp:663
+#: general.cpp:664
 msgid "Output bytes color"
 msgstr ""
 
@@ -1031,14 +1031,14 @@ msgid ""
 "click a mouse button or a hit a key.\n"
 msgstr ""
 
-#: main.cpp:405
+#: main.cpp:409
 #, c-format
 msgid ""
 "kppp can't create or read from\n"
 "%s."
 msgstr ""
 
-#: main.cpp:435
+#: main.cpp:439
 #, c-format
 msgid ""
 "kppp has detected a %s file.\n"
@@ -1050,19 +1050,19 @@ msgid ""
 "delete the pid file, and restart kppp."
 msgstr ""
 
-#: main.cpp:441
+#: main.cpp:445
 msgid "Exit"
 msgstr ""
 
-#: main.cpp:504
+#: main.cpp:508
 msgid "Connect to: "
 msgstr "连接到: "
 
-#: main.cpp:516
+#: main.cpp:520
 msgid "Login ID:"
 msgstr "登录 ID:"
 
-#: main.cpp:529
+#: main.cpp:533
 msgid ""
 "Type in the username that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1073,11 +1073,11 @@ msgid ""
 "<i>myusername</i> is not the same as <i>MyUserName</i>!"
 msgstr ""
 
-#: main.cpp:538
+#: main.cpp:542
 msgid "Password:"
 msgstr "密码:"
 
-#: main.cpp:552
+#: main.cpp:556
 msgid ""
 "Type in the password that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1088,11 +1088,11 @@ msgid ""
 "<i>mypassword</i> is not the same as <i>MyPassword</i>!"
 msgstr ""
 
-#: main.cpp:566
+#: main.cpp:570
 msgid "Show Log Window"
 msgstr "显示记录窗口"
 
-#: main.cpp:573
+#: main.cpp:577
 msgid ""
 "This controls whether a log window is shown.\n"
 "A log window shows the communication between\n"
@@ -1103,15 +1103,15 @@ msgid ""
 "problems"
 msgstr ""
 
-#: main.cpp:596
+#: main.cpp:600
 msgid "Setup"
 msgstr "设置"
 
-#: main.cpp:612
+#: main.cpp:616
 msgid "Connect"
 msgstr "连接"
 
-#: main.cpp:692
+#: main.cpp:696
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -1120,47 +1120,47 @@ msgstr ""
 "没有这个帐号:\n"
 "%s"
 
-#: main.cpp:706
+#: main.cpp:711
 msgid "kppp Configuration"
 msgstr "kppp 配置"
 
-#: main.cpp:722
+#: main.cpp:727
 msgid "Accounts"
 msgstr "帐号"
 
-#: main.cpp:723
+#: main.cpp:728
 msgid "Device"
 msgstr "设备"
 
-#: main.cpp:725
+#: main.cpp:730
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:726
+#: main.cpp:731
 msgid "Graph"
 msgstr ""
 
-#: main.cpp:870
+#: main.cpp:875
 msgid "Timeout expired while waiting for the PPP interface to come up!"
 msgstr ""
 
-#: main.cpp:875
+#: main.cpp:880
 msgid "The pppd daemon died unexpectedly!"
 msgstr ""
 
-#: main.cpp:883
+#: main.cpp:888
 #, fuzzy
 msgid "Details..."
 msgstr "详细资料"
 
-#: main.cpp:915
+#: main.cpp:920
 msgid ""
 "Sorry. kppp's helper process just died.\n"
 "\n"
 "Since a further execution would be pointless, kppp will shut down right now."
 msgstr ""
 
-#: main.cpp:949
+#: main.cpp:954
 #, fuzzy, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1178,7 +1178,7 @@ msgstr ""
 "调整好 pppd 的执行文件的位置.\n"
 "谢谢"
 
-#: main.cpp:964
+#: main.cpp:969
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1190,7 +1190,7 @@ msgstr ""
 " %s\n"
 "请确定你已经把 kppp 设成 setuid 的 , 并且 pppd 是可以执行的."
 
-#: main.cpp:979
+#: main.cpp:984
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1209,7 +1209,7 @@ msgstr ""
 "表中调整好调制解调器设备的位置.\n"
 "谢谢"
 
-#: main.cpp:999
+#: main.cpp:1004
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1218,7 +1218,7 @@ msgstr ""
 "你已经选中了 PAP 身份验证方法.这需要\n"
 "你提供一个用户名和密码!"
 
-#: main.cpp:1008
+#: main.cpp:1013
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1227,7 +1227,7 @@ msgstr ""
 "不能建立 PAP 身份验证文件\n"
 "\"%s\""
 
-#: main.cpp:1025
+#: main.cpp:1030
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -1236,7 +1236,7 @@ msgstr ""
 "你已经选中了 CHAP 身份验证方法.这需要\n"
 "你提供一个用户名和密码!"
 
-#: main.cpp:1034
+#: main.cpp:1039
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1245,20 +1245,20 @@ msgstr ""
 "不能建立 CHAP 身份验证文件\n"
 "\"%s\""
 
-#: main.cpp:1046
+#: main.cpp:1051
 #, fuzzy
 msgid "You must specify a telephone number!"
 msgstr "你必须指定一个电话号码 !\n"
 
-#: main.cpp:1133
+#: main.cpp:1138
 msgid "Quit kPPP?"
 msgstr "退出 kPPP?"
 
-#: main.cpp:1134
+#: main.cpp:1139
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "退出 kPPP 将结束你的 PPP 会话."
 
-#: main.cpp:1179
+#: main.cpp:1184
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
@@ -1300,94 +1300,94 @@ msgstr "抱歉,调制解调器没有准备好."
 msgid "Unknown speed"
 msgstr "未知速度"
 
-#: modemcmds.cpp:43
+#: modemcmds.cpp:44
 msgid "Edit Modem Commands"
 msgstr "编辑调制解调器命令"
 
-#: modemcmds.cpp:70
+#: modemcmds.cpp:72
 #, fuzzy
 msgid "Pre-Init Delay (sec/100):"
 msgstr "初始化延迟 (秒/100):"
 
-#: modemcmds.cpp:75
+#: modemcmds.cpp:77
 msgid "Initialization String:"
 msgstr "初始化字符串:"
 
-#: modemcmds.cpp:93
+#: modemcmds.cpp:95
 #, fuzzy
 msgid "Post-Init Delay (sec/100):"
 msgstr "初始化延迟 (秒/100):"
 
-#: modemcmds.cpp:98
+#: modemcmds.cpp:100
 msgid "Init Response:"
 msgstr "初始化响应:"
 
-#: modemcmds.cpp:105
+#: modemcmds.cpp:107
 msgid "Dial String:"
 msgstr "拨号字符串:"
 
-#: modemcmds.cpp:112
+#: modemcmds.cpp:114
 msgid "Connect Response:"
 msgstr "连接响应:"
 
-#: modemcmds.cpp:119
+#: modemcmds.cpp:121
 msgid "Busy Response:"
 msgstr "忙响应:"
 
-#: modemcmds.cpp:126
+#: modemcmds.cpp:128
 #, fuzzy
 msgid "No Carrier Response:"
 msgstr "没有载波响应:"
 
-#: modemcmds.cpp:133
+#: modemcmds.cpp:135
 msgid "No Dialtone Response:"
 msgstr "没有拨号音响应:"
 
-#: modemcmds.cpp:140
+#: modemcmds.cpp:142
 msgid "Hangup String:"
 msgstr "挂起字符串:"
 
-#: modemcmds.cpp:147
+#: modemcmds.cpp:149
 msgid "Hangup Response:"
 msgstr "挂起响应:"
 
-#: modemcmds.cpp:154
+#: modemcmds.cpp:156
 msgid "Answer String:"
 msgstr "应答:"
 
-#: modemcmds.cpp:161
+#: modemcmds.cpp:163
 msgid "Ring Response:"
 msgstr "振铃响应:"
 
-#: modemcmds.cpp:168
+#: modemcmds.cpp:170
 msgid "Answer Response:"
 msgstr "应答响应:"
 
-#: modemcmds.cpp:175
+#: modemcmds.cpp:177
 msgid "Escape String:"
 msgstr "换码字符串:"
 
-#: modemcmds.cpp:182
+#: modemcmds.cpp:184
 msgid "Escape Response:"
 msgstr "换码响应:"
 
-#: modemcmds.cpp:201
+#: modemcmds.cpp:203
 msgid "Guard Time (sec/50):"
 msgstr "守护时间 (秒/50):"
 
-#: modemcmds.cpp:205
+#: modemcmds.cpp:207
 msgid "Volume off/low/high"
 msgstr ""
 
-#: pppdargs.cpp:37
+#: pppdargs.cpp:38
 msgid "Customize pppd Arguments"
 msgstr "自定义 pppd 参数"
 
-#: pppdargs.cpp:49
+#: pppdargs.cpp:51
 msgid "Argument:"
 msgstr "参数:"
 
-#: pppdargs.cpp:78
+#: pppdargs.cpp:80
 #, fuzzy
 msgid "Defaults"
 msgstr "详细资料"
@@ -1403,96 +1403,96 @@ msgid ""
 "chown {YourUsername} .kde/share/config/kppprc"
 msgstr ""
 
-#: modeminfo.cpp:38
+#: modeminfo.cpp:39
 msgid "ATI Query"
 msgstr "ATI 查询"
 
-#: modeminfo.cpp:114
+#: modeminfo.cpp:117
 msgid "Modem Query timed out."
 msgstr "调制解调器查询超时."
 
-#: miniterm.cpp:162 miniterm.cpp:226 modeminfo.cpp:142
+#: miniterm.cpp:164 miniterm.cpp:228 modeminfo.cpp:145
 msgid "Modem Ready"
 msgstr "调制解调器准备好了"
 
-#: modeminfo.cpp:246
+#: modeminfo.cpp:249
 msgid "Modem Query Results"
 msgstr "调制解调器查询结果"
 
-#: pppstatdlg.cpp:64
+#: pppstatdlg.cpp:65
 msgid "kppp Statistics"
 msgstr "kppp 统计数据"
 
-#: pppstatdlg.cpp:69
+#: pppstatdlg.cpp:71
 msgid "Statistics"
 msgstr "统计数据"
 
-#: pppstatdlg.cpp:113
+#: pppstatdlg.cpp:115
 msgid "Local Addr:"
 msgstr "本地地址:"
 
-#: pppstatdlg.cpp:119
+#: pppstatdlg.cpp:121
 msgid "Remote Addr:"
 msgstr "远端地址:"
 
-#: pppstatdlg.cpp:151
+#: pppstatdlg.cpp:153
 msgid "bytes in"
 msgstr "流入字节"
 
-#: pppstatdlg.cpp:152
+#: pppstatdlg.cpp:154
 msgid "bytes out"
 msgstr "流出字节"
 
-#: pppstatdlg.cpp:154
+#: pppstatdlg.cpp:156
 msgid "packets in"
 msgstr "流入数据包"
 
-#: pppstatdlg.cpp:155
+#: pppstatdlg.cpp:157
 msgid "packets out"
 msgstr "流出数据包"
 
-#: pppstatdlg.cpp:157
+#: pppstatdlg.cpp:159
 msgid "vjcomp in"
 msgstr "流入 vjcomp"
 
-#: pppstatdlg.cpp:158
+#: pppstatdlg.cpp:160
 msgid "vjcomp out"
 msgstr "流出 vjcomp"
 
-#: pppstatdlg.cpp:160
+#: pppstatdlg.cpp:162
 msgid "vjunc in"
 msgstr "流入 vjunc"
 
-#: pppstatdlg.cpp:161
+#: pppstatdlg.cpp:163
 msgid "vjunc out"
 msgstr "流出 vjunc"
 
-#: pppstatdlg.cpp:163
+#: pppstatdlg.cpp:165
 msgid "vjerr"
 msgstr "vjerr"
 
-#: pppstatdlg.cpp:164
+#: pppstatdlg.cpp:166
 msgid "non-vj"
 msgstr "非vj"
 
-#: pppstatdlg.cpp:284
+#: pppstatdlg.cpp:285
 #, c-format
 msgid "%d kb/s"
 msgstr ""
 
-#: pppstatdlg.cpp:431 pppstatdlg.cpp:436
+#: pppstatdlg.cpp:432 pppstatdlg.cpp:437
 msgid "unavailable"
 msgstr "无用的"
 
-#: miniterm.cpp:43
+#: miniterm.cpp:44
 msgid "Kppp Mini-Terminal"
 msgstr "Kppp 微型终端"
 
-#: miniterm.cpp:48
+#: miniterm.cpp:50
 msgid "&Reset Modem"
 msgstr "复位调制解调器[&R]"
 
-#: miniterm.cpp:51
+#: miniterm.cpp:53
 msgid ""
 "MiniTerm - A terminal emulation for KPPP\n"
 "\n"
@@ -1504,28 +1504,28 @@ msgid ""
 "(GNU General Public License)"
 msgstr ""
 
-#: miniterm.cpp:61
+#: miniterm.cpp:63
 msgid "&Modem"
 msgstr "调制解调器[&M]"
 
-#: miniterm.cpp:105
+#: miniterm.cpp:107
 #, fuzzy
 msgid "Close MiniTerm"
 msgstr "退出微型终端"
 
-#: miniterm.cpp:110
+#: miniterm.cpp:112
 msgid "Reset Modem"
 msgstr "复位调制解调器"
 
-#: miniterm.cpp:136
+#: miniterm.cpp:138
 msgid "Initializing Modem"
 msgstr "初始化调制解调器"
 
-#: miniterm.cpp:205
+#: miniterm.cpp:207
 msgid "Hanging up ..."
 msgstr "挂起 ..."
 
-#: miniterm.cpp:219
+#: miniterm.cpp:221
 msgid "Resetting Modem"
 msgstr "复位调制解调器"
 
@@ -1607,7 +1607,7 @@ msgstr "kppp: 规则文件是对的\n"
 msgid "Minimize"
 msgstr "最小化"
 
-#: runtests.cpp:355
+#: runtests.cpp:383
 msgid ""
 "You磖e not allowed to dial out with kppp.\n"
 "Contact your system administrator."
@@ -1615,7 +1615,7 @@ msgstr ""
 "你不被允许使用 kppp 拨号出去.\n"
 "和你的系统管理员联系."
 
-#: runtests.cpp:372
+#: runtests.cpp:400
 msgid ""
 "This kernel has no PPP support, neither\n"
 "compiled in nor via the kernel module\n"
@@ -1627,7 +1627,7 @@ msgid ""
 "  * install a kernel with PPP support\n"
 msgstr ""
 
-#: runtests.cpp:394
+#: runtests.cpp:422
 msgid ""
 "Cannot find the pppd-daemon!\n"
 "\n"
@@ -1639,7 +1639,7 @@ msgstr ""
 "请确定系统中安装了 pppd , 并且你输入\n"
 "正确的路径.\n"
 
-#: runtests.cpp:406
+#: runtests.cpp:434
 msgid ""
 "You do not have the permission\n"
 "to start pppd!\n"
@@ -1652,7 +1652,7 @@ msgstr ""
 "请和你的系统管理员联系 , 并得到\n"
 "使用 pppd 的权限."
 
-#: runtests.cpp:417 runtests.cpp:432
+#: runtests.cpp:445 runtests.cpp:460
 msgid ""
 "pppd is not properly installed!\n"
 "\n"
@@ -1665,7 +1665,7 @@ msgstr ""
 "pppd 可执行文件必须安装成 SUID\n"
 "程序. 请和你的系统管理员联系."
 
-#: runtests.cpp:466
+#: runtests.cpp:494
 msgid ""
 "kppp has detected a 'lock' option in /etc/ppp/options.\n"
 "\n"
@@ -1678,7 +1678,7 @@ msgstr ""
 "因为 kppp 自己会处理设备锁定 , 这个选项需要被去掉.\n"
 "请和你的系统管理员联系."
 
-#: runtests.cpp:490
+#: runtests.cpp:518
 #, fuzzy
 msgid ""
 "is missing!\n"
