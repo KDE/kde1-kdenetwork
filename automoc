@@ -4,7 +4,10 @@
 # without parameters, automoc works recursively on all Makefile.in in
 # and below the current subdirectory. When called with parameters,
 # only these Makefile.in are changed.
- 
+#
+# 1998-07-23  Harri Porten  <porten@tu-harburg.de>
+#       * small bugfixes for MOCSOURCES
+	
 use Cwd;
 use File::Find;
 
@@ -79,12 +82,14 @@ sub process_makefile()
 	$libobjectline = $programname . "_la_OBJECTS";
 	while( <FILEIN> )
 	  {
-		if( /(.*_META_SOURCES\s*=\s*)(USE_AUTOMOC)/ )
+		if( /(.*_METASOURCES\s*=\s*)(USE_AUTOMOC)/ )
 		  {
 			print FILEOUT "$1 ";
 			foreach $mocsource (@mocsources) {
+			  chomp $mocsource;
 			  print FILEOUT $mocsource . " ";
 			}
+			print FILEOUT "\n";
 		  }
 		elsif( /^$objectline/ or /^$libobjectline/ ) # look for both programs and libraries
 		  {
@@ -133,6 +138,7 @@ sub process_makefile()
 	$new = $filename;
 	$old = $filename . ".tmp";
 	rename $old, $new; 
+	undef @mocsources;
         undef @mocnames;
   }
 
