@@ -157,6 +157,18 @@ msgid ""
 "(See README files and copyright.h).\n"
 "My own code is based on the GPL"
 msgstr ""
+"KArchie ver. %s\n"
+"\n"
+"por Jörg Habenicht <j.habenicht@europemail.com>\n"
+"\n"
+"baseado no trabalho de:\n"
+"  - cliente archie prospero por\n"
+"      Clifford Neuman e\n"
+"      Brendan Kehoe (brendan@cygnus.com)\n"
+"  - e xarchie por\n"
+"      George Ferguson (ferguson@cs.rochester.edu)\n"
+"(Veja arquivos README e copyright.h).\n"
+"Meu próprio código é baseado no GPL"
 
 #: KAMenu.cpp:190
 msgid "&Settings"
@@ -172,11 +184,11 @@ msgstr "C&lassificar"
 
 #: KAQuery.cpp:180
 msgid "Query setup"
-msgstr ""
+msgstr "Configuração da consulta"
 
 #: KAQuery.cpp:289
 msgid "Query aborted"
-msgstr ""
+msgstr "Consulta abortada"
 
 #: KAQuery.cpp:296 KArchie.cpp:793
 msgid "Success"
@@ -184,282 +196,267 @@ msgstr "Sucesso"
 
 #: KAQuery.cpp:297
 msgid "Port unknown"
-msgstr ""
+msgstr "Porta desconhecida"
 
 #: KAQuery.cpp:298
 msgid "Can't open local UDP port"
-msgstr ""
+msgstr "Impossível abrir porta UDP local"
 
 #: KAQuery.cpp:299
 msgid "Can't resolve hostname"
-msgstr ""
+msgstr "Impossível resolver nome do host"
 
 #: KAQuery.cpp:300
 msgid "Didn't send entire message"
-msgstr ""
+msgstr "A mensagem não foi mandada inteira"
 
 #: KAQuery.cpp:301
 msgid "Timed out"
-msgstr ""
+msgstr "Tempo excessivo"
 
 #: KAQuery.cpp:302
 msgid "Recvfrom failed"
-msgstr ""
+msgstr "Recebimento de dados falhou"
 
 #: KAQuery.cpp:303
 msgid "Reply: sendto failed"
-msgstr ""
+msgstr "Réplica: remessa de dados falhou"
 
 #: KAQuery.cpp:304
 msgid "Link exists with same name"
-msgstr ""
+msgstr "Existe ligação com o mesmo nome"
 
 #: KAQuery.cpp:306
 msgid "Link already exists"
-msgstr ""
+msgstr "A ligação já existe"
 
 #: KAQuery.cpp:307
 msgid "Replacing existing link"
-msgstr ""
+msgstr "Substituindo ligação existente"
 
 #: KAQuery.cpp:308
 msgid "Prv entry not in dir->ulinks"
-msgstr ""
+msgstr "Item privado não está em dir->ulinks"
 
 #: KAQuery.cpp:309
 msgid "Temporary not found"
-msgstr ""
+msgstr "Temporário não encontrado"
 
 #: KAQuery.cpp:310
 msgid "Namespace not closed w/ object::"
-msgstr ""
+msgstr "Namespace não fechado com objeto::"
 
 #: KAQuery.cpp:311
 msgid "No alias for namespace NS#:"
-msgstr ""
+msgstr "Não há apelido para o namespace NS#:"
 
 #: KAQuery.cpp:312
 msgid "Specified namespace not found"
-msgstr ""
+msgstr "Namespace especificado não encontrado"
 
 #: KAQuery.cpp:313
 msgid "File access method not supported"
-msgstr ""
+msgstr "Método de acesso a arquivo não suportado"
 
 #: KAQuery.cpp:314
 msgid "Delete cached copy on close"
-msgstr ""
+msgstr "Apagar cópia em cache ao fechar"
 
 #: KAQuery.cpp:315
 msgid "Unable to retrieve file"
-msgstr ""
+msgstr "Impossível buscar arquivo"
 
 #: KAQuery.cpp:317
 msgid "Directory already exists"
-msgstr ""
+msgstr "Diretório já existe"
 
 #: KAQuery.cpp:319 KAQuery.cpp:337
 msgid "Link with name already exists"
-msgstr ""
+msgstr "Ligação com nome já existe"
 
 #: KAQuery.cpp:320
 msgid "Not a virtual system"
-msgstr ""
+msgstr "Não é um sistema virtual"
 
 #: KAQuery.cpp:321
 msgid "Can't find directory"
-msgstr ""
+msgstr "Impossível encontrar diretório"
 
 #: KAQuery.cpp:322
 msgid "Not a directory name"
-msgstr ""
+msgstr "Não é um nome de diretório"
 
 #: KAQuery.cpp:323
 msgid "Object not found"
-msgstr ""
+msgstr "Objeto não encontrado"
 
 #: KAQuery.cpp:324
 msgid "Object has moved"
-msgstr ""
+msgstr "Objeto foi movido"
 
 #: KAQuery.cpp:325
 msgid "File not found"
-msgstr ""
+msgstr "Arquivo não encontrado"
 
 #: KAQuery.cpp:326
 msgid "Directory in path not found"
-msgstr ""
+msgstr "Diretório do caminho não encontrado"
 
 #: KAQuery.cpp:327
 msgid "Symbolic links nested too deep"
-msgstr ""
+msgstr "Ligações simbólicas excessivamente aninhadas"
 
 #: KAQuery.cpp:328
 msgid "Can't read environment"
-msgstr ""
+msgstr "Impossível ler ambiente"
 
 #: KAQuery.cpp:329
 msgid "Can't traverse an external file"
-msgstr ""
+msgstr "Impossível analisar um arquivo externo"
 
 #: KAQuery.cpp:330
 msgid "Exceeded max forward depth"
-msgstr ""
+msgstr "Profundidade máxima de passagem adiante excedida"
 
 #: KAQuery.cpp:331
 msgid "Authentication required"
-msgstr ""
+msgstr "Autenticação é requerida"
 
 #: KAQuery.cpp:332
 msgid "Not authorized"
-msgstr ""
+msgstr "Não autorizado"
 
 #: KAQuery.cpp:333
 msgid "Not found"
-msgstr ""
+msgstr "Não encontrado"
 
 #: KAQuery.cpp:334
 msgid "Bad version number"
-msgstr ""
+msgstr "Número de versão inválido"
 
 #: KAQuery.cpp:335
 msgid "Not a directory"
-msgstr ""
+msgstr "Não é um diretório"
 
 #: KAQuery.cpp:336
 msgid "Identical link already exists"
-msgstr ""
+msgstr "Já existe ligação idêntica"
 
 #: KAQuery.cpp:338
 msgid "Command not implemented on server"
-msgstr ""
+msgstr "Comando não implementado no servidor"
 
 #: KAQuery.cpp:339
 msgid "Bad format for response"
-msgstr ""
+msgstr "Formato de resposta inválido"
 
 #: KAQuery.cpp:340
 msgid "Protocol error"
-msgstr ""
+msgstr "Erro de protocolo"
 
 #: KAQuery.cpp:341
 msgid "Unspecified server failure"
-msgstr ""
+msgstr "Falha não-especificada no servidor"
 
 #: KAQuery.cpp:343
 msgid "Generic Failure"
-msgstr ""
+msgstr "Falha Geral"
 
 #: KAQuery.cpp:347
 msgid "No warning"
-msgstr ""
+msgstr "Sem aviso"
 
 #: KAQuery.cpp:348
 msgid "You are using an old version of this program"
-msgstr ""
+msgstr "Você está usando uma versão antiga deste programa"
 
 #: KAQuery.cpp:349
 msgid "From server: "
-msgstr ""
+msgstr "Do servidor: "
 
 #: KAQuery.cpp:351
 msgid "Unrecognized line in response from server"
-msgstr ""
+msgstr "Linha não reconhecida na resposta do servidor"
 
 #: KAQuery.cpp:409
 msgid "Query running"
-msgstr ""
+msgstr "Consulta em andamento"
 
 #: KAQuery.cpp:453
 msgid "Query finished"
-msgstr ""
+msgstr "Consulta terminou"
 
 #: KASettings.cpp:59
-#, fuzzy
 msgid "&Host"
-msgstr "Host"
+msgstr "&Host"
 
 #: KASettings.cpp:72
 msgid "&Timeout (seconds)"
-msgstr ""
+msgstr "&Tempo máximo (segundos)"
 
 #: KASettings.cpp:83
 msgid "Maximal &retries"
-msgstr ""
+msgstr "Nú&mero de Tentativas"
 
 #: KASettings.cpp:284
-#, fuzzy
 msgid "&Nice Level"
 msgstr "&Nível de leveza"
 
 #: KASettings.cpp:291
 msgid "max. &Hits"
-msgstr ""
+msgstr "Número de &Hits"
 
 #: KASettings.cpp:418
-#, fuzzy
 msgid "Exact"
-msgstr "&Exato"
+msgstr "Exato"
 
 #: KASettings.cpp:419
-#, fuzzy
 msgid "Substring"
-msgstr "&Sub-cadeia"
+msgstr "Sub-cadeia"
 
 #: KASettings.cpp:420
-#, fuzzy
 msgid "Substring case insensitive"
-msgstr "Sub-cadeia insensível à &caixa"
+msgstr "Sub-cadeia insensível a maiúsculas/minúsculas"
 
 #: KASettings.cpp:421
-#, fuzzy
 msgid "Regular expression"
-msgstr "Expressão &regular"
+msgstr "Expressão regular"
 
 #: KASettings.cpp:423
-#, fuzzy
 msgid "Exact, then substring case insensitive"
-msgstr "Exato, então sub-cadeia insens. caixa"
+msgstr "Exato, então sub-cadeia insensível a caixa"
 
 #: KASettings.cpp:427
-#, fuzzy
 msgid "Normal"
-msgstr "n&ormal"
+msgstr "Normal"
 
 #: KASettings.cpp:428
-#, fuzzy
 msgid "Nice"
-msgstr "&leve"
+msgstr "Leve"
 
 #: KASettings.cpp:429
-#, fuzzy
 msgid "Very nice"
-msgstr "&muito leve"
+msgstr "Muito leve"
 
 #: KASettings.cpp:430
-#, fuzzy
 msgid "Even more nice"
-msgstr "&ainda mais leve"
+msgstr "Ainda mais leve"
 
 #: KASettings.cpp:431
-#, fuzzy
 msgid "Nicest"
-msgstr "le&víssimo"
+msgstr "Levíssimo"
 
 #: KASettings.cpp:525
-#, fuzzy
 msgid "KArchie Settings"
-msgstr "&Configurações"
+msgstr "Configurações"
 
 #: KASettings.cpp:536
-#, fuzzy
 msgid "Archie server settings"
-msgstr "&Servidor Archie"
+msgstr "Configurações do servidor Archie"
 
 #: KASettings.cpp:543
-#, fuzzy
 msgid "Search init"
-msgstr "Procurar &Term"
+msgstr "Iniciar Procura"
 
 #: KASettings.cpp:567
 msgid "Reset"
