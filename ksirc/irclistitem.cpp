@@ -53,6 +53,7 @@ void ircListItem::paint(QPainter *p)
 {
   QPen pen = p->pen();
   QColor bc = p->backgroundColor();
+  QFont font = p->font();
   p->setPen(*colour);
 
   if(pm)
@@ -64,6 +65,7 @@ void ircListItem::paint(QPainter *p)
     //    p->drawText(xPos,yPos+lineheight*row, txt);
     colourDrawText(p, xPos,yPos+lineheight*row, txt);
   }
+  p->setFont(font);
   p->setBackgroundMode(TransparentMode);
   p->setPen(pen);
   p->setBackgroundColor(bc);
@@ -122,7 +124,7 @@ void ircListItem::setupPainterText()
     for(i = 0; i < text.length() ; i++){
       if((text[i] == '!') || (text[i] == 0x03) &&
 	 (((text[i+1] >= 0x30) && (text[i+1] <= 0x39)  ||
-	   (text[i] == '!') && (text[i+1] == 'c')))){
+	   (text[i] == '!') && ((text[i+1] >= 0x61) || (text[i+1] <= 0x7a))))){ // a->z
 	if((text[i+1] >= 0x30) && (text[i+1] <= 0x39)){
 	  i += 2; 
 	  ig += 2;
@@ -140,7 +142,7 @@ void ircListItem::setupPainterText()
 	  }
 	  i--; // Move back on since the i++ moves ahead one.
 	}
-	else if((text[i] == '!') && (text[i+1] == 'c')){
+	else if((text[i] == '!') && ((text[i+1] >= 0x61) || (text[i+1] <= 0x7a))){
 	  i += 1;   // Implicit step forward in for loop
 	  ig += 2;
 	}
@@ -246,10 +248,34 @@ void ircListItem::colourDrawText(QPainter *p, int startx, int starty,
 	p->setPen(*colour);
 	p->setBackgroundMode(TransparentMode);
       }
-      else if((str[i] == '!') && (str[i+1] == 'c')){
+      else if((str[i] == '!') && ((str[i+1] >= 0x61) || (str[i+1] <= 0x7a))){
+	QFont fnt = p->font();
+	switch(str[i+1]){
+	case 'c':
+	  p->setPen(*colour);
+	  p->setBackgroundMode(TransparentMode);
+	  break;
+	case 'b':
+	  if(fnt.bold() == TRUE)
+	    fnt.setBold(FALSE);
+	  else
+	    fnt.setBold(TRUE);
+	  break;
+	case 'i':
+	  if(fnt.italic() == TRUE)
+	    fnt.setItalic(FALSE);
+	  else
+	    fnt.setItalic(TRUE);
+	  break;
+	case 'u':
+	  if(fnt.underline() == TRUE)
+	    fnt.setUnderline(FALSE);
+	  else
+	    fnt.setUnderline(TRUE);
+	  break;
+	}
+	p->setFont(fnt);
 	i += 2;
-	p->setPen(*colour);
-	p->setBackgroundMode(TransparentMode);
       }
       offset += i - loc;
     }
