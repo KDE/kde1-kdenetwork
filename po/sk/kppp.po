@@ -1052,7 +1052,7 @@ msgstr ""
 
 #: general.cpp:364
 msgid "Use Lock File"
-msgstr ""
+msgstr "Pou¾i» lock súbor"
 
 #: general.cpp:375
 msgid ""
@@ -1398,11 +1398,11 @@ msgstr "Graf"
 
 #: main.cpp:799
 msgid "Timeout expired while waiting for the PPP interface to come up!"
-msgstr ""
+msgstr "Èasový limit vypr¹al pri èakaní na o¾ivenie PPP rozhrania !"
 
 #: main.cpp:804
 msgid "The pppd daemon died unexpectedly!"
-msgstr ""
+msgstr "PPP démon neoèakávane spadol !"
 
 #: main.cpp:812
 msgid "Details..."
@@ -1414,6 +1414,10 @@ msgid ""
 "\n"
 "Since a further execution would be pointless, kppp will shut down right now."
 msgstr ""
+"Je mi µúto, pomocný proces kppp práve spadol.\n"
+"\n"
+"Vzhµadom na to, ¾e ïal¹í beh by bol nezmyselný, kppp sa teraz ukonèí."
+
 
 #: main.cpp:874
 #, c-format
@@ -1658,6 +1662,13 @@ msgid ""
 "\n"
 "chown {YourUsername} .kde/share/config/kppprc"
 msgstr ""
+"Konfiguraèný súbor aplikácie nemô¾e by» otvorený ani\n"
+"na èítanie ani na èítanie a zápis.\n"
+"\n"
+"Superu¾ívateµ pravdepodobne bude musie» zmeni» jeho vlastníka\n"
+"spustením nasledujúceho príkazu vo va¹om domovskom prieèinku:\n"
+"\n"
+"chown {Va¹eMenoU¾ívateµa} .kde/share/config/kppprc"
 
 #: modeminfo.cpp:38
 msgid "ATI Query"
@@ -2058,12 +2069,3 @@ msgstr "kppp diagnostika (len hádam):"
 #: ppplog.cpp:241
 msgid "Write to file"
 msgstr "Zapísa» do súboru"
-
-#~ msgid ""
-#~ "The application-specific config file\n"
-#~ "could not be opened neither\n"
-#~ "read-write nor read-only"
-#~ msgstr ""
-#~ "Nemô¾em otvori» konfiguraèný súbor\n"
-#~ "aplikácie a to ani pre zápis ani\n"
-#~ "pre èítanie."
