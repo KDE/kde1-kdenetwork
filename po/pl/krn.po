@@ -1,32 +1,32 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: krn \n"
-"POT-Creation-Date: 1998-05-30 17:38+0200\n"
+"POT-Creation-Date: 1998-06-11 23:07+0200\n"
 "PO-Revision-Date: 1998-01-24 20:33+0100\n"
 "Last-Translator: Pawe³ Jab³oñski <pawel.jablonski@mail.lze.lodz.pl>\n"
 "Content-Type: text/plain; charset=iso8859-2\n"
 
-#: main.cpp:223 main.cpp:235 main.cpp:247 main.cpp:262 main.cpp:274
+#: main.cpp:213 main.cpp:225 main.cpp:237 main.cpp:252 main.cpp:264
 msgid "KRN-Missing Configuration info"
 msgstr "Nie odnaleziono o konfiguracji KRN"
 
-#: main.cpp:224
+#: main.cpp:214
 msgid "Please enter your email adress"
 msgstr "Podaj swój adres pocztowy"
 
-#: main.cpp:236
+#: main.cpp:226
 msgid "Please enter your real name"
 msgstr "Podaj imiê i nazwisko"
 
-#: main.cpp:248
+#: main.cpp:238
 msgid "Please enter your organization's name"
 msgstr "Podaj nazwê organizacji"
 
-#: main.cpp:263
+#: main.cpp:253
 msgid "Please enter your NNTP server name"
 msgstr "Podaj nazwê serwera NNTP"
 
-#: main.cpp:275
+#: main.cpp:265
 msgid "Please enter your SMTP server name"
 msgstr "Podaj nazwê serwera pocztowego"
 
@@ -35,12 +35,12 @@ msgstr "Podaj nazwê serwera pocztowego"
 msgid "Received %.2f Kb"
 msgstr "Odebrano %.2f Kb"
 
-#: NNTP.cpp:555
+#: NNTP.cpp:557
 #, fuzzy
 msgid "Getting Article"
 msgstr "Pobieranie listy wiadomo¶ci"
 
-#: NNTP.cpp:641
+#: NNTP.cpp:643
 #, fuzzy
 msgid "Article Received"
 msgstr "Zawarto¶æ wiadomo¶æi:"
@@ -154,51 +154,51 @@ msgstr "Szukaj grupy"
 msgid "Check for Unread Articles"
 msgstr "Sprawd¼ nieprzeczytane wiadomo¶ci"
 
-#: groupdlg.cpp:335 groupdlg.cpp:360 groupdlg.cpp:578 groupdlg.cpp:914
+#: groupdlg.cpp:362 groupdlg.cpp:587 groupdlg.cpp:924
 msgid "All Newsgroups."
 msgstr "Wszystkie grupy."
 
-#: groupdlg.cpp:467 groupdlg.cpp:561
+#: groupdlg.cpp:475 groupdlg.cpp:569
 msgid "Subscribed Newsgroups."
 msgstr "Subskrybowane grupy."
 
-#: groupdlg.cpp:516
+#: groupdlg.cpp:524
 msgid "Disconnected"
 msgstr "Roz³±czono"
 
-#: groupdlg.cpp:523
+#: groupdlg.cpp:531
 msgid "Connecting to server"
 msgstr "£±czê siê z serwerem"
 
-#: groupdlg.cpp:528
+#: groupdlg.cpp:536
 msgid "Connected to server - Posting not allowed"
 msgstr "Po³±czono z serwerem - og³aszanie nie umo¿liwione ?"
 
-#: groupdlg.cpp:530
+#: groupdlg.cpp:538
 msgid "Connected to server - Posting allowed"
 msgstr "Po³±czono z serwerem - og³aszanie umo¿liwione"
 
-#: groupdlg.cpp:536
+#: groupdlg.cpp:544
 msgid "Can't connect to server"
 msgstr "Nie mogê po³±czyæ siê z serwerem"
 
-#: groupdlg.cpp:538
+#: groupdlg.cpp:546
 msgid "Connection to server failed"
 msgstr "Po³±czenie z serwerem nie powiod³o siê"
 
-#: groupdlg.cpp:547
+#: groupdlg.cpp:555
 msgid "Authentication Failed"
 msgstr "Autoryzacja nie powiod³a siê!"
 
-#: groupdlg.cpp:550
+#: groupdlg.cpp:558
 msgid "Connection to server failed: Authentication problem"
 msgstr "Po³±czenie z serwerem nie powiod³o siê: problem z autoryzacj±"
 
-#: groupdlg.cpp:597
+#: groupdlg.cpp:607
 msgid "Krn-Question"
 msgstr "Pytanie KRN"
 
-#: groupdlg.cpp:598
+#: groupdlg.cpp:608
 msgid ""
 "The operation you requested needs a connection to the News server\n"
 "Should I attempt one?"
@@ -206,7 +206,7 @@ msgstr ""
 "Ta operacja wymaga po³±czenia z serwerem.\n"
 "Po³±czyæ siê?"
 
-#: groupdlg.cpp:860
+#: groupdlg.cpp:870
 msgid ""
 "You don't have an active groups list.\n"
 " get it from server?"
@@ -214,31 +214,31 @@ msgstr ""
 "Nie masz listy aktywnych grup.\n"
 "Pobraæ z serwera?"
 
-#: groupdlg.cpp:876
+#: groupdlg.cpp:886
 msgid "Listing active newsgroups"
 msgstr "Przegl±dam aktywne grupy"
 
-#: groupdlg.cpp:888
+#: groupdlg.cpp:898
 msgid "KRN - Find a Newsgroup"
 msgstr "KRN - szukanie grup"
 
-#: groupdlg.cpp:889
+#: groupdlg.cpp:899
 msgid "Enter the name of the Newsgroup"
 msgstr "Podaj nazwê grupy"
 
-#: groupdlg.cpp:974
+#: groupdlg.cpp:983
 msgid "Krn - Message"
 msgstr "KRN - Wiadomo¶æ"
 
-#: groupdlg.cpp:975
+#: groupdlg.cpp:984
 msgid "I can't find the group you want!"
 msgstr "Nie mogê odnale¼æ szukanej grupy"
 
-#: groupdlg.cpp:1068
+#: groupdlg.cpp:1077
 msgid "Getting messages in "
 msgstr "Pobieram wiadomo¶ci z "
 
-#: groupdlg.cpp:1081
+#: groupdlg.cpp:1090
 msgid "Getting list of messages in "
 msgstr "Pobieram listê wiadomo¶ci w "
 
@@ -403,23 +403,23 @@ msgstr "Porz±dkujê w±tki..."
 msgid "Showing Article List"
 msgstr "Pokazujê listê wiadomo¶ci"
 
-#: artdlg.cpp:1313
+#: artdlg.cpp:1314
 msgid "KRN - Existing File"
 msgstr "KRN - istniej±ce pliki"
 
-#: artdlg.cpp:1314
+#: artdlg.cpp:1315
 msgid "The File you selected already exists"
 msgstr "Plik, który wybra³e¶, ju¿ istnieje"
 
-#: artdlg.cpp:1320
+#: artdlg.cpp:1321
 msgid "OverWrite"
 msgstr "Nadpisz"
 
-#: artdlg.cpp:1322
+#: artdlg.cpp:1323
 msgid "Append"
 msgstr "Do³±cz"
 
-#: artdlg.cpp:1357 artdlg.cpp:1422
+#: artdlg.cpp:1358 artdlg.cpp:1423
 #, fuzzy
 msgid ""
 "From: Krn\n"
@@ -432,7 +432,7 @@ msgstr ""
 "B³±d podczas pobierania wiadomo¶ci.\n"
 "Serwer odpowiedzia³:\n"
 
-#: artdlg.cpp:1524
+#: artdlg.cpp:1525
 msgid "Getting Article List"
 msgstr "Pobieranie listy wiadomo¶ci"
 
@@ -510,7 +510,7 @@ msgstr "Czê¶æ projektu KDE."
 msgid "Credits & Thanks"
 msgstr "Podziêkowania"
 
-#: aboutDlg.cpp:63
+#: aboutDlg.cpp:65
 msgid "And Many thanks to:"
 msgstr "Wielkie dziêki tak¿e dla:"
 

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-05-30 17:38+0200\n"
+"POT-Creation-Date: 1998-06-11 23:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Theodore J. Soldatos <theodore@eexi.gr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,7 @@ msgstr "Νέος..."
 msgid "Phone Costs:"
 msgstr "Τηλεφωνικά κόστη:"
 
-#: accounts.cpp:116 conwindow.cpp:56
+#: accounts.cpp:116 conwindow.cpp:55
 msgid "Volume:"
 msgstr ""
 
@@ -119,181 +119,181 @@ msgid "Login script has unbalanced Loop Start/End"
 msgstr ""
 "Το αρχείο εντολών σύνδεσης περιέχει μη ισσοροπημένη ανακύκλωση Start/End"
 
-#: connect.cpp:109 connect.cpp:213 main.cpp:833
+#: connect.cpp:108 connect.cpp:212 main.cpp:829
 msgid "Connecting to: "
 msgstr "Σύνδεση στο: "
 
-#: connect.cpp:118 connect.cpp:229 miniterm.cpp:162 modeminfo.cpp:63
-#: modeminfo.cpp:150
+#: connect.cpp:117 connect.cpp:228 miniterm.cpp:162 modeminfo.cpp:62
+#: modeminfo.cpp:149
 msgid "Sorry, can't create modem lock file."
 msgstr "Συγγνώμη, δεν μπορώ να δημιουργήσω αρχείο κλειδώματος modem."
 
-#: connect.cpp:123 connect.cpp:186 modeminfo.cpp:68
+#: connect.cpp:122 connect.cpp:185 modeminfo.cpp:67
 msgid "Looking for Modem ..."
 msgstr "Ψάξιμο για modem..."
 
-#: connect.cpp:132 debug.cpp:86 main.cpp:846
+#: connect.cpp:131 debug.cpp:86 main.cpp:842
 msgid "Log"
 msgstr "Αρχείο"
 
-#: connect.cpp:223 miniterm.cpp:157 modeminfo.cpp:145
+#: connect.cpp:222 miniterm.cpp:157 modeminfo.cpp:144
 msgid "Sorry, modem device is locked."
 msgstr "Συγγνώμη, το modem είναι κλειδωμένο."
 
-#: connect.cpp:235 miniterm.cpp:176 miniterm.cpp:253 modeminfo.cpp:165
+#: connect.cpp:234 miniterm.cpp:176 miniterm.cpp:253 modeminfo.cpp:164
 msgid "Modem Ready"
 msgstr "Το modem είναι έτοιμο"
 
-#: connect.cpp:267 connect.cpp:268
+#: connect.cpp:266 connect.cpp:267
 msgid "Initializing Modem..."
 msgstr "Αρχικοποίηση modem..."
 
-#: connect.cpp:293
+#: connect.cpp:292
 msgid "Dialing"
 msgstr "Κλήση εν εξελίξει"
 
-#: connect.cpp:326
+#: connect.cpp:325
 msgid "Line Busy. Hanging up ..."
 msgstr "Η γραμή είναι απασχολημένη. Κλείσιμο ..."
 
-#: connect.cpp:332
+#: connect.cpp:331
 msgid "Line Busy. Waiting: "
 msgstr "Η γραμμή είναι απασχολημένη. Αναμονή: "
 
-#: connect.cpp:334 connect.cpp:452 connect.cpp:471
+#: connect.cpp:333 connect.cpp:451 connect.cpp:470
 msgid " seconds"
 msgstr " δευτερόλεπτα"
 
-#: connect.cpp:352
+#: connect.cpp:351
 msgid "No Dialtone"
 msgstr "Δεν υπάρχει ήχος γραμμής"
 
-#: connect.cpp:362
+#: connect.cpp:361
 msgid "No Carrier"
 msgstr "Απουσία σήματος"
 
-#: connect.cpp:397
+#: connect.cpp:396
 msgid "Scanning "
 msgstr "Ανίχνευση "
 
-#: connect.cpp:408
+#: connect.cpp:407
 #, fuzzy
 msgid "Saving "
 msgstr "Ανίχνευση "
 
-#: connect.cpp:427
+#: connect.cpp:426
 msgid "Sending "
 msgstr "Αποστολή "
 
-#: connect.cpp:438
+#: connect.cpp:437
 msgid "Expecting "
 msgstr "Αναμονή "
 
-#: connect.cpp:450
+#: connect.cpp:449
 msgid "Pause "
 msgstr "Παύση "
 
-#: connect.cpp:469
+#: connect.cpp:468
 msgid "Timeout "
 msgstr "Τέλος χρόνου "
 
-#: connect.cpp:483 connect.cpp:484
+#: connect.cpp:482 connect.cpp:483
 msgid "Hangup"
 msgstr "Κλείσιμο"
 
-#: connect.cpp:497 connect.cpp:498
+#: connect.cpp:496 connect.cpp:497
 msgid "Answer"
 msgstr "Απάντηση"
 
-#: connect.cpp:506
+#: connect.cpp:505
 msgid "ID "
 msgstr "ID "
 
-#: connect.cpp:543
+#: connect.cpp:542
 msgid "Password "
 msgstr "Λέξη κλειδί "
 
-#: connect.cpp:581
+#: connect.cpp:580
 msgid "Prompting "
 msgstr "Ζήτηση "
 
-#: connect.cpp:618
+#: connect.cpp:617
 msgid "PW Prompt "
 msgstr "Ζήτηση λέξης κλειδί "
 
-#: connect.cpp:644
+#: connect.cpp:643
 msgid "Loop Start "
 msgstr "Αρχή ανακύκλωσης "
 
-#: connect.cpp:648
+#: connect.cpp:647
 msgid "ERROR: Nested too deep, ignored."
 msgstr "ΣΦΑΛΜΑ: Επίπεδο ανακύκλωσης πολύ μεγάλο, αγνοείται."
 
-#: connect.cpp:653
+#: connect.cpp:652
 msgid "Loops nested too deeply!"
 msgstr "Πολύ μεγάλα βάθη ανακύκλωσης!"
 
-#: connect.cpp:671
+#: connect.cpp:670
 msgid "LoopEnd without mathing Start! Line: "
 msgstr "Τέλος ανακύκλωσης (LoopEnd) χωρίς αντίστοιχη γραμμή έναρξης (Start!)"
 
-#: connect.cpp:748
+#: connect.cpp:747
 msgid "Starting pppd ..."
 msgstr "Εκκίνηση pppd ..."
 
-#: connect.cpp:808 connect.cpp:834
+#: connect.cpp:807 connect.cpp:833
 msgid "unknown speed"
 msgstr "ταχύτητα άγνωστη"
 
-#: connect.cpp:872
+#: connect.cpp:871
 msgid "Scan Var: "
 msgstr "Μεταβλητή ανίχνευσης: "
 
-#: connect.cpp:883
+#: connect.cpp:882
 msgid "Found: "
 msgstr "Βρέθηκαν: "
 
-#: connect.cpp:895
+#: connect.cpp:894
 msgid "Looping: "
 msgstr "Ανακύκλωση: "
 
-#: connect.cpp:926 modeminfo.cpp:333
+#: connect.cpp:925 modeminfo.cpp:332
 msgid "One Moment Please ..."
 msgstr "Μια στιγμή παρακαλώ ..."
 
-#: connect.cpp:970
+#: connect.cpp:969
 msgid "Script timed out!"
 msgstr "Τέλος χρόνου αναμονής αρχείου εντολών!"
 
-#: connect.cpp:996
+#: connect.cpp:995
 msgid "Scanning: "
 msgstr "Ανίχνευση: "
 
-#: connect.cpp:1007
+#: connect.cpp:1006
 msgid "Expecting: "
 msgstr "Αναμονή για: "
 
-#: connect.cpp:1041
+#: connect.cpp:1040
 msgid "Logging on to Network ..."
 msgstr "Σύνδεση στο δίκτυο ..."
 
-#: connect.cpp:1068
+#: connect.cpp:1067
 msgid "Running Startup Command ..."
 msgstr "Εκτέλεση αρχικής εντολής ..."
 
-#: connect.cpp:1134
+#: connect.cpp:1133
 msgid "Sorry, can't open modem."
 msgstr "Συγγνώμη, δεν μπορώ να χρησιμοποιήσω το modem."
 
-#: connect.cpp:1141
+#: connect.cpp:1140
 msgid "Sorry, the modem is not ready."
 msgstr "Συγγνώμη, το modem δεν είναι έτοιμο."
 
-#: connect.cpp:1149 connect.cpp:1190 modeminfo.cpp:375
+#: connect.cpp:1148 connect.cpp:1189 modeminfo.cpp:374
 msgid "Sorry, the modem is busy."
 msgstr "Συγγνώμη, το modem είναι απασχολημένο."
 
-#: connect.cpp:1425
+#: connect.cpp:1424
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
@@ -301,27 +301,27 @@ msgstr ""
 "Η εντολή pppd συν τα ορίσματά της ξεπερνούν\n"
 "τους 2024 χαρακτήρες σε μήκος. Τι προσπαθείτε να κάνετε;"
 
-#: conwindow.cpp:45
+#: conwindow.cpp:44
 msgid "Connected at:"
 msgstr "Συνδεδεμένος στο:"
 
-#: conwindow.cpp:51
+#: conwindow.cpp:50
 msgid "Time connected:"
 msgstr "Χρόνος σύνδεσης:"
 
-#: conwindow.cpp:60
+#: conwindow.cpp:59
 msgid "Session Bill:"
 msgstr "Κόστος σύνδεσης:"
 
-#: conwindow.cpp:62
+#: conwindow.cpp:61
 msgid "Total Bill:"
 msgstr "Συνολικό κόστος:"
 
-#: conwindow.cpp:68 docking.cpp:75
+#: conwindow.cpp:67 docking.cpp:74
 msgid "Disconnect"
 msgstr "Αποσύνδεση"
 
-#: conwindow.cpp:72 docking.cpp:73
+#: conwindow.cpp:71 docking.cpp:72
 msgid "Details"
 msgstr "Λεπτομέρειες"
 
@@ -468,48 +468,48 @@ msgstr "Χρήση βασικού αρχείου εντολών"
 msgid "Insert"
 msgstr "Εισαγωγή"
 
-#: general.cpp:42
+#: general.cpp:41
 msgid "kppp Setup"
 msgstr "Ρυθμίσεις kppp"
 
-#: general.cpp:63
+#: general.cpp:62
 msgid "pppd Timeout:"
 msgstr "Προθεσμία χρόνου pppd:"
 
-#: general.cpp:79 general.cpp:390 general.cpp:487
+#: general.cpp:78 general.cpp:390 general.cpp:487
 msgid "Seconds"
 msgstr "Δευτερόλεπτα"
 
-#: general.cpp:99
+#: general.cpp:98
 msgid "Dock into Panel on Connect"
 msgstr "Τοποθέτηση στο πινακίδιο κατά την σύνδεση"
 
-#: general.cpp:105
+#: general.cpp:104
 msgid "Automatic Redial on Disconnect"
 msgstr "Αυτόματη επανάκληση σε περίπτωση αποσύνδεσης"
 
-#: general.cpp:112
+#: general.cpp:111
 msgid "Show Clock on Caption"
 msgstr "Εμφάνιση ρολογιού"
 
-#: general.cpp:119
+#: general.cpp:118
 msgid "Disconnect on X-server shutdown"
 msgstr "Αποσύνδεση κατά την έξοδο από τα Windows"
 
-#: general.cpp:125
+#: general.cpp:124
 #, fuzzy
 msgid "Quit on Disconnect"
 msgstr "Αποσύνδεση"
 
-#: general.cpp:131
+#: general.cpp:130
 msgid "Minimize Window on Connect"
 msgstr "Ελαχιστοποίηση παραθύρου κατά την σύνδεση"
 
-#: general.cpp:200
+#: general.cpp:199
 msgid "About kppp"
 msgstr "Για το kppp"
 
-#: general.cpp:208
+#: general.cpp:207
 msgid ""
 "\n"
 "A dialer and front-end to pppd\n"
@@ -575,7 +575,7 @@ msgstr "Αρχείο κλειδώματος modem:"
 msgid "Modem Timeout:"
 msgstr "Προθεσμία χρόνου modem:"
 
-#: general.cpp:460 main.cpp:507
+#: general.cpp:460 main.cpp:503
 msgid "Modem"
 msgstr "Modem"
 
@@ -599,31 +599,31 @@ msgstr "Ανάκριση modem"
 msgid "Terminal"
 msgstr "Τερματικό"
 
-#: main.cpp:331
+#: main.cpp:327
 msgid "Connect to: "
 msgstr "Σύνδεση στο: "
 
-#: main.cpp:342
+#: main.cpp:338
 msgid "Login ID:"
 msgstr "Όνομα χρήστη:"
 
-#: main.cpp:354
+#: main.cpp:350
 msgid "Password:"
 msgstr "Λέξη κλειδί:"
 
-#: main.cpp:371
+#: main.cpp:367
 msgid "Show Log Window"
 msgstr "Εμφάνιση παραθύρου αρχείου"
 
-#: main.cpp:393
+#: main.cpp:389
 msgid "Setup"
 msgstr "Ρυθμίσεις"
 
-#: main.cpp:408
+#: main.cpp:404
 msgid "Connect"
 msgstr "Σύνδεση"
 
-#: main.cpp:476
+#: main.cpp:472
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -632,23 +632,23 @@ msgstr ""
 "Δεν υπάρχει ο λογαριασμός:\n"
 "%s"
 
-#: main.cpp:493
+#: main.cpp:489
 msgid "kppp Configuration"
 msgstr "Ρυθμίσεις kppp"
 
-#: main.cpp:505
+#: main.cpp:501
 msgid "Accounts"
 msgstr "Λογαριασμοί"
 
-#: main.cpp:506
+#: main.cpp:502
 msgid "Device"
 msgstr "Συσκευή"
 
-#: main.cpp:508
+#: main.cpp:504
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:736
+#: main.cpp:732
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -665,7 +665,7 @@ msgstr ""
 " του διαλόγου ρυθμίσεων.\n"
 " Ευχαριστώ."
 
-#: main.cpp:748
+#: main.cpp:744
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -678,7 +678,7 @@ msgstr ""
 "Παρακαλώ βεβαιωθείτε ότι έχετε δώσει στο kppp άδεια setuid και ότι\n"
 "το pppd είναι εκτελέσιμο."
 
-#: main.cpp:762
+#: main.cpp:758
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -697,7 +697,7 @@ msgstr ""
 "συσκευής modem στην ετικέττα modem του διαλόγου ρυθμίσεων.\n"
 " Ευχαριστώ."
 
-#: main.cpp:782
+#: main.cpp:778
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -707,7 +707,7 @@ msgstr ""
 "Αυτό προϋποθέτει την εισαγωγή ονόματος χρήστη\n"
 "και λέξης κλειδί!"
 
-#: main.cpp:789
+#: main.cpp:785
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -716,7 +716,7 @@ msgstr ""
 "Δεν μπορώ να δημιουργήσω το αρχείο \n"
 "πιστοποίησης PAP \"%s\""
 
-#: main.cpp:806
+#: main.cpp:802
 #, fuzzy
 msgid ""
 "You have selected the authentication\n"
@@ -727,7 +727,7 @@ msgstr ""
 "Αυτό προϋποθέτει την εισαγωγή ονόματος χρήστη\n"
 "και λέξης κλειδί!"
 
-#: main.cpp:813
+#: main.cpp:809
 #, fuzzy, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -736,19 +736,19 @@ msgstr ""
 "Δεν μπορώ να δημιουργήσω το αρχείο \n"
 "πιστοποίησης PAP \"%s\""
 
-#: main.cpp:825
+#: main.cpp:821
 msgid "You have to specify a telephone number !\n"
 msgstr ""
 
-#: main.cpp:899
+#: main.cpp:895
 msgid "Quit kPPP?"
 msgstr "Επιβεβαίωση εξόδου από το kPPP;"
 
-#: main.cpp:900
+#: main.cpp:896
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Η έξοδος από το kPPP θα κλεισει την σύνδεσή σας."
 
-#: main.cpp:935
+#: main.cpp:931
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
@@ -849,19 +849,19 @@ msgstr ""
 msgid "ATI Query"
 msgstr "Ανάκριση ATI"
 
-#: modeminfo.cpp:131
+#: modeminfo.cpp:130
 msgid "Modem Query timed out."
 msgstr "Τέλος χρόνου ανάκρισης modem."
 
-#: miniterm.cpp:277 modeminfo.cpp:369
+#: miniterm.cpp:277 modeminfo.cpp:368
 msgid "Can't open Modem"
 msgstr "Δεν μπορώ να ανοίξω το Modem"
 
-#: modeminfo.cpp:415
+#: modeminfo.cpp:414
 msgid "Sorry, the modem is busy"
 msgstr "Συγγνώμη, το modem είναι απασχολημένο"
 
-#: modeminfo.cpp:534
+#: modeminfo.cpp:533
 msgid "Modem Query Results"
 msgstr "Αποτελέσματα ανάκρισης modem"
 
@@ -1044,11 +1044,11 @@ msgstr "kppp: Το αρχείο κανόνων δεν περιέχει την γραμμή \"name=...\"\n"
 msgid "kppp: rulefile is ok\n"
 msgstr "kppp: Το αρχείο κανόνων είναι εντάξει\n"
 
-#: docking.cpp:71 docking.cpp:223
+#: docking.cpp:70 docking.cpp:222
 msgid "Restore"
 msgstr "Επαναφορά"
 
-#: docking.cpp:221
+#: docking.cpp:220
 msgid "Minimize"
 msgstr "Ελαχιστοποίηση"
 

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-05-30 17:38+0200\n"
+"POT-Creation-Date: 1998-06-11 23:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Theodore J. Soldatos <theodore@eexi.gr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,27 +13,27 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: ENCODING\n"
 
-#: main.cpp:223 main.cpp:235 main.cpp:247 main.cpp:262 main.cpp:274
+#: main.cpp:213 main.cpp:225 main.cpp:237 main.cpp:252 main.cpp:264
 msgid "KRN-Missing Configuration info"
 msgstr "KRN-Δεν υπάρχουν πληροφορίες ρυθμίσεων"
 
-#: main.cpp:224
+#: main.cpp:214
 msgid "Please enter your email adress"
 msgstr "Παρακαλώ εισάγετε την ηλεκτρονική σας διεύθυνση"
 
-#: main.cpp:236
+#: main.cpp:226
 msgid "Please enter your real name"
 msgstr "Παρακαλώ εισάγετε το όνομά σας"
 
-#: main.cpp:248
+#: main.cpp:238
 msgid "Please enter your organization's name"
 msgstr "Παρακαλώ εισάγετε το όνομα οργανισμού"
 
-#: main.cpp:263
+#: main.cpp:253
 msgid "Please enter your NNTP server name"
 msgstr "Παρακαλώ εισάγετε το όνομα του NNTP εξυπηρετητή σας"
 
-#: main.cpp:275
+#: main.cpp:265
 msgid "Please enter your SMTP server name"
 msgstr "Παρακαλώ εισάγετε το όνομα του SMTP εξυπηρετητή σας"
 
@@ -42,12 +42,12 @@ msgstr "Παρακαλώ εισάγετε το όνομα του SMTP εξυπηρετητή σας"
 msgid "Received %.2f Kb"
 msgstr "Παρελήφθησαν %.2f Kb"
 
-#: NNTP.cpp:555
+#: NNTP.cpp:557
 #, fuzzy
 msgid "Getting Article"
 msgstr "Κατέβασμα καταλόγου άρθρων"
 
-#: NNTP.cpp:641
+#: NNTP.cpp:643
 msgid "Article Received"
 msgstr "Το άρθρο παρελήφθη"
 
@@ -159,51 +159,51 @@ msgstr "Εύρεση ομάδας"
 msgid "Check for Unread Articles"
 msgstr "Έλεγχος για μη αναγνωσμένα άρθρα"
 
-#: groupdlg.cpp:335 groupdlg.cpp:360 groupdlg.cpp:578 groupdlg.cpp:914
+#: groupdlg.cpp:362 groupdlg.cpp:587 groupdlg.cpp:924
 msgid "All Newsgroups."
 msgstr "Όλες οι ομάδες."
 
-#: groupdlg.cpp:467 groupdlg.cpp:561
+#: groupdlg.cpp:475 groupdlg.cpp:569
 msgid "Subscribed Newsgroups."
 msgstr "Εγγεγραμμένες ομάδες"
 
-#: groupdlg.cpp:516
+#: groupdlg.cpp:524
 msgid "Disconnected"
 msgstr "Αποσύνδεση"
 
-#: groupdlg.cpp:523
+#: groupdlg.cpp:531
 msgid "Connecting to server"
 msgstr "Σύνδεση στον εξυπηρετητή"
 
-#: groupdlg.cpp:528
+#: groupdlg.cpp:536
 msgid "Connected to server - Posting not allowed"
 msgstr "Συνδέθηκα στον αξυπηρετητή - Η δημοσίευση δεν επιτρέπεται"
 
-#: groupdlg.cpp:530
+#: groupdlg.cpp:538
 msgid "Connected to server - Posting allowed"
 msgstr "Συνδέθηκα στον εξυπηρετητή - η δημοσίευση επιτρέπεται"
 
-#: groupdlg.cpp:536
+#: groupdlg.cpp:544
 msgid "Can't connect to server"
 msgstr "Δεν μπορώ να συνδεθώ στον εξυπηρετητή"
 
-#: groupdlg.cpp:538
+#: groupdlg.cpp:546
 msgid "Connection to server failed"
 msgstr "Η σύνδεση στον εξυπηρετητή απέτυχε"
 
-#: groupdlg.cpp:547
+#: groupdlg.cpp:555
 msgid "Authentication Failed"
 msgstr "Η πιστοποίηση απέτυχε"
 
-#: groupdlg.cpp:550
+#: groupdlg.cpp:558
 msgid "Connection to server failed: Authentication problem"
 msgstr "Η σύνδεση στον εξυπηρετητή απέτυχε: Πρόβλημα πιστοποίησης"
 
-#: groupdlg.cpp:597
+#: groupdlg.cpp:607
 msgid "Krn-Question"
 msgstr "Krn-Ερώτηση"
 
-#: groupdlg.cpp:598
+#: groupdlg.cpp:608
 msgid ""
 "The operation you requested needs a connection to the News server\n"
 "Should I attempt one?"
@@ -211,7 +211,7 @@ msgstr ""
 "Η λειτουργία αυτή απαιτεί σύνδεση με έναν εξυπηρετητή νέων\n"
 "Να επιχειρήσω σύνδεση;"
 
-#: groupdlg.cpp:860
+#: groupdlg.cpp:870
 msgid ""
 "You don't have an active groups list.\n"
 " get it from server?"
@@ -219,31 +219,31 @@ msgstr ""
 "Δεν έχετε λίστα ενεργών αρχείων.\n"
 "Να την κατεβάσω από τον εξυπηρετητή;"
 
-#: groupdlg.cpp:876
+#: groupdlg.cpp:886
 msgid "Listing active newsgroups"
 msgstr "Κατάλογος ενεργών ομάδων"
 
-#: groupdlg.cpp:888
+#: groupdlg.cpp:898
 msgid "KRN - Find a Newsgroup"
 msgstr "KRN - Εύρεση ομάδων"
 
-#: groupdlg.cpp:889
+#: groupdlg.cpp:899
 msgid "Enter the name of the Newsgroup"
 msgstr "Εισάγετε το όνομα της ομάδας"
 
-#: groupdlg.cpp:974
+#: groupdlg.cpp:983
 msgid "Krn - Message"
 msgstr "Krn - Μήνυμα"
 
-#: groupdlg.cpp:975
+#: groupdlg.cpp:984
 msgid "I can't find the group you want!"
 msgstr "Δεν μπορώ να βρώ την ομάδα που ζητάτε!"
 
-#: groupdlg.cpp:1068
+#: groupdlg.cpp:1077
 msgid "Getting messages in "
 msgstr "Κατέβασμα μηνυμάτων στο "
 
-#: groupdlg.cpp:1081
+#: groupdlg.cpp:1090
 msgid "Getting list of messages in "
 msgstr "Κατέβασμα καταλόγου μηνυμάτων στο "
 
@@ -404,23 +404,23 @@ msgstr "Διαχωρισμός..."
 msgid "Showing Article List"
 msgstr "Προβολή καταλόγου άρθρων"
 
-#: artdlg.cpp:1313
+#: artdlg.cpp:1314
 msgid "KRN - Existing File"
 msgstr "KRN - Υπαρκτό αρχείο"
 
-#: artdlg.cpp:1314
+#: artdlg.cpp:1315
 msgid "The File you selected already exists"
 msgstr "Το αρχείο που επιλέξατε υπάρχει ήδη"
 
-#: artdlg.cpp:1320
+#: artdlg.cpp:1321
 msgid "OverWrite"
 msgstr "Διαγραφή υπάρχοντος αρχείου"
 
-#: artdlg.cpp:1322
+#: artdlg.cpp:1323
 msgid "Append"
 msgstr "Επικόλληση στο υπάρχον αρχείο"
 
-#: artdlg.cpp:1357 artdlg.cpp:1422
+#: artdlg.cpp:1358 artdlg.cpp:1423
 msgid ""
 "From: Krn\n"
 "To: You\n"
@@ -434,7 +434,7 @@ msgstr ""
 "Σφάλμα κατά το κατέβασμα αρχείου.\n"
 "Ο εξυπηρετητής απάντησε:\n"
 
-#: artdlg.cpp:1524
+#: artdlg.cpp:1525
 msgid "Getting Article List"
 msgstr "Κατέβασμα καταλόγου άρθρων"
 
@@ -510,7 +510,7 @@ msgstr "Μέρος του KDE."
 msgid "Credits & Thanks"
 msgstr "Ευχαριστίες"
 
-#: aboutDlg.cpp:63
+#: aboutDlg.cpp:65
 msgid "And Many thanks to:"
 msgstr "Και πολλά ευχαριστώ προς:"
 

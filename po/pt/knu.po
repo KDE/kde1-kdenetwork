@@ -1,27 +1,33 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: knu\n"
-"POT-Creation-Date: 1998-05-30 17:38+0200\n"
+"POT-Creation-Date: 1998-06-11 23:07+0200\n"
 "PO-Revision-Date: 1998-01-22 00:00+0100\n"
 "Last-Translator: Pedro Morais <pmmm@camoes.rnl.ist.utl.pt>\n"
 
-#: knu.cpp:132 knu.cpp:275
+#: knu.cpp:139 knu.cpp:300
 msgid "&Ping"
 msgstr "&Ping"
 
-#: knu.cpp:141 knu.cpp:281
+#: knu.cpp:148 knu.cpp:306
 msgid "&Traceroute"
 msgstr "&Traçar rota"
 
-#: knu.cpp:150 knu.cpp:287
+#: knu.cpp:157 knu.cpp:312
 msgid "Host &resolution"
 msgstr "&Resolução da host"
 
-#: knu.cpp:163 knu.cpp:293
-msgid "&Finger"
+#: knu.cpp:170
+#, fuzzy
+msgid "F&inger"
 msgstr "&Finger"
 
-#: knu.cpp:174
+#: knu.cpp:180 knu.cpp:325
+#, fuzzy
+msgid "&Matt's traceroute"
+msgstr "&Traçar rota"
+
+#: knu.cpp:192
 msgid ""
 "There is no command enabled\n"
 "in the configuration file.\n"
@@ -33,31 +39,40 @@ msgstr ""
 "\n"
 "Por isso não posso fazer nada...\n"
 
-#: knu.cpp:219
+#: knu.cpp:237
 msgid "&New window"
 msgstr "&Nova janela"
 
-#: knu.cpp:222
+#: knu.cpp:240
 msgid "&Close window"
 msgstr "Fe&char janela"
 
-#: knu.cpp:233
+#: knu.cpp:251
 msgid "Select &all"
 msgstr "Seleccion&ar tudo"
 
-#: knu.cpp:236
+#: knu.cpp:254
 msgid "C&lear output window"
 msgstr "&Limpar janela de saída"
 
-#: knu.cpp:239
+#: knu.cpp:257
 msgid "P&references..."
 msgstr "P&referências"
 
-#: knu.cpp:249
+#: knu.cpp:272
+#, fuzzy, c-format
+msgid "&About %s"
+msgstr "Acerca do &Qt"
+
+#: knu.cpp:274
 msgid "About &Qt"
 msgstr "Acerca do &Qt"
 
-#: knu.cpp:432
+#: knu.cpp:318
+msgid "&Finger"
+msgstr "&Finger"
+
+#: knu.cpp:465
 msgid "About..."
 msgstr "Acerca..."
 
@@ -126,58 +141,66 @@ msgstr "Este comando foi desactivado no ficheiro de configuração"
 msgid " - configuration"
 msgstr " - configuração"
 
-#: PingDlg.cpp:94 TracerouteDlg.cpp:95
+#: PingDlg.cpp:98 TracerouteDlg.cpp:99
 msgid "Make host &name resolution"
 msgstr "Resolver o &nome da host"
 
-#: TracerouteDlg.cpp:112
+#: TracerouteDlg.cpp:116
 msgid "&Maximum number of hops:"
 msgstr "Número &máximo de hops:"
 
-#: HostDlg.cpp:105
+#: HostDlg.cpp:113
 msgid "address (A)"
 msgstr "endereço (A)"
 
-#: HostDlg.cpp:106
+#: HostDlg.cpp:114
 msgid "name (PTR)"
 msgstr "nome (PTR)"
 
-#: HostDlg.cpp:107
+#: HostDlg.cpp:115
 msgid "name server (NS)"
 msgstr "servidor de nomes (NS)"
 
-#: HostDlg.cpp:108
+#: HostDlg.cpp:116
 msgid "mail exchanger (MX)"
 msgstr "processador de mails (MX)"
 
-#: HostDlg.cpp:109
+#: HostDlg.cpp:117
 msgid "alias (CNAME)"
 msgstr "alias (CNAME)"
 
-#: HostDlg.cpp:110
+#: HostDlg.cpp:118
 msgid "start of authority (SOA)"
 msgstr "início de autoridade (SOA)"
 
-#: HostDlg.cpp:111
+#: HostDlg.cpp:119
 msgid "any record (ANY)"
 msgstr "qualquer registo (ANY)"
 
-#: HostDlg.cpp:117
+#: HostDlg.cpp:125
 msgid "Se&arch for:"
 msgstr "Procur&ar por:"
 
-#: HostDlg.cpp:129 HostDlg.cpp:268
+#: HostDlg.cpp:137 HostDlg.cpp:288
 msgid "default server"
 msgstr "servidor por omissão"
 
-#: HostDlg.cpp:138
+#: FingerDlg.cpp:94 HostDlg.cpp:146
 msgid "Ser&ver:"
 msgstr "Ser&vidor:"
 
-#: FingerDlg.cpp:68
-msgid "User:"
+#: HostDlg.cpp:332
+msgid "hos&t"
+msgstr ""
+
+#: HostDlg.cpp:336
+msgid "ns&lookup"
+msgstr ""
+
+#: FingerDlg.cpp:76
+#, fuzzy
+msgid "&User:"
 msgstr "Utilizador:"
 
-#: FingerDlg.cpp:86
-msgid "Server:"
-msgstr "Servidor:"
+#~ msgid "Server:"
+#~ msgstr "Servidor:"

@@ -1,29 +1,34 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: knu \n"
-"POT-Creation-Date: 1998-05-30 17:38+0200\n"
+"POT-Creation-Date: 1998-06-11 23:07+0200\n"
 "PO-Revision-Date: 1998-01-24 20:25+0100\n"
 "Last-Translator: Pawe³ Jab³oñski <pawel.jablonski@mail.lze.lodz.pl>\n"
 "Content-Type: text/plain; charset=iso8859-2\n"
 
-#: knu.cpp:132 knu.cpp:275
+#: knu.cpp:139 knu.cpp:300
 msgid "&Ping"
 msgstr "Pin&g"
 
-#: knu.cpp:141 knu.cpp:281
+#: knu.cpp:148 knu.cpp:306
 msgid "&Traceroute"
 msgstr "T&rasowanie"
 
-#: knu.cpp:150 knu.cpp:287
+#: knu.cpp:157 knu.cpp:312
 msgid "Host &resolution"
 msgstr "T³&umaczenie adresów"
 
-#: knu.cpp:163 knu.cpp:293
+#: knu.cpp:170
 #, fuzzy
-msgid "&Finger"
+msgid "F&inger"
 msgstr "Pin&g"
 
-#: knu.cpp:174
+#: knu.cpp:180 knu.cpp:325
+#, fuzzy
+msgid "&Matt's traceroute"
+msgstr "T&rasowanie"
+
+#: knu.cpp:192
 msgid ""
 "There is no command enabled\n"
 "in the configuration file.\n"
@@ -35,31 +40,41 @@ msgstr ""
 "\n"
 "Nic nie mogê zrobiæ...\n"
 
-#: knu.cpp:219
+#: knu.cpp:237
 msgid "&New window"
 msgstr "&Nowe okno"
 
-#: knu.cpp:222
+#: knu.cpp:240
 msgid "&Close window"
 msgstr "&Zamknij okno"
 
-#: knu.cpp:233
+#: knu.cpp:251
 msgid "Select &all"
 msgstr "Wybierz &wszystko"
 
-#: knu.cpp:236
+#: knu.cpp:254
 msgid "C&lear output window"
 msgstr "Wyczy¶æ &okno komunikatów"
 
-#: knu.cpp:239
+#: knu.cpp:257
 msgid "P&references..."
 msgstr "&Ustawienia..."
 
-#: knu.cpp:249
+#: knu.cpp:272
+#, fuzzy, c-format
+msgid "&About %s"
+msgstr "Informacje o &Qt"
+
+#: knu.cpp:274
 msgid "About &Qt"
 msgstr "Informacje o &Qt"
 
-#: knu.cpp:432
+#: knu.cpp:318
+#, fuzzy
+msgid "&Finger"
+msgstr "Pin&g"
+
+#: knu.cpp:465
 msgid "About..."
 msgstr "&Informacje o knu"
 
@@ -121,62 +136,69 @@ msgstr "To polecenie zosta³o zablokowane w pliku konfiguracyjnym."
 msgid " - configuration"
 msgstr " - konfiguracja"
 
-#: PingDlg.cpp:94 TracerouteDlg.cpp:95
+#: PingDlg.cpp:98 TracerouteDlg.cpp:99
 msgid "Make host &name resolution"
 msgstr "T³umacz a&dresy"
 
-#: TracerouteDlg.cpp:112
+#: TracerouteDlg.cpp:116
 msgid "&Maximum number of hops:"
 msgstr "&Maksymalna liczba skoków:"
 
-#: HostDlg.cpp:105
+#: HostDlg.cpp:113
 msgid "address (A)"
 msgstr "address (A)"
 
-#: HostDlg.cpp:106
+#: HostDlg.cpp:114
 msgid "name (PTR)"
 msgstr "name (PTR)"
 
-#: HostDlg.cpp:107
+#: HostDlg.cpp:115
 msgid "name server (NS)"
 msgstr "name server (NS)"
 
-#: HostDlg.cpp:108
+#: HostDlg.cpp:116
 msgid "mail exchanger (MX)"
 msgstr "mail exchanger (MX)"
 
-#: HostDlg.cpp:109
+#: HostDlg.cpp:117
 msgid "alias (CNAME)"
 msgstr "alias (CNAME)"
 
-#: HostDlg.cpp:110
+#: HostDlg.cpp:118
 msgid "start of authority (SOA)"
 msgstr "start of authority (SOA)"
 
-#: HostDlg.cpp:111
+#: HostDlg.cpp:119
 msgid "any record (ANY)"
 msgstr "any record (ANY)"
 
-#: HostDlg.cpp:117
+#: HostDlg.cpp:125
 msgid "Se&arch for:"
 msgstr "&Szukaj:"
 
-#: HostDlg.cpp:129 HostDlg.cpp:268
+#: HostDlg.cpp:137 HostDlg.cpp:288
 msgid "default server"
 msgstr "domy¶lny serwer"
 
-#: HostDlg.cpp:138
+#: FingerDlg.cpp:94 HostDlg.cpp:146
 msgid "Ser&ver:"
 msgstr "Ser&wer:"
 
-#: FingerDlg.cpp:68
-msgid "User:"
+#: HostDlg.cpp:332
+msgid "hos&t"
 msgstr ""
 
-#: FingerDlg.cpp:86
+#: HostDlg.cpp:336
+msgid "ns&lookup"
+msgstr ""
+
+#: FingerDlg.cpp:76
+msgid "&User:"
+msgstr ""
+
 #, fuzzy
-msgid "Server:"
-msgstr "Ser&wer:"
+#~ msgid "Server:"
+#~ msgstr "Ser&wer:"
 
 #~ msgid ""
 #~ "You have a problem in your ~/.kde/share/config/knurc configuration file.\n"
