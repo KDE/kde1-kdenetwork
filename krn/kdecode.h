@@ -23,7 +23,7 @@ public:
     static const char* encodeString(const char* data, QString type);
 
 public slots:
-    void decode(int ID,int);
+    void decode(int ID,char *destName=0);
 
 signals:
     void message();

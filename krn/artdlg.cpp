@@ -1234,9 +1234,7 @@ void Artdlg::decArt (int index,int)
     {
         if (!s->isEmpty())
         {
-            QString p;
-            p=cachepath+"/"+art.ID;
-            decoder->load (p.data());
+            decoder->load (cachepath+"/"+art.ID+".body");
             art.setAvailable(true);
         }
         delete s;

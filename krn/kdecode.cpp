@@ -24,6 +24,7 @@ KDecode::KDecode()
 {
     dialog=new decoderDlg (klocale->translate("KRN-Decoder"));
 
+    //XXXXX
     connect (dialog->list,SIGNAL(selected(int,int)),this,SLOT(decode(int,int)));
 }
 
@@ -115,12 +116,16 @@ void KDecode::showWindow()
     filenames.clear();
 }
 
-void KDecode::decode(int line,int)
+void KDecode::decode(int line,char *destName)
 {
     uulist *l;
     int i=dialog->list->text(line,0).toInt()-1;
     l=UUGetFileListItem(i);
-    QString f= QFileDialog::getSaveFileName(0,0,0,l->filename);
+    QString f;
+    if (!destName)
+        f= QFileDialog::getSaveFileName(0,0,0,l->filename);
+    else
+        f=destName;
     if (!f.isEmpty())
     {
         i=UUDecodeFile (l,f.data());

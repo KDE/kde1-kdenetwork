@@ -2,6 +2,7 @@
 #define decoderDlg_included
 
 #include <qdialog.h>
+#include <qlined.h>
 
 #include "ktablistbox.h"
 
@@ -16,9 +17,12 @@ public:
     
     virtual ~decoderDlg();
     KTabListBox *list;
+    QLineEdit *destdir;
 
 private slots:
     void actions(int);
+    void decodeAll();
+    void close();
     
 };
 #endif // decoderDlg_included
