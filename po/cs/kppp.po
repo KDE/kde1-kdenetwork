@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kppp 0.9.6\n"
 "POT-Creation-Date: 1998-12-24 02:00+0100\n"
-"PO-Revision-Date: 1998-12-23 20:42 CET\n"
+"PO-Revision-Date: 1998-12-25 18:56 CET\n"
 "Last-Translator: Miroslav Flídr <flidr@kky.zcu.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1407,11 +1407,11 @@ msgstr "Graf"
 
 #: main.cpp:805
 msgid "Timeout expired while waiting for the PPP interface to come up!"
-msgstr ""
+msgstr "Vypr¹el èas pøi èekání na start PPP interfacu!"
 
 #: main.cpp:810
 msgid "The pppd daemon died unexpectedly!"
-msgstr ""
+msgstr "Pppd démon neoèekávanì skonèil!"
 
 #: main.cpp:818
 msgid "Details..."
@@ -1660,6 +1660,13 @@ msgid ""
 "\n"
 "chown {YourUsername} .kde/share/config/kppprc"
 msgstr ""
+"Nebylo mo¾né otevøít konfiguraèní soubor aplikace\n"
+"ani pro ètení a zápis ani pro ètení.\n"
+"\n"
+"Superu¾ivatel by mohl zmìnit jeho pøístupová práva\n"
+"vykonáním následujícího pøíkazu ve Va¹em domovském\n"
+"adresáøi:\n"
+"chown {Va¹eU¾ivatelskéJméno} .kde/share/config/kppprc"
 
 #: modeminfo.cpp:38
 msgid "ATI Query"
