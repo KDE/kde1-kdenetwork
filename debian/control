@@ -6,7 +6,7 @@ Standards-Version: 2.5.0
 
 Package: kdenetwork
 Architecture: any
-Depends: ${shlibs:Depends}, perl
+Depends: ${shlibs:Depends}, perl | perl-5.005
 Suggests: kdebase
 Description: KDE mail and news clients
  KDE has a mail client (kmail) and a news client (krn) available via
