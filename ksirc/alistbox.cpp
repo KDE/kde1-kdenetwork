@@ -103,19 +103,21 @@ int aListBox::searchFor(QString nick, bool &found, bool top) /*FOLD00*/
     current = (min + max)/2; // + (max-min)%2;
     insert = current;
     int last_current = -1;
-    uint loop = 0;
+    uint loop = 0;           // Most loops should be log_2 count(), but...
     do {
       if(current == last_current){
 //        debug("Insert looping on %s", nick.data());
         //      current++;
         break; // we're looping, so stop
       }
+      if(current >= max)
+        break; // Don't go too far
       last_current = current;
 
       compare = strcasecmp(text(current), nick.data());
       if(compare < 0){
         min = current;
-        insert = current + 1;
+	insert = current + 1;
 //	debug("1 < 0: %s is greater then: %s, min: %d max: %d current: %d", nick.data(), text(current), min, max, current);
       }
       else if(compare > 0){
@@ -130,19 +132,25 @@ int aListBox::searchFor(QString nick, bool &found, bool top) /*FOLD00*/
       }
       current = (min + max)/2;
       loop++; // Infinite loop detector increment
-    } while(max != min && loop < count());    
+    } while(max != min && loop < count());
 
-    if(current == real_max - 1){
-      compare = strcasecmp(text(count()-1), nick.data());
+    if(current >= real_max - 1){
+      compare = strcasecmp(text(real_max), nick.data());
       if(compare < 0){
 	min = current;
-	insert += 1;
+	insert = real_max + 1;
 	debug("End check got one!");
       }
-      else if (compare == 0){// We got a match?
+      else if (compare == 0){// We got a match
 	insert = current;
 	found = TRUE;
       }
+    }
+
+    // Sanity check
+    if((top == TRUE && insert > sep) ||
+       (top == FALSE && insert < sep)){
+      insert = sep;
     }
 
     if(loop == count())

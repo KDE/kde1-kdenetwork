@@ -2145,7 +2145,7 @@ while (1) {
     } elsif ($cmd eq 'PART') {
       &yetonearg;
       if (&eq($who, $nick)) {
-	&tell("~!all~*\cb<\cb* You have left channel $newarg");   # MOD FOR KSIRC
+        #        &tell("~!all~*\cb<\cb* You have left channel $newarg");   # MOD FOR KSIRC
 	@channels=grep(!&eq($_, $newarg), @channels);
 	if (@channels) {
 	  $talkchannel=$channels[$#channels];
@@ -2171,7 +2171,7 @@ while (1) {
 	$talkchannel=$newarg;
 	&dohooks("join", $newarg);
 	&dostatus;
-	&tell("~${newarg}~*\cb>\cb* You have joined channel $newarg");   # MOD FOR KSIRC
+        &tell("~${newarg}~*\cb>\cb* You have joined channel $newarg");   # MOD FOR KSIRC
 	&sl("MODE $newarg");
       } else {
 	&dohooks("join", $newarg);
