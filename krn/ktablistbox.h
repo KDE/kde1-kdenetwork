@@ -142,6 +142,7 @@ public:
 	// Returns TRUE if we are dragging, FALSE if drag-start failed.
 
   QPixmap& dndPixmap(void) { return dndDefaultPixmap; }
+  KTabListBoxItem* getItem (int idx);
 
 signals:
   void highlighted (int Index, int column);
@@ -163,7 +164,6 @@ protected:
   void updateItem (int idx, bool clear = TRUE);
   bool needsUpdate (int id) { return (lbox.autoUpdate() && itemVisible(id)); }
 
-  KTabListBoxItem* getItem (int idx);
 
   virtual void resizeEvent (QResizeEvent*);
   virtual void paintEvent (QPaintEvent*);

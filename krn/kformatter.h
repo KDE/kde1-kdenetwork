@@ -12,7 +12,7 @@
 class KFormatter
 {
 public:
-    KFormatter(QString saveWidget, QString viewWidget, QString msg);
+    KFormatter(QString msg);
     ~KFormatter();
     QString htmlPart(QList<int> partno);
     QString htmlHeader();
@@ -33,11 +33,15 @@ private:
     QString text_plainFormatter(QString data, QList<int> part);
     QString text_x_vcardFormatter(QString data, QList<int> part);
     QString text_richtextFormatter(QString data, QList<int> part);
+    QString text_htmlFormatter(QString data, QList<int> partno);
                 
     QString saveLink(QList<int> part, char* text);
+    QString viewLink(QList<int> part, char* text);
     QString mailLink(QString reciptent, char* text);
     bool dump(QList<int> part, QString fileName);
+    void renderWidgets();
 
+    int saveWidgetNumber, viewWidgetNumber;
     QString saveWidgetName, viewWidgetName;
     DwMessage* message;
     QString* dateFmt;

@@ -1,14 +1,17 @@
-
+#include "kdecode.h"
+#include <malloc.h>
+#include <stdio.h>
+#undef Unsorted
 #include <qfiledlg.h>
 #include <qfile.h>
-#include <stdio.h>
 #include <qstring.h>
 #include <qstrlist.h>
-#include <malloc.h>
+#include <Kconfig.h>
+#include <kapp.h>
 #include <uudeview.h>
-#include "kdecode.h"
 #include <mimelib/string.h>
 #include <mimelib/mimepp.h>
+#include "ktempfile.h"
 
 void MsgCallBack(void *,char *msg, int )
 {
@@ -154,13 +157,41 @@ void KDecode::decode(int line,int)
 const char* KDecode::decodeString(const char* data, QString type)
 {
     type=type.lower();
+    debug("decoding %s",type.data());
     if(type=="base64") DwDecodeBase64(data,data);
     else if(type=="quoted-printable") DwDecodeQuotedPrintable(data,data);
+    else if(type=="8bit") warning("Raw 8 bit data read. Thins may look strange");
     else if(type!="7bit")
     {
-        warning("%s: Unsupported encoding type: %s",
-                __FUNCTION__,type.data());
+        KConfig* conf=kapp->getConfig();
+        conf->setGroup("Decoders");
+        if(conf->hasKey(type.data()))
+        {
+            KTempFile tempfile;
+            QString plugin=conf->readEntry(type);
+            debug("Plug-in found: %s",plugin.data());
+            int i=tempfile.create("decode_in","");
+            int o=tempfile.create("decode_out","");
+            QFile* f=tempfile.file(i);
+            f->open(IO_WriteOnly);
+            f->writeBlock(data,strlen(data));
+            f->close();
+            system(plugin+" <"+tempfile.file(i)->name()+" >"+
+            tempfile.file(o)->name());
+            f=tempfile.file(o);
+            f->open(IO_ReadOnly);
+            char* ndata=(char*)malloc(f->size());
+            f->readBlock(ndata,f->size());
+            f->close();
+            tempfile.remove(i);
+            tempfile.remove(o);
+            return ndata;
+        }
+                                                                                                                                                                                                                                                                                                                 
+        warning("KDecode::decodeString(): Unsupported encoding type: %s.",
+                type.data() );
         return NULL;
     }
+    debug("decoded data: %s",data);
     return data;
 }

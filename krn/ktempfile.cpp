@@ -7,7 +7,6 @@
 KTempFile::KTempFile()
           :QCollection()
 {
-    debug("%s",__FUNCTION__);
     char* tmp=tmpnam(NULL);
     mdir=tmp;
     mkdir(mdir,S_IRWXU);

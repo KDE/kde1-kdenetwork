@@ -52,7 +52,6 @@ signals:
 
 private slots:
     void URLClicked(const char*,int);
-    void renderWidgets();
     void adjustScrollers();
 
 private:
@@ -61,7 +60,6 @@ private:
     KFormatter* format;    
 
     bool dump(char* part, QString fileName);
-    QString saveWidgetName, viewWidgetName;
     
     QStrList tmpFiles;
 

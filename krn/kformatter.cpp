@@ -9,11 +9,15 @@
 #include <qregexp.h>
 #include <kapp.h>
 #include <mimelib/mimepp.h>
+#include <qpushbt.h>
 
-KFormatter::KFormatter(QString sWN, QString vWN, QString s)
+KFormatter::KFormatter(QString s)
 {
-    saveWidgetName=sWN;
-    viewWidgetName=vWN;
+    saveWidgetNumber=tempfile.create("widget",".xpm");
+    saveWidgetName=tempfile.file(saveWidgetNumber)->name();
+    viewWidgetNumber=tempfile.create("widget",".xpm");
+    viewWidgetName=tempfile.file(viewWidgetNumber)->name();
+    renderWidgets();
     message=new DwMessage(s.data());
     message->Parse();
     
@@ -95,8 +99,31 @@ bool KFormatter::isMultiPart(QList<int> part)
 const char* KFormatter::rawPart(QList<int> partno)
 {
     DwBodyPart* body=getPart(partno);
-    const char* data=body->Body().AsString().data();
-    return data;
+    const char* udata=body->Body().AsString().data();
+    if(udata==NULL)
+    {
+        warning("Could not read message part %s!",listToStr(partno).data());
+        return NULL;
+    }
+    
+    QString encoding;
+
+    if(body->Header().HasCte())
+    {
+        encoding=body->Header().ContentTransferEncoding().AsString().data();
+        encoding=encoding.lower();
+    }
+    else
+    {
+        debug("No encoding, assuming 7bit");
+        encoding="7bit";
+    }
+    
+    const char* data=KDecode::decodeString(udata,encoding);
+    if(data==NULL) warning("Could not decode data of type %s in part %s!",
+                           encoding.data(), listToStr(partno).data());
+
+    return udata;
 }   
 
 QString KFormatter::htmlAll()
@@ -166,10 +193,12 @@ QString KFormatter::htmlPart(QList<int> partno)
     debug("Formatting part %s: baseType: %s subType: %s wholeType: %s, encoding=%s",listToStr(partno).data(), baseType.data(), subType.data(), wholeType.data(),encoding.data());
     
     const char* udata=body->Body().AsString().data();
-    debug("udata: %s",udata);
+    if(udata==NULL) debug("<b>This message part could not be read</b>");
+    //debug("udata: %s",udata);
     
     const char* data=KDecode::decodeString(udata,encoding);
-    debug("data: %s",data);
+    if(data==NULL) return "<b>This message part could not be decoded</b>";
+    //debug("data: %s",data);
     
     if (baseType=="text")
     {
@@ -177,7 +206,7 @@ QString KFormatter::htmlPart(QList<int> partno)
         if (subType=="html")
         {
             debug ("Found text/html part.");
-            return data;
+            return text_htmlFormatter(data,partno);
         }
         else if (subType=="plain")
         {
@@ -360,9 +389,9 @@ QString KFormatter::htmlPart(QList<int> partno)
         debug ("Found some part! (%s)",wholeType.data());
         QString part;
         part.sprintf("This message part consists of an attachment of an "
-                     "unsupported type (%s)<br>.\n%s",
+                     "unsupported type (%s)<br>.\n%s%s",
                      wholeType.data(),
-                     saveLink(partno, "").data() );
+                     saveLink(partno, "").data(),viewLink(partno,"").data() );
         return part;
     }
 }
@@ -384,6 +413,17 @@ QString KFormatter::saveLink(QList<int> part, char* text)
     link.sprintf("<a href=\"save://%d/%s\">%s<img src=%s alt=\"save\"></a>",
                  listToStr(part).data(), type.data(), text,
                  saveWidgetName.data() );
+    return link;
+}
+
+QString KFormatter::viewLink(QList<int> part, char* text)
+{
+    QString type=getType(part);
+    
+    QString link;
+    link.sprintf("<a href=\"view://%d/%s\">%s<img src=%s alt=\"view\"></a>",
+                 listToStr(part).data(), type.data(), text,
+                 viewWidgetName.data() );
     return link;
 }
 
@@ -512,14 +552,14 @@ QString KFormatter::htmlHeader()
 QString KFormatter::image_jpegFormatter(QByteArray data, QList<int> partno)
 {
     QString part;
-    QString name=tmpnam(NULL);
-    QFile file(name);
-    file.open(IO_WriteOnly);
-    file.writeBlock(data.data(),data.size());
-    file.close();
+    int fn=tempfile.create("image",".jpg");
+    QFile* file=tempfile.file(fn);
+    file->open(IO_WriteOnly);
+    file->writeBlock(data.data(),data.size());
+    file->close();
     QString link;
     link.sprintf("<img src=%s alt=\"%d kb image\">",
-                 name.data(), QFileInfo(name).size()/1024 );
+                 file->name(), tempfile.info(fn)->size()/1024 );
     part.sprintf("Attached jpeg image<br>\n %s",
                  saveLink(partno, link.data()).data() );
     /*
@@ -732,6 +772,20 @@ QString KFormatter::text_richtextFormatter(QString data, QList<int>)
     
 }
 
+QString KFormatter::text_htmlFormatter(QString data, QList<int> )
+{
+    data.replace(QRegExp("<html>",FALSE),"");
+    data.replace(QRegExp("</html>",FALSE),"");
+    data.replace(QRegExp("<head>",FALSE),"");
+    data.replace(QRegExp("</head>",FALSE),"");
+    data.replace(QRegExp("<body>",FALSE),"");
+    data.replace(QRegExp("</body>",FALSE),"");
+    data.replace(QRegExp("<title>",FALSE),"<b>Title: </b>");
+    data.replace(QRegExp("</title>",FALSE),"");
+
+    return data;    
+}
+
 QString KFormatter::listToStr(QList<int> l)
 {
     QString r;
@@ -810,4 +864,25 @@ unsigned int KFormatter::rateType(QString baseType, QString subType)
     }
     
     else return 0;
+}
+
+void KFormatter::renderWidgets()
+{
+    QPushButton saveButton("save");
+    QPixmap* saveImage = new QPixmap(saveButton.size());
+    
+    bitBlt(saveImage, QPoint(0,0), &saveButton, saveButton.rect(), CopyROP );
+    if(saveImage->isNull()) debug("Strange");
+    if(!saveImage->save(saveWidgetName,"XBM"))
+        debug("Unable to save sW");
+    else
+        debug("save widget saved as %s", saveWidgetName.data());
+    QPushButton viewButton("view");
+    QPixmap* viewImage = new QPixmap(viewButton.size());
+    
+    bitBlt(viewImage, QPoint(0,0), &viewButton, viewButton.rect(), CopyROP );
+    if(!viewImage->save(viewWidgetName,"XBM"))
+        debug("Unable to save vW");
+    else
+        debug("view widget saved as %s",viewWidgetName.data());
 }

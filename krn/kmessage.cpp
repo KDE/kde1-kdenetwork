@@ -58,15 +58,6 @@ Kmessage::Kmessage
     
     KApplication::connect(view,SIGNAL(URLSelected(const char*,int)),this,SLOT(URLClicked(const char*,int)));
     
-    saveWidgetName=tmpnam(NULL);
-    tmpFiles.append(saveWidgetName);
-    viewWidgetName=tmpnam(NULL);
-    tmpFiles.append(viewWidgetName);
-    
-    renderWidgets();
-    KApplication::connect(kapp,SIGNAL(kdisplayPaletteChanged()),this, SLOT(renderWidgets()));
-    KApplication::connect(kapp,SIGNAL(kdisplayStyleChanged()),this, SLOT(renderWidgets()));
-    KApplication::connect(kapp,SIGNAL(kdisplayFontChanged()),this, SLOT(renderWidgets()));
     QObject::connect( view, SIGNAL( documentChanged() ), SLOT( adjustScrollers() ) );
     vertScroller=new QScrollBar(0, view->docHeight(), 16, height(), 0,
                                 QScrollBar::Vertical,this);
@@ -90,7 +81,7 @@ Kmessage::~Kmessage()
 
 void Kmessage::loadMessage( QString message )
 {
-    format=new KFormatter(saveWidgetName,viewWidgetName,message);
+    format=new KFormatter(message);
     CHECK_PTR(format);
     
     view->begin();
@@ -239,11 +230,23 @@ void Kmessage::URLClicked(const char* s,int)
         dump(url.host(),name);
         
     }
+    else if(strcmp(url.protocol(),"view")==0)
+    {
+        if(fork()==0)
+        {
+            KTempFile t;
+            QString name=t.file(t.create("mailcap",""))->name();
+            dump(url.host(),name);
+            QString cmd;
+            cmd.sprintf("metamail -b -c %s -m Krn -z %s",url.path(),name.data());
+            system(cmd);
+        }
+    }    
 }
 
 bool Kmessage::dump(char* part, QString fileName)
 {
-//    debug("Dumping part %d as %s",part, fileName.data());
+//    debug("Dumping part %s as %s",part, fileName.data());
     
     QList<int> n=format->strToList(part);
     const char* data=format->rawPart(n);
@@ -258,24 +261,4 @@ bool Kmessage::dump(char* part, QString fileName)
     }
     file.close();
     return TRUE;
-}
-
-void Kmessage::renderWidgets()
-{
-    unlink(saveWidgetName);
-    QPushButton saveButton("save");
-    QPixmap* saveImage = new QPixmap(saveButton.size());
-    
-    bitBlt(saveImage, QPoint(0,0), &saveButton, saveButton.rect(), CopyROP );
-    if(saveImage->isNull()) debug("Strange");
-    if(!saveImage->save(saveWidgetName,"XBM")) debug("Unable to save sW");
-    else debug("save widget saved as %s",saveWidgetName.data());
-    
-    unlink(viewWidgetName);
-    QPushButton viewButton("view");
-    QPixmap* viewImage = new QPixmap(viewButton.size());
-    
-    bitBlt(viewImage, QPoint(0,0), &viewButton, viewButton.rect(), CopyROP );
-    if(!viewImage->save(viewWidgetName,"XBM")) debug("Unable to save vW");
-    else debug("view widget saved as %s",viewWidgetName.data());
 }
