@@ -88,7 +88,8 @@ mimelib_headers = \
    uuencode.h \
    binhex.h
 
-CXXFLAGS = -D$(LIBVERSION)  @CXXFLAGS@
+INCLUDES = -I.
+DEFS = -D$(LIBVERSION) @DEFS@
 
 install-data-local:
 	$(mkinstalldirs) $(includedir)/mimelib
