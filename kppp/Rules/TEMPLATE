@@ -115,3 +115,18 @@ on (easter) between () use (0.3,72)
 on (easter+50) between () use (0.3,72)
 
 on (thursday) between (20:00..21:52) use (8.2, 1)
+
+
+# The "on()" rules above all relates to current time only. You can also
+# make a rule depend on the number of seconds you have been connected
+# by specifying this time as a third argument to "use()".
+# For instance, let's say normal rate in the evening is 0.20 per minute,
+# and it drops by 20% after one hour of connect time. This can be modelled
+# like:
+
+on () between (19:30..08:00) use (0.20, 60)
+on () between (19:30..08:00) use (0.16, 60, 3600)
+
+# Note that these rules, just like other rules, are sensitive to the 
+# order in which they appear.
+
