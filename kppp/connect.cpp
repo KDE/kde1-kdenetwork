@@ -91,12 +91,14 @@ ConnectWidget::ConnectWidget(QWidget *parent, const char *name)
   messg->setAlignment(AlignCenter);
   messg->setText(klocale->translate("Sorry, can't create modem lock file."));  
   messg->setMinimumHeight(messg->sizeHint().height() + 5);
-  messg->setMinimumWidth((messg->sizeHint().width() * 12) / 10);
+  int messw = (messg->sizeHint().width() * 12) / 10;
+  messw = QMAX(messw,280);
+  messg->setMinimumWidth(messw);
   messg->setText(klocale->translate("Looking for Modem ..."));
+  l0->addSpacing(10);
   l0->addWidget(messg);
   l0->addSpacing(10);
 
-  //  tl->addSpacing(5);
   QHBoxLayout *l1 = new QHBoxLayout(10);
   tl->addLayout(l1);
   l1->addStretch(1);
