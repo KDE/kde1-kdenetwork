@@ -56,23 +56,29 @@ void aHistLineEdit::keyPressEvent ( QKeyEvent *e )
     QString s;
     s.insert( 0, text() );
     switch ( e->key() ) {
-      case Key_B:
-        s.insert( s.length(), 0x02 );
-        break;
-      case Key_U:
-        s.insert( s.length(), 0x1f );
-        break;
-      case Key_R:
-        s.insert( s.length(), 0x16 );
-        break;
-      case Key_K:
-        s.insert( s.length(), 0x03 );
-        break;
-      case Key_O:
-        s.insert( s.length(), 0x0f );
-        break;
+    case Key_B:
+      s.insert( s.length(), 0x02 );
+      break;
+    case Key_U:
+      s.insert( s.length(), 0x1f );
+      break;
+    case Key_R:
+      s.insert( s.length(), 0x16 );
+      break;
+    case Key_K:
+      s.insert( s.length(), 0x03 );
+      break;
+    case Key_O:
+      s.insert( s.length(), 0x0f );
+      break;
+    case Key_I:
+      s.append("~i");
+      break;
+    default:
+      QLineEdit::keyPressEvent(e);
     }
-    setText(s);
+    if(strcmp(s, text()) != 0)
+      setText(s);
   }
   else{
     switch(e->key()){
