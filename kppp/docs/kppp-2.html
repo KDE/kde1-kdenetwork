@@ -1,56 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
 <HTML>
 <HEAD>
 <TITLE>The Kppp Handbook: Installation</TITLE>
 </HEAD>
 <BODY>
-<A HREF="kppp-1.html">Previous</A>
 <A HREF="kppp-3.html">Next</A>
-<A HREF="kppp.html#toc2">Table of Contents</A>
+<A HREF="kppp-1.html">Previous</A>
+<A HREF="kppp.html#toc2">Contents</A>
 <HR>
 <H2><A NAME="s2">2. Installation</A></H2>
 
-
-<P> <CODE> PLEASE DON'T FORGET TO READ THE FREQUENTLY ASKED QUESTIONS! THANK YOU! </CODE></P>
-
-<H2><A NAME="ss2.1">2.1 How to obtain Kppp</A></H2>
+<P>
+<P> <CODE> PLEASE DON'T FORGET TO READ THE FREQUENTLY ASKED QUESTIONS! THANK YOU! </CODE>
+<P>
+<H2><A NAME="ss2.1">2.1 How to obtain Kppp</A>
+</H2>
 
 <P>Kppp is an application for the KDE project 
 <A HREF="http://www.kde.org">http://www.kde.org</A>.
 Kppp can be found on 
 <A HREF="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</A>, the main ftp site
-of the KDE project.</P>
-
-
-<H2><A NAME="ss2.2">2.2 Requirements</A></H2>
+of the KDE project.
+<P>
+<H2><A NAME="ss2.2">2.2 Requirements</A>
+</H2>
 
 <P>In order to successfully compile Kppp, you need the latest versions of <CODE> libkdecore</CODE>
 and <CODE> libkdeui</CODE>. All required libraries as well as Kppp itself can be found
 on 
-<A HREF="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</A>. </P>
+<A HREF="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</A>. 
+<P>
+<H2><A NAME="ss2.3">2.3 Compilation and installation</A>
+</H2>
 
-
-<H2><A NAME="ss2.3">2.3 Compilation and installation</A></H2>
-
-
-<P> <CODE> PLEASE DON'T FORGET TO READ THE FREQUENTLY ASKED QUESTIONS! THANK YOU! </CODE></P>
-
+<P>
+<P> <CODE> PLEASE DON'T FORGET TO READ THE FREQUENTLY ASKED QUESTIONS! THANK YOU! </CODE>
+<P>
 <P>I haven't been able to test kppp on anything else but Linux, but you should
 be able to get pppd to work on a variety of platforms including but not
 limited to SVR4, Solaris 2, Linux, FreeBSD, NetBSD, SunOS 4, AIX 4, OSF/1 as long
-as you have pppd installed on those systems.</P>
-
+as you have pppd installed on those systems.
+<P>
 <P>If wish to compile kppp on a platform  different from Linux, please check briefly the
 first couple of lines of  pppstats.cpp and make sure the defines and includes are O.K.
-Most like however they should be fine. Please inform me of any necessary changes.</P>
-
+Most like however they should be fine. Please inform me of any necessary changes.
+<P>
 <P>Kppp needs write permission to /etc/resolv.conf if you want to be able
 to take advantage of its capability to let you specify the DNS addresses 
-in the DNS dialog.</P>
-
+in the DNS dialog.
+<P>
 <P>Make sure that the pppd's option file which usually resides in <CODE> /etc/ppp/</CODE>
 exists, but is empty. pppd requires it to exist, but it must be empty otherwise
-pppd will not take its options from kppp.</P>
-
+pppd will not take its options from kppp.
+<P>
 <P>In order to compile and install Kppp on your system, type the following in the base 
 directory of the Kppp distribution:
 <BLOCKQUOTE><CODE>
@@ -61,15 +63,14 @@ directory of the Kppp distribution:
 % chmod +s $(KDE)/bin/kppp
 </PRE>
 </CODE></BLOCKQUOTE>
-</P>
-<P><B>Again:</B> Should you run into problems, please report them to me. </P>
+<P><B>Again:</B> Should you run into problems, please report them to me. 
+<P>
+<P>
+<H2><A NAME="ss2.4">2.4 Preparing Your Linux System for a PPP Connection</A>
+</H2>
 
-
-
-<H2><A NAME="ss2.4">2.4 Preparing Your Linux System for a PPP Connection</A></H2>
-
-
-<P> <CODE> PLEASE DON'T FORGET TO READ THE FREQUENTLY ASKED QUESTIONS! THANK YOU!</CODE></P>
+<P>
+<P> <CODE> PLEASE DON'T FORGET TO READ THE FREQUENTLY ASKED QUESTIONS! THANK YOU!</CODE>
 <P>In order for kppp/pppd to work your kernel must have ppp support compiled in. If this is
 not the case get yourself the latest version of 
 <A HREF="ftp://sunsite.unc.edu/pub/Linux/system/Network/serial/ppp/">pppd</A>
@@ -77,8 +78,8 @@ from any of the popular Linux archives and recompile your kernel with ppp
 support enabled. Don't fret since this sounds scarier than it actually is.
 Don't forget to install pppd afterwards. If unsure whether you
 have a kernel with ppp support issue <CODE>dmesg</CODE> at the command prompt
-and look for something like this:</P>
-
+and look for something like this:
+<P>
 <P>
 <BLOCKQUOTE><CODE>
 <PRE>
@@ -88,41 +89,37 @@ PPP Dynamic channel allocation code copyright 1995 Caldera, Inc.
 PPP line discipline registered
 </PRE>
 </CODE></BLOCKQUOTE>
-</P>
-
+<P>
 <P>There were changes in the kernel PPP from Linux version 1.2.x to 2.0.x
 which forced the programming of a new pppd daemon. In most distributions,
 the pppd daemon can be found in <CODE>/usr/sbin</CODE>. For kernel versions 1.2.x, the
 correct version of the pppd daemon is 2.1; for kernel versions 2.0.x, the
 correct version is 2.2. or newer. If you don't know what version of the
-pppd daemon your system has, you can type:</P>
-
+pppd daemon your system has, you can type:
+<P>
 <P>
 <BLOCKQUOTE><CODE>
 <PRE>
 % pppd --version
 </PRE>
 </CODE></BLOCKQUOTE>
-</P>
-
+<P>
 <P>None of the pppd daemons actually have a --version option, but putting
 the option in will cause the pppd daemon to error out from a unrecognised
 option and print out a list of options, which includes the version of the
-pppd daemon. </P>
-
-
-
-<H2><A NAME="ss2.5">2.5 More about ppp/pppd</A></H2>
+pppd daemon. 
+<P>
+<P>
+<H2><A NAME="ss2.5">2.5 More about ppp/pppd</A>
+</H2>
 
 <P>The following site may be of interest for further information about the 
 ppp protocol and pppd 
-<A HREF="http://www.thoughtport.com:8080/PPP/index.html">http://www.thoughtport.com:8080/PPP/index.html</A></P>
-
-
-
+<A HREF="http://www.thoughtport.com:8080/PPP/index.html">http://www.thoughtport.com:8080/PPP/index.html</A><P>
+<P>
 <HR>
-<A HREF="kppp-1.html">Previous</A>
 <A HREF="kppp-3.html">Next</A>
-<A HREF="kppp.html#toc2">Table of Contents</A>
+<A HREF="kppp-1.html">Previous</A>
+<A HREF="kppp.html#toc2">Contents</A>
 </BODY>
 </HTML>

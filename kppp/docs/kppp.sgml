@@ -573,14 +573,14 @@ that speed often works.
 <tscreen><verb>
 ATZ		# reset to default profile
 ATS11=50	# fastest possible dialing, use a higher number if it doesn't work.
-AT&amp;W		# Write to default profile
+AT&amp;W	# Write to default profile
 </verb></tscreen>
 
 <sect>Questions and answers<p>
 
 <sect1>Frequently Asked Questions about kppp<p><p>
 <sect2>I can't get kppp to work. kppp tells me that pppd has died! <p>
-You didn't read the docs carefully. Here once more the most common
+Did you read the this manual carefully? Here once more the most common
 pitfalls.
 
 <itemize>
@@ -624,6 +624,21 @@ kppp setuid root permissions do the following:
 </verb></tscreen>
 <p>
 
+<sect2>Why is Kppp installed with the SETUID bit on?
+<p>
+
+There is no need for the SETUID bit, if you know a bit of Unix systems 
+administration. Simply create a modem group, add all users that you
+want to give access to the modem to that group and make the modem
+device read/writeable for that group. Also if you wnat DNS configuration
+to work with Kppp, then /etc/resolf.conf must be read/writeable by the
+members of that group. 
+
+Please do not critisize me for installing Kppp with setuid bit
+on, I simply can no longer handle the amount of mail I used to get from
+desperate users who had problems getting kppp to work because they 
+didn't understand enough about Unix and device permissions.
+
 
 <sect2>kppp just sits there and waits: Expecting OK
 <p>
@@ -633,6 +648,20 @@ Have you played with the CR/LF setting?
 a fast initialisation. Turn off the 'Modem sustains fast initialisation'
 button on the Modem tab dialog.
 <p>
+
+<sect2>How do I make kppp send a \n or a \r?
+<p>
+Just send an empty string such as in the following script:
+<tscreen><verb>
+Send                                   # send an empty string
+Expect      ID:                        
+Send        itsme                     
+Expect      word:                      
+Send        forgot                    
+Expect      granted                    
+Send        ppp                        
+                                       
+</verb></tscreen>
 
 <sect2>kppp complains: "Can't create lock file"
 <p>
@@ -691,6 +720,8 @@ I would like to thank the following people for contributions to kppp:<p>
 <item><url url="mailto:wuebben@eure.de" name="Markus Wuebben"> for the ATI query dialog.
 <item><url url="mailto:porten@tu-harburg.de" name="Harri Porten"> for his kconfig related work.
 
+<item><url url="mailto:peter.silva@videotron.ca" name="Peter Silva"> for pop up dialogs
+and other contributions.
 </itemize>
 <p>
 <sect>Appendix
