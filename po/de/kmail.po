@@ -1,23 +1,14 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: kmail\n"
 "POT-Creation-Date: 1998-01-03 16:30+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
-"Content-Transfer-Encoding: ENCODING\n"
+"PO-Revision-Date: 1998-01-03 17:15 +0100\n"
+"Last-Translator: Stephan Kulow <coolo@kde.org>\n"
 
 #: kmmainwin.cpp:248
-#, fuzzy
 msgid "Addressbook"
-msgstr "&Adreßbuch..."
+msgstr "Adreßbuch"
 
 #: kmcomposewin.cpp:931 kmmainwin.cpp:256 kpgp.cpp:250
 msgid ""
@@ -29,7 +20,7 @@ msgstr ""
 
 #: kmmainwin.cpp:265
 msgid "New Folder"
-msgstr "&Ordner anlegen..."
+msgstr "Ordner anlegen"
 
 #: kmmainwin.cpp:299
 msgid ""
@@ -52,7 +43,6 @@ msgstr ""
 "kann nicht gelöscht werden."
 
 #: kmmainwin.cpp:333
-#, fuzzy, c-format
 msgid ""
 "Are you sure you want to remove the folder\n"
 "\"%s\", discarding it's contents ?"
@@ -66,29 +56,27 @@ msgstr "Bestätigung"
 
 #: kmmainwin.cpp:393
 msgid "Message as Plain Text"
-msgstr ""
+msgstr "Nachricht als reiner Text"
 
 #: kmmainwin.cpp:400
-#, fuzzy
 msgid "Select Folder"
-msgstr "&Ordner anlegen..."
+msgstr "Ordner auswählen"
 
 #: kmmainwin.cpp:421
 msgid "Queued messages successfully sent."
-msgstr ""
+msgstr "Wartende Nachrichten erfolgreich gesendet."
 
 #: kmmainwin.cpp:423
 msgid "Failed to send (some) queued messages."
-msgstr ""
+msgstr "Wartende Nachrichten konnten nicht (vollständig) versant werden."
 
 #: kmmainwin.cpp:542 kmmainwin.cpp:636
 msgid "&Reply..."
 msgstr "&Antworten..."
 
 #: kmmainwin.cpp:543 kmmainwin.cpp:638
-#, fuzzy
 msgid "Reply &All..."
-msgstr "&Antworten..."
+msgstr "A&llen Antworten..."
 
 #: kmmainwin.cpp:545 kmmainwin.cpp:640
 msgid "&Forward..."
@@ -112,44 +100,39 @@ msgstr "Neue &Ansicht..."
 
 #: kmmainwin.cpp:568
 msgid "Save As..."
-msgstr ""
+msgstr "Speichern unter..."
 
 #: kmmainwin.cpp:570
-#, fuzzy
 msgid "Print..."
-msgstr "&Drucken..."
+msgstr "Drucken..."
 
 #: kmmainwin.cpp:573
 msgid "Check Mail..."
-msgstr ""
+msgstr "Nach Mail sehen...
 
 #: kmmainwin.cpp:575
 msgid "Send Queued"
-msgstr ""
+msgstr "Wartende abschicken"
 
 #: kmmainwin.cpp:578
 msgid "&Settings..."
 msgstr "&Einstellungen..."
 
 #: kmmainwin.cpp:580
-#, fuzzy
 msgid "&Filter..."
-msgstr "&Öffnen..."
+msgstr "&Filter..."
 
 #: kmmainwin.cpp:582
-#, fuzzy
 msgid "&Addressbook..."
 msgstr "&Adreßbuch..."
 
 #: kmmainwin.cpp:596
-#, fuzzy
 msgid "&Cut"
-msgstr "&Über..."
+msgstr "&Ausschneiden"
 
 #: kmmainwin.cpp:602
-#, fuzzy
 msgid "&Find..."
-msgstr "&Öffnen..."
+msgstr "&Suchen..."
 
 #: kmmainwin.cpp:607
 msgid "&Create..."
@@ -173,28 +156,27 @@ msgstr "&Löschen"
 
 #: kmmainwin.cpp:623
 msgid "Unread"
-msgstr ""
+msgstr "Ungelesen"
 
 #: kmmainwin.cpp:624
 msgid "Read"
-msgstr ""
+msgstr "Gelesen"
 
 #: kmmainwin.cpp:625
 msgid "Replied"
-msgstr ""
+msgstr "Beantwortet"
 
 #: kmmainwin.cpp:626
 msgid "Queued"
-msgstr ""
+msgstr "Wartend"
 
 #: kmmainwin.cpp:627
-#, fuzzy
 msgid "Sent"
-msgstr "Senden"
+msgstr "Gesendet"
 
 #: kmmainwin.cpp:631
 msgid "&Next"
-msgstr ""
+msgstr "&Nächster"
 
 #: kmmainwin.cpp:633
 msgid "&Previous"
@@ -202,31 +184,29 @@ msgstr "&Vorherige"
 
 #: kmmainwin.cpp:643
 msgid "&Set Status"
-msgstr ""
+msgstr "&Setze Status"
 
 #: kmmainwin.cpp:652
 msgid "View Source..."
-msgstr ""
+msgstr "HTML-Code ansehen"
 
 #: kmmainwin.cpp:659
 msgid "&Brief Headers"
-msgstr ""
+msgstr "&Kurzer Header"
 
 #: kmmainwin.cpp:661
 msgid "&Fancy Headers"
-msgstr ""
+msgstr "&Fancy Headers"
 
 #: kmmainwin.cpp:663
 msgid "&Standard Headers"
-msgstr ""
+msgstr "&Normale Header"
 
 #: kmmainwin.cpp:665
-#, fuzzy
 msgid "&Long Headers"
-msgstr "&Alle Header ein/aus"
+msgstr "&Lange Header"
 
 #: kmmainwin.cpp:667
-#, fuzzy
 msgid "&All Headers"
 msgstr "&Alle Header ein/aus"
 
@@ -251,46 +231,40 @@ msgid "&Message"
 msgstr "&Nachricht"
 
 #: kmcomposewin.cpp:422 kmmainwin.cpp:703
-#, fuzzy
 msgid "Compose new message"
-msgstr "Nachricht erstellen"
+msgstr "Neue Nachricht erstellen"
 
 #: kmcomposewin.cpp:427 kmmainwin.cpp:708
-#, fuzzy
 msgid "Save message to file"
-msgstr "Speichern unter"
+msgstr "Nachricht speichern in Datei"
 
 #: kmcomposewin.cpp:432 kmmainwin.cpp:713
-#, fuzzy
 msgid "Print message"
 msgstr "Nachricht drucken"
 
 #: kmmainwin.cpp:720
-#, fuzzy
 msgid "Get new mail"
 msgstr "Neue Nachrichten?"
 
 #: kmmainwin.cpp:726
 msgid "Reply to author"
-msgstr ""
+msgstr "Antwort zum Autoren"
 
 #: kmmainwin.cpp:731
 msgid "Reply to all recipients"
-msgstr ""
+msgstr "Antowrt zu allen Empfängern"
 
 #: kmmainwin.cpp:736
-#, fuzzy
 msgid "Forward message"
 msgstr "Weitergeleitete Nachricht"
 
 #: kmmainwin.cpp:741
-#, fuzzy
 msgid "Delete message"
 msgstr "Nachricht löschen"
 
 #: kmmainwin.cpp:752
 msgid "Initializing..."
-msgstr ""
+msgstr "Initialisiere..."
 
 #: kmfolderdia.cpp:38 kmmsgpartdlg.cpp:51 kmsettings.cpp:123
 #: kmsettings.cpp:591
@@ -363,7 +337,7 @@ msgstr "Eingehende Post"
 
 #: kmsettings.cpp:211
 msgid "Accounts:   (add at least one account!)"
-msgstr ""
+msgstr "Postfächer:  (mindest ein Postfach hinzufügen!)"
 
 #: kmcomposewin.cpp:101 kmsettings.cpp:216
 msgid "Name"
@@ -390,62 +364,52 @@ msgid "Network"
 msgstr "Netzwerk"
 
 #: kmsettings.cpp:268
-#, fuzzy
 msgid "Phrases"
-msgstr "Datum"
+msgstr ""
 
 #: kmsettings.cpp:273
 msgid ""
 "The following placeholders are supported in the reply phrases:\n"
 "%D=date, %S=subject, %F=sender, %%=percent sign"
 msgstr ""
+"Die folgenden Platzhalter werden beim Antworten unterstützt:\n"
+"%D=Datum, %S=Betreff, %F=Absender, %%=Prozent-Zeichen"
 
 #: kmsettings.cpp:281
-#, fuzzy
 msgid "Reply to sender:"
-msgstr "Antworten"
+msgstr "Antworten zum Sender:"
 
 #: kmsettings.cpp:284
-#, fuzzy
 msgid "Reply to all:"
-msgstr "Antworten"
+msgstr "Allen antworten"
 
 #: kmsettings.cpp:287
-#, fuzzy
 msgid "Forward:"
-msgstr "&Weiterleiten..."
+msgstr "Weiterleiten:"
 
 #: kmsettings.cpp:290
-#, fuzzy
 msgid "Indentation:"
-msgstr "Identität"
+msgstr "Einrücken"
 
 #: kmmessage.cpp:1102 kmsettings.cpp:302
-#, fuzzy
 msgid "On %D, you wrote:"
-msgstr ""
-"\n"
-"Am %s %s schrieb:\n"
+msgstr "Am %D schriebst Du :\n"
 
 #: kmmessage.cpp:1103 kmsettings.cpp:306
-#, fuzzy
 msgid "On %D, %F wrote:"
-msgstr ""
-"\n"
-"Am %s %s schrieb:\n"
+msgstr "Am %D schrieb %F:"
 
 #: kmmessage.cpp:1104 kmsettings.cpp:310
-#, fuzzy
 msgid "Forwarded Message"
 msgstr "Weitergeleitete Nachricht"
 
 #: kmsettings.cpp:316
 msgid "Appearance"
-msgstr ""
+msgstr "Erscheinung"
 
 #: kmsettings.cpp:320
 msgid "Automatically append signature"
-msgstr ""
+msgstr "Automatsich angehängte Signatur"
 
 #: kmsettings.cpp:326
 msgid "Word wrap at column:"
@@ -456,16 +420,14 @@ msgid "Use monospaced font"
 msgstr ""
 
 #: kmsettings.cpp:356
-#, fuzzy
 msgid "Composer"
-msgstr "&Nachricht erstellen..."
+msgstr ""
 
 #: kmsettings.cpp:386
 msgid "Select Account"
 msgstr "Postfach auswählen"
 
 #: kmaccount.cpp:64 kmfilterdlg.cpp:371 kmsettings.cpp:405
-#, fuzzy
 msgid "Unnamed"
 msgstr "unbenannt"
 
@@ -487,7 +449,7 @@ msgstr "Lokales Postfach"
 
 #: kmsettings.cpp:605
 msgid "Pop Account"
-msgstr "Pop-Postfach"
+msgstr "POP-Postfach"
 
 #: kmsettings.cpp:607
 msgid "Login:"
@@ -503,15 +465,15 @@ msgstr "Pop-Server:"
 
 #: kmsettings.cpp:622
 msgid "Delete mail from server"
-msgstr ""
+msgstr "Lösche Nachrichten vom Server"
 
 #: kmsettings.cpp:634
 msgid "Store new mail in account:"
-msgstr ""
+msgstr "Speichere neue Nachrichten im Postfach:"
 
 #: kmsettings.cpp:642
 msgid "<none>"
-msgstr ""
+msgstr "<kein>"
 
 #: kmsettings.cpp:687
 msgid "Choose Location"
@@ -538,18 +500,17 @@ msgid "Message(s) saved."
 msgstr ""
 
 #: kmheaders.cpp:240
-#, fuzzy
 msgid "Failed to save message(s)."
-msgstr "Nachricht löschen"
+msgstr "Nachricht(en) speichern ist fehlgeschlagen"
 
 #: kmheaders.cpp:492
 #, c-format
 msgid "%d Messages, %d unread."
-msgstr ""
+msgstr "%d Nachrichten, %d ungelesen."
 
 #: kmheaders.cpp:494
 msgid "Folder is read-only."
-msgstr ""
+msgstr "Ordner ist nur zum Lesen."
 
 #: kmcomposewin.cpp:96
 msgid "KMail Composer"
@@ -560,12 +521,10 @@ msgid "Encoding"
 msgstr ""
 
 #: kmcomposewin.cpp:238
-#, fuzzy
 msgid "&From:"
-msgstr "Von:"
+msgstr "&Von:"
 
 #: kmcomposewin.cpp:240
-#, fuzzy
 msgid "&Reply to:"
 msgstr "&Antworten..."
 
@@ -578,7 +537,6 @@ msgid "&Cc:"
 msgstr "&Kopie:"
 
 #: kmcomposewin.cpp:246
-#, fuzzy
 msgid "&Bcc:"
 msgstr "&Kopie:"
 
@@ -615,9 +573,8 @@ msgid "Mark all"
 msgstr "&Alles auswählen"
 
 #: kmcomposewin.cpp:349
-#, fuzzy
 msgid "Find..."
-msgstr "&Öffnen..."
+msgstr "Suchen..."
 
 #: kmcomposewin.cpp:353
 msgid "Recip&ients..."
@@ -644,22 +601,18 @@ msgid "&All Fields"
 msgstr ""
 
 #: kmcomposewin.cpp:376
-#, fuzzy
 msgid "&From"
-msgstr "Von:"
+msgstr "&Von:"
 
 #: kmcomposewin.cpp:377
-#, fuzzy
 msgid "&Reply to"
-msgstr "&Antworten..."
+msgstr "&Antworten"
 
 #: kmcomposewin.cpp:378
-#, fuzzy
 msgid "&To"
 msgstr "&An:"
 
 #: kmcomposewin.cpp:379
-#, fuzzy
 msgid "&Cc"
 msgstr "&Kopie:"
 
@@ -668,7 +621,6 @@ msgid "&Bcc"
 msgstr ""
 
 #: kmcomposewin.cpp:381
-#, fuzzy
 msgid "&Subject"
 msgstr "&Betreff:"
 
@@ -681,84 +633,71 @@ msgid "&Followup-To"
 msgstr ""
 
 #: kmcomposewin.cpp:387
-#, fuzzy
 msgid "Append S&ignature"
-msgstr "Si&gnatur..."
+msgstr "Si&gnatur anhängen"
 
 #: kmcomposewin.cpp:389
-#, fuzzy
 msgid "&Insert File"
 msgstr "&Datei einfügen..."
 
 #: kmcomposewin.cpp:391
-#, fuzzy
 msgid "&Attach..."
 msgstr "&Anhängen..."
 
 #: kmcomposewin.cpp:394
-#, fuzzy
 msgid "&Save..."
-msgstr "&Verschieben..."
+msgstr "&Speichern..."
 
 #: kmcomposewin.cpp:395
-#, fuzzy
 msgid "Pr&operties..."
 msgstr "&Einstellungen..."
 
 #: kmcomposewin.cpp:397
-#, fuzzy
 msgid "&Attach"
 msgstr "&Anhängen..."
 
 #: kmcomposewin.cpp:515
-#, fuzzy
 msgid "Send now"
-msgstr "Senden"
+msgstr "Gleich senden"
 
 #: kmcomposewin.cpp:517
-#, fuzzy
 msgid "Send later"
-msgstr "&Später senden"
+msgstr "Später senden"
 
 #: kmcomposewin.cpp:526
-#, fuzzy
 msgid "Mark All"
-msgstr "&Alles auswählen"
+msgstr "Alles markieren"
 
 #: kmcomposewin.cpp:627
-#, fuzzy
 msgid "KMail Confirm"
-msgstr "Nachricht erstellen"
+msgstr ""
 
 #: kmcomposewin.cpp:628
 msgid ""
 "Close and discard\n"
 "edited message?"
 msgstr ""
+"Schliessen und alle veränderten\n"
+"Nachrichten verwerfen?"
 
 #: kmcomposewin.cpp:753 kmcomposewin.cpp:773
 msgid "Attach File"
 msgstr "Datei anhängen"
 
-#: kmcomposewin.cpp:803
-#, fuzzy
-msgid "View..."
-msgstr "&Öffnen..."
+#: kmcomposewin.cpp:#, fuzzy
+msgstr "Ansehen..."
 
 #: kmcomposewin.cpp:804
-#, fuzzy
 msgid "Save..."
-msgstr "&Verschieben..."
+msgstr "Speichern..."
 
 #: kmcomposewin.cpp:805 kmreaderwin.cpp:536
-#, fuzzy
 msgid "Properties..."
-msgstr "&Neu..."
+msgstr "Eigenschaften..."
 
 #: kmcomposewin.cpp:809
-#, fuzzy
 msgid "Attach..."
-msgstr "&Anhängen..."
+msgstr "Anhängen..."
 
 #: kmcomposewin.cpp:952
 msgid "To:"
@@ -809,12 +748,10 @@ msgid "quoted printable"
 msgstr ""
 
 #: kmreaderwin.cpp:248 kmreaderwin.cpp:264
-#, fuzzy
 msgid "From: "
 msgstr "Von:"
 
 #: kmreaderwin.cpp:250 kmreaderwin.cpp:266
-#, fuzzy
 msgid "To: "
 msgstr "An:"
 
@@ -823,29 +760,25 @@ msgid "References: "
 msgstr ""
 
 #: kmreaderwin.cpp:269
-#, fuzzy
 msgid "Cc: "
 msgstr "Kopie:"
 
 #: kmreaderwin.cpp:271
-#, fuzzy
 msgid "Date: "
-msgstr "Datum:"
+msgstr "Datum: "
 
 #: kmreaderwin.cpp:333
 msgid "Message was signed by"
-msgstr ""
+msgstr "Nachricht wurde unterschrieben von"
 
 #: kmreaderwin.cpp:334
 msgid "Warning: Bad signature from"
-msgstr ""
+msgstr "Warnung: Falsche Unterschrift von"
 
 #: kmreaderwin.cpp:558
-#, fuzzy
 msgid "Could not create temporary file"
 msgstr ""
-"Kann Papierkorb '%s'\n"
-"nicht anlegen."
+"Kann keine temporäre Datei anlegen"
 
 #: kmreaderwin.cpp:578
 #, c-format
@@ -854,14 +787,13 @@ msgstr ""
 
 #: kmreaderwin.cpp:604
 msgid "Could not save file"
-msgstr ""
+msgstr "Konnte Datei nicht speichern"
 
 #: main.cpp:75 main.cpp:113
 msgid "warning"
 msgstr "Achtung"
 
 #: main.cpp:80 main.cpp:81
-#, fuzzy
 msgid "fatal error"
 msgstr "Fataler Fehler"
 
@@ -875,6 +807,13 @@ msgid ""
 "\n"
 "Shall KMail move the mail folders now ?"
 msgstr ""
+"Das Verzeichnis ~/KMail existiert. Von nun an benutzt KMail das\n"
+"Verzeichns ~/Mail for seine Nachrichten.\"
+"KMail kann den Inhalt des ~/KMail Verzeichnisses in ~/Mail ver-\n"
+"schieben, aber dies wird existierende Dateien mit dem gleichen\n"
+"Namen (z.B. inbox) überschreiben\n"
+"\n"
+"Soll KMail die Order nun verschieben?"
 
 #: kmacctlocal.cpp:94
 #, c-format
@@ -883,6 +822,8 @@ msgid ""
 "mailbox `%s':\n"
 "%s"
 msgstr ""
+"Kann diese Nachricht nicht aus\n"
+"Ordner \"s\" löschen:\n"
 
 #: kmacctpop.cpp:112
 msgid ""
@@ -890,6 +831,9 @@ msgid ""
 "destination folder in the settings\n"
 "and try again."
 msgstr ""
+"Geben Sie Server, Port und Ziel-\n"
+"Ordner in den Einstellungen an und\n"
+"versuchen Sie es noch einmal."
 
 #: kmacctpop.cpp:241
 msgid "Pop Mail Error"
@@ -901,21 +845,19 @@ msgstr ""
 
 #: kmacctpop.cpp:262
 msgid "Unknown error"
-msgstr ""
+msgstr "Unbekannter Fehler"
 
 #: kmacctpop.cpp:266
-#, fuzzy
 msgid "Account: "
-msgstr "Postfächer"
+msgstr "Postfach:"
 
 #: kmacctpop.cpp:267
 msgid "In "
 msgstr ""
 
 #: kmacctpop.cpp:418
-#, fuzzy
 msgid "Login Name:"
-msgstr "Benutzer:"
+msgstr ""
 
 #: kmfolderdir.cpp:79
 #, c-format
@@ -1355,179 +1297,26 @@ msgid "Find Backwards"
 msgstr ""
 
 #: keditcl2.cpp:770
-#, fuzzy
 msgid "Find:"
-msgstr "&Öffnen..."
+msgstr "Suchen:"
 
 #: keditcl2.cpp:780
 msgid "Replace with:"
-msgstr ""
+msgstr "Ersetzen durch:"
 
 #: keditcl2.cpp:794
-#, fuzzy
 msgid "Replace All"
-msgstr "&Antworten..."
+msgstr "Allen antworten"
 
 #: keditcl2.cpp:891
 msgid "Goto Line"
-msgstr ""
+msgstr "Gehe zu Zeile"
 
 #: keditcl2.cpp:896
 msgid "Go"
-msgstr ""
+msgstr "Start"
 
 #: kmiostatusdlg.cpp:32
-#, fuzzy
 msgid "&Abort"
-msgstr "&Über..."
+msgstr "&Über"
 
-#, fuzzy
-#~ msgid "&Cancel"
-#~ msgstr "Abbrechen"
-
-#~ msgid "&Delete"
-#~ msgstr "&Löschen"
-
-#, fuzzy
-#~ msgid "&Quit"
-#~ msgstr "&Bearbeiten"
-
-#, fuzzy
-#~ msgid "&Copy"
-#~ msgstr "&Kopieren..."
-
-#, fuzzy
-#~ msgid "New"
-#~ msgstr "Netzwerk"
-
-#, fuzzy
-#~ msgid "&File"
-#~ msgstr "&Datei"
-
-#~ msgid "&Edit"
-#~ msgstr "&Bearbeiten"
-
-#~ msgid "&Help"
-#~ msgstr "&Hilfe"
-
-#~ msgid "Delete"
-#~ msgstr "Löschen"
-
-#~ msgid "&Print..."
-#~ msgstr "&Drucken..."
-
-#, fuzzy
-#~ msgid "Copy"
-#~ msgstr "&Kopieren..."
-
-#, fuzzy
-#~ msgid "Paste"
-#~ msgstr "Datum"
-
-#, fuzzy
-#~ msgid "Remove"
-#~ msgstr "&Löschen"
-
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
-#~ msgid ""
-#~ "Cannot enter directory:\n"
-#~ "%s"
-#~ msgstr "Kann Verzeichnis nicht öffnen"
-
-#, fuzzy
-#~ msgid "Filename"
-#~ msgstr "&Datei"
-
-#~ msgid "No recipients defined."
-#~ msgstr "Empfänger fehlt."
-
-#~ msgid "Fwd: %s"
-#~ msgstr "Fwd: %s"
-
-#~ msgid "Re: %s"
-#~ msgstr "Aw: %s"
-
-#~ msgid "New Mail&reader"
-#~ msgstr "Neue Ansicht"
-
-#, fuzzy
-#~ msgid "Edit"
-#~ msgstr "&Bearbeiten"
-
-#~ msgid "Normal"
-#~ msgstr "&Normal"
-
-#~ msgid "Toggle T&oolbar"
-#~ msgstr "T&oolbar ein/aus"
-
-#~ msgid "Options"
-#~ msgstr "&Optionen"
-
-#, fuzzy
-#~ msgid "Help"
-#~ msgstr "&Hilfe"
-
-#, fuzzy
-#~ msgid "About"
-#~ msgstr "&Über..."
-
-#~ msgid "KMail Folders"
-#~ msgstr "KMail-Ordner"
-
-#~ msgid "KMail Message List"
-#~ msgstr "KMail-Nachrichten"
-
-#, fuzzy
-#~ msgid "&Paste"
-#~ msgstr "Datum"
-
-#~ msgid "&Undelete"
-#~ msgstr "&Wiederherstellen"
-
-#~ msgid "&Export..."
-#~ msgstr "&Speichern unter..."
-
-#~ msgid "Pr&int..."
-#~ msgstr "&Drucken"
-
-#, fuzzy
-#~ msgid ""
-#~ "The folder `%s' does not exist in the\n"
-#~ "mail folder directory. The mail sender depends\n"
-#~ "on this folder and will not work without it.\n"
-#~ "Therefore the folder will now be created."
-#~ msgstr ""
-#~ "Der Ordner '%s'\n"
-#~ "existiert nicht im\n"
-#~ "Mail-Ordner Verzeichnis\n"
-#~ "und wird jetzt angelegt."
-
-#~ msgid "outbox"
-#~ msgstr "Ausgehend"
-
-#, fuzzy
-#~ msgid "Default"
-#~ msgstr "Löschen"
-
-#~ msgid "Are you sure you want to remove the account"
-#~ msgstr ""
-#~ "Soll das Postfach wirklich\n"
-#~ "gelöscht werden?"
-
-#~ msgid ""
-#~ "The folder `%s'\n"
-#~ "does not exist in the\n"
-#~ "mail folder directory\n"
-#~ "but will be created now."
-#~ msgstr ""
-#~ "Der Ordner '%s'\n"
-#~ "existiert nicht im\n"
-#~ "Mail-Ordner Verzeichnis\n"
-#~ "und wird jetzt angelegt."
-
-#~ msgid "forward message"
-#~ msgstr "Weiterleiten"
