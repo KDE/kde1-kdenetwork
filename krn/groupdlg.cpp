@@ -638,6 +638,7 @@ bool Groupdlg::actions (int action,NewsGroup *group)
             if (!group)
                 break;
             group->catchup();
+
             success = true;
             break;
         }

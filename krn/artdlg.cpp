@@ -608,7 +608,14 @@ bool Artdlg::actions (int action)
         
     case CATCHUP:
         {
-            group->catchup();
+            QListIterator <Article> iter(artList);
+            for (;iter.current();++iter)
+            {
+                if (!iter.current()->isRead())
+                {
+                    iter.current()->setRead();
+                }
+            }
             fillTree();
             break;
         }     
