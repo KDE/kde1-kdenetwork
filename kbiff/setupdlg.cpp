@@ -36,6 +36,14 @@
 
 #define CONFIG_FILE QString(KApplication::localconfigdir() + "/kbiffrc")
 
+#ifdef HAVE_PATHS_H
+#include <paths.h>
+#endif
+
+#ifndef _PATH_MAILDIR
+#define _PATH_MAILDIR "/var/spool/mail"
+#endif
+
 ///////////////////////////////////////////////////////////////////////////
 // KBiffSetup
 ///////////////////////////////////////////////////////////////////////////
@@ -1341,7 +1349,8 @@ const KURL KBiffMailboxTab::defaultMailbox() const
 	QFileInfo mailbox_info(getenv("MAIL"));
 	if (mailbox_info.exists() == false)
 	{
-		QString s("/var/spool/mail/");
+		QString s(_PATH_MAILDIR);
+		s += "/";
 		s += getlogin();
 		mailbox_info.setFile(s);
 	}
