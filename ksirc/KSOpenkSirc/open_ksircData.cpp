@@ -162,3 +162,5 @@ open_ksircData::open_ksircData
 open_ksircData::~open_ksircData()
 {
 }
+
+#include "open_ksircData.moc"

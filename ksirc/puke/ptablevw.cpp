@@ -66,3 +66,6 @@ QTableView *PTableView::widget()
   return tbl;
 }
 
+
+#include "ptablevw.moc"
+

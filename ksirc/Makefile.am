@@ -1,95 +1,74 @@
 
-# this 10 paths are KDE specific. Use them:
-# kde_htmldir       Where your docs should go to. (contains lang subdirs)
-# kde_appsdir       Where your application file (.kdelnk) should go to. 
-# kde_icondir       Where your icon should go to.
-# kde_minidir       Where your mini icon should go to.
-# kde_datadir       Where you install application data. (Use a subdir)
-# kde_locale        Where translation files should go to.(contains lang subdirs)
-# kde_cgidir        Where cgi-bin executables should go to.
-# kde_confdir       Where config files should go to.
-# kde_mimedir       Where mimetypes should go to.
-# kde_toolbardir    Where general toolbar icons should go to.
-# kde_wallpaperdir  Where general wallpapers should go to.
-
-# just set the variable
-APPSDIR = $(kde_appsdir)/Internet
 # set the include path for X, qt and KDE
-
 INCLUDES= $(all_includes) -include $(srcdir)/kplunger/kplunger.h
 
 # claim, which subdirectories you want to install
-SUBDIRS = kplunger KSTicker KSProgress KSCutDialog KSPrefs KSColourPicker KSOpenkSirc pws-0.5 puke img doc
-
-####### This part is very ksirc specific
-# you can add here more. This one gets installed 
-#if COMPILE_KSIRC_SHARED
-KSIRC_PROGRAM = ksirc
-#endif
-#if COMPILE_KSIRC_STATIC
-#KSIRCSTATIC_PROGRAM = ksircstatic
-#endif
+SUBDIRS = kplunger KSTicker KSProgress KSCutDialog KSPrefs \
+	KSColourPicker KSOpenkSirc pws-0.5 puke img doc
 
 bin_PROGRAMS = ksirc # ${KSIRCSTATIC_PROGRAM}
 
 noinst_PROGRAMS = getdate
 
+EXTRA_PROGRAMS = ksircstatic
+
 # Which sources should be compiled for ksirc.
 
 ksirc_SOURCES = \
-toplevel.cpp \
-ksirc.cpp \
-irclistbox.cpp \
-mirclistbox.cpp \
-irclistitem.cpp \
-mirclistitem.cpp \
-alistbox.cpp \
-mtoplevel.cpp \
-ahistlineedit.cpp mahistlineedit.cpp \
-malistbox.cpp \
-iocontroller.cpp miocontroller.cpp \
-open_top.cpp open_topData.cpp mopen_top.cpp mopen_topData.cpp \
-messageReceiver.cpp \
-ioBroadcast.cpp \
-ksircprocess.cpp mksircprocess.cpp \
-servercontroller.cpp mservercontroller.cpp \
-KSircColour.cpp KSircColourData.cpp mKSircColour.cpp mKSircColourData.cpp \
-FilterRuleEditor.cpp FilterRuleEditorData.cpp mFilterRuleEditor.cpp mFilterRuleEditorData.cpp \
-ioDiscard.cpp \
-ioDCC.cpp mioDCC.cpp dccDialog.cpp mdccDialog.cpp dccDialogData.cpp mdccDialogData.cpp \
-linelistitem.cpp \
-ioLAG.cpp mioLAG.cpp \
-ioNotify.cpp mioNotify.cpp \
-ssfeprompt.cpp mssfeprompt.cpp ssfepromptdata.cpp mssfepromptdata.cpp \
-usercontrolmenu.cpp \
-kspainter.cpp \
-baserules.cpp \
-estring.cpp \
-chanparser.cpp \
-objFinder.cpp \
-mobjFinder.cpp \
-KMDIMgr.cpp KMDIMgrBase.cpp mKMDIMgr.cpp mKMDIMgrBase.cpp \
-displayMgr.cpp displayMgrMDI.cpp displayMgrSDI.cpp \
-welcomeWin.cpp mwelcomeWin.cpp welcomeWinData.cpp mwelcomeWinData.cpp \
-kpopupmenu.cpp mkpopupmenu.cpp
+	toplevel.cpp \
+	ksirc.cpp \
+	irclistbox.cpp \
+	irclistitem.cpp \
+	alistbox.cpp \
+	ahistlineedit.cpp \
+	iocontroller.cpp \
+	open_top.cpp open_topData.cpp \
+	messageReceiver.cpp \
+	ioBroadcast.cpp \
+	ksircprocess.cpp \
+	servercontroller.cpp \
+	KSircColour.cpp KSircColourData.cpp \
+	FilterRuleEditor.cpp FilterRuleEditorData.cpp \
+	ioDiscard.cpp \
+	ioDCC.cpp dccDialog.cpp dccDialogData.cpp \
+	linelistitem.cpp \
+	ioLAG.cpp \
+	ioNotify.cpp \
+	ssfeprompt.cpp ssfepromptdata.cpp \
+	usercontrolmenu.cpp \
+	kspainter.cpp \
+	baserules.cpp \
+	estring.cpp \
+	chanparser.cpp \
+	objFinder.cpp \
+	KMDIMgr.cpp KMDIMgrBase.cpp \
+	displayMgr.cpp displayMgrMDI.cpp displayMgrSDI.cpp \
+	welcomeWin.cpp welcomeWinData.cpp \
+	kpopupmenu.cpp
 
-ksircstaticSOURCES = $(ksirc_SOURCES)
-ksircstaticOBJECTS = $(ksirc_OBJECTS)
+ksircstatic_SOURCES = $(ksirc_SOURCES)
 
 # the library search path
-ksirc_LDFLAGS = -export-dynamic $(all_libraries) $(KDE_RPATH) # -L$(srcdir)/KSProgress -L$(srcdir)/KSTicker -L$(srcdir)/KSCutDialog -L$(srcdir)/KSPrefs -L$(srcdir)/KSColourPicker -L$(srcdir)/puke 
+ksirc_LDFLAGS = -export-dynamic $(all_libraries) $(KDE_RPATH)
+ksircstatic_LDFLAGS = --nostdlib -static -all-static $(ksirc_LDFLAGS)
 
-ksircstaticLDFLAGS = --nostdlib $(ksirc_LDFLAGS)
+all_ksirc_libraries = ./kplunger/libkplunger.a \
+	./KSProgress/libksprogress.a \
+	./KSTicker/libksticker.a \
+	./KSCutDialog/libkscutdialog.a \
+	./KSPrefs/libksprefs.a \
+	./KSColourPicker/libkscolourpicker.a \
+	./KSOpenkSirc/libksopenksirc.a \
+	./pws-0.5/pws/libpws.a \
+	puke/libpuke.la $(LIB_KFILE) $(LIBDL) 
 
 # the libraries to link against. Be aware of the order. First the libraries,
 # that depend on the following ones.
-ksirc_LDADD   = ./kplunger/libkplunger.a ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a ./KSColourPicker/libkscolourpicker.a KSOpenkSirc/libksopenksirc.a pws-0.5/pws/libpws.a puke/libpuke.la $(LIB_KFILE) $(LIBDL) 
+ksirc_LDADD   = $(all_ksirc_libraries)
 
-ksircstaticLDADD =  ./kplunger/libkplunger.a ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a ./KSColourPicker/libkscolourpicker.a pws-0.5/pws/libpws.a KSOpenkSirc/libksopenksirc.a puke/.libs/libpuke.a
+ksircstatic_LDADD =  $(all_ksirc_libraries)
 
-#if COMPILE_KSIRC_STATIC
 STATIC_LIBS = $(static_libkde) $(static_libqt) $(static_libstdc) $(static_pthread) -lXext $(LIB_X11) $(LIBDL) -lm -lc
-#endif
 
 kdoc:
 	kdoc -ddoc ksirc *.h
@@ -107,13 +86,6 @@ cdate.h: getdate
 	./getdate > cdate.h
 
 $(srcdir)/ksirc.cpp: cdate.h
-
-ksircstatic: cdate.h $(ksircstaticOBJECTS) $(ksircstaticDEPENDENCIES) $(static_libkde) $(static_libqt) $(ksircstaticLDADD)
-	@rm -f ksircstatic
-	$(LIBTOOL) --mode=link $(CC) $(CXXFLAGS) $(LDFLAGS) -o $@ $(ksircstaticLDFLAGS) $(ksircstaticOBJECTS) $(ksircstaticLDADD) $(STATIC_LIBS) $(LIBS)
-
-#dummy:
-
 
 # this option you can leave out. Just, if you use "make dist", you need it
 #
@@ -139,70 +111,39 @@ displayMgr.h displayMgrMDI.h displayMgrSDI.h
 
 
 # just to make sure, automake makes them 
-BUILTSOURCES = \
-mFilterRuleEditor.cpp \
-mFilterRuleEditorData.cpp \
-mKSircColour.cpp \
-mKSircColourData.cpp \
-mahistlineedit.cpp \
-malistbox.cpp \
-mdccDialog.cpp \
-mdccDialogData.cpp \
-mioDCC.cpp \
-mioLAG.cpp \
-mioNotify.cpp \
-miocontroller.cpp \
-mirclistbox.cpp \
-mirclistitem.cpp \
-mksircprocess.cpp \
-mobjFinder.cpp \
-mopen_top.cpp \
-mopen_topData.cpp \
-mservercontroller.cpp \
-mssfeprompt.cpp \
-mssfepromptdata.cpp \
-mtoplevel.cpp \
-mKMDIMgr.cpp mKMDIMgrBase.cpp \
-mdisplayMgr.cpp mdisplayMgrMDI.cpp mdisplayMgrSDI.cpp 
-
-# if you "make distclean", this files get removed. If you want to remove
-# them while "make clean", use CLEANFILES
-DISTCLEANFILES = $(BUILTSOURCES)
+METASOURCES = FilterRuleEditor.moc \
+	FilterRuleEditorData.moc \
+	KSircColour.moc \
+	KSircColourData.moc \
+	ahistlineedit.moc \
+	alistbox.moc \
+	dccDialog.moc \
+	dccDialogData.moc \
+	ioDCC.moc \
+	ioLAG.moc \
+	ioNotify.moc \
+	iocontroller.moc \
+	irclistbox.moc \
+	irclistitem.moc \
+	ksircprocess.moc \
+	objFinder.moc \
+	open_top.moc \
+	open_topData.moc \
+	servercontroller.moc \
+	ssfeprompt.moc \
+	ssfepromptdata.moc \
+	toplevel.moc \
+	KMDIMgr.moc KMDIMgrBase.moc \
+	displayMgr.moc displayMgrMDI.moc displayMgrSDI.moc 
 
 # make messages.po. Move this one to ../po/ and "make merge" in po
 messages:
 	$(XGETTEXT) -C -ki18n -x $(includedir)/kde.pot *.cpp */*.cpp && mv messages.po ../po/ksirc.pot
 
-# just install datas here. Use install-exec-data for scripts and etc.
-# the binary itself is already installed from automake
-# use mkinstalldirs, not "install -d"
-# don't install a list of file. Just one file per install.
-# if you have more of them, create a subdirectory with an extra Makefile 
-install-data-local: 
-	$(mkinstalldirs) $(APPSDIR)
-	$(INSTALL_DATA) $(srcdir)/ksirc.kdelnk $(APPSDIR)
-	$(mkinstalldirs) $(kde_datadir)/ksirc
-	$(INSTALL_SCRIPT) $(srcdir)/dsirc $(bindir)
-	$(INSTALL_DATA) $(srcdir)/ksirc.pl $(kde_datadir)/ksirc
-	$(INSTALL_DATA) $(srcdir)/filters.pl $(kde_datadir)/ksirc
-	$(INSTALL_DATA) $(srcdir)/sirc.help.gz $(kde_datadir)/ksirc
-	$(INSTALL_DATA) $(srcdir)/relnotes $(kde_datadir)/ksirc
-#
-# remove ALL you have installed in install-data-local or install-exec-local
-uninstall-local:
-	-rm -f $(APPSDIR)/ksirc.kdelnk
-	-rm -f $(bindir)/dsirc
-	-rm -f $(kde_datadir)/ksirc/filters.pl
-#
-# add a dependency for every moc file to be full portable
-# I've added a key binding to emacs for this. 
-m%.cpp: %.h
-	$(MOC) $< -o $@
+bin_SCRIPTS = dsirc
 
-#.deps/ksirc.P: ksirc.cpp cdate.h
-#	@echo "Computing dependencies for $<..."
-#	@o='o'; \
-#	$(CXXMKDEP) $< >$@.tmp \
-#	  && sed "s,^\(.*\)\.o:,\1.$$o \1.l$$o $@:," < $@.tmp > $@ \
-#	  && rm -f $@.tmp
+apps_DATA = ksirc.kdelnk
+appsdir = $(kde_appsdir)/Internet
 
+misc_DATA = ksirc.pl filters.pl sirc.help.gz relnotes
+miscdir = $(kde_datadir)/ksirc

@@ -328,3 +328,4 @@ QString ircListItem::getRev(){
     else
       return seltext.mid(revTwo, revOne - revTwo);
 }
+#include "irclistitem.moc"

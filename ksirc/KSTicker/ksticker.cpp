@@ -412,3 +412,5 @@ void KSTicker::setPalette ( const QPalette & p ) /*fold00*/
   deffg = p.normal().text();
   fg = p.normal().text();
 }
+
+#include "ksticker.moc"

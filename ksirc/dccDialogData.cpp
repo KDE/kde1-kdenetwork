@@ -56,3 +56,4 @@ dccDialogData::dccDialogData
 dccDialogData::~dccDialogData()
 {
 }
+#include "dccDialogData.moc"

@@ -1,3 +1,6 @@
+#ifndef MAIN_H
+#define MAIN_H
+
 #include <qapp.h> 
 #include <qsocknot.h>
 #include "ksticker.h"
@@ -16,3 +19,6 @@ public slots:
 void readsocket(int socket);
   
 };
+
+#endif
+

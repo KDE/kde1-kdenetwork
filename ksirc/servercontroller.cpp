@@ -785,3 +785,4 @@ void dockServerController::paintEvent(QPaintEvent *pe) /*FOLD00*/
   p.drawPixmap(x , y, *pic);
   p.end();
 }
+#include "servercontroller.moc"

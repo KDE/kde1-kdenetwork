@@ -30,3 +30,4 @@ dccDialog::dccDialog
 dccDialog::~dccDialog()
 {
 }
+#include "dccDialog.moc"

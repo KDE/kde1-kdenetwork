@@ -1240,3 +1240,4 @@ void kstInside::setName(const char *name) /*fold00*/
   nicks->setName(nicks_name);
   linee->setName(linee_name);
 }
+#include "toplevel.moc"

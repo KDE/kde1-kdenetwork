@@ -295,3 +295,4 @@ filterRuleList *KSircIODCC::defaultRules()
   return frl;
 
 }
+#include "ioDCC.moc"

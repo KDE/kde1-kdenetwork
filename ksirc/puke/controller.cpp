@@ -910,3 +910,6 @@ widgetId PukeController::createWidget(widgetId wI, PukeMessage *pm) /*FOLD00*/
   return wIret;
 }
 
+
+#include "controller.moc"
+

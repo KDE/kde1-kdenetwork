@@ -109,3 +109,4 @@ void DisplayMgrMDI::setCaption(QWidget *w, const char *cap){
   warning("Could not find widget in setCaption");
 
 }
+#include "displayMgrMDI.moc"

@@ -89,3 +89,4 @@ void open_topData::create_toplevel()
 void open_topData::terminate()
 {
 }
+#include "open_topData.moc"

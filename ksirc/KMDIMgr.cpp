@@ -75,3 +75,5 @@ void KMDIMgr::slotWindowRestored(KMDIWindow *w)
     top_toolbar->removeItem(54);
     top_toolbar->removeItem(55);
 }
+
+#include "KMDIMgr.moc"

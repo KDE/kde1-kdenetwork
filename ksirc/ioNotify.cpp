@@ -71,3 +71,4 @@ filterRuleList *KSircIONotify::defaultRules()
   frl->append(fr);
   return frl;
 }
+#include "ioNotify.moc"

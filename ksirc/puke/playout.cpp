@@ -149,3 +149,6 @@ QBoxLayout *PLayout::widget()
   return layout;
 }
 
+
+#include "playout.moc"
+

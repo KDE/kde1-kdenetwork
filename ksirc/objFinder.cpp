@@ -155,3 +155,4 @@ void objFinder::objDest(){ /*fold00*/
     ++it;
   }
 }
+#include "objFinder.moc"

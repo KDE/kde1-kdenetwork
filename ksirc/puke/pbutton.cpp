@@ -147,3 +147,6 @@ bool PButton::checkWidget()
   }
   return TRUE;
 }
+
+#include "pbutton.moc"
+

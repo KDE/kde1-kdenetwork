@@ -1562,5 +1562,4 @@ void KMDIMgrBase::slotSetBgImage(const char* url)
   update();
 }
 
-
-
+#include "KMDIMgrBase.moc"

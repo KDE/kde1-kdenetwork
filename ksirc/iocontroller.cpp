@@ -282,3 +282,4 @@ void KSircIOController::procCTS ( KProcess *)
     stdin_write(str);
   }
 }
+#include "iocontroller.moc"

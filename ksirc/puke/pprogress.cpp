@@ -120,3 +120,6 @@ KSProgress *PProgress::widget() /*fold00*/
   //  debug("PProgress widget called");
   return ksp;
 }
+
+#include "pprogress.moc"
+

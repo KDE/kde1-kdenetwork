@@ -98,3 +98,4 @@ void KSircColour::colourChange(const QColor &)
   *kSircConfig->colour_background = ColourBackground->color();
   emit update();
 }
+#include "KSircColour.moc"

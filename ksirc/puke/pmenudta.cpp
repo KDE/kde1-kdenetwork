@@ -83,3 +83,6 @@ bool PMenuData::menuMessageHandler(int fd, PukeMessage *pm)
   }
   return TRUE;
 }
+
+#include "pmenudta.moc"
+

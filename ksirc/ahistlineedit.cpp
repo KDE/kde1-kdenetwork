@@ -184,3 +184,4 @@ void aHistLineEdit::mousePressEvent ( QMouseEvent *e )
     QLineEdit::mousePressEvent(e);
   }
 }
+#include "ahistlineedit.moc"

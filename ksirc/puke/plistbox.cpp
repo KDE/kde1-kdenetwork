@@ -211,3 +211,6 @@ bool PListBox::checkWidget(){ /*FOLD00*/
   }
   return TRUE;
 }
+
+#include "plistbox.moc"
+

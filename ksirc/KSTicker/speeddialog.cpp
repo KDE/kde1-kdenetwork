@@ -57,3 +57,5 @@ void SpeedDialog::setLimit(int tmin, int tmax, int smin, int smax)
   sliderTick->setRange(tmin, tmax);
   sliderStep->setRange(smin, smax);
 }
+
+#include "speeddialog.moc"

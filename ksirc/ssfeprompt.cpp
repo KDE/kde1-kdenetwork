@@ -51,3 +51,4 @@ void ssfePrompt::setPassword(bool pass)
   else
     SLine->setEchoMode(QLineEdit::Normal);
 }
+#include "ssfeprompt.moc"

@@ -274,3 +274,4 @@ open_ksirc::~open_ksirc()
   Groups.clear();
 }
 
+#include "open_ksirc.moc"

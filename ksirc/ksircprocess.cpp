@@ -573,3 +573,5 @@ void KSircProcess::turn_on_autocreate()
     emit ProcMessage(QString(server), ProcCommand::turnOnAutoCreate, QString());
     auto_create_really = FALSE;
 }
+
+#include "ksircprocess.moc"

@@ -65,3 +65,4 @@ ssfepromptdata::~ssfepromptdata()
 void ssfepromptdata::terminate()
 {
 }
+#include "ssfepromptdata.moc"

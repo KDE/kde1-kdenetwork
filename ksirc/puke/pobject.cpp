@@ -127,3 +127,6 @@ void PObject::manTerm() {
   manualTerm = TRUE;
 }
 
+
+#include "pobject.moc"
+

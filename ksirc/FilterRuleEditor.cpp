@@ -203,3 +203,5 @@ QString FilterRuleEditor::convertSpecial(QString str)
   str.replace(QRegExp("\\$"), "$$");
   return str;
 }
+
+#include "FilterRuleEditor.moc"

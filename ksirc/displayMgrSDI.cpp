@@ -33,3 +33,5 @@ void DisplayMgrSDI::raise(QWidget *w){
 void DisplayMgrSDI::setCaption(QWidget *w, const char *cap){
   w->setCaption(cap);
 }
+
+#include "displayMgrSDI.moc"

@@ -200,3 +200,5 @@ void FilterRuleEditorData::lowerRule()
 void FilterRuleEditorData::newHighlight(int)
 {
 }
+
+#include "FilterRuleEditorData.moc"

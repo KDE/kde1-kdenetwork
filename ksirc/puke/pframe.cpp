@@ -74,3 +74,6 @@ QFrame *PFrame::widget()
   //  debug("PFrame widget called");
   return frame;
 }
+
+#include "pframe.moc"
+

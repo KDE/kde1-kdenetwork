@@ -486,3 +486,6 @@ void PWidget::eventResize(QObject *, QEvent *e)
   
 }
 
+
+#include "pwidget.moc"
+

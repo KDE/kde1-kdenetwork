@@ -35,3 +35,5 @@ void DisplayMgr::setCaption(QWidget *w, const char *)
 {
   warning("Display Manger: setCaption called");
 }
+
+#include "displayMgr.moc"

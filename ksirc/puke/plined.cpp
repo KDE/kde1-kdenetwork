@@ -140,3 +140,6 @@ void PLineEdit::returnPress() {
   pmRet.cArg = 0;
   emit outputMessage(widgetIden().fd, &pmRet);
 }
+
+#include "plined.moc"
+

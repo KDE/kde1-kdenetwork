@@ -108,3 +108,6 @@ void PPopupMenu::got_activated(int itemId){
   emit outputMessage(wI.fd, &pmRet);
 
 }
+
+#include "ppopmenu.moc"
+

@@ -104,3 +104,6 @@ bool PKSircListBox::checkWidget(){ /*FOLD00*/
   }
   return TRUE;
 }
+
+#include "ksirclistbox.moc"
+

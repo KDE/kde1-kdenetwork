@@ -581,3 +581,5 @@ void KSircListBox::paintEvent(QPaintEvent *e){
     QListBox::paintEvent(e);
 
 }
+
+#include "irclistbox.moc"

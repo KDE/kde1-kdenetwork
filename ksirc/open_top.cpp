@@ -74,3 +74,4 @@ void open_top::create_toplevel()
 //  close(TRUE);
 
 }
+#include "open_top.moc"

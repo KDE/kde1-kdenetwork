@@ -305,3 +305,4 @@ nickListItem &nickListItem::operator= (const nickListItem &nli) /*FOLD00*/
   is_voice = nli.is_voice;
   return (*this);
 }
+#include "alistbox.moc"

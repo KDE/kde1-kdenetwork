@@ -131,3 +131,4 @@ void KSircColourData::ok()
 void KSircColourData::cancel()
 {
 }
+#include "KSircColourData.moc"

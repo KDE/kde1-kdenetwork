@@ -7,3 +7,5 @@ void KCutMLE::scrollToBottom(){
   }                           // What a bad hack!
   setAutoUpdate(TRUE);
 }
+
+#include "cutmle.moc"

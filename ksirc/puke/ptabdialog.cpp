@@ -92,3 +92,6 @@ QTabDialog *PTabDialog::widget()
   //  debug("PObject widget called");
   return tab;
 }
+
+#include "ptabdialog.moc"
+

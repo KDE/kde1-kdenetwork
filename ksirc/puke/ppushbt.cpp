@@ -60,3 +60,6 @@ QPushButton *PPushButton::widget()
 }
 
 
+
+#include "ppushbt.moc"
+

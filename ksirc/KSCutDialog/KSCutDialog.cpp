@@ -59,3 +59,5 @@ void KSCutDialog::copy()
 {
   IrcMLE->copyText();
 }
+
+#include "KSCutDialog.moc"

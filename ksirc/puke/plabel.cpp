@@ -114,3 +114,6 @@ bool PLabel::checkWidget(){
   return TRUE;
 }
 
+
+#include "plabel.moc"
+

@@ -57,3 +57,4 @@ void KSircIOLAG::timerEvent ( QTimerEvent * )
   emit outputLine(cmd);
 }
 
+#include "ioLAG.moc"

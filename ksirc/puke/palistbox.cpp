@@ -148,3 +148,6 @@ bool PAListBox::checkWidget(){ /*FOLD00*/
   }
   return TRUE;
 }
+
+#include "palistbox.moc"
+

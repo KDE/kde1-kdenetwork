@@ -76,3 +76,5 @@ void KSCutDialogData::copy()
 void KSCutDialogData::terminate()
 {
 }
+
+#include "KSCutDialogData.moc"

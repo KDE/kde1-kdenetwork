@@ -6,3 +6,5 @@ void EnterCombo::keyPressEvent( QKeyEvent *e ){
   else
     QComboBox::keyPressEvent(e);
 }
+
+#include "enter_combo.moc"

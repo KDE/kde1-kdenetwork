@@ -117,3 +117,4 @@ void speeddialogData::updateStep(int)
 void speeddialogData::terminate()
 {
 }
+#include "speeddialogData.moc"
