@@ -127,6 +127,7 @@ public:
     void getSubjects(NNTP *server);
     void getMessages(NNTP *server);
     void catchup();
+    void addArticle(QString ID);
     int countNew(NNTP *server);
 private:
     KSimpleConfig *sconf;
@@ -172,7 +173,7 @@ public:
     void    groupList(QList <NewsGroup> *grouplist, bool fromserver);
     bool    setGroup( const char *groupname);
     char    *group() {return GroupName.data();};
-    bool    artList(int from=0,int to=0);
+    bool    artList(int from=0,int to=0,NewsGroup *n=0);
     QString *article(char *id);
     bool    isCached(char *id);
     bool    postArticle(QString ID);
@@ -195,7 +196,7 @@ private:
     bool    reportBytes;
     bool    reportCommands;
     int         listOverview();
-    int         listXover(int from=0,int to=0);
+    int         listXover(int from=0,int to=0,NewsGroup *n=0);
     
     QString 	Laststatus;
     QString 	GroupName;

@@ -175,22 +175,6 @@ bool Kmessage::dump(char* part, QString fileName)
 
 void Kmessage::renderWidgets()
 {
-    unlink(saveWidgetName);
-    QPushButton saveButton("save");
-    QPixmap* saveImage = new QPixmap(saveButton.size());
-
-    bitBlt(saveImage, QPoint(0,0), &saveButton, saveButton.rect(), CopyROP );
-    if(saveImage->isNull()) debug("Strange");
-    if(!saveImage->save(saveWidgetName,"XBM")) debug("Unable to save sW");
-    else debug("save widget saved as %s",saveWidgetName.data());
-
-    unlink(viewWidgetName);
-    QPushButton viewButton("view");
-    QPixmap* viewImage = new QPixmap(viewButton.size());
-
-    bitBlt(viewImage, QPoint(0,0), &viewButton, viewButton.rect(), CopyROP );
-    if(!viewImage->save(viewWidgetName,"XBM")) debug("Unable to save vW");
-    else debug("view widget saved as %s",viewWidgetName.data());
 }
 void Kmessage::getFromWeb(QString id)
 {

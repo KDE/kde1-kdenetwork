@@ -51,7 +51,8 @@ aboutDlgData::aboutDlgData
     tmpQListBox->insertItem( "Magnus Reftel <d96reftl@dtek.chalmers.se>" );
     tmpQListBox->insertItem( "Sander Alberink <sander.alberink@bigfoot.com>" );
     tmpQListBox->insertItem( "Stefan Taferner <taferner@alpin.or.at>" );
-    tmpQListBox->insertItem( "Robert Cope <roberto@bga.com>" );
+    tmpQListBox->insertItem( "Robert Cope <robert@bga.com>" );
+    tmpQListBox->insertItem( "César Ballardini <cballard@santafe.com.ar>" );
     tmpQListBox->insertItem( "" );
     tmpQListBox->insertItem( klocale->translate("And Many thanks to:") );
     tmpQListBox->insertItem( "" );

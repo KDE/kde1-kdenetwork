@@ -286,7 +286,7 @@ int NNTP::setMode (char *mode)
     return mReplyCode;
 }
 
-int NNTP::listXover(int from,int to)
+int NNTP::listXover(int from,int to,NewsGroup *n)
 {
     datum key;
     char buffer[1024];
@@ -352,7 +352,6 @@ int NNTP::listXover(int from,int to)
                     
                     
                     art.ID=templ.at(OffsetID);
-                    
                     key.dptr=art.ID.data();
                     key.dsize=art.ID.length()+1;
                     
@@ -384,15 +383,19 @@ int NNTP::listXover(int from,int to)
                                 }
                             }
                         }
-                        sprintf (buffer,"Stored %d articles",counter);
-                        emit newStatus(buffer);
-                        counter++;
+                        art.save();
+                    }
+                    if (n)
+                    {
+                        n->addArticle(art.ID);
                     }
                     //Write the article ID to the newsgroup file
                     gi+=templ.at(OffsetID);
                     gi+="\n";
-                    art.save();
                     tok=strtok(NULL,"\n");
+                    sprintf (buffer,"Received %d articles",counter);
+                    emit newStatus(buffer);
+                    counter++;
                 }
                 f.writeBlock(gi.data(),gi.length());
                 f.close();
@@ -503,9 +506,9 @@ bool NNTP::setGroup(const char *groupname)
 
 
 
-bool NNTP::artList(int from,int to)
+bool NNTP::artList(int from,int to,NewsGroup *n)
 {
-    int status=listXover(from,to);
+    int status=listXover(from,to,n);
     return (status>199);
 }
 

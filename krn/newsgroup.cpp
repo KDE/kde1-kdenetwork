@@ -24,6 +24,8 @@
 
 #include <gdbm.h>
 
+#include <assert.h>
+
 extern ArticleDict artSpool;
 
 extern QString krnpath,cachepath,artinfopath,groupinfopath;
@@ -183,6 +185,7 @@ void Article::save()
 void Article::load()
 //gets the article info and data from the cache
 {
+    QStrList tl;
     datum key;
     datum content;
 
@@ -191,30 +194,46 @@ void Article::load()
 
     content=gdbm_fetch(artdb,key);
 
-    QString s;
+    QString s=(char *)content.dptr;
 
-    Subject=strtok ((char *)content.dptr,"\n");
+    int index=0;
 
-    ID=strtok(NULL,"\n");
-    Lines=strtok(NULL,"\n");
-    From=strtok(NULL,"\n");
-    Date=strtok(NULL,"\n");
-    
-    s=strtok(NULL,"\n");
-    if (s=="1")
-        isread=true;
-
-    s=strtok(NULL, "\n");
-    if(s != "1")
-      expire = false;
-
-    char *p;
+    QString t;
     while (1)
     {
-        p=strtok(NULL,"\n");
-        if (!p)
+        index=s.find("\n");
+        if (index==-1)
+        {
+            tl.append(s);
             break;
-        Refs.append(p);
+        }
+        t=s.left (index);
+        s=s.right(s.length()-index-1);
+        if (t.isEmpty())
+            continue;
+        tl.append (t.data());
+    }
+    Subject=tl.at(0);
+    ID=tl.at(1);
+    Lines=tl.at(2);
+    From=tl.at(3);
+    Date=tl.at(4);
+    if (!strcmp(tl.at(5),"1"))
+        setRead(true);
+    else
+        setRead(false);
+
+    if (!strcmp(tl.at(6),"1"))
+        setExpire(true);
+    else
+        setExpire(false);
+
+    for (int i=7;i<tl.count();i++)
+    {
+        if(0<strlen(tl.at(i)))
+        {
+            Refs.append(tl.at(i));
+        }
     }
 }
 
@@ -268,15 +287,38 @@ NewsGroup::~NewsGroup()
         delete sconf;
     }
 }
+void NewsGroup::addArticle(QString ID)
+{
+    if (ID.isEmpty())
+    {
+        return;
+    }
+    Article *spart=artSpool.find(ID.data());
+    if (spart==NULL)
+    {
+        Article *art=new Article();
+        art->ID=ID;
+        art->load();
+        artSpool.insert(ID.data(),art);
+        artList.append(art);
+    }
+    else
+    {
+        if (artList.findRef (spart)==-1)
+            artList.append(spart);
+    }
+}
 
 void NewsGroup::getList()
 {
     int c=0;
     QString ID;
-    artList.clear();
+//    artList.clear();
     QString ac;
     ac=krnpath+data();
     QFile f(ac);
+    if (!f.exists())
+        return;
     QByteArray arr(f.size());
     
     if (f.open(IO_ReadOnly))
@@ -292,21 +334,7 @@ void NewsGroup::getList()
             if (!(c%100))
                 qApp->processEvents();
             ID=st.readLine();
-            if (ID.isEmpty())
-                break;
-            Article *spart=artSpool.find(ID.data());
-            if (spart==NULL)
-            {
-                Article *art=new Article();
-                art->ID=ID;
-                art->load();
-                artSpool.insert(ID.data(),art);
-                artList.append(art);
-            }
-            else
-            {
-                artList.append(spart);
-            }
+            addArticle (ID);
         }
         b.close();
         arr.resize(0);
@@ -359,7 +387,7 @@ void NewsGroup::getSubjects(NNTP *server)
     if (server->last>lastArticle(server))
     {
         debug ("xover from %d to %d",lastArticle(server)+1,server->last+5);
-        server->artList(lastArticle(server),server->last);
+        server->artList(lastArticle(server),server->last,this);
         saveLastArticle(server,server->last);
         save();
     }
@@ -458,50 +486,11 @@ QString noRe(QString subject)
 }
 
 
-bool isParent(Article *parent,Article *child)
-{
-    QListIterator <char> it(child->Refs);
-    for (;it.current();++it)
-    {
-        if (parent->ID==it.current())
-            return true;
-    }
-    return false;
-}
-
 int vc=0;
-
-void collectChildren(ArticleList *parentThread,QList<ArticleList> *children)
-{
-    parentThread->visited=true;
-    qApp->processEvents();
-    QListIterator <ArticleList> it(*children);
-    for (;it.current();++it)
-    {
-        if (it.current()->visited)
-            continue;
-        if (isParent(parentThread->first(),it.current()->first()))
-        {
-            //It's parent's daughter, make it collect its own kids,
-            it.current()->visited=true;
-            collectChildren(it.current(),children);
-            //and then adopt it
-            QListIterator <Article> it2(*it.current());
-            it2.toFirst();
-            for (;it2.current();++it2)
-            {
-                it2.current()->threadDepth++;
-                parentThread->append(it2.current());
-            }
-            it.current()->clear();
-        }
-    }
-}
 
 struct node
 {
     Article *art;
-    bool placeholder;
     void *parent;
     QList <void> children;
 };
@@ -510,40 +499,48 @@ QDict <node> *d;
 
 void do_insert(QString id,Article *art)
 {
-    node *a;
+    node *a=0;
     a=d->find(id);
     if (a) //article is in the dict
     {
-        if (a->placeholder && art)
+        if (a->art==0)
         {
             a->art=art;
-            a->placeholder=false;
         }
     }
     else //article is not in the dict
     {
         a=new node;
-        a->placeholder=false;
         a->art=art;
+        a->parent=0;
         d->insert (id,a);
     }
+assert (a->art==art);
+    if (!art->Refs.count())
+        return;
     node *last=a;
+    node *b=0;
     for (char *ref=art->Refs.last();ref!=0;ref=art->Refs.prev())
     {
-        node *b=d->find(ref);
-        if (!b)
+        b=0;
+        b=d->find(ref);
+        if (b==0)
         {
+            debug ("flag");
             b=new node;
             b->art=0;
-            b->placeholder=true;
-            d->insert (ref,b);
             b->parent=0;
+            d->insert (ref,b);
+            last->parent=b;
+            b->children.append(last);
+            last=b;
         }
-        last->parent=b;
-        b->children.append(last);
-        last=b;
-        if (b->parent)
+        else
+        {
+            b->children.append(last);
+            last->parent=b;
             break;
+        }
     }
 }
 
@@ -551,7 +548,7 @@ void addToList(node *n,int dep,ArticleList *l)
 {
     for (node *child=(node *)n->children.first();child!=0;child=(node *)n->children.next())
     {
-        if (!(child->placeholder))
+        if (child->art)
         {
             l->append(child->art);
             child->art->threadDepth=dep;
@@ -562,18 +559,19 @@ void addToList(node *n,int dep,ArticleList *l)
     }
 }
 
-void ArticleList::thread(bool sortBySubject=false)
+void ArticleList::thread(bool)
 {
     d=new QDict <node>;
+    d->setAutoDelete(true);
     for (Article *iter=this->first();iter!=0;iter=this->next())
     {
         do_insert(iter->ID,iter);
     }
     node *n=new node;
-    n->placeholder=true;
     n->art=0;
     n->parent=0;
     QDictIterator <node> it(*d);
+    
     while (it.current())
     {
         if (!(it.current()->parent))

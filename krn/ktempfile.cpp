@@ -18,11 +18,8 @@ KTempFile::KTempFile()
 
 KTempFile::~KTempFile()
 {
-    if(madel)
-    {
-        clear();
-        rmdir(mdir);
-    }
+    clear();
+    rmdir(mdir);
 }
 
 QString KTempFile::dir()
