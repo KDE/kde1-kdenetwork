@@ -1,0 +1,14 @@
+# KDE Config File
+[KDE Desktop Entry]
+Comment=Show Internet Dialer Logfiles
+Comment[de]=Anzeigen der Internet-Verbindungen
+BinaryPattern=kppplogview;
+Protocols=
+Name=KPPP - Logview
+MimeType=
+Exec=kppplogview
+Icon=kppp.xpm
+TerminalOptions=
+Path=
+Type=Application
+Terminal=0

@@ -1,0 +1,43 @@
+Modem Database
+==============
+
+The Modem Database (MD) will further simplify kppp by allowing the user to
+select a modem from a database. The MD will be organized by the name of the
+manufacturer. Each modem will only have those entries not common to the
+generic Hayes Modem command set. The following entries will be available
+(defaults in brackets):
+
+Manufacturer:	This name is not stored in the MD itself but calculated from
+		the filename.
+[Name]:		The actual model name of the modem, maybe including an
+		operation mode specifier. E.g. a Zyxel Omni TA128 can be
+		run in X.75 and HDLC mode, only differing by a different
+		init string. So the models should be named "Zyxel Omni
+		TA128 (X.75)" and "Zyxel Omni TA128 (HDLC/Sync.PPP)"
+Init:		The init string (AT&F\nATV1)
+Volume0:	Volume off (ATM0L0)
+Volume1:	Medium volume (ATM1L1)
+Volume2:	Loud volume (ATM1L3)
+PreInitDelay:	Delay after opening the modem, before sending the Init
+		command (50)
+PostInitDelay:	Delay after sending the Init command (30)
+InitResponse:	Modem response to the Init command (OK)
+ToneDial:	The command to dial out, number is appended (ATDT)
+PulseDial:	The command to use impulse dialing (ATDP)
+ConnectResponse:The modems answer to "Dial" when connection is established
+BusyResponse:	Response to a busy line (BUSY)
+NoCarrierResponese: Response when carrier was not establ. (NO CARRIER)
+NoDialTone:	Response when no dial tone was found (NO DIALTONE)
+SupportsCD:	Modem supports the "Modem asserts CD line" feature (1==yes)
+
+
+The only key that is definetly needed is "Model". All other keys may use
+the default values. A MD file for the manufacturer "Zyxel" should be named
+"Zyxel" and look like this:
+
+--- Begin Zyxel.modeminf ---
+[Omni TA 128 (X.75)]
+Init=AT&F\nATV1
+[Omni TA 128 (Sync.PPP/HDLC)]
+Init=AT&F\nATV1B40
+--- Begin Zyxel.modeminf ---

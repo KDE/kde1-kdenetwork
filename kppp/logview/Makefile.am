@@ -16,6 +16,10 @@
 # make install
 appsdir = $(kde_appsdir)/Internet
 
+apps_DATA = kppplogview.kdelnk
+
+EXTRA_DIST = $(apps_DATA)
+
 # set the include path for X, qt and KDE
 INCLUDES= $(all_includes)
 # claim, which subdirectories you want to install
