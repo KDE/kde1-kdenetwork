@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1998-12-24 02:00+0100\n"
+"POT-Creation-Date: 1998-12-26 02:00+0100\n"
 "PO-Revision-Date: 1998-12-07 18:00+0100\n"
 "Last-Translator: Wolfram Diestel <diestel@rzaix340.rz-uni-leipzig.de>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
@@ -1059,6 +1059,10 @@ msgstr ""
 "115200 bit/s (krom se vi scias, ke via seria pordo\n"
 "subtenas pli altajn rapidecojn)."
 
+#: general.cpp:364
+msgid "Use Lock File"
+msgstr ""
+
 #: general.cpp:375
 #, fuzzy
 msgid ""
@@ -1414,6 +1418,13 @@ msgstr ""
 msgid "Details..."
 msgstr "Detaloj..."
 
+#: main.cpp:843
+msgid ""
+"Sorry. kppp's helper process just died.\n"
+"\n"
+"Since a further execution would be pointless, kppp will shut down right now."
+msgstr ""
+
 #: main.cpp:878
 #, c-format
 msgid ""
@@ -1525,35 +1536,35 @@ msgstr ""
 "Ne eblis legi la kontoregularo\n"
 "\""
 
-#: modem.cpp:115
+#: modem.cpp:114
 msgid "Sorry, can't open modem."
 msgstr "Padonu, ne eblas malfermi modemon."
 
-#: modem.cpp:121
+#: modem.cpp:120
 msgid "Sorry, can't detect state of CD line."
 msgstr "Padonu, ne eblas determini la staton en la lineo."
 
-#: modem.cpp:127
+#: modem.cpp:126
 msgid "Sorry, the modem is not ready."
 msgstr "Pardonu, la modemo ne estas preta."
 
-#: modem.cpp:138 modem.cpp:182
+#: modem.cpp:137 modem.cpp:181
 msgid "Sorry, the modem is busy."
 msgstr "Pardonu, la modemo estas okupita."
 
-#: modem.cpp:188
+#: modem.cpp:187
 msgid "Modem Ready."
 msgstr "Modemo preta."
 
-#: modem.cpp:199
+#: modem.cpp:198
 msgid "Can't restore tty settings: tcsetattr()\n"
 msgstr "Ne eblis restarigi tty-konfigura¼o: tcsetattr()\n"
 
-#: modem.cpp:325
+#: modem.cpp:324
 msgid "Sorry, the modem doesn't respond."
 msgstr "Pardonu, la modemo ne respondas."
 
-#: modem.cpp:426
+#: modem.cpp:425
 msgid "Unknown speed"
 msgstr "Nekonata rapideco"
 

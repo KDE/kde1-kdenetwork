@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-12-24 02:00+0100\n"
+"POT-Creation-Date: 1998-12-26 02:00+0100\n"
 "PO-Revision-Date: 1998-08-09 14:55+0200\n"
 "Last-Translator: Anders Bengtsson <d96-abe@nada.kth.se>\n"
 "MIME-Version: 1.0\n"
@@ -875,6 +875,10 @@ msgid ""
 "that your serial port supports higher speeds)."
 msgstr ""
 
+#: general.cpp:364
+msgid "Use Lock File"
+msgstr ""
+
 #: general.cpp:375
 msgid ""
 "To prevent other programs from accessing the\n"
@@ -1149,6 +1153,13 @@ msgstr ""
 msgid "Details..."
 msgstr "Detaljer"
 
+#: main.cpp:843
+msgid ""
+"Sorry. kppp's helper process just died.\n"
+"\n"
+"Since a further execution would be pointless, kppp will shut down right now."
+msgstr ""
+
 #: main.cpp:878
 #, fuzzy, c-format
 msgid ""
@@ -1254,38 +1265,38 @@ msgstr ""
 "Kan inte ladda regler för\n"
 "kostnadsberäkning \""
 
-#: modem.cpp:115
+#: modem.cpp:114
 msgid "Sorry, can't open modem."
 msgstr "Kan tyvärr inte komma åt modemet."
 
-#: modem.cpp:121
+#: modem.cpp:120
 #, fuzzy
 msgid "Sorry, can't detect state of CD line."
 msgstr "Kan inte skapa en låsfil för modemet."
 
-#: modem.cpp:127
+#: modem.cpp:126
 msgid "Sorry, the modem is not ready."
 msgstr "Modemet är tyvärr inte klart."
 
-#: modem.cpp:138 modem.cpp:182
+#: modem.cpp:137 modem.cpp:181
 msgid "Sorry, the modem is busy."
 msgstr "Modemet är tyvärr upptaget."
 
-#: modem.cpp:188
+#: modem.cpp:187
 #, fuzzy
 msgid "Modem Ready."
 msgstr "Modemet klart"
 
-#: modem.cpp:199
+#: modem.cpp:198
 msgid "Can't restore tty settings: tcsetattr()\n"
 msgstr "Kan inte återställa tty-inställningar: tcsetattr()\n"
 
-#: modem.cpp:325
+#: modem.cpp:324
 #, fuzzy
 msgid "Sorry, the modem doesn't respond."
 msgstr "Modemet är tyvärr inte klart."
 
-#: modem.cpp:426
+#: modem.cpp:425
 #, fuzzy
 msgid "Unknown speed"
 msgstr "okänd hastighet"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1998-12-24 02:00+0100\n"
+"POT-Creation-Date: 1998-12-26 02:00+0100\n"
 "PO-Revision-Date: 1998-11-21 15:12+0100\n"
 "Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
 "Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
@@ -1058,6 +1058,10 @@ msgstr ""
 "versuchen, aber nicht auf mehr als 115200 bits/sec (wenn Ihr\n"
 "serieller Port nicht sicher höhere Geschwindigkeiten unterstützt)."
 
+#: general.cpp:364
+msgid "Use Lock File"
+msgstr ""
+
 #: general.cpp:375
 #, fuzzy
 msgid ""
@@ -1417,6 +1421,13 @@ msgstr ""
 msgid "Details..."
 msgstr "Details..."
 
+#: main.cpp:843
+msgid ""
+"Sorry. kppp's helper process just died.\n"
+"\n"
+"Since a further execution would be pointless, kppp will shut down right now."
+msgstr ""
+
 #: main.cpp:878
 #, c-format
 msgid ""
@@ -1530,35 +1541,35 @@ msgstr ""
 "Kann die Gebührenregelungen nicht\n"
 "laden \""
 
-#: modem.cpp:115
+#: modem.cpp:114
 msgid "Sorry, can't open modem."
 msgstr "Sorry, kann auf Modem nicht zugreifen."
 
-#: modem.cpp:121
+#: modem.cpp:120
 msgid "Sorry, can't detect state of CD line."
 msgstr "Sorry, kann den Status der Befehlszeile nicht feststellen."
 
-#: modem.cpp:127
+#: modem.cpp:126
 msgid "Sorry, the modem is not ready."
 msgstr "Sorry, das Modem ist nicht bereit."
 
-#: modem.cpp:138 modem.cpp:182
+#: modem.cpp:137 modem.cpp:181
 msgid "Sorry, the modem is busy."
 msgstr "Sorry, das Modem ist besetzt."
 
-#: modem.cpp:188
+#: modem.cpp:187
 msgid "Modem Ready."
 msgstr "Modem bereit."
 
-#: modem.cpp:199
+#: modem.cpp:198
 msgid "Can't restore tty settings: tcsetattr()\n"
 msgstr "Kann tty-Einstellungen nicht wiederherstellen: tcsetattr()\n"
 
-#: modem.cpp:325
+#: modem.cpp:324
 msgid "Sorry, the modem doesn't respond."
 msgstr "Sorry, das Modem antwortet nicht."
 
-#: modem.cpp:426
+#: modem.cpp:425
 msgid "Unknown speed"
 msgstr "Unbekannte Geschwindigkeit"
 
