@@ -31,6 +31,8 @@ endif
 
 bin_PROGRAMS = ${KSIRC_PROGRAM} ${KSIRCSTATIC_PROGRAM}
 
+noinst_PROGRAMS = getdate
+
 # Which sources should be compiled for ksirc.
 ksirc_SOURCES = \
 toplevel.cpp \
@@ -85,6 +87,8 @@ endif
 
 kdoc:
 	kdoc -ddoc ksirc *.h
+
+getdate_SOURCES = getdate.c
 
 getdate: getdate.c
 	$(CC) -o getdate getdate.c

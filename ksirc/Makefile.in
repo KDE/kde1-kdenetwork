@@ -151,6 +151,8 @@ SUBDIRS = KSTicker KSProgress KSCutDialog KSPrefs KSColourPicker puke img doc
 
 bin_PROGRAMS = ${KSIRC_PROGRAM} ${KSIRCSTATIC_PROGRAM}
 
+noinst_PROGRAMS = getdate
+
 # Which sources should be compiled for ksirc.
 ksirc_SOURCES = \
 toplevel.cpp \
@@ -200,6 +202,8 @@ ksirc_LDADD   = ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDia
 ksircstatic_LDADD = ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a ./KSColourPicker/libkscolourpicker.a ./puke/.libs/libpuke.a
 
 @COMPILE_KSIRC_STATIC_TRUE@STATIC_LIBS = $(static_libkde) $(static_libqt) $(static_libstdc) $(static_pthread) -lX11 -lXext @LIBSOCKET@ -ldl -lm -lc
+
+getdate_SOURCES = getdate.c
 
 #dummy:
 
@@ -256,7 +260,7 @@ DISTCLEANFILES = $(BUILTSOURCES)
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = ../config.h
 CONFIG_CLEAN_FILES = 
-PROGRAMS =  $(bin_PROGRAMS)
+PROGRAMS =  $(bin_PROGRAMS) $(noinst_PROGRAMS)
 
 CPPFLAGS = @CPPFLAGS@
 LDFLAGS = @LDFLAGS@
@@ -295,10 +299,17 @@ ksircstatic_DEPENDENCIES =  ./KSProgress/libksprogress.a \
 ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a \
 ./KSPrefs/libksprefs.a ./KSColourPicker/libkscolourpicker.a \
 ./puke/.libs/libpuke.a
+getdate_OBJECTS =  getdate.o
+getdate_LDADD = $(LDADD)
+getdate_LDFLAGS = 
 CXXFLAGS = @CXXFLAGS@
 CXXCOMPILE = $(CXX) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
 LTCXXCOMPILE = $(LIBTOOL) --mode=compile $(CXX) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
 CXXLINK = $(LIBTOOL) --mode=link $(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@
+CFLAGS = @CFLAGS@
+COMPILE = $(CC) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CFLAGS)
+LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CFLAGS)
+LINK = $(LIBTOOL) --mode=link $(CC) $(CFLAGS) $(LDFLAGS) -o $@
 HEADERS =  $(noinst_HEADERS)
 
 DIST_COMMON =  ChangeLog Makefile.am Makefile.in
@@ -311,25 +322,26 @@ GZIP = --best
 DEP_FILES =  .deps/FilterRuleEditor.P .deps/FilterRuleEditorData.P \
 .deps/KSircColour.P .deps/KSircColourData.P .deps/ahistlineedit.P \
 .deps/alistbox.P .deps/baserules.P .deps/chanparser.P .deps/dccDialog.P \
-.deps/dccDialogData.P .deps/estring.P .deps/ioBroadcast.P .deps/ioDCC.P \
-.deps/ioDiscard.P .deps/ioLAG.P .deps/ioNotify.P .deps/iocontroller.P \
-.deps/irclistbox.P .deps/irclistitem.P .deps/ksirc.P \
-.deps/ksircprocess.P .deps/kspainter.P .deps/linelistitem.P \
-.deps/mFilterRuleEditor.P .deps/mFilterRuleEditorData.P \
-.deps/mKSircColour.P .deps/mKSircColourData.P .deps/mahistlineedit.P \
-.deps/malistbox.P .deps/mdccDialog.P .deps/mdccDialogData.P \
-.deps/messageReceiver.P .deps/mioDCC.P .deps/mioLAG.P .deps/mioNotify.P \
-.deps/miocontroller.P .deps/mirclistbox.P .deps/mirclistitem.P \
-.deps/mksircprocess.P .deps/mobjFinder.P .deps/mopen_ksirc.P \
-.deps/mopen_ksircData.P .deps/mopen_top.P .deps/mopen_topData.P \
-.deps/mservercontroller.P .deps/mssfeprompt.P .deps/mssfepromptdata.P \
-.deps/mtoplevel.P .deps/objFinder.P .deps/open_ksirc.P \
-.deps/open_ksircData.P .deps/open_top.P .deps/open_topData.P \
-.deps/servercontroller.P .deps/ssfeprompt.P .deps/ssfepromptdata.P \
-.deps/toplevel.P .deps/usercontrolmenu.P
+.deps/dccDialogData.P .deps/estring.P .deps/getdate.P \
+.deps/ioBroadcast.P .deps/ioDCC.P .deps/ioDiscard.P .deps/ioLAG.P \
+.deps/ioNotify.P .deps/iocontroller.P .deps/irclistbox.P \
+.deps/irclistitem.P .deps/ksirc.P .deps/ksircprocess.P \
+.deps/kspainter.P .deps/linelistitem.P .deps/mFilterRuleEditor.P \
+.deps/mFilterRuleEditorData.P .deps/mKSircColour.P \
+.deps/mKSircColourData.P .deps/mahistlineedit.P .deps/malistbox.P \
+.deps/mdccDialog.P .deps/mdccDialogData.P .deps/messageReceiver.P \
+.deps/mioDCC.P .deps/mioLAG.P .deps/mioNotify.P .deps/miocontroller.P \
+.deps/mirclistbox.P .deps/mirclistitem.P .deps/mksircprocess.P \
+.deps/mobjFinder.P .deps/mopen_ksirc.P .deps/mopen_ksircData.P \
+.deps/mopen_top.P .deps/mopen_topData.P .deps/mservercontroller.P \
+.deps/mssfeprompt.P .deps/mssfepromptdata.P .deps/mtoplevel.P \
+.deps/objFinder.P .deps/open_ksirc.P .deps/open_ksircData.P \
+.deps/open_top.P .deps/open_topData.P .deps/servercontroller.P \
+.deps/ssfeprompt.P .deps/ssfepromptdata.P .deps/toplevel.P \
+.deps/usercontrolmenu.P
 CXXMKDEP = $(CXX) -M $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
-SOURCES = $(ksirc_SOURCES) $(ksircstatic_SOURCES)
-OBJECTS = $(ksirc_OBJECTS) $(ksircstatic_OBJECTS)
+SOURCES = $(ksirc_SOURCES) $(ksircstatic_SOURCES) $(getdate_SOURCES)
+OBJECTS = $(ksirc_OBJECTS) $(ksircstatic_OBJECTS) $(getdate_OBJECTS)
 
 default: all
 
@@ -367,6 +379,15 @@ uninstall-binPROGRAMS:
 	list='$(bin_PROGRAMS)'; for p in $$list; do \
 	  rm -f $(bindir)/`echo $$p|sed '$(transform)'`; \
 	done
+
+mostlyclean-noinstPROGRAMS:
+
+clean-noinstPROGRAMS:
+	test -z "$(noinst_PROGRAMS)" || rm -f $(noinst_PROGRAMS)
+
+distclean-noinstPROGRAMS:
+
+maintainer-clean-noinstPROGRAMS:
 
 .c.o:
 	$(COMPILE) -c $<
@@ -562,18 +583,20 @@ distclean-generic:
 maintainer-clean-generic:
 	test -z "$(MAINTAINERCLEANFILES)" || rm -f $(MAINTAINERCLEANFILES)
 	test -z "$(BUILT_SOURCES)" || rm -f $(BUILT_SOURCES)
-mostlyclean-am:  mostlyclean-binPROGRAMS mostlyclean-compile \
-		mostlyclean-libtool mostlyclean-tags mostlyclean-depend \
-		mostlyclean-generic
+mostlyclean-am:  mostlyclean-binPROGRAMS mostlyclean-noinstPROGRAMS \
+		mostlyclean-compile mostlyclean-libtool \
+		mostlyclean-tags mostlyclean-depend mostlyclean-generic
 
-clean-am:  clean-binPROGRAMS clean-compile clean-libtool clean-tags \
-		clean-depend clean-generic mostlyclean-am
+clean-am:  clean-binPROGRAMS clean-noinstPROGRAMS clean-compile \
+		clean-libtool clean-tags clean-depend clean-generic \
+		mostlyclean-am
 
-distclean-am:  distclean-binPROGRAMS distclean-compile distclean-libtool \
-		distclean-tags distclean-depend distclean-generic \
-		clean-am
+distclean-am:  distclean-binPROGRAMS distclean-noinstPROGRAMS \
+		distclean-compile distclean-libtool distclean-tags \
+		distclean-depend distclean-generic clean-am
 
 maintainer-clean-am:  maintainer-clean-binPROGRAMS \
+		maintainer-clean-noinstPROGRAMS \
 		maintainer-clean-compile maintainer-clean-libtool \
 		maintainer-clean-tags maintainer-clean-depend \
 		maintainer-clean-generic distclean-am
@@ -592,7 +615,9 @@ maintainer-clean:  maintainer-clean-recursive maintainer-clean-am
 
 .PHONY: default mostlyclean-binPROGRAMS distclean-binPROGRAMS \
 clean-binPROGRAMS maintainer-clean-binPROGRAMS uninstall-binPROGRAMS \
-install-binPROGRAMS mostlyclean-compile distclean-compile clean-compile \
+install-binPROGRAMS mostlyclean-noinstPROGRAMS distclean-noinstPROGRAMS \
+clean-noinstPROGRAMS maintainer-clean-noinstPROGRAMS \
+mostlyclean-compile distclean-compile clean-compile \
 maintainer-clean-compile mostlyclean-libtool distclean-libtool \
 clean-libtool maintainer-clean-libtool install-data-recursive \
 uninstall-data-recursive install-exec-recursive \
