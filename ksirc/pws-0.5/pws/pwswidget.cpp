@@ -39,9 +39,9 @@ PWSWidget::PWSWidget(QWidget *parent, const char *name)
     
     //Put widgets all around the place
     
-    QVBoxLayout *VLay=new QVBoxLayout(this,5);
-    QHBoxLayout *HLay1=new QHBoxLayout(5);
-    QHBoxLayout *HLay2=new QHBoxLayout(5);
+    QVBoxLayout *VLay=new QVBoxLayout(this,5, -1, "VLay");
+    QHBoxLayout *HLay1=new QHBoxLayout(5, "HLay1");
+    QHBoxLayout *HLay2=new QHBoxLayout(5, "HLay2");
     VLay->addLayout(HLay1,1);
     VLay->addLayout(HLay2,0);
 

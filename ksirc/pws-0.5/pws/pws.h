@@ -17,6 +17,11 @@ public:
 	PWS(QWidget *parent = 0, const char *name = 0);
         virtual ~PWS();
 
+        void startServer() {
+            if(view != 0x0)
+                view->restart();
+        }
+
 signals:
         void quitPressed(QObject *);
 

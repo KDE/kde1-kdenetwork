@@ -29,7 +29,7 @@ private slots:
     
 
 private:
-    KProcess server;
+    KProcess *server;
 
     QSocketNotifier *web, *error;
 

@@ -30,6 +30,8 @@ class ProcCommand;
 
 #include "puke/controller.h"
 
+#include "pws-0.5/pws/pws.h"
+
 class ProcCommand // ServerController message
 {
  public:
@@ -185,6 +187,9 @@ private:
 
     // Menubar for the top.
     KMenuBar *MenuBar;
+
+    //This handles the personal webserver
+    PWS *PWSTopLevel;
     
     // Hold a list of all KSircProcess's for access latter.  Index by server 
     // name

@@ -44,15 +44,17 @@ PWSServer::PWSServer(QObject *parent, QString script, QString logDir)
     }
 
 
+    server = new KProcess();
     /* Setup and create the acutal mathopd process */
-    connect(&server, SIGNAL(processExited(KProcess *)),
+    connect(server, SIGNAL(processExited(KProcess *)),
             this, SLOT(serverDied(KProcess *)));
-    connect(&server, SIGNAL(receivedStdout(KProcess *, char *, int)),
+    connect(server, SIGNAL(receivedStdout(KProcess *, char *, int)),
             this, SLOT(stdoutData(KProcess *, char *, int)));
-    connect(&server, SIGNAL(receivedStderr(KProcess *, char *, int)),
+    connect(server, SIGNAL(receivedStderr(KProcess *, char *, int)),
             this, SLOT(stderrData(KProcess *, char *, int)));
-    server << "mathpod" << "-n";
-    server.start(KProcess::NotifyOnExit, KProcess::All);
+
+    *server << "mathpod" << "-n";
+    server->start(KProcess::NotifyOnExit, KProcess::All);
 
     int config = open(script, O_RDONLY);
     if(config <= 0){
@@ -62,13 +64,18 @@ PWSServer::PWSServer(QObject *parent, QString script, QString logDir)
     char buf[512];
     int bytes;
     while(bytes = read(config, buf, 511)){
-        server.writeStdin(buf, bytes);
+        server->writeStdin(buf, bytes);
     }
-    server.closeStdin();
+    server->closeStdin();
 }
 
 PWSServer::~PWSServer()
 {
+    server->kill();
+    disconnect(server, 0, this, 0);
+    // I don't delete the server controller since it only gets created once and ends once and It's segfaulting and I'm not sure why
+//    delete server;
+
     log->hide();
     delete web;
     delete error;
@@ -94,6 +101,7 @@ void PWSServer::stderrData(KProcess *proc, char *buf, int len)
     QString str(buf, len);
     str.prepend("~4 ");
     logit(str);
+    showLogWindow(TRUE);
 }
 void PWSServer::serverDied(KProcess *proc)
 {

@@ -14,6 +14,10 @@ use Fcntl;
 #}
 
 #
+# Puke timeout waiting for messages
+$PUKE_TIMEOUT = 10;
+
+#
 # Setup flag fo syncronous operation
 # 1 for sync
 # 0 for async/fly by the seat of your pants
@@ -29,6 +33,8 @@ if($DEBUG){
   select(LOG); $| = 1; select(STDOUT);
   print LOG "Start time: ". `date`;
 }
+
+
 
 # 
 # Multi operation level handler, winId Based.
@@ -98,7 +104,7 @@ sub sel_PukeRecvMessage {
   while(1){
     my $old_a = $SIG{'alarm'};
     $SIG{'alarm'} = sub { die "alarm\n"; };
-    my $old_time = alarm(5);
+    my $old_time = alarm($PUKE_TIMEOUT);
     eval {
       $len = sysread($PUKEFd, $m, $PukeMSize);
     };
@@ -125,7 +131,7 @@ sub sel_PukeRecvMessage {
     if($length > 0){
       my $old_a = $SIG{'alarm'};
       $SIG{'alarm'} = sub { die "alarm\n"; };
-      my $old_time = alarm(5);
+      my $old_time = alarm($PUKE_TIMEOUT);
       eval {
 	$clen = sysread($PUKEFd, $m2, $length);
       };

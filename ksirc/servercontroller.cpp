@@ -214,13 +214,15 @@ servercontroller::servercontroller /*FOLD00*/
 
   docked = FALSE;
   dockWidget = new dockServerController(this, "servercontroller_dock");
-
+  PWSTopLevel = new PWS(0x0, "PWSTopLevel");
+  PWSTopLevel->startServer();
 
 }
 
 
-servercontroller::~servercontroller() /*fold00*/
+servercontroller::~servercontroller() /*FOLD00*/
 {
+  delete PWSTopLevel;
   delete pic_icon;
   if(PukeC != 0x0){
      delete PukeC;
@@ -348,15 +350,14 @@ void servercontroller::font_prefs() /*FOLD00*/
 
 void servercontroller::pws_prefs()
 {
-  PWS *widget = new PWS();
-  widget->show();
-  connect(widget, SIGNAL(quitPressed(QObject *)),
+  PWSTopLevel->show();
+  connect(PWSTopLevel, SIGNAL(quitPressed(QObject *)),
           this, SLOT(pws_delete(QObject *)));
 }
 
 void servercontroller::pws_delete(QObject *widget)
 {
-    delete widget;
+    PWSTopLevel->hide();
 }
 
 void servercontroller::font_update(const QFont &font) /*fold00*/
