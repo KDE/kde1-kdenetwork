@@ -321,4 +321,5 @@ void servercontroller::font_update(const QFont &font)
   }
   kConfig->setGroup("GlobalOptions");
   kConfig->writeEntry("MainFont", kSircConfig->defaultfont);
+  kConfig->sync();
 }

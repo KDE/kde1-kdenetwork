@@ -104,8 +104,8 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
   mainw->setFocusPolicy(QWidget::NoFocus); // Background and base colour of
   mainw->setEnabled(FALSE);                // the lb to be the same as the main
   mainw->setSmoothScrolling(TRUE);         // ColourGroup, but this is BAD BAD
-  mainw->setFont(QFont("fixed"));      // Since we don't use KDE requested
-  mainw->setMinimumWidth(width() - 100);             // matched the main text window
+  mainw->setFont(kSircConfig->defaultfont);// Since we don't use KDE requested
+
   connect(mainw, SIGNAL(updateSize()),
 	  this, SIGNAL(changeSize()));
   QColorGroup cg = QColorGroup(colorGroup().foreground(), colorGroup().mid(), 
@@ -113,16 +113,18 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
   			       colorGroup().midlight(), 
   			       colorGroup().text(), colorGroup().mid()); 
   mainw->setPalette(QPalette(cg,cg,cg));   // colours.  Font it also hard coded
+  mainw->setMinimumWidth(width() - 100);
   //  gm2->addWidget(mainw, 10);               // which is bad bad.
 
   nicks = new aListBox(pan, "qlb");          // Make the users list box.
-  //nicks->setMaximumWidth(100);             // Would be nice if it was flat and
+  //  nicks->setMaximumWidth(100);             // Would be nice if it was flat and
   //  nicks->setMinimumWidth(100);             // matched the main text window
   nicks->setPalette(QPalette(cg,cg,cg));   // HARD CODED COLOURS AGAIN!!!!
   //  gm2->addWidget(nicks, 0);
 
   pan->activate(mainw, nicks);
-  mainw->setMinimumWidth(0);             // matched the main text window
+  pan->setAbsSeparatorPos(width() - 100);
+  //  mainw->setMinimumWidth(0);             // matched the main text window
 
   //  linee = new QLineEdit(f, "qle");
   linee = new aHistLineEdit(f, "qle");     // aHistEdit is a QLineEdit with 
@@ -973,8 +975,10 @@ void KSircTopLevel::resizeEvent(QResizeEvent *e)
   KTopLevelWidget::resizeEvent(e);
 //  cerr << "Updating list box\n";
   mainw->setTopItem(mainw->count()-1);
+  pan->setAbsSeparatorPos(width()-100);
+  mainw->setMinimumWidth(width() - 100);
   emit changeSize();
-  pan->setAbsSeperatorPos(width() - 100);
+  mainw->scrollToBottom();
   mainw->setAutoUpdate(TRUE);
   repaint(TRUE);
 }
@@ -1024,6 +1028,7 @@ void KSircTopLevel::control_message(QString str)
       have_focus = 0;
       setCaption(channel_name);
       emit changeChannel("!default", channel_name);
+      mainw->scrollToBottom();
       break;
     case STOP_UPDATES:
       Buffer = TRUE;
