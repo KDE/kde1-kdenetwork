@@ -5,7 +5,7 @@ POFILES = $(GMFILES:.gmo=.po)
 
 LANG = pl
 
-localedir = $(prefix)/share/locale
+localedir = $(kde_locale)
 
 GMSGFMT = @GMSGFMT@
 MSGFMT = @MSGFMT@
