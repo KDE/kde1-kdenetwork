@@ -1833,7 +1833,7 @@ void KMComposeWin::focusNextPrevEdit(const QLineEdit* aCur, bool aNext)
     else cur = mEdtList.prev();
   }
   if (cur) cur->setFocus();
-  else mEditor->setFocus();
+  else if (aNext) mEditor->setFocus(); //Key up from first doea nothing (sven)
 }
 
 
@@ -1874,6 +1874,35 @@ bool KMLineEdit::eventFilter(QObject*, QEvent* e)
       cursorAtEnd();
       return TRUE;
     }
+    // ---sven's Return is same Tab and arrow key navigation start ---
+    if (k->key() == Key_Enter || k->key() == Key_Return)
+    {
+      mComposer->focusNextPrevEdit(this,TRUE);
+      return TRUE;
+    }
+    if (k->key() == Key_Right)
+    {
+      if (strlen(text()) == cursorPosition()) // at End?
+      {
+        emit completion();
+        cursorAtEnd();
+        return TRUE;
+      }
+      return FALSE;
+    }
+
+    if (k->key() == Key_Up)
+    {
+      mComposer->focusNextPrevEdit(this,FALSE); // Go up
+      return TRUE;
+    }
+    
+    if (k->key() == Key_Down)
+    {
+      mComposer->focusNextPrevEdit(this,TRUE); // Go down
+      return TRUE;
+    }
+    // ---sven's Return is same Tab and arrow key navigation end ---
   }
   else if (e->type() == Event_MouseButtonPress)
   {
@@ -1949,7 +1978,7 @@ void KMLineEdit::slotCompletion()
 
   if (Name == "subjectLine")
   {
-    mComposer->focusNextPrevEdit(this,TRUE);
+    //mComposer->focusNextPrevEdit(this,TRUE); //IMHO, it is useless now (sven)
     return;
   }
   
@@ -2067,6 +2096,14 @@ bool KMEdit::eventFilter(QObject*, QEvent* e)
       insertAt("	", row, col); // insert tab character '\t'
       return TRUE;
     }
+    // ---sven's Arrow key navigation start ---
+    // Key Up in first line takes you to Subject line.
+    if (k->key() == Key_Up && currentLine() == 0)
+    {
+      mComposer->focusNextPrevEdit(0, false); //take me up
+      return TRUE;
+    }
+    // ---sven's Arrow key navigation end ---
   }
   return FALSE;
 }
