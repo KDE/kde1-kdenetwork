@@ -21,6 +21,8 @@ LIBVERSION = DW_DEVELOPMENT_VERSION
 
 lib_LTLIBRARIES = libmimelib.la
 
+INCLUDES = -I. -I$(srcdir)
+
 libmimelib_la_SOURCES = \
     protocol.cpp \
     address.cpp \
