@@ -675,13 +675,17 @@ bool Groupdlg::currentActions(int action)
     }
     else
     {
-        const char *text = list->getCurrentItem ()->getText ();
-        int index=groups.find (&NewsGroup(text));
-        NewsGroup *g=groups.at(index);
-        if (-1 != index)
+        int index=-1;
+        NewsGroup *g=0;
+        if (list->getCurrentItem())
         {
-            actions(action,g);
+            const char *text = list->getCurrentItem ()->getText ();
+            index=groups.find (&NewsGroup(text));
         }
+        debug ("index-->%d",index);
+        if (index!=-1)
+            g=groups.at(index);
+        actions(action,g);
         list->forEveryItem(checkPixmap,NULL);
         list->repaint();
     }

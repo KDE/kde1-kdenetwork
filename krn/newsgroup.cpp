@@ -25,7 +25,6 @@ extern ArticleDict artSpool;
 
 extern QString krnpath,cachepath,artinfopath,groupinfopath;
 
-
 ////////////////////////////////////////////////////////////////////
 // Article class. Represents an article
 // Real docs soon.
@@ -297,7 +296,8 @@ void NewsGroup::getMessages(NNTP *server)
     server->reportCounters (false,true);
     for (Article *art=artList.first();art!=0;art=artList.next())
     {
-        server->article(art->ID.data());
+        if (!server->isCached(art->ID.data()))
+            server->article(art->ID.data());
         qApp->processEvents();
     }
     server->resetCounters (true,true);
@@ -382,7 +382,6 @@ void collectChildren(ArticleList *parentThread,QList<ArticleList> *children)
 
 void ArticleList::thread(bool sortBySubject=false)
 {
-
     if (count()<2)
     {
         return; //not much to thread
