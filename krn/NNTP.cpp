@@ -102,13 +102,13 @@ int NNTP::authinfo(const char *username,const char *password)
         sprintf (mSendBuffer,"authinfo user %s\r\n",username);
         cout << "C: " << mSendBuffer << endl;
         
-        mResponseCode = -1;
+        mReplyCode = -1;
         int bufferLen = strlen(mSendBuffer);
-        int numSent = Send(mSendBuffer, bufferLen);
+        int numSent = PSend(mSendBuffer, bufferLen);
         if (numSent == bufferLen)
         {
-            PGetSingleLineResponse();
-            cout <<"S: " << SingleLineResponse() << endl;
+            PGetStatusResponse();
+            cout <<"S: " << StatusResponse() << endl;
         }
     }
     if (password)
@@ -116,16 +116,16 @@ int NNTP::authinfo(const char *username,const char *password)
         sprintf (mSendBuffer,"authinfo pass %s\r\n",password);
         cout << "C: " << mSendBuffer << endl;
         
-        mResponseCode = -1;
+        mReplyCode = -1;
         int bufferLen = strlen(mSendBuffer);
-        int numSent = Send(mSendBuffer, bufferLen);
+        int numSent = PSend(mSendBuffer, bufferLen);
         if (numSent == bufferLen)
         {
-            PGetSingleLineResponse();
-            cout <<"S: " << SingleLineResponse() << endl;
+            PGetStatusResponse();
+            cout <<"S: " << StatusResponse() << endl;
         }
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 int NNTP::listOverview()
@@ -135,16 +135,16 @@ int NNTP::listOverview()
     // for debugging
     cout << "C: " << mSendBuffer << endl;
     
-    mResponseCode = -1;
+    mReplyCode = -1;
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
-        PGetSingleLineResponse();
-        cout <<"S: " << SingleLineResponse() << endl;
-        if (mResponseCode/100%10 == 2)
+        PGetStatusResponse();
+        cout <<"S: " << StatusResponse() << endl;
+        if (mReplyCode/100%10 == 2)
         {
-            PGetMultiLineResponse();
-            QString of=MultiLineResponse().data();
+            PGetTextResponse();
+            QString of=TextResponse().data();
             int index;
             
             index=of.find ("Subject");
@@ -185,7 +185,7 @@ int NNTP::listOverview()
             debug ("Offsets:%d,%d,%d,%d,%d,%d",OffsetSubject,OffsetFrom,OffsetLines,OffsetID,OffsetDate,OffsetRef);
         }
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 
@@ -194,15 +194,15 @@ int NNTP::setMode (char *mode)
     sprintf (mSendBuffer,"mode %s\r\n",mode);
     cout << "C: " << mSendBuffer << endl;
 
-    mResponseCode = -1;
+    mReplyCode = -1;
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen)
     {
-        PGetSingleLineResponse();
-        cout <<"S: " << SingleLineResponse() << endl;
+        PGetStatusResponse();
+        cout <<"S: " << StatusResponse() << endl;
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 int NNTP::listXover(int from=0,int to=0)
@@ -215,16 +215,16 @@ int NNTP::listXover(int from=0,int to=0)
     // for debugging
     cout << "C: " << mSendBuffer << endl;
     
-    mResponseCode = -1;
+    mReplyCode = -1;
     int bufferLen = strlen(mSendBuffer);
-    int numSent = Send(mSendBuffer, bufferLen);
+    int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen)
     {
-        PGetSingleLineResponse();
-        cout <<"S: " << SingleLineResponse() << endl;
-        if (mResponseCode/100%10 == 2)
+        PGetStatusResponse();
+        cout <<"S: " << StatusResponse() << endl;
+        if (mReplyCode/100%10 == 2)
         {
-            PGetMultiLineResponse();
+            PGetTextResponse();
             
             QString p,qit;
             p=krnpath+GroupName;
@@ -235,7 +235,7 @@ int NNTP::listXover(int from=0,int to=0)
             }
             else
             {
-                QString resp=MultiLineResponse().data();
+                QString resp=TextResponse().data();
                 if (resp.isEmpty())
                 {
                     f.close();
@@ -299,10 +299,10 @@ int NNTP::listXover(int from=0,int to=0)
         else
         {
             warning ("Can't get XOVER data from your server");
-            warning ("Server said %s",SingleLineResponse().data());
+            warning ("Server said %s",StatusResponse().data());
         }
     }
-    return mResponseCode;
+    return mReplyCode;
 }
 
 void NNTP::groupList(QList <NewsGroup> *grouplist, bool fromserver)
@@ -320,11 +320,11 @@ void NNTP::groupList(QList <NewsGroup> *grouplist, bool fromserver)
         debug ("status-->%d",status);
         if (status!=215)
         {
-            printf ("error getting group list\nServer said %s\n",SingleLineResponse().data());
+            printf ("error getting group list\nServer said %s\n",StatusResponse().data());
             grouplist->clear();
             return;
         };
-        groups=MultiLineResponse().data();
+        groups=TextResponse().data();
         if (groups.isEmpty())
         {
             grouplist->clear();
@@ -370,13 +370,13 @@ bool NNTP::setGroup(const char *groupname)
     if (status!=211)
     {
         printf ("can't change group!\n");
-        printf ("server said: %s\n",SingleLineResponse().data());
+        printf ("server said: %s\n",StatusResponse().data());
         GroupName="";
     }
     else
     {
         int j;
-        QString l=SingleLineResponse().data();
+        QString l=StatusResponse().data();
         j=l.find(' ');
         l=l.right(l.length()-j-1);
         j=l.find(' ');
@@ -443,14 +443,14 @@ QString *NNTP::article(char *id)
         debug ("status-->%d",status);
         if (status==220)
         {
-            data->setStr(MultiLineResponse().data());
+            data->setStr(TextResponse().data());
             f.writeBlock(data->data(),data->length());
             f.close();
             return article(id);
         }
         else
         {
-            warning ("error getting data\nserver said %s\n",SingleLineResponse().data());
+            warning ("error getting data\nserver said %s\n",StatusResponse().data());
             f.close();
             unlink (p.data());
             return new QString("");
@@ -474,5 +474,5 @@ bool NNTP::checkStatus( QString start)
 
 void NNTP::getResponse(QString *r )
 {
-    r->setStr(MultiLineResponse().data());
+    r->setStr(TextResponse().data());
 }
