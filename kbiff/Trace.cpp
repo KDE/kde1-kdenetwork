@@ -38,7 +38,8 @@ void Trace::outputf(const QString& message ...)
 	{
 		va_list arglist;
 
-		va_start(arglist, (const char*)message);
+		const char *format = (const char*)message;
+		va_start(arglist, format);
 
 		char buffer[512];
 		vsprintf(buffer, message, arglist );
