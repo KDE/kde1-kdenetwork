@@ -353,7 +353,7 @@ public:
     //. this may cause problems in the current implementation if a CR LF '.'
     //. sequence is split between calls.
 
-private:
+protected:
 
     char*       mSendBuffer;
     char*       mRecvBuffer;
