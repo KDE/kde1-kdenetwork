@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-04-05 14:26+0200\n"
+"POT-Creation-Date: 1998-04-16 18:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Case Roole <cjr@xs4all.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,12 +38,17 @@ msgstr "Voer a.u.b. de naam van uw NNTP server in"
 msgid "Please enter your SMTP server name"
 msgstr "Voer a.u.b. de naam van uw SMTP server in"
 
-#: NNTP.cpp:70
+#: NNTP.cpp:74
 #, c-format
 msgid "Received %.2f Kb"
 msgstr "Ontving %.2f Kb"
 
-#: NNTP.cpp:620
+#: NNTP.cpp:552
+#, fuzzy
+msgid "Getting Article"
+msgstr "Artikelen Lijst wordt opgehaald"
+
+#: NNTP.cpp:638
 msgid "Article Received"
 msgstr "Artikel ontvangen"
 
@@ -87,15 +92,15 @@ msgstr "Werk achterstand bij"
 msgid "(un)Subscribe"
 msgstr "(aan/af)Melden"
 
-#: artdlg.cpp:140 groupdlg.cpp:146
+#: artdlg.cpp:143 groupdlg.cpp:146
 msgid "Untag"
 msgstr "Demarkeer"
 
-#: artdlg.cpp:160 groupdlg.cpp:154
+#: artdlg.cpp:163 groupdlg.cpp:154
 msgid "(Un)Tag"
 msgstr "(De)markeer"
 
-#: artdlg.cpp:153 artdlg.cpp:205 groupdlg.cpp:157 groupdlg.cpp:207
+#: artdlg.cpp:156 artdlg.cpp:213 groupdlg.cpp:157 groupdlg.cpp:209
 msgid "Post New Article"
 msgstr "Post Nieuw Artikel"
 
@@ -107,7 +112,7 @@ msgstr "Post alle klaargelegde artikelen"
 msgid "&Subscribed"
 msgstr "Geaboneerd"
 
-#: artdlg.cpp:191 groupdlg.cpp:161
+#: artdlg.cpp:197 groupdlg.cpp:161
 msgid "&Tagged"
 msgstr "Gemarkeerd"
 
@@ -131,87 +136,75 @@ msgstr "Afdruk Opties..."
 msgid "About Krn..."
 msgstr "Over Krn..."
 
-#: groupdlg.cpp:186
+#: groupdlg.cpp:188
 msgid "&Newsgroup"
 msgstr "Nieuwgroep"
 
-#: groupdlg.cpp:193
+#: groupdlg.cpp:195
 msgid "Connect to server"
 msgstr "Maak een verbinding met server"
 
-#: groupdlg.cpp:195
+#: groupdlg.cpp:197
 msgid "Disconnect from server"
 msgstr "Verbreek verbinding met server"
 
-#: groupdlg.cpp:198
+#: groupdlg.cpp:200
 msgid "Get list of active groups"
 msgstr "Haal lijst van actieve groepen"
 
-#: groupdlg.cpp:199
+#: groupdlg.cpp:201
 msgid "Find group"
 msgstr "Vind groep"
 
-#: groupdlg.cpp:205
+#: groupdlg.cpp:207
 msgid "Check for Unread Articles"
 msgstr "Controleer of er ongelezen artikelen zijn"
 
-#: groupdlg.cpp:315
-msgid "Sorry!"
-msgstr ""
-
-#: groupdlg.cpp:316
-msgid ""
-"That newsgroup is not in the current active file\n"
-" Krn can't handle this gracefully right now"
-msgstr ""
-"Deze nieuwsgroep is niet in het huidige actieve bestand\n"
-"Krn kan dit momenteel niet elegant behandelen"
-
-#: groupdlg.cpp:348 groupdlg.cpp:551 groupdlg.cpp:887
+#: groupdlg.cpp:337 groupdlg.cpp:362 groupdlg.cpp:565 groupdlg.cpp:901
 msgid "All Newsgroups."
 msgstr "Alle nieuwsgroepen"
 
-#: groupdlg.cpp:442 groupdlg.cpp:536
+#: groupdlg.cpp:456 groupdlg.cpp:550
 msgid "Subscribed Newsgroups."
 msgstr "Geabonneerde nieuwsgroepen."
 
-#: groupdlg.cpp:491
+#: groupdlg.cpp:505
 msgid "Disconnected"
 msgstr "Verbinding verbroken"
 
-#: groupdlg.cpp:498
+#: groupdlg.cpp:512
 msgid "Connecting to server"
 msgstr "Maak verbinding met server"
 
-#: groupdlg.cpp:503
+#: groupdlg.cpp:517
 msgid "Connected to server - Posting not allowed"
 msgstr "Verbonden met server - Posten niet toegestaan"
 
-#: groupdlg.cpp:505
+#: groupdlg.cpp:519
 msgid "Connected to server - Posting allowed"
 msgstr "Verbonden met server - Posten toegestaan"
 
-#: groupdlg.cpp:511
+#: groupdlg.cpp:525
 msgid "Can't connect to server"
 msgstr "Kan niet verbinden met server"
 
-#: groupdlg.cpp:513
+#: groupdlg.cpp:527
 msgid "Connection to server failed"
 msgstr "Verbinden met server faalde"
 
-#: groupdlg.cpp:522
+#: groupdlg.cpp:536
 msgid "Authentication Failed"
 msgstr "Authenticatie faalde"
 
-#: groupdlg.cpp:525
+#: groupdlg.cpp:539
 msgid "Connection to server failed: Authentication problem"
 msgstr "Verbinden met server faalde: Authenticatie probleem"
 
-#: groupdlg.cpp:570
+#: groupdlg.cpp:584
 msgid "Krn-Question"
 msgstr "Krn-Vraag"
 
-#: groupdlg.cpp:571
+#: groupdlg.cpp:585
 msgid ""
 "The operation you requested needs a connection to the News server\n"
 "Should I attempt one?"
@@ -219,7 +212,7 @@ msgstr ""
 "De operatie welke u verzocht vereist een verbinding met de Nieuws server\n"
 "Zal ik dat proberen ?"
 
-#: groupdlg.cpp:833
+#: groupdlg.cpp:847
 msgid ""
 "You don't have an active groups list.\n"
 " get it from server?"
@@ -227,207 +220,207 @@ msgstr ""
 "U hebt geen actieve groepen lijst.\n"
 "Zal ik deze ophalen van de server ?"
 
-#: groupdlg.cpp:849
+#: groupdlg.cpp:863
 msgid "Listing active newsgroups"
 msgstr "Opsommen van actieve nieuwsgroepen"
 
-#: groupdlg.cpp:861
+#: groupdlg.cpp:875
 msgid "KRN - Find a Newsgroup"
 msgstr "KRN - Zoek een Nieuwsgroep"
 
-#: groupdlg.cpp:862
+#: groupdlg.cpp:876
 msgid "Enter the name of the Newsgroup"
 msgstr "Voer de naam in van de Nieuwsgroep"
 
-#: groupdlg.cpp:947
+#: groupdlg.cpp:961
 msgid "Krn - Message"
 msgstr "Krn - Boodschap"
 
-#: groupdlg.cpp:948
+#: groupdlg.cpp:962
 msgid "I can't find the group you want!"
 msgstr "I kan de gevraagde groep niet vinden!"
 
-#: groupdlg.cpp:1039
+#: groupdlg.cpp:1053
 msgid "Getting messages in "
 msgstr "Haal nu de boodschappen op van "
 
-#: groupdlg.cpp:1052
+#: groupdlg.cpp:1066
 msgid "Getting list of messages in "
 msgstr "Haal nu de lijst van boodschappen op van "
 
-#: artdlg.cpp:133 artdlg.cpp:148
+#: artdlg.cpp:136 artdlg.cpp:151
 msgid "Download"
 msgstr "Spons"
 
-#: artdlg.cpp:135 artdlg.cpp:239
+#: artdlg.cpp:138 artdlg.cpp:260
 msgid "Mark Read"
 msgstr "Markeer als gelezen"
 
-#: artdlg.cpp:136
+#: artdlg.cpp:139
 msgid "Mark Unread"
 msgstr "Markeer als ongelezen"
 
-#: artdlg.cpp:138 artdlg.cpp:152
+#: artdlg.cpp:141 artdlg.cpp:155
 msgid "Print"
 msgstr "Druk af"
 
-#: artdlg.cpp:139 artdlg.cpp:159
+#: artdlg.cpp:142 artdlg.cpp:162
 msgid "Decode"
 msgstr "Ontcijfer"
 
-#: artdlg.cpp:141 artdlg.cpp:164
+#: artdlg.cpp:144 artdlg.cpp:164
 msgid "Don't expire"
 msgstr "Laat niet vervallen"
 
-#: artdlg.cpp:150
+#: artdlg.cpp:153
 msgid "Lookup in Altavista"
 msgstr "Zoek op in Altavista"
 
-#: artdlg.cpp:154 artdlg.cpp:223
+#: artdlg.cpp:157 artdlg.cpp:244
 msgid "Reply by Mail"
 msgstr "Beantwoord met Mail"
 
-#: artdlg.cpp:155
+#: artdlg.cpp:158
 msgid "Post Followup"
 msgstr "Post een aansluitende boodschap"
 
-#: artdlg.cpp:156
+#: artdlg.cpp:159
 msgid "Post & Reply"
 msgstr "Post & Beantwoord"
 
-#: artdlg.cpp:162
+#: artdlg.cpp:166
 msgid "Tagged"
 msgstr "Gemarkeerd"
 
-#: artdlg.cpp:173
+#: artdlg.cpp:177
 msgid "Show Only Unread Messages"
 msgstr "Toon enkel ongelezen boodschappen"
 
-#: artdlg.cpp:175
+#: artdlg.cpp:179
 msgid "Show Only Cached Messages"
 msgstr "Toon enkel opgeslagen boodschappen"
 
-#: artdlg.cpp:177
+#: artdlg.cpp:181
 msgid "Show Locked Messages"
 msgstr "Toon afgesloten boodschappen"
 
-#: artdlg.cpp:179
+#: artdlg.cpp:183
 msgid "Expunge"
 msgstr "Verwijder"
 
-#: artdlg.cpp:180
+#: artdlg.cpp:184
 msgid "Appearance..."
 msgstr "Verschijning..."
 
-#: artdlg.cpp:181
+#: artdlg.cpp:185
 msgid "Sorting..."
 msgstr "Sorterend..."
 
-#: artdlg.cpp:185
+#: artdlg.cpp:189
 msgid "Edit Rules"
 msgstr "Wijzig Regels"
 
-#: artdlg.cpp:186
+#: artdlg.cpp:190
 msgid "Update"
 msgstr "Breng bij de tijd"
 
-#: artdlg.cpp:193
+#: artdlg.cpp:199
 msgid "&Scoring"
 msgstr ""
 
-#: artdlg.cpp:198
+#: artdlg.cpp:206
 msgid "Previous Message"
 msgstr "Vorige Boodschap"
 
-#: artdlg.cpp:200
+#: artdlg.cpp:208
 msgid "Next Message"
 msgstr "Volgende Boodschap"
 
-#: artdlg.cpp:202
+#: artdlg.cpp:210
 msgid "Find Article"
 msgstr "Zoek Artikel"
 
-#: artdlg.cpp:207
+#: artdlg.cpp:215
 msgid "Get Article List"
 msgstr "Haal Artikelen Lijst"
 
-#: artdlg.cpp:219
+#: artdlg.cpp:217
+msgid "Refresh Display"
+msgstr ""
+
+#: artdlg.cpp:240
 msgid "Save Article"
 msgstr "Sla artikel op"
 
-#: artdlg.cpp:221
+#: artdlg.cpp:242
 msgid "Print Article"
 msgstr "Druk artikel af"
 
-#: artdlg.cpp:225
+#: artdlg.cpp:246
 msgid "Post a Followup"
 msgstr "Post een aansluitende boodschap"
 
-#: artdlg.cpp:227
+#: artdlg.cpp:248
 msgid "Post & Mail"
 msgstr ""
 
-#: artdlg.cpp:233
+#: artdlg.cpp:254
 msgid "Tag Article"
 msgstr "Markeer artikel"
 
-#: artdlg.cpp:235
+#: artdlg.cpp:256
 msgid "Lock (keep in cache)"
 msgstr "Sluit af (sla op in cache)"
 
-#: artdlg.cpp:237
+#: artdlg.cpp:258
 msgid "Decode Article"
 msgstr "Ontcijfer Artikel"
 
-#: artdlg.cpp:241
+#: artdlg.cpp:262
 msgid "Mark UnRead"
 msgstr "Markeer als OnGelezen"
 
-#: artdlg.cpp:263 sortDlg.cpp:34
+#: artdlg.cpp:284 sortDlg.cpp:34
 msgid "Sender"
 msgstr "Afzender"
 
-#: artdlg.cpp:264 sortDlg.cpp:35
-msgid "Date"
-msgstr "Datum"
-
-#: artdlg.cpp:265 sortDlg.cpp:36
+#: artdlg.cpp:286 sortDlg.cpp:36
 msgid "Lines"
 msgstr "Regels"
 
-#: artdlg.cpp:266 sortDlg.cpp:33
+#: artdlg.cpp:287 sortDlg.cpp:33
 msgid "Score"
 msgstr ""
 
-#: artdlg.cpp:267 sortDlg.cpp:32
+#: artdlg.cpp:288 sortDlg.cpp:32
 msgid "Subject"
 msgstr "Onderwerp"
 
-#: artdlg.cpp:438
+#: artdlg.cpp:451
 msgid "Threading..."
 msgstr ""
 
-#: artdlg.cpp:447
+#: artdlg.cpp:460
 msgid "Showing Article List"
 msgstr "Toon Artikelen Lijst"
 
-#: artdlg.cpp:1226
+#: artdlg.cpp:1273
 msgid "KRN - Existing File"
 msgstr "KRN - Bestaand Bestand"
 
-#: artdlg.cpp:1227
+#: artdlg.cpp:1274
 msgid "The File you selected already exists"
 msgstr "Het bestand dat u koos bestaat reeds"
 
-#: artdlg.cpp:1233
+#: artdlg.cpp:1280
 msgid "OverWrite"
 msgstr "Overschrijf"
 
-#: artdlg.cpp:1235
+#: artdlg.cpp:1282
 msgid "Append"
 msgstr "Voeg toe"
 
-#: artdlg.cpp:1270
+#: artdlg.cpp:1317
 msgid ""
 "From: Krn\n"
 "To: You\n"
@@ -441,7 +434,7 @@ msgstr ""
 "Fout bij ophalen artikel.\n"
 "Server zei:\n"
 
-#: artdlg.cpp:1370
+#: artdlg.cpp:1417
 msgid "Getting Article List"
 msgstr "Artikelen Lijst wordt opgehaald"
 
@@ -512,10 +505,6 @@ msgstr "KRN - Ontcijferaar"
 #: decoderDlg.cpp:34
 msgid "ID"
 msgstr ""
-
-#: decoderDlg.cpp:37
-msgid "Name"
-msgstr "Naam"
 
 #: decoderDlg.cpp:44
 msgid "Destination directory:"
@@ -778,3 +767,16 @@ msgstr "Sorteer op basis van:"
 #: sortDlg.cpp:56
 msgid "Use Threading"
 msgstr "Gebruik Threading"
+
+#~ msgid ""
+#~ "That newsgroup is not in the current active file\n"
+#~ " Krn can't handle this gracefully right now"
+#~ msgstr ""
+#~ "Deze nieuwsgroep is niet in het huidige actieve bestand\n"
+#~ "Krn kan dit momenteel niet elegant behandelen"
+
+#~ msgid "Date"
+#~ msgstr "Datum"
+
+#~ msgid "Name"
+#~ msgstr "Naam"

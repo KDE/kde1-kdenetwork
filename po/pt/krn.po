@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: krn\n"
-"POT-Creation-Date: 1998-04-05 14:26+0200\n"
+"POT-Creation-Date: 1998-04-16 18:09+0200\n"
 "PO-Revision-Date: 1998-02-03 12:00+0000\n"
 "Last-Translator: Pedro Morais <pmmm@camoes.rnl.ist.utl.pt>\n"
 
@@ -29,12 +29,17 @@ msgstr "Por favor insira o nome do seu servidor NNTP"
 msgid "Please enter your SMTP server name"
 msgstr "Por favor insira o nome do seu servidor SMTP"
 
-#: NNTP.cpp:70
+#: NNTP.cpp:74
 #, c-format
 msgid "Received %.2f Kb"
 msgstr "Recebi %.2f Kb"
 
-#: NNTP.cpp:620
+#: NNTP.cpp:552
+#, fuzzy
+msgid "Getting Article"
+msgstr "A Receber Lista de Artigos"
+
+#: NNTP.cpp:638
 msgid "Article Received"
 msgstr "Artigo Recebido"
 
@@ -78,15 +83,15 @@ msgstr "Apanhar"
 msgid "(un)Subscribe"
 msgstr "(des)Subscrever"
 
-#: artdlg.cpp:140 groupdlg.cpp:146
+#: artdlg.cpp:143 groupdlg.cpp:146
 msgid "Untag"
 msgstr "Desmarcar"
 
-#: artdlg.cpp:160 groupdlg.cpp:154
+#: artdlg.cpp:163 groupdlg.cpp:154
 msgid "(Un)Tag"
 msgstr "(Des)Marcar"
 
-#: artdlg.cpp:153 artdlg.cpp:205 groupdlg.cpp:157 groupdlg.cpp:207
+#: artdlg.cpp:156 artdlg.cpp:213 groupdlg.cpp:157 groupdlg.cpp:209
 msgid "Post New Article"
 msgstr "Enviar Nova Mensagem"
 
@@ -98,7 +103,7 @@ msgstr "Enviar Todas as Mensagens em Espera"
 msgid "&Subscribed"
 msgstr "&Subscrito"
 
-#: artdlg.cpp:191 groupdlg.cpp:161
+#: artdlg.cpp:197 groupdlg.cpp:161
 msgid "&Tagged"
 msgstr "&Marcado"
 
@@ -122,87 +127,75 @@ msgstr "Opções de Impressão..."
 msgid "About Krn..."
 msgstr "Acerca do Krn..."
 
-#: groupdlg.cpp:186
+#: groupdlg.cpp:188
 msgid "&Newsgroup"
 msgstr "&Newsgroup"
 
-#: groupdlg.cpp:193
+#: groupdlg.cpp:195
 msgid "Connect to server"
 msgstr "Ligar ao servidor"
 
-#: groupdlg.cpp:195
+#: groupdlg.cpp:197
 msgid "Disconnect from server"
 msgstr "Desligar do servidor"
 
-#: groupdlg.cpp:198
+#: groupdlg.cpp:200
 msgid "Get list of active groups"
 msgstr "Receber lista de grupos activos"
 
-#: groupdlg.cpp:199
+#: groupdlg.cpp:201
 msgid "Find group"
 msgstr "Encontra grupo"
 
-#: groupdlg.cpp:205
+#: groupdlg.cpp:207
 msgid "Check for Unread Articles"
 msgstr "Verificar Mensagens Não Lidas"
 
-#: groupdlg.cpp:315
-msgid "Sorry!"
-msgstr "Desculpe!"
-
-#: groupdlg.cpp:316
-msgid ""
-"That newsgroup is not in the current active file\n"
-" Krn can't handle this gracefully right now"
-msgstr ""
-"Esse newsgroup não está no ficheiro actualmente activo\n"
-" Krn não consegue ligar com isso graciosamente"
-
-#: groupdlg.cpp:348 groupdlg.cpp:551 groupdlg.cpp:887
+#: groupdlg.cpp:337 groupdlg.cpp:362 groupdlg.cpp:565 groupdlg.cpp:901
 msgid "All Newsgroups."
 msgstr "Todos os Newsgroups."
 
-#: groupdlg.cpp:442 groupdlg.cpp:536
+#: groupdlg.cpp:456 groupdlg.cpp:550
 msgid "Subscribed Newsgroups."
 msgstr "Newsgroups Subscritos"
 
-#: groupdlg.cpp:491
+#: groupdlg.cpp:505
 msgid "Disconnected"
 msgstr "Desligado"
 
-#: groupdlg.cpp:498
+#: groupdlg.cpp:512
 msgid "Connecting to server"
 msgstr "A efectuar ligação ao servidor"
 
-#: groupdlg.cpp:503
+#: groupdlg.cpp:517
 msgid "Connected to server - Posting not allowed"
 msgstr "Ligado ao servidor - Envio não permitido"
 
-#: groupdlg.cpp:505
+#: groupdlg.cpp:519
 msgid "Connected to server - Posting allowed"
 msgstr "Ligado ao servidor - Envia permitido"
 
-#: groupdlg.cpp:511
+#: groupdlg.cpp:525
 msgid "Can't connect to server"
 msgstr "Não consigo ligar ao servidor"
 
-#: groupdlg.cpp:513
+#: groupdlg.cpp:527
 msgid "Connection to server failed"
 msgstr "Ligação com o servidor falhou"
 
-#: groupdlg.cpp:522
+#: groupdlg.cpp:536
 msgid "Authentication Failed"
 msgstr "Falha de Autenticação"
 
-#: groupdlg.cpp:525
+#: groupdlg.cpp:539
 msgid "Connection to server failed: Authentication problem"
 msgstr "Ligação ao servidor falhou: Problema de autenticação"
 
-#: groupdlg.cpp:570
+#: groupdlg.cpp:584
 msgid "Krn-Question"
 msgstr "Pergunta do Krn"
 
-#: groupdlg.cpp:571
+#: groupdlg.cpp:585
 msgid ""
 "The operation you requested needs a connection to the News server\n"
 "Should I attempt one?"
@@ -210,7 +203,7 @@ msgstr ""
 "A operação que pediu necessita de uma ligação a um servidor de News\n"
 "Devo tentar estabelece-la?"
 
-#: groupdlg.cpp:833
+#: groupdlg.cpp:847
 msgid ""
 "You don't have an active groups list.\n"
 " get it from server?"
@@ -218,208 +211,208 @@ msgstr ""
 "Não tem uma lista de grupos activos.\n"
 " recebe-la do servidor?"
 
-#: groupdlg.cpp:849
+#: groupdlg.cpp:863
 msgid "Listing active newsgroups"
 msgstr "A listar newsgroups activos"
 
-#: groupdlg.cpp:861
+#: groupdlg.cpp:875
 msgid "KRN - Find a Newsgroup"
 msgstr "KRN - Encontrar um Newsgroup"
 
-#: groupdlg.cpp:862
+#: groupdlg.cpp:876
 msgid "Enter the name of the Newsgroup"
 msgstr "Insira o nome do Newsgroup"
 
-#: groupdlg.cpp:947
+#: groupdlg.cpp:961
 msgid "Krn - Message"
 msgstr "Krn - Mensagem"
 
-#: groupdlg.cpp:948
+#: groupdlg.cpp:962
 msgid "I can't find the group you want!"
 msgstr "Não consigo encontrar o grupo pretendido!"
 
-#: groupdlg.cpp:1039
+#: groupdlg.cpp:1053
 msgid "Getting messages in "
 msgstr "Receber mensagens em "
 
-#: groupdlg.cpp:1052
+#: groupdlg.cpp:1066
 msgid "Getting list of messages in "
 msgstr "Receber lista de mensagens em "
 
-#: artdlg.cpp:133 artdlg.cpp:148
+#: artdlg.cpp:136 artdlg.cpp:151
 msgid "Download"
 msgstr "Receber"
 
-#: artdlg.cpp:135 artdlg.cpp:239
+#: artdlg.cpp:138 artdlg.cpp:260
 msgid "Mark Read"
 msgstr "Marcar Lido"
 
-#: artdlg.cpp:136
+#: artdlg.cpp:139
 msgid "Mark Unread"
 msgstr "Marcar Não Lido"
 
-#: artdlg.cpp:138 artdlg.cpp:152
+#: artdlg.cpp:141 artdlg.cpp:155
 msgid "Print"
 msgstr "Imprimir"
 
-#: artdlg.cpp:139 artdlg.cpp:159
+#: artdlg.cpp:142 artdlg.cpp:162
 msgid "Decode"
 msgstr "Descodificar"
 
-#: artdlg.cpp:141 artdlg.cpp:164
+#: artdlg.cpp:144 artdlg.cpp:164
 msgid "Don't expire"
 msgstr "Não apagar"
 
-#: artdlg.cpp:150
+#: artdlg.cpp:153
 msgid "Lookup in Altavista"
 msgstr "Procurar no Altavista"
 
-#: artdlg.cpp:154 artdlg.cpp:223
+#: artdlg.cpp:157 artdlg.cpp:244
 msgid "Reply by Mail"
 msgstr "Responder por Mail"
 
-#: artdlg.cpp:155
+#: artdlg.cpp:158
 msgid "Post Followup"
 msgstr "Seguimento de Mensagem"
 
-#: artdlg.cpp:156
+#: artdlg.cpp:159
 msgid "Post & Reply"
 msgstr "Enviar & Responder"
 
-#: artdlg.cpp:162
+#: artdlg.cpp:166
 msgid "Tagged"
 msgstr "Marcada"
 
-#: artdlg.cpp:173
+#: artdlg.cpp:177
 msgid "Show Only Unread Messages"
 msgstr "Mostrar Apenas Mensagens Não Lidas"
 
-#: artdlg.cpp:175
+#: artdlg.cpp:179
 msgid "Show Only Cached Messages"
 msgstr "Mostrar Apenas Mensagens em Cache"
 
-#: artdlg.cpp:177
+#: artdlg.cpp:181
 msgid "Show Locked Messages"
 msgstr "Mostrar Mensagens Trancadas"
 
-#: artdlg.cpp:179
+#: artdlg.cpp:183
 msgid "Expunge"
 msgstr "Limpar"
 
-#: artdlg.cpp:180
+#: artdlg.cpp:184
 msgid "Appearance..."
 msgstr "Aparência..."
 
-#: artdlg.cpp:181
+#: artdlg.cpp:185
 msgid "Sorting..."
 msgstr "Ordenação..."
 
-#: artdlg.cpp:185
+#: artdlg.cpp:189
 msgid "Edit Rules"
 msgstr "Editar Regras"
 
-#: artdlg.cpp:186
+#: artdlg.cpp:190
 msgid "Update"
 msgstr "Actualizar"
 
-#: artdlg.cpp:193
+#: artdlg.cpp:199
 msgid "&Scoring"
 msgstr "&Classificação"
 
-#: artdlg.cpp:198
+#: artdlg.cpp:206
 msgid "Previous Message"
 msgstr "Mensagem Anterior"
 
-#: artdlg.cpp:200
+#: artdlg.cpp:208
 msgid "Next Message"
 msgstr "Próxima Mensagem"
 
-#: artdlg.cpp:202
+#: artdlg.cpp:210
 msgid "Find Article"
 msgstr "Encontrar Mensagem"
 
-#: artdlg.cpp:207
+#: artdlg.cpp:215
 msgid "Get Article List"
 msgstr "Receber Lista de Mensagens"
 
-#: artdlg.cpp:219
+#: artdlg.cpp:217
+msgid "Refresh Display"
+msgstr ""
+
+#: artdlg.cpp:240
 msgid "Save Article"
 msgstr "Gravar Mensagem"
 
-#: artdlg.cpp:221
+#: artdlg.cpp:242
 msgid "Print Article"
 msgstr "Imprimir Mensagem"
 
-#: artdlg.cpp:225
+#: artdlg.cpp:246
 msgid "Post a Followup"
 msgstr "Enviar uma Continuação"
 
-#: artdlg.cpp:227
+#: artdlg.cpp:248
 msgid "Post & Mail"
 msgstr "Enviar & Mail"
 
-#: artdlg.cpp:233
+#: artdlg.cpp:254
 msgid "Tag Article"
 msgstr "Marcar Artigo"
 
-#: artdlg.cpp:235
+#: artdlg.cpp:256
 msgid "Lock (keep in cache)"
 msgstr "Trancar (manter no cache)"
 
-#: artdlg.cpp:237
+#: artdlg.cpp:258
 msgid "Decode Article"
 msgstr "Descodificar Artigo"
 
-#: artdlg.cpp:241
+#: artdlg.cpp:262
 #, fuzzy
 msgid "Mark UnRead"
 msgstr "Marcar Não Lido"
 
-#: artdlg.cpp:263 sortDlg.cpp:34
+#: artdlg.cpp:284 sortDlg.cpp:34
 msgid "Sender"
 msgstr "Remetente"
 
-#: artdlg.cpp:264 sortDlg.cpp:35
-msgid "Date"
-msgstr "Data"
-
-#: artdlg.cpp:265 sortDlg.cpp:36
+#: artdlg.cpp:286 sortDlg.cpp:36
 msgid "Lines"
 msgstr "Linhas"
 
-#: artdlg.cpp:266 sortDlg.cpp:33
+#: artdlg.cpp:287 sortDlg.cpp:33
 msgid "Score"
 msgstr "Pontuação"
 
-#: artdlg.cpp:267 sortDlg.cpp:32
+#: artdlg.cpp:288 sortDlg.cpp:32
 msgid "Subject"
 msgstr "Assunto"
 
-#: artdlg.cpp:438
+#: artdlg.cpp:451
 msgid "Threading..."
 msgstr "Ligações..."
 
-#: artdlg.cpp:447
+#: artdlg.cpp:460
 msgid "Showing Article List"
 msgstr "Mostrar Lista de Mensagens"
 
-#: artdlg.cpp:1226
+#: artdlg.cpp:1273
 msgid "KRN - Existing File"
 msgstr "KRN - Ficheiro Existente"
 
-#: artdlg.cpp:1227
+#: artdlg.cpp:1274
 msgid "The File you selected already exists"
 msgstr "O Ficheiro que seleccionou já existe"
 
-#: artdlg.cpp:1233
+#: artdlg.cpp:1280
 msgid "OverWrite"
 msgstr "Escrever por Cima"
 
-#: artdlg.cpp:1235
+#: artdlg.cpp:1282
 msgid "Append"
 msgstr "Adicionar"
 
-#: artdlg.cpp:1270
+#: artdlg.cpp:1317
 msgid ""
 "From: Krn\n"
 "To: You\n"
@@ -433,7 +426,7 @@ msgstr ""
 "Erro ao receber artigo.\n"
 "O servidor disse:\n"
 
-#: artdlg.cpp:1370
+#: artdlg.cpp:1417
 msgid "Getting Article List"
 msgstr "A Receber Lista de Artigos"
 
@@ -504,10 +497,6 @@ msgstr "KRN - Descodificador"
 #: decoderDlg.cpp:34
 msgid "ID"
 msgstr "ID"
-
-#: decoderDlg.cpp:37
-msgid "Name"
-msgstr "Nome"
 
 #: decoderDlg.cpp:44
 msgid "Destination directory:"
@@ -770,6 +759,22 @@ msgstr "Ordenar por:"
 #: sortDlg.cpp:56
 msgid "Use Threading"
 msgstr "Utilizar Threads"
+
+#~ msgid "Sorry!"
+#~ msgstr "Desculpe!"
+
+#~ msgid ""
+#~ "That newsgroup is not in the current active file\n"
+#~ " Krn can't handle this gracefully right now"
+#~ msgstr ""
+#~ "Esse newsgroup não está no ficheiro actualmente activo\n"
+#~ " Krn não consegue ligar com isso graciosamente"
+
+#~ msgid "Date"
+#~ msgstr "Data"
+
+#~ msgid "Name"
+#~ msgstr "Nome"
 
 #~ msgid "menu"
 #~ msgstr "menu"

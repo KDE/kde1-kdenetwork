@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-04-05 14:26+0200\n"
+"POT-Creation-Date: 1998-04-16 18:10+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Case Roole <cjr@xs4all.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,19 +30,23 @@ msgstr "Nieuw..."
 msgid "Phone Costs:"
 msgstr "Telefoon Kosten:"
 
-#: accounts.cpp:121
+#: accounts.cpp:116 conwindow.cpp:56
+msgid "Volume:"
+msgstr ""
+
+#: accounts.cpp:131
 msgid "Reset Costs"
 msgstr "Zet kosten op nul"
 
-#: accounts.cpp:128
+#: accounts.cpp:138
 msgid "View Logs"
 msgstr "Toon Logs"
 
-#: accounts.cpp:213
+#: accounts.cpp:235
 msgid "Reset Total"
 msgstr "Zet totaal op nul"
 
-#: accounts.cpp:214
+#: accounts.cpp:236
 msgid ""
 "Are you sure you want to reset the accumulated\n"
 "telephone costs for the selected account to zero?"
@@ -50,15 +54,15 @@ msgstr ""
 "Bent u zeker dat u de opgetelde telefoon kosten\n"
 "voor het geselecteerde account of nul wilt zetten ?"
 
-#: accounts.cpp:249 accounts.cpp:272
+#: accounts.cpp:271 accounts.cpp:294
 msgid "Maximum number of accounts reached."
 msgstr "Maximaal aantal accounts bereikt."
 
-#: accounts.cpp:278
+#: accounts.cpp:300
 msgid "No account selected."
 msgstr "Geen account geselecteerd."
 
-#: accounts.cpp:294
+#: accounts.cpp:316
 #, c-format
 msgid ""
 "Are you sure you want to delete\n"
@@ -67,43 +71,43 @@ msgstr ""
 "Weet u zeker dat u het account\n"
 "`%s' wilt verwijderen ?"
 
-#: accounts.cpp:299
+#: accounts.cpp:321
 msgid "Confirm"
 msgstr "Bevestig"
 
-#: accounts.cpp:321
+#: accounts.cpp:343
 msgid "New Account"
 msgstr "Nieuw account"
 
-#: accounts.cpp:325
+#: accounts.cpp:347
 msgid "Edit Account: "
 msgstr "Wijzig Account: "
 
-#: accounts.cpp:345
+#: accounts.cpp:367
 msgid "Dial"
 msgstr "Kies"
 
-#: accounts.cpp:346
+#: accounts.cpp:368
 msgid "IP"
 msgstr ""
 
-#: accounts.cpp:347
+#: accounts.cpp:369
 msgid "DNS"
 msgstr ""
 
-#: accounts.cpp:348
+#: accounts.cpp:370
 msgid "Gateway"
 msgstr ""
 
-#: accounts.cpp:349
+#: accounts.cpp:371
 msgid "Login Script"
 msgstr ""
 
-#: accounts.cpp:350
+#: accounts.cpp:372
 msgid "Accounting"
 msgstr ""
 
-#: accounts.cpp:369
+#: accounts.cpp:391
 msgid ""
 "You must enter a unique\n"
 "account name"
@@ -111,184 +115,184 @@ msgstr ""
 "U moet een unieke\n"
 "account naam invoeren"
 
-#: accounts.cpp:374
+#: accounts.cpp:396
 msgid "Login script has unbalanced Loop Start/End"
 msgstr ""
 
-#: connect.cpp:99 connect.cpp:201 main.cpp:779
+#: connect.cpp:101 connect.cpp:204 main.cpp:779
 msgid "Connecting to: "
 msgstr "Maak een verbinding met: "
 
-#: connect.cpp:108 connect.cpp:216 miniterm.cpp:162 modeminfo.cpp:63
+#: connect.cpp:110 connect.cpp:219 miniterm.cpp:162 modeminfo.cpp:63
 #: modeminfo.cpp:150
 msgid "Sorry, can't create modem lock file."
 msgstr ""
 
-#: connect.cpp:113 connect.cpp:176 modeminfo.cpp:68
+#: connect.cpp:115 connect.cpp:178 modeminfo.cpp:68
 msgid "Looking for Modem ..."
 msgstr "Zoek naar Mode ..."
 
-#: connect.cpp:122 debug.cpp:86 main.cpp:792
+#: connect.cpp:124 debug.cpp:86 main.cpp:792
 msgid "Log"
 msgstr ""
 
-#: connect.cpp:210 miniterm.cpp:157 modeminfo.cpp:145
+#: connect.cpp:213 miniterm.cpp:157 modeminfo.cpp:145
 msgid "Sorry, modem device is locked."
 msgstr ""
 
-#: connect.cpp:222 miniterm.cpp:176 miniterm.cpp:253 modeminfo.cpp:165
+#: connect.cpp:225 miniterm.cpp:176 miniterm.cpp:253 modeminfo.cpp:165
 msgid "Modem Ready"
 msgstr "Modem gereed"
 
-#: connect.cpp:254 connect.cpp:255
+#: connect.cpp:257 connect.cpp:258
 msgid "Initializing Modem..."
 msgstr "Instellen Modem..."
 
-#: connect.cpp:275
+#: connect.cpp:285
 msgid "Dialing"
 msgstr "Kiezen"
 
-#: connect.cpp:305
+#: connect.cpp:315
 msgid "Line Busy. Hanging up ..."
 msgstr "Lijn bezet. Hang nu op..."
 
-#: connect.cpp:311
+#: connect.cpp:321
 msgid "Line Busy. Waiting: "
 msgstr "Lijn bezet. Blijf wachten: "
 
-#: connect.cpp:313 connect.cpp:430 connect.cpp:449
+#: connect.cpp:323 connect.cpp:441 connect.cpp:460
 msgid " seconds"
 msgstr " seconden"
 
-#: connect.cpp:331
+#: connect.cpp:341
 msgid "No Dialtone"
 msgstr "Geen Kiestoon"
 
-#: connect.cpp:341
+#: connect.cpp:351
 msgid "No Carrier"
 msgstr ""
 
-#: connect.cpp:376
+#: connect.cpp:386
 msgid "Scanning "
 msgstr ""
 
-#: connect.cpp:387
+#: connect.cpp:397
 msgid "Saving "
 msgstr "Sla op "
 
-#: connect.cpp:405
+#: connect.cpp:416
 msgid "Sending "
 msgstr "Verzend "
 
-#: connect.cpp:416
+#: connect.cpp:427
 msgid "Expecting "
 msgstr "Verwacht "
 
-#: connect.cpp:428
+#: connect.cpp:439
 msgid "Pause "
 msgstr "Pauzeer "
 
-#: connect.cpp:447
+#: connect.cpp:458
 msgid "Timeout "
 msgstr ""
 
-#: connect.cpp:461 connect.cpp:462
+#: connect.cpp:472 connect.cpp:473
 msgid "Hangup"
 msgstr "Hang op"
 
-#: connect.cpp:475 connect.cpp:476
+#: connect.cpp:486 connect.cpp:487
 msgid "Answer"
 msgstr "Antwoord"
 
-#: connect.cpp:484
+#: connect.cpp:495
 msgid "ID "
 msgstr ""
 
-#: connect.cpp:521
+#: connect.cpp:532
 msgid "Password "
 msgstr "Wachtwoord "
 
-#: connect.cpp:558
+#: connect.cpp:570
 msgid "Prompting "
 msgstr ""
 
-#: connect.cpp:595
+#: connect.cpp:607
 msgid "PW Prompt "
 msgstr ""
 
-#: connect.cpp:621
+#: connect.cpp:633
 msgid "Loop Start "
 msgstr ""
 
-#: connect.cpp:625
+#: connect.cpp:637
 msgid "ERROR: Nested too deep, ignored."
 msgstr ""
 
-#: connect.cpp:630
+#: connect.cpp:642
 msgid "Loops nested too deeply!"
 msgstr ""
 
-#: connect.cpp:648
+#: connect.cpp:660
 msgid "LoopEnd without mathing Start! Line: "
 msgstr ""
 
-#: connect.cpp:725
+#: connect.cpp:737
 msgid "Starting pppd ..."
 msgstr "Start pppd ..."
 
-#: connect.cpp:785 connect.cpp:811
+#: connect.cpp:797 connect.cpp:823
 msgid "unknown speed"
 msgstr "onbekende snelheid"
 
-#: connect.cpp:849
+#: connect.cpp:861
 msgid "Scan Var: "
 msgstr ""
 
-#: connect.cpp:860
+#: connect.cpp:872
 msgid "Found: "
 msgstr "Vond: "
 
-#: connect.cpp:872
+#: connect.cpp:884
 msgid "Looping: "
 msgstr ""
 
-#: connect.cpp:903 modeminfo.cpp:333
+#: connect.cpp:915 modeminfo.cpp:333
 msgid "One Moment Please ..."
 msgstr "Een Moment a.u.b. ..."
 
-#: connect.cpp:946
+#: connect.cpp:958
 msgid "Script timed out!"
 msgstr ""
 
-#: connect.cpp:972
+#: connect.cpp:984
 msgid "Scanning: "
 msgstr ""
 
-#: connect.cpp:983
+#: connect.cpp:995
 msgid "Expecting: "
 msgstr "Verwacht: "
 
-#: connect.cpp:1017
+#: connect.cpp:1029
 msgid "Logging on to Network ..."
 msgstr "Log in in netwerk ..."
 
-#: connect.cpp:1043
+#: connect.cpp:1056
 msgid "Running Startup Command ..."
 msgstr ""
 
-#: connect.cpp:1108
+#: connect.cpp:1121
 msgid "Sorry, can't open modem."
 msgstr ""
 
-#: connect.cpp:1115
+#: connect.cpp:1128
 msgid "Sorry, the modem is not ready."
 msgstr ""
 
-#: connect.cpp:1123 connect.cpp:1164 modeminfo.cpp:375
+#: connect.cpp:1136 connect.cpp:1177 modeminfo.cpp:375
 msgid "Sorry, the modem is busy."
 msgstr ""
 
-#: connect.cpp:1395
+#: connect.cpp:1408
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
@@ -300,10 +304,6 @@ msgstr ""
 
 #: conwindow.cpp:51
 msgid "Time connected:"
-msgstr ""
-
-#: conwindow.cpp:56
-msgid "Volume:"
 msgstr ""
 
 #: conwindow.cpp:60
@@ -324,10 +324,6 @@ msgstr ""
 
 #: debug.cpp:49
 msgid "Login Script Debug Window"
-msgstr ""
-
-#: debug.cpp:65
-msgid "Dismiss"
 msgstr ""
 
 #: edit.cpp:42
@@ -877,7 +873,7 @@ msgstr ""
 msgid "non-vj"
 msgstr ""
 
-#: pppstatdlg.cpp:355 pppstatdlg.cpp:362
+#: pppstatdlg.cpp:370 pppstatdlg.cpp:377
 msgid "unavailable"
 msgstr ""
 
@@ -946,23 +942,41 @@ msgstr ""
 "\n"
 "SUBTOTAAL VOOR:"
 
-#: acctselect.cpp:47
+#: acctselect.cpp:48
 msgid "Accounting Setup"
 msgstr "Accounting Instellingen"
 
-#: acctselect.cpp:55
+#: acctselect.cpp:56
 msgid "Enable accounting"
 msgstr "Zet accounting aan"
 
-#: acctselect.cpp:73
+#: acctselect.cpp:74
 msgid "Selected:"
 msgstr "Gekozen:"
 
-#: acctselect.cpp:84
-msgid "Volume accounting"
+#: acctselect.cpp:88
+#, fuzzy
+msgid "Volume accounting:"
 msgstr "Hoeveelheid accounting"
 
-#: acctselect.cpp:154 acctselect.cpp:260
+#: acctselect.cpp:92
+#, fuzzy
+msgid "No accounting"
+msgstr "Hoeveelheid accounting"
+
+#: acctselect.cpp:93
+msgid "Bytes in"
+msgstr ""
+
+#: acctselect.cpp:94
+msgid "Bytes out"
+msgstr ""
+
+#: acctselect.cpp:95
+msgid "Bytes in and out"
+msgstr ""
+
+#: acctselect.cpp:165 acctselect.cpp:271
 msgid "Available rules"
 msgstr "Beschikbare regels"
 
@@ -1008,7 +1022,19 @@ msgstr "Herstel"
 msgid "Minimize"
 msgstr "Minimalizeer"
 
-#: runtests.cpp:98
+#: runtests.cpp:122
+#, fuzzy
+msgid ""
+"You´re not allowed to dial out with kppp.\n"
+"Contact your system administrator."
+msgstr ""
+"U hebt geen toestemming om pppd\n"
+"op te starten!\n"
+"\n"
+"Neem contact op met uw systeem beheerder\n"
+"en vraag toegang tot pppd."
+
+#: runtests.cpp:148
 msgid ""
 "Cannot find the pppd-daemon!\n"
 "\n"
@@ -1020,7 +1046,7 @@ msgstr ""
 "Verzeker u ervan dat pppd is geinstalleerd en\n"
 "dat u het juiste pad hebt ingevoerd."
 
-#: runtests.cpp:110
+#: runtests.cpp:160
 msgid ""
 "You do not have the permission\n"
 "to start pppd!\n"
@@ -1034,7 +1060,7 @@ msgstr ""
 "Neem contact op met uw systeem beheerder\n"
 "en vraag toegang tot pppd."
 
-#: runtests.cpp:121
+#: runtests.cpp:171
 msgid ""
 "pppd is not properly installed!\n"
 "\n"
@@ -1048,7 +1074,7 @@ msgstr ""
 "met het SUID bit aangezet. Neem contact op\n"
 "met uw systeembeheerder."
 
-#: runtests.cpp:142
+#: runtests.cpp:192
 #, c-format
 msgid ""
 "The logviewer \"%s\" was not found!\n"
@@ -1059,7 +1085,7 @@ msgstr ""
 "\n"
 "Zet standaard terug naar \"%s\"."
 
-#: runtests.cpp:166
+#: runtests.cpp:216
 msgid ""
 "kppp has detected a 'lock' option in /etc/ppp/options.\n"
 "\n"

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-04-05 14:26+0200\n"
+"POT-Creation-Date: 1998-04-16 18:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: ENCODING\n"
 
-#: kmcomposewin.cpp:1376 kmmainwin.cpp:265 kpgp.cpp:349
+#: kmcomposewin.cpp:1381 kmmainwin.cpp:265 kpgp.cpp:349
 msgid ""
 "Sorry, but this feature\n"
 "is still missing"
@@ -214,7 +214,7 @@ msgstr ""
 msgid "&Empty"
 msgstr "I&sprazni"
 
-#: kmcomposewin.cpp:509 kmmainwin.cpp:794
+#: kmcomposewin.cpp:506 kmmainwin.cpp:794
 msgid "&Remove"
 msgstr "&Ukloni"
 
@@ -307,15 +307,15 @@ msgstr "Direkt&orij"
 msgid "&Message"
 msgstr "Poru&ka"
 
-#: kmcomposewin.cpp:538 kmmainwin.cpp:887
+#: kmcomposewin.cpp:535 kmmainwin.cpp:887
 msgid "Compose new message"
 msgstr "Sastavi novu poruku"
 
-#: kmcomposewin.cpp:543 kmmainwin.cpp:892
+#: kmcomposewin.cpp:540 kmmainwin.cpp:892
 msgid "Save message to file"
 msgstr "Spremi poruku u datoteku"
 
-#: kmcomposewin.cpp:548 kmmainwin.cpp:897
+#: kmcomposewin.cpp:545 kmmainwin.cpp:897
 msgid "Print message"
 msgstr "Ispi¹i poruku"
 
@@ -339,7 +339,7 @@ msgstr "Proslijedi poruku"
 msgid "Delete message"
 msgstr "Obri¹i poruku"
 
-#: kmcomposewin.cpp:572 kmmainwin.cpp:931
+#: kmcomposewin.cpp:569 kmmainwin.cpp:931
 #, fuzzy
 msgid "Open addressbook..."
 msgstr "Ad&resar"
@@ -348,12 +348,7 @@ msgstr "Ad&resar"
 msgid "Initializing..."
 msgstr ""
 
-#: kmfolderdia.cpp:38 kmmsgpartdlg.cpp:62 kmsettings.cpp:128
-#: kmsettings.cpp:718
-msgid "Name:"
-msgstr "Ime:"
-
-#: kmcomposewin.cpp:1384 kmfolderdia.cpp:44 kmfolderdia.cpp:120
+#: kmcomposewin.cpp:1389 kmfolderdia.cpp:44 kmfolderdia.cpp:120
 msgid "unnamed"
 msgstr "bezimen"
 
@@ -425,10 +420,6 @@ msgstr "Dolazeæa po¹ta"
 #: kmsettings.cpp:216
 msgid "Accounts:   (add at least one account!)"
 msgstr ""
-
-#: kmcomposewin.cpp:125 kmsettings.cpp:221
-msgid "Name"
-msgstr "Ime"
 
 #: kmcomposewin.cpp:128 kmsettings.cpp:222
 msgid "Type"
@@ -567,10 +558,6 @@ msgstr "Direktorij"
 msgid "empty trash on exit"
 msgstr ""
 
-#: kmsettings.cpp:443
-msgid "Misc"
-msgstr ""
-
 #: kmsettings.cpp:505
 msgid "Select Account"
 msgstr "Odaberite korisnièki raèun"
@@ -584,13 +571,9 @@ msgstr "bezimen"
 msgid "Choose Sendmail Location"
 msgstr "Odaberite lokaciju Sendmaila"
 
-#: kmcomposewin.cpp:1491 kmsettings.cpp:552
+#: kmcomposewin.cpp:1496 kmsettings.cpp:552
 msgid "Choose Signature File"
 msgstr "Odaberite datoteku s potpisom"
-
-#: kmsettings.cpp:710
-msgid "Type:"
-msgstr "Tip:"
 
 #: kmsettings.cpp:723
 msgid "Local Account"
@@ -648,10 +631,6 @@ msgstr "Po¹iljatelj"
 #: kmheaders.cpp:40
 msgid "Subject"
 msgstr "Tema"
-
-#: kmheaders.cpp:41
-msgid "Date"
-msgstr "Datum"
 
 #: kmheaders.cpp:223
 msgid "order of arrival"
@@ -772,217 +751,213 @@ msgstr "Umetni &datoteku"
 msgid "&New Composer..."
 msgstr "Novi Composer"
 
-#: kmcomposewin.cpp:456 kmcomposewin.cpp:673 kmcomposewin.cpp:1814
+#: kmcomposewin.cpp:453 kmcomposewin.cpp:670 kmcomposewin.cpp:1819
 msgid "Mark all"
 msgstr "Oznaèi sve"
 
-#: kmcomposewin.cpp:459 kmcomposewin.cpp:675
+#: kmcomposewin.cpp:456 kmcomposewin.cpp:672
 msgid "Find..."
 msgstr "Naði..."
 
-#: kmcomposewin.cpp:461 kmcomposewin.cpp:676
+#: kmcomposewin.cpp:458 kmcomposewin.cpp:673
 #, fuzzy
 msgid "Replace..."
 msgstr "Odgovo&ri..."
 
-#: kmcomposewin.cpp:468
+#: kmcomposewin.cpp:465
 msgid "&Urgent"
 msgstr ""
 
-#: kmcomposewin.cpp:470
+#: kmcomposewin.cpp:467
 msgid "&Confirm delivery"
 msgstr ""
 
-#: kmcomposewin.cpp:472
+#: kmcomposewin.cpp:469
 #, fuzzy
 msgid "&Confirm read"
 msgstr "Potvrda"
 
-#: kmcomposewin.cpp:475
+#: kmcomposewin.cpp:472
 #, fuzzy
 msgid "&Charsets..."
 msgstr "&Naèini..."
 
-#: kmcomposewin.cpp:488
+#: kmcomposewin.cpp:485
 msgid "&All Fields"
 msgstr ""
 
-#: kmcomposewin.cpp:490
+#: kmcomposewin.cpp:487
 #, fuzzy
 msgid "&From"
 msgstr "Od:"
 
-#: kmcomposewin.cpp:491
+#: kmcomposewin.cpp:488
 #, fuzzy
 msgid "&Reply to"
 msgstr "Odgovo&ri..."
 
-#: kmcomposewin.cpp:492
+#: kmcomposewin.cpp:489
 #, fuzzy
 msgid "&To"
 msgstr "&Za:"
 
-#: kmcomposewin.cpp:493
+#: kmcomposewin.cpp:490
 #, fuzzy
 msgid "&Cc"
 msgstr "&Kopija:"
 
-#: kmcomposewin.cpp:494
+#: kmcomposewin.cpp:491
 msgid "&Bcc"
 msgstr ""
 
-#: kmcomposewin.cpp:495
+#: kmcomposewin.cpp:492
 #, fuzzy
 msgid "&Subject"
 msgstr "&Tema:"
 
-#: kmcomposewin.cpp:497
+#: kmcomposewin.cpp:494
 msgid "&Newsgroups"
 msgstr ""
 
-#: kmcomposewin.cpp:498
+#: kmcomposewin.cpp:495
 msgid "&Followup-To"
 msgstr ""
 
-#: kmcomposewin.cpp:503
+#: kmcomposewin.cpp:500
 #, fuzzy
 msgid "Append S&ignature"
 msgstr "Po&tpis"
 
-#: kmcomposewin.cpp:505
+#: kmcomposewin.cpp:502
 #, fuzzy
 msgid "&Insert File"
 msgstr "Umetni &datoteku"
 
-#: kmcomposewin.cpp:507
+#: kmcomposewin.cpp:504
 #, fuzzy
 msgid "&Attach..."
 msgstr "Pridru¾i"
 
-#: kmcomposewin.cpp:510
+#: kmcomposewin.cpp:507
 #, fuzzy
 msgid "&Save..."
 msgstr "Pre&mjesti..."
 
-#: kmcomposewin.cpp:511
+#: kmcomposewin.cpp:508
 #, fuzzy
 msgid "Pr&operties..."
 msgstr "Po&stava..."
 
-#: kmcomposewin.cpp:513
+#: kmcomposewin.cpp:510
 #, fuzzy
 msgid "&Attach"
 msgstr "Pridru¾i"
 
-#: kmcomposewin.cpp:557
+#: kmcomposewin.cpp:554
 msgid "Cut selection"
 msgstr ""
 
-#: kmcomposewin.cpp:560
+#: kmcomposewin.cpp:557
 #, fuzzy
 msgid "Copy selection"
 msgstr "Odaberite lokaciju"
 
-#: kmcomposewin.cpp:563
+#: kmcomposewin.cpp:560
 msgid "Paste clipboard contents"
 msgstr ""
 
-#: kmcomposewin.cpp:568
+#: kmcomposewin.cpp:565
 #, fuzzy
 msgid "Attach file"
 msgstr "Pridru¾i datoteku"
 
-#: kmcomposewin.cpp:581
+#: kmcomposewin.cpp:578
 #, fuzzy
 msgid "sign message"
 msgstr "Ispi¹i poruku"
 
-#: kmcomposewin.cpp:586
+#: kmcomposewin.cpp:583
 #, fuzzy
 msgid "encrypt message"
 msgstr "Ispi¹i poruku"
 
-#: kmcomposewin.cpp:598 kmcomposewin.cpp:614
+#: kmcomposewin.cpp:595 kmcomposewin.cpp:611
 msgid "Column"
 msgstr ""
 
-#: kmcomposewin.cpp:599 kmcomposewin.cpp:612
+#: kmcomposewin.cpp:596 kmcomposewin.cpp:609
 #, fuzzy
 msgid "Line"
 msgstr "Ugraðeno"
 
-#: kmcomposewin.cpp:867
+#: kmcomposewin.cpp:864
 #, fuzzy
 msgid "KMail Confirm"
 msgstr "KMail Composer"
 
-#: kmcomposewin.cpp:868
+#: kmcomposewin.cpp:865
 msgid ""
 "Close and discard\n"
 "edited message?"
 msgstr ""
 
-#: kmcomposewin.cpp:910
+#: kmcomposewin.cpp:907
 #, c-format
 msgid ""
 "public key for %s not found.\n"
 "This person will not be able to decrypt the message."
 msgstr ""
 
-#: kmcomposewin.cpp:931
+#: kmcomposewin.cpp:928
 msgid "Error during PGP:"
 msgstr ""
 
-#: kmcomposewin.cpp:1143
+#: kmcomposewin.cpp:1140
 msgid "Attach File"
 msgstr "Pridru¾i datoteku"
 
-#: kmcomposewin.cpp:1160
+#: kmcomposewin.cpp:1157
 #, fuzzy
 msgid "Include File"
 msgstr "Umetni &datoteku"
 
-#: kmcomposewin.cpp:1181 kmreaderwin.cpp:654
+#: kmcomposewin.cpp:1178 kmreaderwin.cpp:654
 #, fuzzy
 msgid "View..."
 msgstr "&Datoteka..."
 
-#: kmcomposewin.cpp:1182
+#: kmcomposewin.cpp:1179
 #, fuzzy
 msgid "Save..."
 msgstr "Pre&mjesti..."
 
-#: kmcomposewin.cpp:1183 kmreaderwin.cpp:657
+#: kmcomposewin.cpp:1180 kmreaderwin.cpp:657
 #, fuzzy
 msgid "Properties..."
 msgstr "&Naèini..."
 
-#: kmcomposewin.cpp:1187
+#: kmcomposewin.cpp:1184
 #, fuzzy
 msgid "Attach..."
 msgstr "Pridru¾i"
 
-#: kmcomposewin.cpp:1229 kmreaderwin.cpp:699
+#: kmcomposewin.cpp:1226 kmreaderwin.cpp:699
 msgid "View Attachment: "
 msgstr ""
 
-#: kmcomposewin.cpp:1399
+#: kmcomposewin.cpp:1404
 msgid "To:"
 msgstr "Za:"
 
-#: kmcomposewin.cpp:1403
+#: kmcomposewin.cpp:1408
 msgid "Subject:"
 msgstr "Tema:"
 
-#: kmcomposewin.cpp:1406
-msgid "Date:"
-msgstr "Datum:"
-
-#: kmcomposewin.cpp:1521
+#: kmcomposewin.cpp:1526
 msgid "KMail: Spellcheck"
 msgstr ""
 
-#: kmcomposewin.cpp:1545
+#: kmcomposewin.cpp:1550
 msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
 msgstr ""
@@ -1611,6 +1586,21 @@ msgstr ""
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
 msgstr ""
+
+#~ msgid "Name:"
+#~ msgstr "Ime:"
+
+#~ msgid "Name"
+#~ msgstr "Ime"
+
+#~ msgid "Type:"
+#~ msgstr "Tip:"
+
+#~ msgid "Date"
+#~ msgstr "Datum"
+
+#~ msgid "Date:"
+#~ msgstr "Datum:"
 
 #~ msgid ""
 #~ "Directory\n"
