@@ -1,3 +1,3 @@
-data_DATA = Infovia.rst
+pkg_DATA = Infovia.rst
 
-datadir = $(kde_datadir)/kppp/Rules/Spain
+pkgdir = $(kde_datadir)/kppp/Rules/Spain

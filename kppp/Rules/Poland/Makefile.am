@@ -1,4 +1,4 @@
-data_DATA =	Poland.rst \
+pkg_DATA =	Poland.rst \
 		Poland_Local.rst
 
-datadir = $(kde_datadir)/kppp/Rules/Poland
+pkgdir = $(kde_datadir)/kppp/Rules/Poland

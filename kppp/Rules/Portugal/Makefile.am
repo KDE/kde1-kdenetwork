@@ -1,3 +1,3 @@
-data_DATA = Telecom_Local.rst
+pkg_DATA = Telecom_Local.rst
 
-datadir = $(kde_datadir)/kppp/Rules/Portugal
+pkgdir = $(kde_datadir)/kppp/Rules/Portugal

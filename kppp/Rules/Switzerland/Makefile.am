@@ -1,4 +1,4 @@
-data_DATA =	Swisscom_Local.rst \
+pkg_DATA =	Swisscom_Local.rst \
 		Swisscom_Remote.rst
 
-datadir = $(kde_datadir)/kppp/Rules/Switzerland
+pkgdir = $(kde_datadir)/kppp/Rules/Switzerland

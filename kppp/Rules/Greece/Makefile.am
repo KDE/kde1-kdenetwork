@@ -1,3 +1,3 @@
-data_DATA = Hellas_local.rst
+pkg_DATA = Hellas_local.rst
 
-datadir = $(kde_datadir)/kppp/Rules/Greece
+pkgdir = $(kde_datadir)/kppp/Rules/Greece

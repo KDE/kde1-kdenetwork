@@ -17,7 +17,7 @@ APPSDIR = $(kde_appsdir)/Internet
 # set the include path for X, qt and KDE
 INCLUDES= @all_includes@
 # claim, which subdirectories you want to install
-SUBDIRS = docs pixmaps icons Rules
+SUBDIRS = docs pixmaps icons
 
 # kppp wants to be installed suid root
 INSTALL_PROGRAM=$(INSTALL) -m 4755
@@ -112,9 +112,10 @@ messages:
 # use mkinstalldirs, not "install -d"
 # don't install a list of file. Just one file per install.
 # if you have more of them, create a subdirectory with an extra Makefile 
-install-data-local: 
+install-data-local:	
 	$(mkinstalldirs) $(APPSDIR)
 	$(INSTALL_DATA) Kppp.kdelnk $(APPSDIR)
+	@(cd Rules && $(MAKE) install)
 	@echo ""
 	@echo "Don't forget to send me a phone tarif rules file for your"
 	@echo "telecom company/country/region. Thanks."
@@ -131,6 +132,7 @@ install-data-local:
 # remove ALL you have installed in install-data-local or install-exec-local
 uninstall-local:
 	-rm -f $(APPSDIR)/Kppp.kdelnk
+	@(cd Rules && $(MAKE) uninstall)
 
 # MOC files
 accounting.cpp: accounting.moc;

@@ -95,7 +95,7 @@ public:
   void getActiveRule(QDateTime dt, double &costs, double &len);
 
   /// checks if a rulefile is ok (no parse errors...)
-  static void checkRuleFile(const char *);
+  static int checkRuleFile(const char *);
 
 protected:
   /** converts an english name of a day to integer,

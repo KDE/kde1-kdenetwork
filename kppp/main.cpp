@@ -218,8 +218,11 @@ int main( int argc, char **argv ) {
 	quit_on_disconnect = TRUE;
 	break;
       case 'r':
-	RuleSet::checkRuleFile(optarg);
-	exit(0);
+	{
+	  // we need a KAppliction for locales, create on
+	  KApplication a(argc, argv);	  
+	  exit(RuleSet::checkRuleFile(optarg));
+	}
       }
   }
 

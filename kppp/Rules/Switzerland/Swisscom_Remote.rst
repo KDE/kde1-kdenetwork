@@ -22,8 +22,7 @@ on (monday..friday) between (6:00..8:00) use (0.10, 48)
 on (monday..friday) between (17:00..19:00) use (0.10, 48)
 on (monday..friday) between (21:00..23:00) use (0.10, 48)
 on (saturday..sunday) between (6:00..23:00) use (0.10, 48)
-on (01/01, 02/01, easter, easter+1, easter+60, 01/08, 12/25, 12/26) between
-(6:00..23:00) use (0.10, 48)
+on (01/01, 02/01, easter, easter+1, easter+60, 01/08, 12/25, 12/26) between (6:00..23:00) use (0.10, 48)
 
 # Night tarif
 on (monday..sunday) between (23:00..0:00) use (0.10, 96)

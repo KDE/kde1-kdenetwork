@@ -1,3 +1,22 @@
+Fri Jan 16 19:04:35 1998  Mario Weilguni  <mweilguni@sime.com>
+
+	* Improved Makefiles. Now documentation and rulesets are correctly
+	uninstalled with "make uninstall"
+
+	* Toplevel Makefile.am improved. Subdir traversal is only done for
+	installing, not for compiling
+
+	* fixed that "segfault-on-rulecheck" bug introduced by coolo's
+	modifications for locale support.
+
+	* RuleSet::checkRuleFile() now returns 0 on success, otherwise
+	1. kppp uses this as exit value.
+
+	* fixed a bug in the swiss rulesets
+
+	* added file "checkrules" in Rules. It autochecks all rules found
+	and reports bad rulesets.
+
 Thu Jan 15 20:31:14 1998  Mario Weilguni  <mweilguni@sime.com>
 
 	* Ported kppp to use automake. 

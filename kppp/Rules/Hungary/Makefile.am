@@ -1,3 +1,3 @@
-data_DATA = Local.rst
+pkg_DATA = Local.rst
 
-datadir = $(kde_datadir)/kppp/Rules/Hungary
+pkgdir = $(kde_datadir)/kppp/Rules/Hungary

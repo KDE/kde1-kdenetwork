@@ -533,21 +533,21 @@ QTime RuleSet::beforeMidnight() const {
   return QTime(23,59,59,999);
 }
 
-void RuleSet::checkRuleFile(const char *rulefile) {
+int RuleSet::checkRuleFile(const char *rulefile) {
   if(rulefile == NULL) {
     fprintf(stderr, klocale->translate("kppp: no rulefile specified\n"));
-    return;
+    return 1;
   }
 
   QFile fl(rulefile);
   if(!fl.exists()) {
     fprintf(stderr, klocale->translate("kppp: rulefile \"%s\" not found\n"), rulefile);
-    return;
+    return 1;
   }
 
   if(QString(rulefile).right(4) != ".rst") {
     fprintf(stderr, klocale->translate("kppp: rulefiles must have the extension \".rst\"\n"));
-    return;
+    return 1;
   }
 
   RuleSet r;
@@ -556,24 +556,25 @@ void RuleSet::checkRuleFile(const char *rulefile) {
 
   if(err == -1) {
     fprintf(stderr, klocale->translate("kppp: error parsing the ruleset\n"));
-    return;
+    return 1;
   }
 
   if(err > 0) {
     fprintf(stderr, klocale->translate("kppp: parse error in line %d\n"), err);
-    return;
+    return 1;
   }
 
   // check for the existance of a default rule
   if((r.default_costs < 0) || (r.default_len < 0)) {
     fprintf(stderr, klocale->translate("kppp: rulefile does not contain a default rule\n"));
-    return;
+    return 1;
   }
 
   if(r.name().length() == 0) {
     fprintf(stderr, klocale->translate("kppp: rulefile does not contain a \"name=...\" line\n"));
-    return;
+    return 1;
   }
 
   fprintf(stderr, klocale->translate("kppp: rulefile is ok\n"));
+  return 0;
 }

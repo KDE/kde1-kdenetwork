@@ -1,4 +1,4 @@
-data_DATA =	Local.rst \
+pkg_DATA =	Local.rst \
 		Long_Distance.rst
 
-datadir = $(kde_datadir)/kppp/Rules/Sweden
+pkgdir = $(kde_datadir)/kppp/Rules/Sweden
