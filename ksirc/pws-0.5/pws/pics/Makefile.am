@@ -3,4 +3,4 @@ data_DATA = pws_general.xpm\
             pws_www.xpm
 
 # This is where it will all be installed
-datadir = $(kde_datadir)/pws/pics
+datadir = $(kde_datadir)/ksirc/pics

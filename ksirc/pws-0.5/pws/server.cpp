@@ -13,6 +13,8 @@ PWSServer::PWSServer(QObject *parent, QString script, QString logDir)
     : QObject(parent)
 {
     log = new KSircListBox();
+    log->setCaption("Web Server Event Log");
+    log->resize(400,100);
 
     web = 0x0;
     error = 0x0;

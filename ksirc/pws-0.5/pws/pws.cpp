@@ -22,7 +22,7 @@ PWS::PWS(QWidget *parent, const char *name)
 //	statusBar = new KStatusBar(this);
 //	setStatusBar(statusBar);
 
-        resize(650,440);
+//        resize(600,440);
 	view = new PWSWidget(this);
         setView(view);
         

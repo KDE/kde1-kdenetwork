@@ -31,36 +31,38 @@ PWSWidget::PWSWidget(QWidget *parent, const char *name)
 	: QWidget(parent, name)
 {
 
+    debug("starting pwswidget");
     increaser=0;
     server=0;
 
     conf = kapp->getConfig();
-    parent->resize (QSize (580,440));
     
     //Put widgets all around the place
     
     QVBoxLayout *VLay=new QVBoxLayout(this,5, -1, "VLay");
     QHBoxLayout *HLay1=new QHBoxLayout(5, "HLay1");
     QHBoxLayout *HLay2=new QHBoxLayout(5, "HLay2");
+    QHBoxLayout *HLay3=new QHBoxLayout(5, "HLay3");
     VLay->addLayout(HLay1,1);
     VLay->addLayout(HLay2,0);
+    VLay->addLayout(HLay3,0);
 
-
-    list=new QListView(this);
-    list->setMinimumSize(QSize(100,200));
+    list=new PWSListView(this, "pws_listview"); // Do this before the resize
+//    list->setMinimumSize(QSize(100,200));
 
     // Now some pretty icons in the listview
-    list->addColumn("");
-    list->addColumn("Things");
+    list->addColumn("", 18);
+    list->addColumn("Things", -5);
     list->setSorting(0,false);
     list->setAllColumnsShowFocus(true);
     QObject::connect (list,SIGNAL(selectionChanged(QListViewItem*)),
                       this,SLOT(flipPage(QListViewItem *)));
 
     stack=new QWidgetStack(this);
-    stack->setMinimumSize(QSize(300,200));
+//    stack->setMinimumSize(QSize(300,200));
     stack->raiseWidget(1);
-    stack->show();
+    connect(stack, SIGNAL(aboutToShow(QWidget *)),
+            this, SLOT(adjustStack(QWidget *)));
 
     createGeneralPage();
     loadServers();
@@ -73,31 +75,37 @@ PWSWidget::PWSWidget(QWidget *parent, const char *name)
     HLay1->addWidget(list,5);
     HLay1->addWidget(stack,10);
     
-    QPushButton *b1=new QPushButton("Save Configuration",this);
+    QPushButton *b1=new QPushButton("Save Configuration",this, "b1");
     QObject::connect (b1,SIGNAL(clicked()),SLOT(accept()));
-    QPushButton *b2=new QPushButton("(Re)Start Server",this);
+    QPushButton *b2=new QPushButton("(Re)Start Server",this, "b2");
     QObject::connect (b2,SIGNAL(clicked()),SLOT(restart()));
-    QPushButton *b5=new QPushButton("Log Window",this);
+    QPushButton *b5=new QPushButton("Log Window",this, "b5");
     QObject::connect (b5,SIGNAL(clicked()),SLOT(logWindow()));
-    QPushButton *b3=new QPushButton("Add Server",this);
+    QPushButton *b6=new QPushButton("Delete Server",this, "b6");
+    QObject::connect (b6,SIGNAL(clicked()),SLOT(deleteServer()));
+    QPushButton *b3=new QPushButton("Add Server",this, "b3");
     QObject::connect (b3,SIGNAL(clicked()),SLOT(addServer()));
-    QPushButton *b4=new QPushButton("Quit",this);
+    QPushButton *b4=new QPushButton("Quit",this, "b4");
     QObject::connect (b4,SIGNAL(clicked()),SLOT(quit()));
 
     b1->setFixedSize(b1->sizeHint());
-    b2->setFixedSize(b2->sizeHint());
-    b5->setFixedSize(b5->sizeHint());
-    b3->setFixedSize(b3->sizeHint());
-    b4->setFixedSize(b4->sizeHint());
+    b2->setFixedSize(b1->sizeHint());
+    b3->setFixedSize(b1->sizeHint());
+    b4->setFixedSize(b1->sizeHint());
+    b5->setFixedSize(b1->sizeHint());
+    b6->setFixedSize(b1->sizeHint());
+    
     HLay2->addStretch(10);
     HLay2->addWidget(b1,0);
     HLay2->addWidget(b2,0);
     HLay2->addWidget(b5,0);
-    HLay2->addWidget(b3,0);
-    HLay2->addWidget(b4,0);
-    VLay->activate();
+    
+    HLay3->addStretch(10);
+    HLay3->addWidget(b6,0);
+    HLay3->addWidget(b3,0);
+    HLay3->addWidget(b4,0);
 
-    parent->resize (QSize (580,440));
+    debug("done pwswidget");
 }
 
 PWSWidget::~PWSWidget()
@@ -107,7 +115,6 @@ PWSWidget::~PWSWidget()
 void PWSWidget::quit()
 {
     debug ("forgetting everything");
-    hide();
     emit quitPressed(parent());
 }
 
@@ -349,6 +356,38 @@ void PWSWidget::addServer()
         conf->writeEntry("Port",atoi(wiz->data.at(2)));
         conf->sync();
     }
+    loadServers();
+}
+
+void PWSWidget::deleteServer()
+{
+    if(current == "General")
+        return;
+    
+    conf->setGroup("Servers");
+    QStrList names;
+    conf->readListEntry("ServerNames",names);
+    names.remove(names.find(current));
+    conf->writeEntry("ServerNames",names);
+
+    list->setEnabled(FALSE);
+    stack->setEnabled(FALSE);
+    
+    list->clear();
+    QDictIterator<QWidget> it(pages);
+    while(it.current()){
+        stack->removeWidget(it.current());
+        pages.remove(it.currentKey());
+        delete it.current();
+        ++it;
+    }
+    createGeneralPage();
+    loadServers();
+
+    list->setEnabled(TRUE);
+    stack->setEnabled(TRUE);
+    repaint(TRUE);
+
 }
 
 void PWSWidget::loadServers()
@@ -359,7 +398,7 @@ void PWSWidget::loadServers()
 
     if (names.count()==0)
     {
-        addServer();
+        //addServer();
     }
     conf->setGroup("Servers");
     conf->readListEntry("ServerNames",names);
@@ -376,7 +415,7 @@ void PWSWidget::createGeneralPage()
 
     //stack stuff
     GeneralPage *w=new GeneralPage(stack);
-    w->show();
+    //w->show();
     stack->addWidget(w,increaser);
     increaser++;
     pages.insert("General",w);
@@ -385,6 +424,12 @@ void PWSWidget::createGeneralPage()
 
 void PWSWidget::createServerPage(const char *name)
 {
+    // Don't add duplicates
+    for(QListViewItem *item = list->firstChild(); item != 0; item = item->itemBelow()){
+        if(strcmp(name, item->text(1)) == 0)
+            return;
+    }
+    
     //list stuff
     QListViewItem *item=new QListViewItem(list);
     item->setPixmap(0,Icon("pws_www.xpm"));
@@ -393,9 +438,9 @@ void PWSWidget::createServerPage(const char *name)
 
     //stack stuff
     ServerPage *w=new ServerPage(stack,name);
-    stack->addWidget(w,increaser);
     w->resize(stack->size());
-    w->show();
+    stack->addWidget(w,increaser);
+    stack->raiseWidget(w);
     list->setSelected(item,true);
     increaser++;
     pages.insert(name,w);
@@ -403,7 +448,8 @@ void PWSWidget::createServerPage(const char *name)
 
 void PWSWidget::flipPage(QListViewItem *item)
 {
-    stack->raiseWidget (pages.find(item->text(1)));
+    stack->raiseWidget(pages.find(item->text(1)));
+    current = item->text(1);
 }
 
 void PWSWidget::logWindow()
@@ -411,4 +457,23 @@ void PWSWidget::logWindow()
     if(server != 0){
         server->showLogWindow(TRUE);
     }
+}
+
+
+void PWSWidget::resizeEvent(QResizeEvent *e){
+    debug("Got resize");
+    QWidget *w = stack->visibleWidget();
+    if(w != 0x0)
+        w->resize(stack->size());
+    QWidget::resizeEvent(e);
+}
+
+void PWSWidget::adjustStack(QWidget *w){
+    debug("Calling resize");
+    w->resize(stack->size());
+}
+
+void PWSListView::resizeEvent(QResizeEvent *e){
+        this->setColumnWidth(0, 18);
+        this->setColumnWidth(1, this->width()-19);
 }
