@@ -73,6 +73,7 @@
 #define POST 22
 #define FIND_ARTICLE 23
 #define EXPUNGE 24
+#define DOWNLOAD_ARTICLE 25
 
 extern QString pixpath,cachepath;
 
@@ -106,6 +107,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     
     taggedArticle=new QPopupMenu;
     taggedArticle->insertItem(klocale->translate("Save"),SAVE_ARTICLE);
+    taggedArticle->insertItem(klocale->translate("Download"),DOWNLOAD_ARTICLE);
     taggedArticle->insertSeparator();
     taggedArticle->insertItem(klocale->translate("Decode"),DECODE_ARTICLE);
     taggedArticle->insertItem(klocale->translate("Untag"),TAG_ARTICLE);
@@ -115,6 +117,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     article=new QPopupMenu;
     article->setCheckable(true);
     article->insertItem(klocale->translate("Save"),SAVE_ARTICLE);
+    article->insertItem(klocale->translate("Download"),DOWNLOAD_ARTICLE);
     article->insertItem(klocale->translate("Find"),FIND_ARTICLE);
     article->insertSeparator();
     article->insertItem(klocale->translate("Print"),PRINT_ARTICLE);
@@ -401,6 +404,12 @@ bool Artdlg::taggedActions (int action)
     bool success=false;
     qApp->setOverrideCursor (waitCursor);
     int c=0;
+
+    if (action==DOWNLOAD_ARTICLE)
+    {
+        disconnect (list,SIGNAL(highlighted(int,int)),this,SLOT(loadArt(int,int)));
+    }
+    
     for (Article *iter=artList.first();iter!=0;iter=artList.next())
     {
         if (iter->isMarked())
@@ -410,6 +419,12 @@ bool Artdlg::taggedActions (int action)
         }
         c++;
     }
+    
+    if (action==DOWNLOAD_ARTICLE)
+    {
+        connect (list,SIGNAL(highlighted(int,int)),this,SLOT(loadArt(int,int)));
+    }
+    
     qApp->restoreOverrideCursor ();
     switch (action)
     {
@@ -726,9 +741,27 @@ bool Artdlg::actions (int action)
             FindDlg->show();
             break;
         }
-        
-        // end robert's cache stuff
-        //
+    case DOWNLOAD_ARTICLE:
+        {
+            int index = list->currentItem();
+            if(index < 0)
+                break;
+            Article *art=artList.at(index);
+            QString id=art->ID;
+            if (!server->isConnected())
+            {
+                if (!server->isCached(id.data()))
+                {
+                    emit needConnection();
+                    if (!server->isConnected())
+                    {
+                        qApp->restoreOverrideCursor ();
+                        return false;
+                    }
+                }
+            }
+            server->article(id.data());
+        }
     }
     qApp->restoreOverrideCursor ();
     setEnabled (true);
