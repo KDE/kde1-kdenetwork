@@ -300,7 +300,8 @@ void ircListItem::setupPainterText()
 }
 
 void ircListItem::updateSize(){
-  setupPainterText();
+  if(PaintCache->find(CacheId))
+    setupPainterText();
 }
 
 void ircListItem::freeze(bool f){

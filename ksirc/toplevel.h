@@ -28,6 +28,7 @@ class kstInside;
 #include <ksimpleconfig.h>
 #include <knewpanner.h>
 #include <KMDIMgr.h>
+#include <kpopupmenu.h>
 
 //#include "ahtmlview.h"
 #include "irclistitem.h"
@@ -311,12 +312,12 @@ private:
   QStrList *LineBuffer;
 
   // QPopupMenu's used for the menubar
-  QPopupMenu *file, *edit;
+  KPopupMenu *file, *edit;
 
   ircListItem *parse_input(QString string);
   void sirc_write(QString str);
 
-  QPopupMenu *user_controls;
+  KPopupMenu *user_controls;
   static QList<UserControlMenu> *user_menu;
   int opami;
 

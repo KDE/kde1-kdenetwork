@@ -34,6 +34,8 @@ class ProcCommand;
 
 #include "KMDIMgr.h"
 
+#include "kpopupmenu.h"
+
 extern KMDIMgr *MDIMgr;
 
 class ProcCommand // ServerController message
@@ -94,7 +96,7 @@ protected:
 
 private:
   servercontroller *sc;
-  QPopupMenu *pop;
+  KPopupMenu *pop;
 };
 
 class servercontroller : public KTopLevelWidget
@@ -208,7 +210,7 @@ private:
     // Hold a list of all KSircProcess's for access latter.  Index by server 
     // name
     QDict<KSircProcess> proc_list;
-    QPopupMenu *options, *connections;
+    KPopupMenu *options, *connections;
     int join_id, server_id;
     
     int open_toplevels;

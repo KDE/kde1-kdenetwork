@@ -60,8 +60,6 @@
  
  *********************************************************************/
 
-#include <qpopmenu.h>
-
 #include "servercontroller.h"
 #include "KSOpenkSirc/open_ksirc.h"
 #include "open_top.h"
@@ -72,6 +70,7 @@
 #include "../config.h"
 #include "version.h"
 #include "KSPrefs/ksprefs.h"
+#include "kpopupmenu.h"
 #include <iostream.h>
 
 #include "objFinder.h"
@@ -156,14 +155,14 @@ servercontroller::servercontroller /*FOLD00*/
 
   setFrameBorderWidth(5);
 
-  QPopupMenu *file = new("QPopupMenu") QPopupMenu(0, QString(name) + "_menu_file");
+  KPopupMenu *file = new("KPopupMenu") KPopupMenu(0, QString(name) + "_menu_file");
   //  insertChild(file);
   file->insertItem(i18n("&Dock"), this, SLOT(toggleDocking()));
   file->insertSeparator();
   file->insertItem(i18n("&Quit"), this, SLOT(endksirc()), ALT + Key_F4);
   MenuBar->insertItem(i18n("&File"), file);
   
-  connections = new("QPopupMenu") QPopupMenu(0, QString(name) + "_menu_connections");
+  connections = new("KPopupMenu") KPopupMenu(0, QString(name) + "_menu_connections");
 //  insertChild(connections);
 
   server_id = connections->insertItem(i18n("New Server..."), this, SLOT(new_connection()), CTRL + Key_N );
@@ -182,12 +181,12 @@ servercontroller::servercontroller /*FOLD00*/
   kSircConfig->DisplayTopic = kConfig->readNumEntry("DisplayTopic", TRUE);
   
   kConfig->setGroup("GlobalOptions");
-  options = new("QPopupMenu") QPopupMenu(0, QString(name) + "_menu_options");
+  options = new("KPopupMenu") KPopupMenu(0, QString(name) + "_menu_options");
   //insertChild(options);
   options->setCheckable(TRUE);
 
   options->insertItem(i18n("&Colour Preferences..."),
-		      this, SLOT(colour_prefs()));
+		      this, SLOT(colour_prefs()), CTRL + Key_P);
   options->insertItem(i18n("&Global Fonts..."),
 		      this, SLOT(font_prefs()));
   options->insertItem(i18n("&Filter Rule Editor..."),
@@ -201,7 +200,7 @@ servercontroller::servercontroller /*FOLD00*/
   MenuBar->insertItem(i18n("&Options"), options);
   
   
-  QPopupMenu *help = new("QPopupMenu") QPopupMenu(0, QString(name) + "_menu_help");
+  KPopupMenu *help = new("KPopupMenu") KPopupMenu(0, QString(name) + "_menu_help");
   //insertChild(help);
   //  help->insertItem("Help...",
   //		   this, SLOT(help_general()));
@@ -726,7 +725,7 @@ dockServerController::dockServerController(servercontroller *_sc, const char *_n
 {
   sc = _sc;
 
-  pop = new("QPopupMenu") QPopupMenu;
+  pop = new("KPopupMenu") KPopupMenu;
   pop->setName("dockServerController_menu_pop");
 
   pop->insertItem(i18n("&Quit"), kApp, SLOT(quit()));

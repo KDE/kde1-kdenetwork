@@ -17,7 +17,7 @@
 # set the include path for X, qt and KDE
 INCLUDES= @all_includes@
 DEFS = @DEFS@ -I. -I$(srcdir) -I../.. -include ../kplunger/kplunger.h
-ksirclibdir = $(kde_libraries)/ksirc
+ksirclibdir = $(libdir)/ksirc
 # claim, which subdirectories you want to install
 # SUBDIRS = 
 # KSTicker KSprogress

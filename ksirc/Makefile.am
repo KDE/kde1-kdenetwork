@@ -69,7 +69,8 @@ objFinder.cpp \
 mobjFinder.cpp \
 KMDIMgr.cpp KMDIMgrBase.cpp mKMDIMgr.cpp mKMDIMgrBase.cpp \
 displayMgr.cpp displayMgrMDI.cpp displayMgrSDI.cpp \
-welcomeWin.cpp mwelcomeWin.cpp welcomeWinData.cpp mwelcomeWinData.cpp
+welcomeWin.cpp mwelcomeWin.cpp welcomeWinData.cpp mwelcomeWinData.cpp \
+kpopupmenu.cpp mkpopupmenu.cpp
 
 ksircstaticSOURCES = $(ksirc_SOURCES)
 ksircstaticOBJECTS = $(ksirc_OBJECTS)
