@@ -69,8 +69,8 @@ protected:
 
   /** Very primitive en/de-cryption so that the password is not
       readable in the config file. But still very easy breakable. */
-  const QString encryptStr(const QString inStr);
-  const QString decryptStr(const QString inStr);
+  const QString encryptStr(const QString inStr) const;
+  const QString decryptStr(const QString inStr) const;
 
   /** Mail processing main worker method. */
   virtual bool doProcessNewMail(KMIOStatus *);

@@ -355,7 +355,7 @@ void KMAcctPop::writeConfig(KConfig& config)
 
 
 //-----------------------------------------------------------------------------
-const QString KMAcctPop::encryptStr(const QString aStr)
+const QString KMAcctPop::encryptStr(const QString aStr) const
 {
   unsigned int i, val;
   unsigned int len = aStr.length();
@@ -374,7 +374,7 @@ const QString KMAcctPop::encryptStr(const QString aStr)
 
 
 //-----------------------------------------------------------------------------
-const QString KMAcctPop::decryptStr(const QString aStr)
+const QString KMAcctPop::decryptStr(const QString aStr) const
 {
   return encryptStr(aStr);
 }
