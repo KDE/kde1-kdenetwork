@@ -30,8 +30,6 @@
 // Warning: If you fiddle with the following directories you have
 // to adjust make_directories() in main.cpp()
 
-// Define data file ($HOME relative)
-#define KPPPDATA_FILE ".kde/share/apps/kppp/kpppdata"
 // specifies the directory where kppp stores it's local
 // accounting files and it's logfile (relative to the
 // users homedirectory)
@@ -84,7 +82,7 @@
 // Lock File for the modem device (Needed by mgetty users)
 #define MODEM_LOCK_FILE "/var/lock/LCK..modem"
 
-// /proc dir 
+// /proc dir ( only used on linux in connect.cpp )
 #define PROC_DIR "/proc"
 
 #endif
