@@ -31,7 +31,7 @@
  * SUCH DAMAGE.
  */
 
-#include "../ktalkd/includ.h"
+#include "includ.h"
 
 #ifdef HAVE_SYS_PARAM_H
 #include <sys/param.h>
@@ -82,10 +82,6 @@ int main(int argc, char *argv[])
 #endif
 	if (gethostname(hostname, sizeof (hostname) - 1) < 0) {
 		syslog(LOG_ERR, "gethostname: %m");
-		_exit(1);
-	}
-	if (chdir(_PATH_DEV) < 0) {
-		syslog(LOG_ERR, "chdir: %s: %m", _PATH_DEV);
 		_exit(1);
 	}
 	if (argc > 1 && strcmp(argv[1], "-d") == 0)

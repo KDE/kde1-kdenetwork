@@ -32,11 +32,7 @@
  *
  */
 
-#include "../ktalkd/includ.h" 
-
-#ifdef __cplusplus
-extern "C" {
-#endif
+#include "includ.h" 
 
 /* debug print routines */
 void print_addr(char *cp, struct sockaddr_in * addr);
@@ -47,7 +43,3 @@ void print_old_response(char *cp, register OLD_CTL_RESPONSE *rp);
 void message(const char *string);
 void message2(const char *format,int value);
 void message_s(const char *format,const char * value);
-
-#ifdef __cplusplus
-}
-#endif

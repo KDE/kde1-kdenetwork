@@ -1,3 +1,11 @@
+1998-08-12  David Faure  <David.Faure@insa-lyon.fr> (0.8.5)
+
+	* ktalkd/find_user.cpp: Fixed a nasty bug with unsigned int. Thanks Rolf.
+	   Also uncommented use of ut_host for PTYs (ex : xterms).
+	   Also exit the loop if XDM login found. Highest priority.
+
+	* kotalkd/includ.h: Added a simpler version of includ.h.
+
 1998-08-10  David Faure  <David.Faure@insa-lyon.fr> (0.8.4)
 
 	* ktalkd/machines/talkconn.cpp: Support for otalk. (not finished).

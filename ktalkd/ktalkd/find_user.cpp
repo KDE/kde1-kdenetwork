@@ -84,14 +84,14 @@ char *get_display(pid_t pid) {
 
     if ((fd = open(buf, O_RDONLY, 0)) == -1) {
         /* can't read. not very important, there will be other processes... */
-        /* if (debug_mode) syslog(LOG_DEBUG, "open %s: %m", buf); */
+        /* if (Options::debug_mode) syslog(LOG_DEBUG, "open %s: %m", buf); */
         return 0;
     }
 
     dpy = 0;
-    /* if (debug_mode) syslog(LOG_DEBUG, "reading %s no %d...", buf, fd); */
+    /* if (Options::debug_mode) syslog(LOG_DEBUG, "reading %s no %d...", buf, fd); */
     while ((n = read(fd, buf, sizeof buf - 1)) > 0) {
-        if (n < (int)sizeof buf - 1)
+        if (n < (int) sizeof buf - 1)
             end_of_file = 1;
         if (n < 0) {
             syslog(LOG_ERR, "read: %m");
@@ -114,14 +114,14 @@ char *get_display(pid_t pid) {
         if (end_of_file)
             break;
     }
-    /* if (debug_mode) syslog(LOG_DEBUG, "read %d bytes.", tot); */
+    /* if (Options::debug_mode) syslog(LOG_DEBUG, "read %d bytes.", tot); */
 
     c = rbuf;
     while (c < rbuf + tot) {
-        /* if (debug_mode) syslog(LOG_WARNING, "* %s", c); */
+        /* if (Options::debug_mode) syslog(LOG_WARNING, "* %s", c); */
         if (!strncmp("DISPLAY=", c, 8)) {
             l = strlen(c + 8);
-            if (l >= 2 && l < sizeof buf - 1) {
+            if (l >= 2 && l < (int) sizeof buf - 1) {
                 strcpy(buf, c + 8);
                 dpy = buf;
             }
@@ -201,7 +201,7 @@ int find_X_process(char *name, char *disp) {
                 /* find DISPLAY */
                 display = get_display(atoi(namelist[n]->d_name));
                 if (display) {
-                    /* if (debug_mode)
+                    /* if (Options::debug_mode)
                     {
                         message(namelist[n]->d_name);
                         message(display);
@@ -281,6 +281,7 @@ int find_user(char *name, char *tty, char *disp) {
 			strcat(dispFound, " ");
                         strcpy(ttyFound, dispFound);
                         prio = PRIO_XDM;
+			break; /* Highest prio => let's exit */
                     }
                     continue;
                 }
@@ -310,14 +311,14 @@ int find_user(char *name, char *tty, char *disp) {
                     !strchr("pqrstuvwxyzabcde", ubuf->ut_line[3])) 
                     continue; /* not a pty */
 
-                /* device is a pseudo terminal */
+                /* device is a pseudo terminal (ex : a xterm) */
 		if (Options::debug_mode) syslog(LOG_DEBUG, "PTY %s, ut_host=%s",
                                                 ubuf->ut_line, ubuf->ut_host);
                 if (prio < PRIO_PTY) {
                     prio = PRIO_PTY;
                     strcpy(ttyFound, ubuf->ut_line);
-                    /*                   strcpy(dispFound, ubuf->ut_host); */
-                    /*                   strcat(dispFound, ":0"); */
+                    strcpy(dispFound, ubuf->ut_host);
+                    strcat(dispFound, " ");
                 }
 
                 dpy = get_display(ubuf->ut_pid);
@@ -398,7 +399,7 @@ int find_user(char *name, char *tty, char *disp) {
                     syslog(LOG_DEBUG, "%s", ttyFound);
                     if ((int) ttyFound[3] > (int) 'f') {
 #ifdef USE_UT_HOST
-                        if (debug_mode) {
+                        if (Options::debug_mode) {
                             syslog(LOG_DEBUG, "I wanna this:%s", ttyFound);
                             syslog(LOG_DEBUG, "ut_host=%s", ubuf.ut_host);
                             syslog(LOG_DEBUG, "%s", ubuf.ut_line);

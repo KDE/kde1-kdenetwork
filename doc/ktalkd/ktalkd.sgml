@@ -8,8 +8,8 @@
 
 <title>The ktalkd Handbook
 <author>David Faure <tt/David.Faure@insa-lyon.fr/
-<date>Version 0.8.4, August 11, 1998
-<abstract>This Handbook describes ktalkd Version 0.8.4
+<date>Version 0.8.5, August 13, 1998
+<abstract>This Handbook describes ktalkd Version 0.8.5
 
 <!-- Table of contents -->
 <toc>
@@ -32,22 +32,28 @@ That is the question. :) More seriously, this means that
 <tt/ktalkd/ is able to be compiled with or without KDE support.
 To use without KDE, the compilation stage will detect if X or Qt or KDE is not installed,
 but you can force a non-KDE daemon if you use the configure option '--without-X'.
+
 <tag/Answering machine/
 If the callee isn't loggued, or doesn't answer after
 the second announcement, an answering machine is launched, takes the
 message, and mails it to the callee.
+
 <tag/Sound/
 If desired, a sound is played with the announcement.
+
 <tag/X Announce/
 If compiled with KDE installed, ktalkd will use
 <bf/ktalkdlg/, a KDE dialog, for announcement.
+
 <tag/Multiple displays annoucement/
 If you are logged remotely (e.g. with an
 <tt/"export DISPLAY=..."/ command), the X announcement will be made on
 this display too. Answer on the one you want !
+
 <tag/Forwarding   <it/(New in 0.8.0 !)//
 You can set up a forward to another user even to another host
 if you're away. There are 3 different forwarding methods. See section 'Usage'.
+
 <tag/Configuration/
 If KDE-compiled, it reads config from KDE config files,
 the sitewide ($KDEDIR/share/config/ktalkdrc) and the user one, in its home directory.
@@ -55,10 +61,12 @@ The sitewide one has to be manually edited by the administrator, but there is no
 a configuration dialog for the user one. It's called <bf/kcmktalkd/ and can 
 be found in the KDE Control Center after installing <tt/ktalkd/.
 On non-KDE systems, <tt/ktalkd/ will read /etc/talkd.conf.
+
 <tag/Internationalization/
 Under KDE, the announcement will be in your language provided that
 you set it in the KDE menus and that someone translated <bf/ktalkdlg/ to your
 language. Same for the configuration dialog, <bf/kcmktalkd/.
+
 <tag/Support for otalk and ntalk   <it/(New in 0.8.1 !)//
 ktalkd now supports both protocols. So does ktalk.
 </descrip>
@@ -73,10 +81,13 @@ ktalkd now supports both protocols. So does ktalk.
 <descrip>
 <tag/RedHat Linux 5.0/
 My development platform. Fully tested on it.
+
 <tag/Other Linux, BSD/
 Should compile and run well.
+
 <tag/Solaris/
 It won't work until somebody makes a replacement for snprintf. Of course, one should be able to install another libc to solve this...
+
 <tag/AIX/
 I've heard about problems about localtime, ctime, and assorted functions.
 </descrip>
@@ -181,6 +192,7 @@ can access both networks), and <bf/FWR/ otherwise.
 Because this would be security hole, with the current user detection.
 You can bypass the limitation by adding two lines in xdm config files
 (which are the same than kdm ones).
+Note : the S.u.S.E linux distribution includes those lines by default.
 
 <p>
 Those config files are situated in a directory such as /etc/X11/xdm,
@@ -225,6 +237,7 @@ bug. Please send me a description of it so that I correct it.</p>
 log him into utmp and the linux based (/proc) detection is disabled.
 The solution is the same as in section 5.1, provided that you run kdm
 or xdm to log into X.
+Another solution is to make sure you always have a xterm running.
 
 <sect1>How to get debug output from ktalkd ?
 <P>
@@ -248,13 +261,24 @@ ntalk  dgram   udp     wait    root    /usr/sbin/tcpd  /opt/kde/bin/ktalkd -d
 </verb></tscreen>
 Finally, run a talk session and see the result in /var/log/all_messages
 
+When submitting a bug report, never forget to include the debugging output, but 
+also ktalkd's version number and the "./configure" output.
+
 <sect>History
 <p>
 Here comes the <bf/ChangeLog/ :
 <verb>
+1998-08-12  David Faure  <David.Faure@insa-lyon.fr> (0.8.5)
+
+	* ktalkd/find_user.cpp: Fixed a nasty bug with unsigned int. Thanks Rolf.
+	   Also uncommented use of ut_host for PTYs (ex : xterms).
+	   Also exit the loop if XDM login found. Highest priority.
+
+	* kotalkd/includ.h: Added a simpler version of includ.h.
+
 1998-08-10  David Faure  <David.Faure@insa-lyon.fr> (0.8.4)
 
-	* ktalkd/machines/talkconn.cpp: Support for otalk.
+	* ktalkd/machines/talkconn.cpp: Support for otalk. (not finished).
 
 	* kotalkd/*.c: Just send to ktalkd, which responds itself.
 

@@ -27,6 +27,7 @@
 <P>Because this would be security hole, with the current user detection.
 You can bypass the limitation by adding two lines in xdm config files
 (which are the same than kdm ones).
+Note : the S.u.S.E linux distribution includes those lines by default.
 <P>
 <P>Those config files are situated in a directory such as /etc/X11/xdm,
 or /usr/X11R6/lib/X11/xdm on other systems. The following supposes
@@ -73,6 +74,7 @@ bug. Please send me a description of it so that I correct it.
 log him into utmp and the linux based (/proc) detection is disabled.
 The solution is the same as in section 5.1, provided that you run kdm
 or xdm to log into X.
+Another solution is to make sure you always have a xterm running.
 <P>
 <H3><A NAME="ss5.3">5.3 How to get debug output from ktalkd ?</A>
 </H3>
@@ -104,6 +106,8 @@ ntalk  dgram   udp     wait    root    /usr/sbin/tcpd  /opt/kde/bin/ktalkd -d
 </CODE></BLOCKQUOTE>
 
 Finally, run a talk session and see the result in /var/log/all_messages
+<P>When submitting a bug report, never forget to include the debugging output, but 
+also ktalkd's version number and the "./configure" output.
 <P>
 <P ALIGN="RIGHT">
 

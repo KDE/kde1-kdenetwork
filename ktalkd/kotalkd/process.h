@@ -32,18 +32,9 @@
  *
  */
 
-#include "../ktalkd/includ.h"
+#include "includ.h"
 
-#ifdef __cplusplus
-extern "C" 
-{
-#endif
-    
 void open_local_socket(char * hostname);
 void close_local_socket();
 int prepare_response(register OLD_CTL_MSG *mp, register OLD_CTL_RESPONSE *rp);
 void process_request(register OLD_CTL_MSG *mp, register OLD_CTL_RESPONSE *rp);
-
-#ifdef __cplusplus
-}
-#endif

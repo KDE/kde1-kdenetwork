@@ -31,26 +31,34 @@ as the "callee".
 <CODE>ktalkd</CODE> is able to be compiled with or without KDE support.
 To use without KDE, the compilation stage will detect if X or Qt or KDE is not installed,
 but you can force a non-KDE daemon if you use the configure option '--without-X'.
+<P>
 <DT><B>Answering machine</B><DD><P>If the callee isn't loggued, or doesn't answer after
 the second announcement, an answering machine is launched, takes the
 message, and mails it to the callee.
+<P>
 <DT><B>Sound</B><DD><P>If desired, a sound is played with the announcement.
+<P>
 <DT><B>X Announce</B><DD><P>If compiled with KDE installed, ktalkd will use
 <B>ktalkdlg</B>, a KDE dialog, for announcement.
+<P>
 <DT><B>Multiple displays annoucement</B><DD><P>If you are logged remotely (e.g. with an
 <CODE>"export DISPLAY=..."</CODE> command), the X announcement will be made on
 this display too. Answer on the one you want !
+<P>
 <DT><B>Forwarding   <I>(New in 0.8.0 !)</I></B><DD><P>You can set up a forward to another user even to another host
 if you're away. There are 3 different forwarding methods. See section 'Usage'.
+<P>
 <DT><B>Configuration</B><DD><P>If KDE-compiled, it reads config from KDE config files,
 the sitewide ($KDEDIR/share/config/ktalkdrc) and the user one, in its home directory.
 The sitewide one has to be manually edited by the administrator, but there is now
 a configuration dialog for the user one. It's called <B>kcmktalkd</B> and can 
 be found in the KDE Control Center after installing <CODE>ktalkd</CODE>.
 On non-KDE systems, <CODE>ktalkd</CODE> will read /etc/talkd.conf.
+<P>
 <DT><B>Internationalization</B><DD><P>Under KDE, the announcement will be in your language provided that
 you set it in the KDE menus and that someone translated <B>ktalkdlg</B> to your
 language. Same for the configuration dialog, <B>kcmktalkd</B>.
+<P>
 <DT><B>Support for otalk and ntalk   <I>(New in 0.8.1 !)</I></B><DD><P>ktalkd now supports both protocols. So does ktalk.
 </DL>
 <P>
