@@ -1026,8 +1026,10 @@ void KSircTopLevel::UserParseMenu(int id)
   }
   QString s;
   s.sprintf(user_menu.at(id)->action, nicks->text(nicks->currentItem()));
-  s.append("\n");
-  sirc_write(s);
+  QString txt = linee->text();
+  linee->setText(s);
+  sirc_line_return();
+  linee->setText(txt);
 }
 
 void KSircTopLevel::UserUpdateMenu()

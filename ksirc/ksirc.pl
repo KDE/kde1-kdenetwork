@@ -47,8 +47,6 @@ Usage: WALLOP [<#channel>] <message>
 Sends a message to all of the channel operators on the given channel.  
 Defaults the the current channel.");
 
-&tell("*** ~2,4~bLoaded KSirc.pl~c");
-
 sub cmd_wallop {
   &getarg;
   unless ($newarg =~ /^#/) {
@@ -224,3 +222,5 @@ for (@words) {
 return "@words";
 }
 
+&tell("*** ~2,4~bLoaded KSirc.pl~c")
+&tell("*** ~13,3~bWith Super Willy Enhancements~c");
