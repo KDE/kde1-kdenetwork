@@ -358,39 +358,40 @@ int NNTP::listXover(int from,int to)
                     art.Date=templ.at(OffsetDate);
                     art.Lines=templ.at(OffsetLines);
                     art.ID=templ.at(OffsetID);
-
+                    
                     key.dptr=art.ID.data();
                     key.dsize=art.ID.length()+1;
                     
                     if (gdbm_exists(artdb,key))
-                        continue;
-
-                    //convert Refs to a strlist
-                    art.Refs.clear();
-                    QString refsdata=templ.at(OffsetRef);
-
-                    if (!refsdata.isEmpty())
                     {
-                        while (1)
+                        
+                        //convert Refs to a strlist
+                        art.Refs.clear();
+                        QString refsdata=templ.at(OffsetRef);
+                        
+                        if (!refsdata.isEmpty())
                         {
-                            int index=refsdata.find(' ');
-                            if (index==-1)
+                            while (1)
                             {
-                                art.Refs.append(refsdata.data());
-                                break;
-                            }
-                            else
-                            {
-			        art.Refs.append(refsdata.left(index));
-			        refsdata=refsdata.right(refsdata.length()-index-1);
+                                int index=refsdata.find(' ');
+                                if (index==-1)
+                                {
+                                    art.Refs.append(refsdata.data());
+                                    break;
+                                }
+                                else
+                                {
+                                    art.Refs.append(refsdata.left(index));
+                                    refsdata=refsdata.right(refsdata.length()-index-1);
+                                }
                             }
                         }
+                        sprintf (buffer,"Stored %d articles",counter);
+                        emit newStatus(buffer);
+                        counter++;
+                        
+                        art.save();
                     }
-                    sprintf (buffer,"Stored %d articles",counter);
-                    emit newStatus(buffer);
-                    counter++;
-
-                    art.save();
                     tok=strtok(NULL,"\n");
                 }
                 f.writeBlock(gi.data(),gi.length());
