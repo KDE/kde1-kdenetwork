@@ -834,6 +834,9 @@ void dieppp(int) {
       Requester::rq->removeSecret(AUTH_PAP);
       Requester::rq->removeSecret(AUTH_CHAP);
 
+      Modem::modem->closetty();
+      Modem::modem->unlockdevice();
+
       gpppdata.setpppdRunning(false);
       
       Debug("Executing command on disconnect since pppd has died:\n");
@@ -849,7 +852,6 @@ void dieppp(int) {
       if(!gpppdata.pppdError())
         gpppdata.setpppdError(E_PPPD_DIED);
       removedns();
-      Modem::modem->unlockdevice();      
       
       if(!gpppdata.automatic_redial()) {
 	p_kppp->quit_b->setFocus();
@@ -1098,6 +1100,7 @@ void KPPPWidget::disconnect() {
   Requester::rq->removeSecret(AUTH_CHAP);
 
   removedns();
+  Modem::modem->closetty();
   Modem::modem->unlockdevice();
   
   con_win->stopClock();

@@ -53,7 +53,7 @@ public:
   bool writeLine(const char *);
   bool dataMode() const { return data_mode; }
   void setDataMode(bool set) { data_mode = set; }
-  char *modemMessage();  
+  const char *modemMessage() const;  
   speed_t modemspeed();
   static QString parseModemSpeed(const QString &);
   void notify(const QObject *, const char *);

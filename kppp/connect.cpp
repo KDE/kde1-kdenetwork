@@ -730,7 +730,12 @@ void ConnectWidget::timerEvent(QTimerEvent *) {
 	  return;
 	}
       }
-      
+
+      // Close the tty. This prevents the QTimer::singleShot() in
+      // Modem::readtty() from re-enabling the socket notifier.
+      // The port is still held open by the helper process.
+      Modem::modem->closetty();
+
       killTimer( main_timer_ID );
 
       if_timeout_timer->start(atoi(gpppdata.pppdTimeout())*1000);
@@ -1040,8 +1045,6 @@ void ConnectWidget::if_waiting_slot() {
       p_kppp->con_win->iconify();
     }
   }
-
-  Modem::modem->closetty();
 }
 
 

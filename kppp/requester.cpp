@@ -287,9 +287,9 @@ bool Requester::execPPPDaemon(const char *arguments) {
 
 bool Requester::killPPPDaemon() {
   struct KillDaemonRequest req;
+  gpppdata.setpppdRunning(false);
   req.header.type = Opener::KillPPPDaemon;
   sendRequest((struct RequestHeader *) &req, sizeof(req));
-  gpppdata.setpppdRunning(false);
   return recvResponse();
 }
 

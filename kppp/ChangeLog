@@ -1,3 +1,12 @@
+1999-04-06  Harri Porten  <porten@kde.org>
+	* modem.cpp: set modemfd to -1 in closetty().
+	* modem.cpp: block attempts to start the socket notfier if modemfd < 0.
+	* connect.cpp: call closetty() _before_ execppp(). This should solve
+	some of the reported timeout errors and the observed memory hogging.
+	* modem.cpp: added stop() in closetty() (just to be sure)
+	(all fixes above were proposed by Ian Gordon <ig@cs.strath.ac.uk>)
+	* requester.cpp: setpppdRunning(false) _before_ killing the pppd.
+
 1999-03-26  Harri Porten  <porten@kde.org>
 
 	* main.cpp: added flushX() before every command_execute()
