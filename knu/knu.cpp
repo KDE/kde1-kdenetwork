@@ -21,6 +21,12 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.9  1998/10/29 21:26:30  leconte
+ * Bertrand:
+ * . renamed Matt s traceroute to mtr as asked by the new mtr maintainer
+ * . mtr-0.25 has the diffs included. No more patch here
+ * . updated knu for mtr-0.25
+ *
  * Revision 1.8  1998/10/14 19:33:03  leconte
  * Bertrand: Added mtr support (with a patch to mtr-0.21)
  *
@@ -453,21 +459,12 @@ TopLevel::slotSelectAll()
 void 
 TopLevel::slotAbout()
 {
-  QString str;
-
-  str = CaptionString.copy();
-  if (strcmp(CaptionString, KNU_CAPTION)) {
-    str += "\n("; str += KNU_CAPTION; str += ")";
-  }
+  QString about;
+  about.sprintf(i18n("Knu\nVersion %s\n\nBertrand
+  Leconte\n<B.Leconte@mail.dotcom.fr>\n"), KNU_VERSION);
 
   QMessageBox::about( this, i18n("About..."),
-		      str +
-		      "\n"
-		      "Version " + KNU_VERSION + "\n\n"
-		      "Bertrand Leconte\n"
-		      "<B.Leconte@mail.dotcom.fr>\n"
-		      );
-  
+		      about);
 }
 
 
@@ -597,9 +594,9 @@ int
 main(int argc, char **argv)
 {
   const QString  appname = KNU_APPNAME;
-  CaptionString = KNU_CAPTION;
-
   KApplication  *a = new KApplication(argc, argv, appname);
+
+  CaptionString = i18n("Network utilities");
 
   if (strcmp(a->getCaption(), KNU_APPNAME)) {
     CaptionString = a->getCaption();
