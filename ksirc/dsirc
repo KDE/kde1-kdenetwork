@@ -1278,7 +1278,7 @@ sub docommand {
       $args='#'.$args;
     }
     if (grep(&eq($_, $args), @channels)) {
-      &tell("*** Talking to $args now");
+#      &tell("*** Talking to $args now"); # KSIRC MOD
       $talkchannel=$args;
       &dostatus;
     } else {

@@ -44,6 +44,7 @@ public slots:
     virtual void new_toplevel(QString str);
     virtual void recvChangeChannel(QString, QString, QString);
     virtual void reuse();
+    virtual void colour_prefs();
 
 private:
     // Hold a list of all KSircProcess's for access latter.  Index by server 

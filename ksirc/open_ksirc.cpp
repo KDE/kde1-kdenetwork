@@ -60,13 +60,13 @@ void open_ksirc::create_toplevel()
   for(int i = 0; i < nameSLE->count() ; i++){
     if(strcmp(nameSLE->currentText(), nameSLE->text(i)) == 0){
       item_found = 1;
-      cerr << "Found one!\n";
+      //cerr << "Found one!\n";
     }
-    cerr << "Checking!\n";
+    //cerr << "Checking!\n";
   }
   if(item_found == 0){
     nameSLE->insertItem(nameSLE->currentText(), -1);
-    cerr << "Inserted!\n";
+    //cerr << "Inserted!\n";
   }
 
   if(strlen(nameSLE->currentText()) > 0)

@@ -11,6 +11,7 @@
 #include "iocontroller.h"
 #include "open_top.h"
 #include "control_message.h"
+#include "config.h"
 #include <iostream.h>
 #include <termios.h>
 #include <unistd.h>
@@ -327,14 +328,14 @@ void KSircTopLevel::sirc_line_return()
       cerr << *s3 << endl;
 
   if(strncmp(s, "/join ", 6) == 0){
-    cerr << "Got a join\n";
+    //cerr << "Got a join\n";
     s = s.lower();
     int pos2 = s.find(' ', 6);
     if(pos2 == -1)
       pos2 = s.length() - 1;
     if(pos2 > 6){
       QString name = s.mid(6, pos2 - 6); // make sure to remove line feed
-      cerr << "New channel: " << name << endl;
+      //cerr << "New channel: " << name << endl;
       emit open_toplevel(name);
     }
   }
@@ -424,7 +425,7 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
   };
   QString s3, s4, channel;
   int pos, pos2;
-  QColor color = black;
+  QColor *color = kSircConfig->colour_text;
   QPixmap *pixmap = NULL;
 
   /*
@@ -502,7 +503,7 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	  if(pos2 > pos){
 	    if(!nick_ring.contains(string.mid(pos, pos2-pos))){
 	      nick_ring.append(string.mid(pos, pos2-pos));
-	      cerr << "Appending: " << string.mid(pos, pos2-pos) << endl;
+	      //cerr << "Appending: " << string.mid(pos, pos2-pos) << endl;
 	      if(nick_ring.count() > 10)
 		nick_ring.removeFirst();
 	    }
@@ -532,15 +533,18 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
       switch(c){
       case '*':                             // * is an info message
 	string.remove(0, 2);                // takes off the junk
-	if(string.contains("Talking to"))
+	if(string.contains("Talking to")){
+	  cerr << "Removing Talking to\n";
+	  string.truncate(0);
 	  no_output = 1;
+        }
 	pixmap = pix_info;                 // Use the I/blue cir pixmap
-	color = blue;                       // Colour is blue for info
+	color = kSircConfig->colour_info;   // Colour is blue for info
 	break;
-      case 'E':                             // E's an error message
-	string.remove(0, 2);                // strip the junk
+      case 'E':                            // E's an error message
+	string.remove(0, 2);               // strip the junk
 	pixmap = pix_madsmile;             // use the mad smiley
-	color = red;                        // set the clour to red
+	color = kSircConfig->colour_error;  // set the clour to red
 	break;
       case '#':                             // Channel listing of who's in it
 	nicks->setAutoUpdate(FALSE);        // clear and update nicks
@@ -556,7 +560,7 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	  s3 = string.mid(pos+1, pos2 - pos - 1); // Get nick
 	  if(s3[0] == '@'){    // Remove the op part if set
 	    s3.remove(0, 1);
-	    nicks->inSort(new ircListItem(s3, red, nicks));
+	    nicks->inSort(new ircListItem(s3, &red, nicks));
 	  }
 	  else{
 	    nicks->inSort(s3);
@@ -565,12 +569,12 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	}
 	nicks->setAutoUpdate(TRUE);         // clear and repaint the listbox
 	nicks->repaint(TRUE);
-	color = cyan;                       // set to cyan colouring
+	color = kSircConfig->colour_info;    // set to cyan colouring
 	break;
       case '<':
 	string.remove(0, 2);                // clear junk
-	pixmap = pix_greenp;               // For joins and leave use green
-	color = green;                      // Pin gets for joins
+	pixmap = pix_greenp;                // For joins and leave use green
+	color = kSircConfig->colour_chan;    // Pin gets for joins
 	
 	// Multiple type of parts, a signoff or a /part
 	// Each get's get nick in a diffrent localtion
@@ -603,7 +607,7 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
       case '>':
 	string.remove(0, 2);                   // remove junk 
 	pixmap = pix_greenp;                   // set green pin
-	color = green;                         // set green
+	color =   kSircConfig->colour_chan;     // set green
 	s3 = string.mid(1, string.find(' ', 1) - 1); // only 1 type of join
 	//	nicks->insertItem(s3, 0);      // add the sucker
 	nicks->inSort(s3);
@@ -611,7 +615,7 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
       case 'N':
 	string.remove(0, 2);                   // remove the junk
 	pixmap = pix_greenp;                   // set green pin
-	color = green;                         // set freen
+	color = kSircConfig->colour_chan;       // set freen
 	s3 = string.mid(1, string.find(' ', 1) - 1); // find the old know
 	pos = string.find("known as ") + 9;    // find the new nick
 	s4 = string.mid(pos, string.length() - pos);
@@ -643,7 +647,7 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	    if(strcmp(s3, nicks->text(i)) == 0){
 	      nicks->setAutoUpdate(FALSE);
 	      nicks->removeItem(i);           // remove old nick
-	      nicks->inSort(new ircListItem(s3, red, nicks));    // add new nick in sorted pass,with colour
+	      nicks->inSort(new ircListItem(s3, &red, nicks));    // add new nick in sorted pass,with colour
 	      nicks->setAutoUpdate(TRUE);
 	      nicks->repaint();
 	    }
@@ -668,7 +672,7 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	string.remove(0, 3);      // by dflt remove junk, and use a ball
 	pixmap = pix_bball;       // ball isn't used else where so we
 				  // can track down unkonws and add them
-	color = blue;
+	color = kSircConfig->colour_info;
 	//	cerr << "Unkoown control: " << c << endl;
       }
     }
@@ -926,7 +930,7 @@ void KSircTopLevel::resizeEvent(QResizeEvent *e)
 {
   mainw->setAutoUpdate(FALSE);
   KTopLevelWidget::resizeEvent(e);
-  cerr << "Updating list box\n";
+//  cerr << "Updating list box\n";
   mainw->setTopItem(mainw->count()-1);
   mainw->setAutoUpdate(TRUE);
   repaint(TRUE);
@@ -973,7 +977,7 @@ void KSircTopLevel::control_message(QString str)
 	channel_name = qstrdup(s.mid(0, pos2).data());
       else
 	channel_name = qstrdup(s.data());
-      cerr << "Channel name now: " << channel_name << endl;
+      //cerr << "Channel name now: " << channel_name << endl;
       have_focus = 0;
       emit changeChannel("!default", channel_name);
       break;

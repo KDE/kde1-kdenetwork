@@ -1,0 +1,136 @@
+DlgEdit:v1.2:Dialog:
+Dialog {
+	ClassHeader {KSircColour.h}
+	ClassSource {KSircColour.cpp}
+	ClassName {KSircColour}
+	DataHeader {KSircColourData.h}
+	DataSource {KSircColourData.cpp}
+	DataName {KSircColourData}
+	WindowBaseClass {QFrame}
+	WindowCaption {Colour Settings}
+	WindowFlags {12288}
+}
+WidgetLayout {
+InitialPos {-1 -1}
+Size {230 210}
+MinSize {230 210}
+MaxSize {230 210}
+Grid {10}
+
+Label {
+		Text {Text Colour}
+		AutoResize {FALSE}
+		Margin {-1}
+		Rect {10 10 100 30}
+		Name {Label_1}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+User {
+		UserClassHeader {kcolorbtn.h}
+		UserClassName {KColorButton}
+		Rect {120 10 100 30}
+		Name {User_1}
+		Variable {ColourText}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+User {
+		UserClassHeader {kcolorbtn.h}
+		UserClassName {KColorButton}
+		Rect {120 50 100 30}
+		Name {User_2}
+		Variable {ColourInfo}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+User {
+		UserClassHeader {kcolorbtn.h}
+		UserClassName {KColorButton}
+		Rect {120 90 100 30}
+		Name {User_3}
+		Variable {ColourChan}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+User {
+		UserClassHeader {kcolorbtn.h}
+		UserClassName {KColorButton}
+		Rect {120 130 100 30}
+		Name {User_4}
+		Variable {ColourError}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+Label {
+		Text {Info Colour}
+		AutoResize {FALSE}
+		Margin {-1}
+		Rect {10 50 100 30}
+		Name {Label_2}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+Label {
+		Text {Chan Colour}
+		AutoResize {FALSE}
+		Margin {-1}
+		Rect {10 90 100 30}
+		Name {Label_3}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+Label {
+		Text {Error Colour}
+		AutoResize {FALSE}
+		Margin {-1}
+		Rect {10 130 100 30}
+		Name {Label_4}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+PushButton {
+		ToggleButton {FALSE}
+		Default {FALSE}
+		AutoDefault {TRUE}
+		Text {Ok}
+		AutoRepeat {FALSE}
+		AutoResize {FALSE}
+		Rect {120 170 100 30}
+		Name {PushButton_1}
+		Signal {[Protected]  clicked --> ok  ()}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+PushButton {
+		ToggleButton {FALSE}
+		Default {FALSE}
+		AutoDefault {FALSE}
+		Text {Cancel}
+		AutoRepeat {FALSE}
+		AutoResize {FALSE}
+		Rect {10 170 100 30}
+		Name {PushButton_2}
+		Signal {[Protected]  clicked --> cancel  ()}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+Layout {Box}
+Box_Layout-1{
+		Direction {TopToBottom}
+		Border {5}
+		AutoBorder {5}
+		Name {}
+		Strut {0}
+}
+}

@@ -1,12 +1,12 @@
 #include "irclistitem.h"
 #include "iostream.h"
 
-ircListItem::ircListItem(QString s, const QColor c, QListBox *lb, QPixmap *p = 0)
+ircListItem::ircListItem(QString s, const QColor *c, QListBox *lb, QPixmap *p = 0)
   : QListBoxItem()
 {
 
   text = s;
-  colour = c;
+  colour = (QColor *) c;
   pm = p;
   parent_lb = lb;
 
@@ -24,7 +24,7 @@ ircListItem::ircListItem(QString s, const QColor c, QListBox *lb, QPixmap *p = 0
 void ircListItem::paint(QPainter *p)
 {
   QPen pen = p->pen();
-  p->setPen(colour);
+  p->setPen(*colour);
 
   if(pm)
     p->drawPixmap(1,0,*pm);

@@ -35,9 +35,10 @@ ioBroadcast.cpp \
 ksircprocess.cpp mksircprocess.cpp \
 open_ksirc.cpp open_ksircData.cpp mopen_ksirc.cpp mopen_ksircData.cpp \
 servercontroller.cpp servercontrollerData.cpp mservercontroller.cpp mservercontrollerData.cpp \
-control.cpp mcontrol.cpp
+control.cpp mcontrol.cpp \
+KSircColour.cpp KSircColourData.cpp mKSircColour.cpp mKSircColourData.cpp
 
-OBJECTS = toplevel.o ksirc.o irclistitem.o ahistlineedit.o alistbox.o mtoplevel.o mirclistitem.o malistbox.o UserMenuRef.o UserMenuRefData.o mUserMenuRef.o mUserMenuRefData.o iocontroller.o miocontroller.o open_top.o open_topData.o mopen_top.o mopen_topData.o messageReceiver.o ioBroadcast.o ksircprocess.o mksircprocess.o open_ksirc.o open_ksircData.o mopen_ksirc.o mopen_ksircData.o servercontroller.o servercontrollerData.o mservercontroller.o mservercontrollerData.o control.o mcontrol.o mahistlineedit.o
+OBJECTS = toplevel.o ksirc.o irclistitem.o ahistlineedit.o alistbox.o mtoplevel.o mirclistitem.o malistbox.o UserMenuRef.o UserMenuRefData.o mUserMenuRef.o mUserMenuRefData.o iocontroller.o miocontroller.o open_top.o open_topData.o mopen_top.o mopen_topData.o messageReceiver.o ioBroadcast.o ksircprocess.o mksircprocess.o open_ksirc.o open_ksircData.o mopen_ksirc.o mopen_ksircData.o servercontroller.o servercontrollerData.o mservercontroller.o mservercontrollerData.o control.o mcontrol.o mahistlineedit.o KSircColour.o KSircColourData.o mKSircColour.o mKSircColourData.o
 
 TARGET = ksirc
 

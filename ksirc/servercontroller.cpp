@@ -68,6 +68,7 @@
 #include "servercontroller.h"
 #include "open_ksirc.h"
 #include "open_top.h"
+#include "KSircColour.h"
 #include <iostream.h>
 
 #include <qkeycode.h>
@@ -96,6 +97,9 @@ servercontroller::servercontroller
 			    this, SLOT(reuse()));
 	options->setItemChecked(reuse_id, 
 				! kConfig->readNumEntry("Reuse", TRUE));
+	options->insertSeparator();
+	options->insertItem("Colour Preferences...",
+			    this, SLOT(colour_prefs()));
 	MenuBar->insertItem("&Options", options);
 
 	setMenu(MenuBar);
@@ -160,7 +164,7 @@ void servercontroller::new_toplevel(QString str)
     else if(proc_list[citem->getParent()->getText()]){
       proc_list[citem->getParent()->getText()]->new_toplevel(str);
     }
-    cerr << "Server is: " << citem->getText() << endl;
+    //cerr << "Server is: " << citem->getText() << endl;
   }
 }
 
@@ -171,7 +175,7 @@ void servercontroller::add_toplevel(QString parent, QString child)
   path.push(&parent);
   // add a new child item with parent as it's parent
   ConnectionTree->addChildItem(child.data(), NULL, &path);
-  cerr << "Added child for: " << parent << "->" << child << endl;
+  //cerr << "Added child for: " << parent << "->" << child << endl;
 
 }
 
@@ -192,7 +196,7 @@ void servercontroller::delete_toplevel(QString parent, QString child)
     proc_list.remove(parent); // Remove process entry while we are at it
 
   ConnectionTree->removeItem(&path); // Remove the item
-  cerr << "Removed child for: " << parent << "->" << child << endl;
+  //cerr << "Removed child for: " << parent << "->" << child << endl;
 
 }
 
@@ -212,7 +216,7 @@ void servercontroller::recvChangeChannel(QString parent, QString old_chan, QStri
   path.push(&parent);
   path.push(&old_chan);
   // Delete the old one
-  cerr << "Deleteing " << old_chan << endl;
+  //cerr << "Deleteing " << old_chan << endl;
   ConnectionTree->removeItem(&path);
   // Only create with the parent in the path
   path.pop();
@@ -232,4 +236,9 @@ void servercontroller::reuse()
     kConfig->writeEntry("Reuse", TRUE);
   }
   kConfig->sync();
+}
+
+void servercontroller::colour_prefs()
+{
+  (new KSircColour())->show();
 }

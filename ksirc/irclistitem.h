@@ -11,7 +11,7 @@
 class ircListItem : public QListBoxItem
 {
  public:
-  ircListItem(QString s, const QColor c, QListBox *lb, QPixmap *p=0);
+  ircListItem(QString s, const QColor *c, QListBox *lb, QPixmap *p=0);
 
   virtual int row();
   
@@ -25,7 +25,7 @@ protected:
 private:
 
   QPixmap *pm;
-  QColor colour;
+  QColor *colour;
   QString text;
 
   int rows;
