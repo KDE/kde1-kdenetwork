@@ -32,10 +32,10 @@
 # For bug reports, comments, questions, email roger.espel.llima@pobox.com
 #
 # You can always find the latest version of sirc at the following URL:
-# http://www.eleves.ens.fr:8080/home/espel/sirc.html
+# http://www.eleves.ens.fr:8080/home/espel/sirc/sirc.html
 
-$version='2.21';
-$date='30 Jul 1997';
+$version='2.211';
+$date='10 Mar 1998';
 $add_ons='';
 
 $libdir=$ENV{"SIRCLIB"} || ".";
@@ -185,7 +185,7 @@ sub listen {
   $_[0]=&newfh;
   local($fh, $port)=@_;
   local($thisend);
-  $bindaddr=pack("x4") unless $bindaddr;
+  $bindaddr=pack("x4", 0) unless $bindaddr;
   $thisend=pack("S n a4 x8", &AF_INET, $port+0, $bindaddr);
   &tell("*\cbE\cb* Out of file descriptors"), return 0
     unless socket($fh, &PF_INET, &SOCK_STREAM, 0);
@@ -1894,7 +1894,7 @@ sub donumeric {
     local($n)=$nick;
     $n =~ s/(\W)/\\$1/g;
     $r =~ s/^://;
-    if($DSIRC_NAMES == undef){ #KSIRC MOD
+    if($DSIRC_NAMES eq ''){ #KSIRC MOD
       &tell("~${c}~*C* Users on $c: $r"); # KSIRC MOD
       $DSIRC_NAMES = $c; # KSIRC MOD
     }                    # KSIRC MOD
@@ -1906,7 +1906,7 @@ sub donumeric {
     &dostatus if &eq($c, $talkchannel);
   } elsif ($cmd eq '366'){                      # KSIRC MOD
     &tell("~${DSIRC_NAMES}~*c* Users on $DSIRC_NAMES:"); # KSIRC MOD
-    $DSIRC_NAMES = undef;                                # KSIRC MOD
+    $DSIRC_NAMES = '';                                   # KSIRC MOD
   } elsif ($cmd eq '221') {
     &yetonearg;
     &tell("*\cb+\cb* Your user mode is \"$args\"");
@@ -2134,6 +2134,7 @@ while (1) {
 	&dohooks("notice", $newarg, $args);
 	&tell("~${who}~-\cb$who$puh1\cb- $args");  # MOD FOR KSIRC
       }
+      $newarg =~ s/\cg.*//;	# ircnet kludge
     } elsif ($cmd eq 'KICK') {
       &yetonearg;
       local($channel)=$newarg;
