@@ -433,6 +433,12 @@ void KSircTopLevel::sirc_line_return()
       }
     }
   }
+  else if(strncmp(s, "/server ", 6) == 0){
+    QString command = "/eval &print(\"*E* Use The Server Controller\\n\");\n";
+    sirc_write(command);
+    linee->setText("");
+    return;
+  }
 
   // 
   // Look at the command, if we're assigned a channel name, default
@@ -1119,6 +1125,8 @@ void KSircTopLevel::resizeEvent(QResizeEvent *e)
   emit changeSize();
   mainw->repaint(TRUE);
   repaint();
+  mainw->scrollToBottom();
+
 }
 
 void KSircTopLevel::gotFocus()
@@ -1179,6 +1187,7 @@ void KSircTopLevel::control_message(int command, QString str)
       linee->setPalette(QPalette(cg, cg, cg));
     }
     repaint(TRUE);
+    mainw->scrollToBottom();
     break;
   default:
     cerr << "Unkown control message: " << str << endl;

@@ -182,7 +182,7 @@ void KSircProcess::new_toplevel(QString str)
     wm->show(); // Pop her up
   }
   else{
-    cerr << "Window " << str << " already exists\n";
+    //    cerr << "Window " << str << " already exists\n";
   }
 }
 
