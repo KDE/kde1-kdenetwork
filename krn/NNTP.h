@@ -123,7 +123,7 @@ public:
     Artdlg *isVisible;
     //List of articles in the newsgroup.
     ArticleList artList;
-    void getList();
+    void getList(Artdlg *dialog=0);
     void updateList();
     void getSubjects(NNTP *server);
     void getMessages(NNTP *server);

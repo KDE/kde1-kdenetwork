@@ -286,7 +286,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
 
     statusBar()->changeItem("Reading Article List",2);
     qApp->processEvents ();
-    group->getList();
+    group->getList(this);
 
     if (server->isConnected())
     {

@@ -288,7 +288,8 @@ int NNTP::listXover(int from,int to,NewsGroup *n)
 {
     datum key;
     char *buffer=new char[1024];
-    int counter=0;
+    unsigned int counter=0;
+    if (n) counter=n->artList.count();
     DwString gi;
     reportCounters (true,false);
     from=from >? first;

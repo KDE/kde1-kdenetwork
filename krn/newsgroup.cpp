@@ -26,6 +26,8 @@
 
 #include <assert.h>
 
+#include "artdlg.h"
+
 extern ArticleDict artSpool;
 
 extern QString krnpath,cachepath,artinfopath,groupinfopath;
@@ -320,7 +322,7 @@ void NewsGroup::addArticle(QString ID)
     }
 }
 
-void NewsGroup::getList()
+void NewsGroup::getList(Artdlg *dialog)
 {
     int c=0;
     QString ID;
@@ -345,6 +347,13 @@ void NewsGroup::getList()
                 qApp->processEvents();
             ID=st.readLine();
             addArticle (ID);
+            if (dialog)
+            {
+                char *buffer=new char[100];
+                sprintf (buffer,"Received %d articles",artList.count());
+                dialog->updateCounter(buffer);
+                delete[] buffer;
+            }
         }
         b.close();
         arr.resize(0);

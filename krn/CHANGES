@@ -5,6 +5,8 @@ Changes made Nov 18
 * [Roberto] Fixed (I think) a couple more leaks as reported by purify.
             not so impressive results, though (maybe saved .5MB)
 * [Roberto] Fixed a bug in NNTP::ListXover that affected threading
+* [Roberto] More feedback on opening group (shows counter when reading from
+            file, and not only from network).
 
 -----------------------------------------------------------------------------
 Changes made Nov 17
