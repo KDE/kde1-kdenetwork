@@ -36,7 +36,9 @@ binary-arch:	build
 	dh_testdir
 	dh_clean -k
 	make install 
-	echo "\# KDE Config File\n[Traceroute]\npath=/usr/sbin/traceroute\n" > debian/tmp/etc/kde/knurc
+	echo "# KDE Config File"          > debian/tmp/etc/kde/knurc
+	echo "[Traceroute]"              >> debian/tmp/etc/kde/knurc
+	echo "path=/usr/sbin/traceroute" >> debian/tmp/etc/kde/knurc
 	chmod +x debian/kderules
 	debian/kderules
 	dh_movefiles
