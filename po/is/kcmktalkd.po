@@ -66,8 +66,7 @@ msgstr "Óstudd slóð"
 msgid ""
 "Sorry, this type of URL is currently unsupportedby the KDE System Sound "
 "Module"
-msgstr ""
-"Því miður styður KDE hljóðkerfið ekki þessar tegundir slóða "
+msgstr "Því miður styður KDE hljóðkerfið ekki þessar tegundir slóða "
 
 #: soundpage.cpp:164
 #, c-format
@@ -75,8 +74,7 @@ msgid ""
 "Sorry, but \n"
 "%s\n"
 "does not seem to be a WAV--file."
-msgstr ""
-"%s virðist ekki vera WAV skrá"
+msgstr "%s virðist ekki vera WAV skrá"
 
 #: soundpage.cpp:167
 msgid "Improper File Extension"
@@ -121,7 +119,8 @@ msgstr "&Fyrsta lína"
 #: answmachpage.cpp:64
 #, c-format
 msgid "Use first %s for caller name, and second %s for caller hostname"
-msgstr "Notið fyrra '%s' fyrir nafn notandans og seinna '%s' fyrir vélina hanns"
+msgstr ""
+"Notið fyrra '%s' fyrir nafn notandans og seinna '%s' fyrir vélina hanns"
 
 #: answmachpage.cpp:68
 msgid "&Receive a mail even if no message left"
@@ -177,11 +176,11 @@ msgid ""
 "See Help for further explanations.\n"
 msgstr ""
 "FWA : Framsenda aðeins tilkynninguna. Bein tenging. Ekki mælt með þessu.\n"
-"FWR : Framsendi allar boðanir, breyti upplýsingum þegar nauðsynlegt þykir. Bein tenging.\n"
+"FWR : Framsendi allar boðanir, breyti upplýsingum þegar nauðsynlegt þykir. "
+"Bein tenging.\n"
 "FWT : Framsendi allar boðanir og tek á móti tali. Engin bein leið.\n"
 "\n"
-"Notkun sem mælt er með: FWT ef þú ert á bakvið eldvegg (og ef "
-"ktalkd\n"
+"Notkun sem mælt er með: FWT ef þú ert á bakvið eldvegg (og ef ktalkd\n"
 "hefur aðgang að báðum netunum), annar er mælt með FWR.\n"
 "\n"
 "Sjá hjálp fyrir frekari útskýringar.\n"

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: karchie\n"
-"POT-Creation-Date: 1999-01-05 02:12+0100\n"
+"POT-Creation-Date: 1999-01-13 01:58+0100\n"
 "PO-Revision-Date: 1999-01-12 19:09+0000\n"
 "Last-Translator: Richard Allen <ra@hp.is>\n"
 "Language-Team: is <kde-isl@mmedia.is>\n"
@@ -14,133 +14,150 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: ISO-8859-1\n"
 
-#: KAMenu.cpp:86
+#: KAMenu.cpp:75
 msgid "O&pen in editor"
 msgstr "O&pna í ritli"
 
-#: KAMenu.cpp:87 KAView.cpp:154
+#: KAMenu.cpp:76 KAView.cpp:154
 msgid "&Open Dir"
 msgstr "&Opna möppu"
 
-#: KAMenu.cpp:88 KAView.cpp:155
+#: KAMenu.cpp:77 KAView.cpp:155
 msgid "&Download..."
 msgstr "&Sækja..."
 
-#: KAMenu.cpp:91
+#: KAMenu.cpp:80
 msgid "&Load List..."
 msgstr "&Lesa lista..."
 
-#: KAMenu.cpp:92
+#: KAMenu.cpp:81
 msgid "&Save List..."
 msgstr "&Vista lista..."
 
-#: KAMenu.cpp:93
+#: KAMenu.cpp:82
 msgid "Expor&t List..."
 msgstr "Fly&tja lista út..."
 
-#: KAMenu.cpp:95
+#: KAMenu.cpp:84
 msgid "&Exit"
 msgstr "&Hætta"
 
-#: KAMenu.cpp:111
+#: KAMenu.cpp:100
 msgid "&Exact"
 msgstr "&Nákvæmur"
 
-#: KAMenu.cpp:112
+#: KAMenu.cpp:101
 msgid "&Substring"
 msgstr "&Hlutstrengur"
 
-#: KAMenu.cpp:113
+#: KAMenu.cpp:102
 msgid "Substring &case insensitive"
 msgstr "Hlutstrengur óháð há-/&lágstöfum"
 
-#: KAMenu.cpp:114
+#: KAMenu.cpp:103
 msgid "&Regular expression"
 msgstr "&Regluleg segð"
 
-#: KAMenu.cpp:115
+#: KAMenu.cpp:104 KASettings.cpp:422
 msgid "Exact, then substring"
 msgstr "Nákvæmur, svo hlutastrengur"
 
-#: KAMenu.cpp:116
+#: KAMenu.cpp:105
 msgid "Exact, then substring case ins."
 msgstr "Nákvæmur, svo hlutastrengur óháður há-/lágstöfum"
 
-#: KAMenu.cpp:117
+#: KAMenu.cpp:106 KASettings.cpp:424
 msgid "Exact, then regular expression"
 msgstr "Nákvæmur, svo reglulega segð"
 
-#: KAMenu.cpp:125
+#: KAMenu.cpp:114
 msgid "n&ormal"
 msgstr "&venjulegur"
 
-#: KAMenu.cpp:126
+#: KAMenu.cpp:115
 msgid "&nice"
 msgstr "&Lágur"
 
-#: KAMenu.cpp:127
+#: KAMenu.cpp:116
 msgid "&very nice"
 msgstr "Læ&gri"
 
-#: KAMenu.cpp:128
+#: KAMenu.cpp:117
 msgid "&even more nice"
 msgstr "&Enn lægri"
 
-#: KAMenu.cpp:129
+#: KAMenu.cpp:118
 msgid "n&icest"
 msgstr "Lægs&tur"
 
-#: KAMenu.cpp:136
+#: KAMenu.cpp:125
 msgid "Show &File discription"
 msgstr "Sýna S&kráarlýsingu"
 
-#: KAMenu.cpp:139
+#: KAMenu.cpp:128
 msgid "Archie&server"
 msgstr "Archi&eþjónn"
 
-#: KAMenu.cpp:140
+#: KAMenu.cpp:129
 msgid "Search&mode"
 msgstr "Leitar&hamur"
 
-#: KAMenu.cpp:141
+#: KAMenu.cpp:130
 msgid "&Nicelevel"
 msgstr "&Forgangur"
 
-#: KAMenu.cpp:143
+#: KAMenu.cpp:132
 msgid "&All..."
 msgstr "&Allar..."
 
-#: KAMenu.cpp:150
+#: KAMenu.cpp:139
 msgid "for &Filename"
 msgstr "að sk&ráarheiti"
 
-#: KAMenu.cpp:151
+#: KAMenu.cpp:140
 msgid "for &Path/Location"
 msgstr "að s&lóð"
 
-#: KAMenu.cpp:152
+#: KAMenu.cpp:141
 msgid "for &Hostname"
 msgstr "að vélar&heiti"
 
-#: KAMenu.cpp:154
+#: KAMenu.cpp:143
 msgid "&STOP"
 msgstr "&Stöðva"
 
-#: KAMenu.cpp:171
+#: KAMenu.cpp:160
 msgid "by &Hostname"
 msgstr "eftir &vélarheiti"
 
-#: KAMenu.cpp:172
+#: KAMenu.cpp:161
 msgid "by &Domain"
 msgstr "eftir &léni"
 
-#: KAMenu.cpp:173
+#: KAMenu.cpp:162
 msgid "by D&ate"
 msgstr "eftir d&agsetningu"
 
-#: KAMenu.cpp:174
+#: KAMenu.cpp:163
 msgid "by &Filesize"
 msgstr "eftir skrá&arstærð"
+
+#: KAMenu.cpp:177
+#, c-format
+msgid ""
+"KArchie ver. %s\n"
+"\n"
+"by Jörg Habenicht <j.habenicht@europemail.com>\n"
+"\n"
+"based on the work of:\n"
+"  - archie prospero client by\n"
+"      Clifford Neuman and\n"
+"      Brendan Kehoe (brendan@cygnus.com)\n"
+"  - and xarchie by\n"
+"      George Ferguson (ferguson@cs.rochester.edu)\n"
+"(See README files and copyright.h).\n"
+"My own code is based on the GPL"
+msgstr ""
 
 #: KAMenu.cpp:190
 msgid "&Settings"
@@ -153,6 +170,297 @@ msgstr "&Leita"
 #: KAMenu.cpp:192
 msgid "S&ort"
 msgstr "Röð&un"
+
+#: KAQuery.cpp:180
+msgid "Query setup"
+msgstr ""
+
+#: KAQuery.cpp:289
+msgid "Query aborted"
+msgstr ""
+
+#: KAQuery.cpp:296 KArchie.cpp:793
+msgid "Success"
+msgstr "Fundið"
+
+#: KAQuery.cpp:297
+msgid "Port unknown"
+msgstr ""
+
+#: KAQuery.cpp:298
+msgid "Can't open local UDP port"
+msgstr ""
+
+#: KAQuery.cpp:299
+msgid "Can't resolve hostname"
+msgstr ""
+
+#: KAQuery.cpp:300
+msgid "Didn't send entire message"
+msgstr ""
+
+#: KAQuery.cpp:301
+msgid "Timed out"
+msgstr ""
+
+#: KAQuery.cpp:302
+msgid "Recvfrom failed"
+msgstr ""
+
+#: KAQuery.cpp:303
+msgid "Reply: sendto failed"
+msgstr ""
+
+#: KAQuery.cpp:304
+msgid "Link exists with same name"
+msgstr ""
+
+#: KAQuery.cpp:306
+msgid "Link already exists"
+msgstr ""
+
+#: KAQuery.cpp:307
+msgid "Replacing existing link"
+msgstr ""
+
+#: KAQuery.cpp:308
+msgid "Prv entry not in dir->ulinks"
+msgstr ""
+
+#: KAQuery.cpp:309
+msgid "Temporary not found"
+msgstr ""
+
+#: KAQuery.cpp:310
+msgid "Namespace not closed w/ object::"
+msgstr ""
+
+#: KAQuery.cpp:311
+msgid "No alias for namespace NS#:"
+msgstr ""
+
+#: KAQuery.cpp:312
+msgid "Specified namespace not found"
+msgstr ""
+
+#: KAQuery.cpp:313
+msgid "File access method not supported"
+msgstr ""
+
+#: KAQuery.cpp:314
+msgid "Delete cached copy on close"
+msgstr ""
+
+#: KAQuery.cpp:315
+msgid "Unable to retrieve file"
+msgstr ""
+
+#: KAQuery.cpp:317
+msgid "Directory already exists"
+msgstr ""
+
+#: KAQuery.cpp:319 KAQuery.cpp:337
+msgid "Link with name already exists"
+msgstr ""
+
+#: KAQuery.cpp:320
+msgid "Not a virtual system"
+msgstr ""
+
+#: KAQuery.cpp:321
+msgid "Can't find directory"
+msgstr ""
+
+#: KAQuery.cpp:322
+msgid "Not a directory name"
+msgstr ""
+
+#: KAQuery.cpp:323
+msgid "Object not found"
+msgstr ""
+
+#: KAQuery.cpp:324
+msgid "Object has moved"
+msgstr ""
+
+#: KAQuery.cpp:325
+msgid "File not found"
+msgstr ""
+
+#: KAQuery.cpp:326
+msgid "Directory in path not found"
+msgstr ""
+
+#: KAQuery.cpp:327
+msgid "Symbolic links nested too deep"
+msgstr ""
+
+#: KAQuery.cpp:328
+msgid "Can't read environment"
+msgstr ""
+
+#: KAQuery.cpp:329
+msgid "Can't traverse an external file"
+msgstr ""
+
+#: KAQuery.cpp:330
+msgid "Exceeded max forward depth"
+msgstr ""
+
+#: KAQuery.cpp:331
+msgid "Authentication required"
+msgstr ""
+
+#: KAQuery.cpp:332
+msgid "Not authorized"
+msgstr ""
+
+#: KAQuery.cpp:333
+msgid "Not found"
+msgstr ""
+
+#: KAQuery.cpp:334
+msgid "Bad version number"
+msgstr ""
+
+#: KAQuery.cpp:335
+msgid "Not a directory"
+msgstr ""
+
+#: KAQuery.cpp:336
+msgid "Identical link already exists"
+msgstr ""
+
+#: KAQuery.cpp:338
+msgid "Command not implemented on server"
+msgstr ""
+
+#: KAQuery.cpp:339
+msgid "Bad format for response"
+msgstr ""
+
+#: KAQuery.cpp:340
+msgid "Protocol error"
+msgstr ""
+
+#: KAQuery.cpp:341
+msgid "Unspecified server failure"
+msgstr ""
+
+#: KAQuery.cpp:343
+msgid "Generic Failure"
+msgstr ""
+
+#: KAQuery.cpp:347
+msgid "No warning"
+msgstr ""
+
+#: KAQuery.cpp:348
+msgid "You are using an old version of this program"
+msgstr ""
+
+#: KAQuery.cpp:349
+msgid "From server: "
+msgstr ""
+
+#: KAQuery.cpp:351
+msgid "Unrecognized line in response from server"
+msgstr ""
+
+#: KAQuery.cpp:409
+msgid "Query running"
+msgstr ""
+
+#: KAQuery.cpp:453
+msgid "Query finished"
+msgstr ""
+
+#: KASettings.cpp:59
+#, fuzzy
+msgid "&Host"
+msgstr "Vél"
+
+#: KASettings.cpp:72
+msgid "&Timeout (seconds)"
+msgstr ""
+
+#: KASettings.cpp:83
+msgid "Maximal &retries"
+msgstr ""
+
+#: KASettings.cpp:284
+#, fuzzy
+msgid "&Nice Level"
+msgstr "&Forgangur"
+
+#: KASettings.cpp:291
+msgid "max. &Hits"
+msgstr ""
+
+#: KASettings.cpp:418
+#, fuzzy
+msgid "Exact"
+msgstr "&Nákvæmur"
+
+#: KASettings.cpp:419
+#, fuzzy
+msgid "Substring"
+msgstr "&Hlutstrengur"
+
+#: KASettings.cpp:420
+#, fuzzy
+msgid "Substring case insensitive"
+msgstr "Hlutstrengur óháð há-/&lágstöfum"
+
+#: KASettings.cpp:421
+#, fuzzy
+msgid "Regular expression"
+msgstr "&Regluleg segð"
+
+#: KASettings.cpp:423
+#, fuzzy
+msgid "Exact, then substring case insensitive"
+msgstr "Nákvæmur, svo hlutastrengur óháður há-/lágstöfum"
+
+#: KASettings.cpp:427
+#, fuzzy
+msgid "Normal"
+msgstr "&venjulegur"
+
+#: KASettings.cpp:428
+#, fuzzy
+msgid "Nice"
+msgstr "&Lágur"
+
+#: KASettings.cpp:429
+#, fuzzy
+msgid "Very nice"
+msgstr "Læ&gri"
+
+#: KASettings.cpp:430
+#, fuzzy
+msgid "Even more nice"
+msgstr "&Enn lægri"
+
+#: KASettings.cpp:431
+#, fuzzy
+msgid "Nicest"
+msgstr "Lægs&tur"
+
+#: KASettings.cpp:525
+#, fuzzy
+msgid "KArchie Settings"
+msgstr "&Stillingar"
+
+#: KASettings.cpp:536
+#, fuzzy
+msgid "Archie server settings"
+msgstr "Archi&eþjónn"
+
+#: KASettings.cpp:543
+#, fuzzy
+msgid "Search init"
+msgstr "Leita að"
 
 #: KASettings.cpp:567
 msgid "Reset"
@@ -297,7 +605,3 @@ msgstr ""
 "Engin skrá valin!\n"
 "Vinsamlegast veljið skrá úr útkomu fyrirspurnar\n"
 "eða framkvæmið fyrirspurn."
-
-#: KArchie.cpp:793
-msgid "Success"
-msgstr "Fundið"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1999-01-28 02:19+0100\n"
+"POT-Creation-Date: 1999-01-29 02:02+0100\n"
 "PO-Revision-Date: 1999-01-20 21:45+MET\n"
 "Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
 "Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
@@ -1546,35 +1546,35 @@ msgstr ""
 "Kann die Gebührenregelungen nicht\n"
 "laden \""
 
-#: modem.cpp:114
+#: modem.cpp:113
 msgid "Sorry, can't open modem."
 msgstr "Sorry, kann auf Modem nicht zugreifen."
 
-#: modem.cpp:120
+#: modem.cpp:119
 msgid "Sorry, can't detect state of CD line."
 msgstr "Sorry, kann den Status der Befehlszeile nicht feststellen."
 
-#: modem.cpp:126
+#: modem.cpp:125
 msgid "Sorry, the modem is not ready."
 msgstr "Sorry, das Modem ist nicht bereit."
 
-#: modem.cpp:137 modem.cpp:181
+#: modem.cpp:136 modem.cpp:180
 msgid "Sorry, the modem is busy."
 msgstr "Sorry, das Modem ist besetzt."
 
-#: modem.cpp:187
+#: modem.cpp:186
 msgid "Modem Ready."
 msgstr "Modem bereit."
 
-#: modem.cpp:198
+#: modem.cpp:197
 msgid "Can't restore tty settings: tcsetattr()\n"
 msgstr "Kann tty-Einstellungen nicht wiederherstellen: tcsetattr()\n"
 
-#: modem.cpp:327
+#: modem.cpp:324
 msgid "Sorry, the modem doesn't respond."
 msgstr "Sorry, das Modem antwortet nicht."
 
-#: modem.cpp:428
+#: modem.cpp:425
 msgid "Unknown speed"
 msgstr "Unbekannte Geschwindigkeit"
 
