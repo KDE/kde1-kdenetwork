@@ -168,14 +168,12 @@ msgid "No Carrier"
 msgstr "®iadny nosiè"
 
 #: connect.cpp:376
-#, fuzzy
 msgid "Scanning "
-msgstr "Posielam "
+msgstr "Zis»ujem "
 
 #: connect.cpp:387
-#, fuzzy
 msgid "Saving "
-msgstr "Posielam "
+msgstr "Ukladám "
 
 #: connect.cpp:405
 msgid "Sending "
@@ -262,9 +260,8 @@ msgid "Script timed out!"
 msgstr "Timeout skriptu!"
 
 #: connect.cpp:972
-#, fuzzy
 msgid "Scanning: "
-msgstr "Posielam "
+msgstr "Zis»ujem: "
 
 #: connect.cpp:983
 msgid "Expecting: "
@@ -987,9 +984,8 @@ msgid "Selected:"
 msgstr "Vybraných:"
 
 #: acctselect.cpp:84
-#, fuzzy
 msgid "Volume accounting"
-msgstr "Sprístupni» úètovanie"
+msgstr "Prenosové úètovanie"
 
 #: acctselect.cpp:154 acctselect.cpp:260
 msgid "Available rules"
@@ -1095,6 +1091,11 @@ msgid ""
 "itself.\n"
 "Contact your system administrator."
 msgstr ""
+"kppp zistil voµbu 'lock' v /etc/ppp/options.\n"
+"\n"
+"Táto voµba musí by» odstránená, preto¾e kppp sa stará o uzamykanie "
+"zariadení sám.\n"
+"Kontaktujte vá¹ho systémového administrátora."
 
 #~ msgid "Modem sustains fast initialization."
 #~ msgstr "Modem podporuje rýchlu inicializáciu."

@@ -163,7 +163,7 @@ msgid ""
 "That newsgroup is not in the current active file\n"
 " Krn can't handle this gracefully right now"
 msgstr ""
-"Táto diskusna skupina nie je v súèasnom aktívnom súbore.\n"
+"Táto diskusná skupina nie je v súèasnom aktívnom súbore.\n"
 " Krn túto situáciu zatiaµ nemô¾e elegantne zvládnu»"
 
 #: groupdlg.cpp:348 groupdlg.cpp:551 groupdlg.cpp:887
@@ -379,7 +379,6 @@ msgid "Decode Article"
 msgstr "Dekódova» èlánok"
 
 #: artdlg.cpp:241
-#, fuzzy
 msgid "Mark UnRead"
 msgstr "Oznaèi» ako nepreèítané"
 
@@ -647,9 +646,8 @@ msgid "KRN - Article Searcher"
 msgstr "KRN - Prehµadávaè èlánkov"
 
 #: findArtDlg.cpp:29
-#, fuzzy
 msgid "Find Articles With:"
-msgstr "Nájs» èlánok"
+msgstr "Nájs» èlánky s:"
 
 #: findArtDlg.cpp:34 rulesDlg.cpp:106
 msgid "In Field:"
@@ -673,12 +671,11 @@ msgstr "Na akú dobu si prajete uchováva» èlánky (v dòoch)?"
 
 #: expireDlg.cpp:46
 msgid "Read:"
-msgstr ""
+msgstr "Preèítané:"
 
 #: expireDlg.cpp:47
-#, fuzzy
 msgid "Unread:"
-msgstr "Oznaèi» ako nepreèítané"
+msgstr "Nepreèítané:"
 
 #: expireDlg.cpp:50
 msgid "Article Bodies:"

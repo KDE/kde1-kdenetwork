@@ -42,22 +42,20 @@ msgid "Modify Folder"
 msgstr "Zmeni» prieèinok"
 
 #: kmmainwin.cpp:332
-#, fuzzy, c-format
 msgid ""
 "Are you sure you want to discard the\n"
 "contents of the folder \"%s\" ?"
 msgstr ""
-"Ste si istý, ¾e chcete odstráni» prieèinok\n"
-"\"%s\" a tým zru¹i» jeho obsah?"
+"Ste si istý, ¾e chcete odstráni» obsah prieèinka\n"
+"\"%s\" ?"
 
 #: kmmainwin.cpp:335 kmmainwin.cpp:370
 msgid "Confirmation"
 msgstr "Potvrdenie"
 
 #: kmmainwin.cpp:349
-#, fuzzy
 msgid "Moved all messages into trash"
-msgstr "Odosielanie správy:"
+msgstr "Presunul som v¹etky správy do ko¹a"
 
 #: kmmainwin.cpp:363
 msgid ""
@@ -623,36 +621,33 @@ msgstr "Dátum"
 
 #: kmheaders.cpp:223
 msgid "order of arrival"
-msgstr ""
+msgstr "poradie príchodu"
 
 #: kmheaders.cpp:232
-#, fuzzy
 msgid "subject"
-msgstr "Predmet"
+msgstr "predmet"
 
 #: kmheaders.cpp:233
-#, fuzzy
 msgid "date"
-msgstr "Dátum"
+msgstr "dátum"
 
 #: kmheaders.cpp:234
-#, fuzzy
 msgid "sender"
-msgstr "Odosielateµ"
+msgstr "odosielateµ"
 
 #: kmheaders.cpp:235
 msgid "status"
-msgstr ""
+msgstr "stav"
 
 #: kmheaders.cpp:237
 #, c-format
 msgid "Sorting messages descending by %s"
-msgstr ""
+msgstr "Triedim správy podµa %s"
 
 #: kmheaders.cpp:238
 #, c-format
 msgid "Sorting messages ascending by %s"
-msgstr ""
+msgstr "Triedim správy podµa %s"
 
 #: kmheaders.cpp:328
 msgid "Message(s) saved."
@@ -740,9 +735,8 @@ msgid "Find..."
 msgstr "Nájs»..."
 
 #: kmcomposewin.cpp:461 kmcomposewin.cpp:676
-#, fuzzy
 msgid "Replace..."
-msgstr "Od&poveda»..."
+msgstr "Nahradi»..."
 
 #: kmcomposewin.cpp:468
 msgid "&Urgent"
@@ -757,9 +751,8 @@ msgid "&Confirm read"
 msgstr "Potvr&denie preèítania"
 
 #: kmcomposewin.cpp:475
-#, fuzzy
 msgid "&Charsets..."
-msgstr "&Vytvori»..."
+msgstr "&Znakové sady..."
 
 #: kmcomposewin.cpp:488
 msgid "&All Fields"
@@ -1070,7 +1063,7 @@ msgstr ""
 #: main.cpp:378
 #, c-format
 msgid "Unknown command line option: %s"
-msgstr ""
+msgstr "Neznáma voµba príkazového riadku: %s"
 
 #: kmacctlocal.cpp:91
 #, c-format
@@ -1541,53 +1534,49 @@ msgid "&Abort"
 msgstr "&Preru¹i»"
 
 #: kmnewiostatuswdg.cpp:37
-#, fuzzy
 msgid "Sending messages to "
-msgstr "Odosielanie správy:"
+msgstr "Odosielanie správy pre "
 
 #: kmnewiostatuswdg.cpp:40
-#, fuzzy
 msgid "Retrieving messages from "
-msgstr "odosielanie správy"
+msgstr "S»ahujem správy od "
 
 #: kmnewiostatuswdg.cpp:50
 msgid "Preparing transmission..."
-msgstr ""
+msgstr "Pripravujem prenos..."
 
 #: kmnewiostatuswdg.cpp:56
 msgid "Transmission completed..."
-msgstr ""
+msgstr "Prenos kompletný..."
 
 #: kmnewiostatuswdg.cpp:91
 msgid "Aborting transmission...\n"
-msgstr ""
+msgstr "Ru¹ím prenos...\n"
 
 #: charsetsDlg.cpp:27
 msgid "KRN - Charset Settings"
-msgstr ""
+msgstr "KRN - Nastavenie znakovej sady"
 
 #: charsetsDlg.cpp:29
 msgid "KMail - Charset Settings"
-msgstr ""
+msgstr "KMail - Nastavenie znakovej sady"
 
 #: charsetsDlg.cpp:39
-#, fuzzy
 msgid "Message charset"
-msgstr "Jednoduchá textová správa"
+msgstr "Znaková sada správy"
 
 #: charsetsDlg.cpp:57
-#, fuzzy
 msgid "Composer charset"
-msgstr "Nový Composer"
+msgstr "Znaková sada composera"
 
 #: charsetsDlg.cpp:75
 msgid "Set as &default"
-msgstr ""
+msgstr "Nastav ako ¹tandardné"
 
 #: charsetsDlg.cpp:80
 msgid "&7 bit is ASCII"
-msgstr ""
+msgstr "&7 bit je ASCII"
 
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
-msgstr ""
+msgstr "Zameò neznáme znaky"

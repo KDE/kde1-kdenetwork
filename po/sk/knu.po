@@ -26,9 +26,8 @@ msgid "Host &resolution"
 msgstr "&Rezolúcia hostiteµa"
 
 #: knu.cpp:163 knu.cpp:293
-#, fuzzy
 msgid "&Finger"
-msgstr "&Ping"
+msgstr "&Finger"
 
 #: knu.cpp:174
 msgid ""
@@ -103,10 +102,19 @@ msgid ""
 "Please use Edit->Preferences... menu\n"
 "to configure it again.\n"
 msgstr ""
+"\n"
+"Máte problém vo va¹om\n"
+"%s/%src\n"
+"konfiguraènom súbore.\n"
+"V skupine [%s]\n"
+"nemô¾em nájs» korektnú polo¾ku \"path=\".\n"
+"\n"
+"Prosím pou¾ite menu úpravy->nastavenie\n"
+"na znovunastavenie.\n"
 
 #: CommandDlg.cpp:345
 msgid "Error in pathname"
-msgstr ""
+msgstr "Chyba v ceste"
 
 #: CommandDlg.cpp:478
 msgid "Binary"
@@ -178,19 +186,9 @@ msgstr "Ser&ver:"
 
 #: FingerDlg.cpp:68
 msgid "User:"
-msgstr ""
+msgstr "U¾ívateµ:"
 
 #: FingerDlg.cpp:86
-#, fuzzy
 msgid "Server:"
-msgstr "Ser&ver:"
+msgstr "Server:"
 
-#~ msgid ""
-#~ "You have a problem in your ~/.kde/share/config/knurc configuration file.\n"
-#~ "In the ["
-#~ msgstr ""
-#~ "Máte problém vo va¹om konfiguraènom súbore ~/.kde/share/config/knurc.\n"
-#~ "V skupine ["
-
-#~ msgid "] group, I cannotfind a correct \"path=\" entry."
-#~ msgstr "] nie je mo¾né nájs» korektnú polo¾ku \"path=\"."
