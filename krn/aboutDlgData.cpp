@@ -7,6 +7,8 @@
 #include <qlistbox.h>
 #include <qpixmap.h>
 
+#include <kapp.h>
+
 extern QString pixpath;
 
 aboutDlgData::aboutDlgData
@@ -16,13 +18,13 @@ aboutDlgData::aboutDlgData
 {
     b1 = new QPushButton( parent, "PushButton_1" );
     b1->setGeometry( 10, 260, 380, 30 );
-    b1->setText( "OK" );
+    b1->setText( klocale->translate("OK") );
     b1->setAutoDefault( TRUE );
     
     QLabel* tmpQLabel;
     tmpQLabel = new QLabel( parent, "Label_1" );
     tmpQLabel->setGeometry( 10, 120, 380, 30 );
-    tmpQLabel->setText( "Part of the KDE project." );
+    tmpQLabel->setText( klocale->translate("Part of the KDE project.") );
     tmpQLabel->setBackgroundColor(QColor("white"));
     tmpQLabel->setAlignment( 36 );
     
@@ -44,7 +46,7 @@ aboutDlgData::aboutDlgData
     tmpQListBox->insertItem( "Stefan Taferner <taferner@alpin.or.at>" );
     tmpQListBox->insertItem( "Robert Cope <roberto@bga.com>" );
     tmpQListBox->insertItem( "" );
-    tmpQListBox->insertItem( "And Many thanks to:" );
+    tmpQListBox->insertItem( klocale->translate("And Many thanks to:") );
     tmpQListBox->insertItem( "" );
     tmpQListBox->insertItem( "Doug Sauder <dwsauder@fwb.gulf.net>" );
     tmpQListBox->insertItem( "Stephan Kulow <coolo@kde.org>" );
@@ -56,7 +58,7 @@ aboutDlgData::aboutDlgData
     
     tmpQLabel = new QLabel( parent, "Label_3" );
     tmpQLabel->setGeometry( 10, 160, 380, 30 );
-    tmpQLabel->setText( "Credits & Thanks" );
+    tmpQLabel->setText( klocale->translate("Credits & Thanks") );
     tmpQLabel->setAlignment( 292 );
     tmpQLabel->setBackgroundColor(QColor("white"));
     

@@ -3,6 +3,7 @@
 #define Inherited QDialog
 
 #include <kconfig.h>
+#include <kapp.h>
 
 #include "NNTPConfigDlg.moc"
 
@@ -19,7 +20,7 @@ NNTPConfigDlg::NNTPConfigDlg
     Inherited( parent, name, TRUE ),
     NNTPConfigDlgData( this )
 {
-    setCaption( "KRN-NNTP configuration" );
+    setCaption( klocale->translate("KRN-NNTP configuration") );
     conf->setGroup("NNTP");
     servername->setText(conf->readEntry("NNTPServer"));
     smtpserver->setText(conf->readEntry("SMTPServer"));

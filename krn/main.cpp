@@ -20,7 +20,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
-
+#include <pwd.h>
 
 #include <qapp.h>
 #include <qfile.h>
@@ -142,6 +142,15 @@ void checkConf()
 // This checks that all necessary data exists and/or asks for it
 // Should use Stefan's KIdentity someday
 {
+    char *username = getpwuid(getuid())->pw_name;
+    char hostname[1024];
+    gethostname(hostname,1023);
+    char domainname[1024];
+    getdomainname(domainname,1023);
+    char mailaddr[1024];
+    sprintf (mailaddr,"%s@%s.%s",username,hostname,domainname);
+    char *realname = getpwuid(getuid())->pw_gecos;
+
     Asker ask;
     QString data;
     conf->setGroup("Identity");
@@ -149,9 +158,9 @@ void checkConf()
     data=conf->readEntry("Address");
     if (data.isEmpty())
     {
-        ask.setCaption ("KRN-Missing Configuration info");
-        ask.label->setText("Please enter your email adress");
-        ask.entry->setText("");
+        ask.setCaption (klocale->translate("KRN-Missing Configuration info"));
+        ask.label->setText(klocale->translate("Please enter your email adress"));
+        ask.entry->setText(mailaddr);
         ask.exec();
         data=ask.entry->text();
         conf->writeEntry("Address",data);
@@ -161,9 +170,9 @@ void checkConf()
     data=conf->readEntry("RealName");
     if (data.isEmpty())
     {
-        ask.setCaption ("KRN-Missing Configuration info");
-        ask.label->setText("Please enter your real name");
-        ask.entry->setText("");
+        ask.setCaption (klocale->translate("KRN-Missing Configuration info"));
+        ask.label->setText(klocale->translate("Please enter your real name"));
+        ask.entry->setText(realname);
         ask.exec();
         data=ask.entry->text();
         conf->writeEntry("RealName",data);
@@ -173,8 +182,8 @@ void checkConf()
     data=conf->readEntry("Organization");
     if (data.isEmpty())
     {
-        ask.setCaption ("KRN-Missing Configuration info");
-        ask.label->setText("Please enter your organization's name");
+        ask.setCaption (klocale->translate("KRN-Missing Configuration info"));
+        ask.label->setText(klocale->translate("Please enter your organization's name"));
         ask.entry->setText("");
         ask.exec();
         data=ask.entry->text();
@@ -185,8 +194,8 @@ void checkConf()
     data=conf->readEntry("NNTPServer");
     if (data.isEmpty())
     {
-        ask.setCaption ("KRN-Missing Configuration info");
-        ask.label->setText("Please enter your NNTP server name");
+        ask.setCaption (klocale->translate("KRN-Missing Configuration info"));
+        ask.label->setText(klocale->translate("Please enter your NNTP server name"));
         ask.entry->setText(getenv("NNTPSERVER"));
         ask.exec();
         data=ask.entry->text();

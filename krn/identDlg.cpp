@@ -17,6 +17,7 @@
 //////////////////////////////////////////////////////////////////////////////
 #include "identDlg.h"
 #include <kconfig.h>
+#include <kapp.h>
 
 extern KConfig *conf;
 
@@ -33,7 +34,7 @@ IdentDlg::IdentDlg
 	Inherited( parent, name, TRUE ),
 	identDlgData( this )
 {
-    setCaption( "KRN-Identity Configuration" );
+    setCaption(klocale->translate("KRN-Identity Configuration") );
     conf->setGroup("Identity");
     address->setText(conf->readEntry("Address"));
     realname->setText(conf->readEntry("RealName"));

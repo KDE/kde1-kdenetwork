@@ -18,6 +18,7 @@
 
 #include "askerData.h"
 
+#include <kapp.h>
 
 AskerData::AskerData
 (
@@ -34,7 +35,7 @@ AskerData::AskerData
 
 	b1 = new QPushButton( parent, "PushButton_1" );
 	b1->setGeometry( 130, 130, 100, 30 );
-	b1->setText( "OK" );
+	b1->setText( klocale->translate( "OK" ));
 	b1->setAutoDefault( TRUE );
 
 	parent->resize( 350, 170 );

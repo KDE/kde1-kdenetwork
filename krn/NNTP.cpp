@@ -23,6 +23,7 @@
 
 #include <kmsgbox.h>
 #include <kconfig.h>
+#include <kapp.h>
 
 #include <qlist.h>
 #include <qfile.h>
@@ -54,7 +55,7 @@ void NNTPObserver::Notify()
     if (client->reportBytes && (client->byteCounter - oldbytes)>1024 )
     {
         char *buffer=new char[100];
-        sprintf (buffer,"Received %d bytes",client->byteCounter);
+        sprintf (buffer,klocale->translate("Received %d bytes"),client->byteCounter);
         emit client->newStatus(buffer);
         delete[] buffer;
         qApp->processEvents();
@@ -498,7 +499,7 @@ bool NNTP::isCached (char *id)
 QString *NNTP::article(char *id)
 {
     QString p=cachepath;
-    QString *data=new QString("\n\nError reading Article!");
+    QString *data=new QString(klocale->translate("\n\nError reading Article!"));
     p=p+id;
     QFile f(p.data());
     if (isCached (id))//it exists so it's cached
@@ -532,7 +533,7 @@ QString *NNTP::article(char *id)
     }
     commandCounter++;
     char *buffer=new char[100];
-    sprintf (buffer,"received %d article(s)",commandCounter);
+    sprintf (buffer,klocale->translate("received %d article(s)"),commandCounter);
     emit newStatus(buffer);
     delete buffer;
     return data;

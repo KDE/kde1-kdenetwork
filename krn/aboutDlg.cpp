@@ -1,4 +1,5 @@
 #include "aboutDlg.h"
+#include <kapp.h>
 
 #define Inherited QDialog
 
@@ -14,7 +15,7 @@ aboutDlg::aboutDlg
     aboutDlgData( this )
 {
     setBackgroundColor(QColor("white"));
-    setCaption( "About KRN" );
+    setCaption( klocale->translate("About KRN") );
     connect(b1,SIGNAL(clicked()),SLOT(accept()));
 }
 

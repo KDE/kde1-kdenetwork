@@ -2,6 +2,7 @@
 
 #define Inherited QDialog
 
+#include <kapp.h>
 #include <kconfig.h>
 #include <qfont.h>
 #include <qstrlist.h>
@@ -25,7 +26,7 @@ fontsDlg::fontsDlg
     Inherited( parent, name, TRUE ),
     fontsDlgData( this )
 {
-    setCaption( "Message Display Fonts" );
+    setCaption( klocale->translate("Message Display Fonts") );
     connect (b1,SIGNAL(clicked()),this,SLOT(accept()));
     connect (b1,SIGNAL(clicked()),this,SLOT(save()));
     connect (b2,SIGNAL(clicked()),this,SLOT(reject()));

@@ -1,29 +1,25 @@
 /* XPM */
-static char *folder[] = {
-/* width height num_colors chars_per_pixel */
-"    16    16        5            1",
-/* colors */
-". c #f8fcf8",
-"# c #808080",
-"a c #c0c0c0",
-"b c #b07c48",
-"c c #000000",
-/* pixels */
-"................",
-"........#####...",
-".......#ababa#..",
-"##############..",
-"#............#c.",
-"#.bababababab#c.",
-"#.abababababa#c.",
-"#.bababababab#c.",
-"#.abababababa#c.",
-"#.bababababab#c.",
-"#.abababababa#c.",
-"#.bababababab#c.",
-"##############c.",
-".cccccccccccccc.",
-"................",
-"................"
-};
-SIMPLE  =                    T                                                  BITPIX  =                    8                                                  NAXIS   =                    2                                                  NAXIS1  =                   16                                                  NAXIS2  =                   16                                                  HISTORY Written by XV 3.10                                                      END                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             תתתתתתתתתתתתתתתתתתתתתתתתתתתתתתתתת
+static char * folder_t_xpm[] = {
+"16 16 6 1",
+" 	c None",
+".	c #808080",
+"X	c #c0c0c0",
+"o	c #ffff00",
+"O	c black",
+"#	c white",
+"                ",
+"  .....         ",
+" .XoXoX.        ",
+".XoXoXoX......  ",
+".############.O ",
+".#oXoXoXoXoXo.O ",
+".#XoXoXoXoXoX.O ",
+".#oXoXoXoXoXo.O ",
+".#XoXoXoXoXoX.O ",
+".#oXoXoXoXoXo.O ",
+".#XoXoXoXoXoX.O ",
+".#oXoXoXoXoXo.O ",
+"..............O ",
+" OOOOOOOOOOOOOO ",
+"                ",
+"                "};

@@ -2,6 +2,7 @@
 
 #include "ktoolbar.h"
 
+#include <kapp.h>
 #include "kdecode.h"
 
 #include "decoderDlg.moc"
@@ -16,14 +17,14 @@ extern KDecode *decoder;
 
 decoderDlg::decoderDlg (const char* name ) :Inherited( 0,name,true )
 {
-    setCaption("KRN - Decoder");
+    setCaption(klocale->translate( "KRN - Decoder"));
     
     list = new KTabListBox(this,"",4);
 //    list->setNumCols(4);
-    list->setColumn(0,"ID",40);
+    list->setColumn(0,klocale->translate("ID"),40);
     list->setColumn(1,"",20,KTabListBox::PixmapColumn);
-    list->setColumn(2,"Size",100);
-    list->setColumn(3,"Name",200);
+    list->setColumn(2,klocale->translate("Size"),100);
+    list->setColumn(3,klocale->translate("Name"),200);
 
     list->dict().insert("G",new QPixmap(pixpath+"green-bullet.xpm"));//GOOD
     list->dict().insert("B",new QPixmap(pixpath+"red-bullet.xpm"));  //BAD

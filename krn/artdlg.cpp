@@ -89,30 +89,30 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     server = _server;
     
     taggedArticle=new QPopupMenu;
-    taggedArticle->insertItem("Save",SAVE_ARTICLE);
+    taggedArticle->insertItem(klocale->translate("Save"),SAVE_ARTICLE);
     taggedArticle->insertSeparator();
-    taggedArticle->insertItem("Decode",DECODE_ARTICLE);
-    taggedArticle->insertItem("Untag",TAG_ARTICLE);
+    taggedArticle->insertItem(klocale->translate("Decode"),DECODE_ARTICLE);
+    taggedArticle->insertItem(klocale->translate("Untag"),TAG_ARTICLE);
     connect (taggedArticle,SIGNAL(activated(int)),SLOT(taggedActions(int)));
 
 
     article=new QPopupMenu;
     article->setCheckable(true);
-    article->insertItem("Save",SAVE_ARTICLE);
+    article->insertItem(klocale->translate("Save"),SAVE_ARTICLE);
     article->insertSeparator();
-    article->insertItem("Print",PRINT_ARTICLE);
-    article->insertItem("Post New Article",POST);
-    article->insertItem("Reply by Mail",REP_MAIL);
-    article->insertItem("Post Followup",FOLLOWUP);
-    article->insertItem("Post & Reply",POSTANDMAIL);
-    article->insertItem("Forward",FORWARD);
+    article->insertItem(klocale->translate("Print"),PRINT_ARTICLE);
+    article->insertItem(klocale->translate("Post New Article"),POST);
+    article->insertItem(klocale->translate("Reply by Mail"),REP_MAIL);
+    article->insertItem(klocale->translate("Post Followup"),FOLLOWUP);
+    article->insertItem(klocale->translate("Post & Reply"),POSTANDMAIL);
+    article->insertItem(klocale->translate("Forward"),FORWARD);
     article->insertSeparator();
-    article->insertItem("Decode",DECODE_ONE_ARTICLE);
-    article->insertItem("(Un)Tag",TAG_ARTICLE);
+    article->insertItem(klocale->translate("Decode"),DECODE_ONE_ARTICLE);
+    article->insertItem(klocale->translate("(Un)Tag"),TAG_ARTICLE);
     article->insertSeparator();
-    article->insertItem("Tagged",taggedArticle);
+    article->insertItem(klocale->translate("Tagged"),taggedArticle);
     article->insertSeparator(); // robert
-    article->insertItem("Don't expire", TOGGLE_EXPIRE);  // robert's cache stuff
+    article->insertItem(klocale->translate("Don't expire"), TOGGLE_EXPIRE);  // robert's cache stuff
     article->setItemChecked(TOGGLE_EXPIRE, false);
     connect (article,SIGNAL(activated(int)),SLOT(actions(int)));
 
@@ -120,17 +120,17 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
 
     options=new QPopupMenu;
     options->setCheckable(true);
-    options->insertItem("Show Only Unread Messages", NO_READ);
+    options->insertItem(klocale->translate("Show Only Unread Messages"), NO_READ);
     options->setItemChecked(NO_READ,unread);
-    options->insertItem("Show Locked Messages", NO_LOCKED);
+    options->insertItem(klocale->translate("Show Locked Messages"), NO_LOCKED);
     options->setItemChecked(NO_LOCKED,showlocked);
-    options->insertItem("Appearance",CONFIG_FONTS);
+    options->insertItem(klocale->translate("Appearance"),CONFIG_FONTS);
     connect (options,SIGNAL(activated(int)),SLOT(actions(int)));
     
-    menu = new KMenuBar (this, "menu");
-    menu->insertItem ("&Article", article);
-    menu->insertItem ("&Tagged", taggedArticle);
-    menu->insertItem ("&Options", options);
+    menu = new KMenuBar (this, klocale->translate("menu"));
+    menu->insertItem (klocale->translate("&Article"), article);
+    menu->insertItem (klocale->translate("&Tagged"), taggedArticle);
+    menu->insertItem (klocale->translate("&Options"), options);
     setMenu (menu);
     
     
@@ -140,52 +140,52 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     QObject::connect (tool, SIGNAL (clicked (int)), this, SLOT (actions (int)));
     
     pixmap=kapp->getIconLoader()->loadIcon("left.xpm");
-    tool->insertButton (pixmap, PREV, true, "Previous Message");
+    tool->insertButton (pixmap, PREV, true, klocale->translate("Previous Message"));
     
     pixmap=kapp->getIconLoader()->loadIcon("right.xpm");
-    tool->insertButton (pixmap, NEXT, true, "Next Message");
+    tool->insertButton (pixmap, NEXT, true, klocale->translate("Next Message"));
     
     tool->insertSeparator ();
     
     pixmap=kapp->getIconLoader()->loadIcon("save.xpm");
-    tool->insertButton(pixmap,SAVE_ARTICLE,true,"Save Article");
+    tool->insertButton(pixmap,SAVE_ARTICLE,true,klocale->translate("Save Article"));
     
     pixmap=kapp->getIconLoader()->loadIcon("fileprint.xpm");
-    tool->insertButton(pixmap,PRINT_ARTICLE,true,"Print Article");
+    tool->insertButton(pixmap,PRINT_ARTICLE,true,klocale->translate("Print Article"));
     tool->insertSeparator ();
     
     pixmap=kapp->getIconLoader()->loadIcon("filenew.xpm");
-    tool->insertButton (pixmap, POST, true, "Post New Article");
+    tool->insertButton (pixmap, POST, true, klocale->translate("Post New Article"));
 
     pixmap=kapp->getIconLoader()->loadIcon("filemail.xpm");
-    tool->insertButton (pixmap, REP_MAIL, true, "Reply by Mail");
+    tool->insertButton (pixmap, REP_MAIL, true, klocale->translate("Reply by Mail"));
 
     pixmap=kapp->getIconLoader()->loadIcon("followup.xpm");
-    tool->insertButton (pixmap, FOLLOWUP, true, "Post a Followup");
+    tool->insertButton (pixmap, FOLLOWUP, true, klocale->translate("Post a Followup"));
 
     pixmap=kapp->getIconLoader()->loadIcon("mailpost.xpm");
-    tool->insertButton (pixmap, POSTANDMAIL, true, "Post & Mail");
+    tool->insertButton (pixmap, POSTANDMAIL, true, klocale->translate("Post & Mail"));
 
     pixmap=kapp->getIconLoader()->loadIcon("fileforward.xpm");
-    tool->insertButton (pixmap, FORWARD, true, "Forward");
+    tool->insertButton (pixmap, FORWARD, true, klocale->translate("Forward"));
 
     tool->insertSeparator ();
     
 
     pixmap=kapp->getIconLoader()->loadIcon("previous.xpm");
-    tool->insertButton (pixmap, ARTLIST, true, "Get Article List");
+    tool->insertButton (pixmap, ARTLIST, true, klocale->translate("Get Article List"));
     
     pixmap=kapp->getIconLoader()->loadIcon("tagged.xpm");
-    tool->insertButton (pixmap, TAG_ARTICLE, true, "Tag Article");
+    tool->insertButton (pixmap, TAG_ARTICLE, true, klocale->translate("Tag Article"));
     
     pixmap=kapp->getIconLoader()->loadIcon("locked.xpm");
-    tool->insertButton (pixmap, TOGGLE_EXPIRE, true, "Lock (keep in cache)");
+    tool->insertButton (pixmap, TOGGLE_EXPIRE, true, klocale->translate("Lock (keep in cache)"));
 
     pixmap=kapp->getIconLoader()->loadIcon("deco.xpm");
-    tool->insertButton (pixmap, DECODE_ONE_ARTICLE, true, "Decode Article");
+    tool->insertButton (pixmap, DECODE_ONE_ARTICLE, true, klocale->translate("Decode Article"));
 
     pixmap=kapp->getIconLoader()->loadIcon("catch.xpm");
-    tool->insertButton (pixmap, CATCHUP, true, "Catchup");
+    tool->insertButton (pixmap, CATCHUP, true, klocale->translate("Catchup"));
     
     addToolBar (tool);
     tool->setBarPos( KToolBar::Top );
@@ -204,11 +204,11 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     list->clearTableFlags(Tbl_autoHScrollBar);
     list->setTableFlags(Tbl_autoVScrollBar);
     list->setSeparator('\n');
-//    list->setNumCols(4);
-    list->setColumn(0, "Sender", 150);
-    list->setColumn(1, "Date", 75);
-    list->setColumn(2, "Lines", 50);
-    list->setColumn(3, "Subject", 50,KTabListBox::MixedColumn);
+
+    list->setColumn(0, klocale->translate("Sender"), 150);
+    list->setColumn(1, klocale->translate("Date"), 75);
+    list->setColumn(2, klocale->translate("Lines"), 50);
+    list->setColumn(3, klocale->translate("Subject"), 50,KTabListBox::MixedColumn);
     
     list->dict().insert("N",new QPixmap(kapp->getIconLoader()->loadIcon("green-bullet.xpm")));  //Unread message
     list->dict().insert("R",new QPixmap(kapp->getIconLoader()->loadIcon("red-bullet.xpm")));    //Read message
@@ -324,7 +324,7 @@ void Artdlg::fillTree ()
     }
 
     debug ("count1-->%d",artList.count());
-    statusBar()->changeItem("Threading...",1);
+    statusBar()->changeItem(klocale->translate("Threading..."),1);
     qApp->processEvents ();
     artList.thread(true);
     debug ("count2-->%d",artList.count());
@@ -332,7 +332,7 @@ void Artdlg::fillTree ()
     //had to split this in two loops because the order of articles is not
     //the same in both article lists
     
-    statusBar()->changeItem("Showing Article List",1);
+    statusBar()->changeItem(klocale->translate("Showing Article List"),1);
     qApp->processEvents ();
     for (iter=artList.first();iter!=0;iter=artList.next())
     {
@@ -660,7 +660,7 @@ bool Artdlg::loadArt (QString id)
         art=artSpool.find(id.data());
         if (art)
             art->setAvailable(false);
-        s=new QString("\nError getting article.\nServer said:\n");
+        s=new QString(klocale->translate("\nError getting article.\nServer said:\n"));
         s->append(server->lastStatusResponse());
         warning (s->data());
         messwin->loadMessage(*s);
@@ -719,7 +719,7 @@ void Artdlg::saveArt (QString id)
         art=artSpool.find(id.data());
         if (art)
             art->setAvailable(false);
-        s=new QString("\nError getting article.\nServer said:\n");
+        s=new QString(klocale->translate("\nError getting article.\nServer said:\n"));
         s->append(server->lastStatusResponse());
         warning (s->data());
         messwin->loadMessage(*s);
@@ -812,7 +812,7 @@ void Artdlg::getSubjects()
     group->getSubjects(server);
     
     qApp->setOverrideCursor(waitCursor);
-    statusBar ()->changeItem ("Getting Article List", 1);
+    statusBar ()->changeItem (klocale->translate("Getting Article List"), 1);
     qApp->processEvents ();
 
     group->getSubjects(server);

@@ -12,6 +12,7 @@
 #include <uudeview.h>
 #include <mimelib/mimepp.h>
 #include "ktempfile.h"
+#include <kapp.h>
 
 #include "kdecode.moc"
 
@@ -22,7 +23,7 @@ void MsgCallBack(void *,char *msg, int )
 
 KDecode::KDecode()
 {
-    dialog=new decoderDlg ("KRN-Decoder");
+    dialog=new decoderDlg (klocale->translate("KRN-Decoder"));
 
     connect (dialog->list,SIGNAL(selected(int,int)),this,SLOT(decode(int,int)));
 }
@@ -194,7 +195,7 @@ DwString* KDecode::decodeString(const char* data, QString type)
         else
         {
 
-            warning("KDecode::decodeString(): Unsupported encoding type: %s.",
+            warning(klocale->translate("Unsupported encoding type: %s."),
                     type.data() );
             *odata=idata;
         }

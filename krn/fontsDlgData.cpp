@@ -1,6 +1,7 @@
 
 #include "fontsDlgData.h"
 
+#include <kapp.h>
 
 #include <qlabel.h>
 fontsDlgData::fontsDlgData
@@ -10,32 +11,32 @@ fontsDlgData::fontsDlgData
 {
 	b1 = new QPushButton( parent, "PushButton_1" );
 	b1->setGeometry( 10, 320, 100, 30 );
-	b1->setText( "OK" );
+	b1->setText( klocale->translate("OK" ));
 
 	b2 = new QPushButton( parent, "PushButton_2" );
 	b2->setGeometry( 330, 320, 100, 30 );
-	b2->setText( "Cancel" );
+	b2->setText( klocale->translate("Cancel" ));
 
 	fontSize = new QComboBox( FALSE, parent, "ComboBox_1" );
 	fontSize->setGeometry( 120, 20, 100, 30 );
 	fontSize->setSizeLimit( 10 );
-	fontSize->insertItem( "Small" );
-	fontSize->insertItem( "Normal" );
-	fontSize->insertItem( "Large" );
-	fontSize->insertItem( "Huge" );
+	fontSize->insertItem(klocale->translate( "Small") );
+	fontSize->insertItem(klocale->translate( "Normal" ));
+	fontSize->insertItem(klocale->translate( "Large" ));
+	fontSize->insertItem(klocale->translate( "Huge" ));
 
 	QLabel* tmpQLabel;
 	tmpQLabel = new QLabel( parent, "Label_1" );
 	tmpQLabel->setGeometry( 10, 20, 100, 30 );
-	tmpQLabel->setText( "Font Size:" );
+	tmpQLabel->setText( klocale->translate("Font Size:") );
 
 	samp1 = new QLineEdit( parent, "LineEdit_1" );
 	samp1->setGeometry( 330, 80, 100, 30 );
-	samp1->setText( "test" );
+	samp1->setText( klocale->translate("test") );
 
 	samp2 = new QLineEdit( parent, "LineEdit_2" );
 	samp2->setGeometry( 330, 120, 100, 30 );
-	samp2->setText( "test" );
+	samp2->setText( klocale->translate("test") );
 
 	stdFontName = new QComboBox( FALSE, parent, "ComboBox_2" );
 	stdFontName->setGeometry( 120, 80, 200, 30 );
@@ -47,11 +48,11 @@ fontsDlgData::fontsDlgData
 
 	tmpQLabel = new QLabel( parent, "Label_2" );
 	tmpQLabel->setGeometry( 10, 80, 100, 30 );
-	tmpQLabel->setText( "Standard Font" );
+	tmpQLabel->setText( klocale->translate("Standard Font") );
 
 	tmpQLabel = new QLabel( parent, "Label_3" );
 	tmpQLabel->setGeometry( 10, 120, 100, 30 );
-	tmpQLabel->setText( "Fixed Font" );
+	tmpQLabel->setText( klocale->translate("Fixed Font") );
 
 	bgColor = new KColorButton( parent, "PushButton_3" );
 	bgColor->setGeometry( 220, 180, 90, 30 );
@@ -63,19 +64,19 @@ fontsDlgData::fontsDlgData
 
 	tmpQLabel = new QLabel( parent, "Label_4" );
 	tmpQLabel->setGeometry( 110, 180, 110, 30 );
-	tmpQLabel->setText( "Background Color" );
+	tmpQLabel->setText( klocale->translate("Background Color") );
 
 	tmpQLabel = new QLabel( parent, "Label_5" );
 	tmpQLabel->setGeometry( 110, 210, 110, 30 );
-	tmpQLabel->setText( "Foreground Color" );
+	tmpQLabel->setText( klocale->translate("Foreground Color") );
 
 	tmpQLabel = new QLabel( parent, "Label_6" );
 	tmpQLabel->setGeometry( 110, 240, 110, 30 );
-	tmpQLabel->setText( "Link Color" );
+	tmpQLabel->setText( klocale->translate("Link Color") );
 
 	tmpQLabel = new QLabel( parent, "Label_7" );
 	tmpQLabel->setGeometry( 110, 270, 110, 30 );
-	tmpQLabel->setText( "Followed Color" );
+	tmpQLabel->setText( klocale->translate("Followed Color") );
 
 	linkColor = new KColorButton( parent, "PushButton_5" );
 	linkColor->setGeometry( 220, 240, 90, 30 );

@@ -105,58 +105,58 @@ Groupdlg::Groupdlg
     subscr.setAutoDelete(false);
 
     QPopupMenu *file = new QPopupMenu;
-    file->insertItem("Connect to Server",CONNECT);
-    file->insertItem("Disconnect From Server",DISCONNECT);
-    file->insertItem("Get Active File",GET_ACTIVE);
+    file->insertItem(klocale->translate("Connect to Server"),CONNECT);
+    file->insertItem(klocale->translate("Disconnect From Server"),DISCONNECT);
+    file->insertItem(klocale->translate("Get Active File"),GET_ACTIVE);
     file->insertSeparator();
-    file->insertItem("Exit",EXIT);
+    file->insertItem(klocale->translate("Exit"),EXIT);
     connect (file,SIGNAL(activated(int)),SLOT(currentActions(int)));
 
-    setCaption ("KRN - Group List");
+    setCaption (klocale->translate("KRN - Group List"));
 
     QPopupMenu *subscribed = new QPopupMenu;
-    subscribed->insertItem("Get Subjects",GET_SUBJECTS);
-    subscribed->insertItem("Get Articles",GET_ARTICLES);
-    subscribed->insertItem("Catchup",CATCHUP);
+    subscribed->insertItem(klocale->translate("Get Subjects"),GET_SUBJECTS);
+    subscribed->insertItem(klocale->translate("Get Articles"),GET_ARTICLES);
+    subscribed->insertItem(klocale->translate("Catchup"),CATCHUP);
     connect (subscribed,SIGNAL(activated(int)),SLOT(subscrActions(int)));
 
     QPopupMenu *tagged = new QPopupMenu;
-    tagged->insertItem("Get Subjects",GET_SUBJECTS);
-    tagged->insertItem("Get Articles",GET_ARTICLES);
-    tagged->insertItem("(un)Subscribe",SUBSCRIBE);
-    tagged->insertItem("Untag",TAGGROUP);
-    tagged->insertItem("Catchup",CATCHUP);
+    tagged->insertItem(klocale->translate("Get Subjects"),GET_SUBJECTS);
+    tagged->insertItem(klocale->translate("Get Articles"),GET_ARTICLES);
+    tagged->insertItem(klocale->translate("(un)Subscribe"),SUBSCRIBE);
+    tagged->insertItem(klocale->translate("Untag"),TAGGROUP);
+    tagged->insertItem(klocale->translate("Catchup"),CATCHUP);
     connect (tagged,SIGNAL(activated(int)),SLOT(taggedActions(int)));
 
     QPopupMenu *newsgroup = new QPopupMenu;
-    newsgroup->insertItem("Open",OPENGROUP);
-    newsgroup->insertItem("(un)Subscribe",SUBSCRIBE);
-    newsgroup->insertItem("(Un)Tag",TAGGROUP);
-    newsgroup->insertItem("Catchup",CATCHUP);
+    newsgroup->insertItem(klocale->translate("Open"),OPENGROUP);
+    newsgroup->insertItem(klocale->translate("(un)Subscribe"),SUBSCRIBE);
+    newsgroup->insertItem(klocale->translate("(Un)Tag"),TAGGROUP);
+    newsgroup->insertItem(klocale->translate("Catchup"),CATCHUP);
     newsgroup->insertSeparator();
-    newsgroup->insertItem ("&Subscribed", subscribed);
-    newsgroup->insertItem ("&Tagged", tagged);
+    newsgroup->insertItem (klocale->translate("&Subscribed"), subscribed);
+    newsgroup->insertItem (klocale->translate("&Tagged"), tagged);
     
     connect (newsgroup,SIGNAL(activated(int)),SLOT(currentActions(int)));
     
     QPopupMenu *options = new QPopupMenu;
-    options->insertItem("Identity",CHANGE_IDENTITY);
-    options->insertItem("NNTP Options",CONFIG_NNTP);
+    options->insertItem(klocale->translate("Identity"),CHANGE_IDENTITY);
+    options->insertItem(klocale->translate("NNTP Options"),CONFIG_NNTP);
     connect (options,SIGNAL(activated(int)),SLOT(currentActions(int)));
 
     QPopupMenu *help = new QPopupMenu;
-    help->insertItem("Contents",HELP_CONTENTS);
+    help->insertItem(klocale->translate("Contents"),HELP_CONTENTS);
     help->insertSeparator();
-    help->insertItem("About",HELP_ABOUT);
+    help->insertItem(klocale->translate("About"),HELP_ABOUT);
     connect (help,SIGNAL(activated(int)),SLOT(currentActions(int)));
 
     KMenuBar *menu = new KMenuBar (this, "menu");
     
-    menu->insertItem ("&File", file);
-    menu->insertItem ("&Newsgroup", newsgroup);
-    menu->insertItem ("&Options", options);
+    menu->insertItem (klocale->translate("&File"), file);
+    menu->insertItem (klocale->translate("&Newsgroup"), newsgroup);
+    menu->insertItem (klocale->translate("&Options"), options);
     menu->insertSeparator();
-    menu->insertItem ("&Help", help);
+    menu->insertItem (klocale->translate("&Help"), help);
     
     setMenu (menu);
     
@@ -166,14 +166,14 @@ Groupdlg::Groupdlg
     QObject::connect (tool, SIGNAL (clicked (int)), this, SLOT (currentActions (int)));
     
     pixmap=kapp->getIconLoader()->loadIcon("connected.xpm");
-    tool->insertButton (pixmap, CONNECT, true, "Connect to server");
+    tool->insertButton (pixmap, CONNECT, true, klocale->translate("Connect to server"));
 
     pixmap=kapp->getIconLoader()->loadIcon("disconnected.xpm");
-    tool->insertButton (pixmap, DISCONNECT, false, "Disconnect from server");
+    tool->insertButton (pixmap, DISCONNECT, false, klocale->translate("Disconnect from server"));
     tool->insertSeparator ();
     
     pixmap=kapp->getIconLoader()->loadIcon("previous.xpm");
-    tool->insertButton (pixmap, GET_ACTIVE, true, "Get list of active groups");
+    tool->insertButton (pixmap, GET_ACTIVE, true, klocale->translate("Get list of active groups"));
     tool->insertSeparator ();
     
     tool->insertButton (kapp->getIconLoader()->loadIcon("subscr.xpm"), SUBSCRIBE, true, "(Un)Subscribe");
@@ -181,7 +181,7 @@ Groupdlg::Groupdlg
     tool->insertSeparator ();
     
     pixmap=kapp->getIconLoader()->loadIcon("reload.xpm");
-    tool->insertButton (pixmap, CHECK_UNREAD, true, "Check for Unread Articles");
+    tool->insertButton (pixmap, CHECK_UNREAD, true, klocale->translate("Check for Unread Articles"));
     
     
     list = new KTreeList (this, "");
@@ -193,7 +193,7 @@ Groupdlg::Groupdlg
     
     
     KStatusBar *status = new KStatusBar (this, "status");
-    status->insertItem ("Received 00000000 bytes", 1);
+    status->insertItem (klocale->translate("Received 00000000 bytes"), 1);
     status->insertItem ("", 2);
     status->show ();
     setStatusBar (status);
@@ -257,8 +257,9 @@ void Groupdlg::openGroup (QString name)
     }
     else
     {
-        KMsgBox:: message (0, "Sorry!",
-        "That newsgroup is not in the current active file\n Krn can't handle this gracefully right now", KMsgBox::INFORMATION);
+        KMsgBox:: message (0, klocale->translate("Sorry!"),
+                           klocale->translate("That newsgroup is not in the current active file\n Krn can't handle this gracefully right now"),
+                           KMsgBox::INFORMATION);
     }
 }
 
@@ -405,29 +406,29 @@ void Groupdlg::offline()
     toolBar()->setItemEnabled (DISCONNECT,false);
     server->disconnect();
     toolBar()->setItemEnabled (CONNECT,true);
-    statusBar ()->changeItem ("Disconnected", 2);
+    statusBar ()->changeItem (klocale->translate("Disconnected"), 2);
     qApp->processEvents ();
 }
 
 void Groupdlg::online()
 {
     toolBar()->setItemEnabled (CONNECT,false);
-    statusBar ()->changeItem ("Connecting to server", 2);
+    statusBar ()->changeItem (klocale->translate("Connecting to server"), 2);
     qApp->processEvents ();
     if (server->connect ())
     {
         msgSender=new KMSender(server);
         if (server->isReadOnly ())
-            statusBar ()->changeItem ("Connected to server - Posting not allowed", 2);
+            statusBar ()->changeItem (klocale->translate("Connected to server - Posting not allowed"), 2);
         else
-            statusBar ()->changeItem ("Connected to server - Posting allowed", 2);
+            statusBar ()->changeItem (klocale->translate("Connected to server - Posting allowed"), 2);
     }
     else
     {
         qApp->setOverrideCursor (arrowCursor);
-        KMsgBox:: message (0, "Error", "Can't connect to server", KMsgBox::INFORMATION);
+        KMsgBox:: message (0, klocale->translate("Error"),klocale->translate( "Can't connect to server"), KMsgBox::INFORMATION);
         qApp->restoreOverrideCursor ();
-        statusBar ()->changeItem ("Connection to server failed", 2);
+        statusBar ()->changeItem (klocale->translate("Connection to server failed"), 2);
         qApp->processEvents ();
         toolBar()->setItemEnabled (CONNECT,true);
     }
@@ -437,10 +438,10 @@ void Groupdlg::online()
         if (299<server->authinfo(conf->readEntry("Username"),conf->readEntry("Password")))
         {
             qApp->setOverrideCursor (arrowCursor);
-            KMsgBox:: message (0, "Error", "Authentication Failed", KMsgBox::INFORMATION);
+            KMsgBox:: message (0, klocale->translate("Error"), klocale->translate("Authentication Failed"), KMsgBox::INFORMATION);
             qApp->restoreOverrideCursor ();
             actions(DISCONNECT);
-            statusBar ()->changeItem ("Connection to server failed: Authentication problem", 2);
+            statusBar ()->changeItem (klocale->translate("Connection to server failed: Authentication problem"), 2);
             qApp->processEvents ();
             toolBar()->setItemEnabled (CONNECT,true);
         }
@@ -475,7 +476,8 @@ bool Groupdlg::needsConnect()
     }
     else
     {
-        if (1==KMsgBox::yesNo(0,"Krn-Question","The operation you requested needs a connection to the News server\nShould I attempt one?"))
+        if (1==KMsgBox::yesNo(0,klocale->translate("Krn-Question"),
+                              klocale->translate("The operation you requested needs a connection to the News server\nShould I attempt one?")))
         {
             actions(CONNECT);
             success=true;
@@ -560,7 +562,7 @@ bool Groupdlg::actions (int action,NewsGroup *group)
     case EXIT:
         {
             qApp->setOverrideCursor (arrowCursor);
-            int i = KMsgBox::yesNo (0, "Question", "Do you REALLY wanna exit KRN?");
+            int i = KMsgBox::yesNo (0, klocale->translate("Question"),klocale->translate( "Do you REALLY wanna exit KRN?"));
             if (i==1)
                 qApp->exit();
             qApp->restoreOverrideCursor ();
@@ -710,7 +712,8 @@ bool Groupdlg::loadActive()
         
     {
         qApp->setOverrideCursor (arrowCursor);
-        int i = KMsgBox::yesNo (0, "Error", "You don't have an active groups list.\n get it from server?");
+        int i = KMsgBox::yesNo (0, klocale->translate("Error"),
+                                klocale->translate("You don't have an active groups list.\n get it from server?"));
         qApp->restoreOverrideCursor ();
         if (1 == i)
         {
@@ -724,7 +727,7 @@ bool Groupdlg::loadActive()
     {
         f.close ();
         debug ("loading %s\n",ac.data());
-        statusBar ()->changeItem ("Listing active newsgroups", 2);
+        statusBar ()->changeItem (klocale->translate("Listing active newsgroups"), 2);
         qApp->processEvents ();
         server->groupList (&groups,false);
     };
@@ -794,7 +797,7 @@ void Groupdlg::getArticles(NewsGroup *group)
     if (needsConnect())
     {
         QString s;
-        s="Getting messages in ";
+        s=klocale->translate("Getting messages in ");
         s+=group->data();
         statusBar ()->changeItem (s.data(), 2);
         qApp->processEvents();
@@ -808,7 +811,7 @@ void Groupdlg::getSubjects(NewsGroup *group)
     if (needsConnect())
     {
         QString s;
-        s="Getting list of messages in ";
+        s=klocale->translate("Getting list of messages in ");
         s+=group->data();
         statusBar ()->changeItem (s.data(), 2);
         qApp->processEvents();
