@@ -204,6 +204,7 @@ int main( int argc, char **argv )
     gdbm_sync(artdb);
     gdbm_close(artdb);
     unlink((krnpath+"krn_lock").data());
+    exit(0);
 }
 
 void checkConf()
