@@ -44,9 +44,8 @@ msgid "Received %.2f Kb"
 msgstr "Vastaanotettu %.2f Kb"
 
 #: NNTP.cpp:552
-#, fuzzy
 msgid "Getting Article"
-msgstr "Haen artikkelilistaa"
+msgstr "Haen artikkelia"
 
 #: NNTP.cpp:638
 msgid "Article Received"
@@ -346,7 +345,7 @@ msgstr "Hae viestilista"
 
 #: artdlg.cpp:217
 msgid "Refresh Display"
-msgstr ""
+msgstr "Päivitä näyttö"
 
 #: artdlg.cpp:240
 msgid "Save Article"
@@ -767,18 +766,3 @@ msgstr "Järjestä:"
 msgid "Use Threading"
 msgstr "Käytä threadeja"
 
-#~ msgid "Sorry!"
-#~ msgstr "Anteeksi!"
-
-#~ msgid ""
-#~ "That newsgroup is not in the current active file\n"
-#~ " Krn can't handle this gracefully right now"
-#~ msgstr ""
-#~ "Uutisryhmä ei ole aktiivisten tiedostossa\n"
-#~ " Krn ei osaa täsä tällähetkellä"
-
-#~ msgid "Date"
-#~ msgstr "Päivä"
-
-#~ msgid "Name"
-#~ msgstr "Nimi"
