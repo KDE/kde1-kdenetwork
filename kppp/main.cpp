@@ -80,6 +80,9 @@ int totalbytes;
 // for testing purposes
 bool TESTING=0;
 
+// initial effective user id before possible suid status is dropped
+uid_t euid;
+
 QString local_ip_address;
 QString remote_ip_address;
 QString pidfile;
@@ -314,6 +317,7 @@ int main( int argc, char **argv ) {
   close(sockets[1]);
 
   // drop setuid status
+  euid = geteuid();
   setgid(getgid());
   setuid(getuid());
   //
@@ -1298,6 +1302,7 @@ pid_t create_pidfile() {
       return oldpid;
 
     Debug("pidfile is stale\n");
+    remove_pidfile();
   }
 
   if((fd = open(pidfile.data(), O_WRONLY | O_CREAT | O_EXCL,

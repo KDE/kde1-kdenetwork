@@ -74,6 +74,9 @@
 
 #include "main.h"
 
+// initial effective uid (main.cpp)
+extern uid_t euid;
+
 #ifdef linux
 // shamelessly stolen from pppd-2.3.5
 
@@ -330,7 +333,7 @@ int securityTests() {
   // Test 1: check whether $HOME is valid. The KDE and Qt libraries
   //         rely on this variable and we don't want to allow anyone
   //         to exploit kppp's setuid status.
-  // TODO?: check if this it is really the user's home directory 
+  /*
   QString homedir = getHomeDir();
   struct stat st;
   int ok = false;
@@ -345,7 +348,7 @@ int securityTests() {
             "correct its setting.\n\n");
     return TEST_CRITICAL;
   }
-
+  */
   return TEST_OK;
 }
 
@@ -425,9 +428,10 @@ int runTests() {
 				    ));
     warning++;
   }
-#if 0
+
   // Test 2: check access to the pppd binary
   if(pppdFound) {
+#if 0
     if(access(f.data(), X_OK) != 0 /* && geteuid() != 0 */) {
       QMessageBox::critical(0,
 		   i18n("Error"),
@@ -449,12 +453,11 @@ int runTests() {
 	warning++;
       }
     }
-
-    if(geteuid() == 0) {
+#endif
+    if(euid != 0) {
       struct stat st;
       stat(f.data(), &st);
-
-      if(st.st_uid != 0) { // pppd not owned by root
+      if(st.st_uid != 0 || (st.st_mode & S_ISUID) == 0) {
 	QMessageBox::warning(0,
 		     i18n("Error"),
 		     i18n("pppd is not properly installed!\n\n"
@@ -465,7 +468,7 @@ int runTests() {
       }
     }
   }
-#endif
+
   // Test 4: check for undesired 'lock' option in /etc/ppp/options
   QFile opt(SYSOPTIONS);
   if (opt.open(IO_ReadOnly)) {
