@@ -209,13 +209,10 @@ void Article::load()
     key.dptr=ID.data();
     key.dsize=ID.length() + 1;
 
-    if (unreadDict.find(ID.data()))
+    content=gdbm_fetch(old_artdb,key);
+    if (!content.dptr)
     {
         content=gdbm_fetch(artdb,key);
-    }
-    else
-    {
-        content=gdbm_fetch(old_artdb,key);
     }
     if (!content.dptr)
     {
