@@ -1004,7 +1004,7 @@ sub docommand {
 	    local($fh)=$dgrfh{$sfh};
 	    next if $args && ($args ne $dfile{$fh});
 	    &dohooks("dcc_disconnect", $dnick{$sfh}, $dfile{$fh}, 
-		$dtransferred{$sfh}, time-$dstarttime{$fh});
+		$dtransferred{$sfh}, time-$dstarttime{$fh}, $fh);
 	    &tell("*\cbE\cb* Closing DCC GET connection with $newarg");
 	    $found=1;
 	    close $sfh;
@@ -1029,7 +1029,7 @@ sub docommand {
 	      $dfile{$fh} =~ /\/${newarg}$/) {
 	    &tell("*\cbD\cb* DCC SEND connection with $n closed");
 	    &dohooks("dcc_disconnect", $dnick{$sfh}, $dfile{$fh}, 
-		$dtransferred{$sfh}, time-$dstarttime{$fh});
+		$dtransferred{$sfh}, time-$dstarttime{$fh}, $fh);
 	    close($sfh);
 	    close($fh);
 	    delete $dswait{$sfh};

@@ -13,7 +13,7 @@ extern KApplication *kApp;
 
 static const int fudge = 5;
 
-KSircListBox::KSircListBox(QWidget * parent, const char * name, WFlags f) : QListBox(parent,name,f) /*fold00*/
+KSircListBox::KSircListBox(QWidget * parent, const char * name, WFlags f) : QListBox(parent,name,f) /*FOLD00*/
 {
   setAutoScrollBar(FALSE);
   setAutoBottomScrollBar(FALSE);

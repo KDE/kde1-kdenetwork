@@ -17,8 +17,6 @@ class PukeController;
 
 #include "pmessage.h"
 
-#include "../servercontroller.h"
-
 #include "commands.h"
 #include "pobject.h"
 #include "pwidget.h"

@@ -56,36 +56,46 @@ aHistLineEdit::aHistLineEdit(QWidget *parent, const char *name)
 
 void aHistLineEdit::keyPressEvent ( QKeyEvent *e )
 {
+  if ( e->key() != Key_Tab)
+    emit notTab();
+
   if ( e->state() == ControlButton ) {
     QString s;
     s.insert( 0, text() );
+    int curPos = cursorPosition();
     switch ( e->key() ) {
     case Key_B:
-      s.insert( s.length(), 0xdf );
+      s.insert( cursorPosition(), 0xdf );
       setText(s);
+      setCursorPosition(curPos + 1);
       break;
     case Key_U:
-      s.insert( s.length(), 0xdc );
+      s.insert( cursorPosition(), 0xdc );
       setText(s);
+      setCursorPosition(curPos + 1);
       break;
     case Key_R:
-      s.insert( s.length(), 0x9f );
+      s.insert( cursorPosition(), 0x9f );
       setText(s);
+      setCursorPosition(curPos + 1);
       break;
     case Key_K:
-      s.insert( s.length(), 0xa9 );
+      s.insert(  cursorPosition(), 0xa9 );
       setText(s);
+      setCursorPosition(curPos + 1);
       if ( kSircConfig->ColourPicker ) {
         ColourPickerPopUp();
       }
       break;
     case Key_O:
-      s.insert( s.length(), 0xa4 );
+      s.insert( cursorPosition(), 0xa4 );
       setText(s);
+      setCursorPosition(curPos + 1);
       break;
     case Key_I:
-      s.append("~i");
+      s.insert( cursorPosition(), "~i");
       setText(s);
+      setCursorPosition(curPos + 2);
       break;
     default:
       QLineEdit::keyPressEvent(e);
@@ -148,7 +158,11 @@ void aHistLineEdit::ColourPickerPopUp()
 
 void aHistLineEdit::slot_insert( QString str )
 {
-  insert( str );
+  QString s = text();
+  int curPos = cursorPosition();
+  s.insert(curPos, str);
+  setText(s);
+  setCursorPosition(curPos + str.length());
 }
 
 void aHistLineEdit::focusInEvent(QFocusEvent *)

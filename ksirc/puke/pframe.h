@@ -6,7 +6,6 @@ class PFrame;
 #include <qframe.h>
 #include "pmessage.h"
 #include "pwidget.h"
-#include "controller.h"
 
 // Init and setup code
 extern "C" {

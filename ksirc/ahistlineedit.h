@@ -16,6 +16,7 @@ signals:
   void gotFocus();
   void lostFocus();
   void pasteText();
+  void notTab();
 
 protected:
   virtual void keyPressEvent ( QKeyEvent * );

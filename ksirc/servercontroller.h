@@ -203,6 +203,7 @@ private:
 
     // Holds dockable widget
     dockServerController *dockWidget;
+    bool docked;
 
 };
 #endif // servercontroller_included

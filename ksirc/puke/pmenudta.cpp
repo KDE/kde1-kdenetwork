@@ -1,6 +1,7 @@
 #include "pmenudta.h"
 #include "pobject.h"
 #include <qpopmenu.h>
+#include <qpixmap.h>
 
 /**
  * This is an empty function such that if it get's called we don't explode

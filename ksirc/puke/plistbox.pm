@@ -59,11 +59,6 @@ sub insertText { #FOLD00
   my $text = shift;
   my $index = shift;
   my $rindex = $index;
-
-  if(length($text) > 49){
-    print "*E* Puke Line Edit: set text with over 49 characters.\n";
-    $text =~ s/^(.{49,49}).*/$1/;
-  }
   
   if($index < 0 || $index >= $self->{count}){
     $rindex = $self->{count};
@@ -101,11 +96,6 @@ sub insertPixmap { #FOLD00
   my $file = shift;
   my $index = shift;
   my $rindex = $index;
-
-  if(length($file) > 49){
-    print "*E* PukeListBox: set pixmap filename with over 49 characters.\n";
-    $file =~ s/^(.{49,49}).*/$1/;
-  }
   
   if($index < 0 || $index >= $self->{count}){
     $rindex = $self->{count};

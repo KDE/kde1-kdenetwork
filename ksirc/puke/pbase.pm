@@ -1,7 +1,7 @@
 
 package PBase;
 use Carp;
-use Data::Dumper;
+#use Data::Dumper;
 use strict;
 
 $PBase::NO_WIDGET = -1;
@@ -95,8 +95,6 @@ sub create {
     }
 
     $self->ackWinId(%REPLY);
-
-    print "*I* In  create: " . Dumper($self->{cmdQueue});
     
     $self->clearQueue();
     #  $self->setRunable(0);
@@ -120,11 +118,22 @@ sub fetchWidget {
 
   if($REPLY{iWinId} <= 0){
     print "*E* Widget Fetch Failed!\n";
+    return -1;
   }
-
+  my $winid;
+  my $cmd;
+  foreach $cmd (%::PUKE_W_HANDLER){
+    foreach $winid (%{$::PUKE_W_HANDLER{$cmd}}){
+      if($winid == $self->{'iWinId'}){
+        $::PUKE_W_HANDLER{$cmd}{$REPLY{iWinId}} = $::PUKE_W_HANDLER{$cmd}{$self->{iWinId}};
+        delete $::PUKE_W_HANDLER{$cmd}{$self->{iWinId}};
+      }
+    }
+  }
+  
   $self->ackWinId(%REPLY);
   #  $self->setRunable(0);
-
+  return 0;
 }
 
 sub treeInfo {
@@ -141,7 +150,7 @@ sub treeInfo {
 sub DESTROY {
   my $self = shift;
 
-  print "*I* Widget Deleted\n";
+  #  print "*I* Widget Deleted\n";
   $self->hide();
 
   #  $self->setRunable(1);
@@ -149,8 +158,8 @@ sub DESTROY {
   delete($::PBASE_IMORTALS{$self->{IMMORTAL}});
 
   if($self->{DESTROYED} != 1 && $self->{Parent} == 0){
-        $self->sendMessage('iCommand' => $::PUKE_WIDGET_DELETE,
-        	       'CallBack' => sub { print "Deleted\n"; });
+    $self->sendMessage('iCommand' => $::PUKE_WIDGET_DELETE,
+                       'CallBack' => sub {});
   }
 
   #  $self->setRunable(0);
@@ -175,6 +184,7 @@ sub ackWinId {
   if($ARG{'iWinId'} <= 1){
       die("Failed on ack'ing Window ID, stopping!");
   }
+  
   $self->{iWinId} = $ARG{'iWinId'};
 }
 

@@ -90,7 +90,6 @@ private:
   int revOne, revTwo;
   bool forceClear;
 
-
 };
 
 #endif

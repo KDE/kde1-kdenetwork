@@ -40,7 +40,9 @@ sub activated {
     &{$self->{'menu_id'}[$ARG{'iArg'}]}(%ARG);
   }
   else {
-   &::tell("*E* No handler for id: $ARG{iArg}\n");
+    # There's not handler, don't make noise, since if we used fetchWidget()
+    # We don't handlers for everything
+    # &::tell("*E* No handler for id: $ARG{iArg}\n");
   }
 }
 

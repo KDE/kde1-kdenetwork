@@ -104,8 +104,6 @@ void KSPainter::colourDrawText(QPainter *p, int startx, int starty,
         curState.resetCol();
       }
       else if((str[i] == '~') && ((str[i+1] >= 0x61) || (str[i+1] <= 0x7a))){
-	QFont fnt = p->font();
-        QColor temppen;
 	switch(str[i+1]){
         case 'c':
           curState.resetCol();
@@ -121,6 +119,11 @@ void KSPainter::colourDrawText(QPainter *p, int startx, int starty,
           break;
         case 'b':
           curState.toggleBold();
+            {
+              QFont fnt = p->font();
+              fnt.setBold(TRUE);
+              p->setFont(fnt);
+            }
 	  break;
         case 'i':
           curState.toggleItalics();
@@ -138,7 +141,6 @@ void KSPainter::colourDrawText(QPainter *p, int startx, int starty,
 	  i-=1;
 	  offset -= 1;
 	}
-	p->setFont(fnt);
 	i += 2;
       }
       offset += i - loc;
@@ -286,16 +288,16 @@ inline void PainterState::toggleSel(){
 }
 
 inline void PainterState::toggleItalics(){
-  qfCurFont.setItalic(!qfCurFont.italic());
+  qfCurFont.setItalic(qfCurFont.italic() == TRUE ? FALSE : TRUE);
   painter->setFont(qfCurFont);
 }
 
 inline void PainterState::toggleBold(){
-  qfCurFont.setBold(!qfCurFont.bold());
+  qfCurFont.setBold(qfCurFont.bold() == TRUE ? FALSE : TRUE);
   painter->setFont(qfCurFont);
 }
 
 inline void PainterState::toggleUnderline(){
-  qfCurFont.setUnderline(!qfCurFont.underline());
+  qfCurFont.setUnderline(qfCurFont.underline() == TRUE ? FALSE : TRUE);
   painter->setFont(qfCurFont);
 }

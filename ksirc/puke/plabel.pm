@@ -32,11 +32,6 @@ sub setText {
   my $self = shift;
   
   my $text = shift;
-
-  if(length($text) > 49){
-    print "*E* Puke Line Edit: set text with over 49 characters.\n";
-    $text =~ s/^(.{49,49}).*/$1/;
-  }
   
   $self->{text} = $text;
 
@@ -53,11 +48,6 @@ sub setPixmap {
   my $self = shift;
   
   my $text = shift;
-
-  if(length($text) > 49){
-    print "*E* Puke Line Edit: set text with over 49 characters.\n";
-    $text =~ s/^(.{49,49}).*/$1/;
-  }
   
   $self->{text} = "***PIXMAP***" . $text;
 
@@ -73,11 +63,6 @@ sub setMovie {
   my $self = shift;
   
   my $text = shift;
-
-  if(length($text) > 49){
-    print "*E* Puke Line Edit: set text with over 49 characters.\n";
-    $text =~ s/^(.{49,49}).*/$1/;
-  }
   
   $self->{text} = "***MOVIE***" . $text;
 

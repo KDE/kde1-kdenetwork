@@ -1,6 +1,11 @@
 #include "pwidget.h"
 #include "commands.h"
 
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+#include <qpixmap.h>
 #include <qevent.h>
 
 PWidget::PWidget(PObject *)
@@ -173,6 +178,7 @@ void PWidget::messageHandler(int fd, PukeMessage *pm)
     }
   case PUKE_WIDGET_SET_BACKGROUND_PIXMAP:
     widget()->setBackgroundPixmap(QPixmap(pm->cArg));
+    debug("Current background Mode: %d", widget()->backgroundMode());
 
     pmRet.iCommand = -pm->iCommand;
     pmRet.iWinId = pm->iWinId;

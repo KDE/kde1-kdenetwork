@@ -10,12 +10,19 @@
 &docommand("/load plabel.pm");
 &docommand("/load pbutton.pm");
 &docommand("/load ppushbt.pm");
+&docommand("/load plined.pm");
+&docommand("/load pkfiledialog.pm");
+&docommand("/load pmenudta.pm");
+&docommand("/load ppopmenu.pm");
 
 &docommand("/load dcc_progress.pm");
 
-package DCCStatus;
+use POSIX qw(getcwd);
+use strict;
+
+package DCCSendDialog;
+use vars qw(@ISA);
 @ISA = qw(PFrame);
-#use strict;
 
 sub new {
   my $class = shift;
@@ -23,49 +30,146 @@ sub new {
   $self->create();  
 
   my $gm_main = new PBoxLayout($self, $PBoxLayout::TopToBottom, 5);
-  my $gm_a = new PBoxLayout($PBoxLayout::LeftToRight, 5);       
-  $gm_main->addLayout($gm_a);
 
-  my $gm_aa = new PBoxLayout($PBoxLayout::TopToBottom, 5);
-  $gm_a->addLayout($gm_aa);
+  my $gm_to = new PBoxLayout($PBoxLayout::LeftToRight, 5);
+  $gm_main->addLayout($gm_to);
+  
+  my $label_to = new PLabel($self);
+  $label_to->setText("To Nick:");
+  $label_to->setMaximumSize(30,1000);
+  $label_to->setMinimumSize(30,50);
+  $gm_to->addWidget($label_to, 0, $PBoxLayout::AlignCenter);
+  
+  my $line_to = new PLineEdit($self);
+  $gm_to->addWidget($line_to, 5, $PBoxLayout::AlignCenter);
+
+  my $gm_file = new PBoxLayout($PBoxLayout::LeftToRight, 5);
+  $gm_main->addLayout($gm_file);
+
+  my $label_file = new PLabel($self);
+  $label_file->setText("Filename:");
+  $label_file->setMaximumSize(30,1000);
+  $label_file->setMinimumSize(30,50);
+  $gm_file->addWidget($label_file, 0, $PBoxLayout::AlignCenter);
+  
+  my $line_file = new PLineEdit($self);
+  $gm_file->addWidget($line_file, 5, $PBoxLayout::AlignLeft);
+
+  my $button_file = new PPushButton($self);
+  $button_file->setText("&Browse");
+  $button_file->installHandler($::PUKE_BUTTON_CLICKED_ACK, sub{$self->browseClicked});
+  $gm_file->addWidget($button_file, 2, $PBoxLayout::AlignRight);
+
+  my $button_send = new PPushButton($self);
+  $button_send->setText("&Send");
+  $button_send->installHandler($::PUKE_BUTTON_CLICKED_ACK, sub{$self->sendClicked});
+  $gm_main->addWidget($button_send, 4, $PBoxLayout::AlignRight);
+
+  @$self{'gm_main', 'gm_to', 'gm_file', 'label_to', 'line_to', 'label_file', 'line_file', 'button_file', 'button_send'}
+      = ($gm_main,  $gm_to,  $gm_file,  $label_to,  $line_to,  $label_file,  $line_file,  $button_file,  $button_send);
+
+  print "*I* Finished creating DCCSend\n";
+
+  $self->{fileDialog} = new PKFileDialog();
+  my $dlg =   $self->{fileDialog};
+  $dlg->setDir(POSIX::getcwd());
+  $dlg->installHandler($::PUKE_KBFD_FILE_SELECTED_ACK, sub{$self->fileSelected(shift())});
+
+  $self->resize(450, 110);
+
+  return $self;
+  
+}
+
+sub browseClicked {
+  my $self = shift;
+  
+  $self->{fileDialog}->show();
+
+}
+
+sub fileSelected {
+  my $self = shift;
+
+  my $hargs = shift;
+  
+  $self->{fileDialog}->hide();
+  
+  my $file = $hargs->{'cArg'};
+
+  if($file ne ''){
+    $self->{'line_file'}->setText($file);
+  }
+}
+
+sub sendClicked {
+  my $self = shift;
+
+  my $to_nick = $self->{'line_to'}->text();
+  my $to_file = $self->{'line_file'}->text();
+
+  if($to_nick eq '' || $to_file eq ''){
+    return;
+  }
+
+  &::docommand("dcc send $to_nick $to_file");
+  $self->hide();  
+}
+
+
+use vars qw(@ISA $KSIRC_DCC %KSIRC_DCC);
+
+package DCCStatus;
+use vars qw(@ISA);
+@ISA = qw(PFrame);
+
+sub new {
+  my $class = shift;
+  my $self = $class->SUPER::new($class, @_);
+  $self->create();  
+
+  my $gm_main = new PBoxLayout($self, $PBoxLayout::TopToBottom, 5);
+
   my $label = new PLabel($self);
-  $label->setText("Pending Gets");
+  $label->setText("Pending DCC");
   $label->setMaximumSize(20,1000);
-  $gm_aa->addWidget($label, 5, $PBoxLayout::AlignCenter);  
-  my $lb_get = new PListBox($self);
-  $gm_aa->addWidget($lb_get, 5, $PBoxLayout::AlignCenter);
+  $gm_main->addWidget($label, 5, $PBoxLayout::AlignCenter);  
+  my $lb = new PListBox($self);
+  $gm_main->addWidget($lb, 5, $PBoxLayout::AlignCenter);
+
+  my $gm_but1 = new PBoxLayout($PBoxLayout::LeftToRight, 5);
+  $gm_main->addLayout($gm_but1);
+  
   my $button_get = new PPushButton($self);
-  $button_get->setText("Get &File");
+  $button_get->setText("&Open Connection");
   $button_get->setMaximumSize(30,1000);
   $button_get->setMinimumSize(30,10);
-  $button_get->installHandler($::PUKE_BUTTON_RELEASED_ACK, sub{});
-  $button_get->installHandler($::PUKE_BUTTON_PRESSED_ACK, sub{});
-  $button_get->installHandler($::PUKE_BUTTON_CLICKED_ACK, sub{$self->getClicked});
-  $gm_aa->addWidget($button_get, 5);
+  $button_get->installHandler($::PUKE_BUTTON_CLICKED_ACK, sub{$self->openClicked});
+  $gm_but1->addWidget($button_get, 5);
 
-  my $gm_ab = new PBoxLayout($PBoxLayout::TopToBottom, 5);
-  $gm_a->addLayout($gm_ab);
-  my $label2 = new PLabel($self);
-  $label2->setText("Pending Chats");
-  $label2->setMaximumSize(20,1000);
-  $gm_ab->addWidget($label2, 5, $PBoxLayout::AlignCenter);
-  my $lb_send = new PListBox($self);
-  $gm_ab->addWidget($lb_send, 5, $PBoxLayout::AlignCenter);
+  my $button_forget = new PPushButton($self);
+  $button_forget->setText("&Forget Connection");
+  $button_forget->setMaximumSize(30,1000);
+  $button_forget->setMinimumSize(30,10);
+  $button_forget->installHandler($::PUKE_BUTTON_CLICKED_ACK, sub{$self->forgetClicked});
+  $gm_but1->addWidget($button_forget, 5);
+
+  my $gm_but2 = new PBoxLayout($PBoxLayout::LeftToRight, 5);
+  $gm_main->addLayout($gm_but2);
+  
   my $button_send = new PPushButton($self);
-  $button_send->setText("&Open Chat");
+  $button_send->setText("&Send File");
   $button_send->setMaximumSize(30,1000);
   $button_send->setMinimumSize(30,10);
-  $button_send->installHandler($::PUKE_BUTTON_RELEASED_ACK, sub{});
-  $button_send->installHandler($::PUKE_BUTTON_PRESSED_ACK, sub{});
-  $button_send->installHandler($::PUKE_BUTTON_CLICKED_ACK, sub{$self->chatClicked});
-  $gm_ab->addWidget($button_send, 5);
-
+  $button_send->installHandler($::PUKE_BUTTON_CLICKED_ACK, sub{$self->sendClicked});
+  $gm_but2->addWidget($button_send, 5);
+  
   $gm_main->activate();
 
   $self->resize(400, 275);
   
-  @$self{'gm_main', 'gm_a', 'gm_aa', 'label1', 'lb_get', 'gm_ab', 'label2', 'lb_chat', 'button_get', 'button_chat' }
-      = ( $gm_main, $gm_a,  $gm_aa,  $label,   $lb_get,  $gm_ab,  $label2,  $lb_send,  $button_get,  $button_send  );
+  @$self{'gm_main', 'label1', 'lb', 'button_get', 'button_chat', 'button_forget', 'gm_but1', 'gm_but2', 'button_send' }
+      = ( $gm_main, $label,   $lb,  $button_get,  $button_send,  $button_forget,  $gm_but1,  $gm_but2,  $button_send );
 
 
   print "*I* Finished creating DCCStatus\n";
@@ -73,36 +177,71 @@ sub new {
   return $self;
 }
 
-sub getClicked {
-    my $self = shift;
+sub addItem {
+  my $self = shift;
 
-    my $text = $self->{'lb_get'}->currentText();
-    if($text eq ''){
-        return;
-    }
+  my %hargs = @_;
 
-    $text =~ /^(\S+) offered (\S+) at size (\S+)/;
-    my($who, $file, $size) = ($1, $2, $3);
-    $::KSIRC_FILE_SIZES{$file} = $size;
+  my $line = $hargs{'line'};
 
-    $self->{'lb_get'}->removeItem($self->{'lb_get'}->current);
-    $self->{'lb_get'}->setCurrentItem($self->{'lb_get'}->current);
-    
-    &::docommand("dcc get $who $file");
-    print "*I* File: $file saved size as: $size\n";
+  if($self->{'lines'}->{$line}){
+    return -1;
+  }
+
+  $self->{'lines'}->{$line}->{'OpenCode'} = $hargs{'open'};
+  $self->{'lines'}->{$line}->{'ForgetCode'} = $hargs{'forget'};
+
+  $self->{'lb'}->insertText($line, -1);
+  if($self->{'lb'}->currentText() eq ''){
+    $self->{'lb'}->setCurrentItem(0);
+  }
+
+  return 0;
 }
 
-sub chatClicked {
-    my $self = shift;
+sub openClicked {
+  my $self = shift;
 
-    my $text = $self->{'lb_chat'}->currentText();
-    if($text eq ''){
-        return;
+  my $line = $self->{'lb'}->currentText();
+  if($line eq ''){
+    return;
+  }
+
+  &{$self->{'lines'}->{$line}->{'OpenCode'}};
+  $self->{'lb'}->removeItem($self->{'lb'}->current());
+
+  delete $self->{'lines'}->{$line};
+  
+}
+
+sub forgetClicked {
+  my $self = shift;
+
+  my $line = $self->{'lb'}->currentText();
+  if($line eq ''){
+    return;
+  }
+
+  &{$self->{'lines'}->{$line}->{'ForgetCode'}};
+  $self->{'lb'}->removeItem($self->{'lb'}->current());
+
+  delete $self->{'lines'}->{$line};
+  
+}
+
+sub sendClicked {
+  my $self = shift;
+
+  if(!$self->{sendDialog}){
+    my $dlg =  new DCCSendDialog();
+    if($dlg == undef){
+      &print("*E* Could not load DCCSendDialog");
+      return;
     }
+    $self->{sendDialog} = $dlg;
+  }
 
-    $self->{'lb_chat'}->removeItem($self->{'lb_chat'}->current);
-    $self->{'lb_chat'}->setCurrentItem($self->{'lb_chat'}->current);
-    &::docommand("dcc chat $text");
+  $self->{sendDialog}->show();  
 }
 
 sub DESTROY {
@@ -115,11 +254,13 @@ sub close {
   $self->sendMessage('iCommand' => $::PUKE_WIDGET_DELETE,
                      'CallBack' => sub {},
                      'WaitFor'  => 1);
-  $self->{'gm_main'}->DESTROY;
-  delete $self->{'gm_main'};
+  # $self->{'gm_main'}->DESTROY;
+  #elete $self->{'gm_main'};
 }
 
+
 package main;
+use vars qw($KSIRC_DCC %KSIRC_DCC $who $KSIRC_DCCSTATUS $silent $nick $KSIRC_POPSC $KSIRC_POPDOCK);
 
 sub hook_ksirc_dcc_request {
   my($type) = shift;
@@ -127,21 +268,31 @@ sub hook_ksirc_dcc_request {
   my($port) = shift;
   my($file) = shift;
   my($size) = shift;
+  my($mwho) = $who;
   if($KSIRC_DCCSTATUS == undef){
     $KSIRC_DCCSTATUS = new DCCStatus;
     $KSIRC_DCCSTATUS->resize(400, 275);
   }
-  my($listbox) = '';
+
   if($type eq 'SEND'){
-    $listbox = $KSIRC_DCCSTATUS->{'lb_get'};
-    $listbox->insertText("$who offered $file at size $size");
+    my $open = sub {
+      &docommand("/dcc get $mwho $file");
+    };
+    my $forget = sub {
+      &docommand("/dcc close get $mwho $file");
+    };
+    $KSIRC_DCCSTATUS->addItem('line' => "SEND: $who offered $file at size $size",
+                              'open' => $open,
+                              'forget' => $forget);
   }
-  else{
-    $listbox = $KSIRC_DCCSTATUS->{'lb_chat'};
-    $listbox->insertText("$who");
+  elsif($type eq 'CHAT'){
+    $KSIRC_DCCSTATUS->addItem('line' => "CHAT: $who",
+                              'open' => sub { &docommand("/dcc chat $mwho"); },
+                              'forget' => sub { &docommand("/dcc close chat $mwho"); });
+
   }
-  $listbox->setCurrentItem(0);
   $KSIRC_DCCSTATUS->show;
+
 }
 
 &addhook("dcc_request", "ksirc_dcc_request");
@@ -174,8 +325,14 @@ sub hook_ksirc_dcc_send_status {
 
   my $window = $KSIRC_DCC{$fh}{$file}{'Window'};
   if($window == undef){
-    print "*E* No such window for $file, $bytes, $fh\n";
-    return;
+    my($window) =  new DCCProgress;
+    $window->setRange(0, 1);
+    $window->setCaption("$file=>$nick");
+    $window->setTopText("Sending: $file Size: Unkown");
+    $window->setCancel("dcc close send $nick $file");
+    $KSIRC_DCC{$fh}{$file}{'Window'} = $window;
+    $KSIRC_DCC{$fh}{$file}{'StartTime'} = time() - 1;
+    $window->show;
   }
   $window->setBotText("BPS: " . int($bytes/(time() -  $KSIRC_DCC{$fh}{$file}{'StartTime'})));
   $window->setValue($bytes);
@@ -188,7 +345,7 @@ sub hook_ksirc_dcc_get {
   my $file = shift;
   my $fh = shift;
 
-  print "*I* Starting dcc into with: $nick, $file, $size, $fh\n";
+  #  print "*I* Starting dcc into with: $nick, $file, $size, $fh\n";
 
   my $size = $::KSIRC_FILE_SIZES{$file};
   
@@ -212,8 +369,15 @@ sub hook_ksirc_dcc_get_status {
 
   my $window = $KSIRC_DCC{$fh}{$file}{'Window'};
   if($window == undef){
-    print "*E* No such window for $file, $bytes, $fh\n";
-    return;
+    my($window) =  new DCCProgress;
+    $window->setRange(0, 1);
+    $window->setCaption("$file<=$nick");
+    $window->setTopText("Receiver: $file Size: Unkown");
+    $window->setBotText("Status: pending");
+    $window->setCancel("dcc close get $nick $file");
+    $KSIRC_DCC{$fh}{$file}{'Window'} = $window;
+    $KSIRC_DCC{$fh}{$file}{'StartTime'} = time() - 1;
+    $window->show;
   }
   $window->setBotText("BPS: " . int($bytes/(time() -  $KSIRC_DCC{$fh}{$file}{'StartTime'})));
   $window->setValue($bytes);
@@ -229,20 +393,57 @@ sub hook_ksirc_dcc_disconnect {
   my $time = shift;
   my $fh = shift;
 
-  my $window = $KSIRC_DCC{$fh}{$file}{'Window'};
-  print "*E* Window ref: $fh, $file, $window\n";
-  $window->DESTROY;
-  $KSIRC_DCC{$fh}{$file}{'Window'}->DESTROY;
-  delete $KSIRC_DCC{$fh}{$file};
-  delete $KSIRC_DCC{$fh};
+  if($fh){
+    my $window = $KSIRC_DCC{$fh}{$file}{'Window'};
+    $window->close();
+    delete $KSIRC_DCC{$fh}{$file};
+    delete $KSIRC_DCC{$fh};
+    print "*D* DCC transfer with $nick ($file) terminated; $bytes transferred in $time seconds (" . int(($bytes/$time)/1024) . "KBps)";
+    $silent = 1;
+  }
 }
 
 addhook("dcc_disconnect", "ksirc_dcc_disconnect");
+
 
 
 &print("*I* Done DCC Status");
 #$::test = new DCCStatus;
 #$::test->resize(400, 275);
 #$::test->show();
+
+sub popup_dccstatus{
+  if($KSIRC_DCCSTATUS == undef){
+    $KSIRC_DCCSTATUS = new DCCStatus;
+    $KSIRC_DCCSTATUS->resize(400, 275);
+  }
+  $KSIRC_DCCSTATUS->show();
+}
+
+sub popup_dccsend{
+  if($KSIRC_DCCSTATUS == undef){
+    $KSIRC_DCCSTATUS = new DCCStatus;
+    $KSIRC_DCCSTATUS->resize(400, 275);
+  }
+  $KSIRC_DCCSTATUS->sendClicked();
+}
+
+
+$KSIRC_POPSC = new PPopupMenu();
+if($KSIRC_POPSC->fetchWidget("servercontroller_menu_file") >= 0){
+  my $id_control = $KSIRC_POPSC->insertText("Show DCC Control");
+  my $id_send =    $KSIRC_POPSC->insertText("Show DCC Send");
+  $KSIRC_POPSC->installMenu($id_control, \&popup_dccstatus);
+  $KSIRC_POPSC->installMenu($id_send, \&popup_dccsend);
+}
+
+$KSIRC_POPDOCK = new PPopupMenu();
+if($KSIRC_POPDOCK->fetchWidget("dockServerController_menu_pop") >= 0){
+  my $id_control = $KSIRC_POPDOCK->insertText("Show DCC Control");
+  my $id_send =    $KSIRC_POPDOCK->insertText("Show DCC Send");
+  $KSIRC_POPDOCK->installMenu($id_control, \&popup_dccstatus);
+  $KSIRC_POPDOCK->installMenu($id_send, \&popup_dccsend);
+}
+
 
 1;

@@ -139,7 +139,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
   file->insertItem(i18n("&Ticker Mode"), this, SLOT(showTicker()), CTRL + Key_T);
   //  file->insertItem("&Root Window Mode", this, SLOT(toggleRootWindow()), CTRL + Key_Z);
   file->insertSeparator();
-  file->insertItem(i18n("&Close"), this, SLOT(terminate()), CTRL + Key_Q );
+  file->insertItem(i18n("&Close"), this, SLOT(terminate()), CTRL + Key_W );
 
   QFrame *menu_frame = (QFrame *) ktool->getWidget(0); // Lookup the insertWidget, it's a QFrame inserted
   CHECK_PTR(menu_frame);
@@ -201,7 +201,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
   connect(mainw, SIGNAL(updateSize()),
           this, SIGNAL(changeSize()));
   connect(mainw, SIGNAL(pasteReq()),
-          this, SLOT(pasteToWindow()));
+	  this, SLOT(pasteToWindow()));
 
   mainw->setFont(kSircConfig->defaultfont);
   nicks->setFont(kSircConfig->defaultfont);
@@ -226,8 +226,8 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
 	  this, SLOT(lostFocus()));
   connect(linee, SIGNAL(pasteText()),
 	  this, SLOT(pasteToWindow()));
-  connect(linee, SIGNAL(textChanged(const char *)),
-	  this, SLOT(lineeTextChanged(const char *)));
+  connect(linee, SIGNAL(notTab()),
+	  this, SLOT(lineeNotTab()));
 
   //  gm->addWidget(linee, 0);                    // No special controls are needed.
 
@@ -431,26 +431,32 @@ void KSircTopLevel::TabNickCompletion()  /*fold00*/
   int start, end;
   QString s, nick;
 
-  if(tab_pressed > 0)
+  if(tab_pressed > 0){
     s = tab_saved.data();
+    start = tab_start;
+    end = tab_end;
+  }
   else{
     s = linee->text();
     tab_saved = s.data();
+    end = linee->cursorPosition() - 1;
+    start = s.findRev(" ", end, FALSE);
+    tab_start = start;
+    tab_end = end;
+
   }
 
   if(s.length() == 0)
     return;
 
-  end = linee->cursorPosition() - 1;
-  start = s.findRev(" ", end, FALSE);
-
   if (start == -1) {
-    nick = findNick(s, tab_pressed);
+    cerr << "Start == -1: " << s.mid(0, end+1) << endl;
+    nick = findNick(s.mid(0, end+1), tab_pressed);
     if(nick.isNull() == TRUE){
       tab_pressed = 0;
-      nick = findNick(s, tab_pressed);
+      nick = findNick(s.mid(0, end+1), tab_pressed);
     }
-    s = nick;
+    s.replace(0, end + 1, nick);
   }
   else {
 //    cerr << "Looking up: " << s.mid(start + 1, end - start) << endl;
@@ -464,14 +470,14 @@ void KSircTopLevel::TabNickCompletion()  /*fold00*/
 
   int tab = tab_pressed + 1;
 
-  int cur = linee->cursorPosition();
   linee->setText(s);
 
-  if(s.find(" ", cur, FALSE) != -1){
-    linee->setCursorPosition(cur);
-  }
+  linee->setCursorPosition(start + nick.length() + 1);
   
   tab_pressed = tab; // setText causes lineeTextChanged to get called and erase tab_pressed
+
+  connect(linee, SIGNAL(notTab()),
+	  this, SLOT(lineeNotTab()));
   
 }
   
@@ -1105,9 +1111,12 @@ void KSircTopLevel::pasteToWindow() /*fold00*/
   }
 }
 
-void KSircTopLevel::lineeTextChanged(const char *) /*fold00*/
+void KSircTopLevel::lineeNotTab() /*fold00*/
 {
   tab_pressed = 0;
+  disconnect(linee, SIGNAL(notTab()),
+	     this, SLOT(lineeNotTab()));
+
 }
 
 void KSircTopLevel::toggleRootWindow() /*fold00*/

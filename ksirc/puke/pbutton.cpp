@@ -1,6 +1,8 @@
 #include "pbutton.h"
 #include <stdio.h>
 
+#include <qpixmap.h>
+
 PObject *createWidget(CreateArgs &ca)
 {
   PButton *pb = new PButton(ca.parent);

@@ -232,7 +232,7 @@ protected slots:
    /**
      * Signals a Line Change in linee
      */
-   void lineeTextChanged(const char *);
+   void lineeNotTab();
    /**
      *  Move the display to or from the root window
      *
@@ -338,6 +338,7 @@ private:
     * When tabs pressed save the line for use at a latter date.
     */
   QString tab_saved;
+  int tab_start, tab_end;
     
 
   // Ticker specific variables.

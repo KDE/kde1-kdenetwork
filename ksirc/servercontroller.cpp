@@ -203,7 +203,10 @@ servercontroller::servercontroller /*FOLD00*/
     cerr << "Puke failed\n";
   }
 
-  dockWidget = 0x0;
+  docked = FALSE;
+  dockWidget = new dockServerController(this, "servercontroller_dock");
+  objFinder::insert(dockWidget);
+
 
 }
 
@@ -541,7 +544,7 @@ void servercontroller::saveProperties(KConfig *ksc) /*fold00*/
   
 }
 
-void servercontroller::readProperties(KConfig *ksc) /*FOLD00*/
+void servercontroller::readProperties(KConfig *ksc) /*fold00*/
 {
   // kei == pointer to KEntryItertor
   // ksc == K Session Config
@@ -562,16 +565,17 @@ void servercontroller::readProperties(KConfig *ksc) /*FOLD00*/
 }
 
 void servercontroller::toggleDocking(){ /*FOLD00*/
-  if(dockWidget == 0x0){ // Currently not docked, have to dock
-    dockWidget = new dockServerController(this, "servercontroller_dock");
+  if(docked == FALSE){ // Currently not docked, have to dock
     this->hide();
     KWM::setDockWindow(dockWidget->winId());
     dockWidget->show();
+    docked = TRUE;
   }
   else { // Currently docked, undock
-    delete dockWidget;
-    dockWidget = 0x0;
     this->show();
+    dockWidget->hide();
+    dockWidget->recreate(0x0, 0, QPoint(0,0), FALSE);
+    docked = FALSE;
   }
 }
 
@@ -612,12 +616,14 @@ void scInside::resizeEvent ( QResizeEvent *e ) /*fold00*/
   
 }
 
-dockServerController::dockServerController(servercontroller *_sc, const char *_name) /*FOLD00*/
+dockServerController::dockServerController(servercontroller *_sc, const char *_name) /*fold00*/
 : QFrame(0x0, _name)
 {
   sc = _sc;
 
   pop = new QPopupMenu;
+  pop->setName("dockServerController_menu_pop");
+  objFinder::insert(pop);
 
   pop->insertItem(i18n("&Quit"), kApp, SLOT(quit()));
   pop->insertItem(i18n("&Undock"),
@@ -644,14 +650,14 @@ dockServerController::~dockServerController() /*FOLD00*/
   delete pop;
 }
 
-void dockServerController::mousePressEvent(QMouseEvent *) /*FOLD00*/
+void dockServerController::mousePressEvent(QMouseEvent *) /*fold00*/
 {
   QPoint pt = this->cursor().pos();
   pt.setY(pt.y());
   pop->popup(pt);
 }
 
-void dockServerController::paintEvent(QPaintEvent *pe) /*FOLD00*/
+void dockServerController::paintEvent(QPaintEvent *pe) /*fold00*/
 {
 //  QFrame::paintEvent(pe);
   QPainter p(this);

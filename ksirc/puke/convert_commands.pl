@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-open(CMD, "commands.h");
+open(CMD, "cat commands.h *-cmd.h|");
 open(CMDP, ">commands-perl.pl");
 while(<CMD>){
   if(/#define (\S+) (.+)/){

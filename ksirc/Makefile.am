@@ -34,6 +34,7 @@ bin_PROGRAMS = ksirc # ${KSIRCSTATIC_PROGRAM}
 noinst_PROGRAMS = getdate
 
 # Which sources should be compiled for ksirc.
+
 ksirc_SOURCES = \
 toplevel.cpp \
 ksirc.cpp \

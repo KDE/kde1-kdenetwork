@@ -28,7 +28,7 @@ INCLUDES= @all_includes@
 lib_LTLIBRARIES = libpuke.la libpframe.la libplined.la libpbutton.la libppushbt.la \
                   libpprogress.la libptablevw.la libplistbox.la libplabel.la \
                   libpmenudta.la libppopmenu.la libpalistbox.la libptabdialog.la \
-                  libksirclistbox.la
+                  libksirclistbox.la libpkfiledialog.la
 
 libpuke_la_SOURCES = \
 controller.cpp \
@@ -120,6 +120,12 @@ ksirclistbox.cpp \
 mksirclistbox.cpp
 
 libksirclistbox_la_LDFLAGS = -export-dynamic
+
+libpkfiledialog_la_SOURCES = \
+pkfiledialog.cpp \
+mpkfiledialog.cpp
+
+libpkfiledialog_la_LDFLAGS = -export-dynamic  -nostdlib
 
 
 HOWTO-PUKE.txt: HOWTO-PUKE.pod

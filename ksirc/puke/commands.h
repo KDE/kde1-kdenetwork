@@ -977,10 +977,14 @@
 
 #define PWIDGET_KSIRCLISTBOX 15
 
-
 // PTabDialog
 
 #define PWIDGET_TABDIALOG 16
+
+// PKFileDialog
+
+#define PWIDGET_KFILEDIALOG 17
+
 
 // Group layout commands exist between 10000 and 11000
 

@@ -1,5 +1,6 @@
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <sys/uio.h>
 #include <sys/time.h>
 #include <sys/un.h>
 #include <stdlib.h>
@@ -17,6 +18,7 @@
 #include "controller.h"
 #include "playout.h"
 #include "../config.h"
+#include "../../config.h"
 #include "../objFinder.h"
 
 #undef DEBUG
@@ -171,8 +173,8 @@ void PukeController::writeBuffer(int fd, PukeMessage *message) /*fold00*/
       //    }
     if(message != 0){
       int bytes = 0;
+      message->iHeader = iPukeHeader;
       if(message->iTextSize == 0 || message->cArg == 0){
-        message->iHeader = iPukeHeader;
         message->iTextSize = 0;
         message->cArg = 0;
 #ifdef DEBUG
@@ -187,6 +189,7 @@ void PukeController::writeBuffer(int fd, PukeMessage *message) /*fold00*/
         bytes = write(fd, message, 5 * sizeof(int));
       }
       else{
+        /*
         struct OutMessageS {
           unsigned int iHeader;
           int iCommand;
@@ -202,6 +205,8 @@ void PukeController::writeBuffer(int fd, PukeMessage *message) /*fold00*/
         OutMessage.iTextSize = message->iTextSize;
         memcpy(OutMessage.cArg, message->cArg, OutMessage.iTextSize);
         //        OutMessage.cArg[OutMessage.iTextSize] = 0; // Don't need to null out the last character
+        bytes = write(fd, &OutMessage, 5*sizeof(int) + (OutMessage.iTextSize) * sizeof(char));
+        */
 #ifdef DEBUG
         printf("Traffic on: %d <= %d %d %d %d 0x%x\n",
                fd,
@@ -211,7 +216,13 @@ void PukeController::writeBuffer(int fd, PukeMessage *message) /*fold00*/
                message->iTextSize,
                message->cArg);
 #endif /* DEBUG */
-        bytes = write(fd, &OutMessage, 5*sizeof(int) + (OutMessage.iTextSize) * sizeof(char));
+
+        struct iovec iov[2];
+        iov[0].iov_base = message;
+        iov[0].iov_len = 5*sizeof(int);
+        iov[1].iov_base = message->cArg;
+        iov[1].iov_len = message->iTextSize;
+        bytes = writev(fd, iov, 2);
       }
       //      cerr << "Wrote: " << bytes << endl;
       if(bytes <= 0){
@@ -260,7 +271,7 @@ void PukeController::Traffic(int fd) /*fold00*/
       pm.cArg = new char[pm.iTextSize + 1];
       read(fd, pm.cArg, pm.iTextSize * sizeof(char));
       pm.cArg[pm.iTextSize] = 0x0; // Null terminate the string.
-      printf(" %s\n", pm.cArg);
+//      printf(" %s\n", pm.cArg);
     }
     else {
         pm.cArg = 0;
@@ -534,7 +545,7 @@ void PukeController::hdlrPukeFetchWidget(int fd, PukeMessage *pm) /*fold00*/
 
 }
 
-void PukeController::hdlrPukeDeleteWidget(int fd, PukeMessage *pm) /*FOLD00*/
+void PukeController::hdlrPukeDeleteWidget(int fd, PukeMessage *pm) /*fold00*/
 {
   widgetId wI;
   wI.fd = fd;
@@ -686,7 +697,7 @@ void PukeController::insertPObject(int fd, int iWinId, WidgetS *obj){ /*fold00*/
     WidgetList[fd]->insert(iWinId, obj);
 }
 
-void PukeController::messageHandler(int fd, PukeMessage *pm) { /*FOLD00*/
+void PukeController::messageHandler(int fd, PukeMessage *pm) { /*fold00*/
   widgetId wI, wIret;
   wI.fd = fd;
   wI.iWinId = pm->iWinId;
