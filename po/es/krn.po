@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-01-03 16:30+0100\n"
+"POT-Creation-Date: 1998-01-04 18:20+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -82,10 +82,6 @@ msgstr "(de)Suscribir"
 #: artdlg.cpp:111 groupdlg.cpp:138
 msgid "Untag"
 msgstr "Desmarcar"
-
-#: artdlg.cpp:118 groupdlg.cpp:144
-msgid "Find"
-msgstr "Buscar"
 
 #: artdlg.cpp:128 groupdlg.cpp:146
 msgid "(Un)Tag"
@@ -998,6 +994,9 @@ msgstr "Contraseña errónea; no se puede firmar"
 #: kpgp.cpp:719
 msgid "Please enter passphrase"
 msgstr "Por favor, introduzca contraseña"
+
+#~ msgid "Find"
+#~ msgstr "Buscar"
 
 #~ msgid "&File"
 #~ msgstr "&Fichero"

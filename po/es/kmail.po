@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-01-03 22:57+0100\n"
+"POT-Creation-Date: 1998-01-04 18:20+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -514,12 +514,12 @@ msgstr "Mensaje(s) guardados."
 msgid "Failed to save message(s)."
 msgstr "Fallo al guardar mensaje(s)."
 
-#: kmheaders.cpp:492
+#: kmheaders.cpp:502
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d Mensajes, %d no leídos."
 
-#: kmheaders.cpp:494
+#: kmheaders.cpp:504
 msgid "Folder is read-only."
 msgstr "Carpeta sólo lectura."
 
@@ -703,7 +703,7 @@ msgstr "Ver..."
 msgid "Save..."
 msgstr "Guardar..."
 
-#: kmcomposewin.cpp:805 kmreaderwin.cpp:536
+#: kmcomposewin.cpp:805 kmreaderwin.cpp:542
 msgid "Properties..."
 msgstr "Propiedades..."
 
@@ -761,45 +761,45 @@ msgstr "base 64"
 msgid "quoted printable"
 msgstr "quoted printable"
 
-#: kmreaderwin.cpp:248 kmreaderwin.cpp:264
+#: kmreaderwin.cpp:254 kmreaderwin.cpp:270
 msgid "From: "
 msgstr "De: "
 
-#: kmreaderwin.cpp:250 kmreaderwin.cpp:266
+#: kmreaderwin.cpp:256 kmreaderwin.cpp:272
 msgid "To: "
 msgstr "Para: "
 
-#: kmreaderwin.cpp:254 kmreaderwin.cpp:275
+#: kmreaderwin.cpp:260 kmreaderwin.cpp:281
 msgid "References: "
 msgstr "Referencias: "
 
-#: kmreaderwin.cpp:269
+#: kmreaderwin.cpp:275
 msgid "Cc: "
 msgstr "Cc: "
 
-#: kmreaderwin.cpp:271
+#: kmreaderwin.cpp:277
 msgid "Date: "
 msgstr "Fecha: "
 
-#: kmreaderwin.cpp:333
+#: kmreaderwin.cpp:339
 msgid "Message was signed by"
 msgstr "Mensaje firmado por"
 
-#: kmreaderwin.cpp:334
+#: kmreaderwin.cpp:340
 msgid "Warning: Bad signature from"
 msgstr "Advertencia: Firma emisor errónea"
 
-#: kmreaderwin.cpp:558
+#: kmreaderwin.cpp:564
 #, fuzzy
 msgid "Could not create temporary file"
 msgstr "No se puede guardar fichero temporal %s"
 
-#: kmreaderwin.cpp:578
+#: kmreaderwin.cpp:584
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "No se puede guardar fichero temporal %s"
 
-#: kmreaderwin.cpp:604
+#: kmreaderwin.cpp:610
 msgid "Could not save file"
 msgstr "No se puede guardar fichero"
 

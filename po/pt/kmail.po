@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-01-03 22:57+0100\n"
+"POT-Creation-Date: 1998-01-04 18:20+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -542,12 +542,12 @@ msgstr ""
 msgid "Failed to save message(s)."
 msgstr "apagar mensagem"
 
-#: kmheaders.cpp:492
+#: kmheaders.cpp:502
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr ""
 
-#: kmheaders.cpp:494
+#: kmheaders.cpp:504
 msgid "Folder is read-only."
 msgstr ""
 
@@ -750,7 +750,7 @@ msgstr "&Ficheiro..."
 msgid "Save..."
 msgstr "&Mover..."
 
-#: kmcomposewin.cpp:805 kmreaderwin.cpp:536
+#: kmcomposewin.cpp:805 kmreaderwin.cpp:542
 #, fuzzy
 msgid "Properties..."
 msgstr "&Criar..."
@@ -808,49 +808,49 @@ msgstr ""
 msgid "quoted printable"
 msgstr ""
 
-#: kmreaderwin.cpp:248 kmreaderwin.cpp:264
+#: kmreaderwin.cpp:254 kmreaderwin.cpp:270
 #, fuzzy
 msgid "From: "
 msgstr "De:"
 
-#: kmreaderwin.cpp:250 kmreaderwin.cpp:266
+#: kmreaderwin.cpp:256 kmreaderwin.cpp:272
 #, fuzzy
 msgid "To: "
 msgstr "Para:"
 
-#: kmreaderwin.cpp:254 kmreaderwin.cpp:275
+#: kmreaderwin.cpp:260 kmreaderwin.cpp:281
 msgid "References: "
 msgstr ""
 
-#: kmreaderwin.cpp:269
+#: kmreaderwin.cpp:275
 #, fuzzy
 msgid "Cc: "
 msgstr "Cópia:"
 
-#: kmreaderwin.cpp:271
+#: kmreaderwin.cpp:277
 #, fuzzy
 msgid "Date: "
 msgstr "Data:"
 
-#: kmreaderwin.cpp:333
+#: kmreaderwin.cpp:339
 msgid "Message was signed by"
 msgstr ""
 
-#: kmreaderwin.cpp:334
+#: kmreaderwin.cpp:340
 msgid "Warning: Bad signature from"
 msgstr ""
 
-#: kmreaderwin.cpp:558
+#: kmreaderwin.cpp:564
 #, fuzzy
 msgid "Could not create temporary file"
 msgstr "Não foi possivel criar a pasta do lixo '%s'"
 
-#: kmreaderwin.cpp:578
+#: kmreaderwin.cpp:584
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr ""
 
-#: kmreaderwin.cpp:604
+#: kmreaderwin.cpp:610
 msgid "Could not save file"
 msgstr ""
 
