@@ -60,6 +60,9 @@ public:
     void save();
     void load();
     int  score();
+
+    //This value is valid only for a few moments after running
+    //thread() over an article list. It's not really meant to be used...
     int  threadDepth;
     
 private:

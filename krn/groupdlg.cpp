@@ -673,7 +673,7 @@ void Groupdlg::getSubjects()
             debug ("Getting subjects in %s",group->data());
             group->getSubjects(server);
         }
-        s="Got Subects";
+        s="Got Subjects";
         statusBar ()->changeItem (s.data(), 2);
     }
 }

@@ -119,8 +119,8 @@ void Article::formHeader(QString *s)
     s->append("\n \n");
     delete[] tempbuf;
 
-//    for (int i=0;i<threadDepth;i++)
-//        s->append("\t");
+    for (int i=0;i<threadDepth;i++)
+        s->append("\t");
     s->append(Subject);
 }
 
@@ -337,6 +337,33 @@ bool isParent(Article *parent,Article *child)
         return false;
 }
 
+void collectChildren(ArticleList *parentThread,QList<ArticleList> *children)
+{
+    QListIterator <ArticleList> it(*children);
+    for (;it.current();++it)
+    {
+        if (it.current()->isEmpty())
+            //thread has already been adopted
+            continue;
+        ArticleList *childThread=it.current();
+        if (isParent(parentThread->first(),childThread->first()))
+        {
+            //It's parent's daughter, make it collect its own kids,
+            collectChildren(childThread,children);
+            //and then adopt it
+            QListIterator <Article> it2(*childThread);
+            it2.toFirst();
+            for (;it2.current();++it2)
+            {
+                it2.current()->threadDepth++;
+                parentThread->append(it2.current());
+            }
+            childThread->clear();
+        }
+    }
+}
+
+
 void ArticleList::thread(bool sortBySubject=false)
 {
 
@@ -349,11 +376,13 @@ void ArticleList::thread(bool sortBySubject=false)
     threads.setAutoDelete(false);
     Article *iter;
     //Make a thread for each article
+    //And set their depth to 0
     for (iter=this->first();iter!=0;iter=this->next())
     {
         ArticleList *l=new ArticleList;
         l->append(iter);
         threads.append(l);
+        iter->threadDepth=0;
     }
 
     thread.toFirst();
@@ -368,25 +397,7 @@ void ArticleList::thread(bool sortBySubject=false)
             //thread has already been adopted
             continue;
         //look for current's children
-        QListIterator <ArticleList> it(threads);
-        for (;it.current();++it)
-        {
-            if (it.current()->isEmpty())
-                //thread has already been adopted
-                continue;
-            childThread=it.current();
-            if (isParent(parentThread->first(),childThread->first()))
-            {
-                //It's parent's daughter, adopt it
-                QListIterator <Article> it2(*childThread);
-                it2.toFirst();
-                for (;it2.current();++it2)
-                {
-                    parentThread->append(it2.current());
-                }
-                childThread->clear();
-            }
-        }
+        collectChildren(parentThread,&threads);
     }
     clear();
 
@@ -421,17 +432,13 @@ void ArticleList::thread(bool sortBySubject=false)
     for (;thread.current();++thread)
     {
         //The first one is a root for sure
-        if (thread.current()->first())
+        if (!thread.current()->isEmpty())
         {
-            append(thread.current()->first());
-            thread.current()->remove(0);
-            thread.current()->thread();
-        }
-        //And add all the articles back in.
-        QListIterator <Article> it2(*thread.current());
-        for (;it2.current();++it2)
-        {
-            append(it2.current());
+            QListIterator <Article> it2(*thread.current());
+            for (;it2.current();++it2)
+            {
+                append(it2.current());
+            }
         }
     }
 }

@@ -186,6 +186,8 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     list->dict().insert("R",new QPixmap(pixpath+"red-bullet.xpm"));    //Read message
     list->dict().insert("T",new QPixmap(pixpath+"black-bullet.xpm"));  //Unav. message
     list->dict().insert("M",new QPixmap(pixpath+"tagged.xpm"));  //Marked message
+
+    list->setTabWidth(25);
     
     gl->addWidget( list, 0, 0 );
     connect (list,SIGNAL(selected(int,int)),this,SLOT(loadArt(int,int)));
