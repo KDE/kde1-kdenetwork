@@ -25,7 +25,8 @@ pics_DATA = black-bullet.xpm\
         attach.xpm\
         mailpost.xpm\
         fileforward.xpm\
-        send.xpm
+        send.xpm\
+        find.xpm
 
 
 picsdir = $(kde_datadir)/krn/toolbar
