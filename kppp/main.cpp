@@ -82,6 +82,7 @@ void usage(char* progname){
   fprintf(stderr, "%s -- valid command line options:\n", progname);
   fprintf(stderr, " -h : describe command line options\n");
   fprintf(stderr, " -c account_name : connect to account account_name\n");
+  fprintf(stderr, " -k : terminate an existing connection\n");
   fprintf(stderr, " -q : quit after end of connection\n");
   fprintf(stderr, " -r rule_file: check syntax of rule_file\n");
   exit(1);
