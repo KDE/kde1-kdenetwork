@@ -151,7 +151,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     connect (options,SIGNAL(activated(int)),SLOT(actions(int)));
     
     menu = new KMenuBar (this, klocale->translate("menu"));
-    menu->insertItem (klocale->translate("&Article"), article);
+    menu->insertItem (klocale->translate("&File"), article);
     menu->insertItem (klocale->translate("&Tagged"), taggedArticle);
     menu->insertItem (klocale->translate("&Options"), options);
     setMenu (menu);
