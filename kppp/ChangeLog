@@ -1,3 +1,8 @@
+1998-09-23  Harri Porten  <porten@kde.org>
+
+	* ppplog.cpp: skip remote message if empty
+	* ppplog.cpp: fixed segfault triggered by virgin log files
+
 1998-09-21  Mario Weilguni <mweilguni@kde.org>
 
 	* introducing quickhelp

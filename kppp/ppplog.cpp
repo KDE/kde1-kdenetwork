@@ -124,10 +124,9 @@ int PPPL_MakeLog(QStrList &list) {
   sscanf(p, "%d", &pid);
 
   // position at EOL
-  list.at(list.count() - 1);
+  list.last();
 
-  do {
-    list.prev();
+  while(list.prev()) {
     p = (char *)strchr(list.current(), '[');
     if(p != 0) {
       p++;
@@ -135,16 +134,16 @@ int PPPL_MakeLog(QStrList &list) {
 
       /* truncate list */
       if(newpid != pid) {
-	int cnt = list.at()+1;
+	int cnt = list.at();
 
 	for(int i = 0; i <= cnt; i++)
 	  list.removeFirst();
       }
     }
-  } while(list.prev() != 0);
+  }
 
   /* clear security related info */
-  list.at(0);
+  list.first();
 
   char *keyword[] = {"name = \"",
 		    "user=\"",
@@ -220,19 +219,22 @@ you to track down the connection problem."),
     char *p = strstr(sl.at(i), rmsg);
 
     if(p) {
-      // found a remote message
-      QString msg(2048);
-      msg.sprintf(i18n("
+      p += strlen(rmsg);
+      if(strlen(p)) {
+        // found a remote message
+        QString msg(2048);
+        msg.sprintf(i18n("
 The remote system system has sent the following message:
 
 \"%s\"
 
-This may give you a hint why the connection has failed."), p + strlen(rmsg));
+This may give you a hint why the connection has failed."), p);
       
-      KMsgBox::message(0,
-		       i18n("Error"),
-		       msg.data(),
-		       KMsgBox::STOP);
+        KMsgBox::message(0,
+                         i18n("Error"),
+                         msg.data(),
+                         KMsgBox::STOP);
+      }
     }
   }
 

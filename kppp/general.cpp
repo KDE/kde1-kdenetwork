@@ -532,7 +532,7 @@ ModemWidget2::ModemWidget2( QWidget *parent, const char *name)
   KQuickHelp::add(volume, 
 		  i18n("Most modems have a speaker which makes\n"
 		       "a lot of noise when dialing. Here you can\n"
-		       "either turn this completly off or select a\n"
+		       "either turn this completely off or select a\n"
 		       "lower volume.\n"
 		       "\n"
 		       "If this does not work for your modem,\n"
