@@ -19,23 +19,23 @@ msgstr "KRN - Informácie o chýbajúcej konfigurácii"
 
 #: main.cpp:228
 msgid "Please enter your email adress"
-msgstr "Prosím zadajte va¹u e-mailovú adresu"
+msgstr "Prosím, zadajte va¹u e-mailovú adresu"
 
 #: main.cpp:240
 msgid "Please enter your real name"
-msgstr "Prosím zadajte va¹e skutoèné meno"
+msgstr "Prosím, zadajte va¹e skutoèné meno"
 
 #: main.cpp:252
 msgid "Please enter your organization's name"
-msgstr "Prosím zadajte meno va¹ej organizácie"
+msgstr "Prosím, zadajte meno va¹ej organizácie"
 
 #: main.cpp:267
 msgid "Please enter your NNTP server name"
-msgstr "Prosím zadajte vá¹ NNTP server"
+msgstr "Prosím, zadajte vá¹ NNTP server"
 
 #: main.cpp:279
 msgid "Please enter your SMTP server name"
-msgstr "Prosím zadajte meno va¹eho SMTP serveru"
+msgstr "Prosím, zadajte názov vá¹ho SMTP serveru"
 
 #: NNTP.cpp:70
 #, c-format
@@ -204,7 +204,7 @@ msgstr "Overenie prístupu sa nepodarilo"
 
 #: groupdlg.cpp:525
 msgid "Connection to server failed: Authentication problem"
-msgstr "Spojenie so serverom sa nepodarilo: Problém pri overovaní prístupu"
+msgstr "Spojenie so serverom sa nepodarilo: problém pri overovaní prístupu"
 
 #: groupdlg.cpp:570
 msgid "Krn-Question"
@@ -224,7 +224,7 @@ msgid ""
 " get it from server?"
 msgstr ""
 "Nemáte k dispozícii zoznam aktívnych skupín.\n"
-" Získa» zo servera?"
+" Získa» ich zo servera?"
 
 #: groupdlg.cpp:849
 msgid "Listing active newsgroups"
@@ -236,7 +236,7 @@ msgstr "KRN - Nájs» diskusnú skupinu"
 
 #: groupdlg.cpp:862
 msgid "Enter the name of the Newsgroup"
-msgstr "Zadaj meno diskusnej skupiny"
+msgstr "Zadajte meno diskusnej skupiny"
 
 #: groupdlg.cpp:947
 msgid "Krn - Message"
@@ -328,7 +328,7 @@ msgstr "Nastav pravidlá"
 
 #: artdlg.cpp:186
 msgid "Update"
-msgstr "Aktualizuj"
+msgstr "Aktualizova»"
 
 #: artdlg.cpp:193
 msgid "&Scoring"
@@ -547,7 +547,7 @@ msgstr "Zásluhy a poïakovanie"
 
 #: aboutDlg.cpp:63
 msgid "And Many thanks to:"
-msgstr "Poïakovanie pro:"
+msgstr "Poïakovanie pre:"
 
 #: fontsDlg.cpp:39
 msgid "Message Display Settings"
@@ -695,23 +695,23 @@ msgstr "KRN - Nastavenie tlaèe"
 
 #: printdlg.cpp:33
 msgid "General"
-msgstr "Odosielateµ"
+msgstr "V¹eobecné"
 
 #: printdlg.cpp:37
 msgid "Use HTML Printing"
-msgstr "Pou¾i tlaè cez HTML"
+msgstr "Pou¾i» tlaè cez HTML"
 
 #: printdlg.cpp:40
 msgid "Use Direct Printing"
-msgstr "Pou¾i priamu tlaè"
+msgstr "Pou¾i» priamu tlaè"
 
 #: printdlg.cpp:48
 msgid "Print using:"
-msgstr "Tlaè pomocou:"
+msgstr "Tlaèi» pomocou:"
 
 #: printdlg.cpp:52
 msgid "Feed it with:"
-msgstr "Naplò to s:"
+msgstr "Naplni» to s:"
 
 #: printdlg.cpp:54
 msgid "Postscript"
@@ -747,11 +747,11 @@ msgstr "Editor pravidiel"
 
 #: rulesDlg.cpp:87
 msgid "Save as"
-msgstr "Ulo¾ ako"
+msgstr "Ulo¾i» ako"
 
 #: rulesDlg.cpp:101
 msgid "Match Articles With:"
-msgstr "Porovnaj èlánky s:"
+msgstr "Porovna» èlánky s:"
 
 #: rulesDlg.cpp:126
 msgid "Negative"
@@ -759,7 +759,7 @@ msgstr "Negatívne"
 
 #: rulesDlg.cpp:189
 msgid "Rule name:"
-msgstr "Skutoèné meno"
+msgstr "Názov pravidla"
 
 #: sortDlg.cpp:23
 msgid "KRN - Header Sorting"
@@ -771,23 +771,9 @@ msgstr "®iadny"
 
 #: sortDlg.cpp:39
 msgid "Sort by:"
-msgstr "Trieï podµa:"
+msgstr "Triedi» podµa:"
 
 #: sortDlg.cpp:56
 msgid "Use Threading"
-msgstr "Pou¾i vlákna ..."
+msgstr "Pou¾i» vlákna ..."
 
-#~ msgid "menu"
-#~ msgstr "menu"
-
-#~ msgid "KRN - Charset Settings"
-#~ msgstr "KRN - Nastavenie znakovej sady"
-
-#~ msgid "KMail - Charset Settings"
-#~ msgstr "KRN - Nastavenie znakovej sady"
-
-#~ msgid "Message charset"
-#~ msgstr "Znaková sada správy"
-
-#~ msgid "Composer charset"
-#~ msgstr "Znaková sada composera"

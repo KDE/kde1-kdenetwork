@@ -161,11 +161,11 @@ msgstr "sekúnd"
 
 #: connect.cpp:331
 msgid "No Dialtone"
-msgstr "®iadny vyzváòací tón (na Slovensku treba zmeni» nastavenie modemu)"
+msgstr "Neprítomný vyzváòací tón (na Slovensku treba zmeni» nastavenie modemu)"
 
 #: connect.cpp:341
 msgid "No Carrier"
-msgstr "®iadny nosiè"
+msgstr "Neprítomná nosná vlna"
 
 #: connect.cpp:376
 msgid "Scanning "
@@ -185,11 +185,11 @@ msgstr "Oèakávam "
 
 #: connect.cpp:428
 msgid "Pause "
-msgstr "Pauza "
+msgstr "Prestávka "
 
 #: connect.cpp:447
 msgid "Timeout "
-msgstr "Timeout"
+msgstr "Timeout "
 
 #: connect.cpp:461 connect.cpp:462
 msgid "Hangup"
@@ -241,7 +241,7 @@ msgstr "neznáma rýchlos»"
 
 #: connect.cpp:849
 msgid "Scan Var: "
-msgstr ""
+msgstr "Scan Var:"
 
 #: connect.cpp:860
 msgid "Found: "
@@ -269,7 +269,7 @@ msgstr "Oèakávam:"
 
 #: connect.cpp:1017
 msgid "Logging on to Network ..."
-msgstr "Prihlasovanie do siete ..."
+msgstr "Prihlasovanie sa do siete ..."
 
 #: connect.cpp:1043
 msgid "Running Startup Command ..."
@@ -297,7 +297,7 @@ msgstr ""
 
 #: conwindow.cpp:45
 msgid "Connected at:"
-msgstr "Rýchlos» spojenia:"
+msgstr "Spojený rýchlos»ou:"
 
 #: conwindow.cpp:51
 msgid "Time connected:"
@@ -305,11 +305,11 @@ msgstr "Èas pripojenia:"
 
 #: conwindow.cpp:56
 msgid "Volume:"
-msgstr ""
+msgstr "Objem dát:"
 
 #: conwindow.cpp:60
 msgid "Session Bill:"
-msgstr "Úèet za senasu:"
+msgstr "Úèet za sedenie:"
 
 #: conwindow.cpp:62
 msgid "Total Bill:"
@@ -325,7 +325,7 @@ msgstr "Detaily"
 
 #: debug.cpp:49
 msgid "Login Script Debug Window"
-msgstr "Ladiace okno pre prihla¹ovací skript"
+msgstr "Ladiace okno pre prihlasovací skript"
 
 #: debug.cpp:65
 msgid "Dismiss"
@@ -595,7 +595,7 @@ msgstr "Modemové príkazy"
 
 #: general.cpp:490
 msgid "Query Modem"
-msgstr "Opýta» sa modemu"
+msgstr "Automatické nastavenie"
 
 #: general.cpp:491
 msgid "Terminal"
@@ -726,7 +726,7 @@ msgstr "Ukonèi» kPPP?"
 
 #: main.cpp:845
 msgid "Exiting kPPP will close your PPP Session."
-msgstr "Ukonèenie kPPP uzavie va¹u PPP seansu."
+msgstr "Ukonèenie kPPP uzavie va¹e PPP sedenie."
 
 #: main.cpp:880
 msgid ""
@@ -750,7 +750,7 @@ msgstr "Poèiatoèná odozva:"
 
 #: modemcmds.cpp:86
 msgid "Init Delay (sec/100):"
-msgstr ""
+msgstr "Poèiatoèné èakania(sek/100):"
 
 #: modemcmds.cpp:91
 msgid "Dial String:"
@@ -762,11 +762,11 @@ msgstr "Odozva pri pripojení:"
 
 #: modemcmds.cpp:105
 msgid "Busy Response:"
-msgstr "Obsazovacia odozva:"
+msgstr "Odozva pri obsadenej linke:"
 
 #: modemcmds.cpp:112
 msgid "No Carrier Resonse:"
-msgstr "Odozva pri neprítomnosti nosièa:"
+msgstr "Odozva pri neprítomnosti nosnej:"
 
 #: modemcmds.cpp:119
 msgid "No Dialtone Response:"
@@ -778,27 +778,27 @@ msgstr "Re»azec pre zavesenie:"
 
 #: modemcmds.cpp:133
 msgid "Hangup Response:"
-msgstr "Odozva pre zavesenie:"
+msgstr "Odozva pri zavesení:"
 
 #: modemcmds.cpp:140
 msgid "Answer String:"
-msgstr "Odpovedajúci re»azec:"
+msgstr "Re»azec pri odpovedaní:"
 
 #: modemcmds.cpp:147
 msgid "Ring Response:"
-msgstr "Vyzváòajúca odozva:"
+msgstr "Odozva pri vyzváòaní:"
 
 #: modemcmds.cpp:154
 msgid "Answer Response:"
-msgstr "Odpovedajúca odozva:"
+msgstr "Odozva pri odpovedaní:"
 
 #: modemcmds.cpp:161
 msgid "Escape String:"
-msgstr "Ukonèovací re»azec:"
+msgstr "Escape re»azec:"
 
 #: modemcmds.cpp:168
 msgid "Escape Response:"
-msgstr "Ukonèovacia odozva:"
+msgstr "Escape odozva:"
 
 #: modemcmds.cpp:195
 msgid "Guard Time (sec/50):"
@@ -828,7 +828,7 @@ msgstr ""
 
 #: modeminfo.cpp:46
 msgid "ATI Query"
-msgstr "ATI otázka"
+msgstr "Zis»ujem nastavenie modemu"
 
 #: modeminfo.cpp:131
 msgid "Modem Query timed out."
@@ -864,35 +864,35 @@ msgstr "Vzdialená adresa:"
 
 #: pppstatdlg.cpp:186
 msgid "bytes in"
-msgstr "pri¹lo bajtov"
+msgstr "prijatých bajtov"
 
 #: pppstatdlg.cpp:187
 msgid "bytes out"
-msgstr "odi¹lo bajtov"
+msgstr "odoslaných bajtov"
 
 #: pppstatdlg.cpp:189
 msgid "packets in"
-msgstr "pri¹lo paketov"
+msgstr "prijatých paketov"
 
 #: pppstatdlg.cpp:190
 msgid "packets out"
-msgstr "odi¹lo paketov"
+msgstr "odoslaných paketov"
 
 #: pppstatdlg.cpp:192
 msgid "vjcomp in"
-msgstr "pri¹lo vjcomp"
+msgstr "prijatých vjcomp"
 
 #: pppstatdlg.cpp:193
 msgid "vjcomp out"
-msgstr "odi¹lo vjcomp"
+msgstr "odoslaných vjcomp"
 
 #: pppstatdlg.cpp:195
 msgid "vjunc in"
-msgstr "do¹lo vjunc"
+msgstr "prijatých vjunc"
 
 #: pppstatdlg.cpp:196
 msgid "vjunc out"
-msgstr "odi¹lo vjunc"
+msgstr "odoslaných vjunc"
 
 #: pppstatdlg.cpp:198
 msgid "vjerr"
@@ -993,7 +993,7 @@ msgstr "Dostupné pravidlá"
 
 #: ruleset.cpp:538
 msgid "kppp: no rulefile specified\n"
-msgstr "kppp: ne¹pecifikované ¾iadne pravidlo\n"
+msgstr "kppp: ne¹pecifikovaný ¾iadny súbor pravidiel\n"
 
 #: ruleset.cpp:544
 #, c-format
@@ -1042,7 +1042,7 @@ msgid ""
 msgstr ""
 "Nie je mo¾né nájs» pppd démon!\n"
 "\n"
-"Uistite sa, ¾e pppd je nain¹talovaný\n"
+"Uistite sa, ¾e pppd je nain¹talovaný,\n"
 "a ¾e ste zadali správnu cestu.\n"
 
 #: runtests.cpp:110
