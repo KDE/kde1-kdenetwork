@@ -41,7 +41,7 @@ bool modem_is_locked = false;
 
 
 Modem::Modem() : modemfd(-1), data_mode(false) {
-
+  sn = 0L;
 }
 
 
