@@ -62,7 +62,7 @@ extern int obytes;
 QString timet2qstring(time_t t) {
   QString s;
 
-  s.sprintf("%u", t);
+  s.sprintf("%lu", t);
   return s;
 }
 
@@ -375,13 +375,13 @@ bool ExecutableAccounting::running() {
 }
 
 
-bool ExecutableAccounting::loadRuleSet(const char *name) {
+bool ExecutableAccounting::loadRuleSet(const char *) {
   QString s = AccountingBase::getAccountingFile(gpppdata.accountingFile());
   return (access(s.data(), X_OK) == 0);
 }
 
 
-void ExecutableAccounting::gotData(KProcess *proc, char *buffer, int buflen) {
+void ExecutableAccounting::gotData(KProcess */*proc*/, char *buffer, int /*buflen*/) {
   QString field[8];
   int nFields = 0;
   int pos, last_pos = 0;

@@ -118,7 +118,7 @@ class ExecutableAccounting : public AccountingBase {
 public:
   ExecutableAccounting(QObject *parent = 0);
 
-  virtual bool loadRuleSet(const char *name);
+  virtual bool loadRuleSet(const char *);
   virtual bool running();
 
 public slots:

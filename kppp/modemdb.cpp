@@ -121,11 +121,11 @@ void ModemSelector::vendorSelected(int idx) {
 }
 
 
-void ModemSelector::modelSelected(int idx) {
+void ModemSelector::modelSelected(int) {
   ok->setEnabled(true);
 }
 
-void ModemSelector::selected(int idx) {
+void ModemSelector::selected(int) {
   accept();
 }
 

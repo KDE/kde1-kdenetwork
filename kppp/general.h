@@ -35,12 +35,12 @@
 #include <qchkbox.h>
 #include <qradiobt.h>
 #include <qgrpbox.h>
-#include <kslider.h>
 #include <kcolorbtn.h>
 
 #include "pppdata.h"
 #include "groupbox.h"
 
+class KSlider;
 class ModemTransfer;
 
 class GeneralWidget : public KGroupBox {
