@@ -78,6 +78,9 @@ AC_CHECK_FUNCS(socket fabsl strdup vsnprintf)
 AC_CHECK_GETDOMAINNAME
 AC_CHECK_GETHOSTNAME
 
+dnl Check for utmp file
+AC_CHECK_UTMP_FILE
+
 dnl output files
 topdir=`pwd`
 AC_SUBST(topdir)
