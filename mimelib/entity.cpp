@@ -201,7 +201,16 @@ void DwEntity::Assemble()
     mHeaders->Assemble();
     mString = "";
     mString += mHeaders->AsString();
-    mString += DW_EOL;
+
+    int len = mString.length();
+#if defined(DW_EOL_CRLF)
+    if (len>1 && (mString[len-1]!='\n' || mString[len-3]!='\n'))
+#else
+    if (len>3 && (mString[len-1]!='\n' || mString[len-2]!='\n'))
+#endif
+    {
+      mString += DW_EOL;
+    }
     mString += mBody->AsString();
     mIsModified = 0;
 }
