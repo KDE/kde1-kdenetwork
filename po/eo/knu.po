@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: knu 1.0pre2\n"
 "POT-Creation-Date: 1998-12-01 01:56+0100\n"
-"PO-Revision-Date: 1998-07-19 20:00+0100\n"
+"PO-Revision-Date: 1998-12-09 20:00+0100\n"
 "Last-Translator: Wolfram Diestel <diestel@rzaix340.rz-uni-leipzig.de>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -32,7 +32,7 @@ msgstr "&Finger"
 
 #: knu.cpp:187 knu.cpp:330
 msgid "&mtr"
-msgstr ""
+msgstr "&mtr"
 
 #: knu.cpp:198
 msgid ""
@@ -152,35 +152,35 @@ msgstr " - konfigura¼o"
 
 #: MtrDlg.cpp:83
 msgid "#"
-msgstr ""
+msgstr "#"
 
 #: MtrDlg.cpp:84
 msgid "Hostname"
-msgstr ""
+msgstr "Komputilnomo"
 
 #: MtrDlg.cpp:85
 msgid "Loss"
-msgstr ""
+msgstr "Perdo"
 
 #: MtrDlg.cpp:87
 msgid "Rcv"
-msgstr ""
+msgstr "Ricv"
 
 #: MtrDlg.cpp:89
 msgid "Snt"
-msgstr ""
+msgstr "Sndt"
 
 #: MtrDlg.cpp:91
 msgid "Best"
-msgstr ""
+msgstr "Maks"
 
 #: MtrDlg.cpp:93
 msgid "Avg"
-msgstr ""
+msgstr "Avrg"
 
 #: MtrDlg.cpp:95
 msgid "Worst"
-msgstr ""
+msgstr "Min"
 
 #: MtrDlg.cpp:138 PingDlg.cpp:100 TracerouteDlg.cpp:98
 msgid "Make host &name resolution"
@@ -188,7 +188,7 @@ msgstr "Eltrovu komputilnomojn"
 
 #: HostDlg.cpp:331 PingDlg.cpp:227
 msgid "hos&t"
-msgstr "komputilo"
+msgstr "&komputilo"
 
 #: HostDlg.cpp:335 PingDlg.cpp:231
 msgid "ns&lookup"
@@ -200,7 +200,7 @@ msgstr "&Maksimuma nombro da saltoj:"
 
 #: HostDlg.cpp:112
 msgid "address (A)"
-msgstr "adreso"
+msgstr "adreso (A)"
 
 #: HostDlg.cpp:113
 msgid "name (PTR)"
@@ -241,6 +241,3 @@ msgstr "Ser&vilo:"
 #: FingerDlg.cpp:77
 msgid "&User:"
 msgstr "&Uzanto:"
-
-#~ msgid "&Matt's traceroute"
-#~ msgstr "Traceroute de &Matt"

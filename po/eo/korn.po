@@ -1,0 +1,191 @@
+# Esperantaj mesaøoj por "korn"
+# Copyright (C) 1998 Free Software Foundation, Inc.
+# Wolfram Diestel <diestel@rzaix340.rz.uni-leipzig.de>, 1998.
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: korn\n"
+"POT-Creation-Date: 1998-10-01 18:13+0200\n"
+"PO-Revision-Date: 1998-12-09 20:00+0100\n"
+"Last-Translator: Wolfram Diestel <diestel@rzaix340.rz-uni-leipzig.de>\n"
+"Language-Team: Esperanto <eo@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-3\n"
+"Content-Transfer-Encoding: 8-bit\n"
+
+#: shell.cpp:226
+msgid "About KOrn"
+msgstr "Pri KOrn"
+
+#: optdlg.cpp:113 shell.cpp:236
+msgid "&Setup.."
+msgstr "&Agordu..."
+
+#: shell.cpp:239
+msgid "&About.."
+msgstr "&Pri..."
+
+#: shell.cpp:250
+msgid "Welcome to KOrn"
+msgstr "Bonvenon æe KOrn"
+
+#: shell.cpp:251
+msgid ""
+"You do not appear to have used KOrn before. Would you like a basic "
+"configuration created for you?"
+msgstr ""
+"Þajnas, ke vi ne antaýe uzis KOrn. Æu mi kreu bazan agorda¼on "
+"por vi?"
+
+#: shell.cpp:253
+msgid "No, Exit"
+msgstr "Ne, Finu"
+
+#: dropman.cpp:185
+msgid "Inbox"
+msgstr "Alveno"
+
+#: dropman.cpp:191
+msgid "Can't find mailbox"
+msgstr "Ne eblis trovi poþtkeston"
+
+#: dropman.cpp:192
+msgid ""
+"Unable to find $MAIL environment variable. You'll have to configure the "
+"mailboxes yourself."
+msgstr ""
+"La mediovariablo $MAIL ne estas difinita. Vi devas do agordi la "
+"poþtkestojn mem."
+
+#: dropman.cpp:254
+msgid " (clone)"
+msgstr " (kopio)"
+
+#: typedlg.cpp:28
+msgid "Select a mailbox type..."
+msgstr "Elektu poþtkestotipon..."
+
+#: typedlg.cpp:44
+msgid "O&K"
+msgstr "&Konfirmu"
+
+#: optdlg.cpp:30
+msgid "Korn: Options"
+msgstr "Korn: Opcioj"
+
+#: optdlg.cpp:42
+msgid "Horizontal"
+msgstr "Horizontala"
+
+#: optdlg.cpp:45
+msgid "Vertical"
+msgstr "Vertikala"
+
+#: optdlg.cpp:48
+msgid "Docked"
+msgstr "Dokita"
+
+#: optdlg.cpp:51
+msgid "&Layout"
+msgstr "&Aranøo"
+
+#: optdlg.cpp:80
+msgid "&Modify Box"
+msgstr "Þ&anøu keston"
+
+#: optdlg.cpp:89
+msgid "&New Box"
+msgstr "&Nova kesto"
+
+#: optdlg.cpp:95
+msgid "&Delete Box"
+msgstr "&Forigu keston"
+
+#: optdlg.cpp:104
+msgid "&Clone Box"
+msgstr "&Kopiu keston"
+
+#: optdlg.cpp:121
+msgid "&Boxes"
+msgstr "&Kestoj"
+
+#: optdlg.cpp:243
+msgid "New Monitor"
+msgstr "Nova ekrano"
+
+#: dropdlg.cpp:22
+msgid "Korn Monitor"
+msgstr "KOrn-ekrano"
+
+#: gencfg.cpp:28
+msgid "Caption"
+msgstr "Titolo"
+
+#: gencfg.cpp:31
+msgid "On Receipt"
+msgstr "Æe ricevo"
+
+#: gencfg.cpp:34
+msgid "On Click"
+msgstr "Æe mustuþo"
+
+#: gencfg.cpp:42
+msgid "General"
+msgstr "Øenerale"
+
+#: pollcfg.cpp:26
+msgid "Poll"
+msgstr "Kontrolu regule"
+
+#: pollcfg.cpp:40
+msgid "Check Frequency (sec)"
+msgstr "Kontrolintervalo (s)"
+
+#: unixcfg.cpp:26
+msgid "Mailbox"
+msgstr "Poþtkesto"
+
+#: unixcfg.cpp:41
+msgid "Mbox Path"
+msgstr "Pado de PK"
+
+#: qmailcfg.cpp:26
+msgid "Maildir"
+msgstr "Poþtdosierujo"
+
+#: qmailcfg.cpp:38
+msgid "Maildir Path"
+msgstr "Pado al poþta¼oj"
+
+#: newscfg.cpp:38 popcfg.cpp:44
+msgid "Server"
+msgstr "Servilo"
+
+#: popcfg.cpp:49
+msgid "Port"
+msgstr "Pordo"
+
+#: popcfg.cpp:52
+msgid "Username"
+msgstr "Uzantonomo"
+
+#: popcfg.cpp:55
+msgid "Password"
+msgstr "Pasvorto"
+
+#: popcfg.cpp:60
+msgid "Save Password"
+msgstr "Sekurigu pasvorton"
+
+#: newscfg.cpp:26
+msgid "News"
+msgstr "Nova¼oj"
+
+#: newscfg.cpp:41
+msgid "Group"
+msgstr "Grupo"
+
+#: kfbrowsebtn.cpp:18
+msgid "Browse.."
+msgstr "Rigardu..."

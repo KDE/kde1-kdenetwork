@@ -1,0 +1,236 @@
+# Esperantaj mesaøoj por "kbiff"
+# Copyright (C) 1998 Free Software Foundation, Inc.
+# Wolfram Diestel <diestel@rzaix340.rz.uni-leipzig.de>, 1998.
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kbiff\n"
+"POT-Creation-Date: 1998-11-23 01:56+0100\n"
+"PO-Revision-Date: 1998-12-08 18:00+0100\n"
+"Last-Translator: Wolfram Diestel <diestel@rzaix340.rz-uni-leipzig.de>\n"
+"Language-Team: Esperanto <eo@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-3\n"
+"Content-Transfer-Encoding: 8-bit\n"
+
+#: kbiff.cpp:470
+msgid "&UnDock"
+msgstr "&Maldoku"
+
+#: kbiff.cpp:472
+msgid "&Dock"
+msgstr "&Doku"
+
+#: kbiff.cpp:473
+msgid "&Setup..."
+msgstr "&Agordu..."
+
+#: kbiff.cpp:475
+msgid "&Help..."
+msgstr "&Helpu..."
+
+#: kbiff.cpp:479
+msgid "&Check Mail Now"
+msgstr "&Rigardu je poþto nun"
+
+#: kbiff.cpp:481
+msgid "&Read Mail Now"
+msgstr "&Prenu la poþton nun"
+
+#: kbiff.cpp:487
+msgid "&Stop"
+msgstr "&Stop"
+
+#: notify.cpp:28 notify.cpp:45
+msgid "You have new mail!"
+msgstr "Vi havas novajn poþtat¼ojn!"
+
+#: notify.cpp:53
+#, c-format
+msgid "New Messages: %d"
+msgstr "Novaj mesaøoj: %d"
+
+#: notify.cpp:58
+#, c-format
+msgid "Mailbox: %s"
+msgstr "Poþtkesto: %s"
+
+#: setupdlg.cpp:81
+msgid "KBiff Setup"
+msgstr "KBiff-agordo"
+
+#: setupdlg.cpp:84
+msgid "Profile:"
+msgstr "Agorda¼o:"
+
+#: setupdlg.cpp:100
+msgid "&New..."
+msgstr "&Nova..."
+
+#: setupdlg.cpp:107
+msgid "&Rename..."
+msgstr "&Alinomu..."
+
+#: setupdlg.cpp:141
+msgid "General"
+msgstr "Øenerale"
+
+#: setupdlg.cpp:142
+msgid "New Mail"
+msgstr "Nova poþto"
+
+#: setupdlg.cpp:143
+msgid "Mailbox"
+msgstr "Poþtkesto"
+
+#: setupdlg.cpp:358
+msgid "New Profile"
+msgstr "Nova agorda¼o"
+
+#: setupdlg.cpp:390
+#, c-format
+msgid "Rename Profile: %s"
+msgstr "Alinomu agorda¼on: %s"
+
+#: setupdlg.cpp:430
+#, c-format
+msgid "Delete Profile: %s"
+msgstr "Forigu agorda¼on: %s"
+
+#: setupdlg.cpp:431
+msgid "Are you sure you wish to delete this profile?\n"
+msgstr "Æu vi estas certa, ke vi volas forigi tiun æi agorda¼on?\n"
+
+#: setupdlg.cpp:491
+msgid "Poll (sec):"
+msgstr "Kontrolintervalo (s):"
+
+#: setupdlg.cpp:496
+msgid "Mail client:"
+msgstr "Poþtkliento:"
+
+#: setupdlg.cpp:509
+msgid "Dock in panel"
+msgstr "Doku en la panelo"
+
+#: setupdlg.cpp:514
+msgid "Use session management"
+msgstr "Uzu seanc-administradon"
+
+#: setupdlg.cpp:519
+msgid "Icons:"
+msgstr "Piktogramoj:"
+
+#: setupdlg.cpp:537
+msgid "No Mail:"
+msgstr "Neniu poþto:"
+
+#: setupdlg.cpp:546
+msgid "Old Mail"
+msgstr "Malnova poþto"
+
+#: setupdlg.cpp:556
+msgid "New Mail:"
+msgstr "Nova poþto"
+
+#: setupdlg.cpp:693
+msgid "Run Command"
+msgstr "Lanæ-komando"
+
+#: setupdlg.cpp:700 setupdlg.cpp:713 setupdlg.cpp:1053
+msgid "Browse"
+msgstr "Raigardu"
+
+#: setupdlg.cpp:706
+msgid "Play Sound"
+msgstr "Ludu sonoron"
+
+#: setupdlg.cpp:719
+msgid "System Beep"
+msgstr "Sistempepo"
+
+#: setupdlg.cpp:724
+msgid "Notify"
+msgstr "Anoncu"
+
+#: setupdlg.cpp:855
+msgid "Advanced Options"
+msgstr "Ekstraj opcioj"
+
+#: setupdlg.cpp:859
+msgid "Mailbox URL:"
+msgstr "Poþtkesta URL:"
+
+#: setupdlg.cpp:863
+msgid "Port:"
+msgstr "Pordo:"
+
+#: setupdlg.cpp:867
+msgid "PREAUTH"
+msgstr "PREAUTH"
+
+#: setupdlg.cpp:874
+msgid "Keep Alive"
+msgstr "Tenu vivanta"
+
+#: setupdlg.cpp:1000 setupdlg.cpp:1029
+msgid "Mailbox:"
+msgstr "Poþtkesto"
+
+#: setupdlg.cpp:1013 setupdlg.cpp:1323
+msgid "New Mailbox"
+msgstr "Nova poþtkesto"
+
+#: setupdlg.cpp:1020
+msgid "Delete Mailbox"
+msgstr "Forigu poþtkeston"
+
+#: setupdlg.cpp:1026
+msgid "Protocol:"
+msgstr "Protokolo:"
+
+#: setupdlg.cpp:1032
+msgid "Server:"
+msgstr "Servilo:"
+
+#: setupdlg.cpp:1035
+msgid "User:"
+msgstr "Uzanto:"
+
+#: setupdlg.cpp:1038
+msgid "Password:"
+msgstr "Pasvorto:"
+
+#: setupdlg.cpp:1070
+msgid "Store password"
+msgstr "Sekurigu pasvorton"
+
+#: setupdlg.cpp:1073
+msgid "Advanced"
+msgstr "Extre"
+
+#: setupdlg.cpp:1510
+msgid "KBiff"
+msgstr "KBiff"
+
+#: setupdlg.cpp:1532
+#, c-format
+msgid ""
+"Version %s\n"
+"\n"
+"Copyright (C) 1998\n"
+"Kurt Granroth"
+msgstr ""
+"Versio %s\n"
+"\n"
+"Kopirajto (c) 1998\n"
+"Kurt Granroth"
+
+#: setupdlg.cpp:1581
+msgid "New Name:"
+msgstr "Nova nomo:"
+
+#: setupdlg.cpp:1607
+msgid "New Name"
+msgstr "Nova nomo"

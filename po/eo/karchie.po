@@ -1,0 +1,299 @@
+# Esperantaj mesaøoj por "karchie"
+# Copyright (C) 1998 Free Software Foundation, Inc.
+# Wolfram Diestel <diestel@rzaix340.rz.uni-leipzig.de>, 1998.
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: karchie\n"
+"POT-Creation-Date: 1998-11-03 10:19+0100\n"
+"PO-Revision-Date: 1998-12-08 18:00+0100\n"
+"Last-Translator: Wolfram Diestel <diestel@rzaix340.rz-uni-leipzig.de>\n"
+"Language-Team: Esperanto <eo@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-3\n"
+"Content-Transfer-Encoding: 8-bit\n"
+
+#: KAMenu.cpp:86
+msgid "O&pen in editor"
+msgstr "Malfermu &redaktilon"
+
+#: KAMenu.cpp:87 KAView.cpp:155
+msgid "&Open Dir"
+msgstr "&Malfermu dosierujon"
+
+#: KAMenu.cpp:88 KAView.cpp:156
+msgid "&Download..."
+msgstr "&Deþutu..."
+
+#: KAMenu.cpp:91
+msgid "&Load List..."
+msgstr "Malfermu &liston..."
+
+#: KAMenu.cpp:92
+msgid "&Save List..."
+msgstr "&Sekurigu liston..."
+
+#: KAMenu.cpp:93
+msgid "Expor&t List..."
+msgstr "&Eksportu liston..."
+
+#: KAMenu.cpp:95
+msgid "&Exit"
+msgstr "&Finu"
+
+#: KAMenu.cpp:111
+msgid "&Exact"
+msgstr "&Precize"
+
+#: KAMenu.cpp:112
+msgid "&Substring"
+msgstr "&Parte"
+
+#: KAMenu.cpp:113
+msgid "Substring &case insensitive"
+msgstr "Parte, &uskleco ne gravas"
+
+#: KAMenu.cpp:114
+msgid "&Regular expression"
+msgstr "&Regulesprimo"
+
+#: KAMenu.cpp:115
+msgid "Exact, then substring"
+msgstr "Precize, poste parte"
+
+#: KAMenu.cpp:116
+msgid "Exact, then substring case ins."
+msgstr "Precize, poste parte sen atento de uskleco"
+
+#: KAMenu.cpp:117
+msgid "Exact, then regular expression"
+msgstr "Precize, poste regulesprimo"
+
+#: KAMenu.cpp:125
+msgid "n&ormal"
+msgstr "&normale"
+
+#: KAMenu.cpp:126
+msgid "&nice"
+msgstr "&bele"
+
+#: KAMenu.cpp:127
+msgid "&very nice"
+msgstr "&tre bele"
+
+#: KAMenu.cpp:128
+msgid "&even more nice"
+msgstr "&ankoraý pli bele"
+
+#: KAMenu.cpp:129
+msgid "n&icest"
+msgstr "&plej bele"
+
+#: KAMenu.cpp:136
+msgid "Show &File discription"
+msgstr "Montru &dosierpriskribon"
+
+#: KAMenu.cpp:139
+msgid "Archie&server"
+msgstr "\"Archie\"-&servilo"
+
+#: KAMenu.cpp:140
+msgid "Search&mode"
+msgstr "Seræ&maniero"
+
+#: KAMenu.cpp:141
+msgid "&Nicelevel"
+msgstr "&Beleco"
+
+#: KAMenu.cpp:143
+msgid "&All..."
+msgstr "Æ&io..."
+
+#: KAMenu.cpp:150
+msgid "for &Filename"
+msgstr "por &dosiernomo"
+
+#: KAMenu.cpp:151
+msgid "for &Path/Location"
+msgstr "por &pado/loko"
+
+#: KAMenu.cpp:152
+msgid "for &Hostname"
+msgstr "por &komputilnomo"
+
+#: KAMenu.cpp:154
+msgid "&STOP"
+msgstr "&STOP"
+
+#: KAMenu.cpp:171
+msgid "by &Hostname"
+msgstr "laý &komputilnomo"
+
+#: KAMenu.cpp:172
+msgid "by &Domain"
+msgstr "laý &domajno"
+
+#: KAMenu.cpp:173
+msgid "by D&ate"
+msgstr "laý d&ato"
+
+#: KAMenu.cpp:174
+msgid "by &Filesize"
+msgstr "laý grandeco"
+
+#: KAMenu.cpp:190
+msgid "&Settings"
+msgstr "&Agorda¼o"
+
+#: KAMenu.cpp:191
+msgid "&Query"
+msgstr "&Deziro"
+
+#: KAMenu.cpp:192
+msgid "S&ort"
+msgstr "&Ordo"
+
+#: KAStatusBar.cpp:50
+msgid "    0 hits"
+msgstr "    0 trovoj"
+
+#: KAStatusBar.cpp:51
+msgid "    0. try"
+msgstr "    0a provo"
+
+#: KAStatusBar.cpp:52
+msgid "Host: none                               "
+msgstr "Komputilo: neniu                         "
+
+#: KAStatusBar.cpp:53
+msgid "Status: ready                        "
+msgstr "Stato: preta                         "
+
+#: KAStatusBar.cpp:81
+#, c-format
+msgid "Status: %s"
+msgstr "Stato: %s"
+
+#: KAStatusBar.cpp:91
+#, c-format
+msgid "Hosts: %s"
+msgstr "Komputilo: %s"
+
+#: KAStatusBar.cpp:101
+#, c-format
+msgid "%d hits"
+msgstr "%d trovoj"
+
+#: KAStatusBar.cpp:111
+#, c-format
+msgid "Progress: %d"
+msgstr "Progreso: %d"
+
+#: KAStatusBar.cpp:121
+#, c-format
+msgid "%d try."
+msgstr "%da provo."
+
+#: KASettings.cpp:567
+msgid "Reset"
+msgstr "Rezignu"
+
+#: KAView.cpp:69
+msgid "Search &Term"
+msgstr "Se&ræa¼o"
+
+#: KAView.cpp:135
+msgid "Host"
+msgstr "Komputilo"
+
+#: KAView.cpp:136
+msgid "Path"
+msgstr ""
+
+#: KAView.cpp:269
+msgid "Host:"
+msgstr "Komputilo:"
+
+#: KAView.cpp:271
+msgid "Path:"
+msgstr "Pado:"
+
+#: KAView.cpp:273
+msgid "File:"
+msgstr "Dosiero:"
+
+#: KAView.cpp:275
+msgid "Size:"
+msgstr "Grandeco:"
+
+#: KAView.cpp:277
+msgid "Mode:"
+msgstr "Maniero:"
+
+#: KAView.cpp:279
+msgid "Date:"
+msgstr "Dato:"
+
+#: KArchie.cpp:441 KArchie.cpp:483
+#, c-format
+msgid ""
+"Couldn't open \n"
+"\"%s\""
+msgstr ""
+"Ne eblis malfermi \n"
+"\"%s\""
+
+#: KArchie.cpp:446 KArchie.cpp:488
+msgid "KArchie: bad file"
+msgstr "KArchie: malbona dosiero"
+
+#: KArchie.cpp:720
+msgid "Malformed url"
+msgstr "Misformita URL"
+
+#: KArchie.cpp:724
+msgid "Maybe bad list entry, please select an other file"
+msgstr "Povus esti malbona listero, bv. elekti alian dosieron"
+
+#: KArchie.cpp:725
+msgid "KArchie: bad URL"
+msgstr "KArchie: malbona URL"
+
+#: KArchie.cpp:744
+msgid "KArchie: Wrong fileselection"
+msgstr "KArchie: Maløusta dosierelekto"
+
+#: KArchie.cpp:745
+msgid "The selected file is not writeable"
+msgstr "LA elektita dosiero ne estas skribebla"
+
+#: KArchie.cpp:752
+msgid "KArchie: Overwrite file ?"
+msgstr "KArchie: Æu anstataýigi la dosieron?"
+
+#: KArchie.cpp:753
+msgid ""
+"The selected file is not write protected\n"
+"Should it be overwritten ?"
+msgstr ""
+"La elektita dosiero ne estas protektita kontraý\n"
+"skribado. Æu anstataýigi øin?"
+
+#: KArchie.cpp:766
+msgid "KArchie: bad selection"
+msgstr "KArchie: malbona elekto"
+
+#: KArchie.cpp:767
+msgid ""
+"No file selected !\n"
+"Please select a file in the list of queryresults\n"
+"or do a query."
+msgstr ""
+"Neniu dosiero estas elektita!\n"
+"Bonvolu elekti dosieron en la rezultolisto aý\n"
+"lanæu seræon."
+
+#: KArchie.cpp:793
+msgid "Success"
+msgstr "Sukceso"
