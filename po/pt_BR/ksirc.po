@@ -15,7 +15,7 @@ msgstr ""
 
 #: FilterRuleEditor.cpp:29
 msgid "Edit Filter Rules"
-msgstr ""
+msgstr "Editar Regras de Filtragem"
 
 #: FilterRuleEditor.cpp:58 FilterRuleEditor.cpp:79
 #: FilterRuleEditorData.cpp:105
@@ -24,13 +24,13 @@ msgstr "&Modificar"
 
 #: FilterRuleEditor.cpp:74
 msgid "Missing Arguments"
-msgstr ""
+msgstr "Argumentos Faltantes"
 
 #: FilterRuleEditor.cpp:75
 msgid ""
 "Cannot create a Rule since not\n"
 "all the fields are filled in."
-msgstr ""
+msgstr "Impossível criar a Regra pois nem\ntodos os campos estão preenchidos."
 
 #: FilterRuleEditorData.cpp:33
 msgid "Description:"
@@ -62,7 +62,7 @@ msgstr "Abaixo"
 
 #: KSircColour.cpp:33
 msgid "Colour Settings"
-msgstr ""
+msgstr "Configurações de Cor"
 
 #: KSircColourData.cpp:33
 msgid "Generic Text"
@@ -86,7 +86,7 @@ msgstr "Fundo"
 
 #: dccDialog.cpp:22
 msgid "DCC Files Offered"
-msgstr ""
+msgstr "Arquivos DCC Oferecidos"
 
 #: dccDialogData.cpp:38
 msgid "&Get"
@@ -117,7 +117,7 @@ msgstr "Esta versão do kSirc-ALPHA vai expirar em 4 semanas."
 
 #: open_top.cpp:26
 msgid "New Window For"
-msgstr ""
+msgstr "Nova Janela Para"
 
 #: open_topData.cpp:39
 msgid "Channel/Nick:"
@@ -198,7 +198,7 @@ msgstr "&Des-embutir"
 
 #: ssfeprompt.cpp:24
 msgid "Prompt"
-msgstr ""
+msgstr "Prompt"
 
 #: toplevel.cpp:140
 msgid "Lag in seconds to the server"
@@ -218,7 +218,7 @@ msgstr "&Usuários"
 
 #: welcomeWin.cpp:30
 msgid "Welcome to kSirc"
-msgstr ""
+msgstr "Bem-vindo ao kSirc"
 
 #: welcomeWinData.cpp:35
 msgid "Show Again"
@@ -229,9 +229,8 @@ msgid "Dissmiss"
 msgstr "Ignorar"
 
 #: KSColourPicker/kscolourpicker.cpp:28
-#, fuzzy
 msgid "kSirc Colour Picker"
-msgstr "Menu de contexto da paleta de cores"
+msgstr "Paleta de cores do kSirc"
 
 #: KSColourPicker/kscolourpickerData.cpp:30
 msgid "Pick"
@@ -242,9 +241,8 @@ msgid "Sample Colour"
 msgstr "Cor de exemplo"
 
 #: KSCutDialog/KSCutDialog.cpp:27
-#, fuzzy
 msgid "Cut Window"
-msgstr "&Cortar janela..."
+msgstr "Cortar janela"
 
 #: KSCutDialog/KSCutDialogData.cpp:39
 msgid "Cop&y"
@@ -252,11 +250,11 @@ msgstr "Cop&iar"
 
 #: KSOpenkSirc/open_ksirc.cpp:38
 msgid "Connect to Server"
-msgstr ""
+msgstr "Conectar ao Servidor"
 
 #: KSOpenkSirc/open_ksirc.cpp:186
 msgid "Not Avalable"
-msgstr ""
+msgstr "Não disponível"
 
 #: KSOpenkSirc/open_ksircData.cpp:37
 msgid "&Connect"
@@ -304,37 +302,35 @@ msgstr "Modificar"
 
 #: KSPrefs/defaultfiltersdata.cpp:34
 msgid "Highlight Your Nick"
-msgstr ""
+msgstr "Iluminar seu Nick"
 
 #: KSPrefs/defaultfiltersdata.cpp:43
 msgid "Colour Nicks in Channels"
-msgstr ""
+msgstr "Nicks coloridos nos Canais"
 
 #: KSPrefs/defaultfiltersdata.cpp:52
 msgid "Allow External Colours"
-msgstr ""
+msgstr "Permitir cores Externas"
 
 #: KSPrefs/defaultfiltersdata.cpp:59
 msgid "Allow &kSirc Colour codes"
-msgstr ""
+msgstr "Permitir códigos de cor do &kSirc"
 
 #: KSPrefs/defaultfiltersdata.cpp:68
 msgid "&Allow &mirc Colour codes"
-msgstr ""
+msgstr "Permitir códigos de cor do &mIRC"
 
 #: KSPrefs/defaultfiltersdata.cpp:86
 msgid "Foreground"
-msgstr ""
+msgstr "Frente"
 
 #: KSPrefs/defaultfiltersdata.cpp:95
-#, fuzzy
 msgid "Colour"
-msgstr "Cor de exemplo"
+msgstr "Cor"
 
 #: KSPrefs/defaultfiltersdata.cpp:103 KSPrefs/defaultfiltersdata.cpp:112
-#, fuzzy
 msgid "Sample"
-msgstr "Cor de exemplo"
+msgstr "Exemplo"
 
 #: KSPrefs/generalData.cpp:50
 msgid "Auto Create Windows"
@@ -375,7 +371,7 @@ msgstr ""
 
 #: KSPrefs/generalData.cpp:144
 msgid "Window History Length"
-msgstr ""
+msgstr "Comprimento do histórico da Janela"
 
 #: KSPrefs/ksprefs.cpp:9
 msgid "kSirc Prefrences"
@@ -402,35 +398,32 @@ msgid "&Default Filters"
 msgstr "Filtros &Padrões"
 
 #: KSPrefs/serverchanneldata.cpp:43
-#, fuzzy
 msgid "Servers"
-msgstr "Descrição do servidor:"
+msgstr "Servidores"
 
 #: KSPrefs/startupdata.cpp:35
 msgid "Notify List"
-msgstr ""
+msgstr "Lista de Notificação"
 
 #: KSPrefs/startupdata.cpp:43
-#, fuzzy
 msgid "Nick"
-msgstr "Pegar"
+msgstr "Nick"
 
 #: KSPrefs/startupdata.cpp:52
-#, fuzzy
 msgid "Real Name"
-msgstr "Nome de Menu"
+msgstr "Nome Real"
 
 #: KSPrefs/startupdata.cpp:97
 msgid "&Add"
-msgstr ""
+msgstr "&Adicionar"
 
 #: KSProgress/ksprogressdata.cpp:46
 msgid "fileName"
-msgstr ""
+msgstr "nomeArquivo"
 
 #: KSProgress/ksprogressdata.cpp:54
 msgid "XferStatus"
-msgstr ""
+msgstr "StatusTransf"
 
 #: KSTicker/speeddialogData.cpp:79
 msgid "Tick Interval"
