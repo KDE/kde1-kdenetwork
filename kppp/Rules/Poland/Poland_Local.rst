@@ -12,7 +12,7 @@ currency_digits=2
 per_connection=0.0
 minimum_costs=0.0
 
-# Therefore the following rule means: "Every 180 seconds 0.22 (with VAT)
+# Therefore the following rule means: "Every 180 seconds 0.26 (with VAT)
 # PLN are added to the bill"
-# Co 180 sekund dodawane beda 22 grosze do rachunku.
-default=(0.22, 180)
+# Co 180 sekund dodawane bedzie 26 groszy do rachunku.
+default=(0.26, 180)
