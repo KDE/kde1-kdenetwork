@@ -1,3 +1,70 @@
+/***********************************************************************
+
+ IO Controller Object
+
+ $$Id$$
+
+ Main io controller.  Reads and writes strings to sirc.  Input
+ received in the following 2 formats:
+
+ 1. ~window name~<message>
+ 2. <message>
+
+ each is handled diffrently. The window name is extracted from #1 and
+ if the window exists the message portion is sent to it.  If the
+ window doesn't exist, or case 2 is found the window is sent to the
+ control window "!default".  !default is NOT a constant window but
+ rather follows focus arround.  This is the easiest way to solve the
+ problem of output to commands that don't have a fixed destination
+ window.  (/whois, /help, etc )
+
+ Implementation:
+
+   Friends with KSircProcess allows easy access to TopList.  Makes sence
+   and means that IOController has access to TopList, etc.  The two work
+   closely together.
+
+   Variables:
+      holder: used to hold partital lines between writes.
+      *proc: the acutally sirc client process.
+      *ksircproc: the companion ksircprocess GUI controller
+      stdout_notif: access to SocketNotifier, why is this global to the
+                    class?
+      counter: existance counter.
+
+   Functions:
+   public:
+     KSircIOController(KProcess*, KSircProcess*):
+       - Object constructor takes two arguements the KProcess
+         that holds a running copy of sirc.
+       - KSircProcess is saved for access latter to TopList.
+       - The receivedStdout signal from KProcess is connected to
+         stdout_read and the processExited is connected to the sircDied
+	 slot.
+
+     ~KSircIOController: does nothing at this time.
+
+     public slots:
+       stdout_read(KProcess  *, _buffer, buflen): 
+         - Called by kprocess when data arrives.
+	 - This function does all the parsing and sending of messages
+           to each window.
+
+       stderr_read(KProcess*, _buffer, buflen):
+         - Should be called for stderr data, not connected, does
+	   nothing.
+
+       stdin_write(QString):
+         - Slot that get's connected to by KSircProcess to each
+	   window.  QString shold be written un touched! Let the
+	   writter figure out what ever he wants to do.
+
+       sircDied: 
+         - Should restart sirc or something....
+	 - Becarefull not to get it die->start->die->... etc
+
+***********************************************************************/
+
 #include "iocontroller.h"
 #include "toplevel.h"
 #include <iostream.h>
@@ -12,18 +79,12 @@ KSircIOController::KSircIOController(KProcess *_proc, KSircProcess *_ksircproc)
   : QObject()
 {
 
-  if(counter > 0){
-    cerr << "Trying to open mode than one IOController!\n";
-    counter++;
-  }
-  else{
-    counter++;
-  }
+  counter++;
 
-  proc = _proc;
-  ksircproc = _ksircproc;
+  proc = _proc;              // save proc
+  ksircproc = _ksircproc;    // save ksircproce
 
-  proc->writeStdin("/eval $ssfe=1\n", 14);
+  proc->writeStdin("/eval $ssfe=1\n", 14); // turn on sirc ssfe mode
 
   connect(proc, SIGNAL(receivedStdout(KProcess *, char *, int)),
           this, SLOT(stdout_read(KProcess*, char*, int))); 
@@ -32,12 +93,51 @@ KSircIOController::KSircIOController(KProcess *_proc, KSircProcess *_ksircproc)
                                               // the main text window  
   connect(proc, SIGNAL(processExited(KProcess *)),
 	  this, SLOT(sircDied(KProcess *)));
+                                              // Notify on sirc dying
 }
 
 void KSircIOController::stdout_read(KProcess *, char *_buffer, int buflen)
 {
+
+  /*
+
+    Main reader reads from sirc and ships it out to the right
+    (hopefully) window.
+
+    Problem trying to solve:
+
+       _buffer holds upto 1024 (it seems) block of data.  We need to
+       take it, split into lines figure out where each line should go,
+       and ship it there.  
+
+       We watch for broken end of lines, ie partial lines and reattach
+       them to the front on the next read.
+
+       We also stop all processing in the windows while writting the
+       lines.
+
+    Implementation:
+
+    Variables: 
+       _buffer original buffer, holds just, icky thing, NOT NULL terminated!
+       buf: new clean just the right size buf that is null terminated.
+       pos, pos2, pos3 used to cut the string up into peices, etc.
+       name: destination window.
+       line: line to ship out.
+
+    Steps:
+       1. read and copy buffer, make sure it's valid.
+       2. If we're holding a broken line, append it.
+       3. Check for a broken line, and save the end if it is.
+       4. Stop updates in all windows.
+       5. Step through the data and send the lines out to the right
+       window.
+       6. Cleanup and continue.
+
+   */
+
   int pos,pos2,pos3;
-  QString name, line, tmp;
+  QString name, line;
   char buf[buflen+1];
 
   strncpy(buf, _buffer, buflen);
@@ -48,18 +148,20 @@ void KSircIOController::stdout_read(KProcess *, char *_buffer, int buflen)
 
   name = "!default";
 
-  if(buf[buflen-1] != '\n'){
-    pos2 = buffer.length();
-    pos = buffer.findRev('\n', pos2);
-    if(pos != -1){
-      tmp = buffer.mid(pos+1, pos2-pos-1);
-      buffer.truncate(pos);
-    }
-  }
-  if(holder.length() > 0){
+  if(holder.length() > 0){ 
     buffer.prepend(holder);
     holder.truncate(0);
   }
+
+  if(buffer[buffer.length()] != '\n'){
+    pos2 = buffer.length();
+    pos = buffer.findRev('\n', pos2);
+    if(pos != -1){
+      holder = buffer.mid(pos+1, pos2-pos-1);
+      buffer.truncate(pos);
+    }
+  }
+
   pos = pos2 = 0;
   QString control;
   control.setNum(STOP_UPDATES);
@@ -99,7 +201,6 @@ void KSircIOController::stdout_read(KProcess *, char *_buffer, int buflen)
     pos = pos2+1;
   } while((uint) pos < buffer.length());
 
-  holder = tmp;
   control.truncate(0);
   control.setNum(RESUME_UPDATES);
   ksircproc->TopList["!all"]->control_message(control);
@@ -127,5 +228,7 @@ void KSircIOController::sircDied(KProcess *)
 
   cerr << "Sirc DIED!!!!!!!\n";
   cerr << "should do something....\n";
+  ksircproc->TopList["!all"]->sirc_receive("*E* SIRC IS DEAD");
+  ksircproc->TopList["!all"]->sirc_receive("*E* KSIRC WINDOW HALTED");
   
 }

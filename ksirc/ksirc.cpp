@@ -65,11 +65,6 @@ int main( int argc, char ** argv )
   //  kApp->connect(kApp, SIGNAL(lastWindowClosed()), kApp, SLOT(quit()));
   
   kApp->exec();
-  kConfig->setGroup("Colours");
-  kConfig->writeEntry("text", *kSircConfig->colour_text);
-  kConfig->writeEntry("info", *kSircConfig->colour_info);
-  kConfig->writeEntry("chan", *kSircConfig->colour_chan);
-  kConfig->writeEntry("error", *kSircConfig->colour_error);
   kConfig->sync();
 
   //  kill(sirc_pid, 15);  // on normal exit, do try and kill dsirc...

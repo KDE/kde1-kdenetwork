@@ -18,7 +18,7 @@ MaxSize {230 210}
 Grid {10}
 
 Label {
-		Text {Text Colour}
+		Text {Generic Text}
 		AutoResize {FALSE}
 		Margin {-1}
 		Rect {10 10 100 30}
@@ -68,7 +68,7 @@ User {
 		MaximumSize {32767 32767}
 }
 Label {
-		Text {Info Colour}
+		Text {Info}
 		AutoResize {FALSE}
 		Margin {-1}
 		Rect {10 50 100 30}
@@ -78,7 +78,7 @@ Label {
 		MaximumSize {32767 32767}
 }
 Label {
-		Text {Chan Colour}
+		Text {Chan Messages}
 		AutoResize {FALSE}
 		Margin {-1}
 		Rect {10 90 100 30}
@@ -88,7 +88,7 @@ Label {
 		MaximumSize {32767 32767}
 }
 Label {
-		Text {Error Colour}
+		Text {Errors}
 		AutoResize {FALSE}
 		Margin {-1}
 		Rect {10 130 100 30}

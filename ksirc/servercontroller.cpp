@@ -89,11 +89,12 @@ servercontroller::servercontroller
 	QPopupMenu *file = new QPopupMenu();
 	file->insertItem("&Quit", kApp, SLOT(quit()), ALT + Key_F4);
 	MenuBar->insertItem("&File", file);
-	QPopupMenu *connections = new QPopupMenu();
-	connections->insertItem("&New Server...", this, SLOT(new_connection()), CTRL + Key_N );
-	connections->insertSeparator();
-	connections->insertItem("&Join Channel...", this, SLOT(new_channel()), CTRL + Key_J);
+	connections = new QPopupMenu();
+	server_id = connections->insertItem("&New Server...", this, SLOT(new_connection()), CTRL + Key_N );
+	join_id = connections->insertItem("&Join Channel...", this, SLOT(new_channel()), CTRL + Key_J);
+	connections->setItemEnabled(join_id, FALSE);
 	MenuBar->insertItem("&Connections", connections);
+	
 	
 	kConfig->setGroup("GlobalOptions");
 	options = new QPopupMenu();
@@ -101,7 +102,6 @@ servercontroller::servercontroller
 			    this, SLOT(reuse()));
 	options->setItemChecked(reuse_id, 
 				! kConfig->readNumEntry("Reuse", TRUE));
-	options->insertSeparator();
 	options->insertItem("Colour Preferences...",
 			    this, SLOT(colour_prefs()));
 	MenuBar->insertItem("&Options", options);
@@ -109,6 +109,7 @@ servercontroller::servercontroller
 	setMenu(MenuBar);
 	
 	ConnectionTree->setExpandLevel(2);
+	open_toplevels = 0;
 }
 
 
@@ -147,6 +148,8 @@ void servercontroller::new_ksircprocess(QString str)
   if(!ConnectionTree->getCurrentItem()){   // If nothing's highlighted
     ConnectionTree->setCurrentItem(0);     // highlight it.
   }
+
+  connections->setItemEnabled(join_id, TRUE);
 }
 
 void servercontroller::new_channel()
@@ -180,7 +183,7 @@ void servercontroller::add_toplevel(QString parent, QString child)
   // add a new child item with parent as it's parent
   ConnectionTree->addChildItem(child.data(), NULL, &path);
   //cerr << "Added child for: " << parent << "->" << child << endl;
-
+  open_toplevels++;
 }
 
 void servercontroller::delete_toplevel(QString parent, QString child)
@@ -201,6 +204,9 @@ void servercontroller::delete_toplevel(QString parent, QString child)
 
   ConnectionTree->removeItem(&path); // Remove the item
   //cerr << "Removed child for: " << parent << "->" << child << endl;
+  open_toplevels--;
+  if(open_toplevels <= 0)
+    connections->setItemEnabled(join_id, FALSE);
 
 }
 

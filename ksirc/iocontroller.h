@@ -33,7 +33,6 @@ public slots:
   virtual void sircDied(KProcess *);
 
 private:
-  int sirc_stdin, sirc_stdout, sirc_stderr;
   QString holder;
   KProcess *proc;
   KSircProcess *ksircproc;

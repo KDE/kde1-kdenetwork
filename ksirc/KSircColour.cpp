@@ -1,16 +1,26 @@
 /**********************************************************************
 
-	--- Qt Architect generated file ---
+ Colour Setter for the text colours in TopLevel list box.
 
-	File: KSircColour.cpp
-	Last generated: Fri Dec 12 22:54:52 1997
+ GUI done with qtarch.
+
+ Nothing special, just pops up a box with buttons, you click on them
+ and up comes a colours selector.  Pretty basic.
+
+ Only strange things is the ammount of dorking with pointers, you have
+ to set the value os pointed to item, not change the pointer, hence
+ the *ptr notation everywhere.
 
  *********************************************************************/
 
 #include "KSircColour.h"
 #include "config.h"
 
+#include <kconfig.h>
+
 #define Inherited KSircColourData
+
+extern KConfig *kConfig;
 
 KSircColour::KSircColour
 (
@@ -47,6 +57,13 @@ void KSircColour::ok()
   *kSircConfig->colour_chan = ColourChan->color();
   *kSircConfig->colour_error = ColourError->color();
   close(1);
+  kConfig->setGroup("Colours");
+  kConfig->writeEntry("text", *kSircConfig->colour_text);
+  kConfig->writeEntry("info", *kSircConfig->colour_info);
+  kConfig->writeEntry("chan", *kSircConfig->colour_chan);
+  kConfig->writeEntry("error", *kSircConfig->colour_error);
+  kConfig->sync();
+
 }
 
 void KSircColour::cancel()

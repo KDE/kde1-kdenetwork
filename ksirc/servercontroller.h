@@ -50,8 +50,10 @@ private:
     // Hold a list of all KSircProcess's for access latter.  Index by server 
     // name
   QDict<KSircProcess> proc_list;
-  QPopupMenu *options;
-  int reuse_id;
+  QPopupMenu *options, *connections;
+  int reuse_id, join_id, server_id;
+
+  int open_toplevels;
 
 };
 #endif // servercontroller_included
