@@ -48,7 +48,7 @@ binary-arch: build
 	echo "path=/usr/sbin/traceroute" >> debian/tmp/etc/kde/knurc
 	perl -w debian/kderules
 	dh_movefiles
-	dh_undocumented `cat debian/man-pages`
+	dh_undocumented 
 	dh_installdocs
 	dh_installmenu
 	dh_installchangelogs
