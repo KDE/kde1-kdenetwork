@@ -395,6 +395,8 @@ bool Artdlg::taggedActions (int action)
 
 bool Artdlg::actions (int action)
 {
+    setEnabled (false);
+    acc->setEnabled(false);
     bool success=false;
     qApp->setOverrideCursor (waitCursor);
     switch (action)
@@ -649,6 +651,8 @@ bool Artdlg::actions (int action)
         //
     }
     qApp->restoreOverrideCursor ();
+    setEnabled (true);
+    acc->setEnabled(true);
     return success;
 }
 
@@ -670,32 +674,15 @@ bool Artdlg::loadArt (QString id)
     qApp->setOverrideCursor (waitCursor);
     QString *s;
     s=server->article(id.data());
-    if (s)
+    if (s->isEmpty())
     {
-        if (!s->isEmpty())
-        {
-            messwin->loadMessage(*s);
-        }
-        else
-        {
-            messwin->getFromWeb(id);
-        }
-        delete s;
+        messwin->getFromWeb(id);
     }
     else
     {
-        Article *art;
-        art=artSpool.find(id.data());
-        if (art)
-            art->setAvailable(false);
-        s=new QString(klocale->translate("\nError getting article.\nServer said:\n"));
-        s->append(server->lastStatusResponse());
-        warning (s->data());
         messwin->loadMessage(*s);
-        delete s;
-        qApp->restoreOverrideCursor ();
-        return false;
     }
+    delete s;
     qApp->restoreOverrideCursor ();
     setEnabled(true);
     return true;
