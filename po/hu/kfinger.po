@@ -1,23 +1,28 @@
+# KTranslator Generated File
+
 msgid ""
 msgstr ""
 "POT-Creation-Date: 1999-04-15 03:01+0200\n"
 "Content-Type: text/plain; charset=\n"
-"Date: 1998-06-11 22:52:27+0100\n"
-"From: TMS (T. Fejos),,, <tms@rt.dunaferr.hu>\n"
-"Xgettext-Options: -ktranslate\n"
+"PO-Revision-Date: Tue Aug 31 1999 15:00:08+0200\n"
+"Last-Translator: Marcell Lengyel <miketkf@yahoo.com>\n"
+"Language-Team: Hungarian <kde-lista@sophia.jpte.hu>\n"
 "Files: finger.cpp kfinger.cpp\n"
+""
+""
+"X-Generator: KTranslator v 0.5.0"
 
 # kfinger.cpp:12
 #: kfinger.C:30
-#, fuzzy
+#
 msgid "F&inger Now"
-msgstr "Finger Azonnal"
+msgstr "F&inger Azonnal"
 
 # kfinger.cpp:39
 #: kfinger.C:31
-#, fuzzy
+#
 msgid "&Talk..."
-msgstr "Beszélgetés..."
+msgstr "&Beszélgetés..."
 
 # kfinger.cpp:16
 #: kfinger.C:35
@@ -26,26 +31,25 @@ msgstr "Beállítás"
 
 # kfinger.cpp:21
 #: kfinger.C:36
-#, fuzzy
+#
 msgid "&Save Options"
-msgstr "&Opciók"
+msgstr "&Beállítások mentése"
 
 # kfinger.cpp:221
 #: kfinger.C:38
-#, fuzzy
 msgid ""
 "kfinger 0.8.1\n"
 "\n"
 "(c) Andrea Rizzi (rizzi@kde.org)"
 msgstr ""
-"Kfinger 0.3.2\n"
-"(c) Andrea Rizzi\n"
-"bilibao@ouverture.it"
+"kfinger 0.8.1\n"
+"\n"
+"(c) Andrea Rizzi (rizzi@kde.org)"
 
 # kfinger.cpp:6 kfinger.cpp:31
 #: kfinger.C:47
 msgid "KDE finger utility"
-msgstr "KDE finger utility"
+msgstr "KDE finger alkalmazás"
 
 # kfinger.cpp:37
 #: kfinger.C:50
@@ -54,7 +58,7 @@ msgstr "Finger"
 
 #: kfinger.C:51
 msgid "Stop current finger"
-msgstr ""
+msgstr "Aktuális finger leállítása"
 
 # kfinger.cpp:39
 #: kfinger.C:53
@@ -63,11 +67,11 @@ msgstr "Beszélgetés..."
 
 #: kfinger.C:54
 msgid "AutoFinger On/Off"
-msgstr ""
+msgstr "AutoFinger Be/Ki"
 
 #: kfinger.C:66
 msgid "Welcome to KDE Finger\n"
-msgstr ""
+msgstr "Üdvözöllek a KDE Fingerben\n"
 
 # kfinger.cpp:57
 #: kfinger.C:67
@@ -78,29 +82,29 @@ msgstr "Finger eredmény"
 #: kfinger.C:272
 #, c-format
 msgid "Error on server : %s"
-msgstr "Hiba a szerveren : %s"
+msgstr "Hiba a kiszolgálón: %s"
 
 #: kfinger.C:284
 #, c-format
 msgid "Connection refused by  %s"
-msgstr ""
+msgstr "A kapcsolat visszautasítva %s által"
 
 #: kfinger.C:296
 #, c-format
 msgid "Finger  %s@%s   --   %s"
-msgstr ""
+msgstr "Finger  %s@%s   --   %s"
 
 # kfinger.cpp:221
 #: kfinger.C:317
-#, fuzzy
+#
 msgid ""
 "Kfinger 0.8.1\n"
 "(c) by Andrea Rizzi\n"
 "rizzi@kde.org"
 msgstr ""
-"Kfinger 0.3.2\n"
-"(c) Andrea Rizzi\n"
-"bilibao@ouverture.it"
+"Kfinger 0.8.1\n"
+"(c) by Andrea Rizzi\n"
+"rizzi@kde.org"
 
 # kfinger.cpp:265
 #: kfinger.C:363
@@ -110,17 +114,17 @@ msgstr "Kfinger telepítõ"
 # kfinger.cpp:293 kfinger.cpp:333
 #: kfinger.C:391 kfinger.C:431
 msgid "&Add"
-msgstr "&Add"
+msgstr "Hozzá&adás"
 
 # kfinger.cpp:303
 #: kfinger.C:401
 msgid "Server Name"
-msgstr "Szerver Név"
+msgstr "Kiszolgáló Név"
 
 # kfinger.cpp:307 kfinger.cpp:310
 #: kfinger.C:405 kfinger.C:408
 msgid "Server list"
-msgstr "Szerver lista"
+msgstr "Kiszolgáló lista"
 
 # kfinger.cpp:343
 #: kfinger.C:441
@@ -139,17 +143,17 @@ msgstr "Idõzített finger"
 
 # kfinger.cpp:382 kfinger.cpp:557
 #: kfinger.C:477 kfinger.C:664
-#, fuzzy, c-format
+#, c-format
 msgid "Finger wait: %d\""
-msgstr "Finger várakozás: %d"
+msgstr "Finger várakozás: %d\""
 
 #: kfinger.C:482
 msgid "Talk Command "
-msgstr ""
+msgstr "Beszélgetés parancs"
 
 #: kfinger.C:492
 msgid "Misc"
-msgstr ""
+msgstr "Egyéb"
 
 # kfinger.cpp:391 kfinger.cpp:403
 #: kfinger.C:497 kfinger.C:509
@@ -159,7 +163,7 @@ msgstr "Finger Kimenet"
 # kfinger.cpp:395
 #: kfinger.C:501
 msgid "Finger server"
-msgstr "Finger szerver"
+msgstr "Finger kiszolgáló"
 
 # kfinger.cpp:399 kfinger.cpp:411
 #: kfinger.C:505 kfinger.C:517
@@ -189,7 +193,7 @@ msgstr "Felhasználó"
 # kfinger.cpp:458
 #: kfinger.C:564
 msgid "Server"
-msgstr "Szerver"
+msgstr "Kiszolgáló"
 
 # kfinger.cpp:470
 #: kfinger.C:576
@@ -209,7 +213,7 @@ msgstr "Formátum karakterlánc a(z) var1(string) -hez"
 # kfinger.cpp:676
 #: kfinger.C:784
 msgid "Fromat string for var2(int)"
-msgstr "Formátum karakterlánc a(z) var1(string) -hez"
+msgstr "Formátum karakterlánc a(z) var2(int) -hez"
 
 # kfinger.cpp:696 kfinger.cpp:702
 #: kfinger.C:804 kfinger.C:810

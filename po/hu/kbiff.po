@@ -1,4 +1,6 @@
 # KTranslator Generated File
+
+# KTranslator Generated File
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Free Software Foundation, Inc.
 # Marcell Lengyel <miketkf@yahoo.com>, 1998.
@@ -61,7 +63,7 @@ msgstr "Postaláda: %s"
 # This is on a button.  It launches the user's mail client
 #: notify.cpp:73
 msgid "Mailer"
-msgstr ""
+msgstr "Levelezõ"
 
 #: setupdlg.cpp:83
 msgid "KBiff Setup"
@@ -145,7 +147,7 @@ msgstr "Új Üzenet"
 # to a remote server
 #: setupdlg.cpp:599
 msgid "No Conn.:"
-msgstr ""
+msgstr "Nincs kapcs:"
 
 #: setupdlg.cpp:756
 msgid "Run Command"
@@ -171,7 +173,7 @@ msgstr "Figyelmeztetés"
 # number of new mail whenever the user puts the cursor of a KBiff icon.
 #: setupdlg.cpp:798
 msgid "Floating Status"
-msgstr ""
+msgstr "Lebegõ állapot"
 
 #: setupdlg.cpp:948
 msgid "Advanced Options"
@@ -198,7 +200,7 @@ msgstr "Életben tartás"
 # given command... it will receive the response as an event, later.
 #: setupdlg.cpp:974
 msgid "Asynchronous"
-msgstr ""
+msgstr "Asszinkron"
 
 #: setupdlg.cpp:1123 setupdlg.cpp:1152
 msgid "Mailbox:"
@@ -263,6 +265,6 @@ msgstr "Új Név"
 
 # This displays the number of new messages for a given mailbox
 #: status.cpp:34
-#, fuzzy
+#
 msgid "New"
 msgstr "Új"

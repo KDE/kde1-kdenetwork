@@ -1,8 +1,10 @@
+# KTranslator Generated File
+
 # Message file for ktalkd 
 # Copyright (C) 1998 Free Software Foundation, Inc.
-# David Faure <david.faure@ifhamy.insa-lyon.fr>, 1998.  
+# Tamas FEJOS <tms@rt.dunaferr.hu>, 1998.  
 #
-#, fuzzy
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: ktalkd \n"
@@ -12,19 +14,19 @@ msgstr ""
 
 # atdlg.cpp:46
 #: ktalkdlg.cpp:55
-#, fuzzy
+#
 msgid "Message from talk demon at "
-msgstr "Üzenet a Talk_Daemon-tól %d:%02d-kor ...\n"
+msgstr "Üzenet a talk daemon-tól"
 
 # atdlg.cpp:50
 #: ktalkdlg.cpp:56
-#, fuzzy
+#
 msgid "Talk connection requested by "
-msgstr "talk: kapcsolat kérés %s által.\n"
+msgstr "talk kapcsolat kérés"
 
 #: ktalkdlg.cpp:61
 msgid "for user "
-msgstr ""
+msgstr "felhsználónak:"
 
 # atdlg.cpp:53
 #: ktalkdlg.cpp:70

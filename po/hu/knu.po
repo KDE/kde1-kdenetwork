@@ -1,3 +1,5 @@
+# KTranslator Generated File
+
 msgid ""
 msgstr ""
 "POT-Creation-Date: 1999-01-23 02:09+0100\n"
@@ -25,13 +27,13 @@ msgid "Host &resolution"
 msgstr "&Gépnév feloldása"
 
 #: knu.cpp:181
-#, fuzzy
+#
 msgid "F&inger"
-msgstr "&Ping"
+msgstr "F&inger"
 
 #: knu.cpp:190 knu.cpp:333
 msgid "&mtr"
-msgstr ""
+msgstr "&mtr"
 
 #: knu.cpp:201
 msgid ""
@@ -66,18 +68,18 @@ msgid "P&references..."
 msgstr "&Beállítások"
 
 #: knu.cpp:281
-#, fuzzy, c-format
+#, c-format
 msgid "&About %s"
-msgstr "&A programról"
+msgstr "%s &névjegy"
 
 #: knu.cpp:283
 msgid "About &Qt"
 msgstr "A &Qt-rõl"
 
 #: knu.cpp:327
-#, fuzzy
+#
 msgid "&Finger"
-msgstr "&Ping"
+msgstr "&Finger"
 
 #: knu.cpp:466
 #, c-format
@@ -87,18 +89,22 @@ msgid ""
 "\n"
 "Bertrand"
 msgstr ""
+"Knu\n"
+"%s verzió\n"
+"\n"
+"Bertrand"
 
 #: knu.cpp:469
 msgid "About..."
-msgstr "A programról..."
+msgstr "Névjegy..."
 
 #: knu.cpp:602
 msgid "Network utilities"
-msgstr ""
+msgstr "Hálózati segédeszközök"
 
 #: CommandDlg.cpp:131
 msgid "H&ost:"
-msgstr "Gép:"
+msgstr "&Gazdagép:"
 
 #: CommandDlg.cpp:140
 msgid "&Go!"
@@ -106,15 +112,15 @@ msgstr "&Mehet!"
 
 #: CommandDlg.cpp:150
 msgid "&Stop"
-msgstr "&Allj"
+msgstr "&Állj"
 
 #: CommandDlg.cpp:166
 msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
 msgstr ""
-"A parancsnak megfelelõ binárist nem találom.Az elérési útvonalát a "
-"Szerkesztés->Beállítások alatt adhatod meg."
+"A parancsnak megfelelõ binárist nem találom.\n"
+"Az elérési útvonalát a Szerkesztés->Beállítások alatt adhatod meg."
 
 #: CommandDlg.cpp:351
 #, c-format
@@ -129,10 +135,19 @@ msgid ""
 "Please use Edit->Preferences... menu\n"
 "to configure it again.\n"
 msgstr ""
+"\n"
+"Van egy kis probléma a\n"
+"%s/%src\n"
+"konfigurációs fájlodban.\n"
+"A [%s] csoportban,\n"
+"Nem találok érvényes \"path=\" bejegyzést.\n"
+"\n"
+"Használd a Szerkesztés->Beállítások... menüt\n"
+"az újra konfiguráláshoz.\n"
 
 #: CommandDlg.cpp:360
 msgid "Error in pathname"
-msgstr ""
+msgstr "Hiba az elérési útban"
 
 #: CommandDlg.cpp:516
 msgid "Binary"
@@ -140,7 +155,7 @@ msgstr "Bináris"
 
 #: CommandDlg.cpp:524
 msgid "Path&name:"
-msgstr "&Utvonal:"
+msgstr "&Útvonal:"
 
 #: CommandDlg.cpp:533
 msgid "Additional &arguments:"
@@ -148,7 +163,7 @@ msgstr "&További paraméterek:"
 
 #: CommandDlg.cpp:558
 msgid "This command had been disabled in the configuration file."
-msgstr "Ez a parancs ki lett kapcsolva a konfigurációs file-ban."
+msgstr "Ez a parancs ki lett kapcsolva a konfigurációs fájlban."
 
 #: OptionsDlg.cpp:69
 msgid " - configuration"
@@ -156,35 +171,35 @@ msgstr " - konfiguráció"
 
 #: MtrDlg.cpp:87
 msgid "#"
-msgstr ""
+msgstr "#"
 
 #: MtrDlg.cpp:88
 msgid "Hostname"
-msgstr ""
+msgstr "Gazdagép név"
 
 #: MtrDlg.cpp:89
 msgid "Loss"
-msgstr ""
+msgstr "Elveszett"
 
 #: MtrDlg.cpp:91
 msgid "Rcv"
-msgstr ""
+msgstr "Fog."
 
 #: MtrDlg.cpp:93
 msgid "Snt"
-msgstr ""
+msgstr "Kül."
 
 #: MtrDlg.cpp:95
 msgid "Best"
-msgstr ""
+msgstr "Legjobb"
 
 #: MtrDlg.cpp:97
 msgid "Avg"
-msgstr ""
+msgstr "Átl."
 
 #: MtrDlg.cpp:99
 msgid "Worst"
-msgstr ""
+msgstr "Legroszabb"
 
 #: MtrDlg.cpp:142 PingDlg.cpp:100 TracerouteDlg.cpp:98
 msgid "Make host &name resolution"
@@ -192,11 +207,11 @@ msgstr "&Oldd fel a gépneveket"
 
 #: HostDlg.cpp:331 PingDlg.cpp:227
 msgid "hos&t"
-msgstr ""
+msgstr "&gazdagép"
 
 #: HostDlg.cpp:335 PingDlg.cpp:231
 msgid "ns&lookup"
-msgstr ""
+msgstr "ns&lookup"
 
 #: TracerouteDlg.cpp:115
 msgid "&Maximum number of hops:"
@@ -212,7 +227,7 @@ msgstr "név (PTR)"
 
 #: HostDlg.cpp:114
 msgid "name server (NS)"
-msgstr "névszerver (NS)"
+msgstr "névkiszolgáló (NS)"
 
 #: HostDlg.cpp:115
 msgid "mail exchanger (MX)"
@@ -236,15 +251,15 @@ msgstr "&Keress:"
 
 #: HostDlg.cpp:136 HostDlg.cpp:287
 msgid "default server"
-msgstr "alapért szerver"
+msgstr "alapért kiszolgáló"
 
 #: FingerDlg.cpp:95 HostDlg.cpp:145
 msgid "Ser&ver:"
-msgstr "&Szerver:"
+msgstr "Ki&szolgáló:"
 
 #: FingerDlg.cpp:77
 msgid "&User:"
-msgstr ""
+msgstr "&Felhasználó:"
 
 #, fuzzy
 #~ msgid "&Matt's traceroute"
