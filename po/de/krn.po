@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: krn\n"
-"POT-Creation-Date: 1998-04-21 14:30+0200\n"
+"POT-Creation-Date: 1998-04-16 18:09+0200\n"
 "PO-Revision-Date: 1998-04-21 21:20 +0100\n"
 "Last-Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
 
@@ -38,11 +38,11 @@ msgstr "Bitte geben Sie Ihren SMTP-Servernamen ein"
 msgid "Received %.2f Kb"
 msgstr "%.2f Kb empfangen"
 
-#: NNTP.cpp:558
+#: NNTP.cpp:552
 msgid "Getting Article"
 msgstr "Hole Artikel"
 
-#: NNTP.cpp:644
+#: NNTP.cpp:638
 msgid "Article Received"
 msgstr "Artikel empfangen"
 
@@ -86,15 +86,15 @@ msgstr "Alle Artikel als gelesen markieren"
 msgid "(un)Subscribe"
 msgstr "Abonnieren an/aus"
 
-#: artdlg.cpp:146 groupdlg.cpp:146
+#: artdlg.cpp:143 groupdlg.cpp:146
 msgid "Untag"
 msgstr "Markierung aus"
 
-#: artdlg.cpp:166 groupdlg.cpp:154
+#: artdlg.cpp:163 groupdlg.cpp:154
 msgid "(Un)Tag"
 msgstr "Markierung an/aus"
 
-#: artdlg.cpp:159 artdlg.cpp:216 groupdlg.cpp:157 groupdlg.cpp:209
+#: artdlg.cpp:156 artdlg.cpp:213 groupdlg.cpp:157 groupdlg.cpp:209
 msgid "Post New Article"
 msgstr "Neuen Artikel veröffentlichen"
 
@@ -106,7 +106,7 @@ msgstr "Alle Artikel in der Warteschlange senden"
 msgid "&Subscribed"
 msgstr "&Abonnierte"
 
-#: artdlg.cpp:200 groupdlg.cpp:161
+#: artdlg.cpp:197 groupdlg.cpp:161
 msgid "&Tagged"
 msgstr "&Markierte"
 
@@ -242,179 +242,179 @@ msgstr "Hole Nachrichten aus "
 msgid "Getting list of messages in "
 msgstr "Hole die Liste der Nachrichten aus "
 
-#: artdlg.cpp:139 artdlg.cpp:154
+#: artdlg.cpp:136 artdlg.cpp:151
 msgid "Download"
 msgstr "Herunterladen"
 
-#: artdlg.cpp:141 artdlg.cpp:263
+#: artdlg.cpp:138 artdlg.cpp:260
 msgid "Mark Read"
 msgstr "Als gelesen markieren"
 
-#: artdlg.cpp:142
+#: artdlg.cpp:139
 msgid "Mark Unread"
 msgstr "Als ungelesen markieren"
 
-#: artdlg.cpp:144 artdlg.cpp:158
+#: artdlg.cpp:141 artdlg.cpp:155
 msgid "Print"
 msgstr "Drucken"
 
-#: artdlg.cpp:145 artdlg.cpp:165
+#: artdlg.cpp:142 artdlg.cpp:162
 msgid "Decode"
 msgstr "Dekodieren"
 
-#: artdlg.cpp:147 artdlg.cpp:167
+#: artdlg.cpp:144 artdlg.cpp:164
 msgid "Don't expire"
 msgstr "Behalten"
 
-#: artdlg.cpp:156
+#: artdlg.cpp:153
 msgid "Lookup in Altavista"
 msgstr "Suche bei Altavista"
 
-#: artdlg.cpp:160 artdlg.cpp:247
+#: artdlg.cpp:157 artdlg.cpp:244
 msgid "Reply by Mail"
 msgstr "Anwort per Mail"
 
-#: artdlg.cpp:161
+#: artdlg.cpp:158
 msgid "Post Followup"
 msgstr "Antwort veröffentlichen"
 
-#: artdlg.cpp:162
+#: artdlg.cpp:159
 msgid "Post & Reply"
 msgstr "Veröffentlichen und Antworten"
 
-#: artdlg.cpp:169
+#: artdlg.cpp:166
 msgid "Tagged"
 msgstr "Markierte"
 
-#: artdlg.cpp:180
+#: artdlg.cpp:177
 msgid "Show Only Unread Messages"
 msgstr "Nur ungelesene anzeigen"
 
-#: artdlg.cpp:182
+#: artdlg.cpp:179
 msgid "Show Only Cached Messages"
 msgstr "Nur Zwischengespeicherte anzeigen"
 
-#: artdlg.cpp:184
+#: artdlg.cpp:181
 msgid "Show Locked Messages"
 msgstr "Gesperrte anzeigen"
 
-#: artdlg.cpp:186
+#: artdlg.cpp:183
 msgid "Expunge"
 msgstr "Löschen"
 
-#: artdlg.cpp:187
+#: artdlg.cpp:184
 msgid "Appearance..."
 msgstr "Eigenschaften..."
 
-#: artdlg.cpp:188
+#: artdlg.cpp:185
 msgid "Sorting..."
 msgstr "Sortiere..."
 
-#: artdlg.cpp:192
+#: artdlg.cpp:189
 msgid "Edit Rules"
 msgstr "Regeln bearbeiten"
 
-#: artdlg.cpp:193
+#: artdlg.cpp:190
 msgid "Update"
 msgstr "Erneuern"
 
-#: artdlg.cpp:202
+#: artdlg.cpp:199
 msgid "&Scoring"
 msgstr "&Bewertung"
 
-#: artdlg.cpp:209
+#: artdlg.cpp:206
 msgid "Previous Message"
 msgstr "Vorherige Nachricht"
 
-#: artdlg.cpp:211
+#: artdlg.cpp:208
 msgid "Next Message"
 msgstr "Nächste Nachricht"
 
-#: artdlg.cpp:213
+#: artdlg.cpp:210
 msgid "Find Article"
 msgstr "Artikel suchen"
 
-#: artdlg.cpp:218
+#: artdlg.cpp:215
 msgid "Get Article List"
 msgstr "Artikelliste holen"
 
-#: artdlg.cpp:220
+#: artdlg.cpp:217
 msgid "Refresh Display"
 msgstr "Anzeige erneuern"
 
-#: artdlg.cpp:243
+#: artdlg.cpp:240
 msgid "Save Article"
 msgstr "Artikel speichern"
 
-#: artdlg.cpp:245
+#: artdlg.cpp:242
 msgid "Print Article"
 msgstr "Artikel drucken"
 
-#: artdlg.cpp:249
+#: artdlg.cpp:246
 msgid "Post a Followup"
 msgstr "Antwort veröffentlichen"
 
-#: artdlg.cpp:251
+#: artdlg.cpp:248
 msgid "Post & Mail"
 msgstr "Veröffentlichen & Antworten"
 
-#: artdlg.cpp:257
+#: artdlg.cpp:254
 msgid "Tag Article"
 msgstr "Artikel markieren"
 
-#: artdlg.cpp:259
+#: artdlg.cpp:256
 msgid "Lock (keep in cache)"
 msgstr "Sperren (im Zwischenspeicher behalten)"
 
-#: artdlg.cpp:261
+#: artdlg.cpp:258
 msgid "Decode Article"
 msgstr "Artikel dekodieren"
 
-#: artdlg.cpp:265
+#: artdlg.cpp:262
 msgid "Mark UnRead"
 msgstr "Als ungelesen markieren"
 
-#: artdlg.cpp:287 sortDlg.cpp:34
+#: artdlg.cpp:284 sortDlg.cpp:34
 msgid "Sender"
 msgstr "Von"
 
-#: artdlg.cpp:289 sortDlg.cpp:36
+#: artdlg.cpp:286 sortDlg.cpp:36
 msgid "Lines"
 msgstr "Zeilen"
 
-#: artdlg.cpp:290 sortDlg.cpp:33
+#: artdlg.cpp:287 sortDlg.cpp:33
 msgid "Score"
 msgstr "Punktzahl"
 
-#: artdlg.cpp:291 sortDlg.cpp:32
+#: artdlg.cpp:288 sortDlg.cpp:32
 msgid "Subject"
 msgstr "Thema"
 
-#: artdlg.cpp:458
+#: artdlg.cpp:451
 msgid "Threading..."
 msgstr "Sortiere..."
 
-#: artdlg.cpp:467
+#: artdlg.cpp:460
 msgid "Showing Article List"
 msgstr "Zeige Artikelliste"
 
-#: artdlg.cpp:1313
+#: artdlg.cpp:1273
 msgid "KRN - Existing File"
 msgstr "KRN - Datei existiert"
 
-#: artdlg.cpp:1314
+#: artdlg.cpp:1274
 msgid "The File you selected already exists"
 msgstr "Die gewählte Datei existiert bereits"
 
-#: artdlg.cpp:1320
+#: artdlg.cpp:1280
 msgid "OverWrite"
 msgstr "Überschreiben"
 
-#: artdlg.cpp:1322
+#: artdlg.cpp:1282
 msgid "Append"
 msgstr "Anhängen"
 
-#: artdlg.cpp:1357 artdlg.cpp:1422
+#: artdlg.cpp:1317
 msgid ""
 "From: Krn\n"
 "To: You\n"
@@ -428,7 +428,7 @@ msgstr ""
 "Fehler beim Artikelholen.\n"
 "Server antwortete:\n"
 
-#: artdlg.cpp:1522
+#: artdlg.cpp:1417
 msgid "Getting Article List"
 msgstr "hole Artikelliste"
 
@@ -496,15 +496,15 @@ msgstr "Passwort"
 msgid "KRN - Decoder"
 msgstr "KRN - Dekodierer"
 
-#: decoderDlg.cpp:39
+#: decoderDlg.cpp:34
 msgid "ID"
 msgstr "ID"
 
-#: decoderDlg.cpp:49
+#: decoderDlg.cpp:44
 msgid "Destination directory:"
 msgstr "Zielverzeichnis:"
 
-#: decoderDlg.cpp:52
+#: decoderDlg.cpp:47
 msgid "Decode All"
 msgstr "Alle dekodieren"
 
@@ -512,7 +512,7 @@ msgstr "Alle dekodieren"
 msgid "KRN-Decoder"
 msgstr "KRN-Dekodierer"
 
-#: kdecode.cpp:210
+#: kdecode.cpp:208
 #, c-format
 msgid "Unsupported encoding type: %s."
 msgstr "Nicht unterstützte Kodierung: %s."
@@ -741,7 +741,7 @@ msgstr "Artikel suchen mit:"
 msgid "Negative"
 msgstr "Negativ"
 
-#: rulesDlg.cpp:190
+#: rulesDlg.cpp:189
 msgid "Rule name:"
 msgstr "Regelname:"
 

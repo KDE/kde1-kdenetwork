@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1998-04-21 14:29+0200\n"
+"POT-Creation-Date: 1998-04-16 18:09+0200\n"
 "PO-Revision-Date: 1998-04-21 15:55 +0100\n"
 "Last-Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
 
@@ -447,15 +447,15 @@ msgstr "Weiterleiten:"
 msgid "Indentation:"
 msgstr "Einrücken:"
 
-#: kmmessage.cpp:1237 kmsettings.cpp:308
+#: kmmessage.cpp:1233 kmsettings.cpp:308
 msgid "On %D, you wrote:"
 msgstr "Am %D schriebst Du:"
 
-#: kmmessage.cpp:1238 kmsettings.cpp:312
+#: kmmessage.cpp:1234 kmsettings.cpp:312
 msgid "On %D, %F wrote:"
 msgstr "Am %D schrieb %F:"
 
-#: kmmessage.cpp:1239 kmsettings.cpp:316
+#: kmmessage.cpp:1235 kmsettings.cpp:316
 msgid "Forwarded Message"
 msgstr "Weitergeleitete Nachricht"
 
@@ -851,7 +851,7 @@ msgstr "Datei anhängen"
 msgid "Include File"
 msgstr "Datei einfügen"
 
-#: kmcomposewin.cpp:1178 kmreaderwin.cpp:656
+#: kmcomposewin.cpp:1178 kmreaderwin.cpp:654
 msgid "View..."
 msgstr "Ansehen..."
 
@@ -859,7 +859,7 @@ msgstr "Ansehen..."
 msgid "Save..."
 msgstr "Speichern..."
 
-#: kmcomposewin.cpp:1180 kmreaderwin.cpp:659
+#: kmcomposewin.cpp:1180 kmreaderwin.cpp:657
 msgid "Properties..."
 msgstr "Eigenschaften..."
 
@@ -867,7 +867,7 @@ msgstr "Eigenschaften..."
 msgid "Attach..."
 msgstr "Anhängen..."
 
-#: kmcomposewin.cpp:1226 kmreaderwin.cpp:701
+#: kmcomposewin.cpp:1226 kmreaderwin.cpp:699
 msgid "View Attachment: "
 msgstr "Anlage ansehen: "
 
@@ -976,20 +976,20 @@ msgstr "Nachricht wurde unterschrieben von"
 msgid "Warning: Bad signature from"
 msgstr "Warnung: Falsche Unterschrift von"
 
-#: kmreaderwin.cpp:620
+#: kmreaderwin.cpp:618
 msgid "Attachment: "
 msgstr "Anlage: "
 
-#: kmreaderwin.cpp:732
+#: kmreaderwin.cpp:730
 msgid "Could not create temporary file"
 msgstr "Kann keine temporäre Datei anlegen"
 
-#: kmreaderwin.cpp:753
+#: kmreaderwin.cpp:751
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "Konnte temporäre Datei %s nicht speichern"
 
-#: kmreaderwin.cpp:780
+#: kmreaderwin.cpp:778
 msgid "Could not save file"
 msgstr "Konnte Datei nicht speichern"
 
