@@ -66,7 +66,7 @@
 #include "defs.h"
 #include "machines/machines.h"
 
-int prepare_response(register CTL_MSG *mp, register CTL_RESPONSE *rp)
+int prepare_response(register NEW_CTL_MSG *mp, register NEW_CTL_RESPONSE *rp)
 {
 	rp->type = mp->type;
 	rp->id_num = htonl(0);
@@ -97,9 +97,9 @@ int prepare_response(register CTL_MSG *mp, register CTL_RESPONSE *rp)
         return 1; /* Ok */
 }
 
-int  process_request(register CTL_MSG *mp, register CTL_RESPONSE *rp)
+int  process_request(register NEW_CTL_MSG *mp, register NEW_CTL_RESPONSE *rp)
 {
-	register CTL_MSG *ptr;
+	register NEW_CTL_MSG *ptr;
         int ret;
         int usercfg = 0;    /* set if a user config file exists */
 
@@ -109,8 +109,7 @@ int  process_request(register CTL_MSG *mp, register CTL_RESPONSE *rp)
         if (!prepare_response(mp, rp))
             return PROC_REQ_ERR;
         
-        /* Cut out names (to prevent problems).
-           Max length = 8 + 1 ('\0') (because of OLD structures) */
+        /* Ensure names end with '\0' */
         mp->l_name[NAME_SIZE-1] = '\0';
         mp->r_name[NAME_SIZE-1] = '\0';
         
@@ -130,7 +129,7 @@ int  process_request(register CTL_MSG *mp, register CTL_RESPONSE *rp)
 
 	case LEAVE_INVITE:
 		ptr = find_request(mp);
-		if (ptr != (CTL_MSG *)0) {
+		if (ptr != (NEW_CTL_MSG *)0) {
 			rp->id_num = htonl(ptr->id_num);
 			rp->answer = SUCCESS;
 		} else
@@ -139,7 +138,7 @@ int  process_request(register CTL_MSG *mp, register CTL_RESPONSE *rp)
 
 	case LOOK_UP:
                 ptr = find_match(mp);
-		if (ptr != (CTL_MSG *)0) {
+		if (ptr != (NEW_CTL_MSG *)0) {
 			rp->id_num = htonl(ptr->id_num);
 			rp->addr = ptr->addr;
 			rp->addr.sa_family = htons(ptr->addr.sa_family);
@@ -163,10 +162,10 @@ int  process_request(register CTL_MSG *mp, register CTL_RESPONSE *rp)
         return PROC_REQ_OK;
 }
 
-int do_announce(register CTL_MSG *mp, CTL_RESPONSE *rp, int usercfg)
+int do_announce(register NEW_CTL_MSG *mp, NEW_CTL_RESPONSE *rp, int usercfg)
 {
     struct hostent *hp;
-    CTL_MSG *ptr;
+    NEW_CTL_MSG *ptr;
     int result;
     char disp[DISPLAYS_LIST_MAX];
     char forward[S_CFGLINE], forwardMethod[4];
@@ -190,7 +189,7 @@ int do_announce(register CTL_MSG *mp, CTL_RESPONSE *rp, int usercfg)
                && (read_user_config("ForwardMethod", forwardMethod, 4  )) )
         {
             fwm = launchForwMach(mp, rp, forward, forwardMethod);
-            if (ptr == (CTL_MSG *) 0) {  /* Not already in the table */
+            if (ptr == (NEW_CTL_MSG *) 0) {  /* Not already in the table */
                 /* Store in table, because :
                    (Any method) : this allows to detect dupannounces.
                    (FWR & FWT) : we'll receive the LOOK_UP */
@@ -260,7 +259,7 @@ int do_announce(register CTL_MSG *mp, CTL_RESPONSE *rp, int usercfg)
            Then set callee to the initial callee, to display in ktalkdlg */
         callee = forwMachFindMatch(mp);
         
-	if (ptr == (CTL_MSG *) 0) {  /* Not already in the table => announce */
+	if (ptr == (NEW_CTL_MSG *) 0) {  /* Not already in the table => announce */
             rp->answer = announce(mp, hp->h_name, disp, usercfg, callee);
             if (rp->answer == PERMISSION_DENIED) return PROC_REQ_ERR;
             message("Announce done.");

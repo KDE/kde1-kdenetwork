@@ -41,7 +41,7 @@ extern "C"
 typedef struct table_entry TABLE_ENTRY;
 
 struct table_entry {
-	CTL_MSG request;
+	NEW_CTL_MSG request;
 	long	time;
         char * fwm; /* forwarding machine */
 	TABLE_ENTRY *next;
@@ -49,13 +49,13 @@ struct table_entry {
 };
 
 
-void insert_table(CTL_MSG *request, CTL_RESPONSE *response, char * fwm);
+void insert_table(NEW_CTL_MSG *request, NEW_CTL_RESPONSE *response, char * fwm);
 int new_id();
 int delete_invite(unsigned int id_num);
 int delete_forwmach(char * fwm);
 TABLE_ENTRY * find_entry(int id_num);
-CTL_MSG * find_match(register CTL_MSG *request);
-CTL_MSG * find_request(register CTL_MSG *request);
+NEW_CTL_MSG * find_match(register NEW_CTL_MSG *request);
+NEW_CTL_MSG * find_request(register NEW_CTL_MSG *request);
 void delete_entry(register TABLE_ENTRY *ptr);
 
 #ifdef __cplusplus

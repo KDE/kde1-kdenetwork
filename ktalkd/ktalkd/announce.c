@@ -82,7 +82,7 @@
  * process to any terminal that it writes on, we must fork a child
  * to protect ourselves
  */
-int announce(CTL_MSG *request, const char *remote_machine, char *disp, int
+int announce(NEW_CTL_MSG *request, const char *remote_machine, char *disp, int
              usercfg, char * callee) {
 
     int pid, status;
@@ -125,7 +125,7 @@ int announce(CTL_MSG *request, const char *remote_machine, char *disp, int
  * a talk is requested.
  */
 
-int announce_proc(CTL_MSG *request, const char *remote_machine,
+int announce_proc(NEW_CTL_MSG *request, const char *remote_machine,
                   char *disp, int usercfg, char * callee) {
 
 #ifdef HAVE_KDE
@@ -288,7 +288,7 @@ int announce_proc(CTL_MSG *request, const char *remote_machine,
   }
 }
 
-int print_std_mesg( CTL_MSG *request, const char *remote_machine, int usercfg ) {
+int print_std_mesg( NEW_CTL_MSG *request, const char *remote_machine, int usercfg ) {
 
   char full_tty[32];
   FILE *tf;
@@ -320,7 +320,7 @@ int print_std_mesg( CTL_MSG *request, const char *remote_machine, int usercfg ) 
  * try to keep the message in one piece if the recipient
  * in in vi at the time
  */
-void print_mesg(FILE * tf, CTL_MSG * request, const char *
+void print_mesg(FILE * tf, NEW_CTL_MSG * request, const char *
                 remote_machine, int usercfg)
 {
 	struct timeval clock;

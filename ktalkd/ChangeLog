@@ -1,3 +1,10 @@
+1998-07-30  David Faure  <David.Faure@insa-lyon.fr> (0.8.1)
+
+	* kotalkd/*.c: New way to support otalk protocol : forward everything
+	to local ntalk daemon (possibly ktalkd, but any other should work too)
+
+	* ktalkd/machines/talkconn.cpp (listen): Use SOMAXCONN as arg to listen
+
 1998-07-27  David Faure  <David.Faure@insa-lyon.fr> (0.8.0)
 
 	* kotalkd/: Created to support otalk protocol. No new source

@@ -61,14 +61,9 @@
 #include "../defs.h" // for hostname
 #include "../process.h" // for prepare_response()
 
-#ifndef VWERASE
-#ifdef VWERSE
- /* for AIX */
-#define VWERASE VWERSE
-#else
-#warning VWERASE not defined. Defining as 14.
-#define VWERASE 14
-#endif
+#ifndef SOMAXCONN
+#warning SOMAXCONN not defined in your headers
+#define SOMAXCONN 5
 #endif
 
 void TalkConnection::init()
@@ -320,7 +315,7 @@ int TalkConnection::look_for_invite()
 /** Prepare to accept a connection from another talk client */
 void TalkConnection::listen()
 {
-    if (::listen(sockt, 5) != 0)
+    if (::listen(sockt, SOMAXCONN) != 0)
         p_error("Error on attempt to listen for caller");
 }
 

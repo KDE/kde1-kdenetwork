@@ -37,10 +37,10 @@
 /* c interface for launching the machines */
 
 /* in answmach.c : */
-void launchAnswMach(CTL_MSG msginfo, int mode); 
+void launchAnswMach(NEW_CTL_MSG msginfo, int mode); 
 
 /* in forwmach.c : */
-char * launchForwMach(const CTL_MSG * mp, CTL_RESPONSE * rp, char * forward, char * forwardMethod);
-int forwMachProcessLookup(const CTL_MSG * mp, CTL_RESPONSE * rp);
-char * forwMachFindMatch(CTL_MSG * mp);
+char * launchForwMach(const NEW_CTL_MSG * mp, NEW_CTL_RESPONSE * rp, char * forward, char * forwardMethod);
+int forwMachProcessLookup(const NEW_CTL_MSG * mp, NEW_CTL_RESPONSE * rp);
+char * forwMachFindMatch(NEW_CTL_MSG * mp);
 void final_clean();

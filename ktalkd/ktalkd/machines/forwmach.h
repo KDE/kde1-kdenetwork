@@ -54,7 +54,7 @@ class ForwMachine
      * @param forward User@host to forward the talk
      * @param _forwardMethod 3 letters to choose the method (see .talkdrc)
      * */
-    ForwMachine(const CTL_MSG * mp,
+    ForwMachine(const NEW_CTL_MSG * mp,
                 char * forward,
                 char * _forwardMethod);
 
@@ -64,17 +64,17 @@ class ForwMachine
     /** Process the incoming ANNOUNCE request
      * @param rp the response structure to fill in 
      * @param id_num announce id_num */
-    void processAnnounce(CTL_RESPONSE * rp, int id_num);
+    void processAnnounce(NEW_CTL_RESPONSE * rp, int id_num);
 
     /** Checks if a LOOK_UP concerns this Forwarding Machine */
-    int isLookupForMe(const CTL_MSG * mp);
+    int isLookupForMe(const NEW_CTL_MSG * mp);
     /** Used by forwMachFindMatch for NEUuser or local forward */
-    char * findMatch(CTL_MSG * mp);
+    char * findMatch(NEW_CTL_MSG * mp);
     
     /** Processes the LOOK_UP request from answerer
      * @param mp answerer's message (look_up)
      * @param rp the response structure to fill in */
-    void processLookup(const CTL_MSG * mp, CTL_RESPONSE * rp);
+    void processLookup(const NEW_CTL_MSG * mp, NEW_CTL_RESPONSE * rp);
 
   protected:  
     /** Fills privates fields from forward
@@ -84,13 +84,13 @@ class ForwMachine
     /** Respond to caller's daemon
      * @param target the caller's machine address
      * @param rp the response to send to it */
-    void sendResponse(const struct sockaddr target, CTL_RESPONSE * rp);
+    void sendResponse(const struct sockaddr target, NEW_CTL_RESPONSE * rp);
 
     /** FWT Method : transmit characters from sockt1 to sockt2 */
     int transmit_chars(int sockt1, int sockt2, unsigned char * buf);
 
     /** FWT Method : we want to connect to both sides */
-    void connect_FWT(TalkConnection * tcCaller, const struct sockaddr * answ_addr);
+    void connect_FWT(TalkConnection * tcCaller);
     
     /** Method for the forwarding. */
     enum {FWA, FWR, FWT} forwardMethod;

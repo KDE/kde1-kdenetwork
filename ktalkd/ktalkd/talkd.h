@@ -25,22 +25,21 @@
 
 #define TTY_SIZE 16
 
-#ifdef OTALK
 /* Control Message structure for old talk protocol (earlier than BSD4.2) */
 
-#define NAME_SIZE 9
+#define OLD_NAME_SIZE 9
 
 typedef struct {
   Q_UINT8  type;                  /* request type, see below */
-  char     l_name [NAME_SIZE];    /* caller's name */
-  char     r_name [NAME_SIZE];    /* callee's name */
+  char     l_name [OLD_NAME_SIZE];    /* caller's name */
+  char     r_name [OLD_NAME_SIZE];    /* callee's name */
   Q_INT8   pad;
   Q_UINT32 id_num;                /* message id */
   Q_INT32  pid;                   /* caller's process id */
   char     r_tty [TTY_SIZE];      /* callee's tty name */
   struct sockaddr addr;           /* socket address for connection */
   struct sockaddr ctl_addr;       /* control socket address */
-} CTL_MSG;
+} OLD_CTL_MSG;
 
 /* Control Response structure for old talk protocol (earlier than BSD4.2) */
 
@@ -51,13 +50,13 @@ typedef struct {
   Q_INT8  pad2;
   Q_UINT32 id_num;       /* message id */
   struct sockaddr addr;  /* address for establishing conversation */ 
-} CTL_RESPONSE;
+} OLD_CTL_RESPONSE;
 
-#else /* not OTALK */
 
 /* Control Message structure for new talk protocol (BSD4.2 and later) */
 
-#define NAME_SIZE 12
+#define NEW_NAME_SIZE 12
+#define NAME_SIZE NEW_NAME_SIZE /* to avoid breaking current code */
 
 typedef struct {
   Q_UINT8   vers;                  /* protocol version */
@@ -68,10 +67,10 @@ typedef struct {
   struct sockaddr addr;            /* socket address for connection */
   struct sockaddr ctl_addr;        /* control socket address */
   Q_INT32   pid;                   /* caller's process id */
-  char	    l_name[NAME_SIZE];     /* caller's name */
-  char	    r_name[NAME_SIZE];     /* callee's name */
+  char	    l_name[NEW_NAME_SIZE];     /* caller's name */
+  char	    r_name[NEW_NAME_SIZE];     /* callee's name */
   char	    r_tty[TTY_SIZE];       /* callee's tty name */
-} CTL_MSG;
+} NEW_CTL_MSG;
 
 /* Control Response structure for new talk protocol (BSD4.2 and later) */
 
@@ -82,11 +81,9 @@ typedef struct {
   Q_INT8   pad;
   Q_UINT32 id_num;       /* message id */
   struct sockaddr addr;  /* address for establishing conversation */
-} CTL_RESPONSE;
+} NEW_CTL_RESPONSE;
 
 #define	TALK_VERSION	1		/* protocol version */
-
-#endif /* Protocol switch */
 
 /* Dgram Types.
  *

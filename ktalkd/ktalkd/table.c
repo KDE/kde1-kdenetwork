@@ -76,7 +76,7 @@ TABLE_ENTRY *table = NIL;
  * Look in the table for an invitation that matches the current
  * request looking for an invitation
  */
-CTL_MSG * find_match(register CTL_MSG *request)
+NEW_CTL_MSG * find_match(register NEW_CTL_MSG *request)
 {
     register TABLE_ENTRY *ptr;
     time_t current_time;
@@ -99,14 +99,14 @@ CTL_MSG * find_match(register CTL_MSG *request)
             return (&ptr->request);
         }
     }
-    return ((CTL_MSG *)0);
+    return ((NEW_CTL_MSG *)0);
 }
 
 /*
  * Look for an identical request, as opposed to a complimentary
  * one as find_match does 
  */
-CTL_MSG * find_request(register CTL_MSG *request)
+NEW_CTL_MSG * find_request(register NEW_CTL_MSG *request)
 {
     register TABLE_ENTRY *ptr;
     time_t current_time;
@@ -135,10 +135,10 @@ CTL_MSG * find_request(register CTL_MSG *request)
             return (&ptr->request);
         }
     }
-    return ((CTL_MSG *)0);
+    return ((NEW_CTL_MSG *)0);
 }
 
-void insert_table(CTL_MSG *request, CTL_RESPONSE *response, char * fwm)
+void insert_table(NEW_CTL_MSG *request, NEW_CTL_RESPONSE *response, char * fwm)
 {
     register TABLE_ENTRY *ptr;
     time_t current_time;

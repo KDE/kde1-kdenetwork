@@ -1,8 +1,6 @@
 
 TODO:
         - protocol (otalk/ntalk) detection in talkconn.cpp (for forwards)
-        - communication between talk & ntalk (to share the table of invites and 
-                                              announces)
 	- communication with ktalk via unix domain sockets
         - a 'not here' option, which launches the answmach at once. Will be 
             useful when a swallowed app. exists : when you leave, you switch
@@ -18,4 +16,4 @@ TODO:
           "activate/desactivate answering machine" and to launch a talk client, 
 	  and to set up forwardings.             - could be part of ktalk.
 
-Last updated 27-Jun-1998
+Last updated 30-Jun-1998

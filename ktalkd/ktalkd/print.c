@@ -49,11 +49,11 @@ static	char *answers[] =
       "unknown_request", "badversion", "badaddr", "badctladdr" };
 #define	NANSWERS	(sizeof (answers) / sizeof (answers[0]))
 
-/** Dump a CTL_MSG structure in the logs.
+/** Dump a NEW_CTL_MSG structure in the logs.
  * It must be called with network byte order (after calls to hton*)
  * @param cp a string to identify the log output
- * @param mp the address of the CTL_MSG structure */
-void print_request(char *cp,register CTL_MSG *mp)
+ * @param mp the address of the NEW_CTL_MSG structure */
+void print_request(char *cp,register NEW_CTL_MSG *mp)
 {
 	char tbuf[80], *tp;
 	
@@ -68,11 +68,11 @@ void print_request(char *cp,register CTL_MSG *mp)
         print_addr("    ctl_addr", (struct sockaddr_in *)&mp->ctl_addr);
 }
 
-/** Dump a CTL_RESPONSE structure in the logs.
+/** Dump a NEW_CTL_RESPONSE structure in the logs.
  * It must be called with network byte order (before calls to ntoh*)
  * @param cp a string to identify the log output
- * @param mp the address of the CTL_RESPONSE structure */
-void print_response(char *cp,register CTL_RESPONSE *rp)
+ * @param mp the address of the NEW_CTL_RESPONSE structure */
+void print_response(char *cp,register NEW_CTL_RESPONSE *rp)
 {
 	char tbuf[80], *tp, abuf[80], *ap;
 	

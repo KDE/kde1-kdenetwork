@@ -39,9 +39,9 @@ extern "C"
 {
 #endif
 
-int prepare_response(register CTL_MSG *mp, register CTL_RESPONSE *rp);
-int process_request(register CTL_MSG *mp, register CTL_RESPONSE *rp);
-int do_announce(register CTL_MSG *mp, CTL_RESPONSE *rp, int usercfg);
+int prepare_response(register NEW_CTL_MSG *mp, register NEW_CTL_RESPONSE *rp);
+int process_request(register NEW_CTL_MSG *mp, register NEW_CTL_RESPONSE *rp);
+int do_announce(register NEW_CTL_MSG *mp, NEW_CTL_RESPONSE *rp, int usercfg);
 
 #ifdef __cplusplus
 }

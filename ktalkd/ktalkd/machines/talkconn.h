@@ -78,7 +78,7 @@ class TalkConnection
     /** Returns socket, for reading or writing */
     int get_sockt() { return sockt; }
     /** Returns response buffer */
-    CTL_RESPONSE * getResponse() { return &response; }
+    NEW_CTL_RESPONSE * getResponse() { return &response; }
     /** Returns connection socket address. For FWT. */
     const struct sockaddr get_addr() { return msg.addr; }
 
@@ -103,8 +103,8 @@ class TalkConnection
     int     ctl_sockt;
     int     sockt;
 
-    CTL_MSG msg; // holds interesting data
-    CTL_RESPONSE response; // only convenience structure for responses
+    NEW_CTL_MSG msg; // holds interesting data
+    NEW_CTL_RESPONSE response; // only convenience structure for responses
 
     char char_erase;
 };

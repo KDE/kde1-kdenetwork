@@ -109,9 +109,9 @@ char OPTextprg [S_CFGLINE];
 
 int main(int argc, char *argv[])
 {
-        CTL_MSG		request;
-        CTL_RESPONSE	response;
-        CTL_MSG *mp = &request;
+        NEW_CTL_MSG		request;
+        NEW_CTL_RESPONSE	response;
+        NEW_CTL_MSG *mp = &request;
         int  ret_value = PROC_REQ_OK; /* return value from process_request */
 	int cc;
         int talkd_sockt = 0; /* if I understand well, it's inetd that opens the 

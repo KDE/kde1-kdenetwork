@@ -363,7 +363,7 @@ int AnswMachine::read_message(FILE * fd) // returns 1 if something has been ente
 
 extern "C" {
 /** C interface for Answering Machine */
-void launchAnswMach(CTL_MSG msginfo, int mode) 
+void launchAnswMach(NEW_CTL_MSG msginfo, int mode) 
  {
   if ((fork()) == 0) /* let's fork to let the daemon process other messages */
     {

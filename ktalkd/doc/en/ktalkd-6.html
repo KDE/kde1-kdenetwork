@@ -20,6 +20,13 @@
 
 Here comes the <CODE>ChangeLog</CODE> : <br>
 
+1998-07-30  David Faure  &lt;David.Faure@insa-lyon.fr&gt; (0.8.1)<br>
+<br>
+	* kotalkd/*.c: New way to support otalk protocol : forward everything<br>
+	to local ntalk daemon (possibly ktalkd, but any other should work too)<br>
+<br>
+	* ktalkd/machines/talkconn.cpp (listen): Use SOMAXCONN as arg to listen<br>
+<br>
 1998-07-27  David Faure  &lt;David.Faure@insa-lyon.fr&gt; (0.8.0)<br>
 <br>
 	* kotalkd/: Created to support otalk protocol. No new source<br>
