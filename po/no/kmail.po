@@ -17,7 +17,9 @@ msgstr ""
 msgid ""
 "Sorry, but this feature\n"
 "is still missing"
-msgstr "Beklager, men denne del mangler fremdeles"
+msgstr ""
+"Beklager, men denne del\n"
+"mangler fremdeles"
 
 #: kmmainwin.cpp:274
 msgid "New Folder"
@@ -446,6 +448,8 @@ msgid ""
 "The following placeholders are supported in the reply phrases:\n"
 "%D=date, %S=subject, %F=sender, %%=percent sign"
 msgstr ""
+"De følgende symbolene er støttet i svarstolkningen:\n"
+"%D=dato, %S=emne, %F=sender, %%=perosenttegn"
 
 #: kmsettings.cpp:287
 msgid "Reply to sender:"
@@ -692,7 +696,7 @@ msgstr "&Nyhetsgrupper"
 
 #: kmcomposewin.cpp:355
 msgid "&Followup-To:"
-msgstr ""
+msgstr "&Følg-opp-til:"
 
 #: kmcomposewin.cpp:427
 msgid "&Send"
@@ -776,7 +780,7 @@ msgstr "&Nyhetsgrupper"
 
 #: kmcomposewin.cpp:503
 msgid "&Followup-To"
-msgstr ""
+msgstr "&Følg-opp-til"
 
 #: kmcomposewin.cpp:508
 msgid "Append S&ignature"
@@ -1321,7 +1325,7 @@ msgstr "inneholder ikke"
 
 #: kmfilterdlg.cpp:555
 msgid "regular expression"
-msgstr ""
+msgstr "regulært uttrykk"
 
 #: kmfilterdlg.cpp:562
 msgid "<message>"
@@ -1329,11 +1333,11 @@ msgstr "<melding>"
 
 #: kmfilterdlg.cpp:563
 msgid "<body>"
-msgstr ""
+msgstr "<kropp>"
 
 #: kmfilterdlg.cpp:564
 msgid "<any header>"
-msgstr ""
+msgstr "<ethvert meldingshode"
 
 #: kpgp.cpp:110
 msgid ""
@@ -1353,7 +1357,7 @@ msgstr ""
 
 #: kpgp.cpp:165
 msgid "The pass phrase is missing."
-msgstr ""
+msgstr "Passord-frasen mangler"
 
 #: kpgp.cpp:437
 msgid "Message signed by"
@@ -1369,11 +1373,11 @@ msgstr "Slutt på PGP signert melding"
 
 #: kpgp.cpp:643
 msgid "Bad pass Phrase; couldn't decrypt"
-msgstr ""
+msgstr "Galt passord-frase; kunne ikke dekryptere"
 
 #: kpgp.cpp:732
 msgid "Bad pass Phrase; couldn't sign"
-msgstr ""
+msgstr "Gal passord-frase; kunne ikke signere"
 
 #: kpgp.cpp:789
 msgid ""
