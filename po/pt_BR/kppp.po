@@ -1051,7 +1051,6 @@ msgstr ""
 "porta serial suportam velocidades maiores)."
 
 #: general.cpp:375
-#, fuzzy
 msgid ""
 "To prevent other programs from accessing the\n"
 "modem while a connection is established, a\n"
@@ -1065,13 +1064,13 @@ msgid ""
 msgstr ""
 "Para evitar que outros programas acessem o\n"
 "modem enquanto uma conexão é estabelecida, um\n"
-"arquivo é criado para indicar que o modem está\n"
-"sendo usado. Aqui você pode selecionar o diretório\n"
-"onde este arquivo será criado.\n"
+"arquivo pode ser criado para indicar que o modem\n"
+"está em uso. No Linux um arquivo de exemplo seria\n"
+"<i>/var/lock/LCK..ttyS1</i>\n"
+"Aqui você pode selecionar se quer que esse\n"
+"travamento seja feito.\n"
 "\n"
-"Não toque nisso a não ser que saiba o que está\n"
-"fazendo não há nenhum padrão pois isto depende\n"
-"do sistema operacional."
+"<b>Padrão</b>: Ligado"
 
 #: general.cpp:386
 msgid "Modem Timeout:"
