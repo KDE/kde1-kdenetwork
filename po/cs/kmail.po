@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmail 0.4.4\n"
 "POT-Creation-Date: 1998-12-19 02:18+0100\n"
-"PO-Revision-Date: 1998-11-05 09:01+01:00\n"
+"PO-Revision-Date: 1998-12-23 16:06 CET\n"
 "Last-Translator: Miroslav Flídr <flidr@ky.zcu.cz>\n"
 "Language-Team: Czech <sc@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -645,9 +645,8 @@ msgid "Delete mail from server"
 msgstr "Smazat po¹tu na serveru"
 
 #: kmsettings.cpp:906
-#, fuzzy
 msgid "Retrieve all mail from server"
-msgstr "Smazat po¹tu na serveru"
+msgstr "Pøijmout v¹echnu po¹tu ze serveru"
 
 #: kmsettings.cpp:918
 msgid "Enable interval Mail checking"
@@ -893,13 +892,12 @@ msgid "&Attach..."
 msgstr "&Pøilo¾it..."
 
 #: kmcomposewin.cpp:531
-#, fuzzy
 msgid "Attach &Public Key"
-msgstr "Pøilo¾it soubor"
+msgstr "Pøilo¾it veøejný klíè"
 
 #: kmcomposewin.cpp:533
 msgid "Attach My &Public Key"
-msgstr ""
+msgstr "Pøilo¾it mùj veøejný klíè"
 
 #: kmcomposewin.cpp:544
 msgid "&Save..."
@@ -971,11 +969,11 @@ msgstr "Vlo¾it soubor"
 
 #: kmcomposewin.cpp:1245
 msgid "my pgp key"
-msgstr ""
+msgstr "mùj pgp klíè"
 
 #: kmcomposewin.cpp:1273
 msgid "pgp key"
-msgstr ""
+msgstr "pgp klíè"
 
 #: kmcomposewin.cpp:1294 kmreaderwin.cpp:721
 msgid "View..."
@@ -1113,7 +1111,6 @@ msgid "Warning: Bad signature from"
 msgstr "Pozor: Vadný podpis od"
 
 #: kmreaderwin.cpp:435
-#, fuzzy
 msgid "unknown key ID"
 msgstr "neznámé ID klíèe"
 
@@ -1208,15 +1205,15 @@ msgstr ""
 
 #: kmacctpop.cpp:100
 msgid "Please set Password and Username"
-msgstr ""
+msgstr "Prosím nastavte heslo a u¾ivatelské jméno"
 
 #: kmacctpop.cpp:135
 msgid "Incorrect Username"
-msgstr ""
+msgstr "Chybné u¾ivatelské jméno"
 
 #: kmacctpop.cpp:148
 msgid "Incorrect Password"
-msgstr ""
+msgstr "Chybné heslo"
 
 #: kmacctpop.cpp:184
 msgid ""
@@ -1529,16 +1526,16 @@ msgid ""
 "Message will not be encrypted."
 msgstr ""
 "Není mo¾né nalézt veøejný klíè pro\n"
-"pøíjemte této zprávy.\n"
+"pøíjemce této zprávy.\n"
 "Zpráva nebude ¹ifrována."
 
 #: kpgp.cpp:296
 msgid "Could not find the public keys for\n"
-msgstr "není mo¾né nalézt veøejný klíè od\n"
+msgstr "Není mo¾né nalézt veøejný klíè od\n"
 
 #: kpgp.cpp:307
 msgid "These persons will not be able to\n"
-msgstr "Tyto osoby nebudou schopna\n"
+msgstr "Tyto osoby nebudou schopny\n"
 
 #: kpgp.cpp:309
 msgid "This person will not be able to\n"
@@ -1568,7 +1565,7 @@ msgid ""
 "message as is, or cancel the message?"
 msgstr ""
 "Chcete i pøesto ¹ifrovat, ponechat zprávu\n"
-"jak je nebo zru¹it zprávu?"
+"jak je, nebo zru¹it zprávu?"
 
 #: kpgp.cpp:346
 msgid "Encrypt"
@@ -1596,12 +1593,11 @@ msgstr "Kontrola bezpeènosti PGP"
 
 #: kpgp.cpp:769
 msgid "Please select the public key to insert"
-msgstr ""
+msgstr "Prosím vyberte veøejný klíè ke vlo¾ení"
 
 #: kpgp.cpp:800
-#, fuzzy
 msgid "Select key"
-msgstr "Vybrat poøadaè"
+msgstr "Vybrat klíè"
 
 #: kpgp.cpp:827
 msgid "PGP User Identity:"

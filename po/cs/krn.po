@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: krn\n"
 "POT-Creation-Date: 1998-12-19 02:18+0100\n"
-"PO-Revision-Date: 1998-11-09 09:03+01:00\n"
+"PO-Revision-Date: 1998-12-23 16:00 CET\n"
 "Last-Translator: Miroslav Flídr <flidr@ky.zcu.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -526,12 +526,11 @@ msgstr "Heslo"
 
 #: NNTPConfigDlg.cpp:91
 msgid "Ask before downloading more than"
-msgstr ""
+msgstr "Dótázat se pøed sta¾ením více ne¾"
 
 #: NNTPConfigDlg.cpp:94
-#, fuzzy
 msgid "articles"
-msgstr "Oznaèit èlánek"
+msgstr "èlánkù"
 
 #: aboutDlg.cpp:28
 msgid "About KRN"
@@ -758,9 +757,8 @@ msgid "Replace..."
 msgstr "Nahradit..."
 
 #: kmcomposewin.cpp:477
-#, fuzzy
 msgid "&Spellcheck..."
-msgstr "KMail: kontrola pravopisu"
+msgstr "Kontrola pravopisu..."
 
 #: kmcomposewin.cpp:484
 msgid "&Urgent"
@@ -775,9 +773,8 @@ msgid "&Confirm read"
 msgstr "Po&tvrdit pøeètení"
 
 #: kmcomposewin.cpp:491
-#, fuzzy
 msgid "&Spellchecker..."
-msgstr "KMail: kontrola pravopisu"
+msgstr "Kontrola pravopisu..."
 
 #: kmcomposewin.cpp:494
 msgid "&Charsets..."
@@ -829,7 +826,7 @@ msgstr "&Vlo¾it soubor"
 
 #: kmcomposewin.cpp:527
 msgid "Insert My &Public Key"
-msgstr ""
+msgstr "Vlo¾it mùj veøejný klíè"
 
 #: kmcomposewin.cpp:532
 msgid "&Attach..."
@@ -848,9 +845,8 @@ msgid "&Attach"
 msgstr "&Pøilo¾it"
 
 #: kmcomposewin.cpp:558
-#, fuzzy
 msgid "Send message"
-msgstr "Odesílání zprávy:"
+msgstr "Odeslat zprávu"
 
 #: kmcomposewin.cpp:563
 msgid "Compose new message"
@@ -970,7 +966,7 @@ msgstr "Vyberte soubor se signaturou"
 
 #: kmcomposewin.cpp:2018
 msgid "Spellcheck - KMail"
-msgstr ""
+msgstr "Kontrola pravopisu - KMail"
 
 #: kmcomposewin.cpp:2044
 msgid ""
@@ -1312,7 +1308,7 @@ msgstr "Varování: Chybná signatura od"
 
 #: kmreaderwin.cpp:451
 msgid "unknown key ID"
-msgstr ""
+msgstr "neznámé ID klíèe"
 
 #: kmreaderwin.cpp:701
 msgid "Attachment: "
@@ -1353,7 +1349,7 @@ msgstr "Chybí kíè."
 
 #: kpgp.cpp:286 kpgp.cpp:312 kpgp.cpp:325 kpgp.cpp:344 kpgp.cpp:361
 msgid "PGP Warning"
-msgstr ""
+msgstr "Warování PGP"
 
 #: kpgp.cpp:287
 msgid ""
@@ -1361,23 +1357,25 @@ msgid ""
 "recipients of this mail.\n"
 "Message will not be encrypted."
 msgstr ""
+"Není mo¾né nalézt veøejný klíè pro\n"
+"pøíjemce této zprávy.\n"
+"Zpráva nebude ¹ifrována."
 
 #: kpgp.cpp:296
 msgid "Could not find the public keys for\n"
-msgstr ""
+msgstr "Není mo¾né nalézt veøejný klíè od\n"
 
 #: kpgp.cpp:307
 msgid "These persons will not be able to\n"
-msgstr ""
+msgstr "Tyto osoby nebudou schopny\n"
 
 #: kpgp.cpp:309
 msgid "This person will not be able to\n"
-msgstr ""
+msgstr "Tato osoba nebude schopna\n"
 
 #: kpgp.cpp:311
-#, fuzzy
 msgid "decrypt the message."
-msgstr "Za¹ifrovat zprávu"
+msgstr "de¹ifrovat zprávu."
 
 #: kpgp.cpp:326
 msgid ""
@@ -1385,26 +1383,33 @@ msgid ""
 "Do you wan't to try again, continue and\n"
 "leave the message unsigned, or cancel sending the message?"
 msgstr ""
+"Zadali jste neplatný klíè. Chcete jej zadat znovu,\n"
+"pokraèovat a nechat tuto zprávu nesignovanou\n"
+"nebo pøeru¹it odeslání této zprávy?"
 
 #: kpgp.cpp:331
 msgid "Retry"
-msgstr ""
+msgstr "Opakovat"
 
 #: kpgp.cpp:342
 msgid ""
 "Do you wan't to encrypt anyway, leave the\n"
 "message as is, or cancel the message?"
 msgstr ""
+"Chcete i pøesto ¹ifrovat, ponechat zprávu\n"
+"jak je, nebo zru¹it zprávu?"
 
 #: kpgp.cpp:346
 msgid "Encrypt"
-msgstr ""
+msgstr "©ifrovat"
 
 #: kpgp.cpp:359
 msgid ""
 "Do you wan't to leave the message as is,\n"
 "or cancel the message?"
 msgstr ""
+"Chcete nechat zprávu jak je\n"
+"nebo zru¹it zprávu?"
 
 #: kpgp.cpp:717
 msgid ""
@@ -1419,17 +1424,16 @@ msgid "PGP Security Check"
 msgstr "Kontrola bezpeènosti PGP"
 
 #: kpgp.cpp:765
-#, fuzzy
 msgid "Identity"
-msgstr "Identita ..."
+msgstr "Identita"
 
 #: kpgp.cpp:771
 msgid "PGP User Identity:"
-msgstr ""
+msgstr "Identita u¾ivatele PGP:"
 
 #: kpgp.cpp:782
 msgid "Store passphrase"
-msgstr ""
+msgstr "Ulo¾it klíè"
 
 #: kpgp.cpp:788
 msgid "Always encrypt to self"
@@ -1617,7 +1621,7 @@ msgstr "&7 bitové je ASCII"
 
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
-msgstr ""
+msgstr "Oznaèit neznámé znaky"
 
 #: kpgpbase.cpp:315
 msgid "Bad pass Phrase; couldn't sign"
@@ -1625,7 +1629,7 @@ msgstr "Chybný klíè; není mo¾né provést signování"
 
 #: kpgpbase.cpp:354
 msgid "error running pgp"
-msgstr ""
+msgstr "chyba pøi provádìní pgp"
 
 #: kpgpbase.cpp:371 kpgpbase.cpp:662
 msgid "Bad pass Phrase; couldn't decrypt"
@@ -1633,72 +1637,59 @@ msgstr "Chybný klíè; není mo¾né de¹ifrovat"
 
 #: kpgpbase.cpp:382 kpgpbase.cpp:673
 msgid "Do not have the secret key for this message"
-msgstr ""
+msgstr "Není dostupný tajný klíè k této zprávì"
 
 #: kpgpbase.cpp:410
 msgid "unknown key ID "
-msgstr ""
+msgstr "neznámé ID klíèe "
 
 #: kpgpbase.cpp:430
 msgid "??? (file ~/.pgp/pubring.pgp not found)"
-msgstr ""
+msgstr "??? (soubor ~/.pgp/pubring.pgp nebyl nalezen)"
 
 #: kpgpbase.cpp:585
-#, fuzzy
 msgid "The passphrase you entered is invalid."
-msgstr "Chybí kíè."
+msgstr "Vámi zadaný klíè je neplatný."
 
 #: kpgpbase.cpp:611
 msgid ""
 "The key(s) you wan't to encrypt your message\n"
 "to are not trusted. No encryption done."
 msgstr ""
+"Klíè(e), kterým chcete ¹ifrovat zprávu\n"
+"není dùvìryhodný. Nebylo provedeno ¹ifrování."
 
 #: kpgpbase.cpp:614
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The following key(s) are not trusted:\n"
 "%s\n"
 "They will not be able to decrypt the message"
 msgstr ""
-"veøejný klíè pro %s nenalezen.\n"
-"Tato osoba nebude schopna de¹ifrovat zprávu."
+"Nasledující klíè(e) jsou nedùvìryhodné:\n"
+"%s\n"
+"Nebudou proto pou¾ity k ¹ifrování zprávy."
 
 #: TooManydlg.cpp:25
-#, fuzzy
 msgid "KRN-Confirmation"
-msgstr "KRN - Nastavení NNTP"
+msgstr "KRN-Potvrzení"
 
 #: TooManydlg.cpp:30
 msgid "Read how many articles?"
-msgstr ""
+msgstr "Kolik èlánkù naèíst?"
 
 #: TooManydlg.cpp:36
 msgid "Get them from"
-msgstr ""
+msgstr "Pøijmout je z"
 
 #: TooManydlg.cpp:37
-#, fuzzy
 msgid "Oldest articles"
-msgstr "Získat èlánky"
+msgstr "Nejstar¹ích èlánkù"
 
 #: TooManydlg.cpp:39
-#, fuzzy
 msgid "Newest articles"
-msgstr "Získat èlánky"
+msgstr "Nejnovìj¹ích èlánkù"
 
 #: TooManydlg.cpp:43
 msgid "Make this the new threshold"
-msgstr ""
-
-#~ msgid "Error during PGP:"
-#~ msgstr "Chyba bìhem PGP:"
-
-#~ msgid "Message signed by"
-#~ msgstr "Zpráva je signována od"
-
-#~ msgid "Message has a bad signature from"
-#~ msgstr "Zpráva má chybnou signaturu od"
-
-#~ msgid "End PGP signed message"
-#~ msgstr "Konec zprávy signované pomocí PGP"
+msgstr "Pou¾ít toto nastavení jako nový práh"

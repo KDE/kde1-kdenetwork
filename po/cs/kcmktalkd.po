@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmktalkd\n"
 "POT-Creation-Date: 1998-12-12 15:20+0100\n"
-"PO-Revision-Date: 1998-10-28 20:39 CET\n"
+"PO-Revision-Date: 1998-12-23 20:57 CET\n"
 "Last-Translator: Miroslav Flídr <flidr@kky.zcu.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -23,12 +23,11 @@ msgstr "&Záznamník"
 
 #: main.cpp:64
 msgid "&Forward"
-msgstr ""
+msgstr "Pøe&smìrování"
 
 #: main.cpp:70
-#, fuzzy
 msgid "usage: kcmktalkd [-init | soundpage | answmachpage | forwmachpage ]\n"
-msgstr "Pou¾ití: kcmktalkd [-init | soundpage | answmachpage]\n"
+msgstr "Pou¾ití: kcmktalkd [-init | soundpage | answmachpage | forwmachpage ]\n"
 
 #: main.cpp:111
 msgid "KTalkd Configuration"
@@ -47,7 +46,6 @@ msgid "&Play sound"
 msgstr "&Pøehrávat zvuk"
 
 #: soundpage.cpp:59
-#, fuzzy
 msgid "&Sound File"
 msgstr "Z&vukový soubor"
 
@@ -156,15 +154,15 @@ msgstr "Zprávu zanechál v záznamníku %s@%s"
 
 #: forwmachpage.cpp:34
 msgid "Activate &forward"
-msgstr ""
+msgstr "Aktivovat &pøesmìrování"
 
 #: forwmachpage.cpp:39
 msgid "&Destination (user or user@host)"
-msgstr ""
+msgstr "&Cíl (u¾ivatel nebo u¾ivatel@hostitel)"
 
 #: forwmachpage.cpp:49
 msgid "Forward &method"
-msgstr ""
+msgstr "&Metoda pøesmìrování"
 
 #: forwmachpage.cpp:54
 msgid ""
@@ -179,3 +177,11 @@ msgid ""
 "\n"
 "See Help for further explanations.\n"
 msgstr ""
+"FWA : Pouze oznámení pøesmìrování. Pøímé spojení. Nedoporuèuje se.\n"
+"FWR : Pøesmìrovat v¹echny po¾adavky, zmìnit informace podle potøeby. Pøímé spojení.\n"
+"FWT : Pøesmìrovat v¹echny po¾adavky a brát v¹echny hovory. ®ádné pøímé spojení.\n"
+"\n"
+"Doporuèené pou¾ití: FWT jestli¾e jej chece pou¾ívat za firewallem (a má-li ktald\n"
+"pøístup k oboum sítím), jinak FWR.\n"
+"\n"
+"Nahlédnìte do nápovìdy pro podrobnìj¹í výklad.\n"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kfinger\n"
 "POT-Creation-Date: 1998-12-19 02:18+0100\n"
-"PO-Revision-Date: 1998-11-05 09:01+01:00\n"
+"PO-Revision-Date: 1998-12-23 20:46 CET\n"
 "Last-Translator: Miroslav Flídr <flidr@kky.zcu.cz>\n"
 "Language-Team: czech <flidr@kky.zcu.cz>\n"
 "MIME-Version: 1.0\n"
@@ -10,34 +10,30 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: kfinger.C:30
-#, fuzzy
 msgid "F&inger Now"
-msgstr "Spustit teï"
+msgstr "Spustit &Finger teï"
 
 #: kfinger.C:31
-#, fuzzy
 msgid "&Talk..."
-msgstr "Rozhovor..."
+msgstr "&Rozhovor..."
 
 #: kfinger.C:35
 msgid "Setup"
 msgstr "Nastavení"
 
 #: kfinger.C:36
-#, fuzzy
 msgid "&Save Options"
 msgstr "Ulo¾it nastavení"
 
 #: kfinger.C:38
-#, fuzzy
 msgid ""
 "kfinger 0.8.0\n"
 "\n"
 "(c) Andrea Rizzi (rizzi@kde.org)"
 msgstr ""
-"Kfinger 0.7.0\n"
-"napsal Andrea Rizzi\n"
-"rizzi@kde.org"
+"Kfinger 0.8.0\n"
+"\n"
+"(c) Andrea Rizzi <rizzi@kde.org>"
 
 #: kfinger.C:47
 msgid "KDE finger utility"
@@ -61,7 +57,7 @@ msgstr "Automatický finger zap./vyp."
 
 #: kfinger.C:66
 msgid "Welcome to KDE Finger\n"
-msgstr ""
+msgstr "Vítejte v programu KFinger\n"
 
 #: kfinger.C:67
 msgid "Finger result"
@@ -75,17 +71,16 @@ msgstr "Chyba na serveru : %s"
 #: kfinger.C:288
 #, c-format
 msgid "Finger  %s@%s   --   %s"
-msgstr ""
+msgstr "Figer   %s@%s   --   %s"
 
 #: kfinger.C:305
-#, fuzzy
 msgid ""
 "Kfinger 0.8.0\n"
 "(c) by Andrea Rizzi\n"
 "rizzi@kde.org"
 msgstr ""
-"Kfinger 0.7.0\n"
-"napsal Andrea Rizzi\n"
+"Kfinger 0.8.0\n"
+"(c) Andrea Rizzi\n"
 "rizzi@kde.org"
 
 #: kfinger.C:351
@@ -208,18 +203,3 @@ msgstr "Ulo¾ a ukonèi"
 #: kfinger.C:859
 msgid "Output parameters "
 msgstr "Výstupní parametry "
-
-#~ msgid "Talk.."
-#~ msgstr "Rozhovor.."
-
-#~ msgid ""
-#~ "Welcome to KDE Finger \n"
-#~ "program by A.Rizzi rizzi@kde.org\n"
-#~ "18/09/1997 \n"
-#~ msgstr ""
-#~ "Vitejte v programu KDE Finger\n"
-#~ "napsal A.Rizzi rizzi@kde.org\n"
-#~ "18/09/1997 \n"
-
-#~ msgid "Finger result for : %s@%s"
-#~ msgstr "Výsledok pro : %s@%s"
