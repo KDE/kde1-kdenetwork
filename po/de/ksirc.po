@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ksirc \n"
-"POT-Creation-Date: 1998-12-08 02:14+0100\n"
+"POT-Creation-Date: 1998-12-16 01:59+0100\n"
 "PO-Revision-Date: 1998-11-18 00:15+0100\n"
 "Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
 "Translator: Stephan Kulow <coolo@kde.org>\n"
@@ -27,7 +27,8 @@ msgid "&Modify"
 msgstr "&Verändern"
 
 #: FilterRuleEditorData.cpp:126
-msgid "&New Rule"
+#, fuzzy
+msgid "New Rule"
 msgstr "&Neue Regel"
 
 #: FilterRuleEditorData.cpp:145
@@ -97,76 +98,77 @@ msgstr ""
 msgid "Channel/Nick:"
 msgstr "Kanal/Spitzname:"
 
-#: servercontroller.cpp:160
+#: servercontroller.cpp:161
 msgid "&Dock"
 msgstr "&Andocken"
 
-#: servercontroller.cpp:168 servercontroller.cpp:746
-msgid "&New Server..."
+#: servercontroller.cpp:169 servercontroller.cpp:747
+#, fuzzy
+msgid "New Server..."
 msgstr "&Neuer Server..."
 
-#: servercontroller.cpp:169
+#: servercontroller.cpp:170
 msgid "&Join Channel..."
 msgstr "&In Kanal einschleusen..."
 
-#: servercontroller.cpp:171
+#: servercontroller.cpp:172
 msgid "&Connections"
 msgstr "&Verbindungen"
 
-#: servercontroller.cpp:188 servercontroller.cpp:735
+#: servercontroller.cpp:189 servercontroller.cpp:736
 msgid "&Colour Preferences..."
 msgstr "&Farb-Einstellungen.."
 
-#: servercontroller.cpp:190 servercontroller.cpp:737
+#: servercontroller.cpp:191 servercontroller.cpp:738
 msgid "&Global Fonts..."
 msgstr "&Allgemeiner Zeichensatz..."
 
-#: servercontroller.cpp:192 servercontroller.cpp:739
+#: servercontroller.cpp:193 servercontroller.cpp:740
 msgid "&Filter Rule Editor..."
 msgstr "&Editor für Filter-Regeln"
 
-#: servercontroller.cpp:194 servercontroller.cpp:741
+#: servercontroller.cpp:195 servercontroller.cpp:742
 #, fuzzy
 msgid "&Web Server Configuration..."
 msgstr "Aktive Server-Verbindungen"
 
-#: servercontroller.cpp:197 servercontroller.cpp:743
+#: servercontroller.cpp:198 servercontroller.cpp:744
 msgid "&Preferences..."
 msgstr "&Einstellungen..."
 
-#: servercontroller.cpp:207
+#: servercontroller.cpp:208
 msgid "Help on Colours..."
 msgstr "Hilfe bei Farben..."
 
-#: servercontroller.cpp:209
+#: servercontroller.cpp:210
 msgid "Help on Filters..."
 msgstr "Hilfe bei Filter..."
 
-#: servercontroller.cpp:211
+#: servercontroller.cpp:212
 msgid "Help on Keys..."
 msgstr "Hilfe bei Tasten..."
 
-#: servercontroller.cpp:214
+#: servercontroller.cpp:215
 msgid "About kSirc..."
 msgstr "Über kSirc..."
 
-#: servercontroller.cpp:231
+#: servercontroller.cpp:232
 msgid "Server Control"
 msgstr "Server-Kontrolle"
 
-#: servercontroller.cpp:290 servercontroller.cpp:454
+#: servercontroller.cpp:291 servercontroller.cpp:455
 msgid "Channels"
 msgstr "Kanäle"
 
-#: servercontroller.cpp:290 servercontroller.cpp:454
+#: servercontroller.cpp:291 servercontroller.cpp:455
 msgid "Online"
 msgstr "Online"
 
-#: servercontroller.cpp:691
+#: servercontroller.cpp:692
 msgid "Active Server Connections"
 msgstr "Aktive Server-Verbindungen"
 
-#: servercontroller.cpp:732
+#: servercontroller.cpp:733
 msgid "&Undock"
 msgstr "Nicht An&docken"
 

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE NETWORK/ksirc\n"
-"POT-Creation-Date: 1998-12-08 02:14+0100\n"
+"POT-Creation-Date: 1998-12-16 01:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Hans Petter Bieker <zerium@webindex.no>\n"
 "Language-Team: no <LL@li.org>\n"
@@ -34,7 +34,8 @@ msgid "&Modify"
 msgstr "&Rediger"
 
 #: FilterRuleEditorData.cpp:126
-msgid "&New Rule"
+#, fuzzy
+msgid "New Rule"
 msgstr "&Ny regel"
 
 #: FilterRuleEditorData.cpp:145
@@ -103,75 +104,76 @@ msgstr ""
 msgid "Channel/Nick:"
 msgstr "Kanal/Kallenavn:"
 
-#: servercontroller.cpp:160
+#: servercontroller.cpp:161
 msgid "&Dock"
 msgstr "&Dokk"
 
-#: servercontroller.cpp:168 servercontroller.cpp:746
-msgid "&New Server..."
+#: servercontroller.cpp:169 servercontroller.cpp:747
+#, fuzzy
+msgid "New Server..."
 msgstr "&Ny tjener..."
 
-#: servercontroller.cpp:169
+#: servercontroller.cpp:170
 msgid "&Join Channel..."
 msgstr "&Gi inn i kanal..."
 
-#: servercontroller.cpp:171
+#: servercontroller.cpp:172
 msgid "&Connections"
 msgstr "&Forbindelser"
 
-#: servercontroller.cpp:188 servercontroller.cpp:735
+#: servercontroller.cpp:189 servercontroller.cpp:736
 msgid "&Colour Preferences..."
 msgstr "&Fargepreferanser..."
 
-#: servercontroller.cpp:190 servercontroller.cpp:737
+#: servercontroller.cpp:191 servercontroller.cpp:738
 msgid "&Global Fonts..."
 msgstr "&Global skrifttype..."
 
-#: servercontroller.cpp:192 servercontroller.cpp:739
+#: servercontroller.cpp:193 servercontroller.cpp:740
 msgid "&Filter Rule Editor..."
 msgstr "&Filterregelredigerer..."
 
-#: servercontroller.cpp:194 servercontroller.cpp:741
+#: servercontroller.cpp:195 servercontroller.cpp:742
 msgid "&Web Server Configuration..."
 msgstr "&Vevtjenerkonfigurasjon..."
 
-#: servercontroller.cpp:197 servercontroller.cpp:743
+#: servercontroller.cpp:198 servercontroller.cpp:744
 msgid "&Preferences..."
 msgstr "&Preferanser..."
 
-#: servercontroller.cpp:207
+#: servercontroller.cpp:208
 msgid "Help on Colours..."
 msgstr "Hjelp om fager..."
 
-#: servercontroller.cpp:209
+#: servercontroller.cpp:210
 msgid "Help on Filters..."
 msgstr "Hjelp om filter..."
 
-#: servercontroller.cpp:211
+#: servercontroller.cpp:212
 msgid "Help on Keys..."
 msgstr "Hjelp om taster..."
 
-#: servercontroller.cpp:214
+#: servercontroller.cpp:215
 msgid "About kSirc..."
 msgstr "Om kSirc..."
 
-#: servercontroller.cpp:231
+#: servercontroller.cpp:232
 msgid "Server Control"
 msgstr "Tjener-kontroll"
 
-#: servercontroller.cpp:290 servercontroller.cpp:454
+#: servercontroller.cpp:291 servercontroller.cpp:455
 msgid "Channels"
 msgstr "Kanaler"
 
-#: servercontroller.cpp:290 servercontroller.cpp:454
+#: servercontroller.cpp:291 servercontroller.cpp:455
 msgid "Online"
 msgstr "På nett"
 
-#: servercontroller.cpp:691
+#: servercontroller.cpp:692
 msgid "Active Server Connections"
 msgstr "Aktive tjenerforbindelser"
 
-#: servercontroller.cpp:732
+#: servercontroller.cpp:733
 msgid "&Undock"
 msgstr "&Udokk"
 

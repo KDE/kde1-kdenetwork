@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KSIRC\n"
-"POT-Creation-Date: 1998-12-08 02:14+0100\n"
+"POT-Creation-Date: 1998-12-16 01:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Kim Enkovaara <kim.enkovaara@iki.fi>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,7 +35,8 @@ msgid "&Modify"
 msgstr "&Muokkaa"
 
 #: FilterRuleEditorData.cpp:126
-msgid "&New Rule"
+#, fuzzy
+msgid "New Rule"
 msgstr "&Uusi sääntö"
 
 #: FilterRuleEditorData.cpp:145
@@ -104,76 +105,77 @@ msgstr ""
 msgid "Channel/Nick:"
 msgstr "Kanava/Lempinimi:"
 
-#: servercontroller.cpp:160
+#: servercontroller.cpp:161
 msgid "&Dock"
 msgstr "&Nielaise"
 
-#: servercontroller.cpp:168 servercontroller.cpp:746
-msgid "&New Server..."
+#: servercontroller.cpp:169 servercontroller.cpp:747
+#, fuzzy
+msgid "New Server..."
 msgstr "&Uusi palvelin..."
 
-#: servercontroller.cpp:169
+#: servercontroller.cpp:170
 msgid "&Join Channel..."
 msgstr "&Liity kanavalle..."
 
-#: servercontroller.cpp:171
+#: servercontroller.cpp:172
 msgid "&Connections"
 msgstr "&Yhteydet"
 
-#: servercontroller.cpp:188 servercontroller.cpp:735
+#: servercontroller.cpp:189 servercontroller.cpp:736
 msgid "&Colour Preferences..."
 msgstr "&Väriasetukset..."
 
-#: servercontroller.cpp:190 servercontroller.cpp:737
+#: servercontroller.cpp:191 servercontroller.cpp:738
 msgid "&Global Fonts..."
 msgstr "&Yleiset kirjasimet..."
 
-#: servercontroller.cpp:192 servercontroller.cpp:739
+#: servercontroller.cpp:193 servercontroller.cpp:740
 msgid "&Filter Rule Editor..."
 msgstr "&Suodatinsäännöt..."
 
-#: servercontroller.cpp:194 servercontroller.cpp:741
+#: servercontroller.cpp:195 servercontroller.cpp:742
 #, fuzzy
 msgid "&Web Server Configuration..."
 msgstr "Aktiiviset palvelinyhteydet"
 
-#: servercontroller.cpp:197 servercontroller.cpp:743
+#: servercontroller.cpp:198 servercontroller.cpp:744
 msgid "&Preferences..."
 msgstr "&Asetukset..."
 
-#: servercontroller.cpp:207
+#: servercontroller.cpp:208
 msgid "Help on Colours..."
 msgstr "Ohje väreistä..."
 
-#: servercontroller.cpp:209
+#: servercontroller.cpp:210
 msgid "Help on Filters..."
 msgstr "Ohje suodattimista..."
 
-#: servercontroller.cpp:211
+#: servercontroller.cpp:212
 msgid "Help on Keys..."
 msgstr "Ohje näppäimistä..."
 
-#: servercontroller.cpp:214
+#: servercontroller.cpp:215
 msgid "About kSirc..."
 msgstr "Tietoja kSirc:tä..."
 
-#: servercontroller.cpp:231
+#: servercontroller.cpp:232
 msgid "Server Control"
 msgstr "Palvelimen asetus"
 
-#: servercontroller.cpp:290 servercontroller.cpp:454
+#: servercontroller.cpp:291 servercontroller.cpp:455
 msgid "Channels"
 msgstr "Kanavat"
 
-#: servercontroller.cpp:290 servercontroller.cpp:454
+#: servercontroller.cpp:291 servercontroller.cpp:455
 msgid "Online"
 msgstr "Linjalla"
 
-#: servercontroller.cpp:691
+#: servercontroller.cpp:692
 msgid "Active Server Connections"
 msgstr "Aktiiviset palvelinyhteydet"
 
-#: servercontroller.cpp:732
+#: servercontroller.cpp:733
 msgid "&Undock"
 msgstr "&Työpöydälle"
 
