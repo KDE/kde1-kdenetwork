@@ -153,7 +153,7 @@ int announce_proc(NEW_CTL_MSG *request, const char *remote_machine,
      * He is in X (probably :-) -> try to connect with external program
      */
       
-      // message_s("KDEBINDIR is %s",getenv("KDEBINDIR"));
+      /* message_s("KDEBINDIR is %s",getenv("KDEBINDIR")); */
       /* just a check */
 
    /*  No more needed : ktalkdlg will play sound itself.
