@@ -1,3 +1,10 @@
+1998-09-05  Harri Porten  <porten@kde.org>
+
+	* pppdata.cpp: fixed warnings
+	* replaced readListConfig calls with calls to readWholeListConfig
+	* and removed 'Whole' from function names afterwards
+	* connect.cpp: sped up scripting loop by reducing calls to gpppdata
+
 1998-08-29  Mario Weilguni <mweilguni@kde.org>
 
 	* In ConnectWidget::readtty(): after a newline or CR is received,

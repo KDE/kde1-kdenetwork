@@ -405,8 +405,9 @@ DNSWidget::DNSWidget( QWidget *parent, bool isnewaccount, const char *name )
  
   // restore data if editing
   if(!isnewaccount) {
-    for(int i=0; gpppdata.dns(i); i++)
-      dnsservers->insertItem(gpppdata.dns(i));
+    QStrList &dnslist = gpppdata.dns();
+    for(char *dns = dnslist.first(); dns; dns = dnslist.next())
+      dnsservers->insertItem(dns);
     dnsdomain->setText(gpppdata.domain());
   }
 
@@ -635,14 +636,15 @@ ScriptWidget::ScriptWidget( QWidget *parent, bool isnewaccount, const char *name
 
   //load data from gpppdata
   if(!isnewaccount) {
-    int counter = 0;
-    for( int i=0; gpppdata.scriptType(i) &&
-	   i <= MAX_SCRIPT_ENTRIES-1; i++, counter++) {
-      stl->insertItem(gpppdata.scriptType(i));
-      sl->insertItem(gpppdata.script(i));
+    QStrList &comlist = gpppdata.scriptType();
+    QStrList &arglist = gpppdata.script();
+    for(char *com = comlist.first(), *arg = arglist.first();
+        com && arg; com = comlist.next(), arg = arglist.next()) {
+      stl->insertItem(com);
+      sl->insertItem(arg);
     }
 
-    //    default_script->setChecked( (bool) (counter==0));
+    //    default_script->setChecked( (bool) (comlist.count()==0));
   }
 
   adjustScrollBar();

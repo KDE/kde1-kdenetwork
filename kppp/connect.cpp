@@ -65,10 +65,10 @@ extern KPPPWidget *p_kppp;
 extern DockWidget *dock_widget;
 extern int if_is_up();
 extern bool pppd_has_died;
-extern QString old_hostname;
 extern QString local_ip_address;
 extern bool quit_on_disconnect;
 
+QString old_hostname;
 bool modified_hostname;
 
 LoginTerm *termwindow = 0L;
@@ -96,7 +96,7 @@ ConnectWidget::ConnectWidget(QWidget *parent, const char *name)
 {
   modemfd = -1;
   modified_hostname = false;
-  
+
   QVBoxLayout *tl = new QVBoxLayout(this, 8, 10);
   QString tit = i18n("Connecting to: ");
   setCaption(tit);
@@ -217,6 +217,9 @@ void ConnectWidget::init() {
 
   quit_on_disconnect = quit_on_disconnect || gpppdata.quit_on_disconnect(); 
 
+  comlist = &gpppdata.scriptType();
+  arglist = &gpppdata.script();
+
   QString tit = i18n("Connecting to: ");
   tit += gpppdata.accname();
   setCaption(tit);
@@ -307,15 +310,15 @@ void ConnectWidget::timerEvent(QTimerEvent *) {
       timeout_timer->start(atoi(gpppdata.modemTimeout())*1000);
 
       QString bm = i18n("Dialing");
-      QStrList *plist = &gpppdata.phonenumbers();
+      QStrList &plist = gpppdata.phonenumbers();
       bm += " ";
-      bm += plist->at(dialnumber);
+      bm += plist.at(dialnumber);
       messg->setText(bm);
       emit debugMessage(bm);
 
       QString pn = gpppdata.modemDialStr();
-      pn += plist->at(dialnumber);
-      if(++dialnumber >= plist->count())
+      pn += plist.at(dialnumber);
+      if(++dialnumber >= plist.count())
         dialnumber = 0;
       writeline(pn);
       
@@ -400,29 +403,32 @@ void ConnectWidget::timerEvent(QTimerEvent *) {
       timeout_timer->stop();
       timeout_timer->start(scriptTimeout);
 
-      if(!gpppdata.scriptType(scriptindex) || !gpppdata.script(scriptindex)) {
+      scriptCommand = comlist->at(scriptindex);
+      scriptArgument = arglist->at(scriptindex);
+
+      if(!scriptCommand || !scriptArgument) {
 	vmain = 10;
         return;
       }
 
-      if(strcmp(gpppdata.scriptType(scriptindex), "Scan") == 0) {
+      if(strcmp(scriptCommand, "Scan") == 0) {
 	QString bm = i18n("Scanning ");
-	bm += gpppdata.script(scriptindex);
+	bm += scriptArgument;
 	messg->setText(bm);
 	emit debugMessage(bm);
 
-        setScan(gpppdata.script(scriptindex));
+        setScan(scriptArgument);
 	scriptindex++;
         return;
       }
 
-      if(strcmp(gpppdata.scriptType(scriptindex), "Save") == 0) {
+      if(strcmp(scriptCommand, "Save") == 0) {
 	QString bm = i18n("Saving ");
-	bm += gpppdata.script(scriptindex);
+	bm += scriptArgument;
 	messg->setText(bm);
 	emit debugMessage(bm);
 
-	if(stricmp(gpppdata.script(scriptindex), "password") == 0) {
+	if(stricmp(scriptArgument, "password") == 0) {
 	  gpppdata.setPassword(scanvar.data());
 	  p_kppp->setPW_Edit(scanvar.data());
 	  if(gpppdata.storePassword())
@@ -435,63 +441,63 @@ void ConnectWidget::timerEvent(QTimerEvent *) {
       }
 
 
-      if(strcmp(gpppdata.scriptType(scriptindex), "Send") == 0) {
+      if(strcmp(scriptCommand, "Send") == 0) {
 	QString bm = i18n("Sending ");
-	bm += gpppdata.script(scriptindex);
+	bm += scriptArgument;
 	messg->setText(bm);
 	emit debugMessage(bm);
 
-	writeline(gpppdata.script(scriptindex));
+	writeline(scriptArgument);
 	scriptindex++;
         return;
       }
 
-      if(strcmp(gpppdata.scriptType(scriptindex), "Expect") == 0) {
+      if(strcmp(scriptCommand, "Expect") == 0) {
         QString bm = i18n("Expecting ");
-        bm += gpppdata.script(scriptindex);
+        bm += scriptArgument;
 	messg->setText(bm);
 	emit debugMessage(bm);
 
-        setExpect(gpppdata.script(scriptindex));
+        setExpect(scriptArgument);
 	scriptindex++;
         return;
       }
 
 
-      if(strcmp(gpppdata.scriptType(scriptindex), "Pause") == 0) {
+      if(strcmp(scriptCommand, "Pause") == 0) {
 	QString bm = i18n("Pause ");
-	bm += gpppdata.script(scriptindex);
+	bm += scriptArgument;
 	bm += i18n(" seconds");
 	messg->setText(bm);
 	emit debugMessage(bm);
 	
 	pausing = true;
 	
-	pausetimer->start(atoi(gpppdata.script(scriptindex))*1000, true);
+	pausetimer->start(atoi(scriptArgument)*1000, true);
 	timeout_timer->stop();
 	
 	scriptindex++;
 	return;
       }
 
-      if(strcmp(gpppdata.scriptType(scriptindex), "Timeout") == 0) {
+      if(strcmp(scriptCommand, "Timeout") == 0) {
 
 	timeout_timer->stop();
 
 	QString bm = i18n("Timeout ");
-	bm += gpppdata.script(scriptindex);
+	bm += scriptArgument;
 	bm += i18n(" seconds");
 	messg->setText(bm);
 	emit debugMessage(bm);
 	
-	scriptTimeout=atoi(gpppdata.script(scriptindex))*1000;
+	scriptTimeout=atoi(scriptArgument)*1000;
         timeout_timer->start(scriptTimeout);
 	
 	scriptindex++;
 	return;
       }
 
-      if(strcmp(gpppdata.scriptType(scriptindex), "Hangup") == 0) {
+      if(strcmp(scriptCommand, "Hangup") == 0) {
 	messg->setText(i18n("Hangup"));
 	emit debugMessage(i18n("Hangup"));
 
@@ -502,7 +508,7 @@ void ConnectWidget::timerEvent(QTimerEvent *) {
 	return;
       }
 
-      if(strcmp(gpppdata.scriptType(scriptindex), "Answer") == 0) {
+      if(strcmp(scriptCommand, "Answer") == 0) {
 	
 	timeout_timer->stop();
 
@@ -514,9 +520,9 @@ void ConnectWidget::timerEvent(QTimerEvent *) {
 	return;
       }
 
-      if(strcmp(gpppdata.scriptType(scriptindex), "ID") == 0) {
+      if(strcmp(scriptCommand, "ID") == 0) {
 	QString bm = i18n("ID ");
-	bm += gpppdata.script(scriptindex);
+	bm += scriptArgument;
 	messg->setText(bm);
 	emit debugMessage(bm);
 
@@ -528,13 +534,13 @@ void ConnectWidget::timerEvent(QTimerEvent *) {
 	  firstrunID = false;
 	  scriptindex++;
 	}
-	else{
+	else {
 	  // the user didn't enter and Id on the main kppp dialog
 	  // let's query for an ID
 	     /* if not around yet, then post window... */
 	     if (prompt->Consumed()) {
 	       if (!(prompt->isVisible())) {
-		 prompt->setPrompt(gpppdata.script(scriptindex));
+		 prompt->setPrompt(scriptArgument);
 		 prompt->setEchoModeNormal();
 		 prompt->show();
 	       }
@@ -551,9 +557,9 @@ void ConnectWidget::timerEvent(QTimerEvent *) {
 	}
       }
 
-      if(strcmp(gpppdata.scriptType(scriptindex), "Password") == 0) {
+      if(strcmp(scriptCommand, "Password") == 0) {
 	QString bm = i18n("Password ");
-	bm += gpppdata.script(scriptindex);
+	bm += scriptArgument;
 	messg->setText(bm);
 	emit debugMessage(bm);
 
@@ -565,13 +571,13 @@ void ConnectWidget::timerEvent(QTimerEvent *) {
 	  firstrunPW = false;
 	  scriptindex++;
 	}
-	else{
+	else {
 	  // the user didn't enter a password on the main kppp dialog
 	  // let's query for a password
 	     /* if not around yet, then post window... */
 	     if (prompt->Consumed()) {
 	       if (!(prompt->isVisible())) {
-		 prompt->setPrompt(gpppdata.script(scriptindex));
+		 prompt->setPrompt(scriptArgument);
 		 prompt->setEchoModePassword();
 		 prompt->show();
 	       }
@@ -589,14 +595,14 @@ void ConnectWidget::timerEvent(QTimerEvent *) {
 	}
       }
  
-      if(strcmp(gpppdata.scriptType(scriptindex), "Prompt") == 0) {
+      if(strcmp(scriptCommand, "Prompt") == 0) {
 	QString bm = i18n("Prompting ");
 
         // if the scriptindex (aka the prompt text) includes a ## marker 
         // this marker should get substituted with the contents of our stored 
         // variable (from the subsequent scan).
 	
-	QString ts = gpppdata.script(scriptindex);
+	QString ts = scriptArgument;
 	int vstart = ts.find( "##" );
 	if( vstart != -1 ) {
 		ts.remove( vstart, 2 );
@@ -626,16 +632,16 @@ void ConnectWidget::timerEvent(QTimerEvent *) {
 	}
       }
 
-      if(strcmp(gpppdata.scriptType(scriptindex), "PWPrompt") == 0) {
+      if(strcmp(scriptCommand, "PWPrompt") == 0) {
 	QString bm = i18n("PW Prompt ");
-	bm += gpppdata.script(scriptindex);
+	bm += scriptArgument;
 	messg->setText(bm);
 	emit debugMessage(bm);
 
 	/* if not around yet, then post window... */
 	if (prompt->Consumed()) {
 	   if (!(prompt->isVisible())) {
-		prompt->setPrompt(gpppdata.script(scriptindex));
+		prompt->setPrompt(scriptArgument);
 		prompt->setEchoModePassword();
 	        prompt->show();
 	   }
@@ -651,10 +657,10 @@ void ConnectWidget::timerEvent(QTimerEvent *) {
 	}
       }
 
-      if(strcmp(gpppdata.scriptType(scriptindex), "LoopStart") == 0) {
+      if(strcmp(scriptCommand, "LoopStart") == 0) {
 
         QString bm = i18n("Loop Start ");
-        bm += gpppdata.script(scriptindex);
+        bm += scriptArgument;
 
 	if ( loopnest > (MAXLOOPNEST-2) ) {
 		bm += i18n("ERROR: Nested too deep, ignored.");
@@ -664,9 +670,9 @@ void ConnectWidget::timerEvent(QTimerEvent *) {
 	        QMessageBox::warning( 0, i18n("Error"),
 				      i18n("Loops nested too deeply!"));
 	} else {
-        	setExpect(gpppdata.script(scriptindex));
+        	setExpect(scriptArgument);
 		loopstartindex[loopnest] = scriptindex + 1;
-		loopstr[loopnest] = gpppdata.script(scriptindex);
+		loopstr[loopnest] = scriptArgument;
 		loopend = false;
 		loopnest++;
 	}
@@ -676,18 +682,18 @@ void ConnectWidget::timerEvent(QTimerEvent *) {
 	scriptindex++;
       }
 
-      if(strcmp(gpppdata.scriptType(scriptindex), "LoopEnd") == 0) {
+      if(strcmp(scriptCommand, "LoopEnd") == 0) {
         QString bm = "Loop End ";
-        bm += gpppdata.script(scriptindex);
+        bm += scriptArgument;
 	if ( loopnest <= 0 ) {
-		bm = i18n("LoopEnd without mathing Start! Line: ") + bm ;
+		bm = i18n("LoopEnd without matching Start! Line: ") + bm ;
 		vmain=20;
 		scriptindex++;
 		cancelbutton();
 	        QMessageBox::warning( 0, i18n("Error"), bm );
 		return;
 	} else {
-        	setExpect(gpppdata.script(scriptindex));
+        	setExpect(scriptArgument);
 		loopnest--;
 		loopend = true;
 	}
@@ -1122,9 +1128,10 @@ bool ConnectWidget::execppp() {
     command +=  "defaultroute";
   }
 
-  for(int i=0; gpppdata.pppdArgument(i); i++) {
+  QStrList &arglist = gpppdata.pppdArgument();
+  for (char *arg = arglist.first(); arg; arg = arglist.next()) {
     command += " ";
-    command += gpppdata.pppdArgument(i);
+    command += arg;
   }
 
   // PAP settings
@@ -1223,7 +1230,7 @@ void auto_hostname() {
     local_ip.s_addr=inet_addr((const char*)local_ip_address);
     hostname_entry=gethostbyaddr((const char *)&local_ip,sizeof(in_addr),AF_INET);
 
-    if (hostname_entry != NULL) {
+    if (hostname_entry != 0L) {
       new_hostname=hostname_entry->h_name;
       dot=new_hostname.find('.');
       new_hostname=new_hostname.remove(dot,new_hostname.length()-dot);
@@ -1247,7 +1254,7 @@ void add_domain(const char *domain) {
   char c;
   QString resolv[MAX_RESOLVCONF_LINES];
 
-  if (domain == NULL || ! strcmp(domain, "")) 
+  if (domain == 0L || ! strcmp(domain, "")) 
     return;
 
   if((fd = open("/etc/resolv.conf", O_RDONLY)) >= 0) {
@@ -1298,9 +1305,10 @@ void adddns() {
 
   if((fd = open("/etc/resolv.conf", O_WRONLY|O_APPEND)) >= 0) {
 
-    for(int i=0; gpppdata.dns(i); i++) {
+    QStrList &dnslist = gpppdata.dns();
+    for(char *dns = dnslist.first(); dns; dns = dnslist.next()) {
       write(fd, "nameserver ", 11);
-      write(fd, gpppdata.dns(i), strlen(gpppdata.dns(i)));
+      write(fd, dns, strlen(dns));
       write(fd, " \t#kppp temp entry\n", 19);
     }
     close(fd);
@@ -1315,7 +1323,6 @@ void removedns() {
   int fd;
   char c;
   QString resolv[MAX_RESOLVCONF_LINES];
-  extern QString old_hostname;
 
   if((fd = open("/etc/resolv.conf", O_RDONLY)) >= 0) {
 
@@ -1337,7 +1344,7 @@ void removedns() {
 	  write(fd, resolv[j].data()+2, resolv[j].length() - 27);
 	  write(fd, "\n", 1);
 	}
-	else{
+	else {
 	  write(fd, resolv[j].data(), resolv[j].length());
 	  write(fd, "\n", 1);
 	}
@@ -1367,12 +1374,12 @@ void parseargs(char* buf, char** args) {
     // terminated automatically.
      
     while ((*buf == ' ' ) || (*buf == '\t' ) || (*buf == '\n' ) )
-      *buf++ ='\0';
+      *buf++ = '\0';
     
     // detect begin of quoted argument
     if (*buf == '"' || *buf == '\'') {
       quotes = *buf;
-      *buf++ ='\0';
+      *buf++ = '\0';
     }
 
     // save the argument

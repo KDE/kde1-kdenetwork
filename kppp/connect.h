@@ -104,6 +104,8 @@ public:
 private:
   int vmain;
   int scriptindex;
+  char *scriptCommand, *scriptArgument;
+  QStrList *comlist, *arglist;
 
   //  static const int maxloopnest=(MAX_SCRIPT_ENTRIES/2);
   int loopnest;

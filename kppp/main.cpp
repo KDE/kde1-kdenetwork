@@ -74,7 +74,6 @@ int totalbytes;
 // for testing purposes
 bool TESTING=0;
 
-QString old_hostname;
 QString local_ip_address;
 QString remote_ip_address;
 QString pidfile;

@@ -152,13 +152,10 @@ public:
 
   const char* readConfig(const char *, const char *, const char *);
   int readNumConfig(const char *, const char *, int);
-  const char* readListConfig(const char *, const char *, int);
-  bool readWholeListConfig(const char *, const char *, QStrList &, 
-                           char sep = ',');
+  bool readListConfig(const char *, const char *, QStrList &, char sep = ',');
   void writeConfig(const char *, const char *, const char *);
   void writeConfig(const char *, const char *, int);
-  void writeWholeListConfig(const char *, const char *, QStrList &,
-                            char sep = ',');
+  void writeListConfig(const char *, const char *, QStrList &, char sep = ',');
 
   // functions to set/get general kppp info
 
@@ -349,19 +346,19 @@ public:
   const bool defaultroute();
   void setDefaultroute(bool set);
 
-  const char* dns(int);
+  QStrList &dns();
   void setDns(QStrList &);
 
   const char* domain();
   void setDomain(const char *);
 
-  const char* scriptType(int);
+  QStrList &scriptType();
   void setScriptType(QStrList &);
 
-  const char* script(int);
+  QStrList &script();
   void setScript(QStrList &);
 
-  const char* pppdArgument(int);
+  QStrList &pppdArgument();
   void setpppdArgumentDefaults();
   void setpppdArgument(QStrList &);
 

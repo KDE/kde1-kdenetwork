@@ -106,10 +106,9 @@ void PPPdArguments::closebutton() {
 void PPPdArguments::init() {
   arguments->clear();
 
-  for(int i=0; gpppdata.pppdArgument(i) && 
-	i <= MAX_PPPD_ARGUMENTS-1; i++) {
-    arguments->insertItem(gpppdata.pppdArgument(i));
-  }
+  QStrList &arglist = gpppdata.pppdArgument();
+  for(char *arg = arglist.first(); arg; arg = arglist.next())
+    arguments->insertItem(arg);
 }
 
 #include "pppdargs.moc"
