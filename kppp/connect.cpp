@@ -803,9 +803,6 @@ void ConnectWidget::cancelbutton() {
   // just to be sure
   PAP_RemoveAuthFile();
   
-#ifdef MY_DEBUG
-printf( "ConnectWidget::cancelbutton() \n" );
-#endif
   app->processEvents();
   
   hangup();
@@ -1606,6 +1603,7 @@ int lockdevice() {
     if(!S_ISREG(st.st_mode)) 
       return -1;
   }
+
 
   if ((fd = open(gpppdata.modemLockFile(), O_RDONLY)) >= 0) {
 

@@ -75,7 +75,7 @@ void usage(char* progname){
 void banner(char* progname){
 
   fprintf(stderr,"%s version " KPPPVERSION "\n",progname); 
-  fprintf(stderr,"Copyright (c) 1997 Bernd Johannes Wuebben ");
+  fprintf(stderr,"Copyright (c) 1997-1998 Bernd Johannes Wuebben ");
   fprintf(stderr,"wuebben@math.cornell.edu\n");
   fprintf(stderr,"Use -h for the list of valid of command line options.\n");
   exit(0);
@@ -568,9 +568,19 @@ void dieppp(int sig) {
       // just to be sure
       PAP_RemoveAuthFile();
 
+      gpppdata.setpppdpid(-1);
+
+      
       if(gpppdata.command_on_disconnect()) {
     
 	pid_t id;
+
+#ifdef MY_DEBUG
+	printf(
+	       "Executing command on disconnect since pppd has died: %s\n",
+	       gpppdata.command_on_disconnect()
+	       );
+#endif
 
 	if((id = fork()) == 0) {
 	  setuid(getuid());
@@ -579,10 +589,10 @@ void dieppp(int sig) {
 	}	 
       }
 
+
       p_xppp->stopAccounting();
       p_xppp->con_win->stopClock();
       
-      gpppdata.setpppdpid(-1);
 
       pppd_has_died = true;
       removedns();
@@ -852,20 +862,32 @@ printf("In terminatepppd(): I will attempt to kill pppd\n");
 
   if(gpppdata.pppdpid() >= 0) {
 
-    if(gpppdata.command_on_disconnect()) {
-      
-      pid_t id;
-      
-      if((id = fork()) == 0) {
-	setuid(getuid());
-	system(gpppdata.command_on_disconnect());
-	exit(0);
-      }	 
-    }
 
     if(kill(gpppdata.pppdpid(), SIGTERM) < 0)
       qApp->beep();
-      wait(&stat);
+      
+    wait(&stat);
+
+    gpppdata.setpppdpid(-1);
+
+      if(gpppdata.command_on_disconnect()) {
+    
+	pid_t id;
+
+#ifdef MY_DEBUG
+  printf(
+	 "Executing command on disconnect in terminatedpppd(): %s\n",
+	 gpppdata.command_on_disconnect()
+	 );
+#endif
+
+	if((id = fork()) == 0) {
+	  setuid(getuid());
+	  system(gpppdata.command_on_disconnect());
+	  exit(0);
+	}	 
+      }
+    
   }
 
   gpppdata.setpppdpid(-1);

@@ -627,6 +627,18 @@ kppp setuid root permissions do the following:
 </verb></tscreen>
 <p>
 
+<sect2>kppp tells me it can't create a modem lock file.<p>
+This in most instances means that you have installed kppp
+without SETUID bit on while you, the person executing kppp, 
+doesn't have write access to the lock file directory which
+by default is /var/lock. This for example is the case on 
+RedHat systems. Check the modem dialog for the
+precise location you have chosen. The solution is easy --
+either run kppp SETUID if you can afford to, or give regular
+users write access to /var/lock or create a modem group
+that will have access to the /var/lock file.
+<p>
+
 <sect2>Why is Kppp installed with the SETUID bit on?
 <p>
 

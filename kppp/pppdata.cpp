@@ -344,7 +344,7 @@ void PPPData::setUseCDLine(const int n) {
 }
 
 int PPPData::UseCDLine() {
-  return  readNumConfig(MODEM_GRP,USECDLINE_KEY,true);
+  return  readNumConfig(MODEM_GRP,USECDLINE_KEY,0);
 }
 
 void PPPData::setFastModemInit(const int n) {

@@ -1,13 +1,24 @@
-Thu Jan 13 06:58:29 1998  Peter Silva <peter.silva@videotron.ca>
-	* make new behaviour optional (in response to Bernd's worry about cheap modems.)
+Tue Jan 13 17:50:07 1998  Bernd Johannes Wuebben  <wuebben@math.cornell.edu>
+
+	* fixed a bug introduced with the creation of the 'execute command
+	  on disconnect' option
+
+	* CD is by default off. It doesn't work on my internal modem 
+	  and I suspect it might not even work on most (all) internal modems ..
 
 Thu Jan 13 06:58:29 1998  Peter Silva <peter.silva@videotron.ca>
+
+	* make new behaviour optional (in response to Bernd's worry 
+	  about cheap modems.)
+
+Thu Jan 13 06:58:29 1998  Peter Silva <peter.silva@videotron.ca>
+
 	* patch to prevent kppp hang if modem is off when connecting.
 
 Tue Jan 13 02:48:55 1998  Bernd Johannes Wuebben  <wuebben@math.cornell.edu>
 
 	* applied BSD patch from Alex <garbanzo@hooked.net>
-	  (just a few missing includeds)
+	  (just a few missing includes)
 
 	* various fixes and geometry improvements
 
