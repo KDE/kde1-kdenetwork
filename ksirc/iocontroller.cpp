@@ -197,9 +197,11 @@ void KSircIOController::stdout_read(KProcess *, char *_buffer, int buflen)
 	  name = "!discard";
       }
     }
-
+    
+    debug("Before: %s", line.data());
     ksircproc->TopList[name]->sirc_receive(line);
-
+    debug("After: %s", line.data());
+    
     pos = pos2+1;
   } while((uint) pos < buffer.length());
 

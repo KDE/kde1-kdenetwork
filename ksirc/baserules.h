@@ -18,9 +18,9 @@ public:
     {
     }
 
-  void sirc_receive(QString str);
+  virtual void sirc_receive(QString str);
 
-  void control_message(int, QString);
+  virtual void control_message(int, QString);
 
   filterRuleList *defaultRules();
 

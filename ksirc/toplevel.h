@@ -93,6 +93,22 @@ public:
     */
   virtual void show();
 
+  /**
+   * Line recieved that should be printed on the screen. Unparsed, and
+   * ready processing.  This is a single line, and it NOT \n
+   * terminated.
+   */
+  virtual void sirc_receive(QString str);
+
+  /**
+    * Reimplement the ksircmessagereceiver control messages.  These
+    * are parsed and dealt with quickly.
+    */
+  virtual void control_message(int, QString);
+
+
+
+
 signals:
   /**
     * signals thats the toplevel widget wishes to
@@ -138,25 +154,12 @@ signals:
    */
   void objDestroyed(KSircTopLevel *);
 
-public slots:
-  /**
-    * Line recieved that should be printed on the screen. Unparsed, and
-    * ready processing.  This is a single line, and it NOT \n
-    * terminated.
-  */
-  void sirc_receive(QString str);
+  public slots:
   /**
     * When enter is pressed, we read the SLE and output the results
     * after processing via emitting outputLine.
     */
-  void sirc_line_return(); 
-
-  /** 
-    * Reimplement the ksircmessagereceiver control messages.  These
-    * are parsed and dealt with quickly.
-    */
-  void control_message(int, QString);
-
+  virtual void sirc_line_return();
 
 protected slots:
     /**
