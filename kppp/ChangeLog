@@ -1,3 +1,12 @@
+1998-12-05  Harri Porten  <porten@kde.org>
+
+	* connect.cpp: killpppd() and stop if_timeout_timer in cancelbutton()
+	* main.cpp: ignore SIGCHLDs in shutDown()
+	* main.cpp: interface timeout error wasn't displayed anymore
+	* modem.cpp: check for possible existance of stale lockfile before
+	trying it to open via Requester::rq->openLockFile(). The resulting
+	error message on failure was too confusing.
+
 1998-12-04  Harri Porten  <porten@kde.org>
 
 	* requester.cpp: disable alarm() for now, silence some debug messages

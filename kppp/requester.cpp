@@ -42,8 +42,8 @@
 #include "qtimer.h"
 #include "auth.h"
 #include "pppdata.h"
+#include "opener.h"
 #include "requester.h"
-
 #include "log.h"
 
 Requester *Requester::rq = 0L;

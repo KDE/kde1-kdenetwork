@@ -215,7 +215,7 @@ void Modem::readtty(int) {
     // for a short time and then re-enable it (avoid reading too much)
     if(sn != 0 && (c == '\n' || c == '\r')) {
       sn->setEnabled(false);
-      Debug("QSocketNotifier disabled!");
+      //      Debug("QSocketNotifier disabled!");
       QTimer::singleShot(20, this, SLOT(startNotifier()));
     }
   }
@@ -240,7 +240,7 @@ void Modem::startNotifier() {
     connect(sn, SIGNAL(activated(int)), SLOT(readtty(int)));
     Debug("QSocketNotifier started!");
   } else {
-    Debug("QSocketNotifier re-enabled!");
+    //    Debug("QSocketNotifier re-enabled!");
     sn->setEnabled(true);
   }
 }
@@ -475,33 +475,34 @@ int Modem::lockdevice() {
       return -1;
   }
 
-
-  if ((fd = Requester::rq->openLockfile(lockfile.data(), O_RDONLY)) >= 0) {
-    // Mario: it's not necessary to read more than lets say 32 bytes. If
-    // file has more than 32 bytes, skip the rest
-    char oldlock[33]; // safe
-    int sz = read(fd, &oldlock, 32);
-    close (fd);
-    if (sz <= 0)
-      return 1;
-    oldlock[sz] = '\0';
+  if(access(lockfile.data(), F_OK) == 0) {
+    if ((fd = Requester::rq->openLockfile(lockfile.data(), O_RDONLY)) >= 0) {
+      // Mario: it's not necessary to read more than lets say 32 bytes. If
+      // file has more than 32 bytes, skip the rest
+      char oldlock[33]; // safe
+      int sz = read(fd, &oldlock, 32);
+      close (fd);
+      if (sz <= 0)
+        return 1;
+      oldlock[sz] = '\0';
       
-    Debug("Device is locked by: %s\n", &oldlock);
+      Debug("Device is locked by: %s\n", &oldlock);
       
-    int oldpid;
-    int match = sscanf(oldlock, "%d", &oldpid);
+      int oldpid;
+      int match = sscanf(oldlock, "%d", &oldpid);
 
-    // found a pid in lockfile ?
-    if (match < 1 || oldpid <= 0)
-      return 1;
+      // found a pid in lockfile ?
+      if (match < 1 || oldpid <= 0)
+        return 1;
     
-    // check if process exists
-    if (kill((pid_t)oldpid, 0) == 0)
-      return 1;
-    if (errno != ESRCH)
-      return 1;
+      // check if process exists
+      if (kill((pid_t)oldpid, 0) == 0)
+        return 1;
+      if (errno != ESRCH)
+        return 1;
       
-    Debug("lockfile is stale\n");
+      Debug("lockfile is stale\n");
+    }
   }
 
   fd = Requester::rq->openLockfile(lockfile.data(),

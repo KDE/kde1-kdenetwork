@@ -866,6 +866,7 @@ void ConnectWidget::cancelbutton() {
   Modem::modem->stop();
   killTimer(main_timer_ID);
   timeout_timer->stop();
+  if_timeout_timer->stop();
 
   if (termwindow) {
     delete termwindow;
@@ -880,7 +881,8 @@ void ConnectWidget::cancelbutton() {
   Requester::rq->removeSecret(AUTH_CHAP);
   
   kapp->processEvents();
-  
+
+  killpppd();  
   Modem::modem->hangup();
 
   this->hide();
@@ -963,7 +965,7 @@ void ConnectWidget::if_waiting_timed_out() {
   emit stopAccounting();
   p_kppp->con_win->stopClock();
 
-  
+
   // killing ppp will generate a SIGCHLD which will be caught in pppdie()
   // in main.cpp what happens next will depend on the boolean 
   // reconnect_on_disconnect which is set in ConnectWidget::init();

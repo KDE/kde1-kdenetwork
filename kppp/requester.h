@@ -1,9 +1,6 @@
 #ifndef _REQUESTER_H_
 #define _REQUESTER_H_
 
-#include "qobject.h"
-#include "opener.h"
-
 class Requester {
 
 public:

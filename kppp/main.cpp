@@ -62,6 +62,7 @@
 #include "log.h"
 #include "groupbox.h"
 #include "newwidget.h"
+#include "opener.h"
 #include "requester.h"
 
 #include <X11/Xlib.h>
@@ -763,7 +764,8 @@ void dieppp(int sig) {
     // if we are not connected pppdpid is -1 so have have to check for that
     // in the followin line to make sure that we don't raise a false alarm
     // such as would be the case when the log file viewer exits.
-    if(id == gpppdata.pppdpid() && gpppdata.pppdpid() != -1) { 
+    if((id == gpppdata.pppdpid() && gpppdata.pppdpid() != -1)
+       || gpppdata.pppdError()) { 
       Debug("It was pppd that died\n");
 
       // when we killpppd() on Cancel in ConnectWidget 
@@ -847,6 +849,7 @@ void dieppp(int sig) {
                     "Since a further execution would be pointless, " \
                     "kppp will shut down right now.";
       QMessageBox::critical(0L, i18n("Error"), i18n(msg));
+      remove_pidfile();
       shutDown(1);
     }
   }
@@ -1260,11 +1263,13 @@ bool remove_pidfile() {
 void shutDown(int status) {
 
   pid_t pid;
+  // don't bother about SIGCHLDs anymore
+  signal(SIGCHLD, SIG_IGN);
   Debug("shutDown(%i)", status);
   pid = gpppdata.suidChildPid();
-  printf("pid=%i\n", pid);
   if(pid > 0) {
     gpppdata.setSuidChildPid(-1);
+    Debug("killing child process %i", pid);
     //   kill(pid, SIGTERM);
     kill(pid, SIGKILL);
   }

@@ -266,3 +266,4 @@ int Opener::sendResponse(struct ResponseHeader *response) {
 
   return 0;
 }
+

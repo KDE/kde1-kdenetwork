@@ -255,6 +255,3 @@ groupbox.cpp: groupbox.moc
 groupbox.moc: groupbox.h
 	$(MOC) groupbox.h -o groupbox.moc
 
-requester.cpp: requester.moc
-requester.moc: requester.h
-	$(MOC) requester.h -o requester.moc
