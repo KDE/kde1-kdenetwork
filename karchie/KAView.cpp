@@ -44,7 +44,7 @@
 
 #define COL_NUM_IN_VIEW 3
 #define LIST_SEPARATOR '|'
-#define SEARCHTERM_TOOLTIP "Searchstring, press <ENTER> to start search"
+#define SEARCHTERM_TOOLTIP i18n("Searchstring, press <ENTER> to start search")
 
 /* Static members */
 const int KAViewSearchterm::offsetwidth = 5;
