@@ -139,6 +139,9 @@ install-data-local:
 uninstall-local:
 	@(cd Rules && $(MAKE) uninstall)
 
+distclean-local:
+	@(cd Rules && $(MAKE) distclean)
+
 # MOC files
 accounting.cpp: accounting.moc;
 accounting.moc: accounting.h

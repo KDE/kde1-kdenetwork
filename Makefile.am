@@ -3,6 +3,7 @@
 
 AUTOMAKE_OPTIONS = foreign 
 SUBDIRS = @TOPSUBDIRS@
+DISTCLEANFILES = inst-apps 
 
 install-data-local:
 	@echo ""
