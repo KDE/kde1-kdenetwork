@@ -46,12 +46,10 @@ General KDE discussions should go to the KDE mailing list (kde@kde.org).
 How to compile kSirc
 --------------------
 
-For those with CVS access, you can compile kSirc after doing the following
-in the kdenetwork directory:
+To compile kSirc you need to:
 
-1. (cd .. && cvs -z9 checkout -r1.10 kdenetwork/ltconfig)
-2. mv ltconfig admin/ltconfig
-3. Re-run make -f Makefile.cvs and ./configure (not config.guess)
+1. mv ksirc/ltconfig admin/ltconfig
+2. Re-run make -f Makefile.cvs and ./configure (not config.guess)
 
 Remember to remove admin/ltconfig before doing any commits so you don't
 commit the modified ltconfig.
