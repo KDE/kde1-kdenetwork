@@ -310,7 +310,11 @@ int print_std_mesg( NEW_CTL_MSG *request, const char *remote_machine, int
    * it's pgrp set, so disconnect us from the
    * tty before we catch a signal.
    */
+#ifdef _SCO_DS
+#warning "Not sure what to do here..."
+#else
   ioctl(fileno(tf), TIOCNOTTY, (struct sgttyb *) 0);
+#endif
   if (fstat(fileno(tf), &stbuf) < 0)
     return (PERMISSION_DENIED);
   if ((stbuf.st_mode&020) == 0)
@@ -403,7 +407,11 @@ void print_mesg(FILE * tf, NEW_CTL_MSG * request, const char *
 	*bptr = '\0';
 	fprintf(tf, big_buf);
 	fflush(tf);
+#ifdef _SCO_DS
+#warning "Not sure what to do here..."
+#else
 	ioctl(fileno(tf), TIOCNOTTY, (struct sgttyb *) 0);
+#endif
         delete remotemach;
 }
 
