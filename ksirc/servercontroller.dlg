@@ -1,0 +1,71 @@
+DlgEdit:v1.2:Dialog:
+Dialog {
+	ClassHeader {servercontroller.h}
+	ClassSource {servercontroller.cpp}
+	ClassName {servercontroller}
+	DataHeader {servercontrollerData.h}
+	DataSource {servercontrollerData.cpp}
+	DataName {servercontrollerData}
+	WindowBaseClass {Custom}
+	CustomBase {KSircControl}
+	CustomBaseHeader {control.h}
+	WindowCaption {Server Control}
+	WindowFlags {233472}
+}
+WidgetLayout {
+InitialPos {-1 -1}
+Size {410 200}
+MinSize {410 200}
+MaxSize {410 200}
+Grid {10}
+
+Frame {
+		Style {33}
+		Rect {5 35 400 160}
+		Name {Frame_2}
+		Variable {BaseBorder}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+Label {
+		Text {Active Server Connections}
+		AutoResize {FALSE}
+		Margin {-1}
+		Rect {20 40 160 20}
+		Name {Label_1}
+		Palette {0 12632256 16777215 6316128 10789024 128 16777215 8421504 12632256 16777215 6316128 10789024 8421504 12632256 0 12632256 16777215 6316128 10789024 0 16777215}
+		Font {"helvetica" 12 75 0 0 0 0 0 0}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+User {
+		UserClassHeader {kmenubar.h}
+		UserClassName {KMenuBar}
+		Rect {0 0 410 30}
+		Name {User_2}
+		Variable {MenuBar}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+User {
+		UserClassHeader {ktreelist.h}
+		UserClassName {KTreeList}
+		Rect {20 60 370 120}
+		Name {User_3}
+		Variable {ConnectionTree}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+Layout {Box}
+Box_Layout-1{
+		Direction {TopToBottom}
+		Border {5}
+		AutoBorder {5}
+		Name {}
+		Strut {0}
+}
+}
