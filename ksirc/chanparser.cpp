@@ -115,7 +115,7 @@ void ChannelParser::parseSSFEClear(QString string) /*fold00*/
   throw(parseSucc(QString(""))); // Null string, don't display anything
 }
 
-void ChannelParser::parseSSFEStatus(QString string) /*FOLD00*/
+void ChannelParser::parseSSFEStatus(QString string) /*fold00*/
 {
   string.detach();
   string.remove(0, 4); // strip off the first 4 characters
@@ -199,6 +199,7 @@ void ChannelParser::parseSSFEOut(QString string) /*fold00*/
 
 void ChannelParser::parseSSFEMsg(QString string) /*fold00*/
 {
+  string.detach();
   if(string.length() > 100)
     throw(parseError(QString(""), QString("String length for nick is greater than 100 characters, insane, too big")));
 
@@ -220,6 +221,7 @@ void ChannelParser::parseSSFEMsg(QString string) /*fold00*/
 
 void ChannelParser::parseSSFEPrompt(QString string) /*fold00*/
 {
+  string.detach();
   if(prompt_active == FALSE){
     QString prompt, caption;
     ssfePrompt *sp;
@@ -266,6 +268,7 @@ void ChannelParser::parseSSFEPrompt(QString string) /*fold00*/
 
 void ChannelParser::parseSSFEReconnect(QString string) /*fold00*/
 {
+  string.detach();
   if(top->channel_name[0] == '#'){
     QString str = "/join " + QString(top->channel_name) + "\n";
     emit top->outputLine(str);
@@ -295,6 +298,8 @@ void ChannelParser::parseINFONicks(QString in_string) /*fold00*/
 
   EString string = in_string;
   char *nick, *place_holder;
+
+  string.detach();
 
   int start, count;
   char channel_name[101];
