@@ -33,18 +33,21 @@ public:
   }
 };
 
-class parseError        // Parsing ran into a fatal error, bail out.
+/*
+ * parseError is a fatal error message.
+ * arg0: if it is not empty, it will get displayed to the channel screen (in error colour with mad smile)
+ * arg1: if none empty goes to stderr
+ */
+class parseError
 {
 public:
-  int display;
   QString str;
-  char *msg;
+  QString err;
 
-  parseError(int _d, QString _s, char *_m = 0)
+  parseError(QString _s, QString _e)
     {
-      display = _d;
       str = _s;
-      msg = _m;
+      err = _e;
     }
 };
 
@@ -236,9 +239,21 @@ private:
 
   /**
    * *N* Is a nick change, update the nick list if needed
+   * Nick changes go outto all windows, so the nick may not be on
+   * out current channel.
    */
-  void parseINFONick(QString string);
-  
+  void parseINFOChangeNick(QString string);
+
+  /*
+   * *M* is a mode change.  Parsing is mode changes is probably the most
+   * complicated of all the parsings
+   */
+  void parseINFOMode(QString string);
+
+  /*
+   * *  is a ctcp actiion.  Simply print a pretty * for the user
+   */
+  void parseCTCPAction(QString string);
   
 };
 

@@ -281,8 +281,6 @@ private:
   ircListItem *parse_input(QString &string);
   void sirc_write(QString &str);
 
-  QString next_word(QString str, int index) throw(parseError);
-
   QPopupMenu *user_controls;
   static QList<UserControlMenu> *user_menu;
   int opami;

@@ -65,7 +65,7 @@ QPixmap *KSircTopLevel::pix_greenp = 0L;
 QPixmap *KSircTopLevel::pix_bluep = 0L;
 QPixmap *KSircTopLevel::pix_madsmile = 0L;
 
-KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name)  /*FOLD00*/
+KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name)  /*fold00*/
   : KTopLevelWidget(name),
     KSircMessageReceiver(_proc)
    
@@ -359,12 +359,14 @@ KSircTopLevel::~KSircTopLevel() /*fold00*/
   delete user_controls;
 
   QToolTip::remove(lagmeter);
-  delete kmenu;
-  delete ktool;
-
-  //  close(sirc_stdin);  // close all the pipes
-  //  close(sirc_stdout); // ditto
-  //  close(sirc_stderr); // duh... ;)
+  /*
+   * MEM LEAK?
+   * The new CVS KDE snapshots are doing this for ous
+   * Let's hope this doesn't make a bigleak in older kde dists
+   *
+   */
+//  delete kmenu;
+//  delete ktool;
 
 }
 
@@ -655,7 +657,7 @@ void KSircTopLevel::sirc_write(QString &str) /*fold00*/
 
 }
 
-ircListItem *KSircTopLevel::parse_input(QString &in_string) /*FOLD00*/
+ircListItem *KSircTopLevel::parse_input(QString &string) /*FOLD00*/
 {
 
   /* 
@@ -687,24 +689,13 @@ ircListItem *KSircTopLevel::parse_input(QString &in_string) /*FOLD00*/
    * */
 
 
-  // \n: clear any line feeds                              -> " "
-  // \r: clear stray carriage returns                      -> ""
-  // \002: control character of some kinda, used for bold? -> ""
-  // \037: bold or underline, evil messy char              -> Not Used
-  // \000: terminating null
   QString s3, s4, channel;
-  int pos, pos2;
   QColor *color = kSircConfig->colour_text;
   QPixmap *pixmap = NULL;
-  int offset; // Used for nicks->findNick() operations
 
   /*
    * No-output get's set to 1 if we should ignore the line
    */
-
-  int no_output = 0;
-
-  EString string = in_string;
 
   /*
    * This is the second generation parsing code.
@@ -720,442 +711,21 @@ ircListItem *KSircTopLevel::parse_input(QString &in_string) /*FOLD00*/
     else
       return NULL;
   }
-
-  try {
-    switch(string[0]){
-      //
-      // Finish parsing ssfe control messages
-      // Start parsing mode changes and other control messages, etc
-      //
-    case '*': // Parse and control ssfe control messages...
-      if(string.length() > 2){ // Check string, make sure it's valid
-	string.remove(0, 1);
-	if(string[0] < ' ' || string[0] > '`'){ // Check to see if a control chat leaked through ' ' -> '~' is ascii
-	  string.remove(0,1);    // yup one did, remove it.
-	}
-	
-	if(string[0] != '#')                  // It's not a users line, so we're not on continuing
-	  continued_line = FALSE;             // a long user list
-	
-	switch(string[0]){
-	case '#':                             // Channel listing of who's in it
-	  // Get the channel name portion of the string
-	  try {
-	    pos = string.find("#",1,FALSE);
-	  }
-	  catch (estringOutOfBounds &err){
-	    pos = string.find("Users on ", 1) + 9;
-	  }
-	  pos2 = string.find(":",pos,FALSE);
-	  if(pos2 > pos){
-	    QString chan_name = string.mid(pos, pos2-pos);
-	    if (strcasecmp(channel_name,chan_name.data()) != 0){
-	      string.remove(0,2);
-	      pixmap = pix_info;
-	      color = kSircConfig->colour_info;
-	      throw(wrongChannelError(1));
-	    }
-	  }
-	  else // Could not find start of nicks listed
-	    throw(parseError(1, string, "Failed to find list of nick"));
-	  
-	  nicks->setAutoUpdate(FALSE);        // clear and update nicks
-	  if(continued_line == FALSE)
-	    nicks->clear();
-	  continued_line = TRUE;
-	  pos = string.find(": ", 0, FALSE) + 1; // Find start of nicks
-	  while(pos > 0){                     // While there's nick to go...
-	    try {
-	      pos2 = string.find(" ", pos + 1, FALSE); // Find end of nick
-	    }
-	    catch (estringOutOfBounds &err){
-	      pos2 = string.length();         // If the end's not found,
-	    }
-	    // set to end of the string
-	    s3 = string.mid(pos+1, pos2 - pos - 1); // Get nick
-	    if(s3[0] == '@'){    // Remove the op part if set
-	      s3.remove(0, 1);
-	      nickListItem *irc = new nickListItem();
-	      irc->setText(s3);
-	      irc->setOp(TRUE);
-	      nicks->inSort(irc);
-	    }                                  // Remove voice if set
-	    else if(s3[0] == '+'){
-	      s3.remove(0, 1);
-	      nickListItem *irc = new nickListItem();
-	      irc->setVoice(TRUE);
-	      irc->setText(s3);
-	      nicks->inSort(irc);
-	    }
-	    else{
-	      nicks->inSort(s3);
-	    }
-	    try{
-	      pos = string.find(" ", pos2, FALSE); // find next nick
-	    }
-	    catch (estringOutOfBounds &err){
-	      pos = -1;
-	    }
-	    
-	  }
-	  nicks->setAutoUpdate(TRUE);         // clear and repaint the listbox
-	  nicks->repaint(TRUE);
-	  color = kSircConfig->colour_info;    // set to cyan colouring
-	  no_output = 1;
-	  break;
-	case '<':
-	  string.remove(0, 2);                // clear junk
-	  pixmap = pix_greenp;                // For joins and leave use green
-	  color = kSircConfig->colour_chan;    // Pin gets for joins
-	  
-	  // Multiple type of parts, a signoff or a /part
-	  // Each get's get nick in a diffrent localtion
-	  // Set we search and find the nick and the remove it from the nick list
-	  // 1. /quit, signoff, nick after "^Singoff: "
-	  // 2. /part, leave the channek, nick after "has left \w+$"
-	  // 3. /kick, kicked off the channel, nick after "kicked off \w+$"
-	  //
-	  
-	  
-	  if(string.contains("Signoff: ")){   // Nick is right after the ": "
-	    pos = string.find("Signoff: ") + 9;
-	    if(pos < 9) // find is -1 if it failed, make sure it works
-	      throw(parseError(1, string, "Could not find channel nick who signed off"));
-	    s3 = string.mid(pos, string.find(' ', pos) - pos);
-	  }
-	  else if(string.contains("You have left channel ")){
-	    pos = string.find("channel ", 0) + 8;
-	    if(pos < 8){ // if it fails pos is < 0, hence <0 + 8 is < 8
-	      throw(parseError(1, string, "Could not find channel name that you left"));
-	    }
-	    int end = string.length();
-	    s3 = string.mid(pos, end - pos);
-	    if(end > 0){
-	      if(strcasecmp(channel_name, s3.data()) == 0){
-		no_output = 1;
-		string.truncate(0);
-		QApplication::postEvent(this, new QCloseEvent()); // WE'RE DEAD
-	      }
-	      s3 = "";
-	    }
-	    else{
-	      warning("You left a channel, but I barfed on the string %s", string.data());
-	      throw(parseError(1, string, "Failed to parse part string"));
-	    }
-	  }
-	  else if(string.contains("You have been kicked")){
-	    int begin,end; // Let's make sure we are kicked from our channel
-	    QString kchan; //
-	    begin = string.find("channel ", 0) + 8;
-	    if(begin < 0)
-	      throw(parseError(1, string, "Failed to parse kick message"));
-	    end = string.find(" ", begin);
-	    if(end < 0)
-	      throw(parseError(1, string, "Failed to parse kick message"));
-	    kchan = string.mid(begin, end - begin);
-	    if(strcasecmp(kchan.data(), channel_name) == 0){
-	      if(KickWinOpen != false)
-		throw(parseError(0, string, "Kick window Open"));
-	      KickWinOpen = true;
-	      switch(QMessageBox::information(this, "You have Been Kicked",
-					      string.data() + 1,
-					      "Rejoin", "Leave", 0, 0, 1)){
-					      case 0:
-						{
-						  QString str = "/join " + QString(channel_name) + "\n";
-						  emit outputLine(str);
-						  if(ticker)
-						    ticker->show();
-						  else
-						    this->show();
-						}
-						break;
-					      case 1:
-						QApplication::postEvent(this, new QCloseEvent()); // WE'RE DEAD
-						break;
-	      }
-	      KickWinOpen = false;
-	      s3 = "";
-	    }
-	    else
-	      throw(parseError(1, string));
-	  }
-	  else if(string.contains("has left")){ // part
-	    pos = string.find("has left channel ");
-	    if(strcasecmp(next_word(string, pos+17), channel_name) == 0)
-	      s3 = string.mid(1, string.find(' ', 1) - 1);
-	    else
-	      throw(parseError(0, string, "Part for wrong channel"));
-	  }
-	  else if(string.contains("kicked off")){ // kick
-	    pos = string.find("kicked off channel ");
-	    if(strcasecmp(next_word(string, pos+19), channel_name) == 0)
-	      s3 = string.mid(1, string.find(' ', 1) - 1);
-	    else
-	      throw(parseError(0, string, "Failed to find nick in list when he was kicked"));
-	  }
-	  else if(string.contains("You have left"))
-	    s3 = "";
-	  else{                                // uhoh, something we missed?
-	    throw(parseError(0, string, "Failed to parse part/kick/leave/quit message"));
-	    s3 = "";
-	  }
-	    { // Allows me to define index
-	      no_output = 1;
-	      int index = nicks->findNick(s3);
-	      if(index >= 0){
-		nicks->removeItem(index);
-		no_output = 0;
-	      }
-	      else{
-		//	    warning("TopLevel-part: nick search on %s failed", s3.data());
-	      }
-	    }
-	  break;
-	case '>':
-	  string.remove(0, 2);                   // remove junk
-	  pixmap = pix_greenp;                   // set green pin
-	  color =   kSircConfig->colour_chan;     // set green
-	  if(string.contains("You have joined channel")){
-	    int chan = string.findRev(" ", -1) + 1;
-	    ASSERT(chan > 0);
-	    s3 = string.mid(chan, string.length() - chan);
-	    s3 = s3.lower();
-	    this->show();
-	    emit open_toplevel(s3);
-	  }
-	  else{
-	    s3 = string.mid(1, string.find(' ', 1) - 1); // only 2 types of join
-	    //	nicks->insertItem(s3, 0);      // add the sucker
-	    nicks->inSort(s3);
-	  }
-	  break;
-	case 'N':
-	  string.remove(0, 2);                   // remove the junk
-	  pixmap = pix_greenp;                   // set green pin
-	  color = kSircConfig->colour_chan;       // set freen
-	  s3 = string.mid(1, string.find(' ', 1) - 1); // find the old know
-	  pos = string.find("known as ") + 9;    // find the new nick
-	  s4 = string.mid(pos, string.length() - pos);
-	  
-	  // If we have a window open talking to the nick
-	  // Change the nick to the new one.
-	  if((channel_name[0] != '#') &&
-	     (strcasecmp(s3,channel_name) == 0)){
-	    control_message(CHANGE_CHANNEL, s4.lower());
-	  }
-	  //	cerr << s3 << "-" << s4 << endl;
-	  // search the list for the nick and remove it
-	  // since the list is source we should do a binary search...
-	  no_output = 1;            // don't display unless we find the nick
-	  offset = nicks->findNick(s3);
-	  if(offset >= 0){
-	    no_output = 0;        // nick is in out list, so print the message
-	    bool isOp = nicks->isTop(offset); // Are they an op?
-	    nicks->setAutoUpdate(FALSE);
-	    nicks->removeItem(offset);        // remove old nick
-	    if(isOp == TRUE){
-	      nickListItem *irc  = new nickListItem();
-	      irc->setText(s4);
-	      irc->setOp(isOp);
-	      nicks->inSort(irc);
-	    }
-	    else{
-	      nicks->inSort(s4);     // add new nick in sorted poss
-	      // can't use changeItem since it
-	      // doesn't maintain sort order
-	    }
-	    nicks->setAutoUpdate(TRUE);
-	  }
-	  else {
-	    //	  warning("Toplevel-N: nick change search failed on %s", s3.data());
-	  }
-	  break;
-	case ' ':
-	  string.remove(0, 1);      // * <something> use fancy * pixmap
-	  pixmap = pix_star;        // why? looks cool for dorks
-	  break;
-	case '+':
-	  // Basic idea here is simple, go through the mode change and
-	  // assign each mode a + or a - and an argument or "" if there is
-	  // none.  After that each mode change it looked at to see if
-	  // we should handle it in any special way.
-	  if(!string.contains("for user")){
-	    pos = string.find("Mode change \"", 0);
-	    if(pos > 0){
-	      QStrList mode, arg;
-	      char plus[] = "+";
-	      pos += 13;
-	      int endmode = string.find(" ", pos);
-	      if(endmode < 0)
-		throw(badModeChangeError(string, "Could not find end of string"));
-	      if(string[endmode-1] == '"')
-		endmode--;
-	      int nextarg = endmode + 1;
-	      for(; pos < endmode; pos++){
-		switch(string[pos]){
-		case '+':
-		case '-':
-		  plus[0] = string[pos];
-		  break;
-		case 'o':
-		case 'v':
-		case 'b':
-		case 'l':
-		case 'k':
-		  mode.append(plus + string.mid(pos, 1));
-		    {
-		      int end = string.find(" ", nextarg);
-		      if(end == -1){
-			cerr << "No arg: " << string << endl;
-			arg.append("");
-		      }
-		      else if(string[end-1] == '"')
-			end--;
-		      if(end > nextarg){
-			arg.append(string.mid(nextarg, end - nextarg));
-			nextarg = end+1;
-		      }
-		      else{
-			if(string[pos] != 'l' && plus[0] == '-'){ // '-l' does not have an argument
-			  arg.append("");
-			  throw(badModeChangeError(string, "Mode change failed"));
-			}
-		      }
-		    }
-		    break;
-		default:
-		  mode.append(plus + string.mid(pos, 1));
-		  arg.append("");
-		}
-	      }
-	      // We have the modes set in mode and arg, now we go though
-	      // looking at each mode seeing if we should handle it.
-	      for(uint i = 0; i < mode.count(); i++){
-		if(strcasecmp(mode.at(i), "+o") == 0){
-		  offset = nicks->findNick(arg.at(i));
-		  if(offset >= 0){
-		    nicks->setAutoUpdate(FALSE);
-		    nickListItem *irc = new nickListItem();
-		    *irc = *nicks->item(offset);
-		    nicks->removeItem(offset);           // remove old nick
-		    irc->setOp(TRUE);
-		    // add new nick in sorted pass,with colour
-		    nicks->inSort(irc);
-		    nicks->setAutoUpdate(TRUE);
-		    nicks->repaint();
-		  }
-		  else{
-		    warning("TopLevel+o: nick search failed on %s", mode.at(i));
-		  }
-		}
-		else if(strcasecmp(mode.at(i), "-o") == 0){
-		  offset = nicks->findNick(arg.at(i));
-		  if(offset >= 0){
-		    nicks->setAutoUpdate(FALSE);
-		    nickListItem *irc = new nickListItem();
-		    *irc = *nicks->item(offset);
-		    nicks->removeItem(offset);     // remove old nick
-		    irc->setOp(FALSE);
-		    nicks->inSort(irc); // add new nick in sorted pass,with colour
-		    nicks->setAutoUpdate(TRUE);
-		    nicks->repaint();
-		  }
-		  else{
-		    warning("TopLevel-o: nick search failed on %s", mode.at(i));
-		  }
-		}
-		else if(strcasecmp(mode.at(i), "+v") == 0){
-		  offset = nicks->findNick(arg.at(i));
-		  if(offset >= 0){
-		    nicks->setAutoUpdate(FALSE);
-		    nickListItem *irc = new nickListItem();
-		    *irc = *nicks->item(offset);
-		    nicks->removeItem(offset);           // remove old nick
-		    irc->setVoice(TRUE);
-		    // add new nick in sorted pass,with colour
-		    nicks->inSort(irc);
-		    nicks->setAutoUpdate(TRUE);
-		    nicks->repaint();
-		  }
-		}
-		else if(strcasecmp(mode.at(i), "-v") == 0){
-		  offset = nicks->findNick(arg.at(i));
-		  if(offset >= 0){
-		    nicks->setAutoUpdate(FALSE);
-		    nickListItem *irc = new nickListItem();
-		    *irc = *nicks->item(offset);
-		    nicks->removeItem(offset);     // remove old nick
-		    irc->setVoice(FALSE);
-		    nicks->inSort(irc); // add new nick in sorted pass,with colour
-		    nicks->setAutoUpdate(TRUE);
-		    nicks->repaint();
-		  }
-		}
-		else{
-		  //	      cerr << "Did not handle: " << mode.at(i) << " arg: " << arg.at(i)<<endl;
-		}
-	      }
-	    }
-	  }
-	default:
-	  string.remove(0, 3);      // by dflt remove junk, and use a ball
-	  pixmap = pix_bball;       // ball isn't used else where so we
-	  // can track down unkonws and add them
-	  color = kSircConfig->colour_info;
-	  //      cerr << "Unkoown control: " << c << endl;
-	}
-      }
-      break;
+  catch(parseError &err){
+    if(err.err.isEmpty() == FALSE){
+      QString format = err.err + ": %s";
+      warning(format.data(), string.data());
     }
-  }
-  catch (parseError &err){
-    if(err.msg != 0){
-      warning("Tried to parse: %s", err.str.data());
-      warning("Failed: %s", err.msg);
-      
+    if(err.str.isEmpty() == FALSE){
+      return new ircListItem(err.str, kSircConfig->colour_error, mainw, pix_madsmile);
     }
-    if(err.display == 1){
-      no_output = 0;
-      string = err.display;
-      string.prepend("Parse error on: ");
-      pixmap = pix_madsmile;             // use the mad smiley
-      color = kSircConfig->colour_error;  // set the clour to red
-    }
-    else{
-      no_output = 1;
-      string = "";
-    }
-  }
-  catch (badModeChangeError &err){
-    warning("Bad Mode Change: %s: %s", err.msg, err.str.data());
-    string = err.str;
-    string.remove(0, 3);      // by dflt remove junk, and use a ball
-    string.prepend(": ");
-    string.prepend(err.msg);
-    string.prepend("Bade Mode Change: ");
-    pixmap = pix_madsmile;       // ball isn't used else where so we
-    // can track down unkonws and add them
-    color = kSircConfig->colour_error;
-    //      cerr << "Unkoown control: " << c << endl;
-    
-  }
-  catch (wrongChannelError &err){
-    // Parser must setup required variables internally
-    no_output = !err.display;
-  }
-  catch (estringOutOfBounds &err){
-    warning("Out of bounds error on estring for: %s", err.str.data());
-  }
-  
-  if(no_output)                    // is no_output is null,return
-    // anull pointer
     return NULL;
-  else                             // otherwise create a new IrcListItem...
-    return new ircListItem(string,color,mainw,pixmap);
+  }
 
-  return NULL; // make compiler happy or else it complans about
-	       // getting to the end of a non-void func
+  /*
+   * We've fallen out of the loop
+   */
+  return new ircListItem(string,color,mainw,pixmap);
 }
 
 void KSircTopLevel::UserSelected(int index) /*fold00*/
@@ -1560,18 +1130,4 @@ void kstInside::resizeEvent(QResizeEvent *e) /*fold00*/
   
 }
 
-
-QString KSircTopLevel::next_word(QString str, int index) throw(parseError) /*fold00*/
-{
-  int end;
-  if(index < 0)
-    throw(parseError(1, str, "Index offset less than 0 bailing out"));
-
-  end = str.find(" ", index);
-  if(end < 0)
-    end = str.length();
-  if(end < index)
-    throw(parseError(1, str, "End offset for next_word in toplevel.cpp is broken "));
-  return str.mid(index, end - index);
-}
 
