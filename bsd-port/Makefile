@@ -1,7 +1,7 @@
 # New ports collection makefile for:   kdenetwork
 # Version required:    1.0
 # Date created:        18 June 1998
-# Whom:                Alex Zepeda <garbanzo@hooked.net
+# Whom:                Alex Zepeda <garbanzo@hooked.net>
 #
 # $Id$
 #
