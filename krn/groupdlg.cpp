@@ -83,6 +83,8 @@ extern KMIdentity *identity;
 extern KRNSender *msgSender;
 extern KBusyPtr *kbp;
 
+NNTPConfigDlg *nntpconf;
+
 QStrList subscr;
 QStrList tagged;
 
@@ -666,8 +668,9 @@ bool Groupdlg::actions (int action,NewsGroup *group)
     case CONFIG_NNTP:
         {
             qApp->setOverrideCursor (arrowCursor);
-            NNTPConfigDlg *dlg=new NNTPConfigDlg();
-            dlg->exec();
+            if (!nntpconf)
+                 nntpconf=new NNTPConfigDlg();
+            nntpconf->exec();
             qApp->restoreOverrideCursor ();
             success = true;
             break;

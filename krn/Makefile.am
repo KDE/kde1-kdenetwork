@@ -47,7 +47,8 @@ BUILTSOURCES =	groupdlg.moc \
                 sortDlg.moc\
 		charsetsDlg.moc\
                 expirestatusdlg.moc\
-                kmtopwidget.moc
+                kmtopwidget.moc\
+                TooManydlg.moc
 
 DISTCLEANFILES = $(BUILTSOURCES)
 
@@ -106,8 +107,8 @@ krn_SOURCES = 	main.cpp\
                 expirestatusdlg.cpp\
                 kfontutils.cpp \
                 kmtopwidget.cpp\
-                kpgpbase.cpp
-
+                kpgpbase.cpp\
+		TooManydlg.cpp
 
 noinst_HEADERS = 	NNTP.h\
                 kmmessage.h\
@@ -155,7 +156,9 @@ noinst_HEADERS = 	NNTP.h\
                 kfontutils.h\
                 kmtopwidget.h\
 		kmiostatusdlg.h\
-		kpgpbase.h
+		kpgpbase.h\
+		TooManydlg.h
+
 
 
 
@@ -163,7 +166,7 @@ SUBDIRS = docs pics
 
 EXTRA_DIST = krn.xpm mini-krn.xpm Krn.kdelnk
 
-install-data-local: 
+install-data-local:
 	$(mkinstalldirs) $(ICONDIR)
 	$(INSTALL_DATA) krn.xpm $(ICONDIR)
 	$(mkinstalldirs) $(MINIDIR)
@@ -219,9 +222,6 @@ groupdlg.cpp:groupdlg.moc
 groupdlg.moc: groupdlg.h
 	$(MOC) groupdlg.h -o groupdlg.moc
 
-NNTP.cpp:NNTP.moc
-NNTP.moc: NNTP.h
-	$(MOC) NNTP.h -o NNTP.moc
 
 findArtDlg.cpp:findArtDlg.moc
 findArtDlg.moc: findArtDlg.h
@@ -301,6 +301,9 @@ new_groupdlg.cpp:new_groupdlg.moc
 new_groupdlg.moc: new_groupdlg.h
 	$(MOC) new_groupdlg.h -o new_groupdlg.moc
 
+TooManydlg.cpp:TooManydlg.moc
+TooManydlg.moc: TooManydlg.h
+	$(MOC) TooManydlg.h -o TooManydlg.moc
 
 
 messages:

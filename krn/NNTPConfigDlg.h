@@ -7,6 +7,7 @@ class QPushButton;
 class QLineEdit;
 class QCheckBox;
 class QLineEdit;
+class KIntLineEdit;
 class QComboBox;
 
 class NNTPConfigDlg : public QDialog
@@ -27,6 +28,7 @@ public:
     QLineEdit* username;
     QLineEdit* password;
     QLineEdit* smtpserver;
+    KIntLineEdit* toomany;
 private slots:
     void save();
 };

@@ -614,7 +614,6 @@ void NewsGroup::getSubjects(NNTP *server)
     {
         debug ("xover from %d to %d",lastArticle(server)+1,server->last+5);
         server->artList(lastArticle(server)+1,server->last,this);
-        saveLastArticle(server,server->last);
         save();
     }
 }

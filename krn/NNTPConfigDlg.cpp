@@ -11,6 +11,7 @@
 
 #include <kconfig.h>
 #include <kapp.h>
+#include <keditcl.h>
 
 #include "tlform.h"
 #include "typelayout.h"
@@ -86,11 +87,22 @@ NNTPConfigDlg::NNTPConfigDlg(QWidget* parent, const char* name):Inherited( paren
     l->endGroup();
     l->newLine();
 
+    l->addGroup("g7");
+    l->addLabel("l5",klocale->translate("Ask before downloading more than"));
+    l->newLine();
+    toomany=(KIntLineEdit *)(l->addIntLineEdit("toomany",conf->readEntry("TooMany","100"),-1)->widget);
+    l->addLabel("l6",klocale->translate("articles"));
+    l->endGroup();
+    l->newLine();
+
     l->addGroup("buttons","",false);
     QPushButton *b1=(QPushButton *)(l->addButton("b1",klocale->translate("OK"))->widget);
     QPushButton *b2=(QPushButton *)(l->addButton("b2",klocale->translate("Cancel"))->widget);
     
     l->endGroup();
+
+
+
     l->activate();
     
     b1->setDefault(true);
@@ -118,10 +130,9 @@ void NNTPConfigDlg::save()
     conf->writeEntry("Authenticate",authenticate->isChecked());
     conf->writeEntry("Username",username->text());
     conf->writeEntry("Password",password->text());
+    conf->writeEntry("TooMany",toomany->text());
     conf->setGroup("sending mail");
     conf->writeEntry("Smtp Host",smtpserver->text());
     conf->sync();
     accept();
-    debug ("deleting NNTP dialog");
-    delete this;
 }

@@ -1,4 +1,20 @@
 -----------------------------------------------------------------------------
+Changes made Dec 17
+-----------------------------------------------------------------------------
+* [Roberto] Fixed yet another bug in NNTP::listXover.
+            Previously, it set the last article datum even if it didn't GET
+            info for that article! Shameful bug, actually.
+            Also this makes the bug I described in previous log more benign,
+            since the article won't disappear forever :-)
+            Implemented "are you sure you want to download a zillion
+            articles" option.
+            Fixed a bug in TypeLayout that made checkboxes and radiobuttons
+            look bad when using a small font. Now all dialogs look and
+            work ok on 640x480.
+            Fixed a segfault when closing NNTPConfigDlg.
+            Decoding now works :-)
+
+-----------------------------------------------------------------------------
 Changes made Dec 15
 -----------------------------------------------------------------------------
 * [Roberto] Long time no sein'! ;-)

@@ -115,7 +115,15 @@ sortDlg *SortDlg=0;
 
 void decode()
 {
-    debug ("should decode now");
+    debug ("entered decode()");
+    KProcess *proc=new KProcess();
+    *proc << "kdecode";
+    for (char *art=artsToDecode.first();art!=0;art=artsToDecode.next())
+    {
+         *proc << art;
+    }
+    proc->start();
+    artsToDecode.clear();
 }
 
 Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
@@ -1477,13 +1485,12 @@ void Artdlg::decArt (int index,int)
 {
     debug ("decart->%d",index);
     if (index<0) return;
-    QString *s;
+    QString *s=0;
     Article art(IDList.at(index));
     art.threadDepth=*depths.at(index);
-    
-    if (!server->isConnected())
+    if (!(server->isCached(art.ID.data())==PART_ALL))
     {
-        if (!(server->isCached(art.ID.data())==PART_ALL))
+        if (!server->isConnected())
         {
             emit needConnection();
             if (!server->isConnected())
@@ -1491,27 +1498,35 @@ void Artdlg::decArt (int index,int)
                 qApp->restoreOverrideCursor ();
                 return;
             }
-        }
+         }
+         s=server->article(art.ID.data());
+         if (s)
+         {
+            if (!s->isEmpty())
+            {
+                QString temp( cachepath+"/"+art.ID+".head" );
+                artsToDecode.append( temp.data());
+                temp= cachepath+"/"+art.ID+".body" ;
+                artsToDecode.append( temp.data());
+                art.setAvailable(true);
+            }
+            delete s;
+         }
+         else
+         {
+             art.setAvailable(false);
+         }
     }
-    
+    else //the article *is* cached
+    {
+         QString temp( cachepath+"/"+art.ID+".head" );
+         artsToDecode.append( temp.data());
+         temp= cachepath+"/"+art.ID+".body" ;
+         artsToDecode.append( temp.data());
+    }
+
+
     art.setRead(true);
-    s=server->article(art.ID.data());
-    if (s)
-    {
-        if (!s->isEmpty())
-        {
-            QString temp( cachepath+"/"+art.ID+".head" );
-            artsToDecode.append( temp.data());
-            temp= cachepath+"/"+art.ID+".body" ;
-            artsToDecode.append( temp.data());
-            art.setAvailable(true);
-        }
-        delete s;
-    }
-    else
-    {
-        art.setAvailable(false);
-    }
     QString formatted;
     art.formHeader(&formatted);
     list->changeItem (formatted.data(),index);

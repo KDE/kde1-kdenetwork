@@ -47,13 +47,14 @@ char debugbuf[1024];
 
 #include "kfileio.h"
 
+#include "TooManydlg.h"
+
 #include "NNTP.moc"
 
-KAlarmTimer *refreshGUI;
 
 extern KConfig *conf;
 extern QDict <NewsGroup> groupDict;
-
+TooManyDlg *toomanydlg;
 
 /////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
@@ -333,6 +334,29 @@ int NNTP::listXover(int from,int to,NewsGroup *n)
         to=from;
     }
 
+    conf->setGroup("NNTP");
+    int toomany=conf->readNumEntry("TooMany");
+    if ((to-from)>toomany)
+    {
+        debug ("Way too many!");
+        if (!toomanydlg)
+            toomanydlg=new TooManyDlg();
+        toomanydlg->exec();
+
+        if (toomanydlg->frombottom)
+        {
+            from=(n->lastArticle(this)>?first);
+            to=from+toomanydlg->howmany;
+        }
+        else
+        {
+            to=last;
+            from=to-toomanydlg->howmany;
+        }
+    }
+
+    int reallast=from-1;
+
     if (to)
         sprintf(mSendBuffer, "xover %d-%d\r\n",from-1,to);
     else
@@ -370,10 +394,8 @@ int NNTP::listXover(int from,int to,NewsGroup *n)
                 //First break it up in an article list
                 class Article art;
                 QString xoverdata(mTextResponse.c_str());
-                debug ("xover data-->%s<--",xoverdata.data());
                 int index=0;
                 int oldindex=0;
-//                char *tok=strtok((char *)mTextResponse.c_str(),"\n");
                 while (1)
                 {
                     index=xoverdata.find('\n',oldindex);
@@ -383,7 +405,6 @@ int NNTP::listXover(int from,int to,NewsGroup *n)
                     oldindex=index+1;
                     if (line.isEmpty())
                         continue;
-//                    debug ("line-->%s<--",line.data());
                     QStrList templ;
                     templ.setAutoDelete (true);
                     qit=line;
@@ -400,6 +421,7 @@ int NNTP::listXover(int from,int to,NewsGroup *n)
                         qit=qit.right(qit.length()-index-1);
                     }
                     while (!qit.isEmpty());
+                    reallast=QString (templ.at(0)).toInt();
                     art.ID=templ.at(OffsetID);
 
                     // check if it exists read
@@ -447,6 +469,7 @@ int NNTP::listXover(int from,int to,NewsGroup *n)
                 f.close();
                 gdbm_sync(artdb);
                 mTextResponse.clear();
+                n->saveLastArticle(this,reallast);
             }
         }
         else

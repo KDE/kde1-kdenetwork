@@ -191,22 +191,14 @@ int main( int argc, char **argv )
     expireCache();
 
     k->close();
-    gdbm_sync(artdb);
     gdbm_reorganize(artdb);
-    gdbm_sync(artdb);
-    gdbm_close(artdb);
-
-    gdbm_sync(refsdb);
     gdbm_reorganize(refsdb);
-    gdbm_sync(refsdb);
-    gdbm_close(refsdb);
-
-    gdbm_sync(scoredb);
     gdbm_reorganize(scoredb);
-    gdbm_sync(scoredb);
+
+    gdbm_close(artdb);
+    gdbm_close(refsdb);
     gdbm_close(scoredb);
     delete k;
-//    exit(0);
 }
 
 void checkConf()
