@@ -34,7 +34,7 @@ protected slots:
     virtual void create_toplevel();
     void terminate()
       {
-	close(1);
+        reject();
       }
 
 private:

@@ -13,7 +13,7 @@ extern KApplication *kApp;
 
 static const int fudge = 5;
 
-KSircListBox::KSircListBox(QWidget * parent, const char * name, WFlags f) : QListBox(parent,name,f) /*FOLD00*/
+KSircListBox::KSircListBox(QWidget * parent, const char * name, WFlags f) : QListBox(parent,name,f) /*fold00*/
 {
   setAutoScrollBar(FALSE);
   setAutoBottomScrollBar(FALSE);
@@ -84,7 +84,7 @@ void KSircListBox::updateScrollBars() /*fold00*/
   }
 }
 
-void KSircListBox::resizeEvent(QResizeEvent *e) /*fold00*/
+void KSircListBox::resizeEvent(QResizeEvent *e) /*FOLD00*/
 {
   QListBox::resizeEvent(e);
   vertScroll->resize(16, this->height());
@@ -213,72 +213,78 @@ void KSircListBox::updateTableSize() /*fold00*/
 }
 
 void KSircListBox::mousePressEvent(QMouseEvent *me){ /*FOLD00*/
-  selectMode = FALSE;
-  spoint.setX(me->x());
-  spoint.setY(me->y());
-//  cerr << "Mouse press event!\n";
-  ScrollToBottom = FALSE; // Lock window
-  if(waitForClear == TRUE)
+
+  if(me->button() == LeftButton){
+    selectMode = FALSE;
+    spoint.setX(me->x());
+    spoint.setY(me->y());
+    ScrollToBottom = FALSE; // Lock window
+    if(waitForClear == TRUE)
       clearSelection();
-  cerr << "Got Press\n";
+  }
 }
 
 void KSircListBox::mouseReleaseEvent(QMouseEvent *me){ /*FOLD00*/
-  int erow; // End row
 
-  ScrollToBottom = TRUE; // Unlock window THIS HAS TO BE FIRST SINCE THE WINDOW IS LOCKED ON A MOUSE CLICK
-  
-//  cerr << "Mouse release event!\n";
-  if(selectMode == FALSE)
-    return;
-  
-  selectMode = FALSE;
-  int row, line, rchar;
-  ircListItem *it;
-  if(!xlateToText(me->x(), me->y(), &row, &line, &rchar, &it)){
-    erow = lrow;
-    row = erow;
-    it = (ircListItem *) item(erow);
-    if(it == 0x0){
-      warning("Row out of range: %d", row);
+  if(me->button() == LeftButton){
+    int erow; // End row
+
+    ScrollToBottom = TRUE; // Unlock window THIS HAS TO BE FIRST SINCE THE WINDOW IS LOCKED ON A MOUSE CLICK
+
+    //  cerr << "Mouse release event!\n";
+    if(selectMode == FALSE)
       return;
-    }
-  }
-  else{
-    erow = row;
-  }
-  if(erow == srow){
-    debug("Selected: %s", it->getRev().data());
-    kApp->clipboard()->setText(KSPainter::stripColourCodes(it->getRev()));
-    updateItem(row, TRUE);
-  }
-  else {
-    int trow, brow; // Top row, Bottom row
-    QString selected;
 
-    if(erow < srow){
-      trow = erow;
-      brow = srow;
-    }
-    else{
-      trow = srow;
-      brow = erow;
-    }
-    for(int crow = trow; crow <= brow; crow ++){
-      ircListItem *cit = (ircListItem *) item(crow);
-      if(cit == 0x0){
-        warning("Row out of range: %d", crow);
+    selectMode = FALSE;
+    int row, line, rchar;
+    ircListItem *it;
+    if(!xlateToText(me->x(), me->y(), &row, &line, &rchar, &it)){
+      erow = lrow;
+      row = erow;
+      it = (ircListItem *) item(erow);
+      if(it == 0x0){
+        warning("Row out of range: %d", row);
         return;
       }
-      selected.append(KSPainter::stripColourCodes(cit->getRev()));
-      selected.append("\n");
     }
-    selected.truncate(selected.length()-1); // Remove the last \n
-    kApp->clipboard()->setText(selected);
-    debug("selected: %s", selected.data());
+    else{
+      erow = row;
+    }
+    if(erow == srow){
+      debug("Selected: %s", it->getRev().data());
+      kApp->clipboard()->setText(KSPainter::stripColourCodes(it->getRev()));
+      updateItem(row, TRUE);
+    }
+    else {
+      int trow, brow; // Top row, Bottom row
+      QString selected;
+
+      if(erow < srow){
+        trow = erow;
+        brow = srow;
+      }
+      else{
+        trow = srow;
+        brow = erow;
+      }
+      for(int crow = trow; crow <= brow; crow ++){
+        ircListItem *cit = (ircListItem *) item(crow);
+        if(cit == 0x0){
+          warning("Row out of range: %d", crow);
+          return;
+        }
+        selected.append(KSPainter::stripColourCodes(cit->getRev()));
+        selected.append("\n");
+      }
+      selected.truncate(selected.length()-1); // Remove the last \n
+      kApp->clipboard()->setText(selected);
+      debug("selected: %s", selected.data());
+    }
+    waitForClear = TRUE;
   }
-  waitForClear = TRUE;
-  cerr << "Got release\n";
+  else if(me->button() == MidButton){
+    emit pasteReq();
+  }
 }
 
 void KSircListBox::clearSelection() { /*FOLD00*/
@@ -300,11 +306,12 @@ void KSircListBox::clearSelection() { /*FOLD00*/
 }
 
 void KSircListBox::mouseMoveEvent(QMouseEvent *me){ /*FOLD00*/
+
   int row = -2, line = -2, rchar = -2;
   ircListItem *it;
   if(!xlateToText(me->x(), me->y(), &row, &line, &rchar, &it))
     return;
-//  debug("rchar: %d", rchar);
+  //  debug("rchar: %d", rchar);
   if(selectMode == FALSE){
     int xoff, yoff;
     xoff = me->x() - spoint.x() > 0 ? me->x() - spoint.x() : spoint.x() - me->x();
@@ -314,7 +321,7 @@ void KSircListBox::mouseMoveEvent(QMouseEvent *me){ /*FOLD00*/
     if(!xlateToText(spoint.x(), spoint.y(),&srow, &sline, &schar, &sit)){
       spoint.setX(me->x());
       spoint.setY(me->y());
-      
+
       return;
     }
     max = min = sline; // start setting max and min info for clean up
@@ -323,7 +330,7 @@ void KSircListBox::mouseMoveEvent(QMouseEvent *me){ /*FOLD00*/
     connect(kApp->clipboard(), SIGNAL(dataChanged()),
             this, SLOT(clearSelection()));
   }
-//  if(schar == rchar)
+  //  if(schar == rchar)
   //    rchar++;
   if(row == srow){
     it->setRevTwo(rchar);
@@ -381,7 +388,7 @@ void KSircListBox::mouseMoveEvent(QMouseEvent *me){ /*FOLD00*/
       cit->setRevOne(-1);
       cit->setRevTwo(-1);
       cit->updateSize();
-      updateItem(crow, FALSE);    
+      updateItem(crow, FALSE);
     }
   }
   else if(lrow < row && lrow < srow){
@@ -402,7 +409,7 @@ void KSircListBox::mouseMoveEvent(QMouseEvent *me){ /*FOLD00*/
     max = row;
   else if(row < min)
     min = row;
-  
+
   lrow = row;
 }
 

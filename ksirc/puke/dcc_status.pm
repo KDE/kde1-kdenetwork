@@ -239,6 +239,8 @@ sub hook_ksirc_dcc_disconnect {
 
 addhook("dcc_disconnect", "ksirc_dcc_disconnect");
 
+
+&print("*I* Done DCC Status");
 #$::test = new DCCStatus;
 #$::test->resize(400, 275);
 #$::test->show();

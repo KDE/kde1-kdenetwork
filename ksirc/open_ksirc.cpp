@@ -36,7 +36,8 @@ open_ksirc::open_ksirc
 	  server = "Server-" + cindex;
 	  nameSLE->insertItem(kConfig->readEntry(server), -1);
 	}
-	nameSLE->setCurrentItem(0);
+        nameSLE->setCurrentItem(0);
+
 }
 
 

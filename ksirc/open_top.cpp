@@ -35,7 +35,7 @@ open_top::open_top
 	  server = "Channel-" + cindex;
 	  nameSLE->insertItem(kConfig->readEntry(server), -1);
 	}
-	nameSLE->setCurrentItem(0);	
+        nameSLE->setCurrentItem(0);
 }
 
 

@@ -10,7 +10,7 @@
 #include "general.h"
 #include "../config.h"
 #include <kconfig.h>
-#include <kfiledialog.h>
+//#include <kfiledialog.h>
 
 extern KConfig *kConfig;
 extern global_config *kSircConfig;
@@ -43,12 +43,15 @@ general::general
   kSircConfig->AutoRejoin = kConfig->readNumEntry("AutoRejoin", TRUE);
 
   // not yet =P
+  CB_BackgroundPix->hide();
   CB_BackgroundPix->setChecked(kConfig->readNumEntry("BackgroundPix", FALSE));
   kSircConfig->BackgroundPix = kConfig->readNumEntry("BackgroundPix", FALSE);
   SLE_BackgroundFile->setText(kConfig->readEntry("BackgroundFile"));
+  SLE_BackgroundFile->hide();
   kSircConfig->BackgroundFile = kConfig->readEntry("BackgroundFile");
   connect(PB_BackgroundBrowse, SIGNAL(clicked()), 
           this, SLOT(slot_openBrowser()));
+  PB_BackgroundBrowse->hide();
 
 }
 
@@ -58,10 +61,12 @@ general::~general()
 
 void general::slot_openBrowser()
 {
+  /*
   KFileDialog *FileDialog = new KFileDialog( ".", "*.gif");
   connect(FileDialog, SIGNAL(fileSelected(const char*)),
           this, SLOT(slot_setBackgroundFile(const char*)));
-  FileDialog->show();
+          FileDialog->show();
+          */
 }
 
 void general::slot_setBackgroundFile(const char* filename)

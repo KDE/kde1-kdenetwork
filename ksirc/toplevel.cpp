@@ -70,7 +70,7 @@ QPixmap *KSircTopLevel::pix_bluep = 0L;
 QPixmap *KSircTopLevel::pix_madsmile = 0L;
 QPixmap *KSircTopLevel::pix_server = 0L;
 
-KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name)  /*fold00*/
+KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name)  /*FOLD00*/
   : KTopLevelWidget(name),
     KSircMessageReceiver(_proc)
    
@@ -119,13 +119,13 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
    */
   ktool = new KToolBar(this, "toolbar");
   ktool->setFullWidth(TRUE);
-  ktool->insertFrame(0, 200);
+  ktool->insertWidget(0, 200, new QFrame(ktool));
   ktool->setItemAutoSized(0, TRUE);
-  ktool->insertFrame(10, 100);
+  ktool->insertWidget(10, 100, new QFrame(ktool));
   ktool->alignItemRight(10, TRUE);
   addToolBar(ktool);
 
-  ktool->getFrame(10)->setName(QString(QObject::name()) + "_ktoolframe");
+  ktool->getWidget(10)->setName(QString(QObject::name()) + "_ktoolframe");
   lagmeter = new QLCDNumber(6, ktool->getFrame(10), QString(QObject::name()) + "_lagmeter");
   lagmeter->setFrameStyle(QFrame::NoFrame);
   lagmeter->setFixedHeight(ktool->height() - 2);
@@ -141,7 +141,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
   file->insertSeparator();
   file->insertItem(i18n("&Close"), this, SLOT(terminate()), CTRL + Key_Q );
 
-  QFrame *menu_frame = ktool->getFrame(0);
+  QFrame *menu_frame = (QFrame *) ktool->getWidget(0); // Lookup the insertWidget, it's a QFrame inserted
   CHECK_PTR(menu_frame);
   menu_frame->setFrameStyle(QFrame::NoFrame); // Turn off the frame style.
   menu_frame->setLineWidth(0);
@@ -199,7 +199,9 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
   }
 
   connect(mainw, SIGNAL(updateSize()),
-	  this, SIGNAL(changeSize()));
+          this, SIGNAL(changeSize()));
+  connect(mainw, SIGNAL(pasteReq()),
+          this, SLOT(pasteToWindow()));
 
   mainw->setFont(kSircConfig->defaultfont);
   nicks->setFont(kSircConfig->defaultfont);
@@ -305,7 +307,19 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
 		     SLOT(AccelScrollUpPage()));
   accel->connectItem(accel->insertItem(SHIFT + Key_PageDown),
 		     this,
-		     SLOT(AccelScrollDownPage()));
+                     SLOT(AccelScrollDownPage()));
+
+  /*
+   * Pageup/dn
+   * Added for stupid wheel mice
+   */
+  
+  accel->connectItem(accel->insertItem(Key_PageUp),
+		     this,
+		     SLOT(AccelScrollUpPage()));
+  accel->connectItem(accel->insertItem(Key_PageDown),
+                     this,
+                     SLOT(AccelScrollDownPage()));
 
   accel->connectItem(accel->insertItem(CTRL + Key_Enter),
 		     this,
@@ -414,8 +428,8 @@ void KSircTopLevel::TabNickCompletion()  /*fold00*/
    * a nick completion, then return and reset the line.
    */
 
-  int pos;
-  QString s;
+  int start, end;
+  QString s, nick;
 
   if(tab_pressed > 0)
     s = tab_saved.data();
@@ -427,10 +441,11 @@ void KSircTopLevel::TabNickCompletion()  /*fold00*/
   if(s.length() == 0)
     return;
 
-  pos = s.findRev(" ", -1, FALSE);
+  end = linee->cursorPosition() - 1;
+  start = s.findRev(" ", end, FALSE);
 
-  if (pos == -1) {
-    QString nick = findNick(s, tab_pressed);
+  if (start == -1) {
+    nick = findNick(s, tab_pressed);
     if(nick.isNull() == TRUE){
       tab_pressed = 0;
       nick = findNick(s, tab_pressed);
@@ -438,24 +453,26 @@ void KSircTopLevel::TabNickCompletion()  /*fold00*/
     s = nick;
   }
   else {
-    QString nick = findNick(s.mid(pos + 1, s.length()), tab_pressed);
+//    cerr << "Looking up: " << s.mid(start + 1, end - start) << endl;
+    nick = findNick(s.mid(start + 1, end - start), tab_pressed);
     if(nick.isNull() == TRUE){
       tab_pressed = 0;
-      nick = findNick(s.mid(pos + 1, s.length()), tab_pressed);
+      nick = findNick(s.mid(start + 1, end - start), tab_pressed);
     }
-    s.replace(pos + 1, s.length(), nick);
+    s.replace(start + 1, end - start, nick);
   }
 
-  tab_pressed++;
+  int tab = tab_pressed + 1;
 
-  disconnect(linee, SIGNAL(textChanged(const char *)),
-	  this, SLOT(lineeTextChanged(const char *)));
-
+  int cur = linee->cursorPosition();
   linee->setText(s);
 
-  connect(linee, SIGNAL(textChanged(const char *)),
-	  this, SLOT(lineeTextChanged(const char *)));
-
+  if(s.find(" ", cur, FALSE) != -1){
+    linee->setCursorPosition(cur);
+  }
+  
+  tab_pressed = tab; // setText causes lineeTextChanged to get called and erase tab_pressed
+  
 }
   
 void KSircTopLevel::sirc_receive(QString str) /*fold00*/
@@ -568,75 +585,9 @@ void KSircTopLevel::sirc_line_return() /*fold00*/
       else
 	s.replace(0, pos2, findNick(s.mid(0, pos2)));
     }
-    
-    //    pos2 = 0;
-    //    pos1 = 0;
-    //    
-    //    while(s.find(" ::", pos2) >= 0){
-    //      pos1 = s.find(" ::", pos2);
-    //      pos2 = s.find(" ", pos1+3);
-    //      if(pos2 == -1)
-    //	pos2 = s.length();
-    //      if(pos2 - pos1 - 3 < 1){
-    //	cerr << "Evil string: " << s << endl;
-    //	break;
-    //      }
-    //      else{
-    //	s.replace(pos1 + 1, pos2 - pos1 - 1, 
-    //		  findNick(s.mid(pos1 + 3, pos2 - pos1 - 3)));
-    //      }
-    //    }
   }
 
   s += '\n'; // Append a need carriage return :)
-
-  /*
-   * Parse line forcommand we handle
-   */
-
-  if((strncmp(s, "/join ", 6) == 0) || 
-     (strncmp(s, "/j ", 3) == 0) ||
-     (strncmp(s, "/query ", 7) == 0)){
-    s = s.lower();
-    int pos1 = s.find(' ', 0) + 1;
-    if(pos1 == -1)
-      return;
-    while(s[pos1] == ' ')
-      pos1++;
-    int pos2 = s.find(' ', pos1) - 1;
-    if(pos2 < 0)
-      pos2 = s.length() - 1; // -1 don't include the enter
-    if(pos1 > 2){
-      QString name = s.mid(pos1, pos2 - pos1); // make sure to remove line feed
-      emit open_toplevel(name);
-      if(name[0] != '#'){
-	linee->setText("");
-	return;
-      }
-      // Finish sending /join
-    }
-  }
-  else if(strncmp(s, "/server ", 6) == 0){
-    QString command = "/eval &print(\"*E* Use The Server Controller\\n\");\n";
-    sirc_write(command);
-    linee->setText("");
-    return;
-  }
-  else if((strncmp(s, "/part", 5) == 0) ||
-	  (strncmp(s, "/leave", 6) == 0) ||
-	  (strncmp(s, "/hop", 4) == 0) ||
-	  (strncmp(s, "/bye", 4) == 0) ||
-	  (strncmp(s, "/quit", 5) == 0)){
-    QApplication::postEvent(this, new QCloseEvent()); // WE'RE DEAD
-    linee->setText("");
-    s.truncate(0);
-    return;
-  }
-
-  // 
-  // Look at the command, if we're assigned a channel name, default
-  // messages, etc to the right place.  This include /me, etc
-  //
 
   if((uint) nick_ring.at() < (nick_ring.count() - 1))
     nick_ring.next();
@@ -651,6 +602,54 @@ void KSircTopLevel::sirc_line_return() /*fold00*/
 
 void KSircTopLevel::sirc_write(QString &str) /*fold00*/
 {
+  /*
+   * Parse line forcommand we handle
+   */
+
+  if((strncmp(str, "/join ", 6) == 0) ||
+     (strncmp(str, "/j ", 3) == 0) ||
+     (strncmp(str, "/query ", 7) == 0)){
+    str = str.lower();
+    int pos1 = str.find(' ', 0) + 1;
+    if(pos1 == -1)
+      return;
+    while(str[pos1] == ' ')
+      pos1++;
+    int pos2 = str.find(' ', pos1) - 1;
+    if(pos2 < 0)
+      pos2 = str.length() - 1; // -1 don't include the enter
+    if(pos1 > 2){
+      QString name = str.mid(pos1, pos2 - pos1); // make sure to remove line feed
+      emit open_toplevel(name);
+      if(name[0] != '#'){
+	linee->setText("");
+	return;
+      }
+      // Finish sending /join
+    }
+  }
+  else if(strncmp(str, "/server ", 6) == 0){
+    QString command = "/eval &print(\"*E* Use The Server Controller\\n\");\n";
+    sirc_write(command);
+    linee->setText("");
+    return;
+  }
+  else if((strncmp(str, "/part", 5) == 0) ||
+	  (strncmp(str, "/leave", 6) == 0) ||
+	  (strncmp(str, "/hop", 4) == 0) ||
+	  (strncmp(str, "/bye", 4) == 0) ||
+	  (strncmp(str, "/quit", 5) == 0)){
+    QApplication::postEvent(this, new QCloseEvent()); // WE'RE DEAD
+    linee->setText("");
+    str.truncate(0);
+    return;
+  }
+
+  //
+  // Look at the command, if we're assigned a channel name, default
+  // messages, etc to the right place.  This include /me, etc
+  //
+
   if(channel_name[0] != '!'){
     if(str[0] != '/'){
       str.prepend(QString("/msg ") + channel_name + QString(" "));
@@ -669,7 +668,7 @@ void KSircTopLevel::sirc_write(QString &str) /*fold00*/
 
 }
 
-ircListItem *KSircTopLevel::parse_input(QString &string) /*FOLD00*/
+ircListItem *KSircTopLevel::parse_input(QString &string) /*fold00*/
 {
 
   /* 
@@ -755,15 +754,6 @@ void KSircTopLevel::UserParseMenu(int id) /*fold00*/
   if(nicks->currentItem() < 0){
     QMessageBox::warning(this, "Warning, dork at the helm Captain!\n",
 			 "Warning, dork at the helm Captain!\nTry Selecting a nick first!");
-    return;
-  }
-  if(strstr(user_menu->at(id)->action, "%s")){
-    QMessageBox::warning(this, "%s no longer valid in action string",
-			 "%s is deprecated, you MUST use $$dest_nick\n"
-			 "intead.  Any valid sirc\n"
-			 "variable may now be refrenced.\n"
-			 "This includes repeated uses.\n\n"
-			 "Options->Prefrences->User Menu to change it\n");
     return;
   }
   QString s;

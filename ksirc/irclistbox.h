@@ -27,6 +27,7 @@ class KSircListBox : public QListBox
 
  signals:
   void updateSize();
+  void pasteReq();
 
  public slots:
   virtual void updateScrollBars();

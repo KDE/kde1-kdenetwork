@@ -41,6 +41,7 @@ protected slots:
   virtual void fontSelector();
   virtual void scrollRate();
   virtual void updateFont(const QFont &font);
+  virtual void scrollConstantly();
 
 protected:
   virtual void timerEvent ( QTimerEvent * );
@@ -72,6 +73,11 @@ private:
   int currentChar;
 
   void startTicker();
+  void stopTicker();
+
+  bool bScrollConstantly;
+  int iScrollItem;
+  bool bAtEnd;
 
   QPixmap *pic;
 

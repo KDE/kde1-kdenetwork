@@ -12,7 +12,7 @@
 
 #include <kwm.h>
 
-KSTicker::KSTicker(QWidget * parent, const char * name, WFlags f) 
+KSTicker::KSTicker(QWidget * parent, const char * name, WFlags f)  /*FOLD00*/
 : QFrame(parent, name, f)
 {
 
@@ -20,6 +20,9 @@ KSTicker::KSTicker(QWidget * parent, const char * name, WFlags f)
 
   pic = new QPixmap(); // create pic map here, resize it later though.
   //  pic->setBackgroundMode(TransparentMode);
+
+  bScrollConstantly = TRUE;
+  bAtEnd = FALSE;
 
   setFont(QFont("fixed"));
   // ring = "Hi";
@@ -48,6 +51,8 @@ KSTicker::KSTicker(QWidget * parent, const char * name, WFlags f)
   popup = new QPopupMenu();
   popup->insertItem("Font...", this, SLOT(fontSelector()));
   popup->insertItem("Scroll Rate...", this, SLOT(scrollRate()));
+  iScrollItem = popup->insertItem("Scroll Constantly", this, SLOT(scrollConstantly()));
+  popup->setItemChecked(iScrollItem, bScrollConstantly);
   popup->insertSeparator();
   popup->insertItem("Hide...", this, SIGNAL(doubleClick()));
 
@@ -71,14 +76,18 @@ KSTicker::KSTicker(QWidget * parent, const char * name, WFlags f)
 
 }
 
-KSTicker::~KSTicker()
+KSTicker::~KSTicker() /*fold00*/
 {
   killTimers();
   delete pic;
 }
 
-void KSTicker::show()
+void KSTicker::show() /*fold00*/
 {
+  /*
+   * Tell KWM to use only minimum decurations
+   */
+  KWM::setDecoration(winId(), KWM::tinyDecoration);
   QFrame::show();
   if(display.length() != 0)
     startTicker();
@@ -86,19 +95,19 @@ void KSTicker::show()
   repaint(TRUE);
 }
 
-void KSTicker::hide()
+void KSTicker::hide() /*fold00*/
 {
   killTimers();
   QFrame::hide();
 }
 
-void KSTicker::iconify()
+void KSTicker::iconify() /*fold00*/
 {
   QFrame::iconify();
   killTimers();
 }
 
-void KSTicker::setString(QString str)
+void KSTicker::setString(QString str) /*fold00*/
 {
   ring.truncate(0);
   ring = str;
@@ -110,7 +119,7 @@ void KSTicker::setString(QString str)
   startTicker();
 }
 
-void KSTicker::mergeString(QString str)
+void KSTicker::mergeString(QString str) /*FOLD00*/
 {
   str.append("~C");
   ring += str;
@@ -119,19 +128,39 @@ void KSTicker::mergeString(QString str)
   StrInfo.append(si);
   while((ring.length() > (uint) 2*chars + 10) && 
 	((ring.length() - StrInfo.at(0)->length) > (uint) (chars + chars/2)) &&
-	(StrInfo.count() > 1)){
+        (StrInfo.count() > 1)) {
+    
+    if(currentChar < StrInfo.at(0)->length)
+      break;
+
+    currentChar -= StrInfo.at(0)->length;
+
     ring.remove(0, StrInfo.at(0)->length);
     StrInfo.removeFirst();
   }
+
+  if(bScrollConstantly == FALSE)
+    startTicker();
+
+  display = ring.data();
+
   
 }
 
-void KSTicker::timerEvent(QTimerEvent *)
+void KSTicker::timerEvent(QTimerEvent *e) /*FOLD00*/
 {
   if((uint)currentChar >= display.length()){
-    display = ring.data();
-    currentChar = 0;
+    if(bScrollConstantly == TRUE){
+      display = ring.data();
+      currentChar = 0;
+    }
+    else{
+      stopTicker();
+      return;
+    }
   }
+  
+  bAtEnd = FALSE;
   static BGMode bgmode = TransparentMode;
   
   bitBlt(pic, -tickStep, 0, pic);
@@ -253,14 +282,14 @@ void KSTicker::timerEvent(QTimerEvent *)
   bitBlt(this, 0, descent, pic);
 }
 
-void KSTicker::paintEvent( QPaintEvent *)
+void KSTicker::paintEvent( QPaintEvent *) /*fold00*/
 {
   if(isVisible() == FALSE)
     return;
   bitBlt(this, 0, descent, pic);
 }
 
-void KSTicker::resizeEvent( QResizeEvent *e)
+void KSTicker::resizeEvent( QResizeEvent *e) /*fold00*/
 {
   QFrame::resizeEvent(e);
   onechar = fontMetrics().width("X");
@@ -279,25 +308,30 @@ void KSTicker::resizeEvent( QResizeEvent *e)
     startTicker();
 }
 
-void KSTicker::closeEvent( QCloseEvent *)
+void KSTicker::closeEvent( QCloseEvent *) /*fold00*/
 {
   emit closing();
   killTimers();
   //  delete this;
 }
 
-void KSTicker::startTicker()
+void KSTicker::startTicker() /*FOLD00*/
 {
   killTimers();
   startTimer(tickRate);
 }
 
-void KSTicker::mouseDoubleClickEvent( QMouseEvent * ) 
+void KSTicker::stopTicker() /*fold00*/
+{
+  killTimers();
+}
+
+void KSTicker::mouseDoubleClickEvent( QMouseEvent * )  /*fold00*/
 {
   emit doubleClick();
 }
 
-void KSTicker::mousePressEvent( QMouseEvent *e)
+void KSTicker::mousePressEvent( QMouseEvent *e) /*fold00*/
 {
   if(e->button() == RightButton){
     popup->popup(this->cursor().pos());
@@ -306,7 +340,7 @@ void KSTicker::mousePressEvent( QMouseEvent *e)
     QFrame::mousePressEvent(e);
   }
 }
-void KSTicker::fontSelector()
+void KSTicker::fontSelector() /*fold00*/
 {
   KFontDialog *kfd = new KFontDialog();
   kfd->setFont(font());
@@ -315,7 +349,7 @@ void KSTicker::fontSelector()
   kfd->show();
 }
 
-void KSTicker::scrollRate()
+void KSTicker::scrollRate() /*fold00*/
 {
   SpeedDialog *sd = new SpeedDialog(tickRate, tickStep);
   sd->setLimit(5, 200, 1, onechar);
@@ -324,25 +358,33 @@ void KSTicker::scrollRate()
   sd->show();
 }
 
-void KSTicker::updateFont(const QFont &font){
+void KSTicker::scrollConstantly() /*FOLD00*/
+{
+  bScrollConstantly = !bScrollConstantly;
+  popup->setItemChecked(iScrollItem, bScrollConstantly);
+  if(bScrollConstantly == TRUE)
+    startTicker();
+}
+
+void KSTicker::updateFont(const QFont &font){ /*fold00*/
   setFont(font);
   setFixedHeight((fontMetrics().height()+fontMetrics().descent()*2)*pHeight);
   resize(fontMetrics().width("X")*chars, 
 	 (fontMetrics().height()+fontMetrics().descent())*pHeight);
 }
 
-void KSTicker::setSpeed(int _tickRate, int _tickStep){
+void KSTicker::setSpeed(int _tickRate, int _tickStep){ /*fold00*/
   tickRate = _tickRate;
   tickStep = _tickStep;
   startTicker();
 }
 
-void KSTicker::speed(int *_tickRate, int *_tickStep){
+void KSTicker::speed(int *_tickRate, int *_tickStep){ /*fold00*/
   *_tickRate = tickRate;
   *_tickStep = tickStep;
 }
 
-void KSTicker::setBackgroundColor ( const QColor &c ) 
+void KSTicker::setBackgroundColor ( const QColor &c )  /*fold00*/
 {
   QFrame::setBackgroundColor(c);
   pic->fill(c);  
@@ -351,7 +393,7 @@ void KSTicker::setBackgroundColor ( const QColor &c )
   bg = backgroundColor();
 }
 
-void KSTicker::setPalette ( const QPalette & p )
+void KSTicker::setPalette ( const QPalette & p ) /*fold00*/
 {
   QFrame::setPalette(p);
   

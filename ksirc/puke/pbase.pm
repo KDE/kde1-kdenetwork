@@ -1,7 +1,7 @@
 
 package PBase;
 use Carp;
-#use Data::Dumper;
+use Data::Dumper;
 use strict;
 
 $PBase::NO_WIDGET = -1;
@@ -55,7 +55,7 @@ sub new {
   $self->{Parent} = $parent if $parent != 0;
   $self->{initId} = $self->rndchr();
   $self->{widgetType} = $PBase::NO_WIDGET;
-  $self->{messageQueue} = ();
+  $self->{cmdQueue} = ();
 
   if($::PUKE_FETCH_WIDGET == 1) {
     $self->{Fetch} = 1;
@@ -70,11 +70,6 @@ sub new {
 sub create {
   my $self = shift;
   
-
-#  if($self->{widgetType} == $PBase::NO_WIDGET){
-#    print("*E* PBase: No Widget type set!!! Using PWidget\n");
-#    $self->{widgetType} = $::PUKE_WIDGET_WIDGET;
-#  }
   if($self->{widgetType} == undef ||
      $self->{widgetType} == $PBase::NO_WIDGET) {
     print("*E* PBase: Widget type was undefined, $self is really broken\n");
@@ -100,6 +95,10 @@ sub create {
     }
 
     $self->ackWinId(%REPLY);
+
+    print "*I* In  create: " . Dumper($self->{cmdQueue});
+    
+    $self->clearQueue();
     #  $self->setRunable(0);
 }
 
@@ -169,67 +168,6 @@ sub close {
   
 }
 
-
-
-#sub runable {
-#  my $self = shift;
-#  return $self->{runable};
-#}
-#
-#sub setRunable {
-#  my $self = shift;
-#
-#  my $run = shift;
-#
-#  if($run == 0){
-#    $self->{runable} = 0;
-#  }
-#  else {
-#    $self->{runable} = 1;
-#    $self->runDelayed();
-#  }
-#}
-#
-#sub delayMessage {
-#  my $self = shift;
-#  my %ARG = @_;
-#
-#
-#  my $i = $#{$self->{messageQueue}} + 1;
-##  if($i = -1){ $i = 0 }
-#
-#  $self->{messageQueue}->[$i] = \%ARG;
-#
-##  print "*I* Delaying " . $#{$self->{messageQueue}} . " messages\n";
-#
-##  print Dumper($self);
-#
-#
-#}
-#
-#sub runDelayed {
-#  my $self = shift;
-#
-#  # Run the commandQueue first since this will run the constructors of
-#  # sub widgets.
-#
-#  for(my $i=0; $i <= $#{$self->{commandQueue}}; $i++) {
-#    my $obj = $self->{commandQueueObj}->[$i];
-#    my $ARG = $self->{commandQueueArgs}->[$i];
-#    &{$self->{commandQueue}->[$i]}($obj, @$ARG);
-#  }
-#  $self->{commandQueueObj} = ();
-#  $self->{commandQueue} = ();
-#  $self->{commandQueueArgs} = ();
-#
-#  for(my $i=0; $i <= $#{$self->{messageQueue}}; $i++) {
-#    my %ARG = %{$self->{messageQueue}->[$i]};
-#    $self->sendMessage(%ARG);
-#  }
-#  $self->{messageQueue} = ();
-#
-#}
-
 sub ackWinId {
   my $self = shift;
   my %ARG = @_;
@@ -240,30 +178,6 @@ sub ackWinId {
   $self->{iWinId} = $ARG{'iWinId'};
 }
 
-#sub canRun {
-#
-#  #
-#  # Not needed anymore
-#  #
-#
-#  return 1;
-#  
-#  my $self = shift;
-#
-#  if($self->runable() == 1){
-#    return 1;
-#  }
-#
-#  # we can't process the command now, so delay it.
-#  my $i = $#{$self->{commandQueue}} + 1;
-#
-#  $self->{commandQueueObj}->[$i] = shift;
-#  $self->{commandQueue}->[$i] = shift;
-#  $self->{commandQueueArgs}->[$i] = shift;
-#
-#  return 0;
-#
-#}
 
 sub installHandler {
   my $self = shift;
@@ -271,11 +185,18 @@ sub installHandler {
   my $command = shift;
   my $handler = shift;
 
-  $::PUKE_W_HANDLER{$command}{$self->{iWinId}} = $handler;
+  my $cmd =
+    sub {
+      $::PUKE_W_HANDLER{$command}{$self->{iWinId}} = $handler;
+    };
 
-#  print Dumper($::PUKE_W_HANDLER{$command});
+  if($self->{iWinId} == -1){
+    $self->addQueue($cmd);
+  }
+  else{
+    &$cmd();
+  }
 
-  #  print "*I* Installed for $self->{iWinId}, $command handler to $handler\n";
 }
 
 sub onNext {
@@ -295,6 +216,21 @@ sub immortal {
   $self->{IMMORTAL} = &rndchr;
   $::PBASE_IMORTALS{$self->{IMMORTAL}} = $self;
   return $self;
+}
+
+sub addQueue {
+  my $self = shift;
+
+  push(@{$self->{cmdQueue}}, shift());
+}
+
+sub clearQueue {
+  my $self = shift;
+  
+  my $cmd;
+  while($cmd = pop(@{$self->{cmdQueue}})){
+    &$cmd;
+  }
 }
 
 package main;

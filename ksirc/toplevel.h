@@ -155,7 +155,8 @@ public slots:
     * Reimplement the ksircmessagereceiver control messages.  These
     * are parsed and dealt with quickly.
     */
-  void control_message(int, QString); 
+  void control_message(int, QString);
+
 
 protected slots:
     /**
@@ -223,11 +224,6 @@ protected slots:
      */
    void openCutWindow();
    /**
-     * On a middle mouse button press we call pasteToWindow which
-     * reads the clip board and pastes into the main listbox.
-     */
-   void pasteToWindow();
-   /**
      * On a TAB key press we call TabNickCompletion which
      * reads the last thing in linee matches it with a nick and 
      * puts it back into the line.
@@ -246,6 +242,12 @@ protected slots:
     * Slot connected to destroy signal
     */
    void iamDestroyed();
+   /**
+    * On a middle mouse button press we call pasteToWindow which
+    * reads the clip board and pastes into the main listbox.
+    */
+   void pasteToWindow();
+
 
 protected:
    /**

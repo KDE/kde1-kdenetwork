@@ -73,10 +73,27 @@ class scInside : QFrame
   
 };
 
+class dockServerController : QFrame
+{
+  Q_OBJECT
+    friend class servercontroller;
+public:
+  dockServerController(servercontroller *_sc, const char *_name);
+  ~dockServerController();
+  
+protected:
+  virtual void mousePressEvent(QMouseEvent *);
+  virtual void paintEvent(QPaintEvent *);
+
+private:
+  servercontroller *sc;
+  QPopupMenu *pop;
+};
+
 class servercontroller : public KTopLevelWidget
 {
     Q_OBJECT
-
+    friend class dockServerController;
 public:
 
     servercontroller
@@ -126,6 +143,10 @@ public slots:
       * Action:
       *     Notify all ksircprocess' to update filters
       */
+    /**
+     * Toggle docking of the ServerController window
+     */
+    virtual void toggleDocking();
     virtual void slot_filters_update();
     virtual void ToggleAutoCreate();
     virtual void colour_prefs();
@@ -145,6 +166,7 @@ public slots:
     virtual void about_ksirc();
 
     virtual void ProcMessage(QString server, int command, QString args);
+
 
 protected:
 
@@ -178,6 +200,9 @@ private:
     QPixmap *pic_ppl;
 
     PukeController *PukeC;
+
+    // Holds dockable widget
+    dockServerController *dockWidget;
 
 };
 #endif // servercontroller_included

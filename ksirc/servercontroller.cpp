@@ -108,6 +108,8 @@ servercontroller::servercontroller /*FOLD00*/
   QPopupMenu *file = new QPopupMenu(0, QString(name) + "_menu_file");
   //  insertChild(file);
   objFinder::insert(file);
+  file->insertItem(i18n("&Dock"), this, SLOT(toggleDocking()));
+  file->insertSeparator();
   file->insertItem(i18n("&Quit"), kApp, SLOT(quit()), ALT + Key_F4);
   MenuBar->insertItem(i18n("&File"), file);
   
@@ -134,7 +136,6 @@ servercontroller::servercontroller /*FOLD00*/
   objFinder::insert(options);
   options->setCheckable(TRUE);
 
-  options->insertSeparator();
   options->insertItem(i18n("&Colour Preferences..."),
 		      this, SLOT(colour_prefs()));
   options->insertItem(i18n("&Global Fonts..."),
@@ -202,10 +203,12 @@ servercontroller::servercontroller /*FOLD00*/
     cerr << "Puke failed\n";
   }
 
+  dockWidget = 0x0;
+
 }
 
 
-servercontroller::~servercontroller() /*FOLD00*/
+servercontroller::~servercontroller() /*fold00*/
 {
   delete pic_icon;
   if(PukeC != 0x0){
@@ -214,7 +217,7 @@ servercontroller::~servercontroller() /*FOLD00*/
   }
 }
 
-void servercontroller::new_connection() /*FOLD00*/
+void servercontroller::new_connection() /*fold00*/
 {
   open_ksirc w;                                   // Create new ksirc popup
   connect(&w, SIGNAL(open_ksircprocess(QString)), // connected ok to process
@@ -222,7 +225,7 @@ void servercontroller::new_connection() /*FOLD00*/
   w.exec();                                       // show the sucker!
 }
 
-void servercontroller::new_ksircprocess(QString str) /*FOLD00*/
+void servercontroller::new_ksircprocess(QString str) /*fold00*/
 {
 
   if(str.isEmpty() == TRUE)  // nothing entered, nothing done
@@ -307,7 +310,7 @@ void servercontroller::colour_prefs() /*fold00*/
   kc->show();
 }
 
-void servercontroller::general_prefs() /*FOLD00*/
+void servercontroller::general_prefs() /*fold00*/
 {
   KSPrefs *kp = new KSPrefs();
   connect(kp, SIGNAL(update()),
@@ -381,7 +384,7 @@ void servercontroller::help_keys() /*fold00*/
   kApp->invokeHTMLHelp("ksirc/keys.html", "");
 }
 
-void servercontroller::ProcMessage(QString server, int command, QString args) /*FOLD00*/
+void servercontroller::ProcMessage(QString server, int command, QString args) /*fold00*/
 {
   QString online(i18n("Online")), channels(i18n("Channels"));
   KPath path;
@@ -538,7 +541,7 @@ void servercontroller::saveProperties(KConfig *ksc) /*fold00*/
   
 }
 
-void servercontroller::readProperties(KConfig *ksc) /*fold00*/
+void servercontroller::readProperties(KConfig *ksc) /*FOLD00*/
 {
   // kei == pointer to KEntryItertor
   // ksc == K Session Config
@@ -558,7 +561,21 @@ void servercontroller::readProperties(KConfig *ksc) /*fold00*/
   }
 }
 
-scInside::scInside ( QWidget * parent, const char * name, WFlags /*FOLD00*/
+void servercontroller::toggleDocking(){ /*FOLD00*/
+  if(dockWidget == 0x0){ // Currently not docked, have to dock
+    dockWidget = new dockServerController(this, "servercontroller_dock");
+    this->hide();
+    KWM::setDockWindow(dockWidget->winId());
+    dockWidget->show();
+  }
+  else { // Currently docked, undock
+    delete dockWidget;
+    dockWidget = 0x0;
+    this->show();
+  }
+}
+
+scInside::scInside ( QWidget * parent, const char * name, WFlags /*fold00*/
 		     f, bool allowLines )
   : QFrame(parent, name, f, allowLines)
 {
@@ -593,4 +610,55 @@ void scInside::resizeEvent ( QResizeEvent *e ) /*fold00*/
                               width() - 20, height() - 20 - ASConn->height());
   debug("Servercontroller finished resize\n");
   
+}
+
+dockServerController::dockServerController(servercontroller *_sc, const char *_name) /*FOLD00*/
+: QFrame(0x0, _name)
+{
+  sc = _sc;
+
+  pop = new QPopupMenu;
+
+  pop->insertItem(i18n("&Quit"), kApp, SLOT(quit()));
+  pop->insertItem(i18n("&Undock"),
+                  sc, SLOT(toggleDocking()));
+  pop->insertSeparator();
+  pop->insertItem(i18n("&Colour Preferences..."),
+                  sc, SLOT(colour_prefs()));
+  pop->insertItem(i18n("&Global Fonts..."),
+                  sc, SLOT(font_prefs()));
+  pop->insertItem(i18n("&Filter Rule Editor..."),
+                  sc, SLOT(filter_rule_editor()));
+  pop->insertItem(i18n("&Preferences..."),
+                  sc, SLOT(general_prefs()));
+  pop->insertSeparator();
+  pop->insertItem(i18n("&New Server..."),
+                  sc, SLOT(new_connection()));
+
+  setFrameStyle(QFrame::Box | QFrame::Raised);
+}
+
+dockServerController::~dockServerController() /*FOLD00*/
+{
+  sc = 0x0;
+  delete pop;
+}
+
+void dockServerController::mousePressEvent(QMouseEvent *) /*FOLD00*/
+{
+  QPoint pt = this->cursor().pos();
+  pt.setY(pt.y());
+  pop->popup(pt);
+}
+
+void dockServerController::paintEvent(QPaintEvent *pe) /*FOLD00*/
+{
+//  QFrame::paintEvent(pe);
+  QPainter p(this);
+  QFrame::drawFrame(&p);
+  QPixmap *pic = sc->pic_ppl;
+  int x = this->lineWidth() + 1 + (12 - pic->width()/2);
+  int y = this->lineWidth() + 1 + (12 - pic->height()/2);
+  p.drawPixmap(x , y, *pic);
+  p.end();
 }
