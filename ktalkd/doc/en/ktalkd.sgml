@@ -8,7 +8,7 @@
 
 <title>The ktalkd Handbook
 <author>David Faure <tt/faure@kde.org/
-<date>Version 0.8.9, September 14, 1998
+<date>Version 0.8.9, October 29, 1998
 <abstract>This Handbook describes ktalkd Version 0.8.9
 
 <!-- Table of contents -->
@@ -275,6 +275,10 @@ also ktalkd's version number and the "./configure" output. Thanks.
 <p>
 Here comes the <bf/ChangeLog/ :
 <verb>
+1998-10-02  David Faure  <faure@kde.org> (0.8.9)
+
+	* mail.local/mail.local.c: Started using config.h
+
 1998-09-29  David Faure  <faure@kde.org>
 
 	* ktalkd/unixsock.cpp: Support for multiple-display ktalk.
