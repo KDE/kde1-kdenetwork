@@ -6,7 +6,6 @@ INCLUDES= $(all_includes)
 SUBDIRS = doc pics
 
 DEFS = @DEFS@ -I. -I$(srcdir) -I.. -DDO_TRACE
-CXXFLAGS = -ansi @CXXFLAGS@
 ####### This part is very kbiff specific
 # you can add here more. This one gets installed 
 bin_PROGRAMS = 	kbiff
@@ -51,3 +50,4 @@ uninstall-local:
 	-rm -f $(APPSDIR)/kbiff.kdelnk
 	-rm -f $(kde_icondir)/kbiff.xpm
 	-rm -f $(kde_minidir)/kbiff.xpm
+
