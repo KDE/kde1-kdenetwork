@@ -523,6 +523,80 @@ static void cleanup(void)
 
 
 //-----------------------------------------------------------------------------
+
+// Sven: new from Jens Kristian Soegard:
+static void processArgs(int argc, char *argv[])
+{
+  KMComposeWin* win;
+  KMMessage* msg = new KMMessage;
+  QString to, cc, bcc, subj;
+  int i, x=0;
+ 
+  msg->initHeader();
+ 
+  for (i=0; i<argc; i++)
+  {
+      if (strcmp(argv[i],"-s")==0)
+      {
+          if (i<argc-1) subj = argv[++i];
+          mailto = TRUE;
+      }
+      else if (strcmp(argv[i],"-c")==0)
+      {
+          if (i<argc-1) cc = argv[++i];
+          mailto = TRUE;
+      }
+      else if (strcmp(argv[i],"-b")==0)
+      {
+          if (i<argc-1) bcc = argv[++i];
+          mailto = TRUE;
+      }
+      else if (strcmp(argv[i],"-h")==0)
+      {
+          if (i<argc-1) {
+              QString headerString = argv[++i];
+              if( (x = headerString.find( '=' )) != -1 )
+                  msg->setHeaderField( headerString.left( x ), headerString.right( headerString.length()-x-1 ) );
+          } 
+          mailto = TRUE;
+      }
+      else if(strcmp(argv[i],"-msg")==0)
+      {
+          if(i<argc-1)
+              msg->setBodyEncoded( argv[++i] );
+          mailto = TRUE;
+      }
+      else if (strcmp(argv[i],"-check")==0)
+          checkNewMail = TRUE;
+      else if (argv[i][0]=='-')
+      {
+          warning(i18n("Unknown command line option: %s"), argv[i]);
+          // unknown parameter
+      }
+      else
+      {
+          if (!to.isEmpty()) to += ", ";
+          if (strncasecmp(argv[i],"mailto:",7)==0) to += argv[i]+7;
+          else to += argv[i];
+          mailto = TRUE;
+      }
+  }
+ 
+  if (mailto)
+  {
+      if (!cc.isEmpty()) msg->setCc(cc);
+      if (!bcc.isEmpty()) msg->setBcc(bcc);
+      if (!subj.isEmpty()) msg->setSubject(subj);
+      if (!to.isEmpty()) msg->setTo(to);
+ 
+      win = new KMComposeWin(msg);
+      assert(win != NULL);
+      win->show();
+  }
+}
+
+// Old original
+/*
 static void processArgs(int argc, char *argv[])
 {
   KMComposeWin* win;
@@ -576,7 +650,7 @@ static void processArgs(int argc, char *argv[])
     win->show();
   }
 }
-
+*/
 
 //-----------------------------------------------------------------------------
 main(int argc, char *argv[])
