@@ -77,7 +77,7 @@ ksircstaticOBJECTS = $(ksirc_OBJECTS)
 # the library search path
 ksirc_LDFLAGS = -export-dynamic $(all_libraries) $(KDE_RPATH) # -L$(srcdir)/KSProgress -L$(srcdir)/KSTicker -L$(srcdir)/KSCutDialog -L$(srcdir)/KSPrefs -L$(srcdir)/KSColourPicker -L$(srcdir)/puke 
 
-ksircstatic_LDFLAGS = --nostdlib $(ksirc_LDFLAGS)
+ksircstaticLDFLAGS = --nostdlib $(ksirc_LDFLAGS)
 
 # the libraries to link against. Be aware of the order. First the libraries,
 # that depend on the following ones.
