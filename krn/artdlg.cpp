@@ -83,7 +83,6 @@ findArtDlg *FindDlg;
 Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     :Inherited (_group->data())
 {
-    
     FindDlg=new findArtDlg(0);
     connect (FindDlg,SIGNAL(FindThis(const char *,const char*)),
              this,SLOT(FindThis(const char *,const char*)));
