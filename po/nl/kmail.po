@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-06-11 23:07+0200\n"
+"POT-Creation-Date: 1998-06-18 23:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Case Roole <cjr@xs4all.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: ENCODING\n"
 
-#: kmcomposewin.cpp:1401 kmmainwin.cpp:267 kpgp.cpp:350
+#: kmcomposewin.cpp:1414 kmmainwin.cpp:248 kpgp.cpp:350
 msgid ""
 "Sorry, but this feature\n"
 "is still missing"
@@ -22,24 +22,24 @@ msgstr ""
 "Helaas! Deze eigenschap\n"
 "ontbreekt vooralsnog"
 
-#: kmmainwin.cpp:276
+#: kmmainwin.cpp:257
 msgid "New Folder"
 msgstr "Nieuwe map"
 
-#: kmmainwin.cpp:288 kmmainwin.cpp:318
+#: kmmainwin.cpp:269 kmmainwin.cpp:299
 #, fuzzy
 msgid "KMail error"
 msgstr "fatale fout"
 
-#: kmmainwin.cpp:289 kmmainwin.cpp:319
+#: kmmainwin.cpp:270 kmmainwin.cpp:300
 msgid "Already checking for mail!"
 msgstr ""
 
-#: kmmainwin.cpp:299 kmmainwin.cpp:329
+#: kmmainwin.cpp:280 kmmainwin.cpp:310
 msgid "No new mail available"
 msgstr "Er is geen nieuwe post aangekomen"
 
-#: kmmainwin.cpp:354
+#: kmmainwin.cpp:335
 msgid ""
 "Cannot modify a\n"
 "system folder."
@@ -47,11 +47,11 @@ msgstr ""
 "Het is niet mogelijk een\n"
 "systeem map te wijzigen."
 
-#: kmmainwin.cpp:359
+#: kmmainwin.cpp:340
 msgid "Modify Folder"
 msgstr "Wijzig map"
 
-#: kmmainwin.cpp:374
+#: kmmainwin.cpp:355
 #, c-format
 msgid ""
 "Are you sure you want to discard the\n"
@@ -60,15 +60,15 @@ msgstr ""
 "Weet u zeker dat u de inhoud van de\n"
 "map \"%s\" wilt wegwerpen ?"
 
-#: kmmainwin.cpp:377 kmmainwin.cpp:415
+#: kmmainwin.cpp:358 kmmainwin.cpp:396
 msgid "Confirmation"
 msgstr "Bevestiging"
 
-#: kmmainwin.cpp:394
+#: kmmainwin.cpp:375
 msgid "Moved all messages into trash"
 msgstr "Alle boodschappen liggen nu in de vuilnisbak"
 
-#: kmmainwin.cpp:408
+#: kmmainwin.cpp:389
 msgid ""
 "Cannot remove a\n"
 "system folder."
@@ -76,7 +76,7 @@ msgstr ""
 "Kan geen systeem\n"
 "map verwijderen."
 
-#: kmmainwin.cpp:412
+#: kmmainwin.cpp:393
 #, c-format
 msgid ""
 "Are you sure you want to remove the folder\n"
@@ -86,272 +86,269 @@ msgstr ""
 "\"%s\" wilt verwijderen ?\n"
 "Daarmee verliest u de inhoud."
 
-#: kmmainwin.cpp:480
+#: kmmainwin.cpp:466
 msgid "Message as Plain Text"
 msgstr "Boodschap als normale tekst"
 
-#: kmmainwin.cpp:487 kmmainwin.cpp:507
+#: kmmainwin.cpp:473 kmmainwin.cpp:493
 msgid "Select Folder"
 msgstr "Kies map"
 
-#: kmmainwin.cpp:528
+#: kmmainwin.cpp:514
 msgid "Queued messages successfully sent."
 msgstr "Klaargelegde boodschappen zijn succesvol verzonden."
 
-#: kmmainwin.cpp:530
+#: kmmainwin.cpp:516
 msgid "Failed to send (some) queued messages."
 msgstr "Het verzenden van (sommige) klaargelegde boodschappen is mislukt."
 
-#: kmmainwin.cpp:639
+#: kmmainwin.cpp:625
 msgid "Opening URL..."
 msgstr "URL wordt geopend..."
 
-#: kmmainwin.cpp:700
+#: kmmainwin.cpp:686
 msgid "Address added to addressbook."
 msgstr "Adres is toegevoegd aan adressenboek."
 
-#: kmmainwin.cpp:712
+#: kmmainwin.cpp:698
 msgid "Address copied to clipboard."
 msgstr "Adres is gekopieerd naar prikbord."
 
-#: kmmainwin.cpp:717
+#: kmmainwin.cpp:703
 msgid "URL copied to clipboard."
 msgstr "URL gekopieerd naar prikbord."
 
-#: kmmainwin.cpp:744
+#: kmmainwin.cpp:730
 msgid "Send to..."
 msgstr "Verzend naar..."
 
-#: kmmainwin.cpp:746
+#: kmmainwin.cpp:732
 msgid "Send reply to..."
 msgstr "Zend antwoord naar..."
 
-#: kmmainwin.cpp:748
+#: kmmainwin.cpp:734
 msgid "Forward to..."
 msgstr "Zend door naar..."
 
-#: kmmainwin.cpp:751
+#: kmmainwin.cpp:737
 msgid "Add to addressbook"
 msgstr "Voeg toe aan adressenboek"
 
-#: kmmainwin.cpp:753 kmmainwin.cpp:762
+#: kmmainwin.cpp:739 kmmainwin.cpp:748
 msgid "Copy to clipboard"
 msgstr "Kopieer naar prikbord"
 
-#: kmmainwin.cpp:760
+#: kmmainwin.cpp:746
 msgid "Open URL..."
 msgstr ""
 
-#: kmmainwin.cpp:770 kmmainwin.cpp:880
+#: kmmainwin.cpp:756 kmmainwin.cpp:870
 msgid "&Reply..."
 msgstr "&Beantwoord..."
 
-#: kmmainwin.cpp:772 kmmainwin.cpp:882
+#: kmmainwin.cpp:758 kmmainwin.cpp:872
 msgid "Reply &All..."
 msgstr "Beantwoord aan &allen..."
 
-#: kmmainwin.cpp:774 kmmainwin.cpp:884
+#: kmmainwin.cpp:760 kmmainwin.cpp:874
 msgid "&Forward..."
 msgstr "&Zend door aan..."
 
-#: kmmainwin.cpp:777 kmmainwin.cpp:889
+#: kmmainwin.cpp:763 kmmainwin.cpp:879
 msgid "&Move..."
 msgstr "&Verplaats..."
 
-#: kmmainwin.cpp:779 kmmainwin.cpp:891
+#: kmmainwin.cpp:765 kmmainwin.cpp:881
 msgid "&Copy..."
 msgstr "&Kopieer..."
 
-#: kmmainwin.cpp:804
+#: kmmainwin.cpp:790
 msgid "New Composer"
 msgstr "Nieuwe boodschappen opsteller"
 
-#: kmmainwin.cpp:806
+#: kmcomposewin.cpp:448 kmmainwin.cpp:792
 msgid "New Mailreader"
 msgstr "Nieuwe boodschappen lezer"
 
-#: kmmainwin.cpp:809
+#: kmmainwin.cpp:795
 msgid "Save As..."
 msgstr "Sla op als..."
 
-#: kmmainwin.cpp:811
+#: kmmainwin.cpp:797
 msgid "Print..."
 msgstr "Druk af..."
 
-#: kmmainwin.cpp:814
+#: kmmainwin.cpp:800
 msgid "Check Mail..."
 msgstr "Kijk of er post is..."
 
-#: kmmainwin.cpp:823
+#: kmmainwin.cpp:809
 #, fuzzy
 msgid "Check Mail in..."
 msgstr "Kijk of er post is..."
 
-#: kmmainwin.cpp:825
+#: kmmainwin.cpp:811
 msgid "Send Queued"
 msgstr "Verzend klaargelegde boodschappen"
 
-#: kmmainwin.cpp:828
+#: kmmainwin.cpp:814
 msgid "&Settings..."
 msgstr "&Instellingen"
 
-#: kmcomposewin.cpp:442 kmmainwin.cpp:830
+#: kmcomposewin.cpp:441 kmmainwin.cpp:816
 msgid "&Addressbook..."
 msgstr "&Adressenboek..."
 
-#: kmmainwin.cpp:832
+#: kmmainwin.cpp:818
 msgid "&Filter..."
 msgstr ""
 
-#: kmmainwin.cpp:846
+#: kmmainwin.cpp:832
 msgid "&Find..."
 msgstr "&Zoek..."
 
-#: kmmainwin.cpp:851
+#: kmmainwin.cpp:837
 msgid "&Create..."
 msgstr "&Maak aan..."
 
-#: kmmainwin.cpp:853
+#: kmmainwin.cpp:839
 msgid "&Modify..."
 msgstr "&Wijzig..."
 
-#: kmmainwin.cpp:855
+#: kmmainwin.cpp:841
 msgid "C&ompact"
 msgstr "C&omprimeer"
 
-#: kmmainwin.cpp:857
+#: kmmainwin.cpp:843
 msgid "&Empty"
 msgstr "&Leeg"
 
-#: kmcomposewin.cpp:519 kmmainwin.cpp:859
-msgid "&Remove"
-msgstr "&Verwijder"
-
-#: kmmainwin.cpp:867
+#: kmmainwin.cpp:853
 msgid "Unread"
 msgstr "Maak ongelezen"
 
-#: kmmainwin.cpp:868
+#: kmmainwin.cpp:854
 msgid "Read"
 msgstr "Lees"
 
-#: kmmainwin.cpp:869
+#: kmmainwin.cpp:855
 msgid "Replied"
 msgstr "Beantwoord"
 
-#: kmmainwin.cpp:870
+#: kmmainwin.cpp:856
 msgid "Queued"
 msgstr "Klaargelegd"
 
-#: kmmainwin.cpp:871
+#: kmmainwin.cpp:857
 msgid "Sent"
 msgstr "Verzonden"
 
-#: kmmainwin.cpp:875
-msgid "&Next"
-msgstr "Volge&nde"
+#: kmmainwin.cpp:863
+msgid "Next unread"
+msgstr ""
 
-#: kmmainwin.cpp:877
-msgid "&Previous"
+#: kmmainwin.cpp:867
+#, fuzzy
+msgid "Previous unread"
 msgstr "Vorige"
 
-#: kmmainwin.cpp:887
+#: kmmainwin.cpp:877
 msgid "&Set Status"
 msgstr "&Stel status in"
 
-#: kmmainwin.cpp:896
+#: kmmainwin.cpp:886
 msgid "Send again..."
 msgstr "Verzend opnieuw..."
 
-#: kmmainwin.cpp:898
+#: kmmainwin.cpp:888
 msgid "Apply filters"
 msgstr "Pas filters toe"
 
-#: kmmainwin.cpp:901
+#: kmmainwin.cpp:891
 msgid "View Source..."
 msgstr "Toon het bronbestand..."
 
-#: kmmainwin.cpp:908
+#: kmmainwin.cpp:898
 msgid "&Brief Headers"
 msgstr "Korte Hoofden"
 
-#: kmmainwin.cpp:910
+#: kmmainwin.cpp:900
 msgid "&Fancy Headers"
 msgstr "Uitgebreide Hoofden"
 
-#: kmmainwin.cpp:912
+#: kmmainwin.cpp:902
 msgid "&Standard Headers"
 msgstr "Standaard Hoofden"
 
-#: kmmainwin.cpp:914
+#: kmmainwin.cpp:904
 msgid "&Long Headers"
 msgstr "Lange Hoofden"
 
-#: kmmainwin.cpp:916
+#: kmmainwin.cpp:906
 msgid "&All Headers"
 msgstr "Volledige hoofden"
 
-#: kmmainwin.cpp:919
+#: kmmainwin.cpp:909
 msgid "Iconic Attachments"
 msgstr "Pictogram bijlagen"
 
-#: kmmainwin.cpp:920
+#: kmmainwin.cpp:910
 msgid "Smart Attachments"
 msgstr "Intelligente bijlagen"
 
-#: kmmainwin.cpp:921
+#: kmmainwin.cpp:911
 msgid "Inlined Attachments"
 msgstr "Ingevoegde bijlagen"
 
-#: kmmainwin.cpp:932
+#: kmmainwin.cpp:922
 msgid "F&older"
 msgstr "Map"
 
-#: kmmainwin.cpp:933
+#: kmmainwin.cpp:923
 msgid "&Message"
 msgstr "Boodschap"
 
-#: kmcomposewin.cpp:548 kmmainwin.cpp:952
+#: kmcomposewin.cpp:549 kmmainwin.cpp:942
 msgid "Compose new message"
 msgstr "Stel nieuwe boodschap op"
 
-#: kmcomposewin.cpp:553 kmmainwin.cpp:957
+#: kmcomposewin.cpp:554 kmmainwin.cpp:947
 msgid "Save message to file"
 msgstr "Sla boodschap op in bestand"
 
-#: kmcomposewin.cpp:558 kmmainwin.cpp:962
+#: kmcomposewin.cpp:559 kmmainwin.cpp:952
 msgid "Print message"
 msgstr "Druk boodschap af"
 
-#: kmmainwin.cpp:969
+#: kmmainwin.cpp:959
 msgid "Get new mail"
 msgstr "Haal nieuwe post op"
 
-#: kmmainwin.cpp:975
+#: kmmainwin.cpp:965
 msgid "Reply to author"
 msgstr "Beantwoord naar auteur"
 
-#: kmmainwin.cpp:980
+#: kmmainwin.cpp:970
 msgid "Reply to all recipients"
 msgstr "Beantwoord aan alle ontvangers"
 
-#: kmmainwin.cpp:985
+#: kmmainwin.cpp:975
 msgid "Forward message"
 msgstr "Zend boodschap door"
 
-#: kmmainwin.cpp:990
+#: kmmainwin.cpp:980
 msgid "Delete message"
 msgstr "Verwijder boodschap"
 
-#: kmcomposewin.cpp:582 kmmainwin.cpp:996
+#: kmcomposewin.cpp:583 kmmainwin.cpp:986
 msgid "Open addressbook..."
 msgstr "Open adressenboek..."
 
-#: kmmainwin.cpp:1008
+#: kmmainwin.cpp:998
 msgid "Initializing..."
 msgstr "Start op..."
 
-#: kmcomposewin.cpp:1409 kmfolderdia.cpp:44 kmfolderdia.cpp:120
+#: kmcomposewin.cpp:1422 kmfolderdia.cpp:44 kmfolderdia.cpp:120
 msgid "unnamed"
 msgstr "naamloos"
 
@@ -363,115 +360,106 @@ msgstr "Verbonden met"
 msgid "Unassociated Accounts"
 msgstr "Niet-verbonden accounts"
 
-#: kmsettings.cpp:46
+#: kmsettings.cpp:48
 msgid "Settings"
 msgstr "Instellingen"
 
-#: kmsettings.cpp:168
+#: kmsettings.cpp:170
 msgid "Organization:"
 msgstr "Organisatie:"
 
-#: kmsettings.cpp:170
+#: kmsettings.cpp:172
 msgid "Email Address:"
 msgstr "Email adres:"
 
-#: kmsettings.cpp:173
+#: kmsettings.cpp:175
 msgid "Reply-To Address:"
 msgstr "Beantwoord-aan adres:"
 
-#: kmsettings.cpp:175
+#: kmsettings.cpp:177
 msgid "Signature File:"
 msgstr "Ondertekeningsbestand:"
 
-#: kmsettings.cpp:178
+#: kmsettings.cpp:180
 msgid "PGP User Identity:"
 msgstr "PGP gebruikers identiteit:"
 
-#: kmsettings.cpp:186
+#: kmsettings.cpp:188
 msgid "Identity"
 msgstr "Identiteit:"
 
-#: kmsettings.cpp:205
+#: kmsettings.cpp:207
 msgid "Sending Mail"
 msgstr "Post wordt verzonden"
 
-#: kmsettings.cpp:211
+#: kmsettings.cpp:213
 msgid "Sendmail"
 msgstr ""
 
-#: kmsettings.cpp:216 kmsettings.cpp:844
+#: kmsettings.cpp:218 kmsettings.cpp:856
 msgid "Location:"
 msgstr "Lokatie:"
 
-#: kmsettings.cpp:221
+#: kmsettings.cpp:223
 msgid "SMTP"
 msgstr ""
 
-#: kmsettings.cpp:226
+#: kmsettings.cpp:228
 msgid "Server:"
 msgstr ""
 
-#: kmsettings.cpp:228 kmsettings.cpp:865
+#: kmsettings.cpp:230 kmsettings.cpp:877
 msgid "Port:"
 msgstr "Poort:"
 
-#: kmsettings.cpp:249
+#: kmsettings.cpp:251
 msgid "Incoming Mail"
 msgstr "Inkomende post"
 
-#: kmsettings.cpp:254
+#: kmsettings.cpp:256
 msgid "Accounts:   (add at least one account!)"
 msgstr "Accounts:  (voeg tenminste een account toe!)"
 
-#: kmcomposewin.cpp:130 kmsettings.cpp:260
+#: kmcomposewin.cpp:134 kmsettings.cpp:262
 msgid "Type"
 msgstr ""
 
-#: kmsettings.cpp:261
+#: kmsettings.cpp:263
 msgid "Folder"
 msgstr "Map"
 
-#: kmsettings.cpp:269
+#: kmsettings.cpp:271
 msgid "Add..."
 msgstr "Voeg toe..."
 
-#: kmsettings.cpp:272
+#: kmsettings.cpp:274
 msgid "Modify..."
 msgstr "Wijzig..."
 
-#: kmsettings.cpp:292
+#: kmsettings.cpp:294
 msgid "Network"
 msgstr "Netwerk"
 
-#: kmsettings.cpp:311
-#, fuzzy
-msgid "Fonts"
-msgstr "bevat"
-
-#: kmsettings.cpp:316
+#: kmsettings.cpp:319
 msgid "Message Body Font:"
 msgstr ""
 
-#: kmsettings.cpp:321
+#: kmsettings.cpp:324
 #, fuzzy
 msgid "Message List Font:"
 msgstr "Boodschap als normale tekst"
 
-#: kmsettings.cpp:325
+#: kmsettings.cpp:328
 msgid ""
 "Changing fonts currently only occurs when a new\n"
 "window is opened or kmail is restarted"
 msgstr ""
 
-#: kmsettings.cpp:341 kmsettings.cpp:411
-msgid "Appearance"
-msgstr "Uiterlijk"
-
-#: kmsettings.cpp:363
+#: kmsettings.cpp:370
 msgid "Phrases"
 msgstr "Uitdrukkingen"
 
-#: kmsettings.cpp:368
+#: kmsettings.cpp:375
 msgid ""
 "The following placeholders are supported in the reply phrases:\n"
 "%D=date, %S=subject, %F=sender, %%=percent sign"
@@ -479,149 +467,149 @@ msgstr ""
 "De volgende variabelen worden ondersteund in antwoord uitdrukkingen:\n"
 "%D=datum, %S=onderwerp, %F=afzender, %%=procent teken"
 
-#: kmsettings.cpp:376
+#: kmsettings.cpp:383
 msgid "Reply to sender:"
 msgstr "Beantwoord aan afzender:"
 
-#: kmsettings.cpp:379
+#: kmsettings.cpp:386
 msgid "Reply to all:"
 msgstr "Beantwoord aan allen:"
 
-#: kmsettings.cpp:382
+#: kmsettings.cpp:389
 msgid "Forward:"
 msgstr "Zend door:"
 
-#: kmsettings.cpp:385
+#: kmsettings.cpp:392
 msgid "Indentation:"
 msgstr "Indentatie:"
 
-#: kmmessage.cpp:1251 kmsettings.cpp:397
+#: kmmessage.cpp:1251 kmsettings.cpp:404
 msgid "On %D, you wrote:"
 msgstr "Op %D, schreef u:"
 
-#: kmmessage.cpp:1252 kmsettings.cpp:401
+#: kmmessage.cpp:1252 kmsettings.cpp:408
 msgid "On %D, %F wrote:"
 msgstr "Op %D, schreef %F:"
 
-#: kmmessage.cpp:1253 kmsettings.cpp:405
+#: kmmessage.cpp:1253 kmsettings.cpp:412
 msgid "Forwarded Message"
 msgstr "Doorgezonden boodschap"
 
-#: kmsettings.cpp:416
+#: kmsettings.cpp:423
 msgid "Automatically append signature"
 msgstr "Voeg ondertekening automatisch toe"
 
-#: kmsettings.cpp:422
+#: kmsettings.cpp:429
 msgid "Automatically sign messages using PGP"
 msgstr "Onderteken boodschappen automatisch met PGP"
 
-#: kmsettings.cpp:427
+#: kmsettings.cpp:434
 msgid "Word wrap at column:"
 msgstr "Breek woorden af in kolom:"
 
-#: kmsettings.cpp:437
+#: kmsettings.cpp:444
 msgid "Use monospaced font"
 msgstr "Gebruik lettertype met vaste breedte"
 
-#: kmsettings.cpp:449
+#: kmsettings.cpp:456
 msgid "When sending mail"
 msgstr "Wanneer post verzonden wordt"
 
-#: kmsettings.cpp:452
+#: kmsettings.cpp:459
 msgid "Default sending:"
 msgstr "Standaard verzendingswijze:"
 
-#: kmsettings.cpp:455
+#: kmsettings.cpp:462
 msgid "send now"
 msgstr "verzend nu"
 
-#: kmsettings.cpp:459
+#: kmsettings.cpp:466
 msgid "send later"
 msgstr "verzend later"
 
-#: kmsettings.cpp:464
+#: kmsettings.cpp:471
 msgid "Send messages:"
 msgstr "Verzend boodschappen:"
 
-#: kmsettings.cpp:467
+#: kmsettings.cpp:474
 msgid "Allow 8-bit"
 msgstr "Sta 8-bits toe"
 
 # FIXME: 'Compilant' should be 'Compliant'
-#: kmsettings.cpp:472
+#: kmsettings.cpp:479
 msgid "MIME Compilant (Quoted Printable)"
 msgstr "MIME Gehoorzamend (\"Quoted Printable\")"
 
-#: kmsettings.cpp:498
+#: kmsettings.cpp:505
 msgid "Composer"
 msgstr "Opsteller"
 
-#: kmsettings.cpp:515
+#: kmsettings.cpp:522
 msgid "Folders"
 msgstr "Mappen"
 
-#: kmsettings.cpp:519
+#: kmsettings.cpp:526
 msgid "empty trash on exit"
 msgstr "leeg de vuilnisbak bij afsluiten"
 
-#: kmsettings.cpp:556
+#: kmsettings.cpp:563
 msgid "Message Body Font"
 msgstr ""
 
-#: kmsettings.cpp:568
+#: kmsettings.cpp:577
 #, fuzzy
 msgid "Message List Font"
 msgstr "Boodschap als normale tekst"
 
-#: kmsettings.cpp:618
+#: kmsettings.cpp:629
 msgid "Select Account"
 msgstr "Kies een account"
 
-#: kmaccount.cpp:70 kmfilterdlg.cpp:461 kmsettings.cpp:637
+#: kmaccount.cpp:70 kmfilterdlg.cpp:461 kmsettings.cpp:648
 msgid "Unnamed"
 msgstr "Naamloos"
 
-#: kmsettings.cpp:656
+#: kmsettings.cpp:667
 msgid "Choose Sendmail Location"
 msgstr "Kies Sendmail lokatie"
 
-#: kmcomposewin.cpp:1516 kmsettings.cpp:665
+#: kmcomposewin.cpp:1529 kmsettings.cpp:676
 msgid "Choose Signature File"
 msgstr "Kies ondertekeningsbestand"
 
-#: kmsettings.cpp:842
+#: kmsettings.cpp:854
 msgid "Local Account"
 msgstr "Lokaal Account"
 
-#: kmsettings.cpp:851
+#: kmsettings.cpp:863
 msgid "Pop Account"
 msgstr ""
 
-#: kmsettings.cpp:853
+#: kmsettings.cpp:865
 msgid "Login:"
 msgstr ""
 
-#: kmacctpop.cpp:436 kmsettings.cpp:856
+#: kmacctpop.cpp:436 kmsettings.cpp:868
 msgid "Password:"
 msgstr "Wachtwoord:"
 
-#: kmsettings.cpp:860
+#: kmsettings.cpp:872
 msgid "Host:"
 msgstr ""
 
-#: kmsettings.cpp:868
+#: kmsettings.cpp:880
 msgid "Delete mail from server"
 msgstr "Verwijder post van de server"
 
-#: kmsettings.cpp:880
+#: kmsettings.cpp:892
 msgid "Store new mail in account:"
 msgstr "Sla nieuwe post op in account:"
 
-#: kmsettings.cpp:888
+#: kmsettings.cpp:900
 msgid "<none>"
 msgstr "<niets>"
 
-#: kmsettings.cpp:933
+#: kmsettings.cpp:945
 msgid "Choose Location"
 msgstr "Kies lokatie"
 
@@ -633,261 +621,261 @@ msgstr "Ontvangst:"
 msgid "Failed to add message:"
 msgstr "Faalde bij toevoegen van boodschap:"
 
-#: kmcomposewin.cpp:126 kmheaders.cpp:38
+#: kmcomposewin.cpp:130 kmheaders.cpp:39
 msgid "F"
 msgstr ""
 
-#: kmheaders.cpp:39
+#: kmheaders.cpp:40
 msgid "Sender"
 msgstr "Afzender"
 
-#: kmheaders.cpp:40
+#: kmheaders.cpp:41
 msgid "Subject"
 msgstr "Onderwerp"
 
-#: kmheaders.cpp:209
-#, fuzzy
-msgid "Unknown"
-msgstr "Onbekende fout"
-
-#: kmheaders.cpp:212
-#, fuzzy
-msgid "No Subject"
-msgstr "Onderwerp"
-
-#: kmheaders.cpp:259
-msgid "order of arrival"
-msgstr "Volgorde van aankomst"
-
-#: kmheaders.cpp:268
-msgid "subject"
-msgstr "onderwerp"
-
-#: kmheaders.cpp:269
-msgid "date"
-msgstr "datum"
-
-#: kmheaders.cpp:270
-msgid "sender"
-msgstr "afzender"
-
-#: kmheaders.cpp:271
-msgid "status"
-msgstr ""
-
-#: kmheaders.cpp:273
-#, c-format
-msgid "Sorting messages descending by %s"
-msgstr "Sorteren van boodschappen aflopend naar %s"
-
-#: kmheaders.cpp:274
-#, c-format
-msgid "Sorting messages ascending by %s"
-msgstr "Sorteren van boodschappen oplopend naar %s"
-
-#: kmheaders.cpp:364
-msgid "Message(s) saved."
-msgstr "Boodschap(pen) opgeslagen"
-
-#: kmheaders.cpp:366
-msgid "Failed to save message(s)."
-msgstr "Faalde bij het opslaan van boodschap(pen)"
-
-#: kmheaders.cpp:693
+#: kmheaders.cpp:183
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d Boodschappen, %d ongelezen."
 
-#: kmheaders.cpp:695
+#: kmheaders.cpp:185
 msgid "Folder is read-only."
 msgstr "Map is alleen-lezen."
 
-#: kmcomposewin.cpp:115
+#: kmheaders.cpp:229
+#, fuzzy
+msgid "Unknown"
+msgstr "Onbekende fout"
+
+#: kmheaders.cpp:232
+#, fuzzy
+msgid "No Subject"
+msgstr "Onderwerp"
+
+#: kmheaders.cpp:279
+msgid "order of arrival"
+msgstr "Volgorde van aankomst"
+
+#: kmheaders.cpp:288
+msgid "subject"
+msgstr "onderwerp"
+
+#: kmheaders.cpp:289
+msgid "date"
+msgstr "datum"
+
+#: kmheaders.cpp:290
+msgid "sender"
+msgstr "afzender"
+
+#: kmheaders.cpp:291
+msgid "status"
+msgstr ""
+
+#: kmheaders.cpp:293
+#, c-format
+msgid "Sorting messages descending by %s"
+msgstr "Sorteren van boodschappen aflopend naar %s"
+
+#: kmheaders.cpp:294
+#, c-format
+msgid "Sorting messages ascending by %s"
+msgstr "Sorteren van boodschappen oplopend naar %s"
+
+#: kmheaders.cpp:384
+msgid "Message(s) saved."
+msgstr "Boodschap(pen) opgeslagen"
+
+#: kmheaders.cpp:386
+msgid "Failed to save message(s)."
+msgstr "Faalde bij het opslaan van boodschap(pen)"
+
+#: kmcomposewin.cpp:119
 msgid "KMail Composer"
 msgstr "KMail Opsteller"
 
-#: kmcomposewin.cpp:129
+#: kmcomposewin.cpp:133
 msgid "Encoding"
 msgstr "Coderen"
 
-#: kmcomposewin.cpp:345
+#: kmcomposewin.cpp:344
 msgid "&From:"
 msgstr "&Van:"
 
-#: kmcomposewin.cpp:347
+#: kmcomposewin.cpp:346
 msgid "&Reply to:"
 msgstr "&Beantwoord aan:"
 
-#: kmcomposewin.cpp:349
+#: kmcomposewin.cpp:348
 msgid "&To:"
 msgstr "&Aan:"
 
-#: kmcomposewin.cpp:351
+#: kmcomposewin.cpp:350
 msgid "&Cc:"
 msgstr ""
 
-#: kmcomposewin.cpp:353
+#: kmcomposewin.cpp:352
 msgid "&Bcc:"
 msgstr ""
 
-#: kmcomposewin.cpp:355
+#: kmcomposewin.cpp:354
 msgid "&Subject:"
 msgstr "&Onderwerp:"
 
-#: kmcomposewin.cpp:358
+#: kmcomposewin.cpp:357
 msgid "&Newsgroups:"
 msgstr "&Nieuwsgroepen:"
 
-#: kmcomposewin.cpp:360
+#: kmcomposewin.cpp:359
 msgid "&Followup-To:"
 msgstr "Aansluitend-Aan:"
 
-#: kmcomposewin.cpp:432
+#: kmcomposewin.cpp:431
 msgid "&Send"
 msgstr "&Verzend"
 
 # FIXME: Send now and Send later both have 'e' as hot key
-#: kmcomposewin.cpp:435
+#: kmcomposewin.cpp:434
 msgid "S&end later"
 msgstr "V&erzend later"
 
-#: kmcomposewin.cpp:437
+#: kmcomposewin.cpp:436
 msgid "S&end now"
 msgstr "Verzend nu"
 
-#: kmcomposewin.cpp:439
+#: kmcomposewin.cpp:438
 msgid "&Insert File..."
 msgstr "Voeg bestand in..."
 
-#: kmcomposewin.cpp:447
+#: kmcomposewin.cpp:446
 msgid "&New Composer..."
 msgstr "&Nieuwe opsteller..."
 
-#: kmcomposewin.cpp:466 kmcomposewin.cpp:683 kmcomposewin.cpp:1860
+#: kmcomposewin.cpp:467 kmcomposewin.cpp:676 kmcomposewin.cpp:1897
 msgid "Mark all"
 msgstr "Markeer alles"
 
-#: kmcomposewin.cpp:469 kmcomposewin.cpp:685
+#: kmcomposewin.cpp:470 kmcomposewin.cpp:678
 msgid "Find..."
 msgstr "Zoek..."
 
-#: kmcomposewin.cpp:471 kmcomposewin.cpp:686
+#: kmcomposewin.cpp:472 kmcomposewin.cpp:679
 msgid "Replace..."
 msgstr "Vervang..."
 
-#: kmcomposewin.cpp:478
+#: kmcomposewin.cpp:479
 msgid "&Urgent"
 msgstr ""
 
-#: kmcomposewin.cpp:480
+#: kmcomposewin.cpp:481
 msgid "&Confirm delivery"
 msgstr "Bevestig aflevering"
 
-#: kmcomposewin.cpp:482
+#: kmcomposewin.cpp:483
 msgid "&Confirm read"
 msgstr "Bevestig lezen"
 
-#: kmcomposewin.cpp:485
+#: kmcomposewin.cpp:486
 msgid "&Charsets..."
 msgstr "Karakterverzamelingen..."
 
-#: kmcomposewin.cpp:498
+#: kmcomposewin.cpp:499
 msgid "&All Fields"
 msgstr "Alle velden"
 
-#: kmcomposewin.cpp:500
+#: kmcomposewin.cpp:501
 msgid "&From"
 msgstr "&Van"
 
-#: kmcomposewin.cpp:501
+#: kmcomposewin.cpp:502
 msgid "&Reply to"
 msgstr "&Beantwoord aan"
 
-#: kmcomposewin.cpp:502
+#: kmcomposewin.cpp:503
 msgid "&To"
 msgstr "&Aan"
 
-#: kmcomposewin.cpp:503
+#: kmcomposewin.cpp:504
 msgid "&Cc"
 msgstr ""
 
-#: kmcomposewin.cpp:504
+#: kmcomposewin.cpp:505
 msgid "&Bcc"
 msgstr ""
 
-#: kmcomposewin.cpp:505
+#: kmcomposewin.cpp:506
 msgid "&Subject"
 msgstr "&Onderwerp"
 
-#: kmcomposewin.cpp:507
+#: kmcomposewin.cpp:508
 msgid "&Newsgroups"
 msgstr "&Nieuwsgroepen"
 
-#: kmcomposewin.cpp:508
+#: kmcomposewin.cpp:509
 msgid "&Followup-To"
 msgstr "Aansluitend-Aan"
 
-#: kmcomposewin.cpp:513
+#: kmcomposewin.cpp:514
 msgid "Append S&ignature"
 msgstr "Voeg ondertekening toe"
 
-#: kmcomposewin.cpp:515
+#: kmcomposewin.cpp:516
 msgid "&Insert File"
 msgstr "Voeg bestand in"
 
-#: kmcomposewin.cpp:517
+#: kmcomposewin.cpp:518
 msgid "&Attach..."
 msgstr "Bijlage..."
 
-#: kmcomposewin.cpp:520
+#: kmcomposewin.cpp:521
 msgid "&Save..."
 msgstr "Sla op..."
 
-#: kmcomposewin.cpp:521
+#: kmcomposewin.cpp:522
 msgid "Pr&operties..."
 msgstr "Eigenschappen"
 
-#: kmcomposewin.cpp:523
+#: kmcomposewin.cpp:524
 msgid "&Attach"
 msgstr "Bijlage"
 
-#: kmcomposewin.cpp:567
+#: kmcomposewin.cpp:568
 msgid "Cut selection"
 msgstr "Extract selectie"
 
-#: kmcomposewin.cpp:570
+#: kmcomposewin.cpp:571
 msgid "Copy selection"
 msgstr "Kopieer selectie"
 
-#: kmcomposewin.cpp:573
+#: kmcomposewin.cpp:574
 msgid "Paste clipboard contents"
 msgstr "Voeg inhoud prikbord in"
 
-#: kmcomposewin.cpp:578
+#: kmcomposewin.cpp:579
 msgid "Attach file"
 msgstr "Plak bestand"
 
-#: kmcomposewin.cpp:591
+#: kmcomposewin.cpp:592
 msgid "sign message"
 msgstr "teken boodschap"
 
-#: kmcomposewin.cpp:596
+#: kmcomposewin.cpp:597
 msgid "encrypt message"
 msgstr "codeer boodschap"
 
-#: kmcomposewin.cpp:608 kmcomposewin.cpp:624
+#: kmcomposewin.cpp:609 kmcomposewin.cpp:625
 msgid "Column"
 msgstr "Kolom"
 
-#: kmcomposewin.cpp:609 kmcomposewin.cpp:622
+#: kmcomposewin.cpp:610 kmcomposewin.cpp:623
 msgid "Line"
 msgstr "Regel"
 
-#: kmcomposewin.cpp:877
+#: kmcomposewin.cpp:871
 msgid "KMail Confirm"
 msgstr "KMail Bevestig"
 
-#: kmcomposewin.cpp:878
+#: kmcomposewin.cpp:872
 msgid ""
 "Close and discard\n"
 "edited message?"
@@ -895,7 +883,7 @@ msgstr ""
 "Sluit af en verlies\n"
 "gewijzigde boodschap ?"
 
-#: kmcomposewin.cpp:923
+#: kmcomposewin.cpp:917
 #, c-format
 msgid ""
 "public key for %s not found.\n"
@@ -904,51 +892,51 @@ msgstr ""
 "publieke sleutel voor %s niet gevonden.\n"
 "Deze persoon zal niet in staat zijn de boodschap te ontcijferen."
 
-#: kmcomposewin.cpp:944
+#: kmcomposewin.cpp:938
 msgid "Error during PGP:"
 msgstr "Fout bij PGP:"
 
-#: kmcomposewin.cpp:1158
+#: kmcomposewin.cpp:1153
 msgid "Attach File"
 msgstr "Bevestig Bestand"
 
-#: kmcomposewin.cpp:1176
+#: kmcomposewin.cpp:1175
 msgid "Include File"
 msgstr "Voeg bestand in"
 
-#: kmcomposewin.cpp:1197 kmreaderwin.cpp:680
+#: kmcomposewin.cpp:1198 kmreaderwin.cpp:683
 msgid "View..."
 msgstr "Toon..."
 
-#: kmcomposewin.cpp:1198
+#: kmcomposewin.cpp:1199
 msgid "Save..."
 msgstr "Sla op..."
 
-#: kmcomposewin.cpp:1199 kmreaderwin.cpp:683
+#: kmcomposewin.cpp:1200 kmreaderwin.cpp:686
 msgid "Properties..."
 msgstr "Eigenschappen..."
 
-#: kmcomposewin.cpp:1203
+#: kmcomposewin.cpp:1204
 msgid "Attach..."
 msgstr "Bevestig..."
 
-#: kmcomposewin.cpp:1245 kmreaderwin.cpp:725
+#: kmcomposewin.cpp:1246 kmreaderwin.cpp:728
 msgid "View Attachment: "
 msgstr "Toon Bijlage:"
 
-#: kmcomposewin.cpp:1424
+#: kmcomposewin.cpp:1437
 msgid "To:"
 msgstr "Aan:"
 
-#: kmcomposewin.cpp:1428
+#: kmcomposewin.cpp:1441
 msgid "Subject:"
 msgstr "Onderwerp:"
 
-#: kmcomposewin.cpp:1546
+#: kmcomposewin.cpp:1559
 msgid "KMail: Spellcheck"
 msgstr "KMail: Spellingcontrole"
 
-#: kmcomposewin.cpp:1570
+#: kmcomposewin.cpp:1583
 msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
 msgstr "Fout bij opstarten KSpell. Controleer of ISpell goed is ingesteld."
@@ -960,9 +948,18 @@ msgstr ""
 "Inhoud van map `%s' is gewijzigd.\n"
 "Index bestand wordt opnieuw aangemaakt."
 
-#: kmfolder.cpp:351
+#: kmfolder.cpp:364
 #, c-format
 msgid "Creating index file: %d messages done"
+msgstr "Aanmaken van index bestand: %s boodschappen gedaan"
+
+#: kmfolder.cpp:444
+msgid "Writing index file"
+msgstr ""
+
+#: kmfolder.cpp:870
+#, fuzzy, c-format
+msgid "Compacting folder: %d messages done"
 msgstr "Aanmaken van index bestand: %s boodschappen gedaan"
 
 #: kmmsgpartdlg.cpp:41
@@ -989,21 +986,22 @@ msgstr "base 64"
 msgid "quoted printable"
 msgstr ""
 
-#: kmreaderwin.cpp:318 kmreaderwin.cpp:334 kmreaderwin.cpp:355
+#: kmreaderwin.cpp:307 kmreaderwin.cpp:320 kmreaderwin.cpp:339
+#: kmreaderwin.cpp:360
+msgid "Cc: "
+msgstr ""
+
+#: kmreaderwin.cpp:315 kmreaderwin.cpp:334 kmreaderwin.cpp:355
 msgid "From: "
 msgstr "Van:"
 
-#: kmreaderwin.cpp:320 kmreaderwin.cpp:336 kmreaderwin.cpp:357
+#: kmreaderwin.cpp:317 kmreaderwin.cpp:336 kmreaderwin.cpp:357
 msgid "To: "
 msgstr "Aan:"
 
 #: kmreaderwin.cpp:324 kmreaderwin.cpp:345 kmreaderwin.cpp:370
 msgid "References: "
 msgstr "Referenties:"
-
-#: kmreaderwin.cpp:339 kmreaderwin.cpp:360
-msgid "Cc: "
-msgstr ""
 
 #: kmreaderwin.cpp:341 kmreaderwin.cpp:354
 msgid "Date: "
@@ -1021,40 +1019,40 @@ msgstr "Beantwoord aan:"
 msgid "Groups: "
 msgstr "Groepen:"
 
-#: kmreaderwin.cpp:409
+#: kmreaderwin.cpp:410
 msgid "Encrypted message"
 msgstr "Gecodeerde boodschap"
 
-#: kmreaderwin.cpp:415
+#: kmreaderwin.cpp:416
 msgid "Cannot decrypt message:"
 msgstr "Kan boodschap niet ontcijferen:"
 
-#: kmreaderwin.cpp:433
+#: kmreaderwin.cpp:434
 msgid "Message was signed by"
 msgstr "Boodschap was ondertekend door"
 
-#: kmreaderwin.cpp:434
+#: kmreaderwin.cpp:435
 msgid "Warning: Bad signature from"
 msgstr "Waarschuwing: Slechte handtekening van"
 
-#: kmreaderwin.cpp:644
+#: kmreaderwin.cpp:647
 msgid "Attachment: "
 msgstr "Bijlage:"
 
-#: kmreaderwin.cpp:756
+#: kmreaderwin.cpp:759
 msgid "Could not create temporary file"
 msgstr "Kon geen tijdelijk bestand aanmaken"
 
-#: kmreaderwin.cpp:777
+#: kmreaderwin.cpp:780
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "Kon tijdelijk bestand %s niet opslaan"
 
-#: kmreaderwin.cpp:808
+#: kmreaderwin.cpp:811
 msgid "Could not save file"
 msgstr "Kon bestand niet opslaan"
 
-#: kmacctmgr.cpp:190 kmacctmgr.cpp:232
+#: kmacctmgr.cpp:193 kmacctmgr.cpp:239
 msgid ""
 "You need to add an account in the network\n"
 "section of the settings in order to\n"
@@ -1064,15 +1062,15 @@ msgstr ""
 "van de instellingen toevoegen om post te\n"
 "kunnen ontvangen."
 
-#: main.cpp:100 main.cpp:217
+#: main.cpp:102 main.cpp:220
 msgid "warning"
 msgstr "waarschuwing"
 
-#: main.cpp:106 main.cpp:107
+#: main.cpp:109 main.cpp:110
 msgid "fatal error"
 msgstr "fatale fout"
 
-#: main.cpp:219
+#: main.cpp:222
 msgid ""
 "The directory ~/KMail exists. From now on, KMail uses the\n"
 "directory ~/Mail for it's messages.\n"
@@ -1090,7 +1088,7 @@ msgstr ""
 "\n"
 "Moet KMail de post mappen nu verplaatsen ?"
 
-#: main.cpp:383
+#: main.cpp:382
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr "Onbekend argument: %s"
@@ -1283,11 +1281,11 @@ msgstr "Lokale Postbus"
 msgid "Pop3"
 msgstr ""
 
-#: kmfilteraction.cpp:87 kmfilteraction.cpp:182
+#: kmfilteraction.cpp:93 kmfilteraction.cpp:191
 msgid "transfer"
 msgstr "breng over"
 
-#: kmfilteraction.cpp:151 kmfilteraction.cpp:184
+#: kmfilteraction.cpp:160 kmfilteraction.cpp:193
 msgid "skip rest"
 msgstr "sla de rest over"
 
@@ -1302,7 +1300,7 @@ msgstr ""
 "script %s\n"
 "%s"
 
-#: kmfolderseldlg.cpp:29
+#: kmfolderseldlg.cpp:32
 #, fuzzy
 msgid "Select folder"
 msgstr "Kies map"
@@ -1506,10 +1504,6 @@ msgstr ""
 "Bestand %s bestaat reeds.\n"
 "Wilt u het overschrijven ?"
 
-#: kfileio.cpp:126 kfileio.cpp:144
-msgid "&Ok"
-msgstr ""
-
 #: kfileio.cpp:143
 #, c-format
 msgid ""
@@ -1612,6 +1606,19 @@ msgstr "7 bit is ASCII"
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
 msgstr "&Qute onbekende karakters"
+
+#~ msgid "&Remove"
+#~ msgstr "&Verwijder"
+
+#~ msgid "&Next"
+#~ msgstr "Volge&nde"
+
+#, fuzzy
+#~ msgid "Fonts"
+#~ msgstr "bevat"
+
+#~ msgid "Appearance"
+#~ msgstr "Uiterlijk"
 
 #~ msgid "Name:"
 #~ msgstr "Naam:"

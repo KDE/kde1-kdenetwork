@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-06-16 14:20+0200\n"
+"POT-Creation-Date: 1998-06-18 22:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Case Roole <cjr@xs4all.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,27 +14,27 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: ENCODING\n"
 
-#: main.cpp:213 main.cpp:225 main.cpp:237 main.cpp:252 main.cpp:264
+#: main.cpp:212 main.cpp:224 main.cpp:236 main.cpp:251 main.cpp:263
 msgid "KRN-Missing Configuration info"
 msgstr "KRN-Ontbrekende Configuratie info"
 
-#: main.cpp:214
+#: main.cpp:213
 msgid "Please enter your email adress"
 msgstr "Voer a.u.b. uw email adres in"
 
-#: main.cpp:226
+#: main.cpp:225
 msgid "Please enter your real name"
 msgstr "Voer a.u.b. uw volledige naam in"
 
-#: main.cpp:238
+#: main.cpp:237
 msgid "Please enter your organization's name"
 msgstr "Voer a.u.b. de naam van uw organisatie in"
 
-#: main.cpp:253
+#: main.cpp:252
 msgid "Please enter your NNTP server name"
 msgstr "Voer a.u.b. de naam van uw NNTP server in"
 
-#: main.cpp:265
+#: main.cpp:264
 msgid "Please enter your SMTP server name"
 msgstr "Voer a.u.b. de naam van uw SMTP server in"
 
@@ -160,51 +160,51 @@ msgstr "Vind groep"
 msgid "Check for Unread Articles"
 msgstr "Controleer of er ongelezen artikelen zijn"
 
-#: groupdlg.cpp:361 groupdlg.cpp:583 groupdlg.cpp:921
+#: groupdlg.cpp:362 groupdlg.cpp:584 groupdlg.cpp:925
 msgid "All Newsgroups."
 msgstr "Alle nieuwsgroepen"
 
-#: groupdlg.cpp:471 groupdlg.cpp:565
+#: groupdlg.cpp:472 groupdlg.cpp:566
 msgid "Subscribed Newsgroups."
 msgstr "Geabonneerde nieuwsgroepen."
 
-#: groupdlg.cpp:520
+#: groupdlg.cpp:521
 msgid "Disconnected"
 msgstr "Verbinding verbroken"
 
-#: groupdlg.cpp:527
+#: groupdlg.cpp:528
 msgid "Connecting to server"
 msgstr "Maak verbinding met server"
 
-#: groupdlg.cpp:532
+#: groupdlg.cpp:533
 msgid "Connected to server - Posting not allowed"
 msgstr "Verbonden met server - Posten niet toegestaan"
 
-#: groupdlg.cpp:534
+#: groupdlg.cpp:535
 msgid "Connected to server - Posting allowed"
 msgstr "Verbonden met server - Posten toegestaan"
 
-#: groupdlg.cpp:540
+#: groupdlg.cpp:541
 msgid "Can't connect to server"
 msgstr "Kan niet verbinden met server"
 
-#: groupdlg.cpp:542
+#: groupdlg.cpp:543
 msgid "Connection to server failed"
 msgstr "Verbinden met server faalde"
 
-#: groupdlg.cpp:551
+#: groupdlg.cpp:552
 msgid "Authentication Failed"
 msgstr "Authenticatie faalde"
 
-#: groupdlg.cpp:554
+#: groupdlg.cpp:555
 msgid "Connection to server failed: Authentication problem"
 msgstr "Verbinden met server faalde: Authenticatie probleem"
 
-#: groupdlg.cpp:603
+#: groupdlg.cpp:604
 msgid "Krn-Question"
 msgstr "Krn-Vraag"
 
-#: groupdlg.cpp:604
+#: groupdlg.cpp:605
 msgid ""
 "The operation you requested needs a connection to the News server\n"
 "Should I attempt one?"
@@ -212,7 +212,7 @@ msgstr ""
 "De operatie welke u verzocht vereist een verbinding met de Nieuws server\n"
 "Zal ik dat proberen ?"
 
-#: groupdlg.cpp:867
+#: groupdlg.cpp:868
 msgid ""
 "You don't have an active groups list.\n"
 " get it from server?"
@@ -220,31 +220,31 @@ msgstr ""
 "U hebt geen actieve groepen lijst.\n"
 "Zal ik deze ophalen van de server ?"
 
-#: groupdlg.cpp:883
+#: groupdlg.cpp:884
 msgid "Listing active newsgroups"
 msgstr "Opsommen van actieve nieuwsgroepen"
 
-#: groupdlg.cpp:895
+#: groupdlg.cpp:899
 msgid "KRN - Find a Newsgroup"
 msgstr "KRN - Zoek een Nieuwsgroep"
 
-#: groupdlg.cpp:896
+#: groupdlg.cpp:900
 msgid "Enter the name of the Newsgroup"
 msgstr "Voer de naam in van de Nieuwsgroep"
 
-#: groupdlg.cpp:980
+#: groupdlg.cpp:984
 msgid "Krn - Message"
 msgstr "Krn - Boodschap"
 
-#: groupdlg.cpp:981
+#: groupdlg.cpp:985
 msgid "I can't find the group you want!"
 msgstr "I kan de gevraagde groep niet vinden!"
 
-#: groupdlg.cpp:1074
+#: groupdlg.cpp:1078
 msgid "Getting messages in "
 msgstr "Haal nu de boodschappen op van "
 
-#: groupdlg.cpp:1087
+#: groupdlg.cpp:1091
 msgid "Getting list of messages in "
 msgstr "Haal nu de lijst van boodschappen op van "
 
@@ -392,31 +392,31 @@ msgstr ""
 msgid "Subject"
 msgstr "Onderwerp"
 
-#: artdlg.cpp:463
+#: artdlg.cpp:462
 msgid "Threading..."
 msgstr ""
 
-#: artdlg.cpp:472
+#: artdlg.cpp:471
 msgid "Showing Article List"
 msgstr "Toon Artikelen Lijst"
 
-#: artdlg.cpp:1314
+#: artdlg.cpp:1316
 msgid "KRN - Existing File"
 msgstr "KRN - Bestaand Bestand"
 
-#: artdlg.cpp:1315
+#: artdlg.cpp:1317
 msgid "The File you selected already exists"
 msgstr "Het bestand dat u koos bestaat reeds"
 
-#: artdlg.cpp:1321
+#: artdlg.cpp:1323
 msgid "OverWrite"
 msgstr "Overschrijf"
 
-#: artdlg.cpp:1323
+#: artdlg.cpp:1325
 msgid "Append"
 msgstr "Voeg toe"
 
-#: artdlg.cpp:1358 artdlg.cpp:1423
+#: artdlg.cpp:1360 artdlg.cpp:1425
 msgid ""
 "From: Krn\n"
 "To: You\n"
@@ -430,7 +430,7 @@ msgstr ""
 "Fout bij ophalen artikel.\n"
 "Server zei:\n"
 
-#: artdlg.cpp:1525
+#: artdlg.cpp:1527
 msgid "Getting Article List"
 msgstr "Artikelen Lijst wordt opgehaald"
 
@@ -506,7 +506,7 @@ msgstr "Deel van het KDE project."
 msgid "Credits & Thanks"
 msgstr "Erkenning & Dank"
 
-#: aboutDlg.cpp:65
+#: aboutDlg.cpp:66
 msgid "And Many thanks to:"
 msgstr "end veel dank aan:"
 

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: krn\n"
-"POT-Creation-Date: 1998-06-16 14:20+0200\n"
+"POT-Creation-Date: 1998-06-18 22:50+0200\n"
 "PO-Revision-Date: 1998-03-08 10:42 MET\n"
 "Last-Translator: Juraj Bednár <bednar@isternet.sk>\n"
 "Language-Team: Slovak <bednar@isternet.sk>\n"
@@ -13,27 +13,27 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: main.cpp:213 main.cpp:225 main.cpp:237 main.cpp:252 main.cpp:264
+#: main.cpp:212 main.cpp:224 main.cpp:236 main.cpp:251 main.cpp:263
 msgid "KRN-Missing Configuration info"
 msgstr "KRN - Informácie o chýbajúcej konfigurácii"
 
-#: main.cpp:214
+#: main.cpp:213
 msgid "Please enter your email adress"
 msgstr "Prosím, zadajte va¹u e-mailovú adresu"
 
-#: main.cpp:226
+#: main.cpp:225
 msgid "Please enter your real name"
 msgstr "Prosím, zadajte va¹e skutoèné meno"
 
-#: main.cpp:238
+#: main.cpp:237
 msgid "Please enter your organization's name"
 msgstr "Prosím, zadajte meno va¹ej organizácie"
 
-#: main.cpp:253
+#: main.cpp:252
 msgid "Please enter your NNTP server name"
 msgstr "Prosím, zadajte vá¹ NNTP server"
 
-#: main.cpp:265
+#: main.cpp:264
 msgid "Please enter your SMTP server name"
 msgstr "Prosím, zadajte názov vá¹ho SMTP serveru"
 
@@ -158,51 +158,51 @@ msgstr "Nájs» skupinu"
 msgid "Check for Unread Articles"
 msgstr "Pozrie» sa po nepreèítaných èlánkoch"
 
-#: groupdlg.cpp:361 groupdlg.cpp:583 groupdlg.cpp:921
+#: groupdlg.cpp:362 groupdlg.cpp:584 groupdlg.cpp:925
 msgid "All Newsgroups."
 msgstr "V¹etky diskusné skupiny."
 
-#: groupdlg.cpp:471 groupdlg.cpp:565
+#: groupdlg.cpp:472 groupdlg.cpp:566
 msgid "Subscribed Newsgroups."
 msgstr "Prihlásené diskusné skupiny."
 
-#: groupdlg.cpp:520
+#: groupdlg.cpp:521
 msgid "Disconnected"
 msgstr "Odpojený"
 
-#: groupdlg.cpp:527
+#: groupdlg.cpp:528
 msgid "Connecting to server"
 msgstr "Pripojovanie k serveru"
 
-#: groupdlg.cpp:532
+#: groupdlg.cpp:533
 msgid "Connected to server - Posting not allowed"
 msgstr "Pripojený k serveru - posielanie nepovolené"
 
-#: groupdlg.cpp:534
+#: groupdlg.cpp:535
 msgid "Connected to server - Posting allowed"
 msgstr "Pripojený k serveru - posielanie povolené"
 
-#: groupdlg.cpp:540
+#: groupdlg.cpp:541
 msgid "Can't connect to server"
 msgstr "Nemô¾em sa pripoji» k serveru"
 
-#: groupdlg.cpp:542
+#: groupdlg.cpp:543
 msgid "Connection to server failed"
 msgstr "Spojenie so serverom sa nepodarilo"
 
-#: groupdlg.cpp:551
+#: groupdlg.cpp:552
 msgid "Authentication Failed"
 msgstr "Overenie prístupu sa nepodarilo"
 
-#: groupdlg.cpp:554
+#: groupdlg.cpp:555
 msgid "Connection to server failed: Authentication problem"
 msgstr "Spojenie so serverom sa nepodarilo: problém pri overovaní prístupu"
 
-#: groupdlg.cpp:603
+#: groupdlg.cpp:604
 msgid "Krn-Question"
 msgstr "Krn - Otázka"
 
-#: groupdlg.cpp:604
+#: groupdlg.cpp:605
 msgid ""
 "The operation you requested needs a connection to the News server\n"
 "Should I attempt one?"
@@ -210,7 +210,7 @@ msgstr ""
 "Po¾adovaná operácia vy¾aduje spojenie s News serverom\n"
 "Mám sa pokúsi» spoji»?"
 
-#: groupdlg.cpp:867
+#: groupdlg.cpp:868
 msgid ""
 "You don't have an active groups list.\n"
 " get it from server?"
@@ -218,31 +218,31 @@ msgstr ""
 "Nemáte k dispozícii zoznam aktívnych skupín.\n"
 " Získa» ich zo servera?"
 
-#: groupdlg.cpp:883
+#: groupdlg.cpp:884
 msgid "Listing active newsgroups"
 msgstr "Vypisujem aktívne diskusné skupiny"
 
-#: groupdlg.cpp:895
+#: groupdlg.cpp:899
 msgid "KRN - Find a Newsgroup"
 msgstr "KRN - Nájs» diskusnú skupinu"
 
-#: groupdlg.cpp:896
+#: groupdlg.cpp:900
 msgid "Enter the name of the Newsgroup"
 msgstr "Zadajte meno diskusnej skupiny"
 
-#: groupdlg.cpp:980
+#: groupdlg.cpp:984
 msgid "Krn - Message"
 msgstr "KRN - Správa"
 
-#: groupdlg.cpp:981
+#: groupdlg.cpp:985
 msgid "I can't find the group you want!"
 msgstr "Nemô¾em nájs» vami po¾adovanú skupinu!"
 
-#: groupdlg.cpp:1074
+#: groupdlg.cpp:1078
 msgid "Getting messages in "
 msgstr "Získavam správy z "
 
-#: groupdlg.cpp:1087
+#: groupdlg.cpp:1091
 msgid "Getting list of messages in "
 msgstr "Získavam zoznam správ z "
 
@@ -390,31 +390,31 @@ msgstr "Body"
 msgid "Subject"
 msgstr "Predmet"
 
-#: artdlg.cpp:463
+#: artdlg.cpp:462
 msgid "Threading..."
 msgstr "Triedenie..."
 
-#: artdlg.cpp:472
+#: artdlg.cpp:471
 msgid "Showing Article List"
 msgstr "Zobrazujem zoznam èlánkov"
 
-#: artdlg.cpp:1314
+#: artdlg.cpp:1316
 msgid "KRN - Existing File"
 msgstr "KRN - Existujúci súbor"
 
-#: artdlg.cpp:1315
+#: artdlg.cpp:1317
 msgid "The File you selected already exists"
 msgstr "Vybraný súbor u¾ existuje"
 
-#: artdlg.cpp:1321
+#: artdlg.cpp:1323
 msgid "OverWrite"
 msgstr "Prepísa»"
 
-#: artdlg.cpp:1323
+#: artdlg.cpp:1325
 msgid "Append"
 msgstr "Pripoji»"
 
-#: artdlg.cpp:1358 artdlg.cpp:1423
+#: artdlg.cpp:1360 artdlg.cpp:1425
 msgid ""
 "From: Krn\n"
 "To: You\n"
@@ -428,7 +428,7 @@ msgstr ""
 "Chyba pri získavaní èlánku.\n"
 "Server odpovedal:\n"
 
-#: artdlg.cpp:1525
+#: artdlg.cpp:1527
 msgid "Getting Article List"
 msgstr "Získavam zoznam èlánkov"
 
@@ -504,7 +504,7 @@ msgstr "Súèas» projektu KDE."
 msgid "Credits & Thanks"
 msgstr "Zásluhy a poïakovanie"
 
-#: aboutDlg.cpp:65
+#: aboutDlg.cpp:66
 msgid "And Many thanks to:"
 msgstr "Poïakovanie pre:"
 

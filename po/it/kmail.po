@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSIONPOT-Creation-Date: 1998-01-17 07:40+0100\n"
-"POT-Creation-Date: 1998-06-11 23:07+0200\n"
+"POT-Creation-Date: 1998-06-18 23:38+0200\n"
 "PO-Revision-Date: 1998-01-22 17:20+0100\n"
 "Last-Translator: Andrea Rizzi <BILIBAO@ouverture.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: ENCODING\n"
 
-#: kmcomposewin.cpp:1401 kmmainwin.cpp:267 kpgp.cpp:350
+#: kmcomposewin.cpp:1414 kmmainwin.cpp:248 kpgp.cpp:350
 msgid ""
 "Sorry, but this feature\n"
 "is still missing"
@@ -22,24 +22,24 @@ msgstr ""
 "Mi dispiace ma questa caratteristica\n"
 "non è ancora presente"
 
-#: kmmainwin.cpp:276
+#: kmmainwin.cpp:257
 msgid "New Folder"
 msgstr "Nuova Cartella"
 
-#: kmmainwin.cpp:288 kmmainwin.cpp:318
+#: kmmainwin.cpp:269 kmmainwin.cpp:299
 #, fuzzy
 msgid "KMail error"
 msgstr "errore fatale"
 
-#: kmmainwin.cpp:289 kmmainwin.cpp:319
+#: kmmainwin.cpp:270 kmmainwin.cpp:300
 msgid "Already checking for mail!"
 msgstr ""
 
-#: kmmainwin.cpp:299 kmmainwin.cpp:329
+#: kmmainwin.cpp:280 kmmainwin.cpp:310
 msgid "No new mail available"
 msgstr ""
 
-#: kmmainwin.cpp:354
+#: kmmainwin.cpp:335
 msgid ""
 "Cannot modify a\n"
 "system folder."
@@ -47,11 +47,11 @@ msgstr ""
 "Non si può modificare una\n"
 "cartella di sistema."
 
-#: kmmainwin.cpp:359
+#: kmmainwin.cpp:340
 msgid "Modify Folder"
 msgstr "Modifica Cartella"
 
-#: kmmainwin.cpp:374
+#: kmmainwin.cpp:355
 #, fuzzy, c-format
 msgid ""
 "Are you sure you want to discard the\n"
@@ -60,16 +60,16 @@ msgstr ""
 "Sei sicuro di voler rimuovere la cartella\n"
 "\"%s\", perdendone il contenuto ?"
 
-#: kmmainwin.cpp:377 kmmainwin.cpp:415
+#: kmmainwin.cpp:358 kmmainwin.cpp:396
 msgid "Confirmation"
 msgstr "Conferma"
 
-#: kmmainwin.cpp:394
+#: kmmainwin.cpp:375
 #, fuzzy
 msgid "Moved all messages into trash"
 msgstr "Spedizione messaggio:"
 
-#: kmmainwin.cpp:408
+#: kmmainwin.cpp:389
 msgid ""
 "Cannot remove a\n"
 "system folder."
@@ -77,7 +77,7 @@ msgstr ""
 "Non si può rimuovere una\n"
 "cartella di sistema"
 
-#: kmmainwin.cpp:412
+#: kmmainwin.cpp:393
 #, c-format
 msgid ""
 "Are you sure you want to remove the folder\n"
@@ -86,272 +86,269 @@ msgstr ""
 "Sei sicuro di voler rimuovere la cartella\n"
 "\"%s\", perdendone il contenuto ?"
 
-#: kmmainwin.cpp:480
+#: kmmainwin.cpp:466
 msgid "Message as Plain Text"
 msgstr "Messaggio in Testo Semplice"
 
-#: kmmainwin.cpp:487 kmmainwin.cpp:507
+#: kmmainwin.cpp:473 kmmainwin.cpp:493
 msgid "Select Folder"
 msgstr "Scelta Cartella"
 
-#: kmmainwin.cpp:528
+#: kmmainwin.cpp:514
 msgid "Queued messages successfully sent."
 msgstr "Messaggi in attesa spediti con successo."
 
-#: kmmainwin.cpp:530
+#: kmmainwin.cpp:516
 msgid "Failed to send (some) queued messages."
 msgstr "Spedizione fallita di alcuni messaggi in attesa "
 
-#: kmmainwin.cpp:639
+#: kmmainwin.cpp:625
 msgid "Opening URL..."
 msgstr "Apertura URL..."
 
-#: kmmainwin.cpp:700
+#: kmmainwin.cpp:686
 msgid "Address added to addressbook."
 msgstr "Indirizzo aggiunto alla Rubrica"
 
-#: kmmainwin.cpp:712
+#: kmmainwin.cpp:698
 msgid "Address copied to clipboard."
 msgstr "Indirizzo copiato negli appunti."
 
-#: kmmainwin.cpp:717
+#: kmmainwin.cpp:703
 msgid "URL copied to clipboard."
 msgstr "indirizzo (URL) copiato negli appunti."
 
-#: kmmainwin.cpp:744
+#: kmmainwin.cpp:730
 msgid "Send to..."
 msgstr "Spedisci a..."
 
-#: kmmainwin.cpp:746
+#: kmmainwin.cpp:732
 msgid "Send reply to..."
 msgstr "Rispondi a..."
 
-#: kmmainwin.cpp:748
+#: kmmainwin.cpp:734
 msgid "Forward to..."
 msgstr "Inoltra a..."
 
-#: kmmainwin.cpp:751
+#: kmmainwin.cpp:737
 msgid "Add to addressbook"
 msgstr "Aggiungi alla rubrica"
 
-#: kmmainwin.cpp:753 kmmainwin.cpp:762
+#: kmmainwin.cpp:739 kmmainwin.cpp:748
 msgid "Copy to clipboard"
 msgstr "Copia negli appunti"
 
-#: kmmainwin.cpp:760
+#: kmmainwin.cpp:746
 msgid "Open URL..."
 msgstr "Apri Indirizzo (URL)..."
 
-#: kmmainwin.cpp:770 kmmainwin.cpp:880
+#: kmmainwin.cpp:756 kmmainwin.cpp:870
 msgid "&Reply..."
 msgstr "&Rispondi..."
 
-#: kmmainwin.cpp:772 kmmainwin.cpp:882
+#: kmmainwin.cpp:758 kmmainwin.cpp:872
 msgid "Reply &All..."
 msgstr "Rispondi a &Tutti..."
 
-#: kmmainwin.cpp:774 kmmainwin.cpp:884
+#: kmmainwin.cpp:760 kmmainwin.cpp:874
 msgid "&Forward..."
 msgstr "&Inoltra..."
 
-#: kmmainwin.cpp:777 kmmainwin.cpp:889
+#: kmmainwin.cpp:763 kmmainwin.cpp:879
 msgid "&Move..."
 msgstr "&Sposta..."
 
-#: kmmainwin.cpp:779 kmmainwin.cpp:891
+#: kmmainwin.cpp:765 kmmainwin.cpp:881
 msgid "&Copy..."
 msgstr "&Copia..."
 
-#: kmmainwin.cpp:804
+#: kmmainwin.cpp:790
 msgid "New Composer"
 msgstr "Nuovo Compositore messaggi"
 
-#: kmmainwin.cpp:806
+#: kmcomposewin.cpp:448 kmmainwin.cpp:792
 msgid "New Mailreader"
 msgstr "Nuovo Lettore Posta"
 
-#: kmmainwin.cpp:809
+#: kmmainwin.cpp:795
 msgid "Save As..."
 msgstr "Salva con nome..."
 
-#: kmmainwin.cpp:811
+#: kmmainwin.cpp:797
 msgid "Print..."
 msgstr "Stampa..."
 
-#: kmmainwin.cpp:814
+#: kmmainwin.cpp:800
 msgid "Check Mail..."
 msgstr "Controlla posta..."
 
-#: kmmainwin.cpp:823
+#: kmmainwin.cpp:809
 #, fuzzy
 msgid "Check Mail in..."
 msgstr "Controlla posta..."
 
-#: kmmainwin.cpp:825
+#: kmmainwin.cpp:811
 msgid "Send Queued"
 msgstr "Spedisci messaggi in attesa"
 
-#: kmmainwin.cpp:828
+#: kmmainwin.cpp:814
 msgid "&Settings..."
 msgstr "&Impostazioni..."
 
-#: kmcomposewin.cpp:442 kmmainwin.cpp:830
+#: kmcomposewin.cpp:441 kmmainwin.cpp:816
 msgid "&Addressbook..."
 msgstr "&Rubrica..."
 
-#: kmmainwin.cpp:832
+#: kmmainwin.cpp:818
 msgid "&Filter..."
 msgstr "&Filtri..."
 
-#: kmmainwin.cpp:846
+#: kmmainwin.cpp:832
 msgid "&Find..."
 msgstr "&Trova..."
 
-#: kmmainwin.cpp:851
+#: kmmainwin.cpp:837
 msgid "&Create..."
 msgstr "&Crea..."
 
-#: kmmainwin.cpp:853
+#: kmmainwin.cpp:839
 msgid "&Modify..."
 msgstr "&Modifica..."
 
-#: kmmainwin.cpp:855
+#: kmmainwin.cpp:841
 msgid "C&ompact"
 msgstr "C&omprimi"
 
-#: kmmainwin.cpp:857
+#: kmmainwin.cpp:843
 msgid "&Empty"
 msgstr "&Svuota"
 
-#: kmcomposewin.cpp:519 kmmainwin.cpp:859
-msgid "&Remove"
-msgstr "&Rimuovi"
-
-#: kmmainwin.cpp:867
+#: kmmainwin.cpp:853
 msgid "Unread"
 msgstr "Non letto"
 
-#: kmmainwin.cpp:868
+#: kmmainwin.cpp:854
 msgid "Read"
 msgstr "Letto"
 
-#: kmmainwin.cpp:869
+#: kmmainwin.cpp:855
 msgid "Replied"
 msgstr "Risposta"
 
-#: kmmainwin.cpp:870
+#: kmmainwin.cpp:856
 msgid "Queued"
 msgstr "In Attesa"
 
-#: kmmainwin.cpp:871
+#: kmmainwin.cpp:857
 msgid "Sent"
 msgstr "Spedito"
 
-#: kmmainwin.cpp:875
-msgid "&Next"
-msgstr "P&rossimo"
+#: kmmainwin.cpp:863
+msgid "Next unread"
+msgstr ""
 
-#: kmmainwin.cpp:877
-msgid "&Previous"
+#: kmmainwin.cpp:867
+#, fuzzy
+msgid "Previous unread"
 msgstr "&Precedente"
 
-#: kmmainwin.cpp:887
+#: kmmainwin.cpp:877
 msgid "&Set Status"
 msgstr "&Imposta Stato"
 
-#: kmmainwin.cpp:896
+#: kmmainwin.cpp:886
 msgid "Send again..."
 msgstr "Spedisci di nuovo..."
 
-#: kmmainwin.cpp:898
+#: kmmainwin.cpp:888
 msgid "Apply filters"
 msgstr ""
 
-#: kmmainwin.cpp:901
+#: kmmainwin.cpp:891
 msgid "View Source..."
 msgstr "Mostra sorgente..."
 
-#: kmmainwin.cpp:908
+#: kmmainwin.cpp:898
 msgid "&Brief Headers"
 msgstr "Intestazione &Breve"
 
-#: kmmainwin.cpp:910
+#: kmmainwin.cpp:900
 msgid "&Fancy Headers"
 msgstr "Intestazione &Allegra"
 
-#: kmmainwin.cpp:912
+#: kmmainwin.cpp:902
 msgid "&Standard Headers"
 msgstr "Intestazione &Standard"
 
-#: kmmainwin.cpp:914
+#: kmmainwin.cpp:904
 msgid "&Long Headers"
 msgstr "Intestazione &Lunga"
 
-#: kmmainwin.cpp:916
+#: kmmainwin.cpp:906
 msgid "&All Headers"
 msgstr "&Intestazione Completa"
 
-#: kmmainwin.cpp:919
+#: kmmainwin.cpp:909
 msgid "Iconic Attachments"
 msgstr "Allegati come icone"
 
-#: kmmainwin.cpp:920
+#: kmmainwin.cpp:910
 msgid "Smart Attachments"
 msgstr "Allegati eleganti"
 
-#: kmmainwin.cpp:921
+#: kmmainwin.cpp:911
 msgid "Inlined Attachments"
 msgstr "Allegati in linea"
 
-#: kmmainwin.cpp:932
+#: kmmainwin.cpp:922
 msgid "F&older"
 msgstr "&Cartella"
 
-#: kmmainwin.cpp:933
+#: kmmainwin.cpp:923
 msgid "&Message"
 msgstr "&Messaggio"
 
-#: kmcomposewin.cpp:548 kmmainwin.cpp:952
+#: kmcomposewin.cpp:549 kmmainwin.cpp:942
 msgid "Compose new message"
 msgstr "Componi nuovo messaggio"
 
-#: kmcomposewin.cpp:553 kmmainwin.cpp:957
+#: kmcomposewin.cpp:554 kmmainwin.cpp:947
 msgid "Save message to file"
 msgstr "Salva messaggio su file"
 
-#: kmcomposewin.cpp:558 kmmainwin.cpp:962
+#: kmcomposewin.cpp:559 kmmainwin.cpp:952
 msgid "Print message"
 msgstr "Stampa messaggio"
 
-#: kmmainwin.cpp:969
+#: kmmainwin.cpp:959
 msgid "Get new mail"
 msgstr "Ritira nuova posta"
 
-#: kmmainwin.cpp:975
+#: kmmainwin.cpp:965
 msgid "Reply to author"
 msgstr "Rispondi all'autore"
 
-#: kmmainwin.cpp:980
+#: kmmainwin.cpp:970
 msgid "Reply to all recipients"
 msgstr "Rispondi a tutti i destinatari"
 
-#: kmmainwin.cpp:985
+#: kmmainwin.cpp:975
 msgid "Forward message"
 msgstr "Inoltra messaggio"
 
-#: kmmainwin.cpp:990
+#: kmmainwin.cpp:980
 msgid "Delete message"
 msgstr "Cancella Messaggio"
 
-#: kmcomposewin.cpp:582 kmmainwin.cpp:996
+#: kmcomposewin.cpp:583 kmmainwin.cpp:986
 msgid "Open addressbook..."
 msgstr "Apri la rubrica..."
 
-#: kmmainwin.cpp:1008
+#: kmmainwin.cpp:998
 msgid "Initializing..."
 msgstr "Inizializzazione..."
 
-#: kmcomposewin.cpp:1409 kmfolderdia.cpp:44 kmfolderdia.cpp:120
+#: kmcomposewin.cpp:1422 kmfolderdia.cpp:44 kmfolderdia.cpp:120
 msgid "unnamed"
 msgstr "senza nome"
 
@@ -363,115 +360,106 @@ msgstr "Associato a"
 msgid "Unassociated Accounts"
 msgstr "Account non associati"
 
-#: kmsettings.cpp:46
+#: kmsettings.cpp:48
 msgid "Settings"
 msgstr "Impostazioni"
 
-#: kmsettings.cpp:168
+#: kmsettings.cpp:170
 msgid "Organization:"
 msgstr "Organizzazione"
 
-#: kmsettings.cpp:170
+#: kmsettings.cpp:172
 msgid "Email Address:"
 msgstr "Indirizzo E-Mail:"
 
-#: kmsettings.cpp:173
+#: kmsettings.cpp:175
 msgid "Reply-To Address:"
 msgstr "Risposte all'indirizzo:"
 
-#: kmsettings.cpp:175
+#: kmsettings.cpp:177
 msgid "Signature File:"
 msgstr "File \"firma\":"
 
-#: kmsettings.cpp:178
+#: kmsettings.cpp:180
 msgid "PGP User Identity:"
 msgstr "Identità PGP utente:"
 
-#: kmsettings.cpp:186
+#: kmsettings.cpp:188
 msgid "Identity"
 msgstr "Identità"
 
-#: kmsettings.cpp:205
+#: kmsettings.cpp:207
 msgid "Sending Mail"
 msgstr "Spedizione Posta"
 
-#: kmsettings.cpp:211
+#: kmsettings.cpp:213
 msgid "Sendmail"
 msgstr "Sendmail"
 
-#: kmsettings.cpp:216 kmsettings.cpp:844
+#: kmsettings.cpp:218 kmsettings.cpp:856
 msgid "Location:"
 msgstr "Locazione:"
 
-#: kmsettings.cpp:221
+#: kmsettings.cpp:223
 msgid "SMTP"
 msgstr "SMTP"
 
-#: kmsettings.cpp:226
+#: kmsettings.cpp:228
 msgid "Server:"
 msgstr "Server:"
 
-#: kmsettings.cpp:228 kmsettings.cpp:865
+#: kmsettings.cpp:230 kmsettings.cpp:877
 msgid "Port:"
 msgstr "Porta:"
 
-#: kmsettings.cpp:249
+#: kmsettings.cpp:251
 msgid "Incoming Mail"
 msgstr "Posta in Arrivo:"
 
-#: kmsettings.cpp:254
+#: kmsettings.cpp:256
 msgid "Accounts:   (add at least one account!)"
 msgstr "Account: (aggiungine almeno uno!)"
 
-#: kmcomposewin.cpp:130 kmsettings.cpp:260
+#: kmcomposewin.cpp:134 kmsettings.cpp:262
 msgid "Type"
 msgstr "Tipo"
 
-#: kmsettings.cpp:261
+#: kmsettings.cpp:263
 msgid "Folder"
 msgstr "Cartella"
 
-#: kmsettings.cpp:269
+#: kmsettings.cpp:271
 msgid "Add..."
 msgstr "Aggiungi..."
 
-#: kmsettings.cpp:272
+#: kmsettings.cpp:274
 msgid "Modify..."
 msgstr "Modifica"
 
-#: kmsettings.cpp:292
+#: kmsettings.cpp:294
 msgid "Network"
 msgstr "Rete"
 
-#: kmsettings.cpp:311
-#, fuzzy
-msgid "Fonts"
-msgstr "contenente"
-
-#: kmsettings.cpp:316
+#: kmsettings.cpp:319
 msgid "Message Body Font:"
 msgstr ""
 
-#: kmsettings.cpp:321
+#: kmsettings.cpp:324
 #, fuzzy
 msgid "Message List Font:"
 msgstr "Messaggio in Testo Semplice"
 
-#: kmsettings.cpp:325
+#: kmsettings.cpp:328
 msgid ""
 "Changing fonts currently only occurs when a new\n"
 "window is opened or kmail is restarted"
 msgstr ""
 
-#: kmsettings.cpp:341 kmsettings.cpp:411
-msgid "Appearance"
-msgstr "Apparenza"
-
-#: kmsettings.cpp:363
+#: kmsettings.cpp:370
 msgid "Phrases"
 msgstr "Frasi"
 
-#: kmsettings.cpp:368
+#: kmsettings.cpp:375
 msgid ""
 "The following placeholders are supported in the reply phrases:\n"
 "%D=date, %S=subject, %F=sender, %%=percent sign"
@@ -479,149 +467,149 @@ msgstr ""
 "I seguenti identificatori sono ammessi nelle frasi di risposta \n"
 "%D=data, %S=soggetto, %F=mittente, %%=segno di percentuale"
 
-#: kmsettings.cpp:376
+#: kmsettings.cpp:383
 msgid "Reply to sender:"
 msgstr "Rispondi al mittente:"
 
-#: kmsettings.cpp:379
+#: kmsettings.cpp:386
 msgid "Reply to all:"
 msgstr "Rispondi a tutti:"
 
-#: kmsettings.cpp:382
+#: kmsettings.cpp:389
 msgid "Forward:"
 msgstr "Inoltra:"
 
-#: kmsettings.cpp:385
+#: kmsettings.cpp:392
 msgid "Indentation:"
 msgstr "Indentazione:"
 
-#: kmmessage.cpp:1251 kmsettings.cpp:397
+#: kmmessage.cpp:1251 kmsettings.cpp:404
 msgid "On %D, you wrote:"
 msgstr "On %D, you wrote:"
 
-#: kmmessage.cpp:1252 kmsettings.cpp:401
+#: kmmessage.cpp:1252 kmsettings.cpp:408
 msgid "On %D, %F wrote:"
 msgstr "On %D, %F wrote:"
 
-#: kmmessage.cpp:1253 kmsettings.cpp:405
+#: kmmessage.cpp:1253 kmsettings.cpp:412
 msgid "Forwarded Message"
 msgstr "Messaggio Inoltrato"
 
-#: kmsettings.cpp:416
+#: kmsettings.cpp:423
 msgid "Automatically append signature"
 msgstr "Firma automaticamente"
 
-#: kmsettings.cpp:422
+#: kmsettings.cpp:429
 msgid "Automatically sign messages using PGP"
 msgstr "Firma automaticamente con il PGP"
 
-#: kmsettings.cpp:427
+#: kmsettings.cpp:434
 msgid "Word wrap at column:"
 msgstr "A capo alla colonna:"
 
-#: kmsettings.cpp:437
+#: kmsettings.cpp:444
 msgid "Use monospaced font"
 msgstr "Usa font a spaziatura fissa"
 
-#: kmsettings.cpp:449
+#: kmsettings.cpp:456
 msgid "When sending mail"
 msgstr "Momento spedizione posta"
 
-#: kmsettings.cpp:452
+#: kmsettings.cpp:459
 msgid "Default sending:"
 msgstr "Spedizione di Default:"
 
-#: kmsettings.cpp:455
+#: kmsettings.cpp:462
 msgid "send now"
 msgstr "Subito"
 
-#: kmsettings.cpp:459
+#: kmsettings.cpp:466
 msgid "send later"
 msgstr "In seguito"
 
-#: kmsettings.cpp:464
+#: kmsettings.cpp:471
 msgid "Send messages:"
 msgstr "Spedisci Messaggi:"
 
-#: kmsettings.cpp:467
+#: kmsettings.cpp:474
 msgid "Allow 8-bit"
 msgstr "Autorizza 8-bit"
 
-#: kmsettings.cpp:472
+#: kmsettings.cpp:479
 msgid "MIME Compilant (Quoted Printable)"
 msgstr "MIME Compatibile (Quoted Printable)"
 
-#: kmsettings.cpp:498
+#: kmsettings.cpp:505
 msgid "Composer"
 msgstr "Compositore messaggi"
 
-#: kmsettings.cpp:515
+#: kmsettings.cpp:522
 #, fuzzy
 msgid "Folders"
 msgstr "Cartella"
 
-#: kmsettings.cpp:519
+#: kmsettings.cpp:526
 msgid "empty trash on exit"
 msgstr ""
 
-#: kmsettings.cpp:556
+#: kmsettings.cpp:563
 msgid "Message Body Font"
 msgstr ""
 
-#: kmsettings.cpp:568
+#: kmsettings.cpp:577
 #, fuzzy
 msgid "Message List Font"
 msgstr "Messaggio in Testo Semplice"
 
-#: kmsettings.cpp:618
+#: kmsettings.cpp:629
 msgid "Select Account"
 msgstr "Scelta Account"
 
-#: kmaccount.cpp:70 kmfilterdlg.cpp:461 kmsettings.cpp:637
+#: kmaccount.cpp:70 kmfilterdlg.cpp:461 kmsettings.cpp:648
 msgid "Unnamed"
 msgstr "Senza Nome"
 
-#: kmsettings.cpp:656
+#: kmsettings.cpp:667
 msgid "Choose Sendmail Location"
 msgstr "Scelta Locazione Sendmail"
 
-#: kmcomposewin.cpp:1516 kmsettings.cpp:665
+#: kmcomposewin.cpp:1529 kmsettings.cpp:676
 msgid "Choose Signature File"
 msgstr "Scelta File firma"
 
-#: kmsettings.cpp:842
+#: kmsettings.cpp:854
 msgid "Local Account"
 msgstr "Account locale"
 
-#: kmsettings.cpp:851
+#: kmsettings.cpp:863
 msgid "Pop Account"
 msgstr "Account POP"
 
-#: kmsettings.cpp:853
+#: kmsettings.cpp:865
 msgid "Login:"
 msgstr "Nome utente (login):"
 
-#: kmacctpop.cpp:436 kmsettings.cpp:856
+#: kmacctpop.cpp:436 kmsettings.cpp:868
 msgid "Password:"
 msgstr "Password:"
 
-#: kmsettings.cpp:860
+#: kmsettings.cpp:872
 msgid "Host:"
 msgstr "Host:"
 
-#: kmsettings.cpp:868
+#: kmsettings.cpp:880
 msgid "Delete mail from server"
 msgstr "Elimina posta dal server"
 
-#: kmsettings.cpp:880
+#: kmsettings.cpp:892
 msgid "Store new mail in account:"
 msgstr "Salva la nuova posta nell'account:"
 
-#: kmsettings.cpp:888
+#: kmsettings.cpp:900
 msgid "<none>"
 msgstr "<nessuno>"
 
-#: kmsettings.cpp:933
+#: kmsettings.cpp:945
 msgid "Choose Location"
 msgstr "Scelta locazione"
 
@@ -633,268 +621,268 @@ msgstr "Destinatario:"
 msgid "Failed to add message:"
 msgstr "Impossibile aggiungere messaggio:"
 
-#: kmcomposewin.cpp:126 kmheaders.cpp:38
+#: kmcomposewin.cpp:130 kmheaders.cpp:39
 msgid "F"
 msgstr "F"
 
-#: kmheaders.cpp:39
+#: kmheaders.cpp:40
 msgid "Sender"
 msgstr "Mittente"
 
-#: kmheaders.cpp:40
+#: kmheaders.cpp:41
 msgid "Subject"
 msgstr "Soggetto"
 
-#: kmheaders.cpp:209
-#, fuzzy
-msgid "Unknown"
-msgstr "Errore sconosciuto"
-
-#: kmheaders.cpp:212
-#, fuzzy
-msgid "No Subject"
-msgstr "Soggetto"
-
-#: kmheaders.cpp:259
-msgid "order of arrival"
-msgstr ""
-
-#: kmheaders.cpp:268
-#, fuzzy
-msgid "subject"
-msgstr "Soggetto"
-
-#: kmheaders.cpp:269
-#, fuzzy
-msgid "date"
-msgstr "Data"
-
-#: kmheaders.cpp:270
-#, fuzzy
-msgid "sender"
-msgstr "Mittente"
-
-#: kmheaders.cpp:271
-msgid "status"
-msgstr ""
-
-#: kmheaders.cpp:273
-#, c-format
-msgid "Sorting messages descending by %s"
-msgstr ""
-
-#: kmheaders.cpp:274
-#, c-format
-msgid "Sorting messages ascending by %s"
-msgstr ""
-
-#: kmheaders.cpp:364
-msgid "Message(s) saved."
-msgstr "Messaggio/i salvato/i"
-
-#: kmheaders.cpp:366
-msgid "Failed to save message(s)."
-msgstr "Impossibile salvare i(l) messaggio/i"
-
-#: kmheaders.cpp:693
+#: kmheaders.cpp:183
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d Messaggi, %d non letti."
 
-#: kmheaders.cpp:695
+#: kmheaders.cpp:185
 msgid "Folder is read-only."
 msgstr "La cartella è di sola lettura."
 
-#: kmcomposewin.cpp:115
+#: kmheaders.cpp:229
+#, fuzzy
+msgid "Unknown"
+msgstr "Errore sconosciuto"
+
+#: kmheaders.cpp:232
+#, fuzzy
+msgid "No Subject"
+msgstr "Soggetto"
+
+#: kmheaders.cpp:279
+msgid "order of arrival"
+msgstr ""
+
+#: kmheaders.cpp:288
+#, fuzzy
+msgid "subject"
+msgstr "Soggetto"
+
+#: kmheaders.cpp:289
+#, fuzzy
+msgid "date"
+msgstr "Data"
+
+#: kmheaders.cpp:290
+#, fuzzy
+msgid "sender"
+msgstr "Mittente"
+
+#: kmheaders.cpp:291
+msgid "status"
+msgstr ""
+
+#: kmheaders.cpp:293
+#, c-format
+msgid "Sorting messages descending by %s"
+msgstr ""
+
+#: kmheaders.cpp:294
+#, c-format
+msgid "Sorting messages ascending by %s"
+msgstr ""
+
+#: kmheaders.cpp:384
+msgid "Message(s) saved."
+msgstr "Messaggio/i salvato/i"
+
+#: kmheaders.cpp:386
+msgid "Failed to save message(s)."
+msgstr "Impossibile salvare i(l) messaggio/i"
+
+#: kmcomposewin.cpp:119
 msgid "KMail Composer"
 msgstr "Compositore messaggi KMail"
 
-#: kmcomposewin.cpp:129
+#: kmcomposewin.cpp:133
 msgid "Encoding"
 msgstr "Codifica"
 
-#: kmcomposewin.cpp:345
+#: kmcomposewin.cpp:344
 msgid "&From:"
 msgstr "&Da:"
 
-#: kmcomposewin.cpp:347
+#: kmcomposewin.cpp:346
 msgid "&Reply to:"
 msgstr "&Risposta a:"
 
-#: kmcomposewin.cpp:349
+#: kmcomposewin.cpp:348
 msgid "&To:"
 msgstr "&A:"
 
-#: kmcomposewin.cpp:351
+#: kmcomposewin.cpp:350
 msgid "&Cc:"
 msgstr "&Copia:"
 
-#: kmcomposewin.cpp:353
+#: kmcomposewin.cpp:352
 msgid "&Bcc:"
 msgstr "&Bcc:"
 
-#: kmcomposewin.cpp:355
+#: kmcomposewin.cpp:354
 msgid "&Subject:"
 msgstr "&Soggetto:"
 
-#: kmcomposewin.cpp:358
+#: kmcomposewin.cpp:357
 msgid "&Newsgroups:"
 msgstr "&Newsgroups:"
 
-#: kmcomposewin.cpp:360
+#: kmcomposewin.cpp:359
 msgid "&Followup-To:"
 msgstr "&Continua-fino-a:"
 
-#: kmcomposewin.cpp:432
+#: kmcomposewin.cpp:431
 msgid "&Send"
 msgstr "&Spedisci"
 
-#: kmcomposewin.cpp:435
+#: kmcomposewin.cpp:434
 msgid "S&end later"
 msgstr "Spedisci &dopo"
 
-#: kmcomposewin.cpp:437
+#: kmcomposewin.cpp:436
 msgid "S&end now"
 msgstr "Spedisci &ora"
 
-#: kmcomposewin.cpp:439
+#: kmcomposewin.cpp:438
 msgid "&Insert File..."
 msgstr "&Inserisci file..."
 
-#: kmcomposewin.cpp:447
+#: kmcomposewin.cpp:446
 msgid "&New Composer..."
 msgstr "&Nuovo Compositore messaggi"
 
-#: kmcomposewin.cpp:466 kmcomposewin.cpp:683 kmcomposewin.cpp:1860
+#: kmcomposewin.cpp:467 kmcomposewin.cpp:676 kmcomposewin.cpp:1897
 msgid "Mark all"
 msgstr "Segna tutti"
 
-#: kmcomposewin.cpp:469 kmcomposewin.cpp:685
+#: kmcomposewin.cpp:470 kmcomposewin.cpp:678
 msgid "Find..."
 msgstr "Trova..."
 
-#: kmcomposewin.cpp:471 kmcomposewin.cpp:686
+#: kmcomposewin.cpp:472 kmcomposewin.cpp:679
 #, fuzzy
 msgid "Replace..."
 msgstr "&Rispondi..."
 
-#: kmcomposewin.cpp:478
+#: kmcomposewin.cpp:479
 msgid "&Urgent"
 msgstr "&Urgente"
 
-#: kmcomposewin.cpp:480
+#: kmcomposewin.cpp:481
 msgid "&Confirm delivery"
 msgstr "&Conferma consegna"
 
-#: kmcomposewin.cpp:482
+#: kmcomposewin.cpp:483
 msgid "&Confirm read"
 msgstr "&Conferma letture"
 
-#: kmcomposewin.cpp:485
+#: kmcomposewin.cpp:486
 #, fuzzy
 msgid "&Charsets..."
 msgstr "&Crea..."
 
-#: kmcomposewin.cpp:498
+#: kmcomposewin.cpp:499
 msgid "&All Fields"
 msgstr "&Tutti i campi"
 
-#: kmcomposewin.cpp:500
+#: kmcomposewin.cpp:501
 msgid "&From"
 msgstr "&Da"
 
-#: kmcomposewin.cpp:501
+#: kmcomposewin.cpp:502
 msgid "&Reply to"
 msgstr "&Risposta a"
 
-#: kmcomposewin.cpp:502
+#: kmcomposewin.cpp:503
 msgid "&To"
 msgstr "&A"
 
-#: kmcomposewin.cpp:503
+#: kmcomposewin.cpp:504
 msgid "&Cc"
 msgstr "&Copia"
 
-#: kmcomposewin.cpp:504
+#: kmcomposewin.cpp:505
 msgid "&Bcc"
 msgstr "&Bcc"
 
-#: kmcomposewin.cpp:505
+#: kmcomposewin.cpp:506
 msgid "&Subject"
 msgstr "&Soggetto"
 
-#: kmcomposewin.cpp:507
+#: kmcomposewin.cpp:508
 msgid "&Newsgroups"
 msgstr "&Newsgroups"
 
-#: kmcomposewin.cpp:508
+#: kmcomposewin.cpp:509
 msgid "&Followup-To"
 msgstr "&Continua-fino-a"
 
-#: kmcomposewin.cpp:513
+#: kmcomposewin.cpp:514
 msgid "Append S&ignature"
 msgstr "Aggiungi F&irma"
 
-#: kmcomposewin.cpp:515
+#: kmcomposewin.cpp:516
 msgid "&Insert File"
 msgstr "&Inserisci File"
 
-#: kmcomposewin.cpp:517
+#: kmcomposewin.cpp:518
 msgid "&Attach..."
 msgstr "&Allega..."
 
-#: kmcomposewin.cpp:520
+#: kmcomposewin.cpp:521
 msgid "&Save..."
 msgstr "&Salva"
 
-#: kmcomposewin.cpp:521
+#: kmcomposewin.cpp:522
 msgid "Pr&operties..."
 msgstr "Pr&oprietà"
 
-#: kmcomposewin.cpp:523
+#: kmcomposewin.cpp:524
 msgid "&Attach"
 msgstr "&Allega"
 
-#: kmcomposewin.cpp:567
+#: kmcomposewin.cpp:568
 msgid "Cut selection"
 msgstr ""
 
-#: kmcomposewin.cpp:570
+#: kmcomposewin.cpp:571
 #, fuzzy
 msgid "Copy selection"
 msgstr "Scelta locazione"
 
-#: kmcomposewin.cpp:573
+#: kmcomposewin.cpp:574
 msgid "Paste clipboard contents"
 msgstr ""
 
-#: kmcomposewin.cpp:578
+#: kmcomposewin.cpp:579
 #, fuzzy
 msgid "Attach file"
 msgstr "Allega File"
 
-#: kmcomposewin.cpp:591
+#: kmcomposewin.cpp:592
 msgid "sign message"
 msgstr "firma messaggio"
 
-#: kmcomposewin.cpp:596
+#: kmcomposewin.cpp:597
 msgid "encrypt message"
 msgstr "cifra messaggio"
 
-#: kmcomposewin.cpp:608 kmcomposewin.cpp:624
+#: kmcomposewin.cpp:609 kmcomposewin.cpp:625
 msgid "Column"
 msgstr ""
 
-#: kmcomposewin.cpp:609 kmcomposewin.cpp:622
+#: kmcomposewin.cpp:610 kmcomposewin.cpp:623
 #, fuzzy
 msgid "Line"
 msgstr "Nome utente (login):"
 
-#: kmcomposewin.cpp:877
+#: kmcomposewin.cpp:871
 msgid "KMail Confirm"
 msgstr "Conferma KMail"
 
-#: kmcomposewin.cpp:878
+#: kmcomposewin.cpp:872
 msgid ""
 "Close and discard\n"
 "edited message?"
@@ -902,7 +890,7 @@ msgstr ""
 "Chiudo e abbandono\n"
 "il messaggio ?"
 
-#: kmcomposewin.cpp:923
+#: kmcomposewin.cpp:917
 #, c-format
 msgid ""
 "public key for %s not found.\n"
@@ -911,52 +899,52 @@ msgstr ""
 "chiave pubblica per %s non trovata.\n"
 "Questa persona potrebbe non essere in grado di decifrare il messaggio."
 
-#: kmcomposewin.cpp:944
+#: kmcomposewin.cpp:938
 msgid "Error during PGP:"
 msgstr "Errore di PGP:"
 
-#: kmcomposewin.cpp:1158
+#: kmcomposewin.cpp:1153
 msgid "Attach File"
 msgstr "Allega File"
 
-#: kmcomposewin.cpp:1176
+#: kmcomposewin.cpp:1175
 #, fuzzy
 msgid "Include File"
 msgstr "&Inserisci File"
 
-#: kmcomposewin.cpp:1197 kmreaderwin.cpp:680
+#: kmcomposewin.cpp:1198 kmreaderwin.cpp:683
 msgid "View..."
 msgstr "Visualizza..."
 
-#: kmcomposewin.cpp:1198
+#: kmcomposewin.cpp:1199
 msgid "Save..."
 msgstr "Salva..."
 
-#: kmcomposewin.cpp:1199 kmreaderwin.cpp:683
+#: kmcomposewin.cpp:1200 kmreaderwin.cpp:686
 msgid "Properties..."
 msgstr "Proprietà..."
 
-#: kmcomposewin.cpp:1203
+#: kmcomposewin.cpp:1204
 msgid "Attach..."
 msgstr "Allega..."
 
-#: kmcomposewin.cpp:1245 kmreaderwin.cpp:725
+#: kmcomposewin.cpp:1246 kmreaderwin.cpp:728
 msgid "View Attachment: "
 msgstr "Visualizza Allegato"
 
-#: kmcomposewin.cpp:1424
+#: kmcomposewin.cpp:1437
 msgid "To:"
 msgstr "A:"
 
-#: kmcomposewin.cpp:1428
+#: kmcomposewin.cpp:1441
 msgid "Subject:"
 msgstr "Soggetto:"
 
-#: kmcomposewin.cpp:1546
+#: kmcomposewin.cpp:1559
 msgid "KMail: Spellcheck"
 msgstr "KMail: Controllo ortografia"
 
-#: kmcomposewin.cpp:1570
+#: kmcomposewin.cpp:1583
 msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
 msgstr ""
@@ -970,9 +958,18 @@ msgstr ""
 "Contenuto della cartella `%s'  cambiato\n"
 "Creazione nuovo indice."
 
-#: kmfolder.cpp:351
+#: kmfolder.cpp:364
 #, c-format
 msgid "Creating index file: %d messages done"
+msgstr "Creazione indice: %d messaggi fatti"
+
+#: kmfolder.cpp:444
+msgid "Writing index file"
+msgstr ""
+
+#: kmfolder.cpp:870
+#, fuzzy, c-format
+msgid "Compacting folder: %d messages done"
 msgstr "Creazione indice: %d messaggi fatti"
 
 #: kmmsgpartdlg.cpp:41
@@ -999,21 +996,22 @@ msgstr "base 64"
 msgid "quoted printable"
 msgstr "quoted printable"
 
-#: kmreaderwin.cpp:318 kmreaderwin.cpp:334 kmreaderwin.cpp:355
+#: kmreaderwin.cpp:307 kmreaderwin.cpp:320 kmreaderwin.cpp:339
+#: kmreaderwin.cpp:360
+msgid "Cc: "
+msgstr "Copia:"
+
+#: kmreaderwin.cpp:315 kmreaderwin.cpp:334 kmreaderwin.cpp:355
 msgid "From: "
 msgstr "Da:"
 
-#: kmreaderwin.cpp:320 kmreaderwin.cpp:336 kmreaderwin.cpp:357
+#: kmreaderwin.cpp:317 kmreaderwin.cpp:336 kmreaderwin.cpp:357
 msgid "To: "
 msgstr "A:"
 
 #: kmreaderwin.cpp:324 kmreaderwin.cpp:345 kmreaderwin.cpp:370
 msgid "References: "
 msgstr "Riferimenti:"
-
-#: kmreaderwin.cpp:339 kmreaderwin.cpp:360
-msgid "Cc: "
-msgstr "Copia:"
 
 #: kmreaderwin.cpp:341 kmreaderwin.cpp:354
 msgid "Date: "
@@ -1031,55 +1029,55 @@ msgstr "Risposta a:"
 msgid "Groups: "
 msgstr "Gruppi:"
 
-#: kmreaderwin.cpp:409
+#: kmreaderwin.cpp:410
 msgid "Encrypted message"
 msgstr "Messaggio cifrato"
 
-#: kmreaderwin.cpp:415
+#: kmreaderwin.cpp:416
 msgid "Cannot decrypt message:"
 msgstr "Impossibile decifrare il messaggio"
 
-#: kmreaderwin.cpp:433
+#: kmreaderwin.cpp:434
 msgid "Message was signed by"
 msgstr "Messaggio firmato da"
 
-#: kmreaderwin.cpp:434
+#: kmreaderwin.cpp:435
 msgid "Warning: Bad signature from"
 msgstr "Attenzione: Firma errata da"
 
-#: kmreaderwin.cpp:644
+#: kmreaderwin.cpp:647
 msgid "Attachment: "
 msgstr "Allegato:"
 
-#: kmreaderwin.cpp:756
+#: kmreaderwin.cpp:759
 msgid "Could not create temporary file"
 msgstr "Impossibile creare il file temporaneo"
 
-#: kmreaderwin.cpp:777
+#: kmreaderwin.cpp:780
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "Impossibile salvare il file temporaneo %s"
 
-#: kmreaderwin.cpp:808
+#: kmreaderwin.cpp:811
 msgid "Could not save file"
 msgstr "Impossibile salvare il file"
 
-#: kmacctmgr.cpp:190 kmacctmgr.cpp:232
+#: kmacctmgr.cpp:193 kmacctmgr.cpp:239
 msgid ""
 "You need to add an account in the network\n"
 "section of the settings in order to\n"
 "receive mail."
 msgstr ""
 
-#: main.cpp:100 main.cpp:217
+#: main.cpp:102 main.cpp:220
 msgid "warning"
 msgstr "attenzione"
 
-#: main.cpp:106 main.cpp:107
+#: main.cpp:109 main.cpp:110
 msgid "fatal error"
 msgstr "errore fatale"
 
-#: main.cpp:219
+#: main.cpp:222
 msgid ""
 "The directory ~/KMail exists. From now on, KMail uses the\n"
 "directory ~/Mail for it's messages.\n"
@@ -1090,7 +1088,7 @@ msgid ""
 "Shall KMail move the mail folders now ?"
 msgstr ""
 
-#: main.cpp:383
+#: main.cpp:382
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr ""
@@ -1288,11 +1286,11 @@ msgstr "Casella Postale Locale"
 msgid "Pop3"
 msgstr "Pop3"
 
-#: kmfilteraction.cpp:87 kmfilteraction.cpp:182
+#: kmfilteraction.cpp:93 kmfilteraction.cpp:191
 msgid "transfer"
 msgstr "trasferimento"
 
-#: kmfilteraction.cpp:151 kmfilteraction.cpp:184
+#: kmfilteraction.cpp:160 kmfilteraction.cpp:193
 msgid "skip rest"
 msgstr "salta il resto"
 
@@ -1307,7 +1305,7 @@ msgstr ""
 "%s\n"
 "%s"
 
-#: kmfolderseldlg.cpp:29
+#: kmfolderseldlg.cpp:32
 #, fuzzy
 msgid "Select folder"
 msgstr "Scelta Cartella"
@@ -1511,10 +1509,6 @@ msgstr ""
 "Il file %s esiste.\n"
 "Vuoi sostituirlo?"
 
-#: kfileio.cpp:126 kfileio.cpp:144
-msgid "&Ok"
-msgstr "&Ok"
-
 #: kfileio.cpp:143
 #, c-format
 msgid ""
@@ -1619,6 +1613,22 @@ msgstr ""
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
 msgstr ""
+
+#~ msgid "&Remove"
+#~ msgstr "&Rimuovi"
+
+#~ msgid "&Next"
+#~ msgstr "P&rossimo"
+
+#, fuzzy
+#~ msgid "Fonts"
+#~ msgstr "contenente"
+
+#~ msgid "Appearance"
+#~ msgstr "Apparenza"
+
+#~ msgid "&Ok"
+#~ msgstr "&Ok"
 
 #~ msgid "Name:"
 #~ msgstr "Nome:"

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-06-11 23:08+0200\n"
+"POT-Creation-Date: 1998-06-18 22:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -464,10 +464,6 @@ msgstr "Assegna il \"Default Route\" a questo gateway"
 msgid "Edit Script"
 msgstr "Modifica script di accesso"
 
-#: edit.cpp:563
-msgid "Use default script"
-msgstr "Usa lo script di default"
-
 #: edit.cpp:580
 msgid "Insert"
 msgstr "Inserisci"
@@ -559,10 +555,6 @@ msgstr "Modem:"
 #: general.cpp:285
 msgid "Flow Control:"
 msgstr "Controllo di flusso:"
-
-#: general.cpp:292
-msgid "None"
-msgstr "Nulla"
 
 #: general.cpp:300
 msgid "Line Termination:"
@@ -1052,10 +1044,6 @@ msgstr "kppp: il file delle regole non contiene una riga \"name=...\"\n"
 msgid "kppp: rulefile is ok\n"
 msgstr "kppp: file delle regole OK\n"
 
-#: docking.cpp:70 docking.cpp:222
-msgid "Restore"
-msgstr "Ripristina"
-
 #: docking.cpp:220
 msgid "Minimize"
 msgstr "Minimizza"
@@ -1129,6 +1117,15 @@ msgid ""
 "a non-empty file that has appropriate\n"
 "read and write permissions."
 msgstr ""
+
+#~ msgid "Use default script"
+#~ msgstr "Usa lo script di default"
+
+#~ msgid "None"
+#~ msgstr "Nulla"
+
+#~ msgid "Restore"
+#~ msgstr "Ripristina"
 
 #~ msgid "pppd Path:"
 #~ msgstr "Path del programma pppd:"

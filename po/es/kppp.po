@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-06-11 23:08+0200\n"
+"POT-Creation-Date: 1998-06-18 22:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -464,10 +464,6 @@ msgstr "Asignar la Ruta por Defecto hacia esta Puerta de Enlace"
 msgid "Edit Script"
 msgstr "Editar Script"
 
-#: edit.cpp:563
-msgid "Use default script"
-msgstr "Usar Script genérico"
-
 #: edit.cpp:580
 msgid "Insert"
 msgstr "Insertar"
@@ -558,10 +554,6 @@ msgstr "Dispositivo del Modem:"
 #: general.cpp:285
 msgid "Flow Control:"
 msgstr "Control de Flujo:"
-
-#: general.cpp:292
-msgid "None"
-msgstr "Ninguno"
 
 #: general.cpp:300
 msgid "Line Termination:"
@@ -1051,10 +1043,6 @@ msgstr "kppp: el fichero de coste no contiene una línea \"name=...\" \n"
 msgid "kppp: rulefile is ok\n"
 msgstr "kppp: el fichero de coste es correcto\n"
 
-#: docking.cpp:70 docking.cpp:222
-msgid "Restore"
-msgstr "Restaurar"
-
 #: docking.cpp:220
 msgid "Minimize"
 msgstr "Minimizar"
@@ -1128,6 +1116,15 @@ msgid ""
 "a non-empty file that has appropriate\n"
 "read and write permissions."
 msgstr ""
+
+#~ msgid "Use default script"
+#~ msgstr "Usar Script genérico"
+
+#~ msgid "None"
+#~ msgstr "Ninguno"
+
+#~ msgid "Restore"
+#~ msgstr "Restaurar"
 
 #~ msgid "pppd Path:"
 #~ msgstr "Localización del ejecutable pppd:"

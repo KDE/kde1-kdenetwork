@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-06-16 14:20+0200\n"
+"POT-Creation-Date: 1998-06-18 22:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,27 +14,27 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: ENCODING\n"
 
-#: main.cpp:213 main.cpp:225 main.cpp:237 main.cpp:252 main.cpp:264
+#: main.cpp:212 main.cpp:224 main.cpp:236 main.cpp:251 main.cpp:263
 msgid "KRN-Missing Configuration info"
 msgstr "Configuración Inicial del KRN"
 
-#: main.cpp:214
+#: main.cpp:213
 msgid "Please enter your email adress"
 msgstr "Por favor, introduzca su dirección de correo"
 
-#: main.cpp:226
+#: main.cpp:225
 msgid "Please enter your real name"
 msgstr "Por favor, introduzca su nombre real"
 
-#: main.cpp:238
+#: main.cpp:237
 msgid "Please enter your organization's name"
 msgstr "Por favor, introduzca el nombre de su organización"
 
-#: main.cpp:253
+#: main.cpp:252
 msgid "Please enter your NNTP server name"
 msgstr "Introduzca el nombre de su servidor de noticias"
 
-#: main.cpp:265
+#: main.cpp:264
 msgid "Please enter your SMTP server name"
 msgstr "Introduzca el nombre de su servidor SMTP"
 
@@ -162,51 +162,51 @@ msgstr "Buscar grupo"
 msgid "Check for Unread Articles"
 msgstr "Obtener Artículos no leídos"
 
-#: groupdlg.cpp:361 groupdlg.cpp:583 groupdlg.cpp:921
+#: groupdlg.cpp:362 groupdlg.cpp:584 groupdlg.cpp:925
 msgid "All Newsgroups."
 msgstr "Todos los Grupos."
 
-#: groupdlg.cpp:471 groupdlg.cpp:565
+#: groupdlg.cpp:472 groupdlg.cpp:566
 msgid "Subscribed Newsgroups."
 msgstr "Grupos Suscritos."
 
-#: groupdlg.cpp:520
+#: groupdlg.cpp:521
 msgid "Disconnected"
 msgstr "Desconectado"
 
-#: groupdlg.cpp:527
+#: groupdlg.cpp:528
 msgid "Connecting to server"
 msgstr "Conectando con el servidor"
 
-#: groupdlg.cpp:532
+#: groupdlg.cpp:533
 msgid "Connected to server - Posting not allowed"
 msgstr "Conectado al servidor - Envío no permitido"
 
-#: groupdlg.cpp:534
+#: groupdlg.cpp:535
 msgid "Connected to server - Posting allowed"
 msgstr "Conectado al servidor - Envío permitido"
 
-#: groupdlg.cpp:540
+#: groupdlg.cpp:541
 msgid "Can't connect to server"
 msgstr "No se puede conectar con el servidor"
 
-#: groupdlg.cpp:542
+#: groupdlg.cpp:543
 msgid "Connection to server failed"
 msgstr "La conexión con el servidor ha fallado"
 
-#: groupdlg.cpp:551
+#: groupdlg.cpp:552
 msgid "Authentication Failed"
 msgstr "Ha fallado la Autentificación"
 
-#: groupdlg.cpp:554
+#: groupdlg.cpp:555
 msgid "Connection to server failed: Authentication problem"
 msgstr "La conexión con el servidor ha fallado: Problema de Autentificación"
 
-#: groupdlg.cpp:603
+#: groupdlg.cpp:604
 msgid "Krn-Question"
 msgstr "Krn-Pregunta"
 
-#: groupdlg.cpp:604
+#: groupdlg.cpp:605
 msgid ""
 "The operation you requested needs a connection to the News server\n"
 "Should I attempt one?"
@@ -214,7 +214,7 @@ msgstr ""
 "La operacion seleccionada requiere una conexión con el servidor de noticias\n"
 "¿Desea conectar ahora?"
 
-#: groupdlg.cpp:867
+#: groupdlg.cpp:868
 msgid ""
 "You don't have an active groups list.\n"
 " get it from server?"
@@ -222,31 +222,31 @@ msgstr ""
 "No tiene un listado de grupos disponibles.\n"
 " ¿desea obtenerlo ahora del servidor?"
 
-#: groupdlg.cpp:883
+#: groupdlg.cpp:884
 msgid "Listing active newsgroups"
 msgstr "Listando grupos activos"
 
-#: groupdlg.cpp:895
+#: groupdlg.cpp:899
 msgid "KRN - Find a Newsgroup"
 msgstr "KRN - Buscar un grupo de noticias"
 
-#: groupdlg.cpp:896
+#: groupdlg.cpp:900
 msgid "Enter the name of the Newsgroup"
 msgstr "Introduce el nombre del grupo de noticias"
 
-#: groupdlg.cpp:980
+#: groupdlg.cpp:984
 msgid "Krn - Message"
 msgstr "Krn - Aviso"
 
-#: groupdlg.cpp:981
+#: groupdlg.cpp:985
 msgid "I can't find the group you want!"
 msgstr "¡No se pudo encontrar el grupo solicitado!"
 
-#: groupdlg.cpp:1074
+#: groupdlg.cpp:1078
 msgid "Getting messages in "
 msgstr "Obteniendo artículos en "
 
-#: groupdlg.cpp:1087
+#: groupdlg.cpp:1091
 msgid "Getting list of messages in "
 msgstr "Obteniendo listado de artículos en "
 
@@ -399,31 +399,31 @@ msgstr ""
 msgid "Subject"
 msgstr "Asunto"
 
-#: artdlg.cpp:463
+#: artdlg.cpp:462
 msgid "Threading..."
 msgstr "Enlazando artículos..."
 
-#: artdlg.cpp:472
+#: artdlg.cpp:471
 msgid "Showing Article List"
 msgstr "Mostrando lista de artículos"
 
-#: artdlg.cpp:1314
+#: artdlg.cpp:1316
 msgid "KRN - Existing File"
 msgstr "KRN - Fichero ya existe"
 
-#: artdlg.cpp:1315
+#: artdlg.cpp:1317
 msgid "The File you selected already exists"
 msgstr "El fichero que ha seleccionado ya existe"
 
-#: artdlg.cpp:1321
+#: artdlg.cpp:1323
 msgid "OverWrite"
 msgstr "Sobreescribir"
 
-#: artdlg.cpp:1323
+#: artdlg.cpp:1325
 msgid "Append"
 msgstr "Añadir al Final"
 
-#: artdlg.cpp:1358 artdlg.cpp:1423
+#: artdlg.cpp:1360 artdlg.cpp:1425
 #, fuzzy
 msgid ""
 "From: Krn\n"
@@ -436,7 +436,7 @@ msgstr ""
 "Error obteniendo artículo.\n"
 "Mensaje del servidor:\n"
 
-#: artdlg.cpp:1525
+#: artdlg.cpp:1527
 msgid "Getting Article List"
 msgstr "Obteniendo listado de artículos"
 
@@ -513,7 +513,7 @@ msgstr "Parte del proyecto KDE."
 msgid "Credits & Thanks"
 msgstr "Créditos y agradecimientos"
 
-#: aboutDlg.cpp:65
+#: aboutDlg.cpp:66
 msgid "And Many thanks to:"
 msgstr "Y muchas gracias a:"
 

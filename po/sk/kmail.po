@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail 0.4.4\n"
-"POT-Creation-Date: 1998-06-11 23:07+0200\n"
+"POT-Creation-Date: 1998-06-18 23:38+0200\n"
 "PO-Revision-Date: 1998-03-08 10:42 MET\n"
 "Last-Translator: Juraj Bednár <bednar@isternet.sk>\n"
 "Language-Team: Slovak <bednar@isternet.sk>\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: kmcomposewin.cpp:1401 kmmainwin.cpp:267 kpgp.cpp:350
+#: kmcomposewin.cpp:1414 kmmainwin.cpp:248 kpgp.cpp:350
 msgid ""
 "Sorry, but this feature\n"
 "is still missing"
@@ -21,23 +21,23 @@ msgstr ""
 "Je mi µúto, ale táto funkcia\n"
 "e¹te nie je implementovaná"
 
-#: kmmainwin.cpp:276
+#: kmmainwin.cpp:257
 msgid "New Folder"
 msgstr "Nový prieèinok"
 
-#: kmmainwin.cpp:288 kmmainwin.cpp:318
+#: kmmainwin.cpp:269 kmmainwin.cpp:299
 msgid "KMail error"
 msgstr "Chyba KMailu"
 
-#: kmmainwin.cpp:289 kmmainwin.cpp:319
+#: kmmainwin.cpp:270 kmmainwin.cpp:300
 msgid "Already checking for mail!"
 msgstr "U¾ kontrolujem novú po¹tu!"
 
-#: kmmainwin.cpp:299 kmmainwin.cpp:329
+#: kmmainwin.cpp:280 kmmainwin.cpp:310
 msgid "No new mail available"
 msgstr "®iadna nová po¹ta"
 
-#: kmmainwin.cpp:354
+#: kmmainwin.cpp:335
 msgid ""
 "Cannot modify a\n"
 "system folder."
@@ -45,11 +45,11 @@ msgstr ""
 "Nie je mo¾né zmeni»\n"
 "systémový prieèinok."
 
-#: kmmainwin.cpp:359
+#: kmmainwin.cpp:340
 msgid "Modify Folder"
 msgstr "Zmeni» prieèinok"
 
-#: kmmainwin.cpp:374
+#: kmmainwin.cpp:355
 #, c-format
 msgid ""
 "Are you sure you want to discard the\n"
@@ -58,15 +58,15 @@ msgstr ""
 "Ste si istý, ¾e chcete odstráni» obsah prieèinka\n"
 "\"%s\" ?"
 
-#: kmmainwin.cpp:377 kmmainwin.cpp:415
+#: kmmainwin.cpp:358 kmmainwin.cpp:396
 msgid "Confirmation"
 msgstr "Potvrdenie"
 
-#: kmmainwin.cpp:394
+#: kmmainwin.cpp:375
 msgid "Moved all messages into trash"
 msgstr "Presunul som v¹etky správy do ko¹a"
 
-#: kmmainwin.cpp:408
+#: kmmainwin.cpp:389
 msgid ""
 "Cannot remove a\n"
 "system folder."
@@ -74,7 +74,7 @@ msgstr ""
 "Nemô¾em odstráni»\n"
 "systémový prieèinok."
 
-#: kmmainwin.cpp:412
+#: kmmainwin.cpp:393
 #, c-format
 msgid ""
 "Are you sure you want to remove the folder\n"
@@ -83,271 +83,268 @@ msgstr ""
 "Ste si istý, ¾e chcete odstráni» prieèinok\n"
 "\"%s\" a tým zru¹i» jeho obsah?"
 
-#: kmmainwin.cpp:480
+#: kmmainwin.cpp:466
 msgid "Message as Plain Text"
 msgstr "Jednoduchá textová správa"
 
-#: kmmainwin.cpp:487 kmmainwin.cpp:507
+#: kmmainwin.cpp:473 kmmainwin.cpp:493
 msgid "Select Folder"
 msgstr "Vybra» prieèinok"
 
-#: kmmainwin.cpp:528
+#: kmmainwin.cpp:514
 msgid "Queued messages successfully sent."
 msgstr "Pozdr¾ané správy úspe¹ne odoslané."
 
-#: kmmainwin.cpp:530
+#: kmmainwin.cpp:516
 msgid "Failed to send (some) queued messages."
 msgstr "Nepodarilo sa odosla» (niektoré) podr¾ané správy."
 
-#: kmmainwin.cpp:639
+#: kmmainwin.cpp:625
 msgid "Opening URL..."
 msgstr "Otváram URL..."
 
-#: kmmainwin.cpp:700
+#: kmmainwin.cpp:686
 msgid "Address added to addressbook."
 msgstr "Adresa pridaná do knihy adries."
 
-#: kmmainwin.cpp:712
+#: kmmainwin.cpp:698
 msgid "Address copied to clipboard."
 msgstr "Adresa skopírovaná do clipboardu."
 
-#: kmmainwin.cpp:717
+#: kmmainwin.cpp:703
 msgid "URL copied to clipboard."
 msgstr "URL skopírované do clipboardu."
 
-#: kmmainwin.cpp:744
+#: kmmainwin.cpp:730
 msgid "Send to..."
 msgstr "Posla» na adresu..."
 
-#: kmmainwin.cpp:746
+#: kmmainwin.cpp:732
 msgid "Send reply to..."
 msgstr "Posla» odpoveï na adresu..."
 
-#: kmmainwin.cpp:748
+#: kmmainwin.cpp:734
 msgid "Forward to..."
 msgstr "Preda» ï&alej na adresu..."
 
-#: kmmainwin.cpp:751
+#: kmmainwin.cpp:737
 msgid "Add to addressbook"
 msgstr "Prida» do knihy adries"
 
-#: kmmainwin.cpp:753 kmmainwin.cpp:762
+#: kmmainwin.cpp:739 kmmainwin.cpp:748
 msgid "Copy to clipboard"
 msgstr "Skopírova» do clipboardu"
 
-#: kmmainwin.cpp:760
+#: kmmainwin.cpp:746
 msgid "Open URL..."
 msgstr "Otvori» URL..."
 
-#: kmmainwin.cpp:770 kmmainwin.cpp:880
+#: kmmainwin.cpp:756 kmmainwin.cpp:870
 msgid "&Reply..."
 msgstr "Od&poveda»..."
 
-#: kmmainwin.cpp:772 kmmainwin.cpp:882
+#: kmmainwin.cpp:758 kmmainwin.cpp:872
 msgid "Reply &All..."
 msgstr "Odpoveda» &v¹etkým"
 
-#: kmmainwin.cpp:774 kmmainwin.cpp:884
+#: kmmainwin.cpp:760 kmmainwin.cpp:874
 msgid "&Forward..."
 msgstr "Preda» ï&alej..."
 
-#: kmmainwin.cpp:777 kmmainwin.cpp:889
+#: kmmainwin.cpp:763 kmmainwin.cpp:879
 msgid "&Move..."
 msgstr "&Presunú»..."
 
-#: kmmainwin.cpp:779 kmmainwin.cpp:891
+#: kmmainwin.cpp:765 kmmainwin.cpp:881
 msgid "&Copy..."
 msgstr "&Kopírova»..."
 
-#: kmmainwin.cpp:804
+#: kmmainwin.cpp:790
 msgid "New Composer"
 msgstr "Nový Editor správ"
 
-#: kmmainwin.cpp:806
+#: kmcomposewin.cpp:448 kmmainwin.cpp:792
 msgid "New Mailreader"
 msgstr "Nový Prehliadaè správ"
 
-#: kmmainwin.cpp:809
+#: kmmainwin.cpp:795
 msgid "Save As..."
 msgstr "Ulo¾i» ako..."
 
-#: kmmainwin.cpp:811
+#: kmmainwin.cpp:797
 msgid "Print..."
 msgstr "Tlaèi»..."
 
-#: kmmainwin.cpp:814
+#: kmmainwin.cpp:800
 msgid "Check Mail..."
 msgstr "Skontrolova» po¹tu ..."
 
-#: kmmainwin.cpp:823
+#: kmmainwin.cpp:809
 msgid "Check Mail in..."
 msgstr "Skontrolova» po¹tu ..."
 
-#: kmmainwin.cpp:825
+#: kmmainwin.cpp:811
 msgid "Send Queued"
 msgstr "Posla» pozdr¾ané"
 
-#: kmmainwin.cpp:828
+#: kmmainwin.cpp:814
 msgid "&Settings..."
 msgstr "Na&stavenie..."
 
-#: kmcomposewin.cpp:442 kmmainwin.cpp:830
+#: kmcomposewin.cpp:441 kmmainwin.cpp:816
 msgid "&Addressbook..."
 msgstr "Kniha &adries ..."
 
-#: kmmainwin.cpp:832
+#: kmmainwin.cpp:818
 msgid "&Filter..."
 msgstr "&Filter..."
 
-#: kmmainwin.cpp:846
+#: kmmainwin.cpp:832
 msgid "&Find..."
 msgstr "&Hµada»..."
 
-#: kmmainwin.cpp:851
+#: kmmainwin.cpp:837
 msgid "&Create..."
 msgstr "&Vytvori»..."
 
-#: kmmainwin.cpp:853
+#: kmmainwin.cpp:839
 msgid "&Modify..."
 msgstr "Z&meni»..."
 
-#: kmmainwin.cpp:855
+#: kmmainwin.cpp:841
 msgid "C&ompact"
 msgstr "K&omprimova»"
 
-#: kmmainwin.cpp:857
+#: kmmainwin.cpp:843
 msgid "&Empty"
 msgstr "Vy&prázdni»"
 
-#: kmcomposewin.cpp:519 kmmainwin.cpp:859
-msgid "&Remove"
-msgstr "&Odstráni»"
-
-#: kmmainwin.cpp:867
+#: kmmainwin.cpp:853
 msgid "Unread"
 msgstr "Nepreèítané"
 
-#: kmmainwin.cpp:868
+#: kmmainwin.cpp:854
 msgid "Read"
 msgstr "Preèítané"
 
-#: kmmainwin.cpp:869
+#: kmmainwin.cpp:855
 msgid "Replied"
 msgstr "Odpovedané"
 
-#: kmmainwin.cpp:870
+#: kmmainwin.cpp:856
 msgid "Queued"
 msgstr "Pozdr¾ané"
 
-#: kmmainwin.cpp:871
+#: kmmainwin.cpp:857
 msgid "Sent"
 msgstr "Posla»"
 
-#: kmmainwin.cpp:875
-msgid "&Next"
-msgstr "&Nasledujúca"
+#: kmmainwin.cpp:863
+msgid "Next unread"
+msgstr ""
 
-#: kmmainwin.cpp:877
-msgid "&Previous"
+#: kmmainwin.cpp:867
+#, fuzzy
+msgid "Previous unread"
 msgstr "&Predchádzajúca"
 
-#: kmmainwin.cpp:887
+#: kmmainwin.cpp:877
 msgid "&Set Status"
 msgstr "Na&stavi» stav"
 
-#: kmmainwin.cpp:896
+#: kmmainwin.cpp:886
 msgid "Send again..."
 msgstr "Posla» znovu ..."
 
-#: kmmainwin.cpp:898
+#: kmmainwin.cpp:888
 msgid "Apply filters"
 msgstr "Aplikova» filtre"
 
-#: kmmainwin.cpp:901
+#: kmmainwin.cpp:891
 msgid "View Source..."
 msgstr "Zobrazi» zdroj..."
 
-#: kmmainwin.cpp:908
+#: kmmainwin.cpp:898
 msgid "&Brief Headers"
 msgstr "S&truèná hlavièka"
 
-#: kmmainwin.cpp:910
+#: kmmainwin.cpp:900
 msgid "&Fancy Headers"
 msgstr "&Ozdobná hlavièka"
 
-#: kmmainwin.cpp:912
+#: kmmainwin.cpp:902
 msgid "&Standard Headers"
 msgstr "&©tandardná hlavièka"
 
-#: kmmainwin.cpp:914
+#: kmmainwin.cpp:904
 msgid "&Long Headers"
 msgstr "D&lhá hlavièka"
 
-#: kmmainwin.cpp:916
+#: kmmainwin.cpp:906
 msgid "&All Headers"
 msgstr "Plná hl&avièka"
 
-#: kmmainwin.cpp:919
+#: kmmainwin.cpp:909
 msgid "Iconic Attachments"
 msgstr "Prílohy ako ikony"
 
-#: kmmainwin.cpp:920
+#: kmmainwin.cpp:910
 msgid "Smart Attachments"
 msgstr "Elegantné prílohy"
 
-#: kmmainwin.cpp:921
+#: kmmainwin.cpp:911
 msgid "Inlined Attachments"
 msgstr "Vlo¾ené prílohy"
 
-#: kmmainwin.cpp:932
+#: kmmainwin.cpp:922
 msgid "F&older"
 msgstr "P&rieèinok"
 
-#: kmmainwin.cpp:933
+#: kmmainwin.cpp:923
 msgid "&Message"
 msgstr "&Správa"
 
-#: kmcomposewin.cpp:548 kmmainwin.cpp:952
+#: kmcomposewin.cpp:549 kmmainwin.cpp:942
 msgid "Compose new message"
 msgstr "Napísa» novú správu"
 
-#: kmcomposewin.cpp:553 kmmainwin.cpp:957
+#: kmcomposewin.cpp:554 kmmainwin.cpp:947
 msgid "Save message to file"
 msgstr "Ulo¾i» správu do súboru"
 
-#: kmcomposewin.cpp:558 kmmainwin.cpp:962
+#: kmcomposewin.cpp:559 kmmainwin.cpp:952
 msgid "Print message"
 msgstr "Tlaèi» zprávu"
 
-#: kmmainwin.cpp:969
+#: kmmainwin.cpp:959
 msgid "Get new mail"
 msgstr "Prevzia» novú po¹tu"
 
-#: kmmainwin.cpp:975
+#: kmmainwin.cpp:965
 msgid "Reply to author"
 msgstr "Odpoveda» autorovi"
 
-#: kmmainwin.cpp:980
+#: kmmainwin.cpp:970
 msgid "Reply to all recipients"
 msgstr "Odpoveda» v¹etkým príjemcom"
 
-#: kmmainwin.cpp:985
+#: kmmainwin.cpp:975
 msgid "Forward message"
 msgstr "Preda» správu ïalej"
 
-#: kmmainwin.cpp:990
+#: kmmainwin.cpp:980
 msgid "Delete message"
 msgstr "Zmaza» správu"
 
-#: kmcomposewin.cpp:582 kmmainwin.cpp:996
+#: kmcomposewin.cpp:583 kmmainwin.cpp:986
 msgid "Open addressbook..."
 msgstr "Otvori» knihu adries"
 
-#: kmmainwin.cpp:1008
+#: kmmainwin.cpp:998
 msgid "Initializing..."
 msgstr "Inicializujem..."
 
-#: kmcomposewin.cpp:1409 kmfolderdia.cpp:44 kmfolderdia.cpp:120
+#: kmcomposewin.cpp:1422 kmfolderdia.cpp:44 kmfolderdia.cpp:120
 msgid "unnamed"
 msgstr "bez mena"
 
@@ -359,99 +356,95 @@ msgstr "Priradený k"
 msgid "Unassociated Accounts"
 msgstr "Nepriradené konto"
 
-#: kmsettings.cpp:46
+#: kmsettings.cpp:48
 msgid "Settings"
 msgstr "Nastavenie"
 
-#: kmsettings.cpp:168
+#: kmsettings.cpp:170
 msgid "Organization:"
 msgstr "Organizácia:"
 
-#: kmsettings.cpp:170
+#: kmsettings.cpp:172
 msgid "Email Address:"
 msgstr "Emailová adresa:"
 
-#: kmsettings.cpp:173
+#: kmsettings.cpp:175
 msgid "Reply-To Address:"
 msgstr "Spiatoèná adresa:"
 
-#: kmsettings.cpp:175
+#: kmsettings.cpp:177
 msgid "Signature File:"
 msgstr "Súbor s podpisom:"
 
-#: kmsettings.cpp:178
+#: kmsettings.cpp:180
 msgid "PGP User Identity:"
 msgstr "Identita u¾ívateµa PGP:"
 
-#: kmsettings.cpp:186
+#: kmsettings.cpp:188
 msgid "Identity"
 msgstr "&Identita"
 
-#: kmsettings.cpp:205
+#: kmsettings.cpp:207
 msgid "Sending Mail"
 msgstr "Posielanie po¹ty"
 
-#: kmsettings.cpp:211
+#: kmsettings.cpp:213
 msgid "Sendmail"
 msgstr "Sendmail"
 
-#: kmsettings.cpp:216 kmsettings.cpp:844
+#: kmsettings.cpp:218 kmsettings.cpp:856
 msgid "Location:"
 msgstr "Umiestnenie:"
 
-#: kmsettings.cpp:221
+#: kmsettings.cpp:223
 msgid "SMTP"
 msgstr "SMTP"
 
-#: kmsettings.cpp:226
+#: kmsettings.cpp:228
 msgid "Server:"
 msgstr "Server:"
 
-#: kmsettings.cpp:228 kmsettings.cpp:865
+#: kmsettings.cpp:230 kmsettings.cpp:877
 msgid "Port:"
 msgstr "Port:"
 
-#: kmsettings.cpp:249
+#: kmsettings.cpp:251
 msgid "Incoming Mail"
 msgstr "Prichádzajúca po¹ta"
 
-#: kmsettings.cpp:254
+#: kmsettings.cpp:256
 msgid "Accounts:   (add at least one account!)"
 msgstr "Kontá:  (zalo¾te aspoò jedno konto)"
 
-#: kmcomposewin.cpp:130 kmsettings.cpp:260
+#: kmcomposewin.cpp:134 kmsettings.cpp:262
 msgid "Type"
 msgstr "Typ"
 
-#: kmsettings.cpp:261
+#: kmsettings.cpp:263
 msgid "Folder"
 msgstr "Prieèinok"
 
-#: kmsettings.cpp:269
+#: kmsettings.cpp:271
 msgid "Add..."
 msgstr "Prida»..."
 
-#: kmsettings.cpp:272
+#: kmsettings.cpp:274
 msgid "Modify..."
 msgstr "Zmeni»..."
 
-#: kmsettings.cpp:292
+#: kmsettings.cpp:294
 msgid "Network"
 msgstr "&Sie»"
 
-#: kmsettings.cpp:311
-msgid "Fonts"
-msgstr "Písma"
-
-#: kmsettings.cpp:316
+#: kmsettings.cpp:319
 msgid "Message Body Font:"
 msgstr "Písmo tela správy:"
 
-#: kmsettings.cpp:321
+#: kmsettings.cpp:324
 msgid "Message List Font:"
 msgstr "Písmo zoznamu správ:"
 
-#: kmsettings.cpp:325
+#: kmsettings.cpp:328
 msgid ""
 "Changing fonts currently only occurs when a new\n"
 "window is opened or kmail is restarted"
@@ -459,15 +452,11 @@ msgstr ""
 "Zmena fontu momentálne nastane len pri zovuotvorení\n"
 "okna alebo znovuspustení kmailu"
 
-#: kmsettings.cpp:341 kmsettings.cpp:411
-msgid "Appearance"
-msgstr "Vzhµad"
-
-#: kmsettings.cpp:363
+#: kmsettings.cpp:370
 msgid "Phrases"
 msgstr "©tylizácia"
 
-#: kmsettings.cpp:368
+#: kmsettings.cpp:375
 msgid ""
 "The following placeholders are supported in the reply phrases:\n"
 "%D=date, %S=subject, %F=sender, %%=percent sign"
@@ -475,147 +464,147 @@ msgstr ""
 "Nasledujúce substituèné skratky sú podporované v ¹tylizácii odpovede:\n"
 "%D=dátum, %S=predmet, %F=odosielateµ, %%=oznaèenie percenta"
 
-#: kmsettings.cpp:376
+#: kmsettings.cpp:383
 msgid "Reply to sender:"
 msgstr "Odpoveda» odosielateµovi:"
 
-#: kmsettings.cpp:379
+#: kmsettings.cpp:386
 msgid "Reply to all:"
 msgstr "Odpoveda» v¹etkým:"
 
-#: kmsettings.cpp:382
+#: kmsettings.cpp:389
 msgid "Forward:"
 msgstr "Preda» ïalej:"
 
-#: kmsettings.cpp:385
+#: kmsettings.cpp:392
 msgid "Indentation:"
 msgstr "Odsadenie:"
 
-#: kmmessage.cpp:1251 kmsettings.cpp:397
+#: kmmessage.cpp:1251 kmsettings.cpp:404
 msgid "On %D, you wrote:"
 msgstr "Dòa %D ste napísali:"
 
-#: kmmessage.cpp:1252 kmsettings.cpp:401
+#: kmmessage.cpp:1252 kmsettings.cpp:408
 msgid "On %D, %F wrote:"
 msgstr "Dòa %D %F napísal:"
 
-#: kmmessage.cpp:1253 kmsettings.cpp:405
+#: kmmessage.cpp:1253 kmsettings.cpp:412
 msgid "Forwarded Message"
 msgstr "Predaná správa"
 
-#: kmsettings.cpp:416
+#: kmsettings.cpp:423
 msgid "Automatically append signature"
 msgstr "Automaticky pripoji» podpis"
 
-#: kmsettings.cpp:422
+#: kmsettings.cpp:429
 msgid "Automatically sign messages using PGP"
 msgstr "Automaticky podpísa» správu pomocou PGP"
 
-#: kmsettings.cpp:427
+#: kmsettings.cpp:434
 msgid "Word wrap at column:"
 msgstr "Zalamova» slová na ståpci:"
 
-#: kmsettings.cpp:437
+#: kmsettings.cpp:444
 msgid "Use monospaced font"
 msgstr "Pou¾íva» fonty s rovnako ¹irokými znakmi"
 
-#: kmsettings.cpp:449
+#: kmsettings.cpp:456
 msgid "When sending mail"
 msgstr "Pri posielaní po¹ty"
 
-#: kmsettings.cpp:452
+#: kmsettings.cpp:459
 msgid "Default sending:"
 msgstr "©tandardné posielanie:"
 
-#: kmsettings.cpp:455
+#: kmsettings.cpp:462
 msgid "send now"
 msgstr "posla» teraz"
 
-#: kmsettings.cpp:459
+#: kmsettings.cpp:466
 msgid "send later"
 msgstr "posla» neskôr"
 
-#: kmsettings.cpp:464
+#: kmsettings.cpp:471
 msgid "Send messages:"
 msgstr "Odosla» správy:"
 
-#: kmsettings.cpp:467
+#: kmsettings.cpp:474
 msgid "Allow 8-bit"
 msgstr "Povoli» 8-bitové"
 
-#: kmsettings.cpp:472
+#: kmsettings.cpp:479
 msgid "MIME Compilant (Quoted Printable)"
 msgstr "Vyhovujúce MIME (Quoted Printable)"
 
-#: kmsettings.cpp:498
+#: kmsettings.cpp:505
 msgid "Composer"
 msgstr "Editor správ"
 
-#: kmsettings.cpp:515
+#: kmsettings.cpp:522
 msgid "Folders"
 msgstr "Prieèinky"
 
-#: kmsettings.cpp:519
+#: kmsettings.cpp:526
 msgid "empty trash on exit"
 msgstr "vyprázdni» kô¹ pri ukonèení"
 
-#: kmsettings.cpp:556
+#: kmsettings.cpp:563
 msgid "Message Body Font"
 msgstr "Písmo tela správy"
 
-#: kmsettings.cpp:568
+#: kmsettings.cpp:577
 msgid "Message List Font"
 msgstr "Písmo zoznamu správ"
 
-#: kmsettings.cpp:618
+#: kmsettings.cpp:629
 msgid "Select Account"
 msgstr "Vyberte konto"
 
-#: kmaccount.cpp:70 kmfilterdlg.cpp:461 kmsettings.cpp:637
+#: kmaccount.cpp:70 kmfilterdlg.cpp:461 kmsettings.cpp:648
 msgid "Unnamed"
 msgstr "Bez mena"
 
-#: kmsettings.cpp:656
+#: kmsettings.cpp:667
 msgid "Choose Sendmail Location"
 msgstr "Zadajte umiestnenie Sendmailu"
 
-#: kmcomposewin.cpp:1516 kmsettings.cpp:665
+#: kmcomposewin.cpp:1529 kmsettings.cpp:676
 msgid "Choose Signature File"
 msgstr "Výber súboru s podpisom"
 
-#: kmsettings.cpp:842
+#: kmsettings.cpp:854
 msgid "Local Account"
 msgstr "Lokálne konto"
 
-#: kmsettings.cpp:851
+#: kmsettings.cpp:863
 msgid "Pop Account"
 msgstr "Pop konto"
 
-#: kmsettings.cpp:853
+#: kmsettings.cpp:865
 msgid "Login:"
 msgstr "Login:"
 
-#: kmacctpop.cpp:436 kmsettings.cpp:856
+#: kmacctpop.cpp:436 kmsettings.cpp:868
 msgid "Password:"
 msgstr "Heslo:"
 
-#: kmsettings.cpp:860
+#: kmsettings.cpp:872
 msgid "Host:"
 msgstr "Hostiteµ:"
 
-#: kmsettings.cpp:868
+#: kmsettings.cpp:880
 msgid "Delete mail from server"
 msgstr "Zmaza» po¹tu na serveri"
 
-#: kmsettings.cpp:880
+#: kmsettings.cpp:892
 msgid "Store new mail in account:"
 msgstr "Ulo¾i» novú po¹tu na konte:"
 
-#: kmsettings.cpp:888
+#: kmsettings.cpp:900
 msgid "<none>"
 msgstr "<¾iadny>"
 
-#: kmsettings.cpp:933
+#: kmsettings.cpp:945
 msgid "Choose Location"
 msgstr "Výber umiestnenia"
 
@@ -627,258 +616,258 @@ msgstr "Príjem: "
 msgid "Failed to add message:"
 msgstr "Nepodarilo sa prida» správu:"
 
-#: kmcomposewin.cpp:126 kmheaders.cpp:38
+#: kmcomposewin.cpp:130 kmheaders.cpp:39
 msgid "F"
 msgstr "F"
 
-#: kmheaders.cpp:39
+#: kmheaders.cpp:40
 msgid "Sender"
 msgstr "Odosielateµ"
 
-#: kmheaders.cpp:40
+#: kmheaders.cpp:41
 msgid "Subject"
 msgstr "Predmet"
 
-#: kmheaders.cpp:209
-msgid "Unknown"
-msgstr "Neznámy"
-
-#: kmheaders.cpp:212
-msgid "No Subject"
-msgstr "Bez predmetu"
-
-#: kmheaders.cpp:259
-msgid "order of arrival"
-msgstr "poradie príchodu"
-
-#: kmheaders.cpp:268
-msgid "subject"
-msgstr "predmet"
-
-#: kmheaders.cpp:269
-msgid "date"
-msgstr "dátum"
-
-#: kmheaders.cpp:270
-msgid "sender"
-msgstr "odosielateµ"
-
-#: kmheaders.cpp:271
-msgid "status"
-msgstr "stav"
-
-#: kmheaders.cpp:273
-#, c-format
-msgid "Sorting messages descending by %s"
-msgstr "Zoraïovanie správ zostupne podµa %s"
-
-#: kmheaders.cpp:274
-#, c-format
-msgid "Sorting messages ascending by %s"
-msgstr "Zoraïovanie správ vzostupne podµa %s"
-
-#: kmheaders.cpp:364
-msgid "Message(s) saved."
-msgstr "Správa(y) ulo¾ená(é)"
-
-#: kmheaders.cpp:366
-msgid "Failed to save message(s)."
-msgstr "Nepodarilo sa ulo¾i» správu(y)."
-
-#: kmheaders.cpp:693
+#: kmheaders.cpp:183
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d správ, %d nepreèítaných"
 
-#: kmheaders.cpp:695
+#: kmheaders.cpp:185
 msgid "Folder is read-only."
 msgstr "Prieèinok prístupný len pre èítanie."
 
-#: kmcomposewin.cpp:115
+#: kmheaders.cpp:229
+msgid "Unknown"
+msgstr "Neznámy"
+
+#: kmheaders.cpp:232
+msgid "No Subject"
+msgstr "Bez predmetu"
+
+#: kmheaders.cpp:279
+msgid "order of arrival"
+msgstr "poradie príchodu"
+
+#: kmheaders.cpp:288
+msgid "subject"
+msgstr "predmet"
+
+#: kmheaders.cpp:289
+msgid "date"
+msgstr "dátum"
+
+#: kmheaders.cpp:290
+msgid "sender"
+msgstr "odosielateµ"
+
+#: kmheaders.cpp:291
+msgid "status"
+msgstr "stav"
+
+#: kmheaders.cpp:293
+#, c-format
+msgid "Sorting messages descending by %s"
+msgstr "Zoraïovanie správ zostupne podµa %s"
+
+#: kmheaders.cpp:294
+#, c-format
+msgid "Sorting messages ascending by %s"
+msgstr "Zoraïovanie správ vzostupne podµa %s"
+
+#: kmheaders.cpp:384
+msgid "Message(s) saved."
+msgstr "Správa(y) ulo¾ená(é)"
+
+#: kmheaders.cpp:386
+msgid "Failed to save message(s)."
+msgstr "Nepodarilo sa ulo¾i» správu(y)."
+
+#: kmcomposewin.cpp:119
 msgid "KMail Composer"
 msgstr "KMail -- Editor správ"
 
-#: kmcomposewin.cpp:129
+#: kmcomposewin.cpp:133
 msgid "Encoding"
 msgstr "Kódovanie"
 
-#: kmcomposewin.cpp:345
+#: kmcomposewin.cpp:344
 msgid "&From:"
 msgstr "&Odosielateµ:"
 
-#: kmcomposewin.cpp:347
+#: kmcomposewin.cpp:346
 msgid "&Reply to:"
 msgstr "Odpoveda» auto&rovi:"
 
-#: kmcomposewin.cpp:349
+#: kmcomposewin.cpp:348
 msgid "&To:"
 msgstr "&Komu:"
 
-#: kmcomposewin.cpp:351
+#: kmcomposewin.cpp:350
 msgid "&Cc:"
 msgstr "&Kópie:"
 
-#: kmcomposewin.cpp:353
+#: kmcomposewin.cpp:352
 msgid "&Bcc:"
 msgstr "\"slepé\" &kópie:"
 
-#: kmcomposewin.cpp:355
+#: kmcomposewin.cpp:354
 msgid "&Subject:"
 msgstr "&Predmet:"
 
-#: kmcomposewin.cpp:358
+#: kmcomposewin.cpp:357
 msgid "&Newsgroups:"
 msgstr "&Diskusné skupiny:"
 
-#: kmcomposewin.cpp:360
+#: kmcomposewin.cpp:359
 msgid "&Followup-To:"
 msgstr "Odpoveï &do"
 
-#: kmcomposewin.cpp:432
+#: kmcomposewin.cpp:431
 msgid "&Send"
 msgstr "Po&sla»"
 
-#: kmcomposewin.cpp:435
+#: kmcomposewin.cpp:434
 msgid "S&end later"
 msgstr "Po&sla» neskôr"
 
-#: kmcomposewin.cpp:437
+#: kmcomposewin.cpp:436
 msgid "S&end now"
 msgstr "P&osla» teraz"
 
-#: kmcomposewin.cpp:439
+#: kmcomposewin.cpp:438
 msgid "&Insert File..."
 msgstr "Vlo¾i» &súbor..."
 
-#: kmcomposewin.cpp:447
+#: kmcomposewin.cpp:446
 msgid "&New Composer..."
 msgstr "&Nový Editor správ..."
 
-#: kmcomposewin.cpp:466 kmcomposewin.cpp:683 kmcomposewin.cpp:1860
+#: kmcomposewin.cpp:467 kmcomposewin.cpp:676 kmcomposewin.cpp:1897
 msgid "Mark all"
 msgstr "Oznaèi» v¹etky"
 
-#: kmcomposewin.cpp:469 kmcomposewin.cpp:685
+#: kmcomposewin.cpp:470 kmcomposewin.cpp:678
 msgid "Find..."
 msgstr "Hµada»..."
 
-#: kmcomposewin.cpp:471 kmcomposewin.cpp:686
+#: kmcomposewin.cpp:472 kmcomposewin.cpp:679
 msgid "Replace..."
 msgstr "Nahradi»..."
 
-#: kmcomposewin.cpp:478
+#: kmcomposewin.cpp:479
 msgid "&Urgent"
 msgstr "Nalie&havé"
 
-#: kmcomposewin.cpp:480
+#: kmcomposewin.cpp:481
 msgid "&Confirm delivery"
 msgstr "Potv&rdi» príjem"
 
-#: kmcomposewin.cpp:482
+#: kmcomposewin.cpp:483
 msgid "&Confirm read"
 msgstr "Potvr&di» preèítanie"
 
-#: kmcomposewin.cpp:485
+#: kmcomposewin.cpp:486
 msgid "&Charsets..."
 msgstr "&Znakové sady..."
 
-#: kmcomposewin.cpp:498
+#: kmcomposewin.cpp:499
 msgid "&All Fields"
 msgstr "&V¹etky polia"
 
-#: kmcomposewin.cpp:500
+#: kmcomposewin.cpp:501
 msgid "&From"
 msgstr "&Odosielateµ"
 
-#: kmcomposewin.cpp:501
+#: kmcomposewin.cpp:502
 msgid "&Reply to"
 msgstr "Spiatoèná ad&resa"
 
-#: kmcomposewin.cpp:502
+#: kmcomposewin.cpp:503
 msgid "&To"
 msgstr "&Komu:"
 
-#: kmcomposewin.cpp:503
+#: kmcomposewin.cpp:504
 msgid "&Cc"
 msgstr "&Kópie:"
 
-#: kmcomposewin.cpp:504
+#: kmcomposewin.cpp:505
 msgid "&Bcc"
 msgstr "\"slepé\" kó&pie"
 
-#: kmcomposewin.cpp:505
+#: kmcomposewin.cpp:506
 msgid "&Subject"
 msgstr "&Predmet:"
 
-#: kmcomposewin.cpp:507
+#: kmcomposewin.cpp:508
 msgid "&Newsgroups"
 msgstr "&Diskusná skupina"
 
-#: kmcomposewin.cpp:508
+#: kmcomposewin.cpp:509
 msgid "&Followup-To"
 msgstr "Odpoveï &do"
 
-#: kmcomposewin.cpp:513
+#: kmcomposewin.cpp:514
 msgid "Append S&ignature"
 msgstr "Pripoji» po&dpis"
 
-#: kmcomposewin.cpp:515
+#: kmcomposewin.cpp:516
 msgid "&Insert File"
 msgstr "Vlo¾i» &súbor"
 
-#: kmcomposewin.cpp:517
+#: kmcomposewin.cpp:518
 msgid "&Attach..."
 msgstr "&Prilo¾i»..."
 
-#: kmcomposewin.cpp:520
+#: kmcomposewin.cpp:521
 msgid "&Save..."
 msgstr "U&lo¾i»..."
 
-#: kmcomposewin.cpp:521
+#: kmcomposewin.cpp:522
 msgid "Pr&operties..."
 msgstr "Vlastn&osti..."
 
-#: kmcomposewin.cpp:523
+#: kmcomposewin.cpp:524
 msgid "&Attach"
 msgstr "&Prilo¾i»"
 
-#: kmcomposewin.cpp:567
+#: kmcomposewin.cpp:568
 msgid "Cut selection"
 msgstr "Vystrihnú» výber"
 
-#: kmcomposewin.cpp:570
+#: kmcomposewin.cpp:571
 msgid "Copy selection"
 msgstr "Kopírova» výber"
 
-#: kmcomposewin.cpp:573
+#: kmcomposewin.cpp:574
 msgid "Paste clipboard contents"
 msgstr "Vlo¾i» obsah clipboardu"
 
-#: kmcomposewin.cpp:578
+#: kmcomposewin.cpp:579
 msgid "Attach file"
 msgstr "Prilo¾i» súbor"
 
-#: kmcomposewin.cpp:591
+#: kmcomposewin.cpp:592
 msgid "sign message"
 msgstr "podpísa» správu"
 
-#: kmcomposewin.cpp:596
+#: kmcomposewin.cpp:597
 msgid "encrypt message"
 msgstr "za¹ifrova» správu"
 
-#: kmcomposewin.cpp:608 kmcomposewin.cpp:624
+#: kmcomposewin.cpp:609 kmcomposewin.cpp:625
 msgid "Column"
 msgstr "Ståpec"
 
-#: kmcomposewin.cpp:609 kmcomposewin.cpp:622
+#: kmcomposewin.cpp:610 kmcomposewin.cpp:623
 msgid "Line"
 msgstr "Riadok"
 
-#: kmcomposewin.cpp:877
+#: kmcomposewin.cpp:871
 msgid "KMail Confirm"
 msgstr "KMail Potvrdenie"
 
-#: kmcomposewin.cpp:878
+#: kmcomposewin.cpp:872
 msgid ""
 "Close and discard\n"
 "edited message?"
@@ -886,7 +875,7 @@ msgstr ""
 "Zavrie» a zru¹i»\n"
 "editovanú správu?"
 
-#: kmcomposewin.cpp:923
+#: kmcomposewin.cpp:917
 #, c-format
 msgid ""
 "public key for %s not found.\n"
@@ -895,51 +884,51 @@ msgstr ""
 "verejný kµúè pre %s nenájdený.\n"
 "Táto osoba nebude schopná de¹ifrova» správu."
 
-#: kmcomposewin.cpp:944
+#: kmcomposewin.cpp:938
 msgid "Error during PGP:"
 msgstr "Chyba pri behu PGP:"
 
-#: kmcomposewin.cpp:1158
+#: kmcomposewin.cpp:1153
 msgid "Attach File"
 msgstr "Prilo¾i» súbor"
 
-#: kmcomposewin.cpp:1176
+#: kmcomposewin.cpp:1175
 msgid "Include File"
 msgstr "Vlo¾it súbor"
 
-#: kmcomposewin.cpp:1197 kmreaderwin.cpp:680
+#: kmcomposewin.cpp:1198 kmreaderwin.cpp:683
 msgid "View..."
 msgstr "Pohµad..."
 
-#: kmcomposewin.cpp:1198
+#: kmcomposewin.cpp:1199
 msgid "Save..."
 msgstr "Ulo¾i»..."
 
-#: kmcomposewin.cpp:1199 kmreaderwin.cpp:683
+#: kmcomposewin.cpp:1200 kmreaderwin.cpp:686
 msgid "Properties..."
 msgstr "Vlastnosti..."
 
-#: kmcomposewin.cpp:1203
+#: kmcomposewin.cpp:1204
 msgid "Attach..."
 msgstr "Prilo¾i»..."
 
-#: kmcomposewin.cpp:1245 kmreaderwin.cpp:725
+#: kmcomposewin.cpp:1246 kmreaderwin.cpp:728
 msgid "View Attachment: "
 msgstr "Zobrazi» prílohu:"
 
-#: kmcomposewin.cpp:1424
+#: kmcomposewin.cpp:1437
 msgid "To:"
 msgstr "Komu:"
 
-#: kmcomposewin.cpp:1428
+#: kmcomposewin.cpp:1441
 msgid "Subject:"
 msgstr "Predmet:"
 
-#: kmcomposewin.cpp:1546
+#: kmcomposewin.cpp:1559
 msgid "KMail: Spellcheck"
 msgstr "KMail: Kontrola pravopisu"
 
-#: kmcomposewin.cpp:1570
+#: kmcomposewin.cpp:1583
 msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
 msgstr ""
@@ -953,9 +942,18 @@ msgstr ""
 "Prieèinok '%s' sa zmenil.\n"
 "Vytváram znovu indexový súbor."
 
-#: kmfolder.cpp:351
+#: kmfolder.cpp:364
 #, c-format
 msgid "Creating index file: %d messages done"
+msgstr "Vytváram indexový súbor: hotovo %d správ"
+
+#: kmfolder.cpp:444
+msgid "Writing index file"
+msgstr ""
+
+#: kmfolder.cpp:870
+#, fuzzy, c-format
+msgid "Compacting folder: %d messages done"
 msgstr "Vytváram indexový súbor: hotovo %d správ"
 
 #: kmmsgpartdlg.cpp:41
@@ -982,21 +980,22 @@ msgstr "Base 64"
 msgid "quoted printable"
 msgstr "quoted printable"
 
-#: kmreaderwin.cpp:318 kmreaderwin.cpp:334 kmreaderwin.cpp:355
+#: kmreaderwin.cpp:307 kmreaderwin.cpp:320 kmreaderwin.cpp:339
+#: kmreaderwin.cpp:360
+msgid "Cc: "
+msgstr "Kópie:"
+
+#: kmreaderwin.cpp:315 kmreaderwin.cpp:334 kmreaderwin.cpp:355
 msgid "From: "
 msgstr "Odosielateµ:"
 
-#: kmreaderwin.cpp:320 kmreaderwin.cpp:336 kmreaderwin.cpp:357
+#: kmreaderwin.cpp:317 kmreaderwin.cpp:336 kmreaderwin.cpp:357
 msgid "To: "
 msgstr "Komu:"
 
 #: kmreaderwin.cpp:324 kmreaderwin.cpp:345 kmreaderwin.cpp:370
 msgid "References: "
 msgstr "Odkazy:"
-
-#: kmreaderwin.cpp:339 kmreaderwin.cpp:360
-msgid "Cc: "
-msgstr "Kópie:"
 
 #: kmreaderwin.cpp:341 kmreaderwin.cpp:354
 msgid "Date: "
@@ -1014,40 +1013,40 @@ msgstr "Odpoveda» autorovi:"
 msgid "Groups: "
 msgstr "Diskusné skupiny:"
 
-#: kmreaderwin.cpp:409
+#: kmreaderwin.cpp:410
 msgid "Encrypted message"
 msgstr "Za¹ifrovaná správa"
 
-#: kmreaderwin.cpp:415
+#: kmreaderwin.cpp:416
 msgid "Cannot decrypt message:"
 msgstr "Nemô¾em dekódova» správu:"
 
-#: kmreaderwin.cpp:433
+#: kmreaderwin.cpp:434
 msgid "Message was signed by"
 msgstr "Správa bola podpísaná"
 
-#: kmreaderwin.cpp:434
+#: kmreaderwin.cpp:435
 msgid "Warning: Bad signature from"
 msgstr "Pozor: Chybný podpis od"
 
-#: kmreaderwin.cpp:644
+#: kmreaderwin.cpp:647
 msgid "Attachment: "
 msgstr "Príloha:"
 
-#: kmreaderwin.cpp:756
+#: kmreaderwin.cpp:759
 msgid "Could not create temporary file"
 msgstr "Nemô¾em vytvori» doèasný súbor"
 
-#: kmreaderwin.cpp:777
+#: kmreaderwin.cpp:780
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "Nemô¾em ulo¾i» doèasný súbor %s"
 
-#: kmreaderwin.cpp:808
+#: kmreaderwin.cpp:811
 msgid "Could not save file"
 msgstr "Nemô¾em ulo¾i» súbor"
 
-#: kmacctmgr.cpp:190 kmacctmgr.cpp:232
+#: kmacctmgr.cpp:193 kmacctmgr.cpp:239
 msgid ""
 "You need to add an account in the network\n"
 "section of the settings in order to\n"
@@ -1056,15 +1055,15 @@ msgstr ""
 "Musíte prida» konto v sekcii \"sie»\"\n"
 "nastavenia, aby ste mohli dostáva» po¹tu"
 
-#: main.cpp:100 main.cpp:217
+#: main.cpp:102 main.cpp:220
 msgid "warning"
 msgstr "pozor"
 
-#: main.cpp:106 main.cpp:107
+#: main.cpp:109 main.cpp:110
 msgid "fatal error"
 msgstr "záva¾ná chyba"
 
-#: main.cpp:219
+#: main.cpp:222
 msgid ""
 "The directory ~/KMail exists. From now on, KMail uses the\n"
 "directory ~/Mail for it's messages.\n"
@@ -1082,7 +1081,7 @@ msgstr ""
 "\n"
 "Má KMail presunú» prieèinky teraz?"
 
-#: main.cpp:383
+#: main.cpp:382
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr "Neznáma voµba príkazového riadku: %s"
@@ -1280,11 +1279,11 @@ msgstr "Lokálny po¹tovy box"
 msgid "Pop3"
 msgstr "Pop3"
 
-#: kmfilteraction.cpp:87 kmfilteraction.cpp:182
+#: kmfilteraction.cpp:93 kmfilteraction.cpp:191
 msgid "transfer"
 msgstr "prenos"
 
-#: kmfilteraction.cpp:151 kmfilteraction.cpp:184
+#: kmfilteraction.cpp:160 kmfilteraction.cpp:193
 msgid "skip rest"
 msgstr "preskoèi» zvy¹ok"
 
@@ -1299,7 +1298,7 @@ msgstr ""
 "%s\n"
 "%s"
 
-#: kmfolderseldlg.cpp:29
+#: kmfolderseldlg.cpp:32
 msgid "Select folder"
 msgstr "Vybra» prieèinok"
 
@@ -1502,10 +1501,6 @@ msgstr ""
 "Súbor %s existuje.\n"
 "Prajete si ho prepísa»?"
 
-#: kfileio.cpp:126 kfileio.cpp:144
-msgid "&Ok"
-msgstr "&Ok"
-
 #: kfileio.cpp:143
 #, c-format
 msgid ""
@@ -1606,6 +1601,21 @@ msgstr "&7 bit je ASCII"
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
 msgstr "Oznaèi» neznáme znaky"
+
+#~ msgid "&Remove"
+#~ msgstr "&Odstráni»"
+
+#~ msgid "&Next"
+#~ msgstr "&Nasledujúca"
+
+#~ msgid "Fonts"
+#~ msgstr "Písma"
+
+#~ msgid "Appearance"
+#~ msgstr "Vzhµad"
+
+#~ msgid "&Ok"
+#~ msgstr "&Ok"
 
 #~ msgid "Name:"
 #~ msgstr "Meno:"

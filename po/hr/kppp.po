@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kdenetwork\n"
-"POT-Creation-Date: 1998-06-11 23:08+0200\n"
+"POT-Creation-Date: 1998-06-18 22:50+0200\n"
 "PO-Revision-Date: 1998-03-15 20:00-0500\n"
 "Last-Translator: Zoran Sokol <zoran.sokol@ci.tel.hr> \n"
 "Language-Team: Croatian\n"
@@ -459,10 +459,6 @@ msgstr "Dodijeli podrazumijevani put prema ovom gateway-u"
 msgid "Edit Script"
 msgstr "Obradi scenarij"
 
-#: edit.cpp:563
-msgid "Use default script"
-msgstr "Koristi podrazumijevani scenarij"
-
 #: edit.cpp:580
 msgid "Insert"
 msgstr "Umetni"
@@ -552,10 +548,6 @@ msgstr "Modemski ureðaj:"
 #: general.cpp:285
 msgid "Flow Control:"
 msgstr "Kontrola toka:"
-
-#: general.cpp:292
-msgid "None"
-msgstr "Nikakva"
 
 #: general.cpp:300
 msgid "Line Termination:"
@@ -1039,10 +1031,6 @@ msgstr "kppp: datoteka pravila ne sadr¾i \"name=...\" liniju\n"
 msgid "kppp: rulefile is ok\n"
 msgstr "kppp: datoteka pravila je u redu\n"
 
-#: docking.cpp:70 docking.cpp:222
-msgid "Restore"
-msgstr "Vrati"
-
 #: docking.cpp:220
 msgid "Minimize"
 msgstr "Smanji"
@@ -1122,3 +1110,12 @@ msgstr ""
 "Zamolite administratora da stvori\n"
 "dotiènu datoteku i da je otvori za\n"
 "èitanje svim korisnicima."
+
+#~ msgid "Use default script"
+#~ msgstr "Koristi podrazumijevani scenarij"
+
+#~ msgid "None"
+#~ msgstr "Nikakva"
+
+#~ msgid "Restore"
+#~ msgstr "Vrati"

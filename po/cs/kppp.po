@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp 0.9.6\n"
-"POT-Creation-Date: 1998-06-11 23:08+0200\n"
+"POT-Creation-Date: 1998-06-18 22:50+0200\n"
 "PO-Revision-Date: 1998-06-12 08:32 MET DST\n"
 "Last-Translator: Miroslav Flídr <flidr@kky.zcu.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -459,10 +459,6 @@ msgstr "Pøiøadit implicitní smìrování k této bránì"
 msgid "Edit Script"
 msgstr "Upravit skript"
 
-#: edit.cpp:563
-msgid "Use default script"
-msgstr "Po¾ít implicitní skript"
-
 #: edit.cpp:580
 msgid "Insert"
 msgstr "Vlo¾it"
@@ -552,10 +548,6 @@ msgstr "Modemové zaøízení:"
 #: general.cpp:285
 msgid "Flow Control:"
 msgstr "Øízení toku:"
-
-#: general.cpp:292
-msgid "None"
-msgstr "®ádné"
 
 #: general.cpp:300
 msgid "Line Termination:"
@@ -1039,10 +1031,6 @@ msgstr "kppp: soubor s pravidly neobsahuje øádky \"name=...\"\n"
 msgid "kppp: rulefile is ok\n"
 msgstr "kppp: soubor s pravidly je v poøádku\n"
 
-#: docking.cpp:70 docking.cpp:222
-msgid "Restore"
-msgstr "Obnovit"
-
 #: docking.cpp:220
 msgid "Minimize"
 msgstr "Minimalizovat"
@@ -1122,3 +1110,12 @@ msgstr ""
 "Po¾ádejte správce systému, aby \n"
 "vytvoøil neprázdný soubor \n"
 "s pøíslu¹nými právy ke ètení a zápisu."
+
+#~ msgid "Use default script"
+#~ msgstr "Po¾ít implicitní skript"
+
+#~ msgid "None"
+#~ msgstr "®ádné"
+
+#~ msgid "Restore"
+#~ msgstr "Obnovit"

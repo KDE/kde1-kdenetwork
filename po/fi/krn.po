@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KRN\n"
-"POT-Creation-Date: 1998-06-16 14:20+0200\n"
+"POT-Creation-Date: 1998-06-18 22:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Kim Enkovaara <kim.enkovaara@iki.fi>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,27 +14,27 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: ENCODING\n"
 
-#: main.cpp:213 main.cpp:225 main.cpp:237 main.cpp:252 main.cpp:264
+#: main.cpp:212 main.cpp:224 main.cpp:236 main.cpp:251 main.cpp:263
 msgid "KRN-Missing Configuration info"
 msgstr "KRN-Asetustiedot puuttuvat"
 
-#: main.cpp:214
+#: main.cpp:213
 msgid "Please enter your email adress"
 msgstr "Anna sähkpostiosoitteesi"
 
-#: main.cpp:226
+#: main.cpp:225
 msgid "Please enter your real name"
 msgstr "Anna oikea nimesi"
 
-#: main.cpp:238
+#: main.cpp:237
 msgid "Please enter your organization's name"
 msgstr "Anna organisaatiosi nimi"
 
-#: main.cpp:253
+#: main.cpp:252
 msgid "Please enter your NNTP server name"
 msgstr "Anna NNTP palvelimen nimi"
 
-#: main.cpp:265
+#: main.cpp:264
 msgid "Please enter your SMTP server name"
 msgstr "Anna SMTP palvelimen nimi"
 
@@ -159,51 +159,51 @@ msgstr "Hae ryhmä"
 msgid "Check for Unread Articles"
 msgstr "Tarkista lukemattomat viestit"
 
-#: groupdlg.cpp:361 groupdlg.cpp:583 groupdlg.cpp:921
+#: groupdlg.cpp:362 groupdlg.cpp:584 groupdlg.cpp:925
 msgid "All Newsgroups."
 msgstr "Kaikki uutisryhmät."
 
-#: groupdlg.cpp:471 groupdlg.cpp:565
+#: groupdlg.cpp:472 groupdlg.cpp:566
 msgid "Subscribed Newsgroups."
 msgstr "Tilatut uutisryhmät."
 
-#: groupdlg.cpp:520
+#: groupdlg.cpp:521
 msgid "Disconnected"
 msgstr "Yhteys poikki"
 
-#: groupdlg.cpp:527
+#: groupdlg.cpp:528
 msgid "Connecting to server"
 msgstr "Yhdistän palvelimeen"
 
-#: groupdlg.cpp:532
+#: groupdlg.cpp:533
 msgid "Connected to server - Posting not allowed"
 msgstr "Yhdistetty palvelimeen - lähetys ei ole sallittu"
 
-#: groupdlg.cpp:534
+#: groupdlg.cpp:535
 msgid "Connected to server - Posting allowed"
 msgstr "Yhdistetty palvelimeen - lähetys sallittu"
 
-#: groupdlg.cpp:540
+#: groupdlg.cpp:541
 msgid "Can't connect to server"
 msgstr "En saa yhdistettyä palvelimeen"
 
-#: groupdlg.cpp:542
+#: groupdlg.cpp:543
 msgid "Connection to server failed"
 msgstr "Yhteys palvelimeen epäonnistui"
 
-#: groupdlg.cpp:551
+#: groupdlg.cpp:552
 msgid "Authentication Failed"
 msgstr "Tunnistus epäonnistui"
 
-#: groupdlg.cpp:554
+#: groupdlg.cpp:555
 msgid "Connection to server failed: Authentication problem"
 msgstr "Yhteys palvelimeen epäonnistui: Tunnistusongelma"
 
-#: groupdlg.cpp:603
+#: groupdlg.cpp:604
 msgid "Krn-Question"
 msgstr "Krn-Kysymys"
 
-#: groupdlg.cpp:604
+#: groupdlg.cpp:605
 msgid ""
 "The operation you requested needs a connection to the News server\n"
 "Should I attempt one?"
@@ -211,7 +211,7 @@ msgstr ""
 "Toimenpide vaatii yhteyttä uutispalvelimeen\n"
 "Yritänkö luoda?"
 
-#: groupdlg.cpp:867
+#: groupdlg.cpp:868
 msgid ""
 "You don't have an active groups list.\n"
 " get it from server?"
@@ -219,31 +219,31 @@ msgstr ""
 "Sinulla ei ole aktiivisten ryhmien listaa.\n"
 " haenko sen palvelimelta?"
 
-#: groupdlg.cpp:883
+#: groupdlg.cpp:884
 msgid "Listing active newsgroups"
 msgstr "Listaan aktiiviset viestiryhmät"
 
-#: groupdlg.cpp:895
+#: groupdlg.cpp:899
 msgid "KRN - Find a Newsgroup"
 msgstr "KRN - Esti yytisryhmä"
 
-#: groupdlg.cpp:896
+#: groupdlg.cpp:900
 msgid "Enter the name of the Newsgroup"
 msgstr "Anna uutisryhmän nimi"
 
-#: groupdlg.cpp:980
+#: groupdlg.cpp:984
 msgid "Krn - Message"
 msgstr "KRN - Viesti"
 
-#: groupdlg.cpp:981
+#: groupdlg.cpp:985
 msgid "I can't find the group you want!"
 msgstr "En löydä haluamaasi ryhmää!"
 
-#: groupdlg.cpp:1074
+#: groupdlg.cpp:1078
 msgid "Getting messages in "
 msgstr "Haen viestejä ryhmästä "
 
-#: groupdlg.cpp:1087
+#: groupdlg.cpp:1091
 msgid "Getting list of messages in "
 msgstr "Haen viestien listaa ryhmästä "
 
@@ -391,31 +391,31 @@ msgstr "Pisteet"
 msgid "Subject"
 msgstr "Otsikko"
 
-#: artdlg.cpp:463
+#: artdlg.cpp:462
 msgid "Threading..."
 msgstr "Säikeet..."
 
-#: artdlg.cpp:472
+#: artdlg.cpp:471
 msgid "Showing Article List"
 msgstr "Näytä viestilista"
 
-#: artdlg.cpp:1314
+#: artdlg.cpp:1316
 msgid "KRN - Existing File"
 msgstr "KRN - Olemassaoleva tiedosto"
 
-#: artdlg.cpp:1315
+#: artdlg.cpp:1317
 msgid "The File you selected already exists"
 msgstr "Valitsemasi tiedosto on jo olemassa"
 
-#: artdlg.cpp:1321
+#: artdlg.cpp:1323
 msgid "OverWrite"
 msgstr "Ylikirjoita"
 
-#: artdlg.cpp:1323
+#: artdlg.cpp:1325
 msgid "Append"
 msgstr "Lisää"
 
-#: artdlg.cpp:1358 artdlg.cpp:1423
+#: artdlg.cpp:1360 artdlg.cpp:1425
 msgid ""
 "From: Krn\n"
 "To: You\n"
@@ -429,7 +429,7 @@ msgstr ""
 "Virhe artikkelia vastaanotettaessa.\n"
 "Palvelin vastasi:\n"
 
-#: artdlg.cpp:1525
+#: artdlg.cpp:1527
 msgid "Getting Article List"
 msgstr "Haen artikkelilistaa"
 
@@ -505,7 +505,7 @@ msgstr "Osa KDE projektia"
 msgid "Credits & Thanks"
 msgstr "Tunnustukset & Kiitokset"
 
-#: aboutDlg.cpp:65
+#: aboutDlg.cpp:66
 msgid "And Many thanks to:"
 msgstr "Monet kiitokset:"
 

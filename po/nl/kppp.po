@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-06-11 23:08+0200\n"
+"POT-Creation-Date: 1998-06-18 22:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Case Roole <cjr@xs4all.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -452,10 +452,6 @@ msgstr ""
 msgid "Edit Script"
 msgstr ""
 
-#: edit.cpp:563
-msgid "Use default script"
-msgstr ""
-
 #: edit.cpp:580
 msgid "Insert"
 msgstr ""
@@ -531,10 +527,6 @@ msgstr ""
 
 #: general.cpp:285
 msgid "Flow Control:"
-msgstr ""
-
-#: general.cpp:292
-msgid "None"
 msgstr ""
 
 #: general.cpp:300
@@ -1017,10 +1009,6 @@ msgstr "kppp: regelbestand bevat geen `name=...' regel\n"
 msgid "kppp: rulefile is ok\n"
 msgstr "kppp: regelbestand is ok\n"
 
-#: docking.cpp:70 docking.cpp:222
-msgid "Restore"
-msgstr "Herstel"
-
 #: docking.cpp:220
 msgid "Minimize"
 msgstr "Minimalizeer"
@@ -1098,6 +1086,9 @@ msgid ""
 "a non-empty file that has appropriate\n"
 "read and write permissions."
 msgstr ""
+
+#~ msgid "Restore"
+#~ msgstr "Herstel"
 
 #~ msgid "started PPP connection:%s:%s"
 #~ msgstr "PPP verbinding gestart:%s:%s"

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KPPP\n"
-"POT-Creation-Date: 1998-06-11 23:08+0200\n"
+"POT-Creation-Date: 1998-06-18 22:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Kim Enkovaara <kim.enkovaara@iki.fi>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -460,10 +460,6 @@ msgstr "Aseta oletusreitti tälle yhdyskäytävälle"
 msgid "Edit Script"
 msgstr "Editoi ohjelmaa"
 
-#: edit.cpp:563
-msgid "Use default script"
-msgstr "Käytä oletusohjelmaa"
-
 #: edit.cpp:580
 msgid "Insert"
 msgstr "Lisää"
@@ -552,10 +548,6 @@ msgstr "Modeemin Laite:"
 #: general.cpp:285
 msgid "Flow Control:"
 msgstr "Vuonohjaus:"
-
-#: general.cpp:292
-msgid "None"
-msgstr "None"
 
 #: general.cpp:300
 msgid "Line Termination:"
@@ -1039,10 +1031,6 @@ msgstr "kppp: sääntötiedosto ei sisällä \"name=...\" riviä\n"
 msgid "kppp: rulefile is ok\n"
 msgstr "kppp: sääntötiedosto on OK\n"
 
-#: docking.cpp:70 docking.cpp:222
-msgid "Restore"
-msgstr "Palauta"
-
 #: docking.cpp:220
 msgid "Minimize"
 msgstr "Pienennä"
@@ -1123,3 +1111,12 @@ msgstr ""
 "\n"
 "Pyydä systeemisi ylläpitäjää luomaan tämä\n"
 "tiedosto sopivilla käyttöoikeuksilla."
+
+#~ msgid "Use default script"
+#~ msgstr "Käytä oletusohjelmaa"
+
+#~ msgid "None"
+#~ msgstr "None"
+
+#~ msgid "Restore"
+#~ msgstr "Palauta"

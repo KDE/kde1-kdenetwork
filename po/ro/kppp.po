@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-06-11 23:08+0200\n"
+"POT-Creation-Date: 1998-06-18 22:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Marian Rãdulescu <marian-r@usa.net>\n"
 "Language-Team: ROMANIAN <??@li.org>\n"
@@ -464,10 +464,6 @@ msgstr "Asigneazã ruta implicitã la acest Gateway"
 msgid "Edit Script"
 msgstr "Editare script"
 
-#: edit.cpp:563
-msgid "Use default script"
-msgstr "Utilizare script implicit"
-
 #: edit.cpp:580
 msgid "Insert"
 msgstr "Inserare"
@@ -558,10 +554,6 @@ msgstr "Modem:"
 #: general.cpp:285
 msgid "Flow Control:"
 msgstr "Controlul execuþiei:"
-
-#: general.cpp:292
-msgid "None"
-msgstr "Nimic"
 
 #: general.cpp:300
 msgid "Line Termination:"
@@ -1050,10 +1042,6 @@ msgstr "kppp: fiºierul de tarife nu conþine o linie \"nume=...\"\n"
 msgid "kppp: rulefile is ok\n"
 msgstr "kppp: fiºierul de tarife este OK\n"
 
-#: docking.cpp:70 docking.cpp:222
-msgid "Restore"
-msgstr "Restaurare"
-
 #: docking.cpp:220
 msgid "Minimize"
 msgstr "Minimizare"
@@ -1127,6 +1115,15 @@ msgid ""
 "a non-empty file that has appropriate\n"
 "read and write permissions."
 msgstr ""
+
+#~ msgid "Use default script"
+#~ msgstr "Utilizare script implicit"
+
+#~ msgid "None"
+#~ msgstr "Nimic"
+
+#~ msgid "Restore"
+#~ msgstr "Restaurare"
 
 #~ msgid "pppd Path:"
 #~ msgstr "Calea cãtre pppd:"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1998-06-11 23:08+0200\n"
+"POT-Creation-Date: 1998-06-18 22:50+0200\n"
 "PO-Revision-Date: 1998-01-27 22:00+0000\n"
 "Last-Translator: Pedro Morais <pmmm@camoes.rnl.ist.utl.pt>\n"
 
@@ -451,10 +451,6 @@ msgstr "Colocar a Rota por Omissão nesta Gateway"
 msgid "Edit Script"
 msgstr "Editar Script"
 
-#: edit.cpp:563
-msgid "Use default script"
-msgstr "Utilizar script por omissão"
-
 #: edit.cpp:580
 msgid "Insert"
 msgstr "Inserir"
@@ -544,10 +540,6 @@ msgstr "Dispositivo Modem:"
 #: general.cpp:285
 msgid "Flow Control:"
 msgstr "Controlo de Fluxo:"
-
-#: general.cpp:292
-msgid "None"
-msgstr "Nenhum"
 
 #: general.cpp:300
 msgid "Line Termination:"
@@ -1031,10 +1023,6 @@ msgstr "kppp: ficheiro de regras não contêm uma linha \"name=...\"\n"
 msgid "kppp: rulefile is ok\n"
 msgstr "kppp: ficheiro de regras está ok\n"
 
-#: docking.cpp:70 docking.cpp:222
-msgid "Restore"
-msgstr "Restaurar"
-
 #: docking.cpp:220
 msgid "Minimize"
 msgstr "Minimizar"
@@ -1113,3 +1101,12 @@ msgstr ""
 "Peça ao admnistrador do seu sistema para criar\n"
 "um ficheiro não vazio que tenha as permissões\n"
 "de escrita e leitura apropriadas."
+
+#~ msgid "Use default script"
+#~ msgstr "Utilizar script por omissão"
+
+#~ msgid "None"
+#~ msgstr "Nenhum"
+
+#~ msgid "Restore"
+#~ msgstr "Restaurar"

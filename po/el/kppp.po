@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-06-11 23:08+0200\n"
+"POT-Creation-Date: 1998-06-18 22:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Theodore J. Soldatos <theodore@eexi.gr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -460,10 +460,6 @@ msgstr "Ορισμός βασικής διαδρομής σε αυτήν την πύλη"
 msgid "Edit Script"
 msgstr "Επεξεργασία αρχείου εντολών"
 
-#: edit.cpp:563
-msgid "Use default script"
-msgstr "Χρήση βασικού αρχείου εντολών"
-
 #: edit.cpp:580
 msgid "Insert"
 msgstr "Εισαγωγή"
@@ -554,10 +550,6 @@ msgstr "Συσκευή modem:"
 #: general.cpp:285
 msgid "Flow Control:"
 msgstr "Έλεγχος ροής:"
-
-#: general.cpp:292
-msgid "None"
-msgstr "Κανένα"
 
 #: general.cpp:300
 msgid "Line Termination:"
@@ -1044,10 +1036,6 @@ msgstr "kppp: Το αρχείο κανόνων δεν περιέχει την γραμμή \"name=...\"\n"
 msgid "kppp: rulefile is ok\n"
 msgstr "kppp: Το αρχείο κανόνων είναι εντάξει\n"
 
-#: docking.cpp:70 docking.cpp:222
-msgid "Restore"
-msgstr "Επαναφορά"
-
 #: docking.cpp:220
 msgid "Minimize"
 msgstr "Ελαχιστοποίηση"
@@ -1119,6 +1107,15 @@ msgid ""
 "a non-empty file that has appropriate\n"
 "read and write permissions."
 msgstr ""
+
+#~ msgid "Use default script"
+#~ msgstr "Χρήση βασικού αρχείου εντολών"
+
+#~ msgid "None"
+#~ msgstr "Κανένα"
+
+#~ msgid "Restore"
+#~ msgstr "Επαναφορά"
 
 #~ msgid "pppd Path:"
 #~ msgstr "Τοποθεσία pppd:"

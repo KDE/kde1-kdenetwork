@@ -5,31 +5,31 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: krn\n"
-"POT-Creation-Date: 1998-06-16 14:20+0200\n"
+"POT-Creation-Date: 1998-06-18 22:50+0200\n"
 "PO-Revision-Date: 1998-01-24 14:20 +0100\n"
 "Last-Translator: Oliver Hensel &l\n"
 
-#: main.cpp:213 main.cpp:225 main.cpp:237 main.cpp:252 main.cpp:264
+#: main.cpp:212 main.cpp:224 main.cpp:236 main.cpp:251 main.cpp:263
 msgid "KRN-Missing Configuration info"
 msgstr "Informaþii despre configuraþia KRN-lui lipsesc"
 
-#: main.cpp:214
+#: main.cpp:213
 msgid "Please enter your email adress"
 msgstr "Vã rugãm sã introduceþi adresa email-lui dvs."
 
-#: main.cpp:226
+#: main.cpp:225
 msgid "Please enter your real name"
 msgstr "Vã rugãm sã introduceþi numele adevãrat"
 
-#: main.cpp:238
+#: main.cpp:237
 msgid "Please enter your organization's name"
 msgstr "Vã rugãm sã introduceþi numele organizaþiei"
 
-#: main.cpp:253
+#: main.cpp:252
 msgid "Please enter your NNTP server name"
 msgstr "Vã rugãm sã introduceþi numele serverului NNTP"
 
-#: main.cpp:265
+#: main.cpp:264
 msgid "Please enter your SMTP server name"
 msgstr "Vã rugãm sã introduceþi numele serverului SMTP"
 
@@ -157,51 +157,51 @@ msgstr "Cautã Newsgroup"
 msgid "Check for Unread Articles"
 msgstr "Cautã articole necitite"
 
-#: groupdlg.cpp:361 groupdlg.cpp:583 groupdlg.cpp:921
+#: groupdlg.cpp:362 groupdlg.cpp:584 groupdlg.cpp:925
 msgid "All Newsgroups."
 msgstr "Toate grupele."
 
-#: groupdlg.cpp:471 groupdlg.cpp:565
+#: groupdlg.cpp:472 groupdlg.cpp:566
 msgid "Subscribed Newsgroups."
 msgstr "Aboneazã grupe."
 
-#: groupdlg.cpp:520
+#: groupdlg.cpp:521
 msgid "Disconnected"
 msgstr "Disconecteazã"
 
-#: groupdlg.cpp:527
+#: groupdlg.cpp:528
 msgid "Connecting to server"
 msgstr "Conecteazã cu serverul"
 
-#: groupdlg.cpp:532
+#: groupdlg.cpp:533
 msgid "Connected to server - Posting not allowed"
 msgstr "conectat-postarea este interzisã"
 
-#: groupdlg.cpp:534
+#: groupdlg.cpp:535
 msgid "Connected to server - Posting allowed"
 msgstr "conectat-postarea este permisã"
 
-#: groupdlg.cpp:540
+#: groupdlg.cpp:541
 msgid "Can't connect to server"
 msgstr "Nu pot sã conectez cu serverul"
 
-#: groupdlg.cpp:542
+#: groupdlg.cpp:543
 msgid "Connection to server failed"
 msgstr "Conecþia la server nu funcþioneazã"
 
-#: groupdlg.cpp:551
+#: groupdlg.cpp:552
 msgid "Authentication Failed"
 msgstr "Autentificarea nu funcþioneazã"
 
-#: groupdlg.cpp:554
+#: groupdlg.cpp:555
 msgid "Connection to server failed: Authentication problem"
 msgstr "Conecþia la server nu funcþioneazã:Probleme de Autentificare"
 
-#: groupdlg.cpp:603
+#: groupdlg.cpp:604
 msgid "Krn-Question"
 msgstr "Krn-Întrebare"
 
-#: groupdlg.cpp:604
+#: groupdlg.cpp:605
 msgid ""
 "The operation you requested needs a connection to the News server\n"
 "Should I attempt one?"
@@ -209,7 +209,7 @@ msgstr ""
 "Operaþia doritã are nevoie de o conectare al serverul de News\n"
 "Încerc sã fac legãtura?"
 
-#: groupdlg.cpp:867
+#: groupdlg.cpp:868
 msgid ""
 "You don't have an active groups list.\n"
 " get it from server?"
@@ -217,31 +217,31 @@ msgstr ""
 "Nu aveþi o listã activã de grupe.\n"
 "Pot sã încerc sã iau una de la server?"
 
-#: groupdlg.cpp:883
+#: groupdlg.cpp:884
 msgid "Listing active newsgroups"
 msgstr "Listeazã grupele active"
 
-#: groupdlg.cpp:895
+#: groupdlg.cpp:899
 msgid "KRN - Find a Newsgroup"
 msgstr "KRN - Cautã o Newsgroup"
 
-#: groupdlg.cpp:896
+#: groupdlg.cpp:900
 msgid "Enter the name of the Newsgroup"
 msgstr "Introduceþi numele grupei"
 
-#: groupdlg.cpp:980
+#: groupdlg.cpp:984
 msgid "Krn - Message"
 msgstr "Krn - Mesaj"
 
-#: groupdlg.cpp:981
+#: groupdlg.cpp:985
 msgid "I can't find the group you want!"
 msgstr "Nu pot gãsi grupa pe care o doriþi!"
 
-#: groupdlg.cpp:1074
+#: groupdlg.cpp:1078
 msgid "Getting messages in "
 msgstr "Aduce mesaje din "
 
-#: groupdlg.cpp:1087
+#: groupdlg.cpp:1091
 msgid "Getting list of messages in "
 msgstr "Aduce liste de mesaje din "
 
@@ -394,31 +394,31 @@ msgstr ""
 msgid "Subject"
 msgstr "Tema"
 
-#: artdlg.cpp:463
+#: artdlg.cpp:462
 msgid "Threading..."
 msgstr "Sorteazã..."
 
-#: artdlg.cpp:472
+#: artdlg.cpp:471
 msgid "Showing Article List"
 msgstr "Aratã Lista de articole"
 
-#: artdlg.cpp:1314
+#: artdlg.cpp:1316
 msgid "KRN - Existing File"
 msgstr "KRN - Fiºierul existã"
 
-#: artdlg.cpp:1315
+#: artdlg.cpp:1317
 msgid "The File you selected already exists"
 msgstr "Fiºierul selectat existã deja"
 
-#: artdlg.cpp:1321
+#: artdlg.cpp:1323
 msgid "OverWrite"
 msgstr "Suprascrie"
 
-#: artdlg.cpp:1323
+#: artdlg.cpp:1325
 msgid "Append"
 msgstr "Append"
 
-#: artdlg.cpp:1358 artdlg.cpp:1423
+#: artdlg.cpp:1360 artdlg.cpp:1425
 #, fuzzy
 msgid ""
 "From: Krn\n"
@@ -431,7 +431,7 @@ msgstr ""
 "Eroare la aducerea articolelor.\n"
 "Serverul zice:\n"
 
-#: artdlg.cpp:1525
+#: artdlg.cpp:1527
 msgid "Getting Article List"
 msgstr "Aduce lista cu articole"
 
@@ -509,7 +509,7 @@ msgstr "Parte din KDE-Proiect."
 msgid "Credits & Thanks"
 msgstr "Credite & Mulþumiri"
 
-#: aboutDlg.cpp:65
+#: aboutDlg.cpp:66
 msgid "And Many thanks to:"
 msgstr "Multe mulþumiri ºi la:"
 
