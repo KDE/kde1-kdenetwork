@@ -208,7 +208,7 @@ void KMFolderTree::doDropAction(KDNDDropZone* aDropZone)
 {
   KMFolder *toFld, *fromFld;
   KMDragData* dd;
-  KMMessage* msg;
+//  KMMessage* msg;
   QPoint pos;
   int i;
   
@@ -230,8 +230,9 @@ void KMFolderTree::doDropAction(KDNDDropZone* aDropZone)
 
   for (i=dd->to(); i>=dd->from(); i--)
   {
-    msg = fromFld->take(i);
-    if (msg) toFld->addMsg(msg);
+    emit msgMoved(toFld, i);
+    //msg = fromFld->getMsg(i);
+    //if (msg) toFld->moveMsg(msg);
   }
 
   fromFld->close();
@@ -341,3 +342,6 @@ void KMFolderTree::slotRMB(int index, int)
 
 }
 //-----------------------------------------------------------------------------
+
+
+

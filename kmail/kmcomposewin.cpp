@@ -434,9 +434,11 @@ void KMComposeWin::setupMenuBar(void)
   menu->insertItem(i18n("&Send"),this, SLOT(slotSend()),
 		   CTRL+Key_Return);
   if (msgSender->sendImmediate())
-    menu->insertItem(i18n("S&end later"),this,SLOT(slotSendLater()));
+    menu->insertItem(i18n("S&end later"),this,SLOT(slotSendLater()),
+                    CTRL+SHIFT+Key_Return);
   else
-    menu->insertItem(i18n("S&end now"),this,SLOT(slotSendNow()));
+    menu->insertItem(i18n("S&end now"),this,SLOT(slotSendNow()),
+                    CTRL+SHIFT+Key_Return);
   menu->insertSeparator();
   menu->insertItem(i18n("&Insert File..."), this,
 		    SLOT(slotInsertFile()));
@@ -574,12 +576,11 @@ void KMComposeWin::setupToolBar(void)
 			SLOT(slotNewComposer()), TRUE, 
 			i18n("Compose new message"));
 
-#ifdef BROKEN
-  mToolBar->insertButton(loader->loadIcon("filefloppy.xpm"), 0, 
-			SIGNAL(clicked()), this,
-			SLOT(slotToDo()), TRUE,
-			i18n("Save message to file"));
-#endif
+  if (msgSender->sendImmediate())
+    mToolBar->insertButton(loader->loadIcon("filefloppy.xpm"), 0,
+                           SIGNAL(clicked()), this,
+                           SLOT(slotSendLater()), TRUE,
+                           i18n("send later")); //grr translations!!!
 
   mToolBar->insertButton(loader->loadIcon("fileprint.xpm"), 0, 
 			SIGNAL(clicked()), this,

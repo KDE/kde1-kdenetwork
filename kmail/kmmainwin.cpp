@@ -253,6 +253,8 @@ void KMMainWin::createWidgets(void)
   mFolderTree  = new KMFolderTree(pnrFldList, "folderTree");
   connect(mFolderTree, SIGNAL(folderSelected(KMFolder*)),
 	  this, SLOT(folderSelected(KMFolder*)));
+	connect(mFolderTree, SIGNAL(msgMoved(KMFolder*,int)),
+	        mHeaders, SLOT(moveMsgToFolder(KMFolder*,int)));
 }
 
 
@@ -698,23 +700,22 @@ void KMMainWin::slotViewChange()
 //-----------------------------------------------------------------------------
 void KMMainWin::slotSetHeaderStyle(int id)
 {
-  if(mHeaders->currentItem() >= 0)
+  if(id <= 5)
   {
-    if (!mMsgView) return;
-    if(id <= 5)
-    {
-      mViewMenu->setItemChecked((int)mMsgView->headerStyle(), FALSE);
-      mMsgView->setHeaderStyle((KMReaderWin::HeaderStyle)id);
-      mViewMenu->setItemChecked(id, TRUE);
-    }
-    else
-    {
-      mViewMenu->setItemChecked((int)mMsgView->attachmentStyle()+5, FALSE);
-      mViewMenu->setItemChecked(id, TRUE);
-      mMsgView->setAttachmentStyle(id-5);
-    }
-    mMsgView->update(true);
+    mViewMenu->setItemChecked((int)mMsgView->headerStyle(), FALSE);
+    mMsgView->setHeaderStyle((KMReaderWin::HeaderStyle)id);
+    mViewMenu->setItemChecked(id, TRUE);
   }
+  else
+  {
+    mViewMenu->setItemChecked((int)mMsgView->attachmentStyle()+5, FALSE);
+    mViewMenu->setItemChecked(id, TRUE);
+    mMsgView->setAttachmentStyle(id-5);
+  }
+
+  // Can only update the message view if a message is displayed
+  //if(mHeaders->currentItem() >= 0)
+    mMsgView->update(true);
 }
 
 
@@ -1234,4 +1235,7 @@ void KMMainWin::quit()
   //  return;
   qApp->quit();
 }
+
+
+
 

@@ -45,9 +45,6 @@ public:
   virtual void saveMsg(int msgId=-1);
   virtual void applyFiltersOnMsg(int msgId=-1);
 
-  /** If destination==NULL the messages are deleted, otherwise
-    they are moved to this folder. */
-  virtual void moveMsgToFolder(KMFolder* destination, int msgId=-1);
 
   /** Messages are duplicated and added to given folder. */
   virtual void copyMsgToFolder(KMFolder* destination, int msgId=-1);
@@ -95,6 +92,11 @@ public slots:
   void nextUnreadMessage();
   void prevUnreadMessage();
 
+  /** If destination==NULL the messages are deleted, otherwise
+    they are moved to this folder. */
+  void moveMsgToFolder(KMFolder* destination, int msgId=-1);
+
+
 protected:
   void makeHeaderVisible();
 
@@ -124,9 +126,15 @@ protected:
 
   /** Returns string for listbox from given message. */
   virtual QString msgAsLbxString(KMMsgBase*) const;
+  
+private:
+  /** Override the tab list box so that we can control some
+      internal variables here */
+  virtual void KMHeaders::removeItem(int itemIndex);
+
+  virtual void updateMessageList(void);
 
 private:
-  virtual void updateMessageList(void);
   KMFolder* mFolder;
   KMMainWin* mOwner;
   int mTopItem;
@@ -138,4 +146,6 @@ private:
 };
 
 #endif
+
+
 

@@ -1,8 +1,25 @@
-1999-06-20  Sven Radej <radej@kde.org> (KMail-1.0.25)
+1999-06-20  Sven Radej <radej@kde.org> (KMail-1.0.26)
 
-        * Fix for references (Thanks, Waldo, Roberto, Rik and Peter):
+        * Fix for references (Thanks Waldo, Roberto, Rik and Peter):
           References = original first + original last + original msg-id
           i.e. references(n) = msgid(1) + msgid(n-2) + msgid(n-1)
+
+        * True fix from jbb <jb.nz@writeme.com> for segfaults when trying
+          to work with message wigh has been deleted or moved from current
+          folder. KMail now doesn't show last message in folder after the
+          message has been deleted.
+
+        * Edit + Send later now really saves changes and updates edited
+          message in reader
+
+        * If default sending is "Send now", "Send Later" has accelerator
+          CTRL+SHIFT+Return. Otherwise, if default is "Send later", "Send now"
+          has that accelerator. If default is Send now, composer  has also
+          toolbar icon for send later (floppy icon).
+
+        * TO/SHOULD DO: When sending == send now and you have some messages in
+          outbox folder and you send some other message - all from outbox
+          are sent; That means, outbox cannot be used as Draft folder :-(
 
 1999-06-18  Sven Radej <radej@kde.org> (KMail-1.0.25)
 

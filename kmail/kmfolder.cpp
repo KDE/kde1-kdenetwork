@@ -743,6 +743,7 @@ int KMFolder::addMsg(KMMessage* aMsg, int* aIndex_ret)
   char endStr[3];
   int idx, rc;
   KMFolder* msgParent;
+  bool editing = false;
 
   if (!mStream)
   {
@@ -756,7 +757,16 @@ int KMFolder::addMsg(KMMessage* aMsg, int* aIndex_ret)
   msgParent = aMsg->parent();
   if (msgParent)
   {
-    if (msgParent==this) return 0;
+    if (msgParent==this)
+    {
+      if (name() == "outbox") //special case for Edit message.
+      {
+        // debug ("Editing message in outbox");
+        editing = true;
+      }
+      else
+        return 0;
+    }
     idx = msgParent->find(aMsg);
     if (idx >= 0) msgParent->take(idx);
   }

@@ -24,6 +24,7 @@ public:
 
 signals:
   void folderSelected(KMFolder*);
+  void msgMoved(KMFolder*, int);
 
 protected slots:
   void doFolderSelected(int,int);

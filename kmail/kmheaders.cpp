@@ -22,6 +22,7 @@
 #include "kmfiltermgr.h"
 #include "kfontutils.h"
 
+#include "kmreaderwin.h"
 
 //-----------------------------------------------------------------------------
 KMHeaders::KMHeaders(KMMainWin *aOwner, QWidget *parent,
@@ -251,6 +252,8 @@ void KMHeaders::msgAdded(int id)
   if (!autoUpdate()) return;
   insertItem("", id);
   msgHeaderChanged(id);
+  if (mFolder->name() == "outbox")                            // special case ...
+    mOwner->messageView()->setMsg(mFolder->getMsg(id), true); // ... for Edited
 }
 
 
@@ -1021,6 +1024,17 @@ void KMHeaders::slotRMB(int idx, int colId)
   menu->exec (QCursor::pos(), 0);
   delete menu;
 }
-                        
+
+//-----------------------------------------------------------------------------
+
+void KMHeaders::removeItem(int itemIndex)
+{
+  KTabListBox::removeItem (itemIndex);
+  // If there's no messages left in the list then the reader window shouldn't
+  // be displaying any messages either!
+  if (count () < 1)
+    mOwner->messageView()->setMsg(0);
+}
+
 //-----------------------------------------------------------------------------
 #include "kmheaders.moc"
