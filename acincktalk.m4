@@ -16,13 +16,12 @@ if test -n "`echo $target_os | grep linux >/dev/null`" ; then
 ## in /proc that the user owns
        AC_DEFINE(ALL_PROCESSES_AND_PROC_FIND_USER)
 
-       AC_MSG_RESULT("using /proc.")
+       AC_MSG_RESULT(using /proc.)
     else
-       AC_MSG_RESULT("/proc not found, using utmp.")
+       AC_MSG_RESULT(/proc not found, using utmp.)
     fi
 else
-    AC_MSG_RESULT("not a linux system, using utmp.")
+    AC_MSG_RESULT(not a linux system, using utmp.)
 fi
 
 ])
-
