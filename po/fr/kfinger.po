@@ -1,0 +1,207 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 1998-12-19 02:18+0100\n"
+"PO-Revision-Date: 1999-01-23 20:00+0100\n"
+"Last-Translator: montel laurent <montell@club-internet.fr>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ENCODING\n"
+
+#: kfinger.C:30
+msgid "F&inger Now"
+msgstr ""
+
+#: kfinger.C:31
+msgid "&Talk..."
+msgstr ""
+
+#: kfinger.C:35
+msgid "Setup"
+msgstr "Configuration"
+
+#: kfinger.C:36
+msgid "&Save Options"
+msgstr "Enregistrer les options"
+
+#: kfinger.C:38
+msgid ""
+"kfinger 0.8.0\n"
+"\n"
+"(c) Andrea Rizzi (rizzi@kde.org)"
+msgstr ""
+
+#: kfinger.C:47
+msgid "KDE finger utility"
+msgstr ""
+
+#: kfinger.C:50
+msgid "Finger"
+msgstr ""
+
+#: kfinger.C:51
+msgid "Stop current finger"
+msgstr ""
+
+#: kfinger.C:53
+msgid "Talk..."
+msgstr ""
+
+#: kfinger.C:54
+msgid "AutoFinger On/Off"
+msgstr ""
+
+#: kfinger.C:66
+msgid "Welcome to KDE Finger\n"
+msgstr "Bienvenu dans KDE Finger\n"
+
+#: kfinger.C:67
+msgid "Finger result"
+msgstr ""
+
+#: kfinger.C:269
+#, c-format
+msgid "Error on server : %s"
+msgstr "Erreur sur le serveur : %s"
+
+#: kfinger.C:288
+#, c-format
+msgid "Finger  %s@%s   --   %s"
+msgstr ""
+
+#: kfinger.C:305
+msgid ""
+"Kfinger 0.8.0\n"
+"(c) by Andrea Rizzi\n"
+"rizzi@kde.org"
+msgstr ""
+"Kfinger 0.8.0\n"
+"(c) par Andrea Rizzi\n"
+"rizzi@kde.org"
+
+#: kfinger.C:351
+msgid "Kfinger Setup"
+msgstr "Configuration de Kfinger"
+
+#: kfinger.C:379 kfinger.C:419
+msgid "&Add"
+msgstr "&Ajouter"
+
+#: kfinger.C:389
+msgid "Server Name"
+msgstr "Nom du serveur"
+
+#: kfinger.C:393 kfinger.C:396
+msgid "Server list"
+msgstr "Liste du serveur"
+
+#: kfinger.C:429
+msgid "User Name"
+msgstr "Nom d'utilisateur"
+
+#: kfinger.C:433 kfinger.C:436
+msgid "Users list"
+msgstr ""
+
+#: kfinger.C:450
+msgid "Timed finger"
+msgstr ""
+
+#: kfinger.C:465 kfinger.C:652
+#, c-format
+msgid "Finger wait: %d\""
+msgstr ""
+
+#: kfinger.C:470
+msgid "Talk Command "
+msgstr ""
+
+#: kfinger.C:480
+msgid "Misc"
+msgstr ""
+
+#: kfinger.C:485 kfinger.C:497
+msgid "Finger Output"
+msgstr ""
+
+#: kfinger.C:489
+msgid "Finger server"
+msgstr ""
+
+#: kfinger.C:493 kfinger.C:505
+msgid "Fixed"
+msgstr ""
+
+#: kfinger.C:501
+msgid "Finger User"
+msgstr ""
+
+#: kfinger.C:521
+msgid "Lines to skip :"
+msgstr ""
+
+#: kfinger.C:529 kfinger.C:534
+msgid "Format..."
+msgstr ""
+
+#: kfinger.C:541
+msgid "User"
+msgstr "Utilisateur"
+
+#: kfinger.C:552
+msgid "Server"
+msgstr "Serveur"
+
+#: kfinger.C:564
+msgid "Talk"
+msgstr ""
+
+#: kfinger.C:699
+msgid "Talk with..."
+msgstr ""
+
+#: kfinger.C:766
+msgid "Format string for var1(string)"
+msgstr "Format de la chaine pour var1(chaine de caractères)"
+
+#: kfinger.C:772
+msgid "Fromat string for var2(int)"
+msgstr "Format de la chaine pour var2(entier)"
+
+#: kfinger.C:792 kfinger.C:798
+msgid "Offset"
+msgstr "Offset"
+
+#: kfinger.C:811
+msgid "Only var1"
+msgstr "Seulement var1"
+
+#: kfinger.C:817
+msgid "Only var2"
+msgstr "Seulement var2"
+
+#: kfinger.C:823
+msgid "var1, var2"
+msgstr "var1, var2"
+
+#: kfinger.C:829
+msgid "var2, var1"
+msgstr "var2, var1"
+
+#: kfinger.C:842
+msgid "Output format string"
+msgstr "Format de la chaine de sortie"
+
+#: kfinger.C:849
+msgid "Save & Quit"
+msgstr "Enregistrer et quitter"
+
+#: kfinger.C:859
+msgid "Output parameters "
+msgstr "Paramètres de sortie "
