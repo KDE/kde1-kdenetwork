@@ -45,7 +45,7 @@ The server (the machine you are connecting to) basically tells the client
 specific file for an entry that contains a matching server name and client's
 name for this connection, and then sends the password it finds there. That's
 about it! Now, here's how to make that happen. I am assuming a pppd version
-of 2.2.0 and a standard installation of configuration files under /etc/ppp.
+of 2.2.0 and a standard installation of configuration files under <CODE>/etc/ppp</CODE>.
 <P>
 <P>For the purposes of illustration, pretend that I have an Internet account
 with 'glob.net', under the user name 'booger', and a password of 'foobar'.
@@ -124,7 +124,7 @@ PAP authentication you must use this variant.
 Same as above, but your computer requires the
 ISP PPP server to authenticate himself. In order to establish a connection, 
 you must choose the authentication method <I>Script based</I>,
-not <I>PAP</I>, and you will have to manually have edit
+not <I>PAP</I>, and you will have to manually edit
 <CODE>/etc/ppp/pap-secrets</CODE>. While kppp doesn't provide build in support
 for this variant -- it is nevertheless easy to establish a connection
 using this variant of PAP with kppp. The details are described in the

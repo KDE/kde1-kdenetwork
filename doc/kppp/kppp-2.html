@@ -35,8 +35,8 @@ of the KDE project.
 <H3><A NAME="ss2.2">2.2 Requirements</A>
 </H3>
 
-<P>In order to successfully compile Kppp, you need the latest versions of <CODE> libkdecore</CODE>
-and <CODE> libkdeui</CODE>. All required libraries as well as Kppp itself can be found
+<P>In order to successfully compile Kppp, you need the latest versions of <CODE>libkdecore</CODE>
+and <CODE>libkdeui</CODE>. All required libraries as well as Kppp itself can be found
 on 
 <A HREF="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</A>. 
 <P>
@@ -55,14 +55,6 @@ as you have pppd installed on those systems.
 first couple of lines of  pppstats.cpp and make sure the defines and includes are O.K.
 Most likely however they should be fine. Please inform me of any necessary changes.
 <P>
-<P>Kppp needs write permission to /etc/resolv.conf if you want to be able
-to take advantage of its capability to let you specify the DNS addresses 
-in the DNS dialog.
-<P>
-<P>Make sure that the pppd's option file which usually resides in <CODE> /etc/ppp/</CODE>
-exists, but is empty. pppd requires it to exist, but it must be empty otherwise
-pppd will not take its options from kppp.
-<P>
 <P>In order to compile and install Kppp on your system, type the following in the base 
 directory of the Kppp distribution:
 <BLOCKQUOTE><CODE>
@@ -70,9 +62,18 @@ directory of the Kppp distribution:
 % ./configure
 % make
 % make install
-% chmod +s $(KDE)/bin/kppp
 </PRE>
 </CODE></BLOCKQUOTE>
+<P>This will install kppp with the 
+<A HREF="kppp-8.html#setuid">setuid</A>
+ bit on.
+<P>
+<P>
+<P>Make sure that the pppd's option file which usually resides in <CODE>/etc/ppp/</CODE>
+exists, but is empty. pppd requires it to exist, but it must be empty otherwise
+pppd will not take its options from kppp.
+<P>
+<P>
 <P><B>Again:</B> Should you run into problems, please report them to me. 
 <P>
 <P>

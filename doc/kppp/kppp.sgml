@@ -53,8 +53,8 @@ of the KDE project.
 
 <sect1>Requirements
 <p>
-In order to successfully compile Kppp, you need the latest versions of <tt> libkdecore</tt>
-and <tt> libkdeui</tt>. All required libraries as well as Kppp itself can be found
+In order to successfully compile Kppp, you need the latest versions of <tt>libkdecore</tt>
+and <tt>libkdeui</tt>. All required libraries as well as Kppp itself can be found
 on <url url="ftp://ftp.kde.org/pub/kde/">. 
 
 <sect1>Compilation and installation
@@ -70,26 +70,25 @@ as you have pppd installed on those systems.
 If wish to compile kppp on a platform  different from Linux, please check briefly the
 first couple of lines of  pppstats.cpp and make sure the defines and includes are O.K.
 Most likely however they should be fine. Please inform me of any necessary changes.
-
 <p>
-Kppp needs write permission to /etc/resolv.conf if you want to be able
-to take advantage of its capability to let you specify the DNS addresses 
-in the DNS dialog.
 
-<p>
-Make sure that the pppd's option file which usually resides in <tt> /etc/ppp/</tt>
-exists, but is empty. pppd requires it to exist, but it must be empty otherwise
-pppd will not take its options from kppp.
-
-<p>
 In order to compile and install Kppp on your system, type the following in the base 
 directory of the Kppp distribution:
 <tscreen><verb>
 % ./configure
 % make
 % make install
-% chmod +s &dollar(KDE)/bin/kppp
 </verb></tscreen>
+
+This will install kppp with the <ref id="setuid"> bit on.
+<p>
+
+<p>
+Make sure that the pppd's option file which usually resides in <tt>/etc/ppp/</tt>
+exists, but is empty. pppd requires it to exist, but it must be empty otherwise
+pppd will not take its options from kppp.
+
+<p>
 
 <bf/Again:/ Should you run into problems, please report them to me. 
 
@@ -278,7 +277,8 @@ That is your IP address will most likely change every time you establish a conne
 In that case you will also need to fill in that address and any Subnet Mask
 if applicable. Ask your ISP if unsure.
 
-<tag/Auto-configure Hostname form this IP/ Select this option if you want 
+<label id="Auto-configure hostname">
+<tag/Auto-configure Hostname from this IP/ Select this option if you want 
 kppp to set the hostname and domain for your machine after successful
 setup of a ppp link on connect.
 This is done by querying the defined Domain Name Server with the ip
@@ -297,20 +297,20 @@ it may also cause lots of undesired side effect. Just play with it ...
 <sect1>DNS<p>
 <descrip>
 <tag/Domain Name/ Specify the domain name for your machine.
-  As with DNS Addresses it is restored to the original specified in /etc/resolv.conf
+  As with DNS Addresses it is restored to the original specified in <tt>/etc/resolv.conf</tt>
   when the connection goes down.
   If it is left blank no changes are made to the domain name specified
-  in /etc/resolv.conf
+  in <tt>/etc/resolv.conf</tt>
 
 <tag/DNS Servers/ Add the Domain Name servers assigned to you by your ISP.
 You must specify at least a Domain Name server for your OS to be able
 to resolve human readable IP addresses such as ftp.kde.org. The DNS server
 addresses supplied must be in numeric form, e.g 128.231.231.233. The
-addresses will be added at runtime to /etc/resolv.config.
+addresses will be added at runtime to <tt>/etc/resolv.config</tt>.
 
 <tag/Disable existing DNS Servers during Connection/ Select this option if 
 you want kppp to disable already existing nameserver entries
-in /etc/resolv.conf during connection.
+in <tt>/etc/resolv.conf</tt> during connection.
 </descrip>
 <p>
 
@@ -698,7 +698,7 @@ The server (the machine you are connecting to) basically tells the client
 specific file for an entry that contains a matching server name and client's
 name for this connection, and then sends the password it finds there. That's
 about it! Now, here's how to make that happen. I am assuming a pppd version
-of 2.2.0 and a standard installation of configuration files under /etc/ppp.
+of 2.2.0 and a standard installation of configuration files under <tt>/etc/ppp</tt>.
 <p>
 
 For the purposes of illustration, pretend that I have an Internet account
@@ -772,7 +772,7 @@ PAP authentication you must use this variant.
 Same as above, but your computer requires the
 ISP PPP server to authenticate himself. In order to establish a connection, 
 you must choose the authentication method <it>Script based</it>,
-not <it>PAP</it>, and you will have to manually have edit
+not <it>PAP</it>, and you will have to manually edit
 <tt>/etc/ppp/pap-secrets</tt>. While kppp doesn't provide build in support
 for this variant -- it is nevertheless easy to establish a connection
 using this variant of PAP with kppp. The details are described in the
@@ -819,13 +819,13 @@ pitfalls.
 
 <item> Make sure that pppd is the actual pppd binary not a script
 
-<item> Make sure that your /etc/ppp/options file exists, but is empty!
+<item> Make sure that your <tt>/etc/ppp/options</tt> file exists and that it doesn´t contain any conflicting entries. If in doubt: Leave this file empty. 
 
 <item> Make sure that you DON'T use the option "lock" as an argument
     for pppd (kppp is already taking care of device locking )
 
-<item> Remove the "lock" option from your <tt> /etc/ppp/options </tt>
-    and <tt> ~/.ppprc </tt> files!
+<item> Remove the "lock" option from your <tt>/etc/ppp/options</tt>
+    and <tt>~/.ppprc</tt> files!
 
 <item> Make sure you set the right permission. In case of trouble
     you might want to run it as root first and then later, when
@@ -855,7 +855,7 @@ device or that you selected a modem device on the Modem Tab Dialog that is
 not valid. First make sure you selected the right modem device. Once you are
 sure you have selected the right modem device, you must 
 give kppp the right permission to access the modem 
-device and to be able to modify /etc/resolv.conf in case you want kppp to 
+device and to be able to modify <tt>/etc/resolv.conf</tt> in case you want kppp to 
 configure DNS correctly for you. If you can afford to run kppp setuid root
 this would solve all access problems for you, if not you will have to figure
 out what the right permissions are for your purposes. In order to give
@@ -873,14 +873,15 @@ kppp setuid root permissions do the following:
 This in most instances means that you have installed kppp
 without SETUID bit on while you, the person executing kppp, 
 doesn't have write access to the lock file directory which
-by default is /var/lock. This for example is the case on 
+by default is <tt>/var/lock</tt>. This for example is the case on 
 RedHat systems. Check the modem dialog for the
 precise location you have chosen. The solution is easy --
 either run kppp SETUID if you can afford to, or give regular
-users write access to /var/lock or create a modem group
-that will have access to the /var/lock file.
+users write access to <tt>/var/lock</tt> or create a modem group
+that will have access to the <tt>/var/lock</tt> file.
 <p>
 
+<label id="setuid">
 <sect2>Why is Kppp installed with the SETUID bit on?
 <p>
 
@@ -888,8 +889,10 @@ There is no need for the SETUID bit, if you know a bit of Unix systems
 administration. Simply create a modem group, add all users that you
 want to give access to the modem to that group and make the modem
 device read/writeable for that group. Also if you want DNS configuration
-to work with Kppp, then /etc/resolv.conf must be read/writeable by the
-members of that group. 
+to work with Kppp, then <tt>/etc/resolv.conf</tt> must be read/writeable by the
+members of that group. The same counts for
+<tt>/etc/ppp/pap-secrets</tt> and <tt>/etc/ppp/chap-secrets</tt> if
+you want to use the built-in PAP or CHAP support, respectively.
 
 Please do not criticize me for installing Kppp with setuid bit
 on, I simply can no longer handle the amount of mail I used to get from
@@ -905,6 +908,14 @@ Have you played with the CR/LF setting?
 Increase the 'Init Delay Time' that can be found under 'Modem Commands' on the Modem tab dialog. You may do some fine tuning later.
 
 <p>
+
+<sect2>The connection works fine but I can´t start any applications.
+<p>
+
+You probably have activated the <ref id="Auto-configure hostname"> option and the X Server has problems connecting to your newly named host. If you really need this option (chances are that you don´t) you are on your own to setup the appropriate authorizations.
+Issuing <it>xhost +</it> before starting the connection will do the job, but be <bf>warned</bf> of any security risks that involves since everyone else is granted access to your X Server.
+<p> 
+
 
 <sect2>How do I make kppp send a \n or a \r?
 <p>
@@ -930,23 +941,11 @@ to /var/lock/. This is of course no problem if you have
 given kppp setuid permissions. Please read the section on <ref id="lock files">.
 
 <p>
-<sect2>Can I do PAP and CHAP with kppp?
-<p>
-Yes you can. Please the see the section on using <ref id="PAP" name="PAP and CHAP"> 
-with kppp in the appendix. Actually, I receive more an more requests for
-detailed information about how to use PAP nor CHAP with kppp. 
-If you are using PAP and CHAP with kppp, I would very much appreciate 
-submissions of
-detailed step by step explanations of how to do PAP and/or CHAP with kppp.
-I would then include this here in the kppp documentation. I am sure
-this would be of help to a great number of beginners. Please consider
-helping out and giving something back in return for kppp. Thanks!
-<p>
 
 <sect2>How do I write a telephone cost rules file?<p>
 Just follow the TEMPLATE rules files supplied with kppp. You should be
 able to find a copy in the <tt>&dollar(KDEDIR)/doc/HTML/kppp</tt>. 
-Use the -r kppp command line options to check the syntax of your proposed
+Use the <tt>-r</tt> kppp command line options to check the syntax of your proposed
 rules file.
 <p>
 
@@ -993,16 +992,16 @@ need to fine-tune your modem commands.
 
 
 <sect1>kppp related files<p>
-By default Kppp makes use of the following files and directories. The location
+By default kppp makes use of the following files and directories. The location
 of some of those can be changed at compile time.
 
 <tscreen><verb>
 &dollar(KDEDIR)/bin/kppp
 &dollar(KDEDIR)/share/doc/HTML/.../kppp/*
 &dollar(KDEDIR)/share/apps/kppp
-&dollar(KDEDIR)/share/apps/kppp/Rules
+&dollar(KDEDIR)/share/apps/kppp/Rules/*/*.rst
+&dollar(KDEDIR)/share/apps/kppp/pics/*
 &dollar(HOMEDIR)/.kde/share/apps/kppp
-&dollar(HOMEDIR)/.kde/share/apps/kppp/Rules/*.rst
 &dollar(HOMEDIR)/.kde/share/apps/kppp/Log/*
 &dollar(HOMEDIR)/.kde/share/config/kppprc
 </verb></tscreen>
@@ -1017,13 +1016,13 @@ name="Frequently asked Questions"> carefully.
 If you still have problems, you need to include the following informations
 with your report:
 <itemize>
-<item>The version of kPPP you are using. <it>kppp -v</it> will show the
+<item>The version of kppp you are using. <it>kppp -v</it> will show the
 version number.
 <item>The version of pppd you are using. <it>/usr/sbin/pppd -h</it> will show
 the number.
 <item>What operating system and version you use. <it>uname -a</it> will tell you this
 information on most UNIX systems.
-<item>If kPPP reports "pppd died unexpectedly", add the <it>debug</it> option
+<item>If kppp reports "pppd died unexpectedly", add the <it>debug</it> option
 to the <ref id="pppd arguments" name="pppd arguments">. Dial again to
 reproduce the error.<p>
 Now the file <tt>/var/log/messages</tt> (this depends on your system and
@@ -1031,10 +1030,8 @@ configuration, but a typically installed Linux system will have this. Of
 course you must have root permissions to read this file) will have a lot of
 debugging output at the end. <bf>Don't send us the whole file</bf>. It
 typically has several thousands of lines and we neither have time nor are we
-willing to process such a file. Instead of send us just the last lines that
-contain <it>pppd</it>. Make sure that this file does <bf>not</bf> contain
-security compromising information such as passwords or usernames. Replace such
-entries with something like "myusername" and "mypassword"
+willing to process such a file. Just send us the last lines that
+contain <it>pppd</it>, instead. Make sure that this file does <bf>not</bf> contain security compromising information such as passwords or usernames. Replace such entries with something like "myusername" and "mypassword"
 </itemize>
 
 <p>

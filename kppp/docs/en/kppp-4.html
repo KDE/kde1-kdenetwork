@@ -63,7 +63,7 @@ That is your IP address will most likely change every time you establish a conne
 In that case you will also need to fill in that address and any Subnet Mask
 if applicable. Ask your ISP if unsure.
 <P>
-<DT><B>Auto-configure Hostname form this IP</B><DD><P>Select this option if you want 
+<A NAME="Auto-configure hostname"></A> <DT><B>Auto-configure Hostname from this IP</B><DD><P>Select this option if you want 
 kppp to set the hostname and domain for your machine after successful
 setup of a ppp link on connect.
 This is done by querying the defined Domain Name Server with the ip
@@ -85,20 +85,20 @@ it may also cause lots of undesired side effect. Just play with it ...
 <P>
 <DL>
 <DT><B>Domain Name</B><DD><P>Specify the domain name for your machine.
-As with DNS Addresses it is restored to the original specified in /etc/resolv.conf
+As with DNS Addresses it is restored to the original specified in <CODE>/etc/resolv.conf</CODE>
 when the connection goes down.
 If it is left blank no changes are made to the domain name specified
-in /etc/resolv.conf
+in <CODE>/etc/resolv.conf</CODE>
 <P>
 <DT><B>DNS Servers</B><DD><P>Add the Domain Name servers assigned to you by your ISP.
 You must specify at least a Domain Name server for your OS to be able
 to resolve human readable IP addresses such as ftp.kde.org. The DNS server
 addresses supplied must be in numeric form, e.g 128.231.231.233. The
-addresses will be added at runtime to /etc/resolv.config.
+addresses will be added at runtime to <CODE>/etc/resolv.config</CODE>.
 <P>
 <DT><B>Disable existing DNS Servers during Connection</B><DD><P>Select this option if 
 you want kppp to disable already existing nameserver entries
-in /etc/resolv.conf during connection.
+in <CODE>/etc/resolv.conf</CODE> during connection.
 </DL>
 <P>
 <P>

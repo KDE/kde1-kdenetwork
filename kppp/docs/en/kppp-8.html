@@ -33,13 +33,13 @@ pitfalls.
 <UL>
 <LI> Make sure that pppd is the actual pppd binary not a script
 </LI>
-<LI> Make sure that your /etc/ppp/options file exists, but is empty!
+<LI> Make sure that your <CODE>/etc/ppp/options</CODE> file exists and that it doesn´t contain any conflicting entries. If in doubt: Leave this file empty. 
 </LI>
 <LI> Make sure that you DON'T use the option "lock" as an argument
 for pppd (kppp is already taking care of device locking )
 </LI>
-<LI> Remove the "lock" option from your <CODE> /etc/ppp/options </CODE>
-and <CODE> ~/.ppprc </CODE> files!
+<LI> Remove the "lock" option from your <CODE>/etc/ppp/options</CODE>
+and <CODE>~/.ppprc</CODE> files!
 </LI>
 <LI> Make sure you set the right permission. In case of trouble
 you might want to run it as root first and then later, when
@@ -70,7 +70,7 @@ device or that you selected a modem device on the Modem Tab Dialog that is
 not valid. First make sure you selected the right modem device. Once you are
 sure you have selected the right modem device, you must 
 give kppp the right permission to access the modem 
-device and to be able to modify /etc/resolv.conf in case you want kppp to 
+device and to be able to modify <CODE>/etc/resolv.conf</CODE> in case you want kppp to 
 configure DNS correctly for you. If you can afford to run kppp setuid root
 this would solve all access problems for you, if not you will have to figure
 out what the right permissions are for your purposes. In order to give
@@ -91,23 +91,25 @@ kppp setuid root permissions do the following:
 <P>This in most instances means that you have installed kppp
 without SETUID bit on while you, the person executing kppp, 
 doesn't have write access to the lock file directory which
-by default is /var/lock. This for example is the case on 
+by default is <CODE>/var/lock</CODE>. This for example is the case on 
 RedHat systems. Check the modem dialog for the
 precise location you have chosen. The solution is easy --
 either run kppp SETUID if you can afford to, or give regular
-users write access to /var/lock or create a modem group
-that will have access to the /var/lock file.
+users write access to <CODE>/var/lock</CODE> or create a modem group
+that will have access to the <CODE>/var/lock</CODE> file.
 <P>
 <P>
-<H4>Why is Kppp installed with the SETUID bit on?</H4>
+<A NAME="setuid"></A> <H4>Why is Kppp installed with the SETUID bit on?</H4>
 
 <P>
 <P>There is no need for the SETUID bit, if you know a bit of Unix systems 
 administration. Simply create a modem group, add all users that you
 want to give access to the modem to that group and make the modem
 device read/writeable for that group. Also if you want DNS configuration
-to work with Kppp, then /etc/resolv.conf must be read/writeable by the
-members of that group. 
+to work with Kppp, then <CODE>/etc/resolv.conf</CODE> must be read/writeable by the
+members of that group. The same counts for
+<CODE>/etc/ppp/pap-secrets</CODE> and <CODE>/etc/ppp/chap-secrets</CODE> if
+you want to use the built-in PAP or CHAP support, respectively.
 <P>Please do not criticize me for installing Kppp with setuid bit
 on, I simply can no longer handle the amount of mail I used to get from
 desperate users who had problems getting kppp to work because they 
@@ -121,6 +123,16 @@ didn't understand enough about Unix and device permissions.
 <P> Your modem might not sustain a fast initialisation.
 Increase the 'Init Delay Time' that can be found under 'Modem Commands' on the Modem tab dialog. You may do some fine tuning later.
 <P>
+<P>
+<P>
+<H4>The connection works fine but I can´t start any applications.</H4>
+
+<P>
+<P>You probably have activated the 
+<A HREF="kppp-4.html#Auto-configure hostname">Auto-configure hostname</A>
+ option and the X Server has problems connecting to your newly named host. If you really need this option (chances are that you don´t) you are on your own to setup the appropriate authorizations.
+Issuing <I>xhost +</I> before starting the connection will do the job, but be <B>warned</B> of any security risks that involves since everyone else is granted access to your X Server.
+<P> 
 <P>
 <P>
 <H4>How do I make kppp send a \n or a \r?</H4>
@@ -151,25 +163,12 @@ given kppp setuid permissions. Please read the section on
 .
 <P>
 <P>
-<H4>Can I do PAP and CHAP with kppp?</H4>
-
-<P>Yes you can. Please the see the section on using 
-<A HREF="kppp-7.html#PAP">PAP and CHAP</A> 
-with kppp in the appendix. Actually, I receive more an more requests for
-detailed information about how to use PAP nor CHAP with kppp. 
-If you are using PAP and CHAP with kppp, I would very much appreciate 
-submissions of
-detailed step by step explanations of how to do PAP and/or CHAP with kppp.
-I would then include this here in the kppp documentation. I am sure
-this would be of help to a great number of beginners. Please consider
-helping out and giving something back in return for kppp. Thanks!
-<P>
 <P>
 <H4>How do I write a telephone cost rules file?</H4>
 
 <P>Just follow the TEMPLATE rules files supplied with kppp. You should be
 able to find a copy in the <CODE>$(KDEDIR)/doc/HTML/kppp</CODE>. 
-Use the -r kppp command line options to check the syntax of your proposed
+Use the <CODE>-r</CODE> kppp command line options to check the syntax of your proposed
 rules file.
 <P>
 <P>
