@@ -1,3 +1,8 @@
+1998-12-21  Mario Weilguni <mweilguni@kde.org>
+
+	* opener.cpp: using umask now instead of chmod (more safe)
+	* opener.cpp: regfree was called too late. Fixed.
+
 1998-12-21  Harri Porten  <porten@kde.org>
 
 	* opener.h: define system dependend type cast for struct iovec's
@@ -31,7 +36,6 @@
 	* requester.cpp: rewrote PAP/CHAP so that the setuid part is free
 	of any Qt/X calls. 
 
->>>>>>> 1.155
 1998-12-16  Mario Weilguni <mweilguni@kde.org>
 
 	* added Indonesia rule files

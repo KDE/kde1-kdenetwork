@@ -321,6 +321,7 @@ bool Opener::createAuthFile(int authMethod, char *username, char *password) {
   assert(regcomp(&preg, regexp, 0) == 0);
 
   // copy to new file pap-secrets
+  int old_umask = umask(0077);
   FILE *fout = fopen(newName, "w");
   if(fout) {
     // copy old file
@@ -339,6 +340,12 @@ bool Opener::createAuthFile(int authMethod, char *username, char *password) {
     fclose(fout);
   }
 
+  // restore umask
+  umask(old_umask);
+
+  // free memory allocated by regcomp
+  regfree(&preg);
+
   if(!(oldName = authFile(authMethod, Old)))
     return false;
 
@@ -347,9 +354,7 @@ bool Opener::createAuthFile(int authMethod, char *username, char *password) {
 
   rename(authfile, oldName);
   rename(newName, authfile);
-  chmod(authfile, 0600);
 
-  regfree(&preg);
   return true;
 }
 
