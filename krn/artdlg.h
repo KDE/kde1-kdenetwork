@@ -50,7 +50,7 @@ protected:
 public slots:
     void updateCounter(const char *);
     void openURL(const char *);
-    
+    void init (NewsGroup *_group, NNTP* _server);
 private slots:
     bool actions(int);
     bool taggedActions(int);

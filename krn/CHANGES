@@ -1,8 +1,12 @@
 -----------------------------------------------------------------------------
-Changes made Jan 14
+Changes made Jan 15
 -----------------------------------------------------------------------------
 
-* [Roberto] 
+* [Roberto] Switched to Johannes Sixt's KTreeView instead of KTreeList.
+            MUCH faster group list now!
+* [Roberto] Prepared artdlg to allow one-article-window newsreading.
+* [Roberto] Added rudimentary support for signatures (autmatically adds
+            ~/.signature).
 
 -----------------------------------------------------------------------------
 Changes made Jan 13

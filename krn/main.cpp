@@ -202,6 +202,7 @@ void checkConf()
 {
 
     identity=new KMIdentity();
+    identity->setSignatureFile(QString(getenv("HOME"))+"/.signature");
     
     Asker ask;
     QString data;

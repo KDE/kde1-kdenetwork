@@ -89,14 +89,11 @@ findArtDlg *FindDlg;
 Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     :Inherited (_group->name)
 {
+    group=0;
     FindDlg=new findArtDlg(0);
     connect (FindDlg,SIGNAL(FindThis(const char *,const char*)),
              this,SLOT(FindThis(const char *,const char*)));
     
-    group=_group;
-    group->isVisible=this;
-    setCaption (group->name);
-    groupname=group->name;
     
     conf->setGroup("ArticleListOptions");
     unread=conf->readNumEntry("ShowOnlyUnread");
@@ -305,6 +302,20 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
 
     qApp->processEvents ();
 
+    init(_group,_server);
+}
+
+
+void Artdlg::init (NewsGroup *_group, NNTP* _server)
+{
+    if (group) //make old group know I'm not showing him
+        group->isVisible=0;
+        
+    group=_group;
+    group->isVisible=this;
+    
+    setCaption (group->name);
+    groupname=group->name;
     statusBar()->changeItem("Reading Article List",2);
     qApp->processEvents ();
     group->getList(this);
