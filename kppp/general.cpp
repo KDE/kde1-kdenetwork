@@ -214,9 +214,7 @@ AboutWidget::AboutWidget( QWidget *parent, const char *name)
     "With contributions from:\n"\
     "Mario Weilguni\n"
     "Markus Wuebben\n"\
-    "Jesus Fuentes Saavedra\n\n"\
-    "kppp is based in part on ezppp "\
-    "(C) 1997\nJay Painter\n";
+    "Jesus Fuentes Saavedra\n\n";
   
   label2 = new QLabel(this,"About2");
   label2->setAlignment(AlignLeft|WordBreak|ExpandTabs);
