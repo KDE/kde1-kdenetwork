@@ -24,6 +24,7 @@
 #include <qtstream.h>
 #include <qfiledlg.h>
 #include <qclipbrd.h>
+#include <qregexp.h>
 
 #include <kapp.h>
 
@@ -38,6 +39,7 @@
 #include "kdecode.h"
 #include "rmbpop.h"
 #include "fontsDlg.h"
+#include "findArtDlg.h"
 
 #include "kmcomposewin.h"
 
@@ -65,6 +67,7 @@
 #define POSTANDMAIL 20
 #define FORWARD 21
 #define POST 22
+#define FIND_ARTICLE 23
 
 extern QString pixpath,cachepath;
 
@@ -74,14 +77,21 @@ extern KDecode *decoder;
 
 extern KConfig *conf;
 
+findArtDlg *FindDlg;
+
 Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     :Inherited (_group->data())
 {
+    
+    FindDlg=new findArtDlg(0);
+    connect (FindDlg,SIGNAL(FindThis(const char *,const char*)),
+             this,SLOT(FindThis(const char *,const char*)));
+    
     group=_group;
     group->isVisible=this;
     setCaption (group->data());
     groupname=group->data();
-
+    
     conf->setGroup("ArticleListOptions");
     unread=conf->readNumEntry("ShowOnlyUnread");
     showlocked=conf->readNumEntry("ShowLockedArticles");
@@ -94,11 +104,12 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     taggedArticle->insertItem(klocale->translate("Decode"),DECODE_ARTICLE);
     taggedArticle->insertItem(klocale->translate("Untag"),TAG_ARTICLE);
     connect (taggedArticle,SIGNAL(activated(int)),SLOT(taggedActions(int)));
-
-
+    
+    
     article=new QPopupMenu;
     article->setCheckable(true);
     article->insertItem(klocale->translate("Save"),SAVE_ARTICLE);
+    article->insertItem(klocale->translate("Find"),FIND_ARTICLE);
     article->insertSeparator();
     article->insertItem(klocale->translate("Print"),PRINT_ARTICLE);
     article->insertItem(klocale->translate("Post New Article"),POST);
@@ -115,9 +126,9 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     article->insertItem(klocale->translate("Don't expire"), TOGGLE_EXPIRE);  // robert's cache stuff
     article->setItemChecked(TOGGLE_EXPIRE, false);
     connect (article,SIGNAL(activated(int)),SLOT(actions(int)));
-
     
-
+    
+    
     options=new QPopupMenu;
     options->setCheckable(true);
     options->insertItem(klocale->translate("Show Only Unread Messages"), NO_READ);
@@ -156,22 +167,22 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     
     pixmap=kapp->getIconLoader()->loadIcon("filenew.xpm");
     tool->insertButton (pixmap, POST, true, klocale->translate("Post New Article"));
-
+    
     pixmap=kapp->getIconLoader()->loadIcon("filemail.xpm");
     tool->insertButton (pixmap, REP_MAIL, true, klocale->translate("Reply by Mail"));
-
+    
     pixmap=kapp->getIconLoader()->loadIcon("followup.xpm");
     tool->insertButton (pixmap, FOLLOWUP, true, klocale->translate("Post a Followup"));
-
+    
     pixmap=kapp->getIconLoader()->loadIcon("mailpost.xpm");
     tool->insertButton (pixmap, POSTANDMAIL, true, klocale->translate("Post & Mail"));
-
+    
     pixmap=kapp->getIconLoader()->loadIcon("fileforward.xpm");
     tool->insertButton (pixmap, FORWARD, true, klocale->translate("Forward"));
-
+    
     tool->insertSeparator ();
     
-
+    
     pixmap=kapp->getIconLoader()->loadIcon("previous.xpm");
     tool->insertButton (pixmap, ARTLIST, true, klocale->translate("Get Article List"));
     
@@ -180,17 +191,17 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     
     pixmap=kapp->getIconLoader()->loadIcon("locked.xpm");
     tool->insertButton (pixmap, TOGGLE_EXPIRE, true, klocale->translate("Lock (keep in cache)"));
-
+    
     pixmap=kapp->getIconLoader()->loadIcon("deco.xpm");
     tool->insertButton (pixmap, DECODE_ONE_ARTICLE, true, klocale->translate("Decode Article"));
-
+    
     pixmap=kapp->getIconLoader()->loadIcon("catch.xpm");
     tool->insertButton (pixmap, CATCHUP, true, klocale->translate("Catchup"));
     
     addToolBar (tool);
     tool->setBarPos( KToolBar::Top );
     tool->show();
-
+    
     if (conf->readNumEntry("VerticalSplit"))
         panner=new KPanner (this,"panner",KPanner::O_VERTICAL,33);
     else
@@ -204,7 +215,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     list->clearTableFlags(Tbl_autoHScrollBar);
     list->setTableFlags(Tbl_autoVScrollBar);
     list->setSeparator('\n');
-
+    
     list->setColumn(0, klocale->translate("Sender"), 150);
     list->setColumn(1, klocale->translate("Date"), 75);
     list->setColumn(2, klocale->translate("Lines"), 50);
@@ -215,7 +226,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     list->dict().insert("T",new QPixmap(kapp->getIconLoader()->loadIcon("black-bullet.xpm")));    //Read message
     list->dict().insert("M",new QPixmap(kapp->getIconLoader()->loadIcon("tagged.xpm")));    //Read message
     list->dict().insert("L",new QPixmap(kapp->getIconLoader()->loadIcon("locked.xpm")));    //Read message
-
+    
     list->setTabWidth(25);
     
     gl->addWidget( list, 0, 0 );
@@ -240,8 +251,8 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     status->insertItem ("", 1);
     status->show ();
     setStatusBar (status);
-
-
+    
+    
     acc=new QAccel (this);
     acc->insertItem(Key_N,NEXT);
     acc->insertItem(Key_P,PREV);
@@ -257,12 +268,13 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     acc->insertItem(ALT + Key_Down, NEXT);
     acc->insertItem(Key_Up, SCROLL_UP_ARTICLE);
     acc->insertItem(Key_Down, SCROLL_DOWN_ARTICLE);
-        
+    
     QObject::connect (acc,SIGNAL(activated(int)),this,SLOT(actions(int)));
     QObject::connect (messwin,SIGNAL(spawnArticle(QString)),this,SLOT(loadArt(QString)));
     show();
-    qApp->processEvents ();
 
+    qApp->processEvents ();
+    
     if (server->isConnected())
     {
         actions(ARTLIST);
@@ -307,7 +319,7 @@ void Artdlg::fillTree ()
     int curr=list->currentItem();
     if (curr>-1)
         currArt=artList.at(curr);
-        
+    
     qApp->setOverrideCursor(waitCursor);
     statusBar()->changeItem("Reading Article List",1);
     qApp->processEvents ();
@@ -316,21 +328,21 @@ void Artdlg::fillTree ()
     list->setAutoUpdate(false);
     list->clear();
     artList.clear();
-
+    
     Article *iter;
     for (iter=group->artList.first();iter!=0;iter=group->artList.next())
     {
         if( (!(unread && iter->isRead())) ||
             (showlocked && (!iter->canExpire())) )
         {
-                artList.append(iter);
+            artList.append(iter);
         }
     }
-
+    
     statusBar()->changeItem(klocale->translate("Threading..."),1);
     qApp->processEvents ();
     artList.thread(true);
-
+    
     //had to split this in two loops because the order of articles is not
     //the same in both article lists
     
@@ -342,7 +354,7 @@ void Artdlg::fillTree ()
         iter->formHeader(&formatted);
         list->insertItem (formatted.data());
     }
-
+    
     //restore current message
     if (curr>-1)
     {
@@ -439,7 +451,7 @@ bool Artdlg::actions (int action)
                 i++;
                 list->setCurrentItem(i);
                 i=list->currentItem();
-                if (list->lastRowVisible()<i)
+                if (((uint)(list->lastRowVisible()))<i)
                     list->setTopItem(i+2-(list->height()/list->cellHeight(i)));
             }
             success=true;
@@ -507,7 +519,7 @@ bool Artdlg::actions (int action)
             break;
         }
     case SCROLL_DOWN_ARTICLE:
-
+        
         {
             messwin->slotVertAddLine();
             break;
@@ -531,7 +543,7 @@ bool Artdlg::actions (int action)
             m->FromString(ts->data());
             delete ts;
             m->Parse();
-
+            
             KMMessage *mm=new KMMessage(m);
             KMComposeWin *comp=new KMComposeWin(0,"","",mm,actFollowup,true,"",false);
             comp->show();
@@ -550,7 +562,7 @@ bool Artdlg::actions (int action)
             m->FromString(ts->data());
             delete ts;
             m->Parse();
-
+            
             KMMessage *mm=new KMMessage(m);
             KMComposeWin *comp=new KMComposeWin(0,"","",mm,actReply);
             comp->show();
@@ -569,7 +581,7 @@ bool Artdlg::actions (int action)
             m->FromString(ts->data());
             delete ts;
             m->Parse();
-
+            
             KMMessage *mm=new KMMessage(m);
             KMComposeWin *comp=new KMComposeWin(0,"","",mm,actForward);
             comp->show();
@@ -588,48 +600,53 @@ bool Artdlg::actions (int action)
             m->FromString(ts->data());
             delete ts;
             m->Parse();
-
+            
             KMMessage *mm=new KMMessage(m);
             KMComposeWin *comp=new KMComposeWin(0,"",mm->from(),mm,actFollowup,true,"");
             comp->show();
             break;
         }
-
+        
     case CATCHUP:
-      {
-        group->catchup();
-        this->close(FALSE);
-        break;
-      }     
-
-      //
-      // robert's cache stuff
-
+        {
+            group->catchup();
+            this->close(FALSE);
+            break;
+        }     
+        
+        //
+        // robert's cache stuff
+        
     case TOGGLE_EXPIRE:
-      {
-	int index = list->currentItem();
-
-	if(index < 0)
-	  break;
-
-	Article *art=artList.at(index);
-
-	if(art->canExpire()) {
-	  article->setItemChecked(TOGGLE_EXPIRE, true);
-	  art->toggleExpire();
-        } else {
-	  article->setItemChecked(TOGGLE_EXPIRE, false);
-	  art->toggleExpire();
+        {
+            int index = list->currentItem();
+            
+            if(index < 0)
+                break;
+            
+            Article *art=artList.at(index);
+            
+            if(art->canExpire()) {
+                article->setItemChecked(TOGGLE_EXPIRE, true);
+                art->toggleExpire();
+            } else {
+                article->setItemChecked(TOGGLE_EXPIRE, false);
+                art->toggleExpire();
+            }
+            QString formatted;
+            art->formHeader(&formatted);
+            list->changeItem (formatted.data(),index);
+            
+            break;
         }
-        QString formatted;
-        art->formHeader(&formatted);
-        list->changeItem (formatted.data(),index);
-
-	break;
-      }
-
-      // end robert's cache stuff
-      //
+    case FIND_ARTICLE:
+        {
+            FindDlg->show();
+            break;
+        }
+        
+        // end robert's cache stuff
+        //
     }
     qApp->restoreOverrideCursor ();
     return success;
@@ -752,8 +769,8 @@ void Artdlg::loadArt (int index,int)
         QString formatted;
         art->formHeader(&formatted);
         list->changeItem (formatted.data(),index);
-
-	article->setItemChecked(TOGGLE_EXPIRE, !art->canExpire());  // robert's cache stuff
+        
+        article->setItemChecked(TOGGLE_EXPIRE, !art->canExpire());  // robert's cache stuff
     }
 }
 
@@ -821,9 +838,9 @@ void Artdlg::getSubjects()
     qApp->setOverrideCursor(waitCursor);
     statusBar ()->changeItem (klocale->translate("Getting Article List"), 1);
     qApp->processEvents ();
-
+    
     group->getSubjects(server);
-
+    
     statusBar ()->changeItem ("", 1);
     qApp->processEvents ();
     qApp->restoreOverrideCursor();
@@ -837,4 +854,55 @@ void Artdlg::updateCounter(char *s)
 void Artdlg::popupMenu(int index,int)
 {
     markArt(index,0);
+}
+
+
+void Artdlg::FindThis (const char *expr,const char *field)
+{
+    
+    QRegExp regex(expr,false);
+    QListIterator <Article> iter(artList);
+    
+    int index=list->currentItem();
+    if (index>0)
+    {
+        iter+=index;
+        ++iter;
+        ++index;
+    }
+    else
+    {
+        index=0;
+    }
+    
+    if (!strcmp(field,"Subject"))
+    {
+        for (;iter.current();++iter,++index)
+        {
+            if (regex.match(iter.current()->Subject.data())>-1)
+            {
+                list->setCurrentItem(index);
+                debug (iter.current()->Subject.data());
+                if (list->lastRowVisible()<index)
+                    list->setTopItem(index+2-(list->height()/list->cellHeight(index)));
+                break;
+            }
+        }
+        return;
+    }
+    if (!strcmp(field,"Sender"))
+    {
+        for (;iter.current();++iter,++index)
+        {
+            if (regex.match(iter.current()->From.data())>-1)
+            {
+                list->setCurrentItem(index);
+                debug (iter.current()->Subject.data());
+                if (list->lastRowVisible()<index)
+                    list->setTopItem(index+2-(list->height()/list->cellHeight(index)));
+                break;
+            }
+        }
+        return;
+    }
 }

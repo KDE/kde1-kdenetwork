@@ -1,0 +1,62 @@
+DlgEdit {
+	ClassHeader {findArtDlg.h}
+	ClassSource {findArtDlg.cpp}
+	ClassName {findArtDlg}
+	DataHeader {findArtDlgData.h}
+	DataSource {findArtDlgData.cpp}
+	DataName {findArtDlgData}
+	DataInherited {TRUE}
+		WindowBaseClass {QWidget}
+		WindowCaption {KRN - Article Find}
+}
+WidgetLayout {
+		Rect {5 100 310 180}
+		Grid {10}
+
+PushButton {
+		ToggleButton {FALSE}
+		Default {FALSE}
+		AutoDefault {TRUE}
+		Text {Find}
+		Rect {10 140 100 30}
+		Name {PushButton_1}
+		Variable {b1}
+}
+PushButton {
+		ToggleButton {FALSE}
+		Default {FALSE}
+		AutoDefault {FALSE}
+		Text {Done}
+		Rect {200 140 100 30}
+		Name {PushButton_2}
+		Variable {b2}
+}
+ComboBox {
+		Style {ReadOnly}
+		SizeLimit {10}
+		Policy {AtBottom}
+		Item {Subject}
+		Item {Sender}
+		Item {Date}
+		Rect {10 100 290 30}
+		Name {ComboBox_1}
+		Variable {field}
+}
+LineEdit {
+		Text {}
+		Rect {10 40 290 30}
+		Name {LineEdit_1}
+		Variable {expr}
+}
+Label {
+		Text {In Field}
+		Alignment {292}
+		Rect {100 70 100 30}
+		Name {Label_2}
+}
+Label {
+		Text {Find Articles With:}
+		Alignment {292}
+		Rect {10 10 290 30}
+		Name {Label_3}
+}}

@@ -61,6 +61,7 @@ private slots:
     void saveArt (QString id);
     void copyText(bool b);
     void popupMenu(int index,int column);
+    void FindThis (const char *,const char *);
         
 signals:
     void needConnection ( );

@@ -75,7 +75,9 @@ OBJECTS = 	main.o\
                 kmcomposewin.o\
                 KEdit.o\
                 kmimemagic.o\
-                kmsender.o
+                kmsender.o\
+                findArtDlgData.o\
+                findArtDlg.o
 
 SRCMETA =
 
@@ -94,7 +96,9 @@ METASRC =	groupdlg.moc \
                 kmfolder.moc\
                 kmfoldernode.moc\
                 kmcomposewin.moc\
-                KEdit.moc
+                KEdit.moc\
+                findArtDlg.moc
+
 
 TARGET	=	krn
 
@@ -129,7 +133,9 @@ SOURCES = 	main.cpp\
                 kmcomposewin.cpp\
                 KEdit.cpp\
                 kmimemagic.cpp\
-                kmsender.cpp
+                kmsender.cpp\
+                findArtDlgData.cpp\
+                findArtDlg.cpp
 
 
 HEADERS = 	NNTP.h\
@@ -163,7 +169,10 @@ HEADERS = 	NNTP.h\
                 KEdit.h\
                 kmimemagic.h\
                 kmsender.h\
-                mytree.h
+                mytree.h\
+                findArtDlgData.h\
+                findArtDlg.h
+
 
 
 ######### build rules ################
