@@ -66,13 +66,18 @@ void DwEntityParser::Parse()
 
         while (pos < bufEnd) {
             // Check for LF LF
-            if (buf[pos] == '\n' &&
-                (pos+1 < bufEnd && 
-		 (buf[pos+1] == '\n' ||
-		  (buf[pos+1] == '\r' && 
-		   pos+2 < bufEnd && buf[pos+2] == '\n')))) {
+            if (buf[pos] == '\n')
+	      if (pos+1 < bufEnd && 
+		  (buf[pos+1] == '\n' ||
+		   (buf[pos+1] == '\r' && 
+		    pos+2 < bufEnd && buf[pos+2] == '\n'))) {
                 ++headersLength;
                 ++pos;
+		if (buf[pos]=='\r') 
+		{
+		  ++pos;
+		  ++headersLength;
+		}
                 break;
             }
             // Check for CR LF CR LF
