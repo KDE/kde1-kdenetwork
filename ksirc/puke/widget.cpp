@@ -95,7 +95,7 @@ void WidgetRunner::inputMessage(int fd, PukeMessage *pm){
     widgetCreate *wC;
 
     pm->cArg[49] = 0;
-    handle = dlopen(pm->cArg, RTLD_LAZY);
+    handle = dlopen(pm->cArg, RTLD_LAZY|RTLD_GLOBAL);
     if (!handle) {
       fputs(dlerror(), stderr);
       return;
@@ -108,10 +108,27 @@ void WidgetRunner::inputMessage(int fd, PukeMessage *pm){
     }
     wC = new widgetCreate;
     wC->wc = wc;
+    wC->dlhandle = handle;
     widgetCF.insert(pm->iArg, wC);
     
     pmRet.iCommand = -pm->iCommand;
     emit outputMessage(fd, &pmRet);
+  }
+  else if(pm->iCommand == PUKE_WIDGET_UNLOAD){
+    const char *error;
+    if(widgetCF[pm->iArg]){
+      dlclose(widgetCF[pm->iArg]->dlhandle);
+      if ((error = dlerror()) != NULL)  {
+	fputs(error, stderr);
+	pm->iCommand = -pm->iCommand;
+	pm->iArg = -1;
+	emit outputMessage(fd, pm);
+	return;
+      }
+      widgetCF.remove(pm->iArg);
+      pm->iCommand = -pm->iCommand;
+      emit outputMessage(fd, pm);
+    }
   }
   else{
     if(checkWidgetId(&wI) == TRUE){

@@ -9,6 +9,17 @@ sub new {
 
   $self->{widgetType} = $::PWIDGET_WIDGET;
 
+  # Default handlers
+  $self->installHandler($::PUKE_WIDGET_EVENT_RESIZE, 
+			sub {$self->resizeEvent(@_)});
+  $self->installHandler($::PUKE_WIDGET_EVENT_PAINT, 
+			sub {$self->paintEvent(@_)});
+  $self->installHandler($::PUKE_WIDGET_EVENT_MOVE, 
+			sub {$self->moveEvent(@_)});
+  $self->installHandler($::PUKE_EVENT_UNKOWN, 
+			sub {$self->miscEvent(@_)});
+
+
   if($class eq 'PWidget'){
     $self->create();
   }
@@ -77,6 +88,62 @@ sub move {
   $self->sendMessage('iCommand' => $::PUKE_WIDGET_MOVE,
 		     'iArg' => $pos);
 
+}
+
+sub setMinimumSize {
+  my $self = shift;
+
+  my $w = shift;
+  my $h = shift;
+
+  my $iarg = $w * 2**16 + $h;
+
+  $self->sendMessage('iCommand' => $::PUKE_WIDGET_SEMINSIZE,
+		     'iArg' => $iarg,
+		     'CallBack' => sub {});
+
+}
+
+sub setMaximumSize {
+  my $self = shift;
+
+  my $w = shift;
+  my $h = shift;
+
+  my $iarg = $w * 2**16 + $h;
+
+  $self->sendMessage('iCommand' => $::PUKE_WIDGET_SETMAXSIZE,
+		     'iArg' => $iarg,
+		     'CalBack' => sub {});
+
+}
+
+sub resizeEvent {
+  my $self = shift;
+
+  my %ARG = %{shift()};
+
+  my($h, $w, $oh, $ow) = unpack("iiii", $ARG{'cArg'});
+  $self->{'height'} = $h;
+  $self->{'width'} = $w;
+
+}
+
+sub paintEvent {
+}
+
+sub moveEvent {
+  my $self = shift;
+
+  my %ARG = %{shift()};
+
+  my($x, $y, $ox, $oy) = unpack("iiii", $ARG{'cArg'});
+  $self->{'x'} = $x;
+  $self->{'y'} = $y;
+  
+}
+
+sub miscEvent {
 }
 
 package main;

@@ -19,6 +19,7 @@ typedef struct {
 
 typedef struct {
   PWidget *(*wc)(widgetId *wI, PWidget *parent);
+  void *dlhandle;
 } widgetCreate;
 
 

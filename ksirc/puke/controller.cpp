@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <iostream.h>
 #include <fcntl.h>
+#include <errno.h>
 
 #include <dlfcn.h>
 
@@ -129,14 +130,18 @@ void PukeController::writeBuffer(int fd, PukeMessage *message)
       if(message->cArg[0] == 0)
 	memset(message->cArg, 45, 50);
       int bytes = write(fd, message, sizeof(PukeMessage));
-      cerr << "Wrote: " << bytes << endl;
+      //      cerr << "Wrote: " << bytes << endl;
       if(bytes <= 0){
 	switch(errno){
 	case EAGAIN: // Don't do anything for try again
 	  break;
 	default:
 	  perror("Puke: write on socket failed");
-	  closefd(fd);
+	  // Don't call closefd() since deletes are called on write's
+	  // since write is being called from the destructors, etc of
+	  // the widgets.  (bad things happend when you call write
+	  // then your return; path ceasaes to exist.
+	  //	  closefd(fd);
 	}
       }
     }
@@ -196,7 +201,7 @@ void PukeController::MessageDispatch(int fd, PukeMessage *pm)
   cs = qidCommandTable[pm->iCommand];
 
   if(cs != NULL){
-    (cs->cmd)(fd,pm);
+    (this->*(cs->cmd))(fd,pm);
   }
   else if((pm->iCommand >= 1000) && (pm->iCommand < 10000)){
     wrControl->inputMessage(fd, pm);
@@ -220,21 +225,25 @@ void PukeController::initHdlr()
   // Invalid is the default invalid handler
   cs = new commandStruct;
   cs->cmd = hdlrPukeInvalid;
+  cs->dlhandle = 0x0;
   qidCommandTable.insert(PUKE_INVALID, cs);
 
   
   // Setup's handled by the setup handler
   cs = new commandStruct;
   cs->cmd = hdlrPukeSetup;
+  cs->dlhandle = 0x0;
   qidCommandTable.insert(PUKE_SETUP, cs);
 
   // We don't receive PUKE_SETUP_ACK's we send them.
   cs = new commandStruct;
   cs->cmd = hdlrPukeInvalid;
+  cs->dlhandle = 0x0;
   qidCommandTable.insert(PUKE_SETUP_ACK, cs);  
 
   cs = new commandStruct;
   cs->cmd = hdlrPukeEcho;
+  cs->dlhandle = 0x0;
   qidCommandTable.insert(PUKE_ECHO, cs);  
 
 }

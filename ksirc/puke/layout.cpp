@@ -49,7 +49,7 @@ void LayoutRunner::inputMessage(int fd, PukeMessage *pm){
     }
     else{
       qbl = new QBoxLayout((QBoxLayout::Direction)iArg[0], (int) iArg[1]);
-      debug("Creating layout NO PARENT", parent.iWinId);
+      //      debug("Creating layout NO PARENT", parent.iWinId);
     }
     LayoutList.insert(uiBaseLayoutId, qbl);
     wIret.iWinId = uiBaseLayoutId;
@@ -79,6 +79,8 @@ void LayoutRunner::inputMessage(int fd, PukeMessage *pm){
       emit outputMessage(fd, &pmRet);
       return;
     }
+    debug("Adding widget with stretch: %d and align: %d", (int) pm->cArg[0],
+	  (int) pm->cArg[1]);
     qlb->addWidget(pw->widget(), pm->cArg[0], pm->cArg[1]);
 
     pmRet.iCommand = PUKE_LAYOUT_ADDWIDGET_ACK; // ack the add widget
@@ -102,6 +104,16 @@ void LayoutRunner::inputMessage(int fd, PukeMessage *pm){
     qlbd->addLayout(qlbs, pm->cArg[0]);
 
     pmRet.iCommand = PUKE_LAYOUT_ADDLAYOUT_ACK; // ack the add widget
+    pmRet.iWinId = pm->iWinId;
+    pmRet.iArg = 0;
+    pmRet.cArg[0] = 0;
+    emit outputMessage(fd, &pmRet);
+  }
+  else if(pm->iCommand == PUKE_LAYOUT_ADDSTRUT){
+    QBoxLayout *qlb = LayoutList[pm->iWinId];
+    qlb->addStrut(pm->iArg);
+
+    pmRet.iCommand = PUKE_LAYOUT_ADDSTRUT_ACK; // ack the add widget
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = 0;
     pmRet.cArg[0] = 0;

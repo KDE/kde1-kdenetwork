@@ -31,6 +31,7 @@ typedef struct {
 
 typedef struct {
   void (PukeController::*cmd)(int, PukeMessage*);
+  void *dlhandle;
 } commandStruct;
 
 class PukeController : public QObject {

@@ -10,6 +10,15 @@ $PBoxLayout::RightToLeft = 1;
 $PBoxLayout::TopToBottom = 2;
 $PBoxLayout::BottomToTop = 3;
 
+$PBoxLayout::AlignLeft        = 0x0001;
+$PBoxLayout::AlignRight       = 0x0002;
+$PboxLayout::AlignHCenter     = 0x0004;
+$PBoxLayout::AlignTop         = 0x0008;
+$PBoxLayout::AlignBottom      = 0x0010;
+$PBoxLayout::AlignVCenter     = 0x0020;
+$PBoxLayout::AlignCenter      = $PBoxLayout::AlignVCenter | 
+                                $PBoxLayout::AlignHCenter;
+
 sub new {
   my $class = shift;
   my $self = $class->SUPER::new($class, @_);
@@ -66,18 +75,23 @@ sub addWidget {
   my $self = shift;
 
   my $widget = shift;
+  my $stretch = shift;
+  my $align = shift;
 
   # make sure we can run, and the widget we want to add can run.
-  my @ARG = ($widget);
+  my @ARG = ($widget, $stretch, $align);
   $self->canRun($self, \&PBoxLayout::addWidget, \@ARG) || return;
   $widget->canRun($self, \&PBoxLayout::addWidget, \@ARG) || return;
   
   print "*I* Sending add arg for id: " . $widget->{iWinId} . "\n";
 
+  $align = $PBoxLayout::AlignCenter if($align == 0);
+
   $self->sendMessage('iCommand' => $::PUKE_LAYOUT_ADDWIDGET,
 		     'iWinId' => $self->{iWinId},
-		     'iArg' => $widget->{iWinId});
-#		     'CallBack' => sub { });
+		     'iArg' => $widget->{iWinId},
+		     'cArg' => pack("CC", $stretch, $align),
+		     'CallBack' => sub { });
 
   
 }

@@ -6,7 +6,7 @@
 PWidget::PWidget(PWidget *)
   : QObject()
 {
-  debug("PWidget constructor called");
+  //  debug("PWidget constructor called");
 
   w = 0;
 
@@ -37,7 +37,7 @@ PWidget::PWidget(PWidget *)
 
 PWidget::~PWidget()
 {
-  debug("PWidget: in destructor");
+  //  debug("PWidget: in destructor");
   delete widget();
   w = 0;
   setWidget(0);
@@ -58,7 +58,6 @@ PWidget *PWidget::createWidget(widgetId *pwi, PWidget *parent)
 
 void PWidget::messageHandler(int fd, PukeMessage *pm)
 {
-  debug("PWidget handler called");
   PukeMessage pmRet;
   switch(pm->iCommand){
   case PUKE_WIDGET_SHOW:
@@ -89,7 +88,7 @@ void PWidget::messageHandler(int fd, PukeMessage *pm)
     {
       unsigned short int *size;
       size = (unsigned short int *) &pm->iArg;
-      debug("Resizing to: %d => %d %d", pm->iArg, size[0], size[1]);
+      //      debug("Resizing to: %d => %d %d", pm->iArg, size[0], size[1]);
       widget()->resize(size[0], size[1]);
       size[0] = (short) widget()->height();
       size[1] = (short) widget()->width();
@@ -104,7 +103,7 @@ void PWidget::messageHandler(int fd, PukeMessage *pm)
     {
       unsigned short int *pos;
       pos = (unsigned short int *) &pm->iArg;
-      debug("Moving to: %d => %d %d", pm->iArg, pos[0], pos[1]);
+      //      debug("Moving to: %d => %d %d", pm->iArg, pos[0], pos[1]);
       widget()->move(pos[0], pos[1]);
       pos[0] = (short) widget()->x();
       pos[1] = (short) widget()->y();
@@ -115,6 +114,34 @@ void PWidget::messageHandler(int fd, PukeMessage *pm)
       emit outputMessage(fd, &pmRet);
     }
     break;
+  case PUKE_WIDGET_SETMINSIZE:
+    {
+      unsigned short int *pos;
+      pos = (unsigned short int *) &pm->iArg;
+      widget()->setMinimumSize(pos[0], pos[1]);
+
+      pos[0] = (short) widget()->width();
+      pos[1] = (short) widget()->height();
+      pmRet.iCommand = PUKE_WIDGET_SETMINSIZE_ACK;
+      pmRet.iWinId = pm->iWinId;      
+      pmRet.iArg = pm->iArg;
+      pmRet.cArg[0] = 0;
+      emit outputMessage(fd, &pmRet);
+    }
+    break;
+  case PUKE_WIDGET_SETMAXSIZE:
+      unsigned short int *pos;
+      pos = (unsigned short int *) &pm->iArg;
+      widget()->setMaximumSize(pos[0], pos[1]);
+
+      pos[0] = (short) widget()->width();
+      pos[1] = (short) widget()->height();
+      pmRet.iCommand = PUKE_WIDGET_SETMAXSIZE_ACK;
+      pmRet.iWinId = pm->iWinId;      
+      pmRet.iArg = pm->iArg;
+      pmRet.cArg[0] = 0;
+      emit outputMessage(fd, &pmRet);
+      break;
   default:
     warning("PWidget: Unkown Command: %d", pm->iCommand);
     pmRet.iCommand = PUKE_INVALID;
@@ -127,7 +154,7 @@ void PWidget::messageHandler(int fd, PukeMessage *pm)
 
 void PWidget::setWidget(QWidget *_w)
 {
-  debug("PWidget setwidget called");
+  //  debug("PWidget setwidget called");
   w = _w;
   if(w != 0){
     widget()->installEventFilter(this);
@@ -138,33 +165,33 @@ void PWidget::setWidget(QWidget *_w)
 
 QWidget *PWidget::widget()
 {
-  debug("PWidget widget called");
+  //  debug("PWidget widget called");
   return w;
 }
 
 void PWidget::setWidgetId(widgetId *pwI)
 {
   wI = *pwI;
-  debug("PWidget: set widget id %d", wI.iWinId);
+  //  debug("PWidget: set widget id %d", wI.iWinId);
 }
 
 widgetId PWidget::widgetIden()
 {
-  debug("PWidget: called widget id %d", wI.iWinId);
+  //  debug("PWidget: called widget id %d", wI.iWinId);
   return wI;
 }
 
 void PWidget::swidgetDestroyed(){
-  debug("PWidget: got destroy %d", widgetIden().iWinId);
+  //  debug("PWidget: got destroy %d", widgetIden().iWinId);
   emit widgetDestroyed(widgetIden());
 }
 
 // PWidget specific
 bool PWidget::eventFilter(QObject *o, QEvent *e)
 {
-  debug("PWidget: Got event: %d", e->type());
+  //  debug("PWidget: Got event: %d", e->type());
   if(e->type() < 20 && e->type() >= 0){
-    eventList[e->type()](o,e);
+    (this->*(eventList[e->type()]))(o,e);
   }
   else{
     PukeMessage pm;
@@ -187,7 +214,7 @@ void PWidget::eventNone(QObject *, QEvent *e)
   PukeMessage pm;
   widgetId wI;
 
-  debug("PWidget: eventNone");
+  //  debug("PWidget: eventNone");
   
   wI = widgetIden();
   pm.iCommand = - e->type() - 1020; // 1030 offset for events
@@ -266,7 +293,7 @@ void PWidget::eventFocus(QObject *, QEvent *e)
   PukeMessage pm;
   widgetId wI;
 
-  debug("PWidget: eventFocus");
+  //  debug("PWidget: eventFocus");
 
   QFocusEvent *fe = Q_FOCUS_EVENT(e);
   

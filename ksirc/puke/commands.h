@@ -179,7 +179,7 @@
 
 // Desc: open and load library file
 // iWinid: not defined
-// iArg: not defined
+// iArg: type of widget
 // cArg: file name
 #define PUKE_WIDGET_LOAD 1055
 
@@ -188,6 +188,42 @@
 // iArg: widget number
 // cArg: not defined
 #define PUKE_WIDGET_LOAD_ACK -1055
+
+// Desc: unload library file
+// iWinid: not define
+// iArg: type of widget to unload
+// cArg: no define
+#define PUKE_WIDGET_UNLOAD 1060
+
+// Desc: ack open and load library file
+// iWinid: not defined
+// iArg: not defined
+// cArg: no defined
+#define PUKE_WIDGET_UNLOAD_ACK -1060
+
+// Desc: set's a a minimum size
+// iWinid: window id
+// iArg: 2 ints, lower is width , upper is height
+// cArg: not define
+#define PUKE_WIDGET_SETMINSIZE 1065
+
+// Desc: ack for set size
+// iWinid: window id
+// iArg: 2 ints, lower is new width, upper is new height
+// cArg: not defined
+#define PUKE_WIDGET_SETMINSIZE_ACK -1065
+
+// Desc: set's a a minimum size
+// iWinid: window id
+// iArg: 2 ints, lower is width , upper is height
+// cArg: not define
+#define PUKE_WIDGET_SETMAXSIZE 1070
+
+// Desc: ack for set size
+// iWinid: window id
+// iArg: 2 ints, lower is new width, upper is new height
+// cArg: not defined
+#define PUKE_WIDGET_SETMAXSIZE_ACK -1070
 
 // 1100 defines QFrame
 // Desc: set Frame style
@@ -214,6 +250,68 @@
 // cArg: no define
 #define PUKE_QFRAME_SET_LINEWIDTH_ACK -1105
 
+// 1200 is a QLineEdit
+
+// Desc: set max line length
+// iWinId: widget to change
+// iArg: max line length
+// cArg: not defined
+#define PUKE_LINED_SET_MAXLENGTH 1200
+
+// Desc: set max line length
+// iWinId: widget to change
+// iArg: new max line length
+// cArg: not defined
+#define PUKE_LINED_SET_MAXLENGTH_ACK -1200
+
+// Desc: set echo mode, normal password, no echo, etc
+// iWinId: widget to change
+// iArg: echo mode
+// cArg: not defined
+#define PUKE_LINED_SET_ECHOMODE 1205
+
+// Desc: ack for set
+// iWinId: widget to change
+// iArg: current echo mode
+// cArg: not define
+#define PUKE_LINED_SET_ECHOMODE_ACK -1205
+
+// Desc: set text contents of widget
+// iWinId: widget to change
+// iArg: not defined
+// cArg: text to set widget too
+#define PUKE_LINED_SET_TEXT 1210
+
+// Desc: ack for set
+// iWinId: widget to change
+// iArg: not define
+// cArg: current test
+#define PUKE_LINED_SET_TEXT_ACK -1210
+
+// Desc: get current text
+// iWinId: widget to change
+// iArg:not define
+// cArg: not defined
+#define PUKE_LINED_GET_TEXT 1215
+
+// Desc: returned info for get text
+// iWinId: widget to change
+// iArg: not defined
+// cArg: text in widget
+#define PUKE_LINED_GET_TEXT_ACK -1215
+
+// Desc: return was pressed, action not defined
+// iWinId: 
+// iArg:
+// cArg:
+#define PUKE_LINED_RETURN_PRESSED 1220
+
+// Desc: return was pressed, return information
+// iWinId: widget pressed in
+// iArg: not defined
+// cArg: not defined
+#define PUKE_LINED_RETURN_PRESSED_ACK -1220
+
 // 
 // Base commands are done, next describes Widget's
 //
@@ -223,6 +321,9 @@
 
 // FRAME defines a base class
 #define PWIDGET_FRAME 3
+
+// LINED defines the simple SLE
+#define PWIDGET_LINED 4
 
 
 
@@ -252,5 +353,17 @@
 // iArg: not defined
 // cArg: not define
 #define PUKE_LAYOUT_ADDWIDGET_ACK -11010
+
+// Desc: adds a strut for the current box, ie can'be be bigger then int
+// iWinId: Layout Manager to add strut
+// iArg: strut size
+// cArg: not define
+#define PUKE_LAYOUT_ADDSTRUT 11015
+
+// Desc: ack for strut add widget
+// iWinId: Layout manager 
+// iArg: not defined
+// cArg: not define
+#define PUKE_LAYOUT_ADDSTRUT_ACK -11015
 
 

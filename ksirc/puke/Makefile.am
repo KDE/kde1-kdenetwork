@@ -59,17 +59,27 @@ libpuke.c: commands.h
 	@touch libpuke.c
 	@echo "Done"
 
-libpuke: $(libpukeOBJECTS) commands.h pframe.so
+libpuke: $(libpukeOBJECTS) commands.h pframe.so plined.so HOWTO-PUKE.txt
 	./convert_commands.pl
 	ar cr libpuke.a $(libpukeOBJECTS)
 	ranlib libpuke.a || true
 
-pframe.so: pframe.h mpframe.o
+pframe.so: pframe.cpp pframe.h mpframe.o
 	$(CXXCOMPILE) -fPIC -c pframe.cpp
 	gcc -shared -Wl -o pframe.so pframe.o mpframe.o
 
 mpframe.o: pframe.h
 	$(CXXCOMPILE) -fPIC -c mpframe.cpp
+
+plined.so: plined.cpp plined.h mplined.o
+	$(CXXCOMPILE) -fPIC -c plined.cpp
+	gcc -shared -Wl -o plined.so plined.o mplined.o
+
+mplined.o: mplined.cpp plined.h
+	$(CXXCOMPILE) -fPIC -c mplined.cpp
+
+HOWTO-PUKE.txt: HOWTO-PUKE.pod
+	pod2text HOWTO-PUKE.pod > HOWTO-PUKE.txt
 
 # just to make sure, automake makes them 
 BUILTSOURCES =	
