@@ -110,7 +110,7 @@ char *get_display(pid_t pid) {
 unsigned int user_uid;
 
 /* selection function used by scandir */
-int select_process(struct dirent *direntry) {
+int select_process(const struct dirent *direntry) {
     /* returns 1 if username owns <direntry> */
     struct stat statbuf;
 
