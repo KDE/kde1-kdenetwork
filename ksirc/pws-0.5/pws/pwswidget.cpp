@@ -32,8 +32,10 @@ PWSWidget::PWSWidget(QWidget *parent, const char *name)
 {
 
     increaser=0;
+    server=0;
 
     conf = kapp->getConfig();
+    parent->resize (QSize (580,440));
     
     //Put widgets all around the place
     
@@ -75,6 +77,8 @@ PWSWidget::PWSWidget(QWidget *parent, const char *name)
     QObject::connect (b1,SIGNAL(clicked()),SLOT(accept()));
     QPushButton *b2=new QPushButton("(Re)Start Server",this);
     QObject::connect (b2,SIGNAL(clicked()),SLOT(restart()));
+    QPushButton *b5=new QPushButton("Log Window",this);
+    QObject::connect (b5,SIGNAL(clicked()),SLOT(logWindow()));
     QPushButton *b3=new QPushButton("Add Server",this);
     QObject::connect (b3,SIGNAL(clicked()),SLOT(addServer()));
     QPushButton *b4=new QPushButton("Quit",this);
@@ -82,16 +86,18 @@ PWSWidget::PWSWidget(QWidget *parent, const char *name)
 
     b1->setFixedSize(b1->sizeHint());
     b2->setFixedSize(b2->sizeHint());
+    b5->setFixedSize(b5->sizeHint());
     b3->setFixedSize(b3->sizeHint());
     b4->setFixedSize(b4->sizeHint());
     HLay2->addStretch(10);
     HLay2->addWidget(b1,0);
     HLay2->addWidget(b2,0);
+    HLay2->addWidget(b5,0);
     HLay2->addWidget(b3,0);
     HLay2->addWidget(b4,0);
     VLay->activate();
 
-    parent->resize (QSize (540,400));
+    parent->resize (QSize (580,440));
 }
 
 PWSWidget::~PWSWidget()
@@ -101,7 +107,8 @@ PWSWidget::~PWSWidget()
 void PWSWidget::quit()
 {
     debug ("forgetting everything");
-    exit(0);
+    hide();
+    emit quitPressed(parent());
 }
 
 void PWSWidget::accept()
@@ -309,9 +316,16 @@ void PWSWidget::restart()
     command="kvt -e sh ";
     command+=KApplication::localkdedir()+"/share/apps/pws/server-script";
 
+    conf->setGroup("General");
+    QString logdir=conf->readEntry("Logs");
+
     debug ("command->%s",command.data());
 
-    system(command.data());
+    if(server != 0)
+        delete server;
+    server = new PWSServer(this, KApplication::localkdedir()+"/share/apps/pws/server-config", logdir);
+    
+//    system(command.data());
 }
 void PWSWidget::addServer()
 {
@@ -390,4 +404,11 @@ void PWSWidget::createServerPage(const char *name)
 void PWSWidget::flipPage(QListViewItem *item)
 {
     stack->raiseWidget (pages.find(item->text(1)));
+}
+
+void PWSWidget::logWindow()
+{
+    if(server != 0){
+        server->showLogWindow(TRUE);
+    }
 }

@@ -9,6 +9,8 @@
 #include <qwidget.h>
 #include <qdict.h>
 
+#include "server.h"
+
 class QListView;
 class QListViewItem;
 class QWidgetStack;
@@ -26,12 +28,17 @@ public:
     QWidgetStack *stack;
     int increaser;
     QDict <QWidget> pages;
+signals:
+    void quitPressed(QObject *);
 public slots:
     void quit();
     void accept();
     void addServer();
     void restart();
     void flipPage(QListViewItem *item);
+    void logWindow();
+private:
+    PWSServer *server;
 };
 
 #endif // PWSWIDGET_H 

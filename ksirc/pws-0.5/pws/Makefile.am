@@ -21,19 +21,10 @@ SUBDIRS = doc pics
 #DEFS = @DEFS@ -I. -I$(srcdir) -I.. -DDOTRACE
 ####### This part is very pws specific
 # you can add here more. This one gets installed 
-bin_PROGRAMS = 	pws
 noinst_LIBRARIES = libpws.a
 
 # Which sources should be compiled for pws.
-pws_SOURCES	= pws.cpp\
-                  pwswidget.cpp\
-                  main.cpp\
-                  typelayout.cpp\
-                  tlform.cpp\
-                  tlwidget.cpp\
-                  pages.cpp\
-                  kfileio.cpp\
-                  addwizard.cpp
+
 
 libpws_a_SOURCES = \
                   pws.cpp\
@@ -43,20 +34,14 @@ libpws_a_SOURCES = \
                   tlwidget.cpp\
                   pages.cpp\
                   kfileio.cpp\
-                  addwizard.cpp
-
-# the library search path
-pws_LDFLAGS = @all_libraries@ @KDE_RPATH@
-
-# the libraries to link against. Be aware of the order. First the libraries,
-# that depend on the following ones.
-pws_LDADD  = -lkfile -lkfm -lkdeui -lkdecore -lqt -lX11 -lXext @LIBSOCKET@     
+                  addwizard.cpp\
+                  server.cpp
 
 # this option you can leave out. Just, if you use "make dist", you need it
-noinst_HEADERS = pws.h pwswidget.h
+noinst_HEADERS = pws.h pwswidget.h server.h
 
 # just to make sure, automake makes them 
-BUILTSOURCES =	pws.moc pwswidget.moc
+BUILTSOURCES =	pws.moc pwswidget.moc server.moc
 
 # if you "make distclean", this files get removed. If you want to remove
 # them while "make clean", use CLEANFILES
@@ -109,3 +94,8 @@ pages.moc: pages.h
 addwizard.cpp:addwizard.moc
 addwizard.moc: addwizard.h
 	$(MOC) addwizard.h -o addwizard.moc
+
+server.cpp:server.moc
+server.moc: server.h
+	$(MOC) server.h -o server.moc
+        

@@ -15,7 +15,10 @@ class PWS : public KTopLevelWidget
 	Q_OBJECT
 public:
 	PWS(QWidget *parent = 0, const char *name = 0);
-	virtual ~PWS();
+        virtual ~PWS();
+
+signals:
+        void quitPressed(QObject *);
 
 protected slots:
 	void invokeHelp();
