@@ -54,6 +54,8 @@
 
 extern QApplication *qApp;
 
+#define MAXLOOPNEST (MAX_SCRIPT_ENTRIES/2)
+
 class ConnectWidget : public QWidget {
 
   Q_OBJECT
@@ -100,11 +102,11 @@ private:
   int vmain;
   int scriptindex;
 
-  static const int maxloopnest=(MAX_SCRIPT_ENTRIES/2);
+//  static const int maxloopnest=(MAX_SCRIPT_ENTRIES/2);
   int loopnest;
-  int loopstartindex[maxloopnest];
+  int loopstartindex[MAXLOOPNEST];
   bool loopend;
-  QString loopstr[maxloopnest];
+  QString loopstr[MAXLOOPNEST];
 
   bool semaphore;
   QTimer *inittimer;

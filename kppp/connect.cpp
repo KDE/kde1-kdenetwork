@@ -455,7 +455,7 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
         QString bm = "LoopStart ";
         bm += gpppdata.script(scriptindex);
 
-	if ( loopnest > (maxloopnest-2) ) {
+	if ( loopnest > (MAXLOOPNEST-2) ) {
 		bm += "ERROR: Nested too deep, ignored.";
 		vmain=20;
 		scriptindex++;

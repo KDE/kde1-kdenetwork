@@ -1,3 +1,9 @@
+Sun Dec 21 10:19:18 1997  Peter Silva <peter.silva@videotron.ca>
+
+	* Changed maxloopnest to MAXLOOPNEST for portability reasons 
+	  (See developers guide, about const int)
+	* Set window titles when connected to account name.
+
 Fri Dec 19 22:49:18 1997  Bernd Johannes Wuebben  <wuebben@petit.cornell.edu>
 
 	* Extended the grammar of the tarif rules. 

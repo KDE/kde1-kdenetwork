@@ -151,13 +151,14 @@ void ConWindow::startClock() {
   minutes = 0;
   seconds = 0;
   hours = 0;
+  QString title ;
+
+  title = gpppdata.accname();
 
   if(gpppdata.get_show_clock_on_caption()){
-    this->setCaption("kppp 00:00");
+    title += " 00:00" ; 
   }
-  else{
-    this->setCaption("kppp");
-  }
+  this->setCaption(title);
 
   timelabel2->setText("00:00:00");
   clocktimer->start(1000);
@@ -210,7 +211,8 @@ void ConWindow::timeclick() {
     time_string2.sprintf("%02d:%02d:%02d",hours,minutes,seconds);
   }
 
-  caption_string = "kppp ";
+  caption_string = gpppdata.accname();
+  caption_string += " ";
   caption_string += time_string;
   
 
