@@ -69,9 +69,9 @@ mobjFinder.cpp
 ksircstatic_SOURCES = $(ksirc_SOURCES)
 
 # the library search path
-ksirc_LDFLAGS = -export-dynamic @all_libraries@ # -L$(srcdir)/KSProgress -L$(srcdir)/KSTicker -L$(srcdir)/KSCutDialog -L$(srcdir)/KSPrefs -L$(srcdir)/KSColourPicker -L$(srcdir)/puke
+ksirc_LDFLAGS = -export-dynamic @all_libraries@ # -L$(srcdir)/KSProgress -L$(srcdir)/KSTicker -L$(srcdir)/KSCutDialog -L$(srcdir)/KSPrefs -L$(srcdir)/KSColourPicker -L$(srcdir)/puke 
 
-ksircstatic_LDFLAGS = $(ksirc_LDFLAGS)
+ksircstatic_LDFLAGS = --nostdlib $(ksirc_LDFLAGS)
 
 # the libraries to link against. Be aware of the order. First the libraries,
 # that depend on the following ones.
@@ -80,7 +80,7 @@ ksirc_LDADD   = ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDia
 ksircstatic_LDADD = ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a ./KSColourPicker/libkscolourpicker.a ./puke/.libs/libpuke.a
 
 if COMPILE_KSIRC_STATIC
-STATIC_LIBS = $(static_libkde) $(static_libqt) $(static_libstdc) $(static_pthread) -lX11 -lXext @LIBSOCKET@ -ldl
+STATIC_LIBS = $(static_libkde) $(static_libqt) $(static_libstdc) $(static_pthread) -lX11 -lXext @LIBSOCKET@ -ldl -lm
 endif
 
 kdoc:
@@ -94,7 +94,7 @@ cdate.h: getdate
 
 ksircstatic: cdate.h $(ksircstatic_OBJECTS) $(ksircstatic_DEPENDENCIES) $(static_libkde) $(static_libqt)
 	@rm -f ksircstatic
-	$(LINK) $(ksircstatic_LDFLAGS) $(ksircstatic_OBJECTS) $(ksircstatic_LDADD) $(STATIC_LIBS) $(LIBS)
+	$(LIBTOOL) --mode=link $(CC) $(CXXFLAGS) $(LDFLAGS) -o $@ $(ksircstatic_LDFLAGS) $(ksircstatic_OBJECTS) $(ksircstatic_LDADD) $(STATIC_LIBS) $(LIBS)
 
 #dummy:
 

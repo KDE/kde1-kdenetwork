@@ -10,7 +10,7 @@
 #include "kscolourpicker.h"
 #include "../config.h"
 #include "kconfig.h"
-#include "kspainter.h"
+#include "../kspainter.h"
 
 extern KConfig *kConfig;
 extern global_config *kSircConfig;

@@ -29,19 +29,15 @@ kscolourpicker.cpp \
 mkscolourpicker.cpp \
 kscolourpickerData.cpp \
 mkscolourpickerData.cpp \
-kspainter.cpp \
-mkspainter.cpp
 
 noinst_HEADERS = \
 kscolourpicker.h \
 kscolourpickerData.h \
-kspainter.h
 
 # just to make sure, automake makes them 
 BUILTSOURCES = \
 mkscolourpicker.cpp \
-mkscolourpickerData.cpp \
-mkspainter.cpp	
+mkscolourpickerData.cpp 
 
 # if you "make distclean", this files get removed. If you want to remove
 # them while "make clean", use CLEANFILES

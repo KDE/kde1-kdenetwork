@@ -3,7 +3,7 @@
 
 class PTabDialog;
 
-#include <qtabdialog.h>
+#include <qtabdlg.h>
 #include "pmessage.h"
 #include "pwidget.h"
 

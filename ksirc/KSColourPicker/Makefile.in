@@ -153,19 +153,14 @@ kscolourpicker.cpp \
 mkscolourpicker.cpp \
 kscolourpickerData.cpp \
 mkscolourpickerData.cpp \
-kspainter.cpp \
-mkspainter.cpp
-
 noinst_HEADERS = \
 kscolourpicker.h \
 kscolourpickerData.h \
-kspainter.h
-
-# just to make sure, automake makes them 
 BUILTSOURCES = \
 mkscolourpicker.cpp \
-mkscolourpickerData.cpp \
-mkspainter.cpp	
+mkscolourpickerData.cpp 
+
+# just to make sure, automake makes them 
 
 # if you "make distclean", this files get removed. If you want to remove
 # them while "make clean", use CLEANFILES
@@ -182,14 +177,13 @@ LDFLAGS = @LDFLAGS@
 LIBS = @LIBS@
 libkscolourpicker_a_LIBADD = 
 libkscolourpicker_a_OBJECTS =  kscolourpicker.o mkscolourpicker.o \
-kscolourpickerData.o mkscolourpickerData.o kspainter.o mkspainter.o
+kscolourpickerData.o mkscolourpickerData.o mkscolourpicker.o \
+mkscolourpickerData.o
 AR = ar
 CXXFLAGS = @CXXFLAGS@
 CXXCOMPILE = $(CXX) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
 LTCXXCOMPILE = $(LIBTOOL) --mode=compile $(CXX) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
 CXXLINK = $(LIBTOOL) --mode=link $(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@
-HEADERS =  $(noinst_HEADERS)
-
 DIST_COMMON =  Makefile.am Makefile.in
 
 
@@ -198,8 +192,7 @@ DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
 TAR = tar
 GZIP = --best
 DEP_FILES =  .deps/kscolourpicker.P .deps/kscolourpickerData.P \
-.deps/kspainter.P .deps/mkscolourpicker.P .deps/mkscolourpickerData.P \
-.deps/mkspainter.P
+.deps/mkscolourpicker.P .deps/mkscolourpickerData.P
 CXXMKDEP = $(CXX) -M $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
 SOURCES = $(libkscolourpicker_a_SOURCES)
 OBJECTS = $(libkscolourpicker_a_OBJECTS)
@@ -344,7 +337,7 @@ install: install-exec install-data all
 
 uninstall: uninstall-local
 
-all: Makefile $(LIBRARIES) $(HEADERS)
+all: Makefile $(LIBRARIES)
 
 install-strip:
 	$(MAKE) INSTALL_PROGRAM='$(INSTALL_PROGRAM) -s' INSTALL_SCRIPT='$(INSTALL_PROGRAM)' install

@@ -58,7 +58,6 @@ general.h \
 startup.h \
 UserMenuRef.h \
 UserMenuRefData.h \
-../kspainter.h \
 defaultfilters.h \
 defaultfiltersdata.h
 
