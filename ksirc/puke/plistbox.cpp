@@ -108,6 +108,23 @@ void PListBox::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
     }
     emit outputMessage(fd, &pmRet);
     break;
+  case PUKE_LISTBOX_SET_SCROLLBAR:
+    widget()->setScrollBar((bool) pm->iArg);
+    pmRet.iCommand = PUKE_LISTBOX_SET_SCROLLBAR_ACK;
+    pmRet.iWinId = pm->iWinId;
+    pmRet.iArg = 0;
+    pmRet.cArg[0] = 0;
+    emit outputMessage(fd, &pmRet);
+    break;
+  case PUKE_LISTBOX_SET_AUTO_SCROLLBAR:
+    widget()->setAutoScrollBar((bool) pm->iArg);
+    pmRet.iCommand = PUKE_LISTBOX_SET_AUTO_SCROLLBAR_ACK;
+    pmRet.iWinId = pm->iWinId;
+    pmRet.iArg = 0;
+    pmRet.cArg[0] = 0;
+    emit outputMessage(fd, &pmRet);
+    break;
+
   default:
     PTableView::messageHandler(fd, pm);
   }

@@ -643,6 +643,30 @@
 // cArg: contents
 #define PUKE_LISTBOX_HIGHLIGHTED_ACK -1690
 
+// Desc: set scroll bar
+// iWinId: window id
+// iArg: bool, enable/disable
+// cArg: undef
+#define PUKE_LISTBOX_SET_SCROLLBAR 1695
+
+// Desc: set scroll bar ack
+// iWinId: window id
+// iArg: undef
+// cArg: undef
+#define PUKE_LISTBOX_SET_SCROLLBAR_ACK -1695
+
+// Desc: set auto scroll bar
+// iWinId: window id
+// iArg: bool, enable/disable
+// cArg: undef
+#define PUKE_LISTBOX_SET_AUTO_SCROLLBAR 1696
+
+// Desc: set auto scroll bar ack
+// iWinId: window id
+// iArg: undef
+// cArg: undef
+#define PUKE_LISTBOX_SET_AUTO_SCROLLBAR_ACK -1696
+
 // Desc: item selected
 // iWinId: window id
 // iArg: index

@@ -170,6 +170,25 @@ sub removeItem {
 
 }
 
+sub setScrollBar {
+  my $self = shift;
+
+  $self->sendMessage('iCommand' => $::PUKE_LISTBOX_SET_SCROLLBAR,
+                     'iArg' => shift(),
+                     'CallBack' => sub {});
+
+}
+
+sub setAutoScrollBar {
+  my $self = shift;
+
+  $self->sendMessage('iCommand' => $::PUKE_LISTBOX_SET_AUTO_SCROLLBAR,
+                     'iArg' => shift(),
+                     'CallBack' => sub {});
+
+}
+
+
 package main; #FOLD00
 
 1;
