@@ -3,10 +3,12 @@ INCLUDES = $(all_includes)
 #DEFS += -DKRN
 DEFS += -DKRN -DCHARSETS
 
-#LDADD = $(LIBCOMPAT) $(LIBSOCKET) $(all_libraries) -lkfm -lkhtmlw -ljscript -lkdeui -lkdecore -lkfile $(LIBJPEG) -lqt -lXext -lX11 -lmimelib -luulib -lgdbm $(KDE_RPATH)
+LDFLAGS = $(all_libraries) $(KDE_RPATH)
+krn_LDADD = -lkfile -lkfm -lkhtmlw -ljscript -lkdeui -lkdecore $(LIBJPEG) \
+	-lqt -lXext -lX11 -lmimelib -lgdbm $(LIBCOMPAT) $(LIBSOCKET)
 
-krn_LDFLAGS = $(LIBCOMPAT) $(LIBSOCKET) $(all_libraries) -lkfm -lkhtmlw -ljscript -lkdeui -lkdecore -lkfile $(LIBJPEG) -lqt -lXext -lX11 -lmimelib -lgdbm $(KDE_RPATH)
-kdecode_LDFLAGS = $(LIBCOMPAT) $(LIBSOCKET) $(all_libraries) -lkdeui -lkdecore -lkfile -lqt -lXext -lX11 -luulib $(KDE_RPATH)
+kdecode_LDADD = -lkfile -lkfm -lkdeui -lkdecore -lqt -lXext \
+	-lX11 -luulib $(KDE_RPATH) $(LIBCOMPAT) $(LIBSOCKET)
 
 ICONDIR = $(kde_icondir)
 MINIDIR =  $(kde_minidir)
