@@ -39,6 +39,10 @@
 
 #include <errno.h>
 
+#ifdef HAVE_SYS_PARAM_H
+#include <sys/param.h>
+#endif
+
 #include "pap.h"
 #include "chap.h"
 #include "connect.h"
@@ -48,12 +52,8 @@
 #include "docking.h"
 #include "loginterm.h"
 
-#ifdef HAVE_SYS_PARAM_H
-#include <sys/param.h>
-#endif
-
 #ifdef NO_USLEEP
-int usleep( long usec );
+int usleep (long usec);
 #endif 
 
 const int MAX_ARGS = 100;
