@@ -463,12 +463,14 @@ void NNTP::groupList(bool fromserver)
             return;
         }
 
-        QString tstr(mTextResponse.length()+1);
-        qstrncpy(tstr.data(),mTextResponse.data(),mTextResponse.length());
+        QString tstr;
+        if (QFile::exists(ac.data()))
+            tstr=kFileToString(ac.data());
+        tstr+=mTextResponse.c_str();
         if(kStringToFile(tstr,ac.data(),false,true))
         {
-            QString command="sort <";
-            command=command+ac+">"+ac+"1; mv "+ac+"1 "+ac;
+            QString command="cat ";
+            command=command+ac+"| cut -d\" \" -f1 |sort|uniq >"+ac+"1; mv "+ac+"1 "+ac;
             system (command.data());
         }
         mTextResponse.clear();
@@ -484,10 +486,11 @@ void NNTP::groupList(bool fromserver)
                 QString s=st.readLine();
                 if (s.isEmpty())
                     break;
+//                s=s.left(s.find(' '));
                 NewsGroup *gr=groupDict.find(s.data());
                 if (!gr)
                 {
-                    gr=new NewsGroup(s.left(s.find(' ')));
+                    gr=new NewsGroup(s);
                     groupDict.insert(s.data(),gr);
                 }
             }

@@ -62,7 +62,7 @@ private slots:
     void fillTree();
     void tag(NewsGroup *group);
     void subscribe(NewsGroup *group);
-    void checkUnread();
+    void checkUnread(NewsGroup *group);
     void getSubjects(NewsGroup *group);
     void getArticles(NewsGroup *group);
     void findGroup ();

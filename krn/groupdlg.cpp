@@ -59,7 +59,6 @@
 #define DISCONNECT 5
 #define GET_ACTIVE 3
 #define SUBSCRIBE 4
-#define LOAD_FILES 2
 #define CHECK_UNREAD 6
 #define CHANGE_IDENTITY 8
 #define CONFIG_NNTP 9
@@ -92,12 +91,18 @@ bool checkPixmap(KTreeViewItem *item,void *)
 {
     QPixmap p;
     QString name(item->getText());
+    
     if (name.right(1)==".") //it's a folder
     {
         p=kapp->getIconLoader()->loadIcon("krnfolder.xpm");
         item->setPixmap(p);
         return false;
     }
+    int i=name.find(' ');
+    if (i>0)
+    {
+        name=name.left(i);;
+    };
     if (tagged.find(name.data())!=-1) //it's tagged
     {
         p=kapp->getIconLoader()->loadIcon("tagged.xpm");
@@ -236,7 +241,7 @@ Groupdlg::Groupdlg(const char *name):Inherited (name)
                 conf->readNumEntry("GroupW",400),
                 conf->readNumEntry("GroupH",400));
     show();
-    actions (LOAD_FILES);
+    loadSubscribed();
     fillTree();
     
     conf->setGroup("NNTP");
@@ -696,12 +701,6 @@ bool Groupdlg::actions (int action,NewsGroup *group)
             offline();
             break;
         }
-    case LOAD_FILES:
-        {
-            loadSubscribed();
-//            loadActive();
-            break;
-        }
     case GET_ACTIVE:
         {
             if (needsConnect())
@@ -734,7 +733,7 @@ bool Groupdlg::actions (int action,NewsGroup *group)
             if (needsConnect())
             {
                 printf ("check_unread\n");
-                checkUnread();
+                checkUnread(group);
             }
             break;
         }
@@ -1024,7 +1023,13 @@ bool Groupdlg::currentActions(int action)
         NewsGroup *g=0;
         if (list->getCurrentItem())
         {
-            const char *text = list->getCurrentItem ()->getText ();
+            QString temp = list->getCurrentItem ()->getText ();
+            int i=temp.find(' ');
+            if (i>0)
+            {
+                temp=temp.left(i);;
+            };
+            char *text=temp.data();
             g=groupDict.find(text);
         }
         actions(action,g);
@@ -1081,7 +1086,7 @@ void Groupdlg::getSubjects(NewsGroup *group)
     }
 }
 
-void Groupdlg::checkUnread()
+void Groupdlg::checkUnread(NewsGroup *group)
 {
     QString l,status,howmany,first,last,gname;
     KPath p;

@@ -163,6 +163,7 @@ int main( int argc, char **argv )
     
     // Create the articles database
 
+
     artinfopath=krnpath+"/artinfo.db";
     artdb=gdbm_open(artinfopath.data(),0,GDBM_WRCREAT | GDBM_FAST,448,0);
     artinfopath=krnpath+"/old_artinfo.db";
@@ -173,6 +174,8 @@ int main( int argc, char **argv )
     // Fill the unreadDict
     datum key=gdbm_firstkey ( artdb );
     datum nextkey;
+
+
     while ( key.dptr )
     {
         unreadDict.insert(key.dptr,key.dptr);
@@ -184,7 +187,8 @@ int main( int argc, char **argv )
     // Load the rules
     ruleFile=new KSimpleConfig(krnpath+"/rules");
     Rule::updateGlobals();
-    
+
+
     Groupdlg k;
     main_widget = &k;
     
@@ -192,7 +196,7 @@ int main( int argc, char **argv )
     
     k.setMinimumSize( 250, 250 );
     k.show();
-    
+
     a.exec();
 
     
@@ -297,14 +301,12 @@ void expireCache()   // robert's cache stuff
     
     NewsGroup *iter;
 
-    debug ("flag0");
     for (it.toFirst();it.current(); ++it)
     {
         iter=it.current();
         if (iter->isVisible)
             iter->isVisible->hide();
     }
-    debug ("flag1");
     ExpireStatusDlg *dlg=new ExpireStatusDlg();
 }
 

@@ -61,7 +61,6 @@ Article::Article (const char *_ID)
     isread=false;
     isavail=true;
     ismarked=false;
-    refcount=0;
     threadDepth=0;
     expire=true;  // robert's cache stuff
     refsLoaded=false;
@@ -77,7 +76,6 @@ Article::Article(void)
     isread=false;
     isavail=true;
     ismarked=false;
-    refcount=0;
     threadDepth=0;
     expire=true;  // robert's cache stuff
     refsLoaded=false;
@@ -585,13 +583,18 @@ void NewsGroup::getMessages(NNTP *server)
 void NewsGroup::catchup()
 {
     debug ("catching up");
-    load();
     getList();
+    int count=0;
     for (Article *art=artList.first();art!=0;art=artList.next())
     {
+        count++;
         if (!art->isRead())
         {
             art->setRead();
+            if (!(count%5))
+            {
+                qApp->processEvents();
+            }
         }
     }
 }
@@ -600,8 +603,6 @@ int NewsGroup::countNew(NNTP *server)
 {
     int count = 0;
     
-    load();
-
     getList();
 
     bool s=false;
@@ -922,21 +923,6 @@ void ArticleList::thread(bool threaded,int key1,int key2,int key3,int key4)
     }
 
     free (thrArr);
-    
-    /*
-    thriter.toFirst();
-    while (thriter.current())
-    {
-        QListIterator <Article> artiter(*thriter.current());
-        while (artiter.current())
-        {
-            this->append(artiter.current());
-            ++artiter;
-        }
-        thriter.current()->clear();
-        ++thriter;
-    }
-    */
     delete d;
 }
 
