@@ -1,3 +1,25 @@
+/**********************************************************************
+ 
+ The IO Broadcaster
+
+ $$Id$$
+
+ The IO broadcaster bassed on the ksircmessage receiver takes a
+ message and send it all ksircmessage receivers, except of course it
+ self.
+
+ It does the same with control_messages.
+
+ Implementation: 
+
+  Make a QDictIterator, iterate over the windows sedning to each
+  broadcaster that's not itself.  
+
+  *** NOTE! don't have 2 broadcasters or else they'll broadcast forever!
+
+**********************************************************************/
+ 
+
 #include "ioBroadcast.h"
 #include <iostream.h>
 

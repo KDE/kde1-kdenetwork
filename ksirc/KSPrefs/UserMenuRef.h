@@ -44,7 +44,5 @@ private:
 
       void updateMainListBox();
 
-      int ListBoxHighlighted;
-
 };
 #endif // UserMenuRef_included

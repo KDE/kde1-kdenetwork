@@ -1,11 +1,25 @@
+/*************************************************************************
+
+ Main KSirc start 
+
+ $$Id$$
+
+ Main start file that defines 3 global vars, etc
+
+ Does nothing to special, start create new KApplcaiton (incorrectly,
+ btw, should use the code Kalle posted so it can be session managment
+ restarted, etc) loads colours then fires off the main widget.  On
+ exit it calls a sync so the kConfig get written.  (Is this a bug?)
+
+*************************************************************************/
+
 /*
  * Needed items
  * 1. Move the fork and dsirc out of the main, and into the ksirc object
  * 2. Multiple toplevel widgets.
  * 3. Handle sig chils and sig pipes to control dsircc
  * 4. Send a /quit and/or kill dsirc on exit
- *
- */
+ * */
 
 
 //#include "toplevel.h"

@@ -107,6 +107,7 @@ servercontroller::servercontroller
 	MenuBar->insertItem("&Options", options);
 
 	setMenu(MenuBar);
+	setView(BaseBorder);
 	
 	ConnectionTree->setExpandLevel(2);
 	open_toplevels = 0;

@@ -1,3 +1,45 @@
+/************************************************************************
+
+ AHistLineEdit
+
+ $$Id$$
+
+ An extended QLineEdit with history scroll back and focus controls.
+
+ Function:
+
+   Each time a line is saved, to a max of 10 when the user hits enter.
+   The arrow keys are used to scroll through the history list, rolling
+   arround at the end.
+
+   When focus is gained or lost it emait the approriate signals, This
+   is so the toplevel can track who has focus.
+
+ signals:
+   gotFocus: duh!
+   
+   lostFocus: no shit sherlock
+
+ Implementation:
+
+   protected:
+
+     keyPressEvent: Filter key presses looking for up arrow, down
+       arrow or enter.  UpArrow saves the current line at the end then
+       scroll. No more processing.  DownArrow does the oposite.  Enter
+       sves the line, but then passes on the event for normal
+       processing.
+
+     focusInEvent: emits neded isngal
+     focusOutEvent: ditto
+
+   Variables:
+     QStrList: current list of history items.
+     current: what I think is the current list item.
+
+*************************************************************************/
+
+
 #include "ahistlineedit.h"
 #include <iostream.h>
 

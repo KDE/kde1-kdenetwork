@@ -1,9 +1,62 @@
 /**********************************************************************
 
-	--- Qt Architect generated file ---
+ User Menu Controller
 
-	File: UserMenuRef.cpp
-	Last generated: Fri Nov 21 13:01:21 1997
+ $$Id$$
+
+ Setups up and allow you to configure and change the user menu.  
+
+ QTArch file!
+
+ Function:
+
+   Called with by UserMenuRef(QList<UserControlMenu>, ...) where the
+   QList is a menu items on by one.  It allows you update/add/delete
+   all the diffrent menu items.
+
+
+ Interface:
+
+ signals:
+
+   updateMenu, emitted when the menu is changed to the parent can
+   update.
+
+ Implementation:
+
+ protected slots:
+
+   newHighlight(int):
+     connected to the list box highlight(int) signal.  Updates all
+     required line edits and combo menus etc when a highligh changes.
+
+   insertMenu():
+     read the the line edits and insert a new menu into the current
+     list box location.
+
+   deleteMenu():
+     delete the current item.
+
+   modifyMenu():
+     update the currrent menu item to conents of the line edits.
+
+   typeSetActive():
+      connects to the combo box so when the type is changed all needed
+      updates are done.
+
+   terminate():
+      close the window forefully.
+
+ private:
+
+    updateMainListBox():
+      "draws" the menu into the QListBox representation.
+        
+ Varibles:
+   *user_menu: a ptr to the user menu being edited.  after changes are
+   made that you want to keep emit updateMenu for the parent to
+   update.
+    
 
  *********************************************************************/
 

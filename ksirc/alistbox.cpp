@@ -1,3 +1,15 @@
+/*******************************************************************
+
+ aListBox
+
+ $$Id$$
+
+ List box that outputs a right click mouse so I can popup a qpopupmenu.
+
+ nothing special.
+
+*******************************************************************/
+
 #include "alistbox.h"
 #include <iostream.h>
 

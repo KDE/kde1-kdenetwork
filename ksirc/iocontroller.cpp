@@ -140,11 +140,11 @@ void KSircIOController::stdout_read(KProcess *, char *_buffer, int buflen)
   QString name, line;
   char buf[buflen+1];
 
-  strncpy(buf, _buffer, buflen);
+  strncpy(buf, _buffer, buflen+1);
 
   //  buf[buflen] = 0;
 
-  QString buffer(buf, buflen);
+  QString buffer(buf, buflen+1);
 
   name = "!default";
 
@@ -153,7 +153,7 @@ void KSircIOController::stdout_read(KProcess *, char *_buffer, int buflen)
     holder.truncate(0);
   }
 
-  if(buffer[buffer.length()] != '\n'){
+  if(buffer[buffer.length()-1] != '\n'){
     pos2 = buffer.length();
     pos = buffer.findRev('\n', pos2);
     if(pos != -1){
