@@ -79,7 +79,10 @@ public:
    *  currency-settings
    */
   QString currencyString(double f);
-  
+
+  /// sets the start time -- must be called when the connection has bee established
+  void setStartTime(QDateTime dt);
+
   /// returns the "per-connection" costs
   double perConnectionCosts();
 
@@ -132,12 +135,17 @@ protected:
 protected:
   QString _name;
   QString _currency_symbol;
+  QDateTime starttime;
   int _currency_position;
   int _currency_digits;
   double default_costs;
   double _minimum_costs;
   double  default_len;
   double pcf;
+  bool have_flat_init_costs;
+  double flat_init_duration;
+  double flat_init_costs;
+
   QArray<RULE> rules;
 };
 

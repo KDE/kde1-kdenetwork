@@ -92,7 +92,7 @@ void Accounting::timerEvent(QTimerEvent *t) {
     double newLen;
 
     rules.getActiveRule(QDateTime::currentDateTime(), newCosts, newLen);
-    if(newLen < 9) {
+    if(newLen < 1) { // changed to < 1     
       slotStop();
       return; // no default rule found
     }
@@ -143,6 +143,7 @@ void Accounting::slotStart() {
     _lastcosts = 0.0;
     _lastlen   = 0.0;
     _session = rules.perConnectionCosts();
+    rules.setStartTime(QDateTime::currentDateTime());
     acct_timer_id = startTimer(1);
      if(UPDATE_TIME > 0)
        update_timer_id = startTimer(UPDATE_TIME);

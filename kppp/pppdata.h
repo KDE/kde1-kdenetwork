@@ -55,7 +55,7 @@
 //string lengths for struct accdata
 
 #define ACCNAME_SIZE 50
-#define PHONENUMBER_SIZE 25
+#define PHONENUMBER_SIZE 50
 #define SPEED_SIZE 6
 #define COMMAND_SIZE 255
 #define IPADDR_SIZE 15

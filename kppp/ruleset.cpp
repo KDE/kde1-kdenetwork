@@ -40,6 +40,10 @@ RuleSet::RuleSet() {
   _currency_position = CURRENCY_RIGHT;
   _currency_digits = 2;
   _minimum_costs = 0;
+  flat_init_costs = 0.0;
+  flat_init_duration = 0;
+  have_flat_init_costs = false;
+  
   pcf = 0.0;
 }
 
@@ -81,6 +85,11 @@ int RuleSet::dayNameToInt(const char *s) {
 }
 
 int RuleSet::load(const char *filename) {
+
+  flat_init_costs = 0.0;
+  flat_init_duration = 0;
+  have_flat_init_costs = false;
+
   QFile f(filename);
 
   // delete old rules
@@ -297,6 +306,29 @@ bool RuleSet::parseRate(double &costs, double &len, QString s) {
 }
 
 bool RuleSet::parseLine(QString &s) {
+
+  // for our french friends -- Bernd
+  if(s.contains(QRegExp("flat_init_costs=(.*"))) {
+    // parse the time fields
+    QString token = s.mid(s.find("flat_init_costs=(") + 17, 
+			  s.find(")")-s.find("flat_init_costs=(") - 17);
+    //    printf("TOKEN=%s\n",token.data());
+    
+    if(!parseRate(flat_init_costs,flat_init_duration,token))
+      return FALSE;
+
+    //printf("COST %f DURATION %f\n",flat_init_costs,flat_init_duration);
+
+    if(! (flat_init_costs >= 0.0) )
+      return FALSE;
+    if(! (flat_init_duration > 0.0))
+      return FALSE;
+
+    have_flat_init_costs = true;
+    return TRUE;
+  }
+
+
   if(s.contains(QRegExp("on(.*)between(.*)use(.*)"))) {
     // parse the time fields
     QString token = s.mid(s.find("between(") + 8, 
@@ -328,7 +360,7 @@ bool RuleSet::parseLine(QString &s) {
     _name = s.right(s.length()-5);
     return (bool)(_name.length() > 0);
   }
-  
+
 
   // check default entry
   if(s.contains(QRegExp("default=(.*)"))) {
@@ -381,10 +413,26 @@ bool RuleSet::parseLine(QString &s) {
   return FALSE;
 }
 
+void RuleSet::setStartTime(QDateTime dt){
+
+  starttime = dt;
+
+}
+
 void RuleSet::getActiveRule(QDateTime dt, double &costs, double &len) {
   // use default costs first
   costs = default_costs;
   len = default_len;
+
+  //printf("In getActiveRule\n");
+  if(have_flat_init_costs){
+
+    costs = flat_init_costs;
+    len = flat_init_duration;
+    have_flat_init_costs = false;
+    //printf("getActiveRule FLATINITCOSTS\n");
+    return;
+  }
 
   // check every rule
   for(int i = 0; i < (int)rules.size(); i++) {

@@ -48,6 +48,8 @@ minimum_costs=0.0
 # "unit", while "180" is the duration of such a unit in seconds.
 default=(0.742, 180)
 
+flat_init_costs=(100,10)
+
 on (monday..sunday)   between (06:00..08:00) use (0.742, 360)
 on (monday..sunday)   between (21:30..22:30) use (0.742, 360)
 on (monday..sunday)   between (22:30..00:00) use (0.742, 540)
