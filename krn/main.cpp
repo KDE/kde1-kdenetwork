@@ -26,6 +26,7 @@
 #include <kapp.h>
 #include <kiconloader.h>
 #include <Kconfig.h>
+#include <kkeyconf.h>
 
 #include "asker.h"
 #include "groupdlg.h" 
@@ -90,7 +91,7 @@ int main( int argc, char **argv )
     
     k.setMinimumSize( 250, 250 );
     k.setCaption( "KRN 0.0.3 - Group list" );
-    
+
     k.show();
     
     return a.exec();

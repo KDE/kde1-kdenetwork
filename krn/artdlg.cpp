@@ -26,6 +26,7 @@
 #include <qclipbrd.h>
 
 #include <kmsgbox.h>
+#include <kkeyconf.h>
 #include <html.h>
 
 #include <mimelib/mimepp.h>
@@ -191,7 +192,8 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     status->insertItem ("", 1);
     status->show ();
     setStatusBar (status);
-    
+
+
     acc=new QAccel (this);
     acc->insertItem(Key_N,NEXT);
     acc->insertItem(Key_P,PREV);
@@ -207,7 +209,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     acc->insertItem(ALT + Key_Down, NEXT);
     acc->insertItem(Key_Up, SCROLL_UP_ARTICLE);
     acc->insertItem(Key_Down, SCROLL_DOWN_ARTICLE);
-    
+        
     QObject::connect (acc,SIGNAL(activated(int)),this,SLOT(actions(int)));
     QObject::connect (messwin,SIGNAL(spawnArticle(QString)),this,SLOT(loadArt(QString)));
     resize(600,400);

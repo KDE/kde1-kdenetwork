@@ -27,6 +27,7 @@
 
 #include <kmsgbox.h>
 #include <Kconfig.h>
+#include <kkeyconf.h>
 
 #include "PostDialog.h"
 
@@ -49,6 +50,7 @@
 #define TAGGROUP 11
 #define HELP_CONTENTS 12
 #define HELP_ABOUT 13
+#define CONFIG_KEYS 14
 
 extern QString krnpath,cachepath,artinfopath,pixpath;
 extern KConfig *conf;

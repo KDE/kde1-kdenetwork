@@ -82,18 +82,11 @@ void Article::formHeader(QString *s)
         DwMailbox fromaddr;
         fromaddr.FromString (From.data());
         fromaddr.Parse();
-
+        
         s1=fromaddr.FullName().c_str();
-        if (s1)
-        {
-            sprintf (tempbuf,"%s",s1);
-        }
-        else
-        {
-            s2=fromaddr.LocalPart().c_str();
-            s3=fromaddr.Domain().c_str();
-            sprintf (tempbuf,"%s@%s",s2,s3);
-        }
+        s2=fromaddr.LocalPart().c_str();
+        s3=fromaddr.Domain().c_str();
+        sprintf (tempbuf,"%s <%s@%s>",s1,s2,s3);
         s->append(tempbuf);
     }
     else
