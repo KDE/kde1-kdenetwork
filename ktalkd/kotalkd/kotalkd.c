@@ -97,28 +97,20 @@ int main(int argc, char *argv[])
         open_local_socket(hostname);
         
 	for (;;) {
-
-                cc = recv(talkd_sockt, (char *)mp, sizeof (*mp), 0);
-		if (cc != sizeof (*mp)) {
-			if ((cc < 0) && (errno != EINTR))
-                            syslog(LOG_WARNING, "recv: %m");
-			continue;
-		}
-		lastmsgtime = time(0);
-		process_request(mp, &response);
-                if (debug_mode) print_old_response("=> response", &response);
-                /* can block here, is this what I want? */
-                cc = sendto(talkd_sockt, (char *)&response,
-                            sizeof (response), 0, (struct sockaddr *)&mp->ctl_addr,
-                            sizeof (mp->ctl_addr));
-                if (cc != sizeof (response))
-                    syslog(LOG_WARNING, "sendto: %m");
+            cc = recv(talkd_sockt, (char *)mp, sizeof (*mp), 0);
+            if (cc != sizeof (*mp)) {
+                if ((cc < 0) && (errno != EINTR))
+                    syslog(LOG_WARNING, "recv: %m");
+                continue;
+            }
+            lastmsgtime = time(0);
+            process_request(mp, &response);
         }
 }
 
 void timeout(int dummy)
 {
-    (void)dummy; // to avoid warning
+    (void)dummy; /* to avoid warning */
     if (time(0) - lastmsgtime >= MAXIDLE)
     {
         close_local_socket();

@@ -3,7 +3,7 @@
 
 #include "includ.h"
 
- /* Configuration file-read buffer sizes */
+/* Configuration file-read buffer sizes */
 #define S_CFGLINE 80
 
    /* from answmach/io.c */
@@ -42,28 +42,6 @@ Please leave a message and quit normally when finished.\n"
 /*  User-configurable "To:" E-Mail address */
 #define USER_SETS_EMAIL
 
-extern char OPTsoundplayer[];
-extern char OPTsoundplayeropt[];
-extern char OPTsoundfile[];
-extern int  OPTsound;
-extern int  OPTXAnnounce;
-extern char OPTannounce1[];
-extern char OPTannounce2[];
-extern char OPTannounce3[];
-extern int OPTNEU_behaviour;
-extern char OPTNEUBanner1[];
-extern char OPTNEUBanner2[];
-extern char OPTNEUBanner3[];
-extern char OPTNEU_user[];
-extern int OPTanswmach;
-extern int OPTtime_before_answmach;
-extern char OPTinvitelines[];
-extern char OPTmailprog[];
-extern char OPTextprg[];
-
-extern char hostname[];
-extern int debug_mode;
-
 /* return value from process_request : */
 #define PROC_REQ_OK 0
 #define PROC_REQ_ERR 1
@@ -74,5 +52,7 @@ extern int debug_mode;
 
 /* Min value to launch answer machine : */
 #define PROC_REQ_MIN_A 3
+
+#include "options.h"
 
 #endif /* __DEFS_H */

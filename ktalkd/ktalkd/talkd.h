@@ -1,85 +1,70 @@
 #ifndef _TALKD_H
 #define _TALKD_H
 
-/* talkd.h */
-
-/*
- * This header file was taken from Brukhard Lehner's ktalk, which comes from
- * ytalk version 3.2, file socket.h,  merged with the header file
- * protocols/talkd.h version 8.1 (Berkeley)
+/* talkd.h 
+ *
+ * defines structures and constants for communication with talk and ntalk
+ * daemons
+ *
+ * This header file was taken from ytalk version 3.2, file socket.h
+ * and merged with the header file protocol/talkd.h version 8.1 (Berkeley)
  * Original author is Britt Yenne
  * Thanks very much for "lending" this code :-)
  */
 
-/* #include <qglobal.h>   */  /* for definition of Q_INTxx and Q_UINTxx */
-/* ktalkd doesn't rely on Qt, so the Qt types used here will be hardcoded.
-   All machines now should have 8-bit chars and 32-bit int, I guess.
-   Is int 32 bit even on Alphas ? */
-
-#define Q_UINT8 unsigned char
-#define Q_INT8 char
-#define Q_UINT32 unsigned int
-#define Q_INT32 int
-
 /* ---- talk daemon I/O structures ---- */
 
+#define OLD_NAME_SIZE 9
+#define NEW_NAME_SIZE 12
 #define TTY_SIZE 16
 
-/* Control Message structure for old talk protocol (earlier than BSD4.2) */
-
-#define OLD_NAME_SIZE 9
+// Control Message structure for old talk protocol (earlier than BSD4.2)
 
 typedef struct {
-  Q_UINT8  type;                  /* request type, see below */
-  char     l_name [OLD_NAME_SIZE];    /* caller's name */
-  char     r_name [OLD_NAME_SIZE];    /* callee's name */
-  Q_INT8   pad;
-  Q_UINT32 id_num;                /* message id */
-  Q_INT32  pid;                   /* caller's process id */
-  char     r_tty [TTY_SIZE];      /* callee's tty name */
-  struct sockaddr addr;           /* socket address for connection */
-  struct sockaddr ctl_addr;       /* control socket address */
-} OLD_CTL_MSG;
-
-/* Control Response structure for old talk protocol (earlier than BSD4.2) */
-
-typedef struct {
-  Q_UINT8  type;         /* type of request message, see below */
-  Q_UINT8  answer;       /* respose to request message, see below */
-  Q_INT8  pad1;
-  Q_INT8  pad2;
-  Q_UINT32 id_num;       /* message id */
-  struct sockaddr addr;  /* address for establishing conversation */ 
-} OLD_CTL_RESPONSE;
-
-
-/* Control Message structure for new talk protocol (BSD4.2 and later) */
-
-#define NEW_NAME_SIZE 12
-#define NAME_SIZE NEW_NAME_SIZE /* to avoid breaking current code */
-
-typedef struct {
-  Q_UINT8   vers;                  /* protocol version */
-  Q_UINT8   type;                  /* request type, see below */
-  Q_INT8  pad1;
-  Q_INT8  pad2;
-  Q_UINT32  id_num;                /* message id */
+  char     type;                   /* request type, see below */
+  char     l_name [OLD_NAME_SIZE]; /* caller's name */
+  char     r_name [OLD_NAME_SIZE]; /* callee's name */
+  char     pad;
+  int      id_num;                 /* message id */
+  int      pid;                    /* caller's process id */
+  char     r_tty [TTY_SIZE];       /* callee's tty name */
   struct sockaddr addr;            /* socket address for connection */
   struct sockaddr ctl_addr;        /* control socket address */
-  Q_INT32   pid;                   /* caller's process id */
-  char	    l_name[NEW_NAME_SIZE];     /* caller's name */
-  char	    r_name[NEW_NAME_SIZE];     /* callee's name */
+} OLD_CTL_MSG;
+
+// Control Response structure for old talk protocol (earlier than BSD4.2)
+
+typedef struct {
+  char      type;         /* type of request message, see below */
+  char      answer;       /* response to request message, see below */
+  char      pad [2];
+  int       id_num;       /* message id */
+  struct sockaddr addr;   /* address for establishing conversation */ 
+} OLD_CTL_RESPONSE;
+
+// Control Message structure for new talk protocol (BSD4.2 and later)
+
+typedef struct {
+  char      vers;                  /* protocol version */
+  char      type;                  /* request type, see below */
+  char      pad [2];
+  int       id_num;                /* message id */
+  struct sockaddr addr;            /* socket address for connection */
+  struct sockaddr ctl_addr;        /* control socket address */
+  int       pid;                   /* caller's process id */
+  char	    l_name[NEW_NAME_SIZE]; /* caller's name */
+  char	    r_name[NEW_NAME_SIZE]; /* callee's name */
   char	    r_tty[TTY_SIZE];       /* callee's tty name */
 } NEW_CTL_MSG;
 
-/* Control Response structure for new talk protocol (BSD4.2 and later) */
+// Control Response structure for new talk protocol (BSD4.2 and later)
 
 typedef struct {
-  Q_UINT8  vers;         /* protocol version */
-  Q_UINT8  type;         /* type of request message, see below */
-  Q_UINT8  answer;       /* respose to request message, see below */
-  Q_INT8   pad;
-  Q_UINT32 id_num;       /* message id */
+  char     vers;         /* protocol version */
+  char     type;         /* type of request message, see below */
+  char     answer;       /* respose to request message, see below */
+  char     pad;
+  int      id_num;       /* message id */
   struct sockaddr addr;  /* address for establishing conversation */
 } NEW_CTL_RESPONSE;
 
@@ -95,14 +80,13 @@ typedef struct {
 #define LOOK_UP		1	/* look up an invitation (remote) */
 #define DELETE		2	/* delete erroneous invitation (remote) */
 #define ANNOUNCE	3	/* ring a user (remote) */
-/* Not supported by ktalkd : (who uses them ?) */
 #define DELETE_INVITE	4	/* delete my invitation (local) */
 #define AUTO_LOOK_UP	5	/* look up auto-invitation (remote) */
 #define AUTO_DELETE	6	/* delete erroneous auto-invitation (remote) */
 
 /* answer values.
  *
- * These are the values that are returned in "answer" of CTL_RESPONSE.
+ * These are the values that are returned in "answer" of xxx_CTL_RESPONSE.
  */
 
 #define SUCCESS         0       /* operation completed properly */
@@ -115,7 +99,7 @@ typedef struct {
 #define BADADDR         7       /* request has invalid addr value */
 #define BADCTLADDR      8       /* request has invalid ctl_addr value */
 
-/* Operational parameters. */
+// Operational parameters.
 
 #define MAX_LIFE        60      /* max time daemon saves invitations */
 #define RING_WAIT       30      /* time to wait before resending invitation */

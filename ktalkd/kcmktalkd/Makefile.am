@@ -17,7 +17,7 @@ uninstall-local:
 	-rm -f $(APPSDIR)/syssound.kdelnk
 
 messages:
-	$(XGETTEXT) -C -ktranslate -ki18n $(kcmktalkd_SOURCES) && mv messages.po kcmktalkd.pot
+	$(XGETTEXT) -C -ktranslate -ki18n -x$(includedir)/kde.pot $(kcmktalkd_SOURCES) && mv messages.po ../../po/kcmktalkd.pot
 
 DISTCLEANFILES = $(kcmktalkd_METASOURCES)
 

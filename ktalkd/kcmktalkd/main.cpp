@@ -75,7 +75,7 @@ KKTalkdApplication::KKTalkdApplication(int &argc, char **argv,
 
 void KKTalkdApplication::help()
 {
-   invokeHTMLHelp("ktalkd/index.html","");
+   invokeHTMLHelp("ktalkd/ktalkd.html","");
 }
 
 void KKTalkdApplication::init()

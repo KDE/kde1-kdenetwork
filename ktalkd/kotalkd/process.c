@@ -30,8 +30,6 @@ static struct sockaddr_in ctl_addr;
 static int daemon_port;
 /* NEW_CTL_MSG used to talk to our ntalk daemon */
 static NEW_CTL_MSG new_msg;
-/* NEW_CTL_RESPONSE used to talk to our ntalk daemon */
-static NEW_CTL_RESPONSE new_resp;
 /* Ctl socket */
 static int ctl_sockt;
 
@@ -47,7 +45,7 @@ void open_local_socket(char * hostname)
         syslog(LOG_ERR, "talk: ntalk/udp: service is not registered.");
         exit(-1);
     }
-    daemon_port = sp->s_port; // already in network byte order
+    daemon_port = sp->s_port; /* already in network byte order */
 
     /* look up the address of the local host */
     hp = gethostbyname(hostname);
@@ -77,10 +75,7 @@ void open_local_socket(char * hostname)
     }
 
     /* Fill the msg structure (ntalk protocol) */
-    new_msg.vers = TALK_VERSION;
-    new_msg.ctl_addr = *(struct sockaddr *)&ctl_addr;
-    new_msg.ctl_addr.sa_family = htons(AF_INET);
-
+    new_msg.vers = 0; /* TALK_VERSION for ntalk is 1. Let's assign 0 to otalk. */
 }
 
 void close_local_socket()
@@ -90,67 +85,28 @@ void close_local_socket()
 
 #define CTL_WAIT 2	/* time to wait for a response, in seconds */
 
-/** SOCKDGRAM is unreliable, so we must repeat messages if we have
- * not received an acknowledgement within a reasonable amount
- * of time */
+/** This one is a very simple ctl_transact : we don't wait for an answer from ktalkd.
+    If ktalkd didn't get our message, the otalk client will send it again...
+    
+    We can't send the response ourselves (ctl_addr has to remain the caller's)
+    */
 void ctl_transact(int type)
 {
-    fd_set read_mask, ctl_mask;
-    int nready=0, cc;
-    struct timeval wait;
+    int cc;
     struct sockaddr_in daemon_addr;
 
     daemon_addr.sin_family = AF_INET;
     daemon_addr.sin_addr = my_machine_addr;
     daemon_addr.sin_port = daemon_port;
-    FD_ZERO(&ctl_mask);
-    FD_SET(ctl_sockt, &ctl_mask);
 
-    /* Keep sending the message until a response of
-     * the proper type is obtained.
-     */
-    do {
-        /* resend message until a response is obtained */
-        do {
-            cc = sendto(ctl_sockt, (char *)&new_msg, sizeof(new_msg), 0,
-                        (struct sockaddr *)&daemon_addr,
-                        sizeof (daemon_addr));
-            if (cc != sizeof(new_msg)) {
-                if (errno == EINTR)
-                    continue;
-                syslog(LOG_ERR,"Error on write to talk daemon");
-            }
-            read_mask = ctl_mask;
-            wait.tv_sec = CTL_WAIT;
-            wait.tv_usec = 0;
-            nready = select(ctl_sockt+1, &read_mask, 0, 0, &wait);
-            if (nready < 0) {
-                if (errno == EINTR)
-                    continue;
-                syslog(LOG_ERR,"Error waiting for daemon response");
-            }
-            if (nready == 0) message("select returned 0 ! ");
-        } while (nready == 0);
-        /*
-         * Keep reading while there are queued messages 
-         * (this is not necessary, it just saves extra
-         * request/acknowledgements being sent)
-         */
-        do {
-            cc = recv(ctl_sockt, (char *)&new_resp, sizeof (new_resp), 0);
-            if (cc < 0) {
-                if (errno == EINTR)
-                    continue;
-                syslog(LOG_ERR,"Error on read from talk daemon");
-            }
-            read_mask = ctl_mask;
-            /* an immediate poll */
-            timerclear(&wait);
-            nready = select(ctl_sockt+1, &read_mask, 0, 0, &wait);
-        } while (nready > 0 && (new_resp.vers != TALK_VERSION || 
-                                new_resp.type != type));
-    } while (new_resp.vers != TALK_VERSION || 
-             new_resp.type != type);
+    cc = sendto(ctl_sockt, (char *)&new_msg, sizeof(new_msg), 0,
+                (struct sockaddr *)&daemon_addr,
+                sizeof (daemon_addr));
+    if (cc != sizeof(new_msg)) {
+        if (errno == EINTR)
+            return;
+        syslog(LOG_ERR,"Error on write to talk daemon");
+    }
 }
 
 void  process_request(register OLD_CTL_MSG *mp, register OLD_CTL_RESPONSE *rp)
@@ -172,21 +128,27 @@ void  process_request(register OLD_CTL_MSG *mp, register OLD_CTL_RESPONSE *rp)
         mp->r_name[OLD_NAME_SIZE-1] = '\0';
         mp->r_tty[TTY_SIZE-1] = '\0';
 
+        /* Now a little trick.
+           If user is ktalk then this a ktalk protocol-detection packet.
+           Just exit, so that otalk won't be taken into account by ktalk.
+        */
+        if (strcmp(mp->r_name,"ktalk")==0) {
+            message("ktalk detection protocol. Don't answer.");
+            close_local_socket();
+            exit(0);
+        }
+            
         /* Create a NEW_CTL_MSG structure from the OLD_CTL_MSG */
         new_msg.type = mp->type;
         new_msg.id_num = mp->id_num;
         new_msg.addr = mp->addr;
+        new_msg.ctl_addr = mp->ctl_addr;
+        new_msg.ctl_addr.sa_family = htons(mp->ctl_addr.sa_family);
         new_msg.pid = mp->pid;
         strcpy(new_msg.l_name, mp->l_name); /* cut before, no need to strncpy. */
         strcpy(new_msg.r_name, mp->r_name);
         strcpy(new_msg.r_tty, mp->r_tty);
         
-        /* Now send request to local ktalkd */
+        /* Now send request to local ktalkd. It will respond to it. */
         ctl_transact(mp->type);
-
-        /* And fill our response from the one we got */
-        rp->type = new_resp.type;
-        rp->answer = new_resp.answer;
-        rp->id_num = new_resp.id_num;
-        rp->addr = new_resp.addr;
 }

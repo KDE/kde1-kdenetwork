@@ -1,6 +1,40 @@
+1998-08-10  David Faure  <David.Faure@insa-lyon.fr> (0.8.4)
+
+	* ktalkd/machines/talkconn.cpp: Support for otalk. (not finished).
+
+	* kotalkd/*.c: Just send to ktalkd, which responds itself.
+
+	* ktalkd/process.cpp: Handle otalk packets (with vers=0)
+
+1998-08-09  David Faure  <David.Faure@insa-lyon.fr>
+
+	* kotalkd/kotalkd.c: Dies if ktalk protocol detection (-> ntalk detected).
+
+	* ktalkd/machines/forwmach.cpp: Now forwards DELETEs too. (cf. sig_handler).
+
+	* ktalkd/machines/forwmach.cpp: Final cleanup improved. (for forwmachines).
+
+	* ktalkd/options.cpp: Created, to hold systemwide options.
+
+	* ktalkd/*.c: Converted to c++ all c files.
+
+1998-08-07  David Faure  <David.Faure@insa-lyon.fr> (0.8.3)
+
+	* ktalkd/doc/en/Makefile.am: index.html -> ktalkd.html
+
+1998-08-07  David Faure  <David.Faure@insa-lyon.fr> (0.8.2)
+
+	* ../acincktalk.m4: Bug fix for the bug fix. Linux detection ok.
+
+1998-08-02  David Faure  <David.Faure@insa-lyon.fr>
+
+	* doc/en/ktalkd.sgml: Converted all documentation to sgml. Phew.
+
+	* kcmktalkd/forwmachpage.cpp: i18n'ed the explanation for forwards
+
 1998-07-31  David Faure  <David.Faure@insa-lyon.fr>
 
-	* acincktalk.m4: More output printed out and a bug fix  
+	* ../acincktalk.m4: More output printed out and a bug fix  
 	
 1998-07-30  David Faure  <David.Faure@insa-lyon.fr> (0.8.1)
 

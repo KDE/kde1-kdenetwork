@@ -31,8 +31,11 @@
  * SUCH DAMAGE.
  *
  */
+#ifndef TALKCONNECTION_H
+#define TALKCONNECTION_H
 
 #include "../includ.h"
+#include "check_protocol.h"
 
 class TalkConnection
 {
@@ -40,10 +43,12 @@ class TalkConnection
     /** Create a talk connection.
      * @param r_addr Remote machine IP address
      * @param r_name Remote user name
-     * @param l_name Local user name */
+     * @param l_name Local user name
+     * @param _protocol Caller's protocol */
     TalkConnection(struct in_addr r_addr,
                    char * r_name,
-                   char * l_name);
+                   char * l_name,
+                   ProtocolType _protocol);
 
     /** Destructor. Closes the sockets if opened.*/
     ~TalkConnection();
@@ -55,7 +60,7 @@ class TalkConnection
     
     /** Methods for talking to remote daemon */
     void ctl_transact(int type, int id_num);
-    int look_for_invite();
+    int look_for_invite(int mandatory);
     
     /** Connect with address given back in response to LOOK_UP. */
     int connect();
@@ -74,13 +79,14 @@ class TalkConnection
     /** Returns the erase char used by the caller. */
     char get_char_erase() { return char_erase; }
     /** Returns the caller's name. */
-    char * get_caller_name() { return msg.r_name;}
+    char * get_caller_name() { return new_msg.r_name; } // idem in old_msg
     /** Returns socket, for reading or writing */
     int get_sockt() { return sockt; }
-    /** Returns response buffer */
-    NEW_CTL_RESPONSE * getResponse() { return &response; }
+    /** Returns response answer and id_num. Allows protocol independence.
+     * Each param can be null (0L). Then it isn't filled.*/
+    void getResponseItems(char * answer, int * id_num, struct sockaddr * addr);
     /** Returns connection socket address. For FWT. */
-    const struct sockaddr get_addr() { return msg.addr; }
+    const struct sockaddr get_addr() { return new_msg.addr; } // idem in old_msg
 
     // Methods to cheat with this talk connection
     // Used by the forwarding machine
@@ -91,8 +97,7 @@ class TalkConnection
     static void p_error(const char * str);
 
   protected:
-    /** Basic initialisation of the following fields */
-    void init();
+    ProtocolType protocol;
     
     /* inet addresses of the two machines */
     struct  in_addr my_machine_addr;
@@ -103,8 +108,13 @@ class TalkConnection
     int     ctl_sockt;
     int     sockt;
 
-    NEW_CTL_MSG msg; // holds interesting data
-    NEW_CTL_RESPONSE response; // only convenience structure for responses
-
+    OLD_CTL_MSG old_msg; // holds interesting data
+    NEW_CTL_MSG new_msg; // holds interesting data
+    OLD_CTL_RESPONSE old_resp; // only convenience structure for responses
+    NEW_CTL_RESPONSE new_resp; // only convenience structure for responses
+    struct sockaddr lookup_addr; // address returned by LOOKUP. Points to xxx_resp.addr
+    
     char char_erase;
 };
+
+#endif

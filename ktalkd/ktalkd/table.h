@@ -31,33 +31,49 @@
  * SUCH DAMAGE.
  *
  */
+#ifndef TABLE_H
+#define TABLE_H
 
 #include "includ.h"
-#ifdef __cplusplus
-extern "C" 
-{
+#ifdef HAVE_SYS_TIME_H
+#include <sys/time.h>
+#ifdef TIME_WITH_SYS_TIME
+#include <time.h>
 #endif
+#else
+#include <time.h>
+#endif
+
+class ForwMachine;
 
 typedef struct table_entry TABLE_ENTRY;
 
 struct table_entry {
-	NEW_CTL_MSG request;
-	long	time;
-        char * fwm; /* forwarding machine */
-	TABLE_ENTRY *next;
-	TABLE_ENTRY *last;
+    NEW_CTL_MSG request;
+    long	time;
+    ForwMachine * fwm;
+    TABLE_ENTRY *next;
+    TABLE_ENTRY *last;
 };
 
+class KTalkdTable
+{
+  public:
+    KTalkdTable() { table = 0L; }
+    ~KTalkdTable();
+    void insert_table(NEW_CTL_MSG *request, NEW_CTL_RESPONSE *response, ForwMachine * fwm);
+    int delete_invite(int id_num);
+    NEW_CTL_MSG * find_match(register NEW_CTL_MSG *request);
+    NEW_CTL_MSG * find_request(register NEW_CTL_MSG *request);
+    int new_id();
+    TABLE_ENTRY * getTable() { return table; }
 
-void insert_table(NEW_CTL_MSG *request, NEW_CTL_RESPONSE *response, char * fwm);
-int new_id();
-int delete_invite(unsigned int id_num);
-int delete_forwmach(char * fwm);
-TABLE_ENTRY * find_entry(int id_num);
-NEW_CTL_MSG * find_match(register NEW_CTL_MSG *request);
-NEW_CTL_MSG * find_request(register NEW_CTL_MSG *request);
-void delete_entry(register TABLE_ENTRY *ptr);
+  private:
+    void delete_entry(register TABLE_ENTRY *ptr);
 
-#ifdef __cplusplus
-}
+    struct timeval tp;
+    struct timezone txp;
+
+    TABLE_ENTRY *table;
+};
 #endif

@@ -56,12 +56,13 @@ static	char *answers[] =
 void print_request(char *cp,register NEW_CTL_MSG *mp)
 {
 	char tbuf[80], *tp;
+        short int type = mp->type;
 	
-	if (mp->type > NTYPES) {
-		(void)snprintf(tbuf, sizeof(tbuf), "type %d", mp->type);
+	if (type > NTYPES) {
+		(void)snprintf(tbuf, sizeof(tbuf), "type %d", type);
 		tp = tbuf;
 	} else
-		tp = types[mp->type];
+		tp = types[type];
 	syslog(LOG_DEBUG, "%s: %s: id %d, l_user %s, r_user %s, r_tty %s, pid %d",
 	    cp, tp, ntohl(mp->id_num), mp->l_name, mp->r_name, mp->r_tty, ntohl(mp->pid));
         print_addr("    addr", (struct sockaddr_in *)&mp->addr);
@@ -75,12 +76,13 @@ void print_request(char *cp,register NEW_CTL_MSG *mp)
 void print_old_request(char *cp,register OLD_CTL_MSG *mp)
 {
 	char tbuf[80], *tp;
+        short int type = mp->type;
 	
-	if (mp->type > NTYPES) {
-		(void)snprintf(tbuf, sizeof(tbuf), "type %d", mp->type);
+	if (type > NTYPES) {
+		(void)snprintf(tbuf, sizeof(tbuf), "type %d", type);
 		tp = tbuf;
 	} else
-		tp = types[mp->type];
+		tp = types[type];
 	syslog(LOG_DEBUG, "%s: %s: id %d, l_user %s, r_user %s, r_tty %s, pid %d",
 	    cp, tp, ntohl(mp->id_num), mp->l_name, mp->r_name, mp->r_tty, ntohl(mp->pid));
         print_addr("    addr", (struct sockaddr_in *)&mp->addr);
@@ -94,17 +96,19 @@ void print_old_request(char *cp,register OLD_CTL_MSG *mp)
 void print_response(char *cp,register NEW_CTL_RESPONSE *rp)
 {
 	char tbuf[80], *tp, abuf[80], *ap;
+        short int type = rp->type;
+        short int answer = rp->answer;
 	
-	if (rp->type > NTYPES) {
-		(void)snprintf(tbuf, sizeof(tbuf), "type %d", rp->type);
+	if (type > NTYPES) {
+		(void)snprintf(tbuf, sizeof(tbuf), "type %d", type);
 		tp = tbuf;
 	} else
-		tp = types[rp->type];
-	if (rp->answer > NANSWERS) {
-		(void)snprintf(abuf, sizeof(abuf), "answer %d", rp->answer);
+		tp = types[type];
+	if (answer > NANSWERS) {
+		(void)snprintf(abuf, sizeof(abuf), "answer %d", answer);
 		ap = abuf;
 	} else
-		ap = answers[rp->answer];
+		ap = answers[answer];
 	syslog(LOG_DEBUG, "%s: %s: %s, id %d", cp, tp, ap, ntohl(rp->id_num));
         if ((rp->type == LOOK_UP) && (rp->answer == SUCCESS))
             print_addr("    resp addr", (struct sockaddr_in *)&rp->addr);
@@ -117,17 +121,19 @@ void print_response(char *cp,register NEW_CTL_RESPONSE *rp)
 void print_old_response(char *cp,register OLD_CTL_RESPONSE *rp)
 {
 	char tbuf[80], *tp, abuf[80], *ap;
+        short int type = rp->type;
+        short int answer = rp->answer;
 	
-	if (rp->type > NTYPES) {
-		(void)snprintf(tbuf, sizeof(tbuf), "type %d", rp->type);
+	if (type > NTYPES) {
+		(void)snprintf(tbuf, sizeof(tbuf), "type %d", type);
 		tp = tbuf;
 	} else
-		tp = types[rp->type];
-	if (rp->answer > NANSWERS) {
-		(void)snprintf(abuf, sizeof(abuf), "answer %d", rp->answer);
+		tp = types[type];
+	if (answer > NANSWERS) {
+		(void)snprintf(abuf, sizeof(abuf), "answer %d", answer);
 		ap = abuf;
 	} else
-		ap = answers[rp->answer];
+		ap = answers[answer];
 	syslog(LOG_DEBUG, "%s: %s: %s, id %d", cp, tp, ap, ntohl(rp->id_num));
         if ((rp->type == LOOK_UP) && (rp->answer == SUCCESS))
             print_addr("    resp addr", (struct sockaddr_in *)&rp->addr);
