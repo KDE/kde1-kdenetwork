@@ -36,7 +36,7 @@ BUILTSOURCES =	groupdlg.moc \
                 printdlg.moc\
                 rulesDlg.moc\
                 sortDlg.moc\
-		charsetsDlg.moc\
+		charsetsDlg.moc
 
 DISTCLEANFILES = $(BUILTSOURCES)
 
