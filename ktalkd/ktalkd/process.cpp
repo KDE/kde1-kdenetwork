@@ -115,7 +115,7 @@ int  process_request(register NEW_CTL_MSG *mp, register NEW_CTL_RESPONSE *rp)
                 /* Open user config file. */
                 usercfg = init_user_config(mp->r_name);
 		ret = do_announce(mp, rp, usercfg);
-                if (!usercfg) end_user_config();
+                if (usercfg) end_user_config();
 
                 /* Store in table if normal announce or answmach replacing it.
                    Not if re-announce, nor if error, nor for forwarding machine */
