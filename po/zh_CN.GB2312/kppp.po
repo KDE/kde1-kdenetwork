@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp 0.9.6\n"
-"POT-Creation-Date: 1999-04-11 03:17+0200\n"
+"POT-Creation-Date: 1999-04-25 03:13+0200\n"
 "PO-Revision-Date: 1998-06-12 08:32 MET DST\n"
 "Last-Translator: Wang Jian <lark@linux.ustc.edu.cn>\n"
 "Language-Team: zh_CN ( gb2312)\n"
@@ -1648,7 +1648,7 @@ msgstr ""
 "pppd 可执行文件必须安装成 SUID\n"
 "程序. 请和你的系统管理员联系."
 
-#: runtests.cpp:471
+#: runtests.cpp:472
 msgid ""
 "kppp has detected a 'lock' option in /etc/ppp/options.\n"
 "\n"
@@ -1661,7 +1661,7 @@ msgstr ""
 "因为 kppp 自己会处理设备锁定 , 这个选项需要被去掉.\n"
 "请和你的系统管理员联系."
 
-#: runtests.cpp:495
+#: runtests.cpp:497
 #, fuzzy
 msgid ""
 "is missing!\n"
