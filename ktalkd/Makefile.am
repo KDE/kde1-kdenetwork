@@ -2,9 +2,9 @@
 # Ktalkd - Main Makefile.am
 
 if KDE_INSTALLED
-SUBDIRS 	=	ktalkd kotalkd doc kcmktalkd ktalkdlg
+SUBDIRS 	=	ktalkd kotalkd doc mail.local kcmktalkd ktalkdlg
 else
-SUBDIRS 	=	ktalkd kotalkd doc 
+SUBDIRS 	=	ktalkd kotalkd doc mail.local
 endif
 
 EXTRA_DIST	=	ChangeLog TODO ktalkd.lsm

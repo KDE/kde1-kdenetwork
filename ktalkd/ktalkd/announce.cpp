@@ -269,9 +269,11 @@ int announce_proc(NEW_CTL_MSG *request, const char *remote_machine,
       } /* if */
     } /* for */
     
-    if ( Xannounceok )
-        return (SUCCESS);
-    else
+    if ( Xannounceok ) {
+      if (request->r_tty[0])
+	print_std_mesg( request, remote_machine, usercfg );
+      return (SUCCESS);
+    } else
         return (print_std_mesg( request, remote_machine, usercfg ));
         
   } else {
