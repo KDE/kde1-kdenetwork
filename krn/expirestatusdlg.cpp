@@ -117,11 +117,10 @@ void ExpireStatusDlg::doExpire()
         }
         
         time_t lastAccess=atol(tl.at(8));
-        debug ("%ld",lastAccess);
         
         if (threshold>lastAccess)
         {
-            debug ("deleting");
+            debug ("deleting %s",key.dptr);
             gdbm_delete(old_artdb,key);
             free (key.dptr);
         }
