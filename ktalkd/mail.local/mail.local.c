@@ -114,6 +114,10 @@ static char copyright[] =
 # define _PATH_MAILDIR	"/var/mail"
 #endif
 
+#if defined(_SCO_DS)
+# define USE_LOCKF	1
+#endif
+
 #if defined(_AIX)
 # define USE_LOCKF	1
 # define USE_VSYSLOG	0
