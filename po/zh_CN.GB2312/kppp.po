@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp 0.9.6\n"
-"POT-Creation-Date: 1998-11-24 01:56+0100\n"
+"POT-Creation-Date: 1998-11-25 01:56+0100\n"
 "PO-Revision-Date: 1998-06-12 08:32 MET DST\n"
 "Last-Translator: Wang Jian <lark@linux.ustc.edu.cn>\n"
 "Language-Team: zh_CN ( gb2312)\n"
@@ -160,7 +160,7 @@ msgstr ""
 msgid "Login script has unbalanced loop Start/End"
 msgstr "登录脚本有不配对的循环 开始/结束"
 
-#: connect.cpp:97 connect.cpp:195 main.cpp:1032
+#: connect.cpp:97 connect.cpp:195 main.cpp:970
 msgid "Connecting to: "
 msgstr "正在连接到: "
 
@@ -173,7 +173,7 @@ msgstr "抱歉 , 不能建立调制解调器的锁文件."
 msgid "Looking for Modem ..."
 msgstr "正在寻找调制解调器..."
 
-#: connect.cpp:120 debug.cpp:80 main.cpp:1045
+#: connect.cpp:120 debug.cpp:80 main.cpp:983
 msgid "Log"
 msgstr "记录"
 
@@ -898,7 +898,7 @@ msgid ""
 "recommended value is 30 seconds."
 msgstr ""
 
-#: general.cpp:492 main.cpp:700
+#: general.cpp:492 main.cpp:640
 msgid "Modem"
 msgstr "调制解调器"
 
@@ -1030,14 +1030,14 @@ msgid ""
 "click a mouse button or a hit a key.\n"
 msgstr ""
 
-#: main.cpp:380
+#: main.cpp:327
 #, c-format
 msgid ""
 "kppp can't create or read from\n"
 "%s."
 msgstr ""
 
-#: main.cpp:396
+#: main.cpp:343
 #, c-format
 msgid ""
 "kppp has detected a %s file.\n"
@@ -1049,15 +1049,15 @@ msgid ""
 "delete the pid file, and restart kppp."
 msgstr ""
 
-#: main.cpp:477
+#: main.cpp:417
 msgid "Connect to: "
 msgstr "连接到: "
 
-#: main.cpp:488
+#: main.cpp:428
 msgid "Login ID:"
 msgstr "登录 ID:"
 
-#: main.cpp:501
+#: main.cpp:441
 msgid ""
 "Type in the username that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1068,11 +1068,11 @@ msgid ""
 "<i>myusername</i> is not the same as <i>MyUserName</i>!"
 msgstr ""
 
-#: main.cpp:510
+#: main.cpp:450
 msgid "Password:"
 msgstr "密码:"
 
-#: main.cpp:524
+#: main.cpp:464
 msgid ""
 "Type in the password that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1083,11 +1083,11 @@ msgid ""
 "<i>mypassword</i> is not the same as <i>MyPassword</i>!"
 msgstr ""
 
-#: main.cpp:538
+#: main.cpp:478
 msgid "Show Log Window"
 msgstr "显示记录窗口"
 
-#: main.cpp:545
+#: main.cpp:485
 msgid ""
 "This controls whether a log window is shown.\n"
 "A log window shows the communication between\n"
@@ -1098,15 +1098,15 @@ msgid ""
 "problems"
 msgstr ""
 
-#: main.cpp:568
+#: main.cpp:508
 msgid "Setup"
 msgstr "设置"
 
-#: main.cpp:584
+#: main.cpp:524
 msgid "Connect"
 msgstr "连接"
 
-#: main.cpp:668
+#: main.cpp:608
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -1115,32 +1115,32 @@ msgstr ""
 "没有这个帐号:\n"
 "%s"
 
-#: main.cpp:682
+#: main.cpp:622
 msgid "kppp Configuration"
 msgstr "kppp 配置"
 
-#: main.cpp:698
+#: main.cpp:638
 msgid "Accounts"
 msgstr "帐号"
 
-#: main.cpp:699
+#: main.cpp:639
 msgid "Device"
 msgstr "设备"
 
-#: main.cpp:701
+#: main.cpp:641
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:702
+#: main.cpp:642
 msgid "Graph"
 msgstr ""
 
-#: main.cpp:875
+#: main.cpp:815
 #, fuzzy
 msgid "Details..."
 msgstr "详细资料"
 
-#: main.cpp:930
+#: main.cpp:868
 #, fuzzy, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1158,7 +1158,7 @@ msgstr ""
 "调整好 pppd 的执行文件的位置.\n"
 "谢谢"
 
-#: main.cpp:945
+#: main.cpp:883
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1170,7 +1170,7 @@ msgstr ""
 " %s\n"
 "请确定你已经把 kppp 设成 setuid 的 , 并且 pppd 是可以执行的."
 
-#: main.cpp:959
+#: main.cpp:897
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1189,7 +1189,7 @@ msgstr ""
 "表中调整好调制解调器设备的位置.\n"
 "谢谢"
 
-#: main.cpp:979
+#: main.cpp:915
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1198,7 +1198,7 @@ msgstr ""
 "你已经选中了 PAP 身份验证方法.这需要\n"
 "你提供一个用户名和密码!"
 
-#: main.cpp:987
+#: main.cpp:924
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1207,7 +1207,7 @@ msgstr ""
 "不能建立 PAP 身份验证文件\n"
 "\"%s\""
 
-#: main.cpp:1004
+#: main.cpp:941
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -1216,7 +1216,7 @@ msgstr ""
 "你已经选中了 CHAP 身份验证方法.这需要\n"
 "你提供一个用户名和密码!"
 
-#: main.cpp:1012
+#: main.cpp:950
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1225,20 +1225,20 @@ msgstr ""
 "不能建立 CHAP 身份验证文件\n"
 "\"%s\""
 
-#: main.cpp:1024
+#: main.cpp:962
 #, fuzzy
 msgid "You must specify a telephone number!"
 msgstr "你必须指定一个电话号码 !\n"
 
-#: main.cpp:1111
+#: main.cpp:1049
 msgid "Quit kPPP?"
 msgstr "退出 kPPP?"
 
-#: main.cpp:1112
+#: main.cpp:1050
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "退出 kPPP 将结束你的 PPP 会话."
 
-#: main.cpp:1147
+#: main.cpp:1085
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
@@ -1372,7 +1372,7 @@ msgstr "参数:"
 msgid "Defaults"
 msgstr "详细资料"
 
-#: pppdata.cpp:108
+#: pppdata.cpp:109
 msgid ""
 "The application-specific config file\n"
 "could not be opened neither\n"
@@ -1666,36 +1666,36 @@ msgstr ""
 "请要求你的系统管理员建立一个非空的文件,\n"
 "并设好正确的读写权限."
 
-#: ppplog.cpp:148
+#: ppplog.cpp:149
 msgid ""
 "You have launched pppd before the remote server was ready to establish a PPP "
 "connection.\n"
 "Please use the terminal-based login to verify"
 msgstr ""
 
-#: ppplog.cpp:153
+#: ppplog.cpp:154
 msgid ""
 "Do you use /dev/modem ? If so, you should specify the real device instead, "
 "e.g. /dev/ttyS1 (COM2)."
 msgstr ""
 
-#: ppplog.cpp:157
+#: ppplog.cpp:158
 msgid "Check that you supplied the correct username and password!"
 msgstr ""
 
-#: ppplog.cpp:160
+#: ppplog.cpp:161
 msgid ""
 "You shouldn't pass 'lock' as an argument to pppd. Check /etc/ppp/options and "
 "~/.ppprc"
 msgstr ""
 
-#: ppplog.cpp:164
+#: ppplog.cpp:165
 msgid ""
 "The remote system does not seem to answer to\n"
 "configuration request! Contact your provider!"
 msgstr ""
 
-#: ppplog.cpp:179
+#: ppplog.cpp:180
 #, c-format
 msgid ""
 "Notice that the remote system has sent the following message:\n"
@@ -1703,12 +1703,12 @@ msgid ""
 "This may give you a hint why the the connection has failed."
 msgstr ""
 
-#: ppplog.cpp:198
+#: ppplog.cpp:199
 #, fuzzy
 msgid "Sorry. Can't help you here."
 msgstr "抱歉,无法打开调制解调器."
 
-#: ppplog.cpp:215
+#: ppplog.cpp:216
 msgid ""
 "KPPP could not prepare a PPP log. It磗 very likely\n"
 "that pppd was started without the \"debug\" option.\n"
@@ -1719,7 +1719,7 @@ msgid ""
 "Shall I turn it on now?"
 msgstr ""
 
-#: ppplog.cpp:226
+#: ppplog.cpp:227
 msgid ""
 "The \"debug\" option has been added. You\n"
 "should now try to reconnect. If that fails\n"
@@ -1727,28 +1727,16 @@ msgid ""
 "you to track down the connection problem."
 msgstr ""
 
-#: ppplog.cpp:241
+#: ppplog.cpp:242
 msgid "PPP log"
 msgstr ""
 
-#: ppplog.cpp:245
+#: ppplog.cpp:246
 msgid "kppp's diagnosis (just guessing):"
 msgstr ""
 
-#: ppplog.cpp:250
+#: ppplog.cpp:251
 msgid "Write to file"
-msgstr ""
-
-#: security.cpp:46
-msgid "Advanced Security"
-msgstr ""
-
-#: security.cpp:49
-msgid "Allowed users"
-msgstr ""
-
-#: security.cpp:50
-msgid "Allowed groups"
 msgstr ""
 
 #, fuzzy

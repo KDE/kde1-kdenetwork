@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1998-11-24 01:56+0100\n"
+"POT-Creation-Date: 1998-11-25 01:56+0100\n"
 "PO-Revision-Date: 1998-11-21 15:12+0100\n"
 "Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
 "Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
@@ -177,7 +177,7 @@ msgstr ""
 msgid "Login script has unbalanced loop Start/End"
 msgstr "In einer Schleife des Login-Skripts fehlt Anfang oder Ende"
 
-#: connect.cpp:97 connect.cpp:195 main.cpp:1032
+#: connect.cpp:97 connect.cpp:195 main.cpp:970
 msgid "Connecting to: "
 msgstr "Verbinde mit: "
 
@@ -190,7 +190,7 @@ msgstr "Sorry, kann keine Sperrdatei für Modem erzeugen."
 msgid "Looking for Modem ..."
 msgstr "Suche Modem..."
 
-#: connect.cpp:120 debug.cpp:80 main.cpp:1045
+#: connect.cpp:120 debug.cpp:80 main.cpp:983
 msgid "Log"
 msgstr "Log-Datei"
 
@@ -1096,7 +1096,7 @@ msgstr ""
 "<i>CONNECT</i>-Signal Ihres Modems wartet.\n"
 "Empfohlener Wert ist 30 Sekunden."
 
-#: general.cpp:492 main.cpp:700
+#: general.cpp:492 main.cpp:640
 msgid "Modem"
 msgstr "Modem"
 
@@ -1270,7 +1270,7 @@ msgstr ""
 "Das Fenster bleibt offen, bis Sie mit der Maus\n"
 "klicken oder eine Taste drücken.\n"
 
-#: main.cpp:380
+#: main.cpp:327
 #, c-format
 msgid ""
 "kppp can't create or read from\n"
@@ -1279,7 +1279,7 @@ msgstr ""
 "kppp kann nicht erstellen in oder lesen von\n"
 "%s."
 
-#: main.cpp:396
+#: main.cpp:343
 #, c-format
 msgid ""
 "kppp has detected a %s file.\n"
@@ -1298,15 +1298,15 @@ msgstr ""
 "Stellen Sie sicher, daß Sie kppp nicht bereits laufen haben,\n"
 "löschen Sie die PID-Datei, und starten Sie kppp erneut."
 
-#: main.cpp:477
+#: main.cpp:417
 msgid "Connect to: "
 msgstr "Verbinde mit: "
 
-#: main.cpp:488
+#: main.cpp:428
 msgid "Login ID:"
 msgstr "Login-ID:"
 
-#: main.cpp:501
+#: main.cpp:441
 msgid ""
 "Type in the username that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1324,11 +1324,11 @@ msgstr ""
 "<b>Achtung</b>: Groß-/Kleinschreibung ist wichtig in diesem Fall:\n"
 "<i>meinbenutzername</i> ist nicht dasselbe wie <i>MeinBenutzerName</i>!"
 
-#: main.cpp:510
+#: main.cpp:450
 msgid "Password:"
 msgstr "Paßwort:"
 
-#: main.cpp:524
+#: main.cpp:464
 msgid ""
 "Type in the password that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1346,11 +1346,11 @@ msgstr ""
 "<b>Achtung</b>: Groß-/Kleinschreibung ist wichtig in diesem Fall:\n"
 "<i>meinpaßwort</i> ist nicht dasselbe wie <i>MeinPaßwort</i>!"
 
-#: main.cpp:538
+#: main.cpp:478
 msgid "Show Log Window"
 msgstr "Log-Fenster anzeigen"
 
-#: main.cpp:545
+#: main.cpp:485
 msgid ""
 "This controls whether a log window is shown.\n"
 "A log window shows the communication between\n"
@@ -1368,15 +1368,15 @@ msgstr ""
 "Schalten Sie es ab, wenn <i>kppp</i> normalerweise die\n"
 "Verbindung ohne Probleme aufbaut."
 
-#: main.cpp:568
+#: main.cpp:508
 msgid "Setup"
 msgstr "Einstellungen"
 
-#: main.cpp:584
+#: main.cpp:524
 msgid "Connect"
 msgstr "Verbinden"
 
-#: main.cpp:668
+#: main.cpp:608
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -1385,31 +1385,31 @@ msgstr ""
 "Zugang nicht vorhanden:\n"
 "%s"
 
-#: main.cpp:682
+#: main.cpp:622
 msgid "kppp Configuration"
 msgstr "kppp-Konfiguration"
 
-#: main.cpp:698
+#: main.cpp:638
 msgid "Accounts"
 msgstr "Zugänge"
 
-#: main.cpp:699
+#: main.cpp:639
 msgid "Device"
 msgstr "Gerät"
 
-#: main.cpp:701
+#: main.cpp:641
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:702
+#: main.cpp:642
 msgid "Graph"
 msgstr "Graphik"
 
-#: main.cpp:875
+#: main.cpp:815
 msgid "Details..."
 msgstr "Details..."
 
-#: main.cpp:930
+#: main.cpp:868
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1430,7 +1430,7 @@ msgstr ""
 "PPP-Dämon findet.\n"
 "Danke schön."
 
-#: main.cpp:945
+#: main.cpp:883
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1443,7 +1443,7 @@ msgstr ""
 "Bitte stellen Sie sicher, daß Sie kppp setuid-Berechtigung gegeben haben\n"
 "und daß pppd ausführbar ist."
 
-#: main.cpp:959
+#: main.cpp:897
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1464,7 +1464,7 @@ msgstr ""
 "Ihrer Einstellungen.\n"
 "Danke schön."
 
-#: main.cpp:979
+#: main.cpp:915
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1474,7 +1474,7 @@ msgstr ""
 "PAP gewählt. Deshalb müssen Sie einen\n"
 "Benutzernamen und ein Paßwort angeben!"
 
-#: main.cpp:987
+#: main.cpp:924
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1483,7 +1483,7 @@ msgstr ""
 "Kann PAP-Authentifizierungsdatei\n"
 "\"%s\" nicht erzeugen"
 
-#: main.cpp:1004
+#: main.cpp:941
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -1493,7 +1493,7 @@ msgstr ""
 "CHAP gewählt. Deshalb müssen Sie einen\n"
 "Benutzernamen und ein Paßwort angeben!"
 
-#: main.cpp:1012
+#: main.cpp:950
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1502,19 +1502,19 @@ msgstr ""
 "Kann CHAP-Authentifizierungsdatei\n"
 "\"%s\" nicht erzeugen"
 
-#: main.cpp:1024
+#: main.cpp:962
 msgid "You must specify a telephone number!"
 msgstr "Sie müssen eine Telefonnummer angeben!"
 
-#: main.cpp:1111
+#: main.cpp:1049
 msgid "Quit kPPP?"
 msgstr "kppp beenden?"
 
-#: main.cpp:1112
+#: main.cpp:1050
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Das Verlassen von kPPP wird die Verbindung trennen."
 
-#: main.cpp:1147
+#: main.cpp:1085
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
@@ -1642,7 +1642,7 @@ msgstr "Argument:"
 msgid "Defaults"
 msgstr "Voreinstellungen"
 
-#: pppdata.cpp:108
+#: pppdata.cpp:109
 msgid ""
 "The application-specific config file\n"
 "could not be opened neither\n"
@@ -1954,7 +1954,7 @@ msgstr ""
 "eine nicht-leere Datei zu erstellen, die\n"
 "passende Lese- und Schreibrechte hat."
 
-#: ppplog.cpp:148
+#: ppplog.cpp:149
 msgid ""
 "You have launched pppd before the remote server was ready to establish a PPP "
 "connection.\n"
@@ -1964,7 +1964,7 @@ msgstr ""
 "aufzubauen.\n"
 "Bitte benutzen Sie ein terminal-basiertes Login, um das zu überprüfen."
 
-#: ppplog.cpp:153
+#: ppplog.cpp:154
 msgid ""
 "Do you use /dev/modem ? If so, you should specify the real device instead, "
 "e.g. /dev/ttyS1 (COM2)."
@@ -1972,12 +1972,12 @@ msgstr ""
 "Benutzen Sie /dev/modem? Falls ja, dann sollten Sie stattdessen ein "
 "wirkliches Gerät, wie z.B. /dev/ttyS1 (COM2) benutzen."
 
-#: ppplog.cpp:157
+#: ppplog.cpp:158
 msgid "Check that you supplied the correct username and password!"
 msgstr ""
 "Überprüfen Sie, ob Sie Benutzernamen und Paßwort richtig eingegeben haben!"
 
-#: ppplog.cpp:160
+#: ppplog.cpp:161
 msgid ""
 "You shouldn't pass 'lock' as an argument to pppd. Check /etc/ppp/options and "
 "~/.ppprc"
@@ -1985,7 +1985,7 @@ msgstr ""
 "Sie sollten nicht 'lock' als Argument an pppd übergeben. Überprüfen Sie "
 "/etc/ppp/options und ~/.ppprc"
 
-#: ppplog.cpp:164
+#: ppplog.cpp:165
 msgid ""
 "The remote system does not seem to answer to\n"
 "configuration request! Contact your provider!"
@@ -1993,7 +1993,7 @@ msgstr ""
 "Das entfernte System scheint nicht auf die Konfigurationsanfrage\n"
 "zu antworten! Kontaktieren Sie Ihren Provider!"
 
-#: ppplog.cpp:179
+#: ppplog.cpp:180
 #, c-format
 msgid ""
 "Notice that the remote system has sent the following message:\n"
@@ -2005,11 +2005,11 @@ msgstr ""
 "Das könnte Ihnen einen Hinweis geben, warum die Verbindung fehlgeschlagen "
 "ist.."
 
-#: ppplog.cpp:198
+#: ppplog.cpp:199
 msgid "Sorry. Can't help you here."
 msgstr "Sorry, kann Ihnen hier nicht helfen."
 
-#: ppplog.cpp:215
+#: ppplog.cpp:216
 msgid ""
 "KPPP could not prepare a PPP log. It´s very likely\n"
 "that pppd was started without the \"debug\" option.\n"
@@ -2027,7 +2027,7 @@ msgstr ""
 "\n"
 "Soll ich sie jetzt einschalten?"
 
-#: ppplog.cpp:226
+#: ppplog.cpp:227
 msgid ""
 "The \"debug\" option has been added. You\n"
 "should now try to reconnect. If that fails\n"
@@ -2039,29 +2039,26 @@ msgstr ""
 "Sie erhalten dann eine PPP-Logdatei, die dabei\n"
 "helfen kann, das Problem bei der Verbindung zu finden."
 
-#: ppplog.cpp:241
+#: ppplog.cpp:242
 msgid "PPP log"
 msgstr "PPP-Logdatei"
 
-#: ppplog.cpp:245
+#: ppplog.cpp:246
 msgid "kppp's diagnosis (just guessing):"
 msgstr "kppp-Diagnose (nur eine Vermutung):"
 
-#: ppplog.cpp:250
+#: ppplog.cpp:251
 msgid "Write to file"
 msgstr "Schreibe in Datei"
 
-#: security.cpp:46
-msgid "Advanced Security"
-msgstr "Höhere Sicherheitsstufe"
+#~ msgid "Advanced Security"
+#~ msgstr "Höhere Sicherheitsstufe"
 
-#: security.cpp:49
-msgid "Allowed users"
-msgstr "Zugelassene Benutzer"
+#~ msgid "Allowed users"
+#~ msgstr "Zugelassene Benutzer"
 
-#: security.cpp:50
-msgid "Allowed groups"
-msgstr "Zugelassene Gruppen"
+#~ msgid "Allowed groups"
+#~ msgstr "Zugelassene Gruppen"
 
 #~ msgid "Ok"
 #~ msgstr "OK"

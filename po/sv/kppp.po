@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-11-24 01:56+0100\n"
+"POT-Creation-Date: 1998-11-25 01:56+0100\n"
 "PO-Revision-Date: 1998-08-09 14:55+0200\n"
 "Last-Translator: Anders Bengtsson <d96-abe@nada.kth.se>\n"
 "MIME-Version: 1.0\n"
@@ -165,7 +165,7 @@ msgstr ""
 msgid "Login script has unbalanced loop Start/End"
 msgstr "Inloggningscriptet har obalanserade Loop Start/End"
 
-#: connect.cpp:97 connect.cpp:195 main.cpp:1032
+#: connect.cpp:97 connect.cpp:195 main.cpp:970
 msgid "Connecting to: "
 msgstr "Ansluter till: "
 
@@ -178,7 +178,7 @@ msgstr "Kan inte skapa en låsfil för modemet."
 msgid "Looking for Modem ..."
 msgstr "Letar efter modem ..."
 
-#: connect.cpp:120 debug.cpp:80 main.cpp:1045
+#: connect.cpp:120 debug.cpp:80 main.cpp:983
 msgid "Log"
 msgstr "Logg"
 
@@ -902,7 +902,7 @@ msgid ""
 "recommended value is 30 seconds."
 msgstr ""
 
-#: general.cpp:492 main.cpp:700
+#: general.cpp:492 main.cpp:640
 msgid "Modem"
 msgstr "Modem"
 
@@ -1034,14 +1034,14 @@ msgid ""
 "click a mouse button or a hit a key.\n"
 msgstr ""
 
-#: main.cpp:380
+#: main.cpp:327
 #, c-format
 msgid ""
 "kppp can't create or read from\n"
 "%s."
 msgstr ""
 
-#: main.cpp:396
+#: main.cpp:343
 #, c-format
 msgid ""
 "kppp has detected a %s file.\n"
@@ -1053,15 +1053,15 @@ msgid ""
 "delete the pid file, and restart kppp."
 msgstr ""
 
-#: main.cpp:477
+#: main.cpp:417
 msgid "Connect to: "
 msgstr "Anslut till: "
 
-#: main.cpp:488
+#: main.cpp:428
 msgid "Login ID:"
 msgstr "Användarnamn:"
 
-#: main.cpp:501
+#: main.cpp:441
 msgid ""
 "Type in the username that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1072,11 +1072,11 @@ msgid ""
 "<i>myusername</i> is not the same as <i>MyUserName</i>!"
 msgstr ""
 
-#: main.cpp:510
+#: main.cpp:450
 msgid "Password:"
 msgstr "Lösenord:"
 
-#: main.cpp:524
+#: main.cpp:464
 msgid ""
 "Type in the password that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1087,11 +1087,11 @@ msgid ""
 "<i>mypassword</i> is not the same as <i>MyPassword</i>!"
 msgstr ""
 
-#: main.cpp:538
+#: main.cpp:478
 msgid "Show Log Window"
 msgstr "Visa loggfönster"
 
-#: main.cpp:545
+#: main.cpp:485
 msgid ""
 "This controls whether a log window is shown.\n"
 "A log window shows the communication between\n"
@@ -1102,15 +1102,15 @@ msgid ""
 "problems"
 msgstr ""
 
-#: main.cpp:568
+#: main.cpp:508
 msgid "Setup"
 msgstr "Inställningar"
 
-#: main.cpp:584
+#: main.cpp:524
 msgid "Connect"
 msgstr "Anslut"
 
-#: main.cpp:668
+#: main.cpp:608
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -1119,32 +1119,32 @@ msgstr ""
 "Kontot saknas:\n"
 "%s"
 
-#: main.cpp:682
+#: main.cpp:622
 msgid "kppp Configuration"
 msgstr "kppp inställningar"
 
-#: main.cpp:698
+#: main.cpp:638
 msgid "Accounts"
 msgstr "Konton"
 
-#: main.cpp:699
+#: main.cpp:639
 msgid "Device"
 msgstr "Device"
 
-#: main.cpp:701
+#: main.cpp:641
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:702
+#: main.cpp:642
 msgid "Graph"
 msgstr ""
 
-#: main.cpp:875
+#: main.cpp:815
 #, fuzzy
 msgid "Details..."
 msgstr "Detaljer"
 
-#: main.cpp:930
+#: main.cpp:868
 #, fuzzy, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1160,7 +1160,7 @@ msgstr ""
 "sökvägen till 'pppd' i PPP-fliken\n"
 "bland inställningarna."
 
-#: main.cpp:945
+#: main.cpp:883
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1171,7 +1171,7 @@ msgstr ""
 "Var god kontrollera att du har gett kppp setuid-rättigheter och att\n"
 "pppd är körbar."
 
-#: main.cpp:959
+#: main.cpp:897
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1190,7 +1190,7 @@ msgstr ""
 "ändra modem-device på modem-fliken\n"
 "bland inställningarna."
 
-#: main.cpp:979
+#: main.cpp:915
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1200,7 +1200,7 @@ msgstr ""
 "PAP. Den kräver att du anger ett\n"
 "användarnamn och lösenord!"
 
-#: main.cpp:987
+#: main.cpp:924
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1209,7 +1209,7 @@ msgstr ""
 "Kan inte skapa PAP-autentiseringsfil\n"
 "\"%s\""
 
-#: main.cpp:1004
+#: main.cpp:941
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -1219,7 +1219,7 @@ msgstr ""
 "CHAP. Den kräver att du anger ett\n"
 "användarnamn och lösenord!"
 
-#: main.cpp:1012
+#: main.cpp:950
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1228,20 +1228,20 @@ msgstr ""
 "Kan inte skapa CHAP-autentiseringsfil\n"
 "\"%s\""
 
-#: main.cpp:1024
+#: main.cpp:962
 #, fuzzy
 msgid "You must specify a telephone number!"
 msgstr "Du måste ange ett telefonnummer!\n"
 
-#: main.cpp:1111
+#: main.cpp:1049
 msgid "Quit kPPP?"
 msgstr "Avsluta kPPP?"
 
-#: main.cpp:1112
+#: main.cpp:1050
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Om du avslutar kPPP så avslutas din PPP-anslutning."
 
-#: main.cpp:1147
+#: main.cpp:1085
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
@@ -1374,7 +1374,7 @@ msgstr "Parameter:"
 msgid "Defaults"
 msgstr "Detaljer"
 
-#: pppdata.cpp:108
+#: pppdata.cpp:109
 msgid ""
 "The application-specific config file\n"
 "could not be opened neither\n"
@@ -1671,36 +1671,36 @@ msgstr ""
 "icke-tom fil med lämpliga läs-\n"
 "och skrivrättigheter."
 
-#: ppplog.cpp:148
+#: ppplog.cpp:149
 msgid ""
 "You have launched pppd before the remote server was ready to establish a PPP "
 "connection.\n"
 "Please use the terminal-based login to verify"
 msgstr ""
 
-#: ppplog.cpp:153
+#: ppplog.cpp:154
 msgid ""
 "Do you use /dev/modem ? If so, you should specify the real device instead, "
 "e.g. /dev/ttyS1 (COM2)."
 msgstr ""
 
-#: ppplog.cpp:157
+#: ppplog.cpp:158
 msgid "Check that you supplied the correct username and password!"
 msgstr ""
 
-#: ppplog.cpp:160
+#: ppplog.cpp:161
 msgid ""
 "You shouldn't pass 'lock' as an argument to pppd. Check /etc/ppp/options and "
 "~/.ppprc"
 msgstr ""
 
-#: ppplog.cpp:164
+#: ppplog.cpp:165
 msgid ""
 "The remote system does not seem to answer to\n"
 "configuration request! Contact your provider!"
 msgstr ""
 
-#: ppplog.cpp:179
+#: ppplog.cpp:180
 #, c-format
 msgid ""
 "Notice that the remote system has sent the following message:\n"
@@ -1708,12 +1708,12 @@ msgid ""
 "This may give you a hint why the the connection has failed."
 msgstr ""
 
-#: ppplog.cpp:198
+#: ppplog.cpp:199
 #, fuzzy
 msgid "Sorry. Can't help you here."
 msgstr "Kan tyvärr inte komma åt modemet."
 
-#: ppplog.cpp:215
+#: ppplog.cpp:216
 msgid ""
 "KPPP could not prepare a PPP log. It´s very likely\n"
 "that pppd was started without the \"debug\" option.\n"
@@ -1724,7 +1724,7 @@ msgid ""
 "Shall I turn it on now?"
 msgstr ""
 
-#: ppplog.cpp:226
+#: ppplog.cpp:227
 msgid ""
 "The \"debug\" option has been added. You\n"
 "should now try to reconnect. If that fails\n"
@@ -1732,28 +1732,16 @@ msgid ""
 "you to track down the connection problem."
 msgstr ""
 
-#: ppplog.cpp:241
+#: ppplog.cpp:242
 msgid "PPP log"
 msgstr ""
 
-#: ppplog.cpp:245
+#: ppplog.cpp:246
 msgid "kppp's diagnosis (just guessing):"
 msgstr ""
 
-#: ppplog.cpp:250
+#: ppplog.cpp:251
 msgid "Write to file"
-msgstr ""
-
-#: security.cpp:46
-msgid "Advanced Security"
-msgstr ""
-
-#: security.cpp:49
-msgid "Allowed users"
-msgstr ""
-
-#: security.cpp:50
-msgid "Allowed groups"
 msgstr ""
 
 #, fuzzy

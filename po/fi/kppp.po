@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KPPP\n"
-"POT-Creation-Date: 1998-11-24 01:56+0100\n"
+"POT-Creation-Date: 1998-11-25 01:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Kim Enkovaara <kim.enkovaara@iki.fi>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -183,7 +183,7 @@ msgstr ""
 msgid "Login script has unbalanced loop Start/End"
 msgstr "Sis‰‰nkirjoittautumisohjelmassa on eri m‰‰r‰ Loop Start/End pareja"
 
-#: connect.cpp:97 connect.cpp:195 main.cpp:1032
+#: connect.cpp:97 connect.cpp:195 main.cpp:970
 msgid "Connecting to: "
 msgstr "Yhdist‰:"
 
@@ -196,7 +196,7 @@ msgstr "Valitettavasti en voi luoda modeemin lukitustiedostoa."
 msgid "Looking for Modem ..."
 msgstr "Etsin modeemia..."
 
-#: connect.cpp:120 debug.cpp:80 main.cpp:1045
+#: connect.cpp:120 debug.cpp:80 main.cpp:983
 msgid "Log"
 msgstr "Loki"
 
@@ -1074,7 +1074,7 @@ msgstr ""
 "<i>CONNECT</i> vastausta modeemilta. Suositeltu\n"
 "arvo on 30 sekuntia"
 
-#: general.cpp:492 main.cpp:700
+#: general.cpp:492 main.cpp:640
 msgid "Modem"
 msgstr "Modeemi"
 
@@ -1243,7 +1243,7 @@ msgstr ""
 "T‰m‰ ikkuna on esilla kunnes painat hiiren\n"
 "nappia tai jotain n‰pp‰int‰.\n"
 
-#: main.cpp:380
+#: main.cpp:327
 #, c-format
 msgid ""
 "kppp can't create or read from\n"
@@ -1252,7 +1252,7 @@ msgstr ""
 "kppp ei voi lukea tiedostosta\n"
 "%s."
 
-#: main.cpp:396
+#: main.cpp:343
 #, c-format
 msgid ""
 "kppp has detected a %s file.\n"
@@ -1271,15 +1271,15 @@ msgstr ""
 "Varmista ettei toinen kppp ole k‰ynniss‰,\n"
 "ja tuhoa tiedosto, ja k‰ynnist‰ kppp uudelleen."
 
-#: main.cpp:477
+#: main.cpp:417
 msgid "Connect to: "
 msgstr "Yhdist‰: "
 
-#: main.cpp:488
+#: main.cpp:428
 msgid "Login ID:"
 msgstr "K‰ytt‰j‰ ID:"
 
-#: main.cpp:501
+#: main.cpp:441
 msgid ""
 "Type in the username that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1298,11 +1298,11 @@ msgstr ""
 "<b>T‰rke‰‰</b>: kirjaiten koko vaikuttaa:\n"
 "<i>k‰ytt‰j‰nimi</i> ei ole sama kuin <i>K‰ytt‰j‰Nimi</i>!"
 
-#: main.cpp:510
+#: main.cpp:450
 msgid "Password:"
 msgstr "Salasana:"
 
-#: main.cpp:524
+#: main.cpp:464
 msgid ""
 "Type in the password that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1321,11 +1321,11 @@ msgstr ""
 "<b>T‰rke‰‰</b>: kirjaiten koko vaikuttaa:\n"
 "<i>salasana</i> ei ole sama kuin <i>SalaSana</i>!"
 
-#: main.cpp:538
+#: main.cpp:478
 msgid "Show Log Window"
 msgstr "N‰yt‰ loki-ikkuna"
 
-#: main.cpp:545
+#: main.cpp:485
 msgid ""
 "This controls whether a log window is shown.\n"
 "A log window shows the communication between\n"
@@ -1342,15 +1342,15 @@ msgstr ""
 "Laita t‰m‰ pois p‰‰lt‰ jos <i>kppp</i> ottaa yhteyden\n"
 "ilman ongelmia"
 
-#: main.cpp:568
+#: main.cpp:508
 msgid "Setup"
 msgstr "Asetukset"
 
-#: main.cpp:584
+#: main.cpp:524
 msgid "Connect"
 msgstr "Yhdist‰"
 
-#: main.cpp:668
+#: main.cpp:608
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -1359,31 +1359,31 @@ msgstr ""
 "Profiilia ei ole olemassa:\n"
 "%s"
 
-#: main.cpp:682
+#: main.cpp:622
 msgid "kppp Configuration"
 msgstr "kppp Asetukset"
 
-#: main.cpp:698
+#: main.cpp:638
 msgid "Accounts"
 msgstr "Profiilit"
 
-#: main.cpp:699
+#: main.cpp:639
 msgid "Device"
 msgstr "Laite"
 
-#: main.cpp:701
+#: main.cpp:641
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:702
+#: main.cpp:642
 msgid "Graph"
 msgstr ""
 
-#: main.cpp:875
+#: main.cpp:815
 msgid "Details..."
 msgstr "Yksityiskohdat..."
 
-#: main.cpp:930
+#: main.cpp:868
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1402,7 +1402,7 @@ msgstr ""
 "Asetukset dialogissa.\n"
 " Kiitos"
 
-#: main.cpp:945
+#: main.cpp:883
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1415,7 +1415,7 @@ msgstr ""
 "Varmista, ett‰ kppp:lla on setuid oikeudet ja\n"
 "pppd on suoritettavissa."
 
-#: main.cpp:959
+#: main.cpp:897
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1436,7 +1436,7 @@ msgstr ""
 "asetukset dialogissa.\n"
 " Kiitos"
 
-#: main.cpp:979
+#: main.cpp:915
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1446,7 +1446,7 @@ msgstr ""
 "PAP:n. T‰m‰ vaatii sen, ett‰ annat\n"
 "k‰ytt‰j‰nimen sek‰ salasanasi!"
 
-#: main.cpp:987
+#: main.cpp:924
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1455,7 +1455,7 @@ msgstr ""
 "En saa luotua PAP-tunnistusta\n"
 "tiedostoon \"%s\""
 
-#: main.cpp:1004
+#: main.cpp:941
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -1465,7 +1465,7 @@ msgstr ""
 "CHAP:n. T‰m‰ vaatii sen, ett‰ annat\n"
 "k‰ytt‰j‰nimen sek‰ salasanasi!"
 
-#: main.cpp:1012
+#: main.cpp:950
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1474,19 +1474,19 @@ msgstr ""
 "En saa luotua CHAP-tunnistusta\n"
 "tiedostoon \"%s\""
 
-#: main.cpp:1024
+#: main.cpp:962
 msgid "You must specify a telephone number!"
 msgstr "Sinun on annettava puhelinnumero !"
 
-#: main.cpp:1111
+#: main.cpp:1049
 msgid "Quit kPPP?"
 msgstr "Lopeta kPPP?"
 
-#: main.cpp:1112
+#: main.cpp:1050
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "kPPP:n lopetus sulkee PPP-istuntosi."
 
-#: main.cpp:1147
+#: main.cpp:1085
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
@@ -1614,7 +1614,7 @@ msgstr "Argumentti:"
 msgid "Defaults"
 msgstr "Oletukset"
 
-#: pppdata.cpp:108
+#: pppdata.cpp:109
 msgid ""
 "The application-specific config file\n"
 "could not be opened neither\n"
@@ -1927,7 +1927,7 @@ msgstr ""
 "Pyyd‰ systeemisi yll‰pit‰j‰‰ luomaan t‰m‰\n"
 "tiedosto sopivilla k‰yttˆoikeuksilla."
 
-#: ppplog.cpp:148
+#: ppplog.cpp:149
 msgid ""
 "You have launched pppd before the remote server was ready to establish a PPP "
 "connection.\n"
@@ -1937,7 +1937,7 @@ msgstr ""
 "PPP-yhteyden.\n"
 "K‰yt‰ terminaalipohjaista kirjautumista varmistaaksesi"
 
-#: ppplog.cpp:153
+#: ppplog.cpp:154
 msgid ""
 "Do you use /dev/modem ? If so, you should specify the real device instead, "
 "e.g. /dev/ttyS1 (COM2)."
@@ -1945,11 +1945,11 @@ msgstr ""
 "K‰yt‰kˆ /dev/modem laitetta ?. Jos k‰yt‰t sinun tulisi m‰‰ritell‰, "
 "todellinen laite esim. /dev/ttyS1 (COM2)."
 
-#: ppplog.cpp:157
+#: ppplog.cpp:158
 msgid "Check that you supplied the correct username and password!"
 msgstr "Tarkista ett‰ annoit oikean k‰ytt‰j‰nimen ja salasanan!"
 
-#: ppplog.cpp:160
+#: ppplog.cpp:161
 msgid ""
 "You shouldn't pass 'lock' as an argument to pppd. Check /etc/ppp/options and "
 "~/.ppprc"
@@ -1957,7 +1957,7 @@ msgstr ""
 "Sinun ei tule antaa 'lock' parametria pppd:lle. Tarkista /etc/ppp/options ja "
 "~/.ppprc"
 
-#: ppplog.cpp:164
+#: ppplog.cpp:165
 msgid ""
 "The remote system does not seem to answer to\n"
 "configuration request! Contact your provider!"
@@ -1965,7 +1965,7 @@ msgstr ""
 "Vastap‰‰n systeemi ei n‰yt‰ vastaavan asetuspyyntˆˆsi!\n"
 "Ota yhteytt‰ palveluntarjoajaasi!"
 
-#: ppplog.cpp:179
+#: ppplog.cpp:180
 #, c-format
 msgid ""
 "Notice that the remote system has sent the following message:\n"
@@ -1976,11 +1976,11 @@ msgstr ""
 "\"%s\"\n"
 "Viesti voi antaa vinkkej‰ miksi yhteys ep‰onnistui."
 
-#: ppplog.cpp:198
+#: ppplog.cpp:199
 msgid "Sorry. Can't help you here."
 msgstr "Valitettavasti en voi auttaa t‰ss‰."
 
-#: ppplog.cpp:215
+#: ppplog.cpp:216
 msgid ""
 "KPPP could not prepare a PPP log. It¥s very likely\n"
 "that pppd was started without the \"debug\" option.\n"
@@ -1998,7 +1998,7 @@ msgstr ""
 "\n"
 "Laitanko sen p‰‰lle nyt?"
 
-#: ppplog.cpp:226
+#: ppplog.cpp:227
 msgid ""
 "The \"debug\" option has been added. You\n"
 "should now try to reconnect. If that fails\n"
@@ -2009,29 +2009,26 @@ msgstr ""
 "yhteytt‰. Jos se taas ep‰onnistuu saat PPP-\n"
 "lokin josta voi olla apua ongelman j‰ljitt‰misess‰."
 
-#: ppplog.cpp:241
+#: ppplog.cpp:242
 msgid "PPP log"
 msgstr "PPP loki"
 
-#: ppplog.cpp:245
+#: ppplog.cpp:246
 msgid "kppp's diagnosis (just guessing):"
 msgstr "kppp:n diagnoosi (arvailua):"
 
-#: ppplog.cpp:250
+#: ppplog.cpp:251
 msgid "Write to file"
 msgstr "Kirjoita tiedostoon"
 
-#: security.cpp:46
-msgid "Advanced Security"
-msgstr "Edistynyt turvallisuus"
+#~ msgid "Advanced Security"
+#~ msgstr "Edistynyt turvallisuus"
 
-#: security.cpp:49
-msgid "Allowed users"
-msgstr "Sallitus k‰ytt‰j‰t"
+#~ msgid "Allowed users"
+#~ msgstr "Sallitus k‰ytt‰j‰t"
 
-#: security.cpp:50
-msgid "Allowed groups"
-msgstr "Sallitut ryhm‰t"
+#~ msgid "Allowed groups"
+#~ msgstr "Sallitut ryhm‰t"
 
 #~ msgid "Ok"
 #~ msgstr "Ok"
