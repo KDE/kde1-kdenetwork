@@ -1207,7 +1207,7 @@ void killpppd() {
       return;
     }
 
-    waitpid(&stat);
+    waitpid(pid, &stat, WNOHANG);
   }
 }
 
