@@ -3,22 +3,27 @@
 
 #include <qdialog.h>
 
-#include "NNTPConfigDlgData.h"
+class QPushButton;
+class QLineEdit;
+class QCheckBox;
+class QLineEdit;
 
-class NNTPConfigDlg : public QDialog,
-			public NNTPConfigDlgData
+class NNTPConfigDlg : public QDialog
 {
     Q_OBJECT
 
 public:
-
-    NNTPConfigDlg
-    (
-        QWidget* parent = NULL,
-        const char* name = NULL
-    );
+    NNTPConfigDlg (QWidget* parent = NULL,const char* name = NULL);
 
     virtual ~NNTPConfigDlg();
 
+    QPushButton* b1;
+    QPushButton* b2;
+    QLineEdit* servername;
+    QCheckBox* connectatstart;
+    QCheckBox* authenticate;
+    QLineEdit* username;
+    QLineEdit* password;
+    QLineEdit* smtpserver;
 };
 #endif // NNTPConfigDlg_included

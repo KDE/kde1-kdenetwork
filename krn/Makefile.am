@@ -45,7 +45,6 @@ krn_SOURCES = 	main.cpp\
                 asker.cpp\
                 identDlg.cpp\
                 NNTPConfigDlg.cpp\
-                NNTPConfigDlgData.cpp\
                 decoderDlg.cpp\
                 rmbpop.cpp\
                 kdecode.cpp\
@@ -85,7 +84,6 @@ noinst_HEADERS = 	NNTP.h\
                 asker.h\
                 identDlg.h\
                 NNTPConfigDlg.h\
-                NNTPConfigDlgData.h\
                 decoderDlg.h\
 		rmbpop.h\
 		kdecode.h\
