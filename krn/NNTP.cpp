@@ -269,6 +269,8 @@ int NNTP::setMode (char *mode)
 
 int NNTP::listXover(int from=0,int to=0)
 {
+    from=from >? first;
+    to=to <? last;
     if (to)
         sprintf(mSendBuffer, "xover %d-%d\r\n",from,to);
     else
@@ -482,16 +484,11 @@ QString *NNTP::article(char *id)
     QFile f(p.data());
     if (isCached (id))//it exists so it's cached
     {
-        data->setStr("");
         if(f.open (IO_ReadOnly))
         {
-            QTextStream st(&f);
-            while (1)
-            {
-                if (st.eof())
-                    break;
-                data->append (st.readLine()+"\n");
-            }
+            delete data;
+            data=new QString (f.size());
+            f.readBlock(data->data(),f.size());
             f.close();
         }
     }
@@ -560,6 +557,7 @@ bool NNTP::postArticle (QString ID)
         SendData(buffer, f.size());
         SendData("\r\n.\r\n",5);
         f.close();
+        unlink (p.data());
         delete buffer;
         return true;
     }

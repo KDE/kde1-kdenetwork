@@ -401,6 +401,7 @@ void Groupdlg::tag (NewsGroup *group)
 
 void Groupdlg::offline()
 {
+    msgSender=0;
     toolBar()->setItemEnabled (DISCONNECT,false);
     server->disconnect();
     toolBar()->setItemEnabled (CONNECT,true);

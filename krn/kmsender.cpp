@@ -25,7 +25,6 @@ extern QString outpath;
 
 KMSender::KMSender(NNTP *_nntp)
 {
-    debug ("---------->creating sender<---------------");
     nntp=_nntp;
 }
 
@@ -51,12 +50,6 @@ bool KMSender::sendQueued(void)
 //-----------------------------------------------------------------------------
 bool KMSender::send(KMMessage* aMsg, short sendNow)
 {
-    debug ("here it should get sent");
-
-    debug("------------MESSAGE START--------------");
-    debug (aMsg->asString());
-    debug("-------------MESSAGE END---------------");
-
     //Basically, queing is just placing the message in the
     //outgoing directory, no big deal.
 
@@ -74,12 +67,19 @@ bool KMSender::send(KMMessage* aMsg, short sendNow)
     debug ("Spooling the message");
     f.writeBlock(aMsg->asString(),strlen(aMsg->asString()));
     f.close();
-    if (sendNow)
+    if (nntp)
     {
-        if (nntp->postArticle(aMsg->id()))
-            return true;
-        else
-            return false;
+        if (sendNow)
+        {
+            if (nntp->postArticle(aMsg->id()))
+                return true;
+            else
+                return false;
+        }
+    }
+    else
+    {
+        return false;
     }
     return TRUE;
 }

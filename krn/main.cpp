@@ -66,6 +66,7 @@ void expireCache();
 
 int main( int argc, char **argv )
 {
+    msgSender=0;
     // Initialize the mime++ library
     DwInitialize();
 
