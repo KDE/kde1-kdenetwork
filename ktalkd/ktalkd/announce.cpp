@@ -280,7 +280,8 @@ int announce_proc(NEW_CTL_MSG *request, const char *remote_machine,
 #ifndef NO_TEXT_ANNOUNCE_IF_X
         // never defined. Define it if you don't want text announce in 
         // addition to X announce
-        if (request->r_tty[0]!='\0') {
+        if ((request->r_tty[0]!='\0') && ((int)request->r_tty[3]<(int)'f'))  {
+	  // Not a pseudo terminal (such as an xterm, ...)
             message("Doing also text announce on %s",request->r_tty);
             print_std_mesg(request, remote_machine, usercfg, 1 /*force no sound*/);
         }
