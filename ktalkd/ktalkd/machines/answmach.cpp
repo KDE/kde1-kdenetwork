@@ -176,7 +176,7 @@ void AnswMachine::talk()
       }
 #else
 
-    sprintf(fname, _PATH_TMP"ktalkdXXXXXX");
+    sprintf(fname, _PATH_TMP"/ktalkdXXXXXX");
     if ((fildes = mkstemp(fname)) == -1 || (fd = fdopen(fildes, "w+")) == 0) {
         TalkConnection::p_error("Unable to open temporary file");
     }
