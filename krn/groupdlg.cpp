@@ -189,6 +189,8 @@ Inherited (name)
     
     pixmap=kapp->getIconLoader()->loadIcon("previous.xpm");
     tool->insertButton (pixmap, GET_ACTIVE, true, klocale->translate("Get list of active groups"));
+    pixmap=kapp->getIconLoader()->loadIcon("find.xpm");
+    tool->insertButton (pixmap, FIND_GROUP, true, klocale->translate("Find group"));
     tool->insertSeparator ();
     
     tool->insertButton (kapp->getIconLoader()->loadIcon("subscr.xpm"), SUBSCRIBE, true, "(Un)Subscribe");

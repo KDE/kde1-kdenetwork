@@ -170,6 +170,9 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     
     pixmap=kapp->getIconLoader()->loadIcon("fileprint.xpm");
     tool->insertButton(pixmap,PRINT_ARTICLE,true,klocale->translate("Print Article"));
+
+    pixmap=kapp->getIconLoader()->loadIcon("find.xpm");
+    tool->insertButton(pixmap,FIND_ARTICLE,true,klocale->translate("Find Article"));
     tool->insertSeparator ();
     
     pixmap=kapp->getIconLoader()->loadIcon("filenew.xpm");

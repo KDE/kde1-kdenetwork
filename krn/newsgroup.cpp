@@ -385,7 +385,8 @@ void NewsGroup::getList(Artdlg *dialog)
     
     int index=0;
     int oldindex=0;
-    int counter=artList.count();
+//    int counter=artList.count();
+    int counter=0;
     
     while (1)
     {
