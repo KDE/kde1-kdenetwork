@@ -43,6 +43,7 @@
 #include "kmaddrbook.h"
 #include "kfileio.h"
 #include "groupdlg.h" 
+#include "artdlg.h"
 #include "expirestatusdlg.h"
 #include "NNTP.h"
 #include <mimelib/mimepp.h>
@@ -72,6 +73,7 @@ KSimpleConfig *ruleFile=0;
 QString krnpath,cachepath,artinfopath,groupinfopath,dbasepath,outpath;
 
 KDecode *decoder;
+extern GroupList groups;
 
 GDBM_FILE artdb;
 GDBM_FILE old_artdb;
@@ -183,17 +185,20 @@ int main( int argc, char **argv )
     ruleFile=new KSimpleConfig(krnpath+"/rules");
     Rule::updateGlobals();
     
-    Groupdlg *k=new Groupdlg;
+    Groupdlg *k=new Groupdlg();
     main_widget = k;
     
-//    a.setMainWidget( (QWidget *) &k );
+//    a.setMainWidget( (QWidget *)k );
     
     k->setMinimumSize( 250, 250 );
     k->show();
     
     a.exec();
+
+    
     expireCache();
 
+    k->close();
     gdbm_sync(artdb);
     gdbm_sync(old_artdb);
     gdbm_reorganize(artdb);
@@ -288,6 +293,18 @@ void expireCache()   // robert's cache stuff
 {
 
     main_widget->hide();
+    QListIterator <NewsGroup> it(groups);
+    
+    NewsGroup *iter;
+
+    debug ("flag0");
+    for (it.toFirst();it.current(); ++it)
+    {
+        iter=it.current();
+        if (iter->isVisible)
+            iter->isVisible->hide();
+    }
+    debug ("flag1");
     ExpireStatusDlg *dlg=new ExpireStatusDlg();
 }
 

@@ -346,7 +346,6 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
 
 void Artdlg::init (NewsGroup *_group, NNTP* _server)
 {
-    
     IDList.clear();
     if (group) //make old group know I'm not showing him
         group->isVisible=0;
@@ -369,6 +368,9 @@ void Artdlg::init (NewsGroup *_group, NNTP* _server)
     server = _server;
     QObject::connect (server,SIGNAL(newStatus(const char *)),
                       this,SLOT(updateCounter(const char *)));
+
+    list->clear();
+    list->setCurrentItem(0);
     
     if (server->isConnected())
     {
@@ -378,6 +380,7 @@ void Artdlg::init (NewsGroup *_group, NNTP* _server)
     {
         fillTree();
     }
+    list->setTopItem(0);
 }
 
 void Artdlg::copyText(bool)
@@ -469,7 +472,6 @@ void Artdlg::fillTree ()
         list->setCurrentItem(i);
         list->setTopItem(i);
     }
-    
     
     list->setAutoUpdate(true);
     list->repaint();

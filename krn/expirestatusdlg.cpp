@@ -43,6 +43,10 @@ ExpireStatusDlg::ExpireStatusDlg()
 
 void ExpireStatusDlg::doExpire()
 {
+    QListIterator <NewsGroup> it(groups);
+    
+    NewsGroup *iter;
+
     conf->setGroup("Cache");
     int expireTime=conf->readNumEntry("ExpireBodies",5);
     
@@ -171,10 +175,7 @@ void ExpireStatusDlg::doExpire()
         key=nextkey;
     }
 
-    QListIterator <NewsGroup> it(groups);
-    
-    NewsGroup *iter;
-    for (;it.current(); ++it)
+    for (it.toFirst();it.current(); ++it)
     {
         iter=it.current();
         if (iter->dirty)

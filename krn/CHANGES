@@ -6,6 +6,10 @@ Changes made Apr 5
 *           Applied David Faure's Makefile.am patch.
 *           Article look changes are now immediate (this
             was long overdue)
+*           Ok. This seems to fix the segfaults. I have no
+            clue about why, tough. No, it didn't. Oh, fuck it.
+*           Reset the article list to the top when init'ing
+            artdlg. The previous behaviour was quite confusing.
 
 -----------------------------------------------------------------------------
 Changes made Apr 3
