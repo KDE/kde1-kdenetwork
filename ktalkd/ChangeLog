@@ -1,3 +1,15 @@
+1999-05-09  David Faure  <faure@kde.org> (1.5.2)
+
+	* find_user.cpp : Check for ':' in ut_host, otherwise it's not a display.
+	Thanks to Manuel Cepedello Boiso <manuel@cauchy.fie.us.es> for reporting & testing
+
+1999-02-27  David Faure  <faure@kde.org>
+	
+	* announce.cpp, ktalkdlg.cpp : Use standard output instead of stderr, 
+	for ktalkdlg->ktalkd communication.
+	Solves problem when Qt/KDE prints a warning before the '#'.
+	Thanks to Andrew Standley-Jones for his help (on irc).
+	
 1999-02-03  David Faure  <faure@kde.org> (1.5.1)
 
 	* readcfg++.cpp : Fixed answmach message stopping at first empty line
