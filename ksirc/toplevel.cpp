@@ -298,6 +298,12 @@ KSircTopLevel::~KSircTopLevel()
   //    emit outputLine(str);
   //  }
 
+  if((channel_name[0] == '#') || (channel_name[0] == '&')){
+    QString str = QString("/part ") + channel_name + "\n";
+    cerr << "Quiting channel: " << str;
+    emit outputLine(str);
+  }
+
   if(ticker)
     delete ticker;
   //  delete gm; // Deletes everthing bellow it I guess...
