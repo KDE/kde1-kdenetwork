@@ -197,10 +197,10 @@ uninstall-local:
 m%.cpp: %.h
 	$(MOC) $< -o $@
 
-.deps/ksirc.P: ksirc.cpp cdate.h
-	@echo "Computing dependencies for $<..."
-	@o='o'; \
-	$(CXXMKDEP) $< >$@.tmp \
-	  && sed "s,^\(.*\)\.o:,\1.$$o \1.l$$o $@:," < $@.tmp > $@ \
-	  && rm -f $@.tmp
+#.deps/ksirc.P: ksirc.cpp cdate.h
+#	@echo "Computing dependencies for $<..."
+#	@o='o'; \
+#	$(CXXMKDEP) $< >$@.tmp \
+#	  && sed "s,^\(.*\)\.o:,\1.$$o \1.l$$o $@:," < $@.tmp > $@ \
+#	  && rm -f $@.tmp
 
