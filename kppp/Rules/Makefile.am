@@ -1,7 +1,33 @@
-SUBDIRS = Argentina Austria Belgium Brasil Croatia Czechia England France \
-	Germany Greece HongKong Hungary Italy Jamaica Japan Kazakhstan \
-	Netherlands Norway Poland Portugal Romania Slovakia SouthAfrika \
-	Spain Sweden Switzerland Malaysia Singapore
+SUBDIRS =	Argentina \
+		Austria \
+		Belgium \
+		Brasil \
+		Croatia \
+		Czechia \
+		Denmark \
+		England \
+		France \
+		Germany \
+		Greece \
+		HongKong \
+		Hungary \
+		Italy \
+		Jamaica \
+		Japan \
+		Kazakhstan \
+		Luxembourg \
+		Malaysia \
+		Netherlands \
+		Norway \
+		Poland \
+		Portugal \
+		Romania \
+		Singapore \
+		Slovakia \
+		SouthAfrika \
+		Spain \
+		Sweden \
+		Switzerland
 
 pkg_DATA = TEMPLATE 
 pkg_SCRIPTS = checkrules
