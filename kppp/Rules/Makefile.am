@@ -3,7 +3,8 @@ SUBDIRS = Argentina Austria Brasil Czechia England France Germany Greece \
 	Portugal Romania Slovakia SouthAfrika Spain Sweden Switzerland \
 	Belgium Croatia
 
-pkg_DATA = TEMPLATE checkrules
+pkg_DATA = TEMPLATE 
+pkg_SCRIPTS = checkrules
 
 pkgdir = $(kde_datadir)/kppp/Rules
 
