@@ -151,28 +151,7 @@ bool PPPData::readWholeListConfig(const char* group, const char* key,
   list.clear();
   if (config) {
     config->setGroup(group);
-
-    //    config->readListEntry(key, list, sep);
-    // Work around readListEntry() until bugfix for KConfig is in place
-    QString str_list, value;
-    str_list = config->readEntry(key);
-    if (str_list.length() == 0)
-      return true;
-    // append separator if missing
-    str_list.detach();
-    if (str_list.right(1)[0] != sep)
-      str_list += sep; 
-    int len = str_list.length();
-    for( int i = 0; i < len; i++ ) {
-      if( str_list[i] != sep ) {
-        value += str_list[i];
-        continue;
-      }
-      list.append( value );
-      value.truncate(0);
-    }
-    // End of workaround
-
+    config->readListEntry(key, list, sep);
     return true;
   } else
     return false;

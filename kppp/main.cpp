@@ -90,7 +90,7 @@ void banner(char* progname){
   fprintf(stderr,"%s version " KPPPVERSION "\n",progname); 
   fprintf(stderr,"Copyright (c) 1997-1998 Bernd Johannes Wuebben ");
   fprintf(stderr,"wuebben@math.cornell.edu\n");
-  fprintf(stderr,"Use -h for the list of valid of command line options.\n");
+  fprintf(stderr,"Use -h for the list of valid command line options.\n");
   exit(0);
 
 }
@@ -495,7 +495,7 @@ void XPPPWidget::prepareSetupDialog() {
     tabWindow->setCancelButton(klocale->translate("Cancel"));
     tabWindow->resize( 355, 350 );
     tabWindow->setFixedSize( 355, 350 ); // this doesn't seem to work in Qt 1.1
-    
+
     accounts = new AccountWidget(tabWindow,"accounts");
     modem = new ModemWidget(tabWindow,"modem");
     modem2 = new ModemWidget2(tabWindow,"modem2");

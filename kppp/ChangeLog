@@ -1,8 +1,11 @@
+1998-06-02  Harri Porten  <porten@tu-harburg.de>
+
+	* pppdata.cpp: removed workaround, since KConfig fix is in place now
+
 Mon Jun  1 16:13:06 1998    Mario Weilguni <mweilguni@kde.org>
 
 	* kppp did´nt like "$" in modem strings, fixed that
 	
-
 Sun May 24 23:39:42 1998  Bernd Johannes Wuebben  <wuebben@math.cornell.edu>
 
 	* Applied FreeBSD patch for the modem devices
