@@ -1,6 +1,6 @@
 /**********************************************************************
 
- Server Controller
+ Server Controller $$Id$$
 
  Main Server Controller.  Displays server connection window, and makes 
  new server connection on demand.
