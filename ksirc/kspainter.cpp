@@ -119,11 +119,6 @@ void KSPainter::colourDrawText(QPainter *p, int startx, int starty,
           break;
         case 'b':
           curState.toggleBold();
-            {
-              QFont fnt = p->font();
-              fnt.setBold(TRUE);
-              p->setFont(fnt);
-            }
 	  break;
         case 'i':
           curState.toggleItalics();
@@ -288,16 +283,16 @@ inline void PainterState::toggleSel(){
 }
 
 inline void PainterState::toggleItalics(){
-  qfCurFont.setItalic(qfCurFont.italic() == TRUE ? FALSE : TRUE);
+  qfCurFont.setItalic(!qfCurFont.italic());
   painter->setFont(qfCurFont);
 }
 
 inline void PainterState::toggleBold(){
-  qfCurFont.setBold(qfCurFont.bold() == TRUE ? FALSE : TRUE);
+  qfCurFont.setBold(!qfCurFont.bold());
   painter->setFont(qfCurFont);
 }
 
 inline void PainterState::toggleUnderline(){
-  qfCurFont.setUnderline(qfCurFont.underline() == TRUE ? FALSE : TRUE);
+  qfCurFont.setUnderline(!qfCurFont.underline());
   painter->setFont(qfCurFont);
 }
