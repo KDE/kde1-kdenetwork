@@ -440,24 +440,24 @@ msgid "Network"
 msgstr "Nettverk"
 
 #: kmsettings.cpp:311
-#, fuzzy
 msgid "Fonts"
-msgstr "inneholder"
+msgstr "Skrifttyper"
 
 #: kmsettings.cpp:316
 msgid "Message Body Font:"
-msgstr ""
+msgstr "Meldingskroppskriftype:"
 
 #: kmsettings.cpp:321
-#, fuzzy
 msgid "Message List Font:"
-msgstr "Melding som enkel tekst"
+msgstr "Meldingslisteskrifttype:"
 
 #: kmsettings.cpp:325
 msgid ""
 "Changing fonts currently only occurs when a new\n"
 "window is opened or kmail is restarted"
 msgstr ""
+"Endring av skrifttype skjer bare når et nytt\n"
+"vindu blir åpnet eller kmail blir startet på nytt"
 
 #: kmsettings.cpp:341 kmsettings.cpp:411
 msgid "Appearance"
@@ -561,12 +561,11 @@ msgstr "tøm søppelkurv ved avslutning"
 
 #: kmsettings.cpp:556
 msgid "Message Body Font"
-msgstr ""
+msgstr "Meldingskroppskrifttype"
 
 #: kmsettings.cpp:568
-#, fuzzy
 msgid "Message List Font"
-msgstr "Melding som enkel tekst"
+msgstr "Meldingslisteskriftype"
 
 #: kmsettings.cpp:618
 msgid "Select Account"
@@ -641,14 +640,12 @@ msgid "Subject"
 msgstr "Subjekt"
 
 #: kmheaders.cpp:209
-#, fuzzy
 msgid "Unknown"
-msgstr "Ukjent feil"
+msgstr "Ukjent"
 
 #: kmheaders.cpp:212
-#, fuzzy
 msgid "No Subject"
-msgstr "Subjekt"
+msgstr "Intet subjekt"
 
 #: kmheaders.cpp:259
 msgid "order of arrival"
@@ -950,11 +947,9 @@ msgstr ""
 "konfigurert."
 
 #: kmfolder.cpp:144
-#, fuzzy, c-format
+#, c-format
 msgid "Folder `%s' changed. Recreating index."
-msgstr ""
-"Innhold av mappe`%s' er forandret.\n"
-"Gjenoppretter indeksfilen."
+msgstr "Mappen `%s' ble endret. Gjenoppretter indeks."
 
 #: kmfolder.cpp:351
 #, c-format
@@ -1302,7 +1297,6 @@ msgstr ""
 "%s"
 
 #: kmfolderseldlg.cpp:29
-#, fuzzy
 msgid "Select folder"
 msgstr "Velg mappe"
 
