@@ -55,7 +55,7 @@
 #include "../readconf.h"
 #include "../process.h"
 
-ForwMachine::ForwMachine(const CTL_MSG * mp,
+ForwMachine::ForwMachine(const NEW_CTL_MSG * mp,
                          char * forward,
                          char * _forwardMethod)
 {
@@ -139,7 +139,7 @@ int ForwMachine::getNames(char * forward)
     return 1;
 }
 
-int ForwMachine::isLookupForMe(const CTL_MSG * mp)
+int ForwMachine::isLookupForMe(const NEW_CTL_MSG * mp)
 {
     /** We want to check if this LOOK_UP concerns this forwmachine.
      * It does if :
@@ -159,7 +159,7 @@ int ForwMachine::isLookupForMe(const CTL_MSG * mp)
 
 }
 
-char * ForwMachine::findMatch(CTL_MSG * mp)
+char * ForwMachine::findMatch(NEW_CTL_MSG * mp)
 {
     /** Check if there is a forwarding machine on this host,
      * matching answerer = r_name and caller = l_name
@@ -184,7 +184,7 @@ int ForwMachine::transmit_chars(int sockt1, int sockt2, unsigned char * buf)
     return nb;
 }
 
-void ForwMachine::connect_FWT(TalkConnection * tcCaller, const struct sockaddr * answ_addr )
+void ForwMachine::connect_FWT(TalkConnection * tcCaller)
 {
     /** FWT : This is the method in which we take the connection to both
      * clients and send each character received from one side to the other
@@ -243,16 +243,16 @@ void ForwMachine::connect_FWT(TalkConnection * tcCaller, const struct sockaddr *
     } else syslog(LOG_ERR,"-- FWT : Caller did not connect !");
 }
 
-void ForwMachine::sendResponse(const struct sockaddr target, CTL_RESPONSE * rp)
+void ForwMachine::sendResponse(const struct sockaddr target, NEW_CTL_RESPONSE * rp)
 {
         int cc = sendto(0 /*talkd_sockt*/, (char *) rp,
-                        sizeof (CTL_RESPONSE), 0, &target,
+                        sizeof (NEW_CTL_RESPONSE), 0, &target,
                         sizeof (struct sockaddr));
-        if (cc != sizeof (CTL_RESPONSE))
+        if (cc != sizeof (NEW_CTL_RESPONSE))
             syslog(LOG_WARNING, "sendto: %m");
 }
 
-void ForwMachine::processLookup(const CTL_MSG * mp, CTL_RESPONSE * rp)
+void ForwMachine::processLookup(const NEW_CTL_MSG * mp, NEW_CTL_RESPONSE * rp)
 {
     if (fork()==0) /* let the daemon process other messages, including ours */
     {
@@ -264,7 +264,7 @@ void ForwMachine::processLookup(const CTL_MSG * mp, CTL_RESPONSE * rp)
                                                        local_user);
         tcCaller->open_sockets();
         tcCaller->ctl_transact(LOOK_UP, 0);
-        CTL_RESPONSE * resp = tcCaller->getResponse();
+        NEW_CTL_RESPONSE * resp = tcCaller->getResponse();
         message("------------- Done. Forward response to answerer");
         
         rp->answer = resp->answer;
@@ -272,14 +272,14 @@ void ForwMachine::processLookup(const CTL_MSG * mp, CTL_RESPONSE * rp)
         // Now send the response to the answerer
         if (forwardMethod == FWR)
         {        
-            // with caller's addr copied in the CTL_RESPONSE (if FWR),
+            // with caller's addr copied in the NEW_CTL_RESPONSE (if FWR),
             // so that they can talk to each other.
             rp->addr = resp->addr;
             rp->addr.sa_family = htons(resp->addr.sa_family);
         }
         else // FWT. (FWA doesn't let us get the LOOK_UP)
         {
-            // in this case, we copy in the CTL_RESPONSE the address
+            // in this case, we copy in the NEW_CTL_RESPONSE the address
             // of the connection socket set up here for the answerer
             rp->addr = tcAnsw->get_addr();
             rp->addr.sa_family = htons(AF_INET);
@@ -289,13 +289,13 @@ void ForwMachine::processLookup(const CTL_MSG * mp, CTL_RESPONSE * rp)
         // just in case the answerer is very fast (ex: answ mach)
         sendResponse(mp->ctl_addr, rp);
         if (forwardMethod == FWT)
-            connect_FWT(tcCaller, &mp->addr);
+            connect_FWT(tcCaller);
         delete tcCaller;
         _exit(0);
     }
 }
 
-void ForwMachine::processAnnounce(CTL_RESPONSE * rp, int id_num)
+void ForwMachine::processAnnounce(NEW_CTL_RESPONSE * rp, int id_num)
 {
     if (fork()==0) /* let the daemon process other messages, including ours */
     {
@@ -304,7 +304,7 @@ void ForwMachine::processAnnounce(CTL_RESPONSE * rp, int id_num)
         tcAnsw->ctl_transact(ANNOUNCE, id_num);
         // Copy answer and id_num from the response struct
         message("-------------- ForwMachine : got a response");
-        CTL_RESPONSE * resp = tcAnsw->getResponse();
+        NEW_CTL_RESPONSE * resp = tcAnsw->getResponse();
         rp->answer = resp->answer;
         rp->id_num = htonl(resp->id_num);
         // Now send the response to the caller
@@ -316,7 +316,7 @@ void ForwMachine::processAnnounce(CTL_RESPONSE * rp, int id_num)
 
 extern "C" {
 /** C interface for the Forwarding Machine */
-char * launchForwMach(const CTL_MSG * mp, CTL_RESPONSE * rp, char * forward, char * forwardMethod)
+char * launchForwMach(const NEW_CTL_MSG * mp, NEW_CTL_RESPONSE * rp, char * forward, char * forwardMethod)
   {
       message_s("-- launchForwMach : forward=%s",forward);
       message_s("-- launchForwMach : method=%s",forwardMethod);
@@ -326,7 +326,7 @@ char * launchForwMach(const CTL_MSG * mp, CTL_RESPONSE * rp, char * forward, cha
   }
 
 /** C interface for a lookup in the forwarding machines */
-int forwMachProcessLookup(const CTL_MSG * mp, CTL_RESPONSE * rp)
+int forwMachProcessLookup(const NEW_CTL_MSG * mp, NEW_CTL_RESPONSE * rp)
   {
       /** This goes through the table, looking for non-NULL fwm entries.
        * After a cast to (ForwMachine *), the fwm entries allows us to
@@ -355,7 +355,7 @@ int forwMachProcessLookup(const CTL_MSG * mp, CTL_RESPONSE * rp)
 /** Check if there is a forwarding machine on this machine,
  * matching answerer = r_name and caller = l_name
  * Then set callee to the initial callee, to display in ktalkdlg */
-char * forwMachFindMatch(CTL_MSG * mp)
+char * forwMachFindMatch(NEW_CTL_MSG * mp)
   {
       message("-- forwMachFindMatch(mp)");
       extern TABLE_ENTRY * table;
