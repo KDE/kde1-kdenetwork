@@ -98,7 +98,7 @@ QString kFileToString(const char* aFileName, bool aEnsureNL, bool aVerbose)
     return 0;
   }
 
-  debug("kFileToString: %d bytes read", readLen);
+  //debug("kFileToString: %d bytes read", readLen);
   return result;
 }
 

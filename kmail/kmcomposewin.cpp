@@ -188,7 +188,7 @@ KMComposeWin::KMComposeWin(KMMessage *aMsg) : KMComposeWinInherited(),
 //-----------------------------------------------------------------------------
 KMComposeWin::~KMComposeWin()
 {
-  debug("~KMComposeWin()");
+  //debug("~KMComposeWin()");
 
   writeConfig();
 

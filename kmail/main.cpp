@@ -159,7 +159,7 @@ static void checkMessage()
   sprintf (lf, "%s.kmail%d.msg", _PATH_TMP, getuid());
   if (access(lf, F_OK) != 0)
   {
-    debug ("No message for me");
+    //debug ("No message for me");
     return;
   }
   QString cmd;
@@ -777,11 +777,11 @@ main(int argc, char *argv[])
         if (kill(0-pId, 0) != 0)      // try if it lives at all
         {
           debug ("Server died whyle busy");
-          writePid(true);             // he diedd and left his pid uncleaned
+          writePid(true);             // he died and left his pid uncleaned
         }
         else
         {
-          debug ("Server is busy - message pending");
+          //debug ("Server is busy - message pending");
           exit (0);                   // ok he lives but is busy
         }
       }
@@ -794,12 +794,12 @@ main(int argc, char *argv[])
         }
         else
         {
-          debug ("Server is ready - message sent");
+          //debug ("Server is ready - message sent");
           exit (0);
         }
       }
     }
-    debug ("We are starting normaly");
+    //debug ("We are starting normaly");
     sprintf(lf, "%s.kmail%d.msg", _PATH_TMP, getuid());
     unlink(lf); // clear old mesage
   }

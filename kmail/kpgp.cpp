@@ -648,7 +648,7 @@ Kpgp::checkForPGP(void)
     {
       havePgp=TRUE;
       havePGP5=TRUE;
-      debug("Kpgp: found pgp5.0");
+      //debug("Kpgp: found pgp5.0");
       return TRUE;
     }
     ++it;
@@ -664,7 +664,7 @@ Kpgp::checkForPGP(void)
        {
 	    havePgp=TRUE;
 	    havePGP5=FALSE;
-	    debug("Kpgp: found pgp2.6.x");
+	    //debug("Kpgp: found pgp2.6.x");
 	    return TRUE;
        }
        ++it;

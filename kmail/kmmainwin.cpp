@@ -83,7 +83,7 @@ KMMainWin::KMMainWin(QWidget *, char *name) :
 //-----------------------------------------------------------------------------
 KMMainWin::~KMMainWin()
 {
-  debug("~KMMainWin()");
+  //debug("~KMMainWin()");
 
   writeConfig();
 
@@ -510,7 +510,7 @@ void KMMainWin::slotRemoveFolder()
   QDir dir;
 
   if (!mFolder) return;
-  debug("TYPE: %s", (const char*)mFolder->type());
+  //debug("TYPE: %s", (const char*)mFolder->type());
   if (mFolder->isSystemFolder() || strcmp(mFolder->type(),"plain")!=0)
   {
     warning(i18n("Cannot remove a\nsystem folder."));
@@ -714,7 +714,7 @@ void KMMainWin::slotSetHeaderStyle(int id)
 //-----------------------------------------------------------------------------
 void KMMainWin::folderSelected(KMFolder* aFolder)
 {
-  debug ("Entering folderSelected\n");
+  //debug ("Entering folderSelected\n");
   if(!aFolder)
     {
       debug("KMMainWin::folderSelected(): aFolder == NULL");

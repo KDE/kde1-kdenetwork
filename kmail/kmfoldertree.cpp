@@ -99,7 +99,7 @@ void KMFolderTree::updateUnreadAll()
 {
   KMFolderDir* fdir;
   KMFolder* folder;
-  debug( "KMFolderTree::updateUnreadAll" );
+  //debug( "KMFolderTree::updateUnreadAll" );
   bool upd = autoUpdate();
   setAutoUpdate(FALSE);
 
@@ -122,7 +122,7 @@ void KMFolderTree::reload(void)
   KMFolder* folder;
   QString str;
   KMFolder* cur;
-  debug( "KMFolderTree::reload" );
+  //debug( "KMFolderTree::reload" );
   bool upd = autoUpdate();
 
   setAutoUpdate(FALSE);
@@ -197,7 +197,7 @@ void KMFolderTree::delayedUpdate()
 void KMFolderTree::doFolderListChanged()
 {
   uint idx = currentItem();
-  debug("doFolderListChanged()");
+  //debug("doFolderListChanged()");
   reload();
   if (idx >= 0 && idx < count()) setCurrentItem(idx);
 }

@@ -199,7 +199,7 @@ void KMAccount::installTimer()
 //-----------------------------------------------------------------------------
 void KMAccount::deinstallTimer()
 {
-  debug("Calling deinstallTimer()");
+  //debug("Calling deinstallTimer()");
   if(mTimer) {
     mTimer->stop();
     disconnect(mTimer);

@@ -921,7 +921,7 @@ int KMFolder::compact(void)
 
   if (!needsCompact)
   {
-    debug ("Not compacting %s; it's clean", name().data());
+    //debug ("Not compacting %s; it's clean", name().data());
     return 0;
   }
   
