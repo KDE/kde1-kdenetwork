@@ -1,8 +1,3 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -27,14 +22,12 @@ msgid "Host &resolution"
 msgstr "Risoluzione nome host"
 
 #: knu.cpp:170
-#, fuzzy
 msgid "F&inger"
-msgstr "&Ping"
+msgstr "F&inger"
 
 #: knu.cpp:180 knu.cpp:325
-#, fuzzy
 msgid "&Matt's traceroute"
-msgstr "&Traceroute"
+msgstr "&Traceroute di Matt"
 
 #: knu.cpp:192
 msgid ""
@@ -66,21 +59,20 @@ msgstr "Pulisci finestra messaggi"
 
 #: knu.cpp:257
 msgid "P&references..."
-msgstr "Preferenze"
+msgstr "P&referenze"
 
 #: knu.cpp:272
-#, fuzzy, c-format
+# c-format
 msgid "&About %s"
-msgstr "Info sulle &QT"
+msgstr "&Info su %s"
 
 #: knu.cpp:274
 msgid "About &Qt"
 msgstr "Info sulle &QT"
 
 #: knu.cpp:318
-#, fuzzy
 msgid "&Finger"
-msgstr "&Ping"
+msgstr "&Finger"
 
 #: knu.cpp:465
 msgid "About..."
@@ -182,7 +174,7 @@ msgstr "qualsiasi record (ANY)"
 
 #: HostDlg.cpp:125
 msgid "Se&arch for:"
-msgstr "Cerca:"
+msgstr "&Cerca:"
 
 #: HostDlg.cpp:137 HostDlg.cpp:288
 msgid "default server"
@@ -190,33 +182,16 @@ msgstr "server di default"
 
 #: FingerDlg.cpp:94 HostDlg.cpp:146
 msgid "Ser&ver:"
-msgstr "Server:"
+msgstr "&Server:"
 
 #: HostDlg.cpp:332
 msgid "hos&t"
-msgstr ""
+msgstr "&host"
 
 #: HostDlg.cpp:336
 msgid "ns&lookup"
-msgstr ""
+msgstr "ns&lookup"
 
 #: FingerDlg.cpp:76
 msgid "&User:"
-msgstr ""
-
-#, fuzzy
-#~ msgid "Server:"
-#~ msgstr "Server:"
-
-#~ msgid ""
-#~ "You have a problem in your ~/.kde/share/config/knurc configuration file.\n"
-#~ "In the ["
-#~ msgstr ""
-#~ "Hai problemi nel file di configurazione ~/.kde/share/config/knurc.\n"
-#~ "Nella ["
-
-#~ msgid "] group, I cannotfind a correct \"path=\" entry."
-#~ msgstr "] gruppo, non riesco a trovare un campo \"path=\" corretto"
-
-#~ msgid "&Contents"
-#~ msgstr "&Contenuti"
+msgstr "&Utente:"
