@@ -24,7 +24,7 @@ msgstr ""
 
 #: kmmainwin.cpp:272
 msgid "New Folder"
-msgstr "Ny Mapp"
+msgstr "Ny mapp"
 
 #: kmaddrbookdlg.cpp:178 kmmainwin.cpp:284 kmmainwin.cpp:319 main.cpp:321
 msgid "KMail error"
@@ -48,7 +48,7 @@ msgstr ""
 
 #: kmmainwin.cpp:363
 msgid "Modify Folder"
-msgstr "Modifiera Mapp"
+msgstr "Modifiera mapp"
 
 #: kmmainwin.cpp:378
 #, c-format
@@ -98,7 +98,7 @@ msgstr "Meddelandet som klartext"
 
 #: kmmainwin.cpp:523 kmmainwin.cpp:543
 msgid "Select Folder"
-msgstr "Välj Mapp"
+msgstr "Välj mapp"
 
 #: kmmainwin.cpp:566
 msgid "Queued messages successfully sent."
@@ -158,7 +158,7 @@ msgstr "Svara &alla..."
 
 #: kmmainwin.cpp:824 kmmainwin.cpp:939
 msgid "&Forward..."
-msgstr "Skicka &vidare"
+msgstr "Skicka &vidare..."
 
 #: kmmainwin.cpp:827 kmmainwin.cpp:949
 msgid "&Move..."
@@ -254,7 +254,7 @@ msgstr "Skickad"
 
 #: kmmainwin.cpp:926
 msgid "&Next"
-msgstr ""
+msgstr "&Nästa"
 
 #: kmmainwin.cpp:928
 msgid "Next unread"
@@ -263,7 +263,7 @@ msgstr "Nästa olästa"
 #: kmmainwin.cpp:930
 #, fuzzy
 msgid "&Previous"
-msgstr "Föregående olästa"
+msgstr "&Föregående"
 
 #: kmmainwin.cpp:932
 msgid "Previous unread"
@@ -420,7 +420,7 @@ msgstr "Skickar brev"
 
 #: kmsettings.cpp:217
 msgid "Sendmail"
-msgstr ""
+msgstr "Sendmail"
 
 #: kmsettings.cpp:222 kmsettings.cpp:877
 msgid "Location:"
@@ -632,7 +632,7 @@ msgstr "Pop-konto"
 
 #: kmsettings.cpp:886
 msgid "Login:"
-msgstr ""
+msgstr "Användar namn:"
 
 #: kmacctpop.cpp:464 kmsettings.cpp:889
 msgid "Password:"
@@ -660,7 +660,7 @@ msgstr "<ingen>"
 
 #: kmsettings.cpp:976
 msgid "Choose Location"
-msgstr "Bestäm Plats"
+msgstr "Bestäm plats"
 
 #: kmaccount.cpp:115
 msgid "Receipt: "
@@ -672,7 +672,7 @@ msgstr "Kan inte lägga till meddelande:"
 
 #: kmcomposewin.cpp:134 kmheaders.cpp:39
 msgid "F"
-msgstr ""
+msgstr "F"
 
 #: kmheaders.cpp:40
 msgid "Sender"
@@ -701,7 +701,7 @@ msgstr "Okänd"
 
 #: kmheaders.cpp:237
 msgid "No Subject"
-msgstr "Inget Ämne"
+msgstr "Inget ämne"
 
 #: kmheaders.cpp:297
 msgid "order of arrival"
@@ -721,7 +721,7 @@ msgstr "avsändare"
 
 #: kmheaders.cpp:309
 msgid "status"
-msgstr ""
+msgstr "status"
 
 #: kmheaders.cpp:311
 #, c-format
@@ -1028,7 +1028,7 @@ msgstr "ingen (8 bitar)"
 
 #: kmmsgpartdlg.cpp:90
 msgid "base 64"
-msgstr ""
+msgstr "base 64"
 
 #: kmmsgpartdlg.cpp:91
 msgid "quoted printable"
@@ -1116,7 +1116,7 @@ msgstr "varning"
 
 #: main.cpp:110 main.cpp:111
 msgid "fatal error"
-msgstr ""
+msgstr "allvarligt fel"
 
 #: main.cpp:161
 msgid "KMail notification"
@@ -1140,13 +1140,13 @@ msgid ""
 "\n"
 "Shall KMail move the mail folders now ?"
 msgstr ""
-"Katalogen ~/KMail existerar. Från och med nu, kommer KMAil att\n"
+"Katalogen ~/KMail existerar. Från och med nu kommer KMail att\n"
 "använda katalogen ~/Mail för sina meddelanden.\n"
 "KMail kan flytta innehållet i katalogen ~/KMail till\n"
 "~/Mail, men då skrivs existerande filer med samma\n"
-"namn i katalogen ~/Mail (e.g. inbox) över.\n"
+"namn i katalogen ~/Mail (t ex inbox) över.\n"
 "\n"
-"Ska KMail flytta katalogen nu ?"
+"Ska KMail flytta katalogen nu?"
 
 #: main.cpp:322
 msgid "Loading addressbook failed"
@@ -1242,7 +1242,7 @@ msgid ""
 "method in the settings\n"
 "and try again."
 msgstr ""
-"Var god ange skicknings-\n"
+"Vargod ange skicknings-\n"
 "metod och försök igen"
 
 #: kmsender.cpp:122
@@ -1252,7 +1252,8 @@ msgid ""
 "user-name and email-address"
 msgstr ""
 "Vargod fyll i fälten under\n"
-"identitetsinställningar:användarnamn och e-postadress"
+"identitetsinställningar:\n"
+"användarnamn och e-postadress"
 
 #: kmsender.cpp:147
 msgid "You must specify a receiver"
@@ -1268,7 +1269,7 @@ msgstr "Skickning pågår fortfarande"
 
 #: kmsender.cpp:245
 msgid "Initiating sender process..."
-msgstr "Initierar skickning..."
+msgstr "Initierar hämtning..."
 
 #: kmsender.cpp:261
 msgid "Sending message: "
@@ -1287,7 +1288,7 @@ msgid ""
 "Please specify a mailer program\n"
 "in the settings."
 msgstr ""
-"Var god ange mailerprogram\n"
+"Vargod ange mailerprogram\n"
 "under inställningar."
 
 #: kmsender.cpp:501
@@ -1350,7 +1351,7 @@ msgstr "Lokal brevkorg"
 
 #: kmacctseldlg.cpp:49
 msgid "Pop3"
-msgstr ""
+msgstr "Pop3"
 
 #: kmfilteraction.cpp:93 kmfilteraction.cpp:191
 msgid "transfer"
@@ -1436,7 +1437,7 @@ msgstr "inte innehåller"
 
 #: kmfilterdlg.cpp:551
 msgid "regular expression"
-msgstr ""
+msgstr "regeluttryck"
 
 #: kmfilterdlg.cpp:558
 msgid "<message>"
@@ -1444,7 +1445,7 @@ msgstr "<meddelande>"
 
 #: kmfilterdlg.cpp:559
 msgid "<body>"
-msgstr ""
+msgstr "<kropp>"
 
 #: kmfilterdlg.cpp:560
 msgid "<any header>"

@@ -1,7 +1,7 @@
 
 # This has to be set. The rest should be reusable
 GMOFILES = kbiff.gmo kfinger.gmo kmail.gmo knu.gmo korn.gmo kppp.gmo \
-	karchie.gmo kcmtalkd.gmo ktalkd.gmo
+	karchie.gmo kcmtalkd.gmo ktalkd.gmo ksirc.gmo krn.gmo
 POFILES = $(GMOFILES:.gmo=.po)
 
 LANG = sv
