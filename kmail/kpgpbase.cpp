@@ -584,7 +584,10 @@ KpgpBase5::encsign(const QStrList *_recipients, const char *passphrase,
   }
 
   if (signonly)
+  {
+    input.append("\n");
     input.replace(QRegExp("[ \t]+\n"), "\n");   //strip trailing whitespace
+  }
   //We have to do this otherwise it's all in vain
   
   status = run(cmd, passphrase);
