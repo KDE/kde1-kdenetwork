@@ -136,7 +136,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     
     
     addToolBar (tool);
-    tool->setPos( KToolBar::Top );
+    tool->setBarPos( KToolBar::Top );
     tool->show();
     
     panner=new KPanner (this,"panner",KPanner::O_HORIZONTAL,33);
