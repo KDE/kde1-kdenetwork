@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1999-03-17 02:17+0100\n"
+"POT-Creation-Date: 1999-03-22 02:34+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Theodore J. Soldatos <theodore@eexi.gr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -297,40 +297,40 @@ msgstr "Μεταβλητή ανίχνευσης: "
 msgid "Found: "
 msgstr "Βρέθηκαν: "
 
-#: connect.cpp:847
+#: connect.cpp:846
 msgid "Looping: "
 msgstr "Ανακύκλωση: "
 
-#: connect.cpp:880 modeminfo.cpp:227
+#: connect.cpp:879 modeminfo.cpp:227
 msgid "One Moment Please ..."
 msgstr "Μια στιγμή παρακαλώ ..."
 
-#: connect.cpp:924
+#: connect.cpp:923
 msgid "Script timed out!"
 msgstr "Τέλος χρόνου αναμονής αρχείου εντολών!"
 
-#: connect.cpp:943
+#: connect.cpp:942
 msgid "Scanning: "
 msgstr "Ανίχνευση: "
 
-#: connect.cpp:953
+#: connect.cpp:952
 msgid "Expecting: "
 msgstr "Αναμονή για: "
 
-#: connect.cpp:980
+#: connect.cpp:979
 msgid "Logging on to Network ..."
 msgstr "Σύνδεση στο δίκτυο ..."
 
-#: connect.cpp:1006
+#: connect.cpp:1005
 msgid "Running Startup Command ..."
 msgstr "Εκτέλεση αρχικής εντολής ..."
 
-#: connect.cpp:1011 connect.cpp:1018
+#: connect.cpp:1010 connect.cpp:1017
 #, fuzzy
 msgid "Done"
 msgstr "Κανένα"
 
-#: connect.cpp:1128
+#: connect.cpp:1127
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"

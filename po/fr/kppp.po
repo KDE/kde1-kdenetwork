@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1999-03-17 02:17+0100\n"
+"POT-Creation-Date: 1999-03-22 02:34+0100\n"
 "PO-Revision-Date: 1999-01-31 18:00 CET\n"
 "Last-Translator: Francois-Xavier DURANCEAU "
 "<Francois-xavier.Duranceau@loria.fr>\n"
@@ -314,39 +314,39 @@ msgstr "Variable : "
 msgid "Found: "
 msgstr "Trouvé : "
 
-#: connect.cpp:847
+#: connect.cpp:846
 msgid "Looping: "
 msgstr "Répétition : "
 
-#: connect.cpp:880 modeminfo.cpp:227
+#: connect.cpp:879 modeminfo.cpp:227
 msgid "One Moment Please ..."
 msgstr "Veuillez patienter..."
 
-#: connect.cpp:924
+#: connect.cpp:923
 msgid "Script timed out!"
 msgstr "Temps limite dépassé pendant l'exécution du script !"
 
-#: connect.cpp:943
+#: connect.cpp:942
 msgid "Scanning: "
 msgstr "Analyse : "
 
-#: connect.cpp:953
+#: connect.cpp:952
 msgid "Expecting: "
 msgstr "Attente de : "
 
-#: connect.cpp:980
+#: connect.cpp:979
 msgid "Logging on to Network ..."
 msgstr "Connexion au réseau..."
 
-#: connect.cpp:1006
+#: connect.cpp:1005
 msgid "Running Startup Command ..."
 msgstr "Lancement de la commande de démarrage..."
 
-#: connect.cpp:1011 connect.cpp:1018
+#: connect.cpp:1010 connect.cpp:1017
 msgid "Done"
 msgstr "Fermer"
 
-#: connect.cpp:1128
+#: connect.cpp:1127
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
