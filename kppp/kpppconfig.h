@@ -84,6 +84,12 @@
 // /proc dir ( only used on linux in connect.cpp )
 #define PROC_DIR "/proc"
 
+// search path for pppd binary
+#define PPPDSEARCHPATH "/sbin:/usr/sbin:/usr/local/sbin:/usr/bin:/usr/local/bin"
+
+// name of the pppd binary
+#define PPPDNAME "pppd"
+
 #endif
 
 

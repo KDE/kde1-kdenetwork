@@ -1455,9 +1455,6 @@ bool ConnectWidget::execppp() {
       setpgrp();
 #endif
 
-      // Drop suid bit. If the binary is a fake, it will be executed without root
-      // permissions. If the binary has the suid set, it will work as expected
-      setuid(getuid());
       execve(gpppdata.pppdPath(), args, '\0');
       exit(0);
   }

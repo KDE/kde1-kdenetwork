@@ -243,7 +243,6 @@ int main( int argc, char **argv ) {
 	  setuid(getuid());
 
 	  // we need a KAppliction for locales, create one
-	  KApplication a(argc, argv);
 	  exit(RuleSet::checkRuleFile(optarg));
 	}
       }

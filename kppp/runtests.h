@@ -27,6 +27,7 @@
 #ifndef __RUNTESTS__H__
 #define __RUNTESTS__H__
 
+#include <qstring.h>
 #include "pppdata.h"
 
 #define SYSOPTIONS "/etc/ppp/options"
@@ -36,7 +37,7 @@ const int TEST_WARNING = 1;
 const int TEST_NOCONNECT = 2;
 const int TEST_CRITICAL = 3;
 
-
+QString findFileInPath( const char *fname, const char *extraPath = 0 );
 
 // Various tests to be run at starttime
 int runTests();

@@ -1,3 +1,17 @@
+Fri Apr 24 13:03:02 1998    Mario Weilguni <mweilguni@kde.org>
+
+	* runtests.cpp: kppp now does not allow anymore the user
+	  to specify a path to the pppd binary, but searches for
+	  it 
+	* kppp now checks if pppd is owned by root
+	* kppp does not anymore drop suid before starting pppd
+
+Thu Apr 23 22:35:31 1998    Mario Weilguni <mweilguni@kde.org>
+
+	* Fixed a few security holes: kppp drops suid before executing pppd,
+	  checks for buffer overflow with the -c command line switch,
+	  drops suid before checking a file with -r
+
 Thu Apr 16 21:21:03 1998  Harri Porten  <porten@tu-harburg.de>
 
 	* main.cpp: set portable locale settings for numerical values,

@@ -25,6 +25,8 @@
  */
 
 #include "pppdata.h"
+#include "runtests.h"
+#include "kpppconfig.h"
 
 PPPData gpppdata;
 
@@ -261,7 +263,21 @@ void PPPData::set_dock_into_panel(bool set){
 }
 
 const char* PPPData::pppdPath() {
-  return readConfig (GENERAL_GRP, PPPDPATH_KEY, "/usr/sbin/pppd");
+  static char *PPPDPATH = 0;
+
+  if(PPPDPATH == 0) {
+    QString s = findFileInPath(PPPDNAME, 
+			       PPPDSEARCHPATH);
+    PPPDPATH = new char[s.length() + 1];
+    if(PPPDPATH == 0) {
+      fprintf(stderr, "kppp: low memory\n");
+      exit(1);
+    }
+    strcpy(PPPDPATH, s.data());
+  }
+  
+  return PPPDPATH;
+  //return readConfig (GENERAL_GRP, PPPDPATH_KEY, "/usr/sbin/pppd");
 }
 
 void PPPData::setpppdPath(const char *n) {

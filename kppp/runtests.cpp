@@ -37,7 +37,7 @@
 #include <sys/wait.h>
 #include <pwd.h>
 
-QString findFileInPath( const char *fname, const char *extraPath = 0 ) {
+QString findFileInPath( const char *fname, const char *extraPath) {
   QString f;  
 
   if(access(fname, F_OK) == 0)
@@ -48,16 +48,15 @@ QString findFileInPath( const char *fname, const char *extraPath = 0 ) {
   if(_fname.find(' ') != -1)
     _fname = _fname.left(_fname.find(' '));
 
-  char path[2048];
+  char path[4096] = "";
+  if(extraPath != 0)
+    strcpy(path, extraPath);
 
   // for absolute path
-  strcpy(path, ":");
+  strcat(path, ":");
 
   if(getenv("PATH") != NULL)
-    strncat(path, getenv("PATH"), sizeof(path)-128);
-
-  if(extraPath != 0)
-    strcat(path, extraPath);
+    strncat(path, getenv("PATH"), sizeof(path)-512);
 
   char *p = strtok(path, ":");
   while(p != NULL) {
@@ -131,16 +130,6 @@ int runTests() {
   bool pppdFound = FALSE;
   if(access(f.data(), F_OK) == 0)
     pppdFound = TRUE;
-  else {
-    f = findFileInPath("pppd", ":/usr/sbin:/sbin:/usr/local/sbin");
-    pppdFound = f.length() > 0;
-
-    // save the new location
-    if(pppdFound) {
-      gpppdata.setpppdPath(f.data());
-      gpppdata.save();
-    }
-  }
 
   if(!pppdFound) {
     QMessageBox::warning(0, 
@@ -175,7 +164,22 @@ int runTests() {
 	warning++;
       }
     }
-  }  
+
+    if(geteuid() == 0) {
+      struct stat st;
+      stat(f.data(), &st);
+
+      if(st.st_uid != 0) { // pppd not owned by root
+	QMessageBox::warning(0, 
+		     klocale->translate("Error"),
+		     klocale->translate("pppd is not properly installed!\n\n"
+					"The pppd binary must be installed\n"
+					"with the SUID bit set. Contact your\n"
+					"system administrator."));
+	return TEST_CRITICAL;
+      }
+    }
+  }
 
   // Test 3: search the logviewer
   if(strlen(gpppdata.logViewer()) > 0) {
