@@ -18,7 +18,7 @@
 #include "artdlg.h"
 #define Inherited KTopLevelWidget
 
-#include <qapp.h>
+#include <kapp.h>
 #include <qfile.h>
 #include <qstring.h>
 #include <qtstream.h>
