@@ -16,10 +16,12 @@
 #include <mimelib/utility.h>
 #include <kiconloader.h>
 #include "groupdlg.h"
+#include "kmidentity.h"
 
 extern KLocale *nls;
 extern KMSender *msgSender;
 extern Groupdlg *main_widget;
+extern KMIdentity *identity;
 
 //-----------------------------------------------------------------------------
 KMComposeView::KMComposeView(QWidget *parent, const char *name, 
@@ -546,8 +548,7 @@ void KMComposeView::parseConfiguration()
     cout << SMTPServer << "\n";
     cout << NNTPServer << "\n";
     
-    config->setGroup("Identity");
-    EMailAddress = config->readEntry("Address");
+    EMailAddress = identity->emailAddr();
     cout << EMailAddress << "\n";
     ReplyToAddress = config->readEntry("Reply-To Address");
     cout << ReplyToAddress << "\n";
@@ -557,7 +558,7 @@ void KMComposeView::parseConfiguration()
 void KMComposeView::forwardMessage()
 {
     QString temp, spc;
-    temp.sprintf(nls->translate("Fwd: %s"),currentMessage->subject());
+    temp.sprintf(nls->translate("Fwd: %s"),currentMessage->subject().data());
     subjLEdit->setText(temp);
     
     spc = " ";
@@ -590,13 +591,13 @@ void KMComposeView::replyAll()
 {
     QString temp;
     int lines;
-    temp.sprintf(nls->translate("Re: %s"),currentMessage->subject());
+    temp.sprintf(nls->translate("Re: %s"),currentMessage->subject().data());
     toLEdit->setText(currentMessage->from());
     ccLEdit->setText(currentMessage->cc());
     subjLEdit->setText(temp);
     
     temp.sprintf(nls->translate("\nOn %s %s wrote:\n"), 
-                 currentMessage->dateStr(), currentMessage->from());
+                 currentMessage->dateStr().data(), currentMessage->from().data());
     editor->append(temp);
     
     //If there are no bodyparts take body.
@@ -616,7 +617,7 @@ void KMComposeView::replyAll()
     
     editor->update();
     
-    currentMessage = currentMessage->reply();
+    currentMessage = currentMessage->createReply();
 }
 
 //-----------------------------------------------------------------------------
@@ -625,12 +626,12 @@ void KMComposeView::replyMessage()
     QString temp;
     int lines;
     
-    temp.sprintf(nls->translate("Re: %s"),currentMessage->subject());
+    temp.sprintf(nls->translate("Re: %s"),currentMessage->subject().data());
     toLEdit->setText(currentMessage->from());
     subjLEdit->setText(temp);
     
     temp.sprintf(nls->translate("\nOn %s %s wrote:\n"), 
-                 currentMessage->dateStr(), currentMessage->from());
+                 currentMessage->dateStr().data(), currentMessage->from().data());
     editor->append(temp);
     
     if ((currentMessage->numBodyParts()) == 0) 
@@ -649,7 +650,7 @@ void KMComposeView::replyMessage()
     {editor->insertAt("> ",x,0);
     }
     editor->update();
-    currentMessage = currentMessage->reply();
+    currentMessage = currentMessage->createReply();
 }
 //-----------------------------------------------------------------------------
 void KMComposeView::followupMessage()
@@ -659,15 +660,15 @@ void KMComposeView::followupMessage()
     
     //futureMessage inherits the references, plus the ID
     
-    temp.sprintf("%s %s",currentMessage->references(),currentMessage->id());
+    temp.sprintf("%s %s",currentMessage->references().data(),currentMessage->id().data());
     futureMessage->setReferences (temp);
     
-    temp.sprintf(nls->translate("Re: %s"),currentMessage->subject());
+    temp.sprintf(nls->translate("Re: %s"),currentMessage->subject().data());
     groupsLEdit->setText(currentMessage->followup());
     subjLEdit->setText(temp);
     
     temp.sprintf(nls->translate("\nOn %s %s wrote:\n"), 
-                 currentMessage->dateStr(), currentMessage->from());
+                 currentMessage->dateStr().data(), currentMessage->from().data());
     editor->append(temp);
     
     if ((currentMessage->numBodyParts()) == 0) 
@@ -686,7 +687,7 @@ void KMComposeView::followupMessage()
     {editor->insertAt("> ",x,0);
     }
     editor->update();
-    currentMessage = currentMessage->reply();
+    currentMessage = currentMessage->createReply();
 }
 
 //-----------------------------------------------------------------------------

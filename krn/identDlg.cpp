@@ -19,7 +19,10 @@
 #include <kconfig.h>
 #include <kapp.h>
 
-extern KConfig *conf;
+#include "kmidentity.h"
+
+//extern KConfig *conf;
+extern KMIdentity *identity;
 
 #include "identDlg.moc"
 
@@ -35,10 +38,10 @@ IdentDlg::IdentDlg
 	identDlgData( this )
 {
     setCaption(klocale->translate("KRN-Identity Configuration") );
-    conf->setGroup("Identity");
-    address->setText(conf->readEntry("Address"));
-    realname->setText(conf->readEntry("RealName"));
-    organization->setText(conf->readEntry("Organization"));
+//    conf->setGroup("Identity");
+    address->setText(identity->emailAddr());
+    realname->setText(identity->fullName());
+    organization->setText(identity->organization());
     QObject::connect (b1,SIGNAL(clicked()),SLOT(accept()));
     QObject::connect (b2,SIGNAL(clicked()),SLOT(reject()));
 }

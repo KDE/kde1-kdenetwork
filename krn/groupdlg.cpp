@@ -43,6 +43,7 @@
 
 #include "kmsender.h"
 #include "kmcomposewin.h"
+#include "kmidentity.h"
 
 #define CONNECT 1
 #define DISCONNECT 5
@@ -67,6 +68,7 @@
 extern QString krnpath,cachepath,artinfopath,pixpath;
 extern KConfig *conf;
 
+extern KMIdentity *identity;
 extern KMSender *msgSender;
 
 GroupList groups;
@@ -525,11 +527,10 @@ bool Groupdlg::actions (int action,NewsGroup *group)
             IdentDlg id;
             if (id.exec())
             {
-                conf->setGroup("Identity");
-                conf->writeEntry("Address",id.address->text());
-                conf->writeEntry("RealName",id.realname->text());
-                conf->writeEntry("Organization",id.organization->text());
-                conf->sync();
+                identity->setEmailAddr(id.address->text());
+                identity->setFullName(id.realname->text());
+                identity->setOrganization(id.organization->text());
+                identity->writeConfig();
             }
             qApp->restoreOverrideCursor ();
             success = true;

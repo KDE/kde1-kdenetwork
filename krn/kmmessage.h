@@ -5,56 +5,75 @@
 #define kmmessage_h
 
 #include <mimelib/string.h>
-
-#include <time.h>
+#include "kmmsgbase.h"
 
 class KMFolder;
 class DwMessage;
 class KMMessagePart;
+class KMMsgInfo;
 
-class KMMessage
+#define KMMessageInherited KMMsgBase
+class KMMessage: public KMMsgBase
 {
  friend class KMFolder;
 
-protected:
-  KMMessage(KMFolder*, DwMessage* = NULL);
-
 public:
+  /** Straight forward initialization. */
+  KMMessage(KMFolder* parent=NULL);
+
+  /** Copy constructor. Does *not* automatically load the message. */
+  KMMessage(const KMMsgInfo& msgInfo);
+
+  /* KRN added this */
   KMMessage(DwMessage*);
-
-  typedef enum {
-    stUnknown=' ', stNew='N', stUnread='U', stOld='O', stDeleted='D',
-    stReplied='A'
-  } Status; // see below for a conversion function to strings
-
-  KMMessage();
+  
+  /** Destructor. */
   virtual ~KMMessage();
 
-  /** Returns the status of the message */
-  Status status(void) const { return mStatus; }
-
-  /** Set the status. Ensures that index in the folder is also updated. */
-  virtual void setStatus(Status);
-
-  /** Convert the given message status to a string. */
-  static const char* statusToStr(Status);
+  /** Returns TRUE if object is a real message (not KMMsgInfo or KMMsgBase) */
+  virtual bool isMessage(void) const;
 
   /** Mark the message as deleted */
-  void del(void) { setStatus(stDeleted); }
+  void del(void) { setStatus(KMMsgStatusDeleted); }
 
   /** Undelete the message. Same as touch */
-  void undel(void) { setStatus(stOld); }
+  void undel(void) { setStatus(KMMsgStatusOld); }
 
   /** Touch the message - mark it as read */
-  void touch(void) { setStatus(stOld); }
+  void touch(void) { setStatus(KMMsgStatusOld); }
 
-  /** Create a reply to this message, filling all required header fields
-   with the proper values. The returned message is not associated with
-   any folder. */
-  virtual KMMessage* reply(void);
+  /** Create a new message that is a reply to this message, filling all 
+    required header fields with the proper values. The returned message
+    is not stored in any folder. */
+  virtual KMMessage* createReply(bool replyToAll=FALSE) const;
 
-  /** Return the message contents as a string */
-  virtual const char* asString(void);
+  /** Create a new message that is a forward of this message, filling all 
+    required header fields with the proper values. The returned message
+    is not stored in any folder. */
+  virtual KMMessage* createForward(void) const;
+
+  /** Parse the string and create this message from it. */
+  virtual void fromString(const QString str);
+
+  /** Return the entire message contents as a string. */
+  virtual const QString asString(void);
+
+  /** Returns message body with quoting header and indented by the 
+    given indentation string. This is suitable for including the message
+    in another message of for replies, forwards. The header string is 
+    a template where the following fields are replaced with the 
+    corresponding values:
+	%D: date of this message
+	%S: subject of this message
+	%F: sender (from) of this message
+	%%: a single percent sign  */
+  virtual const QString asQuotedString(const QString headerStr, 
+				       const QString indentStr) const;
+
+  /** Initialize header fields. Should be called on new messages
+    if they are not set manually. E.g. before composing. Calling
+    if setAutomaticFields() is still required. */
+  virtual void initHeader(void);
 
   /** Set fields that are either automatically set (Message-id)
    or that do not change from one message to another (MIME-Version).
@@ -62,68 +81,112 @@ public:
    are done because this method does things different if there are
    attachments / multiple body parts. */
   virtual void setAutomaticFields(void);
-    
+
+
+  
+  /* KRN added these */
+  /** Get the groups it should be posted to */
+  virtual const QString groups(void) const;
+
+  /** Set the groups to be posted to */
+  virtual void setGroups(const QString aStr);
+
+  /** Get the groups it should followup to */
+  virtual const QString followup(void) const;
+
+  /** Set the groups to followup to */
+  virtual void setFollowup(const QString aStr);
+
+  /** Get the references for this message */
+  virtual const QString references(void) const;
+
+  /** Set the references for this message */
+  virtual void setReferences(const QString aStr);
+
+  /** Returns the message ID, useful for followups */
+  virtual const QString id(void) const;
+
+  /* End of functions added by KRN */
+  
+
+  
   /** Get or set the 'Date' header field */
-  virtual const char* dateStr(void) const;
+  virtual const QString dateStr(void) const;
+  virtual const QString dateShortStr(void) const;
   virtual time_t date(void) const;
+  virtual void setDate(const QString str);
   virtual void setDate(time_t aUnixTime);
 
   /** Get or set the 'To' header field */
-  virtual const char* to(void) const;
-  virtual void setTo(const char* aStr);
+  virtual const QString to(void) const;
+  virtual void setTo(const QString aStr);
 
   /** Get or set the 'ReplyTo' header field */
-  virtual const char* replyTo(void) const;
-  virtual void setReplyTo(const char* aStr);
+  virtual const QString replyTo(void) const;
+  virtual void setReplyTo(const QString aStr);
   virtual void setReplyTo(KMMessage*);
 
   /** Get or set the 'Cc' header field */
-  virtual const char* cc(void) const;
-  virtual void setCc(const char* aStr);
+  virtual const QString cc(void) const;
+  virtual void setCc(const QString aStr);
 
   /** Get or set the 'Bcc' header field */
-  virtual const char* bcc(void) const;
-  virtual void setBcc(const char* aStr);
+  virtual const QString bcc(void) const;
+  virtual void setBcc(const QString aStr);
 
   /** Get or set the 'From' header field */
-  virtual const char* from(void) const;
-  virtual void setFrom(const char* aStr);
+  virtual const QString from(void) const;
+  virtual void setFrom(const QString aStr);
 
   /** Get or set the 'Subject' header field */
-  virtual const char* subject(void) const;
-  virtual void setSubject(const char* aStr);
+  virtual const QString subject(void) const;
+  virtual void setSubject(const QString aStr);
+
+  /** Get or set header field with given name */
+  virtual const QString headerField(const QString name) const;
+  virtual void setHeaderField(const QString name, const QString value);
 
   /** Get or set the 'Content-Type' header field
    The member functions that involve enumerated types (ints)
    will work only for well-known types or subtypes. */
-  virtual const char* typeStr(void) const;
+  virtual const QString typeStr(void) const;
   virtual int type(void) const;
-  virtual void setTypeStr(const char* aStr);
+  virtual void setTypeStr(const QString aStr);
   virtual void setType(int aType);
   // Subtype
-  virtual const char* subtypeStr(void) const;
+  virtual const QString subtypeStr(void) const;
   virtual int subtype(void) const;
-  virtual void setSubtypeStr(const char* aStr);
+  virtual void setSubtypeStr(const QString aStr);
   virtual void setSubtype(int aSubtype);
 
   /** Get or set the 'Content-Transfer-Encoding' header field
     The member functions that involve enumerated types (ints)
     will work only for well-known encodings. */
-  virtual const char* contentTransferEncodingStr(void) const;
+  virtual const QString contentTransferEncodingStr(void) const;
   virtual int  contentTransferEncoding(void) const;
-  virtual void setContentTransferEncodingStr(const char* aStr);
+  virtual void setContentTransferEncodingStr(const QString aStr);
   virtual void setContentTransferEncoding(int aCte);
 
   /** Cte is short for ContentTransferEncoding.
       These functions are an alternative to the ones with longer names. */
-  const char* cteStr(void) const { return contentTransferEncodingStr(); }
+  const QString cteStr(void) const { return contentTransferEncodingStr(); }
   int cte(void) const { return contentTransferEncoding(); }
-  void setCteStr(const char* aStr) { setContentTransferEncodingStr(aStr); }
+  void setCteStr(const QString aStr) { setContentTransferEncodingStr(aStr); }
   void setCte(int aCte) { setContentTransferEncoding(aCte); }
 
-  /** Get or set the message body */
-  virtual const char* body(long* length_return=NULL) const;
-  virtual void setBody(const char* aStr);
+  /** Get the message body. Does not decode the body. */
+  virtual const QString body(void) const;
+
+  /** Set the message body. Does not encode the body. */
+  virtual void setBody(const QString aStr);
+
+  /** Set the message body, encoding it according to the current content
+    transfer encoding. */
+  virtual void setBodyEncoded(const QString aStr);
+
+  /** Returns a decoded version of the body from the current content transfer
+    encoding. */
+  virtual const QString bodyDecoded(void) const;
 
   /** Number of body parts the message has. This is one for plain messages
       without any attachment. */
@@ -132,7 +195,7 @@ public:
   /** Get the body part at position in aIdx.  Indexing starts at 0.
     If there is no body part at that index, aPart will have its
     attributes set to empty values. */
-  virtual void bodyPart(int aIdx, KMMessagePart* aPart);
+  virtual void bodyPart(int aIdx, KMMessagePart* aPart) const;
     
   /** Set the body part at position in aIdx.  Indexing starts at 0.
     If you have aIdx = 10 and there are only 2 body parts, 7 empty
@@ -144,40 +207,32 @@ public:
   /** Append a body part to the message. */
   virtual void addBodyPart(const KMMessagePart* aPart);
 
-  /** Get the groups it should be posted to */
-  virtual const char *groups(void) const;
+  /** Delete all body parts. */
+  virtual void deleteBodyParts(void);
 
-  /** Set the groups to be posted to */
-  virtual void setGroups(const char* aStr);
+  /** Open a window containing the complete, unparsed, message. */
+  virtual void viewSource(const QString windowCaption) const;
 
-  /** Get the groups it should followup to */
-  virtual const char *followup(void) const;
+  /** Strip email address from string. Examples:
+   * "Stefan Taferner <taferner@kde.org>" returns "Stefan Taferner"
+   * "joe@nowhere.com" returns "joe@nowhere.com" */
+  static const QString stripEmailAddr(const QString emailAddr);
 
-  /** Set the groups to followup to */
-  virtual void setFollowup(const char* aStr);
+  /** Converts given email address to a nice HTML mailto: anchor. 
+   * If stripped is TRUE then the visible part of the anchor contains
+   * only the name part and not the given emailAddr. */
+  static const QString emailAddrAsAnchor(const QString emailAddr, 
+					 bool stripped=TRUE);
 
-  /** Get the references for this message */
-  virtual const char *references(void) const;
-
-  /** Set the references for this message */
-  virtual void setReferences(const char* aStr);
-
-  /** Returns the message ID, useful for followups */
-  virtual const char *id(void) const;
-  
-  /** Owning folder or NULL if none. */
-  KMFolder* owner(void) const { return mOwner; }
+  /** Reads config settings from group "KMMessage" and sets all internal
+   * variables (e.g. indent-prefix, etc.) */
+  static void readConfig(void);
 
 protected:
-  void setOwner(KMFolder*);
-  DwString& msgStr(void) { return mMsgStr; }
-  virtual void takeMessage(DwMessage* aMsg);
-
   DwMessage* mMsg;
-  DwString   mMsgStr;
-  KMFolder*  mOwner;
-  Status     mStatus;
+  bool       mNeedsAssembly;
 };
 
+typedef KMMessage* KMMessagePtr;
 
 #endif /*kmmessage_h*/

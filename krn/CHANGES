@@ -4,6 +4,11 @@ Changes made Nov 19
 
 * [Roberto] Fixed bug in Article::setRead() that affected threading, too.
 * [Roberto] Nicer "find article" behaviour.
+* [Roberto] Switched to kmail's latest kmmessage, kmmsgpart, and kmmsginfo
+            Added use of kmail's KMIdentity, so now identity info is shared :-)
+            Along came also kfileio, which looks nice and will use it.
+            The bad news? Posting is totally broken now.
+            I guess it will stay that way until I import the latest kmcomposewin.
 
 -----------------------------------------------------------------------------
 Changes made Nov 18

@@ -35,6 +35,7 @@
 #include "NNTP.h"
 #include "kdecode.h"
 #include "kmsender.h"
+#include "kmidentity.h"
 #include <mimelib/mimepp.h>
 
 #include <gdbm.h>
@@ -53,6 +54,7 @@ Groupdlg  *main_widget;
 KConfig *conf;
 KLocale *nls;
 KMSender *msgSender;
+KMIdentity *identity;
 
 ArticleDict artSpool;
 
@@ -141,8 +143,10 @@ int main( int argc, char **argv )
 
 void checkConf()
 // This checks that all necessary data exists and/or asks for it
-// Should use Stefan's KIdentity someday
 {
+
+    identity=new KMIdentity();
+    
     char *username = getpwuid(getuid())->pw_name;
     char hostname[1024];
     gethostname(hostname,1023);
@@ -152,9 +156,10 @@ void checkConf()
 
     Asker ask;
     QString data;
-    conf->setGroup("Identity");
+//    conf->setGroup("Identity");
     
-    data=conf->readEntry("Address");
+//    data=conf->readEntry("Address");
+    data=identity->emailAddr();
     if (data.isEmpty())
     {
         ask.setCaption (klocale->translate("KRN-Missing Configuration info"));
@@ -162,11 +167,14 @@ void checkConf()
         ask.entry->setText(mailaddr);
         ask.exec();
         data=ask.entry->text();
-        conf->writeEntry("Address",data);
+//        conf->writeEntry("Address",data);
+
+        identity->setEmailAddr(data);
     }
 
 
-    data=conf->readEntry("RealName");
+//    data=conf->readEntry("RealName");
+    data=identity->fullName();
     if (data.isEmpty())
     {
         ask.setCaption (klocale->translate("KRN-Missing Configuration info"));
@@ -174,11 +182,14 @@ void checkConf()
         ask.entry->setText(realname);
         ask.exec();
         data=ask.entry->text();
-        conf->writeEntry("RealName",data);
+//        conf->writeEntry("RealName",data);
+
+        identity->setFullName(data);
     }
 
 
-    data=conf->readEntry("Organization");
+//    data=conf->readEntry("Organization");
+    data=identity->organization();
     if (data.isEmpty())
     {
         ask.setCaption (klocale->translate("KRN-Missing Configuration info"));
@@ -187,6 +198,8 @@ void checkConf()
         ask.exec();
         data=ask.entry->text();
         conf->writeEntry("Organization",data);
+
+        identity->setOrganization(data);
     }
 
     conf->setGroup("NNTP");
@@ -201,6 +214,7 @@ void checkConf()
         conf->writeEntry("NNTPServer",data);
     }
     conf->sync();
+    identity->writeConfig();
 }
 
 void expireCache()   // robert's cache stuff

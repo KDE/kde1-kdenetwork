@@ -60,7 +60,10 @@ krn_SOURCES = 	main.cpp\
                 kmimemagic.cpp\
                 kmsender.cpp\
                 findArtDlgData.cpp\
-                findArtDlg.cpp
+                findArtDlg.cpp\
+                kmmsgbase.cpp\
+                kmidentity.cpp\
+                kfileio.cpp
 
 
 noinst_HEADERS = 	NNTP.h\
@@ -94,7 +97,10 @@ noinst_HEADERS = 	NNTP.h\
                 kmsender.h\
                 mytree.h\
                 findArtDlgData.h\
-                findArtDlg.h
+                findArtDlg.h\
+                kmmsgbase.h\
+                kmidentity.h\
+                kfileio.h
 
 SUBDIRS = docs pics
 
