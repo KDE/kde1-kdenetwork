@@ -555,7 +555,7 @@ KpgpBase5::encsign(const QStrList *_recipients, const char *passphrase,
     cmd = "pgpe -at -f +batchmode=1 ";
   else if(passphrase != 0 )
   {
-    cmd = "pgps -at -f +batchmode=1 "; //only armour and text-mode
+    cmd = "pgps -bat -f +batchmode=1 ";
     signonly = true;
   }
   else 
@@ -583,6 +583,10 @@ KpgpBase5::encsign(const QStrList *_recipients, const char *passphrase,
       cmd += " +EncryptToSelf";
   }
 
+  if (signonly)
+    input.replace(QRegExp("[ \t]+\n"), "\n");   //strip trailing whitespace
+  //We have to do this otherwise it's all in vain
+  
   status = run(cmd, passphrase);
   if(status == RUN_ERR) return status;
   
@@ -635,7 +639,9 @@ KpgpBase5::encsign(const QStrList *_recipients, const char *passphrase,
     status |= ERROR;
     status |= MISSINGKEY;
   }
-  //No need to glue msg and signature - pgp5 does it (correctly)
+  
+  if (signonly)
+    output = "-----BEGIN PGP SIGNED MESSAGE-----\n\n" + input + "\n" + output;
   return status;
 }
 
