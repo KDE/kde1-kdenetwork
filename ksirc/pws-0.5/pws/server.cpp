@@ -3,7 +3,8 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <stdio.h>
-#include <errno.h> 
+#include <errno.h>
+#include <sys/mman.h>
 
 #include "../../irclistitem.h"
 
@@ -32,7 +33,7 @@ PWSServer::PWSServer(QObject *parent, QString script, QString logDir)
         perror("Failed");
     }
     
-    int fdError = open(logDir+"/ErrorLog", O_CREAT|O_RDONLY|O_NONBLOCK);
+    fdError = open(logDir+"/ErrorLog", O_CREAT|O_RDONLY|O_NONBLOCK);
     if(fdError > 0){
         lseek(fdError, 0, SEEK_END);
         error = new QTimer(this, "error_timer");
@@ -62,11 +63,18 @@ PWSServer::PWSServer(QObject *parent, QString script, QString logDir)
     if(config <= 0){
         warning("Couldn't open: %s", script.data());
         perror("Failed");
+        return;
     }
-    char buf[512];
-    int bytes;
-    while(bytes = read(config, buf, 511)){
-        server->writeStdin(buf, bytes);
+    struct stat finfo;
+    if(fstat(config, &finfo) == 0){
+        char *buf;
+        buf = (char *) mmap(0x0, finfo.st_size, PROT_READ, MAP_PRIVATE, config, 0x0);
+        if(buf < 0){
+            perror("MMAP of config file failed");
+            return;
+        }
+        server->writeStdin(buf, finfo.st_size);
+        munmap(buf, finfo.st_size);
     }
     server->closeStdin();
 }
@@ -141,7 +149,6 @@ void PWSServer::errorLogData()
         }
         bytes = read(fdError, buf, 1023);
     }
-        
 }
 
 void PWSServer::logit(QString txt)

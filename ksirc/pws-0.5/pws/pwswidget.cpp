@@ -276,15 +276,18 @@ void PWSWidget::restart()
     QStrList names;
     conf->readListEntry("ServerNames",names);
     bool needRoot=false;
+    /*
     for (char *name=names.first();name!=0;name=names.next())
     {
         conf->setGroup(name);
         if (conf->readBoolEntry("Enabled")!=false)
             if (conf->readNumEntry("Port")<1024)
                 needRoot=true;
-    }
+        }
+    */
     debug ("now saving configuration for mathopd");
 
+    /*
     if (geteuid()==0) //I am root already
         needRoot=false;
     if (needRoot)
@@ -293,6 +296,9 @@ void PWSWidget::restart()
         debug ("don't need root");
     debug ("trying to kill old mathopd");
     debug ("and starting new mathopd with new configuration");
+    */
+
+    /*
     QString script,pid;
     conf->setGroup("General");
     QString pidfile=conf->readEntry("Logs")+"PIDFile";
@@ -323,11 +329,11 @@ void PWSWidget::restart()
     command="kvt -e sh ";
     command+=KApplication::localkdedir()+"/share/apps/pws/server-script";
 
+    debug ("command->%s",command.data());
+    */
     conf->setGroup("General");
     QString logdir=conf->readEntry("Logs");
-
-    debug ("command->%s",command.data());
-
+    
     if(server != 0)
         delete server;
     server = new PWSServer(this, KApplication::localkdedir()+"/share/apps/pws/server-config", logdir);
