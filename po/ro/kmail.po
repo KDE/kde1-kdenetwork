@@ -1,11 +1,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1998-01-24 14:25+0100\n"
+"POT-Creation-Date: 1998-02-24 21:39+0100\n"
 "PO-Revision-Date: 1998-02-23 08:05 +0100\n"
 "Last-Translator: Vatafu Valerica <wally@chuck.tlnet.de>\n"
 
-#: kmcomposewin.cpp:1177 kmmainwin.cpp:261 kpgp.cpp:351
+#: kmcomposewin.cpp:1266 kmmainwin.cpp:266 kpgp.cpp:349
 msgid ""
 "Sorry, but this feature\n"
 "is still missing"
@@ -13,11 +13,15 @@ msgstr ""
 "Din pãcate aceasta parte\n"
 "lipseºte încã."
 
-#: kmmainwin.cpp:270
+#: kmmainwin.cpp:275
 msgid "New Folder"
 msgstr "Creeazã directory"
 
-#: kmmainwin.cpp:304
+#: kmmainwin.cpp:289
+msgid "No new mail available"
+msgstr ""
+
+#: kmmainwin.cpp:313
 msgid ""
 "Cannot modify a\n"
 "system folder."
@@ -25,11 +29,11 @@ msgstr ""
 "Acest directory\n"
 "nu se poate modifica."
 
-#: kmmainwin.cpp:309
+#: kmmainwin.cpp:318
 msgid "Modify Folder"
 msgstr "Calitãþile directory-ului"
 
-#: kmmainwin.cpp:334
+#: kmmainwin.cpp:343
 msgid ""
 "Cannot remove a\n"
 "system folder."
@@ -37,7 +41,7 @@ msgstr ""
 "Acest directory\n"
 "nu se poate modifica."
 
-#: kmmainwin.cpp:338
+#: kmmainwin.cpp:347
 #, c-format
 msgid ""
 "Are you sure you want to remove the folder\n"
@@ -46,276 +50,276 @@ msgstr ""
 "Eºti sigur cã vrei sã \"%s\"\n"
 "stergi acest directory (cu totul)?"
 
-#: kmmainwin.cpp:341
+#: kmmainwin.cpp:350
 msgid "Confirmation"
 msgstr "Confirmare"
 
-#: kmmainwin.cpp:405
+#: kmmainwin.cpp:414
 msgid "Message as Plain Text"
 msgstr "Mesaj in text format"
 
-#: kmmainwin.cpp:412 kmmainwin.cpp:425
+#: kmmainwin.cpp:421 kmmainwin.cpp:441
 msgid "Select Folder"
 msgstr "Selecteazã directory"
 
-#: kmmainwin.cpp:446
+#: kmmainwin.cpp:462
 msgid "Queued messages successfully sent."
 msgstr "Mesajele sînt trimise cu succes."
 
-#: kmmainwin.cpp:448
+#: kmmainwin.cpp:464
 msgid "Failed to send (some) queued messages."
 msgstr "Mesajele nu au fost (parþial) trimese cu succes..."
 
-#: kmmainwin.cpp:557
+#: kmmainwin.cpp:573
 msgid "Opening URL..."
 msgstr "Deschide URL..."
 
-#: kmmainwin.cpp:618
+#: kmmainwin.cpp:634
 msgid "Address added to addressbook."
 msgstr "Adresa este adiþionatã în cartea de adrese."
 
-#: kmmainwin.cpp:630
+#: kmmainwin.cpp:646
 msgid "Address copied to clipboard."
 msgstr "Adresa este copiatã in clipboard."
 
-#: kmmainwin.cpp:635
+#: kmmainwin.cpp:651
 msgid "URL copied to clipboard."
 msgstr "URL este copiatã in clipboard"
 
-#: kmmainwin.cpp:662
+#: kmmainwin.cpp:678
 msgid "Send to..."
 msgstr "Trimite la..."
 
-#: kmmainwin.cpp:664
+#: kmmainwin.cpp:680
 msgid "Send reply to..."
 msgstr "Rãspuns trimis la..."
 
-#: kmmainwin.cpp:666
+#: kmmainwin.cpp:682
 msgid "Forward to..."
 msgstr "înaintat la..."
 
-#: kmmainwin.cpp:669
+#: kmmainwin.cpp:685
 msgid "Add to addressbook"
 msgstr "În cartea de adrese adiþionat"
 
-#: kmmainwin.cpp:671 kmmainwin.cpp:680
+#: kmmainwin.cpp:687 kmmainwin.cpp:696
 msgid "Copy to clipboard"
 msgstr "Copiat in clipboard"
 
-#: kmmainwin.cpp:678
+#: kmmainwin.cpp:694
 msgid "Open URL..."
 msgstr "Deschide URL..."
 
-#: kmmainwin.cpp:688 kmmainwin.cpp:785
+#: kmmainwin.cpp:704 kmmainwin.cpp:794
 msgid "&Reply..."
 msgstr "&Rãspunde..."
 
-#: kmmainwin.cpp:690 kmmainwin.cpp:787
+#: kmmainwin.cpp:706 kmmainwin.cpp:796
 msgid "Reply &All..."
 msgstr "Rãspunde &la toate..."
 
-#: kmmainwin.cpp:692 kmmainwin.cpp:789
+#: kmmainwin.cpp:708 kmmainwin.cpp:798
 msgid "&Forward..."
 msgstr "&Înainteazã..."
 
-#: kmmainwin.cpp:695 kmmainwin.cpp:794
+#: kmmainwin.cpp:711 kmmainwin.cpp:803
 msgid "&Move..."
 msgstr "&Miºcã..."
 
-#: kmmainwin.cpp:697 kmmainwin.cpp:796
+#: kmmainwin.cpp:713 kmmainwin.cpp:805
 msgid "&Copy..."
 msgstr "&Copiazã..."
 
-#: kmmainwin.cpp:711
+#: kmmainwin.cpp:727
 msgid "New Composer"
 msgstr "Un nou mail..."
 
-#: kmmainwin.cpp:713
+#: kmmainwin.cpp:729
 msgid "New Mailreader"
 msgstr "Alt Mailreader..."
 
-#: kmmainwin.cpp:716
+#: kmmainwin.cpp:732
 msgid "Save As..."
 msgstr "Salveazã sub numele..."
 
-#: kmmainwin.cpp:718
+#: kmmainwin.cpp:734
 msgid "Print..."
 msgstr "Print..."
 
-#: kmmainwin.cpp:721
+#: kmmainwin.cpp:737
 msgid "Check Mail..."
 msgstr "Check mail..."
 
-#: kmmainwin.cpp:723
+#: kmmainwin.cpp:739
 msgid "Send Queued"
 msgstr "Trimete (in aºteptare) mesajele"
 
-#: kmmainwin.cpp:726
+#: kmmainwin.cpp:742
 msgid "&Settings..."
 msgstr "&Settings..."
 
-#: kmmainwin.cpp:728
-msgid "&Filter..."
-msgstr "&Filter..."
-
-#: kmcomposewin.cpp:345 kmmainwin.cpp:731
+#: kmcomposewin.cpp:387 kmmainwin.cpp:744
 msgid "&Addressbook..."
 msgstr "&Cartea de adrese..."
 
-#: kmmainwin.cpp:745
-msgid "&Cut"
-msgstr "&Taie"
+#: kmmainwin.cpp:746
+msgid "&Filter..."
+msgstr "&Filter..."
 
-#: kmmainwin.cpp:751
+#: kmmainwin.cpp:760
 msgid "&Find..."
 msgstr "&Cautã..."
 
-#: kmmainwin.cpp:756
+#: kmmainwin.cpp:765
 msgid "&Create..."
 msgstr "&Creazã..."
 
-#: kmmainwin.cpp:758
+#: kmmainwin.cpp:767
 msgid "&Modify..."
 msgstr "&Modificã..."
 
-#: kmmainwin.cpp:760
+#: kmmainwin.cpp:769
 msgid "C&ompact"
 msgstr "C&omprimã"
 
-#: kmmainwin.cpp:762
+#: kmmainwin.cpp:771
 msgid "&Empty"
 msgstr "&Goleºte"
 
-#: kmcomposewin.cpp:417 kmmainwin.cpp:764
+#: kmcomposewin.cpp:463 kmmainwin.cpp:773
 msgid "&Remove"
 msgstr "&ªterge"
 
-#: kmmainwin.cpp:772
+#: kmmainwin.cpp:781
 msgid "Unread"
 msgstr "Necitite"
 
-#: kmmainwin.cpp:773
+#: kmmainwin.cpp:782
 msgid "Read"
 msgstr "Citite"
 
-#: kmmainwin.cpp:774
+#: kmmainwin.cpp:783
 msgid "Replied"
 msgstr "Rãspunse"
 
-#: kmmainwin.cpp:775
+#: kmmainwin.cpp:784
 msgid "Queued"
 msgstr "În aºteptare"
 
-#: kmmainwin.cpp:776
+#: kmmainwin.cpp:785
 msgid "Sent"
 msgstr "Trimis"
 
-#: kmmainwin.cpp:780
+#: kmmainwin.cpp:789
 msgid "&Next"
 msgstr "&Urmãtorul"
 
-#: kmmainwin.cpp:782
+#: kmmainwin.cpp:791
 msgid "&Previous"
 msgstr "&Precedentul"
 
-#: kmmainwin.cpp:792
+#: kmmainwin.cpp:801
 msgid "&Set Status"
 msgstr "&Seteazã statutul"
 
-#: kmmainwin.cpp:801
+#: kmmainwin.cpp:810
 msgid "Send again..."
 msgstr "Trimite din nou..."
 
-#: kmmainwin.cpp:804
+#: kmmainwin.cpp:812
+msgid "Apply filters"
+msgstr ""
+
+#: kmmainwin.cpp:815
 msgid "View Source..."
 msgstr "Aratã HTML-Code"
 
-#: kmmainwin.cpp:811
+#: kmmainwin.cpp:822
 msgid "&Brief Headers"
 msgstr "&Header scurt"
 
-#: kmmainwin.cpp:813
+#: kmmainwin.cpp:824
 msgid "&Fancy Headers"
 msgstr "&Header drãguþ"
 
-#: kmmainwin.cpp:815
+#: kmmainwin.cpp:826
 msgid "&Standard Headers"
 msgstr "&Header normal"
 
-#: kmmainwin.cpp:817
+#: kmmainwin.cpp:828
 msgid "&Long Headers"
 msgstr "&Header lung"
 
-#: kmmainwin.cpp:819
+#: kmmainwin.cpp:830
 msgid "&All Headers"
 msgstr "&Toate Headers"
 
-#: kmmainwin.cpp:822
+#: kmmainwin.cpp:833
 msgid "Iconic Attachments"
 msgstr "Ataºamente simbolice"
 
-#: kmmainwin.cpp:823
+#: kmmainwin.cpp:834
 msgid "Smart Attachments"
 msgstr "Ataºamente elegante"
 
-#: kmmainwin.cpp:824
+#: kmmainwin.cpp:835
 msgid "Inlined Attachments"
 msgstr "Ataºamente înserate"
 
-#: kmmainwin.cpp:835
+#: kmmainwin.cpp:846
 msgid "F&older"
 msgstr "&Directory"
 
-#: kmmainwin.cpp:836
+#: kmmainwin.cpp:847
 msgid "&Message"
 msgstr "&Mesaj"
 
-#: kmcomposewin.cpp:446 kmmainwin.cpp:855
+#: kmcomposewin.cpp:492 kmmainwin.cpp:866
 msgid "Compose new message"
 msgstr "Compoziþia unui nou mesaj"
 
-#: kmcomposewin.cpp:451 kmmainwin.cpp:860
+#: kmcomposewin.cpp:497 kmmainwin.cpp:871
 msgid "Save message to file"
 msgstr "Salveazã mesajul in fiºier"
 
-#: kmcomposewin.cpp:456 kmmainwin.cpp:865
+#: kmcomposewin.cpp:502 kmmainwin.cpp:876
 msgid "Print message"
 msgstr "Print mesaj"
 
-#: kmmainwin.cpp:872
+#: kmmainwin.cpp:883
 msgid "Get new mail"
 msgstr "Mail-uri noi?"
 
-#: kmmainwin.cpp:878
+#: kmmainwin.cpp:889
 msgid "Reply to author"
 msgstr "Rãspunde la autor"
 
-#: kmmainwin.cpp:883
+#: kmmainwin.cpp:894
 msgid "Reply to all recipients"
 msgstr "Rãspunde la toþi"
 
-#: kmmainwin.cpp:888
+#: kmmainwin.cpp:899
 msgid "Forward message"
 msgstr "Înainteazã mesajul"
 
-#: kmmainwin.cpp:893
+#: kmmainwin.cpp:904
 msgid "Delete message"
 msgstr "Sterge mesajul"
 
-#: kmcomposewin.cpp:479 kmmainwin.cpp:899
+#: kmcomposewin.cpp:526 kmmainwin.cpp:910
 msgid "Open addressbook..."
 msgstr "Deschide cartea de adrese..."
 
-#: kmmainwin.cpp:911
+#: kmmainwin.cpp:922
 msgid "Initializing..."
 msgstr "Iniþializare..."
 
 #: kmfolderdia.cpp:38 kmmsgpartdlg.cpp:62 kmsettings.cpp:128
-#: kmsettings.cpp:719
+#: kmsettings.cpp:718
 msgid "Name:"
 msgstr "Nume:"
 
-#: kmcomposewin.cpp:1185 kmfolderdia.cpp:44 kmfolderdia.cpp:120
+#: kmcomposewin.cpp:1274 kmfolderdia.cpp:44 kmfolderdia.cpp:120
 msgid "unnamed"
 msgstr "fãrã nume"
 
@@ -363,7 +367,7 @@ msgstr "Mail-uri trimise"
 msgid "Sendmail"
 msgstr "Trimite mail"
 
-#: kmsettings.cpp:178 kmsettings.cpp:726
+#: kmsettings.cpp:178 kmsettings.cpp:725
 msgid "Location:"
 msgstr "Locaþia:"
 
@@ -375,7 +379,7 @@ msgstr "SMTP"
 msgid "Server:"
 msgstr "Server:"
 
-#: kmsettings.cpp:190 kmsettings.cpp:747
+#: kmsettings.cpp:190 kmsettings.cpp:746
 msgid "Port:"
 msgstr "Port:"
 
@@ -387,11 +391,11 @@ msgstr "Mail-ri venite"
 msgid "Accounts:   (add at least one account!)"
 msgstr "Account-uri:  (introdu cel puþin unu!)"
 
-#: kmcomposewin.cpp:112 kmsettings.cpp:221
+#: kmcomposewin.cpp:120 kmsettings.cpp:221
 msgid "Name"
 msgstr "Nume"
 
-#: kmcomposewin.cpp:115 kmsettings.cpp:222
+#: kmcomposewin.cpp:123 kmsettings.cpp:222
 msgid "Type"
 msgstr "Tipul"
 
@@ -439,15 +443,15 @@ msgstr "Înainteazã:"
 msgid "Indentation:"
 msgstr "Indentation:"
 
-#: kmmessage.cpp:1163 kmsettings.cpp:308
+#: kmmessage.cpp:1176 kmsettings.cpp:308
 msgid "On %D, you wrote:"
 msgstr "Tu ai scris în %D :"
 
-#: kmmessage.cpp:1164 kmsettings.cpp:312
+#: kmmessage.cpp:1177 kmsettings.cpp:312
 msgid "On %D, %F wrote:"
 msgstr "În %D a scris %F:"
 
-#: kmmessage.cpp:1165 kmsettings.cpp:316
+#: kmmessage.cpp:1178 kmsettings.cpp:316
 msgid "Forwarded Message"
 msgstr "Mesaj înaintat"
 
@@ -519,7 +523,7 @@ msgstr "Amestecaturã"
 msgid "Select Account"
 msgstr "Selecteazã accountul"
 
-#: kmaccount.cpp:68 kmfilterdlg.cpp:373 kmsettings.cpp:524
+#: kmaccount.cpp:70 kmfilterdlg.cpp:463 kmsettings.cpp:524
 msgid "Unnamed"
 msgstr "Necunoscut"
 
@@ -527,256 +531,275 @@ msgstr "Necunoscut"
 msgid "Choose Sendmail Location"
 msgstr "Cautã sendmail"
 
-#: kmcomposewin.cpp:1292 kmsettings.cpp:552
+#: kmcomposewin.cpp:1381 kmsettings.cpp:552
 msgid "Choose Signature File"
 msgstr "Alege fiºierul-semnãturã"
 
-#: kmsettings.cpp:711
+#: kmsettings.cpp:710
 msgid "Type:"
 msgstr "Tipul:"
 
-#: kmsettings.cpp:724
+#: kmsettings.cpp:723
 msgid "Local Account"
 msgstr "Account local"
 
-#: kmsettings.cpp:733
+#: kmsettings.cpp:732
 msgid "Pop Account"
 msgstr "POP-Account"
 
-#: kmsettings.cpp:735
+#: kmsettings.cpp:734
 msgid "Login:"
 msgstr "Login:"
 
-#: kmacctpop.cpp:426 kmsettings.cpp:738
+#: kmacctpop.cpp:432 kmsettings.cpp:737
 msgid "Password:"
 msgstr "Password:"
 
-#: kmsettings.cpp:742
+#: kmsettings.cpp:741
 msgid "Host:"
 msgstr "Pop-Server:"
 
-#: kmsettings.cpp:750
+#: kmsettings.cpp:749
 msgid "Delete mail from server"
 msgstr "ªterge mesajele de pe server"
 
-#: kmsettings.cpp:762
+#: kmsettings.cpp:761
 msgid "Store new mail in account:"
 msgstr "Copiazã noul mesaj in account:"
 
-#: kmsettings.cpp:770
+#: kmsettings.cpp:769
 msgid "<none>"
 msgstr "<nimic>"
 
-#: kmsettings.cpp:815
+#: kmsettings.cpp:814
 msgid "Choose Location"
 msgstr "Alege fiºier"
 
-#: kmaccount.cpp:105
+#: kmaccount.cpp:109
 msgid "Receipt: "
 msgstr "Receipt: "
 
-#: kmaccount.cpp:133
+#: kmaccount.cpp:138
 msgid "Failed to add message:"
 msgstr "Eroare la adãugarea mesajului:"
 
-#: kmcomposewin.cpp:111 kmheaders.cpp:35
+#: kmcomposewin.cpp:119 kmheaders.cpp:38
 msgid "F"
 msgstr "F"
 
-#: kmheaders.cpp:36
+#: kmheaders.cpp:39
 msgid "Sender"
 msgstr "Sender"
 
-#: kmheaders.cpp:37
+#: kmheaders.cpp:40
 msgid "Subject"
 msgstr "Subiect"
 
-#: kmheaders.cpp:38
+#: kmheaders.cpp:41
 msgid "Date"
 msgstr "Data"
 
-#: kmheaders.cpp:251
+#: kmheaders.cpp:305
 msgid "Message(s) saved."
 msgstr "Mesaj(ele) salvat(e)."
 
-#: kmheaders.cpp:253
+#: kmheaders.cpp:307
 msgid "Failed to save message(s)."
 msgstr "Mesaj(ele) nu poate fi salvat(e)"
 
-#: kmheaders.cpp:565
+#: kmheaders.cpp:619
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d Mesaje, %d necitite."
 
-#: kmheaders.cpp:567
+#: kmheaders.cpp:621
 msgid "Folder is read-only."
 msgstr "Fiºierul este read-only."
 
-#: kmcomposewin.cpp:101
+#: kmcomposewin.cpp:108
 msgid "KMail Composer"
 msgstr "Compune mesaj"
 
-#: kmcomposewin.cpp:114
+#: kmcomposewin.cpp:122
 msgid "Encoding"
 msgstr "Codificã"
 
-#: kmcomposewin.cpp:256
+#: kmcomposewin.cpp:296
 msgid "&From:"
 msgstr "&De la:"
 
-#: kmcomposewin.cpp:258
+#: kmcomposewin.cpp:298
 msgid "&Reply to:"
 msgstr "&Rãspunde la:"
 
-#: kmcomposewin.cpp:260
+#: kmcomposewin.cpp:300
 msgid "&To:"
 msgstr "&la:"
 
-#: kmcomposewin.cpp:262
+#: kmcomposewin.cpp:302
 msgid "&Cc:"
 msgstr "&Cc:"
 
-#: kmcomposewin.cpp:264
+#: kmcomposewin.cpp:304
 msgid "&Bcc:"
 msgstr "&Bcc:"
 
-#: kmcomposewin.cpp:266
+#: kmcomposewin.cpp:306
 msgid "&Subject:"
 msgstr "&Subiect:"
 
-#: kmcomposewin.cpp:268
+#: kmcomposewin.cpp:309
 msgid "&Newsgroups:"
 msgstr "&Newsgroups:"
 
-#: kmcomposewin.cpp:270
+#: kmcomposewin.cpp:311
 msgid "&Followup-To:"
 msgstr "Rãspunde &la:"
 
-#: kmcomposewin.cpp:335
+#: kmcomposewin.cpp:377
 msgid "&Send"
 msgstr "&Send"
 
-#: kmcomposewin.cpp:338
+#: kmcomposewin.cpp:380
 msgid "S&end later"
 msgstr "T&rimite mai tîrziu"
 
-#: kmcomposewin.cpp:340
+#: kmcomposewin.cpp:382
 msgid "S&end now"
 msgstr "&Trimite acum"
 
-#: kmcomposewin.cpp:342
+#: kmcomposewin.cpp:384
 msgid "&Insert File..."
 msgstr "&Insereazã fiºierul..."
 
-#: kmcomposewin.cpp:350
+#: kmcomposewin.cpp:392
 msgid "&New Composer..."
 msgstr "&Compune din nou..."
 
-#: kmcomposewin.cpp:371
+#: kmcomposewin.cpp:414 kmcomposewin.cpp:624 kmcomposewin.cpp:1545
 msgid "Mark all"
 msgstr "Marcheazã totul"
 
-#: kmcomposewin.cpp:374
+#: kmcomposewin.cpp:417 kmcomposewin.cpp:626
 msgid "Find..."
 msgstr "Cautã..."
 
-#: kmcomposewin.cpp:382
+#: kmcomposewin.cpp:419 kmcomposewin.cpp:627
+#, fuzzy
+msgid "Replace..."
+msgstr "&Rãspunde..."
+
+#: kmcomposewin.cpp:426
 msgid "&Urgent"
 msgstr "&Urgent"
 
-#: kmcomposewin.cpp:384
+#: kmcomposewin.cpp:428
 msgid "&Confirm delivery"
 msgstr "&Confirmã livrarea"
 
-#: kmcomposewin.cpp:386
+#: kmcomposewin.cpp:430
 msgid "&Confirm read"
 msgstr "&Confirmã citirea"
 
-#: kmcomposewin.cpp:398
+#: kmcomposewin.cpp:442
 msgid "&All Fields"
 msgstr "&All fields"
 
-#: kmcomposewin.cpp:400
+#: kmcomposewin.cpp:444
 msgid "&From"
 msgstr "&De la"
 
-#: kmcomposewin.cpp:401
+#: kmcomposewin.cpp:445
 msgid "&Reply to"
 msgstr "&Rãspunde la"
 
-#: kmcomposewin.cpp:402
+#: kmcomposewin.cpp:446
 msgid "&To"
 msgstr "&To"
 
-#: kmcomposewin.cpp:403
+#: kmcomposewin.cpp:447
 msgid "&Cc"
 msgstr "&Cc"
 
-#: kmcomposewin.cpp:404
+#: kmcomposewin.cpp:448
 msgid "&Bcc"
 msgstr "&Bcc"
 
-#: kmcomposewin.cpp:405
+#: kmcomposewin.cpp:449
 msgid "&Subject"
 msgstr "&Subiect"
 
-#: kmcomposewin.cpp:406
+#: kmcomposewin.cpp:451
 msgid "&Newsgroups"
 msgstr "&Newsgroups"
 
-#: kmcomposewin.cpp:407
+#: kmcomposewin.cpp:452
 msgid "&Followup-To"
 msgstr "&Followup-to"
 
-#: kmcomposewin.cpp:411
+#: kmcomposewin.cpp:457
 msgid "Append S&ignature"
 msgstr "Append S&ignature"
 
-#: kmcomposewin.cpp:413
+#: kmcomposewin.cpp:459
 msgid "&Insert File"
 msgstr "&Insereazã fiºier"
 
-#: kmcomposewin.cpp:415
+#: kmcomposewin.cpp:461
 msgid "&Attach..."
 msgstr "&Ataºament..."
 
-#: kmcomposewin.cpp:418
+#: kmcomposewin.cpp:464
 msgid "&Save..."
 msgstr "&Salveazã..."
 
-#: kmcomposewin.cpp:419
+#: kmcomposewin.cpp:465
 msgid "Pr&operties..."
 msgstr "Proprietãþi..."
 
-#: kmcomposewin.cpp:421
+#: kmcomposewin.cpp:467
 msgid "&Attach"
 msgstr "&Ataºament..."
 
-#: kmcomposewin.cpp:488
+#: kmcomposewin.cpp:511
+msgid "Cut selection"
+msgstr ""
+
+#: kmcomposewin.cpp:514
+#, fuzzy
+msgid "Copy selection"
+msgstr "Alege fiºier"
+
+#: kmcomposewin.cpp:517
+msgid "Paste clipboard contents"
+msgstr ""
+
+#: kmcomposewin.cpp:522
+#, fuzzy
+msgid "Attach file"
+msgstr "Ataºeazã fiºier"
+
+#: kmcomposewin.cpp:535
 msgid "sign message"
 msgstr "Semneazã mesajul"
 
-#: kmcomposewin.cpp:493
+#: kmcomposewin.cpp:540
 msgid "encrypt message"
 msgstr "encrypt mesaj"
 
-#: kmcomposewin.cpp:555
-msgid "Send now"
-msgstr "Trimite acum"
+#: kmcomposewin.cpp:552 kmcomposewin.cpp:566
+msgid "Column"
+msgstr ""
 
-#: kmcomposewin.cpp:557
-msgid "Send later"
-msgstr "Trimite mai tîrziu"
+#: kmcomposewin.cpp:553 kmcomposewin.cpp:564
+msgid "Line"
+msgstr ""
 
-#: kmcomposewin.cpp:566
-msgid "Mark All"
-msgstr "Marchezã totul"
-
-#: kmcomposewin.cpp:698
+#: kmcomposewin.cpp:759
 msgid "KMail Confirm"
 msgstr "KMail Confimã"
 
-#: kmcomposewin.cpp:699
+#: kmcomposewin.cpp:760
 msgid ""
 "Close and discard\n"
 "edited message?"
@@ -785,7 +808,7 @@ msgstr ""
 "Închide ºi mesajele\n"
 "modificate aruncãle?"
 
-#: kmcomposewin.cpp:741
+#: kmcomposewin.cpp:802
 #, c-format
 msgid ""
 "public key for %s not found.\n"
@@ -794,58 +817,61 @@ msgstr ""
 "öpublic key pentru %s nu gãsesc.\n"
 "Aceastã persoanã nu poate sã decrypte-ze mesajul."
 
-#: kmcomposewin.cpp:762
+#: kmcomposewin.cpp:823
 msgid "Error during PGP:"
 msgstr "Eroare la PGP:"
 
-#: kmcomposewin.cpp:972 kmcomposewin.cpp:993
+#: kmcomposewin.cpp:1033
 msgid "Attach File"
 msgstr "Ataºeazã fiºier"
 
-#: kmcomposewin.cpp:1024 kmreaderwin.cpp:611
+#: kmcomposewin.cpp:1050
+#, fuzzy
+msgid "Include File"
+msgstr "&Insereazã fiºier"
+
+#: kmcomposewin.cpp:1071 kmreaderwin.cpp:623
 msgid "View..."
 msgstr "View..."
 
-#: kmcomposewin.cpp:1025
+#: kmcomposewin.cpp:1072
 msgid "Save..."
 msgstr "Salveazã..."
 
-#: kmcomposewin.cpp:1026 kmreaderwin.cpp:614
+#: kmcomposewin.cpp:1073 kmreaderwin.cpp:626
 msgid "Properties..."
 msgstr "Proprietãþi..."
 
-#: kmcomposewin.cpp:1030
+#: kmcomposewin.cpp:1077
 msgid "Attach..."
 msgstr "Ataºeazã..."
 
-#: kmcomposewin.cpp:1072 kmreaderwin.cpp:636
+#: kmcomposewin.cpp:1119 kmreaderwin.cpp:648
 msgid "View Attachment: "
 msgstr "View ataºament: "
 
-#: kmcomposewin.cpp:1200
+#: kmcomposewin.cpp:1289
 msgid "To:"
 msgstr "To:"
 
-#: kmcomposewin.cpp:1204
+#: kmcomposewin.cpp:1293
 msgid "Subject:"
 msgstr "Subiect:"
 
-#: kmcomposewin.cpp:1207
+#: kmcomposewin.cpp:1296
 msgid "Date:"
 msgstr "Data:"
 
-#: kmcomposewin.cpp:1322
+#: kmcomposewin.cpp:1411
 msgid "KMail: Spellcheck"
 msgstr "KMail: Spellcheck"
 
-#: kmcomposewin.cpp:1346
+#: kmcomposewin.cpp:1435
 msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
-msgstr ""
-"Eroare la startul lui KSpell. Vã rugãm sã configuraþi corect KSpell."
+msgstr "Eroare la startul lui KSpell. Vã rugãm sã configuraþi corect KSpell."
 
-
-#: kmfolder.cpp:133
+#: kmfolder.cpp:142
 #, c-format
 msgid ""
 "Contents of folder `%s' changed.\n"
@@ -854,7 +880,7 @@ msgstr ""
 "Conþinutul fiºierului `%s' a fost schimbat.\n"
 "Fiºierul index este recreat."
 
-#: kmfolder.cpp:311
+#: kmfolder.cpp:343
 #, c-format
 msgid "Creating index file: %d messages done"
 msgstr "Creazã index fiºier: %d mesaje done"
@@ -883,80 +909,87 @@ msgstr "base 64"
 msgid "quoted printable"
 msgstr "quoted printable"
 
-#: kmreaderwin.cpp:273 kmreaderwin.cpp:289 kmreaderwin.cpp:310
+#: kmreaderwin.cpp:283 kmreaderwin.cpp:299 kmreaderwin.cpp:320
 msgid "From: "
 msgstr "From:"
 
-#: kmreaderwin.cpp:275 kmreaderwin.cpp:291 kmreaderwin.cpp:312
+#: kmreaderwin.cpp:285 kmreaderwin.cpp:301 kmreaderwin.cpp:322
 msgid "To: "
 msgstr "To:"
 
-#: kmreaderwin.cpp:279 kmreaderwin.cpp:300 kmreaderwin.cpp:325
+#: kmreaderwin.cpp:289 kmreaderwin.cpp:310 kmreaderwin.cpp:335
 msgid "References: "
 msgstr "Refernþe: "
 
-#: kmreaderwin.cpp:294 kmreaderwin.cpp:315
+#: kmreaderwin.cpp:304 kmreaderwin.cpp:325
 msgid "Cc: "
 msgstr "Cc: "
 
-#: kmreaderwin.cpp:296 kmreaderwin.cpp:309
+#: kmreaderwin.cpp:306 kmreaderwin.cpp:319
 msgid "Date: "
 msgstr "Data: "
 
-#: kmreaderwin.cpp:318
+#: kmreaderwin.cpp:328
 msgid "Bcc: "
 msgstr "Bcc: "
 
-#: kmreaderwin.cpp:321
+#: kmreaderwin.cpp:331
 msgid "Reply to: "
 msgstr "Rãspunde la: "
 
-#: kmreaderwin.cpp:328
+#: kmreaderwin.cpp:338
 msgid "Groups: "
 msgstr "Newsgroups: "
 
-#: kmreaderwin.cpp:363
+#: kmreaderwin.cpp:373
 msgid "Encrypted message"
 msgstr "Mesaj encrypted"
 
-#: kmreaderwin.cpp:369
+#: kmreaderwin.cpp:379
 msgid "Cannot decrypt message:"
 msgstr "Nu pot sã decryptez mesajul:"
 
-#: kmreaderwin.cpp:387
+#: kmreaderwin.cpp:397
 msgid "Message was signed by"
 msgstr "Mesajul a fost semnat la"
 
-#: kmreaderwin.cpp:388
+#: kmreaderwin.cpp:398
 msgid "Warning: Bad signature from"
 msgstr "Warning: Bad signature from"
 
-#: kmreaderwin.cpp:575
+#: kmreaderwin.cpp:587
 msgid "Attachment: "
 msgstr "Ataºament: "
 
-#: kmreaderwin.cpp:660
+#: kmreaderwin.cpp:672
 msgid "Could not create temporary file"
 msgstr "Nu pot sã creez fiºier temporar"
 
-#: kmreaderwin.cpp:680
+#: kmreaderwin.cpp:692
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "Nu pot sã salvez fiºierul temporar %s"
 
-#: kmreaderwin.cpp:706
+#: kmreaderwin.cpp:718
 msgid "Could not save file"
 msgstr "Nu pot sa salvez fiºierul"
 
-#: main.cpp:78 main.cpp:116
+#: kmacctmgr.cpp:190
+msgid ""
+"You need to add an account in the network\n"
+"section of the settings in order to\n"
+"receive mail."
+msgstr ""
+
+#: main.cpp:97 main.cpp:214
 msgid "warning"
 msgstr "Atenþiune"
 
-#: main.cpp:83 main.cpp:84
+#: main.cpp:103 main.cpp:104
 msgid "fatal error"
 msgstr "eroare fatalã"
 
-#: main.cpp:118
+#: main.cpp:216
 msgid ""
 "The directory ~/KMail exists. From now on, KMail uses the\n"
 "directory ~/Mail for it's messages.\n"
@@ -969,13 +1002,12 @@ msgstr ""
 "Directory ~/KMail existã. De acum înainte KMail utilizeazã acest\n"
 "directory ~/Mail pentru mesajele lui.\n"
 "KMail poate sa miºte conþinutul lui ~/KMail in ~/Mail dar aceastã\n"
-"miºcare va sterge fiºierele cu acealeaºi nume (din ~/Mail)/n"
-"de exemplu inbox .\n"
+"miºcare va sterge fiºierele cu acealeaºi nume (din ~/Mail)/nde exemplu inbox "
+".\n"
 "\n"
 "Vrei ca KMail sa modifice directroy ~/Mail?"
 
-
-#: kmacctlocal.cpp:87
+#: kmacctlocal.cpp:85
 #, c-format
 msgid ""
 "Cannot remove mail from\n"
@@ -986,7 +1018,7 @@ msgstr ""
 "din directory '%s'\n"
 "%s"
 
-#: kmacctpop.cpp:110
+#: kmacctpop.cpp:114
 msgid ""
 "Please specify Host, Port  and\n"
 "destination folder in the settings\n"
@@ -996,19 +1028,19 @@ msgstr ""
 "Directory de destinaþie in setare ºi\n"
 "Încearcã încã o datã."
 
-#: kmacctpop.cpp:239
+#: kmacctpop.cpp:249
 msgid "Pop Mail Error"
 msgstr "POP-Mail Eroare"
 
-#: kmacctpop.cpp:244
+#: kmacctpop.cpp:254
 msgid "Pop Mail Network Error"
 msgstr "POP-Mail Network Eroare"
 
-#: kmacctpop.cpp:260
+#: kmacctpop.cpp:270
 msgid "Unknown error"
 msgstr "Eroare necunoscutã"
 
-#: kmacctpop.cpp:265
+#: kmacctpop.cpp:275
 #, c-format
 msgid ""
 "Account: %s\n"
@@ -1019,11 +1051,11 @@ msgstr ""
 "În %s:\n"
 "%s"
 
-#: kmacctpop.cpp:417
+#: kmacctpop.cpp:423
 msgid "Login Name:"
 msgstr "Login Nume:"
 
-#: kmfolderdir.cpp:79
+#: kmfolderdir.cpp:78
 #, c-format
 msgid ""
 "Error while creating folder `%s':\n"
@@ -1032,7 +1064,7 @@ msgstr ""
 "Eroare la crearea directory `%s':\n"
 "%s"
 
-#: kmfoldermgr.cpp:134
+#: kmfoldermgr.cpp:135
 #, c-format
 msgid ""
 "Creating missing folder\n"
@@ -1041,7 +1073,7 @@ msgstr ""
 "Creazã directory lipseºte\n"
 "`%s'"
 
-#: kmfoldermgr.cpp:137
+#: kmfoldermgr.cpp:138
 #, c-format
 msgid ""
 "Cannot create folder `%s'\n"
@@ -1050,7 +1082,7 @@ msgstr ""
 "Nu pot sã creez directory '%s'\n"
 "in %s."
 
-#: kmsender.cpp:103
+#: kmsender.cpp:108
 msgid ""
 "Please specify a send\n"
 "method in the settings\n"
@@ -1060,7 +1092,7 @@ msgstr ""
 "o metodã de trimis in configuraþie\n"
 "ºi încercaþi din nou."
 
-#: kmsender.cpp:109
+#: kmsender.cpp:114
 msgid ""
 "Please set the required fields in the\n"
 "identity settings:\n"
@@ -1070,35 +1102,35 @@ msgstr ""
 "pentru identificare:\n"
 "user-name si email-adress"
 
-#: kmsender.cpp:130
+#: kmsender.cpp:134
 msgid "You must specify a receiver"
 msgstr "Specificã destinatarul"
 
-#: kmsender.cpp:141
+#: kmsender.cpp:145
 msgid "Cannot add message to outbox folder"
 msgstr "Acest mesaj nu poate fi trimis"
 
-#: kmsender.cpp:164
+#: kmsender.cpp:168
 msgid "Sending still in progress"
 msgstr "Sending still in progress"
 
-#: kmsender.cpp:216
+#: kmsender.cpp:220
 msgid "Initiating sender process..."
 msgstr "Iniþialiazeazã procesul de trimitere..."
 
-#: kmsender.cpp:232
+#: kmsender.cpp:236
 msgid "Sending message: "
 msgstr "Trimite mesaj: "
 
-#: kmsender.cpp:256
+#: kmsender.cpp:262
 msgid "Done sending messages."
 msgstr "Mesajul a fost trimis."
 
-#: kmsender.cpp:276
+#: kmsender.cpp:282
 msgid "Sending failed:"
 msgstr "Sending failed:"
 
-#: kmsender.cpp:404
+#: kmsender.cpp:439
 msgid ""
 "Please specify a mailer program\n"
 "in the settings."
@@ -1106,21 +1138,16 @@ msgstr ""
 "Vã rugãm sã specificaþi un program pentru mail\n"
 "în setare."
 
-#: kmsender.cpp:442
+#: kmsender.cpp:479
 #, c-format
 msgid "Failed to execute mailer program %s"
 msgstr "Eroare la executarea programului pentru mail %s"
 
-#: kmsender.cpp:450
-#, c-format
-msgid "Failed to pipe mail message into mailer program %s"
-msgstr "Eroare la transmiterea mesajului la program pentru mail %s"
-
-#: kmsender.cpp:499
+#: kmsender.cpp:567
 msgid "connecting to server"
 msgstr "conecteazã cu server"
 
-#: kmsender.cpp:504
+#: kmsender.cpp:572
 #, c-format
 msgid ""
 "Cannot open SMTP connection to\n"
@@ -1131,19 +1158,19 @@ msgstr ""
 "Host %s pentru transmis:\n"
 "%s"
 
-#: kmsender.cpp:533
+#: kmsender.cpp:601
 msgid "Cannot close SMTP connection."
 msgstr "Nu pot sã închid conecþia SMTP"
 
-#: kmsender.cpp:583
+#: kmsender.cpp:651
 msgid "transmitting message"
 msgstr "Transmite mesajul"
 
-#: kmsender.cpp:637
+#: kmsender.cpp:685
 msgid "network error"
 msgstr "network eroare"
 
-#: kmsender.cpp:639
+#: kmsender.cpp:687
 #, c-format
 msgid ""
 "a SMTP error occured.\n"
@@ -1156,7 +1183,7 @@ msgstr ""
 "Rãspunsul: %s\n"
 "Return code: %d"
 
-#: kmsender.cpp:654
+#: kmsender.cpp:702
 #, c-format
 msgid "Sending SMTP command: %s"
 msgstr "Trimite SMTP-comanda: %s"
@@ -1173,11 +1200,11 @@ msgstr "Mailbox local"
 msgid "Pop3"
 msgstr "Pop3"
 
-#: kmfilteraction.cpp:72 kmfilteraction.cpp:164
+#: kmfilteraction.cpp:72 kmfilteraction.cpp:167
 msgid "transfer"
 msgstr "transfer"
 
-#: kmfilteraction.cpp:133 kmfilteraction.cpp:166
+#: kmfilteraction.cpp:136 kmfilteraction.cpp:169
 msgid "skip rest"
 msgstr "Sare restul"
 
@@ -1192,7 +1219,7 @@ msgstr ""
 "%s\n"
 "%s"
 
-#: kmfilter.cpp:168
+#: kmfilter.cpp:182
 #, c-format
 msgid ""
 "Unknown filter action `%s'\n"
@@ -1215,59 +1242,59 @@ msgstr "Sus"
 msgid "Down"
 msgstr "Jos"
 
-#: kmfilterdlg.cpp:431
+#: kmfilterdlg.cpp:533
 msgid "<nothing>"
 msgstr "<nimic>"
 
-#: kmfilterdlg.cpp:442
+#: kmfilterdlg.cpp:544
 msgid "ignore"
 msgstr "ignoreazã"
 
-#: kmfilterdlg.cpp:443
+#: kmfilterdlg.cpp:545
 msgid "and"
 msgstr "ºi"
 
-#: kmfilterdlg.cpp:444
+#: kmfilterdlg.cpp:546
 msgid "unless"
 msgstr "unless"
 
-#: kmfilterdlg.cpp:445
+#: kmfilterdlg.cpp:547
 msgid "or"
 msgstr "sau"
 
-#: kmfilterdlg.cpp:451
+#: kmfilterdlg.cpp:553
 msgid "equals"
 msgstr "egal"
 
-#: kmfilterdlg.cpp:452
+#: kmfilterdlg.cpp:554
 msgid "not equal"
 msgstr "neegal"
 
-#: kmfilterdlg.cpp:453
+#: kmfilterdlg.cpp:555
 msgid "contains"
 msgstr "conþinut"
 
-#: kmfilterdlg.cpp:454
+#: kmfilterdlg.cpp:556
 msgid "doesn't contain"
 msgstr "conþine nimic"
 
-#: kmfilterdlg.cpp:455
+#: kmfilterdlg.cpp:557
 msgid "regular expression"
 msgstr "expresie regularã"
 
-#: kmfilterdlg.cpp:461
+#: kmfilterdlg.cpp:564
 msgid "<message>"
 msgstr "<mesaj>"
 
-#: kmfilterdlg.cpp:462
+#: kmfilterdlg.cpp:565
 msgid "<body>"
 msgstr "<body>"
 
-#: kmfilterdlg.cpp:463
+#: kmfilterdlg.cpp:566
 msgid "<any header>"
 msgstr "<orice header>"
 
-#: kpgp.cpp:112
+#: kpgp.cpp:110
 msgid ""
 "Couldn't find PGP executable.\n"
 "Please check your PATH is set correctly."
@@ -1275,7 +1302,7 @@ msgstr ""
 "Nu gãsesc PGP-Program.\n"
 "Vã rugãm sã cercetaþi dacã este corect setat."
 
-#: kpgp.cpp:157
+#: kpgp.cpp:155
 msgid ""
 "Could not find PGP executable.\n"
 "Please check your PATH is set correctly."
@@ -1283,31 +1310,31 @@ msgstr ""
 "Nu gãsesc PGP-Program.\n"
 "Vã rugãm sã cercetaþi dacã PATH este corect setat."
 
-#: kpgp.cpp:167
+#: kpgp.cpp:165
 msgid "The pass phrase is missing."
 msgstr "Password-ul lipseºte."
 
-#: kpgp.cpp:439
+#: kpgp.cpp:437
 msgid "Message signed by"
 msgstr "Mesaj semnat de"
 
-#: kpgp.cpp:443
+#: kpgp.cpp:441
 msgid "Message has a bad signature from"
 msgstr "Mesajul are o semnãturã falsã de la"
 
-#: kpgp.cpp:451
+#: kpgp.cpp:449
 msgid "End PGP signed message"
 msgstr "Sfîrºitul mesajului PGP"
 
-#: kpgp.cpp:647
+#: kpgp.cpp:643
 msgid "Bad pass Phrase; couldn't decrypt"
 msgstr "Password fals; nu pot sã decrypt-ez"
 
-#: kpgp.cpp:736
+#: kpgp.cpp:732
 msgid "Bad pass Phrase; couldn't sign"
 msgstr "Password fals; nu pot sã semnez"
 
-#: kpgp.cpp:793
+#: kpgp.cpp:789
 msgid ""
 "Please enter your\n"
 "PGP passphrase"
@@ -1315,11 +1342,11 @@ msgstr ""
 "Enter your\n"
 "PGP-Password"
 
-#: kpgp.cpp:820
+#: kpgp.cpp:816
 msgid "PGP Security Check"
 msgstr "PGP security check"
 
-#: kfileio.cpp:26
+#: kfileio.cpp:26 kmaddrbook.cpp:150
 msgid "File I/O Error"
 msgstr "File I/O Error"
 
@@ -1350,7 +1377,7 @@ msgstr ""
 "Nu aveþi dreptul de a citi aceast fiºier:\n"
 "%s"
 
-#: kfileio.cpp:69
+#: kfileio.cpp:70 kmaddrbook.cpp:140
 #, c-format
 msgid ""
 "Could not read file:\n"
@@ -1359,7 +1386,7 @@ msgstr ""
 "Nu se poate citi aceast fiºier:\n"
 "%s"
 
-#: kfileio.cpp:72
+#: kfileio.cpp:73 kmaddrbook.cpp:143
 #, c-format
 msgid ""
 "Could not open file:\n"
@@ -1368,7 +1395,7 @@ msgstr ""
 "Nu pot sã deschid acest fiºier:\n"
 "%s"
 
-#: kfileio.cpp:75
+#: kfileio.cpp:76
 #, c-format
 msgid ""
 "Error while reading file:\n"
@@ -1377,12 +1404,12 @@ msgstr ""
 "Eroare la citirea acestui fiºier:\n"
 "%s"
 
-#: kfileio.cpp:92
+#: kfileio.cpp:93
 #, c-format
 msgid "Could only read %u bytes of %u."
 msgstr "Pot sã citesc numai %u din %u Bytes."
 
-#: kfileio.cpp:121
+#: kfileio.cpp:123
 #, c-format
 msgid ""
 "File %s exists.\n"
@@ -1391,11 +1418,11 @@ msgstr ""
 "Fiºierul %s existã.\n"
 "Vreþi sã îl înlocuiesc?"
 
-#: kfileio.cpp:124 kfileio.cpp:142
+#: kfileio.cpp:126 kfileio.cpp:144
 msgid "&Ok"
 msgstr "&Ok"
 
-#: kfileio.cpp:141
+#: kfileio.cpp:143
 #, c-format
 msgid ""
 "Failed to make a backup copy of %s.\n"
@@ -1404,7 +1431,7 @@ msgstr ""
 "Nu pot sã fac backup copie din %s\n"
 "Continui oricum?"
 
-#: kfileio.cpp:153 kfileio.cpp:170
+#: kfileio.cpp:155 kfileio.cpp:173
 #, c-format
 msgid ""
 "Could not write to file:\n"
@@ -1413,16 +1440,16 @@ msgstr ""
 "Nu pot sã scriu in fiºierul:\n"
 "%s"
 
-#: kfileio.cpp:156
-#, c-format
+#: kfileio.cpp:158
+#, fuzzy, c-format
 msgid ""
-"Could not open file to write:\n"
+"Could not open file for writing:\n"
 "%s"
 msgstr ""
 "Nu pot sã deschid fiºierul ca sã scriu:\n"
 "%s"
 
-#: kfileio.cpp:160
+#: kfileio.cpp:162 kmaddrbook.cpp:146
 #, c-format
 msgid ""
 "Error while writing file:\n"
@@ -1431,23 +1458,37 @@ msgstr ""
 "Eroare la scriere in fiºierul:\n"
 "%s"
 
-#: kfileio.cpp:176
+#: kfileio.cpp:179
 #, c-format
 msgid "Could only write %d bytes of %d."
 msgstr "Nu pot sã scriu decît  %u din %u Bytes."
-
-#: keditcl1.cpp:1626
-msgid "You do not have write permission to this file.\n"
-msgstr "Nu aveþi dreptul de a scrie in acest fiºier.\n"
 
 #: kmaddrbookdlg.cpp:20
 msgid "Addressbook"
 msgstr "Cartea de bucate"
 
-#: kmaddrbookdlg.cpp:94
+#: kmaddrbookdlg.cpp:95
 msgid "Addressbook Manager"
 msgstr "Manager of adressbook"
 
 #: kmiostatusdlg.cpp:32
 msgid "&Abort"
 msgstr "&Întrerup"
+
+#~ msgid "&Cut"
+#~ msgstr "&Taie"
+
+#~ msgid "Send now"
+#~ msgstr "Trimite acum"
+
+#~ msgid "Send later"
+#~ msgstr "Trimite mai tîrziu"
+
+#~ msgid "Mark All"
+#~ msgstr "Marchezã totul"
+
+#~ msgid "Failed to pipe mail message into mailer program %s"
+#~ msgstr "Eroare la transmiterea mesajului la program pentru mail %s"
+
+#~ msgid "You do not have write permission to this file.\n"
+#~ msgstr "Nu aveþi dreptul de a scrie in acest fiºier.\n"
