@@ -169,6 +169,14 @@ void PWidget::messageHandler(int fd, PukeMessage *pm)
       emit outputMessage(fd, &pmRet);
       break;
     }
+  case PUKE_WIDGET_SET_BACKGROUND_PIXMAP:
+    widget()->setBackgroundPixmap(QPixmap(pm->cArg));
+
+    pmRet.iCommand = -pm->iCommand;
+    pmRet.iWinId = pm->iWinId;
+    pmRet.iArg = 0;
+    emit outputMessage(fd, &pmRet);
+    break;
   case PUKE_WIDGET_SET_BACKGROUND_COLOUR:
     {
       int *pos;
@@ -189,6 +197,7 @@ void PWidget::messageHandler(int fd, PukeMessage *pm)
       emit outputMessage(fd, &pmRet);
       break;
     }
+
   case PUKE_WIDGET_SET_ENABLED:
     widget()->setEnabled((bool) pm->iArg);
     pmRet.iCommand = PUKE_WIDGET_SET_ENABLED_ACK;

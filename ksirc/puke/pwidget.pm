@@ -187,6 +187,15 @@ sub setBackgroundColor {
 
 }
 
+sub setBackgroundPixmap {
+  my $self = shift;
+
+  $self->sendMessage('iCommand' => $::PUKE_WIDGET_SET_BACKGROUND_PIXMAP,
+                     'cArg' => shift(),
+                     'CallBack' => sub {});
+}
+
+
 sub setEnabled {
   my $self = shift;
 

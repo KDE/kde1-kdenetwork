@@ -40,12 +40,13 @@ QObject *objFinder::find(const char *name, const char *inherits){
   QObject *found;
   QDictIterator<QObject> it(*objList);
   while(it.current()){
-    if(strcmp(it.current()->name(), name) == 0)
+    if(strlen(name) == strlen(it.current()->name()) &&
+       strcmp(it.current()->name(), name) == 0)
       return it.current();
-    QObjectList *qobl = it.current()->queryList(inherits, name);
+    QObjectList *qobl = it.current()->queryList(inherits, name, FALSE);
     QObjectListIt itql( *qobl );
     if(itql.current() != 0x0){
-      found = it.current();
+      found = itql.current();
       delete qobl;
       return found;
     }

@@ -299,6 +299,18 @@
 // cArg: not defined
 #define PUKE_WIDGET_SET_BACKGROUND_COLOUR_ACK -1085
 
+// Desc: set background pixmap
+// iWinid: window id
+// iArg: not defined
+// cArg: path name to pixmap
+#define PUKE_WIDGET_SET_BACKGROUND_PIXMAP 1086
+
+// Desc: set background pixmap ack
+// iWinid: window id
+// iArg: not defined
+// cArg: not defined
+#define PUKE_WIDGET_SET_BACKGROUND_PIXMAP_ACK -1086
+
 // Desc: set widget enabled or disabled
 // iWinid: window id
 // iArg: 0 for disabled, 1 for enabled
