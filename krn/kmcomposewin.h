@@ -97,12 +97,16 @@ public slots:
   void slotDropAction();
   void slotNewComposer();
   void slotClose();
+  void slotHelp();
+
+  /** editor functionality */
+  void slotFind();
+  void slotReplace();
 
   /** Do cut/copy/paste on the active line-edit */
   void slotCut();
   void slotCopy();
   void slotPaste();
-  void slotHelp();
 
   /** Change window title to given string. */
   void slotUpdWinTitle(const char *);
@@ -204,16 +208,6 @@ private:
   /** Get message including signing and encrypting it */
   virtual const QString pgpProcessedMsg(void);
 
-  /** Convert message text for editing.
-      Converts message to mComposeCharset charset (if neccessary).*/
-  QString convertToLocal(const QString str,const QString charset);
-  
-  /** Converts message text for sending. */
-  QString convertToSend(const QString str,QString& charset);
- 
-  /** Test if string has any 8-bit characters */
-  bool is8Bit(const QString str);
-
 protected:
   QWidget   mMainWidget;
   KMLineEdit mEdtFrom, mEdtReplyTo, mEdtTo, mEdtCc, mEdtBcc, mEdtSubject;
@@ -238,7 +232,6 @@ protected:
   int  mSendImmediate;
   long mShowHeaders;
   QString mDefEncoding;
-  QString m8BitEncoding;
   int mNumHeaders;
   int mLineBreak;
   int mWordWrap;
@@ -249,9 +242,6 @@ protected:
   KSpell* mKSpell;
   KSpellConfig* mKSpellConfig;
 #endif
-  int m7BitAscii;
-  QString mDefaultCharset;
-  QString mComposeCharset; 
 
 private:
   QColor foreColor,backColor;

@@ -86,7 +86,7 @@ public:
     Call this method before sending *after* all changes to the message
     are done because this method does things different if there are
     attachments / multiple body parts. */
-  virtual void setAutomaticFields(void);
+  virtual void setAutomaticFields(bool isMultipart=FALSE);
     
   /** Get or set the 'Date' header field */
   virtual const QString dateStr(void) const;
@@ -188,7 +188,7 @@ public:
 
   /** Set the message body. Does not encode the body. */
   virtual void setBody(const QString aStr);
-  
+
   /** Set the message body, encoding it according to the current content
     transfer encoding. */
   virtual void setBodyEncoded(const QString aStr);
@@ -236,12 +236,6 @@ public:
    * only the name part and not the given emailAddr. */
   static const QString emailAddrAsAnchor(const QString emailAddr, 
 					 bool stripped=TRUE);
-
-  /** Get the message charset.*/
-  virtual const QString charset(void) const;
-  
-  /** Set the message charset. */
-  virtual void setCharset(const QString aStr);
 
 #ifdef KRN
   /** Convert a normal References: header into a list of anchors

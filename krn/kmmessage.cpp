@@ -369,8 +369,6 @@ KMMessage* KMMessage::createReply(bool replyToAll)
 
   setStatus(KMMsgStatusReplied);
 
-  msg->setCharset(charset());
-
   return msg;
 }
 
@@ -395,8 +393,6 @@ KMMessage* KMMessage::createForward(void)
   else msg->setSubject(subject());
 
   setStatus(KMMsgStatusForwarded);
-  
-  msg->setCharset(charset());
 
   return msg;
 }
@@ -427,6 +423,9 @@ void KMMessage::cleanupHeader(void)
   DwField* field = header.FirstField();
   DwField* nextField;
 
+  if (mNeedsAssembly) mMsg->Assemble();
+  mNeedsAssembly = FALSE;
+
   while (field)
   {
     nextField = field->Next();
@@ -434,6 +433,7 @@ void KMMessage::cleanupHeader(void)
     {
       debug("removing field %s", field->FieldNameStr().c_str());
       header.RemoveField(field);
+      mNeedsAssembly = TRUE;
     }
     field = nextField;
   }
@@ -441,13 +441,13 @@ void KMMessage::cleanupHeader(void)
 
 
 //-----------------------------------------------------------------------------
-void KMMessage::setAutomaticFields(void)
+void KMMessage::setAutomaticFields(bool aIsMulti)
 {
   DwHeaders& header = mMsg->Headers();
   header.MimeVersion().FromString("1.0");
   header.MessageId().CreateDefault();
 
-  if (numBodyParts() > 1)
+  if (aIsMulti || numBodyParts() > 1)
   {
     // Set the type to 'Multipart' and the subtype to 'Mixed'
     DwMediaType& contentType = mMsg->Headers().ContentType();
@@ -455,7 +455,6 @@ void KMMessage::setAutomaticFields(void)
     contentType.SetSubtype(DwMime::kSubtypeMixed);
 
     // Create a random printable string and set it as the boundary parameter
-
     contentType.CreateBoundary(0);
   }
   mNeedsAssembly = TRUE;
@@ -540,33 +539,28 @@ const QString KMMessage::to(void) const
 //-----------------------------------------------------------------------------
 void KMMessage::setTo(const QString aStr)
 {
-  if (!aStr) return;
-  mMsg->Headers().To().FromString(aStr);
-  mNeedsAssembly = TRUE;
+  setHeaderField("To", aStr);
 }
 
 
 //-----------------------------------------------------------------------------
 const QString KMMessage::replyTo(void) const
 {
-  return headerField("ReplyTo");
+  return headerField("Reply-To");
 }
 
 
 //-----------------------------------------------------------------------------
 void KMMessage::setReplyTo(const QString aStr)
 {
-  if (!aStr) return;
-  mMsg->Headers().ReplyTo().FromString(aStr);
-  mNeedsAssembly = TRUE;
+  setHeaderField("Reply-To", aStr);
 }
 
 
 //-----------------------------------------------------------------------------
 void KMMessage::setReplyTo(KMMessage* aMsg)
 {
-  mMsg->Headers().ReplyTo().FromString(aMsg->from());
-  mNeedsAssembly = TRUE;
+  setHeaderField("Reply-To", aMsg->from());
 }
 
 
@@ -580,9 +574,7 @@ const QString KMMessage::cc(void) const
 //-----------------------------------------------------------------------------
 void KMMessage::setCc(const QString aStr)
 {
-  if (!aStr) return;
-  mMsg->Headers().Cc().FromString(aStr);
-  mNeedsAssembly = TRUE;
+  setHeaderField("Cc",aStr);
 }
 
 
@@ -596,9 +588,7 @@ const QString KMMessage::bcc(void) const
 //-----------------------------------------------------------------------------
 void KMMessage::setBcc(const QString aStr)
 {
-  if (!aStr) return;
-  mMsg->Headers().Bcc().FromString(aStr);
-  mNeedsAssembly = TRUE;
+  setHeaderField("Bcc", aStr);
 }
 
 
@@ -612,8 +602,7 @@ const QString KMMessage::from(void) const
 //-----------------------------------------------------------------------------
 void KMMessage::setFrom(const QString aStr)
 {
-  mMsg->Headers().From().FromString(aStr);
-  mNeedsAssembly = TRUE;
+  setHeaderField("From", aStr);
   mDirty = TRUE;
 }
 
@@ -628,8 +617,7 @@ const QString KMMessage::subject(void) const
 //-----------------------------------------------------------------------------
 void KMMessage::setSubject(const QString aStr)
 {
-  mMsg->Headers().Subject().FromString(aStr);
-  mNeedsAssembly = TRUE;
+  setHeaderField("Subject",aStr);
   mDirty = TRUE;
 }
 
@@ -645,7 +633,6 @@ const QString KMMessage::xmark(void) const
 void KMMessage::setXMark(const QString aStr)
 {
   setHeaderField("X-KMail-Mark", aStr);
-  mNeedsAssembly = TRUE;
   mDirty = TRUE;
 }
 
@@ -917,11 +904,6 @@ void KMMessage::bodyPart(int aIdx, KMMessagePart* aPart) const
     {
       aPart->setTypeStr(headers->ContentType().TypeStr().c_str());
       aPart->setSubtypeStr(headers->ContentType().SubtypeStr().c_str());
-      DwParameter *param=headers->ContentType().FirstParameter();
-      while(param)
-          if (param->Attribute()=="charset") break;
-          else param=param->Next(); 
-      if (param) aPart->setCharset(param->Value().c_str());	  
     }
     else
     {
@@ -1006,25 +988,12 @@ void KMMessage::setBodyPart(int aIdx, const KMMessagePart* aPart)
   const DwString contDesc = (const char*)aPart->contentDescription();
   const DwString contDisp = (const char*)aPart->contentDisposition();
   const DwString bodyStr  = (const char*)aPart->body();
-  const DwString charset  = (const char*)aPart->charset();
 
   DwHeaders& headers = part->Headers();
   if (type != "" && subtype != "")
   {
     headers.ContentType().SetTypeStr(type);
     headers.ContentType().SetSubtypeStr(subtype);
-    if (charset!=""){
-         DwParameter *param=headers.ContentType().FirstParameter();
-	 while(param)
-	    if (param->Attribute()=="charset") break;
-	    else param=param->Next();
-	 if (!param){   
-            param=new DwParameter;
-            param->SetAttribute("charset");
-            headers.ContentType().AddParameter(param);
-	 }   
-         param->SetValue(charset);
-    }
   }
   if (cte != "")
     headers.Cte().FromString(cte);
@@ -1058,20 +1027,12 @@ void KMMessage::addBodyPart(const KMMessagePart* aPart)
   QString contDesc = aPart->contentDescription();
   QString contDisp = aPart->contentDisposition();
   QString name     = aPart->name();
-  QString charset  = aPart->charset();
 
   DwHeaders& headers = part->Headers();
   if (type != "" && subtype != "")
   {
     headers.ContentType().SetTypeStr((const char*)type);
     headers.ContentType().SetSubtypeStr((const char*)subtype);
-    if (charset != ""){
-         DwParameter *param;
-         param=new DwParameter;
-         param->SetAttribute("charset");
-         param->SetValue((const char *)charset);
-         headers.ContentType().AddParameter(param);
-    }
   }
 
   if(!name.isEmpty())
@@ -1179,35 +1140,6 @@ const QString KMMessage::emailAddrAsAnchor(const QString aEmail, bool stripped)
   return result;
 }
 
-//-----------------------------------------------------------------------------
-const QString KMMessage::charset(void) const
-{
-
-   DwMediaType &mType=mMsg->Headers().ContentType();
-   DwParameter *param=mType.FirstParameter();
-   while(param)
-      if (param->Attribute()=="charset")
-        return QString(param->Value().c_str());
-      else param=param->Next(); 
-   return ""; // us-ascii, but we don't have to specify it
-}
-
-//-----------------------------------------------------------------------------
-void KMMessage::setCharset(const QString aStr)
-{
-
-   DwMediaType &mType=mMsg->Headers().ContentType();
-   DwParameter *param=mType.FirstParameter();
-   while(param)
-      if (param->Attribute()=="charset") break;
-      else param=param->Next(); 
-   if (!param){
-      param=new DwParameter;
-      param->SetAttribute("charset");
-      mType.AddParameter(param);
-   }
-   param->SetValue((const char *)aStr);
-}
 
 //-----------------------------------------------------------------------------
 void KMMessage::readConfig(void)
