@@ -19,26 +19,26 @@ PWSServer::PWSServer(QObject *parent, QString script, QString logDir)
     web = 0x0;
     error = 0x0;
     
-    int iWebLog = open(logDir+"/WebLog", O_CREAT|O_RDONLY|O_NONBLOCK);
-    if(iWebLog > 0){
-        lseek(iWebLog, 0, SEEK_END);
-        web = new QSocketNotifier(iWebLog, QSocketNotifier::Read, this, "PWSServer_web");
-        connect(web, SIGNAL(activated(int)),
-                this, SLOT(webLogData(int)));
-        web->setEnabled(TRUE);
+    fdWeb = open(logDir+"/WebLog", O_CREAT|O_RDONLY|O_NONBLOCK);
+    if(fdWeb > 0){
+        lseek(fdWeb, 0, SEEK_END);
+         web = new QTimer(this, "web_timer");
+         connect(web, SIGNAL(timeout()),
+                 this, SLOT(webLogData()));
+         web->start(1000, FALSE);
     }
     else {
         warning("Could not open WebLog");
         perror("Failed");
     }
     
-    int iErrorLog = open(logDir+"/ErrorLog", O_CREAT|O_RDONLY|O_NONBLOCK);
-    if(iErrorLog > 0){
-        lseek(iErrorLog, 0, SEEK_END);
-        error = new QSocketNotifier(iErrorLog, QSocketNotifier::Read, this, "PWSServer_error");
-        connect(error, SIGNAL(activated(int)),
-                this, SLOT(errorLogData(int)));
-        error->setEnabled(TRUE);
+    int fdError = open(logDir+"/ErrorLog", O_CREAT|O_RDONLY|O_NONBLOCK);
+    if(fdError > 0){
+        lseek(fdError, 0, SEEK_END);
+        error = new QTimer(this, "error_timer");
+        connect(error, SIGNAL(timeout()),
+                this, SLOT(errorLogData()));
+        error->start(1000, FALSE);
     }
     else{
         warning("Could not open ErrorLog");
@@ -101,7 +101,7 @@ void PWSServer::stdoutData(KProcess *proc, char *buf, int len)
 void PWSServer::stderrData(KProcess *proc, char *buf, int len)
 {
     QString str(buf, len);
-    str.prepend("~4 ");
+    str.prepend("~4");
     logit(str);
     showLogWindow(TRUE);
 }
@@ -110,37 +110,37 @@ void PWSServer::serverDied(KProcess *proc)
     logit("~0,4*** Server Exited ***");
 }
 
-void PWSServer::webLogData(int socket)
+void PWSServer::webLogData()
 {
     char buf[1024];
-    int bytes = read(socket, buf, 1023);
+    int bytes = read(fdWeb, buf, 1023);
     while(bytes > 0){
-
+        if(bytes <= 1024)
+            buf[bytes+1] = 0x0;
         char *line = strtok(buf, "\n");
         while(line){
             logit(line);
             line = strtok(NULL, "\n");
         }
-        bytes = read(socket, buf, 1023);
+        bytes = read(fdWeb, buf, 1023);
     }
-    web->setEnabled(TRUE);
 }
 
-void PWSServer::errorLogData(int socket)
+void PWSServer::errorLogData()
 {
     char buf[1024];
-    int bytes = read(socket, buf, 1023);
+    int bytes = read(fdError, buf, 1023);
     while(bytes > 0){
-
+        if(bytes <= 1024)
+            buf[bytes+1] = 0x0;
         char *line = strtok(buf, "\n");
         while(line){
-            QString sline = QString("~4 ") + line;
+            QString sline = QString("~4") + line;
             logit(sline);
             line = strtok(NULL, "\n");
         }
-        bytes = read(socket, buf, 1023);
+        bytes = read(fdError, buf, 1023);
     }
-    error->setEnabled(TRUE);
         
 }
 

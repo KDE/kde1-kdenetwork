@@ -2,7 +2,7 @@
 #define _PWS_SERVER_
 
 #include <kprocess.h>
-#include <qsocketnotifier.h>
+#include <qtimer.h>
 #include <qstring.h>
 #include <qcolor.h>
 #include <qpixmap.h>
@@ -24,14 +24,15 @@ private slots:
     void stderrData(KProcess *proc, char *buf, int len);
     void serverDied(KProcess *proc);
 
-    void webLogData(int socket);
-    void errorLogData(int socket);
+    void webLogData();
+    void errorLogData();
     
 
 private:
     KProcess *server;
-
-    QSocketNotifier *web, *error;
+    
+    int fdWeb, fdError;
+    QTimer *web, *error;
 
     KSircListBox *log;
 };
