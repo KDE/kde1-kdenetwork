@@ -1,0 +1,32 @@
+
+if test ! -s ./inst-apps && test -s ./SUBDIRS; then
+ cp ./SUBDIRS ./inst-apps
+fi
+
+if test -s ./inst-apps; then
+ac_topsubdirs="`cat ./inst-apps`"
+for i in $ac_topsubdirs; do
+if test ! "$i" = "po" && test ! "$i" = "CVS"; then
+TOPSUBDIRS="$TOPSUBDIRS $i"
+fi
+done
+else
+TOPSUBDIRS=""
+# this needs a good find. But only developers should need this case, since
+# distribution comes with SUBDIRS
+	dirs=`find . -type d -depth -maxdepth 1 -print | sed -e "s#./##" | sed -e "s/\.//"`
+	for i in $dirs; do 
+	  echo $i >> ./SUBDIRS
+	  if test ! "$i" = "po" && test ! "$i" = "CVS"; then
+	  TOPSUBDIRS="$TOPSUBDIRS $i"
+	  fi
+	done
+fi
+# we handle po separatly
+TOPSUBDIRS="$TOPSUBDIRS po"
+
+AC_SUBST(TOPSUBDIRS)
+
+ac_output=`find $TOPSUBDIRS -name Makefile.in -print | sed -e 's/.in$//;' | sort`
+AC_OUTPUT($ac_output Makefile)
+
