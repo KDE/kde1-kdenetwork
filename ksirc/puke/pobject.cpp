@@ -12,11 +12,9 @@ PObject::PObject(QObject *pobject, const char *name) /*fold00*/
 
 PObject::~PObject() /*FOLD00*/
 {
-  debug("PObject: in destructor");
   delete widget();
   obj = 0;
   setWidget(0);
-  debug("PObject: done destructor");
 }
 
 PObject *PObject::createWidget(CreateArgs &ca) /*fold00*/

@@ -404,7 +404,7 @@ void KSircProcess::close_toplevel(KSircTopLevel *wm, char *name) /*FOLD00*/
   }
   // Let's let em know she's deleted!
   emit ProcMessage(QString(server), ProcCommand::turnOffAutoCreate, QString());
-  QTimer::singleShot(10000, this, SLOT(turn_on_autocreate()));
+  QTimer::singleShot(5000, this, SLOT(turn_on_autocreate()));
   emit ProcMessage(QString(server), ProcCommand::deleteTopLevel, 
 		   QString(name));
 }

@@ -115,16 +115,19 @@ void PWSServer::stderrData(KProcess *proc, char *buf, int len)
 }
 void PWSServer::serverDied(KProcess *proc)
 {
+  if(web != 0)
     web->stop();
+  if(error != 0)
     error->stop();
-    webLogData();
-    errorLogData();
-    close(fdWeb);
-    fdWeb = -1;
-    close(fdError);
-    fdError = -1;
-    logit("~0,4*** Server Exited ***");
-    logit("~0,4*** kSirc Server Shutdown ***");
+  
+  webLogData();
+  errorLogData();
+  close(fdWeb);
+  fdWeb = -1;
+  close(fdError);
+  fdError = -1;
+  logit("~0,4*** Server Exited ***");
+  logit("~0,4*** kSirc Server Shutdown ***");
 }
 
 void PWSServer::webLogData()

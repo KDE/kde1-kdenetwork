@@ -288,7 +288,7 @@ void KSircListBox::mouseReleaseEvent(QMouseEvent *me){ /*FOLD00*/
     waitForClear = TRUE;
     connect(kApp->clipboard(), SIGNAL(dataChanged()),
 	    this, SLOT(clearSelection()));
-    QTimer::singleShot(10000, this, SLOT(clearSelection()));
+    QTimer::singleShot(2000, this, SLOT(clearSelection()));
   }
   else if(me->button() == MidButton){
     emit pasteReq();
@@ -296,7 +296,7 @@ void KSircListBox::mouseReleaseEvent(QMouseEvent *me){ /*FOLD00*/
 }
 
 void KSircListBox::clearSelection() { /*FOLD00*/
-  for(int i = min - 1; i <= max+1; i++){ // Start one prior and one back to just really make sure
+  for(int i = 0; i <= (int) count(); i++){ // Start one prior and one back to just really make sure
     ircListItem *it = (ircListItem *) item(i);
     if(it == 0x0){
       continue;
