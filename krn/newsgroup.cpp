@@ -218,7 +218,10 @@ void Article::load()
         content=gdbm_fetch(old_artdb,key);
     }
     if (!content.dptr)
+    {
+        debug ("couldn't load");
         return; //Couldn't load it
+    }
     
     QString s=(char *)content.dptr;
     
@@ -349,6 +352,7 @@ void NewsGroup::addArticle(QString ID,bool onlyUnread)
     if (spart==NULL)
     {
         if (onlyUnread)
+        {
             if (unreadDict.find(ID.data()))
             {
                 Article *art=new Article();
@@ -356,12 +360,20 @@ void NewsGroup::addArticle(QString ID,bool onlyUnread)
                 art->load();
                 artList.append(art);
             }
-}
-else
-{
-    if (artList.findRef (spart)==-1)
-        artList.append(spart);
-}
+        }
+        else
+        {
+            Article *art=new Article();
+            art->ID=ID;
+            art->load();
+            artList.append(art);
+        }
+    }
+    else
+    {
+        if (artList.findRef (spart)==-1)
+            artList.append(spart);
+    }
 }
 
 void NewsGroup::getList(Artdlg *dialog)

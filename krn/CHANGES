@@ -14,7 +14,9 @@ Changes made Jan 16
             other KDE apps.
 * [Roberto] Plugged a rather largish memory leak while at the same time
             speeding up group opening by 500%. Those 5 lines really payed off!
-
+* [Roberto] Change that 500 to a 50, if you want any articles to appear ;-)
+            The speedup is only big if you have lots of read news you don't
+            wanna see.
 -----------------------------------------------------------------------------
 Changes made Jan 15
 -----------------------------------------------------------------------------
