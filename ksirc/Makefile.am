@@ -184,7 +184,7 @@ install-data-local:
 	$(INSTALL_DATA) ksirc.pl $(kde_datadir)/ksirc
 	$(INSTALL_DATA) filters.pl $(kde_datadir)/ksirc
 	$(INSTALL_DATA) sirc.help.gz $(kde_datadir)/ksirc
-        $(INSTALL_DATA) relnotes $(kde_datadir)/ksirc
+	$(INSTALL_DATA) relnotes $(kde_datadir)/ksirc
 #
 # remove ALL you have installed in install-data-local or install-exec-local
 uninstall-local:
