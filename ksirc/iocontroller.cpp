@@ -143,11 +143,6 @@ void KSircIOController::stdout_read(KProcess *, char *_buffer, int buflen)
 
   int pos,pos2,pos3;
   QString name, line;
-  char buf[buflen+1];
-
-  strncpy(buf, _buffer, buflen+1);
-
-  //  buf[buflen] = 0;
 
   QString buffer(_buffer, buflen+1);
 
@@ -185,10 +180,6 @@ void KSircIOController::stdout_read(KProcess *, char *_buffer, int buflen)
       }
     }
     if(!(ksircproc->TopList)[name]){
-      //      if((kSircConfig->message_window == TRUE) &&
-      //	 !ksircproc->TopList["!messages"]){
-      //	ksircproc->new_toplevel("!messages");
-      //      }
       if(kSircConfig->autocreate == TRUE){
 	ksircproc->new_toplevel(name);
       }
@@ -196,22 +187,6 @@ void KSircIOController::stdout_read(KProcess *, char *_buffer, int buflen)
 	name = "!default";
 	if(line[0] == '`')
 	  name = "!discard";
-	/*
-	  switch(line[0]){
-	  case '`':
-	  name = "!discard";
-	  break;
-	  
-	  case '>':
-	  case '[':
-	  case '=':
-	  case '|':
-	  if(ksircproc->TopList["!messages"]){
-	     name = "!messages";
-	  }
-	  break;
-	}
-	*/
       }
     }
     ksircproc->TopList[name]->sirc_receive(line);

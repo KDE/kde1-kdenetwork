@@ -1,3 +1,12 @@
+1998-01-25  Andrew Stanley-Jones  <asj@chowtown.cban.com>
+
+	* Handles +v on nicks in channels.
+
+	* Big fixes throughout.
+
+	* irclistbox.cpp (updateScrollBars): General cleanup of scroll
+ 	bars, they work correctly now.
+
 1998-01-24  Andrew Stanley-Jones  <asj@chowtown.cban.com>
 
         * Ran ksirc through gprof and inlined a few small functions to
@@ -162,6 +171,17 @@
 $Revision$
 	
 $Log$
+Revision 1.21  1998/01/25 00:31:04  asj
+       * Ran ksirc through gprof and inlined a few small functions to
+ 	help in performance.
+
+	* toplevel.cpp: Fixed Menubar being offset.
+
+	* irclistitem.cpp (setupPainterText): Majour update to painting
+ 	routine.  Now pre draws the "line" in a QPixmap buffer, and simply
+ 	dumps the pixmap to the screen in a paintevent.  Essentially
+ 	double buffered, much faster, very nice.
+
 Revision 1.20  1998/01/22 05:51:41  asj
 Checking in kspainter
 

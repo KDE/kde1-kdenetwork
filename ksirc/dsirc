@@ -463,7 +463,7 @@ sub ctcp {
   $a && ($a=' '.$a);
   $to = (&eq($towho, $nick) ? "you" : $towho);
   
-  &tell("*** $who$puh1 did a CTCP $what$a to $to")
+  &tell("~$to~*** $who$puh1 did a CTCP $what$a to $to")
     unless $what =~ /^(ACTION|PING|DCC)$/;
   if ($what eq 'ACTION') {
     &dohooks("action", $towho, $args);

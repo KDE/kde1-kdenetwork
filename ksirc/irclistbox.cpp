@@ -11,6 +11,7 @@ KSircListBox::KSircListBox(QWidget * parent=0, const char * name=0, WFlags f=0) 
 {
   setAutoScrollBar(FALSE);
   setAutoBottomScrollBar(FALSE);
+  thDirty = TRUE;
   vertScroll = new QScrollBar(this, "VertScrollBar");
   vertScroll->setOrientation(QScrollBar::Vertical);
   vertScroll->resize(16, this->height());
@@ -63,10 +64,11 @@ bool KSircListBox::scrollToBottom(bool force = false)
 
 void KSircListBox::updateScrollBars()
 {
-  if((int) count() > numItemsVisible()){
-    vertScroll->setRange(0, count() - numItemsVisible());
-    int scroll = (count()-numItemsVisible())*yOffset()/(totalHeight() - height());
-    vertScroll->setValue(scroll);
+  int wheight = height();
+  int theight = totalHeight();
+  if(wheight < theight){
+    vertScroll->setRange(0, (theight - wheight));
+    vertScroll->setValue(yOffset());
   }
   else{
     vertScroll->setRange(0, 0);
@@ -85,6 +87,9 @@ void KSircListBox::resizeEvent(QResizeEvent *e)
   //  QRect frame = frameRect();
   //  frame.setRight(frame.right() - 17);
   //  setFrameRect(frame);
+  scrollToBottom();
+  thDirty = TRUE;
+
 }
 
 void KSircListBox::setTopItem(int index)
@@ -95,9 +100,11 @@ void KSircListBox::setTopItem(int index)
 
 void KSircListBox::scrollTo(int index)
 {
-   int yoff = index*(totalHeight() - height()) / 
-     (count() - numItemsVisible() - 2) + fudge;
-   setYOffset(imin(totalHeight()-height()+fudge, yoff));
+   setYOffset(index + fudge);
+   if((index + 100) > (totalHeight() - height()))
+     ScrollToBottom = TRUE;
+   else
+     ScrollToBottom = FALSE;
    //   setYOffset(yoff);
 }
 
@@ -145,3 +152,41 @@ int KSircListBox::imin(int max, int offset){
   }
       
 }
+
+int KSircListBox::totalHeight () 
+{
+  if(thDirty == FALSE)
+    return theightCache;
+  
+  thDirty = FALSE;
+  theightCache = QListBox::totalHeight();
+  return theightCache;
+}
+
+void KSircListBox::insertItem ( const QListBoxItem *lbi, int index=-1 )
+{
+  QListBox::insertItem(lbi, index);
+  theightCache += lbi->height(this);
+  //  thDirty = TRUE;
+}
+
+void KSircListBox::insertItem ( const char * text, int index=-1 )
+{
+  QListBox::insertItem(text, index);
+  thDirty = TRUE;
+}
+
+void KSircListBox::insertItem ( const QPixmap & pixmap, int index=-1 )
+{
+  QListBox::insertItem(pixmap, index);
+  thDirty = TRUE;
+}
+
+void KSircListBox::removeItem ( int index ) 
+{
+  theightCache -= item(index)->height(this);
+  QListBox::removeItem(index);
+  //  thDirty = TRUE;
+}
+
+

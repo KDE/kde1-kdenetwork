@@ -514,15 +514,13 @@ void KSircTopLevel::sirc_receive(QString str)
 
     // If we need to scroll, we, scroll =)
     // scrollToBottom returns true if we should repaint.
-    if(mainw->scrollToBottom() == TRUE){
-      if(mainw->autoUpdate() == FALSE){
-	mainw->setAutoUpdate(TRUE);
-	mainw->repaint();
-	//      mainw->repaint(TRUE);
-	//mainw->update();
-      }
+    mainw->scrollToBottom();
+    if(mainw->autoUpdate() == FALSE){
+      mainw->setAutoUpdate(TRUE);
+      mainw->update();
+      //      mainw->repaint(TRUE);
+      //mainw->update();
     }
-    
   }
   else{
     LineBuffer->append(str);
@@ -893,9 +891,19 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	  s3 = string.mid(pos+1, pos2 - pos - 1); // Get nick
 	  if(s3[0] == '@'){    // Remove the op part if set
 	    s3.remove(0, 1);
-	    ircListItem *irc = new ircListItem(s3, &red, nicks);
+	    ircListItem *irc = new ircListItem(s3, 
+					       kSircConfig->colour_error, 
+					       nicks);
 	    irc->setWrapping(FALSE);
 	    nicks->inSort(irc, TRUE);
+	  }
+	  else if(s3[0] == '+'){
+	    s3.remove(0, 1);
+	    ircListItem *irc = new ircListItem(s3, 
+					       kSircConfig->colour_chan, 
+					       nicks);
+	    irc->setWrapping(FALSE);
+	    nicks->inSort(irc);	    
 	  }
 	  else{
 	    nicks->inSort(s3);
@@ -1076,7 +1084,7 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 		  if(strcmp(arg.at(i), nicks->text(j)) == 0){
 		    nicks->setAutoUpdate(FALSE);
 		    nicks->removeItem(j);           // remove old nick
-		    ircListItem *irc = new ircListItem(arg.at(i), &red, nicks);
+		    ircListItem *irc = new ircListItem(arg.at(i), kSircConfig->colour_error, nicks);
 		    irc->setWrapping(FALSE);
 		    // add new nick in sorted pass,with colour
 		    nicks->inSort(irc, TRUE);
@@ -1086,6 +1094,31 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 		}
 	      }
 	      else if(strcasecmp(mode.at(i), "-o") == 0){
+		for(uint j = 0; j < nicks->count(); j++){
+		  if(strcmp(arg.at(i), nicks->text(j)) == 0){
+		    nicks->setAutoUpdate(FALSE);
+		    nicks->removeItem(j);     // remove old nick
+		    nicks->inSort(arg.at(i)); // add new nick in sorted pass,with colour
+		    nicks->setAutoUpdate(TRUE);
+		    nicks->repaint();
+		  }
+		}
+	      }
+	      else if(strcasecmp(mode.at(i), "+v") == 0){
+		for(uint j = 0; j < nicks->count(); j++){
+		  if(strcmp(arg.at(i), nicks->text(j)) == 0){
+		    nicks->setAutoUpdate(FALSE);
+		    nicks->removeItem(j);           // remove old nick
+		    ircListItem *irc = new ircListItem(arg.at(i), kSircConfig->colour_chan, nicks);
+		    irc->setWrapping(FALSE);
+		    // add new nick in sorted pass,with colour
+		    nicks->inSort(irc);
+		    nicks->setAutoUpdate(TRUE);
+		    nicks->repaint();
+		  }
+		}
+	      }
+	      else if(strcasecmp(mode.at(i), "-v") == 0){
 		for(uint j = 0; j < nicks->count(); j++){
 		  if(strcmp(arg.at(i), nicks->text(j)) == 0){
 		    nicks->setAutoUpdate(FALSE);

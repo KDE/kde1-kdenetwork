@@ -14,6 +14,11 @@ class KSircListBox : public QListBox
     */
   virtual bool scrollToBottom(bool force = FALSE);
 
+  void insertItem ( const QListBoxItem *, int index=-1 );
+  void insertItem ( const char * text, int index=-1 );
+  void insertItem ( const QPixmap & pixmap, int index=-1 );
+  void removeItem ( int index );
+
 //  virtual void scrollBarUpdates(bool);
 
  signals:
@@ -32,6 +37,8 @@ class KSircListBox : public QListBox
 
  protected:
   virtual void resizeEvent(QResizeEvent *);
+  virtual int totalHeight ();
+
 //  virtual void paintEvent ( QPaintEvent * );
 
  private:
@@ -39,6 +46,16 @@ class KSircListBox : public QListBox
   QScrollBar *vertScroll;
 
   bool ScrollToBottom;
+  /**
+   * If the total height has been changed and needs to be recalced this is 
+   * true
+   */
+  bool thDirty;
+  /**
+   * The Total height of all the irclist items.  This cached since it's
+   * used frequently.
+   */
+  int theightCache;
   /**
     * Find the minimum of the two int.  Order is important.
     * Arg1 is the maxium allowed.

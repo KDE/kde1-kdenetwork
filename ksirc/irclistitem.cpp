@@ -176,6 +176,7 @@ void ircListItem::setupPainterText()
 
     p.setFont(parent_lb->font());
     p.setPen(*colour);
+    p.setBackgroundColor(parent_lb->backgroundColor());
     
     if(pm)
       p.drawPixmap(1,0,*pm);
