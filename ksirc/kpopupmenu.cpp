@@ -38,7 +38,7 @@ bool KGAccel::eventFilter(QObject *, QEvent *e) /*FOLD00*/
       debug("Got: %d xlate to %d, we know it as: %p", ke->key(), key, accelDict->find(key));
 
       accelItem *ai;
-      if(ai = accelDict->find(key)){
+      if((ai = accelDict->find(key))){
 	ai->menu()->activated(ai->id());
 	ke->accept();
 	return TRUE;
@@ -58,7 +58,7 @@ void KGAccel::insertAccel(int key, int id, KAPopupMenu *kp) /*FOLD00*/
   QIntDictIterator<accelItem> it(*accelDict);
   while(it.current()){
     if((it.current()->id() == id) && (it.current()->menu() == kp)){
-      debug("Remove: %d", it.currentKey());
+      debug("Remove: %ld", it.currentKey());
       it.current()->menu()->clearAccel(id);
       accelDict->remove(it.currentKey()); // Moves it ahead one
     }
@@ -84,7 +84,7 @@ void KGAccel::clearAccelForPopup(KAPopupMenu *kp)
     QIntDictIterator<accelItem> it(*accelDict);
     while(it.current()){
         if(it.current()->menu() == kp){
-            debug("Remove: %d", it.currentKey());
+            debug("Remove: %ld", it.currentKey());
             accelDict->remove(it.currentKey()); // Moves it ahead one
         }
         else
@@ -180,7 +180,7 @@ void KAPopupMenu::updateAccel() /*fold00*/
     KConfig *cnf = kapp->getConfig();
     cnf->setGroup("UserDefinedAccel");
 
-    for(int i = 0; i < count(); i++){
+    for(int i = 0; i < (int) count(); i++){
       int item = idAt(i);
       QString text_id = text(item);
       int spaces = text_id.find("\t"); // Search for accel key starts

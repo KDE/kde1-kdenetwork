@@ -25,28 +25,28 @@ ChannelParser::ChannelParser(KSircTopLevel *_top) /*fold00*/
 
   if(parserTable.isEmpty() == TRUE){
     parserTable.setAutoDelete(TRUE);
-    parserTable.insert("`l`", new("parseFunc") parseFunc(&parseSSFEClear));
-    parserTable.insert("`s`", new("parseFunc") parseFunc(&parseSSFEStatus));
-    parserTable.insert("`i`", new("parseFunc") parseFunc(&parseSSFEInit));
-    parserTable.insert("`t`", new("parseFunc") parseFunc(&parseSSFEMsg));
-    parserTable.insert("`o`", new("parseFunc") parseFunc(&parseSSFEOut));
-    parserTable.insert("`p`", new("parseFunc") parseFunc(&parseSSFEPrompt));
-    parserTable.insert("`P`", new("parseFunc") parseFunc(&parseSSFEPrompt));
-    parserTable.insert("`R`", new("parseFunc") parseFunc(&parseSSFEReconnect));
+    parserTable.insert("`l`", new("parseFunc") parseFunc(&ChannelParser::parseSSFEClear));
+    parserTable.insert("`s`", new("parseFunc") parseFunc(&ChannelParser::parseSSFEStatus));
+    parserTable.insert("`i`", new("parseFunc") parseFunc(&ChannelParser::parseSSFEInit));
+    parserTable.insert("`t`", new("parseFunc") parseFunc(&ChannelParser::parseSSFEMsg));
+    parserTable.insert("`o`", new("parseFunc") parseFunc(&ChannelParser::parseSSFEOut));
+    parserTable.insert("`p`", new("parseFunc") parseFunc(&ChannelParser::parseSSFEPrompt));
+    parserTable.insert("`P`", new("parseFunc") parseFunc(&ChannelParser::parseSSFEPrompt));
+    parserTable.insert("`R`", new("parseFunc") parseFunc(&ChannelParser::parseSSFEReconnect));
     // The rest are *** info message
-    parserTable.insert("***", new("parseFunc") parseFunc(&parseINFOInfo));
-    parserTable.insert("*E*", new("parseFunc") parseFunc(&parseINFOError));
-    parserTable.insert("*!*", new("parseFunc") parseFunc(&parseINFONicks)); // Normal
-    parserTable.insert("*C*", new("parseFunc") parseFunc(&parseINFONicks)); // 1st line
-    parserTable.insert("*c*", new("parseFunc") parseFunc(&parseINFONicks)); // Last line
-    parserTable.insert("*#*", new("parseFunc") parseFunc(&parseINFONicks)); // Non enhanced
-    parserTable.insert("*>*", new("parseFunc") parseFunc(&parseINFOJoin));
-    parserTable.insert("*<*", new("parseFunc") parseFunc(&parseINFOPart));
-    parserTable.insert("*N*", new("parseFunc") parseFunc(&parseINFOChangeNick));
-    parserTable.insert("*+*", new("parseFunc") parseFunc(&parseINFOMode));
-    parserTable.insert("*T*", new("parseFunc") parseFunc(&parseINFOTopic));
+    parserTable.insert("***", new("parseFunc") parseFunc(&ChannelParser::parseINFOInfo));
+    parserTable.insert("*E*", new("parseFunc") parseFunc(&ChannelParser::parseINFOError));
+    parserTable.insert("*!*", new("parseFunc") parseFunc(&ChannelParser::parseINFONicks)); // Normal
+    parserTable.insert("*C*", new("parseFunc") parseFunc(&ChannelParser::parseINFONicks)); // 1st line
+    parserTable.insert("*c*", new("parseFunc") parseFunc(&ChannelParser::parseINFONicks)); // Last line
+    parserTable.insert("*#*", new("parseFunc") parseFunc(&ChannelParser::parseINFONicks)); // Non enhanced
+    parserTable.insert("*>*", new("parseFunc") parseFunc(&ChannelParser::parseINFOJoin));
+    parserTable.insert("*<*", new("parseFunc") parseFunc(&ChannelParser::parseINFOPart));
+    parserTable.insert("*N*", new("parseFunc") parseFunc(&ChannelParser::parseINFOChangeNick));
+    parserTable.insert("*+*", new("parseFunc") parseFunc(&ChannelParser::parseINFOMode));
+    parserTable.insert("*T*", new("parseFunc") parseFunc(&ChannelParser::parseINFOTopic));
     // End of info message
-    parserTable.insert("*  ", new("parseFunc") parseFunc(&parseCTCPAction));
+    parserTable.insert("*  ", new("parseFunc") parseFunc(&ChannelParser::parseCTCPAction));
   }
 
 }

@@ -66,8 +66,8 @@ public:
         __iarg = _iarg;
     }
 
-    command() { return __command; }
-    iarg() { return __iarg; }
+    int command() { return __command; }
+    int iarg() { return __iarg; }
     
 private:
     int __command, __iarg;

@@ -388,43 +388,43 @@ void PukeController::initHdlr() /*FOLD00*/
 
   // Invalid is the default invalid handler
   cs = new("commandStruct") commandStruct;
-  cs->cmd = &hdlrPukeInvalid;
+  cs->cmd = &PukeController::hdlrPukeInvalid;
   cs->dlhandle = 0x0;
   qidCommandTable.insert(PUKE_INVALID, cs);
 
   
   // Setup's handled by the setup handler
   cs = new("commandStruct") commandStruct;
-  cs->cmd = &hdlrPukeSetup;
+  cs->cmd = &PukeController::hdlrPukeSetup;
   cs->dlhandle = 0x0;
   qidCommandTable.insert(PUKE_SETUP, cs);
 
   // We don't receive PUKE_SETUP_ACK's we send them.
   cs = new("commandStruct") commandStruct;
-  cs->cmd = &hdlrPukeInvalid;
+  cs->cmd = &PukeController::hdlrPukeInvalid;
   cs->dlhandle = 0x0;
   qidCommandTable.insert(PUKE_SETUP_ACK, cs);  
 
   cs = new("commandStruct") commandStruct;
-  cs->cmd = &hdlrPukeEcho;
+  cs->cmd = &PukeController::hdlrPukeEcho;
   cs->dlhandle = 0x0;
   qidCommandTable.insert(PUKE_ECHO, cs);
 
   // Fetch widget gets the requested widget from the ServerController
   cs = new("commandStruct") commandStruct;
-  cs->cmd = &hdlrPukeFetchWidget;
+  cs->cmd = &PukeController::hdlrPukeFetchWidget;
   cs->dlhandle = 0x0;
   qidCommandTable.insert(PUKE_FETCHWIDGET, cs);
 
   // Fetch widget gets the requested widget from the ServerController
   cs = new("commandStruct") commandStruct;
-  cs->cmd = &hdlrPukeDumpTree;
+  cs->cmd = &PukeController::hdlrPukeDumpTree;
   cs->dlhandle = 0x0;
   qidCommandTable.insert(PUKE_DUMPTREE, cs);
 
   // Fetch widget gets the requested widget from the ServerController
   cs = new("commandStruct") commandStruct;
-  cs->cmd = &hdlrPukeDeleteWidget;
+  cs->cmd = &PukeController::hdlrPukeDeleteWidget;
   cs->dlhandle = 0x0;
   qidCommandTable.insert(PUKE_WIDGET_DELETE, cs);
 

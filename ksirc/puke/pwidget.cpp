@@ -16,26 +16,26 @@ PWidget::PWidget(PObject *)
   w = 0;
   setWidget(0);
 
-  eventList[0] = &eventNone;
-  eventList[1] = &eventTimer;
-  eventList[2] = &eventMouse;
-  eventList[3] = &eventMouse;
-  eventList[4] = &eventMouse;
-  eventList[5] = &eventMouse;
-  eventList[6] = &eventKey;
-  eventList[7] = &eventKey;
-  eventList[8] = &eventFocus;
-  eventList[9] = &eventFocus;
-  eventList[10] = &eventFocus;
-  eventList[11] = &eventFocus;
-  eventList[12] = &eventPaint;
-  eventList[13] = &eventMove;
-  eventList[14] = &eventResize;
-  eventList[15] = &eventNone;
-  eventList[16] = &eventNone;
-  eventList[17] = &eventNone;
-  eventList[18] = &eventNone;
-  eventList[19] = &eventNone;
+  eventList[0] = &PWidget::eventNone;
+  eventList[1] = &PWidget::eventTimer;
+  eventList[2] = &PWidget::eventMouse;
+  eventList[3] = &PWidget::eventMouse;
+  eventList[4] = &PWidget::eventMouse;
+  eventList[5] = &PWidget::eventMouse;
+  eventList[6] = &PWidget::eventKey;
+  eventList[7] = &PWidget::eventKey;
+  eventList[8] = &PWidget::eventFocus;
+  eventList[9] = &PWidget::eventFocus;
+  eventList[10] = &PWidget::eventFocus;
+  eventList[11] = &PWidget::eventFocus;
+  eventList[12] = &PWidget::eventPaint;
+  eventList[13] = &PWidget::eventMove;
+  eventList[14] = &PWidget::eventResize;
+  eventList[15] = &PWidget::eventNone;
+  eventList[16] = &PWidget::eventNone;
+  eventList[17] = &PWidget::eventNone;
+  eventList[18] = &PWidget::eventNone;
+  eventList[19] = &PWidget::eventNone;
 
   // Connect slots as needed
 

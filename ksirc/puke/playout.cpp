@@ -54,7 +54,7 @@ void PLayout::messageHandler(int fd, PukeMessage *pm)
   
   if(pm->iCommand == PUKE_LAYOUT_ADDWIDGET){
     if(pm->iTextSize != 2*sizeof(char)){
-      warning("PLayout/addwidget: incorrent cArg size, bailing out.  Needed: %ld wanted: %d\n", sizeof(int), pm->iTextSize);
+      warning("PLayout/addwidget: incorrent cArg size, bailing out.  Needed: %u wanted: %d\n", sizeof(int), pm->iTextSize);
       pmRet.iCommand = PUKE_LAYOUT_ADDWIDGET_ACK; // ack the add widget
       pmRet.iWinId = pm->iWinId;
       pmRet.iArg = 1;
@@ -78,7 +78,7 @@ void PLayout::messageHandler(int fd, PukeMessage *pm)
   }
   else if(pm->iCommand == PUKE_LAYOUT_ADDLAYOUT){
     if(pm->iTextSize != sizeof(char)){
-      warning("PLayout: incorrent cArg size, bailing out.  Needed: %ld wanted: %d\n", sizeof(int), pm->iTextSize);
+      warning("PLayout: incorrent cArg size, bailing out.  Needed: %u wanted: %d\n", sizeof(int), pm->iTextSize);
       pmRet.iCommand = PUKE_LAYOUT_ADDLAYOUT_ACK; // ack the add widget
       pmRet.iWinId = pm->iWinId;
       pmRet.iArg = 1;
