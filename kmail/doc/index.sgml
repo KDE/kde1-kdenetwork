@@ -261,8 +261,17 @@ your inbox when they arrive. Filters allow you to automatically perform certain 
 incoming messages and to manually perform actions on selected messages in a folder.
 <p>
 The actions section of the <bf>Filter Rules</bf> window lets you perform up to eight actions in one
-filter. You can you the "Skip Rest" option to skip the rest of the actions in the list.  Only the transfer action and the skip rest action are supported at this time, 
-but expect to see more action options available in future releases of Kmail.
+filter. You can use the "Skip Rest" option to skip the rest of the actions in the list.  
+<p>
+The "Transfer" action is used to move a message into a specific folder.
+It is useful to add "Skip Rest" as second action after "Transfer" to avoid
+that filters down the list move the message into another folder.
+<p>
+The "Execute" action executes the given program. The program has to be in
+the path to be found.
+<p>
+The "Forward-to" action forwards a copy of the message to the given email 
+address.
 <p>
 Usually, filters are used on incoming messages, but they can also be applied to a message or group of
 messages.  To selectively filter messages in a message folder, select the messages you want to filter and
@@ -336,6 +345,9 @@ Privacy Guard or PGP installed and have your keys created. To configure PGP, sel
 and click on the <bf>PGP</bf> tab. Type in your PGP user identity in the space
 provided and select any other options that you want before pressing the <bf>OK</bf> button to save your
 settings. 
+<p>
+If you want to use PGP 5.x you have to set PGP's language to English. Otherwise
+Kmail won't be able to use it.
 <p>
 Once PGP is configured, you can use it to sign and encrypt messages. To sign an email message, toggle the
 quill button on the button bar. When you send your message, you will be prompted for your PGP password.

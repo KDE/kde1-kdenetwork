@@ -76,6 +76,10 @@ public:
   virtual void setBodyFont(const QString);
   const QString bodyFont(void) const { return mBodyFont; }
 
+  /** Returns path where attachments are kept. Gets set with first
+    KMReaderWin that is created. */
+  static QString attachDir(void) { return mAttachDir; }
+
 signals:
   /** Emitted to show a text on the status line. */
   void statusMsg(const char* text);
@@ -160,6 +164,9 @@ protected:
   /** View message part of type message/RFC822 in extra viewer window. */
   virtual void atmViewMsg(KMMessagePart* msgPart);
 
+  /** Create directory for attachments */
+  virtual void makeAttachDir(void);
+
 protected:
   int mAtmInline;
   int mAtmCurrent;
@@ -172,6 +179,7 @@ protected:
   bool mAutoDelete;
   QString mBodyFont;
   bool inlineImage;
+  static QString mAttachDir;
 };
 
 

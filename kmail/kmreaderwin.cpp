@@ -5,6 +5,8 @@
 #include <kfiledialog.h>
 #include <stdlib.h>
 #include <sys/stat.h>
+#include <string.h>
+#include <errno.h>
 
 #ifndef KRN
 #include "kmglobal.h"
@@ -55,8 +57,9 @@
 #include <paths.h>
 #endif
 
-#ifndef _PATH_TMP
-#define _PATH_TMP "/tmp/"
+#ifndef KMAIL_TMP
+// a '&' as first char in _PATH_TMP will be replaced with kapp->localkdedir()
+#define KMAIL_TMP "&/share/apps/kmail/tmp/"
 #endif
 
 #ifdef KRN
@@ -64,6 +67,8 @@ extern KApplication *app;
 extern KLocale *nls;
 extern KBusyPtr *kbp;
 #endif
+
+QString KMReaderWin::mAttachDir;
 
 //-----------------------------------------------------------------------------
 KMReaderWin::KMReaderWin(QWidget *aParent, const char *aName, int aFlags)
@@ -77,6 +82,8 @@ KMReaderWin::KMReaderWin(QWidget *aParent, const char *aName, int aFlags)
 
   initHtmlWidget();
   readConfig();
+
+  if (mAttachDir.isNull()) makeAttachDir();
 }
 
 
@@ -84,6 +91,31 @@ KMReaderWin::KMReaderWin(QWidget *aParent, const char *aName, int aFlags)
 KMReaderWin::~KMReaderWin()
 {
   if (mAutoDelete) delete mMsg;
+}
+
+
+//-----------------------------------------------------------------------------
+void KMReaderWin::makeAttachDir(void)
+{
+  QString str;
+  bool ok = true;
+
+  str = KMAIL_TMP;
+  if (str[0] == '&') str = app->localkdedir() + str.mid(1,1023);
+  mAttachDir.sprintf("%skmail%d", (const char*)str, getpid());
+
+  if (access(mAttachDir, W_OK) != 0) // Not there or not writable
+  {
+    if (access(str, W_OK) != 0 &&
+	(mkdir(str, 0) != 0 || chmod(str, S_IRWXU) != 0))
+      ok=false; //failed create
+    else if (mkdir(mAttachDir, 0) != 0 || chmod(mAttachDir, S_IRWXU) != 0)
+      ok=false; //failed create
+  }
+
+  if (!ok) warning(i18n("Failed to create temporary "
+			"attachment directory '%s': %s"), 
+		   (const char*)mAttachDir, strerror(errno));
 }
 
 
@@ -117,7 +149,7 @@ void KMReaderWin::readConfig(void)
   mBodyFont = config->readEntry("body-font", "helvetica-medium-r-12");
   mViewer->setStandardFont(kstrToFont(mBodyFont).family());
   // --- sven's get them font sizes right! start ---
-  int i, fntSize, diff;
+  int i, fntSize=0, diff;
   fntSize = kstrToFont(mBodyFont).pointSize();
   //debug ("Fontsize: %d", fntSize);
 
@@ -625,20 +657,12 @@ void KMReaderWin::writePartIcon(KMMessagePart* aMsgPart, int aPartNum)
 
 //--- Sven's save attachments to /tmp start ---
   QString fname;
-  fname.sprintf ("%skmail%d", _PATH_TMP, getpid());
   bool ok = true;
 
+  fname.sprintf("%s/part%d", (const char*)mAttachDir, aPartNum+1);
   if (access(fname.data(), W_OK) != 0) // Not there or not writable
     if (mkdir(fname.data(), 0) != 0 || chmod (fname.data(), S_IRWXU) != 0)
-      ok=false; //failed create
-
-  if (ok)
-  {
-    fname.sprintf("%s/part%d", fname.data(), aPartNum+1);
-    if (access(fname.data(), W_OK) != 0) // Not there or not writable
-      if (mkdir(fname.data(), 0) != 0 || chmod (fname.data(), S_IRWXU) != 0)
-	ok = false; //failed create
-  }
+      ok = false; //failed create
 
   if (ok)
   {
@@ -669,6 +693,7 @@ void KMReaderWin::writePartIcon(KMMessagePart* aMsgPart, int aPartNum)
   else
 //--- Sven's save attachments to /tmp end ---
   href.sprintf("part://%i", aPartNum+1);
+
   // sven: for viewing images inline
   if (inlineImage)
     iconName = href;
@@ -810,23 +835,21 @@ void KMReaderWin::printMsg(void)
 //-----------------------------------------------------------------------------
 int KMReaderWin::msgPartFromUrl(const char* aUrl)
 {
-  //--- Sven's save attachments to /tmp start ---
+  QString url;
+
   if (!aUrl || !mMsg) return -1;
   
-  QString url;
-  url.sprintf("file:%skmail%d/part", _PATH_TMP, getpid());
+  url.sprintf("file:%s/part", (const char*)mAttachDir);
   int s = url.length();
-  if (strncmp(aUrl, url.data(), s) == 0)
+  if (strncmp(aUrl, url, s) == 0)
   {
     url = aUrl;
-    int i = url.findRev('/');
-    url = url.mid(s,i-s);
+    int i = url.find('/', s);
+    url = url.mid(s, i-s);
     //debug ("Url num = %s", url.data());
     return atoi(url.data());
   }
-  //--- Sven's save attachments to /tmp end ---
-  if (!aUrl || !mMsg || strncmp(aUrl,"part://",7)) return -1;
-  return (aUrl ? atoi(aUrl+7) : 0);
+  return -1;
 }
 
 
@@ -983,8 +1006,8 @@ void KMReaderWin::slotAtmView()
       //image
       QString linkName;
       // Attachment is saved already; this is the file:
-      linkName.sprintf ("<img src=\"file:%skmail%d/part%d/%s\" border=0>",
-                        _PATH_TMP, getpid(), mAtmCurrent+1,
+      linkName.sprintf ("<img src=\"file:%s/part%d/%s\" border=0>",
+                        (const char*)mAttachDir, mAtmCurrent+1,
                         pname.data()); // set linkname
       win->mViewer->begin(mPicsDir);
       win->mViewer->write("<HTML><BODY>");
@@ -1023,7 +1046,7 @@ void KMReaderWin::slotAtmOpen()
   if (pname.isEmpty()) pname="unnamed";
   //--- Sven's save attachments to /tmp start ---
   // Sven added:
-  fileName.sprintf ("%skmail%d/part%d/%s", _PATH_TMP, getpid(), mAtmCurrent+1,
+  fileName.sprintf ("%s/part%d/%s", (const char*)mAttachDir, mAtmCurrent+1,
                     pname.data());
   // Sven commented out:
   //tmpName = tempnam(NULL, NULL);

@@ -18,6 +18,7 @@
 #include "kmaddrbook.h"
 #include "kcharsets.h"
 #include "kmsettings.h"
+#include "kmreaderwin.h"
 
 #include <kapp.h>
 #include <stdio.h>
@@ -525,8 +526,11 @@ static void cleanup(void)
   QString cmd;
   // This is a dir with attachments and it is not critical if they are
   // left behind.
-  cmd.sprintf("rm -rf %skmail%d", _PATH_TMP, getpid());
-  system (cmd.data()); // delete your owns only
+  if (!KMReaderWin::attachDir().isEmpty())
+  {
+    cmd.sprintf("rm -rf '%s'", (const char*)KMReaderWin::attachDir());
+    system (cmd.data()); // delete your owns only
+  }
   //--- Sven's save attachments to /tmp end ---
   //--- Sven's pseudo IPC&locking start ---
   cmd.sprintf("%s.kmail%d.lck", _PATH_TMP, getuid());
