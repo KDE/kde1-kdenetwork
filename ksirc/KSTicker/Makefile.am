@@ -13,7 +13,7 @@
 # kde_wallpaperdir  Where general wallpapers should go to.
 
 # set the include path for X, qt and KDE
-INCLUDES= -I. -I$(srcdir) -I../.. -include ../kplunger/kplunger.h $(all_includes)
+INCLUDES= -include $(srcdir)/../kplunger/kplunger.h $(all_includes)
 
 # claim, which subdirectories you want to install
 # SUBDIRS = 

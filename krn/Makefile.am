@@ -46,7 +46,8 @@ METASOURCES =	groupdlg.moc \
 		charsetsDlg.moc\
                 expirestatusdlg.moc\
                 kmtopwidget.moc\
-                TooManydlg.moc
+                TooManydlg.moc \
+		new_groupdlg.moc
 
 bin_PROGRAMS =	krn kdecode newkrn
 

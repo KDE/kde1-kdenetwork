@@ -8,7 +8,7 @@
 #include "ksticker.h"
 #include "speeddialog.h"
 
-#include "../kspainter.h"
+#include "kspainter.h"
 
 #include <kwm.h>
 #include <kapp.h>

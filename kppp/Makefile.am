@@ -102,8 +102,7 @@ noinst_HEADERS = accounts.h \
 		newwidget.h \
 		modemdb.h
 
-# just to make sure, automake makes them 
-BUILTSOURCES = accounts.moc \
+METASOURCES = accounts.moc \
 		connect.moc \
 		conwindow.moc \
 		debug.moc \
@@ -120,13 +119,8 @@ BUILTSOURCES = accounts.moc \
 		accounting.moc\
 		acctselect.moc\
 		docking.moc \
-		setup.moc \
 		groupbox.moc \
 		modemdb.moc
-
-# if you "make distclean", this files get removed. If you want to remove
-# them while "make clean", use CLEANFILES
-DISTCLEANFILES = $(BUILTSOURCES)
 
 messages:
 	$(XGETTEXT) -C -ktranslate -ki18n -x $(includedir)/kde.pot $(kppp_SOURCES) && mv messages.po ../po/kppp.pot
@@ -161,87 +155,3 @@ install-exec-local:
 #distclean-local:
 #	@(cd Rules && $(MAKE) distclean)
 
-# MOC files
-accounting.cpp: accounting.moc;
-accounting.moc: accounting.h
-	$(MOC) accounting.h -o accounting.moc
-
-accounts.cpp: accounts.moc;
-accounts.moc: accounts.h
-	$(MOC) accounts.h -o accounts.moc
-
-acctselect.cpp: acctselect.moc;
-acctselect.moc: acctselect.h
-	$(MOC) acctselect.h -o acctselect.moc
-
-connect.cpp: connect.moc;
-connect.moc: connect.h
-	$(MOC) connect.h -o connect.moc
-
-conwindow.cpp: conwindow.moc;
-conwindow.moc: conwindow.h
-	$(MOC) conwindow.h -o conwindow.moc
-
-debug.cpp: debug.moc;
-debug.moc: debug.h
-	$(MOC) debug.h -o debug.moc
-
-docking.cpp: docking.moc;
-docking.moc: docking.h
-	$(MOC) docking.h -o docking.moc
-
-edit.cpp: edit.moc;
-edit.moc: edit.h
-	$(MOC) edit.h -o edit.moc
-
-general.cpp: general.moc;
-general.moc: general.h
-	$(MOC) general.h -o general.moc
-
-loginterm.cpp: loginterm.moc;
-loginterm.moc: loginterm.h
-	$(MOC) loginterm.h -o loginterm.moc
-
-main.cpp: main.moc;
-main.moc: main.h
-	$(MOC) main.h -o main.moc
-
-miniterm.cpp: miniterm.moc;
-miniterm.moc: miniterm.h
-	$(MOC) miniterm.h -o miniterm.moc
-
-modem.cpp: modem.moc;
-modem.moc: modem.h
-	$(MOC) modem.h -o modem.moc
-
-modemcmds.cpp: modemcmds.moc;
-modemcmds.moc: modemcmds.h
-	$(MOC) modemcmds.h -o modemcmds.moc
-
-modeminfo.cpp: modeminfo.moc;
-modeminfo.moc: modeminfo.h
-	$(MOC) modeminfo.h -o modeminfo.moc
-
-pppdargs.cpp: pppdargs.moc;
-pppdargs.moc: pppdargs.h
-	$(MOC) pppdargs.h -o pppdargs.moc
-
-pppstatdlg.cpp: pppstatdlg.moc;
-pppstatdlg.moc: pppstatdlg.h
-	$(MOC) pppstatdlg.h -o pppstatdlg.moc
-
-pwentry.cpp: pwentry.moc;
-pwentry.moc: pwentry.h
-	$(MOC) pwentry.h -o pwentry.moc
-
-scriptedit.cpp: scriptedit.moc;
-scriptedit.moc: scriptedit.h
-	$(MOC) scriptedit.h -o scriptedit.moc
-
-groupbox.cpp: groupbox.moc
-groupbox.moc: groupbox.h
-	$(MOC) groupbox.h -o groupbox.moc
-
-modemdb.cpp: modemdb.moc
-modemdb.moc: modemdb.h
-	$(MOC) modemdb.h -o modemdb.moc
