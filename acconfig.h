@@ -60,3 +60,29 @@
 #undef HAVE_DLFCN_H
  
 
+
+#define HAVE_MEDIATOOL 1
+
+#ifndef HAVE_BOOL
+#define HAVE_BOOL
+typedef int bool;
+#ifdef __cplusplus
+const bool false = 0;
+const bool true = 1;
+#else
+#define false (bool)0;
+#define true (bool)1;
+#endif
+#endif
+
+#if defined(__FreeBSD__) || defined(__NetBSD__) || defined(__OpenBSD)
+#       undef __BSD__
+#       define __BSD__ 1 /* needed so that #elif __BSD__ will work with gcc */
+#endif
+
+#ifndef HAVE_FUNC_SETENV
+#define HAVE_FUNC_SETENV
+int setenv(const char *name, const char *value, int overwrite);
+int unsetenv(const char *name);
+#endif
+
