@@ -41,6 +41,8 @@ class KMFolderRootDir: public KMFolderDir
 
 public:
   KMFolderRootDir(const char* name=NULL);
+  virtual ~KMFolderRootDir();
+  
   virtual const QString& path(void) const;
 
   // set the absolute path
