@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1999-04-02 02:46+0200\n"
+"POT-Creation-Date: 1999-04-16 03:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Kim Enkovaara <kim.enkovaara@iki.fi>\n"
 
@@ -17,7 +17,7 @@ msgstr ""
 msgid "New Folder"
 msgstr "Uusi kansio"
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:393 kmmainwin.cpp:427 main.cpp:471
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:393 kmmainwin.cpp:427 main.cpp:484
 msgid "KMail error"
 msgstr "KMail virhe"
 
@@ -122,23 +122,23 @@ msgstr "Kopioi leikepöydälle"
 msgid "Open URL..."
 msgstr "Avaa URL..."
 
-#: kmmainwin.cpp:914 kmmainwin.cpp:1031
+#: kmheaders.cpp:956 kmmainwin.cpp:914 kmmainwin.cpp:1031
 msgid "&Reply..."
 msgstr "&Vastaa..."
 
-#: kmmainwin.cpp:916 kmmainwin.cpp:1033
+#: kmheaders.cpp:958 kmmainwin.cpp:916 kmmainwin.cpp:1033
 msgid "Reply &All..."
 msgstr "Vastaa &kaikille..."
 
-#: kmmainwin.cpp:918 kmmainwin.cpp:1035
+#: kmheaders.cpp:960 kmmainwin.cpp:918 kmmainwin.cpp:1035
 msgid "&Forward..."
 msgstr "Lähetä &eteenpäin"
 
-#: kmmainwin.cpp:921 kmmainwin.cpp:1045
+#: kmheaders.cpp:963 kmmainwin.cpp:921 kmmainwin.cpp:1045
 msgid "&Move..."
 msgstr "&Siirrä..."
 
-#: kmmainwin.cpp:923 kmmainwin.cpp:1047
+#: kmheaders.cpp:965 kmmainwin.cpp:923 kmmainwin.cpp:1047
 msgid "&Copy..."
 msgstr "&Kopioi..."
 
@@ -186,43 +186,43 @@ msgstr "&Suodatin..."
 msgid "&Find..."
 msgstr "&Etsi..."
 
-#: kmmainwin.cpp:997
+#: kmfoldertree.cpp:307 kmmainwin.cpp:997
 msgid "&Create..."
 msgstr "&Luo..."
 
-#: kmmainwin.cpp:999
+#: kmfoldertree.cpp:309 kmmainwin.cpp:999
 msgid "&Modify..."
 msgstr "&Muokkaa..."
 
-#: kmmainwin.cpp:1001
+#: kmfoldertree.cpp:311 kmmainwin.cpp:1001
 msgid "C&ompact"
 msgstr "Tii&vistä"
 
-#: kmmainwin.cpp:1004
+#: kmfoldertree.cpp:314 kmmainwin.cpp:1004
 msgid "&Empty"
 msgstr "&Tyhjennä"
 
-#: kmfilterdlg.cpp:149 kmmainwin.cpp:1013
+#: kmfilterdlg.cpp:149 kmheaders.cpp:946 kmmainwin.cpp:1013
 msgid "New"
 msgstr "Uusi"
 
-#: kmmainwin.cpp:1014
+#: kmheaders.cpp:947 kmmainwin.cpp:1014
 msgid "Unread"
 msgstr "Lukematon"
 
-#: kmmainwin.cpp:1015
+#: kmheaders.cpp:948 kmmainwin.cpp:1015
 msgid "Read"
 msgstr "Lue"
 
-#: kmmainwin.cpp:1016
+#: kmheaders.cpp:949 kmmainwin.cpp:1016
 msgid "Replied"
 msgstr "Vastattu"
 
-#: kmmainwin.cpp:1017
+#: kmheaders.cpp:950 kmmainwin.cpp:1017
 msgid "Queued"
 msgstr "Jonossa"
 
-#: kmmainwin.cpp:1018
+#: kmheaders.cpp:951 kmmainwin.cpp:1018
 msgid "Sent"
 msgstr "Lähetetty"
 
@@ -363,7 +363,7 @@ msgstr "Liittyy "
 msgid "Unassociated Accounts"
 msgstr "Liittämättömät profiilit"
 
-#: kmfoldertree.cpp:47 kmsettings.cpp:538
+#: kmfoldertree.cpp:49 kmsettings.cpp:538
 msgid "Folders"
 msgstr "Kansiot"
 
@@ -487,15 +487,15 @@ msgstr "Lähetä eteenpäin"
 msgid "Indentation:"
 msgstr "Keskitys:"
 
-#: kmmessage.cpp:1379 kmsettings.cpp:420
+#: kmmessage.cpp:1383 kmsettings.cpp:420
 msgid "On %D, you wrote:"
 msgstr "Viestissä %D, kirjoitit:"
 
-#: kmmessage.cpp:1380 kmsettings.cpp:424
+#: kmmessage.cpp:1384 kmsettings.cpp:424
 msgid "On %D, %F wrote:"
 msgstr "Viestissä %D, %F kirjoitti:"
 
-#: kmmessage.cpp:1381 kmsettings.cpp:428
+#: kmmessage.cpp:1385 kmsettings.cpp:428
 msgid "Forwarded Message"
 msgstr "Uudelleen lähetetty viesti"
 
@@ -603,7 +603,7 @@ msgstr "POP-osoite"
 msgid "Login:"
 msgstr "Käyttäjätunnus:"
 
-#: kmacctpop.cpp:468 kmsettings.cpp:902
+#: kmacctpop.cpp:481 kmsettings.cpp:902
 msgid "Password:"
 msgstr "Salasana:"
 
@@ -612,26 +612,30 @@ msgid "Host:"
 msgstr "Konenimi:"
 
 #: kmsettings.cpp:914
+msgid "Store POP password in config file"
+msgstr ""
+
+#: kmsettings.cpp:919
 msgid "Delete mail from server"
 msgstr "Tuhoa posti palvelimelta"
 
-#: kmsettings.cpp:919
+#: kmsettings.cpp:924
 msgid "Retrieve all mail from server"
 msgstr "Hae kaikki posti palvelimelta"
 
-#: kmsettings.cpp:931
+#: kmsettings.cpp:936
 msgid "Enable interval Mail checking"
 msgstr "Käytä tasavälistä postintarkistusta"
 
-#: kmsettings.cpp:941
+#: kmsettings.cpp:946
 msgid "Store new mail in account:"
 msgstr "Tallenna uusi posti kansioon:"
 
-#: kmsettings.cpp:955
+#: kmsettings.cpp:960
 msgid "<none>"
 msgstr "<ei mikään>"
 
-#: kmsettings.cpp:1004
+#: kmsettings.cpp:1009
 msgid "Choose Location"
 msgstr "Valitse sijainti"
 
@@ -647,7 +651,7 @@ msgstr "Viestin lisäys epäonnistui"
 msgid "F"
 msgstr "L"
 
-#: kmheaders.cpp:43 kmheaders.cpp:216
+#: kmheaders.cpp:43 kmheaders.cpp:223
 msgid "Sender"
 msgstr "Lähettäjä"
 
@@ -659,62 +663,62 @@ msgstr "Aihe"
 msgid "Date"
 msgstr "Päivä"
 
-#: kmheaders.cpp:215
+#: kmheaders.cpp:222
 msgid "Receiver"
 msgstr "Vastaanottaja"
 
-#: kmheaders.cpp:218
+#: kmheaders.cpp:225
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d Viestiä, %d lukematta."
 
-#: kmheaders.cpp:220
+#: kmheaders.cpp:227
 msgid "Folder is read-only."
 msgstr "Kansio on kirjoitussuojattu"
 
-#: kmheaders.cpp:272
+#: kmheaders.cpp:279
 msgid "Unknown"
 msgstr "Tuntematon"
 
-#: kmheaders.cpp:275
+#: kmheaders.cpp:282
 msgid "No Subject"
 msgstr "Ei Aihetta"
 
-#: kmheaders.cpp:336
+#: kmheaders.cpp:343
 msgid "order of arrival"
 msgstr "vastaanottojärjestys"
 
-#: kmheaders.cpp:345
+#: kmheaders.cpp:352
 msgid "subject"
 msgstr "aihe"
 
-#: kmheaders.cpp:346
+#: kmheaders.cpp:353
 msgid "date"
 msgstr "päivä"
 
-#: kmheaders.cpp:347
+#: kmheaders.cpp:354
 msgid "sender"
 msgstr "lähettäjä"
 
-#: kmheaders.cpp:348
+#: kmheaders.cpp:355
 msgid "status"
 msgstr "tila"
 
-#: kmheaders.cpp:350
+#: kmheaders.cpp:357
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr "Järjestän viestit käänteisesti lähtien %s:tä"
 
-#: kmheaders.cpp:352
+#: kmheaders.cpp:359
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr "Järjestän viestit lähtien %s:tä"
 
-#: kmheaders.cpp:448
+#: kmheaders.cpp:455
 msgid "Message(s) saved."
 msgstr "Viesti tallennettu."
 
-#: kmheaders.cpp:450
+#: kmheaders.cpp:457
 msgid "Failed to save message(s)."
 msgstr "Viestin tallennus epäonnistui"
 
@@ -782,7 +786,7 @@ msgstr "Liitä &tiedosto"
 msgid "&New Composer..."
 msgstr "&Uusi viesti..."
 
-#: kmcomposewin.cpp:471 kmcomposewin.cpp:705 kmcomposewin.cpp:1894
+#: kmcomposewin.cpp:471 kmcomposewin.cpp:705 kmcomposewin.cpp:1923
 msgid "Mark all"
 msgstr "Valitse kaikki"
 
@@ -950,7 +954,7 @@ msgstr "pgp avaimeni"
 msgid "pgp key"
 msgstr "pgp avain"
 
-#: kmcomposewin.cpp:1297 kmreaderwin.cpp:840
+#: kmcomposewin.cpp:1297 kmreaderwin.cpp:902
 msgid "View..."
 msgstr "Näytä..."
 
@@ -958,7 +962,7 @@ msgstr "Näytä..."
 msgid "Save..."
 msgstr "Tallenna..."
 
-#: kmcomposewin.cpp:1299 kmreaderwin.cpp:843
+#: kmcomposewin.cpp:1299 kmreaderwin.cpp:905
 msgid "Properties..."
 msgstr "&Ominaisuudet..."
 
@@ -966,7 +970,7 @@ msgstr "&Ominaisuudet..."
 msgid "Attach..."
 msgstr "Liite..."
 
-#: kmcomposewin.cpp:1345 kmreaderwin.cpp:912 kmreaderwin.cpp:928
+#: kmcomposewin.cpp:1345 kmreaderwin.cpp:974 kmreaderwin.cpp:991
 msgid "View Attachment: "
 msgstr "Näytä Liitteet: "
 
@@ -986,11 +990,11 @@ msgstr "Päivä:"
 msgid "Spellcheck complete."
 msgstr "Oikoluku valmis."
 
-#: kmcomposewin.cpp:2076
+#: kmcomposewin.cpp:2113
 msgid "Spellcheck - KMail"
 msgstr "Oikeinkirjoitus - KMail"
 
-#: kmcomposewin.cpp:2102
+#: kmcomposewin.cpp:2139
 msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
 msgstr ""
@@ -1039,64 +1043,64 @@ msgstr "Base 64"
 msgid "quoted printable"
 msgstr "quoted printable"
 
-#: kmreaderwin.cpp:336 kmreaderwin.cpp:349 kmreaderwin.cpp:368
-#: kmreaderwin.cpp:389
+#: kmreaderwin.cpp:398 kmreaderwin.cpp:411 kmreaderwin.cpp:430
+#: kmreaderwin.cpp:451
 msgid "Cc: "
 msgstr "Kopio:"
 
-#: kmreaderwin.cpp:344 kmreaderwin.cpp:363 kmreaderwin.cpp:384
+#: kmreaderwin.cpp:406 kmreaderwin.cpp:425 kmreaderwin.cpp:446
 msgid "From: "
 msgstr "Lähettäjä:"
 
-#: kmreaderwin.cpp:346 kmreaderwin.cpp:365 kmreaderwin.cpp:386
+#: kmreaderwin.cpp:408 kmreaderwin.cpp:427 kmreaderwin.cpp:448
 msgid "To: "
 msgstr "Vastaanottaja:"
 
-#: kmreaderwin.cpp:353 kmreaderwin.cpp:374 kmreaderwin.cpp:399
+#: kmreaderwin.cpp:415 kmreaderwin.cpp:436 kmreaderwin.cpp:461
 msgid "References: "
 msgstr "Viitteet:"
 
-#: kmreaderwin.cpp:370 kmreaderwin.cpp:383
+#: kmreaderwin.cpp:432 kmreaderwin.cpp:445
 msgid "Date: "
 msgstr "Päivä:"
 
-#: kmreaderwin.cpp:392
+#: kmreaderwin.cpp:454
 msgid "Bcc: "
 msgstr "&Tiedoksi: "
 
-#: kmreaderwin.cpp:395
+#: kmreaderwin.cpp:457
 msgid "Reply to: "
 msgstr "Vastaa: "
 
-#: kmreaderwin.cpp:402
+#: kmreaderwin.cpp:464
 msgid "Groups: "
 msgstr "Uutisryhmät: "
 
-#: kmreaderwin.cpp:440
+#: kmreaderwin.cpp:502
 msgid "Encrypted message"
 msgstr "Salattu viesti"
 
-#: kmreaderwin.cpp:446
+#: kmreaderwin.cpp:508
 msgid "Cannot decrypt message:"
 msgstr "En voi purkaa viestiä:"
 
-#: kmreaderwin.cpp:455
+#: kmreaderwin.cpp:517
 msgid "Message was signed by"
 msgstr "Viestin allekirjoitti"
 
-#: kmreaderwin.cpp:456
+#: kmreaderwin.cpp:518
 msgid "Warning: Bad signature from"
 msgstr "Varoitus: Huono allekirjoitus"
 
-#: kmreaderwin.cpp:466
+#: kmreaderwin.cpp:528
 msgid "unknown key ID"
 msgstr "tuntematon avain-ID"
 
-#: kmreaderwin.cpp:804
+#: kmreaderwin.cpp:866
 msgid "Attachment: "
 msgstr "Liitteet: "
 
-#: kmreaderwin.cpp:1016
+#: kmreaderwin.cpp:1080
 msgid "Could not save file"
 msgstr "En saanut tallennettua tiedostoa"
 
@@ -1121,19 +1125,19 @@ msgstr ""
 "asetuksista voidaksesi vastaanottaa\n"
 "postia."
 
-#: main.cpp:109 main.cpp:358
+#: main.cpp:121 main.cpp:371
 msgid "warning"
 msgstr "varoitus"
 
-#: main.cpp:116 main.cpp:117
+#: main.cpp:128 main.cpp:129
 msgid "fatal error"
 msgstr "vakava virhe"
 
-#: main.cpp:293
+#: main.cpp:306
 msgid "KMail notification"
 msgstr "KMail muistutus"
 
-#: main.cpp:294
+#: main.cpp:307
 msgid ""
 "$HOME is not set!\n"
 "KMail cannot start without it.\n"
@@ -1141,7 +1145,7 @@ msgstr ""
 "$HOME:a ei ole asetettu!\n"
 "KMail ei toimi ilman tätä.\n"
 
-#: main.cpp:360
+#: main.cpp:373
 msgid ""
 "The directory ~/KMail exists. From now on, KMail uses the\n"
 "directory ~/Mail for it's messages.\n"
@@ -1159,11 +1163,11 @@ msgstr ""
 "\n"
 "Saako KMail siirtää postikansiot nyt ?"
 
-#: main.cpp:472
+#: main.cpp:485
 msgid "Loading addressbook failed"
 msgstr "Osoitekirjan lataaminen epäonnistui"
 
-#: main.cpp:573 main.cpp:704
+#: main.cpp:588 main.cpp:729
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr "Tuntematon komentorivioptio: %s"
@@ -1228,7 +1232,7 @@ msgstr ""
 "%s:\n"
 "%s"
 
-#: kmacctpop.cpp:459
+#: kmacctpop.cpp:472
 msgid "Login Name:"
 msgstr "Käyttäjätunnus:"
 
@@ -1824,4 +1828,3 @@ msgstr "&7-bittinen ASCII"
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
 msgstr "&Koodaa tuntemattomat merkistöt"
-

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1999-04-15 03:01+0200\n"
+"POT-Creation-Date: 1999-04-16 03:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: LinuxKorea Co. <kde@linuxkorea.co.kr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -131,23 +131,23 @@ msgstr "클립보드에 복사"
 msgid "Open URL..."
 msgstr "URL 열기..."
 
-#: kmheaders.cpp:951 kmmainwin.cpp:914 kmmainwin.cpp:1031
+#: kmheaders.cpp:956 kmmainwin.cpp:914 kmmainwin.cpp:1031
 msgid "&Reply..."
 msgstr "답장쓰기(&R)..."
 
-#: kmheaders.cpp:953 kmmainwin.cpp:916 kmmainwin.cpp:1033
+#: kmheaders.cpp:958 kmmainwin.cpp:916 kmmainwin.cpp:1033
 msgid "Reply &All..."
 msgstr "모두에게 답장(&A)..."
 
-#: kmheaders.cpp:955 kmmainwin.cpp:918 kmmainwin.cpp:1035
+#: kmheaders.cpp:960 kmmainwin.cpp:918 kmmainwin.cpp:1035
 msgid "&Forward..."
 msgstr "전달(&F)..."
 
-#: kmheaders.cpp:958 kmmainwin.cpp:921 kmmainwin.cpp:1045
+#: kmheaders.cpp:963 kmmainwin.cpp:921 kmmainwin.cpp:1045
 msgid "&Move..."
 msgstr "이동(&M)..."
 
-#: kmheaders.cpp:960 kmmainwin.cpp:923 kmmainwin.cpp:1047
+#: kmheaders.cpp:965 kmmainwin.cpp:923 kmmainwin.cpp:1047
 msgid "&Copy..."
 msgstr "복사(&C)..."
 
@@ -211,28 +211,28 @@ msgstr "간단히 보기(&o)"
 msgid "&Empty"
 msgstr "내용지우기(&E)"
 
-#: kmfilterdlg.cpp:149 kmheaders.cpp:941 kmmainwin.cpp:1013
+#: kmfilterdlg.cpp:149 kmheaders.cpp:946 kmmainwin.cpp:1013
 #, fuzzy
 msgid "New"
 msgstr "네트웍"
 
-#: kmheaders.cpp:942 kmmainwin.cpp:1014
+#: kmheaders.cpp:947 kmmainwin.cpp:1014
 msgid "Unread"
 msgstr "읽지않음"
 
-#: kmheaders.cpp:943 kmmainwin.cpp:1015
+#: kmheaders.cpp:948 kmmainwin.cpp:1015
 msgid "Read"
 msgstr "읽음"
 
-#: kmheaders.cpp:944 kmmainwin.cpp:1016
+#: kmheaders.cpp:949 kmmainwin.cpp:1016
 msgid "Replied"
 msgstr "답장 보냈음"
 
-#: kmheaders.cpp:945 kmmainwin.cpp:1017
+#: kmheaders.cpp:950 kmmainwin.cpp:1017
 msgid "Queued"
 msgstr "대기중"
 
-#: kmheaders.cpp:946 kmmainwin.cpp:1018
+#: kmheaders.cpp:951 kmmainwin.cpp:1018
 msgid "Sent"
 msgstr "보냄"
 
@@ -668,7 +668,7 @@ msgstr "메시지 추가 실패:"
 msgid "F"
 msgstr "F"
 
-#: kmheaders.cpp:43 kmheaders.cpp:218
+#: kmheaders.cpp:43 kmheaders.cpp:223
 msgid "Sender"
 msgstr "보낸 사람"
 
@@ -681,62 +681,62 @@ msgstr "제목"
 msgid "Date"
 msgstr "날   짜: "
 
-#: kmheaders.cpp:217
+#: kmheaders.cpp:222
 msgid "Receiver"
 msgstr ""
 
-#: kmheaders.cpp:220
+#: kmheaders.cpp:225
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d 개의 메시지, %d 개의 읽지 않은 메시지."
 
-#: kmheaders.cpp:222
+#: kmheaders.cpp:227
 msgid "Folder is read-only."
 msgstr "폴더가 읽기 전용입니다."
 
-#: kmheaders.cpp:274
+#: kmheaders.cpp:279
 msgid "Unknown"
 msgstr "알 수 없음"
 
-#: kmheaders.cpp:277
+#: kmheaders.cpp:282
 msgid "No Subject"
 msgstr "제목 없음"
 
-#: kmheaders.cpp:338
+#: kmheaders.cpp:343
 msgid "order of arrival"
 msgstr "도착 순서"
 
-#: kmheaders.cpp:347
+#: kmheaders.cpp:352
 msgid "subject"
 msgstr "제목"
 
-#: kmheaders.cpp:348
+#: kmheaders.cpp:353
 msgid "date"
 msgstr "날짜"
 
-#: kmheaders.cpp:349
+#: kmheaders.cpp:354
 msgid "sender"
 msgstr "보낸 사람"
 
-#: kmheaders.cpp:350
+#: kmheaders.cpp:355
 msgid "status"
 msgstr "상태"
 
-#: kmheaders.cpp:352
+#: kmheaders.cpp:357
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr "%s을(를) 내림차순으로 정렬"
 
-#: kmheaders.cpp:354
+#: kmheaders.cpp:359
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr "%s을(를) 오름차순으로 정렬"
 
-#: kmheaders.cpp:450
+#: kmheaders.cpp:455
 msgid "Message(s) saved."
 msgstr "메시지가 저장되었습니다."
 
-#: kmheaders.cpp:452
+#: kmheaders.cpp:457
 msgid "Failed to save message(s)."
 msgstr "메시지 저장에 실패했습니다."
 

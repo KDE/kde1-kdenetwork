@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE NETWORK/kmail\n"
-"POT-Creation-Date: 1999-04-15 03:01+0200\n"
+"POT-Creation-Date: 1999-04-16 03:07+0200\n"
 "PO-Revision-Date: 1998-03-18 22:17+0100\n"
 "Last-Translator: Hans Petter Bieker <zerium@webindex.no>\n"
 "Language-Team: no <LL@li.org>\n"
@@ -130,23 +130,23 @@ msgstr "Kopier til utklippstavlen"
 msgid "Open URL..."
 msgstr "Åpne URL..."
 
-#: kmheaders.cpp:951 kmmainwin.cpp:914 kmmainwin.cpp:1031
+#: kmheaders.cpp:956 kmmainwin.cpp:914 kmmainwin.cpp:1031
 msgid "&Reply..."
 msgstr "Sva&r..."
 
-#: kmheaders.cpp:953 kmmainwin.cpp:916 kmmainwin.cpp:1033
+#: kmheaders.cpp:958 kmmainwin.cpp:916 kmmainwin.cpp:1033
 msgid "Reply &All..."
 msgstr "Svar til &alle..."
 
-#: kmheaders.cpp:955 kmmainwin.cpp:918 kmmainwin.cpp:1035
+#: kmheaders.cpp:960 kmmainwin.cpp:918 kmmainwin.cpp:1035
 msgid "&Forward..."
 msgstr "Send &videre"
 
-#: kmheaders.cpp:958 kmmainwin.cpp:921 kmmainwin.cpp:1045
+#: kmheaders.cpp:963 kmmainwin.cpp:921 kmmainwin.cpp:1045
 msgid "&Move..."
 msgstr "&Flytt..."
 
-#: kmheaders.cpp:960 kmmainwin.cpp:923 kmmainwin.cpp:1047
+#: kmheaders.cpp:965 kmmainwin.cpp:923 kmmainwin.cpp:1047
 msgid "&Copy..."
 msgstr "&Kopier..."
 
@@ -210,27 +210,27 @@ msgstr "K&omprimere"
 msgid "&Empty"
 msgstr "&Tøm"
 
-#: kmfilterdlg.cpp:149 kmheaders.cpp:941 kmmainwin.cpp:1013
+#: kmfilterdlg.cpp:149 kmheaders.cpp:946 kmmainwin.cpp:1013
 msgid "New"
 msgstr "Ny"
 
-#: kmheaders.cpp:942 kmmainwin.cpp:1014
+#: kmheaders.cpp:947 kmmainwin.cpp:1014
 msgid "Unread"
 msgstr "Ulest"
 
-#: kmheaders.cpp:943 kmmainwin.cpp:1015
+#: kmheaders.cpp:948 kmmainwin.cpp:1015
 msgid "Read"
 msgstr "Les"
 
-#: kmheaders.cpp:944 kmmainwin.cpp:1016
+#: kmheaders.cpp:949 kmmainwin.cpp:1016
 msgid "Replied"
 msgstr "Besvart"
 
-#: kmheaders.cpp:945 kmmainwin.cpp:1017
+#: kmheaders.cpp:950 kmmainwin.cpp:1017
 msgid "Queued"
 msgstr "I kø"
 
-#: kmheaders.cpp:946 kmmainwin.cpp:1018
+#: kmheaders.cpp:951 kmmainwin.cpp:1018
 msgid "Sent"
 msgstr "Sendt"
 
@@ -659,7 +659,7 @@ msgstr "Feilet i å legge til melding:"
 msgid "F"
 msgstr "F"
 
-#: kmheaders.cpp:43 kmheaders.cpp:218
+#: kmheaders.cpp:43 kmheaders.cpp:223
 msgid "Sender"
 msgstr "Avsender"
 
@@ -671,62 +671,62 @@ msgstr "Emne"
 msgid "Date"
 msgstr "Dato"
 
-#: kmheaders.cpp:217
+#: kmheaders.cpp:222
 msgid "Receiver"
 msgstr "Mottager"
 
-#: kmheaders.cpp:220
+#: kmheaders.cpp:225
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d meldinger, %d uleste."
 
-#: kmheaders.cpp:222
+#: kmheaders.cpp:227
 msgid "Folder is read-only."
 msgstr "Mappe kan kun leses."
 
-#: kmheaders.cpp:274
+#: kmheaders.cpp:279
 msgid "Unknown"
 msgstr "Ukjent"
 
-#: kmheaders.cpp:277
+#: kmheaders.cpp:282
 msgid "No Subject"
 msgstr "Intet emne"
 
-#: kmheaders.cpp:338
+#: kmheaders.cpp:343
 msgid "order of arrival"
 msgstr "rekkefølge for ankomst"
 
-#: kmheaders.cpp:347
+#: kmheaders.cpp:352
 msgid "subject"
 msgstr "emne"
 
-#: kmheaders.cpp:348
+#: kmheaders.cpp:353
 msgid "date"
 msgstr "dato"
 
-#: kmheaders.cpp:349
+#: kmheaders.cpp:354
 msgid "sender"
 msgstr "avsender"
 
-#: kmheaders.cpp:350
+#: kmheaders.cpp:355
 msgid "status"
 msgstr "status"
 
-#: kmheaders.cpp:352
+#: kmheaders.cpp:357
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr "Sorterer meldingene synkende etter %s"
 
-#: kmheaders.cpp:354
+#: kmheaders.cpp:359
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr "Sorterer meldingene økende etter %s"
 
-#: kmheaders.cpp:450
+#: kmheaders.cpp:455
 msgid "Message(s) saved."
 msgstr "Melding(er) lagret."
 
-#: kmheaders.cpp:452
+#: kmheaders.cpp:457
 msgid "Failed to save message(s)."
 msgstr "Mislykkes å lagre melding(er)."
 

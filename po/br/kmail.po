@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail-1.1\n"
-"POT-Creation-Date: 1999-04-15 03:01+0200\n"
+"POT-Creation-Date: 1999-04-16 03:07+0200\n"
 "PO-Revision-Date: 1999-03-19 12:57+0100\n"
 "Last-Translator: Jañ-Mai Drapier <jdrapier@club-internet.fr>\n"
 "Language-Team: Brezhoneg <Suav.Icb@wanadoo.fr>\n"
@@ -131,23 +131,23 @@ msgstr "Eilañ er golver"
 msgid "Open URL..."
 msgstr "Digeriñ an URL..."
 
-#: kmheaders.cpp:951 kmmainwin.cpp:914 kmmainwin.cpp:1031
+#: kmheaders.cpp:956 kmmainwin.cpp:914 kmmainwin.cpp:1031
 msgid "&Reply..."
 msgstr "Eil&geriañ..."
 
-#: kmheaders.cpp:953 kmmainwin.cpp:916 kmmainwin.cpp:1033
+#: kmheaders.cpp:958 kmmainwin.cpp:916 kmmainwin.cpp:1033
 msgid "Reply &All..."
 msgstr "Eilgeriañ d'an &holl..."
 
-#: kmheaders.cpp:955 kmmainwin.cpp:918 kmmainwin.cpp:1035
+#: kmheaders.cpp:960 kmmainwin.cpp:918 kmmainwin.cpp:1035
 msgid "&Forward..."
 msgstr "D&azkas..."
 
-#: kmheaders.cpp:958 kmmainwin.cpp:921 kmmainwin.cpp:1045
+#: kmheaders.cpp:963 kmmainwin.cpp:921 kmmainwin.cpp:1045
 msgid "&Move..."
 msgstr "&Dilec'hiañ..."
 
-#: kmheaders.cpp:960 kmmainwin.cpp:923 kmmainwin.cpp:1047
+#: kmheaders.cpp:965 kmmainwin.cpp:923 kmmainwin.cpp:1047
 msgid "&Copy..."
 msgstr "&Eilañ..."
 
@@ -211,27 +211,27 @@ msgstr "G&waskañ"
 msgid "&Empty"
 msgstr "&Goullonderiñ"
 
-#: kmfilterdlg.cpp:149 kmheaders.cpp:941 kmmainwin.cpp:1013
+#: kmfilterdlg.cpp:149 kmheaders.cpp:946 kmmainwin.cpp:1013
 msgid "New"
 msgstr "Nevez"
 
-#: kmheaders.cpp:942 kmmainwin.cpp:1014
+#: kmheaders.cpp:947 kmmainwin.cpp:1014
 msgid "Unread"
 msgstr "Anlennet"
 
-#: kmheaders.cpp:943 kmmainwin.cpp:1015
+#: kmheaders.cpp:948 kmmainwin.cpp:1015
 msgid "Read"
 msgstr "Lennet"
 
-#: kmheaders.cpp:944 kmmainwin.cpp:1016
+#: kmheaders.cpp:949 kmmainwin.cpp:1016
 msgid "Replied"
 msgstr "Eilgeriet"
 
-#: kmheaders.cpp:945 kmmainwin.cpp:1017
+#: kmheaders.cpp:950 kmmainwin.cpp:1017
 msgid "Queued"
 msgstr "El lost"
 
-#: kmheaders.cpp:946 kmmainwin.cpp:1018
+#: kmheaders.cpp:951 kmmainwin.cpp:1018
 msgid "Sent"
 msgstr "Kaset"
 
@@ -660,7 +660,7 @@ msgstr "Sac'het oc'h ouzhpennañ kemennad :"
 msgid "F"
 msgstr "H"
 
-#: kmheaders.cpp:43 kmheaders.cpp:218
+#: kmheaders.cpp:43 kmheaders.cpp:223
 msgid "Sender"
 msgstr "Kaser"
 
@@ -672,62 +672,62 @@ msgstr "Dodenn"
 msgid "Date"
 msgstr "Deiziad"
 
-#: kmheaders.cpp:217
+#: kmheaders.cpp:222
 msgid "Receiver"
 msgstr "Resever"
 
-#: kmheaders.cpp:220
+#: kmheaders.cpp:225
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d kemennad, %d anlennet."
 
-#: kmheaders.cpp:222
+#: kmheaders.cpp:227
 msgid "Folder is read-only."
 msgstr "An teuliad zo lenn-hepken"
 
-#: kmheaders.cpp:274
+#: kmheaders.cpp:279
 msgid "Unknown"
 msgstr "Dianav"
 
-#: kmheaders.cpp:277
+#: kmheaders.cpp:282
 msgid "No Subject"
 msgstr "Dodenn ebet"
 
-#: kmheaders.cpp:338
+#: kmheaders.cpp:343
 msgid "order of arrival"
 msgstr "urzh degouezhet"
 
-#: kmheaders.cpp:347
+#: kmheaders.cpp:352
 msgid "subject"
 msgstr "dodenn"
 
-#: kmheaders.cpp:348
+#: kmheaders.cpp:353
 msgid "date"
 msgstr "deiziad"
 
-#: kmheaders.cpp:349
+#: kmheaders.cpp:354
 msgid "sender"
 msgstr "kaser"
 
-#: kmheaders.cpp:350
+#: kmheaders.cpp:355
 msgid "status"
 msgstr "stad"
 
-#: kmheaders.cpp:352
+#: kmheaders.cpp:357
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr "O renkañ kemennadoù war-gil dre %s"
 
-#: kmheaders.cpp:354
+#: kmheaders.cpp:359
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr "O renkañ kemennadoù war-raok dre %s"
 
-#: kmheaders.cpp:450
+#: kmheaders.cpp:455
 msgid "Message(s) saved."
 msgstr "Kemennad(où) enrollet."
 
-#: kmheaders.cpp:452
+#: kmheaders.cpp:457
 msgid "Failed to save message(s)."
 msgstr "Sac'het en ur enrollañ kemennad(où)."
 

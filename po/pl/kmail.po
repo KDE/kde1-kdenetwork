@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail \n"
-"POT-Creation-Date: 1999-04-15 03:01+0200\n"
+"POT-Creation-Date: 1999-04-16 03:07+0200\n"
 "PO-Revision-Date: 1999-04-13 22:04+0200\n"
 "Last-Translator: Jacek Stolarczyk <jacek@mer.chemia.polsl.gliwice.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -126,23 +126,23 @@ msgstr "Skopiuj do schowka"
 msgid "Open URL..."
 msgstr "Otwórz adres..."
 
-#: kmheaders.cpp:951 kmmainwin.cpp:914 kmmainwin.cpp:1031
+#: kmheaders.cpp:956 kmmainwin.cpp:914 kmmainwin.cpp:1031
 msgid "&Reply..."
 msgstr "O&dpowiedz..."
 
-#: kmheaders.cpp:953 kmmainwin.cpp:916 kmmainwin.cpp:1033
+#: kmheaders.cpp:958 kmmainwin.cpp:916 kmmainwin.cpp:1033
 msgid "Reply &All..."
 msgstr "Odpowiedz &wszystkim..."
 
-#: kmheaders.cpp:955 kmmainwin.cpp:918 kmmainwin.cpp:1035
+#: kmheaders.cpp:960 kmmainwin.cpp:918 kmmainwin.cpp:1035
 msgid "&Forward..."
 msgstr "&Prze¶lij dalej..."
 
-#: kmheaders.cpp:958 kmmainwin.cpp:921 kmmainwin.cpp:1045
+#: kmheaders.cpp:963 kmmainwin.cpp:921 kmmainwin.cpp:1045
 msgid "&Move..."
 msgstr "Prz&esuñ..."
 
-#: kmheaders.cpp:960 kmmainwin.cpp:923 kmmainwin.cpp:1047
+#: kmheaders.cpp:965 kmmainwin.cpp:923 kmmainwin.cpp:1047
 msgid "&Copy..."
 msgstr "&Kopiuj..."
 
@@ -206,27 +206,27 @@ msgstr "&Kompresuj"
 msgid "&Empty"
 msgstr "&Opró¼nij"
 
-#: kmfilterdlg.cpp:149 kmheaders.cpp:941 kmmainwin.cpp:1013
+#: kmfilterdlg.cpp:149 kmheaders.cpp:946 kmmainwin.cpp:1013
 msgid "New"
 msgstr "Nowy"
 
-#: kmheaders.cpp:942 kmmainwin.cpp:1014
+#: kmheaders.cpp:947 kmmainwin.cpp:1014
 msgid "Unread"
 msgstr "Nieprzeczytana"
 
-#: kmheaders.cpp:943 kmmainwin.cpp:1015
+#: kmheaders.cpp:948 kmmainwin.cpp:1015
 msgid "Read"
 msgstr "Przeczytana"
 
-#: kmheaders.cpp:944 kmmainwin.cpp:1016
+#: kmheaders.cpp:949 kmmainwin.cpp:1016
 msgid "Replied"
 msgstr "Odpowiedziano"
 
-#: kmheaders.cpp:945 kmmainwin.cpp:1017
+#: kmheaders.cpp:950 kmmainwin.cpp:1017
 msgid "Queued"
 msgstr "W kolejce"
 
-#: kmheaders.cpp:946 kmmainwin.cpp:1018
+#: kmheaders.cpp:951 kmmainwin.cpp:1018
 msgid "Sent"
 msgstr "Wys³ana"
 
@@ -657,7 +657,7 @@ msgstr "Dodanie wiadomo¶ci nie powiod³o siê:"
 msgid "F"
 msgstr "F"
 
-#: kmheaders.cpp:43 kmheaders.cpp:218
+#: kmheaders.cpp:43 kmheaders.cpp:223
 msgid "Sender"
 msgstr "Nadawca"
 
@@ -669,62 +669,62 @@ msgstr "Temat"
 msgid "Date"
 msgstr "Data"
 
-#: kmheaders.cpp:217
+#: kmheaders.cpp:222
 msgid "Receiver"
 msgstr "Odbiorca"
 
-#: kmheaders.cpp:220
+#: kmheaders.cpp:225
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d wiadomo¶æ(i), %d nieprzeczytanych. "
 
-#: kmheaders.cpp:222
+#: kmheaders.cpp:227
 msgid "Folder is read-only."
 msgstr "Folder tylko do odczytu."
 
-#: kmheaders.cpp:274
+#: kmheaders.cpp:279
 msgid "Unknown"
 msgstr "Nieznany"
 
-#: kmheaders.cpp:277
+#: kmheaders.cpp:282
 msgid "No Subject"
 msgstr "Brak tematu"
 
-#: kmheaders.cpp:338
+#: kmheaders.cpp:343
 msgid "order of arrival"
 msgstr "kolejno¶ci otrzymania"
 
-#: kmheaders.cpp:347
+#: kmheaders.cpp:352
 msgid "subject"
 msgstr "tematu"
 
-#: kmheaders.cpp:348
+#: kmheaders.cpp:353
 msgid "date"
 msgstr "daty"
 
-#: kmheaders.cpp:349
+#: kmheaders.cpp:354
 msgid "sender"
 msgstr "nadawcy"
 
-#: kmheaders.cpp:350
+#: kmheaders.cpp:355
 msgid "status"
 msgstr "stanu"
 
-#: kmheaders.cpp:352
+#: kmheaders.cpp:357
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr "Sortowanie wiadomo¶ci malej±co wg %s"
 
-#: kmheaders.cpp:354
+#: kmheaders.cpp:359
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr "Sortowanie wiadomo¶ci rosn±co wg %s"
 
-#: kmheaders.cpp:450
+#: kmheaders.cpp:455
 msgid "Message(s) saved."
 msgstr "Wiadomo¶ci zapisano."
 
-#: kmheaders.cpp:452
+#: kmheaders.cpp:457
 msgid "Failed to save message(s)."
 msgstr "Zapisanie wiadomo¶ci nie powiod³o siê."
 
