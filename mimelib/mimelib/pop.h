@@ -264,6 +264,10 @@ public:
     //. returns the status code received from the server.  If no response
     //. is received, the function returns zero.
 
+    int Last();
+    //. Sends the LAST command and returns the status code received from
+    //. the server.  If no response is received, the function returns zero.
+
 private:
 
     char*       mSendBuffer;

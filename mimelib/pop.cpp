@@ -273,6 +273,22 @@ int DwPopClient::Rset()
 }
 
 
+int DwPopClient::Last()
+{
+    mStatusCode = 0;
+    mSingleLineResponse = mMultiLineResponse = "";
+    mLastCommand = kCmdRset;
+    strcpy(mSendBuffer, "LAST\r\n");
+    DBG_POP_STMT(cout << "C: " << mSendBuffer << flush;)
+    int bufferLen = strlen(mSendBuffer);
+    int numSent = PSend(mSendBuffer, bufferLen);
+    if (numSent == bufferLen) {
+        PGetSingleLineResponse();
+    }
+    return mStatusCode;
+}
+
+
 int DwPopClient::Apop(const char* aName, const char* aDigest)
 {
     mStatusCode = 0;
