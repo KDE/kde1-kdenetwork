@@ -52,11 +52,11 @@ msgstr "Èlanak Primljen"
 
 #: groupdlg.cpp:128
 msgid "Connect to Server"
-msgstr "Spoji s poslu¾iteljem"
+msgstr "Spoji se na poslu¾itelj"
 
 #: groupdlg.cpp:129
 msgid "Disconnect From Server"
-msgstr "Odspoji od poslu¾itelja"
+msgstr "Odspoji se od poslu¾itelja"
 
 #: groupdlg.cpp:130
 msgid "Get Active File"
@@ -470,11 +470,11 @@ msgstr "KRN-Postava identiteta"
 
 #: identDlg.cpp:50
 msgid "Here you should enter your personal information"
-msgstr "Ovdje trebate unijesti osobne podatke"
+msgstr "Ovdje trebate unjesti osobne podatke"
 
 #: identDlg.cpp:52
 msgid "You should know what these are!"
-msgstr "Trebali bi znati ¹to su ovi!"
+msgstr "Prije nego nastavite provjerite podatke"
 
 #: identDlg.cpp:61
 msgid "Real Name"
@@ -920,9 +920,8 @@ msgid "Attach..."
 msgstr "Prikvaèi..."
 
 #: kmcomposewin.cpp:1271 kmreaderwin.cpp:728
-#, fuzzy
 msgid "View Attachment: "
-msgstr "Stil Priloga: "
+msgstr "Prika¾i prilog: "
 
 #: kmcomposewin.cpp:1442 kpgp.cpp:357
 msgid ""
@@ -1071,9 +1070,8 @@ msgid "Wildcard Mode"
 msgstr "Wildcard naèin"
 
 #: findArtDlg.cpp:66 rulesDlg.cpp:144
-#, fuzzy
 msgid "Done"
-msgstr "Nijedan"
+msgstr "Gotov"
 
 #: kmidentity.cpp:162
 #, c-format
@@ -1228,43 +1226,41 @@ msgid "Bcc: "
 msgstr ""
 
 #: kmreaderwin.cpp:368
-#, fuzzy
 msgid "Reply to: "
-msgstr "Odgovori po¹tom"
+msgstr "Odgovori na:"
 
 #: kmreaderwin.cpp:375
 msgid "Groups: "
-msgstr ""
+msgstr "Grupe: "
 
 #: kmreaderwin.cpp:412
 msgid "Encrypted message"
-msgstr ""
+msgstr "©ifrirana poruka"
 
 #: kmreaderwin.cpp:418
 msgid "Cannot decrypt message:"
-msgstr ""
+msgstr "Ne mogu de¹ifrirati poruku:"
 
 #: kmreaderwin.cpp:436
 msgid "Message was signed by"
-msgstr ""
+msgstr "Poruka je potpisana od"
 
 #: kmreaderwin.cpp:437
 msgid "Warning: Bad signature from"
 msgstr ""
 
 #: kmreaderwin.cpp:647
-#, fuzzy
 msgid "Attachment: "
-msgstr "Stil Priloga: "
+msgstr "Prilog: "
 
 #: kmreaderwin.cpp:759
 msgid "Could not create temporary file"
-msgstr ""
+msgstr "Ne mogu otvoriti privremenu datoteku"
 
 #: kmreaderwin.cpp:780
 #, c-format
 msgid "Could not save temporary file %s"
-msgstr ""
+msgstr "Ne mogu otvoriti privremenu datoteku %s"
 
 #: kmreaderwin.cpp:809
 #, fuzzy
@@ -1352,7 +1348,7 @@ msgstr "KRN - Postava zastare"
 
 #: expireDlg.cpp:36
 msgid "For how long should we keep things (in days)?"
-msgstr "Koliko dugo æemo dr¾ati ove stvari (u danima)?"
+msgstr "Koliko dugo æemo dr¾ati ove èlanke (u danima)?"
 
 #: expireDlg.cpp:46
 msgid "Read:"
@@ -1384,7 +1380,7 @@ msgstr "Opæenito"
 
 #: printdlg.cpp:35
 msgid "Printing System"
-msgstr "Sustav za ispis"
+msgstr "Ispisivanje"
 
 #: printdlg.cpp:37
 msgid "Use HTML Printing"
@@ -1404,7 +1400,7 @@ msgstr "Ispi¹i koristeæi:"
 
 #: printdlg.cpp:52
 msgid "Feed it with:"
-msgstr "Puni ga s:"
+msgstr "Ispi¹i kao:"
 
 #: printdlg.cpp:54
 msgid "Postscript"
@@ -1416,7 +1412,7 @@ msgstr "HTML"
 
 #: printdlg.cpp:56
 msgid "Text"
-msgstr "Tekst"
+msgstr "Obièni tekst"
 
 #: rulesDlg.cpp:38
 msgid "KRN - Scoring Rules Editor"
@@ -1448,7 +1444,7 @@ msgstr "Usporedi èlanake s:"
 
 #: rulesDlg.cpp:124
 msgid "Weight:"
-msgstr ""
+msgstr "Te¾ina:"
 
 #: rulesDlg.cpp:126
 msgid "Negative"
@@ -1484,15 +1480,15 @@ msgstr "KMail - postava skupa znakova"
 
 #: charsetsDlg.cpp:39
 msgid "Message charset"
-msgstr ""
+msgstr "Skup znakova za poruke"
 
 #: charsetsDlg.cpp:57
 msgid "Composer charset"
-msgstr ""
+msgstr "Skup znakova za sastavljaè"
 
 #: charsetsDlg.cpp:75
 msgid "Set as &default"
-msgstr "Postavi kao po&drazumijevano"
+msgstr "Postavi kao uo&bièajeno"
 
 #: charsetsDlg.cpp:80
 msgid "&7 bit is ASCII"
