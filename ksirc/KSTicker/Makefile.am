@@ -46,7 +46,7 @@ speeddialogData.cpp \
 mspeeddialogData.cpp
 
 # the library search path
-ksticker_LDFLAGS =  $(all_libraries)
+ksticker_LDFLAGS =  $(all_libraries) $(KDE_RPATH)
 
 # the libraries to link against. Be aware of the order. First the libraries,
 # that depend on the following ones.
