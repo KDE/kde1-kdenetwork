@@ -155,7 +155,8 @@ void ExpireStatusDlg::doExpire()
             iter->clean();
     }
 
-    qApp->quit();
+//    qApp->quit();
+    delete this;
 }
 
 ExpireStatusDlg::~ExpireStatusDlg()

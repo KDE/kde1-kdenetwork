@@ -210,6 +210,10 @@ asker.cpp:asker.moc
 asker.moc: asker.h
 	$(MOC) asker.h -o asker.moc
 
+NNTP.cpp:NNTP.moc
+NNTP.moc: NNTP.h
+	$(MOC) NNTP.h -o NNTP.moc
+
 identDlg.cpp:identDlg.moc
 identDlg.moc: identDlg.h
 	$(MOC) identDlg.h -o identDlg.moc

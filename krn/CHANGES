@@ -1,4 +1,10 @@
 -----------------------------------------------------------------------------
+Changes made Dec 20
+-----------------------------------------------------------------------------
+* [Roberto] Fixed segfaults on exit (Thanks Sven!)
+            Fixed the missing NNTP.moc dependency (Thanks to the 1E32 people
+            who emailed me about it ;-)
+-----------------------------------------------------------------------------
 Changes made Dec 17
 -----------------------------------------------------------------------------
 * [Roberto] Fixed yet another bug in NNTP::listXover.

@@ -18,7 +18,7 @@
 #include "artdlg.h"
 
 
-#define Inherited KTMainWindow
+#define Inherited KTopLevelWidget
 
 
 #include <kapp.h>

@@ -20,7 +20,7 @@
 
 #include "groupdlg.h"
 
-#define Inherited KTMainWindow
+#define Inherited KTopLevelWidget
 
 #include <qapp.h>
 #include <qfile.h>

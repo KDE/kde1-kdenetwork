@@ -190,7 +190,7 @@ int main( int argc, char **argv )
 
     expireCache();
 
-    k->close();
+//    k->close();
     gdbm_reorganize(artdb);
     gdbm_reorganize(refsdb);
     gdbm_reorganize(scoredb);
@@ -198,7 +198,7 @@ int main( int argc, char **argv )
     gdbm_close(artdb);
     gdbm_close(refsdb);
     gdbm_close(scoredb);
-    delete k;
+//    delete k;
 }
 
 void checkConf()
