@@ -54,7 +54,7 @@ DialWidget::DialWidget( QWidget *parent, bool isnewaccount, const char *name )
   tl->addWidget(connectname_l, 1, 2);
   KQuickHelp::add(connect_label,
   KQuickHelp::add(connectname_l,
-		  "Choose a unique name for this connection"));
+		  "Type in a unique name for this connection"));
 
   
   number_label = new QLabel(this);
