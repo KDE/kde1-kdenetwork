@@ -116,6 +116,7 @@ QStrList *Article::Refs(const char *ID)
     refsdata=content.dptr;
 
     QStrList *Refs=new QStrList();
+    Refs->setAutoDelete(true);
     
     if (!refsdata.isEmpty())
     {

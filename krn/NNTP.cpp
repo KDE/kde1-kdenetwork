@@ -388,9 +388,6 @@ int NNTP::listXover(int from,int to,NewsGroup *n)
                             art.Date=templ.at(OffsetDate);
                             art.Lines=templ.at(OffsetLines);
                             
-                            //convert Refs to a strlist
-                            
-                            //                        art.Refs.clear();
                             QString refsdata=templ.at(OffsetRef);
                             datum refs;
                             refs.dptr=refsdata.data();
