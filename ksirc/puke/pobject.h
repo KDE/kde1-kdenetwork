@@ -83,7 +83,7 @@ class PObject : public QObject
   /**
    * Set this for fetched widgets and such that cannot be deleted
    */
-  bool setDeleteAble(bool _d){
+  void setDeleteAble(bool _d){
       deleteAble = _d;
   }
   /**

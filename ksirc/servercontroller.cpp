@@ -612,7 +612,7 @@ void servercontroller::saveProperties(KConfig *ksc) /*FOLD00*/
   
 }
 
-void servercontroller::readProperties(KConfig *ksc) /*fold00*/
+void servercontroller::readProperties(KConfig *ksc) /*FOLD00*/
 {
   // kei == pointer to KEntryItertor
   // ksc == K Session Config
@@ -621,11 +621,12 @@ void servercontroller::readProperties(KConfig *ksc) /*fold00*/
   while(kei->current()){
     QStrList channels;
     int number;
+    debug("%s", kei->currentKey());
     new_ksircprocess(kei->currentKey()); // sets up proc_list
     cerr << kei->currentKey() << endl;
     number = ksc->readListEntry(kei->currentKey(), channels);
     for(int i = 0; i < number; i++){
-      cerr << "   " << channels.at(i) << endl;
+      cerr << "\t" << channels.at(i) << endl;
       proc_list[kei->currentKey()]->new_toplevel(channels.at(i));
     }
     ++(*kei);

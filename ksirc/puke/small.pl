@@ -26,7 +26,7 @@ $pf2->setMinimumSize(50,50);
 
 $pl = new PListBox($pw);
 $pl->move(50,50);
-$pl->resize(50,300);
+$pl->resize(300, 50);
 $pl->setMinimumSize(50,50);
 
 $label = new PLabel($pw);
@@ -50,15 +50,16 @@ $pb4->addWidget($pf2, 0, $PBoxLayout::AlignCenter);
 
 $pbutton = new PPushButton($pw);
 $pbutton->setText("Hello");
-$pbutton->setPixmap("/opt/kde/share/icons/ksirc.gif");
+#$pbutton->setPixmap("/opt/kde/share/icons/ksirc.gif");
 $pbutton->setMaximumSize(50,50);
 $pbutton->setMinimumSize(50,50);
 $pb->addWidget($pbutton, 10, $PBoxLayout::AlignCenter);
 
 $pline = new PLineEdit($pw);
-$pline->setMinimumSize(30,50);
-$pline->setMaximumSize(30,1000);
+$pline->setMinimumSize(50, 30);
+$pline->resize(200, 20);
+$pline->setMaximumSize(1000, 30);
 $pline->setText("Hello!");
-$pb->addWidget($pline, 10);
+$pb->addWidget($pline, 0);
 
 $pw->show;

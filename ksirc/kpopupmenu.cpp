@@ -388,3 +388,5 @@ QString KPopupMenu::keyToString(int key) /*fold00*/
     return string;
   }
 }
+
+

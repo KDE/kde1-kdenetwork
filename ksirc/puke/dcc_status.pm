@@ -335,6 +335,7 @@ sub hook_ksirc_dcc_request {
     my $forget = sub {
       &docommand("/dcc close get $mwho $file");
     };
+    $::KSIRC_FILE_SIZES{$file} = $size;
     $KSIRC_DCCSTATUS->addItem('line' => "SEND: $who offered $file at size $size",
                               'open' => $open,
                               'forget' => $forget);
@@ -400,20 +401,22 @@ sub hook_ksirc_dcc_get {
   my $file = shift;
   my $fh = shift;
 
-  #  print "*I* Starting dcc into with: $nick, $file, $size, $fh\n";
-
   my $size = $::KSIRC_FILE_SIZES{$file};
-  
-  my($window) =  new DCCProgress;
-  $size = 10240 if $size == 0;
-  $window->setRange(0, $size);
-  $window->setCaption("$file<=$nick");
-  $window->setTopText("Receiver: $file Size: $size");
-  $window->setBotText("Status: pending");
-  $window->setCancel("dcc close get $nick $file");
-  $KSIRC_DCC{$fh}{$file}{'Window'} = $window;
-  $KSIRC_DCC{$fh}{$file}{'StartTime'} = time() - 1;
-  $window->show;
+
+#print "*I* Starting dcc into with: $nick, $file, $size, $fh\n";
+
+  if($KSIRC_DCC{$fh}{$file}{'Window'} == undef){
+    my($window) =  new DCCProgress;
+    $size = 10240 if $size == 0;
+    $window->setRange(0, $size);
+    $window->setCaption("$file<=$nick");
+    $window->setTopText("Receiver: $file Size: $size");
+    $window->setBotText("Status: pending");
+    $window->setCancel("dcc close get $nick $file");
+    $KSIRC_DCC{$fh}{$file}{'Window'} = $window;
+    $KSIRC_DCC{$fh}{$file}{'StartTime'} = time() - 1;
+    $window->show;
+  }
 }
 
 &addhook("dcc_get", "ksirc_dcc_get");
