@@ -1,3 +1,8 @@
+Mon Jan 19 04:46:39 1998  Bernd Johannes Wuebben  <wuebben@math.cornell.edu>
+
+	* reset PHONENUMBER_SIZE to 60. People with phone cards need lots
+	space.
+
 Fri Jan 16 21:41:08 1998  Stephan Kulow  <coolo@kde.org>
 
 	* some improvements to the toplevel Makefile.am. rpath is very
