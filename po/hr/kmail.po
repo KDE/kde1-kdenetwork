@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KMail\n"
-"POT-Creation-Date: 1998-11-23 01:56+0100\n"
+"POT-Creation-Date: 1998-11-21 01:58+0100\n"
 "PO-Revision-Date: 1998-04-29 20:00-0500\n"
 "Last-Translator: Vladimir Vuksan <vuksan@veus.hr>\n"
 "Language-Team: Croatian\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: iso-8859-2\n"
 
-#: kmcomposewin.cpp:1458 kmmainwin.cpp:263 kpgp.cpp:546
+#: kmcomposewin.cpp:1439 kmmainwin.cpp:263 kpgp.cpp:540
 msgid ""
 "Sorry, but this feature\n"
 "is still missing"
@@ -64,7 +64,7 @@ msgstr "Potvrda"
 
 #: kmmainwin.cpp:392
 msgid "Moved all messages into trash"
-msgstr "Makni sve poruke u smeæe"
+msgstr "Premjesti sve poruke u smeæe"
 
 #: kmmainwin.cpp:412
 msgid ""
@@ -171,7 +171,7 @@ msgstr "Is&kopiraj..."
 msgid "New Composer"
 msgstr "Novi Sastavljaè poruka"
 
-#: kmcomposewin.cpp:449 kmmainwin.cpp:857
+#: kmcomposewin.cpp:448 kmmainwin.cpp:857
 msgid "New Mailreader"
 msgstr "Novi Èitaè"
 
@@ -199,7 +199,7 @@ msgstr "Po¹alji poredane poruke"
 msgid "&Settings..."
 msgstr "Po&stava..."
 
-#: kmcomposewin.cpp:441 kmmainwin.cpp:881
+#: kmcomposewin.cpp:440 kmmainwin.cpp:881
 msgid "&Addressbook..."
 msgstr "&Adresar"
 
@@ -331,15 +331,15 @@ msgstr "Direkt&orij"
 msgid "&Message"
 msgstr "Poru&ka"
 
-#: kmcomposewin.cpp:563 kmmainwin.cpp:1013
+#: kmcomposewin.cpp:556 kmmainwin.cpp:1013
 msgid "Compose new message"
 msgstr "Sastavi novu poruku"
 
-#: kmcomposewin.cpp:568 kmmainwin.cpp:1018
+#: kmcomposewin.cpp:561 kmmainwin.cpp:1018
 msgid "Save message to file"
 msgstr "Spremi poruku u datoteku"
 
-#: kmcomposewin.cpp:573 kmmainwin.cpp:1023
+#: kmcomposewin.cpp:566 kmmainwin.cpp:1023
 msgid "Print message"
 msgstr "Ispi¹i poruku"
 
@@ -363,7 +363,7 @@ msgstr "Proslijedi poruku"
 msgid "Delete message"
 msgstr "Obri¹i poruku"
 
-#: kmcomposewin.cpp:597 kmmainwin.cpp:1057
+#: kmcomposewin.cpp:590 kmmainwin.cpp:1057
 msgid "Open addressbook..."
 msgstr "Otvori adresar..."
 
@@ -376,7 +376,7 @@ msgstr "Inicijalizacija..."
 msgid "Name:"
 msgstr "Ime:"
 
-#: kmcomposewin.cpp:1466 kmfolderdia.cpp:44 kmfolderdia.cpp:120
+#: kmcomposewin.cpp:1447 kmfolderdia.cpp:44 kmfolderdia.cpp:120
 msgid "unnamed"
 msgstr "bezimen"
 
@@ -408,7 +408,7 @@ msgstr "Reply-To Adresa:"
 msgid "Signature File:"
 msgstr "Datoteka s potpisom:"
 
-#: kmsettings.cpp:192 kpgp.cpp:765
+#: kmsettings.cpp:192 kpgp.cpp:759
 msgid "Identity"
 msgstr "Identitet"
 
@@ -590,7 +590,7 @@ msgstr "Razno"
 
 #: kmsettings.cpp:559
 msgid "PGP"
-msgstr ""
+msgstr "PGP"
 
 #: kmsettings.cpp:582
 msgid "Message Body Font"
@@ -612,7 +612,7 @@ msgstr "Bezimen"
 msgid "Choose Sendmail Location"
 msgstr "Odaberite lokaciju Sendmaila"
 
-#: kmcomposewin.cpp:1565 kmsettings.cpp:695
+#: kmcomposewin.cpp:1546 kmsettings.cpp:695
 msgid "Choose Signature File"
 msgstr "Odaberite datoteku s potpisom"
 
@@ -645,9 +645,8 @@ msgid "Delete mail from server"
 msgstr "Pobri¹i po¹tu sa poslu¾itelja"
 
 #: kmsettings.cpp:906
-#, fuzzy
 msgid "Retrieve all mail from server"
-msgstr "Pobri¹i po¹tu sa poslu¾itelja"
+msgstr "Skini svu po¹tu sa poslu¾itelja"
 
 #: kmsettings.cpp:918
 msgid "Enable interval Mail checking"
@@ -804,153 +803,147 @@ msgstr "Po¹alji &odmah"
 msgid "&Insert File..."
 msgstr "Umetni &datoteku..."
 
-#: kmcomposewin.cpp:446
+#: kmcomposewin.cpp:445
 msgid "&New Composer..."
 msgstr "&Novi Sastavljaè Poruka..."
 
-#: kmcomposewin.cpp:469 kmcomposewin.cpp:693 kmcomposewin.cpp:1836
+#: kmcomposewin.cpp:468 kmcomposewin.cpp:686 kmcomposewin.cpp:1817
 msgid "Mark all"
 msgstr "Oznaèi sve"
 
-#: kmcomposewin.cpp:472 kmcomposewin.cpp:695
+#: kmcomposewin.cpp:471 kmcomposewin.cpp:688
 msgid "Find..."
 msgstr "Naði..."
 
-#: kmcomposewin.cpp:474 kmcomposewin.cpp:696
+#: kmcomposewin.cpp:473 kmcomposewin.cpp:689
 msgid "Replace..."
 msgstr "Zamijeni..."
 
-#: kmcomposewin.cpp:477
-#, fuzzy
+#: kmcomposewin.cpp:476
 msgid "&Spellcheck..."
-msgstr "KMail: Provjera pravopisa"
+msgstr "&Provjera pravopisa..."
 
-#: kmcomposewin.cpp:484
+#: kmcomposewin.cpp:483
 msgid "&Urgent"
 msgstr "&Hitno"
 
-#: kmcomposewin.cpp:486
+#: kmcomposewin.cpp:485
 msgid "&Confirm delivery"
 msgstr "Potvrdi &dostavu"
 
-#: kmcomposewin.cpp:488
+#: kmcomposewin.cpp:487
 msgid "&Confirm read"
 msgstr "Po&tvrdi èitanje"
 
-#: kmcomposewin.cpp:491
-#, fuzzy
+#: kmcomposewin.cpp:490
 msgid "&Spellchecker..."
-msgstr "KMail: Provjera pravopisa"
+msgstr "&Provjera pravopisa"
 
-#: kmcomposewin.cpp:494
+#: kmcomposewin.cpp:493
 msgid "&Charsets..."
 msgstr "Skupovi &znakova..."
 
-#: kmcomposewin.cpp:507
+#: kmcomposewin.cpp:506
 msgid "&All Fields"
 msgstr "Sva &Polja"
 
-#: kmcomposewin.cpp:509
+#: kmcomposewin.cpp:508
 msgid "&From"
 msgstr "&Od:"
 
-#: kmcomposewin.cpp:510
+#: kmcomposewin.cpp:509
 msgid "&Reply to"
 msgstr "Odgovo&ri"
 
-#: kmcomposewin.cpp:511
+#: kmcomposewin.cpp:510
 msgid "&To"
 msgstr "&Za:"
 
-#: kmcomposewin.cpp:512
+#: kmcomposewin.cpp:511
 msgid "&Cc"
 msgstr "&Kopija:"
 
-#: kmcomposewin.cpp:513
+#: kmcomposewin.cpp:512
 msgid "&Bcc"
 msgstr "S&lijepa kopija"
 
-#: kmcomposewin.cpp:514
+#: kmcomposewin.cpp:513
 msgid "&Subject"
 msgstr "&Tema:"
 
-#: kmcomposewin.cpp:516
+#: kmcomposewin.cpp:515
 msgid "&Newsgroups"
 msgstr "&Grupe"
 
-#: kmcomposewin.cpp:517
+#: kmcomposewin.cpp:516
 msgid "&Followup-To"
 msgstr "&Odgovori-Na"
 
-#: kmcomposewin.cpp:523
+#: kmcomposewin.cpp:521
 msgid "Append S&ignature"
 msgstr "Dodaj Po&tpis"
 
-#: kmcomposewin.cpp:525
+#: kmcomposewin.cpp:523
 msgid "&Insert File"
 msgstr "Umetni &datoteku"
 
-#: kmcomposewin.cpp:527
-msgid "Insert My &Public Key"
-msgstr ""
-
-#: kmcomposewin.cpp:532
+#: kmcomposewin.cpp:525
 msgid "&Attach..."
 msgstr "Pr&ikvaèi..."
 
-#: kmcomposewin.cpp:535
+#: kmcomposewin.cpp:528
 msgid "&Save..."
 msgstr "&Spremi..."
 
-#: kmcomposewin.cpp:536
+#: kmcomposewin.cpp:529
 msgid "Pr&operties..."
 msgstr "Svojs&tva..."
 
-#: kmcomposewin.cpp:538
+#: kmcomposewin.cpp:531
 msgid "&Attach"
 msgstr "&Prikvaèi"
 
-#: kmcomposewin.cpp:558
+#: kmcomposewin.cpp:551
 msgid "Send message"
 msgstr "Po¹alji poruku"
 
-#: kmcomposewin.cpp:582
+#: kmcomposewin.cpp:575
 msgid "Cut selection"
 msgstr "Izre¾i izabrano"
 
-#: kmcomposewin.cpp:585
+#: kmcomposewin.cpp:578
 msgid "Copy selection"
 msgstr "Iskopiraj izabrano"
 
-#: kmcomposewin.cpp:588
+#: kmcomposewin.cpp:581
 msgid "Paste clipboard contents"
 msgstr "Umetni sadr¾aj odlagali¹ta (clipboard)"
 
-#: kmcomposewin.cpp:593
+#: kmcomposewin.cpp:586
 msgid "Attach file"
 msgstr "Prilo¾i datoteku"
 
-#: kmcomposewin.cpp:604
+#: kmcomposewin.cpp:597
 msgid "sign message"
 msgstr "potpi¹i poruku"
 
-#: kmcomposewin.cpp:609
+#: kmcomposewin.cpp:602
 msgid "encrypt message"
 msgstr "¹ifriraj poruku"
 
-#: kmcomposewin.cpp:626 kmcomposewin.cpp:642
+#: kmcomposewin.cpp:619 kmcomposewin.cpp:635
 msgid "Column"
 msgstr "Stupac"
 
-#: kmcomposewin.cpp:627 kmcomposewin.cpp:640
+#: kmcomposewin.cpp:620 kmcomposewin.cpp:633
 msgid "Line"
 msgstr "Linija"
 
-#: kmcomposewin.cpp:908
+#: kmcomposewin.cpp:901
 msgid "KMail Confirm"
 msgstr "KMail Potvrda"
 
-#: kmcomposewin.cpp:909
+#: kmcomposewin.cpp:902
 msgid ""
 "Close and discard\n"
 "edited message?"
@@ -958,51 +951,51 @@ msgstr ""
 "Zatvori i odbaci\n"
 "poruku?"
 
-#: kmcomposewin.cpp:1182
+#: kmcomposewin.cpp:1175
 msgid "Attach File"
 msgstr "Prilo¾i datoteku"
 
-#: kmcomposewin.cpp:1204
+#: kmcomposewin.cpp:1197
 msgid "Include File"
 msgstr "Umetni datoteku"
 
-#: kmcomposewin.cpp:1239 kmreaderwin.cpp:728
+#: kmcomposewin.cpp:1220 kmreaderwin.cpp:728
 msgid "View..."
 msgstr "&Pogled..."
 
-#: kmcomposewin.cpp:1240
+#: kmcomposewin.cpp:1221
 msgid "Save..."
 msgstr "Spremi..."
 
-#: kmcomposewin.cpp:1241 kmreaderwin.cpp:731
+#: kmcomposewin.cpp:1222 kmreaderwin.cpp:731
 msgid "Properties..."
 msgstr "Svojstva..."
 
-#: kmcomposewin.cpp:1245
+#: kmcomposewin.cpp:1226
 msgid "Attach..."
 msgstr "Prilo¾i..."
 
-#: kmcomposewin.cpp:1287 kmreaderwin.cpp:773
+#: kmcomposewin.cpp:1268 kmreaderwin.cpp:773
 msgid "View Attachment: "
 msgstr "Pogledaj Prilog: "
 
-#: kmcomposewin.cpp:1481
+#: kmcomposewin.cpp:1462
 msgid "To:"
 msgstr "Za:"
 
-#: kmcomposewin.cpp:1485
+#: kmcomposewin.cpp:1466
 msgid "Subject:"
 msgstr "Tema:"
 
-#: kmcomposewin.cpp:1488
+#: kmcomposewin.cpp:1469
 msgid "Date:"
 msgstr "Datum:"
 
-#: kmcomposewin.cpp:2018
+#: kmcomposewin.cpp:1999
 msgid "Spellcheck - KMail"
-msgstr ""
+msgstr "Provjera pravopisa"
 
-#: kmcomposewin.cpp:2044
+#: kmcomposewin.cpp:2025
 msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
 msgstr ""
@@ -1103,7 +1096,7 @@ msgstr "Upozorenje: Lo¹ potpis od"
 
 #: kmreaderwin.cpp:450
 msgid "unknown key ID"
-msgstr ""
+msgstr "nepoznati key ID"
 
 #: kmreaderwin.cpp:692
 msgid "Attachment: "
@@ -1507,9 +1500,8 @@ msgid "The pass phrase is missing."
 msgstr "Lozinka nedostaje"
 
 #: kpgp.cpp:286 kpgp.cpp:312 kpgp.cpp:325 kpgp.cpp:344 kpgp.cpp:361
-#, fuzzy
 msgid "PGP Warning"
-msgstr "upozorenje"
+msgstr "PGP upozorenje"
 
 #: kpgp.cpp:287
 msgid ""
@@ -1519,22 +1511,20 @@ msgid ""
 msgstr ""
 
 #: kpgp.cpp:296
-#, fuzzy
 msgid "Could not find the public keys for\n"
-msgstr "Nisam mogao naæi javne kljuèeve za neke primaoce.\n"
+msgstr "Nisam prona¹ao javne kljuèeve za\n"
 
 #: kpgp.cpp:307
 msgid "These persons will not be able to\n"
-msgstr ""
+msgstr "Ove osobe neæe biti u stanju\n"
 
 #: kpgp.cpp:309
 msgid "This person will not be able to\n"
-msgstr ""
+msgstr "Ova osoba neæe biti u stanju\n"
 
 #: kpgp.cpp:311
-#, fuzzy
 msgid "decrypt the message."
-msgstr "¹ifriraj poruku"
+msgstr "de¹ifrirati poruku."
 
 #: kpgp.cpp:326
 msgid ""
@@ -1545,7 +1535,7 @@ msgstr ""
 
 #: kpgp.cpp:331
 msgid "Retry"
-msgstr ""
+msgstr "Probaj ponovo"
 
 #: kpgp.cpp:342
 msgid ""
@@ -1563,7 +1553,7 @@ msgid ""
 "or cancel the message?"
 msgstr ""
 
-#: kpgp.cpp:717
+#: kpgp.cpp:711
 msgid ""
 "Please enter your\n"
 "PGP passphrase"
@@ -1571,19 +1561,19 @@ msgstr ""
 "Molim unesite svoju\n"
 "PGP lozinku"
 
-#: kpgp.cpp:744
+#: kpgp.cpp:738
 msgid "PGP Security Check"
 msgstr "PGP Sigurnosna Provjera"
 
-#: kpgp.cpp:771
+#: kpgp.cpp:765
 msgid "PGP User Identity:"
 msgstr "PGP Identitet"
 
-#: kpgp.cpp:782
+#: kpgp.cpp:776
 msgid "Store passphrase"
 msgstr ""
 
-#: kpgp.cpp:788
+#: kpgp.cpp:782
 msgid "Always encrypt to self"
 msgstr ""
 
@@ -1612,9 +1602,8 @@ msgid "??? (file ~/.pgp/pubring.pgp not found)"
 msgstr ""
 
 #: kpgpbase.cpp:585
-#, fuzzy
 msgid "The passphrase you entered is invalid."
-msgstr "Lozinka nedostaje"
+msgstr "Lozinka koju ste unijeli nije ispravna."
 
 #: kpgpbase.cpp:611
 msgid ""
@@ -1623,14 +1612,12 @@ msgid ""
 msgstr ""
 
 #: kpgpbase.cpp:614
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The following key(s) are not trusted:\n"
 "%s\n"
 "They will not be able to decrypt the message"
 msgstr ""
-"javni kljuè za %s nije prnaðen.\n"
-"Primaoc neæe moæi de¹ifrirati poruku."
 
 #: kfileio.cpp:26 kmaddrbook.cpp:162
 msgid "File I/O Error"
@@ -1816,23 +1803,3 @@ msgstr "&7 bitno je ASCII"
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
 msgstr "&Quotiraj nepoznate znakove"
-
-#~ msgid "Error during PGP:"
-#~ msgstr "Gre¹ka prilikom ¹ifriranja:"
-
-#~ msgid "Message signed by"
-#~ msgstr "Poruku potpisao "
-
-#~ msgid "Message has a bad signature from"
-#~ msgstr "Poruka ima lo¹ potpis od"
-
-#~ msgid "End PGP signed message"
-#~ msgstr "Kraj PGP potpisane poruke"
-
-#~ msgid ""
-#~ "Could not find public keys matching the\n"
-#~ "userid(s) %s. These persons won't be able\n"
-#~ "to read the message."
-#~ msgstr ""
-#~ "Javni kljuè za %s nije pronaðen.\n"
-#~ "Primaoc neæe moæi de¹ifrirati poruku."

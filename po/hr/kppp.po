@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kdenetwork\n"
-"POT-Creation-Date: 1998-11-25 01:56+0100\n"
-"PO-Revision-Date: 1998-03-15 20:00-0500\n"
+"POT-Creation-Date: 1998-11-21 01:58+0100\n"
+"PO-Revision-Date: 1998-11-22 20:00-0500\n"
 "Last-Translator: Vladimir Vuksan <vuksan@veus.hr> \n"
 "Language-Team: Croatian\n"
 "MIME-Version: 1.0\n"
@@ -152,7 +152,6 @@ msgid "Accounting"
 msgstr "Rad s raèunima"
 
 #: accounts.cpp:371
-#, fuzzy
 msgid ""
 "You must enter an unique\n"
 "account name"
@@ -161,11 +160,10 @@ msgstr ""
 "ime raèuna"
 
 #: accounts.cpp:376
-#, fuzzy
 msgid "Login script has unbalanced loop Start/End"
 msgstr "Prijavni scenario ima neuravnote¾enu petlju Start/End"
 
-#: connect.cpp:97 connect.cpp:195 main.cpp:970
+#: connect.cpp:97 connect.cpp:195 main.cpp:1032
 msgid "Connecting to: "
 msgstr "Spajanje na: "
 
@@ -178,7 +176,7 @@ msgstr "®ao mi je, ne mogu stvoriti datoteku za zakljuèavanje modema."
 msgid "Looking for Modem ..."
 msgstr "Tra¾im modem ..."
 
-#: connect.cpp:120 debug.cpp:80 main.cpp:983
+#: connect.cpp:120 debug.cpp:80 main.cpp:1045
 msgid "Log"
 msgstr "Dnevnik"
 
@@ -196,15 +194,15 @@ msgstr ""
 
 #: connect.cpp:293
 msgid "Dialing"
-msgstr "Biranje"
+msgstr "Biram"
 
 #: connect.cpp:325
 msgid "Line Busy. Hanging up ..."
-msgstr "Linija zauzeta. Prekidam ..."
+msgstr "Linija je zauzeta. Prekidam ..."
 
 #: connect.cpp:330
 msgid "Line Busy. Waiting: "
-msgstr "Linija zauzeta. Èekam: "
+msgstr "Linija je zauzeta. Èekam: "
 
 #: connect.cpp:332 connect.cpp:451 connect.cpp:470
 msgid " seconds"
@@ -244,7 +242,7 @@ msgstr "Timeout "
 
 #: connect.cpp:482 connect.cpp:483
 msgid "Hangup"
-msgstr "Prekidanje linije"
+msgstr "Prekidam"
 
 #: connect.cpp:496 connect.cpp:497
 msgid "Answer"
@@ -268,7 +266,7 @@ msgstr "PW odzivni znak "
 
 #: connect.cpp:643
 msgid "Loop Start "
-msgstr "Start petlje "
+msgstr "Poèetak petlje "
 
 #: connect.cpp:647
 msgid "ERROR: Nested too deep, ignored."
@@ -279,7 +277,6 @@ msgid "Loops nested too deeply!"
 msgstr "Petlje ugnije¾ðene preduboko!"
 
 #: connect.cpp:670
-#, fuzzy
 msgid "LoopEnd without matching Start! Line: "
 msgstr "LoopEnd bez pripadajuæe Start! linije: "
 
@@ -325,7 +322,7 @@ msgstr "Izvr¹avam komandu kod pokretanja ..."
 
 #: connect.cpp:1004 connect.cpp:1011
 msgid "Done"
-msgstr ""
+msgstr "Gotovo"
 
 #: connect.cpp:1120
 msgid ""
@@ -373,7 +370,7 @@ msgstr "Ime veze:"
 
 #: edit.cpp:56
 msgid "Type in a unique name for this connection"
-msgstr ""
+msgstr "Unesite jedinstveno ime za ovu vezu"
 
 #: edit.cpp:59
 msgid "Phone Number:"
@@ -481,6 +478,8 @@ msgid ""
 "Allows you to run a program <b>after</b> a connection\n"
 "has been closed."
 msgstr ""
+"Dozvoljava da izvr¹avate program <b>nakon</b> prekidanja\n"
+"veze."
 
 #: edit.cpp:163
 msgid "Edit pppd arguments:"
@@ -503,10 +502,12 @@ msgid ""
 "If your computer has a permanent internet\n"
 "address, you must supply your IP address here"
 msgstr ""
+"Ukoliko va¹e raèunalo ima stalnu internet\n"
+"adresu, morate unijesti svoju IP adresu ovdje"
 
 #: edit.cpp:250
 msgid "Subnet Mask:"
-msgstr "Pod-mre¾na maska:"
+msgstr "Pod-mre¾na (subnet) maska:"
 
 #: edit.cpp:253
 msgid ""
@@ -901,7 +902,7 @@ msgid ""
 "recommended value is 30 seconds."
 msgstr ""
 
-#: general.cpp:492 main.cpp:640
+#: general.cpp:492 main.cpp:700
 msgid "Modem"
 msgstr "Modem"
 
@@ -921,9 +922,8 @@ msgid ""
 msgstr ""
 
 #: general.cpp:535
-#, fuzzy
 msgid "Modem volume"
-msgstr "Modemski ureðaj:"
+msgstr ""
 
 #: general.cpp:547
 msgid ""
@@ -1026,6 +1026,10 @@ msgstr ""
 msgid "Don't show this hint again"
 msgstr ""
 
+#: main.cpp:144
+msgid "Ok"
+msgstr ""
+
 #: main.cpp:158
 msgid ""
 "This is an example for <b>QuickHelp</b>.\n"
@@ -1033,14 +1037,14 @@ msgid ""
 "click a mouse button or a hit a key.\n"
 msgstr ""
 
-#: main.cpp:327
+#: main.cpp:380
 #, c-format
 msgid ""
 "kppp can't create or read from\n"
 "%s."
 msgstr ""
 
-#: main.cpp:343
+#: main.cpp:396
 #, c-format
 msgid ""
 "kppp has detected a %s file.\n"
@@ -1052,15 +1056,15 @@ msgid ""
 "delete the pid file, and restart kppp."
 msgstr ""
 
-#: main.cpp:417
+#: main.cpp:477
 msgid "Connect to: "
 msgstr "Spoji sa: "
 
-#: main.cpp:428
+#: main.cpp:488
 msgid "Login ID:"
 msgstr "Prijavni ID:"
 
-#: main.cpp:441
+#: main.cpp:501
 msgid ""
 "Type in the username that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1071,11 +1075,11 @@ msgid ""
 "<i>myusername</i> is not the same as <i>MyUserName</i>!"
 msgstr ""
 
-#: main.cpp:450
+#: main.cpp:510
 msgid "Password:"
 msgstr "Lozinka:"
 
-#: main.cpp:464
+#: main.cpp:524
 msgid ""
 "Type in the password that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1086,11 +1090,11 @@ msgid ""
 "<i>mypassword</i> is not the same as <i>MyPassword</i>!"
 msgstr ""
 
-#: main.cpp:478
+#: main.cpp:538
 msgid "Show Log Window"
 msgstr "Poka¾i prozor dnevnika"
 
-#: main.cpp:485
+#: main.cpp:545
 msgid ""
 "This controls whether a log window is shown.\n"
 "A log window shows the communication between\n"
@@ -1101,15 +1105,15 @@ msgid ""
 "problems"
 msgstr ""
 
-#: main.cpp:508
+#: main.cpp:568
 msgid "Setup"
 msgstr "Postava"
 
-#: main.cpp:524
+#: main.cpp:584
 msgid "Connect"
 msgstr "Spoji"
 
-#: main.cpp:608
+#: main.cpp:668
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -1118,33 +1122,32 @@ msgstr ""
 "Nema takvog raèuna:\n"
 "%s"
 
-#: main.cpp:622
+#: main.cpp:682
 msgid "kppp Configuration"
 msgstr "Postava kppp-a"
 
-#: main.cpp:638
+#: main.cpp:698
 msgid "Accounts"
 msgstr "Raèuni"
 
-#: main.cpp:639
+#: main.cpp:699
 msgid "Device"
 msgstr "Ureðaj"
 
-#: main.cpp:641
+#: main.cpp:701
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:642
+#: main.cpp:702
 msgid "Graph"
 msgstr ""
 
-#: main.cpp:815
-#, fuzzy
+#: main.cpp:875
 msgid "Details..."
-msgstr "Detalji"
+msgstr "Detalji..."
 
-#: main.cpp:868
-#, fuzzy, c-format
+#: main.cpp:930
+#, c-format
 msgid ""
 "kppp can not find:\n"
 " %s\n"
@@ -1155,14 +1158,16 @@ msgid ""
 "PPP daemon.\n"
 "Thank You"
 msgstr ""
-"kppp ne mo¾e pronaæi:\n"
+"kppp nije prona¹ao:\n"
 " %s\n"
-"Molim instalirajte pppd dolièno i/ili prilagodite\n"
-"lokaciju pppd izvr¹nog koda na PPP kartici u\n"
-"dijalogu za postave.\n"
-" Hvala vam"
+"Probajte ponovno instalirati pppd i/ili\n" 
+"provjerite lokaciju pppd izvr¹nog programa\n" 
+"na PPP kartici u postavi.\n"
+"To æe omoguæiti kpppu da pronaðe ispravni\n"
+"PPP daemon.\n"
+"Hvala"
 
-#: main.cpp:883
+#: main.cpp:945
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1175,7 +1180,7 @@ msgstr ""
 "Molim vas provjerite jeste li dali kppp-u setuid dozvolu i je li\n"
 "pppd izvr¹na datoteka."
 
-#: main.cpp:897
+#: main.cpp:959
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1196,7 +1201,7 @@ msgstr ""
 "dijalogu za postave.\n"
 " Hvala vam"
 
-#: main.cpp:915
+#: main.cpp:979
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1206,7 +1211,7 @@ msgstr ""
 "To zahtijeva od vas da\n"
 "date korisnièko ime i lozinku!"
 
-#: main.cpp:924
+#: main.cpp:987
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1215,7 +1220,7 @@ msgstr ""
 "Ne mogu stvoriti PAP datoteku\n"
 "provjere \"%s\""
 
-#: main.cpp:941
+#: main.cpp:1004
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -1225,7 +1230,7 @@ msgstr ""
 "To zahtijeva od vas da\n"
 "date korisnièko ime i lozinku!"
 
-#: main.cpp:950
+#: main.cpp:1012
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1234,20 +1239,19 @@ msgstr ""
 "Ne mogu stvoriti CHAP datoteku\n"
 "provjere \"%s\""
 
-#: main.cpp:962
-#, fuzzy
+#: main.cpp:1024
 msgid "You must specify a telephone number!"
-msgstr "Morate upisati telefonski broj !\n"
+msgstr "Morate upisati telefonski broj !"
 
-#: main.cpp:1049
+#: main.cpp:1111
 msgid "Quit kPPP?"
 msgstr "Napustiti kPPP?"
 
-#: main.cpp:1050
+#: main.cpp:1112
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Izla¾enje iz kPPP-a æe zatvoriti va¹u PPP sesiju."
 
-#: main.cpp:1085
+#: main.cpp:1147
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
@@ -1255,39 +1259,35 @@ msgstr ""
 "Ne mogu uèitati skup pravila\n"
 "za rad nad korisnièkim raèunima \""
 
-#: modem.cpp:115
+#: modem.cpp:114
 msgid "Sorry, can't open modem."
 msgstr "®ao mi je, ne mogu otvoriti modem."
 
-#: modem.cpp:121
-#, fuzzy
+#: modem.cpp:120
 msgid "Sorry, can't detect state of CD line."
-msgstr "®ao mi je, ne mogu stvoriti datoteku za zakljuèavanje modema."
+msgstr "®alim, ne mogu utvrditi stanje CD linije."
 
-#: modem.cpp:127
+#: modem.cpp:126
 msgid "Sorry, the modem is not ready."
-msgstr "®ao mi je, modem nije spreman."
+msgstr "®alim, modem nije spreman."
 
-#: modem.cpp:138 modem.cpp:182
+#: modem.cpp:137 modem.cpp:181
 msgid "Sorry, the modem is busy."
-msgstr "®ao mi je, modem je zaposlen."
+msgstr "®alim, modem je zaposlen."
 
-#: modem.cpp:188
-#, fuzzy
+#: modem.cpp:187
 msgid "Modem Ready."
-msgstr "Modem spreman"
+msgstr "Modem spreman."
 
-#: modem.cpp:199
+#: modem.cpp:198
 msgid "Can't restore tty settings: tcsetattr()\n"
 msgstr "Ne mogu vratiti odrednice postave za tty: tcsetattr()\n"
 
-#: modem.cpp:325
-#, fuzzy
+#: modem.cpp:324
 msgid "Sorry, the modem doesn't respond."
-msgstr "®ao mi je, modem nije spreman."
+msgstr "®ao mi je, modem ne odgovara mojim upitima."
 
-#: modem.cpp:426
-#, fuzzy
+#: modem.cpp:425
 msgid "Unknown speed"
 msgstr "brzina nepoznata"
 
@@ -1296,22 +1296,20 @@ msgid "Edit Modem Commands"
 msgstr "Obradi modemske komande"
 
 #: modemcmds.cpp:70
-#, fuzzy
 msgid "Pre-Init Delay (sec/100):"
-msgstr "Inicijalizacijski razmak (sek/100):"
+msgstr "Razmak prije inic. (sek/100):"
 
 #: modemcmds.cpp:75
 msgid "Initialization String:"
 msgstr "Inicijalizacijski niz:"
 
 #: modemcmds.cpp:93
-#, fuzzy
 msgid "Post-Init Delay (sec/100):"
-msgstr "Inicijalizacijski razmak (sek/100):"
+msgstr "Razmak nakon inic. (sek/100):"
 
 #: modemcmds.cpp:98
 msgid "Init Response:"
-msgstr "Reakcija na inicijalizaciju:"
+msgstr "Odgovor na inic:"
 
 #: modemcmds.cpp:105
 msgid "Dial String:"
@@ -1323,16 +1321,15 @@ msgstr "Reakcija nakon spajanja:"
 
 #: modemcmds.cpp:119
 msgid "Busy Response:"
-msgstr "Reakcija na zaposlenost:"
+msgstr "Odgovor na zaposlenost:"
 
 #: modemcmds.cpp:126
-#, fuzzy
 msgid "No Carrier Response:"
-msgstr "Reakcija na nepostojanje nosaèa:"
+msgstr "Odgovor na nepostojanje nosaèa:"
 
 #: modemcmds.cpp:133
 msgid "No Dialtone Response:"
-msgstr "Reakcija na nepostojanje zvuka slobodne linije:"
+msgstr "Odgovor na nepostojanje zvuka slobodne linije:"
 
 #: modemcmds.cpp:140
 msgid "Hangup String:"
@@ -1368,7 +1365,7 @@ msgstr "Sigurnosni period (sek/50):"
 
 #: modemcmds.cpp:205
 msgid "Volume off/low/high"
-msgstr ""
+msgstr "Volumen isklj./slabo/jako"
 
 #: pppdargs.cpp:37
 msgid "Customize pppd Arguments"
@@ -1379,11 +1376,10 @@ msgid "Argument:"
 msgstr "Argument:"
 
 #: pppdargs.cpp:78
-#, fuzzy
 msgid "Defaults"
-msgstr "Detalji"
+msgstr "Uobièajeno"
 
-#: pppdata.cpp:109
+#: pppdata.cpp:108
 msgid ""
 "The application-specific config file\n"
 "could not be opened neither\n"
@@ -1499,7 +1495,6 @@ msgid "&Modem"
 msgstr "&Modem"
 
 #: miniterm.cpp:105
-#, fuzzy
 msgid "Close MiniTerm"
 msgstr "Napusti MiniTerm"
 
@@ -1668,7 +1663,6 @@ msgstr ""
 "Kontaktirajte administratora sistema."
 
 #: runtests.cpp:487
-#, fuzzy
 msgid ""
 "is missing!\n"
 "\n"
@@ -1676,42 +1670,46 @@ msgid ""
 "a non-empty file that has appropriate\n"
 "read and write permissions."
 msgstr ""
-"Nedostaje /etc/resolv.conf!\n"
+"nedostaje!\n"
 "\n"
 "Zamolite administratora da stvori\n"
 "dotiènu datoteku i da je otvori za\n"
 "èitanje svim korisnicima."
 
-#: ppplog.cpp:149
+#: ppplog.cpp:148
 msgid ""
 "You have launched pppd before the remote server was ready to establish a PPP "
 "connection.\n"
 "Please use the terminal-based login to verify"
 msgstr ""
 
-#: ppplog.cpp:154
+#: ppplog.cpp:153
 msgid ""
 "Do you use /dev/modem ? If so, you should specify the real device instead, "
 "e.g. /dev/ttyS1 (COM2)."
 msgstr ""
+"Da li koristite /dev/modem ? Ukoliko da probajte navesti stvarno ime ureðaja, "
+"npr. /dev/ttyS1 (COM2)."
 
-#: ppplog.cpp:158
+#: ppplog.cpp:157
 msgid "Check that you supplied the correct username and password!"
-msgstr ""
+msgstr "Provjerite da li ste unijeli toèno ime i lozinku!"
 
-#: ppplog.cpp:161
+#: ppplog.cpp:160
 msgid ""
 "You shouldn't pass 'lock' as an argument to pppd. Check /etc/ppp/options and "
 "~/.ppprc"
 msgstr ""
+"Ne bi trebali slati 'lock' kao argument pppdu. Provjerite /etc/ppp/options "
+"i ~/.ppprc"
 
-#: ppplog.cpp:165
+#: ppplog.cpp:164
 msgid ""
 "The remote system does not seem to answer to\n"
 "configuration request! Contact your provider!"
 msgstr ""
 
-#: ppplog.cpp:180
+#: ppplog.cpp:179
 #, c-format
 msgid ""
 "Notice that the remote system has sent the following message:\n"
@@ -1719,12 +1717,11 @@ msgid ""
 "This may give you a hint why the the connection has failed."
 msgstr ""
 
-#: ppplog.cpp:199
-#, fuzzy
+#: ppplog.cpp:198
 msgid "Sorry. Can't help you here."
-msgstr "®ao mi je, ne mogu otvoriti modem."
+msgstr "®alim, ne mogu pomoæi."
 
-#: ppplog.cpp:216
+#: ppplog.cpp:215
 msgid ""
 "KPPP could not prepare a PPP log. It´s very likely\n"
 "that pppd was started without the \"debug\" option.\n"
@@ -1735,7 +1732,7 @@ msgid ""
 "Shall I turn it on now?"
 msgstr ""
 
-#: ppplog.cpp:227
+#: ppplog.cpp:226
 msgid ""
 "The \"debug\" option has been added. You\n"
 "should now try to reconnect. If that fails\n"
@@ -1743,68 +1740,26 @@ msgid ""
 "you to track down the connection problem."
 msgstr ""
 
-#: ppplog.cpp:242
+#: ppplog.cpp:241
 msgid "PPP log"
-msgstr ""
+msgstr "PPP dnevnik"
 
-#: ppplog.cpp:246
+#: ppplog.cpp:245
 msgid "kppp's diagnosis (just guessing):"
-msgstr ""
+msgstr "kpppova dijagnoza (¹pekulacija):"
 
-#: ppplog.cpp:251
+#: ppplog.cpp:250
 msgid "Write to file"
+msgstr "Pi¹i u datoteku"
+
+#: security.cpp:46
+msgid "Advanced Security"
+msgstr "Napredna za¹tita"
+
+#: security.cpp:49
+msgid "Allowed users"
 msgstr ""
 
-#, fuzzy
-#~ msgid "Verify your password."
-#~ msgstr "Pohrani lozinku"
-
-#~ msgid "Insert"
-#~ msgstr "Umetni"
-
-#~ msgid ""
-#~ "\n"
-#~ "A dialer and front-end to pppd\n"
-#~ "\n"
-#~ "Copyright (c) 1997\n"
-#~ "Bernd Johannes Wuebben\n"
-#~ "wuebben@math.cornell.edu"
-#~ msgstr ""
-#~ "\n"
-#~ "Biraè i suèelje za pppd\n"
-#~ "\n"
-#~ "Copyright (c) 1997\n"
-#~ "Bernd Johannes Wuebben\n"
-#~ "wuebben@math.cornell.edu"
-
-#~ msgid ""
-#~ "With contributions from:\n"
-#~ "\n"
-#~ "Mario Weilguni\n"
-#~ "Markus Wuebben\n"
-#~ "Jesus Fuentes Saavedra\n"
-#~ "Harri Porten\n"
-#~ "Peter Silva"
-#~ msgstr ""
-#~ "Doprinjeli su:\n"
-#~ "\n"
-#~ "Mario Weilguni\n"
-#~ "Markus Wuebben\n"
-#~ "Jesus Fuentes Saavedra\n"
-#~ "Harri Porten\n"
-#~ "Peter Silva"
-
-#~ msgid "Restore Defaults"
-#~ msgstr "Vratiti podrazumijevano"
-
-#~ msgid "Can't open Modem"
-#~ msgstr "Ne mogu otvoriti modem"
-
-#~ msgid "Sorry, the modem is busy"
-#~ msgstr "®ao mi je, modem je zaposlen"
-
-#~ msgid "tcgetattr() failed\n"
-#~ msgstr "tcgetattr() nije uspjela\n"
-
-#~ msgid "tcsetattr() failed\n"
-#~ msgstr "tcgsetattr() nije uspjela\n"
+#: security.cpp:50
+msgid "Allowed groups"
+msgstr ""
