@@ -17,7 +17,8 @@ all:
 	touch configure
 	touch stamp-h.in
 	rm -f ./SUBDIRS 
-	dirs=`find . -type d -depth -maxdepth 1 -print | sed -e "s#./##" | sed -e "s/\.//"` ;\
+	files=`ls -1` ;\
+	dirs=`for i in $$files; do if test -d $$i; then echo $$i; fi; done` ;\
 	for i in $$dirs; do \
 	echo $$i >> ./SUBDIRS ;\
 	done
@@ -38,7 +39,8 @@ dist:
 	touch configure ;\
 	touch stamp-h.in ;\
 	rm -f ./SUBDIRS ;\
-	dirs=`find . -type d -depth -maxdepth 1 -print | sed -e "s#./##" | sed -e "s/\.//"` ;\
+	files=`ls -1` ;\
+	dirs=`for i in $$files; do if test -d $$i; then echo $$i; fi; done` ;\
 	for i in $$dirs; do \
 	echo $$i >> ./SUBDIRS ;\
 	done ;\
