@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KRN\n"
-"POT-Creation-Date: 1998-02-25 12:40+0100\n"
+"POT-Creation-Date: 1998-03-09 00:28+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Kim Enkovaara <kim.enkovaara@iki.fi>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,27 +14,27 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: ENCODING\n"
 
-#: main.cpp:226 main.cpp:238 main.cpp:250 main.cpp:265 main.cpp:277
+#: main.cpp:221 main.cpp:233 main.cpp:245 main.cpp:260 main.cpp:272
 msgid "KRN-Missing Configuration info"
 msgstr "KRN-Asetustiedot puuttuvat"
 
-#: main.cpp:227
+#: main.cpp:222
 msgid "Please enter your email adress"
 msgstr "Anna sähkpostiosoitteesi"
 
-#: main.cpp:239
+#: main.cpp:234
 msgid "Please enter your real name"
 msgstr "Anna oikea nimesi"
 
-#: main.cpp:251
+#: main.cpp:246
 msgid "Please enter your organization's name"
 msgstr "Anna organisaatiosi nimi"
 
-#: main.cpp:266
+#: main.cpp:261
 msgid "Please enter your NNTP server name"
 msgstr "Anna NNTP palvelimen nimi"
 
-#: main.cpp:278
+#: main.cpp:273
 msgid "Please enter your SMTP server name"
 msgstr "Anna SMTP palvelimen nimi"
 
@@ -80,7 +80,7 @@ msgstr "Hae aiheet"
 msgid "Get Articles"
 msgstr "Hae viestit"
 
-#: artdlg.cpp:245 groupdlg.cpp:144 groupdlg.cpp:152 groupdlg.cpp:160
+#: artdlg.cpp:247 groupdlg.cpp:144 groupdlg.cpp:152 groupdlg.cpp:160
 msgid "Catchup"
 msgstr "Nollaa"
 
@@ -88,15 +88,15 @@ msgstr "Nollaa"
 msgid "(un)Subscribe"
 msgstr "Tilaa/Poista tilaus"
 
-#: artdlg.cpp:134 groupdlg.cpp:151
+#: artdlg.cpp:136 groupdlg.cpp:151
 msgid "Untag"
 msgstr "Poista merkki"
 
-#: artdlg.cpp:154 groupdlg.cpp:159
+#: artdlg.cpp:156 groupdlg.cpp:159
 msgid "(Un)Tag"
 msgstr "Merkkaa/Poista merkki"
 
-#: artdlg.cpp:147 artdlg.cpp:215 groupdlg.cpp:162 groupdlg.cpp:224
+#: artdlg.cpp:149 artdlg.cpp:217 groupdlg.cpp:162 groupdlg.cpp:224
 msgid "Post New Article"
 msgstr "Lähetä uusi viesti"
 
@@ -108,7 +108,7 @@ msgstr "Lähetä kaikki jonossa olevat viestit"
 msgid "&Subscribed"
 msgstr "&Tilattu"
 
-#: artdlg.cpp:185 groupdlg.cpp:166
+#: artdlg.cpp:187 groupdlg.cpp:166
 msgid "&Tagged"
 msgstr "&Merkattu"
 
@@ -257,184 +257,184 @@ msgstr "Haen viestejä ryhmästä "
 msgid "Getting list of messages in "
 msgstr "Haen viestien listaa ryhmästä "
 
-#: artdlg.cpp:127 artdlg.cpp:142
+#: artdlg.cpp:129 artdlg.cpp:144
 msgid "Download"
 msgstr "Lataa"
 
-#: artdlg.cpp:129
+#: artdlg.cpp:131
 #, fuzzy
 msgid "Mark Read"
 msgstr "Merkitse kaikki"
 
-#: artdlg.cpp:130
+#: artdlg.cpp:132
 #, fuzzy
 msgid "Mark Unread"
 msgstr "Merkitse kaikki"
 
-#: artdlg.cpp:132 artdlg.cpp:146
+#: artdlg.cpp:134 artdlg.cpp:148
 msgid "Print"
 msgstr "Tulosta"
 
-#: artdlg.cpp:133 artdlg.cpp:153
+#: artdlg.cpp:135 artdlg.cpp:155
 msgid "Decode"
 msgstr "Pura"
 
-#: artdlg.cpp:135 artdlg.cpp:158
+#: artdlg.cpp:137 artdlg.cpp:160
 msgid "Don't expire"
 msgstr "Älä kuoleta"
 
-#: artdlg.cpp:144
+#: artdlg.cpp:146
 msgid "Lookup in Altavista"
 msgstr ""
 
-#: artdlg.cpp:148 artdlg.cpp:218
+#: artdlg.cpp:150 artdlg.cpp:220
 msgid "Reply by Mail"
 msgstr "Vastaa postin kautta"
 
-#: artdlg.cpp:149
+#: artdlg.cpp:151
 msgid "Post Followup"
 msgstr "Lähetä vastaus"
 
-#: artdlg.cpp:150
+#: artdlg.cpp:152
 msgid "Post & Reply"
 msgstr "Lähetä & Vastaa"
 
-#: artdlg.cpp:156
+#: artdlg.cpp:158
 msgid "Tagged"
 msgstr "Merkattu"
 
-#: artdlg.cpp:167
+#: artdlg.cpp:169
 msgid "Show Only Unread Messages"
 msgstr "Näytä vain lukemattomat viestit"
 
-#: artdlg.cpp:169
+#: artdlg.cpp:171
 msgid "Show Only Cached Messages"
 msgstr "Näytä vain välimuistin viestit"
 
-#: artdlg.cpp:171
+#: artdlg.cpp:173
 msgid "Show Locked Messages"
 msgstr "Näytä lukitut viestit"
 
-#: artdlg.cpp:173
+#: artdlg.cpp:175
 msgid "Expunge"
 msgstr "Tyhjennä"
 
-#: artdlg.cpp:174
+#: artdlg.cpp:176
 msgid "Appearance..."
 msgstr "Ulkönäkö..."
 
-#: artdlg.cpp:175
+#: artdlg.cpp:177
 #, fuzzy
 msgid "Sorting..."
 msgstr "Säikeet..."
 
-#: artdlg.cpp:179
+#: artdlg.cpp:181
 msgid "Edit Rules"
 msgstr ""
 
-#: artdlg.cpp:180
+#: artdlg.cpp:182
 #, fuzzy
 msgid "Update"
 msgstr "Päivä"
 
-#: artdlg.cpp:183
+#: artdlg.cpp:185
 msgid "menu"
 msgstr "valikko"
 
-#: artdlg.cpp:187
+#: artdlg.cpp:189
 #, fuzzy
 msgid "&Scoring"
 msgstr "Koodaus"
 
-#: artdlg.cpp:197
+#: artdlg.cpp:199
 msgid "Previous Message"
 msgstr "Edellinen viesti"
 
-#: artdlg.cpp:200
+#: artdlg.cpp:202
 msgid "Next Message"
 msgstr "Seuraava viesti"
 
-#: artdlg.cpp:205
+#: artdlg.cpp:207
 msgid "Save Article"
 msgstr "Tallenna viesti"
 
-#: artdlg.cpp:208
+#: artdlg.cpp:210
 msgid "Print Article"
 msgstr "Tulosta viesti"
 
-#: artdlg.cpp:211
+#: artdlg.cpp:213
 msgid "Find Article"
 msgstr "Etsi viesti"
 
-#: artdlg.cpp:221
+#: artdlg.cpp:223
 msgid "Post a Followup"
 msgstr "Lähetä vastaus"
 
-#: artdlg.cpp:224
+#: artdlg.cpp:226
 msgid "Post & Mail"
 msgstr "Lähetä & Postita"
 
-#: artdlg.cpp:233
+#: artdlg.cpp:235
 msgid "Get Article List"
 msgstr "Hae viestilista"
 
-#: artdlg.cpp:236
+#: artdlg.cpp:238
 msgid "Tag Article"
 msgstr "Merkkaa viesti"
 
-#: artdlg.cpp:239
+#: artdlg.cpp:241
 msgid "Lock (keep in cache)"
 msgstr "Lukitse (pidä välimustissa)"
 
-#: artdlg.cpp:242
+#: artdlg.cpp:244
 msgid "Decode Article"
 msgstr "Pura viesti"
 
-#: artdlg.cpp:271 sortDlg.cpp:34
+#: artdlg.cpp:273 sortDlg.cpp:34
 msgid "Sender"
 msgstr "Lähettäjä"
 
-#: artdlg.cpp:272 sortDlg.cpp:35
+#: artdlg.cpp:274 sortDlg.cpp:35
 msgid "Date"
 msgstr "Päivä"
 
-#: artdlg.cpp:273 sortDlg.cpp:36
+#: artdlg.cpp:275 sortDlg.cpp:36
 msgid "Lines"
 msgstr "Rivejä"
 
-#: artdlg.cpp:274 sortDlg.cpp:33
+#: artdlg.cpp:276 sortDlg.cpp:33
 msgid "Score"
 msgstr ""
 
-#: artdlg.cpp:275 sortDlg.cpp:32
+#: artdlg.cpp:277 sortDlg.cpp:32
 msgid "Subject"
 msgstr "Otsikko"
 
-#: artdlg.cpp:451
+#: artdlg.cpp:453
 msgid "Threading..."
 msgstr "Säikeet..."
 
-#: artdlg.cpp:460
+#: artdlg.cpp:462
 msgid "Showing Article List"
 msgstr "Näytä viestilista"
 
-#: artdlg.cpp:1134
+#: artdlg.cpp:1153
 msgid "KRN - Existing File"
 msgstr "KRN - Olemassaoleva tiedosto"
 
-#: artdlg.cpp:1135
+#: artdlg.cpp:1154
 msgid "The File you selected already exists"
 msgstr "Valitsemasi tiedosto on jo olemassa"
 
-#: artdlg.cpp:1141
+#: artdlg.cpp:1160
 msgid "OverWrite"
 msgstr "Ylikirjoita"
 
-#: artdlg.cpp:1143
+#: artdlg.cpp:1162
 msgid "Append"
 msgstr "Lisää"
 
-#: artdlg.cpp:1178
+#: artdlg.cpp:1197
 #, fuzzy
 msgid ""
 "From: Krn\n"
@@ -447,7 +447,7 @@ msgstr ""
 "Virhe viestiä haettaessa.\n"
 "Palvelin sanoi:\n"
 
-#: artdlg.cpp:1278
+#: artdlg.cpp:1297
 msgid "Getting Article List"
 msgstr "Haen viestilistaa"
 
@@ -525,11 +525,11 @@ msgstr "TUNNUS"
 msgid "Name"
 msgstr "Nimi"
 
-#: decoderDlg.cpp:43
+#: decoderDlg.cpp:44
 msgid "Destination directory:"
 msgstr ""
 
-#: decoderDlg.cpp:46
+#: decoderDlg.cpp:47
 #, fuzzy
 msgid "Decode All"
 msgstr "Pura"
@@ -794,24 +794,17 @@ msgstr ""
 msgid "Use Threading"
 msgstr "Säikeet..."
 
-#: charsetsDlg.cpp:26
 #, fuzzy
-msgid "KRN - Charset Settings"
-msgstr "KRN - Kuoletuksen asetukset"
+#~ msgid "KRN - Charset Settings"
+#~ msgstr "KRN - Kuoletuksen asetukset"
 
-#: charsetsDlg.cpp:28
 #, fuzzy
-msgid "KMail - Charset Settings"
-msgstr "KRN - Kuoletuksen asetukset"
+#~ msgid "KMail - Charset Settings"
+#~ msgstr "KRN - Kuoletuksen asetukset"
 
-#: charsetsDlg.cpp:38
 #, fuzzy
-msgid "Message charset"
-msgstr "Viestiosan ominaisuudet"
-
-#: charsetsDlg.cpp:56
-msgid "Composer charset"
-msgstr ""
+#~ msgid "Message charset"
+#~ msgstr "Viestiosan ominaisuudet"
 
 #~ msgid "test"
 #~ msgstr "kokeilu"

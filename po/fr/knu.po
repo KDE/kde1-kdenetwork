@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: knu\n"
-"POT-Creation-Date: 1998-03-01 20:02+0100\n"
+"POT-Creation-Date: 1998-03-09 00:28+0100\n"
 "PO-Revision-Date: 1998-03-01 20:15 CET\n"
 "Last-Translator: Bertrand Leconte <B.Leconte@mail.dotcom.fr>\n"
 "Language-Team: Français\n"
@@ -13,23 +13,23 @@ msgstr ""
 "Content-Type: text/plain; charset=iso8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: knu.cpp:128 knu.cpp:271
+#: knu.cpp:132 knu.cpp:275
 msgid "&Ping"
 msgstr "&Ping"
 
-#: knu.cpp:137 knu.cpp:277
+#: knu.cpp:141 knu.cpp:281
 msgid "&Traceroute"
 msgstr "&Traceroute"
 
-#: knu.cpp:146 knu.cpp:283
+#: knu.cpp:150 knu.cpp:287
 msgid "Host &resolution"
 msgstr "&Résolution de noms"
 
-#: knu.cpp:159 knu.cpp:289
+#: knu.cpp:163 knu.cpp:293
 msgid "&Finger"
 msgstr "F&inger"
 
-#: knu.cpp:170
+#: knu.cpp:174
 msgid ""
 "There is no command enabled\n"
 "in the configuration file.\n"
@@ -41,47 +41,47 @@ msgstr ""
 "\n"
 "Donc je ne peux rien faire...\n"
 
-#: knu.cpp:215
+#: knu.cpp:219
 msgid "&New window"
 msgstr "&Nouvelle fenêtre"
 
-#: knu.cpp:218
+#: knu.cpp:222
 msgid "&Close window"
 msgstr "&Fermer la fenêtre"
 
-#: knu.cpp:229
+#: knu.cpp:233
 msgid "Select &all"
 msgstr "Selectionner &tout"
 
-#: knu.cpp:232
+#: knu.cpp:236
 msgid "C&lear output window"
 msgstr "Effacer la fenêtre d'affichage"
 
-#: knu.cpp:235
+#: knu.cpp:239
 msgid "P&references..."
 msgstr "&Préférences..."
 
-#: knu.cpp:245
+#: knu.cpp:249
 msgid "About &Qt"
 msgstr "About &Qt"
 
-#: knu.cpp:428
+#: knu.cpp:432
 msgid "About..."
 msgstr "&A propos..."
 
-#: CommandDlg.cpp:112
+#: CommandDlg.cpp:116
 msgid "H&ost:"
 msgstr "&Machine :"
 
-#: CommandDlg.cpp:121
+#: CommandDlg.cpp:125
 msgid "&Go!"
 msgstr "&Go !"
 
-#: CommandDlg.cpp:131
+#: CommandDlg.cpp:135
 msgid "&Stop"
 msgstr "&Stop"
 
-#: CommandDlg.cpp:147
+#: CommandDlg.cpp:151
 msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
@@ -89,7 +89,7 @@ msgstr ""
 "Cette commande n'a pas été trouvée. \n"
 "Vous pouvez donner son chemin par le menu Edition->Préférences..."
 
-#: CommandDlg.cpp:332
+#: CommandDlg.cpp:336
 #, c-format
 msgid ""
 "\n"
@@ -111,23 +111,23 @@ msgstr ""
 "Utilisez le menu Edition->Préférence...\n"
 "pour le configurer à nouveau.\n"
 
-#: CommandDlg.cpp:341
+#: CommandDlg.cpp:345
 msgid "Error in pathname"
 msgstr "Erreur dans le chemin du fichier"
 
-#: CommandDlg.cpp:474
+#: CommandDlg.cpp:478
 msgid "Binary"
 msgstr "Binaire"
 
-#: CommandDlg.cpp:482
+#: CommandDlg.cpp:486
 msgid "Path&name:"
 msgstr "&Chemin du programme :"
 
-#: CommandDlg.cpp:491
+#: CommandDlg.cpp:495
 msgid "Additional &arguments:"
 msgstr "&Arguments additionnels :"
 
-#: CommandDlg.cpp:516
+#: CommandDlg.cpp:520
 msgid "This command had been disabled in the configuration file."
 msgstr "Cette commande a été déactivée dans le fichier de configuration."
 
@@ -135,58 +135,58 @@ msgstr "Cette commande a été déactivée dans le fichier de configuration."
 msgid " - configuration"
 msgstr " - configuration"
 
-#: PingDlg.cpp:90 TracerouteDlg.cpp:91
+#: PingDlg.cpp:94 TracerouteDlg.cpp:95
 msgid "Make host &name resolution"
 msgstr "Faire les résolutions de &noms"
 
-#: TracerouteDlg.cpp:108
+#: TracerouteDlg.cpp:112
 msgid "&Maximum number of hops:"
 msgstr "Nombre ma&ximum de sauts :"
 
-#: HostDlg.cpp:101
+#: HostDlg.cpp:105
 msgid "address (A)"
 msgstr "adresse (A)"
 
-#: HostDlg.cpp:102
+#: HostDlg.cpp:106
 msgid "name (PTR)"
 msgstr "nom (PTR)"
 
-#: HostDlg.cpp:103
+#: HostDlg.cpp:107
 msgid "name server (NS)"
 msgstr "serveur de noms (NS)"
 
-#: HostDlg.cpp:104
+#: HostDlg.cpp:108
 msgid "mail exchanger (MX)"
 msgstr "échangeur de messages (MX)"
 
-#: HostDlg.cpp:105
+#: HostDlg.cpp:109
 msgid "alias (CNAME)"
 msgstr "alias (CNAME)"
 
-#: HostDlg.cpp:106
+#: HostDlg.cpp:110
 msgid "start of authority (SOA)"
 msgstr "début d'autorité (SOA)"
 
-#: HostDlg.cpp:107
+#: HostDlg.cpp:111
 msgid "any record (ANY)"
 msgstr "tous les enregistrements (ANY)"
 
-#: HostDlg.cpp:113
+#: HostDlg.cpp:117
 msgid "Se&arch for:"
 msgstr "Re&chercher :"
 
-#: HostDlg.cpp:125 HostDlg.cpp:264
+#: HostDlg.cpp:129 HostDlg.cpp:268
 msgid "default server"
 msgstr "serveur par défaut"
 
-#: HostDlg.cpp:134
+#: HostDlg.cpp:138
 msgid "Ser&ver:"
 msgstr "Ser&veur :"
 
-#: FingerDlg.cpp:64
+#: FingerDlg.cpp:68
 msgid "User:"
 msgstr "&Utilisateur :"
 
-#: FingerDlg.cpp:82
+#: FingerDlg.cpp:86
 msgid "Server:"
 msgstr "Ser&veur :"

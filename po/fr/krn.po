@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: krn\n"
-"POT-Creation-Date: 1998-02-25 12:40+0100\n"
+"POT-Creation-Date: 1998-03-09 00:28+0100\n"
 "PO-Revision-Date: 1998-02-25 22:45 CET\n"
 "Last-Translator: David Faure <david.faure@ifhamy.insa-lyon.fr>\n"
 "Language-Team: Français\n"
@@ -13,27 +13,27 @@ msgstr ""
 "Content-Type: text/plain; \n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: main.cpp:226 main.cpp:238 main.cpp:250 main.cpp:265 main.cpp:277
+#: main.cpp:221 main.cpp:233 main.cpp:245 main.cpp:260 main.cpp:272
 msgid "KRN-Missing Configuration info"
 msgstr "Informations manquantes dans la configuration de KRN"
 
-#: main.cpp:227
+#: main.cpp:222
 msgid "Please enter your email adress"
 msgstr "Entrez votre adresse électronique"
 
-#: main.cpp:239
+#: main.cpp:234
 msgid "Please enter your real name"
 msgstr "Entrez votre nom"
 
-#: main.cpp:251
+#: main.cpp:246
 msgid "Please enter your organization's name"
 msgstr "Entrez le nom de votre organisation"
 
-#: main.cpp:266
+#: main.cpp:261
 msgid "Please enter your NNTP server name"
 msgstr "Entrez le nom de votre serveur NNTP"
 
-#: main.cpp:278
+#: main.cpp:273
 msgid "Please enter your SMTP server name"
 msgstr "Entrez le nom de votre serveur SMTP"
 
@@ -78,7 +78,7 @@ msgstr "Charger les sujets"
 msgid "Get Articles"
 msgstr "Charger les articles"
 
-#: artdlg.cpp:245 groupdlg.cpp:144 groupdlg.cpp:152 groupdlg.cpp:160
+#: artdlg.cpp:247 groupdlg.cpp:144 groupdlg.cpp:152 groupdlg.cpp:160
 msgid "Catchup"
 msgstr "Marquer comme lus"
 
@@ -86,15 +86,15 @@ msgstr "Marquer comme lus"
 msgid "(un)Subscribe"
 msgstr "Ajouter/Retirer une inscription"
 
-#: artdlg.cpp:134 groupdlg.cpp:151
+#: artdlg.cpp:136 groupdlg.cpp:151
 msgid "Untag"
 msgstr "Démarquer"
 
-#: artdlg.cpp:154 groupdlg.cpp:159
+#: artdlg.cpp:156 groupdlg.cpp:159
 msgid "(Un)Tag"
 msgstr "(Dé)Marquer"
 
-#: artdlg.cpp:147 artdlg.cpp:215 groupdlg.cpp:162 groupdlg.cpp:224
+#: artdlg.cpp:149 artdlg.cpp:217 groupdlg.cpp:162 groupdlg.cpp:224
 msgid "Post New Article"
 msgstr "Poster un nouvel article"
 
@@ -106,7 +106,7 @@ msgstr "Poster tous les articles en attente"
 msgid "&Subscribed"
 msgstr "&Inscrits"
 
-#: artdlg.cpp:185 groupdlg.cpp:166
+#: artdlg.cpp:187 groupdlg.cpp:166
 msgid "&Tagged"
 msgstr "&Marqués"
 
@@ -254,179 +254,179 @@ msgstr "Chargement des messages "
 msgid "Getting list of messages in "
 msgstr "Chargement de la liste des messages "
 
-#: artdlg.cpp:127 artdlg.cpp:142
+#: artdlg.cpp:129 artdlg.cpp:144
 msgid "Download"
 msgstr "Télécharger"
 
-#: artdlg.cpp:129
+#: artdlg.cpp:131
 msgid "Mark Read"
 msgstr "Marquer comme lu"
 
-#: artdlg.cpp:130
+#: artdlg.cpp:132
 msgid "Mark Unread"
 msgstr "Marquer comme non-lu"
 
-#: artdlg.cpp:132 artdlg.cpp:146
+#: artdlg.cpp:134 artdlg.cpp:148
 msgid "Print"
 msgstr "Imprimer"
 
-#: artdlg.cpp:133 artdlg.cpp:153
+#: artdlg.cpp:135 artdlg.cpp:155
 msgid "Decode"
 msgstr "Décoder"
 
-#: artdlg.cpp:135 artdlg.cpp:158
+#: artdlg.cpp:137 artdlg.cpp:160
 msgid "Don't expire"
 msgstr "Empêcher l'expiration"
 
-#: artdlg.cpp:144
+#: artdlg.cpp:146
 msgid "Lookup in Altavista"
 msgstr "Regarder dans Altavista"
 
-#: artdlg.cpp:148 artdlg.cpp:218
+#: artdlg.cpp:150 artdlg.cpp:220
 msgid "Reply by Mail"
 msgstr "Répondre par courrier électronique"
 
-#: artdlg.cpp:149
+#: artdlg.cpp:151
 msgid "Post Followup"
 msgstr "Répondre dans le groupe de discussion"
 
-#: artdlg.cpp:150
+#: artdlg.cpp:152
 msgid "Post & Reply"
 msgstr "Répondre par courrier et dans le groupe"
 
-#: artdlg.cpp:156
+#: artdlg.cpp:158
 msgid "Tagged"
 msgstr "Messages marqués"
 
-#: artdlg.cpp:167
+#: artdlg.cpp:169
 msgid "Show Only Unread Messages"
 msgstr "Afficher uniquement les messages non-lus"
 
-#: artdlg.cpp:169
+#: artdlg.cpp:171
 msgid "Show Only Cached Messages"
 msgstr "Afficher uniquement les messages chargés"
 
-#: artdlg.cpp:171
+#: artdlg.cpp:173
 msgid "Show Locked Messages"
 msgstr "Afficher les messages verrouillés"
 
-#: artdlg.cpp:173
+#: artdlg.cpp:175
 msgid "Expunge"
 msgstr "Faire expirer"
 
-#: artdlg.cpp:174
+#: artdlg.cpp:176
 msgid "Appearance..."
 msgstr "Apparence..."
 
-#: artdlg.cpp:175
+#: artdlg.cpp:177
 msgid "Sorting..."
 msgstr "Tri en cours..."
 
-#: artdlg.cpp:179
+#: artdlg.cpp:181
 msgid "Edit Rules"
 msgstr "Editer les règles"
 
-#: artdlg.cpp:180
+#: artdlg.cpp:182
 msgid "Update"
 msgstr "Mettre à jour"
 
-#: artdlg.cpp:183
+#: artdlg.cpp:185
 msgid "menu"
 msgstr "menu"
 
-#: artdlg.cpp:187
+#: artdlg.cpp:189
 msgid "&Scoring"
 msgstr "&Pertinance"
 
-#: artdlg.cpp:197
+#: artdlg.cpp:199
 msgid "Previous Message"
 msgstr "Message précédent"
 
-#: artdlg.cpp:200
+#: artdlg.cpp:202
 msgid "Next Message"
 msgstr "Message suivant"
 
-#: artdlg.cpp:205
+#: artdlg.cpp:207
 msgid "Save Article"
 msgstr "Sauver l'article"
 
-#: artdlg.cpp:208
+#: artdlg.cpp:210
 msgid "Print Article"
 msgstr "Imprimer l'article"
 
-#: artdlg.cpp:211
+#: artdlg.cpp:213
 msgid "Find Article"
 msgstr "Chercher un article"
 
-#: artdlg.cpp:221
+#: artdlg.cpp:223
 msgid "Post a Followup"
 msgstr "Répondre dans le groupe de discussion"
 
-#: artdlg.cpp:224
+#: artdlg.cpp:226
 msgid "Post & Mail"
 msgstr "Répondre par courrier et dans le groupe"
 
-#: artdlg.cpp:233
+#: artdlg.cpp:235
 msgid "Get Article List"
 msgstr "Charger la liste d'articles"
 
-#: artdlg.cpp:236
+#: artdlg.cpp:238
 msgid "Tag Article"
 msgstr "Marquer l'article"
 
-#: artdlg.cpp:239
+#: artdlg.cpp:241
 msgid "Lock (keep in cache)"
 msgstr "Verrouiller (garder en mémoire)"
 
-#: artdlg.cpp:242
+#: artdlg.cpp:244
 msgid "Decode Article"
 msgstr "Décoder l'article"
 
-#: artdlg.cpp:271 sortDlg.cpp:34
+#: artdlg.cpp:273 sortDlg.cpp:34
 msgid "Sender"
 msgstr "Expéditeur"
 
-#: artdlg.cpp:272 sortDlg.cpp:35
+#: artdlg.cpp:274 sortDlg.cpp:35
 msgid "Date"
 msgstr "Date"
 
-#: artdlg.cpp:273 sortDlg.cpp:36
+#: artdlg.cpp:275 sortDlg.cpp:36
 msgid "Lines"
 msgstr "Lignes"
 
-#: artdlg.cpp:274 sortDlg.cpp:33
+#: artdlg.cpp:276 sortDlg.cpp:33
 msgid "Score"
 msgstr "Score"
 
-#: artdlg.cpp:275 sortDlg.cpp:32
+#: artdlg.cpp:277 sortDlg.cpp:32
 msgid "Subject"
 msgstr "Sujet"
 
-#: artdlg.cpp:451
+#: artdlg.cpp:453
 msgid "Threading..."
 msgstr "Tri..."
 
-#: artdlg.cpp:460
+#: artdlg.cpp:462
 msgid "Showing Article List"
 msgstr "Affichage de la liste des articles"
 
-#: artdlg.cpp:1134
+#: artdlg.cpp:1153
 msgid "KRN - Existing File"
 msgstr "KRN - Fichier existant"
 
-#: artdlg.cpp:1135
+#: artdlg.cpp:1154
 msgid "The File you selected already exists"
 msgstr "Le fichier sélectionné existe déjà"
 
-#: artdlg.cpp:1141
+#: artdlg.cpp:1160
 msgid "OverWrite"
 msgstr "Ecraser"
 
-#: artdlg.cpp:1143
+#: artdlg.cpp:1162
 msgid "Append"
 msgstr "Ajouter en fin de fichier"
 
-#: artdlg.cpp:1178
+#: artdlg.cpp:1197
 msgid ""
 "From: Krn\n"
 "To: You\n"
@@ -440,7 +440,7 @@ msgstr ""
 "Error en chargeant l'article.\n"
 "Message du serveur:\n"
 
-#: artdlg.cpp:1278
+#: artdlg.cpp:1297
 msgid "Getting Article List"
 msgstr "Chargement de la liste d'articles"
 
@@ -516,11 +516,11 @@ msgstr "ID"
 msgid "Name"
 msgstr "Nom"
 
-#: decoderDlg.cpp:43
+#: decoderDlg.cpp:44
 msgid "Destination directory:"
 msgstr "Répertoire de destination :"
 
-#: decoderDlg.cpp:46
+#: decoderDlg.cpp:47
 msgid "Decode All"
 msgstr "Décoder tout"
 
@@ -769,18 +769,14 @@ msgstr "Trié par :"
 msgid "Use Threading"
 msgstr "Utilise les fils de discussion"
 
-#: charsetsDlg.cpp:26
-msgid "KRN - Charset Settings"
-msgstr "KRN - Configuration du jeu de caractères"
+#~ msgid "KRN - Charset Settings"
+#~ msgstr "KRN - Configuration du jeu de caractères"
 
-#: charsetsDlg.cpp:28
-msgid "KMail - Charset Settings"
-msgstr "KMail - Configuration du jeu de caractères"
+#~ msgid "KMail - Charset Settings"
+#~ msgstr "KMail - Configuration du jeu de caractères"
 
-#: charsetsDlg.cpp:38
-msgid "Message charset"
-msgstr "Jeu de caractères du message"
+#~ msgid "Message charset"
+#~ msgstr "Jeu de caractères du message"
 
-#: charsetsDlg.cpp:56
-msgid "Composer charset"
-msgstr "Jeu de caractères du composeur"
+#~ msgid "Composer charset"
+#~ msgstr "Jeu de caractères du composeur"

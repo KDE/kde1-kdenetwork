@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 1998-02-24 21:40+0100\n"
+"POT-Creation-Date: 1998-03-09 00:28+0100\n"
 "PO-Revision-Date: 1998-01-12 12:21+CET\n"
 "Last-Translator: John Zero <johnzero@telnet.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -12,19 +12,24 @@ msgstr ""
 "Files: knu.cpp CommandDlg.cpp OptionsDlg.cpp ktabctl.cpp PingDlg.cpp "
 "TracerouteDlg.cpp HostDlg.cpp\n"
 
-#: knu.cpp:123 knu.cpp:256
+#: knu.cpp:132 knu.cpp:275
 msgid "&Ping"
 msgstr "&Ping"
 
-#: knu.cpp:132 knu.cpp:261
+#: knu.cpp:141 knu.cpp:281
 msgid "&Traceroute"
 msgstr "&Traceroute"
 
-#: knu.cpp:141 knu.cpp:266
+#: knu.cpp:150 knu.cpp:287
 msgid "Host &resolution"
 msgstr "&Gépnév feloldása"
 
-#: knu.cpp:156
+#: knu.cpp:163 knu.cpp:293
+#, fuzzy
+msgid "&Finger"
+msgstr "&Ping"
+
+#: knu.cpp:174
 msgid ""
 "There is no command enabled\n"
 "in the configuration file.\n"
@@ -36,47 +41,47 @@ msgstr ""
 "\n"
 "Úgyhogy nem tehetek semmit...\n"
 
-#: knu.cpp:201
+#: knu.cpp:219
 msgid "&New window"
 msgstr "&Uj ablak"
 
-#: knu.cpp:204
+#: knu.cpp:222
 msgid "&Close window"
 msgstr "Albak &bezárása"
 
-#: knu.cpp:215
+#: knu.cpp:233
 msgid "Select &all"
 msgstr "&Mindent kijelöl"
 
-#: knu.cpp:218
+#: knu.cpp:236
 msgid "C&lear output window"
 msgstr "Eredményablak törlése"
 
-#: knu.cpp:221
+#: knu.cpp:239
 msgid "P&references..."
 msgstr "&Beállítások"
 
-#: knu.cpp:231
+#: knu.cpp:249
 msgid "About &Qt"
 msgstr "A &Qt-rõl"
 
-#: knu.cpp:404
+#: knu.cpp:432
 msgid "About..."
 msgstr "A programról..."
 
-#: CommandDlg.cpp:112
+#: CommandDlg.cpp:116
 msgid "H&ost:"
 msgstr "Gép:"
 
-#: CommandDlg.cpp:121
+#: CommandDlg.cpp:125
 msgid "&Go!"
 msgstr "&Mehet!"
 
-#: CommandDlg.cpp:131
+#: CommandDlg.cpp:135
 msgid "&Stop"
 msgstr "&Allj"
 
-#: CommandDlg.cpp:147
+#: CommandDlg.cpp:151
 msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
@@ -84,19 +89,37 @@ msgstr ""
 "A parancsnak megfelelõ binárist nem találom.Az elérési útvonalát a "
 "Szerkesztés->Beállítások alatt adhatod meg."
 
-#: CommandDlg.cpp:453
+#: CommandDlg.cpp:336
+#, c-format
+msgid ""
+"\n"
+"You have a problem in your\n"
+"%s/%src\n"
+"configuration file.\n"
+"In the [%s] group,\n"
+"I can't find a valid \"path=\" entry.\n"
+"\n"
+"Please use Edit->Preferences... menu\n"
+"to configure it again.\n"
+msgstr ""
+
+#: CommandDlg.cpp:345
+msgid "Error in pathname"
+msgstr ""
+
+#: CommandDlg.cpp:478
 msgid "Binary"
 msgstr "Bináris"
 
-#: CommandDlg.cpp:461
+#: CommandDlg.cpp:486
 msgid "Path&name:"
 msgstr "&Utvonal:"
 
-#: CommandDlg.cpp:470
+#: CommandDlg.cpp:495
 msgid "Additional &arguments:"
 msgstr "&További paraméterek:"
 
-#: CommandDlg.cpp:495
+#: CommandDlg.cpp:520
 msgid "This command had been disabled in the configuration file."
 msgstr "Ez a parancs ki lett kapcsolva a konfigurációs file-ban."
 
@@ -104,64 +127,71 @@ msgstr "Ez a parancs ki lett kapcsolva a konfigurációs file-ban."
 msgid " - configuration"
 msgstr " - konfiguráció"
 
-#: PingDlg.cpp:90 TracerouteDlg.cpp:91
+#: PingDlg.cpp:94 TracerouteDlg.cpp:95
 msgid "Make host &name resolution"
 msgstr "&Oldd fel a gépneveket"
 
-#: HostDlg.cpp:220 PingDlg.cpp:146 TracerouteDlg.cpp:168
-#, fuzzy
-msgid ""
-"You have a problem in your ~/.kde/share/config/knurc configuration file.\n"
-"In the ["
-msgstr "Probéma van a ~/.kderc/share/config/knurc file-ban,a ["
-
-#: HostDlg.cpp:224 PingDlg.cpp:150 TracerouteDlg.cpp:172
-msgid "] group, I cannotfind a correct \"path=\" entry."
-msgstr "] csoportban nem találok egy jó \"path=\" bejegyzést."
-
-#: TracerouteDlg.cpp:108
+#: TracerouteDlg.cpp:112
 msgid "&Maximum number of hops:"
 msgstr "&Maximum ennyit ugorj:"
 
-#: HostDlg.cpp:101
+#: HostDlg.cpp:105
 msgid "address (A)"
 msgstr "cím (A)"
 
-#: HostDlg.cpp:102
+#: HostDlg.cpp:106
 msgid "name (PTR)"
 msgstr "név (PTR)"
 
-#: HostDlg.cpp:103
+#: HostDlg.cpp:107
 msgid "name server (NS)"
 msgstr "névszerver (NS)"
 
-#: HostDlg.cpp:104
+#: HostDlg.cpp:108
 msgid "mail exchanger (MX)"
 msgstr "levél cserélõ (MX)"
 
-#: HostDlg.cpp:105
+#: HostDlg.cpp:109
 msgid "alias (CNAME)"
 msgstr "álnév (CNAME)"
 
-#: HostDlg.cpp:106
+#: HostDlg.cpp:110
 msgid "start of authority (SOA)"
 msgstr "hivatalosság kezdete (SOA)"
 
-#: HostDlg.cpp:107
+#: HostDlg.cpp:111
 msgid "any record (ANY)"
 msgstr "bármi (ANY)"
 
-#: HostDlg.cpp:113
+#: HostDlg.cpp:117
 msgid "Se&arch for:"
 msgstr "&Keress:"
 
-#: HostDlg.cpp:125 HostDlg.cpp:271
+#: HostDlg.cpp:129 HostDlg.cpp:268
 msgid "default server"
 msgstr "alapért szerver"
 
-#: HostDlg.cpp:134
+#: HostDlg.cpp:138
 msgid "Ser&ver:"
 msgstr "&Szerver:"
+
+#: FingerDlg.cpp:68
+msgid "User:"
+msgstr ""
+
+#: FingerDlg.cpp:86
+#, fuzzy
+msgid "Server:"
+msgstr "&Szerver:"
+
+#, fuzzy
+#~ msgid ""
+#~ "You have a problem in your ~/.kde/share/config/knurc configuration file.\n"
+#~ "In the ["
+#~ msgstr "Probéma van a ~/.kderc/share/config/knurc file-ban,a ["
+
+#~ msgid "] group, I cannotfind a correct \"path=\" entry."
+#~ msgstr "] csoportban nem találok egy jó \"path=\" bejegyzést."
 
 #~ msgid "&Contents"
 #~ msgstr "&Tartalom"

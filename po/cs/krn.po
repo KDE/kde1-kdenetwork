@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: krn\n"
-"POT-Creation-Date: 1998-02-25 12:40+0100\n"
+"POT-Creation-Date: 1998-03-09 00:28+0100\n"
 "PO-Revision-Date: 1998-01-27 14:47 MET\n"
 "Last-Translator: Miroslav Flídr <flidr@ky.zcu.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -13,27 +13,27 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: main.cpp:226 main.cpp:238 main.cpp:250 main.cpp:265 main.cpp:277
+#: main.cpp:221 main.cpp:233 main.cpp:245 main.cpp:260 main.cpp:272
 msgid "KRN-Missing Configuration info"
 msgstr "KRN - Informace o chybìjící konfiguraci"
 
-#: main.cpp:227
+#: main.cpp:222
 msgid "Please enter your email adress"
 msgstr "Prosím zadejte va¹i e-mailovou adresu"
 
-#: main.cpp:239
+#: main.cpp:234
 msgid "Please enter your real name"
 msgstr "Prosím zadejte své jméno"
 
-#: main.cpp:251
+#: main.cpp:246
 msgid "Please enter your organization's name"
 msgstr "Prosím zadejte jméno va¹í organizace"
 
-#: main.cpp:266
+#: main.cpp:261
 msgid "Please enter your NNTP server name"
 msgstr "Prosím zadejte vá¹ NNTP server"
 
-#: main.cpp:278
+#: main.cpp:273
 msgid "Please enter your SMTP server name"
 msgstr "Prosím zadejte jméno va¹eho SMTP serveru"
 
@@ -79,7 +79,7 @@ msgstr "Získat témata"
 msgid "Get Articles"
 msgstr "Získat èlánky"
 
-#: artdlg.cpp:245 groupdlg.cpp:144 groupdlg.cpp:152 groupdlg.cpp:160
+#: artdlg.cpp:247 groupdlg.cpp:144 groupdlg.cpp:152 groupdlg.cpp:160
 msgid "Catchup"
 msgstr "Oznaèit v¹echny èlánky jako pøeètené"
 
@@ -87,15 +87,15 @@ msgstr "Oznaèit v¹echny èlánky jako pøeètené"
 msgid "(un)Subscribe"
 msgstr "Pøihlásit/Odhlásit"
 
-#: artdlg.cpp:134 groupdlg.cpp:151
+#: artdlg.cpp:136 groupdlg.cpp:151
 msgid "Untag"
 msgstr "Zru¹it oznaèení"
 
-#: artdlg.cpp:154 groupdlg.cpp:159
+#: artdlg.cpp:156 groupdlg.cpp:159
 msgid "(Un)Tag"
 msgstr "Oznaèení vypnout/zapnout"
 
-#: artdlg.cpp:147 artdlg.cpp:215 groupdlg.cpp:162 groupdlg.cpp:224
+#: artdlg.cpp:149 artdlg.cpp:217 groupdlg.cpp:162 groupdlg.cpp:224
 msgid "Post New Article"
 msgstr "Zveøejnit nový èlánek"
 
@@ -107,7 +107,7 @@ msgstr "Zveøejnit èlánky zaøazené do fronty"
 msgid "&Subscribed"
 msgstr "&Pøihlá¹ené"
 
-#: artdlg.cpp:185 groupdlg.cpp:166
+#: artdlg.cpp:187 groupdlg.cpp:166
 msgid "&Tagged"
 msgstr "&Oznaèené"
 
@@ -256,183 +256,183 @@ msgstr "Získávám zprávy z "
 msgid "Getting list of messages in "
 msgstr "Získávám seznam zpráv z "
 
-#: artdlg.cpp:127 artdlg.cpp:142
+#: artdlg.cpp:129 artdlg.cpp:144
 msgid "Download"
 msgstr "Pøimout"
 
-#: artdlg.cpp:129
+#: artdlg.cpp:131
 #, fuzzy
 msgid "Mark Read"
 msgstr "Oznaèit v¹e"
 
-#: artdlg.cpp:130
+#: artdlg.cpp:132
 #, fuzzy
 msgid "Mark Unread"
 msgstr "Oznaèit v¹e"
 
-#: artdlg.cpp:132 artdlg.cpp:146
+#: artdlg.cpp:134 artdlg.cpp:148
 msgid "Print"
 msgstr "Tisknout"
 
-#: artdlg.cpp:133 artdlg.cpp:153
+#: artdlg.cpp:135 artdlg.cpp:155
 msgid "Decode"
 msgstr "Dekódovat"
 
-#: artdlg.cpp:135 artdlg.cpp:158
+#: artdlg.cpp:137 artdlg.cpp:160
 msgid "Don't expire"
 msgstr "Ponechat si"
 
-#: artdlg.cpp:144
+#: artdlg.cpp:146
 msgid "Lookup in Altavista"
 msgstr ""
 
-#: artdlg.cpp:148 artdlg.cpp:218
+#: artdlg.cpp:150 artdlg.cpp:220
 msgid "Reply by Mail"
 msgstr "Odpovìdìt po¹tou"
 
-#: artdlg.cpp:149
+#: artdlg.cpp:151
 msgid "Post Followup"
 msgstr "Zveøejnit odpovìï"
 
-#: artdlg.cpp:150
+#: artdlg.cpp:152
 msgid "Post & Reply"
 msgstr "Zveøejnit a odpovìdìt"
 
-#: artdlg.cpp:156
+#: artdlg.cpp:158
 msgid "Tagged"
 msgstr "Oznaèené"
 
-#: artdlg.cpp:167
+#: artdlg.cpp:169
 msgid "Show Only Unread Messages"
 msgstr "Zobrazit pouze nepøeètené zprávy"
 
-#: artdlg.cpp:169
+#: artdlg.cpp:171
 msgid "Show Only Cached Messages"
 msgstr "Zobrazit pouze cacheované zprávy"
 
-#: artdlg.cpp:171
+#: artdlg.cpp:173
 msgid "Show Locked Messages"
 msgstr "Zobrazit zamèené zprávy"
 
-#: artdlg.cpp:173
+#: artdlg.cpp:175
 msgid "Expunge"
 msgstr "Vymazat"
 
-#: artdlg.cpp:174
+#: artdlg.cpp:176
 msgid "Appearance..."
 msgstr "Vzhled ..."
 
-#: artdlg.cpp:175
+#: artdlg.cpp:177
 #, fuzzy
 msgid "Sorting..."
 msgstr "Tøídìní ..."
 
-#: artdlg.cpp:179
+#: artdlg.cpp:181
 msgid "Edit Rules"
 msgstr ""
 
-#: artdlg.cpp:180
+#: artdlg.cpp:182
 msgid "Update"
 msgstr ""
 
-#: artdlg.cpp:183
+#: artdlg.cpp:185
 msgid "menu"
 msgstr "menu"
 
-#: artdlg.cpp:187
+#: artdlg.cpp:189
 #, fuzzy
 msgid "&Scoring"
 msgstr "Kódování"
 
-#: artdlg.cpp:197
+#: artdlg.cpp:199
 msgid "Previous Message"
 msgstr "Pøedchozí zpráva"
 
-#: artdlg.cpp:200
+#: artdlg.cpp:202
 msgid "Next Message"
 msgstr "Následující zpráva"
 
-#: artdlg.cpp:205
+#: artdlg.cpp:207
 msgid "Save Article"
 msgstr "Ulo¾it èlánek"
 
-#: artdlg.cpp:208
+#: artdlg.cpp:210
 msgid "Print Article"
 msgstr "Tisknout èlánek"
 
-#: artdlg.cpp:211
+#: artdlg.cpp:213
 msgid "Find Article"
 msgstr "Najít èlánek"
 
-#: artdlg.cpp:221
+#: artdlg.cpp:223
 msgid "Post a Followup"
 msgstr "Zveøejnit odpovìï"
 
-#: artdlg.cpp:224
+#: artdlg.cpp:226
 msgid "Post & Mail"
 msgstr "Zveøejnit a poslat po¹tou"
 
-#: artdlg.cpp:233
+#: artdlg.cpp:235
 msgid "Get Article List"
 msgstr "Získat seznam èlánkù"
 
-#: artdlg.cpp:236
+#: artdlg.cpp:238
 msgid "Tag Article"
 msgstr "Oznaèit èlánek"
 
-#: artdlg.cpp:239
+#: artdlg.cpp:241
 msgid "Lock (keep in cache)"
 msgstr "Uzamknout (uchovat v cache)"
 
-#: artdlg.cpp:242
+#: artdlg.cpp:244
 msgid "Decode Article"
 msgstr "Dekódovat èlánek"
 
-#: artdlg.cpp:271 sortDlg.cpp:34
+#: artdlg.cpp:273 sortDlg.cpp:34
 msgid "Sender"
 msgstr "Odesilatel"
 
-#: artdlg.cpp:272 sortDlg.cpp:35
+#: artdlg.cpp:274 sortDlg.cpp:35
 msgid "Date"
 msgstr "Datum"
 
-#: artdlg.cpp:273 sortDlg.cpp:36
+#: artdlg.cpp:275 sortDlg.cpp:36
 msgid "Lines"
 msgstr "Øádky"
 
-#: artdlg.cpp:274 sortDlg.cpp:33
+#: artdlg.cpp:276 sortDlg.cpp:33
 msgid "Score"
 msgstr ""
 
-#: artdlg.cpp:275 sortDlg.cpp:32
+#: artdlg.cpp:277 sortDlg.cpp:32
 msgid "Subject"
 msgstr "Pøedmìt"
 
-#: artdlg.cpp:451
+#: artdlg.cpp:453
 msgid "Threading..."
 msgstr "Tøídìní ..."
 
-#: artdlg.cpp:460
+#: artdlg.cpp:462
 msgid "Showing Article List"
 msgstr "Zobrazuji seznam èlánkù"
 
-#: artdlg.cpp:1134
+#: artdlg.cpp:1153
 msgid "KRN - Existing File"
 msgstr "KRN - Existující soubor"
 
-#: artdlg.cpp:1135
+#: artdlg.cpp:1154
 msgid "The File you selected already exists"
 msgstr "Vybraný soubor ji¾ existuje"
 
-#: artdlg.cpp:1141
+#: artdlg.cpp:1160
 msgid "OverWrite"
 msgstr "Pøepsat"
 
-#: artdlg.cpp:1143
+#: artdlg.cpp:1162
 msgid "Append"
 msgstr "Pøipojit"
 
-#: artdlg.cpp:1178
+#: artdlg.cpp:1197
 #, fuzzy
 msgid ""
 "From: Krn\n"
@@ -445,7 +445,7 @@ msgstr ""
 "Chyba pøi získávání èlánku.\n"
 "Server odpovìdìl:\n"
 
-#: artdlg.cpp:1278
+#: artdlg.cpp:1297
 msgid "Getting Article List"
 msgstr "Získávám sezanm èlánkù"
 
@@ -523,11 +523,11 @@ msgstr "ID"
 msgid "Name"
 msgstr "Jnémo"
 
-#: decoderDlg.cpp:43
+#: decoderDlg.cpp:44
 msgid "Destination directory:"
 msgstr ""
 
-#: decoderDlg.cpp:46
+#: decoderDlg.cpp:47
 #, fuzzy
 msgid "Decode All"
 msgstr "Dekódovat"
@@ -792,24 +792,17 @@ msgstr ""
 msgid "Use Threading"
 msgstr "Tøídìní ..."
 
-#: charsetsDlg.cpp:26
 #, fuzzy
-msgid "KRN - Charset Settings"
-msgstr "KRN - Nastavení expirace"
+#~ msgid "KRN - Charset Settings"
+#~ msgstr "KRN - Nastavení expirace"
 
-#: charsetsDlg.cpp:28
 #, fuzzy
-msgid "KMail - Charset Settings"
-msgstr "KRN - Nastavení expirace"
+#~ msgid "KMail - Charset Settings"
+#~ msgstr "KRN - Nastavení expirace"
 
-#: charsetsDlg.cpp:38
 #, fuzzy
-msgid "Message charset"
-msgstr "Vlastnosti souèásti zprávy"
-
-#: charsetsDlg.cpp:56
-msgid "Composer charset"
-msgstr ""
+#~ msgid "Message charset"
+#~ msgstr "Vlastnosti souèásti zprávy"
 
 #~ msgid "test"
 #~ msgstr "test"

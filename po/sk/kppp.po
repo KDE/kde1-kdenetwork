@@ -5,13 +5,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp 0.9.6\n"
-"POT-Creation-Date: 1998-02-24 21:40+0100\n"
+"POT-Creation-Date: 1998-03-09 00:28+0100\n"
 "PO-Revision-Date: 1998-03-08 10:42 MET\n"
 "Last-Translator: Juraj Bednár <bednar@isternet.sk>\n"
 "Language-Team: Slovak <bednar@isternet.sk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-2\n"
-"Content-Transfer-Encoding: 8bit\n"    
+"Content-Transfer-Encoding: 8bit\n"
 
 #: accounts.cpp:53
 msgid "Account Setup"
@@ -114,164 +114,178 @@ msgstr ""
 msgid "Login script has unbalanced Loop Start/End"
 msgstr "Prihlasovací skript má nevyvá¾ené skoky zaèiatok/koniec"
 
-#: connect.cpp:94 connect.cpp:194 main.cpp:767
+#: connect.cpp:98 connect.cpp:200 main.cpp:769
 msgid "Connecting to: "
 msgstr "Pripájanie k: "
 
-#: connect.cpp:103 connect.cpp:209 miniterm.cpp:162 modeminfo.cpp:63
+#: connect.cpp:107 connect.cpp:215 miniterm.cpp:162 modeminfo.cpp:63
 #: modeminfo.cpp:150
 msgid "Sorry, can't create modem lock file."
 msgstr "¥utujem, nemô¾em vytvori» súbor pre zamknutie modemu."
 
-#: connect.cpp:108 connect.cpp:171 modeminfo.cpp:68
+#: connect.cpp:112 connect.cpp:175 modeminfo.cpp:68
 msgid "Looking for Modem ..."
 msgstr "Hµadám modem ..."
 
-#: connect.cpp:117 debug.cpp:86 main.cpp:780
+#: connect.cpp:121 debug.cpp:86 main.cpp:782
 msgid "Log"
 msgstr "Záznam"
 
-#: connect.cpp:203 miniterm.cpp:157 modeminfo.cpp:145
+#: connect.cpp:209 miniterm.cpp:157 modeminfo.cpp:145
 msgid "Sorry, modem device is locked."
 msgstr "¥utujem, modemové zariadenie je uzamknuté."
 
-#: connect.cpp:215 miniterm.cpp:176 miniterm.cpp:253 modeminfo.cpp:165
+#: connect.cpp:221 miniterm.cpp:176 miniterm.cpp:253 modeminfo.cpp:165
 msgid "Modem Ready"
 msgstr "Modem pripravený"
 
-#: connect.cpp:247 connect.cpp:248
+#: connect.cpp:253 connect.cpp:254
 msgid "Initializing Modem..."
 msgstr "Inicializácia modemu ..."
 
-#: connect.cpp:272
+#: connect.cpp:278
 msgid "Dialing"
 msgstr "Vytáèam èíslo"
 
-#: connect.cpp:302
+#: connect.cpp:308
 msgid "Line Busy. Hanging up ..."
 msgstr "Linka obsadená, skladám ..."
 
-#: connect.cpp:308
+#: connect.cpp:314
 msgid "Line Busy. Waiting: "
 msgstr "Linka obsadená. Èakám: "
 
-#: connect.cpp:310 connect.cpp:399 connect.cpp:418
+#: connect.cpp:316 connect.cpp:415 connect.cpp:434
 msgid " seconds"
 msgstr "sekúnd"
 
-#: connect.cpp:328
+#: connect.cpp:334
 msgid "No Dialtone"
 msgstr "®iadny vyzváòací tón (na Slovensku treba zmeni» nastavenie modemu)"
 
-#: connect.cpp:338
+#: connect.cpp:344
 msgid "No Carrier"
 msgstr "®iadny nosiè"
 
-#: connect.cpp:373
+#: connect.cpp:379
+#, fuzzy
+msgid "Scanning "
+msgstr "Posielam "
+
+#: connect.cpp:390
 msgid "Sending "
 msgstr "Posielam "
 
-#: connect.cpp:385
+#: connect.cpp:401
 msgid "Expecting "
 msgstr "Oèakávam "
 
-#: connect.cpp:397
+#: connect.cpp:413
 msgid "Pause "
 msgstr "Pauza "
 
-#: connect.cpp:416
+#: connect.cpp:432
 msgid "Timeout "
 msgstr "Timeout"
 
-#: connect.cpp:430 connect.cpp:431
+#: connect.cpp:446 connect.cpp:447
 msgid "Hangup"
 msgstr "Zavesenie"
 
-#: connect.cpp:444 connect.cpp:445
+#: connect.cpp:460 connect.cpp:461
 msgid "Answer"
 msgstr "Odpoveï"
 
-#: connect.cpp:453
+#: connect.cpp:469
 msgid "ID "
 msgstr "ID"
 
-#: connect.cpp:490
+#: connect.cpp:506
 msgid "Password "
 msgstr "Heslo"
 
-#: connect.cpp:527
+#: connect.cpp:543
 msgid "Prompting "
 msgstr "Pýtam sa na "
 
-#: connect.cpp:552
+#: connect.cpp:580
 msgid "PW Prompt "
 msgstr "PW Prompt"
 
-#: connect.cpp:578
+#: connect.cpp:606
 msgid "Loop Start "
 msgstr "©tart sluèky"
 
-#: connect.cpp:582
+#: connect.cpp:610
 msgid "ERROR: Nested too deep, ignored."
 msgstr "CHYBA: Sluèka vnorená príli¹ hlboko, ignorujem."
 
-#: connect.cpp:587
+#: connect.cpp:615
 msgid "Loops nested too deeply!"
 msgstr "Sluèky vnorené príli¹ hlboko!"
 
-#: connect.cpp:605
+#: connect.cpp:633
 msgid "LoopEnd without mathing Start! Line: "
 msgstr "Koniec sluèky bez odpovedajúceheho riadku ©tart! : "
 
-#: connect.cpp:682
+#: connect.cpp:710
 msgid "Starting pppd ..."
 msgstr "©tartujem pppd ..."
 
-#: connect.cpp:742 connect.cpp:768
+#: connect.cpp:770 connect.cpp:796
 msgid "unknown speed"
 msgstr "neznáma rýchlos»"
 
-#: connect.cpp:794
+#: connect.cpp:834
+msgid "Scan Var: "
+msgstr ""
+
+#: connect.cpp:845
 msgid "Found: "
 msgstr "Nájdené: "
 
-#: connect.cpp:805
+#: connect.cpp:857
 msgid "Looping: "
 msgstr "Cyklus: "
 
-#: connect.cpp:837 modeminfo.cpp:333
+#: connect.cpp:888 modeminfo.cpp:333
 msgid "One Moment Please ..."
 msgstr "Momentík prosím ..."
 
-#: connect.cpp:880
+#: connect.cpp:931
 msgid "Script timed out!"
 msgstr "Timeout skriptu!"
 
-#: connect.cpp:907
+#: connect.cpp:956
+#, fuzzy
+msgid "Scanning: "
+msgstr "Posielam "
+
+#: connect.cpp:967
 msgid "Expecting: "
 msgstr "Oèakávam:"
 
-#: connect.cpp:941
+#: connect.cpp:1001
 msgid "Logging on to Network ..."
 msgstr "Prihlasovanie do siete ..."
 
-#: connect.cpp:967
+#: connect.cpp:1027
 msgid "Running Startup Command ..."
 msgstr "Vykonávam ¹tartovací príkaz ..."
 
-#: connect.cpp:1032
+#: connect.cpp:1092
 msgid "Sorry, can't open modem."
 msgstr "¥utujem, nemô¾em otvori» modem."
 
-#: connect.cpp:1039
+#: connect.cpp:1099
 msgid "Sorry, the modem is not ready."
 msgstr "¥utujem, modem nie je pripravený."
 
-#: connect.cpp:1047 connect.cpp:1088 modeminfo.cpp:375
+#: connect.cpp:1107 connect.cpp:1148 modeminfo.cpp:375
 msgid "Sorry, the modem is busy."
 msgstr "¥utujem,  modem je zaneprázdnený."
 
-#: connect.cpp:1322
+#: connect.cpp:1382
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
@@ -557,7 +571,7 @@ msgstr "Zámok modemu:"
 msgid "Modem Timeout:"
 msgstr "Timemout modemu:"
 
-#: general.cpp:433 main.cpp:477
+#: general.cpp:433 main.cpp:479
 msgid "Modem"
 msgstr "Modem"
 
@@ -585,31 +599,31 @@ msgstr "Opýta» sa modemu"
 msgid "Terminal"
 msgstr "Terminál"
 
-#: main.cpp:304
+#: main.cpp:306
 msgid "Connect to: "
 msgstr "Pripoji» k: "
 
-#: main.cpp:315
+#: main.cpp:317
 msgid "Login ID:"
 msgstr "Login ID:"
 
-#: main.cpp:327
+#: main.cpp:329
 msgid "Password:"
 msgstr "Heslo:"
 
-#: main.cpp:344
+#: main.cpp:346
 msgid "Show Log Window"
 msgstr "Zobrazova» okno so záznamom"
 
-#: main.cpp:366
+#: main.cpp:368
 msgid "Setup"
 msgstr "Nastavenie"
 
-#: main.cpp:381
+#: main.cpp:383
 msgid "Connect"
 msgstr "Pripoji»"
 
-#: main.cpp:446
+#: main.cpp:448
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -618,23 +632,23 @@ msgstr ""
 "Toto konto neexistuje:\n"
 "%s"
 
-#: main.cpp:463
+#: main.cpp:465
 msgid "kppp Configuration"
 msgstr "Konfigurácia kppp"
 
-#: main.cpp:475
+#: main.cpp:477
 msgid "Accounts"
 msgstr "Kontá"
 
-#: main.cpp:476
+#: main.cpp:478
 msgid "Device"
 msgstr "Zariadenie"
 
-#: main.cpp:478
+#: main.cpp:480
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:702
+#: main.cpp:704
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -651,7 +665,7 @@ msgstr ""
 "v konfiguraènom dialógu\n"
 " Ïakujem vám"
 
-#: main.cpp:714
+#: main.cpp:716
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -664,7 +678,7 @@ msgstr ""
 "Prosím uistite sa, ¾e ste nastavili setuid právo pre kppp\n"
 "a ¾e je pppd vykonávateµný."
 
-#: main.cpp:728
+#: main.cpp:730
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -685,7 +699,7 @@ msgstr ""
 "v konfiguraènom dialógu.\n"
 " Ïakujem vám"
 
-#: main.cpp:748
+#: main.cpp:750
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -695,7 +709,7 @@ msgstr ""
 "Toto vy¾aduje, aby jste poskytli\n"
 "u¾ívateµské meno a heslo!"
 
-#: main.cpp:755
+#: main.cpp:757
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -704,15 +718,15 @@ msgstr ""
 "Nemô¾em vytvori» overovací súbor\n"
 "pre PAP \"%s\""
 
-#: main.cpp:832
+#: main.cpp:834
 msgid "Quit kPPP?"
 msgstr "Ukonèi» kPPP?"
 
-#: main.cpp:833
+#: main.cpp:835
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Ukonèenie kPPP uzavie va¹u PPP seansu."
 
-#: main.cpp:866
+#: main.cpp:868
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""

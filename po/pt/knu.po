@@ -1,23 +1,28 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: knu\n"
-"POT-Creation-Date: 1998-01-25 13:26+0100\n"
+"POT-Creation-Date: 1998-03-09 00:28+0100\n"
 "PO-Revision-Date: 1998-01-22 00:00+0100\n"
 "Last-Translator: Pedro Morais <pmmm@camoes.rnl.ist.utl.pt>\n"
 
-#: knu.cpp:123 knu.cpp:256
+#: knu.cpp:132 knu.cpp:275
 msgid "&Ping"
 msgstr "&Ping"
 
-#: knu.cpp:132 knu.cpp:261
+#: knu.cpp:141 knu.cpp:281
 msgid "&Traceroute"
 msgstr "&Traçar rota"
 
-#: knu.cpp:141 knu.cpp:266
+#: knu.cpp:150 knu.cpp:287
 msgid "Host &resolution"
 msgstr "&Resolução da host"
 
-#: knu.cpp:156
+#: knu.cpp:163 knu.cpp:293
+#, fuzzy
+msgid "&Finger"
+msgstr "&Ping"
+
+#: knu.cpp:174
 msgid ""
 "There is no command enabled\n"
 "in the configuration file.\n"
@@ -29,51 +34,47 @@ msgstr ""
 "\n"
 "Por isso não posso fazer nada...\n"
 
-#: knu.cpp:201
+#: knu.cpp:219
 msgid "&New window"
 msgstr "&Nova janela"
 
-#: knu.cpp:204
+#: knu.cpp:222
 msgid "&Close window"
 msgstr "Fe&char janela"
 
-#: knu.cpp:215
+#: knu.cpp:233
 msgid "Select &all"
 msgstr "Seleccion&ar tudo"
 
-#: knu.cpp:218
+#: knu.cpp:236
 msgid "C&lear output window"
 msgstr "&Limpar janela de saída"
 
-#: knu.cpp:221
+#: knu.cpp:239
 msgid "P&references..."
 msgstr "P&referências"
 
-#: knu.cpp:226
-msgid "&Contents"
-msgstr "&Conteúdo"
-
-#: knu.cpp:231
+#: knu.cpp:249
 msgid "About &Qt"
 msgstr "Acerca do &Qt"
 
-#: knu.cpp:404
+#: knu.cpp:432
 msgid "About..."
 msgstr "Acerca..."
 
-#: CommandDlg.cpp:112
+#: CommandDlg.cpp:116
 msgid "H&ost:"
 msgstr "H&ost:"
 
-#: CommandDlg.cpp:121
+#: CommandDlg.cpp:125
 msgid "&Go!"
 msgstr "&Começar!"
 
-#: CommandDlg.cpp:131
+#: CommandDlg.cpp:135
 msgid "&Stop"
 msgstr "&Parar"
 
-#: CommandDlg.cpp:147
+#: CommandDlg.cpp:151
 msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
@@ -81,19 +82,37 @@ msgstr ""
 "O executável deste comando não foi encontrado. \n"
 "Pode inserir a sua localização no menu Editar->Preferências."
 
-#: CommandDlg.cpp:453
+#: CommandDlg.cpp:336
+#, c-format
+msgid ""
+"\n"
+"You have a problem in your\n"
+"%s/%src\n"
+"configuration file.\n"
+"In the [%s] group,\n"
+"I can't find a valid \"path=\" entry.\n"
+"\n"
+"Please use Edit->Preferences... menu\n"
+"to configure it again.\n"
+msgstr ""
+
+#: CommandDlg.cpp:345
+msgid "Error in pathname"
+msgstr ""
+
+#: CommandDlg.cpp:478
 msgid "Binary"
 msgstr "Executável"
 
-#: CommandDlg.cpp:461
+#: CommandDlg.cpp:486
 msgid "Path&name:"
 msgstr "&Localização:"
 
-#: CommandDlg.cpp:470
+#: CommandDlg.cpp:495
 msgid "Additional &arguments:"
 msgstr "&Argumentos adicionais:"
 
-#: CommandDlg.cpp:495
+#: CommandDlg.cpp:520
 msgid "This command had been disabled in the configuration file."
 msgstr "Este comando foi desactivado no ficheiro de configuração"
 
@@ -101,62 +120,72 @@ msgstr "Este comando foi desactivado no ficheiro de configuração"
 msgid " - configuration"
 msgstr " - configuração"
 
-#: PingDlg.cpp:90 TracerouteDlg.cpp:91
+#: PingDlg.cpp:94 TracerouteDlg.cpp:95
 msgid "Make host &name resolution"
 msgstr "Resolver o &nome da host"
 
-#: HostDlg.cpp:220 PingDlg.cpp:146 TracerouteDlg.cpp:168
-msgid ""
-"You have a problem in your ~/.kde/share/config/knurc configuration file.\n"
-"In the ["
-msgstr ""
-"Tem um problema no seu ficheiro de configuração ~/.kde/share/config/knurc.\n"
-"No grupo ["
-
-#: HostDlg.cpp:224 PingDlg.cpp:150 TracerouteDlg.cpp:172
-msgid "] group, I cannotfind a correct \"path=\" entry."
-msgstr "], não consigo achar uma entrada \"path=\" correcta."
-
-#: TracerouteDlg.cpp:108
+#: TracerouteDlg.cpp:112
 msgid "&Maximum number of hops:"
 msgstr "Número &máximo de hops:"
 
-#: HostDlg.cpp:101
+#: HostDlg.cpp:105
 msgid "address (A)"
 msgstr "endereço (A)"
 
-#: HostDlg.cpp:102
+#: HostDlg.cpp:106
 msgid "name (PTR)"
 msgstr "nome (PTR)"
 
-#: HostDlg.cpp:103
+#: HostDlg.cpp:107
 msgid "name server (NS)"
 msgstr "servidor de nomes (NS)"
 
-#: HostDlg.cpp:104
+#: HostDlg.cpp:108
 msgid "mail exchanger (MX)"
 msgstr "processador de mails (MX)"
 
-#: HostDlg.cpp:105
+#: HostDlg.cpp:109
 msgid "alias (CNAME)"
 msgstr "alias (CNAME)"
 
-#: HostDlg.cpp:106
+#: HostDlg.cpp:110
 msgid "start of authority (SOA)"
 msgstr "início de autoridade (SOA)"
 
-#: HostDlg.cpp:107
+#: HostDlg.cpp:111
 msgid "any record (ANY)"
 msgstr "qualquer registo (ANY)"
 
-#: HostDlg.cpp:113
+#: HostDlg.cpp:117
 msgid "Se&arch for:"
 msgstr "Procur&ar por:"
 
-#: HostDlg.cpp:125 HostDlg.cpp:271
+#: HostDlg.cpp:129 HostDlg.cpp:268
 msgid "default server"
 msgstr "servidor por defeito"
 
-#: HostDlg.cpp:134
+#: HostDlg.cpp:138
 msgid "Ser&ver:"
 msgstr "Ser&vidor:"
+
+#: FingerDlg.cpp:68
+msgid "User:"
+msgstr ""
+
+#: FingerDlg.cpp:86
+#, fuzzy
+msgid "Server:"
+msgstr "Ser&vidor:"
+
+#~ msgid "&Contents"
+#~ msgstr "&Conteúdo"
+
+#~ msgid ""
+#~ "You have a problem in your ~/.kde/share/config/knurc configuration file.\n"
+#~ "In the ["
+#~ msgstr ""
+#~ "Tem um problema no seu ficheiro de configuração ~/.kde/share/config/knurc.\n"
+#~ "No grupo ["
+
+#~ msgid "] group, I cannotfind a correct \"path=\" entry."
+#~ msgstr "], não consigo achar uma entrada \"path=\" correcta."
