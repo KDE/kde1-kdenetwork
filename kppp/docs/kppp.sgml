@@ -579,9 +579,145 @@ ATS11=50	# fastest possible dialing, use a higher number if it doesn't work.
 AT&amp;W		# Write to default profile
 </verb></tscreen>
 
-<sect>Questions and answers<p>
 
-<sect1><label id="kppp FAQ">Frequently Asked Questions about kppp<p><p>
+<p>
+<sect>PAP and CHAP<p>
+
+Starting with version 0.9.1 kppp supports directly the most commonly used
+form of PAP authentification. The section 'PAP and CHAP with Kppp' will
+descript how to make PAP and CHAP work with Kppp in general, while the
+section 'PAP with Kppp' will describe in detail how take advantage
+of Kppp's build in support for the most commonly encounter version of
+PAP wich is  widely used by commercial Internet Service Providers (ISP). 
+
+<sect1>PAP and CHAP with Kppp<label id="PAP">
+<p>
+
+The following is based on an email by <url url="kbrown@pdq.net" name="Keith Brown">
+and explains how to make kppp work for a generic PAP or CHAP account. If
+your ISP just gave you a user id and a password for a PAP account the odds
+are that you can skip this section and that you will get by just reading the 
+next one entitled 'PAP with kppp'.
+<p>
+
+PAP seems a lot more complicated at first glance than it really is.
+The server (the machine you are connecting to) basically tells the client
+(your machine) to authenticate using PAP. The client (pppd) looks in a
+specific file for an entry that contains a matching server name and client's
+name for this connection, and then sends the password it finds there. That's
+about it! Now, here's how to make that happen. I am assuming a pppd version
+of 2.2.0 and a standard installation of configuration files under /etc/ppp.
+<p>
+
+For the purposes of illustration, pretend that I have an Internet account
+with 'glob.net', under the user name 'booger', and a password of 'foobar'.
+First, I need to add all this to the file <tt>/etc/ppp/pap-secrets </tt>. 
+The format of an entry for our purposes, is:<p>
+
+<tscreen><verb>
+USERNAME  SERVERNAME   PASSWORD
+</verb></tscreen>
+
+<p>
+so I add the line:
+
+<tscreen><verb>
+booger  glob  foobar
+</verb></tscreen>
+
+<p>
+to the file and save it. Note: I can use any name for the server I wish
+as long as I use the same name in the pppd arguments, as we'll see shortly.
+I have shortened it to 'glob'. This name is just used to locate the correct
+password.<p>
+
+Now, I need to set up my connection in kppp. The basics are the same
+as any other connection, and I won't go into details here, except to say
+that you probably want to make sure that the <tt>/etc/ppp/options,</tt> is empty,
+and you probably don't want any login script either. Now, in the settings
+dialog, at the bottom, is the pppd arguments button. This brings up a dialog
+similar to the one used for editing the login script. Here we enter values that
+will be sent to pppd as command line arguments, and in the case of multiple-value
+arguments, we need to enter each value as a separate entry in the listbox,
+in the correct order.
+<p>
+
+We can put any other arguments in here we want first. Usually you would
+want to hand kppp 
+the default options '-detach' and 'defaultroute'.
+Now we need to add arguments that pppd needs to handle PAP authentication.
+In this example I am going to add 'user', 'booger', 'remotename', 'glob',
+in that order. The user argument tells pppd what user name to look for
+in pap-secrets, and send to the server. The remotename is only used by
+pppd to match the entry in the pap-secrets file, and is not sent to the
+server, so once again, it can be anything I want as long as it is consistent
+with the entry in the pap-secrets file.<p>
+
+That's all there is to it. You should now be able to set up your own
+connection to a server with PAP authentication. CHAP should not be much
+different. See the Linux Network Administrators' Guide for chap-secrets
+file format and pppd arguments used. The rest should be gravy, but...your
+mileage, ah you know the rest.</P>
+
+
+<sect1>PAP with Kppp<p>
+
+There are two different ways to use PAP:
+
+<sect2> Client side authentication<p> 
+This variant is used by many
+commercial ISPs. It basically means that you (or your computer) must
+authenticate yourself to the ISPs PPP server. The PPP server must not
+authenticate himself to your computer, but typically this is not necessary
+since you know which computer you are connected to (because the connection was
+estableshed by yourself). So this is no major security issue. kPPP supports
+this variant directly. See below for instruction how use this one.
+
+<p>If your ISP just gives you a username and a password and tells you to use
+PAP authentication you must use this variant.
+
+<sect2> Two way authentication<p> 
+Same as above, but your computer requires the
+ISP PPP server to authenticate himself. In order to establish a connection, 
+you must choose the authentication method <it>Script based</it>,
+not <it>PAP</it>, and you will have to manually have edit
+<tt>/etc/ppp/pap-secrets</tt>. While kppp doesn't provide build in support
+for this variant -- it is nevertheless easy to establish a connection
+using this variant of PAP with kppp. The details are described in the
+previous section 'Using PAP and CHAP with kppp'.
+
+
+<sect2>Preparing kPPP for PAP<p>
+<enum>
+<item> Make sure that the <tt>/etc/ppp/options</tt> (and <tt>~/.ppprc</tt> if
+you do have such a file) does <bf>not</bf> contain one of the arguments:
+<itemize>
+<item>+pap
+<item>-pap
+<item>papcrypt
+<item>+chap
+<item>+ua
+<item>remotename
+</itemize><p>
+It is very unlikely that one of those arguments is already in there, but just
+to be sure.
+
+<item>Start kPPP
+<item>Click on <it>Setup</it>
+<item>Choose the account you want to use PAP with and click on <it>Edit</it>
+<item>Click on the <it>Dial</it> tab.
+<item>Select <it>PAP</it> in the checkbox <it>Authentication</it>
+<item>If do not want to retype the password each time you dial in, select
+<it>Store password</it>. This will save the password. Make sure that nobody
+other than you has access to your account, otherwise this person will have
+access to your password.
+<item>That's it. Close the dialogs, type in your the username and password
+your ISP supplied to you and dial.
+</enum>
+
+<p>
+<sect>Questions and answers<p>
+<sect1>Frequently Asked Questions<p>
 <sect2>I can't get kppp to work. kppp tells me that pppd has died! <p>
 Did you read the this manual carefully? Here once more the most common
 pitfalls.
@@ -739,6 +875,8 @@ I would like to thank the following people for contributions to kppp:<p>
 and other contributions.
 </itemize>
 <p>
+
+
 <sect>Appendix
 <p>
 <sect1>The Hayes Modem Command Set
@@ -747,126 +885,6 @@ and other contributions.
 need to fine-tune your modem commands.
 <p>
 
-<sect1>PAP and CHAP with Kppp<label id="PAP">
-<p>
-
-The following is based on an email by <url url="kbrown@pdq.net" name="Keith Brown">
-<p>
-
-PAP seems a lot more complicated at first glance than it really is.
-The server (the machine you are connecting to) basically tells the client
-(your machine) to authenticate using PAP. The client (pppd) looks in a
-specific file for an entry that contains a matching server name and client's
-name for this connection, and then sends the password it finds there. That's
-about it! Now, here's how to make that happen. I am assuming a pppd version
-of 2.2.0 and a standard installation of configuration files under /etc/ppp.
-<p>
-
-For the purposes of illustration, pretend that I have an Internet account
-with 'glob.net', under the user name 'booger', and a password of 'foobar'.
-First, I need to add all this to the file <tt>/etc/ppp/pap-secrets </tt>. 
-The format of an entry for our purposes, is:<p>
-
-<tscreen><verb>
-USERNAME  SERVERNAME   PASSWORD
-</verb></tscreen>
-
-<p>
-so I add the line:
-
-<tscreen><verb>
-booger  glob  foobar
-</verb></tscreen>
-
-<p>
-to the file and save it. Note: I can use any name for the server I wish
-as long as I use the same name in the pppd arguments, as we'll see shortly.
-I have shortened it to 'glob'. This name is just used to locate the correct
-password.<p>
-
-Now, I need to set up my connection in kppp. The basics are the same
-as any other connection, and I won't go into details here, except to say
-that you probably want to make sure that the <tt>/etc/ppp/options,</tt> is empty,
-and you probably don't want any login script either. Now, in the settings
-dialog, at the bottom, is the pppd arguments button. This brings up a dialog
-similar to the one used for editing the login script. Here we enter values that
-will be sent to pppd as command line arguments, and in the case of multiple-value
-arguments, we need to enter each value as a separate entry in the listbox,
-in the correct order.
-<p>
-
-We can put any other arguments in here we want first. Usually you would
-want to hand kppp 
-the default options '-detach' and 'defaultroute'.
-Now we need to add arguments that pppd needs to handle PAP authentication.
-In this example I am going to add 'user', 'booger', 'remotename', 'glob',
-in that order. The user argument tells pppd what user name to look for
-in pap-secrets, and send to the server. The remotename is only used by
-pppd to match the entry in the pap-secrets file, and is not sent to the
-server, so once again, it can be anything I want as long as it is consistent
-with the entry in the pap-secrets file.<p>
-
-That's all there is to it. You should now be able to set up your own
-connection to a server with PAP authentication. CHAP should not be much
-different. See the Linux Network Administrators' Guide for chap-secrets
-file format and pppd arguments used. The rest should be gravy, but...your
-mileage, ah you know the rest.</P>
-
-<!-- Mario -->
-<sect1>Some notes on PAP<p>
-Since version 0.9.1 kPPP has limited support for the Password Authentication
-Protocal (PAP). PAP is widely used by commercial Internet Service Providers
-(ISP). 
-
-There are two different ways to use PAP, kPPP supports only the most widely
-used variant.
-<sect2> Client side authentication<p> 
-This variant is used by many
-commercial ISPs. It basically means that you (or your computer) must
-authenticate yourself to the ISPs PPP server. The PPP server must not
-authenticate himself to your computer, but typically this is not necessary
-since you know which computer you are connected to (because the connection was
-estableshed by yourself). So this is no major security issue. kPPP supports
-this variant directly. See below for instruction how use this one.
-
-<p>If your ISP just gives you a username and a password and tells you to use
-PAP authentication you must use this variant.
-
-<sect2> Two way authentication<p> 
-Same as above, but your computer requires the
-ISP PPP server to authenticate himself. This variant is not supported by
-kPPP. To use it, you must choose authentication method <it>Script based</it>,
-not <it>PAP</it>, and you have to modify <tt>/etc/ppp/pap-secrets</tt>. Since this
-PAP variant is seldom used it should be no problem.
-
-
-<sect2>How to setup kPPP to use PAP<p>
-<enum>
-<item> Make sure that the <tt>/etc/ppp/options</tt> (and <tt>~/.ppprc</tt> if
-you do have such a file) does <bf>not</bf> contain one of the arguments:
-<itemize>
-<item>+pap
-<item>-pap
-<item>papcrypt
-<item>+chap
-<item>+ua
-<item>remotename
-</itemize><p>
-It is very unlikely that one of those arguments is already in there, but just
-to be sure.
-
-<item>Start kPPP
-<item>Click on <it>Setup</it>
-<item>Choose the account you want to use PAP with and click on <it>Edit</it>
-<item>Click on the <it>Dial</it> tab.
-<item>Select <it>PAP</it> in the checkbox <it>Authentication</it>
-<item>If do not want to retype the password each time you dial in, select
-<it>Store password</it>. This will save the password. Make sure that nobody
-other than you has access to your account, otherwise this person will have
-access to your password.
-<item>That's it. Close the dialogs, type in your the username and password
-your ISP supplied to you and dial.
-</enum>
 
 <sect1>kppp related files<p>
 By default Kppp makes use of the following files and directories. The location
@@ -884,13 +902,14 @@ of some of those can be changed at compile time.
 </verb></tscreen>
 
 <!-- Mario -->
-<sect1>Reporting a bug<p>
-Before reporting a bug to the <htmlurl url="mailto:wuebben@kde.org"
-name="maintainer"> of kPPP, read the section <ref id="kppp FAQ"
+<sect1>Reporting problems with kppp<p>
+Before reporting a problem or potential but to the 
+<htmlurl url="mailto:wuebben@kde.org" name="maintainer"> of kPPP, 
+please make sure that you have read the section <ref id="kppp FAQ"
 name="Frequently asked Questions"> carefully.
 
 If you still have problems, you need to include the following informations
-into the bug report:
+with your report:
 <itemize>
 <item>The version of kPPP you are using. <it>kppp -v</it> will show the
 version number.
@@ -902,13 +921,13 @@ information on most UNIX systems.
 to the <ref id="pppd arguments" name="pppd arguments">. Dial again to
 reproduce the error.<p>
 Now the file <tt>/var/log/messages</tt> (this depends on your system and
-configuration, but a typically installed Linux system will have this. And of
+configuration, but a typically installed Linux system will have this. Of
 course you must have root permissions to read this file) will have a lot of
 debugging output at the end. <bf>Don't send us the whole file</bf>. It
 typically has several thousands of lines and we neither have time nor are we
 willing to process such a file. Instead of send us just the last lines that
-contain <it>pppd</it>. Make sure that this file do <bf>not</bf> contain
-security relevant information like passwords or usernames! Replace such
+contain <it>pppd</it>. Make sure that this file does <bf>not</bf> contain
+security compromising information such as passwords or usernames. Replace such
 entries with something like "myusername" and "mypassword"
 </itemize>
 
