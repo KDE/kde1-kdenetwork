@@ -77,9 +77,9 @@ void KSircIODCC::sirc_receive(QString str)
     if((pos1 < 0) || (pos2 < 0))
       return;
     int bytesXfer = str.mid(pos1, pos2-pos1).toInt();
-    ASSERT(bytesXfer > 0); // Setting progress back to 0 screws it up
-    ASSERT(fileSize > 0); // We devide by this!
     DCCInfo *stat = DCCStatus[filename];
+    ASSERT(stat->PercentSize > 0); // We devide by this!
+    ASSERT(bytesXfer > 0); // Setting progress back to 0 screws it up
     if(bytesXfer > (stat->LastSize + stat->PercentSize)){
       DlgList[filename]->setProgress(bytesXfer/(stat->PercentSize));
       stat->LastSize = bytesXfer;
