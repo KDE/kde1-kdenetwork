@@ -164,6 +164,39 @@ sub moveEvent {
 sub miscEvent {
 }
 
+sub backgroundColor {
+  my $self = shift;
+
+  my %arg = $self->sendMessage('iCommand' => $::PUKE_WIDGET_GET_BACKGROUND_COLOUR,
+                               'WaitFor' => 1);
+
+  #  print "Got: " . $arg{'cArg'} . "\n";
+
+  $arg{'cArg'} =~ s/\000//g;
+  my ($r, $g, $b) = split(/,/, $arg{'cArg'});
+
+  return ($r, $g, $b);
+}
+
+sub setBackgroundColor {
+  my $self = shift;
+
+  $self->sendMessage('iCommand' => $::PUKE_WIDGET_SET_BACKGROUND_COLOUR,
+                     'cArg' => pack("i3", shift(), shift(), shift()),
+                     'CallBack' => sub {});
+
+}
+
+sub setEnabled {
+  my $self = shift;
+
+  $self->sendMessage('iCommand' => $::PUKE_WIDGET_SET_ENABLED,
+                     'iArg' => shift(),
+                     'CallBack' => sub {});
+
+}
+
+
 package main;
 
 1;

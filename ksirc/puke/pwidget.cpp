@@ -154,7 +154,49 @@ void PWidget::messageHandler(int fd, PukeMessage *pm)
     strncpy(pmRet.cArg, widget()->caption(), 49);
     emit outputMessage(fd, &pmRet);
     break;
+  case PUKE_WIDGET_GET_BACKGROUND_COLOUR:
+    {
+      int *pos;
+      pos = (int *) &pm->cArg;
+      QColor back = widget()->backgroundColor();
+      memset(pmRet.cArg, 0x0, 50);
+      debug("Colour are: %d %d %d", back.red(), back.green(), back.blue());
+      sprintf(pmRet.cArg, "%d,%d,%d", back.red(), back.green(), back.blue());
+      
+      pmRet.iCommand = -pm->iCommand;
+      pmRet.iWinId = pm->iWinId;      
+      pmRet.iArg = 0;
+      emit outputMessage(fd, &pmRet);
+      break;
+    }
+  case PUKE_WIDGET_SET_BACKGROUND_COLOUR:
+    {
+      int *pos;
+      pos = (int *) &pm->cArg;
+      QColor bg(pos[0], pos[1], pos[2]);
+      QColorGroup cg = QColorGroup(widget()->colorGroup().foreground(),
+                                   bg,
+                                   widget()->colorGroup().light(),
+                                   widget()->colorGroup().dark(),
+                                   widget()->colorGroup().mid(),
+                                   widget()->colorGroup().text(),
+                                   bg);
+      widget()->setPalette(QPalette(cg,cg,cg));
 
+      pmRet.iCommand = -pm->iCommand;
+      pmRet.iWinId = pm->iWinId;      
+      pmRet.iArg = 0;
+      emit outputMessage(fd, &pmRet);
+      break;
+    }
+  case PUKE_WIDGET_SET_ENABLED:
+    widget()->setEnabled((bool) pm->iArg);
+    pmRet.iCommand = PUKE_WIDGET_SET_ENABLED_ACK;
+    pmRet.iWinId = pm->iWinId;
+    pmRet.iArg = 0;
+    pmRet.cArg[0] = 0;
+    emit outputMessage(fd, &pmRet);
+    break;
   default:
     PObject::messageHandler(fd, pm);
 /*  warning("PWidget: Unkown Command: %d", pm->iCommand);

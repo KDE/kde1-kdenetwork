@@ -275,6 +275,45 @@
 // cArg: new caption
 #define PUKE_WIDGET_SETCAPTION_ACK -1075
 
+// Desc: get background colour
+// iWinid: window id
+// iArg: not defined
+// cArg: not defined
+#define PUKE_WIDGET_GET_BACKGROUND_COLOUR 1080
+
+// Desc: get background colour ack
+// iWinid: window id
+// iArg: not defined
+// cArg: 3 ints packed in rbg combo
+#define PUKE_WIDGET_GET_BACKGROUND_COLOUR_ACK -1080
+
+// Desc: set background colour
+// iWinid: window id
+// iArg: not defined
+// cArg: 3 ints packed in rbg combo
+#define PUKE_WIDGET_SET_BACKGROUND_COLOUR 1085
+
+// Desc: set background colour ack
+// iWinid: window id
+// iArg: not defined
+// cArg: not defined
+#define PUKE_WIDGET_SET_BACKGROUND_COLOUR_ACK -1085
+
+// Desc: set widget enabled or disabled
+// iWinid: window id
+// iArg: 0 for disabled, 1 for enabled
+// cArg: not defined
+#define PUKE_WIDGET_SET_ENABLED 1090
+
+// Desc: ack for enable/disable
+// iWinid: window id
+// iArg: not defined
+// cArg: not defined
+#define PUKE_WIDGET_SET_ENABLED_ACK -1090
+
+
+// QFrame gets 1100
+
 // 1100 defines QFrame
 // Desc: set Frame style
 // iWinId: widget to chanse

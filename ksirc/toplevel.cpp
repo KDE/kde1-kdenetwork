@@ -100,7 +100,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
   else
     caption = "";
 
-  QString kstl_name = QString(channel_name) + "_" + "toplevel";
+  QString kstl_name = QString(QObject::name()) + "_" + "toplevel";
   setName(kstl_name);
   
   LineBuffer = new QStrList();
@@ -125,14 +125,14 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
   ktool->alignItemRight(10, TRUE);
   addToolBar(ktool);
 
-  ktool->getFrame(10)->setName(QString(channel_name) + "_ktoolframe");
-  lagmeter = new QLCDNumber(6, ktool->getFrame(10), QString(channel_name) + "_lagmeter");
+  ktool->getFrame(10)->setName(QString(QObject::name()) + "_ktoolframe");
+  lagmeter = new QLCDNumber(6, ktool->getFrame(10), QString(QObject::name()) + "_lagmeter");
   lagmeter->setFrameStyle(QFrame::NoFrame);
   lagmeter->setFixedHeight(ktool->height() - 2);
   lagmeter->display("      ");
   QToolTip::add(lagmeter, "Lag in seconds to the server");
   
-  file = new QPopupMenu(0x0, QString(channel_name) + "_popup_file");
+  file = new QPopupMenu(0x0, QString(QObject::name()) + "_popup_file");
   //  this->insertChild(file);
   objFinder::insert(file);
   file->insertItem("&New Window...", this, SLOT(newWindow()), CTRL + Key_N);
@@ -179,7 +179,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
 
   // kstInside does not setup fonts, etc, it simply handles sizing
 
-  f = new kstInside(this, QString(channel_name) + "_" + "kstIFrame");
+  f = new kstInside(this, QString(QObject::name()) + "_" + "kstIFrame");
   setView(f);  // Tell the KApplication what the main widget is.
 
   if(kSircConfig->colour_background == 0){
@@ -872,7 +872,7 @@ void KSircTopLevel::resizeEvent(QResizeEvent *e) /*FOLD00*/
   //delete file;
 }
 
-void KSircTopLevel::gotFocus() /*fold00*/
+void KSircTopLevel::gotFocus() /*FOLD00*/
 {
   if(isVisible() == TRUE){
     if(have_focus == 0){
@@ -896,22 +896,29 @@ void KSircTopLevel::lostFocus() /*fold00*/
 
 }
 
-void KSircTopLevel::control_message(int command, QString str) /*fold00*/
+void KSircTopLevel::control_message(int command, QString str) /*FOLD00*/
 {
   switch(command){
   case CHANGE_CHANNEL: // 001 is defined as changeChannel
-    emit changeChannel(channel_name, str.data());
-    if(channel_name)
-      delete channel_name;
-    channel_name = qstrdup(str.data());
-    setName(QString(QString(channel_name) + "_" + "toplevel"));
-    f->setName(QString(QString(channel_name) + "_" + "kstIFrame"));
-    ktool->getFrame(10)->setName(QString(channel_name) + "_ktoolframe");
-    lagmeter->setName(QString(channel_name) + "_lagmeter");
-    have_focus = 0;
-    setCaption(channel_name);
-    mainw->scrollToBottom();
-    break;
+    {
+      QString server, chan;
+      int bang;
+      bang = str.find("!!!");
+      server = str.mid(0, bang);
+      chan = str.mid(bang + 3, str.length() - (bang + 3));
+      emit changeChannel(channel_name, chan.data());
+      if(channel_name)
+	delete channel_name;
+      channel_name = qstrdup(chan.data());
+      setName(server + "_" + "toplevel");
+      f->setName(QString(QString(QObject::name()) + "_" + "kstIFrame"));
+      ktool->getFrame(10)->setName(QString(QObject::name()) + "_ktoolframe");
+      lagmeter->setName(QString(QObject::name()) + "_lagmeter");
+      have_focus = 0;
+      setCaption(channel_name);
+      mainw->scrollToBottom();
+      break;
+    }
   case STOP_UPDATES:
     Buffer = TRUE;
     break;

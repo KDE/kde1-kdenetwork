@@ -111,10 +111,10 @@ PukeController::~PukeController() /*fold00*/
 {
 }
 
-void PukeController::NewConnect(int) /*fold00*/
+void PukeController::NewConnect(int) /*FOLD00*/
 {
   int cfd;
-  uint len = 0;
+  int len = 0;
   struct sockaddr_un unix_addr;
 
   cfd = accept(iListenFd, (struct sockaddr *)&unix_addr, &len);
@@ -160,7 +160,7 @@ void PukeController::Writeable(int fd) /*fold00*/
   }
 }
 
-void PukeController::writeBuffer(int fd, PukeMessage *message) /*fold00*/
+void PukeController::writeBuffer(int fd, PukeMessage *message) /*FOLD00*/
 {
   if(qidConnectFd[fd]){
     //    if(qidConnectFd[fd]->writeable == FALSE){
@@ -192,7 +192,7 @@ void PukeController::writeBuffer(int fd, PukeMessage *message) /*fold00*/
   }
 }
 
-void PukeController::Traffic(int fd) /*fold00*/
+void PukeController::Traffic(int fd) /*FOLD00*/
 {
   PukeMessage pm;
   int bytes = -1;
@@ -217,11 +217,12 @@ void PukeController::Traffic(int fd) /*fold00*/
     memset(&pm, 0, sizeof(pm));
   }
   if(bytes <= 0){ // Shutdown the socket!
+    debug("Read 0 bytes and errno set to: %d", errno);
     switch(errno){
     case EAGAIN: // Don't do anything for try again
       break;
-    case 0:
-      break;     // We just read nothing, don't panic
+//    case 0:
+//      break;     // We just read nothing, don't panic
     case EIO:
     case EISDIR:
     case EBADF:
@@ -230,6 +231,7 @@ void PukeController::Traffic(int fd) /*fold00*/
     default:
       perror("PukeController: read failed");
       closefd(fd);
+      close(fd);
     }
   }
   else{
@@ -246,7 +248,7 @@ void PukeController::ServMessage(QString, int, QString) /*fold00*/
 // Message Dispatcher is in messagedispatcher.cpp
 
 
-void PukeController::MessageDispatch(int fd, PukeMessage *pm) /*FOLD00*/
+void PukeController::MessageDispatch(int fd, PukeMessage *pm) /*fold00*/
 {
     try {
 
@@ -280,7 +282,7 @@ void PukeController::MessageDispatch(int fd, PukeMessage *pm) /*FOLD00*/
     }
 }
 
-void PukeController::initHdlr() /*FOLD00*/
+void PukeController::initHdlr() /*fold00*/
 {
 
   widgetCreate *wc;
@@ -473,7 +475,7 @@ void PukeController::hdlrPukeFetchWidget(int fd, PukeMessage *pm)
   emit outputMessage(fd, &pmRet);
 
 }
-void PukeController::closefd(int fd) /*fold00*/
+void PukeController::closefd(int fd) /*FOLD00*/
 {
   if(bClosing == TRUE)
     return;
@@ -568,7 +570,7 @@ PObject *PukeController::id2pobject(widgetId *pwi){ /*fold00*/
   return 0; // never reached
 }
 
-PObject *PukeController::id2pobject(int fd, int iWinId){ /*FOLD00*/
+PObject *PukeController::id2pobject(int fd, int iWinId){ /*fold00*/
   widgetId wi;
   wi.fd = fd;
   wi.iWinId = iWinId;
@@ -701,7 +703,7 @@ void PukeController::messageHandler(int fd, PukeMessage *pm) { /*fold00*/
   }
 }
 
-widgetId PukeController::createWidget(widgetId wI, PukeMessage *pm) /*FOLD00*/
+widgetId PukeController::createWidget(widgetId wI, PukeMessage *pm) /*fold00*/
 {
   widgetId wIret;
   PWidget *parent = 0; // Defaults to no parent

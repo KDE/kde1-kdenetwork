@@ -31,7 +31,8 @@ sub sendMessage {
 
 sub rndchr {
   my $string = "";
-  for(my $i = 0; $i < 8; $i++){
+  my $i;
+  for($i = 0; $i < 8; $i++){
     $string .= chr(int(rand(93)) + 0x21);  # 0x21 since we don't want spaces and 0x20 is space.
   }
   return $string;

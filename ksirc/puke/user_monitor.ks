@@ -26,7 +26,11 @@ sub new {
   my $event_list = new PListBox($self);
   $event_list->setMaximumSize(110, 2000);
   $event_list->setMinimumSize(110, 1);
-  $event_list->setFrameStyle($PFrame::Box|$PFrame::Raised);
+  #  $event_list->setFrameStyle($PFrame::Box|$PFrame::Raised);
+  $event_list->setFrameStyle(0);
+  $event_list->setBackgroundColor($self->backgroundColor());
+  # Turn off the widget so people can't click in it
+  $event_list->setEnabled(0);
   $gm->addWidget($event_list, 5);
 
   my $user_count = new PLabel($self);

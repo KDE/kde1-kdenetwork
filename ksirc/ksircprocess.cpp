@@ -221,7 +221,7 @@ KSircProcess::KSircProcess( char *_server, QObject * parent, const char * name )
 
 }
 
-KSircProcess::~KSircProcess() /*fold00*/
+KSircProcess::~KSircProcess() /*FOLD00*/
 {
   
   if(TopList["!default"]){
@@ -259,7 +259,7 @@ void KSircProcess::new_toplevel(QString str) /*FOLD00*/
     // insert and remove is done as a side effect of the control_message call
     // TopList.insert(str, TopList["!no_channel"]); 
     // TopList.remove("!no_channel"); // We're no longer !no_channel
-    TopList["!no_channel"]->control_message(CHANGE_CHANNEL, str);
+    TopList["!no_channel"]->control_message(CHANGE_CHANNEL, QString(server) + "!!!" + str);
   }
   else if(TopList.find(str.data()) == 0x0){ // If the window doesn't exist, continue
     // If AutoCreate windows is on, let's make sure we're not being flooded.
@@ -297,7 +297,7 @@ void KSircProcess::new_toplevel(QString str) /*FOLD00*/
 //    KSircMessageReceiver *faker = new KSircMessageReceiver(this);
     //    TopList.insert(str, faker); // Insert place holder since the constructor for kSircTopLevel may parse the event queue which will cause us to try and create trhe window several times!!!
     debug("Calling new toplevel for: -%s-", str.data());
-    KSircTopLevel *wm = new KSircTopLevel(this, str.data());
+    KSircTopLevel *wm = new KSircTopLevel(this, str.data(), QString(server) + "_" + str);
     //    insertChild(wm); // Keep ineheratence going so we can find children
     objFinder::insert(wm);
     installEventFilter(wm);
@@ -435,7 +435,7 @@ void KSircProcess::recvChangeChannel(QString old_chan, QString /*fold00*/
 		   old_chan + " " + new_chan);
 }
 
-void KSircProcess::filters_update() /*fold00*/
+void KSircProcess::filters_update() /*FOLD00*/
 {
   QString command, next_part, key, data;
   command = "/crule\n";
