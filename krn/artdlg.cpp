@@ -110,7 +110,9 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     
     
     pixmap.load(pixpath+"save.xpm");
-    tool->insertButton(pixmap,SAVE_ARTICLE,true,"Save file");
+    tool->insertButton(pixmap,SAVE_ARTICLE,true,"Save Article");
+    pixmap.load(pixpath+"fileprint.xpm");
+    tool->insertButton(pixmap,PRINT_ARTICLE,true,"Print Article");
     tool->insertSeparator ();
     
     //    pixmap=iconloader->loadIcon("filemail.xpm");

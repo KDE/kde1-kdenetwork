@@ -158,7 +158,6 @@ Groupdlg::Groupdlg
     tool->insertSeparator ();
     pixmap.load (pixpath+"reload.xpm");
     tool->insertButton (pixmap, CHECK_UNREAD, true, "Check for Unread Articles");
-    tool->insertSeparator ();
     
     
     list = new KTreeList (this, "");
