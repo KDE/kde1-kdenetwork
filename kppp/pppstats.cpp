@@ -88,6 +88,7 @@
 
 #include "log.h"
 
+
 #define V(offset) (line % 20? cur.offset - old.offset: cur.offset)
 #define W(offset) (line % 20? ccs.offset - ocs.offset: ccs.offset)
 #define CRATE(comp, inc, unc) ((unc) == 0? 0.0: 1.0 - (double)((comp) + (inc)) / (unc))
@@ -98,7 +99,7 @@
 int	vflag, rflag, cflag, aflag;
 unsigned interval = 5;
 int	unit;
-int	s;			/* socket file descriptor */
+int	s = 0;			/* socket file descriptor */
 int	signalled;		/* set if alarm goes off "early" */
 bool    ppp_stats_available;
 int 	ibytes;
@@ -151,19 +152,33 @@ int if_is_up() {
     }
 #endif
 
-    strcpy(ifr.ifr_name, "ppp0"); // if you change this you have to change "unit"    
-    
-    ioctl(s, SIOCGIFFLAGS, &ifr);
-    
-    if ((ifr.ifr_flags  & IFF_UP ) != 0){
+    memset(&ifr,0,sizeof(ifr));
+
+    // if you change this you have to change "unit" for 0 to whatever.
+    strncpy(ifr.ifr_name, "ppp0",sizeof(ifr.ifr_name)); 
+
+
+    if(ioctl(s, SIOCGIFFLAGS, &ifr)<0){
+    	perror("Couldn't find interface ppp0");
+	::close(s);
+	s = 0;
+	return 0;
+    }
+
+    if ((ifr.ifr_flags  & IFF_UP ) != 0L){
 	is_up = 1;
-	Debug("Interface is up\n");
-    } else{
+	printf("Interface is up\n");
+	//Debug("Interface is up\n");
+    } 
+    else{
       is_up = 0;
       ::close(s);
-      Debug("Interface is down\n");
+      s = 0;
+      //      Debug("Interface is down\n");
+      printf("Interface is down\n");       
     }
     
+    printf("Returning %d\n",is_up);
     return is_up;
 }
 
@@ -261,7 +276,8 @@ bool get_ppp_stats(struct ppp_stats *curp){
 
     struct ifpppstatsreq req;
 
-    memset (&req, 0, sizeof (req));
+    if(s==0)
+      return false;
 
 #ifdef linux
     req.stats_ptr = (caddr_t) &req.stats;
