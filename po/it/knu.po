@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-01-25 13:26+0100\n"
+"POT-Creation-Date: 1998-02-24 21:40+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,6 +37,7 @@ msgstr ""
 "noe file di configurazione.\n"
 "\n"
 "Non posso fare niente.....\n"
+
 #: knu.cpp:201
 msgid "&New window"
 msgstr "Nuova finestra"
@@ -56,10 +57,6 @@ msgstr "Pulisci finestra messaggi"
 #: knu.cpp:221
 msgid "P&references..."
 msgstr "Preferenze"
-
-#: knu.cpp:226
-msgid "&Contents"
-msgstr "&Contenuti"
 
 #: knu.cpp:231
 msgid "About &Qt"
@@ -88,6 +85,7 @@ msgid ""
 msgstr ""
 "Questo eseguibile non e` stato trovato. \n"
 "Puoi configurarlo nel menu Modifica->Preferenze...."
+
 #: CommandDlg.cpp:453
 msgid "Binary"
 msgstr "Binario"
@@ -119,6 +117,7 @@ msgid ""
 msgstr ""
 "Hai problemi nel file di configurazione ~/.kde/share/config/knurc.\n"
 "Nella ["
+
 #: HostDlg.cpp:224 PingDlg.cpp:150 TracerouteDlg.cpp:172
 msgid "] group, I cannotfind a correct \"path=\" entry."
 msgstr "] gruppo, non riesco a trovare un campo \"path=\" corretto"
@@ -166,3 +165,6 @@ msgstr "server di default"
 #: HostDlg.cpp:134
 msgid "Ser&ver:"
 msgstr "Server:"
+
+#~ msgid "&Contents"
+#~ msgstr "&Contenuti"

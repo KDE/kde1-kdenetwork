@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: krn\n"
-"POT-Creation-Date: 1998-02-12 20:04+0100\n"
+"POT-Creation-Date: 1998-02-09 11:34+0100\n"
 "PO-Revision-Date: 1998-02-12 21:20 +0100\n"
 "Last-Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
 
@@ -70,7 +70,7 @@ msgstr "Überschriften holen"
 msgid "Get Articles"
 msgstr "Artikel holen"
 
-#: artdlg.cpp:240 groupdlg.cpp:144 groupdlg.cpp:152 groupdlg.cpp:160
+#: artdlg.cpp:242 groupdlg.cpp:144 groupdlg.cpp:152 groupdlg.cpp:160
 msgid "Catchup"
 msgstr "Alle Artikel als gelesen markieren"
 
@@ -78,15 +78,15 @@ msgstr "Alle Artikel als gelesen markieren"
 msgid "(un)Subscribe"
 msgstr "Abonnieren an/aus"
 
-#: artdlg.cpp:130 groupdlg.cpp:151
+#: artdlg.cpp:133 groupdlg.cpp:151
 msgid "Untag"
 msgstr "Markierung aus"
 
-#: artdlg.cpp:150 groupdlg.cpp:159
+#: artdlg.cpp:152 groupdlg.cpp:159
 msgid "(Un)Tag"
 msgstr "Markierung an/aus"
 
-#: artdlg.cpp:143 artdlg.cpp:210 groupdlg.cpp:162 groupdlg.cpp:219
+#: artdlg.cpp:145 artdlg.cpp:212 groupdlg.cpp:162 groupdlg.cpp:219
 msgid "Post New Article"
 msgstr "Neuen Artikel veröffentlichen"
 
@@ -98,7 +98,7 @@ msgstr "Alle Artikel in der Warteschlange senden"
 msgid "&Subscribed"
 msgstr "&Abonnierte"
 
-#: artdlg.cpp:180 groupdlg.cpp:166
+#: artdlg.cpp:182 groupdlg.cpp:166
 msgid "&Tagged"
 msgstr "&Markierte"
 
@@ -146,11 +146,11 @@ msgstr "Suche Newsgroup"
 msgid "Check for Unread Articles"
 msgstr "Nach ungelesenen Artikeln suchen"
 
-#: groupdlg.cpp:329
+#: groupdlg.cpp:330
 msgid "Sorry!"
 msgstr "Sorry!"
 
-#: groupdlg.cpp:330
+#: groupdlg.cpp:331
 msgid ""
 "That newsgroup is not in the current active file\n"
 " Krn can't handle this gracefully right now"
@@ -158,51 +158,51 @@ msgstr ""
 "Diese Newsgroup ist nicht in der derzeitigen Liste\n"
 " Krn kann das jetzt gerade nicht verarbeiten"
 
-#: groupdlg.cpp:362 groupdlg.cpp:564 groupdlg.cpp:900
+#: groupdlg.cpp:358 groupdlg.cpp:556 groupdlg.cpp:890
 msgid "All Newsgroups."
 msgstr "Alle Newsgroups."
 
-#: groupdlg.cpp:456 groupdlg.cpp:550
+#: groupdlg.cpp:450 groupdlg.cpp:544
 msgid "Subscribed Newsgroups."
 msgstr "Abonnierte Newsgroups."
 
-#: groupdlg.cpp:505
+#: groupdlg.cpp:499
 msgid "Disconnected"
 msgstr "nicht verbunden"
 
-#: groupdlg.cpp:512
+#: groupdlg.cpp:506
 msgid "Connecting to server"
 msgstr "Verbinde mit Server"
 
-#: groupdlg.cpp:517
+#: groupdlg.cpp:511
 msgid "Connected to server - Posting not allowed"
 msgstr "verbunden - Veröffentlichung nicht erlaubt"
 
-#: groupdlg.cpp:519
+#: groupdlg.cpp:513
 msgid "Connected to server - Posting allowed"
 msgstr "verbunden - Veröffentlichung erlaubt"
 
-#: groupdlg.cpp:525
+#: groupdlg.cpp:519
 msgid "Can't connect to server"
 msgstr "Kann nicht mit Server verbinden"
 
-#: groupdlg.cpp:527
+#: groupdlg.cpp:521
 msgid "Connection to server failed"
 msgstr "Fehler bei der Verbindung zum Server"
 
-#: groupdlg.cpp:536
+#: groupdlg.cpp:530
 msgid "Authentication Failed"
 msgstr "Authentifizierung fehlgeschlagen"
 
-#: groupdlg.cpp:539
+#: groupdlg.cpp:533
 msgid "Connection to server failed: Authentication problem"
 msgstr "Verbindung zum Server fehlgeschlagen: Authentifizierungsproblem"
 
-#: groupdlg.cpp:583
+#: groupdlg.cpp:573
 msgid "Krn-Question"
 msgstr "Krn-Frage"
 
-#: groupdlg.cpp:584
+#: groupdlg.cpp:574
 msgid ""
 "The operation you requested needs a connection to the News server\n"
 "Should I attempt one?"
@@ -210,7 +210,7 @@ msgstr ""
 "Die gewünschte Operation benötigt eine Verbindung zum News-Server\n"
 "Soll ich dies versuchen?"
 
-#: groupdlg.cpp:846
+#: groupdlg.cpp:836
 msgid ""
 "You don't have an active groups list.\n"
 " get it from server?"
@@ -218,203 +218,191 @@ msgstr ""
 "Sie haben keine Liste der aktiven Newsgroups.\n"
 " soll ich sie vom Server holen?"
 
-#: groupdlg.cpp:862
+#: groupdlg.cpp:852
 msgid "Listing active newsgroups"
 msgstr "Liste die aktiven Newsgroups auf"
 
-#: groupdlg.cpp:874
+#: groupdlg.cpp:864
 msgid "KRN - Find a Newsgroup"
 msgstr "KRN - Suche eine Newsgroup"
 
-#: groupdlg.cpp:875
+#: groupdlg.cpp:865
 msgid "Enter the name of the Newsgroup"
 msgstr "Geben sie den Namen der Newsgroup ein"
 
-#: groupdlg.cpp:960
+#: groupdlg.cpp:950
 msgid "Krn - Message"
 msgstr "Krn - Nachricht"
 
-#: groupdlg.cpp:961
+#: groupdlg.cpp:951
 msgid "I can't find the group you want!"
 msgstr "Ich kann die Gruppe, die sie möchten, nicht finden!"
 
-#: groupdlg.cpp:1052
+#: groupdlg.cpp:1042
 msgid "Getting messages in "
 msgstr "Hole Nachrichten aus "
 
-#: groupdlg.cpp:1065
+#: groupdlg.cpp:1055
 msgid "Getting list of messages in "
 msgstr "Hole die Liste der Nachrichten aus "
 
-#: artdlg.cpp:123 artdlg.cpp:138
+#: artdlg.cpp:129 artdlg.cpp:141
 msgid "Download"
 msgstr "Herunterladen"
 
-#: artdlg.cpp:125
-msgid "Mark Read"
-msgstr "Als gelesen markieren"
-
-#: artdlg.cpp:126
-msgid "Mark Unread"
-msgstr "Als ungelesen markieren"
-
-#: artdlg.cpp:128 artdlg.cpp:142
+#: artdlg.cpp:131 artdlg.cpp:144
 msgid "Print"
 msgstr "Drucken"
 
-#: artdlg.cpp:129 artdlg.cpp:149
+#: artdlg.cpp:132 artdlg.cpp:151
 msgid "Decode"
 msgstr "Dekodieren"
 
-#: artdlg.cpp:131 artdlg.cpp:154
+#: artdlg.cpp:134 artdlg.cpp:156
 msgid "Don't expire"
 msgstr "Behalten"
 
-#: artdlg.cpp:140
-msgid "Lookup in Altavista"
-msgstr "Suche bei Altavista"
-
-#: artdlg.cpp:144 artdlg.cpp:213
+#: artdlg.cpp:146 artdlg.cpp:215
 msgid "Reply by Mail"
 msgstr "Anwort per Mail"
 
-#: artdlg.cpp:145
+#: artdlg.cpp:147
 msgid "Post Followup"
 msgstr "Antwort veröffentlichen"
 
-#: artdlg.cpp:146
+#: artdlg.cpp:148
 msgid "Post & Reply"
 msgstr "Veröffentlichen und Antworten"
 
-#: artdlg.cpp:152
+#: artdlg.cpp:154
 msgid "Tagged"
 msgstr "Markierte"
 
-#: artdlg.cpp:162
+#: artdlg.cpp:164
 msgid "Show Only Unread Messages"
 msgstr "Nur ungelesene anzeigen"
 
-#: artdlg.cpp:164
+#: artdlg.cpp:166
 msgid "Show Only Cached Messages"
 msgstr "Nur Zwischengespeicherte anzeigen"
 
-#: artdlg.cpp:166
+#: artdlg.cpp:168
 msgid "Show Locked Messages"
 msgstr "Gesperrte anzeigen"
 
-#: artdlg.cpp:168
+#: artdlg.cpp:170
 msgid "Expunge"
 msgstr "Löschen"
 
-#: artdlg.cpp:169
+#: artdlg.cpp:171
 msgid "Appearance..."
 msgstr "Eigenschaften..."
 
-#: artdlg.cpp:170
+#: artdlg.cpp:172
 msgid "Sorting..."
 msgstr "Sortiere..."
 
-#: artdlg.cpp:174
+#: artdlg.cpp:176
 msgid "Edit Rules"
 msgstr "Regeln bearbeiten"
 
-#: artdlg.cpp:175
+#: artdlg.cpp:177
 msgid "Update"
 msgstr "Erneuern"
 
-#: artdlg.cpp:178
+#: artdlg.cpp:180
 msgid "menu"
 msgstr "Menü"
 
-#: artdlg.cpp:182
+#: artdlg.cpp:184
 msgid "&Scoring"
 msgstr "&Bewertung"
 
-#: artdlg.cpp:192
+#: artdlg.cpp:194
 msgid "Previous Message"
 msgstr "Vorherige Nachricht"
 
-#: artdlg.cpp:195
+#: artdlg.cpp:197
 msgid "Next Message"
 msgstr "Nächste Nachricht"
 
-#: artdlg.cpp:200
+#: artdlg.cpp:202
 msgid "Save Article"
 msgstr "Artikel speichern"
 
-#: artdlg.cpp:203
+#: artdlg.cpp:205
 msgid "Print Article"
 msgstr "Artikel drucken"
 
-#: artdlg.cpp:206
+#: artdlg.cpp:208
 msgid "Find Article"
 msgstr "Artikel suchen"
 
-#: artdlg.cpp:216
+#: artdlg.cpp:218
 msgid "Post a Followup"
 msgstr "Antwort veröffentlichen"
 
-#: artdlg.cpp:219
+#: artdlg.cpp:221
 msgid "Post & Mail"
 msgstr "Veröffentlichen & Antworten"
 
-#: artdlg.cpp:228
+#: artdlg.cpp:230
 msgid "Get Article List"
 msgstr "Artikelliste holen"
 
-#: artdlg.cpp:231
+#: artdlg.cpp:233
 msgid "Tag Article"
 msgstr "Artikel markieren"
 
-#: artdlg.cpp:234
+#: artdlg.cpp:236
 msgid "Lock (keep in cache)"
 msgstr "Sperren (im Zwischenspeicher behalten)"
 
-#: artdlg.cpp:237
+#: artdlg.cpp:239
 msgid "Decode Article"
 msgstr "Artikel dekodieren"
 
-#: artdlg.cpp:266 sortDlg.cpp:34
+#: artdlg.cpp:268 sortDlg.cpp:28
 msgid "Sender"
 msgstr "Von"
 
-#: artdlg.cpp:267 sortDlg.cpp:35
+#: artdlg.cpp:269 sortDlg.cpp:29
 msgid "Date"
 msgstr "Datum"
 
-#: artdlg.cpp:268 sortDlg.cpp:36
+#: artdlg.cpp:270
 msgid "Lines"
 msgstr "Zeilen"
 
-#: artdlg.cpp:269 sortDlg.cpp:32
+#: artdlg.cpp:271 sortDlg.cpp:26
 msgid "Subject"
 msgstr "Thema"
 
-#: artdlg.cpp:434
+#: artdlg.cpp:436
 msgid "Threading..."
 msgstr "Sortiere..."
 
-#: artdlg.cpp:443
+#: artdlg.cpp:445
 msgid "Showing Article List"
 msgstr "Zeige Artikelliste"
 
-#: artdlg.cpp:1109
+#: artdlg.cpp:1051
 msgid "KRN - Existing File"
 msgstr "KRN - Datei existiert"
 
-#: artdlg.cpp:1110
+#: artdlg.cpp:1052
 msgid "The File you selected already exists"
 msgstr "Die gewählte Datei existiert bereits"
 
-#: artdlg.cpp:1116
+#: artdlg.cpp:1058
 msgid "OverWrite"
 msgstr "Überschreiben"
 
-#: artdlg.cpp:1118
+#: artdlg.cpp:1060
 msgid "Append"
 msgstr "Anhängen"
 
-#: artdlg.cpp:1165
+#: artdlg.cpp:1107
 msgid ""
 "\n"
 "Error getting article.\n"
@@ -424,7 +412,7 @@ msgstr ""
 "Fehler beim Artikelholen.\n"
 "Server antwortete:\n"
 
-#: artdlg.cpp:1266
+#: artdlg.cpp:1208
 msgid "Getting Article List"
 msgstr "hole Artikelliste"
 
@@ -581,19 +569,19 @@ msgstr "Fenster vertikal teilen"
 msgid "KRN - Article Searcher"
 msgstr "KRN - Artikelsucher"
 
-#: findArtDlg.cpp:29
+#: findArtDlg.cpp:29 rulesDlg.cpp:35
 msgid "Find Articles With:"
 msgstr "Artikel suchen mit:"
 
-#: findArtDlg.cpp:34 rulesDlg.cpp:45
+#: findArtDlg.cpp:34 rulesDlg.cpp:40
 msgid "In Field:"
 msgstr "Im Feld:"
 
-#: findArtDlg.cpp:52 rulesDlg.cpp:61
+#: findArtDlg.cpp:52 rulesDlg.cpp:55
 msgid "Wildcard Mode"
 msgstr "Platzhalter-Modus"
 
-#: krnsender.cpp:48
+#: krnsender.cpp:46
 msgid "This server is read onlyyou can't post here!"
 msgstr "Sie haben bei diesem Server keine Veröffentlichungserlaubnis!"
 
@@ -657,30 +645,38 @@ msgstr "Text"
 msgid "KRN - Scoring Rules Editor"
 msgstr "KRN - Bewertungsregeln bearbeiten"
 
-#: rulesDlg.cpp:30
+#: rulesDlg.cpp:29
 msgid "Save as"
 msgstr "Speichern unter"
 
-#: rulesDlg.cpp:40
-msgid "Match Articles With:"
-msgstr "Artikel suchen mit:"
-
-#: sortDlg.cpp:23
+#: sortDlg.cpp:18
 msgid "KRN - Header Sorting"
 msgstr "KRN - Artikelsortierung"
 
-#: sortDlg.cpp:33
+#: sortDlg.cpp:27
 msgid "Score"
 msgstr "Punktzahl"
 
-#: sortDlg.cpp:37
+#: sortDlg.cpp:30
 msgid "None"
 msgstr "Keine"
 
-#: sortDlg.cpp:39
+#: sortDlg.cpp:32
 msgid "Sort by:"
 msgstr "Sortiert nach:"
 
-#: sortDlg.cpp:56
+#: sortDlg.cpp:51
 msgid "Use Threading"
 msgstr "Nach Threads"
+
+#~ msgid "Mark Read"
+#~ msgstr "Als gelesen markieren"
+
+#~ msgid "Mark Unread"
+#~ msgstr "Als ungelesen markieren"
+
+#~ msgid "Lookup in Altavista"
+#~ msgstr "Suche bei Altavista"
+
+#~ msgid "Match Articles With:"
+#~ msgstr "Artikel suchen mit:"

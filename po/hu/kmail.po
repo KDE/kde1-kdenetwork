@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-02-09 11:32+0100\n"
+"POT-Creation-Date: 1998-02-24 21:39+0100\n"
 "PO-Revision-Date: 1998-01-21 15:18+CET\n"
 "Last-Translator: Marcell Lengyel <mike.tkf@ibm.net>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8-bit\n"
 "Translator: Banik Peter <bpeter@mtit.hu>\n"
 
-#: kmcomposewin.cpp:1258 kmmainwin.cpp:266 kpgp.cpp:349
+#: kmcomposewin.cpp:1266 kmmainwin.cpp:266 kpgp.cpp:349
 msgid ""
 "Sorry, but this feature\n"
 "is still missing"
@@ -173,7 +173,7 @@ msgstr "Késõbbi küldés"
 msgid "&Settings..."
 msgstr "&Beállítások..."
 
-#: kmcomposewin.cpp:384 kmmainwin.cpp:744
+#: kmcomposewin.cpp:387 kmmainwin.cpp:744
 #, fuzzy
 msgid "&Addressbook..."
 msgstr "&Címjegyzék..."
@@ -203,7 +203,7 @@ msgstr "Tömörít"
 msgid "&Empty"
 msgstr "Ki&ürít"
 
-#: kmcomposewin.cpp:460 kmmainwin.cpp:773
+#: kmcomposewin.cpp:463 kmmainwin.cpp:773
 msgid "&Remove"
 msgstr "&Eltávolít"
 
@@ -246,104 +246,104 @@ msgstr "Állapot beállítása"
 msgid "Send again..."
 msgstr "Felad mégegyszer..."
 
-#: kmmainwin.cpp:813
+#: kmmainwin.cpp:812
 msgid "Apply filters"
 msgstr ""
 
-#: kmmainwin.cpp:817
+#: kmmainwin.cpp:815
 #, fuzzy
 msgid "View Source..."
 msgstr "Forrás megjelenítése..."
 
-#: kmmainwin.cpp:824
+#: kmmainwin.cpp:822
 msgid "&Brief Headers"
 msgstr "Rövid fejléc"
 
-#: kmmainwin.cpp:826
+#: kmmainwin.cpp:824
 msgid "&Fancy Headers"
 msgstr "Csicsás fejléc"
 
-#: kmmainwin.cpp:828
+#: kmmainwin.cpp:826
 msgid "&Standard Headers"
 msgstr "Normális fejléc"
 
-#: kmmainwin.cpp:830
+#: kmmainwin.cpp:828
 #, fuzzy
 msgid "&Long Headers"
 msgstr "Hosszú fejlécek be/ki"
 
-#: kmmainwin.cpp:832
+#: kmmainwin.cpp:830
 #, fuzzy
 msgid "&All Headers"
 msgstr "Összes fejléc be/ki"
 
-#: kmmainwin.cpp:835
+#: kmmainwin.cpp:833
 msgid "Iconic Attachments"
 msgstr ""
 
-#: kmmainwin.cpp:836
+#: kmmainwin.cpp:834
 msgid "Smart Attachments"
 msgstr ""
 
-#: kmmainwin.cpp:837
+#: kmmainwin.cpp:835
 msgid "Inlined Attachments"
 msgstr ""
 
-#: kmmainwin.cpp:848
+#: kmmainwin.cpp:846
 msgid "F&older"
 msgstr "&Mappa"
 
-#: kmmainwin.cpp:849
+#: kmmainwin.cpp:847
 msgid "&Message"
 msgstr "&Üzenet"
 
-#: kmcomposewin.cpp:489 kmmainwin.cpp:868
+#: kmcomposewin.cpp:492 kmmainwin.cpp:866
 msgid "Compose new message"
 msgstr "Új üzenet szerkesztése"
 
-#: kmcomposewin.cpp:494 kmmainwin.cpp:873
+#: kmcomposewin.cpp:497 kmmainwin.cpp:871
 msgid "Save message to file"
 msgstr "Üzenet file-ba mentése"
 
-#: kmcomposewin.cpp:499 kmmainwin.cpp:878
+#: kmcomposewin.cpp:502 kmmainwin.cpp:876
 msgid "Print message"
 msgstr "Üzenet nyomtatása"
 
-#: kmmainwin.cpp:885
+#: kmmainwin.cpp:883
 msgid "Get new mail"
 msgstr "Új üzenetek ellenõrzése"
 
-#: kmmainwin.cpp:891
+#: kmmainwin.cpp:889
 msgid "Reply to author"
 msgstr "Válasz a feladónak"
 
-#: kmmainwin.cpp:896
+#: kmmainwin.cpp:894
 msgid "Reply to all recipients"
 msgstr "Válasz minden címzettnek"
 
-#: kmmainwin.cpp:901
+#: kmmainwin.cpp:899
 msgid "Forward message"
 msgstr "Üzenet továbbítása"
 
-#: kmmainwin.cpp:906
+#: kmmainwin.cpp:904
 msgid "Delete message"
 msgstr "Üzenet törlése"
 
-#: kmcomposewin.cpp:523 kmmainwin.cpp:912
+#: kmcomposewin.cpp:526 kmmainwin.cpp:910
 #, fuzzy
 msgid "Open addressbook..."
 msgstr "&Címjegyzék..."
 
-#: kmmainwin.cpp:924
+#: kmmainwin.cpp:922
 msgid "Initializing..."
 msgstr "Kezdõértékek beállítása..."
 
 #: kmfolderdia.cpp:38 kmmsgpartdlg.cpp:62 kmsettings.cpp:128
-#: kmsettings.cpp:719
+#: kmsettings.cpp:718
 msgid "Name:"
 msgstr "Név:"
 
-#: kmcomposewin.cpp:1266 kmfolderdia.cpp:44 kmfolderdia.cpp:120
+#: kmcomposewin.cpp:1274 kmfolderdia.cpp:44 kmfolderdia.cpp:120
 msgid "unnamed"
 msgstr "névtelen"
 
@@ -392,7 +392,7 @@ msgstr "Üzenetküldési eljárás"
 msgid "Sendmail"
 msgstr "Sendmail"
 
-#: kmsettings.cpp:178 kmsettings.cpp:726
+#: kmsettings.cpp:178 kmsettings.cpp:725
 msgid "Location:"
 msgstr "Elérési út:"
 
@@ -404,7 +404,7 @@ msgstr "SMTP"
 msgid "Server:"
 msgstr "Kiszolgáló:"
 
-#: kmsettings.cpp:190 kmsettings.cpp:747
+#: kmsettings.cpp:190 kmsettings.cpp:746
 msgid "Port:"
 msgstr "Port:"
 
@@ -416,11 +416,11 @@ msgstr "Bejövõ üzenetek"
 msgid "Accounts:   (add at least one account!)"
 msgstr "Ügyfelek: (legalább egyet töltsön ki!)"
 
-#: kmcomposewin.cpp:118 kmsettings.cpp:221
+#: kmcomposewin.cpp:120 kmsettings.cpp:221
 msgid "Name"
 msgstr "Név"
 
-#: kmcomposewin.cpp:121 kmsettings.cpp:222
+#: kmcomposewin.cpp:123 kmsettings.cpp:222
 msgid "Type"
 msgstr "Típus"
 
@@ -473,17 +473,17 @@ msgstr "Továbbított üzenet:"
 msgid "Indentation:"
 msgstr "Idézett sorok jelölése:"
 
-#: kmmessage.cpp:1156 kmsettings.cpp:308
+#: kmmessage.cpp:1176 kmsettings.cpp:308
 #, fuzzy
 msgid "On %D, you wrote:"
 msgstr "%D dátummal ezt írtad:"
 
-#: kmmessage.cpp:1157 kmsettings.cpp:312
+#: kmmessage.cpp:1177 kmsettings.cpp:312
 #, fuzzy
 msgid "On %D, %F wrote:"
 msgstr "%D dátummal %F ezt írta:"
 
-#: kmmessage.cpp:1158 kmsettings.cpp:316
+#: kmmessage.cpp:1178 kmsettings.cpp:316
 #, fuzzy
 msgid "Forwarded Message"
 msgstr "Továbbított üzenet"
@@ -563,7 +563,7 @@ msgstr ""
 msgid "Select Account"
 msgstr "Ügyfél választás"
 
-#: kmaccount.cpp:68 kmfilterdlg.cpp:373 kmsettings.cpp:524
+#: kmaccount.cpp:70 kmfilterdlg.cpp:463 kmsettings.cpp:524
 #, fuzzy
 msgid "Unnamed"
 msgstr "névtelen"
@@ -572,61 +572,61 @@ msgstr "névtelen"
 msgid "Choose Sendmail Location"
 msgstr "Sendmail elérési útjának megadása"
 
-#: kmcomposewin.cpp:1373 kmsettings.cpp:552
+#: kmcomposewin.cpp:1381 kmsettings.cpp:552
 msgid "Choose Signature File"
 msgstr "Aláírás file kiválasztása"
 
-#: kmsettings.cpp:711
+#: kmsettings.cpp:710
 msgid "Type:"
 msgstr "Típus:"
 
-#: kmsettings.cpp:724
+#: kmsettings.cpp:723
 msgid "Local Account"
 msgstr "Helyi ügyfél"
 
-#: kmsettings.cpp:733
+#: kmsettings.cpp:732
 msgid "Pop Account"
 msgstr "POP ügyfél"
 
-#: kmsettings.cpp:735
+#: kmsettings.cpp:734
 msgid "Login:"
 msgstr "Azonosító:"
 
-#: kmacctpop.cpp:426 kmsettings.cpp:738
+#: kmacctpop.cpp:432 kmsettings.cpp:737
 msgid "Password:"
 msgstr "Jelszó:"
 
-#: kmsettings.cpp:742
+#: kmsettings.cpp:741
 msgid "Host:"
 msgstr "Kiszolgáló:"
 
-#: kmsettings.cpp:750
+#: kmsettings.cpp:749
 msgid "Delete mail from server"
 msgstr "Üzenetek törlése a kiszolgálóról"
 
-#: kmsettings.cpp:762
+#: kmsettings.cpp:761
 msgid "Store new mail in account:"
 msgstr "A beérkezõ üzenetek mappája:"
 
-#: kmsettings.cpp:770
+#: kmsettings.cpp:769
 msgid "<none>"
 msgstr "<üres>"
 
-#: kmsettings.cpp:815
+#: kmsettings.cpp:814
 msgid "Choose Location"
 msgstr "Adja meg az elérési útvonalat"
 
-#: kmaccount.cpp:105
+#: kmaccount.cpp:109
 #, fuzzy
 msgid "Receipt: "
 msgstr "Címzett: "
 
-#: kmaccount.cpp:133
+#: kmaccount.cpp:138
 #, fuzzy
 msgid "Failed to add message:"
 msgstr "Sikertelen üzenet:"
 
-#: kmcomposewin.cpp:117 kmheaders.cpp:38
+#: kmcomposewin.cpp:119 kmheaders.cpp:38
 msgid "F"
 msgstr "F"
 
@@ -642,223 +642,232 @@ msgstr "Tárgy"
 msgid "Date"
 msgstr "Dátum"
 
-#: kmheaders.cpp:301
+#: kmheaders.cpp:305
 msgid "Message(s) saved."
 msgstr "Üzenet(ek) elmentve."
 
-#: kmheaders.cpp:303
+#: kmheaders.cpp:307
 #, fuzzy
 msgid "Failed to save message(s)."
 msgstr "Nem sikerült elmenteni az üzenet(ek)et."
 
-#: kmheaders.cpp:615
+#: kmheaders.cpp:619
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d üzenet, %d olvasatlan."
 
-#: kmheaders.cpp:617
+#: kmheaders.cpp:621
 msgid "Folder is read-only."
 msgstr "Mappa írásvédett."
 
-#: kmcomposewin.cpp:107
+#: kmcomposewin.cpp:108
 msgid "KMail Composer"
 msgstr "KMail üzenetszerkesztõ"
 
-#: kmcomposewin.cpp:120
+#: kmcomposewin.cpp:122
 msgid "Encoding"
 msgstr "Kódolás"
 
-#: kmcomposewin.cpp:293
+#: kmcomposewin.cpp:296
 #, fuzzy
 msgid "&From:"
 msgstr "&Feladó:"
 
-#: kmcomposewin.cpp:295
+#: kmcomposewin.cpp:298
 #, fuzzy
 msgid "&Reply to:"
 msgstr "Válasz másik címre:"
 
-#: kmcomposewin.cpp:297
+#: kmcomposewin.cpp:300
 msgid "&To:"
 msgstr "&Címzett:"
 
-#: kmcomposewin.cpp:299
+#: kmcomposewin.cpp:302
 msgid "&Cc:"
 msgstr "&Lássa:"
 
-#: kmcomposewin.cpp:301
+#: kmcomposewin.cpp:304
 #, fuzzy
 msgid "&Bcc:"
 msgstr "&Lássa:"
 
-#: kmcomposewin.cpp:303
+#: kmcomposewin.cpp:306
 msgid "&Subject:"
 msgstr "&Tárgy:"
 
-#: kmcomposewin.cpp:306
+#: kmcomposewin.cpp:309
 msgid "&Newsgroups:"
 msgstr "Hírcsopotok:"
 
-#: kmcomposewin.cpp:308
+#: kmcomposewin.cpp:311
 msgid "&Followup-To:"
 msgstr "Reagálás:"
 
-#: kmcomposewin.cpp:374
+#: kmcomposewin.cpp:377
 #, fuzzy
 msgid "&Send"
 msgstr "Feladás"
 
-#: kmcomposewin.cpp:377
+#: kmcomposewin.cpp:380
 #, fuzzy
 msgid "S&end later"
 msgstr "F&eladás késõbb"
 
-#: kmcomposewin.cpp:379
+#: kmcomposewin.cpp:382
 #, fuzzy
 msgid "S&end now"
 msgstr "Feladás azonnal"
 
-#: kmcomposewin.cpp:381
+#: kmcomposewin.cpp:384
 #, fuzzy
 msgid "&Insert File..."
 msgstr "File &beszúrása"
 
-#: kmcomposewin.cpp:389
+#: kmcomposewin.cpp:392
 #, fuzzy
 msgid "&New Composer..."
 msgstr "Új üzenetszerkesztõ"
 
-#: kmcomposewin.cpp:411 kmcomposewin.cpp:606 kmcomposewin.cpp:1537
+#: kmcomposewin.cpp:414 kmcomposewin.cpp:624 kmcomposewin.cpp:1545
 msgid "Mark all"
 msgstr "Mindent kijelöl"
 
-#: kmcomposewin.cpp:414 kmcomposewin.cpp:608
+#: kmcomposewin.cpp:417 kmcomposewin.cpp:626
 msgid "Find..."
 msgstr "Keres..."
 
-#: kmcomposewin.cpp:416 kmcomposewin.cpp:609
+#: kmcomposewin.cpp:419 kmcomposewin.cpp:627
 #, fuzzy
 msgid "Replace..."
 msgstr "&Válasz..."
 
-#: kmcomposewin.cpp:423
+#: kmcomposewin.cpp:426
 msgid "&Urgent"
 msgstr "Sürgõs"
 
-#: kmcomposewin.cpp:425
+#: kmcomposewin.cpp:428
 msgid "&Confirm delivery"
 msgstr "Küldés megerõsítés"
 
-#: kmcomposewin.cpp:427
+#: kmcomposewin.cpp:430
 #, fuzzy
 msgid "&Confirm read"
 msgstr "Olvasás megerõsítése"
 
-#: kmcomposewin.cpp:439
+#: kmcomposewin.cpp:442
 msgid "&All Fields"
 msgstr "Minden mezõ"
 
-#: kmcomposewin.cpp:441
+#: kmcomposewin.cpp:444
 #, fuzzy
 msgid "&From"
 msgstr "&Feladó"
 
-#: kmcomposewin.cpp:442
+#: kmcomposewin.cpp:445
 #, fuzzy
 msgid "&Reply to"
 msgstr "&Válasz másik címre"
 
-#: kmcomposewin.cpp:443
+#: kmcomposewin.cpp:446
 #, fuzzy
 msgid "&To"
 msgstr "&Címzett"
 
-#: kmcomposewin.cpp:444
+#: kmcomposewin.cpp:447
 #, fuzzy
 msgid "&Cc"
 msgstr "&Lássa"
 
-#: kmcomposewin.cpp:445
+#: kmcomposewin.cpp:448
 msgid "&Bcc"
 msgstr "Lássa2"
 
-#: kmcomposewin.cpp:446
+#: kmcomposewin.cpp:449
 #, fuzzy
 msgid "&Subject"
 msgstr "&Tárgy:"
 
-#: kmcomposewin.cpp:448
+#: kmcomposewin.cpp:451
 msgid "&Newsgroups"
 msgstr "Hírcsoportok"
 
-#: kmcomposewin.cpp:449
+#: kmcomposewin.cpp:452
 msgid "&Followup-To"
 msgstr "Reagálás"
 
-#: kmcomposewin.cpp:454
+#: kmcomposewin.cpp:457
 #, fuzzy
 msgid "Append S&ignature"
 msgstr "&Aláírás"
 
-#: kmcomposewin.cpp:456
+#: kmcomposewin.cpp:459
 #, fuzzy
 msgid "&Insert File"
 msgstr "File &beszúrása"
 
-#: kmcomposewin.cpp:458
+#: kmcomposewin.cpp:461
 #, fuzzy
 msgid "&Attach..."
 msgstr "Csatol..."
 
-#: kmcomposewin.cpp:461
+#: kmcomposewin.cpp:464
 #, fuzzy
 msgid "&Save..."
 msgstr "Menté&s..."
 
-#: kmcomposewin.cpp:462
+#: kmcomposewin.cpp:465
 #, fuzzy
 msgid "Pr&operties..."
 msgstr "&Beállítások..."
 
-#: kmcomposewin.cpp:464
+#: kmcomposewin.cpp:467
 #, fuzzy
 msgid "&Attach"
 msgstr "Csatol"
-
-#: kmcomposewin.cpp:508
-#, fuzzy
-msgid "Copy selection"
-msgstr "Adja meg az elérési útvonalat"
 
 #: kmcomposewin.cpp:511
 msgid "Cut selection"
 msgstr ""
 
 #: kmcomposewin.cpp:514
+#, fuzzy
+msgid "Copy selection"
+msgstr "Adja meg az elérési útvonalat"
+
+#: kmcomposewin.cpp:517
 msgid "Paste clipboard contents"
 msgstr ""
 
-#: kmcomposewin.cpp:519
+#: kmcomposewin.cpp:522
 #, fuzzy
 msgid "Attach file"
 msgstr "File csatolása"
 
-#: kmcomposewin.cpp:532
+#: kmcomposewin.cpp:535
 #, fuzzy
 msgid "sign message"
 msgstr "üzenet aláírása"
 
-#: kmcomposewin.cpp:537
+#: kmcomposewin.cpp:540
 #, fuzzy
 msgid "encrypt message"
 msgstr "üzenet kódolása"
 
-#: kmcomposewin.cpp:737
+#: kmcomposewin.cpp:552 kmcomposewin.cpp:566
+msgid "Column"
+msgstr ""
+
+#: kmcomposewin.cpp:553 kmcomposewin.cpp:564
+#, fuzzy
+msgid "Line"
+msgstr "Azonosító:"
+
+#: kmcomposewin.cpp:759
 #, fuzzy
 msgid "KMail Confirm"
 msgstr "KMail megerõsítés"
 
-#: kmcomposewin.cpp:738
+#: kmcomposewin.cpp:760
 msgid ""
 "Close and discard\n"
 "edited message?"
@@ -866,7 +875,7 @@ msgstr ""
 "Szerkesztett üzenetet\n"
 "bezárása és elvetés?"
 
-#: kmcomposewin.cpp:780
+#: kmcomposewin.cpp:802
 #, c-format
 msgid ""
 "public key for %s not found.\n"
@@ -875,61 +884,66 @@ msgstr ""
 "%s publikus kulcsa nem található.\n"
 "Ez a személy nem tudja majd kikiódolni az üzenetet."
 
-#: kmcomposewin.cpp:801
+#: kmcomposewin.cpp:823
 msgid "Error during PGP:"
 msgstr "PGP hiba:"
 
-#: kmcomposewin.cpp:1011 kmcomposewin.cpp:1032
+#: kmcomposewin.cpp:1033
 msgid "Attach File"
 msgstr "File csatolása"
 
-#: kmcomposewin.cpp:1063 kmreaderwin.cpp:613
+#: kmcomposewin.cpp:1050
+#, fuzzy
+msgid "Include File"
+msgstr "File &beszúrása"
+
+#: kmcomposewin.cpp:1071 kmreaderwin.cpp:623
 #, fuzzy
 msgid "View..."
 msgstr "Nézet..."
 
-#: kmcomposewin.cpp:1064
+#: kmcomposewin.cpp:1072
 #, fuzzy
 msgid "Save..."
 msgstr "Át&helyez..."
 
-#: kmcomposewin.cpp:1065 kmreaderwin.cpp:616
+#: kmcomposewin.cpp:1073 kmreaderwin.cpp:626
 #, fuzzy
 msgid "Properties..."
 msgstr "Tulajdonságok..."
 
-#: kmcomposewin.cpp:1069
+#: kmcomposewin.cpp:1077
 #, fuzzy
 msgid "Attach..."
 msgstr "Csatolás..."
 
-#: kmcomposewin.cpp:1111 kmreaderwin.cpp:638
+#: kmcomposewin.cpp:1119 kmreaderwin.cpp:648
 #, fuzzy
 msgid "View Attachment: "
 msgstr "Csatolás megtekintése: "
 
-#: kmcomposewin.cpp:1281
+#: kmcomposewin.cpp:1289
 msgid "To:"
 msgstr "Címzett:"
 
-#: kmcomposewin.cpp:1285
+#: kmcomposewin.cpp:1293
 msgid "Subject:"
 msgstr "Tárgy:"
 
-#: kmcomposewin.cpp:1288
+#: kmcomposewin.cpp:1296
 msgid "Date:"
 msgstr "Dátum:"
 
-#: kmcomposewin.cpp:1403
+#: kmcomposewin.cpp:1411
 msgid "KMail: Spellcheck"
 msgstr "KMail: Helyesírás ellenõrzés"
 
-#: kmcomposewin.cpp:1427
+#: kmcomposewin.cpp:1435
 msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
 msgstr "Hiba a KSpell indításakor. Ellenõrizze, hogy az ISpell beállításait."
 
-#: kmfolder.cpp:139
+#: kmfolder.cpp:142
 #, c-format
 msgid ""
 "Contents of folder `%s' changed.\n"
@@ -938,7 +952,7 @@ msgstr ""
 "A `%s' mappa tartalma megváltozott.\n"
 "Index fájl újragenerálása folyamatban."
 
-#: kmfolder.cpp:340
+#: kmfolder.cpp:343
 #, c-format
 msgid "Creating index file: %d messages done"
 msgstr "Index fájl elkészült: %d üzenet"
@@ -970,77 +984,77 @@ msgstr "Base 64"
 msgid "quoted printable"
 msgstr "beidézett, nyomtatható"
 
-#: kmreaderwin.cpp:273 kmreaderwin.cpp:289 kmreaderwin.cpp:310
+#: kmreaderwin.cpp:283 kmreaderwin.cpp:299 kmreaderwin.cpp:320
 #, fuzzy
 msgid "From: "
 msgstr "Feladó: "
 
-#: kmreaderwin.cpp:275 kmreaderwin.cpp:291 kmreaderwin.cpp:312
+#: kmreaderwin.cpp:285 kmreaderwin.cpp:301 kmreaderwin.cpp:322
 #, fuzzy
 msgid "To: "
 msgstr "Címzett: "
 
-#: kmreaderwin.cpp:279 kmreaderwin.cpp:300 kmreaderwin.cpp:325
+#: kmreaderwin.cpp:289 kmreaderwin.cpp:310 kmreaderwin.cpp:335
 msgid "References: "
 msgstr "Referenciák: "
 
-#: kmreaderwin.cpp:294 kmreaderwin.cpp:315
+#: kmreaderwin.cpp:304 kmreaderwin.cpp:325
 #, fuzzy
 msgid "Cc: "
 msgstr "Lássa: "
 
-#: kmreaderwin.cpp:296 kmreaderwin.cpp:309
+#: kmreaderwin.cpp:306 kmreaderwin.cpp:319
 #, fuzzy
 msgid "Date: "
 msgstr "Dátum: "
 
-#: kmreaderwin.cpp:318
+#: kmreaderwin.cpp:328
 #, fuzzy
 msgid "Bcc: "
 msgstr "&Lássa2: "
 
-#: kmreaderwin.cpp:321
+#: kmreaderwin.cpp:331
 #, fuzzy
 msgid "Reply to: "
 msgstr "Válasz másik címre: "
 
-#: kmreaderwin.cpp:328
+#: kmreaderwin.cpp:338
 msgid "Groups: "
 msgstr "Csoportok: "
 
-#: kmreaderwin.cpp:363
+#: kmreaderwin.cpp:373
 #, fuzzy
 msgid "Encrypted message"
 msgstr "Kódolt üzenet"
 
-#: kmreaderwin.cpp:369
+#: kmreaderwin.cpp:379
 msgid "Cannot decrypt message:"
 msgstr "Az üzenet nem dekódolható:"
 
-#: kmreaderwin.cpp:387
+#: kmreaderwin.cpp:397
 msgid "Message was signed by"
 msgstr "Üzenet aláírója:"
 
-#: kmreaderwin.cpp:388
+#: kmreaderwin.cpp:398
 msgid "Warning: Bad signature from"
 msgstr "Figyelem: Rossz aláírás:"
 
-#: kmreaderwin.cpp:577
+#: kmreaderwin.cpp:587
 #, fuzzy
 msgid "Attachment: "
 msgstr "Csatolt file: "
 
-#: kmreaderwin.cpp:662
+#: kmreaderwin.cpp:672
 #, fuzzy
 msgid "Could not create temporary file"
 msgstr "Ideiglenes file nem hozható létre"
 
-#: kmreaderwin.cpp:682
+#: kmreaderwin.cpp:692
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "%s nevû deiglenes file-ba nem lehet menteni"
 
-#: kmreaderwin.cpp:708
+#: kmreaderwin.cpp:718
 msgid "Could not save file"
 msgstr "File-ba mentés nem sikerült"
 
@@ -1051,11 +1065,11 @@ msgid ""
 "receive mail."
 msgstr ""
 
-#: main.cpp:96 main.cpp:214
+#: main.cpp:97 main.cpp:214
 msgid "warning"
 msgstr "figyelmeztetés"
 
-#: main.cpp:102 main.cpp:103
+#: main.cpp:103 main.cpp:104
 #, fuzzy
 msgid "fatal error"
 msgstr "hiba"
@@ -1076,7 +1090,7 @@ msgstr ""
 "~/Mail könyvtárba, de így felülírja a ~/Mail könyvtárban\n"
 "lévõ, már létezõ fájlokat (pl. inbox)."
 
-#: kmacctlocal.cpp:87
+#: kmacctlocal.cpp:85
 #, c-format
 msgid ""
 "Cannot remove mail from\n"
@@ -1087,7 +1101,7 @@ msgstr ""
 "nem távolítható el a(z)\n"
 "%s levelesládából"
 
-#: kmacctpop.cpp:110
+#: kmacctpop.cpp:114
 #, fuzzy
 msgid ""
 "Please specify Host, Port  and\n"
@@ -1098,19 +1112,19 @@ msgstr ""
 "eljárást a Beállításokban,\n"
 "majd próbálja újra."
 
-#: kmacctpop.cpp:239
+#: kmacctpop.cpp:249
 msgid "Pop Mail Error"
 msgstr "Pop üzenet hiba"
 
-#: kmacctpop.cpp:244
+#: kmacctpop.cpp:254
 msgid "Pop Mail Network Error"
 msgstr "Pop hálózati hiba"
 
-#: kmacctpop.cpp:260
+#: kmacctpop.cpp:270
 msgid "Unknown error"
 msgstr "Ismeretlen hiba"
 
-#: kmacctpop.cpp:265
+#: kmacctpop.cpp:275
 #, fuzzy, c-format
 msgid ""
 "Account: %s\n"
@@ -1121,7 +1135,7 @@ msgstr ""
 "%s-ben:\n"
 "%s"
 
-#: kmacctpop.cpp:417
+#: kmacctpop.cpp:423
 #, fuzzy
 msgid "Login Name:"
 msgstr "Azonosító:"
@@ -1202,7 +1216,7 @@ msgstr "Üzenetek elküldve."
 msgid "Sending failed:"
 msgstr "Sikertelen üzenetküldés:"
 
-#: kmsender.cpp:409
+#: kmsender.cpp:439
 msgid ""
 "Please specify a mailer program\n"
 "in the settings."
@@ -1210,16 +1224,16 @@ msgstr ""
 "Adjon meg üzenetküldõ programot\n"
 "a Beállításokban."
 
-#: kmsender.cpp:449
+#: kmsender.cpp:479
 #, c-format
 msgid "Failed to execute mailer program %s"
 msgstr "%s üzenetküldõ program indítása nem sikerült"
 
-#: kmsender.cpp:558
+#: kmsender.cpp:567
 msgid "connecting to server"
 msgstr "kapcsolódás a kiszolgálóhoz"
 
-#: kmsender.cpp:563
+#: kmsender.cpp:572
 #, c-format
 msgid ""
 "Cannot open SMTP connection to\n"
@@ -1230,21 +1244,21 @@ msgstr ""
 "a %s kiszolgálóhoz:\n"
 "%s"
 
-#: kmsender.cpp:592
+#: kmsender.cpp:601
 msgid "Cannot close SMTP connection."
 msgstr "Az SMTP kapcsolatot nem lehet lezárni."
 
-#: kmsender.cpp:642
+#: kmsender.cpp:651
 #, fuzzy
 msgid "transmitting message"
 msgstr "üzenet továbbítása"
 
-#: kmsender.cpp:696
+#: kmsender.cpp:685
 #, fuzzy
 msgid "network error"
 msgstr "hálózati hiba"
 
-#: kmsender.cpp:698
+#: kmsender.cpp:687
 #, c-format
 msgid ""
 "a SMTP error occured.\n"
@@ -1257,7 +1271,7 @@ msgstr ""
 "Válasz: %s\n"
 "Visszatérési érték: %d"
 
-#: kmsender.cpp:713
+#: kmsender.cpp:702
 #, c-format
 msgid "Sending SMTP command: %s"
 msgstr "SMTP parancs küldése: %s"
@@ -1274,12 +1288,12 @@ msgstr "Helyi levelesláda"
 msgid "Pop3"
 msgstr "POP3"
 
-#: kmfilteraction.cpp:72 kmfilteraction.cpp:164
+#: kmfilteraction.cpp:72 kmfilteraction.cpp:167
 #, fuzzy
 msgid "transfer"
 msgstr "továbbítás"
 
-#: kmfilteraction.cpp:133 kmfilteraction.cpp:166
+#: kmfilteraction.cpp:136 kmfilteraction.cpp:169
 msgid "skip rest"
 msgstr "többi elvetése"
 
@@ -1294,7 +1308,7 @@ msgstr ""
 "%s\n"
 "%s"
 
-#: kmfilter.cpp:173
+#: kmfilter.cpp:182
 #, c-format
 msgid ""
 "Unknown filter action `%s'\n"
@@ -1317,59 +1331,59 @@ msgstr "Fel"
 msgid "Down"
 msgstr "Le"
 
-#: kmfilterdlg.cpp:431
+#: kmfilterdlg.cpp:533
 #, fuzzy
 msgid "<nothing>"
 msgstr "<üres>"
 
-#: kmfilterdlg.cpp:442
+#: kmfilterdlg.cpp:544
 #, fuzzy
 msgid "ignore"
 msgstr "figyelmen kívül hagy"
 
-#: kmfilterdlg.cpp:443
+#: kmfilterdlg.cpp:545
 msgid "and"
 msgstr "és"
 
-#: kmfilterdlg.cpp:444
+#: kmfilterdlg.cpp:546
 msgid "unless"
 msgstr "hacsak"
 
-#: kmfilterdlg.cpp:445
+#: kmfilterdlg.cpp:547
 msgid "or"
 msgstr "vagy"
 
-#: kmfilterdlg.cpp:451
+#: kmfilterdlg.cpp:553
 msgid "equals"
 msgstr "egyenlõ"
 
-#: kmfilterdlg.cpp:452
+#: kmfilterdlg.cpp:554
 msgid "not equal"
 msgstr "nem egyenlõ"
 
-#: kmfilterdlg.cpp:453
+#: kmfilterdlg.cpp:555
 #, fuzzy
 msgid "contains"
 msgstr "tartalmaz"
 
-#: kmfilterdlg.cpp:454
+#: kmfilterdlg.cpp:556
 msgid "doesn't contain"
 msgstr "nem tartalmaz"
 
-#: kmfilterdlg.cpp:455
+#: kmfilterdlg.cpp:557
 msgid "regular expression"
 msgstr "reguláris kifejezés"
 
-#: kmfilterdlg.cpp:461
+#: kmfilterdlg.cpp:564
 #, fuzzy
 msgid "<message>"
 msgstr "<üzenet>"
 
-#: kmfilterdlg.cpp:462
+#: kmfilterdlg.cpp:565
 msgid "<body>"
 msgstr "<szövegtörzs>"
 
-#: kmfilterdlg.cpp:463
+#: kmfilterdlg.cpp:566
 msgid "<any header>"
 msgstr "<bármilyen fejléc>"
 
@@ -1457,7 +1471,7 @@ msgstr ""
 "Önnek nincsen olvasási joga a következõ file-hoz:\n"
 "%s"
 
-#: kfileio.cpp:69 kmaddrbook.cpp:140
+#: kfileio.cpp:70 kmaddrbook.cpp:140
 #, c-format
 msgid ""
 "Could not read file:\n"
@@ -1466,7 +1480,7 @@ msgstr ""
 "Nem lehet olvasni a file-t:\n"
 "%s"
 
-#: kfileio.cpp:72 kmaddrbook.cpp:143
+#: kfileio.cpp:73 kmaddrbook.cpp:143
 #, c-format
 msgid ""
 "Could not open file:\n"
@@ -1475,7 +1489,7 @@ msgstr ""
 "Nem lehet megnyitni a file-t:\n"
 "%s"
 
-#: kfileio.cpp:75
+#: kfileio.cpp:76
 #, c-format
 msgid ""
 "Error while reading file:\n"
@@ -1484,12 +1498,12 @@ msgstr ""
 "Hiba a file olvasása közben:\n"
 "%s"
 
-#: kfileio.cpp:92
+#: kfileio.cpp:93
 #, c-format
 msgid "Could only read %u bytes of %u."
 msgstr "Csak %u byte-ot sikerült olvasni a %u-ból."
 
-#: kfileio.cpp:121
+#: kfileio.cpp:123
 #, c-format
 msgid ""
 "File %s exists.\n"
@@ -1498,12 +1512,12 @@ msgstr ""
 "A %s file már létezik.\n"
 "Felülírjam? "
 
-#: kfileio.cpp:124 kfileio.cpp:142
+#: kfileio.cpp:126 kfileio.cpp:144
 #, fuzzy
 msgid "&Ok"
 msgstr "Ok"
 
-#: kfileio.cpp:141
+#: kfileio.cpp:143
 #, c-format
 msgid ""
 "Failed to make a backup copy of %s.\n"
@@ -1512,7 +1526,7 @@ msgstr ""
 "Nem sikerült biztonsági másolatot csinálni a %s-rõl\n"
 "Folytassam?"
 
-#: kfileio.cpp:153 kfileio.cpp:170
+#: kfileio.cpp:155 kfileio.cpp:173
 #, c-format
 msgid ""
 "Could not write to file:\n"
@@ -1521,7 +1535,7 @@ msgstr ""
 "Nem lehet írni a file-ba:\n"
 "%s"
 
-#: kfileio.cpp:156
+#: kfileio.cpp:158
 #, c-format
 msgid ""
 "Could not open file for writing:\n"
@@ -1530,7 +1544,7 @@ msgstr ""
 "Nem lehet írásra megnyitni a file-t:\n"
 "%s"
 
-#: kfileio.cpp:160 kmaddrbook.cpp:146
+#: kfileio.cpp:162 kmaddrbook.cpp:146
 #, c-format
 msgid ""
 "Error while writing file:\n"
@@ -1539,7 +1553,7 @@ msgstr ""
 "Hiba a file írása közben:\n"
 "%s"
 
-#: kfileio.cpp:176
+#: kfileio.cpp:179
 #, c-format
 msgid "Could only write %d bytes of %d."
 msgstr "Csak %d byte-ot sikerült írni a %d-bõl"
