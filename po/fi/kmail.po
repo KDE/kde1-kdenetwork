@@ -1,8 +1,7 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1998-01-23 23:18+0100\n"
+"POT-Creation-Date: 1998-01-25 13:25+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Kim Enkovaara <kim.enkovaara@iki.fi>\n"
 
@@ -107,23 +106,23 @@ msgstr "Kopioi leikepöydälle"
 msgid "Open URL..."
 msgstr "Avaa URL..."
 
-#: kmmainwin.cpp:688 kmmainwin.cpp:785
+#: kmmainwin.cpp:688 kmmainwin.cpp:787
 msgid "&Reply..."
 msgstr "&Vastaa..."
 
-#: kmmainwin.cpp:690 kmmainwin.cpp:787
+#: kmmainwin.cpp:690 kmmainwin.cpp:789
 msgid "Reply &All..."
 msgstr "Vastaa &kaikille..."
 
-#: kmmainwin.cpp:692 kmmainwin.cpp:789
+#: kmmainwin.cpp:692 kmmainwin.cpp:791
 msgid "&Forward..."
 msgstr "Lähetä &eteenpäin"
 
-#: kmmainwin.cpp:695 kmmainwin.cpp:794
+#: kmmainwin.cpp:695 kmmainwin.cpp:796
 msgid "&Move..."
 msgstr "&Siirrä..."
 
-#: kmmainwin.cpp:697 kmmainwin.cpp:796
+#: kmmainwin.cpp:697 kmmainwin.cpp:798
 msgid "&Copy..."
 msgstr "&Kopioi..."
 
@@ -155,159 +154,159 @@ msgstr "Lähetä jono"
 msgid "&Settings..."
 msgstr "&Asetukset"
 
-#: kmmainwin.cpp:728
+#: kmmainwin.cpp:729
 msgid "&Filter..."
 msgstr "&Suodatin..."
 
-#: kmcomposewin.cpp:345 kmmainwin.cpp:731
+#: kmcomposewin.cpp:345 kmmainwin.cpp:733
 msgid "&Addressbook..."
 msgstr "Osoite&kirja"
 
-#: kmmainwin.cpp:745
+#: kmmainwin.cpp:747
 msgid "&Cut"
 msgstr "&Leikkaa"
 
-#: kmmainwin.cpp:751
+#: kmmainwin.cpp:753
 msgid "&Find..."
 msgstr "&Etsi..."
 
-#: kmmainwin.cpp:756
+#: kmmainwin.cpp:758
 msgid "&Create..."
 msgstr "&Luo..."
 
-#: kmmainwin.cpp:758
+#: kmmainwin.cpp:760
 msgid "&Modify..."
 msgstr "&Muokkaa..."
 
-#: kmmainwin.cpp:760
+#: kmmainwin.cpp:762
 msgid "C&ompact"
 msgstr "Tii&vis"
 
-#: kmmainwin.cpp:762
+#: kmmainwin.cpp:764
 msgid "&Empty"
 msgstr "&Tyhjä"
 
-#: kmcomposewin.cpp:417 kmmainwin.cpp:764
+#: kmcomposewin.cpp:417 kmmainwin.cpp:766
 msgid "&Remove"
 msgstr "&Poista"
 
-#: kmmainwin.cpp:772
+#: kmmainwin.cpp:774
 msgid "Unread"
 msgstr "Lukematon"
 
-#: kmmainwin.cpp:773
+#: kmmainwin.cpp:775
 msgid "Read"
 msgstr "Lue"
 
-#: kmmainwin.cpp:774
+#: kmmainwin.cpp:776
 msgid "Replied"
 msgstr "Vastattu"
 
-#: kmmainwin.cpp:775
+#: kmmainwin.cpp:777
 msgid "Queued"
 msgstr "Jonossa"
 
-#: kmmainwin.cpp:776
+#: kmmainwin.cpp:778
 msgid "Sent"
 msgstr "Lähetetty"
 
-#: kmmainwin.cpp:780
+#: kmmainwin.cpp:782
 msgid "&Next"
 msgstr "&Seuraava"
 
-#: kmmainwin.cpp:782
+#: kmmainwin.cpp:784
 msgid "&Previous"
 msgstr "&Edellinen"
 
-#: kmmainwin.cpp:792
+#: kmmainwin.cpp:794
 msgid "&Set Status"
 msgstr "&Aseta tila"
 
-#: kmmainwin.cpp:801
+#: kmmainwin.cpp:803
 msgid "Send again..."
 msgstr "Lähetä uudelleen..."
 
-#: kmmainwin.cpp:804
+#: kmmainwin.cpp:806
 msgid "View Source..."
 msgstr "Näytä lähdekoodi..."
 
-#: kmmainwin.cpp:811
+#: kmmainwin.cpp:813
 msgid "&Brief Headers"
 msgstr "L&yhyet otsikot"
 
-#: kmmainwin.cpp:813
+#: kmmainwin.cpp:815
 msgid "&Fancy Headers"
 msgstr "&hienot otsikot"
 
-#: kmmainwin.cpp:815
+#: kmmainwin.cpp:817
 msgid "&Standard Headers"
 msgstr "&Vakio otsikot"
 
-#: kmmainwin.cpp:817
+#: kmmainwin.cpp:819
 msgid "&Long Headers"
 msgstr "&Pitkät otsikot"
 
-#: kmmainwin.cpp:819
+#: kmmainwin.cpp:821
 msgid "&All Headers"
 msgstr "&Kaikki otsikot"
 
-#: kmmainwin.cpp:822
+#: kmmainwin.cpp:824
 msgid "Iconic Attachments"
 msgstr "Ikonimuotoiset liitteet"
 
-#: kmmainwin.cpp:823
+#: kmmainwin.cpp:825
 msgid "Smart Attachments"
 msgstr "Älykkäät liitteet"
 
-#: kmmainwin.cpp:824
+#: kmmainwin.cpp:826
 msgid "Inlined Attachments"
 msgstr "Sisällytetyt liitteet"
 
-#: kmmainwin.cpp:835
+#: kmmainwin.cpp:837
 msgid "F&older"
 msgstr "&Kansio"
 
-#: kmmainwin.cpp:836
+#: kmmainwin.cpp:838
 msgid "&Message"
 msgstr "&Viesti"
 
-#: kmcomposewin.cpp:446 kmmainwin.cpp:855
+#: kmcomposewin.cpp:446 kmmainwin.cpp:857
 msgid "Compose new message"
 msgstr "Lähetä uusi viesti"
 
-#: kmcomposewin.cpp:451 kmmainwin.cpp:860
+#: kmcomposewin.cpp:451 kmmainwin.cpp:862
 msgid "Save message to file"
 msgstr "Tallenna viesti tiedostoon"
 
-#: kmcomposewin.cpp:456 kmmainwin.cpp:865
+#: kmcomposewin.cpp:456 kmmainwin.cpp:867
 msgid "Print message"
 msgstr "Tulosta viesti"
 
-#: kmmainwin.cpp:872
+#: kmmainwin.cpp:874
 msgid "Get new mail"
 msgstr "Hae uudet viestit"
 
-#: kmmainwin.cpp:878
+#: kmmainwin.cpp:880
 msgid "Reply to author"
 msgstr "Vastaa kirjoittajalle"
 
-#: kmmainwin.cpp:883
+#: kmmainwin.cpp:885
 msgid "Reply to all recipients"
 msgstr "Vastaa kaikille vastaanottajille"
 
-#: kmmainwin.cpp:888
+#: kmmainwin.cpp:890
 msgid "Forward message"
 msgstr "Lähetä eteenpäin"
 
-#: kmmainwin.cpp:893
+#: kmmainwin.cpp:895
 msgid "Delete message"
 msgstr "Tuhoa viesti"
 
-#: kmcomposewin.cpp:479 kmmainwin.cpp:899
+#: kmcomposewin.cpp:479 kmmainwin.cpp:901
 msgid "Open addressbook..."
 msgstr "Avaa osoitekirja..."
 
-#: kmmainwin.cpp:911
+#: kmmainwin.cpp:913
 msgid "Initializing..."
 msgstr "Alustan..."
 
@@ -1445,4 +1444,3 @@ msgstr "Osoite&kirjan hallinta"
 #: kmiostatusdlg.cpp:32
 msgid "&Abort"
 msgstr "&Poistu"
-

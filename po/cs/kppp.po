@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp 0.9.6\n"
-"POT-Creation-Date: 1998-01-23 23:18+0100\n"
+"POT-Creation-Date: 1998-01-25 13:26+0100\n"
 "PO-Revision-Date: 1998-01-23 08:42 MET\n"
 "Last-Translator: Miroslav Flídr <flidr@kky.zcu.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -635,12 +635,12 @@ msgid "The pppd daemon died unexpectedly!"
 msgstr "pppd démon neoèekávanì skonèil!"
 
 #: main.cpp:685
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "kppp can not find:\n"
 " %s\n"
 "Please install pppd properly and/or adjust\n"
-" the location of the pppd executable on the misc tab of\n"
+" the location of the pppd executable on the PPP tab of\n"
 "the setup dialog.\n"
 " Thank You"
 msgstr ""
@@ -1001,11 +1001,11 @@ msgstr "kppp: soubor s pravidly neobsahuje øádky \"name=...\"\n"
 msgid "kppp: rulefile is ok\n"
 msgstr "kppp: soubor s pravidly je v poøádku\n"
 
-#: docking.cpp:71 docking.cpp:219
+#: docking.cpp:71 docking.cpp:223
 msgid "Restore"
 msgstr "Obnovit"
 
-#: docking.cpp:217
+#: docking.cpp:221
 msgid "Minimize"
 msgstr "Minimalizovat"
 

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1998-01-23 23:18+0100\n"
+"POT-Creation-Date: 1998-01-25 13:26+0100\n"
 "PO-Revision-Date: 1998-01-14 15:44+0100\n"
 "Last-Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
 
@@ -625,12 +625,12 @@ msgid "The pppd daemon died unexpectedly!"
 msgstr "Der pppd-Daemon beendete sich unerwartet!"
 
 #: main.cpp:685
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "kppp can not find:\n"
 " %s\n"
 "Please install pppd properly and/or adjust\n"
-" the location of the pppd executable on the misc tab of\n"
+" the location of the pppd executable on the PPP tab of\n"
 "the setup dialog.\n"
 " Thank You"
 msgstr ""
@@ -991,12 +991,12 @@ msgstr "kppp: Regeldatei enthält keine \"name=...\"-Zeile\n"
 msgid "kppp: rulefile is ok\n"
 msgstr "kppp: Regeldatei ist in Ordnung\n"
 
-#: docking.cpp:71 docking.cpp:219
+#: docking.cpp:71 docking.cpp:223
 #, fuzzy
 msgid "Restore"
 msgstr "Modem zurücksetzen"
 
-#: docking.cpp:217
+#: docking.cpp:221
 msgid "Minimize"
 msgstr ""
 

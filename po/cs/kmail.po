@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail 0.4.4\n"
-"POT-Creation-Date: 1998-01-23 23:18+0100\n"
+"POT-Creation-Date: 1998-01-25 13:25+0100\n"
 "PO-Revision-Date: 1998-01-23 08:40 MET\n"
 "Last-Translator: Miroslav Flídr <flidr@ky.zcu.cz>\n"
 "Language-Team: Czech <sc@li.org>\n"
@@ -114,23 +114,23 @@ msgstr "Zkopírovat do clipboardu"
 msgid "Open URL..."
 msgstr "Otevøít URL..."
 
-#: kmmainwin.cpp:688 kmmainwin.cpp:785
+#: kmmainwin.cpp:688 kmmainwin.cpp:787
 msgid "&Reply..."
 msgstr "Od&povìdìt..."
 
-#: kmmainwin.cpp:690 kmmainwin.cpp:787
+#: kmmainwin.cpp:690 kmmainwin.cpp:789
 msgid "Reply &All..."
 msgstr "Odpovìdìt &v¹em"
 
-#: kmmainwin.cpp:692 kmmainwin.cpp:789
+#: kmmainwin.cpp:692 kmmainwin.cpp:791
 msgid "&Forward..."
 msgstr "Pøedat &dál..."
 
-#: kmmainwin.cpp:695 kmmainwin.cpp:794
+#: kmmainwin.cpp:695 kmmainwin.cpp:796
 msgid "&Move..."
 msgstr "&Pøesunout..."
 
-#: kmmainwin.cpp:697 kmmainwin.cpp:796
+#: kmmainwin.cpp:697 kmmainwin.cpp:798
 msgid "&Copy..."
 msgstr "&Kopírovat..."
 
@@ -162,159 +162,159 @@ msgstr "Poslat pozdr¾ené"
 msgid "&Settings..."
 msgstr "Na&stavení..."
 
-#: kmmainwin.cpp:728
+#: kmmainwin.cpp:729
 msgid "&Filter..."
 msgstr "&Filtr..."
 
-#: kmcomposewin.cpp:345 kmmainwin.cpp:731
+#: kmcomposewin.cpp:345 kmmainwin.cpp:733
 msgid "&Addressbook..."
 msgstr "&Adresáø ..."
 
-#: kmmainwin.cpp:745
+#: kmmainwin.cpp:747
 msgid "&Cut"
 msgstr "&Vyjmout"
 
-#: kmmainwin.cpp:751
+#: kmmainwin.cpp:753
 msgid "&Find..."
 msgstr "&Najít..."
 
-#: kmmainwin.cpp:756
+#: kmmainwin.cpp:758
 msgid "&Create..."
 msgstr "&Vytvoøit..."
 
-#: kmmainwin.cpp:758
+#: kmmainwin.cpp:760
 msgid "&Modify..."
 msgstr "Z&mìnit..."
 
-#: kmmainwin.cpp:760
+#: kmmainwin.cpp:762
 msgid "C&ompact"
 msgstr "K&omprimovat"
 
-#: kmmainwin.cpp:762
+#: kmmainwin.cpp:764
 msgid "&Empty"
 msgstr "Vy&prázdnit"
 
-#: kmcomposewin.cpp:417 kmmainwin.cpp:764
+#: kmcomposewin.cpp:417 kmmainwin.cpp:766
 msgid "&Remove"
 msgstr "&Odstranit"
 
-#: kmmainwin.cpp:772
+#: kmmainwin.cpp:774
 msgid "Unread"
 msgstr "Nepøeèteno"
 
-#: kmmainwin.cpp:773
+#: kmmainwin.cpp:775
 msgid "Read"
 msgstr "Pøeèteno"
 
-#: kmmainwin.cpp:774
+#: kmmainwin.cpp:776
 msgid "Replied"
 msgstr "Odpovìzeno"
 
-#: kmmainwin.cpp:775
+#: kmmainwin.cpp:777
 msgid "Queued"
 msgstr "Pozdr¾eno"
 
-#: kmmainwin.cpp:776
+#: kmmainwin.cpp:778
 msgid "Sent"
 msgstr "Poslat"
 
-#: kmmainwin.cpp:780
+#: kmmainwin.cpp:782
 msgid "&Next"
 msgstr "&Následující"
 
-#: kmmainwin.cpp:782
+#: kmmainwin.cpp:784
 msgid "&Previous"
 msgstr "&Pøedchozí"
 
-#: kmmainwin.cpp:792
+#: kmmainwin.cpp:794
 msgid "&Set Status"
 msgstr "Na&stavit stav"
 
-#: kmmainwin.cpp:801
+#: kmmainwin.cpp:803
 msgid "Send again..."
 msgstr "Poslat znovu ..."
 
-#: kmmainwin.cpp:804
+#: kmmainwin.cpp:806
 msgid "View Source..."
 msgstr "Zobrazit zdroj..."
 
-#: kmmainwin.cpp:811
+#: kmmainwin.cpp:813
 msgid "&Brief Headers"
 msgstr "S&truèná hlavièka"
 
-#: kmmainwin.cpp:813
+#: kmmainwin.cpp:815
 msgid "&Fancy Headers"
 msgstr "&Ozdobná hlavièka"
 
-#: kmmainwin.cpp:815
+#: kmmainwin.cpp:817
 msgid "&Standard Headers"
 msgstr "&Standardní hlavièka"
 
-#: kmmainwin.cpp:817
+#: kmmainwin.cpp:819
 msgid "&Long Headers"
 msgstr "D&louhá hlavièka"
 
-#: kmmainwin.cpp:819
+#: kmmainwin.cpp:821
 msgid "&All Headers"
 msgstr "Plná hl&avièka"
 
-#: kmmainwin.cpp:822
+#: kmmainwin.cpp:824
 msgid "Iconic Attachments"
 msgstr "Pøílohy jako ikony"
 
-#: kmmainwin.cpp:823
+#: kmmainwin.cpp:825
 msgid "Smart Attachments"
 msgstr "Elegantní pøílohy"
 
-#: kmmainwin.cpp:824
+#: kmmainwin.cpp:826
 msgid "Inlined Attachments"
 msgstr "Vlo¾ené pøílohy"
 
-#: kmmainwin.cpp:835
+#: kmmainwin.cpp:837
 msgid "F&older"
 msgstr "P&oøadaè"
 
-#: kmmainwin.cpp:836
+#: kmmainwin.cpp:838
 msgid "&Message"
 msgstr "&Zpráva"
 
-#: kmcomposewin.cpp:446 kmmainwin.cpp:855
+#: kmcomposewin.cpp:446 kmmainwin.cpp:857
 msgid "Compose new message"
 msgstr "Napsat novou zprávu"
 
-#: kmcomposewin.cpp:451 kmmainwin.cpp:860
+#: kmcomposewin.cpp:451 kmmainwin.cpp:862
 msgid "Save message to file"
 msgstr "Ulo¾it zprávu do souboru"
 
-#: kmcomposewin.cpp:456 kmmainwin.cpp:865
+#: kmcomposewin.cpp:456 kmmainwin.cpp:867
 msgid "Print message"
 msgstr "Tisknout zprávu"
 
-#: kmmainwin.cpp:872
+#: kmmainwin.cpp:874
 msgid "Get new mail"
 msgstr "Pøijmi novou po¹tu"
 
-#: kmmainwin.cpp:878
+#: kmmainwin.cpp:880
 msgid "Reply to author"
 msgstr "Odpovìdìt autorovi"
 
-#: kmmainwin.cpp:883
+#: kmmainwin.cpp:885
 msgid "Reply to all recipients"
 msgstr "Odpovìdìt v¹em pøíjemcùm"
 
-#: kmmainwin.cpp:888
+#: kmmainwin.cpp:890
 msgid "Forward message"
 msgstr "Pøedat zprávu dál"
 
-#: kmmainwin.cpp:893
+#: kmmainwin.cpp:895
 msgid "Delete message"
 msgstr "Smazat zprávu"
 
-#: kmcomposewin.cpp:479 kmmainwin.cpp:899
+#: kmcomposewin.cpp:479 kmmainwin.cpp:901
 msgid "Open addressbook..."
 msgstr "Otevøít adresáø ..."
 
-#: kmmainwin.cpp:911
+#: kmmainwin.cpp:913
 msgid "Initializing..."
 msgstr "Inicializace..."
 

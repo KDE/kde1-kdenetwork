@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail \n"
-"POT-Creation-Date: 1998-01-23 23:18+0100\n"
+"POT-Creation-Date: 1998-01-25 13:25+0100\n"
 "PO-Revision-Date: 1998-01-24 20:25+0100\n"
 "Last-Translator: Pawe³ Jab³oñski <pawel.jablonski@mail.lze.lodz.pl>\n"
 "Content-Type: text/plain; charset=iso8859-2\n"
@@ -105,23 +105,23 @@ msgstr "Skopiuj do schowka"
 msgid "Open URL..."
 msgstr "Otwórz adres..."
 
-#: kmmainwin.cpp:688 kmmainwin.cpp:785
+#: kmmainwin.cpp:688 kmmainwin.cpp:787
 msgid "&Reply..."
 msgstr "Odpowiedz..."
 
-#: kmmainwin.cpp:690 kmmainwin.cpp:787
+#: kmmainwin.cpp:690 kmmainwin.cpp:789
 msgid "Reply &All..."
 msgstr "Odpowiedz wszystkim..."
 
-#: kmmainwin.cpp:692 kmmainwin.cpp:789
+#: kmmainwin.cpp:692 kmmainwin.cpp:791
 msgid "&Forward..."
 msgstr "Prze¶lij dalej..."
 
-#: kmmainwin.cpp:695 kmmainwin.cpp:794
+#: kmmainwin.cpp:695 kmmainwin.cpp:796
 msgid "&Move..."
 msgstr "Prz&esuñ..."
 
-#: kmmainwin.cpp:697 kmmainwin.cpp:796
+#: kmmainwin.cpp:697 kmmainwin.cpp:798
 msgid "&Copy..."
 msgstr "&Kopiuj..."
 
@@ -153,159 +153,159 @@ msgstr "&Wyslij z kolejki"
 msgid "&Settings..."
 msgstr "&Ustawienia..."
 
-#: kmmainwin.cpp:728
+#: kmmainwin.cpp:729
 msgid "&Filter..."
 msgstr "&Filtr..."
 
-#: kmcomposewin.cpp:345 kmmainwin.cpp:731
+#: kmcomposewin.cpp:345 kmmainwin.cpp:733
 msgid "&Addressbook..."
 msgstr "&Ksi±¿ka adresowa..."
 
-#: kmmainwin.cpp:745
+#: kmmainwin.cpp:747
 msgid "&Cut"
 msgstr "Wytnij"
 
-#: kmmainwin.cpp:751
+#: kmmainwin.cpp:753
 msgid "&Find..."
 msgstr "&Szukaj..."
 
-#: kmmainwin.cpp:756
+#: kmmainwin.cpp:758
 msgid "&Create..."
 msgstr "U&twórz..."
 
-#: kmmainwin.cpp:758
+#: kmmainwin.cpp:760
 msgid "&Modify..."
 msgstr "&Zmieñ..."
 
-#: kmmainwin.cpp:760
+#: kmmainwin.cpp:762
 msgid "C&ompact"
 msgstr "&Kompresuj"
 
-#: kmmainwin.cpp:762
+#: kmmainwin.cpp:764
 msgid "&Empty"
 msgstr "&Opró¼nij"
 
-#: kmcomposewin.cpp:417 kmmainwin.cpp:764
+#: kmcomposewin.cpp:417 kmmainwin.cpp:766
 msgid "&Remove"
 msgstr "&Usuñ"
 
-#: kmmainwin.cpp:772
+#: kmmainwin.cpp:774
 msgid "Unread"
 msgstr "Nieprzeczytana"
 
-#: kmmainwin.cpp:773
+#: kmmainwin.cpp:775
 msgid "Read"
 msgstr "Przeczytana"
 
-#: kmmainwin.cpp:774
+#: kmmainwin.cpp:776
 msgid "Replied"
 msgstr "Odpowiedziano"
 
-#: kmmainwin.cpp:775
+#: kmmainwin.cpp:777
 msgid "Queued"
 msgstr "W kolejce"
 
-#: kmmainwin.cpp:776
+#: kmmainwin.cpp:778
 msgid "Sent"
 msgstr "Wys³ana"
 
-#: kmmainwin.cpp:780
+#: kmmainwin.cpp:782
 msgid "&Next"
 msgstr "&Nastêpna"
 
-#: kmmainwin.cpp:782
+#: kmmainwin.cpp:784
 msgid "&Previous"
 msgstr "&Poprzednia"
 
-#: kmmainwin.cpp:792
+#: kmmainwin.cpp:794
 msgid "&Set Status"
 msgstr "&Zmieñ status"
 
-#: kmmainwin.cpp:801
+#: kmmainwin.cpp:803
 msgid "Send again..."
 msgstr "Ponowne wysy³anie..."
 
-#: kmmainwin.cpp:804
+#: kmmainwin.cpp:806
 msgid "View Source..."
 msgstr "Poka¿ ¼&ród³o..."
 
-#: kmmainwin.cpp:811
+#: kmmainwin.cpp:813
 msgid "&Brief Headers"
 msgstr "&Krótkie nag³ówki"
 
-#: kmmainwin.cpp:813
+#: kmmainwin.cpp:815
 msgid "&Fancy Headers"
 msgstr "&Fantazyjne nag³ówki"
 
-#: kmmainwin.cpp:815
+#: kmmainwin.cpp:817
 msgid "&Standard Headers"
 msgstr "&Typowe nag³ówki"
 
-#: kmmainwin.cpp:817
+#: kmmainwin.cpp:819
 msgid "&Long Headers"
 msgstr "&D³ugie nag³ówki"
 
-#: kmmainwin.cpp:819
+#: kmmainwin.cpp:821
 msgid "&All Headers"
 msgstr "&Wszystkie nag³ówki"
 
-#: kmmainwin.cpp:822
+#: kmmainwin.cpp:824
 msgid "Iconic Attachments"
 msgstr "Za³±czniki jako &ikony"
 
-#: kmmainwin.cpp:823
+#: kmmainwin.cpp:825
 msgid "Smart Attachments"
 msgstr "&Elegancki za³±czniki"
 
-#: kmmainwin.cpp:824
+#: kmmainwin.cpp:826
 msgid "Inlined Attachments"
 msgstr "&Za³±czniki w tre¶ci"
 
-#: kmmainwin.cpp:835
+#: kmmainwin.cpp:837
 msgid "F&older"
 msgstr "&Folder"
 
-#: kmmainwin.cpp:836
+#: kmmainwin.cpp:838
 msgid "&Message"
 msgstr "Wiado&mo¶æ"
 
-#: kmcomposewin.cpp:446 kmmainwin.cpp:855
+#: kmcomposewin.cpp:446 kmmainwin.cpp:857
 msgid "Compose new message"
 msgstr "Nowa wiadomo¶æ"
 
-#: kmcomposewin.cpp:451 kmmainwin.cpp:860
+#: kmcomposewin.cpp:451 kmmainwin.cpp:862
 msgid "Save message to file"
 msgstr "Zapisz wiadomo¶æ do pliku"
 
-#: kmcomposewin.cpp:456 kmmainwin.cpp:865
+#: kmcomposewin.cpp:456 kmmainwin.cpp:867
 msgid "Print message"
 msgstr "Drukuj wiadomo¶æ"
 
-#: kmmainwin.cpp:872
+#: kmmainwin.cpp:874
 msgid "Get new mail"
 msgstr "Pobierz pocztê"
 
-#: kmmainwin.cpp:878
+#: kmmainwin.cpp:880
 msgid "Reply to author"
 msgstr "Odpowiedz autorowi"
 
-#: kmmainwin.cpp:883
+#: kmmainwin.cpp:885
 msgid "Reply to all recipients"
 msgstr "Odpowiedz wszystkim"
 
-#: kmmainwin.cpp:888
+#: kmmainwin.cpp:890
 msgid "Forward message"
 msgstr "Prze¶lij dalej"
 
-#: kmmainwin.cpp:893
+#: kmmainwin.cpp:895
 msgid "Delete message"
 msgstr "Skasuj wiadomo¶æ"
 
-#: kmcomposewin.cpp:479 kmmainwin.cpp:899
+#: kmcomposewin.cpp:479 kmmainwin.cpp:901
 msgid "Open addressbook..."
 msgstr "Otwórz ksi±zkê adresow±..."
 
-#: kmmainwin.cpp:911
+#: kmmainwin.cpp:913
 msgid "Initializing..."
 msgstr "Inicjalizacja..."
 
