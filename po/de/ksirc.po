@@ -1,14 +1,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ksirc \n"
-"POT-Creation-Date: 1999-01-21 02:02+0100\n"
-"PO-Revision-Date: 1999-01-10 16:00+MET\n"
+"POT-Creation-Date: 1999-01-18 02:04+0100\n"
+"PO-Revision-Date: 1999-01-20 21:55+MET\n"
 "Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
 "Translator: Stephan Kulow <coolo@kde.org>\n"
 
 #: FilterRuleEditor.cpp:29
 msgid "Edit Filter Rules"
-msgstr ""
+msgstr "Filter-Regeln"
 
 #: FilterRuleEditor.cpp:58 FilterRuleEditor.cpp:79
 #: FilterRuleEditorData.cpp:105
@@ -17,13 +17,15 @@ msgstr "&Verändern"
 
 #: FilterRuleEditor.cpp:74
 msgid "Missing Arguments"
-msgstr ""
+msgstr "Fehlende Parameter"
 
 #: FilterRuleEditor.cpp:75
 msgid ""
 "Cannot create a Rule since not\n"
 "all the fields are filled in."
 msgstr ""
+"Kann keinen Filter erzeugen, da nicht\n"
+"alle Felder ausgefüllt sind."
 
 #: FilterRuleEditorData.cpp:33
 msgid "Description:"
@@ -43,7 +45,7 @@ msgstr "An:"
 
 #: FilterRuleEditorData.cpp:126
 msgid "New Rule"
-msgstr "Neue Regel"
+msgstr "Neuer Filter"
 
 #: FilterRuleEditorData.cpp:145
 msgid "Up"
@@ -55,7 +57,7 @@ msgstr "Abwärts"
 
 #: KSircColour.cpp:33
 msgid "Colour Settings"
-msgstr ""
+msgstr "Farbeinstellungen"
 
 #: KSircColourData.cpp:33
 msgid "Generic Text"
@@ -73,13 +75,13 @@ msgstr "Kanal-Nachrichten"
 msgid "Errors"
 msgstr "Fehler"
 
-#: KSircColourData.cpp:115
+#: KSPrefs/defaultfiltersdata.cpp:77 KSircColourData.cpp:115
 msgid "Background"
 msgstr "Hintergrund"
 
 #: dccDialog.cpp:22
 msgid "DCC Files Offered"
-msgstr ""
+msgstr "DCC-Dateien werden angeboten"
 
 #: dccDialogData.cpp:38
 msgid "&Get"
@@ -118,7 +120,7 @@ msgstr ""
 
 #: open_top.cpp:26
 msgid "New Window For"
-msgstr ""
+msgstr "Neues Fenster für"
 
 #: open_topData.cpp:39
 msgid "Channel/Nick:"
@@ -180,7 +182,8 @@ msgstr "Über kSirc..."
 msgid "Server Control"
 msgstr "Server-Kontrolle"
 
-#: servercontroller.cpp:291 servercontroller.cpp:455
+#: KSPrefs/serverchanneldata.cpp:34 servercontroller.cpp:291
+#: servercontroller.cpp:455
 msgid "Channels"
 msgstr "Kanäle"
 
@@ -196,9 +199,9 @@ msgstr "Aktive Server-Verbindungen"
 msgid "&Undock"
 msgstr "Nicht An&docken"
 
-#: ssfeprompt.cpp:25
+#: ssfeprompt.cpp:24
 msgid "Prompt"
-msgstr ""
+msgstr "Eingabeaufforderung"
 
 #: toplevel.cpp:140
 msgid "Lag in seconds to the server"
@@ -218,7 +221,7 @@ msgstr "Ben&utzer"
 
 #: welcomeWin.cpp:30
 msgid "Welcome to kSirc"
-msgstr ""
+msgstr "Willkommen bei kSirc"
 
 #: welcomeWinData.cpp:35
 msgid "Show Again"
@@ -230,7 +233,7 @@ msgstr "Abbrechen"
 
 #: KSColourPicker/kscolourpicker.cpp:28
 msgid "kSirc Colour Picker"
-msgstr ""
+msgstr "kSirc Farbauswahl"
 
 #: KSColourPicker/kscolourpickerData.cpp:30
 msgid "Pick"
@@ -241,9 +244,8 @@ msgid "Sample Colour"
 msgstr "Beispielfarbe"
 
 #: KSCutDialog/KSCutDialog.cpp:27
-#, fuzzy
 msgid "Cut Window"
-msgstr "Aus&schneide-Fenster..."
+msgstr "Fenster ausschneiden..."
 
 #: KSCutDialog/KSCutDialogData.cpp:39
 msgid "Cop&y"
@@ -251,11 +253,11 @@ msgstr "&Kopieren"
 
 #: KSOpenkSirc/open_ksirc.cpp:38
 msgid "Connect to Server"
-msgstr ""
+msgstr "Mit Server verbinden"
 
 #: KSOpenkSirc/open_ksirc.cpp:186
 msgid "Not Avalable"
-msgstr ""
+msgstr "Nicht verfügbar"
 
 #: KSOpenkSirc/open_ksircData.cpp:37
 msgid "&Connect"
@@ -301,6 +303,78 @@ msgstr "Nur OP"
 msgid "Modify"
 msgstr "Ändern"
 
+#: KSPrefs/defaultfiltersdata.cpp:34
+msgid "Highlight Your Nick"
+msgstr "Ihren Spitznamen hervorheben"
+
+#: KSPrefs/defaultfiltersdata.cpp:43
+msgid "Colour Nicks in Channels"
+msgstr "Spitznamen in Kanälen einfärben"
+
+#: KSPrefs/defaultfiltersdata.cpp:52
+msgid "Allow External Colours"
+msgstr "Externe Farben zulassen"
+
+#: KSPrefs/defaultfiltersdata.cpp:59
+msgid "Allow &kSirc Colour codes"
+msgstr "&kSirc Farbcodes zulassen"
+
+#: KSPrefs/defaultfiltersdata.cpp:68
+msgid "&Allow &mirc Colour codes"
+msgstr "&mirc Farbcodes zulassen"
+
+#: KSPrefs/defaultfiltersdata.cpp:86
+msgid "Foreground"
+msgstr "Vordergrund"
+
+#: KSPrefs/defaultfiltersdata.cpp:95
+msgid "Colour"
+msgstr "Farbe"
+
+#: KSPrefs/defaultfiltersdata.cpp:103 KSPrefs/defaultfiltersdata.cpp:112
+msgid "Sample"
+msgstr "Beispiel"
+
+#: KSPrefs/generalData.cpp:50
+msgid "Auto Create Windows"
+msgstr "Fenster autom. erstellen"
+
+#: KSPrefs/generalData.cpp:59
+msgid "Beep on Notify"
+msgstr "Ton bei Nachricht "
+
+#: KSPrefs/generalData.cpp:68
+msgid "Nick Completion"
+msgstr "Vervollständigung von Spitznamen"
+
+#: KSPrefs/generalData.cpp:77
+msgid "Colour Picker Popup"
+msgstr "Farbauswahl-Popup"
+
+#: KSPrefs/generalData.cpp:86
+msgid "Auto Rejoin"
+msgstr "Automatisch wieder teilnehmen"
+
+#: KSPrefs/generalData.cpp:95
+msgid "Enable Background Pixmap"
+msgstr "Hintergrund-Pixmap zulassen"
+
+#: KSPrefs/generalData.cpp:112
+msgid "Browse"
+msgstr "Blättern"
+
+#: KSPrefs/generalData.cpp:120
+msgid "Display Topic in Caption"
+msgstr "Thema in Überschrift anzeigen"
+
+#: KSPrefs/generalData.cpp:129
+msgid "Use MDI Mode (Must restart to take effect, experimental!!)"
+msgstr "MDI-Modus benutzen (Neustart erforderlich, experimentell!!)"
+
+#: KSPrefs/generalData.cpp:144
+msgid "Window History Length"
+msgstr "Länge des History-Fensters"
+
 #: KSPrefs/ksprefs.cpp:9
 msgid "kSirc Prefrences"
 msgstr "kSirc-Einstellungen"
@@ -325,9 +399,37 @@ msgstr "Benutzer-&Menü"
 msgid "&Default Filters"
 msgstr "&Eingestellte Filter"
 
+#: KSPrefs/serverchanneldata.cpp:43
+msgid "Servers"
+msgstr "Server"
+
+#: KSPrefs/startupdata.cpp:35
+msgid "Notify List"
+msgstr "Benachrichtigungsliste"
+
+#: KSPrefs/startupdata.cpp:43
+msgid "Nick"
+msgstr "Spitzname"
+
+#: KSPrefs/startupdata.cpp:52
+msgid "Real Name"
+msgstr "Richtiger Name"
+
+#: KSPrefs/startupdata.cpp:97
+msgid "&Add"
+msgstr "&Hinzufügen"
+
+#: KSProgress/ksprogressdata.cpp:46
+msgid "fileName"
+msgstr "Datei-Name"
+
+#: KSProgress/ksprogressdata.cpp:54
+msgid "XferStatus"
+msgstr "XferStatus"
+
 #: KSTicker/speeddialogData.cpp:79
 msgid "Tick Interval"
-msgstr "Abstands-Intervall"
+msgstr "Tick-Intervall"
 
 #: KSTicker/speeddialogData.cpp:88
 msgid "Step Size"
@@ -337,23 +439,3 @@ msgstr "Schrittgröße"
 #, c-format
 msgid "No such file \"%s\"!"
 msgstr "Datei existiert nicht: \"%s\"!"
-
-#, fuzzy
-#~ msgid "Colour"
-#~ msgstr "Beispielfarbe"
-
-#, fuzzy
-#~ msgid "Sample"
-#~ msgstr "Beispielfarbe"
-
-#, fuzzy
-#~ msgid "Servers"
-#~ msgstr "Server Beschr:"
-
-#, fuzzy
-#~ msgid "Nick"
-#~ msgstr "Auswählen"
-
-#, fuzzy
-#~ msgid "Real Name"
-#~ msgstr "Menü-Name"
