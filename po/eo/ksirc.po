@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ksirc\n"
-"POT-Creation-Date: 1999-01-18 02:04+0100\n"
+"POT-Creation-Date: 1999-01-21 02:02+0100\n"
 "PO-Revision-Date: 1998-12-09 19:00+0100\n"
 "Last-Translator: Wolfram Diestel <diestel@rzaix340.rz-uni-leipzig.de>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
@@ -82,7 +82,7 @@ msgstr "Kanalmesaøoj"
 msgid "Errors"
 msgstr "Eraroj"
 
-#: KSPrefs/defaultfiltersdata.cpp:77 KSircColourData.cpp:115
+#: KSircColourData.cpp:115
 msgid "Background"
 msgstr "Fono"
 
@@ -190,8 +190,7 @@ msgstr "Pri kSirc..."
 msgid "Server Control"
 msgstr "Servilkontrolo"
 
-#: KSPrefs/serverchanneldata.cpp:34 servercontroller.cpp:291
-#: servercontroller.cpp:455
+#: servercontroller.cpp:291 servercontroller.cpp:455
 msgid "Channels"
 msgstr "Kanaloj"
 
@@ -207,7 +206,7 @@ msgstr "Aktivaj servilkontaktoj"
 msgid "&Undock"
 msgstr "&Maldoku"
 
-#: ssfeprompt.cpp:24
+#: ssfeprompt.cpp:25
 msgid "Prompt"
 msgstr ""
 
@@ -316,78 +315,6 @@ msgstr ""
 msgid "Modify"
 msgstr "Þ&anøu"
 
-#: KSPrefs/defaultfiltersdata.cpp:34
-msgid "Highlight Your Nick"
-msgstr ""
-
-#: KSPrefs/defaultfiltersdata.cpp:43
-msgid "Colour Nicks in Channels"
-msgstr ""
-
-#: KSPrefs/defaultfiltersdata.cpp:52
-msgid "Allow External Colours"
-msgstr ""
-
-#: KSPrefs/defaultfiltersdata.cpp:59
-msgid "Allow &kSirc Colour codes"
-msgstr ""
-
-#: KSPrefs/defaultfiltersdata.cpp:68
-msgid "&Allow &mirc Colour codes"
-msgstr ""
-
-#: KSPrefs/defaultfiltersdata.cpp:86
-msgid "Foreground"
-msgstr ""
-
-#: KSPrefs/defaultfiltersdata.cpp:95
-msgid "Colour"
-msgstr ""
-
-#: KSPrefs/defaultfiltersdata.cpp:103 KSPrefs/defaultfiltersdata.cpp:112
-msgid "Sample"
-msgstr ""
-
-#: KSPrefs/generalData.cpp:50
-msgid "Auto Create Windows"
-msgstr ""
-
-#: KSPrefs/generalData.cpp:59
-msgid "Beep on Notify"
-msgstr ""
-
-#: KSPrefs/generalData.cpp:68
-msgid "Nick Completion"
-msgstr ""
-
-#: KSPrefs/generalData.cpp:77
-msgid "Colour Picker Popup"
-msgstr ""
-
-#: KSPrefs/generalData.cpp:86
-msgid "Auto Rejoin"
-msgstr ""
-
-#: KSPrefs/generalData.cpp:95
-msgid "Enable Background Pixmap"
-msgstr ""
-
-#: KSPrefs/generalData.cpp:112
-msgid "Browse"
-msgstr ""
-
-#: KSPrefs/generalData.cpp:120
-msgid "Display Topic in Caption"
-msgstr ""
-
-#: KSPrefs/generalData.cpp:129
-msgid "Use MDI Mode (Must restart to take effect, experimental!!)"
-msgstr ""
-
-#: KSPrefs/generalData.cpp:144
-msgid "Window History Length"
-msgstr ""
-
 #: KSPrefs/ksprefs.cpp:9
 #, fuzzy
 msgid "kSirc Prefrences"
@@ -415,35 +342,6 @@ msgstr "&Uzantoj"
 msgid "&Default Filters"
 msgstr ""
 
-#: KSPrefs/serverchanneldata.cpp:43
-#, fuzzy
-msgid "Servers"
-msgstr "Servilo:"
-
-#: KSPrefs/startupdata.cpp:35
-msgid "Notify List"
-msgstr ""
-
-#: KSPrefs/startupdata.cpp:43
-msgid "Nick"
-msgstr ""
-
-#: KSPrefs/startupdata.cpp:52
-msgid "Real Name"
-msgstr ""
-
-#: KSPrefs/startupdata.cpp:97
-msgid "&Add"
-msgstr ""
-
-#: KSProgress/ksprogressdata.cpp:46
-msgid "fileName"
-msgstr ""
-
-#: KSProgress/ksprogressdata.cpp:54
-msgid "XferStatus"
-msgstr ""
-
 #: KSTicker/speeddialogData.cpp:79
 msgid "Tick Interval"
 msgstr ""
@@ -456,3 +354,7 @@ msgstr ""
 #, c-format
 msgid "No such file \"%s\"!"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Servers"
+#~ msgstr "Servilo:"

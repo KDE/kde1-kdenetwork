@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1999-01-18 02:04+0100\n"
+"POT-Creation-Date: 1999-01-21 02:02+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: LinuxKorea Co. <kde@linuxkorea.co.kr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,19 +26,19 @@ msgstr ""
 msgid "New Folder"
 msgstr "새 폴더"
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:285 kmmainwin.cpp:318 main.cpp:334
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:285 kmmainwin.cpp:319 main.cpp:334
 msgid "KMail error"
 msgstr "KMail 오류"
 
-#: kmmainwin.cpp:286 kmmainwin.cpp:319
+#: kmmainwin.cpp:286 kmmainwin.cpp:320
 msgid "Already checking for mail!"
 msgstr "이미 확인한 전자우편입니다!"
 
-#: kmmainwin.cpp:296 kmmainwin.cpp:329
+#: kmmainwin.cpp:296 kmmainwin.cpp:330
 msgid "No new mail available"
 msgstr "새로운 전자우편이 없습니다"
 
-#: kmmainwin.cpp:357
+#: kmmainwin.cpp:358
 msgid ""
 "Cannot modify a\n"
 "system folder."
@@ -46,11 +46,11 @@ msgstr ""
 "시스템 폴더를\n"
 "수정할 수 없습니다."
 
-#: kmmainwin.cpp:362
+#: kmmainwin.cpp:363
 msgid "Modify Folder"
 msgstr "폴더 수정"
 
-#: kmmainwin.cpp:377
+#: kmmainwin.cpp:378
 #, c-format
 msgid ""
 "Are you sure you want to discard the\n"
@@ -59,15 +59,15 @@ msgstr ""
 "\"%s\" 폴더의 내용을 정말\n"
 "버리시겠습니까?"
 
-#: kmmainwin.cpp:380 kmmainwin.cpp:419
+#: kmmainwin.cpp:381 kmmainwin.cpp:420
 msgid "Confirmation"
 msgstr "확인"
 
-#: kmmainwin.cpp:392
+#: kmmainwin.cpp:393
 msgid "Moved all messages into trash"
 msgstr "모든 메시지를 휴지통으로 이동"
 
-#: kmmainwin.cpp:412
+#: kmmainwin.cpp:413
 msgid ""
 "Cannot remove a\n"
 "system folder."
@@ -75,7 +75,7 @@ msgstr ""
 "시스템 폴더를 제거\n"
 "할 수 없습니다."
 
-#: kmmainwin.cpp:416
+#: kmmainwin.cpp:417
 #, c-format
 msgid ""
 "Are you sure you want to remove the folder\n"
@@ -84,295 +84,295 @@ msgstr ""
 "정말 \"%s\"의 내용을 버리고, 폴더를\n"
 "삭제하시겠습니까?"
 
-#: kmmainwin.cpp:479
+#: kmmainwin.cpp:480
 msgid "KMail notification!"
 msgstr ""
 
-#: kmmainwin.cpp:480
+#: kmmainwin.cpp:481
 msgid "Only messages in the outbox folder can be edited!"
 msgstr ""
 
-#: kmmainwin.cpp:515
+#: kmmainwin.cpp:516
 msgid "Message as Plain Text"
 msgstr "메시지를 일반 문자열"
 
-#: kmmainwin.cpp:522 kmmainwin.cpp:542
+#: kmmainwin.cpp:523 kmmainwin.cpp:543
 msgid "Select Folder"
 msgstr "폴더 선택"
 
-#: kmmainwin.cpp:565
+#: kmmainwin.cpp:566
 msgid "Queued messages successfully sent."
 msgstr "대기 중인 메시지 보내기에 성공하였습니다."
 
-#: kmmainwin.cpp:567
+#: kmmainwin.cpp:568
 msgid "Failed to send (some) queued messages."
 msgstr "대기 중인 메시지 보내기에 실패하였습니다."
 
-#: kmmainwin.cpp:694
+#: kmmainwin.cpp:695
 msgid "Opening URL..."
 msgstr "URL 열기..."
 
-#: kmmainwin.cpp:749
+#: kmmainwin.cpp:750
 msgid "Address added to addressbook."
 msgstr "주소록에 주소를 추가하였습니다."
 
-#: kmmainwin.cpp:761
+#: kmmainwin.cpp:762
 msgid "Address copied to clipboard."
 msgstr "클립보드에 주소를 복사하였습니다."
 
-#: kmmainwin.cpp:766
+#: kmmainwin.cpp:767
 msgid "URL copied to clipboard."
 msgstr "클립보드에 URL을 복사하였습니다."
 
-#: kmmainwin.cpp:793
+#: kmmainwin.cpp:794
 msgid "Send to..."
 msgstr "받을 사람..."
 
-#: kmmainwin.cpp:795
+#: kmmainwin.cpp:796
 msgid "Send reply to..."
 msgstr "답장 쓰기..."
 
-#: kmmainwin.cpp:797
+#: kmmainwin.cpp:798
 msgid "Forward to..."
 msgstr "전달할 사람"
 
-#: kmmainwin.cpp:800
+#: kmmainwin.cpp:801
 msgid "Add to addressbook"
 msgstr "주소록에 추가"
 
-#: kmmainwin.cpp:802 kmmainwin.cpp:811
+#: kmmainwin.cpp:803 kmmainwin.cpp:812
 msgid "Copy to clipboard"
 msgstr "클립보드에 복사"
 
-#: kmmainwin.cpp:809
+#: kmmainwin.cpp:810
 msgid "Open URL..."
 msgstr "URL 열기..."
 
-#: kmmainwin.cpp:819 kmmainwin.cpp:936
+#: kmmainwin.cpp:820 kmmainwin.cpp:937
 msgid "&Reply..."
 msgstr "답장쓰기(&R)..."
 
-#: kmmainwin.cpp:821 kmmainwin.cpp:938
+#: kmmainwin.cpp:822 kmmainwin.cpp:939
 msgid "Reply &All..."
 msgstr "모두에게 답장(&A)..."
 
-#: kmmainwin.cpp:823 kmmainwin.cpp:940
+#: kmmainwin.cpp:824 kmmainwin.cpp:941
 msgid "&Forward..."
 msgstr "전달(&F)..."
 
-#: kmmainwin.cpp:826 kmmainwin.cpp:950
+#: kmmainwin.cpp:827 kmmainwin.cpp:951
 msgid "&Move..."
 msgstr "이동(&M)..."
 
-#: kmmainwin.cpp:828 kmmainwin.cpp:952
+#: kmmainwin.cpp:829 kmmainwin.cpp:953
 msgid "&Copy..."
 msgstr "복사(&C)..."
 
-#: kmmainwin.cpp:855
+#: kmmainwin.cpp:856
 msgid "New Composer"
 msgstr "새 작성기"
 
-#: kmcomposewin.cpp:451 kmmainwin.cpp:857
+#: kmcomposewin.cpp:451 kmmainwin.cpp:858
 msgid "New Mailreader"
 msgstr "새 전자우편"
 
-#: kmmainwin.cpp:860
+#: kmmainwin.cpp:861
 msgid "Save As..."
 msgstr "다른 이름으로 저장..."
 
-#: kmmainwin.cpp:862
+#: kmmainwin.cpp:863
 msgid "Print..."
 msgstr "인쇄..."
 
-#: kmmainwin.cpp:865
+#: kmmainwin.cpp:866
 msgid "Check Mail..."
 msgstr "전자우편 확인..."
 
-#: kmmainwin.cpp:874
+#: kmmainwin.cpp:875
 msgid "Check Mail in..."
 msgstr "전자우편 확인..."
 
-#: kmmainwin.cpp:876
+#: kmmainwin.cpp:877
 msgid "Send Queued"
 msgstr "대기 전자우편 보내기"
 
-#: kmmainwin.cpp:879
+#: kmmainwin.cpp:880
 msgid "&Settings..."
 msgstr "설정(&S)..."
 
-#: kmcomposewin.cpp:443 kmmainwin.cpp:881
+#: kmcomposewin.cpp:443 kmmainwin.cpp:882
 msgid "&Addressbook..."
 msgstr "주소록(&A)..."
 
-#: kmmainwin.cpp:883
+#: kmmainwin.cpp:884
 msgid "&Filter..."
 msgstr "필터(&F)..."
 
-#: kmmainwin.cpp:897
+#: kmmainwin.cpp:898
 msgid "&Find..."
 msgstr "찾기(&F)..."
 
-#: kmmainwin.cpp:902
+#: kmmainwin.cpp:903
 msgid "&Create..."
 msgstr "만들기(&C)..."
 
-#: kmmainwin.cpp:904
+#: kmmainwin.cpp:905
 msgid "&Modify..."
 msgstr "변경(&M)..."
 
-#: kmmainwin.cpp:906
+#: kmmainwin.cpp:907
 msgid "C&ompact"
 msgstr "간단히 보기(&o)"
 
-#: kmmainwin.cpp:909
+#: kmmainwin.cpp:910
 msgid "&Empty"
 msgstr "내용지우기(&E)"
 
-#: kmfilterdlg.cpp:147 kmmainwin.cpp:918
+#: kmfilterdlg.cpp:147 kmmainwin.cpp:919
 #, fuzzy
 msgid "New"
 msgstr "네트웍"
 
-#: kmmainwin.cpp:919
+#: kmmainwin.cpp:920
 msgid "Unread"
 msgstr "읽지않음"
 
-#: kmmainwin.cpp:920
+#: kmmainwin.cpp:921
 msgid "Read"
 msgstr "읽음"
 
-#: kmmainwin.cpp:921
+#: kmmainwin.cpp:922
 msgid "Replied"
 msgstr "답장 보냈음"
 
-#: kmmainwin.cpp:922
+#: kmmainwin.cpp:923
 msgid "Queued"
 msgstr "대기중"
 
-#: kmmainwin.cpp:923
+#: kmmainwin.cpp:924
 msgid "Sent"
 msgstr "보냄"
 
-#: kmmainwin.cpp:927
+#: kmmainwin.cpp:928
 msgid "&Next"
 msgstr ""
 
-#: kmmainwin.cpp:929
+#: kmmainwin.cpp:930
 msgid "Next unread"
 msgstr "다음 읽은 않은 전자우편"
 
-#: kmmainwin.cpp:931
+#: kmmainwin.cpp:932
 #, fuzzy
 msgid "&Previous"
 msgstr "이전에 읽지 않은 전자우편"
 
-#: kmmainwin.cpp:933
+#: kmmainwin.cpp:934
 msgid "Previous unread"
 msgstr "이전에 읽지 않은 전자우편"
 
-#: kmmainwin.cpp:943
+#: kmmainwin.cpp:944
 #, fuzzy
 msgid "Edi&t..."
 msgstr "인쇄..."
 
-#: kmmainwin.cpp:946
+#: kmmainwin.cpp:947
 msgid "&Set Status"
 msgstr "상태 설정(&S)"
 
-#: kmmainwin.cpp:948
+#: kmmainwin.cpp:949
 #, fuzzy
 msgid "Mar&k all"
 msgstr "모두 표시"
 
-#: kmmainwin.cpp:957
+#: kmmainwin.cpp:958
 msgid "Send again..."
 msgstr "다시 보내기..."
 
-#: kmmainwin.cpp:959
+#: kmmainwin.cpp:960
 msgid "Apply filters"
 msgstr "필터 적용"
 
-#: kmmainwin.cpp:962
+#: kmmainwin.cpp:963
 msgid "View Source..."
 msgstr "소스 보기..."
 
-#: kmmainwin.cpp:969
+#: kmmainwin.cpp:970
 msgid "&Brief Headers"
 msgstr "간단한 헤더(&B)"
 
-#: kmmainwin.cpp:971
+#: kmmainwin.cpp:972
 msgid "&Fancy Headers"
 msgstr "꾸며진 헤더(&F)"
 
-#: kmmainwin.cpp:973
+#: kmmainwin.cpp:974
 msgid "&Standard Headers"
 msgstr "표준 헤더(&S)"
 
-#: kmmainwin.cpp:975
+#: kmmainwin.cpp:976
 msgid "&Long Headers"
 msgstr "긴 헤더(&L)"
 
-#: kmmainwin.cpp:977
+#: kmmainwin.cpp:978
 msgid "&All Headers"
 msgstr "모든 헤더(&A)"
 
-#: kmmainwin.cpp:980
+#: kmmainwin.cpp:981
 msgid "Iconic Attachments"
 msgstr "첨부하여 아이콘으로 표시"
 
-#: kmmainwin.cpp:981
+#: kmmainwin.cpp:982
 msgid "Smart Attachments"
 msgstr "세련된 첨부"
 
-#: kmmainwin.cpp:982
+#: kmmainwin.cpp:983
 msgid "Inlined Attachments"
 msgstr "일렬 첨부"
 
-#: kmmainwin.cpp:993
+#: kmmainwin.cpp:994
 msgid "F&older"
 msgstr "폴더(&o)"
 
-#: kmmainwin.cpp:994
+#: kmmainwin.cpp:995
 msgid "&Message"
 msgstr "메시지(&M)"
 
-#: kmcomposewin.cpp:573 kmmainwin.cpp:1013
+#: kmcomposewin.cpp:573 kmmainwin.cpp:1014
 msgid "Compose new message"
 msgstr "새 메시지"
 
-#: kmcomposewin.cpp:578 kmmainwin.cpp:1018
+#: kmcomposewin.cpp:578 kmmainwin.cpp:1019
 msgid "Save message to file"
 msgstr "파일로 저장"
 
-#: kmcomposewin.cpp:583 kmmainwin.cpp:1023
+#: kmcomposewin.cpp:583 kmmainwin.cpp:1024
 msgid "Print message"
 msgstr "인쇄"
 
-#: kmmainwin.cpp:1030
+#: kmmainwin.cpp:1031
 msgid "Get new mail"
 msgstr "새 전자우편"
 
-#: kmmainwin.cpp:1036
+#: kmmainwin.cpp:1037
 msgid "Reply to author"
 msgstr "답장"
 
-#: kmmainwin.cpp:1041
+#: kmmainwin.cpp:1042
 msgid "Reply to all recipients"
 msgstr "모든 수신자에게 답장하기"
 
-#: kmmainwin.cpp:1046
+#: kmmainwin.cpp:1047
 msgid "Forward message"
 msgstr "전달"
 
-#: kmmainwin.cpp:1051
+#: kmmainwin.cpp:1052
 msgid "Delete message"
 msgstr "삭제"
 
-#: kmcomposewin.cpp:607 kmmainwin.cpp:1057
+#: kmcomposewin.cpp:607 kmmainwin.cpp:1058
 msgid "Open addressbook..."
 msgstr "주소록 열기..."
 
-#: kmmainwin.cpp:1069
+#: kmmainwin.cpp:1070
 msgid "Initializing..."
 msgstr "초기화중..."
 

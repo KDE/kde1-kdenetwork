@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ksirc \n"
-"POT-Creation-Date: 1999-01-18 02:04+0100\n"
+"POT-Creation-Date: 1999-01-21 02:02+0100\n"
 "PO-Revision-Date: 1999-01-04 19:10+0200\n"
 "Last-Translator: Piotr Roszatycki <dexter@fnet.pl>\n"
 "Content-Type: text/plain; charset=iso-8859-2\n"
@@ -86,7 +86,7 @@ msgid "Errors"
 msgstr "B³êdy"
 
 # KSircColourData.cpp:115
-#: KSPrefs/defaultfiltersdata.cpp:77 KSircColourData.cpp:115
+#: KSircColourData.cpp:115
 msgid "Background"
 msgstr "T³o"
 
@@ -210,8 +210,7 @@ msgid "Server Control"
 msgstr "Kontrola serwera"
 
 # servercontroller.cpp:291 servercontroller.cpp:455
-#: KSPrefs/serverchanneldata.cpp:34 servercontroller.cpp:291
-#: servercontroller.cpp:455
+#: servercontroller.cpp:291 servercontroller.cpp:455
 msgid "Channels"
 msgstr "Kana³y"
 
@@ -230,7 +229,7 @@ msgstr "Aktywne po³±czenia serwera"
 msgid "&Undock"
 msgstr "&Oddokuj"
 
-#: ssfeprompt.cpp:24
+#: ssfeprompt.cpp:25
 msgid "Prompt"
 msgstr ""
 
@@ -356,82 +355,6 @@ msgstr "Tylko dla opa"
 msgid "Modify"
 msgstr "Modyfikuj"
 
-#: KSPrefs/defaultfiltersdata.cpp:34
-msgid "Highlight Your Nick"
-msgstr ""
-
-#: KSPrefs/defaultfiltersdata.cpp:43
-msgid "Colour Nicks in Channels"
-msgstr ""
-
-#: KSPrefs/defaultfiltersdata.cpp:52
-msgid "Allow External Colours"
-msgstr ""
-
-#: KSPrefs/defaultfiltersdata.cpp:59
-msgid "Allow &kSirc Colour codes"
-msgstr ""
-
-#: KSPrefs/defaultfiltersdata.cpp:68
-msgid "&Allow &mirc Colour codes"
-msgstr ""
-
-#: KSPrefs/defaultfiltersdata.cpp:86
-msgid "Foreground"
-msgstr ""
-
-# KSColourPicker/kscolourpickerData.cpp:46
-#: KSPrefs/defaultfiltersdata.cpp:95
-#, fuzzy
-msgid "Colour"
-msgstr "Przyk³adowy kolor"
-
-# KSColourPicker/kscolourpickerData.cpp:46
-#: KSPrefs/defaultfiltersdata.cpp:103 KSPrefs/defaultfiltersdata.cpp:112
-#, fuzzy
-msgid "Sample"
-msgstr "Przyk³adowy kolor"
-
-#: KSPrefs/generalData.cpp:50
-msgid "Auto Create Windows"
-msgstr ""
-
-#: KSPrefs/generalData.cpp:59
-msgid "Beep on Notify"
-msgstr ""
-
-#: KSPrefs/generalData.cpp:68
-msgid "Nick Completion"
-msgstr ""
-
-#: KSPrefs/generalData.cpp:77
-msgid "Colour Picker Popup"
-msgstr ""
-
-#: KSPrefs/generalData.cpp:86
-msgid "Auto Rejoin"
-msgstr ""
-
-#: KSPrefs/generalData.cpp:95
-msgid "Enable Background Pixmap"
-msgstr ""
-
-#: KSPrefs/generalData.cpp:112
-msgid "Browse"
-msgstr ""
-
-#: KSPrefs/generalData.cpp:120
-msgid "Display Topic in Caption"
-msgstr ""
-
-#: KSPrefs/generalData.cpp:129
-msgid "Use MDI Mode (Must restart to take effect, experimental!!)"
-msgstr ""
-
-#: KSPrefs/generalData.cpp:144
-msgid "Window History Length"
-msgstr ""
-
 # KSPrefs/ksprefs.cpp:9
 #: KSPrefs/ksprefs.cpp:9
 msgid "kSirc Prefrences"
@@ -462,40 +385,6 @@ msgstr "Menu &u¿ytkownika"
 msgid "&Default Filters"
 msgstr "&Domy¶lne filtry"
 
-# KSOpenkSirc/open_ksircData.cpp:147
-#: KSPrefs/serverchanneldata.cpp:43
-#, fuzzy
-msgid "Servers"
-msgstr "Opis serwera:"
-
-#: KSPrefs/startupdata.cpp:35
-msgid "Notify List"
-msgstr ""
-
-# KSColourPicker/kscolourpickerData.cpp:30
-#: KSPrefs/startupdata.cpp:43
-#, fuzzy
-msgid "Nick"
-msgstr "Pobierz"
-
-# KSPrefs/UserMenuRefData.cpp:61
-#: KSPrefs/startupdata.cpp:52
-#, fuzzy
-msgid "Real Name"
-msgstr "Nazwa menu"
-
-#: KSPrefs/startupdata.cpp:97
-msgid "&Add"
-msgstr ""
-
-#: KSProgress/ksprogressdata.cpp:46
-msgid "fileName"
-msgstr ""
-
-#: KSProgress/ksprogressdata.cpp:54
-msgid "XferStatus"
-msgstr ""
-
 # KSTicker/speeddialogData.cpp:79
 #: KSTicker/speeddialogData.cpp:79
 msgid "Tick Interval"
@@ -511,3 +400,28 @@ msgstr "Krok"
 #, c-format
 msgid "No such file \"%s\"!"
 msgstr "Brak pliku \"%s\"!"
+
+# KSColourPicker/kscolourpickerData.cpp:46
+#, fuzzy
+#~ msgid "Colour"
+#~ msgstr "Przyk³adowy kolor"
+
+# KSColourPicker/kscolourpickerData.cpp:46
+#, fuzzy
+#~ msgid "Sample"
+#~ msgstr "Przyk³adowy kolor"
+
+# KSOpenkSirc/open_ksircData.cpp:147
+#, fuzzy
+#~ msgid "Servers"
+#~ msgstr "Opis serwera:"
+
+# KSColourPicker/kscolourpickerData.cpp:30
+#, fuzzy
+#~ msgid "Nick"
+#~ msgstr "Pobierz"
+
+# KSPrefs/UserMenuRefData.cpp:61
+#, fuzzy
+#~ msgid "Real Name"
+#~ msgstr "Nazwa menu"

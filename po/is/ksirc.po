@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ksirc\n"
-"POT-Creation-Date: 1999-01-18 02:04+0100\n"
+"POT-Creation-Date: 1999-01-21 02:02+0100\n"
 "PO-Revision-Date: 1999-01-11 21:05+0000\n"
 "Last-Translator: Richard Allen <ra@hp.is>\n"
 "Language-Team: is <kde-isl@mmedia.is>\n"
@@ -81,7 +81,7 @@ msgstr "Rásarskilaboð"
 msgid "Errors"
 msgstr "Villur"
 
-#: KSPrefs/defaultfiltersdata.cpp:77 KSircColourData.cpp:115
+#: KSircColourData.cpp:115
 msgid "Background"
 msgstr "Bakgrunnur"
 
@@ -187,8 +187,7 @@ msgstr "Um kSirc..."
 msgid "Server Control"
 msgstr "Stillingar þjóna"
 
-#: KSPrefs/serverchanneldata.cpp:34 servercontroller.cpp:291
-#: servercontroller.cpp:455
+#: servercontroller.cpp:291 servercontroller.cpp:455
 msgid "Channels"
 msgstr "Rásir"
 
@@ -204,7 +203,7 @@ msgstr "Virkar tengingar"
 msgid "&Undock"
 msgstr "&Af spjaldi"
 
-#: ssfeprompt.cpp:24
+#: ssfeprompt.cpp:25
 msgid "Prompt"
 msgstr ""
 
@@ -309,80 +308,6 @@ msgstr "Bara oppar"
 msgid "Modify"
 msgstr "Breyta"
 
-#: KSPrefs/defaultfiltersdata.cpp:34
-msgid "Highlight Your Nick"
-msgstr ""
-
-#: KSPrefs/defaultfiltersdata.cpp:43
-msgid "Colour Nicks in Channels"
-msgstr ""
-
-#: KSPrefs/defaultfiltersdata.cpp:52
-msgid "Allow External Colours"
-msgstr ""
-
-#: KSPrefs/defaultfiltersdata.cpp:59
-msgid "Allow &kSirc Colour codes"
-msgstr ""
-
-#: KSPrefs/defaultfiltersdata.cpp:68
-msgid "&Allow &mirc Colour codes"
-msgstr ""
-
-#: KSPrefs/defaultfiltersdata.cpp:86
-msgid "Foreground"
-msgstr ""
-
-#: KSPrefs/defaultfiltersdata.cpp:95
-#, fuzzy
-msgid "Colour"
-msgstr "Litasýnishorn"
-
-#: KSPrefs/defaultfiltersdata.cpp:103 KSPrefs/defaultfiltersdata.cpp:112
-#, fuzzy
-msgid "Sample"
-msgstr "Litasýnishorn"
-
-#: KSPrefs/generalData.cpp:50
-msgid "Auto Create Windows"
-msgstr ""
-
-#: KSPrefs/generalData.cpp:59
-msgid "Beep on Notify"
-msgstr ""
-
-#: KSPrefs/generalData.cpp:68
-msgid "Nick Completion"
-msgstr ""
-
-#: KSPrefs/generalData.cpp:77
-msgid "Colour Picker Popup"
-msgstr ""
-
-#: KSPrefs/generalData.cpp:86
-msgid "Auto Rejoin"
-msgstr ""
-
-#: KSPrefs/generalData.cpp:95
-msgid "Enable Background Pixmap"
-msgstr ""
-
-#: KSPrefs/generalData.cpp:112
-msgid "Browse"
-msgstr ""
-
-#: KSPrefs/generalData.cpp:120
-msgid "Display Topic in Caption"
-msgstr ""
-
-#: KSPrefs/generalData.cpp:129
-msgid "Use MDI Mode (Must restart to take effect, experimental!!)"
-msgstr ""
-
-#: KSPrefs/generalData.cpp:144
-msgid "Window History Length"
-msgstr ""
-
 #: KSPrefs/ksprefs.cpp:9
 msgid "kSirc Prefrences"
 msgstr "Stillingar kSirc"
@@ -407,37 +332,6 @@ msgstr "Notendavalmynd"
 msgid "&Default Filters"
 msgstr "&Sjálfgefnar síur"
 
-#: KSPrefs/serverchanneldata.cpp:43
-#, fuzzy
-msgid "Servers"
-msgstr "Lýsing þjóns:"
-
-#: KSPrefs/startupdata.cpp:35
-msgid "Notify List"
-msgstr ""
-
-#: KSPrefs/startupdata.cpp:43
-#, fuzzy
-msgid "Nick"
-msgstr "Velja"
-
-#: KSPrefs/startupdata.cpp:52
-#, fuzzy
-msgid "Real Name"
-msgstr "Heiti valmyndar"
-
-#: KSPrefs/startupdata.cpp:97
-msgid "&Add"
-msgstr ""
-
-#: KSProgress/ksprogressdata.cpp:46
-msgid "fileName"
-msgstr ""
-
-#: KSProgress/ksprogressdata.cpp:54
-msgid "XferStatus"
-msgstr ""
-
 #: KSTicker/speeddialogData.cpp:79
 msgid "Tick Interval"
 msgstr "Hraði strimils"
@@ -450,3 +344,23 @@ msgstr "Færsla strimils"
 #, c-format
 msgid "No such file \"%s\"!"
 msgstr "Skráin \"%s\" er ekki til!"
+
+#, fuzzy
+#~ msgid "Colour"
+#~ msgstr "Litasýnishorn"
+
+#, fuzzy
+#~ msgid "Sample"
+#~ msgstr "Litasýnishorn"
+
+#, fuzzy
+#~ msgid "Servers"
+#~ msgstr "Lýsing þjóns:"
+
+#, fuzzy
+#~ msgid "Nick"
+#~ msgstr "Velja"
+
+#, fuzzy
+#~ msgid "Real Name"
+#~ msgstr "Heiti valmyndar"

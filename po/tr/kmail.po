@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE 1.0\n"
-"POT-Creation-Date: 1999-01-18 02:04+0100\n"
+"POT-Creation-Date: 1999-01-21 02:02+0100\n"
 "PO-Revision-Date: 1998-06-29 11:00+0200\n"
 "Last-Translator: Makbule SHAKALLA <bbm756@hun.edu.tr>\n"
 "Language-Team: Hacettepe Linux Users Group <hacettepe@linux.org.tr>\n"
@@ -23,19 +23,19 @@ msgstr "Üzgünüm ama bu özellik hala yok"
 msgid "New Folder"
 msgstr " Yeni Doysa  "
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:285 kmmainwin.cpp:318 main.cpp:334
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:285 kmmainwin.cpp:319 main.cpp:334
 msgid "KMail error"
 msgstr "Kmail hatasý"
 
-#: kmmainwin.cpp:286 kmmainwin.cpp:319
+#: kmmainwin.cpp:286 kmmainwin.cpp:320
 msgid "Already checking for mail!"
 msgstr "Zaten yeni mail için bakýyorum"
 
-#: kmmainwin.cpp:296 kmmainwin.cpp:329
+#: kmmainwin.cpp:296 kmmainwin.cpp:330
 msgid "No new mail available"
 msgstr "Yeni mail yok"
 
-#: kmmainwin.cpp:357
+#: kmmainwin.cpp:358
 msgid ""
 "Cannot modify a\n"
 "system folder."
@@ -43,11 +43,11 @@ msgstr ""
 "Sistem dosyasýdýr.\n"
 "Deðiþtirilemez"
 
-#: kmmainwin.cpp:362
+#: kmmainwin.cpp:363
 msgid "Modify Folder"
 msgstr " Dosyada Deðiþiklik Yap "
 
-#: kmmainwin.cpp:377
+#: kmmainwin.cpp:378
 #, c-format
 msgid ""
 "Are you sure you want to discard the\n"
@@ -56,15 +56,15 @@ msgstr ""
 "\"%s\" dizininin içindekileri\n"
 "silmek istediðinizden emin misiniz?"
 
-#: kmmainwin.cpp:380 kmmainwin.cpp:419
+#: kmmainwin.cpp:381 kmmainwin.cpp:420
 msgid "Confirmation"
 msgstr "Onaylama"
 
-#: kmmainwin.cpp:392
+#: kmmainwin.cpp:393
 msgid "Moved all messages into trash"
 msgstr "Bütün mesajlarý çöpe at"
 
-#: kmmainwin.cpp:412
+#: kmmainwin.cpp:413
 msgid ""
 "Cannot remove a\n"
 "system folder."
@@ -72,7 +72,7 @@ msgstr ""
 "Sistem dosyasýdýr.\n"
 "Silinemez"
 
-#: kmmainwin.cpp:416
+#: kmmainwin.cpp:417
 #, c-format
 msgid ""
 "Are you sure you want to remove the folder\n"
@@ -81,294 +81,294 @@ msgstr ""
 "\"%s\" dizinini içindekileri silmek\n"
 "pahasýna kaldýrmak istediðinizden emin misiniz?"
 
-#: kmmainwin.cpp:479
+#: kmmainwin.cpp:480
 msgid "KMail notification!"
 msgstr ""
 
-#: kmmainwin.cpp:480
+#: kmmainwin.cpp:481
 msgid "Only messages in the outbox folder can be edited!"
 msgstr ""
 
-#: kmmainwin.cpp:515
+#: kmmainwin.cpp:516
 msgid "Message as Plain Text"
 msgstr "Ýleti Normal Metin"
 
-#: kmmainwin.cpp:522 kmmainwin.cpp:542
+#: kmmainwin.cpp:523 kmmainwin.cpp:543
 msgid "Select Folder"
 msgstr "Dizin Seç "
 
-#: kmmainwin.cpp:565
+#: kmmainwin.cpp:566
 msgid "Queued messages successfully sent."
 msgstr "Kuyruktaki iletiler baþarýyla gönderildi"
 
-#: kmmainwin.cpp:567
+#: kmmainwin.cpp:568
 msgid "Failed to send (some) queued messages."
 msgstr "Kuyruktaki bazý iletiler gönderilemedi."
 
-#: kmmainwin.cpp:694
+#: kmmainwin.cpp:695
 msgid "Opening URL..."
 msgstr " URL açýlýyor "
 
-#: kmmainwin.cpp:749
+#: kmmainwin.cpp:750
 msgid "Address added to addressbook."
 msgstr "Adres adres defterine yazýldý."
 
-#: kmmainwin.cpp:761
+#: kmmainwin.cpp:762
 msgid "Address copied to clipboard."
 msgstr "Adres panoya kopyalandý."
 
-#: kmmainwin.cpp:766
+#: kmmainwin.cpp:767
 msgid "URL copied to clipboard."
 msgstr "URL panoya kopyalandý."
 
-#: kmmainwin.cpp:793
+#: kmmainwin.cpp:794
 msgid "Send to..."
 msgstr "Gönder "
 
-#: kmmainwin.cpp:795
+#: kmmainwin.cpp:796
 msgid "Send reply to..."
 msgstr "Yanýt Gönder..."
 
-#: kmmainwin.cpp:797
+#: kmmainwin.cpp:798
 msgid "Forward to..."
 msgstr "Ýlet.. "
 
-#: kmmainwin.cpp:800
+#: kmmainwin.cpp:801
 msgid "Add to addressbook"
 msgstr "Adres Defterine Ekle "
 
-#: kmmainwin.cpp:802 kmmainwin.cpp:811
+#: kmmainwin.cpp:803 kmmainwin.cpp:812
 msgid "Copy to clipboard"
 msgstr "Panoya Kopyala "
 
-#: kmmainwin.cpp:809
+#: kmmainwin.cpp:810
 msgid "Open URL..."
 msgstr "URL aç "
 
-#: kmmainwin.cpp:819 kmmainwin.cpp:936
+#: kmmainwin.cpp:820 kmmainwin.cpp:937
 msgid "&Reply..."
 msgstr "&Yanýt "
 
-#: kmmainwin.cpp:821 kmmainwin.cpp:938
+#: kmmainwin.cpp:822 kmmainwin.cpp:939
 msgid "Reply &All..."
 msgstr "&Herkese Yanýtla..."
 
-#: kmmainwin.cpp:823 kmmainwin.cpp:940
+#: kmmainwin.cpp:824 kmmainwin.cpp:941
 msgid "&Forward..."
 msgstr "&Ýlet... "
 
-#: kmmainwin.cpp:826 kmmainwin.cpp:950
+#: kmmainwin.cpp:827 kmmainwin.cpp:951
 msgid "&Move..."
 msgstr "Yürüt... "
 
-#: kmmainwin.cpp:828 kmmainwin.cpp:952
+#: kmmainwin.cpp:829 kmmainwin.cpp:953
 msgid "&Copy..."
 msgstr "&Kopyala..."
 
-#: kmmainwin.cpp:855
+#: kmmainwin.cpp:856
 msgid "New Composer"
 msgstr "Yeni Düzenleyici"
 
-#: kmcomposewin.cpp:451 kmmainwin.cpp:857
+#: kmcomposewin.cpp:451 kmmainwin.cpp:858
 msgid "New Mailreader"
 msgstr "Yeni okuyucu "
 
-#: kmmainwin.cpp:860
+#: kmmainwin.cpp:861
 msgid "Save As..."
 msgstr "Kaydet... "
 
-#: kmmainwin.cpp:862
+#: kmmainwin.cpp:863
 msgid "Print..."
 msgstr "Yazdýr..."
 
-#: kmmainwin.cpp:865
+#: kmmainwin.cpp:866
 msgid "Check Mail..."
 msgstr "Mail'e bak..."
 
-#: kmmainwin.cpp:874
+#: kmmainwin.cpp:875
 msgid "Check Mail in..."
 msgstr "Mail'e bak..."
 
-#: kmmainwin.cpp:876
+#: kmmainwin.cpp:877
 msgid "Send Queued"
 msgstr "Ýleti Kuyruða Eklendi"
 
-#: kmmainwin.cpp:879
+#: kmmainwin.cpp:880
 msgid "&Settings..."
 msgstr "&Ayarlar..."
 
-#: kmcomposewin.cpp:443 kmmainwin.cpp:881
+#: kmcomposewin.cpp:443 kmmainwin.cpp:882
 msgid "&Addressbook..."
 msgstr "Ad&res defteri"
 
-#: kmmainwin.cpp:883
+#: kmmainwin.cpp:884
 msgid "&Filter..."
 msgstr "&Süzgeç..."
 
-#: kmmainwin.cpp:897
+#: kmmainwin.cpp:898
 msgid "&Find..."
 msgstr "Ara"
 
-#: kmmainwin.cpp:902
+#: kmmainwin.cpp:903
 msgid "&Create..."
 msgstr "Yara&t"
 
-#: kmmainwin.cpp:904
+#: kmmainwin.cpp:905
 msgid "&Modify..."
 msgstr "De&ðiþtir.."
 
-#: kmmainwin.cpp:906
+#: kmmainwin.cpp:907
 msgid "C&ompact"
 msgstr "S&ýkýþtýr"
 
-#: kmmainwin.cpp:909
+#: kmmainwin.cpp:910
 msgid "&Empty"
 msgstr "B&oþ"
 
-#: kmfilterdlg.cpp:147 kmmainwin.cpp:918
+#: kmfilterdlg.cpp:147 kmmainwin.cpp:919
 msgid "New"
 msgstr ""
 
-#: kmmainwin.cpp:919
+#: kmmainwin.cpp:920
 msgid "Unread"
 msgstr "Okunmamýþ"
 
-#: kmmainwin.cpp:920
+#: kmmainwin.cpp:921
 msgid "Read"
 msgstr "Okunmuþ"
 
-#: kmmainwin.cpp:921
+#: kmmainwin.cpp:922
 msgid "Replied"
 msgstr "Yanýtlanmýþ"
 
-#: kmmainwin.cpp:922
+#: kmmainwin.cpp:923
 msgid "Queued"
 msgstr "Kuyruða Eklenmiþ"
 
-#: kmmainwin.cpp:923
+#: kmmainwin.cpp:924
 msgid "Sent"
 msgstr "Gönderilmiþ"
 
-#: kmmainwin.cpp:927
+#: kmmainwin.cpp:928
 msgid "&Next"
 msgstr ""
 
-#: kmmainwin.cpp:929
+#: kmmainwin.cpp:930
 msgid "Next unread"
 msgstr "Sonraki okunmamýþ"
 
-#: kmmainwin.cpp:931
+#: kmmainwin.cpp:932
 #, fuzzy
 msgid "&Previous"
 msgstr "Önceki okunmamýþ"
 
-#: kmmainwin.cpp:933
+#: kmmainwin.cpp:934
 msgid "Previous unread"
 msgstr "Önceki okunmamýþ"
 
-#: kmmainwin.cpp:943
+#: kmmainwin.cpp:944
 #, fuzzy
 msgid "Edi&t..."
 msgstr "Yazdýr..."
 
-#: kmmainwin.cpp:946
+#: kmmainwin.cpp:947
 msgid "&Set Status"
 msgstr "D&urumu Belirle"
 
-#: kmmainwin.cpp:948
+#: kmmainwin.cpp:949
 #, fuzzy
 msgid "Mar&k all"
 msgstr "Hepsini Ýþaretle"
 
-#: kmmainwin.cpp:957
+#: kmmainwin.cpp:958
 msgid "Send again..."
 msgstr "Tekrar gönderiliyor"
 
-#: kmmainwin.cpp:959
+#: kmmainwin.cpp:960
 msgid "Apply filters"
 msgstr "Süzgeçleri uygula"
 
-#: kmmainwin.cpp:962
+#: kmmainwin.cpp:963
 msgid "View Source..."
 msgstr "Kaynak kodu göster"
 
-#: kmmainwin.cpp:969
+#: kmmainwin.cpp:970
 msgid "&Brief Headers"
 msgstr "Ký&sa Baþlýklar"
 
-#: kmmainwin.cpp:971
+#: kmmainwin.cpp:972
 msgid "&Fancy Headers"
 msgstr "Havalý &Baþlýklar"
 
-#: kmmainwin.cpp:973
+#: kmmainwin.cpp:974
 msgid "&Standard Headers"
 msgstr "S&tandart Baþlýklar"
 
-#: kmmainwin.cpp:975
+#: kmmainwin.cpp:976
 msgid "&Long Headers"
 msgstr "U&zun Baþlýklar"
 
-#: kmmainwin.cpp:977
+#: kmmainwin.cpp:978
 msgid "&All Headers"
 msgstr "&Tüm Baþlýklar"
 
-#: kmmainwin.cpp:980
+#: kmmainwin.cpp:981
 msgid "Iconic Attachments"
 msgstr "Simgesel Ekler"
 
-#: kmmainwin.cpp:981
+#: kmmainwin.cpp:982
 msgid "Smart Attachments"
 msgstr "Akýllý Ekler"
 
-#: kmmainwin.cpp:982
+#: kmmainwin.cpp:983
 msgid "Inlined Attachments"
 msgstr "Çevrim Ýçi Ekler"
 
-#: kmmainwin.cpp:993
+#: kmmainwin.cpp:994
 msgid "F&older"
 msgstr "D&izin"
 
-#: kmmainwin.cpp:994
+#: kmmainwin.cpp:995
 msgid "&Message"
 msgstr "&Ýleti"
 
-#: kmcomposewin.cpp:573 kmmainwin.cpp:1013
+#: kmcomposewin.cpp:573 kmmainwin.cpp:1014
 msgid "Compose new message"
 msgstr "Yeni bir ileti yarat"
 
-#: kmcomposewin.cpp:578 kmmainwin.cpp:1018
+#: kmcomposewin.cpp:578 kmmainwin.cpp:1019
 msgid "Save message to file"
 msgstr "Ýletiyi dosyaya kaydet"
 
-#: kmcomposewin.cpp:583 kmmainwin.cpp:1023
+#: kmcomposewin.cpp:583 kmmainwin.cpp:1024
 msgid "Print message"
 msgstr "Ýletiyi yazdýr"
 
-#: kmmainwin.cpp:1030
+#: kmmainwin.cpp:1031
 msgid "Get new mail"
 msgstr "Yeni mail al"
 
-#: kmmainwin.cpp:1036
+#: kmmainwin.cpp:1037
 msgid "Reply to author"
 msgstr "Yazara yanýt ver"
 
-#: kmmainwin.cpp:1041
+#: kmmainwin.cpp:1042
 msgid "Reply to all recipients"
 msgstr "Herkese yanýt ver"
 
-#: kmmainwin.cpp:1046
+#: kmmainwin.cpp:1047
 msgid "Forward message"
 msgstr "Ýletiyi ilet"
 
-#: kmmainwin.cpp:1051
+#: kmmainwin.cpp:1052
 msgid "Delete message"
 msgstr "Ýletiyi sil"
 
-#: kmcomposewin.cpp:607 kmmainwin.cpp:1057
+#: kmcomposewin.cpp:607 kmmainwin.cpp:1058
 msgid "Open addressbook..."
 msgstr "Adres defterini aç"
 
-#: kmmainwin.cpp:1069
+#: kmmainwin.cpp:1070
 msgid "Initializing..."
 msgstr "Hazýrlanýyor..."
 
