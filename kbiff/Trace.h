@@ -79,4 +79,4 @@ protected:
 	void m_indent();
 	QString m_functionName;
 };
-#endif TRACE_H
+#endif // TRACE_H
