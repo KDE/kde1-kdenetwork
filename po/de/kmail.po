@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
 "POT-Creation-Date: 1998-11-16 02:21+0100\n"
-"PO-Revision-Date: 1998-11-14 15:55 +0100\n"
-"Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
+"PO-Revision-Date: 1998-11-17 08:55 +0100\n"
 "Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
+"Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
 
 #: kmcomposewin.cpp:1439 kmmainwin.cpp:263 kpgp.cpp:540
 msgid ""
@@ -371,7 +371,7 @@ msgstr "Name:"
 
 #: kmcomposewin.cpp:1447 kmfolderdia.cpp:44 kmfolderdia.cpp:120
 msgid "unnamed"
-msgstr "unbenannt"
+msgstr "Unbenannt"
 
 #: kmfolderdia.cpp:47
 msgid "Associated with"
@@ -543,11 +543,11 @@ msgstr "Standardmäßig senden:"
 
 #: kmsettings.cpp:469
 msgid "send now"
-msgstr "jetzt senden"
+msgstr "Jetzt senden"
 
 #: kmsettings.cpp:473
 msgid "send later"
-msgstr "später senden"
+msgstr "Später senden"
 
 #: kmsettings.cpp:478
 msgid "Send messages:"
@@ -559,7 +559,7 @@ msgstr "Erlaube 8-Bit"
 
 #: kmsettings.cpp:486
 msgid "MIME Compilant (Quoted Printable)"
-msgstr "MIME-Verträglich (Quoted Printable)"
+msgstr "MIME-verträglich (Quoted Printable)"
 
 #: kmsettings.cpp:512
 msgid "Composer"
@@ -638,9 +638,8 @@ msgid "Delete mail from server"
 msgstr "Nachrichten vom Server löschen"
 
 #: kmsettings.cpp:906
-#, fuzzy
 msgid "Retrieve all mail from server"
-msgstr "Nachrichten vom Server löschen"
+msgstr "Alle Nachrichten vom Server holen"
 
 #: kmsettings.cpp:918
 msgid "Enable interval Mail checking"
@@ -767,7 +766,7 @@ msgstr "&Kopie:"
 
 #: kmcomposewin.cpp:351
 msgid "&Bcc:"
-msgstr "&Blindkopie (Bcc):"
+msgstr "&Blindkope (Bcc):"
 
 #: kmcomposewin.cpp:353
 msgid "&Subject:"
@@ -1181,15 +1180,15 @@ msgstr ""
 
 #: kmacctpop.cpp:100
 msgid "Please set Password and Username"
-msgstr ""
+msgstr "Geben Sie bitte Paßwort und Benutzername ein"
 
 #: kmacctpop.cpp:135
 msgid "Incorrect Username"
-msgstr ""
+msgstr "Falscher Benutzername"
 
 #: kmacctpop.cpp:148
 msgid "Incorrect Password"
-msgstr ""
+msgstr "Falsches Paßwort"
 
 #: kmacctpop.cpp:184
 msgid ""
@@ -1337,7 +1336,7 @@ msgstr "Kann SMTP-Verbindung nicht schließen"
 
 #: kmsender.cpp:673
 msgid "transmitting message"
-msgstr "übertrage Nachricht"
+msgstr "Übertrage Nachricht"
 
 #: kmsender.cpp:707
 msgid "network error"
@@ -1354,7 +1353,7 @@ msgstr ""
 "es trat ein SMTP-Fehler auf.\n"
 "Befehl: %s\n"
 "Antwort: %s\n"
-"Ergebniscode: %d"
+"Rückgabecode: %d"
 
 #: kmsender.cpp:724
 #, c-format
