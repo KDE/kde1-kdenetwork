@@ -156,8 +156,8 @@ int KMFolder::open(void)
   }
   else
   {
-    debug("No path specified for folder `" + name() +
-	  "' -- Turning autoCreateIndex off");
+    //debug("No path specified for folder `" + name() +
+    //      "' -- Turning autoCreateIndex off");
     mAutoCreateIndex = FALSE;
     rc = createIndexFromContents();
   }
@@ -194,8 +194,8 @@ int KMFolder::create(void)
   }
   else
   {
-    debug("Folder `" + name() +
-	  "' has no path specified -- turning autoCreateIndex off");
+    //debug("Folder `" + name() +
+    //      "' has no path specified -- turning autoCreateIndex off");
     mAutoCreateIndex = FALSE;
   }
 
@@ -924,12 +924,6 @@ int KMFolder::compact(void)
     debug ("Not compacting %s; it's clean", name().data());
     return 0;
   }
-  //if (count() == 0)
-  //{
-  //  debug ("Expunging %s, it's empty ", name().data());
-  //  expunge();
-  //  return 0;
-  //}
   
   debug ("Compacting %s ", name().data());
   
@@ -1019,23 +1013,11 @@ int KMFolder::sync(void)
 //-----------------------------------------------------------------------------
 void KMFolder::sort(KMMsgList::SortField aField, bool aDesc)
 {
-  debug("KMFolder::sort()");
+  //debug("KMFolder::sort()");
   mMsgList.sort(aField, aDesc);
-  debug("KMFolder::sort() after");
+  //debug("KMFolder::sort() after");
   if (!mQuiet) emit changed();
   mDirty = TRUE;
-  // Set needs compact to true? Why? We care only about size.
-  // But what about other  mailers? They could touch something and
-  // sort wont be the same after kmail comes again
-  // On the other hand: We call sort every time we visit a folder;
-  // Therefore if pine did something to folder and we have sor by time:
-  //  - kmail recreates index from contents
-  //  - it sorts messages by time
-  //  - on exit it doesn't need to write the whole folder sorted by time
-  //    again, 'cause, it'll call sort regardless of was folder phisically sorted
-  //    or not.
-  //  So don't flag as dirty. Opinions?
-  // needsCompact = true;
 }
 
 
@@ -1064,7 +1046,7 @@ const QString KMFolder::label(void) const
 //-----------------------------------------------------------------------------
 long KMFolder::countUnread(void)
 {
-  int  i;
+  register int  i;
 
   if (unreadMsgs != -1)
     return unreadMsgs;
