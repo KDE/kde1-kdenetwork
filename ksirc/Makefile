@@ -3,7 +3,8 @@
 #######    linux-gcc-shared on Sun Oct 12 09:16:39 MDT 1997
 
 export INCDIR = /usr/local/lib/qt/include
-export CFLAGS = -g -ggdb -Wall -I/usr/X11R6/include -I$(HOME)/include -I/opt/kde/include
+#export CFLAGS = -g -ggdb -Wall -I/usr/X11R6/include -I$(HOME)/include -I/opt/kde/include
+export CFLAGS = -ggdb -g -Wall -I/usr/X11R6/include -I$(HOME)/include -I/opt/kde/include
 export LIBCFLAGS = -fPIC
 export YACCCFLAGS = -Wno-unused -Wno-parentheses
 export LFLAGS = -L/usr/local/lib/qt/lib -lqt -L/opt/kde/lib -lkdecore -lkdeui -L/usr/X11/lib -lXext

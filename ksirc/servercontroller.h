@@ -50,6 +50,8 @@ public slots:
     virtual void reuse();
     virtual void autocreate();
     virtual void colour_prefs();
+    virtual void font_prefs();
+    virtual void font_update(const QFont&);
     virtual void filter_rule_editor();
 
 private:

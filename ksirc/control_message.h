@@ -8,5 +8,6 @@
 #define CHANGE_CHANNEL 001
 #define STOP_UPDATES   002
 #define RESUME_UPDATES 003
+#define REREAD_CONFIG  004
 
 #endif

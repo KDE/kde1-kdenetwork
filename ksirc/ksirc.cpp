@@ -32,7 +32,10 @@
 #include <unistd.h>
 #include <fcntl.h>
 
+#include <qfont.h>
+
 #include <kapp.h>
+#include <kconfig.h>
 
 #include "config.h"
 
@@ -62,6 +65,9 @@ int main( int argc, char ** argv )
   kSircConfig->colour_chan = new QColor(kConfig->readColorEntry("chan", &green));
   kSircConfig->colour_error = new QColor(kConfig->readColorEntry("error", &red));
 
+  kConfig->setGroup("GlobalOptions");
+  kSircConfig->defaultfont = kConfig->readFontEntry("MainFont", new QFont("fixed"));
+
   //  KSircProcess proc("opus.dal.net");
   servercontroller *control = new servercontroller();
   control->show();
@@ -79,6 +85,7 @@ int main( int argc, char ** argv )
   //  kApp->connect(kApp, SIGNAL(lastWindowClosed()), kApp, SLOT(quit()));
   
   kApp->exec();
+
   kConfig->sync();
 
   //  kill(sirc_pid, 15);  // on normal exit, do try and kill dsirc...

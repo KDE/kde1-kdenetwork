@@ -70,8 +70,11 @@
 #include "open_top.h"
 #include "KSircColour.h"
 #include "config.h"
+#include "control_message.h"
 #include "FilterRuleEditor.h"
 #include <iostream.h>
+
+#include <kfontdialog.h>
 
 #include <qkeycode.h>
 
@@ -113,6 +116,8 @@ servercontroller::servercontroller
 	kSircConfig->autocreate = kConfig->readNumEntry("AutoCreate", FALSE);
 	options->insertItem("Colour Preferences...",
 			    this, SLOT(colour_prefs()));
+	options->insertItem("Global Fonts...",
+			    this, SLOT(font_prefs()));
 	options->insertItem("Filter Rule Editor...",
 			    this, SLOT(filter_rule_editor()));
 	MenuBar->insertItem("&Options", options);
@@ -123,8 +128,8 @@ servercontroller::servercontroller
 	ConnectionTree->setExpandLevel(2);
 	open_toplevels = 0;
 
-	pic_server = new QPixmap("img/mini-display.xpm");
-	pic_channel = new QPixmap("img/mini-edit.xpm");
+	pic_server = new QPixmap("img/mini-display.gif");
+	pic_channel = new QPixmap("img/mini-edit.gif");
 
 }
 
@@ -293,4 +298,27 @@ void servercontroller::filter_rule_editor()
   connect(fe, SIGNAL(destroyed()), 
 	  this, SIGNAL(filters_update()));
   fe->show();
+}
+
+void servercontroller::font_prefs()
+{
+  KFontDialog *kfd = new KFontDialog();
+  kfd->setFont(kSircConfig->defaultfont);
+  connect(kfd, SIGNAL(fontSelected(const QFont &)),
+	  this, SLOT(font_update(const QFont &)));
+  kfd->show();
+}
+
+void servercontroller::font_update(const QFont &font)
+{
+  kSircConfig->defaultfont = font;
+  QString message;
+  message.setNum(REREAD_CONFIG);
+  QDictIterator<KSircProcess> it( proc_list );
+  while(it.current()){
+    it.current()->getWindowList()["!all"]->control_message(message);
+    ++it;
+  }
+  kConfig->setGroup("GlobalOptions");
+  kConfig->writeEntry("MainFont", kSircConfig->defaultfont);
 }

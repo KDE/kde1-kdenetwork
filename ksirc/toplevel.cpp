@@ -246,7 +246,7 @@ KSircTopLevel::~KSircTopLevel()
   int tick, step;
   ticker->speed(&tick, &step);
   kConfig->setGroup("TickerDefaults");
-  kConfig->writeEntry("font", font());
+  kConfig->writeEntry("font", ticker->font());
   kConfig->writeEntry("tick", tick);
   kConfig->writeEntry("step", step);
   kConfig->sync();
@@ -1032,6 +1032,11 @@ void KSircTopLevel::control_message(QString str)
       Buffer = FALSE;
       if(LineBuffer->isEmpty() == FALSE)
 	sirc_receive(QString(""));
+      break;
+    case REREAD_CONFIG:
+      mainw->setFont(kSircConfig->defaultfont);
+      emit changeSize();
+      repaint(TRUE);
       break;
     default:
       cerr << "Unkown control message: " << str << endl;
