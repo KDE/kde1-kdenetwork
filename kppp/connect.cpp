@@ -47,7 +47,7 @@
 #include "runtests.h"
 #endif
 
-#include "pap.h"
+#include "auth.h"
 #include "requester.h"
 #include "connect.h"
 #include "main.h"
