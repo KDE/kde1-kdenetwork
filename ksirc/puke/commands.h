@@ -724,6 +724,13 @@
 // BoxLayout
 #define POBJECT_LAYOUT 11
 
+// MenuData
+#define PWIDGET_MENUDATA 12
+
+// PopupMenu
+
+#define PWIDGET_POPMENU 13
+
 // Group layout commands exist between 10000 and 11000
 
 // Desc: create new box layout

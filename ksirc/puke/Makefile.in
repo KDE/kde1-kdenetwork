@@ -147,7 +147,7 @@ noinst_LIBRARIES = libpuke.a
 
 lib_LTLIBRARIES = libpframe.la libplined.la libpbutton.la libppushbt.la \
                   libpprogress.la libptablevw.la libplistbox.la libplabel.la \
-                  libpmenudta.la
+                  libpmenudta.la libppopmenu.la
 
 libpuke_a_SOURCES = \
 controller.cpp \
@@ -193,6 +193,10 @@ mplabel.cpp
 
 libpmenudta_la_SOURCES = \
 pmenudta.cpp 
+
+libppopmenu_la_SOURCES = \
+ppopmenu.cpp  \
+mppopmenu.cpp
 
 # no install headers
 
@@ -260,6 +264,9 @@ libplabel_la_OBJECTS =  plabel.lo mplabel.lo
 libpmenudta_la_LDFLAGS = 
 libpmenudta_la_LIBADD = 
 libpmenudta_la_OBJECTS =  pmenudta.lo
+libppopmenu_la_LDFLAGS = 
+libppopmenu_la_LIBADD = 
+libppopmenu_la_OBJECTS =  ppopmenu.lo mppopmenu.lo
 CXXFLAGS = @CXXFLAGS@
 CXXCOMPILE = $(CXX) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
 LTCXXCOMPILE = $(LIBTOOL) --mode=compile $(CXX) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
@@ -275,14 +282,14 @@ TAR = tar
 GZIP = --best
 DEP_FILES =  .deps/controller.P .deps/mcontroller.P .deps/mpbutton.P \
 .deps/mpframe.P .deps/mplabel.P .deps/mplayout.P .deps/mplined.P \
-.deps/mplistbox.P .deps/mpobject.P .deps/mpprogress.P .deps/mppushbt.P \
-.deps/mptablevw.P .deps/mpwidget.P .deps/pbutton.P .deps/pframe.P \
-.deps/plabel.P .deps/playout.P .deps/plined.P .deps/plistbox.P \
-.deps/pmenudta.P .deps/pobject.P .deps/pprogress.P .deps/ppushbt.P \
-.deps/ptablevw.P .deps/pwidget.P
+.deps/mplistbox.P .deps/mpobject.P .deps/mppopmenu.P .deps/mpprogress.P \
+.deps/mppushbt.P .deps/mptablevw.P .deps/mpwidget.P .deps/pbutton.P \
+.deps/pframe.P .deps/plabel.P .deps/playout.P .deps/plined.P \
+.deps/plistbox.P .deps/pmenudta.P .deps/pobject.P .deps/ppopmenu.P \
+.deps/pprogress.P .deps/ppushbt.P .deps/ptablevw.P .deps/pwidget.P
 CXXMKDEP = $(CXX) -M $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
-SOURCES = $(libpuke_a_SOURCES) $(libpframe_la_SOURCES) $(libplined_la_SOURCES) $(libpbutton_la_SOURCES) $(libppushbt_la_SOURCES) $(libpprogress_la_SOURCES) $(libptablevw_la_SOURCES) $(libplistbox_la_SOURCES) $(libplabel_la_SOURCES) $(libpmenudta_la_SOURCES)
-OBJECTS = $(libpuke_a_OBJECTS) $(libpframe_la_OBJECTS) $(libplined_la_OBJECTS) $(libpbutton_la_OBJECTS) $(libppushbt_la_OBJECTS) $(libpprogress_la_OBJECTS) $(libptablevw_la_OBJECTS) $(libplistbox_la_OBJECTS) $(libplabel_la_OBJECTS) $(libpmenudta_la_OBJECTS)
+SOURCES = $(libpuke_a_SOURCES) $(libpframe_la_SOURCES) $(libplined_la_SOURCES) $(libpbutton_la_SOURCES) $(libppushbt_la_SOURCES) $(libpprogress_la_SOURCES) $(libptablevw_la_SOURCES) $(libplistbox_la_SOURCES) $(libplabel_la_SOURCES) $(libpmenudta_la_SOURCES) $(libppopmenu_la_SOURCES)
+OBJECTS = $(libpuke_a_OBJECTS) $(libpframe_la_OBJECTS) $(libplined_la_OBJECTS) $(libpbutton_la_OBJECTS) $(libppushbt_la_OBJECTS) $(libpprogress_la_OBJECTS) $(libptablevw_la_OBJECTS) $(libplistbox_la_OBJECTS) $(libplabel_la_OBJECTS) $(libpmenudta_la_OBJECTS) $(libppopmenu_la_OBJECTS)
 
 default: all
 
@@ -387,6 +394,9 @@ libplabel.la: $(libplabel_la_OBJECTS) $(libplabel_la_DEPENDENCIES)
 
 libpmenudta.la: $(libpmenudta_la_OBJECTS) $(libpmenudta_la_DEPENDENCIES)
 	$(CXXLINK) -rpath $(libdir) $(libpmenudta_la_LDFLAGS) $(libpmenudta_la_OBJECTS) $(libpmenudta_la_LIBADD) $(LIBS)
+
+libppopmenu.la: $(libppopmenu_la_OBJECTS) $(libppopmenu_la_DEPENDENCIES)
+	$(CXXLINK) -rpath $(libdir) $(libppopmenu_la_LDFLAGS) $(libppopmenu_la_OBJECTS) $(libppopmenu_la_LIBADD) $(LIBS)
 .cpp.o:
 	$(CXXCOMPILE) -c $<
 .cpp.lo:

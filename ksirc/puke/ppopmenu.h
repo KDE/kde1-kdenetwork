@@ -6,6 +6,8 @@ class PPopupMenu;
 #include "qpopmenu.h"
 #include "pobject.h"
 #include "pmessage.h"
+
+#include "ptablevw.h"
 #include "pmenudta.h"
 
 extern "C" {
@@ -22,7 +24,7 @@ public:
 
   virtual void messageHandler(int fd, PukeMessage *pm);
 
-  virtual void setWidget(QPopupmMenu *_f);
+  virtual void setWidget(QPopupMenu *_menu);
   virtual QPopupMenu *widget();
 
 
@@ -30,11 +32,11 @@ signals:
   void outputMessage(int fd, PukeMessage *pm);
   void widgetDestroyed(widgetId wI);
 
-slots:
+protected slots:
   void got_activated ( int itemId );
 
 private:
-  PObject *child;
+  QPopupMenu *menu;
   PMenuData *pmd;
 
 };

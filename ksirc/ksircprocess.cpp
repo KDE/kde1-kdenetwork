@@ -108,7 +108,7 @@ extern KApplication *kApp;
 extern KConfig *kConfig;
 extern global_config *kSircConfig;
 
-KSircProcess::KSircProcess( char *_server, QObject * parent, const char * name ) /*FOLD00*/
+KSircProcess::KSircProcess( char *_server, QObject * parent, const char * name ) /*fold00*/
   : QObject(parent, name)
 {
 
@@ -239,6 +239,10 @@ KSircProcess::~KSircProcess() /*fold00*/
   delete server;
 }
 
+bool KSircProcess::eventFilter ( QObject *obj, QEvent *e ){ /*FOLD00*/
+    debug("Got event %d", e->type());
+    return TRUE;
+}
 void KSircProcess::new_toplevel(QString str) /*FOLD00*/
 {
   static time_t last_window_open = 0;
@@ -293,6 +297,7 @@ void KSircProcess::new_toplevel(QString str) /*FOLD00*/
     debug("Calling new toplevel for: -%s-", str.data());
     KSircTopLevel *wm = new KSircTopLevel(this, str.data());
     insertChild(wm); // Keep ineheratence going so we can find children
+    installEventFilter(wm);
     TopList.insert(str, wm);
 //    TopList.replace(str, wm);
 //    delete faker;
@@ -319,7 +324,7 @@ void KSircProcess::new_toplevel(QString str) /*FOLD00*/
   }
 }
 
-void KSircProcess::close_toplevel(KSircTopLevel *wm, char *name) /*FOLD00*/
+void KSircProcess::close_toplevel(KSircTopLevel *wm, char *name) /*fold00*/
 {
 
   bool is_default = FALSE; // Assume it's no default
@@ -377,7 +382,7 @@ void KSircProcess::close_toplevel(KSircTopLevel *wm, char *name) /*FOLD00*/
 		   QString(name));
 }
 
-void KSircProcess::clean_toplevel(KSircTopLevel *clean){ /*FOLD00*/
+void KSircProcess::clean_toplevel(KSircTopLevel *clean){ /*fold00*/
   if(clean == 0x0){
     warning("Passed null to cleaner!!");
     return;
@@ -413,7 +418,7 @@ void KSircProcess::default_window(KSircTopLevel *w) /*fold00*/
 
 }
 
-void KSircProcess::recvChangeChannel(QString old_chan, QString /*FOLD00*/
+void KSircProcess::recvChangeChannel(QString old_chan, QString /*fold00*/
 				     new_chan)
 {
   //

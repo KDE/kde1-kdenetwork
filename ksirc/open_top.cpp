@@ -33,7 +33,7 @@ open_top::open_top
 	for(int i = 0; i < items; i++){
 	  cindex.setNum(i);
 	  server = "Channel-" + cindex;
-	  nameSLE->insertItem(kConfig->readEntry(server), 0);
+	  nameSLE->insertItem(kConfig->readEntry(server), -1);
 	}
 	nameSLE->setCurrentItem(0);	
 }
@@ -64,7 +64,7 @@ void open_top::create_toplevel()
     //cerr << "Checking!\n";
   }
   if(item_found == 0)
-    nameSLE->insertItem(nameSLE->currentText(), -1);
+    nameSLE->insertItem(nameSLE->currentText(), 0);
 
   if(strlen(nameSLE->currentText()) > 0)
     emit open_toplevel( ((QString) nameSLE->currentText()).lower());

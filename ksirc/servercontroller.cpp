@@ -84,7 +84,7 @@ extern KConfig *kConfig;
 extern KApplication *kApp;
 extern global_config *kSircConfig;
 
-servercontroller::servercontroller
+servercontroller::servercontroller /*fold00*/
 (
  QWidget*,
  const char* name
@@ -197,12 +197,12 @@ servercontroller::servercontroller
 }
 
 
-servercontroller::~servercontroller()
+servercontroller::~servercontroller() /*fold00*/
 {
   delete pic_icon;
 }
 
-void servercontroller::new_connection()
+void servercontroller::new_connection() /*fold00*/
 {
   open_ksirc *w = new open_ksirc();              // Create new ksirc popup
   connect(w, SIGNAL(open_ksircprocess(QString)), // connected ok to process
@@ -210,7 +210,7 @@ void servercontroller::new_connection()
   w->show();                                     // show the sucker!
 }
 
-void servercontroller::new_ksircprocess(QString str)
+void servercontroller::new_ksircprocess(QString str) /*fold00*/
 {
 
   if(str.isEmpty() == TRUE)  // nothing entered, nothing done
@@ -246,7 +246,7 @@ void servercontroller::new_ksircprocess(QString str)
   connections->setItemEnabled(join_id, TRUE);
 }
 
-void servercontroller::new_channel()
+void servercontroller::new_channel() /*fold00*/
 {
   open_top *w = new open_top();                // Create new channel popup
   connect(w, SIGNAL(open_toplevel(QString)),   // Connect ok to right slot
@@ -254,7 +254,7 @@ void servercontroller::new_channel()
   w->show();                                   // Show me baby!
 }
 
-void servercontroller::new_toplevel(QString str)
+void servercontroller::new_toplevel(QString str) /*fold00*/
 {
   KTreeListItem *citem = ConnectionTree->getCurrentItem(); // get item
   if(citem){ // if it exist, ie something is highlighted, continue
@@ -269,7 +269,7 @@ void servercontroller::new_toplevel(QString str)
   }
 }
 
-void servercontroller::autocreate()
+void servercontroller::autocreate() /*fold00*/
 {
   kConfig->setGroup("GlobalOptions");
   if(kConfig->readNumEntry("AutoCreate", FALSE) == FALSE){
@@ -285,7 +285,7 @@ void servercontroller::autocreate()
   kConfig->sync();
 }
 
-void servercontroller::colour_prefs()
+void servercontroller::colour_prefs() /*fold00*/
 {
   KSircColour *kc = new KSircColour();
   connect(kc, SIGNAL(update()),
@@ -293,7 +293,7 @@ void servercontroller::colour_prefs()
   kc->show();
 }
 
-void servercontroller::general_prefs()
+void servercontroller::general_prefs() /*fold00*/
 {
   KSPrefs *kp = new KSPrefs();
   connect(kp, SIGNAL(update()),
@@ -301,7 +301,7 @@ void servercontroller::general_prefs()
   kp->show();
 }
 
-void servercontroller::filter_rule_editor()
+void servercontroller::filter_rule_editor() /*fold00*/
 {
   FilterRuleEditor *fe = new FilterRuleEditor();
   connect(fe, SIGNAL(destroyed()), 
@@ -309,7 +309,7 @@ void servercontroller::filter_rule_editor()
   fe->show();
 }
 
-void servercontroller::font_prefs()
+void servercontroller::font_prefs() /*fold00*/
 {
   KFontDialog *kfd = new KFontDialog();
   kfd->setFont(kSircConfig->defaultfont);
@@ -318,7 +318,7 @@ void servercontroller::font_prefs()
   kfd->show();
 }
 
-void servercontroller::font_update(const QFont &font)
+void servercontroller::font_update(const QFont &font) /*fold00*/
 {
   kSircConfig->defaultfont = font;
   configChange();
@@ -327,7 +327,7 @@ void servercontroller::font_update(const QFont &font)
   kConfig->sync();
 }
 
-void servercontroller::configChange()
+void servercontroller::configChange() /*fold00*/
 {
   QDictIterator<KSircProcess> it( proc_list );
   while(it.current()){
@@ -337,7 +337,7 @@ void servercontroller::configChange()
   }
 }
 
-void servercontroller::nickcompletion()
+void servercontroller::nickcompletion() /*fold00*/
 {
   kConfig->setGroup("GlobalOptions");
   if(kConfig->readNumEntry("NickCompletion", TRUE) == FALSE){
@@ -354,7 +354,7 @@ void servercontroller::nickcompletion()
 }
 
 
-void servercontroller::about_ksirc()
+void servercontroller::about_ksirc() /*fold00*/
 {
   QString caption = PACKAGE;
   caption += "-";
@@ -363,27 +363,27 @@ void servercontroller::about_ksirc()
   QMessageBox::about(this, "About kSirc", caption);
 }
 
-void servercontroller::help_general()
+void servercontroller::help_general() /*fold00*/
 {
   kApp->invokeHTMLHelp("ksirc/index.html", "");
 }
 
-void servercontroller::help_colours()
+void servercontroller::help_colours() /*fold00*/
 {
   kApp->invokeHTMLHelp("ksirc/colours.html", "");
 }
 
-void servercontroller::help_filters()
+void servercontroller::help_filters() /*fold00*/
 {
   kApp->invokeHTMLHelp("ksirc/filters.html", "");
 }
 
-void servercontroller::help_keys()
+void servercontroller::help_keys() /*fold00*/
 {
   kApp->invokeHTMLHelp("ksirc/keys.html", "");
 }
 
-void servercontroller::ProcMessage(QString server, int command, QString args)
+void servercontroller::ProcMessage(QString server, int command, QString args) /*fold00*/
 {
   QString online("Online"), channels("Channels");
   KPath path;
@@ -507,12 +507,12 @@ void servercontroller::ProcMessage(QString server, int command, QString args)
   }
 }
 
-void servercontroller::slot_filters_update()
+void servercontroller::slot_filters_update() /*fold00*/
 {
   emit ServMessage(QString(), ServCommand::updateFilters, QString());
 }
 
-void servercontroller::saveProperties(KConfig *ksc)
+void servercontroller::saveProperties(KConfig *ksc) /*fold00*/
 {
   // ksc hos the K Session config
   // ksp == current KSircProcess
@@ -536,7 +536,7 @@ void servercontroller::saveProperties(KConfig *ksc)
   
 }
 
-void servercontroller::readProperties(KConfig *ksc)
+void servercontroller::readProperties(KConfig *ksc) /*fold00*/
 {
   // kei == pointer to KEntryItertor
   // ksc == K Session Config
@@ -556,7 +556,7 @@ void servercontroller::readProperties(KConfig *ksc)
   }
 }
 
-scInside::scInside ( QWidget * parent, const char * name, WFlags
+scInside::scInside ( QWidget * parent, const char * name, WFlags /*fold00*/
 		     f, bool allowLines )
   : QFrame(parent, name, f, allowLines)
 {
@@ -576,18 +576,19 @@ scInside::scInside ( QWidget * parent, const char * name, WFlags
   ConnectionTree = new KTreeList(this, "connectiontree");
 }
 
-scInside::~scInside()
+scInside::~scInside() /*fold00*/
 {
   delete ASConn;
   delete ConnectionTree;
 }
 
-void scInside::resizeEvent ( QResizeEvent *e )
+void scInside::resizeEvent ( QResizeEvent *e ) /*fold00*/
 {
   QFrame::resizeEvent(e);
   ASConn->setGeometry(10,10, width() - 20,
 		      ASConn->fontMetrics().height()+5);
   ConnectionTree->setGeometry(10, 10 + ASConn->height(),
-			      width() - 20, height() - 20 - ASConn->height());
+                              width() - 20, height() - 20 - ASConn->height());
+  debug("Servercontroller finished resize\n");
   
 }

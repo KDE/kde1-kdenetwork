@@ -67,7 +67,7 @@ ksircstatic_LDFLAGS = $(ksirc_LDFLAGS)
 # that depend on the following ones.
 ksirc_LDADD   = ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a ./puke/libpuke.a -lkdeui -lkdecore -lqt -lX11 -lXext @LIBSOCKET@ -ldl
 
-ksircstatic_LDADD = -lksprogress -lksticker -lkscutdialog -lksprefs -lpuke
+ksircstatic_LDADD = ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a ./puke/libpuke.a 
 
 STATIC_LIBS = /opt/kde/lib/libkdeui.a /opt/kde/lib/libkdecore.a /usr/local/lib/qt/lib/libqt.a /usr/lib/libstdc++.a -lX11 -lXext @LIBSOCKET@ -ldl
 

@@ -17,13 +17,15 @@ class KSircProcess : public QObject
   friend class KSircIOController;
 public:
   KSircProcess(char *_server=0L, QObject * parent=0, const char * name=0);
-  ~KSircProcess();
+  virtual ~KSircProcess();
 
   QDict<KSircMessageReceiver> &getWindowList()
     {
       return TopList;
     }
 
+  virtual bool eventFilter ( QObject *, QEvent * );
+  
 signals:
   void ProcMessage(QString, int, QString);
 

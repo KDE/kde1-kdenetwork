@@ -108,6 +108,8 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
   ticker = 0; // Set the ticker to NULL while it doesn't exist.
   tab_pressed = 0; // Tab (nick completion not pressed yet)
   KickWinOpen = false;
+  current_size = size();
+  startTimer( 500 ); // Start resize timer
 
 
   /*
@@ -173,8 +175,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
 
   // kstInside does not setup fonts, etc, it simply handles sizing
 
-  QString kst_name = QString(channel_name) + "_" + "kstIFrame";
-  f = new kstInside(this, kst_name);
+  f = new kstInside(this, QString(channel_name) + "_" + "kstIFrame");
   setView(f);  // Tell the KApplication what the main widget is.
 
   if(kSircConfig->colour_background == 0){
@@ -338,7 +339,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
 }
 
 
-KSircTopLevel::~KSircTopLevel() /*FOLD00*/
+KSircTopLevel::~KSircTopLevel() /*fold00*/
 {
 
   // Cleanup and shutdown
@@ -457,7 +458,7 @@ void KSircTopLevel::TabNickCompletion()  /*fold00*/
 
 }
   
-void KSircTopLevel::sirc_receive(QString str) /*FOLD00*/
+void KSircTopLevel::sirc_receive(QString str) /*fold00*/
 {
 
   /* 
@@ -648,7 +649,7 @@ void KSircTopLevel::sirc_line_return() /*fold00*/
   
 }
 
-void KSircTopLevel::sirc_write(QString &str) /*FOLD00*/
+void KSircTopLevel::sirc_write(QString &str) /*fold00*/
 {
   if(channel_name[0] != '!'){
     if(str[0] != '/'){
@@ -668,7 +669,7 @@ void KSircTopLevel::sirc_write(QString &str) /*FOLD00*/
 
 }
 
-ircListItem *KSircTopLevel::parse_input(QString &string) /*FOLD00*/
+ircListItem *KSircTopLevel::parse_input(QString &string) /*fold00*/
 {
 
   /* 
@@ -827,7 +828,7 @@ void KSircTopLevel::newWindow()  /*fold00*/
   w->show();
 }
 
-void KSircTopLevel::closeEvent(QCloseEvent *) /*FOLD00*/
+void KSircTopLevel::closeEvent(QCloseEvent *) /*fold00*/
 {
   // Let's not part the channel till we are acutally delete.
   // We should always get a close event, *BUT* we will always be deleted.
@@ -860,10 +861,11 @@ void KSircTopLevel::resizeEvent(QResizeEvent *e) /*FOLD00*/
 
   mainw->setAutoUpdate(update);
 
+  debug("Finished main window resize event");
   // The ListBox will get an implicit size change
 }
 
-void KSircTopLevel::gotFocus() /*FOLD00*/
+void KSircTopLevel::gotFocus() /*fold00*/
 {
   if(isVisible() == TRUE){
     if(have_focus == 0){
@@ -878,7 +880,7 @@ void KSircTopLevel::gotFocus() /*FOLD00*/
   }
 }
 
-void KSircTopLevel::lostFocus() /*FOLD00*/
+void KSircTopLevel::lostFocus() /*fold00*/
 {
   if(have_focus == 1){
     have_focus = 0;
@@ -887,7 +889,7 @@ void KSircTopLevel::lostFocus() /*FOLD00*/
 
 }
 
-void KSircTopLevel::control_message(int command, QString str) /*FOLD00*/
+void KSircTopLevel::control_message(int command, QString str) /*fold00*/
 {
   switch(command){
   case CHANGE_CHANNEL: // 001 is defined as changeChannel
@@ -964,7 +966,7 @@ void KSircTopLevel::control_message(int command, QString str) /*FOLD00*/
   }
 }
 
-void KSircTopLevel::showTicker() /*FOLD00*/
+void KSircTopLevel::showTicker() /*fold00*/
 {
   myrect = geometry();
   mypoint = pos();
@@ -1096,9 +1098,25 @@ void KSircTopLevel::toggleRootWindow() /*fold00*/
 {
 }
 
-void KSircTopLevel::iamDestroyed() /*fold00*/
+void KSircTopLevel::iamDestroyed() /*FOLD00*/
 {
   emit objDestroyed(this);
+}
+void KSircTopLevel::timerEvent( QTimerEvent * ){ /*FOLD00*/
+//  debug("Tick:  current size: %d %d, real size: %d %d",
+//	current_size.width(), current_size.height(),
+//	size().width(), size().height());
+  XWindowAttributes xwa;
+  memset(&xwa, 0, sizeof(XWindowAttributes));
+  XGetWindowAttributes(qt_xdisplay(), this->winId(), &xwa);
+  current_size.setWidth(xwa.width);
+  current_size.setHeight(xwa.height);
+//  debug("Tick2: current size: %d %d, real size: %d %d",
+//	current_size.width(), current_size.height(),
+//	size().width(), size().height());
+  if(size() != current_size){
+    resize(current_size);
+  }
 }
 
 kstInside::kstInside ( QWidget * parent, const char * name, WFlags f,  /*fold00*/
@@ -1135,7 +1153,7 @@ kstInside::~kstInside() /*fold00*/
 }
 
 
-void kstInside::resizeEvent(QResizeEvent *e) /*fold00*/
+void kstInside::resizeEvent(QResizeEvent *e) /*FOLD00*/
 {
   QFrame::resizeEvent(e);
 
@@ -1144,7 +1162,8 @@ void kstInside::resizeEvent(QResizeEvent *e) /*fold00*/
   linee->setGeometry(5, real_height - linee_height - 5,
 		     width() - 10, linee_height);
   pan->setGeometry(5, 5,
-		   width() - 10, real_height - linee_height - 15);
+                   width() - 10, real_height - linee_height - 15);
+  debug("kstInsize: finished resize event");
   
 }
 

@@ -264,6 +264,11 @@ protected:
      */
    virtual QString findNick(QString, uint which = 0);
 
+   /**
+    * Timer checks size and updates it if need be
+    */
+   virtual void timerEvent( QTimerEvent * );
+
 private:
   bool continued_line;
   kstInside *f;
@@ -374,6 +379,11 @@ private:
    * of ours
    */
   ChannelParser *ChanParser;
+
+  /**
+   * QSize maintains size information in case it changes somehow
+   */
+  QSize current_size;
 
 };
 

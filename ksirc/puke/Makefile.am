@@ -27,7 +27,7 @@ noinst_LIBRARIES = libpuke.a
 
 lib_LTLIBRARIES = libpframe.la libplined.la libpbutton.la libppushbt.la \
                   libpprogress.la libptablevw.la libplistbox.la libplabel.la \
-                  libpmenudta.la
+                  libpmenudta.la libppopmenu.la
 
 libpuke_a_SOURCES = \
 controller.cpp \
@@ -74,6 +74,10 @@ mplabel.cpp
 
 libpmenudta_la_SOURCES = \
 pmenudta.cpp 
+
+libppopmenu_la_SOURCES = \
+ppopmenu.cpp  \
+mppopmenu.cpp
 
 HOWTO-PUKE.txt: HOWTO-PUKE.pod
 	pod2text HOWTO-PUKE.pod > HOWTO-PUKE.txt
