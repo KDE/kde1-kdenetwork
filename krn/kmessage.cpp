@@ -86,7 +86,6 @@ Kmessage::Kmessage
 
 Kmessage::~Kmessage()
 {
-    debug("DTOR");
     for(char* s=tmpFiles.first(); s!=NULL; s=tmpFiles.next())
         unlink(s);
 }
@@ -108,7 +107,6 @@ void Kmessage::loadMessage( QString message, bool complete )
 }
 void Kmessage::URLClicked(KHTMLView *, const char *s, int , const char * )
 {
-    debug("Got URL %s.",s);
 
     KURL url(s);
     if( url.isMalformed() )
@@ -121,7 +119,6 @@ void Kmessage::URLClicked(KHTMLView *, const char *s, int , const char * )
 
     if(strcmp(url.protocol(),"news")==0)
     {
-        debug ("path-->%s",url.path());
         if(strchr(url.path(),'@')!=NULL)
         {
             QString s=url.path();
@@ -162,7 +159,6 @@ void Kmessage::URLClicked(KHTMLView *, const char *s, int , const char * )
 
 bool Kmessage::dump(char* part, QString fileName)
 {
-//    debug("Dumping part %d as %s",part, fileName.data());
 
     QList<int> n=format->strToList(part);
     const char* data=format->rawPart(n);

@@ -772,7 +772,9 @@ void Groupdlg::findGroup()
                 p.push(s1);
                 ss->append(s);
                 p.push (ss);
-                list->setCurrentItem(list->itemIndex(list->itemAt(&p)));
+                int index=list->itemIndex(list->itemAt(&p));
+                list->setCurrentItem(index);
+//                list->setTopCell(index);
                 break;
             }
             else

@@ -294,7 +294,6 @@ QString KFormatter::htmlPart(QList<int> partno)
                 *j=i;
                 partno.append(j);
                 curr=getPart(partno);
-                //debug("curr=%p",curr);
                 if(curr!=NULL) part+=htmlPart(partno)+"<hr>\n";
                 else done=TRUE;
                 partno.remove(partno.count()-1);
@@ -319,7 +318,6 @@ QString KFormatter::htmlPart(QList<int> partno)
                 *j=i;
                 partno.append(j);
                 curr=getPart(partno);
-                //debug("curr=%p",curr);
                 if(curr!=NULL) part+=htmlPart(partno)+"<hr>\n";
                 else done=TRUE;
                 partno.remove(partno.count()-1);
@@ -483,7 +481,6 @@ QString KFormatter::htmlHeader()
                 QString articles=headerContents;
                 articles.simplifyWhiteSpace();
                 articles+=' ';
-                debug("header: %s",articles.data());
                 unsigned int index=0, len;
                 QString article,t;
                 int count=1;
@@ -494,10 +491,8 @@ QString KFormatter::htmlHeader()
                     index+=len+1;
                     article=article.mid(1,article.length()-2);
                     if (article.isEmpty()) continue;
-                    debug("Found article \"%s\".",article.data());
                     t.setNum(count++);
                     t="<a href=\"news:///"+article+"\">"+t+"</a> ";
-                    debug ("t-->%s",t.data());
                     header+=t;
                 }
                 header+="\n";
@@ -509,7 +504,6 @@ QString KFormatter::htmlHeader()
                 debug("Real time: %s",realDate.AsString().data());
                 QString textDate="";
                 QString temp;
-                //debug("Looping %d chars", dateFmt->length());
                 for(int pos=0; pos<(int)dateFmt->length(); pos++)
                 {
                     if( dateFmt->at(pos)=='%' && pos<(int)dateFmt->length() )
@@ -578,7 +572,6 @@ QString KFormatter::image_jpegFormatter(QByteArray data, QList<int> partno)
 {
     QString part;
     QString name=tmpnam(NULL);
-    debug ("image at-->%s",name.data());
     QFile file(name);
     file.open(IO_WriteOnly);
     file.writeBlock(data.data(),data.size());
@@ -602,7 +595,6 @@ QString KFormatter::image_jpegFormatter(QByteArray data, QList<int> partno)
 
 QString KFormatter::text_plainFormatter(QString data, QList<int>)
 {
-    debug("%s: working on \"%s\"",__FUNCTION__,data.data());
     bool insig=false;
     QString st,sig,body;
     while (!data.isEmpty())
@@ -653,15 +645,12 @@ QString KFormatter::text_plainFormatter(QString data, QList<int>)
 
                 while(pos<(int)st.length())
                 {
-                    //debug("Searching for _word_ in \"%s\"",st.left(st.length()-pos).data());
                     pos=re.match(st.left(st.length()-pos), pos, len);
                     if(pos==-1) {
-                        //debug("No more matches");
                         break;
                     }
                     QString word;
                     word=st.mid(pos+1,*len-2);
-                    //debug("Replacing %s",word.data());
                     word.prepend("<i>");
                     word.append("</i>");
                     st.replace(pos, *len, word.data());
@@ -821,7 +810,6 @@ QString KFormatter::listToStr(QList<int> l)
 {
     QString r;
     QString t;
-    //debug("lTS: %d digits",l.count());
     for(int i=0; i<(int)l.count(); i++)
     {
         t.setNum(*l.at(i));
@@ -850,7 +838,6 @@ QList<int> KFormatter::strToList(QString s)
 
 bool KFormatter::dump(QList<int> part, QString fileName)
 {
-    debug("Dumping part %s as %s",listToStr(part).data(), fileName.data());
     DwString src=getPart(part)->Body().AsString();
 
     QFile file(fileName);
