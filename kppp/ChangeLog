@@ -1,3 +1,8 @@
+Mon Mar 16 03:37:04 1998  Bernd Johannes Wuebben  <wuebben@math.cornell.edu>
+
+	* command line options need to be parse after creating a KApplications
+	due to some changes by Matthias in kapp I think.
+
 1998-03-15  Mario Weilguni  <mweilguni@kde.org>
 
 	* main.cpp: added mini-icon for all kppp windows, not just 

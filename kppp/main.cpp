@@ -199,6 +199,10 @@ int main( int argc, char **argv ) {
   int c;
   opterr = 0;
 
+
+
+  KApplication a(argc, argv,"kppp");
+
   while ((c = getopt(argc, argv, "c:hvr:q")) != -1){
     switch (c)
       {
@@ -222,7 +226,7 @@ int main( int argc, char **argv ) {
 	break;
       case 'r':
 	{
-	  // we need a KAppliction for locales, create on
+	  // we need a KAppliction for locales, create one
 	  KApplication a(argc, argv);	  
 	  exit(RuleSet::checkRuleFile(optarg));
 	}
@@ -238,9 +242,6 @@ int main( int argc, char **argv ) {
 #endif
 
   }
-
-  KApplication a(argc, argv,"kppp");
-
   // load mini-icon
   miniIcon = new QPixmap(a.getMiniIcon());
 
