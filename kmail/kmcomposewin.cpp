@@ -103,8 +103,10 @@ KMComposeWin::KMComposeWin(KMMessage *aMsg) : KMComposeWinInherited(),
   mEdtFrom(this,&mMainWidget), mEdtReplyTo(this,&mMainWidget), 
   mEdtTo(this,&mMainWidget),  mEdtCc(this,&mMainWidget), 
   mEdtBcc(this,&mMainWidget), mEdtSubject(this,&mMainWidget, "subjectLine"),
-  mLblFrom(&mMainWidget), mLblReplyTo(&mMainWidget), mLblTo(&mMainWidget),
-  mLblCc(&mMainWidget), mLblBcc(&mMainWidget), mLblSubject(&mMainWidget),
+  mLblFrom(&mEdtFrom, "", &mMainWidget),
+  mLblReplyTo(&mEdtReplyTo, "", &mMainWidget), mLblTo(&mEdtTo, "", &mMainWidget),
+  mLblCc(&mEdtCc, "", &mMainWidget), mLblBcc(&mEdtBcc, "", &mMainWidget),
+  mLblSubject(&mEdtSubject, "", &mMainWidget),
   mBtnTo("...",&mMainWidget), mBtnCc("...",&mMainWidget), 
   mBtnBcc("...",&mMainWidget),  mBtnFrom("...",&mMainWidget),
   mBtnReplyTo("...",&mMainWidget)
@@ -387,7 +389,7 @@ void KMComposeWin::rethinkHeaderLine(int aValue, int aMask, int& aRow,
     aLbl->resize((int)aLbl->sizeHint().width(),aLbl->sizeHint().height() + 6);
     aLbl->setMinimumSize(aLbl->size());
     aLbl->show();
-    aLbl->setBuddy(aEdt);
+    //aLbl->setBuddy(aEdt); //Discoverd by Don Sanders
     mGrid->addWidget(aLbl, aRow, 0);
 
     aEdt->show();
