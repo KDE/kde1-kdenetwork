@@ -5,9 +5,8 @@
 #        
 #        Filipe Jorge Marques de Almeida
 #        fjcfma@rnl.ist.utl.pt
-#        changed 
-#        27-1-99
-#        Bambino
+#
+#        changes 23-05-99
 #        bambino@notme.com
 ################################################################
 
@@ -20,15 +19,16 @@ currency_digits=2
 # No Activation
 per_connection=0.0
 
-# Economical ( yeah, right... ;)
-# 400 seconds
-# 9.95$
-default=(9.95, 400)
+# Economical
+#
+default=(10.15, 400)
 
 # Daylight rates
-# Economical form 18:00 pm
-on (monday..friday) between (9:00..18:00) use (10.0, 180)
+# Economical from 18:00 pm - 09:00 am
+#
+on (monday..friday) between (9:00..18:00) use (10.15, 180)
 
 # Holydays (1999)
-on (1/1, 2/10, 2/4, 4/4, 4/25, 5/1, 5/10, 6/3, 6/10, 8/15, 10/5, 11/1, 12/1, 12/8, 12/25) between () use (10.0, 400)
+#
+on (1/1, 2/10, 2/4, 4/2, 4/25, 5/1, 5/10, 6/3, 6/10, 8/15, 10/5, 11/1, 12/1,12/8, 12/25) between () use (10.15, 400)
 

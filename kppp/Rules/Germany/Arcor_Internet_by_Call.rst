@@ -10,6 +10,7 @@
 # created 98/12/19 by Gregor Eikmeier <gregor.eikmeier@arcormail.de>
 #   based on reduction of costs since 98/12/14 
 #   look at http://www.arcor.de/tarife/internet.html)
+# modified 99/05/22 by Olaf Doering <olaf.doering@muenster.de>
 #
 #################################################################################
 
@@ -19,27 +20,8 @@ currency_position=right
 currency_digits=2
 per_connection=0.0
 minimum_costs=0.0
-default=(0.14, 60)
+default=(0.06, 60)
 
-# Montag bis Freitag
-on (monday..friday) between (9:00..17:59)  use (0.14, 60)
-on (monday..friday) between (18:00..8:59)  use (0.10, 60) 
+# Einheitlich 6 Pfg. pro Minute
+on (monday..sunday) between (0:00..23:59)  use (0.06, 60)
 
-# Sonnabend, Sonntag
-on (saturday..sunday) between (0:00..23:59) use (0.10, 60)
-
-# Bundeseinheitliche Feiertage
-on (01/01, easter-2, easter, easter+1, 05/01, easter+39, easter+49, easter+50, 10/03, 12/25, 12/26) between (0:00..23:59) use (0.10, 60)
-
-# Bundeseinheitliche Feiertage:
-# 01/01     Neujahr
-# easter-2  Karfreitag
-# easter    Ostersonntag
-# easter+1  Ostermontag
-# 05/01     Maifeiertag Tag der Arbeit
-# easter+39 Christi Himmelfahrt
-# easter+49 Pfingstsonntag
-# easter+50 Pfingstmontag
-# 10/03     Tag der Deutschen Einheit
-# 12/25     1. Weihnachtstag
-# 12/26     2. Weihnachtstag
