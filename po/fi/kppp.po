@@ -11,7 +11,7 @@ msgstr ""
 "Last-Translator: Kim Enkovaara <kim.enkovaara@iki.fi>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: ENCODING\n"
 
 #: accounts.cpp:53
@@ -635,7 +635,7 @@ msgid "The pppd daemon died unexpectedly!"
 msgstr "pppd daemoni kuoli odottamatta!"
 
 #: main.cpp:685
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "kppp can not find:\n"
 " %s\n"
@@ -647,7 +647,7 @@ msgstr ""
 "kppp ei löydä:\n"
 " %s\n"
 "Asenna pppd oikein ja/tai aseta\n"
-" pppd sijainti sekalaista lipukkeen alta\n"
+" pppd sijainti PPP lipukkeen alta\n"
 "Asetukset dialogissa.\n"
 " Kiitos"
 
