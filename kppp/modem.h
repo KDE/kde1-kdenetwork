@@ -87,7 +87,6 @@ private:
   struct termios tty;
 
   bool modem_is_locked;
-  QString lockfile;
 };
 
 #ifndef HAVE_USLEEP
