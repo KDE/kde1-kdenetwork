@@ -38,7 +38,9 @@
 #include <qstrlist.h>
 #include <qdialog.h>
 #include <kbuttonbox.h>
-#include <qmultilinedit.h>
+// use short form for compatibility to Qt 1.33
+#include <qmlined.h>
+// #include <qmultilinedit.h>
 #include <qlayout.h>
 #include <kapp.h>
 #include <kmsgbox.h>

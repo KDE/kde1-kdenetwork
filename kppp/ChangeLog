@@ -1,3 +1,7 @@
+1998-08-27  Harri Porten  <porten@kde.org>
+
+	* ppplog.cpp: use short named header file to keep Qt 1.33 users happy
+
 1998-08-25  Mario Weilguni <mweilguni@kde.org>
 
 	* removed all QTimers for reading tty output, a QSocketNotifier is

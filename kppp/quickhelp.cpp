@@ -46,7 +46,7 @@ QuickHelpWindow *QuickHelp::window = 0;
 QuickHelp::QuickHelp() : QObject(0) {
 }
 
-void QuickHelp::add(QWidget *w, QString s) {  
+void QuickHelp::add(QWidget *w, const QString &s) {  
   if(w) {
     // make sure we have  a class instance running
     if(instance == 0) {
@@ -127,7 +127,7 @@ void QuickHelpWindow::newText() {
   resize(w + X_BORDER, h + Y_BORDER);
 }
 
-void QuickHelpWindow::mousePressEvent(QMouseEvent *e) {
+void QuickHelpWindow::mousePressEvent(QMouseEvent *) {
   hide();
 }
 
@@ -152,7 +152,7 @@ void QuickHelpWindow::hide() {
 }
 
 
-void QuickHelpWindow::popup(QString text, int x, int y) {
+void QuickHelpWindow::popup(const QString &text, int x, int y) {
   txt = text.copy();
   newText();
 
@@ -172,7 +172,7 @@ void QuickHelpWindow::paintEvent(QPaintEvent *) {
   int x, y;
   paint(&p, x, y);
   p.end();
-
+  /*
   {
   QBitmap bm(100, 100);
   QPainter p;
@@ -187,6 +187,7 @@ void QuickHelpWindow::paintEvent(QPaintEvent *) {
 
   XShapeCombineMask( x11Display(), winId(), ShapeBounding, 0, 0, bm.handle(), ShapeSet );
   }
+  */
 }
 
 void QuickHelpWindow::paint(QPainter *p, int &w, int &h) {

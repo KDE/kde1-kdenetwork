@@ -37,7 +37,7 @@ public:
   QuickHelpWindow();
 
   void newText();
-  void popup(QString text, int atX, int atY);
+  void popup(const QString &text, int atX, int atY);
 
   virtual void mousePressEvent(QMouseEvent *);
   virtual void keyPressEvent(QKeyEvent *);
@@ -57,7 +57,7 @@ class QuickHelp : public QObject {
 public:  
   QuickHelp();
   
-  static void add(QWidget *, QString);
+  static void add(QWidget *, const QString &);
   static void add(QWidget *, const char *);
   static void remove(QWidget *);
 
