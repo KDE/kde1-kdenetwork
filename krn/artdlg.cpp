@@ -124,7 +124,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     options->setItemChecked(NO_READ,unread);
     options->insertItem(klocale->translate("Show Locked Messages"), NO_LOCKED);
     options->setItemChecked(NO_LOCKED,showlocked);
-    options->insertItem(klocale->translate("Appearance"),CONFIG_FONTS);
+    options->insertItem(klocale->translate("Appearance..."),CONFIG_FONTS);
     connect (options,SIGNAL(activated(int)),SLOT(actions(int)));
     
     menu = new KMenuBar (this, klocale->translate("menu"));
@@ -408,8 +408,9 @@ bool Artdlg::actions (int action)
                 i--;
                 list->setCurrentItem(i);
                 i=list->currentItem();
-                list->setTopItem(i);
-                loadArt(i,0);
+                if ((list->lastRowVisible()-(list->height()/list->cellHeight(i)))
+                    <(i+2))
+                    list->setTopItem(i);
             }
             success=true;
             break;
@@ -422,8 +423,8 @@ bool Artdlg::actions (int action)
                 i++;
                 list->setCurrentItem(i);
                 i=list->currentItem();
-                list->setTopItem(i);
-                loadArt(i,0);
+                if (list->lastRowVisible()<i)
+                    list->setTopItem(i+2-(list->height()/list->cellHeight(i)));
             }
             success=true;
             break;

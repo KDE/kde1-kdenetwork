@@ -73,9 +73,9 @@ Kmessage::Kmessage
     tmpFiles.append(viewWidgetName);
 
     renderWidgets();
-    QObject::connect(kapp,SIGNAL(kdisplayPaletteChanged()),this, SLOT(renderWidgets()));
-    QObject::connect(kapp,SIGNAL(kdisplayStyleChanged()),this, SLOT(renderWidgets()));
-    QObject::connect(kapp,SIGNAL(kdisplayFontChanged()),this, SLOT(renderWidgets()));
+//    QObject::connect(kapp,SIGNAL(kdisplayPaletteChanged()),this, SLOT(renderWidgets()));
+//    QObject::connect(kapp,SIGNAL(kdisplayStyleChanged()),this, SLOT(renderWidgets()));
+//    QObject::connect(kapp,SIGNAL(kdisplayFontChanged()),this, SLOT(renderWidgets()));
 
     QObject::connect(this,
                      SIGNAL(URLSelected( KHTMLView *, const char *, int , const char *)),
@@ -99,8 +99,8 @@ void Kmessage::loadMessage( QString message, bool complete )
     QString body=format->htmlAll();
 //    this->loadSettings();
     this->begin();
-    this->write(header+"<hr>"+body);
     this->parse();
+    this->write(header+"<hr>"+body);
     this->end();
 //    this->repaint();
 //    this->show();
