@@ -28,7 +28,6 @@
 
 extern KPPPWidget *p_kppp;
 extern PPPData gpppdata;
-extern DockWidget *dock_widget;
 extern int totalbytes;
 
 ConWindow::ConWindow(QWidget *parent, const char *name,QWidget *mainwidget)
@@ -205,7 +204,7 @@ void ConWindow::stats() {
 
 
 void ConWindow::dock() {
-  dock_widget->dock();
+  DockWidget::dock_widget->dock();
   this->hide();
 }
 

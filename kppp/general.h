@@ -34,7 +34,6 @@
 #include <qlabel.h>
 #include <qchkbox.h>
 #include <qradiobt.h>
-#include <qchkbox.h>
 #include <qgrpbox.h>
 #include <kslider.h>
 #include <kcolorbtn.h>
@@ -166,14 +165,6 @@ class AboutWidget : public KGroupBox {
   Q_OBJECT
 public:
   AboutWidget( QWidget *parent=0, const char *name=0 );
-};
-
-class SecurityWidget : public KGroupBox {
-  Q_OBJECT
-public:
-  SecurityWidget(QWidget *parent = 0, const char *name = 0);
-
-  
 };
 
 #endif

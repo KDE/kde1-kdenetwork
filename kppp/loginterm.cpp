@@ -34,7 +34,6 @@
 #include <qapp.h>
 
 extern KPPPWidget *p_kppp;
-extern Modem *modem;
 
 LoginMultiLineEdit::LoginMultiLineEdit(QWidget *parent, const char *name)
   : QMultiLineEdit(parent, name)
@@ -43,7 +42,7 @@ LoginMultiLineEdit::LoginMultiLineEdit(QWidget *parent, const char *name)
 
 
 LoginMultiLineEdit::~LoginMultiLineEdit() {
-  modem->stop();
+  Modem::modem->stop();
 }
 
 
@@ -72,9 +71,9 @@ void LoginMultiLineEdit::keyPressEvent(QKeyEvent *k) {
   if ((int)c == 0) return;
 
   if((int)c == 13)
-    modem->writeLine("");
+    Modem::modem->writeLine("");
   else
-    modem->writeChar(c);
+    Modem::modem->writeChar(c);
 }
 
 
@@ -141,7 +140,7 @@ LoginTerm::LoginTerm (QWidget *parent, const char *name)
 
   cont = false;
 
-  modem->notify(text_window, SLOT(readChar(char)));
+  Modem::modem->notify(text_window, SLOT(readChar(char)));
 }
 
 

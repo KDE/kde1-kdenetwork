@@ -36,7 +36,6 @@
 #define T_HEIGHT 400
 
 extern PPPData gpppdata;
-extern Modem *modem;
 
 MiniTerm::MiniTerm(QWidget *parent, const char *name)
   : QDialog(parent, name, TRUE)
@@ -137,7 +136,7 @@ void MiniTerm::init() {
   statusbar->setText(i18n("Initializing Modem"));
   kapp->processEvents();
 
-  int lock = lockdevice();
+  int lock = Modem::modem->lockdevice();
   if (lock == 1) {
     statusbar->setText(i18n("Sorry, modem device is locked."));
     return;
@@ -148,9 +147,9 @@ void MiniTerm::init() {
     return;
   }
 
-  if(modem->opentty()) {
-    if(modem->hangup()) {
-      modem->writeLine(gpppdata.modemInitStr());
+  if(Modem::modem->opentty()) {
+    if(Modem::modem->hangup()) {
+      Modem::modem->writeLine(gpppdata.modemInitStr());
       usleep(100000);
       
       statusbar->setText(i18n("Modem Ready"));
@@ -159,14 +158,14 @@ void MiniTerm::init() {
       kapp->processEvents();
       kapp->processEvents();
 
-      modem->notify(this, SLOT(readChar(char)));
+      Modem::modem->notify(this, SLOT(readChar(char)));
       return;
     }
   }
   
   // opentty() or hangup() failed 
-  statusbar->setText(modem->modemMessage());
-  unlockdevice();
+  statusbar->setText(Modem::modem->modemMessage());
+  Modem::modem->unlockdevice();
 }                  
 
 
@@ -194,16 +193,16 @@ void MiniTerm::readChar(char c) {
 
 
 void MiniTerm::cancelbutton() {  
-  modem->stop();
+  Modem::modem->stop();
 
   statusbar->setText(i18n("Hanging up ..."));
   kapp->processEvents();
   kapp->flushX();
 
-  modem->hangup();
+  Modem::modem->hangup();
 
-  modem->closetty();
-  unlockdevice();
+  Modem::modem->closetty();
+  Modem::modem->unlockdevice();
 
   reject();
 }
@@ -215,7 +214,7 @@ void MiniTerm::resetModem() {
   kapp->processEvents();
   kapp->flushX();
 
-  modem->hangup();
+  Modem::modem->hangup();
 
   statusbar->setText(i18n("Modem Ready"));
 }
@@ -246,7 +245,7 @@ void MyTerm::keyPressEvent(QKeyEvent *k) {
   if(k->ascii() == 13)
     myreturn();
 
-  modem->writeChar((char) k->ascii());
+  Modem::modem->writeChar((char) k->ascii());
 }
 
 

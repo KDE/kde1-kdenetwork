@@ -5,7 +5,7 @@
  *
  *              Copyright (C) 1997 Bernd Johannes Wuebben
  *                      wuebben@math.cornell.edu
- * 
+ *
  * This file was contributed by Harri Porten <porten@tu-harburg.de>
  *
  *
@@ -35,14 +35,11 @@
 #include <qpopmenu.h>
 #include <qpoint.h>
 
-
 extern int 	ibytes;
 extern int 	obytes;
 
 class DockWidget : public QWidget {
-
   Q_OBJECT
-
 public:
   DockWidget(const char *name=0);
   ~DockWidget();
@@ -66,6 +63,7 @@ public slots:
 
 public:
   const bool isDocked();
+  static DockWidget *dock_widget;
 
 private:
   bool docked;
@@ -75,16 +73,11 @@ private:
 
   QPopupMenu *popup_m;
   QTimer     *clocktimer;
-  QString    statstring;
 
   QPixmap dock_none_pixmap;
   QPixmap dock_left_pixmap;
   QPixmap dock_right_pixmap;
   QPixmap dock_both_pixmap;
-
 };
 
 #endif
-
-
-

@@ -39,13 +39,12 @@
 #include <config.h>
 
 void    alarm_handler(int);
-int     lockdevice();
-void    unlockdevice();
 
 class Modem : public QObject {
   Q_OBJECT
 public:
   Modem();
+  ~Modem();
 
   bool opentty();
   bool closetty();
@@ -61,6 +60,12 @@ public:
   void stop();
   void flush();
 
+  int     lockdevice();
+  void    unlockdevice();
+
+public:
+  static Modem *modem;
+
 signals:
   void charWaiting(char);
 
@@ -72,7 +77,6 @@ private slots:
 private:
   void escape_to_command_mode();
 
-
 private:
   int modemfd;
   QSocketNotifier *sn;
@@ -80,6 +84,9 @@ private:
   QString errmsg;
   struct termios initial_tty;
   struct termios tty;
+
+  bool modem_is_locked;
+  QString lockfile;
 };
 
 #ifndef HAVE_USLEEP

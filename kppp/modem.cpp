@@ -29,19 +29,30 @@
 #include <setjmp.h>
 #include <qregexp.h>
 #include <qtimer.h>
+#include <assert.h>
 
 #include "modem.h"
 #include "pppdata.h"
 #include "log.h"
 
-QString lockfile;
-bool    expect_alarm = false;
 static jmp_buf jmp_buffer;
-bool modem_is_locked = false;
+static bool expect_alarm = false;
 
+Modem *Modem::modem = 0;
 
-Modem::Modem() : modemfd(-1), data_mode(false) {
+Modem::Modem() : 
+  modemfd(-1), 
+  data_mode(false),
+  modem_is_locked(false)
+{
   sn = 0L;
+  assert(modem==0);
+  modem = this;
+}
+
+
+Modem::~Modem() {
+  modem = 0;
 }
 
 
@@ -421,7 +432,7 @@ QString Modem::parseModemSpeed(const QString &s) {
 
 // Lock modem device. Returns 0 on success 1 if the modem is locked and -1 if
 // a lock file can't be created ( permission problem )
-int lockdevice() {
+int Modem::lockdevice() {
   int fd;
   char newlock[80]="";
 
@@ -503,7 +514,7 @@ int lockdevice() {
   
 
 // UnLock modem device
-void unlockdevice() {
+void Modem::unlockdevice() {
   if (modem_is_locked) {
     unlink(lockfile);
     modem_is_locked=false;

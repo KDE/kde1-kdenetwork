@@ -32,8 +32,6 @@
 #include "macros.h"
 #include "modem.h"
 
-extern Modem *modem;
-
 ModemTransfer::ModemTransfer(QWidget *parent, const char *name)
   : QDialog(parent, name,TRUE, WStyle_Customize|WStyle_NormalBorder)
 {
@@ -93,8 +91,8 @@ ModemTransfer::ModemTransfer(QWidget *parent, const char *name)
 void ModemTransfer::ati_done() {
   scripttimer->stop();
   timeout_timer->stop();
-  modem->closetty();
-  unlockdevice();
+  Modem::modem->closetty();
+  Modem::modem->unlockdevice();
 
   // open the result window
   ModemInfo *mi = new ModemInfo(this);
@@ -122,7 +120,7 @@ void ModemTransfer::init() {
 
   kapp->processEvents();
 
-  int lock = lockdevice();
+  int lock = Modem::modem->lockdevice();
   if (lock == 1) {
     
     statusBar->setText(i18n("Sorry, modem device is locked."));
@@ -136,10 +134,10 @@ void ModemTransfer::init() {
   }
 
 
-  if(modem->opentty()) {
-    if(modem->hangup()) {
+  if(Modem::modem->opentty()) {
+    if(Modem::modem->hangup()) {
       usleep(100000);  // wait 0.1 secs
-      modem->writeLine("ATE0Q1V1"); // E0 don't echo the commands I send ...
+      Modem::modem->writeLine("ATE0Q1V1"); // E0 don't echo the commands I send ...
 
       statusBar->setText(i18n("Modem Ready"));
       kapp->processEvents();
@@ -148,18 +146,17 @@ void ModemTransfer::init() {
       scripttimer->start(1000);	 	// this one does the ati query
 
       // clear modem buffer
-      modem->flush();
+      Modem::modem->flush();
 
-      modem->notify(this, SLOT(readChar(char)));
+      Modem::modem->notify(this, SLOT(readChar(char)));
       return;
     }
   }
   
   // opentty() or hangup() failed 
-  statusBar->setText(modem->modemMessage());
+  statusBar->setText(Modem::modem->modemMessage());
   step = 99; // wait until cancel is pressed
-  unlockdevice();
-  
+  Modem::modem->unlockdevice();  
 }                  
 
 
@@ -172,7 +169,7 @@ void ModemTransfer::do_script() {
     readtty();
     statusBar->setText("ATI ...");
     progressBar->advance(1);
-    modem->writeLine("ATI\n");
+    Modem::modem->writeLine("ATI\n");
     step++;
     break;
 
@@ -188,7 +185,7 @@ void ModemTransfer::do_script() {
     query.sprintf("ATI%d\n", step);
     statusBar->setText(msg.data());
     progressBar->advance(1);
-    modem->writeLine(query.data());
+    Modem::modem->writeLine(query.data());
     break;
 
   default:
@@ -222,16 +219,16 @@ void ModemTransfer::readtty() {
 
 void ModemTransfer::cancelbutton() {
   scripttimer->stop();
-  modem->stop();
+  Modem::modem->stop();
   timeout_timer->stop();
 
   statusBar->setText(i18n("One Moment Please ..."));
   kapp->processEvents();
   
-  modem->hangup();
+  Modem::modem->hangup();
 
-  modem->closetty();
-  unlockdevice();
+  Modem::modem->closetty();
+  Modem::modem->unlockdevice();
   reject();
 }
 

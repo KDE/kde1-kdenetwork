@@ -26,6 +26,8 @@
 
 #include <config.h>
 
+#include "coninfo.h"
+
 #include <qfileinf.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -60,14 +62,12 @@
 #include "log.h"
 #include "groupbox.h"
 #include "newwidget.h"
+#include "security.h"
 
 #include <X11/Xlib.h>
 
 KPPPWidget*	p_kppp;
-Modem*          modem;
-DockWidget*     dock_widget;
 QString 	cmdl_account;
-QPixmap *miniIcon = 0;
 
 bool	have_cmdl_account;
 bool 	pppd_has_died = false;
@@ -194,7 +194,7 @@ static int kppp_xio_errhandler( Display * ) {
 
     p_kppp->stopAccounting();
     removedns();
-    unlockdevice();
+    Modem::modem->unlockdevice();
     return 0;
   } else{
     fatal( "%s: Fatal IO error: client killed", "kppp" );
@@ -328,9 +328,6 @@ int main( int argc, char **argv ) {
     have_cmdl_account = true;
     Debug("cmdl_account:%s:\n",cmdl_account.data());
   }
-
-  // load mini-icon
-  miniIcon = new QPixmap(a.getMiniIcon());
 
   // make sure that nobody can read the password from the
   // config file
@@ -563,14 +560,14 @@ KPPPWidget::KPPPWidget( QWidget *parent, const char *name )
 
   tl->freeze();
 
-  modem = new Modem;
+  (void)new Modem;
 
   // we also connect cmld_start to the connectbutton so that I can run
   // the dialer through a command line argument
   connect(this,SIGNAL(cmdl_start()),this,SLOT(connectbutton())); 
 
   con_win = new ConWindow(0,"conw",this);
-  KWM::setMiniIcon(con_win->winId(), *miniIcon);
+  KWM::setMiniIcon(con_win->winId(), kapp->getMiniIcon());
   con_win->setGeometry(QApplication::desktop()->width()/2-160,
 		    QApplication::desktop()->height()/2-55,
 		    320,110);
@@ -583,10 +580,10 @@ KPPPWidget::KPPPWidget( QWidget *parent, const char *name )
   stats = new PPPStatsDlg(0,"stats",this);
   stats->hide();
 
-  dock_widget = new DockWidget("dockw");
+  (void)new DockWidget("dockw");
 
   debugwindow = new DebugWidget(0,"debugwindow");
-  KWM::setMiniIcon(debugwindow->winId(), *miniIcon);
+  KWM::setMiniIcon(debugwindow->winId(), kapp->getMiniIcon());
   debugwindow->setGeometry(QApplication::desktop()->width()/2+190,
 		    QApplication::desktop()->height()/2-55,
 		    debugwindow->width(),debugwindow->height());
@@ -596,7 +593,7 @@ KPPPWidget::KPPPWidget( QWidget *parent, const char *name )
 
   resetaccounts();
   con = new ConnectWidget(0, "con");
-  KWM::setMiniIcon(con->winId(), *miniIcon);
+  KWM::setMiniIcon(con->winId(), kapp->getMiniIcon());
   connect(this, SIGNAL(begin_connect()),con, SLOT(preinit()));
   con->setGeometry(QApplication::desktop()->width()/2-175,
 		    QApplication::desktop()->height()/2-55,
@@ -796,12 +793,12 @@ void dieppp(int sig) {
       p_kppp->stopAccounting();
 
       p_kppp->con_win->stopClock();
-      dock_widget->stop_stats();
-      dock_widget->undock();      
+      DockWidget::dock_widget->stop_stats();
+      DockWidget::dock_widget->undock();      
 
       pppd_has_died = true;
       removedns();
-      unlockdevice();      
+      Modem::modem->unlockdevice();      
       
       if(!gpppdata.automatic_redial()) {
 	p_kppp->quit_b->setFocus();
@@ -1030,20 +1027,20 @@ void KPPPWidget::disconnect() {
   CHAP_RemoveAuthFile();
 
   removedns();
-  unlockdevice();
+  Modem::modem->unlockdevice();
   
   con_win->stopClock();
   p_kppp->stopAccounting();
   con_win->hide();
   
-  if (dock_widget->isDocked()) {
-    dock_widget->stop_stats();
-    dock_widget->undock();
+  if (DockWidget::dock_widget->isDocked()) {
+    DockWidget::dock_widget->stop_stats();
+    DockWidget::dock_widget->undock();
   }
 
-  if(quit_on_disconnect) {
+  if(quit_on_disconnect)
     kapp->exit(0);
-  } else {
+  else {
     this->quit_b->setFocus();
     this->show();
   }
@@ -1066,7 +1063,7 @@ void KPPPWidget::quitbutton() {
       killpppd();
       execute_command(gpppdata.command_on_disconnect());
       removedns();
-      unlockdevice();
+      Modem::modem->unlockdevice();
       kapp->quit();
     }
   } else {

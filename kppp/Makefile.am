@@ -62,7 +62,9 @@ kppp_SOURCES	= accounts.cpp \
 		ppplog.cpp \
 		log.cpp \
 		groupbox.cpp \
-		newwidget.cpp
+		newwidget.cpp \
+		security.cpp \
+		coninfo.cpp
 
 # the library search path
 kppp_LDFLAGS = $(all_libraries) $(KDE_RPATH)
@@ -106,7 +108,9 @@ noinst_HEADERS = accounts.h \
 		ppplog.h \
 		log.h \
 		groupbox.h \
-		newwidget.cpp
+		newwidget.h \
+		security.h \
+		coninfo.h
 
 # just to make sure, automake makes them 
 BUILTSOURCES = accounts.moc \
@@ -127,7 +131,9 @@ BUILTSOURCES = accounts.moc \
 		acctselect.moc\
 		docking.moc \
 		setup.moc \
-		groupbox.moc
+		groupbox.moc \
+		security.moc \
+		coninfo.moc
 
 # if you "make distclean", this files get removed. If you want to remove
 # them while "make clean", use CLEANFILES
@@ -143,7 +149,6 @@ messages:
 # if you have more of them, create a subdirectory with an extra Makefile 
 install-data-local:	
 #	@(cd Rules && $(MAKE) install)
-	(chown root $(bindir)/kppp && chmod 4755 $(bindir)/kppp) || echo "Was not able to make kppp setuid root"
 	@echo ""
 	@echo "Don't forget to send me a phone tarif rules file for your"
 	@echo "telecom company/country/region. Thanks."
@@ -158,7 +163,8 @@ install-data-local:
 	@echo ""
 
 # kppp wants to be installed suid root
-#install-exec-hook:
+install-exec-local:
+	@(chown root $(bindir)/kppp && chmod 4755 $(bindir)/kppp) || echo "Was not able to make kppp setuid root"
 
 # remove ALL you have installed in install-data-local or install-exec-local
 #uninstall-local:
@@ -252,3 +258,11 @@ setup.moc: setup.h
 groupbox.cpp: groupbox.moc
 groupbox.moc: groupbox.h
 	$(MOC) groupbox.h -o groupbox.moc
+
+security.cpp: security.moc
+security.moc: security.h
+	$(MOC) security.h -o security.moc
+
+coninfo.cpp: coninfo.moc
+coninfo.moc: coninfo.h
+	$(MOC) coninfo.h -o coninfo.moc

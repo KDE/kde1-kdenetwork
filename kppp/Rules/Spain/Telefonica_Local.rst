@@ -1,9 +1,9 @@
 ################################################################
 #
-# Telefonica at Spain
+# Infovia at Spain
 #
 ################################################################
-name=Spain Telefonica Local
+name=Spain Telefonica Metropolitana
 
 ################################################################
 # currency settings
@@ -17,20 +17,28 @@ currency_digits=2
 # connection settings
 ################################################################
 
-per_connection=6.612
-minimum_costs=13.224
-default=(6.612, 240)
+per_connection=0
+minimum_costs=11.40
+flat_init_costs=(11.40,160)
 
-on (monday..friday) between (8:00..21:00) use (6.612, 180)
-on (saturday) between (8:00..13:00) use (6.612, 180)
+# Por Defecto reducida
+default=(0.0274, 1)
 
-on (1/1) between () use (6.612, 240)
-on (1/6) between () use (6.612, 240)
-on (5/1) between () use (6.612, 240)
-on (11/1) between () use (6.612, 240)
-on (12/6) between () use (6.612, 240)
-on (12/8) between () use (6.612, 240)
-on (12/25) between () use (6.612, 240)
+# Tarifa Normal
+on (monday..friday) between (17:00..21:59) use (0.0754, 1)
 
-on (easter) between () use (6.612, 240)
-on (easter+60) between () use (6.612, 240)
+# Tarifa Punta
+on (monday..friday) between (8:00..16:59) use (0.0754, 1)
+on (saturday) between (8:00..13:59) use (0.0754, 1)
+
+# Festivos: Reducida
+on (1/1) between () use (0.0274, 1)
+on (1/6) between () use (0.0274, 1)
+on (5/1) between () use (0.0274, 1)
+on (10/12) between () use (0.0274, 1)
+on (11/1) between () use (0.0274, 1)
+on (12/6) between () use (0.0274, 1)
+on (12/8) between () use (0.0274, 1)
+on (12/25) between () use (0.0274, 1)
+on (easter) between () use (0.0274, 1)
+on (easter+60) between () use (0.0274, 1)

@@ -38,6 +38,8 @@ extern KPPPWidget   *p_kppp;
 extern bool do_stats();
 extern bool init_stats();
 
+// static member
+DockWidget *DockWidget::dock_widget = 0;
 
 DockWidget::DockWidget(const char *name)
   : QWidget(0, name, 0) {
@@ -74,19 +76,19 @@ DockWidget::DockWidget(const char *name)
   popup_m->insertItem(i18n("Disconnect"),
 		      this, SLOT(disconnect()));
 
-  statstring = statstring.sprintf("In: %.2f Out %.2f",
-				  (float)ibytes/1000,(float)obytes/1000);
-  //  QToolTip::add( this, statstring.data() );
-
   // timer for little modem animation
   clocktimer = new QTimer(this);
   connect(clocktimer, SIGNAL(timeout()), SLOT(timeclick()));
 
+  DockWidget::dock_widget = this;
 }
+
 
 DockWidget::~DockWidget() {
   clocktimer->stop();
+  DockWidget::dock_widget = 0;
 }
+
 
 void DockWidget::dock() {
   if (!docked) {
@@ -137,10 +139,6 @@ void DockWidget::paintIcon () {
     bitBlt(this, 0, 0, &dock_both_pixmap);
     ibytes_last = ibytes;
     obytes_last = obytes;
-    /*QToolTip::remove(this);
-    statstring = statstring.sprintf("In: %.2f Out %.2f",
-				    (float)ibytes/1000,(float)obytes/1000);
-    QToolTip::add( this, statstring.data() );*/
     return;
   }
 
@@ -148,10 +146,6 @@ void DockWidget::paintIcon () {
     bitBlt(this, 0, 0, &dock_left_pixmap);
     ibytes_last = ibytes;
     obytes_last = obytes;
-    /*QToolTip::remove(this);
-    statstring = statstring.sprintf("In: %.2f Out %.2f",
-				    (float)ibytes/1000,(float)obytes/1000);
-    QToolTip::add( this, statstring.data() );*/
     return;
   }
 
@@ -159,10 +153,6 @@ void DockWidget::paintIcon () {
     bitBlt(this, 0, 0, &dock_right_pixmap);
     ibytes_last = ibytes;
     obytes_last = obytes;
-    /*    QToolTip::remove(this);
-    statstring = statstring.sprintf("In: %.2f Out %.2f",
-				    (float)ibytes/1000,(float)obytes/1000);
-    QToolTip::add( this, statstring.data() );*/
     return;
   }
 

@@ -1,3 +1,24 @@
+1998-10-25  Mario Weilguni <mweilguni@kde.org>
+
+	* added updated rules for Spain
+
+1998-10-06  Mario Weilguni <mweilguni@kde.org>
+
+	* repaired Makefile.am and reverted Hans Petter Bieker's changes
+	to something more usefull.
+	* added SecurityWidget, but currently there's not much use for
+	this widget. Later on, it will allow root to specify who may use
+	kppp and pppd.
+	* removed the global variable miniIcon
+	* removed the global variable dock_widget, replaced with a static
+	class variable
+	* added lockdevice() and unlockdevice() to the class modem. This
+	will finally allow us to have a modem class which handles the
+	device locking itself (yeah...)
+	* removed the global var "modem", now a static member of the class
+	"Modem"
+	* modem.cpp: removed some global vars
+
 1998-10-14  Harri Porten  <porten@kde.org>
 
 	* pppdata.cpp: don't care about CD line by default. We'll receive
