@@ -3,9 +3,9 @@
  *
  * $Id$
  *            Copyright (C) 1997  Bernd Wuebben
- *                 wuebben@math.cornel.edu 
- * 
- * 
+ *                 wuebben@math.cornel.edu
+ *
+ *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
  * License as published by the Free Software Foundation; either
@@ -36,24 +36,19 @@
 #include<qpushbt.h>
 
 
-
 class myMultiEdit : public QMultiLineEdit {
-
 public:
 
   myMultiEdit(QWidget *parent=0, const char *name=0);
   ~myMultiEdit();
 
-
-void newLine();
-void  insertChar(char c);
+  void newLine();
+  void  insertChar(char c);
 };
 
 
 class DebugWidget : public QDialog {
-
-Q_OBJECT
-
+  Q_OBJECT
 public:
   DebugWidget(QWidget *parent=0, const char *name=0);
   ~DebugWidget();
@@ -63,10 +58,10 @@ public:
   void clear();
 
 private slots:
-    void hideit();
+  void hideit();
 
 private:
-      void resizeEvent(QResizeEvent *e);
+  void resizeEvent(QResizeEvent *e);
 
 private:
   void enter();
@@ -75,24 +70,7 @@ private:
   myMultiEdit *text_window;
 
   QLabel *statuslabel;
-
 };
+
 #endif
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -20,6 +20,24 @@
 
 #include "monthly.h"
 
+static void formatBytes(int bytes, QString &result) {
+  if(bytes < 1024)
+    result.setNum(bytes);
+  else if(bytes < 1024*1024)
+    result.sprintf(i18n("%0.1f KB"), (float)bytes / 1024.0);
+  else
+    result.sprintf(i18n("%0.1f MB"), (float)bytes / 1024.0 / 1024.0);
+}
+
+static void formatDuration(int seconds, QString &result) {
+  if(seconds < 60)
+    result.sprintf(i18n("%d s"), seconds);
+  else if(seconds < 3600)
+    result.sprintf(i18n("%dm %ds"), seconds/60, seconds%60);
+  else
+    result.sprintf(i18n("%dh %dm %ds"), seconds/3600, (seconds % 3600)/60, seconds%60);
+}
+
 MonthlyWidget::MonthlyWidget(QWidget *parent) :
   QWidget(parent)
 {
@@ -140,17 +158,17 @@ void MonthlyWidget::plotMonth() {
 
       QString bin, bout, b;
       if(li->bytesIn() >= 0)
-	bin.setNum(li->bytesIn());
+	formatBytes(li->bytesIn(), bin);
       else
 	bin = i18n("n/a");
 
       if(li->bytesOut() >= 0)
-	bout.setNum(li->bytesOut());
+	formatBytes(li->bytesOut(), bout);
       else
 	bout = i18n("n/a");
 
       if(li->bytes() > 0)
-	b.setNum(li->bytes());
+	formatBytes(li->bytes(), b);
       else
 	b = i18n("n/a");
 
@@ -168,12 +186,15 @@ void MonthlyWidget::plotMonth() {
       } else
 	con = " ";
 
-      s.sprintf("%s\t%s\t%02d:%02d\t%02d:%02d\t%d\t%6.2f\t%s\t%s\t%s",
+      QString s_duration;
+      formatDuration(li->from().secsTo(li->until()),
+		     s_duration);
+      s.sprintf("%s\t%s\t%02d:%02d\t%02d:%02d\t%s\t%6.2f\t%s\t%s\t%s",
 		con.data(),
 		day.data(),
 		li->from().time().hour(), li->from().time().minute(),
 		li->until().time().hour(), li->until().time().minute(),
-		li->from().secsTo(li->until()),
+		s_duration.data(),
 		li->sessionCosts(),
 		bin.data(),
 		bout.data(),
@@ -190,24 +211,29 @@ void MonthlyWidget::plotMonth() {
     if(bin < 0)
       _bin = i18n("n/a");
     else
-      _bin.setNum(bin);
+      formatBytes(bin, _bin);
 
     if(bout < 0)
       _bout = i18n("n/a");
     else
-      _bout.setNum(bout);
+      formatBytes(bout, _bout);
 
     if(bin < 0 || bout < 0)
       _b = i18n("n/a");
     else
-      _b.setNum(bin + bout);
+      formatBytes(bout + bin, _b);
 
-    s.sprintf(i18n("%d connections\t%s\t%s\t%s\t%d\t%6.2f\t%s\t%s\t%s"),
+    QString s_duration;
+    formatDuration(duration,
+		   s_duration);
+
+
+    s.sprintf(i18n("%d connections\t%s\t%s\t%s\t%s\t%6.2f\t%s\t%s\t%s"),
 	      count,
 	      " ",
 	      " ",
 	      " ",
-	      duration,
+	      s_duration.data(),
 	      costs,
 	      _bin.data(),
 	      _bout.data(),

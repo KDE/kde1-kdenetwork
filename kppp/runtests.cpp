@@ -5,7 +5,7 @@
  * 
  *            Copyright (C) 1997 Bernd Johannes Wuebben 
  *                   wuebben@math.cornell.edu
- * 
+ *
  * This file was contributed by Mario Weilguni <mweilguni@sime.com>
  * Thanks Mario !
  *
@@ -38,7 +38,7 @@
 #include <pwd.h>
 
 QString findFileInPath( const char *fname, const char *extraPath) {
-  QString f;  
+  QString f;
 
   if(access(fname, F_OK) == 0)
     return QString(fname);
@@ -98,10 +98,10 @@ int runTests() {
     FILE *f;
     if((f = fopen("/etc/kppp.allow", "r")) != NULL) {
       char buf[2048];
-      while(!feof(f)) {
+      while(f != NULL && !feof(f)) {
 	if(fgets(buf, sizeof(buf), f) != NULL) {
 	  QString s(buf, sizeof(buf));
-	  
+
 	  s = s.stripWhiteSpace();
 	  if(s[0] == '#' || s.length() == 0)
 	    continue;
@@ -109,14 +109,16 @@ int runTests() {
 	  if((uid_t)uidFromName(s.data()) == getuid()) {
 	    access = TRUE;
 	    fclose(f);
+	    f = NULL;
 	  }
 	}
       }
-      fclose(f);
+      if(f)
+	fclose(f);
     }
 
     if(!access) {
-      QMessageBox::warning(0, 
+      QMessageBox::warning(0,
 		 i18n("Error"),
 		 i18n("You´re not allowed to dial out with "
 				    "kppp.\nContact your system administrator."
@@ -124,7 +126,7 @@ int runTests() {
       exit(1);
     }
   }
-  
+
   // Test 1: search the pppd binary
   QString f = gpppdata.pppdPath();
   bool pppdFound = FALSE;
@@ -132,7 +134,7 @@ int runTests() {
     pppdFound = TRUE;
 
   if(!pppdFound) {
-    QMessageBox::warning(0, 
+    QMessageBox::warning(0,
 		 i18n("Error"),
 		 i18n("Cannot find the pppd-daemon!\n\n"
 				    "Make sure that pppd is installed and\n"
@@ -140,11 +142,11 @@ int runTests() {
 				    ));
     warning++;
   }
-    
+
   // Test 2: check access to the pppd binary
   if(pppdFound) {
     if(access(f.data(), X_OK) != 0 && geteuid() != 0) {
-      QMessageBox::critical(0, 
+      QMessageBox::critical(0,
 		   i18n("Error"),
 		   i18n("You do not have the permission\n"
 				      "to start pppd!\n\n"
@@ -155,7 +157,7 @@ int runTests() {
       struct stat st;
       stat(f.data(), &st);
       if(st.st_mode & S_ISUID == 0 && getuid() != 0) {
-	QMessageBox::warning(0, 
+	QMessageBox::warning(0,
 		     i18n("Error"),
 		     i18n("pppd is not properly installed!\n\n"
 					"The pppd binary must be installed\n"
@@ -170,7 +172,7 @@ int runTests() {
       stat(f.data(), &st);
 
       if(st.st_uid != 0) { // pppd not owned by root
-	QMessageBox::warning(0, 
+	QMessageBox::warning(0,
 		     i18n("Error"),
 		     i18n("pppd is not properly installed!\n\n"
 					"The pppd binary must be installed\n"
@@ -186,7 +188,7 @@ int runTests() {
   if (opt.open(IO_ReadOnly)) {
     QTextStream t(&opt);
     QRegExp r1("^lock");
-    QRegExp r2("\\slock$");   // \s matches white space (9,10,11,12,13,32) 
+    QRegExp r2("\\slock$");   // \s matches white space (9,10,11,12,13,32)
     QRegExp r3("\\slock\\s");
     QString s;
     int lines = 0;
@@ -237,9 +239,10 @@ int runTests() {
       warning ++;
     }
   }
-      
+
   if(warning == 0)
     return TEST_OK;
   else
     return TEST_WARNING;
 }
+

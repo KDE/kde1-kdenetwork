@@ -56,7 +56,9 @@ kppp_SOURCES	= accounts.cpp \
 		chap.cpp \
 		docking.cpp \
 		runtests.cpp \
-		loginterm.cpp
+		loginterm.cpp \
+		ppplog.cpp \
+		psolver.cpp
 
 # the library search path
 kppp_LDFLAGS = $(all_libraries) $(KDE_RPATH)
@@ -94,7 +96,9 @@ noinst_HEADERS = accounts.h \
 		loginterm.h \
 		auth.h \
 		version.h \
-		macros.h
+		macros.h \
+		ppplog.h \
+		psolver.h
 
 # just to make sure, automake makes them 
 BUILTSOURCES = accounts.moc \
@@ -114,7 +118,8 @@ BUILTSOURCES = accounts.moc \
 		accounting.moc\
 		acctselect.moc\
 		docking.moc\
-		loginterm.moc
+		loginterm.moc \
+		psolver.moc
 
 # if you "make distclean", this files get removed. If you want to remove
 # them while "make clean", use CLEANFILES
@@ -223,3 +228,7 @@ pwentry.moc: pwentry.h
 scriptedit.cpp: scriptedit.moc;
 scriptedit.moc: scriptedit.h
 	$(MOC) scriptedit.h -o scriptedit.moc
+
+psolver.cpp: psolver.moc
+psolver.moc: psolver.h
+	$(MOC) psolver.h -o psolver.moc

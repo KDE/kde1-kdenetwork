@@ -74,7 +74,7 @@ int LogInfo::error() {
 
 void LogInfo::parse(QString s) {
   errorfield = 0;
-  char *c = (char *)malloc(s.length() + 1);
+  char *c = (char *)malloc(s.length() + 1), *csep;
   strcpy(c, s.data());
 
   // init data
@@ -85,7 +85,8 @@ void LogInfo::parse(QString s) {
   _session_cost = _total_cost = -1;
 
   // start of connection time
-  char *p = strtok(c, ":");
+  csep = c;
+  char *p = strsep(&csep, ":");
   int i = 0;
   while(i < 8 && p != 0) {
     QString token = p;
@@ -125,8 +126,10 @@ void LogInfo::parse(QString s) {
     }
 
     i++;
-    p = strtok(0, ":");
+    p = strsep(&csep, ":");
   }
+
+  free(c);
 
   if(i == 8)
     errorfield = 0;

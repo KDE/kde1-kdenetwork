@@ -63,6 +63,8 @@ TopWidget::TopWidget() : KTopLevelWidget("") {
 
   mw = new MonthlyWidget(td);
   td->addTab(mw, i18n("Monthly log"));
+  setMinimumSize(mw->minimumSize().width(), 
+		 mw->minimumSize().height() + 120);
   setView(td);
 }
 

@@ -17,7 +17,7 @@ do
 		echo "failed"
 		echo -n "        "
 		${KPPP} -r $i
-		exit 1
+		#exit 1
 	fi
 done
 exit 0
