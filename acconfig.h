@@ -59,6 +59,7 @@
 /* Define if you have the <dlfcn.h> header file.  */
 #undef HAVE_DLFCN_H
  
+#undef KDEMAXPATHLEN
 
 
 #define HAVE_MEDIATOOL 1
