@@ -32,6 +32,7 @@
 
 #include <kapp.h>
 #include <qkeycode.h>
+#include <kstring.h>
 
 #include "KASettings.h"
 
@@ -59,18 +60,6 @@
 #define SORT_DATE 2
 #define SORT_SIZE 3
 
-
-
-const char KAMenu::aboutText[] = "KArchie ver." KARCHIE_VERSION "\n\n"
-"by Jörg Habenicht <j.habenicht@europemail.com>\n\n"
-"based on the work of:\n"
-"  - archie prospero client by\n"
-"      Clifford Neuman and\n"
-"      Brendan Kehoe (brendan@cygnus.com)\n"
-"  - and xarchie by\n"
-"      George Ferguson (ferguson@cs.rochester.edu)\n"
-"(See README files and copyright.h).\n"
-"My own code is based on the GPL";
 
 
 KAMenu::KAMenu( QWidget *parent, const char *name )
@@ -184,6 +173,17 @@ KAMenu::KAMenu( QWidget *parent, const char *name )
   help->insertItem( "&About", this, SLOT(slotHelpAbout()) );
   */
 
+  QString aboutText;
+  ksprintf(&aboutText, i18n("KArchie ver. %s\n\n"
+                         "by Jörg Habenicht <j.habenicht@europemail.com>\n\n"
+                         "based on the work of:\n"
+                         "  - archie prospero client by\n"
+                         "      Clifford Neuman and\n"
+                         "      Brendan Kehoe (brendan@cygnus.com)\n"
+                         "  - and xarchie by\n"
+                         "      George Ferguson (ferguson@cs.rochester.edu)\n"
+                         "(See README files and copyright.h).\n"
+                         "My own code is based on the GPL"), KARCHIE_VERSION);
   help = kapp->getHelpMenu( TRUE, aboutText );
 
   insertItem( i18n("&File"), file);

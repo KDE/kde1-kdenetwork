@@ -56,7 +56,7 @@ KAArchieSettings::KAArchieSettings(const char *title, QWidget *parent, const cha
   hostbox = new QGroupBox( this, "hostbox" );
   hostbox->setFrameStyle( QFrame::NoFrame );
   hostname = new QComboBox( hostbox, "hostname" );
-  hostnamelabel = new QLabel( hostname, "&Host", hostbox, "hostnamelabel" );
+  hostnamelabel = new QLabel( hostname, i18n("&Host"), hostbox, "hostnamelabel" );
   
   timeoutbox = new QGroupBox ( this, "timeoutbox" );
   timeoutbox->setFrameStyle( QFrame::NoFrame );
@@ -69,7 +69,7 @@ KAArchieSettings::KAArchieSettings(const char *title, QWidget *parent, const cha
   //  int lineEditHeight = fm->boundingRect('8').height();
   //  timeoutline->setFixedHeight( timeoutline->height() );
   //  timeoutline->show();
-  timeoutlabel = new QLabel( timeoutline, "&Timeout (seconds)", timeoutbox, "timeoutlabel" );
+  timeoutlabel = new QLabel( timeoutline, i18n("&Timeout (seconds)"), timeoutbox, "timeoutlabel" );
   connect(timeoutline, SIGNAL(returnPressed()),
 	  this, SLOT(slotRP()) );
 
@@ -80,7 +80,7 @@ KAArchieSettings::KAArchieSettings(const char *title, QWidget *parent, const cha
   //  tmp.setNum( lineEditHeight );
   //  debug( tmp );
   //  triesline->setFixedHeight( triesline->height() );
-  trieslabel = new QLabel( triesline, "Maximal &retries", triesbox, "trieslabel" );
+  trieslabel = new QLabel( triesline, i18n("Maximal &retries"), triesbox, "trieslabel" );
   connect(triesline, SIGNAL(returnPressed()),
 	  this, SLOT(slotRP()) );
 
@@ -281,14 +281,14 @@ KASearchSettings::KASearchSettings(const char *title, QWidget *parent, const cha
   nicebox = new QGroupBox( this, "nicebox" );
   nicebox->setFrameStyle( QFrame::NoFrame );
   nicelevel = new QComboBox( nicebox, "nicelevel" );
-  nicelabel = new QLabel( nicelevel, "&Nice Level", nicebox, "nicelabel" );
+  nicelabel = new QLabel( nicelevel, i18n("&Nice Level"), nicebox, "nicelabel" );
   nicelabel->adjustSize();
 
   // setup the hitslevel
   hitsbox = new QGroupBox( this, "hitsbox" );
   hitsbox->setFrameStyle( QFrame::NoFrame );
   maxhits = new KIntegerLine( hitsbox, "maxhits" );
-  hitslabel = new QLabel( maxhits, "max. &Hits", hitsbox, "hitslabel" );
+  hitslabel = new QLabel( maxhits, i18n("max. &Hits"), hitsbox, "hitslabel" );
   hitslabel->adjustSize();
   connect(maxhits, SIGNAL(returnPressed()),
 	  this, SLOT(slotRP()) );
@@ -415,20 +415,20 @@ KASearchSettings::doLayout()
 void 
 KASearchSettings::initWidgets()
 {
-  searchmode->insertItem("Exact");
-  searchmode->insertItem("Substring");
-  searchmode->insertItem("Substring case insensitive");
-  searchmode->insertItem("Regular expression");
-  searchmode->insertItem("Exact, then substring");
-  searchmode->insertItem("Exact, then substring case insensitive");
-  searchmode->insertItem("Exact, then regular expression");
+  searchmode->insertItem(i18n("Exact"));
+  searchmode->insertItem(i18n("Substring"));
+  searchmode->insertItem(i18n("Substring case insensitive"));
+  searchmode->insertItem(i18n("Regular expression"));
+  searchmode->insertItem(i18n("Exact, then substring"));
+  searchmode->insertItem(i18n("Exact, then substring case insensitive"));
+  searchmode->insertItem(i18n("Exact, then regular expression"));
   searchmode->adjustSize();
 
-  nicelevel->insertItem("Normal");
-  nicelevel->insertItem("Nice");
-  nicelevel->insertItem("Very nice");
-  nicelevel->insertItem("Even more nice");
-  nicelevel->insertItem("Nicest");
+  nicelevel->insertItem(i18n("Normal"));
+  nicelevel->insertItem(i18n("Nice"));
+  nicelevel->insertItem(i18n("Very nice"));
+  nicelevel->insertItem(i18n("Even more nice"));
+  nicelevel->insertItem(i18n("Nicest"));
   nicelevel->adjustSize();
 
 }
@@ -522,7 +522,7 @@ KASettings::KASettings(QWidget *parent, const char *name, bool modal, WFlags f )
   //  const int frameoffset = 10;
 
   //  debug( "setup settingswidget" );
-  setCaption( "KArchie Settings" );
+  setCaption( i18n("KArchie Settings") );
   setMinimumSize( 440, 300 );
 
   frameLayout = new QBoxLayout( this, QBoxLayout::Down, FRAME_OFFSET );
@@ -533,17 +533,17 @@ KASettings::KASettings(QWidget *parent, const char *name, bool modal, WFlags f )
   //  debug( "setup archiehost frame" );
   //  archiedialog = new QDialog(this, "archiehost" );
   //  archiebox = new QBoxLayout( archiedialog, QBoxLayout::Down, frameoffset );
-  archiehost = new KAArchieSettings("Archie server settings", settingsFrame, "archiehost");
+  archiehost = new KAArchieSettings(i18n("Archie server settings"), settingsFrame, "archiehost");
   widgetLayout->addWidget( archiehost );
   //  archiehost->show();
 
   //  debug( "setup searchterms frame" );
   //  searchdialog  = new QDialog(this, "searchterms" );
   //  searchbox = new QBoxLayout( searchdialog, QBoxLayout::Down, frameoffset );
-  searchterms  = new KASearchSettings("Search init", settingsFrame, "searchterms");
+  searchterms  = new KASearchSettings(i18n("Search init"), settingsFrame, "searchterms");
   widgetLayout->addWidget( searchterms );
 
-  frameLayout->addWidget(settingsFrame);
+  frameLayout->addWidget(settingsFrame, 1);
 
   //  debug( "setup user frame" );
   //  userdialog = new QDialog(this, "user" );

@@ -33,7 +33,7 @@
 
 #include "KAQuery.moc"
 #include "KAQueryFile.h"
-#include <qapp.h>
+#include <kapp.h>
 #include <qsocknot.h> 
 
 extern "C" {
@@ -147,11 +147,6 @@ extern "C" {
 bool bProcessQuery = FALSE;
 
 
-const char KAQuery::statusQuerySetup[]   ="Query setup";
-const char KAQuery::statusQueryRun[]     ="Query running";
-const char KAQuery::statusQueryFinished[]="Query finished";
-const char KAQuery::statusQueryAborted[] ="Query aborted";
-
 KAQuery::KAQuery( const char *host, const char *search, SearchMode::mode smode, int max_hits, int max_retries, NiceLevel::mode nlevel, int time_out, Sort sorting, Flags flags )
   : host( host ),
     search( search ),
@@ -182,7 +177,7 @@ void
 KAQuery::startover() // get the next "max_hits" results
 {
   emit sigQuerySetup();
-  emit sigQueryStatus(statusQuerySetup);
+  emit sigQueryStatus(i18n("Query setup"));
 
   current_try = 1; // erster Versuch
   QTimer::singleShot( 300, this, SLOT(slotProcessQueryNow()) );
@@ -291,69 +286,69 @@ void
 KAQuery::slotAbort()
 {
   abortDirsend();
-  emit sigQueryStatus(statusQueryAborted);
+  emit sigQueryStatus(i18n("Query aborted"));
 }
 
 void 
 KAQuery::errno2str()
 {
   switch(perrno) {
-  case 0: sError = "Success"; break;
-  case 1: sError = "Port unknown"; break;
-  case 2: sError = "Can't open local UDP port"; break;
-  case 3: sError = "Can't resolve hostname"; break;
-  case 4: sError = "Didn't send entire message"; break;
-  case 5: sError = "Timed out"; break;
-  case 6: sError = "Recvfrom failed"; break;
-  case 11: sError = "Reply: sendto failed"; break;
-  case 22: sError = "Link exists with same name"; break;
+  case 0: sError = i18n("Success"); break;
+  case 1: sError = i18n("Port unknown"); break;
+  case 2: sError = i18n("Can't open local UDP port"); break;
+  case 3: sError = i18n("Can't resolve hostname"); break;
+  case 4: sError = i18n("Didn't send entire message"); break;
+  case 5: sError = i18n("Timed out"); break;
+  case 6: sError = i18n("Recvfrom failed"); break;
+  case 11: sError = i18n("Reply: sendto failed"); break;
+  case 22: sError = i18n("Link exists with same name"); break;
   case 21:
-  case 25: sError = "Link already exists"; break;
-  case 26: sError = "Replacing existing link"; break;
-  case 27: sError = "Prv entry not in dir->ulinks"; break;
-  case 41: sError = "Temporary not found"; break;
-  case 42: sError = "Namespace not closed w/ object::"; break;
-  case 43: sError = "No alias for namespace NS#:"; break;
-  case 44: sError = "Specified namespace not found"; break;
-  case 51: sError = "File access method not supported"; break;
-  case 55: sError = "Delete cached copy on close"; break;
-  case 56: sError = "Unable to retrieve file"; break;
+  case 25: sError = i18n("Link already exists"); break;
+  case 26: sError = i18n("Replacing existing link"); break;
+  case 27: sError = i18n("Prv entry not in dir->ulinks"); break;
+  case 41: sError = i18n("Temporary not found"); break;
+  case 42: sError = i18n("Namespace not closed w/ object::"); break;
+  case 43: sError = i18n("No alias for namespace NS#:"); break;
+  case 44: sError = i18n("Specified namespace not found"); break;
+  case 51: sError = i18n("File access method not supported"); break;
+  case 55: sError = i18n("Delete cached copy on close"); break;
+  case 56: sError = i18n("Unable to retrieve file"); break;
   case 71:
-  case 61: sError = "Directory already exists"; break;
+  case 61: sError = i18n("Directory already exists"); break;
   case 72:
-  case 62: sError = "Link with name already exists"; break;
-  case 65: sError = "Not a virtual system"; break;
-  case 66: sError = "Can't find directory"; break;
-  case 111: sError = "Not a directory name"; break;
-  case 121: sError = "Object not found"; break;
-  case 122: sError = "Object has moved"; break;
-  case 230: sError = "File not found"; break;
-  case 231: sError = "Directory in path not found"; break;
-  case 232: sError = "Symbolic links nested too deep"; break;
-  case 233: sError = "Can't read environment"; break;
-  case 234: sError = "Can't traverse an external file"; break;
-  case 235: sError = "Exceeded max forward depth"; break;
-  case 242: sError = "Authentication required"; break;
-  case 243: sError = "Not authorized"; break;
-  case 244: sError = "Not found"; break;
-  case 245: sError = "Bad version number"; break;
-  case 246: sError = "Not a directory"; break;
-  case 247: sError = "Identical link already exists"; break;
-  case 248: sError = "Link with name already exists"; break;
-  case 251: sError = "Command not implemented on server"; break;
-  case 252: sError = "Bad format for response"; break;
-  case 253: sError = "Protocol error"; break;
-  case 254: sError = "Unspecified server failure"; break;
+  case 62: sError = i18n("Link with name already exists"); break;
+  case 65: sError = i18n("Not a virtual system"); break;
+  case 66: sError = i18n("Can't find directory"); break;
+  case 111: sError = i18n("Not a directory name"); break;
+  case 121: sError = i18n("Object not found"); break;
+  case 122: sError = i18n("Object has moved"); break;
+  case 230: sError = i18n("File not found"); break;
+  case 231: sError = i18n("Directory in path not found"); break;
+  case 232: sError = i18n("Symbolic links nested too deep"); break;
+  case 233: sError = i18n("Can't read environment"); break;
+  case 234: sError = i18n("Can't traverse an external file"); break;
+  case 235: sError = i18n("Exceeded max forward depth"); break;
+  case 242: sError = i18n("Authentication required"); break;
+  case 243: sError = i18n("Not authorized"); break;
+  case 244: sError = i18n("Not found"); break;
+  case 245: sError = i18n("Bad version number"); break;
+  case 246: sError = i18n("Not a directory"); break;
+  case 247: sError = i18n("Identical link already exists"); break;
+  case 248: sError = i18n("Link with name already exists"); break;
+  case 251: sError = i18n("Command not implemented on server"); break;
+  case 252: sError = i18n("Bad format for response"); break;
+  case 253: sError = i18n("Protocol error"); break;
+  case 254: sError = i18n("Unspecified server failure"); break;
   case 255:
-  default: sError = "Generic Failure"; break;
+  default: sError = i18n("Generic Failure"); break;
   }
 
   switch(pwarn) {
-  case 0: sWarning ="No warning"; break;
-  case 1: sWarning ="You are using an old version of this program"; break;
-  case 2: sWarning ="From server: "; sWarning += p_warn_string; break;
+  case 0: sWarning = i18n("No warning"); break;
+  case 1: sWarning = i18n("You are using an old version of this program"); break;
+  case 2: sWarning = i18n("From server: "); sWarning += p_warn_string; break;
   case 3:
-  default: sWarning ="Unrecognized line in response from server"; break;
+  default: sWarning = i18n("Unrecognized line in response from server"); break;
   }
 }
 
@@ -411,7 +406,7 @@ KAQuery::doQuery()
   bProcessQuery = TRUE;
   emit sigQueryTryNum( current_try );
   emit sigQueryRunning();
-  emit sigQueryStatus(statusQueryRun);
+  emit sigQueryStatus(i18n("Query running"));
   queryresult = archie_query( cHostname, cSearch, max_hits, offset, aquery, sortfunc, aqflag );
 
   bProcessQuery = FALSE;
@@ -455,7 +450,7 @@ KAQuery::slotProcessQueryNow()
   //debug( tmp.setNum(nWarning) );
 
   emit sigQueryFinished();
-  emit sigQueryStatus(statusQueryFinished);
+  emit sigQueryStatus(i18n("Query finished"));
 }
 
 void  

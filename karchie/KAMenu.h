@@ -102,7 +102,6 @@ private:
 
   QPopupMenu *file, *settings, *host, *searchmode, *nicelevel,
     *query, *sort, *help;
-  static const char aboutText[];
   int host_id, nice_id, searchmode_id;
   KConfig *config;
 

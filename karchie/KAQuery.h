@@ -146,12 +146,6 @@ private:
   int processed_matches;
   VLINK queryresult;
 
-  // status messages
-  static const char statusQuerySetup[];
-  static const char statusQueryRun[];
-  static const char statusQueryFinished[];
-  static const char statusQueryAborted[];
-
 private slots:
   void slotProcessQueryNow();
 
