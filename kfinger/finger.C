@@ -47,7 +47,7 @@ bool FingerProtocol::connection(  const char * host,int port)
   hostinfo = gethostbyname(host);
   if ( !hostinfo )
     {
-	  warning("Unknown host %s.  ",host);
+	  perror("Unknown host ");
 	  ::close( sock );
 	  sock = -1;
 	  return false;	    
@@ -69,25 +69,31 @@ bool FingerProtocol::connection(  const char * host,int port)
        sockNotif->setEnabled(TRUE);
       return true;
       }
-  
+//warning("Connecting...");  
   fd_set rd, wr;
   struct timeval timeout;
   int retval=0, n;
 
-  n = 1000 ; //100 seconds of TimeOut 
+  n = 30 ; //60 seconds of TimeOut 
   FD_ZERO(&rd);
   FD_ZERO(&wr);
   FD_SET(sock, &rd);
   FD_SET(sock, &wr);
+    unsigned int len;
+    int  val; 
+
+      struct rlimit rlp;
+
   while(n-- && stopFlag){
       timeout.tv_usec = 0;      
-      timeout.tv_sec = 0 ;
-      usleep(100000);
-      struct rlimit rlp;
+      timeout.tv_sec = 2;
       getrlimit(RLIMIT_NOFILE, &rlp); 
       retval=select(rlp.rlim_cur, (fd_set *)&rd, (fd_set *)&wr, (fd_set *)0,
                    (struct timeval *)&timeout);
+    getsockopt(sock,SOL_SOCKET,SO_ERROR,&val,&len );                   
+//      warning("retval %i, val %i",retval,val);
       if(retval){
+//	warning("connected");    
            sockNotif = new QSocketNotifier(sock,QSocketNotifier::Read,this);
            QObject::connect(sockNotif, SIGNAL(activated(int )),this,SLOT(readBuff(int ))); 
            sockNotif->setEnabled(TRUE);
