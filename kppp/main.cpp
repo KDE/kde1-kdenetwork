@@ -230,6 +230,7 @@ int main( int argc, char **argv ) {
     // make process leader of new group
     setsid();
     close(sockets[0]);
+    signal(SIGHUP, SIG_IGN);
     (void) new Opener(sockets[1]);
     // we should never get here
     _exit(1);

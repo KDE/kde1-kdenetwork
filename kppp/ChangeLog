@@ -6,6 +6,7 @@
 	* modem.cpp: check for possible existance of stale lockfile before
 	trying it to open via Requester::rq->openLockFile(). The resulting
 	error message on failure was too confusing.
+	* main.cpp: ignore SIGHUPs in child process
 
 1998-12-04  Harri Porten  <porten@kde.org>
 
