@@ -34,7 +34,6 @@
 #include <kspinbox.h>
 
 #include <kmsgbox.h>
-#include <kkeyconf.h>
 #include <html.h>
 #include <kconfig.h>
 #include <kprocess.h>

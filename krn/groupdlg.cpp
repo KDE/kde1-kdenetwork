@@ -33,7 +33,6 @@
 #include <kapp.h>
 #include <kmsgbox.h>
 #include <kconfig.h>
-#include <kkeyconf.h>
 
 #include "artdlg.h"
 #include "identDlg.h"
