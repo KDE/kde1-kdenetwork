@@ -38,7 +38,6 @@
 #include <errno.h>
 
 #include "pap.h"
-#include "homedir.h"
 #include "connect.h"
 #include "main.h"
 #include "kpppconfig.h"

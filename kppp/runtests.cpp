@@ -36,7 +36,12 @@
 #include <sys/wait.h>
 
 QString findFileInPath( const char *fname, const char *extraPath = 0 ) {
-  QString f;
+  QString f;  
+
+  // strip arguments
+  QString _fname = fname;
+  if(_fname.find(' ') != -1)
+    _fname = _fname.left(_fname.find(' '));
 
   char path[2048];
   if(getenv("PATH") != NULL)
@@ -51,7 +56,7 @@ QString findFileInPath( const char *fname, const char *extraPath = 0 ) {
   while(p != NULL) {
     f = p;
     f += "/";
-    f += fname;
+    f += _fname;
     if(access(f.data(), F_OK) == 0) {
       return f;
     } else
