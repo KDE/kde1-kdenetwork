@@ -593,7 +593,7 @@ msgid ""
 msgstr ""
 "kppp kann nicht ausführen:\n"
 " %s\n"
-"Bitte stellen Sie sicher, daß Sie kppp setuid-Berechtigung gegeben haben,\n"
+"Bitte stellen Sie sicher, daß Sie kppp setuid-Berechtigung gegeben haben\n"
 "und daß pppd ausführbar ist."
 
 #: main.cpp:588
@@ -623,7 +623,7 @@ msgstr "kppp beenden?"
 
 #: main.cpp:668
 msgid "Exiting kPPP will close your PPP Session."
-msgstr "Das Verlassen von kppp schließt Ihre PPP-Sitzung."
+msgstr "Das Verlassen von kPPP wird die Verbindung trennen."
 
 #: main.cpp:694
 msgid ""
