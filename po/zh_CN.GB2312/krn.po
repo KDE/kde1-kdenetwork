@@ -1,0 +1,734 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: krn\n"
+"POT-Creation-Date: 1998-06-18 22:50+0200\n"
+"PO-Revision-Date: 1998-06-12 08:33 MET DST\n"
+"Last-Translator: Wang Jian <lark@linux.ustc.edu.cn>\n"
+"Language-Team: zh_CN ( gb2312)\n"
+
+#: main.cpp:212 main.cpp:224 main.cpp:236 main.cpp:251 main.cpp:263
+msgid "KRN-Missing Configuration info"
+msgstr "KRN - 没有找到配置信息"
+
+#: main.cpp:213
+msgid "Please enter your email adress"
+msgstr "请输入你的电子邮件地址"
+
+#: main.cpp:225
+msgid "Please enter your real name"
+msgstr "请输入你的真实姓名"
+
+#: main.cpp:237
+msgid "Please enter your organization's name"
+msgstr "请输入你所在的组织名称"
+
+#: main.cpp:252
+msgid "Please enter your NNTP server name"
+msgstr "请输入你使用的 NNTP 服务器的名字"
+
+#: main.cpp:264
+msgid "Please enter your SMTP server name"
+msgstr "请输入你使用的 SMTP 服务器的名字"
+
+#: NNTP.cpp:76
+#, c-format
+msgid "Received %.2f Kb"
+msgstr "接收到 %.2f Kb"
+
+#: NNTP.cpp:557
+msgid "Getting Article"
+msgstr "正在取文章"
+
+#: NNTP.cpp:643
+msgid "Article Received"
+msgstr "文章已取到"
+
+#: groupdlg.cpp:129
+msgid "Connect to Server"
+msgstr "连接到服务器"
+
+#: groupdlg.cpp:130
+msgid "Disconnect From Server"
+msgstr "从服务器断开"
+
+#: groupdlg.cpp:131
+msgid "Get Active File"
+msgstr "取活动文件"
+
+#: groupdlg.cpp:133
+msgid "Post Queued Messages"
+msgstr "发表排队的信件"
+
+#: groupdlg.cpp:135
+msgid "Exit"
+msgstr "退出"
+
+#: groupdlg.cpp:138
+msgid "KRN - Group List"
+msgstr "KRN - 讨论组列表"
+
+#: groupdlg.cpp:141 groupdlg.cpp:147
+msgid "Get Subjects"
+msgstr "取标题"
+
+#: groupdlg.cpp:142 groupdlg.cpp:148
+msgid "Get Articles"
+msgstr "取得文章"
+
+#: groupdlg.cpp:143 groupdlg.cpp:151 groupdlg.cpp:159
+msgid "Catchup"
+msgstr "全部标为已读"
+
+#: groupdlg.cpp:149 groupdlg.cpp:157
+msgid "(un)Subscribe"
+msgstr "(取消)订阅"
+
+#: artdlg.cpp:151 groupdlg.cpp:150
+msgid "Untag"
+msgstr "取消标记"
+
+#: artdlg.cpp:171 groupdlg.cpp:158
+msgid "(Un)Tag"
+msgstr "(取消)标记"
+
+#: artdlg.cpp:164 artdlg.cpp:221 groupdlg.cpp:161 groupdlg.cpp:213
+msgid "Post New Article"
+msgstr "发表新文章"
+
+#: groupdlg.cpp:162
+msgid "Post All Queued Articles"
+msgstr "发表所有排队的文章"
+
+#: groupdlg.cpp:164
+msgid "&Subscribed"
+msgstr "订阅[&S]"
+
+#: artdlg.cpp:205 groupdlg.cpp:165
+msgid "&Tagged"
+msgstr "标记的[&T]"
+
+#: groupdlg.cpp:170
+msgid "Identity..."
+msgstr "身份..."
+
+#: groupdlg.cpp:171
+msgid "NNTP Options..."
+msgstr "NNTP 选项..."
+
+#: groupdlg.cpp:172
+msgid "Expire Options..."
+msgstr "过期选项..."
+
+#: groupdlg.cpp:173
+msgid "Printing Options..."
+msgstr "打印选项..."
+
+#: groupdlg.cpp:180
+msgid "About Krn..."
+msgstr "关于 Krn..."
+
+#: groupdlg.cpp:192
+msgid "&Newsgroup"
+msgstr "新闻组[&N]"
+
+#: groupdlg.cpp:199
+msgid "Connect to server"
+msgstr "连接到服务器"
+
+#: groupdlg.cpp:201
+msgid "Disconnect from server"
+msgstr "从服务器断开"
+
+#: groupdlg.cpp:204
+msgid "Get list of active groups"
+msgstr "取得活动讨论组列表"
+
+#: groupdlg.cpp:205
+msgid "Find group"
+msgstr "查找讨论组"
+
+#: groupdlg.cpp:211
+msgid "Check for Unread Articles"
+msgstr "检查未读文章"
+
+#: groupdlg.cpp:362 groupdlg.cpp:584 groupdlg.cpp:925
+msgid "All Newsgroups."
+msgstr "所有新闻组."
+
+#: groupdlg.cpp:472 groupdlg.cpp:566
+msgid "Subscribed Newsgroups."
+msgstr "订阅的新闻组."
+
+#: groupdlg.cpp:521
+msgid "Disconnected"
+msgstr "已断开连接"
+
+#: groupdlg.cpp:528
+msgid "Connecting to server"
+msgstr "正在连接服务器"
+
+#: groupdlg.cpp:533
+msgid "Connected to server - Posting not allowed"
+msgstr "已连接到服务器 - 不允许发表文章"
+
+#: groupdlg.cpp:535
+msgid "Connected to server - Posting allowed"
+msgstr "已连接到服务器 - 允许发表文章"
+
+#: groupdlg.cpp:541
+msgid "Can't connect to server"
+msgstr "不能连接到服务器"
+
+#: groupdlg.cpp:543
+msgid "Connection to server failed"
+msgstr "到服务器的连接失败"
+
+#: groupdlg.cpp:552
+msgid "Authentication Failed"
+msgstr "身份验证失败"
+
+#: groupdlg.cpp:555
+msgid "Connection to server failed: Authentication problem"
+msgstr "到服务器的连接失败: 身份验证问题"
+
+#: groupdlg.cpp:604
+msgid "Krn-Question"
+msgstr "Krn - 问题"
+
+#: groupdlg.cpp:605
+msgid ""
+"The operation you requested needs a connection to the News server\n"
+"Should I attempt one?"
+msgstr ""
+"你请求的操作需要连接到新闻服务器上\n"
+"要尝试连接吗?"
+
+#: groupdlg.cpp:868
+msgid ""
+"You don't have an active groups list.\n"
+" get it from server?"
+msgstr ""
+"你没有活动讨论组列表.\n"
+"从服务器上取得 ?"
+
+#: groupdlg.cpp:884
+msgid "Listing active newsgroups"
+msgstr "正在列出活动新闻组"
+
+#: groupdlg.cpp:899
+msgid "KRN - Find a Newsgroup"
+msgstr "KRN - 找到一个新闻组"
+
+#: groupdlg.cpp:900
+msgid "Enter the name of the Newsgroup"
+msgstr "输入新闻组的名字"
+
+#: groupdlg.cpp:984
+msgid "Krn - Message"
+msgstr "Krn - 信件"
+
+#: groupdlg.cpp:985
+msgid "I can't find the group you want!"
+msgstr "找不到你要的讨论组 !"
+
+#: groupdlg.cpp:1078
+msgid "Getting messages in "
+msgstr "取得信件 "
+
+#: groupdlg.cpp:1091
+msgid "Getting list of messages in "
+msgstr "取得信件列表 "
+
+#: artdlg.cpp:144 artdlg.cpp:159
+msgid "Download"
+msgstr "下载"
+
+#: artdlg.cpp:146 artdlg.cpp:268
+msgid "Mark Read"
+msgstr "标记已读"
+
+#: artdlg.cpp:147
+msgid "Mark Unread"
+msgstr "标记未读"
+
+#: artdlg.cpp:150 artdlg.cpp:170
+msgid "Decode"
+msgstr "解码"
+
+#: artdlg.cpp:152 artdlg.cpp:172
+msgid "Don't expire"
+msgstr "不过期"
+
+#: artdlg.cpp:161
+msgid "Lookup in Altavista"
+msgstr "在 Altavista 中查找"
+
+#: artdlg.cpp:165 artdlg.cpp:252
+msgid "Reply by Mail"
+msgstr "用邮件回复"
+
+#: artdlg.cpp:166
+msgid "Post Followup"
+msgstr "发表讨论"
+
+#: artdlg.cpp:167
+msgid "Post & Reply"
+msgstr "发表和回复"
+
+#: artdlg.cpp:174
+msgid "Tagged"
+msgstr "已标记的"
+
+#: artdlg.cpp:185
+msgid "Show Only Unread Messages"
+msgstr "只显示未读的信件"
+
+#: artdlg.cpp:187
+msgid "Show Only Cached Messages"
+msgstr "只显示缓存的信件"
+
+#: artdlg.cpp:189
+msgid "Show Locked Messages"
+msgstr "显示锁住的信件"
+
+#: artdlg.cpp:191
+msgid "Expunge"
+msgstr "删除"
+
+#: artdlg.cpp:192
+msgid "Appearance..."
+msgstr "外观..."
+
+#: artdlg.cpp:193
+msgid "Sorting..."
+msgstr "正在排序..."
+
+#: artdlg.cpp:197
+msgid "Edit Rules"
+msgstr "编辑规则"
+
+#: artdlg.cpp:198
+msgid "Update"
+msgstr "更新"
+
+#: artdlg.cpp:207
+msgid "&Scoring"
+msgstr "记分[&S]"
+
+#: artdlg.cpp:214
+msgid "Previous Message"
+msgstr "前一个信件"
+
+#: artdlg.cpp:216
+msgid "Next Message"
+msgstr "下一个信件"
+
+#: artdlg.cpp:218
+msgid "Find Article"
+msgstr "查找文章"
+
+#: artdlg.cpp:223
+msgid "Get Article List"
+msgstr "取得文章列表"
+
+#: artdlg.cpp:225
+msgid "Refresh Display"
+msgstr "刷新显示"
+
+#: artdlg.cpp:248
+msgid "Save Article"
+msgstr "保存文章"
+
+#: artdlg.cpp:250
+msgid "Print Article"
+msgstr "打印文章"
+
+#: artdlg.cpp:254
+msgid "Post a Followup"
+msgstr "发表讨论"
+
+#: artdlg.cpp:256
+msgid "Post & Mail"
+msgstr "发表和寄信"
+
+#: artdlg.cpp:262
+msgid "Tag Article"
+msgstr "标记文章"
+
+#: artdlg.cpp:264
+msgid "Lock (keep in cache)"
+msgstr "锁定 (保存在缓存中)"
+
+#: artdlg.cpp:266
+msgid "Decode Article"
+msgstr "对文章进行解码"
+
+#: artdlg.cpp:270
+msgid "Mark UnRead"
+msgstr "标记未读"
+
+#: artdlg.cpp:292 sortDlg.cpp:34
+msgid "Sender"
+msgstr "发信人"
+
+#: artdlg.cpp:294 sortDlg.cpp:36
+msgid "Lines"
+msgstr "行"
+
+#: artdlg.cpp:295 sortDlg.cpp:33
+msgid "Score"
+msgstr "得分"
+
+#: artdlg.cpp:296 sortDlg.cpp:32
+msgid "Subject"
+msgstr "标题"
+
+#: artdlg.cpp:462
+msgid "Threading..."
+msgstr "正在串接 ..."
+
+#: artdlg.cpp:471
+msgid "Showing Article List"
+msgstr "正在显示文章列表"
+
+#: artdlg.cpp:1316
+msgid "KRN - Existing File"
+msgstr "KRN - 存在的文件"
+
+#: artdlg.cpp:1317
+msgid "The File you selected already exists"
+msgstr "你所选中的文件已经存在"
+
+#: artdlg.cpp:1323
+msgid "OverWrite"
+msgstr "覆写"
+
+#: artdlg.cpp:1325
+msgid "Append"
+msgstr "添加到结尾"
+
+#: artdlg.cpp:1360 artdlg.cpp:1425
+msgid ""
+"From: Krn\n"
+"To: You\n"
+"\n"
+"Error getting article.\n"
+"Server said:\n"
+msgstr ""
+"从: Krm\n"
+"到: 你\n"
+"\n"
+"取文章时发生错误.\n"
+"服务器信息:\n"
+
+#: artdlg.cpp:1527
+msgid "Getting Article List"
+msgstr "正在取文章列表"
+
+#: identDlg.cpp:41
+msgid "KRN-Identity Configuration"
+msgstr "KRN - 身份配置"
+
+#: identDlg.cpp:50
+msgid "Here you should enter your personal information"
+msgstr "你应该在这儿输入你的个人信息"
+
+#: identDlg.cpp:52
+msgid "You should know what these are!"
+msgstr "你应该知道这些是什么!"
+
+#: identDlg.cpp:61
+msgid "Real Name"
+msgstr "真实姓名"
+
+#: identDlg.cpp:67
+msgid "E-mail Address"
+msgstr "电子邮件地址"
+
+#: identDlg.cpp:73
+msgid "Organization"
+msgstr "组织"
+
+#: NNTPConfigDlg.cpp:29
+msgid "KRN-NNTP configuration"
+msgstr "KRN - NNTP 配置"
+
+#: NNTPConfigDlg.cpp:34
+msgid "Servers"
+msgstr "服务器"
+
+#: NNTPConfigDlg.cpp:36
+msgid "SMTP server"
+msgstr "SMTP 服务器"
+
+#: NNTPConfigDlg.cpp:41
+msgid "NNTP Server"
+msgstr "NNTP 服务器"
+
+#: NNTPConfigDlg.cpp:66
+msgid "Connect on Startup"
+msgstr "在启动时进行连接"
+
+#: NNTPConfigDlg.cpp:70
+msgid "Connect without asking"
+msgstr "不需问就进行连接"
+
+#: NNTPConfigDlg.cpp:74
+msgid "Authenticate"
+msgstr "身份验证"
+
+#: NNTPConfigDlg.cpp:79
+msgid "User Name"
+msgstr "用户名"
+
+#: NNTPConfigDlg.cpp:83
+msgid "Password"
+msgstr "密码"
+
+#: aboutDlg.cpp:28
+msgid "About KRN"
+msgstr "关于 KRN"
+
+#: aboutDlg.cpp:39
+msgid "Part of the KDE project."
+msgstr "KDE 计划的一部分."
+
+#: aboutDlg.cpp:42
+msgid "Credits & Thanks"
+msgstr "致谢"
+
+#: aboutDlg.cpp:66
+msgid "And Many thanks to:"
+msgstr "非常感谢:"
+
+#: fontsDlg.cpp:39
+msgid "Message Display Settings"
+msgstr "信件显示设置"
+
+#: fontsDlg.cpp:46
+msgid "Header Style"
+msgstr "信头风格"
+
+#: fontsDlg.cpp:48
+msgid "Fancy"
+msgstr "非常花"
+
+#: fontsDlg.cpp:49
+msgid "Brief"
+msgstr "简洁"
+
+#: fontsDlg.cpp:50
+msgid "Standard"
+msgstr "标准"
+
+#: fontsDlg.cpp:51
+msgid "Long"
+msgstr "长"
+
+#: fontsDlg.cpp:52
+msgid "All"
+msgstr "全部"
+
+#: fontsDlg.cpp:56
+msgid "Attachment Style"
+msgstr "附件风格"
+
+#: fontsDlg.cpp:58
+msgid "Iconic"
+msgstr "图标式"
+
+#: fontsDlg.cpp:59
+msgid "Smart"
+msgstr "时髦"
+
+#: fontsDlg.cpp:60
+msgid "Inline"
+msgstr "嵌入"
+
+#: fontsDlg.cpp:67
+msgid "Font Size:"
+msgstr "字体大小:"
+
+#: fontsDlg.cpp:73
+msgid "Huge"
+msgstr "非常大"
+
+#: fontsDlg.cpp:78
+msgid "Standard Font"
+msgstr "标准字体"
+
+#: fontsDlg.cpp:86
+msgid "Fixed Font"
+msgstr "等宽字体"
+
+#: fontsDlg.cpp:94
+msgid "Background Color"
+msgstr "背景颜色"
+
+#: fontsDlg.cpp:97
+msgid "Foreground Color"
+msgstr "前景颜色"
+
+#: fontsDlg.cpp:100
+msgid "Link Color"
+msgstr "链接颜色"
+
+#: fontsDlg.cpp:103
+msgid "Followed Color"
+msgstr "访问过的颜色"
+
+#: fontsDlg.cpp:107
+msgid "Use only one window"
+msgstr "只使用一个窗口"
+
+#: fontsDlg.cpp:109
+msgid "Split window vertically"
+msgstr "垂直分割窗口"
+
+#: findArtDlg.cpp:22
+msgid "KRN - Article Searcher"
+msgstr "KRN - 文章搜寻者"
+
+#: findArtDlg.cpp:29
+msgid "Find Articles With:"
+msgstr "查找带...的文章:"
+
+#: findArtDlg.cpp:34 rulesDlg.cpp:106
+msgid "In Field:"
+msgstr "在域:"
+
+#: findArtDlg.cpp:56 rulesDlg.cpp:132
+msgid "Wildcard Mode"
+msgstr "通配符模式"
+
+#: krnsender.cpp:59
+msgid "This server is read onlyyou can't post here!"
+msgstr "这个服务器是只读的 , 你不能在这儿发表文章 !"
+
+#: expireDlg.cpp:22 expireDlg.cpp:27
+msgid "KRN - Expire Settings"
+msgstr "KRN - 过期设置"
+
+#: expireDlg.cpp:36
+msgid "For how long should we keep things (in days)?"
+msgstr "保留信件多长时间(天) ?"
+
+#: expireDlg.cpp:46
+msgid "Read:"
+msgstr "已读:"
+
+#: expireDlg.cpp:47
+msgid "Unread:"
+msgstr "未读:"
+
+#: expireDlg.cpp:50
+msgid "Article Bodies:"
+msgstr "文章主体:"
+
+#: expireDlg.cpp:55
+msgid "Article Headers:"
+msgstr "文章头部:"
+
+#: printdlg.cpp:21
+msgid "KRN - Print Settings"
+msgstr "KRN - 打印配置"
+
+#: printdlg.cpp:26
+msgid "KRN - Printing Settings"
+msgstr "KRN - 打印配置"
+
+#: printdlg.cpp:33
+msgid "General"
+msgstr "一般"
+
+#: printdlg.cpp:37
+msgid "Use HTML Printing"
+msgstr "使用 HTML 打印"
+
+#: printdlg.cpp:40
+msgid "Use Direct Printing"
+msgstr "使用直接打印"
+
+#: printdlg.cpp:48
+msgid "Print using:"
+msgstr "打印时用:"
+
+#: printdlg.cpp:52
+msgid "Feed it with:"
+msgstr "送给:"
+
+#: printdlg.cpp:54
+msgid "Postscript"
+msgstr "Postscript"
+
+#: printdlg.cpp:55
+msgid "HTML"
+msgstr "HTML"
+
+#: printdlg.cpp:56
+msgid "Text"
+msgstr "文本"
+
+#: rulesDlg.cpp:38
+msgid "KRN - Scoring Rules Editor"
+msgstr "KRN - 记分规则编辑器"
+
+#: rulesDlg.cpp:45
+msgid "Global Rules"
+msgstr "全局规则"
+
+#: rulesDlg.cpp:47
+msgid "All Rules"
+msgstr "所有规则"
+
+#: rulesDlg.cpp:63
+msgid "Active Rules"
+msgstr "活动规则"
+
+#: rulesDlg.cpp:70
+msgid "Rule Editor"
+msgstr "规则编辑器"
+
+#: rulesDlg.cpp:87
+msgid "Save as"
+msgstr "存为"
+
+#: rulesDlg.cpp:101
+msgid "Match Articles With:"
+msgstr "用 ... 匹配文章:"
+
+#: rulesDlg.cpp:126
+msgid "Negative"
+msgstr "消极的"
+
+#: rulesDlg.cpp:190
+msgid "Rule name:"
+msgstr "规则名:"
+
+#: sortDlg.cpp:23
+msgid "KRN - Header Sorting"
+msgstr "KRN - 信头排序"
+
+#: sortDlg.cpp:39
+msgid "Sort by:"
+msgstr "排序按照:"
+
+#: sortDlg.cpp:56
+msgid "Use Threading"
+msgstr "使用串连"
+
+#~ msgid "Print"
+#~ msgstr "打印"
+
+#~ msgid "Small"
+#~ msgstr "小"
+
+#~ msgid "Large"
+#~ msgstr "大"
+
+#~ msgid "None"
+#~ msgstr "无"
