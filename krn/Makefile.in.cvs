@@ -51,9 +51,7 @@ OBJECTS = 	main.o\
 		kmessage.o\
 		mkmessage.o\
 		ktablistbox.o\
-		mktablistbox.o\
-		multipar.o\
-		basicmsg.o\
+		kmmessage.o\
 		newsgroup.o\
 		kstrtable.o\
 		asker.o\
@@ -91,13 +89,16 @@ OBJECTS = 	main.o\
 		mPartPropsData.o\
                 fontsDlg.o\
                 mfontsDlg.o\
-                fontsDlgData.o
+                fontsDlgData.o\
+                kmmsgpart.o\
+                kmfolder.o\
+                kmmsginfo.o\
+                kmfoldernode.o
 
 SRCMETA = 	mgroupdlg.o \
 		mNNTP.o \
                 martdlg.o\
                 mkmessage.o\
-                mktablistbox.o\
                 masker.o\
                 midentDlg.o\
                 mNNTPConfigDlg.o\
@@ -115,7 +116,6 @@ METASRC =	mgroupdlg.cpp \
 		mNNTP.cpp \
                 martdlg.cpp\
                 mkmessage.cpp\
-                mktablistbox.cpp\
                 masker.cpp\
                 midentDlg.cpp\
                 mNNTPConfigDlg.cpp\
@@ -126,9 +126,8 @@ METASRC =	mgroupdlg.cpp \
                 mPostDialog.cpp\
                 mNewMsgDlg.cpp\
                 mPartProps.cpp\
-                mfontsDlg.cpp
-
-
+                mfontsDlg.cpp\
+                ktablistbox.moc
 
 TARGET	=	krn
 
@@ -142,9 +141,7 @@ SOURCES = 	main.cpp\
 		kmessage.cpp\
                 mkmessage.cpp\
 		ktablistbox.cpp\
-                mktablistbox.cpp\
-		multipar.cpp\
-                basicmsg.cpp\
+		kmmessage.cpp\
                 newsgroup.cpp\
                 kstrtable.cpp\
                 asker.cpp\
@@ -168,13 +165,16 @@ SOURCES = 	main.cpp\
                 PartProps.cpp\
                 PartPropsData.cpp\
                 fontsDlg.cpp\
-                fontsDlgData.cpp
+                fontsDlgData.cpp\
+                kmmsgpart.cpp\
+                kmfolder.cpp\
+                kmmsginfo.cpp\
+                kmfoldernode.cpp
 
 
 HEADERS = 	NNTP.h\
-		basicmsg.h\
                 kmessage.h\
-                multipar.h\
+                kmmessage.h\
 		artdlg.h\
                 groupdlg.h\
                 ktablistbox.h\
@@ -201,17 +201,22 @@ HEADERS = 	NNTP.h\
 		PartProps.h\
 		PartPropsData.h\
                 fontsDlg.h\
-                fontsDlgData.h
+                fontsDlgData.h\
+                kmmsgpart.h\
+                kmfolder.h\
+                kmmsginfo.h\
+                kmfoldernode.h
+
 
 ######### build rules ################
 
-all: Makefile $(TARGET)
+all: Makefile depend $(TARGET)
 	$(INSTALL_DIR) $(LIBDIR)/pics
 
 Makefile: Makefile.in
 	cd .. && ONFIG_FILES=krn/$@ CONFIG_HEADERS= $(SHELL) ./config.status
 
-$(TARGET): $(SRCMETA) $(OBJECTS)
+$(TARGET): $(METASRC) $(SRCMETA) $(OBJECTS) 
 	$(CXX) $(OBJECTS) -o $(TARGET) $(LDFLAGS)
 
 clean:
@@ -246,9 +251,6 @@ martdlg.cpp: artdlg.h
 
 mkmessage.cpp: kmessage.h
 	$(MOC) kmessage.h -o mkmessage.cpp
-
-mktablistbox.cpp: ktablistbox.h
-	$(MOC) ktablistbox.h -o mktablistbox.cpp
 
 masker.cpp: asker.h
 	$(MOC) asker.h -o masker.cpp

@@ -33,7 +33,7 @@
 
 #include <mimelib/mimepp.h>
 
-#include "multipar.h"
+#include "kmmessage.h"
 
 class NNTP;
 

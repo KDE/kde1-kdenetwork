@@ -116,9 +116,8 @@ void KDecode::showWindow()
 
 void KDecode::decode(int line,int)
 {
-    KTabListBoxItem *item=dialog->list->getItem(line);
     uulist *l;
-    int i=QString(item->text(0)).toInt()-1;
+    int i=dialog->list->text(line,0).toInt()-1;
     debug ("Decoding ID-->%d",i);
     l=UUGetFileListItem(i);
     QString f= QFileDialog::getSaveFileName(0,0,0,l->filename);
