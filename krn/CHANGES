@@ -6,11 +6,18 @@ Changes made Jun 12
             anymore! It doesn't remember geometry, it doesn't use the right
             fonts, what happened!!!!???? :-(
 *   	    Ok, the geometry was because of the exit(0)
-*           My code to read the font config was deleted!!!!
+*           My code to read the font config in the reader was deleted!!!!
             I don't know who did it, BUT:
             Please, people, if you are going to delete something that's
             in a place that says "#ifdef KRN" please tell me, I'm pissed now!
             :-(
+
+*           UGH, the group tree is broken too :-(
+*           The group tree is sane again. this was entirely my fault.
+            On the other hand, I could blame Johannes Sixt.... nah, it was
+            my fault ;-)
+*           Version is now 0.4.7. Apparently all the most obvious bugs are
+            fixed!
 
 -----------------------------------------------------------------------------
 Changes made Jun 11

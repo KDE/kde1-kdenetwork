@@ -248,8 +248,6 @@ Groupdlg::Groupdlg(const char *name):Inherited (name)
     if (conf->readNumEntry("ConnectAtStart"))
         actions(CONNECT);
     
-    // readProperties(); Kalle: no longer needed
-    
     qApp->processEvents();
     //Open group windows
 }
@@ -279,7 +277,6 @@ Groupdlg::~Groupdlg ()
     conf->writeEntry("GroupW",width());
     conf->writeEntry("GroupH",height());
     conf->sync();
-    debug ("in destructor!");
 }
 
 void Groupdlg::openGroup (QString name)
@@ -441,8 +438,7 @@ void Groupdlg::openGroup (KTreeViewItem *it)
 		itemp->setDeleteChildren(true);
             }
 
-            //            list->expandItem(it);
-            it->setExpanded(true);
+            list->expandItem(list->itemRow(it),false);
             list->forEveryVisibleItem(checkPixmap,NULL);
             list->repaint();
 
@@ -453,11 +449,9 @@ void Groupdlg::openGroup (KTreeViewItem *it)
         else
         {
             if (it->isExpanded())
-                //                list->collapseItem(it);
-                it->setExpanded(false);
+                list->collapseItem(list->itemRow(it),false);
             else
-                it->setExpanded(true);
-//                list->expandItem(it);
+                list->expandItem(list->itemRow(it),false);
         }
     }
     qApp->restoreOverrideCursor();
@@ -805,6 +799,7 @@ bool Groupdlg::actions (int action,NewsGroup *group)
 
 bool Groupdlg::loadSubscribed()
 {
+    debug ("loading subscribed");
     QString ac;
     ac=krnpath+"subscribed";
     QFile f(ac.data ());
