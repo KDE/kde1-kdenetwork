@@ -10,7 +10,7 @@
 #include "general.h"
 #include "../config.h"
 #include <kconfig.h>
-#include <qfiledialog.h>
+#include <qfiledlg.h>
 
 extern KConfig *kConfig;
 extern global_config *kSircConfig;

@@ -1,11 +1,12 @@
 #include "ksprefs.h"
 
 #include <qlayout.h>
+#include <kapp.h>
 
 KSPrefs::KSPrefs(QWidget * parent, const char * name)
   : QDialog(parent, name)
 {
-  setCaption("kSirc Prefrences");
+  setCaption(i18n("kSirc Prefrences"));
 
   pTab = new QTabDialog(this, "prefstabs");
 
@@ -16,12 +17,13 @@ KSPrefs::KSPrefs(QWidget * parent, const char * name)
   pMenu = new UserMenuRef(pTab);
   pFilters = new DefaultFilters(pTab);
 
-  pTab->setCancelButton();
-  pTab->addTab(pGeneral, "&General");
-  pTab->addTab(pStart, "&StartUp");
-  pTab->addTab(pServerChannel, "Servers/&Channels");
-  pTab->addTab(pMenu, "&User Menu");
-  pTab->addTab(pFilters, "&Default Filters");
+  pTab->setCancelButton(i18n("Cancel"));
+  pTab->setOkButton(i18n("OK"));
+  pTab->addTab(pGeneral, i18n("&General"));
+  pTab->addTab(pStart, i18n("&StartUp"));
+  pTab->addTab(pServerChannel, i18n("Servers/&Channels"));
+  pTab->addTab(pMenu, i18n("&User Menu"));
+  pTab->addTab(pFilters, i18n("&Default Filters"));
 
   connect(pTab, SIGNAL(applyButtonPressed()),
           pGeneral, SLOT(slot_apply()));
@@ -32,8 +34,6 @@ KSPrefs::KSPrefs(QWidget * parent, const char * name)
   connect(pTab, SIGNAL(applyButtonPressed()),
 	  pFilters, SLOT(slot_apply()));
 
-
-  resize(420, 400);
 
   // Connect this one last since it deletes the widget.
   connect(pTab, SIGNAL(applyButtonPressed()),

@@ -15,25 +15,13 @@
 
 /*
  * Needed items
- * 1. Move the fork and dsirc out of the main, and into the ksirc object
- * 2. Multiple toplevel widgets.
- * 3. Handle sig chils and sig pipes to control dsircc
  * 4. Send a /quit and/or kill dsirc on exit
  * */
 
 
-//#include "toplevel.h"
-//#include "ksircprocess.h"
-//#include "iocontroller.h"
-//#include "ioBroadcast.h"
 #include "servercontroller.h"
 
 #include <iostream.h>
-/*
-#include <termios.h>
-#include <unistd.h>
-#include <fcntl.h>
-*/
 #include <time.h> 
 
 
@@ -66,17 +54,17 @@ int main( int argc, char ** argv )
     if(ntime - COMPILE_DATE > 4838400){
       // To Old
       QMessageBox::critical(0, "kSirc",
-			    QString("kSirc Alpha releases have an 8 week\n") +
-			    QString("expiry date.\n\n") +
-			    QString("kSirc-ALPHA HAS EXPIRED!!\n") +
-			    QString("Please upgrade or use a beta release"));
+			    QString(i18n("kSirc Alpha releases have an 8 week\n"
+                                         "expiry date.\n\n"
+                                         "kSirc-ALPHA HAS EXPIRED!!\n"
+                                         "Please upgrade or use a beta release")));
       exit(1);
     }
     else if(ntime - COMPILE_DATE > 2419200){
       QMessageBox::warning(0, "kSirc",
-			   QString("kSirc Alpha release have an 8 week\n") +
-			   QString("expiry date.\n\n") +
-			   QString("THIS VERSION WILL EXPIRE IN UNDER 4 WEEKS"));
+			   QString(i18n("kSirc Alpha release have an 8 week\n"
+                                        "expiry date.\n\n"
+                                        "THIS VERSION WILL EXPIRE IN UNDER 4 WEEKS")));
     }
   }
 

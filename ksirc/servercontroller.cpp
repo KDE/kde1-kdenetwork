@@ -108,16 +108,16 @@ servercontroller::servercontroller /*FOLD00*/
   QPopupMenu *file = new QPopupMenu(0, QString(name) + "_menu_file");
   //  insertChild(file);
   objFinder::insert(file);
-  file->insertItem("&Quit", kApp, SLOT(quit()), ALT + Key_F4);
-  MenuBar->insertItem("&File", file);
+  file->insertItem(i18n("&Quit"), kApp, SLOT(quit()), ALT + Key_F4);
+  MenuBar->insertItem(i18n("&File"), file);
   
   connections = new QPopupMenu(0, QString(name) + "_menu_connections");
 //  insertChild(connections);
 
-  server_id = connections->insertItem("&New Server...", this, SLOT(new_connection()), CTRL + Key_N );
-  join_id = connections->insertItem("&Join Channel...", this, SLOT(new_channel()), CTRL + Key_J);
+  server_id = connections->insertItem(i18n("&New Server..."), this, SLOT(new_connection()), CTRL + Key_N );
+  join_id = connections->insertItem(i18n("&Join Channel..."), this, SLOT(new_channel()), CTRL + Key_J);
   connections->setItemEnabled(join_id, FALSE);
-  MenuBar->insertItem("&Connections", connections);
+  MenuBar->insertItem(i18n("&Connections"), connections);
   
   kConfig->setGroup("General");
   kSircConfig->AutoCreateWin = kConfig->readNumEntry("AutoCreateWin", FALSE);
@@ -135,17 +135,17 @@ servercontroller::servercontroller /*FOLD00*/
   options->setCheckable(TRUE);
 
   options->insertSeparator();
-  options->insertItem("&Colour Preferences...",
+  options->insertItem(i18n("&Colour Preferences..."),
 		      this, SLOT(colour_prefs()));
-  options->insertItem("&Global Fonts...",
+  options->insertItem(i18n("&Global Fonts..."),
 		      this, SLOT(font_prefs()));
-  options->insertItem("&Filter Rule Editor...",
+  options->insertItem(i18n("&Filter Rule Editor..."),
 		      this, SLOT(filter_rule_editor()));
   options->insertSeparator();
-  options->insertItem("&Preferences...",
+  options->insertItem(i18n("&Preferences..."),
 		      this, SLOT(general_prefs()));
   
-  MenuBar->insertItem("&Options", options);
+  MenuBar->insertItem(i18n("&Options"), options);
   
   
   QPopupMenu *help = new QPopupMenu(0, QString(name) + "_menu_help");
@@ -153,16 +153,16 @@ servercontroller::servercontroller /*FOLD00*/
   objFinder::insert(help);
   //  help->insertItem("Help...",
   //		   this, SLOT(help_general()));
-  help->insertItem("Help on Colours...",
+  help->insertItem(i18n("Help on Colours..."),
 		   this, SLOT(help_colours()));
-  help->insertItem("Help on Filters...",
+  help->insertItem(i18n("Help on Filters..."),
 		   this, SLOT(help_filters()));
-  help->insertItem("Help on Keys...",
+  help->insertItem(i18n("Help on Keys..."),
 		   this, SLOT(help_keys()));
   help->insertSeparator();
-  help->insertItem("About kSirc...",
+  help->insertItem(i18n("About kSirc..."),
 		   this, SLOT(about_ksirc()));
-  MenuBar->insertItem("&Help", help);
+  MenuBar->insertItem(i18n("&Help"), help);
   
   ConnectionTree->setExpandLevel(2);
   open_toplevels = 0;
@@ -177,7 +177,7 @@ servercontroller::servercontroller /*FOLD00*/
   pic_ppl = new QPixmap(kicl->loadIcon("ppl.gif"));
   pic_icon = new QPixmap(kicl->loadIcon("ksirc.gif"));
 
-  setCaption( "Server Control" );
+  setCaption( i18n("Server Control") );
   setIcon(*pic_icon);
   KWM::setMiniIcon(winId(), *pic_server);
 
@@ -230,7 +230,7 @@ void servercontroller::new_ksircprocess(QString str) /*FOLD00*/
   if(proc_list[str.data()])   // if it already exists, quit
     return;
 
-  QString channels("Channels"), online("Online");
+  QString channels(i18n("Channels")), online(i18n("Online"));
   KPath path;
   path.push(&str);
   // Insert new base
@@ -262,7 +262,7 @@ void servercontroller::new_ksircprocess(QString str) /*FOLD00*/
   debug("Done new_ksircprocess");
 }
 
-void servercontroller::new_channel() /*FOLD00*/
+void servercontroller::new_channel() /*fold00*/
 {
   open_top w;                                   // Create new channel popup
   connect(&w, SIGNAL(open_toplevel(QString)),   // Connect ok to right slot
@@ -307,11 +307,12 @@ void servercontroller::colour_prefs() /*fold00*/
   kc->show();
 }
 
-void servercontroller::general_prefs() /*fold00*/
+void servercontroller::general_prefs() /*FOLD00*/
 {
   KSPrefs *kp = new KSPrefs();
   connect(kp, SIGNAL(update()),
-	  this, SLOT(configChange()));
+          this, SLOT(configChange()));
+  kp->resize(550, 450);
   kp->show();
 }
 
@@ -380,9 +381,9 @@ void servercontroller::help_keys() /*fold00*/
   kApp->invokeHTMLHelp("ksirc/keys.html", "");
 }
 
-void servercontroller::ProcMessage(QString server, int command, QString args) /*fold00*/
+void servercontroller::ProcMessage(QString server, int command, QString args) /*FOLD00*/
 {
-  QString online("Online"), channels("Channels");
+  QString online(i18n("Online")), channels(i18n("Channels"));
   KPath path;
 
   switch(command){
@@ -557,11 +558,11 @@ void servercontroller::readProperties(KConfig *ksc) /*fold00*/
   }
 }
 
-scInside::scInside ( QWidget * parent, const char * name, WFlags /*fold00*/
+scInside::scInside ( QWidget * parent, const char * name, WFlags /*FOLD00*/
 		     f, bool allowLines )
   : QFrame(parent, name, f, allowLines)
 {
-  ASConn = new QLabel("Active Server Connections", this, "servercontroller_label");
+  ASConn = new QLabel(i18n("Active Server Connections"), this, "servercontroller_label");
   QColorGroup cg = QColorGroup(colorGroup().foreground(), 
 			       colorGroup().background(),
                                colorGroup().light(), 

@@ -130,16 +130,16 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
   lagmeter->setFrameStyle(QFrame::NoFrame);
   lagmeter->setFixedHeight(ktool->height() - 2);
   lagmeter->display("      ");
-  QToolTip::add(lagmeter, "Lag in seconds to the server");
+  QToolTip::add(lagmeter, i18n("Lag in seconds to the server"));
   
   file = new QPopupMenu(0x0, QString(QObject::name()) + "_popup_file");
   //  this->insertChild(file);
   objFinder::insert(file);
-  file->insertItem("&New Window...", this, SLOT(newWindow()), CTRL + Key_N);
-  file->insertItem("&Ticker Mode", this, SLOT(showTicker()), CTRL + Key_T);
+  file->insertItem(i18n("&New Window..."), this, SLOT(newWindow()), CTRL + Key_N);
+  file->insertItem(i18n("&Ticker Mode"), this, SLOT(showTicker()), CTRL + Key_T);
   //  file->insertItem("&Root Window Mode", this, SLOT(toggleRootWindow()), CTRL + Key_Z);
   file->insertSeparator();
-  file->insertItem("&Close", this, SLOT(terminate()), CTRL + Key_Q );
+  file->insertItem(i18n("&Close"), this, SLOT(terminate()), CTRL + Key_Q );
 
   QFrame *menu_frame = ktool->getFrame(0);
   CHECK_PTR(menu_frame);
@@ -147,8 +147,6 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
   menu_frame->setLineWidth(0);
   
   kmenu = new QMenuBar(this, "menubar");
-  //  kmenu = new QMenuBar(menu_frame, "menubar");
-  //  kmenu = new QMenuBar(this, "menubar");
   kmenu->setFrameStyle(QFrame::NoFrame); // Turn off frame style.
   kmenu->setLineWidth(0);  
   kmenu->resize(width(), height() - 2);
@@ -156,16 +154,14 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
     kmenu->recreate(menu_frame, 0, QPoint(0,-3));
   else
     kmenu->recreate(menu_frame, 0, QPoint(0,0));
-  kmenu->insertItem("&File", file, 2, -1);
+  kmenu->insertItem(i18n("&File"), file, 2, -1);
   kmenu->setAccel(Key_F, 2);
-  //  topLevelWidget()->installEventFilter(kmenu);
 
   edit = new QPopupMenu();
-  edit->insertItem("&Cut WIndow...", this, SLOT(openCutWindow()), CTRL + Key_X);
-  edit->insertItem("&Paste", this, SLOT(pasteToWindow()), CTRL + Key_V);
-  kmenu->insertItem("&Edit", edit, -1, -1);
+  edit->insertItem(i18n("&Cut WIndow..."), this, SLOT(openCutWindow()), CTRL + Key_X);
+  edit->insertItem(i18n("&Paste"), this, SLOT(pasteToWindow()), CTRL + Key_V);
+  kmenu->insertItem(i18n("&Edit"), edit, -1, -1);
 
-  //  setMenu(kmenu);
 
   /*
    * Ok, let's look at the basic widge t "layout"
@@ -291,7 +287,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
     user_menu = UserControlMenu::parseKConfig();
 
   user_controls = new QPopupMenu();
-  kmenu->insertItem("&Users", user_controls);
+  kmenu->insertItem(i18n("&Users"), user_controls);
 
   connect(user_controls, SIGNAL(activated(int)), 
 	  this, SLOT(UserParseMenu(int)));
@@ -343,7 +339,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
 }
 
 
-KSircTopLevel::~KSircTopLevel() /*FOLD00*/
+KSircTopLevel::~KSircTopLevel() /*fold00*/
 {
 
   // Cleanup and shutdown
@@ -790,7 +786,7 @@ void KSircTopLevel::UserUpdateMenu() /*fold00*/
       user_controls->insertSeparator();
     }
     else{
-      user_controls->insertItem(ucm->title, i);
+      user_controls->insertItem(i18n(ucm->title), i);
       if(ucm->accel)
 	user_controls->setAccel(i, ucm->accel);
       if((ucm->op_only == TRUE) && (opami == FALSE))
