@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 1998-12-01 01:56+0100\n"
+"POT-Creation-Date: 1999-01-10 02:04+0100\n"
 "Content-Type: text/plain; charset=\n"
 "Date: 1997-10-28 22:45:13+0100\n"
 "From: Bertrand Leconte,,, <leconteb@arthur>\n"
@@ -8,27 +8,27 @@ msgstr ""
 "Files: knu.cpp CommandDlg.cpp OptionsDlg.cpp ktabctl.cpp PingDlg.cpp "
 "TracerouteDlg.cpp HostDlg.cpp\n"
 
-#: knu.cpp:147 knu.cpp:306
+#: knu.cpp:150 knu.cpp:309
 msgid "&Ping"
 msgstr "&Ping"
 
-#: knu.cpp:156 knu.cpp:312
+#: knu.cpp:159 knu.cpp:315
 msgid "&Traceroute"
 msgstr "&Traceroute"
 
-#: knu.cpp:165 knu.cpp:318
+#: knu.cpp:168 knu.cpp:321
 msgid "Host &resolution"
 msgstr "&Rezolucija raèunala"
 
-#: knu.cpp:178
+#: knu.cpp:181
 msgid "F&inger"
 msgstr "F&inger"
 
-#: knu.cpp:187 knu.cpp:330
+#: knu.cpp:190 knu.cpp:333
 msgid "&mtr"
 msgstr ""
 
-#: knu.cpp:198
+#: knu.cpp:201
 msgid ""
 "There is no command enabled\n"
 "in the configuration file.\n"
@@ -40,42 +40,55 @@ msgstr ""
 "\n"
 "Stoga ne mogu uèiniti ni¹ta...\n"
 
-#: knu.cpp:243
+#: knu.cpp:246
 msgid "&New window"
 msgstr "&Novi prozor"
 
-#: knu.cpp:246
+#: knu.cpp:249
 msgid "&Close window"
 msgstr "&Zatvori prozor"
 
-#: knu.cpp:257
+#: knu.cpp:260
 msgid "Select &all"
 msgstr "Iz&aberi sve"
 
-#: knu.cpp:260
+#: knu.cpp:263
 msgid "C&lear output window"
 msgstr "&Oèisti izlazni prozor"
 
-#: knu.cpp:263
+#: knu.cpp:266
 msgid "P&references..."
 msgstr "P&odesi..."
 
-#: knu.cpp:278
+#: knu.cpp:281
 #, c-format
 msgid "&About %s"
 msgstr "&O %s"
 
-#: knu.cpp:280
+#: knu.cpp:283
 msgid "About &Qt"
 msgstr "O &Qt-u"
 
-#: knu.cpp:324
+#: knu.cpp:327
 msgid "&Finger"
 msgstr "&Finger"
+
+#: knu.cpp:466
+#, c-format
+msgid ""
+"Knu\n"
+"Version %s\n"
+"\n"
+"Bertrand"
+msgstr ""
 
 #: knu.cpp:469
 msgid "About..."
 msgstr "O programu..."
+
+#: knu.cpp:602
+msgid "Network utilities"
+msgstr ""
 
 #: CommandDlg.cpp:128
 msgid "H&ost:"

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: knu\n"
-"POT-Creation-Date: 1998-12-01 01:56+0100\n"
+"POT-Creation-Date: 1999-01-10 02:04+0100\n"
 "PO-Revision-Date: 1998-03-01 20:15 CET\n"
 "Last-Translator: Serge \"sergio\" Tellène <tells@mygale.org>\n"
 "Language-Team: Français\n"
@@ -13,27 +13,27 @@ msgstr ""
 "Content-Type: text/plain; charset=iso8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: knu.cpp:147 knu.cpp:306
+#: knu.cpp:150 knu.cpp:309
 msgid "&Ping"
 msgstr "&Ping"
 
-#: knu.cpp:156 knu.cpp:312
+#: knu.cpp:159 knu.cpp:315
 msgid "&Traceroute"
 msgstr "&Traceroute"
 
-#: knu.cpp:165 knu.cpp:318
+#: knu.cpp:168 knu.cpp:321
 msgid "Host &resolution"
 msgstr "&Résolution de noms"
 
-#: knu.cpp:178
+#: knu.cpp:181
 msgid "F&inger"
 msgstr "F&inger"
 
-#: knu.cpp:187 knu.cpp:330
+#: knu.cpp:190 knu.cpp:333
 msgid "&mtr"
 msgstr ""
 
-#: knu.cpp:198
+#: knu.cpp:201
 msgid ""
 "There is no command enabled\n"
 "in the configuration file.\n"
@@ -45,42 +45,55 @@ msgstr ""
 "\n"
 "Vous n'allez avoir accès à aucune fonction...\n"
 
-#: knu.cpp:243
+#: knu.cpp:246
 msgid "&New window"
 msgstr "&Nouvelle fenêtre"
 
-#: knu.cpp:246
+#: knu.cpp:249
 msgid "&Close window"
 msgstr "&Fermer la fenêtre"
 
-#: knu.cpp:257
+#: knu.cpp:260
 msgid "Select &all"
 msgstr "Sélectionner &tout"
 
-#: knu.cpp:260
+#: knu.cpp:263
 msgid "C&lear output window"
 msgstr "Effacer la fenêtre d'affichage"
 
-#: knu.cpp:263
+#: knu.cpp:266
 msgid "P&references..."
 msgstr "&Préférences..."
 
-#: knu.cpp:278
+#: knu.cpp:281
 #, c-format
 msgid "&About %s"
 msgstr "&A propos de %s"
 
-#: knu.cpp:280
+#: knu.cpp:283
 msgid "About &Qt"
 msgstr "A propos de &Qt"
 
-#: knu.cpp:324
+#: knu.cpp:327
 msgid "&Finger"
 msgstr "&Finger"
+
+#: knu.cpp:466
+#, c-format
+msgid ""
+"Knu\n"
+"Version %s\n"
+"\n"
+"Bertrand"
+msgstr ""
 
 #: knu.cpp:469
 msgid "About..."
 msgstr "A propos..."
+
+#: knu.cpp:602
+msgid "Network utilities"
+msgstr ""
 
 #: CommandDlg.cpp:128
 msgid "H&ost:"
