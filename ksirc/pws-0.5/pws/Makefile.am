@@ -1,4 +1,6 @@
 
+APPSDIR = $(kde_appsdir)/Internet
+
 INCLUDES= $(all_includes) -include $(srcdir)/../../kplunger/kplunger.h
 
 SUBDIRS = doc pics
