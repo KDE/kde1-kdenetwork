@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-01-19 22:18+0100\n"
+"POT-Creation-Date: 1998-01-22 23:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Kim Enkovaara <kim.enkovaara@iki.fi>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: ENCODING\n"
 
-#: kmcomposewin.cpp:1148 kmmainwin.cpp:261 kpgp.cpp:351
+#: kmcomposewin.cpp:1176 kmmainwin.cpp:261 kpgp.cpp:351
 msgid ""
 "Sorry, but this feature\n"
 "is still missing"
@@ -320,12 +320,12 @@ msgstr "Avaa osoitekirja..."
 msgid "Initializing..."
 msgstr "Alustan..."
 
-#: kmfolderdia.cpp:38 kmmsgpartdlg.cpp:51 kmsettings.cpp:127
-#: kmsettings.cpp:680
+#: kmfolderdia.cpp:38 kmmsgpartdlg.cpp:51 kmsettings.cpp:128
+#: kmsettings.cpp:719
 msgid "Name:"
 msgstr "Nimi:"
 
-#: kmcomposewin.cpp:1156 kmfolderdia.cpp:44 kmfolderdia.cpp:120
+#: kmcomposewin.cpp:1184 kmfolderdia.cpp:44 kmfolderdia.cpp:120
 msgid "unnamed"
 msgstr "nimeämätön"
 
@@ -341,91 +341,91 @@ msgstr "Liittämättömät profiilit"
 msgid "Settings"
 msgstr "Asetukset"
 
-#: kmsettings.cpp:129
+#: kmsettings.cpp:130
 msgid "Organization:"
 msgstr "Organisaatio:"
 
-#: kmsettings.cpp:131
+#: kmsettings.cpp:132
 msgid "Email Address:"
 msgstr "Sähköpostiosoite:"
 
-#: kmsettings.cpp:134
+#: kmsettings.cpp:135
 msgid "Reply-To Address:"
 msgstr "Reply-to osoite:"
 
-#: kmsettings.cpp:136
+#: kmsettings.cpp:137
 msgid "Signature File:"
 msgstr "Allekirjoitustiedosto:"
 
-#: kmsettings.cpp:139
+#: kmsettings.cpp:140
 msgid "PGP User Identity:"
 msgstr "PGP Identiteetti:"
 
-#: kmsettings.cpp:147
+#: kmsettings.cpp:148
 msgid "Identity"
 msgstr "Identiteetti"
 
-#: kmsettings.cpp:166
+#: kmsettings.cpp:167
 msgid "Sending Mail"
 msgstr "Postin lähetys"
 
-#: kmsettings.cpp:172
+#: kmsettings.cpp:173
 msgid "Sendmail"
 msgstr "Sendmail"
 
-#: kmsettings.cpp:177 kmsettings.cpp:687
+#: kmsettings.cpp:178 kmsettings.cpp:726
 msgid "Location:"
 msgstr "Sijainti:"
 
-#: kmsettings.cpp:182
+#: kmsettings.cpp:183
 msgid "SMTP"
 msgstr "SMTP"
 
-#: kmsettings.cpp:187
+#: kmsettings.cpp:188
 msgid "Server:"
 msgstr "Palvelin:"
 
-#: kmsettings.cpp:189 kmsettings.cpp:708
+#: kmsettings.cpp:190 kmsettings.cpp:747
 msgid "Port:"
 msgstr "Portti:"
 
-#: kmsettings.cpp:210
+#: kmsettings.cpp:211
 msgid "Incoming Mail"
 msgstr "Postin vastaanotto"
 
-#: kmsettings.cpp:215
+#: kmsettings.cpp:216
 msgid "Accounts:   (add at least one account!)"
 msgstr "Profiilit: (lisää ainakin yksi profiili!)"
 
-#: kmcomposewin.cpp:111 kmsettings.cpp:220
+#: kmcomposewin.cpp:111 kmsettings.cpp:221
 msgid "Name"
 msgstr "Nimi"
 
-#: kmcomposewin.cpp:114 kmsettings.cpp:221
+#: kmcomposewin.cpp:114 kmsettings.cpp:222
 msgid "Type"
 msgstr "Tyyppi"
 
-#: kmsettings.cpp:222
+#: kmsettings.cpp:223
 msgid "Folder"
 msgstr "Kansio"
 
-#: kmsettings.cpp:230
+#: kmsettings.cpp:231
 msgid "Add..."
 msgstr "Lisää..."
 
-#: kmsettings.cpp:233
+#: kmsettings.cpp:234
 msgid "Modify..."
 msgstr "Muokkaa..."
 
-#: kmsettings.cpp:253
+#: kmsettings.cpp:254
 msgid "Network"
 msgstr "Verkko"
 
-#: kmsettings.cpp:273
+#: kmsettings.cpp:274
 msgid "Phrases"
 msgstr "Lauseet"
 
-#: kmsettings.cpp:278
+#: kmsettings.cpp:279
 msgid ""
 "The following placeholders are supported in the reply phrases:\n"
 "%D=date, %S=subject, %F=sender, %%=percent sign"
@@ -433,143 +433,156 @@ msgstr ""
 "Seuraavat paikanpitimet ovat tuettuina vastauslauseissa:\n"
 "%D=päivä, %S=aihe, %F=lähettäjä, %%=prosenttimerkki"
 
-#: kmsettings.cpp:286
+#: kmsettings.cpp:287
 msgid "Reply to sender:"
 msgstr "Vastaa lähettäjälle"
 
-#: kmsettings.cpp:289
+#: kmsettings.cpp:290
 msgid "Reply to all:"
 msgstr "Vastaa kaikille"
 
-#: kmsettings.cpp:292
+#: kmsettings.cpp:293
 msgid "Forward:"
 msgstr "Lähetä eteenpäin"
 
-#: kmsettings.cpp:295
+#: kmsettings.cpp:296
 msgid "Indentation:"
 msgstr "Keskitys:"
 
-#: kmmessage.cpp:1139 kmsettings.cpp:307
+#: kmmessage.cpp:1163 kmsettings.cpp:308
 msgid "On %D, you wrote:"
 msgstr "Viestissä %D, kirjoitit:"
 
-#: kmmessage.cpp:1140 kmsettings.cpp:311
+#: kmmessage.cpp:1164 kmsettings.cpp:312
 msgid "On %D, %F wrote:"
 msgstr "Viestissä %D, %F kirjoitti:"
 
-#: kmmessage.cpp:1141 kmsettings.cpp:315
+#: kmmessage.cpp:1165 kmsettings.cpp:316
 msgid "Forwarded Message"
 msgstr "Uudelleen lähetetty viesti"
 
-#: kmsettings.cpp:321
+#: kmsettings.cpp:322
 msgid "Appearance"
 msgstr "Ulkonäkö"
 
-#: kmsettings.cpp:326
+#: kmsettings.cpp:327
 msgid "Automatically append signature"
 msgstr "Automaattisesti lisää allekirjoitus"
 
-#: kmsettings.cpp:332
+#: kmsettings.cpp:333
 msgid "Automatically sign messages using PGP"
 msgstr "Automaattisesti allekirjoita viestit PGP:llä"
 
-#: kmsettings.cpp:337
+#: kmsettings.cpp:338
 msgid "Word wrap at column:"
 msgstr "Sanankierrätys sarakkeessa:"
 
-#: kmsettings.cpp:347
+#: kmsettings.cpp:348
 msgid "Use monospaced font"
 msgstr "Käytä kiinteävälistä kirjasinta"
 
-#: kmsettings.cpp:359
+#: kmsettings.cpp:360
 #, fuzzy
 msgid "When sending mail"
 msgstr "Postin lähetys"
 
-#: kmsettings.cpp:362
+#: kmsettings.cpp:363
 msgid "Default sending:"
 msgstr ""
 
-#: kmsettings.cpp:365
+#: kmsettings.cpp:366
 #, fuzzy
 msgid "send now"
 msgstr "Lähetä nyt"
 
-#: kmsettings.cpp:369
+#: kmsettings.cpp:370
 #, fuzzy
 msgid "send later"
 msgstr "Lähetä &myöhemmin"
 
-#: kmsettings.cpp:374
+#: kmsettings.cpp:375
 #, fuzzy
 msgid "Send messages:"
 msgstr "Lähetän viestiä: "
 
-#: kmsettings.cpp:377
+#: kmsettings.cpp:378
 msgid "Allow 8-bit"
 msgstr ""
 
-#: kmsettings.cpp:382
+#: kmsettings.cpp:383
 msgid "MIME Compilant (Quoted Printable)"
 msgstr ""
 
-#: kmsettings.cpp:408
+#: kmsettings.cpp:409
 msgid "Composer"
 msgstr "Kirjoitusohjelma"
 
-#: kmsettings.cpp:470
+#: kmsettings.cpp:426
+#, fuzzy
+msgid "Folders"
+msgstr "Kansio"
+
+#: kmsettings.cpp:430
+msgid "empty trash on exit"
+msgstr ""
+
+#: kmsettings.cpp:443
+msgid "Misc"
+msgstr ""
+
+#: kmsettings.cpp:505
 msgid "Select Account"
 msgstr "Valitse profiili"
 
-#: kmaccount.cpp:68 kmfilterdlg.cpp:373 kmsettings.cpp:489
+#: kmaccount.cpp:68 kmfilterdlg.cpp:373 kmsettings.cpp:524
 msgid "Unnamed"
 msgstr "Nimeämätön"
 
-#: kmsettings.cpp:508
+#: kmsettings.cpp:543
 msgid "Choose Sendmail Location"
 msgstr "Valitse Sendmailin sijainti"
 
-#: kmcomposewin.cpp:1263 kmsettings.cpp:517
+#: kmcomposewin.cpp:1291 kmsettings.cpp:552
 msgid "Choose Signature File"
 msgstr "Valitse allekirjoitus tiedosto"
 
-#: kmsettings.cpp:672
+#: kmsettings.cpp:711
 msgid "Type:"
 msgstr "Tyyppi:"
 
-#: kmsettings.cpp:685
+#: kmsettings.cpp:724
 msgid "Local Account"
 msgstr "Paikallinen osoite"
 
-#: kmsettings.cpp:694
+#: kmsettings.cpp:733
 msgid "Pop Account"
 msgstr "POP osoite"
 
-#: kmsettings.cpp:696
+#: kmsettings.cpp:735
 msgid "Login:"
 msgstr "Käyttäjätunnus:"
 
-#: kmacctpop.cpp:428 kmsettings.cpp:699
+#: kmacctpop.cpp:426 kmsettings.cpp:738
 msgid "Password:"
 msgstr "Salasana:"
 
-#: kmsettings.cpp:703
+#: kmsettings.cpp:742
 msgid "Host:"
 msgstr "Palvelin:"
 
-#: kmsettings.cpp:711
+#: kmsettings.cpp:750
 msgid "Delete mail from server"
 msgstr "Tuhoa posti palvelimelta"
 
-#: kmsettings.cpp:723
+#: kmsettings.cpp:762
 msgid "Store new mail in account:"
 msgstr "Tallenna uusi posti profiiliin:"
 
-#: kmsettings.cpp:731
+#: kmsettings.cpp:770
 msgid "<none>"
 msgstr "<ei mikään>"
 
-#: kmsettings.cpp:776
+#: kmsettings.cpp:815
 msgid "Choose Location"
 msgstr "Valitse sijainti"
 
@@ -578,7 +591,7 @@ msgstr "Valitse sijainti"
 msgid "Receipt: "
 msgstr "Vastaa: "
 
-#: kmaccount.cpp:132
+#: kmaccount.cpp:133
 #, fuzzy
 msgid "Failed to add message:"
 msgstr "Viestin tallennus epäonnistui"
@@ -599,20 +612,20 @@ msgstr "Aihe"
 msgid "Date"
 msgstr "Päivä"
 
-#: kmheaders.cpp:238
+#: kmheaders.cpp:251
 msgid "Message(s) saved."
 msgstr "Viesti tallennettu."
 
-#: kmheaders.cpp:240
+#: kmheaders.cpp:253
 msgid "Failed to save message(s)."
 msgstr "Viestin tallennus epäonnistui"
 
-#: kmheaders.cpp:554
+#: kmheaders.cpp:565
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d Viestiä, %d lukematta."
 
-#: kmheaders.cpp:556
+#: kmheaders.cpp:567
 msgid "Folder is read-only."
 msgstr "Kansio on kirjoitussuojattu"
 
@@ -783,11 +796,11 @@ msgstr "Lähetä &myöhemmin"
 msgid "Mark All"
 msgstr "Valitse kaikki"
 
-#: kmcomposewin.cpp:694
+#: kmcomposewin.cpp:697
 msgid "KMail Confirm"
 msgstr "KMail varmistus"
 
-#: kmcomposewin.cpp:695
+#: kmcomposewin.cpp:698
 msgid ""
 "Close and discard\n"
 "edited message?"
@@ -795,7 +808,7 @@ msgstr ""
 "Sulje ja hylkää\n"
 "editoitu viesti?"
 
-#: kmcomposewin.cpp:737
+#: kmcomposewin.cpp:740
 #, c-format
 msgid ""
 "public key for %s not found.\n"
@@ -804,47 +817,52 @@ msgstr ""
 "julkista avainta %s ei löydy.\n"
 "Tämä käyttäjä ei voi purkaa salattuja viestejä."
 
-#: kmcomposewin.cpp:758
+#: kmcomposewin.cpp:761
 msgid "Error during PGP:"
 msgstr "Virhe PGP:n aikana:"
 
-#: kmcomposewin.cpp:968 kmcomposewin.cpp:989
+#: kmcomposewin.cpp:971 kmcomposewin.cpp:992
 msgid "Attach File"
 msgstr "Liitä tiedosto"
 
-#: kmcomposewin.cpp:1020 kmreaderwin.cpp:593
+#: kmcomposewin.cpp:1023 kmreaderwin.cpp:593
 msgid "View..."
 msgstr "Näytä..."
 
-#: kmcomposewin.cpp:1021
+#: kmcomposewin.cpp:1024
 msgid "Save..."
 msgstr "Tallenna..."
 
-#: kmcomposewin.cpp:1022 kmreaderwin.cpp:596
+#: kmcomposewin.cpp:1025 kmreaderwin.cpp:596
 msgid "Properties..."
 msgstr "&Ominaisuudet..."
 
-#: kmcomposewin.cpp:1026
+#: kmcomposewin.cpp:1029
 msgid "Attach..."
 msgstr "Liite..."
 
-#: kmcomposewin.cpp:1171
+#: kmcomposewin.cpp:1071 kmreaderwin.cpp:618
+#, fuzzy
+msgid "View Attachment: "
+msgstr "Liitteet: "
+
+#: kmcomposewin.cpp:1199
 msgid "To:"
 msgstr "Vastaanottaja:"
 
-#: kmcomposewin.cpp:1175
+#: kmcomposewin.cpp:1203
 msgid "Subject:"
 msgstr "Aihe:"
 
-#: kmcomposewin.cpp:1178
+#: kmcomposewin.cpp:1206
 msgid "Date:"
 msgstr "Päivä:"
 
-#: kmcomposewin.cpp:1293
+#: kmcomposewin.cpp:1321
 msgid "KMail: Spellcheck"
 msgstr ""
 
-#: kmcomposewin.cpp:1317
+#: kmcomposewin.cpp:1345
 msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
 msgstr ""
@@ -858,7 +876,7 @@ msgstr ""
 "Kansion `%s' sisältö muuttui.\n"
 "Luon indeksin uudelleen."
 
-#: kmfolder.cpp:310
+#: kmfolder.cpp:311
 #, c-format
 msgid "Creating index file: %d messages done"
 msgstr "Luon indeksitiedostoa %d viestiä valmiina"
@@ -927,21 +945,16 @@ msgstr "Salattu viesti"
 msgid "Cannot decrypt message:"
 msgstr "En voi purkaa viestiä:"
 
-#: kmreaderwin.cpp:368
+#: kmreaderwin.cpp:369
 msgid "Message was signed by"
 msgstr "Viestin allekirjoitti"
 
-#: kmreaderwin.cpp:369
+#: kmreaderwin.cpp:370
 msgid "Warning: Bad signature from"
 msgstr "Varoitus: Huono allekirjoitus"
 
 #: kmreaderwin.cpp:557
 msgid "Attachment: "
-msgstr "Liitteet: "
-
-#: kmreaderwin.cpp:618
-#, fuzzy
-msgid "View Attachment: "
 msgstr "Liitteet: "
 
 #: kmreaderwin.cpp:642
@@ -957,15 +970,15 @@ msgstr "En saanut tallennettua väliaikaistiedostoa %s"
 msgid "Could not save file"
 msgstr "En saanut tallennettua tiedostoa"
 
-#: main.cpp:75 main.cpp:113
+#: main.cpp:78 main.cpp:116
 msgid "warning"
 msgstr "varoitus"
 
-#: main.cpp:80 main.cpp:81
+#: main.cpp:83 main.cpp:84
 msgid "fatal error"
 msgstr "vakava virhe"
 
-#: main.cpp:115
+#: main.cpp:118
 msgid ""
 "The directory ~/KMail exists. From now on, KMail uses the\n"
 "directory ~/Mail for it's messages.\n"
@@ -994,7 +1007,7 @@ msgstr ""
 "`%s':\n"
 "%s"
 
-#: kmacctpop.cpp:112
+#: kmacctpop.cpp:110
 msgid ""
 "Please specify Host, Port  and\n"
 "destination folder in the settings\n"
@@ -1004,19 +1017,19 @@ msgstr ""
 "lähetysparametrit asetuksista\n"
 "ja kokeile uudelleen"
 
-#: kmacctpop.cpp:241
+#: kmacctpop.cpp:239
 msgid "Pop Mail Error"
 msgstr "Pop postivirhe"
 
-#: kmacctpop.cpp:246
+#: kmacctpop.cpp:244
 msgid "Pop Mail Network Error"
 msgstr "Pop postin verkkovirhe"
 
-#: kmacctpop.cpp:262
+#: kmacctpop.cpp:260
 msgid "Unknown error"
 msgstr "Tuntematon virhe"
 
-#: kmacctpop.cpp:267
+#: kmacctpop.cpp:265
 #, c-format
 msgid ""
 "Account: %s\n"
@@ -1027,7 +1040,7 @@ msgstr ""
 "%s:\n"
 "%s"
 
-#: kmacctpop.cpp:419
+#: kmacctpop.cpp:417
 msgid "Login Name:"
 msgstr "Käyttäjätunnus:"
 
