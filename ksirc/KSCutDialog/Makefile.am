@@ -12,7 +12,7 @@
 # kde_toolbardir    Where general toolbar icons should go to.
 # kde_wallpaperdir  Where general wallpapers should go to.
 
-INCLUDES= $(all_includes) -I. -I$(srcdir) -I../.. -include ../kplunger/kplunger.h
+INCLUDES= $(all_includes) -include $(srcdir)/../kplunger/kplunger.h
 
 ####### This part is very khexdit specific
 # you can add here more. This one gets installed 

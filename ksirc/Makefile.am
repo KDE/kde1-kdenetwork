@@ -101,12 +101,12 @@ i18n:
 getdate_SOURCES = getdate.c
 
 getdate: getdate.c
-	$(CC) -o getdate getdate.c
+	$(CC) $(CFLAGS) -o getdate $(srcdir)/getdate.c
 
 cdate.h: getdate
 	./getdate > cdate.h
 
-ksirc.cpp: cdate.h
+$(srcdir)/ksirc.cpp: cdate.h
 
 ksircstatic: cdate.h $(ksircstaticOBJECTS) $(ksircstaticDEPENDENCIES) $(static_libkde) $(static_libqt) $(ksircstaticLDADD)
 	@rm -f ksircstatic

@@ -15,7 +15,7 @@
 # just set the variable
 #APPSDIR = $(kde_appsdir)/Internet
 # set the include path for X, qt and KDE
-INCLUDES= $(all_includes) -I. -I../.. -include ../kplunger/kplunger.h
+INCLUDES= $(all_includes) -include $(srcdir)/../kplunger/kplunger.h
 
 ####### This part is very khexdit specific
 # you can add here more. This one gets installed 
@@ -42,25 +42,6 @@ DISTCLEANFILES = $(BUILTSOURCES)
 messages:
 	$(XGETTEXT) -C -ktranslate -ki18n -x $(includedir)/kde.pot $(khexdit_SOURCES)
 
-# just install datas here. Use install-exec-data for scripts and etc.
-# the binary itself is already installed from automake
-# use mkinstalldirs, not "install -d"
-# don't install a list of file. Just one file per install.
-# if you have more of them, create a subdirectory with an extra Makefile 
-install-data-local: 
-#	$(mkinstalldirs) $(APPSDIR)
-#	$(INSTALL_DATA) ksirc.kdelnk $(APPSDIR)
-#	$(mkinstalldirs) $(kde_icondir)
-#	$(INSTALL_DATA) khexdit.xpm $(kde_icondir)
-#	$(mkinstalldirs) $(kde_minidir)
-#	$(INSTALL_DATA) mini-khexdit.xpm $(kde_minidir)/khexdit.xpm
-#
-# remove ALL you have installed in install-data-local or install-exec-local
-uninstall-local:
-#	-rm -f $(APPSDIR)/ksirc.kdelnk
-#	-rm -f $(kde_icondir)/khexdit.xpm
-#	-rm -f $(kde_minidir)/khexdit.xpm
-#
 # add a dependency for every moc file to be full portable
 # I've added a key binding to emacs for this. 
 m%.cpp: %.h

@@ -12,10 +12,7 @@
 # kde_toolbardir    Where general toolbar icons should go to.
 # kde_wallpaperdir  Where general wallpapers should go to.
 
-# just set the variable
-#APPSDIR = $(kde_appsdir)/Internet
-# set the include path for X, qt and KDE
-INCLUDES= $(all_includes) -I. -I$(srcdir) -I../.. -include ../kplunger/kplunger.h
+INCLUDES= $(all_includes) -include $(srcdir)/../kplunger/kplunger.h
 
 ####### This part is very ksirc specific
 # you can add here more. This one gets installed 
