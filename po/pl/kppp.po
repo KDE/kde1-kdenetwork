@@ -35,9 +35,11 @@ msgid "Reset Total"
 msgstr "Wyzeruj wszystko"
 
 #: accounts.cpp:206
-msgid "Are you sure you want to reset the accumulated\n"
+msgid ""
+"Are you sure you want to reset the accumulated\n"
 "telephone costs for the selected account to zero?"
-msgstr "Jeste¶ pewien, ¿e chcesz wyzerowaæ\n"
+msgstr ""
+"Jeste¶ pewien, ¿e chcesz wyzerowaæ\n"
 " ca³kowite koszty tego po³±czenia ?"
 
 #: accounts.cpp:241 accounts.cpp:264
@@ -84,12 +86,14 @@ msgstr "Koszty"
 msgid ""
 "You must enter a unique\n"
 "account name"
-msgstr "Musisz wpisaæ\n"
+msgstr ""
+"Musisz wpisaæ\n"
 "unikaln± nazwê po³±czenia"
 
 #: accounts.cpp:355
 msgid "Login script has unbalanced Loop Start/End"
-msgstr "Skrypt loguj±cy ma nierówn± ilo¶æ\n"
+msgstr ""
+"Skrypt loguj±cy ma nierówn± ilo¶æ\n"
 "pocz±tów/koñców pêtli (LoopStart LoopEnd)"
 
 #: connect.cpp:79 connect.cpp:157 main.cpp:602
@@ -248,7 +252,8 @@ msgstr "Modem jest zajêty."
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
-msgstr "Opcje komendy pppd przekroczy³y\n"
+msgstr ""
+"Opcje komendy pppd przekroczy³y\n"
 "2024 znaki. Co robisz ?"
 
 #: conwindow.cpp:47
@@ -309,7 +314,6 @@ msgstr "Po po³±czeniu wykonaj:"
 msgid "Edit default pppd:"
 msgstr "Zmiana opcji pppd:"
 
-
 #: edit.cpp:125
 msgid "Arguments"
 msgstr "Opcje..."
@@ -337,7 +341,6 @@ msgstr "Statyczny"
 #: edit.cpp:217
 msgid "Auto-configure hostname from this IP"
 msgstr "Skonfiguruj automatycznie"
-
 
 #: edit.cpp:285
 msgid "DNS Servers"
@@ -380,6 +383,7 @@ msgstr "Adres IP:"
 #: edit.cpp:436
 msgid "Assign the Default Route to this Gateway"
 msgstr "Przypisz domy¶lny routing"
+
 #: edit.cpp:496
 msgid "Edit Script"
 msgstr "Edycja skryptu logowania"
@@ -448,7 +452,8 @@ msgid ""
 "   Jesus Fuentes Saavedra\n"
 "   Harri Porten\n"
 "   Peter Silva"
-msgstr "We wspó³pracy z:\n"
+msgstr ""
+"We wspó³pracy z:\n"
 "   Mario Weilguni\n"
 "   Markus Wuebben\n"
 "   Jesus Fuentes Saavedra\n"
@@ -552,13 +557,16 @@ msgstr "Ogólne"
 msgid ""
 "No such Account:\n"
 "%s"
-msgstr "Brak po³±czenia:\n"
+msgstr ""
+"Brak po³±czenia:\n"
 "%s"
 
 #: main.cpp:528
 msgid "The pppd daemon died unexpectedly!"
-msgstr "Demon pppd nieoczekiwanie\n"
+msgstr ""
+"Demon pppd nieoczekiwanie\n"
 "zakoñczy³ dzia³anie"
+
 #: main.cpp:564
 #, c-format
 msgid ""
@@ -568,12 +576,12 @@ msgid ""
 " the location of the pppd executable on the misc tab of\n"
 "the setup dialog.\n"
 " Thank You"
-msgstr "kppp nie odnalaz³:\n"
+msgstr ""
+"kppp nie odnalaz³:\n"
 " %s\n"
 "Zainstaluj prawd³owo pppd i/lub ustaw\n"
 "¶cie¿kê do programu pppd w pozycji PPP\n"
 "okna dialogowego konfiguracji kppp"
-
 
 #: main.cpp:576
 #, c-format
@@ -582,7 +590,8 @@ msgid ""
 " %s\n"
 "Please make sure thatyou have given kppp setuid permission and that\n"
 "pppd is executable."
-msgstr "kppp nie móg³ uruchomiæ\n"
+msgstr ""
+"kppp nie móg³ uruchomiæ\n"
 " %s\n"
 "Upewnij siê, ¿e kppp ma ustawione prawo SETUID oraz pppd\n"
 "jest wykonywalne. Szczegó³y w pomocy"
@@ -598,12 +607,12 @@ msgid ""
 " the location of the modem device on the modem tab of\n"
 "the setup dialog.\n"
 " Thank You"
-msgstr "kppp nie znalaz³:\n"
+msgstr ""
+"kppp nie znalaz³:\n"
 " %s\n"
 "Upewnij sie, ¿e modem jest pod³±czony\n"
 "i/lub ustaw w³a¶ciwy port modemu w pozycji Modem\n"
 "okna  dialogowego Konfiguracja kppp"
-
 
 #: main.cpp:667
 msgid "Quit kPPP?"
@@ -617,8 +626,10 @@ msgstr "Zamkniecie kppp zakoñczy Twoje po³±czenie"
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
-msgstr "Nie mogê za³adowaæ ustawieñ\n"
+msgstr ""
+"Nie mogê za³adowaæ ustawieñ\n"
 "dla tego po³±czenia"
+
 #: modemcmds.cpp:40
 msgid "Edit Modem Commands"
 msgstr "Edycja poleceñ modemu"
@@ -700,7 +711,8 @@ msgid ""
 "The application-specific config file\n"
 "could not be opened neither\n"
 "read-write nor read-only"
-msgstr "Nie mo¿na otworzyæ\n"
+msgstr ""
+"Nie mo¿na otworzyæ\n"
 "nawet do odczytu\n"
 "pliku konfiguracyjnego"
 
@@ -710,7 +722,8 @@ msgstr "Testowanie modemu"
 
 #: modeminfo.cpp:114
 msgid "Modem Query timed out."
-msgstr "Przekroczono czas oczekiwania\n"
+msgstr ""
+"Przekroczono czas oczekiwania\n"
 "na odpowied¼ modemu"
 
 #: miniterm.cpp:281 modeminfo.cpp:355
@@ -838,7 +851,8 @@ msgstr "Uruchomiono po³±czenie PPP:%s:%s"
 msgid ""
 "terminated PPP connection\n"
 "COST OF SESSION: "
-msgstr "Zakoñczono po³±czenie PPP\n"
+msgstr ""
+"Zakoñczono po³±czenie PPP\n"
 "KOSZTY SESJI: "
 
 #: accounting.cpp:176
@@ -855,7 +869,8 @@ msgid ""
 "Cannot create\n"
 "%s\n"
 "Your online costs will not be saved."
-msgstr "Nie mo¿na utworzyæ\n"
+msgstr ""
+"Nie mo¿na utworzyæ\n"
 "%s\n"
 "koszty tego po³±czenia nie bêd± zapisane."
 
@@ -908,4 +923,3 @@ msgstr "kppp: Brak linii \"name=...\" w pliku cennika \n"
 #: ruleset.cpp:578
 msgid "kppp: rulefile is ok\n"
 msgstr "kppp: plik cennika jest prawid³owy\n"
-
