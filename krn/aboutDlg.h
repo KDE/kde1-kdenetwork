@@ -3,10 +3,7 @@
 
 #include <qdialog.h>
 
-#include "aboutDlgData.h"
-
-class aboutDlg : public QDialog,
-			private aboutDlgData
+class aboutDlg : public QDialog
 {
     Q_OBJECT
 

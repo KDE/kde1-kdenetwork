@@ -51,7 +51,6 @@ krn_SOURCES = 	main.cpp\
                 rmbpop.cpp\
                 kdecode.cpp\
                 aboutDlg.cpp\
-                aboutDlgData.cpp\
                 ktempfile.cpp\
                 kscorer.cpp\
                 fontsDlg.cpp\
@@ -94,7 +93,6 @@ noinst_HEADERS = 	NNTP.h\
 		rmbpop.h\
 		kdecode.h\
 		aboutDlg.h\
-		aboutDlgData.h\
 		ktempfile.h\
 		kscorer.h\
                 fontsDlg.h\
