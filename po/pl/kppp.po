@@ -321,9 +321,8 @@ msgid "Script timed out!"
 msgstr "Przekroczono czas wykonywania skryptu!"
 
 #: connect.cpp:939
-#, fuzzy
 msgid "Scanning: "
-msgstr "Wysy³am "
+msgstr "Skanujê: "
 
 #: connect.cpp:949
 msgid "Expecting: "
@@ -420,7 +419,7 @@ msgstr "PAP"
 #: edit.cpp:81
 #, fuzzy
 msgid "Terminal-based"
-msgstr "Terminal"
+msgstr "Oparta na terminalu"
 
 #: edit.cpp:82
 msgid "CHAP"
@@ -1366,7 +1365,7 @@ msgstr ""
 "<i>kppp</i> a Twoim modemem. Pomo¿e to\n"
 "znale¼æ przyczynê ewentualnych b³êdów.\n"
 "\n"
-"Wy³±cz to je¶li <i>kppp</i> czy siê bez ¿adnychproblemów"
+"Wy³±cz to je¶li <i>kppp</i> ³±czy siê bez ¿adnych problemów"
 
 #: main.cpp:504
 msgid "Setup"
@@ -1545,9 +1544,8 @@ msgid "Sorry, can't open modem."
 msgstr "Nie mo¿na otworzyæ modemu."
 
 #: modem.cpp:120
-#, fuzzy
 msgid "Sorry, can't detect state of CD line."
-msgstr "Nie mogê utworzyæ pliku blokuj±cego modem."
+msgstr "Nie mogê wykryæ stanu linii CD."
 
 #: modem.cpp:126
 msgid "Sorry, the modem is not ready."
@@ -1967,7 +1965,6 @@ msgstr ""
 "Skontaktuj siê z administratorem systemu. "
 
 #: runtests.cpp:490
-#, fuzzy
 msgid ""
 "is missing!\n"
 "\n"
@@ -1975,7 +1972,7 @@ msgid ""
 "a non-empty file that has appropriate\n"
 "read and write permissions."
 msgstr ""
-"Brakuje pliku /etc/resolve.conf !\n"
+"Brakuje takiego pliku!\n"
 "\n"
 "Popro¶ administratora o utworzenie\n"
 "niepustego pliku, posiadaj±cego\n"
@@ -2093,7 +2090,7 @@ msgstr "Zapisz do pliku"
 
 #, fuzzy
 #~ msgid "Verify your password."
-#~ msgstr "Zapamietaj has³o"
+#~ msgstr "Sprawd¼ swoje has³o"
 
 #~ msgid "Insert"
 #~ msgstr "Wstaw"
