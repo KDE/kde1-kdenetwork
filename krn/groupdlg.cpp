@@ -767,7 +767,6 @@ void Groupdlg::findGroup()
             if (!strchr(s,'.'))
             {
                 QString *ss;
-                debug ("current to-->%s",s);
                 QString *s1=p.pop();
                 ss=new QString(qstrdup(s1->data()));
                 p.push(s1);
@@ -794,7 +793,6 @@ void Groupdlg::findGroup()
                 ss->append(s);
                 ss->append(".");
                 p.push(ss);
-                debug ("opening-->%s",ss->data());
                 KTreeListItem *it=list->itemAt(&p);
                 if (!it)
                     debug ("no fsking item!!!!");
