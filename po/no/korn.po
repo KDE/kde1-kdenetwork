@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE NETWORK/korn\n"
-"POT-Creation-Date: 1998-10-01 18:13+0200\n"
+"POT-Creation-Date: 1999-01-10 14:26+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Hans Petter Bieker <zerium@webindex.no>\n"
 "Language-Team: no <LL@li.org>\n"
@@ -13,177 +13,117 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO_8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: shell.cpp:226
-msgid "About KOrn"
-msgstr "Om KOrn"
+#: kmailbox.cpp:150
+msgid "countMail: file open error"
+msgstr "tellepost: feil under åpning av fil"
 
-#: optdlg.cpp:113 shell.cpp:236
-msgid "&Setup.."
-msgstr "&Oppsett.."
+#: korn.cpp:51
+msgid "&Setup"
+msgstr "&Oppsett"
 
-#: shell.cpp:239
-msgid "&About.."
-msgstr "&Om.."
+#: korn.cpp:54
+msgid "&About"
+msgstr "&Om"
 
-#: shell.cpp:250
-msgid "Welcome to KOrn"
-msgstr "Velkommen til KOrn"
+#: korn.cpp:109
+msgid "korn: configure now?"
+msgstr "korn: konfigurer nå?"
 
-#: shell.cpp:251
+#: korn.cpp:110
 msgid ""
-"You do not appear to have used KOrn before. Would you like a basic "
-"configuration created for you?"
+"you have not yet configured korn.\n"
+"would you like to do this now?"
 msgstr ""
-"Det virker ikke som om du har brukt KOrn før. Vil du ha en grunnleggende "
-"konfigurasjon opprettet for deg?"
+"du har foreløbig ikke konfigurert korn.\n"
+"vil du gjøre det nå?"
 
-#: shell.cpp:253
-msgid "No, Exit"
-msgstr "Nei, avslutt"
+#: korn.cpp:114
+msgid "No - Quit"
+msgstr "Nei - Avslutt"
 
-#: dropman.cpp:185
+#: korn.cpp:119
+msgid "personal"
+msgstr "personlig"
+
+#: korn.cpp:120
 msgid "Inbox"
 msgstr "Innboks"
 
-#: dropman.cpp:191
-msgid "Can't find mailbox"
-msgstr "Kan ikke finne postboks"
-
-#: dropman.cpp:192
+#: korn.cpp:245
+#, c-format
 msgid ""
-"Unable to find $MAIL environment variable. You'll have to configure the "
-"mailboxes yourself."
+"Korn %s -- Sirtaj Singh Kang\n"
+"taj@kde.org, 1997\n"
+"\n"
+"The K Desktop Environment"
 msgstr ""
-"Kunne ikke finne $MAIL-miljøvariabel. Du må konfigurere postboksene selv."
+"Korn %s -- Sirtaj Singh Kang\n"
+"taj@kde.org, 1997\n"
+"\n"
+"The K Desktop Environment"
 
-#: dropman.cpp:254
-msgid " (clone)"
-msgstr " (klone)"
+#: korn.cpp:249
+msgid "About kOrn"
+msgstr "Om kOrn"
 
-#: typedlg.cpp:28
-msgid "Select a mailbox type..."
-msgstr "Velg en postboks-type..."
+#: korn.cpp:257
+msgid "korn: no config set"
+msgstr "korn: ingen konfigurasjon satt"
 
-#: typedlg.cpp:44
-msgid "O&K"
-msgstr "O&K"
+#: korn.cpp:258
+msgid ""
+"Would you like to restart korn with\n"
+"the automatically generated configuration?"
+msgstr ""
+"Vil du starte korn på nytt med den\n"
+"automatiskgenererte konfigurasjonen?"
 
-#: optdlg.cpp:30
-msgid "Korn: Options"
-msgstr "Korn: Valg"
+#: korn.cpp:261
+msgid "Yes, Restart"
+msgstr "Ja, start på nytt"
 
-#: optdlg.cpp:42
-msgid "Horizontal"
-msgstr "Horisontal"
+#: korn.cpp:261
+msgid "No, Exit"
+msgstr "Nei, avslutt"
 
-#: optdlg.cpp:45
-msgid "Vertical"
-msgstr "Vertikal"
+#: kornopt.cpp:24
+msgid "korn options"
+msgstr "korn-valg"
 
-#: optdlg.cpp:48
-msgid "Docked"
-msgstr "Dokket"
+#: optdata.cpp:76
+msgid "&New"
+msgstr "&Ny"
 
-#: optdlg.cpp:51
-msgid "&Layout"
-msgstr "&Utseende"
+#: optdata.cpp:89
+msgid "Boxes"
+msgstr "Bokser"
 
-#: optdlg.cpp:80
-msgid "&Modify Box"
-msgstr "&Endre boks"
+#: optdata.cpp:118
+msgid "Name"
+msgstr "Navn"
 
-#: optdlg.cpp:89
-msgid "&New Box"
-msgstr "&Ny boks"
-
-#: optdlg.cpp:95
-msgid "&Delete Box"
-msgstr "&Fjern boks"
-
-#: optdlg.cpp:104
-msgid "&Clone Box"
-msgstr "&Klone boks"
-
-#: optdlg.cpp:121
-msgid "&Boxes"
-msgstr "&Bokser"
-
-#: optdlg.cpp:243
-msgid "New Monitor"
-msgstr "Ny overvåker"
-
-#: dropdlg.cpp:22
-msgid "Korn Monitor"
-msgstr "Korn-overvåker"
-
-#: gencfg.cpp:28
+#: optdata.cpp:124
 msgid "Caption"
 msgstr "Tittel"
 
-#: gencfg.cpp:31
-msgid "On Receipt"
-msgstr "Ved mottak"
+#: optdata.cpp:138
+msgid "Path"
+msgstr "Sti"
 
-#: gencfg.cpp:34
-msgid "On Click"
-msgstr "Ved klikk"
+#: optdata.cpp:152
+msgid "Poll time (sec)"
+msgstr "Sjekktid (sek)"
 
-#: gencfg.cpp:42
-msgid "General"
-msgstr "Generelt"
+#: optdata.cpp:158
+msgid "Notify Command"
+msgstr ""
+"Varslings-"
+"\n"
+"kommando"
 
-#: pollcfg.cpp:26
-msgid "Poll"
-msgstr "Sjekk"
-
-#: pollcfg.cpp:40
-msgid "Check Frequency (sec)"
-msgstr "Sjekkefrekvens (sek.)"
-
-#: unixcfg.cpp:26
-msgid "Mailbox"
-msgstr "Postboks"
-
-#: unixcfg.cpp:41
-msgid "Mbox Path"
-msgstr "Mbox-sti"
-
-#: qmailcfg.cpp:26
-msgid "Maildir"
-msgstr "Postkatalog"
-
-#: qmailcfg.cpp:38
-msgid "Maildir Path"
-msgstr "Postkatalogsti"
-
-#: newscfg.cpp:38 popcfg.cpp:44
-msgid "Server"
-msgstr "Tjener"
-
-#: popcfg.cpp:49
-msgid "Port"
-msgstr "Port"
-
-#: popcfg.cpp:52
-msgid "Username"
-msgstr "Brukernavn"
-
-#: popcfg.cpp:55
-msgid "Password"
-msgstr "Passord"
-
-#: popcfg.cpp:60
-msgid "Save Password"
-msgstr "Lagre passord"
-
-#: newscfg.cpp:26
-msgid "News"
-msgstr "Nyheter"
-
-#: newscfg.cpp:41
-msgid "Group"
-msgstr "Gruppe"
-
-#: kfbrowsebtn.cpp:18
-msgid "Browse.."
-msgstr "Bla gjennom.."
+#: optdata.cpp:180
+msgid "Click Command"
+msgstr ""
+"Klikke-"
+"\n"
+"kommando"
