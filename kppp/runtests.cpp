@@ -65,6 +65,8 @@
 #include <linux/route.h>
 #include <linux/if_ether.h>
 #endif
+
+#include <asm/types.h>
 #include <linux/types.h>
 #include <linux/ppp_defs.h>
 #include "if_ppp.h"
