@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1998-04-16 18:09+0200\n"
-"PO-Revision-Date: 1998-02-24 15:55 +0100\n"
+"POT-Creation-Date: 1998-04-21 14:29+0200\n"
+"PO-Revision-Date: 1998-04-21 15:55 +0100\n"
 "Last-Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
 
 #: kmcomposewin.cpp:1381 kmmainwin.cpp:265 kpgp.cpp:349
@@ -34,22 +34,21 @@ msgid "Modify Folder"
 msgstr "Eigenschaften des Ordners"
 
 #: kmmainwin.cpp:332
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Are you sure you want to discard the\n"
 "contents of the folder \"%s\" ?"
 msgstr ""
-"Sind Sie sicher daß der Ordner \"%s\"\n"
-"und sein gesamter Inhalt gelöscht werden soll?"
+"Sind Sie sicher daß der Inhalt des\n"
+"Ordners \"%s\" gelöscht werden soll?"
 
 #: kmmainwin.cpp:335 kmmainwin.cpp:370
 msgid "Confirmation"
 msgstr "Bestätigung"
 
 #: kmmainwin.cpp:349
-#, fuzzy
 msgid "Moved all messages into trash"
-msgstr "Sende Nachricht an"
+msgstr "Alle Nachrichten in den Papierkorb geworfen"
 
 #: kmmainwin.cpp:363
 msgid ""
@@ -448,15 +447,15 @@ msgstr "Weiterleiten:"
 msgid "Indentation:"
 msgstr "Einrücken:"
 
-#: kmmessage.cpp:1233 kmsettings.cpp:308
+#: kmmessage.cpp:1237 kmsettings.cpp:308
 msgid "On %D, you wrote:"
 msgstr "Am %D schriebst Du:"
 
-#: kmmessage.cpp:1234 kmsettings.cpp:312
+#: kmmessage.cpp:1238 kmsettings.cpp:312
 msgid "On %D, %F wrote:"
 msgstr "Am %D schrieb %F:"
 
-#: kmmessage.cpp:1235 kmsettings.cpp:316
+#: kmmessage.cpp:1239 kmsettings.cpp:316
 msgid "Forwarded Message"
 msgstr "Weitergeleitete Nachricht"
 
@@ -594,36 +593,33 @@ msgstr "Betreff"
 
 #: kmheaders.cpp:223
 msgid "order of arrival"
-msgstr ""
+msgstr "Ankunftsreihenfolge"
 
 #: kmheaders.cpp:232
-#, fuzzy
 msgid "subject"
 msgstr "Betreff"
 
 #: kmheaders.cpp:233
-#, fuzzy
 msgid "date"
 msgstr "Datum"
 
 #: kmheaders.cpp:234
-#, fuzzy
 msgid "sender"
 msgstr "Absender"
 
 #: kmheaders.cpp:235
 msgid "status"
-msgstr ""
+msgstr "Status"
 
 #: kmheaders.cpp:237
 #, c-format
 msgid "Sorting messages descending by %s"
-msgstr ""
+msgstr "Sortiere Nachrichten absteigend nach %s"
 
 #: kmheaders.cpp:238
 #, c-format
 msgid "Sorting messages ascending by %s"
-msgstr ""
+msgstr "Sortiere Nachrichten aufsteigend nach %s"
 
 #: kmheaders.cpp:328
 msgid "Message(s) saved."
@@ -855,7 +851,7 @@ msgstr "Datei anhängen"
 msgid "Include File"
 msgstr "Datei einfügen"
 
-#: kmcomposewin.cpp:1178 kmreaderwin.cpp:654
+#: kmcomposewin.cpp:1178 kmreaderwin.cpp:656
 msgid "View..."
 msgstr "Ansehen..."
 
@@ -863,7 +859,7 @@ msgstr "Ansehen..."
 msgid "Save..."
 msgstr "Speichern..."
 
-#: kmcomposewin.cpp:1180 kmreaderwin.cpp:657
+#: kmcomposewin.cpp:1180 kmreaderwin.cpp:659
 msgid "Properties..."
 msgstr "Eigenschaften..."
 
@@ -871,7 +867,7 @@ msgstr "Eigenschaften..."
 msgid "Attach..."
 msgstr "Anhängen..."
 
-#: kmcomposewin.cpp:1226 kmreaderwin.cpp:699
+#: kmcomposewin.cpp:1226 kmreaderwin.cpp:701
 msgid "View Attachment: "
 msgstr "Anlage ansehen: "
 
@@ -980,20 +976,20 @@ msgstr "Nachricht wurde unterschrieben von"
 msgid "Warning: Bad signature from"
 msgstr "Warnung: Falsche Unterschrift von"
 
-#: kmreaderwin.cpp:618
+#: kmreaderwin.cpp:620
 msgid "Attachment: "
 msgstr "Anlage: "
 
-#: kmreaderwin.cpp:730
+#: kmreaderwin.cpp:732
 msgid "Could not create temporary file"
 msgstr "Kann keine temporäre Datei anlegen"
 
-#: kmreaderwin.cpp:751
+#: kmreaderwin.cpp:753
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "Konnte temporäre Datei %s nicht speichern"
 
-#: kmreaderwin.cpp:778
+#: kmreaderwin.cpp:780
 msgid "Could not save file"
 msgstr "Konnte Datei nicht speichern"
 
@@ -1036,7 +1032,7 @@ msgstr ""
 #: main.cpp:378
 #, c-format
 msgid "Unknown command line option: %s"
-msgstr ""
+msgstr "Unbekannter Befehlszeilen-Parameter: %s"
 
 #: kmacctlocal.cpp:91
 #, c-format
@@ -1553,21 +1549,3 @@ msgstr "&7-Bit ist ASCII"
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
 msgstr "&Unbekannte Zeichen anzeigen"
-
-#~ msgid "Name:"
-#~ msgstr "Name:"
-
-#~ msgid "Name"
-#~ msgstr "Name"
-
-#~ msgid "Misc"
-#~ msgstr "Verschiedenes"
-
-#~ msgid "Type:"
-#~ msgstr "Typ:"
-
-#~ msgid "Date"
-#~ msgstr "Datum"
-
-#~ msgid "Date:"
-#~ msgstr "Datum:"
