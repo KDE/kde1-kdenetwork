@@ -170,6 +170,10 @@ public slots:
     virtual void about_ksirc();
 
     virtual void ProcMessage(QString server, int command, QString args);
+    /**
+     * On quit we sync the config to disk and exit
+     */
+    virtual void endksirc();
 
 
 protected:

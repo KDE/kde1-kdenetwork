@@ -119,7 +119,7 @@ servercontroller::servercontroller /*FOLD00*/
   //  insertChild(file);
   file->insertItem(i18n("&Dock"), this, SLOT(toggleDocking()));
   file->insertSeparator();
-  file->insertItem(i18n("&Quit"), kApp, SLOT(quit()), ALT + Key_F4);
+  file->insertItem(i18n("&Quit"), this, SLOT(endksirc()), ALT + Key_F4);
   MenuBar->insertItem(i18n("&File"), file);
   
   connections = new QPopupMenu(0, QString(name) + "_menu_connections");
@@ -216,7 +216,6 @@ servercontroller::servercontroller /*FOLD00*/
   dockWidget = new dockServerController(this, "servercontroller_dock");
   PWSTopLevel = new PWS(0x0, "PWSTopLevel");
   PWSTopLevel->startServer();
-
 }
 
 
@@ -408,7 +407,7 @@ void servercontroller::help_keys() /*fold00*/
   kApp->invokeHTMLHelp("ksirc/keys.html", "");
 }
 
-void servercontroller::ProcMessage(QString server, int command, QString args) /*fold00*/
+void servercontroller::ProcMessage(QString server, int command, QString args) /*FOLD00*/
 {
   QString online(i18n("Online")), channels(i18n("Channels"));
   KPath path;
@@ -541,7 +540,7 @@ void servercontroller::slot_filters_update() /*fold00*/
   emit ServMessage(QString(), ServCommand::updateFilters, QString());
 }
 
-void servercontroller::saveProperties(KConfig *ksc) /*fold00*/
+void servercontroller::saveProperties(KConfig *ksc) /*FOLD00*/
 {
   // ksc hos the K Session config
   // ksp == current KSircProcess
@@ -598,6 +597,12 @@ void servercontroller::toggleDocking(){ /*FOLD00*/
     dockWidget->recreate(0x0, 0, QPoint(0,0), FALSE);
     docked = FALSE;
   }
+}
+
+void servercontroller::endksirc(){
+  kConfig->sync();
+  exit(0);
+
 }
 
 scInside::scInside ( QWidget * parent, const char * name, WFlags /*fold00*/

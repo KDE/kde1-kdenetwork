@@ -48,7 +48,33 @@ open_ksirc::open_ksirc
   }
   
   
-  // TODO add "Recent" to global listing servers here.. 
+  // TODO add "Recent" to global listing servers here..
+  // Now we read in the Recent group from the config file
+  // remove all recent servers first
+
+  for(Server *s = Groups.first(); s != 0x0; s = Groups.next()){
+    if(s->group() == QString("Recent")){
+      Groups.remove();
+    }
+  }
+
+  // Add current ones
+  KConfig *conf = kapp->getConfig();
+  QStrList recent;
+  conf->setGroup("ServerList");
+  conf->readListEntry("RecentServers", recent);
+  char *rs;
+  for(rs = recent.first(); rs != 0; rs=recent.next()){
+    char *name = strtok(rs, ":");
+    char *p =    strtok(NULL, ":");
+    if(p == 0x0)
+      p = "6667";
+    QList<port> rp;
+    rp.inSort(new port(p));
+    Groups.inSort( new Server(QString("Recent"), name, rp,
+			      QString("Recent Server"), ""));
+  }
+
 
   ComboB_ServerName->setAutoCompletion( TRUE );
   ComboB_ServerPort->setAutoCompletion( TRUE );
@@ -66,6 +92,11 @@ open_ksirc::open_ksirc
   connect(PB_Edit, SIGNAL(pressed()), this, SLOT(clickEdit()));
   connect(PB_Cancel, SIGNAL(pressed()), this, SLOT(clickCancel()));
 
+  PB_Connect->setDefault(TRUE);
+  PB_Connect->setAutoDefault(TRUE);
+
+  ComboB_ServerName->setFocus();
+  
 }
 
 // insert a sorted list of groups into ComboB_ServerGroup, note that 
@@ -164,6 +195,11 @@ void open_ksirc::setGroup( const char * group )
     ComboB_ServerPort->setEditText("6667");
     ComboB_ServerPort->insertItem("6667");
   }
+  if(ComboB_ServerPort->currentText() == 0x0){
+      ComboB_ServerPort->setEditText("6667");
+      ComboB_ServerPort->insertItem("6667");
+  }
+  clickConnect();
 }
 
 void open_ksirc::clickConnect()
@@ -172,6 +208,8 @@ void open_ksirc::clickConnect()
   int port;
   QString script;
   Server *serv;
+  QStrList recent;
+  KConfig *conf = kapp->getConfig();
 
   server = ComboB_ServerName->currentText();
   port = atoi(ComboB_ServerPort->currentText());
@@ -183,12 +221,30 @@ void open_ksirc::clickConnect()
     break;
   }
 
-  if(server.length() == 0 || port == 0)
+  if(server.length() == 0)
     reject();
+
+  if(port == 0)
+    port = 6667;
+
+  QString str = server + ":" + ComboB_ServerPort->currentText();
+  conf->setGroup("ServerList");
+  conf->readListEntry("RecentServers", recent);
+  int found = recent.find(str);
+//  debug("Str: %s", str.data());
+  if(found == -1){
+    recent.insert(0, str);
+    conf->writeEntry("RecentServers", recent);
+  }
+  else {
+    recent.remove(found);
+    recent.insert(0, str);
+    conf->writeEntry("RecentServers", recent);
+  }
   
   emit open_ksircprocess( server, port, script );
-  QString str = server + ":" + ComboB_ServerPort->currentText();
   emit open_ksircprocess(str);
+  
   accept();
 }
 
