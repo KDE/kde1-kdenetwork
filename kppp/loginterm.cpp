@@ -5,7 +5,7 @@
  *
  *              Copyright (C) 1997-98 Bernd Johannes Wuebben
  *                      wuebben@math.cornell.edu
- * 
+ *
  * This file was contributed by Harri Porten <porten@tu-harburg.de>
  *
  *
@@ -34,12 +34,12 @@
 
 extern KPPPWidget *p_kppp;
 
-LoginMultiLineEdit::LoginMultiLineEdit(QWidget *parent, const char *name, 
+LoginMultiLineEdit::LoginMultiLineEdit(QWidget *parent, const char *name,
 				       const int fd)
   : QMultiLineEdit(parent, name){
 
   modemfd = fd;
-  
+
   readtimer = new QTimer(this);
   connect(readtimer, SIGNAL(timeout()), this, SLOT(readtty()));
 
@@ -82,7 +82,7 @@ void LoginMultiLineEdit::mynewline() {
   QMultiLineEdit::end(FALSE);
   QMultiLineEdit::newLine();
 
-  p_kppp->debugwindow->readchar('\n'); 
+  p_kppp->debugwindow->readchar('\n');
 
 }
 
@@ -97,36 +97,34 @@ void LoginMultiLineEdit::keyPressEvent(QKeyEvent *k) {
     write(modemfd, &c, 1);
     return;
   }
-  
+
   if(strcmp(gpppdata.enter(), "CR/LF") == 0)
     write(modemfd, "\r\n", 2);
- 
+
   if(strcmp(gpppdata.enter(), "LF") == 0)
     write(modemfd, "\n", 1);
- 
+
   if(strcmp(gpppdata.enter(), "CR") == 0)
     write(modemfd, "\r", 1);
 
 }
 
 void LoginMultiLineEdit::readtty() {
-
   char c;
-
   if(read(modemfd, &c, 1) == 1) {
     c = ((int)c & 0x7F);
 
     if(((int)c != 13) && ((int)c != 10) && ((int)c != 8))
       this->insertChar(c);
 
-    if((int)c == 8) 
+    if((int)c == 8)
       this->backspace();
     if((int)c == 127)
       this->backspace();
     if((int)c == 10)
       this->mynewline();
     if((int)c == 13)
-      this->myreturn(); 
+      this->myreturn();
   }
 
 }
@@ -156,19 +154,19 @@ LoginTerm::LoginTerm (QWidget *parent, const char *name, const int fd)
   cancel_b = new QPushButton(this, "cancel");
   cancel_b->setText("Ca&ncel");
   cancel_b->setFixedHeight(25);
-  connect(cancel_b, SIGNAL(clicked()), SLOT(cancelbutton())); 
+  connect(cancel_b, SIGNAL(clicked()), SLOT(cancelbutton()));
 
   continue_b = new QPushButton(this, "continue");
   continue_b->setText("&Continue");
   continue_b->setFixedHeight(25);
-  connect(continue_b, SIGNAL(clicked()), SLOT(continuebutton())); 
+  connect(continue_b, SIGNAL(clicked()), SLOT(continuebutton()));
 
   int mwidth;
   if (cancel_b->sizeHint().width() > continue_b->sizeHint().width())
     mwidth = cancel_b->sizeHint().width();
   else
     mwidth = continue_b->sizeHint().width();
-  
+
   cancel_b->setFixedWidth(mwidth + 20);
   continue_b->setFixedWidth(mwidth + 20);
 
@@ -206,6 +204,7 @@ bool LoginTerm::pressedContinue() {
 
 
 #include "loginterm.moc"
+
 
 
 

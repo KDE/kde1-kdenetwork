@@ -178,7 +178,7 @@ void ConnectWidget::preinit() {
   // you have to see to believe ...
 
   messg->setText(i18n("Looking for Modem ..."));
-  inittimer->start(500);
+  inittimer->start(100);
 }
 
 
@@ -241,7 +241,7 @@ void ConnectWidget::init() {
       timeout_timer->start(atoi(gpppdata.modemTimeout())*1000); 
       
       // this timer will run the script etc.
-      main_timer_ID = startTimer(1);
+      main_timer_ID = startTimer(10);
 
       return;
     }

@@ -56,7 +56,8 @@ kppp_SOURCES	= accounts.cpp \
 		chap.cpp \
 		docking.cpp \
 		runtests.cpp \
-		loginterm.cpp
+		loginterm.cpp \
+		ppplog.cpp
 
 # the library search path
 kppp_LDFLAGS = $(all_libraries) $(KDE_RPATH)
@@ -94,7 +95,8 @@ noinst_HEADERS = accounts.h \
 		loginterm.h \
 		auth.h \
 		version.h \
-		macros.h
+		macros.h \
+		ppplog.h
 
 # just to make sure, automake makes them 
 BUILTSOURCES = accounts.moc \

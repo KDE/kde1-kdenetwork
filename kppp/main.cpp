@@ -52,6 +52,7 @@
 #include "docking.h"
 #include "runtests.h"
 #include "modem.h"
+#include "ppplog.h"
 
 #include <X11/Xlib.h>
 
@@ -276,6 +277,10 @@ int main( int argc, char **argv ) {
 
   a.setMainWidget(&kppp);
   a.setTopWidget(&kppp);  
+
+  // Mario: testing
+//   PPPL_ShowLog();
+//   exit(0);
 
   // we really don't want to die accidentally, since that would leave the
   // modem connected. If you really really want to kill me you must send 
