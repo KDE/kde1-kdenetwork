@@ -1,5 +1,9 @@
 1998-12-18  Harri Porten  <porten@kde.org>
 
+	* #include "auth.h" was needed after pap.h was removed
+
+1998-12-18  Harri Porten  <porten@kde.org>
+
 	* removed pap.* and chap.* files and moved their code in
 	requester.cpp where all setuid root stuff is gathered now.
 	* requester.cpp: rewrote PAP/CHAP so that the setuid part is free
@@ -122,10 +126,8 @@
 	result in a kppp far less vulnerable to security exploits.
 	* added requester.* and opener.*
 	* TODO: - handle signals (SIGCHLD, SIGPIPE?)
-	        - replace usage Qt in pap.cpp with standard library calls
 		- get ppp_available() running (presumably broken now)
 		- speed up reading the syslog (reading single chars now)
-		- Test, debug, test ....
 
 1998-11-17  Mario Weilguni <mweilguni@kde.org>
 
