@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1999-03-06 01:58+0100\n"
+"POT-Creation-Date: 1999-03-12 02:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: LinuxKorea Co. <kde@linuxkorea.co.kr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -288,47 +288,47 @@ msgstr "LoopEnd에 Start가 없습니다! 행: "
 msgid "Starting pppd ..."
 msgstr "pppd를 시작합니다..."
 
-#: connect.cpp:819
+#: connect.cpp:818
 msgid "Scan Var: "
 msgstr "검색 값: "
 
-#: connect.cpp:829
+#: connect.cpp:828
 msgid "Found: "
 msgstr "발견: "
 
-#: connect.cpp:842
+#: connect.cpp:841
 msgid "Looping: "
 msgstr "루프: "
 
-#: connect.cpp:872 modeminfo.cpp:227
+#: connect.cpp:871 modeminfo.cpp:227
 msgid "One Moment Please ..."
 msgstr "잠시만 기다려 주십시오 ..."
 
-#: connect.cpp:916
+#: connect.cpp:915
 msgid "Script timed out!"
 msgstr "연결시간이 초과됨!"
 
-#: connect.cpp:935
+#: connect.cpp:934
 msgid "Scanning: "
 msgstr "검색중: "
 
-#: connect.cpp:945
+#: connect.cpp:944
 msgid "Expecting: "
 msgstr "대기중: "
 
-#: connect.cpp:972
+#: connect.cpp:971
 msgid "Logging on to Network ..."
 msgstr "네트웍으로 로그인중 ..."
 
-#: connect.cpp:998
+#: connect.cpp:997
 msgid "Running Startup Command ..."
 msgstr "시작 명령을 실행중 ..."
 
-#: connect.cpp:1003 connect.cpp:1010
+#: connect.cpp:1002 connect.cpp:1009
 msgid "Done"
 msgstr ""
 
-#: connect.cpp:1120
+#: connect.cpp:1119
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
@@ -1413,7 +1413,7 @@ msgstr "ATI 질의"
 msgid "Modem Query timed out."
 msgstr "모뎀 질의 시간 초과"
 
-#: miniterm.cpp:164 miniterm.cpp:228 modeminfo.cpp:145
+#: miniterm.cpp:164 miniterm.cpp:226 modeminfo.cpp:145
 msgid "Modem Ready"
 msgstr "모뎀 준비"
 
@@ -1523,11 +1523,11 @@ msgstr "모뎀 다시 설정"
 msgid "Initializing Modem"
 msgstr "모뎀 초기화중"
 
-#: miniterm.cpp:207
+#: miniterm.cpp:205
 msgid "Hanging up ..."
 msgstr "연결 끊기..."
 
-#: miniterm.cpp:221
+#: miniterm.cpp:219
 msgid "Resetting Modem"
 msgstr "모뎀을 다시 설정중"
 
@@ -1686,11 +1686,11 @@ msgstr ""
 "파일 생성을 시스템 관리자에게\n"
 "요청하십시오."
 
-#: loginterm.cpp:120
+#: loginterm.cpp:118
 msgid "Ca&ncel"
 msgstr ""
 
-#: loginterm.cpp:125
+#: loginterm.cpp:123
 #, fuzzy
 msgid "&Continue"
 msgstr "연결"

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1999-03-06 01:58+0100\n"
+"POT-Creation-Date: 1999-03-12 02:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Marian Rãdulescu <marian-r@usa.net>\n"
 "Language-Team: ROMANIAN <??@li.org>\n"
@@ -290,49 +290,49 @@ msgstr "Bucla cu END farã START! Linia: "
 msgid "Starting pppd ..."
 msgstr "Pornesc pppd ..."
 
-#: connect.cpp:819
+#: connect.cpp:818
 msgid "Scan Var: "
 msgstr ""
 
-#: connect.cpp:829
+#: connect.cpp:828
 msgid "Found: "
 msgstr "Am gãsit: "
 
-#: connect.cpp:842
+#: connect.cpp:841
 msgid "Looping: "
 msgstr "Buclã: "
 
-#: connect.cpp:872 modeminfo.cpp:227
+#: connect.cpp:871 modeminfo.cpp:227
 msgid "One Moment Please ..."
 msgstr "Aºteptaþi puþin ..."
 
-#: connect.cpp:916
+#: connect.cpp:915
 msgid "Script timed out!"
 msgstr "Script timed out!"
 
-#: connect.cpp:935
+#: connect.cpp:934
 #, fuzzy
 msgid "Scanning: "
 msgstr "Transmit "
 
-#: connect.cpp:945
+#: connect.cpp:944
 msgid "Expecting: "
 msgstr "Aºtept: "
 
-#: connect.cpp:972
+#: connect.cpp:971
 msgid "Logging on to Network ..."
 msgstr "Se face conectarea in reþea ..."
 
-#: connect.cpp:998
+#: connect.cpp:997
 msgid "Running Startup Command ..."
 msgstr "Execut comenzile de pornire ..."
 
-#: connect.cpp:1003 connect.cpp:1010
+#: connect.cpp:1002 connect.cpp:1009
 #, fuzzy
 msgid "Done"
 msgstr "Nimic"
 
-#: connect.cpp:1120
+#: connect.cpp:1119
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
@@ -1422,7 +1422,7 @@ msgstr "Interogare ATI"
 msgid "Modem Query timed out."
 msgstr "Timp de interogare depaºit."
 
-#: miniterm.cpp:164 miniterm.cpp:228 modeminfo.cpp:145
+#: miniterm.cpp:164 miniterm.cpp:226 modeminfo.cpp:145
 msgid "Modem Ready"
 msgstr "Modemul este pregãtit"
 
@@ -1532,11 +1532,11 @@ msgstr "Resetare modem"
 msgid "Initializing Modem"
 msgstr "Iniþializare modem"
 
-#: miniterm.cpp:207
+#: miniterm.cpp:205
 msgid "Hanging up ..."
 msgstr "Deconectare ..."
 
-#: miniterm.cpp:221
+#: miniterm.cpp:219
 msgid "Resetting Modem"
 msgstr "Resetare modem"
 
@@ -1693,11 +1693,11 @@ msgid ""
 "read and write permissions."
 msgstr ""
 
-#: loginterm.cpp:120
+#: loginterm.cpp:118
 msgid "Ca&ncel"
 msgstr ""
 
-#: loginterm.cpp:125
+#: loginterm.cpp:123
 #, fuzzy
 msgid "&Continue"
 msgstr "Conectare"

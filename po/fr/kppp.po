@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1999-03-06 01:58+0100\n"
+"POT-Creation-Date: 1999-03-12 02:44+0100\n"
 "PO-Revision-Date: 1999-01-31 18:00 CET\n"
 "Last-Translator: Francois-Xavier DURANCEAU "
 "<Francois-xavier.Duranceau@loria.fr>\n"
@@ -306,47 +306,47 @@ msgstr "Fin de boucle (LoopEnd) sans début (Start) à la ligne : "
 msgid "Starting pppd ..."
 msgstr "Lancement de pppd..."
 
-#: connect.cpp:819
+#: connect.cpp:818
 msgid "Scan Var: "
 msgstr "Variable : "
 
-#: connect.cpp:829
+#: connect.cpp:828
 msgid "Found: "
 msgstr "Trouvé : "
 
-#: connect.cpp:842
+#: connect.cpp:841
 msgid "Looping: "
 msgstr "Répétition : "
 
-#: connect.cpp:872 modeminfo.cpp:227
+#: connect.cpp:871 modeminfo.cpp:227
 msgid "One Moment Please ..."
 msgstr "Veuillez patienter..."
 
-#: connect.cpp:916
+#: connect.cpp:915
 msgid "Script timed out!"
 msgstr "Temps limite dépassé pendant l'exécution du script !"
 
-#: connect.cpp:935
+#: connect.cpp:934
 msgid "Scanning: "
 msgstr "Analyse : "
 
-#: connect.cpp:945
+#: connect.cpp:944
 msgid "Expecting: "
 msgstr "Attente de : "
 
-#: connect.cpp:972
+#: connect.cpp:971
 msgid "Logging on to Network ..."
 msgstr "Connexion au réseau..."
 
-#: connect.cpp:998
+#: connect.cpp:997
 msgid "Running Startup Command ..."
 msgstr "Lancement de la commande de démarrage..."
 
-#: connect.cpp:1003 connect.cpp:1010
+#: connect.cpp:1002 connect.cpp:1009
 msgid "Done"
 msgstr "Fermer"
 
-#: connect.cpp:1120
+#: connect.cpp:1119
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
@@ -1690,7 +1690,7 @@ msgstr "Interroger avec les commandes ATI"
 msgid "Modem Query timed out."
 msgstr "L'interrogation du modem a dépassé le temps imparti."
 
-#: miniterm.cpp:164 miniterm.cpp:228 modeminfo.cpp:145
+#: miniterm.cpp:164 miniterm.cpp:226 modeminfo.cpp:145
 msgid "Modem Ready"
 msgstr "Le modem est prêt"
 
@@ -1807,11 +1807,11 @@ msgstr "Réinitialiser le modem"
 msgid "Initializing Modem"
 msgstr "Initialisation du modem"
 
-#: miniterm.cpp:207
+#: miniterm.cpp:205
 msgid "Hanging up ..."
 msgstr "Raccrochage en cours..."
 
-#: miniterm.cpp:221
+#: miniterm.cpp:219
 msgid "Resetting Modem"
 msgstr "Réinitialisation du modem en cours"
 
@@ -1978,11 +1978,11 @@ msgstr ""
 "la création d'un fichier non vide de ce nom\n"
 "avec les permissions en lecture et écriture."
 
-#: loginterm.cpp:120
+#: loginterm.cpp:118
 msgid "Ca&ncel"
 msgstr "A&nnuler"
 
-#: loginterm.cpp:125
+#: loginterm.cpp:123
 msgid "&Continue"
 msgstr "&Continuer"
 

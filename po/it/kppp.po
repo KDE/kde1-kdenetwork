@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1999-03-06 01:58+0100\n"
+"POT-Creation-Date: 1999-03-12 02:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -283,48 +283,48 @@ msgstr "Fine ciclo senza preciso Inizio! Linea: "
 msgid "Starting pppd ..."
 msgstr "Inizializzo pppd...."
 
-#: connect.cpp:819
+#: connect.cpp:818
 msgid "Scan Var: "
 msgstr "Cerca Var: "
 
-#: connect.cpp:829
+#: connect.cpp:828
 msgid "Found: "
 msgstr "Trovato: "
 
-#: connect.cpp:842
+#: connect.cpp:841
 msgid "Looping: "
 msgstr "Ciclico: "
 
-#: connect.cpp:872 modeminfo.cpp:227
+#: connect.cpp:871 modeminfo.cpp:227
 msgid "One Moment Please ..."
 msgstr "Un attimo, prego ..."
 
-#: connect.cpp:916
+#: connect.cpp:915
 msgid "Script timed out!"
 msgstr "Script timed out"
 
-#: connect.cpp:935
+#: connect.cpp:934
 msgid "Scanning: "
 msgstr "Ricerca: "
 
-#: connect.cpp:945
+#: connect.cpp:944
 msgid "Expecting: "
 msgstr "In attesa di: "
 
-#: connect.cpp:972
+#: connect.cpp:971
 msgid "Logging on to Network ..."
 msgstr "Sto accedendo alla rete ..."
 
-#: connect.cpp:998
+#: connect.cpp:997
 msgid "Running Startup Command ..."
 msgstr "Eseguo comando di inizio ..."
 
-#: connect.cpp:1003 connect.cpp:1010
+#: connect.cpp:1002 connect.cpp:1009
 #, fuzzy
 msgid "Done"
 msgstr "Nulla"
 
-#: connect.cpp:1120
+#: connect.cpp:1119
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
@@ -1415,7 +1415,7 @@ msgstr "Interrogazione ATI"
 msgid "Modem Query timed out."
 msgstr "Timeout interrogazione modem."
 
-#: miniterm.cpp:164 miniterm.cpp:228 modeminfo.cpp:145
+#: miniterm.cpp:164 miniterm.cpp:226 modeminfo.cpp:145
 msgid "Modem Ready"
 msgstr "Modem pronto"
 
@@ -1525,11 +1525,11 @@ msgstr "Resetta modem"
 msgid "Initializing Modem"
 msgstr "Inizializzazione modem"
 
-#: miniterm.cpp:207
+#: miniterm.cpp:205
 msgid "Hanging up ..."
 msgstr "Disconnessione .."
 
-#: miniterm.cpp:221
+#: miniterm.cpp:219
 msgid "Resetting Modem"
 msgstr "Resetto il modem"
 
@@ -1689,11 +1689,11 @@ msgstr ""
 "creare questo file,non vuoto, con i premessi\n"
 "di lettura e scrittura adeguati."
 
-#: loginterm.cpp:120
+#: loginterm.cpp:118
 msgid "Ca&ncel"
 msgstr ""
 
-#: loginterm.cpp:125
+#: loginterm.cpp:123
 #, fuzzy
 msgid "&Continue"
 msgstr "Connetti"

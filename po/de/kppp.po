@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1999-03-06 01:58+0100\n"
+"POT-Creation-Date: 1999-03-12 02:44+0100\n"
 "PO-Revision-Date: 1999-02-05 20:45+MET\n"
 "Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
 "Language-Team: German <kde-i18n@kde.org>\n"
@@ -302,47 +302,47 @@ msgstr "Schleifenende ohne entsprechende Start!-Zeile: "
 msgid "Starting pppd ..."
 msgstr "Starte pppd...."
 
-#: connect.cpp:819
+#: connect.cpp:818
 msgid "Scan Var: "
 msgstr "Such-Variable: "
 
-#: connect.cpp:829
+#: connect.cpp:828
 msgid "Found: "
 msgstr "Gefunden: "
 
-#: connect.cpp:842
+#: connect.cpp:841
 msgid "Looping: "
 msgstr "Schleife: "
 
-#: connect.cpp:872 modeminfo.cpp:227
+#: connect.cpp:871 modeminfo.cpp:227
 msgid "One Moment Please ..."
 msgstr "Bitte einen Moment..."
 
-#: connect.cpp:916
+#: connect.cpp:915
 msgid "Script timed out!"
 msgstr "Timeout beim Script!"
 
-#: connect.cpp:935
+#: connect.cpp:934
 msgid "Scanning: "
 msgstr "Suche nach: "
 
-#: connect.cpp:945
+#: connect.cpp:944
 msgid "Expecting: "
 msgstr "Erwarte: "
 
-#: connect.cpp:972
+#: connect.cpp:971
 msgid "Logging on to Network ..."
 msgstr "Anmeldung am Netzwerk..."
 
-#: connect.cpp:998
+#: connect.cpp:997
 msgid "Running Startup Command ..."
 msgstr "Startkommando läuft..."
 
-#: connect.cpp:1003 connect.cpp:1010
+#: connect.cpp:1002 connect.cpp:1009
 msgid "Done"
 msgstr "Fertig"
 
-#: connect.cpp:1120
+#: connect.cpp:1119
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
@@ -1688,7 +1688,7 @@ msgstr "ATI-Abfrage"
 msgid "Modem Query timed out."
 msgstr "Zeitüberschreitung der Modemabfrage."
 
-#: miniterm.cpp:164 miniterm.cpp:228 modeminfo.cpp:145
+#: miniterm.cpp:164 miniterm.cpp:226 modeminfo.cpp:145
 msgid "Modem Ready"
 msgstr "Modem bereit"
 
@@ -1805,11 +1805,11 @@ msgstr "Modem zurücksetzen"
 msgid "Initializing Modem"
 msgstr "initialisiere Modem"
 
-#: miniterm.cpp:207
+#: miniterm.cpp:205
 msgid "Hanging up ..."
 msgstr "Lege auf..."
 
-#: miniterm.cpp:221
+#: miniterm.cpp:219
 msgid "Resetting Modem"
 msgstr "Setze Modem zurück"
 
@@ -1974,11 +1974,11 @@ msgstr ""
 "eine nicht-leere Datei zu erstellen, die\n"
 "passende Lese- und Schreibrechte hat."
 
-#: loginterm.cpp:120
+#: loginterm.cpp:118
 msgid "Ca&ncel"
 msgstr "&Abbrechen"
 
-#: loginterm.cpp:125
+#: loginterm.cpp:123
 msgid "&Continue"
 msgstr "&Fortfahren"
 

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE 1.0\n"
-"POT-Creation-Date: 1999-03-06 01:58+0100\n"
+"POT-Creation-Date: 1999-03-12 02:44+0100\n"
 "PO-Revision-Date: 1998-06-29 11:00+0200\n"
 "Last-Translator: Kerem ERZURUMLU <kerem@linux.org.tr>\n"
 "Language-Team: Hacettepe Linux Users Group <hacettepe@linux.org.tr>\n"
@@ -287,47 +287,47 @@ msgstr "Baþý belirtilmeden döngü bitti! Satýr: "
 msgid "Starting pppd ..."
 msgstr "pppd baþlýyor..."
 
-#: connect.cpp:819
+#: connect.cpp:818
 msgid "Scan Var: "
 msgstr "Deðiþken tara: "
 
-#: connect.cpp:829
+#: connect.cpp:828
 msgid "Found: "
 msgstr "Bulundu:"
 
-#: connect.cpp:842
+#: connect.cpp:841
 msgid "Looping: "
 msgstr "Döngüleniyor: "
 
-#: connect.cpp:872 modeminfo.cpp:227
+#: connect.cpp:871 modeminfo.cpp:227
 msgid "One Moment Please ..."
 msgstr "Bir Saniye Lütfen..."
 
-#: connect.cpp:916
+#: connect.cpp:915
 msgid "Script timed out!"
 msgstr "Komut kümesi zaman aþýmýna uðradý!"
 
-#: connect.cpp:935
+#: connect.cpp:934
 msgid "Scanning: "
 msgstr "Taranýyor: "
 
-#: connect.cpp:945
+#: connect.cpp:944
 msgid "Expecting: "
 msgstr "Kabul ediliyor: "
 
-#: connect.cpp:972
+#: connect.cpp:971
 msgid "Logging on to Network ..."
 msgstr "Að'a baðlanýlýyor..."
 
-#: connect.cpp:998
+#: connect.cpp:997
 msgid "Running Startup Command ..."
 msgstr "Baþlangýç Komutlarý Çalýþtýrýlýyor..."
 
-#: connect.cpp:1003 connect.cpp:1010
+#: connect.cpp:1002 connect.cpp:1009
 msgid "Done"
 msgstr ""
 
-#: connect.cpp:1120
+#: connect.cpp:1119
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
@@ -1411,7 +1411,7 @@ msgstr "ATI Sorgusu"
 msgid "Modem Query timed out."
 msgstr "Modem Sorgusu Zaman Aþýmýna Uðradý"
 
-#: miniterm.cpp:164 miniterm.cpp:228 modeminfo.cpp:145
+#: miniterm.cpp:164 miniterm.cpp:226 modeminfo.cpp:145
 msgid "Modem Ready"
 msgstr "Modem Hazýr"
 
@@ -1521,11 +1521,11 @@ msgstr "Modemi Sýfýrla"
 msgid "Initializing Modem"
 msgstr "Modem Hazýrlanýyor"
 
-#: miniterm.cpp:207
+#: miniterm.cpp:205
 msgid "Hanging up ..."
 msgstr "Kapatýyorum ..."
 
-#: miniterm.cpp:221
+#: miniterm.cpp:219
 msgid "Resetting Modem"
 msgstr "Modem Sýfýrlanýyor"
 
@@ -1681,11 +1681,11 @@ msgstr ""
 "bulunan düzgün bir /etc/resolv.conf \n"
 "dosyasý yaratmasýný isteyin."
 
-#: loginterm.cpp:120
+#: loginterm.cpp:118
 msgid "Ca&ncel"
 msgstr ""
 
-#: loginterm.cpp:125
+#: loginterm.cpp:123
 #, fuzzy
 msgid "&Continue"
 msgstr "Baðlan"

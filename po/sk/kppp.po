@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp 0.9.6\n"
-"POT-Creation-Date: 1999-03-06 01:58+0100\n"
+"POT-Creation-Date: 1999-03-12 02:44+0100\n"
 "PO-Revision-Date: 1998-03-08 10:42 MET\n"
 "Last-Translator: Juraj Bednár <bednar@isternet.sk>\n"
 "Language-Team: Slovak <bednar@isternet.sk>\n"
@@ -304,47 +304,47 @@ msgstr "Koniec sluèky bez odpovedajúceheho riadku Start! : "
 msgid "Starting pppd ..."
 msgstr "©tartujem pppd ..."
 
-#: connect.cpp:819
+#: connect.cpp:818
 msgid "Scan Var: "
 msgstr "Scan Var:"
 
-#: connect.cpp:829
+#: connect.cpp:828
 msgid "Found: "
 msgstr "Nájdené: "
 
-#: connect.cpp:842
+#: connect.cpp:841
 msgid "Looping: "
 msgstr "Cyklus: "
 
-#: connect.cpp:872 modeminfo.cpp:227
+#: connect.cpp:871 modeminfo.cpp:227
 msgid "One Moment Please ..."
 msgstr "Momentík prosím ..."
 
-#: connect.cpp:916
+#: connect.cpp:915
 msgid "Script timed out!"
 msgstr "Timeout skriptu!"
 
-#: connect.cpp:935
+#: connect.cpp:934
 msgid "Scanning: "
 msgstr "Zis»ujem: "
 
-#: connect.cpp:945
+#: connect.cpp:944
 msgid "Expecting: "
 msgstr "Oèakávam:"
 
-#: connect.cpp:972
+#: connect.cpp:971
 msgid "Logging on to Network ..."
 msgstr "Prihlasovanie sa do siete ..."
 
-#: connect.cpp:998
+#: connect.cpp:997
 msgid "Running Startup Command ..."
 msgstr "Vykonávam ¹tartovací príkaz ..."
 
-#: connect.cpp:1003 connect.cpp:1010
+#: connect.cpp:1002 connect.cpp:1009
 msgid "Done"
 msgstr "Hotovo"
 
-#: connect.cpp:1120
+#: connect.cpp:1119
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
@@ -1673,7 +1673,7 @@ msgstr "Zis»ujem nastavenie modemu"
 msgid "Modem Query timed out."
 msgstr "Vypr¹al èas pre komunikáciu s modemom."
 
-#: miniterm.cpp:164 miniterm.cpp:228 modeminfo.cpp:145
+#: miniterm.cpp:164 miniterm.cpp:226 modeminfo.cpp:145
 msgid "Modem Ready"
 msgstr "Modem pripravený"
 
@@ -1790,11 +1790,11 @@ msgstr "Resetova» modem"
 msgid "Initializing Modem"
 msgstr "Inicializácia modemu"
 
-#: miniterm.cpp:207
+#: miniterm.cpp:205
 msgid "Hanging up ..."
 msgstr "Skladám ..."
 
-#: miniterm.cpp:221
+#: miniterm.cpp:219
 msgid "Resetting Modem"
 msgstr "Resetujem modem"
 
@@ -1958,11 +1958,11 @@ msgstr ""
 "vytvoril so správnymi hodnotami a\n"
 "prístupovými právami na èítanie a zápis."
 
-#: loginterm.cpp:120
+#: loginterm.cpp:118
 msgid "Ca&ncel"
 msgstr "Zru¹&i»"
 
-#: loginterm.cpp:125
+#: loginterm.cpp:123
 msgid "&Continue"
 msgstr "&Pokraèova»"
 
