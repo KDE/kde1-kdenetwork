@@ -22,6 +22,9 @@ class ircListItem : public QObject,
     return text;
   }
 
+  void setWrapping(bool);
+  bool wrapping();
+
 public slots:
   virtual void updateSize();
   
@@ -49,6 +52,8 @@ private:
   QListBox *parent_lb;
   int yPos;
   int xPos;
+
+  bool Wrapping;
 
   bool WantColour;
   static const int maxcolour;

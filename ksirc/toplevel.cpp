@@ -607,7 +607,9 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	  s3 = string.mid(pos+1, pos2 - pos - 1); // Get nick
 	  if(s3[0] == '@'){    // Remove the op part if set
 	    s3.remove(0, 1);
-	    nicks->inSort(new ircListItem(s3, &red, nicks));
+	    ircListItem *irc = new ircListItem(s3, &red, nicks);
+	    irc->setWrapping(FALSE);
+	    nicks->inSort(irc);
 	  }
 	  else{
 	    nicks->inSort(s3);
@@ -694,7 +696,9 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	    if(strcmp(s3, nicks->text(i)) == 0){
 	      nicks->setAutoUpdate(FALSE);
 	      nicks->removeItem(i);           // remove old nick
-	      nicks->inSort(new ircListItem(s3, &red, nicks));    // add new nick in sorted pass,with colour
+	      ircListItem *irc = new ircListItem(s3, &red, nicks);
+	      irc->setWrapping(FALSE);
+	      nicks->inSort(irc);    // add new nick in sorted pass,with colour
 	      nicks->setAutoUpdate(TRUE);
 	      nicks->repaint();
 	    }

@@ -36,6 +36,8 @@ ircListItem::ircListItem(QString s, const QColor *c, QListBox *lb, QPixmap *p = 
 
   WantColour = _WantColour;
 
+  Wrapping = TRUE;
+
   setText(s);
 
   rows = 1;
@@ -101,29 +103,67 @@ void ircListItem::setupPainterText()
     xPos = 3;
   }
 
-  paint_text->clear();
+  // Wrapping code is a little slow, and a little silly, but it works.
 
-  if(fm.width(text) > (parent_lb->width()-35)){
-    uint length = (parent_lb->width()-35) / fm.width("X");
-    linewidth = length;
-    uint sChar = 0;
-    uint eChar = length;
-    uint eChar_h;
-    rows = 0;
-    while(sChar < text.length()){
-      if(eChar < text.length()){
-	eChar_h = text.findRev(' ', eChar);
-	if( !((eChar_h == (uint) -1) || (eChar_h < sChar)))
-	  eChar = eChar_h;
+  // Main idea is this:
+  // Go through each character, find it's width and add it, when it goes
+  // beyond the max widith, time for new line.
+  //
+  // We skip over all !<>,<> time constructs.
+  
+
+  paint_text->clear();
+  int max_width = parent_lb->width()-35;
+  if((fm.width(text) > max_width) && (Wrapping == TRUE)){
+    int lastp = 0;
+    int width = xPos - fm.width(text[0]);
+    uint i;
+    int ig = 0;
+    for(i = 0; i < text.length() ; i++){
+      if((text[i] == '!') || (text[i] == 0x03) &&
+	 (((text[i+1] >= 0x30) && (text[i+1] <= 0x39)  ||
+	   (text[i] == '!') && (text[i+1] == 'c')))){
+	if((text[i+1] >= 0x30) && (text[i+1] <= 0x39)){
+	  i += 2; 
+	  ig += 2;
+	  if((text[i] >= 0x30) && (text[i] <= 0x39)){
+	    i++;
+	    ig++;
+	  }
+	  if((text[i] == ',') && ((text[i+1] >= 0x30) && (text[i+1] <= 0x39))){
+	    i+=2;
+	    ig+=2;
+	    if((text[i] >= 0x30) && (text[i] <= 0x39)){
+	      i++;
+	      ig++;
+	    }
+	  }
+	  i--; // Move back on since the i++ moves ahead one.
+	}
+	else if((text[i] == '!') && (text[i+1] == 'c')){
+	  i += 1;   // Implicit step forward in for loop
+	  ig += 2;
+	}
       }
       else{
-	eChar = text.length();
+	width += fm.width(text[i]);
+	if(width >= max_width){
+	  int newi = i;
+	  for(; (newi > 0) &&
+		(text[newi] != ' ') &&
+		(text[newi] != '-') &&
+		(text[newi] != '\\'); newi--);
+	  if(newi > lastp)
+	    i = newi+1;
+	  paint_text->append(text.mid(lastp, i-lastp));
+	  ig = 0;
+	  width = xPos;
+	  lastp = i;
+	}
       }
-      paint_text->append(text.mid(sChar, eChar - sChar));
-      sChar = eChar + 1;
-      eChar += length;
-      rows++;
     }
+    paint_text->append(text.mid(lastp, i-lastp));
+    rows = paint_text->count();
   }
   else{
     rows = 1;
@@ -134,6 +174,15 @@ void ircListItem::setupPainterText()
 
 void ircListItem::updateSize(){
   setupPainterText();
+}
+
+void ircListItem::setWrapping(bool _wrap){
+  Wrapping = _wrap;
+  setupPainterText();
+}
+
+bool ircListItem::wrapping(){
+  return Wrapping;
 }
 
 void ircListItem::colourDrawText(QPainter *p, int startx, int starty,
