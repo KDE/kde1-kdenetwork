@@ -1,0 +1,236 @@
+# Breton translation of KDE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# Jañ-Mai Drapier <jdrapier@club-internet.fr>, 1999
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: kbiff-1.1\n"
+"POT-Creation-Date: 1999-01-15 02:07+0100\n"
+"PO-Revision-Date: 1999-03-19 11:38+0100\n"
+"Last-Translator: Jañ-Mai Drapier <jdrapier@club-internet.fr>\n"
+"Language-Team: Brezhoneg <Suav.Icb@wanadoo.fr>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso8859-1\n"
+"Content-Transfer-Encoding: 8 bit\n"
+
+#: kbiff.cpp:461
+msgid "&UnDock"
+msgstr "&Anensoc'hañ"
+
+#: kbiff.cpp:463
+msgid "&Dock"
+msgstr "&Ensoc'hañ"
+
+#: kbiff.cpp:464
+msgid "&Setup..."
+msgstr "&Kefluniañ..."
+
+#: kbiff.cpp:466
+msgid "&Help..."
+msgstr "&Skoazell..."
+
+#: kbiff.cpp:470
+msgid "&Check Mail Now"
+msgstr "&Gwiriañ postel bremañ"
+
+#: kbiff.cpp:472
+msgid "&Read Mail Now"
+msgstr "&Lenn postel bremañ"
+
+#: kbiff.cpp:478
+msgid "&Stop"
+msgstr "&Paouez"
+
+#: notify.cpp:28 notify.cpp:45
+msgid "You have new mail!"
+msgstr "Postel nevez a zo evidoc'h !"
+
+#: notify.cpp:53
+#, c-format
+msgid "New Messages: %d"
+msgstr "Kemennadoù nevez : %d"
+
+#: notify.cpp:58
+#, c-format
+msgid "Mailbox: %s"
+msgstr "Boest-lizheroù : %s"
+
+#: setupdlg.cpp:79
+msgid "KBiff Setup"
+msgstr "Kefluniañ KBiff"
+
+#: setupdlg.cpp:82
+msgid "Profile:"
+msgstr "Profil :"
+
+#: setupdlg.cpp:98
+msgid "&New..."
+msgstr "&Nevez..."
+
+#: setupdlg.cpp:105
+msgid "&Rename..."
+msgstr "&Adenvel..."
+
+#: setupdlg.cpp:139
+msgid "General"
+msgstr "Hollek"
+
+#: setupdlg.cpp:140
+msgid "New Mail"
+msgstr "Postel nevez"
+
+#: setupdlg.cpp:141
+msgid "Mailbox"
+msgstr "Boestoù-lizheroù"
+
+#: setupdlg.cpp:356
+msgid "New Profile"
+msgstr "Profil nevez"
+
+#: setupdlg.cpp:388
+#, c-format
+msgid "Rename Profile: %s"
+msgstr "Adenvel profil : %s"
+
+#: setupdlg.cpp:428
+#, c-format
+msgid "Delete Profile: %s"
+msgstr "Dilemel profil : %s"
+
+#: setupdlg.cpp:429
+msgid "Are you sure you wish to delete this profile?\n"
+msgstr "Ha sur oc'h e fell deoc'h dilemel ar profil-mañ ?\n"
+
+#: setupdlg.cpp:489
+msgid "Poll (sec):"
+msgstr "Ged (eil) :"
+
+#: setupdlg.cpp:494
+msgid "Mail client:"
+msgstr "Posteler :"
+
+#: setupdlg.cpp:507
+msgid "Dock in panel"
+msgstr "Ensoc'hañ er banell"
+
+#: setupdlg.cpp:512
+msgid "Use session management"
+msgstr "Arverañ mererezh an dalc'h"
+
+#: setupdlg.cpp:517
+msgid "Icons:"
+msgstr "Arlunioù :"
+
+#: setupdlg.cpp:535
+msgid "No Mail:"
+msgstr "Postel ebet :"
+
+#: setupdlg.cpp:544
+msgid "Old Mail"
+msgstr "Postel kozh"
+
+#: setupdlg.cpp:554
+msgid "New Mail:"
+msgstr "Postel nevez :"
+
+#: setupdlg.cpp:691
+msgid "Run Command"
+msgstr "Seveniñ an urzhiad"
+
+#: setupdlg.cpp:698 setupdlg.cpp:711 setupdlg.cpp:1051
+msgid "Browse"
+msgstr "Furchal"
+
+#: setupdlg.cpp:704
+msgid "Play Sound"
+msgstr "C'hoari son"
+
+#: setupdlg.cpp:717
+msgid "System Beep"
+msgstr "Bip ar reizhiad"
+
+#: setupdlg.cpp:722
+msgid "Notify"
+msgstr "Kemenn"
+
+#: setupdlg.cpp:853
+msgid "Advanced Options"
+msgstr "Dibarzhoù araokaet"
+
+#: setupdlg.cpp:857
+msgid "Mailbox URL:"
+msgstr "URL ar voest-lizheroù :"
+
+#: setupdlg.cpp:861
+msgid "Port:"
+msgstr "Porzh :"
+
+#: setupdlg.cpp:865
+msgid "PREAUTH"
+msgstr ""
+
+#: setupdlg.cpp:872
+msgid "Keep Alive"
+msgstr "Derc'hel bev"
+
+#: setupdlg.cpp:998 setupdlg.cpp:1027
+msgid "Mailbox:"
+msgstr "Boest-lizheroù :"
+
+#: setupdlg.cpp:1011 setupdlg.cpp:1321
+msgid "New Mailbox"
+msgstr "Boest-lizheroù nevez"
+
+#: setupdlg.cpp:1018
+msgid "Delete Mailbox"
+msgstr "Dilemel ar voest-lizheroù"
+
+#: setupdlg.cpp:1024
+msgid "Protocol:"
+msgstr "Komenad :"
+
+#: setupdlg.cpp:1030
+msgid "Server:"
+msgstr "Servijer :"
+
+#: setupdlg.cpp:1033
+msgid "User:"
+msgstr "Arveriad :"
+
+#: setupdlg.cpp:1036
+msgid "Password:"
+msgstr "Tremenger :"
+
+#: setupdlg.cpp:1068
+msgid "Store password"
+msgstr "Boniañ an tremenger"
+
+#: setupdlg.cpp:1071
+msgid "Advanced"
+msgstr "Araokaet"
+
+#: setupdlg.cpp:1508
+msgid "KBiff"
+msgstr "KBiff"
+
+#: setupdlg.cpp:1530
+#, c-format
+msgid ""
+"Version %s\n"
+"\n"
+"Copyright (C) 1998\n"
+"Kurt Granroth"
+msgstr ""
+"Doare %s\n"
+"\n"
+"Gwirioù eilañ (C) 1998\n"
+"Kurt Granroth"
+
+#: setupdlg.cpp:1579
+msgid "New Name:"
+msgstr "Anv nevez :"
+
+#: setupdlg.cpp:1605
+msgid "New Name"
+msgstr "Anv nevez"
