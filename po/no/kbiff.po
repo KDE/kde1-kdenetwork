@@ -1,11 +1,11 @@
-# SOME DESCRIPTIVE TITLE.
+# Norwegian translations for KDE Network, kbiff
 # Copyright (C) 1998 Free Software Foundation, Inc.
 # Hans Petter bieker <zerium@webindex.no>, 1998.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-10-13 13:34+0200\n"
+"Project-Id-Version: KDE NETWORK/kbiff\n"
+"POT-Creation-Date: 1998-11-23 01:56+0100\n"
 "PO-Revision-Date: 1998-08-09 19:00+0200\n"
 "Last-Translator: Hans Petter Bieker <zerium@webindex.no>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,210 +13,31 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO_8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: setupdlg.cpp:65
-msgid "KBiff Setup"
-msgstr "KBiff-oppsett"
-
-#: setupdlg.cpp:68
-msgid "Profile:"
-msgstr "Profil:"
-
-#: setupdlg.cpp:84
-msgid "&New..."
-msgstr "&Ny..."
-
-#: setupdlg.cpp:91
-msgid "&Rename..."
-msgstr "&Endre navn..."
-
-#: setupdlg.cpp:125
-msgid "General"
-msgstr "Generelt"
-
-#: setupdlg.cpp:126
-msgid "New Mail"
-msgstr "Ny post"
-
-#: setupdlg.cpp:127
-msgid "Mailbox"
-msgstr "Postkasse"
-
-#: setupdlg.cpp:335
-msgid "New Profile"
-msgstr "Ny profil"
-
-#: setupdlg.cpp:367
-#, c-format
-msgid "Rename Profile: %s"
-msgstr "Endre profilnavn: %s"
-
-#: setupdlg.cpp:407
-#, c-format
-msgid "Delete Profile: %s"
-msgstr "Slett profil: %s"
-
-#: setupdlg.cpp:408
-msgid "Are you sure you wish to delete this profile?\n"
-msgstr "Er du sikker på at du ønsker å slette denne profilen?\n"
-
-#: setupdlg.cpp:468
-msgid "Poll (sec):"
-msgstr "Sjekk (sek):"
-
-#: setupdlg.cpp:473
-msgid "Mail client:"
-msgstr "Postklient:"
-
-#: setupdlg.cpp:486
-msgid "Dock in panel"
-msgstr "Dokk i panel"
-
-#: setupdlg.cpp:491
-msgid "Use session management"
-msgstr "Bruk sesjonbehandling"
-
-#: setupdlg.cpp:496
-msgid "Icons:"
-msgstr "Ikoner:"
-
-#: setupdlg.cpp:514
-msgid "No Mail:"
-msgstr "Ingen post:"
-
-#: setupdlg.cpp:523
-msgid "Old Mail"
-msgstr "Gammel post"
-
-#: setupdlg.cpp:533
-msgid "New Mail:"
-msgstr "Ny post:"
-
-#: setupdlg.cpp:670
-msgid "Run Command"
-msgstr "Kjør kommando"
-
-#: setupdlg.cpp:677 setupdlg.cpp:690 setupdlg.cpp:985
-msgid "Browse"
-msgstr "Bla gjennom"
-
-#: setupdlg.cpp:683
-msgid "Play Sound"
-msgstr "Spill lyd"
-
-#: setupdlg.cpp:696
-msgid "System Beep"
-msgstr "Systempip"
-
-#: setupdlg.cpp:701
-msgid "Notify"
-msgstr "Varsle"
-
-#: setupdlg.cpp:829
-msgid "Advanced Options"
-msgstr "Avanserte valg"
-
-#: setupdlg.cpp:833
-msgid "Mailbox URL:"
-msgstr "Postkasse-URL:"
-
-#: setupdlg.cpp:837
-msgid "Port:"
-msgstr "Port:"
-
-#: setupdlg.cpp:841
-msgid "PREAUTH"
-msgstr "Foraut."
-
-#: setupdlg.cpp:935 setupdlg.cpp:964
-msgid "Mailbox:"
-msgstr "Postkasse:"
-
-#: setupdlg.cpp:945 setupdlg.cpp:1238
-msgid "New Mailbox"
-msgstr "Ny postkasse"
-
-#: setupdlg.cpp:952
-msgid "Delete Mailbox"
-msgstr "Slett postkasse"
-
-#: setupdlg.cpp:958
-msgid "Protocol:"
-msgstr "Protokoll:"
-
-#: setupdlg.cpp:961
-msgid "Mailbox:"
-msgstr "Postkasse:"
-
-#: setupdlg.cpp:964
-msgid "Server:"
-msgstr "Tjener:"
-
-#: setupdlg.cpp:967
-msgid "User:"
-msgstr "Bruker:"
-
-#: setupdlg.cpp:970
-msgid "Password:"
-msgstr "Passord:"
-
-#: setupdlg.cpp:1002
-msgid "Store password"
-msgstr "Lagre passord"
-
-#: setupdlg.cpp:1005
-msgid "Advanced"
-msgstr "Avansert"
-
-#: setupdlg.cpp:1430
-msgid "KBiff"
-msgstr "KBiff"
-
-#: setupdlg.cpp:1452
-#, c-format
-msgid ""
-"Version %s\n"
-"\n"
-"Copyright (C) 1998\n"
-"Kurt Granroth"
-msgstr ""
-"Versjon %s\n"
-"\n"
-"Copyright (C) 1998\n"
-"Kurt Granroth"
-
-#: setupdlg.cpp:1501
-msgid "New Name:"
-msgstr "Nytt navn:"
-
-#: setupdlg.cpp:1527
-msgid "New Name"
-msgstr "Nytt navn"
-
-#: kbiff.cpp:468
+#: kbiff.cpp:470
 msgid "&UnDock"
 msgstr "&Udokk"
 
-#: kbiff.cpp:470
+#: kbiff.cpp:472
 msgid "&Dock"
 msgstr "&Dokk"
 
-#: kbiff.cpp:471
+#: kbiff.cpp:473
 msgid "&Setup..."
 msgstr "&Oppsett..."
 
-#: kbiff.cpp:473
+#: kbiff.cpp:475
 msgid "&Help..."
 msgstr "&Hjelp..."
 
-#: kbiff.cpp:477
-msgid "&Check mail now"
-msgstr "&Sjekk post nå"
-
 #: kbiff.cpp:479
-msgid "&Read Mail now"
+msgid "&Check Mail Now"
 msgstr "&Sjekk post nå"
 
-#: kbiff.cpp:485
+#: kbiff.cpp:481
+msgid "&Read Mail Now"
+msgstr "&Sjekk post nå"
+
+#: kbiff.cpp:487
 msgid "&Stop"
 msgstr "&Stopp"
 
@@ -233,3 +54,182 @@ msgstr "Nye meldinger: %d"
 #, c-format
 msgid "Mailbox: %s"
 msgstr "Postkasse: %s"
+
+#: setupdlg.cpp:81
+msgid "KBiff Setup"
+msgstr "KBiff-oppsett"
+
+#: setupdlg.cpp:84
+msgid "Profile:"
+msgstr "Profil:"
+
+#: setupdlg.cpp:100
+msgid "&New..."
+msgstr "&Ny..."
+
+#: setupdlg.cpp:107
+msgid "&Rename..."
+msgstr "&Endre navn..."
+
+#: setupdlg.cpp:141
+msgid "General"
+msgstr "Generelt"
+
+#: setupdlg.cpp:142
+msgid "New Mail"
+msgstr "Ny post"
+
+#: setupdlg.cpp:143
+msgid "Mailbox"
+msgstr "Postkasse"
+
+#: setupdlg.cpp:358
+msgid "New Profile"
+msgstr "Ny profil"
+
+#: setupdlg.cpp:390
+#, c-format
+msgid "Rename Profile: %s"
+msgstr "Endre profilnavn: %s"
+
+#: setupdlg.cpp:430
+#, c-format
+msgid "Delete Profile: %s"
+msgstr "Slett profil: %s"
+
+#: setupdlg.cpp:431
+msgid "Are you sure you wish to delete this profile?\n"
+msgstr "Er du sikker på at du ønsker å slette denne profilen?\n"
+
+#: setupdlg.cpp:491
+msgid "Poll (sec):"
+msgstr "Sjekk (sek):"
+
+#: setupdlg.cpp:496
+msgid "Mail client:"
+msgstr "Postklient:"
+
+#: setupdlg.cpp:509
+msgid "Dock in panel"
+msgstr "Dokk i panel"
+
+#: setupdlg.cpp:514
+msgid "Use session management"
+msgstr "Bruk sesjonbehandling"
+
+#: setupdlg.cpp:519
+msgid "Icons:"
+msgstr "Ikoner:"
+
+#: setupdlg.cpp:537
+msgid "No Mail:"
+msgstr "Ingen post:"
+
+#: setupdlg.cpp:546
+msgid "Old Mail"
+msgstr "Gammel post"
+
+#: setupdlg.cpp:556
+msgid "New Mail:"
+msgstr "Ny post:"
+
+#: setupdlg.cpp:693
+msgid "Run Command"
+msgstr "Kjør kommando"
+
+#: setupdlg.cpp:700 setupdlg.cpp:713 setupdlg.cpp:1053
+msgid "Browse"
+msgstr "Bla gjennom"
+
+#: setupdlg.cpp:706
+msgid "Play Sound"
+msgstr "Spill lyd"
+
+#: setupdlg.cpp:719
+msgid "System Beep"
+msgstr "Systempip"
+
+#: setupdlg.cpp:724
+msgid "Notify"
+msgstr "Varsle"
+
+#: setupdlg.cpp:855
+msgid "Advanced Options"
+msgstr "Avanserte valg"
+
+#: setupdlg.cpp:859
+msgid "Mailbox URL:"
+msgstr "Postkasse-URL:"
+
+#: setupdlg.cpp:863
+msgid "Port:"
+msgstr "Port:"
+
+#: setupdlg.cpp:867
+msgid "PREAUTH"
+msgstr "Foraut."
+
+#: setupdlg.cpp:874
+msgid "Keep Alive"
+msgstr "Hold i live"
+
+#: setupdlg.cpp:1000 setupdlg.cpp:1029
+msgid "Mailbox:"
+msgstr "Postkasse:"
+
+#: setupdlg.cpp:1013 setupdlg.cpp:1323
+msgid "New Mailbox"
+msgstr "Ny postkasse"
+
+#: setupdlg.cpp:1020
+msgid "Delete Mailbox"
+msgstr "Slett postkasse"
+
+#: setupdlg.cpp:1026
+msgid "Protocol:"
+msgstr "Protokoll:"
+
+#: setupdlg.cpp:1032
+msgid "Server:"
+msgstr "Tjener:"
+
+#: setupdlg.cpp:1035
+msgid "User:"
+msgstr "Bruker:"
+
+#: setupdlg.cpp:1038
+msgid "Password:"
+msgstr "Passord:"
+
+#: setupdlg.cpp:1070
+msgid "Store password"
+msgstr "Lagre passord"
+
+#: setupdlg.cpp:1073
+msgid "Advanced"
+msgstr "Avansert"
+
+#: setupdlg.cpp:1510
+msgid "KBiff"
+msgstr "KBiff"
+
+#: setupdlg.cpp:1532
+#, c-format
+msgid ""
+"Version %s\n"
+"\n"
+"Copyright (C) 1998\n"
+"Kurt Granroth"
+msgstr ""
+"Versjon %s\n"
+"\n"
+"Copyright (C) 1998\n"
+"Kurt Granroth"
+
+#: setupdlg.cpp:1581
+msgid "New Name:"
+msgstr "Nytt navn:"
+
+#: setupdlg.cpp:1607
+msgid "New Name"
+msgstr "Nytt navn"
