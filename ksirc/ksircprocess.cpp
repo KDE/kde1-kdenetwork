@@ -90,6 +90,7 @@
 #include "ioBroadcast.h"
 #include "ioDiscard.h"
 #include "ioDCC.h"
+#include "ioLAG.h"
 #include "iocontroller.h"
 #include <iostream.h>
 
@@ -140,6 +141,10 @@ KSircProcess::KSircProcess( char *_server=0L, QObject * parent=0, const char * n
   connect(dcc, SIGNAL(outputLine(QString&)),
 	  iocontrol, SLOT(stdin_write(QString&)));	      
   TopList.insert("!dcc", dcc);
+  KSircIOLAG *lag = new KSircIOLAG(this);
+  connect(lag, SIGNAL(outputLine(QString&)),
+	  iocontrol, SLOT(stdin_write(QString&)));
+  TopList.insert("!lag", lag);
   filters_update();
   
   //  wm->show();
@@ -148,6 +153,18 @@ KSircProcess::KSircProcess( char *_server=0L, QObject * parent=0, const char * n
 
 KSircProcess::~KSircProcess()
 {
+  
+  if(TopList["!default"]){
+    delete TopList["!default"];
+    TopList.remove("!default");
+  }
+  /*
+  QDictIterator<KSircMessageReceiver> it(TopList);
+  while(it.current()){
+    delete it.current();
+    ++it;
+  }
+  */
   delete proc;               // Delete process, seems to kill sirc, good.
   delete iocontrol;          // Take out io controller
   emit delete_toplevel(QString(server), QString()); // Say we're closing.
@@ -194,7 +211,7 @@ void KSircProcess::close_toplevel(KSircTopLevel *wm, char *name)
 
   bool is_default = FALSE; // Assume it's no default
 
-  if(TopList.count() <= 5){ // If this is the last window shut down
+  if(TopList.count() <= 6){ // If this is the last window shut down
     QString command = "/quit\n";
     iocontrol->stdin_write(command); // kill sirc
     delete this; // Delete ourself, WARNING MUST RETURN SINCE WE NO

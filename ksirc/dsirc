@@ -462,6 +462,7 @@ sub ctcp {
   local($a)=$args;
   $a && ($a=' '.$a);
   $to = (&eq($towho, $nick) ? "you" : $towho);
+  
   &tell("*** $who$puh1 did a CTCP $what$a to $to")
     unless $what =~ /^(ACTION|PING|DCC)$/;
   if ($what eq 'ACTION') {
@@ -489,7 +490,7 @@ sub ctcp {
     &reply("VERSION sirc $version, a \cbperl\cb client$u");
   } elsif ($what eq 'PING') {
     &reply("PING $args");
-    &tell("*** $who$puh1 did a CTCP PING to $to");
+    &tell("*** $who$puh1 did a CTCP PING to $to"); #KSIRC
   } elsif ($what eq 'ECHO' || $what eq 'ERRMSG') {
     &reply("$what $args");
   } elsif ($what eq 'DCC') {
@@ -612,7 +613,7 @@ sub ctcpreply {
   &dohooks("ctcp_reply", $_[0], $ctcp, $rest);
   $rest=(time-$rest)." seconds" if $ctcp eq 'PING';
   if (&eq($_[0], $nick)) {
-    &tell("*** CTCP $ctcp reply from $who$puh1: $rest");
+      &tell("*** CTCP $ctcp reply from $who$puh1: $rest");
   } else {
     &tell("*** CTCP $ctcp reply to $_[0] from $who$puh2: $rest");
   }

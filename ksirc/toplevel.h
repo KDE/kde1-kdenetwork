@@ -18,6 +18,7 @@ class UserControlMenu;
 #include <qscrbar.h>
 #include <qregexp.h>
 #include <qaccel.h>
+#include <qlcdnum.h>
 
 #include <ktopwidget.h>
 #include <kmenubar.h>
@@ -248,15 +249,22 @@ protected:
      * ircListItem's correctly
      */
    virtual void resizeEvent(QResizeEvent *);
-
+   /**
+     * Searches through the nick list and finds the nick with the best match.
+     * which, arg2, selects nicks other than the first shouldarg1 match more
+     * than 1 nick.
+     */
    virtual QString findNick(QString, uint which = 0);
 
 private:
   bool continued_line;
   KNewPanner *pan;
+  QMenuBar *kmenu;
+  KToolBar *ktool;
+  QLCDNumber *lagmeter;
+  enum {PING = 10, TOPIC = 20};
   KSircListBox *mainw;
   aHistLineEdit *linee;
-  QSocketNotifier *sirc_r_notif;
   aListBox *nicks;
   QVBoxLayout *gm;
   QHBoxLayout *gm2;
@@ -316,10 +324,29 @@ private:
   QString tab_saved;
     
 
+  // Ticker specific variables.
+
+  /**
+    * Main pointer to ksticker.  Caution, it doesn't always exist!
+    * Set to 0 ifwhen you delete it.
+    */
   KSTicker *ticker;
+  /**
+    * Size and position of the main window. Main window is returns this
+    * this position when it reappears.
+    */
   QRect myrect;
+  /**
+    * Position of the main window
+    */
   QPoint mypoint;
+  /**
+    * Ticker's size and geometry
+    */
   QRect tickerrect;
+  /**
+    * Tickers position
+    */
   QPoint tickerpoint;
 
 };

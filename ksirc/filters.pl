@@ -72,7 +72,7 @@ sub cmd_ksircclearrule {
   &tell("*** ALL FILTER RULES ERASED - DEFAULTS ADDED\n");
 }
 
-addcmd("ksircclearrule");
+&addcmd("ksircclearrule");
 &docommand("^alias crule ksircclearrule");
 &docommand("^crule");
 
@@ -86,6 +86,48 @@ sub cmd_ksircdelrule {
   }
 }
 
-addcmd("ksircdelrule");
+&addcmd("ksircdelrule");
 &docommand("^alias drule ksircdelrule");
 
+sub hook_ctcp_lag {
+   if (($_[0] eq $nick) && ($_[1] eq 'LAG')) {
+     my($_t) = kgettimeofday();
+     $_t -= $_[2];
+#     print "*** Diff: $_t\n";
+     print "~!lag~*L* " . $_t . "\n";
+     $skip = 1;
+   } 
+}
+
+&addhook("ctcp", "ctcp_lag");
+
+sub cmd_lag {
+  my($_t) = kgettimeofday();
+  &docommand("^ctcp $nick LAG $_t");
+}
+
+
+eval {
+require 'sys/syscall.ph';
+};
+
+eval 'sub SYS_gettimeofday () {78;}' unless defined(&SYS_gettimeofday);
+
+sub kgettimeofday {
+  local($failed) = 0;
+  local($TIMEVAL_T) = "LL";
+  local($start) = pack($TIMEVAL_T, ());
+  eval{
+    (syscall( &SYS_gettimeofday, $start, 0) != -1) or $failed = 1;
+  };
+  if(!$failed){
+    my(@start) = unpack($TIMEVAL_T, $start);
+    $start[1] /= 1000000;
+    return $start[0] + $start[1];
+  }
+  else {
+    return time();
+  }
+}
+
+&addcmd("lag");

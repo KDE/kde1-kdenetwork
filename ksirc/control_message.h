@@ -9,5 +9,6 @@
 #define STOP_UPDATES   002
 #define RESUME_UPDATES 003
 #define REREAD_CONFIG  004
+#define SET_LAG        005
 
 #endif

@@ -1,3 +1,7 @@
+1998-01-09  Andrew Stanley-Jones  <asj@chowtown.cban.com>
+
+	* toplevel.cpp (pasteToWindow): Fxied ut & paste to work correctly.
+
 1998-01-02  Andrew Stanley-Jones  <asj@chowtown.cban.com>
 
 	* alistbox.cpp (inSort): Fixed sorting routine.  Stripped it made
@@ -64,6 +68,9 @@
 $Revision$
 	
 $Log$
+Revision 1.10  1998/01/03 01:45:12  asj
+Added ChangeLog update.
+
 Revision 1.9  1998/01/03 01:44:11  asj
 Applied wilton's patch, made it work to my taste.  We need to edit the
 ksiticker and add it's own colour support, this looks real shitty on my

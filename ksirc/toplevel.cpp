@@ -99,6 +99,24 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
   have_focus = 0;
   ticker = 0; // Set the ticker to NULL while it doesn't exist.
   tab_pressed = 0; // Tab (nick completion not pressed yet)
+
+
+  /*
+   * Create the status bar which will hold the ping time and status info
+   */
+  ktool = new KToolBar(this, "toolbar");
+  ktool->setFullWidth(TRUE);
+  ktool->insertFrame(0, 200, 0);
+  ktool->setItemAutoSized(0, TRUE);
+  ktool->insertFrame(10, 100, -1);
+  ktool->alignItemRight(10, TRUE);
+  addToolBar(ktool);
+
+  lagmeter = new QLCDNumber(6, ktool->getFrame(10), "lagmeter");
+  lagmeter->setFrameStyle(QFrame::NoFrame);
+  lagmeter->show();
+  lagmeter->setFixedHeight(ktool->height() - 2);
+  lagmeter->display(15);
   
   QPopupMenu *file = new QPopupMenu();
   file->insertItem("&User Menu...", this, SLOT(startUserMenuRef()));
@@ -108,15 +126,16 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
   file->insertSeparator();
   file->insertItem("&Quit", this, SLOT(terminate()), CTRL + Key_Q );
 
-  KMenuBar *menu = new KMenuBar(this, "menubar");
-  menu->insertItem("&File", file, 2, -1);
+  kmenu = new QMenuBar(ktool->getFrame(0), "menubar");
+  kmenu->show();
+  kmenu->insertItem("&File", file, 2, -1);
 
   QPopupMenu *edit = new QPopupMenu();
   edit->insertItem("&Cut WIndow...", this, SLOT(openCutWindow()), CTRL + Key_X);
   edit->insertItem("&Paste", this, SLOT(pasteToWindow()), CTRL + Key_V);
-  menu->insertItem("&Edit", edit, -1, -1);
+  kmenu->insertItem("&Edit", edit, -1, -1);
 
-  setMenu(menu);
+  //  setMenu(kmenu);
 
   /*
    * Ok, let's look at the basic widge t "layout"
@@ -237,12 +256,13 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
 
   user_controls = new QPopupMenu();
   user_menu_list.append(user_controls);
-  menu->insertItem("&Users", user_controls);
+  kmenu->insertItem("&Users", user_controls);
 
   if(user_menu_list.count() < 2)
     initPopUpMenu();
 
-  connect(user_controls, SIGNAL(activated(int)), this, SLOT(UserParseMenu(int)));
+  connect(user_controls, SIGNAL(activated(int)), 
+	  this, SLOT(UserParseMenu(int)));
 
   connect(nicks, SIGNAL(rightButtonPress(int)), this,
 	  SLOT(UserSelected(int)));
@@ -278,6 +298,15 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
   accel->connectItem(accel->insertItem(Key_Tab), // adds TAB accelerator
                      this,                         // connected to the main
                      SLOT(TabNickCompletion()));  // TabNickCompletion() slot
+  accel->connectItem(accel->insertItem(CTRL + Key_N),
+		     this, SLOT(newWindow()));
+  accel->connectItem(accel->insertItem(CTRL + Key_T),
+		     this, SLOT(showTicker()));
+  accel->connectItem(accel->insertItem(CTRL + Key_Q),
+		     this, SLOT(terminate()));
+  accel->connectItem(accel->insertItem(ALT + Key_F4),
+		     this, SLOT(terminate()));
+
 
 }
 
@@ -312,6 +341,8 @@ KSircTopLevel::~KSircTopLevel()
   //  delete linee; // ditto
   delete LineBuffer;
   delete user_controls;
+
+  delete kmenu;
 
   //  close(sirc_stdin);  // close all the pipes
   //  close(sirc_stdout); // ditto
@@ -1320,6 +1351,23 @@ void KSircTopLevel::control_message(int command, QString str)
     repaint(TRUE);
     mainw->scrollToBottom();
     break;
+  case SET_LAG:
+    if(str.isNull() == FALSE){
+      bool ok = TRUE;
+      double lag = str.toDouble(&ok);
+      if(ok == TRUE){
+	lag -= (lag*100.0 - int(lag*100.0))/100.0;
+	lagmeter->display(lag);
+      }
+      else{
+	ok = TRUE;
+        int lag2 = str.toInt(&ok);
+	if(ok == TRUE){
+	  lagmeter->display(lag2);
+	}
+      }
+    }
+    break;
   default:
     cerr << "Unkown control message: " << str << endl;
   }
@@ -1424,8 +1472,27 @@ void KSircTopLevel::pasteToWindow()
 	return;
       }
   }
-  sirc_write(text);
-  linee->setText("");
+  if(text.contains("\n") > 1){
+    linee->setUpdatesEnabled(FALSE);
+    for(QString line = strtok(text.data(), "\n");
+	line.isNull() == FALSE;
+	line = strtok(NULL, "\n")){
+      cerr << "Putting line: " << line << endl;
+      QString hold = linee->text();
+      hold += line;
+      linee->setText(hold);
+      sirc_line_return();
+      linee->setText("");
+    }
+    linee->setText("");
+    linee->setUpdatesEnabled(TRUE);
+    linee->update();
+  }
+  else{
+    QString line = linee->text();
+    line += text;
+    linee->setText(line);
+  }
 }
 
 void KSircTopLevel::lineeTextChanged(const char *)
