@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-08-29 01:13+0200\n"
+"POT-Creation-Date: 1998-10-02 00:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Elvis Pfützenreuter <epx@netville.com.br>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,32 +13,35 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: ENCODING\n"
 
-#: toplevel.cpp:133
+#: toplevel.cpp:134
 msgid "Lag in seconds to the server"
 msgstr "Atraso em segundos para o servidor"
 
-#: toplevel.cpp:139
+#: toplevel.cpp:138
 msgid "&Ticker Mode"
 msgstr "Modo &Ticker"
 
-#: toplevel.cpp:161
-msgid "&Cut WIndow..."
+#: toplevel.cpp:160
+#, fuzzy
+msgid "&Cut Window..."
 msgstr "&Cortar janela..."
 
-#: toplevel.cpp:290
+#: toplevel.cpp:291
 msgid "&Users"
 msgstr "&Usuários"
 
-#: ksirc.cpp:57
+#: ksirc.cpp:56
 msgid ""
 "kSirc Alpha releases have an 8 week\n"
 "expiry date.\n"
 "\n"
 "kSirc-ALPHA HAS EXPIRED!!\n"
 "Please upgrade or use a beta release"
-msgstr "kSirc-ALPHA expirou !\nAtualize-o ou use uma versão beta."
+msgstr ""
+"kSirc-ALPHA expirou !\n"
+"Atualize-o ou use uma versão beta."
 
-#: ksirc.cpp:65
+#: ksirc.cpp:64
 msgid ""
 "kSirc Alpha release have an 8 week\n"
 "expiry date.\n"
@@ -54,65 +57,73 @@ msgstr "Canal/Apelido:"
 msgid "Server:"
 msgstr "Servidor:"
 
-#: servercontroller.cpp:117
+#: servercontroller.cpp:118
+msgid "&Dock"
+msgstr ""
+
+#: servercontroller.cpp:126 servercontroller.cpp:643
 msgid "&New Server..."
 msgstr "&Novo Servidor..."
 
-#: servercontroller.cpp:118
+#: servercontroller.cpp:127
 msgid "&Join Channel..."
 msgstr "&Entrar em Canal..."
 
-#: servercontroller.cpp:120
+#: servercontroller.cpp:129
 msgid "&Connections"
 msgstr "&Conexões"
 
-#: servercontroller.cpp:138
+#: servercontroller.cpp:145 servercontroller.cpp:634
 msgid "&Colour Preferences..."
 msgstr "Preferências de &Cor..."
 
-#: servercontroller.cpp:140
+#: servercontroller.cpp:147 servercontroller.cpp:636
 msgid "&Global Fonts..."
 msgstr "Fontes &Globais..."
 
-#: servercontroller.cpp:142
+#: servercontroller.cpp:149 servercontroller.cpp:638
 msgid "&Filter Rule Editor..."
 msgstr "Editor de Regras de &Filtragem..."
 
-#: servercontroller.cpp:145
+#: servercontroller.cpp:152 servercontroller.cpp:640
 msgid "&Preferences..."
 msgstr "&Preferências..."
 
-#: servercontroller.cpp:156
+#: servercontroller.cpp:162
 msgid "Help on Colours..."
 msgstr "Ajuda sobre cores..."
 
-#: servercontroller.cpp:158
+#: servercontroller.cpp:164
 msgid "Help on Filters..."
 msgstr "Ajuda sobre filtros..."
 
-#: servercontroller.cpp:160
+#: servercontroller.cpp:166
 msgid "Help on Keys..."
 msgstr "Ajuda sobre teclas..."
 
-#: servercontroller.cpp:163
+#: servercontroller.cpp:169
 msgid "About kSirc..."
 msgstr "Sobre o kSirc..."
 
-#: servercontroller.cpp:180
+#: servercontroller.cpp:186
 msgid "Server Control"
 msgstr "Controle do servidor"
 
-#: servercontroller.cpp:233 servercontroller.cpp:386
+#: servercontroller.cpp:243 servercontroller.cpp:395
 msgid "Channels"
 msgstr "Canais"
 
-#: servercontroller.cpp:233 servercontroller.cpp:386
+#: servercontroller.cpp:243 servercontroller.cpp:395
 msgid "Online"
 msgstr "On-line"
 
-#: servercontroller.cpp:565
+#: servercontroller.cpp:589
 msgid "Active Server Connections"
 msgstr "Conexões ativas"
+
+#: servercontroller.cpp:631
+msgid "&Undock"
+msgstr ""
 
 #: KSircColourData.cpp:33
 msgid "Generic Text"

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: knu\n"
-"POT-Creation-Date: 1998-10-09 15:54+0200\n"
+"POT-Creation-Date: 1998-10-30 12:57+0100\n"
 "PO-Revision-Date: 1998-03-01 20:15 CET\n"
 "Last-Translator: Serge \"sergio\" Tellène <tells@mygale.org>\n"
 "Language-Team: Français\n"
@@ -13,27 +13,27 @@ msgstr ""
 "Content-Type: text/plain; charset=iso8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: knu.cpp:140 knu.cpp:301
+#: knu.cpp:147 knu.cpp:306
 msgid "&Ping"
 msgstr "&Ping"
 
-#: knu.cpp:149 knu.cpp:307
+#: knu.cpp:156 knu.cpp:312
 msgid "&Traceroute"
 msgstr "&Traceroute"
 
-#: knu.cpp:158 knu.cpp:313
+#: knu.cpp:165 knu.cpp:318
 msgid "Host &resolution"
 msgstr "&Résolution de noms"
 
-#: knu.cpp:171
+#: knu.cpp:178
 msgid "F&inger"
 msgstr "F&inger"
 
-#: knu.cpp:181 knu.cpp:326
-msgid "&Matt's traceroute"
-msgstr "&Traceroute"
+#: knu.cpp:187 knu.cpp:330
+msgid "&mtr"
+msgstr ""
 
-#: knu.cpp:193
+#: knu.cpp:198
 msgid ""
 "There is no command enabled\n"
 "in the configuration file.\n"
@@ -45,56 +45,56 @@ msgstr ""
 "\n"
 "Vous n'allez avoir accès à aucune fonction...\n"
 
-#: knu.cpp:238
+#: knu.cpp:243
 msgid "&New window"
 msgstr "&Nouvelle fenêtre"
 
-#: knu.cpp:241
+#: knu.cpp:246
 msgid "&Close window"
 msgstr "&Fermer la fenêtre"
 
-#: knu.cpp:252
+#: knu.cpp:257
 msgid "Select &all"
 msgstr "Sélectionner &tout"
 
-#: knu.cpp:255
+#: knu.cpp:260
 msgid "C&lear output window"
 msgstr "Effacer la fenêtre d'affichage"
 
-#: knu.cpp:258
+#: knu.cpp:263
 msgid "P&references..."
 msgstr "&Préférences..."
 
-#: knu.cpp:273
+#: knu.cpp:278
 #, c-format
 msgid "&About %s"
 msgstr "&A propos de %s"
 
-#: knu.cpp:275
+#: knu.cpp:280
 msgid "About &Qt"
 msgstr "A propos de &Qt"
 
-#: knu.cpp:319
+#: knu.cpp:324
 msgid "&Finger"
 msgstr "&Finger"
 
-#: knu.cpp:466
+#: knu.cpp:469
 msgid "About..."
 msgstr "A propos..."
 
-#: CommandDlg.cpp:121
+#: CommandDlg.cpp:124
 msgid "H&ost:"
 msgstr "&Machine :"
 
-#: CommandDlg.cpp:130
+#: CommandDlg.cpp:133
 msgid "&Go!"
 msgstr "&Go !"
 
-#: CommandDlg.cpp:140
+#: CommandDlg.cpp:143
 msgid "&Stop"
 msgstr "&Stop"
 
-#: CommandDlg.cpp:156
+#: CommandDlg.cpp:159
 msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
@@ -102,7 +102,7 @@ msgstr ""
 "L'application correspondant à cette commande n'a pas été trouvée.\n"
 "Vous pouvez donner son chemin par le menu Edition->Préférences..."
 
-#: CommandDlg.cpp:341
+#: CommandDlg.cpp:344
 #, c-format
 msgid ""
 "\n"
@@ -124,23 +124,23 @@ msgstr ""
 "Veuillez utiliser le menu Edition->Préférences...\n"
 "pour le configurer à nouveau.\n"
 
-#: CommandDlg.cpp:350
+#: CommandDlg.cpp:353
 msgid "Error in pathname"
 msgstr "Erreur dans le chemin du fichier"
 
-#: CommandDlg.cpp:483
+#: CommandDlg.cpp:506
 msgid "Binary"
 msgstr "Application"
 
-#: CommandDlg.cpp:491
+#: CommandDlg.cpp:514
 msgid "Path&name:"
 msgstr "&Chemin du programme :"
 
-#: CommandDlg.cpp:500
+#: CommandDlg.cpp:523
 msgid "Additional &arguments:"
 msgstr "&Paramètres additionnels :"
 
-#: CommandDlg.cpp:525
+#: CommandDlg.cpp:548
 msgid "This command had been disabled in the configuration file."
 msgstr "Cette commande a été désactivée dans le fichier de configuration."
 
@@ -148,9 +148,49 @@ msgstr "Cette commande a été désactivée dans le fichier de configuration."
 msgid " - configuration"
 msgstr " - configuration"
 
-#: PingDlg.cpp:97 TracerouteDlg.cpp:98
+#: MtrDlg.cpp:83
+msgid "#"
+msgstr ""
+
+#: MtrDlg.cpp:84
+msgid "Hostname"
+msgstr ""
+
+#: MtrDlg.cpp:85
+msgid "Loss"
+msgstr ""
+
+#: MtrDlg.cpp:87
+msgid "Rcv"
+msgstr ""
+
+#: MtrDlg.cpp:89
+msgid "Snt"
+msgstr ""
+
+#: MtrDlg.cpp:91
+msgid "Best"
+msgstr ""
+
+#: MtrDlg.cpp:93
+msgid "Avg"
+msgstr ""
+
+#: MtrDlg.cpp:95
+msgid "Worst"
+msgstr ""
+
+#: MtrDlg.cpp:138 PingDlg.cpp:100 TracerouteDlg.cpp:98
 msgid "Make host &name resolution"
 msgstr "Résoudre le  &noms"
+
+#: HostDlg.cpp:331 PingDlg.cpp:227
+msgid "hos&t"
+msgstr "hô&te"
+
+#: HostDlg.cpp:335 PingDlg.cpp:231
+msgid "ns&lookup"
+msgstr "ns&lookup"
 
 #: TracerouteDlg.cpp:115
 msgid "&Maximum number of hops:"
@@ -196,17 +236,12 @@ msgstr "serveur par défaut"
 msgid "Ser&ver:"
 msgstr "Ser&veur :"
 
-#: HostDlg.cpp:331
-msgid "hos&t"
-msgstr "hô&te"
-
-#: HostDlg.cpp:335
-msgid "ns&lookup"
-msgstr "ns&lookup"
-
 #: FingerDlg.cpp:77
 msgid "&User:"
 msgstr "&Utilisateur :"
+
+#~ msgid "&Matt's traceroute"
+#~ msgstr "&Traceroute"
 
 #~ msgid "Server:"
 #~ msgstr "Ser&veur :"

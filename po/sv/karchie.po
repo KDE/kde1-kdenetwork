@@ -92,7 +92,7 @@ msgstr "fi&nast"
 
 #: KAMenu.cpp:136
 msgid "Show &File discription"
-msgstr "Visa filförklaring" 
+msgstr "Visa filförklaring"
 
 #: KAMenu.cpp:139
 msgid "Archie&server"
@@ -217,7 +217,7 @@ msgid ""
 "\"%s\""
 msgstr ""
 "Kan inte öppna \n"
-"\"%s\"" 
+"\"%s\""
 
 #: KArchie.cpp:446 KArchie.cpp:488
 msgid "KArchie: bad file"
@@ -248,9 +248,10 @@ msgid "KArchie: Overwrite file ?"
 msgstr "KArchie: Skriv över fil?"
 
 #: KArchie.cpp:753
+#, fuzzy
 msgid ""
 "The selected file is not write protected\n"
-"Should it be overwritten?"
+"Should it be overwritten ?"
 msgstr ""
 "Den valda filen är inte skrivskyddad\n"
 "Ska den skrivas över?"

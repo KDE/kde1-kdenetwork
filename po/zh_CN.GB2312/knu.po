@@ -5,34 +5,33 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: knu 0.3.4\n"
-"POT-Creation-Date: 1998-10-09 15:54+0200\n"
+"POT-Creation-Date: 1998-10-30 12:57+0100\n"
 "PO-Revision-Date: 1998-06-12 08:33 MET DST\n"
 "Last-Translator: Wang Jian <lark@linux.ustc.edu.cn>\n"
 "Language-Team: zh_CN ( gb2312 )\n"
 
-#: knu.cpp:140 knu.cpp:301
+#: knu.cpp:147 knu.cpp:306
 msgid "&Ping"
 msgstr "&Ping"
 
-#: knu.cpp:149 knu.cpp:307
+#: knu.cpp:156 knu.cpp:312
 msgid "&Traceroute"
 msgstr "&Traceroute"
 
-#: knu.cpp:158 knu.cpp:313
+#: knu.cpp:165 knu.cpp:318
 msgid "Host &resolution"
 msgstr "域名解析[&R]"
 
 #
-#: knu.cpp:171
+#: knu.cpp:178
 msgid "F&inger"
 msgstr "F&inger"
 
-#
-#: knu.cpp:181 knu.cpp:326
-msgid "&Matt's traceroute"
-msgstr "&Matt 的 traceroute"
+#: knu.cpp:187 knu.cpp:330
+msgid "&mtr"
+msgstr ""
 
-#: knu.cpp:193
+#: knu.cpp:198
 msgid ""
 "There is no command enabled\n"
 "in the configuration file.\n"
@@ -43,57 +42,57 @@ msgstr ""
 "执行.\n"
 "什么都不能做 ...\n"
 
-#: knu.cpp:238
+#: knu.cpp:243
 msgid "&New window"
 msgstr "打开新窗口[&N]"
 
-#: knu.cpp:241
+#: knu.cpp:246
 msgid "&Close window"
 msgstr "关闭窗口[&C]"
 
-#: knu.cpp:252
+#: knu.cpp:257
 msgid "Select &all"
 msgstr "选中所有的[&A]"
 
-#: knu.cpp:255
+#: knu.cpp:260
 msgid "C&lear output window"
 msgstr "清除输出窗口[&L]"
 
-#: knu.cpp:258
+#: knu.cpp:263
 msgid "P&references..."
 msgstr "偏好[&R]..."
 
 # c-format
-#: knu.cpp:273
+#: knu.cpp:278
 #, c-format
 msgid "&About %s"
 msgstr "关于 %s[&A]"
 
-#: knu.cpp:275
+#: knu.cpp:280
 msgid "About &Qt"
 msgstr "关于 &Qt"
 
-#: knu.cpp:319
+#: knu.cpp:324
 msgid "&Finger"
 msgstr "&Finger"
 
-#: knu.cpp:466
+#: knu.cpp:469
 msgid "About..."
 msgstr "关于..."
 
-#: CommandDlg.cpp:121
+#: CommandDlg.cpp:124
 msgid "H&ost:"
 msgstr "主机[&O]:"
 
-#: CommandDlg.cpp:130
+#: CommandDlg.cpp:133
 msgid "&Go!"
 msgstr "开始![&G]"
 
-#: CommandDlg.cpp:140
+#: CommandDlg.cpp:143
 msgid "&Stop"
 msgstr "停止[&S]"
 
-#: CommandDlg.cpp:156
+#: CommandDlg.cpp:159
 msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
@@ -101,7 +100,7 @@ msgstr ""
 "这个命令没有找到.\n"
 "你可以在 编辑->偏好... 菜单中设置它的路径."
 
-#: CommandDlg.cpp:341
+#: CommandDlg.cpp:344
 #, c-format
 msgid ""
 "\n"
@@ -124,23 +123,23 @@ msgstr ""
 "请用 编辑->偏好... 菜单来\n"
 "重新配置.\n"
 
-#: CommandDlg.cpp:350
+#: CommandDlg.cpp:353
 msgid "Error in pathname"
 msgstr "在路径名中有错误"
 
-#: CommandDlg.cpp:483
+#: CommandDlg.cpp:506
 msgid "Binary"
 msgstr "程序"
 
-#: CommandDlg.cpp:491
+#: CommandDlg.cpp:514
 msgid "Path&name:"
 msgstr "路径名[&N]:"
 
-#: CommandDlg.cpp:500
+#: CommandDlg.cpp:523
 msgid "Additional &arguments:"
 msgstr "附加参数[&A]:"
 
-#: CommandDlg.cpp:525
+#: CommandDlg.cpp:548
 msgid "This command had been disabled in the configuration file."
 msgstr "在配置文件中此命令已经被禁止了."
 
@@ -148,9 +147,49 @@ msgstr "在配置文件中此命令已经被禁止了."
 msgid " - configuration"
 msgstr " - 配置"
 
-#: PingDlg.cpp:97 TracerouteDlg.cpp:98
+#: MtrDlg.cpp:83
+msgid "#"
+msgstr ""
+
+#: MtrDlg.cpp:84
+msgid "Hostname"
+msgstr ""
+
+#: MtrDlg.cpp:85
+msgid "Loss"
+msgstr ""
+
+#: MtrDlg.cpp:87
+msgid "Rcv"
+msgstr ""
+
+#: MtrDlg.cpp:89
+msgid "Snt"
+msgstr ""
+
+#: MtrDlg.cpp:91
+msgid "Best"
+msgstr ""
+
+#: MtrDlg.cpp:93
+msgid "Avg"
+msgstr ""
+
+#: MtrDlg.cpp:95
+msgid "Worst"
+msgstr ""
+
+#: MtrDlg.cpp:138 PingDlg.cpp:100 TracerouteDlg.cpp:98
 msgid "Make host &name resolution"
 msgstr "进行域名解析[&N]"
+
+#: HostDlg.cpp:331 PingDlg.cpp:227
+msgid "hos&t"
+msgstr "主机[&T]"
+
+#: HostDlg.cpp:335 PingDlg.cpp:231
+msgid "ns&lookup"
+msgstr "ns&lookup"
 
 #: TracerouteDlg.cpp:115
 msgid "&Maximum number of hops:"
@@ -196,14 +235,10 @@ msgstr "默认服务器"
 msgid "Ser&ver:"
 msgstr "服务器[&V]:"
 
-#: HostDlg.cpp:331
-msgid "hos&t"
-msgstr "主机[&T]"
-
-#: HostDlg.cpp:335
-msgid "ns&lookup"
-msgstr "ns&lookup"
-
 #: FingerDlg.cpp:77
 msgid "&User:"
 msgstr "用户[&U]:"
+
+#
+#~ msgid "&Matt's traceroute"
+#~ msgstr "&Matt 的 traceroute"

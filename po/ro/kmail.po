@@ -1,11 +1,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1998-10-13 13:34+0200\n"
+"POT-Creation-Date: 1998-10-30 12:57+0100\n"
 "PO-Revision-Date: 1998-02-23 08:05 +0100\n"
 "Last-Translator: Vatafu Valerica <wally@chuck.tlnet.de>\n"
 
-#: kmcomposewin.cpp:1448 kmmainwin.cpp:263 kpgp.cpp:384
+#: kmcomposewin.cpp:1439 kmmainwin.cpp:263 kpgp.cpp:540
 msgid ""
 "Sorry, but this feature\n"
 "is still missing"
@@ -370,12 +370,12 @@ msgstr "Deschide cartea de adrese..."
 msgid "Initializing..."
 msgstr "Iniþializare..."
 
-#: kmfolderdia.cpp:38 kmmsgpartdlg.cpp:62 kmsettings.cpp:176
-#: kmsettings.cpp:869
+#: kmfolderdia.cpp:38 kmmsgpartdlg.cpp:62 kmsettings.cpp:175
+#: kmsettings.cpp:870
 msgid "Name:"
 msgstr "Nume:"
 
-#: kmcomposewin.cpp:1456 kmfolderdia.cpp:44 kmfolderdia.cpp:120
+#: kmcomposewin.cpp:1447 kmfolderdia.cpp:44 kmfolderdia.cpp:120
 msgid "unnamed"
 msgstr "fãrã nume"
 
@@ -387,110 +387,106 @@ msgstr "Asociat cu"
 msgid "Unassociated Accounts"
 msgstr "Account neasociat"
 
-#: kmsettings.cpp:56
+#: kmsettings.cpp:54
 msgid "Settings"
 msgstr "Setãrile"
 
-#: kmsettings.cpp:178
+#: kmsettings.cpp:177
 msgid "Organization:"
 msgstr "Firma:"
 
-#: kmsettings.cpp:180
+#: kmsettings.cpp:179
 msgid "Email Address:"
 msgstr "Email-Adresse:"
 
-#: kmsettings.cpp:183
+#: kmsettings.cpp:182
 msgid "Reply-To Address:"
 msgstr "Rãspunde la adresa:"
 
-#: kmsettings.cpp:185
+#: kmsettings.cpp:184
 msgid "Signature File:"
 msgstr "Fiºierul semnãturã:"
 
-#: kmsettings.cpp:188
-msgid "PGP User Identity:"
-msgstr "PGP-Identitate"
-
-#: kmsettings.cpp:196
+#: kmsettings.cpp:192 kpgp.cpp:759
 msgid "Identity"
 msgstr "Identitate"
 
-#: kmsettings.cpp:215
+#: kmsettings.cpp:211
 msgid "Sending Mail"
 msgstr "Mail-uri trimise"
 
-#: kmsettings.cpp:221
+#: kmsettings.cpp:217
 msgid "Sendmail"
 msgstr "Trimite mail"
 
-#: kmsettings.cpp:226 kmsettings.cpp:876
+#: kmsettings.cpp:222 kmsettings.cpp:877
 msgid "Location:"
 msgstr "Locaþia:"
 
-#: kmsettings.cpp:231
+#: kmsettings.cpp:227
 msgid "SMTP"
 msgstr "SMTP"
 
-#: kmsettings.cpp:236
+#: kmsettings.cpp:232
 msgid "Server:"
 msgstr "Server:"
 
-#: kmsettings.cpp:238 kmsettings.cpp:897
+#: kmsettings.cpp:234 kmsettings.cpp:898
 msgid "Port:"
 msgstr "Port:"
 
-#: kmsettings.cpp:259
+#: kmsettings.cpp:255
 msgid "Incoming Mail"
 msgstr "Mail-ri venite"
 
-#: kmsettings.cpp:264
+#: kmsettings.cpp:260
 msgid "Accounts:   (add at least one account!)"
 msgstr "Account-uri:  (introdu cel puþin unu!)"
 
-#: kmcomposewin.cpp:135 kmsettings.cpp:269
+#: kmcomposewin.cpp:135 kmsettings.cpp:265
 msgid "Name"
 msgstr "Nume"
 
-#: kmcomposewin.cpp:138 kmsettings.cpp:270
+#: kmcomposewin.cpp:138 kmsettings.cpp:266
 msgid "Type"
 msgstr "Tipul"
 
-#: kmsettings.cpp:271
+#: kmsettings.cpp:267
 msgid "Folder"
 msgstr "Fiºier"
 
-#: kmsettings.cpp:279
+#: kmsettings.cpp:275
 msgid "Add..."
 msgstr "Adaugã..."
 
-#: kmsettings.cpp:282
+#: kmsettings.cpp:278
 msgid "Modify..."
 msgstr "Modificã..."
 
-#: kmsettings.cpp:305
+#: kmsettings.cpp:301
 msgid "Network"
 msgstr "Network"
 
-#: kmsettings.cpp:330
+#: kmsettings.cpp:326
 msgid "Message Body Font:"
 msgstr ""
 
-#: kmsettings.cpp:335
+#: kmsettings.cpp:331
 #, fuzzy
 msgid "Message List Font:"
 msgstr "Mesaj in text format"
 
-#: kmsettings.cpp:339
+#: kmsettings.cpp:335
 msgid ""
 "Changing fonts currently only occurs when a new\n"
 "window is opened or kmail is restarted"
 msgstr ""
 
-#: kmsettings.cpp:381
+#: kmsettings.cpp:377
 msgid "Phrases"
 msgstr "Fraze"
 
-#: kmsettings.cpp:386
+#: kmsettings.cpp:382
 msgid ""
 "The following placeholders are supported in the reply phrases:\n"
 "%D=date, %S=subject, %F=sender, %%=percent sign"
@@ -498,164 +494,168 @@ msgstr ""
 "Urmãtoarul format este susþinut la rãspunsuri:\n"
 "%D=Data, %S=Subiect, %F=Sender, %%=Semnul procent"
 
-#: kmsettings.cpp:394
+#: kmsettings.cpp:390
 msgid "Reply to sender:"
 msgstr "Rãspunde cãtre Sender:"
 
-#: kmsettings.cpp:397
+#: kmsettings.cpp:393
 msgid "Reply to all:"
 msgstr "Rãspunde la toþi:"
 
-#: kmsettings.cpp:400
+#: kmsettings.cpp:396
 msgid "Forward:"
 msgstr "Înainteazã:"
 
-#: kmsettings.cpp:403
+#: kmsettings.cpp:399
 msgid "Indentation:"
 msgstr "Indentation:"
 
-#: kmmessage.cpp:1277 kmsettings.cpp:415
+#: kmmessage.cpp:1277 kmsettings.cpp:411
 msgid "On %D, you wrote:"
 msgstr "Tu ai scris în %D :"
 
-#: kmmessage.cpp:1278 kmsettings.cpp:419
+#: kmmessage.cpp:1278 kmsettings.cpp:415
 msgid "On %D, %F wrote:"
 msgstr "În %D a scris %F:"
 
-#: kmmessage.cpp:1279 kmsettings.cpp:423
+#: kmmessage.cpp:1279 kmsettings.cpp:419
 msgid "Forwarded Message"
 msgstr "Mesaj înaintat"
 
-#: kmsettings.cpp:434
+#: kmsettings.cpp:430
 msgid "Automatically append signature"
 msgstr "Semnãtura este automat agîþatã"
 
-#: kmsettings.cpp:440
+#: kmsettings.cpp:436
 msgid "Automatically sign messages using PGP"
 msgstr "Mesaj semant automat cu PGP"
 
-#: kmsettings.cpp:445
+#: kmsettings.cpp:441
 msgid "Word wrap at column:"
 msgstr "Word wrap la coloana:"
 
-#: kmsettings.cpp:455
+#: kmsettings.cpp:451
 msgid "Use monospaced font"
 msgstr "Utilizeazã monospaced font"
 
-#: kmsettings.cpp:467
+#: kmsettings.cpp:463
 msgid "When sending mail"
 msgstr "La trimiterea mail-ui"
 
-#: kmsettings.cpp:470
+#: kmsettings.cpp:466
 msgid "Default sending:"
 msgstr "Trimite standard:"
 
-#: kmsettings.cpp:473
+#: kmsettings.cpp:469
 msgid "send now"
 msgstr "trimite acum"
 
-#: kmsettings.cpp:477
+#: kmsettings.cpp:473
 msgid "send later"
 msgstr "trimite mai tîrziu"
 
-#: kmsettings.cpp:482
+#: kmsettings.cpp:478
 msgid "Send messages:"
 msgstr "Trimite mesaj:"
 
-#: kmsettings.cpp:485
+#: kmsettings.cpp:481
 msgid "Allow 8-bit"
 msgstr "Permite 8-bit"
 
-#: kmsettings.cpp:490
+#: kmsettings.cpp:486
 msgid "MIME Compilant (Quoted Printable)"
 msgstr "MIME-Compatibil (Quoted Printable)"
 
-#: kmsettings.cpp:516
+#: kmsettings.cpp:512
 msgid "Composer"
 msgstr "Compune un mail"
 
-#: kmsettings.cpp:533
+#: kmsettings.cpp:529
 msgid "Folders"
 msgstr "Fiºier"
 
-#: kmsettings.cpp:537
+#: kmsettings.cpp:533
 msgid "empty trash on exit"
 msgstr "La ieºire sterge trash-ul"
 
-#: kmsettings.cpp:541
+#: kmsettings.cpp:537
 msgid "Send Mail in outbox Folder on Check"
 msgstr ""
 
-#: kmsettings.cpp:556
+#: kmsettings.cpp:552
 msgid "Misc"
 msgstr "Amestecaturã"
 
-#: kmsettings.cpp:580
+#: kmsettings.cpp:559
+msgid "PGP"
+msgstr ""
+
+#: kmsettings.cpp:582
 msgid "Message Body Font"
 msgstr ""
 
-#: kmsettings.cpp:594
+#: kmsettings.cpp:596
 #, fuzzy
 msgid "Message List Font"
 msgstr "Mesaj in text format"
 
-#: kmsettings.cpp:646
+#: kmsettings.cpp:648
 msgid "Select Account"
 msgstr "Selecteazã accountul"
 
-#: kmaccount.cpp:76 kmfilterdlg.cpp:457 kmsettings.cpp:665
+#: kmaccount.cpp:76 kmfilterdlg.cpp:457 kmsettings.cpp:667
 msgid "Unnamed"
 msgstr "Necunoscut"
 
-#: kmsettings.cpp:684
+#: kmsettings.cpp:686
 msgid "Choose Sendmail Location"
 msgstr "Cautã sendmail"
 
-#: kmcomposewin.cpp:1555 kmsettings.cpp:693
+#: kmcomposewin.cpp:1546 kmsettings.cpp:695
 msgid "Choose Signature File"
 msgstr "Alege fiºierul-semnãturã"
 
-#: kmsettings.cpp:861
+#: kmsettings.cpp:862
 msgid "Type:"
 msgstr "Tipul:"
 
-#: kmsettings.cpp:874
+#: kmsettings.cpp:875
 msgid "Local Account"
 msgstr "Account local"
 
-#: kmsettings.cpp:883
+#: kmsettings.cpp:884
 msgid "Pop Account"
 msgstr "POP-Account"
 
-#: kmsettings.cpp:885
+#: kmsettings.cpp:886
 msgid "Login:"
 msgstr "Login:"
 
-#: kmacctpop.cpp:464 kmsettings.cpp:888
+#: kmacctpop.cpp:464 kmsettings.cpp:889
 msgid "Password:"
 msgstr "Password:"
 
-#: kmsettings.cpp:892
+#: kmsettings.cpp:893
 msgid "Host:"
 msgstr "Pop-Server:"
 
-#: kmsettings.cpp:900
+#: kmsettings.cpp:901
 msgid "Delete mail from server"
 msgstr "ªterge mesajele de pe server"
 
-#: kmsettings.cpp:907
+#: kmsettings.cpp:908
 msgid "Enable interval Mail checking"
 msgstr ""
 
-#: kmsettings.cpp:921
+#: kmsettings.cpp:922
 msgid "Store new mail in account:"
 msgstr "Copiazã noul mesaj in account:"
 
-#: kmsettings.cpp:929
+#: kmsettings.cpp:930
 msgid "<none>"
 msgstr "<nimic>"
 
-#: kmsettings.cpp:975
+#: kmsettings.cpp:976
 msgid "Choose Location"
 msgstr "Alege fiºier"
 
@@ -692,7 +692,7 @@ msgstr "%d Mesaje, %d necitite."
 msgid "Folder is read-only."
 msgstr "Fiºierul este read-only."
 
-#: kmheaders.cpp:234 kpgp.cpp:837
+#: kmheaders.cpp:234
 #, fuzzy
 msgid "Unknown"
 msgstr "Eroare necunoscutã"
@@ -807,15 +807,15 @@ msgstr "&Insereazã fiºierul..."
 msgid "&New Composer..."
 msgstr "&Compune din nou..."
 
-#: kmcomposewin.cpp:472 kmcomposewin.cpp:681 kmcomposewin.cpp:1925
+#: kmcomposewin.cpp:472 kmcomposewin.cpp:686 kmcomposewin.cpp:1916
 msgid "Mark all"
 msgstr "Marcheazã totul"
 
-#: kmcomposewin.cpp:475 kmcomposewin.cpp:683
+#: kmcomposewin.cpp:475 kmcomposewin.cpp:688
 msgid "Find..."
 msgstr "Cautã..."
 
-#: kmcomposewin.cpp:477 kmcomposewin.cpp:684
+#: kmcomposewin.cpp:477 kmcomposewin.cpp:689
 #, fuzzy
 msgid "Replace..."
 msgstr "&Rãspunde..."
@@ -928,19 +928,19 @@ msgstr "Semneazã mesajul"
 msgid "encrypt message"
 msgstr "encrypt mesaj"
 
-#: kmcomposewin.cpp:614 kmcomposewin.cpp:630
+#: kmcomposewin.cpp:619 kmcomposewin.cpp:635
 msgid "Column"
 msgstr ""
 
-#: kmcomposewin.cpp:615 kmcomposewin.cpp:628
+#: kmcomposewin.cpp:620 kmcomposewin.cpp:633
 msgid "Line"
 msgstr ""
 
-#: kmcomposewin.cpp:896
+#: kmcomposewin.cpp:901
 msgid "KMail Confirm"
 msgstr "KMail Confimã"
 
-#: kmcomposewin.cpp:897
+#: kmcomposewin.cpp:902
 msgid ""
 "Close and discard\n"
 "edited message?"
@@ -949,65 +949,52 @@ msgstr ""
 "Închide ºi mesajele\n"
 "modificate aruncãle?"
 
-#: kmcomposewin.cpp:943
-#, c-format
-msgid ""
-"public key for %s not found.\n"
-"This person will not be able to decrypt the message."
-msgstr ""
-"öpublic key pentru %s nu gãsesc.\n"
-"Aceastã persoanã nu poate sã decrypte-ze mesajul."
-
-#: kmcomposewin.cpp:964
-msgid "Error during PGP:"
-msgstr "Eroare la PGP:"
-
-#: kmcomposewin.cpp:1184
+#: kmcomposewin.cpp:1175
 msgid "Attach File"
 msgstr "Ataºeazã fiºier"
 
-#: kmcomposewin.cpp:1206
+#: kmcomposewin.cpp:1197
 #, fuzzy
 msgid "Include File"
 msgstr "&Insereazã fiºier"
 
-#: kmcomposewin.cpp:1229 kmreaderwin.cpp:706
+#: kmcomposewin.cpp:1220 kmreaderwin.cpp:706
 msgid "View..."
 msgstr "View..."
 
-#: kmcomposewin.cpp:1230
+#: kmcomposewin.cpp:1221
 msgid "Save..."
 msgstr "Salveazã..."
 
-#: kmcomposewin.cpp:1231 kmreaderwin.cpp:709
+#: kmcomposewin.cpp:1222 kmreaderwin.cpp:709
 msgid "Properties..."
 msgstr "Proprietãþi..."
 
-#: kmcomposewin.cpp:1235
+#: kmcomposewin.cpp:1226
 msgid "Attach..."
 msgstr "Ataºeazã..."
 
-#: kmcomposewin.cpp:1277 kmreaderwin.cpp:751
+#: kmcomposewin.cpp:1268 kmreaderwin.cpp:751
 msgid "View Attachment: "
 msgstr "View ataºament: "
 
-#: kmcomposewin.cpp:1471
+#: kmcomposewin.cpp:1462
 msgid "To:"
 msgstr "To:"
 
-#: kmcomposewin.cpp:1475
+#: kmcomposewin.cpp:1466
 msgid "Subject:"
 msgstr "Subiect:"
 
-#: kmcomposewin.cpp:1478
+#: kmcomposewin.cpp:1469
 msgid "Date:"
 msgstr "Data:"
 
-#: kmcomposewin.cpp:1587
+#: kmcomposewin.cpp:1578
 msgid "KMail: Spellcheck"
 msgstr "KMail: Spellcheck"
 
-#: kmcomposewin.cpp:1611
+#: kmcomposewin.cpp:1602
 msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
 msgstr "Eroare la startul lui KSpell. Vã rugãm sã configuraþi corect KSpell."
@@ -1090,11 +1077,11 @@ msgstr "Rãspunde la: "
 msgid "Groups: "
 msgstr "Newsgroups: "
 
-#: kmreaderwin.cpp:423 kpgp.cpp:476 kpgp.cpp:502
+#: kmreaderwin.cpp:423
 msgid "Encrypted message"
 msgstr "Mesaj encrypted"
 
-#: kmreaderwin.cpp:429 kpgp.cpp:478
+#: kmreaderwin.cpp:429
 msgid "Cannot decrypt message:"
 msgstr "Nu pot sã decryptez mesajul:"
 
@@ -1474,7 +1461,7 @@ msgstr "<body>"
 msgid "<any header>"
 msgstr "<orice header>"
 
-#: kpgp.cpp:127
+#: kpgp.cpp:151
 msgid ""
 "Couldn't find PGP executable.\n"
 "Please check your PATH is set correctly."
@@ -1482,7 +1469,7 @@ msgstr ""
 "Nu gãsesc PGP-Program.\n"
 "Vã rugãm sã cercetaþi dacã este corect setat."
 
-#: kpgp.cpp:178
+#: kpgp.cpp:193
 msgid ""
 "Could not find PGP executable.\n"
 "Please check your PATH is set correctly."
@@ -1490,45 +1477,67 @@ msgstr ""
 "Nu gãsesc PGP-Program.\n"
 "Vã rugãm sã cercetaþi dacã PATH este corect setat."
 
-#: kpgp.cpp:188
+#: kpgp.cpp:207
 msgid "The pass phrase is missing."
 msgstr "Password-ul lipseºte."
 
-#: kpgp.cpp:484
-msgid "Message signed by"
-msgstr "Mesaj semnat de"
+#: kpgp.cpp:286 kpgp.cpp:312 kpgp.cpp:325 kpgp.cpp:344 kpgp.cpp:361
+#, fuzzy
+msgid "PGP Warning"
+msgstr "Atenþiune"
 
-#: kpgp.cpp:488
-msgid "Message has a bad signature from"
-msgstr "Mesajul are o semnãturã falsã de la"
-
-#: kpgp.cpp:501
-msgid "End PGP signed message"
-msgstr "Sfîrºitul mesajului PGP"
-
-#: kpgp.cpp:786
-msgid "Bad pass Phrase; couldn't decrypt"
-msgstr "Password fals; nu pot sã decrypt-ez"
-
-#: kpgp.cpp:873
-#, fuzzy, c-format
+#: kpgp.cpp:287
 msgid ""
-"Could not find public keys matching the\n"
-"userid(s) %s. These persons won't be able\n"
-"to read the message."
-msgstr ""
-"öpublic key pentru %s nu gãsesc.\n"
-"Aceastã persoanã nu poate sã decrypte-ze mesajul."
-
-#: kpgp.cpp:885
-msgid "Could not find public keys for some persons.\n"
+"Could not find the public keys for the\n"
+"recipients of this mail.\n"
+"Message will not be encrypted."
 msgstr ""
 
-#: kpgp.cpp:898
-msgid "Bad pass Phrase; couldn't sign"
-msgstr "Password fals; nu pot sã semnez"
+#: kpgp.cpp:296
+msgid "Could not find the public keys for\n"
+msgstr ""
 
-#: kpgp.cpp:956
+#: kpgp.cpp:307
+msgid "These persons will not be able to\n"
+msgstr ""
+
+#: kpgp.cpp:309
+msgid "This person will not be able to\n"
+msgstr ""
+
+#: kpgp.cpp:311
+#, fuzzy
+msgid "decrypt the message."
+msgstr "encrypt mesaj"
+
+#: kpgp.cpp:326
+msgid ""
+"You just entered an invalid passphrase.\n"
+"Do you wan't to try again, continue and\n"
+"leave the message unsigned, or cancel sending the message?"
+msgstr ""
+
+#: kpgp.cpp:331
+msgid "Retry"
+msgstr ""
+
+#: kpgp.cpp:342
+msgid ""
+"Do you wan't to encrypt anyway, leave the\n"
+"message as is, or cancel the message?"
+msgstr ""
+
+#: kpgp.cpp:346
+msgid "Encrypt"
+msgstr ""
+
+#: kpgp.cpp:359
+msgid ""
+"Do you wan't to leave the message as is,\n"
+"or cancel the message?"
+msgstr ""
+
+#: kpgp.cpp:711
 msgid ""
 "Please enter your\n"
 "PGP passphrase"
@@ -1536,9 +1545,66 @@ msgstr ""
 "Enter your\n"
 "PGP-Password"
 
-#: kpgp.cpp:983
+#: kpgp.cpp:738
 msgid "PGP Security Check"
 msgstr "PGP security check"
+
+#: kpgp.cpp:765
+msgid "PGP User Identity:"
+msgstr "PGP-Identitate"
+
+#: kpgp.cpp:776
+msgid "Store passphrase"
+msgstr ""
+
+#: kpgp.cpp:782
+msgid "Always encrypt to self"
+msgstr ""
+
+#: kpgpbase.cpp:315
+msgid "Bad pass Phrase; couldn't sign"
+msgstr "Password fals; nu pot sã semnez"
+
+#: kpgpbase.cpp:354
+msgid "error running pgp"
+msgstr ""
+
+#: kpgpbase.cpp:371 kpgpbase.cpp:662
+msgid "Bad pass Phrase; couldn't decrypt"
+msgstr "Password fals; nu pot sã decrypt-ez"
+
+#: kpgpbase.cpp:382 kpgpbase.cpp:673
+msgid "Do not have the secret key for this message"
+msgstr ""
+
+#: kpgpbase.cpp:410
+msgid "unknown key ID "
+msgstr ""
+
+#: kpgpbase.cpp:430
+msgid "??? (file ~/.pgp/pubring.pgp not found)"
+msgstr ""
+
+#: kpgpbase.cpp:585
+#, fuzzy
+msgid "The passphrase you entered is invalid."
+msgstr "Password-ul lipseºte."
+
+#: kpgpbase.cpp:611
+msgid ""
+"The key(s) you wan't to encrypt your message\n"
+"to are not trusted. No encryption done."
+msgstr ""
+
+#: kpgpbase.cpp:614
+#, fuzzy, c-format
+msgid ""
+"The following key(s) are not trusted:\n"
+"%s\n"
+"They will not be able to decrypt the message"
+msgstr ""
+"öpublic key pentru %s nu gãsesc.\n"
+"Aceastã persoanã nu poate sã decrypte-ze mesajul."
 
 #: kfileio.cpp:26 kmaddrbook.cpp:162
 msgid "File I/O Error"
@@ -1730,6 +1796,27 @@ msgstr ""
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
 msgstr ""
+
+#~ msgid "Error during PGP:"
+#~ msgstr "Eroare la PGP:"
+
+#~ msgid "Message signed by"
+#~ msgstr "Mesaj semnat de"
+
+#~ msgid "Message has a bad signature from"
+#~ msgstr "Mesajul are o semnãturã falsã de la"
+
+#~ msgid "End PGP signed message"
+#~ msgstr "Sfîrºitul mesajului PGP"
+
+#, fuzzy
+#~ msgid ""
+#~ "Could not find public keys matching the\n"
+#~ "userid(s) %s. These persons won't be able\n"
+#~ "to read the message."
+#~ msgstr ""
+#~ "öpublic key pentru %s nu gãsesc.\n"
+#~ "Aceastã persoanã nu poate sã decrypte-ze mesajul."
 
 #~ msgid "&Remove"
 #~ msgstr "&ªterge"

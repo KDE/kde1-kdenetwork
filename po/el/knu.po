@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-10-09 15:54+0200\n"
+"POT-Creation-Date: 1998-10-30 12:57+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Theodore J. Soldatos <theodore@eexi.gr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,29 +13,28 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: ENCODING\n"
 
-#: knu.cpp:140 knu.cpp:301
+#: knu.cpp:147 knu.cpp:306
 msgid "&Ping"
 msgstr "&Ping"
 
-#: knu.cpp:149 knu.cpp:307
+#: knu.cpp:156 knu.cpp:312
 msgid "&Traceroute"
 msgstr "Εύρεση διαδρομής"
 
-#: knu.cpp:158 knu.cpp:313
+#: knu.cpp:165 knu.cpp:318
 msgid "Host &resolution"
 msgstr "Ανάλυση διεύθυνσης"
 
-#: knu.cpp:171
+#: knu.cpp:178
 #, fuzzy
 msgid "F&inger"
 msgstr "&Finger"
 
-#: knu.cpp:181 knu.cpp:326
-#, fuzzy
-msgid "&Matt's traceroute"
-msgstr "Εύρεση διαδρομής"
+#: knu.cpp:187 knu.cpp:330
+msgid "&mtr"
+msgstr ""
 
-#: knu.cpp:193
+#: knu.cpp:198
 msgid ""
 "There is no command enabled\n"
 "in the configuration file.\n"
@@ -47,56 +46,56 @@ msgstr ""
 "\n"
 "οπότε δεν μπορώ να κάνω τίποτα...\n"
 
-#: knu.cpp:238
+#: knu.cpp:243
 msgid "&New window"
 msgstr "Νέο παράθυρο"
 
-#: knu.cpp:241
+#: knu.cpp:246
 msgid "&Close window"
 msgstr "Κλείσιμο παραθύρου"
 
-#: knu.cpp:252
+#: knu.cpp:257
 msgid "Select &all"
 msgstr "Επιλογή όλων"
 
-#: knu.cpp:255
+#: knu.cpp:260
 msgid "C&lear output window"
 msgstr "Καθαρισμός παραθύρου αποτελεσμάτων"
 
-#: knu.cpp:258
+#: knu.cpp:263
 msgid "P&references..."
 msgstr "Προτιμήσεις..."
 
-#: knu.cpp:273
+#: knu.cpp:278
 #, fuzzy, c-format
 msgid "&About %s"
 msgstr "Για το Qt"
 
-#: knu.cpp:275
+#: knu.cpp:280
 msgid "About &Qt"
 msgstr "Για το Qt"
 
-#: knu.cpp:319
+#: knu.cpp:324
 msgid "&Finger"
 msgstr "&Finger"
 
-#: knu.cpp:466
+#: knu.cpp:469
 msgid "About..."
 msgstr "Σχετικά..."
 
-#: CommandDlg.cpp:121
+#: CommandDlg.cpp:124
 msgid "H&ost:"
 msgstr "Διεύθυνση"
 
-#: CommandDlg.cpp:130
+#: CommandDlg.cpp:133
 msgid "&Go!"
 msgstr "Συνέχεια"
 
-#: CommandDlg.cpp:140
+#: CommandDlg.cpp:143
 msgid "&Stop"
 msgstr "Στοπ"
 
-#: CommandDlg.cpp:156
+#: CommandDlg.cpp:159
 msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
@@ -104,7 +103,7 @@ msgstr ""
 "Το εκτελέσιμο αυτής της εντολής δεν βρέθηκε.\n"
 "Μπορείτε να ορίσετε την τοποθεσία του από το μενού Επεξεργασία->Προτιμήσεις."
 
-#: CommandDlg.cpp:341
+#: CommandDlg.cpp:344
 #, c-format
 msgid ""
 "\n"
@@ -127,23 +126,23 @@ msgstr ""
 "Παρακαλώ χρησιμοποιήστε το μενού Επεξεργασία->Προτιμήσεις\n"
 "για να το ρυθμίσετε.\n"
 
-#: CommandDlg.cpp:350
+#: CommandDlg.cpp:353
 msgid "Error in pathname"
 msgstr "Σφάλμα στην τοποθεσία"
 
-#: CommandDlg.cpp:483
+#: CommandDlg.cpp:506
 msgid "Binary"
 msgstr "Δυαδικό"
 
-#: CommandDlg.cpp:491
+#: CommandDlg.cpp:514
 msgid "Path&name:"
 msgstr "Τοποθεσία:"
 
-#: CommandDlg.cpp:500
+#: CommandDlg.cpp:523
 msgid "Additional &arguments:"
 msgstr "Επιπλέον ορίσματα:"
 
-#: CommandDlg.cpp:525
+#: CommandDlg.cpp:548
 msgid "This command had been disabled in the configuration file."
 msgstr "Αυτή η εντολή έχει απενεργοποιηθεί από το αρχείο παραμέτρων."
 
@@ -151,9 +150,49 @@ msgstr "Αυτή η εντολή έχει απενεργοποιηθεί από το αρχείο παραμέτρων."
 msgid " - configuration"
 msgstr "- παράμετροι"
 
-#: PingDlg.cpp:97 TracerouteDlg.cpp:98
+#: MtrDlg.cpp:83
+msgid "#"
+msgstr ""
+
+#: MtrDlg.cpp:84
+msgid "Hostname"
+msgstr ""
+
+#: MtrDlg.cpp:85
+msgid "Loss"
+msgstr ""
+
+#: MtrDlg.cpp:87
+msgid "Rcv"
+msgstr ""
+
+#: MtrDlg.cpp:89
+msgid "Snt"
+msgstr ""
+
+#: MtrDlg.cpp:91
+msgid "Best"
+msgstr ""
+
+#: MtrDlg.cpp:93
+msgid "Avg"
+msgstr ""
+
+#: MtrDlg.cpp:95
+msgid "Worst"
+msgstr ""
+
+#: MtrDlg.cpp:138 PingDlg.cpp:100 TracerouteDlg.cpp:98
 msgid "Make host &name resolution"
 msgstr "Ανάλυση διεύθυνσης υπολογιστή"
+
+#: HostDlg.cpp:331 PingDlg.cpp:227
+msgid "hos&t"
+msgstr ""
+
+#: HostDlg.cpp:335 PingDlg.cpp:231
+msgid "ns&lookup"
+msgstr ""
 
 #: TracerouteDlg.cpp:115
 msgid "&Maximum number of hops:"
@@ -199,18 +238,14 @@ msgstr "Εξυπηρετητής εξ ορισμού"
 msgid "Ser&ver:"
 msgstr "Εξυπηρετητής"
 
-#: HostDlg.cpp:331
-msgid "hos&t"
-msgstr ""
-
-#: HostDlg.cpp:335
-msgid "ns&lookup"
-msgstr ""
-
 #: FingerDlg.cpp:77
 #, fuzzy
 msgid "&User:"
 msgstr "Χρήστης:"
+
+#, fuzzy
+#~ msgid "&Matt's traceroute"
+#~ msgstr "Εύρεση διαδρομής"
 
 #~ msgid "Server:"
 #~ msgstr "Εξυπηρετητής:"

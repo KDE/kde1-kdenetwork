@@ -5,12 +5,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail 0.4.4\n"
-"POT-Creation-Date: 1998-10-13 13:34+0200\n"
+"POT-Creation-Date: 1998-10-30 12:57+0100\n"
 "PO-Revision-Date: 1998-06-12 08:40 MET DST\n"
 "Last-Translator: Wang Jian <lark@linux.ustc.edu.cn>\n"
 "Language-Team: zh_CN (gb2312 )\n"
 
-#: kmcomposewin.cpp:1448 kmmainwin.cpp:263 kpgp.cpp:384
+#: kmcomposewin.cpp:1439 kmmainwin.cpp:263 kpgp.cpp:540
 msgid ""
 "Sorry, but this feature\n"
 "is still missing"
@@ -372,13 +372,13 @@ msgstr "打开地址簿..."
 msgid "Initializing..."
 msgstr "初始化..."
 
-#: kmfolderdia.cpp:38 kmmsgpartdlg.cpp:62 kmsettings.cpp:176
-#: kmsettings.cpp:869
+#: kmfolderdia.cpp:38 kmmsgpartdlg.cpp:62 kmsettings.cpp:175
+#: kmsettings.cpp:870
 #, fuzzy
 msgid "Name:"
 msgstr "登录名:"
 
-#: kmcomposewin.cpp:1456 kmfolderdia.cpp:44 kmfolderdia.cpp:120
+#: kmcomposewin.cpp:1447 kmfolderdia.cpp:44 kmfolderdia.cpp:120
 msgid "unnamed"
 msgstr "unamed"
 
@@ -390,99 +390,95 @@ msgstr "与联系起来"
 msgid "Unassociated Accounts"
 msgstr "未联系的帐号"
 
-#: kmsettings.cpp:56
+#: kmsettings.cpp:54
 msgid "Settings"
 msgstr "设置"
 
-#: kmsettings.cpp:178
+#: kmsettings.cpp:177
 msgid "Organization:"
 msgstr "组织:"
 
-#: kmsettings.cpp:180
+#: kmsettings.cpp:179
 msgid "Email Address:"
 msgstr "电子邮件地址:"
 
-#: kmsettings.cpp:183
+#: kmsettings.cpp:182
 msgid "Reply-To Address:"
 msgstr "回复地址:"
 
-#: kmsettings.cpp:185
+#: kmsettings.cpp:184
 msgid "Signature File:"
 msgstr "签名文件:"
 
-#: kmsettings.cpp:188
-msgid "PGP User Identity:"
-msgstr "PGP 用户身份:"
-
-#: kmsettings.cpp:196
+#: kmsettings.cpp:192 kpgp.cpp:759
 msgid "Identity"
 msgstr "身份"
 
-#: kmsettings.cpp:215
+#: kmsettings.cpp:211
 msgid "Sending Mail"
 msgstr "正发出邮件"
 
-#: kmsettings.cpp:221
+#: kmsettings.cpp:217
 msgid "Sendmail"
 msgstr "Sendmail"
 
-#: kmsettings.cpp:226 kmsettings.cpp:876
+#: kmsettings.cpp:222 kmsettings.cpp:877
 msgid "Location:"
 msgstr "位置:"
 
-#: kmsettings.cpp:231
+#: kmsettings.cpp:227
 msgid "SMTP"
 msgstr "SMTP"
 
-#: kmsettings.cpp:236
+#: kmsettings.cpp:232
 msgid "Server:"
 msgstr "服务器:"
 
-#: kmsettings.cpp:238 kmsettings.cpp:897
+#: kmsettings.cpp:234 kmsettings.cpp:898
 msgid "Port:"
 msgstr "端口:"
 
-#: kmsettings.cpp:259
+#: kmsettings.cpp:255
 msgid "Incoming Mail"
 msgstr "收到的邮件"
 
-#: kmsettings.cpp:264
+#: kmsettings.cpp:260
 msgid "Accounts:   (add at least one account!)"
 msgstr "帐号: (添加至少一个帐号!)"
 
-#: kmcomposewin.cpp:135 kmsettings.cpp:269
+#: kmcomposewin.cpp:135 kmsettings.cpp:265
 msgid "Name"
 msgstr ""
 
-#: kmcomposewin.cpp:138 kmsettings.cpp:270
+#: kmcomposewin.cpp:138 kmsettings.cpp:266
 msgid "Type"
 msgstr "类型"
 
-#: kmsettings.cpp:271
+#: kmsettings.cpp:267
 msgid "Folder"
 msgstr "邮件夹"
 
-#: kmsettings.cpp:279
+#: kmsettings.cpp:275
 msgid "Add..."
 msgstr "添加..."
 
-#: kmsettings.cpp:282
+#: kmsettings.cpp:278
 msgid "Modify..."
 msgstr "修改..."
 
-#: kmsettings.cpp:305
+#: kmsettings.cpp:301
 msgid "Network"
 msgstr "网络"
 
-#: kmsettings.cpp:330
+#: kmsettings.cpp:326
 msgid "Message Body Font:"
 msgstr "信体的字体:"
 
-#: kmsettings.cpp:335
+#: kmsettings.cpp:331
 msgid "Message List Font:"
 msgstr "信件列表字体:"
 
-#: kmsettings.cpp:339
+#: kmsettings.cpp:335
 msgid ""
 "Changing fonts currently only occurs when a new\n"
 "window is opened or kmail is restarted"
@@ -490,11 +486,11 @@ msgstr ""
 "现阶段改变字体只有在打开新的窗口或重新启动\n"
 "kmail 时才能生效"
 
-#: kmsettings.cpp:381
+#: kmsettings.cpp:377
 msgid "Phrases"
 msgstr "字句"
 
-#: kmsettings.cpp:386
+#: kmsettings.cpp:382
 msgid ""
 "The following placeholders are supported in the reply phrases:\n"
 "%D=date, %S=subject, %F=sender, %%=percent sign"
@@ -502,164 +498,168 @@ msgstr ""
 "在回信字句中支持下列占位符:\n"
 "%D=日期, %S=标题, %F=发信人, %%=百分号"
 
-#: kmsettings.cpp:394
+#: kmsettings.cpp:390
 msgid "Reply to sender:"
 msgstr "回复给发信人:"
 
-#: kmsettings.cpp:397
+#: kmsettings.cpp:393
 msgid "Reply to all:"
 msgstr "回复给所有人:"
 
-#: kmsettings.cpp:400
+#: kmsettings.cpp:396
 msgid "Forward:"
 msgstr "转发:"
 
-#: kmsettings.cpp:403
+#: kmsettings.cpp:399
 msgid "Indentation:"
 msgstr "缩进:"
 
-#: kmmessage.cpp:1277 kmsettings.cpp:415
+#: kmmessage.cpp:1277 kmsettings.cpp:411
 msgid "On %D, you wrote:"
 msgstr "在 %D , 你写了:"
 
-#: kmmessage.cpp:1278 kmsettings.cpp:419
+#: kmmessage.cpp:1278 kmsettings.cpp:415
 msgid "On %D, %F wrote:"
 msgstr "在 %D, %F 写了:"
 
-#: kmmessage.cpp:1279 kmsettings.cpp:423
+#: kmmessage.cpp:1279 kmsettings.cpp:419
 msgid "Forwarded Message"
 msgstr "转发的信件"
 
-#: kmsettings.cpp:434
+#: kmsettings.cpp:430
 msgid "Automatically append signature"
 msgstr "自动加上签名"
 
-#: kmsettings.cpp:440
+#: kmsettings.cpp:436
 msgid "Automatically sign messages using PGP"
 msgstr "自动用 PGP 加密信件"
 
-#: kmsettings.cpp:445
+#: kmsettings.cpp:441
 msgid "Word wrap at column:"
 msgstr "自动换行在列:"
 
-#: kmsettings.cpp:455
+#: kmsettings.cpp:451
 msgid "Use monospaced font"
 msgstr "使用固定宽度字体"
 
-#: kmsettings.cpp:467
+#: kmsettings.cpp:463
 msgid "When sending mail"
 msgstr "在发出邮件时"
 
-#: kmsettings.cpp:470
+#: kmsettings.cpp:466
 msgid "Default sending:"
 msgstr "默认发送:"
 
-#: kmsettings.cpp:473
+#: kmsettings.cpp:469
 msgid "send now"
 msgstr "现在发出"
 
-#: kmsettings.cpp:477
+#: kmsettings.cpp:473
 msgid "send later"
 msgstr "稍后发出"
 
-#: kmsettings.cpp:482
+#: kmsettings.cpp:478
 msgid "Send messages:"
 msgstr "放出信件:"
 
-#: kmsettings.cpp:485
+#: kmsettings.cpp:481
 msgid "Allow 8-bit"
 msgstr "允许使用8位"
 
-#: kmsettings.cpp:490
+#: kmsettings.cpp:486
 msgid "MIME Compilant (Quoted Printable)"
 msgstr "MIME 兼容 (Quoted Printable)"
 
-#: kmsettings.cpp:516
+#: kmsettings.cpp:512
 msgid "Composer"
 msgstr "编辑器"
 
-#: kmsettings.cpp:533
+#: kmsettings.cpp:529
 msgid "Folders"
 msgstr "文件夹"
 
-#: kmsettings.cpp:537
+#: kmsettings.cpp:533
 msgid "empty trash on exit"
 msgstr "在退出时清空废纸篓"
 
-#: kmsettings.cpp:541
+#: kmsettings.cpp:537
 msgid "Send Mail in outbox Folder on Check"
 msgstr ""
 
-#: kmsettings.cpp:556
+#: kmsettings.cpp:552
 msgid "Misc"
 msgstr ""
 
-#: kmsettings.cpp:580
+#: kmsettings.cpp:559
+msgid "PGP"
+msgstr ""
+
+#: kmsettings.cpp:582
 msgid "Message Body Font"
 msgstr "信体字体"
 
-#: kmsettings.cpp:594
+#: kmsettings.cpp:596
 msgid "Message List Font"
 msgstr "信件列表字体"
 
-#: kmsettings.cpp:646
+#: kmsettings.cpp:648
 msgid "Select Account"
 msgstr "选择帐号"
 
-#: kmaccount.cpp:76 kmfilterdlg.cpp:457 kmsettings.cpp:665
+#: kmaccount.cpp:76 kmfilterdlg.cpp:457 kmsettings.cpp:667
 msgid "Unnamed"
 msgstr "Unnamed"
 
-#: kmsettings.cpp:684
+#: kmsettings.cpp:686
 msgid "Choose Sendmail Location"
 msgstr "选择 Sendmail 的位置"
 
-#: kmcomposewin.cpp:1555 kmsettings.cpp:693
+#: kmcomposewin.cpp:1546 kmsettings.cpp:695
 msgid "Choose Signature File"
 msgstr "选择签名文件"
 
-#: kmsettings.cpp:861
+#: kmsettings.cpp:862
 #, fuzzy
 msgid "Type:"
 msgstr "类型"
 
-#: kmsettings.cpp:874
+#: kmsettings.cpp:875
 msgid "Local Account"
 msgstr "本地帐号"
 
-#: kmsettings.cpp:883
+#: kmsettings.cpp:884
 msgid "Pop Account"
 msgstr "Pop 帐号"
 
-#: kmsettings.cpp:885
+#: kmsettings.cpp:886
 msgid "Login:"
 msgstr "登录:"
 
-#: kmacctpop.cpp:464 kmsettings.cpp:888
+#: kmacctpop.cpp:464 kmsettings.cpp:889
 msgid "Password:"
 msgstr "密码:"
 
-#: kmsettings.cpp:892
+#: kmsettings.cpp:893
 msgid "Host:"
 msgstr "主机:"
 
-#: kmsettings.cpp:900
+#: kmsettings.cpp:901
 msgid "Delete mail from server"
 msgstr "从服务器上删除邮件"
 
-#: kmsettings.cpp:907
+#: kmsettings.cpp:908
 msgid "Enable interval Mail checking"
 msgstr ""
 
-#: kmsettings.cpp:921
+#: kmsettings.cpp:922
 msgid "Store new mail in account:"
 msgstr "把新邮件放在帐号:"
 
-#: kmsettings.cpp:929
+#: kmsettings.cpp:930
 msgid "<none>"
 msgstr "<none>"
 
-#: kmsettings.cpp:975
+#: kmsettings.cpp:976
 msgid "Choose Location"
 msgstr "选择位置"
 
@@ -697,7 +697,7 @@ msgstr "%d 封信件, %d 封未读."
 msgid "Folder is read-only."
 msgstr "文件夹是只读的."
 
-#: kmheaders.cpp:234 kpgp.cpp:837
+#: kmheaders.cpp:234
 msgid "Unknown"
 msgstr "未知"
 
@@ -807,15 +807,15 @@ msgstr "插入文件[&I]..."
 msgid "&New Composer..."
 msgstr "新打开编辑器[&N]..."
 
-#: kmcomposewin.cpp:472 kmcomposewin.cpp:681 kmcomposewin.cpp:1925
+#: kmcomposewin.cpp:472 kmcomposewin.cpp:686 kmcomposewin.cpp:1916
 msgid "Mark all"
 msgstr "标记所有"
 
-#: kmcomposewin.cpp:475 kmcomposewin.cpp:683
+#: kmcomposewin.cpp:475 kmcomposewin.cpp:688
 msgid "Find..."
 msgstr "查找..."
 
-#: kmcomposewin.cpp:477 kmcomposewin.cpp:684
+#: kmcomposewin.cpp:477 kmcomposewin.cpp:689
 msgid "Replace..."
 msgstr "替换..."
 
@@ -924,19 +924,19 @@ msgstr "签名信件"
 msgid "encrypt message"
 msgstr "加密信件"
 
-#: kmcomposewin.cpp:614 kmcomposewin.cpp:630
+#: kmcomposewin.cpp:619 kmcomposewin.cpp:635
 msgid "Column"
 msgstr "列"
 
-#: kmcomposewin.cpp:615 kmcomposewin.cpp:628
+#: kmcomposewin.cpp:620 kmcomposewin.cpp:633
 msgid "Line"
 msgstr "行"
 
-#: kmcomposewin.cpp:896
+#: kmcomposewin.cpp:901
 msgid "KMail Confirm"
 msgstr "KMail 确认"
 
-#: kmcomposewin.cpp:897
+#: kmcomposewin.cpp:902
 msgid ""
 "Close and discard\n"
 "edited message?"
@@ -944,65 +944,52 @@ msgstr ""
 "关闭并丢弃编辑的\n"
 "信件 ?"
 
-#: kmcomposewin.cpp:943
-#, c-format
-msgid ""
-"public key for %s not found.\n"
-"This person will not be able to decrypt the message."
-msgstr ""
-"%s 的公开密钥没有找到.\n"
-"收信人将无法解密信件."
-
-#: kmcomposewin.cpp:964
-msgid "Error during PGP:"
-msgstr "PGP 加密错误:"
-
-#: kmcomposewin.cpp:1184
+#: kmcomposewin.cpp:1175
 msgid "Attach File"
 msgstr "附上文件"
 
-#: kmcomposewin.cpp:1206
+#: kmcomposewin.cpp:1197
 msgid "Include File"
 msgstr "包含文件"
 
-#: kmcomposewin.cpp:1229 kmreaderwin.cpp:706
+#: kmcomposewin.cpp:1220 kmreaderwin.cpp:706
 msgid "View..."
 msgstr "视图..."
 
-#: kmcomposewin.cpp:1230
+#: kmcomposewin.cpp:1221
 msgid "Save..."
 msgstr "保存..."
 
-#: kmcomposewin.cpp:1231 kmreaderwin.cpp:709
+#: kmcomposewin.cpp:1222 kmreaderwin.cpp:709
 msgid "Properties..."
 msgstr "特性..."
 
-#: kmcomposewin.cpp:1235
+#: kmcomposewin.cpp:1226
 msgid "Attach..."
 msgstr "附件..."
 
-#: kmcomposewin.cpp:1277 kmreaderwin.cpp:751
+#: kmcomposewin.cpp:1268 kmreaderwin.cpp:751
 msgid "View Attachment: "
 msgstr "观看附件:"
 
-#: kmcomposewin.cpp:1471
+#: kmcomposewin.cpp:1462
 msgid "To:"
 msgstr "至:"
 
-#: kmcomposewin.cpp:1475
+#: kmcomposewin.cpp:1466
 msgid "Subject:"
 msgstr "标题:"
 
-#: kmcomposewin.cpp:1478
+#: kmcomposewin.cpp:1469
 #, fuzzy
 msgid "Date:"
 msgstr "日期: "
 
-#: kmcomposewin.cpp:1587
+#: kmcomposewin.cpp:1578
 msgid "KMail: Spellcheck"
 msgstr "KMail: 拼写检查"
 
-#: kmcomposewin.cpp:1611
+#: kmcomposewin.cpp:1602
 msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
 msgstr "启动KSpell是发生错误. 请确定你正确地配置了 ISpell."
@@ -1083,11 +1070,11 @@ msgstr "回复到: "
 msgid "Groups: "
 msgstr "组: "
 
-#: kmreaderwin.cpp:423 kpgp.cpp:476 kpgp.cpp:502
+#: kmreaderwin.cpp:423
 msgid "Encrypted message"
 msgstr "加密信件"
 
-#: kmreaderwin.cpp:429 kpgp.cpp:478
+#: kmreaderwin.cpp:429
 msgid "Cannot decrypt message:"
 msgstr "不能解密信件:"
 
@@ -1462,7 +1449,7 @@ msgstr "<信体>"
 msgid "<any header>"
 msgstr "<信头>"
 
-#: kpgp.cpp:127
+#: kpgp.cpp:151
 msgid ""
 "Couldn't find PGP executable.\n"
 "Please check your PATH is set correctly."
@@ -1470,7 +1457,7 @@ msgstr ""
 "不能找到 PGP 执行程序.\n"
 "请检查你的 PATH 是否设得正确."
 
-#: kpgp.cpp:178
+#: kpgp.cpp:193
 msgid ""
 "Could not find PGP executable.\n"
 "Please check your PATH is set correctly."
@@ -1478,45 +1465,67 @@ msgstr ""
 "不能找到 PGP 执行程序.\n"
 "请检查你的 PATH 是否设得正确."
 
-#: kpgp.cpp:188
+#: kpgp.cpp:207
 msgid "The pass phrase is missing."
 msgstr "没有找到 pass phrase."
 
-#: kpgp.cpp:484
-msgid "Message signed by"
-msgstr "信件签名人为"
+#: kpgp.cpp:286 kpgp.cpp:312 kpgp.cpp:325 kpgp.cpp:344 kpgp.cpp:361
+#, fuzzy
+msgid "PGP Warning"
+msgstr "警告"
 
-#: kpgp.cpp:488
-msgid "Message has a bad signature from"
-msgstr "信件签名是坏的, 它来自"
-
-#: kpgp.cpp:501
-msgid "End PGP signed message"
-msgstr "PGP 签名信件结束"
-
-#: kpgp.cpp:786
-msgid "Bad pass Phrase; couldn't decrypt"
-msgstr "错的 pass Phrase; 不能解密"
-
-#: kpgp.cpp:873
-#, fuzzy, c-format
+#: kpgp.cpp:287
 msgid ""
-"Could not find public keys matching the\n"
-"userid(s) %s. These persons won't be able\n"
-"to read the message."
-msgstr ""
-"%s 的公开密钥没有找到.\n"
-"收信人将无法解密信件."
-
-#: kpgp.cpp:885
-msgid "Could not find public keys for some persons.\n"
+"Could not find the public keys for the\n"
+"recipients of this mail.\n"
+"Message will not be encrypted."
 msgstr ""
 
-#: kpgp.cpp:898
-msgid "Bad pass Phrase; couldn't sign"
-msgstr "错的 pass Phrase; 不能签名"
+#: kpgp.cpp:296
+msgid "Could not find the public keys for\n"
+msgstr ""
 
-#: kpgp.cpp:956
+#: kpgp.cpp:307
+msgid "These persons will not be able to\n"
+msgstr ""
+
+#: kpgp.cpp:309
+msgid "This person will not be able to\n"
+msgstr ""
+
+#: kpgp.cpp:311
+#, fuzzy
+msgid "decrypt the message."
+msgstr "加密信件"
+
+#: kpgp.cpp:326
+msgid ""
+"You just entered an invalid passphrase.\n"
+"Do you wan't to try again, continue and\n"
+"leave the message unsigned, or cancel sending the message?"
+msgstr ""
+
+#: kpgp.cpp:331
+msgid "Retry"
+msgstr ""
+
+#: kpgp.cpp:342
+msgid ""
+"Do you wan't to encrypt anyway, leave the\n"
+"message as is, or cancel the message?"
+msgstr ""
+
+#: kpgp.cpp:346
+msgid "Encrypt"
+msgstr ""
+
+#: kpgp.cpp:359
+msgid ""
+"Do you wan't to leave the message as is,\n"
+"or cancel the message?"
+msgstr ""
+
+#: kpgp.cpp:711
 msgid ""
 "Please enter your\n"
 "PGP passphrase"
@@ -1524,9 +1533,66 @@ msgstr ""
 "请输入你的 PGP\n"
 "passphrase"
 
-#: kpgp.cpp:983
+#: kpgp.cpp:738
 msgid "PGP Security Check"
 msgstr "PGP 安全检查"
+
+#: kpgp.cpp:765
+msgid "PGP User Identity:"
+msgstr "PGP 用户身份:"
+
+#: kpgp.cpp:776
+msgid "Store passphrase"
+msgstr ""
+
+#: kpgp.cpp:782
+msgid "Always encrypt to self"
+msgstr ""
+
+#: kpgpbase.cpp:315
+msgid "Bad pass Phrase; couldn't sign"
+msgstr "错的 pass Phrase; 不能签名"
+
+#: kpgpbase.cpp:354
+msgid "error running pgp"
+msgstr ""
+
+#: kpgpbase.cpp:371 kpgpbase.cpp:662
+msgid "Bad pass Phrase; couldn't decrypt"
+msgstr "错的 pass Phrase; 不能解密"
+
+#: kpgpbase.cpp:382 kpgpbase.cpp:673
+msgid "Do not have the secret key for this message"
+msgstr ""
+
+#: kpgpbase.cpp:410
+msgid "unknown key ID "
+msgstr ""
+
+#: kpgpbase.cpp:430
+msgid "??? (file ~/.pgp/pubring.pgp not found)"
+msgstr ""
+
+#: kpgpbase.cpp:585
+#, fuzzy
+msgid "The passphrase you entered is invalid."
+msgstr "没有找到 pass phrase."
+
+#: kpgpbase.cpp:611
+msgid ""
+"The key(s) you wan't to encrypt your message\n"
+"to are not trusted. No encryption done."
+msgstr ""
+
+#: kpgpbase.cpp:614
+#, fuzzy, c-format
+msgid ""
+"The following key(s) are not trusted:\n"
+"%s\n"
+"They will not be able to decrypt the message"
+msgstr ""
+"%s 的公开密钥没有找到.\n"
+"收信人将无法解密信件."
 
 #: kfileio.cpp:26 kmaddrbook.cpp:162
 msgid "File I/O Error"
@@ -1714,6 +1780,27 @@ msgstr "&7位 ASCII 编码"
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
 msgstr "括起未知字符[&Q]"
+
+#~ msgid "Error during PGP:"
+#~ msgstr "PGP 加密错误:"
+
+#~ msgid "Message signed by"
+#~ msgstr "信件签名人为"
+
+#~ msgid "Message has a bad signature from"
+#~ msgstr "信件签名是坏的, 它来自"
+
+#~ msgid "End PGP signed message"
+#~ msgstr "PGP 签名信件结束"
+
+#, fuzzy
+#~ msgid ""
+#~ "Could not find public keys matching the\n"
+#~ "userid(s) %s. These persons won't be able\n"
+#~ "to read the message."
+#~ msgstr ""
+#~ "%s 的公开密钥没有找到.\n"
+#~ "收信人将无法解密信件."
 
 #~ msgid "&Remove"
 #~ msgstr "删除[&R]"

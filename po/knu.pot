@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-10-09 15:54+0200\n"
+"POT-Creation-Date: 1998-10-30 12:57+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,27 +14,27 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: ENCODING\n"
 
-#: knu.cpp:140 knu.cpp:301
+#: knu.cpp:147 knu.cpp:306
 msgid "&Ping"
 msgstr ""
 
-#: knu.cpp:149 knu.cpp:307
+#: knu.cpp:156 knu.cpp:312
 msgid "&Traceroute"
 msgstr ""
 
-#: knu.cpp:158 knu.cpp:313
+#: knu.cpp:165 knu.cpp:318
 msgid "Host &resolution"
 msgstr ""
 
-#: knu.cpp:171
+#: knu.cpp:178
 msgid "F&inger"
 msgstr ""
 
-#: knu.cpp:181 knu.cpp:326
-msgid "&Matt's traceroute"
+#: knu.cpp:187 knu.cpp:330
+msgid "&mtr"
 msgstr ""
 
-#: knu.cpp:193
+#: knu.cpp:198
 msgid ""
 "There is no command enabled\n"
 "in the configuration file.\n"
@@ -42,62 +42,62 @@ msgid ""
 "So I can't do anything...\n"
 msgstr ""
 
-#: knu.cpp:238
+#: knu.cpp:243
 msgid "&New window"
 msgstr ""
 
-#: knu.cpp:241
+#: knu.cpp:246
 msgid "&Close window"
 msgstr ""
 
-#: knu.cpp:252
+#: knu.cpp:257
 msgid "Select &all"
 msgstr ""
 
-#: knu.cpp:255
+#: knu.cpp:260
 msgid "C&lear output window"
 msgstr ""
 
-#: knu.cpp:258
+#: knu.cpp:263
 msgid "P&references..."
 msgstr ""
 
-#: knu.cpp:273
+#: knu.cpp:278
 #, c-format
 msgid "&About %s"
 msgstr ""
 
-#: knu.cpp:275
+#: knu.cpp:280
 msgid "About &Qt"
 msgstr ""
 
-#: knu.cpp:319
+#: knu.cpp:324
 msgid "&Finger"
 msgstr ""
 
-#: knu.cpp:466
+#: knu.cpp:469
 msgid "About..."
 msgstr ""
 
-#: CommandDlg.cpp:121
+#: CommandDlg.cpp:124
 msgid "H&ost:"
 msgstr ""
 
-#: CommandDlg.cpp:130
+#: CommandDlg.cpp:133
 msgid "&Go!"
 msgstr ""
 
-#: CommandDlg.cpp:140
+#: CommandDlg.cpp:143
 msgid "&Stop"
 msgstr ""
 
-#: CommandDlg.cpp:156
+#: CommandDlg.cpp:159
 msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
 msgstr ""
 
-#: CommandDlg.cpp:341
+#: CommandDlg.cpp:344
 #, c-format
 msgid ""
 "\n"
@@ -111,23 +111,23 @@ msgid ""
 "to configure it again.\n"
 msgstr ""
 
-#: CommandDlg.cpp:350
+#: CommandDlg.cpp:353
 msgid "Error in pathname"
 msgstr ""
 
-#: CommandDlg.cpp:483
+#: CommandDlg.cpp:506
 msgid "Binary"
 msgstr ""
 
-#: CommandDlg.cpp:491
+#: CommandDlg.cpp:514
 msgid "Path&name:"
 msgstr ""
 
-#: CommandDlg.cpp:500
+#: CommandDlg.cpp:523
 msgid "Additional &arguments:"
 msgstr ""
 
-#: CommandDlg.cpp:525
+#: CommandDlg.cpp:548
 msgid "This command had been disabled in the configuration file."
 msgstr ""
 
@@ -135,8 +135,48 @@ msgstr ""
 msgid " - configuration"
 msgstr ""
 
-#: PingDlg.cpp:97 TracerouteDlg.cpp:98
+#: MtrDlg.cpp:83
+msgid "#"
+msgstr ""
+
+#: MtrDlg.cpp:84
+msgid "Hostname"
+msgstr ""
+
+#: MtrDlg.cpp:85
+msgid "Loss"
+msgstr ""
+
+#: MtrDlg.cpp:87
+msgid "Rcv"
+msgstr ""
+
+#: MtrDlg.cpp:89
+msgid "Snt"
+msgstr ""
+
+#: MtrDlg.cpp:91
+msgid "Best"
+msgstr ""
+
+#: MtrDlg.cpp:93
+msgid "Avg"
+msgstr ""
+
+#: MtrDlg.cpp:95
+msgid "Worst"
+msgstr ""
+
+#: MtrDlg.cpp:138 PingDlg.cpp:100 TracerouteDlg.cpp:98
 msgid "Make host &name resolution"
+msgstr ""
+
+#: HostDlg.cpp:331 PingDlg.cpp:227
+msgid "hos&t"
+msgstr ""
+
+#: HostDlg.cpp:335 PingDlg.cpp:231
+msgid "ns&lookup"
 msgstr ""
 
 #: TracerouteDlg.cpp:115
@@ -181,14 +221,6 @@ msgstr ""
 
 #: FingerDlg.cpp:95 HostDlg.cpp:145
 msgid "Ser&ver:"
-msgstr ""
-
-#: HostDlg.cpp:331
-msgid "hos&t"
-msgstr ""
-
-#: HostDlg.cpp:335
-msgid "ns&lookup"
 msgstr ""
 
 #: FingerDlg.cpp:77

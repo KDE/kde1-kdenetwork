@@ -3,9 +3,9 @@
 # David Faure <David.Faure@insa-lyon.fr>, 1998.
 #
 msgid ""
-msgstr "" 
+msgstr ""
 "Project-Id-Version: kcmktalkd 0.6.1\n"
-"POT-Creation-Date: 1998-06-09 23:13+0000\n"
+"POT-Creation-Date: 1998-07-20 15:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,58 +13,59 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: ENCODING\n"
 
-#: main.cpp:54
+#: main.cpp:55
 msgid "&Announcement"
 msgstr "&Anúncio"
 
-#: main.cpp:57
+#: main.cpp:58
 msgid "Ans&wering machine"
 msgstr "Máquina de &resposta"
 
-#: main.cpp:63
+#: main.cpp:64
 msgid "usage: kcmktalkd [-init | soundpage | answmachpage]\n"
 msgstr "uso:  kcmktalkd [-init | soundpage | answmachpage]\n"
 
-#: main.cpp:94
+#: main.cpp:100
 msgid "KTalkd Configuration"
 msgstr "Configuração do KTalkd"
 
-#: soundpage.cpp:44
+#: soundpage.cpp:47
 msgid "&Announcement program"
 msgstr "Programa de &Anúncio"
 
-#: soundpage.cpp:51
+#: soundpage.cpp:54
 msgid "&Talk client"
 msgstr "Cliente do &Talk"
 
-#: soundpage.cpp:55
+#: soundpage.cpp:58
 msgid "&Play sound"
 msgstr "&Reproduzir som"
 
-#: soundpage.cpp:57
+#: soundpage.cpp:60
 msgid "Sound &File"
 msgstr "Ar&quivo de Som"
 
-#: soundpage.cpp:59
+#: soundpage.cpp:62
 msgid "Additional WAV files can be dropped onto the sound list."
 msgstr "Arquivos WAV adicionais podem ser soltos na lista de sons."
 
-#: soundpage.cpp:74
+#: soundpage.cpp:77
 msgid "&Test"
 msgstr "&Teste"
 
-#: soundpage.cpp:154
+#: soundpage.cpp:157
 msgid "Unsupported URL"
 msgstr "URL não suportada"
 
-#: soundpage.cpp:155
+#: soundpage.cpp:158
 msgid ""
 "Sorry, this type of URL is currently unsupportedby the KDE System Sound "
 "Module"
-msgstr "Desculpe, esse tipo de URL não é suportado pelo módulo de sons de"
-       " sistema do KDE."
+msgstr ""
+"Desculpe, esse tipo de URL não é suportado pelo módulo de sons de sistema do "
+"KDE."
 
-#: soundpage.cpp:162
+#: soundpage.cpp:165
 #, c-format
 msgid ""
 "Sorry, but \n"
@@ -75,11 +76,11 @@ msgstr ""
 "%s\n"
 "não parece ser um arquivo WAV."
 
-#: soundpage.cpp:165
+#: soundpage.cpp:168
 msgid "Improper File Extension"
 msgstr "Extensão do arquivo é imprópria."
 
-#: soundpage.cpp:173
+#: soundpage.cpp:176
 #, c-format
 msgid ""
 "The file\n"
@@ -90,7 +91,7 @@ msgstr ""
 "%s\n"
 "já está na lista."
 
-#: soundpage.cpp:177
+#: soundpage.cpp:180
 msgid "File Already in List"
 msgstr "Arquivo já está na lista"
 

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: karchie\n"
-"POT-Creation-Date: 1998-10-26 11:11+0100\n"
+"POT-Creation-Date: 1998-10-01 18:13+0200\n"
 "PO-Revision-Date: 1998-10-28 21:14 CET\n"
 "Last-Translator: Miroslav Flídr <flidr@kky.zcu.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -197,9 +197,18 @@ msgstr "Cesta:"
 msgid "File:"
 msgstr "Soubor:"
 
+#: KAView.cpp:275
+msgid "Size:"
+msgstr ""
+
 #: KAView.cpp:277
 msgid "Mode:"
 msgstr "Mód:"
+
+#: KAView.cpp:279
+#, fuzzy
+msgid "Date:"
+msgstr "podle &data"
 
 #: KArchie.cpp:441 KArchie.cpp:483
 #, c-format

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KNU\n"
-"POT-Creation-Date: 1998-10-09 15:54+0200\n"
+"POT-Creation-Date: 1998-10-30 12:57+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Kim Enkovaara <kim.enkovaara@iki.fi>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,27 +14,27 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: ENCODING\n"
 
-#: knu.cpp:140 knu.cpp:301
+#: knu.cpp:147 knu.cpp:306
 msgid "&Ping"
 msgstr "&Ping"
 
-#: knu.cpp:149 knu.cpp:307
+#: knu.cpp:156 knu.cpp:312
 msgid "&Traceroute"
 msgstr "&Traceroute"
 
-#: knu.cpp:158 knu.cpp:313
+#: knu.cpp:165 knu.cpp:318
 msgid "Host &resolution"
 msgstr "Konenimen &selvitys"
 
-#: knu.cpp:171
+#: knu.cpp:178
 msgid "F&inger"
 msgstr "&Finger"
 
-#: knu.cpp:181 knu.cpp:326
-msgid "&Matt's traceroute"
-msgstr "&Traceroute"
+#: knu.cpp:187 knu.cpp:330
+msgid "&mtr"
+msgstr ""
 
-#: knu.cpp:193
+#: knu.cpp:198
 msgid ""
 "There is no command enabled\n"
 "in the configuration file.\n"
@@ -46,56 +46,56 @@ msgstr ""
 "\n"
 "En voi tehdä mitään...\n"
 
-#: knu.cpp:238
+#: knu.cpp:243
 msgid "&New window"
 msgstr "&Uusi ikkuna"
 
-#: knu.cpp:241
+#: knu.cpp:246
 msgid "&Close window"
 msgstr "&Sulje ikkuna"
 
-#: knu.cpp:252
+#: knu.cpp:257
 msgid "Select &all"
 msgstr "Valitse &kaikki"
 
-#: knu.cpp:255
+#: knu.cpp:260
 msgid "C&lear output window"
 msgstr "&Tyhjennä tulosikkuna"
 
-#: knu.cpp:258
+#: knu.cpp:263
 msgid "P&references..."
 msgstr "&Asetukset"
 
-#: knu.cpp:273
+#: knu.cpp:278
 #, c-format
 msgid "&About %s"
 msgstr "Tietoja &Qt:ta"
 
-#: knu.cpp:275
+#: knu.cpp:280
 msgid "About &Qt"
 msgstr "Tietoja &Qt:ta"
 
-#: knu.cpp:319
+#: knu.cpp:324
 msgid "&Finger"
 msgstr "&Finger"
 
-#: knu.cpp:466
+#: knu.cpp:469
 msgid "About..."
 msgstr "Tietoja..."
 
-#: CommandDlg.cpp:121
+#: CommandDlg.cpp:124
 msgid "H&ost:"
 msgstr "&Kone:"
 
-#: CommandDlg.cpp:130
+#: CommandDlg.cpp:133
 msgid "&Go!"
 msgstr "&Aja!"
 
-#: CommandDlg.cpp:140
+#: CommandDlg.cpp:143
 msgid "&Stop"
 msgstr "&Lopeta"
 
-#: CommandDlg.cpp:156
+#: CommandDlg.cpp:159
 msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
@@ -103,7 +103,7 @@ msgstr ""
 "Ohjelmatiedostoa ei löytynyt. \n"
 "Voit antaa sen polun Editoi->Asetukset... valikoissa."
 
-#: CommandDlg.cpp:341
+#: CommandDlg.cpp:344
 #, c-format
 msgid ""
 "\n"
@@ -126,23 +126,23 @@ msgstr ""
 "Käytä Muokkaa->Asetukset... valikkoa\n"
 "asettaaksesi sen uudelleen.\n"
 
-#: CommandDlg.cpp:350
+#: CommandDlg.cpp:353
 msgid "Error in pathname"
 msgstr "Virhe polkunimessä"
 
-#: CommandDlg.cpp:483
+#: CommandDlg.cpp:506
 msgid "Binary"
 msgstr "Ohjelma"
 
-#: CommandDlg.cpp:491
+#: CommandDlg.cpp:514
 msgid "Path&name:"
 msgstr "P&olku ja nimi"
 
-#: CommandDlg.cpp:500
+#: CommandDlg.cpp:523
 msgid "Additional &arguments:"
 msgstr "Ylimääräiset optiot:"
 
-#: CommandDlg.cpp:525
+#: CommandDlg.cpp:548
 msgid "This command had been disabled in the configuration file."
 msgstr "Tämä komento on poistettu asetustiedostossa"
 
@@ -150,9 +150,49 @@ msgstr "Tämä komento on poistettu asetustiedostossa"
 msgid " - configuration"
 msgstr " - asetus"
 
-#: PingDlg.cpp:97 TracerouteDlg.cpp:98
+#: MtrDlg.cpp:83
+msgid "#"
+msgstr ""
+
+#: MtrDlg.cpp:84
+msgid "Hostname"
+msgstr ""
+
+#: MtrDlg.cpp:85
+msgid "Loss"
+msgstr ""
+
+#: MtrDlg.cpp:87
+msgid "Rcv"
+msgstr ""
+
+#: MtrDlg.cpp:89
+msgid "Snt"
+msgstr ""
+
+#: MtrDlg.cpp:91
+msgid "Best"
+msgstr ""
+
+#: MtrDlg.cpp:93
+msgid "Avg"
+msgstr ""
+
+#: MtrDlg.cpp:95
+msgid "Worst"
+msgstr ""
+
+#: MtrDlg.cpp:138 PingDlg.cpp:100 TracerouteDlg.cpp:98
 msgid "Make host &name resolution"
 msgstr "Tee koneen &nimenselvitys"
+
+#: HostDlg.cpp:331 PingDlg.cpp:227
+msgid "hos&t"
+msgstr "&kone"
+
+#: HostDlg.cpp:335 PingDlg.cpp:231
+msgid "ns&lookup"
+msgstr "ns&lookup"
 
 #: TracerouteDlg.cpp:115
 msgid "&Maximum number of hops:"
@@ -198,17 +238,12 @@ msgstr "oletuspalvelin"
 msgid "Ser&ver:"
 msgstr "Pal&velin"
 
-#: HostDlg.cpp:331
-msgid "hos&t"
-msgstr "&kone"
-
-#: HostDlg.cpp:335
-msgid "ns&lookup"
-msgstr "ns&lookup"
-
 #: FingerDlg.cpp:77
 msgid "&User:"
 msgstr "&Käyttäjä:"
+
+#~ msgid "&Matt's traceroute"
+#~ msgstr "&Traceroute"
 
 #~ msgid "&Contents"
 #~ msgstr "&Sisältö"
