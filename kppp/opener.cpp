@@ -74,7 +74,7 @@ void Opener::mainLoop() {
   struct msghdr	msg;
   struct iovec iov;
 
-  iov.iov_base = (void *) &request;
+  iov.iov_base = IOV_BASE_CAST &request;
   iov.iov_len = sizeof(request);
   
   msg.msg_name = 0L;
@@ -236,9 +236,9 @@ int Opener::sendFD(const char *path, int fd,
   msg.msg_iovlen = 2;
 
   // Send data
-  iov[0].iov_base = (void *) response;
+  iov[0].iov_base = IOV_BASE_CAST response;
   iov[0].iov_len = sizeof(struct ResponseHeader);
-  iov[1].iov_base = (void *) path;
+  iov[1].iov_base = IOV_BASE_CAST path;
   iov[1].iov_len = strlen(path) + 1;
 
   // Send a (duplicate of) the file descriptor
@@ -280,7 +280,7 @@ int Opener::sendResponse(struct ResponseHeader *response) {
   msg.msg_controllen = 0;
 
   // Send data
-  iov.iov_base = (void *) response;
+  iov.iov_base = IOV_BASE_CAST response;
   iov.iov_len = sizeof(struct ResponseHeader);
 
   if (sendmsg(socket, &msg, 0) < 0) {

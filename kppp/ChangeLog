@@ -1,3 +1,8 @@
+1998-12-21  Harri Porten  <porten@kde.org>
+
+	* opener.h: define system dependend type cast for struct iovec's
+	iov_base. FreeBSD needs (char *) instead (void *).
+
 1998-12-20  Harri Porten  <porten@kde.org>
 
 	* docking.cpp: call KWM::activate() on connection window after

@@ -73,9 +73,9 @@ int Requester::recvFD(char *filename, int size) {
   msg.msg_iov = &iov[0];
   msg.msg_iovlen = 2;
 
-  iov[0].iov_base = &response;
+  iov[0].iov_base = IOV_BASE_CAST &response;
   iov[0].iov_len = sizeof(struct ResponseHeader);
-  iov[1].iov_base = filename;
+  iov[1].iov_base = IOV_BASE_CAST filename;
   iov[1].iov_len = size;
 #ifdef CMSG_LEN
   cmsglen = CMSG_LEN(sizeof(int));
@@ -86,7 +86,7 @@ int Requester::recvFD(char *filename, int size) {
   control.cmsg.cmsg_level = SOL_SOCKET;
   control.cmsg.cmsg_type = MY_SCM_RIGHTS;
 
-  msg.msg_control = &control;
+  msg.msg_control = (char *) &control;
   msg.msg_controllen = control.cmsg.cmsg_len;
 
   fd = -1;
@@ -136,7 +136,7 @@ bool Requester::recvResponse() {
   msg.msg_control = 0L;
   msg.msg_controllen = 0;
 
-  iov.iov_base = &response;
+  iov.iov_base = IOV_BASE_CAST &response;
   iov.iov_len = sizeof(struct ResponseHeader);
   Debug("recvResponse(): waiting for message");
   len = recvmsg(socket, &msg, flags);
@@ -280,7 +280,7 @@ bool Requester::sendRequest(struct RequestHeader *request, int len) {
   struct msghdr	msg;
   struct iovec iov;
 
-  iov.iov_base = (void *) request;
+  iov.iov_base = IOV_BASE_CAST request;
   iov.iov_len = len;
   
   msg.msg_name = 0L;
