@@ -6,13 +6,32 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ksirc\n"
-"POT-Creation-Date: 1998-12-28 02:07+0100\n"
+"POT-Creation-Date: 1999-01-21 02:02+0100\n"
 "PO-Revision-Date: 1999-01-11 21:05+0000\n"
 "Last-Translator: Richard Allen <ra@hp.is>\n"
 "Language-Team: is <kde-isl@mmedia.is>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: ISO-8859-1\n"
+
+#: FilterRuleEditor.cpp:29
+msgid "Edit Filter Rules"
+msgstr ""
+
+#: FilterRuleEditor.cpp:58 FilterRuleEditor.cpp:79
+#: FilterRuleEditorData.cpp:105
+msgid "&Modify"
+msgstr "&Breyta"
+
+#: FilterRuleEditor.cpp:74
+msgid "Missing Arguments"
+msgstr ""
+
+#: FilterRuleEditor.cpp:75
+msgid ""
+"Cannot create a Rule since not\n"
+"all the fields are filled in."
+msgstr ""
 
 #: FilterRuleEditorData.cpp:33
 msgid "Description:"
@@ -30,10 +49,6 @@ msgstr "Frá:"
 msgid "To:"
 msgstr "Til:"
 
-#: FilterRuleEditorData.cpp:105
-msgid "&Modify"
-msgstr "&Breyta"
-
 #: FilterRuleEditorData.cpp:126
 msgid "New Rule"
 msgstr "Ný regla"
@@ -45,6 +60,10 @@ msgstr "Upp"
 #: FilterRuleEditorData.cpp:155
 msgid "Down"
 msgstr "Niður"
+
+#: KSircColour.cpp:33
+msgid "Colour Settings"
+msgstr ""
 
 #: KSircColourData.cpp:33
 msgid "Generic Text"
@@ -65,6 +84,10 @@ msgstr "Villur"
 #: KSircColourData.cpp:115
 msgid "Background"
 msgstr "Bakgrunnur"
+
+#: dccDialog.cpp:22
+msgid "DCC Files Offered"
+msgstr ""
 
 #: dccDialogData.cpp:38
 msgid "&Get"
@@ -99,6 +122,10 @@ msgstr ""
 "vikna líftíma.\n"
 "\n"
 "ÞESSI ÚTGÁFA MUN RENNA ÚT INNAN FJÖGURRA VIKNA"
+
+#: open_top.cpp:26
+msgid "New Window For"
+msgstr ""
 
 #: open_topData.cpp:39
 msgid "Channel/Nick:"
@@ -176,6 +203,10 @@ msgstr "Virkar tengingar"
 msgid "&Undock"
 msgstr "&Af spjaldi"
 
+#: ssfeprompt.cpp:25
+msgid "Prompt"
+msgstr ""
+
 #: toplevel.cpp:140
 msgid "Lag in seconds to the server"
 msgstr "Töf til þjóns í sek."
@@ -192,6 +223,10 @@ msgstr "&Klippa glugga..."
 msgid "&Users"
 msgstr "&Notendur"
 
+#: welcomeWin.cpp:30
+msgid "Welcome to kSirc"
+msgstr ""
+
 #: welcomeWinData.cpp:35
 msgid "Show Again"
 msgstr "Sýna aftur"
@@ -199,6 +234,10 @@ msgstr "Sýna aftur"
 #: welcomeWinData.cpp:44
 msgid "Dissmiss"
 msgstr "Loka"
+
+#: KSColourPicker/kscolourpicker.cpp:28
+msgid "kSirc Colour Picker"
+msgstr ""
 
 #: KSColourPicker/kscolourpickerData.cpp:30
 msgid "Pick"
@@ -208,9 +247,22 @@ msgstr "Velja"
 msgid "Sample Colour"
 msgstr "Litasýnishorn"
 
+#: KSCutDialog/KSCutDialog.cpp:27
+#, fuzzy
+msgid "Cut Window"
+msgstr "&Klippa glugga..."
+
 #: KSCutDialog/KSCutDialogData.cpp:39
 msgid "Cop&y"
 msgstr "Afr&ita"
+
+#: KSOpenkSirc/open_ksirc.cpp:38
+msgid "Connect to Server"
+msgstr ""
+
+#: KSOpenkSirc/open_ksirc.cpp:186
+msgid "Not Avalable"
+msgstr ""
 
 #: KSOpenkSirc/open_ksircData.cpp:37
 msgid "&Connect"

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE NETWORK/kppp\n"
-"POT-Creation-Date: 1999-01-23 02:09+0100\n"
+"POT-Creation-Date: 1999-01-29 02:02+0100\n"
 "PO-Revision-Date: 1999-01-26 17:00+CET-1\n"
 "Last-Translator: Erik Kjær Pedersen <erik@binghamton.edu>\n"
 "Language-Team: da <LL@li.org>\n"
@@ -322,31 +322,31 @@ msgstr "Løkker: "
 msgid "One Moment Please ..."
 msgstr "Et øjeblik ..."
 
-#: connect.cpp:915
+#: connect.cpp:916
 msgid "Script timed out!"
 msgstr "Tiden løb ud for skriptet!"
 
-#: connect.cpp:934
+#: connect.cpp:935
 msgid "Scanning: "
 msgstr "Undersøger "
 
-#: connect.cpp:944
+#: connect.cpp:945
 msgid "Expecting: "
 msgstr "Forventer: "
 
-#: connect.cpp:971
+#: connect.cpp:972
 msgid "Logging on to Network ..."
 msgstr "Logger på netværket ..."
 
-#: connect.cpp:997
+#: connect.cpp:998
 msgid "Running Startup Command ..."
 msgstr "Kører opstart kommando ..."
 
-#: connect.cpp:1002 connect.cpp:1009
+#: connect.cpp:1003 connect.cpp:1010
 msgid "Done"
 msgstr "Færdig"
 
-#: connect.cpp:1119
+#: connect.cpp:1120
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
@@ -1552,35 +1552,35 @@ msgstr ""
 "Kan ikke indlæse\n"
 "regningsregelsæt \""
 
-#: modem.cpp:114
+#: modem.cpp:113
 msgid "Sorry, can't open modem."
 msgstr "Kan ikke åbne modemet."
 
-#: modem.cpp:120
+#: modem.cpp:119
 msgid "Sorry, can't detect state of CD line."
 msgstr "Undskyld, kan ikke detektere liniens tilstand."
 
-#: modem.cpp:126
+#: modem.cpp:125
 msgid "Sorry, the modem is not ready."
 msgstr "Modemet er ikke klart."
 
-#: modem.cpp:137 modem.cpp:181
+#: modem.cpp:136 modem.cpp:180
 msgid "Sorry, the modem is busy."
 msgstr "Modemet er optaget."
 
-#: modem.cpp:187
+#: modem.cpp:186
 msgid "Modem Ready."
 msgstr "Modem klart."
 
-#: modem.cpp:198
+#: modem.cpp:197
 msgid "Can't restore tty settings: tcsetattr()\n"
 msgstr "Kan ikke genoprette tty indstillinger; tcsetattr()\n"
 
-#: modem.cpp:327
+#: modem.cpp:324
 msgid "Sorry, the modem doesn't respond."
 msgstr "Modemet svarer ikke."
 
-#: modem.cpp:428
+#: modem.cpp:425
 msgid "Unknown speed"
 msgstr "Ukendt hastighed"
 
@@ -2109,7 +2109,6 @@ msgstr ""
 "For at indstille dit modem skal du først vælge dets forhandler i listen til\n"
 "venstre og derefter modellen i listen til højre. Hvis du ikke ved hvilket \n"
 "modem du har, kan du prøve med et af de \"generiske\" modemer."
-
 
 #: modemdb.cpp:151 modemdb.cpp:153 modemdb.cpp:223 modemdb.cpp:238
 msgid "<Generic>"

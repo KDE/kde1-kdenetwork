@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE NETWORK/kmail\n"
-"POT-Creation-Date: 1999-01-24 02:15+0100\n"
+"POT-Creation-Date: 1999-01-30 02:00+0100\n"
 "PO-Revision-Date: 1999-01-26 17:00+CET-1\n"
 "Last-Translator: Erik Kjær Pedersen <erik@binghamton.edu>\n"
 "Language-Team: da <LL@li.org>\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO_8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: kmcomposewin.cpp:1514 kmmainwin.cpp:363 kpgp.cpp:546
+#: kmcomposewin.cpp:1516 kmmainwin.cpp:363 kpgp.cpp:546
 msgid ""
 "Sorry, but this feature\n"
 "is still missing"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "New Folder"
 msgstr "Ny folder"
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:385 kmmainwin.cpp:419 main.cpp:336
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:385 kmmainwin.cpp:419 main.cpp:339
 msgid "KMail error"
 msgstr "KMail fejl"
 
@@ -37,36 +37,15 @@ msgstr "Kigger allerede efter post!"
 msgid "No new mail available"
 msgstr "Der er ingen ny post"
 
-#: kmmainwin.cpp:458
-msgid ""
-"Cannot modify a\n"
-"system folder."
-msgstr ""
-"Kan ikke ændre en\n"
-"systemfolder."
-
-#: kmmainwin.cpp:463
+#: kmmainwin.cpp:457
 msgid "Modify Folder"
 msgstr "Ændr folder"
 
-#: kmmainwin.cpp:478
-#, c-format
-msgid ""
-"Are you sure you want to discard the\n"
-"contents of the folder \"%s\" ?"
-msgstr ""
-"Er du sikker på at du\n"
-"vil slette indholdet af folderen \"%s\" ?"
-
-#: kmmainwin.cpp:481 kmmainwin.cpp:520
-msgid "Confirmation"
-msgstr "Bekræftelse"
-
-#: kmmainwin.cpp:493
+#: kmmainwin.cpp:480
 msgid "Moved all messages into trash"
 msgstr "Flyttede alle breve til affald"
 
-#: kmmainwin.cpp:513
+#: kmmainwin.cpp:499
 msgid ""
 "Cannot remove a\n"
 "system folder."
@@ -74,7 +53,7 @@ msgstr ""
 "Kan ikke fjerne en\n"
 "system folder."
 
-#: kmmainwin.cpp:517
+#: kmmainwin.cpp:503
 #, c-format
 msgid ""
 "Are you sure you want to remove the folder\n"
@@ -83,312 +62,316 @@ msgstr ""
 "Er du sikker på at du vil fjerne folderen\n"
 "\"%s\" og slette dens indhold?"
 
-#: kmmainwin.cpp:580
+#: kmmainwin.cpp:506
+msgid "Confirmation"
+msgstr "Bekræftelse"
+
+#: kmmainwin.cpp:566
 msgid "KMail notification!"
 msgstr "KMail meddelelse!"
 
-#: kmmainwin.cpp:581
+#: kmmainwin.cpp:567
 msgid "Only messages in the outbox folder can be edited!"
 msgstr "Kun breve i outbox folderen kan redigeres!"
 
-#: kmmainwin.cpp:616
+#: kmmainwin.cpp:602
 msgid "Message as Plain Text"
 msgstr "Brev som almindelig tekst"
 
-#: kmmainwin.cpp:623 kmmainwin.cpp:643
+#: kmmainwin.cpp:609 kmmainwin.cpp:629
 msgid "Select Folder"
 msgstr "Vælg folder"
 
-#: kmmainwin.cpp:666
+#: kmmainwin.cpp:652
 msgid "Queued messages successfully sent."
 msgstr "Brevene i køen blev sendt."
 
-#: kmmainwin.cpp:668
+#: kmmainwin.cpp:654
 msgid "Failed to send (some) queued messages."
 msgstr "Det mislykkedes at sende (nogle) breve i køen."
 
-#: kmmainwin.cpp:795
+#: kmmainwin.cpp:781
 msgid "Opening URL..."
 msgstr "Åbner URL..."
 
-#: kmmainwin.cpp:850
+#: kmmainwin.cpp:836
 msgid "Address added to addressbook."
 msgstr "Addressen tilføjet til addressebogen."
 
-#: kmmainwin.cpp:862
+#: kmmainwin.cpp:848
 msgid "Address copied to clipboard."
 msgstr "Addressen kopieret til klippebordet."
 
-#: kmmainwin.cpp:867
+#: kmmainwin.cpp:853
 msgid "URL copied to clipboard."
 msgstr "URL kopieret til klippebordet."
 
-#: kmmainwin.cpp:894
+#: kmmainwin.cpp:880
 msgid "Send to..."
 msgstr "Send til..."
 
-#: kmmainwin.cpp:896
+#: kmmainwin.cpp:882
 msgid "Send reply to..."
 msgstr "Send svar til..."
 
-#: kmmainwin.cpp:898
+#: kmmainwin.cpp:884
 msgid "Forward to..."
 msgstr "Send videre til..."
 
-#: kmmainwin.cpp:901
+#: kmmainwin.cpp:887
 msgid "Add to addressbook"
 msgstr "Tilføj til addressebogen"
 
-#: kmmainwin.cpp:903 kmmainwin.cpp:912
+#: kmmainwin.cpp:889 kmmainwin.cpp:898
 msgid "Copy to clipboard"
 msgstr "Kopier til klippebordet"
 
-#: kmmainwin.cpp:910
+#: kmmainwin.cpp:896
 msgid "Open URL..."
 msgstr "Åbn URL..."
 
-#: kmmainwin.cpp:920 kmmainwin.cpp:1037
+#: kmmainwin.cpp:906 kmmainwin.cpp:1023
 msgid "&Reply..."
 msgstr "Sva&r"
 
-#: kmmainwin.cpp:922 kmmainwin.cpp:1039
+#: kmmainwin.cpp:908 kmmainwin.cpp:1025
 msgid "Reply &All..."
 msgstr "Svar &Alle..."
 
-#: kmmainwin.cpp:924 kmmainwin.cpp:1041
+#: kmmainwin.cpp:910 kmmainwin.cpp:1027
 msgid "&Forward..."
 msgstr "Send &Videre..."
 
-#: kmmainwin.cpp:927 kmmainwin.cpp:1051
+#: kmmainwin.cpp:913 kmmainwin.cpp:1037
 msgid "&Move..."
 msgstr "F&lyt..."
 
-#: kmmainwin.cpp:929 kmmainwin.cpp:1053
+#: kmmainwin.cpp:915 kmmainwin.cpp:1039
 msgid "&Copy..."
 msgstr "&Kopier..."
 
-#: kmmainwin.cpp:956
+#: kmmainwin.cpp:942
 msgid "New Composer"
 msgstr "Ny brevskriver"
 
-#: kmcomposewin.cpp:451 kmmainwin.cpp:958
+#: kmcomposewin.cpp:451 kmmainwin.cpp:944
 msgid "New Mailreader"
 msgstr "Ny brevlæser"
 
-#: kmmainwin.cpp:961
+#: kmmainwin.cpp:947
 msgid "Save As..."
 msgstr "Gem som..."
 
-#: kmmainwin.cpp:963
+#: kmmainwin.cpp:949
 msgid "Print..."
 msgstr "Udskriv..."
 
-#: kmmainwin.cpp:966
+#: kmmainwin.cpp:952
 msgid "Check Mail..."
 msgstr "Kig efter post..."
 
-#: kmmainwin.cpp:975
+#: kmmainwin.cpp:961
 msgid "Check Mail in..."
 msgstr "Kig efter post i..."
 
-#: kmmainwin.cpp:977
+#: kmmainwin.cpp:963
 msgid "Send Queued"
 msgstr "Send breve i køen"
 
-#: kmmainwin.cpp:980
+#: kmmainwin.cpp:966
 msgid "&Settings..."
 msgstr "&Indstillinger..."
 
-#: kmcomposewin.cpp:443 kmmainwin.cpp:982
+#: kmcomposewin.cpp:443 kmmainwin.cpp:968
 msgid "&Addressbook..."
 msgstr "&Addressebog..."
 
-#: kmmainwin.cpp:984
+#: kmmainwin.cpp:970
 msgid "&Filter..."
 msgstr "&Filter..."
 
-#: kmmainwin.cpp:998
+#: kmmainwin.cpp:984
 msgid "&Find..."
 msgstr "&Find..."
 
-#: kmmainwin.cpp:1003
+#: kmmainwin.cpp:989
 msgid "&Create..."
 msgstr "&Lav ny..."
 
-#: kmmainwin.cpp:1005
+#: kmmainwin.cpp:991
 msgid "&Modify..."
 msgstr "Æ&ndr..."
 
-#: kmmainwin.cpp:1007
+#: kmmainwin.cpp:993
 msgid "C&ompact"
 msgstr "K&ompakt"
 
-#: kmmainwin.cpp:1010
+#: kmmainwin.cpp:996
 msgid "&Empty"
 msgstr "&Tøm"
 
-#: kmfilterdlg.cpp:149 kmmainwin.cpp:1019
+#: kmfilterdlg.cpp:149 kmmainwin.cpp:1005
 msgid "New"
 msgstr "Ny"
 
-#: kmmainwin.cpp:1020
+#: kmmainwin.cpp:1006
 msgid "Unread"
 msgstr "Ulæst"
 
-#: kmmainwin.cpp:1021
+#: kmmainwin.cpp:1007
 msgid "Read"
 msgstr "Læs"
 
-#: kmmainwin.cpp:1022
+#: kmmainwin.cpp:1008
 msgid "Replied"
 msgstr "Svaret"
 
-#: kmmainwin.cpp:1023
+#: kmmainwin.cpp:1009
 msgid "Queued"
 msgstr "I kø"
 
-#: kmmainwin.cpp:1024
+#: kmmainwin.cpp:1010
 msgid "Sent"
 msgstr "Sendt"
 
-#: kmmainwin.cpp:1028
+#: kmmainwin.cpp:1014
 msgid "&Next"
 msgstr "&Næste"
 
-#: kmmainwin.cpp:1030
+#: kmmainwin.cpp:1016
 msgid "Next unread"
 msgstr "Næste ulæste"
 
-#: kmmainwin.cpp:1032
+#: kmmainwin.cpp:1018
 msgid "&Previous"
 msgstr "&Forrige"
 
-#: kmmainwin.cpp:1034
+#: kmmainwin.cpp:1020
 msgid "Previous unread"
 msgstr "Forrige ulæste"
 
-#: kmmainwin.cpp:1044
+#: kmmainwin.cpp:1030
 msgid "Edi&t..."
 msgstr "R&ediger..."
 
-#: kmmainwin.cpp:1047
+#: kmmainwin.cpp:1033
 msgid "&Set Status"
 msgstr "&Sæt status"
 
-#: kmmainwin.cpp:1049
+#: kmmainwin.cpp:1035
 msgid "Mar&k all"
 msgstr "Mar&ker alt"
 
-#: kmmainwin.cpp:1058
+#: kmmainwin.cpp:1044
 msgid "Send again..."
 msgstr "Send igen..."
 
-#: kmmainwin.cpp:1060
+#: kmmainwin.cpp:1046
 msgid "Apply filters"
 msgstr "Anvend filtre"
 
-#: kmmainwin.cpp:1063
+#: kmmainwin.cpp:1049
 msgid "View Source..."
 msgstr "Se kildeteksten..."
 
-#: kmmainwin.cpp:1070
+#: kmmainwin.cpp:1056
 msgid "&Brief Headers"
 msgstr "&Korte hoveder"
 
-#: kmmainwin.cpp:1072
+#: kmmainwin.cpp:1058
 msgid "&Fancy Headers"
 msgstr "&Flotte hoveder"
 
-#: kmmainwin.cpp:1074
+#: kmmainwin.cpp:1060
 msgid "&Standard Headers"
 msgstr "&Standard hoveder"
 
-#: kmmainwin.cpp:1076
+#: kmmainwin.cpp:1062
 msgid "&Long Headers"
 msgstr "&Lange hoveder"
 
-#: kmmainwin.cpp:1078
+#: kmmainwin.cpp:1064
 msgid "&All Headers"
 msgstr "&Alt i hovedet"
 
-#: kmmainwin.cpp:1081
+#: kmmainwin.cpp:1067
 msgid "Iconic Attachments"
 msgstr "Vedhæng som ikon"
 
-#: kmmainwin.cpp:1082
+#: kmmainwin.cpp:1068
 msgid "Smart Attachments"
 msgstr "Smarte vedhæng"
 
-#: kmmainwin.cpp:1083
+#: kmmainwin.cpp:1069
 msgid "Inlined Attachments"
 msgstr "Vedhæng på linie"
 
-#: kmmainwin.cpp:1094
+#: kmmainwin.cpp:1080
 msgid "F&older"
 msgstr "F&older"
 
-#: kmmainwin.cpp:1095
+#: kmmainwin.cpp:1081
 msgid "&Message"
 msgstr "&Brev"
 
-#: kmcomposewin.cpp:573 kmmainwin.cpp:1114
+#: kmcomposewin.cpp:573 kmmainwin.cpp:1100
 msgid "Compose new message"
 msgstr "Skriv nyt brev"
 
-#: kmcomposewin.cpp:578 kmmainwin.cpp:1119
+#: kmcomposewin.cpp:579 kmmainwin.cpp:1105
 msgid "Save message to file"
 msgstr "Gem brev til fil"
 
-#: kmcomposewin.cpp:583 kmmainwin.cpp:1124
+#: kmcomposewin.cpp:585 kmmainwin.cpp:1110
 msgid "Print message"
 msgstr "Udskriv brev"
 
-#: kmmainwin.cpp:1131
+#: kmmainwin.cpp:1117
 msgid "Get new mail"
 msgstr "Hent ny post"
 
-#: kmmainwin.cpp:1137
+#: kmmainwin.cpp:1123
 msgid "Reply to author"
 msgstr "Svar til forfatteren"
 
-#: kmmainwin.cpp:1142
+#: kmmainwin.cpp:1128
 msgid "Reply to all recipients"
 msgstr "Svar til alle modtagere"
 
-#: kmmainwin.cpp:1147
+#: kmmainwin.cpp:1133
 msgid "Forward message"
 msgstr "Videresend brev"
 
-#: kmmainwin.cpp:1152
+#: kmmainwin.cpp:1138
 msgid "Delete message"
 msgstr "Slet brev"
 
-#: kmcomposewin.cpp:607 kmmainwin.cpp:1158
+#: kmcomposewin.cpp:609 kmmainwin.cpp:1144
 msgid "Open addressbook..."
 msgstr "Åbn addressebog..."
 
-#: kmmainwin.cpp:1170
+#: kmmainwin.cpp:1156
 msgid "Initializing..."
 msgstr "Initialiserer..."
 
-#: kmfolderdia.cpp:38 kmmsgpartdlg.cpp:62 kmsettings.cpp:175
-#: kmsettings.cpp:884
+#: kmfolderdia.cpp:39 kmmsgpartdlg.cpp:62 kmsettings.cpp:175
+#: kmsettings.cpp:883
 msgid "Name:"
 msgstr "Navn:"
 
-#: kmcomposewin.cpp:1522 kmfolderdia.cpp:44 kmfolderdia.cpp:120
+#: kmcomposewin.cpp:1524 kmfolderdia.cpp:45 kmfolderdia.cpp:128
 msgid "unnamed"
 msgstr "unavngiven"
 
-#: kmfolderdia.cpp:47
+#: kmfolderdia.cpp:52
 msgid "Associated with"
 msgstr "Associeret med"
 
-#: kmfolderdia.cpp:57
+#: kmfolderdia.cpp:62
 msgid "Unassociated Accounts"
 msgstr "Uassocierede konti"
 
-#: kmfoldertree.cpp:47 kmsettings.cpp:539
+#: kmfoldertree.cpp:47 kmsettings.cpp:538
 msgid "Folders"
 msgstr "Foldere"
 
@@ -424,7 +407,7 @@ msgstr "Sender post"
 msgid "Sendmail"
 msgstr "Sendmail "
 
-#: kmsettings.cpp:223 kmsettings.cpp:891
+#: kmsettings.cpp:223 kmsettings.cpp:890
 msgid "Location:"
 msgstr "Sted:"
 
@@ -436,7 +419,7 @@ msgstr "SMTP"
 msgid "Server:"
 msgstr "Server:"
 
-#: kmsettings.cpp:235 kmsettings.cpp:912
+#: kmsettings.cpp:235 kmsettings.cpp:911
 msgid "Port:"
 msgstr "Port:"
 
@@ -472,23 +455,23 @@ msgstr "Ændr..."
 msgid "Network"
 msgstr "Netværk"
 
-#: kmsettings.cpp:325
+#: kmsettings.cpp:324
 msgid "Message Body Font:"
 msgstr "Skrift i kroppen af brevet:"
 
-#: kmsettings.cpp:330
+#: kmsettings.cpp:329
 msgid "Message List Font:"
 msgstr "Skrift i brevlisten"
 
-#: kmsettings.cpp:358
+#: kmsettings.cpp:357
 msgid "Long folder list"
 msgstr "Lang folderliste"
 
-#: kmsettings.cpp:387
+#: kmsettings.cpp:386
 msgid "Phrases"
 msgstr "Udtryk"
 
-#: kmsettings.cpp:392
+#: kmsettings.cpp:391
 msgid ""
 "The following placeholders are supported in the reply phrases:\n"
 "%D=date, %S=subject, %F=sender, %%=percent sign"
@@ -496,167 +479,167 @@ msgstr ""
 "De følgende stedholdere er understøttet i svarudtrykkene:\n"
 "%D=dato, %S=emne, %F=afsender, %%=procent tegn"
 
-#: kmsettings.cpp:400
+#: kmsettings.cpp:399
 msgid "Reply to sender:"
 msgstr "Svar til sendere:"
 
-#: kmsettings.cpp:403
+#: kmsettings.cpp:402
 msgid "Reply to all:"
 msgstr "Svar til alle:"
 
-#: kmsettings.cpp:406
+#: kmsettings.cpp:405
 msgid "Forward:"
 msgstr "Videresend:"
 
-#: kmsettings.cpp:409
+#: kmsettings.cpp:408
 msgid "Indentation:"
 msgstr "Indrykning:"
 
-#: kmmessage.cpp:1352 kmsettings.cpp:421
+#: kmmessage.cpp:1380 kmsettings.cpp:420
 msgid "On %D, you wrote:"
 msgstr "Den %D skrev du:"
 
-#: kmmessage.cpp:1353 kmsettings.cpp:425
+#: kmmessage.cpp:1381 kmsettings.cpp:424
 msgid "On %D, %F wrote:"
 msgstr "Den %D skrev %F:"
 
-#: kmmessage.cpp:1354 kmsettings.cpp:429
+#: kmmessage.cpp:1382 kmsettings.cpp:428
 msgid "Forwarded Message"
 msgstr "Videresendt brev"
 
-#: kmsettings.cpp:440
+#: kmsettings.cpp:439
 msgid "Automatically append signature"
 msgstr "Vedhæng underskriftsfil automatisk"
 
-#: kmsettings.cpp:446
+#: kmsettings.cpp:445
 msgid "Automatically sign messages using PGP"
 msgstr "Underskriv breve automatisk ved PGP"
 
-#: kmsettings.cpp:451
+#: kmsettings.cpp:450
 msgid "Word wrap at column:"
 msgstr "Skift linie ved søjle:"
 
-#: kmsettings.cpp:461
+#: kmsettings.cpp:460
 msgid "Use monospaced font"
 msgstr "Brug fastbredde skrifter"
 
-#: kmsettings.cpp:473
+#: kmsettings.cpp:472
 msgid "When sending mail"
 msgstr "Når du sender post"
 
-#: kmsettings.cpp:476
+#: kmsettings.cpp:475
 msgid "Default sending:"
 msgstr "Standard sendemåde:"
 
-#: kmsettings.cpp:479
+#: kmsettings.cpp:478
 msgid "send now"
 msgstr "send nu"
 
-#: kmsettings.cpp:483
+#: kmsettings.cpp:482
 msgid "send later"
 msgstr "send senere"
 
-#: kmsettings.cpp:488
+#: kmsettings.cpp:487
 msgid "Send messages:"
 msgstr "Send breve:"
 
-#: kmsettings.cpp:491
+#: kmsettings.cpp:490
 msgid "Allow 8-bit"
 msgstr "Tillad 8-bit"
 
-#: kmsettings.cpp:496
+#: kmsettings.cpp:495
 msgid "MIME Compilant (Quoted Printable)"
 msgstr "MIME kompilant (Quoted Printable  "
 
-#: kmsettings.cpp:522
+#: kmsettings.cpp:521
 msgid "Composer"
 msgstr "Brevskriver"
 
-#: kmsettings.cpp:543
+#: kmsettings.cpp:542
 msgid "empty trash on exit"
 msgstr "tøm affald når du afslutter"
 
-#: kmsettings.cpp:547
+#: kmsettings.cpp:546
 msgid "Send Mail in outbox Folder on Check"
 msgstr "Send post i outbox folderen når du kigger efter post"
 
-#: kmsettings.cpp:562
+#: kmsettings.cpp:561
 msgid "Misc"
 msgstr "Forskelligt"
 
-#: kmsettings.cpp:569
+#: kmsettings.cpp:568
 msgid "PGP"
 msgstr "PGP"
 
-#: kmsettings.cpp:592
+#: kmsettings.cpp:591
 msgid "Message Body Font"
 msgstr "Skrift i kroppen af brevet"
 
-#: kmsettings.cpp:606
+#: kmsettings.cpp:605
 msgid "Message List Font"
 msgstr "Skrift i brevlisten"
 
-#: kmsettings.cpp:658
+#: kmsettings.cpp:657
 msgid "Select Account"
 msgstr "Vælg konto"
 
-#: kmaccount.cpp:76 kmfilterdlg.cpp:472 kmsettings.cpp:677
+#: kmaccount.cpp:76 kmfilterdlg.cpp:472 kmsettings.cpp:676
 msgid "Unnamed"
 msgstr "Unavngiven"
 
-#: kmsettings.cpp:696
+#: kmsettings.cpp:695
 msgid "Choose Sendmail Location"
 msgstr "Vælg Sendmail-lokalisering"
 
-#: kmcomposewin.cpp:1621 kmsettings.cpp:705
+#: kmcomposewin.cpp:1623 kmsettings.cpp:704
 msgid "Choose Signature File"
 msgstr "Vælg underskriftsfil"
 
-#: kmsettings.cpp:876
+#: kmsettings.cpp:875
 msgid "Type:"
 msgstr "Type:"
 
-#: kmsettings.cpp:889
+#: kmsettings.cpp:888
 msgid "Local Account"
 msgstr "Lokal konto"
 
-#: kmsettings.cpp:898
+#: kmsettings.cpp:897
 msgid "Pop Account"
 msgstr "Pop Konto"
 
-#: kmsettings.cpp:900
+#: kmsettings.cpp:899
 msgid "Login:"
 msgstr "Login:"
 
-#: kmacctpop.cpp:468 kmsettings.cpp:903
+#: kmacctpop.cpp:468 kmsettings.cpp:902
 msgid "Password:"
 msgstr "Kodeord:"
 
-#: kmsettings.cpp:907
+#: kmsettings.cpp:906
 msgid "Host:"
 msgstr "Vært:"
 
-#: kmsettings.cpp:915
+#: kmsettings.cpp:914
 msgid "Delete mail from server"
 msgstr "Slet post på serveren"
 
-#: kmsettings.cpp:920
+#: kmsettings.cpp:919
 msgid "Retrieve all mail from server"
 msgstr "Hent al post på serveren hjem"
 
-#: kmsettings.cpp:932
+#: kmsettings.cpp:931
 msgid "Enable interval Mail checking"
 msgstr "Kig efter post med visse intervaller"
 
-#: kmsettings.cpp:942
+#: kmsettings.cpp:941
 msgid "Store new mail in account:"
 msgstr "Gem ny post i konto:"
 
-#: kmsettings.cpp:950
+#: kmsettings.cpp:949
 msgid "<none>"
 msgstr "<ingen>"
 
-#: kmsettings.cpp:997
+#: kmsettings.cpp:996
 msgid "Choose Location"
 msgstr "Vælg sted"
 
@@ -668,78 +651,78 @@ msgstr "Kvittering:"
 msgid "Failed to add message:"
 msgstr "Det mislykkedes at tilføje brev:"
 
-#: kmcomposewin.cpp:139 kmheaders.cpp:40
+#: kmcomposewin.cpp:139 kmheaders.cpp:42
 msgid "F"
 msgstr "F"
 
-#: kmheaders.cpp:41 kmheaders.cpp:217
+#: kmheaders.cpp:43 kmheaders.cpp:216
 msgid "Sender"
 msgstr "Afsender"
 
-#: kmheaders.cpp:42
+#: kmheaders.cpp:44
 msgid "Subject"
 msgstr "Emne"
 
-#: kmheaders.cpp:43
+#: kmheaders.cpp:45
 msgid "Date"
 msgstr "Dato"
 
-#: kmheaders.cpp:216
+#: kmheaders.cpp:215
 msgid "Receiver"
 msgstr "Modtager"
 
-#: kmheaders.cpp:219
+#: kmheaders.cpp:218
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d breve, %d ulæste."
 
-#: kmheaders.cpp:221
+#: kmheaders.cpp:220
 msgid "Folder is read-only."
 msgstr "Folderen er kun læsbar"
 
-#: kmheaders.cpp:268
+#: kmheaders.cpp:270
 msgid "Unknown"
 msgstr "Ukendt"
 
-#: kmheaders.cpp:271
+#: kmheaders.cpp:273
 msgid "No Subject"
 msgstr "Intet emne"
 
-#: kmheaders.cpp:332
+#: kmheaders.cpp:334
 msgid "order of arrival"
 msgstr "i ankomstrækkefølge"
 
-#: kmheaders.cpp:341
+#: kmheaders.cpp:343
 msgid "subject"
 msgstr "emne"
 
-#: kmheaders.cpp:342
+#: kmheaders.cpp:344
 msgid "date"
 msgstr "dato"
 
-#: kmheaders.cpp:343
+#: kmheaders.cpp:345
 msgid "sender"
 msgstr "afsender"
 
-#: kmheaders.cpp:344
+#: kmheaders.cpp:346
 msgid "status"
 msgstr "status"
 
-#: kmheaders.cpp:346
+#: kmheaders.cpp:348
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr "Sorterer breve nedad efter %s"
 
-#: kmheaders.cpp:348
+#: kmheaders.cpp:350
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr "Sorterer breve opad efter %s"
 
-#: kmheaders.cpp:444
+#: kmheaders.cpp:446
 msgid "Message(s) saved."
 msgstr "Brev(e) gemt"
 
-#: kmheaders.cpp:446
+#: kmheaders.cpp:448
 msgid "Failed to save message(s)."
 msgstr "Det mislykkedes at gemme brev(e)."
 
@@ -807,15 +790,15 @@ msgstr "&Indsæt fil..."
 msgid "&New Composer..."
 msgstr "&Ny brevskriver..."
 
-#: kmcomposewin.cpp:471 kmcomposewin.cpp:703 kmcomposewin.cpp:1892
+#: kmcomposewin.cpp:471 kmcomposewin.cpp:705 kmcomposewin.cpp:1894
 msgid "Mark all"
 msgstr "Marker alt"
 
-#: kmcomposewin.cpp:474 kmcomposewin.cpp:705
+#: kmcomposewin.cpp:474 kmcomposewin.cpp:707
 msgid "Find..."
 msgstr "Find..."
 
-#: kmcomposewin.cpp:476 kmcomposewin.cpp:706
+#: kmcomposewin.cpp:476 kmcomposewin.cpp:708
 msgid "Replace..."
 msgstr "Erstat..."
 
@@ -915,43 +898,43 @@ msgstr "&Vedhæng"
 msgid "Send message"
 msgstr "Send brev"
 
-#: kmcomposewin.cpp:592
+#: kmcomposewin.cpp:594
 msgid "Cut selection"
 msgstr "Klip det udvalgte"
 
-#: kmcomposewin.cpp:595
+#: kmcomposewin.cpp:597
 msgid "Copy selection"
 msgstr "Kopier det udvalgte"
 
-#: kmcomposewin.cpp:598
+#: kmcomposewin.cpp:600
 msgid "Paste clipboard contents"
 msgstr "Indsæt klippebordsindhold"
 
-#: kmcomposewin.cpp:603
+#: kmcomposewin.cpp:605
 msgid "Attach file"
 msgstr "Vedhæng fil"
 
-#: kmcomposewin.cpp:614
+#: kmcomposewin.cpp:616
 msgid "sign message"
 msgstr "underskriv brev"
 
-#: kmcomposewin.cpp:619
+#: kmcomposewin.cpp:621
 msgid "encrypt message"
 msgstr "indkod brev"
 
-#: kmcomposewin.cpp:636 kmcomposewin.cpp:652
+#: kmcomposewin.cpp:638 kmcomposewin.cpp:654
 msgid "Column"
 msgstr "Søjle"
 
-#: kmcomposewin.cpp:637 kmcomposewin.cpp:650
+#: kmcomposewin.cpp:639 kmcomposewin.cpp:652
 msgid "Line"
 msgstr "Linie"
 
-#: kmcomposewin.cpp:918
+#: kmcomposewin.cpp:920
 msgid "KMail Confirm"
 msgstr "KMail bekræft"
 
-#: kmcomposewin.cpp:919
+#: kmcomposewin.cpp:921
 msgid ""
 "Close and discard\n"
 "edited message?"
@@ -959,63 +942,67 @@ msgstr ""
 "Luk og slet\n"
 "det skrevne brev?"
 
-#: kmcomposewin.cpp:1192
+#: kmcomposewin.cpp:1194
 msgid "Attach File"
 msgstr "Vedhæng fil"
 
-#: kmcomposewin.cpp:1214
+#: kmcomposewin.cpp:1216
 msgid "Include File"
 msgstr "Inkluder fil"
 
-#: kmcomposewin.cpp:1246
+#: kmcomposewin.cpp:1248
 msgid "my pgp key"
 msgstr "min pgp nøgle"
 
-#: kmcomposewin.cpp:1274
+#: kmcomposewin.cpp:1276
 msgid "pgp key"
 msgstr "pgp nøgle"
 
-#: kmcomposewin.cpp:1295 kmreaderwin.cpp:784
+#: kmcomposewin.cpp:1297 kmreaderwin.cpp:811
 msgid "View..."
 msgstr "Se..."
 
-#: kmcomposewin.cpp:1296
+#: kmcomposewin.cpp:1298
 msgid "Save..."
 msgstr "Gem..."
 
-#: kmcomposewin.cpp:1297 kmreaderwin.cpp:787
+#: kmcomposewin.cpp:1299 kmreaderwin.cpp:814
 msgid "Properties..."
 msgstr "Egenskaber..."
 
-#: kmcomposewin.cpp:1301
+#: kmcomposewin.cpp:1303
 msgid "Attach..."
 msgstr "Vedhæng..."
 
-#: kmcomposewin.cpp:1343 kmreaderwin.cpp:829
+#: kmcomposewin.cpp:1345 kmreaderwin.cpp:857
 msgid "View Attachment: "
 msgstr "Se vedhæng: "
 
-#: kmcomposewin.cpp:1537
+#: kmcomposewin.cpp:1539
 msgid "To:"
 msgstr "Til:"
 
-#: kmcomposewin.cpp:1541
+#: kmcomposewin.cpp:1543
 msgid "Subject:"
 msgstr "Emne:"
 
-#: kmcomposewin.cpp:1544
+#: kmcomposewin.cpp:1546
 msgid "Date:"
 msgstr "Dato:"
 
-#: kmcomposewin.cpp:2074
+#: kmcomposewin.cpp:1670
+#, fuzzy
+msgid "Spellcheck complete."
+msgstr "&Stavekontrollør..."
+
+#: kmcomposewin.cpp:2076
 msgid "Spellcheck - KMail"
 msgstr "Stavekontrol - KMail"
 
-#: kmcomposewin.cpp:2100
+#: kmcomposewin.cpp:2102
 msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
-msgstr ""
-"Fejl ved start af KSpell. Se efter at ISpell er rigtigt indstillet."
+msgstr "Fejl ved start af KSpell. Se efter at ISpell er rigtigt indstillet."
 
 #: kmfolder.cpp:146
 #, c-format
@@ -1060,64 +1047,64 @@ msgstr "basis 64"
 msgid "quoted printable"
 msgstr "quoted printable"
 
-#: kmreaderwin.cpp:308 kmreaderwin.cpp:321 kmreaderwin.cpp:340
-#: kmreaderwin.cpp:361
+#: kmreaderwin.cpp:310 kmreaderwin.cpp:323 kmreaderwin.cpp:342
+#: kmreaderwin.cpp:363
 msgid "Cc: "
 msgstr "Cc: "
 
-#: kmreaderwin.cpp:316 kmreaderwin.cpp:335 kmreaderwin.cpp:356
+#: kmreaderwin.cpp:318 kmreaderwin.cpp:337 kmreaderwin.cpp:358
 msgid "From: "
 msgstr "Fra: "
 
-#: kmreaderwin.cpp:318 kmreaderwin.cpp:337 kmreaderwin.cpp:358
+#: kmreaderwin.cpp:320 kmreaderwin.cpp:339 kmreaderwin.cpp:360
 msgid "To: "
 msgstr "Til: "
 
-#: kmreaderwin.cpp:325 kmreaderwin.cpp:346 kmreaderwin.cpp:371
+#: kmreaderwin.cpp:327 kmreaderwin.cpp:348 kmreaderwin.cpp:373
 msgid "References: "
 msgstr "Referencer: "
 
-#: kmreaderwin.cpp:342 kmreaderwin.cpp:355
+#: kmreaderwin.cpp:344 kmreaderwin.cpp:357
 msgid "Date: "
 msgstr "Dato: "
 
-#: kmreaderwin.cpp:364
+#: kmreaderwin.cpp:366
 msgid "Bcc: "
 msgstr "Bcc: "
 
-#: kmreaderwin.cpp:367
+#: kmreaderwin.cpp:369
 msgid "Reply to: "
 msgstr "Svar til: "
 
-#: kmreaderwin.cpp:374
+#: kmreaderwin.cpp:376
 msgid "Groups: "
 msgstr "Grupper: "
 
-#: kmreaderwin.cpp:412
+#: kmreaderwin.cpp:414
 msgid "Encrypted message"
 msgstr "Indkodet brev"
 
-#: kmreaderwin.cpp:418
+#: kmreaderwin.cpp:420
 msgid "Cannot decrypt message:"
 msgstr "Kan ikke afkode brev:"
 
-#: kmreaderwin.cpp:427
+#: kmreaderwin.cpp:429
 msgid "Message was signed by"
 msgstr "Brevet var underskrevet af"
 
-#: kmreaderwin.cpp:428
+#: kmreaderwin.cpp:430
 msgid "Warning: Bad signature from"
 msgstr "Advarsel: Dårlig underskrift fra"
 
-#: kmreaderwin.cpp:438
+#: kmreaderwin.cpp:440
 msgid "unknown key ID"
 msgstr "ukendt nøgle ID"
 
-#: kmreaderwin.cpp:748
+#: kmreaderwin.cpp:775
 msgid "Attachment: "
 msgstr "Vedhæng: "
 
-#: kmreaderwin.cpp:916
+#: kmreaderwin.cpp:945
 msgid "Could not save file"
 msgstr "Kunne ikke gemme fil"
 
@@ -1169,11 +1156,11 @@ msgstr ""
 "\n"
 "Skal KMail flytte brevfolderne nu ?"
 
-#: main.cpp:337
+#: main.cpp:340
 msgid "Loading addressbook failed"
 msgstr "Indlæsning af addressebogen mislykkedes"
 
-#: main.cpp:413
+#: main.cpp:416
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr "Ukendt kommandolinie indgang: %s"
@@ -1315,7 +1302,7 @@ msgstr "Færdig med at sende brevene."
 msgid "Sending failed:"
 msgstr "Det mislykkedes at sende:"
 
-#: kmsender.cpp:461
+#: kmsender.cpp:491
 msgid ""
 "Please specify a mailer program\n"
 "in the settings."
@@ -1323,16 +1310,16 @@ msgstr ""
 "Angiv et mailer program i \n"
 "indstillingerne."
 
-#: kmsender.cpp:501
+#: kmsender.cpp:531
 #, c-format
 msgid "Failed to execute mailer program %s"
 msgstr "Det lykkedes ikke at udføre postprogram %s"
 
-#: kmsender.cpp:589
+#: kmsender.cpp:619
 msgid "connecting to server"
 msgstr "forbinder til serveren"
 
-#: kmsender.cpp:594
+#: kmsender.cpp:624
 #, c-format
 msgid ""
 "Cannot open SMTP connection to\n"
@@ -1343,19 +1330,19 @@ msgstr ""
 "vært %s for at sende:\n"
 "%s"
 
-#: kmsender.cpp:623
+#: kmsender.cpp:653
 msgid "Cannot close SMTP connection."
 msgstr "Kan ikke lukke SMTP forbindelsen."
 
-#: kmsender.cpp:673
+#: kmsender.cpp:703
 msgid "transmitting message"
 msgstr "Ved at sende brev"
 
-#: kmsender.cpp:707
+#: kmsender.cpp:737
 msgid "network error"
 msgstr "netværksfejl"
 
-#: kmsender.cpp:709
+#: kmsender.cpp:739
 #, c-format
 msgid ""
 "a SMTP error occured.\n"
@@ -1368,7 +1355,7 @@ msgstr ""
 "Respons: %s\n"
 "Retur kode: %d"
 
-#: kmsender.cpp:724
+#: kmsender.cpp:754
 #, c-format
 msgid "Sending SMTP command: %s"
 msgstr "Sender SMTP kommando: %s"
@@ -1838,3 +1825,16 @@ msgstr "&7 bit er ASCII"
 msgid "&Qute unknonw characters"
 msgstr "U&kendte tegn i anførselstegn"
 
+#~ msgid ""
+#~ "Cannot modify a\n"
+#~ "system folder."
+#~ msgstr ""
+#~ "Kan ikke ændre en\n"
+#~ "systemfolder."
+
+#~ msgid ""
+#~ "Are you sure you want to discard the\n"
+#~ "contents of the folder \"%s\" ?"
+#~ msgstr ""
+#~ "Er du sikker på at du\n"
+#~ "vil slette indholdet af folderen \"%s\" ?"
