@@ -43,7 +43,7 @@
 #endif
 
 #include <kmsgbox.h>
-
+#include <kquickhelp.h>
 
 #include "acctselect.h"
 #include "main.h"
@@ -350,7 +350,7 @@ KPPPWidget::KPPPWidget( QWidget *parent, const char *name )
 
   QVBoxLayout *tl = new QVBoxLayout(this, 10, 10);
 
-  fline1 = new QFrame(this,"line");
+  fline1 = new QFrame(this);
   fline1->setFrameStyle(QFrame::HLine |QFrame::Sunken);
   fline1->setFixedHeight(3);
   tl->addWidget(fline1);
@@ -362,55 +362,83 @@ KPPPWidget::KPPPWidget( QWidget *parent, const char *name )
   l1->setColStretch(1, 3);
   l1->setColStretch(2, 4);
 
-  label1 = new QLabel(this,"lable1");
+  label1 = new QLabel(this);
   label1->setText(i18n("Connect to: "));
   MIN_SIZE(label1);
   l1->addWidget(label1, 0, 1);
 
-  connectto_c = new QComboBox(true,this, "connectto_c");
+  connectto_c = new QComboBox(true,this);
   connect(connectto_c, SIGNAL(activated(int)), 
 	  SLOT(newdefaultaccount(int)));
   MIN_SIZE(connectto_c);
-  l1->addWidget(connectto_c, 0, 2);
+  l1->addWidget(connectto_c, 0, 2);  
 
-  ID_Label = new QLabel(this,"lableid");
+  ID_Label = new QLabel(this);
   ID_Label->setText(i18n("Login ID:"));
   MIN_SIZE(ID_Label);
   l1->addWidget(ID_Label, 1, 1);
 
-  ID_Edit = new QLineEdit(this,"idedit");
+  // the entry line for usernames
+  ID_Edit = new QLineEdit(this);
   MIN_WIDTH(ID_Edit);
   FIXED_HEIGHT(ID_Edit);
   l1->addWidget(ID_Edit, 1, 2);
   connect(ID_Edit, SIGNAL(returnPressed()),
 	  this, SLOT(enterPressedInID()));
+  KQuickHelp::add(ID_Label, 
+  KQuickHelp::add(ID_Edit,
+		  "Type in the username that you got from your
+ISP. This is especially important for PAP
+and CHAP. You may ommit this when you use
+Terminal based or Script based authentication.
 
-  PW_Label = new QLabel(this,"lablepw");
+<b>Important</b>: case is important here:
+<i>myusername</i> is not the same as <i>MyUserName</i>!"));
+
+  PW_Label = new QLabel(this);
   PW_Label->setText(i18n("Password:"));
   MIN_SIZE(PW_Label);
   l1->addWidget(PW_Label, 2, 1);
 
-  PW_Edit= new QLineEdit(this,"pwedit");
+  PW_Edit= new QLineEdit(this);
   PW_Edit->setEchoMode(QLineEdit::Password);
   MIN_WIDTH(PW_Edit);
   FIXED_HEIGHT(PW_Edit);
   l1->addWidget(PW_Edit, 2, 2);
   connect(PW_Edit, SIGNAL(returnPressed()),
 	  this, SLOT(enterPressedInPW()));
+ 
+  KQuickHelp::add(PW_Label, 
+  KQuickHelp::add(PW_Edit,
+		  "Type in the password that you got from your
+ISP. This is especially important for PAP
+and CHAP. You may ommit this when you use
+Terminal based or Script based authentication.
+
+<b>Important</b>: case is important here:
+<i>mypassword</i> is not the same as <i>MyPassword</i>!"));
+
 
   QHBoxLayout *l3 = new QHBoxLayout;
   tl->addSpacing(5);
   tl->addLayout(l3);
   tl->addSpacing(5);
   l3->addSpacing(10);
-  log = new QCheckBox(i18n("Show Log Window"), this,"log");
+  log = new QCheckBox(i18n("Show Log Window"), this);
   connect(log, SIGNAL(toggled(bool)), 
 	  this, SLOT(log_window_toggled(bool)));
   log->setChecked(gpppdata.get_show_log_window());
   MIN_SIZE(log);
   l3->addWidget(log);
+  KQuickHelp::add(log, "\
+This controls whether a log window is shown.
+A log window shows the communication between
+<i>kppp</i> and your modem. This will help you
+to track down problems.
 
-  fline = new QFrame(this,"line");
+Turn it off when <i>kppp</i> connects without problems");
+
+  fline = new QFrame(this);
   fline->setFrameStyle(QFrame::HLine |QFrame::Sunken);
   fline->setFixedHeight(3);
   tl->addWidget(fline);
@@ -419,13 +447,13 @@ KPPPWidget::KPPPWidget( QWidget *parent, const char *name )
   tl->addLayout(l2);
 
   int minw = 0;
-  quit_b = new QPushButton(i18n("Quit"), this, "quit");
+  quit_b = new QPushButton(i18n("Quit"), this);
   connect( quit_b, SIGNAL(clicked()), SLOT(quitbutton()));
   MIN_HEIGHT(quit_b);
   if(quit_b->sizeHint().width() > minw)
     minw = quit_b->sizeHint().width();
 
-  setup_b = new QPushButton(i18n("Setup"), this, "setup");
+  setup_b = new QPushButton(i18n("Setup"), this);
   connect( setup_b, SIGNAL(clicked()), SLOT(expandbutton()));
   MIN_HEIGHT(setup_b);
   if(setup_b->sizeHint().width() > minw)
@@ -434,7 +462,7 @@ KPPPWidget::KPPPWidget( QWidget *parent, const char *name )
   if (!config) 
     setup_b->setEnabled(false);
 
-  help_b = new QPushButton(i18n("Help"), this, "help");
+  help_b = new QPushButton(i18n("Help"), this);
   connect( help_b, SIGNAL(clicked()), SLOT(helpbutton()));
   MIN_HEIGHT(help_b);
   if(help_b->sizeHint().width() > minw)
@@ -724,11 +752,11 @@ void dieppp(int sig) {
 	  }
 	
 	KMsgBox msgb(0, 
-		    i18n("Error"), 
-		    i18n(msg),
-		    KMsgBox::STOP | KMsgBox::DB_FIRST,
-		    i18n("Ok"),
-		    i18n("Details..."));
+		     i18n("Error"), 
+		     i18n(msg),
+		     KMsgBox::STOP | KMsgBox::DB_FIRST,
+		     i18n("OK"),
+		     i18n("Details..."));
 	if(msgb.exec() == 2)
 	  PPPL_ShowLog();
       } else { /* reconnect on disconnect */
@@ -865,7 +893,7 @@ void KPPPWidget::connectbutton() {
   if (strlen(gpppdata.phonenumber()) == 0) {
     QString s;
     s.sprintf(i18n("You have to specify a telephone "
-                                 "number !\n"));
+		   "number !\n"));
     QMessageBox::warning(this, i18n("Error"), s.data());
     return;
   }

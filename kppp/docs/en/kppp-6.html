@@ -1,6 +1,6 @@
 <HTML>
 <HEAD>
-<TITLE>The Kppp Handbook: Modem Tricks & Hints</TITLE>
+<TITLE>The kppp Handbook: Modem Tricks & Hints</TITLE>
 </HEAD>
 <BODY>
 <A HREF="kppp-5.html">Previous</A>
@@ -20,7 +20,7 @@ all modems are not equal, so your mileage may vary.</P>
 You type commands, and it will respond.  To obtain a modem session, when no 
 connection is active, go into Setup/Modem/Terminal dialog.  This will open 
 a window for interactive configuration of the modem.  Try typing <B>ATZ</B> (which 
-resets your modem)  Your should get an <B>OK</B> response.  use File/Quit to 
+resets your modem)  Your should get an <B>OK</B> response.  use File/Close to 
 end the session.</P>
 
 
@@ -37,10 +37,10 @@ profile.</P>
 will have the modem load the default profile, erasing any changes you 
 have made.  To save changes,  Load the profile you
 want to change via <B>ATZ</B><EM>n</EM> (where <EM>n</EM> is the profile number).  Make the
-changes you want, then save it with <B>AT&amp;W<EM>n</EM></B>.  To have kppp use the profile
+changes you want, then save it with <B>AT&amp;W<EM>n</EM></B>.  To have <EM>kppp</EM> use the profile
 you want, change the modem initialization string
 (Setup/Modem/Modem Commands/Initialization String.)  For example
-<B>ATZ1</B> will have the kppp reset the modem and use stored profile #1.</P>
+<B>ATZ1</B> will have the <EM>kppp</EM> reset the modem and use stored profile #1.</P>
 <P>If you want reset you modem to get back to some known starting point, use
 <B>AT&amp;F&amp;W</B> to set the active profile to the factory defaults, and store those
 settings as the default profile.  </P>
@@ -49,19 +49,19 @@ settings as the default profile.  </P>
 
 <H2><A NAME="ss6.3">6.3 Getting the modem to hang up</A></H2>
 
-<P>Sometimes, you may find kppp has difficulties hanging up the modem.  This
-is likely the result of a mismatch between kppp settings and those of the modem.
+<P>Sometimes, you may find <EM>kppp</EM> has difficulties hanging up the modem.  This
+is likely the result of a mismatch between <EM>kppp</EM> settings and those of the modem.
 A standard modem uses two methods to decide to hangup:  Command, and DTR.
 The Command method involves sending an escape sequence to the modem, which puts 
 it in command mode, then issuing the hangup command (ATH).   </P>
-<P>Outside of kppp, when configuring the pppd package manually, it's often helpful
+<P>Outside of <EM>kppp</EM>, when configuring the pppd package manually, it's often helpful
 to use the command method, so that one can exit a terminal session, and then
 start pppd without having the modem hangup.  In most other situations, the
 DTR method is preferred, as it is simpler.</P>
 
 <H3>DTR (AT&amp;Dn) method</H3>
 
-<P>The DTR method will have the modem hangup whenever kppp stops using the modem. 
+<P>The DTR method will have the modem hangup whenever <EM>kppp</EM> stops using the modem. 
 If you obtain a modem session, and query the state via AT&amp;V, and the among
 the settings displayed for the active profile are &amp;D0, then the DTR hangup
 method is disabled.  To enable the DTR method Use the Setup/More/Terminal to 
@@ -79,9 +79,9 @@ AT&amp;W                # Write to default profile
 <H3>How The DTR Method Works</H3>
 
 <P>Whenever the Data Terminal Ready (DTR) line on the serial line between the host computer
-and the modem goes high, the modem hangs up.  When kppp opens the serial port, the 
+and the modem goes high, the modem hangs up.  When <EM>kppp</EM> opens the serial port, the 
 DTR line is pulled low, on an external modem, you can see the DTR (or TR) light 
-come on when this happens.  When the TR light goes out (because kppp has closed
+come on when this happens.  When the TR light goes out (because <EM>kppp</EM> has closed
 the serial port, or something worse!), the modem will hangup.</P>
 
 <H3>Command Method</H3>
@@ -120,7 +120,7 @@ repeated three times (less than S12/50 seconds between each)</LI>
 </UL>
 </P>
 <P>Once the modem is in the command state, you can send it commands.  To have
-it hang up. Sent ATH.  The escape codes and hangup string used by kppp
+it hang up. Sent ATH.  The escape codes and hangup string used by <EM>kppp</EM>
 are shown in the Setup/More/Modem Commands dialogs.  These should match
 your modem.</P>
 

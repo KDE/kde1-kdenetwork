@@ -27,6 +27,7 @@
 #include <qdir.h>
 #include <qlayout.h>
 #include <kmsgbox.h>
+#include <kquickhelp.h>
 
 #include "macros.h"
 #include "main.h"
@@ -43,7 +44,6 @@ void parseargs(char* buf, char** args);
 AccountWidget::AccountWidget( QWidget *parent, const char *name )
   : QWidget( parent, name )
 {
-
   int min = 0;
   QGridLayout *tl = new QGridLayout(this, 3, 3, 10, 10);  
   tl->addRowSpacing(0, fontMetrics().lineSpacing() - 10); // magic
@@ -59,7 +59,7 @@ AccountWidget::AccountWidget( QWidget *parent, const char *name )
   QHBoxLayout *l11 = new QHBoxLayout;
   l1->addLayout(l11);
     
-  accountlist_l = new QListBox(this, "accountlist_l");
+  accountlist_l = new QListBox(this);
   accountlist_l->setMinimumSize(160, 128);
   connect(accountlist_l, SIGNAL(highlighted(int)),
 	  this, SLOT(slotListBoxSelect(int)));
@@ -67,8 +67,9 @@ AccountWidget::AccountWidget( QWidget *parent, const char *name )
 
   QVBoxLayout *l111 = new QVBoxLayout;
   l11->addLayout(l111, 1);  
-  edit_b = new QPushButton(i18n("Edit..."), this, "edit_b");
+  edit_b = new QPushButton(i18n("Edit..."), this);
   connect(edit_b, SIGNAL(clicked()), SLOT(editaccount()));
+  KQuickHelp::add(edit_b, "Allows you to modify the selected account");
 
   min = edit_b->sizeHint().width();
   min = QMAX(70,min);
@@ -78,20 +79,27 @@ AccountWidget::AccountWidget( QWidget *parent, const char *name )
   //  edit_b->setMinimumSize(edit_b->sizeHint());
   l111->addWidget(edit_b);
 
-  new_b = new QPushButton(i18n("New..."), this, "new_b");
+  new_b = new QPushButton(i18n("New..."), this);
   connect(new_b, SIGNAL(clicked()), SLOT(newaccount()));
   new_b->setMinimumSize(new_b->sizeHint());
   l111->addWidget(new_b);
+  KQuickHelp::add(new_b, "Create a new internet connection");
 
-  copy_b = new QPushButton(i18n("Copy"), this, "copy_b");
+  copy_b = new QPushButton(i18n("Copy"), this);
   connect(copy_b, SIGNAL(clicked()), SLOT(copyaccount()));
   copy_b->setMinimumSize(copy_b->sizeHint());
   l111->addWidget(copy_b);
+  KQuickHelp::add(copy_b, "\
+Makes a copy of the selected account. All
+settings of the selected account are copied
+to a new account, that you modify to fit your
+needs");
 
-  delete_b = new QPushButton(i18n("Delete"), this, "delete_b");
+  delete_b = new QPushButton(i18n("Delete"), this);
   connect(delete_b, SIGNAL(clicked()), SLOT(deleteaccount()));
   delete_b->setMinimumSize(delete_b->sizeHint());
   l111->addWidget(delete_b);
+  KQuickHelp::add(delete_b, "Deletes the selected account\n\n<red><b>Use with care!");
 
   QHBoxLayout *l12 = new QHBoxLayout;
   l1->addStretch(1);
@@ -100,16 +108,24 @@ AccountWidget::AccountWidget( QWidget *parent, const char *name )
   QVBoxLayout *l121 = new QVBoxLayout;
   l12->addLayout(l121);
   l121->addStretch(1);
-  costlabel = new QLabel(i18n("Phone Costs:"),this,"costlable");
+  costlabel = new QLabel(i18n("Phone Costs:"), this);
   costlabel->setMinimumSize(costlabel->sizeHint());
   costlabel->setEnabled(FALSE);
   l121->addWidget(costlabel);
 
-  costedit = new QLineEdit(this,"costedit");
+  costedit = new QLineEdit(this);
   costedit->setFixedHeight(costedit->sizeHint().height());
   costedit->setEnabled(FALSE);
   l121->addWidget(costedit);
   l121->addStretch(1);
+  KQuickHelp::add(costlabel,
+  KQuickHelp::add(costedit, "\
+This shows the accumulated phone costs
+for the selected account.
+
+<b>Important</b>: If you have more than one 
+account - beware, this is <b>NOT</b> the sum 
+of the phone costs of all your accounts!"));
 
   vollabel = new QLabel(i18n("Volume:"), this);
   vollabel->setMinimumSize(vollabel->sizeHint());
@@ -120,29 +136,33 @@ AccountWidget::AccountWidget( QWidget *parent, const char *name )
   voledit->setFixedHeight(voledit->sizeHint().height());
   voledit->setEnabled(FALSE);
   l121->addWidget(voledit);
+  KQuickHelp::add(vollabel,
+  KQuickHelp::add(voledit, "\
+This shows the number of transferred bytes
+for the selected account (not for all your
+accounts. You can select what to display on
+the accounting dialog.
+
+<link #volaccounting>More on volume accounting</link>"));
 
   QVBoxLayout *l122 = new QVBoxLayout;
   l12->addStretch(1);
   l12->addLayout(l122);
   
   l122->addStretch(1);
-  reset = new QPushButton(i18n("Reset Costs"),
-			  this, "resetbutton");
+  reset = new QPushButton(i18n("Reset Costs"), this);
   reset->setMinimumSize(reset->sizeHint());
   reset->setEnabled(FALSE);
   connect(reset,SIGNAL(clicked()),this,SLOT(resetClicked()));
   l122->addWidget(reset);
 
-  log = new QPushButton(i18n("View Logs"),
-			this, "logbutton");
+  log = new QPushButton(i18n("View Logs"), this);
   log->setMinimumSize(log->sizeHint());
-  //  log->setEnabled(FALSE);
   connect(log,SIGNAL(clicked()),this,SLOT(viewLogClicked()));
   l122->addWidget(log);
   l122->addStretch(1);
 
   //load up account list from gppdata to the list box
-
   if(gpppdata.count() > 0) {
     for(int i=0; i <= gpppdata.count()-1; i++) {
       gpppdata.setAccountbyIndex(i);
@@ -177,8 +197,7 @@ void AccountWidget::slotListBoxSelect(int idx) {
     s.setNum(bytes);
     voledit->setText(s.data());
     gpppdata.setAccount(account.data());
- }
-  else{
+ } else{
     reset->setEnabled(FALSE);
     costlabel->setEnabled(FALSE);
     costedit->setText("");
@@ -189,6 +208,7 @@ void AccountWidget::slotListBoxSelect(int idx) {
   }
 }
 
+
 void AccountWidget::viewLogClicked(){
     if(fork() == 0) {
       setuid(getuid());
@@ -197,8 +217,8 @@ void AccountWidget::viewLogClicked(){
     }
 }
 
-void AccountWidget::resetClicked(){
 
+void AccountWidget::resetClicked(){
   if(accountlist_l->currentItem() == -1)
     return;
  
@@ -206,19 +226,17 @@ void AccountWidget::resetClicked(){
        i18n("Are you sure you want to reset the accumulated\n"
        "telephone costs for the selected account to zero?"),
 				    i18n("Yes"),
-				    i18n("No"),"",1,1);
+				    i18n("No"), "", 1, 1);
 
   if(ok)
     return;
   
   emit resetCosts(accountlist_l->text(accountlist_l->currentItem()));
   costedit->setText("");
-
-
 }
 
-void AccountWidget::editaccount() {
 
+void AccountWidget::editaccount() {
   gpppdata.setAccount(accountlist_l->text(accountlist_l->currentItem()));
 
   int result = doTab();
@@ -228,20 +246,18 @@ void AccountWidget::editaccount() {
     emit resetaccounts();
     gpppdata.save();
   }
-
 }
 
 
 void AccountWidget::newaccount() {
-
-  if(accountlist_l->count() == MAX_ACCOUNTS){
-   
+  if(accountlist_l->count() == MAX_ACCOUNTS) {   
       QMessageBox::information(this,i18n("Sorry"),
 			       i18n("Maximum number of accounts reached."));
     return;
   }
 
-  if (gpppdata.newaccount() == -1) return;
+  if (gpppdata.newaccount() == -1) 
+    return;
 
   int result = doTab();
 
@@ -249,22 +265,19 @@ void AccountWidget::newaccount() {
     accountlist_l->insertItem(gpppdata.accname());
     emit resetaccounts();
     gpppdata.save();
-  }
-  else {
-    gpppdata.deleteAccount();
-  }
+  } else
+    gpppdata.deleteAccount();  
 }
 
-void AccountWidget::copyaccount() {
 
-  if(accountlist_l->count() == MAX_ACCOUNTS){
-   
+void AccountWidget::copyaccount() {
+  if(accountlist_l->count() == MAX_ACCOUNTS) {
     QMessageBox::information(this,i18n("Sorry"),
 			     i18n("Maximum number of accounts reached."));
     return;
   }
 
-  if(accountlist_l->currentItem()<0){
+  if(accountlist_l->currentItem()<0) {
     QMessageBox::information(this,i18n("Sorry"),
 			     i18n("No account selected."));
     return;
@@ -275,7 +288,6 @@ void AccountWidget::copyaccount() {
   accountlist_l->insertItem(gpppdata.accname());
   emit resetaccounts();
   gpppdata.save();
-
 }
 
 
@@ -301,7 +313,6 @@ void AccountWidget::deleteaccount() {
   slotListBoxSelect(accountlist_l->currentItem());
 
 }
-
 
 
 int AccountWidget::doTab(){
@@ -356,7 +367,7 @@ int AccountWidget::doTab(){
 		acct->save();
          } else {
 	     QMessageBox::warning(this, i18n("Error"), 
-				     i18n( "You must enter a unique\naccount name"));
+				     i18n( "You must enter an unique\naccount name"));
 		ok = false;
 	 }
       } else {

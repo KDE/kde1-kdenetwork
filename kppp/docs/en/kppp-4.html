@@ -1,6 +1,6 @@
 <HTML>
 <HEAD>
-<TITLE>The Kppp Handbook: Configuring an Account</TITLE>
+<TITLE>The kppp Handbook: Configuring an Account</TITLE>
 </HEAD>
 <BODY>
 <A HREF="kppp-3.html">Previous</A>
@@ -17,27 +17,27 @@
 <DT><B>Connection Name</B><DD><P>You must give the account a name.</P>
 
 <DT><B>Phone Number</B><DD><P>Specify the phone number to dial. You may use characters such as ``-'' to make the number more legible.
-If you concatenate a series of numbers (separated by a colon) kppp will try these numbers in a cyclic order whenever it receives a busy signal.
+If you concatenate a series of numbers (separated by a colon) <EM>kppp</EM> will try these numbers in a cyclic order whenever it receives a busy signal.
 Example: "1111111:2222222:3333333"</P>
 
 <DT><B>Authentication</B><DD><P>Choose the appropriate method of authentication
-that kppp should use to log into the server. Check with your provider
+that <EM>kppp</EM> should use to log into the server. Check with your provider
 whether he offers PAP or CHAP support or if you have to use a script
 or terminal-based login method.</P>
 
-<DT><B>Store password</B><DD><P>Check this option if you want kppp to remember
+<DT><B>Store password</B><DD><P>Check this option if you want <EM>kppp</EM> to remember
 your password at the next session. </P>
 
-<DT><B>Execute Program upon Connect</B><DD><P>kppp will attempt to execute the command specified here once a ppp link has been set up. </P>
+<DT><B>Execute Program upon Connect</B><DD><P><EM>kppp</EM> will attempt to execute the command specified here once a ppp link has been set up. </P>
 
-<DT><B>Execute Program before Disconnect</B><DD><P>kppp will run the command before closing the connection. This will be useful if you have to change any route or address before you leave the net.</P>
+<DT><B>Execute Program before Disconnect</B><DD><P><EM>kppp</EM> will run the command before closing the connection. This will be useful if you have to change any route or address before you leave the net.</P>
 
 <DT><B>Execute Program upon Disconnect</B><DD><P>analogue with previous item.</P>
 <P>
 <A NAME="pppd arguments"></A> 
 </P>
 <DT><B>Edit pppd arguments</B><DD><P>This will bring up the pppd arguments dialog. You may use
-this dialog to add any desired options that you want kppp to hand to pppd.
+this dialog to add any desired options that you want <EM>kppp</EM> to hand to pppd.
 See the pppd man page for a list of available options. Unless you know exactly what you are doing you should
 restrain from tinkering with the pppd options.</P>
 </DL>
@@ -58,7 +58,7 @@ if applicable. Ask your ISP if unsure.</P>
 <A NAME="Auto-configure hostname"></A> 
 </P>
 <DT><B>Auto-configure Hostname from this IP</B><DD><P>Select this option if you want 
-kppp to set the hostname and domain for your machine after successful
+<EM>kppp</EM> to set the hostname and domain for your machine after successful
 setup of a ppp link on connect.
 This is done by querying the defined Domain Name Server with the ip
 assigned for the ppp link.
@@ -92,7 +92,7 @@ addresses supplied must be in numeric form, e.g 128.231.231.233. The
 addresses will be added at runtime to <CODE>/etc/resolv.config</CODE>.</P>
 
 <DT><B>Disable existing DNS Servers during Connection</B><DD><P>Select this option if 
-you want kppp to disable already existing nameserver entries
+you want <EM>kppp</EM> to disable already existing nameserver entries
 in <CODE>/etc/resolv.conf</CODE> during connection.</P>
 </DL>
 </P>
@@ -121,44 +121,44 @@ dialup connection. Use the mini-terminal and the information supplied by
 your ISP to understand which sequence of actions needs to be executed.</P>
 <P>
 <UL>
-<LI>Expect: kppp will wait for the specified string to be received.</LI>
-<LI>Send: kppp will send the specified string.</LI>
-<LI>Scan: kppp will scan the the input stream for the specified string and 
+<LI>Expect: <EM>kppp</EM> will wait for the specified string to be received.</LI>
+<LI>Send: <EM>kppp</EM> will send the specified string.</LI>
+<LI>Scan: <EM>kppp</EM> will scan the the input stream for the specified string and 
 store any character after the string up to the first newline in an internal
 buffer. Trailing and leading whitespace will be stripped off.</LI>
 <LI>Save: permanently store the previously scanned string in the specified register. So far, the only valid register is 'password'.  </LI>
 <LI>Pause: pause for the specified number of seconds</LI>
-<LI>Hangup: kppp will send the hangup command to the modem</LI>
-<LI>Answer: kppp will set the modem into answer mode</LI>
+<LI>Hangup: <EM>kppp</EM> will send the hangup command to the modem</LI>
+<LI>Answer: <EM>kppp</EM> will set the modem into answer mode</LI>
 <LI>Timeout: change the default timeout to the specified number of seconds
 dynamically during script execution. You can change the timeout several times
 during script execution if necessary.
 </LI>
-<LI>Prompt: Prompt the kppp user to enter a string, given the specified
+<LI>Prompt: Prompt the <EM>kppp</EM> user to enter a string, given the specified
 string as a hint.  The user will see what is typed. 
 If the specified string includes the mark ## the mark will be replaced with
 the current content of the internal scan buffer.
 </LI>
-<LI>PWPrompt: Prompt the kppp user to enter a string, given the specified
+<LI>PWPrompt: Prompt the <EM>kppp</EM> user to enter a string, given the specified
 string as a hint.  An asterisk will be printed for each character typed.
 </LI>
-<LI>ID: If the ID field on Kppp's main dialog is filled in, send that ID.
-If the ID field is not filled in, prompt the kppp user to enter an ID, 
+<LI>ID: If the ID field on <EM>kppp</EM>'s main dialog is filled in, send that ID.
+If the ID field is not filled in, prompt the <EM>kppp</EM> user to enter an ID, 
 given the specified string as a hint. The user will see what is typed.
 On a second pass, such as in a loop on the second iteration, a prompt
 will be displayed, given the specified string as a hint.
 </LI>
-<LI>Password: If the password field on Kppp's main dialog is filled in, send that 
-password. If the password  field is not filled in, prompt the kppp user to enter 
+<LI>Password: If the password field on <EM>kppp</EM>'s main dialog is filled in, send that 
+password. If the password  field is not filled in, prompt the <EM>kppp</EM> user to enter 
 a password given the specified
 string as a hint.  An asterisk will be printed for each character typed.
 On a second pass, such as in a loop on the second iteration, a prompt
 will be displayed, given the specified string as a hint.
 </LI>
-<LI>LoopStart: kppp will wait for the specified string to be received.
+<LI>LoopStart: <EM>kppp</EM> will wait for the specified string to be received.
 It will save the string for use by LoopEnd
 </LI>
-<LI>LoopEnd: kppp will wait for the specified string to be received to
+<LI>LoopEnd: <EM>kppp</EM> will wait for the specified string to be received to
 exit the loop.  If the string given by the corresponding LoopStart is
 received first, it will trigger a jump to the line after the LoopStart,
 enabling repetition of username/password style paired dialogs.</LI>
@@ -187,12 +187,12 @@ Send        ppp                        # This starts a ppp connection for
 </P>
 <P>Here a script for the same account with ID and password prompt: This 
 script will prompt for ID and password each time, no matter what is
-typed into the ID and password field on Kppp's main dialog. This script
+typed into the ID and password field on <EM>kppp</EM>'s main dialog. This script
 also illustrated the use of the LoopStart/LoopEnd structure. If something
 goes wrong during the login procedure, for example if I mistype the password,
 my ISP will print an error message and restart the id/password loop by issuing
 the string "ID:" again. If the string "ID" is caught before the LoopEnd keyword
-was parsed, kppp will start the script again after the LoopStart keyword.</P>
+was parsed, <EM>kppp</EM> will start the script again after the LoopStart keyword.</P>
 <P>
 <BLOCKQUOTE><CODE>
 <PRE>
@@ -207,7 +207,7 @@ Send        ppp                        # This starts a ppp connection for me
 </P>
 <P>Here is the script that I actually use to connect to my ISP: This 
 script will prompt for ID and password only if I haven't filled in 
-the respective fields on kppp's main dialog.</P>
+the respective fields on <EM>kppp</EM>'s main dialog.</P>
 <P>
 <BLOCKQUOTE><CODE>
 <PRE>
@@ -261,7 +261,7 @@ Your choice:
 </PRE>
 </CODE></BLOCKQUOTE>
 </P>
-<P>kppp can be used to do that cumbersome task for you (eliminating the risk of losing that little sheet of paper that holds your current password at the same time). The key part of the following script is a combination of the Scan/Save keywords:     
+<P><EM>kppp</EM> can be used to do that cumbersome task for you (eliminating the risk of losing that little sheet of paper that holds your current password at the same time). The key part of the following script is a combination of the Scan/Save keywords:     
 <BLOCKQUOTE><CODE>
 <PRE>
 Expect      Login:                     # wait for login prompt
@@ -288,10 +288,10 @@ Send        3                          # choose option 3, i.e. PPP
 <DT><B>Accounting Setup</B><DD><P>Use the ``Enable accounting'' button to enable/disable
 phone cost accounting. Select a rule  appropriate for your region. If
 you can't find a rule for your region you will have to write one by following
-the supplied <CODE>TEMPLATE</CODE> in <CODE>${KDEDIR}/share/doc/HTML/en/kppp/</CODE>. Don't
+the supplied <CODE>TEMPLATE</CODE> in <CODE>${KDEDIR}/share/doc/HTML/en/<EM>kppp</EM>/</CODE>. Don't
 be afraid though it is really easy. Don't forget to submit your newly created
 rules file to me. The newly created rules file can be checked for valid
-syntax with the -r rule_file command line option to kppp and
+syntax with the -r rule_file command line option to <EM>kppp</EM> and
 must be installed in <CODE>${KDEDIR}/share/apps/kppp/Rules</CODE> or in 
 <CODE>${HOME}/.kde/share/apps/kppp/Rules</CODE> before you will be able to select it on this
 dialog.</P>
@@ -306,7 +306,7 @@ dialog.</P>
 <H3>What is volume accounting?</H3>
 
 <P>It basically means to count the number of bytes transmitted from or to the
-internet. Kppp can count incoming bytes, outgoing bytes or both. It큦 up to
+internet. <EM>kppp</EM> can count incoming bytes, outgoing bytes or both. It큦 up to
 you what you want (or must) use.</P>
 
 <H3>Why should I use volume accounting?</H3>
@@ -314,7 +314,7 @@ you what you want (or must) use.</P>
 <P>Because nowadays, many Internet Service Providers begin to bill their
 customers depending on the number of bytes transferred. Or very often those
 ISP give you an arbitrary transfer limit, and charge you for every megabyte
-above this limit. Kppp shows you your current volume and can help you keeping
+above this limit. <EM>kppp</EM> shows you your current volume and can help you keeping
 your bills to the minimum. Of course, if you do not have volume limits and you
 are curious, you can use it too...</P>
 
@@ -327,14 +327,14 @@ out". "Bytes out" is not of much use and is only here for completeness.</P>
 
 <H3>Drawbacks</H3>
 
-<P>Unfortunately there큦 a drawback on volume accounting. Kppp will just count the
+<P>Unfortunately there큦 a drawback on volume accounting. <EM>kppp</EM> will just count the
 number of bytes regardless their origin. Many providers set their limit only
 for internet access, not for their own network. So, if you do a little web
 surfing and you use a proxy-cache, the proxy will reside inside the network of
 your provider and he will not charge you for bytes transferred from his proxy
-cache. However, kppp will not know that these IP packets are coming from the
+cache. However, <EM>kppp</EM> will not know that these IP packets are coming from the
 proxy and thus count them. So, if you use a proxy, or your provider uses a
-caching news server (like nntpcached), the volume reported by kppp may be
+caching news server (like nntpcached), the volume reported by <EM>kppp</EM> may be
 higher.</P>
 
 

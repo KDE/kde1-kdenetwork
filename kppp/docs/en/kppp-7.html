@@ -1,6 +1,6 @@
 <HTML>
 <HEAD>
-<TITLE>The Kppp Handbook: PAP and CHAP</TITLE>
+<TITLE>The kppp Handbook: PAP and CHAP</TITLE>
 </HEAD>
 <BODY>
 <A HREF="kppp-6.html">Previous</A>
@@ -10,22 +10,87 @@
 <H2><A NAME="s7">7. PAP and CHAP</A></H2>
 
 
-<P>Starting with version 0.9.1 kppp supports directly the most commonly used
-form of PAP authentification. The section 'PAP and CHAP with kppp' will
-descripe how to make PAP and CHAP work with kppp in general, while the
-section 'PAP with kppp' will describe in detail how to take advantage
-of kppp's build in support for the most commonly encountered version of
+<P>Starting with version 0.9.1 <EM>kppp</EM> supports directly the most commonly used
+form of PAP authentification. The section 'PAP and CHAP with <EM>kppp</EM>' will
+descripe how to make PAP and CHAP work with <EM>kppp</EM> in general, while the
+section 'PAP with <EM>kppp</EM>' will describe in detail how to take advantage
+of <EM>kppp</EM>'s build in support for the most commonly encountered version of
 PAP wich is  widely used by commercial Internet Service Providers (ISP). </P>
 
-<H2><A NAME="PAP"></A> <A NAME="ss7.1">7.1 PAP and CHAP with kppp</A></H2>
+<H2><A NAME="ss7.1">7.1 PAP with <EM>kppp</EM></A></H2>
 
+
+<P>There are two different ways to use PAP:</P>
+
+<H3>Client side authentication</H3>
+
+<P> 
+This variant is used by many
+commercial ISPs. It basically means that you (or your computer) must
+authenticate yourself to the ISPs PPP server. The PPP server must not
+authenticate himself to your computer, but typically this is not necessary
+since you know which computer you are connected to (because the connection was
+established by yourself). So this is no major security issue. <EM>kppp</EM> supports
+this variant directly. See below for instruction how use this one.</P>
+
+<P>If your ISP just gives you a username and a password and tells you to use
+PAP authentication you must use this variant.</P>
+
+<H3>Two way authentication</H3>
+
+<P> 
+Same as above, but your computer requires the
+ISP PPP server to authenticate himself. In order to establish a connection, 
+you must choose the authentication method <I>Script based</I>,
+not <I>PAP</I>, and you will have to manually edit
+<CODE>/etc/ppp/pap-secrets</CODE>. While <EM>kppp</EM> doesn't provide build in support
+for this variant -- it is nevertheless easy to establish a connection
+using this variant of PAP with <EM>kppp</EM>. The details are described in the
+previous section 'Using PAP and CHAP with <EM>kppp</EM>'.</P>
+
+
+<H3>Preparing <EM>kppp</EM> for PAP</H3>
+
+<P>
+<OL>
+<LI> Make sure that the <CODE>/etc/ppp/options</CODE> (and <CODE>~/.ppprc</CODE> if
+you do have such a file) does <B>not</B> contain one of the arguments:
+<UL>
+<LI>+pap</LI>
+<LI>-pap</LI>
+<LI>papcrypt</LI>
+<LI>+chap</LI>
+<LI>+ua</LI>
+<LI>remotename</LI>
+</UL>
+<P>It is very unlikely that one of those arguments is already in there, but just
+to be sure.</P>
+
+</LI>
+<LI>Start <EM>kppp</EM></LI>
+<LI>Click on <I>Setup</I></LI>
+<LI>Choose the account you want to use PAP with and click on <I>Edit</I></LI>
+<LI>Click on the <I>Dial</I> tab.</LI>
+<LI>Select <I>PAP</I> in the checkbox <I>Authentication</I></LI>
+<LI>If you do not want to retype the password each time you dial in, select
+<I>Store password</I>. This will save the password. Make sure that nobody
+other than you has access to your account, otherwise this person will have
+access to your password.</LI>
+<LI>That's it. Close the dialogs, type in your the username and password
+your ISP supplied to you and dial.</LI>
+</OL>
+</P>
+
+
+
+<H2><A NAME="PAP"></A> <A NAME="ss7.2">7.2 PAP and CHAP with <EM>kppp</EM></A></H2>
 
 <P>The following is based on an email by 
 <A HREF="kbrown@pdq.net">Keith Brown</A>
-and explains how to make kppp work for a generic PAP or CHAP account. If
+and explains how to make <EM>kppp</EM> work for a generic PAP or CHAP account. If
 your ISP just gave you a user id and a password for a PAP account the odds
 are that you can skip this section and that you will get by just reading the 
-next one entitled 'PAP with kppp'.</P>
+next one entitled 'PAP with <EM>kppp</EM>'.</P>
 
 <P>PAP seems a lot more complicated at first glance than it really is.
 The server (the machine you are connecting to) basically tells the client
@@ -62,7 +127,7 @@ as long as I use the same name in the pppd arguments, as we'll see shortly.
 I have shortened it to 'glob'. This name is just used to locate the correct
 password.</P>
 
-<P>Now, I need to set up my connection in kppp. The basics are the same
+<P>Now, I need to set up my connection in <EM>kppp</EM>. The basics are the same
 as any other connection, and I won't go into details here, except to say
 that you probably want to make sure that the <CODE>/etc/ppp/options,</CODE> is empty,
 and you probably don't want any login script either. Now, in the settings
@@ -86,71 +151,6 @@ connection to a server with PAP authentication. CHAP should not be much
 different. See the Linux Network Administrators' Guide for chap-secrets
 file format and pppd arguments used. The rest should be gravy, but...your
 mileage, ah you know the rest.</P>
-
-<H2><A NAME="ss7.2">7.2 PAP with Kppp</A></H2>
-
-
-<P>There are two different ways to use PAP:</P>
-
-<H3>Client side authentication</H3>
-
-<P> 
-This variant is used by many
-commercial ISPs. It basically means that you (or your computer) must
-authenticate yourself to the ISPs PPP server. The PPP server must not
-authenticate himself to your computer, but typically this is not necessary
-since you know which computer you are connected to (because the connection was
-established by yourself). So this is no major security issue. kPPP supports
-this variant directly. See below for instruction how use this one.</P>
-
-<P>If your ISP just gives you a username and a password and tells you to use
-PAP authentication you must use this variant.</P>
-
-<H3>Two way authentication</H3>
-
-<P> 
-Same as above, but your computer requires the
-ISP PPP server to authenticate himself. In order to establish a connection, 
-you must choose the authentication method <I>Script based</I>,
-not <I>PAP</I>, and you will have to manually edit
-<CODE>/etc/ppp/pap-secrets</CODE>. While kppp doesn't provide build in support
-for this variant -- it is nevertheless easy to establish a connection
-using this variant of PAP with kppp. The details are described in the
-previous section 'Using PAP and CHAP with kppp'.</P>
-
-
-<H3>Preparing kPPP for PAP</H3>
-
-<P>
-<OL>
-<LI> Make sure that the <CODE>/etc/ppp/options</CODE> (and <CODE>~/.ppprc</CODE> if
-you do have such a file) does <B>not</B> contain one of the arguments:
-<UL>
-<LI>+pap</LI>
-<LI>-pap</LI>
-<LI>papcrypt</LI>
-<LI>+chap</LI>
-<LI>+ua</LI>
-<LI>remotename</LI>
-</UL>
-<P>It is very unlikely that one of those arguments is already in there, but just
-to be sure.</P>
-
-</LI>
-<LI>Start kppp</LI>
-<LI>Click on <I>Setup</I></LI>
-<LI>Choose the account you want to use PAP with and click on <I>Edit</I></LI>
-<LI>Click on the <I>Dial</I> tab.</LI>
-<LI>Select <I>PAP</I> in the checkbox <I>Authentication</I></LI>
-<LI>If you do not want to retype the password each time you dial in, select
-<I>Store password</I>. This will save the password. Make sure that nobody
-other than you has access to your account, otherwise this person will have
-access to your password.</LI>
-<LI>That's it. Close the dialogs, type in your the username and password
-your ISP supplied to you and dial.</LI>
-</OL>
-</P>
-
 
 
 <HR>

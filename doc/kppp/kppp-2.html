@@ -1,6 +1,6 @@
 <HTML>
 <HEAD>
-<TITLE>The Kppp Handbook: Installation</TITLE>
+<TITLE>The kppp Handbook: Installation</TITLE>
 </HEAD>
 <BODY>
 <A HREF="kppp-1.html">Previous</A>
@@ -12,9 +12,9 @@
 
 <P> <CODE> PLEASE DON'T FORGET TO READ THE FREQUENTLY ASKED QUESTIONS! THANK YOU! </CODE></P>
 
-<H2><A NAME="ss2.1">2.1 How to obtain Kppp</A></H2>
+<H2><A NAME="ss2.1">2.1 How to obtain <EM>kppp</EM></A></H2>
 
-<P>Kppp is an application for the KDE project 
+<P><EM>kppp</EM> is an application for the KDE project 
 <A HREF="http://www.kde.org">http://www.kde.org</A>.
 Kppp can be found on 
 <A HREF="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</A>, the main ftp site
@@ -23,8 +23,8 @@ of the KDE project.</P>
 
 <H2><A NAME="ss2.2">2.2 Requirements</A></H2>
 
-<P>In order to successfully compile Kppp, you need the latest versions of <CODE>libkdecore</CODE>
-and <CODE>libkdeui</CODE>. All required libraries as well as Kppp itself can be found
+<P>In order to successfully compile <EM>kppp</EM>, you need the latest versions of <CODE>libkdecore</CODE>
+and <CODE>libkdeui</CODE>. All required libraries as well as <EM>kppp</EM> itself can be found
 on 
 <A HREF="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</A>. </P>
 
@@ -34,17 +34,17 @@ on
 
 <P> <CODE> PLEASE DON'T FORGET TO READ THE FREQUENTLY ASKED QUESTIONS! THANK YOU! </CODE></P>
 
-<P>I haven't been able to test kppp on anything else but Linux, but you should
+<P>I haven't been able to test <EM>kppp</EM> on anything else but Linux, but you should
 be able to get pppd to work on a variety of platforms including but not
 limited to SVR4, Solaris 2, Linux, FreeBSD, NetBSD, SunOS 4, AIX 4, OSF/1 as long
 as you have pppd installed on those systems.</P>
 
-<P>If wish to compile kppp on a platform  different from Linux, please check briefly the
+<P>If wish to compile <EM>kppp</EM> on a platform  different from Linux, please check briefly the
 first couple of lines of  pppstats.cpp and make sure the defines and includes are O.K.
 Most likely however they should be fine. Please inform me of any necessary changes.</P>
 
-<P>In order to compile and install Kppp on your system, type the following in the base 
-directory of the Kppp distribution:
+<P>In order to compile and install <EM>kppp</EM> on your system, type the following in the base 
+directory of the <EM>kppp</EM> distribution:
 <BLOCKQUOTE><CODE>
 <PRE>
 % ./configure
@@ -53,13 +53,13 @@ directory of the Kppp distribution:
 </PRE>
 </CODE></BLOCKQUOTE>
 </P>
-<P>This will install kppp with the 
+<P>This will install <EM>kppp</EM> with the 
 <A HREF="kppp-8.html#setuid">setuid</A> bit on.</P>
 
 
 <P>Make sure that the pppd's option file which usually resides in <CODE>/etc/ppp/</CODE>
 exists, but is empty. pppd requires it to exist, but it must be empty otherwise
-pppd will not take its options from kppp.</P>
+pppd will not take its options from <EM>kppp</EM>.</P>
 
 
 <P><B>Again:</B> Should you run into problems, please report them to me. </P>
@@ -70,7 +70,7 @@ pppd will not take its options from kppp.</P>
 
 
 <P> <CODE> PLEASE DON'T FORGET TO READ THE FREQUENTLY ASKED QUESTIONS! THANK YOU!</CODE></P>
-<P>In order for kppp/pppd to work your kernel must have ppp support compiled in. If this is
+<P>In order for <EM>kppp</EM>/pppd to work your kernel must have ppp support compiled in. If this is
 not the case get yourself the latest version of 
 <A HREF="ftp://sunsite.unc.edu/pub/Linux/system/Network/serial/ppp/">pppd</A>
 from any of the popular Linux archives and recompile your kernel with ppp

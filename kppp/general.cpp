@@ -39,7 +39,7 @@ GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
 {
   QGridLayout *tl = new QGridLayout(this, 10, 4, 10, 10);
   tl->addRowSpacing(0, fontMetrics().lineSpacing() - 10); // magic
-  box = new QGroupBox(i18n("kppp Setup"), this,"box");
+  box = new QGroupBox(i18n("kppp Setup"), this);
   tl->addMultiCellWidget(box, 0, 9, 0, 3);
   
   label6 = new QLabel(this,"timeout");
@@ -49,7 +49,7 @@ GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
   
   QHBoxLayout *l1 = new QHBoxLayout;
   tl->addLayout(l1, 1, 2);
-  pppdtimeout = new KIntegerLine(this, "pppdtimeout");
+  pppdtimeout = new KIntegerLine(this);
   pppdtimeout->setFixedHeight(pppdtimeout->sizeHint().height());
   pppdtimeout->setMaxLength(TIMEOUT_SIZE);
   pppdtimeout->setMinimumWidth(pppdtimeout->sizeHint().width()/4);
@@ -57,52 +57,93 @@ GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
   connect(pppdtimeout, SIGNAL(textChanged(const char*)),
 	  SLOT(pppdtimeoutchanged(const char*)));
   l1->addWidget(pppdtimeout, 1);
+  KQuickHelp::add(label6,
+  KQuickHelp::add(pppdtimeout, "\
+<i>kppp</i> will wait this number of seconds
+to see if a PPP connection is established.
+If after this time no connection is made,
+<i>kppp</i> will give up and kill pppd."));
 
-  labeltmp = new QLabel(this,"seconds");
+  labeltmp = new QLabel(this);
   labeltmp->setText(i18n("Seconds"));
   labeltmp->setMinimumSize(labeltmp->sizeHint());
   l1->addWidget(labeltmp, 2);
 
   tl->addRowSpacing(2, 5);
 
-  chkbox6 = new QCheckBox(i18n("Dock into Panel on Connect"),this,"dockingbox");
-  KQuickHelp::add(chkbox6, "<+><bold>Dock into Panel on Connect<-><bold>\n\nAfter a <red>connection<black> is established,\nthe window is \"docked\" into the panel.");
+  chkbox6 = new QCheckBox(i18n("Dock into Panel on Connect"), this);
+  KQuickHelp::add(chkbox6, "\
+After a connection is established, the 
+window is minimized and a small icon
+in the panel represents this window.
+
+Clicking on this icon will restore the
+window to it's original location and
+size.");
+
   MIN_HEIGHT(chkbox6);
   chkbox6->setChecked(gpppdata.get_dock_into_panel());
-  connect(chkbox6,SIGNAL(toggled(bool)),this,SLOT(docking_toggled(bool)));
+  connect(chkbox6,SIGNAL(toggled(bool)), 
+	  this, SLOT(docking_toggled(bool)));
   tl->addMultiCellWidget(chkbox6, 3, 3, 1, 2);
 
-  chkbox2 = new QCheckBox(i18n("Automatic Redial on Disconnect"),
-			  this,"redialbox");
+  chkbox2 = new QCheckBox(i18n("Automatic Redial on Disconnect"), this);
   MIN_HEIGHT(chkbox2);
   chkbox2->setChecked(gpppdata.automatic_redial());
   connect(chkbox2,SIGNAL(toggled(bool)),this,SLOT(redial_toggled(bool)));
   tl->addMultiCellWidget(chkbox2, 4, 4, 1, 2);
+  KQuickHelp::add(chkbox2, "\
+When a connection is established and
+it gets somehow disconnected, <i>kppp</i>
+will try to reconnect to the same account.
 
-  chkbox3 = new QCheckBox(i18n("Show Clock on Caption"),
-			  this,"captionbox");
+See <link #redial>here</link> for more on this topic.");		  
+
+  chkbox3 = new QCheckBox(i18n("Show Clock on Caption"), this);
   MIN_HEIGHT(chkbox3);
   chkbox3->setChecked(gpppdata.get_show_clock_on_caption());
-  connect(chkbox3,SIGNAL(toggled(bool)),this,SLOT(caption_toggled(bool)));
+  connect(chkbox3, SIGNAL(toggled(bool)),
+	  this, SLOT(caption_toggled(bool)));
   tl->addMultiCellWidget(chkbox3, 5, 5, 1, 2);
+  KQuickHelp::add(chkbox3, "\
+When this option is checked, the window
+title shows the time since a connection
+was established. Very useful, so you 
+should turn this on");
 
-  chkbox4 = new QCheckBox(i18n("Disconnect on X-server shutdown"),this,"captionbox");
+  chkbox4 = new QCheckBox(i18n("Disconnect on X-server shutdown"),this);
   MIN_HEIGHT(chkbox4);
   chkbox4->setChecked(gpppdata.get_xserver_exit_disconnect());
-  connect(chkbox4,SIGNAL(toggled(bool)),this,SLOT(xserver_toggled(bool)));
+  connect(chkbox4, SIGNAL(toggled(bool)),
+	  this, SLOT(xserver_toggled(bool)));
   tl->addMultiCellWidget(chkbox4, 6, 6, 1, 2);
+  KQuickHelp::add(chkbox4, "\
+Checking this options will close any
+open connection when the X-server is
+shutdown. You should enable this option
+unless you know what you are doing.
 
-  chkbox7 = new QCheckBox(i18n("Quit on Disconnect"),this,"quitbox");
+See <link #disxserver>here</link> for more on this.");
+
+  chkbox7 = new QCheckBox(i18n("Quit on Disconnect"), this);
   MIN_HEIGHT(chkbox7);
   chkbox7->setChecked(gpppdata.quit_on_disconnect());
-  connect(chkbox7,SIGNAL(toggled(bool)),this,SLOT(quit_toggled(bool)));
+  connect(chkbox7, SIGNAL(toggled(bool)),
+	  this, SLOT(quit_toggled(bool)));
   tl->addMultiCellWidget(chkbox7, 7, 7, 1, 2);
+  KQuickHelp::add(chkbox7, "\
+When this option is turned on, <i>kppp</i>
+will be closed when you disconnect");
 
-  chkbox5 = new QCheckBox(i18n("Minimize Window on Connect"),this,"iconifybox");
+  chkbox5 = new QCheckBox(i18n("Minimize Window on Connect"), this);
   MIN_HEIGHT(chkbox5);
   chkbox5->setChecked(gpppdata.get_iconify_on_connect());
-  connect(chkbox5,SIGNAL(toggled(bool)),this,SLOT(iconify_toggled(bool)));
+  connect(chkbox5,SIGNAL(toggled(bool)),
+	  this,SLOT(iconify_toggled(bool)));
   tl->addMultiCellWidget(chkbox5, 8, 8, 1, 2);
+  KQuickHelp::add(chkbox5, "\
+Iconifies <i>kppp</i>'s window when a
+connection is established");
 
   tl->activate();
 }
@@ -149,11 +190,11 @@ AboutWidget::AboutWidget( QWidget *parent, const char *name)
 {
   QGridLayout *tl = new QGridLayout(this, 3, 3, 10, 10);
   tl->addRowSpacing(0, fontMetrics().lineSpacing() - 10); // magic
-  box = new QGroupBox(this,"box");
+  box = new QGroupBox(this);
   box->setTitle(i18n("About kppp"));
   tl->addMultiCellWidget(box, 0, 2, 0, 2);
 
-  label1 = new QLabel(this, "About");
+  label1 = new QLabel(this);
   label1->setAlignment(AlignLeft|ExpandTabs);
 
   QString string;
@@ -188,14 +229,14 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   QGridLayout *tl = new QGridLayout(this, 11, 4, 10, 10);
   tl->addRowSpacing(0, fontMetrics().lineSpacing() - 10); // magic
 
-  box = new QGroupBox(i18n("Serial device"), this,"box");
+  box = new QGroupBox(i18n("Serial device"), this);
   tl->addMultiCellWidget(box, 0, 9, 0, 3);
 
-  label1 = new QLabel(i18n("Modem Device:"), this,"modem");
+  label1 = new QLabel(i18n("Modem Device:"), this);
   label1->setMinimumSize(label1->sizeHint());
   tl->addWidget(label1, 1, 1);
   
-  modemdevice = new QComboBox(false,this, "modemdevice");
+  modemdevice = new QComboBox(false,this);
 
   static char *devices[] = {
 #ifdef __FreeBSD__
@@ -229,10 +270,19 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   modemdevice->setMinimumWidth(modemdevice->sizeHint().width());
   modemdevice->setFixedHeight(modemdevice->sizeHint().height());
   tl->addWidget(modemdevice, 1, 2);
-   
   connect(modemdevice, SIGNAL(activated(int)), SLOT(setmodemdc(int)));
+  KQuickHelp::add(label1,
+  KQuickHelp::add(modemdevice, "\
+This specifies the serial port your modem is attached 
+to. On Linux/x86, typically this is either /dev/ttyS0 
+(COM1 under DOS) or /dev/ttyS1 (COM2 under DOS).
 
-  label2 = new QLabel(i18n("Flow Control:"), this,"Flow");
+If you have an internal ISDN card with AT command
+emulation (most cards under Linux support this), you
+should select one of the /dev/ttyIx devices."));
+
+
+  label2 = new QLabel(i18n("Flow Control:"), this);
   label2->setMinimumSize(label2->sizeHint());
   tl->addWidget(label2, 2, 1);
 
@@ -243,12 +293,19 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   flowcontrol->setMinimumWidth(flowcontrol->sizeHint().width());
   flowcontrol->setFixedHeight(flowcontrol->sizeHint().height());
   tl->addWidget(flowcontrol, 2, 2);
+  connect(flowcontrol, SIGNAL(activated(int)), 
+	  SLOT(setflowcontrol(int)));
 
-  connect(flowcontrol, SIGNAL(activated(int)), SLOT(setflowcontrol(int)));
+  KQuickHelp::add(label2,
+  KQuickHelp::add(flowcontrol, "\
+Specifies how the serial port and your modem
+talk with. You should not change this unless
+you know what you are doing.
+
+<b>Default</b>: CRTSCTS"));
 
 
-  labelenter = new QLabel(i18n("Line Termination:"), 
-			  this,"enter");
+  labelenter = new QLabel(i18n("Line Termination:"), this);
   labelenter->setMinimumSize(labelenter->sizeHint());
   tl->addWidget(labelenter, 3, 1);
 
@@ -260,15 +317,24 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   enter->setFixedHeight(enter->sizeHint().height());
   tl->addWidget(enter, 3, 2);
   connect(enter, SIGNAL(activated(int)), SLOT(setenter(int)));
+  KQuickHelp::add(labelenter,
+  KQuickHelp::add(enter, "\
+Specifies how AT commands are send to your
+modem. Most modems will work fine with the
+default <i>CR</i>. If your modem does not react
+to the init string, you should try different
+settings here
+
+<b>Default</b>: CR/LF"));
 
   baud_label = new QLabel(this);
   baud_label->setText(i18n("Connection Speed:"));
   MIN_SIZE(baud_label);
-  tl->addWidget(baud_label, 4, 1);
+  tl->addWidget(baud_label, 4, 1);  
   
   QHBoxLayout *l1 = new QHBoxLayout;
   tl->addLayout(l1, 4, 2);
-  baud_c = new QComboBox(this, "baud_c");
+  baud_c = new QComboBox(this);
 
   static char *baudrates[] = {
     
@@ -304,19 +370,30 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   MIN_WIDTH(baud_c);
   l1->addWidget(baud_c);
   l1->addStretch(1);
+  KQuickHelp::add(baud_label,
+  KQuickHelp::add(baud_c, "\
+Specifies the speed your modem and the serial
+port talk to each other. You should begin with
+the default of 38400 bits/sec. If everything
+works you can try to increase this value, but to
+no more than 115200 bits/sec (unless you know
+that your serial port supports higher speeds)."));
+
 
   for(int i=0; i <= enter->count()-1; i++) {
     if(strcmp(gpppdata.enter(), enter->text(i)) == 0)
       enter->setCurrentItem(i);
   }
 
+
+
   //Modem Lock File
   label4 = new QLabel(i18n("Lock File Directory:"),
-		      this,"modemlockdirlabel");
+		      this);
   label4->setMinimumSize(label4->sizeHint());
   tl->addWidget(label4, 6, 1);
 
-  modemlockdir = new QLineEdit(this, "modemlockdir");
+  modemlockdir = new QLineEdit(this);
   modemlockdir->setMaxLength(PATH_SIZE);
   modemlockdir->setText("XXXXXXXXXXXX");
   modemlockdir->setMinimumWidth(modemlockdir->sizeHint().width());
@@ -325,9 +402,20 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   connect(modemlockdir, SIGNAL(textChanged(const char*)),
 	  SLOT(modemlockdirchanged(const char*)));
   tl->addWidget(modemlockdir, 6, 2);
+  KQuickHelp::add(label4,
+  KQuickHelp::add(modemlockdir, "\
+To prevent other programs from accessing the
+modem while a connection is established, a 
+file is created to indicate that the modem
+is in use. Here you can select the directory
+where this file is created.
 
-  //Modem Timeout Line Edit Box
-  label3 = new QLabel(this,"modemtimeoutlabel");
+Don't touch this unless you know what you are
+doing. There is no default because it depends
+on the operating system."));
+
+  // Modem Timeout Line Edit Box
+  label3 = new QLabel(this);
   label3->setText(i18n("Modem Timeout:"));
   label3->setMinimumSize(label3->sizeHint());
   tl->addWidget(label3, 7, 1);
@@ -335,7 +423,7 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   QHBoxLayout *l2 = new QHBoxLayout;
   tl->addLayout(l2, 7, 2);
 
-  modemtimeout = new KIntegerLine(this, "modemtimeout");
+  modemtimeout = new KIntegerLine(this);
   modemtimeout->setFixedHeight(modemtimeout->sizeHint().height());
   modemtimeout->setMaxLength(TIMEOUT_SIZE);
   modemtimeout->setText(gpppdata.modemTimeout());
@@ -343,9 +431,15 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
 	  SLOT(modemtimeoutchanged(const char*)));  
   l2->addWidget(modemtimeout, 1);
 
-  labeltmp = new QLabel(i18n("Seconds"), this,"seconds");
+  labeltmp = new QLabel(i18n("Seconds"), this);
   labeltmp->setMinimumSize(labeltmp->sizeHint());
   l2->addWidget(labeltmp, 2);
+  KQuickHelp::add(label3,
+  KQuickHelp::add(modemtimeout, "\
+This specifies how long <i>kppp</i> waits for a
+<i>CONNECT</i> response from your modem. The
+recommended value is 30 seconds."));
+
 
   //set stuff from gpppdata
   for(int i=0; i <= modemdevice->count()-1; i++) {
@@ -403,7 +497,7 @@ ModemWidget2::ModemWidget2( QWidget *parent, const char *name)
   QGridLayout *tl = new QGridLayout(this, 3, 3, 10, 10);
   tl->addRowSpacing(0, fontMetrics().lineSpacing() - 10); // magic
 
-  box = new QGroupBox(i18n("Modem"), this,"box");
+  box = new QGroupBox(i18n("Modem"), this);
   tl->addMultiCellWidget(box, 0, 2, 0, 2);
 
   QVBoxLayout *l1 = new QVBoxLayout;
@@ -414,13 +508,13 @@ ModemWidget2::ModemWidget2( QWidget *parent, const char *name)
 
   QHBoxLayout *l10 = new QHBoxLayout;
   l1->addLayout(l10);
-  label4 = new QLabel(this,"busywaitlabel");
+  label4 = new QLabel(this);
   label4->setText(i18n("Busy Wait:"));
   label4->setMinimumSize(label4->sizeHint());
   l10->addStretch(1);
   l10->addWidget(label4);
 
-  busywait = new KIntegerLine(this, "busywait");
+  busywait = new KIntegerLine(this);
   busywait->setFixedHeight(busywait->sizeHint().height());
   busywait->setMaxLength(TIMEOUT_SIZE);
   busywait->setText(gpppdata.busyWait());
@@ -429,11 +523,20 @@ ModemWidget2::ModemWidget2( QWidget *parent, const char *name)
 	  SLOT(busywaitchanged(const char*)));
   l10->addWidget(busywait);
 
-  labeltmp = new QLabel(this,"seconds");
+  labeltmp = new QLabel(this);
   labeltmp->setText(i18n("Seconds"));
   labeltmp->setMinimumSize(labeltmp->sizeHint());
   l10->addWidget(labeltmp, 1);
   l10->addStretch(1);
+  KQuickHelp::add(label4,
+  KQuickHelp::add(busywait, "\
+Specifies the number of seconds to wait before
+redial if all dialed numbers were busy. This is
+necessary because some modems are stuck if the
+same number is too often busy.
+
+The default is 0 seconds, you should not change
+this unless you need."));
 
   // the checkboxes
   l1->addSpacing(10);
@@ -452,19 +555,35 @@ ModemWidget2::ModemWidget2( QWidget *parent, const char *name)
   hbl->addStretch(1);
   connect(volume, SIGNAL(valueChanged(int)),
 	  this, SLOT(volumeChanged(int)));
+  KQuickHelp::add(volumeLabel,
+  KQuickHelp::add(volume, "\
+Most modems have a speaker which makes
+a lot of noise when dialing. Here you
+can either turn this completly off or
+select a lower volume.
+
+If this does not work for your modem,
+you must modify the modem volume command"));
+
 
   QHBoxLayout *l12 = new QHBoxLayout;
   l1->addLayout(l12);
   l12->addStretch(1);
   chkbox1 = 
-    new QCheckBox(i18n("Modem Asserts CD Line."), 
-		  this, "assertCD");
+    new QCheckBox(i18n("Modem Asserts CD Line."), this);
   chkbox1->setMinimumSize(chkbox1->sizeHint());
   chkbox1->setChecked(gpppdata.UseCDLine());
-  connect(chkbox1,SIGNAL(toggled(bool)),this,SLOT(use_cdline_toggled(bool)));
+  connect(chkbox1,SIGNAL(toggled(bool)),
+	  this,SLOT(use_cdline_toggled(bool)));
   l12->addWidget(chkbox1);
   l12->addStretch(1);
   l1->addStretch(1);
+  KQuickHelp::add(chkbox1, "\
+This controls how kppp detects that the modem
+is not responding. Unless you don't have any
+problems with this, do not modify this.
+
+<b>Default</b>: on");
 
 
   // add the buttons 
@@ -474,8 +593,24 @@ ModemWidget2::ModemWidget2( QWidget *parent, const char *name)
   QVBoxLayout *l111 = new QVBoxLayout;
   l11->addLayout(l111);
   modemcmds = new QPushButton(i18n("Modem Commands"), this);
+  KQuickHelp::add(modemcmds, "\
+Allows you to change the AT command for
+your modem.");
+  
   modeminfo_button = new QPushButton(i18n("Query Modem"), this);
+  KQuickHelp::add(modeminfo_button, "\
+Most modems support the ATI command set to
+find out vendor and revision of your modem.
+
+Press this button to query your modem for
+this information");
+
   terminal_button = new QPushButton(i18n("Terminal"), this);
+  KQuickHelp::add(terminal_button, "\
+Opens the built-in terminal program, if
+you want to play around with the AT
+command set");
+
   modemcmds->setMinimumWidth(modemcmds->sizeHint().width());
   modemcmds->setFixedHeight(modemcmds->sizeHint().height());
   modeminfo_button->setMinimumWidth(modeminfo_button->sizeHint().width());

@@ -409,7 +409,7 @@ void PPPData::setUseCDLine(const int n) {
 }
 
 int PPPData::UseCDLine() {
-  return  readNumConfig(MODEM_GRP,USECDLINE_KEY,0);
+  return  readNumConfig(MODEM_GRP,USECDLINE_KEY,1);
 }
 
 const char*  PPPData::modemEscapeStr(){

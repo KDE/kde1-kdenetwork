@@ -1,3 +1,10 @@
+1998-09-11  Mario Weilguni <mweilguni@kde.org>
+
+	* more code cleanups
+	* fixed a bug in log.h (semicolon after a macro definition --
+	brrr)
+	* added quickhelp to many setup dialogs
+
 1998-09-05  Harri Porten  <porten@kde.org>
 
 	* pppdata.cpp: fixed warnings
@@ -9,7 +16,7 @@
 
 	* In ConnectWidget::readtty(): after a newline or CR is received,
 	the QSocketnotifier is disabled for 20ms to avoid reading too
-	much.
+	much, e.g. the start characters of the ppp protocol.
 	* added compile option "NO_GRAPH" to disable the graph
 	* removed the compile options "COMPILE_PIX" in pppstatsdlg.cpp,
 	this is no longer needed or supported

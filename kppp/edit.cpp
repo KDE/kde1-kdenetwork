@@ -36,7 +36,7 @@ DialWidget::DialWidget( QWidget *parent, bool isnewaccount, const char *name )
 
   QGridLayout *tl = new QGridLayout(this, GRIDROWS, 4, 10, 10);
   tl->addRowSpacing(0, fontMetrics().lineSpacing() - 10);
-  box = new QGroupBox(this,"box");
+  box = new QGroupBox(this);
   box->setTitle(i18n("Dial Setup"));
   tl->addMultiCellWidget(box, 0, GRIDROWS-1, 0, 3);
 
@@ -45,7 +45,7 @@ DialWidget::DialWidget( QWidget *parent, bool isnewaccount, const char *name )
   MIN_SIZE(connect_label);
   tl->addWidget(connect_label, 1, 1);
 
-  connectname_l = new QLineEdit(this, "connectname_l");
+  connectname_l = new QLineEdit(this);
   connectname_l->setMaxLength(ACCNAME_SIZE);
   FIXED_HEIGHT(connectname_l);
   MIN_WIDTH(connectname_l);
@@ -56,7 +56,7 @@ DialWidget::DialWidget( QWidget *parent, bool isnewaccount, const char *name )
   MIN_SIZE(number_label);
   tl->addWidget(number_label, 2, 1);
 
-  number_l = new QLineEdit(this, "number_l");
+  number_l = new QLineEdit(this);
   number_l->setMaxLength(PHONENUMBER_SIZE);
   
   FIXED_WIDTH(number_l);
@@ -182,39 +182,39 @@ IPWidget::IPWidget( QWidget *parent, bool isnewaccount, const char *name )
   : QWidget(parent, name)
 {
 
-  box1 = new QGroupBox(this,"box1");
+  box1 = new QGroupBox(this);
   box1->setTitle(i18n("IP Setup"));
 
-  box = new QGroupBox(this,"box");
+  box = new QGroupBox(this);
 
-  ipaddress_l = new IPLineEdit(this, "ipaddress_l");
+  ipaddress_l = new IPLineEdit(this);
 
   ipaddress_label = new QLabel(this);
   ipaddress_label->setText(i18n("IP Address:"));
 
-  subnetmask_l = new IPLineEdit(this, "subnetmask_l");
+  subnetmask_l = new IPLineEdit(this);
 
   sub_label = new QLabel(this);
   sub_label->setText(i18n("Subnet Mask:"));
 
-  rb = new QButtonGroup(this, "rb");
+  rb = new QButtonGroup(this);
   rb->hide();
   connect(rb, SIGNAL(clicked(int)), 
 	  SLOT(hitIPSelect(int)));  
 
-  dynamicadd_rb = new QRadioButton(this, "dynamicadd_rb");
+  dynamicadd_rb = new QRadioButton(this);
   dynamicadd_rb->setText(i18n("Dynamic IP Address"));
 
-  staticadd_rb = new QRadioButton(this, "staticadd_rb");
+  staticadd_rb = new QRadioButton(this);
   staticadd_rb->setText(i18n("Static IP Address"));
   rb->insert(dynamicadd_rb, 0);
   rb->insert(staticadd_rb, 1);
 
-  autoname=new QCheckBox(i18n("Auto-configure hostname from this IP"),
-	this,"autoname");
+  autoname=new QCheckBox(i18n("Auto-configure hostname from this IP"), this);
   autoname->adjustSize();
   autoname->setChecked(gpppdata.autoname());
-  connect(autoname,SIGNAL(toggled(bool)),this,SLOT(autoname_t(bool)));
+  connect(autoname,SIGNAL(toggled(bool)),
+	  this,SLOT(autoname_t(bool)));
 
   //load info from gpppdata
   if(!isnewaccount) {
@@ -323,7 +323,7 @@ DNSWidget::DNSWidget( QWidget *parent, bool isnewaccount, const char *name )
 {
   QGridLayout *tl = new QGridLayout(this, 3, 3, 10, 10);
   tl->addRowSpacing(0, fontMetrics().lineSpacing() - 10);
-  box = new QGroupBox(this,"box");
+  box = new QGroupBox(this);
   box->setTitle(i18n("DNS Servers"));
   tl->addMultiCellWidget(box, 0, 2, 0, 2);
   tl->setRowStretch(1, 1);
@@ -339,26 +339,26 @@ DNSWidget::DNSWidget( QWidget *parent, bool isnewaccount, const char *name )
   QGridLayout *l11 = new QGridLayout(5, 2);
   l1->addLayout(l11);
 
-  dnsdomain_label = new QLabel(this,"dnsdomainlabel");
+  dnsdomain_label = new QLabel(this);
   dnsdomain_label->setText(i18n("Domain Name:"));
   MIN_SIZE(dnsdomain_label);
   l11->addWidget(dnsdomain_label, 0, 0);
 
-  dnsdomain = new QLineEdit(this, "dnsdomain");
+  dnsdomain = new QLineEdit(this);
   dnsdomain->setMaxLength(DOMAIN_SIZE);
   FIXED_HEIGHT(dnsdomain);
   MIN_WIDTH(dnsdomain);
   l11->addWidget(dnsdomain, 0, 1);
   l11->addRowSpacing(1, 15);
 
-  dns_label = new QLabel(this,"dnslabel");
+  dns_label = new QLabel(this);
   dns_label->setText(i18n("DNS IP Address:"));
   MIN_SIZE(dns_label);
   l11->addWidget(dns_label, 2, 0);
 
   QHBoxLayout *l110 = new QHBoxLayout;
   l11->addLayout(l110, 2, 1);
-  dnsipaddr = new IPLineEdit(this, "dnsipaddr");
+  dnsipaddr = new IPLineEdit(this);
   connect(dnsipaddr, SIGNAL(returnPressed()), SLOT(adddns()));
   FIXED_HEIGHT(dnsipaddr);
   l110->addWidget(dnsipaddr, 4);
@@ -366,7 +366,7 @@ DNSWidget::DNSWidget( QWidget *parent, bool isnewaccount, const char *name )
 
   QHBoxLayout *l111 = new QHBoxLayout;
   l11->addLayout(l111, 3, 1);
-  add = new QPushButton(i18n("Add"), this, "add");
+  add = new QPushButton(i18n("Add"), this);
   connect(add, SIGNAL(clicked()), SLOT(adddns()));
   FIXED_HEIGHT(add);
   int width = add->sizeHint().width();
@@ -375,7 +375,7 @@ DNSWidget::DNSWidget( QWidget *parent, bool isnewaccount, const char *name )
   l111->addWidget(add);
   l111->addStretch(1);
 
-  remove = new QPushButton(i18n("Remove"), this, "remove");
+  remove = new QPushButton(i18n("Remove"), this);
   connect(remove, SIGNAL(clicked()), SLOT(removedns()));
   FIXED_HEIGHT(remove);
   width = remove->sizeHint().width();
@@ -384,13 +384,13 @@ DNSWidget::DNSWidget( QWidget *parent, bool isnewaccount, const char *name )
 
   l111->addWidget(remove);
 
-  servers_label = new QLabel(this,"servers");
+  servers_label = new QLabel(this);
   servers_label->setText(i18n("DNS Address List:"));
   servers_label->setAlignment(AlignTop|AlignLeft);
   MIN_SIZE(servers_label);
   l11->addWidget(servers_label, 4, 0);
  
-  dnsservers = new QListBox(this, "dnsservers");
+  dnsservers = new QListBox(this);
   dnsservers->setMinimumSize(150, 100);
   l11->addWidget(dnsservers, 4, 1);
 
@@ -447,30 +447,30 @@ void DNSWidget::removedns() {
 GatewayWidget::GatewayWidget( QWidget *parent, bool isnewaccount, const char *name )
   : QWidget(parent, name)
 {
-  box1 = new QGroupBox(this,"box1");
+  box1 = new QGroupBox(this);
   box1->setTitle(i18n("Gateway Setup"));
 
-  box = new QGroupBox(this,"box");
+  box = new QGroupBox(this);
 
-  rb = new QButtonGroup(this, "rb");
+  rb = new QButtonGroup(this);
   rb->hide();
   connect(rb, SIGNAL(clicked(int)), SLOT(hitGatewaySelect(int)));
 
-  defaultgateway = new QRadioButton(this, "defaultgateway");
+  defaultgateway = new QRadioButton(this);
   defaultgateway->setText(i18n("Default Gateway"));
   rb->insert(defaultgateway, 0);
 
-  staticgateway = new QRadioButton(this, "staticgateway");
+  staticgateway = new QRadioButton(this);
   staticgateway->setText(i18n("Static Gateway"));
   rb->insert(staticgateway, 1);
 
-  gatewayaddr = new IPLineEdit(this, "gatewayaddr");
+  gatewayaddr = new IPLineEdit(this);
 
-  gate_label = new QLabel(this, "label");
+  gate_label = new QLabel(this);
   gate_label->setText(i18n("Gateway\nIP Address:"));
 
   defaultroute=new QCheckBox(i18n("Assign the Default Route to this Gateway"),
-	this,"defaultroute");
+	this);
   defaultroute->adjustSize();
 
   //load info from gpppdata
@@ -561,7 +561,7 @@ ScriptWidget::ScriptWidget( QWidget *parent, bool isnewaccount, const char *name
 
   QGridLayout *tl = new QGridLayout(this, GRIDROWS, 3, 10, 10);
   tl->addRowSpacing(0, fontMetrics().lineSpacing() - 10);
-  box = new QGroupBox(this,"box");
+  box = new QGroupBox(this);
   box->setTitle(i18n("Edit Script"));
   tl->addMultiCellWidget(box, 0, GRIDROWS-1, 0, 2);
 
@@ -573,11 +573,11 @@ ScriptWidget::ScriptWidget( QWidget *parent, bool isnewaccount, const char *name
   //  l1->addWidget(default_script);
   //  l1->addStretch(1);
 
-  se = new ScriptEdit(this, "se");
+  se = new ScriptEdit(this);
   connect(se, SIGNAL(returnPressed()), SLOT(addButton()));
   l1->addWidget(se);
 
-  add = new QPushButton(i18n("Add"), this, "add");
+  add = new QPushButton(i18n("Add"), this);
   connect(add, SIGNAL(clicked()), SLOT(addButton()));
   FIXED_HEIGHT(add);
   int width = add->sizeHint().width();
@@ -585,14 +585,14 @@ ScriptWidget::ScriptWidget( QWidget *parent, bool isnewaccount, const char *name
   add->setMinimumWidth(width);
 
 
-  insert = new QPushButton(i18n("Insert"), this, "insert");
+  insert = new QPushButton(i18n("Insert"), this);
   connect(insert, SIGNAL(clicked()), SLOT(insertButton()));
   FIXED_HEIGHT(insert);
   width = insert->sizeHint().width();
   width = QMAX(width,60);
   insert->setMinimumWidth(width);
 
-  remove = new QPushButton(i18n("Remove"), this, "remove");
+  remove = new QPushButton(i18n("Remove"), this);
   connect(remove, SIGNAL(clicked()), SLOT(removeButton()));
   FIXED_HEIGHT(remove);
   width = remove->sizeHint().width();
@@ -609,19 +609,19 @@ ScriptWidget::ScriptWidget( QWidget *parent, bool isnewaccount, const char *name
   
   QHBoxLayout *l12 = new QHBoxLayout(0);
   l1->addLayout(l12);
-  stl = new QListBox(this, "stl");
+  stl = new QListBox(this);
   stl->setSmoothScrolling(false);
   stl->setAutoScrollBar(false);
   connect(stl, SIGNAL(highlighted(int)), SLOT(stlhighlighted(int)));
   stl->setMinimumSize(QSize(70, 140));
 
-  sl = new QListBox(this, "sl");
+  sl = new QListBox(this);
   sl->setSmoothScrolling(false);
   sl->setAutoScrollBar(false);
   connect(sl, SIGNAL(highlighted(int)), SLOT(slhighlighted(int)));
   sl->setMinimumSize(QSize(150, 140));
 
-  slb = new QScrollBar(this, "slb");
+  slb = new QScrollBar(this);
   slb->setFixedWidth(slb->sizeHint().width());
   connect(slb, SIGNAL(valueChanged(int)), SLOT(scrolling(int)));
 

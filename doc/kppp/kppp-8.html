@@ -1,6 +1,6 @@
 <HTML>
 <HEAD>
-<TITLE>The Kppp Handbook: Questions and answers</TITLE>
+<TITLE>The kppp Handbook: Questions and answers</TITLE>
 </HEAD>
 <BODY>
 <A HREF="kppp-7.html">Previous</A>
@@ -13,14 +13,18 @@
 <H2><A NAME="ss8.1">8.1 Frequently Asked Questions</A></H2>
 
 <P>
-<A NAME="kppp FAQ"></A> 
+<A NAME="<em/kppp/ FAQ"></A> 
 </P>
-<H3>I can't get kppp to work. kppp tells me that pppd has died or that a timeout has expired! </H3>
+<H3>I can't get <EM>kppp</EM> to work. <EM>kppp</EM> tells me that pppd has died or that a timeout has expired! </H3>
 
 <P>Did you read the this manual carefully? Here are once more the most common
 pitfalls.</P>
 <P>
 <UL>
+<LI> Click on the "Details" button. <EM>kppp</EM> will you give an excerpt from the
+PPP log messages (may not work on non-Linux systems, or even on some Linux
+distributions). The log will help you to track down the bug.
+</LI>
 <LI> Make sure that pppd is the actual pppd binary not a script
 </LI>
 <LI> Make sure that pppd is setuid root. You may set this mode by issuing <I>chmod u+s pppd</I> as root.
@@ -28,7 +32,7 @@ pitfalls.</P>
 <LI> Make sure that your <CODE>/etc/ppp/options</CODE> file exists and that it doesn´t contain any conflicting entries. If in doubt: Leave this file empty. 
 </LI>
 <LI> Make sure that you DON'T use the option "lock" as an argument
-for pppd (kppp is already taking care of device locking )
+for pppd (<EM>kppp</EM> is already taking care of device locking )
 </LI>
 <LI> Remove the "lock" option from your <CODE>/etc/ppp/options</CODE>
 and <CODE>~/.ppprc</CODE> files!
@@ -40,7 +44,7 @@ NOTE: COM1 equals ttyS0, COM2 is ttyS1 and so on. </LI>
 <LI> Make sure you set the right permission. In case of trouble
 you might want to run it as root first and then later, when
 everything is working o.k give it less harmful permission if you can not
-afford to run kppp setuid root. The proper way to proceed would probably
+afford to run <EM>kppp</EM> setuid root. The proper way to proceed would probably
 be creating a "modem" group.
 </LI>
 <LI> You might be launching pppd too early, i.e. before the remote server is
@@ -60,19 +64,19 @@ launch PPP. Some users even reported, that they had to append "Pause 1" or
 </CODE></BLOCKQUOTE>
 </P>
 
-<H3>kppp tells me ``Sorry, can't open the modem''.</H3>
+<H3><EM>kppp</EM> tells me ``Sorry, can't open the modem''.</H3>
 
 
-<P>This means that kppp doesn't have permissions to open the modem
+<P>This means that <EM>kppp</EM> doesn't have permissions to open the modem
 device or that you selected a modem device on the Modem Tab Dialog that is
 not valid. First make sure you selected the right modem device. Once you are
 sure you have selected the right modem device, you must 
-give kppp the right permission to access the modem 
-device and to be able to modify <CODE>/etc/resolv.conf</CODE> in case you want kppp to 
-configure DNS correctly for you. If you can afford to run kppp setuid root
+give <EM>kppp</EM> the right permission to access the modem 
+device and to be able to modify <CODE>/etc/resolv.conf</CODE> in case you want <EM>kppp</EM> to 
+configure DNS correctly for you. If you can afford to run <EM>kppp</EM> setuid root
 this would solve all access problems for you, if not you will have to figure
 out what the right permissions are for your purposes. In order to give
-kppp setuid root permissions do the following:</P>
+<EM>kppp</EM> setuid root permissions do the following:</P>
 <P>
 <BLOCKQUOTE><CODE>
 <PRE>
@@ -85,39 +89,40 @@ kppp setuid root permissions do the following:</P>
 </P>
 
 
-<H3>kppp tells me it can't create a modem lock file.</H3>
+<H3><EM>kppp</EM> tells me it can't create a modem lock file.</H3>
 
-<P>This in most instances means that you have installed kppp
-without SETUID bit on while you, the person executing kppp, 
+<P>This in most instances means that you have installed <EM>kppp</EM>
+without SETUID bit on while you, the person executing <EM>kppp</EM>, 
 doesn't have write access to the lock file directory which
 by default is <CODE>/var/lock</CODE>. This for example is the case on 
 RedHat systems. Check the modem dialog for the
 precise location you have chosen. The solution is easy --
-either run kppp SETUID if you can afford to, or give regular
+either run <EM>kppp</EM> SETUID if you can afford to, or give regular
 users write access to <CODE>/var/lock</CODE> or create a modem group
 that will have access to the <CODE>/var/lock</CODE> file.</P>
 
 <P>
 <A NAME="setuid"></A> 
 </P>
-<H3>Why is Kppp installed with the SETUID bit on?</H3>
+<H3>Why is <EM>kppp</EM> installed with the SETUID bit on?</H3>
 
 
 <P>There is no need for the SETUID bit, if you know a bit of Unix systems 
 administration. Simply create a modem group, add all users that you
 want to give access to the modem to that group and make the modem
 device read/writeable for that group. Also if you want DNS configuration
-to work with Kppp, then <CODE>/etc/resolv.conf</CODE> must be read/writeable by the
+to work with <EM>kppp</EM>, then <CODE>/etc/resolv.conf</CODE> must be read/writeable by the
 members of that group. The same counts for
 <CODE>/etc/ppp/pap-secrets</CODE> and <CODE>/etc/ppp/chap-secrets</CODE> if
 you want to use the built-in PAP or CHAP support, respectively.</P>
-<P>Please do not criticize me for installing Kppp with setuid bit
+<P>Please do not criticize me for installing <EM>kppp</EM> with setuid bit
 on, I simply can no longer handle the amount of mail I used to get from
-desperate users who had problems getting kppp to work because they 
+desperate users who had problems getting <EM>kppp</EM> to work because they 
 didn't understand enough about Unix and device permissions.</P>
+<P>The <EM>kppp</EM> team has lately done a lot of work to make <EM>kppp</EM> setuid-safe. But it's
+up to you to decide if you install and how you install it.</P>
 
-
-<H3>kppp just sits there and waits: Expecting OK</H3>
+<H3><EM>kppp</EM> just sits there and waits: Expecting OK</H3>
 
 <P>Have you played with the CR/LF setting?</P>
 
@@ -135,7 +140,7 @@ Issuing <I>xhost +</I> before starting the connection would do the job, but be <
 <P> </P>
 
 
-<H3>How do I make kppp send a \n or a \r?</H3>
+<H3>How do I make <EM>kppp</EM> send a \n or a \r?</H3>
 
 <P>Just send an empty string such as in the following script:
 <BLOCKQUOTE><CODE>
@@ -152,35 +157,93 @@ Send        ppp
 </CODE></BLOCKQUOTE>
 </P>
 
-<H3>kppp complains: "Can't create lock file"</H3>
+<H3><EM>kppp</EM> complains: "Can't create lock file"</H3>
 
 
 <P>This means that you don't have permissions to create a lock file.
 If for example you have specified '/var/lock/LCK..modem" on the
 modem dialog tab, you must have write permission to write
 to /var/lock/. This is of course no problem if you have
-given kppp setuid permissions. Please read the section on 
+given <EM>kppp</EM> setuid permissions. Please read the section on 
 <A HREF="kppp-3.html#lock files">lock files</A>.</P>
 
 
 
+<H3>My modem makes much noise when dialing!</H3>
+
+<P>Click on "Setup", "Modem". You can control the modem volume here in three
+steps: off, medium and high. For most modems "medium" and "high" result in the
+same volume. If that doesn't work, make sure that the correct settings for
+your modem are specified in "Setup"/"Modem"/"Modem commands"!</P>
+
+
+<H3><EM>kppp</EM> reports an unusual modem speed like 115200, 57600 or similar </H3>
+
+<P>Many modems only report the speed of the serial line and not the speed over
+the telephone line as default. You must configure these modems to report the
+true line speed (add to modem init or dial string). For many modems this
+command is "ATW2". If you want to add it to the dial-string (typical "ATD"), the new dial
+string would be "ATW2D".</P>
+
+
+<H3><EM>kppp</EM> reports "Unknown speed"</H3>
+
+<P>New modems often have very complex connection messages like "CONNECT
+LAP.M/V42.bis/115000:RX/31200:TX", and <EM>kppp</EM> cannot parse this message
+correctly. Turn on "Show Log" and you'll see the connection speed. I'm
+currently working on a solution for this, and the parser is now much better,
+but still not perfect.</P>
+
+
+<H3>Slow connection speed</H3>
+
+<P>If you are not satisfied with the modem speed, make sure you've set the 
+connection speed ("Setup" / "Device" / "Speed") to 57600 or higher. Make sure
+that your serial ports support higher speeds. Many systems based on i486 do
+not work correctly when you set the speed to 115200. If you have a 8250 UART
+chip, it won't work. If you have a 16550 or 16550A it should work flawlessly.</P>
+
+
+<H3>My phone line needs pulse dialing instead of tone dialing (or vice-versa)</H3>
+
+<P>You must modify you modem dial string. Nearly all modems support the 
+following AT-commands:
+<UL>
+<LI>ATDT - selects tone dial</LI>
+<LI>ATDP - selects pulse dial</LI>
+</UL>
+</P>
+
+
+<H3><EM>kppp</EM> makes really strange things (whatever)</H3>
+
+<P>Did you compile it or the libraries with gcc-2.8? This version of gcc is
+somewhat broken, and it will not work as expected.</P>
+
+
 <H3>How do I write a telephone cost rules file?</H3>
 
-<P>Just follow the TEMPLATE rules files supplied with kppp. You should be
+<P>Just follow the TEMPLATE rules files supplied with <EM>kppp</EM>. You should be
 able to find a copy in the <CODE>${KDEDIR}/doc/HTML/kppp</CODE>. 
-Use the <CODE>-r</CODE> kppp command line options to check the syntax of your proposed
+Use the <CODE>-r</CODE> <EM>kppp</EM> command line options to check the syntax of your proposed
 rules file.</P>
 
 
 <H3>I have written a telephone cost rules file for my region. Where can I submit it so that others can make use of it?</H3>
 
 <P>I would love to receive any rule files written. I will make them available
-on my kppp 
+on my <EM>kppp</EM> 
 <A HREF="http://math.cornell.edu/~wuebben/kppp/kppp.html">web page</A>.
 Before you send me a new rules file make sure it is not already available on 
-the kppp web page. Then email the new rules file  to 
+the <EM>kppp</EM> web page. Then email the new rules file  to 
 <A HREF="mailto:wuebben@math.cornell.edu">me</A>.</P>
 
+
+<H3>Can my phone cost rulefile contain fractional time units, e.g. "(0.17,45.5)"?</H3>
+
+<P>Yes this is possible. But you should not use unusual small time units (below
+tenth of a second), because this would result in higher CPU load (though I
+doubt you'll notice with a modern CPU :-)</P>
 
 <H3>My country observes a moving holiday different from easter.</H3>
 
@@ -188,6 +251,7 @@ the kppp web page. Then email the new rules file  to
 holiday. Please have a look at ruleset.cpp and emulate the ``easter'' example.
 Then send 
 <A HREF="mailto:wuebben@math.cornell.edu">me</A> the patches.</P>
+
 
 
 

@@ -9,3 +9,7 @@ pkg_DATA = kppp.html kppp-1.html kppp-2.html kppp-3.html \
 pkgdir = $(kde_htmldir)/en/kppp
 
 EXTRA_DIST = $(pkg_DATA)
+
+install-data-local:
+	ln -sf $(kde_htmldir)/en/kppp/kppp.html \
+	       $(kde_htmldir)/en/kppp/index.html

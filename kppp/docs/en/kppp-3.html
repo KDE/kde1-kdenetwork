@@ -1,17 +1,17 @@
 <HTML>
 <HEAD>
-<TITLE>The Kppp Handbook: Setting up kppp</TITLE>
+<TITLE>The kppp Handbook: Setting up kppp</TITLE>
 </HEAD>
 <BODY>
 <A HREF="kppp-2.html">Previous</A>
 <A HREF="kppp-4.html">Next</A>
 <A HREF="kppp.html#toc3">Table of Contents</A>
 <HR>
-<H2><A NAME="s3">3. Setting up kppp</A></H2>
+<H2><A NAME="s3">3. Setting up <EM>kppp</EM></A></H2>
 
 
 <P> <CODE> PLEASE DON'T FORGET TO READ THE FREQUENTLY ASKED QUESTIONS ! THANK YOU!</CODE></P>
-<P>In order to set up kppp, start kppp and push the <CODE>Setup</CODE> button on kppp's
+<P>In order to set up <EM>kppp</EM>, start <EM>kppp</EM> and push the <CODE>Setup</CODE> button on <EM>kppp</EM>'s
 main window. A new tab dialog will appear. </P>
 
 <H2><A NAME="ss3.1">3.1 Accounts</A></H2>
@@ -44,18 +44,18 @@ your serial port.</P>
 <DT><B>Lock File Directory</B><DD><P>Enter the path-name of the desired modem lock file.
 Under Linux this is typically /var/lock and you shouldn't change this
 to anything else unless you know what you are doing. Programs such
-as mgetty depend on the existence of such lock files and kppp will
+as mgetty depend on the existence of such lock files and <EM>kppp</EM> will
 not work with mgetty if the lock file is not set correctly.
-If you leave this edit-box empty, kppp will not attempt to create a 
+If you leave this edit-box empty, <EM>kppp</EM> will not attempt to create a 
 lockfile. Make sure that you don't use the option "lock" to pppd
-if you entered a modem lock file and thus want kppp to lock the modem,
+if you entered a modem lock file and thus want <EM>kppp</EM> to lock the modem,
 since the pppd option "lock" will induce pppd to try to lock the
-modemdevice. However since kppp already locked the device pppd
-will fail and kppp will display "pppd died unexpectedly".
+modemdevice. However since <EM>kppp</EM> already locked the device pppd
+will fail and <EM>kppp</EM> will display "pppd died unexpectedly".
 Make sure that you have permission to write to the lock file
-directory or kppp will display the error message:"Can't create lock file".</P>
+directory or <EM>kppp</EM> will display the error message:"Can't create lock file".</P>
 
-<DT><B>Modem Timeout</B><DD><P>This is the time in seconds that kppp waits for the 
+<DT><B>Modem Timeout</B><DD><P>This is the time in seconds that <EM>kppp</EM> waits for the 
 ``CONNECT'' response from your modem after dialing into another modem. (Typically a modem
 of your IPS's modem pool ) I recommend a setting of about 30 seconds.</P>
 </DL>
@@ -74,7 +74,7 @@ in the Appendix of this documentation. The information supplied there
 should also be of help in case  you experience trouble setting up a stable 
 connection with your ISP's modems.</P>
 
-<DT><B>Query Modem</B><DD><P>Pushing the Query Modem Button will induce kppp to ask
+<DT><B>Query Modem</B><DD><P>Pushing the Query Modem Button will induce <EM>kppp</EM> to ask
 your modem to identify itself. On success your modems response will be
 displayed in a dialog. This may or may not prove to be informative depending
 on your modem.</P>
@@ -91,35 +91,30 @@ longer need a terminal program such as minicom or seyon.</P>
 
 <P>
 <DL>
-<DT><B>pppd Path</B><DD><P>Specify the location of your pppd binary. It is very
-important that you are sure that this is
-in fact the pppd binary and not a pointer to a script which invokes pppd. 
-Otherwise kppp will not function properly.</P>
-
-<DT><B>pppd Timeout</B><DD><P>kppp will wait this amount of time after running the script
+<DT><B>pppd Timeout</B><DD><P><EM>kppp</EM> will wait this amount of time after running the script
 and starting pppd for pppd to establish a valid ppp link before giving up
 and killing pppd.</P>
 
-<DT><B>Automatic Redial on Disconnect</B><DD><P>Selecting this will have kppp try to 
+<DT><B>Automatic Redial on Disconnect</B><DD><P>Selecting this will have <EM>kppp</EM> try to 
 reconnect in case you inadvertently got disconnected while online.</P>
 
-<DT><B>Show Clock on Caption</B><DD><P>This will have kppp display the time connected
-on the caption of the kppp window displayed while being online.</P>
+<DT><B>Show Clock on Caption</B><DD><P>This will have <EM>kppp</EM> display the time connected
+on the caption of the <EM>kppp</EM> window displayed while being online.</P>
 
-<DT><B>Disconnect on X-server shutdown</B><DD><P>Checking this option will cause kppp
+<DT><B>Disconnect on X-server shutdown</B><DD><P>Checking this option will cause <EM>kppp</EM>
 to terminate the ppp link, disconnect the modem and terminate accounting
 in an orderly fashion when the X-server shuts down. This is useful if
-you are prone to forget to shut down kppp on X-server exit or simply
+you are prone to forget to shut down <EM>kppp</EM> on X-server exit or simply
 don't want to have to worry about disconnecting your connection.
-If you don't want kppp to hang up the modem on X-server exit, you should
+If you don't want <EM>kppp</EM> to hang up the modem on X-server exit, you should
 leave this checkbox unchecked. Be aware however, that if you have accounting
-enabled, and you don't want kppp to hang up on X-server exit,  you will 
+enabled, and you don't want <EM>kppp</EM> to hang up on X-server exit,  you will 
 have a nonterminated accounting entry in you accounting logs, when the
-X-server exits and kppp terminates.</P>
+X-server exits and <EM>kppp</EM> terminates.</P>
 
-<DT><B>Minimize Window on Connect</B><DD><P>kppp's window will be minimized after a connection has been established. The elapsed connection time will be shown in the taskbar.</P>
+<DT><B>Minimize Window on Connect</B><DD><P><EM>kppp</EM>'s window will be minimized after a connection has been established. The elapsed connection time will be shown in the taskbar.</P>
 
-<DT><B>Dock into Panel on Connect</B><DD><P>If this option is chosen kppp will dock into the panel where it will be symbolized by a small animated icon. Use the left mouse button on this icon to restore kppp's window. The right mouse button will open up a popup-menu</P>
+<DT><B>Dock into Panel on Connect</B><DD><P>If this option is chosen <EM>kppp</EM> will dock into the panel where it will be symbolized by a small animated icon. Use the left mouse button on this icon to restore <EM>kppp</EM>'s window. The right mouse button will open up a popup-menu</P>
 <P>that offers to restore the window, show further transfer statistics or close the connection.
 This option overrides <EM>Minimize Window on Connect</EM>.</P>
 </DL>
