@@ -59,7 +59,7 @@ struct table_entry {
 class KTalkdTable
 {
   public:
-    KTalkdTable() { table = 0L; }
+    KTalkdTable() : table (0L) {};
     ~KTalkdTable();
     void insert_table(NEW_CTL_MSG *request, NEW_CTL_RESPONSE *response, ForwMachine * fwm);
     int delete_invite(int id_num);
