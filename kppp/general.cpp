@@ -211,7 +211,7 @@ AboutWidget::AboutWidget( QWidget *parent, const char *name)
 
   QString string2;
   string2 = 
-    "With contributions from:\n"\
+    "\n\n\nWith contributions from:\n"\
     "Mario Weilguni\n"
     "Markus Wuebben\n"\
     "Jesus Fuentes Saavedra\n\n";
