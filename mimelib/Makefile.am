@@ -55,56 +55,7 @@ libmimelib_la_SOURCES = \
     uuencode.cpp \
     binhex.cpp
 
-mimelib_headers = \
-   address.h \
-   addrlist.h \
-   body.h \
-   bodypart.h \
-   boyermor.h \
-   config.h \
-   datetime.h \
-   debug.h \
-   disptype.h \
-   entity.h \
-   enum.h \
-   field.h \
-   fieldbdy.h \
-   group.h \
-   headers.h \
-   mailbox.h \
-   mboxlist.h \
-   mechansm.h \
-   mediatyp.h \
-   message.h \
-   mimepp.h \
-   msgcmp.h \
-   msgid.h \
-   nntp.h \
-   param.h \
-   pop.h \
-   protocol.h \
-   smtp.h \
-   string.h \
-   text.h \
-   token.h \
-   utility.h \
-   uuencode.h \
-   binhex.h
-
-INCLUDES = -I. -I$(srcdir)
 DEFS = -D$(LIBVERSION) @DEFS@
-
-install-data-local:
-	$(mkinstalldirs) $(includedir)/mimelib
-	@list='$(mimelib_headers)'; for p in $$list; do \
-	echo " $(INSTALL_DATA) ./mimelib/$$p $(includedir)/mimelib/$$p"; \
-	$(INSTALL_DATA) ./mimelib/$$p $(includedir)/mimelib/$$p; \
-	done
- 
-uninstall-local:
-	@list='$(mimelib_headers)'; for p in $$list; do \
-	rm -f $(includedir)/mimelib/$$p; \
-	done
 
 libmimelib_la_LDFLAGS = -version-info 1:0
 
