@@ -204,7 +204,14 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
   //  gm2->addWidget(nicks, 0);
 
   pan->activate(mainw, nicks);
-  pan->setAbsSeparatorPos(width() - 100);
+  // If we are talking to a single person, don't show nick list
+  if((channel_name[0] == '!') ||
+     (channel_name[0] == '#')){
+    pan->setAbsSeparatorPos(width() - 100);
+  }
+  else{
+    pan->setAbsSeparatorPos(width());
+  }
   //  mainw->setMinimumWidth(0);             // matched the main text window
 
   linee = new aHistLineEdit(f, "qle");        // aHistEdit is a QLineEdit with 
@@ -488,6 +495,8 @@ void KSircTopLevel::sirc_receive(QString str)
 	// Insert line to the end
 	connect(this, SIGNAL(changeSize()),
 		item, SLOT(updateSize()));
+	connect(this, SIGNAL(freezeUpdates(bool)),
+		item, SLOT(freeze(bool)));
 	mainw->insertItem(item, -1);
 	if(ticker){
 	  QString text;
@@ -516,9 +525,9 @@ void KSircTopLevel::sirc_receive(QString str)
 
     //    if(mainw->autoUpdate() == FALSE){
     mainw->setAutoUpdate(TRUE);
-      //      mainw->update();
-      //      mainw->repaint(TRUE);
-      //    }
+    //      mainw->update();
+    //    mainw->repaint(TRUE);
+    //    }
 
     // If we need to scroll, we, scroll =)
     // scrollToBottom returns true if we should repaint.
@@ -611,6 +620,7 @@ void KSircTopLevel::sirc_line_return()
   else if((strncmp(s, "/part", 5) == 0) ||
 	  (strncmp(s, "/leave", 6) == 0) ||
 	  (strncmp(s, "/hop", 4) == 0) ||
+	  (strncmp(s, "/bye", 4) == 0) ||
 	  (strncmp(s, "/quit", 5) == 0)){
     QApplication::postEvent(this, new QCloseEvent()); // WE'RE DEAD
     linee->setText("");
@@ -1027,6 +1037,13 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	s3 = string.mid(1, string.find(' ', 1) - 1); // find the old know
 	pos = string.find("known as ") + 9;    // find the new nick
 	s4 = string.mid(pos, string.length() - pos);
+
+	// If we have a window open talking to the nick
+	// Change the nick to the new one.
+	if((channel_name[0] != '#') && 
+	   (strcasecmp(s3,channel_name) == 0)){
+	  control_message(CHANGE_CHANNEL, s4.lower());
+	}
 	//	cerr << s3 << "-" << s4 << endl;
 	// search the list for the nick and remove it
 	// since the list is source we should do a binary search...
@@ -1283,6 +1300,7 @@ void KSircTopLevel::closeEvent(QCloseEvent *)
 void KSircTopLevel::resizeEvent(QResizeEvent *e)
 {
   bool update = mainw->autoUpdate();
+  emit freezeUpdates(TRUE);
   mainw->setAutoUpdate(FALSE);
   KTopLevelWidget::resizeEvent(e);
 //  cerr << "Updating list box\n";
@@ -1290,12 +1308,19 @@ void KSircTopLevel::resizeEvent(QResizeEvent *e)
   if(mainw->maximumSize().width() > width()){
     mainw->setMinimumWidth(width() - 100);
   }
-  pan->setAbsSeparatorPos(width()-100);
+  // If we are talking too a person, don't show the nick list
+  if((channel_name[0] == '!') ||
+     (channel_name[0] == '#')){
+    pan->setAbsSeparatorPos(width() - 100);
+  }
+  else{
+    pan->setAbsSeparatorPos(width());
+  }
   emit changeSize();
   mainw->scrollToBottom();
   mainw->setAutoUpdate(update);
+  emit freezeUpdates(FALSE);
   emit changeSize();
-  mainw->repaint(TRUE);
   repaint();
   mainw->scrollToBottom();
 
@@ -1346,6 +1371,7 @@ void KSircTopLevel::control_message(int command, QString str)
       sirc_receive(QString(""));
     break;
   case REREAD_CONFIG:
+    emit freezeUpdates(TRUE); // Stop the list boxes update
     mainw->setUpdatesEnabled(FALSE); // Let's try and reduce the flicker
     nicks->setUpdatesEnabled(FALSE); // just a little bit.
     linee->setUpdatesEnabled(FALSE);
@@ -1371,10 +1397,11 @@ void KSircTopLevel::control_message(int command, QString str)
     mainw->setUpdatesEnabled(TRUE);
     nicks->setUpdatesEnabled(TRUE);
     linee->setUpdatesEnabled(TRUE);
-    emit changeSize(); // Have the ist box update correctly.
     setUpdatesEnabled(TRUE);
-    repaint(TRUE);
+    emit freezeUpdates(FALSE); // Stop the list boxes update
+    emit changeSize(); // Have the ist box update correctly.
     mainw->scrollToBottom();
+    repaint(TRUE);
     break;
   case SET_LAG:
     if(str.isNull() == FALSE){

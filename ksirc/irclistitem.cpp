@@ -17,6 +17,7 @@ ircListItem::ircListItem(QString s, const QColor *c, QListBox *lb, QPixmap *p = 
 
 
   Wrapping = TRUE;
+  frozen = FALSE;
 
   rows = 1;
   linewidth = 0;
@@ -65,6 +66,11 @@ int ircListItem::row()
 
 void ircListItem::setupPainterText()
 {
+
+  if(frozen == TRUE){
+    need_update = TRUE;
+    return;
+  }
 
   lineheight = parent_lb->fontMetrics().lineSpacing();
   QFontMetrics fm = parent_lb->fontMetrics();
@@ -202,6 +208,10 @@ void ircListItem::setupPainterText()
 
 void ircListItem::updateSize(){
   setupPainterText();
+}
+
+void ircListItem::freeze(bool f){
+  frozen = f;
 }
 
 void ircListItem::setWrapping(bool _wrap){

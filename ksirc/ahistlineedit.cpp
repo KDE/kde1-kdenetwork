@@ -58,29 +58,33 @@ void aHistLineEdit::keyPressEvent ( QKeyEvent *e )
     switch ( e->key() ) {
     case Key_B:
       s.insert( s.length(), 0x02 );
+      setText(s);
       break;
     case Key_U:
       s.insert( s.length(), 0x1f );
+      setText(s);
       break;
     case Key_R:
       s.insert( s.length(), 0x16 );
+      setText(s);
       break;
     case Key_K:
       s.insert( s.length(), 0x03 );
+      setText(s);
       break;
     case Key_O:
       s.insert( s.length(), 0x0f );
+      setText(s);
       break;
     case Key_I:
       s.append("~i");
+      setText(s);
       break;
     default:
       QLineEdit::keyPressEvent(e);
     }
-    if(strcmp(s, text()) != 0)
-      setText(s);
   }
-  else{
+  else if(e->state() == 0){
     switch(e->key()){
     case Key_Up:
       if(hist.at() == current){ // same as Key_Down
@@ -121,6 +125,9 @@ void aHistLineEdit::keyPressEvent ( QKeyEvent *e )
     default:
       QLineEdit::keyPressEvent(e);
     }
+  }
+  else{
+    QLineEdit::keyPressEvent(e);
   }
 }
 

@@ -19,6 +19,8 @@ class KSircListBox : public QListBox
   void insertItem ( const QPixmap & pixmap, int index=-1 );
   void removeItem ( int index );
 
+  void clear();
+
 //  virtual void scrollBarUpdates(bool);
 
  signals:

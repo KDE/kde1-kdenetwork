@@ -33,6 +33,7 @@ class ircListItem : public QObject,
 
 public slots:
   virtual void updateSize();
+  virtual void freeze(bool);
   
 protected:
   virtual void paint(QPainter *);
@@ -62,6 +63,7 @@ private:
   int xPos;
 
   bool Wrapping;
+  bool frozen;
 
 
 };

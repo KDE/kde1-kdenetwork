@@ -190,3 +190,9 @@ void KSircListBox::removeItem ( int index )
 }
 
 
+void KSircListBox::clear()
+{
+  thDirty = TRUE;
+  QListBox::clear();
+  
+}

@@ -153,6 +153,7 @@ KSircProcess::KSircProcess( char *_server=0L, QObject * parent=0, const char * n
 
   running_window = TRUE;        // True so we do create the default
   new_toplevel("!no_channel");  // 
+  TopList.insert("!default", TopList["!no_channel"]);
 
   running_window = FALSE;       // set false so next changes the first name
   default_follow_focus = TRUE;
@@ -240,9 +241,10 @@ void KSircProcess::new_toplevel(QString str)
   if(running_window == FALSE){ // If we're not fully running, reusing
 			       // !default window for next chan.
     running_window = TRUE;
-    TopList.insert(str, TopList["!no_channel"]); 
-    TopList.remove("!no_channel"); // We're no longer !no_channel
-    TopList[str]->control_message(CHANGE_CHANNEL, str);
+    // insert and remove is done as a side effect of the control_message call
+    // TopList.insert(str, TopList["!no_channel"]); 
+    // TopList.remove("!no_channel"); // We're no longer !no_channel
+    TopList["!no_channel"]->control_message(CHANGE_CHANNEL, str);
   }
   else if(!TopList[str]){ // If the window doesn't exist, continue
     // If AutoCreate windows is on, let's make sure we're not being flooded.
@@ -376,6 +378,8 @@ void KSircProcess::recvChangeChannel(QString old_chan, QString
   // ServerController needs our name so it can have a uniq handle for
   // the window name.
   //
+  if(TopList[old_chan])
+    TopList.insert(new_chan, TopList.take(old_chan));
   emit ProcMessage(QString(server), ProcCommand::changeChannel,
 		   old_chan + " " + new_chan);
 }

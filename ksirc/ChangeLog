@@ -1,3 +1,9 @@
+1998-01-30  Andrew Stanley-Jones  <asj@chowtown.cban.com>
+
+	* toplevel.cpp (parse_input): If we see a nick change that's
+ 	pertinent to us, ie we're talking to a nick and he changes nicks,
+ 	try and follow the nick change.
+
 1998-01-28  Andrew Stanley-Jones  <asj@chowtown.cban.com>
 
 	* toplevel.cpp (parse_input): Clears screan before displaying the
@@ -180,6 +186,14 @@
 $Revision$
 	
 $Log$
+Revision 1.23  1998/01/29 05:23:35  asj
+	* toplevel.cpp (parse_input): Clears screan before displaying the
+ 	prompt.  Needed minor changes everywhere.
+	(parse_input): Added ssfe 'R' message to rejoin a channel.
+
+	* servercontroller.cpp (saveProperties): Added KDE session
+ 	management.
+
 Revision 1.22  1998/01/26 00:57:53  asj
 	* Handles +v on nicks in channels.
 

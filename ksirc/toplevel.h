@@ -91,6 +91,11 @@ signals:
     * resize and readjust their paint'ing prefrences.
     */
   void changeSize();
+  /**
+   * Stop updating list item sizes, majour changes comming through
+   *
+   */
+  void freezeUpdates(bool);
 
 public slots:
   /**
