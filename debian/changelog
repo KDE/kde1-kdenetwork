@@ -1,3 +1,11 @@
+kdenetwork (4:1.1.1-19990529-1) unstable; urgency=low
+
+  * new upstream CVS version
+  * fixed some dependency issues to make lintian happy
+  * added a dh_makeshlibs to also make lintian happy
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Sat, 29 May 1999 22:00:56 -0400
+
 kdenetwork (4:1.1.1-19990523-1) unstable; urgency=low
 
   * new upstream CVS version 
