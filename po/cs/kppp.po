@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kppp 0.9.6\n"
 "POT-Creation-Date: 1998-03-19 22:13+0100\n"
-"PO-Revision-Date: 1998-03-12 19:37 MET\n"
+"PO-Revision-Date: 1998-03-28 23:21 MET\n"
 "Last-Translator: Miroslav Flídr <flidr@kky.zcu.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -742,7 +742,7 @@ msgstr "Poèáteèní odezva:"
 
 #: modemcmds.cpp:86
 msgid "Init Delay (sec/100):"
-msgstr ""
+msgstr "Zpo¾dìní pøi inicializaci (sec/100):"
 
 #: modemcmds.cpp:91
 msgid "Dial String:"
@@ -1079,6 +1079,7 @@ msgid ""
 "This option has to removed since kppp takes care of device locking itself.\n"
 "Contact your system administrator."
 msgstr ""
-
-#~ msgid "Modem sustains fast initialization."
-#~ msgstr "Modem podporuje rychlou inicializaci."
+"kppp zjistilo nastavení 'lock' v souboru /etc/ppp/options.\n"
+"Toto nastavení musí být odstranìno, proto¾e se kppp stará \n"
+"samo zamykání zaøízení.\n"
+"Kontaktujte prosím administrátora systému."

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmail 0.4.4\n"
 "POT-Creation-Date: 1998-03-19 22:13+0100\n"
-"PO-Revision-Date: 1998-03-12 19:17 MET\n"
+"PO-Revision-Date: 1998-03-29 09:07 MET DST\n"
 "Last-Translator: Miroslav Flídr <flidr@ky.zcu.cz>\n"
 "Language-Team: Czech <sc@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -618,36 +618,33 @@ msgstr "Datum"
 
 #: kmheaders.cpp:223
 msgid "order of arrival"
-msgstr ""
+msgstr "poøadí pøíchodu"
 
 #: kmheaders.cpp:232
-#, fuzzy
 msgid "subject"
-msgstr "Pøedmìt"
+msgstr "pøedmìt"
 
 #: kmheaders.cpp:233
-#, fuzzy
 msgid "date"
-msgstr "Datum"
+msgstr "datum"
 
 #: kmheaders.cpp:234
-#, fuzzy
 msgid "sender"
-msgstr "Odesilatel"
+msgstr "odesilatel"
 
 #: kmheaders.cpp:235
 msgid "status"
-msgstr ""
+msgstr "status"
 
 #: kmheaders.cpp:237
 #, c-format
 msgid "Sorting messages descending by %s"
-msgstr ""
+msgstr "Tøídím zprávy sestupnì podle %s"
 
 #: kmheaders.cpp:238
 #, c-format
 msgid "Sorting messages ascending by %s"
-msgstr ""
+msgstr "Tøídím zprávy vzestupnì podle %s"
 
 #: kmheaders.cpp:328
 msgid "Message(s) saved."
@@ -1064,7 +1061,7 @@ msgstr ""
 #: main.cpp:378
 #, c-format
 msgid "Unknown command line option: %s"
-msgstr ""
+msgstr "Neznámý parametr pøíkazové øádky: %s"
 
 #: kmacctlocal.cpp:91
 #, c-format
