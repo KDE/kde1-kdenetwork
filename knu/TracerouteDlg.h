@@ -48,7 +48,7 @@
 
 class TracerouteDlg: public CommandDlg
 {
-  Q_OBJECT;
+  Q_OBJECT
 
 public:
   TracerouteDlg(QString commandName, 

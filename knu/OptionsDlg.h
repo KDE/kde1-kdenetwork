@@ -57,7 +57,7 @@
 
 class OptionsDlg: public QDialog
 {
-  Q_OBJECT;
+  Q_OBJECT
 
 public:
   OptionsDlg(CommandCfgDlg **, int, 
