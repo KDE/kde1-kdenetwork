@@ -1137,7 +1137,7 @@ msgstr ""
 
 #: general.cpp:532
 msgid "Modem Asserts CD Line."
-msgstr "Modem Asserts CD Line."
+msgstr ""
 
 #: general.cpp:540
 msgid ""
@@ -1237,13 +1237,17 @@ msgid ""
 "\n"
 "To test it, right-click somewhere in this text."
 msgstr ""
-"Fra og med versjon 1.4.8 har kpp en ny egenskap som kalles \"Hurtighjelp\". "
-"Det er det samme som verktøytips, men du kan starte det hvor du vil.\n"
+"Fra og med versjon 1.4.8 har kpp en ny egenskap\n"
+"som kalles \"Hurtighjelp\". Det er det samme som\n"
+"verktøytips, men du kan starte det hvor du vil.\n"
 "\n"
-"For å starte det, klikk på en kontroll som knapper eller etiketter med\n"
-"høyre musknapp. Hvis det du klikker på støtter Hurtighjelp, vil en meny\n"
-"fare opp som vil lede deg til Hurtighjelp.\n"
-"For å teste det, høyreklikk et eller annet sted i denne teksten."
+"For å starte det, klikk på en kontroll som\n"
+"knapper eller etiketter med høyre musknapp. Hvis\n"
+"det du klikker på støtter Hurtighjelp, vil en\n"
+"meny fare opp som vil lede deg til Hurtighjelp.\n"
+"\n"
+"For å teste det, høyreklikk et eller annet sted\n"
+"i denne teksten."
 
 #: main.cpp:139
 msgid "Don't show this hint again"
@@ -1951,7 +1955,7 @@ msgstr ""
 
 #: ppplog.cpp:141
 msgid "You haven't started the PPP software on the peer system."
-msgstr ""
+msgstr "Du har ikke startet PPP-programvaren på peer-systemet."
 
 #: ppplog.cpp:144
 msgid "Check that you supplied the correct username and password!"
@@ -1978,6 +1982,8 @@ msgid ""
 "You have passed an invalid option to pppd. See `man pppd' for a complete "
 "list of valid arguments."
 msgstr ""
+"Du har oppgitt et ugyldig valg til pppd. Se `man pppd' for en fullstendig "
+"liste over gyldige argumenter." 
 
 #: ppplog.cpp:170
 #, c-format
