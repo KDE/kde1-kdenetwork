@@ -92,17 +92,18 @@ NNTP::NNTP(char *host): DwNntpClient()
     byteCounter=0;
     commandCounter=0;
     extendPartialResponse=new NNTPObserver (this);
-    SetObserver(extendPartialResponse);
-    
+//    SetObserver(extendPartialResponse);
 }
 
 void NNTP::PGetTextResponse()
 {
+    SetObserver(extendPartialResponse);
     partialResponse.clear();
     qApp->processEvents();
     DwNntpClient::PGetTextResponse();
     mTextResponse=partialResponse;
     partialResponse.clear();
+    SetObserver(NULL);
 }
 
 void NNTP::resetCounters( bool byte,bool command)
@@ -574,34 +575,4 @@ bool NNTP::checkStatus( QString start)
     else
         success=true;
     return success;
-}
-
-bool NNTP::postArticle (KMMessage *aMsg)
-{
-    int errcode=Post();
-    if (!errcode)
-    {
-        warning ("The server closed the connection!");
-    }
-    if (errcode!=340)
-    {
-        warning("error posting, I said POST, and the server said:\n%s",
-                 StatusResponse().data());
-        return false;
-    }
-    QString s=aMsg->asString();
-    DwString dws;
-    DwToCrLfEol(s.data(),dws);
-    errcode=SendData(dws);
-    if (!errcode)
-    {
-        warning ("The server closed the connection!");
-    }
-    if (errcode>240)
-    {
-        warning("error posting, I said DATA, and the server said:\n%s",
-                 StatusResponse().data());
-        return false;
-    }
-    return true;
 }

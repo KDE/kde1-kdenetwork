@@ -13,6 +13,7 @@ public:
     void setNNTP(NNTP *);
     bool send(KMMessage *aMsg, short sendNow=-1);
 private:
+    bool doSendNNTP(KMMessage *msg);
     bool sendNow(KMMessage *aMsg);
     bool queue(KMMessage *aMsg);
     NNTP *server;

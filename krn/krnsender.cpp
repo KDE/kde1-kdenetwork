@@ -23,6 +23,40 @@ bool KRNSender::send(KMMessage *aMsg, short sendnow=-1)
         return queue(aMsg);
 }
 
+bool KRNSender::doSendNNTP (KMMessage *msg)
+{
+    QString str, msgStr;
+    assert(msg != NULL);
+    
+    msgStr = prepareStr(msg->asString(), TRUE);
+    int errcode=server->Post();
+    debug ("post/errcode-->%d",errcode);
+    if (!errcode)
+    {
+        warning ("The server closed the connection!");
+    }
+    if (errcode!=340)
+    {
+        warning("error posting, I said POST, and the server said:\n%s",
+                 server->StatusResponse().data());
+        return false;
+    }
+    errcode=server->SendData((const char *)msgStr);
+    debug ("senddata/errcode-->%d",errcode);
+    if (!errcode)
+    {
+        warning ("The server closed the connection!");
+        return false;
+    }
+    if (errcode>240)
+    {
+        warning("error posting, I said DATA, and the server said:\n%s",
+                 server->StatusResponse().data());
+        return false;
+    }
+    return true;
+}
+
 bool KRNSender::sendNow(KMMessage *aMsg)
 {
     bool success=false;
@@ -41,12 +75,7 @@ bool KRNSender::sendNow(KMMessage *aMsg)
     }
     if (!aMsg->groups().isEmpty())//It has destination groups
     {
-        success=server->postArticle(aMsg);
-        if (!success)
-        {
-            warning("problem sending message by NNTP!");
-            return success;
-        }
+        doSendNNTP(aMsg);
     }
     return true;
 }
