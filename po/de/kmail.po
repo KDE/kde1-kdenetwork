@@ -2,6 +2,21 @@
 # Copyright (C) YEAR Free Software Foundation, Inc.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ENCODING\n"
+
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
 
 #: kmacctmgr.cpp:198
 msgid "Cannot enter directory"
@@ -25,7 +40,7 @@ msgstr "Lokales Postfach"
 
 #: kmacctseldlg.cpp:49
 msgid "Pop3"
-msgstr "Pop Postfach"
+msgstr "Pop-Postfach"
 
 #: kmcomposewin.cpp:36
 msgid "&To:"
@@ -53,7 +68,7 @@ msgstr "Datum:"
 
 #: kmcomposewin.cpp:142
 msgid "Attach File"
-msgstr "Datei beifügen"
+msgstr "Datei anhängen"
 
 #: kmcomposewin.cpp:169
 msgid "No recipients defined."
@@ -97,7 +112,7 @@ msgstr ""
 
 #: kmcomposewin.cpp:393
 msgid "KMail Composer"
-msgstr "Nachricht Erstellen"
+msgstr "Nachricht erstellen"
 
 #: kmcomposewin.cpp:456
 msgid "Send"
@@ -209,11 +224,11 @@ msgstr "Datum"
 
 #: kmmainview.cpp:60
 msgid "KMail Folders"
-msgstr "KMail Ordner"
+msgstr "KMail-Ordner"
 
 #: kmmainview.cpp:67
 msgid "KMail Message List"
-msgstr "KMail Nachrichten"
+msgstr "KMail-Nachrichten"
 
 #: kmmainview.cpp:108
 msgid "New Folder"
@@ -224,7 +239,7 @@ msgid ""
 "Cannot modify a\n"
 "system folder."
 msgstr ""
-"Dieser KMail-interne Ordner\n"
+"Dieser Ordner\n"
 "kann nicht geändert werden."
 
 #: kmmainview.cpp:143
@@ -236,7 +251,7 @@ msgid ""
 "Cannot remove a\n"
 "system folder."
 msgstr ""
-"Dieser KMail-interne Ordner\n"
+"Dieser Ordner\n"
 "kann nicht gelöscht werden."
 
 #: kmmainview.cpp:171
@@ -246,7 +261,7 @@ msgid ""
 "and all of its child folders?"
 msgstr ""
 "Sind Sie sicher daß der Ordner \"%s\"\n"
-"inklusive Inhalt gelöscht werden soll?"
+"und sein gesamter Inhalt gelöscht werden soll?"
 
 #: kmmainview.cpp:174 kmsettings.cpp:374
 msgid "Confirmation"
@@ -302,7 +317,7 @@ msgstr "&Speichern unter..."
 
 #: kmmainwin.cpp:121
 msgid "Pr&int..."
-msgstr "Dr&ucken"
+msgstr "&Drucken"
 
 #: kmmainwin.cpp:126
 msgid "&Create..."
@@ -386,7 +401,7 @@ msgstr "Firma:"
 
 #: kmsettings.cpp:124
 msgid "Email Address:"
-msgstr "Email Adresse:"
+msgstr "Email-Adresse:"
 
 #: kmsettings.cpp:127
 msgid "Reply-To Address:"
@@ -394,7 +409,7 @@ msgstr "Antworten an:"
 
 #: kmsettings.cpp:130
 msgid "Signature File:"
-msgstr "Signatur aus:"
+msgstr "Signatur-Datei:"
 
 #: kmsettings.cpp:146
 msgid "Identity"
@@ -470,7 +485,7 @@ msgstr "Sendmail suchen"
 
 #: kmsettings.cpp:334
 msgid "Choose Signature File"
-msgstr "Signaturdatei auswählen"
+msgstr "Signatur-Datei auswählen"
 
 #: kmsettings.cpp:369
 msgid "Are you sure you want to remove the account"
@@ -486,7 +501,7 @@ msgstr "Lokales Postfach"
 
 #: kmsettings.cpp:469
 msgid "Pop Account"
-msgstr "Pop Postfach"
+msgstr "Pop-Postfach"
 
 #: kmsettings.cpp:471
 msgid "Login:"
@@ -498,7 +513,7 @@ msgstr "Paßwort:"
 
 #: kmsettings.cpp:477
 msgid "Host:"
-msgstr "Pop Server:"
+msgstr "Pop-Server:"
 
 #: kmsettings.cpp:523
 msgid "Choose Location"
@@ -528,8 +543,10 @@ msgstr ""
 #: main.cpp:91
 #, c-format
 msgid "Cannot create trash folder '%s'"
-msgstr "Kann Müllkorb '%s'\nnicht anlegen."
+msgstr ""
+"Kann Papierkorb '%s'\n"
+"nicht anlegen."
 
 #: main.cpp:94
 msgid "trash"
-msgstr "Müll"
+msgstr "Papierkorb"
