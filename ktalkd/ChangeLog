@@ -1,4 +1,4 @@
-1998-11-11  David Faure  <faure@kde.org>
+1998-11-11  David Faure  <faure@kde.org> (0.9.0)
 
 	* ktalkd/talkconn.cpp: Moved static init to TalkConnection::init()
 	Added reply address detection for multiple networked hosts.
@@ -6,6 +6,9 @@
 
 	* acinclude.m4.in (non-KDE version) : Used /usr/local as
 	default_prefix for non-KDE systems.
+
+	* ktalkd/readconf.cpp: Fixed read_user_config (bug with ForwardMethod)
+	Speeds up configuration file parsing.
 
 1998-11-03  David Faure  <faure@kde.org>
 
