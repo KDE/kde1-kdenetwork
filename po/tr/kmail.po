@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE 1.0\n"
-"POT-Creation-Date: 1998-11-21 01:58+0100\n"
+"POT-Creation-Date: 1998-11-23 01:56+0100\n"
 "PO-Revision-Date: 1998-06-29 11:00+0200\n"
 "Last-Translator: Makbule SHAKALLA <bbm756@hun.edu.tr>\n"
 "Language-Team: Hacettepe Linux Users Group <hacettepe@linux.org.tr>\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: ISO 8859-9\n"
 
-#: kmcomposewin.cpp:1439 kmmainwin.cpp:263 kpgp.cpp:540
+#: kmcomposewin.cpp:1458 kmmainwin.cpp:263 kpgp.cpp:546
 msgid ""
 "Sorry, but this feature\n"
 "is still missing"
@@ -169,7 +169,7 @@ msgstr "&Kopyala..."
 msgid "New Composer"
 msgstr "Yeni Düzenleyici"
 
-#: kmcomposewin.cpp:448 kmmainwin.cpp:857
+#: kmcomposewin.cpp:449 kmmainwin.cpp:857
 msgid "New Mailreader"
 msgstr "Yeni okuyucu "
 
@@ -197,7 +197,7 @@ msgstr "Ýleti Kuyruða Eklendi"
 msgid "&Settings..."
 msgstr "&Ayarlar..."
 
-#: kmcomposewin.cpp:440 kmmainwin.cpp:881
+#: kmcomposewin.cpp:441 kmmainwin.cpp:881
 msgid "&Addressbook..."
 msgstr "Ad&res defteri"
 
@@ -332,15 +332,15 @@ msgstr "D&izin"
 msgid "&Message"
 msgstr "&Ýleti"
 
-#: kmcomposewin.cpp:556 kmmainwin.cpp:1013
+#: kmcomposewin.cpp:563 kmmainwin.cpp:1013
 msgid "Compose new message"
 msgstr "Yeni bir ileti yarat"
 
-#: kmcomposewin.cpp:561 kmmainwin.cpp:1018
+#: kmcomposewin.cpp:568 kmmainwin.cpp:1018
 msgid "Save message to file"
 msgstr "Ýletiyi dosyaya kaydet"
 
-#: kmcomposewin.cpp:566 kmmainwin.cpp:1023
+#: kmcomposewin.cpp:573 kmmainwin.cpp:1023
 msgid "Print message"
 msgstr "Ýletiyi yazdýr"
 
@@ -364,7 +364,7 @@ msgstr "Ýletiyi ilet"
 msgid "Delete message"
 msgstr "Ýletiyi sil"
 
-#: kmcomposewin.cpp:590 kmmainwin.cpp:1057
+#: kmcomposewin.cpp:597 kmmainwin.cpp:1057
 msgid "Open addressbook..."
 msgstr "Adres defterini aç"
 
@@ -378,7 +378,7 @@ msgstr "Hazýrlanýyor..."
 msgid "Name:"
 msgstr "Kullanýcý Adý"
 
-#: kmcomposewin.cpp:1447 kmfolderdia.cpp:44 kmfolderdia.cpp:120
+#: kmcomposewin.cpp:1466 kmfolderdia.cpp:44 kmfolderdia.cpp:120
 msgid "unnamed"
 msgstr "adsýz"
 
@@ -410,7 +410,7 @@ msgstr "Adrese yanýt ver"
 msgid "Signature File:"
 msgstr "Ýmza dosyasý"
 
-#: kmsettings.cpp:192 kpgp.cpp:759
+#: kmsettings.cpp:192 kpgp.cpp:765
 msgid "Identity"
 msgstr "Kimlik"
 
@@ -614,7 +614,7 @@ msgstr "Adsýz"
 msgid "Choose Sendmail Location"
 msgstr "Sendmail Yerleþimini Seç"
 
-#: kmcomposewin.cpp:1546 kmsettings.cpp:695
+#: kmcomposewin.cpp:1565 kmsettings.cpp:695
 msgid "Choose Signature File"
 msgstr "Ýmza Dosyasýný Seç"
 
@@ -808,150 +808,154 @@ msgstr "Þimdi &gönder"
 msgid "&Insert File..."
 msgstr "&Dosya Ekle..."
 
-#: kmcomposewin.cpp:445
+#: kmcomposewin.cpp:446
 msgid "&New Composer..."
 msgstr "&Yeni Düzenleyici..."
 
-#: kmcomposewin.cpp:468 kmcomposewin.cpp:686 kmcomposewin.cpp:1817
+#: kmcomposewin.cpp:469 kmcomposewin.cpp:693 kmcomposewin.cpp:1836
 msgid "Mark all"
 msgstr "Hepsini Ýþaretle"
 
-#: kmcomposewin.cpp:471 kmcomposewin.cpp:688
+#: kmcomposewin.cpp:472 kmcomposewin.cpp:695
 msgid "Find..."
 msgstr "Bul..."
 
-#: kmcomposewin.cpp:473 kmcomposewin.cpp:689
+#: kmcomposewin.cpp:474 kmcomposewin.cpp:696
 msgid "Replace..."
 msgstr "Deðiþtir..."
 
-#: kmcomposewin.cpp:476
+#: kmcomposewin.cpp:477
 #, fuzzy
 msgid "&Spellcheck..."
 msgstr "KMail:Ýmla Denetimi "
 
-#: kmcomposewin.cpp:483
+#: kmcomposewin.cpp:484
 msgid "&Urgent"
 msgstr "&Acil"
 
-#: kmcomposewin.cpp:485
+#: kmcomposewin.cpp:486
 msgid "&Confirm delivery"
 msgstr "&Teslimi doðrula"
 
-#: kmcomposewin.cpp:487
+#: kmcomposewin.cpp:488
 msgid "&Confirm read"
 msgstr "&Okumayý dogrula "
 
-#: kmcomposewin.cpp:490
+#: kmcomposewin.cpp:491
 #, fuzzy
 msgid "&Spellchecker..."
 msgstr "KMail:Ýmla Denetimi "
 
-#: kmcomposewin.cpp:493
+#: kmcomposewin.cpp:494
 msgid "&Charsets..."
 msgstr "&Karakterler"
 
-#: kmcomposewin.cpp:506
+#: kmcomposewin.cpp:507
 msgid "&All Fields"
 msgstr "&Bütün Alanlar"
 
-#: kmcomposewin.cpp:508
+#: kmcomposewin.cpp:509
 msgid "&From"
 msgstr "&Kimden"
 
-#: kmcomposewin.cpp:509
+#: kmcomposewin.cpp:510
 msgid "&Reply to"
 msgstr "&Yanýt"
 
-#: kmcomposewin.cpp:510
+#: kmcomposewin.cpp:511
 msgid "&To"
 msgstr "K&ime"
 
-#: kmcomposewin.cpp:511
+#: kmcomposewin.cpp:512
 msgid "&Cc"
 msgstr "&Cc"
 
-#: kmcomposewin.cpp:512
+#: kmcomposewin.cpp:513
 msgid "&Bcc"
 msgstr "&Bcc"
 
-#: kmcomposewin.cpp:513
+#: kmcomposewin.cpp:514
 msgid "&Subject"
 msgstr "K&onu"
 
-#: kmcomposewin.cpp:515
+#: kmcomposewin.cpp:516
 msgid "&Newsgroups"
 msgstr "&Haber gruplarý"
 
-#: kmcomposewin.cpp:516
+#: kmcomposewin.cpp:517
 msgid "&Followup-To"
 msgstr "&Takip eden"
 
-#: kmcomposewin.cpp:521
+#: kmcomposewin.cpp:523
 msgid "Append S&ignature"
 msgstr "Ým&za Ekle"
 
-#: kmcomposewin.cpp:523
+#: kmcomposewin.cpp:525
 msgid "&Insert File"
 msgstr "&Dosya Ekle"
 
-#: kmcomposewin.cpp:525
+#: kmcomposewin.cpp:527
+msgid "Insert My &Public Key"
+msgstr ""
+
+#: kmcomposewin.cpp:532
 msgid "&Attach..."
 msgstr "Ýliþ&tir..."
 
-#: kmcomposewin.cpp:528
+#: kmcomposewin.cpp:535
 msgid "&Save..."
 msgstr "&Kaydet..."
 
-#: kmcomposewin.cpp:529
+#: kmcomposewin.cpp:536
 msgid "Pr&operties..."
 msgstr "Ö&zellikler"
 
-#: kmcomposewin.cpp:531
+#: kmcomposewin.cpp:538
 msgid "&Attach"
 msgstr "Ýliþ&tir..."
 
-#: kmcomposewin.cpp:551
+#: kmcomposewin.cpp:558
 #, fuzzy
 msgid "Send message"
 msgstr "Ýletileri gönder"
 
-#: kmcomposewin.cpp:575
+#: kmcomposewin.cpp:582
 msgid "Cut selection"
 msgstr "Seçileni Kes"
 
-#: kmcomposewin.cpp:578
+#: kmcomposewin.cpp:585
 msgid "Copy selection"
 msgstr "Seçileni Kopyala"
 
-#: kmcomposewin.cpp:581
+#: kmcomposewin.cpp:588
 msgid "Paste clipboard contents"
 msgstr "Pano içeriðini yapýþtýr"
 
-#: kmcomposewin.cpp:586
+#: kmcomposewin.cpp:593
 msgid "Attach file"
 msgstr "Dosya iliþtir"
 
-#: kmcomposewin.cpp:597
+#: kmcomposewin.cpp:604
 msgid "sign message"
 msgstr "Ýleti imzala"
 
-#: kmcomposewin.cpp:602
+#: kmcomposewin.cpp:609
 msgid "encrypt message"
 msgstr "iletiyi þifreleme"
 
-#: kmcomposewin.cpp:619 kmcomposewin.cpp:635
+#: kmcomposewin.cpp:626 kmcomposewin.cpp:642
 msgid "Column"
 msgstr "Kolon"
 
-#: kmcomposewin.cpp:620 kmcomposewin.cpp:633
+#: kmcomposewin.cpp:627 kmcomposewin.cpp:640
 msgid "Line"
 msgstr "Satýr"
 
-#: kmcomposewin.cpp:901
+#: kmcomposewin.cpp:908
 msgid "KMail Confirm"
 msgstr "KMail Doðrula"
 
-#: kmcomposewin.cpp:902
+#: kmcomposewin.cpp:909
 msgid ""
 "Close and discard\n"
 "edited message?"
@@ -959,52 +963,52 @@ msgstr ""
 "Düzenlenmiþ Ýletiyi\n"
 "kapatýp atmak?"
 
-#: kmcomposewin.cpp:1175
+#: kmcomposewin.cpp:1182
 msgid "Attach File"
 msgstr "Dosya baðlama"
 
-#: kmcomposewin.cpp:1197
+#: kmcomposewin.cpp:1204
 msgid "Include File"
 msgstr "Dosya Ekle"
 
-#: kmcomposewin.cpp:1220 kmreaderwin.cpp:728
+#: kmcomposewin.cpp:1239 kmreaderwin.cpp:728
 msgid "View..."
 msgstr "Görünüm"
 
-#: kmcomposewin.cpp:1221
+#: kmcomposewin.cpp:1240
 msgid "Save..."
 msgstr "Kaydet..."
 
-#: kmcomposewin.cpp:1222 kmreaderwin.cpp:731
+#: kmcomposewin.cpp:1241 kmreaderwin.cpp:731
 msgid "Properties..."
 msgstr "Özellikler.."
 
-#: kmcomposewin.cpp:1226
+#: kmcomposewin.cpp:1245
 msgid "Attach..."
 msgstr "Ýliþtir..."
 
-#: kmcomposewin.cpp:1268 kmreaderwin.cpp:773
+#: kmcomposewin.cpp:1287 kmreaderwin.cpp:773
 msgid "View Attachment: "
 msgstr "Ýliþiktekini göster:"
 
-#: kmcomposewin.cpp:1462
+#: kmcomposewin.cpp:1481
 msgid "To:"
 msgstr "Kime:"
 
-#: kmcomposewin.cpp:1466
+#: kmcomposewin.cpp:1485
 msgid "Subject:"
 msgstr "Konu:"
 
-#: kmcomposewin.cpp:1469
+#: kmcomposewin.cpp:1488
 #, fuzzy
 msgid "Date:"
 msgstr "Tarih: "
 
-#: kmcomposewin.cpp:1999
+#: kmcomposewin.cpp:2018
 msgid "Spellcheck - KMail"
 msgstr ""
 
-#: kmcomposewin.cpp:2025
+#: kmcomposewin.cpp:2044
 msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
 msgstr "Kspell çalýþtýrýlamadý. Lütfen ISpell ayarlarýna bakýn "
@@ -1562,7 +1566,7 @@ msgid ""
 "or cancel the message?"
 msgstr ""
 
-#: kpgp.cpp:711
+#: kpgp.cpp:717
 msgid ""
 "Please enter your\n"
 "PGP passphrase"
@@ -1570,19 +1574,19 @@ msgstr ""
 "Lütfen kendi PGP\n"
 "parolanýzý girin"
 
-#: kpgp.cpp:738
+#: kpgp.cpp:744
 msgid "PGP Security Check"
 msgstr "PGP Güvenlik Denetimi"
 
-#: kpgp.cpp:765
+#: kpgp.cpp:771
 msgid "PGP User Identity:"
 msgstr "PGP Kullanýcý Kimliði"
 
-#: kpgp.cpp:776
+#: kpgp.cpp:782
 msgid "Store passphrase"
 msgstr ""
 
-#: kpgp.cpp:782
+#: kpgp.cpp:788
 msgid "Always encrypt to self"
 msgstr ""
 

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1998-11-21 01:58+0100\n"
+"POT-Creation-Date: 1998-11-23 01:56+0100\n"
 "PO-Revision-Date: 1998-11-21 15:12+0100\n"
 "Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
 "Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
@@ -760,8 +760,7 @@ msgstr ""
 "verbunden sind) als Gateway agieren. Ihr Rechner wird alle\n"
 "Datenpakete an diesen Rechner schicken, soweit sie nicht\n"
 "für Computer in ihrem lokalen Netz bestimmt sind. Der Gateway-\n"
-"Rechner wird dann die Datenpakete auf den richtigen Weg bringen."
-"\n"
+"Rechner wird dann die Datenpakete auf den richtigen Weg bringen.\n"
 "Dies ist die Grundeinstellung für die meisten Service-Provider.\n"
 "Sie sollten die Option daher wahrscheinlich aktiviert lassen."
 
@@ -1527,35 +1526,35 @@ msgstr ""
 "Kann die Gebührenregelungen nicht\n"
 "laden \""
 
-#: modem.cpp:114
+#: modem.cpp:115
 msgid "Sorry, can't open modem."
 msgstr "Sorry, kann auf Modem nicht zugreifen."
 
-#: modem.cpp:120
+#: modem.cpp:121
 msgid "Sorry, can't detect state of CD line."
 msgstr "Sorry, kann den Status der Befehlszeile nicht feststellen."
 
-#: modem.cpp:126
+#: modem.cpp:127
 msgid "Sorry, the modem is not ready."
 msgstr "Sorry, das Modem ist nicht bereit."
 
-#: modem.cpp:137 modem.cpp:181
+#: modem.cpp:138 modem.cpp:182
 msgid "Sorry, the modem is busy."
 msgstr "Sorry, das Modem ist besetzt."
 
-#: modem.cpp:187
+#: modem.cpp:188
 msgid "Modem Ready."
 msgstr "Modem bereit."
 
-#: modem.cpp:198
+#: modem.cpp:199
 msgid "Can't restore tty settings: tcsetattr()\n"
 msgstr "Kann tty-Einstellungen nicht wiederherstellen: tcsetattr()\n"
 
-#: modem.cpp:324
+#: modem.cpp:325
 msgid "Sorry, the modem doesn't respond."
 msgstr "Sorry, das Modem antwortet nicht."
 
-#: modem.cpp:425
+#: modem.cpp:426
 msgid "Unknown speed"
 msgstr "Unbekannte Geschwindigkeit"
 
@@ -1974,20 +1973,21 @@ msgid ""
 "Do you use /dev/modem ? If so, you should specify the real device instead, "
 "e.g. /dev/ttyS1 (COM2)."
 msgstr ""
-"Benutzen Sie /dev/modem? Falls ja, dann sollten Sie stattdessen ein wirkliches Gerät, "
-"wie z.B. /dev/ttyS1 (COM2) benutzen."
+"Benutzen Sie /dev/modem? Falls ja, dann sollten Sie stattdessen ein "
+"wirkliches Gerät, wie z.B. /dev/ttyS1 (COM2) benutzen."
 
 #: ppplog.cpp:157
 msgid "Check that you supplied the correct username and password!"
-msgstr "Überprüfen Sie, ob Sie Benutzernamen und Paßwort richtig eingegeben haben!"
+msgstr ""
+"Überprüfen Sie, ob Sie Benutzernamen und Paßwort richtig eingegeben haben!"
 
 #: ppplog.cpp:160
 msgid ""
 "You shouldn't pass 'lock' as an argument to pppd. Check /etc/ppp/options and "
 "~/.ppprc"
 msgstr ""
-"Sie sollten nicht 'lock' als Argument an pppd übergeben. Überprüfen Sie /etc/ppp/options und "
-"~/.ppprc"
+"Sie sollten nicht 'lock' als Argument an pppd übergeben. Überprüfen Sie "
+"/etc/ppp/options und ~/.ppprc"
 
 #: ppplog.cpp:164
 msgid ""
@@ -2006,7 +2006,8 @@ msgid ""
 msgstr ""
 "Beachten Sie, daß das entfernte System folgende Nachricht geschickt hat::\n"
 "\"%s\"\n"
-"Das könnte Ihnen einen Hinweis geben, warum die Verbindung fehlgeschlagen ist.."
+"Das könnte Ihnen einen Hinweis geben, warum die Verbindung fehlgeschlagen "
+"ist.."
 
 #: ppplog.cpp:198
 msgid "Sorry. Can't help you here."

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KPPP\n"
-"POT-Creation-Date: 1998-11-21 01:58+0100\n"
+"POT-Creation-Date: 1998-11-23 01:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Kim Enkovaara <kim.enkovaara@iki.fi>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1148,8 +1148,7 @@ msgstr "Modeemin komennot"
 msgid ""
 "Allows you to change the AT command for\n"
 "your modem."
-msgstr ""
-"Mahdollistaa AT-komentojen muuttamisen."
+msgstr "Mahdollistaa AT-komentojen muuttamisen."
 
 #: general.cpp:585
 msgid "Query Modem"
@@ -1228,8 +1227,7 @@ msgstr ""
 "Aktivoidaksesi vinkin, paina hiiren oikeaa nappia\n"
 "napin tai otsikon p‰‰ll‰ josta haluat apua.\n"
 "\n"
-"Kokeillaksesi ominaisuutta paina hiiren oikeaa"
-"nappia t‰m‰n tekstin p‰‰ll‰."
+"Kokeillaksesi ominaisuutta paina hiiren oikeaanappia t‰m‰n tekstin p‰‰ll‰."
 
 #: main.cpp:139
 msgid "Don't show this hint again"
@@ -1500,35 +1498,35 @@ msgstr ""
 "En saa ladattua laskutus\n"
 "s‰‰ntˆ‰ \""
 
-#: modem.cpp:114
+#: modem.cpp:115
 msgid "Sorry, can't open modem."
 msgstr "En saa avattua modeemia."
 
-#: modem.cpp:120
+#: modem.cpp:121
 msgid "Sorry, can't detect state of CD line."
 msgstr "Valitettavasti en voi tarkastaa CD-linjan tilaa."
 
-#: modem.cpp:126
+#: modem.cpp:127
 msgid "Sorry, the modem is not ready."
 msgstr "Modeemi ei ole valmis"
 
-#: modem.cpp:137 modem.cpp:181
+#: modem.cpp:138 modem.cpp:182
 msgid "Sorry, the modem is busy."
 msgstr "Modeemi on jo k‰ytˆss‰"
 
-#: modem.cpp:187
+#: modem.cpp:188
 msgid "Modem Ready."
 msgstr "Modeemi valmis."
 
-#: modem.cpp:198
+#: modem.cpp:199
 msgid "Can't restore tty settings: tcsetattr()\n"
 msgstr "En saa palautettua tty:n asetuksia: tcsetattr()\n"
 
-#: modem.cpp:324
+#: modem.cpp:325
 msgid "Sorry, the modem doesn't respond."
 msgstr "Valitettavasti modeemi ei vastaa."
 
-#: modem.cpp:425
+#: modem.cpp:426
 msgid "Unknown speed"
 msgstr "Tuntematon nopeus"
 

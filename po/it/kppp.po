@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-11-21 01:58+0100\n"
+"POT-Creation-Date: 1998-11-23 01:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1258,38 +1258,38 @@ msgstr ""
 "Non posso caricare i settaggi\n"
 "dell'account \""
 
-#: modem.cpp:114
+#: modem.cpp:115
 msgid "Sorry, can't open modem."
 msgstr "Spiacente, impossibile accedere al modem "
 
-#: modem.cpp:120
+#: modem.cpp:121
 #, fuzzy
 msgid "Sorry, can't detect state of CD line."
 msgstr "Spiacente, non posso creare il file di lock per il modem."
 
-#: modem.cpp:126
+#: modem.cpp:127
 msgid "Sorry, the modem is not ready."
 msgstr "Spiacente, il modem non e` pronto."
 
-#: modem.cpp:137 modem.cpp:181
+#: modem.cpp:138 modem.cpp:182
 msgid "Sorry, the modem is busy."
 msgstr "Spiacente, il modem e` occupato"
 
-#: modem.cpp:187
+#: modem.cpp:188
 #, fuzzy
 msgid "Modem Ready."
 msgstr "Modem pronto"
 
-#: modem.cpp:198
+#: modem.cpp:199
 msgid "Can't restore tty settings: tcsetattr()\n"
 msgstr "Impossibile ripristinare il settaggio della tty: tcsetattr()\n"
 
-#: modem.cpp:324
+#: modem.cpp:325
 #, fuzzy
 msgid "Sorry, the modem doesn't respond."
 msgstr "Spiacente, il modem non e` pronto."
 
-#: modem.cpp:425
+#: modem.cpp:426
 #, fuzzy
 msgid "Unknown speed"
 msgstr "velocita` sconosciuta"

@@ -5,213 +5,40 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kbiff\n"
-"POT-Creation-Date: 1998-10-13 13:34+0200\n"
+"POT-Creation-Date: 1998-11-23 01:56+0100\n"
 "Last-Translator: Juraj Bednar <bednar@isternet.sk>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: setupdlg.cpp:65
-msgid "KBiff Setup"
-msgstr "Nastavenie KBiffu"
-
-#: setupdlg.cpp:68
-msgid "Profile:"
-msgstr "Profil:"
-
-#: setupdlg.cpp:84
-msgid "&New..."
-msgstr "&Nový..."
-
-#: setupdlg.cpp:91
-msgid "&Rename..."
-msgstr "&Premenova»..."
-
-#: setupdlg.cpp:125
-msgid "General"
-msgstr "V¹eobecné"
-
-#: setupdlg.cpp:126
-msgid "New Mail"
-msgstr "Nový mail"
-
-#: setupdlg.cpp:127
-msgid "Mailbox"
-msgstr "Mailbox"
-
-#: setupdlg.cpp:335
-msgid "New Profile"
-msgstr "Nový profil"
-
-#: setupdlg.cpp:367
-#, c-format
-msgid "Rename Profile: %s"
-msgstr "Premenova» profil: %s"
-
-#: setupdlg.cpp:407
-#, c-format
-msgid "Delete Profile: %s"
-msgstr "Zmaza» profil: %s"
-
-#: setupdlg.cpp:408
-msgid "Are you sure you wish to delete this profile?\n"
-msgstr "Ste si istý, ¾e chcete zmaza» tento profil?\n"
-
-#: setupdlg.cpp:468
-msgid "Poll (sec):"
-msgstr "Opak (sek):"
-
-#: setupdlg.cpp:473
-msgid "Mail client:"
-msgstr "Mail klient:"
-
-#: setupdlg.cpp:486
-msgid "Dock in panel"
-msgstr "Do panelu"
-
-#: setupdlg.cpp:491
-msgid "Use session management"
-msgstr "Pou¾íva» session mene¾ment"
-
-#: setupdlg.cpp:496
-msgid "Icons:"
-msgstr "Ikonky:"
-
-#: setupdlg.cpp:514
-msgid "No Mail:"
-msgstr "®iadny mail:"
-
-#: setupdlg.cpp:523
-msgid "Old Mail"
-msgstr "Starý mail"
-
-#: setupdlg.cpp:533
-msgid "New Mail:"
-msgstr "Nový mail:"
-
-#: setupdlg.cpp:670
-msgid "Run Command"
-msgstr "Spusti» príkaz"
-
-#: setupdlg.cpp:677 setupdlg.cpp:690 setupdlg.cpp:985
-msgid "Browse"
-msgstr "Listova»"
-
-#: setupdlg.cpp:683
-msgid "Play Sound"
-msgstr "Hra» zvuky"
-
-#: setupdlg.cpp:696
-msgid "System Beep"
-msgstr "Systémový zvuk"
-
-#: setupdlg.cpp:701
-msgid "Notify"
-msgstr "Upozorni»"
-
-#: setupdlg.cpp:829
-msgid "Advanced Options"
-msgstr "Roz¹írené mo¾nosti"
-
-#: setupdlg.cpp:833
-msgid "Mailbox URL:"
-msgstr "URL mailboxu:"
-
-#: setupdlg.cpp:837
-msgid "Port:"
-msgstr "Port:"
-
-#: setupdlg.cpp:841
-msgid "PREAUTH"
-msgstr "PREAUTH"
-
-#: setupdlg.cpp:945 setupdlg.cpp:1238
-msgid "New Mailbox"
-msgstr "Nový mailbox"
-
-#: setupdlg.cpp:952
-msgid "Delete Mailbox"
-msgstr "Zmaza» mailbox"
-
-#: setupdlg.cpp:958
-msgid "Protocol:"
-msgstr "Protokol:"
-
-#: setupdlg.cpp:961
-msgid "Mailbox:"
-msgstr "Mailbox:"
-
-#: setupdlg.cpp:964
-msgid "Server:"
-msgstr "Server:"
-
-#: setupdlg.cpp:967
-msgid "User:"
-msgstr "U¾ív:"
-
-#: setupdlg.cpp:970
-msgid "Password:"
-msgstr "Heslo:"
-
-#: setupdlg.cpp:1002
-msgid "Store password"
-msgstr "Ulo¾i» heslo"
-
-#: setupdlg.cpp:1005
-msgid "Advanced"
-msgstr "Roz¹írené"
-
-#: setupdlg.cpp:1430
-msgid "KBiff"
-msgstr "KBiff"
-
-#: setupdlg.cpp:1452
-#, c-format
-msgid ""
-"Version %s\n"
-"\n"
-"Copyright (C) 1998\n"
-"Kurt Granroth"
-msgstr ""
-"Verzia %s\n"
-"\n"
-"Copyright (C) 1998\n"
-"Kurt Granroth"
-
-#: setupdlg.cpp:1501
-msgid "New Name:"
-msgstr "Nové meno:"
-
-#: setupdlg.cpp:1527
-msgid "New Name"
-msgstr "Nové meno"
-
-#: kbiff.cpp:468
+#: kbiff.cpp:470
 msgid "&UnDock"
 msgstr "&Z panelu"
 
-#: kbiff.cpp:470
+#: kbiff.cpp:472
 msgid "&Dock"
 msgstr "&Do panelu"
 
-#: kbiff.cpp:471
+#: kbiff.cpp:473
 msgid "&Setup..."
 msgstr "&Nastavi»"
 
-#: kbiff.cpp:473
+#: kbiff.cpp:475
 msgid "&Help..."
 msgstr "&Pomocník..."
 
-#: kbiff.cpp:477
-msgid "&Check mail now"
+#: kbiff.cpp:479
+#, fuzzy
+msgid "&Check Mail Now"
 msgstr "&Skontrolova» po¹tu teraz"
 
-#: kbiff.cpp:479
-msgid "&Read Mail now"
+#: kbiff.cpp:481
+#, fuzzy
+msgid "&Read Mail Now"
 msgstr "&Preèíta» po¹tu teraz"
 
-#: kbiff.cpp:485
+#: kbiff.cpp:487
 msgid "&Stop"
 msgstr "&Stop"
 
@@ -228,3 +55,182 @@ msgstr "Nové správy: %d"
 #, c-format
 msgid "Mailbox: %s"
 msgstr "Mailbox: %s"
+
+#: setupdlg.cpp:81
+msgid "KBiff Setup"
+msgstr "Nastavenie KBiffu"
+
+#: setupdlg.cpp:84
+msgid "Profile:"
+msgstr "Profil:"
+
+#: setupdlg.cpp:100
+msgid "&New..."
+msgstr "&Nový..."
+
+#: setupdlg.cpp:107
+msgid "&Rename..."
+msgstr "&Premenova»..."
+
+#: setupdlg.cpp:141
+msgid "General"
+msgstr "V¹eobecné"
+
+#: setupdlg.cpp:142
+msgid "New Mail"
+msgstr "Nový mail"
+
+#: setupdlg.cpp:143
+msgid "Mailbox"
+msgstr "Mailbox"
+
+#: setupdlg.cpp:358
+msgid "New Profile"
+msgstr "Nový profil"
+
+#: setupdlg.cpp:390
+#, c-format
+msgid "Rename Profile: %s"
+msgstr "Premenova» profil: %s"
+
+#: setupdlg.cpp:430
+#, c-format
+msgid "Delete Profile: %s"
+msgstr "Zmaza» profil: %s"
+
+#: setupdlg.cpp:431
+msgid "Are you sure you wish to delete this profile?\n"
+msgstr "Ste si istý, ¾e chcete zmaza» tento profil?\n"
+
+#: setupdlg.cpp:491
+msgid "Poll (sec):"
+msgstr "Opak (sek):"
+
+#: setupdlg.cpp:496
+msgid "Mail client:"
+msgstr "Mail klient:"
+
+#: setupdlg.cpp:509
+msgid "Dock in panel"
+msgstr "Do panelu"
+
+#: setupdlg.cpp:514
+msgid "Use session management"
+msgstr "Pou¾íva» session mene¾ment"
+
+#: setupdlg.cpp:519
+msgid "Icons:"
+msgstr "Ikonky:"
+
+#: setupdlg.cpp:537
+msgid "No Mail:"
+msgstr "®iadny mail:"
+
+#: setupdlg.cpp:546
+msgid "Old Mail"
+msgstr "Starý mail"
+
+#: setupdlg.cpp:556
+msgid "New Mail:"
+msgstr "Nový mail:"
+
+#: setupdlg.cpp:693
+msgid "Run Command"
+msgstr "Spusti» príkaz"
+
+#: setupdlg.cpp:700 setupdlg.cpp:713 setupdlg.cpp:1053
+msgid "Browse"
+msgstr "Listova»"
+
+#: setupdlg.cpp:706
+msgid "Play Sound"
+msgstr "Hra» zvuky"
+
+#: setupdlg.cpp:719
+msgid "System Beep"
+msgstr "Systémový zvuk"
+
+#: setupdlg.cpp:724
+msgid "Notify"
+msgstr "Upozorni»"
+
+#: setupdlg.cpp:855
+msgid "Advanced Options"
+msgstr "Roz¹írené mo¾nosti"
+
+#: setupdlg.cpp:859
+msgid "Mailbox URL:"
+msgstr "URL mailboxu:"
+
+#: setupdlg.cpp:863
+msgid "Port:"
+msgstr "Port:"
+
+#: setupdlg.cpp:867
+msgid "PREAUTH"
+msgstr "PREAUTH"
+
+#: setupdlg.cpp:874
+msgid "Keep Alive"
+msgstr ""
+
+#: setupdlg.cpp:1000 setupdlg.cpp:1029
+msgid "Mailbox:"
+msgstr "Mailbox:"
+
+#: setupdlg.cpp:1013 setupdlg.cpp:1323
+msgid "New Mailbox"
+msgstr "Nový mailbox"
+
+#: setupdlg.cpp:1020
+msgid "Delete Mailbox"
+msgstr "Zmaza» mailbox"
+
+#: setupdlg.cpp:1026
+msgid "Protocol:"
+msgstr "Protokol:"
+
+#: setupdlg.cpp:1032
+msgid "Server:"
+msgstr "Server:"
+
+#: setupdlg.cpp:1035
+msgid "User:"
+msgstr "U¾ív:"
+
+#: setupdlg.cpp:1038
+msgid "Password:"
+msgstr "Heslo:"
+
+#: setupdlg.cpp:1070
+msgid "Store password"
+msgstr "Ulo¾i» heslo"
+
+#: setupdlg.cpp:1073
+msgid "Advanced"
+msgstr "Roz¹írené"
+
+#: setupdlg.cpp:1510
+msgid "KBiff"
+msgstr "KBiff"
+
+#: setupdlg.cpp:1532
+#, c-format
+msgid ""
+"Version %s\n"
+"\n"
+"Copyright (C) 1998\n"
+"Kurt Granroth"
+msgstr ""
+"Verzia %s\n"
+"\n"
+"Copyright (C) 1998\n"
+"Kurt Granroth"
+
+#: setupdlg.cpp:1581
+msgid "New Name:"
+msgstr "Nové meno:"
+
+#: setupdlg.cpp:1607
+msgid "New Name"
+msgstr "Nové meno"

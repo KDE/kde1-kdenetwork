@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp 0.9.6\n"
-"POT-Creation-Date: 1998-11-21 01:58+0100\n"
+"POT-Creation-Date: 1998-11-23 01:56+0100\n"
 "PO-Revision-Date: 1998-06-12 08:32 MET DST\n"
 "Last-Translator: Wang Jian <lark@linux.ustc.edu.cn>\n"
 "Language-Team: zh_CN ( gb2312)\n"
@@ -1248,38 +1248,38 @@ msgid ""
 "ruleset \""
 msgstr "不能载入记帐规则集"
 
-#: modem.cpp:114
+#: modem.cpp:115
 msgid "Sorry, can't open modem."
 msgstr "抱歉,无法打开调制解调器."
 
-#: modem.cpp:120
+#: modem.cpp:121
 #, fuzzy
 msgid "Sorry, can't detect state of CD line."
 msgstr "抱歉 , 不能建立调制解调器的锁文件."
 
-#: modem.cpp:126
+#: modem.cpp:127
 msgid "Sorry, the modem is not ready."
 msgstr "抱歉,调制解调器没有准备好."
 
-#: modem.cpp:137 modem.cpp:181
+#: modem.cpp:138 modem.cpp:182
 msgid "Sorry, the modem is busy."
 msgstr "报请,调制解调器忙."
 
-#: modem.cpp:187
+#: modem.cpp:188
 #, fuzzy
 msgid "Modem Ready."
 msgstr "调制解调器准备好了"
 
-#: modem.cpp:198
+#: modem.cpp:199
 msgid "Can't restore tty settings: tcsetattr()\n"
 msgstr "不能恢复 tty 设置: tcsetattr()\n"
 
-#: modem.cpp:324
+#: modem.cpp:325
 #, fuzzy
 msgid "Sorry, the modem doesn't respond."
 msgstr "抱歉,调制解调器没有准备好."
 
-#: modem.cpp:425
+#: modem.cpp:426
 #, fuzzy
 msgid "Unknown speed"
 msgstr "未知速度"
