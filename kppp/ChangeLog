@@ -1,3 +1,15 @@
+1999-01-12  Harri Porten  <porten@kde.org>
+
+	* connect.cpp: become the session leader and let ttySx be the
+	controlling terminal before launching pppd. This might solve
+	timeout problems several people reported, ie. when kppp was
+	started from kpanel instead of a terminal window.
+	* main.cpp: the kppp.sh workaround for make_directories() isn't
+	needed anymore and confused a few people.
+	* requester.cpp: convert cmsglen to size_t to make the compiler happy.
+	* modem.cpp: fixed usleep() replacement in case #ifndef HAVE_USLEEP
+	* connect.cpp: saving of old_hostname was broken
+
 1999-01-05  Harri Porten  <porten@kde.org>
 
 	* opener.cpp: set O_NOCTTY flag when opening the modem device to

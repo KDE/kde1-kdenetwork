@@ -205,6 +205,70 @@ static int kppp_xio_errhandler( Display * ) {
 
 } /* extern "C" */
 
+
+void make_directories() {
+  // Not really needed, but just to be sure in case
+  // someone modifies kppp to be suid at this point.
+  if(geteuid() != getuid() || getegid() != getgid())
+    return;
+
+  QDir dir;
+  QString d = KApplication::localkdedir();
+
+  dir.setPath(d.data());
+  if(!dir.exists()){
+    dir.mkdir(d.data());
+    chown(d.data(),getuid(),getgid());
+    chmod(d.data(),S_IRUSR | S_IWUSR | S_IXUSR);
+  }
+
+  d += "/share";
+  dir.setPath(d.data());
+  if(!dir.exists()){
+    dir.mkdir(d.data());
+    chown(d.data(),getuid(),getgid());
+    chmod(d.data(),S_IRUSR | S_IWUSR | S_IXUSR);
+  }
+
+  d += "/apps";
+  dir.setPath(d.data());
+  if(!dir.exists()){
+    dir.mkdir(d.data());
+    chown(d.data(),getuid(),getgid());
+    chmod(d.data(),S_IRUSR | S_IWUSR | S_IXUSR);
+  }
+
+  d += "/kppp" ;
+
+  dir.setPath(d.data());
+  if(!dir.exists()){
+    dir.mkdir(d.data());
+    chown(d.data(),getuid(),getgid());
+    chmod(d.data(),S_IRUSR | S_IWUSR | S_IXUSR);
+  }
+
+  
+  d += "/Rules/";
+
+  dir.setPath(d.data());
+  if(!dir.exists()){
+    dir.mkdir(d.data());
+    chown(d.data(),getuid(),getgid());
+    chmod(d.data(),S_IRUSR | S_IWUSR | S_IXUSR);
+  }
+
+  QString logdir = QDir::homeDirPath() + "/";
+  logdir += ACCOUNTING_PATH "/Log";
+
+  dir.setPath(logdir.data());
+  if(!dir.exists()){
+    dir.mkdir(logdir.data());
+    chown(logdir.data(),getuid(),getgid());
+    chmod(logdir.data(),S_IRUSR | S_IWUSR | S_IXUSR);
+  }
+}
+
+
 int main( int argc, char **argv ) {
 
   // Don't insert anything above this line unless you really know what
@@ -316,6 +380,7 @@ int main( int argc, char **argv ) {
     chown(configFile.data(), getuid(), getgid());
     chmod(configFile.data(), S_IRUSR | S_IWUSR);
   }
+  make_directories();
 
   QString msg;
   int pid = create_pidfile();

@@ -1195,7 +1195,7 @@ void auto_hostname() {
   char   tmp_str[100]; // buffer overflow safe
 
   gethostname(tmp_str, sizeof(tmp_str));
-  tmp_str[sizeof(tmp_str-1)]=0; // panic
+  tmp_str[sizeof(tmp_str)-1]=0; // panic
   old_hostname=tmp_str; // copy to QString
 
   if (!local_ip_address.isEmpty() && gpppdata.autoname()) {

@@ -66,7 +66,8 @@ int Requester::recvFD() {
   struct ResponseHeader response;
 
   struct iovec iov;
-  int flags = 0, fd, cmsglen, len;
+  int flags = 0, fd, len;
+  size_t cmsglen;
 
   msg.msg_name = 0L;
   msg.msg_namelen = 0;
@@ -101,7 +102,7 @@ int Requester::recvFD() {
   if(len <= 0) {
     perror("recvmsg failed");
     return -1;
-  } else if (msg.msg_controllen != (unsigned)cmsglen) {
+  } else if (msg.msg_controllen != cmsglen) {
     perror("recvmsg: truncated message");
     exit(1);
   } else {

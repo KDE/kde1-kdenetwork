@@ -36,7 +36,7 @@ QSize KGroupBoxBase::sizeHint() const {
 }
 
 
-void KGroupBoxBase::resizeEvent(QResizeEvent *e) {
+void KGroupBoxBase::resizeEvent(QResizeEvent *) {
   initBox();
 }
 

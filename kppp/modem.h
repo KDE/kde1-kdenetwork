@@ -46,6 +46,7 @@ public:
   Modem();
   ~Modem();
 
+  int  fd() { return modemfd; }
   bool opentty();
   bool closetty();
   bool hangup();

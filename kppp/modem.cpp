@@ -321,6 +321,9 @@ bool Modem::hangup() {
       signal(SIGALRM, SIG_IGN);
     } else {
       // we reach this point if the alarm handler got called
+      closetty();
+      close(modemfd);
+      modemfd = -1;
       errmsg = i18n("Sorry, the modem doesn't respond.");
       return false;
     }
@@ -519,18 +522,18 @@ void alarm_handler(int) {
 
 // usleep for those of you out there who don't have a BSD 4.2 style usleep
 
-extern int select();
+extern "C" int select();
 
 void usleep(long usec){
   
-  struct struct {
-    long tv_sec;
-    long tv_usec;
+  struct {
+      long tv_sec;
+      long tv_usec;
   } tval;
 
   tval.tv_sec = usec / 1000000;
   tval.tv_usec = usec % 1000000;
-  select(0, (long *)0, (long *)0, (long *)0, &tval);
+  select(0, 0, 0, 0, (struct timeval *) &tval);
   return;
 
 }
