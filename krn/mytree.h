@@ -1,16 +1,16 @@
 #ifndef MY_TREE_H
 #define MY_TREE_H
 
-#include <ktreelist.h>
+#include "ktreeview.h"
 
-class MyTreeList : public KTreeList
+class MyTreeList : public KTreeView
 {
 public:
     MyTreeList(QWidget *parent = 0,
                const char *name = 0,
                WFlags f = 0) :
-    KTreeList(parent , name , f) {};
-    void setTopCell(int c) { KTreeList::setTopCell(c); }
+    KTreeView(parent , name , f) {};
+    void setTopCell(int c) { KTreeView::setTopCell(c); }
 };  
 
 #endif

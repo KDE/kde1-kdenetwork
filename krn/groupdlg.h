@@ -25,7 +25,7 @@
 #include <qtimer.h>
 
 #include <ktopwidget.h>
-//#include <ktreelist.h>
+#include "ktreeview.h"
 #include "mytree.h"
 
 #include "NNTP.h"

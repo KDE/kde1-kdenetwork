@@ -27,7 +27,7 @@
 #include <qobject.h>
 
 #include <ksock.h>
-#include <ktreelist.h>
+#include <ktreeview.h>
 #include <kconfig.h>
 #include <ksimpleconfig.h>
 
