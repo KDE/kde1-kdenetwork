@@ -14,7 +14,7 @@ class ircListItem : public QObject,
 {
  Q_OBJECT;
  public:
-  ircListItem(QString s, const QColor *c, QListBox *lb, QPixmap *p=0, bool _WantColour = false);
+  ircListItem(QString s, const QColor *c, QListBox *lb, QPixmap *p=0);
   ~ircListItem();
 
   virtual int row();
@@ -56,9 +56,8 @@ private:
 
   bool Wrapping;
 
-  bool WantColour;
   static const int maxcolour;
-  static const QColor num2colour[17];
+  static const QColor num2colour[16];
   
 
 };

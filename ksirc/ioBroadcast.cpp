@@ -78,10 +78,10 @@ filterRuleList *KSircIOBroadcast::defaultRules()
   fr->to = "~~$1";
   frl->append(fr);
   fr = new filterRule();
-  fr->desc = "Inverse to KSIRC italics";
+  fr->desc = "Inverse to KSIRC inverse";
   fr->search = ".*";
   fr->from = "(?g)\\x16";
-  fr->to = "~i";
+  fr->to = "~r";
   frl->append(fr);
   fr = new filterRule();
   fr->desc = "Underline to KSIRC underline";
@@ -93,7 +93,13 @@ filterRuleList *KSircIOBroadcast::defaultRules()
   fr->desc = "Bold to KSIRC bold";
   fr->search = ".*";
   fr->from = "(?g)\\x02";
-  fr->to = "$1~b$2";
+  fr->to = "~b";
+  frl->append(fr);
+  fr = new filterRule();
+  fr->desc = "Ordinary to KSIRC ordinary";
+  fr->search = ".*";
+  fr->from = "(?g)\\x0f";
+  fr->to = "~c";
   frl->append(fr);
   return frl;
 

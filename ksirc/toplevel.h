@@ -228,11 +228,14 @@ protected slots:
      */
    void pasteToWindow();
    /**
-     * On a TAB key press we call Tab_nick_completion which
+     * On a TAB key press we call TabNickCompletion which
      * reads the last thing in linee matches it with a nick and 
      * puts it back into the line.
      */
    void TabNickCompletion();
+   /**
+     * Signals a Line Change in linee
+     */
    void lineeTextChanged(const char *);
 
 protected:

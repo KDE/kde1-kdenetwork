@@ -32,14 +32,12 @@ StdInTicker::~StdInTicker()
 {
   int tick, step;
   speed(&tick, &step);
-  QColorGroup g  = colorGroup();
-  QColor      bg = isEnabled() ? g.base() : g.background();
   kConfig->setGroup("defaults");
   kConfig->writeEntry("font", font());
   kConfig->writeEntry("tick", tick);
   kConfig->writeEntry("step", step);
-  kConfig->writeEntry("text", g.text() ); 
-  kConfig->writeEntry("background", bg );
+  kConfig->writeEntry("text", colorGroup().text() ); 
+  kConfig->writeEntry("background", colorGroup().background() );
   kConfig->sync();
 }
 

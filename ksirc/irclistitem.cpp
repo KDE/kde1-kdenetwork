@@ -3,27 +3,32 @@
 
 #include <stdlib.h> 
 
-const int ircListItem::maxcolour = 17;
-const QColor ircListItem::num2colour[17] = {  black,
-					      darkRed,
-					      darkGreen,
-					      darkBlue,
-					      darkMagenta,
-					      darkCyan,
-					      darkYellow,
-					      lightGray,
-					      darkGray,
-					      red,
-					      green,
-					      blue,
-					      magenta,
-					      cyan,
-					      yellow,
-					      white };
+const int ircListItem::maxcolour = 16;
+static const QColor brown	( 165,  42,  42 );
+static const QColor orange	( 255, 165,   0 );
+static const QColor lightGreen	( 144, 238, 144 );
+static const QColor lightCyan	( 224, 255, 255 );
+static const QColor lightBlue	( 173, 216, 230 );
+static const QColor pink	( 255, 192, 203 );
 
+const QColor ircListItem::num2colour[16] = { white,
+					     black,
+                                             darkBlue,
+                                             darkGreen,
+                                             red,
+                                             brown,
+                                             darkMagenta,
+                                             orange,
+                                             yellow,
+                                             green,
+                                             darkCyan,
+                                             cyan,
+                                             blue,
+                                             pink,
+                                             gray,
+                                             lightGray };
 
-
-ircListItem::ircListItem(QString s, const QColor *c, QListBox *lb, QPixmap *p = 0, bool _WantColour = FALSE)
+ircListItem::ircListItem(QString s, const QColor *c, QListBox *lb, QPixmap *p = 0)
   : QObject(),
     QListBoxItem()
     
@@ -35,7 +40,6 @@ ircListItem::ircListItem(QString s, const QColor *c, QListBox *lb, QPixmap *p = 
   pm = p;
   parent_lb = lb;
 
-  WantColour = _WantColour;
 
   Wrapping = TRUE;
 
@@ -201,6 +205,7 @@ void ircListItem::colourDrawText(QPainter *p, int startx, int starty,
   char buf[3];
   int loc = 0, i;
   buf[2] = 0;
+  bool ReverseText = FALSE;
 
   for(loc = 0; str[loc] != 0x00 ; loc++){
     if(str[loc] == 0x03 || str[loc] == '~'){
@@ -226,7 +231,6 @@ void ircListItem::colourDrawText(QPainter *p, int startx, int starty,
 	  p->setPen(num2colour[pcolour]);
 	else
 	  i = loc;
-	
 	if(str[i] == ','){
 	  i++;
 	  if((str[i] >= 0x30) && (str[i] <= 0x39)){
@@ -246,12 +250,11 @@ void ircListItem::colourDrawText(QPainter *p, int startx, int starty,
 	      else
 		bcolour -= 1;
 	    }
-	    if(bcolour < maxcolour){
+	    if(bcolour < maxcolour ){
 	      p->setBackgroundColor(num2colour[bcolour]);
 	      p->setBackgroundMode(OpaqueMode);
 	    }
-	    else
-	      i = loc;
+
 	  }
 	}
       }
@@ -262,11 +265,25 @@ void ircListItem::colourDrawText(QPainter *p, int startx, int starty,
       }
       else if((str[i] == '~') && ((str[i+1] >= 0x61) || (str[i+1] <= 0x7a))){
 	QFont fnt = p->font();
+        QColor temppen;
 	switch(str[i+1]){
 	case 'c':
 	  p->setPen(*colour);
 	  p->setBackgroundMode(TransparentMode);
 	  break;
+        case 'r':
+          if(ReverseText == TRUE) {
+            ReverseText = FALSE;
+            p->setBackgroundMode(TransparentMode);
+          }
+          else {
+            ReverseText = TRUE;
+            p->setBackgroundMode(OpaqueMode);
+          }
+          temppen = p->pen().color();
+          p->setPen( p->backgroundColor() );
+          p->setBackgroundColor( temppen );
+          break;
 	case 'b':
 	  if(fnt.bold() == TRUE)
 	    fnt.setBold(FALSE);
@@ -299,5 +316,6 @@ void ircListItem::colourDrawText(QPainter *p, int startx, int starty,
     }
   }
   p->drawText(startx, starty, str + offset, loc-offset);
+
 }
 

@@ -1001,7 +1001,7 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 				   // anull pointer
     return NULL;
   else                             // otherwise create a new IrcListItem...
-    return new ircListItem(string,color,mainw,pixmap, TRUE);
+    return new ircListItem(string,color,mainw,pixmap);
 
   return NULL; // make compiler happy or else it complans about
 	       // getting to the end of a non-void func
