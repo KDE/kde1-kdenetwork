@@ -273,6 +273,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     acc->insertItem(Key_R,REP_MAIL);
     acc->insertItem(Key_F,FOLLOWUP);
     acc->insertItem(Key_G,ARTLIST);
+    acc->insertItem(Key_C,CATCHUP);
     acc->insertItem(Key_Space,PAGE_DOWN_ARTICLE);
     acc->insertItem(Key_Next,PAGE_DOWN_ARTICLE);
     acc->insertItem(Key_Backspace,PAGE_UP_ARTICLE);
