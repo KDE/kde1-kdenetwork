@@ -90,6 +90,9 @@ void KMReaderWin::readConfig(void)
 							SmartAttmnt);
 #ifdef KRN
   config->setGroup("ArticleListOptions");
+  config->setGroup("ArticleListOptions");
+  mViewer->setStandardFont(config->readEntry("StandardFont","helvetica"));
+  mViewer->setFixedFont(config->readEntry("FixedFont","courier"));
 #endif
   QColor c1=QColor("black");
   QColor c2=QColor("blue");
@@ -107,9 +110,6 @@ void KMReaderWin::readConfig(void)
   mBodyFont = config->readEntry("body-font", "helvetica-medium-r-12");
   mViewer->setStandardFont(kstrToFont(mBodyFont).family());
   //mViewer->setFixedFont(mFixedFont);
-#else
-  mViewer->setStandardFont(config->readEntry("StandardFont","helvetica"));
-  mViewer->setFixedFont(config->readEntry("FixedFont","courier"));
 #endif
   update();
 }
@@ -333,7 +333,7 @@ void KMReaderWin::writeMsgHeader(void)
     break;
 
   case HdrFancy:
-    mViewer->write(QString("<TABLE><TR><TD><IMG SRC=") + mPicsDir +
+    mViewer->write(QString("<TABLE width=100%><TR><TD><IMG SRC=") + mPicsDir +
 		   "kdelogo.xpm></TD><TD HSPACE=50><B><FONT SIZE=+1>");
     mViewer->write(strToHtml(mMsg->subject()) + "</FONT><BR>");
     mViewer->write(i18n("From: ")+
@@ -407,7 +407,7 @@ void KMReaderWin::writeBodyStr(const QString aStr)
   if (pgp->setMessage(aStr))
   {
     if (pgp->isEncrypted())
-    {
+    {      
       if(pgp->decrypt())
       {
 	line.sprintf("<B>%s</B><BR>",

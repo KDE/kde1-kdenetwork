@@ -426,7 +426,6 @@ Artdlg::~Artdlg ()
 }
 
 void Artdlg::fillTree ()
-
 {
     group->getList();
     ArticleList artList;
@@ -484,7 +483,9 @@ void Artdlg::fillTree ()
         IDList.append(iter->ID.data());
         depths.append(new int(iter->threadDepth));
     }
-    
+
+    // For some reason this wasn't working
+    /*
     //restore current message
     if (curr>-1)
     {
@@ -496,7 +497,8 @@ void Artdlg::fillTree ()
         }
         list->setCurrentItem(i);
         list->setTopItem(i);
-    }
+        }
+        */
     
     list->setAutoUpdate(true);
     list->repaint();
@@ -778,8 +780,8 @@ bool Artdlg::actions (int action,int index)
             {
             }
             qApp->restoreOverrideCursor ();
-            break;
             Rule::updateGlobals();
+            break;
         }
     case CONFIG_SORTING:
         {

@@ -249,6 +249,7 @@ Groupdlg::Groupdlg(const char *name):Inherited (name)
         actions(CONNECT);
     
     qApp->processEvents();
+    activeloaded=false;
     //Open group windows
 }
 
@@ -878,7 +879,7 @@ bool Groupdlg::loadActive()
             return false;
         }
     }
-    else			// active file not exists
+    else			// active file exists
     {
         statusBar ()->changeItem (klocale->translate("Listing active newsgroups"), 2);
         qApp->processEvents ();
@@ -886,11 +887,14 @@ bool Groupdlg::loadActive()
         success=true;
     };
     statusBar ()->changeItem ("", 2);
+    activeloaded=true;
     return success;
 };
 
 void Groupdlg::findGroup()
 {
+    if (!activeloaded)
+        loadActive();
     Asker ask;
     ask.setCaption (klocale->translate("KRN - Find a Newsgroup"));
     ask.label->setText(klocale->translate("Enter the name of the Newsgroup"));

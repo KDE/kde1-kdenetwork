@@ -19,8 +19,8 @@
 #include <kmsgbox.h>
 #include "kmmsgpart.h"
 
-#include <klined.h>
-#include <ktopwidget.h>
+#include <qlined.h>
+#include "kmtopwidget.h"
 #ifdef HAS_KSPELL
 #include <kspell.h>
 #endif
@@ -53,39 +53,50 @@ class KMEdit: public KEdit
 public:
   KMEdit(KApplication *a=NULL,QWidget *parent=NULL,KMComposeWin* composer=NULL,
 	 const char *name=NULL, const char *filename=NULL);
+  virtual ~KMEdit();
+
 protected:
-  virtual void keyPressEvent(QKeyEvent*);
+  /** Event filter that does Tab-key handling. */
+  virtual bool eventFilter(QObject*, QEvent*);
+
   KMComposeWin* mComposer;
 };
 
 
 //-----------------------------------------------------------------------------
-#define KMLineEditInherited KLined
-class KMLineEdit : public KLined
+#define KMLineEditInherited QLineEdit
+class KMLineEdit : public QLineEdit
 {
   Q_OBJECT
 
 public:
   KMLineEdit(KMComposeWin* composer = NULL, QWidget *parent = NULL, 
 	     const char *name = NULL);
+  virtual ~KMLineEdit();
+
+  /** Set cursor to end of line. */
+  virtual void cursorAtEnd();
+
+signals:
+  /** Emitted when Ctrl-. (period) is pressed. */
+  void completion();
 
 public slots:
-  void copy();
-  void cut();
-  void paste();
-  void markAll();
-  void complete();
+  virtual void copy();
+  virtual void cut();
+  virtual void paste();
+  virtual void markAll();
+  virtual void slotCompletion();
 
 protected:
-  virtual void mousePressEvent(QMouseEvent *);
-  virtual void keyPressEvent(QKeyEvent*);
+  virtual bool eventFilter(QObject*, QEvent*);
   KMComposeWin* mComposer;
 };
 
 
 //-----------------------------------------------------------------------------
-#define KMComposeWinInherited KTopLevelWidget
-class KMComposeWin : public KTopLevelWidget
+#define KMComposeWinInherited KMTopLevelWidget
+class KMComposeWin : public KMTopLevelWidget
 {
   Q_OBJECT
 
@@ -123,6 +134,7 @@ public slots:
   void slotSendLater();
   void slotDropAction();
   void slotNewComposer();
+  void slotNewMailReader();
   void slotClose();
   void slotHelp();
 
@@ -224,8 +236,8 @@ protected:
   virtual const QString newsgroups(void) const { return mEdtNewsgroups.text(); }
   virtual const QString followupTo(void) const { return mEdtFollowupTo.text(); }
 
-  
-  /** Save settings upon close. */
+  /** Ask for confirmation if the message was changed.
+    Save settings upon close. */
   virtual void closeEvent(QCloseEvent*);
 
   /** Add an attachment to the list. */

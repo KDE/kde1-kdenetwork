@@ -82,7 +82,7 @@ void expireCache();
 void testDir( const char *_name )
 {
     DIR *dp;
-    QString c = getenv( "HOME" );
+    QString c = KApplication::localkdedir();
     c += _name;
     dp = opendir( c.data() );
     if ( dp == NULL )
@@ -120,17 +120,16 @@ int main( int argc, char **argv )
     // Create our directory. If it exists, no problem
     // Should do some checking, though
 
-    testDir( "/.kde" );
-    testDir( "/.kde/share" );    
-    testDir( "/.kde/share/config" );
-    testDir( "/.kde/share/apps" );
-    testDir( "/.kde/share/apps/krn" );
-    testDir( "/.kde/share/apps/krn/cache" );    
-    testDir( "/.kde/share/apps/krn/groupinfo" );    
-    testDir( "/.kde/share/apps/krn/outgoing" );    
+    testDir( "/share" );
+    testDir( "/share/config" );
+    testDir( "/share/apps" );
+    testDir( "/share/apps/krn" );
+    testDir( "/share/apps/krn/cache" );
+    testDir( "/share/apps/krn/groupinfo" );
+    testDir( "/share/apps/krn/outgoing" );
 
-    QString c = getenv ("HOME");
-    krnpath=c+"/.kde/share/apps/krn/";
+    krnpath = KApplication::localkdedir() + "/share/apps/krn/";
+    
     mkdir (krnpath.data(),S_IREAD|S_IWRITE|S_IEXEC);
     cachepath=krnpath+"/cache/";
     mkdir (cachepath.data(),S_IREAD|S_IWRITE|S_IEXEC);

@@ -151,7 +151,7 @@ void Rule::updateGlobals()
     ruleList.clear();
     ruleFile->setGroup("Index");
     QStrList names;
-    ruleFile->readListEntry("RuleNames",names);
+    ruleFile->readListEntry("GlobalRules",names);
     for (char *iter=names.first();iter!=0;iter=names.next())
     {
         Rule *r=new Rule(0,0,Rule::Sender,false,false);

@@ -42,7 +42,8 @@ BUILTSOURCES =	groupdlg.moc \
                 rulesDlg.moc\
                 sortDlg.moc\
 		charsetsDlg.moc\
-                expirestatusdlg.moc
+                expirestatusdlg.moc\
+                kmtopwidget.moc
 
 DISTCLEANFILES = $(BUILTSOURCES)
 
@@ -94,7 +95,8 @@ krn_SOURCES = 	main.cpp\
                 rules.cpp\
 		charsetsDlg.cpp\
                 expirestatusdlg.cpp\
-                kfontutils.cpp
+                kfontutils.cpp \
+                kmtopwidget.cpp
 
 
 noinst_HEADERS = 	NNTP.h\
@@ -140,7 +142,9 @@ noinst_HEADERS = 	NNTP.h\
                 rules.h\
 		charsetsDlg.h\
                 expirestatusdlg.h\
-                kfontutils.h
+                kfontutils.h\
+                kmtopwidget.h
+
 
 
 
@@ -274,6 +278,11 @@ charsetsDlg.moc: charsetsDlg.h
 expirestatusdlg.cpp:expirestatusdlg.moc
 expirestatusdlg.moc: expirestatusdlg.h
 	$(MOC) expirestatusdlg.h -o expirestatusdlg.moc
-	
+
+
+kmtopwidget.cpp:kmtopwidget.moc
+kmtopwidget.moc: kmtopwidget.h
+	$(MOC) kmtopwidget.h -o kmtopwidget.moc
+
 messages:
 	@XGETTEXT@ -ktranslate -C -x../../kdelibs/po/kde.pot $(krn_SOURCES)  && mv messages.po ../po/krn.pot

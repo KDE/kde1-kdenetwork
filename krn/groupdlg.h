@@ -70,11 +70,11 @@ private slots:
     bool postQueued();
 private:
     NNTP *server;
-//    KTreeList *list;
     MyTreeList *list;
     bool loadSubscribed();
     bool saveSubscribed();
     bool loadActive();
+    bool activeloaded;
     QTimer *counterTimer;
 };
 #endif // Groupdlg_included
