@@ -7,12 +7,10 @@ msgstr ""
 "Last-Translator: Karl Backström <backstrom@kde.org>\n"
 
 #: kfinger.C:30
-#, fuzzy
 msgid "F&inger Now"
 msgstr "F&inger Nu"
 
 #: kfinger.C:31
-#, fuzzy
 msgid "&Talk..."
 msgstr "&Tala..."
 
@@ -111,9 +109,9 @@ msgid "Timed finger"
 msgstr "Klockad finger"
 
 #: kfinger.C:465 kfinger.C:652
-#, fuzzy, c-format
+#, c-format
 msgid "Finger wait: %d\""
-msgstr "Finger väntar: %d"
+msgstr "Finger väntar: %d\""
 
 #: kfinger.C:470
 msgid "Talk Command "
