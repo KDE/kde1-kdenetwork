@@ -348,3 +348,9 @@ sub cmd_exec {
        "EXEC -OUT <shell commands]\n" .
        "EXEC -MSG <nickname> <shell commands>]\n" .
        "EXEC -NOTICE <nickname> <shell commands>]\n" );
+
+sub hook_fixcolours {
+  $_[1] =~ tr/[\337\334\237\251\244]/\[\002\037\026\003\170]/;
+}
+
+&addhook("send_text", "fixcolours");

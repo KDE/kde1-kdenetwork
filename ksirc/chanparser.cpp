@@ -365,7 +365,7 @@ void ChannelParser::parseINFOPart(QString string) /*FOLD00*/
     else if(sscanf(string, "You have been kicked off channel %100s", channel) >= 1){
       if(strcasecmp(top->channel_name, channel) != 0)
         throw(parseWrongChannel(string, kSircConfig->colour_error, top->pix_madsmile));
-      if (kSircConfig->autorejoin == TRUE) {
+      if (kSircConfig->AutoRejoin == TRUE) {
         QString str = "/join " + QString(top->channel_name) + "\n";
         emit top->outputLine(str);
         if(top->ticker)

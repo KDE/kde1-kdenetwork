@@ -119,6 +119,14 @@ servercontroller::servercontroller /*FOLD00*/
   connections->setItemEnabled(join_id, FALSE);
   MenuBar->insertItem("&Connections", connections);
   
+  kConfig->setGroup("General");
+  kSircConfig->AutoCreateWin = kConfig->readNumEntry("AutoCreateWin", FALSE);
+  kSircConfig->BeepNotify = kConfig->readNumEntry("BeepNotify", TRUE);
+  kSircConfig->NickCompletion = kConfig->readNumEntry("NickCompletion", TRUE);
+  kSircConfig->ColourPicker = kConfig->readNumEntry("ColourPicker", TRUE);
+  kSircConfig->AutoRejoin = kConfig->readNumEntry("AutoRejoin", TRUE);
+  kSircConfig->BackgroundPix = kConfig->readNumEntry("BackgroundPix", FALSE);
+  kSircConfig->BackgroundFile = kConfig->readEntry("BackgroundFile");
   
   kConfig->setGroup("GlobalOptions");
   options = new QPopupMenu(0, QString(name) + "_menu_options");
@@ -126,23 +134,6 @@ servercontroller::servercontroller /*FOLD00*/
   objFinder::insert(options);
   options->setCheckable(TRUE);
 
-  auto_id = options->insertItem("Auto Create Windows", 
-				this, SLOT(autocreate()));
-  options->setItemChecked(auto_id, 
-			  kConfig->readNumEntry("AutoCreate", FALSE));
-  kSircConfig->autocreate = kConfig->readNumEntry("AutoCreate", FALSE);
-  nickc_id = options->insertItem("Nick Completion", 
-				 this, SLOT(nickcompletion()));
-  options->setItemChecked(nickc_id, 
-			  kConfig->readNumEntry("NickCompletion", TRUE));
-  kSircConfig->nickcompletion = 
-    kConfig->readNumEntry("NickCompletion", TRUE);
-  autor_id = options->insertItem("Auto Rejoin",
-                                 this, SLOT(autorejoin()));
-  options->setItemChecked(autor_id,
-                          kConfig->readNumEntry("AutoRejoin", TRUE));
-  kSircConfig->autorejoin =
-    kConfig->readNumEntry("AutoRejoin", TRUE);
   options->insertSeparator();
   options->insertItem("&Colour Preferences...",
 		      this, SLOT(colour_prefs()));
@@ -291,18 +282,16 @@ void servercontroller::new_toplevel(QString str) /*fold00*/
   }
 }
 
-void servercontroller::autocreate() /*fold00*/
+void servercontroller::ToggleAutoCreate() /*fold00*/
 {
-  kConfig->setGroup("GlobalOptions");
-  if(kConfig->readNumEntry("AutoCreate", FALSE) == FALSE){
-    options->setItemChecked(auto_id, TRUE);
-    kConfig->writeEntry("AutoCreate", TRUE);
-    kSircConfig->autocreate = TRUE;
+  kConfig->setGroup("General");
+  if(kConfig->readNumEntry("AutoCreateWin", FALSE) == FALSE){
+    kConfig->writeEntry("AutoCreateWin", TRUE);
+    kSircConfig->AutoCreateWin = TRUE;
   }
   else{
-    options->setItemChecked(auto_id, FALSE);
-    kConfig->writeEntry("AutoCreate", FALSE);
-    kSircConfig->autocreate = FALSE;
+    kConfig->writeEntry("AutoCreateWin", FALSE);
+    kSircConfig->AutoCreateWin = FALSE;
   }
   kConfig->sync();
 }
@@ -357,38 +346,6 @@ void servercontroller::configChange() /*fold00*/
     it.current()->getWindowList()["!all"]->control_message(REREAD_CONFIG, "");
     ++it;
   }
-}
-
-void servercontroller::nickcompletion() /*fold00*/
-{
-  kConfig->setGroup("GlobalOptions");
-  if(kConfig->readNumEntry("NickCompletion", TRUE) == FALSE){
-    options->setItemChecked(nickc_id, TRUE);
-    kConfig->writeEntry("NickCompletion", TRUE);
-    kSircConfig->nickcompletion = TRUE;
-  }
-  else{
-    options->setItemChecked(nickc_id, FALSE);
-    kConfig->writeEntry("NickCompletion", FALSE);
-    kSircConfig->nickcompletion = FALSE;
-  }
-  kConfig->sync();
-}
-
-void servercontroller::autorejoin()
-{
-  kConfig->setGroup("GlobalOptions");
-  if(kConfig->readNumEntry("AutoRejoin", FALSE) == FALSE){
-    options->setItemChecked(autor_id, TRUE);
-    kConfig->writeEntry("AutoRejoin", TRUE);
-    kSircConfig->autorejoin = TRUE;
-  }
-  else{
-    options->setItemChecked(autor_id, FALSE);
-    kConfig->writeEntry("AutoRejoin", FALSE);
-    kSircConfig->autorejoin = FALSE;
-  }
-  kConfig->sync();
 }
 
 void servercontroller::about_ksirc() /*fold00*/
@@ -448,7 +405,9 @@ void servercontroller::ProcMessage(QString server, int command, QString args) /*
     path.pop();
     // add a new child item with parent as it's parent
     ConnectionTree->addChildItem(args.data(), pic_run, &path);
-    KApplication::beep();
+    if (kSircConfig->BeepNotify) {
+      KApplication::beep();
+    }
     break;
     /**
       *  Args:
@@ -537,7 +496,9 @@ void servercontroller::ProcMessage(QString server, int command, QString args) /*
     }
     break;
   case ProcCommand::turnOffAutoCreate:
-    autocreate();
+    if (kSircConfig->AutoCreateWin) {
+      ToggleAutoCreate();
+    }
     break;
   default:
     cerr << "Unkown command: " << command << " from " << server << " " << args << endl;

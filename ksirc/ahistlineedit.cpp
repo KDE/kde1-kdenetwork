@@ -41,7 +41,11 @@
 
 
 #include "ahistlineedit.h"
+#include "KSColourPicker/kscolourpicker.h"
+#include "config.h"
 #include <iostream.h>
+
+extern global_config *kSircConfig;
 
 aHistLineEdit::aHistLineEdit(QWidget *parent, const char *name)
   : QLineEdit(parent, name)
@@ -57,23 +61,26 @@ void aHistLineEdit::keyPressEvent ( QKeyEvent *e )
     s.insert( 0, text() );
     switch ( e->key() ) {
     case Key_B:
-      s.insert( s.length(), 0x02 );
+      s.insert( s.length(), 0xdf );
       setText(s);
       break;
     case Key_U:
-      s.insert( s.length(), 0x1f );
+      s.insert( s.length(), 0xdc );
       setText(s);
       break;
     case Key_R:
-      s.insert( s.length(), 0x16 );
+      s.insert( s.length(), 0x9f );
       setText(s);
       break;
     case Key_K:
-      s.insert( s.length(), 0x03 );
+      s.insert( s.length(), 0xa9 );
       setText(s);
+      if ( kSircConfig->ColourPicker ) {
+        ColourPickerPopUp();
+      }
       break;
     case Key_O:
-      s.insert( s.length(), 0x0f );
+      s.insert( s.length(), 0xa4 );
       setText(s);
       break;
     case Key_I:
@@ -129,6 +136,19 @@ void aHistLineEdit::keyPressEvent ( QKeyEvent *e )
   else{
     QLineEdit::keyPressEvent(e);
   }
+}
+
+void aHistLineEdit::ColourPickerPopUp()
+{
+  kscolourpicker *kscp = new kscolourpicker();
+  connect(kscp, SIGNAL(picked( QString )), 
+          this, SLOT(slot_insert( QString )));
+  kscp->show();
+}
+
+void aHistLineEdit::slot_insert( QString str )
+{
+  insert( str );
 }
 
 void aHistLineEdit::focusInEvent(QFocusEvent *)

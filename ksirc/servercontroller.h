@@ -127,7 +127,7 @@ public slots:
       *     Notify all ksircprocess' to update filters
       */
     virtual void slot_filters_update();
-    virtual void autocreate();
+    virtual void ToggleAutoCreate();
     virtual void colour_prefs();
     virtual void font_prefs();
     /**
@@ -138,8 +138,6 @@ public slots:
     virtual void font_update(const QFont&);
     virtual void filter_rule_editor();
     virtual void configChange();
-    virtual void nickcompletion();
-    virtual void autorejoin();
     virtual void help_general();
     virtual void help_colours();
     virtual void help_filters();
@@ -168,7 +166,7 @@ private:
     // name
     QDict<KSircProcess> proc_list;
     QPopupMenu *options, *connections;
-    int join_id, server_id, auto_id, nickc_id, autor_id;
+    int join_id, server_id;
     
     int open_toplevels;
 

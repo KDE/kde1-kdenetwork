@@ -27,6 +27,10 @@ noinst_LIBRARIES = libksprefs.a
 libksprefs_a_SOURCES = \
 ksprefs.cpp \
 mksprefs.cpp \
+general.cpp \
+mgeneral.cpp \
+generalData.cpp \
+mgeneralData.cpp \
 startup.cpp \
 mstartup.cpp \
 startupdata.cpp \
@@ -39,6 +43,8 @@ UserMenuRef.cpp \
 mUserMenuRef.cpp \
 UserMenuRefData.cpp \
 mUserMenuRefData.cpp \
+kspainter.cpp \
+mkspainter.cpp \
 defaultfilters.cpp \
 mdefaultfilters.cpp \
 defaultfiltersdata.cpp \
@@ -47,11 +53,14 @@ mdefaultfiltersdata.cpp
 noinst_HEADERS = \
 ksprefs.h \
 serverchanneldata.h \
+generalData.h \
 startupdata.h \
 serverchannel.h \
+general.h \
 startup.h \
 UserMenuRef.h \
 UserMenuRefData.h \
+kspainter.h \
 defaultfilters.h \
 defaultfiltersdata.h
 

@@ -4,6 +4,7 @@
 #include <qpushbt.h>
 #include <qtabdlg.h>
 
+#include "general.h"
 #include "startup.h"
 #include "serverchannel.h"
 #include "UserMenuRef.h"
@@ -40,6 +41,7 @@ protected slots:
 
 private:
   QTabDialog *pTab;
+  general *pGeneral;
   StartUp *pStart;
   UserMenuRef *pMenu;
   ServerChannel *pServerChannel;

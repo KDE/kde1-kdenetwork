@@ -23,9 +23,14 @@ protected:
   virtual void focusOutEvent ( QFocusEvent * );
   virtual void mousePressEvent ( QMouseEvent * );
 
+protected slots:
+  void slot_insert( QString );
+
 private:
   QStrList hist;
   int current;
+  void aHistLineEdit::ColourPickerPopUp();
+
 };
 
 #endif

@@ -73,7 +73,7 @@ void StartUp::slot_apply()
     nick = "Notify-" + cindex;
     kConfig->writeEntry(nick, LB_Nicks->text(i));
   }
-
+  kConfig->sync();
 }
 
 void StartUp::nicks_delete()

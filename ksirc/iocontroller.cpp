@@ -187,7 +187,7 @@ void KSircIOController::stdout_read(KProcess *, char *_buffer, int buflen)
     if(!(ksircproc->TopList)[name]){
       // Ignore ssfe control messages with `
       // we left channel, don't open a window for a control message
-      if(kSircConfig->autocreate == TRUE && line[0] != '`' && line[1] != '#'){
+      if(kSircConfig->AutoCreateWin == TRUE && line[0] != '`' && line[1] != '#'){
         debug("Creating window for: %s because of: %s", name.data(), line.data());
 	ksircproc->new_toplevel(name);
       }

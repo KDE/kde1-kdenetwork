@@ -1,7 +1,7 @@
 /****************************************************************************
 ** ksprogressData meta object code from reading C++ file 'ksprogressdata.h'
 **
-** Created: Thu Dec 18 09:10:20 1997
+** Created: Mon Jul 27 14:30:33 1998
 **      by: The Qt Meta Object Compiler ($Revision$)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -10,11 +10,11 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #define Q_MOC_OUTPUT_REVISION 2
 #elif Q_MOC_OUTPUT_REVISION != 2
-#error Moc format conflict - please regenerate all moc files
+#error "Moc format conflict - please regenerate all moc files"
 #endif
 
 #include "ksprogressdata.h"
-#include <qmetaobj.h>
+#include <qmetaobject.h>
 
 
 const char *ksprogressData::className() const

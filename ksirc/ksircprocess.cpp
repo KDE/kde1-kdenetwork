@@ -271,7 +271,7 @@ void KSircProcess::new_toplevel(QString str) /*FOLD00*/
   }
   else if(TopList.find(str.data()) == 0x0){ // If the window doesn't exist, continue
     // If AutoCreate windows is on, let's make sure we're not being flooded.
-    if(kSircConfig->autocreate == TRUE){
+    if(kSircConfig->AutoCreateWin == TRUE){
       time_t current_time = time(NULL);
       if((current_time - last_window_open) < 5){
         if(number_open > 4 && flood_dlg == FALSE){

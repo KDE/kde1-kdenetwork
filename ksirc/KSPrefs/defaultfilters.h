@@ -30,7 +30,8 @@ public slots:
     void slot_apply();
 
 protected slots:
-    void slot_fgset();
+    void slot_setSampleNickColour();
+    void slot_setSampleUsColour();
 
 private:
 

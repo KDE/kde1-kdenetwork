@@ -19,10 +19,13 @@ class global_config {
 
   QFont defaultfont;
 
-  bool message_window;
-  bool autocreate;
-  bool nickcompletion;
-  bool autorejoin;
+  bool AutoCreateWin;
+  bool BeepNotify;
+  bool NickCompletion;
+  bool ColourPicker;
+  bool AutoRejoin;
+  bool BackgroundPix;
+  QString BackgroundFile;
   bool transparent;
 
   bool filterKColour;

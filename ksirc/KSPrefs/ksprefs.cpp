@@ -10,16 +10,21 @@ KSPrefs::KSPrefs(QWidget * parent=0, const char * name=0)
   pTab = new QTabDialog(this, "prefstabs");
 
   // Start Sub Dialog items.
+  pGeneral = new general(pTab);
   pStart = new StartUp(pTab);
   pServerChannel = new ServerChannel(pTab);
   pMenu = new UserMenuRef(pTab);
   pFilters = new DefaultFilters(pTab);
 
+  pTab->setCancelButton();
+  pTab->addTab(pGeneral, "&General");
   pTab->addTab(pStart, "&StartUp");
   pTab->addTab(pServerChannel, "Servers/&Channels");
   pTab->addTab(pMenu, "&User Menu");
   pTab->addTab(pFilters, "&Default Filters");
 
+  connect(pTab, SIGNAL(applyButtonPressed()),
+          pGeneral, SLOT(slot_apply()));
   connect(pTab, SIGNAL(applyButtonPressed()),
 	  pStart, SLOT(slot_apply()));
   connect(pTab, SIGNAL(applyButtonPressed()),

@@ -563,7 +563,7 @@ void KSircTopLevel::sirc_line_return() /*fold00*/
 
   int pos2;
   
-  if(kSircConfig->nickcompletion == TRUE){
+  if(kSircConfig->NickCompletion == TRUE){
     if(s.find(QRegExp("^[^ :]+: "), 0) != -1){
       pos2 = s.find(": ", 0);
       if(pos2 < 1){

@@ -75,6 +75,7 @@ void ServerChannel::slot_apply(){
     server = "Channel-" + cindex;
     kConfig->writeEntry(server, LB_Channels->text(i));
   }
+  kConfig->sync();
 }
 
 void ServerChannel::servers_delete()

@@ -18,7 +18,7 @@ APPSDIR = $(kde_appsdir)/Internet
 INCLUDES= @all_includes@
 DEFS = @DEFS@ -I. -I$(srcdir) -I..
 # claim, which subdirectories you want to install
-SUBDIRS = KSTicker KSProgress KSCutDialog KSPrefs puke img doc
+SUBDIRS = KSTicker KSProgress KSCutDialog KSPrefs KSColourPicker puke img doc
 
 ####### This part is very khexdit specific
 # you can add here more. This one gets installed 
@@ -61,17 +61,17 @@ mobjFinder.cpp
 ksircstatic_SOURCES = $(ksirc_SOURCES)
 
 # the library search path
-ksirc_LDFLAGS = -export-dynamic @all_libraries@ # -L$(srcdir)/KSProgress -L$(srcdir)/KSTicker -L$(srcdir)/KSCutDialog -L$(srcdir)/KSPrefs -L$(srcdir)/puke
+ksirc_LDFLAGS = -export-dynamic @all_libraries@ # -L$(srcdir)/KSProgress -L$(srcdir)/KSTicker -L$(srcdir)/KSCutDialog -L$(srcdir)/KSPrefs -L$(srcdir)/KSColourPicker -L$(srcdir)/puke
 
 ksircstatic_LDFLAGS = $(ksirc_LDFLAGS)
 
 # the libraries to link against. Be aware of the order. First the libraries,
 # that depend on the following ones.
-ksirc_LDADD   = ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a puke/libpuke.la -lkdeui -lkdecore -lkfile -lkfm -lqt -lX11 -lXext @LIBSOCKET@ -ldl $(KDE_RPATH)
+ksirc_LDADD   = ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a ./KSColourPicker/libkscolourpicker.a puke/libpuke.la -lkdeui -lkdecore -lkfile -lkfm -lqt -lX11 -lXext @LIBSOCKET@ -ldl $(KDE_RPATH)
 
-ksircstatic_LDADD = ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a ./puke/.libs/libpuke.a
+ksircstatic_LDADD = ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a ./KSColourPicker/libkscolourpicker.a ./puke/.libs/libpuke.a
 
-STATIC_LIBS = /opt/kde/lib/libkdeui.a /opt/kde/lib/libkdecore.a /usr/local/lib/qt/lib/libqt.a /usr/lib/libstdc++.a -lX11 -lXext @LIBSOCKET@ -ldl -lm
+STATIC_LIBS = /opt/kde/lib/libkdeui.a /opt/kde/lib/libkdecore.a /usr/lib/libqt.a /usr/local/lib/libstdc++.a -lpthread -lX11 -lXext @LIBSOCKET@ -ldl
 
 kdoc:
 	kdoc -ddoc ksirc *.h
