@@ -1,0 +1,209 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: KDE 1.0\n"
+"POT-Creation-Date: 1998-02-25 18:08+0100\n"
+"PO-Revision-Date: 1998-06-29 11:00+0200\n"
+"Last-Translator: Kerem ERZURUMLU <kerem@linux.org.tr>\n"
+"Language-Team: Hacettepe Linux Users Group <hacettepe@linux.org.tr>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ISO 8859-9\n"
+
+#: knu.cpp:139 knu.cpp:300
+msgid "&Ping"
+msgstr "&Ping"
+
+#: knu.cpp:148 knu.cpp:306
+msgid "&Traceroute"
+msgstr "&Traceroute"
+
+#: knu.cpp:157 knu.cpp:312
+msgid "Host &resolution"
+msgstr "&Sunucu bulma"
+
+#: knu.cpp:170
+msgid "F&inger"
+msgstr "Finger"
+
+#: knu.cpp:180 knu.cpp:325
+msgid "&Matt's traceroute"
+msgstr "Matt'ýn traceroute komutu"
+
+#: knu.cpp:192
+msgid ""
+"There is no command enabled\n"
+"in the configuration file.\n"
+"\n"
+"So I can't do anything...\n"
+msgstr ""
+"Ayar dosyasýnda hiçbir\n"
+"komut yok.\n"
+"\n"
+"Hali ile birþey yapamýyorum\n"
+
+#: knu.cpp:237
+msgid "&New window"
+msgstr "&Yeni pencere"
+
+#: knu.cpp:240
+msgid "&Close window"
+msgstr "Pencere &kapat"
+
+#: knu.cpp:251
+msgid "Select &all"
+msgstr "&Hepsini seç"
+
+#: knu.cpp:254
+msgid "C&lear output window"
+msgstr "Çýktý penceresini t&emizle"
+
+#: knu.cpp:257
+msgid "P&references..."
+msgstr "Seçenekler"
+
+#: knu.cpp:272
+#, c-format
+msgid "&About %s"
+msgstr "%s hakkýnda"
+
+#: knu.cpp:274
+msgid "About &Qt"
+msgstr "&Qt hakkýnda"
+
+#: knu.cpp:318
+msgid "&Finger"
+msgstr "&Finger"
+
+#: knu.cpp:465
+msgid "About..."
+msgstr "Hakkýnda ..."
+
+#: CommandDlg.cpp:120
+msgid "H&ost:"
+msgstr "S&unucu:"
+
+#: CommandDlg.cpp:129
+msgid "&Go!"
+msgstr "&Git!"
+
+#: CommandDlg.cpp:139
+msgid "&Stop"
+msgstr "&Dur"
+
+#: CommandDlg.cpp:155
+msgid ""
+"This command binary was not found. \n"
+"You can give its path in the Edit->Preferences... menu."
+msgstr ""
+"Bu komut çalýþtýrýlabiliri bulunmadý.\n"
+"Yolunu Düzen->Seçenekler'den ayarlayabilirsiniz."
+
+#: CommandDlg.cpp:340
+#, c-format
+msgid ""
+"\n"
+"You have a problem in your\n"
+"%s/%src\n"
+"configuration file.\n"
+"In the [%s] group,\n"
+"I can't find a valid \"path=\" entry.\n"
+"\n"
+"Please use Edit->Preferences... menu\n"
+"to configure it again.\n"
+msgstr ""
+"\n"
+"%s/%src\n"
+"ayar dosyanýzda bir problem var\n"
+"[%s] grubunda \"path\" girdisini\n"
+"bulamadým.\n"
+"\n"
+"Düzen->Seçenekler menüsü ile yeniden\n"
+"ayarlayýn\n"
+
+#: CommandDlg.cpp:349
+msgid "Error in pathname"
+msgstr "Yol adýnda hata"
+
+#: CommandDlg.cpp:482
+msgid "Binary"
+msgstr "Çalýþabilir"
+
+#: CommandDlg.cpp:490
+msgid "Path&name:"
+msgstr "Yol &Adý:"
+
+#: CommandDlg.cpp:499
+msgid "Additional &arguments:"
+msgstr "Ek &Parametreler:"
+
+#: CommandDlg.cpp:524
+msgid "This command had been disabled in the configuration file."
+msgstr "Bu komut ayar dosyasýndan iptal edilmiþ."
+
+#: OptionsDlg.cpp:68
+msgid " - configuration"
+msgstr " - ayar"
+
+#: PingDlg.cpp:98 TracerouteDlg.cpp:99
+msgid "Make host &name resolution"
+msgstr "Sunucu &adý bulma"
+
+#: TracerouteDlg.cpp:116
+msgid "&Maximum number of hops:"
+msgstr "&En fazla atlama sayýsý:"
+
+#: HostDlg.cpp:113
+msgid "address (A)"
+msgstr "Adres (A)"
+
+#: HostDlg.cpp:114
+msgid "name (PTR)"
+msgstr "Ad (PTR)"
+
+#: HostDlg.cpp:115
+msgid "name server (NS)"
+msgstr "alan adý sunucusu (NS)"
+
+#: HostDlg.cpp:116
+msgid "mail exchanger (MX)"
+msgstr "posta bilgisi (MX)"
+
+#: HostDlg.cpp:117
+msgid "alias (CNAME)"
+msgstr "lakap (CNAME)"
+
+#: HostDlg.cpp:118
+msgid "start of authority (SOA)"
+msgstr "Yetkili bilgisi (SOA)"
+
+#: HostDlg.cpp:119
+msgid "any record (ANY)"
+msgstr "herhangi bir kayýt (ANY)"
+
+#: HostDlg.cpp:125
+msgid "Se&arch for:"
+msgstr "A&ra:"
+
+#: HostDlg.cpp:137 HostDlg.cpp:288
+msgid "default server"
+msgstr "öntanýmlý sunucu"
+
+#: FingerDlg.cpp:94 HostDlg.cpp:146
+msgid "Ser&ver:"
+msgstr "&Sunucu:"
+
+#: HostDlg.cpp:332
+msgid "hos&t"
+msgstr "makina"
+
+#: HostDlg.cpp:336
+msgid "ns&lookup"
+msgstr "nslookup"
+
+#: FingerDlg.cpp:76
+msgid "&User:"
+msgstr "Kullanýcý"
