@@ -218,7 +218,7 @@ void PukeController::writeBuffer(int fd, PukeMessage *message) /*fold00*/
 #endif /* DEBUG */
 
         struct iovec iov[2];
-        iov[0].iov_base = message;
+        iov[0].iov_base = (char *)message;
         iov[0].iov_len = 5*sizeof(int);
         iov[1].iov_base = message->cArg;
         iov[1].iov_len = message->iTextSize;
