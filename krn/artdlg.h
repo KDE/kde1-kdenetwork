@@ -72,10 +72,12 @@ private:
     NewsGroup *group;
     ArticleList artList;
     KMenuBar *menu;
+	QPopupMenu *article;
     KToolBar *tool;
     KPanner *panner;
     QGridLayout *gl;
     KStatusBar *status;
+	bool unread;
 };
 
 #endif // Artdlg_included

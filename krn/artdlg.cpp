@@ -45,6 +45,7 @@
 #define SCROLL_UP_ARTICLE 11
 #define SCROLL_DOWN_ARTICLE 12
 #define DECODE_ONE_ARTICLE 13
+#define NO_READ 14
 
 
 extern KIconLoader *iconloader;
@@ -63,11 +64,13 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     group->isVisible=true;
     setCaption (group->data());
     groupname=group->data();
-
+    unread = false;
+    
     server = _server;
-
-
-    QPopupMenu *article=new QPopupMenu;
+    
+    
+    article=new QPopupMenu;
+    article->setCheckable(true);
     article->insertItem("Save",SAVE_ARTICLE);
     article->insertSeparator();
     article->insertItem("Reply by Mail",REP_MAIL);
@@ -75,6 +78,8 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     article->insertSeparator();
     article->insertItem("Decode",DECODE_ONE_ARTICLE);
     article->insertItem("Tag",TAG_ARTICLE);
+    article->insertSeparator();
+    article->insertItem("Only unread messages", NO_READ);
     connect (article,SIGNAL(activated(int)),SLOT(actions(int)));
     
     QPopupMenu *taggedArticle=new QPopupMenu;
@@ -86,40 +91,40 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     taggedArticle->insertItem("Decode",DECODE_ARTICLE);
     taggedArticle->insertItem("Untag",TAG_ARTICLE);
     connect (taggedArticle,SIGNAL(activated(int)),SLOT(taggedActions(int)));
-
+    
     menu = new KMenuBar (this, "menu");
     menu->insertItem ("&Article", article);
     menu->insertItem ("&Tagged", taggedArticle);
     setMenu (menu);
     
-
+    
     QPixmap pixmap;
     
     tool = new KToolBar (this, "tool");
     QObject::connect (tool, SIGNAL (clicked (int)), this, SLOT (actions (int)));
-
-
+    
+    
     pixmap.load(pixpath+"save.xpm");
     tool->insertItem(pixmap,SAVE_ARTICLE,true,"Save file");
     tool->insertSeparator ();
     
-//    pixmap=iconloader->loadIcon("filemail.xpm");
+    //    pixmap=iconloader->loadIcon("filemail.xpm");
     pixmap.load(pixpath+"filemail.xpm");
     tool->insertItem (pixmap, REP_MAIL, true, "Reply by Mail");
     pixmap.load (pixpath+"txt.xpm");
     tool->insertItem (pixmap, FOLLOWUP, true, "Post a Followup");
     tool->insertSeparator ();
     
-//    pixmap=iconloader->loadIcon("left.xpm");
+    //    pixmap=iconloader->loadIcon("left.xpm");
     pixmap.load(pixpath+"left.xpm");
     tool->insertItem (pixmap, PREV, true, "Previous Message");
     
-//    pixmap=iconloader->loadIcon ("right.xpm");
+    //    pixmap=iconloader->loadIcon ("right.xpm");
     pixmap.load(pixpath+"right.xpm");
     tool->insertItem (pixmap, NEXT, true, "Next Message");
     
     tool->insertSeparator ();
-//    pixmap=iconloader->loadIcon ("previous.xpm");
+    //    pixmap=iconloader->loadIcon ("previous.xpm");
     pixmap.load(pixpath+"previous.xpm");
     tool->insertItem (pixmap, ARTLIST, true, "Get Article List");
     
@@ -128,8 +133,8 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     
     pixmap.load(pixpath+"deco.xpm");
     tool->insertItem (pixmap, DECODE_ONE_ARTICLE, true, "Decode Article");
-
-
+    
+    
     addToolBar (tool);
     tool->setPos( KToolBar::Top );
     tool->show();
@@ -152,15 +157,15 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     list->setColumn(8, "Date", 50);
     list->setColumn(9, "",5);
     list->setColumn(10, "Subject", 50);
-
+    
     list->dict().insert("N",new QPixmap(pixpath+"green-bullet.xpm"));  //Unread message
     list->dict().insert("R",new QPixmap(pixpath+"red-bullet.xpm"));    //Read message
     list->dict().insert("T",new QPixmap(pixpath+"black-bullet.xpm"));  //Unav. message
     list->dict().insert("M",new QPixmap(pixpath+"tagged.xpm"));  //Marked message
-
+    
     gl->addWidget( list, 0, 0 );
     connect (list,SIGNAL(selected(int,int)),this,SLOT(loadArt(int,int)));
-
+    
     RmbPop *filter=new RmbPop(list);
     delete (filter->pop);
     filter->pop=article;
@@ -178,7 +183,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     status->insertItem ("", 1);
     status->show ();
     setStatusBar (status);
-
+    
     acc=new QAccel (this);
     acc->insertItem(Key_N,NEXT);
     acc->insertItem(Key_P,PREV);
@@ -194,7 +199,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     acc->insertItem(ALT + Key_Down, NEXT);
     acc->insertItem(Key_Up, SCROLL_DOWN_ARTICLE);
     acc->insertItem(Key_Down, SCROLL_UP_ARTICLE);
-
+    
     QObject::connect (acc,SIGNAL(activated(int)),this,SLOT(actions(int)));
     QObject::connect (messwin,SIGNAL(spawnArticle(QString)),this,SLOT(loadArt(QString)));
     resize(600,400);
@@ -202,7 +207,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     show ();
     resize(600,400);
     qApp->processEvents ();
-
+    
     if (server->isConnected())
     {
         actions(ARTLIST);
@@ -220,7 +225,7 @@ void Artdlg::closeEvent(QCloseEvent *)
     group->artList.clear();
     artList.clear();
     delete this;
-}
+} 
 
 Artdlg::~Artdlg ()
 {
@@ -234,25 +239,27 @@ void Artdlg::fillTree ()
     statusBar()->changeItem("Reading Article List",1);
     qApp->processEvents ();
     group->getList();
-
+    
     //Here is where the filtering should happen
     //Only put messages we want.
-
-    for (Article *iter=group->artList.first();iter!=0;iter=group->artList.next())
-    {
-        artList.append(iter);
-    }
-
+    
     statusBar()->changeItem("Showing Article List",1);
     qApp->processEvents ();
     list->setAutoUpdate(false);
     list->clear();
-    for (Article *iter=artList.first();iter!=0;iter=artList.next())
+    
+    for (Article *iter=group->artList.first();iter!=0;iter=group->artList.next())
     {
         QString formatted;
+        
+        artList.append(iter);
         iter->formHeader(&formatted);
-        list->insertItem (formatted.data());
+        if (!(iter->isRead() && unread)) // We want to see only the unread messages
+        {
+            list->insertItem (formatted.data());
+        }
     }
+    
     list->setAutoUpdate(true);
     list->repaint();
     qApp->restoreOverrideCursor();
@@ -359,26 +366,48 @@ bool Artdlg::actions (int action)
     case REP_MAIL:
         KMsgBox::message (0,"Sorry!","Not implemented");
     case SCROLL_UP_ARTICLE:
-    	{
-	    messwin->scrollUp();
-	    success=true;
-	    break;
-	}
+        {
+            messwin->scrollUp();
+            success=true;
+            break;
+        }
     case SCROLL_DOWN_ARTICLE:
-    	{
-	    messwin->scrollDown();
-	    success=true;
-	    break;
-	}
+        {
+            messwin->scrollDown();
+            success=true;
+            break;
+        }
     case SAVE_ARTICLE:
         {
             int index=list->currentItem();
-                if (index<0)
-                    break;
+            if (index<0)
+                break;
             Article *art=artList.at(index);
             saveArt(art->ID);
-	    break;
-	}
+            break;
+        }
+    case NO_READ:
+        {
+            unread = !unread;
+            article->setItemChecked(NO_READ, unread);
+            list->setAutoUpdate(false);
+            list->clear();
+            artList.clear();
+            for (Article *iter=group->artList.first();iter!=NULL;iter=group->artList.next())
+            {
+                QString formatted;
+                iter->formHeader(&formatted);
+                if (!(iter->isRead() && unread))		// We want to see only read messages.
+                {
+                    artList.append(iter);
+                    list->insertItem (formatted.data());
+                }
+            }
+            list->setAutoUpdate(true);
+            list->repaint();
+            success = true;
+            break;
+        }
     }
     qApp->restoreOverrideCursor ();
     return success;
@@ -508,7 +537,6 @@ void Artdlg::markArt (int index,int)
     if (art->isMarked())
     {
         art->setMarked(false);
-        list->unmarkItem(index);
     }
     else
     {
@@ -524,7 +552,7 @@ void Artdlg::decArt (int index,int)
     if (index<0) return;
     QString *s;
     Article *art=artList.at(index);
-
+    
     if (!server->isConnected())
     {
         if (!server->isCached(art->ID.data()))

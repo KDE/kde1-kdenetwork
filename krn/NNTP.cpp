@@ -453,7 +453,7 @@ QString *NNTP::article(char *id)
             warning ("error getting data\nserver said %s\n",SingleLineResponse().data());
             f.close();
             unlink (p.data());
-            return NULL;
+            return new QString("");
         }
     }
     return data;
