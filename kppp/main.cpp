@@ -580,6 +580,7 @@ void dieppp(int sig) {
 
 #ifdef MY_DEBUG
     printf("pid of the process which died: %d\n",id);
+    printf("status of that process: %i\n", st);
 #endif
 
     // if we are not connected pppdpid is -1 so have have to check for that

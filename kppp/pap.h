@@ -33,6 +33,7 @@
 
 #define AUTH_SCRIPT     0
 #define AUTH_PAP        1
+#define AUTH_TERMINAL   2
 
 bool PAP_UsePAP();
 QString PAP_AuthFile();

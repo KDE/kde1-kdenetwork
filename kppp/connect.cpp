@@ -43,6 +43,7 @@
 #include "kpppconfig.h"
 #include "macros.h"
 #include "docking.h"
+#include "loginterm.h"
 
 #ifdef NO_USLEEP
 int usleep( long usec );
@@ -63,6 +64,9 @@ extern QString local_ip_address;
 extern bool quit_on_disconnect;
 
 bool modified_hostname;
+
+LoginTerm *termwindow = 0L;
+
 
 ConnectWidget::ConnectWidget(QWidget *parent, const char *name)
   : QWidget(parent, name)
@@ -614,6 +618,7 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
 
 	scriptindex++;
       }
+
    }
   }
 
@@ -630,12 +635,39 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
     }
   }
 
+  if(vmain == 30) {
+    if (termwindow->isVisible()) return;
+    if (termwindow->pressedContinue())
+      vmain = 10;
+    else
+      cancelbutton();
+  }
 
   if(vmain == 10) {   // was 12
     if(!expecting) {
 
+      int result;
+
       timeout_timer->stop();
       if_timeout_timer->stop(); // better be sure.
+
+      readtimer->stop();
+
+      if(gpppdata.authMethod() == AUTH_TERMINAL) {
+	if (termwindow) {
+	  delete termwindow;
+	  termwindow = 0L;
+	  this->show();
+	} else {
+	  termwindow = new LoginTerm(0L, 0L, modemfd);
+	  this->hide();
+	  termwindow->show();
+	  vmain = 30;
+	  return;
+	}
+      }
+      
+      killTimer( main_timer_ID );
 
       if_timeout_timer->start(atoi(gpppdata.pppdTimeout())*1000);
 
@@ -643,11 +675,6 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
  printf("started if timeout timer with %d\n",atoi(gpppdata.pppdTimeout())*1000);
 #endif
 
-     
-      readtimer->stop();
-      killTimer( main_timer_ID );
-      
-      int result;
       app->flushX();
       semaphore = true;
       result = execppp();
@@ -756,7 +783,6 @@ void ConnectWidget::readtty() {
     readbuffer += c;
     myreadbuffer += c;
     p_xppp->debugwindow->readchar(c); 
-
   }
 
   if(expecting) {
@@ -801,6 +827,12 @@ void ConnectWidget::cancelbutton() {
   readtimer->stop();
   killTimer(main_timer_ID);
   timeout_timer->stop();
+
+  if (termwindow) {
+    delete termwindow;
+    termwindow = 0L;
+    this->show();
+  }
 
   messg->setText(klocale->translate("One Moment Please ..."));
 

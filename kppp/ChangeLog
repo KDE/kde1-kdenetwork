@@ -1,4 +1,12 @@
-Thu Feb  5 22:00:55 1998  Harri Porten  <hp@localhost>
+Fri Feb 13 01:12:19 1998  Harri Porten  <porten@tu-harburg.de>
+
+	* loginterm.cpp: implemented the possibility to log in via
+	a simple terminal window. Should have developed a generic widget
+	that could have been shared by Miniterm, the debug window and
+	loginterm, but I didn't want to touch the rest of the stuff yet.
+	* kpppconfig.h: increased max. script size to 20
+
+Thu Feb  5 22:00:55 1998  Harri Porten  <porten@tu-harburg.de>
 
 	* pppdata.cpp: added pppdError() and setpppdError()
 	* main.cpp: added new error message for timeout

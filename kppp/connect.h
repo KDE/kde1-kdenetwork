@@ -144,7 +144,6 @@ private:
   struct termios initial_tty;
   struct termios tty;
 
-
 };
 
 

@@ -67,7 +67,7 @@
 #define MAX_ACCOUNTS 10
 
 // Define the mamimum number of script entries
-#define MAX_SCRIPT_ENTRIES 15
+#define MAX_SCRIPT_ENTRIES 20
 
 // Define the maximun number of DNS entries
 #define MAX_DNS_ENTRIES 5

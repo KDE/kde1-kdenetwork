@@ -72,6 +72,7 @@ DialWidget::DialWidget( QWidget *parent, const char *name )
   auth = new QComboBox(this);
   auth->insertItem(klocale->translate("Script-based"));
   auth->insertItem(klocale->translate("PAP"));
+  auth->insertItem(klocale->translate("Terminal-based"));
   MIN_WIDTH(auth);
   FIXED_HEIGHT(auth);
   tl->addWidget(auth, 4, 2);
