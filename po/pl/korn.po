@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korn\n"
 "POT-Creation-Date: 1999-01-10 14:26+0100\n"
-"PO-Revision-Date: 1999-01-10 22:56+0100\n"
+"PO-Revision-Date: 1999-01-24 17:17+0100\n"
 "Last-Translator: Jacek Stolarczyk <jacek@mer.chemia.polsl.gliwice.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -10,35 +10,35 @@ msgstr ""
 
 #: kmailbox.cpp:150
 msgid "countMail: file open error"
-msgstr ""
+msgstr "countMail: b³±d otwarcia pliku"
 
 #: korn.cpp:51
-#, fuzzy
 msgid "&Setup"
 msgstr "&Ustawienia"
 
 #: korn.cpp:54
-#, fuzzy
 msgid "&About"
 msgstr "&Informacje o...."
 
 #: korn.cpp:109
 msgid "korn: configure now?"
-msgstr ""
+msgstr "KOrn: Czy chcesz go teraz skofigurowaæ?"
 
 #: korn.cpp:110
 msgid ""
 "you have not yet configured korn.\n"
 "would you like to do this now?"
 msgstr ""
+"Dotychczas korn nie by³ konfigurowany.\n"
+"Czy chcesz to zrobiæ teraz"
 
 #: korn.cpp:114
 msgid "No - Quit"
-msgstr ""
+msgstr "Nie - Koniec"
 
 #: korn.cpp:119
 msgid "personal"
-msgstr ""
+msgstr "osobiste"
 
 #: korn.cpp:120
 msgid "Inbox"
@@ -52,69 +52,70 @@ msgid ""
 "\n"
 "The K Desktop Environment"
 msgstr ""
+"KOrn %s -- Sirtaj Singh Kang\n"
+"taj@kde.org, 1997\n"
+"\n"
+"The K Desktop Environment"
 
 #: korn.cpp:249
-#, fuzzy
 msgid "About kOrn"
 msgstr "Informacje o KOrn"
 
 #: korn.cpp:257
 msgid "korn: no config set"
-msgstr ""
+msgstr "KOrn: Brak konfiguracji"
 
 #: korn.cpp:258
 msgid ""
 "Would you like to restart korn with\n"
 "the automatically generated configuration?"
 msgstr ""
+"Czy chcesz wystartowaæ KOrn ponownie\n"
+"z automatycznie wygenerowan± konfiguracj±?"
 
 #: korn.cpp:261
 msgid "Yes, Restart"
-msgstr ""
+msgstr "Tak, uruchom ponownie"
 
 #: korn.cpp:261
 msgid "No, Exit"
 msgstr "Nie, zakoñcz"
 
 #: kornopt.cpp:24
-#, fuzzy
 msgid "korn options"
 msgstr "Korn: Opcje"
 
 #: optdata.cpp:76
-#, fuzzy
 msgid "&New"
-msgstr "Nowo¶ci"
+msgstr "&Nowe"
 
 #: optdata.cpp:89
-#, fuzzy
 msgid "Boxes"
-msgstr "&Skrzynki"
+msgstr "Skrzynki"
 
 #: optdata.cpp:118
 msgid "Name"
-msgstr ""
+msgstr "Nazwa"
 
 #: optdata.cpp:124
 msgid "Caption"
 msgstr "Tytu³"
 
 #: optdata.cpp:138
-#, fuzzy
 msgid "Path"
-msgstr "¦cie¿ka do mbox"
+msgstr "¦cie¿ka"
 
 #: optdata.cpp:152
 msgid "Poll time (sec)"
-msgstr ""
+msgstr "Sprawdzania co (sec)"
 
 #: optdata.cpp:158
 msgid "Notify Command"
-msgstr ""
+msgstr "Polecenie powiadomienia"
 
 #: optdata.cpp:180
 msgid "Click Command"
-msgstr ""
+msgstr "Polecenie po klikniêciu"
 
 #~ msgid "Welcome to KOrn"
 #~ msgstr "Witamy w KOrn"
