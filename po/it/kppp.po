@@ -1,12 +1,7 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-06-18 22:50+0200\n"
+"POT-Creation-Date: 1998-06-11 23:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,7 +27,7 @@ msgstr "Spese telefoniche:"
 
 #: accounts.cpp:116 conwindow.cpp:55
 msgid "Volume:"
-msgstr ""
+msgstr "Ammontare:"
 
 #: accounts.cpp:131
 msgid "Reset Costs"
@@ -173,14 +168,12 @@ msgid "No Carrier"
 msgstr "No Carrier"
 
 #: connect.cpp:396
-#, fuzzy
 msgid "Scanning "
-msgstr "In trasmissione"
+msgstr "Ricerca "
 
 #: connect.cpp:407
-#, fuzzy
 msgid "Saving "
-msgstr "In trasmissione"
+msgstr "Salvataggio "
 
 #: connect.cpp:426
 msgid "Sending "
@@ -248,7 +241,7 @@ msgstr "velocita` sconosciuta"
 
 #: connect.cpp:871
 msgid "Scan Var: "
-msgstr ""
+msgstr "Cerca Var: "
 
 #: connect.cpp:882
 msgid "Found: "
@@ -267,9 +260,8 @@ msgid "Script timed out!"
 msgstr "Script timed out"
 
 #: connect.cpp:995
-#, fuzzy
 msgid "Scanning: "
-msgstr "In trasmissione"
+msgstr "Ricerca: "
 
 #: connect.cpp:1006
 msgid "Expecting: "
@@ -356,13 +348,12 @@ msgid "PAP"
 msgstr "PAP"
 
 #: edit.cpp:75
-#, fuzzy
 msgid "Terminal-based"
-msgstr "Terminale"
+msgstr "Via Terminale"
 
 #: edit.cpp:76
 msgid "CHAP"
-msgstr ""
+msgstr "CHAP"
 
 #: edit.cpp:82
 msgid "Store password"
@@ -464,6 +455,10 @@ msgstr "Assegna il \"Default Route\" a questo gateway"
 msgid "Edit Script"
 msgstr "Modifica script di accesso"
 
+#: edit.cpp:563
+msgid "Use default script"
+msgstr "Usa lo script di default"
+
 #: edit.cpp:580
 msgid "Insert"
 msgstr "Inserisci"
@@ -497,9 +492,8 @@ msgid "Disconnect on X-server shutdown"
 msgstr "Disconnetti all'uscita da X"
 
 #: general.cpp:124
-#, fuzzy
 msgid "Quit on Disconnect"
-msgstr "Disconnetti"
+msgstr "Esci quando disconnetti"
 
 #: general.cpp:130
 msgid "Minimize Window on Connect"
@@ -555,6 +549,10 @@ msgstr "Modem:"
 #: general.cpp:285
 msgid "Flow Control:"
 msgstr "Controllo di flusso:"
+
+#: general.cpp:292
+msgid "None"
+msgstr "Nulla"
 
 #: general.cpp:300
 msgid "Line Termination:"
@@ -716,28 +714,27 @@ msgstr ""
 "PAP \"%s\""
 
 #: main.cpp:802
-#, fuzzy
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
 "supply a username and a password!"
 msgstr ""
 "Avete selezionato il metodo di \n"
-"autenticazione PAP. Dovete quindi\n"
+"autenticazione CHAP. Dovete quindi\n"
 "inserire un utente ed una password!"
 
 #: main.cpp:809
-#, fuzzy, c-format
+#: ,c-format
 msgid ""
 "Cannot create CHAP authentication\n"
 "file \"%s\""
 msgstr ""
 "Impossibile creare il file di autenticazione\n"
-"PAP \"%s\""
+"CHAP \"%s\""
 
 #: main.cpp:821
 msgid "You have to specify a telephone number !\n"
-msgstr ""
+msgstr "Devi specificare un numero di telefono!\n"
 
 #: main.cpp:895
 msgid "Quit kPPP?"
@@ -769,7 +766,7 @@ msgstr "Responso inizializzazione:"
 
 #: modemcmds.cpp:86
 msgid "Init Delay (sec/100):"
-msgstr ""
+msgstr "Attesa inizializzazione (sec/100):"
 
 #: modemcmds.cpp:91
 msgid "Dial String:"
@@ -982,29 +979,25 @@ msgid "Selected:"
 msgstr "Selezionato:"
 
 #: acctselect.cpp:88
-#, fuzzy
+#:,fuzzy
 msgid "Volume accounting:"
-msgstr "Abilita calcolo spese telefoniche"
+msgstr "Ammontare spesa:"
 
 #: acctselect.cpp:92
-#, fuzzy
 msgid "No accounting"
-msgstr "Abilita calcolo spese telefoniche"
+msgstr "Nessun acconto"
 
 #: acctselect.cpp:93
-#, fuzzy
 msgid "Bytes in"
-msgstr "bytes in entrata"
+msgstr "Bytes in entrata"
 
 #: acctselect.cpp:94
-#, fuzzy
 msgid "Bytes out"
-msgstr "bytes in uscita"
+msgstr "Bytes in uscita"
 
 #: acctselect.cpp:95
-#, fuzzy
 msgid "Bytes in and out"
-msgstr "bytes in uscita"
+msgstr "Bytes in entrata e uscita"
 
 #: acctselect.cpp:165 acctselect.cpp:271
 msgid "Available rules"
@@ -1044,21 +1037,22 @@ msgstr "kppp: il file delle regole non contiene una riga \"name=...\"\n"
 msgid "kppp: rulefile is ok\n"
 msgstr "kppp: file delle regole OK\n"
 
+#: docking.cpp:70 docking.cpp:222
+msgid "Restore"
+msgstr "Ripristina"
+
 #: docking.cpp:220
 msgid "Minimize"
 msgstr "Minimizza"
 
 #: runtests.cpp:121
-#, fuzzy
 msgid ""
 "You´re not allowed to dial out with kppp.\n"
 "Contact your system administrator."
 msgstr ""
-"Non avete i permessi per \n"
-"eseguire pppd!\n"
-"\n"
-"Contattate l'amministratore di sistema\n"
-"e richiedete gli accessi al demone pppd."
+"Non avete i permessi per usare kppp.\n"
+"Contattate l'amministratore di sistema."
+
 
 #: runtests.cpp:137
 msgid ""
@@ -1108,6 +1102,11 @@ msgid ""
 "itself.\n"
 "Contact your system administrator."
 msgstr ""
+"kppp ha trovato l'opzione 'lock' in /etc/ppp/options.\n"
+"\n"
+"Questa opzione deve essere rimossa visto che kppp si occupa da solo di "
+"bloccare il dispositivo utilizzato.\n"
+"Contatta il tuo amministratore di sistema."
 
 #: runtests.cpp:245
 msgid ""
@@ -1117,53 +1116,8 @@ msgid ""
 "a non-empty file that has appropriate\n"
 "read and write permissions."
 msgstr ""
-
-#~ msgid "Use default script"
-#~ msgstr "Usa lo script di default"
-
-#~ msgid "None"
-#~ msgstr "Nulla"
-
-#~ msgid "Restore"
-#~ msgstr "Ripristina"
-
-#~ msgid "pppd Path:"
-#~ msgstr "Path del programma pppd:"
-
-#~ msgid "Log Viewer:"
-#~ msgstr "Visualizzatore file di log"
-
-#~ msgid "started PPP connection:%s:%s"
-#~ msgstr "iniziata connessione PPP:%s:%s"
-
-#~ msgid ""
-#~ "terminated PPP connection\n"
-#~ "COST OF SESSION: "
-#~ msgstr ""
-#~ "fine della connessione PPP\n"
-#~ "Spesa della sessione: "
-
-#~ msgid ""
-#~ "\n"
-#~ "SUBTOTAL FOR:"
-#~ msgstr ""
-#~ "\n"
-#~ "Subtotale per:"
-
-#~ msgid ""
-#~ "The logviewer \"%s\" was not found!\n"
-#~ "\n"
-#~ "Setting default back to \"%s\"."
-#~ msgstr ""
-#~ "Il visualizzatore log \"%s\" non e` stato trovato!\n"
-#~ "\n"
-#~ "Setto il default nuovamente a \"%s\"."
-
-#~ msgid "Dismiss"
-#~ msgstr "Chiudi"
-
-#~ msgid "Modem sustains fast initialization."
-#~ msgstr "Il modem supporta inizializzazione veloce."
-
-#~ msgid "The pppd daemon died unexpectedly!"
-#~ msgstr "Il demone pppd si e` interrotto inaspettatamente!"
+"Manca il file /etc/resolv.conf!\n"
+"\n"
+"Chiedi al tuo amministratore di sistema di\n"
+"creare questo file,non vuoto, con i premessi\n"
+"di lettura e scrittura adeguati." 
