@@ -22,22 +22,18 @@ msgid "&Open Dir"
 msgstr "Å&pne katalog"
 
 #: KAMenu.cpp:88 KAView.cpp:156
-#, fuzzy
 msgid "&Download..."
 msgstr "Last &ned..."
 
 #: KAMenu.cpp:91
-#, fuzzy
 msgid "&Load List..."
 msgstr "L&ast liste..."
 
 #: KAMenu.cpp:92
-#, fuzzy
 msgid "&Save List..."
 msgstr "&Lagre liste..."
 
 #: KAMenu.cpp:93
-#, fuzzy
 msgid "Expor&t List..."
 msgstr "Ekspor&tliste..."
 
@@ -110,7 +106,6 @@ msgid "&Nicelevel"
 msgstr "&Finnivå"
 
 #: KAMenu.cpp:143
-#, fuzzy
 msgid "&All..."
 msgstr "&Alle.."
 
@@ -177,27 +172,27 @@ msgstr "Status: klar                         "
 #: KAStatusBar.cpp:81
 #, c-format
 msgid "Status: %s"
-msgstr ""
+msgstr "Status: %s"
 
 #: KAStatusBar.cpp:91
-#, fuzzy, c-format
+#, c-format
 msgid "Hosts: %s"
-msgstr "Vert:"
+msgstr "Vert: %s"
 
 #: KAStatusBar.cpp:101
 #, c-format
 msgid "%d hits"
-msgstr ""
+msgstr "%d treff"
 
 #: KAStatusBar.cpp:111
 #, c-format
 msgid "Progress: %d"
-msgstr ""
+msgstr "Fremgang: %d"
 
 #: KAStatusBar.cpp:121
 #, c-format
 msgid "%d try."
-msgstr ""
+msgstr "%d. forsøk."
 
 #: KASettings.cpp:567
 msgid "Reset"
