@@ -45,41 +45,41 @@ AccountWidget::AccountWidget( QWidget *parent, const char *name )
 
   box = new QGroupBox(this,"box");
   box->setGeometry(10,10,320,260);
-  box->setTitle("Account Setup");
+  box->setTitle(klocale->translate("Account Setup"));
     
   accountlist_l = new QListBox(this, "accountlist_l");
   accountlist_l->setGeometry(30, 40, 160, 130);
   connect(accountlist_l, SIGNAL(highlighted(int)),
 	  this, SLOT(slotListBoxSelect(int)));
 
-  edit_b = new QPushButton("Edit...", this, "edit_b");
+  edit_b = new QPushButton(klocale->translate("Edit..."), this, "edit_b");
   edit_b->setGeometry(220, 40, 80, 25);
   connect(edit_b, SIGNAL(clicked()), SLOT(editaccount()));
 
-  new_b = new QPushButton("New...", this, "new_b");
+  new_b = new QPushButton(klocale->translate("New..."), this, "new_b");
   new_b->setGeometry(220, 75, 80, 25);
   connect(new_b, SIGNAL(clicked()), SLOT(newaccount()));
 
-  copy_b = new QPushButton("Copy", this, "copy_b");
+  copy_b = new QPushButton(klocale->translate("Copy"), this, "copy_b");
   copy_b->setGeometry(220, 110, 80, 25);
   connect(copy_b, SIGNAL(clicked()), SLOT(copyaccount()));
 
 
-  delete_b = new QPushButton("Delete", this, "delete_b");
+  delete_b = new QPushButton(klocale->translate("Delete"), this, "delete_b");
   delete_b->setGeometry(220, 145, 80, 25);
   connect(delete_b, SIGNAL(clicked()), SLOT(deleteaccount()));
 
-  reset = new QPushButton("Reset Costs",this,"resetbutton");
+  reset = new QPushButton(klocale->translate("Reset Costs"),this,"resetbutton");
   reset->setGeometry(220,187,80,25);
   reset->setEnabled(FALSE);
   connect(reset,SIGNAL(clicked()),this,SLOT(resetClicked()));
 
-  log = new QPushButton("View Logs",this,"logbutton");
+  log = new QPushButton(klocale->translate("View Logs"),this,"logbutton");
   log->setGeometry(220,222,80,25);
   //  log->setEnabled(FALSE);
   connect(log,SIGNAL(clicked()),this,SLOT(viewLogClicked()));
 
-  costlabel = new QLabel("Phone Costs:",this,"costlable");
+  costlabel = new QLabel(klocale->translate("Phone Costs:"),this,"costlable");
   costlabel->setGeometry(30,185,100,30);
   costlabel->setEnabled(FALSE);
 
@@ -162,10 +162,11 @@ void AccountWidget::resetClicked(){
   if(accountlist_l->currentItem() == -1)
     return;
  
-  int ok = QMessageBox::information(this,"Reset Total",
-  "Are you sure you want to reset the accumulated\n"\
-  "telephone costs for the selected account to zero?",
-  "Yes","Cancel","",1,1);
+  int ok = QMessageBox::information(this,klocale->translate("Reset Total"),
+       klocale->translate("Are you sure you want to reset the accumulated\n"
+       "telephone costs for the selected account to zero?"),
+				    klocale->translate("Yes"),
+				    klocale->translate("Cancel"),"",1,1);
 
   if(ok)
     return;
@@ -196,7 +197,8 @@ void AccountWidget::newaccount() {
 
   if(accountlist_l->count() == MAX_ACCOUNTS){
    
-    QMessageBox::information(this,"Sorry","Maximum number of accounts reached.");
+      QMessageBox::information(this,klocale->translate("Sorry"),
+			       klocale->translate("Maximum number of accounts reached."));
     return;
   }
 
@@ -218,12 +220,14 @@ void AccountWidget::copyaccount() {
 
   if(accountlist_l->count() == MAX_ACCOUNTS){
    
-    QMessageBox::information(this,"Sorry","Maximum number of accounts reached.");
+    QMessageBox::information(this,klocale->translate("Sorry"),
+			     klocale->translate("Maximum number of accounts reached."));
     return;
   }
 
   if(accountlist_l->currentItem()<0){
-    QMessageBox::information(this,"Sorry","No account selected.");
+    QMessageBox::information(this,klocale->translate("Sorry"),
+			     klocale->translate("No account selected."));
     return;
   }
 
@@ -255,18 +259,19 @@ int AccountWidget::doTab(){
   tabWindow = new QTabDialog(0,0,TRUE);
  
   if(strcmp(gpppdata.accname(), "") == 0) {
-    tabWindow->setCaption("New Account");
+    tabWindow->setCaption(klocale->translate("New Account"));
     isnewaccount = true;
   }
   else {
-    QString tit = "Edit Account: ";
+    QString tit = klocale->translate("Edit Account: ");
     tit += gpppdata.accname();
     tabWindow->setCaption(tit);
     isnewaccount = false;
   }
 
   tabWindow->resize( 360, 400 );
-  tabWindow->setCancelButton();
+  tabWindow->setOKButton(klocale->translate("OK"));
+  tabWindow->setCancelButton(klocale->translate("Cancel"));
 
   //  tabWindow->setApplyButton();
 
@@ -278,12 +283,12 @@ int AccountWidget::doTab(){
   script_w = new ScriptWidget(tabWindow, "script_w");
   acct = new AccountingSelector(tabWindow, "acct_w");
 
-  tabWindow->addTab(dial_w,"Dial");
-  tabWindow->addTab(ip_w,"IP");
-  tabWindow->addTab(dns_w,"DNS");
-  tabWindow->addTab(gateway_w,"Gateway");
-  tabWindow->addTab(script_w,"Login Script");
-  tabWindow->addTab(acct, "Accounting");
+  tabWindow->addTab(dial_w,klocale->translate("Dial"));
+  tabWindow->addTab(ip_w,klocale->translate("IP"));
+  tabWindow->addTab(dns_w,klocale->translate("DNS"));
+  tabWindow->addTab(gateway_w,klocale->translate("Gateway"));
+  tabWindow->addTab(script_w,klocale->translate("Login Script"));
+  tabWindow->addTab(acct, klocale->translate("Accounting"));
 
   int result = 0;
   bool ok = false;
@@ -301,13 +306,13 @@ int AccountWidget::doTab(){
 		script_w->save();
 		acct->save();
          } else {
-		QMessageBox::warning(this, "Error", 
-			 "You must enter a unique\naccount name");
+	     QMessageBox::warning(this, klocale->translate("Error"), 
+				     klocale->translate( "You must enter a unique\naccount name"));
 		ok = false;
 	 }
       } else {
-	      QMessageBox::warning(this, "Error", 
-			"Login script has unbalanced Loop Start/End" );
+	      QMessageBox::warning(this, klocale->translate("Error"), 
+				   klocale->translate("Login script has unbalanced Loop Start/End") );
 	      ok = false;
       }
     }

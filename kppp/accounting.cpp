@@ -155,7 +155,7 @@ void Accounting::slotStart() {
     yearstr.setNum(QDate::currentDate().year());
     LogFileName += yearstr;
     QString str;
-    str.sprintf("started PPP connection:%s:%s",
+    str.sprintf(klocale->translate("started PPP connection:%s:%s"),
 		gpppdata.accname(),gpppdata.phonenumber());
     logMessage(str.data());
   }
@@ -170,10 +170,10 @@ void Accounting::slotStop() {
       killTimer(update_timer_id);
     acct_timer_id = 0;
     update_timer_id = 0;
-    QString s = "terminated PPP connection\nCOST OF SESSION: ";
+    QString s = klocale->translate("terminated PPP connection\nCOST OF SESSION: ");
 
     s += rules.currencyString(session()) \
-      + "\nSUBTOTAL FOR:" \
+      + klocale->translate("\nSUBTOTAL FOR:") \
       + gpppdata.accname() \
       + ":"\
       + rules.currencyString(total());
@@ -330,8 +330,8 @@ bool Accounting::saveCosts() {
 
       if(!file.open( IO_ReadWrite )){
 	QString string;
-	string.sprintf("Cannot create\n%s\nYour online costs will not be saved.",s.data());
-	QMessageBox::warning(0,"Sorry",string.data());
+	string.sprintf(klocale->translate("Cannot create\n%s\nYour online costs will not be saved."),s.data());
+	QMessageBox::warning(0,klocale->translate("Sorry"),string.data());
 	return FALSE;
       }
       file.close();

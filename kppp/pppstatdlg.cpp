@@ -64,9 +64,9 @@ PPPStatsDlg::PPPStatsDlg(QWidget *parent, const char *name,QWidget *mainwidget)
 
   (void) mainwidget;
 
-  this->setCaption("kppp Statistics");
+  this->setCaption(klocale->translate("kppp Statistics"));
 
-  box = new QGroupBox("Statistics",this);
+  box = new QGroupBox(klocale->translate("Statistics"),this);
   box->setGeometry(5,5,410,300);
 
   for(int i =0 ; i < 5; i++){
@@ -87,24 +87,24 @@ PPPStatsDlg::PPPStatsDlg(QWidget *parent, const char *name,QWidget *mainwidget)
   //  labelb2[i]->setBackgroundColor(white);
   }
 
-  labela1[0]->setText("bytes in");
-  labelb1[0]->setText("bytes out");
+  labela1[0]->setText(klocale->translate("bytes in"));
+  labelb1[0]->setText(klocale->translate("bytes out"));
 
-  labela1[1]->setText("packets in");
-  labelb1[1]->setText("packets out");
+  labela1[1]->setText(klocale->translate("packets in"));
+  labelb1[1]->setText(klocale->translate("packets out"));
 
-  labela1[2]->setText("vjcomp in");
-  labelb1[2]->setText("vjcomp out");
+  labela1[2]->setText(klocale->translate("vjcomp in"));
+  labelb1[2]->setText(klocale->translate("vjcomp out"));
 
-  labela1[3]->setText("vjunc in");
-  labelb1[3]->setText("vjunc out");
+  labela1[3]->setText(klocale->translate("vjunc in"));
+  labelb1[3]->setText(klocale->translate("vjunc out"));
 
-  labela1[4]->setText("vjerr");
-  labelb1[4]->setText("non-vj");
+  labela1[4]->setText(klocale->translate("vjerr"));
+  labelb1[4]->setText(klocale->translate("non-vj"));
 
   ip_address_label1 = new QLabel(this);
   ip_address_label1->setGeometry(200,30,100,25);
-  ip_address_label1->setText("Local Addr:");
+  ip_address_label1->setText(klocale->translate("Local Addr:"));
 
 
   ip_address_label2 = new QLineEdit(this);
@@ -113,7 +113,7 @@ PPPStatsDlg::PPPStatsDlg(QWidget *parent, const char *name,QWidget *mainwidget)
 
   ip_address_label3 = new QLabel(this);
   ip_address_label3->setGeometry(200,70,100,25);
-  ip_address_label3->setText("Remote Addr:");
+  ip_address_label3->setText(klocale->translate("Remote Addr:"));
 
   ip_address_label4 = new QLineEdit(this);
   ip_address_label4->setGeometry(290,70,110,25);
@@ -121,7 +121,7 @@ PPPStatsDlg::PPPStatsDlg(QWidget *parent, const char *name,QWidget *mainwidget)
 
   cancelbutton = new QPushButton(this,"cancelbutton");
   cancelbutton->setGeometry(310,315,90,25);
-  cancelbutton->setText("OK");
+  cancelbutton->setText(klocale->translate("OK"));
   connect(cancelbutton, SIGNAL(clicked()), this,SLOT(cancel()));
 
   /*
@@ -140,9 +140,11 @@ PPPStatsDlg::PPPStatsDlg(QWidget *parent, const char *name,QWidget *mainwidget)
   */
 
   QString pixdir = app->kdedir() + QString("/share/apps/kppp/pics/");  
+  QString tmp;
 
 #define PMERROR(pm) \
-  QMessageBox::warning(this, "Error", "Could not load " pm "!")
+  tmp.sprintf(klocale->translate("Could not load %s !"), pm); \
+  QMessageBox::warning(this, klocale->translate("Error"), tmp);
 
 #ifdef COMPILE_PIX
   if ( !big_modem_both_pixmap.loadFromData(modemboth_data, modemboth_len) ){
@@ -304,14 +306,14 @@ void PPPStatsDlg::update_data(bool data_available){
       ip_address_label2->setText(local_ip_address);
     }
     else{
-      ip_address_label2->setText("unavailable");
+      ip_address_label2->setText(klocale->translate("unavailable"));
     }
 
     if( !remote_ip_address.isEmpty() ){
       ip_address_label4->setText(remote_ip_address);
     }
     else{
-      ip_address_label4->setText("unavailable");
+      ip_address_label4->setText(klocale->translate("unavailable"));
     }
     ips_set = true;
   }

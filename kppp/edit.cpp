@@ -34,7 +34,7 @@ DialWidget::DialWidget( QWidget *parent, const char *name )
 
   box = new QGroupBox(this,"box");
   box->setGeometry(10,10,345,310);
-  box->setTitle("Dial Setup");
+  box->setTitle(klocale->translate("Dial Setup"));
 
   connectname_l = new QLineEdit(this, "connectname_l");
   connectname_l->setGeometry(160, 50, 150, 25);
@@ -42,7 +42,7 @@ DialWidget::DialWidget( QWidget *parent, const char *name )
   
   connect_label = new QLabel(this);
   connect_label->setGeometry(30,50,120,30);
-  connect_label->setText("Connection Name:");
+  connect_label->setText(klocale->translate("Connection Name:"));
 
 
   number_l = new QLineEdit(this, "number_l");
@@ -51,7 +51,7 @@ DialWidget::DialWidget( QWidget *parent, const char *name )
 
   number_label = new QLabel(this);
   number_label->setGeometry(30,80,120,30);
-  number_label->setText("Phone Number:");
+  number_label->setText(klocale->translate("Phone Number:"));
 
   baud_c = new QComboBox(this, "baud_c");
   baud_c->setGeometry(160, 120, 80, 30);
@@ -81,7 +81,7 @@ DialWidget::DialWidget( QWidget *parent, const char *name )
 
   baud_label = new QLabel(this);
   baud_label->setGeometry(30,120,120,30);
-  baud_label->setText("Connection Speed:");
+  baud_label->setText(klocale->translate("Connection Speed:"));
 
   command = new QLineEdit(this);
   command->setGeometry(160, 200, 150, 25);
@@ -89,15 +89,15 @@ DialWidget::DialWidget( QWidget *parent, const char *name )
 
   command_label = new QLabel(this);
   command_label->setGeometry(30,195,120,30);
-  command_label->setText("Execute Program\nupon Connect:");
+  command_label->setText(klocale->translate("Execute Program\nupon Connect:"));
 
-  pppdargs = new QPushButton("Arguments", this);
+  pppdargs = new QPushButton(klocale->translate("Arguments"), this);
   pppdargs->setGeometry(160, 250, 100, 30);
   connect(pppdargs, SIGNAL(clicked()), SLOT(pppdargsbutton()));
 
   pppd_label = new QLabel(this);
   pppd_label->setGeometry(30,250,120,30);
-  pppd_label->setText("Edit default pppd:");
+  pppd_label->setText(klocale->translate("Edit default pppd:"));
 
 
   // Set defaults if editing an exhisting connection
@@ -149,7 +149,7 @@ IPWidget::IPWidget( QWidget *parent, const char *name )
 
   box1 = new QGroupBox(this,"box1");
   box1->setGeometry(10,10,345,310);
-  box1->setTitle("IP Setup");
+  box1->setTitle(klocale->translate("IP Setup"));
 
   box = new QGroupBox(this,"box");
   box->setGeometry(50,87,270,120);
@@ -161,7 +161,7 @@ IPWidget::IPWidget( QWidget *parent, const char *name )
 
   ipaddress_label = new QLabel(this);
   ipaddress_label->setGeometry(70,120,80,30);
-  ipaddress_label->setText("IP Address:");
+  ipaddress_label->setText(klocale->translate("IP Address:"));
 
   subnetmask_l = new IPLineEdit(this, "subnetmask_l");
   subnetmask_l->setGeometry(160, 150, 110, 25);
@@ -169,7 +169,7 @@ IPWidget::IPWidget( QWidget *parent, const char *name )
 
   sub_label = new QLabel(this);
   sub_label->setGeometry(70,150,80,30);
-  sub_label->setText("Subnet Mask:");
+  sub_label->setText(klocale->translate("Subnet Mask:"));
 
   rb = new QButtonGroup(this, "rb");
   rb->setFrameStyle(QFrame::NoFrame);
@@ -177,14 +177,14 @@ IPWidget::IPWidget( QWidget *parent, const char *name )
   connect(rb, SIGNAL(clicked(int)), SLOT(hitIPSelect(int)));
 
   dynamicadd_rb = new QRadioButton(rb, "dynamicadd_rb");
-  dynamicadd_rb->setText("Dynamic IP Address");
+  dynamicadd_rb->setText(klocale->translate("Dynamic IP Address"));
   dynamicadd_rb->setGeometry(0, 0, 200, 30);
 
   staticadd_rb = new QRadioButton(rb, "dynamicadd_rb");
-  staticadd_rb->setText("Static IP Address");
+  staticadd_rb->setText(klocale->translate("Static IP Address"));
   staticadd_rb->setGeometry(0, 40, 200, 30);
 
-  autoname=new QCheckBox("Auto-configure hostname from this IP",
+  autoname=new QCheckBox(klocale->translate("Auto-configure hostname from this IP"),
 	this,"autoname");
   autoname->adjustSize();
   autoname->setGeometry(75,260,250,autoname->height());
@@ -253,7 +253,7 @@ DNSWidget::DNSWidget( QWidget *parent, const char *name )
   
   box = new QGroupBox(this,"box");
   box->setGeometry(10,70,345,250);
-  box->setTitle("DNS Servers");
+  box->setTitle(klocale->translate("DNS Servers"));
 
   dnsdomain = new QLineEdit(this, "dnsdomain");
   dnsdomain->setGeometry(160, 30, 147, 25);
@@ -261,7 +261,7 @@ DNSWidget::DNSWidget( QWidget *parent, const char *name )
 
   dnsdomain_label = new QLabel(this,"dnsdomainlabel");
   dnsdomain_label->setGeometry(30,30,120,25);
-  dnsdomain_label->setText("Domain Name:");
+  dnsdomain_label->setText(klocale->translate("Domain Name:"));
 
   dnsipaddr = new IPLineEdit(this, "dnsipaddr");
   dnsipaddr->setGeometry(160, 95, 147, 25);
@@ -270,13 +270,13 @@ DNSWidget::DNSWidget( QWidget *parent, const char *name )
 
   dns_label = new QLabel(this,"dnslabel");
   dns_label->setGeometry(30,95,120,25);
-  dns_label->setText("DNS IP Address:");
+  dns_label->setText(klocale->translate("DNS IP Address:"));
 
-  add = new QPushButton("Add", this, "add");
+  add = new QPushButton(klocale->translate("Add"), this, "add");
   add->setGeometry(160, 140, 70, 25);
   connect(add, SIGNAL(clicked()), SLOT(adddns()));
 
-  remove = new QPushButton("Remove", this, "remove");
+  remove = new QPushButton(klocale->translate("Remove"), this, "remove");
   remove->setGeometry(237, 140, 70, 25);
   connect(remove, SIGNAL(clicked()), SLOT(removedns()));
   
@@ -285,10 +285,9 @@ DNSWidget::DNSWidget( QWidget *parent, const char *name )
 
   servers_label = new QLabel(this,"servers");
   servers_label->setGeometry(30,175,120,25);
-  servers_label->setText("DNS Address List:");
+  servers_label->setText(klocale->translate("DNS Address List:"));
   
-  exdnsdisabled_toggle=new QCheckBox(
-				     "Disable existing DNS Servers during Connection", 
+  exdnsdisabled_toggle=new QCheckBox(klocale->translate("Disable existing DNS Servers during Connection"), 
 				     this);
 
   exdnsdisabled_toggle->adjustSize();
@@ -341,7 +340,7 @@ GatewayWidget::GatewayWidget( QWidget *parent, const char *name )
 
   box1 = new QGroupBox(this,"box1");
   box1->setGeometry(10,10,345,310);
-  box1->setTitle("Gateway Setup");
+  box1->setTitle(klocale->translate("Gateway Setup"));
 
   box = new QGroupBox(this,"box");
   box->setGeometry(50,85,270,120);
@@ -354,11 +353,11 @@ GatewayWidget::GatewayWidget( QWidget *parent, const char *name )
 
   defaultgateway = new QRadioButton(rb, "defaultgateway");
   defaultgateway->setGeometry(0, 0, 135, 20);
-  defaultgateway->setText("Default Gateway");
+  defaultgateway->setText(klocale->translate("Default Gateway"));
 
   staticgateway = new QRadioButton(rb, "staticgateway");
   staticgateway->setGeometry(0, 40, 135, 20);
-  staticgateway->setText("Static Gateway");
+  staticgateway->setText(klocale->translate("Static Gateway"));
 
   gatewayaddr = new IPLineEdit(this, "gatewayaddr");
   gatewayaddr->setGeometry(160, 130, 110, 25);
@@ -367,9 +366,9 @@ GatewayWidget::GatewayWidget( QWidget *parent, const char *name )
 
   gate_label = new QLabel(this, "label");
   gate_label->setGeometry(70,125,70,30);
-  gate_label->setText("Gateway\nIP Address:");
+  gate_label->setText(klocale->translate("Gateway\nIP Address:"));
 
-  defaultroute=new QCheckBox("Assign the Default Route to this Gateway",
+  defaultroute=new QCheckBox(klocale->translate("Assign the Default Route to this Gateway"),
 	this,"defaultroute");
   defaultroute->adjustSize();
   defaultroute->setGeometry(55,260,250,defaultroute->height());
@@ -427,7 +426,7 @@ ScriptWidget::ScriptWidget( QWidget *parent, const char *name )
 
   box = new QGroupBox(this,"box");
   box->setGeometry(10,10,345,310);
-  box->setTitle("Edit Script");
+  box->setTitle(klocale->translate("Edit Script"));
 
   se = new ScriptEdit(this, "se");
   se->move(45, 40);
@@ -449,15 +448,15 @@ ScriptWidget::ScriptWidget( QWidget *parent, const char *name )
   slb->setGeometry(315, 150, 15, 150);
   connect(slb, SIGNAL(valueChanged(int)), SLOT(scrolling(int)));
 
-  add = new QPushButton("Add", this, "add");
+  add = new QPushButton(klocale->translate("Add"), this, "add");
   add->setGeometry(45, 100, 70, 30);
   connect(add, SIGNAL(clicked()), SLOT(addButton()));
 
-  insert = new QPushButton("Insert", this, "insert");
+  insert = new QPushButton(klocale->translate("Insert"), this, "insert");
   insert->setGeometry(145, 100, 70, 30);
   connect(insert, SIGNAL(clicked()), SLOT(insertButton()));
 
-  remove = new QPushButton("Remove", this, "remove");
+  remove = new QPushButton(klocale->translate("Remove"), this, "remove");
   remove->setGeometry(240, 100, 70, 30);
   connect(remove, SIGNAL(clicked()), SLOT(removeButton()));
 

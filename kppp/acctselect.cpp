@@ -43,10 +43,10 @@ AccountingSelector::AccountingSelector(QWidget *parent, const char *name)
  
   QGroupBox *box = new QGroupBox(this,"box");
   box->setGeometry(10, 10, WWIDTH - 25, 310);
-  box->setTitle("Accounting Setup");
+  box->setTitle(klocale->translate("Accounting Setup"));
 
   // checkbox for enabling/disabling accounting
-  use = new QCheckBox("Enable accounting", this);
+  use = new QCheckBox(klocale->translate("Enable accounting"), this);
 
   use->setGeometry(30, 30, 200, 32);
   use->setChecked(gpppdata.AcctEnabled());
@@ -60,7 +60,7 @@ AccountingSelector::AccountingSelector(QWidget *parent, const char *name)
 	  this, SLOT(slotHighlighted(int)));
 
   // label to display the currently selected ruleset
-  QLabel *l = new QLabel("Selected:", this);
+  QLabel *l = new QLabel(klocale->translate("Selected:"), this);
   l->setGeometry(30, 270, 60, 24);
   selected = new QLabel(this);
   selected->setFrameStyle(QFrame::Sunken | QFrame::WinPanel);
@@ -231,7 +231,7 @@ void AccountingSelector::setupTreeWidget() {
   else
     edit_s = "";
 
-  KTreeListItem *i = new KTreeListItem("Available rules", &pmfolder);
+  KTreeListItem *i = new KTreeListItem(klocale->translate("Available rules"), &pmfolder);
   tl->setExpandButtonDrawing(TRUE);
   tl->setTreeDrawing(TRUE);
   tl->insertItem(i, -1, FALSE);

@@ -32,6 +32,7 @@
 #include <qfile.h>
 #include "ruleset.h"
 #include <math.h>
+#include <kapp.h>
 
 RuleSet::RuleSet() {
   default_costs = -1;
@@ -534,18 +535,18 @@ QTime RuleSet::beforeMidnight() const {
 
 void RuleSet::checkRuleFile(const char *rulefile) {
   if(rulefile == NULL) {
-    fprintf(stderr, "kppp: no rulefile specified\n");
+    fprintf(stderr, klocale->translate("kppp: no rulefile specified\n"));
     return;
   }
 
   QFile fl(rulefile);
   if(!fl.exists()) {
-    fprintf(stderr, "kppp: rulefile \"%s\" not found\n", rulefile);
+    fprintf(stderr, klocale->translate("kppp: rulefile \"%s\" not found\n"), rulefile);
     return;
   }
 
   if(QString(rulefile).right(4) != ".rst") {
-    fprintf(stderr, "kppp: rulefiles must have the extension \".rst\"\n");
+    fprintf(stderr, klocale->translate("kppp: rulefiles must have the extension \".rst\"\n"));
     return;
   }
 
@@ -554,25 +555,25 @@ void RuleSet::checkRuleFile(const char *rulefile) {
   fl.close();
 
   if(err == -1) {
-    fprintf(stderr, "kppp: error parsing the ruleset\n");
+    fprintf(stderr, klocale->translate("kppp: error parsing the ruleset\n"));
     return;
   }
 
   if(err > 0) {
-    fprintf(stderr, "kppp: parse error in line %d\n", err);
+    fprintf(stderr, klocale->translate("kppp: parse error in line %d\n"), err);
     return;
   }
 
   // check for the existance of a default rule
   if((r.default_costs < 0) || (r.default_len < 0)) {
-    fprintf(stderr, "kppp: rulefile does not contain a default rule\n");
+    fprintf(stderr, klocale->translate("kppp: rulefile does not contain a default rule\n"));
     return;
   }
 
   if(r.name().length() == 0) {
-    fprintf(stderr, "kppp: rulefile does not contain a \"name=...\" line\n");
+    fprintf(stderr, klocale->translate("kppp: rulefile does not contain a \"name=...\" line\n"));
     return;
   }
 
-  fprintf(stderr, "kppp: rulefile is ok\n");
+  fprintf(stderr, klocale->translate("kppp: rulefile is ok\n"));
 }

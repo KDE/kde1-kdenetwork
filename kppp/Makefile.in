@@ -247,6 +247,9 @@ install: $(TARGET)
 	@echo "Happy Dialing! -- Bernd Wuebben"
 	@echo ""
 
+messages:
+	@XGETTEXT@ -C -ktranslate -x ../../kdelibs/po/kde.pot $(SOURCES) &&  mv messages.po ../po/kppp.pot
+
 uninstall:
 	rm -f $(BINDIR)/$(TARGET)
 #	rm -f $(DOCSDIR)/kppp.html

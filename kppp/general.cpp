@@ -39,10 +39,10 @@ GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
 
   box = new QGroupBox(this,"box");
   box->setGeometry(10,10,320,260);
-  box->setTitle("kppp Setup");
+  box->setTitle(klocale->translate("kppp Setup"));
   
   label1 = new QLabel(this,"path");
-  label1->setText("pppd Path:");
+  label1->setText(klocale->translate("pppd Path:"));
   label1->setGeometry(25,45,80,20);
 
   //pppd Path Line Edit Box
@@ -56,7 +56,7 @@ GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
   //pppd Timeout Line Edit Box
 
   label6 = new QLabel(this,"timeout");
-  label6->setText("pppd Timeout:");
+  label6->setText(klocale->translate("pppd Timeout:"));
   label6->setGeometry(25,85,80,20);
 
   pppdtimeout = new KIntLineEdit(this, "pppdtimeout");
@@ -67,12 +67,12 @@ GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
 	  SLOT(pppdtimeoutchanged(const char*)));
 
   labeltmp = new QLabel(this,"seconds");
-  labeltmp->setText("Seconds");
+  labeltmp->setText(klocale->translate("Seconds"));
   labeltmp->setGeometry(175,85,50,20);
 
 
   logviewerlabel = new QLabel(this,"logviewerlabel");
-  logviewerlabel->setText("Log Viewer:");
+  logviewerlabel->setText(klocale->translate("Log Viewer:"));
   logviewerlabel->setGeometry(25,125,80,20);
 
 
@@ -83,19 +83,21 @@ GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
   connect(logviewer, SIGNAL(textChanged(const char*)),
 	  SLOT(logviewerchanged(const char*)));
 
-  chkbox2 = new QCheckBox("Automatic Redial on Disconnect",this,"redialbox");
+  chkbox2 = new QCheckBox(klocale->translate("Automatic Redial on Disconnect"),
+			  this,"redialbox");
   chkbox2->adjustSize();
   chkbox2->setGeometry(25,160,chkbox2->width(),chkbox2->height());
   chkbox2->setChecked(gpppdata.get_automatic_redial());
   connect(chkbox2,SIGNAL(toggled(bool)),this,SLOT(redial_toggled(bool)));
 
-  chkbox3 = new QCheckBox("Show Clock on Caption",this,"captionbox");
+  chkbox3 = new QCheckBox(klocale->translate("Show Clock on Caption"),
+			  this,"captionbox");
   chkbox3->adjustSize();
   chkbox3->setGeometry(25,180,160,chkbox3->height());
   chkbox3->setChecked(gpppdata.get_show_clock_on_caption());
   connect(chkbox3,SIGNAL(toggled(bool)),this,SLOT(caption_toggled(bool)));
 
-  chkbox4 = new QCheckBox("Disconnect on X-server shutdown",this,"captionbox");
+  chkbox4 = new QCheckBox(klocale->translate("Disconnect on X-server shutdown"),this,"captionbox");
   chkbox4->adjustSize();
   chkbox4->setGeometry(25,200,240,chkbox4->height());
   chkbox4->setChecked(gpppdata.get_xserver_exit_disconnect());
@@ -147,17 +149,17 @@ AboutWidget::AboutWidget( QWidget *parent, const char *name)
 
   box = new QGroupBox(this,"box");
   box->setGeometry(10,10,320,260);
-  box->setTitle("About kppp");
+  box->setTitle(klocale->translate("About kppp"));
 
-  label1 = new QLabel(this,"About");
+  label1 = new QLabel(this,klocale->translate("About"));
   label1->setAlignment(AlignLeft|WordBreak|ExpandTabs);
 
   QString string;
-  string = "kppp "KPPPVERSION" a dialer and front-end to pppd\n\n"\
-    "Copyright (c) 1997 Bernd Johannes Wuebben\n"\
-    "wuebben@math.cornell.edu\n"\
-    "\n";
-
+  string = "kppp "KPPPVERSION;
+  string += klocale->translate(" a dialer and front-end to pppd\n\n"
+			       "Copyright (c) 1997 Bernd Johannes Wuebben\n"
+			       "wuebben@math.cornell.edu\n"
+			       "\n");
   label1->setText(string);
 
 
@@ -165,12 +167,12 @@ AboutWidget::AboutWidget( QWidget *parent, const char *name)
 
   QString string2;
   string2 = 
-    "\nWith contributions from:\n"\
-    "Mario Weilguni\n"
-    "Markus Wuebben\n"\
-    "Jesus Fuentes Saavedra\n"
-    "Harri Porten\n"\
-    "Peter Silva\n";
+    klocale->translate("\nWith contributions from:\n"
+		       "Mario Weilguni\n"
+		       "Markus Wuebben\n"
+		       "Jesus Fuentes Saavedra\n"
+		       "Harri Porten\n"
+		       "Peter Silva\n");
   
   label2 = new QLabel(this,"About2");
   label2->setAlignment(AlignLeft|WordBreak|ExpandTabs);
@@ -193,11 +195,11 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
 
   box = new QGroupBox(this,"box");
   box->setGeometry(10,10,320,260);
-  box->setTitle("Modem Setup");
+  box->setTitle(klocale->translate("Modem Setup"));
 
   label1 = new QLabel(this,"modem");
   label1->setGeometry(30,30,100,30);
-  label1->setText("Modem Device:");
+  label1->setText(klocale->translate("Modem Device:"));
 
   modemdevice = new QComboBox(false,this, "modemdevice");
   modemdevice->setGeometry(155, 30, 150, 25);
@@ -216,18 +218,18 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
 
   label2 = new QLabel(this,"Flow");
   label2->setGeometry(30,65,100,25);
-  label2->setText("Flow Control:");
+  label2->setText(klocale->translate("Flow Control:"));
 
   flowcontrol = new QComboBox(false,this);
   flowcontrol->setGeometry(155, 65, 150, 25);
   flowcontrol->insertItem("CRTSCTS");
   flowcontrol->insertItem("XON/XOFF");
-  flowcontrol->insertItem("None");
+  flowcontrol->insertItem(klocale->translate("None"));
   connect(flowcontrol, SIGNAL(activated(int)), SLOT(setflowcontrol(int)));
 
 
   labelenter = new QLabel(this,"enter");
-  labelenter->setText("Line Termination:");
+  labelenter->setText(klocale->translate("Line Termination:"));
   labelenter->setGeometry(30,102,120,20);
 
   enter = new QComboBox(false,this);
@@ -245,7 +247,7 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   //Modem Lock File
   label4 = new QLabel(this,"modemlockfilelabel");
   label4->setGeometry(30,132,100,30);
-  label4->setText("Modem Lock File:");
+  label4->setText(klocale->translate("Modem Lock File:"));
 
   modemlockfile = new QLineEdit(this, "modemlockfile");
   modemlockfile->setGeometry(155, 134, 150, 23);
@@ -259,7 +261,7 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   //Modem Timeout Line Edit Box
   label3 = new QLabel(this,"modemtimeoutlabel");
   label3->setGeometry(30,164,100,30);
-  label3->setText("Modem Timeout:");
+  label3->setText(klocale->translate("Modem Timeout:"));
 
   modemtimeout = new KIntLineEdit(this, "modemtimeout");
   modemtimeout->setGeometry(155, 166, 40, 23);
@@ -270,7 +272,7 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
 
   label4 = new QLabel(this,"busywaitlabel");
   label4->setGeometry(30,196,100,30);
-  label4->setText("Busy Wait:");
+  label4->setText(klocale->translate("Busy Wait:"));
 
   busywait = new KIntLineEdit(this, "busywait");
   busywait->setGeometry(155, 198, 40, 23);
@@ -282,11 +284,11 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
 
   labeltmp = new QLabel(this,"seconds");
   labeltmp->setGeometry(210,164,50,30);
-  labeltmp->setText("Seconds");
+  labeltmp->setText(klocale->translate("Seconds"));
 
   labeltmp = new QLabel(this,"seconds");
   labeltmp->setGeometry(210,196,50,30);
-  labeltmp->setText("Seconds");
+  labeltmp->setText(klocale->translate("Seconds"));
 
 
   //set stuff from gpppdata
@@ -300,7 +302,7 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
       flowcontrol->setCurrentItem(i);
   }
 
-  chkbox = new QCheckBox("Modem sustains fast initialization.",this,"fastinit");
+  chkbox = new QCheckBox(klocale->translate("Modem sustains fast initialization."),this,"fastinit");
   chkbox->adjustSize();
   chkbox->setGeometry(30,235,240,chkbox->height());
   chkbox->setChecked(gpppdata.FastModemInit());
@@ -361,17 +363,17 @@ ModemWidget2::ModemWidget2( QWidget *parent, const char *name)
 
   box = new QGroupBox(this,"box");
   box->setGeometry(10,10,320,260);
-  box->setTitle("More ...");
+  box->setTitle(klocale->translate("More ..."));
 
-  modemcmds = new QPushButton("Modem Commands", this);
+  modemcmds = new QPushButton(klocale->translate("Modem Commands"), this);
   modemcmds->setGeometry(100, 60, 150, 25);
   connect(modemcmds, SIGNAL(clicked()), SLOT(modemcmdsbutton()));
 
-  modeminfo_button = new QPushButton("Query Modem", this);
+  modeminfo_button = new QPushButton(klocale->translate("Query Modem"), this);
   modeminfo_button->setGeometry(100, 100, 150, 25);
   connect(modeminfo_button, SIGNAL(clicked()), SLOT(query_modem()));
 
-  terminal_button = new QPushButton("Terminal", this);
+  terminal_button = new QPushButton(klocale->translate("Terminal"), this);
   terminal_button->setGeometry(100, 140, 150, 25);
   connect(terminal_button, SIGNAL(clicked()), SLOT(terminal()));
 

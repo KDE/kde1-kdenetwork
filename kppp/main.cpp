@@ -272,7 +272,7 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
   fline1->setGeometry(15,7,327,3);
 
   ID_Label = new QLabel(this,"lableid");
-  ID_Label->setText("Login ID:");
+  ID_Label->setText(klocale->translate("Login ID:"));
   ID_Label->setGeometry(30,27,70,20);
 
   ID_Edit = new QLineEdit(this,"idedit");
@@ -280,7 +280,7 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
   ID_Edit->setText(gpppdata.Id());
 
   PW_Label = new QLabel(this,"lablepw");
-  PW_Label->setText("Password:");
+  PW_Label->setText(klocale->translate("Password:"));
   PW_Label->setGeometry(30,62,70,20);
 
 
@@ -289,7 +289,7 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
   PW_Edit->setEchoMode(QLineEdit::Password);
 
   label1 = new QLabel(this,"lable1");
-  label1->setText("Connect to: ");
+  label1->setText(klocale->translate("Connect to: "));
   label1->setGeometry(30,100,70,20);
 
   connectto_c = new QComboBox(true,this, "connectto_c");
@@ -301,32 +301,32 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
   fline->setFrameStyle(QFrame::HLine |QFrame::Sunken);
   fline->setGeometry(15,172,327,3);
 
-  quit_b = new QPushButton("Quit", this, "quit");
+  quit_b = new QPushButton(klocale->translate("Quit"), this, "quit");
   quit_b->setGeometry(15, 187, 70, 25);
   connect( quit_b, SIGNAL(clicked()), SLOT(quitbutton()));
 
-  setup_b = new QPushButton("Setup", this, "setup");
+  setup_b = new QPushButton(klocale->translate("Setup"), this, "setup");
   setup_b->setGeometry(90, 187, 70, 25);
   connect( setup_b, SIGNAL(clicked()), SLOT(expandbutton()));
 
   if (!config) setup_b->setEnabled(false);
 
-  help_b = new QPushButton("Help", this, "help");
+  help_b = new QPushButton(klocale->translate("Help"), this, "help");
   help_b->setGeometry(165, 187, 70, 25);
   connect( help_b, SIGNAL(clicked()), SLOT(helpbutton()));
 
 
-  log = new QCheckBox("Show Log Window", this,"log");
+  log = new QCheckBox(klocale->translate("Show Log Window"), this,"log");
   log->adjustSize();
   log->setGeometry(30,145,150,log->height());
   connect(log,SIGNAL(toggled(bool)),this,SLOT(log_window_toggled(bool)));
 
   log->setChecked(gpppdata.get_show_log_window());
 
-  connect_b = new QPushButton("Connect", this, "connect_b");
+  connect_b = new QPushButton(klocale->translate("Connect"), this, "connect_b");
   connect_b->setGeometry(265, 187, 80, 25);
   connect_b->setFocus();
-  connect_b->setText("Connect");
+  connect_b->setText(klocale->translate("Connect"));
   connect(connect_b, SIGNAL(clicked()), SLOT(connectbutton()));
 
   // we also connect cmld_start to the connectbutton so that I can run
@@ -334,8 +334,9 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
   connect(this,SIGNAL(cmdl_start()),this,SLOT(connectbutton())); 
 
   tabWindow = new QTabDialog( 0, 0, TRUE );
-  tabWindow->setCaption( "kppp Configuration" );
-  tabWindow->setCancelButton();
+  tabWindow->setCaption( klocale->translate("kppp Configuration") );
+  tabWindow->setOkButton(klocale->translate("OK"));
+  tabWindow->setCancelButton(klocale->translate("Cancel"));
   tabWindow->resize( 355, 350 );
   tabWindow->setFixedSize( 355, 350 ); // this doesn't seem to work in Qt 1.1
 
@@ -345,11 +346,11 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
   general = new GeneralWidget(tabWindow,"general");
   about  = new AboutWidget(tabWindow,"about");
   
-  tabWindow->addTab( accounts, "Accounts" );
-  tabWindow->addTab( modem, "Modem" );
-  tabWindow->addTab( modem2, "More ..." );
-  tabWindow->addTab( general, "PPP" );
-  tabWindow->addTab( about, "About" );
+  tabWindow->addTab( accounts, klocale->translate("Accounts") );
+  tabWindow->addTab( modem, klocale->translate("Modem") );
+  tabWindow->addTab( modem2, klocale->translate("More ...") );
+  tabWindow->addTab( general, klocale->translate("PPP") );
+  tabWindow->addTab( about, klocale->translate("About") );
 
   con_win = new ConWindow(0,"conw",this);
   con_win->setGeometry(QApplication::desktop()->width()/2-160,
@@ -393,8 +394,8 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
     result = gpppdata.setAccount(cmdl_account.data());
     if (!result){
       QString string;
-      string.sprintf("No such Account:\n%s",cmdl_account.data());
-      QMessageBox::warning(this, "Error", string.data());
+      string.sprintf(klocale->translate("No such Account:\n%s"),cmdl_account.data());
+      QMessageBox::warning(this, klocale->translate("Error"), string.data());
       have_cmdl_account = false;
       this->show();
     }
@@ -520,8 +521,8 @@ void dieppp(int sig) {
       gpppdata.setpppdpid(-1);
     
       app->beep();
-      QMessageBox::warning( 0, "Error", 
-			"The pppd daemon died unexpectedly!");
+      QMessageBox::warning( 0, klocale->translate("Error"), 
+			klocale->translate("The pppd daemon died unexpectedly!"));
       }
       else{/* reconnect on disconnect */
 #ifdef MY_DEBUG
@@ -557,20 +558,21 @@ void XPPPWidget::connectbutton() {
   
   if(!info.exists()){
     QString string;   
-    string.sprintf("kppp can not find:\n %s\nPlease install pppd properly "\
-		   "and/or adjust\n the location of the pppd executable on "\
-		   "the misc tab of\n"\
-		   "the setup dialog.\n Thank You",gpppdata.pppdPath());
-    QMessageBox::warning(this, "Error", string.data());
+    string.sprintf(klocale->translate("kppp can not find:\n %s\nPlease install pppd properly "
+				      "and/or adjust\n the location of the pppd executable on "
+				      "the misc tab of\n"
+				      "the setup dialog.\n Thank You"),
+		   gpppdata.pppdPath());
+    QMessageBox::warning(this, klocale->translate("Error"), string.data());
     return;
   }
 
   if(!info.isExecutable()){
 
     QString string;   
-    string.sprintf("kppp can not execute:\n %s\nPlease make sure that"\
-		   "you have given kppp setuid permission and that\n"\
-		   "pppd is executable.",gpppdata.pppdPath());
+    string.sprintf(klocale->translate("kppp can not execute:\n %s\nPlease make sure that"
+		   "you have given kppp setuid permission and that\n"
+		   "pppd is executable."),gpppdata.pppdPath());
     QMessageBox::warning(this, "Error", string.data());
     return;
 
@@ -580,11 +582,11 @@ void XPPPWidget::connectbutton() {
 
   if(!info2.exists()){
     QString string;   
-    string.sprintf("kppp can not find:\n %s\nPlease make sure you have setup\n"\
-		   "your modem device properly\n"\
-		   "and/or adjust\n the location of the modem device on "\
-		   "the modem tab of\n"\
-		   "the setup dialog.\n Thank You",gpppdata.modemDevice());
+    string.sprintf(klocale->translate("kppp can not find:\n %s\nPlease make sure you have setup\n"
+		   "your modem device properly\n"
+		   "and/or adjust\n the location of the modem device on "
+		   "the modem tab of\n"
+		   "the setup dialog.\n Thank You"),gpppdata.modemDevice());
     QMessageBox::warning(this, "Error", string.data());
     return;
   }
@@ -594,7 +596,7 @@ void XPPPWidget::connectbutton() {
   
   this->hide();
 
-  QString tit = "Connecting to: ";
+  QString tit = klocale->translate("Connecting to: ");
   tit += gpppdata.accname();
   con->setCaption(tit);
 
@@ -607,7 +609,7 @@ void XPPPWidget::connectbutton() {
     debugwindow->clear();
     debugwindow->show();
     con->raise();
-    con->debug->setText("Log"); // set Log/Hide button text to Hide
+    con->debug->setText(klocale->translate("Log")); // set Log/Hide button text to Hide
   }	
   
   debugwindow->clear();
@@ -654,8 +656,10 @@ void XPPPWidget::quitbutton() {
 
   if(gpppdata.pppdpid() >= 0) {
 
-    bool ok = QMessageBox::query("Quit kPPP?", 
-	      "Exiting kPPP will close your PPP Session.");
+    bool ok = QMessageBox::query(klocale->translate("Quit kPPP?"), 
+				 klocale->translate("Exiting kPPP will close your PPP Session."),
+				 klocale->translate("Yes"),
+				 klocale->translate("No"));
 
     if(ok) {
       terminatepppd();
@@ -679,10 +683,10 @@ void XPPPWidget::startAccounting() {
     return;
   
   if(!accounting.loadRuleSet(gpppdata.accountingFile())) {
-    QString s = "Can not load the accounting\nruleset \"";
+    QString s = klocale->translate("Can not load the accounting\nruleset \"");
     s += gpppdata.accountingFile();
     s += "\"!";
-    QMessageBox::warning(this, "Error", s.data());
+    QMessageBox::warning(this, klocale->translate("Error"), s.data());
     return;
   } 
   else

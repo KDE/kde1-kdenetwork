@@ -3,7 +3,7 @@
 SUBDIRS = de pt fr fi hu es
 
 # this is a general list for merging!
-APPS = knu kmail krn
+APPS = knu kmail krn kppp
 
 merge:
 	@apps='$(APPS)'; \

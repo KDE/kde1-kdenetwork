@@ -47,9 +47,9 @@ bool PPPData::open(const KApplication* app) {
 
   if (app->getConfigState() == KApplication::APPCONFIG_NONE) {
     QMessageBox::warning(0L, app->appName().data(),
-                       "The application-specific config file\n"\
-                       "could not be opened neither\n"\
-                       "read-write nor read-only");
+                       klocale->translate("The application-specific config file\n"
+                       "could not be opened neither\n"
+                       "read-write nor read-only"));
     return false;
   }
 

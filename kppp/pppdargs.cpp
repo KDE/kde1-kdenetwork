@@ -30,7 +30,7 @@
 PPPdArguments::PPPdArguments(QWidget *parent, const char *name)
   : QDialog(parent, name, TRUE)
 {
-  setCaption("Customize pppd Arguments");
+  setCaption(klocale->translate("Customize pppd Arguments"));
 
   argument = new QLineEdit(this);
   argument->setGeometry(95, 15, 170, 25);
@@ -38,24 +38,24 @@ PPPdArguments::PPPdArguments(QWidget *parent, const char *name)
 
   argument_label = new QLabel(this);
   argument_label->setGeometry(15,15,65,25);
-  argument_label->setText("Argument:");
+  argument_label->setText(klocale->translate("Argument:"));
 
-  add = new QPushButton("Add", this);
+  add = new QPushButton(klocale->translate("Add"), this);
   add->setGeometry(15, 55, 110, 30);
   connect(add, SIGNAL(clicked()), SLOT(addbutton()));
 
-  remove = new QPushButton("Remove", this);
+  remove = new QPushButton(klocale->translate("Remove"), this);
   remove->setGeometry(155, 55, 110, 30);
   connect(remove, SIGNAL(clicked()), SLOT(removebutton()));
 
   arguments = new QListBox(this);
   arguments->setGeometry(15, 105, 250, 100);
 
-  closebtn = new QPushButton("Close", this);
+  closebtn = new QPushButton(klocale->translate("Close"), this);
   closebtn->setGeometry(15, 225, 110, 30);
   connect(closebtn, SIGNAL(clicked()), SLOT(closebutton()));
 
-  defaults = new QPushButton("Restore Defaults", this);
+  defaults = new QPushButton(klocale->translate("Restore Defaults"), this);
   defaults->setGeometry(155, 225, 110, 30);
   connect(defaults, SIGNAL(clicked()), SLOT(defaultsbutton()));
 

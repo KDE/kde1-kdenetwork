@@ -46,7 +46,7 @@ DebugWidget::DebugWidget(QWidget *parent, const char *name)
   : QDialog(parent, name, FALSE)
 {
 
-  setCaption("Login Script Debug Window");
+  setCaption(klocale->translate("Login Script Debug Window"));
 
   text_window = new myMultiEdit(this,"debugwindow");
   text_window->setGeometry(2,5,400, 300);
@@ -62,7 +62,7 @@ DebugWidget::DebugWidget(QWidget *parent, const char *name)
 
   dismiss = new QPushButton(this,"dismissbutton");
   dismiss->setGeometry(330,340,70,30);
-  dismiss->setText("Dismiss");
+  dismiss->setText(klocale->translate("Dismiss"));
   dismiss->setFocus();
   connect(dismiss,SIGNAL(clicked()),SLOT(hideit()));
  
@@ -83,7 +83,7 @@ DebugWidget::~DebugWidget() {
 void DebugWidget::hideit(){
   this->hide();
   if (p_xppp){
-    p_xppp->con->debug->setText("Log"); // set Log/Hide button text to Log
+    p_xppp->con->debug->setText(klocale->translate("Log")); // set Log/Hide button text to Log
   }
 }
 

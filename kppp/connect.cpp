@@ -76,19 +76,20 @@ ConnectWidget::ConnectWidget(QWidget *parent, const char *name)
   semaphore = false;
   modified_hostname = FALSE;
 
-  QString tit = "Connecting to: ";
+  QString tit = klocale->translate("Connecting to: ");
   setCaption(tit);
 
-  messg = new QLabel("Looking for Modem ...", this, "messg");
+  messg = new QLabel(klocale->translate("Looking for Modem ..."), 
+		     this, "messg");
   messg->setFrameStyle(QFrame::Panel|QFrame::Sunken);
   messg->setAlignment(AlignCenter);
   messg->setGeometry(20, 30, 310, 30);
 
-  debug = new QPushButton("Log", this);
+  debug = new QPushButton(klocale->translate("Log"), this);
   debug->setGeometry(197, 75, 65, 30);
   connect(debug, SIGNAL(clicked()), SLOT(debugbutton()));
 
-  cancel = new QPushButton("Cancel", this);
+  cancel = new QPushButton(klocale->translate("Cancel"), this);
   cancel->setGeometry(267, 75, 65, 30);
   cancel->setFocus();
   connect(cancel, SIGNAL(clicked()), SLOT(cancelbutton()));
@@ -131,7 +132,7 @@ void ConnectWidget::preinit() {
   // this is all just to keep the GUI nice and snappy ....
   // you have to see to believe ...
 
-  messg->setText("Looking for Modem ...");
+  messg->setText(klocale->translate("Looking for Modem ..."));
   inittimer->start(500);
 
 }
@@ -153,7 +154,7 @@ void ConnectWidget::init() {
   
   reconnect_on_disconnect = gpppdata.get_automatic_redial();
 
-  QString tit = "Connecting to: ";
+  QString tit = klocale->translate("Connecting to: ");
   tit += gpppdata.accname();
   setCaption(tit);
 
@@ -162,19 +163,19 @@ void ConnectWidget::init() {
   int lock = lockdevice();
   if (lock == 1){
     
-    messg->setText("Sorry, modem device is locked.");
+    messg->setText(klocale->translate("Sorry, modem device is locked."));
     vmain = 20; // wait until cancel is pressed
     return;
   }
   if (lock == -1){
     
-    messg->setText("Sorry, can't create modem lock file.");
+    messg->setText(klocale->translate("Sorry, can't create modem lock file."));
     vmain = 20; // wait until cancel is pressed
     return;
   }
 
   if(opentty()){
-    messg->setText("Modem Ready");
+    messg->setText(klocale->translate("Modem Ready"));
     app->processEvents();
 
     hangup();
@@ -206,8 +207,8 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
     return;
 
   if(vmain == 0) {
-    messg->setText("Initializing Modem...");
-    p_xppp->debugwindow->statusLabel("Initializing Modem...");
+    messg->setText(klocale->translate("Initializing Modem..."));
+    p_xppp->debugwindow->statusLabel(klocale->translate("Initializing Modem..."));
 
     writeline(gpppdata.modemInitStr());
 
@@ -231,7 +232,8 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
       timeout_timer->stop();
       timeout_timer->start(atoi(gpppdata.modemTimeout())*1000);
 
-      QString bm = "Dialing ";
+      QString bm = klocale->translate("Dialing");;
+      bm += " "; 
       bm += gpppdata.phonenumber();
       messg->setText(bm);
       p_xppp->debugwindow->statusLabel(bm);
@@ -260,15 +262,15 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
       timeout_timer->stop();
       timeout_timer->start(atoi(gpppdata.modemTimeout())*1000);
 
-      messg->setText("Line Busy. Hanging up ...");
+      messg->setText(klocale->translate("Line Busy. Hanging up ..."));
       p_xppp->debugwindow->readchar('\n');
       hangup();
 
       if(gpppdata.busyWait() > 0){
 
-	QString bm = "Line Busy. Waiting: ";
+	QString bm = klocale->translate("Line Busy. Waiting: ");
 	bm += gpppdata.busyWait();
-	bm += " seconds";
+	bm += klocale->translate(" seconds");
 	messg->setText(bm);
 	p_xppp->debugwindow->statusLabel(bm);
       
@@ -286,7 +288,7 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
 
       timeout_timer->stop();
 
-      messg->setText("No Dialtone");
+      messg->setText(klocale->translate("No Dialtone"));
       vmain = 20;
       unlockdevice();
       return;
@@ -296,7 +298,7 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
 
       timeout_timer->stop();
 
-      messg->setText("No Carrier");
+      messg->setText(klocale->translate("No Carrier"));
       vmain = 20;
       unlockdevice();
       return;
@@ -331,7 +333,7 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
       }
 
       if(strcmp(gpppdata.scriptType(scriptindex), "Send") == 0) {
-	QString bm = "Sending ";
+	QString bm = klocale->translate("Sending ");
 	bm += gpppdata.script(scriptindex);
 	messg->setText(bm);
 	p_xppp->debugwindow->statusLabel(bm);
@@ -343,7 +345,7 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
 
 
       if(strcmp(gpppdata.scriptType(scriptindex), "Expect") == 0) {
-        QString bm = "Expecting ";
+        QString bm = klocale->translate("Expecting ");
         bm += gpppdata.script(scriptindex);
 	messg->setText(bm);
 	p_xppp->debugwindow->statusLabel(bm);
@@ -355,9 +357,9 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
 
 
       if(strcmp(gpppdata.scriptType(scriptindex), "Pause") == 0) {
-	QString bm = "Pause ";
+	QString bm = klocale->translate("Pause ");
 	bm += gpppdata.script(scriptindex);
-	bm += " seconds";
+	bm += klocale->translate(" seconds");
 	messg->setText(bm);
 	p_xppp->debugwindow->statusLabel(bm);
 	
@@ -374,9 +376,9 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
 
 	timeout_timer->stop();
 
-	QString bm = "Timeout ";
+	QString bm = klocale->translate("Timeout ");
 	bm += gpppdata.script(scriptindex);
-	bm += " seconds";
+	bm += klocale->translate(" seconds");
 	messg->setText(bm);
 	p_xppp->debugwindow->statusLabel(bm);
 	
@@ -388,8 +390,8 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
       }
 
       if(strcmp(gpppdata.scriptType(scriptindex), "Hangup") == 0) {
-	messg->setText("Hangup");
-	p_xppp->debugwindow->statusLabel("Hangup");
+	messg->setText(klocale->translate("Hangup"));
+	p_xppp->debugwindow->statusLabel(klocale->translate("Hangup"));
 
 	writeline(gpppdata.modemHangupStr());
 	setExpect(gpppdata.modemHangupResp());
@@ -402,8 +404,8 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
 	
 	timeout_timer->stop();
 
-	messg->setText("Answer");
-	p_xppp->debugwindow->statusLabel("Answer");
+	messg->setText(klocale->translate("Answer"));
+	p_xppp->debugwindow->statusLabel(klocale->translate("Answer"));
 
 	setExpect(gpppdata.modemRingResp());
 	vmain = 150;
@@ -411,7 +413,7 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
       }
 
       if(strcmp(gpppdata.scriptType(scriptindex), "ID") == 0) {
-	QString bm = "ID ";
+	QString bm = klocale->translate("ID ");
 	bm += gpppdata.script(scriptindex);
 	messg->setText(bm);
 	p_xppp->debugwindow->statusLabel(bm);
@@ -448,7 +450,7 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
       }
 
       if(strcmp(gpppdata.scriptType(scriptindex), "Password") == 0) {
-	QString bm = "Password ";
+	QString bm = klocale->translate("Password ");
 	bm += gpppdata.script(scriptindex);
 	messg->setText(bm);
 	p_xppp->debugwindow->statusLabel(bm);
@@ -485,7 +487,7 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
       }
  
       if(strcmp(gpppdata.scriptType(scriptindex), "Prompt") == 0) {
-	QString bm = "Prompting ";
+	QString bm = klocale->translate("Prompting ");
 	bm += gpppdata.script(scriptindex);
 	messg->setText(bm);
 	p_xppp->debugwindow->statusLabel(bm);
@@ -510,7 +512,7 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
       }
 
       if(strcmp(gpppdata.scriptType(scriptindex), "PWPrompt") == 0) {
-	QString bm = "PW prompt ";
+	QString bm = klocale->translate("PW prompt ");
 	bm += gpppdata.script(scriptindex);
 	messg->setText(bm);
 	p_xppp->debugwindow->statusLabel(bm);
@@ -536,15 +538,16 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
 
       if(strcmp(gpppdata.scriptType(scriptindex), "LoopStart") == 0) {
 
-        QString bm = "LoopStart ";
+        QString bm = klocale->translate("LoopStart ");
         bm += gpppdata.script(scriptindex);
 
 	if ( loopnest > (MAXLOOPNEST-2) ) {
-		bm += "ERROR: Nested too deep, ignored.";
+		bm += klocale->translate("ERROR: Nested too deep, ignored.");
 		vmain=20;
 		scriptindex++;
 		cancelbutton();
-	        QMessageBox::warning( 0, "Error", "Loops nested too deeply!");
+	        QMessageBox::warning( 0, klocale->translate("Error"),
+				      klocale->translate("Loops nested too deeply!"));
 	} else {
         	setExpect(gpppdata.script(scriptindex));
 		loopstartindex[loopnest] = scriptindex + 1;
@@ -562,11 +565,11 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
         QString bm = "LoopEnd ";
         bm += gpppdata.script(scriptindex);
 	if ( loopnest <= 0 ) {
-		bm = "LoopEnd without mathing Start! Line: " + bm ;
+		bm = klocale->translate("LoopEnd without mathing Start! Line: ") + bm ;
 		vmain=20;
 		scriptindex++;
 		cancelbutton();
-	        QMessageBox::warning( 0, "Error", bm );
+	        QMessageBox::warning( 0, klocale->translate("Error"), bm );
 		return;
 	} else {
         	setExpect(gpppdata.script(scriptindex));
@@ -616,7 +619,7 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
       semaphore = true;
       result = execppp();
 
-      p_xppp->debugwindow->statusLabel("Starting pppd ...");
+      p_xppp->debugwindow->statusLabel(klocale->translate("Starting pppd ..."));
 
 #ifdef MY_DEBUG
       printf("execppp() returned with return-code %d\n", result);
@@ -676,7 +679,7 @@ void ConnectWidget::set_con_speed_string(){
   // if ConnectResp is empty I don't know how to find the speed..
 
   if (t.isEmpty()){
-    p_xppp->con_speed = "unknown speed";
+    p_xppp->con_speed = klocale->translate("unknown speed");
     return; 
   }
 
@@ -702,7 +705,7 @@ void ConnectWidget::set_con_speed_string(){
 
   }
   else{
-    p_xppp->con_speed = "unknown speed";
+    p_xppp->con_speed = klocale->translate("unknown speed");
   }
 }
 
@@ -729,8 +732,8 @@ void ConnectWidget::readtty() {
       expecting = false;
       readbuffer = "";
 
-      QString ts = "Found: ";  
-      ts += expectstr;                 
+      QString ts = klocale->translate("Found: ");
+      ts += expectstr;
       p_xppp->debugwindow->statusLabel(ts);
       if (loopend) {
 	loopend=false;
@@ -740,7 +743,7 @@ void ConnectWidget::readtty() {
     if (loopend && readbuffer.contains(loopstr[loopnest])) {
       expecting = false;
       readbuffer = "";
-      QString ts = "Looping: ";  
+      QString ts = klocale->translate("Looping: ");
       ts += loopstr[loopnest];
       p_xppp->debugwindow->statusLabel(ts);
       scriptindex = loopstartindex[loopnest];
@@ -766,7 +769,7 @@ void ConnectWidget::cancelbutton() {
   killTimer(main_timer_ID);
   timeout_timer->stop();
 
-  messg->setText("One Moment Please ...");
+  messg->setText(klocale->translate("One Moment Please ..."));
   
 #ifdef MY_DEBUG
 printf( "ConnectWidget::cancelbutton() \n" );
@@ -806,7 +809,7 @@ void ConnectWidget::script_timed_out(){
   }
   prompt->setConsumed();
 
-  messg->setText("Script timed out!");
+  messg->setText(klocale->translate("Script timed out!"));
   
   hangup();
   p_xppp->stopAccounting();
@@ -833,7 +836,7 @@ void ConnectWidget::setExpect(const char *n) {
   expecting = true;
   expectstr = n;
 
-  QString ts = "Expecting: ";
+  QString ts = klocale->translate("Expecting: ");
   ts += n;
   p_xppp->debugwindow->statusLabel(ts);
 }
@@ -865,7 +868,7 @@ printf("if_waiting_timed_out()\n");
 void ConnectWidget::if_waiting_slot(){
 
 
-  messg->setText("Logging on to Network ...");
+  messg->setText(klocale->translate("Logging on to Network ..."));
 
   if(!if_is_up()){
 
@@ -892,14 +895,14 @@ void ConnectWidget::if_waiting_slot(){
     
     // let's fish the connection speed out of the read buffer.
     // so that we can say Connected at 115200 or similar.
-    p_xppp->debugwindow->statusLabel("Done");
+    p_xppp->debugwindow->statusLabel(klocale->translate("Done"));
     
        
   }
   else { // need to run a command
     
     pid_t id;
-    messg->setText("Running Startup Command ...");
+    messg->setText(klocale->translate("Running Startup Command ..."));
 
     app->flushX(); /* make sure that we don't get any asyn errors*/
 
@@ -909,8 +912,8 @@ void ConnectWidget::if_waiting_slot(){
       exit(0);
     }	 
     
-    messg->setText("Done");
-    p_xppp->debugwindow->statusLabel("Done");
+    messg->setText(klocale->translate("Done"));
+    p_xppp->debugwindow->statusLabel(klocale->translate("Done"));
     
       
   }
@@ -950,13 +953,13 @@ bool ConnectWidget::opentty() {
 
   if((modemfd = open(gpppdata.modemDevice(), O_RDWR|O_NDELAY)) < 0){
     
-    messg->setText("Sorry, can't open modem.");
+    messg->setText(klocale->translate("Sorry, can't open modem."));
     return FALSE;
   }
 
   if(tcgetattr(modemfd, &tty) < 0){
     
-    messg->setText("Sorry, the modem is busy.");
+    messg->setText(klocale->translate("Sorry, the modem is busy."));
     return FALSE;
   }
 
@@ -995,7 +998,7 @@ bool ConnectWidget::opentty() {
   cfsetispeed(&tty, modemspeed());
 
   if(tcsetattr(modemfd, TCSANOW, &tty) < 0){
-    messg->setText("Sorry, the modem is busy.");
+    messg->setText(klocale->translate("Sorry, the modem is busy."));
     return FALSE;
   }
 
@@ -1218,9 +1221,9 @@ bool ConnectWidget::execppp() {
 
 
   if (command.length() > 2023){
-    QMessageBox::warning(this, "Error", 
-		     "pppd command + command-line arguments exeed\n"\
-		     "2024 characters in length. What are you doing?");	
+    QMessageBox::warning(this, klocale->translate("Error"), 
+		     klocale->translate("pppd command + command-line arguments exeed\n"
+					"2024 characters in length. What are you doing?"));	
 
     return false; // nonsensically long command which would bust my buffer buf.
   }

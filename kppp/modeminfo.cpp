@@ -45,7 +45,7 @@ ModemTransfer::ModemTransfer(QWidget *parent=0, const char *name=0)
   : QDialog(parent, name,TRUE, WStyle_Customize|WStyle_NormalBorder)
 {
 
-  setCaption("ATI Query");
+  setCaption(klocale->translate("ATI Query"));
   
   setMaximumSize(250,130);
   setMinimumSize(250,130);
@@ -57,9 +57,9 @@ ModemTransfer::ModemTransfer(QWidget *parent=0, const char *name=0)
   statusBar->setFrameStyle(QFrame::Panel|QFrame::Sunken);
   statusBar->setGeometry(20,60,210,25);
   statusBar->setAlignment(AlignCenter);
-  statusBar->setText("Looking for Modem ...");
+  statusBar->setText(klocale->translate("Looking for Modem ..."));
 
-  cancel = new QPushButton("Cancel", this);
+  cancel = new QPushButton(klocale->translate("Cancel"), this);
   cancel->setGeometry(160, 95, 70, 30);
   cancel->setFocus();
   connect(cancel, SIGNAL(clicked()), SLOT(cancelbutton()));
@@ -110,7 +110,7 @@ void ModemTransfer::time_out_slot(){
   readtimer->stop();
   scripttimer->stop();
 
-  QMessageBox::warning(this, "Error","Modem Query timed out.");
+  QMessageBox::warning(this, klocale->translate("Error"),klocale->translate("Modem Query timed out."));
   reject();  
 
 }
@@ -127,12 +127,12 @@ void ModemTransfer::init() {
   int lock = lockdevice();
   if (lock == 1){
     
-    statusBar->setText("Sorry, modem device is locked.");
+    statusBar->setText(klocale->translate("Sorry, modem device is locked."));
     return;
   }
   if (lock == -1){
     
-    statusBar->setText("Sorry, can't create modem lock file.");
+    statusBar->setText(klocale->translate("Sorry, can't create modem lock file."));
     return;
   }
 
@@ -147,7 +147,7 @@ void ModemTransfer::init() {
       writeline("ATE0Q1V1"); // E0 don't echo the commands I send ...
     }
 
-    statusBar->setText("Modem Ready");
+    statusBar->setText(klocale->translate("Modem Ready"));
     app->processEvents();
 
     app->processEvents();
@@ -315,7 +315,7 @@ void ModemTransfer::cancelbutton() {
   readtimer->stop();
   timeout_timer->stop();
 
-  statusBar->setText("One Moment Please ...");
+  statusBar->setText(klocale->translate("One Moment Please ..."));
   app->processEvents();
   
   if(modemfd >= 0) {
@@ -351,13 +351,13 @@ bool ModemTransfer::opentty() {
 
   if((modemfd = open(gpppdata.modemDevice(), O_RDWR|O_NDELAY)) < 0){
 
-    statusBar->setText("Can't open Modem");
+    statusBar->setText(klocale->translate("Can't open Modem"));
     return FALSE;
   }
 
   if(tcgetattr(modemfd, &tty) < 0){
 
-    statusBar->setText("Sorry, the modem is busy.");
+    statusBar->setText(klocale->translate("Sorry, the modem is busy."));
     return FALSE;
   }
 
@@ -397,7 +397,7 @@ bool ModemTransfer::opentty() {
   cfsetispeed(&tty, modemspeed());
 
   if(tcsetattr(modemfd, TCSANOW, &tty) < 0){
-    statusBar->setText("Sorry, the modem is busy");
+    statusBar->setText(klocale->translate("Sorry, the modem is busy"));
     return FALSE;
   }
 
@@ -516,12 +516,12 @@ ModemInfo::ModemInfo(QWidget *parent=0 ,const char* name=0)
 {
   QString label_text;
 
-  setCaption("Modem Query Results");
+  setCaption(klocale->translate("Modem Query Results"));
 
   box = new QGroupBox(this, "box");
   box->setGeometry(5,5,330,360);
 
-  ok = new QPushButton("OK", this);
+  ok = new QPushButton(klocale->translate("OK"), this);
   ok->setGeometry(260, 375, 70, 30);
   connect(ok, SIGNAL(clicked()), SLOT(okbutton()));
   

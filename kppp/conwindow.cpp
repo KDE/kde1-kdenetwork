@@ -44,7 +44,7 @@ ConWindow::ConWindow(QWidget *parent, const char *name,QWidget *mainwidget)
 
   info1 = new QLabel(this,"infolabel1");
   info1->setGeometry(40,10,150,25);
-  info1->setText("Connected at:");
+  info1->setText(klocale->translate("Connected at:"));
 
   info2 = new QLabel(this,"infolabel");
   info2->setGeometry(150,10,150,25);
@@ -52,18 +52,18 @@ ConWindow::ConWindow(QWidget *parent, const char *name,QWidget *mainwidget)
  
   timelabel1 = new QLabel(this,"timelabel1");
   timelabel1->setGeometry(40,30,200,25);
-  timelabel1->setText("Time connected:");
+  timelabel1->setText(klocale->translate("Time connected:"));
 
   timelabel2 = new QLabel(this,"timelabel");
   timelabel2->setGeometry(150,30,200,25);
   timelabel2->setText("000:00:00");
 
   // now the stuff for accounting
-  session_bill_l = new QLabel("Session Bill:", this);
+  session_bill_l = new QLabel(klocale->translate("Session Bill:"), this);
   session_bill_l->setGeometry(40, 30+20, 200, 25);
   session_bill = new QLabel("", this);
   session_bill->setGeometry(150, 30+20, 200, 25);
-  total_bill_l = new QLabel("Total Bill:", this);
+  total_bill_l = new QLabel(klocale->translate("Total Bill:"), this);
   total_bill_l->setGeometry(40, 30+20+20, 200, 25);
   total_bill = new QLabel("", this);
   total_bill->setGeometry(150, 30+20+20, 200, 25);
@@ -72,13 +72,13 @@ ConWindow::ConWindow(QWidget *parent, const char *name,QWidget *mainwidget)
 
   cancelbutton = new QPushButton(this,"cancelbutton");
 
-  cancelbutton->setText("Disconnect");
+  cancelbutton->setText(klocale->translate("Disconnect"));
   connect(cancelbutton, SIGNAL(clicked()), main,SLOT(disconnect()));
   cancelbutton->setGeometry(225,75+40,80,25);
 
   statsbutton = new QPushButton(this,"statsbutton");
   statsbutton->setGeometry(225,40,80,25);
-  statsbutton->setText("Details");
+  statsbutton->setText(klocale->translate("Details"));
   statsbutton->setFocus();
   connect(statsbutton, SIGNAL(clicked()), this,SLOT(stats()));
 

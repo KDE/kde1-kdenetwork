@@ -29,16 +29,16 @@
 ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
   : QDialog(parent, name, TRUE, WStyle_Customize|WStyle_NormalBorder)
 {
-  setCaption("Edit Modem Commands");
+  setCaption(klocale->translate("Edit Modem Commands"));
 
   box = new QGroupBox(this, "box");
   box->setGeometry(5,5,330,465);
 
-  ok = new QPushButton("OK", this);
+  ok = new QPushButton(klocale->translate("OK"), this);
   ok->setGeometry(10, 475, 70, 25);
   connect(ok, SIGNAL(clicked()), SLOT(okbutton()));
   
-  cancel = new QPushButton("Cancel", this);
+  cancel = new QPushButton(klocale->translate("Cancel"), this);
   cancel->setGeometry(90, 475, 70, 25);
   cancel->setFocus();
   connect(cancel, SIGNAL(clicked()), SLOT(cancelbutton()));
@@ -50,7 +50,7 @@ ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
 
   label1 = new QLabel(this);
   label1->setGeometry(20,15,135,25);
-  label1->setText("Initialization String:");
+  label1->setText(klocale->translate("Initialization String:"));
 
   initresp = new QLineEdit(this);
   initresp->setGeometry(160, 45, 150, 25);
@@ -58,7 +58,7 @@ ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
 
   label2 = new QLabel(this);
   label2->setGeometry(20,45,135,25);
-  label2->setText("Init Response:");
+  label2->setText(klocale->translate("Init Response:"));
 
   dialstr = new QLineEdit(this);
   dialstr->setGeometry(160, 75, 150, 25);
@@ -66,7 +66,7 @@ ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
 
   label3 = new QLabel(this);
   label3->setGeometry(20,75,135,25);
-  label3->setText("Dial String:");
+  label3->setText(klocale->translate("Dial String:"));
 
   connectresp = new QLineEdit(this);
   connectresp->setGeometry(160, 105, 150, 25);
@@ -74,7 +74,7 @@ ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
 
   label4 = new QLabel(this);
   label4->setGeometry(20,105,135,25);
-  label4->setText("Connect Response:");
+  label4->setText(klocale->translate("Connect Response:"));
 
   busyresp = new QLineEdit(this);
   busyresp->setGeometry(160, 135, 150, 25);
@@ -83,7 +83,7 @@ ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
 
   label5 = new QLabel(this);
   label5->setGeometry(20,135,135,25);
-  label5->setText("Busy Response:");
+  label5->setText(klocale->translate("Busy Response:"));
 
   nocarrierresp = new QLineEdit(this);
   nocarrierresp->setGeometry(160, 165, 150, 25);
@@ -91,7 +91,7 @@ ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
 
   label6 = new QLabel(this);
   label6->setGeometry(20,165,135,25);
-  label6->setText("No Carrier Resonse:");
+  label6->setText(klocale->translate("No Carrier Resonse:"));
 
   nodialtoneresp = new QLineEdit(this);
   nodialtoneresp->setGeometry(160, 195, 150, 25);
@@ -99,7 +99,7 @@ ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
 
   label7 = new QLabel(this);
   label7->setGeometry(20,195,135,25);
-  label7->setText("No Dialtone Response:");
+  label7->setText(klocale->translate("No Dialtone Response:"));
 
   hangupstr = new QLineEdit(this);
   hangupstr->setGeometry(160, 225, 150, 25);
@@ -107,7 +107,7 @@ ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
 
   label8 = new QLabel(this);
   label8->setGeometry(20,225,135,25);
-  label8->setText("Hangup String:");
+  label8->setText(klocale->translate("Hangup String:"));
 
   hangupresp = new QLineEdit(this);
   hangupresp->setGeometry(160, 255, 150, 25);
@@ -115,7 +115,7 @@ ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
 
   label9 = new QLabel(this);
   label9->setGeometry(20,255,135,25);
-  label9->setText("Hangup Response:");
+  label9->setText(klocale->translate("Hangup Response:"));
 
   answerstr = new QLineEdit(this);
   answerstr->setGeometry(160, 285, 150, 25);
@@ -123,7 +123,7 @@ ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
 
   label10 = new QLabel(this);
   label10->setGeometry(20,285,135,25);
-  label10->setText("Answer String:");
+  label10->setText(klocale->translate("Answer String:"));
 
   ringresp = new QLineEdit(this);
   ringresp->setGeometry(160, 315, 150, 25);
@@ -131,7 +131,7 @@ ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
 
   label11 = new QLabel(this);
   label11->setGeometry(20,315,135,25);
-  label11->setText("Ring Response:");
+  label11->setText(klocale->translate("Ring Response:"));
 
   answerresp = new QLineEdit(this);
   answerresp->setGeometry(160, 345, 150, 25);
@@ -139,7 +139,7 @@ ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
 
   label12 = new QLabel(this);
   label12->setGeometry(20,345,135,25);
-  label12->setText("Answer Response:");
+  label12->setText(klocale->translate("Answer Response:"));
 
   escapestr = new QLineEdit(this);
   escapestr->setGeometry(160, 375, 150, 25);
@@ -147,7 +147,7 @@ ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
 
   label13 = new QLabel(this);
   label13->setGeometry(20,375,135,25);
-  label13->setText("Escape String:");
+  label13->setText(klocale->translate("Escape String:"));
 
   escaperesp = new QLineEdit(this);
   escaperesp->setGeometry(160, 405, 150, 25);
@@ -155,7 +155,7 @@ ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
 
   label14 = new QLabel(this);
   label14->setGeometry(20,405,135,25);
-  label14->setText("Escape Response:");
+  label14->setText(klocale->translate("Escape Response:"));
 
   escapeguardtime = new QScrollBar( 0, 255, 1, 10, 
 			gpppdata.modemEscapeGuardTime(),   // initial value.
@@ -171,7 +171,7 @@ ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
 
   label14 = new QLabel(this);
   label14->setGeometry(20,435,135,25);
-  label14->setText("Guard Time (sec/50):");
+  label14->setText(klocale->translate("Guard Time (sec/50):"));
 
   //set stuff from gpppdata
   initstr->setText(gpppdata.modemInitStr());

@@ -26,6 +26,7 @@
  */
 
 #include "scriptedit.h"
+#include <kapp.h>
 
 ScriptEdit::ScriptEdit( QWidget *parent, const char *name )
   : QWidget(parent, name)
