@@ -953,8 +953,6 @@ TRACEINIT("KBiffMailboxTab::KBiffMailboxTab()");
 
 	checkStorePassword = new QCheckBox(i18n("Store password"), this);
 	checkStorePassword->setMinimumSize(checkStorePassword->sizeHint());
-	connect(checkStorePassword, SIGNAL(toggled(bool)),
-	                            SLOT(slotStoreChecked(bool)));
 
 	QPushButton *advanced_button = new QPushButton(i18n("Advanced"), this);
 	advanced_button->setMinimumSize(75, 25);
@@ -993,13 +991,18 @@ TRACEINIT("KBiffMailboxTab::~KBiffMailboxTab()");
 void KBiffMailboxTab::readConfig(const char* profile)
 {
 TRACEINIT("KBiffMailboxTab::readConfig()");
+	// initalize some variables that need initing
+	oldItem = 0;
+
 	// open the config file
 	QString config_file(KApplication::localconfigdir());
 	config_file += "/kbiff2rc";
 	KSimpleConfig *config = new KSimpleConfig(config_file);
 
-	mailboxes->clear();
+TRACE("Before clears");
 	mailboxHash->clear();
+	mailboxes->clear();
+TRACE("After clears");
 
 	config->setGroup(profile);
 
@@ -1012,47 +1015,36 @@ TRACEINIT("KBiffMailboxTab::readConfig()");
 		for (unsigned int i = 0; i < mailbox_list.count(); i+=3)
 		{
 			KBiffMailbox *mailbox = new KBiffMailbox();
-			QString *key = new QString(mailbox_list.at(i));
+			QString key(mailbox_list.at(i));
 			mailbox->url = KURL(mailbox_list.at(i+1));
-			QString *password = new QString(scramble(mailbox_list.at(i+2), false));
-			if (password->isEmpty())
+			QString password(scramble(mailbox_list.at(i+2), false));
+
+			if (password.isEmpty())
 				mailbox->store = false;
 			else
 			{
 				mailbox->store = true;
-				mailbox->url.setPassword(password->data());
+				mailbox->url.setPassword(password.data());
 			}
 
-			QListViewItem *item = new QListViewItem(mailboxes, *key);
+			QListViewItem *item = new QListViewItem(mailboxes, key);
 			item->setPixmap(0, QPixmap(kapp->getIconLoader()->loadIcon("mailbox.xpm")));
 
-TRACEF("Inserting %s into %s", (const char*)mailbox->url.url(), (const char*)*key);
-			mailboxHash->insert(key->data(), mailbox);
+			mailboxHash->insert(key.data(), mailbox);
 		}
 	}
 	else
 	{
-		QFileInfo mailbox_info(getenv("MAIL"));
-		if (mailbox_info.exists() == false)
-		{
-			QString s("/var/spool/mail/");
-			s += getlogin();
-			mailbox_info.setFile(s);
-		}
-
 		KBiffMailbox *mailbox = new KBiffMailbox();
 		mailbox->store = false;
-		QString default_path("mbox:");
-		default_path += mailbox_info.absFilePath();
-
-		mailbox->url = KURL(default_path);
-TRACEF("Inserting %s into Default", (const char*)default_path);
+		mailbox->url = defaultMailbox();
 		mailboxHash->insert("Default", mailbox);
 
 		QListViewItem *item = new QListViewItem(mailboxes, "Default");
 		item->setPixmap(0, QPixmap(kapp->getIconLoader()->loadIcon("mailbox.xpm")));
 	}
 
+	TRACEF("Selecting item: %s", mailboxes->firstChild()->text(0));
 	mailboxes->setSelected(mailboxes->firstChild(), true);
 	delete config;
 }
@@ -1073,17 +1065,30 @@ TRACEINIT("KBiffMailboxTab::saveConfig()");
 	     item;
 		  item = item->nextSibling())
 	{
-TRACEF("mailbox: %s -> %s", item->text(0), mailboxHash->find(item->text(0))->url.url().data());
 		KBiffMailbox *mailbox = new KBiffMailbox();
+
+		// if this mailbox is the current one, then use the current
+		// settings instead of the hash
+		if (item == mailboxes->currentItem())
+		{
+			mailbox->store = checkStorePassword->isChecked();
+			mailbox->url   = getMailbox();
+
+			mailboxHash->replace(item->text(0), mailbox);
+		}
+
 		mailbox = mailboxHash->find(item->text(0));
+
 		QString password(scramble(mailbox->url.passwd()));
-		mailbox->url.setPassword("");
+		KURL url = mailbox->url;
+		url.setPassword("");
 
 		if (mailbox->store == false)
 			password = "";
 	
+TRACEF("mailbox: %s -> %s", item->text(0), url.url().data());
 		mailbox_list.append(item->text(0));
-		mailbox_list.append(mailbox->url.url());
+		mailbox_list.append(url.url());
 		mailbox_list.append(password);
 	}
 
@@ -1154,14 +1159,14 @@ KURL KBiffMailboxTab::getMailbox() const
 
 QList<KURL> KBiffMailboxTab::getMailboxList() const
 {
+TRACEINIT("KBiffMailboxTab::getMailboxList()");	
 	QList<KURL> url_list;
 
 	for (QListViewItem *item = mailboxes->firstChild();
 	     item;
 		  item = item->nextSibling())
 	{
-		KBiffMailbox *mailbox = new KBiffMailbox();
-		mailbox = mailboxHash->find(item->text(0));
+		KBiffMailbox *mailbox = mailboxHash->find(item->text(0));
 		KURL *url = new KURL(mailbox->url);
 		url_list.append(url);
 	}
@@ -1203,10 +1208,12 @@ TRACEINIT("KBiffMailboxTab::slotNewMailbox()");
 		if (mailbox_name.isNull() == false)
 		{
 			QListViewItem *item = new QListViewItem(mailboxes, mailbox_name);
-			item->setPixmap(0, QPixmap("mail.xpm"));
+			item->setPixmap(0, QPixmap(kapp->getIconLoader()->loadIcon("mailbox.xpm")));
 
 			KBiffMailbox *mailbox = new KBiffMailbox();
 			mailbox->store = false;
+			mailbox->url   = defaultMailbox();
+
 			mailboxHash->insert(mailbox_name.data(), mailbox);
 			mailboxes->setSelected(item, true);
 		}
@@ -1216,18 +1223,35 @@ TRACEINIT("KBiffMailboxTab::slotNewMailbox()");
 void KBiffMailboxTab::slotMailboxSelected(QListViewItem *item)
 {
 TRACEINIT("KBiffMailboxTab::slotMailboxSelected()");
-	setMailbox(mailboxHash->find(item->text(0))->url);
-	checkStorePassword->setChecked(mailboxHash->find(item->text(0))->store);
-}
+	KBiffMailbox *mailbox;
+	// if an "old" item exists, save the current info as it
+	if (oldItem && oldItem->text(0))
+	{
+		mailbox = mailboxHash->find(oldItem->text(0));
 
-void KBiffMailboxTab::slotStoreChecked(bool checked)
-{
-TRACEINIT("KBiffMailboxTab::slotStoreChecked()");
-	QListViewItem *item = mailboxes->currentItem();
-TRACEF("item->text(0) = %s\n", item->text(0));
-TRACEF("url = %s\n", getMailbox().url().data());
-	mailboxHash->find(item->text(0))->store = checked;
-	mailboxHash->find(item->text(0))->url = getMailbox();
+		if (mailbox)
+		{
+			// change the hash only if the item is different
+			KURL url(getMailbox());
+			bool checked = checkStorePassword->isChecked();
+			if (mailbox->url.url() != url.url() || mailbox->store != checked)
+			{
+				mailbox->url   = getMailbox();
+				mailbox->store = checkStorePassword->isChecked();
+			}
+		}
+	}
+
+	mailbox = mailboxHash->find(item->text(0));
+
+	if (mailbox)
+	{
+		setMailbox(mailbox->url);
+		checkStorePassword->setChecked(mailbox->store);
+
+		// save this as the "old" item
+		oldItem = item;
+	}
 }
 
 void KBiffMailboxTab::protocolSelected(int protocol)
@@ -1314,6 +1338,22 @@ const char* KBiffMailboxTab::scramble(const char* password, bool encode)
 	*ptr = '\0';
 
 	return ret_ptr;
+}
+
+inline KURL KBiffMailboxTab::defaultMailbox() const
+{
+	QFileInfo mailbox_info(getenv("MAIL"));
+	if (mailbox_info.exists() == false)
+	{
+		QString s("/var/spool/mail/");
+		s += getlogin();
+		mailbox_info.setFile(s);
+	}
+
+	QString default_path("mbox:");
+	default_path += mailbox_info.absFilePath();
+
+	return KURL(default_path);
 }
 
 //////////////////////////////////////////////////////////////////////

@@ -196,7 +196,6 @@ protected slots:
 	void slotDeleteMailbox();
 	void slotNewMailbox();
 	void slotMailboxSelected(QListViewItem *item);
-	void slotStoreChecked(bool checked);
 
 	void protocolSelected(int protocol);
 	void browse();
@@ -204,9 +203,11 @@ protected slots:
 
 protected:
 	const char* scramble(const char* password, bool encode = true);
+	inline KURL defaultMailbox() const;
 
 private:
 	QDict<KBiffMailbox> *mailboxHash;
+	QListViewItem       *oldItem;
 
 	unsigned int port;
 	QComboBox   *comboProtocol;

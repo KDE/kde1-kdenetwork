@@ -25,6 +25,7 @@ KBiffMonitor::KBiffMonitor()
 {
 TRACEINIT("KBiffMonitor::KBiffMonitor()");
 	// Initialize variables
+	poll       = 60;
 	lastSize   = 0;
 	oldTimer   = 0;
 	mailState  = UnknownState;
@@ -251,6 +252,7 @@ TRACEINIT("KBiffMonitor::determineState()");
 			mailState = NoMail;
 			lastSize  = 0;
 			emit(signal_noMail());
+			emit(signal_noMail(mailbox));
 		}
 
 		return;
@@ -264,6 +266,7 @@ TRACEINIT("KBiffMonitor::determineState()");
 			mailState = NewMail;
 			lastSize  = size;
 			emit(signal_newMail());
+			emit(signal_newMail(mailbox));
 		}
 
 		return;
@@ -276,6 +279,7 @@ TRACEINIT("KBiffMonitor::determineState()");
 		mailState = OldMail;
 		lastSize  = size;
 		emit(signal_oldMail());
+		emit(signal_oldMail(mailbox));
 
 		return;
 	}
@@ -288,6 +292,7 @@ TRACEINIT("KBiffMonitor::determineState()");
 			mailState = OldMail;
 			lastSize  = size;
 			emit(signal_oldMail());
+			emit(signal_oldMail(mailbox));
 		}
 	}
 }
@@ -305,12 +310,14 @@ TRACEINIT("KBiffMonitor::determineState()");
 	{
 		mailState = NoMail;
 		emit(signal_noMail());
+		emit(signal_noMail(mailbox));
 	}
 	else
 	if ((state == OldMail) && (mailState != OldMail))
 	{
 		mailState = OldMail;
 		emit(signal_oldMail());
+		emit(signal_oldMail(mailbox));
 	}
 }
 
@@ -330,6 +337,7 @@ TRACEINIT("KBiffMonitor::determineState()");
 
 			// Let the world know of the new state
 			emit(signal_noMail());
+			emit(signal_noMail(mailbox));
 		}
 
 		return;
@@ -347,6 +355,7 @@ TRACEINIT("KBiffMonitor::determineState()");
 
 		// Let the world know of the new state
 		emit(signal_newMail());
+		emit(signal_newMail(mailbox));
 
 		return;
 	}
@@ -363,6 +372,7 @@ TRACEF("lastRead = %s", (const char*)lastRead.toString());
 
 		// Let the world know of the new state
 		emit(signal_oldMail());
+		emit(signal_oldMail(mailbox));
 
 		return;
 	}

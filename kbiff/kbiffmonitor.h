@@ -4,9 +4,6 @@
  *
  * $Id$
  *
- * $Log$
- * Revision 1.1  1998/07/28 01:09:28  granroth
- * Added KURLLabel class
  */
 #ifndef KBIFFMONITOR_H
 #define KBIFFMONITOR_H
@@ -56,7 +53,7 @@ typedef enum
  *
  * @short A "biff" class that monitors local and remote mailboxes
  * @author Kurt Granroth <granroth@kde.org>
- * @version 0.4.5
+ * @version 0.4.7
  */
 class KBiffMonitor : public QObject
 {
@@ -184,13 +181,29 @@ signals:
 	void signal_newMail();
 
 	/**
+	 * This will get <CODE>emit</CODE>ed when new mail arrives
+	 */
+	void signal_newMail(const char* mailbox);
+
+	/**
 	 * This will get <CODE>emit</CODE>ed when no mail exists
 	 */
 	void signal_noMail();
+
+	/**
+	 * This will get <CODE>emit</CODE>ed when no mail exists
+	 */
+	void signal_noMail(const char* mailbox);
+
 	/**
 	 * This will get <CODE>emit</CODE>ed when the mailbox is read
 	 */
 	void signal_oldMail();
+
+	/**
+	 * This will get <CODE>emit</CODE>ed when the mailbox is read
+	 */
+	void signal_oldMail(const char* mailbox);
 
 	/**
 	 * This will get <CODE>emit</CODE>ed everytime the mailbox

@@ -31,10 +31,6 @@ TRACEINIT("KBiff::KBiff()");
 	hasAudio = (audioServer.serverStatus() == 0) ? true : false;
 
 	reset();
-
-	connect(&monitor, SIGNAL(signal_newMail()), this, SLOT(haveNewMail()));
-	connect(&monitor, SIGNAL(signal_noMail()), this, SLOT(displayPixmap()));
-	connect(&monitor, SIGNAL(signal_oldMail()), this, SLOT(displayPixmap()));
 }
 
 KBiff::~KBiff()
@@ -43,7 +39,22 @@ KBiff::~KBiff()
 
 void KBiff::setMailboxList(const QList<KURL>& mailbox_list)
 {
-	monitor.setMailbox(*mailbox_list.getFirst());
+TRACEINIT("KBiff::setMailboxList");
+	QList<KURL> tmp_list = mailbox_list;
+
+	monitorList.clear();
+	
+	KURL *url;
+	for (url = tmp_list.first(); url != 0; url = tmp_list.next())
+	{
+		TRACEF("Now adding %s", url->url().data());
+		KBiffMonitor *monitor = new KBiffMonitor();
+		monitor->setMailbox(*url);
+		connect(monitor, SIGNAL(signal_newMail()), this, SLOT(haveNewMail()));
+		connect(monitor, SIGNAL(signal_noMail()), this, SLOT(displayPixmap()));
+		connect(monitor, SIGNAL(signal_oldMail()), this, SLOT(displayPixmap()));
+		monitorList.append(monitor);
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -86,21 +97,35 @@ void KBiff::displayPixmap()
 	// we will try to deduce the pixmap (or gif) name now.  it will
 	// vary depending on the dock and mail state
 	QString pixmap_name, mini_pixmap_name;
-	switch (monitor.getMailState())
+	bool has_new = false, has_old = false, has_no = true;
+	KBiffMonitor *monitor;
+	for (monitor = monitorList.first();
+	     monitor != 0 && has_new == false;
+		  monitor = monitorList.next())
 	{
-		case NoMail:
-			pixmap_name = noMailIcon;
-			break;
-		case NewMail:
-			pixmap_name = newMailIcon;
-			break;
-		case OldMail:
-			pixmap_name = oldMailIcon;
-			break;
-		default:
-			pixmap_name = noMailIcon;
-			break;
+		switch (monitor->getMailState())
+		{
+			case NoMail:
+				has_no = true;
+				break;
+			case NewMail:
+				has_new = true;
+				break;
+			case OldMail:
+				has_old = true;
+				break;
+			default:
+				has_no = true;
+				break;
+		}
 	}
+
+	if (has_new)
+		pixmap_name = newMailIcon;
+	else if (has_old)
+		pixmap_name = oldMailIcon;
+	else
+		pixmap_name = noMailIcon;
 	mini_pixmap_name = "mini-" + pixmap_name;
 
 	// Get a list of all the pixmap paths.  This is needed since the
@@ -213,6 +238,41 @@ void KBiff::setup()
 	setup_dlg.exec();
 }
 
+void KBiff::checkMailNow()
+{
+	KBiffMonitor *monitor;
+	for (monitor = monitorList.first();
+	     monitor != 0;
+		  monitor = monitorList.next())
+	{
+		monitor->checkMailNow();
+	}
+}
+
+void KBiff::stop()
+{
+TRACEINIT("KBiff::stop()");
+	KBiffMonitor *monitor;
+	for (monitor = monitorList.first();
+	     monitor != 0;
+		  monitor = monitorList.next())
+	{
+		monitor->stop();
+	}
+}
+
+void KBiff::start()
+{
+TRACEINIT("KBiff::start()");
+	KBiffMonitor *monitor;
+	for (int i = 0; i < monitorList.count(); i++)
+	{
+		TRACE("Starting a monitor");
+		monitor = monitorList.at(i);
+		monitor->start();
+	}
+}
+
 ///////////////////////////////////////////////////////////////////////////
 // Protected Functions
 ///////////////////////////////////////////////////////////////////////////
@@ -230,17 +290,19 @@ void KBiff::popupMenu()
 	popup->insertSeparator();
 
 	int check_id;
-	check_id = popup->insertItem(i18n("&Check mail now"), &monitor, SLOT(checkMailNow()));
-	if (monitor.isRunning())
+	check_id = popup->insertItem(i18n("&Check mail now"), this, SLOT(checkMailNow()));
+
+	if (isRunning())
 	{
 		popup->setItemEnabled(check_id, true);
-		popup->insertItem(i18n("&Stop"), &monitor, SLOT(stop()));
+		popup->insertItem(i18n("&Stop"), this, SLOT(stop()));
 	}
 	else
 	{
 		popup->setItemEnabled(check_id, false);
-		popup->insertItem(i18n("&Start"), &monitor, SLOT(start()));
+		popup->insertItem(i18n("&Start"), this, SLOT(start()));
 	}
+
 	popup->insertSeparator();
 	popup->insertItem(i18n("E&xit"), kapp, SLOT(quit()));
 
@@ -266,4 +328,21 @@ void KBiff::reset()
 	mailClient  = "xmutt";
 
 	displayPixmap();
+}
+
+bool KBiff::isRunning()
+{
+	bool is_running = false;
+	KBiffMonitor *monitor;
+	for (monitor = monitorList.first();
+	     monitor != 0;
+		  monitor = monitorList.next())
+	{
+		if (monitor->isRunning())
+		{
+			is_running = true;
+			break;
+		}
+	}
+	return is_running;
 }

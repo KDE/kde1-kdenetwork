@@ -44,6 +44,7 @@ protected:
 protected:
 	void popupMenu();
 	void reset();
+	bool isRunning();
 
 protected slots:
 	void invokeHelp();
@@ -51,16 +52,19 @@ protected slots:
 	void haveNewMail();
 	void dock();
 	void setup();
+	void checkMailNow();
+	void stop();
+	void start();
 
 private:
-	KBiffMonitor monitor;
+	QList<KBiffMonitor> monitorList;
 
 	// Capability
-	bool   hasAudio;
-	KAudio audioServer;
+	bool    hasAudio;
+	KAudio  audioServer;
 	
 	// General settings
-	QString      mailClient;
+	QString mailClient;
 
 	// New mail
 	bool    systemBeep;
@@ -70,7 +74,7 @@ private:
 	QString playSoundPath;
 	bool    notify;
 
-	bool isDocked;
+	bool    isDocked;
 
 	QString noMailIcon;
 	QString newMailIcon;
