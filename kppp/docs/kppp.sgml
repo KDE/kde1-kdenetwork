@@ -522,8 +522,9 @@ arguments, we need to enter each value as a separate entry in the listbox,
 in the correct order.
 <p>
 
-We can put any other arguments in here we want first. In addition to
-the default '-detach' and 'defaultroute', you might want to add 'lock'.
+We can put any other arguments in here we want first. Usually you would
+want to hand kppp 
+the default options '-detach' and 'defaultroute'.
 Now we need to add arguments that pppd needs to handle PAP authentication.
 In this example I am going to add 'user', 'booger', 'remotename', 'glob',
 in that order. The user argument tells pppd what user name to look for
