@@ -268,8 +268,8 @@ msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
 msgstr ""
-"Comando pppd + argumentos excedem 2024caracteres de comprimento. O que é que "
-"está a fazer?"
+"Comando pppd + argumentos excedem 2024"
+"caracteres de comprimento. O que é que está a fazer?"
 
 #: conwindow.cpp:44
 msgid "Connected at:"
@@ -321,7 +321,7 @@ msgstr "Autenticação:"
 
 #: edit.cpp:73
 msgid "Script-based"
-msgstr "Baseado num Script:"
+msgstr "Baseada num Script"
 
 #: edit.cpp:74
 msgid "PAP"
@@ -336,7 +336,7 @@ msgid ""
 "Execute program\n"
 "upon connect:"
 msgstr ""
-"Executa programa\n"
+"Executar programa\n"
 "quando obter ligação:"
 
 #: edit.cpp:98
@@ -469,7 +469,7 @@ msgstr "Desligar se o servidor X terminar"
 
 #: general.cpp:118
 msgid "Minimize Window on Connect"
-msgstr "Minimiza Janela quando Ligado"
+msgstr "Minimizar Janela quando Ligado"
 
 #: general.cpp:124
 msgid "Dock into Panel on Connect"
@@ -551,7 +551,7 @@ msgstr "Modem"
 
 #: general.cpp:445
 msgid "Busy Wait:"
-msgstr "Esperar quando Ocupado"
+msgstr "Quando ocupado esperar"
 
 #: general.cpp:471
 msgid "Modem sustains fast initialization."
@@ -559,11 +559,11 @@ msgstr "Modem aceita inicialização rápida"
 
 #: general.cpp:484
 msgid "Modem Asserts CD Line."
-msgstr "Modem Reconhece Linha CD."
+msgstr "Modem reconhece linha CD."
 
 #: general.cpp:500
 msgid "Modem Commands"
-msgstr "Comando do Modem"
+msgstr "Comandos do Modem"
 
 #: general.cpp:501
 msgid "Query Modem"
@@ -786,7 +786,7 @@ msgstr "Argumento:"
 
 #: pppdargs.cpp:58
 msgid "Restore Defaults"
-msgstr "Restaurar Valores por Defeito"
+msgstr "Valores por Defeito"
 
 #: pppdata.cpp:50
 msgid ""
@@ -794,6 +794,9 @@ msgid ""
 "could not be opened neither\n"
 "read-write nor read-only"
 msgstr ""
+"O ficheiro de configuração da\n"
+"não pode ser aberto nem para\n"
+"escrita nem para leitura"
 
 #: modeminfo.cpp:46
 msgid "ATI Query"
@@ -1048,3 +1051,4 @@ msgstr ""
 "O visualizador de relatórios \"%s\" não foi encontrado!\n"
 "\n"
 "A voltar ao valor por defeito \"%s\"."
+
