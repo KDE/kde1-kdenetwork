@@ -52,7 +52,7 @@ msgstr "&Osajoukko"
 
 #: KAMenu.cpp:102
 msgid "Substring &case insensitive"
-msgstr "Osajoukko &merkkitaso ei vaikuta"
+msgstr "Osajoukko &merkkikoko ei vaikuta"
 
 #: KAMenu.cpp:103
 msgid "&Regular expression"
@@ -64,7 +64,7 @@ msgstr "Tarkka, sitten osajoukko"
 
 #: KAMenu.cpp:105
 msgid "Exact, then substring case ins."
-msgstr "Tarkka, sitten osajoukko ilman merkkitasoa"
+msgstr "Tarkka, sitten osajoukko ilman merkkikokoa"
 
 #: KAMenu.cpp:106 KASettings.cpp:424
 msgid "Exact, then regular expression"
@@ -96,7 +96,7 @@ msgstr "Näytä &tiedostokuvaukset"
 
 #: KAMenu.cpp:128
 msgid "Archie&server"
-msgstr "Archie &palvelin"
+msgstr "Archie -&palvelin"
 
 #: KAMenu.cpp:129
 msgid "Search&mode"
@@ -132,7 +132,7 @@ msgstr "&isännän mukaan"
 
 #: KAMenu.cpp:161
 msgid "by &Domain"
-msgstr "&domainin mukaan"
+msgstr "&verkkoalueen mukaan"
 
 #: KAMenu.cpp:162
 msgid "by D&ate"
@@ -143,12 +143,10 @@ msgid "by &Filesize"
 msgstr "&koon mukaan"
 
 #: KAMenu.cpp:169
-#, fuzzy
 msgid "KArchie ver. "
-msgstr "Archie &palvelin"
+msgstr "KArchie ver. "
 
 #: KAMenu.cpp:171
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -163,7 +161,7 @@ msgid ""
 "(See README files and copyright.h).\n"
 "My own code is based on the GPL"
 msgstr ""
-"KArchie versio. %s\n"
+"\n"
 "\n"
 "Jörg Habenicht <j.habenicht@europemail.com>\n"
 "\n"
@@ -242,7 +240,7 @@ msgstr "Korvaan olemassaolevan linkin"
 
 #: KAQuery.cpp:308
 msgid "Prv entry not in dir->ulinks"
-msgstr "Prv tietue ei dir->ulinks:ssä"
+msgstr "Prv tietuetta ei ole dir->ulinks:ssä"
 
 #: KAQuery.cpp:309
 msgid "Temporary not found"
@@ -270,7 +268,7 @@ msgstr "Tuhoa välimuistikopio lopetettaessa"
 
 #: KAQuery.cpp:315
 msgid "Unable to retrieve file"
-msgstr "Mahdotonta hakea tiedostoa"
+msgstr "Tiedoston haku mahdotonta"
 
 #: KAQuery.cpp:317
 msgid "Directory already exists"
@@ -422,7 +420,7 @@ msgstr "Osajoukko"
 
 #: KASettings.cpp:420
 msgid "Substring case insensitive"
-msgstr "Osajoukko merkkitaso ei vaikuta"
+msgstr "Osajoukko merkkikoko ei vaikuta"
 
 #: KASettings.cpp:421
 msgid "Regular expression"
@@ -430,7 +428,7 @@ msgstr "Säännöllinen lause"
 
 #: KASettings.cpp:423
 msgid "Exact, then substring case insensitive"
-msgstr "Tarkka, sitten osajoukko ilman merkkitasoa"
+msgstr "Tarkka, sitten osajoukko ilman merkkikokoa"
 
 #: KASettings.cpp:427
 msgid "Normal"
@@ -580,7 +578,7 @@ msgstr "KArchie: Väärä tiedostovalinta"
 
 #: KArchie.cpp:745
 msgid "The selected file is not writeable"
-msgstr "Valittuun tiedostoon ei voida kirjoittaa"
+msgstr "Valittuun tiedostoon ei voitu kirjoittaa"
 
 #: KArchie.cpp:752
 msgid "KArchie: Overwrite file ?"
@@ -596,7 +594,7 @@ msgstr ""
 
 #: KArchie.cpp:766
 msgid "KArchie: bad selection"
-msgstr "KArchie: viallinen valinta"
+msgstr "KArchie: virheellinen valinta"
 
 #: KArchie.cpp:767
 msgid ""

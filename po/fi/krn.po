@@ -20,7 +20,7 @@ msgstr "KRN-Asetustiedot puuttuvat"
 
 #: main.cpp:220
 msgid "Please enter your email adress"
-msgstr "Anna sähkpostiosoitteesi"
+msgstr "Anna sähköpostiosoitteesi"
 
 #: main.cpp:233
 msgid "Please enter your real name"
@@ -225,7 +225,7 @@ msgid ""
 " get it from server?"
 msgstr ""
 "Sinulla ei ole aktiivisten ryhmien listaa.\n"
-" haenko sen palvelimelta?"
+" Haenko sen palvelimelta?"
 
 #: groupdlg.cpp:888
 msgid "Listing active newsgroups"
@@ -281,7 +281,7 @@ msgstr "Etsi Altavistasta"
 
 #: artdlg.cpp:172 artdlg.cpp:259
 msgid "Reply by Mail"
-msgstr "Vastaa postin kautta"
+msgstr "Vastaa postilla"
 
 #: artdlg.cpp:173
 msgid "Post Followup"
@@ -393,7 +393,7 @@ msgstr "Merkkaa viesti"
 
 #: artdlg.cpp:271
 msgid "Lock (keep in cache)"
-msgstr "Lukitse (pidä välimustissa)"
+msgstr "Lukitse (pidä välimuistissa)"
 
 #: artdlg.cpp:273
 msgid "Decode Article"
@@ -487,7 +487,7 @@ msgstr "Sähköpostiosoite"
 
 #: identDlg.cpp:73
 msgid "Organization"
-msgstr "Ogranisaatio"
+msgstr "Organisaatio"
 
 #: NNTPConfigDlg.cpp:30
 msgid "KRN-NNTP configuration"
@@ -715,7 +715,7 @@ msgstr "&Kopio:"
 
 #: kmcomposewin.cpp:351
 msgid "&Bcc:"
-msgstr "&tiedoksi:"
+msgstr "&Tiedoksi:"
 
 #: kmcomposewin.cpp:353
 msgid "&Subject:"
@@ -927,7 +927,7 @@ msgstr "Liitä tiedosto"
 
 #: kmcomposewin.cpp:1204
 msgid "Include File"
-msgstr "Liitä tiedosto"
+msgstr "Sisällytä tiedosto"
 
 #: kmcomposewin.cpp:1239 kmreaderwin.cpp:737
 msgid "View..."
@@ -1108,7 +1108,7 @@ msgstr "Kentässä:"
 
 #: findArtDlg.cpp:53 rulesDlg.cpp:131
 msgid "Case Sensitive"
-msgstr "Kokoherkkä"
+msgstr "Kirjainkokoherkkä"
 
 #: findArtDlg.cpp:56 rulesDlg.cpp:132
 msgid "Wildcard Mode"
@@ -1207,7 +1207,7 @@ msgid ""
 "Failed to make a backup copy of %s.\n"
 "Continue anyway ?"
 msgstr ""
-"Epäonnistuin tekemään varmuuskopion tiedostosta %s.\n"
+"Tiedoston %s varmuuskopiointi epäonnistui.\n"
 "Jatka kuitenkin ?"
 
 #: kfileio.cpp:156 kfileio.cpp:174
@@ -1516,7 +1516,7 @@ msgstr "Yleistä"
 
 #: printdlg.cpp:35
 msgid "Printing System"
-msgstr "Tulostusjörjestelmä"
+msgstr "Tulostusjärjestelmä"
 
 #: printdlg.cpp:37
 msgid "Use HTML Printing"
@@ -1632,7 +1632,7 @@ msgstr "&7bit on ASCII"
 
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
-msgstr "&Lainaa tuntemattoman kirjaimet"
+msgstr "&Lainaa tuntemattomat kirjaimet"
 
 #: expirestatusdlg.cpp:35
 msgid "Please wait a minute, I am expiring!"
