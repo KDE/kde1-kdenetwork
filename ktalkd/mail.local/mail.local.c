@@ -355,7 +355,7 @@ deliver(fd, name)
 	struct passwd *pw;
 	int mbfd, nr, nw, off;
 	char *p;
-	char biffmsg[100], buf[8*1024], path[MAXPATHLEN];
+	char biffmsg[100], buf[8*1024], path[KDEMAXPATHLEN];
 	off_t curoff;
 
 	/*
@@ -535,7 +535,7 @@ err0:		unlockmbox();
  * EPA 11/94.
  */
 
-char	lockname[MAXPATHLEN];
+char	lockname[KDEMAXPATHLEN];
 int	locked = 0;
 
 void
