@@ -1,5 +1,5 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
+# Icelandic translation of krn.po
+# Copyright (C) 1999 Free Software Foundation, Inc.
 # Richard Allen <ra@hp.is>, 1999
 #
 #
@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: krn\n"
 "POT-Creation-Date: 1999-01-18 02:04+0100\n"
-"PO-Revision-Date: 1999-01-31 13:38+0000\n"
-"Last-Translator: Richard Allen <ra@hp.is>\n"
+"PO-Revision-Date: 1999-04-24 02:18-0500\n"
+"Last-Translator: Thorarinn R. Einarsson <thori@mindspring.com>\n"
 "Language-Team: is <kde-isl@mmedia.is>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
@@ -397,7 +397,7 @@ msgstr "Læsa (geyma í biðminni)"
 
 #: artdlg.cpp:273
 msgid "Decode Article"
-msgstr "Afkóta grein"
+msgstr "Afdulrita grein"
 
 #: artdlg.cpp:277
 msgid "Mark UnRead"
@@ -651,7 +651,7 @@ msgstr "Tengingalitur"
 
 #: fontsDlg.cpp:103
 msgid "Followed Color"
-msgstr "Litur skoðaðra tenginga"
+msgstr "Litur heimsóttra tenginga"
 
 #: fontsDlg.cpp:107
 msgid "Use only one window"
@@ -691,7 +691,7 @@ msgstr "Stærð"
 
 #: kmcomposewin.cpp:141
 msgid "Encoding"
-msgstr "Kóðun"
+msgstr "Dulritun"
 
 #: kmcomposewin.cpp:142
 msgid "Type"
@@ -711,11 +711,11 @@ msgstr "&Til:"
 
 #: kmcomposewin.cpp:349
 msgid "&Cc:"
-msgstr "&Samrit:"
+msgstr "&Afrit:"
 
 #: kmcomposewin.cpp:351
 msgid "&Bcc:"
-msgstr "&Blint samrit:"
+msgstr "&Blint afrit:"
 
 #: kmcomposewin.cpp:353
 msgid "&Subject:"
@@ -811,11 +811,11 @@ msgstr "&Til"
 
 #: kmcomposewin.cpp:512
 msgid "&Cc"
-msgstr "&Samrit"
+msgstr "&Afrit"
 
 #: kmcomposewin.cpp:513
 msgid "&Bcc"
-msgstr "&Blint samrit"
+msgstr "&Blint afrit"
 
 #: kmcomposewin.cpp:514
 msgid "&Subject"
@@ -875,31 +875,31 @@ msgstr "Prenta grein"
 
 #: kmcomposewin.cpp:582
 msgid "Cut selection"
-msgstr ""
+msgstr "Klippa"
 
 #: kmcomposewin.cpp:585
 msgid "Copy selection"
-msgstr ""
+msgstr "Afrita"
 
 #: kmcomposewin.cpp:588
 msgid "Paste clipboard contents"
-msgstr ""
+msgstr "Líma innihald klemmuspjalds"
 
 #: kmcomposewin.cpp:593
 msgid "Attach file"
-msgstr ""
+msgstr "Hengja skrá við"
 
 #: kmcomposewin.cpp:597
 msgid "Open addressbook..."
-msgstr ""
+msgstr "Opna netfangabók..."
 
 #: kmcomposewin.cpp:604
 msgid "sign message"
-msgstr ""
+msgstr "skrifa undir"
 
 #: kmcomposewin.cpp:609
 msgid "encrypt message"
-msgstr ""
+msgstr "dulrita bréfið"
 
 #: kmcomposewin.cpp:626 kmcomposewin.cpp:642
 msgid "Column"
@@ -918,69 +918,74 @@ msgid ""
 "Close and discard\n"
 "edited message?"
 msgstr ""
+"Loka og hætta við\n"
+"þetta bréf?"
 
 #: kmcomposewin.cpp:1182
 msgid "Attach File"
-msgstr ""
+msgstr "Hengja skrá við"
 
 #: kmcomposewin.cpp:1204
 msgid "Include File"
-msgstr ""
+msgstr "Velja skrá"
 
 #: kmcomposewin.cpp:1239 kmreaderwin.cpp:737
 msgid "View..."
-msgstr ""
+msgstr "Birta..."
 
 #: kmcomposewin.cpp:1240
 msgid "Save..."
-msgstr ""
+msgstr "Vista..."
 
 #: kmcomposewin.cpp:1241 kmreaderwin.cpp:740
 msgid "Properties..."
-msgstr ""
+msgstr "Eiginleikar..."
 
 #: kmcomposewin.cpp:1245
 msgid "Attach..."
-msgstr ""
+msgstr "Hengja við..."
 
 #: kmcomposewin.cpp:1287 kmreaderwin.cpp:782
 msgid "View Attachment: "
-msgstr ""
+msgstr "Skoða viðhengingu: "
 
 #: kmcomposewin.cpp:1458 kpgp.cpp:546
 msgid ""
 "Sorry, but this feature\n"
 "is still missing"
 msgstr ""
+"Því miður þá vantar enn\n"
+"þessa aðgerð"
 
 #: kmcomposewin.cpp:1466
 msgid "unnamed"
-msgstr ""
+msgstr "nafnlaust"
 
 #: kmcomposewin.cpp:1481
 msgid "To:"
-msgstr ""
+msgstr "Til:"
 
 #: kmcomposewin.cpp:1485
 msgid "Subject:"
-msgstr ""
+msgstr "Viðfangsefni:"
 
 #: kmcomposewin.cpp:1488
 msgid "Date:"
-msgstr ""
+msgstr "Dags:"
 
 #: kmcomposewin.cpp:1565
 msgid "Choose Signature File"
-msgstr ""
+msgstr "Velja undirskriftarskrá"
 
 #: kmcomposewin.cpp:2018
 msgid "Spellcheck - KMail"
-msgstr ""
+msgstr "Stafsetningarathugun - KPóstur"
 
 #: kmcomposewin.cpp:2044
 msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
 msgstr ""
+"Villa við keyrslu KSpell. Athugaðu hvort ISpell er rétt upp sett."
 
 #: kmsender.cpp:116
 msgid ""
@@ -988,6 +993,9 @@ msgid ""
 "method in the settings\n"
 "and try again."
 msgstr ""
+"Vinsamlega tilgreindu sendingar-\n"
+"aðferðina í stillingunum og\n"
+"prófaðu svo aftur."
 
 #: kmsender.cpp:122
 msgid ""
@@ -995,49 +1003,54 @@ msgid ""
 "identity settings:\n"
 "user-name and email-address"
 msgstr ""
+"Vinsamlega gefðu upp viðeigandi upplýsingar\n"
+"í auðkennisreitunum:\n"
+"notandanafn og netfang"
 
 #: kmsender.cpp:147
 msgid "You must specify a receiver"
-msgstr ""
+msgstr "Þú verður að gefa upp móttakanda"
 
 #: kmsender.cpp:158
 msgid "Cannot add message to outbox folder"
-msgstr ""
+msgstr "Bréf fæst ekki flutt í út-möppuna"
 
 #: kmsender.cpp:189
 msgid "Sending still in progress"
-msgstr ""
+msgstr "Sending stendur enn yfir"
 
 #: kmsender.cpp:245
 msgid "Initiating sender process..."
-msgstr ""
+msgstr "Ræsi sendiaðgerð..."
 
 #: kmsender.cpp:261
 msgid "Sending message: "
-msgstr ""
+msgstr "Sendi bréf: "
 
 #: kmsender.cpp:289
 msgid "Done sending messages."
-msgstr ""
+msgstr "Búin að senda bréf."
 
 #: kmsender.cpp:308
 msgid "Sending failed:"
-msgstr ""
+msgstr "Sendingin mistókst:"
 
 #: kmsender.cpp:461
 msgid ""
 "Please specify a mailer program\n"
 "in the settings."
 msgstr ""
+"Vinsamlega veldu póstforrit í\n"
+"stillingunum."
 
 #: kmsender.cpp:501
 #, c-format
 msgid "Failed to execute mailer program %s"
-msgstr ""
+msgstr "Tókst ekki að ræsa póstforritið %s"
 
 #: kmsender.cpp:589
 msgid "connecting to server"
-msgstr ""
+msgstr "tengi við þjóninn"
 
 #: kmsender.cpp:594
 #, c-format
@@ -1046,18 +1059,21 @@ msgid ""
 "host %s for sending:\n"
 "%s"
 msgstr ""
+"Get ekki opnað SMTP tengingu við\n"
+"%s vélina til að senda:\n"
+"%s"
 
 #: kmsender.cpp:623
 msgid "Cannot close SMTP connection."
-msgstr ""
+msgstr "Get ekki lokað SMTP tengingu."
 
 #: kmsender.cpp:673
 msgid "transmitting message"
-msgstr ""
+msgstr "...er að senda..."
 
 #: kmsender.cpp:707
 msgid "network error"
-msgstr ""
+msgstr "Villa á neti"
 
 #: kmsender.cpp:709
 #, c-format
@@ -1067,35 +1083,39 @@ msgid ""
 "Response: %s\n"
 "Return code: %d"
 msgstr ""
+"SMTP villa átti sér stað.\n"
+"Skipun: %s\n"
+"Svar: %s\n"
+"Svar nr.: %d"
 
 #: kmsender.cpp:724
 #, c-format
 msgid "Sending SMTP command: %s"
-msgstr ""
+msgstr "Sendi SMTP skipun: %s"
 
 #: findArtDlg.cpp:22
 msgid "KRN - Article Searcher"
-msgstr ""
+msgstr "KRN - Greinaleitari"
 
 #: findArtDlg.cpp:29
 msgid "Find Articles With:"
-msgstr ""
+msgstr "Finna greinar með:"
 
 #: findArtDlg.cpp:34 rulesDlg.cpp:106
 msgid "In Field:"
-msgstr ""
+msgstr "í dálk:"
 
 #: findArtDlg.cpp:53 rulesDlg.cpp:131
 msgid "Case Sensitive"
-msgstr ""
+msgstr "Háð há/lágstöfum"
 
 #: findArtDlg.cpp:56 rulesDlg.cpp:132
 msgid "Wildcard Mode"
-msgstr ""
+msgstr "Wildcard hamur"
 
 #: findArtDlg.cpp:66 rulesDlg.cpp:144
 msgid "Done"
-msgstr ""
+msgstr "Búin"
 
 #: kmidentity.cpp:162
 #, c-format
@@ -1104,10 +1124,13 @@ msgid ""
 "%s\n"
 "%s"
 msgstr ""
+"Tókst ekki að keyra skriftu undirskriftar\n"
+"%s\n"
+"%s"
 
 #: kfileio.cpp:26 kmaddrbook.cpp:162
 msgid "File I/O Error"
-msgstr ""
+msgstr "Inntaks/úttaksvilla"
 
 #: kfileio.cpp:47
 #, c-format
@@ -1115,6 +1138,8 @@ msgid ""
 "The specified file does not exist:\n"
 "%s"
 msgstr ""
+"Þessi skrá er ekki til:\n"
+"%s"
 
 #: kfileio.cpp:54
 #, c-format
@@ -1122,6 +1147,8 @@ msgid ""
 "This is a directory and not a file:\n"
 "%s"
 msgstr ""
+"Þetta er mappa en ekki skrá:\n"
+"%s"
 
 #: kfileio.cpp:61
 #, c-format
@@ -1129,6 +1156,8 @@ msgid ""
 "You do not have read permissions to the file:\n"
 "%s"
 msgstr ""
+"Þú hefur ekki lesheimild á þessa skrá:\n"
+"%s"
 
 #: kfileio.cpp:72 kmaddrbook.cpp:152
 #, c-format
@@ -1136,6 +1165,8 @@ msgid ""
 "Could not read file:\n"
 "%s"
 msgstr ""
+"Gat ekki lesið skrána:\n"
+"%s"
 
 #: kfileio.cpp:75 kmaddrbook.cpp:155
 #, c-format
@@ -1143,6 +1174,8 @@ msgid ""
 "Could not open file:\n"
 "%s"
 msgstr ""
+"Gat ekki opnað skrána:\n"
+"%s"
 
 #: kfileio.cpp:78
 #, c-format
@@ -1150,11 +1183,13 @@ msgid ""
 "Error while reading file:\n"
 "%s"
 msgstr ""
+"Villa við lestur á skránni:\n"
+"%s"
 
 #: kfileio.cpp:95
 #, c-format
 msgid "Could only read %u bytes of %u."
-msgstr ""
+msgstr "Gat aðeins lesið %u bæta af %u."
 
 #: kfileio.cpp:124
 #, c-format
@@ -1162,6 +1197,8 @@ msgid ""
 "File %s exists.\n"
 "Do you want to replace it ?"
 msgstr ""
+"Skrá %s er nú þegar til.\n"
+"Viltu skrifa yfir hana ?"
 
 #: kfileio.cpp:144
 #, c-format
@@ -1169,6 +1206,8 @@ msgid ""
 "Failed to make a backup copy of %s.\n"
 "Continue anyway ?"
 msgstr ""
+"Tókst ekki að taka afrit af %s.\n"
+"Halda áfram ?"
 
 #: kfileio.cpp:156 kfileio.cpp:174
 #, c-format
@@ -1176,6 +1215,8 @@ msgid ""
 "Could not write to file:\n"
 "%s"
 msgstr ""
+"Gat ekki skrifað í skrána:\n"
+"%s"
 
 #: kfileio.cpp:159
 #, c-format
@@ -1183,6 +1224,8 @@ msgid ""
 "Could not open file for writing:\n"
 "%s"
 msgstr ""
+"Gat ekki skrifað í skrána:\n"
+"%s"
 
 #: kfileio.cpp:163 kmaddrbook.cpp:158
 #, c-format
@@ -1190,129 +1233,135 @@ msgid ""
 "Error while writing file:\n"
 "%s"
 msgstr ""
+"Villa við skrif á skrá:\n"
+"%s"
 
 #: kfileio.cpp:180
 #, c-format
 msgid "Could only write %d bytes of %d."
-msgstr ""
+msgstr "Gat aðeins skrifað %d bæti af %d."
 
 #: kmmsgpartdlg.cpp:41
 msgid "Message Part Properties"
-msgstr ""
+msgstr "Eiginleikar bréfshluta"
 
 #: kmmsgpartdlg.cpp:62
 msgid "Name:"
-msgstr ""
+msgstr "Nafn:"
 
 #: kmmsgpartdlg.cpp:73
 msgid "Description:"
-msgstr ""
+msgstr "Lýsing:"
 
 #: kmmsgpartdlg.cpp:83
 msgid "Encoding:"
-msgstr ""
+msgstr "Kótun:"
 
 #: kmmsgpartdlg.cpp:89
 msgid "none (8bit)"
-msgstr ""
+msgstr "Engin (8 bíta)"
 
 #: kmmsgpartdlg.cpp:90
 msgid "base 64"
-msgstr ""
+msgstr "base 64"
 
 #: kmmsgpartdlg.cpp:91
 msgid "quoted printable"
-msgstr ""
+msgstr "QP (quoted printable)"
 
 #: kmreaderwin.cpp:320 kmreaderwin.cpp:333 kmreaderwin.cpp:352
 #: kmreaderwin.cpp:373
 msgid "Cc: "
-msgstr ""
+msgstr "Afrit: "
 
 #: kmreaderwin.cpp:328 kmreaderwin.cpp:347 kmreaderwin.cpp:368
 msgid "From: "
-msgstr ""
+msgstr "Frá: "
 
 #: kmreaderwin.cpp:330 kmreaderwin.cpp:349 kmreaderwin.cpp:370
 msgid "To: "
-msgstr ""
+msgstr "Til: "
 
 #: kmreaderwin.cpp:337 kmreaderwin.cpp:358 kmreaderwin.cpp:383
 msgid "References: "
-msgstr ""
+msgstr "Tilvísanir: "
 
 #: kmreaderwin.cpp:354 kmreaderwin.cpp:367
 msgid "Date: "
-msgstr ""
+msgstr "Dags: "
 
 #: kmreaderwin.cpp:376
 msgid "Bcc: "
-msgstr ""
+msgstr "Blint afrit: "
 
 #: kmreaderwin.cpp:379
 msgid "Reply to: "
-msgstr ""
+msgstr "Svar til: "
 
 #: kmreaderwin.cpp:386
 msgid "Groups: "
-msgstr ""
+msgstr "Hópar: "
 
 #: kmreaderwin.cpp:425
 msgid "Encrypted message"
-msgstr ""
+msgstr "Dulritað bréf"
 
 #: kmreaderwin.cpp:431
 msgid "Cannot decrypt message:"
-msgstr ""
+msgstr "Get ekki afdulritað bréfið:"
 
 #: kmreaderwin.cpp:440
 msgid "Message was signed by"
-msgstr ""
+msgstr "Bréfið var undirskrifað af"
 
 #: kmreaderwin.cpp:441
 msgid "Warning: Bad signature from"
-msgstr ""
+msgstr "Aðvörun: Varhugaverð undirskrift frá"
 
 #: kmreaderwin.cpp:451
 msgid "unknown key ID"
-msgstr ""
+msgstr "óþekkt lykilnúmer"
 
 #: kmreaderwin.cpp:701
 msgid "Attachment: "
-msgstr ""
+msgstr "Viðhenging: "
 
 #: kmreaderwin.cpp:813
 msgid "Could not create temporary file"
-msgstr ""
+msgstr "Gat ekki skrifað tímabundna skrá"
 
 #: kmreaderwin.cpp:834
 #, c-format
 msgid "Could not save temporary file %s"
-msgstr ""
+msgstr "Gat ekki vistað í tímabundna skrá %s"
 
 #: kmreaderwin.cpp:863
 msgid "Could not save file"
-msgstr ""
+msgstr "Gat ekki vistað skrá"
 
 #: kpgp.cpp:151
 msgid ""
 "Couldn't find PGP executable.\n"
 "Please check your PATH is set correctly."
 msgstr ""
+"Fann ekki PGP forritið..\n"
+"Athugaðu að slóðin (PATH) sé rétt."
 
 #: kpgp.cpp:193
 msgid ""
 "Could not find PGP executable.\n"
 "Please check your PATH is set correctly."
 msgstr ""
+"Fann ekki PGP forritið..\n"
+"Athugaðu að slóðin (PATH) sé rétt."
 
 #: kpgp.cpp:207
 msgid "The pass phrase is missing."
-msgstr ""
+msgstr "Það vantar lykilsetninguna."
 
 #: kpgp.cpp:286 kpgp.cpp:312 kpgp.cpp:325 kpgp.cpp:344 kpgp.cpp:361
 msgid "PGP Warning"
-msgstr ""
+msgstr "PGP aðvörun"
 
 #: kpgp.cpp:287
 msgid ""
@@ -1320,22 +1369,25 @@ msgid ""
 "recipients of this mail.\n"
 "Message will not be encrypted."
 msgstr ""
+"Fann ekki lykla fyrir móttakendur\n"
+"þessa bréfs.\n"
+"Bréfið verður því ekki dulritað."
 
 #: kpgp.cpp:296
 msgid "Could not find the public keys for\n"
-msgstr ""
+msgstr "Fann ekki lykla fyrir\n"
 
 #: kpgp.cpp:307
 msgid "These persons will not be able to\n"
-msgstr ""
+msgstr "Þessir aðilar munu ekki geta\n"
 
 #: kpgp.cpp:309
 msgid "This person will not be able to\n"
-msgstr ""
+msgstr "Þessir aðilar munu ekki geta\n"
 
 #: kpgp.cpp:311
 msgid "decrypt the message."
-msgstr ""
+msgstr "afdulritað bréfið."
 
 #: kpgp.cpp:326
 msgid ""
@@ -1343,64 +1395,73 @@ msgid ""
 "Do you wan't to try again, continue and\n"
 "leave the message unsigned, or cancel sending the message?"
 msgstr ""
+"Þú gafst upp ógilda lykilsetningu.\n"
+"Viltu reyna aftur, halda áfram og senda bréfið\n"
+"ódulritað, eða hætta við að senda bréfið?"
 
 #: kpgp.cpp:331
 msgid "Retry"
-msgstr ""
+msgstr "Reyna aftur"
 
 #: kpgp.cpp:342
 msgid ""
 "Do you wan't to encrypt anyway, leave the\n"
 "message as is, or cancel the message?"
 msgstr ""
+"Viltu dulrita samt sem áður, láta það vera eins\n"
+"og það er, eða hætta við þetta bréf?"
 
 #: kpgp.cpp:346
 msgid "Encrypt"
-msgstr ""
+msgstr "Dulrita"
 
 #: kpgp.cpp:359
 msgid ""
 "Do you wan't to leave the message as is,\n"
 "or cancel the message?"
 msgstr ""
+"Viltu hafa bréfið eins og það er eða\n"
+"hætta við það?"
 
 #: kpgp.cpp:717
 msgid ""
 "Please enter your\n"
 "PGP passphrase"
 msgstr ""
+"Vinsamlega sláðu inn\n"
+"PGP lykilsetninguna"
 
 #: kpgp.cpp:744
 msgid "PGP Security Check"
-msgstr ""
+msgstr "PGP öryggisathugun"
 
 #: kpgp.cpp:765
 msgid "Identity"
-msgstr ""
+msgstr "Auðkenni"
 
 #: kpgp.cpp:771
 msgid "PGP User Identity:"
-msgstr ""
+msgstr "PGP auðkenni:"
 
 #: kpgp.cpp:782
 msgid "Store passphrase"
-msgstr ""
+msgstr "Vista lykilsetningu"
 
 #: kpgp.cpp:788
 msgid "Always encrypt to self"
-msgstr ""
+msgstr "Alltaf að dulrita til mín"
 
 #: krnsender.cpp:60
 msgid "This server is read onlyyou can't post here!"
-msgstr ""
+msgstr "Þessi þjónn er aðeins til aflestrar og tekur ekki við sendingum"
 
 #: kmaddrbookdlg.cpp:20
 msgid "Addressbook"
-msgstr ""
+msgstr "Netfangabókin"
 
 #: kmaddrbookdlg.cpp:95
 msgid "Addressbook Manager"
-msgstr ""
+msgstr "Netfangastjórinn"
 
 #: kmaddrbookdlg.cpp:178
 msgid "KMail error"
@@ -1408,7 +1469,7 @@ msgstr "KMail villa"
 
 #: kmaddrbookdlg.cpp:179
 msgid "Storing addressbook failed"
-msgstr ""
+msgstr "Tókst ekki að vista netfangabók"
 
 #: kmaddrbook.cpp:25
 msgid "KMail Error"
@@ -1416,31 +1477,31 @@ msgstr "KMail villa"
 
 #: kmaddrbook.cpp:26
 msgid "Storing the addressbook failed!\n"
-msgstr ""
+msgstr "Tókst ekki að vista netfangabók!\n"
 
 #: expireDlg.cpp:22 expireDlg.cpp:27
 msgid "KRN - Expire Settings"
-msgstr ""
+msgstr "KRN - Gildistímastillingar"
 
 #: expireDlg.cpp:36
 msgid "For how long should we keep things (in days)?"
-msgstr ""
+msgstr "Hve lengi skal geyma eftirfarandi (í dögum)?"
 
 #: expireDlg.cpp:46
 msgid "Read:"
-msgstr ""
+msgstr "Lesin:"
 
 #: expireDlg.cpp:47
 msgid "Unread:"
-msgstr ""
+msgstr "Ólesin:"
 
 #: expireDlg.cpp:50
 msgid "Article Bodies:"
-msgstr ""
+msgstr "Meginhluta bréfa:"
 
 #: expireDlg.cpp:55
 msgid "Article Headers:"
-msgstr ""
+msgstr "Bréfhausa:"
 
 #: printdlg.cpp:21
 msgid "KRN - Print Settings"
@@ -1492,7 +1553,7 @@ msgstr "Texta"
 
 #: rulesDlg.cpp:38
 msgid "KRN - Scoring Rules Editor"
-msgstr ""
+msgstr "KRN - Stigaregluritill"
 
 #: rulesDlg.cpp:45
 msgid "Global Rules"
@@ -1528,11 +1589,11 @@ msgstr ""
 
 #: rulesDlg.cpp:190
 msgid "Rule name:"
-msgstr ""
+msgstr "Nafn reglu:"
 
 #: sortDlg.cpp:23
 msgid "KRN - Header Sorting"
-msgstr "KRN - Sortera hausa"
+msgstr "KRN - Hausaröðun"
 
 #: sortDlg.cpp:37
 msgid "None"
@@ -1540,7 +1601,7 @@ msgstr "Engin"
 
 #: sortDlg.cpp:39
 msgid "Sort by:"
-msgstr "Sorta eftir:"
+msgstr "Raða eftir:"
 
 #: sortDlg.cpp:56
 msgid "Use Threading"
@@ -1556,15 +1617,15 @@ msgstr "KMail - Stafatöflustillingar"
 
 #: charsetsDlg.cpp:39
 msgid "Message charset"
-msgstr "Stafatafla í greinum"
+msgstr "Stafatafla í bréfi"
 
 #: charsetsDlg.cpp:57
 msgid "Composer charset"
-msgstr ""
+msgstr "Stafasett ritils"
 
 #: charsetsDlg.cpp:75
 msgid "Set as &default"
-msgstr "Festa sem &sjálfgefið"
+msgstr "Nota sem &sjálfgefið"
 
 #: charsetsDlg.cpp:80
 msgid "&7 bit is ASCII"
@@ -1572,31 +1633,31 @@ msgstr "&7 bita er ASCII"
 
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
-msgstr ""
+msgstr "Nota QP á óþekkta stafi"
 
 #: expirestatusdlg.cpp:35
 msgid "Please wait a minute, I am expiring!"
-msgstr ""
+msgstr "Augnablik, loka tengingu við fréttaþjón!"
 
 #: kpgpbase.cpp:315
 msgid "Bad pass Phrase; couldn't sign"
-msgstr ""
+msgstr "Ógild lykilsetning. Kótun ekki framkvæmd"
 
 #: kpgpbase.cpp:354
 msgid "error running pgp"
-msgstr ""
+msgstr "villa við keyrslu pgp"
 
 #: kpgpbase.cpp:371 kpgpbase.cpp:662
 msgid "Bad pass Phrase; couldn't decrypt"
-msgstr ""
+msgstr "Ógild lykilsetning. Engin afdulritun framkvæmd"
 
 #: kpgpbase.cpp:382 kpgpbase.cpp:673
 msgid "Do not have the secret key for this message"
-msgstr ""
+msgstr "Hef ekki lykil fyrir þetta bréf"
 
 #: kpgpbase.cpp:410
 msgid "unknown key ID "
-msgstr ""
+msgstr "óþekkt lykilnúmer"
 
 #: kpgpbase.cpp:430
 msgid "??? (file ~/.pgp/pubring.pgp not found)"
@@ -1611,8 +1672,8 @@ msgid ""
 "The key(s) you wan't to encrypt your message\n"
 "to are not trusted. No encryption done."
 msgstr ""
-"Lykillinn sem þú villt kóta greinina með\n"
-"má ekki treysta. Engin kótun framkvæmd."
+"Lyklinum/unum sem þú villt dulrita greinina með\n"
+"má ekki treysta. Engin dulritun framkvæmd."
 
 #: kpgpbase.cpp:614
 #, c-format
@@ -1623,7 +1684,7 @@ msgid ""
 msgstr ""
 "Eftirfarandi lyklum má ekki treysta:\n"
 "%s\n"
-"Ekki verður unnt að afkóta greinina með þeim"
+"Ekki verður unnt að afdulrita greinina með þeim"
 
 #: TooManydlg.cpp:25
 msgid "KRN-Confirmation"
@@ -1647,4 +1708,4 @@ msgstr "Nýjustu greinarnar"
 
 #: TooManydlg.cpp:43
 msgid "Make this the new threshold"
-msgstr "Nota sem nýjann þröskuld"
+msgstr "Nota sem nýjan þröskuld"
