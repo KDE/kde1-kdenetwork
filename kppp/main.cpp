@@ -520,10 +520,10 @@ void XPPPWidget::resetaccounts() {
 
 
   connect(ID_Edit, SIGNAL(textChanged(const char *)),
- 	  this, SLOT(entryChanged(const char *)));
+ 	  this, SLOT(usernameChanged(const char *)));
 
   connect(PW_Edit, SIGNAL(textChanged(const char *)),
- 	  this, SLOT(entryChanged(const char *)));
+ 	  this, SLOT(passwordChanged(const char *)));
     
 }
 
@@ -840,9 +840,13 @@ void XPPPWidget::stopAccounting() {
   accounting.slotStop();
 }
 
-void XPPPWidget::entryChanged(const char *) {
+void XPPPWidget::usernameChanged(const char *) {
+
   // store username for later use
   gpppdata.setStoredUsername(ID_Edit->text());
+}
+
+void XPPPWidget::passwordChanged(const char *) {
   
   // store the password if so requested
   if(gpppdata.storePassword())

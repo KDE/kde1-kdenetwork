@@ -93,7 +93,8 @@ private slots:
   void helpbutton();
   void setup();
   void rulesetLoadError();
-  void entryChanged( const char *);
+  void usernameChanged( const char *);
+  void passwordChanged( const char *);
 
 public slots:
   void disconnect();

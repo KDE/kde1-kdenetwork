@@ -1,3 +1,8 @@
+Wed Jan 14 04:13:57 1998  Harri Porten  <porten@tu-harburg.de>
+
+	* fixed a bug that caused passwords to be spread among other accounts.
+	  Triggering XPPPWidget::entryChanged() had a nasty side effect. 
+
 Tue Jan 13 17:50:07 1998  Bernd Johannes Wuebben  <wuebben@math.cornell.edu>
 
 	* fixed a bug introduced with the creation of the 'execute command
