@@ -372,9 +372,9 @@ void KSircTopLevel::sirc_line_return()
   // Do this before we append the linefeed!!
   //
 
-  int pos1 = 0, pos2 = -1;
+  int pos1, pos2;
   
-  if(s.find(QRegExp("^[^ ]+: "), 0) != -1){
+  if(s.find(QRegExp("^[^ :]+: "), 0) != -1){
     pos2 = s.find(": ", 0);
     if(pos2 < 1){
       cerr << "Evil string: " << s << endl;
@@ -383,17 +383,22 @@ void KSircTopLevel::sirc_line_return()
       s.replace(0, pos2, findNick(s.mid(0, pos2)));
   }
 
-  while(s.find(" ::", pos2) > 0){
-    pos1 = s.find(" ::", 0);
-    pos2 = s.find(" ", pos1);
+  pos2 = 0;
+  pos1 = 0;
+
+  while(s.find(" ::", pos2) >= 0){
+    pos1 = s.find(" ::", pos2);
+    pos2 = s.find(" ", pos1+3);
     if(pos2 == -1)
       pos2 = s.length();
     if(pos2 - pos1 - 3 < 1){
       cerr << "Evil string: " << s << endl;
       break;
     }
-    else
-      s.replace(pos1, pos2 - pos1, findNick(s.mid(pos1 + 3, pos2 - pos1 - 3)));
+    else{
+      s.replace(pos1 + 1, pos2 - pos1 - 1, 
+		findNick(s.mid(pos1 + 3, pos2 - pos1 - 3)));
+    }
   }
 
 

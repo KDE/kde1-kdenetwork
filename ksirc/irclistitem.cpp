@@ -233,9 +233,15 @@ void ircListItem::colourDrawText(QPainter *p, int startx, int starty,
 	    else{
 	      buf[1] = 0;
 	    }
-	    pcolour = atoi(buf);
-	    if(pcolour < maxcolour){
-	      p->setBackgroundColor(num2colour[pcolour]);
+	    int bcolour = atoi(buf);
+	    if(pcolour == bcolour){
+	      if(bcolour + 1 < maxcolour)
+		bcolour += 1;
+	      else
+		bcolour -= 1;
+	    }
+	    if(bcolour < maxcolour){
+	      p->setBackgroundColor(num2colour[bcolour]);
 	      p->setBackgroundMode(OpaqueMode);
 	    }
 	    else

@@ -154,7 +154,7 @@ between <NICK> on each line:
 
 Match: ^(?:~\S+~)<\S+>
 From: <(\S+)>
-To: <!4$$1!c>
+To: <~4$$1~c>
 
-Takes the nick and adds colour #4 between the two <> !c clears the colour.
+Takes the nick and adds colour #4 between the two <> ~c clears the colour.
 
