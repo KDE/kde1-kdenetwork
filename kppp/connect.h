@@ -149,7 +149,7 @@ void add_domain(const char* newdomain);
 void auto_hostname();
 
 extern bool modem_is_locked;
-bool lockdevice();
+int lockdevice();
 void unlockdevice();
 
 #endif

@@ -124,11 +124,18 @@ void ModemTransfer::init() {
 
   app->processEvents();
 
-  if (!lockdevice()){
+  int lock = lockdevice();
+  if (lock == 1){
     
-    statusBar->setText("Sorry, modem device is locked");
+    statusBar->setText("Sorry, modem device is locked.");
     return;
   }
+  if (lock == -1){
+    
+    statusBar->setText("Sorry, can't create modem lock file.");
+    return;
+  }
+
 
   if(opentty()){
 

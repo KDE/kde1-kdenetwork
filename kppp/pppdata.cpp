@@ -24,588 +24,561 @@
  * Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-#include <stdio.h>
 #include "pppdata.h"
-#include <stdlib.h>
 
 PPPData gpppdata;
 
 PPPData::PPPData() {
-  char *p_ad = (char*)&ad;
-  char *p_gd = (char*)&gd;
 
-  // clear out all the data structures first
-  for(uint i = 0; i <= (sizeof(accdata)-1)*MAX_ACCOUNTS; i++)
-    p_ad[i] = '\0';
-
-  for(uint i=0; i <= sizeof(gendata)-1; i++)
-    p_gd[i] = '\0';
-
-
-  //initalize variables
+  //initialize variables
   highcount = -1;      // start out with no entries
   caccount = -1;       // set the current account index also
+  cgroup = 0L;         // current group for config file
+
   pppdprocessid = -1;  // process ID of the child pppd daemon
 
 }
 
 //
-// load data from configuration file 
+// open configuration file 
 //
 
-void PPPData::load(const KApplication* a) {
+bool PPPData::open(const KApplication* app) {
 
-  QString countstr;
-  QStrList dnslist, scriptcomlist, scriptarglist, pppdArgumentlist;
-  int count;
-  config = a->getConfig();
+  if (app->getConfigState() == KApplication::APPCONFIG_NONE) {
+    QMessageBox::warning(0L, app->appName().data(),
+  			 "The application-specific config file\n"\
+  			 "could not be opened neither\n"\
+  			 "read-write nor read-only");
+    return false;
+  } 
 
-  config->setGroup(GENERAL_GRP);
-  setDefaultAccount(config->readEntry(DEFAULTACCOUNT_KEY, ""));
-  setpppdPath(config->readEntry(PPPDPATH_KEY, "/usr/sbin/pppd"));
-  setlogViewer(config->readEntry(LOGVIEWER_KEY, "/usr/local/kde/bin/kedit"));
-  setpppdTimeout(config->readEntry(PPPDTIMEOUT_KEY, PPPD_TIMEOUT));
-  set_show_clock_on_caption(config->readNumEntry(SHOWCLOCK_KEY, TRUE));
-  set_show_log_window(config->readNumEntry(SHOWLOGWIN_KEY, FALSE));
-  set_automatic_redial(config->readNumEntry(AUTOREDIAL_KEY, FALSE));
-  set_xserver_exit_disconnect(config->readNumEntry(DISCONNECT_KEY, TRUE));
-  count =  config->readNumEntry(NUMACCOUNTS_KEY, -1);  
+  config = app->getConfig();
 
-  config->setGroup(MODEM_GRP);
-  setModemDevice(config->readEntry(MODEMDEV_KEY, "/dev/modem"));
-  setModemLockFile(config->readEntry(LOCKFILE_KEY, MODEM_LOCK_FILE));
-  setFlowcontrol(config->readEntry(FLOWCONTROL_KEY, "CRTSCTS"));
-  setModemTimeout(config->readEntry(TIMEOUT_KEY, MODEM_TIMEOUT));
-  setbusyWait(config->readEntry(BUSYWAIT_KEY, BUSY_WAIT));
-
-  setModemInitStr(config->readEntry(INITSTR_KEY, "ATZ"));
-  setModemInitResp(config->readEntry(INITRESP_KEY, "OK"));
-  setModemDialStr(config->readEntry(DIALSTR_KEY, "ATDT"));
-  setModemConnectResp(config->readEntry(CONNECTRESP_KEY, "CONNECT"));
-  setModemBusyResp(config->readEntry(BUSYRESP_KEY, "BUSY"));
-  setModemNoCarrierResp(config->readEntry(NOCARRIERRESP_KEY, "NO CARRIER"));
-  setModemNoDialtoneResp(config->readEntry(NODIALTONERESP_KEY,
-					    "NO DIALTONE"));
-
-  setModemEscapeStr(config->readEntry(ESCAPESTR_KEY, "+++"));
-  setModemEscapeResp(config->readEntry(ESCAPERESP_KEY, "OK"));
-  setModemEscapeGuardTime( atoi(config->readEntry(ESCGUARDSTR_KEY, "60")));
-
-  setModemHangupStr(config->readEntry(HANGUPSTR_KEY, "ATH"));
-  setModemHangupResp(config->readEntry(HANGUPRESP_KEY, "OK"));
-  setModemAnswerStr(config->readEntry(ANSWERSTR_KEY, "ATA"));
-  setModemRingResp(config->readEntry(RINGRESP_KEY , "RING"));
-  setModemAnswerResp(config->readEntry(ANSWERRESP_KEY, "CONNECT"));
-  setEnter(config->readEntry(ENTER_KEY, "CR/LF"));
-  setFastModemInit(config->readNumEntry(FASTINIT_KEY,1));
-
-  // accounts
-  for(int i = 0; i < count; i++) {
-    caccount = 0;
-    countstr.setNum(i+1);
-    newaccount();
-    
-    config->setGroup(ACCOUNT_GRP + countstr);
-    setAccname(config->readEntry(NAME_KEY));
-    setPhonenumber(config->readEntry(PHONENUMBER_KEY));
-    setSpeed(config->readEntry(SPEED_KEY));
-    setCommand(config->readEntry(COMMAND_KEY));
-    setIpaddr(config->readEntry(IPADDR_KEY));
-    setSubnetmask(config->readEntry(SUBNETMASK_KEY));
-    setAcctEnabled(config->readNumEntry(ACCTENABLED_KEY,false));
-    setAccountingFile(config->readEntry(ACCTFILE_KEY));
-    setAutoname(config->readNumEntry(AUTONAME_KEY,false));
-    setGateway(config->readEntry(GATEWAY_KEY));
-    setDefaultroute(config->readEntry(DEFAULTROUTE_KEY));
-    setDomain(config->readEntry(DOMAIN_KEY));
-    setExDNSDisabled(config->readNumEntry(EXDNSDISABLED_KEY,false));
-    
-    // read lists
-    config->readListEntry(DNS_KEY, dnslist);
-    config->readListEntry(SCRIPTCOM_KEY, scriptcomlist);
-    config->readListEntry(SCRIPTARG_KEY, scriptarglist);
-    config->readListEntry(PPPDARG_KEY, pppdArgumentlist);
-
-    // analyse lists
-    for(uint j = 0; j < MAX_DNS_ENTRIES &&
-	  j < dnslist.count(); j++) {
-      setDns(j, dnslist.at(j));
-    }
-    for(uint j=0; j < MAX_SCRIPT_ENTRIES &&
-	  j < scriptcomlist.count(); j++) {
-      setScriptType(j, scriptcomlist.at(j)); 
-      setScript(j, scriptarglist.at(j));
-    }
-    for(uint j=0; j < MAX_PPPD_ARGUMENTS && 
-	  j < pppdArgumentlist.count (); j++) {
-      setpppdArgument(j, pppdArgumentlist.at(j));
-    }
-  }
-
+  highcount = readNumConfig(GENERAL_GRP, NUMACCOUNTS_KEY, 0) - 1;
+  
   if(highcount >= 0) {
-    if(strcmp(gd.defaultaccount, "") == 0) {
+    if(strcmp(defaultAccount(), "") == 0) {
       setAccountbyIndex(0);
       setDefaultAccount(accname());
     }
   }
+  
+  return true;
+
 }
 
 //
-// save configuration data
+// save configuration
 //
 
 void PPPData::save() {
-  QString countstr;
-  QStrList dnslist, scriptcomlist, scriptarglist, pppdArgumentlist;
-  char gtbuf[4];
 
-  config->setGroup(GENERAL_GRP);
-  config->writeEntry(DEFAULTACCOUNT_KEY, defaultAccount());
-  config->writeEntry(PPPDPATH_KEY, pppdPath());
-  config->writeEntry(LOGVIEWER_KEY, logViewer());
-  config->writeEntry(PPPDTIMEOUT_KEY, pppdTimeout());
-  config->writeEntry(SHOWCLOCK_KEY, get_show_clock_on_caption());
-  config->writeEntry(SHOWLOGWIN_KEY, get_show_log_window());
-  config->writeEntry(AUTOREDIAL_KEY, get_automatic_redial());
-  config->writeEntry(DISCONNECT_KEY, get_xserver_exit_disconnect());
-  config->writeEntry(NUMACCOUNTS_KEY, count());
-
-  config->setGroup(MODEM_GRP);
-
-  config->writeEntry(MODEMDEV_KEY, modemDevice());
-  config->writeEntry(LOCKFILE_KEY, modemLockFile());
-  config->writeEntry(FLOWCONTROL_KEY, flowcontrol());
-  config->writeEntry(TIMEOUT_KEY, modemTimeout());
-  config->writeEntry(BUSYWAIT_KEY, busyWait());
-  config->writeEntry(INITSTR_KEY, modemInitStr());
-  config->writeEntry(INITRESP_KEY, modemInitResp());
-  config->writeEntry(DIALSTR_KEY, modemDialStr());
-  config->writeEntry(CONNECTRESP_KEY, modemConnectResp());
-  config->writeEntry(BUSYRESP_KEY, modemBusyResp());
-  config->writeEntry(NOCARRIERRESP_KEY, modemNoCarrierResp());
-  config->writeEntry(NODIALTONERESP_KEY, modemNoDialtoneResp());
-  config->writeEntry(ESCAPESTR_KEY, modemEscapeStr());
-  config->writeEntry(ESCAPERESP_KEY, modemEscapeResp());
-  sprintf( gtbuf, "%d", modemEscapeGuardTime() );
-  config->writeEntry(ESCGUARDSTR_KEY, gtbuf );
-  config->writeEntry(HANGUPSTR_KEY, modemHangupStr());
-  config->writeEntry(HANGUPRESP_KEY, modemHangupResp());
-  config->writeEntry(ANSWERSTR_KEY, modemAnswerStr());
-  config->writeEntry(RINGRESP_KEY, modemRingResp());
-  config->writeEntry(ANSWERRESP_KEY, modemAnswerResp());
-  config->writeEntry(ENTER_KEY, enter());
-  config->writeEntry(FASTINIT_KEY, FastModemInit());
-
-  // accounts
-  for(int i = 0; i < count(); i++) {
-    countstr.setNum(i+1);
-    setAccountbyIndex(i);
-    // fill lists
-    dnslist.clear();
-    scriptcomlist.clear();
-    scriptarglist.clear();
-    pppdArgumentlist.clear();
-    for(int j = 0; j <= MAX_DNS_ENTRIES && 
-	  strcmp(dns(j), "") != 0; j++) {
-      dnslist.append(dns(j));
-    }
-    for(int j=0; strcmp(scriptType(j), "") != 0 &&
-	   j <= MAX_SCRIPT_ENTRIES-1; j++) {
-      scriptcomlist.append(scriptType(j));
-      scriptarglist.append(script(j));
-    }
-    for(int j=0; strcmp(pppdArgument(j), "") != 0 &&
-	j <= MAX_PPPD_ARGUMENTS+5; j++) {
-      pppdArgumentlist.append(pppdArgument(j));
+  if (config) {
+    writeConfig(GENERAL_GRP, NUMACCOUNTS_KEY, count());
+    config->writeEntry(ID_KEY,ID);
+    config->sync();
   }
 
-    config->setGroup(ACCOUNT_GRP + countstr);
-    config->writeEntry(NAME_KEY, accname());
-    config->writeEntry(PHONENUMBER_KEY, phonenumber());
-    config->writeEntry(SPEED_KEY, speed());
-    config->writeEntry(COMMAND_KEY, command());
-    config->writeEntry(IPADDR_KEY, ipaddr());
-    config->writeEntry(SUBNETMASK_KEY, subnetmask());
-    config->writeEntry(ACCTENABLED_KEY, AcctEnabled());
-    config->writeEntry(ACCTFILE_KEY, accountingFile());
-    config->writeEntry(AUTONAME_KEY, (int) autoname());
-    config->writeEntry(GATEWAY_KEY, gateway());
-    config->writeEntry(DEFAULTROUTE_KEY, (int) defaultroute());
-    config->writeEntry(DOMAIN_KEY, domain());
-    config->writeEntry(EXDNSDISABLED_KEY, exDNSDisabled());
-    // write lists
-    config->writeEntry(DNS_KEY, dnslist);
-    config->writeEntry(SCRIPTCOM_KEY, scriptcomlist);
-    config->writeEntry(SCRIPTARG_KEY, scriptarglist);
-    config->writeEntry(PPPDARG_KEY, pppdArgumentlist);
+}
+
+//
+// cancel changes
+//
+
+void PPPData::cancel() {
+
+  if (config) {
+    config->rollback();
+    config->reparseConfiguration();
   }
-  config->sync();
-  setAccount(defaultAccount());
+
+}
+
+
+// functions to read/write date to configuration file
+
+const char* PPPData::readConfig(const char* group, const char* key,
+				const char* defvalue = "") {
+  if (config) {
+    config->setGroup(group);
+    if (!config->hasKey(key)) config->writeEntry(key, defvalue);
+    return config->readEntry(key);
+  } else
+    return 0L;
+  
+}
+
+int PPPData::readNumConfig(const char* group, const char* key,
+			   int defvalue) {
+  if (config) {
+    config->setGroup(group);
+    if (!config->hasKey(key)) config->writeEntry(key, defvalue);
+    return config->readNumEntry(key);
+  } else
+    return 0L;
+
+}
+
+const char* PPPData::readListConfig(const char* group, 
+				    const char* key, int i) {
+  static QStrList list;
+  list.clear();
+  if (config) {
+    config->setGroup(group);
+    config->readListEntry(key, list);
+    if(i >= 0 && (uint) i < list.count()) {
+      return list.at((uint) i);
+    } else
+      return 0L;
+  } else
+    return 0L;
+
+}
+
+void PPPData::writeConfig(const char* group, const char* key,
+			  const char* value) {
+  if (config) {
+    config->setGroup(group);
+    config->writeEntry(key, value);
+  }
+  
+}
+
+void PPPData::writeConfig(const char* group, const char* key, int value) {
+  if (config) {
+    config->setGroup(group);
+    config->writeEntry(key, value);
+  }
+
+}
+
+void PPPData::writeListConfig(const char* group, const char* key, 
+			      int i, const char *n) {
+  QStrList list;
+  if (config && i >= 0) {
+    config->setGroup(group);
+    config->readListEntry(key, list);
+    list.last();
+    while (list.count() > (uint) i ) 
+      list.remove(); 
+    if (n) list.append(n);
+    config->writeEntry(key, list);
+  }
 }
 
 //
 // functions to set/return general information
 //
 
-const char* PPPData::defaultAccount() {
-  return gd.defaultaccount;
+const char* PPPData::Password(){
+  return password.data();
 }
 
+const char* PPPData::Id(){
+  return ID.data();
+}
+
+void PPPData::setPassword(const char* pw){
+
+  password = pw;
+  password.detach();
+
+
+}
+
+void PPPData::setId(const char* id){
+
+  ID = id;
+  ID.detach();
+
+
+}
+
+const char* PPPData::defaultAccount() {
+
+  return readConfig(GENERAL_GRP, DEFAULTACCOUNT_KEY);
+
+}
 
 void PPPData::setDefaultAccount(const char *n) {
-
-  strncpy(gd.defaultaccount, n, ACCNAME_SIZE);
-  gd.defaultaccount[ACCNAME_SIZE] = '\0';
+  
+  writeConfig(GENERAL_GRP, DEFAULTACCOUNT_KEY, n);
 
   //now set the current account index to the default account
-  setAccount(gd.defaultaccount);
+  setAccount(defaultAccount());
 }
 
+
+const bool PPPData::get_show_clock_on_caption() {
+
+  return (bool) readNumConfig(GENERAL_GRP, SHOWCLOCK_KEY, true);
+
+};
 
 void PPPData::set_show_clock_on_caption(bool set){
-  
-  if(set){
-    strncpy(gd.show_clock_on_caption,"CAPTIONS_ON",ARGUMENT_SIZE);
-  }else{
-    strncpy(gd.show_clock_on_caption,"CAPTIONS_OFF",ARGUMENT_SIZE);
-  }
+
+  writeConfig(GENERAL_GRP, SHOWCLOCK_KEY, (int) set);
+
 }
 
-const bool PPPData::get_show_clock_on_caption(){
+
+const bool PPPData::get_xserver_exit_disconnect() {
+
+  return (bool) readNumConfig(GENERAL_GRP, DISCONNECT_KEY, true);
   
-  bool result;
-
-  if(strcmp(gd.show_clock_on_caption,"CAPTIONS_ON") == 0 ){
-    result = true;
-  }
-  else{
-    result = false;
-  }
-
-  return result;
-
 };
 
-void PPPData::set_xserver_exit_disconnect(bool set){
-  
-  if(set){
-    strncpy(gd.disconnect_on_xserver_exit,"DISC_ON_XSERV_ON",ARGUMENT_SIZE);
-  }else{
-    strncpy(gd.disconnect_on_xserver_exit,"DISC_ON_XSERV_OFF",ARGUMENT_SIZE);
-  }
+void PPPData::set_xserver_exit_disconnect(bool set) {
+
+  writeConfig(GENERAL_GRP, DISCONNECT_KEY, (int) set);
+
 }
 
-const bool PPPData::get_xserver_exit_disconnect(){
-  
-  bool result;
 
-  if(strcmp(gd.disconnect_on_xserver_exit,"DISC_ON_XSERV_ON") == 0 ){
-    result = true;
-  }
-  else{
-    result = false;
-  }
+const bool PPPData::get_show_log_window() {
 
-  return result;
+  return (bool) readNumConfig (GENERAL_GRP, SHOWLOGWIN_KEY, false);
 
 };
-
 
 void PPPData::set_show_log_window(bool set){
-  
-  if(set){
-    strncpy(gd.show_log_window,"SHOW_LOG_WINDOW_ON",ARGUMENT_SIZE);
-  }else{
-    strncpy(gd.show_log_window,"SHOW_LOG_WINDOW_OFF",ARGUMENT_SIZE);
-  }
+
+  writeConfig(GENERAL_GRP, SHOWLOGWIN_KEY, (int) set);
+
 }
 
-const bool PPPData::get_show_log_window(){
-  
-  bool result;
 
-  if(strcmp(gd.show_log_window,"SHOW_LOG_WINDOW_ON") == 0 ){
-    result = true;
-  }
-  else{
-    result = false;
-  }
+const bool PPPData::get_automatic_redial() {
 
-  return result;
+  return (bool) readNumConfig(GENERAL_GRP, AUTOREDIAL_KEY, FALSE);
 
 };
 
-void PPPData::set_automatic_redial(bool set){
-  
-  if(set){
-    strncpy(gd.automatic_redial,"AUTOMATIC_REDIAL_ON",ARGUMENT_SIZE);
-  }else{
-    strncpy(gd.automatic_redial,"AUTOMATIC_REDIAL_OFF",ARGUMENT_SIZE);
-  }
+void PPPData::set_automatic_redial(bool set) {
+
+  writeConfig(GENERAL_GRP, AUTOREDIAL_KEY, (int) set);
+
 }
-
-const bool PPPData::get_automatic_redial(){
-  
-  bool result;
-
-  if(strcmp(gd.automatic_redial,"AUTOMATIC_REDIAL_ON") == 0 ){
-    result = true;
-  }
-  else{
-    result = false;
-  }
-
-  return result;
-
-};
-
-
 
 
 const char* PPPData::pppdPath() {
-  return gd.pppdpath;
+  
+  return readConfig (GENERAL_GRP, PPPDPATH_KEY, "/usr/sbin/pppd");
+
 }
 
 void PPPData::setpppdPath(const char *n) {
-  strncpy(gd.pppdpath, n, PATH_SIZE);
-  gd.pppdpath[PATH_SIZE] = '\0';
+
+  writeConfig(GENERAL_GRP, PPPDPATH_KEY, n);
+
 }
 
+
 const char* PPPData::logViewer() {
-  return gd.logviewer;
+
+  return readConfig (GENERAL_GRP, LOGVIEWER_KEY, "/usr/local/kde/bin/kedit");
+
 }
 
 void PPPData::setlogViewer(const char *n) {
-  strncpy(gd.logviewer, n, PATH_SIZE);
-  gd.logviewer[PATH_SIZE] = '\0';
-}
 
+  writeConfig(GENERAL_GRP, LOGVIEWER_KEY, n);
 
-const char* PPPData::enter() {
-  return gd.enter;
-}
-
-void PPPData::setEnter(const char *n) {
-  strncpy(gd.enter, n, PATH_SIZE);
-  gd.enter[PATH_SIZE] = '\0';
-}
-
-void PPPData::setFastModemInit(const int n) {
-  gd.fastmodeminit = n;
-}
-
-int PPPData::FastModemInit() {
-  return gd.fastmodeminit;
 }
 
 const char* PPPData::pppdTimeout() {
-  return gd.pppdtimeout;
+
+  return readConfig(GENERAL_GRP, PPPDTIMEOUT_KEY, PPPD_TIMEOUT);
+
 }
 
 void PPPData::setpppdTimeout(const char *n) {
-  strncpy(gd.pppdtimeout, n, TIMEOUT_SIZE);
-  gd.pppdtimeout[TIMEOUT_SIZE] = '\0';
+
+  writeConfig(GENERAL_GRP, PPPDTIMEOUT_KEY, n);
+
 }
 
-const char* PPPData::busyWait() {
-  return gd.busywait;
-}
 
-void PPPData::setbusyWait(const char *n) {
-  strncpy(gd.busywait, n, TIMEOUT_SIZE);
-  gd.busywait[TIMEOUT_SIZE] = '\0';
-}
-
-//
-//"Modem" Rolladex card
-//
 const char* PPPData::modemDevice() {
-  return gd.modemdevice;
+
+  return readConfig (MODEM_GRP, MODEMDEV_KEY, "/dev/modem");
+
 }
+
 
 void PPPData::setModemDevice(const char *n) {
-  strncpy(gd.modemdevice, n, MODEMDEV_SIZE);
-  gd.modemdevice[MODEMDEV_SIZE] = '\0';
+
+  writeConfig(MODEM_GRP, MODEMDEV_KEY, n);
+
 }
 
 
 const char* PPPData::flowcontrol() {
-  return gd.flowcontrol;
+
+  return readConfig(MODEM_GRP, FLOWCONTROL_KEY, "CRTSCTS");
+
 }
 
 void PPPData::setFlowcontrol(const char *n) {
-  strncpy(gd.flowcontrol, n, FLOWCONTROL_SIZE);
-  gd.flowcontrol[FLOWCONTROL_SIZE] = '\0';
+
+  writeConfig(MODEM_GRP, FLOWCONTROL_KEY, n);
+
+}
+
+
+void PPPData::setFastModemInit(const int n) {
+  writeConfig(MODEM_GRP,FASTINIT_KEY,n);
+}
+
+int PPPData::FastModemInit() {
+  return  readNumConfig(MODEM_GRP,FASTINIT_KEY,0);
+}
+
+const char*  PPPData::modemEscapeStr(){
+
+  return readConfig(MODEM_GRP,ESCAPESTR_KEY,"+++");
+
+}
+
+
+void PPPData::setModemEscapeStr(const char* n){
+
+  writeConfig(MODEM_GRP,ESCAPESTR_KEY,n);
+
+}
+const char*  PPPData::modemEscapeResp(){
+
+  return readConfig(MODEM_GRP,ESCAPERESP_KEY,"OK");
+
+}
+
+void PPPData::setModemEscapeResp(const char* n){
+
+  writeConfig(MODEM_GRP,ESCAPERESP_KEY,n);
+
+}
+
+int  PPPData::modemEscapeGuardTime(){
+
+  return readNumConfig(MODEM_GRP,ESCAPEGUARDTIME_KEY,60);
+
+}
+
+void PPPData::setModemEscapeGuardTime(int n){
+
+  writeConfig(MODEM_GRP,ESCAPEGUARDTIME_KEY,n);
+
 }
 
 const char* PPPData::modemLockFile() {
-  return gd.modemlockfile;
+
+  return readConfig(MODEM_GRP, LOCKFILE_KEY, MODEM_LOCK_FILE);
+
 }
 
 void PPPData::setModemLockFile(const char *n) {
-  strncpy(gd.modemlockfile, n, PATH_SIZE);
-  gd.modemlockfile[PATH_SIZE] = '\0';
+
+  writeConfig(MODEM_GRP, LOCKFILE_KEY, n);
+
 }
 
+
 const char* PPPData::modemTimeout() {
-  return gd.modemtimeout;
+
+  return readConfig(MODEM_GRP, TIMEOUT_KEY, MODEM_TIMEOUT);
+
 }
 
 void PPPData::setModemTimeout(const char *n) {
-  strncpy(gd.modemtimeout, n, TIMEOUT_SIZE);
-  gd.modemtimeout[TIMEOUT_SIZE] = '\0';
+
+  writeConfig(MODEM_GRP, TIMEOUT_KEY, n);
+
+}
+
+
+const char* PPPData::busyWait() {
+
+  return readConfig(MODEM_GRP, BUSYWAIT_KEY, BUSY_WAIT);
+
+}
+
+void PPPData::setbusyWait(const char *n) {
+
+  writeConfig(MODEM_GRP, BUSYWAIT_KEY, n);
+
 }
 
 //
 //Advanced "Modem" dialog
 //
 const char* PPPData::modemInitStr() {
-  return gd.modeminitstr;
+
+  return readConfig(MODEM_GRP, INITSTR_KEY, "ATZ");
+
 }
 
 void PPPData::setModemInitStr(const char *n) {
-  strncpy(gd.modeminitstr, n, MODEMSTR_SIZE);
-  gd.modeminitstr[MODEMSTR_SIZE] = '\0';
+
+  writeConfig(MODEM_GRP, INITSTR_KEY, n);
+
 } 
 
 
 const char* PPPData::modemInitResp() {
-  return gd.initresp;
+
+  return readConfig(MODEM_GRP, INITRESP_KEY, "OK");
+
 }
 
 void PPPData::setModemInitResp(const char *n) {
-  strncpy(gd.initresp, n, MODEMSTR_SIZE);
-  gd.initresp[MODEMSTR_SIZE] = '\0';
+
+  writeConfig(MODEM_GRP, INITRESP_KEY, n);
+
 } 
 
 
 const char* PPPData::modemDialStr() {
-  return gd.modemdialstr;
+
+  return readConfig(MODEM_GRP, DIALSTR_KEY, "ATDT");
+
 }
 
 void PPPData::setModemDialStr(const char *n) {
-  strncpy(gd.modemdialstr, n, MODEMSTR_SIZE);
-  gd.modemdialstr[MODEMSTR_SIZE] = '\0';
+
+  writeConfig(MODEM_GRP, DIALSTR_KEY, n);
+
 } 
 
 
 const char* PPPData::modemConnectResp() {
-  return gd.connectresp;
+
+  return readConfig(MODEM_GRP, CONNECTRESP_KEY, "CONNECT");
+
 }
 
 void PPPData::setModemConnectResp(const char *n) {
-  strncpy(gd.connectresp, n, MODEMSTR_SIZE);
-  gd.connectresp[MODEMSTR_SIZE] = '\0';
+
+  writeConfig(MODEM_GRP, CONNECTRESP_KEY, n);
+
 }
 
 
 const char* PPPData::modemBusyResp() {
-  return gd.busyresp;
+  
+  return readConfig(MODEM_GRP, BUSYRESP_KEY, "BUSY");
+
 }
 
 void PPPData::setModemBusyResp(const char *n) {
-  strncpy(gd.busyresp, n, MODEMSTR_SIZE);
-  gd.busyresp[MODEMSTR_SIZE] = '\0';
+
+  writeConfig(MODEM_GRP, BUSYRESP_KEY, n);
+
 }
 
 
 const char* PPPData::modemNoCarrierResp() {
-  return gd.nocarrierresp;
+
+  return readConfig(MODEM_GRP, NOCARRIERRESP_KEY, "NO CARRIER");
+
 }
 
 void PPPData::setModemNoCarrierResp(const char *n) {
-  strncpy(gd.nocarrierresp, n, MODEMSTR_SIZE);
-  gd.nocarrierresp[MODEMSTR_SIZE] = '\0';
+
+  writeConfig(MODEM_GRP, NOCARRIERRESP_KEY, n);
+
 }
 
 
 const char* PPPData::modemNoDialtoneResp() {
-  return gd.nodialtoneresp;
+
+  return readConfig(MODEM_GRP, NODIALTONERESP_KEY, "NO DIALTONE");
+
 }
 
 void PPPData::setModemNoDialtoneResp(const char *n) {
-  strncpy(gd.nodialtoneresp, n, MODEMSTR_SIZE);
-  gd.nodialtoneresp[MODEMSTR_SIZE] = '\0';
-}
 
+  writeConfig(MODEM_GRP, NODIALTONERESP_KEY, n);
 
-const char* PPPData::modemEscapeStr() {
-  return gd.modemescapestr;
-}
-
-const char* PPPData::modemEscapeResp() {
-  return gd.modemescaperesp;
-}
-
-const int PPPData::modemEscapeGuardTime() {
-  return gd.modemescapeguardtime;
 }
 
 
 const char* PPPData::modemHangupStr() {
-  return gd.modemhangupstr;
+
+  return readConfig(MODEM_GRP, HANGUPSTR_KEY, "+++ATH");
+
 }
 
-void PPPData::setModemEscapeStr(const char *n) {
-  strncpy(gd.modemescapestr, n, MODEMSTR_SIZE);
-  gd.modemescaperesp[MODEMSTR_SIZE] = '\0';
-} 
-
-void PPPData::setModemEscapeResp(const char *n) {
-  strncpy(gd.modemescaperesp, n, MODEMSTR_SIZE);
-  gd.modemescaperesp[MODEMSTR_SIZE] = '\0';
-} 
-
-void PPPData::setModemEscapeGuardTime(const int n) {
-  gd.modemescapeguardtime = n;
-} 
-
-
 void PPPData::setModemHangupStr(const char *n) {
-  strncpy(gd.modemhangupstr, n, MODEMSTR_SIZE);
-  gd.modemhangupstr[MODEMSTR_SIZE] = '\0';
+
+  writeConfig(MODEM_GRP, HANGUPSTR_KEY, n);
+
 } 
 
 
 const char* PPPData::modemHangupResp() {
-  return gd.hangupresp;
+
+  return readConfig(MODEM_GRP, HANGUPRESP_KEY, "OK");
+
 }
 
 void PPPData::setModemHangupResp(const char *n) {
-  strncpy(gd.hangupresp, n, MODEMSTR_SIZE);
-  gd.hangupresp[MODEMSTR_SIZE] = '\0';
+
+  writeConfig(MODEM_GRP, HANGUPRESP_KEY, n);
+
 }
 
 
 const char* PPPData::modemAnswerStr() {
-  return gd.modemanswerstr;
+
+  return readConfig(MODEM_GRP, ANSWERSTR_KEY, "ATA");
+
 }
 
 void PPPData::setModemAnswerStr(const char *n) {
-  strncpy(gd.modemanswerstr, n, MODEMSTR_SIZE);
-  gd.modemanswerstr[MODEMSTR_SIZE] = '\0';
+
+  writeConfig(MODEM_GRP, ANSWERSTR_KEY, n);
+
 } 
 
 
 const char* PPPData::modemRingResp() {
-  return gd.ringresp;
+
+  return readConfig(MODEM_GRP, RINGRESP_KEY, "RING");
+
 }
 
 void PPPData::setModemRingResp(const char *n) {
-  strncpy(gd.ringresp, n, MODEMSTR_SIZE);
-  gd.ringresp[MODEMSTR_SIZE] = '\0';
+
+  writeConfig(MODEM_GRP, RINGRESP_KEY, n);
+
 }
 
 
 const char* PPPData::modemAnswerResp() {
-  return gd.answerresp;
+
+  return readConfig(MODEM_GRP, ANSWERRESP_KEY, "CONNECT");
+
 }
 
 void PPPData::setModemAnswerResp(const char *n) {
-  strncpy(gd.answerresp, n, MODEMSTR_SIZE);
-  gd.answerresp[MODEMSTR_SIZE] = '\0';
+
+  writeConfig(MODEM_GRP, ANSWERRESP_KEY, n);
+
 }
 
+
+const char* PPPData::enter() {
+
+  return readConfig(MODEM_GRP, ENTER_KEY, "CR/LF");
+
+}
+
+void PPPData::setEnter(const char *n) {
+
+  writeConfig(MODEM_GRP, ENTER_KEY, n);
+
+}
 
 //
 // functions to set/return account information
@@ -613,106 +586,122 @@ void PPPData::setModemAnswerResp(const char *n) {
 
 //returns number of accounts
 int PPPData::count() {
+
   return highcount+1;
+
 }
 
 
 bool PPPData::setAccount( const char *aname ) {
-  for(int i = 0; i <= highcount; i++)
-    if(strncmp(ad[i].accname, aname, ACCNAME_SIZE) == 0) {
+  for(int i = 0; i <= highcount; i++) {
+    setAccountbyIndex(i);
+    if(strcmp(accname(), aname) == 0) {
       caccount = i;
       return true;
     }
+  }
   return false;
 }
 
 
 bool PPPData::setAccountbyIndex(int i) {
+
   if(i >= 0 && i <= highcount) {
     caccount = i;
+    cgroup.sprintf("%s%i", ACCOUNT_GRP, i); 
     return true;
   }
-
   return false;
 }
 
 
 bool PPPData::isUniqueAccname(const char *n) {
+  int current = caccount;
   for(int i=0; i <= highcount; i++) {
-    if(strncmp(ad[i].accname, n, ACCNAME_SIZE) == 0  && i != caccount)
+    setAccountbyIndex(i);
+    if(strcmp(accname(), n) == 0  && i != current) {
+      setAccountbyIndex(current);
       return false;
+    }
   }
-
+  setAccountbyIndex(current);
   return true;
 }
 
 
 bool PPPData::deleteAccount() {
-  if(caccount < 0)
+  if(caccount < 0) 
     return false;
 
-  char *p_ad1, *p_ad2;
+  KEntryIterator* it;
+  QString key, value;
 
+
+  // set all entries of the current account to "" 
+  it = config->entryIterator(cgroup);
+  while (*it) {
+    key = it->currentKey();
+    config->writeEntry(key, "");
+    ++(*it);
+  }
+  delete it;
+
+  // shift the succeeding accounts
   for(int i = caccount+1; i <= highcount; i++) {
-    p_ad1 = (char*)&(ad[i-1]);
-    p_ad2 = (char*)&(ad[i]);
-
-    for(uint j = 0; j <= sizeof(accdata)-1; j++)
-      p_ad1[j] = p_ad2[j];
+    setAccountbyIndex(i);
+    it = config->entryIterator(cgroup);
+    setAccountbyIndex(i-1);
+    config->setGroup(cgroup);
+    while (*it) {
+      key = it->currentKey();
+      value = it->current()->aValue;    
+      config->writeEntry(key, value);
+      ++(*it);
+    }
+    delete it;
   }
 
-  //make sure the top account is cleared
-  p_ad2 = (char*)&(ad[highcount]);
-  for(uint j = 0; j <= sizeof(accdata)-1; j++)
-    p_ad2[j] = '\0';
+  // make sure the top account is cleared
+  setAccountbyIndex(highcount);
+  it = config->entryIterator(cgroup);
+  config->setGroup(cgroup);
+  while (*it) {
+    key = it->currentKey();
+    config->writeEntry(key, "");
+    ++(*it);
+  }
+  delete it;
+
 
   highcount--;
   if(caccount > highcount)
     caccount = highcount;
-
+  
+  setAccountbyIndex(caccount);
+  
   return true;
 } 
 
 
 bool PPPData::deleteAccount( const char *aname ) {
+
   if(!setAccount(aname))
     return false;
 
-  char *p_ad1, *p_ad2;
-
-  for(int i = caccount+1; i <= highcount; i++) {
-    p_ad1 = (char*)&(ad[i-1]);
-    p_ad2 = (char*)&(ad[i]);
-
-    for(uint j = 0; j <= sizeof(accdata)-1; j++)
-      p_ad1[j] = p_ad2[j];
-  }
-
-  //make sure the top account is cleared
-  p_ad2 = (char*)&(ad[highcount]);
-  for(uint j = 0; j <= sizeof(accdata)-1; j++)
-    p_ad2[j] = '\0';
-
-  highcount--;
-  if(caccount > highcount)
-    caccount = highcount;
+  deleteAccount();
 
   return true;
+
 }
 
 
 int PPPData::newaccount() {
 
-  if(highcount >= MAX_ACCOUNTS)
+  if(!config || highcount >= MAX_ACCOUNTS)
     return -1;
-
+  
   highcount++;
-  caccount = highcount;
-
-  // first clear out the record, just to be safe
-  char *p_ad = (char*)&(ad[caccount]);
-  for(uint i = 0; i <= sizeof(accdata)-1; i++)
-    p_ad[i] = '\0';
+  setAccountbyIndex(highcount);
 
   setpppdArgumentDefaults();
 
@@ -723,335 +712,262 @@ int PPPData::copyaccount(int i) {
 
   if(highcount >= MAX_ACCOUNTS)
     return -1;
+  
+  setAccountbyIndex(i);
 
-  highcount++;
-  caccount = highcount;
+  KEntryIterator* it(config->entryIterator(cgroup));
 
-  ad[highcount] = ad [i];
-  QString tempname;
-  tempname = ad[i].accname;
-  tempname += "_copy";
-  if(tempname.size() > ACCNAME_SIZE)
-    tempname = tempname.left(ACCNAME_SIZE -1);
-  strncpy(ad[highcount].accname, tempname.data(),tempname.size());
+  QString newname = accname();
+  newname += "_copy";
+
+  newaccount();
+
+  QString key, value;
+  while (*it) {
+    key = it->currentKey();
+    value = it->current()->aValue;    
+    config->writeEntry(key, value);
+    ++(*it);
+  }
+  delete it;
+
+  setAccname(newname);
 
   return caccount;
 }
 
 
 const char* PPPData::accname() {
-  return ad[caccount].accname;
+
+  return readConfig(cgroup, NAME_KEY);
+
 }
 
-
 void PPPData::setAccname( const char *n ) {
-  if(caccount >= 0) {
-    //change the default account name along with the account name
-    if(strncmp(ad[caccount].accname, gd.defaultaccount, ACCNAME_SIZE) == 0)
-      setDefaultAccount(n);
 
-    strncpy(ad[caccount].accname, n, ACCNAME_SIZE);
-    ad[caccount].accname[ACCNAME_SIZE] = '\0';
+  if(cgroup) {
+    //change the default account name along with the account name
+    if(strcmp(accname(), defaultAccount()) == 0)
+      setDefaultAccount(n);
+    writeConfig(cgroup, NAME_KEY, n);
   }
 }
 
 
 const char* PPPData::phonenumber() {
-  return ad[caccount].phonenumber;
+
+  return readConfig(cgroup, PHONENUMBER_KEY);
+
 }
 
-
 void PPPData::setPhonenumber( const char *n ) {
-  if(caccount >= 0) {
-    strncpy(ad[caccount].phonenumber, n, PHONENUMBER_SIZE);
-    ad[caccount].phonenumber[PHONENUMBER_SIZE] = '\0';
-  }
+
+  writeConfig(cgroup, PHONENUMBER_KEY, n);
+
 }
 
 
 const char* PPPData::speed() {
-  return ad[caccount].speed;
+
+  return readConfig(cgroup, SPEED_KEY);
+
 }
 
-
 void PPPData::setSpeed( const char *n ) {
-  if(caccount >= 0) {
-    strncpy(ad[caccount].speed, n, SPEED_SIZE);
-    ad[caccount].speed[SPEED_SIZE] = '\0';
-  }
+
+  writeConfig(cgroup, SPEED_KEY, n);
+
 }
 
 
 const char* PPPData::command() {
-  return ad[caccount].command;
+
+  return readConfig(cgroup, COMMAND_KEY);
+
 }
 
-
 void PPPData::setCommand( const char *n ) {
-  if(caccount >= 0) {
-    strncpy(ad[caccount].command, n, COMMAND_SIZE);
-    ad[caccount].command[COMMAND_SIZE] = '\0';
-  }
+
+  writeConfig(cgroup, COMMAND_KEY, n);
+
 }
 
 
 const char* PPPData::ipaddr() {
-  return ad[caccount].ipaddr;
+
+  return readConfig(cgroup, IPADDR_KEY);
+
 }
 
-
 void PPPData::setIpaddr( const char *n ) {
-  if(caccount >= 0) {
-    strncpy(ad[caccount].ipaddr, n, IPADDR_SIZE);
-    ad[caccount].ipaddr[IPADDR_SIZE] = '\0';
-  } 
+  
+  writeConfig(cgroup, IPADDR_KEY, n);
+
 }
 
 
 const char* PPPData::subnetmask() {
-  return ad[caccount].subnetmask;
-}
 
+  return readConfig(cgroup, SUBNETMASK_KEY);
+
+}
 
 void PPPData::setSubnetmask( const char *n ) {
-  if(caccount >= 0) {
-    strncpy(ad[caccount].subnetmask, n, IPADDR_SIZE);
-    ad[caccount].subnetmask[IPADDR_SIZE] = '\0';
-  }
+
+  writeConfig(cgroup, SUBNETMASK_KEY, n);
+
 }
 
 
-const bool PPPData::autoname(){
-  
-  bool result;
+const bool PPPData::autoname() {
 
-  if(strcmp(ad[caccount].autoname,"AUTOCONFIG_HOSTNAME_ON") == 0 ){
-    result = true;
-  }
-  else{
-    result = false;
-  }
-
-  return result;
+  return (bool) readNumConfig(cgroup, AUTONAME_KEY, false);
 
 };
 
-void PPPData::setAutoname(bool set){
-  
-  if(set){
-    strncpy(ad[caccount].autoname,"AUTOCONFIG_HOSTNAME_ON",ARGUMENT_SIZE);
-  }else{
-    strncpy(ad[caccount].autoname,"AUTOCONFIG_HOSTNAME_OFF",ARGUMENT_SIZE);
-  }
-}
+void PPPData::setAutoname(bool set) {
 
+  writeConfig(cgroup, AUTONAME_KEY, (int) set);
 
-void PPPData::setAcctEnabled(bool _set){
-
- if(_set){
-
-   strcpy(ad[caccount].accounting_enabled,"TRUE");
-
- }
- else{	
-    strcpy(ad[caccount].accounting_enabled,"FALSE");
- }
-
- return;
 }
 
 
 const bool PPPData::AcctEnabled(){
-  
-  bool result;
-  if(strcmp(ad[caccount].accounting_enabled,"TRUE") == 0 ){
-    result = true;
-  }
-  else{
-    result = false;
-  }
 
-  return result;
-
+  return (bool) readNumConfig(cgroup, ACCTENABLED_KEY, false);
 
 }
+
+void PPPData::setAcctEnabled(bool set){
+
+  writeConfig(cgroup, ACCTENABLED_KEY, (int) set);
+
+}
+
+
 const char* PPPData::gateway() {
-  return ad[caccount].gateway;
-}
 
+  return readConfig(cgroup, GATEWAY_KEY);
+
+}
 
 void PPPData::setGateway( const char *n ) {
-  if(caccount >= 0) {
-    strncpy(ad[caccount].gateway, n, IPADDR_SIZE);
-    ad[caccount].gateway[IPADDR_SIZE] = '\0';
-  }
+
+  writeConfig(cgroup, GATEWAY_KEY, n);
+  
 }
 
 
 const bool PPPData::defaultroute(){
+
+  // default route is by default 'on'.
+  return (bool) readNumConfig(cgroup, DEFAULTROUTE_KEY,1);
   
-  bool result;
-
-  if(strcmp(ad[caccount].defaultroute,"DEFAULTROUTE_ON") == 0 ){
-    result = true;
-  }
-  else{
-    result = false;
-  }
-
-  return result;
-
 };
 
-void PPPData::setDefaultroute(bool set){
-  
-  if(set){
-    strncpy(ad[caccount].defaultroute,"DEFAULTROUTE_ON",ARGUMENT_SIZE);
-  }else{
-    strncpy(ad[caccount].defaultroute,"DEFAULTROUTE_OFF",ARGUMENT_SIZE);
-  }
+void PPPData::setDefaultroute(bool set) {
+
+  writeConfig(cgroup, DEFAULTROUTE_KEY, (int) set);
+	       
 }
 
+void PPPData::setExDNSDisabled(bool set){
 
-const char* PPPData::dns( int i ) {
-  if(i >= 0 && i <= MAX_DNS_ENTRIES-1)
-    return ad[caccount].dns[i];
-  else
-    return NULL;
-}
+  writeConfig(cgroup, EXDNSDISABLED_KEY, (int) set);
 
-
-void PPPData::setDns(int i, const char *n) {
-  if(i >= 0 && i <= MAX_DNS_ENTRIES-1) {
-    strncpy(ad[caccount].dns[i], n, IPADDR_SIZE);
-    ad[caccount].dns[i][IPADDR_SIZE] = '\0';
-  }
-
-  for(int j=i+1; j <= MAX_DNS_ENTRIES-1; j++) {
-    strncpy(ad[caccount].dns[j], "", IPADDR_SIZE);
-    ad[caccount].dns[j][IPADDR_SIZE] = '\0';
-  }
-}
-
-void PPPData::setExDNSDisabled(bool _set){
-
-  if(_set){
-    strcpy(ad[caccount].exdnsdisabled,"TRUE");
-  }
-  else{	
-    strcpy(ad[caccount].exdnsdisabled,"FALSE");
-  }
-
-  return;
 }
 
 
 const bool PPPData::exDNSDisabled(){
   
-  bool result;
-  
-  if(strcmp(ad[caccount].exdnsdisabled,"TRUE") == 0 ){
-    result = true;
-  }
-  else{
-    result = false;
-  }
+  return (bool) readNumConfig(cgroup, EXDNSDISABLED_KEY,0);
 
-  return result;
 }
 
+const char* PPPData::dns(int i) {
+
+  return readListConfig(cgroup, DNS_KEY, i);
+
+}
+
+void PPPData::setDns(int i, const char *n) {
+
+  writeListConfig(cgroup, DNS_KEY, i, n);
+
+}
+
+
 const char* PPPData::domain() {
-  return ad[caccount].domain;
+
+  return readConfig(cgroup, DOMAIN_KEY);
+
 }
 
 void PPPData::setDomain( const char *n ) {
-  if(caccount >= 0) {
-    strncpy(ad[caccount].domain, n, DOMAIN_SIZE);
-    ad[caccount].domain[DOMAIN_SIZE] = '\0';
-  }
+
+  writeConfig(cgroup, DOMAIN_KEY, n);
+
 }
 
 
 const char* PPPData::scriptType(int i) {
-  if(i >= 0 && i <= MAX_SCRIPT_ENTRIES-1) {
-    return ad[caccount].stype[i];
-  }
-  else
-    return NULL;
+
+  return readListConfig(cgroup, SCRIPTCOM_KEY, i);
+
 }
 
 
 void PPPData::setScriptType(int i, const char *n) {
-  if(i >= 0 && i <= MAX_SCRIPT_ENTRIES-1) {
-    strncpy(ad[caccount].stype[i], n, SCRIPT_TYPE_SIZE);
-    ad[caccount].stype[i][SCRIPT_TYPE_SIZE] = '\0';
-  }
 
-  for(int j=i+1; j <= MAX_SCRIPT_ENTRIES-1; j++) {
-    strncpy(ad[caccount].stype[j], "", SCRIPT_TYPE_SIZE);
-    ad[caccount].stype[j][SCRIPT_TYPE_SIZE] = '\0';
-  }
+  writeListConfig(cgroup, SCRIPTCOM_KEY, i, n);
+
 }
 
 
 const char* PPPData::script(int i) {
-  if(i >= 0 && i <= MAX_SCRIPT_ENTRIES-1) {
-    return ad[caccount].sdata[i];
-  }
-  else
-    return NULL;
+
+  return readListConfig(cgroup, SCRIPTARG_KEY, i);
+
 }
 
 
 void PPPData::setScript(int i, const char *n) {
-  if(i >= 0 && i <= MAX_SCRIPT_ENTRIES-1) {
-    strncpy(ad[caccount].sdata[i], n, SCRIPT_SIZE);
-    ad[caccount].sdata[i][SCRIPT_SIZE] = '\0';
-  }
 
-  for(int j=i+1; j <= MAX_SCRIPT_ENTRIES-1; j++) {
-    strncpy(ad[caccount].sdata[j], "", SCRIPT_SIZE);
-    ad[caccount].sdata[j][SCRIPT_SIZE] = '\0';
-  }
+  writeListConfig(cgroup, SCRIPTARG_KEY, i, n);
+
 }
 
 
 const char *PPPData::accountingFile() {
-  return ad[caccount].accounting;
+
+  return readConfig(cgroup, ACCTFILE_KEY);
+
 }
 
 void PPPData::setAccountingFile(const char *s) {
-  strncpy(ad[caccount].accounting, s, ACCOUNTING_SIZE);
+
+  writeConfig(cgroup, ACCTFILE_KEY, s);
+
 }
 
 const char* PPPData::pppdArgument(int i) {
-  if(i >= 0 && i <= MAX_PPPD_ARGUMENTS-1) {
-    return ad[caccount].pppdarguments[i];
-  }
-  return NULL;
-}
 
-void PPPData::setpppdArgumentDefaults() {
-  strcpy(ad[caccount].pppdarguments[0], "-detach");
-/*  strcpy(ad[caccount].pppdarguments[1], "defaultroute");*/
+  return readListConfig(cgroup, PPPDARG_KEY, i);
 
-  for(int i=1; i <= MAX_PPPD_ARGUMENTS-1; i++)
-    strcpy(ad[caccount].pppdarguments[i], "");
-  strcpy(ad[caccount].accounting_enabled,"FALSE");
 }
 
 void PPPData::setpppdArgument(int i, const char *n) {
-  if(i >= 0 && i <= MAX_PPPD_ARGUMENTS-1) {
-    strncpy(ad[caccount].pppdarguments[i], n, ARGUMENT_SIZE);
-    ad[caccount].pppdarguments[i][ARGUMENT_SIZE] = '\0';
-  }
 
-  for(int j=i+1; j <= MAX_PPPD_ARGUMENTS-1; j++) {
-    strncpy(ad[caccount].pppdarguments[j], "", ARGUMENT_SIZE);
-    ad[caccount].pppdarguments[j][ARGUMENT_SIZE] = '\0';
-  }
+  writeListConfig(cgroup, PPPDARG_KEY, i, n);
+
 }
 
+void PPPData::setpppdArgumentDefaults() {
+
+  setpppdArgument(0, "-detach");
+  setAcctEnabled(false);
+
+}
 
 //
 //functions to change/set the child pppd process info
@@ -1061,7 +977,17 @@ pid_t PPPData::pppdpid() {
   return pppdprocessid;
 }
 
-
 void PPPData::setpppdpid(pid_t id) {
   pppdprocessid = id;
 }
+
+
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,10 @@
 Thu Dec 25 11:46:34 1997  Bernd Johannes Wuebben  <wuebben@petit.cornell.edu>
 
+        * Added new script keywords: PwPrompt and ID
+	* Added ID and Password LineEdits on the main dialog window
+	* KConfig transition is now complete, one more time the data
+	  storage format has changed. ( Hopefully the last time )
+
 	* All sorts of little cosmetic changes
 	* fixed up the mini-terminal a bit
 

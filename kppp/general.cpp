@@ -104,71 +104,26 @@ GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
 
 void GeneralWidget::caption_toggled(bool on){
 
-  bool was_on;
-  was_on = gpppdata.get_show_clock_on_caption();
-
-  if (on){
-    gpppdata.set_show_clock_on_caption(TRUE);
-    if(!was_on) // we need to resort to this nonsense since 
-                // the toggled signal is emitted when we set 
-                // the toggle button in the constructor and we don't want 
-                // to save the data once for each CheckBox immediately after starting up
-      gpppdata.save();
-  }
-  else{ /*off*/
-    gpppdata.set_show_clock_on_caption(FALSE);
-    if(was_on)
-      gpppdata.save();
-  }
-
+  gpppdata.set_show_clock_on_caption(on);
 
 }
 
 
 void GeneralWidget::redial_toggled(bool on){
 
-  bool was_on;
-  was_on = gpppdata.get_automatic_redial();
+  gpppdata.set_automatic_redial(on);
 
-  if (on){
-    gpppdata.set_automatic_redial(TRUE);
-    if(!was_on) // we need to resort to this nonsense since 
-                // the toggled signal is emitted when we set 
-                // the toggle button in the constructor and we don't want 
-                // to save the data once for each CheckBox immediately after starting up
-      gpppdata.save();
-  }
-  else{ /*off*/
-    gpppdata.set_automatic_redial(FALSE);
-    if(was_on)
-      gpppdata.save();
-  }
 }
 
 void GeneralWidget::xserver_toggled(bool on){
 
-  bool was_on;
-  was_on = gpppdata.get_xserver_exit_disconnect();
+  gpppdata.set_xserver_exit_disconnect(on);
 
-  if (on){
-    gpppdata.set_xserver_exit_disconnect(TRUE);
-    if(!was_on) // we need to resort to this nonsense since 
-                // the toggled signal is emitted when we set 
-                // the toggle button in the constructor and we don't want 
-                // to save the data once for each CheckBox immediately after starting up
-      gpppdata.save();
-  }
-  else{ /*off*/
-    gpppdata.set_xserver_exit_disconnect(FALSE);
-    if(was_on)
-      gpppdata.save();
-  }
 }
 
 void GeneralWidget::logviewerchanged(const char *n){
 
   gpppdata.setlogViewer(n);
-  gpppdata.save();
 
 }
 
@@ -176,7 +131,6 @@ void GeneralWidget::logviewerchanged(const char *n){
 void GeneralWidget::pppdpathchanged(const char *n) {
 
   gpppdata.setpppdPath(n);
-  gpppdata.save();
 
 }
 
@@ -184,7 +138,7 @@ void GeneralWidget::pppdpathchanged(const char *n) {
 
 void GeneralWidget::pppdtimeoutchanged(const char *n) {
   gpppdata.setpppdTimeout(n);
-  gpppdata.save();
+
 }
 
 AboutWidget::AboutWidget( QWidget *parent, const char *name)
@@ -356,56 +310,32 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
 
 void ModemWidget::fast_modem_toggled(bool on){
 
-  bool was_on;
-  was_on = gpppdata.FastModemInit();
-
-  if (on){
-    gpppdata.setFastModemInit(TRUE);
-    if(!was_on) // we need to resort to this nonsense since 
-                // the toggled signal is emitted when we set 
-                // the toggle button in the constructor and we don't want 
-                // to save the data once for each CheckBox immediately after starting up
-      gpppdata.save();
-  }
-  else{ /*off*/
-    gpppdata.setFastModemInit(FALSE);
-    if(was_on)
-      gpppdata.save();
-  }
-
-
+    gpppdata.setFastModemInit(on);
 }
 
-void ModemWidget::setenter(int i) {
-  i = i ;  // shut up compiler
+void ModemWidget::setenter(int ) {
   gpppdata.setEnter(enter->text(enter->currentItem()));
-  gpppdata.save();
 }
 
 
 void ModemWidget::setmodemdc(int i) {
   gpppdata.setModemDevice(modemdevice->text(i));
-  gpppdata.save();
 }
 
 void ModemWidget::setflowcontrol(int i) {
   gpppdata.setFlowcontrol(flowcontrol->text(i));
-  gpppdata.save();
 }
 
 void ModemWidget::modemlockfilechanged(const char *n) {
   gpppdata.setModemLockFile(n);
-  gpppdata.save();
 }
 
 void ModemWidget::modemtimeoutchanged(const char *n) {
   gpppdata.setModemTimeout(n);
-  gpppdata.save();
 }
 
 void ModemWidget::busywaitchanged(const char *n) {
   gpppdata.setbusyWait(n);
-  gpppdata.save();
 }
 
 

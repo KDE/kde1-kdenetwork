@@ -10,8 +10,8 @@
 
 <title>The Kppp Handbook
 <author>Bernd Johannes Wuebben, <tt/wuebben@kde.org/
-<date>Version 0.7.1, 16 December 1997
-<abstract>This Handbook describes Kppp Version 0.7.1
+<date>Version 0.8.0, 25 December 1997
+<abstract>This Handbook describes Kppp Version 0.8.0
 
 <!-- Table of contents -->
 <toc>
@@ -160,15 +160,21 @@ no flow control. The recommended setting is Hardware flow control.
 ``CONNECT'' response from your modem after dialing into another modem. (Typically a modem
 of your IPS's modem pool ) I recommend a setting of about 30 seconds.
 
-
-<tag/Modem Lock File/ Enter the path-name of the desired modem lock file.
+<label id="lock files"> 
+<tag/Modem Lock File/ 
+Enter the path-name of the desired modem lock file.
 This is typically /var/lock/LCK.modem and you shouldn't change this
-to anything else unless you know what you are doing. Program such
+to anything else unless you know what you are doing. Programs such
 as mgetty depend on the existence of such lock files and kppp will
 not work with mgetty if the lock file name is not set corretly.
-If you leave this editbox empty, kppp will not attempt to create a 
+If you leave this edit-box empty, kppp will not attempt to create a 
 lockfile. Make sure that you don't use the option "lock" to pppd
-if you entered a modem lock file and thus want kppp to lock the modem.
+if you entered a modem lock file and thus want kppp to lock the modem,
+since the pppd option "lock" will induce pppd to try to lock the
+modemdevice. However since kppp already locked the device pppd
+will fail and kppp will display "pppd died unexpectedly".
+Make sure that you have permission to write to the lock file
+directory or kppp will display the error message:"Can't create lock file".
 
 
 <tag/Edit Modem Commands/ This will bring up a dialog which you will need
@@ -323,7 +329,16 @@ during script execution if necessary.
 <item>Prompt: Prompt the kppp user to enter a string, given the specified
  string as a hint.  The user will see what is typed.
 
-<item>Password: Prompt the kppp user to enter a string, given the specified
+<item>PWPrompt: Prompt the kppp user to enter a string, given the specified
+ string as a hint.  An asterisk will be printed for each character typed.
+
+<item>ID: If the ID field on Kppp's main dialog is filled in, send that ID.
+ If the ID field is not filled in, prompt the kppp user to enter an ID, 
+ given the specified string as a hint. The user will see what is typed
+
+<item>Password: If the password field on Kppp's main dialog is filled in, send that 
+ password. If the password  field is not filled in, prompt the kppp user to enter 
+ a password given the specified
  string as a hint.  An asterisk will be printed for each character typed.
 
 <item>LoopStart: kppp will wait for the specified string to be received.
@@ -340,28 +355,45 @@ enabling repetition of username/password style paired dialogs.
 </descrip>
 <sect2>Example scripts<p>
 
+Here is a simple script I could use to connect to my ISP:
 <tscreen><verb>
-Here is the script I use to connect to my ISP:
-
 Expect      ID:                        # wait for ID:
 Send        myid                       # you have to substitue myid with your id
 Expect      word:                      # wait for 'password'
 Send        4u3fjkl                    # send my password '4u3fjkl'
 Expect      granted                    # My ISP send 'Permission granted' on login succes.
 Send        ppp                        # This starts a ppp connection for 
-                                       # me on the ISP side
-
-Here a script for the same account with ID and password prompt:
-
+                                       # me on the ISP side.
+</verb></tscreen>
+Here a script for the same account with ID and password prompt: This 
+script will prompt for ID and password each time, no matter what is
+typed into the ID and password field on Kppp's main dialog. This script
+also illustrated the use of the LoopStart/LoopEnd structure. If something
+goes wrong during the login proceedure, for example if I mistype the password,
+my ISP will print an error message and restart the id/password loop by issuing
+the string "ID:" again. If the string "ID" is caught before the LoopEnd keyword
+was parsed, kppp will start the script again after the LoopStart keyword.
+<tscreen><verb>
 LoopStart   ID:                        # wait for ID:
-Prompt      Please Enter User ID       # Prompt me for my ID and send it off.
+Prompt      Enter ID:                  # Prompt me for my ID and send it off.
 Expect      word:                      # wait for 'password'
-Password    Please Enter your Password # Prompt me for my password and send it off.
+PWPrompt    Enter Password:            # Prompt me for my password and send it off.
+LoopEnd     granted                    # My ISP send 'Permission granted' on login succes.
+Send        ppp                        # This starts a ppp connection for me
+</verb></tscreen>
+Here is the script that I actually use to connect to my ISP: This 
+script will prompt for ID and password only if I haven't filled in 
+the respective fields on kppp's main dialog.
+<tscreen><verb>
+LoopStart   ID:                        # wait for ID:
+ID          Enter ID:                  # Prompt me for my ID and send it off.
+Expect      word:                      # wait for 'password'
+Password    Enter Password             # Prompt me for my password and send it off.
 LoopEnd     granted                    # My ISP send 'Permission granted' on login succes.
 Send        ppp                        # This starts a ppp connection for me
                                        # on the ISP side
-
 </verb></tscreen>
+
 <p>
 
 
@@ -469,7 +501,16 @@ a fast initialization. Turn off the 'Modem sustains fast initializiation'
 button on the Modem tab dialog.
 <p>
 
+<sect2>kppp complains: "Can't create lock file"
+<p>
 
+This means that you don't have permissions to create a lock file.
+If for example you have specified '/var/lock/LCK..modem" on the
+modem dialog tab, you must have write permission to write
+to /var/lock/. This is of course no problem if you have
+given kppp setuid permissions. Please read the section on <ref id="lock files">.
+
+<p>
 <sect2>Can I do PAP and CHAP with kppp?
 <p>
 Yes you can. Please the see the section on using <ref id="PAP" name="PAP and CHAP"> 

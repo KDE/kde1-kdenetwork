@@ -62,9 +62,11 @@ public:
 		 Answer = 4,
 		 Timeout = 5, 
 		 Password = 6,
-		 Prompt = 7,
-		 LoopStart = 8,
-		 LoopEnd = 9 };
+		 ID = 7,
+		 Prompt = 8,
+		 PWPrompt = 9,
+		 LoopStart = 10,
+		 LoopEnd = 11 };
 };
 
 #endif

@@ -209,6 +209,7 @@ void ModemCommands::okbutton() {
   gpppdata.setModemNoDialtoneResp(nodialtoneresp->text());
 
   gpppdata.setModemEscapeStr(escapestr->text());
+  gpppdata.setModemEscapeResp(escaperesp->text());
   gpppdata.setModemEscapeGuardTime(escapeguardtime->value());
   gpppdata.setModemHangupStr(hangupstr->text());
   gpppdata.setModemHangupResp(hangupresp->text());

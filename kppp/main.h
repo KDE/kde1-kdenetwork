@@ -1,4 +1,4 @@
-/* -*- C++ -*-
+/* 
  *
  *            kPPP: A pppd front end for the KDE project
  *
@@ -124,6 +124,10 @@ private:
   QFrame *fline;
   QPushButton *connect_b;
   QComboBox *connectto_c;
+  QLabel *ID_Label;
+  QLabel *PW_Label;
+  QLineEdit *ID_Edit;
+  QLineEdit *PW_Edit;
   QLabel *label1;
   QLabel *label2;  
   QLabel *label3;

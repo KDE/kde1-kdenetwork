@@ -129,7 +129,16 @@ during script execution if necessary.
 <LI>Prompt: Prompt the kppp user to enter a string, given the specified
 string as a hint.  The user will see what is typed.
 </LI>
-<LI>Password: Prompt the kppp user to enter a string, given the specified
+<LI>PWPrompt: Prompt the kppp user to enter a string, given the specified
+string as a hint.  An asterisk will be printed for each character typed.
+</LI>
+<LI>ID: If the ID field on Kppp's main dialog is filled in, send that ID.
+If the ID field is not filled in, prompt the kppp user to enter an ID, 
+given the specified string as a hint. The user will see what is typed
+</LI>
+<LI>Password: If the password field on Kppp's main dialog is filled in, send that 
+password. If the password  field is not filled in, prompt the kppp user to enter 
+a password given the specified
 string as a hint.  An asterisk will be printed for each character typed.
 </LI>
 <LI>LoopStart: kppp will wait for the specified string to be received.
@@ -147,30 +156,53 @@ enabling repetition of username/password style paired dialogs.
 <H4>Example scripts</H4>
 
 <P>
-<P>
+<P>Here is a simple script I could use to connect to my ISP:
 <BLOCKQUOTE><CODE>
 <PRE>
-Here is the script I use to connect to my ISP:
-
 Expect      ID:                        # wait for ID:
 Send        myid                       # you have to substitue myid with your id
 Expect      word:                      # wait for 'password'
 Send        4u3fjkl                    # send my password '4u3fjkl'
 Expect      granted                    # My ISP send 'Permission granted' on login succes.
 Send        ppp                        # This starts a ppp connection for 
-                                       # me on the ISP side
+                                       # me on the ISP side.
+</PRE>
+</CODE></BLOCKQUOTE>
 
-Here a script for the same account with ID and password prompt:
-
+Here a script for the same account with ID and password prompt: This 
+script will prompt for ID and password each time, no matter what is
+typed into the ID and password field on Kppp's main dialog. This script
+also illustrated the use of the LoopStart/LoopEnd structure. If something
+goes wrong during the login proceedure, for example if I mistype the password,
+my ISP will print an error message and restart the id/password loop by issuing
+the string "ID:" again. If the string "ID" is caught before the LoopEnd keyword
+was parsed, kppp will start the script again after the LoopStart keyword.
+<BLOCKQUOTE><CODE>
+<PRE>
 LoopStart   ID:                        # wait for ID:
-Prompt      Please Enter User ID       # Prompt me for my ID and send it off.
+Prompt      Enter ID:                  # Prompt me for my ID and send it off.
 Expect      word:                      # wait for 'password'
-Password    Please Enter your Password # Prompt me for my password and send it off.
+PWPrompt    Enter Password:            # Prompt me for my password and send it off.
+LoopEnd     granted                    # My ISP send 'Permission granted' on login succes.
+Send        ppp                        # This starts a ppp connection for me
+</PRE>
+</CODE></BLOCKQUOTE>
+
+Here is the script that I actually use to connect to my ISP: This 
+script will prompt for ID and password only if I haven't filled in 
+the respective fields on kppp's main dialog.
+<BLOCKQUOTE><CODE>
+<PRE>
+LoopStart   ID:                        # wait for ID:
+ID          Enter ID:                  # Prompt me for my ID and send it off.
+Expect      word:                      # wait for 'password'
+Password    Enter Password             # Prompt me for my password and send it off.
 LoopEnd     granted                    # My ISP send 'Permission granted' on login succes.
 Send        ppp                        # This starts a ppp connection for me
                                        # on the ISP side
 </PRE>
 </CODE></BLOCKQUOTE>
+<P>
 <P>
 <P>
 <P>

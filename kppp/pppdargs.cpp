@@ -96,7 +96,7 @@ void PPPdArguments::closebutton() {
       gpppdata.setpppdArgument(i, arguments->text(i));
   }
   else {
-    gpppdata.setpppdArgument(0, "");
+    gpppdata.setpppdArgument(0, 0);
   }
 
   done(0);
@@ -109,7 +109,7 @@ void PPPdArguments::closebutton() {
 void PPPdArguments::init() {
   arguments->clear();
 
-  for(int i=0; strcmp(gpppdata.pppdArgument(i), "") != 0 && 
+  for(int i=0; gpppdata.pppdArgument(i) && 
 	i <= MAX_PPPD_ARGUMENTS-1; i++) {
     arguments->insertItem(gpppdata.pppdArgument(i));
   }

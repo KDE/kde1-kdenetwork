@@ -41,7 +41,9 @@ ScriptEdit::ScriptEdit( QWidget *parent, const char *name )
   st->insertItem("Answer");
   st->insertItem("Timeout (sec)");
   st->insertItem("Password");
+  st->insertItem("ID");
   st->insertItem("Prompt");
+  st->insertItem("PWPrompt");
   st->insertItem("LoopStart");
   st->insertItem("LoopEnd");
   connect(st, SIGNAL(activated(int)), SLOT(setType(int)));
@@ -105,12 +107,22 @@ void ScriptEdit::setType(int i) {
     se->setEnabled(TRUE);
     break;
 
+  case Password:
+    se->setText("");
+    se->setEnabled(TRUE);
+    break;
+
+  case ID:
+    se->setText("");
+    se->setEnabled(TRUE);
+    break;
+
   case Prompt:
     se->setText("");
     se->setEnabled(TRUE);
     break;
 
-  case Password:
+  case PWPrompt:
     se->setText("");
     se->setEnabled(TRUE);
     break;

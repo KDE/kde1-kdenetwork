@@ -156,9 +156,16 @@ void ConnectWidget::init() {
 
   app->processEvents();
 
-  if (!lockdevice()){
+  int lock = lockdevice();
+  if (lock == 1){
     
-    messg->setText("Sorry, modem device is locked");
+    messg->setText("Sorry, modem device is locked.");
+    vmain = 20; // wait until cancel is pressed
+    return;
+  }
+  if (lock == -1){
+    
+    messg->setText("Sorry, can't create modem lock file.");
     vmain = 20; // wait until cancel is pressed
     return;
   }
@@ -314,8 +321,7 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
       timeout_timer->stop();
       timeout_timer->start(scriptTimeout);
 
-      if(strcmp(gpppdata.scriptType(scriptindex), "") == 0 ||
-	 scriptindex >= MAX_SCRIPT_ENTRIES) {
+      if(!gpppdata.scriptType(scriptindex)) {
 	vmain = 10;
         return;
       }
@@ -399,6 +405,78 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
 	vmain = 150;
 	return;
       }
+
+      if(strcmp(gpppdata.scriptType(scriptindex), "ID") == 0) {
+	QString bm = "ID ";
+	bm += gpppdata.script(scriptindex);
+	messg->setText(bm);
+	p_xppp->debugwindow->statusLabel(bm);
+
+	QString idstring = gpppdata.Id();
+	
+	if(!idstring.isEmpty()){
+	  // the user entered an Id on the main kppp dialog
+	  writeline(idstring.data());
+	  scriptindex++;
+	}
+	else{
+	  // the user didn't enter and Id on the main kppp dialog
+	  // let's query for an ID
+	     /* if not around yet, then post window... */
+	     if (prompt->Consumed()) {
+	       if (!(prompt->isVisible())) {
+		 prompt->setPrompt(gpppdata.script(scriptindex));
+		 prompt->setEchoModeNormal();
+		 prompt->show();
+	       }
+	     } else {
+	       /* if prompt withdrawn ... then, */
+	       if(!(prompt->isVisible())) {
+		 writeline(prompt->text());
+		 prompt->setConsumed();
+		 scriptindex++;
+		 return;
+	       }
+	       /* replace timeout value */
+	     }
+	}
+      }
+
+      if(strcmp(gpppdata.scriptType(scriptindex), "Password") == 0) {
+	QString bm = "Password ";
+	bm += gpppdata.script(scriptindex);
+	messg->setText(bm);
+	p_xppp->debugwindow->statusLabel(bm);
+
+	QString pwstring = gpppdata.Password();
+	
+	if(!pwstring.isEmpty()){
+	  // the user entered an Id on the main kppp dialog
+	  writeline(pwstring.data());
+	  scriptindex++;
+	}
+	else{
+	  // the user didn't enter and Id on the main kppp dialog
+	  // let's query for an ID
+	     /* if not around yet, then post window... */
+	     if (prompt->Consumed()) {
+	       if (!(prompt->isVisible())) {
+		 prompt->setPrompt(gpppdata.script(scriptindex));
+		 prompt->setEchoModePassword();
+		 prompt->show();
+	       }
+	     } else {
+	       /* if prompt withdrawn ... then, */
+	       if(!(prompt->isVisible())) {
+		 writeline(prompt->text());
+		 prompt->setConsumed();
+		 scriptindex++;
+		 return;
+	       }
+	       /* replace timeout value */
+	     }
+	}
+      }
  
       if(strcmp(gpppdata.scriptType(scriptindex), "Prompt") == 0) {
 	QString bm = "Prompting ";
@@ -425,8 +503,8 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
 	}
       }
 
-      if(strcmp(gpppdata.scriptType(scriptindex), "Password") == 0) {
-	QString bm = "PW-prompting ";
+      if(strcmp(gpppdata.scriptType(scriptindex), "PWPrompt") == 0) {
+	QString bm = "PW prompt ";
 	bm += gpppdata.script(scriptindex);
 	messg->setText(bm);
 	p_xppp->debugwindow->statusLabel(bm);
@@ -803,7 +881,7 @@ void ConnectWidget::if_waiting_slot(){
   p_xppp->stats->take_stats(); // start taking ppp statistics
   auto_hostname();
 
-  if(strcmp(gpppdata.command(), "") == 0) {
+  if(!gpppdata.command()) {
     
     // let's fish the connection speed out of the read buffer.
     // so that we can say Connected at 115200 or similar.
@@ -864,13 +942,13 @@ bool ConnectWidget::opentty() {
 
   if((modemfd = open(gpppdata.modemDevice(), O_RDWR|O_NDELAY)) < 0){
     
-    messg->setText("Sorry, can't open modem");
+    messg->setText("Sorry, can't open modem.");
     return FALSE;
   }
 
   if(tcgetattr(modemfd, &tty) < 0){
     
-    messg->setText("Sorry, the modem is busy");
+    messg->setText("Sorry, the modem is busy.");
     return FALSE;
   }
 
@@ -1110,9 +1188,7 @@ bool ConnectWidget::execppp() {
     command +=  "defaultroute";
   }
 
-  for(int i=0; strcmp(gpppdata.pppdArgument(i), "") != 0 &&
-	i <= MAX_PPPD_ARGUMENTS+5; i++) {
-
+  for(int i=0; gpppdata.pppdArgument(i); i++) {
     command += " ";
     command += gpppdata.pppdArgument(i);
   }
@@ -1308,9 +1384,7 @@ void adddns() {
 
   if((fd = open("/etc/resolv.conf", O_WRONLY|O_APPEND)) >= 0) {
 
-    for(int i=0; i <= MAX_DNS_ENTRIES &&
-          strcmp(gpppdata.dns(i), "") != 0; i++) {
-      
+    for(int i=0; gpppdata.dns(i); i++) {
       write(fd, "nameserver ", 11);
       write(fd, gpppdata.dns(i), strlen(gpppdata.dns(i)));
       write(fd, " \t#kppp temp entry\n", 19);
@@ -1412,8 +1486,10 @@ void parseargs(char* buf, char** args){
 
 }
 
-// Lock modem device
-bool lockdevice() {
+// Lock modem device. Retruns 0 on success 1 if the modem is locked and -1 if
+// a lock file can't be created ( permission problem )
+
+int lockdevice() {
 
   int fd;
   char c;
@@ -1432,10 +1508,11 @@ bool lockdevice() {
     printf("gpppdata.modemLockFile is empty ..."\
 	   "assuming the user doesn't want a lockfile.\n");
 #endif
-    return true;
+    return 0;
   }
 
-  if (modem_is_locked) return true;
+
+  if (modem_is_locked) return 1;
 
   if ((fd = open(gpppdata.modemLockFile(), O_RDONLY)) >= 0) {
 
@@ -1444,7 +1521,7 @@ bool lockdevice() {
     printf("Device is locked by: %s\n",(const char*)oldlock);
 #endif
 
-#ifdef linux /* we will use /proc only in the case on the Linux platform */
+#ifdef linux /* we will use /proc only on the Linux platform */
 
     oldlock.stripWhiteSpace();
     start=r.match(oldlock,0,&len);
@@ -1456,26 +1533,31 @@ bool lockdevice() {
     if ((fd = open((const char*)procpid, O_RDONLY)) >= 0) {
       close(fd);
     }
-    if ((errno != ENOENT) && (atoi(oldlock.mid(start,len))!=getpid()) ) return false;
+
+    if ((errno != ENOENT) && (atoi(oldlock.mid(start,len))!=getpid()) ) return 1;
 
 #else
-    return false;
+    return 1;
 #endif
 
   }
 
   if((fd = open(gpppdata.modemLockFile(), O_WRONLY|O_TRUNC|O_CREAT,0644)) >= 0) {
     sprintf(newlock,"%05d %s %s\n", getpid(), "kppp", "user" );
+
 #ifdef MY_DEBUG
     printf("Locking Device: %s\n",newlock);
 #endif
+
     write(fd, newlock, strlen(newlock));
     close(fd);
     modem_is_locked=true;
-    return true;
+
+    return 0;
   }
 
-  return false;
+  return -1;
+
 }
   
 

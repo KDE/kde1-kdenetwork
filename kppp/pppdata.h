@@ -31,6 +31,7 @@
 
 #include <kapp.h>
 #include <qstring.h>
+#include <qmsgbox.h>
 #include <string.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -40,32 +41,16 @@
 
 #include "config.h"
 
-// Define sizes for the data structures.
-// Warning!  Do not change these unless you are I and you remember 
-// the other things they effect.
-
-// string lengths for struct gendata
+// string lengths
 
 #define PATH_SIZE 120 
-#define MODEMDEV_SIZE 80
 #define MODEMSTR_SIZE 50
-#define FLOWCONTROL_SIZE 10
-
-
-//string lengths for struct accdata
-
 #define ACCNAME_SIZE 50
-#define PHONENUMBER_SIZE 50
-#define SPEED_SIZE 6
+#define PHONENUMBER_SIZE 25
 #define COMMAND_SIZE 255
 #define IPADDR_SIZE 15
-#define SCRIPT_TYPE_SIZE 30
-#define SCRIPT_SIZE 50
-#define ARGUMENT_SIZE 50
 #define DOMAIN_SIZE 50
 #define TIMEOUT_SIZE 4
-#define ACCOUNTING_SIZE	200
-#define BOOLEAN_SIZE 6
 
 //
 // keys for config file
@@ -86,6 +71,7 @@
 #define AUTOREDIAL_KEY     "AutomaticRedial"
 #define DISCONNECT_KEY     "DisconnectOnXServerExit"
 #define NUMACCOUNTS_KEY    "NumberOfAccounts"
+#define ID_KEY		   "ID"
 
 // modem
 #define MODEMDEV_KEY       "Device"
@@ -100,15 +86,15 @@
 #define BUSYRESP_KEY       "BusyResponse"
 #define NOCARRIERRESP_KEY  "NoCarrierResponse"
 #define NODIALTONERESP_KEY "NoDialToneResp"
-#define ESCAPESTR_KEY      "EscapeString"
-#define ESCAPERESP_KEY     "EscapeResponse"
-#define ESCGUARDSTR_KEY    "EscapeGuard"
 #define HANGUPSTR_KEY      "HangupString"
 #define HANGUPRESP_KEY     "HangUpResponse"
 #define ANSWERSTR_KEY      "AnswerString"
 #define RINGRESP_KEY       "RingResponse"
 #define ANSWERRESP_KEY     "AnswerResponse"
 #define ENTER_KEY          "Enter"
+#define ESCAPESTR_KEY      "EscapeString"
+#define ESCAPERESP_KEY     "EscapeResponse"
+#define ESCAPEGUARDTIME_KEY "EscapeGuardTime"
 #define FASTINIT_KEY       "FastModemInit"
 
 // account
@@ -130,80 +116,33 @@
 #define SCRIPTARG_KEY      "ScriptArguments"
 #define PPPDARG_KEY        "pppdArguments"
 
-struct gendata {
-
-  char defaultaccount[ACCNAME_SIZE+1];      // default account to connet
-  char pppdpath[PATH_SIZE+1];               // path of pppd daemon
-  char pppdtimeout[TIMEOUT_SIZE+1];         // timeout of pppd daemon
-  char busywait[TIMEOUT_SIZE+1];         // time before redial on busy
-  char enter[PATH_SIZE+1];                  // type of Enter string
-  int  fastmodeminit;		  // Does the modem need extra time when initializing?
-
-  char flowcontrol[FLOWCONTROL_SIZE+1];     // modem flow control
-  char modemdevice[MODEMDEV_SIZE+1];        // path of modem device
-  char modemtimeout[TIMEOUT_SIZE+1];        // modem response timeout 
-
-  char modemlockfile[PATH_SIZE+1];	    // lock file
-  char modeminitstr[MODEMSTR_SIZE+1];       // modem init string
-  char initresp[MODEMSTR_SIZE+1];
-  char modemdialstr[MODEMSTR_SIZE+1];       // modem dial string
-  char connectresp[MODEMSTR_SIZE+1];
-  char busyresp[MODEMSTR_SIZE+1];
-  char nocarrierresp[MODEMSTR_SIZE+1];
-  char nodialtoneresp[MODEMSTR_SIZE+1];
-
-  char modemescapestr[MODEMSTR_SIZE+1];     // modem escape string.
-  char modemescaperesp[MODEMSTR_SIZE+1];     
-  int  modemescapeguardtime; 		    // 100'ths of a sec. 
-
-  char modemhangupstr[MODEMSTR_SIZE+1];     // modem hangup string
-  char hangupresp[MODEMSTR_SIZE+1];
-
-  char modemanswerstr[MODEMSTR_SIZE+1];     // modem answer string
-  char ringresp[MODEMSTR_SIZE+1];
-  char answerresp[MODEMSTR_SIZE+1];  
-
-  char show_clock_on_caption[ARGUMENT_SIZE+1];
-  char show_log_window[ARGUMENT_SIZE+1];
-  char disconnect_on_xserver_exit[ARGUMENT_SIZE+1];
-  char automatic_redial[ARGUMENT_SIZE+1];
-  char logviewer[PATH_SIZE+1];               // path of the log file view (e.g kedit)
-
-};
-
-struct accdata {
-  char accname[ACCNAME_SIZE+1];                   // account name
-  char phonenumber[PHONENUMBER_SIZE+1];           // phone number
-  char speed[SPEED_SIZE+1];                       // connection speed
-  char command[COMMAND_SIZE+1];              // command to execute upon connect
-  char ipaddr[IPADDR_SIZE+1];                     // ipaddress
-  char subnetmask[IPADDR_SIZE+1];                 // subnet mask
-  char autoname[ARGUMENT_SIZE+1];		  // enable autoconfig hostname
-  char domain[DOMAIN_SIZE+1];       		  // domain name
-  char dns[MAX_DNS_ENTRIES][IPADDR_SIZE+1];       // dns ip address
-  char exdnsdisabled[BOOLEAN_SIZE+1];	          // existing dns servers are disabled during connection
-  char gateway[IPADDR_SIZE+1];                    // gateway ip address
-  char defaultroute[ARGUMENT_SIZE+1];		  // enable defaultroute
-  char stype[MAX_SCRIPT_ENTRIES][SCRIPT_TYPE_SIZE+1]; // type of script entry
-  char sdata[MAX_SCRIPT_ENTRIES][SCRIPT_SIZE+1];      // script data
-  char pppdarguments[MAX_PPPD_ARGUMENTS][ARGUMENT_SIZE+1]; //custom pppd arguments
-  char accounting[ACCOUNTING_SIZE+1];		   // ruleset to use for accounting
-  char accounting_enabled[BOOLEAN_SIZE+1];	   // is accounting enabled?
-};
-
-
 class PPPData {
 public:
   PPPData();
-  ~PPPData() {}
+  ~PPPData() {};
 
   // general functions
 
-  void load(const KApplication*);
+  bool open(const KApplication*);
   void save();
+  void cancel();
 
+  // function to read/write date to configuration file
+
+  const char* readConfig(const char *, const char *, const char *);
+  int readNumConfig(const char *, const char *, int);
+  const char* readListConfig(const char *, const char *, int);
+  void writeConfig(const char *, const char *, const char *);
+  void writeConfig(const char *, const char *, int);
+  void writeListConfig(const char *, const char *, int, const char*);
 
   // functions to set/get general xppp info
+
+  const char* Password();
+  const char* Id();
+
+  void setPassword(const char* );
+  void setId(const char*);
 
   const char* defaultAccount();
   void setDefaultAccount(const char *);
@@ -229,9 +168,6 @@ public:
   const char* enter();
   void setEnter(const char *);
 
-  int FastModemInit();
-  void setFastModemInit(const int);
-
   const char * pppdTimeout();
   void setpppdTimeout(const char *);
 
@@ -240,6 +176,15 @@ public:
 
   const char* modemLockFile();
   void setModemLockFile(const char *);
+
+  int modemEscapeGuardTime();
+  void setModemEscapeGuardTime(int i);
+
+  void setModemEscapeStr(const char* n);
+  const char* modemEscapeStr();
+
+  void setModemEscapeResp(const char* n);
+  const char* modemEscapeResp();
 
   const char* modemDevice();
   void setModemDevice(const char *);
@@ -250,7 +195,7 @@ public:
   const char * modemTimeout();
   void setModemTimeout(const char *);
 
-  // modem command stings/responses
+  // modem command strings/responses
 
   const char* modemInitStr();
   void setModemInitStr(const char *);
@@ -273,22 +218,11 @@ public:
   const char* modemNoDialtoneResp();
   void setModemNoDialtoneResp(const char *);
 
-
-  const char* modemEscapeStr();
-  void setModemEscapeStr(const char*);
-
-  const char* modemEscapeResp();
-  void setModemEscapeResp(const char*);
-
-  const int modemEscapeGuardTime();
-  void setModemEscapeGuardTime(const int);
-
   const char* modemHangupStr();
   void setModemHangupStr(const char*);
 
   const char* modemHangupResp();
   void setModemHangupResp(const char*);
-
 
   const char* modemAnswerStr();
   void setModemAnswerStr(const char*);
@@ -299,6 +233,8 @@ public:
   const char* modemAnswerResp();
   void setModemAnswerResp(const char*);
 
+  void setFastModemInit(const int n);
+  int  FastModemInit();
   // functions to set/get account information
 
   int count();
@@ -333,6 +269,9 @@ public:
   const bool AcctEnabled();
   void setAcctEnabled(bool set);
 
+  const bool exDNSDisabled();
+  void setExDNSDisabled(bool set);
+
   const bool autoname();
   void setAutoname(bool set);
 
@@ -343,13 +282,10 @@ public:
   void setDefaultroute(bool set);
 
   const char* dns(int);
-  void setDns(int, const char *);
+  void setDns(int, const char*);
 
   const char* domain();
   void setDomain(const char *);
-  
-  const bool exDNSDisabled();
-  void setExDNSDisabled(bool set);
 
   const char* scriptType(int);
   void setScriptType(int, const char*);
@@ -371,18 +307,21 @@ public:
   void setAccountingFile(const char *);
 
 
+public:
+  QString password;
+  QString ID;
 private:
 
   int highcount;                         // index of highest account
   int caccount;                          // index of the current account
+  QString cgroup;                        // name of current config group
 
-  struct accdata ad[MAX_ACCOUNTS];       // account data
-  struct gendata gd;                     // general data 
+  KConfig* config;                       // configuration object   
 
   pid_t pppdprocessid;                   // process ID of the child pppd
                                          // daemon
 
-  KConfig* config;                       // configuration object   
+
 };
 
 extern PPPData gpppdata;

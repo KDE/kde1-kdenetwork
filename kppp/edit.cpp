@@ -118,7 +118,8 @@ DialWidget::DialWidget( QWidget *parent, const char *name )
 
 
 bool DialWidget::save() {
-  //fist check to make sure that the account name is unique!
+
+  //first check to make sure that the account name is unique!
   if(strcmp(connectname_l->text(), "") == 0 ||
      !gpppdata.isUniqueAccname(connectname_l->text())) {
     return false;
@@ -295,17 +296,20 @@ DNSWidget::DNSWidget( QWidget *parent, const char *name )
   exdnsdisabled_toggle->setChecked(gpppdata.exDNSDisabled());
  
   // restore data if editing
-  if(!isnewaccount){
-    for(int i=0; strcmp(gpppdata.dns(i), "") != 0 &&
+  if(!isnewaccount) {
+    for(int i=0; gpppdata.dns(i) &&
 	  i <= MAX_DNS_ENTRIES-1; i++)
       dnsservers->insertItem(gpppdata.dns(i));
     dnsdomain->setText(gpppdata.domain());
-    }
+  }
 }
 
 void DNSWidget::save() {
-  for(uint i=0; i < dnsservers->count(); i++)
-    gpppdata.setDns(i, dnsservers->text(i));
+  if (dnsservers->count() > 0)
+    for(uint i=0; i < dnsservers->count(); i++)
+      gpppdata.setDns(i, dnsservers->text(i));
+  else 
+    gpppdata.setDns(0, 0);
   gpppdata.setDomain(dnsdomain->text());
   gpppdata.setExDNSDisabled(exdnsdisabled_toggle->isChecked());
 }
@@ -317,6 +321,7 @@ void DNSWidget::adddns() {
     dnsipaddr->setText("");
   }
 }
+
 
 void DNSWidget::removedns() {
   int i;
@@ -458,7 +463,7 @@ ScriptWidget::ScriptWidget( QWidget *parent, const char *name )
 
   //load data from gpppdata
   if(!isnewaccount) {
-    for( int i=0; strcmp(gpppdata.scriptType(i), "") != 0 &&
+    for( int i=0; gpppdata.scriptType(i) &&
 	   i <= MAX_SCRIPT_ENTRIES-1; i++) {
       stl->insertItem(gpppdata.scriptType(i));
       sl->insertItem(gpppdata.script(i));
@@ -498,8 +503,8 @@ void ScriptWidget::save() {
       gpppdata.setScript(i, sl->text(i));
     }
   else {                
-    gpppdata.setScriptType(0, "");
-    gpppdata.setScript(0, "");
+    gpppdata.setScriptType(0, 0);
+    gpppdata.setScript(0, 0);
   }
 }                        
 
@@ -565,15 +570,26 @@ void ScriptWidget::addButton() {
       sl->insertItem(se->text());
       break;
 
+    case ScriptEdit::Password:
+      stl->insertItem("Password");
+      sl->insertItem(se->text());
+      break;
+
+    case ScriptEdit::ID:
+      stl->insertItem("ID");
+      sl->insertItem(se->text());
+      break;
+
     case ScriptEdit::Prompt:
       stl->insertItem("Prompt");
       sl->insertItem(se->text());
       break;
 
-    case ScriptEdit::Password:
-      stl->insertItem("Password");
+    case ScriptEdit::PWPrompt:
+      stl->insertItem("PWPrompt");
       sl->insertItem(se->text());
       break;
+
 
     case ScriptEdit::LoopStart:
       stl->insertItem("LoopStart");
@@ -636,15 +652,26 @@ void ScriptWidget::insertButton() {
       sl->insertItem(se->text(), sl->currentItem());
       break;
 
+    case ScriptEdit::Password:
+      stl->insertItem("Password", stl->currentItem());
+      sl->insertItem(se->text(), sl->currentItem());
+      break;
+
+    case ScriptEdit::ID:
+      stl->insertItem("ID", stl->currentItem());
+      sl->insertItem(se->text(), sl->currentItem());
+      break;
+
     case ScriptEdit::Prompt:
       stl->insertItem("Prompt", stl->currentItem());
       sl->insertItem(se->text(), sl->currentItem());
       break;
 
-    case ScriptEdit::Password:
-      stl->insertItem("Password", stl->currentItem());
+    case ScriptEdit::PWPrompt:
+      stl->insertItem("PWPrompt", stl->currentItem());
       sl->insertItem(se->text(), sl->currentItem());
       break;
+
 
     case ScriptEdit::LoopStart:
       stl->insertItem("LoopStart", stl->currentItem());

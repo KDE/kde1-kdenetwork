@@ -1,4 +1,3 @@
-
 /*
  *            kPPP: A pppd front end for the KDE project
  *
@@ -86,10 +85,6 @@ static int kppp_x_errhandler( Display *dpy, XErrorEvent *err )
 {
     char errstr[256];
 
-
-    /* I am not so sure if I want to disconnect on any old X error
-       so I leave this commented out for now */
-    
     /*
     if(gpppdata.pppdpid() >= 0) {
       kill(gpppdata.pppdpid(), SIGTERM);
@@ -267,45 +262,65 @@ int main( int argc, char **argv ) {
 XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
   : QWidget(parent, name){
 
-  gpppdata.load(app);
+  bool config;
+  config = gpppdata.open(app);
 
   connected = false;
 
-  connectto_c = new QComboBox(true,this, "connectto_c");
-  connectto_c->setGeometry(120, 25, 160, 30);
-  connect(connectto_c, SIGNAL(activated(int)), SLOT(newdefaultaccount(int)));
+  ID_Label = new QLabel(this,"lableid");
+  ID_Label->setText("ID:");
+  ID_Label->setGeometry(30,27,70,20);
 
+  ID_Edit = new QLineEdit(this,"idedit");
+  ID_Edit->setGeometry(120,25,179,24);
+  ID_Edit->setText(gpppdata.Id());
+
+  PW_Label = new QLabel(this,"lablepw");
+  PW_Label->setText("Password:");
+  PW_Label->setGeometry(30,62,70,20);
+
+
+  PW_Edit= new QLineEdit(this,"pwedit");
+  PW_Edit->setGeometry(120,60,179,24);
+  PW_Edit->setEchoMode(QLineEdit::Password);
 
   label1 = new QLabel(this,"lable1");
   label1->setText("Connect to: ");
-  label1->setGeometry(30,30,70,20);
+  label1->setGeometry(30,100,70,20);
+
+  connectto_c = new QComboBox(true,this, "connectto_c");
+  connectto_c->setGeometry(120, 97, 180, 28);
+  connect(connectto_c, SIGNAL(activated(int)), SLOT(newdefaultaccount(int)));
+
 
   fline = new QFrame(this,"line");
   fline->setFrameStyle(QFrame::HLine |QFrame::Sunken);
-  fline->setGeometry(10,90,360,10);
+  fline->setGeometry(10,170,360,10);
 
   quit_b = new QPushButton("Quit", this, "quit");
-  quit_b->setGeometry(15, 110, 70, 30);
+  quit_b->setGeometry(15, 187, 70, 25);
   connect( quit_b, SIGNAL(clicked()), SLOT(quitbutton()));
 
   setup_b = new QPushButton("Setup", this, "setup");
-  setup_b->setGeometry(90, 110, 70, 30);
+  setup_b->setGeometry(90, 187, 70, 25);
   connect( setup_b, SIGNAL(clicked()), SLOT(expandbutton()));
 
+  if (!config) setup_b->setEnabled(false);
+
   help_b = new QPushButton("Help", this, "help");
-  help_b->setGeometry(165, 110, 70, 30);
+  help_b->setGeometry(165, 187, 70, 25);
   connect( help_b, SIGNAL(clicked()), SLOT(helpbutton()));
 
 
   log = new QCheckBox("Show Log Window", this,"log");
   log->adjustSize();
-  log->setGeometry(30,65,150,log->height());
+  log->setGeometry(30,145,150,log->height());
   connect(log,SIGNAL(toggled(bool)),this,SLOT(log_window_toggled(bool)));
 
   log->setChecked(gpppdata.get_show_log_window());
 
   connect_b = new QPushButton("Connect", this, "connect_b");
-  connect_b->setGeometry(285, 110, 80, 30);
+  connect_b->setGeometry(265, 187, 80, 25);
   connect_b->setFocus();
   connect_b->setText("Connect");
   connect(connect_b, SIGNAL(clicked()), SLOT(connectbutton()));
@@ -362,11 +377,11 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
 
 
 
-  this->setGeometry(QApplication::desktop()->width()/2-190,
-		    QApplication::desktop()->height()/2-75,
-		    380,150);
+  this->setGeometry(QApplication::desktop()->width()/2 - 180,
+		    QApplication::desktop()->height()/2 - 110,
+		    360,220);
 
-  this->setFixedSize(380,150);
+  this->setFixedSize(360,220);
 
 
   if(have_cmdl_account){
@@ -391,30 +406,18 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
 
 void XPPPWidget::log_window_toggled(bool on){
   
-  bool was_on;
-  was_on = gpppdata.get_show_log_window();
-
-  if (on){
-    gpppdata.set_show_log_window(TRUE);
-    if(!was_on) // we need to resort to this nonsense since 
-                // the toggled signal is emitted when we set 
-                // the toggle button in the constructor and we don't want 
-                // to save the data once for each CheckBox immediately after starting up
-      gpppdata.save();
-  }
-  else{ /*off*/
-    gpppdata.set_show_log_window(FALSE);
-    if(was_on)
-      gpppdata.save();
-  }
-
+  gpppdata.set_show_log_window(on);
+  
 }
 
 
 void XPPPWidget::setup()
 {
   
-  tabWindow->exec();
+  if(tabWindow->exec())
+    gpppdata.save();
+  else
+    gpppdata.cancel();
 
 }
 
@@ -426,10 +429,12 @@ void XPPPWidget::resetaccounts() {
   if(gpppdata.count() == 0) {
     connectto_c->setEnabled(false);
     connect_b->setEnabled(false);
+    log->setEnabled(false);
   }
   else {
     connectto_c->setEnabled(true);
     connect_b->setEnabled(true);
+    log->setEnabled(true);
   }
 
   //load the accounts
@@ -579,6 +584,8 @@ void XPPPWidget::connectbutton() {
     return;
   }
 
+  gpppdata.setId(ID_Edit->text());
+  gpppdata.setPassword(PW_Edit->text());
   
   this->hide();
 

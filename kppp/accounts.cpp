@@ -200,7 +200,7 @@ void AccountWidget::newaccount() {
     return;
   }
 
-  gpppdata.newaccount();
+  if (gpppdata.newaccount() == -1) return;
 
   int result = doTab();
 
@@ -243,6 +243,8 @@ void AccountWidget::deleteaccount() {
 
   p_xppp->resetaccounts();
   gpppdata.save();
+
+  slotListBoxSelect(accountlist_l->currentItem());
 
 }
 

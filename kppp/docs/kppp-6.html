@@ -84,6 +84,17 @@ a fast initialization. Turn off the 'Modem sustains fast initializiation'
 button on the Modem tab dialog.
 <P>
 <P>
+<H4>kppp complains: "Can't create lock file"</H4>
+
+<P>
+<P>This means that you don't have permissions to create a lock file.
+If for example you have specified '/var/lock/LCK..modem" on the
+modem dialog tab, you must have write permission to write
+to /var/lock/. This is of course no problem if you have
+given kppp setuid permissions. Please read the section on 
+<A HREF="kppp-3.html#lock files">lock files</A>
+.
+<P>
 <P>
 <H4>Can I do PAP and CHAP with kppp?</H4>
 

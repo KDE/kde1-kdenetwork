@@ -49,15 +49,20 @@ no flow control. The recommended setting is Hardware flow control.
 ``CONNECT'' response from your modem after dialing into another modem. (Typically a modem
 of your IPS's modem pool ) I recommend a setting of about 30 seconds.
 <P>
-<P>
+<A NAME="lock files"></A>  
 <DT><B>Modem Lock File</B><DD><P>Enter the path-name of the desired modem lock file.
 This is typically /var/lock/LCK.modem and you shouldn't change this
-to anything else unless you know what you are doing. Program such
+to anything else unless you know what you are doing. Programs such
 as mgetty depend on the existence of such lock files and kppp will
 not work with mgetty if the lock file name is not set corretly.
-If you leave this editbox empty, kppp will not attempt to create a 
+If you leave this edit-box empty, kppp will not attempt to create a 
 lockfile. Make sure that you don't use the option "lock" to pppd
-if you entered a modem lock file and thus want kppp to lock the modem.
+if you entered a modem lock file and thus want kppp to lock the modem,
+since the pppd option "lock" will induce pppd to try to lock the
+modemdevice. However since kppp already locked the device pppd
+will fail and kppp will display "pppd died unexpectedly".
+Make sure that you have permission to write to the lock file
+directory or kppp will display the error message:"Can't create lock file".
 <P>
 <P>
 <DT><B>Edit Modem Commands</B><DD><P>This will bring up a dialog which you will need

@@ -155,9 +155,15 @@ void MiniTerm::init() {
   statusbar->setText("Initializing Modem");
   app->processEvents();
 
-  if (!lockdevice()){
+  int lock = lockdevice();
+  if (lock == 1){
     
-    statusbar->setText("Sorry, modem device is locked");
+    statusbar->setText("Sorry, modem device is locked.");
+    return;
+  }
+  if (lock == -1){
+    
+    statusbar->setText("Sorry, can't create modem lock file.");
     return;
   }
 
