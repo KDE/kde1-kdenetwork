@@ -143,12 +143,14 @@ noinst_HEADERS = 	NNTP.h\
 		charsetsDlg.h\
                 expirestatusdlg.h\
                 kfontutils.h\
-                kmtopwidget.h
-
+                kmtopwidget.h\
+				kmiostatusdlg.h
 
 
 
 SUBDIRS = docs pics
+
+EXTRA_DIST = krn.xpm mini-krn.xpm Krn.kdelnk
 
 install-data-local: 
 	$(mkinstalldirs) $(ICONDIR)

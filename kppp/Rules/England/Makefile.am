@@ -6,3 +6,5 @@ pkg_DATA =	BirminghamCable_Local.rst \
 		BritishTelecom_Regional.rst
 
 pkgdir = $(kde_datadir)/kppp/Rules/England
+
+EXTRA_DIST = $(pkg_DATA)

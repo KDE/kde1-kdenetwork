@@ -33,3 +33,4 @@ pics_DATA = black-bullet.xpm\
 
 picsdir = $(kde_datadir)/krn/toolbar
 
+EXTRA_DIST = $(pics_DATA)

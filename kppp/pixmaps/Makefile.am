@@ -8,3 +8,5 @@ data_DATA =	Terminal.xpm back.xpm exit.xpm fileopen.xpm \
 		dock_right.xpm dock_both.xpm 
 
 datadir = $(kde_datadir)/kppp/pics
+
+EXTRA_DIST = $(data_DATA)

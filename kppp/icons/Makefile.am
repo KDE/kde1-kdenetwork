@@ -1,3 +1,4 @@
+EXTRA_DIST = kppp.xpm mini-kppp.xpm
 
 # just install datas here. Use install-exec-data for scripts and etc.
 # the binary itself is already installed from automake

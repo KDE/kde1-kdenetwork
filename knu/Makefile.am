@@ -38,7 +38,7 @@ knu_LDADD   = -lkfile -lkfm -lkdeui -lkdecore -lqt -lXext -lX11 $(LIBSOCKET)
 noinst_HEADERS = knu.h CommandDlg.h OptionsDlg.h \
                         PingDlg.h TracerouteDlg.h HostDlg.h FingerDlg.h
 
-EXTRA_DIST = version.h knu.kdelnk knu.xpm knu.lsm
+EXTRA_DIST = version.h knu.kdelnk knu.xpm knu.lsm mini-knu.xpm
 
 # just to make sure, automake makes them 
 BUILTSOURCES =	knu.moc CommandDlg.moc OptionsDlg.moc \

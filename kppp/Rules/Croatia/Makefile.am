@@ -4,3 +4,5 @@ pkg_DATA = CARNet_lokalni_poziv.rst       ibm_net.rst \
 	hinet_hpt.rst                  iskon_zagrebacka_zupanija.rst 
 
 pkgdir = $(kde_datadir)/kppp/Rules/Croatia
+
+EXTRA_DIST = $(pkg_DATA)

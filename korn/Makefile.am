@@ -1,5 +1,8 @@
+SUBDIRS = doc
 
 BUILT_SOURCES = moc_kmailbox.cpp moc_korn.cpp moc_kornbutt.cpp moc_kornopt.cpp moc_optdata.cpp
+
+noinst_HEADERS = *.h
 
 INCLUDES= $(all_includes)
 bin_PROGRAMS = korn
@@ -22,6 +25,8 @@ moc_kornopt.cpp: kornopt.h
 
 moc_optdata.cpp: optdata.h
 	$(MOC) optdata.h -o moc_optdata.cpp
+
+EXTRA_DIST = KOrn.kdelnk korn.xpm mini-korn.xpm
 
 install-data-local:
 	$(mkinstalldirs) $(kde_appsdir)/Internet

@@ -9,3 +9,5 @@ pkg_DATA =	Telekom_200km.rst \
 		Tele2.rst 
 
 pkgdir = $(kde_datadir)/kppp/Rules/Germany
+
+EXTRA_DIST = $(pkg_DATA)

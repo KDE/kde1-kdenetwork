@@ -8,3 +8,4 @@ pkg_DATA = kppp.html kppp-1.html kppp-2.html kppp-3.html \
 # you have given the datas in data_DATA
 pkgdir = $(kde_htmldir)/en/kppp
 
+EXTRA_DIST = $(pkg_DATA)

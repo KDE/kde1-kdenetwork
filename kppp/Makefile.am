@@ -17,10 +17,12 @@
 appsdir = $(kde_appsdir)/Internet
 apps_DATA = Kppp.kdelnk
 
+EXTRA_DIST = $(apps_DATA)
+
 # set the include path for X, qt and KDE
 INCLUDES= $(all_includes)
 # claim, which subdirectories you want to install
-SUBDIRS = docs pixmaps icons logview
+SUBDIRS = docs pixmaps icons logview Rules
 
 # kppp wants to be installed suid root
 INSTALL_PROGRAM=$(INSTALL) -m 4755
@@ -89,7 +91,8 @@ noinst_HEADERS = accounts.h \
 		runtests.h \
 		loginterm.h \
 		auth.h \
-		version.h
+		version.h \
+		macros.h
 
 # just to make sure, automake makes them 
 BUILTSOURCES = accounts.moc \

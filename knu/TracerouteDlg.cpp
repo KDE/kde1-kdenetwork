@@ -23,19 +23,16 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.7  1998/06/09 21:18:00  leconte
+ * Bertrand: correction of bug #745 (reported by Duncan Haldane):
+ * 	arguments are now added to the command line
+ *
  * Revision 1.6  1998/03/01 19:30:20  leconte
  * - added a finger tab
  * - internal mods
  *
  * Revision 1.5  1998/01/03 16:40:06  kulow
  * corrected typos
- *
- * Revision 1.4  1997/12/07 23:44:25  leconte
- * - handle the binary's name modification dynamicaly (problem reported
- *   by Conrad Sanderson)
- * - added browse button to the option dialog (for binary selection)
- * - code clean-up
- * - better fallback to"nslookup" if "host" is not found
  *
  * Revision 1.3  1997/12/01 21:11:03  leconte
  * Patches by <neal@ctd.comsat.com>

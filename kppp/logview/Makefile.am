@@ -36,7 +36,7 @@ kppplogview_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 kppplogview_LDADD   = -lkdeui -lkdecore -lqt -lXext -lX11 $(LIBSOCKET)
 
 # this option you can leave out. Just, if you use "make dist", you need it
-noinst_HEADERS = loginfo.h log.h monthly.h
+noinst_HEADERS = loginfo.h log.h monthly.h main.h
 
 # just to make sure, automake makes them 
 BUILTSOURCES = monthly.moc

@@ -6,3 +6,5 @@ pkg_DATA =    	Long_Distance_Telebonus_1.rst \
 		Long_Distance.rst              
 
 pkgdir = $(kde_datadir)/kppp/Rules/Sweden
+
+EXTRA_DIST = $(pkg_DATA)

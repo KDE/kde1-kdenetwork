@@ -24,15 +24,12 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.5  1998/03/01 19:30:21  leconte
+ * - added a finger tab
+ * - internal mods
+ *
  * Revision 1.4  1997/12/12 17:55:51  denis
  * Q_OBJECT; again
- *
- * Revision 1.3  1997/12/07 23:44:26  leconte
- * - handle the binary's name modification dynamicaly (problem reported
- *   by Conrad Sanderson)
- * - added browse button to the option dialog (for binary selection)
- * - code clean-up
- * - better fallback to"nslookup" if "host" is not found
  *
  * Revision 1.2  1997/11/23 22:28:16  leconte
  * - Id and Log added in the headers

@@ -6,3 +6,5 @@ pkg_DATA =	0-15_Km.rst \
 		Local_with_Formula_Urbana.rst
 
 pkgdir = $(kde_datadir)/kppp/Rules/Italy
+
+EXTRA_DIST = $(pkg_DATA)

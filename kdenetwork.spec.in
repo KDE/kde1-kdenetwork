@@ -3,12 +3,12 @@
 Name: %{name} Summary: K Desktop Environment - Network Applications
 Version: %{version}
 Release: 1
-Source: ftp.kde.org:/pub/kde/stable/Beta4/distribution/rpm/source/%{name}-%{version}-1.src.tar.gz
+Source: ftp.kde.org:/pub/kde/stable/1.0pre/distribution/rpm/source/%{name}-%{version}-1.src.tar.gz
 Group: X11/KDE/Networking
 BuildRoot: /tmp/realhot_%{name}
 Copyright: GPL
 Requires: qt >= 1.33
-Packager: Preston Brown <pbrown@kde.org>
+Packager: Kalle Dalheimer <kalle@kde.org>
 Distribution: KDE
 Vendor: The KDE Team
 
@@ -26,7 +26,7 @@ krn: news reader
 %prep
 rm -rf $RPM_BUILD_ROOT
 
-%setup -n kdenetwork
+%setup -n kdenetwork-%{version}
 
 %build
 export KDEDIR=/opt/kde
