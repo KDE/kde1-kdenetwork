@@ -6,28 +6,28 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ksirc\n"
-"POT-Creation-Date: 1999-03-05 02:18+0100\n"
-"PO-Revision-Date: 1999-03-25 21:30+0000\n"
-"Last-Translator: Bjarni R. Einarsson <bre@netverjar.is>\n"
+"POT-Creation-Date: 1999-06-22 01:24+0200\n"
+"PO-Revision-Date: 1999-08-11 22:01+0000\n"
+"Last-Translator: Richard Allen <ra@hp.is>\n"
 "Language-Team: is <kde-isl@mmedia.is>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: ISO-8859-1\n"
 
-#: FilterRuleEditor.cpp:29
+#: FilterRuleEditor.cpp:30
 msgid "Edit Filter Rules"
 msgstr "Breyta reglum síu"
 
-#: FilterRuleEditor.cpp:58 FilterRuleEditor.cpp:79
-#: FilterRuleEditorData.cpp:105
+#: FilterRuleEditor.cpp:59 FilterRuleEditor.cpp:80
+#: FilterRuleEditorData.cpp:106
 msgid "&Modify"
 msgstr "&Breyta"
 
-#: FilterRuleEditor.cpp:74
+#: FilterRuleEditor.cpp:75
 msgid "Missing Arguments"
 msgstr "Viðföng vantar"
 
-#: FilterRuleEditor.cpp:75
+#: FilterRuleEditor.cpp:76
 msgid ""
 "Cannot create a Rule since not\n"
 "all the fields are filled in."
@@ -35,71 +35,71 @@ msgstr ""
 "Það er ekki hægt að skilgreina\n"
 "reglu nema allt sé útfyllt."
 
-#: FilterRuleEditorData.cpp:33
+#: FilterRuleEditorData.cpp:34
 msgid "Description:"
 msgstr "Lýsing:"
 
-#: FilterRuleEditorData.cpp:51
+#: FilterRuleEditorData.cpp:52
 msgid "Match:"
 msgstr "Samsvörun:"
 
-#: FilterRuleEditorData.cpp:69
+#: FilterRuleEditorData.cpp:70
 msgid "From:"
 msgstr "Frá:"
 
-#: FilterRuleEditorData.cpp:78
+#: FilterRuleEditorData.cpp:79
 msgid "To:"
 msgstr "Til:"
 
-#: FilterRuleEditorData.cpp:126
+#: FilterRuleEditorData.cpp:127
 msgid "New Rule"
 msgstr "Ný regla"
 
-#: FilterRuleEditorData.cpp:145
+#: FilterRuleEditorData.cpp:146
 msgid "Up"
 msgstr "Upp"
 
-#: FilterRuleEditorData.cpp:155
+#: FilterRuleEditorData.cpp:156
 msgid "Down"
 msgstr "Niður"
 
-#: KSircColour.cpp:33
+#: KSircColour.cpp:34
 msgid "Colour Settings"
 msgstr "Stillingar lita"
 
-#: KSircColourData.cpp:33
+#: KSircColourData.cpp:34
 msgid "Generic Text"
 msgstr "Texti"
 
-#: KSircColourData.cpp:62
+#: KSircColourData.cpp:63
 msgid "Info"
 msgstr "Upplýsingar"
 
-#: KSircColourData.cpp:71
+#: KSircColourData.cpp:72
 msgid "Chan Messages"
 msgstr "Rásarskilaboð"
 
-#: KSircColourData.cpp:80
+#: KSircColourData.cpp:81
 msgid "Errors"
 msgstr "Villur"
 
-#: KSircColourData.cpp:115
+#: KSircColourData.cpp:116
 msgid "Background"
 msgstr "Bakgrunnur"
 
-#: dccDialog.cpp:22
+#: dccDialog.cpp:23
 msgid "DCC Files Offered"
 msgstr "Skrár í boði með DCC"
 
-#: dccDialogData.cpp:38
+#: dccDialogData.cpp:39
 msgid "&Get"
 msgstr "&Sækja"
 
-#: dccDialogData.cpp:46
+#: dccDialogData.cpp:47
 msgid "&Forget"
 msgstr "&Gleyma"
 
-#: ksirc.cpp:60
+#: ksirc.cpp:63
 msgid ""
 "kSirc Alpha releases have an 8 week\n"
 "expiry date.\n"
@@ -113,7 +113,7 @@ msgstr ""
 "kSirc-ALPHA ER ÚTRUNNIÐ!!\n"
 "Vinsamlegast uppfærið eða notið beta útgáfu."
 
-#: ksirc.cpp:68
+#: ksirc.cpp:71
 msgid ""
 "kSirc Alpha release have an 8 week\n"
 "expiry date.\n"
@@ -125,219 +125,215 @@ msgstr ""
 "\n"
 "ÞESSI ÚTGÁFA MUN RENNA ÚT INNAN FJÖGURRA VIKNA"
 
-#: open_top.cpp:26
+#: open_top.cpp:27
 msgid "New Window For"
 msgstr "Nýr gluggi fyrir"
 
-#: open_topData.cpp:39
+#: open_topData.cpp:40
 msgid "Channel/Nick:"
 msgstr "Rás/Nikk"
 
-#: servercontroller.cpp:160
+#: servercontroller.cpp:163
 msgid "&Dock"
 msgstr "Á s&pjaldið"
 
-#: servercontroller.cpp:168 servercontroller.cpp:750
+#: servercontroller.cpp:171 servercontroller.cpp:773
 msgid "New Server..."
 msgstr "Nýr þjónn..."
 
-#: servercontroller.cpp:169
+#: servercontroller.cpp:172
 msgid "&Join Channel..."
 msgstr "&Tengjast rás..."
 
-#: servercontroller.cpp:171
+#: servercontroller.cpp:174
 msgid "&Connections"
 msgstr "T&engingar"
 
-#: servercontroller.cpp:188 servercontroller.cpp:739
+#: servercontroller.cpp:191 servercontroller.cpp:762
 msgid "&Colour Preferences..."
 msgstr "&Litastillingar..."
 
-#: servercontroller.cpp:190 servercontroller.cpp:741
+#: servercontroller.cpp:193 servercontroller.cpp:764
 msgid "&Global Fonts..."
 msgstr "&Altækt letur..."
 
-#: servercontroller.cpp:192 servercontroller.cpp:743
+#: servercontroller.cpp:195 servercontroller.cpp:766
 msgid "&Filter Rule Editor..."
 msgstr "Síuregluritill"
 
-#: servercontroller.cpp:194 servercontroller.cpp:745
+#: servercontroller.cpp:197 servercontroller.cpp:768
 msgid "&Web Server Configuration..."
 msgstr "Stillingar vefþjóns"
 
-#: servercontroller.cpp:197 servercontroller.cpp:747
+#: servercontroller.cpp:200 servercontroller.cpp:770
 msgid "&Preferences..."
 msgstr "Sti&llingar"
 
-#: servercontroller.cpp:207
+#: servercontroller.cpp:210
 msgid "Help on Colours..."
 msgstr "Hjálp um liti..."
 
-#: servercontroller.cpp:209
+#: servercontroller.cpp:212
 msgid "Help on Filters..."
 msgstr "Hjálp um síur..."
 
-#: servercontroller.cpp:211
+#: servercontroller.cpp:214
 msgid "Help on Keys..."
 msgstr "Hjálp um hnappa..."
 
-#: servercontroller.cpp:214
+#: servercontroller.cpp:217
 msgid "About kSirc..."
 msgstr "Um kSirc..."
 
-#: servercontroller.cpp:232
+#: servercontroller.cpp:234
 msgid "Server Control"
 msgstr "Stillingar þjóna"
 
-#: servercontroller.cpp:293 servercontroller.cpp:457
+#: servercontroller.cpp:295 servercontroller.cpp:459
 msgid "Channels"
 msgstr "Rásir"
 
-#: servercontroller.cpp:293 servercontroller.cpp:457
+#: servercontroller.cpp:295 servercontroller.cpp:459
 msgid "Online"
 msgstr "Tengdur"
 
-#: servercontroller.cpp:695
+#: servercontroller.cpp:718
 msgid "Active Server Connections"
 msgstr "Virkar tengingar"
 
-#: servercontroller.cpp:736
+#: servercontroller.cpp:759
 msgid "&Undock"
 msgstr "&Af spjaldi"
 
-#: ssfeprompt.cpp:25
+#: ssfeprompt.cpp:26
 msgid "Prompt"
 msgstr "Hvati"
 
-#: toplevel.cpp:140
-msgid "Lag in seconds to the server"
-msgstr "Töf til þjóns í sek."
-
-#: toplevel.cpp:144
+#: toplevel.cpp:147
 msgid "&Ticker Mode"
 msgstr "Strimilshamur"
 
-#: toplevel.cpp:166
+#: toplevel.cpp:170
 msgid "&Cut Window..."
 msgstr "&Klippa glugga..."
 
-#: toplevel.cpp:297
+#: toplevel.cpp:315
 msgid "&Users"
 msgstr "&Notendur"
 
-#: welcomeWin.cpp:30
+#: welcomeWin.cpp:32
 msgid "Welcome to kSirc"
 msgstr "Velkomin(n) í kSirc"
 
-#: welcomeWinData.cpp:35
+#: welcomeWinData.cpp:36
 msgid "Show Again"
 msgstr "Sýna aftur"
 
-#: welcomeWinData.cpp:44
+#: welcomeWinData.cpp:45
 msgid "Dissmiss"
 msgstr "Loka"
 
-#: KSColourPicker/kscolourpicker.cpp:28
+#: KSColourPicker/kscolourpicker.cpp:29
 msgid "kSirc Colour Picker"
 msgstr "kSirc litaval"
 
-#: KSColourPicker/kscolourpickerData.cpp:30
+#: KSColourPicker/kscolourpickerData.cpp:31
 msgid "Pick"
 msgstr "Velja"
 
-#: KSColourPicker/kscolourpickerData.cpp:46
+#: KSColourPicker/kscolourpickerData.cpp:47
 msgid "Sample Colour"
 msgstr "Litasýnishorn"
 
-#: KSCutDialog/KSCutDialog.cpp:27
+#: KSCutDialog/KSCutDialog.cpp:28
 msgid "Cut Window"
 msgstr "Klippa glugga"
 
-#: KSCutDialog/KSCutDialogData.cpp:39
+#: KSCutDialog/KSCutDialogData.cpp:40
 msgid "Cop&y"
 msgstr "Afr&ita"
 
-#: KSOpenkSirc/open_ksirc.cpp:38
+#: KSOpenkSirc/open_ksirc.cpp:41
 msgid "Connect to Server"
 msgstr "Tengjast þjóni"
 
-#: KSOpenkSirc/open_ksirc.cpp:186
+#: KSOpenkSirc/open_ksirc.cpp:184
 msgid "Not Avalable"
 msgstr "Ekki í boði"
 
-#: KSOpenkSirc/open_ksircData.cpp:37
+#: KSOpenkSirc/open_ksircData.cpp:38
 msgid "&Connect"
 msgstr "&Tengjast"
 
-#: KSOpenkSirc/open_ksircData.cpp:54
+#: KSOpenkSirc/open_ksircData.cpp:55
 msgid "&Edit Servers"
 msgstr "&Sýsla með þjóna"
 
-#: KSOpenkSirc/open_ksircData.cpp:86
+#: KSOpenkSirc/open_ksircData.cpp:87
 msgid "Group:"
 msgstr "Heiti nets:"
 
-#: KSOpenkSirc/open_ksircData.cpp:103
+#: KSOpenkSirc/open_ksircData.cpp:104
 msgid "Server/Quick Connect to:"
 msgstr "Þjónn/hraðtenging til:"
 
-#: KSOpenkSirc/open_ksircData.cpp:120
+#: KSOpenkSirc/open_ksircData.cpp:121
 msgid "Port:"
-msgstr "Port:"
+msgstr "Gátt:"
 
-#: KSOpenkSirc/open_ksircData.cpp:147
+#: KSOpenkSirc/open_ksircData.cpp:148
 msgid "Server Desc:"
 msgstr "Lýsing þjóns:"
 
-#: KSPrefs/UserMenuRefData.cpp:61
+#: KSPrefs/UserMenuRefData.cpp:62
 msgid "Menu Name"
 msgstr "Heiti valmyndar"
 
-#: KSPrefs/UserMenuRefData.cpp:70
+#: KSPrefs/UserMenuRefData.cpp:71
 msgid "Type"
 msgstr "Tegund"
 
-#: KSPrefs/UserMenuRefData.cpp:79
+#: KSPrefs/UserMenuRefData.cpp:80
 msgid "Command"
 msgstr "Skipun"
 
-#: KSPrefs/UserMenuRefData.cpp:87
+#: KSPrefs/UserMenuRefData.cpp:88
 msgid "OP Only"
 msgstr "Bara oppar"
 
-#: KSPrefs/UserMenuRefData.cpp:135
+#: KSPrefs/UserMenuRefData.cpp:136
 msgid "Modify"
 msgstr "Breyta"
 
-#: KSPrefs/ksprefs.cpp:9
+#: KSPrefs/ksprefs.cpp:10
 msgid "kSirc Prefrences"
 msgstr "Stillingar kSirc"
 
-#: KSPrefs/ksprefs.cpp:22
+#: KSPrefs/ksprefs.cpp:24
 msgid "&General"
 msgstr "&Almennt"
 
-#: KSPrefs/ksprefs.cpp:23
+#: KSPrefs/ksprefs.cpp:25
 msgid "&StartUp"
 msgstr "&Uppkeyrsla"
 
-#: KSPrefs/ksprefs.cpp:24
+#: KSPrefs/ksprefs.cpp:26
 msgid "Servers/&Channels"
 msgstr "Þjónar/Rásir"
 
-#: KSPrefs/ksprefs.cpp:25
+#: KSPrefs/ksprefs.cpp:27
 msgid "&User Menu"
 msgstr "&Notendavalmynd"
 
-#: KSPrefs/ksprefs.cpp:26
+#: KSPrefs/ksprefs.cpp:28
 msgid "&Default Filters"
 msgstr "&Sjálfgefnar síur"
 
-#: KSTicker/speeddialogData.cpp:79
+#: KSTicker/speeddialogData.cpp:80
 msgid "Tick Interval"
 msgstr "Hraði strimils"
 
-#: KSTicker/speeddialogData.cpp:88
+#: KSTicker/speeddialogData.cpp:89
 msgid "Step Size"
 msgstr "Færsla strimils"
 
@@ -345,3 +341,6 @@ msgstr "Færsla strimils"
 #, c-format
 msgid "No such file \"%s\"!"
 msgstr "Skráin \"%s\" er ekki til!"
+
+#~ msgid "Lag in seconds to the server"
+#~ msgstr "Töf til þjóns í sek."
