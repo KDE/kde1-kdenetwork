@@ -361,9 +361,8 @@ msgstr "Initialisering..."
 
 #: kmfolderdia.cpp:38 kmmsgpartdlg.cpp:62 kmsettings.cpp:176
 #: kmsettings.cpp:869
-#, fuzzy
 msgid "Name:"
-msgstr "Logginnnavn:"
+msgstr "Navn:"
 
 #: kmcomposewin.cpp:1451 kmfolderdia.cpp:44 kmfolderdia.cpp:120
 msgid "unnamed"
@@ -439,7 +438,7 @@ msgstr "Konto:   (legg til minst en konto!)"
 
 #: kmcomposewin.cpp:135 kmsettings.cpp:269
 msgid "Name"
-msgstr ""
+msgstr "Navn"
 
 #: kmcomposewin.cpp:138 kmsettings.cpp:270
 msgid "Type"
@@ -579,7 +578,7 @@ msgstr "Send post i utboksmappen ved sjekking av mail"
 
 #: kmsettings.cpp:556
 msgid "Misc"
-msgstr ""
+msgstr "Forskjellig"
 
 #: kmsettings.cpp:580
 msgid "Message Body Font"
@@ -606,9 +605,8 @@ msgid "Choose Signature File"
 msgstr "Velg signaturfil"
 
 #: kmsettings.cpp:861
-#, fuzzy
 msgid "Type:"
-msgstr "Type"
+msgstr "Type:"
 
 #: kmsettings.cpp:874
 msgid "Local Account"
@@ -636,7 +634,7 @@ msgstr "Slett post fra tjener"
 
 #: kmsettings.cpp:907
 msgid "Enable interval Mail checking"
-msgstr ""
+msgstr "Slå på internval-sjekking av epost"
 
 #: kmsettings.cpp:921
 msgid "Store new mail in account:"
@@ -671,9 +669,8 @@ msgid "Subject"
 msgstr "Subjekt"
 
 #: kmheaders.cpp:42
-#, fuzzy
 msgid "Date"
-msgstr "Dato: "
+msgstr "Dato"
 
 #: kmheaders.cpp:187
 #, c-format
@@ -736,7 +733,7 @@ msgstr "KMail Composer"
 
 #: kmcomposewin.cpp:136
 msgid "Size"
-msgstr ""
+msgstr "Størrelse"
 
 #: kmcomposewin.cpp:137
 msgid "Encoding"
@@ -883,9 +880,8 @@ msgid "&Attach"
 msgstr "&Legg ved"
 
 #: kmcomposewin.cpp:547
-#, fuzzy
 msgid "Send message"
-msgstr "Send meldinger:"
+msgstr "Send meldinger"
 
 #: kmcomposewin.cpp:571
 msgid "Cut selection"
@@ -981,9 +977,8 @@ msgid "Subject:"
 msgstr "Subjekt:"
 
 #: kmcomposewin.cpp:1473
-#, fuzzy
 msgid "Date:"
-msgstr "Dato: "
+msgstr "Dato:"
 
 #: kmcomposewin.cpp:1582
 msgid "KMail: Spellcheck"
@@ -1492,18 +1487,19 @@ msgid "Bad pass Phrase; couldn't decrypt"
 msgstr "Galt passord-frase; kunne ikke dekryptere"
 
 #: kpgp.cpp:836
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not find public keys matching the\n"
 "userid(s) %s. These persons won't be able\n"
 "to read the message."
 msgstr ""
-"Offentlig nøkkel for %s ikke funnet.\n"
-"Denne person vil ikke være i stand til dekryptere meldingen."
+"Kunne ikke finne offentlig nøkkelfor\n"
+"brukeriden(e) %s. Disse personene vil ikke kunne\n"
+"lese meldingen."
 
 #: kpgp.cpp:848
 msgid "Could not find public keys for some persons.\n"
-msgstr ""
+msgstr "Kunne ikke finne offentlig nøkkel for noen av personer.\n"
 
 #: kpgp.cpp:861
 msgid "Bad pass Phrase; couldn't sign"
