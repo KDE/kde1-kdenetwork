@@ -37,7 +37,7 @@
 ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
   : QDialog(parent, name, TRUE, WStyle_Customize|WStyle_NormalBorder)
 {
-  setCaption(klocale->translate("Edit Modem Commands"));
+  setCaption(i18n("Edit Modem Commands"));
 
   const int GRIDROWS = 18;
 
@@ -51,14 +51,14 @@ ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
   l1->addMultiCellWidget(box, 0, GRIDROWS-1, 0, 3);
 
   initstr = new QLineEdit(this);
-  label1 = new QLabel(klocale->translate("Initialization String:"), this);
+  label1 = new QLabel(i18n("Initialization String:"), this);
   ADJUSTEDIT(initstr);
   ADJUSTLABEL(label1);
   l1->addWidget(label1, 1, 1);
   l1->addWidget(initstr, 1, 2);
 
   initresp = new QLineEdit(this);
-  label2 = new QLabel(klocale->translate("Init Response:"), this);
+  label2 = new QLabel(i18n("Init Response:"), this);
   ADJUSTEDIT(initresp);
   ADJUSTLABEL(label2);
   l1->addWidget(label2, 2, 1);
@@ -83,89 +83,89 @@ ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
   l2->addWidget(linitslider, 0);
   l2->addWidget(initslider, 1);
   
-  label3 = new QLabel(klocale->translate("Init Delay (sec/100):"), this);
+  label3 = new QLabel(i18n("Init Delay (sec/100):"), this);
   ADJUSTLABEL(label3);  
   l1->addWidget(label3, 3, 1);
 
   dialstr = new QLineEdit(this);
-  label4 = new QLabel(klocale->translate("Dial String:"),this);
+  label4 = new QLabel(i18n("Dial String:"),this);
   ADJUSTEDIT(dialstr);
   ADJUSTLABEL(label4);
   l1->addWidget(label4, 4, 1);
   l1->addWidget(dialstr, 4, 2);
 
   connectresp = new QLineEdit(this);
-  label5 = new QLabel(klocale->translate("Connect Response:"), this);
+  label5 = new QLabel(i18n("Connect Response:"), this);
   ADJUSTEDIT(connectresp);
   ADJUSTLABEL(label5);
   l1->addWidget(label5, 5, 1);
   l1->addWidget(connectresp, 5, 2);
 
   busyresp = new QLineEdit(this);
-  label6 = new QLabel(klocale->translate("Busy Response:"), this);
+  label6 = new QLabel(i18n("Busy Response:"), this);
   ADJUSTEDIT(busyresp);
   ADJUSTLABEL(label6);
   l1->addWidget(label6, 6, 1);
   l1->addWidget(busyresp, 6, 2);
 
   nocarrierresp = new QLineEdit(this);
-  label7 = new QLabel(klocale->translate("No Carrier Resonse:"), this);
+  label7 = new QLabel(i18n("No Carrier Resonse:"), this);
   ADJUSTEDIT(nocarrierresp);
   ADJUSTLABEL(label7);
   l1->addWidget(label7, 7, 1);
   l1->addWidget(nocarrierresp, 7, 2);
 
   nodialtoneresp = new QLineEdit(this);
-  label8 = new QLabel(klocale->translate("No Dialtone Response:"), this);
+  label8 = new QLabel(i18n("No Dialtone Response:"), this);
   ADJUSTEDIT(nodialtoneresp);
   ADJUSTLABEL(label8);
   l1->addWidget(label8, 8, 1);
   l1->addWidget(nodialtoneresp, 8, 2);
 
   hangupstr = new QLineEdit(this);
-  label9 = new QLabel(klocale->translate("Hangup String:"), this);
+  label9 = new QLabel(i18n("Hangup String:"), this);
   ADJUSTEDIT(hangupstr);
   ADJUSTLABEL(label9);
   l1->addWidget(label9, 9, 1);
   l1->addWidget(hangupstr, 9, 2);
 
   hangupresp = new QLineEdit(this);
-  label10 = new QLabel(klocale->translate("Hangup Response:"), this);
+  label10 = new QLabel(i18n("Hangup Response:"), this);
   ADJUSTEDIT(hangupresp);
   ADJUSTLABEL(label10);
   l1->addWidget(label10, 10, 1);
   l1->addWidget(hangupresp, 10, 2);
 
   answerstr = new QLineEdit(this);
-  label11 = new QLabel(klocale->translate("Answer String:"), this);
+  label11 = new QLabel(i18n("Answer String:"), this);
   ADJUSTEDIT(answerstr);
   ADJUSTLABEL(label11);
   l1->addWidget(label11, 11, 1);
   l1->addWidget(answerstr, 11, 2);
 
   ringresp = new QLineEdit(this);
-  label12 = new QLabel(klocale->translate("Ring Response:"), this);
+  label12 = new QLabel(i18n("Ring Response:"), this);
   ADJUSTEDIT(ringresp);
   ADJUSTLABEL(label12);
   l1->addWidget(label12, 12, 1);
   l1->addWidget(ringresp, 12, 2);
 
   answerresp = new QLineEdit(this);
-  label13 = new QLabel(klocale->translate("Answer Response:"), this);
+  label13 = new QLabel(i18n("Answer Response:"), this);
   ADJUSTEDIT(answerresp);
   ADJUSTLABEL(label13);
   l1->addWidget(label13, 13, 1);
   l1->addWidget(answerresp, 13, 2);
 
   escapestr = new QLineEdit(this);
-  label14 = new QLabel(klocale->translate("Escape String:"), this);
+  label14 = new QLabel(i18n("Escape String:"), this);
   ADJUSTEDIT(escapestr);
   ADJUSTLABEL(label14);
   l1->addWidget(label14, 14, 1);
   l1->addWidget(escapestr, 14, 2);
 
   escaperesp = new QLineEdit(this);
-  label15 = new QLabel(klocale->translate("Escape Response:"), this);
+  label15 = new QLabel(i18n("Escape Response:"), this);
   ADJUSTEDIT(escaperesp);
   ADJUSTLABEL(label15);
   l1->addWidget(label15, 15, 1);
@@ -192,15 +192,15 @@ ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
   l3->addWidget(lslider, 0);
   l3->addWidget(slider, 1);
   
-  label16 = new QLabel(klocale->translate("Guard Time (sec/50):"), this);
+  label16 = new QLabel(i18n("Guard Time (sec/50):"), this);
   ADJUSTLABEL(label16);  
   l1->addWidget(label16, 16, 1);
 
   KButtonBox *bbox = new KButtonBox(this);
   bbox->addStretch();
-  ok = bbox->addButton(klocale->translate("OK"));
+  ok = bbox->addButton(i18n("OK"));
   ok->setDefault(TRUE);
-  cancel = bbox->addButton(klocale->translate("Cancel"));
+  cancel = bbox->addButton(i18n("Cancel"));
   
   connect(ok, SIGNAL(clicked()), SLOT(okbutton()));
   connect(cancel, SIGNAL(clicked()), SLOT(cancelbutton()));

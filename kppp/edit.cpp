@@ -39,11 +39,11 @@ DialWidget::DialWidget( QWidget *parent, const char *name )
   QGridLayout *tl = new QGridLayout(this, GRIDROWS, 4, 10, 10);
   tl->addRowSpacing(0, fontMetrics().lineSpacing() - 10);
   box = new QGroupBox(this,"box");
-  box->setTitle(klocale->translate("Dial Setup"));
+  box->setTitle(i18n("Dial Setup"));
   tl->addMultiCellWidget(box, 0, GRIDROWS-1, 0, 3);
 
   connect_label = new QLabel(this);
-  connect_label->setText(klocale->translate("Connection Name:"));
+  connect_label->setText(i18n("Connection Name:"));
   MIN_SIZE(connect_label);
   tl->addWidget(connect_label, 1, 1);
 
@@ -54,7 +54,7 @@ DialWidget::DialWidget( QWidget *parent, const char *name )
   tl->addWidget(connectname_l, 1, 2);
   
   number_label = new QLabel(this);
-  number_label->setText(klocale->translate("Phone Number:"));
+  number_label->setText(i18n("Phone Number:"));
   MIN_SIZE(number_label);
   tl->addWidget(number_label, 2, 1);
 
@@ -65,27 +65,27 @@ DialWidget::DialWidget( QWidget *parent, const char *name )
   tl->addWidget(number_l, 2, 2);
 
   auth_l = new QLabel(this);
-  auth_l->setText(klocale->translate("Authentication:"));
+  auth_l->setText(i18n("Authentication:"));
   MIN_SIZE(auth_l);
   tl->addWidget(auth_l, 4, 1);
 
   auth = new QComboBox(this);
-  auth->insertItem(klocale->translate("Script-based"));
-  auth->insertItem(klocale->translate("PAP"));
-  auth->insertItem(klocale->translate("Terminal-based"));
-  auth->insertItem(klocale->translate("CHAP"));
+  auth->insertItem(i18n("Script-based"));
+  auth->insertItem(i18n("PAP"));
+  auth->insertItem(i18n("Terminal-based"));
+  auth->insertItem(i18n("CHAP"));
   MIN_WIDTH(auth);
   FIXED_HEIGHT(auth);
   tl->addWidget(auth, 4, 2);
 
   store_password = new QCheckBox(this);
-  store_password->setText(klocale->translate("Store password"));
+  store_password->setText(i18n("Store password"));
   MIN_SIZE(store_password);
   store_password->setChecked(TRUE);
   tl->addMultiCellWidget(store_password, 5, 5, 1, 2);
 
   command_label = new QLabel(this);
-  command_label->setText(klocale->translate("Execute program\nupon connect:"));
+  command_label->setText(i18n("Execute program\nupon connect:"));
   command_label->setAlignment(AlignVCenter);
   MIN_SIZE(command_label);
   tl->addWidget(command_label, 6, 1);
@@ -97,7 +97,7 @@ DialWidget::DialWidget( QWidget *parent, const char *name )
   tl->addWidget(command, 6, 2);
 
   discommand_label = new QLabel(this);
-  discommand_label->setText(klocale->translate("Execute program\nupon disconnect:"));
+  discommand_label->setText(i18n("Execute program\nupon disconnect:"));
   discommand_label->setAlignment(AlignVCenter);
   MIN_SIZE(discommand_label);
   tl->addWidget(discommand_label, 8, 1);
@@ -109,13 +109,13 @@ DialWidget::DialWidget( QWidget *parent, const char *name )
   tl->addWidget(discommand, 8, 2);
 
   pppd_label = new QLabel(this);
-  pppd_label->setText(klocale->translate("Edit pppd arguments:"));
+  pppd_label->setText(i18n("Edit pppd arguments:"));
   MIN_SIZE(pppd_label);
   tl->addWidget(pppd_label, 9, 1);
 
   QHBoxLayout *l2 = new QHBoxLayout;
   tl->addLayout(l2, 9, 2);
-  pppdargs = new QPushButton(klocale->translate("Arguments"), this);
+  pppdargs = new QPushButton(i18n("Arguments"), this);
   connect(pppdargs, SIGNAL(clicked()), SLOT(pppdargsbutton()));
   MIN_SIZE(pppdargs);
   FIXED_HEIGHT(pppdargs);
@@ -170,19 +170,19 @@ IPWidget::IPWidget( QWidget *parent, const char *name )
 {
 
   box1 = new QGroupBox(this,"box1");
-  box1->setTitle(klocale->translate("IP Setup"));
+  box1->setTitle(i18n("IP Setup"));
 
   box = new QGroupBox(this,"box");
 
   ipaddress_l = new IPLineEdit(this, "ipaddress_l");
 
   ipaddress_label = new QLabel(this);
-  ipaddress_label->setText(klocale->translate("IP Address:"));
+  ipaddress_label->setText(i18n("IP Address:"));
 
   subnetmask_l = new IPLineEdit(this, "subnetmask_l");
 
   sub_label = new QLabel(this);
-  sub_label->setText(klocale->translate("Subnet Mask:"));
+  sub_label->setText(i18n("Subnet Mask:"));
 
   rb = new QButtonGroup(this, "rb");
   rb->hide();
@@ -190,14 +190,14 @@ IPWidget::IPWidget( QWidget *parent, const char *name )
 	  SLOT(hitIPSelect(int)));  
 
   dynamicadd_rb = new QRadioButton(this, "dynamicadd_rb");
-  dynamicadd_rb->setText(klocale->translate("Dynamic IP Address"));
+  dynamicadd_rb->setText(i18n("Dynamic IP Address"));
 
   staticadd_rb = new QRadioButton(this, "staticadd_rb");
-  staticadd_rb->setText(klocale->translate("Static IP Address"));
+  staticadd_rb->setText(i18n("Static IP Address"));
   rb->insert(dynamicadd_rb, 0);
   rb->insert(staticadd_rb, 1);
 
-  autoname=new QCheckBox(klocale->translate("Auto-configure hostname from this IP"),
+  autoname=new QCheckBox(i18n("Auto-configure hostname from this IP"),
 	this,"autoname");
   autoname->adjustSize();
   autoname->setChecked(gpppdata.autoname());
@@ -311,7 +311,7 @@ DNSWidget::DNSWidget( QWidget *parent, const char *name )
   QGridLayout *tl = new QGridLayout(this, 3, 3, 10, 10);
   tl->addRowSpacing(0, fontMetrics().lineSpacing() - 10);
   box = new QGroupBox(this,"box");
-  box->setTitle(klocale->translate("DNS Servers"));
+  box->setTitle(i18n("DNS Servers"));
   tl->addMultiCellWidget(box, 0, 2, 0, 2);
   tl->setRowStretch(1, 1);
   tl->setColStretch(1, 1);
@@ -327,7 +327,7 @@ DNSWidget::DNSWidget( QWidget *parent, const char *name )
   l1->addLayout(l11);
 
   dnsdomain_label = new QLabel(this,"dnsdomainlabel");
-  dnsdomain_label->setText(klocale->translate("Domain Name:"));
+  dnsdomain_label->setText(i18n("Domain Name:"));
   MIN_SIZE(dnsdomain_label);
   l11->addWidget(dnsdomain_label, 0, 0);
 
@@ -339,7 +339,7 @@ DNSWidget::DNSWidget( QWidget *parent, const char *name )
   l11->addRowSpacing(1, 15);
 
   dns_label = new QLabel(this,"dnslabel");
-  dns_label->setText(klocale->translate("DNS IP Address:"));
+  dns_label->setText(i18n("DNS IP Address:"));
   MIN_SIZE(dns_label);
   l11->addWidget(dns_label, 2, 0);
 
@@ -353,7 +353,7 @@ DNSWidget::DNSWidget( QWidget *parent, const char *name )
 
   QHBoxLayout *l111 = new QHBoxLayout;
   l11->addLayout(l111, 3, 1);
-  add = new QPushButton(klocale->translate("Add"), this, "add");
+  add = new QPushButton(i18n("Add"), this, "add");
   connect(add, SIGNAL(clicked()), SLOT(adddns()));
   FIXED_HEIGHT(add);
   int width = add->sizeHint().width();
@@ -362,7 +362,7 @@ DNSWidget::DNSWidget( QWidget *parent, const char *name )
   l111->addWidget(add);
   l111->addStretch(1);
 
-  remove = new QPushButton(klocale->translate("Remove"), this, "remove");
+  remove = new QPushButton(i18n("Remove"), this, "remove");
   connect(remove, SIGNAL(clicked()), SLOT(removedns()));
   FIXED_HEIGHT(remove);
   width = remove->sizeHint().width();
@@ -372,7 +372,7 @@ DNSWidget::DNSWidget( QWidget *parent, const char *name )
   l111->addWidget(remove);
 
   servers_label = new QLabel(this,"servers");
-  servers_label->setText(klocale->translate("DNS Address List:"));
+  servers_label->setText(i18n("DNS Address List:"));
   servers_label->setAlignment(AlignTop|AlignLeft);
   MIN_SIZE(servers_label);
   l11->addWidget(servers_label, 4, 0);
@@ -381,7 +381,7 @@ DNSWidget::DNSWidget( QWidget *parent, const char *name )
   dnsservers->setMinimumSize(150, 100);
   l11->addWidget(dnsservers, 4, 1);
 
-  exdnsdisabled_toggle = new QCheckBox(klocale->translate(
+  exdnsdisabled_toggle = new QCheckBox(i18n(
      "Disable existing DNS Servers during Connection"), 
 				       this);
   MIN_SIZE(exdnsdisabled_toggle);
@@ -434,7 +434,7 @@ GatewayWidget::GatewayWidget( QWidget *parent, const char *name )
   : QWidget(parent, name)
 {
   box1 = new QGroupBox(this,"box1");
-  box1->setTitle(klocale->translate("Gateway Setup"));
+  box1->setTitle(i18n("Gateway Setup"));
 
   box = new QGroupBox(this,"box");
 
@@ -443,19 +443,19 @@ GatewayWidget::GatewayWidget( QWidget *parent, const char *name )
   connect(rb, SIGNAL(clicked(int)), SLOT(hitGatewaySelect(int)));
 
   defaultgateway = new QRadioButton(this, "defaultgateway");
-  defaultgateway->setText(klocale->translate("Default Gateway"));
+  defaultgateway->setText(i18n("Default Gateway"));
   rb->insert(defaultgateway, 0);
 
   staticgateway = new QRadioButton(this, "staticgateway");
-  staticgateway->setText(klocale->translate("Static Gateway"));
+  staticgateway->setText(i18n("Static Gateway"));
   rb->insert(staticgateway, 1);
 
   gatewayaddr = new IPLineEdit(this, "gatewayaddr");
 
   gate_label = new QLabel(this, "label");
-  gate_label->setText(klocale->translate("Gateway\nIP Address:"));
+  gate_label->setText(i18n("Gateway\nIP Address:"));
 
-  defaultroute=new QCheckBox(klocale->translate("Assign the Default Route to this Gateway"),
+  defaultroute=new QCheckBox(i18n("Assign the Default Route to this Gateway"),
 	this,"defaultroute");
   defaultroute->adjustSize();
   defaultroute->setChecked(gpppdata.defaultroute());
@@ -554,13 +554,13 @@ ScriptWidget::ScriptWidget( QWidget *parent, const char *name )
   QGridLayout *tl = new QGridLayout(this, GRIDROWS, 3, 10, 10);
   tl->addRowSpacing(0, fontMetrics().lineSpacing() - 10);
   box = new QGroupBox(this,"box");
-  box->setTitle(klocale->translate("Edit Script"));
+  box->setTitle(i18n("Edit Script"));
   tl->addMultiCellWidget(box, 0, GRIDROWS-1, 0, 2);
 
   QVBoxLayout *l1 = new QVBoxLayout;
   tl->addLayout(l1, 1, 1);
   default_script = 
-    new QCheckBox(klocale->translate("Use default script"), this);
+    new QCheckBox(i18n("Use default script"), this);
   MIN_SIZE(default_script);
   l1->addWidget(default_script);
   l1->addStretch(1);
@@ -569,7 +569,7 @@ ScriptWidget::ScriptWidget( QWidget *parent, const char *name )
   connect(se, SIGNAL(returnPressed()), SLOT(addButton()));
   l1->addWidget(se);
 
-  add = new QPushButton(klocale->translate("Add"), this, "add");
+  add = new QPushButton(i18n("Add"), this, "add");
   connect(add, SIGNAL(clicked()), SLOT(addButton()));
   FIXED_HEIGHT(add);
   int width = add->sizeHint().width();
@@ -577,14 +577,14 @@ ScriptWidget::ScriptWidget( QWidget *parent, const char *name )
   add->setMinimumWidth(width);
 
 
-  insert = new QPushButton(klocale->translate("Insert"), this, "insert");
+  insert = new QPushButton(i18n("Insert"), this, "insert");
   connect(insert, SIGNAL(clicked()), SLOT(insertButton()));
   FIXED_HEIGHT(insert);
   width = insert->sizeHint().width();
   width = MAX(width,60);
   insert->setMinimumWidth(width);
 
-  remove = new QPushButton(klocale->translate("Remove"), this, "remove");
+  remove = new QPushButton(i18n("Remove"), this, "remove");
   connect(remove, SIGNAL(clicked()), SLOT(removeButton()));
   FIXED_HEIGHT(remove);
   width = remove->sizeHint().width();

@@ -32,6 +32,7 @@
 #include <qpushbt.h>
 #include <qapp.h>
 
+extern KPPPWidget *p_kppp;
 
 LoginMultiLineEdit::LoginMultiLineEdit(QWidget *parent, const char *name, 
 				       const int fd)
@@ -66,7 +67,7 @@ void LoginMultiLineEdit::insertChar(char c){
 
   QMultiLineEdit::insertChar(c);
 
-  p_xppp->debugwindow->readchar(c);
+  p_kppp->debugwindow->readchar(c);
 
 }
 
@@ -81,7 +82,7 @@ void LoginMultiLineEdit::mynewline() {
   QMultiLineEdit::end(FALSE);
   QMultiLineEdit::newLine();
 
-  p_xppp->debugwindow->readchar('\n'); 
+  p_kppp->debugwindow->readchar('\n'); 
 
 }
 

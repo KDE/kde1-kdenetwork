@@ -70,14 +70,14 @@
 #include "debug.h"
 #include "pppstatdlg.h"
 
-class XPPPWidget : public QWidget {
+class KPPPWidget : public QWidget {
 
 Q_OBJECT
 
 public:
 
-  XPPPWidget( QWidget *parent=0, const char *name=0 );
-  ~XPPPWidget() {}
+  KPPPWidget( QWidget *parent=0, const char *name=0 );
+  ~KPPPWidget() {}
 
   void resetaccounts();
   friend void dieppp(int);              // if the pppd daemon dies...
@@ -154,7 +154,6 @@ private:
   AboutWidget *about;
 };
 
-extern XPPPWidget *p_xppp;
 extern void killppp();
 void dieppp(int);
 

@@ -43,7 +43,7 @@ extern QString ati_query_strings[NUM_OF_ATI];
 ModemTransfer::ModemTransfer(QWidget *parent=0, const char *name=0)
   : QDialog(parent, name,TRUE, WStyle_Customize|WStyle_NormalBorder)
 {
-  setCaption(klocale->translate("ATI Query"));
+  setCaption(i18n("ATI Query"));
   
   QVBoxLayout *tl = new QVBoxLayout(this, 10, 10);
   
@@ -59,18 +59,17 @@ ModemTransfer::ModemTransfer(QWidget *parent=0, const char *name=0)
   // search all these messages. This is a little overkill, so I take
   // the longest english message, translate it and give it additional
   // 20 percent space. Hope this is enough.
-  statusBar->setText(klocale->
-		     translate("Sorry, can't create modem lock file."));
+  statusBar->setText(i18n("Sorry, can't create modem lock file."));
   statusBar->setMinimumWidth((statusBar->sizeHint().width() * 12) / 10);
   statusBar->setMinimumHeight(statusBar->sizeHint().height() + 4);
 
   // set original text
-  statusBar->setText(klocale->translate("Looking for Modem ..."));
+  statusBar->setText(i18n("Looking for Modem ..."));
   progressBar->setFixedHeight(statusBar->minimumSize().height());
   tl->addWidget(progressBar);
   tl->addWidget(statusBar);
 
-  cancel = new QPushButton(klocale->translate("Cancel"), this);
+  cancel = new QPushButton(i18n("Cancel"), this);
   cancel->setFocus();
   connect(cancel, SIGNAL(clicked()), SLOT(cancelbutton()));
   FIXED_SIZE(cancel);
@@ -127,8 +126,8 @@ void ModemTransfer::time_out_slot() {
   scripttimer->stop();
 
   QMessageBox::warning(this, 
-		       klocale->translate("Error"),
-		       klocale->translate("Modem Query timed out."));
+		       i18n("Error"),
+		       i18n("Modem Query timed out."));
   reject();
 }
 
@@ -142,12 +141,12 @@ void ModemTransfer::init() {
   int lock = lockdevice();
   if (lock == 1){
     
-    statusBar->setText(klocale->translate("Sorry, modem device is locked."));
+    statusBar->setText(i18n("Sorry, modem device is locked."));
     return;
   }
   if (lock == -1){
     
-    statusBar->setText(klocale->translate("Sorry, can't create modem lock file."));
+    statusBar->setText(i18n("Sorry, can't create modem lock file."));
     return;
   }
 
@@ -162,7 +161,7 @@ void ModemTransfer::init() {
       writeline("ATE0Q1V1"); // E0 don't echo the commands I send ...
     }
 
-    statusBar->setText(klocale->translate("Modem Ready"));
+    statusBar->setText(i18n("Modem Ready"));
     kapp->processEvents();
 
     kapp->processEvents();
@@ -330,7 +329,7 @@ void ModemTransfer::cancelbutton() {
   readtimer->stop();
   timeout_timer->stop();
 
-  statusBar->setText(klocale->translate("One Moment Please ..."));
+  statusBar->setText(i18n("One Moment Please ..."));
   kapp->processEvents();
   
   if(modemfd >= 0) {
@@ -366,13 +365,13 @@ bool ModemTransfer::opentty() {
 
   if((modemfd = open(gpppdata.modemDevice(), O_RDWR|O_NDELAY)) < 0){
 
-    statusBar->setText(klocale->translate("Can't open Modem"));
+    statusBar->setText(i18n("Can't open Modem"));
     return FALSE;
   }
 
   if(tcgetattr(modemfd, &tty) < 0){
 
-    statusBar->setText(klocale->translate("Sorry, the modem is busy."));
+    statusBar->setText(i18n("Sorry, the modem is busy."));
     return FALSE;
   }
 
@@ -412,7 +411,7 @@ bool ModemTransfer::opentty() {
   cfsetispeed(&tty, modemspeed());
 
   if(tcsetattr(modemfd, TCSANOW, &tty) < 0){
-    statusBar->setText(klocale->translate("Sorry, the modem is busy"));
+    statusBar->setText(i18n("Sorry, the modem is busy"));
     return FALSE;
   }
 
@@ -531,7 +530,7 @@ ModemInfo::ModemInfo(QWidget *parent=0 ,const char* name=0)
 {
   QString label_text;
 
-  setCaption(klocale->translate("Modem Query Results"));
+  setCaption(i18n("Modem Query Results"));
 
   QVBoxLayout *tl = new QVBoxLayout(this, 10, 10);
 
@@ -558,7 +557,7 @@ ModemInfo::ModemInfo(QWidget *parent=0 ,const char* name=0)
   //tl->addSpacing(1);
 
   QHBoxLayout *l2 = new QHBoxLayout;
-  ok = new QPushButton(klocale->translate("Close"), this);
+  ok = new QPushButton(i18n("Close"), this);
   ok->setDefault(TRUE);
   ok->setFocus();
 

@@ -33,8 +33,7 @@
 #include "main.h"
 #include "kpppconfig.h"
 
-extern KApplication *app;
-extern XPPPWidget   *p_xppp;
+extern KPPPWidget   *p_kppp;
 
 extern bool do_stats();
 extern bool init_stats();
@@ -45,12 +44,12 @@ DockWidget::DockWidget(const char *name)
 
   docked = false;
 
-  QString pixdir = app->kde_datadir() + QString("/kppp/pics/");  
+  QString pixdir = kapp->kde_datadir() + QString("/kppp/pics/");  
   QString tmp;
 
 #define PMERROR(pm) \
-  tmp.sprintf(klocale->translate("Could not load %s !"), pm); \
-  QMessageBox::warning(this, klocale->translate("Error"), tmp);
+  tmp.sprintf(i18n("Could not load %s !"), pm); \
+  QMessageBox::warning(this, i18n("Error"), tmp);
 
   // load pixmaps
   if (!dock_none_pixmap.load(pixdir + "dock_none.xpm")){
@@ -68,11 +67,11 @@ DockWidget::DockWidget(const char *name)
 
   // popup menu for right mouse button
   popup_m = new QPopupMenu();
-  toggleID = popup_m->insertItem(klocale->translate("Restore"),
+  toggleID = popup_m->insertItem(i18n("Restore"),
 				 this, SLOT(toggle_window_state()));
-  popup_m->insertItem(klocale->translate("Details"), this, SLOT(show_stats()));
+  popup_m->insertItem(i18n("Details"), this, SLOT(show_stats()));
   popup_m->insertSeparator();
-  popup_m->insertItem(klocale->translate("Disconnect"), 
+  popup_m->insertItem(i18n("Disconnect"), 
 		      this, SLOT(disconnect()));
 
   statstring = statstring.sprintf("In: %.2f Out %.2f",
@@ -217,10 +216,10 @@ void DockWidget::mousePressEvent(QMouseEvent *e) {
     int y = e->y() + this->y();
 
     QString text;
-    if(p_xppp->con_win->isVisible())
-      text = klocale->translate("Minimize");
+    if(p_kppp->con_win->isVisible())
+      text = i18n("Minimize");
     else
-      text = klocale->translate("Restore");
+      text = i18n("Restore");
     
     popup_m->changeItem(text, toggleID);
     popup_m->popup(QPoint(x, y));
@@ -232,27 +231,27 @@ void DockWidget::mousePressEvent(QMouseEvent *e) {
 void DockWidget::toggle_window_state() {
 
   // restore/hide connect-window
-  if(p_xppp != 0L)  {
-    if (p_xppp->con_win->isVisible())
-      p_xppp->con_win->hide();
+  if(p_kppp != 0L)  {
+    if (p_kppp->con_win->isVisible())
+      p_kppp->con_win->hide();
     else 
-      p_xppp->con_win->show();
+      p_kppp->con_win->show();
   }
 }
 
 void DockWidget::show_stats() {
  
   // show statistics
-  if(p_xppp != 0L) {
-    p_xppp->stats->show();
+  if(p_kppp != 0L) {
+    p_kppp->stats->show();
   }
 }
 
 void DockWidget::disconnect() {
 
   // close ppp-connection
-  if(p_xppp != 0L) {
-    emit p_xppp->disconnect();
+  if(p_kppp != 0L) {
+    emit p_kppp->disconnect();
   }
 }
 

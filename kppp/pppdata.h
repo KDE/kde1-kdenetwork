@@ -140,7 +140,7 @@ public:
 
   // general functions
 
-  bool open(const KApplication*);
+  bool open();
   void save();
   void cancel();
 
@@ -155,7 +155,7 @@ public:
   void writeListConfig(const char *, const char *, int, const char*);
   void writeWholeListConfig(const char *, const char *, QStrList &, char);
 
-  // functions to set/get general xppp info
+  // functions to set/get general kppp info
 
   const char* Password();
   void setPassword(const char* );

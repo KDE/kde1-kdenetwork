@@ -32,18 +32,17 @@
 #include "macros.h"
 
 QString ati_query_strings[NUM_OF_ATI];
-extern KApplication*	app;
 
 GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
   : QWidget(parent, name)
 {
   QGridLayout *tl = new QGridLayout(this, 10, 4, 10, 10);
   tl->addRowSpacing(0, fontMetrics().lineSpacing() - 10); // magic
-  box = new QGroupBox(klocale->translate("kppp Setup"), this,"box");
+  box = new QGroupBox(i18n("kppp Setup"), this,"box");
   tl->addMultiCellWidget(box, 0, 9, 0, 3);
   
 //   label1 = new QLabel(this,"path");
-//   label1->setText(klocale->translate("pppd Path:"));
+//   label1->setText(i18n("pppd Path:"));
 //   label1->setMinimumSize(label1->sizeHint());
 //   tl->addWidget(label1, 1, 1);
 
@@ -60,7 +59,7 @@ GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
   //pppd Timeout Line Edit Box
 
   label6 = new QLabel(this,"timeout");
-  label6->setText(klocale->translate("pppd Timeout:"));
+  label6->setText(i18n("pppd Timeout:"));
   label6->setMinimumSize(label6->sizeHint());
   tl->addWidget(label6, 1, 1);
   
@@ -76,12 +75,12 @@ GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
   l1->addWidget(pppdtimeout, 1);
 
   labeltmp = new QLabel(this,"seconds");
-  labeltmp->setText(klocale->translate("Seconds"));
+  labeltmp->setText(i18n("Seconds"));
   labeltmp->setMinimumSize(labeltmp->sizeHint());
   l1->addWidget(labeltmp, 2);
 
 //   logviewerlabel = new QLabel(this,"logviewerlabel");
-//   logviewerlabel->setText(klocale->translate("Log Viewer:"));
+//   logviewerlabel->setText(i18n("Log Viewer:"));
 //   logviewerlabel->setMinimumSize(logviewerlabel->sizeHint());
 //   tl->addWidget(logviewerlabel, 2, 1);
 
@@ -96,39 +95,39 @@ GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
 
   tl->addRowSpacing(2, 5);
 
-  chkbox6 = new QCheckBox(klocale->translate("Dock into Panel on Connect"),this,"dockingbox");
+  chkbox6 = new QCheckBox(i18n("Dock into Panel on Connect"),this,"dockingbox");
   chkbox6->setMinimumSize(chkbox6->sizeHint());
   chkbox6->setChecked(gpppdata.get_dock_into_panel());
   connect(chkbox6,SIGNAL(toggled(bool)),this,SLOT(docking_toggled(bool)));
   tl->addMultiCellWidget(chkbox6, 3, 3, 1, 2);
 
-  chkbox2 = new QCheckBox(klocale->translate("Automatic Redial on Disconnect"),
+  chkbox2 = new QCheckBox(i18n("Automatic Redial on Disconnect"),
 			  this,"redialbox");
   chkbox2->setMinimumSize(chkbox2->sizeHint());
   chkbox2->setChecked(gpppdata.get_automatic_redial());
   connect(chkbox2,SIGNAL(toggled(bool)),this,SLOT(redial_toggled(bool)));
   tl->addMultiCellWidget(chkbox2, 4, 4, 1, 2);
 
-  chkbox3 = new QCheckBox(klocale->translate("Show Clock on Caption"),
+  chkbox3 = new QCheckBox(i18n("Show Clock on Caption"),
 			  this,"captionbox");
   chkbox3->setMinimumSize(chkbox3->sizeHint());
   chkbox3->setChecked(gpppdata.get_show_clock_on_caption());
   connect(chkbox3,SIGNAL(toggled(bool)),this,SLOT(caption_toggled(bool)));
   tl->addMultiCellWidget(chkbox3, 5, 5, 1, 2);
 
-  chkbox4 = new QCheckBox(klocale->translate("Disconnect on X-server shutdown"),this,"captionbox");
+  chkbox4 = new QCheckBox(i18n("Disconnect on X-server shutdown"),this,"captionbox");
   chkbox4->setMinimumSize(chkbox4->sizeHint());
   chkbox4->setChecked(gpppdata.get_xserver_exit_disconnect());
   connect(chkbox4,SIGNAL(toggled(bool)),this,SLOT(xserver_toggled(bool)));
   tl->addMultiCellWidget(chkbox4, 6, 6, 1, 2);
 
-  chkbox7 = new QCheckBox(klocale->translate("Quit on Disconnect"),this,"quitbox");
+  chkbox7 = new QCheckBox(i18n("Quit on Disconnect"),this,"quitbox");
   chkbox7->setMinimumSize(chkbox7->sizeHint());
   chkbox7->setChecked(gpppdata.quit_on_disconnect());
   connect(chkbox7,SIGNAL(toggled(bool)),this,SLOT(quit_toggled(bool)));
   tl->addMultiCellWidget(chkbox7, 7, 7, 1, 2);
 
-  chkbox5 = new QCheckBox(klocale->translate("Minimize Window on Connect"),this,"iconifybox");
+  chkbox5 = new QCheckBox(i18n("Minimize Window on Connect"),this,"iconifybox");
   chkbox5->setMinimumSize(chkbox5->sizeHint());
   chkbox5->setChecked(gpppdata.get_iconify_on_connect());
   connect(chkbox5,SIGNAL(toggled(bool)),this,SLOT(iconify_toggled(bool)));
@@ -197,7 +196,7 @@ AboutWidget::AboutWidget( QWidget *parent, const char *name)
   QGridLayout *tl = new QGridLayout(this, 4, 4, 10, 10);
   tl->addRowSpacing(0, fontMetrics().lineSpacing() - 10); // magic
   box = new QGroupBox(this,"box");
-  box->setTitle(klocale->translate("About kppp"));
+  box->setTitle(i18n("About kppp"));
   tl->addMultiCellWidget(box, 0, 3, 0, 3);
 
   label1 = new QLabel(this, "About");
@@ -205,14 +204,15 @@ AboutWidget::AboutWidget( QWidget *parent, const char *name)
 
   QString string;
   string = "kppp "KPPPVERSION;
-  string += klocale->translate("\nA dialer and front-end to pppd\n\n"
+  string += i18n("\nA dialer and front-end to pppd\n\n"
 			       "Copyright (c) 1997\nBernd Johannes Wuebben\n"
 			       "wuebben@math.cornell.edu");
   label1->setText(string);
   label1->setMinimumSize(label1->sizeHint());
   tl->addMultiCellWidget(label1, 1, 1, 1, 2);
 
-  QString pixdir = app->kde_datadir() + QString("/kppp/pics/");  
+  QString pixdir = kapp->kde_datadir() +
+    QString("/kppp/pics/");  
 
   QPixmap pm((pixdir + "kppplogo.xpm").data());
   QLabel *logo = new QLabel(this);
@@ -221,7 +221,7 @@ AboutWidget::AboutWidget( QWidget *parent, const char *name)
   tl->addWidget(logo, 2, 1);
 
   QString string2 = 
-    klocale->translate("With contributions from:\n\n"
+    i18n("With contributions from:\n\n"
 		       "Mario Weilguni\n"
 		       "Markus Wuebben\n"
 		       "Jesus Fuentes Saavedra\n"
@@ -245,10 +245,10 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   QGridLayout *tl = new QGridLayout(this, 10, 4, 10, 10);
   tl->addRowSpacing(0, fontMetrics().lineSpacing() - 10); // magic
 
-  box = new QGroupBox(klocale->translate("Serial device"), this,"box");
+  box = new QGroupBox(i18n("Serial device"), this,"box");
   tl->addMultiCellWidget(box, 0, 9, 0, 3);
 
-  label1 = new QLabel(klocale->translate("Modem Device:"), this,"modem");
+  label1 = new QLabel(i18n("Modem Device:"), this,"modem");
   label1->setMinimumSize(label1->sizeHint());
   tl->addWidget(label1, 1, 1);
   
@@ -282,14 +282,14 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
    
   connect(modemdevice, SIGNAL(activated(int)), SLOT(setmodemdc(int)));
 
-  label2 = new QLabel(klocale->translate("Flow Control:"), this,"Flow");
+  label2 = new QLabel(i18n("Flow Control:"), this,"Flow");
   label2->setMinimumSize(label2->sizeHint());
   tl->addWidget(label2, 2, 1);
 
   flowcontrol = new QComboBox(false,this);
   flowcontrol->insertItem("CRTSCTS");
   flowcontrol->insertItem("XON/XOFF");
-  flowcontrol->insertItem(klocale->translate("None"));
+  flowcontrol->insertItem(i18n("None"));
   flowcontrol->setMinimumWidth(flowcontrol->sizeHint().width());
   flowcontrol->setFixedHeight(flowcontrol->sizeHint().height());
   tl->addWidget(flowcontrol, 2, 2);
@@ -297,7 +297,7 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   connect(flowcontrol, SIGNAL(activated(int)), SLOT(setflowcontrol(int)));
 
 
-  labelenter = new QLabel(klocale->translate("Line Termination:"), 
+  labelenter = new QLabel(i18n("Line Termination:"), 
 			  this,"enter");
   labelenter->setMinimumSize(labelenter->sizeHint());
   tl->addWidget(labelenter, 3, 1);
@@ -312,7 +312,7 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   connect(enter, SIGNAL(activated(int)), SLOT(setenter(int)));
 
   baud_label = new QLabel(this);
-  baud_label->setText(klocale->translate("Connection Speed:"));
+  baud_label->setText(i18n("Connection Speed:"));
   MIN_SIZE(baud_label);
   tl->addWidget(baud_label, 4, 1);
   
@@ -355,7 +355,7 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   }
 
   //Modem Lock File
-  label4 = new QLabel(klocale->translate("Modem Lock File:"),
+  label4 = new QLabel(i18n("Modem Lock File:"),
 		      this,"modemlockfilelabel");
   label4->setMinimumSize(label4->sizeHint());
   tl->addWidget(label4, 6, 1);
@@ -372,7 +372,7 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
 
   //Modem Timeout Line Edit Box
   label3 = new QLabel(this,"modemtimeoutlabel");
-  label3->setText(klocale->translate("Modem Timeout:"));
+  label3->setText(i18n("Modem Timeout:"));
   label3->setMinimumSize(label3->sizeHint());
   tl->addWidget(label3, 7, 1);
 
@@ -387,7 +387,7 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
 	  SLOT(modemtimeoutchanged(const char*)));  
   l2->addWidget(modemtimeout, 1);
 
-  labeltmp = new QLabel(klocale->translate("Seconds"), this,"seconds");
+  labeltmp = new QLabel(i18n("Seconds"), this,"seconds");
   labeltmp->setMinimumSize(labeltmp->sizeHint());
   l2->addWidget(labeltmp, 2);
 
@@ -457,7 +457,7 @@ ModemWidget2::ModemWidget2( QWidget *parent, const char *name)
   QGridLayout *tl = new QGridLayout(this, 3, 3, 10, 10);
   tl->addRowSpacing(0, fontMetrics().lineSpacing() - 10); // magic
 
-  box = new QGroupBox(klocale->translate("Modem"), this,"box");
+  box = new QGroupBox(i18n("Modem"), this,"box");
   tl->addMultiCellWidget(box, 0, 2, 0, 2);
 
   QVBoxLayout *l1 = new QVBoxLayout;
@@ -469,7 +469,7 @@ ModemWidget2::ModemWidget2( QWidget *parent, const char *name)
   QHBoxLayout *l10 = new QHBoxLayout;
   l1->addLayout(l10);
   label4 = new QLabel(this,"busywaitlabel");
-  label4->setText(klocale->translate("Busy Wait:"));
+  label4->setText(i18n("Busy Wait:"));
   label4->setMinimumSize(label4->sizeHint());
   l10->addStretch(1);
   l10->addWidget(label4);
@@ -484,7 +484,7 @@ ModemWidget2::ModemWidget2( QWidget *parent, const char *name)
   l10->addWidget(busywait);
 
   labeltmp = new QLabel(this,"seconds");
-  labeltmp->setText(klocale->translate("Seconds"));
+  labeltmp->setText(i18n("Seconds"));
   labeltmp->setMinimumSize(labeltmp->sizeHint());
   l10->addWidget(labeltmp, 1);
   l10->addStretch(1);
@@ -497,7 +497,7 @@ ModemWidget2::ModemWidget2( QWidget *parent, const char *name)
   l1->addLayout(l12);
   l12->addStretch(1);
   chkbox1 = 
-    new QCheckBox(klocale->translate("Modem Asserts CD Line."), 
+    new QCheckBox(i18n("Modem Asserts CD Line."), 
 		  this, "assertCD");
   chkbox1->setMinimumSize(chkbox1->sizeHint());
   chkbox1->setChecked(gpppdata.UseCDLine());
@@ -513,9 +513,9 @@ ModemWidget2::ModemWidget2( QWidget *parent, const char *name)
   l11->addStretch(1);
   QVBoxLayout *l111 = new QVBoxLayout;
   l11->addLayout(l111);
-  modemcmds = new QPushButton(klocale->translate("Modem Commands"), this);
-  modeminfo_button = new QPushButton(klocale->translate("Query Modem"), this);
-  terminal_button = new QPushButton(klocale->translate("Terminal"), this);
+  modemcmds = new QPushButton(i18n("Modem Commands"), this);
+  modeminfo_button = new QPushButton(i18n("Query Modem"), this);
+  terminal_button = new QPushButton(i18n("Terminal"), this);
   modemcmds->setMinimumWidth(modemcmds->sizeHint().width());
   modemcmds->setFixedHeight(modemcmds->sizeHint().height());
   modeminfo_button->setMinimumWidth(modeminfo_button->sizeHint().width());

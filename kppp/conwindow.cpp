@@ -26,8 +26,7 @@
 #include "main.h"
 #include "macros.h"
 
-extern XPPPWidget *p_xppp;
-extern KApplication *app;
+extern KPPPWidget *p_kppp;
 extern PPPData gpppdata;
 extern DockWidget *dock_widget;
 extern int totalbytes;
@@ -42,34 +41,34 @@ ConWindow::ConWindow(QWidget *parent, const char *name,QWidget *mainwidget)
   days = 0;
 
   info1 = new QLabel(this,"infolabel1");
-  info1->setText(klocale->translate("Connected at:"));
+  info1->setText(i18n("Connected at:"));
 
   info2 = new QLabel(this,"infolabel");
   info2->setText("");
  
   timelabel1 = new QLabel(this,"timelabel1");
-  timelabel1->setText(klocale->translate("Time connected:"));
+  timelabel1->setText(i18n("Time connected:"));
 
   timelabel2 = new QLabel(this,"timelabel");
   timelabel2->setText("000:00:00");
 
-  vollabel = new QLabel(klocale->translate("Volume:"), this);
+  vollabel = new QLabel(i18n("Volume:"), this);
   volinfo  = new QLabel(this);
 
   // now the stuff for accounting
-  session_bill_l = new QLabel(klocale->translate("Session Bill:"), this);
+  session_bill_l = new QLabel(i18n("Session Bill:"), this);
   session_bill = new QLabel("", this);
-  total_bill_l = new QLabel(klocale->translate("Total Bill:"), this);
+  total_bill_l = new QLabel(i18n("Total Bill:"), this);
   total_bill = new QLabel("", this);
 
   this->setCaption("kppp");
 
   cancelbutton = new QPushButton(this,"cancelbutton");
-  cancelbutton->setText(klocale->translate("Disconnect"));
+  cancelbutton->setText(i18n("Disconnect"));
   connect(cancelbutton, SIGNAL(clicked()), main, SLOT(disconnect()));
 
   statsbutton = new QPushButton(this,"statsbutton");
-  statsbutton->setText(klocale->translate("Details"));
+  statsbutton->setText(i18n("Details"));
   statsbutton->setFocus();
   connect(statsbutton, SIGNAL(clicked()), this,SLOT(stats()));
 
@@ -207,7 +206,7 @@ void ConWindow::accounting(bool on) {
 
 void ConWindow::stats(){
 
-  p_xppp->stats->show();
+  p_kppp->stats->show();
 
 }
 
@@ -240,8 +239,8 @@ void ConWindow::startClock() {
 
 void ConWindow::setConnectionSpeed(){
 
-  if(p_xppp)
-    info2->setText(p_xppp->con_speed);
+  if(p_kppp)
+    info2->setText(p_kppp->con_speed);
 
 }
 

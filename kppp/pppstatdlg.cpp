@@ -67,12 +67,12 @@ PPPStatsDlg::PPPStatsDlg(QWidget *parent, const char *name, QWidget *)
 
   pixstate = PIXINIT;
   need_to_paint = true;
-  setCaption(klocale->translate("kppp Statistics"));  
+  setCaption(i18n("kppp Statistics"));  
 
   QVBoxLayout *tl = new QVBoxLayout(this, 10);
   QGridLayout *l1 = new QGridLayout(3, 3);
   tl->addLayout(l1, 1);
-  box = new QGroupBox(klocale->translate("Statistics"), this);
+  box = new QGroupBox(i18n("Statistics"), this);
   l1->addMultiCellWidget(box, 0, 2, 0, 2);
   l1->addRowSpacing(0, fontMetrics().lineSpacing() - 10);
   l1->setRowStretch(1, 1);
@@ -105,8 +105,8 @@ PPPStatsDlg::PPPStatsDlg(QWidget *parent, const char *name, QWidget *)
   QString tmp;
 
 #define PMERROR(pm) \
-  tmp.sprintf(klocale->translate("Could not load %s !"), pm); \
-  QMessageBox::warning(this, klocale->translate("Error"), tmp);
+  tmp.sprintf(i18n("Could not load %s !"), pm); \
+  QMessageBox::warning(this, i18n("Error"), tmp);
 
 #ifdef COMPILE_PIX
   if ( !big_modem_both_pixmap.loadFromData(modemboth_data, modemboth_len) ){
@@ -145,13 +145,13 @@ PPPStatsDlg::PPPStatsDlg(QWidget *parent, const char *name, QWidget *)
   l111->addLayout(l1112);
   
   ip_address_label1 = new QLabel(this);
-  ip_address_label1->setText(klocale->translate("Local Addr:"));
+  ip_address_label1->setText(i18n("Local Addr:"));
 
   ip_address_label2 = new IPLineEdit(this);
   ip_address_label2->setFocusPolicy(QWidget::NoFocus);
 
   ip_address_label3 = new QLabel(this);
-  ip_address_label3->setText(klocale->translate("Remote Addr:"));
+  ip_address_label3->setText(i18n("Remote Addr:"));
 
   ip_address_label4 = new IPLineEdit(this);
   ip_address_label4->setFocusPolicy(QWidget::NoFocus);
@@ -183,20 +183,20 @@ PPPStatsDlg::PPPStatsDlg(QWidget *parent, const char *name, QWidget *)
     labelb2[i]->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
  }
 
-  labela1[0]->setText(klocale->translate("bytes in"));
-  labelb1[0]->setText(klocale->translate("bytes out"));
+  labela1[0]->setText(i18n("bytes in"));
+  labelb1[0]->setText(i18n("bytes out"));
 
-  labela1[1]->setText(klocale->translate("packets in"));
-  labelb1[1]->setText(klocale->translate("packets out"));
+  labela1[1]->setText(i18n("packets in"));
+  labelb1[1]->setText(i18n("packets out"));
 
-  labela1[2]->setText(klocale->translate("vjcomp in"));
-  labelb1[2]->setText(klocale->translate("vjcomp out"));
+  labela1[2]->setText(i18n("vjcomp in"));
+  labelb1[2]->setText(i18n("vjcomp out"));
 
-  labela1[3]->setText(klocale->translate("vjunc in"));
-  labelb1[3]->setText(klocale->translate("vjunc out"));
+  labela1[3]->setText(i18n("vjunc in"));
+  labelb1[3]->setText(i18n("vjunc out"));
 
-  labela1[4]->setText(klocale->translate("vjerr"));
-  labelb1[4]->setText(klocale->translate("non-vj"));
+  labela1[4]->setText(i18n("vjerr"));
+  labelb1[4]->setText(i18n("non-vj"));
 
   for(i = 0; i < 5; i++) {
     labela2[i]->setText("88888888");
@@ -225,7 +225,7 @@ PPPStatsDlg::PPPStatsDlg(QWidget *parent, const char *name, QWidget *)
   
 
   cancelbutton = new QPushButton(this, "cancelbutton");
-  cancelbutton->setText(klocale->translate("Close"));
+  cancelbutton->setText(i18n("Close"));
   cancelbutton->setFocus();
   connect(cancelbutton, SIGNAL(clicked()), this,SLOT(cancel()));
   FIXED_HEIGHT(cancelbutton);
@@ -367,14 +367,14 @@ void PPPStatsDlg::update_data(bool) {
       ip_address_label2->setText(local_ip_address);
     }
     else{
-      ip_address_label2->setText(klocale->translate("unavailable"));
+      ip_address_label2->setText(i18n("unavailable"));
     }
 
     if( !remote_ip_address.isEmpty() ){
       ip_address_label4->setText(remote_ip_address);
     }
     else{
-      ip_address_label4->setText(klocale->translate("unavailable"));
+      ip_address_label4->setText(i18n("unavailable"));
     }
     ips_set = true;
   }

@@ -45,7 +45,7 @@ AccountingSelector::AccountingSelector(QWidget *parent, const char *name)
   QGridLayout *l = new QGridLayout(this, 3, 3, 10, 10);
   l->addRowSpacing(0, fontMetrics().lineSpacing() - 10);
   QGroupBox *box = new QGroupBox(this,"box");
-  box->setTitle(klocale->translate("Accounting Setup"));
+  box->setTitle(i18n("Accounting Setup"));
   l->addMultiCellWidget(box, 0, 2, 0, 2);
 
   QVBoxLayout *l1 = new QVBoxLayout(0);
@@ -53,7 +53,7 @@ AccountingSelector::AccountingSelector(QWidget *parent, const char *name)
   l1->addSpacing(10);
 
   // checkbox for enabling/disabling accounting  
-  use = new QCheckBox(klocale->translate("Enable accounting"), this);
+  use = new QCheckBox(i18n("Enable accounting"), this);
   use->setChecked(gpppdata.AcctEnabled());
   use->setMinimumSize(use->sizeHint());
   l1->addWidget(use, 0);
@@ -71,7 +71,7 @@ AccountingSelector::AccountingSelector(QWidget *parent, const char *name)
   QHBoxLayout *l11 = new QHBoxLayout;
   l1->addSpacing(10);
   l1->addLayout(l11);
-  QLabel *lsel = new QLabel(klocale->translate("Selected:"), this);
+  QLabel *lsel = new QLabel(i18n("Selected:"), this);
   lsel->setMinimumSize(lsel->sizeHint());
   selected = new QLabel(this);
   selected->setFrameStyle(QFrame::Sunken | QFrame::WinPanel);
@@ -85,14 +85,14 @@ AccountingSelector::AccountingSelector(QWidget *parent, const char *name)
   l1->addStretch(1);
   QHBoxLayout *l12 = new QHBoxLayout;
   l1->addLayout(l12);
-  QLabel *usevol_l = new QLabel(klocale->translate("Volume accounting:"),
+  QLabel *usevol_l = new QLabel(i18n("Volume accounting:"),
 				this);
   MIN_SIZE(usevol_l);
   use_vol = new QComboBox(this);
-  use_vol->insertItem(klocale->translate("No accounting"), 0);
-  use_vol->insertItem(klocale->translate("Bytes in"), 1);
-  use_vol->insertItem(klocale->translate("Bytes out"), 2);
-  use_vol->insertItem(klocale->translate("Bytes in and out"), 3);
+  use_vol->insertItem(i18n("No accounting"), 0);
+  use_vol->insertItem(i18n("Bytes in"), 1);
+  use_vol->insertItem(i18n("Bytes out"), 2);
+  use_vol->insertItem(i18n("Bytes in and out"), 3);
   MIN_SIZE(use_vol);
   use_vol->setCurrentItem(gpppdata.VolAcctEnabled());
   l12->addWidget(usevol_l);
@@ -162,7 +162,7 @@ QString AccountingSelector::indexToFileName(int idx) {
     while(tli->hasParent()) {
       tli = tli->getParent();
       QString s = tli->getText();
-      if(s != klocale->translate("Available rules"))
+      if(s != i18n("Available rules"))
 	name = nameToFileName(s) + "/" + name;
     }
     return QString(name+".rst");
@@ -268,7 +268,7 @@ void AccountingSelector::setupTreeWidget() {
   else
     edit_s = "";
 
-  KTreeListItem *i = new KTreeListItem(klocale->translate("Available rules"), &pmfolder);
+  KTreeListItem *i = new KTreeListItem(i18n("Available rules"), &pmfolder);
   tl->setExpandButtonDrawing(TRUE);
   tl->setTreeDrawing(TRUE);
   tl->insertItem(i, -1, FALSE);

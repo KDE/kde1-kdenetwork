@@ -24,7 +24,7 @@
 #include "stdio.h"
 #include "main.h"
 
-extern XPPPWidget *p_xppp;
+extern KPPPWidget *p_kppp;
 
 myMultiEdit::myMultiEdit(QWidget *parent, const char *name)
   : QMultiLineEdit(parent, name){
@@ -46,7 +46,7 @@ DebugWidget::DebugWidget(QWidget *parent, const char *name)
   : QDialog(parent, name, FALSE)
 {
 
-  setCaption(klocale->translate("Login Script Debug Window"));
+  setCaption(i18n("Login Script Debug Window"));
 
   text_window = new myMultiEdit(this,"debugwindow");
   text_window->setGeometry(2,5,400, 300);
@@ -62,7 +62,7 @@ DebugWidget::DebugWidget(QWidget *parent, const char *name)
 
   dismiss = new QPushButton(this,"dismissbutton");
   dismiss->setGeometry(330,340,70,30);
-  dismiss->setText(klocale->translate("Dismiss"));
+  dismiss->setText(i18n("Dismiss"));
   dismiss->setFocus();
   connect(dismiss,SIGNAL(clicked()),SLOT(hideit()));
  
@@ -82,8 +82,8 @@ DebugWidget::~DebugWidget() {
 
 void DebugWidget::hideit(){
   this->hide();
-  if (p_xppp){
-    p_xppp->con->debug->setText(klocale->translate("Log")); // set Log/Hide button text to Log
+  if (p_kppp){
+    p_kppp->con->debug->setText(i18n("Log")); // set Log/Hide button text to Log
   }
 }
 

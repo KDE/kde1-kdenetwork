@@ -117,8 +117,8 @@ int runTests() {
 
     if(!access) {
       QMessageBox::warning(0, 
-		 klocale->translate("Error"),
-		 klocale->translate("You´re not allowed to dial out with "
+		 i18n("Error"),
+		 i18n("You´re not allowed to dial out with "
 				    "kppp.\nContact your system administrator."
 				    ));
       exit(1);
@@ -133,8 +133,8 @@ int runTests() {
 
   if(!pppdFound) {
     QMessageBox::warning(0, 
-		 klocale->translate("Error"),
-		 klocale->translate("Cannot find the pppd-daemon!\n\n"
+		 i18n("Error"),
+		 i18n("Cannot find the pppd-daemon!\n\n"
 				    "Make sure that pppd is installed and\n"
 				    "you have entered the correct path.\n"
 				    ));
@@ -145,8 +145,8 @@ int runTests() {
   if(pppdFound) {
     if(access(f.data(), X_OK) != 0 && geteuid() != 0) {
       QMessageBox::critical(0, 
-		   klocale->translate("Error"),
-		   klocale->translate("You do not have the permission\n"
+		   i18n("Error"),
+		   i18n("You do not have the permission\n"
 				      "to start pppd!\n\n"
 				      "Contact your system administrator\n"
 				      "and ask to get access to pppd."));
@@ -156,8 +156,8 @@ int runTests() {
       stat(f.data(), &st);
       if(st.st_mode & S_ISUID == 0 && getuid() != 0) {
 	QMessageBox::warning(0, 
-		     klocale->translate("Error"),
-		     klocale->translate("pppd is not properly installed!\n\n"
+		     i18n("Error"),
+		     i18n("pppd is not properly installed!\n\n"
 					"The pppd binary must be installed\n"
 					"with the SUID bit set. Contact your\n"
 					"system administrator."));
@@ -171,8 +171,8 @@ int runTests() {
 
       if(st.st_uid != 0) { // pppd not owned by root
 	QMessageBox::warning(0, 
-		     klocale->translate("Error"),
-		     klocale->translate("pppd is not properly installed!\n\n"
+		     i18n("Error"),
+		     i18n("pppd is not properly installed!\n\n"
 					"The pppd binary must be installed\n"
 					"with the SUID bit set. Contact your\n"
 					"system administrator."));
@@ -193,11 +193,11 @@ int runTests() {
 //       if( dflt.length() == 0 || access(dflt.data(), X_OK) != 0 )
 // 	dflt = "kvt -e less";
 
-//       s.sprintf(klocale->translate("The logviewer \"%s\" was not found!\n\n"
+//       s.sprintf(i18n("The logviewer \"%s\" was not found!\n\n"
 // 				   "Setting default back to \"%s\"."),
 // 		gpppdata.logViewer(), dflt.data());
 //       QMessageBox::information(0,
-// 			       klocale->translate("Information"),
+// 			       i18n("Information"),
 // 			       s.data());
 //       gpppdata.setlogViewer(dflt.data());
 //       gpppdata.save();
@@ -216,8 +216,8 @@ int runTests() {
     QRegExp r3("\\slock\\s");
     if (r1.match(str) >= 0 || r2.match(str) >= 0 || r3.match(str) >= 0) {
       QMessageBox::warning(0,
-		   klocale->translate("Error"),
-		   klocale->translate("kppp has detected a 'lock' option in "
+		   i18n("Error"),
+		   i18n("kppp has detected a 'lock' option in "
 				      "/etc/ppp/options.\n\nThis option has "
 				      "to be removed since kppp takes care "
 				      "of device locking itself.\n"
@@ -241,8 +241,8 @@ int runTests() {
       }
     } else {
       QMessageBox::warning
-	(0, klocale->translate("Error"),
-	 klocale->translate("/etc/resolv.conf is missing!\n\n"
+	(0, i18n("Error"),
+	 i18n("/etc/resolv.conf is missing!\n\n"
 			    "Ask your system administrator to create\n"
 			    "a non-empty file that has appropriate\n"
 			    "read and write permissions."));

@@ -49,20 +49,20 @@ MiniTerm::MiniTerm(QWidget *parent=0, const char *name=0)
   col = line = col_start = line_start = 0;
   modemfd = -1;
 
-  setCaption(klocale->translate("Kppp Mini-Terminal"));
+  setCaption(i18n("Kppp Mini-Terminal"));
 
   m_file = new QPopupMenu;
-  m_file->insertItem( klocale->translate("&Quit"),this, SLOT(cancelbutton()) );
+  m_file->insertItem( i18n("&Quit"),this, SLOT(cancelbutton()) );
   m_edit = new QPopupMenu;
   m_options = new QPopupMenu;
-  m_options->insertItem(klocale->translate("&Reset Modem"),this,SLOT(resetModem()));
+  m_options->insertItem(i18n("&Reset Modem"),this,SLOT(resetModem()));
   m_help = new QPopupMenu;
-  m_help->insertItem( klocale->translate("&Help"),this, SLOT(help()) );
+  m_help->insertItem( i18n("&Help"),this, SLOT(help()) );
   
   menubar = new KMenuBar( this );
-  menubar->insertItem( klocale->translate("&File"), m_file );
-  menubar->insertItem( klocale->translate("&Modem"), m_options );
-  menubar->insertItem( klocale->translate("&Help"), m_help);
+  menubar->insertItem( i18n("&File"), m_file );
+  menubar->insertItem( i18n("&Modem"), m_options );
+  menubar->insertItem( i18n("&Help"), m_help);
   
   statusbar = new QLabel(this);
   statusbar->setFrameStyle(QFrame::Panel | QFrame::Sunken);
@@ -104,18 +104,18 @@ void MiniTerm::setupToolbar(){
   pixmap = loader->loadIcon("exit.xpm");
   toolbar->insertButton(pixmap, 0,
 		      SIGNAL(clicked()), this,
-		      SLOT(cancelbutton()), TRUE, klocale->translate("Quit MiniTerm"));
+		      SLOT(cancelbutton()), TRUE, i18n("Quit MiniTerm"));
 
 
   pixmap = loader->loadIcon("back.xpm");
   toolbar->insertButton(pixmap, 0,
 		      SIGNAL(clicked()), this,
-		      SLOT(resetModem()), TRUE, klocale->translate("Reset Modem"));
+		      SLOT(resetModem()), TRUE, i18n("Reset Modem"));
 
   pixmap = loader->loadIcon("help.xpm");
   toolbar->insertButton(pixmap, 0,
 		      SIGNAL(clicked()), this,
-		      SLOT(help()), TRUE, klocale->translate("Help"));
+		      SLOT(help()), TRUE, i18n("Help"));
 
   toolbar->setBarPos( KToolBar::Top );
 
@@ -148,18 +148,18 @@ void MiniTerm::resizeEvent(QResizeEvent*){
 void MiniTerm::init() {
 
   inittimer->stop();
-  statusbar->setText(klocale->translate("Initializing Modem"));
+  statusbar->setText(i18n("Initializing Modem"));
   kapp->processEvents();
 
   int lock = lockdevice();
   if (lock == 1){
     
-    statusbar->setText(klocale->translate("Sorry, modem device is locked."));
+    statusbar->setText(i18n("Sorry, modem device is locked."));
     return;
   }
   if (lock == -1){
     
-    statusbar->setText(klocale->translate("Sorry, can't create modem lock file."));
+    statusbar->setText(i18n("Sorry, can't create modem lock file."));
     return;
   }
 
@@ -173,7 +173,7 @@ void MiniTerm::init() {
       usleep(100000);
     }
 
-    statusbar->setText(klocale->translate("Modem Ready"));
+    statusbar->setText(i18n("Modem Ready"));
     terminal->setFocus();
 
     kapp->processEvents();
@@ -220,7 +220,7 @@ void MiniTerm::cancelbutton() {
 
 
   readtimer->stop();
-  statusbar->setText(klocale->translate("Hanging up ..."));
+  statusbar->setText(i18n("Hanging up ..."));
   kapp->processEvents();
   kapp->flushX();
 
@@ -240,7 +240,7 @@ void MiniTerm::cancelbutton() {
 
 void MiniTerm::resetModem(){
  
-  statusbar->setText(klocale->translate("Resetting Modem"));
+  statusbar->setText(i18n("Resetting Modem"));
   terminal->newLine();
   kapp->processEvents();
   kapp->flushX();
@@ -250,7 +250,7 @@ void MiniTerm::resetModem(){
     usleep(100000); // 0.1 sec
     hangup();
   }
-  statusbar->setText(klocale->translate("Modem Ready"));
+  statusbar->setText(i18n("Modem Ready"));
 }
 
 
@@ -259,7 +259,7 @@ bool MiniTerm::closetty(){
   if(modemfd > 0)
 
     if(tcsetattr(modemfd, TCSANOW, &initial_tty) < 0){
-      statusbar->setText(klocale->translate("Can't restore tty settings: tcsetattr()\n"));
+      statusbar->setText(i18n("Can't restore tty settings: tcsetattr()\n"));
     }
 
     ::close(modemfd);
@@ -274,13 +274,13 @@ bool MiniTerm::opentty() {
  
  if((modemfd = open(gpppdata.modemDevice(), O_RDWR|O_NDELAY)) < 0){
 
-    statusbar->setText(klocale->translate("Can't open Modem"));
+    statusbar->setText(i18n("Can't open Modem"));
     return FALSE;
   }
  
   if(tcgetattr(modemfd, &tty) < 0){
 
-    statusbar->setText(klocale->translate("tcgetattr() failed\n"));
+    statusbar->setText(i18n("tcgetattr() failed\n"));
     return FALSE;
   }
 
@@ -327,7 +327,7 @@ bool MiniTerm::opentty() {
 
   if(tcsetattr(modemfd, TCSANOW, &tty) < 0){
 
-    statusbar->setText(klocale->translate("tcsetattr() failed\n"));
+    statusbar->setText(i18n("tcsetattr() failed\n"));
     return FALSE;
   }
 

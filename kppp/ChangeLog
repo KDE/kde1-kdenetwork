@@ -1,5 +1,14 @@
 1998-06-02  Harri Porten  <porten@tu-harburg.de>
 
+	* replaced klocale->translate() with i18n() and every reference to
+	XPPP with KPPP
+	* utilize ´kapp´ (defined in kapp.h) instead of the global ´extern
+	KApplication *app´
+	(Sorry about the large amount of changes, but I couldn´t resist to 
+        clean up the code)
+
+1998-06-02  Harri Porten  <porten@tu-harburg.de>
+
 	* pppdata.cpp: removed workaround, since KConfig fix is in place now
 
 Mon Jun  1 16:13:06 1998    Mario Weilguni <mweilguni@kde.org>

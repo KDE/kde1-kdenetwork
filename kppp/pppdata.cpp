@@ -45,17 +45,17 @@ PPPData::PPPData() {
 // open configuration file 
 //
 
-bool PPPData::open(const KApplication* app) {
+bool PPPData::open() {
 
-  if (app->getConfigState() == KApplication::APPCONFIG_NONE) {
-    QMessageBox::warning(0L, app->appName().data(),
-                       klocale->translate("The application-specific config file\n"
+  if (kapp->getConfigState() == KApplication::APPCONFIG_NONE) {
+    QMessageBox::warning(0L, kapp->appName().data(),
+                       i18n("The application-specific config file\n"
                        "could not be opened neither\n"
                        "read-write nor read-only"));
     return false;
   }
 
-  config = app->getConfig();
+  config = kapp->getConfig();
 
   highcount = readNumConfig(GENERAL_GRP, NUMACCOUNTS_KEY, 0) - 1;
 
