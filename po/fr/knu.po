@@ -1,0 +1,193 @@
+msgid ""
+msgstr ""
+"Date: 1997-10-26 20:32:21+0100\n"
+"From: Bertrand Leconte,,, <leconteb@arthur>\n"
+"Content-Type: text/plain; charset=\n"
+"Xgettext-Options: -C -a --keyword=_\n"
+"Files: CommandDlg.cpp HostDlg.cpp OptionsDlg.cpp PingDlg.cpp TracerouteDlg.cpp knu.cpp mCommandDlg.cpp mHostDlg.cpp mOptionsDlg.cpp mPingDlg.cpp mTracerouteDlg.cpp mknu.cpp\n"
+
+#: CommandDlg.cpp:115
+msgid "H&ost:"
+msgstr "Machine :"
+
+#: CommandDlg.cpp:127
+msgid "&Go!"
+msgstr "Go !"
+
+#: CommandDlg.cpp:136
+msgid "&Stop"
+msgstr "Stop"
+
+#: CommandDlg.cpp:151
+msgid ""
+"This command binary was not found. \n"
+"You can give its path in the Edit->Preferences... menu."
+msgstr "Cette commande n'a pas été trouvée. \n"
+	"Vous pouvez donner son chemin par le menu Edition->Preferences..."
+
+#: CommandDlg.cpp:421
+msgid "Binary"
+msgstr "Binaire"
+
+#: CommandDlg.cpp:432
+msgid "Path&name:"
+msgstr "Chemin du programme :"
+
+#: CommandDlg.cpp:444
+msgid "Additional &arguments:"
+msgstr "Arguments additionnels :"
+
+#: CommandDlg.cpp:464
+msgid "This command had been disabled in the configuration file."
+msgstr "Cette commande a été disablé dans le fichier de configuration."
+
+#: HostDlg.cpp:94
+msgid "address (A)"
+msgstr "adresse (A)"
+
+#: HostDlg.cpp:95
+msgid "name (PTR)"
+msgstr "nom (PTR)"
+
+#: HostDlg.cpp:96
+msgid "name server (NS)"
+msgstr "serveur de noms (NS)"
+
+#: HostDlg.cpp:97
+msgid "mail exchanger (MX)"
+msgstr "échangeur de messages (MX)"
+
+#: HostDlg.cpp:98
+msgid "alias (CNAME)"
+msgstr "alias (CNAME)"
+
+#: HostDlg.cpp:99
+msgid "start of authority (SOA)"
+msgstr "début d'autorité (SOA)"
+
+#: HostDlg.cpp:100
+msgid "any record (ANY)"
+msgstr "tous les enregistrements (ANY)"
+
+#: HostDlg.cpp:106
+msgid "Se&arch for:"
+msgstr "Rechercher :"
+
+#: HostDlg.cpp:121 HostDlg.cpp:219
+msgid "default server"
+msgstr "serveur par défaut"
+
+#: HostDlg.cpp:126
+msgid "Ser&ver:"
+msgstr "Serveur :"
+
+#: HostDlg.cpp:168 PingDlg.cpp:102 TracerouteDlg.cpp:124
+msgid ""
+"You have a problem if your ~/.kderc/share/config/knurc configuration file.\n"
+"In the ["
+msgstr "You avez un problème dans votre fichier de configuration ~/.kderc/share/config/knurc.\n"
+"Dans le groupe ["
+
+#: HostDlg.cpp:172 PingDlg.cpp:106 TracerouteDlg.cpp:128
+msgid "] group, I cannotfind a correct \"path=\" entry."
+msgstr "], je n'ai pas trouvé un entrée \"path=\" correcte."
+
+#: OptionsDlg.cpp:53
+msgid " - configuration"
+msgstr " - configuration"
+
+#: OptionsDlg.cpp:77
+msgid "&Ok"
+msgstr "Ok"
+
+#: OptionsDlg.cpp:83 knu.cpp:215
+msgid "&Help"
+msgstr "Aide"
+
+#: OptionsDlg.cpp:88
+msgid "&Cancel"
+msgstr "Annuler"
+
+#: PingDlg.cpp:67 TracerouteDlg.cpp:68
+msgid "Make host &name resolution"
+msgstr "Faire les résolutions de noms"
+
+#: TracerouteDlg.cpp:85
+msgid "&Maximum number of hops:"
+msgstr "Nombre maximum de sauts :"
+
+#: knu.cpp:108 knu.cpp:233
+msgid "&Ping"
+msgstr ""
+
+#: knu.cpp:117 knu.cpp:238
+msgid "&Traceroute"
+msgstr ""
+
+#: knu.cpp:126 knu.cpp:243
+msgid "Host &resolution"
+msgstr "Résolution de noms"
+
+#: knu.cpp:141
+msgid ""
+"There is no command enabled\n"
+"in the configuration file.\n"
+"\n"
+"So I can't do anything...\n"
+msgstr "Il n'y a aucune commande autorisée\n"
+	"dans le fichier de configuration.\n"
+	"\n"
+	"Donc je ne peux rien faire..."
+
+#: knu.cpp:178
+msgid "&New window"
+msgstr "Nouvelle fenêtre"
+
+#: knu.cpp:181
+msgid "&Close window"
+msgstr "Fermer la fenêtre"
+
+#: knu.cpp:184
+msgid "&Quit"
+msgstr "Quitter"
+
+#: knu.cpp:189
+msgid "&Copy"
+msgstr "Copier"
+
+#: knu.cpp:192
+msgid "Select &all"
+msgstr "Selectionner tout"
+
+#: knu.cpp:195
+msgid "C&lear output window"
+msgstr "Effacer la fenêtre d'affichage"
+
+#: knu.cpp:198
+msgid "P&references..."
+msgstr "Préférences..."
+
+#: knu.cpp:203
+msgid "&Contents"
+msgstr "Contenu"
+
+#: knu.cpp:206
+msgid "&About"
+msgstr "A propos"
+
+#: knu.cpp:208
+msgid "About &Qt"
+msgstr "About &Qt"
+
+#: knu.cpp:212
+msgid "&File"
+msgstr "Fichier"
+
+#: knu.cpp:213
+msgid "&Edit"
+msgstr "Edition"
+
+#: knu.cpp:365
+msgid "About..."
+msgstr "A propos..."
+

@@ -1,0 +1,187 @@
+msgid ""
+msgstr ""
+"Date: 1997-10-28 22:45:13+0100\n"
+"From: Bertrand Leconte,,, <leconteb@arthur>\n"
+"Content-Type: text/plain; charset=\n"
+"Xgettext-Options: -C -k_\n"
+"Files: knu.cpp CommandDlg.cpp OptionsDlg.cpp ktabctl.cpp PingDlg.cpp TracerouteDlg.cpp HostDlg.cpp\n"
+
+#: knu.cpp:107 knu.cpp:242
+msgid "&Ping"
+msgstr ""
+
+#: knu.cpp:116 knu.cpp:247
+msgid "&Traceroute"
+msgstr ""
+
+#: knu.cpp:125 knu.cpp:252
+msgid "Host &resolution"
+msgstr ""
+
+#: knu.cpp:140
+msgid ""
+"There is no command enabled\n"
+"in the configuration file.\n"
+"\n"
+"So I can't do anything...\n"
+msgstr ""
+
+#: knu.cpp:187
+msgid "&New window"
+msgstr ""
+
+#: knu.cpp:190
+msgid "&Close window"
+msgstr ""
+
+#: knu.cpp:193
+msgid "&Quit"
+msgstr ""
+
+#: knu.cpp:198
+msgid "&Copy"
+msgstr ""
+
+#: knu.cpp:201
+msgid "Select &all"
+msgstr ""
+
+#: knu.cpp:204
+msgid "C&lear output window"
+msgstr ""
+
+#: knu.cpp:207
+msgid "P&references..."
+msgstr ""
+
+#: knu.cpp:212
+msgid "&Contents"
+msgstr ""
+
+#: knu.cpp:215
+msgid "&About"
+msgstr ""
+
+#: knu.cpp:217
+msgid "About &Qt"
+msgstr ""
+
+#: knu.cpp:221
+msgid "&File"
+msgstr ""
+
+#: knu.cpp:222
+msgid "&Edit"
+msgstr ""
+
+#: OptionsDlg.cpp:83 knu.cpp:224
+msgid "&Help"
+msgstr ""
+
+#: knu.cpp:374
+msgid "About..."
+msgstr ""
+
+#: CommandDlg.cpp:115
+msgid "H&ost:"
+msgstr ""
+
+#: CommandDlg.cpp:127
+msgid "&Go!"
+msgstr ""
+
+#: CommandDlg.cpp:136
+msgid "&Stop"
+msgstr ""
+
+#: CommandDlg.cpp:151
+msgid ""
+"This command binary was not found. \n"
+"You can give its path in the Edit->Preferences... menu."
+msgstr ""
+
+#: CommandDlg.cpp:421
+msgid "Binary"
+msgstr ""
+
+#: CommandDlg.cpp:432
+msgid "Path&name:"
+msgstr ""
+
+#: CommandDlg.cpp:444
+msgid "Additional &arguments:"
+msgstr ""
+
+#: CommandDlg.cpp:466
+msgid "This command had been disabled in the configuration file."
+msgstr ""
+
+#: OptionsDlg.cpp:53
+msgid " - configuration"
+msgstr ""
+
+#: OptionsDlg.cpp:77
+msgid "&Ok"
+msgstr ""
+
+#: OptionsDlg.cpp:88
+msgid "&Cancel"
+msgstr ""
+
+#: PingDlg.cpp:67 TracerouteDlg.cpp:68
+msgid "Make host &name resolution"
+msgstr ""
+
+#: HostDlg.cpp:171 PingDlg.cpp:102 TracerouteDlg.cpp:124
+msgid ""
+"You have a problem if your ~/.kderc/share/config/knurc configuration file.\n"
+"In the ["
+msgstr ""
+
+#: HostDlg.cpp:175 PingDlg.cpp:106 TracerouteDlg.cpp:128
+msgid "] group, I cannotfind a correct \"path=\" entry."
+msgstr ""
+
+#: TracerouteDlg.cpp:85
+msgid "&Maximum number of hops:"
+msgstr ""
+
+#: HostDlg.cpp:94
+msgid "address (A)"
+msgstr ""
+
+#: HostDlg.cpp:95
+msgid "name (PTR)"
+msgstr ""
+
+#: HostDlg.cpp:96
+msgid "name server (NS)"
+msgstr ""
+
+#: HostDlg.cpp:97
+msgid "mail exchanger (MX)"
+msgstr ""
+
+#: HostDlg.cpp:98
+msgid "alias (CNAME)"
+msgstr ""
+
+#: HostDlg.cpp:99
+msgid "start of authority (SOA)"
+msgstr ""
+
+#: HostDlg.cpp:100
+msgid "any record (ANY)"
+msgstr ""
+
+#: HostDlg.cpp:106
+msgid "Se&arch for:"
+msgstr ""
+
+#: HostDlg.cpp:118 HostDlg.cpp:222
+msgid "default server"
+msgstr ""
+
+#: HostDlg.cpp:127
+msgid "Ser&ver:"
+msgstr ""
