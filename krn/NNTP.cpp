@@ -486,9 +486,10 @@ QString *NNTP::article(char *id)
     {
         if(f.open (IO_ReadOnly))
         {
-            delete data;
-            data=new QString (f.size());
-            f.readBlock(data->data(),f.size());
+            char *buffer=new char[f.size()+1];
+            f.readBlock(buffer,f.size());
+            buffer[f.size()]=0;
+            data->setStr(buffer);
             f.close();
         }
     }

@@ -633,7 +633,7 @@ void KMComposeView::followupMessage()
     
     //futureMessage inherits the references, plus the ID
     
-    temp.sprintf("%s%s",currentMessage->references(),currentMessage->id());
+    temp.sprintf("%s%s",currentMessage->id(),currentMessage->references());
     futureMessage->setReferences (temp);
     
     temp.sprintf(nls->translate("Re: %s"),currentMessage->subject());
