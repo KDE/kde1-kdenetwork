@@ -1,200 +1,219 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-10-12 14:17+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
-"Content-Transfer-Encoding: ENCODING\n"
+"Date: 1998-02-10 15:59:39+0100\n"
+"From: root (A. Rizzi),,, <root@BiliOne>\n"
+"Content-Type: text/plain; charset=\n"
+"Xgettext-Options: -ktranslate\n"
+"Files: finger.cpp kfinger.cpp\n"
 
-#: kfinger.C:8 kfinger.C:34
+#: kfinger.cpp:6 kfinger.cpp:31
 msgid "KDE finger utility"
-msgstr ""
+msgstr "Utilitário Finger do KDE"
 
-#: kfinger.C:14
+#: kfinger.cpp:12
 msgid "Finger Now"
-msgstr ""
+msgstr "Finger Agora"
 
-#: kfinger.C:15
+#: kfinger.cpp:13
 msgid "Talk.."
-msgstr ""
+msgstr "Falar..."
 
-#: kfinger.C:18
+#: kfinger.cpp:14
+msgid "Quit"
+msgstr "Sair"
+
+#: kfinger.cpp:16
 msgid "Setup"
-msgstr ""
+msgstr "Configuração"
 
-#: kfinger.C:19
-msgid "Save Options"
-msgstr ""
+#: kfinger.cpp:18
+msgid "Help"
+msgstr "Ajuda"
 
-#: kfinger.C:38
+#: kfinger.cpp:19 kfinger.cpp:221
+msgid "About"
+msgstr "Sobre"
+
+#: kfinger.cpp:20
+msgid "&File"
+msgstr "&Arquivo"
+
+#: kfinger.cpp:21
+msgid "&Options"
+msgstr "&Opções"
+
+#: kfinger.cpp:23
+msgid "&Help"
+msgstr "A&juda"
+
+#: kfinger.cpp:37
 msgid "Finger"
-msgstr ""
+msgstr "Finger"
 
-#: kfinger.C:39
-msgid "Stop current finger"
-msgstr ""
-
-#: kfinger.C:41
+#: kfinger.cpp:39
 msgid "Talk..."
-msgstr ""
+msgstr "Falar..."
 
-#: kfinger.C:42
-msgid "AutoFinger On/Off"
-msgstr ""
+#: kfinger.cpp:41
+msgid "Settings"
+msgstr "Configurações"
 
-#: kfinger.C:54
+#: kfinger.cpp:56
 msgid ""
 "Welcome to KDE Finger \n"
-"program by A.Rizzi rizzi@kde.org\n"
+"program by A.Rizzi bilibao@ouverture.it\n"
 "18/09/1997 \n"
 msgstr ""
+"Bem-vindo ao KDE Finger \n"
+"por A.Rizzi bilibao@ouverture.it\n"
+"18/09/1997 \n"
 
-#: kfinger.C:55
+#: kfinger.cpp:57
 msgid "Finger result"
-msgstr ""
+msgstr "Resultado do Finger"
 
-#: kfinger.C:266
-#, c-format
+#: kfinger.cpp:201
 msgid "Error on server : %s"
-msgstr ""
+msgstr "Erro no servidor: %s"
 
-#: kfinger.C:285
-#, c-format
+#: kfinger.cpp:210
 msgid "Finger result for : %s@%s"
-msgstr ""
+msgstr "Resultado do Finger para: %s@%s"
 
-#: kfinger.C:301
+#: kfinger.cpp:221
 msgid ""
-"Kfinger 0.7.0\n"
+"Kfinger 0.3.2\n"
 "(c) by Andrea Rizzi\n"
-"rizzi@kde.org"
+"bilibao@ouverture.it"
 msgstr ""
+"Kfinger 0.3.2\n"
+"(c) por Andrea Rizzi\n"
+"bilibao@ouverture.it"
 
-#: kfinger.C:345
+#: kfinger.cpp:265
 msgid "Kfinger Setup"
-msgstr ""
+msgstr "Configuração do KFinger"
 
-#: kfinger.C:373 kfinger.C:413
+#: kfinger.cpp:293 kfinger.cpp:333
 msgid "&Add"
-msgstr ""
+msgstr "&Adicionar"
 
-#: kfinger.C:383
+#: kfinger.cpp:298 kfinger.cpp:338
+msgid "&Remove"
+msgstr "&Remover"
+
+#: kfinger.cpp:303
 msgid "Server Name"
-msgstr ""
+msgstr "Nome do Servidor"
 
-#: kfinger.C:387 kfinger.C:390
+#: kfinger.cpp:307 kfinger.cpp:310
 msgid "Server list"
-msgstr ""
+msgstr "Lista de servidores"
 
-#: kfinger.C:423
+#: kfinger.cpp:343
 msgid "User Name"
-msgstr ""
+msgstr "Nome do usuário"
 
-#: kfinger.C:427 kfinger.C:430
+#: kfinger.cpp:347 kfinger.cpp:350
 msgid "Users list"
-msgstr ""
+msgstr "Lista de usuários"
 
-#: kfinger.C:444
+#: kfinger.cpp:364
 msgid "Timed finger"
-msgstr ""
+msgstr "Finger cronometrado"
 
-#: kfinger.C:459 kfinger.C:644
-#, c-format
-msgid "Finger wait: %d\""
-msgstr ""
+#: kfinger.cpp:382 kfinger.cpp:557
+msgid "Finger wait: %d"
+msgstr "Espera do Finger: %d"
 
-#: kfinger.C:464
-msgid "Talk Command "
-msgstr ""
+#: kfinger.cpp:386
+msgid "Time"
+msgstr "Tempo"
 
-#: kfinger.C:474
-msgid "Misc"
-msgstr ""
-
-#: kfinger.C:479 kfinger.C:491
+#: kfinger.cpp:391 kfinger.cpp:403
 msgid "Finger Output"
-msgstr ""
+msgstr "Saída do Finger"
 
-#: kfinger.C:483
+#: kfinger.cpp:395
 msgid "Finger server"
-msgstr ""
+msgstr "Servidor do Finger"
 
-#: kfinger.C:487 kfinger.C:499
+#: kfinger.cpp:399 kfinger.cpp:411
 msgid "Fixed"
-msgstr ""
+msgstr "Fixo"
 
-#: kfinger.C:495
+#: kfinger.cpp:407
 msgid "Finger User"
-msgstr ""
+msgstr "Usuário do Finger"
 
-#: kfinger.C:515
+#: kfinger.cpp:427
 msgid "Lines to skip :"
-msgstr ""
+msgstr "Linhas a pular:"
 
-#: kfinger.C:523 kfinger.C:528
+#: kfinger.cpp:435 kfinger.cpp:440
 msgid "Format..."
-msgstr ""
+msgstr "Formato..."
 
-#: kfinger.C:535
+#: kfinger.cpp:447
 msgid "User"
-msgstr ""
+msgstr "Usuário"
 
-#: kfinger.C:546
+#: kfinger.cpp:458
 msgid "Server"
-msgstr ""
+msgstr "Servidor"
 
-#: kfinger.C:558
+#: kfinger.cpp:470
 msgid "Talk"
-msgstr ""
+msgstr "Falar"
 
-#: kfinger.C:691
+#: kfinger.cpp:475 kfinger.cpp:611 kfinger.cpp:757
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: kfinger.cpp:480
+msgid "Ok"
+msgstr "Ok"
+
+#: kfinger.cpp:603
 msgid "Talk with..."
-msgstr ""
+msgstr "Falar com..."
 
-#: kfinger.C:758
+#: kfinger.cpp:670
 msgid "Format string for var1(string)"
-msgstr ""
+msgstr "Formato de cadeia para var1(string)"
 
-#: kfinger.C:764
+#: kfinger.cpp:676
 msgid "Fromat string for var2(int)"
-msgstr ""
+msgstr "Formato de cadeia para var2(int)"
 
-#: kfinger.C:784 kfinger.C:790
+#: kfinger.cpp:696 kfinger.cpp:702
 msgid "Offset"
-msgstr ""
+msgstr "Deslocamento"
 
-#: kfinger.C:803
+#: kfinger.cpp:715
 msgid "Only var1"
-msgstr ""
+msgstr "Somente var1"
 
-#: kfinger.C:809
+#: kfinger.cpp:721
 msgid "Only var2"
-msgstr ""
+msgstr "Somente var2"
 
-#: kfinger.C:815
+#: kfinger.cpp:727
 msgid "var1, var2"
-msgstr ""
+msgstr "var1, var2"
 
-#: kfinger.C:821
+#: kfinger.cpp:733
 msgid "var2, var1"
-msgstr ""
+msgstr "var2, var1"
 
-#: kfinger.C:834
+#: kfinger.cpp:746
 msgid "Output format string"
-msgstr ""
+msgstr "Cadeia de formato de saída"
 
-#: kfinger.C:841
+#: kfinger.cpp:753
 msgid "Save & Quit"
-msgstr ""
+msgstr "Salvar & Sair"
 
-#: kfinger.C:851
+#: kfinger.cpp:763
 msgid "Output parameters "
-msgstr ""
+msgstr "Parâmetros de saída "
