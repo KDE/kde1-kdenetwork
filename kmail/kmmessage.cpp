@@ -770,7 +770,7 @@ void KMMessage::setFrom(const QString aStr)
 //-----------------------------------------------------------------------------
 const QString KMMessage::subject(void) const
 {
-  return headerField("Subject");
+  return headerField("Subject").simplifyWhiteSpace();
 }
 
 
