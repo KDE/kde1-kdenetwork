@@ -285,6 +285,7 @@ int NNTP::setMode (char *mode)
 
 int NNTP::listXover(int from,int to)
 {
+    DwString gi;
     reportCounters (true,false);
     from=from >? first;
     to=to <? last;
@@ -322,6 +323,7 @@ int NNTP::listXover(int from,int to)
                     f.close();
                 }
                 //First break it up in an article list
+                class Article art;
                 char *tok=strtok(resp.data(),"\n");
                 while (tok)
                 {
@@ -343,10 +345,11 @@ int NNTP::listXover(int from,int to)
                     while (!qit.isEmpty());
                     
                     //Write the article ID to the newsgroup file
-                    f.writeBlock(templ.at(OffsetID),strlen(templ.at(OffsetID)));
-                    f.writeBlock("\n",1);
+                    gi+=templ.at(OffsetID);
+                    gi+="\n";
+//                    f.writeBlock(templ.at(OffsetID),strlen(templ.at(OffsetID)));
+//                    f.writeBlock("\n",1);
                     
-                    class Article art;
                     art.Subject=templ.at(OffsetSubject);
                     art.From=templ.at(OffsetFrom);
                     art.Date=templ.at(OffsetDate);
@@ -374,6 +377,7 @@ int NNTP::listXover(int from,int to)
                     art.save();
                     tok=strtok(NULL,"\n");
                 }
+                f.writeBlock(gi.data(),gi.length());
                 f.close();
             }
         }

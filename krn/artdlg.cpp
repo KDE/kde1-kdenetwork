@@ -809,8 +809,6 @@ void Artdlg::decArt (int index,int)
 
 void Artdlg::getSubjects()
 {
-    group->getSubjects(server);
-    
     qApp->setOverrideCursor(waitCursor);
     statusBar ()->changeItem (klocale->translate("Getting Article List"), 1);
     qApp->processEvents ();
