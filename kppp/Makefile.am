@@ -25,9 +25,6 @@ INCLUDES= $(all_includes)
 # claim, which subdirectories you want to install
 SUBDIRS = docs pixmaps icons logview Rules
 
-# kppp wants to be installed suid root
-INSTALL_PROGRAM=$(INSTALL) -m 4755
-
 # This one gets installed 
 bin_PROGRAMS = 	kppp #kpppsetup
 
@@ -146,7 +143,7 @@ messages:
 # don't install a list of file. Just one file per install.
 # if you have more of them, create a subdirectory with an extra Makefile 
 install-data-local:	
-	@(cd Rules && $(MAKE) install)
+#	@(cd Rules && $(MAKE) install)
 	@echo ""
 	@echo "Don't forget to send me a phone tarif rules file for your"
 	@echo "telecom company/country/region. Thanks."
@@ -160,12 +157,16 @@ install-data-local:
 	@echo "Happy Dialing! -- the KPPP team"
 	@echo ""
 
-# remove ALL you have installed in install-data-local or install-exec-local
-uninstall-local:
-	@(cd Rules && $(MAKE) uninstall)
+# kppp wants to be installed suid root
+install-exec-hook:
+	(chown root $(bindir)/kppp && chmod 4555 $(bindir)/kppp) || echo "Was not able to make kppp setuid root"
 
-distclean-local:
-	@(cd Rules && $(MAKE) distclean)
+# remove ALL you have installed in install-data-local or install-exec-local
+#uninstall-local:
+#	@(cd Rules && $(MAKE) uninstall)
+
+#distclean-local:
+#	@(cd Rules && $(MAKE) distclean)
 
 # MOC files
 accounting.cpp: accounting.moc;
