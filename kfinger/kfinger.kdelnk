@@ -1,6 +1,7 @@
 # KDE Config File
 [KDE Desktop Entry]
 Comment=User information lookup tool
+Comment[br]=Benveg enklask titouroù war an arveriaded
 Comment[ca]=Eina d'examen d'informació d'usuari
 Comment[cs]=Sí»ová slu¾ba finger
 Comment[da]=Værktøj til at slå op i brugerinformation
@@ -8,6 +9,7 @@ Comment[de]=Werkzeug zum Abfragen von Benutzerinformationen
 Comment[es]=Utilidad de finger de KDE
 Comment[fi]=Etsii käyttäjätietoja verkosta
 Comment[fr]=Un outil pour consulter des informations sur les utilisateurs
+Comment[hu]=A felhasználókról tudhatunk meg adatokat
 Comment[is]=kfinger:  Notað til að fletta upp upplýsingum um notendur
 Comment[it]=Finger KDE
 Comment[no]=Verktøy for å slå opp brukerinformasjon
@@ -22,6 +24,7 @@ Comment[sv]=Verktyg för att slå upp användarinformation
 BinaryPattern=kfinger;
 Protocols=
 Name=User information
+Name[br]=Titouroù war an arveriaded
 Name[ca]=Informació d'usuari
 Name[cs]=kfinger
 Name[da]=Brugerinformation
@@ -30,6 +33,7 @@ Name[es]=Finger
 Name[fi]=Käyttäjätiedot
 Name[fr]=Informations utilisateurs
 Name[hr]=Informacije o korisnicima
+Name[hu]=Felhasználó Információ
 Name[is]=Pota í notanda
 Name[it]=Informazioni Utenti
 Name[no]=Brukerinformasjon

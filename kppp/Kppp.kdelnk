@@ -1,10 +1,11 @@
 # KDE Config File
 [KDE Desktop Entry]
 Comment=Internet dial-up tool
+Comment[br]=Benveg kevreañ PPP ouzh ar genrouedad
 Comment[ca]=Connexió telefònica a Internet
 Comment[cs]=Program na pøipojení pøes dial-up
 Comment[da]=Program der kobler på internettet via modem
-Comment[de]=Internet Wählhilfe
+Comment[de]=Internet-Wählhilfe
 Comment[es]=Herramienta de conexión a Internet
 Comment[fi]=Internettiin soitto-ohjelma
 Comment[fr]=Outil de connexion Internet PPP via modem
@@ -24,6 +25,7 @@ Comment[sv]=Program för att koppla upp till Internet via modem
 BinaryPattern=kppp;
 Protocols=
 Name=Kppp
+Name[br]=Sifrenner
 Name[ca]=Accés telefònic
 Name[es]=Conexión a Internet
 Name[fr]=Numéroteur
