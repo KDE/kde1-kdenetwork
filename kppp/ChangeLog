@@ -2,6 +2,8 @@
 
 	* connect.cpp: solved problems with pppd 2.3.6 and 2.3.7
 	* pppdata.cpp: PPPDebug() defaults to `false'.
+	* opener.cpp: introduced MY_ASSERT macro. We don't want to see our
+	security checks disabled by the NDEBUG flag.
 
 1999-04-09  Harri Porten  <porten@kde.org>
 

@@ -47,7 +47,6 @@
 #include <sys/ioctl.h>
 #include <sys/un.h>
 #include <fcntl.h>
-#include <assert.h>
 #include <string.h>
 #include <errno.h>
 #include <netinet/in.h>
@@ -66,6 +65,10 @@
 #ifndef _PATH_RESCONF
 #define _PATH_RESCONF "/etc/resolv.conf"
 #endif
+
+#define MY_ASSERT(x)  if (!(x)) { \
+        fprintf(stderr, "ASSERT: \"%s\" in %s (%d)\n",#x,__FILE__,__LINE__); \
+        exit(1); }
 
 static void sighandler(int);
 static pid_t pppdPid = -1;
@@ -117,7 +120,7 @@ void Opener::mainLoop() {
 
       case OpenDevice:
 	Debug("Opener: received OpenDevice");
-	assert(len == sizeof(struct OpenModemRequest));
+	MY_ASSERT(len == sizeof(struct OpenModemRequest));
 	close(ttyfd);
 	device = deviceByIndex(request.modem.deviceNum);
 	response.status = 0;
@@ -133,16 +136,16 @@ void Opener::mainLoop() {
 
       case OpenLock:
 	Debug("Opener: received OpenLock\n");
-	assert(len == sizeof(struct OpenLockRequest));
+	MY_ASSERT(len == sizeof(struct OpenLockRequest));
 	flags = request.lock.flags;
-	assert(flags == O_RDONLY || flags == O_WRONLY|O_TRUNC|O_CREAT); 
+	MY_ASSERT(flags == O_RDONLY || flags == O_WRONLY|O_TRUNC|O_CREAT); 
 	if(flags == O_WRONLY|O_TRUNC|O_CREAT)
 	  mode = 0644;
 	else
 	  mode = 0;
 
 	device = deviceByIndex(request.lock.deviceNum);
-	assert(strlen(LOCK_DIR)+strlen(device) < MaxPathLen);
+	MY_ASSERT(strlen(LOCK_DIR)+strlen(device) < MaxPathLen);
 	strncpy(lockfile, LOCK_DIR"/LCK..", MaxPathLen);
 	strncat(lockfile, device + strlen("/dev/"),
 		MaxPathLen - strlen(lockfile));
@@ -171,7 +174,7 @@ void Opener::mainLoop() {
 
       case RemoveLock:
 	Debug("Opener: received RemoveLock");
-	assert(len == sizeof(struct RemoveLockRequest));
+	MY_ASSERT(len == sizeof(struct RemoveLockRequest));
 	close(ttyfd);
 	ttyfd = -1;
 	response.status = unlink(lockfile);
@@ -181,7 +184,7 @@ void Opener::mainLoop() {
 
       case OpenResolv:
 	Debug("Opener: received OpenResolv");
-	assert(len == sizeof(struct OpenResolvRequest));
+	MY_ASSERT(len == sizeof(struct OpenResolvRequest));
 	flags = request.resolv.flags;
 	response.status = 0;
 	if ((fd = open(_PATH_RESCONF, flags)) == -1) {
@@ -195,7 +198,7 @@ void Opener::mainLoop() {
 
       case OpenSysLog:
 	Debug("Opener: received OpenSysLog");
-	assert(len == sizeof(struct OpenLogRequest));
+	MY_ASSERT(len == sizeof(struct OpenLogRequest));
 	response.status = 0;
 	if ((fd = open("/var/log/messages", O_RDONLY)) == -1) {
 	  if ((fd = open("/var/log/syslog.ppp", O_RDONLY)) == -1) {
@@ -210,7 +213,7 @@ void Opener::mainLoop() {
 
       case SetSecret:
 	Debug("Opener: received SetSecret");
-	assert(len == sizeof(struct SetSecretRequest));
+	MY_ASSERT(len == sizeof(struct SetSecretRequest));
 	response.status = !createAuthFile(request.secret.authMethod,
 					  request.secret.username,
 					  request.secret.password);
@@ -219,14 +222,14 @@ void Opener::mainLoop() {
 
       case RemoveSecret:
 	Debug("Opener: received RemoveSecret");
-	assert(len == sizeof(struct RemoveSecretRequest));
+	MY_ASSERT(len == sizeof(struct RemoveSecretRequest));
 	response.status = !removeAuthFile(request.remove.authMethod);
 	sendResponse(&response);
 	break;
 
       case SetHostname:
 	Debug("Opener: received SetHostname");
-	assert(len == sizeof(struct SetHostnameRequest));
+	MY_ASSERT(len == sizeof(struct SetHostnameRequest));
 	response.status = 0;
 	if(sethostname(request.host.name, strlen(request.host.name)))
 	  response.status = -errno;
@@ -235,14 +238,14 @@ void Opener::mainLoop() {
 
       case ExecPPPDaemon:
 	Debug("Opener: received ExecPPPDaemon");
-	assert(len == sizeof(struct ExecDaemonRequest));
+	MY_ASSERT(len == sizeof(struct ExecDaemonRequest));
 	response.status = execpppd(request.daemon.arguments);
 	sendResponse(&response);
 	break;
 
       case KillPPPDaemon:
 	Debug("Opener: received KillPPPDaemon");
-	assert(len == sizeof(struct KillDaemonRequest));
+	MY_ASSERT(len == sizeof(struct KillDaemonRequest));
 	response.status = killpppd();
 	sendResponse(&response);
 	break;
@@ -339,7 +342,7 @@ const char* Opener::deviceByIndex(int idx) {
   for(int i = 0; devices[i]; i++)
     if(i == idx)
       device = devices[i];
-  assert(device);
+  MY_ASSERT(device);
   return device;
 }
 
