@@ -52,15 +52,15 @@ Kmessage::Kmessage
     this->resize(400,300);
     this->begin("file:/tmp/xxx");
     this->write ("<html><head><title>Krn message view</title></head>\n"
-                 "<body bgcolor=#ffffff><hr><h4>Krn:&nbsp;A&nbsp;Newsreader&nbsp;for&nbsp;KDE</h4><hr>");
+                 "<body><hr><h4>Krn:&nbsp;A&nbsp;Newsreader&nbsp;for&nbsp;KDE</h4><hr>");
     debug("HTML Header=\""
           "<html><head><title>Krn message view</title></head>\n"
-          "<body bgcolor=#ffffff><hr><h4>Krn:&nbsp;A&nbsp;Newsreader&nbsp;for&nbsp;KDE</h4><hr>"
+          "<body><hr><h4>Krn:&nbsp;A&nbsp;Newsreader&nbsp;for&nbsp;KDE</h4><hr>"
           "\"");
     this->end();
     this->parse();
 
-    this->setBackgroundColor(QColor("white"));
+    this->loadSettings();
     kapp->processEvents();
 
     KApplication::connect(this,SIGNAL(URLSelected(const char*,int)),this,SLOT(URLClicked(const char*,int)));
@@ -93,6 +93,7 @@ void Kmessage::loadMessage( QString message, bool complete=TRUE )
 {
     format=new KFormatter(saveWidgetName,viewWidgetName,message,complete);
     CHECK_PTR(format);
+    this->loadSettings();
 
     this->begin("file:/tmp/xxx");
     QString header=format->htmlHeader();
@@ -227,6 +228,13 @@ void Kmessage::loadSettings()
     getKHTMLWidget()->setDefaultFontBase(conf->readNumEntry("DefaultFontBase",3));
     getKHTMLWidget()->setStandardFont(conf->readEntry("StandardFont",&QString("helvetica")));
     getKHTMLWidget()->setFixedFont(conf->readEntry("FixedFont",&QString("courier")));
+    getKHTMLWidget()->setDefaultBGColor(conf->readColorEntry("BackgroundColor",&QColor("white")));
+    getKHTMLWidget()->setDefaultTextColors(
+                                           conf->readColorEntry("ForegroundColor",&QColor("black")),
+                                           conf->readColorEntry("LinkColor",&QColor("blue")),
+                                           conf->readColorEntry("FollowedColor",&QColor("red"))
+                                          );
+    
 }
 
                           

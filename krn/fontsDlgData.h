@@ -5,6 +5,8 @@
 #include <qlined.h>
 #include <qpushbt.h>
 
+#include <kcolorbtn.h>
+
 class fontsDlgData
 {
 public:
@@ -22,6 +24,10 @@ public:
     QLineEdit* samp2;
     QComboBox* stdFontName;
     QComboBox* fixedFontName;
+    KColorButton* bgColor;
+    KColorButton* fgColor;
+    KColorButton* linkColor;
+    KColorButton* followColor;
 
 };
 

@@ -79,19 +79,6 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     server = _server;
     
     
-    article=new QPopupMenu;
-    article->setCheckable(true);
-    article->insertItem("Save",SAVE_ARTICLE);
-    article->insertSeparator();
-    article->insertItem("Print",PRINT_ARTICLE);
-    article->insertItem("Reply by Mail",REP_MAIL);
-    article->insertItem("Post Followup",FOLLOWUP);
-    article->insertSeparator();
-    article->insertItem("Decode",DECODE_ONE_ARTICLE);
-    article->insertItem("(Un)Tag",TAG_ARTICLE);
-    connect (article,SIGNAL(activated(int)),SLOT(actions(int)));
-
-    
     taggedArticle=new QPopupMenu;
     taggedArticle->insertItem("Save",SAVE_ARTICLE);
     taggedArticle->insertSeparator();
@@ -102,11 +89,28 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     taggedArticle->insertItem("Untag",TAG_ARTICLE);
     connect (taggedArticle,SIGNAL(activated(int)),SLOT(taggedActions(int)));
 
+
+    article=new QPopupMenu;
+    article->setCheckable(true);
+    article->insertItem("Save",SAVE_ARTICLE);
+    article->insertSeparator();
+    article->insertItem("Print",PRINT_ARTICLE);
+    article->insertItem("Reply by Mail",REP_MAIL);
+    article->insertItem("Post Followup",FOLLOWUP);
+    article->insertSeparator();
+    article->insertItem("Decode",DECODE_ONE_ARTICLE);
+    article->insertItem("(Un)Tag",TAG_ARTICLE);
+    article->insertSeparator();
+    article->insertItem("Tagged",taggedArticle);
+    connect (article,SIGNAL(activated(int)),SLOT(actions(int)));
+
+    
+
     options=new QPopupMenu;
     options->setCheckable(true);
     options->insertItem("Only unread messages", NO_READ);
     options->setItemChecked(NO_READ,unread);
-    options->insertItem("Fonts",CONFIG_FONTS);
+    options->insertItem("Appearance",CONFIG_FONTS);
     connect (options,SIGNAL(activated(int)),SLOT(actions(int)));
     
     menu = new KMenuBar (this, "menu");

@@ -48,6 +48,10 @@ fontsDlg::fontsDlg
     syncFonts(0);
     samp1->setText(conf->readEntry("StandardFontTest",&QString("Standard Font Test")));
     samp2->setText(conf->readEntry("FixedFontTest",&QString("Fixed Font Test")));
+    bgColor->setColor(conf->readColorEntry("BackgroundColor",&QColor("white")));
+    fgColor->setColor(conf->readColorEntry("ForegroundColor",&QColor("black")));
+    linkColor->setColor(conf->readColorEntry("LinkColor",&QColor("blue")));
+    followColor->setColor(conf->readColorEntry("FollowedColor",&QColor("red")));
 }
 
 
@@ -69,6 +73,10 @@ void fontsDlg::save()
     conf->writeEntry ("FixedFont",fixedFontName->currentText());
     conf->writeEntry ("StandardFontTest",samp1->text());
     conf->writeEntry ("FixedFontTest",samp2->text());
+    conf->writeEntry ("BackgroundColor",bgColor->color());
+    conf->writeEntry ("ForegroundColor",fgColor->color());
+    conf->writeEntry ("LinkColor",linkColor->color());
+    conf->writeEntry ("FollowedColor",followColor->color());
     conf->sync();
 }
 
