@@ -21,8 +21,6 @@ BUILTSOURCES =	groupdlg.moc \
                 kdecode.moc\
                 aboutDlg.moc\
                 fontsDlg.moc\
-                kmfolder.moc\
-                kmfoldernode.moc\
                 kmcomposewin.moc\
                 KEdit.moc\
                 findArtDlg.moc
@@ -56,9 +54,7 @@ krn_SOURCES = 	main.cpp\
                 fontsDlg.cpp\
                 fontsDlgData.cpp\
                 kmmsgpart.cpp\
-                kmfolder.cpp\
                 kmmsginfo.cpp\
-                kmfoldernode.cpp\
                 kmcomposewin.cpp\
                 KEdit.cpp\
                 kmimemagic.cpp\
@@ -91,9 +87,7 @@ noinst_HEADERS = 	NNTP.h\
                 fontsDlg.h\
                 fontsDlgData.h\
                 kmmsgpart.h\
-                kmfolder.h\
                 kmmsginfo.h\
-                kmfoldernode.h\
                 kmcomposewin.h\
                 KEdit.h\
                 kmimemagic.h\
@@ -179,12 +173,4 @@ KEdit.moc: KEdit.h
 kmcomposewin.cpp:kmcomposewin.moc
 kmcomposewin.moc: kmcomposewin.h
 	$(MOC) kmcomposewin.h -o kmcomposewin.moc
-
-kmfolder.cpp:kmfolder.moc
-kmfolder.moc: kmfolder.h
-	$(MOC) kmfolder.h -o kmfolder.moc
-
-kmfoldernode.cpp:kmfoldernode.moc
-kmfoldernode.moc: kmfoldernode.h
-	$(MOC) kmfoldernode.h -o kmfoldernode.moc
 

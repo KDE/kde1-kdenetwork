@@ -182,7 +182,7 @@ QString KFormatter::htmlPart(QList<int> partno)
 
     if (baseType=="text")
     {
-        DwToLocalEol(data,data);
+//        DwToLocalEol(data,data);
         if (subType=="html")
         {
             KDEBUG (KDEBUG_INFO,3300,"Found text/html part.");

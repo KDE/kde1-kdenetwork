@@ -2,7 +2,6 @@
 
 #include "kmmessage.h"
 #include "kmmsgpart.h"
-#include "kmfolder.h"
 
 #include <mimelib/mimepp.h>
 
@@ -69,7 +68,7 @@ const char* KMMessage::asString(void)
 void KMMessage::setStatus(Status aStatus)
 {
   mStatus = aStatus;
-  if (mOwner) mOwner->setMsgStatus(this, mStatus);
+//  if (mOwner) mOwner->setMsgStatus(this, mStatus);
 }
 
 
@@ -86,13 +85,6 @@ const char* KMMessage::statusToStr(Status aSt)
 KMMessage* KMMessage::reply(void)
 {
   KMMessage* msg = new KMMessage();
-
-
-
-
-
-  debug("KMMessage::reply() needs implementation !");
-
   return msg;
 }
 
