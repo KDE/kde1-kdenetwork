@@ -19,13 +19,13 @@ o Once kppp is in place you have to give kppp setuid permission:
   cd $(KDEDIR)/bin ; chmod +s kppp. This might not 
   be absolutely necessary ( depending on the permissions 
   set on the modem device and /etc/resolv.conf but if you can 
-  affort to, this will make your life much esier.
+  afford to, this will make your life much easier.
 
 o if you can't give kppp setuid permission, here is the deal:
   In order for kppp to be able to update /etc/resolv.conf
   the users of kppp must have write permissions to this file 
   and of course the modem device. It's up to you to figure
-  the right premissions. ;-)
+  the right permissions. ;-)
 
 o make sure that the pppd's option file which usually resides
   in /etc/ppp/ exists, but is empty. pppd wants it to exist,
@@ -44,4 +44,3 @@ happy dialing!
 
 Bernd Wuebben
 wuebben@math.cornell.edu
-

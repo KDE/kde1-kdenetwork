@@ -1,3 +1,9 @@
+Thu Feb  5 22:00:55 1998  Harri Porten  <hp@localhost>
+
+	* pppdata.cpp: added pppdError() and setpppdError()
+	* main.cpp: added new error message for timeout
+	* removed last remaining command_on_disconnect bug (see Jan 24)
+
 Sat Jan 31 19:56:03 1998  Harri Porten  <porten@tu-harburg.de>
 
 	* main.cpp: in some cases kppp connected to an account 

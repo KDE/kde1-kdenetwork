@@ -28,7 +28,6 @@
 #include <termios.h>
 #include <sys/types.h>
 
-#include <kmsgbox.h>
 
 #include "connect.h"
 #include "pppdata.h"

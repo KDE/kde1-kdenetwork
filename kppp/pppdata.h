@@ -125,6 +125,9 @@
 #define DOCKING_KEY        "DockIntoPanel"
 #define TOTALCOSTS_KEY     "TotalCosts"
 
+// pppd errors
+#define E_IF_TIMEOUT       1
+
 class PPPData {
 public:
   PPPData();
@@ -332,6 +335,9 @@ public:
   pid_t pppdpid();
   void setpppdpid(pid_t);
 
+  int pppdError();
+  void setpppdError(int err);
+
   // functions to set/query the accounting info
   const char *accountingFile();
   void setAccountingFile(const char *);
@@ -353,7 +359,7 @@ private:
 
   pid_t pppdprocessid;                   // process ID of the child pppd
                                          // daemon
-
+  int pppderror;                         // error encounterd running pppd
 
 };
 

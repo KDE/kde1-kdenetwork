@@ -173,6 +173,7 @@ void ConnectWidget::preinit() {
 void ConnectWidget::init() {
 
   pppd_has_died = false;
+  gpppdata.setpppdError(0);
   inittimer->stop();
   vmain = 0;
   expecting = false;
@@ -181,7 +182,6 @@ void ConnectWidget::init() {
   myreadbuffer = "";
   firstrunID = true;
   firstrunPW = true;
-
 
   p_xppp->con_speed = "";
 
@@ -884,8 +884,10 @@ void ConnectWidget::if_waiting_timed_out(){
   if_timeout_timer->stop();
 
 #ifdef MY_DEBUG
-printf("if_waiting_timed_out()\n");
+  printf("if_waiting_timed_out()\n");
 #endif
+  
+  gpppdata.setpppdError(E_IF_TIMEOUT);
 
   // let's kill the stuck pppd
   killppp();
@@ -1337,6 +1339,7 @@ bool ConnectWidget::execppp() {
 #else
       setpgrp();
 #endif
+
       execve(gpppdata.pppdPath(), args, '\0');
       exit(0);
   }
@@ -1376,7 +1379,6 @@ printf("Sending SIGTERM to %d\n",gpppdata.pppdpid());
 printf("Error killing %d\n",gpppdata.pppdpid());
 #endif MY_DEBUG
       qApp->beep();
-
   }
 
 

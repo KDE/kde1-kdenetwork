@@ -36,7 +36,7 @@ PPPData::PPPData() {
   cgroup = 0L;         // current group for config file
 
   pppdprocessid = -1;  // process ID of the child pppd daemon
-
+  pppderror = 0;       
 }
 
 //
@@ -1044,3 +1044,12 @@ pid_t PPPData::pppdpid() {
 void PPPData::setpppdpid(pid_t id) {
   pppdprocessid = id;
 }
+
+int PPPData::pppdError() {
+  return pppderror;
+}
+
+void PPPData::setpppdError(int err) {
+  pppderror = err;
+}
+

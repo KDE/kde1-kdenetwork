@@ -600,7 +600,6 @@ void dieppp(int sig) {
 
       gpppdata.setpppdpid(-1);
 
-      
       if(strcmp(gpppdata.command_on_disconnect(), "") != 0) {
     
 	pid_t id;
@@ -641,9 +640,21 @@ void dieppp(int sig) {
 	gpppdata.setpppdpid(-1);
 	
 	app->beep();
-	QMessageBox::warning( 0, klocale->translate("Error"), 
-			      klocale->translate("The pppd daemon died unexpectedly!"));
-      }
+	QString msg;
+	switch (gpppdata.pppdError())
+	  {
+	  case E_IF_TIMEOUT:
+	    msg = "Timeout expired on waiting for the ppp interface ";
+	    msg += "to come up!";
+	    break;
+	  
+	  default: 
+	    msg = "The pppd daemon died unexpectedly!";
+	  }
+	
+	QMessageBox::warning(0, klocale->translate("Error"), 
+			     klocale->translate(msg));
+  }
       else{/* reconnect on disconnect */
 #ifdef MY_DEBUG
   printf("Trying to reconnect ... \n");
@@ -909,7 +920,7 @@ printf("In terminatepppd(): I will attempt to kill pppd\n");
 
     gpppdata.setpppdpid(-1);
 
-      if(gpppdata.command_on_disconnect()) {
+      if(strcmp(gpppdata.command_on_disconnect(), "") !=0) {
     
 	pid_t id;
 
