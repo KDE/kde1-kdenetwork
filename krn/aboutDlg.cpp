@@ -34,7 +34,7 @@ aboutDlg::aboutDlg
 
     l->addButton ("logo",p);
     l->newLine();
-    l->addLabel("l3","0.2.9");
+    l->addLabel("l3","0.3.0");
     l->newLine();
     l->addLabel("l1",klocale->translate("Part of the KDE project."));
     l->newLine();
@@ -58,6 +58,7 @@ aboutDlg::aboutDlg
     tmpQListBox->insertItem( "Robert Cope <robert@bga.com>" );
     tmpQListBox->insertItem( "Nico Schirwing" );
     tmpQListBox->insertItem( "César Ballardini <cballard@santafe.com.ar>" );
+    tmpQListBox->insertItem( "Jacek Konieczny <jajcus@zeus.polsl.gliwice.pl>" );
     tmpQListBox->insertItem( "" );
     tmpQListBox->insertItem( klocale->translate("And Many thanks to:") );
     tmpQListBox->insertItem( "" );
