@@ -32,6 +32,8 @@ Asker::Asker
 {
     setCaption( "KRN" );
     QObject::connect (b1,SIGNAL(clicked()),SLOT(accept()));
+    QObject::connect (entry,SIGNAL(returnPressed()),SLOT(accept()));
+    entry->setFocus();
 }
 
 

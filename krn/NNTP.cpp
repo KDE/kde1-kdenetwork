@@ -45,17 +45,20 @@ NNTPObserver::NNTPObserver (NNTP *_client)
     client=_client;
 }
 
+int oldbytes;
+
 void NNTPObserver::Notify()
 {
     client->byteCounter+=client->mTextResponse.length();
-    client->partialResponse+=client->mTextResponse.c_str();
-    if (client->reportBytes)
+    client->partialResponse+=client->mTextResponse;
+    if (client->reportBytes && (client->byteCounter - oldbytes)>1024 )
     {
         char *buffer=new char[100];
         sprintf (buffer,"Received %d bytes",client->byteCounter);
         emit client->newStatus(buffer);
         delete[] buffer;
         qApp->processEvents();
+        oldbytes=client->byteCounter;
     }
 }
 
@@ -91,7 +94,7 @@ void NNTP::PGetTextResponse()
     qApp->processEvents();
     SetObserver(extendPartialResponse);
     DwNntpClient::PGetTextResponse();
-    mTextResponse=qstrdup(partialResponse.data());
+    mTextResponse=qstrdup(partialResponse.c_str());
     partialResponse="";
     SetObserver(NULL);
     debug ("exited NNTP::PGetTextResponse()");

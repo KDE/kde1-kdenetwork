@@ -213,7 +213,7 @@ private:
     int         OffsetRef;
     FILE      	*server;
     KSocket    	*sock;
-    QString     partialResponse;
+    DwString     partialResponse;
     NNTPObserver  *extendPartialResponse;
     void        PGetTextResponse();
 };
