@@ -65,7 +65,6 @@ void ExpireStatusDlg::doExpire()
         } else {
             if((currenttime-st.st_atime) > DAY*expireTime)
             {
-                debug(filename);
                 Article *art = new Article();
                 
                 art->ID = fname;
@@ -94,7 +93,6 @@ void ExpireStatusDlg::doExpire()
     // Expire old articles
     conf->setGroup("Cache");
     threshold=time(NULL)-DAY*conf->readNumEntry("ExpireReadHeaders",5);
-    debug ("threshold->%ld",threshold);
     key= gdbm_firstkey(old_artdb);
     while (key.dptr)
     {
@@ -124,7 +122,6 @@ void ExpireStatusDlg::doExpire()
             
             if (threshold>lastAccess)
             {
-                debug ("deleting %s",key.dptr);
                 gdbm_delete(old_artdb,key);
                 free (key.dptr);
             }
@@ -137,7 +134,6 @@ void ExpireStatusDlg::doExpire()
     
     conf->setGroup("Cache");
     threshold=time(NULL)-DAY*conf->readNumEntry("ExpireUnreadHeaders",5);
-    debug ("threshold->%ld",threshold);
     key= gdbm_firstkey(artdb);
     while (key.dptr)
     {
@@ -167,7 +163,6 @@ void ExpireStatusDlg::doExpire()
             
             if (threshold>lastAccess)
             {
-                debug ("deleting");
                 gdbm_delete(artdb,key);
                 free (key.dptr);
             }

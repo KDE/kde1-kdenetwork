@@ -486,7 +486,6 @@ void NewsGroup::getList(Artdlg *dialog)
     
     int index=0;
     int oldindex=0;
-    int counter=0;
     
     int artCount=buffer.contains('\n');
     debug ("There are %d articles",artCount);
@@ -496,12 +495,11 @@ void NewsGroup::getList(Artdlg *dialog)
         ID=buffer.mid(oldindex,index-oldindex);
         if (ID.isEmpty())
             break;
-        counter++;
         oldindex=index+1;
         addArticle (ID,onlyUnread);
-        if (dialog && !(counter%50))
+        if (dialog && !(artList.count()%10))
         {
-            status.sprintf ("Received %d articles",counter);
+            status.sprintf ("Received %d articles",artList.count());
             dialog->updateCounter(status);
         }
     }
