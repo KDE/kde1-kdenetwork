@@ -108,13 +108,12 @@ KSircProcess::KSircProcess( char *_server=0L, QObject * parent=0, const char * n
   proc = new KProcess();
 
   proc->setExecutable("perl");
-  *proc << "dsirc" << "-l" << "/dev/null" << "-8" << "-r" << "-s" << server;
+  *proc << "dsirc" << "-8" << "-r" << "-s" << server;
   proc->start(KProcess::NotifyOnExit, KProcess::All);
 
   iocontrol = new KSircIOController(proc, this);
   iocontrol->stdin_write("/eval $version .= \"+9KSIRC\"\n");
   iocontrol->stdin_write("/load filters.pl\n");
-  filters_update();
 
   running_window = TRUE;        // True so we do create the default
   new_toplevel("!default");     // 
@@ -136,6 +135,7 @@ KSircProcess::KSircProcess( char *_server=0L, QObject * parent=0, const char * n
   connect(dcc, SIGNAL(outputLine(QString)),
 	  iocontrol, SLOT(stdin_write(QString)));	      
   TopList.insert("!dcc", dcc);
+  filters_update();
   
   //  wm->show();
 
@@ -255,13 +255,31 @@ void KSircProcess::recvChangeChannel(QString old_chan, QString
 
 void KSircProcess::filters_update()
 {
+  QString command, next_part, key, data;
   iocontrol->stdin_write(QString("/crule\n"));
+  QDictIterator<KSircMessageReceiver> it(TopList);
+  filterRuleList *frl;
+  filterRule *fr;
+  while(it.current()){
+    frl = it.current()->defaultRules();
+    for ( fr=frl->first(); fr != 0; fr=frl->next() ){
+      command.truncate(0);
+      command += "/ksircappendrule DESC==";
+      command += fr->desc;
+      command += " !!! SEARCH==";
+      command += fr->search;
+      command += " !!! FROM==";
+      command += fr->from;
+      command += " !!! TO==\"";
+      command += fr->to;
+      command += "\"\n";
+      iocontrol->stdin_write(command);
+    }
+    delete frl;
+    ++it;
+  }
   kConfig->setGroup("FilterRules");
   int max = kConfig->readNumEntry("Rules", 0);
-  QString command;
-  QString next_part;
-  QString key;
-  QString data;
   for(int number = 1; number <= max; number++){
     command.truncate(0);
     key.sprintf("name-%d", number);

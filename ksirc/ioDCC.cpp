@@ -275,3 +275,18 @@ void KSircIODCC::forgetFile()
      pending->hide();
 
 }
+
+filterRuleList *KSircIODCC::defaultRules()
+{
+  filterRule *fr;
+  filterRuleList *frl = new  filterRuleList();
+  frl->setAutoDelete(TRUE);
+  fr = new filterRule();
+  fr->desc = "Capture DCC IO Messages";
+  fr->search = "\\*\\cbD\\cb\\*.*DCC";
+  fr->from = "^(?:~\S+~)";
+  fr->to = "~!dcc~";
+  frl->append(fr);
+  return frl;
+
+}

@@ -470,7 +470,7 @@ sub ctcp {
     } elsif (&eq($towho, $talkchannel) && !$printchan) {
       &tell("~$towho~* $who $args");
     } else {
-      &tell("~$towho~* $who$puh2:$towho $args");
+      &tell("~$towho~* $who$puh2 $args");
     }
   } elsif ($what eq 'TIME') {
     &reply("TIME ".&date(time));
@@ -1766,6 +1766,10 @@ sub donumeric {
     &tell("*** You are marked as being away");
     $away=1;
     &dostatus;
+  } elsif ($cmd eq '309') {
+    &yetonearg;
+    &yetonearg;
+    &tell("*** $newarg is a Services Administrator");
   } elsif ($cmd eq '311') {
     local($g, $n, $u, $m, $g, $r)=split(/ +/, $args, 6);
     $r =~ s/^://;
@@ -2072,7 +2076,7 @@ while (1) {
 	&dohooks("msg", $args);
 	&tell("~${who}~[\cb${who}\cb${puh1}] $args");   # MOD FOR KSIRC
       } else {
-	&tell("~${who}~[\cb${who}\cb${puh1}:${newarg}\cb] $args");   # MOD FOR KSIRC
+	&tell("~${who}~[\cb${who}\cb${puh1}\cb] $args");   # MOD FOR KSIRC
       }
     } elsif ($cmd eq 'NOTICE') {
       &yetonearg;
@@ -2080,17 +2084,17 @@ while (1) {
 	&ctcpreply($newarg, $1);
       } elsif ($newarg =~ /^[\#\&\+]/) {
 	&dohooks("notice", $newarg, $args);
-	&tell("~${newarg}~-${who}/${newarg}- $args");  # MOD FOR KSIRC
+	&tell("~${newarg}~-${who}- $args");  # MOD FOR KSIRC
       } elsif ($who =~ /\./) {
 	&dohooks("server_notice", $args);
         $args="*** ".$args unless ($args =~ /^\*/);
 	&tell($args);
       } elsif (&eq($newarg, $nick)) {
 	&dohooks("notice", $newarg, $args);
-	&tell("~${newarg}~-\cb${who}\cb${puh1}- $args");   # MOD FOR KSIRC
+	&tell("~${who}~-\cb${who}\cb${puh1}- $args");   # MOD FOR KSIRC
       } else {
 	&dohooks("notice", $newarg, $args);
-	&tell("~${newarg}~-\cb$who$puh1:${newarg}\cb- $args");  # MOD FOR KSIRC
+	&tell("~${who}~-\cb$who$puh1\cb- $args");  # MOD FOR KSIRC
       }
     } elsif ($cmd eq 'KICK') {
       &yetonearg;
@@ -2120,7 +2124,7 @@ while (1) {
     } elsif ($cmd eq 'PART') {
       &yetonearg;
       if (&eq($who, $nick)) {
-	&tell("~!discard~*\cb<\cb* $who have left channel $newarg");   # MOD FOR KSIRC
+	&tell("~!all~*\cb<\cb* You have left channel $newarg");   # MOD FOR KSIRC
 	@channels=grep(!&eq($_, $newarg), @channels);
 	if (@channels) {
 	  $talkchannel=$channels[$#channels];
@@ -2137,7 +2141,7 @@ while (1) {
 	&dostatus;
       } else {
 	&dohooks("leave", $newarg);
-	&tell("~${newarg}~*\cb<\cb* $who$puh2 has left channel $newarg");   # MOD FOR KSIRC
+	&tell("~!all~*\cb<\cb* $who$puh2 has left channel $newarg");   # MOD FOR KSIRC
       }
     } elsif ($cmd eq 'JOIN') {
       &yetonearg;
@@ -2146,7 +2150,7 @@ while (1) {
 	$talkchannel=$newarg;
 	&dohooks("join", $newarg);
 	&dostatus;
-	&tell("~${newarg}~*\cb>\cb* $who have joined channel $newarg");   # MOD FOR KSIRC
+	&tell("~${newarg}~*\cb>\cb* You have joined channel $newarg");   # MOD FOR KSIRC
 	&sl("MODE $newarg");
       } else {
 	&dohooks("join", $newarg);
@@ -2179,7 +2183,7 @@ while (1) {
 	&yetonearg;
 	&umodechange($newarg), &dostatus if &eq($towho, $nick);
 	&dohooks("mode", $towho, $newarg);
-	&tell("~${newarg}~*\cb+\cb* Mode change \"$newarg\" for user $towho by $who");   # MOD FOR KSIRC
+	&tell("*\cb+\cb* Mode change \"$newarg\" for user $towho by $who");   # MOD FOR KSIRC
       }
     } elsif ($cmd eq 'KILL') {
       &yetonearg;
@@ -2191,7 +2195,7 @@ while (1) {
       &yetonearg;
       &dohooks("invite", $newarg);
       $invited=$newarg;
-      &tell("~${newarg}~*\cbI\cb* $who$puh1 invites you to channel $newarg");  # MOD FOR KSIRC
+      &tell("~!messages~*\cbI\cb* $who$puh1 invites you to channel $newarg");  # MOD FOR KSIRC
     } elsif ($cmd eq 'TOPIC') {
       &yetonearg;
       &dohooks("topic", $newarg, $args);

@@ -55,3 +55,37 @@ void KSircIOBroadcast::control_message(int command, QString str)
     ++it;
   }
 }
+
+
+filterRuleList *KSircIOBroadcast::defaultRules()
+{
+  filterRule *fr;
+  filterRuleList *frl = new  filterRuleList();
+  frl->setAutoDelete(TRUE);
+  fr = new filterRule();
+  fr->desc = "Search for dump ~'s";
+  fr->search = "\\W~\\S+@\\S+\\W";
+  fr->from = "~(\\S+@)";
+  fr->to = "~~$1";
+  frl->append(fr);
+  fr = new filterRule();
+  fr->desc = "Inverse to KSIRC italics";
+  fr->search = ".*";
+  fr->from = "(?g)\\x16";
+  fr->to = "~i";
+  frl->append(fr);
+  fr = new filterRule();
+  fr->desc = "Underline to KSIRC underline";
+  fr->search = ".*";
+  fr->from = "(?g)\\x1f";
+  fr->to = "~u";
+  frl->append(fr);
+  fr = new filterRule();
+  fr->desc = "Bold to KSIRC bold";
+  fr->search = ".*";
+  fr->from = "(?g)([^\\*])\\x02([^\\*])";
+  fr->to = "$1~b$2";
+  frl->append(fr);
+  return frl;
+
+}

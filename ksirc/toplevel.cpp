@@ -123,7 +123,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
   //  gm2->addWidget(mainw, 10);               // which is bad bad.
 
   nicks = new aListBox(pan, "qlb");          // Make the users list box.
-  //  nicks->setMaximumWidth(100);             // Would be nice if it was flat and
+  //nicks->setMaximumWidth(100);             // Would be nice if it was flat and
   //  nicks->setMinimumWidth(100);             // matched the main text window
   nicks->setPalette(QPalette(cg,cg,cg));   // HARD CODED COLOURS AGAIN!!!!
   nicks->setFont(kSircConfig->defaultfont);
@@ -602,6 +602,12 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	no_output = 1;
 	string.truncate(0);
 	break;
+      case 'l':
+	mainw->clear();
+	mainw->repaint(TRUE);
+	string.truncate(0);
+	no_output = 1;
+	break;
       default:
 	cerr << "Unkown ssfe command: " << string << endl;
 	string.truncate(0);                // truncate string... set
@@ -687,6 +693,8 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	  s3 = string.mid(1, string.find(' ', 1) - 1);
 	else if(string.contains("kicked off")) // kick
 	  s3 = string.mid(1, string.find(' ', 1) - 1);
+	else if(string.contains("You have left"))
+	  s3 = "";
 	else{                                // uhoh, something we missed?
 	  cerr << "String sucks: " << string << endl;
 	  s3 = "";
@@ -703,9 +711,17 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	string.remove(0, 2);                   // remove junk 
 	pixmap = pix_greenp;                   // set green pin
 	color =   kSircConfig->colour_chan;     // set green
-	s3 = string.mid(1, string.find(' ', 1) - 1); // only 1 type of join
-	//	nicks->insertItem(s3, 0);      // add the sucker
-	nicks->inSort(s3);
+	if(string.contains("You have joined channel")){
+	  int chan = string.findRev(" ", -1) + 1;
+	  ASSERT(chan > 0);
+	  s3 = string.mid(chan, string.length() - chan);
+	  emit open_toplevel(s3);
+	}
+	else{
+	  s3 = string.mid(1, string.find(' ', 1) - 1); // only 2 types of join
+	  //	nicks->insertItem(s3, 0);      // add the sucker
+	  nicks->inSort(s3);
+	}
 	break;
       case 'N':
 	string.remove(0, 2);                   // remove the junk
@@ -1028,12 +1044,16 @@ void KSircTopLevel::resizeEvent(QResizeEvent *e)
   KTopLevelWidget::resizeEvent(e);
 //  cerr << "Updating list box\n";
   mainw->setTopItem(mainw->count()-1);
+  if(mainw->maximumSize().width() > width()){
+    mainw->setMinimumWidth(width() - 100);
+  }
   pan->setAbsSeparatorPos(width()-100);
-  mainw->setMinimumWidth(width() - 100);
   emit changeSize();
   mainw->scrollToBottom();
   mainw->setAutoUpdate(TRUE);
-  repaint(TRUE);
+  emit changeSize();
+  mainw->repaint(TRUE);
+  repaint();
 }
 
 void KSircTopLevel::gotFocus()

@@ -214,8 +214,9 @@ KSircIOController::~KSircIOController()
 {
 }
 
-void KSircIOController::stderr_read(KProcess *, char *, int)
+void KSircIOController::stderr_read(KProcess *p, char *b, int l)
 {
+  stdout_read(p, b, l);
 }
 
 void KSircIOController::stdin_write(QString s)
@@ -229,9 +230,8 @@ void KSircIOController::stdin_write(QString s)
 void KSircIOController::sircDied(KProcess *)
 {
 
-  cerr << "Sirc DIED!!!!!!!\n";
-  cerr << "should do something....\n";
   ksircproc->TopList["!all"]->sirc_receive("*E* SIRC IS DEAD");
   ksircproc->TopList["!all"]->sirc_receive("*E* KSIRC WINDOW HALTED");
+  ksircproc->TopList["!all"]->sirc_receive("*E* DID YOU RUN KSIRC FROM THE KSIRC-BIN DIR?");
   
 }

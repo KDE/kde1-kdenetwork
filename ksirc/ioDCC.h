@@ -40,6 +40,7 @@ public:
 
   virtual void sirc_receive(QString);
   virtual void control_message(int, QString);
+  virtual filterRuleList *defaultRules();
 
 protected slots:
   void cancelTransfer(QString);

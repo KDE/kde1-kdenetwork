@@ -30,8 +30,15 @@ KSircListBox::KSircListBox(QWidget * parent=0, const char * name=0, WFlags f=0) 
 
 void KSircListBox::scrollToBottom()
 {
-  setYOffset(totalHeight() - height() + fudge);
-  updateScrollBars();
+  int th = totalHeight();
+  if(th > height()){
+    setYOffset(th - height() + fudge);
+    updateScrollBars();
+  }
+  else{
+    setYOffset(0);
+    vertScroll->setRange(0, 0);
+  }
 }
 
 void KSircListBox::updateScrollBars()

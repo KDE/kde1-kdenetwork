@@ -24,3 +24,8 @@ bool KSircMessageReceiver::getBroadcast()
 {
   return broadcast;
 }
+
+filterRuleList *KSircMessageReceiver::defaultRules()
+{
+  return new filterRuleList();
+}

@@ -21,6 +21,8 @@ public:
   virtual void sirc_receive(QString str);
   virtual void control_message(int, QString);
 
+  virtual filterRuleList *defaultRules();
+
 private:
   KSircProcess *proc;
 };

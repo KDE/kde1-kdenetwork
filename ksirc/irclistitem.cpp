@@ -279,6 +279,9 @@ void ircListItem::colourDrawText(QPainter *p, int startx, int starty,
 	  else
 	    fnt.setUnderline(TRUE);
 	  break;
+	case '~':
+	  loc++; // Skip ahead 2 characters
+	  break;
 	default:
 	  i-=1;
 	  offset -= 1;

@@ -3,8 +3,18 @@
 #define KMESSAGERECEIVER_H
 
 #include <qstring.h>
+#include <qlist.h>
 
 class KSircProcess;
+
+struct filterRule {
+  char *desc;
+  char *search;
+  char *from;
+  char *to;
+};
+
+typedef QList<filterRule> filterRuleList;
 
 class KSircMessageReceiver
 {
@@ -22,6 +32,8 @@ public:
 
   bool getBroadcast();
   void setBroadcast(bool bd);
+
+  virtual filterRuleList *defaultRules();
 
 private:
   KSircProcess *proc;
