@@ -6,6 +6,7 @@
 #include <iostream.h>
 #include <stdio.h>
 #include <ssfeprompt.h>
+#include <string.h>
 
 // Static parser table is "initialized"
 QDict<parseFunc> ChannelParser::parserTable;
@@ -124,8 +125,16 @@ void ChannelParser::parseSSFEStatus(QString string) /*FOLD00*/
   status = &string[8];
   char nick[101], modes[101], chan[101], chanmode[101];
   int found = sscanf(status, "%100s (%100[^)]) on %100s (%100[^)])", nick, modes, chan, chanmode);
-  if(found != 4)
-    throw(parseError("", "Unable to parse status string"));
+  if(found != 4){
+    found = sscanf(status, "%100s (%100[^)]) (away) on %100s (%100[^)])", nick, modes, chan, chanmode);
+    if(found != 4)
+      throw(parseError("", "Unable to parse status string"));
+    if(strlen(chan) < 98){
+      memmove(chan+2, chan, 98);
+      chan[0] = 'A';
+      chan[1] = '-';
+    }
+  }
   QString status_line = chan;
   status_line += QString(" (") + chanmode + ") " +  nick +  " (" + modes + ") ";
   if(kSircConfig->DisplayTopic){
@@ -702,7 +711,7 @@ void ChannelParser::parseCTCPAction(QString string) /*fold00*/
   throw(parseSucc(string, kSircConfig->colour_text, top->pix_star));
 }
 
-void ChannelParser::parseINFOTopic(QString string) /*FOLD00*/
+void ChannelParser::parseINFOTopic(QString string) /*fold00*/
 {
   char channel[101];
   string.detach();

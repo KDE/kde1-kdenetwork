@@ -20,6 +20,7 @@
 
 
 #include "servercontroller.h"
+#include "welcomeWin.h"
 
 #include <iostream.h>
 #include <time.h>
@@ -45,6 +46,8 @@ int main( int argc, char ** argv )
   // Start the KDE application
   kApp = new KApplication( argc, argv, QString("ksirc") );
 
+  kConfig = kApp->getConfig();
+
   QString ver = KSIRC_VERSION;
   if(ver.contains(".") == 0){
     // This is a development version
@@ -69,8 +72,6 @@ int main( int argc, char ** argv )
 
 
   // Get config, and setup internal structure.
-
-  kConfig = kApp->getConfig();
 
   kSircConfig = new global_config;
 
@@ -120,6 +121,12 @@ int main( int argc, char ** argv )
   kConfig->setGroup("General");
   kSircConfig->DisplayMode = kConfig->readNumEntry("DisplayMode", 0);
 
+  kConfig->setGroup("ReleaseNotes");
+  if(kConfig->readNumEntry("LastRunRelease", 0) < COMPILE_DATE){
+    welcomeWin ww;
+    if(ww.exec())
+      kConfig->writeEntry("LastRunRelease", COMPILE_DATE);
+  }
 
   if(kApp->isRestored()){
     int n = 1;

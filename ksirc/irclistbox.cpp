@@ -256,7 +256,7 @@ void KSircListBox::mouseReleaseEvent(QMouseEvent *me){ /*FOLD00*/
       erow = row;
     }
     if(erow == srow){
-      debug("Selected: %s", it->getRev().data());
+      debug("Selected: %s", KSPainter::stripColourCodes(it->getRev()).data());
       kApp->clipboard()->setText(KSPainter::stripColourCodes(it->getRev()));
       updateItem(row, TRUE);
     }
@@ -288,7 +288,7 @@ void KSircListBox::mouseReleaseEvent(QMouseEvent *me){ /*FOLD00*/
     waitForClear = TRUE;
     connect(kApp->clipboard(), SIGNAL(dataChanged()),
 	    this, SLOT(clearSelection()));
-    QTimer::singleShot(2000, this, SLOT(clearSelection()));
+    QTimer::singleShot(1000, this, SLOT(clearSelection()));
   }
   else if(me->button() == MidButton){
     emit pasteReq();

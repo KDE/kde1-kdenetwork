@@ -68,7 +68,6 @@ open_ksirc::open_ksirc
   conf->readListEntry("RecentServers", recent);
   char *rs;
   for(rs = recent.first(); rs != 0; rs=recent.next()){
-    cerr << "First listed: " << rs << endl;
     char *name = strtok(rs, ":");
     char *p =    strtok(NULL, ":");
     if(p == 0x0)
@@ -239,14 +238,12 @@ void open_ksirc::clickConnect()
 //  debug("Str: %s", str.data());
   if(found == -1){
     recent.insert(0, str);
-    cerr << "Not found: " << str << endl;
     conf->writeEntry("RecentServers", recent);
     conf->sync();
   }
   else {
     recent.remove(found);
     recent.insert(0, str);
-    cerr << "Found: " << str << endl;
     conf->writeEntry("RecentServers", recent);
     conf->sync();
   }

@@ -496,7 +496,7 @@ void PukeController::hdlrPukeFetchWidget(int fd, PukeMessage *pm) /*FOLD00*/
   char rand[50],name[50];
   sscanf(pm->cArg, "%s\t%s", rand, name);
 
-  debug("Fetching new widget, type: %d, parent: %d objname: %s", iType, iParent, name);
+//  debug("Fetching new widget, type: %d, parent: %d objname: %s", iType, iParent, name);
 
   uiBaseWinId++; // Get a new base win id
 
@@ -532,9 +532,9 @@ void PukeController::hdlrPukeFetchWidget(int fd, PukeMessage *pm) /*FOLD00*/
     }
     
   }
-  debug("Found: %s", obj->name());
-  obj->dumpObjectInfo();
-  obj->dumpObjectTree();
+//  debug("Found: %s", obj->name());
+//  obj->dumpObjectInfo();
+//  obj->dumpObjectTree();
 
   arg.fetchedObj = obj;
   
@@ -766,7 +766,7 @@ void PukeController::pobjectDestroyed(){
   
 }
 
-void PukeController::messageHandler(int fd, PukeMessage *pm) { /*fold00*/
+void PukeController::messageHandler(int fd, PukeMessage *pm) { /*FOLD00*/
   widgetId wI, wIret;
   wI.fd = fd;
   wI.iWinId = pm->iWinId;
@@ -816,7 +816,7 @@ void PukeController::messageHandler(int fd, PukeMessage *pm) { /*fold00*/
     wC->wc = wc;
     wC->dlhandle = handle;
     widgetCF.insert(pm->iArg, wC);
-    warning("New widget: %d with wc: %p and handle: %p", pm->iArg, wc, handle);
+//    warning("New widget: %d with wc: %p and handle: %p", pm->iArg, wc, handle);
 
     pmRet.iCommand = -pm->iCommand;
     pmRet.iTextSize = 0;

@@ -27,7 +27,7 @@ $SYNC = 0;
 #
 # Setup debugging logger, comment out for production use
 #
-$DEBUG = 1;
+$DEBUG = 0;
 if($DEBUG){
   open(LOG, ">msg-log") || warn "Failed to open log file: $!\n";
   select(LOG); $| = 1; select(STDOUT);
