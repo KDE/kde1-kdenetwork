@@ -3,7 +3,7 @@
 # NAME OF THE RULESET. This is NEEDED for accounting purposes.
 #
 ################################################################
-name=CARNet_lokalni_poziv.rst
+name=iskon_zagrebacka_zupanija.rst
 
 ################################################################
 # currency settings
@@ -61,4 +61,3 @@ on (sunday) between () use (0.1677, 360)
 # 1.11. - Dan svih svetih
 # 25.12. - Bozic
 on (01/01, easter, 05/01, 05/30, 06/22, 08/04, 08/15, 11/01, 12/25) between () use (0.1677,360)
-

@@ -53,20 +53,11 @@ on (sunday) between () use (0.1677, 72)
 # Sluzbeni praznici, najjeftinija tarifa
 # 1.1. Nova Godina
 # Easter - Uskrs
+# 1.5. - 
 # 30.5. - Dan drzavnosti
+# 22.6. - Dan borbe protiv fasizma
 # 4.8. - Dan domovinske zahvalnosti
 # 15.8. - Velika Gospa
+# 1.11. - Dan svih svetih
 # 25.12. - Bozic
-on (01/01, easter, 05/30, 08/04, 08/15, 12/25) between () use (0.1677, 72)
-
-# a range of dates and one weekday
-#on (12/25..12/27, 12/31, 07/04, monday) between () use (0.4, 72)
-
-# easter + 60 days (Pfingstmontag/ Pentecost Monday )
-#on (easter+60) between () use (0.3,72)
-
-
-
-
-
-
+on (01/01, easter, 05/01, 05/30, 06/22, 08/04, 08/15, 11/01, 12/25) between () use (0.1677,360)
