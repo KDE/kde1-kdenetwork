@@ -555,7 +555,7 @@ KpgpBase5::encsign(const QStrList *_recipients, const char *passphrase,
     cmd = "pgpe -at -f +batchmode=1 ";
   else if(passphrase != 0 )
   {
-    cmd = "pgps -bat -f +batchmode=1 ";
+    cmd = "pgps -at -f +batchmode=1 "; //only armour and text-mode
     signonly = true;
   }
   else 
@@ -635,10 +635,7 @@ KpgpBase5::encsign(const QStrList *_recipients, const char *passphrase,
     status |= ERROR;
     status |= MISSINGKEY;
   }
-  
-  if(signonly)
-    output = "-----BEGIN PGP SIGNED MESSAGE-----\n\n" + input + "\n" + output;
-
+  //No need to glue msg and signature - pgp5 does it (correctly)
   return status;
 }
 

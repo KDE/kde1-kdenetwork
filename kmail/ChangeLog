@@ -1,3 +1,8 @@
+1999-07-27  Sven Radej <radej@kde.org> (KMail-1.0.28)
+
+        * Fixed bad pgp5-signature problem. This clears bugs #1353, #1543
+          and #1578
+
 1999-07-23  Sven Radej <radej@kde.org> (KMail-1.0.27)
 
         * Refuse to create a folder which exists. (severe bug 1361)
