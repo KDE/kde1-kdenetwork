@@ -18,8 +18,8 @@ void operator delete[](void *p);
 #define _NEW_ASJ_H
 #include <stdlib.h>
 
-inline void* operator new(unsigned int sizeofX, char *) {return operator new(sizeofX);}
-inline void* operator new[](unsigned int sizeofX, char *) { return operator new[](sizeofX); }
+inline void* operator new(size_t sizeofX, char *) {return operator new(sizeofX);}
+inline void* operator new[](size_t sizeofX, char *) { return operator new[](sizeofX); }
 #endif
 #endif
 
