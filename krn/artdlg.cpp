@@ -166,7 +166,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     article->insertItem(klocale->translate("Don't expire"), TOGGLE_EXPIRE);  // robert's cache stuff
     article->setItemChecked(TOGGLE_EXPIRE, false);
     article->insertItem(klocale->translate("Quit"), QUIT);
-    connect (article,SIGNAL(activated(int)),SLOT(actions(int)));
+    connect (article,SIGNAL(activated(int)),SLOT(actions(int,int)));
     
     
     
@@ -181,12 +181,12 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     options->insertItem(klocale->translate("Expunge"), EXPUNGE);
     options->insertItem(klocale->translate("Appearance..."),CONFIG_FONTS);
     options->insertItem(klocale->translate("Sorting..."),CONFIG_SORTING);
-    connect (options,SIGNAL(activated(int)),SLOT(actions(int)));
+    connect (options,SIGNAL(activated(int)),SLOT(actions(int,int)));
 
     QPopupMenu *scoring=new QPopupMenu;
     scoring->insertItem(klocale->translate("Edit Rules"),EDIT_RULES);
     scoring->insertItem(klocale->translate("Update"),UPDATE_SCORES);
-    connect (scoring,SIGNAL(activated(int)),SLOT(actions(int)));
+    connect (scoring,SIGNAL(activated(int)),SLOT(actions(int,int)));
 
     menu=new KMenuBar (this);
     setMenu(menu);
@@ -198,7 +198,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
 
     KToolBar *t1=new KToolBar(this);
     addToolBar(t1,0);
-    QObject::connect (t1, SIGNAL (clicked (int)), this, SLOT (actions (int)));
+    QObject::connect (t1, SIGNAL (clicked (int)), this, SLOT (actions (int,int)));
 
     
     t1->insertButton (Icon("left.xpm"), PREV, true, klocale->translate("Previous Message"));
@@ -225,7 +225,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
 
     KToolBar *t2=new KToolBar(this);
     addToolBar(t2,1);
-    QObject::connect (t2, SIGNAL (clicked (int)), this, SLOT (actions (int)));
+    QObject::connect (t2, SIGNAL (clicked (int)), this, SLOT (actions (int,int)));
     
     QStrList *comboContents=new QStrList();
     comboContents->append("Current");
@@ -340,7 +340,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     acc->insertItem(Key_S, FIND_ARTICLE);
     acc->insertItem(CTRL+Key_F, FIND_ARTICLE);
     
-    QObject::connect (acc,SIGNAL(activated(int)),this,SLOT(actions(int)));
+    QObject::connect (acc,SIGNAL(activated(int)),this,SLOT(actions(int,int)));
     QObject::connect (messwin,SIGNAL(statusMsg(const char*)),this,SLOT(updateCounter(const char*)));
     conf->setGroup("Geometry");
     setGeometry(conf->readNumEntry("ArtX",100),
@@ -512,11 +512,13 @@ bool Artdlg::taggedActions (int action)
     {
         if (Article(iter).isMarked())
         {
-            list->setCurrentItem(c);
-            success=actions(action);
+            success=actions(action,c);
         }
+        if (!(c%5))
+            qApp->processEvents();
         c++;
     }
+    goTo(c);
     
     if (action!=PRINT_ARTICLE)
     {
@@ -547,11 +549,14 @@ bool Artdlg::readActions (int action)
     {
         if (Article(iter).isRead())
         {
-            list->setCurrentItem(c);
-            success=actions(action);
+            success=actions(action,c);
         }
         c++;
+        if (!(c%5))
+            qApp->processEvents();
     }
+
+    goTo(c);
     
     if (action!=PRINT_ARTICLE)
     {
@@ -582,11 +587,13 @@ bool Artdlg::unreadActions (int action)
     {
         if (!(Article(iter).isRead()))
         {
-            list->setCurrentItem(c);
-            success=actions(action);
+            success=actions(action,c);
         }
         c++;
+        if (!(c%5))
+            qApp->processEvents();
     }
+    goTo(c);
     
     if (action!=PRINT_ARTICLE)
     {
@@ -615,10 +622,12 @@ bool Artdlg::allActions (int action)
     
     for (char *iter=IDList.first();iter!=0;iter=IDList.next())
     {
-        list->setCurrentItem(c);
-        success=actions(action);
+        success=actions(action,c);
         c++;
+        if (!(c%5))
+            qApp->processEvents();
     }
+    goTo(c);
     
     if (action!=PRINT_ARTICLE)
     {
@@ -653,7 +662,7 @@ void Artdlg::updateScores()
     }
 }
 
-bool Artdlg::actions (int action)
+bool Artdlg::actions (int action,int index)
 {
     setEnabled (false);
     acc->setEnabled(false);
@@ -661,8 +670,8 @@ bool Artdlg::actions (int action)
     messwin->setEnabled(false);
     bool success=false;
     qApp->setOverrideCursor (waitCursor);
-    int index=list->currentItem();
-    goTo(index);
+    if (index==-1)
+        index=list->currentItem();
     switch (action)
     {
     case FILL_TREE:
@@ -1480,10 +1489,10 @@ void Artdlg::FindThis (const char *expr,const char *field,
         if (needsConn && (!server->isConnected()))
             break;
         
-        goTo(index);
         if (rule.match(Article (iter.current()),server))
         {
             list->changeItemColor(QColor(255,0,0),index);
+            goTo(index);
             lastfound=index;
             break;
         }

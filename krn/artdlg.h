@@ -55,7 +55,7 @@ public slots:
     void init (NewsGroup *_group, NNTP* _server);
     void sortHeaders(int column);
 private slots:
-    bool actions(int);
+    bool actions(int,int index=-1);
     bool taggedActions(int);
     bool allActions(int);
     bool readActions(int);
