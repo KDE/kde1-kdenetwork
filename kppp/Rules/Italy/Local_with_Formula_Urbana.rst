@@ -18,6 +18,6 @@ currency_position=right
 currency_digits=0
 flat_init_costs=(151.13,400)
 
-default=(151.13,200)
+default=(151.13,800)
 on (monday..friday) between (8:30..18:30) use(151.13,110)
 on (saturday) between(8:00..13:00) use (151.13, 110)
