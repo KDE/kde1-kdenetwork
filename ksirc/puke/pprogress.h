@@ -1,5 +1,5 @@
 #ifndef PPROGRESS_H
-#define PPPROGESS_H
+#define PPROGRESS_H
 
 class PProgress;
 
