@@ -52,6 +52,7 @@ public:
     void decref();
     void save();
     void load();
+    int  score();
     
 private:
     bool isread;

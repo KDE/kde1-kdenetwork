@@ -73,7 +73,9 @@ OBJECTS = 	main.o\
                 mkdecode.o\
                 aboutDlg.o\
                 maboutDlg.o\
-                aboutDlgData.o
+                aboutDlgData.o\
+                ktempfile.o\
+                kscorer.o
 
 SRCMETA = 	mgroupdlg.o \
 		mNNTP.o \
@@ -131,7 +133,9 @@ SOURCES = 	main.cpp\
                 rmbpop.cpp\
                 kdecode.cpp\
                 aboutDlg.cpp\
-                aboutDlgData.cpp
+                aboutDlgData.cpp\
+                ktempfile.cpp\
+                kscorer.cpp
 
 HEADERS = 	NNTP.h\
 		basicmsg.h\
@@ -154,7 +158,9 @@ HEADERS = 	NNTP.h\
                 rmbpop.h\
                 kdecode.h\
                 aboutDlg.h\
-                aboutDlgData.h
+                aboutDlgData.h\
+                ktempfile.h\
+                kscorer.h
 
 
 

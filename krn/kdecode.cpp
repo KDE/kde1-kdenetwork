@@ -7,7 +7,8 @@
 #include <malloc.h>
 #include <uudeview.h>
 #include "kdecode.h"
-
+#include <mimelib/string.h>
+#include <mimelib/mimepp.h>
 
 void MsgCallBack(void *,char *msg, int )
 {
@@ -16,22 +17,6 @@ void MsgCallBack(void *,char *msg, int )
 
 KDecode::KDecode()
 {
-    switch(UUInitialize())
-    {
-    case UURET_NOMEM :
-        fatal("Could not allocate memory for article decoding");
-        break;
-    default:
-        break;
-    }
-
-    UUSetMsgCallback(NULL,MsgCallBack);
-    UUSetBusyCallback(NULL,NULL,0);
-    UUSetFileCallback(NULL,NULL);
-    UUSetFNameFilter(NULL,NULL);
-
-    UUSetOption (UUOPT_DESPERATE,1);
-    
     dialog=new decoderDlg ("KRN-Decoder");
 
     connect (dialog->list,SIGNAL(selected(int,int)),this,SLOT(decode(int,int)));
@@ -39,7 +24,6 @@ KDecode::KDecode()
 
 KDecode::~KDecode()
 {
-    UUCleanUp();
     delete dialog;
 }
 
@@ -47,14 +31,36 @@ KDecode::~KDecode()
 void KDecode::load(char *filename)
 {
 
-    UULoadFile(filename,NULL,0);
-    char *fname=new char [strlen(filename)];
-    strcpy (fname,filename);
-    debug ("adding %s",fname);
+    filenames.append (filename);
+    
 }
 
 void KDecode::showWindow()
 {
+
+    switch(UUInitialize())
+    {
+    case UURET_NOMEM :
+        fatal("Could not allocate memory for article decoding");
+        break;
+    default:
+        break;
+    } 
+
+    UUSetMsgCallback(NULL,MsgCallBack);
+    UUSetBusyCallback(NULL,NULL,0);
+    UUSetFileCallback(NULL,NULL);
+    UUSetFNameFilter(NULL,NULL);
+
+    UUSetOption (UUOPT_DESPERATE,1);
+
+    for (char *iter=filenames.first();iter!=0;iter=filenames.next())
+    {
+        UULoadFile(iter,NULL,0);
+    }
+
+    
+
     dialog->list->clear();
     int c=0;
     uulist *l;
@@ -98,7 +104,12 @@ void KDecode::showWindow()
         else
             break;
     }
-    dialog->show();
+    qApp->setOverrideCursor(arrowCursor);
+    dialog->exec();
+    qApp->restoreOverrideCursor();
+
+    UUCleanUp();
+    filenames.clear();
 }
 
 void KDecode::decode(int line,int)
@@ -129,6 +140,7 @@ void KDecode::decode(int line,int)
         case UURET_NODATA:
             warning ("No data in file");
             break;
+                                                                                                                                            
         case UURET_NOEND:
             warning ("No end of file found");
             break;
@@ -139,4 +151,16 @@ void KDecode::decode(int line,int)
     }
 }
 
-
+const char* KDecode::decodeString(const char* data, QString type)
+{
+    type=type.lower();
+    if(type=="base64") DwDecodeBase64(data,data);
+    else if(type=="quoted-printable") DwDecodeQuotedPrintable(data,data);
+    else if(type!="7bit")
+    {
+        warning("%s: Unsupported encoding type: %s",
+                __FUNCTION__,type.data());
+        return NULL;
+    }
+    return data;
+}

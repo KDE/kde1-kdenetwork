@@ -5,7 +5,7 @@
 #include <qdict.h>
 #include <qlist.h>
 #include <qstrlist.h>
-#include <mimelib/message.h>
+#include <qstring.h>
 
 #include "decoderDlg.h"
 
@@ -19,6 +19,7 @@ public:
 
     void load(char *filenames);
     void showWindow();
+    static const char* decodeString(const char* data, QString type);
 
 public slots:
     void decode(int ID,int);
@@ -29,6 +30,7 @@ signals:
 
 private:
     decoderDlg *dialog;
+    QStrList filenames;
 };
 
 #endif

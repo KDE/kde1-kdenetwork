@@ -21,7 +21,6 @@
 #include <qstrlist.h>
 
 #include "kmessage.h"
-#include <mimelib/mimepp.h>
 
 #include <kapp.h>
 #include <kmsgbox.h>
@@ -33,16 +32,16 @@
 #include <Kconfig.h>
 
 Kmessage::Kmessage
-(
- QWidget* parent,
- const char* name
-)
-:
-QWidget(parent,name)
-
+    (
+     QWidget* parent,
+     const char* name
+    )
+    :
+    QWidget(parent,name)
+    
 {
     setFocusPolicy(QWidget::NoFocus);
-
+    
     view=new KHTMLWidget( parent, name,"/lib/pics/");
     view->begin();
     view->write ("<html><head><title>Krn message view</title></head>\n"
@@ -93,7 +92,7 @@ void Kmessage::loadMessage( QString message )
 {
     format=new KFormatter(saveWidgetName,viewWidgetName,message);
     CHECK_PTR(format);
-
+    
     view->begin();
     QString header=format->htmlHeader();
     view->write(header+"<hr>");
@@ -101,12 +100,13 @@ void Kmessage::loadMessage( QString message )
     QString body=format->htmlAll()+"</body>\n";
     view->write(body+"</html>\n");
     view->end();
-
+    view->repaint();
+    view->show();
+    
     //debug("\n\nHTML body=\"%s\"",QString(header+body+"</html>").data());
-
+    
     view->slotScrollVert(0);
     view->slotScrollHorz(0);
-    //delete multi;
 }
 
 void Kmessage::adjustScrollers()
@@ -120,13 +120,13 @@ void Kmessage::adjustScrollers()
     vertScroller->resize(16,height()-16);
     vertScroller->move(width()-vertScroller->width(), 0);
     vertScroller->setValue(view->yOffset());
-
+    
     horzScroller->move(0, height() - horzScroller->height());
     horzScroller->resize(width()-16,16);
     horzScroller->setRange(0,view->docWidth()-width());
     horzScroller->setValue(view->xOffset());
 #endif
-
+    
     int x_amount = 0;
     int y_amount = 0;
     
@@ -136,7 +136,7 @@ void Kmessage::adjustScrollers()
         vertScroller->show();
         y_amount = 16;                  // Scrollbar cannot be full length
     }
- 
+    
     if (view->docWidth() <= width()) horzScroller->hide();
     else
     {
@@ -187,7 +187,7 @@ void Kmessage::scrollUp()
     view->slotScrollVert( newY );
     adjustScrollers();
 }
- 
+
 void Kmessage::scrollDown()
 {
     if ( view->docHeight() < (height()-16) )
@@ -236,20 +236,22 @@ void Kmessage::URLClicked(const char* s,int)
         
         debug("saving url. protocol: %s, host part: %s, path part: %s",
               url.protocol(), url.host(), url.path() );
-        dump(atoi(url.host()),name);
+        dump(url.host(),name);
+        
     }
 }
 
-
-bool Kmessage::dump(int part, QString fileName)
+bool Kmessage::dump(char* part, QString fileName)
 {
-    debug("Dumping part %d as %s",part, fileName.data());
-    MultipartBodyPart aPart;
-    multi->BodyPart(part, aPart);
+//    debug("Dumping part %d as %s",part, fileName.data());
+    
+    QList<int> n=format->strToList(part);
+    const char* data=format->rawPart(n);
+    n.clear();
     
     QFile file(fileName);
     if(!file.open(IO_WriteOnly)) return FALSE;
-    if(file.writeBlock(aPart.Body().data(), aPart.Body().length())!=(int)aPart.Body().length())
+    if(file.writeBlock(data, strlen(data))!=(int)strlen(data))
     {
         file.close();
         return FALSE;

@@ -23,7 +23,6 @@
 #include <qstring.h>
 #include <qstrlist.h>
 #include <qscrbar.h>
-#include "multipar.h"
 #include "kformatter.h"
 
 class Kmessage : public QWidget
@@ -61,8 +60,7 @@ private:
 
     KFormatter* format;    
 
-    bool dump(int part, QString fileName);
-    MultipartMessage* multi;
+    bool dump(char* part, QString fileName);
     QString saveWidgetName, viewWidgetName;
     
     QStrList tmpFiles;

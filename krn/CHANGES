@@ -1,4 +1,22 @@
 -----------------------------------------------------------------------------
+Changes made Jul 8
+-----------------------------------------------------------------------------
+
+* [Magnus]  Added support for plug-in formatters.
+
+* [Roberto] Changed KDecode. The design was fairly braindead. Now it's just
+            slightly silly.
+
+* [Roberto] Changing the headers in articlelist & starting work in the
+            scorer/killer.
+
+* [Magnus]  Added content-decoding, and fixed a bug.
+
+* [Roberto] Polishing things so krn fits in the CVS tree.
+
+* [Roberto] Now changes will indicate who made them.
+
+-----------------------------------------------------------------------------
 Changes made Jul 7
 -----------------------------------------------------------------------------
 

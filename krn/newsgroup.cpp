@@ -92,6 +92,14 @@ void Article::formHeader(QString *s)
     }
     s->append("\t \t");
 
+    s->append(Lines);
+    s->append("\t \t");
+
+    QString t;
+    t.setNum(score());
+    s->append(t);
+    s->append("\t \t");
+
     if (Date.data())
     {
         DwDateTime date;
@@ -162,6 +170,11 @@ void Article::load()
         }
         f.close();
     }
+}
+
+int Article::score()
+{
+    return 100;
 }
 
 

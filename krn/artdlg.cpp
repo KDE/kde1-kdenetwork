@@ -140,14 +140,18 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     
     gl = new QGridLayout( panner->child0(), 1, 1 );
     list=new KTabListBox (panner->child0());
-    list->setNumCols(7);
+    list->setNumCols(11);
     list->setColumn(0, "",20,KTabListBox::PixmapColumn);
     list->setColumn(1, "",5);
     list->setColumn(2, "Sender", 150);
     list->setColumn(3, "",5);
-    list->setColumn(4, "Date", 50);
+    list->setColumn(4, "Lines", 50);
     list->setColumn(5, "",5);
-    list->setColumn(6, "Subject", 50);
+    list->setColumn(6, "Score", 50);
+    list->setColumn(7, "",5);
+    list->setColumn(8, "Date", 50);
+    list->setColumn(9, "",5);
+    list->setColumn(10, "Subject", 50);
 
     list->dict().insert("N",new QPixmap(pixpath+"green-bullet.xpm"));  //Unread message
     list->dict().insert("R",new QPixmap(pixpath+"red-bullet.xpm"));    //Read message

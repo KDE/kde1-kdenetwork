@@ -3,7 +3,11 @@
 
 #include <qstring.h>
 #include <qlist.h>
-#include "multipar.h"
+#include <mimelib/body.h>
+#include <mimelib/header.h>
+#include <mimelib/bodypart.h>
+#include <mimelib/message.h>
+#include "ktempfile.h"
 
 class KFormatter
 {
@@ -14,8 +18,11 @@ public:
     QString htmlHeader();
     QString htmlAll();
     bool isMultiPart(QList<int>);
+    const char* rawPart(QList<int> partno);
+    QList<int> strToList(QString);
 
 private:
+    QString listToStr(QList<int>);
     DwBodyPart* ffwdPart(int n, DwBodyPart* body);
     DwBodyPart* getPartPrim(QList<int> partno, DwBodyPart* body);
     DwBodyPart* getPart(QList<int> partno);
@@ -30,11 +37,11 @@ private:
     QString saveLink(QList<int> part, char* text);
     QString mailLink(QString reciptent, char* text);
     bool dump(QList<int> part, QString fileName);
-    QString listToStr(QList<int>);
 
     QString saveWidgetName, viewWidgetName;
     DwMessage* message;
     QString* dateFmt;
+    KTempFile tempfile;
 };
 
 #endif

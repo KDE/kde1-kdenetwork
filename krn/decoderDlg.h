@@ -2,12 +2,11 @@
 #define decoderDlg_included
 
 #include <qdialog.h>
-#include <ktopwidget.h>
 
 #include "ktablistbox.h"
 
 
-class decoderDlg : public KTopLevelWidget
+class decoderDlg : public QDialog
 {
     Q_OBJECT
         
