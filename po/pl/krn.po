@@ -1,9 +1,12 @@
+# KTranslator Generated File
+# Most part translated by Pawe³ Jab³oñski <pawel.jablonski@mail.lze.lodz.pl>
+# Latest updates by Jacek Stolarczyk <jacek@mer.chemia.polsl.gliwice.pl>
 msgid ""
 msgstr ""
 "Project-Id-Version: krn \n"
 "POT-Creation-Date: 1998-06-18 22:50+0200\n"
-"PO-Revision-Date: 1998-01-24 20:33+0100\n"
-"Last-Translator: Pawe³ Jab³oñski <pawel.jablonski@mail.lze.lodz.pl>\n"
+"PO-Revision-Date: 1998-06-17 23:33+0100\n"
+"Last-Translator: Jacek Stolarczyk <jacek@mer.chemia.polsl.gliwice.pl>\n"
 "Content-Type: text/plain; charset=iso8859-2\n"
 
 #: main.cpp:212 main.cpp:224 main.cpp:236 main.cpp:251 main.cpp:263
@@ -38,32 +41,32 @@ msgstr "Odebrano %.2f Kb"
 #: NNTP.cpp:557
 #, fuzzy
 msgid "Getting Article"
-msgstr "Pobieranie listy wiadomo¶ci"
+msgstr "Pobieranie wiadomo¶ci"
 
 #: NNTP.cpp:643
 #, fuzzy
 msgid "Article Received"
-msgstr "Zawarto¶æ wiadomo¶æi:"
+msgstr "Artyku³ pobrany"
 
 #: groupdlg.cpp:129
 msgid "Connect to Server"
-msgstr "&Po³±cz z serwerem"
+msgstr "Po³±cz z serwerem"
 
 #: groupdlg.cpp:130
 msgid "Disconnect From Server"
-msgstr "&Roz³±cz siê z serwerem"
+msgstr "Roz³±cz siê z serwerem"
 
 #: groupdlg.cpp:131
 msgid "Get Active File"
-msgstr "Pobierz listê &grup"
+msgstr "Pobierz listê grup"
 
 #: groupdlg.cpp:133
 msgid "Post Queued Messages"
-msgstr "&Og³o¶ wiadomo¶ci z kolejki"
+msgstr "Og³o¶ wiadomo¶ci z kolejki"
 
 #: groupdlg.cpp:135
 msgid "Exit"
-msgstr "&Wyj¶cie"
+msgstr "Wyj¶cie"
 
 #: groupdlg.cpp:138
 msgid "KRN - Group List"
@@ -79,11 +82,11 @@ msgstr "Pobierz wiadomo¶ci"
 
 #: groupdlg.cpp:143 groupdlg.cpp:151 groupdlg.cpp:159
 msgid "Catchup"
-msgstr "Na&d±¿aj"
+msgstr "Nad±¿aj"
 
 #: groupdlg.cpp:149 groupdlg.cpp:157
 msgid "(un)Subscribe"
-msgstr "(nie)&Subskrybuj"
+msgstr "(nie)Subskrybuj"
 
 #: artdlg.cpp:151 groupdlg.cpp:150
 msgid "Untag"
@@ -91,40 +94,40 @@ msgstr "Odznacz"
 
 #: artdlg.cpp:171 groupdlg.cpp:158
 msgid "(Un)Tag"
-msgstr "Z&mieñ zaznaczenie"
+msgstr "Zmieñ zaznaczenie"
 
 #: artdlg.cpp:164 artdlg.cpp:221 groupdlg.cpp:161 groupdlg.cpp:213
 msgid "Post New Article"
-msgstr "Og³o¶ &now± wiadomo¶æ"
+msgstr "Og³o¶ now± wiadomo¶æ"
 
 #: groupdlg.cpp:162
 msgid "Post All Queued Articles"
-msgstr "Og³o¶ &wiadomo¶ci z kolejki"
+msgstr "Og³o¶ wiadomo¶ci z kolejki"
 
 #: groupdlg.cpp:164
 msgid "&Subscribed"
-msgstr "Subskrybowane"
+msgstr "&Subskrybowane"
 
 #: artdlg.cpp:205 groupdlg.cpp:165
 msgid "&Tagged"
-msgstr "Zaznaczone"
+msgstr "&Zaznaczone"
 
 #: groupdlg.cpp:170
 msgid "Identity..."
-msgstr "&Identyfikacja..."
+msgstr "Identyfikacja..."
 
 #: groupdlg.cpp:171
 msgid "NNTP Options..."
-msgstr "Opcje &NNTP..."
+msgstr "Opcje NNTP..."
 
 #: groupdlg.cpp:172
 msgid "Expire Options..."
-msgstr "Opcje &wygasania..."
+msgstr "Opcje wygasania..."
 
 #: groupdlg.cpp:173
 #, fuzzy
 msgid "Printing Options..."
-msgstr "Opcje &NNTP..."
+msgstr "Opcje Wydruku..."
 
 #: groupdlg.cpp:180
 msgid "About Krn..."
@@ -136,15 +139,15 @@ msgstr "&Grupy dyskusyjne"
 
 #: groupdlg.cpp:199
 msgid "Connect to server"
-msgstr "&Po³±cz z serwerem"
+msgstr "Po³±cz z serwerem"
 
 #: groupdlg.cpp:201
 msgid "Disconnect from server"
-msgstr "&Roz³±cz siê z serwerem"
+msgstr "Roz³±cz siê z serwerem"
 
 #: groupdlg.cpp:204
 msgid "Get list of active groups"
-msgstr "Pobierz &listê aktywnych grup"
+msgstr "Pobierz listê aktywnych grup"
 
 #: groupdlg.cpp:205
 msgid "Find group"
@@ -172,7 +175,7 @@ msgstr "£±czê siê z serwerem"
 
 #: groupdlg.cpp:533
 msgid "Connected to server - Posting not allowed"
-msgstr "Po³±czono z serwerem - og³aszanie nie umo¿liwione ?"
+msgstr "Po³±czono z serwerem - og³aszanie niemo¿liwe"
 
 #: groupdlg.cpp:535
 msgid "Connected to server - Posting allowed"
@@ -249,12 +252,12 @@ msgstr "Pobierz"
 #: artdlg.cpp:146 artdlg.cpp:268
 #, fuzzy
 msgid "Mark Read"
-msgstr "Zaznacz wszystkie"
+msgstr "Zaznacz przeczytane"
 
 #: artdlg.cpp:147
 #, fuzzy
 msgid "Mark Unread"
-msgstr "Zaznacz wszystkie"
+msgstr "Zaznacz nieprzeczytane"
 
 #: artdlg.cpp:150 artdlg.cpp:170
 msgid "Decode"
@@ -266,7 +269,7 @@ msgstr "Zapamiêtaj"
 
 #: artdlg.cpp:161
 msgid "Lookup in Altavista"
-msgstr ""
+msgstr "Sprawd¼ w Altavi¶cie"
 
 #: artdlg.cpp:165 artdlg.cpp:252
 msgid "Reply by Mail"
@@ -307,24 +310,24 @@ msgstr "Wygl±d..."
 #: artdlg.cpp:193
 #, fuzzy
 msgid "Sorting..."
-msgstr "Porz±dkujê w±tki..."
+msgstr "Sortowanie..."
 
 #: artdlg.cpp:197
 msgid "Edit Rules"
-msgstr ""
+msgstr "Edytuj Regu³y"
 
 #: artdlg.cpp:198
 msgid "Update"
-msgstr ""
+msgstr "Uaktualnij"
 
 #: artdlg.cpp:207
 #, fuzzy
 msgid "&Scoring"
-msgstr "Kodowanie"
+msgstr "&Filtry"
 
 #: artdlg.cpp:214
 msgid "Previous Message"
-msgstr "Poprzednia wiadomo¶c"
+msgstr "Poprzednia wiadomo¶æ"
 
 #: artdlg.cpp:216
 msgid "Next Message"
@@ -340,7 +343,7 @@ msgstr "Pobierz listê wiadomo¶ci"
 
 #: artdlg.cpp:225
 msgid "Refresh Display"
-msgstr ""
+msgstr "Od¶wie¿ wygl±d"
 
 #: artdlg.cpp:248
 msgid "Save Article"
@@ -360,7 +363,7 @@ msgstr "Odpowiedz autorowi i grupie"
 
 #: artdlg.cpp:262
 msgid "Tag Article"
-msgstr "Zaznacz wiadomo¶ci"
+msgstr "Zaznacz wiadomo¶æ"
 
 #: artdlg.cpp:264
 msgid "Lock (keep in cache)"
@@ -373,7 +376,7 @@ msgstr "Dekoduj wiadomo¶æ"
 #: artdlg.cpp:270
 #, fuzzy
 msgid "Mark UnRead"
-msgstr "Zaznacz wszystkie"
+msgstr "Zaznacz nieprzeczytane"
 
 #: artdlg.cpp:292 sortDlg.cpp:34
 msgid "Sender"
@@ -385,7 +388,7 @@ msgstr "Linii"
 
 #: artdlg.cpp:295 sortDlg.cpp:33
 msgid "Score"
-msgstr ""
+msgstr "Filtr"
 
 #: artdlg.cpp:296 sortDlg.cpp:32
 msgid "Subject"
@@ -424,6 +427,8 @@ msgid ""
 "Error getting article.\n"
 "Server said:\n"
 msgstr ""
+"Od: Krn\n"
+"Do Ciebie\n"
 "\n"
 "B³±d podczas pobierania wiadomo¶ci.\n"
 "Serwer odpowiedzia³:\n"
@@ -438,15 +443,15 @@ msgstr "KRN - identyfikacja u¿ytkownika"
 
 #: identDlg.cpp:50
 msgid "Here you should enter your personal information"
-msgstr ""
+msgstr "W tym miejscu powiniene¶ podaæ informacje o sobie"
 
 #: identDlg.cpp:52
 msgid "You should know what these are!"
-msgstr ""
+msgstr "Powiniene¶ wiedzieæ co one oznaczaj± !"
 
 #: identDlg.cpp:61
 msgid "Real Name"
-msgstr "Imê i nazwisko"
+msgstr "Imiê i nazwisko"
 
 #: identDlg.cpp:67
 msgid "E-mail Address"
@@ -480,7 +485,7 @@ msgstr "Po³±cz przy uruchomieniu"
 #: NNTPConfigDlg.cpp:70
 #, fuzzy
 msgid "Connect without asking"
-msgstr "&Po³±cz z serwerem"
+msgstr "Po³±cz z serwerem bez pytania"
 
 #: NNTPConfigDlg.cpp:74
 msgid "Authenticate"
@@ -513,65 +518,65 @@ msgstr "Wielkie dziêki tak¿e dla:"
 #: fontsDlg.cpp:39
 #, fuzzy
 msgid "Message Display Settings"
-msgstr "Wy¶wietlane czcionki"
+msgstr "Ustawienia wy¶wietlania"
 
 #: fontsDlg.cpp:46
 msgid "Header Style"
-msgstr ""
+msgstr "Styl Nag³ówka"
 
 #: fontsDlg.cpp:48
 msgid "Fancy"
-msgstr ""
+msgstr "Fantazyjny"
 
 #: fontsDlg.cpp:49
 msgid "Brief"
-msgstr ""
+msgstr "Krótki"
 
 #: fontsDlg.cpp:50
 #, fuzzy
 msgid "Standard"
-msgstr "Domy¶lna czcionka"
+msgstr "Typowy"
 
 #: fontsDlg.cpp:51
 msgid "Long"
-msgstr ""
+msgstr "D³ugi"
 
 #: fontsDlg.cpp:52
 msgid "All"
-msgstr ""
+msgstr "Wszystkie"
 
 #: fontsDlg.cpp:56
 #, fuzzy
 msgid "Attachment Style"
-msgstr "Za³±cznik:"
+msgstr "Styl Za³±cznika:"
 
 #: fontsDlg.cpp:58
 msgid "Iconic"
-msgstr ""
+msgstr "Jako Ikona:"
 
 #: fontsDlg.cpp:59
 msgid "Smart"
-msgstr ""
+msgstr "Elegancki"
 
 #: fontsDlg.cpp:60
 msgid "Inline"
-msgstr ""
+msgstr "W tre¶ci"
 
 #: fontsDlg.cpp:67
 msgid "Font Size:"
-msgstr "Rozmiar czcionki:"
+msgstr "Rozmiar fontu:"
 
 #: fontsDlg.cpp:73
 msgid "Huge"
-msgstr "Wielka"
+msgstr "Wielki"
 
 #: fontsDlg.cpp:78
 msgid "Standard Font"
-msgstr "Domy¶lna czcionka"
+msgstr "Domy¶lny font"
 
 #: fontsDlg.cpp:86
 msgid "Fixed Font"
-msgstr "Czcionka o sta³ej szer."
+msgstr "Font o sta³ej szer."
 
 #: fontsDlg.cpp:94
 msgid "Background Color"
@@ -591,34 +596,34 @@ msgstr "Nastêpny kolor"
 
 #: fontsDlg.cpp:107
 msgid "Use only one window"
-msgstr ""
+msgstr "U¿ywaj tylko jednego okna"
 
 #: fontsDlg.cpp:109
 msgid "Split window vertically"
-msgstr ""
+msgstr "Podziel okno pionowo"
 
 #: findArtDlg.cpp:22
 #, fuzzy
 msgid "KRN - Article Searcher"
-msgstr "Nag³owki widomo¶æi:"
+msgstr "KRN - Szukanie wiadomo¶ci:"
 
 #: findArtDlg.cpp:29
 #, fuzzy
 msgid "Find Articles With:"
-msgstr "Szukaj wiadomo¶ci"
+msgstr "Szukaj wiadomo¶ci z:"
 
 #: findArtDlg.cpp:34 rulesDlg.cpp:106
 #, fuzzy
 msgid "In Field:"
-msgstr "Wszystkie &pola"
+msgstr "Wszystkie pola"
 
 #: findArtDlg.cpp:56 rulesDlg.cpp:132
 msgid "Wildcard Mode"
-msgstr ""
+msgstr "Dowolne"
 
 #: krnsender.cpp:59
 msgid "This server is read onlyyou can't post here!"
-msgstr ""
+msgstr "Nie mo¿esz wysy³aæ wiadomo¶ci do tego serwera"
 
 #: expireDlg.cpp:22 expireDlg.cpp:27
 msgid "KRN - Expire Settings"
@@ -626,24 +631,24 @@ msgstr "KRN - Ustawienia wygasania"
 
 #: expireDlg.cpp:36
 msgid "For how long should we keep things (in days)?"
-msgstr "Na jak d³ugo zostawiæ wiadomo¶æi (w dniach)?"
+msgstr "Na jak d³ugo zostawiæ wiadomo¶ci (w dniach)?"
 
 #: expireDlg.cpp:46
 msgid "Read:"
-msgstr ""
+msgstr "Przeczytana:"
 
 #: expireDlg.cpp:47
 #, fuzzy
 msgid "Unread:"
-msgstr "Zaznacz wszystkie"
+msgstr "Nieprzeczytana:"
 
 #: expireDlg.cpp:50
 msgid "Article Bodies:"
-msgstr "Zawarto¶æ wiadomo¶æi:"
+msgstr "Tre¶ci wiadomo¶ci:"
 
 #: expireDlg.cpp:55
 msgid "Article Headers:"
-msgstr "Nag³owki widomo¶æi:"
+msgstr "Nag³owki wiadomo¶ci:"
 
 #: printdlg.cpp:21
 #, fuzzy
@@ -658,15 +663,15 @@ msgstr "KRN - Ustawienia wygasania"
 #: printdlg.cpp:33
 #, fuzzy
 msgid "General"
-msgstr "Nadawca"
+msgstr "Ogólne"
 
 #: printdlg.cpp:37
 msgid "Use HTML Printing"
-msgstr ""
+msgstr "Drukowanie HTML"
 
 #: printdlg.cpp:40
 msgid "Use Direct Printing"
-msgstr ""
+msgstr "Drukuj bezpo¶rednio."
 
 #: printdlg.cpp:48
 #, fuzzy
@@ -675,44 +680,44 @@ msgstr "Drukuj wiadomo¶æ"
 
 #: printdlg.cpp:52
 msgid "Feed it with:"
-msgstr ""
+msgstr "Wy¶lij jako:"
 
 #: printdlg.cpp:54
 msgid "Postscript"
-msgstr ""
+msgstr "Postscript"
 
 #: printdlg.cpp:55
 msgid "HTML"
-msgstr ""
+msgstr "HTML"
 
 #: printdlg.cpp:56
 msgid "Text"
-msgstr ""
+msgstr "Tekst"
 
 #: rulesDlg.cpp:38
 msgid "KRN - Scoring Rules Editor"
-msgstr ""
+msgstr "KRN - Edytor regu³ filtrowania"
 
 #: rulesDlg.cpp:45
 msgid "Global Rules"
-msgstr ""
+msgstr "Regu³y globalne"
 
 #: rulesDlg.cpp:47
 msgid "All Rules"
-msgstr ""
+msgstr "Wszystkie Regu³y"
 
 #: rulesDlg.cpp:63
 #, fuzzy
 msgid "Active Rules"
-msgstr "Pobierz listê &grup"
+msgstr "Aktywne regu³y"
 
 #: rulesDlg.cpp:70
 msgid "Rule Editor"
-msgstr ""
+msgstr "Edytor Regu³"
 
 #: rulesDlg.cpp:87
 msgid "Save as"
-msgstr ""
+msgstr "Zachowaj jako"
 
 #: rulesDlg.cpp:101
 #, fuzzy
@@ -721,26 +726,26 @@ msgstr "Szukaj wiadomo¶ci"
 
 #: rulesDlg.cpp:126
 msgid "Negative"
-msgstr ""
+msgstr "Odwróæ"
 
 #: rulesDlg.cpp:190
 #, fuzzy
 msgid "Rule name:"
-msgstr "Imê i nazwisko"
+msgstr "Nazwa regu³y"
 
 #: sortDlg.cpp:23
 #, fuzzy
 msgid "KRN - Header Sorting"
-msgstr "KRN - Ustawienia wygasania"
+msgstr "KRN - Sortowanie Nag³ówków"
 
 #: sortDlg.cpp:39
 msgid "Sort by:"
-msgstr ""
+msgstr "Sortuj wzglêdem:"
 
 #: sortDlg.cpp:56
 #, fuzzy
 msgid "Use Threading"
-msgstr "Porz±dkujê w±tki..."
+msgstr "U¿yj w±tków"
 
 #~ msgid "Print"
 #~ msgstr "Drukuj"

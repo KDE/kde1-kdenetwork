@@ -1,9 +1,12 @@
+# KTranslator Generated File
+# Most part translated by Pawe³ Jab³oñski <pawel.jablonski@mail.lze.lodz.pl>
+# Latest updates by Jacek Stolarczyk <jacek@mer.chemia.polsl.gliwice.pl>
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp \n"
 "POT-Creation-Date: 1998-06-18 22:50+0200\n"
-"PO-Revision-Date: 1998-01-29 19:34+0100\n"
-"Last-Translator: Pawe³ Jab³oñski <pawel.jablonski@mail.lze.lodz.pl>\n"
+"PO-Revision-Date: 1998-06-18 20:50+0100\n"
+"Last-Translator: Jacek Stolarczyk <jacek@mer.chemia.polsl.gliwice.pl>\n"
 "Content-Type: text/plain; charset=iso-8859-2\n"
 
 #: accounts.cpp:53
@@ -24,7 +27,7 @@ msgstr "Koszty po³±czenia"
 
 #: accounts.cpp:116 conwindow.cpp:55
 msgid "Volume:"
-msgstr ""
+msgstr "Ruch:"
 
 #: accounts.cpp:131
 msgid "Reset Costs"
@@ -110,7 +113,7 @@ msgstr ""
 #: accounts.cpp:396
 msgid "Login script has unbalanced Loop Start/End"
 msgstr ""
-"Skrypt loguj±cy ma nierówn± ilo¶æpocz±tów/koñców pêtli (LoopStart LoopEnd)"
+"Skrypt loguj±cy ma nierówn± ilo¶æ pocz±tów/koñców pêtli (LoopStart LoopEnd)"
 
 #: connect.cpp:108 connect.cpp:212 main.cpp:829
 msgid "Connecting to: "
@@ -233,7 +236,7 @@ msgstr "Koniec pêtli nie zestawiony z pocz±tkiem! Linia: "
 
 #: connect.cpp:747
 msgid "Starting pppd ..."
-msgstr "Statuje pppd ..."
+msgstr "Startujê pppd ..."
 
 #: connect.cpp:807 connect.cpp:833
 msgid "unknown speed"
@@ -241,7 +244,7 @@ msgstr "Nieznana szybko¶æ"
 
 #: connect.cpp:871
 msgid "Scan Var: "
-msgstr ""
+msgstr "Sprawdzanie:"
 
 #: connect.cpp:882
 msgid "Found: "
@@ -306,7 +309,7 @@ msgstr "Czas po³±czenia:"
 
 #: conwindow.cpp:59
 msgid "Session Bill:"
-msgstr "Kosz sesji:"
+msgstr "Koszt sesji:"
 
 #: conwindow.cpp:61
 msgid "Total Bill:"
@@ -355,7 +358,7 @@ msgstr "Terminal"
 
 #: edit.cpp:76
 msgid "CHAP"
-msgstr ""
+msgstr "CHAP"
 
 #: edit.cpp:82
 msgid "Store password"
@@ -375,7 +378,7 @@ msgstr "Po roz³±czeniu uruchom:"
 
 #: edit.cpp:112
 msgid "Edit pppd arguments:"
-msgstr "Zmiana opcjii pppd:"
+msgstr "Zmiana opcji pppd:"
 
 #: edit.cpp:118
 msgid "Arguments"
@@ -391,7 +394,7 @@ msgstr "Adres IP:"
 
 #: edit.cpp:185
 msgid "Subnet Mask:"
-msgstr "Maska:"
+msgstr "Maska podsieci:"
 
 #: edit.cpp:193
 msgid "Dynamic IP Address"
@@ -423,7 +426,7 @@ msgstr "Lista serwerów:"
 
 #: edit.cpp:385
 msgid "Disable existing DNS Servers during Connection"
-msgstr "Deaktywuj istniej±ce DNS w czasie po³±czenia"
+msgstr "Dezaktywuj istniej±ce DNS w czasie po³±czenia"
 
 #: edit.cpp:437
 msgid "Gateway Setup"
@@ -486,7 +489,7 @@ msgstr "Roz³±cz przy zamkniêciu KDE"
 #: general.cpp:124
 #, fuzzy
 msgid "Quit on Disconnect"
-msgstr "Roz³±cz"
+msgstr "Zakoñcz przy roz³±czeniu"
 
 #: general.cpp:130
 msgid "Minimize Window on Connect"
@@ -696,7 +699,7 @@ msgid ""
 msgstr ""
 "Nie mogê utworzyæ pliku\n"
 "\"%s\"\n"
-"zawieraj±cego indentyfikacjê PAP"
+"zawieraj±cego identyfikacjê PAP"
 
 #: main.cpp:802
 #, fuzzy
@@ -717,11 +720,11 @@ msgid ""
 msgstr ""
 "Nie mogê utworzyæ pliku\n"
 "\"%s\"\n"
-"zawieraj±cego indentyfikacjê PAP"
+"zawieraj±cego identyfikacjê CHAP"
 
 #: main.cpp:821
 msgid "You have to specify a telephone number !\n"
-msgstr ""
+msgstr "Musisz podaæ numer telefonu!\n"
 
 #: main.cpp:895
 msgid "Quit kPPP?"
@@ -729,7 +732,7 @@ msgstr "Zakoñczyæ kppp?"
 
 #: main.cpp:896
 msgid "Exiting kPPP will close your PPP Session."
-msgstr "Zamkniecie kppp zakoñczy Twoje po³±czenie"
+msgstr "Zamkniêcie kppp zakoñczy Twoje po³±czenie"
 
 #: main.cpp:931
 msgid ""
@@ -753,7 +756,7 @@ msgstr "Odpowied¼ na polecenie:"
 
 #: modemcmds.cpp:86
 msgid "Init Delay (sec/100):"
-msgstr ""
+msgstr "Odczekaj (sek/100):"
 
 #: modemcmds.cpp:91
 msgid "Dial String:"
@@ -835,7 +838,7 @@ msgstr "Testowanie modemu"
 
 #: modeminfo.cpp:130
 msgid "Modem Query timed out."
-msgstr "Przekroczono czas oczekiwaniana odpowied¼ modemu"
+msgstr "Przekroczono czas oczekiwania na odpowied¼ modemu"
 
 #: miniterm.cpp:277 modeminfo.cpp:368
 msgid "Can't open Modem"
@@ -943,15 +946,15 @@ msgstr "Resetujê modem"
 
 #: miniterm.cpp:262
 msgid "Can't restore tty settings: tcsetattr()\n"
-msgstr "Can't restore tty settings: tcsetattr()\n"
+msgstr "Nie mogê przywróciæ ustawieñ tty: tcsetattr()\n"
 
 #: miniterm.cpp:283
 msgid "tcgetattr() failed\n"
-msgstr "tcgetattr() failed\n"
+msgstr "tcgetattr() nie powiod³o siê\n"
 
 #: miniterm.cpp:330
 msgid "tcsetattr() failed\n"
-msgstr "tcsetattr() failed\n"
+msgstr "tcsetattr() nie powiod³o siê\n"
 
 #: acctselect.cpp:48
 msgid "Accounting Setup"
@@ -973,7 +976,7 @@ msgstr "Aktywuj obliczanie kosztów po³±czenia"
 #: acctselect.cpp:92
 #, fuzzy
 msgid "No accounting"
-msgstr "Aktywuj obliczanie kosztów po³±czenia"
+msgstr "Bez obliczania"
 
 #: acctselect.cpp:93
 #, fuzzy
@@ -988,7 +991,7 @@ msgstr "bajtów WY"
 #: acctselect.cpp:95
 #, fuzzy
 msgid "Bytes in and out"
-msgstr "bajtów WY"
+msgstr "bajtów WE i WY"
 
 #: acctselect.cpp:165 acctselect.cpp:271
 msgid "Available rules"
@@ -1018,7 +1021,7 @@ msgstr "kppp: b³±d sk³adniowy w linii %d\n"
 
 #: ruleset.cpp:572
 msgid "kppp: rulefile does not contain a default rule\n"
-msgstr "kppp: rulefile does not contain a default rule\n"
+msgstr "kppp: cennik nie zawiera warto¶ci domy¶lnych\n"
 
 #: ruleset.cpp:577
 msgid "kppp: rulefile does not contain a \"name=...\" line\n"
@@ -1038,7 +1041,7 @@ msgid ""
 "You´re not allowed to dial out with kppp.\n"
 "Contact your system administrator."
 msgstr ""
-"Nie ma¿ uprawnieñ do\n"
+"Nie masz uprawnieñ do\n"
 "  uruchomienia pppd!\n"
 "\n"
 "Skontakuj siê z administratorem\n"
@@ -1053,7 +1056,7 @@ msgid ""
 msgstr ""
 "Nie mo¿na odnale¼æ demona pppd!\n"
 "\n"
-"upewnij siê, ¿e ppd jest zainstalowy\n"
+"upewnij siê, ¿e pppd jest zainstalowy\n"
 "oraz czy wpisa³e¶ w³a¶ciw± ¶cie¿kê.\n"
 
 #: runtests.cpp:149
@@ -1064,7 +1067,7 @@ msgid ""
 "Contact your system administrator\n"
 "and ask to get access to pppd."
 msgstr ""
-"Nie ma¿ uprawnieñ do\n"
+"Nie masz uprawnieñ do\n"
 "  uruchomienia pppd!\n"
 "\n"
 "Skontakuj siê z administratorem\n"
@@ -1078,7 +1081,7 @@ msgid ""
 "with the SUID bit set. Contact your\n"
 "system administrator."
 msgstr ""
-"PPPD nie jest zainstalowane prawid³owo!\n"
+"pppd nie jest zainstalowane prawid³owo!\n"
 "\n"
 "Program ppd musi byæ zainstalowany\n"
 "z ustawionym bitem SUID\n"
@@ -1092,6 +1095,10 @@ msgid ""
 "itself.\n"
 "Contact your system administrator."
 msgstr ""
+"kppp wykry³ opcjê 'lock' w pliku /etc/ppp/options.\n"
+"\n"
+"Musi ona byæ usunieta, gdy¿ kppp sam dba o blokowanie modemu.\n"
+"Skontaktuj siê z administratorem systemu. "
 
 #: runtests.cpp:245
 msgid ""
@@ -1101,9 +1108,14 @@ msgid ""
 "a non-empty file that has appropriate\n"
 "read and write permissions."
 msgstr ""
+"Brakuje pliku /etc/resolve.conf !\n"
+"\n"
+"Popro¶ administratora o utworzenie\n"
+"niepustego pliku, posiadaj±cego\n"
+"odpowiednie prawa do odczytu i zapisu."
 
 #~ msgid "Use default script"
-#~ msgstr "Uzyj domyslnego skryptu"
+#~ msgstr "U¿yj domy¶lnego skryptu"
 
 #~ msgid "None"
 #~ msgstr "¯aden"

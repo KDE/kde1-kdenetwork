@@ -1,9 +1,12 @@
+# KTranslator Generated File
+# Most part translated by Pawe³ Jab³oñski <pawel.jablonski@mail.lze.lodz.pl>
+# Latest updates by Jacek Stolarczyk <jacek@mer.chemia.polsl.gliwice.pl>
 msgid ""
 msgstr ""
 "Project-Id-Version: knu \n"
 "POT-Creation-Date: 1998-06-16 14:20+0200\n"
-"PO-Revision-Date: 1998-01-24 20:25+0100\n"
-"Last-Translator: Pawe³ Jab³oñski <pawel.jablonski@mail.lze.lodz.pl>\n"
+"PO-Revision-Date: 1998-06-18 23:05+0100\n"
+"Last-Translator: Jacek Stolarczyk <jacek@mer.chemia.polsl.pl>\n"
 "Content-Type: text/plain; charset=iso8859-2\n"
 
 #: knu.cpp:139 knu.cpp:300
@@ -26,7 +29,7 @@ msgstr "Pin&g"
 #: knu.cpp:180 knu.cpp:325
 #, fuzzy
 msgid "&Matt's traceroute"
-msgstr "T&rasowanie"
+msgstr "Trasowanie &Matta"
 
 #: knu.cpp:192
 msgid ""
@@ -63,7 +66,7 @@ msgstr "&Ustawienia..."
 #: knu.cpp:272
 #, fuzzy, c-format
 msgid "&About %s"
-msgstr "Informacje o &Qt"
+msgstr "In&formacje o %s"
 
 #: knu.cpp:274
 msgid "About &Qt"
@@ -111,10 +114,18 @@ msgid ""
 "Please use Edit->Preferences... menu\n"
 "to configure it again.\n"
 msgstr ""
+"\n"
+"Wyst±pi³ b³±d w pliku\n"
+"%s/%src\n"
+"W grupie [%s],\n"
+"nie mo¿na odnale¼æ linii \"path=\".\n"
+"\n"
+"Proszê ustawiæ w³a¶ciw± ¶cie¿kê\n"
+"w menu Edycja->Ustawienia.\n"
 
 #: CommandDlg.cpp:349
 msgid "Error in pathname"
-msgstr ""
+msgstr "B³êdna ¶cie¿ka"
 
 #: CommandDlg.cpp:482
 msgid "Binary"
@@ -142,7 +153,7 @@ msgstr "T³umacz a&dresy"
 
 #: TracerouteDlg.cpp:116
 msgid "&Maximum number of hops:"
-msgstr "&Maksymalna liczba skoków:"
+msgstr "&Maksymalna liczba hopów:"
 
 #: HostDlg.cpp:113
 msgid "address (A)"
@@ -186,15 +197,15 @@ msgstr "Ser&wer:"
 
 #: HostDlg.cpp:332
 msgid "hos&t"
-msgstr ""
+msgstr "hos&t"
 
 #: HostDlg.cpp:336
 msgid "ns&lookup"
-msgstr ""
+msgstr "ns&lookup"
 
 #: FingerDlg.cpp:76
 msgid "&User:"
-msgstr ""
+msgstr "&U¿ytkownik"
 
 #, fuzzy
 #~ msgid "Server:"
