@@ -47,7 +47,7 @@ msgid ""
 "Are you sure you want to discard the\n"
 "contents of the folder \"%s\" ?"
 msgstr ""
-"Oletko varma että haluat poistaa kansion\n"
+"Oletko varma, että haluat poistaa kansion\n"
 "\"%s\" sisällön?"
 
 #: kmmainwin.cpp:358 kmmainwin.cpp:396
@@ -72,7 +72,7 @@ msgid ""
 "Are you sure you want to remove the folder\n"
 "\"%s\", discarding it's contents ?"
 msgstr ""
-"Oletko varma että haluat poistaa kansion \"%s\"\n"
+"Oletko varma, että haluat poistaa kansion \"%s\"\n"
 "ja kaikki sen alikansiot?"
 
 #: kmmainwin.cpp:466
@@ -277,7 +277,7 @@ msgstr "&Kaikki otsikot"
 
 #: kmmainwin.cpp:909
 msgid "Iconic Attachments"
-msgstr "Ikonimuotoiset liitteet"
+msgstr "Kuvakemuotoiset liitteet"
 
 #: kmmainwin.cpp:910
 msgid "Smart Attachments"
@@ -369,11 +369,11 @@ msgstr "Allekirjoitustiedosto:"
 
 #: kmsettings.cpp:180
 msgid "PGP User Identity:"
-msgstr "PGP Identiteetti:"
+msgstr "PGP-Henkilöllisyys:"
 
 #: kmsettings.cpp:188
 msgid "Identity"
-msgstr "Identiteetti"
+msgstr "Henkilöllisyys"
 
 #: kmsettings.cpp:207
 msgid "Sending Mail"
@@ -485,11 +485,11 @@ msgstr "Uudelleen lähetetty viesti"
 
 #: kmsettings.cpp:423
 msgid "Automatically append signature"
-msgstr "Automaattisesti lisää allekirjoitus"
+msgstr "Lisää automaattisesti allekirjoitus"
 
 #: kmsettings.cpp:429
 msgid "Automatically sign messages using PGP"
-msgstr "Automaattisesti allekirjoita viestit PGP:llä"
+msgstr "Allekirjoita automaattisesti viestit PGP:llä"
 
 #: kmsettings.cpp:434
 msgid "Word wrap at column:"
@@ -561,7 +561,7 @@ msgstr "Valitse Sendmailin sijainti"
 
 #: kmcomposewin.cpp:1529 kmsettings.cpp:676
 msgid "Choose Signature File"
-msgstr "Valitse allekirjoitus tiedosto"
+msgstr "Valitse allekirjoitustiedosto"
 
 #: kmsettings.cpp:854
 msgid "Local Account"
@@ -569,7 +569,7 @@ msgstr "Paikallinen osoite"
 
 #: kmsettings.cpp:863
 msgid "Pop Account"
-msgstr "POP osoite"
+msgstr "POP-osoite"
 
 #: kmsettings.cpp:865
 msgid "Login:"
@@ -581,7 +581,7 @@ msgstr "Salasana:"
 
 #: kmsettings.cpp:872
 msgid "Host:"
-msgstr "Palvelin:"
+msgstr "Konenimi:"
 
 #: kmsettings.cpp:880
 msgid "Delete mail from server"
@@ -864,7 +864,7 @@ msgid ""
 "edited message?"
 msgstr ""
 "Sulje ja hylkää\n"
-"editoitu viesti?"
+"muokattu viesti?"
 
 #: kmcomposewin.cpp:917
 #, c-format
@@ -933,7 +933,7 @@ msgstr "Kansion `%s' sisältö muuttui. Luon indeksin uudelleen."
 #: kmfolder.cpp:364
 #, c-format
 msgid "Creating index file: %d messages done"
-msgstr "Luon indeksitiedostoa %d viestiä valmiina"
+msgstr "Luon indeksitiedostoa: %d viestiä valmiina"
 
 #: kmfolder.cpp:444
 msgid "Writing index file"
@@ -946,7 +946,7 @@ msgstr "Tiivistän kansiota %d viestiä tehty"
 
 #: kmmsgpartdlg.cpp:41
 msgid "Message Part Properties"
-msgstr "Viesti osan ominaisuudet"
+msgstr "Viestiosan ominaisuudet"
 
 #: kmmsgpartdlg.cpp:73
 msgid "Description:"
@@ -1023,7 +1023,7 @@ msgstr "Liitteet: "
 
 #: kmreaderwin.cpp:759
 msgid "Could not create temporary file"
-msgstr "Roskakansiota '%s' ei voida luoda"
+msgstr "En voinut luoda väliaikaistiedostoa"
 
 #: kmreaderwin.cpp:780
 #, c-format
@@ -1062,7 +1062,7 @@ msgid ""
 "\n"
 "Shall KMail move the mail folders now ?"
 msgstr ""
-"Hakemisto ~/KMail on olemassa. Tästä lähtien, KMail käyttää\n"
+"Hakemisto ~/KMail on olemassa. Tästä lähtien KMail käyttää\n"
 "hakemistoa ~/Mail viesteilleen.\n"
 "KMail voi siirtää ~/KMail hakemiston sisällön hakemistoon\n"
 "~/Mail, mutta tämä korvaa olemassaolevat tiedostot samalla\n"
@@ -1098,11 +1098,11 @@ msgstr ""
 
 #: kmacctpop.cpp:253
 msgid "Pop Mail Error"
-msgstr "Pop postivirhe"
+msgstr "Pop-postivirhe"
 
 #: kmacctpop.cpp:258
 msgid "Pop Mail Network Error"
-msgstr "Pop postin verkkovirhe"
+msgstr "Pop-postin verkkovirhe"
 
 #: kmacctpop.cpp:274
 msgid "Unknown error"
@@ -1176,7 +1176,7 @@ msgstr "Sinun pitää määritellä vastaanottaja"
 
 #: kmsender.cpp:145
 msgid "Cannot add message to outbox folder"
-msgstr "En voi lisätä viestejä outbox kansioon"
+msgstr "En voi lisätä viestejä outbox-kansioon"
 
 #: kmsender.cpp:168
 msgid "Sending still in progress"
@@ -1184,7 +1184,7 @@ msgstr "Lähetys vielä käynnissä"
 
 #: kmsender.cpp:220
 msgid "Initiating sender process..."
-msgstr "Alustan lähettävää prosessia..."
+msgstr "Käynnistän lähettävää prosessia..."
 
 #: kmsender.cpp:236
 msgid "Sending message: "
@@ -1204,7 +1204,7 @@ msgid ""
 "in the settings."
 msgstr ""
 "Ole hyvä ja määrittele lähetysohjelma\n"
-"aseutksista ja kokeile uudelleen"
+"asetuksista ja kokeile uudelleen"
 
 #: kmsender.cpp:479
 #, c-format
@@ -1222,13 +1222,13 @@ msgid ""
 "host %s for sending:\n"
 "%s"
 msgstr ""
-"En saa avattua SMTP yhteyttä\n"
+"En saa avattua SMTP-yhteyttä\n"
 "palvelimeen %s lähettääkseni:\n"
 "%s"
 
 #: kmsender.cpp:601
 msgid "Cannot close SMTP connection."
-msgstr "En saa suljettua SMTP yhteyttä."
+msgstr "En saa suljettua SMTP-yhteyttä."
 
 #: kmsender.cpp:651
 msgid "transmitting message"
@@ -1246,7 +1246,7 @@ msgid ""
 "Response: %s\n"
 "Return code: %d"
 msgstr ""
-"SMTP virhe tapahtui.\n"
+"SMTP-virhe tapahtui.\n"
 "Komento: %s\n"
 "Vastaus: %s\n"
 "Paluukoodi: %d"
@@ -1254,7 +1254,7 @@ msgstr ""
 #: kmsender.cpp:702
 #, c-format
 msgid "Sending SMTP command: %s"
-msgstr "Lähetän SMTP komentoa: %s"
+msgstr "Lähetän SMTP-komentoa: %s"
 
 #: kmacctseldlg.cpp:26
 msgid "Account Type"
@@ -1352,7 +1352,7 @@ msgstr "ei sisällä"
 
 #: kmfilterdlg.cpp:555
 msgid "regular expression"
-msgstr "vertailulauseke"
+msgstr "säännöllinen lauseke"
 
 #: kmfilterdlg.cpp:562
 msgid "<message>"
@@ -1371,16 +1371,16 @@ msgid ""
 "Couldn't find PGP executable.\n"
 "Please check your PATH is set correctly."
 msgstr ""
-"En löydä PGP ohjelmaa.\n"
-"Tarkista että PATH on asetettu oikein."
+"En löydä PGP-ohjelmaa.\n"
+"Tarkista, että PATH on asetettu oikein."
 
 #: kpgp.cpp:156
 msgid ""
 "Could not find PGP executable.\n"
 "Please check your PATH is set correctly."
 msgstr ""
-"En löydä PGP ohjelmaa.\n"
-"Tarkista että PATH on asetettu oikein."
+"En löydä PGP-ohjelmaa.\n"
+"Tarkista, että PATH on asetettu oikein."
 
 #: kpgp.cpp:166
 msgid "The pass phrase is missing."
@@ -1396,7 +1396,7 @@ msgstr "Viestissä on väärä allekirjoitus"
 
 #: kpgp.cpp:450
 msgid "End PGP signed message"
-msgstr "Lopeta PGP allekirjoitettu viesti"
+msgstr "Lopeta PGP-allekirjoitettu viesti"
 
 #: kpgp.cpp:644
 msgid "Bad pass Phrase; couldn't decrypt"
@@ -1410,15 +1410,15 @@ msgstr "Väärä salasana; en voi allekirjoittaa"
 msgid ""
 "Please enter your\n"
 "PGP passphrase"
-msgstr "Anna PGP salasanasi"
+msgstr "Anna PGP-salasanasi"
 
 #: kpgp.cpp:817
 msgid "PGP Security Check"
-msgstr "PGP turvallisuustarkastus"
+msgstr "PGP-turvallisuustarkastus"
 
 #: kfileio.cpp:26 kmaddrbook.cpp:150
 msgid "File I/O Error"
-msgstr "Tiedosto I/O virhe"
+msgstr "Tiedoston I/O virhe"
 
 #: kfileio.cpp:45
 #, c-format
@@ -1583,23 +1583,8 @@ msgstr "Aseta &oletukseksi"
 
 #: charsetsDlg.cpp:80
 msgid "&7 bit is ASCII"
-msgstr "&7 bittinen ASCII"
+msgstr "&7-bittinen ASCII"
 
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
 msgstr "&Koodaa tuntemattomat merkistöt"
-
-#~ msgid "&Remove"
-#~ msgstr "&Poista"
-
-#~ msgid "&Next"
-#~ msgstr "&Seuraava"
-
-#~ msgid "Fonts"
-#~ msgstr "Kirjasimet"
-
-#~ msgid "Appearance"
-#~ msgstr "Ulkonäkö"
-
-#~ msgid "&Ok"
-#~ msgstr "&Ok"

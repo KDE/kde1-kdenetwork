@@ -20,7 +20,7 @@ msgstr "Profiilin asetukset"
 
 #: accounts.cpp:72
 msgid "Edit..."
-msgstr "Editoi..."
+msgstr "Muokkaa..."
 
 #: accounts.cpp:83
 msgid "New..."
@@ -51,7 +51,7 @@ msgid ""
 "Are you sure you want to reset the accumulated\n"
 "telephone costs for the selected account to zero?"
 msgstr ""
-"Oletko varma ett‰ haluat nollata kertyneet\n"
+"Oletko varma, ett‰ haluat nollata kertyneet\n"
 "puhelinkulut valitulla profiililla?"
 
 #: accounts.cpp:271 accounts.cpp:294
@@ -68,7 +68,7 @@ msgid ""
 "Are you sure you want to delete\n"
 "the account \"%s\"?"
 msgstr ""
-"Oletko varma ett‰ haluat tuhota\n"
+"Oletko varma, ett‰ haluat tuhota\n"
 "profiilin \"%s\"?"
 
 #: accounts.cpp:321
@@ -81,7 +81,7 @@ msgstr "Uusi profiili"
 
 #: accounts.cpp:347
 msgid "Edit Account: "
-msgstr "Editoi profiilia: "
+msgstr "Muokkaa profiilia: "
 
 #: accounts.cpp:367
 msgid "Dial"
@@ -146,7 +146,7 @@ msgstr "Modeemi valmis"
 
 #: connect.cpp:266 connect.cpp:267
 msgid "Initializing Modem..."
-msgstr "Asetan modeemia..."
+msgstr "Alustan modeemia..."
 
 #: connect.cpp:292
 msgid "Dialing"
@@ -298,7 +298,7 @@ msgid ""
 "2024 characters in length. What are you doing?"
 msgstr ""
 "pppd komento + komentorivin pituus ylitt‰v‰t\n"
-"2024 merkki‰ pituudessa. Mit‰ oikein teet?"
+"2024 merkki‰. Mit‰ oikein teet?"
 
 #: conwindow.cpp:44
 msgid "Connected at:"
@@ -354,7 +354,7 @@ msgstr "PAP"
 
 #: edit.cpp:75
 msgid "Terminal-based"
-msgstr "Terminaalipohjainen"
+msgstr "P‰‰tepohjainen"
 
 #: edit.cpp:76
 msgid "CHAP"
@@ -390,47 +390,47 @@ msgstr "Argumentit"
 
 #: edit.cpp:173
 msgid "IP Setup"
-msgstr "IP Asetukset"
+msgstr "IP-Asetukset"
 
 #: edit.cpp:180
 msgid "IP Address:"
-msgstr "IP Osoite:"
+msgstr "IP-Osoite:"
 
 #: edit.cpp:185
 msgid "Subnet Mask:"
-msgstr "Aliverkkomaski:"
+msgstr "Aliverkon peitto:"
 
 #: edit.cpp:193
 msgid "Dynamic IP Address"
-msgstr "Dynaaminen IP Osoite"
+msgstr "Dynaaminen IP-Osoite"
 
 #: edit.cpp:196
 msgid "Static IP Address"
-msgstr "Staattinen IP Osoite"
+msgstr "Staattinen IP-Osoite"
 
 #: edit.cpp:200
 msgid "Auto-configure hostname from this IP"
-msgstr "Aseta asiakasnimi automaattisesti t‰st‰ IP:t‰"
+msgstr "Aseta koneen nimi automaattisesti t‰st‰ IP:t‰"
 
 #: edit.cpp:314
 msgid "DNS Servers"
-msgstr "DNS palvelimet"
+msgstr "DNS-palvelimet"
 
 #: edit.cpp:330
 msgid "Domain Name:"
-msgstr "Aluenimi:"
+msgstr "Verkkoalue:"
 
 #: edit.cpp:342
 msgid "DNS IP Address:"
-msgstr "DNS IP Osoite:"
+msgstr "DNS IP-Osoite:"
 
 #: edit.cpp:375
 msgid "DNS Address List:"
-msgstr "DNS Osoitelista"
+msgstr "DNS-Osoitelista"
 
 #: edit.cpp:385
 msgid "Disable existing DNS Servers during Connection"
-msgstr "Poista olemassaolevat DNS palvelimet yhteyden aikana"
+msgstr "Poista olemassaolevat DNS-palvelimet yhteyden aikana"
 
 #: edit.cpp:437
 msgid "Gateway Setup"
@@ -438,11 +438,11 @@ msgstr "Yhdysk‰yt‰v‰n asetukset"
 
 #: edit.cpp:446
 msgid "Default Gateway"
-msgstr "Oletysyhdysk‰yt‰v‰"
+msgstr "Oletusyhdysk‰yt‰v‰"
 
 #: edit.cpp:450
 msgid "Static Gateway"
-msgstr "Staattinen k‰yt‰v‰"
+msgstr "Staattinen yhdysk‰yt‰v‰"
 
 #: edit.cpp:456
 msgid ""
@@ -450,7 +450,7 @@ msgid ""
 "IP Address:"
 msgstr ""
 "Yhdysk‰yt‰v‰n\n"
-"IP Osoite:"
+"IP-Osoite:"
 
 #: edit.cpp:458
 msgid "Assign the Default Route to this Gateway"
@@ -458,7 +458,7 @@ msgstr "Aseta oletusreitti t‰lle yhdysk‰yt‰v‰lle"
 
 #: edit.cpp:557
 msgid "Edit Script"
-msgstr "Editoi ohjelmaa"
+msgstr "Muokkaa ohjelmaa"
 
 #: edit.cpp:580
 msgid "Insert"
@@ -498,7 +498,7 @@ msgstr "Lopeta katkaistaessa"
 
 #: general.cpp:130
 msgid "Minimize Window on Connect"
-msgstr "Pienenn‰ ikkunan sis‰ltˆ yhdistett‰ess‰"
+msgstr "Pienenn‰ ikkuna yhdistett‰ess‰"
 
 #: general.cpp:199
 msgid "About kppp"
@@ -559,7 +559,7 @@ msgstr "Yhteysnopeus:"
 
 #: general.cpp:358
 msgid "Modem Lock File:"
-msgstr "Modeemin lukkotiedosto:"
+msgstr "Modeemin lukitustiedosto:"
 
 #: general.cpp:375
 msgid "Modem Timeout:"
@@ -575,7 +575,7 @@ msgstr "Varatun j‰lkeen odotus:"
 
 #: general.cpp:500
 msgid "Modem Asserts CD Line."
-msgstr "Modeemi v‰litt‰‰ CD linjasta."
+msgstr "Modeemi asettaa CD-linjan."
 
 #: general.cpp:516
 msgid "Modem Commands"
@@ -587,7 +587,7 @@ msgstr "Kysele modeemilta"
 
 #: general.cpp:518
 msgid "Terminal"
-msgstr "Terminaali"
+msgstr "P‰‰te"
 
 #: main.cpp:327
 msgid "Connect to: "
@@ -651,7 +651,7 @@ msgstr ""
 "kppp ei lˆyd‰:\n"
 " %s\n"
 "Asenna pppd oikein ja/tai aseta\n"
-" pppd sijainti PPP lipukkeen alta\n"
+" pppd sijainti PPP-lipukkeen alta\n"
 "Asetukset dialogissa.\n"
 " Kiitos"
 
@@ -665,7 +665,7 @@ msgid ""
 msgstr ""
 "kppp ei voi suorittaa:\n"
 " %s\n"
-"Varmista ett‰ kppp:lla on setuid oikeudet ja\n"
+"Varmista, ett‰ kppp:lla on setuid oikeudet ja\n"
 "pppd on suoritettavissa."
 
 #: main.cpp:758
@@ -682,10 +682,10 @@ msgid ""
 msgstr ""
 "kppp ei lˆyd‰:\n"
 " %s\n"
-"Varmista ett‰ olet asettanut\n"
+"Varmista, ett‰ olet asettanut\n"
 "modeemisi oikein\n"
 "ja/tai aseta\n"
-" modeemin sijainti modeemi lipukkeesta\n"
+" modeemin sijainti modeemi-lipukkeesta\n"
 "asetukset dialogissa.\n"
 " Kiitos"
 
@@ -705,7 +705,7 @@ msgid ""
 "Cannot create PAP authentication\n"
 "file \"%s\""
 msgstr ""
-"En saa luotua PAP tunnistusta\n"
+"En saa luotua PAP-tunnistusta\n"
 "tiedostoon \"%s\""
 
 #: main.cpp:802
@@ -724,7 +724,7 @@ msgid ""
 "Cannot create CHAP authentication\n"
 "file \"%s\""
 msgstr ""
-"En saa luotua CHAP tunnistusta\n"
+"En saa luotua CHAP-tunnistusta\n"
 "tiedostoon \"%s\""
 
 #: main.cpp:821
@@ -749,19 +749,19 @@ msgstr ""
 
 #: modemcmds.cpp:40
 msgid "Edit Modem Commands"
-msgstr "Editoi modeemin komentoja"
+msgstr "Muokkaa modeemin komentoja"
 
 #: modemcmds.cpp:54
 msgid "Initialization String:"
-msgstr "Asetusrivi:"
+msgstr "Alustuskomento:"
 
 #: modemcmds.cpp:61
 msgid "Init Response:"
-msgstr "Asetuksen vastaus:"
+msgstr "Asetuksen vaste:"
 
 #: modemcmds.cpp:86
 msgid "Init Delay (sec/100):"
-msgstr "Asetusviibe (sek/100):"
+msgstr "Asetusviive (sek/100):"
 
 #: modemcmds.cpp:91
 msgid "Dial String:"
@@ -769,11 +769,11 @@ msgstr "Soittorivi:"
 
 #: modemcmds.cpp:98
 msgid "Connect Response:"
-msgstr "Yhteydenmuodostusvastaus:"
+msgstr "Yhteydenmuodostusvaste:"
 
 #: modemcmds.cpp:105
 msgid "Busy Response:"
-msgstr "Varatun linjan vastaus:"
+msgstr "Varatun linjan vaste:"
 
 #: modemcmds.cpp:112
 msgid "No Carrier Resonse:"
@@ -781,27 +781,27 @@ msgstr "Ei yhteys‰‰nt‰ vastaus"
 
 #: modemcmds.cpp:119
 msgid "No Dialtone Response:"
-msgstr "Ei soitto‰‰nt‰ vastaus:"
+msgstr "Ei soitto‰‰nt‰ vaste:"
 
 #: modemcmds.cpp:126
 msgid "Hangup String:"
-msgstr "Lopetusrivi:"
+msgstr "Lopetuskomento:"
 
 #: modemcmds.cpp:133
 msgid "Hangup Response:"
-msgstr "Lopetusvastaus:"
+msgstr "Lopetusvaste:"
 
 #: modemcmds.cpp:140
 msgid "Answer String:"
-msgstr "Vastausrivi:"
+msgstr "Vastausmerkkijono:"
 
 #: modemcmds.cpp:147
 msgid "Ring Response:"
-msgstr "Soittoon vastaus:"
+msgstr "Soiton vaste:"
 
 #: modemcmds.cpp:154
 msgid "Answer Response:"
-msgstr "Vastauksen vastaus:"
+msgstr "Vastauksen vaste:"
 
 #: modemcmds.cpp:161
 msgid "Escape String:"
@@ -809,7 +809,7 @@ msgstr "Lopetusrivi:"
 
 #: modemcmds.cpp:168
 msgid "Escape Response:"
-msgstr "Lopetusvastaus:"
+msgstr "Lopetusvaste:"
 
 #: modemcmds.cpp:195
 msgid "Guard Time (sec/50):"
@@ -817,7 +817,7 @@ msgstr "Valvonta-aika (sek/50):"
 
 #: pppdargs.cpp:33
 msgid "Customize pppd Arguments"
-msgstr "Kustomoi pppd:n argumentteja"
+msgstr "Muokkaa pppd:n argumentteja"
 
 #: pppdargs.cpp:41
 msgid "Argument:"
@@ -855,7 +855,7 @@ msgstr "Modeemi on varattu"
 
 #: modeminfo.cpp:533
 msgid "Modem Query Results"
-msgstr "Modeemin kyselun tulos"
+msgstr "Modeemin kyselyn tulos"
 
 #: pppstatdlg.cpp:70
 msgid "kppp Statistics"
@@ -919,7 +919,7 @@ msgstr "ei tietoa"
 
 #: miniterm.cpp:52
 msgid "Kppp Mini-Terminal"
-msgstr "Kppp miniterminaali"
+msgstr "Kppp minip‰‰te"
 
 #: miniterm.cpp:58
 msgid "&Reset Modem"
@@ -931,7 +931,7 @@ msgstr "&Modeemi"
 
 #: miniterm.cpp:107
 msgid "Quit MiniTerm"
-msgstr "Lopeta Minitermi"
+msgstr "Lopeta Minip‰‰te"
 
 #: miniterm.cpp:113
 msgid "Reset Modem"
@@ -939,7 +939,7 @@ msgstr "Resetoi modeemi"
 
 #: miniterm.cpp:151
 msgid "Initializing Modem"
-msgstr "Aseta modeemi"
+msgstr "Alustan modeemia"
 
 #: miniterm.cpp:223
 msgid "Hanging up ..."
@@ -1012,12 +1012,12 @@ msgstr "kppp: s‰‰ntˆtiedostoilla on oltava p‰‰te \".rst\"\n"
 
 #: ruleset.cpp:561
 msgid "kppp: error parsing the ruleset\n"
-msgstr "kppp: virhe s‰‰ntˆˆtiedostoa k‰‰nnett‰ess‰\n"
+msgstr "kppp: virhe s‰‰ntˆtiedostoa tulkittaessa\n"
 
 #: ruleset.cpp:566
 #, c-format
 msgid "kppp: parse error in line %d\n"
-msgstr "kppp: k‰‰nnˆsvirhe rivill‰ %d\n"
+msgstr "kppp: tulkintavirhe rivill‰ %d\n"
 
 #: ruleset.cpp:572
 msgid "kppp: rulefile does not contain a default rule\n"
@@ -1043,7 +1043,7 @@ msgstr ""
 "Sinulla ei ole oikeuksia pppd:n\n"
 "k‰ynnistykseen!\n"
 "\n"
-"Ota yhteys systeemin yll‰pit‰j‰‰n ja\n"
+"Ota yhteys j‰rjestelm‰n yll‰pit‰j‰‰n ja\n"
 "pyyd‰ oikeudet pppd ohjelmaan."
 
 #: runtests.cpp:137
@@ -1055,7 +1055,7 @@ msgid ""
 msgstr ""
 "En lˆyd‰ pppd-daemonia!\n"
 "\n"
-"Varmista ett‰ pppd on asennettu\n"
+"Varmista, ett‰ pppd on asennettu\n"
 "ja olet antanut oikean polun.\n"
 
 #: runtests.cpp:149
@@ -1069,7 +1069,7 @@ msgstr ""
 "Sinulla ei ole oikeuksia pppd:n\n"
 "k‰ynnistykseen!\n"
 "\n"
-"Ota yhteys systeemin yll‰pit‰j‰‰n ja\n"
+"Ota yhteys j‰rjestelm‰n yll‰pit‰j‰‰n ja\n"
 "pyyd‰ oikeudet pppd ohjelmaan."
 
 #: runtests.cpp:160 runtests.cpp:175
@@ -1083,8 +1083,8 @@ msgstr ""
 "pppd ei ole oikein asennettu!\n"
 "\n"
 "pppd ohjelma pit‰‰ olla asennettu\n"
-"SUID bitti asetettuna. Ota yhteys\n"
-"systeemin yll‰pit‰j‰‰n."
+"SUID-bitti asetettuna. Ota yhteys\n"
+"j‰rjestelm‰n yll‰pit‰j‰‰n."
 
 #: runtests.cpp:220
 msgid ""
@@ -1094,10 +1094,10 @@ msgid ""
 "itself.\n"
 "Contact your system administrator."
 msgstr ""
-"kppp on huomannut 'lock' asetuksen tiedostossa /etc/ppp/options.\n"
+"kppp on huomannut 'lock'-asetuksen tiedostossa /etc/ppp/options.\n"
 "\n"
 "T‰m‰ asetus on poistettava koska kppp hoitaa itse laitteen lukitukset.\n"
-" Ota yhteytt‰ systeemin yll‰pitoon."
+" Ota yhteytt‰ j‰rjestelm‰n yll‰pitoon."
 
 #: runtests.cpp:245
 msgid ""
@@ -1111,12 +1111,3 @@ msgstr ""
 "\n"
 "Pyyd‰ systeemisi yll‰pit‰j‰‰ luomaan t‰m‰\n"
 "tiedosto sopivilla k‰yttˆoikeuksilla."
-
-#~ msgid "Use default script"
-#~ msgstr "K‰yt‰ oletusohjelmaa"
-
-#~ msgid "None"
-#~ msgstr "None"
-
-#~ msgid "Restore"
-#~ msgstr "Palauta"

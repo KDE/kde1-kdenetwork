@@ -32,11 +32,11 @@ msgstr "Anna organisaatiosi nimi"
 
 #: main.cpp:252
 msgid "Please enter your NNTP server name"
-msgstr "Anna NNTP palvelimen nimi"
+msgstr "Anna NNTP-palvelimen nimi"
 
 #: main.cpp:264
 msgid "Please enter your SMTP server name"
-msgstr "Anna SMTP palvelimen nimi"
+msgstr "Anna SMTP-palvelimen nimi"
 
 #: NNTP.cpp:76
 #, c-format
@@ -121,11 +121,11 @@ msgstr "Henkilöllisyys..."
 
 #: groupdlg.cpp:171
 msgid "NNTP Options..."
-msgstr "NNTP Asetukset..."
+msgstr "NNTP-Asetukset..."
 
 #: groupdlg.cpp:172
 msgid "Expire Options..."
-msgstr "Kuoletuksen asetukset..."
+msgstr "Umpeutumisen asetukset..."
 
 #: groupdlg.cpp:173
 msgid "Printing Options..."
@@ -145,7 +145,7 @@ msgstr "Yhdistä palvelimeen"
 
 #: groupdlg.cpp:201
 msgid "Disconnect from server"
-msgstr "Katkaise yhteys palvleimeen"
+msgstr "Katkaise yhteys palvelimeen"
 
 #: groupdlg.cpp:204
 msgid "Get list of active groups"
@@ -225,7 +225,7 @@ msgstr "Listaan aktiiviset viestiryhmät"
 
 #: groupdlg.cpp:899
 msgid "KRN - Find a Newsgroup"
-msgstr "KRN - Esti yytisryhmä"
+msgstr "KRN - Etsi uutisryhmä"
 
 #: groupdlg.cpp:900
 msgid "Enter the name of the Newsgroup"
@@ -265,7 +265,7 @@ msgstr "Pura"
 
 #: artdlg.cpp:152 artdlg.cpp:172
 msgid "Don't expire"
-msgstr "Älä kuoleta"
+msgstr "Älä umpeuta"
 
 #: artdlg.cpp:161
 msgid "Lookup in Altavista"
@@ -443,7 +443,7 @@ msgstr "Tähän sinun tulee antaa henkilötietojasi"
 
 #: identDlg.cpp:52
 msgid "You should know what these are!"
-msgstr "Sinun tulisi tietää mitä nämä ovat!"
+msgstr "Sinun tulisi tietää, mitä nämä ovat!"
 
 #: identDlg.cpp:61
 msgid "Real Name"
@@ -459,7 +459,7 @@ msgstr "Ogranisaatio"
 
 #: NNTPConfigDlg.cpp:29
 msgid "KRN-NNTP configuration"
-msgstr "KRN-NNTP asetukset"
+msgstr "KRN-NNTP-asetukset"
 
 #: NNTPConfigDlg.cpp:34
 msgid "Servers"
@@ -467,11 +467,11 @@ msgstr "Palvelimet"
 
 #: NNTPConfigDlg.cpp:36
 msgid "SMTP server"
-msgstr "SMTP palvelin"
+msgstr "SMTP-palvelin"
 
 #: NNTPConfigDlg.cpp:41
 msgid "NNTP Server"
-msgstr "NNTP Palvelin"
+msgstr "NNTP-Palvelin"
 
 #: NNTPConfigDlg.cpp:66
 msgid "Connect on Startup"
@@ -499,7 +499,7 @@ msgstr "Tietoja KRN"
 
 #: aboutDlg.cpp:39
 msgid "Part of the KDE project."
-msgstr "Osa KDE projektia"
+msgstr "Osa KDE-projektia."
 
 #: aboutDlg.cpp:42
 msgid "Credits & Thanks"
@@ -511,7 +511,7 @@ msgstr "Monet kiitokset:"
 
 #: fontsDlg.cpp:39
 msgid "Message Display Settings"
-msgstr "Viestin näytän asetukset"
+msgstr "Viestin näytön asetukset"
 
 #: fontsDlg.cpp:46
 msgid "Header Style"
@@ -543,7 +543,7 @@ msgstr "Liitetyyli "
 
 #: fontsDlg.cpp:58
 msgid "Iconic"
-msgstr "Ikonoitu"
+msgstr "Pienennetty"
 
 #: fontsDlg.cpp:59
 msgid "Smart"
@@ -615,7 +615,7 @@ msgstr "Voit vain lukea palvelimelta!"
 
 #: expireDlg.cpp:22 expireDlg.cpp:27
 msgid "KRN - Expire Settings"
-msgstr "KRN - Kuoletuksen asetukset"
+msgstr "KRN - Umpeutumisen asetukset"
 
 #: expireDlg.cpp:36
 msgid "For how long should we keep things (in days)?"
@@ -651,7 +651,7 @@ msgstr "Yleistä"
 
 #: printdlg.cpp:37
 msgid "Use HTML Printing"
-msgstr "Käytä HTML tulostusta"
+msgstr "Käytä HTML-tulostusta"
 
 #: printdlg.cpp:40
 msgid "Use Direct Printing"
@@ -725,32 +725,3 @@ msgstr "Järjestä:"
 msgid "Use Threading"
 msgstr "Käytä threadeja"
 
-#~ msgid "Print"
-#~ msgstr "Tulosta"
-
-#~ msgid "Small"
-#~ msgstr "Pieni"
-
-#~ msgid "Large"
-#~ msgstr "Suuri"
-
-#~ msgid "None"
-#~ msgstr "Ei mikään"
-
-#~ msgid "KRN - Decoder"
-#~ msgstr "KRN - Purkaja"
-
-#~ msgid "ID"
-#~ msgstr "TUNNUS"
-
-#~ msgid "Destination directory:"
-#~ msgstr "Kohdehakemisto:"
-
-#~ msgid "Decode All"
-#~ msgstr "Pura kaikki"
-
-#~ msgid "KRN-Decoder"
-#~ msgstr "KRN - Purkaja"
-
-#~ msgid "Unsupported encoding type: %s."
-#~ msgstr "Tunnistamaton koodaustyyppi: %s."

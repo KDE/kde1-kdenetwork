@@ -24,7 +24,7 @@ msgstr "&Traceroute"
 
 #: knu.cpp:157 knu.cpp:312
 msgid "Host &resolution"
-msgstr "Isännän &selvitys"
+msgstr "Konenimen &selvitys"
 
 #: knu.cpp:170
 msgid "F&inger"
@@ -85,7 +85,7 @@ msgstr "Tietoja..."
 
 #: CommandDlg.cpp:120
 msgid "H&ost:"
-msgstr "I&säntä"
+msgstr "&Kone:"
 
 #: CommandDlg.cpp:129
 msgid "&Go!"
@@ -100,7 +100,7 @@ msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
 msgstr ""
-"Komentohjelmaa ei löytynyt. \n"
+"Ohjelmatiedostoa ei löytynyt. \n"
 "Voit antaa sen polun Editoi->Asetukset... valikoissa."
 
 #: CommandDlg.cpp:340
@@ -152,7 +152,7 @@ msgstr " - asetus"
 
 #: PingDlg.cpp:98 TracerouteDlg.cpp:99
 msgid "Make host &name resolution"
-msgstr "Tee isännän &nimenselvitys"
+msgstr "Tee koneen &nimenselvitys"
 
 #: TracerouteDlg.cpp:116
 msgid "&Maximum number of hops:"
@@ -200,7 +200,7 @@ msgstr "Pal&velin"
 
 #: HostDlg.cpp:332
 msgid "hos&t"
-msgstr "hos&ti"
+msgstr "&kone"
 
 #: HostDlg.cpp:336
 msgid "ns&lookup"
