@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmail \n"
 "POT-Creation-Date: 1998-12-19 02:18+0100\n"
-"PO-Revision-Date: 1998-10-24 05:55+0200\n"
+"PO-Revision-Date: 1998-12-27 14:55+0100\n"
 "Last-Translator: Jacek Stolarczyk <jacek@mer.chemia.polsl.gliwice.pl>\n"
 "Content-Type: text/plain; charset=iso8859-2\n"
 
@@ -594,7 +594,7 @@ msgstr "Ró¿ne"
 
 #: kmsettings.cpp:559
 msgid "PGP"
-msgstr ""
+msgstr "PGP"
 
 #: kmsettings.cpp:582
 msgid "Message Body Font"
@@ -913,7 +913,7 @@ msgstr "Za³±cz plik"
 
 #: kmcomposewin.cpp:533
 msgid "Attach My &Public Key"
-msgstr ""
+msgstr "Do³±cz mój klucz &publiczny"
 
 #: kmcomposewin.cpp:544
 msgid "&Save..."
@@ -990,11 +990,11 @@ msgstr "Wstaw &plik..."
 
 #: kmcomposewin.cpp:1245
 msgid "my pgp key"
-msgstr ""
+msgstr "mój klucz pgp"
 
 #: kmcomposewin.cpp:1273
 msgid "pgp key"
-msgstr ""
+msgstr "klucz pgp"
 
 #: kmcomposewin.cpp:1294 kmreaderwin.cpp:721
 msgid "View..."
@@ -1030,7 +1030,7 @@ msgstr "Data:"
 
 #: kmcomposewin.cpp:2073
 msgid "Spellcheck - KMail"
-msgstr ""
+msgstr "Sprawdzanie pisowni - KMail"
 
 #: kmcomposewin.cpp:2099
 msgid ""
@@ -1053,7 +1053,7 @@ msgstr "Tworzenie pliku indeksu: %d wiadomo¶ci skoñczono"
 
 #: kmfolder.cpp:461
 msgid "Writing index file"
-msgstr ""
+msgstr "Trwa zapisywanie pliku indeksu"
 
 #: kmfolder.cpp:901
 #, fuzzy, c-format
@@ -1135,7 +1135,7 @@ msgstr "Ostrzerzenie: Z³y podpis od"
 
 #: kmreaderwin.cpp:435
 msgid "unknown key ID"
-msgstr ""
+msgstr "nieznany identyfikator klucza"
 
 #: kmreaderwin.cpp:685
 msgid "Attachment: "
@@ -1229,15 +1229,15 @@ msgstr ""
 
 #: kmacctpop.cpp:100
 msgid "Please set Password and Username"
-msgstr ""
+msgstr "Proszê podaæ has³o i nazwê u¿ytkownika"
 
 #: kmacctpop.cpp:135
 msgid "Incorrect Username"
-msgstr ""
+msgstr "Nieprawid³owa nazwa u¿ytkownika"
 
 #: kmacctpop.cpp:148
 msgid "Incorrect Password"
-msgstr ""
+msgstr "Nieprawid³owe has³o"
 
 #: kmacctpop.cpp:184
 msgid ""
@@ -1551,23 +1551,26 @@ msgid ""
 "recipients of this mail.\n"
 "Message will not be encrypted."
 msgstr ""
+"Nie mo¿na odnale¼æ kluczy publicznych dla\n"
+"odbiorców tej wiadomo¶ci.\n"
+"Wiadomo¶æ nie zostanie zakodowana."
 
 #: kpgp.cpp:296
 msgid "Could not find the public keys for\n"
-msgstr ""
+msgstr "Nie mo¿na odnale¼æ kluczy publicznych dla\n"
 
 #: kpgp.cpp:307
 msgid "These persons will not be able to\n"
-msgstr ""
+msgstr "Te osoby nie bêd± mog³y\n"
 
 #: kpgp.cpp:309
 msgid "This person will not be able to\n"
-msgstr ""
+msgstr "Ta osoba nie bêdzie mog³a"
 
 #: kpgp.cpp:311
 #, fuzzy
 msgid "decrypt the message."
-msgstr "zaszyfruj wiadomo¶æ"
+msgstr "odszyfrowaæ wiadomo¶ci"
 
 #: kpgp.cpp:326
 msgid ""
@@ -1575,26 +1578,33 @@ msgid ""
 "Do you wan't to try again, continue and\n"
 "leave the message unsigned, or cancel sending the message?"
 msgstr ""
+"Podano niew³a¶ciwe has³o PGP.\n"
+"Czy chcesz spróbowac jeszcze raz, kontynuowaæ\n"
+"zostawiaj±c wiadomo¶æ nie podpisan± czy te¿ anulowaæ jej wysy³anie?"
 
 #: kpgp.cpp:331
 msgid "Retry"
-msgstr ""
+msgstr "Spróbuj ponownie"
 
 #: kpgp.cpp:342
 msgid ""
 "Do you wan't to encrypt anyway, leave the\n"
 "message as is, or cancel the message?"
 msgstr ""
+"Czy chcesz wiadomo¶æ mimo wszystko zakodowaæ,\n"
+"zostawiæ bez zmian czy j± anulowaæ?"
 
 #: kpgp.cpp:346
 msgid "Encrypt"
-msgstr ""
+msgstr "Zaszyfruj"
 
 #: kpgp.cpp:359
 msgid ""
 "Do you wan't to leave the message as is,\n"
 "or cancel the message?"
 msgstr ""
+"Czy chcesz zostawiæ wiadomo¶æ bez zmian,\n"
+"czy j± anulowaæ?"
 
 #: kpgp.cpp:717
 msgid ""
@@ -1610,12 +1620,12 @@ msgstr "Kontrola  PGP"
 
 #: kpgp.cpp:769
 msgid "Please select the public key to insert"
-msgstr ""
+msgstr "Proszê wybraæ, który klucz publiczny nale¿y wstawiæ"
 
 #: kpgp.cpp:800
 #, fuzzy
 msgid "Select key"
-msgstr "Wybierz folder"
+msgstr "Wybierz klucz"
 
 #: kpgp.cpp:827
 msgid "PGP User Identity:"
@@ -1623,11 +1633,11 @@ msgstr "U¿ytkownik PGP:"
 
 #: kpgp.cpp:838
 msgid "Store passphrase"
-msgstr ""
+msgstr "Zapisz has³o PGP"
 
 #: kpgp.cpp:844
 msgid "Always encrypt to self"
-msgstr ""
+msgstr "Zawsze szyfruj do siebie"
 
 #: kpgpbase.cpp:315
 msgid "Bad pass Phrase; couldn't sign"
@@ -1635,7 +1645,7 @@ msgstr "Z³e has³o; nie mogê podpisaæ"
 
 #: kpgpbase.cpp:354
 msgid "error running pgp"
-msgstr ""
+msgstr "b³ad podczas uruchomienia pgp"
 
 #: kpgpbase.cpp:371 kpgpbase.cpp:662
 msgid "Bad pass Phrase; couldn't decrypt"
@@ -1643,26 +1653,28 @@ msgstr "Z³e has³o PGP: nie mogê odszyfrowaæ"
 
 #: kpgpbase.cpp:382 kpgpbase.cpp:673
 msgid "Do not have the secret key for this message"
-msgstr ""
+msgstr "Brak tajnego klucza dla tej wiadomo¶ci"
 
 #: kpgpbase.cpp:410
 msgid "unknown key ID "
-msgstr ""
+msgstr "nieznany identyfikator klucza"
 
 #: kpgpbase.cpp:430
 msgid "??? (file ~/.pgp/pubring.pgp not found)"
-msgstr ""
+msgstr "??? (brak pliku ~/.pgp/pubring.pgp)"
 
 #: kpgpbase.cpp:585
 #, fuzzy
 msgid "The passphrase you entered is invalid."
-msgstr "Brakuje has³a PGP"
+msgstr "Podane has³o PGP jest niew³a¶ciwe"
 
 #: kpgpbase.cpp:611
 msgid ""
 "The key(s) you wan't to encrypt your message\n"
 "to are not trusted. No encryption done."
 msgstr ""
+"Klucz(e), które chcesz u¿yæ do zaszyfrowania wiadomo¶ci\n"
+"nie nale¿± do zaufanych. Szyfrowanie nie zosta³o wykonane."
 
 #: kpgpbase.cpp:614
 #, fuzzy, c-format
@@ -1671,8 +1683,9 @@ msgid ""
 "%s\n"
 "They will not be able to decrypt the message"
 msgstr ""
-"Brak klucza publicznego dla %s.\n"
-" Nie mo¿na zaszyfrowaæ wiadomo¶ci dla tej osoby."
+"Poni¿sze klucze nie nale¿± do zaufanych:\n"
+"%s.\n"
+"Nie bêdzie mo¿na odszyfrowaæ z ich pomoc± wiadomo¶ci."
 
 #: kfileio.cpp:26 kmaddrbook.cpp:162
 msgid "File I/O Error"
