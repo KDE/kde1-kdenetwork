@@ -1,3 +1,8 @@
+1998-06-18  Harri Porten  <porten@tu-harburg.de>
+
+	* edit.cpp (ScriptWidget): deactivated "Use default script"-option
+	as long as someone comes up with a default script
+
 1998-06-02  Harri Porten  <porten@tu-harburg.de>
 
 	* replaced klocale->translate() with i18n() and every reference to

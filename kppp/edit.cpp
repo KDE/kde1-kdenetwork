@@ -559,11 +559,11 @@ ScriptWidget::ScriptWidget( QWidget *parent, const char *name )
 
   QVBoxLayout *l1 = new QVBoxLayout;
   tl->addLayout(l1, 1, 1);
-  default_script = 
-    new QCheckBox(i18n("Use default script"), this);
-  MIN_SIZE(default_script);
-  l1->addWidget(default_script);
-  l1->addStretch(1);
+  //  default_script = 
+  //    new QCheckBox(i18n("Use default script"), this);
+  //  MIN_SIZE(default_script);
+  //  l1->addWidget(default_script);
+  //  l1->addStretch(1);
 
   se = new ScriptEdit(this, "se");
   connect(se, SIGNAL(returnPressed()), SLOT(addButton()));
@@ -621,10 +621,10 @@ ScriptWidget::ScriptWidget( QWidget *parent, const char *name )
   l12->addWidget(sl, 3);
   l12->addWidget(slb, 0);
 
-  default_script->setChecked(TRUE);
-  connect(default_script, SIGNAL(toggled(bool)),
-	  this, SLOT(default_script_toggled(bool)));
-  default_script_toggled(TRUE);
+  //  default_script->setChecked(TRUE);
+  //  connect(default_script, SIGNAL(toggled(bool)),
+  //	  this, SLOT(default_script_toggled(bool)));
+  //  default_script_toggled(TRUE);
 
   //load data from gpppdata
   if(!isnewaccount) {
@@ -635,7 +635,7 @@ ScriptWidget::ScriptWidget( QWidget *parent, const char *name )
       sl->insertItem(gpppdata.script(i));
     }
 
-    default_script->setChecked( (bool) (counter==0));
+    //    default_script->setChecked( (bool) (counter==0));
   }
 
   adjustScrollBar();
@@ -644,14 +644,14 @@ ScriptWidget::ScriptWidget( QWidget *parent, const char *name )
 }
 
 
-void ScriptWidget::default_script_toggled(bool b) {
-  se->setEnabled(!b);
-  add->setEnabled(!b);
-  insert->setEnabled(!b);
-  remove->setEnabled(!b);
-  stl->setEnabled(!b);
-  sl->setEnabled(!b);
-}
+// void ScriptWidget::default_script_toggled(bool b) {
+//  se->setEnabled(!b);
+//  add->setEnabled(!b);
+//  insert->setEnabled(!b);
+//  remove->setEnabled(!b);
+//  stl->setEnabled(!b);
+//  sl->setEnabled(!b);
+// }
 
 bool ScriptWidget::check() {
   uint lstart = 0;
@@ -675,7 +675,7 @@ bool ScriptWidget::check() {
 
 
 void ScriptWidget::save() {
-  if(default_script->isChecked() == FALSE && sl->count() > 0)
+  if(sl->count() > 0)
     for( uint i=0; i <= sl->count()-1; i++) {
       gpppdata.setScriptType(i, stl->text(i));
       gpppdata.setScript(i, sl->text(i));
@@ -904,3 +904,5 @@ void ScriptWidget::removeButton() {
 }
 
 #include "edit.moc"
+
+
