@@ -157,6 +157,18 @@ msgid ""
 "(See README files and copyright.h).\n"
 "My own code is based on the GPL"
 msgstr ""
+"KArchie ver. %s\n"
+"\n"
+"av Jörg Habenicht <j.habenicht@europemail.com>\n"
+"\n"
+"basert på arbeid fra:\n"
+"  - archie prospero-klient av\n"
+"      Clifford Neuman and\n"
+"      Brendan Kehoe (brendan@cygnus.com)\n"
+"  - og xarchie av\n"
+"      George Ferguson (ferguson@cs.rochester.edu)\n"
+"(Se README-filene og copyright.h).\n"
+"Min egen kode er basert på GPL"
 
 #: KAMenu.cpp:190
 msgid "&Settings"
@@ -172,11 +184,11 @@ msgstr "S&orter"
 
 #: KAQuery.cpp:180
 msgid "Query setup"
-msgstr ""
+msgstr "Spørr etter oppsett"
 
 #: KAQuery.cpp:289
 msgid "Query aborted"
-msgstr ""
+msgstr "Spørring avbrutt"
 
 #: KAQuery.cpp:296 KArchie.cpp:793
 msgid "Success"
@@ -184,282 +196,267 @@ msgstr "Vellykket"
 
 #: KAQuery.cpp:297
 msgid "Port unknown"
-msgstr ""
+msgstr "Ukjent port "
 
 #: KAQuery.cpp:298
 msgid "Can't open local UDP port"
-msgstr ""
+msgstr "Kan ikke åpne lokal UDP-port"
 
 #: KAQuery.cpp:299
 msgid "Can't resolve hostname"
-msgstr ""
+msgstr "Kan ikke løse vertsnavn"
 
 #: KAQuery.cpp:300
 msgid "Didn't send entire message"
-msgstr ""
+msgstr "Sendte ikke hele meldingen"
 
 #: KAQuery.cpp:301
 msgid "Timed out"
-msgstr ""
+msgstr "Tiden gikk ut"
 
 #: KAQuery.cpp:302
 msgid "Recvfrom failed"
-msgstr ""
+msgstr "Recvfrom mislyktes"
 
 #: KAQuery.cpp:303
 msgid "Reply: sendto failed"
-msgstr ""
+msgstr "Svar: sendto mislyktes"
 
 #: KAQuery.cpp:304
 msgid "Link exists with same name"
-msgstr ""
+msgstr "Lenk eksisterende med samme navn"
 
 #: KAQuery.cpp:306
 msgid "Link already exists"
-msgstr ""
+msgstr "Leng eksisterer allerede"
 
 #: KAQuery.cpp:307
 msgid "Replacing existing link"
-msgstr ""
+msgstr "Ersatt eksisterende lenke"
 
 #: KAQuery.cpp:308
 msgid "Prv entry not in dir->ulinks"
-msgstr ""
+msgstr "Forrige oppføring ikke i dir->ulinks"
 
 #: KAQuery.cpp:309
 msgid "Temporary not found"
-msgstr ""
+msgstr "Midlertidig ikke funnet"
 
 #: KAQuery.cpp:310
 msgid "Namespace not closed w/ object::"
-msgstr ""
+msgstr "Navnemellomrom ikke lukket m/objekt::"
 
 #: KAQuery.cpp:311
 msgid "No alias for namespace NS#:"
-msgstr ""
+msgstr "Intet alias for navnemellomrom NS#:"
 
 #: KAQuery.cpp:312
 msgid "Specified namespace not found"
-msgstr ""
+msgstr "Oppgitt navnemellomrom ikke funnet"
 
 #: KAQuery.cpp:313
 msgid "File access method not supported"
-msgstr ""
+msgstr "Filtilgangsmetode ikke støttet"
 
 #: KAQuery.cpp:314
 msgid "Delete cached copy on close"
-msgstr ""
+msgstr "Slett melomlagringskopi ved avslutt"
 
 #: KAQuery.cpp:315
 msgid "Unable to retrieve file"
-msgstr ""
+msgstr "Kunne ikke motta fil"
 
 #: KAQuery.cpp:317
 msgid "Directory already exists"
-msgstr ""
+msgstr "Katalog eksisterer allerede"
 
 #: KAQuery.cpp:319 KAQuery.cpp:337
 msgid "Link with name already exists"
-msgstr ""
+msgstr "Lenke med navn eksisterer allerede"
 
 #: KAQuery.cpp:320
 msgid "Not a virtual system"
-msgstr ""
+msgstr "Ikke et virtuellt system"
 
 #: KAQuery.cpp:321
 msgid "Can't find directory"
-msgstr ""
+msgstr "Kan ikke finne katalog"
 
 #: KAQuery.cpp:322
 msgid "Not a directory name"
-msgstr ""
+msgstr "Ikke et katalognavn"
 
 #: KAQuery.cpp:323
 msgid "Object not found"
-msgstr ""
+msgstr "Objekt ikke funnet"
 
 #: KAQuery.cpp:324
 msgid "Object has moved"
-msgstr ""
+msgstr "Objekt har flyttet"
 
 #: KAQuery.cpp:325
 msgid "File not found"
-msgstr ""
+msgstr "Fil ikke funent"
 
 #: KAQuery.cpp:326
 msgid "Directory in path not found"
-msgstr ""
+msgstr "Katalog i sti ikke funnet"
 
 #: KAQuery.cpp:327
 msgid "Symbolic links nested too deep"
-msgstr ""
+msgstr "Symbolsk lenke fulgt for dypt"
 
 #: KAQuery.cpp:328
 msgid "Can't read environment"
-msgstr ""
+msgstr "Kunne ikke lese miljø"
 
 #: KAQuery.cpp:329
 msgid "Can't traverse an external file"
-msgstr ""
+msgstr "Kan ikke krysse ekstern fil"
 
 #: KAQuery.cpp:330
 msgid "Exceeded max forward depth"
-msgstr ""
+msgstr "Støtet på maks antall vidresendinger"
 
 #: KAQuery.cpp:331
 msgid "Authentication required"
-msgstr ""
+msgstr "Autentisering kreves"
 
 #: KAQuery.cpp:332
 msgid "Not authorized"
-msgstr ""
+msgstr "Ikke bemyndiget"
 
 #: KAQuery.cpp:333
 msgid "Not found"
-msgstr ""
+msgstr "Ikke funnet"
 
 #: KAQuery.cpp:334
 msgid "Bad version number"
-msgstr ""
+msgstr "Feil versjonsnummer"
 
 #: KAQuery.cpp:335
 msgid "Not a directory"
-msgstr ""
+msgstr "Ikke en katalog"
 
 #: KAQuery.cpp:336
 msgid "Identical link already exists"
-msgstr ""
+msgstr "Identisk lenke eksisterer allerede"
 
 #: KAQuery.cpp:338
 msgid "Command not implemented on server"
-msgstr ""
+msgstr "Kommando ikke søttet på tjener"
 
 #: KAQuery.cpp:339
 msgid "Bad format for response"
-msgstr ""
+msgstr "Feil format i respons"
 
 #: KAQuery.cpp:340
 msgid "Protocol error"
-msgstr ""
+msgstr "Protokollfeil"
 
 #: KAQuery.cpp:341
 msgid "Unspecified server failure"
-msgstr ""
+msgstr "Uventet tjenerfeil"
 
 #: KAQuery.cpp:343
 msgid "Generic Failure"
-msgstr ""
+msgstr "Generell feil"
 
 #: KAQuery.cpp:347
 msgid "No warning"
-msgstr ""
+msgstr "Ingen advarsel"
 
 #: KAQuery.cpp:348
 msgid "You are using an old version of this program"
-msgstr ""
+msgstr "Du bruker en eldre versjon av dette programmet"
 
 #: KAQuery.cpp:349
 msgid "From server: "
-msgstr ""
+msgstr "Fra tjener: "
 
 #: KAQuery.cpp:351
 msgid "Unrecognized line in response from server"
-msgstr ""
+msgstr "Ugjenkjennelig linje i svar fra tjener"
 
 #: KAQuery.cpp:409
 msgid "Query running"
-msgstr ""
+msgstr "Spørring kjører"
 
 #: KAQuery.cpp:453
 msgid "Query finished"
-msgstr ""
+msgstr "Spørring fullført"
 
 #: KASettings.cpp:59
-#, fuzzy
 msgid "&Host"
-msgstr "Vert"
+msgstr "&Vert"
 
 #: KASettings.cpp:72
 msgid "&Timeout (seconds)"
-msgstr ""
+msgstr "&Tidsbegrensning (sekunder)"
 
 #: KASettings.cpp:83
 msgid "Maximal &retries"
-msgstr ""
+msgstr "Maks f&orskøk"
 
 #: KASettings.cpp:284
-#, fuzzy
 msgid "&Nice Level"
-msgstr "&Finnivå"
+msgstr "&Hyggelighetsnivå"
 
 #: KASettings.cpp:291
 msgid "max. &Hits"
-msgstr ""
+msgstr "maks. &treff"
 
 #: KASettings.cpp:418
-#, fuzzy
 msgid "Exact"
-msgstr "&Pakk ut"
+msgstr "Pakk ut"
 
 #: KASettings.cpp:419
-#, fuzzy
 msgid "Substring"
-msgstr "&Understreng"
+msgstr "Understreng"
 
 #: KASettings.cpp:420
-#, fuzzy
 msgid "Substring case insensitive"
 msgstr "Understreng sørrelseufølsom"
 
 #: KASettings.cpp:421
-#, fuzzy
 msgid "Regular expression"
-msgstr "&Regulært uttrykk"
+msgstr "Regulært uttrykk"
 
 #: KASettings.cpp:423
-#, fuzzy
 msgid "Exact, then substring case insensitive"
 msgstr "Pakk ut, så understreng sørrelseufølsom"
 
 #: KASettings.cpp:427
-#, fuzzy
 msgid "Normal"
-msgstr "n&ormal"
+msgstr "Normal"
 
 #: KASettings.cpp:428
-#, fuzzy
 msgid "Nice"
-msgstr "&fin"
+msgstr "Hyggelig"
 
 #: KASettings.cpp:429
-#, fuzzy
 msgid "Very nice"
-msgstr "&veldig fin"
+msgstr "Veldig hyggelig"
 
 #: KASettings.cpp:430
-#, fuzzy
 msgid "Even more nice"
-msgstr "&enda mer fin"
+msgstr "Enda hyggeligere"
 
 #: KASettings.cpp:431
-#, fuzzy
 msgid "Nicest"
-msgstr "f&inest"
+msgstr "Hyggeligst"
 
 #: KASettings.cpp:525
-#, fuzzy
 msgid "KArchie Settings"
-msgstr "&Innstillinger"
+msgstr "KArchie-innstillinger"
 
 #: KASettings.cpp:536
-#, fuzzy
 msgid "Archie server settings"
-msgstr "Archie-&tjener"
+msgstr "Archie-tjenerinnstillinger"
 
 #: KASettings.cpp:543
-#, fuzzy
 msgid "Search init"
-msgstr "Søke&term"
+msgstr "Søkestart"
 
 #: KASettings.cpp:567
 msgid "Reset"
