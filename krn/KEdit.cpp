@@ -528,7 +528,8 @@ void KEdit::keyPressEvent ( QKeyEvent *e){
 
 	  // go back to the space
 
-	  focusOutEvent(&QFocusEvent(Event_FocusOut));
+          QFocusEvent ev(Event_FocusOut);
+	  focusOutEvent(&ev);
 
 	  for(uint i = 0; i < (pstring->length() - space_pos -1 ); i++){
 	    cursorLeft();
@@ -539,7 +540,8 @@ void KEdit::keyPressEvent ( QKeyEvent *e){
 	  mynewLine();
 	  end(FALSE);
 
-	  focusOutEvent(&QFocusEvent(Event_FocusIn));
+          ev=QFocusEvent(Event_FocusIn);
+	  focusOutEvent(&ev);
 
 	  computePosition();
 	}
@@ -657,7 +659,8 @@ void KEdit::mynewLine(){
     // MultiLineWidget -- It is anoyingly buggy. 
     // I have to put in obscure workarounds all over the place. 
 
-    focusOutEvent(&QFocusEvent(Event_FocusOut));
+    QFocusEvent ev(Event_FocusOut);
+    focusOutEvent(&ev);
     newLine();
     
     for(uint i = 0; i < string.length();i++){
@@ -667,7 +670,8 @@ void KEdit::mynewLine(){
     // this f***king doesn't work.
     // insertAt(string.data(),line + 1,0);
 
-    focusInEvent(&QFocusEvent(Event_FocusIn));
+    ev=QFocusEvent(Event_FocusIn);
+    focusInEvent(&ev);
 
   }
   else{

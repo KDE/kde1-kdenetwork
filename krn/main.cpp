@@ -30,6 +30,7 @@
 #include <kconfig.h>
 #include <kkeyconf.h>
 #include <kstdaccel.h> 
+#include <kmsgbox.h>
 
 #include "asker.h"
 #include "groupdlg.h" 
@@ -135,6 +136,24 @@ int main( int argc, char **argv )
     outpath=krnpath+"/outgoing/";
     mkdir (outpath.data(),S_IREAD|S_IWRITE|S_IEXEC);
 
+    //Check for a lock file before I break things
+    if (QFile::exists(krnpath+"krn_lock"))
+    {
+        KMsgBox::message(0,"KRN - Error",
+                         "I have detected another Krn running\n"
+                         "If you are sure there isn't one\n"
+                         "remove ~/.kde/share/apps/krn/krn_lock\n"
+                         "and restart Krn");
+        exit(1);
+    }
+    else
+    {
+        QFile lock(krnpath+"krn_lock");
+        lock.open(IO_WriteOnly);
+        lock.writeBlock("locked",7);
+        lock.close();
+    }
+    
     // Create the articles database
 
     artinfopath=krnpath+"/artinfo.db";
@@ -153,10 +172,16 @@ int main( int argc, char **argv )
     a.exec();
     expireCache();
 
-    gdbm_close(artdb);
-    gdbm_close(old_artdb);
+    debug ("flag0");
     gdbm_reorganize(artdb);
+    debug ("flag1");
     gdbm_reorganize(old_artdb);
+    debug ("flag2");
+    gdbm_close(artdb);
+    debug ("flag3");
+    gdbm_close(old_artdb);
+    debug ("flag4");
+    unlink((krnpath+"krn_lock").data());
 }
 
 void checkConf()

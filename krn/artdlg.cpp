@@ -508,6 +508,8 @@ bool Artdlg::actions (int action)
             conf->writeEntry("ShowOnlyUnread",unread);
             conf->sync();
             options->setItemChecked(NO_READ, unread);
+            if (unread==false)
+                group->getList(this);
             fillTree();
             success = true;
             break;

@@ -78,23 +78,29 @@ GroupList tagged;
 
 bool checkPixmap(KTreeListItem *item,void *)
 {
+    QPixmap p;
     QString name(item->getText());
     if (name.right(1)==".") //it's a folder
     {
-        item->setPixmap(&kapp->getIconLoader()->loadIcon("krnfolder.xpm"));
+        p=kapp->getIconLoader()->loadIcon("krnfolder.xpm");
+        item->setPixmap(&p);
         return false;
     }
-    if (tagged.find(&NewsGroup(name))!=-1) //it's tagged
+    NewsGroup n(name);
+    if (tagged.find(&n)!=-1) //it's tagged
     {
-        item->setPixmap(&kapp->getIconLoader()->loadIcon("tagged.xpm"));
+        p=kapp->getIconLoader()->loadIcon("tagged.xpm");
+        item->setPixmap(&p);
         return false;
     }
-    if (subscr.find(&NewsGroup(name))!=-1) //it's subscribed
+    if (subscr.find(&n)!=-1) //it's subscribed
     {
-        item->setPixmap(&kapp->getIconLoader()->loadIcon("subscr.xpm"));
+        p=kapp->getIconLoader()->loadIcon("subscr.xpm");
+        item->setPixmap(&p);
         return false;
     }
-    item->setPixmap(&kapp->getIconLoader()->loadIcon("followup.xpm")); //it's plain
+    p=kapp->getIconLoader()->loadIcon("followup.xpm");
+    item->setPixmap(&p); //it's plain
     return false;
 }
 
@@ -191,7 +197,7 @@ Inherited (name)
     
     pixmap=kapp->getIconLoader()->loadIcon("reload.xpm");
     tool->insertButton (pixmap, CHECK_UNREAD, true, klocale->translate("Check for Unread Articles"));
-
+    
     pixmap=kapp->getIconLoader()->loadIcon("filenew.xpm");
     tool->insertButton (pixmap, POST, true, klocale->translate("Post New Article"));
     
@@ -213,7 +219,7 @@ Inherited (name)
     QString sname=conf->readEntry("NNTPServer");
     server = new NNTP (sname.data());
     server->reportCounters (true,false);
-
+    
     msgSender->setNNTP(server);
     
     connect (server,SIGNAL(newStatus(const char *)),this,SLOT(updateCounter(const char *)));
@@ -262,7 +268,8 @@ void Groupdlg::openGroup (QString name)
 {
     if (name.find('/')==0)
         name=name.right(name.length()-1);
-    int i=groups.find(&NewsGroup(name));
+    NewsGroup n(name);
+    int i=groups.find(&n);
     if (groups.at(i)->isVisible)
     {
         return;
@@ -286,6 +293,7 @@ void Groupdlg::openGroup (QString name)
 
 void Groupdlg::openGroup (int index)
 {
+    QPixmap p;
     qApp->setOverrideCursor(waitCursor);
     QString base;
     KTreeListItem *it=list->itemAt(index);
@@ -330,7 +338,8 @@ void Groupdlg::openGroup (int index)
                     //Add it as a child
                     if (gname.contains('.')==c)
                     {
-                            list->addChildItem(iter->name,&kapp->getIconLoader()->loadIcon("followup.xpm"),index);
+                        p=kapp->getIconLoader()->loadIcon("followup.xpm");
+                        list->addChildItem(iter->name,&p,index);
                     }
                     
                     else  //It may be a new hierarchy
@@ -344,7 +353,8 @@ void Groupdlg::openGroup (int index)
                             // It's new, so add it to the base list
                             // and insert it as a folder
                             bases.append(iter->name);
-                            list->addChildItem(iter->name,&kapp->getIconLoader()->loadIcon("krnfolder.xpm"),index);
+                            p=kapp->getIconLoader()->loadIcon("krnfolder.xpm");
+                            list->addChildItem(iter->name,&p,index);
                         }
                         nextdot[0]=tc;
                     }
@@ -370,6 +380,7 @@ void Groupdlg::openGroup (int index)
 
 void Groupdlg::subscribe (NewsGroup *group)
 {
+    QPixmap p;
     KPath path;
     int index=subscr.find (group);
     if (-1 != index)
@@ -390,7 +401,8 @@ void Groupdlg::subscribe (NewsGroup *group)
     {
         if (-1 != groups.find (group))
         {
-            list->addChildItem (group->name, &kapp->getIconLoader()->loadIcon("subscr.xpm"), 0);
+            p=kapp->getIconLoader()->loadIcon("subscr.xpm");
+            list->addChildItem (group->name, &p, 0);
             subscr.append (group);
             if (list->itemAt(0)->isExpanded() &&
                 ((unsigned int)list->currentItem()>list->itemAt(0)->childCount()+1))
@@ -466,17 +478,21 @@ void Groupdlg::online()
 
 void Groupdlg::fillTree ()
 {
-    list->insertItem ("Subscribed Newsgroups.", &kapp->getIconLoader()->loadIcon("krnfolder.xpm"));
+    QPixmap p;
+    p=kapp->getIconLoader()->loadIcon("krnfolder.xpm");
+    list->insertItem ("Subscribed Newsgroups.", &p);
     QListIterator <NewsGroup> it(subscr);
     it.toFirst();
     NewsGroup *g;
     for (;it.current();++it)
     {
         g=it.current();
-        list->addChildItem (g->name, &kapp->getIconLoader()->loadIcon("subscr.xpm"), 0);
+        p=kapp->getIconLoader()->loadIcon("subscr.xpm");
+        list->addChildItem (g->name, &p, 0);
     }
-    
-    list->insertItem ("All Newsgroups.", &kapp->getIconLoader()->loadIcon("krnfolder.xpm"));
+
+    p=kapp->getIconLoader()->loadIcon("krnfolder.xpm");
+    list->insertItem ("All Newsgroups.", &p);
 }
 
 bool Groupdlg::needsConnect()
@@ -573,7 +589,7 @@ bool Groupdlg::actions (int action,NewsGroup *group)
         
     case EXIT:
         {
-                qApp->exit();
+            qApp->exit();
             success = true;
             break;
         }
@@ -648,7 +664,7 @@ bool Groupdlg::actions (int action,NewsGroup *group)
             if (!group)
                 break;
             group->catchup();
-
+            
             success = true;
             break;
         }
@@ -662,12 +678,12 @@ bool Groupdlg::actions (int action,NewsGroup *group)
         {
             if (!group)
                 break;
-
+            
             conf->setGroup("Composer");
             int mShowHeaders = conf->readNumEntry("headers", 0x60);
             mShowHeaders = mShowHeaders & 0xfb;
             conf->writeEntry("headers",mShowHeaders);
-
+            
             KMMessage *m=new KMMessage();
             m->initHeader();
             m->setGroups(group->name);
@@ -785,7 +801,8 @@ void Groupdlg::findGroup()
     if (QString (ask.entry->text()).isEmpty())
         return;
     int index=-1;
-    index=subscr.find (&NewsGroup(ask.entry->text()));
+    NewsGroup n(ask.entry->text());
+    index=subscr.find (&n);
     if (index!=-1)
     {
         //It exists in subscribed
@@ -793,7 +810,7 @@ void Groupdlg::findGroup()
         list->setCurrentItem(index+1);
         return;
     }
-    index=groups.find (&NewsGroup(ask.entry->text()));
+    index=groups.find (&n);
     if (index!=-1)
     {
         list->setAutoUpdate(false);
@@ -882,7 +899,8 @@ bool Groupdlg::currentActions(int action)
         if (list->getCurrentItem())
         {
             const char *text = list->getCurrentItem ()->getText ();
-            index=groups.find (&NewsGroup(text));
+            NewsGroup n(text);
+            index=groups.find (&n);
         }
         if (index!=-1)
             g=groups.at(index);

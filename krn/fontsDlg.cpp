@@ -51,10 +51,15 @@ fontsDlg::fontsDlg
     syncFonts(0);
     samp1->setText(conf->readEntry("StandardFontTest",QString("Standard Font Test").data()));
     samp2->setText(conf->readEntry("FixedFontTest",QString("Fixed Font Test").data()));
-    bgColor->setColor(conf->readColorEntry("BackgroundColor",&QColor("white")));
-    fgColor->setColor(conf->readColorEntry("ForegroundColor",&QColor("black")));
-    linkColor->setColor(conf->readColorEntry("LinkColor",&QColor("blue")));
-    followColor->setColor(conf->readColorEntry("FollowedColor",&QColor("red")));
+    QColor c;
+    c=QColor("white");
+    bgColor->setColor(conf->readColorEntry("BackgroundColor",&c));
+    c=QColor("black");
+    fgColor->setColor(conf->readColorEntry("ForegroundColor",&c));
+    c=QColor("blue");
+    linkColor->setColor(conf->readColorEntry("LinkColor",&c));
+    c=QColor("red");
+    followColor->setColor(conf->readColorEntry("FollowedColor",&c));
 }
 
 

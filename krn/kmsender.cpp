@@ -174,7 +174,7 @@ bool KMSender::doSendSMTP(KMMessage* msg)
   msgStr = prepareStr(msg->asString(), TRUE);
 
   client.Open(mSmtpHost,mSmtpPort); // Open connection
-  if(!client.IsOpen) // Check if connection succeded
+  if(!client.IsOpen()) // Check if connection succeded
   {
     QString str;
     str.sprintf(nls->translate("Cannot open SMTP connection to\n"

@@ -119,7 +119,7 @@ Kpgp::decrypt(QString *pass = 0)
   retval = runPGP(passPhrase, DECRYPT);
      
   // delete passphrase if it shouldn't be stored
-  if (!storePassPhrase && passPhrase != 0) {
+  if (!storePassPhrase() && passPhrase != 0) {
     passPhrase->replace(QRegExp(".")," ");
   }
 
@@ -127,7 +127,7 @@ Kpgp::decrypt(QString *pass = 0)
 }
 
 bool 
-Kpgp::encryptTo(QStrList *pers, bool sign = TRUE, QString *pass = 0)
+Kpgp::encryptTo(QStrList *pers, bool sign, QString *pass)
 {
   int action = ENCRYPT;
 
@@ -264,7 +264,7 @@ Kpgp::secretKey(void)
 }
 
 void 
-Kpgp::clear(bool erasePassPhrase = FALSE)
+Kpgp::clear(bool erasePassPhrase)
 {
   if(erasePassPhrase && havePassPhrase && passPhrase != 0) {
     CHECK_PTR(passPhrase);
@@ -326,7 +326,7 @@ Kpgp::askForPass()
 }
 
 QString 
-Kpgp::decode(const QString text, bool returnHTML=FALSE)
+Kpgp::decode(const QString text, bool returnHTML)
 {
   QString deciphered;
   int pos;
