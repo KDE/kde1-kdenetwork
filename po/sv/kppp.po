@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
 "POT-Creation-Date: 1999-02-05 02:06+0100\n"
-"PO-Revision-Date: 1999-02-06 00:34+01:00\n"
+"PO-Revision-Date: 1999-02-06 01:45+01:00\n"
 "Last-Translator: Anders Widell <d95-awi@nada.kth.se>\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -207,7 +207,7 @@ msgstr "Tyvärr, modemetenheten är låst."
 
 #: connect.cpp:251 connect.cpp:252
 msgid "Initializing Modem..."
-msgstr "Förbereder modemet..."
+msgstr "Initierar modemet..."
 
 #: connect.cpp:269 connect.cpp:270
 msgid "Setting speaker volume..."
@@ -1331,13 +1331,13 @@ msgid ""
 msgstr ""
 "Skriv in det användarnamn som du fått från din\n"
 "internetleverantör. Det är särskilt viktigt för\n"
-"PAP och CHAP. Du behöver inte skriva in det om\n"
-"du använder terminal- eller skriptbaserad\n"
-"identifiering.\n"
+"PAP och CHAP. Det är inte nödvändigt att skriva\n"
+"in det om du använder terminal- eller\n"
+"skriptbaserad identifiering.\n"
 "\n"
-"<b>Viktigt</b>: det är skillnade mellan stora och\n"
+"<b>Viktigt</b>: det är skillnad mellan stora och\n"
 "små bokstäver här:\n"
-"<i>mittnamn</i> är inte samma sak som<i>MittNamn</i>!"
+"<i>mittnamn</i> är inte samma sak som <i>MittNamn</i>!"
 
 #: main.cpp:547
 msgid "Password:"
@@ -1355,13 +1355,13 @@ msgid ""
 msgstr ""
 "Skriv in det lösenord som du fått från din\n"
 "internetleverantör. Det är särskilt viktigt för\n"
-"PAP och CHAP. Du behöver inte skriva in det om\n"
-"du använder terminal- eller skriptbaserad\n"
-"identifiering.\n"
+"PAP och CHAP. Det är inte nödvändigt att skriva\n"
+"in det om du använder terminal- eller\n"
+"skriptbaserad identifiering.\n"
 "\n"
-"<b>Viktigt</b>: det är skillnade mellan stora och\n"
+"<b>Viktigt</b>: det är skillnad mellan stora och\n"
 "små bokstäver här:\n"
-"<i>mittlösen</i> är inte samma sak som<i>MittLösen</i>!"
+"<i>mittlösen</i> är inte samma sak som <i>MittLösen</i>!"
 
 #: main.cpp:575
 msgid "Show Log Window"
@@ -1411,7 +1411,7 @@ msgstr "Konton"
 
 #: main.cpp:733
 msgid "Device"
-msgstr "Device"
+msgstr "Enhet"
 
 #: main.cpp:735
 msgid "PPP"
@@ -1593,7 +1593,7 @@ msgstr "Fördröjning innan init (sekunder/100):"
 
 #: modemcmds.cpp:77
 msgid "Initialization String:"
-msgstr "Initieringssträng:"
+msgstr "Kommando för att initiera:"
 
 #: modemcmds.cpp:95
 msgid "Post-Init Delay (sec/100):"
@@ -1601,55 +1601,55 @@ msgstr "Fördröjning efter init (sekunder/100):"
 
 #: modemcmds.cpp:100
 msgid "Init Response:"
-msgstr "Svar efter initiering:"
+msgstr "Meddelande efter initiering:"
 
 #: modemcmds.cpp:107
 msgid "Dial String:"
-msgstr "Uppringningssträng:"
+msgstr "Kommando för att ringa upp:"
 
 #: modemcmds.cpp:114
 msgid "Connect Response:"
-msgstr "Svar vid anslutning:"
+msgstr "Meddelande vid anslutning:"
 
 #: modemcmds.cpp:121
 msgid "Busy Response:"
-msgstr "Svar vid upptaget:"
+msgstr "Meddelande vid upptaget:"
 
 #: modemcmds.cpp:128
 msgid "No Carrier Response:"
-msgstr "Svar vid avsaknad av bärvåg:"
+msgstr "Meddelande om bärvåg saknas:"
 
 #: modemcmds.cpp:135
 msgid "No Dialtone Response:"
-msgstr "Svar vid avsaknad av kopplingston:"
+msgstr "Meddelande om kopplingston saknas:"
 
 #: modemcmds.cpp:142
 msgid "Hangup String:"
-msgstr "Sträng för att lägga på:"
+msgstr "Kommando för att lägga på:"
 
 #: modemcmds.cpp:149
 msgid "Hangup Response:"
-msgstr "Svar efter påläggning:"
+msgstr "Meddelande efter påläggning:"
 
 #: modemcmds.cpp:156
 msgid "Answer String:"
-msgstr "Sträng för att svara:"
+msgstr "Kommando för att svara:"
 
 #: modemcmds.cpp:163
 msgid "Ring Response:"
-msgstr "Svar vid ringsignal:"
+msgstr "Meddelande vid ringsignal:"
 
 #: modemcmds.cpp:170
 msgid "Answer Response:"
-msgstr "Svar då någon svarar:"
+msgstr "Meddelande då någon svarar:"
 
 #: modemcmds.cpp:177
 msgid "Escape String:"
-msgstr "Escape-sträng:"
+msgstr "Escape-kommando:"
 
 #: modemcmds.cpp:184
 msgid "Escape Response:"
-msgstr "Svar efter escape:"
+msgstr "Meddelande efter escape:"
 
 #: modemcmds.cpp:203
 msgid "Guard Time (sec/50):"
