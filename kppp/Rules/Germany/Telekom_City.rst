@@ -1,35 +1,35 @@
-################################################################
-# German Telekom rate ruleset
-# (most complicated on Earth :-)
+#################################################################################
+# German Telekom accounting rules
 #
-# created 97/07/18 by Stefan Markgraf <S_Markgraf@hotmail.com>
+# CityCall
 #
-# no extensive testing...
-################################################################
+# created  97/07/18 by Stefan Markgraf <S_Markgraf@hotmail.com>
+# modified 98/05/01 by Stefan Troeger  <stefan.troeger@wirtschaft.tu-chemnitz.de>
+#
+#################################################################################
 
-name=German_Telekom_City
+name=German_Telekom_City_Call
 currency_symbol=DM
 currency_position=right 
 currency_digits=2
 per_connection=0.0
 minimum_costs=0.0
-default=(0.12, 90)
+default=(0.121, 90)
 
-# (for CITY Tarif)
-on (monday..friday)   between (2:00..5:00)   use (0.12, 240)
-on (monday..friday)   between (5:00..9:00)   use (0.12, 150)
-on (monday..friday)   between (9:00..12:00)  use (0.12,  90)
-on (monday..friday)   between (12:00..18:00) use (0.12,  90)
-on (monday..friday)   between (18:00..21:00) use (0.12, 150)
-on (monday..friday)   between (21:00..2:00)  use (0.12, 240)
-on (saturday..sunday) between (5:00..21:00)  use (0.12, 150)
-on (saturday..sunday) between (21:00..5:00)  use (0.12, 240)
+# Montag bis Freitag
+on (monday..friday) between (5:00..8:59)   use (0.121, 150)
+on (monday..friday) between (18:00..20:59) use (0.121, 150) 
+on (monday..friday) between (21:00..4:59)  use (0.121, 240)
 
-# Spezialtarif an bundeseinheitlichen Feiertagen
-on (01/01, easter-2, easter, easter+1, 05/01, easter+39, easter+49, easter+50, 10/03, 12/25, 12/26) between (5:00..21:00) use (0.12,150)
-on (01/01, easter-2, easter, easter+1, 05/01, easter+39, easter+49, easter+50, 10/03, 12/25, 12/26) between (21:00..5:00) use (0.12,240)
+# Sonnabend, Sonntag
+on (saturday..sunday) between (5:00..20:59) use (0.121, 150)
+on (saturday..sunday) between (21:00..4:59) use (0.121, 240)
 
-# bundeseinheitliche Feiertage:
+# Bundeseinheitliche Feiertage, Heiligabend und Silvester
+on (01/01, easter-2, easter, easter+1, 05/01, easter+39, easter+49, easter+50, 10/03, 12/24, 12/25, 12/26, 12/31) between (5:00..20:59) use (0.121, 150)
+on (01/01, easter-2, easter, easter+1, 05/01, easter+39, easter+49, easter+50, 10/03, 12/24, 12/25, 12/26, 12/31) between (21:00..4:59) use (0.121, 240)
+
+# Bundeseinheitliche Feiertage:
 # 01/01     Neujahr
 # easter-2  Karfreitag
 # easter    Ostersonntag
@@ -39,6 +39,9 @@ on (01/01, easter-2, easter, easter+1, 05/01, easter+39, easter+49, easter+50, 1
 # easter+49 Pfingstsonntag
 # easter+50 Pfingstmontag
 # 10/03     Tag der Deutschen Einheit
-# 12/25     Weihnachten
-# 12/26     Weihnachten
+# 12/25     1. Weihnachtstag
+# 12/26     2. Weihnachtstag
 
+# Zusaetzliche Tage mit Feiertagstarif:
+# 12/24     Heiligabend
+# 12/31     Silvester

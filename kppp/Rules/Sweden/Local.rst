@@ -1,6 +1,7 @@
 ##############################################################
 # Swedish rate ruleset for local calls (lokalsamtal)         #
 # Created 1997-09-16 by Anders Widell  <d95-awi@nada.kth.se> #
+# Updated 1998-04-26 by Anders Widell  <d95-awi@nada.kth.se> #
 # May be distributed freely. I take no responsibility for    #
 # the correctness of the information in this file.           #
 ##############################################################
@@ -30,36 +31,36 @@ currency_digits=2
 per_connection=0.40
 minimum_costs=0.0
 
-# Låg taxa: 10 öre/min (räknat per sekund)
-default=(0.01, 6)
+# Låg taxa: 11,5 öre/min (räknat per sekund)
+default=(0.0115, 6)
 
-# Hög taxa: 20 öre/min måndag-fredag 8-18
-on (monday..friday) between (8:00..17:59) use (0.01, 3)
+# Hög taxa: 23 öre/min måndag-fredag 8-18
+on (monday..friday) between (8:00..17:59) use (0.0115, 3)
 
 # Röda helgdagar (de som infaller på en lördag/söndag utelämnade)
 # nyårsdagen
-on (01/01) between () use (0.01, 6)
+on (01/01) between () use (0.0115, 6)
 # trettondag jul
-on (01/06) between () use (0.01, 6)
+on (01/06) between () use (0.0115, 6)
 # långfredagen
-on (easter-2) between () use (0.01, 6)
+on (easter-2) between () use (0.0115, 6)
 # annandag påsk
-on (easter+1) between () use (0.01, 6)
+on (easter+1) between () use (0.0115, 6)
 # första maj
-on (05/01) between () use (0.01, 6)
+on (05/01) between () use (0.0115, 6)
 # kristi himmelfärds dag
-on (easter+39) between () use (0.01, 6)
+on (easter+39) between () use (0.0115, 6)
 # annandag pingst
-on (easter+50) between () use (0.01, 6)
+on (easter+50) between () use (0.0115, 6)
 # juldagen
-on (12/25) between () use (0.01, 6)
+on (12/25) between () use (0.0115, 6)
 # annandag jul
-on (12/26) between () use (0.01, 6)
+on (12/26) between () use (0.0115, 6)
 
 # "aftnar" (osäkert om följande är korrekt & fullständigt)
 # trettondagsafton
-on (01/05) between () use (0.01, 6)
+on (01/05) between () use (0.0115, 6)
 # julafton
-on (12/24) between () use (0.01, 6)
+on (12/24) between () use (0.0115, 6)
 # nyårsafton
-on (12/31) between () use (0.01, 6)
+on (12/31) between () use (0.0115, 6)
