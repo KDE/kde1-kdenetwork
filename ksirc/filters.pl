@@ -111,7 +111,23 @@ eval {
 require 'sys/syscall.ph';
 };
 
-eval 'sub SYS_gettimeofday () {78;}' unless defined(&SYS_gettimeofday);
+if(! defined(&SYS_gettimeofday)){
+  if(open(SYSCALL, "/usr/include/sys/syscall.h")){
+    my($line) = grep(/define\s+SYS_gettimeofday/, <SYSCALL>);
+    close SYSCALL;
+    chomp($line);
+    if($line =~ /SYS_gettimeofday\s+(\d+)/){
+      eval "sub SYS_gettimeofday () {$1;}";
+      print "*** Set time of day to: $1\n";
+    }
+  }
+
+  if(! defined(&SYS_gettimeofday)){
+    eval 'sub SYS_gettimeofday () {78;}';
+    print "*E* Unable to find SYS_gettimeofday, using LINUX default!\n";
+  }
+}
+
 
 sub kgettimeofday {
   local($failed) = 0;

@@ -1,3 +1,8 @@
+1998-01-10  Andrew Stanley-Jones  <asj@chowtown.cban.com>
+
+	* filters.pl (hook_ctcp_lag): Added feature for lag monitoring up
+ 	in the upper right hand corner.  Menus are broken though :(
+
 1998-01-09  Andrew Stanley-Jones  <asj@chowtown.cban.com>
 
 	* toplevel.cpp (pasteToWindow): Fxied ut & paste to work correctly.
@@ -68,6 +73,18 @@
 $Revision$
 	
 $Log$
+Revision 1.11  1998/01/10 17:46:51  asj
+Added lag-o-meter.
+
+This meant updating filters.pl to have support for the /lag command.
+It uses the syscall() interface. I've wrapped it in enough eval{}'s
+so it should be ok.  Problems will result for people who don't have
+sys/syscall.ph though and don't use linux!!!
+
+ioLAG.cpp is pretty simple, and I think pretty safe.
+
+updated ksircprocess, etc for ioLAG.cpp
+
 Revision 1.10  1998/01/03 01:45:12  asj
 Added ChangeLog update.
 
