@@ -450,7 +450,7 @@ no_builtin_flag=
 if test "$with_gcc" = yes; then
   wl='-Wl,'
   link_static_flag='-static'
-  no_builtin_flag=' -fno-builtin -fno-rtti'
+  no_builtin_flag=' -fno-builtin -fno-rtti -fno-exceptions'
 
   case "$host_os" in
   aix3* | aix4* | irix5* | irix6* | osf3* | osf4*)
