@@ -27,14 +27,12 @@
 #include <qdir.h>
 #include "runtests.h"
 #include <kapp.h>
-#include <kmsgbox.h>
 #include <unistd.h>
 #include <qmsgbox.h>
 #include <qregexp.h>
 #include <sys/stat.h>
 #include <stdlib.h>
 #include <sys/types.h>
-#include <sys/wait.h>
 #include <pwd.h>
 #include <netinet/in.h>
 
@@ -60,6 +58,30 @@ int uidFromName(const char *uname) {
 
   endpwent();
   return -1;
+}
+
+int securityTests() {
+
+  // Test 1: check whether $HOME is valid. The KDE and Qt libraries
+  //         rely on this variable and we don't want to allow anyone
+  //         to exploit kppp's setuid status.
+  // TODO?: check if this it is really the user's home directory 
+  struct stat st;
+  const char *home = getenv("HOME");
+  int ok = false;
+  if(home)
+    if(stat(home, &st) == 0)
+      if(S_ISDIR(st.st_mode) && st.st_uid == getuid())
+        ok = true;
+
+  if(!ok) {
+    fprintf(stderr, "kppp: ERROR: The HOME variable isn't set properly.\n"
+            "kppp: Please ask your system administrator to "
+            "correct its setting.\n\n");
+    return TEST_CRITICAL;
+  }
+
+  return TEST_OK;
 }
 
 int runTests() {
@@ -220,4 +242,3 @@ int runTests() {
   else
     return TEST_WARNING;
 }
-

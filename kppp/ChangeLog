@@ -1,3 +1,7 @@
+1998-09-28  Harri Porten  <porten@kde.org>
+
+	* runtests.cpp: bail out if some evil-doer has manipulated $HOME
+
 1998-09-26  Mario Weilguni <mweilguni@kde.org>
 
 	* cosmetic changes in ppplog.cpp

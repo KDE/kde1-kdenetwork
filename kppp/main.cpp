@@ -267,7 +267,10 @@ int main( int argc, char **argv ) {
   int c;
   opterr = 0;
 
-  KApplication a(argc, argv,"kppp");
+  if(securityTests() != TEST_OK)
+    exit(1);
+
+  KApplication a(argc, argv, "kppp");
 
   // set portable locale for decimal point
   setlocale(LC_NUMERIC ,"C");
