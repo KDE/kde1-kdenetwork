@@ -33,6 +33,7 @@
 #include <kconfig.h>
 
 #include "config.h"
+#include "version.h"
 #include "cdate.h"
 
 KApplication *kApp;

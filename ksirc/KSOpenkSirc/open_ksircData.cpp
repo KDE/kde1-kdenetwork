@@ -34,7 +34,7 @@ open_ksircData::open_ksircData
 		font.setCharSet( (QFont::CharSet)0 );
 		PB_Connect->setFont( font );
 	}
-	PB_Connect->setText( "&Connect" );
+	PB_Connect->setText( i18n("&Connect") );
 	PB_Connect->setAutoRepeat( FALSE );
 	PB_Connect->setAutoResize( FALSE );
 	PB_Connect->setAutoDefault( TRUE );
@@ -43,7 +43,7 @@ open_ksircData::open_ksircData
 	PB_Cancel->setGeometry( 150, 100, 130, 30 );
 	PB_Cancel->setMinimumSize( 10, 10 );
 	PB_Cancel->setMaximumSize( 32767, 32767 );
-	PB_Cancel->setText( "Cancel" );
+	PB_Cancel->setText( i18n("Cancel") );
 	PB_Cancel->setAutoRepeat( FALSE );
 	PB_Cancel->setAutoResize( FALSE );
 
@@ -51,7 +51,7 @@ open_ksircData::open_ksircData
 	PB_Edit->setGeometry( 10, 100, 130, 30 );
 	PB_Edit->setMinimumSize( 10, 10 );
 	PB_Edit->setMaximumSize( 32767, 32767 );
-	PB_Edit->setText( "&Edit Servers" );
+	PB_Edit->setText( i18n("&Edit Servers") );
 	PB_Edit->setAutoRepeat( FALSE );
 	PB_Edit->setAutoResize( FALSE );
 
@@ -83,7 +83,7 @@ open_ksircData::open_ksircData
 	}
 	dlgedit_Label_2->setFrameStyle( 35 );
 	dlgedit_Label_2->setLineWidth( 2 );
-	dlgedit_Label_2->setText( "Group:" );
+	dlgedit_Label_2->setText( i18n("Group:") );
 	dlgedit_Label_2->setAlignment( 289 );
 	dlgedit_Label_2->setMargin( -1 );
 
@@ -100,7 +100,7 @@ open_ksircData::open_ksircData
 	}
 	dlgedit_Label_3->setFrameStyle( 35 );
 	dlgedit_Label_3->setLineWidth( 2 );
-	dlgedit_Label_3->setText( "Server/Quick Connect to:" );
+	dlgedit_Label_3->setText( i18n("Server/Quick Connect to:") );
 	dlgedit_Label_3->setAlignment( 289 );
 	dlgedit_Label_3->setMargin( -1 );
 
@@ -117,7 +117,7 @@ open_ksircData::open_ksircData
 	}
 	dlgedit_Label_4->setFrameStyle( 35 );
 	dlgedit_Label_4->setLineWidth( 2 );
-	dlgedit_Label_4->setText( "Port:" );
+	dlgedit_Label_4->setText( i18n("Port:") );
 	dlgedit_Label_4->setAlignment( 289 );
 	dlgedit_Label_4->setMargin( -1 );
 
@@ -144,7 +144,7 @@ open_ksircData::open_ksircData
 	}
 	dlgedit_Label_6->setFrameStyle( 35 );
 	dlgedit_Label_6->setLineWidth( 2 );
-	dlgedit_Label_6->setText( "Server Desc:" );
+	dlgedit_Label_6->setText( i18n("Server Desc:") );
 	dlgedit_Label_6->setAlignment( 289 );
 	dlgedit_Label_6->setMargin( -1 );
 

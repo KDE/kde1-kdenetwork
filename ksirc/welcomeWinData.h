@@ -17,6 +17,7 @@
 #include <qchkbox.h>
 #include <qpushbt.h>
 #include "irclistbox.h"
+#include <kapp.h>
 
 class welcomeWinData : public QDialog
 {

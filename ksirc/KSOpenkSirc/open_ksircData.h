@@ -18,6 +18,7 @@
 #include <qpushbt.h>
 #include "enter_combo.h"
 #include <qcombo.h>
+#include <kapp.h>
 
 class open_ksircData : public QDialog
 {

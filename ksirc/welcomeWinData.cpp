@@ -32,7 +32,7 @@ welcomeWinData::welcomeWinData
 	ShowAgain->setGeometry( 10, 510, 100, 30 );
 	ShowAgain->setMinimumSize( 10, 10 );
 	ShowAgain->setMaximumSize( 32767, 32767 );
-	ShowAgain->setText( "Show Again" );
+	ShowAgain->setText( i18n("Show Again") );
 	ShowAgain->setAutoRepeat( FALSE );
 	ShowAgain->setAutoResize( FALSE );
 
@@ -41,7 +41,7 @@ welcomeWinData::welcomeWinData
 	But_dismiss->setMinimumSize( 10, 10 );
 	But_dismiss->setMaximumSize( 32767, 32767 );
 	connect( But_dismiss, SIGNAL(clicked()), SLOT(dismiss()) );
-	But_dismiss->setText( "Dissmiss" );
+	But_dismiss->setText( i18n("Dissmiss") );
 	But_dismiss->setAutoRepeat( FALSE );
 	But_dismiss->setAutoResize( FALSE );
 

@@ -69,6 +69,7 @@
 #include "control_message.h"
 #include "FilterRuleEditor.h"
 #include "../config.h"
+#include "version.h"
 #include "KSPrefs/ksprefs.h"
 #include <iostream.h>
 
@@ -419,7 +420,7 @@ void servercontroller::configChange() /*fold00*/
   }
 }
 
-void servercontroller::about_ksirc() /*fold00*/
+void servercontroller::about_ksirc() /*FOLD00*/
 {
   QString caption = PACKAGE;
   caption += "-";

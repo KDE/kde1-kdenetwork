@@ -1,0 +1,6 @@
+#ifndef KSIRC_VERSION_H
+#define KSIRC_VERSION_H
+
+#define KSIRC_VERSION "981107"
+
+#endif

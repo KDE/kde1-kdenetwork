@@ -451,7 +451,7 @@ sub hook_ksirc_dcc_disconnect {
     $window->close();
     delete $KSIRC_DCC{$fh}{$file};
     delete $KSIRC_DCC{$fh};
-    print "*D* DCC transfer with $nick ($file) terminated; $bytes transferred in $time seconds (" . int(($bytes/$time)/1024) . "KBps)";
+    print "*D* DCC transfer with $nick ($file) terminated; $bytes transferred in $time seconds (" . int(($bytes/($time+1))/1024) . "KBps)";
     $silent = 1;
   }
 }

@@ -97,6 +97,7 @@
 #include "iocontroller.h"
 #include "control_message.h"
 #include "config.h"
+#include "version.h"
 #include "../config.h"
 #include "objFinder.h"
 #include "displayMgr.h"

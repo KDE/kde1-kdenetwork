@@ -13,6 +13,7 @@ extern QList<Server> Groups;
 int serverFileParser::readDatafile( const char *fileName ) 
 {
   Groups.setAutoDelete( TRUE );
+  Groups.clear();
   QFile serverFile( fileName );
   if ( !serverFile.open( IO_ReadOnly ) )
     return -1;

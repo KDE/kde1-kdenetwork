@@ -17,6 +17,7 @@
 #include <qchkbox.h>
 #include <qpushbt.h>
 #include <qlined.h>
+#include <kapp.h>
 
 class generalData : public QWidget
 {
