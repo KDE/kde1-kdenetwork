@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSIONPOT-Creation-Date: 1998-01-17 07:40+0100\n"
-"POT-Creation-Date: 1999-04-14 03:10+0200\n"
+"POT-Creation-Date: 1999-04-15 03:01+0200\n"
 "PO-Revision-Date: 1998-01-22 17:20+0100\n"
 "Last-Translator: Andrea Rizzi <BILIBAO@ouverture.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -126,23 +126,23 @@ msgstr "Copia negli appunti"
 msgid "Open URL..."
 msgstr "Apri Indirizzo (URL)..."
 
-#: kmmainwin.cpp:914 kmmainwin.cpp:1031
+#: kmheaders.cpp:951 kmmainwin.cpp:914 kmmainwin.cpp:1031
 msgid "&Reply..."
 msgstr "&Rispondi..."
 
-#: kmmainwin.cpp:916 kmmainwin.cpp:1033
+#: kmheaders.cpp:953 kmmainwin.cpp:916 kmmainwin.cpp:1033
 msgid "Reply &All..."
 msgstr "Rispondi a &Tutti..."
 
-#: kmmainwin.cpp:918 kmmainwin.cpp:1035
+#: kmheaders.cpp:955 kmmainwin.cpp:918 kmmainwin.cpp:1035
 msgid "&Forward..."
 msgstr "&Inoltra..."
 
-#: kmmainwin.cpp:921 kmmainwin.cpp:1045
+#: kmheaders.cpp:958 kmmainwin.cpp:921 kmmainwin.cpp:1045
 msgid "&Move..."
 msgstr "&Sposta..."
 
-#: kmmainwin.cpp:923 kmmainwin.cpp:1047
+#: kmheaders.cpp:960 kmmainwin.cpp:923 kmmainwin.cpp:1047
 msgid "&Copy..."
 msgstr "&Copia..."
 
@@ -190,43 +190,43 @@ msgstr "&Filtri..."
 msgid "&Find..."
 msgstr "&Trova..."
 
-#: kmmainwin.cpp:997
+#: kmfoldertree.cpp:307 kmmainwin.cpp:997
 msgid "&Create..."
 msgstr "&Crea..."
 
-#: kmmainwin.cpp:999
+#: kmfoldertree.cpp:309 kmmainwin.cpp:999
 msgid "&Modify..."
 msgstr "&Modifica..."
 
-#: kmmainwin.cpp:1001
+#: kmfoldertree.cpp:311 kmmainwin.cpp:1001
 msgid "C&ompact"
 msgstr "C&omprimi"
 
-#: kmmainwin.cpp:1004
+#: kmfoldertree.cpp:314 kmmainwin.cpp:1004
 msgid "&Empty"
 msgstr "&Svuota"
 
-#: kmfilterdlg.cpp:149 kmmainwin.cpp:1013
+#: kmfilterdlg.cpp:149 kmheaders.cpp:941 kmmainwin.cpp:1013
 msgid "New"
 msgstr "Nuovo"
 
-#: kmmainwin.cpp:1014
+#: kmheaders.cpp:942 kmmainwin.cpp:1014
 msgid "Unread"
 msgstr "Non letto"
 
-#: kmmainwin.cpp:1015
+#: kmheaders.cpp:943 kmmainwin.cpp:1015
 msgid "Read"
 msgstr "Letto"
 
-#: kmmainwin.cpp:1016
+#: kmheaders.cpp:944 kmmainwin.cpp:1016
 msgid "Replied"
 msgstr "Risposta"
 
-#: kmmainwin.cpp:1017
+#: kmheaders.cpp:945 kmmainwin.cpp:1017
 msgid "Queued"
 msgstr "In Attesa"
 
-#: kmmainwin.cpp:1018
+#: kmheaders.cpp:946 kmmainwin.cpp:1018
 msgid "Sent"
 msgstr "Spedito"
 
@@ -372,7 +372,7 @@ msgstr "Associato a"
 msgid "Unassociated Accounts"
 msgstr "Account non associati"
 
-#: kmfoldertree.cpp:47 kmsettings.cpp:538
+#: kmfoldertree.cpp:49 kmsettings.cpp:538
 msgid "Folders"
 msgstr "Cartelle"
 
@@ -662,7 +662,7 @@ msgstr "Impossibile aggiungere messaggio:"
 msgid "F"
 msgstr "F"
 
-#: kmheaders.cpp:43 kmheaders.cpp:216
+#: kmheaders.cpp:43 kmheaders.cpp:218
 msgid "Sender"
 msgstr "Mittente"
 
@@ -675,62 +675,62 @@ msgstr "Oggetto"
 msgid "Date"
 msgstr "Data"
 
-#: kmheaders.cpp:215
+#: kmheaders.cpp:217
 msgid "Receiver"
 msgstr ""
 
-#: kmheaders.cpp:218
+#: kmheaders.cpp:220
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d Messaggi, %d non letti."
 
-#: kmheaders.cpp:220
+#: kmheaders.cpp:222
 msgid "Folder is read-only."
 msgstr "La cartella è di sola lettura."
 
-#: kmheaders.cpp:272
+#: kmheaders.cpp:274
 msgid "Unknown"
 msgstr "Sconosciuto"
 
-#: kmheaders.cpp:275
+#: kmheaders.cpp:277
 msgid "No Subject"
 msgstr "Senza  Oggetto"
 
-#: kmheaders.cpp:336
+#: kmheaders.cpp:338
 msgid "order of arrival"
 msgstr "ordine di arrivo"
 
-#: kmheaders.cpp:345
+#: kmheaders.cpp:347
 msgid "subject"
 msgstr "oggetto"
 
-#: kmheaders.cpp:346
+#: kmheaders.cpp:348
 msgid "date"
 msgstr "data"
 
-#: kmheaders.cpp:347
+#: kmheaders.cpp:349
 msgid "sender"
 msgstr "mittente"
 
-#: kmheaders.cpp:348
+#: kmheaders.cpp:350
 msgid "status"
 msgstr "stato"
 
-#: kmheaders.cpp:350
+#: kmheaders.cpp:352
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr "Ordini i messaggi decrescenti per %s"
 
-#: kmheaders.cpp:352
+#: kmheaders.cpp:354
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr "Ordino i messaggi crescenti per %s"
 
-#: kmheaders.cpp:448
+#: kmheaders.cpp:450
 msgid "Message(s) saved."
 msgstr "Messaggio/i salvato/i"
 
-#: kmheaders.cpp:450
+#: kmheaders.cpp:452
 msgid "Failed to save message(s)."
 msgstr "Impossibile salvare i(l) messaggio/i"
 
@@ -970,7 +970,7 @@ msgstr "la mia chiave pgp"
 msgid "pgp key"
 msgstr "chiave pgp"
 
-#: kmcomposewin.cpp:1297 kmreaderwin.cpp:880
+#: kmcomposewin.cpp:1297 kmreaderwin.cpp:902
 msgid "View..."
 msgstr "Visualizza..."
 
@@ -978,7 +978,7 @@ msgstr "Visualizza..."
 msgid "Save..."
 msgstr "Salva..."
 
-#: kmcomposewin.cpp:1299 kmreaderwin.cpp:883
+#: kmcomposewin.cpp:1299 kmreaderwin.cpp:905
 msgid "Properties..."
 msgstr "Proprietà..."
 
@@ -986,7 +986,7 @@ msgstr "Proprietà..."
 msgid "Attach..."
 msgstr "Allega..."
 
-#: kmcomposewin.cpp:1345 kmreaderwin.cpp:952 kmreaderwin.cpp:969
+#: kmcomposewin.cpp:1345 kmreaderwin.cpp:974 kmreaderwin.cpp:991
 msgid "View Attachment: "
 msgstr "Visualizza Allegato"
 
@@ -1063,64 +1063,64 @@ msgstr "base 64"
 msgid "quoted printable"
 msgstr "quoted printable"
 
-#: kmreaderwin.cpp:376 kmreaderwin.cpp:389 kmreaderwin.cpp:408
-#: kmreaderwin.cpp:429
+#: kmreaderwin.cpp:398 kmreaderwin.cpp:411 kmreaderwin.cpp:430
+#: kmreaderwin.cpp:451
 msgid "Cc: "
 msgstr "Copia:"
 
-#: kmreaderwin.cpp:384 kmreaderwin.cpp:403 kmreaderwin.cpp:424
+#: kmreaderwin.cpp:406 kmreaderwin.cpp:425 kmreaderwin.cpp:446
 msgid "From: "
 msgstr "Da:"
 
-#: kmreaderwin.cpp:386 kmreaderwin.cpp:405 kmreaderwin.cpp:426
+#: kmreaderwin.cpp:408 kmreaderwin.cpp:427 kmreaderwin.cpp:448
 msgid "To: "
 msgstr "A:"
 
-#: kmreaderwin.cpp:393 kmreaderwin.cpp:414 kmreaderwin.cpp:439
+#: kmreaderwin.cpp:415 kmreaderwin.cpp:436 kmreaderwin.cpp:461
 msgid "References: "
 msgstr "Riferimenti:"
 
-#: kmreaderwin.cpp:410 kmreaderwin.cpp:423
+#: kmreaderwin.cpp:432 kmreaderwin.cpp:445
 msgid "Date: "
 msgstr "Data:"
 
-#: kmreaderwin.cpp:432
+#: kmreaderwin.cpp:454
 msgid "Bcc: "
 msgstr "Bcc:"
 
-#: kmreaderwin.cpp:435
+#: kmreaderwin.cpp:457
 msgid "Reply to: "
 msgstr "Risposta a:"
 
-#: kmreaderwin.cpp:442
+#: kmreaderwin.cpp:464
 msgid "Groups: "
 msgstr "Gruppi:"
 
-#: kmreaderwin.cpp:480
+#: kmreaderwin.cpp:502
 msgid "Encrypted message"
 msgstr "Messaggio cifrato"
 
-#: kmreaderwin.cpp:486
+#: kmreaderwin.cpp:508
 msgid "Cannot decrypt message:"
 msgstr "Impossibile decifrare il messaggio"
 
-#: kmreaderwin.cpp:495
+#: kmreaderwin.cpp:517
 msgid "Message was signed by"
 msgstr "Messaggio firmato da"
 
-#: kmreaderwin.cpp:496
+#: kmreaderwin.cpp:518
 msgid "Warning: Bad signature from"
 msgstr "Attenzione: Firma errata da"
 
-#: kmreaderwin.cpp:506
+#: kmreaderwin.cpp:528
 msgid "unknown key ID"
 msgstr "ID chiave sconosciuto"
 
-#: kmreaderwin.cpp:844
+#: kmreaderwin.cpp:866
 msgid "Attachment: "
 msgstr "Allegato:"
 
-#: kmreaderwin.cpp:1058
+#: kmreaderwin.cpp:1080
 msgid "Could not save file"
 msgstr "Impossibile salvare il file"
 

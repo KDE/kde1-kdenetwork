@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kfinger\n"
-"POT-Creation-Date: 1998-12-19 02:18+0100\n"
+"POT-Creation-Date: 1999-04-15 03:01+0200\n"
 "PO-Revision-Date: 1999-02-19 22:41+0100\n"
 "Last-Translator: Sebastià Pla <sastia@redestb.es>\n"
 "Language-Team: CATALAN <LL@li.org>\n"
@@ -30,8 +30,9 @@ msgid "&Save Options"
 msgstr "&Desa les opcions"
 
 #: kfinger.C:38
+#, fuzzy
 msgid ""
-"kfinger 0.8.0\n"
+"kfinger 0.8.1\n"
 "\n"
 "(c) Andrea Rizzi (rizzi@kde.org)"
 msgstr ""
@@ -67,19 +68,25 @@ msgstr "Benvinguts a la informació d'usuari KDE\n"
 msgid "Finger result"
 msgstr "Resultat de la informació"
 
-#: kfinger.C:269
+#: kfinger.C:272
 #, c-format
 msgid "Error on server : %s"
 msgstr "Error al servidor : %s"
 
-#: kfinger.C:288
+#: kfinger.C:284
+#, c-format
+msgid "Connection refused by  %s"
+msgstr ""
+
+#: kfinger.C:296
 #, c-format
 msgid "Finger  %s@%s   --   %s"
 msgstr "Informació de %s@%s   --   %s"
 
-#: kfinger.C:305
+#: kfinger.C:317
+#, fuzzy
 msgid ""
-"Kfinger 0.8.0\n"
+"Kfinger 0.8.1\n"
 "(c) by Andrea Rizzi\n"
 "rizzi@kde.org"
 msgstr ""
@@ -87,123 +94,123 @@ msgstr ""
 "(c) by Andrea Rizzi\n"
 "rizzi@kde.org"
 
-#: kfinger.C:351
+#: kfinger.C:363
 msgid "Kfinger Setup"
 msgstr "Arranjament Kfinger"
 
-#: kfinger.C:379 kfinger.C:419
+#: kfinger.C:391 kfinger.C:431
 msgid "&Add"
 msgstr "&Afegeix"
 
-#: kfinger.C:389
+#: kfinger.C:401
 msgid "Server Name"
 msgstr "Nom del servidor"
 
-#: kfinger.C:393 kfinger.C:396
+#: kfinger.C:405 kfinger.C:408
 msgid "Server list"
 msgstr "Llista de servidors"
 
-#: kfinger.C:429
+#: kfinger.C:441
 msgid "User Name"
 msgstr "Nom d'usuari"
 
-#: kfinger.C:433 kfinger.C:436
+#: kfinger.C:445 kfinger.C:448
 msgid "Users list"
 msgstr "Llista d'usuaris"
 
-#: kfinger.C:450
+#: kfinger.C:462
 msgid "Timed finger"
 msgstr "Programació"
 
-#: kfinger.C:465 kfinger.C:652
+#: kfinger.C:477 kfinger.C:664
 #, c-format
 msgid "Finger wait: %d\""
 msgstr "Temps d'espera: %d\""
 
-#: kfinger.C:470
+#: kfinger.C:482
 msgid "Talk Command "
 msgstr "Ordre per conversar "
 
-#: kfinger.C:480
+#: kfinger.C:492
 msgid "Misc"
 msgstr "Misc"
 
-#: kfinger.C:485 kfinger.C:497
+#: kfinger.C:497 kfinger.C:509
 msgid "Finger Output"
 msgstr "Informació de sortida"
 
-#: kfinger.C:489
+#: kfinger.C:501
 msgid "Finger server"
 msgstr "Informa del servidor"
 
-#: kfinger.C:493 kfinger.C:505
+#: kfinger.C:505 kfinger.C:517
 msgid "Fixed"
 msgstr "Fix"
 
-#: kfinger.C:501
+#: kfinger.C:513
 msgid "Finger User"
 msgstr "Informa de l'usuari"
 
-#: kfinger.C:521
+#: kfinger.C:533
 msgid "Lines to skip :"
 msgstr "Línies de salt :"
 
-#: kfinger.C:529 kfinger.C:534
+#: kfinger.C:541 kfinger.C:546
 msgid "Format..."
 msgstr "Format..."
 
-#: kfinger.C:541
+#: kfinger.C:553
 msgid "User"
 msgstr "Usuari"
 
-#: kfinger.C:552
+#: kfinger.C:564
 msgid "Server"
 msgstr "Servidor"
 
-#: kfinger.C:564
+#: kfinger.C:576
 msgid "Talk"
 msgstr "Conversa"
 
-#: kfinger.C:699
+#: kfinger.C:711
 msgid "Talk with..."
 msgstr "Conversa amb..."
 
-#: kfinger.C:766
+#: kfinger.C:778
 msgid "Format string for var1(string)"
 msgstr "Format de la cadena per var1(string)"
 
-#: kfinger.C:772
+#: kfinger.C:784
 msgid "Fromat string for var2(int)"
 msgstr "Format de la cadena per var2(int)"
 
-#: kfinger.C:792 kfinger.C:798
+#: kfinger.C:804 kfinger.C:810
 msgid "Offset"
 msgstr "Desplaç."
 
-#: kfinger.C:811
+#: kfinger.C:823
 msgid "Only var1"
 msgstr "Només var1"
 
-#: kfinger.C:817
+#: kfinger.C:829
 msgid "Only var2"
 msgstr "Només var2"
 
-#: kfinger.C:823
+#: kfinger.C:835
 msgid "var1, var2"
 msgstr "var1, var2"
 
-#: kfinger.C:829
+#: kfinger.C:841
 msgid "var2, var1"
 msgstr "var2, var1"
 
-#: kfinger.C:842
+#: kfinger.C:854
 msgid "Output format string"
 msgstr "Format de la cadena de sortida"
 
-#: kfinger.C:849
+#: kfinger.C:861
 msgid "Save & Quit"
 msgstr "Desa i surt"
 
-#: kfinger.C:859
+#: kfinger.C:871
 msgid "Output parameters "
 msgstr "Paràmetres de sortida "

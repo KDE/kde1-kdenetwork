@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail-1.1\n"
-"POT-Creation-Date: 1999-04-14 03:10+0200\n"
+"POT-Creation-Date: 1999-04-15 03:01+0200\n"
 "PO-Revision-Date: 1999-03-19 12:57+0100\n"
 "Last-Translator: Jañ-Mai Drapier <jdrapier@club-internet.fr>\n"
 "Language-Team: Brezhoneg <Suav.Icb@wanadoo.fr>\n"
@@ -131,23 +131,23 @@ msgstr "Eilañ er golver"
 msgid "Open URL..."
 msgstr "Digeriñ an URL..."
 
-#: kmmainwin.cpp:914 kmmainwin.cpp:1031
+#: kmheaders.cpp:951 kmmainwin.cpp:914 kmmainwin.cpp:1031
 msgid "&Reply..."
 msgstr "Eil&geriañ..."
 
-#: kmmainwin.cpp:916 kmmainwin.cpp:1033
+#: kmheaders.cpp:953 kmmainwin.cpp:916 kmmainwin.cpp:1033
 msgid "Reply &All..."
 msgstr "Eilgeriañ d'an &holl..."
 
-#: kmmainwin.cpp:918 kmmainwin.cpp:1035
+#: kmheaders.cpp:955 kmmainwin.cpp:918 kmmainwin.cpp:1035
 msgid "&Forward..."
 msgstr "D&azkas..."
 
-#: kmmainwin.cpp:921 kmmainwin.cpp:1045
+#: kmheaders.cpp:958 kmmainwin.cpp:921 kmmainwin.cpp:1045
 msgid "&Move..."
 msgstr "&Dilec'hiañ..."
 
-#: kmmainwin.cpp:923 kmmainwin.cpp:1047
+#: kmheaders.cpp:960 kmmainwin.cpp:923 kmmainwin.cpp:1047
 msgid "&Copy..."
 msgstr "&Eilañ..."
 
@@ -195,43 +195,43 @@ msgstr "S&ilañ..."
 msgid "&Find..."
 msgstr "&Klask..."
 
-#: kmmainwin.cpp:997
+#: kmfoldertree.cpp:307 kmmainwin.cpp:997
 msgid "&Create..."
 msgstr "&Krouiñ..."
 
-#: kmmainwin.cpp:999
+#: kmfoldertree.cpp:309 kmmainwin.cpp:999
 msgid "&Modify..."
 msgstr "K&emmañ..."
 
-#: kmmainwin.cpp:1001
+#: kmfoldertree.cpp:311 kmmainwin.cpp:1001
 msgid "C&ompact"
 msgstr "G&waskañ"
 
-#: kmmainwin.cpp:1004
+#: kmfoldertree.cpp:314 kmmainwin.cpp:1004
 msgid "&Empty"
 msgstr "&Goullonderiñ"
 
-#: kmfilterdlg.cpp:149 kmmainwin.cpp:1013
+#: kmfilterdlg.cpp:149 kmheaders.cpp:941 kmmainwin.cpp:1013
 msgid "New"
 msgstr "Nevez"
 
-#: kmmainwin.cpp:1014
+#: kmheaders.cpp:942 kmmainwin.cpp:1014
 msgid "Unread"
 msgstr "Anlennet"
 
-#: kmmainwin.cpp:1015
+#: kmheaders.cpp:943 kmmainwin.cpp:1015
 msgid "Read"
 msgstr "Lennet"
 
-#: kmmainwin.cpp:1016
+#: kmheaders.cpp:944 kmmainwin.cpp:1016
 msgid "Replied"
 msgstr "Eilgeriet"
 
-#: kmmainwin.cpp:1017
+#: kmheaders.cpp:945 kmmainwin.cpp:1017
 msgid "Queued"
 msgstr "El lost"
 
-#: kmmainwin.cpp:1018
+#: kmheaders.cpp:946 kmmainwin.cpp:1018
 msgid "Sent"
 msgstr "Kaset"
 
@@ -372,7 +372,7 @@ msgstr "Ereet gant"
 msgid "Unassociated Accounts"
 msgstr "Kontoù ankevreet"
 
-#: kmfoldertree.cpp:47 kmsettings.cpp:538
+#: kmfoldertree.cpp:49 kmsettings.cpp:538
 msgid "Folders"
 msgstr "Teuliadoù"
 
@@ -660,7 +660,7 @@ msgstr "Sac'het oc'h ouzhpennañ kemennad :"
 msgid "F"
 msgstr "H"
 
-#: kmheaders.cpp:43 kmheaders.cpp:216
+#: kmheaders.cpp:43 kmheaders.cpp:218
 msgid "Sender"
 msgstr "Kaser"
 
@@ -672,62 +672,62 @@ msgstr "Dodenn"
 msgid "Date"
 msgstr "Deiziad"
 
-#: kmheaders.cpp:215
+#: kmheaders.cpp:217
 msgid "Receiver"
 msgstr "Resever"
 
-#: kmheaders.cpp:218
+#: kmheaders.cpp:220
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d kemennad, %d anlennet."
 
-#: kmheaders.cpp:220
+#: kmheaders.cpp:222
 msgid "Folder is read-only."
 msgstr "An teuliad zo lenn-hepken"
 
-#: kmheaders.cpp:272
+#: kmheaders.cpp:274
 msgid "Unknown"
 msgstr "Dianav"
 
-#: kmheaders.cpp:275
+#: kmheaders.cpp:277
 msgid "No Subject"
 msgstr "Dodenn ebet"
 
-#: kmheaders.cpp:336
+#: kmheaders.cpp:338
 msgid "order of arrival"
 msgstr "urzh degouezhet"
 
-#: kmheaders.cpp:345
+#: kmheaders.cpp:347
 msgid "subject"
 msgstr "dodenn"
 
-#: kmheaders.cpp:346
+#: kmheaders.cpp:348
 msgid "date"
 msgstr "deiziad"
 
-#: kmheaders.cpp:347
+#: kmheaders.cpp:349
 msgid "sender"
 msgstr "kaser"
 
-#: kmheaders.cpp:348
+#: kmheaders.cpp:350
 msgid "status"
 msgstr "stad"
 
-#: kmheaders.cpp:350
+#: kmheaders.cpp:352
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr "O renkañ kemennadoù war-gil dre %s"
 
-#: kmheaders.cpp:352
+#: kmheaders.cpp:354
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr "O renkañ kemennadoù war-raok dre %s"
 
-#: kmheaders.cpp:448
+#: kmheaders.cpp:450
 msgid "Message(s) saved."
 msgstr "Kemennad(où) enrollet."
 
-#: kmheaders.cpp:450
+#: kmheaders.cpp:452
 msgid "Failed to save message(s)."
 msgstr "Sac'het en ur enrollañ kemennad(où)."
 
@@ -963,7 +963,7 @@ msgstr "ma alc'hwez pgp"
 msgid "pgp key"
 msgstr "alc'hwez pgp"
 
-#: kmcomposewin.cpp:1297 kmreaderwin.cpp:880
+#: kmcomposewin.cpp:1297 kmreaderwin.cpp:902
 msgid "View..."
 msgstr "Gwelet..."
 
@@ -971,7 +971,7 @@ msgstr "Gwelet..."
 msgid "Save..."
 msgstr "Enrollañ..."
 
-#: kmcomposewin.cpp:1299 kmreaderwin.cpp:883
+#: kmcomposewin.cpp:1299 kmreaderwin.cpp:905
 msgid "Properties..."
 msgstr "Perzhioù..."
 
@@ -979,7 +979,7 @@ msgstr "Perzhioù..."
 msgid "Attach..."
 msgstr "Stagañ..."
 
-#: kmcomposewin.cpp:1345 kmreaderwin.cpp:952 kmreaderwin.cpp:969
+#: kmcomposewin.cpp:1345 kmreaderwin.cpp:974 kmreaderwin.cpp:991
 msgid "View Attachment: "
 msgstr "Gwelet stagadennoù :"
 
@@ -1053,64 +1053,64 @@ msgstr "base 64"
 msgid "quoted printable"
 msgstr "quoted printable"
 
-#: kmreaderwin.cpp:376 kmreaderwin.cpp:389 kmreaderwin.cpp:408
-#: kmreaderwin.cpp:429
+#: kmreaderwin.cpp:398 kmreaderwin.cpp:411 kmreaderwin.cpp:430
+#: kmreaderwin.cpp:451
 msgid "Cc: "
 msgstr "Cc : "
 
-#: kmreaderwin.cpp:384 kmreaderwin.cpp:403 kmreaderwin.cpp:424
+#: kmreaderwin.cpp:406 kmreaderwin.cpp:425 kmreaderwin.cpp:446
 msgid "From: "
 msgstr "Digant : "
 
-#: kmreaderwin.cpp:386 kmreaderwin.cpp:405 kmreaderwin.cpp:426
+#: kmreaderwin.cpp:408 kmreaderwin.cpp:427 kmreaderwin.cpp:448
 msgid "To: "
 msgstr "Da : "
 
-#: kmreaderwin.cpp:393 kmreaderwin.cpp:414 kmreaderwin.cpp:439
+#: kmreaderwin.cpp:415 kmreaderwin.cpp:436 kmreaderwin.cpp:461
 msgid "References: "
 msgstr "Daveennoù : "
 
-#: kmreaderwin.cpp:410 kmreaderwin.cpp:423
+#: kmreaderwin.cpp:432 kmreaderwin.cpp:445
 msgid "Date: "
 msgstr "Deiziad : "
 
-#: kmreaderwin.cpp:432
+#: kmreaderwin.cpp:454
 msgid "Bcc: "
 msgstr "Bcc : "
 
-#: kmreaderwin.cpp:435
+#: kmreaderwin.cpp:457
 msgid "Reply to: "
 msgstr "Eilgeriañ da : "
 
-#: kmreaderwin.cpp:442
+#: kmreaderwin.cpp:464
 msgid "Groups: "
 msgstr "Strolladoù : "
 
-#: kmreaderwin.cpp:480
+#: kmreaderwin.cpp:502
 msgid "Encrypted message"
 msgstr "Kemennad rineget"
 
-#: kmreaderwin.cpp:486
+#: kmreaderwin.cpp:508
 msgid "Cannot decrypt message:"
 msgstr "N'hellan ket ezrinegañ ar gemennad :"
 
-#: kmreaderwin.cpp:495
+#: kmreaderwin.cpp:517
 msgid "Message was signed by"
 msgstr "Sinet eo bet ar gemennad gant"
 
-#: kmreaderwin.cpp:496
+#: kmreaderwin.cpp:518
 msgid "Warning: Bad signature from"
 msgstr "Da ziwall : sinadur siek digant"
 
-#: kmreaderwin.cpp:506
+#: kmreaderwin.cpp:528
 msgid "unknown key ID"
 msgstr "ID alc'hwez dianav"
 
-#: kmreaderwin.cpp:844
+#: kmreaderwin.cpp:866
 msgid "Attachment: "
 msgstr "Stagadenn :"
 
-#: kmreaderwin.cpp:1058
+#: kmreaderwin.cpp:1080
 msgid "Could not save file"
 msgstr "Dibossubl enrollañ ar restr"
 

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kdenetwork\n"
-"POT-Creation-Date: 1999-04-14 03:10+0200\n"
+"POT-Creation-Date: 1999-04-15 03:01+0200\n"
 "PO-Revision-Date: 1998-10-18 10:10+0200\n"
 "Last-Translator: Danko Ilik <danko@mindless.com>\n"
 "Language-Team: Macedonian\n"
@@ -131,23 +131,23 @@ msgstr "Zapameti na clipboard"
 msgid "Open URL..."
 msgstr "Vchitaj URL..."
 
-#: kmmainwin.cpp:914 kmmainwin.cpp:1031
+#: kmheaders.cpp:951 kmmainwin.cpp:914 kmmainwin.cpp:1031
 msgid "&Reply..."
 msgstr "Odgovo&r"
 
-#: kmmainwin.cpp:916 kmmainwin.cpp:1033
+#: kmheaders.cpp:953 kmmainwin.cpp:916 kmmainwin.cpp:1033
 msgid "Reply &All..."
 msgstr "Odgovor do &site"
 
-#: kmmainwin.cpp:918 kmmainwin.cpp:1035
+#: kmheaders.cpp:955 kmmainwin.cpp:918 kmmainwin.cpp:1035
 msgid "&Forward..."
 msgstr "&Preprati..."
 
-#: kmmainwin.cpp:921 kmmainwin.cpp:1045
+#: kmheaders.cpp:958 kmmainwin.cpp:921 kmmainwin.cpp:1045
 msgid "&Move..."
 msgstr "Po&mesti"
 
-#: kmmainwin.cpp:923 kmmainwin.cpp:1047
+#: kmheaders.cpp:960 kmmainwin.cpp:923 kmmainwin.cpp:1047
 msgid "&Copy..."
 msgstr "&Zapameti"
 
@@ -196,43 +196,43 @@ msgstr "&Filter..."
 msgid "&Find..."
 msgstr "&Najdi..."
 
-#: kmmainwin.cpp:997
+#: kmfoldertree.cpp:307 kmmainwin.cpp:997
 msgid "&Create..."
 msgstr "&Sozdadi"
 
-#: kmmainwin.cpp:999
+#: kmfoldertree.cpp:309 kmmainwin.cpp:999
 msgid "&Modify..."
 msgstr "Pro&meni"
 
-#: kmmainwin.cpp:1001
+#: kmfoldertree.cpp:311 kmmainwin.cpp:1001
 msgid "C&ompact"
 msgstr "K&ompaktno"
 
-#: kmmainwin.cpp:1004
+#: kmfoldertree.cpp:314 kmmainwin.cpp:1004
 msgid "&Empty"
 msgstr "&Isprazni"
 
-#: kmfilterdlg.cpp:149 kmmainwin.cpp:1013
+#: kmfilterdlg.cpp:149 kmheaders.cpp:941 kmmainwin.cpp:1013
 msgid "New"
 msgstr ""
 
-#: kmmainwin.cpp:1014
+#: kmheaders.cpp:942 kmmainwin.cpp:1014
 msgid "Unread"
 msgstr "Neprochitano"
 
-#: kmmainwin.cpp:1015
+#: kmheaders.cpp:943 kmmainwin.cpp:1015
 msgid "Read"
 msgstr "Prochitano"
 
-#: kmmainwin.cpp:1016
+#: kmheaders.cpp:944 kmmainwin.cpp:1016
 msgid "Replied"
 msgstr "Odgovoreno"
 
-#: kmmainwin.cpp:1017
+#: kmheaders.cpp:945 kmmainwin.cpp:1017
 msgid "Queued"
 msgstr "Cheka"
 
-#: kmmainwin.cpp:1018
+#: kmheaders.cpp:946 kmmainwin.cpp:1018
 msgid "Sent"
 msgstr "Prateno"
 
@@ -376,7 +376,7 @@ msgstr "Zdruzhen so"
 msgid "Unassociated Accounts"
 msgstr "Nezdruzhen akaunt"
 
-#: kmfoldertree.cpp:47 kmsettings.cpp:538
+#: kmfoldertree.cpp:49 kmsettings.cpp:538
 msgid "Folders"
 msgstr "Imenici"
 
@@ -669,7 +669,7 @@ msgstr "Dodavanjeto poraka e neuspeshno:"
 msgid "F"
 msgstr ""
 
-#: kmheaders.cpp:43 kmheaders.cpp:216
+#: kmheaders.cpp:43 kmheaders.cpp:218
 msgid "Sender"
 msgstr "Prakjach"
 
@@ -681,67 +681,67 @@ msgstr "Tema"
 msgid "Date"
 msgstr "Data"
 
-#: kmheaders.cpp:215
+#: kmheaders.cpp:217
 msgid "Receiver"
 msgstr ""
 
-#: kmheaders.cpp:218
+#: kmheaders.cpp:220
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d Poraki, %d neprochitani."
 
-#: kmheaders.cpp:220
+#: kmheaders.cpp:222
 msgid "Folder is read-only."
 msgstr "Imenikot e read-only."
 
-#: kmheaders.cpp:272
+#: kmheaders.cpp:274
 #, fuzzy
 msgid "Unknown"
 msgstr "Nepoznata greshka"
 
-#: kmheaders.cpp:275
+#: kmheaders.cpp:277
 #, fuzzy
 msgid "No Subject"
 msgstr "Tema"
 
-#: kmheaders.cpp:336
+#: kmheaders.cpp:338
 msgid "order of arrival"
 msgstr ""
 
-#: kmheaders.cpp:345
+#: kmheaders.cpp:347
 #, fuzzy
 msgid "subject"
 msgstr "Tema"
 
-#: kmheaders.cpp:346
+#: kmheaders.cpp:348
 #, fuzzy
 msgid "date"
 msgstr "Data"
 
-#: kmheaders.cpp:347
+#: kmheaders.cpp:349
 #, fuzzy
 msgid "sender"
 msgstr "Prakjach"
 
-#: kmheaders.cpp:348
-msgid "status"
-msgstr ""
-
 #: kmheaders.cpp:350
-#, c-format
-msgid "Sorting messages descending by %s"
+msgid "status"
 msgstr ""
 
 #: kmheaders.cpp:352
 #, c-format
+msgid "Sorting messages descending by %s"
+msgstr ""
+
+#: kmheaders.cpp:354
+#, c-format
 msgid "Sorting messages ascending by %s"
 msgstr ""
 
-#: kmheaders.cpp:448
+#: kmheaders.cpp:450
 msgid "Message(s) saved."
 msgstr "Porakata/ite se snimeni."
 
-#: kmheaders.cpp:450
+#: kmheaders.cpp:452
 msgid "Failed to save message(s)."
 msgstr "Snimanjeto poraka/i neuspeshno."
 
@@ -979,7 +979,7 @@ msgstr ""
 msgid "pgp key"
 msgstr ""
 
-#: kmcomposewin.cpp:1297 kmreaderwin.cpp:880
+#: kmcomposewin.cpp:1297 kmreaderwin.cpp:902
 msgid "View..."
 msgstr "Vidi..."
 
@@ -987,7 +987,7 @@ msgstr "Vidi..."
 msgid "Save..."
 msgstr "Snimi..."
 
-#: kmcomposewin.cpp:1299 kmreaderwin.cpp:883
+#: kmcomposewin.cpp:1299 kmreaderwin.cpp:905
 msgid "Properties..."
 msgstr "Podesuvanja..."
 
@@ -995,7 +995,7 @@ msgstr "Podesuvanja..."
 msgid "Attach..."
 msgstr "Prilepi..."
 
-#: kmcomposewin.cpp:1345 kmreaderwin.cpp:952 kmreaderwin.cpp:969
+#: kmcomposewin.cpp:1345 kmreaderwin.cpp:974 kmreaderwin.cpp:991
 msgid "View Attachment: "
 msgstr "Vidi prilepeno: "
 
@@ -1069,64 +1069,64 @@ msgstr ""
 msgid "quoted printable"
 msgstr ""
 
-#: kmreaderwin.cpp:376 kmreaderwin.cpp:389 kmreaderwin.cpp:408
-#: kmreaderwin.cpp:429
+#: kmreaderwin.cpp:398 kmreaderwin.cpp:411 kmreaderwin.cpp:430
+#: kmreaderwin.cpp:451
 msgid "Cc: "
 msgstr "Kopii do:"
 
-#: kmreaderwin.cpp:384 kmreaderwin.cpp:403 kmreaderwin.cpp:424
+#: kmreaderwin.cpp:406 kmreaderwin.cpp:425 kmreaderwin.cpp:446
 msgid "From: "
 msgstr "Od:"
 
-#: kmreaderwin.cpp:386 kmreaderwin.cpp:405 kmreaderwin.cpp:426
+#: kmreaderwin.cpp:408 kmreaderwin.cpp:427 kmreaderwin.cpp:448
 msgid "To: "
 msgstr "Do:"
 
-#: kmreaderwin.cpp:393 kmreaderwin.cpp:414 kmreaderwin.cpp:439
+#: kmreaderwin.cpp:415 kmreaderwin.cpp:436 kmreaderwin.cpp:461
 msgid "References: "
 msgstr "Referenci:"
 
-#: kmreaderwin.cpp:410 kmreaderwin.cpp:423
+#: kmreaderwin.cpp:432 kmreaderwin.cpp:445
 msgid "Date: "
 msgstr "Data:"
 
-#: kmreaderwin.cpp:432
+#: kmreaderwin.cpp:454
 msgid "Bcc: "
 msgstr "Nevidlivi kopii do: "
 
-#: kmreaderwin.cpp:435
+#: kmreaderwin.cpp:457
 msgid "Reply to: "
 msgstr "Odgovori mi na:"
 
-#: kmreaderwin.cpp:442
+#: kmreaderwin.cpp:464
 msgid "Groups: "
 msgstr "Njuzgrupi: "
 
-#: kmreaderwin.cpp:480
+#: kmreaderwin.cpp:502
 msgid "Encrypted message"
 msgstr "Kriptirana poraka"
 
-#: kmreaderwin.cpp:486
+#: kmreaderwin.cpp:508
 msgid "Cannot decrypt message:"
 msgstr "Ne mozham da dekriptiram poraka:"
 
-#: kmreaderwin.cpp:495
+#: kmreaderwin.cpp:517
 msgid "Message was signed by"
 msgstr "Porakata potpishana od"
 
-#: kmreaderwin.cpp:496
+#: kmreaderwin.cpp:518
 msgid "Warning: Bad signature from"
 msgstr "Predupreduvanje: Losh potpis od"
 
-#: kmreaderwin.cpp:506
+#: kmreaderwin.cpp:528
 msgid "unknown key ID"
 msgstr ""
 
-#: kmreaderwin.cpp:844
+#: kmreaderwin.cpp:866
 msgid "Attachment: "
 msgstr "Prilepeno: "
 
-#: kmreaderwin.cpp:1058
+#: kmreaderwin.cpp:1080
 msgid "Could not save file"
 msgstr "Ne mozham da snimam datoteka"
 
