@@ -79,6 +79,10 @@ AC_MSG_CHECKING(if kppp's headers are installed)
 # kppp is not good for this system. It doesn't do anything, but enough
 # to fail ;)
 cat > conftest.C <<EOF
+#include <arpa/inet.h>
+#include <net/ppp_defs.h>
+#include <netinet/in.h>
+
 #ifdef __svr4__
   #include <sys/stropts.h>
   #include <net/pppio.h>		/* SVR4, Solaris 2, etc. */
