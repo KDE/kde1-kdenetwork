@@ -1348,7 +1348,7 @@ msgstr "Chýba heslo."
 
 #: kpgp.cpp:286 kpgp.cpp:312 kpgp.cpp:325 kpgp.cpp:344 kpgp.cpp:361
 msgid "PGP Warning"
-msgstr ""
+msgstr "Varovanie PGP"
 
 #: kpgp.cpp:287
 msgid ""
@@ -1356,18 +1356,21 @@ msgid ""
 "recipients of this mail.\n"
 "Message will not be encrypted."
 msgstr ""
+"Nemô¾em nájs» verejné kµúèe pre príjemcov\n"
+"tejto správy.\n"
+"Správa nebude zakryptovaná."
 
 #: kpgp.cpp:296
 msgid "Could not find the public keys for\n"
-msgstr ""
+msgstr "Nemô¾em nájs» verejné kµúèe pre\n"
 
 #: kpgp.cpp:307
 msgid "These persons will not be able to\n"
-msgstr ""
+msgstr "Tieto osoby nebudú schopné\n"
 
 #: kpgp.cpp:309
 msgid "This person will not be able to\n"
-msgstr ""
+msgstr "Táto osoba nebude schopná\n"
 
 #: kpgp.cpp:311
 msgid "decrypt the message."
@@ -1379,26 +1382,33 @@ msgid ""
 "Do you wan't to try again, continue and\n"
 "leave the message unsigned, or cancel sending the message?"
 msgstr ""
+"Zadali ste nesprávne PGP heslo.\n"
+"Chcete ho zada» znova, pokraèova» a necha»\n"
+"správu nepodpísanú alebo zru¹i» posielanie správy?"
 
 #: kpgp.cpp:331
 msgid "Retry"
-msgstr ""
+msgstr "Znova"
 
 #: kpgp.cpp:342
 msgid ""
 "Do you wan't to encrypt anyway, leave the\n"
 "message as is, or cancel the message?"
 msgstr ""
+"Chcete zakryptova» aj tak, necha» správu ako je\n"
+"alebo zru¹i» správu?"
 
 #: kpgp.cpp:346
 msgid "Encrypt"
-msgstr ""
+msgstr "Zakryptova»"
 
 #: kpgp.cpp:359
 msgid ""
 "Do you wan't to leave the message as is,\n"
 "or cancel the message?"
 msgstr ""
+"Chcete necha» správu ako je\n"
+"alebo ju zru¹i»?"
 
 #: kpgp.cpp:717
 msgid ""
@@ -1426,7 +1436,7 @@ msgstr "Ulo¾i» PGP heslo"
 
 #: kpgp.cpp:788
 msgid "Always encrypt to self"
-msgstr ""
+msgstr "Stále kryptova» sám sebe"
 
 #: krnsender.cpp:60
 msgid "This server is read onlyyou can't post here!"
@@ -1618,7 +1628,7 @@ msgstr "Zlé heslo; nemô¾em podpísa»"
 
 #: kpgpbase.cpp:354
 msgid "error running pgp"
-msgstr ""
+msgstr "chyba pri spú¹»aní pgp"
 
 #: kpgpbase.cpp:371 kpgpbase.cpp:662
 msgid "Bad pass Phrase; couldn't decrypt"
@@ -1626,7 +1636,7 @@ msgstr "Zlé heslo; nemô¾em dekryptova»"
 
 #: kpgpbase.cpp:382 kpgpbase.cpp:673
 msgid "Do not have the secret key for this message"
-msgstr ""
+msgstr "Nemám privátny kµúè pre túto správu"
 
 #: kpgpbase.cpp:410
 msgid "unknown key ID "
