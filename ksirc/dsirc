@@ -467,11 +467,11 @@ sub ctcp {
   if ($what eq 'ACTION') {
     &dohooks("action", $towho, $args);
     if (&eq($towho, $nick)) {
-      &tell("~$towho~* \cb${who}\cb$puh1 $args"); # KSIRC MOD
+      &tell("~$who~* \cb${who}\cb$puh1 $args"); # KSIRC MOD
     } elsif (&eq($towho, $talkchannel) && !$printchan) {
-      &tell("~$towho~* $who $args");
+      &tell("~$who~* $who $args");
     } else {
-      &tell("~$towho~* $who$puh2 $args");
+      &tell("~$who~* $who$puh2 $args");
     }
   } elsif ($what eq 'TIME') {
     &reply("TIME ".&date(time));
@@ -2099,7 +2099,7 @@ while (1) {
       &yetonearg;
       $args=$who unless $args;
       if (&eq($nick, $newarg)) {
-	&tell("~${channel}~*\cb<\cb* $newarghave been kicked off channel $channel by $who$puh2 ($args)");   # MOD FOR KSIRC
+	&tell("~${channel}~*\cb<\cb* You have been kicked off channel $channel by $who$puh2 ($args)");   # MOD FOR KSIRC
 	@channels=grep(!&eq($_, $channel), @channels);
 	if (@channels) {
 	  $talkchannel=$channels[$#channels];

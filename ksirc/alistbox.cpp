@@ -12,7 +12,6 @@
 
 #include "alistbox.h"
 #include "linelistitem.h"
-#include <iostream.h>
 
 // SEP has to be something that's never in a nick, !'s are not allowed in nicks
 
@@ -40,7 +39,7 @@ void aListBox::clear()
 }
 
 
-void aListBox::inSort ( const QListBoxItem *lbi, bool top = FALSE)
+void aListBox::inSort ( const QListBoxItem *lbi, bool top = false)
 {
   int min = -1, max = count() - 1;
 
@@ -67,7 +66,7 @@ void aListBox::inSort ( const QListBoxItem *lbi, bool top = FALSE)
   insertItem(lbi, min);
 }
 
-void aListBox::inSort ( const char * text, bool top = FALSE)
+void aListBox::inSort ( const char * text, bool top = false) 
 {
   inSort(new QListBoxText(text), top);
 }

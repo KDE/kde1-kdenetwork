@@ -1,11 +1,36 @@
-/*
- * Basic toplevel widget control
- * Need items:
- * 1. QPopup menu controls for the listbox
- * 2. Lots of items
- * 3. Make it looks cooler
- *
- */
+/**********************************************************************
+
+ TopLevel IRC Channel/query Window
+
+ $$Id$$
+
+ This is the main window with with the user interacts.  It handles
+ both normal channel converstations and private conversations.
+
+ 2 classes are defined, the UserControlMenu and KSircToplevel.  The
+ user control menu is used as alist of user defineable menus used by
+ KSircToplevel.  
+
+ KSircTopLevel:
+
+ Signals: 
+
+ outputLine(QString &): 
+ output_toplevel(QString):
+
+ closing(KSircTopLevel *, char *): 
+
+ changeChannel(QString old, QString new): 
+
+ currentWindow(KSircTopLevel *):
+
+ changeSize(): 
+
+ Slots: 
+ 
+
+ 
+ *********************************************************************/
 
 #include "toplevel.h"
 #include "iocontroller.h"
@@ -72,6 +97,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
   Buffer = FALSE;
 
   have_focus = 0;
+  ticker = 0; // Set the ticker to NULL while it doesn't exist.
   
   QPopupMenu *file = new QPopupMenu();
   file->insertItem("&User Menu...", this, SLOT(startUserMenuRef()));
@@ -171,17 +197,6 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
   lines = 0;          // Set internal line counter to 0
   contents.setAutoDelete( TRUE ); // Have contents, the line holder nuke everything on exit
 
-  ticker = new KSTicker(0, "ticker", WStyle_NormalBorder);
-  ticker->setCaption(channel_name);
-  kConfig->setGroup("TickerDefaults");
-  ticker->setFont(kConfig->readFontEntry("font", new QFont("fixed")));
-  ticker->setSpeed(kConfig->readNumEntry("tick", 30), 
-		   kConfig->readNumEntry("step", 3));
-  connect(ticker, SIGNAL(doubleClick()), 
-	  this, SLOT(unHide()));
-  connect(ticker, SIGNAL(closing()), 
-	  this, SLOT(terminate()));
-
   /*
    * Set generic run time variables
    *
@@ -276,15 +291,8 @@ KSircTopLevel::~KSircTopLevel()
     emit outputLine(str);
   }
 
-  int tick, step;
-  ticker->speed(&tick, &step);
-  kConfig->setGroup("TickerDefaults");
-  kConfig->writeEntry("font", ticker->font());
-  kConfig->writeEntry("tick", tick);
-  kConfig->writeEntry("step", step);
-  kConfig->sync();
-
-  delete ticker;
+  if(ticker)
+    delete ticker;
   delete gm; // Deletes everthing bellow it I guess...
   //  delete gm2; 
   //  delete pan; // Should be deleted by gm2
@@ -354,7 +362,8 @@ void KSircTopLevel::sirc_receive(QString str)
 	connect(this, SIGNAL(changeSize()),
 		item, SLOT(updateSize()));
 	mainw->insertItem(item, -1);
-	ticker->mergeString(item->getText() + " // ");
+	if(ticker)
+	  ticker->mergeString(item->getText() + " // ");
 	lines++; // Mode up lin counter
 	update = TRUE;
       }
@@ -505,6 +514,7 @@ void KSircTopLevel::sirc_write(QString &str)
   // Write out line
 
   //  proc->stdin_write(str);
+  mainw->scrollToBottom(TRUE);
   emit outputLine(str);
 
 }
@@ -619,7 +629,8 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	    opami = FALSE;                 // FALSE, were not an ops
 	  UserUpdateMenu();                // update the menu
 	  setCaption(s2);
-	  ticker->setCaption(s2);
+	  if(ticker)
+	    ticker->setCaption(s2);
 	  caption = s2;           // Make copy so we're not 
 	                                   // constantly changing the title bar
 	}
@@ -750,6 +761,26 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	  }
 	  s3 = "";
 	}
+	else if(string.contains("You have been kicked")){
+	  switch(QMessageBox::information(this, "You have Been Kicked",
+					  string.data() + 1, 
+					  "Rejoin", "Leave", 0, 0, 1)){
+	  case 0:
+	    {
+	      QString str = "/join " + QString(channel_name) + "\n";
+	      emit outputLine(str);
+	      if(ticker)
+		ticker->show();
+	      else
+		this->show();
+	    }
+	    break;
+	  case 1:
+	    QApplication::postEvent(this, new QCloseEvent()); // WE'RE DEAD
+	    break;
+	  }
+	  s3 = "";
+	}
 	else if(string.contains("has left")) // part
 	  s3 = string.mid(1, string.find(' ', 1) - 1);
 	else if(string.contains("kicked off")) // kick
@@ -777,6 +808,7 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	  int chan = string.findRev(" ", -1) + 1;
 	  ASSERT(chan > 0);
 	  s3 = string.mid(chan, string.length() - chan);
+	  this->show();
 	  emit open_toplevel(s3);
 	}
 	else{
@@ -907,9 +939,6 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
     break;
   }
 
-  // Go searching for URLs and highlight them
-
-
   if(no_output)                    // is no_output is null,return
 				   // anull pointer
     return NULL;
@@ -918,11 +947,6 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 
   return NULL; // make compiler happy or else it complans about
 	       // getting to the end of a non-void func
-}
-
-void KSircTopLevel::URLSelected(const char*, int)
-{
-
 }
 
 void KSircTopLevel::UserSelected(int index)
@@ -1166,16 +1190,17 @@ void KSircTopLevel::resizeEvent(QResizeEvent *e)
 
 void KSircTopLevel::gotFocus()
 {
-  if(have_focus == 0){
-    if(channel_name[0] == '#'){
-      QString str = "/join " + QString(channel_name) + "\n";
-      emit outputLine(str);
+  if(isVisible() == TRUE){
+    if(have_focus == 0){
+      if(channel_name[0] == '#'){
+	QString str = "/join " + QString(channel_name) + "\n";
+	emit outputLine(str);
+      }
+      have_focus = 1;
+      emit currentWindow(this);
+      //    cerr << channel_name << " got focusIn Event\n";
     }
-    have_focus = 1;
-    emit currentWindow(this);
-    //    cerr << channel_name << " got focusIn Event\n";
   }
-
 }
 
 void KSircTopLevel::lostFocus()
@@ -1233,20 +1258,37 @@ void KSircTopLevel::showTicker()
 {
   myrect = geometry();
   mypoint = pos();
+  ticker = new KSTicker(0, "ticker", WStyle_NormalBorder);
+  ticker->setCaption(channel_name);
+  kConfig->setGroup("TickerDefaults");
+  ticker->setFont(kConfig->readFontEntry("font", new QFont("fixed")));
+  ticker->setSpeed(kConfig->readNumEntry("tick", 30), 
+		   kConfig->readNumEntry("step", 3));
+  connect(ticker, SIGNAL(doubleClick()), 
+	  this, SLOT(unHide()));
+  connect(ticker, SIGNAL(closing()), 
+	  this, SLOT(terminate()));
   this->hide();
-  if(tickerrect.isEmpty() == TRUE)
-    ticker->show();
-  else{
+  if(tickerrect.isEmpty() == FALSE){
     ticker->setGeometry(tickerrect);
     ticker->recreate(0, 0, tickerpoint, TRUE);
   }
+  ticker->show();
 }
 
 void KSircTopLevel::unHide()
 {
   tickerrect = ticker->geometry();
   tickerpoint = ticker->pos();
-  ticker->hide();
+  int tick, step;
+  ticker->speed(&tick, &step);
+  kConfig->setGroup("TickerDefaults");
+  kConfig->writeEntry("font", ticker->font());
+  kConfig->writeEntry("tick", tick);
+  kConfig->writeEntry("step", step);
+  kConfig->sync();
+  delete ticker;
+  ticker = 0;
   this->setGeometry(myrect);
   this->recreate(0, getWFlags(), mypoint, TRUE);
   this->show();

@@ -62,6 +62,10 @@ ksirc_LDADD   = -lksprogress -lksticker -lkscutdialog -lkdeui -lkdecore -lqt -lX
 
 ksircstatic_LDADD = $(ksirc_LDADD)
 
+kdoc:
+	kdoc -ddoc ksirc *.h
+
+
 # this option you can leave out. Just, if you use "make dist", you need it
 #
 # DSIRC is on the bottom so make dist includes it!!!!!!!!!
@@ -77,7 +81,7 @@ ahistlineedit.h           iocontroller.h            servercontroller.h \
 alistbox.h                irclistbox.h              servercontrollerData.h \
 config.h                  irclistitem.h             toplevel.h \
 control.h                 ksircprocess.h            ksirc.kdelnk \
-dsirc                     filters.pl
+dsirc                     filters.pl                ksirc.pl
 
 
 # just to make sure, automake makes them 
@@ -101,6 +105,7 @@ install-data-local:
 	$(INSTALL_DATA) ksirc.kdelnk $(APPSDIR)
 	$(mkinstalldirs) $(kde_datadir)/ksirc
 	$(INSTALL_DATA) dsirc $(bindir)
+	$(INSTALL_DATA) ksirc.pl $(kde_datadir)/ksirc
 	$(INSTALL_DATA) filters.pl $(kde_datadir)/ksirc
 #
 # remove ALL you have installed in install-data-local or install-exec-local

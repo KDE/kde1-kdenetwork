@@ -36,6 +36,7 @@ Bug3:
 	97/12/28  Reported.
 	Probably due to no /unban command by default,
 	will be fixed by inclusion of ksirc.pl
+	98/01/01 Added ksirc.pl, fixed.
 
 Bug4:
 
@@ -45,6 +46,8 @@ Bug4:
 	Status: 
 
 	97/12/28 Reported
+	98/01/01 Fixed, pops up dialog telling you have been icked,
+                  and asks if you want to rejoin.
 
 Bug5:
 
@@ -53,3 +56,17 @@ Bug5:
 	Status: 
 
 	97/12/28 Reported
+	98/01/01 No longer auto scrolls to bottom. Seems to be working.
+
+Bug6: 
+	ksirc cores if you kill every server window by clicking X
+	
+	97/12/31 Reported
+
+Bug7: 
+
+	ksirc doesn't recieve /me's properly over a /query: it thinks
+	you sent it to yourself.  Pops up new window, too.
+	
+	97/12/31 Reported
+	98/01/01 Fixed.

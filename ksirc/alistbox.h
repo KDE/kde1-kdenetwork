@@ -20,8 +20,8 @@ public:
 
   void clear();
 
-  void inSort ( const QListBoxItem *, bool top = FALSE);
-  void inSort ( const char * text, bool top = FALSE);
+  void inSort ( const QListBoxItem *, bool top = false);
+  void inSort ( const char * text, bool top = false);
 
   bool isTop(int index);
 

@@ -1,3 +1,16 @@
+1998-01-01  Andrew Stanley-Jones  <asj@chowtown.cban.com>
+
+	* Various bug fixes as per the BUGLIST.
+
+	* Fixed scroll to bottom, no longer scroll to bottom when you're
+ 	scrolled up, except when you hit enter.
+
+1997-12-31  Andrew Stanley-Jones  <asj@chowtown.cban.com>
+
+	* Fixed mem leak in KSTicker.  Leaked 1 byte per message.
+
+	* Cleaned up the cut&paste code, made it a little consistend with X.
+
 1997-12-30  Andrew Stanley-Jones  <asj@chowtown.cban.com>
 
 	* Added support for multiple op/deop'ings.  Seems ok, except for
@@ -44,6 +57,9 @@
 $Revision$
 	
 $Log$
+Revision 1.7  1997/12/31 04:27:09  asj
+Misc bug fixes, updates.  Fixed mem leak in KSTicer, etc.
+
 Revision 1.6  1997/12/27 04:20:50  asj
 1. Fixed resive screw up in mainw
 

@@ -35,6 +35,11 @@ class UserControlMenu;
 
 class UserControlMenu {
  public:
+  /** 
+      Basic constructor, everything defaults to a Seperator.  All data
+      is public so there is no problems changing it in the future.
+      Data is copied internally and deleted when finished.
+  */
   UserControlMenu(char *_title = 0, 
 		  char *_action = 0, 
 		  int _accel = 0, 
@@ -50,10 +55,26 @@ class UserControlMenu {
       delete title;
       delete action;
     }
+  /**
+    * title in the popup menu
+  */
   char *title;
+  /** 
+    * Action to preform, must be of the format "blah lbah %s blah"
+    * where %s will be expanded into the selected nick.
+    */
   char *action;
+  /**
+    * Accelerator key, currently does nothing.
+    */
   int accel;
+  /** 
+    * is this function only available to ops?
+    */
   bool op_only;
+  /**
+    * What type of menu item is this? a Seperator of Text?
+    */
   enum itype { Seperator, Text } type;
 };
 
@@ -65,45 +86,157 @@ class KSircTopLevel : public KTopLevelWidget,
 {
   Q_OBJECT;
 public:
-  KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * name=0);
+  /**
+    * Constructor, needs the controlling ksircprocess passed to it, so
+    * we can make the ksircmessage receiver happy.
+    */
+  KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char *
+		name=0);
+  /**
+    * Destructor, destroys itself.
+    */
   ~KSircTopLevel();
 
 signals:
+  /**
+    * signals thats the toplevel widget wishes to
+    * output a new line.  The line is correctly
+    * linefeed terminated, etc.
+    */
   void outputLine(QString&);
+  /**
+    * open a new toplevel widget with for the
+    * channel/user QString.
+    */
   void open_toplevel(QString);
+  /**
+    * emittedon shutdown, indicating that
+    * this window is closing. Refrence to outselves
+    * is include.
+    */
   void closing(KSircTopLevel *, char *);
+  /**
+    * emitted when we change channel name
+    * on the fly.  old is the old channel name, new
+    * is the new one.
+    */
   void changeChannel(QString, QString);
+  /**
+    * emitted to say that KSircTopLevel
+    * (this) is now the window with focus.  Used by
+    * servercontroller to set the !default window.
+    */
   void currentWindow(KSircTopLevel *);
+  /**
+    * Window has changed size.  Used by ircListItem's to
+    * resize and readjust their paint'ing prefrences.
+    */
   void changeSize();
 
 public slots:
+  /**
+    * Line recieved that should be printed on the screen. Unparsed, and
+    * ready processing.  This is a single line, and it NOT \n
+    * terminated.
+  */
   void sirc_receive(QString str);
-//  void sirc_stop(bool STOP = FALSE);
+  /**
+    * When enter is pressed, we read the SLE and output the results
+    * after processing via emitting outputLine.
+    */
   void sirc_line_return(); 
 
+  /** 
+    * Reimplement the ksircmessagereceiver control messages.  These
+    * are parsed and dealt with quickly.
+    */
   void control_message(int, QString); 
 
 protected slots:
-   void URLSelected(const char *, int); 
+    /**
+      * When the rightMouse button is pressed in the nick list, popup
+      * the User popup menu at his cursor location.
+      */
    void UserSelected(int index); 
+   /**
+     * Menu items was selected, now read the UserControlMenu and
+     * reupdate the required menus.
+     */
    void UserParseMenu(int id);
+   /**
+     * Page down accel key.  Tells the mainw to scroll down 1 page.
+     */
    void AccelScrollDownPage();
+   /**
+     * Page Up accell key.  Tells the mainw to scroll down 1 page.
+     */
    void AccelScrollUpPage();
+   /**
+     * Tied to the prior nick accel. When pressed, re-writes the SLE
+     * with the prior nick to /msg us.
+     */
    void AccelPriorMsgNick();
+   /**
+     * Tied to next nick accel.  When presed, re-writes the SLE when
+     * the next nick to mesage us in the list. 
+     */
    void AccelNextMsgNick();
+   /**
+     * Slot to termiate (close) the window.
+     */
    void terminate() { close(1); }
+   /**
+     * Opens the UserMenu editor dialog and allows the user to
+     * edit/update it, etc.
+     */
    void startUserMenuRef();
+   /** 
+     * Called when the user menu is finished and the popup menu needs
+     * to be updated.
+     */
    void UserUpdateMenu();
+   /**
+     * Open the new channel/window selector.
+     */
    void newWindow();
+   /** 
+     * We've received focus, let's make us the default, and issue a
+     * /join such that we default to the right channel.
+     */
    void gotFocus();
+   /**
+     * We've lost focus, set ourselves as loosing focus.
+     */
    void lostFocus();
+   /**
+     * Create and popup the ticker.  Make sure to restore it to the
+     * last position is was at.
+     */
    void showTicker();
+   /**
+     * Delete the ticker and ppoup the main window
+     */
    void unHide();
+   /**
+     * Since we can't cut from the listbox for cut requests we popup a
+     * cut box and edit this instead.
+     */
    void openCutWindow();
+   /**
+     * On a middle mouse button press we call pasteToWindow which
+     * reads the clip board and pastes into the main listbox.
+     */
    void pasteToWindow();
 
 protected:
+   /**
+     * Redfine closeEvent to emit closing and delete itself.
+     */
    virtual void closeEvent(QCloseEvent *);
+   /** 
+     * catch and handle all resizeEvents so we can notify
+     * ircListItem's correctly
+     */
    virtual void resizeEvent(QResizeEvent *);
 
    virtual QString findNick(QString);

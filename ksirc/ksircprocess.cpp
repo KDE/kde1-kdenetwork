@@ -116,6 +116,8 @@ KSircProcess::KSircProcess( char *_server=0L, QObject * parent=0, const char * n
   iocontrol->stdin_write(command);
   command = "/load " + kSircConfig->kdedir + "/share/apps/ksirc/filters.pl\n";
   iocontrol->stdin_write(command);
+  command = "/load " + kSircConfig->kdedir + "/share/apps/ksirc/ksirc.pl\n";
+  iocontrol->stdin_write(command);
 
   running_window = TRUE;        // True so we do create the default
   new_toplevel("!default");     // 

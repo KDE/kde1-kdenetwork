@@ -186,7 +186,7 @@ ahistlineedit.h           iocontroller.h            servercontroller.h \
 alistbox.h                irclistbox.h              servercontrollerData.h \
 config.h                  irclistitem.h             toplevel.h \
 control.h                 ksircprocess.h            ksirc.kdelnk \
-dsirc                     filters.pl
+dsirc                     filters.pl                ksirc.pl
 
 # just to make sure, automake makes them 
 BUILTSOURCES =	
@@ -527,6 +527,9 @@ clean-generic maintainer-clean-generic clean mostlyclean distclean \
 maintainer-clean
 
 
+kdoc:
+	kdoc -ddoc ksirc *.h
+
 # make messages.po. Move this one to ../po/ and "make merge" in po
 messages:
 	$(XGETTEXT) -C -ktranslate $(khexdit_SOURCES)
@@ -541,6 +544,7 @@ install-data-local:
 	$(INSTALL_DATA) ksirc.kdelnk $(APPSDIR)
 	$(mkinstalldirs) $(kde_datadir)/ksirc
 	$(INSTALL_DATA) dsirc $(bindir)
+	$(INSTALL_DATA) ksirc.pl $(kde_datadir)/ksirc
 	$(INSTALL_DATA) filters.pl $(kde_datadir)/ksirc
 #
 # remove ALL you have installed in install-data-local or install-exec-local

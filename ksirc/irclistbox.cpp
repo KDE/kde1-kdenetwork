@@ -19,7 +19,7 @@ KSircListBox::KSircListBox(QWidget * parent=0, const char * name=0, WFlags f=0) 
   //  frame.setRight(frame.right() - 17);
   //  setFrameRect(frame);
   updateScrollBars();
-   connect(vertScroll, SIGNAL(sliderMoved(int)),
+  connect(vertScroll, SIGNAL(sliderMoved(int)),
           SLOT(scrollTo(int)));
   connect(vertScroll, SIGNAL(nextLine()),
 	  SLOT(lineDown()));
@@ -30,6 +30,7 @@ KSircListBox::KSircListBox(QWidget * parent=0, const char * name=0, WFlags f=0) 
   connect(vertScroll, SIGNAL(prevPage()),
 	  SLOT(pageUp()));
   vertScroll->show();
+  ScrollToBottom = TRUE;
 }
 
 KSircListBox::~KSircListBox()
@@ -37,15 +38,20 @@ KSircListBox::~KSircListBox()
   delete vertScroll;
 }
 
-void KSircListBox::scrollToBottom()
+void KSircListBox::scrollToBottom(bool force = false)
 {
+  if(force == TRUE)
+    ScrollToBottom = TRUE;
+
   int th = totalHeight();
   if(th > height()){
-    setYOffset(th - height() + fudge);
+    if(ScrollToBottom == TRUE)
+      setYOffset(th - height() + fudge);
     updateScrollBars();
   }
   else{
-    setYOffset(0);
+    if(ScrollToBottom == TRUE)
+      setYOffset(0);
     vertScroll->setRange(0, 0);
   }
 }
@@ -84,7 +90,7 @@ void KSircListBox::scrollTo(int index)
 {
    int yoff = index*(totalHeight() - height()) / 
      (count() - numItemsVisible() - 2) + fudge;
-   setYOffset(QMIN(yoff, totalHeight()-height()+fudge));
+   setYOffset(imin(totalHeight()-height()+fudge, yoff));
    //   setYOffset(yoff);
 }
 
@@ -92,11 +98,13 @@ void KSircListBox::pageUp()
 {
   setYOffset(QMAX(0, yOffset()-height()));
   updateScrollBars();
+  ScrollToBottom = FALSE;
+  
 }
 
 void KSircListBox::pageDown()
 {
-  setYOffset(QMIN(totalHeight()-height()+fudge, yOffset()+height()));
+  setYOffset(imin(totalHeight()-height()+fudge, yOffset()+height()));
   updateScrollBars();
 }
 
@@ -104,11 +112,12 @@ void KSircListBox::lineUp()
 {
   setYOffset(QMAX(0, yOffset()-itemHeight(topItem())));
   updateScrollBars();
+  ScrollToBottom = FALSE;
 }
 
 void KSircListBox::lineDown()
 {
-  setYOffset(QMIN(totalHeight()-height()+fudge, yOffset()+itemHeight(topItem())));
+  setYOffset(imin(totalHeight()-height()+fudge, yOffset()+itemHeight(topItem())));
   updateScrollBars();
 }
 
@@ -117,3 +126,15 @@ void KSircListBox::lineDown()
 //  verticalScrollBar()->setUpdatesEnabled(update);
 //}
 
+
+int KSircListBox::imin(int max, int offset){
+  if(max < offset){
+    ScrollToBottom = TRUE;
+    return max;
+  }
+  else{
+    ScrollToBottom = FALSE;
+    return offset;
+  }
+      
+}

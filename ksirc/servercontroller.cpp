@@ -75,6 +75,7 @@
 #include <iostream.h>
 
 #include <kfontdialog.h>
+#include <kiconloader.h>
 
 #include <qkeycode.h>
 
@@ -121,11 +122,11 @@ servercontroller::servercontroller
 	kSircConfig->nickcompletion = 
 	  kConfig->readNumEntry("NickCompletion", TRUE);
 	options->insertSeparator();
-	options->insertItem("Colour Preferences...",
+	options->insertItem("&Colour Preferences...",
 			    this, SLOT(colour_prefs()));
-	options->insertItem("Global Fonts...",
+	options->insertItem("&Global Fonts...",
 			    this, SLOT(font_prefs()));
-	options->insertItem("Filter Rule Editor...",
+	options->insertItem("&Filter Rule Editor...",
 			    this, SLOT(filter_rule_editor()));
 	MenuBar->insertItem("&Options", options);
 
@@ -135,8 +136,11 @@ servercontroller::servercontroller
 	ConnectionTree->setExpandLevel(2);
 	open_toplevels = 0;
 
-	pic_server = new QPixmap("img/mini-display.gif");
-	pic_channel = new QPixmap("img/mini-edit.gif");
+        KIconLoader *kicl = kApp->getIconLoader();
+        QStrList *strlist = kicl->getDirList();
+        kicl->insertDirectory(strlist->count(), kSircConfig->kdedir + "/share/apps/ksirc/icons"); 
+	pic_server = new QPixmap(kicl->loadIcon("mini-display.gif"));
+	pic_channel = new QPixmap(kicl->loadIcon("mini-edit.gif"));
 
 }
 
@@ -354,3 +358,5 @@ void servercontroller::nickcompletion()
   }
   kConfig->sync();
 }
+
+
