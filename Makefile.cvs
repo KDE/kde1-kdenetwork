@@ -11,3 +11,6 @@ all:
 	   exit 1 ;\
 	fi
 	$(MAKE) -f admin/Makefile.common cvs
+
+.SILENT:
+
