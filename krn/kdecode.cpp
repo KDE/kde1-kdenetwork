@@ -16,9 +16,8 @@
 
 #include "kdecode.moc"
 
-void MsgCallBack(void *,char *msg, int )
+void MsgCallBack(void *,char *, int )
 {
-    KDEBUG (KDEBUG_INFO,3300,msg);
 }
 
 KDecode::KDecode()

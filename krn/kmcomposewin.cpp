@@ -15,10 +15,11 @@
 #include <mimelib/string.h>
 #include <mimelib/utility.h>
 #include <kiconloader.h>
+#include "groupdlg.h"
 
 extern KLocale *nls;
 extern KMSender *msgSender;
-
+extern Groupdlg *main_widget;
 
 //-----------------------------------------------------------------------------
 KMComposeView::KMComposeView(QWidget *parent, const char *name, 
@@ -469,12 +470,37 @@ KMMessagePart * KMComposeView::createKMMsgPart(KMMessagePart *p, QString s)
 
 void KMComposeView::slotSendNow()
 {
+    bool success=true;
     KMMessage *msg = new KMMessage();
     if((msg = prepareMessage()) == 0)
         return;
-    debug ("about to send");
-    if(msgSender->send(msg))
-        ((KMComposeWin *)parentWidget())->close();
+    bool doit=false;
+    if (!strlen(msg->groups()))
+    {
+        doit=true;
+    }
+    else if (main_widget->needsConnect())
+    {
+        doit =true;
+    }
+    if (doit)
+    {
+        KMSender *tsender=0;
+        if (!msgSender)
+            tsender=new KMSender((NNTP *)0);
+        else
+            tsender=msgSender;
+        debug ("about to send");
+        tsender->setSmtpHost(SMTPServer);
+        if (strlen (msg->to())>0) //if this has to be sent by mail
+            success=tsender->send(msg,1);
+        if (strlen (msg->groups())>0) //if this has to be sent to a newsgroup
+            success=success && tsender->sendNNTP(msg,1);
+        if (success)
+            ((KMComposeWin *)parentWidget())->close();
+        if (tsender !=msgSender)
+            delete tsender;
+    }
 }
 
 //----------------------------------------------------------------------------

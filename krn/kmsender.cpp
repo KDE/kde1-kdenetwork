@@ -7,7 +7,7 @@
 #include <kapp.h>
 #include <kprocess.h>
 #include <klocale.h>
-#include <kmsgbox.h>
+#include <qregexp.h>
 
 #include <assert.h>
 #include <stdio.h>
@@ -17,43 +17,18 @@
 extern KLocale *nls;
 extern QString outpath;
 
-//-----------------------------------------------------------------------------
-//
-// I do this because opening connections to remote NNTP servers can be very
-// slow, and I already have one!
-// I know it is against KMSender's design :-(
-
 KMSender::KMSender(NNTP *_nntp)
 {
     nntp=_nntp;
+    setMethod (smSMTP);
+    setSmtpPort(25);
 }
 
-KMSender::KMSender(KMFolderMgr* /*aFolderMgr*/)
-{
-}
-
-
-//-----------------------------------------------------------------------------
-KMSender::~KMSender()
-{
-  if (mMailerProc) delete mMailerProc;
-}
-
-
-//-----------------------------------------------------------------------------
-bool KMSender::sendQueued(void)
-{
-  debug ("sending queued messages... not yet!");
-  return FALSE;
-}
-
-
-//-----------------------------------------------------------------------------
-bool KMSender::send(KMMessage* aMsg, short sendNow)
+bool KMSender::sendNNTP(KMMessage* aMsg, short sendNow=-1)
 {
     //Basically, queing is just placing the message in the
     //outgoing directory, no big deal.
-
+    
     QFile f(outpath+aMsg->id());
     if (f.exists())
     {
@@ -68,6 +43,7 @@ bool KMSender::send(KMMessage* aMsg, short sendNow)
     debug ("Spooling the message");
     f.writeBlock(aMsg->asString(),strlen(aMsg->asString()));
     f.close();
+    
     if (nntp)
     {
         if (sendNow)
@@ -78,256 +54,243 @@ bool KMSender::send(KMMessage* aMsg, short sendNow)
                 return false;
         }
     }
-    else
-    {
-        return false;
-    }
     return TRUE;
 }
 
 
 //-----------------------------------------------------------------------------
-bool KMSender::sendSMTP(KMMessage* msg)
+KMSender::KMSender()
+{
+  mMailerProc = NULL;
+  readConfig();
+}
+
+
+//-----------------------------------------------------------------------------
+KMSender::~KMSender()
+{
+  if (mMailerProc) delete mMailerProc;
+  writeConfig(TRUE);
+}
+
+
+//-----------------------------------------------------------------------------
+void KMSender::readConfig(void)
+{
+  QString str;
+  KConfig* config = kapp->getConfig();
+
+  config->setGroup(SENDER_GROUP);
+
+  mSendImmediate = (bool)config->readNumEntry("Immediate", TRUE);
+  mMailer = config->readEntry("Mailer", "/usr/sbin/sendmail");
+  mSmtpHost = config->readEntry("Smtp Host", "localhost");
+  mSmtpPort = config->readNumEntry("Smtp Port", 25);
+
+  str = config->readEntry("Method");
+  if (str=="mail") mMethod = smMail;
+  else if (str=="smtp") mMethod = smSMTP;
+  else mMethod = smUnknown;
+}
+
+
+//-----------------------------------------------------------------------------
+void KMSender::writeConfig(bool aWithSync)
+{
+  KConfig* config = kapp->getConfig();
+  config->setGroup(SENDER_GROUP);
+
+  config->writeEntry("Immediate", mSendImmediate);
+  config->writeEntry("Mailer", mMailer);
+  config->writeEntry("Smtp Host", mSmtpHost);
+  config->writeEntry("Smtp Port", mSmtpPort);
+  config->writeEntry("Method", (mMethod==smSMTP) ? "smtp" : "mail");
+
+  if (aWithSync) config->sync();
+}
+
+
+//-----------------------------------------------------------------------------
+bool KMSender::sendQueued(void)
+{
+  return false;
+}
+
+
+//-----------------------------------------------------------------------------
+bool KMSender::send(KMMessage* aMsg, short sendNow)
+{
+  bool sendOk = FALSE;
+  int rc=1;
+
+  assert(aMsg != NULL);
+  if (!aMsg->to() || aMsg->to()[0]=='\0') return FALSE;
+
+  //aMsg->viewSource("KMSender::send()");
+
+  if (sendNow==-1) sendNow = mSendImmediate;
+  if (!sendNow)
+  {
+    return (rc==0);
+  }
+
+  if (mMethod == smSMTP) sendOk = sendSMTP(aMsg);
+  else if (mMethod == smMail) sendOk = sendMail(aMsg);
+  else warning(nls->translate("Please specify a send\nmethod in the settings\n"
+			      "and try again."));
+  if (sendOk)
+  {
+  }
+  return sendOk;
+}
+
+
+//-----------------------------------------------------------------------------
+bool KMSender::sendSMTP(KMMessage *msg)
+{
+  void (*oldHandler)(int);
+  bool result;
+
+  oldHandler = signal(SIGALRM, SIG_IGN);
+  result = doSendSMTP(msg);
+  signal(SIGALRM, oldHandler);
+
+  return result;
+}
+
+//-----------------------------------------------------------------------------
+bool KMSender::doSendSMTP(KMMessage* msg)
 {
   // $markus: I just could not resist implementing smtp suppport
   // This code just must be stable. I checked every darn return code!
   // Date: 24. Sept. 97
   
-  QString str;
+  QString str, msgStr;
   int replyCode;
   DwSmtpClient client;
-  DwString dwString;
-  DwString dwSrc;
 
+  assert(msg != NULL);
 
-  debug("Msg has %i parts\n",msg->numBodyParts());
-  // Now we check if message is multipart.
-  if(msg->numBodyParts() != 0) // If message is not a simple text message
-    {
-    }
-  else
-    {dwSrc = msg->body();
-     DwToCrLfEol(dwSrc,dwString); // Convert to CRLF 
-    }
+  msgStr = prepareStr(msg->asString(), TRUE);
 
-  cout << mSmtpHost << endl;
-  cout << mSmtpPort << endl;
   client.Open(mSmtpHost,mSmtpPort); // Open connection
-  cout << client.Response().c_str();
-
-  /*  printf("before kFailNoF\n");
-  if(client.LastFailure != DwProtocolClient::kFailNoFailure)
-    {KMsgBox::message(0,"Error opening connection",client.LastFailureStr());
-    client.Close(); // Just to make sure
-    return false;
-    }*/
-
+  if(!client.IsOpen) // Check if connection succeded
+  {
+    QString str;
+    str.sprintf(nls->translate("Cannot open SMTP connection to\n"
+			       "host %s for sending:\n%s"), 
+		(const char*)mSmtpHost,(const char*)client.Response().c_str());
+    warning((const char*)str);
+    return FALSE;
+  }
+  
   replyCode = client.Helo(); // Send HELO command
-  if(replyCode != 250 && replyCode != 0)
-    {KMsgBox::message(0,"Error!",client.Response().c_str());
-    if(client.Close() != 0)
-      {KMsgBox::message(0,"Network Error!","Could not close connection to " +
-		       mSmtpHost + "!");
-      return false;
-      }  
-    return false;
-    }
-  else if(replyCode == 0 )
-    {KMsgBox::message(0,"Network Error!",client.LastFailureStr());
-    return false;
-    }
-  else  
-    cout << client.Response().c_str();
-
-  str = msg->from(); // Check if from is set.
-  if(str.isEmpty())
-    {KMsgBox::message(0,"?","How could you get this far without a from Field");
-    if(client.Close() != 0)
-      {KMsgBox::message(0,"Network Error!","Could not close connection to " +
-		       mSmtpHost + "!");
-      return false;
-      }
-    return false;
-    }
+  if(replyCode != 250) return smtpFailed(client, "HELO", replyCode);
 
   replyCode = client.Mail(msg->from());
-  if(replyCode != 250 && replyCode != 0) // Send MAIL command
-     {KMsgBox::message(0,"Error",client.Response().c_str());
-     if(client.Close() != 0)
-      {KMsgBox::message(0,"Network Error!","Could not close connection to " +
-		       mSmtpHost + "!");
-      return false;
-      }
-     return false;
-     }
-  else if(replyCode == 0 )
-    {KMsgBox::message(0,"Network Error!",client.LastFailureStr());
-    return false;
-    }    
-  else
-    cout << client.Response().c_str();
+  if(replyCode != 250) return smtpFailed(client, "FROM", replyCode);
 
-  str = msg->to(); // Check if to is set.
-  if(str.isEmpty())
-    {KMsgBox::message(0,"?","How could you get this far without a to Field");
-    if(client.Close() != 0)
-      {KMsgBox::message(0,"Network Error!","Could not close connection to " +
-		       mSmtpHost + "!");
-      return false;
-      }
-    return false;
-    }
   replyCode = client.Rcpt(msg->to()); // Send RCPT command
-  if(replyCode != 250 && replyCode != 251 && replyCode != 0)
-    {KMsgBox::message(0,"Error",client.Response().c_str());
-    if(client.Close() != 0)
-      {KMsgBox::message(0,"Network Error!","Could not close connection to " +
-		       mSmtpHost + "!");
-      return false;
-      }
-    return false;
-    }  
-  else if(replyCode == 0 )
-    {KMsgBox::message(0,"Network Error!",client.LastFailureStr());
-    return false;
-    }    
-  else
-    cout << client.Response().c_str();
+  if(replyCode != 250 && replyCode != 251) 
+    return smtpFailed(client, "RCPT", replyCode);
 
-  str = msg->cc();
-  if(!str.isEmpty())  // Check if cc is set.
-    {replyCode = client.Rcpt(msg->cc()); // Send RCPT command
-    if(replyCode != 250 && replyCode != 251 && replyCode != 0)
-      {KMsgBox::message(0,"Error",client.Response().c_str());
-      if(client.Close() !=0 )
-	{KMsgBox::message(0,"Network Error!","Could not close connection to " +
-		       mSmtpHost + "!");
-	return false;
-	}
-      return false;
-      }
-    else if(replyCode == 0 )
-      {KMsgBox::message(0,"Network Error!",client.LastFailureStr());
-      return false;
-      }    
-    else
-      cout << client.Response().c_str();
-    }
+  if(!QString (msg->cc()).isEmpty())  // Check if cc is set.
+  {
+    replyCode = client.Rcpt(msg->cc()); // Send RCPT command
+    if(replyCode != 250 && replyCode != 251)
+      return smtpFailed(client, "RCPT", replyCode);
+  }
 
-  str = msg->bcc(); // Check if bcc ist set.
-  if(!str.isEmpty())
-    {replyCode = client.Rcpt(msg->bcc()); // Send RCPT command
-    if(replyCode != 250 && replyCode != 251 && replyCode != 0)
-      {KMsgBox::message(0,"Error",client.Response().c_str());
-      if(client.Close() != 0)
-	{KMsgBox::message(0,"Network Error!","Could not close connection to " +
-		       mSmtpHost + "!");
-	return false;
-	}
-      return false;
-      }
-    else if(replyCode == 0 )
-      {KMsgBox::message(0,"Network Error!",client.LastFailureStr());
-      return false;
-      }    
-    else
-      cout << client.Response().c_str();
-    }
+  if(!QString (msg->bcc()).isEmpty())  // Check if bcc ist set.
+  {
+    replyCode = client.Rcpt(msg->bcc()); // Send RCPT command
+    if(replyCode != 250 && replyCode != 251)
+      return smtpFailed(client, "RCPT", replyCode);
+  }
 
-  replyCode = client.Data();
-  if(replyCode != 354 && replyCode != 0) // Send DATA command
-    {KMsgBox::message(0,"Error!",client.Response().c_str());
-    if(client.Close() != 0)
-      {KMsgBox::message(0,"Network Error!","Could not close connection to " +
-		       mSmtpHost + "!");
-      return false;
-      }
-    return false;
-    }
-  else if(replyCode == 0 )
-    {KMsgBox::message(0,"Network Error!",client.Response().c_str());
-    return false;
-    }    
-  else
-    cout << client.Response().c_str();
+  replyCode = client.Data(); // Send DATA command
+  if(replyCode != 354) 
+    return smtpFailed(client, "DATA", replyCode);
 
-  replyCode = client.SendData(dwString);
-  if(replyCode != 250 && replyCode != 0) // Send data.
-    {KMsgBox::message(0,"Error!",client.Response().c_str());
-    if(client.Close() != 0 )
-      {KMsgBox::message(0,"Network Error!","Could not close connection to " +
-		       mSmtpHost + "!");
-      return false;
-      }
-    return false;
-    }
-  else if(replyCode == 0 )
-    {KMsgBox::message(0,"Network Error!",client.LastFailureStr());
-    return false;
-    }    
-  else
-    cout << client.Response().c_str();
+  replyCode = client.SendData((const char*)msgStr);
+  if(replyCode != 250 && replyCode != 251)
+    return smtpFailed(client, "<body>", replyCode);
 
   replyCode = client.Quit(); // Send QUIT command
-  if(replyCode != 221 && replyCode != 0)
-    {KMsgBox::message(0,"Error!",client.Response().c_str());
-    if(client.Close() != 0 )
-      {KMsgBox::message(0,"Network Error!","Could not close connection to " +
-		       mSmtpHost + "!");
-      return false;
-      }
-    return false;
-    }
-  else if(replyCode == 0 )
-    {KMsgBox::message(0,"Network Error!",client.LastFailureStr());
-    return false;
-    }    
-  else
-    cout << client.Response().c_str();
+  if(replyCode != 221)
+    return smtpFailed(client, "QUIT", replyCode);
 
-  return true;
+  return TRUE;
+}
 
+
+//-----------------------------------------------------------------------------
+bool KMSender::smtpFailed(DwSmtpClient& client, const char* inCommand,
+			  int replyCode)
+{
+  QString str;
+  const char* errorStr = client.Response().c_str();
+
+  str.sprintf(nls->translate("Failed to send mail message\n"
+			     "because a SMTP error occured\n"
+			     "during the \"%s\" command.\n\n"
+			     "Return code: %d\n"
+			     "Response: `%s'"), 
+	      inCommand, replyCode, errorStr ? errorStr : "(NULL)");
+  warning((const char*)str);
+
+  if (replyCode != 0) smtpClose(client);
+  return FALSE;
+}
+
+
+//-----------------------------------------------------------------------------
+void KMSender::smtpClose(DwSmtpClient& client)
+{
+  if (client.Close() != 0)
+    warning(nls->translate("Cannot close SMTP connection."));
 }
 
 
 //-----------------------------------------------------------------------------
 bool KMSender::sendMail(KMMessage* aMsg)
 {
-  char  msgFileName[1024];
-  FILE* msgFile;
-  const char* msgstr = aMsg->asString();
-  QString sendCmd;
-
-  // write message to temporary file such that mail can
-  // process it afterwards easily.
-  tmpnam(msgFileName);
-  msgFile = fopen(msgFileName, "w");
-  fwrite(msgstr, strlen(msgstr), 1, msgFile);
-  fclose(msgFile);
-
-  if (!mMailerProc) mMailerProc = new KProcess;
+  QString msgstr;
 
   if (mMailer.isEmpty())
   {
-    warning(nls->translate("Please specify a mailer program\nin the settings."));
+    warning(nls->translate("Please specify a mailer program\n"
+			   "in the settings."));
     return FALSE;
   }
 
-  sendCmd = mMailer.copy();
-  sendCmd += " \"";
-  sendCmd += aMsg->to();
-  sendCmd += "\" < ";
-  sendCmd += msgFileName;
+  msgstr = prepareStr(aMsg->asString());
 
-  mMailerProc->setExecutable("/bin/sh");
-  *mMailerProc << "-c" << (const char*)sendCmd;
+  if (!mMailerProc) mMailerProc = new KProcess;
+  assert(mMailerProc != NULL);
 
-  debug("sending message with command: "+sendCmd);
-  mMailerProc->start(KProcess::Block);
-  debug("sending done");
+  mMailerProc->clearArguments();
+  *mMailerProc << aMsg->to();
 
-  unlink(msgFileName);
-  return true;
+  mMailerProc->setExecutable(mMailer);
+  mMailerProc->start(KProcess::DontCare, KProcess::Stdin);
+  if (!mMailerProc->writeStdin(msgstr.data(), msgstr.length()))
+    return FALSE;
+  if (!mMailerProc->closeStdin()) return FALSE;
+  return TRUE;
+}
+
+
+//-----------------------------------------------------------------------------
+const QString KMSender::prepareStr(const QString aStr, bool toCRLF)
+{
+  QString str = aStr.copy();
+
+  str.replace(QRegExp("\\n\\."), "\n ."); 
+  str.replace(QRegExp("\\nFrom "), "\n>From "); 
+  if (toCRLF) str.replace(QRegExp("\\n"), "\r\n");
+
+  return str;
 }
 
 
@@ -335,9 +298,6 @@ bool KMSender::sendMail(KMMessage* aMsg)
 void KMSender::setMethod(Method aMethod)
 {
   mMethod = aMethod;
-  mCfg->setGroup(SENDER_GROUP);
-  mCfg->writeEntry("method", (int)mMethod);
-  mCfg->sync();
 }
 
 
@@ -345,8 +305,6 @@ void KMSender::setMethod(Method aMethod)
 void KMSender::setSendImmediate(bool aSendImmediate)
 {
   mSendImmediate = aSendImmediate;
-  mCfg->setGroup(SENDER_GROUP);
-  mCfg->writeEntry("immediate", (int)mSendImmediate);
 }
 
 
@@ -354,8 +312,6 @@ void KMSender::setSendImmediate(bool aSendImmediate)
 void KMSender::setMailer(const QString& aMailer)
 {
   mMailer = aMailer;
-  mCfg->setGroup(SENDER_GROUP);
-  mCfg->writeEntry("mailer", mMailer);
 }
 
 
@@ -363,9 +319,6 @@ void KMSender::setMailer(const QString& aMailer)
 void KMSender::setSmtpHost(const QString& aSmtpHost)
 {
   mSmtpHost = aSmtpHost;
-  mCfg->setGroup(SENDER_GROUP);
-  mCfg->writeEntry("smtphost", mSmtpHost);
-  mCfg->sync();
 }
 
 
@@ -373,7 +326,4 @@ void KMSender::setSmtpHost(const QString& aSmtpHost)
 void KMSender::setSmtpPort(int aSmtpPort)
 {
   mSmtpPort = aSmtpPort;
-  mCfg->setGroup(SENDER_GROUP);
-  mCfg->writeEntry("smtpport", mSmtpPort);
-  mCfg->sync();
 }
