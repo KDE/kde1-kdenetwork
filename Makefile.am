@@ -2,7 +2,7 @@
 ## (C) 1997 Stephan Kulow
 
 AUTOMAKE_OPTIONS = foreign 
-SUBDIRS = @TOPSUBDIRS@
+SUBDIRS = $(TOPSUBDIRS)
 DISTCLEANFILES = inst-apps 
 
 install-data-local:

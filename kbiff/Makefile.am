@@ -1,11 +1,14 @@
 # just set the variable
 APPSDIR = $(kde_appsdir)/Internet
+
 # set the include path for X, qt and KDE
-INCLUDES= $(all_includes)
+INCLUDES= $(all_includes) -I. -I$(srcdir) -I..
+
 # claim, which subdirectories you want to install
 SUBDIRS = doc pics
 
-DEFS = @DEFS@ -I. -I$(srcdir) -I.. -DDO_TRACE
+DEFS += -DDO_TRACE
+
 ####### This part is very kbiff specific
 # you can add here more. This one gets installed 
 bin_PROGRAMS = 	kbiff

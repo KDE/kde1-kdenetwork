@@ -14,11 +14,8 @@
 # just set the variable
 APPSDIR = $(kde_appsdir)/Internet
 # set the include path for X, qt and KDE
-INCLUDES= @all_includes@
-DEFS = @DEFS@ -I. -I../.. -include ../kplunger/kplunger.h
-# claim, which subdirectories you want to install
+INCLUDES= $(all_includes) -I. -I../.. -include ../kplunger/kplunger.h
 
-#DEFS = @DEFS@ -I. -I$(srcdir) -I.. -DDOTRACE
 ####### This part is very pws specific
 # you can add here more. This one gets installed 
 noinst_LIBRARIES = libksopenksirc.a

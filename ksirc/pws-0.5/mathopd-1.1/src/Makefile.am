@@ -14,7 +14,7 @@
 # just set the variable
 APPSDIR = $(kde_appsdir)/Internet
 # set the include path for X, qt and KDE
-INCLUDES= @all_includes@
+INCLUDES= $(all_includes)
 # claim, which subdirectories you want to install
 
 ####### This part is very pws specific
@@ -32,11 +32,11 @@ mathpod_SOURCES	= cgi.c\
 
 
 # the library search path
-mathpod_LDFLAGS = @all_libraries@ @KDE_RPATH@
+mathpod_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 
 # the libraries to link against. Be aware of the order. First the libraries,
 # that depend on the following ones.
-mathpod_LDADD  = @LIBSOCKET@     
+mathpod_LDADD  = $(LIBSOCKET)
 
 # this option you can leave out. Just, if you use "make dist", you need it
 noinst_HEADERS = mathopd.h

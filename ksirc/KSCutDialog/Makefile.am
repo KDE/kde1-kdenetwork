@@ -12,14 +12,7 @@
 # kde_toolbardir    Where general toolbar icons should go to.
 # kde_wallpaperdir  Where general wallpapers should go to.
 
-# just set the variable
-#APPSDIR = $(kde_appsdir)/Internet
-# set the include path for X, qt and KDE
-INCLUDES= @all_includes@
-DEFS = @DEFS@ -I. -I$(srcdir) -I../.. -include ../kplunger/kplunger.h 
-# claim, which subdirectories you want to install
-# SUBDIRS = 
-# KSTicker KSprogress
+INCLUDES= $(all_includes) -I. -I$(srcdir) -I../.. -include ../kplunger/kplunger.h
 
 ####### This part is very khexdit specific
 # you can add here more. This one gets installed 
