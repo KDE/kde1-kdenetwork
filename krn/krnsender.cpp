@@ -49,7 +49,7 @@ bool KRNSender::doSendNNTP (KMMessage *msg)
                                             "you can't post here!"));
         return false;
     }
-    int errcode=server->myPost();
+    int errcode=server->Post();
     debug ("post/errcode-->%d",errcode);
     if (!errcode)
     {

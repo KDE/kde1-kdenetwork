@@ -262,7 +262,7 @@ charsetsDlg.cpp:charsetsDlg.moc
 charsetsDlg.moc: charsetsDlg.h
 	$(MOC) charsetsDlg.h -o charsetsDlg.moc
 
-charsetsDlg.cpp:expirestatusdlg.moc
+expirestatusdlg.cpp:expirestatusdlg.moc
 expirestatusdlg.moc: expirestatusdlg.h
 	$(MOC) expirestatusdlg.h -o expirestatusdlg.moc
 	

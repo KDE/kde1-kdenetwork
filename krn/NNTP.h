@@ -226,7 +226,6 @@ public:
     void    reportCounters (bool byte=true,bool command=true);
     int     byteCounter;
     int     commandCounter;
-    int     myPost();
 signals:
     void newStatus(const char *status);
     
@@ -240,7 +239,6 @@ private:
     QString 	GroupName;
     bool    	Connected;
     bool       	Readonly;
-    bool       	checkStatus( QString start);
     bool       	connected;
     void       	overviewFmt( QString of );
     int		OffsetArticleNumber;

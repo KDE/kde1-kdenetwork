@@ -657,36 +657,6 @@ QString *NNTP::body(const char *_id)
     return data;
 }
 
-bool NNTP::checkStatus( QString start)
-{
-    return true;
-    bool success;
-    if (Laststatus.left(start.length())!=start)
-    {
-        success=false;
-    }
-    else
-        success=true;
-    return success;
-}
-
-int  NNTP::myPost()
-{
-    mReplyCode = 0;
-    sprintf (mSendBuffer,"POST\r\n");
-    cout << "C: " << mSendBuffer << endl;
-    
-    int bufferLen = strlen(mSendBuffer);
-    int numSent = PSend(mSendBuffer, bufferLen);
-    if (numSent == bufferLen)
-    {
-        PGetStatusResponse();
-        
-        cout <<"S: " << StatusResponse() << endl;
-    }
-    return mReplyCode;
-}
-
 bool NNTP::getMissingParts(MessageParts parts,const char *id)
 {
     bool success=false;

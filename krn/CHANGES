@@ -1,4 +1,11 @@
 -----------------------------------------------------------------------------
+Changes made Apr 5
+-----------------------------------------------------------------------------
+
+* [Roberto] Applied Sven's patch for the segfault on exit.
+*           Applied David Faure's Makefile.am patch.
+
+-----------------------------------------------------------------------------
 Changes made Apr 3
 -----------------------------------------------------------------------------
 * [Roberto] Fixed yet another expiring bug (minutes DON'T have
@@ -12,7 +19,8 @@ Changes made Apr 3
             too anoying.
 *           Oops, last changes broke article locking. Fixed.
 *           More debug messages removed.
-*           BugFix in groupdlg's article counter.
+*           BugFix in artdlg's article counter.
+*           Started working to make krn detect disconnections!
 -----------------------------------------------------------------------------
 Changes made Apr 2
 -----------------------------------------------------------------------------
