@@ -1,9 +1,3 @@
-#
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -17,19 +11,17 @@ msgstr ""
 
 # setupdlg.cpp:1336
 #: setupdlg.cpp:66
-#, fuzzy
 msgid "KBiff Setup"
-msgstr "Kbiff"
+msgstr "Configuração do Kbiff"
 
 # setupdlg.cpp:243
 #: setupdlg.cpp:69
-#, fuzzy
 msgid "Profile:"
-msgstr "Nova configuração de usuário"
+msgstr "Modelo:"
 
 #: setupdlg.cpp:92
 msgid "&Rename..."
-msgstr ""
+msgstr "&Renomear..."
 
 # setupdlg.cpp:109
 #: setupdlg.cpp:126
@@ -55,13 +47,13 @@ msgstr "Nova configuração de usuário"
 #: setupdlg.cpp:368
 #, c-format
 msgid "Rename Profile: %s"
-msgstr "Renomear configuração de usuário"
+msgstr "Renomear configuração de usuário: %s"
 
 # setupdlg.cpp:314
 #: setupdlg.cpp:408
 #, c-format
 msgid "Delete Profile: %s"
-msgstr "Apagar configuração de usuário"
+msgstr "Apagar configuração de usuário: %s"
 
 # setupdlg.cpp:315
 #: setupdlg.cpp:409
@@ -150,7 +142,7 @@ msgstr "Porta:"
 
 #: setupdlg.cpp:842
 msgid "PREAUTH"
-msgstr ""
+msgstr "PREAUT"
 
 # setupdlg.cpp:882 setupdlg.cpp:914
 #: setupdlg.cpp:935 setupdlg.cpp:964
@@ -204,14 +196,13 @@ msgstr "Kbiff"
 
 # setupdlg.cpp:1357
 #: setupdlg.cpp:1458
-#, fuzzy, c-format
 msgid ""
 "Version %s\n"
 "\n"
 "Copyright (C) 1998\n"
 "Kurt Granroth"
 msgstr ""
-"Versão 1.1\n"
+"Versão %s\n"
 "\n"
 "Copyright (C) 1998\n"
 "Kurt Granroth"
@@ -228,43 +219,42 @@ msgstr "Novo nome:"
 
 #: kbiff.cpp:468
 msgid "&UnDock"
-msgstr ""
+msgstr "Desembut&ir"
 
 #: kbiff.cpp:470
 msgid "&Dock"
-msgstr ""
+msgstr "&Embutir"
 
 #: kbiff.cpp:471
 msgid "&Setup..."
-msgstr ""
+msgstr "&Configuração..."
 
 #: kbiff.cpp:473
 msgid "&Help..."
-msgstr ""
+msgstr "A&juda..."
 
 #: kbiff.cpp:477
 msgid "&Check mail now"
-msgstr ""
+msgstr "&Verificar correio agora"
 
 #: kbiff.cpp:479
 msgid "&Read Mail now"
-msgstr ""
+msgstr "&Ler correio agora"
 
 #: kbiff.cpp:485
 msgid "&Stop"
-msgstr ""
+msgstr "&Parar"
 
 #: notify.cpp:28 notify.cpp:45
 msgid "You have new mail!"
-msgstr ""
+msgstr "Você tem novo e-mail!"
 
 #: notify.cpp:53
 #, c-format
 msgid "New Messages: %d"
-msgstr ""
+msgstr "Novas mensagens: %d"
 
 # setupdlg.cpp:882 setupdlg.cpp:914
 #: notify.cpp:58
-#, fuzzy, c-format
 msgid "Mailbox: %s"
-msgstr "Caixa de correio:"
+msgstr "Caixa de correio: %s"

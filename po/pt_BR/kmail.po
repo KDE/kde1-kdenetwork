@@ -219,7 +219,7 @@ msgstr "&Esvaziar"
 
 #: kmfilterdlg.cpp:147 kmmainwin.cpp:917
 msgid "New"
-msgstr ""
+msgstr "Novo"
 
 #: kmmainwin.cpp:918
 msgid "Unread"
@@ -355,9 +355,8 @@ msgstr "Inicializando..."
 
 #: kmfolderdia.cpp:38 kmmsgpartdlg.cpp:62 kmsettings.cpp:176
 #: kmsettings.cpp:869
-#, fuzzy
 msgid "Name:"
-msgstr "Nome de Login:"
+msgstr "Nome:"
 
 #: kmcomposewin.cpp:1456 kmfolderdia.cpp:44 kmfolderdia.cpp:120
 msgid "unnamed"
@@ -433,7 +432,7 @@ msgstr "Contas:   (adicione ao menos uma conta!)"
 
 #: kmcomposewin.cpp:135 kmsettings.cpp:269
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 #: kmcomposewin.cpp:138 kmsettings.cpp:270
 msgid "Type"
@@ -573,7 +572,7 @@ msgstr "Mandar Mensagens da Caixa de Saída na Verificação"
 
 #: kmsettings.cpp:556
 msgid "Misc"
-msgstr ""
+msgstr "Misc"
 
 #: kmsettings.cpp:580
 msgid "Message Body Font"
@@ -600,9 +599,8 @@ msgid "Choose Signature File"
 msgstr "Escolher Arquivo de Assinatura"
 
 #: kmsettings.cpp:861
-#, fuzzy
 msgid "Type:"
-msgstr "Tipo"
+msgstr "Tipo:"
 
 #: kmsettings.cpp:874
 msgid "Local Account"
@@ -630,7 +628,7 @@ msgstr "Apagar mail do servidor"
 
 #: kmsettings.cpp:907
 msgid "Enable interval Mail checking"
-msgstr ""
+msgstr "Habilitar checagem periódica de correio"
 
 #: kmsettings.cpp:921
 msgid "Store new mail in account:"
@@ -665,9 +663,8 @@ msgid "Subject"
 msgstr "Assunto"
 
 #: kmheaders.cpp:42
-#, fuzzy
 msgid "Date"
-msgstr "Data: "
+msgstr "Data"
 
 #: kmheaders.cpp:187
 #, c-format
@@ -730,7 +727,7 @@ msgstr "Compositor Kmail"
 
 #: kmcomposewin.cpp:136
 msgid "Size"
-msgstr ""
+msgstr "Tamanho"
 
 #: kmcomposewin.cpp:137
 msgid "Encoding"
@@ -877,9 +874,8 @@ msgid "&Attach"
 msgstr "&Anexar..."
 
 #: kmcomposewin.cpp:549
-#, fuzzy
 msgid "Send message"
-msgstr "Enviar mensagens:"
+msgstr "Enviar mensagem"
 
 #: kmcomposewin.cpp:573
 msgid "Cut selection"
@@ -975,9 +971,8 @@ msgid "Subject:"
 msgstr "Assunto:"
 
 #: kmcomposewin.cpp:1478
-#, fuzzy
 msgid "Date:"
-msgstr "Data: "
+msgstr "Data:"
 
 #: kmcomposewin.cpp:1587
 msgid "KMail: Spellcheck"
@@ -1487,18 +1482,18 @@ msgid "Bad pass Phrase; couldn't decrypt"
 msgstr "Frase inválida; não foi possível decifrar"
 
 #: kpgp.cpp:873
-#, fuzzy, c-format
 msgid ""
 "Could not find public keys matching the\n"
 "userid(s) %s. These persons won't be able\n"
 "to read the message."
 msgstr ""
-"chave pública de %s não foi encontrada.\n"
-"Esta pessoa não vai conseguir decifrar a mensagem."
+"Chave pública de %s não foi encontrada.\n"
+"Esta(s) pessoa(s) não vai(vão) conseguir\n"
+"decifrar a mensagem."
 
 #: kpgp.cpp:885
 msgid "Could not find public keys for some persons.\n"
-msgstr ""
+msgstr "As chaves públicas de algumas pessoas não foram encontradas.\n"
 
 #: kpgp.cpp:898
 msgid "Bad pass Phrase; couldn't sign"
@@ -1596,7 +1591,6 @@ msgid ""
 msgstr ""
 "Não consegui fazer uma cópia de segurança de %s.\n"
 "Continuar de qualquer modo ?"
-
 #: kfileio.cpp:156 kfileio.cpp:174
 #, c-format
 msgid ""
