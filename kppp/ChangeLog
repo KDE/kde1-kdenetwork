@@ -1,3 +1,6 @@
+Fri May 15 22:27:02 1998    Mario Weilguni <mweilguni@kde.org>
+	* removed the writeline("") once again, it does not work
+
 1998-05-12  Harri Porten  <porten@tu-harburg.de>
 
 	* added support for multiple telephone numbers (separated by ':')
@@ -14,7 +17,7 @@ Tue May 12 18:55:02 1998    Mario Weilguni <mweilguni@kde.org>
 
 	  there´s a small tcl script which converts the log files. Simply
 	  use "tclsh convlog.tcl" will convert all log-files, but NOT
-	  delete the old ones 
+	  delete the old ones.
 
 Mon May  4 17:19:12 1998    Mario Weilguni <mweilguni@kde.org>
 
