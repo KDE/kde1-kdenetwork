@@ -30,3 +30,6 @@ on (saturday,sunday) between (06:00..20:00) use (0.936, 360)
 on () between (00:00..06:00) use (0.936, 360)
 on () between (20:00..23:59) use (0.936, 360)
 
+# Feiertage
+on (5/1,12/25,12/26,11/1,easter+1,easter+39,easter+49,1/1,10/26,1/6,12/8) between (00:00..23:59) use (0.936, 360)
+

@@ -178,7 +178,6 @@ void ConnectWidget::preinit() {
 
   messg->setText(klocale->translate("Looking for Modem ..."));
   inittimer->start(500);
-
 }
 
 
@@ -263,11 +262,10 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
     // TODO
     // carriage return and then wait a second so that the modem will
     // let us issue commands.
-//     writeline("");
-//     usleep(gpppdata.modemInitDelay() * 10000); // 0.01 - 3.0 sec
+    writeline("");
+    usleep(100000); 
 
     writeline(gpppdata.modemInitStr());
-
     usleep(gpppdata.modemInitDelay() * 10000); // 0.01 - 3.0 sec 
 
     setExpect(gpppdata.modemInitResp());
@@ -1040,7 +1038,7 @@ void ConnectWidget::if_waiting_slot(){
       return;
     }
 
-    if_timer->start(200, TRUE); // single shot 
+    if_timer->start(100, TRUE); // single shot 
     return;
   }
 
@@ -1125,7 +1123,7 @@ bool ConnectWidget::opentty() {
     messg->setText(klocale->translate("Sorry, can't open modem."));
     return FALSE;
   }
-
+  
   if(gpppdata.UseCDLine()) {
     ioctl( modemfd, TIOCMGET, &flags ); 
     if ((flags&TIOCM_CD)==0) {
@@ -1316,11 +1314,9 @@ bool ConnectWidget::writeline(const char *buf) {
 
   if(strcmp(gpppdata.enter(), "CR/LF") == 0)
     write(modemfd, "\r\n", 2);
- 
-  if(strcmp(gpppdata.enter(), "LF") == 0)
+  else if(strcmp(gpppdata.enter(), "LF") == 0)
     write(modemfd, "\n", 1);
- 
-  if(strcmp(gpppdata.enter(), "CR") == 0)
+  else if(strcmp(gpppdata.enter(), "CR") == 0)
     write(modemfd, "\r", 1);
  
   return true;
@@ -1620,7 +1616,7 @@ void removedns() {
 
   int fd;
   char c;
-  QString resolv[30];
+  QString resolv[MAX_RESOLVCONF_LINES];
   extern QString old_hostname;
 
   if((fd = open("/etc/resolv.conf", O_RDONLY)) >= 0) {

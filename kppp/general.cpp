@@ -261,6 +261,13 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   modemdevice->insertItem("/dev/ttyS1");
   modemdevice->insertItem("/dev/ttyS2");
   modemdevice->insertItem("/dev/ttyS3");
+#ifdef ISDNSUPPORT
+  modemdevice->insertItem("/dev/ttyI0");
+  modemdevice->insertItem("/dev/ttyI1");
+  modemdevice->insertItem("/dev/ttyI2");
+  modemdevice->insertItem("/dev/ttyI3");
+#endif
+
   modemdevice->setMinimumWidth(modemdevice->sizeHint().width());
   modemdevice->setFixedHeight(modemdevice->sizeHint().height());
   tl->addWidget(modemdevice, 1, 2);

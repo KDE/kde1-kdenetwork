@@ -1,3 +1,15 @@
+Mon May  4 17:19:12 1998    Mario Weilguni <mweilguni@kde.org>
+
+	* Austrian rule files updated
+	* LSM updated
+	* line-limit for /etc/resolv.conf raised to 128
+	* fixed the hard-coded line-limit in removedns() to use
+	  MAX_RESOLV_CONF instead (128)	
+	* added writeLine("") in connect.cpp to make sure that the modem
+	  is in ready state (waiting for AT*)
+	* support for internal ISDN cards on Linux via modem emulation 
+	  (/dev/ttyI*)
+
 1998-04-30  Harri Porten  <porten@tu-harburg.de>
 
 	* connect.cpp: undid my stupid PAP/CHAP changes from yesterday

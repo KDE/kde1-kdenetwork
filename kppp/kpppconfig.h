@@ -79,7 +79,7 @@
 #define MAX_PPPD_ARGUMENTS 20
 
 // Define the maximun number of lines of /etc/resolv.conf
-#define MAX_RESOLVCONF_LINES 30
+#define MAX_RESOLVCONF_LINES 128
 
 // Lock File for the modem device (Needed by mgetty users)
 #define MODEM_LOCK_FILE "/var/lock/LCK..modem"
@@ -92,6 +92,11 @@
 
 // name of the pppd binary
 #define PPPDNAME "pppd"
+
+// support for internal ISDN cards and modem emulation
+#ifdef linux
+#define ISDNSUPPORT
+#endif
 
 #endif
 
