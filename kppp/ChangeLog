@@ -1,3 +1,9 @@
+Sun Dec 22 23:00:03 1997  Peter Silva <peter.silva@videotron.ca>
+
+	* To fix hangup problems:
+	* Added programmable guard time around escape sequence
+	* Separated escape sequence from hangup command
+
 Sun Dec 21 10:19:18 1997  Peter Silva <peter.silva@videotron.ca>
 
 	* Changed maxloopnest to MAXLOOPNEST for portability reasons 

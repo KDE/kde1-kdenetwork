@@ -100,6 +100,9 @@
 #define BUSYRESP_KEY       "BusyResponse"
 #define NOCARRIERRESP_KEY  "NoCarrierResponse"
 #define NODIALTONERESP_KEY "NoDialToneResp"
+#define ESCAPESTR_KEY      "EscapeString"
+#define ESCAPERESP_KEY     "EscapeResponse"
+#define ESCGUARDSTR_KEY    "EscapeGuard"
 #define HANGUPSTR_KEY      "HangupString"
 #define HANGUPRESP_KEY     "HangUpResponse"
 #define ANSWERSTR_KEY      "AnswerString"
@@ -148,6 +151,10 @@ struct gendata {
   char busyresp[MODEMSTR_SIZE+1];
   char nocarrierresp[MODEMSTR_SIZE+1];
   char nodialtoneresp[MODEMSTR_SIZE+1];
+
+  char modemescapestr[MODEMSTR_SIZE+1];     // modem escape string.
+  char modemescaperesp[MODEMSTR_SIZE+1];     
+  int  modemescapeguardtime; 		    // 100'ths of a sec. 
 
   char modemhangupstr[MODEMSTR_SIZE+1];     // modem hangup string
   char hangupresp[MODEMSTR_SIZE+1];
@@ -266,6 +273,15 @@ public:
   const char* modemNoDialtoneResp();
   void setModemNoDialtoneResp(const char *);
 
+
+  const char* modemEscapeStr();
+  void setModemEscapeStr(const char*);
+
+  const char* modemEscapeResp();
+  void setModemEscapeResp(const char*);
+
+  const int modemEscapeGuardTime();
+  void setModemEscapeGuardTime(const int);
 
   const char* modemHangupStr();
   void setModemHangupStr(const char*);

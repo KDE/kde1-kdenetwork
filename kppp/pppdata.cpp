@@ -24,7 +24,9 @@
  * Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
+#include <stdio.h>
 #include "pppdata.h"
+#include <stdlib.h>
 
 PPPData gpppdata;
 
@@ -56,7 +58,6 @@ void PPPData::load(const KApplication* a) {
   QString countstr;
   QStrList dnslist, scriptcomlist, scriptarglist, pppdArgumentlist;
   int count;
-
   config = a->getConfig();
 
   config->setGroup(GENERAL_GRP);
@@ -85,7 +86,12 @@ void PPPData::load(const KApplication* a) {
   setModemNoCarrierResp(config->readEntry(NOCARRIERRESP_KEY, "NO CARRIER"));
   setModemNoDialtoneResp(config->readEntry(NODIALTONERESP_KEY,
 					    "NO DIALTONE"));
-  setModemHangupStr(config->readEntry(HANGUPSTR_KEY, "+++ATH"));
+
+  setModemEscapeStr(config->readEntry(ESCAPESTR_KEY, "+++"));
+  setModemEscapeResp(config->readEntry(ESCAPERESP_KEY, "OK"));
+  setModemEscapeGuardTime( atoi(config->readEntry(ESCGUARDSTR_KEY, "60")));
+
+  setModemHangupStr(config->readEntry(HANGUPSTR_KEY, "ATH"));
   setModemHangupResp(config->readEntry(HANGUPRESP_KEY, "OK"));
   setModemAnswerStr(config->readEntry(ANSWERSTR_KEY, "ATA"));
   setModemRingResp(config->readEntry(RINGRESP_KEY , "RING"));
@@ -151,6 +157,7 @@ void PPPData::load(const KApplication* a) {
 void PPPData::save() {
   QString countstr;
   QStrList dnslist, scriptcomlist, scriptarglist, pppdArgumentlist;
+  char gtbuf[4];
 
   config->setGroup(GENERAL_GRP);
   config->writeEntry(DEFAULTACCOUNT_KEY, defaultAccount());
@@ -177,6 +184,10 @@ void PPPData::save() {
   config->writeEntry(BUSYRESP_KEY, modemBusyResp());
   config->writeEntry(NOCARRIERRESP_KEY, modemNoCarrierResp());
   config->writeEntry(NODIALTONERESP_KEY, modemNoDialtoneResp());
+  config->writeEntry(ESCAPESTR_KEY, modemEscapeStr());
+  config->writeEntry(ESCAPERESP_KEY, modemEscapeResp());
+  sprintf( gtbuf, "%d", modemEscapeGuardTime() );
+  config->writeEntry(ESCGUARDSTR_KEY, gtbuf );
   config->writeEntry(HANGUPSTR_KEY, modemHangupStr());
   config->writeEntry(HANGUPRESP_KEY, modemHangupResp());
   config->writeEntry(ANSWERSTR_KEY, modemAnswerStr());
@@ -518,9 +529,37 @@ void PPPData::setModemNoDialtoneResp(const char *n) {
 }
 
 
+const char* PPPData::modemEscapeStr() {
+  return gd.modemescapestr;
+}
+
+const char* PPPData::modemEscapeResp() {
+  return gd.modemescaperesp;
+}
+
+const int PPPData::modemEscapeGuardTime() {
+  return gd.modemescapeguardtime;
+}
+
+
 const char* PPPData::modemHangupStr() {
   return gd.modemhangupstr;
 }
+
+void PPPData::setModemEscapeStr(const char *n) {
+  strncpy(gd.modemescapestr, n, MODEMSTR_SIZE);
+  gd.modemescaperesp[MODEMSTR_SIZE] = '\0';
+} 
+
+void PPPData::setModemEscapeResp(const char *n) {
+  strncpy(gd.modemescaperesp, n, MODEMSTR_SIZE);
+  gd.modemescaperesp[MODEMSTR_SIZE] = '\0';
+} 
+
+void PPPData::setModemEscapeGuardTime(const int n) {
+  gd.modemescapeguardtime = n;
+} 
+
 
 void PPPData::setModemHangupStr(const char *n) {
   strncpy(gd.modemhangupstr, n, MODEMSTR_SIZE);

@@ -32,14 +32,14 @@ ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
   setCaption("Edit Modem Commands");
 
   box = new QGroupBox(this, "box");
-  box->setGeometry(5,5,330,380);
+  box->setGeometry(5,5,330,465);
 
   ok = new QPushButton("OK", this);
-  ok->setGeometry(10, 395, 70, 30);
+  ok->setGeometry(10, 475, 70, 30);
   connect(ok, SIGNAL(clicked()), SLOT(okbutton()));
   
   cancel = new QPushButton("Cancel", this);
-  cancel->setGeometry(90, 395, 70, 30);
+  cancel->setGeometry(90, 475, 70, 30);
   cancel->setFocus();
   connect(cancel, SIGNAL(clicked()), SLOT(cancelbutton()));
 
@@ -101,7 +101,6 @@ ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
   label7->setGeometry(20,195,135,25);
   label7->setText("No Dialtone Response:");
 
-
   hangupstr = new QLineEdit(this);
   hangupstr->setGeometry(160, 225, 150, 25);
   hangupstr->setMaxLength(MODEMSTR_SIZE);
@@ -142,6 +141,38 @@ ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
   label12->setGeometry(20,345,135,25);
   label12->setText("Answer Response:");
 
+  escapestr = new QLineEdit(this);
+  escapestr->setGeometry(160, 375, 150, 25);
+  escapestr->setMaxLength(MODEMSTR_SIZE);
+
+  label13 = new QLabel(this);
+  label13->setGeometry(20,375,135,25);
+  label13->setText("Escape String:");
+
+  escaperesp = new QLineEdit(this);
+  escaperesp->setGeometry(160, 405, 150, 25);
+  escaperesp->setMaxLength(MODEMSTR_SIZE);
+
+  label14 = new QLabel(this);
+  label14->setGeometry(20,405,135,25);
+  label14->setText("Escape Response:");
+
+  escapeguardtime = new QScrollBar( 0, 255, 1, 10, 
+			gpppdata.modemEscapeGuardTime(),   // initial value.
+			QScrollBar::Horizontal,
+			this, "escapeguardtimesb");
+  escapeguardtime->setGeometry(200, 435, 110, 25);
+
+  escapeguardtimelcd = new QLCDNumber( 3, this, "lcd" ); 
+  connect( escapeguardtime, SIGNAL(valueChanged(int)), 
+	    escapeguardtimelcd, SLOT(display(int)) ); 
+  escapeguardtimelcd->setGeometry(160, 435, 45, 25);
+  escapeguardtimelcd->display(gpppdata.modemEscapeGuardTime());
+
+  label14 = new QLabel(this);
+  label14->setGeometry(20,435,135,25);
+  label14->setText("Guard Time (sec/50):");
+
   //set stuff from gpppdata
   initstr->setText(gpppdata.modemInitStr());
   initresp->setText(gpppdata.modemInitResp());
@@ -152,6 +183,9 @@ ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
   nocarrierresp->setText(gpppdata.modemNoCarrierResp());
   nodialtoneresp->setText(gpppdata.modemNoDialtoneResp());
 
+  escapestr->setText(gpppdata.modemEscapeStr());
+  escaperesp->setText(gpppdata.modemEscapeResp());
+
   hangupstr->setText(gpppdata.modemHangupStr());
   hangupresp->setText(gpppdata.modemHangupResp());
 
@@ -159,7 +193,7 @@ ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
   ringresp->setText(gpppdata.modemRingResp());
   answerresp->setText(gpppdata.modemAnswerResp());
 
-  this->setFixedSize(340,430);
+  this->setFixedSize(340, 505);
 
 }
 
@@ -174,6 +208,8 @@ void ModemCommands::okbutton() {
   gpppdata.setModemNoCarrierResp(nocarrierresp->text());
   gpppdata.setModemNoDialtoneResp(nodialtoneresp->text());
 
+  gpppdata.setModemEscapeStr(escapestr->text());
+  gpppdata.setModemEscapeGuardTime(escapeguardtime->value());
   gpppdata.setModemHangupStr(hangupstr->text());
   gpppdata.setModemHangupResp(hangupresp->text());
 

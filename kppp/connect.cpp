@@ -683,6 +683,9 @@ void ConnectWidget::cancelbutton() {
 
   messg->setText("One Moment Please ...");
   
+#ifdef MY_DEBUG
+printf( "ConnectWidget::cancelbutton() \n" );
+#endif
   app->processEvents();
   
   hangup();
@@ -973,16 +976,24 @@ void ConnectWidget::hangup() {
 
   struct termios temptty;
 
+
   if(modemfd >= 0) {
-    
+
+    // Properly bracketed escape code  
+    tcflush(modemfd,TCOFLUSH);
+    // +3 because quiet time must be greater than guard time.
+    usleep((gpppdata.modemEscapeGuardTime()+3)*20000);
+    write(modemfd, gpppdata.modemEscapeStr(), strlen(gpppdata.modemEscapeStr()) );  
+    tcflush(modemfd,TCOFLUSH);
+    usleep((gpppdata.modemEscapeGuardTime()+3)*20000);
+
+    // Then hangup command
     writeline(gpppdata.modemHangupStr());
     
     if(gpppdata.FastModemInit())
       usleep(10000); // 0.01 sec
     else
       usleep(1000000); // 1 sec
-
-
 
     tcsendbreak(modemfd, 0);
 
@@ -998,7 +1009,6 @@ void ConnectWidget::hangup() {
     tcsetattr(modemfd, TCSAFLUSH, &temptty);
    
   }
-
 
 }
 

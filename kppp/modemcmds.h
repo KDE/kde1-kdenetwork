@@ -37,6 +37,8 @@
 #include<qpushbt.h>
 #include<qpainter.h>
 #include<qlabel.h>
+#include <qscrbar.h> 
+#include <qlcdnum.h>  
 
 #include "pppdata.h"
 
@@ -97,5 +99,14 @@ private:
   QLineEdit *answerresp;
   QLabel *label12;
 
+  QLineEdit *escapestr;
+  QLabel *label13;
+
+  QLineEdit *escaperesp;
+  QLabel *label14;
+
+  QScrollBar *escapeguardtime;
+  QLCDNumber *escapeguardtimelcd;
+  QLabel *label15;
 };
 #endif

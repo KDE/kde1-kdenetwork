@@ -604,6 +604,7 @@ void XPPPWidget::connectbutton() {
 
 
 void XPPPWidget::disconnect() {
+
   app->processEvents();
 
   stats->stop_stats();
