@@ -301,6 +301,13 @@ Artdlg::~Artdlg ()
 void Artdlg::fillTree ()
 
 {
+    //save current ID if there is one
+    Article *currArt;
+    currArt=0;
+    int curr=list->currentItem();
+    if (curr>-1)
+        currArt=artList.at(curr);
+        
     qApp->setOverrideCursor(waitCursor);
     statusBar()->changeItem("Reading Article List",1);
     qApp->processEvents ();
@@ -335,6 +342,15 @@ void Artdlg::fillTree ()
         iter->formHeader(&formatted);
         list->insertItem (formatted.data());
     }
+
+    //restore current message
+    if (curr>-1)
+    {
+        list->setCurrentItem(artList.find(currArt));
+        list->setTopItem(artList.find(currArt));
+    }
+    
+    
     list->setAutoUpdate(true);
     list->repaint();
     qApp->restoreOverrideCursor();

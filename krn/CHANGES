@@ -1,4 +1,13 @@
 -----------------------------------------------------------------------------
+Changes made Oct 29
+-----------------------------------------------------------------------------
+
+* [Roberto] Fixed bug that erased article state when regetting xover headers
+            for another group.
+* [Roberto] Better behaviour when creating article list (it now keeps the
+            same article as current if possible).
+
+-----------------------------------------------------------------------------
 Changes made Oct 28
 -----------------------------------------------------------------------------
 
