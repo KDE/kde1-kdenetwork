@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: krn\n"
-"POT-Creation-Date: 1999-01-18 02:04+0100\n"
+"POT-Creation-Date: 1998-12-19 02:18+0100\n"
 "PO-Revision-Date: 1998-02-03 12:00+0000\n"
 "Last-Translator: Pedro Morais <morais@kde.org>\n"
 "Language-Team: pt\n"
@@ -92,7 +92,7 @@ msgstr "Desmarcar"
 
 #: artdlg.cpp:167 findArtDlg.cpp:65 groupdlg.cpp:157
 msgid "Find"
-msgstr ""
+msgstr "Procurar"
 
 #: artdlg.cpp:178 groupdlg.cpp:159
 msgid "(Un)Tag"
@@ -288,7 +288,7 @@ msgstr "Enviar & Responder"
 
 #: artdlg.cpp:175 artdlg.cpp:265
 msgid "Forward"
-msgstr ""
+msgstr "Reenviar"
 
 #: artdlg.cpp:181 artdlg.cpp:249
 msgid "Tagged"
@@ -352,7 +352,7 @@ msgstr "Refrescar Écran"
 
 #: artdlg.cpp:248
 msgid "Current"
-msgstr ""
+msgstr "Actual"
 
 #: artdlg.cpp:250 fontsDlg.cpp:52
 msgid "All"
@@ -404,7 +404,7 @@ msgstr "Remetente"
 
 #: artdlg.cpp:300 sortDlg.cpp:35
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 #: artdlg.cpp:301 sortDlg.cpp:36
 msgid "Lines"
@@ -522,7 +522,7 @@ msgstr "Password"
 
 #: NNTPConfigDlg.cpp:91
 msgid "Ask before downloading more than"
-msgstr ""
+msgstr "Perguntar antes de receber mais de"
 
 #: NNTPConfigDlg.cpp:94
 msgid "articles"
@@ -543,19 +543,6 @@ msgstr "Créditos & Agradecimentos"
 #: aboutDlg.cpp:66
 msgid "And Many thanks to:"
 msgstr "Muitos agradecimentos a:"
-
-#: aboutDlg.cpp:71
-msgid "All KDE developers"
-msgstr ""
-
-#: aboutDlg.cpp:73
-msgid "Chuck, for helping in time of need"
-msgstr ""
-
-#: aboutDlg.cpp:74
-#, fuzzy
-msgid "All testers"
-msgstr "Todos os Newsgroups."
 
 #: fontsDlg.cpp:39
 msgid "Message Display Settings"
@@ -603,15 +590,15 @@ msgstr "Tamanho da Fonte:"
 
 #: fontsDlg.cpp:70
 msgid "Small"
-msgstr ""
+msgstr "Pequena"
 
 #: fontsDlg.cpp:71
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 #: fontsDlg.cpp:72
 msgid "Large"
-msgstr ""
+msgstr "Grande"
 
 #: fontsDlg.cpp:73
 msgid "Huge"
@@ -735,7 +722,7 @@ msgstr "&Enviar mais tarde"
 
 #: kmcomposewin.cpp:435
 msgid "S&end now"
-msgstr ""
+msgstr "&Enviar agora"
 
 #: kmcomposewin.cpp:437
 msgid "&Insert File..."
@@ -767,7 +754,7 @@ msgstr "Substituir"
 
 #: kmcomposewin.cpp:477
 msgid "&Spellcheck..."
-msgstr ""
+msgstr "&Verificação ortográfica..."
 
 #: kmcomposewin.cpp:484
 msgid "&Urgent"
@@ -783,7 +770,7 @@ msgstr "&Confirmar leitura"
 
 #: kmcomposewin.cpp:491
 msgid "&Spellchecker..."
-msgstr ""
+msgstr "&Verificação ortográfica..."
 
 #: kmcomposewin.cpp:494
 msgid "&Charsets..."
@@ -795,23 +782,23 @@ msgstr ""
 
 #: kmcomposewin.cpp:509
 msgid "&From"
-msgstr ""
+msgstr "&De"
 
 #: kmcomposewin.cpp:510
 msgid "&Reply to"
-msgstr ""
+msgstr "&Respoder a"
 
 #: kmcomposewin.cpp:511
 msgid "&To"
-msgstr ""
+msgstr "&Para"
 
 #: kmcomposewin.cpp:512
 msgid "&Cc"
-msgstr ""
+msgstr "&Cc"
 
 #: kmcomposewin.cpp:513
 msgid "&Bcc"
-msgstr ""
+msgstr "&Bcc"
 
 #: kmcomposewin.cpp:514
 msgid "&Subject"
@@ -839,7 +826,7 @@ msgstr ""
 
 #: kmcomposewin.cpp:532
 msgid "&Attach..."
-msgstr ""
+msgstr "&Anexar..."
 
 #: kmcomposewin.cpp:535
 msgid "&Save..."
@@ -847,11 +834,11 @@ msgstr ""
 
 #: kmcomposewin.cpp:536
 msgid "Pr&operties..."
-msgstr ""
+msgstr "Pr&opriedades..."
 
 #: kmcomposewin.cpp:538
 msgid "&Attach"
-msgstr ""
+msgstr "&Anexar"
 
 #: kmcomposewin.cpp:558
 msgid "Send message"
@@ -859,11 +846,11 @@ msgstr "Enviar mensagem"
 
 #: kmcomposewin.cpp:563
 msgid "Compose new message"
-msgstr ""
+msgstr "Escrever nova mensagem"
 
 #: kmcomposewin.cpp:568
 msgid "Save message to file"
-msgstr ""
+msgstr "Gravar mensagem para ficheiro"
 
 #: kmcomposewin.cpp:573
 msgid "Print message"
@@ -871,15 +858,15 @@ msgstr "Imprimir mensagem"
 
 #: kmcomposewin.cpp:582
 msgid "Cut selection"
-msgstr ""
+msgstr "Cortar selecção"
 
 #: kmcomposewin.cpp:585
 msgid "Copy selection"
-msgstr ""
+msgstr "Copiar selecção"
 
 #: kmcomposewin.cpp:588
 msgid "Paste clipboard contents"
-msgstr ""
+msgstr "Colar o conteúdo da área de trânsferencia"
 
 #: kmcomposewin.cpp:593
 msgid "Attach file"
@@ -899,7 +886,7 @@ msgstr "encriptar mensagem"
 
 #: kmcomposewin.cpp:626 kmcomposewin.cpp:642
 msgid "Column"
-msgstr ""
+msgstr "Coluna"
 
 #: kmcomposewin.cpp:627 kmcomposewin.cpp:640
 msgid "Line"
@@ -914,6 +901,8 @@ msgid ""
 "Close and discard\n"
 "edited message?"
 msgstr ""
+"Fechar e perder\n"
+"mensagem?"
 
 #: kmcomposewin.cpp:1182
 msgid "Attach File"
@@ -925,11 +914,11 @@ msgstr "Incluir Ficheiro"
 
 #: kmcomposewin.cpp:1239 kmreaderwin.cpp:737
 msgid "View..."
-msgstr ""
+msgstr "Ver..."
 
 #: kmcomposewin.cpp:1240
 msgid "Save..."
-msgstr ""
+msgstr "Gravar..."
 
 #: kmcomposewin.cpp:1241 kmreaderwin.cpp:740
 msgid "Properties..."
@@ -937,7 +926,7 @@ msgstr "Propriedades..."
 
 #: kmcomposewin.cpp:1245
 msgid "Attach..."
-msgstr ""
+msgstr "Anexar..."
 
 #: kmcomposewin.cpp:1287 kmreaderwin.cpp:782
 msgid "View Attachment: "
@@ -948,6 +937,8 @@ msgid ""
 "Sorry, but this feature\n"
 "is still missing"
 msgstr ""
+"Desculpe, mas esta função\n"
+"ainda não está implementada"
 
 #: kmcomposewin.cpp:1466
 msgid "unnamed"
@@ -1018,7 +1009,7 @@ msgstr "Envio de mensagens concluído."
 
 #: kmsender.cpp:308
 msgid "Sending failed:"
-msgstr ""
+msgstr "Envio falhou:"
 
 #: kmsender.cpp:461
 msgid ""
@@ -1048,7 +1039,7 @@ msgstr ""
 
 #: kmsender.cpp:623
 msgid "Cannot close SMTP connection."
-msgstr ""
+msgstr "Não consiso fechar ligação SMTP"
 
 #: kmsender.cpp:673
 msgid "transmitting message"
@@ -1056,7 +1047,7 @@ msgstr "A transmitir mensagem"
 
 #: kmsender.cpp:707
 msgid "network error"
-msgstr ""
+msgstr "erro da rede"
 
 #: kmsender.cpp:709
 #, c-format
@@ -1070,7 +1061,7 @@ msgstr ""
 #: kmsender.cpp:724
 #, c-format
 msgid "Sending SMTP command: %s"
-msgstr ""
+msgstr "A enviar comando SMTP: %s"
 
 #: findArtDlg.cpp:22
 msgid "KRN - Article Searcher"
@@ -1575,10 +1566,6 @@ msgstr ""
 msgid "&Qute unknonw characters"
 msgstr ""
 
-#: expirestatusdlg.cpp:35
-msgid "Please wait a minute, I am expiring!"
-msgstr ""
-
 #: kpgpbase.cpp:315
 msgid "Bad pass Phrase; couldn't sign"
 msgstr ""
@@ -1627,11 +1614,11 @@ msgstr "KRN-Confirmação"
 
 #: TooManydlg.cpp:30
 msgid "Read how many articles?"
-msgstr ""
+msgstr "Ler quantos artigos?"
 
 #: TooManydlg.cpp:36
 msgid "Get them from"
-msgstr ""
+msgstr "Recebe-los de"
 
 #: TooManydlg.cpp:37
 msgid "Oldest articles"
