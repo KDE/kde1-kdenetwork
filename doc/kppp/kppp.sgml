@@ -1,8 +1,5 @@
 <!doctype linuxdoc system>
-
-<!-- The Kppp Handbook.
-
- -->
+<!-- The Kppp Handbook. -->
 
 <article>
 
@@ -10,8 +7,8 @@
 
 <title>The <em/kppp/ Handbook
 <author>Bernd Johannes Wuebben, <tt/wuebben@kde.org/
-<date>Version 1.5.22, December 22, 1998
-<abstract>This Handbook describes <em/kppp/ Version 1.5.22
+<date>Version 1.5.37, January 25, 1999
+<abstract>This Handbook describes <em/kppp/ Version 1.5.37
 
 <!-- Table of contents -->
 <toc>
@@ -69,8 +66,6 @@ and other contributions.
 proofreading some English text in the program
 </itemize>
 <p>
-
-
 
 <sect1>License and warranty<p>
 <em/kppp/ is published under the terms of the <ref id="GPL" name="GNU  General
@@ -130,9 +125,7 @@ pppd will not take its options from <em/kppp/.
 <bf/Again:/ Should you run into problems, please report them to me. 
 
 <p>
-<sect1>Preparing Your Linux System for a PPP Connection
-<p>
-<p> <tt> PLEASE DON'T FORGET TO READ THE FREQUENTLY ASKED QUESTIONS! THANK YOU!</tt><p>
+<sect1>Preparing Your Linux System for a PPP Connection<p>
 In order for <em/kppp//pppd to work your kernel must have ppp support compiled in. If this is
 not the case get yourself the latest version of 
 <url url="ftp://sunsite.unc.edu/pub/Linux/system/Network/serial/ppp/" name=pppd>
@@ -149,11 +142,17 @@ PPP Dynamic channel allocation code copyright 1995 Caldera, Inc.
 PPP line discipline registered
 </verb></tscreen>
 
+<bf/Update:/ <em/kppp/ since version 1.5.32 tries to find out
+itself if the kernel supports PPP. If not, you will be notified
+on start of <em/kppp/. This feature is not well tested, so you
+should not rely on it for now.
+
 <p>There were changes in the kernel PPP from Linux version 1.2.x to 2.0.x
 which forced the programming of a new pppd daemon. In most distributions,
 the pppd daemon can be found in <tt>/usr/sbin</tt>. For kernel versions 1.2.x, the
 correct version of the pppd daemon is 2.1; for kernel versions 2.0.x, the
-correct version is 2.2. or newer. If you don't know what version of the
+correct version is 2.2. or newer; for kernel versions 2.1.x and
+2.2.x you need pppd version 2.3. If you don't know what version of the
 pppd daemon your system has, you can type:<p>
 
 <tscreen><verb>
@@ -179,7 +178,6 @@ ppp protocol, pppd and networking in general:
 
 <sect>Setting up <em/kppp/
 <p>
-<p> <tt> PLEASE DON'T FORGET TO READ THE FREQUENTLY ASKED QUESTIONS ! THANK YOU!</tt><p>
 In order to set up <em/kppp/, start <em/kppp/ and push the <tt>Setup</tt> button on <em/kppp/'s
 main window. A new tab dialog will appear. 
 
@@ -192,7 +190,22 @@ telephone costs.
 
 <sect1>Device<p>
 <descrip>
-<tag/Modem Device/ Select the device appropriate for your hardware.
+<tag/Modem Device/ Select the device appropriate for your
+hardware. Here are some examples:
+<itemize>
+<item><bf>/dev/ttyS0</bf> - DOS or Windows users will know this as COM1, COM2 is
+/dev/ttyS1 and so on. These devices are mostly used on Linux systems.
+<item><bf>/dev/cua0</bf> - the first serial line (COM1). COM2 would be /dev/cua1
+and so on. These devices are mostly used on BSD systems, namely FreeBSD, NetBSD
+and OpenBSD.
+<item><bf>/dev/ttyI0</bf> - under Linux, these belong to internal ISDN
+cards. These devices emulate a common Hayes compatible modem. /dev/ttyI0 is for
+the first, /dev/ttyI1 for the second ISDN card and so on. These devices are only
+available in the Linux version
+<item><bf>/dev/modem</bf> - many Linux distributions make a symbolic link from
+the real modem device to /dev/modem. <bf>You should avoid using this
+one</bf>. Use /dev/ttySx (x is a digit) instead of.
+</itemize>
 
 <tag/Flow Control/ Select from Hardware (CRTSCTS), Software (XON/XOFF) and
 no flow control. The recommended setting is Hardware flow control.
@@ -202,10 +215,10 @@ Most modems will use ``CR/LF''. However some modems need a different setting.
 If you experience trouble while running a script: Play with this parameter.
 
 <tag/Connection Speed/ Choose from the list of connections speeds supported by
-your serial port.
+your serial port. 
 
 <label id="lock files"> 
-<tag/Lock File Directory/
+<tag/Use Lock File/
 Activate this option if you want <em/kppp/ to create a lockfile. Under Linux
 the directory for such a file will be <tt>/var/lock</tt>.
 Programs such as mgetty depend on the existence of such lock files and
@@ -215,12 +228,10 @@ if you want <em/kppp/ to lock the modem,
 since the pppd option "lock" will induce pppd to try to lock the
 modemdevice. However since <em/kppp/ already locked the device pppd
 will fail and <em/kppp/ will display "pppd died unexpectedly".
-Make sure that you have permission to write to the lock file
-directory or <em/kppp/ will display the error message:"Can't create lock file".
 
 <tag/Modem Timeout/ This is the time in seconds that <em/kppp/ waits for the 
-``CONNECT'' response from your modem after dialing into another modem. (Typically a modem
-of your IPS's modem pool ) I recommend a setting of about 30 seconds.
+``CONNECT'' response from your modem after dialing into another modem (typically a modem
+of your IPS's modem pool). I recommend a setting of about 30 seconds.
 </descrip>
 
 <sect1>Modem<p>
@@ -277,7 +288,7 @@ X-server exits and <em/kppp/ terminates.
 <tag/Dock into Panel on Connect/ If this option is chosen <em/kppp/ will dock into the panel where it will be symbolized by a small animated icon. Use the left mouse button on this icon to restore <em/kppp/'s window. The right mouse button will open up a popup-menu
 
  that offers to restore the window, show further transfer statistics or close the connection.
-This option overrides <em>Minimize Window on Connect</em>.
+This option overrides <em>Minimise Window on Connect</em>.
 </descrip>
 <p>
 
@@ -286,7 +297,8 @@ This option overrides <em>Minimize Window on Connect</em>.
 <sect>Configuring an Account<p>
 <sect1>Dial<p>
 <descrip>
-<tag/Connection Name/ You must give the account a name.
+<tag/Connection Name/ You must give the account a name. You can use anything
+here, but if you have multiple accounts it must be unique.
 
 <tag/Phone Number/ Specify the phone number to dial. You may use characters such as ``-'' to make the number more legible.
 If you concatenate a series of numbers (separated by a colon) <em/kppp/ will try these numbers in a cyclic order whenever it receives a busy signal.
@@ -361,11 +373,16 @@ in <tt>/etc/resolv.conf</tt> during connection.
 <sect1>Gateway<p>
 <descrip>
 <tag/Default Gateway/ Check this if you want pppd to use the default Gateway
-for your machine.
+for your machine. 
 
 <tag/Static Gateway/ Check this if you want to specify the Gateway to be used.
 </descrip>
 <p>
+
+<descrip>
+<tag/Assign the Default Route to this Gateway/ You almost certainly will need
+this. Leave it on unless you really know what you are doing.
+</descrip>
 
 <sect1>Login Script<p>
 <descrip>
@@ -466,9 +483,9 @@ Send        ppp                        # This starts a ppp connection for me
 </verb></tscreen>
 
 Here is a script that I use to connect to an ISP which is using some sort of
-challenge/reponse authentication. Ususally you got a hardware token (a smart
+challenge/response authentication. Usually you got a hardware token (a smart
 card with a display and calculator like keypad) from the ISP. You have to know
-a password to use the token. After dialing in your ISP displays your challenge.
+a password to use the token. After dialling in your ISP displays your challenge.
 You have to type in the challenge to your token and get a dynamic password
 as a response. Then you have to enter that password.
 
@@ -476,7 +493,7 @@ as a response. Then you have to enter that password.
 LoopStart   ID:                        # wait for ID:
 ID          Enter ID:                  # Prompt me for my ID and send it off.
 Scan        Challenge:                 # Scan for 'Challenge' and store everything behind up to the next newline.
-Expect      PassWord:                  # wait for 'password'
+Expect      Password:                  # wait for 'password'
 Prompt      Your token is ## - Enter Password  # Prompt me for my password and send it off.
 LoopEnd     granted                    # My ISP sends 'Permission granted' on login success.
 Send        ppp                        # This starts a ppp connection for me
@@ -536,7 +553,7 @@ dialog.
 <label id="volaccounting">
 <sect2>What is volume accounting?<p>
 It basically means to count the number of bytes transmitted from or to the
-internet. <em/kppp/ can count incoming bytes, outgoing bytes or both. It´s up to
+Internet. <em/kppp/ can count incoming bytes, outgoing bytes or both. It´s up to
 you what you want (or must) use.
 
 <sect2>Why should I use volume accounting?<p>
@@ -549,7 +566,7 @@ are curious, you can use it too...
 
 <sect2>What type of volume accounting should I select?<p>
 That depends on your provider. Many of them only count how many megabytes you
-get from internet and ignore how much you send. In that case you should choose
+get from Internet and ignore how much you send. In that case you should choose
 "Bytes in". If you have to pay for both you should select "Bytes in and
 out". "Bytes out" is not of much use and is only here for completeness.
 
@@ -659,7 +676,7 @@ To have the modem accept the characters as commands for itself, one must put the
 modem into the command state.  The escape code does this.
 <P>
 The escape code is defined as a being three intervals of time whose length
-is defined by S12 (in fiftieths of a second.)
+is defined by S12 (in fiftieth of a second.)
 
 <itemize>
 
@@ -675,18 +692,18 @@ it hang up. Sent ATH.  The escape codes and hangup string used by <em/kppp/
 are shown in the Setup/More/Modem Commands dialogs.  These should match
 your modem.
 
-<sect1>Make Tone Dialing Faster<p>
+<sect1>Make Tone Dialling Faster<p>
 
-If you can use tone dialing, the amount of time it takes to dial can be 
-changed using the S11 register.  It gives the duration (in 100ths of a second)
-to send each tone while dialing.  The default is usually 95 (almost a second.)
+If you can use tone dialling, the amount of time it takes to dial can be 
+changed using the S11 register.  It gives the duration (in 100hundreds of a second)
+to send each tone while dialling.  The default is usually 95 (almost a second.)
 How fast you can dial depends on the phone company's switching equipment which
 handles your line.  The minimum duration is 50, almost twice as fast, and
 that speed often works. 
 
 <tscreen><verb>
 ATZ		# reset to default profile
-ATS11=50	# fastest possible dialing, use a higher number if it doesn't work.
+ATS11=50	# fastest possible dialling, use a higher number if it doesn't work.
 AT&amp;W		# Write to default profile
 </verb></tscreen>
 
@@ -707,8 +724,8 @@ There are two different ways to use PAP:
 
 <sect2> Client side authentication<p> 
 This variant is used by many
-commercial ISPs. It basically means that you (or your computer) must
-authenticate yourself to the ISPs PPP server. The PPP server must not
+commercial ISP´s. It basically means that you (or your computer) must
+authenticate yourself to the ISP´s PPP server. The PPP server must not
 authenticate himself to your computer, but typically this is not necessary
 since you know which computer you are connected to (because the connection was
 established by yourself). So this is no major security issue. <em/kppp/ supports
@@ -757,7 +774,7 @@ your ISP supplied to you and dial.
 </enum>
 
 
-<sect1>PAP and CHAP with <em/kppp/<label id="PAP">
+<sect1>PAP and CHAP with <em/kppp/ (alternate method)<label id="PAP">
 <p>
 The following is based on an email by <url url="kbrown@pdq.net" name="Keith Brown">
 and explains how to make <em/kppp/ work for a generic PAP or CHAP account. If
@@ -901,7 +918,7 @@ This in most instances means that you have installed <em/kppp/
 without SETUID bit on while you, the person executing <em/kppp/, 
 doesn't have write access to the lock file directory which
 by default is <tt>/var/lock</tt>. This for example is the case on 
-RedHat systems. Check the modem dialog for the
+Red Hat systems. Check the modem dialog for the
 precise location you have chosen. The solution is easy --
 either run <em/kppp/ SETUID if you can afford to, or give regular
 users write access to <tt>/var/lock</tt> or create a modem group
@@ -915,13 +932,13 @@ that will have access to the <tt>/var/lock</tt> file.
 There is no need for the SETUID bit, if you know a bit of Unix systems 
 administration. Simply create a modem group, add all users that you
 want to give access to the modem to that group and make the modem
-device read/writeable for that group. Also if you want DNS configuration
-to work with <em/kppp/, then <tt>/etc/resolv.conf</tt> must be read/writeable by the
+device read/writable for that group. Also if you want DNS configuration
+to work with <em/kppp/, then <tt>/etc/resolv.conf</tt> must be read/writable by the
 members of that group. The same counts for
 <tt>/etc/ppp/pap-secrets</tt> and <tt>/etc/ppp/chap-secrets</tt> if
 you want to use the built-in PAP or CHAP support, respectively.
 
-Please do not criticize me for installing <em/kppp/ with setuid bit
+Please do not criticise me for installing <em/kppp/ with setuid bit
 on, I simply can no longer handle the amount of mail I used to get from
 desperate users who had problems getting <em/kppp/ to work because they 
 didn't understand enough about Unix and device permissions.
@@ -929,13 +946,15 @@ didn't understand enough about Unix and device permissions.
 The <em/kppp/ team has lately done a lot of work to make <em/kppp/ setuid-safe. But it's
 up to you to decide if you install and how you install it.
 
+You might also want to read the <ref id="security" name="Security"> section.
+
 <sect2><em/kppp/ just sits there and waits: Expecting OK<p>
 
 <itemize>
 
 <item> Have you played with the CR/LF setting? Try CR, LF or CR/LF.
 
-<item> Your modem might need some time to respond to its initialization.
+<item> Your modem might need some time to respond to its initialisation.
 Open the "Modem Commands" dialog on the "Modem" tab and adjust the "Pre-Init"
 and "Post-Init" delays. See if you are successful when drastically increasing
 their values and do some fine tuning later.
@@ -944,7 +963,7 @@ their values and do some fine tuning later.
 
 <sect2>The connection works fine but I can´t start any applications.<label id="autohostname"<p>
 
-You probably have activated the <ref id="Auto-configure hostname"> option and the X Server has problems connecting to your newly named host. If you really need this option (chances are that you don´t) you are on your own to setup the appropriate authorizations.
+You probably have activated the <ref id="Auto-configure hostname"> option and the X Server has problems connecting to your newly named host. If you really need this option (chances are that you don´t) you are on your own to setup the appropriate authorisations.
 Issuing <it>xhost +</it> before starting the connection would do the job, but be <bf>warned</bf> of any security risks that involves since everyone else is granted access to your X Server.
 <p> 
 
@@ -959,7 +978,7 @@ works you should
 <item> check if you provided <em/kppp/ with at least one DNS address
 <item> check the contents of <tt>/etc/host.conf</tt>. There should be a line
 saying something similar to <tt>order hosts, bind</tt>. The <tt>bind</tt>
-keyword advises the resolver library to include a nameserver query when
+keyword advises the resolver library to include a name server query when
 performing an address lookup.
 
 </itemize>
@@ -990,7 +1009,7 @@ given <em/kppp/ setuid permissions. Please read the section on <ref id="lock fil
 
 <p>
 
-<sect2>My modem makes much noise when dialing!<p>
+<sect2>My modem makes much noise when dialling!<p>
 Click on "Setup", "Modem". You can control the modem volume here in three
 steps: off, medium and high. For most modems "medium" and "high" result in the
 same volume. If that doesn't work, make sure that the correct settings for
@@ -998,9 +1017,9 @@ your modem are specified in "Setup"/"Modem"/"Modem commands"!
 <p>
 
 <sect2>I turned the modem volume "off" and verified the modem commands,
-but I still hear that noise when dialing!<p>
-The volume initialization string can get lost if your modem can't cope with
-the speed it reveives its command from <em/kppp/. Increase the value of
+but I still hear that noise when dialling!<p>
+The volume initialisation string can get lost if your modem can't cope with
+the speed it revives its command from <em/kppp/. Increase the value of
 "Post-Init Delay" in "Setup"/"Modem"/"Modem commands"!
 <p>
 
@@ -1040,13 +1059,13 @@ high speed mode.
 <sect2>REALLY slow connection speed<p>
 If data drips in at a rate of just a few bytes per second you should check
 your hardware setup. If moving your mouse speeds up the transmission this is
-definetely a hardware issue.<p>
+definitely a hardware issue.<p>
 Obtain some information about your serial port with
 <tt>setserial -a /dev/ttySx</tt> and check for interrupt conflicts with other
 components of your system.
 <p>
 
-<sect2>My phone line needs pulse dialing instead of tone dialing (or vice-versa)<p>
+<sect2>My phone line needs pulse dialling instead of tone dialling (or vice-versa)<p>
 You must modify you modem dial string. Nearly all modems support the 
 following AT-commands:
 <itemize>
@@ -1133,6 +1152,72 @@ alias ppp-compress-26 ppp_deflate
 </verb></tscreen>
 to your /etc/conf.modules file. 
 <p>
+
+<sect><em/kppp/ and Security Issues<label id="security"><p>
+This section is mainly for superusers (root), people with high
+security demands or simply technically interested people. It is
+not necessary to read this if you only use Linux at home for
+yourself (though you might learn something new when you read
+this)
+
+<sect1>Restricting access to kppp<p>
+A system administrator might want to restrict access to who is
+allowed to use <em/kppp/. There are two ways to accomplish this:
+
+<sect2>With group permissions<p>
+Create a new group (you might want to name it "dialout" or
+similar), put every user that should be allowed to use <em/kppp/
+into that group and type:
+<verb>
+        chown root.dialout /usr/local/kde/bin/kppp
+        chmod 4750 /usr/local/kde/bin/kppp
+</verb>
+This assumes that KDE was installed in <tt>/usr/local/kde</tt>
+and your new group is named "dialout".
+
+<sect2><em/kppp´s/ way<p>
+Before doing anything, <em/kppp/ checks if there is a file named
+<tt>/etc/kppp.allow</tt>. If such a file exists, ONLY users named
+in this file are allowed to dial out. This file must be readable
+by every user (of course NOT writable). Only login names are
+recognised, thus you cannot use UID´s in this file. Here´s a
+short example:
+<verb>
+        # /etc/kppp.allow
+	# comment lines like this are ignored, 
+	# as well as empty lines
+        fred
+        karl
+
+        # I put myself in here :-)
+        mweilguni
+</verb>
+In the example above only the users <it/fred/, <it/karl/ and
+<it/mweilguni/ can use <em/kppp/ to dial out, as well as every
+user with a UID of 0. So you don´t need to put <it/root/ in this
+file.
+
+<sect1><em/kppp/ has the SUID bit on. What about security?<p>
+It´s virtually impossible to write a dialer without the SUID bit,
+that is both safe and easy to use for unexperienced
+users. <em/kppp/ addresses the security issues with the following
+strategy:<p>
+<itemize>
+<item>Immidiatly after program start, <em/kppp/ forks.
+<item>The master process (which does all GUI stuff, user interaction
+and such) drops the SUID state afterwards, and runs with normal
+user privileges.
+<item>The slave process keeps it´s privileges, and is
+responsible for all actions that need root privileges. To keep
+this part safe, no KDE/Qt library calls are used here, just
+simple C library calls. The source code for this process is short
+(around 500 lines) and well documented, so it´s easy for to check
+it for security holes.
+<item>Master and slave process communicate with standard UNIX IPC.
+</itemize>
+
+Many thanks to Harri Porten for writing this excellent piece of
+code. I thought it was impossible - he made it within a week.
 
 <sect>Appendix
 <p>

@@ -1,3 +1,7 @@
+1999-01-25  Mario Weilguni <mweilguni@kde.org>
+
+	* updated and regenerated documentation
+	
 1999-01-23  Harri Porten  <porten@kde.org>
 
 	* main.cpp: config data wasn't saved on immediate exit.
@@ -12,6 +16,17 @@
 1999-01-17  Harri Porten  <porten@kde.org>
 
 	* modeminfo.cpp: ATI1 was left out. Wait 0.1 secs to process the ATE0.
+
+1999-01-14  Mario Weilguni <mweilguni@kde.org>
+
+	* Most windows should now have the mini-icon
+	* the lineedit for the modem timeout was too narrow to see at
+	least 2 characters. Fixed it, now shows at least 4 chars
+	* double-clicking an account in the account-listbox now opens 
+	the account for editing, as expected
+	* for some weird reason, the lineedit showing costs and volume
+	were both editable, thus letting users think they can edit
+	it. Fixed that.
 
 1999-01-12  Harri Porten  <porten@kde.org>
 
