@@ -9,13 +9,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 1999-04-26 03:29+0200\n"
-"PO-Revision-Date: Sat May 15 1999 16:49:06+0900\n"
+"PO-Revision-Date: Sun Jul 11 1999 18:52:00+0200\n"
 "Last-Translator: 井村 竜一郎 <imura@cs.titech.ac.jp>\n"
-"Language-Team: 日本語 <kde-jp@albert.nikkeibp.co.jp>\n"
+"Language-Team: japanese <kde-jp@albert.nikkeibp.co.jp>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=euc-jp\n"
-"Content-Transfer-Encoding: 8bit"
-"X-Generator: KTranslator v 0.4.0"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ENCODING\n"
+"X-Generator: KTranslator v 0.5.0"
 
 #: kmcomposewin.cpp:1516 kmmainwin.cpp:377 kpgp.cpp:546
 msgid ""
@@ -63,8 +63,8 @@ msgid ""
 "Are you sure you want to remove the folder\n"
 "\"%s\", discarding it's contents ?"
 msgstr ""
-"本当にフォルダ \"%s\" を削除してもよろしいですか？\n"
-"中のファイルは失われてしまいます。"
+"このフォルダ \"%s\" を削除しても構いませんか?\n"
+"中身は全て失われます。"
 
 #: kmmainwin.cpp:523
 msgid "Confirmation"
@@ -589,7 +589,7 @@ msgstr "アカウントの選択"
 
 #: kmaccount.cpp:77 kmfilterdlg.cpp:472 kmsettings.cpp:676
 msgid "Unnamed"
-msgstr "Unnamed"
+msgstr ""
 
 #: kmsettings.cpp:695
 msgid "Choose Sendmail Location"
@@ -992,11 +992,11 @@ msgstr "To:"
 
 #: kmcomposewin.cpp:1543
 msgid "Subject:"
-msgstr "Subject:"
+msgstr "サブジェクト:"
 
 #: kmcomposewin.cpp:1546
 msgid "Date:"
-msgstr "Date:"
+msgstr "日付:"
 
 #: kmcomposewin.cpp:1670
 msgid "Spellcheck complete."
@@ -1154,8 +1154,8 @@ msgid ""
 "$HOME is not set!\n"
 "KMail cannot start without it.\n"
 msgstr ""
-"$HOME が未設定です!\n"
-"KMail はこれなしでは起動できません。\n"
+"$HOME がセットされていません!\n"
+"$HOME がないと KMail は起動できません。\n"
 
 #: main.cpp:373
 msgid ""
@@ -1521,15 +1521,15 @@ msgstr ""
 
 #: kpgp.cpp:296
 msgid "Could not find the public keys for\n"
-msgstr "公開鍵がみつかりません。\n"
+msgstr "以下の人への公開鍵が見つかりません。\n"
 
 #: kpgp.cpp:307
 msgid "These persons will not be able to\n"
-msgstr "その人達は次のことができません\n"
+msgstr "それらの人は以下のことができません。\n"
 
 #: kpgp.cpp:309
 msgid "This person will not be able to\n"
-msgstr "その人は次のことができません\n"
+msgstr "この人は以下のことができません。\n"
 
 #: kpgp.cpp:311
 msgid "decrypt the message."
@@ -1767,7 +1767,7 @@ msgstr "KMail エラー"
 
 #: kmaddrbook.cpp:26
 msgid "Storing the addressbook failed!\n"
-msgstr "住所録の保存に失敗!\n"
+msgstr "住所録の保存に失敗しました!\n"
 
 #: kmaddrbookdlg.cpp:20
 msgid "Addressbook"
@@ -1807,7 +1807,7 @@ msgstr "成功..."
 
 #: kmnewiostatuswdg.cpp:97
 msgid "Aborting transmission...\n"
-msgstr "中止します...\n"
+msgstr "中止処理中...\n"
 
 #: charsetsDlg.cpp:27
 msgid "KRN - Charset Settings"

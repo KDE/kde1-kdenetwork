@@ -5,22 +5,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 1999-01-23 02:09+0100\n"
-"PO-Revision-Date: Fri Jan 29 1999 18:41:55+0900\n"
+"PO-Revision-Date: Sun Jul 11 1999 19:08:50+0200\n"
 "Last-Translator: 井村 竜一郎 <imura@cs.titech.ac.jp>\n"
-"Language-Team: 日本語 <kde-jp@albert.nikkeibp.co.jp>\n"
+"Language-Team: japanese <kde-jp@albert.nikkeibp.co.jp>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=euc-jp\n"
-"Content-Transfer-Encoding: 8bit"
-"X-Generator: KTranslator v 0.4.0"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ENCODING\n"
+"X-Generator: KTranslator v 0.5.0"
 
 #: knu.cpp:150 knu.cpp:309
 msgid "&Ping"
@@ -49,10 +44,6 @@ msgid ""
 "\n"
 "So I can't do anything...\n"
 msgstr ""
-"コンフィグレーションファイルに\n"
-"有効なコマンドが一つもありません。\n"
-"\n"
-"したがって、何もできません...\n"
 
 #: knu.cpp:246
 msgid "&New window"
@@ -95,10 +86,6 @@ msgid ""
 "\n"
 "Bertrand"
 msgstr ""
-"Knu\n"
-"Version %s\n"
-"\n"
-"Bertrand"
 
 #: knu.cpp:469
 msgid "About..."
@@ -143,14 +130,13 @@ msgid ""
 "to configure it again.\n"
 msgstr ""
 "\n"
-"あなたの\n"
 "%s/%src\n"
-"ファイルに問題があります。\n"
-"[%s]グループで、有効な\n"
-"\"path=\"という行を見つけれらません。\n"
+"という設定ファイルに問題があります。\n"
+"[%s] グループに、\n"
+"有効な \"path=\" というエントリが見つかりません。\n"
 "\n"
-"メニューの 編集->設定... を使って、\n"
-"設定しなおしてください。\n"
+"メニューの 編集->設定...\n"
+"で設定しなおしてください。\n"
 
 #: CommandDlg.cpp:360
 msgid "Error in pathname"

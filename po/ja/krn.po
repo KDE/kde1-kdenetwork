@@ -9,13 +9,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 1999-01-18 02:04+0100\n"
-"PO-Revision-Date: Sun May 16 1999 03:03:10+0900\n"
+"PO-Revision-Date: Sun Jul 11 1999 19:48:14+0200\n"
 "Last-Translator: 井村 竜一郎 <imura@cs.titech.ac.jp>\n"
-"Language-Team: 日本語 <kde-jp@albert.nikkeibp.co.jp>\n"
+"Language-Team: japanese <kde-jp@albert.nikkeibp.co.jp>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=euc-jp\n"
-"Content-Transfer-Encoding: 8bit"
-"X-Generator: KTranslator v 0.4.0"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ENCODING\n"
+"X-Generator: KTranslator v 0.5.0"
 
 #: main.cpp:219 main.cpp:232 main.cpp:246 main.cpp:264 main.cpp:279
 msgid "KRN-Missing Configuration info"
@@ -459,9 +459,9 @@ msgid ""
 "Server said:\n"
 msgstr ""
 "From: Krn\n"
-"To: あなた\n"
+"To: You\n"
 "\n"
-"記事取得中のエラー。\n"
+"記事を取得中のエラー.\n"
 "サーバの返答:\n"
 
 #: artdlg.cpp:1541
@@ -970,11 +970,11 @@ msgstr "To:"
 
 #: kmcomposewin.cpp:1485
 msgid "Subject:"
-msgstr "Subject:"
+msgstr "サブジェクト:"
 
 #: kmcomposewin.cpp:1488
 msgid "Date:"
-msgstr "Date:"
+msgstr "日付:"
 
 #: kmcomposewin.cpp:1565
 msgid "Choose Signature File"
@@ -1318,7 +1318,7 @@ msgstr "メッセージは署名されています:"
 
 #: kmreaderwin.cpp:441
 msgid "Warning: Bad signature from"
-msgstr "Warning: Bad signature from"
+msgstr ""
 
 #: kmreaderwin.cpp:451
 msgid "unknown key ID"
@@ -1376,11 +1376,11 @@ msgstr ""
 
 #: kpgp.cpp:296
 msgid "Could not find the public keys for\n"
-msgstr "公開鍵が見つかりません\n"
+msgstr "以下の人への公開鍵がみつかりません\n"
 
 #: kpgp.cpp:307
 msgid "These persons will not be able to\n"
-msgstr "その人達は以下のことができません\n"
+msgstr "それらの人々は以下のことができません\n"
 
 #: kpgp.cpp:309
 msgid "This person will not be able to\n"
@@ -1478,7 +1478,7 @@ msgstr "KMail エラー"
 
 #: kmaddrbook.cpp:26
 msgid "Storing the addressbook failed!\n"
-msgstr "住所録の保存に失敗しました!\n"
+msgstr "住所録の保存に失敗!\n"
 
 #: expireDlg.cpp:22 expireDlg.cpp:27
 msgid "KRN - Expire Settings"

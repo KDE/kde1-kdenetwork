@@ -9,13 +9,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 1999-04-15 03:01+0200\n"
-"PO-Revision-Date: Sun May 9 1999 14:19:06+0900\n"
+"PO-Revision-Date: Sun Jul 11 1999 18:37:45+0200\n"
 "Last-Translator: 井村 竜一郎 <imura@cs.titech.ac.jp>\n"
-"Language-Team: 日本語 <kde-jp@albert.nikkeibp.co.jp>\n"
+"Language-Team: japanese <kde-jp@albert.nikkeibp.co.jp>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=euc-jp\n"
-"Content-Transfer-Encoding: 8bit"
-"X-Generator: KTranslator v 0.4.0"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ENCODING\n"
+"X-Generator: KTranslator v 0.5.0"
 
 #: kfinger.C:30
 msgid "F&inger Now"
@@ -23,7 +23,7 @@ msgstr "今すぐ Finger (&F)"
 
 #: kfinger.C:31
 msgid "&Talk..."
-msgstr "会話 (&T)"
+msgstr "トーク(&T)"
 
 #: kfinger.C:35
 msgid "Setup"
@@ -54,7 +54,7 @@ msgstr "現在のfingerを停止"
 
 #: kfinger.C:53
 msgid "Talk..."
-msgstr "会話"
+msgstr "トーク..."
 
 #: kfinger.C:54
 msgid "AutoFinger On/Off"
@@ -62,7 +62,7 @@ msgstr "自動Finger On/Off"
 
 #: kfinger.C:66
 msgid "Welcome to KDE Finger\n"
-msgstr "KDE Finger へようこそ\n"
+msgstr "KDE Fingerへようこそ\n"
 
 #: kfinger.C:67
 msgid "Finger result"
@@ -81,7 +81,7 @@ msgstr "%s より接続が拒否されました"
 #: kfinger.C:296
 #, c-format
 msgid "Finger  %s@%s   --   %s"
-msgstr ""
+msgstr "Finger  %s@%s   --   %s"
 
 #: kfinger.C:317
 msgid ""
@@ -125,7 +125,7 @@ msgstr "Finger の待ち: %d\""
 
 #: kfinger.C:482
 msgid "Talk Command "
-msgstr "会話に用いるコマンド"
+msgstr "トークコマンド"
 
 #: kfinger.C:492
 msgid "Misc"
@@ -141,7 +141,7 @@ msgstr "Finger のサーバー"
 
 #: kfinger.C:505 kfinger.C:517
 msgid "Fixed"
-msgstr ""
+msgstr "Fixed"
 
 #: kfinger.C:513
 msgid "Finger User"
@@ -165,11 +165,11 @@ msgstr "サーバー"
 
 #: kfinger.C:576
 msgid "Talk"
-msgstr "会話"
+msgstr "トーク"
 
 #: kfinger.C:711
 msgid "Talk with..."
-msgstr "この人と会話をする"
+msgstr "トークの相手..."
 
 #: kfinger.C:778
 msgid "Format string for var1(string)"

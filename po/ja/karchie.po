@@ -9,13 +9,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 1999-03-05 02:18+0100\n"
-"PO-Revision-Date: Sun May 9 1999 14:15:38+0900\n"
+"PO-Revision-Date: Sun Jul 11 1999 17:59:04+0200\n"
 "Last-Translator: °æÂ¼ Îµ°ìÏº <imura@cs.titech.ac.jp>\n"
-"Language-Team: ÆüËÜ¸ì <kde-jp@albert.nikkeibp.co.jp>\n"
+"Language-Team: japanese <kde-jp@albert.nikkeibp.co.jp>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=euc-jp\n"
-"Content-Transfer-Encoding: 8bit"
-"X-Generator: KTranslator v 0.4.0"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ENCODING\n"
+"X-Generator: KTranslator v 0.5.0"
 
 #: KAMenu.cpp:75
 msgid "O&pen in editor"
@@ -147,13 +147,13 @@ msgstr "¥µ¥¤¥º¤Ç(&F)"
 
 #: KAMenu.cpp:169
 msgid "KArchie ver. "
-msgstr ""
+msgstr "KArchie ver. "
 
 #: KAMenu.cpp:171
 msgid ""
 "\n"
 "\n"
-"by Jvrg Habenicht <j.habenicht@europemail.com>\n"
+"by Jörg Habenicht <j.habenicht@europemail.com>\n"
 "\n"
 "based on the work of:\n"
 "  - archie prospero client by\n"
@@ -544,8 +544,8 @@ msgid ""
 "Couldn't open \n"
 "\"%s\""
 msgstr ""
-"¤³¤Î¥Õ¥¡¥¤¥ë¤ò³«¤±¤Þ¤»¤ó \n"
-"\"%s\""
+"\"%s\" \n"
+"¤ò³«¤±¤Þ¤»¤ó"
 
 #: KArchie.cpp:446 KArchie.cpp:488
 msgid "KArchie: bad file"
@@ -553,7 +553,7 @@ msgstr "KArchi: ¥Õ¥¡¥¤¥ë¤Î´Ö°ã¤¤"
 
 #: KArchie.cpp:720
 msgid "Malformed url"
-msgstr "ÊÑ¤ÊURL"
+msgstr "URL¤È¤·¤ÆÉÔÅ¬ÀÚ"
 
 #: KArchie.cpp:724
 msgid "Maybe bad list entry, please select an other file"

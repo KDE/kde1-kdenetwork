@@ -8,14 +8,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1999-01-21 02:02+0100\n"
-"PO-Revision-Date: Fri Jan 29 1999 19:30:28+0900\n"
+"POT-Creation-Date: 1999-04-01 19:06+0200\n"
+"PO-Revision-Date: Sun Jul 11 1999 19:54:24+0200\n"
 "Last-Translator: 井村 竜一郎 <imura@cs.titech.ac.jp>\n"
-"Language-Team: 日本語 <kde-jp@albert.nikkeibp.co.jp>\n"
+"Language-Team: japanese <kde-jp@albert.nikkeibp.co.jp>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=euc-jp\n"
-"Content-Transfer-Encoding: 8bit"
-"X-Generator: KTranslator v 0.4.0"
+"Content-Transfer-Encoding: 8bitX-Generator: KTranslator v 0.4.0"
+"X-Generator: KTranslator v 0.5.0"
 
 #: FilterRuleEditor.cpp:29
 msgid "Edit Filter Rules"
@@ -142,7 +142,7 @@ msgstr "チャンネル/Nick:"
 msgid "&Dock"
 msgstr "パネルに格納 (&D)"
 
-#: servercontroller.cpp:168 servercontroller.cpp:748
+#: servercontroller.cpp:168 servercontroller.cpp:750
 msgid "New Server..."
 msgstr "新しいサーバ..."
 
@@ -154,23 +154,23 @@ msgstr "チャンネルに参加...(&J)"
 msgid "&Connections"
 msgstr "接続(&C)"
 
-#: servercontroller.cpp:188 servercontroller.cpp:737
+#: servercontroller.cpp:188 servercontroller.cpp:739
 msgid "&Colour Preferences..."
 msgstr "色設定(&C)"
 
-#: servercontroller.cpp:190 servercontroller.cpp:739
+#: servercontroller.cpp:190 servercontroller.cpp:741
 msgid "&Global Fonts..."
 msgstr "全体のフォント...(&G)"
 
-#: servercontroller.cpp:192 servercontroller.cpp:741
+#: servercontroller.cpp:192 servercontroller.cpp:743
 msgid "&Filter Rule Editor..."
 msgstr "フィルタールール編集...(&F)"
 
-#: servercontroller.cpp:194 servercontroller.cpp:743
+#: servercontroller.cpp:194 servercontroller.cpp:745
 msgid "&Web Server Configuration..."
 msgstr "Web サーバコンフィグレーション...(&W)"
 
-#: servercontroller.cpp:197 servercontroller.cpp:745
+#: servercontroller.cpp:197 servercontroller.cpp:747
 msgid "&Preferences..."
 msgstr "設定...(&P)"
 
@@ -194,19 +194,19 @@ msgstr "kSircのバージョン情報..."
 msgid "Server Control"
 msgstr "サーバコントロール"
 
-#: servercontroller.cpp:291 servercontroller.cpp:455
+#: servercontroller.cpp:293 servercontroller.cpp:457
 msgid "Channels"
 msgstr "チャンネル"
 
-#: servercontroller.cpp:291 servercontroller.cpp:455
+#: servercontroller.cpp:293 servercontroller.cpp:457
 msgid "Online"
 msgstr "オンライン"
 
-#: servercontroller.cpp:693
+#: servercontroller.cpp:695
 msgid "Active Server Connections"
 msgstr "アクティブサーバコネクション"
 
-#: servercontroller.cpp:734
+#: servercontroller.cpp:736
 msgid "&Undock"
 msgstr "パネルから出す(&U)"
 
@@ -349,4 +349,4 @@ msgstr "ステップサイズ"
 #: puke/kdynlib.cpp:70
 #, c-format
 msgid "No such file \"%s\"!"
-msgstr "\"%s\"というファイルはありません！"
+msgstr "\"%s\" というファイルはありません!"
