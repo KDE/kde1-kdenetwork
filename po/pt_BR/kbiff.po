@@ -1,3 +1,4 @@
+#
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Free Software Foundation, Inc.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
@@ -7,182 +8,182 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 1998-08-03 21:27+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 1998-09-08 09:00\n"
+"Last-Translator: Sandro Nunes Henrique <sandro@conectiva.com.br>\n"
+"Language-Team: pt_BR <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: ENCODING\n"
 
 #: kbiff.cpp:224
-msgid "&UnDock"
+msgid "&Soltar"
 msgstr ""
 
 #: kbiff.cpp:226
-msgid "&Dock"
+msgid "&Fixar"
 msgstr ""
 
 #: kbiff.cpp:227
-msgid "&Setup..."
+msgid "&Configuração..."
 msgstr ""
 
 #: kbiff.cpp:229
-msgid "&Help..."
+msgid "&Ajuda..."
 msgstr ""
 
 #: kbiff.cpp:233
-msgid "&Check mail now"
+msgid "&Verificar mensagens agora"
 msgstr ""
 
 #: kbiff.cpp:237
-msgid "&Stop"
+msgid "&Parar"
 msgstr ""
 
 #: setupdlg.cpp:50
-msgid "KBiff Setup"
+msgid "Configuração do Kbiff"
 msgstr ""
 
 #: setupdlg.cpp:53
-msgid "Profile:"
+msgid "Dados pessoais:"
 msgstr ""
 
 #: setupdlg.cpp:76
-msgid "&Rename..."
+msgid "&Renomear..."
 msgstr ""
 
 #: setupdlg.cpp:109
 msgid "General"
-msgstr ""
+msgstr "Geral"
 
 #: setupdlg.cpp:110
 msgid "New Mail"
-msgstr ""
+msgstr "Nova mensagem"
 
 #: setupdlg.cpp:111
 msgid "Mailbox"
-msgstr ""
+msgstr "Caixa de correio"
 
 #: setupdlg.cpp:243
 msgid "New Profile"
-msgstr ""
+msgstr "Nova configuração de usuário"
 
 #: setupdlg.cpp:272
 #, c-format
 msgid "Rename Profile: %s"
-msgstr ""
+msgstr "Renomear configuração de usuário"
 
 #: setupdlg.cpp:314
 #, c-format
 msgid "Delete Profile: %s"
-msgstr ""
+msgstr "Apagar configuração de usuário"
 
 #: setupdlg.cpp:315
 msgid "Are you sure you wish to delete this profile?\n"
-msgstr ""
+msgstr "Você tem certeza que quer apagar as definições deste usuário?"
 
 #: setupdlg.cpp:361
 msgid "Poll (sec):"
-msgstr ""
+msgstr "Periodicidade de verificação (Seg):"
 
 #: setupdlg.cpp:366
 msgid "Mail client:"
-msgstr ""
+msgstr "Correio cliente:"
 
 #: setupdlg.cpp:379
 msgid "Dock in panel"
-msgstr ""
+msgstr "Fixar no painel"
 
 #: setupdlg.cpp:384
 msgid "Use session management"
-msgstr ""
+msgstr "Utilizar o gerente de sessão"
 
 #: setupdlg.cpp:389
 msgid "Icons:"
-msgstr ""
+msgstr "Ícones:"
 
 #: setupdlg.cpp:409
 msgid "No Mail:"
-msgstr ""
+msgstr "Sem mensagens:"
 
 #: setupdlg.cpp:418
 msgid "Old Mail"
-msgstr ""
+msgstr "Mensagens antigas:"
 
 #: setupdlg.cpp:428
 msgid "New Mail:"
-msgstr ""
+msgstr "Nova mensagem:"
 
 #: setupdlg.cpp:605
 msgid "Run Command"
-msgstr ""
+msgstr "Executar comando:"
 
 #: setupdlg.cpp:612 setupdlg.cpp:625 setupdlg.cpp:937
 msgid "Browse"
-msgstr ""
+msgstr "Mostrar"
 
 #: setupdlg.cpp:618
 msgid "Play Sound"
-msgstr ""
+msgstr "Tocar som"
 
 #: setupdlg.cpp:631
 msgid "System Beep"
-msgstr ""
+msgstr "Sinal do sistema"
 
 #: setupdlg.cpp:636
 msgid "Notify"
-msgstr ""
+msgstr "Notificar"
 
 #: setupdlg.cpp:794
 msgid "Advanced Options"
-msgstr ""
+msgstr "Opções Avançadas"
 
 #: setupdlg.cpp:798
 msgid "Mailbox URL:"
-msgstr ""
+msgstr "URL da caixa de correio"
 
 #: setupdlg.cpp:802
 msgid "Port:"
-msgstr ""
+msgstr "Porta:"
 
 #: setupdlg.cpp:882 setupdlg.cpp:914
 msgid "Mailbox:"
-msgstr ""
+msgstr "Caixa de correio:"
 
 #: setupdlg.cpp:898 setupdlg.cpp:1197
 msgid "New Mailbox"
-msgstr ""
+msgstr "Nova caixa de correio:"
 
 #: setupdlg.cpp:905
 msgid "Delete Mailbox"
-msgstr ""
+msgstr "Apagar caixa de correio"
 
 #: setupdlg.cpp:911
 msgid "Protocol:"
-msgstr ""
+msgstr "Protocolo:"
 
 #: setupdlg.cpp:917
 msgid "Server:"
-msgstr ""
+msgstr "Servidor:"
 
 #: setupdlg.cpp:920
 msgid "User:"
-msgstr ""
+msgstr "Usuário:"
 
 #: setupdlg.cpp:923
 msgid "Password:"
-msgstr ""
+msgstr "Senha:"
 
 #: setupdlg.cpp:954
 msgid "Store password"
-msgstr ""
+msgstr "Armazenar senha"
 
 #: setupdlg.cpp:959
 msgid "Advanced"
-msgstr ""
+msgstr "Avançado"
 
 #: setupdlg.cpp:1336
 msgid "KBiff"
-msgstr ""
+msgstr "Kbiff"
 
 #: setupdlg.cpp:1357
 msgid ""
@@ -191,11 +192,15 @@ msgid ""
 "Copyright (C) 1998\n"
 "Kurt Granroth"
 msgstr ""
+"Versão 1.1\n"
+"\n"
+"Copyright (C) 1998\n"
+"Kurt Granroth"
 
 #: setupdlg.cpp:1404
 msgid "New Name:"
-msgstr ""
+msgstr "Novo nome:"
 
 #: setupdlg.cpp:1430
 msgid "New Name"
-msgstr ""
+msgstr "Novo nome:"
