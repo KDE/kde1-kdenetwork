@@ -31,7 +31,7 @@ msgstr "Telefonski tro¹kovi:"
 
 #: accounts.cpp:116 conwindow.cpp:56
 msgid "Volume:"
-msgstr ""
+msgstr "Volumen:"
 
 #: accounts.cpp:131
 msgid "Reset Costs"
@@ -55,7 +55,7 @@ msgstr ""
 
 #: accounts.cpp:271 accounts.cpp:294
 msgid "Maximum number of accounts reached."
-msgstr "Maksimalni broj raèuna dosegnut."
+msgstr "Maksimalni broj korisnièkih raèuna dosegnut."
 
 #: accounts.cpp:300
 msgid "No account selected."
@@ -172,14 +172,12 @@ msgid "No Carrier"
 msgstr "Nema nosaèa"
 
 #: connect.cpp:386
-#, fuzzy
 msgid "Scanning "
-msgstr "©aljem "
+msgstr "Ispitujem "
 
 #: connect.cpp:397
-#, fuzzy
 msgid "Saving "
-msgstr "©aljem "
+msgstr "Spremam "
 
 #: connect.cpp:416
 msgid "Sending "
@@ -247,7 +245,7 @@ msgstr "brzina nepoznata"
 
 #: connect.cpp:861
 msgid "Scan Var: "
-msgstr ""
+msgstr "Ispituj Var: "
 
 #: connect.cpp:872
 msgid "Found: "
@@ -266,9 +264,8 @@ msgid "Script timed out!"
 msgstr "Vremenski istek scenarija!"
 
 #: connect.cpp:984
-#, fuzzy
 msgid "Scanning: "
-msgstr "©aljem "
+msgstr "Ispitujem "
 
 #: connect.cpp:995
 msgid "Expecting: "
@@ -355,9 +352,8 @@ msgid "PAP"
 msgstr "PAP"
 
 #: edit.cpp:75
-#, fuzzy
 msgid "Terminal-based"
-msgstr "Terminal"
+msgstr "Terminal-zasnovano"
 
 #: edit.cpp:81
 msgid "Store password"
@@ -750,7 +746,7 @@ msgstr "Reakcija na inicijalizaciju:"
 
 #: modemcmds.cpp:86
 msgid "Init Delay (sec/100):"
-msgstr ""
+msgstr "Inicijalizacijski razmak (sek/100):"
 
 #: modemcmds.cpp:91
 msgid "Dial String:"
@@ -984,29 +980,24 @@ msgid "Selected:"
 msgstr "Odabrano:"
 
 #: acctselect.cpp:88
-#, fuzzy
 msgid "Volume accounting:"
-msgstr "Omoguæi obradu raèuna"
+msgstr "Obrada raèuna:"
 
 #: acctselect.cpp:92
-#, fuzzy
 msgid "No accounting"
-msgstr "Rad s raèunima"
+msgstr "Bez raèuna"
 
 #: acctselect.cpp:93
-#, fuzzy
 msgid "Bytes in"
-msgstr "bajtova u"
+msgstr "Bajtova u"
 
 #: acctselect.cpp:94
-#, fuzzy
 msgid "Bytes out"
-msgstr "bajtova van"
+msgstr "Bajtova van"
 
 #: acctselect.cpp:95
-#, fuzzy
 msgid "Bytes in and out"
-msgstr "bajtova van"
+msgstr "Bajtova unutra i van"
 
 #: acctselect.cpp:165 acctselect.cpp:271
 msgid "Available rules"
@@ -1055,16 +1046,12 @@ msgid "Minimize"
 msgstr "Smanji"
 
 #: runtests.cpp:122
-#, fuzzy
 msgid ""
 "You´re not allowed to dial out with kppp.\n"
 "Contact your system administrator."
 msgstr ""
-"Nema¹ dozvolu za\n"
-"pokretanje pppd-a!\n"
-"\n"
-"Kontaktiraj svog administratora sustava\n"
-"i tra¾i pristup pppd-u."
+"Nema¹ dozvolu za pokretanje kppa!\n"
+"Kontaktiraj svog administratora sustava."
 
 #: runtests.cpp:148
 msgid ""
@@ -1125,12 +1112,8 @@ msgid ""
 "itself.\n"
 "Contact your system administrator."
 msgstr ""
-
-#~ msgid "Dismiss"
-#~ msgstr "Otpusti"
-
-#~ msgid "Modem sustains fast initialization."
-#~ msgstr "Modem odr¾ava brzu inicijalizaciju."
-
-#~ msgid "The pppd daemon died unexpectedly!"
-#~ msgstr "pppd demon je umro neoèekivano!"
+"kppp je detektirao 'lock' opciju u /etc/ppp/options.\n"
+"\n"
+"Morate ukloniti tu opciju buduæi da kppp sam vodi raèuna o zakljuèavanju "
+"modema.\n"
+"Kontaktirajte administratora sistema."
