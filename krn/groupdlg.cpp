@@ -716,15 +716,15 @@ bool Groupdlg::actions (int action,NewsGroup *group)
         {
             if (!group)
                 break;
-            
+
+            int mShowHeaders = 0xe0;
             conf->setGroup("Composer");
-            int mShowHeaders = conf->readNumEntry("headers", 0x60);
-            mShowHeaders = mShowHeaders & 0xfb;
             conf->writeEntry("headers",mShowHeaders);
-            
+
             KMMessage *m=new KMMessage();
             m->initHeader();
             m->setGroups(group->name);
+
             KMComposeWin *comp=new KMComposeWin(m);
             comp->show();
             success=true;
