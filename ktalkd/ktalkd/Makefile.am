@@ -1,7 +1,7 @@
 ## -*- makefile -*-
 # Ktalkd - Makefile.am
 
-SUBDIRS 	=	answmach
+SUBDIRS 	=	machines
 
 bin_PROGRAMS	=	ktalkd
 EXTRA_HEADERS   =       readcfg++.h 
@@ -16,9 +16,9 @@ TALKD_CONF_NAME	=	ktalkdrc
 # Defs
 DEFS            +=      -DHAVE_KDE
 ktalkd_SOURCES	=	announce.c print.c process.c readcfg++.cpp table.c talkd.c find_user.c
-ktalkd_DEPS	= 	answmach/libanswmach.a
+ktalkd_DEPS	= 	machines/libmach.a
 noinst_HEADERS	=	defs.h includ.h find_user.h announce.h print.h process.h readcfg++.h table.h
-LDADD           =       answmach/libanswmach.a -lkdecore -lqt -lXext -lX11 @LIBBSD@ @LIBSOCKET@
+LDADD           =       machines/libmach.a -lkdecore -lqt -lXext -lX11 @LIBBSD@ @LIBSOCKET@
 
 ###########################################################
 else
@@ -28,9 +28,9 @@ TALKD_CONF 	=	/etc/talkd.conf
 TALKD_CONF_NAME	=	talkd.conf
 DEFS		+=	-DTALKD_CONF=\"$(TALKD_CONF)\"
 ktalkd_SOURCES	=	announce.c print.c process.c readconf.c table.c talkd.c find_user.c
-ktalkd_DEPS	= 	answmach/libanswmach.a
+ktalkd_DEPS	= 	machines/libmach.a
 noinst_HEADERS	=	defs.h includ.h find_user.h announce.h print.h process.h readconf.h table.h
-LDADD		=	answmach/libanswmach.a @LIBBSD@ @LIBSOCKET@
+LDADD		=	machines/libmach.a @LIBBSD@ @LIBSOCKET@
 
 endif
 ###########################################################
@@ -42,8 +42,8 @@ EXTRA_DIST	=	talkd.conf ktalkdrc ktalkdrc_user ChangeLog
 install-data-local:
 if KDE_INSTALLED
 	$(mkinstalldirs) $(kde_confdir)
-	$(mkinstalldirs) $(kde_datadir)/ktalkd
-	$(INSTALL_DATA) ktalkd.wav $(kde_sounddir)/ktalkd
+	$(mkinstalldirs) $(kde_sounddir)
+	$(INSTALL_DATA) ktalkd.wav $(kde_sounddir)
 endif
 	@echo "**************************************************************************"
 	@echo

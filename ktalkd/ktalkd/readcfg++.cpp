@@ -38,7 +38,6 @@
 
 /* KDE & Qt includes */
 #include <kapp.h>
-#include <qlabel.h>
 #include <qstring.h>
 
 /* Ktalkd includes */

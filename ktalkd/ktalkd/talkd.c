@@ -164,7 +164,7 @@ int main(int argc, char *argv[])
 		}
 		lastmsgtime = time(0);
 		ret_value = process_request(mp, &response);
-                if (debug_mode) print_response("process_request", &response);
+                if (debug_mode) print_response("=> response", &response);
 		/* can block here, is this what I want? */
 		cc = sendto(talkd_sockt, (char *)&response,
 		    sizeof (response), 0, (struct sockaddr *)&mp->ctl_addr,

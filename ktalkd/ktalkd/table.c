@@ -45,6 +45,11 @@
 #include <sys/param.h>
 #ifdef HAVE_SYS_TIME_H
 #include <sys/time.h>
+#ifdef TIME_WITH_SYS_TIME
+#include <time.h>
+#endif
+#else
+#include <time.h>
 #endif
 #ifdef HAVE_UNISTD_H
 #include <unistd.h>
@@ -79,23 +84,21 @@ CTL_MSG * find_match(register CTL_MSG *request)
 
 	(void) gettimeofday(&tp, &txp);
 	current_time = tp.tv_sec;
-	if (debug_mode)
-		print_request("find_match", request);
 	for (ptr = table; ptr != NIL; ptr = ptr->next) {
 		if ((ptr->time - current_time) > MAX_LIFE) {
 			/* the entry is too old */
-			if (debug_mode)
-				print_request("deleting expired entry",
-				    &ptr->request);
+			message2("deleting expired entry : id %d",
+				    ptr->request.id_num);
 			delete_entry(ptr);
 			continue;
 		}
-		if (debug_mode)
-			print_request("", &ptr->request);
-		if (strcmp(request->l_name, ptr->request.r_name) == 0 &&
-		    strcmp(request->r_name, ptr->request.l_name) == 0 &&
-		     ptr->request.type == LEAVE_INVITE)
+		if ((strcmp(request->l_name, ptr->request.r_name) == 0) &&
+		    (strcmp(request->r_name, ptr->request.l_name) == 0) &&
+		     (ptr->request.type == LEAVE_INVITE))
+		{
+			message2("Found match : id %d", ptr->request.id_num);
 			return (&ptr->request);
+		}
 	}
 	return ((CTL_MSG *)0);
 }
@@ -115,25 +118,21 @@ CTL_MSG * find_request(register CTL_MSG *request)
 	 * See if this is a repeated message, and check for
 	 * out of date entries in the table while we are it.
 	 */
-	if (debug_mode)
-		print_request("find_request", request);
 	for (ptr = table; ptr != NIL; ptr = ptr->next) {
 		if ((ptr->time - current_time) > MAX_LIFE) {
 			/* the entry is too old */
-			if (debug_mode)
-				print_request("deleting expired entry",
-				    &ptr->request);
+			message2("deleting expired entry : id %d",
+				    ptr->request.id_num);
 			delete_entry(ptr);
 			continue;
 		}
-		if (debug_mode)
-			print_request("", &ptr->request);
 		if (strcmp(request->r_name, ptr->request.r_name) == 0 &&
 		    strcmp(request->l_name, ptr->request.l_name) == 0 &&
 		    request->type == ptr->request.type &&
 		    request->pid == ptr->request.pid) {
 			/* update the time if we 'touch' it */
 			ptr->time = current_time;
+			message2("Found identical request : id %d", ptr->request.id_num);
 			return (&ptr->request);
 		}
 	}
@@ -191,10 +190,9 @@ int delete_invite(int id_num)
 	for (ptr = table; ptr != NIL; ptr = ptr->next) {
 		if (ptr->request.id_num == id_num)
 			break;
-		if (debug_mode)
-			print_request("", &ptr->request);
 	}
 	if (ptr != NIL) {
+		message2("Deleted : id %d", ptr->request.id_num);
 		delete_entry(ptr);
 		return (SUCCESS);
 	}
@@ -207,8 +205,6 @@ int delete_invite(int id_num)
 static void delete_entry(register TABLE_ENTRY *ptr)
 {
 
-	if (debug_mode)
-		print_request("delete", &ptr->request);
 	if (table == ptr)
 		table = ptr->next;
 	else if (ptr->last != NIL)

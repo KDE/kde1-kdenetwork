@@ -67,6 +67,10 @@
 int  process_request(register CTL_MSG *mp, register CTL_RESPONSE *rp)
 {
 	register CTL_MSG *ptr;
+        int ret;
+
+	if (debug_mode)
+	   print_request("process_request", mp);
 
 	rp->vers = TALK_VERSION;
 	rp->type = mp->type;
@@ -92,12 +96,13 @@ int  process_request(register CTL_MSG *mp, register CTL_RESPONSE *rp)
 		return PROC_REQ_ERR;
 	}
 	mp->pid = ntohl(mp->pid);
-	if (debug_mode)
-		print_request("process_request", mp);
 	switch (mp->type) {
 
 	case ANNOUNCE:
-		return do_announce(mp, rp);
+		ret = do_announce(mp, rp);
+                if (ret != PROC_REQ_ERR)
+                    insert_table(mp, rp);
+                return ret;
 
 	case LEAVE_INVITE:
 		ptr = find_request(mp);
@@ -204,8 +209,8 @@ int do_announce(register CTL_MSG *mp,CTL_RESPONSE *rp)
 
 	if (ptr == (CTL_MSG *) 0) {
 		rp->answer = announce(mp, hp->h_name, disp);
-		if (rp->answer != PERMISSION_DENIED) insert_table(mp, rp);
-		if (debug_mode) print_response("Announce done", rp);
+		if (rp->answer == PERMISSION_DENIED) return PROC_REQ_ERR;
+		message("Announce done.");
 		return PROC_REQ_OK;
 	}
 
@@ -226,6 +231,6 @@ int do_announce(register CTL_MSG *mp,CTL_RESPONSE *rp)
             syslog(LOG_WARNING, "dupannounce %d", mp->id_num);
             rp->id_num = htonl(ptr->id_num);
             rp->answer = SUCCESS;
-            return PROC_REQ_OK;
+            return PROC_REQ_ERR;
 	}
 }

@@ -187,7 +187,7 @@ int announce_proc(CTL_MSG *request, const char *remote_machine,
     /* disp can be a LIST of displays, such as ":0 :1", or
          ":0 hostname:0". Let's announce on ALL displays found.
        disp_end is the end of the display list (saved because we'll
-         insert zeros.
+         insert zeros).
        adisp_begin will point to a display in the list.
        disp_ptr will go char by char through disp.*/
 
@@ -270,7 +270,7 @@ int announce_proc(CTL_MSG *request, const char *remote_machine,
                  * we can't wait the reaction of the user
                  */
                 read( readPipe[0], &ch_aux, 1 );
-                if (debug_mode) syslog(LOG_WARNING, "Child process sent : %c",ch_aux);  
+                if (debug_mode) syslog(LOG_DEBUG, "Child process sent : %c",ch_aux);  
                 close( readPipe[0] );
                 close( readPipe[1] );
                 if (ch_aux == '#') {
@@ -427,6 +427,8 @@ void print_mesg(FILE * tf, CTL_MSG * request, const char *
 	fprintf(tf, big_buf);
 	fflush(tf);
 	ioctl(fileno(tf), TIOCNOTTY, (struct sgttyb *) 0);
+        free(localname);
+        free(remotemach);
 }
 
 int play_sound(int usercfg)

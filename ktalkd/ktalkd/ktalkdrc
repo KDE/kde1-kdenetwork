@@ -36,7 +36,8 @@ SoundFile=ktalkd.wav
 # What should I do if somebody tries to talk to a non-existent user ?
 # 0 = Launch answer machine saying 'non-existent user...' 
 #                  and 'I' receive the message (to know that it happened)
-# 1 = 'I' take the talk         NOT WORKING : you won't be able to answer !
+# 1 = 'I' take the talk. Set it only if your talk client support --user option.
+#                        A new mechanism for this will appear in ktalkd 0.8.x
 # 2 = Do nothing. ('Not logged' will appear to caller).
 NEUBehaviour=2
 
