@@ -107,11 +107,12 @@ PukeController::PukeController(QString sock, QObject *parent=0, const char *name
 
 }
 
-PukeController::~PukeController() /*fold00*/
+PukeController::~PukeController() /*FOLD00*/
 {
+  unlink(qsPukeSocket);
 }
 
-void PukeController::NewConnect(int) /*FOLD00*/
+void PukeController::NewConnect(int) /*fold00*/
 {
   int cfd;
   int len = 0;
@@ -160,7 +161,7 @@ void PukeController::Writeable(int fd) /*fold00*/
   }
 }
 
-void PukeController::writeBuffer(int fd, PukeMessage *message) /*FOLD00*/
+void PukeController::writeBuffer(int fd, PukeMessage *message) /*fold00*/
 {
   if(qidConnectFd[fd]){
     //    if(qidConnectFd[fd]->writeable == FALSE){
@@ -192,7 +193,7 @@ void PukeController::writeBuffer(int fd, PukeMessage *message) /*FOLD00*/
   }
 }
 
-void PukeController::Traffic(int fd) /*FOLD00*/
+void PukeController::Traffic(int fd) /*fold00*/
 {
   PukeMessage pm;
   int bytes = -1;
@@ -217,7 +218,6 @@ void PukeController::Traffic(int fd) /*FOLD00*/
     memset(&pm, 0, sizeof(pm));
   }
   if(bytes <= 0){ // Shutdown the socket!
-    debug("Read 0 bytes and errno set to: %d", errno);
     switch(errno){
     case EAGAIN: // Don't do anything for try again
       break;
@@ -369,7 +369,7 @@ void PukeController::hdlrPukeSetup(int fd, PukeMessage *pm) /*fold00*/
   this->writeBuffer(fd, &pmOut);
 }
 
-void PukeController::hdlrPukeEcho(int fd, PukeMessage *pm) /*FOLD00*/
+void PukeController::hdlrPukeEcho(int fd, PukeMessage *pm) /*fold00*/
 {
   PukeMessage pmOut;
   memcpy(&pmOut, pm, sizeof(PukeMessage));
@@ -379,7 +379,7 @@ void PukeController::hdlrPukeEcho(int fd, PukeMessage *pm) /*FOLD00*/
   this->writeBuffer(fd, &pmOut);
 }
 
-void PukeController::hdlrPukeDumpTree(int fd, PukeMessage *pm)
+void PukeController::hdlrPukeDumpTree(int fd, PukeMessage *pm) /*FOLD00*/
 {
   objFinder::dumpTree();
   
@@ -392,7 +392,7 @@ void PukeController::hdlrPukeDumpTree(int fd, PukeMessage *pm)
 }
 
 
-void PukeController::hdlrPukeFetchWidget(int fd, PukeMessage *pm)
+void PukeController::hdlrPukeFetchWidget(int fd, PukeMessage *pm) /*FOLD00*/
 {
   widgetId wIret;
   
@@ -551,6 +551,7 @@ void PukeController::closefd(int fd) /*FOLD00*/
 
   }
   WidgetList.remove(fd);
+  bClosing = FALSE;
 }
 
 bool PukeController::checkWidgetId(widgetId *pwi) /*fold00*/

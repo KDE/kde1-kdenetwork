@@ -194,7 +194,12 @@ servercontroller::servercontroller /*FOLD00*/
 
   // Server Controller is done setting up, create Puke interface.
 
-  PukeC = new PukeController(QString(), this, "pukecontroller");
+  kSircConfig->pukeSocket = getenv("HOME") ? getenv("HOME") : "/tmp";
+  QString pfile;
+  pfile.sprintf("/.ksirc.socket.%d", getpid());
+  kSircConfig->pukeSocket += pfile;
+  
+  PukeC = new PukeController(kSircConfig->pukeSocket, this, "pukecontroller");
   if(PukeC->running == TRUE){
     cerr << "Puke running\n";
     connect(PukeC, SIGNAL(PukeMessages(QString, int, QString)),
@@ -209,7 +214,7 @@ servercontroller::servercontroller /*FOLD00*/
 }
 
 
-servercontroller::~servercontroller() /*fold00*/
+servercontroller::~servercontroller() /*FOLD00*/
 {
   delete pic_icon;
 }

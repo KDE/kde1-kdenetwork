@@ -168,6 +168,15 @@ sub count {
   return $self->{'list_box'}->{count};
 }
 
+sub AUTOLOAD {
+  my $self = shift;
+
+  return if $AUTOLOAD =~ /::DESTROY$/;
+  
+  $AUTOLOAD =~ /.+::(.+)/;
+  return $self->{'list_box'}->$1(@_);
+}
+
 package main;
 
 
@@ -283,19 +292,20 @@ sub hook_get_users {
 &addhook("msg", "get_users");
 
 sub cmd_refresh_users {
-    my $output = `$WHO list`;
-    my @users = split(/\n/, $output);
-    %users_online = ();
-    while($online->count() > 0){
-        $online->removeItem(0);
-    }
-    foreach $user (@users){
-      $user =~ s/(\S+)\@\S+/$1/g;
-      next if $user eq '';
-      next if $user =~ /administrator/;
-      $users_online{$user}++;
-      $online->insertText($user, -1);
-    }
+  $online->clear();
+  %users_online = ();
+  my $output = `$WHO list`;
+  my @users = split(/\n/, $output);
+  #    while($online->count() > 0){
+  #    $online->removeItem(0);
+  #}
+  foreach $user (@users){
+    $user =~ s/(\S+)\@\S+/$1/g;
+    next if $user eq '';
+    next if $user =~ /administrator/;
+    $users_online{$user}++;
+  $online->insertText($user, -1);
+  }
 }
 
 &addcmd("refresh_users");

@@ -631,6 +631,42 @@
 // cArg: text
 #define PUKE_LISTBOX_GETTEXT_ACK -1625 
 
+// Desc: Clear list box
+// iWinId: window id
+// iArg: not defined
+// cArg: not defined
+#define PUKE_LISTBOX_CLEAR 1630
+
+// Desc: ack for clear list box
+// iWinId: window id
+// iArg: not defined
+// cArg: not defined
+#define PUKE_LISTBOX_CLEAR_ACK -1630
+
+// Desc: set scroll bar
+// iWinId: window id
+// iArg: bool, enable/disable
+// cArg: undef
+#define PUKE_LISTBOX_SET_SCROLLBAR 1635
+
+// Desc: set scroll bar ack
+// iWinId: window id
+// iArg: undef
+// cArg: undef
+#define PUKE_LISTBOX_SET_SCROLLBAR_ACK -1635
+
+// Desc: set auto scroll bar
+// iWinId: window id
+// iArg: bool, enable/disable
+// cArg: undef
+#define PUKE_LISTBOX_SET_AUTO_SCROLLBAR 1636
+
+// Desc: set auto scroll bar ack
+// iWinId: window id
+// iArg: undef
+// cArg: undef
+#define PUKE_LISTBOX_SET_AUTO_SCROLLBAR_ACK -1636
+
 // Desc: item highlighted, not used signal to dsirc
 // iWinId: undef
 // iArg: undef
@@ -642,30 +678,6 @@
 // iArg: index
 // cArg: contents
 #define PUKE_LISTBOX_HIGHLIGHTED_ACK -1690
-
-// Desc: set scroll bar
-// iWinId: window id
-// iArg: bool, enable/disable
-// cArg: undef
-#define PUKE_LISTBOX_SET_SCROLLBAR 1695
-
-// Desc: set scroll bar ack
-// iWinId: window id
-// iArg: undef
-// cArg: undef
-#define PUKE_LISTBOX_SET_SCROLLBAR_ACK -1695
-
-// Desc: set auto scroll bar
-// iWinId: window id
-// iArg: bool, enable/disable
-// cArg: undef
-#define PUKE_LISTBOX_SET_AUTO_SCROLLBAR 1696
-
-// Desc: set auto scroll bar ack
-// iWinId: window id
-// iArg: undef
-// cArg: undef
-#define PUKE_LISTBOX_SET_AUTO_SCROLLBAR_ACK -1696
 
 // Desc: item selected
 // iWinId: window id
@@ -793,8 +805,56 @@
 // cArg: undef
 #define PUKE_MENUDATA_REMOVE_ITEM_ACK -1815
 
+// -----------------------------------------------------------------------
+// PAMenuData
 
+// Desc: is the item in the top of the list?
+// iWinId: window id
+// iArg: index
+// cArg: not defined
+#define PUKE_ALISTBOX_ISTOP 1900
 
+// Desc: ack for istop
+// iWinId: window id
+// iArg: 1 for top, 0 for bottom
+// cArg: not defined
+#define PUKE_ALISTBOX_ISTOP_ACK -1900
+
+// Desc: set green highligh (voice)
+// iWinId: window id
+// iArg: highligh, 1 for set, 0 for not
+// cArg: string
+#define PUKE_ALISTBOX_SMALL_HIGHLIGHT 1905
+
+// Desc: ack for set green highligh
+// iWinId: window id
+// iArg: 0 for success, 1 for failure
+// cArg: not defined
+#define PUKE_ALISTBOX_SMALL_HIGHLIGHT_ACK -1905
+
+// Desc: set red highligh and raise to the top (op)
+// iWinId: window id
+// iArg: highlight, 1 for set, 0 for remove
+// cArg: string
+#define PUKE_ALISTBOX_BIG_HIGHLIGHT 1910
+
+// Desc: ack for set red and raise
+// iWinId: window id
+// iArg: 0 for success, 1 for failure
+// cArg: not defined
+#define PUKE_ALISTBOX_BIG_HIGHLIGHT_ACK -1910
+
+// Desc: finds nick index
+// iWinId: window id
+// iArg: not defined
+// cArg: string
+#define PUKE_ALISTBOX_FIND_NICK 1915
+
+// Desc: ack for find nick
+// iWinId: window id
+// iArg: index
+// cArg: not defined
+#define PUKE_ALISTBOX_FIND_NICK_ACK -1915
 
 // ***********************************************************************
 // ***********************************************************************
@@ -842,6 +902,11 @@
 // PopupMenu
 
 #define PWIDGET_POPMENU 13
+
+// PAListBox
+
+#define PWIDGET_ALISTBOX 14
+
 
 // Group layout commands exist between 10000 and 11000
 

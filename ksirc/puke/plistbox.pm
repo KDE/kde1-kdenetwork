@@ -188,6 +188,18 @@ sub setAutoScrollBar {
 
 }
 
+sub clear {
+  my $self = shift;
+
+  $self->{count} = 0;
+  $self->{items} = ();
+  
+  $self->sendMessage('iCommand' => $::PUKE_LISTBOX_CLEAR,
+                     'CallBack' => sub {});
+
+}
+
+
 
 package main; #FOLD00
 

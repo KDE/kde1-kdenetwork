@@ -50,7 +50,13 @@ if($DEBUG){
 
 $PukePacking = "iiia50aa";  # aa padding to fill to 64 bytes
 $PukeMSize = 64;
-$sock = $ENV{'HOME'} . "/.ksirc.socket";
+
+if(!$ENV{'PUKE_SOCKET'}) {
+    $sock = $ENV{'HOME'} . "/.ksirc.socket";
+}
+else {
+    $sock = $ENV{'PUKE_SOCKET'};
+}
 
 $PUKEFd = &newfh;
 $proto = getprotobyname('tcp');

@@ -143,13 +143,13 @@ INCLUDES= @all_includes@
 ####### This part is very khexdit specific
 # you can add here more. This one gets installed 
 #bin_PROGRAMS = 	libpuke
-noinst_LIBRARIES = libpuke.a
+#noinst_LIBRARIES = libpuke.a
 
-lib_LTLIBRARIES = libpframe.la libplined.la libpbutton.la libppushbt.la \
+lib_LTLIBRARIES = libpuke.la libpframe.la libplined.la libpbutton.la libppushbt.la \
                   libpprogress.la libptablevw.la libplistbox.la libplabel.la \
-                  libpmenudta.la libppopmenu.la
+                  libpmenudta.la libppopmenu.la libpalistbox.la
 
-libpuke_a_SOURCES = \
+libpuke_la_SOURCES = \
 controller.cpp \
 mcontroller.cpp \
 pwidget.cpp \
@@ -158,6 +158,8 @@ pobject.cpp \
 mpobject.cpp \
 playout.cpp \
 mplayout.cpp 
+
+libpuke_la_LDFLAGS = -version-info 0:1:0
 
 libpframe_la_SOURCES = \
 pframe.cpp \
@@ -199,6 +201,10 @@ libppopmenu_la_SOURCES = \
 ppopmenu.cpp  \
 mppopmenu.cpp
 
+libpalistbox_la_SOURCES = \
+palistbox.cpp \
+mpalistbox.cpp
+
 # no install headers
 
 noinst_HEADERS = \
@@ -227,19 +233,16 @@ DISTCLEANFILES = $(BUILTSOURCES)
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = ../../config.h
 CONFIG_CLEAN_FILES = 
-LIBRARIES =  $(noinst_LIBRARIES)
+LTLIBRARIES =  $(lib_LTLIBRARIES)
 
 
 DEFS = @DEFS@ -I. -I$(srcdir) -I../..
 CPPFLAGS = @CPPFLAGS@
 LDFLAGS = @LDFLAGS@
 LIBS = @LIBS@
-libpuke_a_LIBADD = 
-libpuke_a_OBJECTS =  controller.o mcontroller.o pwidget.o mpwidget.o \
-pobject.o mpobject.o playout.o mplayout.o
-AR = ar
-LTLIBRARIES =  $(lib_LTLIBRARIES)
-
+libpuke_la_LIBADD = 
+libpuke_la_OBJECTS =  controller.lo mcontroller.lo pwidget.lo \
+mpwidget.lo pobject.lo mpobject.lo playout.lo mplayout.lo
 libpframe_la_LDFLAGS = 
 libpframe_la_LIBADD = 
 libpframe_la_OBJECTS =  pframe.lo mpframe.lo
@@ -270,6 +273,9 @@ libpmenudta_la_OBJECTS =  pmenudta.lo mpmenudta.lo
 libppopmenu_la_LDFLAGS = 
 libppopmenu_la_LIBADD = 
 libppopmenu_la_OBJECTS =  ppopmenu.lo mppopmenu.lo
+libpalistbox_la_LDFLAGS = 
+libpalistbox_la_LIBADD = 
+libpalistbox_la_OBJECTS =  palistbox.lo mpalistbox.lo
 CXXFLAGS = @CXXFLAGS@
 CXXCOMPILE = $(CXX) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
 LTCXXCOMPILE = $(LIBTOOL) --mode=compile $(CXX) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
@@ -283,17 +289,17 @@ DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
 
 TAR = tar
 GZIP = --best
-DEP_FILES =  .deps/controller.P .deps/mcontroller.P .deps/mpbutton.P \
-.deps/mpframe.P .deps/mplabel.P .deps/mplayout.P .deps/mplined.P \
-.deps/mplistbox.P .deps/mpmenudta.P .deps/mpobject.P .deps/mppopmenu.P \
-.deps/mpprogress.P .deps/mppushbt.P .deps/mptablevw.P .deps/mpwidget.P \
-.deps/pbutton.P .deps/pframe.P .deps/plabel.P .deps/playout.P \
-.deps/plined.P .deps/plistbox.P .deps/pmenudta.P .deps/pobject.P \
-.deps/ppopmenu.P .deps/pprogress.P .deps/ppushbt.P .deps/ptablevw.P \
-.deps/pwidget.P
+DEP_FILES =  .deps/controller.P .deps/mcontroller.P .deps/mpalistbox.P \
+.deps/mpbutton.P .deps/mpframe.P .deps/mplabel.P .deps/mplayout.P \
+.deps/mplined.P .deps/mplistbox.P .deps/mpmenudta.P .deps/mpobject.P \
+.deps/mppopmenu.P .deps/mpprogress.P .deps/mppushbt.P .deps/mptablevw.P \
+.deps/mpwidget.P .deps/palistbox.P .deps/pbutton.P .deps/pframe.P \
+.deps/plabel.P .deps/playout.P .deps/plined.P .deps/plistbox.P \
+.deps/pmenudta.P .deps/pobject.P .deps/ppopmenu.P .deps/pprogress.P \
+.deps/ppushbt.P .deps/ptablevw.P .deps/pwidget.P
 CXXMKDEP = $(CXX) -M $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
-SOURCES = $(libpuke_a_SOURCES) $(libpframe_la_SOURCES) $(libplined_la_SOURCES) $(libpbutton_la_SOURCES) $(libppushbt_la_SOURCES) $(libpprogress_la_SOURCES) $(libptablevw_la_SOURCES) $(libplistbox_la_SOURCES) $(libplabel_la_SOURCES) $(libpmenudta_la_SOURCES) $(libppopmenu_la_SOURCES)
-OBJECTS = $(libpuke_a_OBJECTS) $(libpframe_la_OBJECTS) $(libplined_la_OBJECTS) $(libpbutton_la_OBJECTS) $(libppushbt_la_OBJECTS) $(libpprogress_la_OBJECTS) $(libptablevw_la_OBJECTS) $(libplistbox_la_OBJECTS) $(libplabel_la_OBJECTS) $(libpmenudta_la_OBJECTS) $(libppopmenu_la_OBJECTS)
+SOURCES = $(libpuke_la_SOURCES) $(libpframe_la_SOURCES) $(libplined_la_SOURCES) $(libpbutton_la_SOURCES) $(libppushbt_la_SOURCES) $(libpprogress_la_SOURCES) $(libptablevw_la_SOURCES) $(libplistbox_la_SOURCES) $(libplabel_la_SOURCES) $(libpmenudta_la_SOURCES) $(libppopmenu_la_SOURCES) $(libpalistbox_la_SOURCES)
+OBJECTS = $(libpuke_la_OBJECTS) $(libpframe_la_OBJECTS) $(libplined_la_OBJECTS) $(libpbutton_la_OBJECTS) $(libppushbt_la_OBJECTS) $(libpprogress_la_OBJECTS) $(libptablevw_la_OBJECTS) $(libplistbox_la_OBJECTS) $(libplabel_la_OBJECTS) $(libpmenudta_la_OBJECTS) $(libppopmenu_la_OBJECTS) $(libpalistbox_la_OBJECTS)
 
 default: all
 
@@ -307,14 +313,30 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status $(BUILT_SOURCES)
 	  && CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= $(SHELL) ./config.status
 
 
-mostlyclean-noinstLIBRARIES:
+mostlyclean-libLTLIBRARIES:
 
-clean-noinstLIBRARIES:
-	test -z "$(noinst_LIBRARIES)" || rm -f $(noinst_LIBRARIES)
+clean-libLTLIBRARIES:
+	test -z "$(lib_LTLIBRARIES)" || rm -f $(lib_LTLIBRARIES)
 
-distclean-noinstLIBRARIES:
+distclean-libLTLIBRARIES:
 
-maintainer-clean-noinstLIBRARIES:
+maintainer-clean-libLTLIBRARIES:
+
+install-libLTLIBRARIES: $(lib_LTLIBRARIES)
+	@$(NORMAL_INSTALL)
+	$(mkinstalldirs) $(libdir)
+	@list='$(lib_LTLIBRARIES)'; for p in $$list; do \
+	  if test -f $$p; then \
+	    echo "$(LIBTOOL)  --mode=install $(INSTALL_PROGRAM) $$p $(libdir)/$$p"; \
+	    $(LIBTOOL)  --mode=install $(INSTALL_PROGRAM) $$p $(libdir)/$$p; \
+	  else :; fi; \
+	done
+
+uninstall-libLTLIBRARIES:
+	$(NORMAL_UNINSTALL)
+	list='$(lib_LTLIBRARIES)'; for p in $$list; do \
+	  $(LIBTOOL)  --mode=uninstall rm -f $(libdir)/$$p; \
+	done
 
 .c.o:
 	$(COMPILE) -c $<
@@ -342,35 +364,8 @@ distclean-libtool:
 
 maintainer-clean-libtool:
 
-libpuke.a: $(libpuke_a_OBJECTS) $(libpuke_a_DEPENDENCIES)
-	rm -f libpuke.a
-	$(AR) cru libpuke.a $(libpuke_a_OBJECTS) $(libpuke_a_LIBADD)
-	$(RANLIB) libpuke.a
-
-mostlyclean-libLTLIBRARIES:
-
-clean-libLTLIBRARIES:
-	test -z "$(lib_LTLIBRARIES)" || rm -f $(lib_LTLIBRARIES)
-
-distclean-libLTLIBRARIES:
-
-maintainer-clean-libLTLIBRARIES:
-
-install-libLTLIBRARIES: $(lib_LTLIBRARIES)
-	@$(NORMAL_INSTALL)
-	$(mkinstalldirs) $(libdir)
-	@list='$(lib_LTLIBRARIES)'; for p in $$list; do \
-	  if test -f $$p; then \
-	    echo "$(LIBTOOL)  --mode=install $(INSTALL_PROGRAM) $$p $(libdir)/$$p"; \
-	    $(LIBTOOL)  --mode=install $(INSTALL_PROGRAM) $$p $(libdir)/$$p; \
-	  else :; fi; \
-	done
-
-uninstall-libLTLIBRARIES:
-	$(NORMAL_UNINSTALL)
-	list='$(lib_LTLIBRARIES)'; for p in $$list; do \
-	  $(LIBTOOL)  --mode=uninstall rm -f $(libdir)/$$p; \
-	done
+libpuke.la: $(libpuke_la_OBJECTS) $(libpuke_la_DEPENDENCIES)
+	$(CXXLINK) -rpath $(libdir) $(libpuke_la_LDFLAGS) $(libpuke_la_OBJECTS) $(libpuke_la_LIBADD) $(LIBS)
 
 libpframe.la: $(libpframe_la_OBJECTS) $(libpframe_la_DEPENDENCIES)
 	$(CXXLINK) -rpath $(libdir) $(libpframe_la_LDFLAGS) $(libpframe_la_OBJECTS) $(libpframe_la_LIBADD) $(LIBS)
@@ -401,6 +396,9 @@ libpmenudta.la: $(libpmenudta_la_OBJECTS) $(libpmenudta_la_DEPENDENCIES)
 
 libppopmenu.la: $(libppopmenu_la_OBJECTS) $(libppopmenu_la_DEPENDENCIES)
 	$(CXXLINK) -rpath $(libdir) $(libppopmenu_la_LDFLAGS) $(libppopmenu_la_OBJECTS) $(libppopmenu_la_LIBADD) $(LIBS)
+
+libpalistbox.la: $(libpalistbox_la_OBJECTS) $(libpalistbox_la_DEPENDENCIES)
+	$(CXXLINK) -rpath $(libdir) $(libpalistbox_la_LDFLAGS) $(libpalistbox_la_OBJECTS) $(libpalistbox_la_LIBADD) $(LIBS)
 .cpp.o:
 	$(CXXCOMPILE) -c $<
 .cpp.lo:
@@ -490,7 +488,7 @@ install: install-exec install-data all
 
 uninstall: uninstall-libLTLIBRARIES uninstall-local
 
-all: Makefile $(LIBRARIES) $(LTLIBRARIES) $(HEADERS)
+all: Makefile $(LTLIBRARIES) $(HEADERS)
 
 install-strip:
 	$(MAKE) INSTALL_PROGRAM='$(INSTALL_PROGRAM) -s' INSTALL_SCRIPT='$(INSTALL_PROGRAM)' install
@@ -512,41 +510,36 @@ distclean-generic:
 maintainer-clean-generic:
 	test -z "$(MAINTAINERCLEANFILES)" || rm -f $(MAINTAINERCLEANFILES)
 	test -z "$(BUILT_SOURCES)" || rm -f $(BUILT_SOURCES)
-mostlyclean:  mostlyclean-noinstLIBRARIES mostlyclean-compile \
-		mostlyclean-libtool mostlyclean-libLTLIBRARIES \
-		mostlyclean-tags mostlyclean-depend mostlyclean-generic
+mostlyclean:  mostlyclean-libLTLIBRARIES mostlyclean-compile \
+		mostlyclean-libtool mostlyclean-tags mostlyclean-depend \
+		mostlyclean-generic
 
-clean:  clean-noinstLIBRARIES clean-compile clean-libtool \
-		clean-libLTLIBRARIES clean-tags clean-depend \
-		clean-generic mostlyclean
+clean:  clean-libLTLIBRARIES clean-compile clean-libtool clean-tags \
+		clean-depend clean-generic mostlyclean
 
-distclean:  distclean-noinstLIBRARIES distclean-compile \
-		distclean-libtool distclean-libLTLIBRARIES \
+distclean:  distclean-libLTLIBRARIES distclean-compile distclean-libtool \
 		distclean-tags distclean-depend distclean-generic clean
 	rm -f config.status
 	rm -f libtool
 
-maintainer-clean:  maintainer-clean-noinstLIBRARIES \
+maintainer-clean:  maintainer-clean-libLTLIBRARIES \
 		maintainer-clean-compile maintainer-clean-libtool \
-		maintainer-clean-libLTLIBRARIES maintainer-clean-tags \
-		maintainer-clean-depend maintainer-clean-generic \
-		distclean
+		maintainer-clean-tags maintainer-clean-depend \
+		maintainer-clean-generic distclean
 	@echo "This command is intended for maintainers to use;"
 	@echo "it deletes files that may require special tools to rebuild."
 
-.PHONY: default mostlyclean-noinstLIBRARIES distclean-noinstLIBRARIES \
-clean-noinstLIBRARIES maintainer-clean-noinstLIBRARIES \
-mostlyclean-compile distclean-compile clean-compile \
-maintainer-clean-compile mostlyclean-libtool distclean-libtool \
-clean-libtool maintainer-clean-libtool mostlyclean-libLTLIBRARIES \
-distclean-libLTLIBRARIES clean-libLTLIBRARIES \
-maintainer-clean-libLTLIBRARIES uninstall-libLTLIBRARIES \
-install-libLTLIBRARIES tags mostlyclean-tags distclean-tags clean-tags \
-maintainer-clean-tags distdir mostlyclean-depend distclean-depend \
-clean-depend maintainer-clean-depend info dvi installcheck install-exec \
-install-data install uninstall all installdirs mostlyclean-generic \
-distclean-generic clean-generic maintainer-clean-generic clean \
-mostlyclean distclean maintainer-clean
+.PHONY: default mostlyclean-libLTLIBRARIES distclean-libLTLIBRARIES \
+clean-libLTLIBRARIES maintainer-clean-libLTLIBRARIES \
+uninstall-libLTLIBRARIES install-libLTLIBRARIES mostlyclean-compile \
+distclean-compile clean-compile maintainer-clean-compile \
+mostlyclean-libtool distclean-libtool clean-libtool \
+maintainer-clean-libtool tags mostlyclean-tags distclean-tags \
+clean-tags maintainer-clean-tags distdir mostlyclean-depend \
+distclean-depend clean-depend maintainer-clean-depend info dvi \
+installcheck install-exec install-data install uninstall all \
+installdirs mostlyclean-generic distclean-generic clean-generic \
+maintainer-clean-generic clean mostlyclean distclean maintainer-clean
 
 
 HOWTO-PUKE.txt: HOWTO-PUKE.pod

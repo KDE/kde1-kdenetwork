@@ -139,6 +139,9 @@ KSircProcess::KSircProcess( char *_server, QObject * parent, const char * name )
   QString env = "SIRCLIB=" + kSircConfig->kdedir + "/share/apps/ksirc";
   putenv(qstrdup(env.data()));
 
+  QString sock_env = "PUKE_SOCKET=" +  kSircConfig->pukeSocket;
+  putenv(qstrdup(sock_env.data()));
+
   // Setup the proc now, so iocontroller can use it.  It's latter
   // though. started bellow though.
 

@@ -31,6 +31,8 @@ class global_config {
   int usHighlight; // Background
 
   QString kdedir;
+
+  QString pukeSocket;
 };
 
 extern global_config *kSircConfig;

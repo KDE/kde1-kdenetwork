@@ -23,13 +23,13 @@ INCLUDES= @all_includes@
 ####### This part is very khexdit specific
 # you can add here more. This one gets installed 
 #bin_PROGRAMS = 	libpuke
-noinst_LIBRARIES = libpuke.a
+#noinst_LIBRARIES = libpuke.a
 
-lib_LTLIBRARIES = libpframe.la libplined.la libpbutton.la libppushbt.la \
+lib_LTLIBRARIES = libpuke.la libpframe.la libplined.la libpbutton.la libppushbt.la \
                   libpprogress.la libptablevw.la libplistbox.la libplabel.la \
-                  libpmenudta.la libppopmenu.la
+                  libpmenudta.la libppopmenu.la libpalistbox.la
 
-libpuke_a_SOURCES = \
+libpuke_la_SOURCES = \
 controller.cpp \
 mcontroller.cpp \
 pwidget.cpp \
@@ -39,6 +39,7 @@ mpobject.cpp \
 playout.cpp \
 mplayout.cpp 
 
+libpuke_la_LDFLAGS = -version-info 0:1:0
 
 libpframe_la_SOURCES = \
 pframe.cpp \
@@ -79,6 +80,11 @@ mpmenudta.cpp
 libppopmenu_la_SOURCES = \
 ppopmenu.cpp  \
 mppopmenu.cpp
+
+libpalistbox_la_SOURCES = \
+palistbox.cpp \
+mpalistbox.cpp
+
 
 HOWTO-PUKE.txt: HOWTO-PUKE.pod
 	pod2text HOWTO-PUKE.pod > HOWTO-PUKE.txt
