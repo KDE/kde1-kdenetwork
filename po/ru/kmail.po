@@ -1,0 +1,1810 @@
+# Russian messages for KMail.
+# Copyright (C) 1998 KDE Team.
+# Const Kaplinsky <const@ce.cctpu.edu.ru>, 1998.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: KMail 0.7.9\n"
+"POT-Creation-Date: 1998-11-07 02:34+0100\n"
+"PO-Revision-Date: 1998-09-14 15:00+0800\n"
+"Last-Translator: Const Kaplinsky <const@ce.cctpu.edu.ru>\n"
+"Language-Team: Russian <ru@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=koi8-r\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: kmcomposewin.cpp:1439 kmmainwin.cpp:263 kpgp.cpp:540
+msgid ""
+"Sorry, but this feature\n"
+"is still missing"
+msgstr ""
+"Извините, но данная возможность\n"
+"до сих пор отсутствует."
+
+#: kmmainwin.cpp:272
+msgid "New Folder"
+msgstr "Новая папка"
+
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:284 kmmainwin.cpp:318 main.cpp:321
+msgid "KMail error"
+msgstr "Ошибка KMail"
+
+#: kmmainwin.cpp:285 kmmainwin.cpp:319
+msgid "Already checking for mail!"
+msgstr "Проверка новой почты уже выполняется!"
+
+#: kmmainwin.cpp:295 kmmainwin.cpp:329
+msgid "No new mail available"
+msgstr "Нет новой почты"
+
+#: kmmainwin.cpp:357
+msgid ""
+"Cannot modify a\n"
+"system folder."
+msgstr ""
+"Невозможно изменить\n"
+"свойства системной папки."
+
+#: kmmainwin.cpp:362
+msgid "Modify Folder"
+msgstr "Изменение свойств папки"
+
+#: kmmainwin.cpp:377
+#, c-format
+msgid ""
+"Are you sure you want to discard the\n"
+"contents of the folder \"%s\" ?"
+msgstr ""
+"Вы уверены, что желаете очистить\n"
+"содержимое папки \"%s\" ?"
+
+#: kmmainwin.cpp:380 kmmainwin.cpp:419
+msgid "Confirmation"
+msgstr "Подтверждение"
+
+#: kmmainwin.cpp:392
+msgid "Moved all messages into trash"
+msgstr "Все сообщения перенесены в папку trash"
+
+#: kmmainwin.cpp:412
+msgid ""
+"Cannot remove a\n"
+"system folder."
+msgstr ""
+"Невозможно удалить\n"
+"системную папку."
+
+#: kmmainwin.cpp:416
+#, c-format
+msgid ""
+"Are you sure you want to remove the folder\n"
+"\"%s\", discarding it's contents ?"
+msgstr ""
+"Вы уверены, что желаете удалить папку\n"
+"\"%s\", очистив ее содержимое ?"
+
+#: kmmainwin.cpp:479
+msgid "KMail notification!"
+msgstr "Уведомление KMail!"
+
+#: kmmainwin.cpp:480
+msgid "Only messages in the outbox folder can be edited!"
+msgstr "Можно редактировать только сообщения из папки outbox!"
+
+#: kmmainwin.cpp:515
+msgid "Message as Plain Text"
+msgstr "Сообщение как чистый текст"
+
+#: kmmainwin.cpp:522 kmmainwin.cpp:542
+msgid "Select Folder"
+msgstr "Выбор папки"
+
+#: kmmainwin.cpp:565
+msgid "Queued messages successfully sent."
+msgstr "Сообщения из очереди успешно отправлены."
+
+#: kmmainwin.cpp:567
+msgid "Failed to send (some) queued messages."
+msgstr "Ошибка отправки (некоторых) сообщений из очереди."
+
+#: kmmainwin.cpp:694
+msgid "Opening URL..."
+msgstr "Открытие URL..."
+
+#: kmmainwin.cpp:749
+msgid "Address added to addressbook."
+msgstr "Адрес добавлен в адресную книгу."
+
+#: kmmainwin.cpp:761
+msgid "Address copied to clipboard."
+msgstr "Адрес скопирован в буфер обмена."
+
+#: kmmainwin.cpp:766
+msgid "URL copied to clipboard."
+msgstr "URL скопирован в буфер обмена."
+
+#: kmmainwin.cpp:793
+msgid "Send to..."
+msgstr "Послать по адресу..."
+
+#: kmmainwin.cpp:795
+msgid "Send reply to..."
+msgstr "Ответить по адресу..."
+
+#: kmmainwin.cpp:797
+msgid "Forward to..."
+msgstr "Переслать по адресу..."
+
+#: kmmainwin.cpp:800
+msgid "Add to addressbook"
+msgstr "Добавить в адресную книгу"
+
+#: kmmainwin.cpp:802 kmmainwin.cpp:811
+msgid "Copy to clipboard"
+msgstr "Скопировать в буфер обмена"
+
+#: kmmainwin.cpp:809
+msgid "Open URL..."
+msgstr "Открыть URL..."
+
+#: kmmainwin.cpp:819 kmmainwin.cpp:936
+msgid "&Reply..."
+msgstr "&Ответить..."
+
+#: kmmainwin.cpp:821 kmmainwin.cpp:938
+msgid "Reply &All..."
+msgstr "Ответить &всем..."
+
+#: kmmainwin.cpp:823 kmmainwin.cpp:940
+msgid "&Forward..."
+msgstr "&Переслать..."
+
+#: kmmainwin.cpp:826 kmmainwin.cpp:950
+msgid "&Move..."
+msgstr "Пере&местить..."
+
+#: kmmainwin.cpp:828 kmmainwin.cpp:952
+msgid "&Copy..."
+msgstr "&Копировать..."
+
+#: kmmainwin.cpp:855
+msgid "New Composer"
+msgstr "Новое окно редактора"
+
+#: kmcomposewin.cpp:448 kmmainwin.cpp:857
+msgid "New Mailreader"
+msgstr "Новое окно просмотра"
+
+#: kmmainwin.cpp:860
+msgid "Save As..."
+msgstr "Сохранить как..."
+
+#: kmmainwin.cpp:862
+msgid "Print..."
+msgstr "Печать..."
+
+#: kmmainwin.cpp:865
+msgid "Check Mail..."
+msgstr "Проверить почту..."
+
+#: kmmainwin.cpp:874
+msgid "Check Mail in..."
+msgstr "Проверить почту в ящике..."
+
+#: kmmainwin.cpp:876
+msgid "Send Queued"
+msgstr "Отправить из очереди"
+
+#: kmmainwin.cpp:879
+msgid "&Settings..."
+msgstr "&Настройка..."
+
+#: kmcomposewin.cpp:440 kmmainwin.cpp:881
+msgid "&Addressbook..."
+msgstr "&Адресная книга..."
+
+#: kmmainwin.cpp:883
+msgid "&Filter..."
+msgstr "&Фильтр..."
+
+#: kmmainwin.cpp:897
+msgid "&Find..."
+msgstr "&Поиск..."
+
+#: kmmainwin.cpp:902
+msgid "&Create..."
+msgstr "&Создать..."
+
+#: kmmainwin.cpp:904
+msgid "&Modify..."
+msgstr "&Изменить свойства..."
+
+#: kmmainwin.cpp:906
+msgid "C&ompact"
+msgstr "С&жать"
+
+#: kmmainwin.cpp:909
+msgid "&Empty"
+msgstr "&Очистить"
+
+#: kmfilterdlg.cpp:147 kmmainwin.cpp:918
+#, fuzzy
+msgid "New"
+msgstr "Сеть"
+
+#: kmmainwin.cpp:919
+msgid "Unread"
+msgstr "Не прочитано"
+
+#: kmmainwin.cpp:920
+msgid "Read"
+msgstr "Прочитано"
+
+#: kmmainwin.cpp:921
+msgid "Replied"
+msgstr "Имеется ответ"
+
+#: kmmainwin.cpp:922
+msgid "Queued"
+msgstr "В очереди"
+
+#: kmmainwin.cpp:923
+msgid "Sent"
+msgstr "Отправлено"
+
+#: kmmainwin.cpp:927
+msgid "&Next"
+msgstr ""
+
+#: kmmainwin.cpp:929
+msgid "Next unread"
+msgstr "Следующее непрочитанное"
+
+#: kmmainwin.cpp:931
+#, fuzzy
+msgid "&Previous"
+msgstr "Предыдущее непрочитанное"
+
+#: kmmainwin.cpp:933
+msgid "Previous unread"
+msgstr "Предыдущее непрочитанное"
+
+#: kmmainwin.cpp:943
+msgid "Edi&t..."
+msgstr "&Изменить..."
+
+#: kmmainwin.cpp:946
+msgid "&Set Status"
+msgstr "&Установить статус"
+
+#: kmmainwin.cpp:948
+msgid "Mar&k all"
+msgstr "&Пометить все"
+
+#: kmmainwin.cpp:957
+msgid "Send again..."
+msgstr "Отправить повторно..."
+
+#: kmmainwin.cpp:959
+msgid "Apply filters"
+msgstr "Применить фильтры"
+
+#: kmmainwin.cpp:962
+msgid "View Source..."
+msgstr "Просмотр источника..."
+
+#: kmmainwin.cpp:969
+msgid "&Brief Headers"
+msgstr "&Краткие заголовки"
+
+#: kmmainwin.cpp:971
+msgid "&Fancy Headers"
+msgstr "&Изящные заголовки"
+
+#: kmmainwin.cpp:973
+msgid "&Standard Headers"
+msgstr "&Стандартные заголовки"
+
+#: kmmainwin.cpp:975
+msgid "&Long Headers"
+msgstr "&Расширенные заголовки"
+
+#: kmmainwin.cpp:977
+msgid "&All Headers"
+msgstr "&Все заголовки"
+
+#: kmmainwin.cpp:980
+msgid "Iconic Attachments"
+msgstr "Подцепления в виде пиктограмм"
+
+#: kmmainwin.cpp:981
+msgid "Smart Attachments"
+msgstr "Разумное отображения подцеплений"
+
+#: kmmainwin.cpp:982
+msgid "Inlined Attachments"
+msgstr "Подцепления в тексте"
+
+#: kmmainwin.cpp:993
+msgid "F&older"
+msgstr "П&апка"
+
+#: kmmainwin.cpp:994
+msgid "&Message"
+msgstr "&Сообщение"
+
+#: kmcomposewin.cpp:556 kmmainwin.cpp:1013
+msgid "Compose new message"
+msgstr "Написать новое сообщение"
+
+#: kmcomposewin.cpp:561 kmmainwin.cpp:1018
+msgid "Save message to file"
+msgstr "Сохранить сообщение в файл"
+
+#: kmcomposewin.cpp:566 kmmainwin.cpp:1023
+msgid "Print message"
+msgstr "Напечатать сообщение"
+
+#: kmmainwin.cpp:1030
+msgid "Get new mail"
+msgstr "Доставить новую почту"
+
+#: kmmainwin.cpp:1036
+msgid "Reply to author"
+msgstr "Ответить автору"
+
+#: kmmainwin.cpp:1041
+msgid "Reply to all recipients"
+msgstr "Ответить всем получателям"
+
+#: kmmainwin.cpp:1046
+msgid "Forward message"
+msgstr "Переслать сообщение"
+
+#: kmmainwin.cpp:1051
+msgid "Delete message"
+msgstr "Удалить сообщение"
+
+#: kmcomposewin.cpp:590 kmmainwin.cpp:1057
+msgid "Open addressbook..."
+msgstr "Открыть адресную книгу..."
+
+#: kmmainwin.cpp:1069
+msgid "Initializing..."
+msgstr "Инициализация..."
+
+#: kmfolderdia.cpp:38 kmmsgpartdlg.cpp:62 kmsettings.cpp:175
+#: kmsettings.cpp:870
+#, fuzzy
+msgid "Name:"
+msgstr "Имя:"
+
+#: kmcomposewin.cpp:1447 kmfolderdia.cpp:44 kmfolderdia.cpp:120
+msgid "unnamed"
+msgstr "безимени"
+
+#: kmfolderdia.cpp:47
+msgid "Associated with"
+msgstr "Связано с"
+
+#: kmfolderdia.cpp:57
+msgid "Unassociated Accounts"
+msgstr "Несвязанные аккаунты"
+
+#: kmsettings.cpp:54
+msgid "Settings"
+msgstr "Настройка"
+
+#: kmsettings.cpp:177
+msgid "Organization:"
+msgstr "Организация:"
+
+#: kmsettings.cpp:179
+msgid "Email Address:"
+msgstr "Адрес E-mail:"
+
+#: kmsettings.cpp:182
+msgid "Reply-To Address:"
+msgstr "Адрес для ответа:"
+
+#: kmsettings.cpp:184
+msgid "Signature File:"
+msgstr "Файл подписи:"
+
+#: kmsettings.cpp:192 kpgp.cpp:759
+msgid "Identity"
+msgstr "Идентификация"
+
+#: kmsettings.cpp:211
+msgid "Sending Mail"
+msgstr "Отправка почты"
+
+#: kmsettings.cpp:217
+msgid "Sendmail"
+msgstr ""
+
+#: kmsettings.cpp:222 kmsettings.cpp:877
+msgid "Location:"
+msgstr "Местоположение:"
+
+#: kmsettings.cpp:227
+msgid "SMTP"
+msgstr ""
+
+#: kmsettings.cpp:232
+msgid "Server:"
+msgstr "Сервер:"
+
+#: kmsettings.cpp:234 kmsettings.cpp:898
+msgid "Port:"
+msgstr "Порт:"
+
+#: kmsettings.cpp:255
+msgid "Incoming Mail"
+msgstr "Входящая почта"
+
+#: kmsettings.cpp:260
+msgid "Accounts:   (add at least one account!)"
+msgstr "Аккаунты:   (добавьте по крайней мере один!)"
+
+#: kmcomposewin.cpp:139 kmsettings.cpp:265
+msgid "Name"
+msgstr ""
+
+#: kmcomposewin.cpp:142 kmsettings.cpp:266
+msgid "Type"
+msgstr "Тип"
+
+#: kmsettings.cpp:267
+msgid "Folder"
+msgstr "Папка"
+
+#: kmsettings.cpp:275
+msgid "Add..."
+msgstr "Добавить..."
+
+#: kmsettings.cpp:278
+msgid "Modify..."
+msgstr "Изменить..."
+
+#: kmsettings.cpp:301
+msgid "Network"
+msgstr "Сеть"
+
+#: kmsettings.cpp:326
+msgid "Message Body Font:"
+msgstr "Шрифт тела сообщения:"
+
+#: kmsettings.cpp:331
+msgid "Message List Font:"
+msgstr "Шрифт списка сообщений:"
+
+#: kmsettings.cpp:335
+msgid ""
+"Changing fonts currently only occurs when a new\n"
+"window is opened or kmail is restarted"
+msgstr ""
+"В настоящее время смена шрифтов происходит только\n"
+"при открытии нового окна или перезапуске kmail"
+
+#: kmsettings.cpp:377
+msgid "Phrases"
+msgstr "Фразы"
+
+#: kmsettings.cpp:382
+msgid ""
+"The following placeholders are supported in the reply phrases:\n"
+"%D=date, %S=subject, %F=sender, %%=percent sign"
+msgstr ""
+"В фразах для ответов поддерживаются следующие комбинации символов:\n"
+"%D=дата, %S=тема, %F=отправитель, %%=знак процента"
+
+#: kmsettings.cpp:390
+msgid "Reply to sender:"
+msgstr "Ответ отправителю:"
+
+#: kmsettings.cpp:393
+msgid "Reply to all:"
+msgstr "Ответ всем:"
+
+#: kmsettings.cpp:396
+msgid "Forward:"
+msgstr "Пересылка (forward):"
+
+#: kmsettings.cpp:399
+msgid "Indentation:"
+msgstr "Цитирование:"
+
+#: kmmessage.cpp:1313 kmsettings.cpp:411
+msgid "On %D, you wrote:"
+msgstr ""
+
+#: kmmessage.cpp:1314 kmsettings.cpp:415
+msgid "On %D, %F wrote:"
+msgstr ""
+
+#: kmmessage.cpp:1315 kmsettings.cpp:419
+msgid "Forwarded Message"
+msgstr ""
+
+#: kmsettings.cpp:430
+msgid "Automatically append signature"
+msgstr "Автоматически добавлять подпись"
+
+#: kmsettings.cpp:436
+msgid "Automatically sign messages using PGP"
+msgstr "Автоматически подписывать сообщения с помощью PGP"
+
+#: kmsettings.cpp:441
+msgid "Word wrap at column:"
+msgstr "Перенос слов в столбце:"
+
+#: kmsettings.cpp:451
+msgid "Use monospaced font"
+msgstr "Использовать моноширинный шрифт"
+
+#: kmsettings.cpp:463
+msgid "When sending mail"
+msgstr "Отправка почты"
+
+#: kmsettings.cpp:466
+msgid "Default sending:"
+msgstr "Отправка по умолчанию:"
+
+#: kmsettings.cpp:469
+msgid "send now"
+msgstr "немедленно"
+
+#: kmsettings.cpp:473
+msgid "send later"
+msgstr "позже"
+
+#: kmsettings.cpp:478
+msgid "Send messages:"
+msgstr "Отправлять сообщения:"
+
+#: kmsettings.cpp:481
+msgid "Allow 8-bit"
+msgstr "8 бит"
+
+#: kmsettings.cpp:486
+msgid "MIME Compilant (Quoted Printable)"
+msgstr "Кодировать в стандарте MIME (Quoted Printable)"
+
+#: kmsettings.cpp:512
+msgid "Composer"
+msgstr "Окно редактора"
+
+#: kmsettings.cpp:529
+msgid "Folders"
+msgstr "Папки"
+
+#: kmsettings.cpp:533
+msgid "empty trash on exit"
+msgstr "очищать папку trash при выходе"
+
+#: kmsettings.cpp:537
+msgid "Send Mail in outbox Folder on Check"
+msgstr "Отправлять из outbox при проверке почты"
+
+#: kmsettings.cpp:552
+msgid "Misc"
+msgstr ""
+
+#: kmsettings.cpp:559
+msgid "PGP"
+msgstr ""
+
+#: kmsettings.cpp:582
+msgid "Message Body Font"
+msgstr "Шрифт тела сообщения"
+
+#: kmsettings.cpp:596
+msgid "Message List Font"
+msgstr "Шрифт списка сообщений"
+
+#: kmsettings.cpp:648
+msgid "Select Account"
+msgstr "Выбор аккаунта"
+
+#: kmaccount.cpp:76 kmfilterdlg.cpp:457 kmsettings.cpp:667
+msgid "Unnamed"
+msgstr "Безимени"
+
+#: kmsettings.cpp:686
+msgid "Choose Sendmail Location"
+msgstr "Выбор пути к Sendmail"
+
+#: kmcomposewin.cpp:1546 kmsettings.cpp:695
+msgid "Choose Signature File"
+msgstr "Выбор файла подписи"
+
+#: kmsettings.cpp:862
+#, fuzzy
+msgid "Type:"
+msgstr "Тип"
+
+#: kmsettings.cpp:875
+msgid "Local Account"
+msgstr "Локальный аккаунт"
+
+#: kmsettings.cpp:884
+msgid "Pop Account"
+msgstr "POP-аккаунт"
+
+#: kmsettings.cpp:886
+msgid "Login:"
+msgstr "Имя регистрации:"
+
+#: kmacctpop.cpp:464 kmsettings.cpp:889
+msgid "Password:"
+msgstr "Пароль:"
+
+#: kmsettings.cpp:893
+msgid "Host:"
+msgstr "Сервер:"
+
+#: kmsettings.cpp:901
+msgid "Delete mail from server"
+msgstr "Удалять почту с сервера"
+
+#: kmsettings.cpp:908
+msgid "Enable interval Mail checking"
+msgstr ""
+
+#: kmsettings.cpp:922
+msgid "Store new mail in account:"
+msgstr "Сохранять новую почту в папке:"
+
+#: kmsettings.cpp:930
+msgid "<none>"
+msgstr "<нет>"
+
+#: kmsettings.cpp:976
+msgid "Choose Location"
+msgstr "Выбор местоположения"
+
+#: kmaccount.cpp:115
+msgid "Receipt: "
+msgstr "Подтверждение: "
+
+#: kmaccount.cpp:148
+msgid "Failed to add message:"
+msgstr "Ошибка при добавлении сообщения:"
+
+#: kmcomposewin.cpp:138 kmheaders.cpp:39
+msgid "F"
+msgstr "F"
+
+#: kmheaders.cpp:40
+msgid "Sender"
+msgstr "Отправитель"
+
+#: kmheaders.cpp:41
+msgid "Subject"
+msgstr "Тема"
+
+#: kmheaders.cpp:42
+#, fuzzy
+msgid "Date"
+msgstr "Дата: "
+
+#: kmheaders.cpp:187
+#, c-format
+msgid "%d Messages, %d unread."
+msgstr "%d сообщений, %d не прочитано."
+
+#: kmheaders.cpp:189
+msgid "Folder is read-only."
+msgstr "Папка доступна только для чтения."
+
+#: kmheaders.cpp:234
+msgid "Unknown"
+msgstr "Неизвестно"
+
+#: kmheaders.cpp:237
+msgid "No Subject"
+msgstr "Нет темы"
+
+#: kmheaders.cpp:297
+msgid "order of arrival"
+msgstr "порядок прибытия"
+
+#: kmheaders.cpp:306
+msgid "subject"
+msgstr "тема"
+
+#: kmheaders.cpp:307
+msgid "date"
+msgstr "дата"
+
+#: kmheaders.cpp:308
+msgid "sender"
+msgstr "отправитель"
+
+#: kmheaders.cpp:309
+msgid "status"
+msgstr "статус"
+
+#: kmheaders.cpp:311
+#, c-format
+msgid "Sorting messages descending by %s"
+msgstr "Сортировка сообщений по убыванию поля %s"
+
+#: kmheaders.cpp:313
+#, c-format
+msgid "Sorting messages ascending by %s"
+msgstr "Сортировка сообщений по возрастанию поля %s"
+
+#: kmheaders.cpp:409
+msgid "Message(s) saved."
+msgstr "Сообщения сохранены."
+
+#: kmheaders.cpp:411
+msgid "Failed to save message(s)."
+msgstr "Ошибка при сохранении сообщений."
+
+#: kmcomposewin.cpp:127
+msgid "KMail Composer"
+msgstr "Редактор писем KMail"
+
+#: kmcomposewin.cpp:140
+msgid "Size"
+msgstr ""
+
+#: kmcomposewin.cpp:141
+msgid "Encoding"
+msgstr "Кодировка"
+
+#: kmcomposewin.cpp:343
+msgid "&From:"
+msgstr "&Отправитель:"
+
+#: kmcomposewin.cpp:345
+msgid "&Reply to:"
+msgstr "Отвечать по &адресу:"
+
+#: kmcomposewin.cpp:347
+msgid "&To:"
+msgstr "&Получатель:"
+
+#: kmcomposewin.cpp:349
+msgid "&Cc:"
+msgstr ""
+
+#: kmcomposewin.cpp:351
+msgid "&Bcc:"
+msgstr ""
+
+#: kmcomposewin.cpp:353
+msgid "&Subject:"
+msgstr "&Тема:"
+
+#: kmcomposewin.cpp:356
+msgid "&Newsgroups:"
+msgstr "&Конференции (news):"
+
+#: kmcomposewin.cpp:358
+msgid "&Followup-To:"
+msgstr ""
+
+#: kmcomposewin.cpp:430
+msgid "&Send"
+msgstr "&Отправить"
+
+#: kmcomposewin.cpp:433
+msgid "S&end later"
+msgstr "Отправить &позже"
+
+#: kmcomposewin.cpp:435
+msgid "S&end now"
+msgstr "Отправить &немедленно"
+
+#: kmcomposewin.cpp:437
+msgid "&Insert File..."
+msgstr "&Вставить файл..."
+
+#: kmcomposewin.cpp:445
+msgid "&New Composer..."
+msgstr "&Новое окно редактора..."
+
+#: kmcomposewin.cpp:468 kmcomposewin.cpp:686 kmcomposewin.cpp:1817
+msgid "Mark all"
+msgstr "Пометить все"
+
+#: kmcomposewin.cpp:471 kmcomposewin.cpp:688
+msgid "Find..."
+msgstr "Поиск..."
+
+#: kmcomposewin.cpp:473 kmcomposewin.cpp:689
+msgid "Replace..."
+msgstr "Замена..."
+
+#: kmcomposewin.cpp:476
+#, fuzzy
+msgid "&Spellcheck..."
+msgstr "KMail: Проверка орфографии"
+
+#: kmcomposewin.cpp:483
+msgid "&Urgent"
+msgstr "&Срочное сообщение"
+
+#: kmcomposewin.cpp:485
+msgid "&Confirm delivery"
+msgstr "Подтверждение &доставки"
+
+#: kmcomposewin.cpp:487
+msgid "&Confirm read"
+msgstr "&Подтверждение чтения"
+
+#: kmcomposewin.cpp:490
+#, fuzzy
+msgid "&Spellchecker..."
+msgstr "KMail: Проверка орфографии"
+
+#: kmcomposewin.cpp:493
+msgid "&Charsets..."
+msgstr "&Кодировки..."
+
+#: kmcomposewin.cpp:506
+msgid "&All Fields"
+msgstr "&Все поля"
+
+#: kmcomposewin.cpp:508
+msgid "&From"
+msgstr "&Отправитель"
+
+#: kmcomposewin.cpp:509
+msgid "&Reply to"
+msgstr "&Обратный адрес"
+
+#: kmcomposewin.cpp:510
+msgid "&To"
+msgstr "&Получатель"
+
+#: kmcomposewin.cpp:511
+msgid "&Cc"
+msgstr ""
+
+#: kmcomposewin.cpp:512
+msgid "&Bcc"
+msgstr ""
+
+#: kmcomposewin.cpp:513
+msgid "&Subject"
+msgstr "&Тема"
+
+#: kmcomposewin.cpp:515
+msgid "&Newsgroups"
+msgstr "&Конференции (news)"
+
+#: kmcomposewin.cpp:516
+msgid "&Followup-To"
+msgstr ""
+
+#: kmcomposewin.cpp:521
+msgid "Append S&ignature"
+msgstr "&Добавить подпись"
+
+#: kmcomposewin.cpp:523
+msgid "&Insert File"
+msgstr "&Вставить файл"
+
+#: kmcomposewin.cpp:525
+msgid "&Attach..."
+msgstr "&Подцепить..."
+
+#: kmcomposewin.cpp:528
+msgid "&Save..."
+msgstr "&Сохранить..."
+
+#: kmcomposewin.cpp:529
+msgid "Pr&operties..."
+msgstr "С&войства..."
+
+#: kmcomposewin.cpp:531
+msgid "&Attach"
+msgstr "&Подцепление"
+
+#: kmcomposewin.cpp:551
+#, fuzzy
+msgid "Send message"
+msgstr "Отправлять сообщения:"
+
+#: kmcomposewin.cpp:575
+msgid "Cut selection"
+msgstr "Вырезать помеченный текст"
+
+#: kmcomposewin.cpp:578
+msgid "Copy selection"
+msgstr "Копировать помеченный текст"
+
+#: kmcomposewin.cpp:581
+msgid "Paste clipboard contents"
+msgstr "Вставить содержимое буфера"
+
+#: kmcomposewin.cpp:586
+msgid "Attach file"
+msgstr "Подцепить файл"
+
+#: kmcomposewin.cpp:597
+msgid "sign message"
+msgstr "подписать сообщение"
+
+#: kmcomposewin.cpp:602
+msgid "encrypt message"
+msgstr "зашифровать сообщение"
+
+#: kmcomposewin.cpp:619 kmcomposewin.cpp:635
+msgid "Column"
+msgstr "Столбец"
+
+#: kmcomposewin.cpp:620 kmcomposewin.cpp:633
+msgid "Line"
+msgstr "Строка"
+
+#: kmcomposewin.cpp:901
+msgid "KMail Confirm"
+msgstr "Подтверждение KMail"
+
+#: kmcomposewin.cpp:902
+msgid ""
+"Close and discard\n"
+"edited message?"
+msgstr ""
+"Закрыть окно и отменить\n"
+"редактируемое сообщение?"
+
+#: kmcomposewin.cpp:1175
+msgid "Attach File"
+msgstr "Подцепить файл"
+
+#: kmcomposewin.cpp:1197
+msgid "Include File"
+msgstr "Вставить файл"
+
+#: kmcomposewin.cpp:1220 kmreaderwin.cpp:706
+msgid "View..."
+msgstr "Просмотреть..."
+
+#: kmcomposewin.cpp:1221
+msgid "Save..."
+msgstr "Сохранить..."
+
+#: kmcomposewin.cpp:1222 kmreaderwin.cpp:709
+msgid "Properties..."
+msgstr "Свойства..."
+
+#: kmcomposewin.cpp:1226
+msgid "Attach..."
+msgstr "Подцепить..."
+
+#: kmcomposewin.cpp:1268 kmreaderwin.cpp:751
+msgid "View Attachment: "
+msgstr "Просмотр подцепления: "
+
+#: kmcomposewin.cpp:1462
+msgid "To:"
+msgstr "Получатель:"
+
+#: kmcomposewin.cpp:1466
+msgid "Subject:"
+msgstr "Тема:"
+
+#: kmcomposewin.cpp:1469
+#, fuzzy
+msgid "Date:"
+msgstr "Дата: "
+
+#: kmcomposewin.cpp:1999
+msgid "Spellcheck - KMail"
+msgstr ""
+
+#: kmcomposewin.cpp:2025
+msgid ""
+"Error starting KSpell. Please make sure you have ISpell properly configured."
+msgstr ""
+"Ошибка запуска KSpell. Пожалуйста, убедитесь в правильности настройки ISpell."
+
+#: kmfolder.cpp:145
+#, c-format
+msgid "Folder `%s' changed. Recreating index."
+msgstr "Папка `%s' изменена. Обновление индекса."
+
+#: kmfolder.cpp:379
+#, c-format
+msgid "Creating index file: %d messages done"
+msgstr "Создание индексного файла: %d сообщений обработано"
+
+#: kmfolder.cpp:461
+msgid "Writing index file"
+msgstr "Запись индексного файла"
+
+#: kmfolder.cpp:901
+#, c-format
+msgid "Compacting folder: %d messages done"
+msgstr "Сжатие папки: %d сообщений обработано"
+
+#: kmmsgpartdlg.cpp:41
+msgid "Message Part Properties"
+msgstr "Свойства части сообщения"
+
+#: kmmsgpartdlg.cpp:73
+msgid "Description:"
+msgstr "Описание:"
+
+#: kmmsgpartdlg.cpp:83
+msgid "Encoding:"
+msgstr "Кодировка:"
+
+#: kmmsgpartdlg.cpp:89
+msgid "none (8bit)"
+msgstr "нет (8 бит)"
+
+#: kmmsgpartdlg.cpp:90
+msgid "base 64"
+msgstr "base 64"
+
+#: kmmsgpartdlg.cpp:91
+msgid "quoted printable"
+msgstr "quoted printable"
+
+#: kmreaderwin.cpp:320 kmreaderwin.cpp:333 kmreaderwin.cpp:352
+#: kmreaderwin.cpp:373
+msgid "Cc: "
+msgstr ""
+
+#: kmreaderwin.cpp:328 kmreaderwin.cpp:347 kmreaderwin.cpp:368
+msgid "From: "
+msgstr "Отправитель: "
+
+#: kmreaderwin.cpp:330 kmreaderwin.cpp:349 kmreaderwin.cpp:370
+msgid "To: "
+msgstr "Получатель: "
+
+#: kmreaderwin.cpp:337 kmreaderwin.cpp:358 kmreaderwin.cpp:383
+msgid "References: "
+msgstr "Ссылки: "
+
+#: kmreaderwin.cpp:354 kmreaderwin.cpp:367
+msgid "Date: "
+msgstr "Дата: "
+
+#: kmreaderwin.cpp:376
+msgid "Bcc: "
+msgstr ""
+
+#: kmreaderwin.cpp:379
+msgid "Reply to: "
+msgstr "Обратный адрес: "
+
+#: kmreaderwin.cpp:386
+msgid "Groups: "
+msgstr "Группы: "
+
+#: kmreaderwin.cpp:423
+msgid "Encrypted message"
+msgstr "Шифрованное сообщение"
+
+#: kmreaderwin.cpp:429
+msgid "Cannot decrypt message:"
+msgstr "Невозможно дешифровать сообщение:"
+
+#: kmreaderwin.cpp:447
+msgid "Message was signed by"
+msgstr "Сообщение было подписано"
+
+#: kmreaderwin.cpp:448
+msgid "Warning: Bad signature from"
+msgstr "Предупреждение: Плохая подпись"
+
+#: kmreaderwin.cpp:670
+msgid "Attachment: "
+msgstr "Подцепление: "
+
+#: kmreaderwin.cpp:782
+msgid "Could not create temporary file"
+msgstr "Ошибка создания временнного файла"
+
+#: kmreaderwin.cpp:803
+#, c-format
+msgid "Could not save temporary file %s"
+msgstr "Ошибка сохранения временного файла %s"
+
+#: kmreaderwin.cpp:832
+msgid "Could not save file"
+msgstr "Ошибка сохранения файла"
+
+#: kmacctmgr.cpp:194 kmacctmgr.cpp:240
+msgid ""
+"You need to add an account in the network\n"
+"section of the settings in order to\n"
+"receive mail."
+msgstr ""
+"Чтобы получать почту, Вам необходимо\n"
+"добавить аккаунт в резделе `Сеть'\n"
+"настроек программы."
+
+#: main.cpp:103 main.cpp:226
+msgid "warning"
+msgstr "предупреждение"
+
+#: main.cpp:110 main.cpp:111
+msgid "fatal error"
+msgstr "фатальная ошибка"
+
+#: main.cpp:161
+msgid "KMail notification"
+msgstr "Уведомление KMail"
+
+#: main.cpp:162
+msgid ""
+"$HOME is not set!\n"
+"KMail cannot start without it.\n"
+msgstr ""
+"Не установлена переменная $HOME !\n"
+"KMail без нее работать не может.\n"
+
+#: main.cpp:228
+msgid ""
+"The directory ~/KMail exists. From now on, KMail uses the\n"
+"directory ~/Mail for it's messages.\n"
+"KMail can move the contents of the directory ~/KMail into\n"
+"~/Mail, but this will replace existing files with the same\n"
+"name in the directory ~/Mail (e.g. inbox).\n"
+"\n"
+"Shall KMail move the mail folders now ?"
+msgstr ""
+"Существует каталог ~/KMail. Однако, в настоящее время KMail\n"
+"использует для хранения сообщений каталог ~/Mail.\n"
+"KMail может переместить содержимое каталога ~/KMail в ~/Mail,\n"
+"но при этом будут потеряны существующие файлы с теми же\n"
+"именами в каталоге ~/Mail (например, inbox).\n"
+"\n"
+"Следует ли переместить папки с почтой сейчас ?"
+
+#: main.cpp:322
+msgid "Loading addressbook failed"
+msgstr "Ошибка при загрузке адресной книги"
+
+#: main.cpp:392
+#, c-format
+msgid "Unknown command line option: %s"
+msgstr "Неизвестный ключ командной строки: %s"
+
+#: kmacctlocal.cpp:76
+msgid "Cannot open file:"
+msgstr "Ошибка открытия файла:"
+
+#: kmacctlocal.cpp:105
+#, c-format
+msgid ""
+"Cannot remove mail from\n"
+"mailbox `%s':\n"
+"%s"
+msgstr ""
+"Невозможно удалить почту из\n"
+"почтового ящика `%s':\n"
+"%s"
+
+#: kmacctpop.cpp:113
+msgid ""
+"Please specify Host, Port  and\n"
+"destination folder in the settings\n"
+"and try again."
+msgstr ""
+"Пожалуйста, укажите адрес сервера, порт\n"
+"и папку для сохранения почты в настройках\n"
+"и попробуйте еще раз."
+
+#: kmacctpop.cpp:273
+msgid "Pop Mail Error"
+msgstr "Ошибка Pop-почты"
+
+#: kmacctpop.cpp:278
+msgid "Pop Mail Network Error"
+msgstr "Сетевая ошибка Pop-почты"
+
+#: kmacctpop.cpp:294
+msgid "Unknown error"
+msgstr "Неизвестная ошибка"
+
+#: kmacctpop.cpp:299
+#, c-format
+msgid ""
+"Account: %s\n"
+"In %s:\n"
+"%s"
+msgstr ""
+"Аккаунт: %s\n"
+"В %s:\n"
+"%s"
+
+#: kmacctpop.cpp:455
+msgid "Login Name:"
+msgstr "Имя:"
+
+#: kmfolderdir.cpp:78
+#, c-format
+msgid ""
+"Error while creating folder `%s':\n"
+"%s"
+msgstr ""
+"Ошибка создания папки `%s':\n"
+"%s"
+
+#: kmfoldermgr.cpp:136
+#, c-format
+msgid ""
+"Creating missing folder\n"
+"`%s'"
+msgstr ""
+"Создание недостающей папки\n"
+"`%s'"
+
+#: kmfoldermgr.cpp:139
+#, c-format
+msgid ""
+"Cannot create folder `%s'\n"
+"in %s"
+msgstr ""
+"Невозможно создать папку `%s'\n"
+"в %s"
+
+#: kmsender.cpp:116
+msgid ""
+"Please specify a send\n"
+"method in the settings\n"
+"and try again."
+msgstr ""
+"Пожалуйста, укажите метод\n"
+"отправки почты в настройках\n"
+"и попробуйте еще раз."
+
+#: kmsender.cpp:122
+msgid ""
+"Please set the required fields in the\n"
+"identity settings:\n"
+"user-name and email-address"
+msgstr ""
+"Пожалуйста, заполните требуемые поля\n"
+"в настройках идентификации:\n"
+"имя-пользователя и email-адрес"
+
+#: kmsender.cpp:147
+msgid "You must specify a receiver"
+msgstr "Вы должны указать получателя"
+
+#: kmsender.cpp:158
+msgid "Cannot add message to outbox folder"
+msgstr "Невозможно добавить сообщение в папку outbox"
+
+#: kmsender.cpp:189
+msgid "Sending still in progress"
+msgstr "Отправка почты все еще не закончена"
+
+#: kmsender.cpp:245
+msgid "Initiating sender process..."
+msgstr "Инициализация процесса отправки..."
+
+#: kmsender.cpp:261
+msgid "Sending message: "
+msgstr "Отправка сообщения: "
+
+#: kmsender.cpp:289
+msgid "Done sending messages."
+msgstr "Отправка сообщений завершена."
+
+#: kmsender.cpp:308
+msgid "Sending failed:"
+msgstr "Отправка завершилась неудачно:"
+
+#: kmsender.cpp:461
+msgid ""
+"Please specify a mailer program\n"
+"in the settings."
+msgstr ""
+"Укажите, пожалуйста, почтовую\n"
+"программу в настройках."
+
+#: kmsender.cpp:501
+#, c-format
+msgid "Failed to execute mailer program %s"
+msgstr "Ошибка запуска почтовой программы %s"
+
+#: kmsender.cpp:589
+msgid "connecting to server"
+msgstr "установка соединения с сервером"
+
+#: kmsender.cpp:594
+#, c-format
+msgid ""
+"Cannot open SMTP connection to\n"
+"host %s for sending:\n"
+"%s"
+msgstr ""
+"Невозможно открыть SMTP-соединение\n"
+"с сервером %s для отправки:\n"
+"%s"
+
+#: kmsender.cpp:623
+msgid "Cannot close SMTP connection."
+msgstr "Невозможно закрыть SMTP-соединение."
+
+#: kmsender.cpp:673
+msgid "transmitting message"
+msgstr "передача сообщения"
+
+#: kmsender.cpp:707
+msgid "network error"
+msgstr "ошибка сети"
+
+#: kmsender.cpp:709
+#, c-format
+msgid ""
+"a SMTP error occured.\n"
+"Command: %s\n"
+"Response: %s\n"
+"Return code: %d"
+msgstr ""
+"Произошла ошибка SMTP.\n"
+"Команда: %s\n"
+"Ответ: %s\n"
+"Код возврата: %d"
+
+#: kmsender.cpp:724
+#, c-format
+msgid "Sending SMTP command: %s"
+msgstr "Посылка команды SMTP: %s"
+
+#: kmacctseldlg.cpp:26
+msgid "Account Type"
+msgstr "Тип аккаунта"
+
+#: kmacctseldlg.cpp:45
+msgid "Local Mailbox"
+msgstr "Локальный почтовый ящик"
+
+#: kmacctseldlg.cpp:49
+msgid "Pop3"
+msgstr "Pop3"
+
+#: kmfilteraction.cpp:93 kmfilteraction.cpp:191
+msgid "transfer"
+msgstr "передача"
+
+#: kmfilteraction.cpp:160 kmfilteraction.cpp:193
+msgid "skip rest"
+msgstr "пропуск остального"
+
+#: kmidentity.cpp:162
+#, c-format
+msgid ""
+"Failed to execute signature script\n"
+"%s\n"
+"%s"
+msgstr ""
+"Ошибка выполнения сценария подписи\n"
+"%s\n"
+"%s"
+
+#: kmfolderseldlg.cpp:32
+msgid "Select folder"
+msgstr "Выбор папки"
+
+#: kmfilter.cpp:197
+#, c-format
+msgid ""
+"Unknown filter action `%s'\n"
+"in filter rule `%s'.\n"
+"Ignoring it."
+msgstr ""
+"Неизвестное действие `%s'\n"
+"в правиле фильтрации `%s'.\n"
+"Действие игнорируется."
+
+#: kmfilterdlg.cpp:62
+msgid "Filter Rules"
+msgstr "Правила фильтрации"
+
+#: kmfilterdlg.cpp:141
+msgid "Up"
+msgstr "Вверх"
+
+#: kmfilterdlg.cpp:144
+msgid "Down"
+msgstr "Вниз"
+
+#: kmfilterdlg.cpp:527
+msgid "<nothing>"
+msgstr "<ничего>"
+
+#: kmfilterdlg.cpp:538
+msgid "ignore"
+msgstr "игнорировать"
+
+#: kmfilterdlg.cpp:539
+msgid "and"
+msgstr "и"
+
+#: kmfilterdlg.cpp:540
+msgid "unless"
+msgstr "если не"
+
+#: kmfilterdlg.cpp:541
+msgid "or"
+msgstr "или"
+
+#: kmfilterdlg.cpp:547
+msgid "equals"
+msgstr "равно"
+
+#: kmfilterdlg.cpp:548
+msgid "not equal"
+msgstr "не равно"
+
+#: kmfilterdlg.cpp:549
+msgid "contains"
+msgstr "содержит"
+
+#: kmfilterdlg.cpp:550
+msgid "doesn't contain"
+msgstr "не содержит"
+
+#: kmfilterdlg.cpp:551
+msgid "regular expression"
+msgstr "регулярное выражение"
+
+#: kmfilterdlg.cpp:558
+msgid "<message>"
+msgstr "<сообщение>"
+
+#: kmfilterdlg.cpp:559
+msgid "<body>"
+msgstr "<тело>"
+
+#: kmfilterdlg.cpp:560
+msgid "<any header>"
+msgstr "<любой заголовок>"
+
+#: kpgp.cpp:151
+msgid ""
+"Couldn't find PGP executable.\n"
+"Please check your PATH is set correctly."
+msgstr ""
+"Не удалось найти исполняемый файл PGP.\n"
+"Проверьте, пожалуйста, корректность установки PATH."
+
+#: kpgp.cpp:193
+msgid ""
+"Could not find PGP executable.\n"
+"Please check your PATH is set correctly."
+msgstr ""
+"Не удалось найти исполняемый файл PGP.\n"
+"Проверьте, пожалуйста, корректность установки PATH."
+
+#: kpgp.cpp:207
+msgid "The pass phrase is missing."
+msgstr "Ключ отсутствует."
+
+#: kpgp.cpp:286 kpgp.cpp:312 kpgp.cpp:325 kpgp.cpp:344 kpgp.cpp:361
+#, fuzzy
+msgid "PGP Warning"
+msgstr "предупреждение"
+
+#: kpgp.cpp:287
+msgid ""
+"Could not find the public keys for the\n"
+"recipients of this mail.\n"
+"Message will not be encrypted."
+msgstr ""
+
+#: kpgp.cpp:296
+msgid "Could not find the public keys for\n"
+msgstr ""
+
+#: kpgp.cpp:307
+msgid "These persons will not be able to\n"
+msgstr ""
+
+#: kpgp.cpp:309
+msgid "This person will not be able to\n"
+msgstr ""
+
+#: kpgp.cpp:311
+#, fuzzy
+msgid "decrypt the message."
+msgstr "зашифровать сообщение"
+
+#: kpgp.cpp:326
+msgid ""
+"You just entered an invalid passphrase.\n"
+"Do you wan't to try again, continue and\n"
+"leave the message unsigned, or cancel sending the message?"
+msgstr ""
+
+#: kpgp.cpp:331
+msgid "Retry"
+msgstr ""
+
+#: kpgp.cpp:342
+msgid ""
+"Do you wan't to encrypt anyway, leave the\n"
+"message as is, or cancel the message?"
+msgstr ""
+
+#: kpgp.cpp:346
+msgid "Encrypt"
+msgstr ""
+
+#: kpgp.cpp:359
+msgid ""
+"Do you wan't to leave the message as is,\n"
+"or cancel the message?"
+msgstr ""
+
+#: kpgp.cpp:711
+msgid ""
+"Please enter your\n"
+"PGP passphrase"
+msgstr ""
+"Введите, пожалуйста,\n"
+"ключ PGP"
+
+#: kpgp.cpp:738
+msgid "PGP Security Check"
+msgstr "Проверка безопасности PGP"
+
+#: kpgp.cpp:765
+msgid "PGP User Identity:"
+msgstr "Идентификация пользователя PGP:"
+
+#: kpgp.cpp:776
+msgid "Store passphrase"
+msgstr ""
+
+#: kpgp.cpp:782
+msgid "Always encrypt to self"
+msgstr ""
+
+#: kpgpbase.cpp:315
+msgid "Bad pass Phrase; couldn't sign"
+msgstr "Неверный ключ; поставить подпись невозможно"
+
+#: kpgpbase.cpp:354
+msgid "error running pgp"
+msgstr ""
+
+#: kpgpbase.cpp:371 kpgpbase.cpp:662
+msgid "Bad pass Phrase; couldn't decrypt"
+msgstr "Неверная ключ; дешифровать невозможно"
+
+#: kpgpbase.cpp:382 kpgpbase.cpp:673
+msgid "Do not have the secret key for this message"
+msgstr ""
+
+#: kpgpbase.cpp:410
+msgid "unknown key ID "
+msgstr ""
+
+#: kpgpbase.cpp:430
+msgid "??? (file ~/.pgp/pubring.pgp not found)"
+msgstr ""
+
+#: kpgpbase.cpp:585
+#, fuzzy
+msgid "The passphrase you entered is invalid."
+msgstr "Ключ отсутствует."
+
+#: kpgpbase.cpp:611
+msgid ""
+"The key(s) you wan't to encrypt your message\n"
+"to are not trusted. No encryption done."
+msgstr ""
+
+#: kpgpbase.cpp:614
+#, fuzzy, c-format
+msgid ""
+"The following key(s) are not trusted:\n"
+"%s\n"
+"They will not be able to decrypt the message"
+msgstr ""
+"открытый ключ для %s не найден.\n"
+"Этот человек не сможет расшифровать сообщение."
+
+#: kfileio.cpp:26 kmaddrbook.cpp:162
+msgid "File I/O Error"
+msgstr "Ошибка файлового ввода/вывода"
+
+#: kfileio.cpp:47
+#, c-format
+msgid ""
+"The specified file does not exist:\n"
+"%s"
+msgstr ""
+"Указанный файл не существует:\n"
+"%s"
+
+#: kfileio.cpp:54
+#, c-format
+msgid ""
+"This is a directory and not a file:\n"
+"%s"
+msgstr ""
+"Это каталог, а не файл:\n"
+"%s"
+
+#: kfileio.cpp:61
+#, c-format
+msgid ""
+"You do not have read permissions to the file:\n"
+"%s"
+msgstr ""
+"У Вас нет прав на чтение файла:\n"
+"%s"
+
+#: kfileio.cpp:72 kmaddrbook.cpp:152
+#, c-format
+msgid ""
+"Could not read file:\n"
+"%s"
+msgstr ""
+"Не удалось прочитать файл:\n"
+"%s"
+
+#: kfileio.cpp:75 kmaddrbook.cpp:155
+#, c-format
+msgid ""
+"Could not open file:\n"
+"%s"
+msgstr ""
+"Не удалось открыть файл:\n"
+"%s"
+
+#: kfileio.cpp:78
+#, c-format
+msgid ""
+"Error while reading file:\n"
+"%s"
+msgstr ""
+"Ошибка при чтении файла:\n"
+"%s"
+
+#: kfileio.cpp:95
+#, c-format
+msgid "Could only read %u bytes of %u."
+msgstr "Удалось прочитать только %u байтов из %u."
+
+#: kfileio.cpp:124
+#, c-format
+msgid ""
+"File %s exists.\n"
+"Do you want to replace it ?"
+msgstr ""
+"Файл %s существует.\n"
+"Вы желаете заместить его содержимое ?"
+
+#: kfileio.cpp:144
+#, c-format
+msgid ""
+"Failed to make a backup copy of %s.\n"
+"Continue anyway ?"
+msgstr ""
+"Не удалось сделать резервную копию %s.\n"
+"Продолжить, несмотря на это ?"
+
+#: kfileio.cpp:156 kfileio.cpp:174
+#, c-format
+msgid ""
+"Could not write to file:\n"
+"%s"
+msgstr ""
+"Не удалось записать в файл:\n"
+"%s"
+
+#: kfileio.cpp:159
+#, c-format
+msgid ""
+"Could not open file for writing:\n"
+"%s"
+msgstr ""
+"Не удалось открыть файл для записи:\n"
+"%s"
+
+#: kfileio.cpp:163 kmaddrbook.cpp:158
+#, c-format
+msgid ""
+"Error while writing file:\n"
+"%s"
+msgstr ""
+"Ошибка при записи в файл:\n"
+"%s"
+
+#: kfileio.cpp:180
+#, c-format
+msgid "Could only write %d bytes of %d."
+msgstr "Удалось записать только %d байтов из %d."
+
+#: kmaddrbook.cpp:25
+msgid "KMail Error"
+msgstr "Ошибка KMail"
+
+#: kmaddrbook.cpp:26
+msgid "Storing the addressbook failed!\n"
+msgstr "Сохранение адресной книги завершилось неудачей!\n"
+
+#: kmaddrbookdlg.cpp:20
+msgid "Addressbook"
+msgstr "Адресная книга"
+
+#: kmaddrbookdlg.cpp:95
+msgid "Addressbook Manager"
+msgstr "Управление адресной книгой"
+
+#: kmaddrbookdlg.cpp:179
+msgid "Storing addressbook failed"
+msgstr "Сохранение адресной книги завершилось неудачей"
+
+#: kmiostatusdlg.cpp:32
+msgid "&Abort"
+msgstr "&Прервать"
+
+#: kmnewiostatuswdg.cpp:41
+msgid "Sending messages to "
+msgstr "Отправка сообщений для "
+
+#: kmnewiostatuswdg.cpp:44
+msgid "Retrieving messages from "
+msgstr "Получение сообщений от "
+
+#: kmnewiostatuswdg.cpp:54
+msgid "Preparing transmission..."
+msgstr "Подготовка передачи..."
+
+#: kmnewiostatuswdg.cpp:60
+msgid "Transmission completed..."
+msgstr "Передача завершена..."
+
+#: kmnewiostatuswdg.cpp:95
+msgid "Aborting transmission...\n"
+msgstr "Прерывание передачи...\n"
+
+#: charsetsDlg.cpp:27
+msgid "KRN - Charset Settings"
+msgstr "KRN - Настройка кодировки"
+
+#: charsetsDlg.cpp:29
+msgid "KMail - Charset Settings"
+msgstr "KMail - Настройка кодировки"
+
+#: charsetsDlg.cpp:39
+msgid "Message charset"
+msgstr "Кодировка сообщения"
+
+#: charsetsDlg.cpp:57
+msgid "Composer charset"
+msgstr "Кодировка редактора сообщений"
+
+#: charsetsDlg.cpp:75
+msgid "Set as &default"
+msgstr "&Установить по умолчанию"
+
+#: charsetsDlg.cpp:80
+msgid "&7 bit is ASCII"
+msgstr "&7 бит ASCII"
+
+#: charsetsDlg.cpp:84
+msgid "&Qute unknonw characters"
+msgstr "&Кодировать неизвестные символы"
+
+#~ msgid "Error during PGP:"
+#~ msgstr "Ошибка при выполнении PGP:"
+
+#~ msgid "Message signed by"
+#~ msgstr "Сообщение подписано"
+
+#~ msgid "Message has a bad signature from"
+#~ msgstr "Сообщение содержит неверную подпись от"
+
+#~ msgid "End PGP signed message"
+#~ msgstr "Конец сообщения, подписанного PGP"

@@ -1,0 +1,193 @@
+# Russian messages for ksirc.
+# Copyright (C) 1998 KDE Team.
+# Const Kaplinsky <const@ce.cctpu.edu.ru>, 1998.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ksirc\n"
+"POT-Creation-Date: 1998-10-02 00:14+0200\n"
+"PO-Revision-Date: 1998-09-14 15:00+0800\n"
+"Last-Translator: Const Kaplinsky <const@ce.cctpu.edu.ru>\n"
+"Language-Team: Russian <ru@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=koi8-r\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: toplevel.cpp:134
+msgid "Lag in seconds to the server"
+msgstr ""
+
+#: toplevel.cpp:138
+msgid "&Ticker Mode"
+msgstr ""
+
+#: toplevel.cpp:160
+#, fuzzy
+msgid "&Cut Window..."
+msgstr "&Обрезать окно..."
+
+#: toplevel.cpp:291
+msgid "&Users"
+msgstr "&Пользователи"
+
+#: ksirc.cpp:56
+msgid ""
+"kSirc Alpha releases have an 8 week\n"
+"expiry date.\n"
+"\n"
+"kSirc-ALPHA HAS EXPIRED!!\n"
+"Please upgrade or use a beta release"
+msgstr ""
+"Альфа-версии kSirc имеют срок\n"
+"пригодности в 8 недель.\n"
+"\n"
+"kSirc-ALPHA УСТАРЕЛА!!\n"
+"Пожалуйста, обновите версию"
+
+#: ksirc.cpp:64
+msgid ""
+"kSirc Alpha release have an 8 week\n"
+"expiry date.\n"
+"\n"
+"THIS VERSION WILL EXPIRE IN UNDER 4 WEEKS"
+msgstr ""
+"Альфа-версии kSirc имеют срок\n"
+"пригодности в 8 недель.\n"
+"\n"
+"ЭТА ВЕРСИЯ УСТАРЕЕТ ЧЕРЕЗ 4 НЕДЕЛИ"
+
+#: open_topData.cpp:39
+msgid "Channel/Nick:"
+msgstr ""
+
+#: open_ksircData.cpp:39
+msgid "Server:"
+msgstr "Сервер:"
+
+#: servercontroller.cpp:118
+msgid "&Dock"
+msgstr ""
+
+#: servercontroller.cpp:126 servercontroller.cpp:643
+msgid "&New Server..."
+msgstr "&Новый сервер..."
+
+#: servercontroller.cpp:127
+msgid "&Join Channel..."
+msgstr "&Присоединиться к каналу..."
+
+#: servercontroller.cpp:129
+msgid "&Connections"
+msgstr "&Соединения"
+
+#: servercontroller.cpp:145 servercontroller.cpp:634
+msgid "&Colour Preferences..."
+msgstr "&Настройка цвета"
+
+#: servercontroller.cpp:147 servercontroller.cpp:636
+msgid "&Global Fonts..."
+msgstr "&Общие шрифты..."
+
+#: servercontroller.cpp:149 servercontroller.cpp:638
+msgid "&Filter Rule Editor..."
+msgstr "&Редактор правил филтрации..."
+
+#: servercontroller.cpp:152 servercontroller.cpp:640
+msgid "&Preferences..."
+msgstr "&Настройки..."
+
+#: servercontroller.cpp:162
+msgid "Help on Colours..."
+msgstr "Помощь по цветам..."
+
+#: servercontroller.cpp:164
+msgid "Help on Filters..."
+msgstr "Помощь по фильтрам..."
+
+#: servercontroller.cpp:166
+msgid "Help on Keys..."
+msgstr "Помощь по клавишам..."
+
+#: servercontroller.cpp:169
+msgid "About kSirc..."
+msgstr "О программе kSirc..."
+
+#: servercontroller.cpp:186
+msgid "Server Control"
+msgstr "Управление сервером"
+
+#: servercontroller.cpp:243 servercontroller.cpp:395
+msgid "Channels"
+msgstr "Каналы"
+
+#: servercontroller.cpp:243 servercontroller.cpp:395
+msgid "Online"
+msgstr ""
+
+#: servercontroller.cpp:589
+msgid "Active Server Connections"
+msgstr "Активные соединения сервера"
+
+#: servercontroller.cpp:631
+msgid "&Undock"
+msgstr ""
+
+#: KSircColourData.cpp:33
+msgid "Generic Text"
+msgstr "Обычный текст"
+
+#: KSircColourData.cpp:62
+msgid "Info"
+msgstr "Инфо"
+
+#: KSircColourData.cpp:71
+msgid "Chan Messages"
+msgstr ""
+
+#: KSircColourData.cpp:80
+msgid "Errors"
+msgstr "Ошибки"
+
+#: KSircColourData.cpp:115
+msgid "Background"
+msgstr "Фон"
+
+#: FilterRuleEditorData.cpp:33
+msgid "Description:"
+msgstr "Описание:"
+
+#: FilterRuleEditorData.cpp:51
+msgid "Match:"
+msgstr "Совпадение:"
+
+#: FilterRuleEditorData.cpp:69
+msgid "From:"
+msgstr "От:"
+
+#: FilterRuleEditorData.cpp:78
+msgid "To:"
+msgstr "К:"
+
+#: FilterRuleEditorData.cpp:105
+msgid "&Modify"
+msgstr "&Изменить"
+
+#: FilterRuleEditorData.cpp:126
+msgid "&New Rule"
+msgstr "&Новое правило"
+
+#: FilterRuleEditorData.cpp:145
+msgid "Up"
+msgstr "Вверх"
+
+#: FilterRuleEditorData.cpp:155
+msgid "Down"
+msgstr "Вниз"
+
+#: dccDialogData.cpp:38
+msgid "&Get"
+msgstr "&Получить"
+
+#: dccDialogData.cpp:46
+msgid "&Forget"
+msgstr "&Забыть"
