@@ -36,10 +36,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <pwd.h>
-
-#ifdef HAVE_NETINET_IN_H
 #include <netinet/in.h>
-#endif
 
 #ifdef HAVE_RESOLV_H
 #include <resolv.h>
