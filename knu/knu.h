@@ -23,7 +23,7 @@
  *
  * $Log$
  * Revision 1.2  1997/11/23 22:28:19  leconte
- * - $Id$ and $Log$ added in the headers
+ * - Id and Log added in the headers
  * - Patch from C.Czezatke applied (preparation of KProcess new version)
  *
  */
@@ -86,6 +86,7 @@ public slots:
   void slotAbout();
   void slotAboutQt();
   void slotNew();
+  void checkBinaryAndDisplayWidget();
 
 private:
   KConfig    *kconfig;

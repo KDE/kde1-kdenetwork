@@ -24,7 +24,7 @@
  *
  * $Log$
  * Revision 1.3  1997/12/07 23:44:20  leconte
- * - $Id$ and $Log$ added in the headers
+ * - handle the binary's name modification dynamicaly (problem reported
  *   by Conrad Sanderson)
  * - added browse button to the option dialog (for binary selection)
  * - code clean-up
@@ -48,8 +48,6 @@
 #include <qdialog.h>
 #include <qgrpbox.h>
 #include <qbttngrp.h>
-//class OptionsDlg: public QFrame
-//class OptionsDlg: public QSemiModal
 #include <qradiobt.h>
 #include <qchkbox.h>
 #include <qsemimodal.h> 
@@ -70,13 +68,10 @@ public:
 public slots:
   void slotOkBtn();
   void slotHelpBtn();
-  //CommandDlg **getPages(int *);
-  
   void slotCancelBtn();
   void closeEvent(QCloseEvent*);
 
-
-  // widgets
+signals:
   void optionsClosed();
 
 private:

@@ -24,13 +24,15 @@
  *
  * $Log$
  * Revision 1.2  1997/11/23 22:28:05  leconte
- * - $Id$ and $Log$ added in the headers
+ * - Id and Log added in the headers
  * - Patch from C.Czezatke applied (preparation of KProcess new version)
  *
  */
 
 #include <errno.h>
 #include <ctype.h>
+
+#include <qfiledlg.h>
 
 #include <kapp.h>
 #include <qregexp.h>
@@ -54,7 +56,6 @@
 #define SEPARATION 10
 
 // defined in knu.cpp
-//extern QString search_for_binary(QString);
 extern bool test_for_exec(QString);
 
 
@@ -71,105 +72,80 @@ QString removeAmpersand(const QString &s1)
 }
 
 
-
 /**
  * Constructor
  */
-CommandDlg::CommandDlg(QString commandName, 
+CommandDlg::CommandDlg(QString, 
 		       QWidget* parent,	const char* name)
 	: QWidget(parent, name)
 {
-  KConfig *kc = kapp->getConfig();
+  int widgetHeight = 2*fontMetrics().height();
 
   configGroupName = removeAmpersand(name);
-  kc->setGroup(configGroupName);
-  commandFound = TRUE;
-  firstTimeLauching = FALSE;
 
-  if (!kc->hasKey("path")) {
-    // It's the first execution, 
-    // so we have to search for the pathname
-    firstTimeLauching = TRUE;
-
-    kc->writeEntry("path", commandName);
-    if (!::test_for_exec(kc->readEntry("path"))) {
-      commandFound = FALSE;
-    } else {
-      // All is OK : we can enable this tab.
-      if (!kc->hasKey("enable")) {
-	kc->writeEntry("enable", 1);
-      }
-    }
-  } else {
-    // We have a path in path=, so check if it still exists
-    if (!::test_for_exec(kc->readEntry("path"))) {
-      commandFound = FALSE;
-    }
-  }
-
-  // Commit changes in configfile (if needed)
-  kc->sync();
-
-  if (commandFound) {
-    commandArgs = new QLineEdit(this, "lineedit_1" );
-    //CB commandArgs = new QComboBox(TRUE, this, "combobox_1" );//CB
-    //CB commandArgs->setInsertionPolicy(QComboBox::AtTop);//CB
-
-    commandArgs->setMaximumSize(QLayout::unlimited, 30);
-    connect(commandArgs, SIGNAL(returnPressed()), 
-	    this, SLOT(slotLauchCommand()));
-    connect(commandArgs, SIGNAL(textChanged(const char*)), 
-	    this, SLOT(slotEnableGoBtn(const char*)));
-    commandArgs->setMaxLength(1024);
-    commandArgs->setEchoMode(QLineEdit::Normal);
-    commandArgs->setFrame(TRUE);
-    
-    commandLbl1 = new QLabel(commandArgs, _("H&ost:"), this);
-    CHECK_PTR(commandLbl1);
-    commandLbl1->adjustSize();
-    commandLbl1->setFixedSize(commandLbl1->width(), 30);
+  /*
+   * We build a pseudo-top level widget to be able to hide it if we don't
+   * find the binary
+   */
+  commandBinOK = new QFrame(this);
+  CHECK_PTR(commandBinOK);
+  
+  commandArgs = new QLineEdit(commandBinOK, "lineedit_1" );
+  //CB commandArgs = new QComboBox(TRUE, this, "combobox_1" );//CB
+  //CB commandArgs->setInsertionPolicy(QComboBox::AtTop);//CB
+  commandArgs->setMaximumSize(QLayout::unlimited, widgetHeight);
+  connect(commandArgs, SIGNAL(returnPressed()), 
+	  this, SLOT(slotLauchCommand()));
+  connect(commandArgs, SIGNAL(textChanged(const char*)), 
+	  this, SLOT(slotEnableGoBtn(const char*)));
+  commandArgs->setMaxLength(1024);
+  commandArgs->setEchoMode(QLineEdit::Normal);
+  commandArgs->setFrame(TRUE);
+  
+  commandLbl1 = new QLabel(commandArgs, _("H&ost:"), commandBinOK);
+  CHECK_PTR(commandLbl1);
+  commandLbl1->setFixedSize(commandLbl1->sizeHint());
     
     
-    commandGoBtn = new QPushButton(this, "pushbutton_3" );
-    commandGoBtn->setFixedSize(70, 30);
-    connect(commandGoBtn, SIGNAL(clicked()),
-	    this, SLOT(slotLauchCommand()));
-    commandGoBtn->setText( _("&Go!") );
-    commandGoBtn->setEnabled(FALSE);
-    commandGoBtn->setAutoDefault(TRUE);
-    isGoBtnEnabled=FALSE;
-    //BL commandGoBtn->setFocusPolicy(QWidget::StrongFocus);
+  commandGoBtn = new QPushButton(commandBinOK, "pushbutton_3" );
+  commandGoBtn->setFixedSize(70, widgetHeight);
+  connect(commandGoBtn, SIGNAL(clicked()),
+	  this, SLOT(slotLauchCommand()));
+  commandGoBtn->setText( _("&Go!") );
+  commandGoBtn->setEnabled(FALSE);
+  commandGoBtn->setAutoDefault(TRUE);
+  isGoBtnEnabled=FALSE;
+  //BL commandGoBtn->setFocusPolicy(QWidget::StrongFocus);
     
-    commandStopBtn = new QPushButton(this, "pushbutton_4" );
-    commandStopBtn->setFixedSize(70, 30);
-    connect(commandStopBtn, SIGNAL(clicked()), 
-	    this, SLOT(slotStopCommand()));
-    commandStopBtn->setText(_("&Stop"));
-    commandStopBtn->setEnabled(FALSE);
-    
-    commandTextArea = new QMultiLineEdit(this, "multilineedit_1" );
-    commandTextArea->setReadOnly(TRUE);
-    commandTextArea->setFocusPolicy(QWidget::NoFocus);
-
-  } else {
-    
-    /*
-     * Command not found
-     */
-    layoutNoBin = new QBoxLayout(this, QBoxLayout::TopToBottom, SEPARATION);
-    CHECK_PTR(layoutNoBin);
-    
-    commandLblNoBin = new QLabel(_("This command binary was not found. \n"
-				   "You can give its path "
-				   "in the Edit->Preferences... menu."),
-				 this);
-    CHECK_PTR(commandLblNoBin);
-    commandLblNoBin->setAlignment(AlignCenter);
-    
-    layoutNoBin->addWidget(commandLblNoBin);
-    layoutNoBin->activate();
-    
-  }
+  commandStopBtn = new QPushButton(commandBinOK, "pushbutton_4" );
+  commandStopBtn->setFixedSize(70, widgetHeight);
+  connect(commandStopBtn, SIGNAL(clicked()), 
+	  this, SLOT(slotStopCommand()));
+  commandStopBtn->setText(_("&Stop"));
+  commandStopBtn->setEnabled(FALSE);
+  
+  commandTextArea = new QMultiLineEdit(commandBinOK, "multilineedit_1" );
+  commandTextArea->setReadOnly(TRUE);
+  commandTextArea->setFocusPolicy(QWidget::NoFocus);
+  
+  /*
+   * This is the widget if we don't find the command
+   */
+  commandBinNonOK = new QWidget(this);
+  CHECK_PTR(commandBinNonOK);
+  layoutNoBin = new QBoxLayout(commandBinNonOK, 
+			       QBoxLayout::TopToBottom, SEPARATION);
+  CHECK_PTR(layoutNoBin);
+  
+  commandLblNoBin = new QLabel(_("This command binary was not found. \n"
+				 "You can give its path "
+				 "in the Edit->Preferences... menu."),
+			       commandBinNonOK);
+  CHECK_PTR(commandLblNoBin);
+  commandLblNoBin->setAlignment(AlignCenter);
+  
+  layoutNoBin->addWidget(commandLblNoBin);
+  layoutNoBin->activate();
 }
 
 
@@ -181,6 +157,42 @@ CommandDlg::~CommandDlg()
   slotStopCommand();
 }
 
+
+
+/**
+ * resize
+ */
+void
+CommandDlg::resizeEvent(QResizeEvent *) 
+{
+  commandBinOK->resize(width(), height());
+  commandBinNonOK->resize(width(), height());
+}
+
+
+/**
+ * checkBinary
+ */
+void 
+CommandDlg::checkBinaryAndDisplayWidget()
+{
+  //debug("%s::checkBinaryAndDisplayWidget()", name());
+  KConfig *kc = kapp->getConfig();
+  kc->setGroup(configGroupName);
+  if (::test_for_exec(kc->readEntry("path"))) {
+    commandFound = TRUE;
+  } else {
+    commandFound = FALSE;
+  }
+
+  if (commandFound) {
+    commandBinNonOK->hide();
+    commandBinOK->show();
+  } else {
+    commandBinOK->hide();
+    commandBinNonOK->show();
+  }
+}
 
 /**
  * This is called when the tab is selected, so we
@@ -379,7 +391,6 @@ CommandDlg::slotCmdStdout(KProcess *, char *buffer, int buflen)
   char *p;
 
   buffer[buflen] = 0;		// mark eot
-  //debug("text = \"%s\"", buffer);
 
   // goto end of data
   line = QMAX(commandTextArea->numLines() - 1, 0);
@@ -419,11 +430,13 @@ CommandCfgDlg::CommandCfgDlg(const char *tcs,
 QWidget *
 CommandCfgDlg::makeWidget(QWidget *parent, bool makeLayouts)
 {
-#define SET_ADJUSTED_FIXED_SIZE(_wdgt) { _wdgt->adjustSize();	\
-                  _wdgt->setFixedSize(_wdgt->size()); }
-
+#define SET_ADJUSTED_FIXED_SIZE(_wdgt) \
+             _wdgt->setFixedSize(_wdgt->sizeHint());
+	     
   KConfig   *kc = kapp->getConfig();
-  
+  int widgetWidth =  parent->fontMetrics().width("----------------------");
+  int widgetHeight = 2*parent->fontMetrics().height();
+
   cfgWidget = new QWidget(parent);
 
   // We will have to give this back to the ConfigWindow
@@ -435,11 +448,8 @@ CommandCfgDlg::makeWidget(QWidget *parent, bool makeLayouts)
 
   cfgBinNameLE = new QLineEdit(cfgBinGB);
   CHECK_PTR(cfgBinNameLE);
-  cfgBinNameLE->setMinimumSize(cfgBinGB->fontMetrics()
-			         .width("----------------------"), 
-			       (int)(2*cfgBinGB->fontMetrics().height()));
-  cfgBinNameLE->setMaximumSize(QLayout::unlimited,
-			       (int)(2*cfgBinGB->fontMetrics().height()));
+  cfgBinNameLE->setMinimumSize(widgetWidth, widgetHeight);
+  cfgBinNameLE->setMaximumSize(QLayout::unlimited, widgetHeight);
   
   cfgBinNameLbl = new QLabel(cfgBinNameLE, _("Path&name:"), cfgBinGB);
   CHECK_PTR(cfgBinNameLbl);
@@ -447,17 +457,19 @@ CommandCfgDlg::makeWidget(QWidget *parent, bool makeLayouts)
 
   cfgBinArgLE = new QLineEdit(cfgBinGB);
   CHECK_PTR(cfgBinArgLE);
-  cfgBinArgLE->setMinimumSize(cfgBinGB->fontMetrics()
-			      .width("----------------------"), 
-			      (int)(2*cfgBinGB->fontMetrics().height()));
-  cfgBinArgLE->setMaximumSize(QLayout::unlimited,
-			      (int)(2*cfgBinGB->fontMetrics().height()));
+  cfgBinArgLE->setMinimumSize(widgetWidth, widgetHeight);
+  cfgBinArgLE->setMaximumSize(QLayout::unlimited, widgetHeight);
   
   cfgBinArgLbl = new QLabel(cfgBinArgLE, _("Additional &arguments:"),
 			    cfgBinGB);
   CHECK_PTR(cfgBinArgLbl);
   SET_ADJUSTED_FIXED_SIZE(cfgBinArgLbl);
 
+  cfgBinNameBrowse = new QPushButton(_("Browse..."), cfgBinGB);
+  CHECK_PTR(cfgBinNameBrowse);
+  cfgBinNameBrowse->setFixedSize(70, widgetHeight);
+  connect(cfgBinNameBrowse, SIGNAL(clicked()), SLOT(slotBrowse()));
+  
   /*
    * Have we to display a warning???
    */
@@ -469,8 +481,6 @@ CommandCfgDlg::makeWidget(QWidget *parent, bool makeLayouts)
 
     cfgWarningPm = new QLabel(cfgWarning);
     CHECK_PTR(cfgWarningPm);
-    //QPixmap *xpm = new QPixmap((const char **)smiling_xpm);
-    //cfgWarningPm->setPixmap(*xpm);
     cfgWarningPm->setPixmap(QMessageBox::standardIcon(QMessageBox::Warning, 
 						      style()));
     SET_ADJUSTED_FIXED_SIZE(cfgWarningPm);
@@ -485,7 +495,6 @@ CommandCfgDlg::makeWidget(QWidget *parent, bool makeLayouts)
     CHECK_PTR(cfgWarningLayout);
     cfgWarningLayout->addStretch(10);
     cfgWarningLayout->addWidget(cfgWarningPm, 0);
-    //cfgWarningLayout->addSpacing(10);
     cfgWarningLayout->addWidget(cfgWarningLbl, 0);
     cfgWarningLayout->addStretch(10);
   }
@@ -501,12 +510,13 @@ CommandCfgDlg::makeWidget(QWidget *parent, bool makeLayouts)
     }
     cfgLayoutTB->addWidget(cfgBinGB);
     
-    cfgLayoutGB = new QGridLayout(cfgBinGB, 3, 2, 10);
+    cfgLayoutGB = new QGridLayout(cfgBinGB, 3, 3, 10);
     CHECK_PTR(cfgLayoutGB);
     
     cfgLayoutGB->addRowSpacing(0, 0);
     cfgLayoutGB->addWidget(cfgBinNameLbl, 1, 0, AlignRight|AlignVCenter);
     cfgLayoutGB->addWidget(cfgBinNameLE, 1, 1);
+    cfgLayoutGB->addWidget(cfgBinNameBrowse, 1, 2);
     cfgLayoutGB->addWidget(cfgBinArgLbl, 2, 0, AlignRight|AlignVCenter);
     cfgLayoutGB->addWidget(cfgBinArgLE, 2, 1);
     cfgLayoutGB->setColStretch(0, 0);
@@ -560,7 +570,6 @@ CommandCfgDlg::commitChanges()
   QString s;
   KConfig *kc = kapp->getConfig();
 
-  //debug("CommandCfgDlg::commitChanges");
   kc->setGroup(configGroupName);
   
   kc->writeEntry("path", cfgBinNameLE->text());
@@ -575,7 +584,6 @@ CommandCfgDlg::commitChanges()
 void
 CommandCfgDlg::cancelChanges()
 {
-  //debug("CommandCfgDlg::cancelChanges");
   // nothing to do
 }
 
@@ -588,7 +596,6 @@ CommandCfgDlg::readConfig()
   QString s;
   KConfig *kc = kapp->getConfig();
 
-  //debug("CommandCfgDlg::readConfig");
   kc->setGroup(configGroupName);
   
   if (kc->hasKey("path")) {
@@ -599,4 +606,17 @@ CommandCfgDlg::readConfig()
     s = kc->readEntry("arguments");
     cfgBinArgLE->setText(s);
   }
+}
+
+/**
+ * read the configfile
+ */
+void
+CommandCfgDlg::slotBrowse()
+{
+  QString f = QFileDialog::getOpenFileName( 0, 0L, this );
+  if ( f.isNull() )
+    return;
+  
+  cfgBinNameLE->setText(f.data());
 }

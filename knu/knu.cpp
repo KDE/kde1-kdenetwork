@@ -22,7 +22,7 @@
  *
  * $Log$
  * Revision 1.2  1997/11/23 22:28:17  leconte
- * - $Id$ and $Log$ added in the headers
+ * - Id and Log added in the headers
  * - Patch from C.Czezatke applied (preparation of KProcess new version)
  *
  */
@@ -152,8 +152,8 @@ TopLevel::TopLevel(QWidget *, const char *name)
     exit(-1);
   }
   setFrameBorderWidth(FRAME_BORDER_WIDTH);
-  tabCtrl->adjustSize();
-  tabCtrl->setMinimumSize(tabCtrl->size());
+  //tabCtrl->adjustSize();
+  //tabCtrl->setMinimumSize(tabCtrl->size());
   setView(tabCtrl);		// for KTopLevelWidget
   currentTab = -1;
 
@@ -171,16 +171,12 @@ TopLevel::TopLevel(QWidget *, const char *name)
   }
 
   menuBar->show();
-
-  //tabCtrl->adjustSize();
   adjustSize();
+
   setMinimumSize(QMAX(tabCtrl->minimumSize().width()
 		      +2*FRAME_BORDER_WIDTH, 500), 
 		 QMAX(tabCtrl->minimumSize().height()
 		      +2*FRAME_BORDER_WIDTH, 300));
-  //debug("TopLevel::minimumSize() = (%d, %d)",
-  //  	minimumSize().width(), minimumSize().height());
-
 }
 
 
@@ -264,8 +260,6 @@ TopLevel::slotConfig()
   CHECK_PTR(hcd);
   configPages[2] = hcd;
 
-  //QApplication::setOverrideCursor(waitCursor);
-
   options = new OptionsDlg(configPages, 3, 0);
   CHECK_PTR(options);
 
@@ -275,8 +269,27 @@ TopLevel::slotConfig()
     // nothing to do
   }
   
-  //QApplication::restoreOverrideCursor();
+  // distribute the new configs values among all the toplevel windows
+  TopLevel *toplevel = TopLevel::windowList.first();
+  
+  while (toplevel) {
+    toplevel->checkBinaryAndDisplayWidget();
+    toplevel = TopLevel::windowList.next();
+  }
 }
+
+/**
+ * Pass checkBinaryAndDisplayWidget to each tab
+ */
+void 
+TopLevel::checkBinaryAndDisplayWidget()
+{
+  int i;
+  for (i=0; i<pagesNumber; i++) {
+    pages[i]->checkBinaryAndDisplayWidget();
+  }
+}
+
 
 /**
  * Destructor
@@ -294,9 +307,6 @@ TopLevel::~TopLevel()
 void
 TopLevel::slotTabChanged(int newTab)
 {
-  //debug("TopLevel::slotTabChanged(%d) (currentTab = %d)", 
-  //newTab, currentTab);
-
   if (newTab != currentTab) {
     if (currentTab >= 0) {
       pages[currentTab]->tabDeselected();
@@ -321,7 +331,6 @@ TopLevel::slotQuit()
 void 
 TopLevel::slotCopy()
 {
-  //debug("TopLevel::slotCopy");
 }
 
 /**
@@ -414,7 +423,6 @@ TopLevel::closeEvent (QCloseEvent *)
 {
   TopLevel *toplevel;
 
-  //debug("TopLevel::closeEvent");
   if (windowList.count()>1) {
     delete this;		// I _know_ that I used new...
     if (windowList.count() == 1) {
@@ -422,7 +430,6 @@ TopLevel::closeEvent (QCloseEvent *)
       toplevel = windowList.first();
       toplevel->fileMenu->setItemEnabled(toplevel->closeIndex, FALSE);
     }
-    //QWidget::closeEvent(qce);
   } else {
     ::quit();
   }
@@ -430,9 +437,6 @@ TopLevel::closeEvent (QCloseEvent *)
 
 /**
  * Help->Contents menu entry
- *
- * (invokeHTMLHelp cannot search .html in local directory, so
- * I'm not using it)
  */
 void 
 TopLevel::slotHelp()
@@ -447,7 +451,6 @@ TopLevel::slotHelp()
 void
 TopLevel::saveProperties(KConfig *kc)
 {
-  //debug("TopLevel::saveProperties(KConfig*)");
   kc->writeEntry("CurrentTab", currentTab);
 }
 
@@ -517,9 +520,6 @@ test_for_exec(QString filename)
     }
 
   }
-  
-  //debug("access(\"%s\", X_OK) -> %s", (const char *)filename, 
-  //	(rc ? "TRUE" : "FALSE"));
   return(rc);
 }
 

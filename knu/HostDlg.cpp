@@ -27,10 +27,7 @@
  * - handle the binary's name modification dynamicaly (problem reported
  *   by Conrad Sanderson)
  * - added browse button to the option dialog (for binary selection)
- * - $Id$ and $Log$
- * - $Id$ and Revision 1.3  1997/12/01 21:11:04  leconte
- * - $Id$ and Patches by <neal@ctd.comsat.com>
- * - $Id$ and added in the headers
+ * - code clean-up
  * - better fallback to"nslookup" if "host" is not found
  *
  * Revision 1.3  1997/12/01 21:11:04  leconte
@@ -56,9 +53,93 @@ extern bool test_for_exec(QString);
 
 #define _(_s) klocale->translate(_s)
 
-#if 0
 /**
  * Constructor
+ */
+HostDlg::HostDlg(QString commandName,
+		 QWidget* parent, const char* name)
+  : CommandDlg(commandName, parent, name)
+{
+  KConfig *kc = kapp->getConfig();
+
+  layout1 = new QBoxLayout(commandBinOK, QBoxLayout::TopToBottom, SEPARATION);
+  CHECK_PTR(layout1);
+  
+  layout2 = new QBoxLayout(QBoxLayout::LeftToRight, SEPARATION);
+  CHECK_PTR(layout2);
+  layout1->addLayout(layout2, 0);
+  
+  // Frame for options
+  frame1 = new QFrame(commandBinOK, "frame_1");
+  CHECK_PTR(frame1);
+  frame1->setFrameStyle(QFrame::Box | QFrame::Sunken);
+  frame1->setMinimumSize(0, 2*fontMetrics().height());
+  layout1->addWidget(frame1, 0);
+  
+  layout3 = new QBoxLayout(frame1, QBoxLayout::LeftToRight, SEPARATION/2);
+  CHECK_PTR(layout3);
+  
+  // Make the layout of CommandDlg
+  layout2->addWidget(commandLbl1);
+  layout2->addWidget(commandArgs);
+  layout2->addSpacing(2*SEPARATION);
+  layout2->addWidget(commandGoBtn);
+  layout2->addWidget(commandStopBtn);
+  
+  // Layout for options
+  layout3->addStretch(10);
+  
+  
+  hostCb1 = new QComboBox(frame1, "ComboBox_1");
+  CHECK_PTR(hostCb1);
+  // This is the array of what is the search for ComboBox.
+  // Warning: member buildCommandLine use index=1 for PTR and index=0 for A
+  static const char *queryTypes[] 
+    = { _("address (A)"), 
+	_("name (PTR)"), 
+	_("name server (NS)"), 
+	_("mail exchanger (MX)"), 
+	_("alias (CNAME)"), 
+	_("start of authority (SOA)"), 
+	_("any record (ANY)"),
+	0};
+  hostCb1->insertStrList(queryTypes);
+  hostCb1->adjustSize();
+  hostCb1->setFixedSize(hostCb1->size());
+  
+  hostLbl1 = new QLabel(hostCb1, _("Se&arch for:"), frame1, "Label_1");
+  CHECK_PTR(hostLbl1);
+  hostLbl1->adjustSize();
+  hostLbl1->setFixedSize(hostLbl1->width(), 2*fontMetrics().height());
+  
+  layout3->addWidget(hostLbl1);
+  layout3->addWidget(hostCb1);
+  
+  layout3->addStretch(10);
+  
+  hostCb2 = new QComboBox(TRUE, frame1, "ComboBox_2");
+  CHECK_PTR(hostCb2);
+  hostCb2->insertItem(_("default server"));
+  hostCb2->insertItem("111.111.111.111");
+  hostCb2->adjustSize();
+  hostCb2->setFixedSize(hostCb2->size());
+  hostCb2->removeItem(1);
+  // we should read the /etc/resolv.conf file and add the nameservers entries
+  // in next version maybe?
+  hostCb2->setInsertionPolicy(QComboBox::AtTop);
+  
+  hostLbl2 = new QLabel(hostCb2, _("Ser&ver:"), frame1, "Label_2");
+  CHECK_PTR(hostLbl2);
+  hostLbl2->adjustSize();
+  hostLbl2->setFixedSize(hostLbl2->size());
+  //hostLbl2->resize(hostLbl2->width(), cbh);
+  
+  layout3->addWidget(hostLbl2);
+  layout3->addWidget(hostCb2);
+  
+  layout3->addStretch(10);
+  layout3->activate();
+  frame1->adjustSize();
   frame1->setMinimumSize(frame1->size());
   
   layout1->addWidget(commandTextArea, 10);
@@ -72,90 +153,33 @@ extern bool test_for_exec(QString);
     kc->writeEntry("binaryType", "host");
     if (!commandFound) {
       if (::test_for_exec("nslookup")) {
-  if (commandFound) {
-    layout1 = new QBoxLayout(this, QBoxLayout::TopToBottom, SEPARATION);
-    CHECK_PTR(layout1);
-    
-    layout2 = new QBoxLayout(QBoxLayout::LeftToRight, SEPARATION);
-    CHECK_PTR(layout2);
-    layout1->addLayout(layout2, 0);
-    
-    // Frame for options
-    frame1 = new QFrame(this, "frame_1");
-    CHECK_PTR(frame1);
-    frame1->setFrameStyle(QFrame::Box | QFrame::Sunken);
-    frame1->setMinimumSize(0, 2*fontMetrics().height());
-    layout1->addWidget(frame1, 0);
-    
-    layout3 = new QBoxLayout(frame1, QBoxLayout::LeftToRight, SEPARATION/2);
-    CHECK_PTR(layout3);
-    
-    // Make the layout of CommandDlg
-    layout2->addWidget(commandLbl1);
-    layout2->addWidget(commandArgs);
-    layout2->addSpacing(2*SEPARATION);
-    layout2->addWidget(commandGoBtn);
-    layout2->addWidget(commandStopBtn);
-    
-    // Layout for options
-    layout3->addStretch(10);
-    
-    
-    hostCb1 = new QComboBox(frame1, "ComboBox_1");
-    CHECK_PTR(hostCb1);
-    // This is the array of what is the search for ComboBox.
-    // Warning: member buildCommandLine use index=1 for PTR and index=0 for A
-    static const char *queryTypes[] 
-      = { _("address (A)"), 
-	  _("name (PTR)"), 
-	  _("name server (NS)"), 
-	  _("mail exchanger (MX)"), 
-	  _("alias (CNAME)"), 
-	  _("start of authority (SOA)"), 
-	  _("any record (ANY)"),
-	  0};
-    hostCb1->insertStrList(queryTypes);
-    hostCb1->adjustSize();
-    hostCb1->setFixedSize(hostCb1->size());
-    
-    hostLbl1 = new QLabel(hostCb1, _("Se&arch for:"), frame1, "Label_1");
-    CHECK_PTR(hostLbl1);
-    hostLbl1->adjustSize();
-    hostLbl1->setFixedSize(hostLbl1->width(), 2*fontMetrics().height());
-    
-    layout3->addWidget(hostLbl1);
-    layout3->addWidget(hostCb1);
-    
-    layout3->addStretch(10);
-    
-    hostCb2 = new QComboBox(TRUE, frame1, "ComboBox_2");
-    CHECK_PTR(hostCb2);
-    hostCb2->insertItem(_("default server"));
-    hostCb2->insertItem("111.111.111.111");
-    hostCb2->adjustSize();
-    hostCb2->setFixedSize(hostCb2->size());
-    hostCb2->removeItem(1);
-    // we should read the /etc/resolv.conf file and add the nameservers entries
-    // in next version maybe?
-    hostCb2->setInsertionPolicy(QComboBox::AtTop);
-    
-    hostLbl2 = new QLabel(hostCb2, _("Ser&ver:"), frame1, "Label_2");
-    CHECK_PTR(hostLbl2);
-    hostLbl2->adjustSize();
-    hostLbl2->setFixedSize(hostLbl2->size());
-    //hostLbl2->resize(hostLbl2->width(), cbh);
-    
-    layout3->addWidget(hostLbl2);
-    layout3->addWidget(hostCb2);
-    
-    layout3->addStretch(10);
-    layout3->activate();
-    frame1->adjustSize();
-    frame1->setMinimumSize(frame1->size());
-    
-    layout1->addWidget(commandTextArea, 10);
-    layout1->activate();
 	kc->writeEntry("path", "nslookup");
+	kc->writeEntry("binaryType", "nslookup");
+      }
+    }
+  }
+#endif
+
+  /*
+   * Look at the command binary to see which widget to display
+   */
+  kc->setGroup(configGroupName);
+  if (!kc->hasKey("path")) {
+    // It's the first execution, 
+    // so we have to search for the pathname
+    kc->writeEntry("path", commandName);
+    checkBinaryAndDisplayWidget();
+    if (commandFound) {
+      // All is OK : we can enable this tab.
+      if (!kc->hasKey("enable")) {
+	kc->writeEntry("enable", 1);
+      }
+    } else {
+      if (::test_for_exec("nslookup")) {
+	kc->writeEntry("path", "nslookup");
+	kc->writeEntry("binaryType", "nslookup");
+	checkBinaryAndDisplayWidget();
+      }
     } 
   } else {
     checkBinaryAndDisplayWidget();
@@ -266,8 +290,8 @@ HostCfgDlg::HostCfgDlg(const char *tcs,
 
 /**
  * make a new config widget
-#define SET_ADJUSTED_FIXED_SIZE(_wdgt) { _wdgt->adjustSize();	\
-                  _wdgt->setFixedSize(_wdgt->size()); }
+ *
+ * @param parent parent widget
  * @param makeLayouts name of the widget
  */
 QWidget *
@@ -297,12 +321,13 @@ HostCfgDlg::makeWidget(QWidget *parent, bool makeLayouts)
     
     if (cfgWarning != 0) {
       cfgLayoutTB->addLayout(cfgWarningLayout);
-    cfgLayoutGB = new QGridLayout(cfgBinGB, 3, 2, 10);
+      cfgWarningLayout->addStretch(10);
       cfgWarningLayout->addWidget(cfgWarningPm, 0);
       cfgWarningLayout->addWidget(cfgWarningLbl, 0);
       cfgWarningLayout->addStretch(10);
     }
     cfgLayoutTB->addWidget(cfgBinGB);
+    
     cfgLayoutGB = new QGridLayout(cfgBinGB, 3, 3, 10);
     CHECK_PTR(cfgLayoutGB);
     

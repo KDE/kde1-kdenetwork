@@ -24,7 +24,7 @@
  *
  * $Log$
  * Revision 1.2  1997/11/23 22:28:10  leconte
- * - $Id$ and $Log$ added in the headers
+ * - Id and Log added in the headers
  * - Patch from C.Czezatke applied (preparation of KProcess new version)
  *
  */
@@ -42,7 +42,6 @@
 
 // This is the caption string of the main application
 extern QString CaptionString;
-
 
 /**
  * Constructor
@@ -72,7 +71,6 @@ OptionsDlg::OptionsDlg(CommandCfgDlg **cp, int pn,
   CHECK_PTR(cfgTabCtrl);
 
   for (i=0; i<pagesNumber; i++) {
-    
     cfgTabCtrl->addTab(configPages[i]->makeWidget(cfgTabCtrl),
 		       configPages[i]->tabName());
   }
@@ -83,11 +81,11 @@ OptionsDlg::OptionsDlg(CommandCfgDlg **cp, int pn,
    */
   
   // widgets
-  bBtnOk = new QPushButton(_("&Ok"), this, "button_ok");
+  bBtnOk = new QPushButton(_("&OK"), this, "button_ok");
   CHECK_PTR(bBtnOk);
   connect(bBtnOk, SIGNAL(clicked()), SLOT(slotOkBtn()));
   bBtnOk->setFixedSize(70, 30);
-  bBtnOk->setAutoDefault(TRUE);
+  bBtnOk->setDefault(TRUE);
 
   bBtnHelp = new QPushButton(_("&Help"), this, "button_help");
   CHECK_PTR(bBtnHelp);
@@ -137,13 +135,10 @@ OptionsDlg::~OptionsDlg()
 void
 OptionsDlg::slotOkBtn()
 {
-  //  debug("slotOkBtn");
-
   for (int i=0; i<pagesNumber; i++) {
     configPages[i]->commitChanges();
   }
 
-  //  emit optionsClosed();
   emit accept();
 }
 
@@ -174,8 +169,6 @@ OptionsDlg::slotHelpBtn()
 void 
 OptionsDlg::closeEvent (QCloseEvent*)
 {
-  //debug("OptionsDlg::closeEvent");
-
   for (int i=0; i<pagesNumber; i++) {
     configPages[i]->cancelChanges();
   }

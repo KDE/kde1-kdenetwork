@@ -25,7 +25,7 @@
  *
  * $Log$
  * Revision 1.3  1997/12/07 23:44:26  leconte
- * - $Id$ and $Log$ added in the headers
+ * - handle the binary's name modification dynamicaly (problem reported
  *   by Conrad Sanderson)
  * - added browse button to the option dialog (for binary selection)
  * - code clean-up

@@ -25,7 +25,7 @@
  *
  * $Log$
  * Revision 1.2  1997/11/23 22:28:06  leconte
- * - $Id$ and $Log$ added in the headers
+ * - Id and Log added in the headers
  * - Patch from C.Czezatke applied (preparation of KProcess new version)
  *
  */
@@ -70,6 +70,9 @@ public:
   // callback to inform us that we have to kill the command
   void      tabDeselected();
 
+  void      resizeEvent(QResizeEvent *);
+  void      checkBinaryAndDisplayWidget();
+
 protected:
   virtual bool     checkInput(QString *);
   virtual void     buildCommandLine(QString);
@@ -84,6 +87,7 @@ protected:
   QMultiLineEdit*  commandTextArea;
   
   // Layout
+  QBoxLayout*      layoutTL;
   QBoxLayout*      layoutNoBin;	// Vertical
   QBoxLayout*      layout1;	// Vertical
   QBoxLayout*      layout2;	// Horizontal
@@ -95,16 +99,16 @@ protected:
   // Have we found the command binary ?
   bool commandFound;
 
-  // First time we are lauched ?
-  bool firstTimeLauching;
-
   // The group name in the configfile (computed from tab name)
   QString         configGroupName;
 
-
+  QWidget *commandBinOK;
+  QWidget *commandBinNonOK;
+  
 public slots:
   void slotCmdStdout(KProcess *, char *, int);
   void slotProcessDead(KProcess *);
+
 
   /**
    * clear output window
@@ -120,7 +124,6 @@ protected slots:
     void slotEnableGoBtn(const char *);
     void slotStopCommand();
     void slotLauchCommand();
-
 };
 
 class CommandCfgDlg: public QWidget
@@ -170,12 +173,17 @@ protected:
   QGroupBox       *cfgBinGB;
   QLabel          *cfgBinNameLbl, *cfgBinArgLbl;
   QLineEdit       *cfgBinNameLE, *cfgBinArgLE;
+  QPushButton     *cfgBinNameBrowse;
   QBoxLayout      *cfgLayoutTB;
   QGridLayout     *cfgLayoutGB;
   QPushButton     *cfgHelpBtn;
 
   QString         tabCaptionString;
   QString         configGroupName;
+
+protected slots:
+    void slotBrowse();
+
 
 };
 
