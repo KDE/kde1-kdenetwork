@@ -2,14 +2,14 @@ all:
 	@echo "This Makefile is only for the CVS repository"
 	@echo "I will delete it before making the distribution"
 	@echo ""
-	cp configure.in.1 configure.in
 	cat acinclude.m4.in libtool.m4.in acincktalk.m4 > acinclude.m4
-	aclocal 
+	cp configure.in.1 configure.in
+	aclocal
 	autoheader
 	cat configure.in.1 > configure.in 
 	echo "AC_OUTPUT(" >> configure.in
-	mfs=`find . -name Makefile.am -print | sed -e "s#\.am##" | sed -e "s#\./##"` ; \
-	echo $$mfs")" >> configure.in ;\
+	mfs=`find . -name Makefile.am -print | sed -e "s#\.am##" | sed -e "s#\./##"`; \
+	echo $$mfs")" >> configure.in; \
 	automake
 	cat configure.in.1 configure.in.2 > configure.in
 	perl automoc
@@ -18,37 +18,37 @@ all:
 	touch configure
 	touch stamp-h.in
 	rm -f ./SUBDIRS 
-	files=`ls -1` ;\
-	dirs=`for i in $$files; do if test -d $$i; then echo $$i; fi; done` ;\
+	files=`ls -1`; \
+	dirs=`for i in $$files; do if test -d $$i; then echo $$i; fi; done`; \
 	for i in $$dirs; do \
-	echo $$i >> ./SUBDIRS ;\
+	echo $$i >> ./SUBDIRS; \
 	done
 
 dist:
-	@cp configure.in.1 configure.in ;\
-	cat acinclude.m4.in libtool.m4.in acincktalk.m4 > acinclude.m4 ;\
-	aclocal ;\
-	autoheader ;\
-	cat configure.in.1 > configure.in ;\
-	echo "AC_OUTPUT(" >> configure.in ;\
-	mfs=`find . -name Makefile.am -print | sed -e "s#\.am##" | sed -e "s#\./##"` ; \
-	echo $$mfs")" >> configure.in ;\
-	automake  --foreign --include-deps;\
-	cat configure.in.1 configure.in.2 > configure.in ;\
-	perl automoc ;\
-	autoconf ;\
-	touch -r configure.in.1 configure.in ;\
-	touch configure ;\
-	touch stamp-h.in ;\
-	rm -f ./SUBDIRS ;\
-	files=`ls -1` ;\
-	dirs=`for i in $$files; do if test -d $$i; then echo $$i; fi; done` ;\
+	@cp configure.in.1 configure.in; \
+	cat acinclude.m4.in libtool.m4.in acincktalk.m4 > acinclude.m4; \
+	aclocal; \
+	autoheader; \
+	cat configure.in.1 > configure.in; \
+	echo "AC_OUTPUT(" >> configure.in; \
+	mfs=`find . -name Makefile.am -print | sed -e "s#\.am##" | sed -e "s#\./##"`; \
+	echo $$mfs")" >> configure.in; \
+	automake --foreign --include-deps; \
+	cat configure.in.1 configure.in.2 > configure.in; \
+	perl automoc; \
+	autoconf; \
+	touch -r configure.in.1 configure.in; \
+	touch configure; \
+	touch stamp-h.in; \
+	rm -f ./SUBDIRS; \
+	files=`ls -1`; \
+	dirs=`for i in $$files; do if test -d $$i; then echo $$i; fi; done`; \
 	for i in $$dirs; do \
-	echo $$i >> ./SUBDIRS ;\
-	done ;\
+	echo $$i >> ./SUBDIRS; \
+	done; \
 	LIST=`find ./po -name "*.po"`; \
 	for i in $$LIST; do \
 	 file2=`echo $$i | sed -e "s#\.po#\.gmo#"`; \
-	 msgfmt -o $$file2 $$i || touch $$file2 ; \
-	done ;\
+	 msgfmt -o $$file2 $$i || touch $$file2; \
+	done; \
 	rm -f configure.in.1 configure.in.2 Makefile.cvs
