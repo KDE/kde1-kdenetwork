@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1999-04-09 02:42+0200\n"
+"POT-Creation-Date: 1999-04-10 03:05+0200\n"
 "PO-Revision-Date: 1999-01-31 18:00 CET\n"
 "Last-Translator: Francois-Xavier DURANCEAU "
 "<Francois-xavier.Duranceau@loria.fr>\n"
@@ -1575,11 +1575,11 @@ msgstr "Le modem est prêt."
 msgid "Can't restore tty settings: tcsetattr()\n"
 msgstr "Impossible de restaurer les paramètres tty: tcsetattr()\n"
 
-#: modem.cpp:343
+#: modem.cpp:345
 msgid "Sorry, the modem doesn't respond."
 msgstr "Désolé, le modem ne répond pas."
 
-#: modem.cpp:444
+#: modem.cpp:446
 msgid "Unknown speed"
 msgstr "Vitesse inconnue"
 
