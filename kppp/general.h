@@ -1,4 +1,4 @@
-/* -*- C++ -*-
+/*
  *
  *            kPPP: A pppd front end for the KDE project
  *
@@ -7,8 +7,6 @@
  *            Copyright (C) 1997 Bernd Johannes Wuebben 
  *                   wuebben@math.cornell.edu
  *
- * based on EzPPP:
- * Copyright (C) 1997  Jay Painter
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -38,9 +36,10 @@
 #include <qlabel.h>
 #include <qchkbox.h>
 #include <qradiobt.h>
+#include <qchkbox.h>
+
 #include "modemcmds.h"
 #include "pppdata.h"
-#include <qchkbox.h>
 #include "modeminfo.h"
 #include "miniterm.h"
 
@@ -54,34 +53,34 @@ public:
 
 private slots:
   
-  void pppdpathchanged(const char*);
-  void pppdtimeoutchanged(const char *n);
-  void logviewerchanged(const char*);
-  void caption_toggled(bool);
-  void redial_toggled(bool on);
-  void xserver_toggled(bool on);
+  void 	pppdpathchanged(const char*);
+  void 	pppdtimeoutchanged(const char *n);
+  void 	logviewerchanged(const char*);
+  void 	caption_toggled(bool);
+  void 	redial_toggled(bool on);
+  void 	xserver_toggled(bool on);
 
 
 private:
 
-  QGroupBox *box;
-  QLabel *label1;
+  QGroupBox 	*box;
+  QLabel 	*label1;
 
-  QLabel *label3;
-  QLabel *label4;
-  QLabel *label5;
-  QLabel *label6;
-  QLabel *labeltmp;
+  QLabel 	*label3;
+  QLabel 	*label4;
+  QLabel 	*label5;
+  QLabel 	*label6;
+  QLabel 	*labeltmp;
 
-  QCheckBox *chkbox1;
-  QCheckBox *chkbox2;
-  QCheckBox *chkbox3;
-  QCheckBox *chkbox4;
+  QCheckBox 	*chkbox1;
+  QCheckBox 	*chkbox2;
+  QCheckBox 	*chkbox3;
+  QCheckBox 	*chkbox4;
 
-  QLineEdit *pppdtimeout;
-  QLineEdit *logviewer;
-  QLabel    *logviewerlabel;
-  QLineEdit *pppdpath;
+  QLineEdit 	*pppdtimeout;
+  QLineEdit 	*logviewer;
+  QLabel    	*logviewerlabel;
+  QLineEdit 	*pppdpath;
 
 
 };
@@ -98,31 +97,31 @@ public:
 
 private slots:
 
-  void setmodemdc(int);
-  void setflowcontrol(int);
-  void modemtimeoutchanged(const char*);
-  void busywaitchanged(const char*);
-  void modemlockfilechanged(const char*);
-  void setenter(int);
-  void fast_modem_toggled(bool on);
+  void 	setmodemdc(int);
+  void 	setflowcontrol(int);
+  void 	modemtimeoutchanged(const char*);
+  void 	busywaitchanged(const char*);
+  void 	modemlockfilechanged(const char*);
+  void 	setenter(int);
+  void 	fast_modem_toggled(bool on);
 
 private:
 
-  QComboBox *enter;
-  QGroupBox *box;
-  QLabel *label1;
-  QLabel *label2;
-  QLabel *label3;
-  QLabel *label4;
-  QLabel *labeltmp;
-  QLabel *labelenter;
-  QComboBox *modemdevice;
-  QComboBox *flowcontrol;
+  QComboBox 	*enter;
+  QGroupBox 	*box;
+  QLabel 	*label1;
+  QLabel 	*label2;
+  QLabel 	*label3;
+  QLabel 	*label4;
+  QLabel 	*labeltmp;
+  QLabel 	*labelenter;
+  QComboBox 	*modemdevice;
+  QComboBox 	*flowcontrol;
 
-  QCheckBox *chkbox;  
-  QLineEdit *modemtimeout;
-  QLineEdit *busywait;
-  QLineEdit *modemlockfile;
+  QCheckBox 	*chkbox;  
+  QLineEdit 	*modemtimeout;
+  QLineEdit 	*busywait;
+  QLineEdit 	*modemlockfile;
 };
 
 
@@ -137,19 +136,20 @@ public:
 
 private slots:
 
-  void modemcmdsbutton();
-  void terminal();
-  void query_modem();
-  void query_done();
+  void 	modemcmdsbutton();
+  void 	terminal();
+  void 	query_modem();
+  void 	query_done();
 
 private:
 
   ModemTransfer *modemtrans;
 
-  QGroupBox *box;
-  QPushButton *modemcmds;
-  QPushButton *modeminfo_button;
-  QPushButton *terminal_button;
+  QGroupBox 	*box;
+  QPushButton 	*modemcmds;
+  QPushButton 	*modeminfo_button;
+  QPushButton 	*terminal_button;
+  QFrame 	*fline;
 
 };
 
@@ -161,14 +161,12 @@ public:
   
   AboutWidget( QWidget *parent=0, const char *name=0 );
 
-
-
 private:
   
-  QGroupBox *box;
-  QLabel *label1;
-  QLabel *label2;
-  QLabel *label3;
+  QGroupBox 	*box;
+  QLabel 	*label1;
+  QLabel 	*label2;
+  QLabel 	*label3;
 
 
 };

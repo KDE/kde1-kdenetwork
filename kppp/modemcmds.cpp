@@ -35,11 +35,11 @@ ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
   box->setGeometry(5,5,330,465);
 
   ok = new QPushButton("OK", this);
-  ok->setGeometry(10, 475, 70, 30);
+  ok->setGeometry(10, 475, 70, 25);
   connect(ok, SIGNAL(clicked()), SLOT(okbutton()));
   
   cancel = new QPushButton("Cancel", this);
-  cancel->setGeometry(90, 475, 70, 30);
+  cancel->setGeometry(90, 475, 70, 25);
   cancel->setFocus();
   connect(cancel, SIGNAL(clicked()), SLOT(cancelbutton()));
 
@@ -161,12 +161,12 @@ ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
 			gpppdata.modemEscapeGuardTime(),   // initial value.
 			QScrollBar::Horizontal,
 			this, "escapeguardtimesb");
-  escapeguardtime->setGeometry(200, 435, 110, 25);
+  escapeguardtime->setGeometry(204, 435, 108, 25);
 
   escapeguardtimelcd = new QLCDNumber( 3, this, "lcd" ); 
   connect( escapeguardtime, SIGNAL(valueChanged(int)), 
 	    escapeguardtimelcd, SLOT(display(int)) ); 
-  escapeguardtimelcd->setGeometry(160, 435, 45, 25);
+  escapeguardtimelcd->setGeometry(158, 435, 45, 25);
   escapeguardtimelcd->display(gpppdata.modemEscapeGuardTime());
 
   label14 = new QLabel(this);

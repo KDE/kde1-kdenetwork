@@ -1,1 +1,1 @@
-#define KPPPVERSION "0.7.5"
+#define KPPPVERSION "0.7.6"

@@ -434,18 +434,20 @@ ModemWidget2::ModemWidget2( QWidget *parent, const char *name)
   box->setTitle("More ...");
 
   modemcmds = new QPushButton("Modem Commands", this);
-  modemcmds->setGeometry(140, 80, 150, 25);
+  modemcmds->setGeometry(100, 60, 150, 25);
   connect(modemcmds, SIGNAL(clicked()), SLOT(modemcmdsbutton()));
 
   modeminfo_button = new QPushButton("Query Modem", this);
-  modeminfo_button->setGeometry(140, 120, 150, 25);
+  modeminfo_button->setGeometry(100, 100, 150, 25);
   connect(modeminfo_button, SIGNAL(clicked()), SLOT(query_modem()));
 
   terminal_button = new QPushButton("Terminal", this);
-  terminal_button->setGeometry(140, 160, 150, 25);
+  terminal_button->setGeometry(100, 140, 150, 25);
   connect(terminal_button, SIGNAL(clicked()), SLOT(terminal()));
 
-
+  fline = new QFrame(this,"line");
+  fline->setFrameStyle(QFrame::HLine |QFrame::Sunken);
+  fline->setGeometry(20,195,295,3);
 
 }
 
@@ -468,11 +470,8 @@ void ModemWidget2::query_modem() {
 
 void ModemWidget2::query_done(){
     
-
     ModemInfo mi(NULL,NULL);
     mi.exec();
-
-
 }
 
 void ModemWidget2::terminal(){
