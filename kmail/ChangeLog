@@ -1,3 +1,16 @@
+1999-04-8  Sven Radej <radej@kde.org> (KMail-1.0.20)
+
+        * Patches from Don Sanders:
+          - Fixed  bug #1218: Stopped the checking mail dialog
+            from taking the focus.
+	  - Fixed  bug #203: Stopped the current message from getting
+            scrolled to the top when (interval) mail checking fires.
+	  - Fixed  bug #152: Sort the current folder when new mail arrives,
+            so that new mail isn't always appended to the end of the
+            current folders message list window.
+
+        * Patch from Lars Knoll <knoll@mpi-hd.mpg.de> against
+          pgp-thinks-very-long-before-starting-bug
 
 1999-04-15 Sven Radej <radej@kde.org> (KMail-1.0.20) 
 
