@@ -40,12 +40,15 @@ message, and mails it to the callee.
 <P>
 <DT><B>X Announce</B><DD><P>If compiled with KDE installed, ktalkd will use
 <B>ktalkdlg</B>, a KDE dialog, for announcement.
-If ktalk is running, it will be asked to make the announcement 
+If <B>ktalk</B> is running, it will be asked to make the announcement 
 itself. (New since 0.8.8).
 <P>
 <DT><B>Multiple displays annoucement</B><DD><P>If you are logged remotely (e.g. with an
 <CODE>"export DISPLAY=..."</CODE> command), the X announcement will be made on
 this display too. Answer on the one you want !
+If you're also logged in a text terminal, and if you're NOT using xterms
+(internal restriction), then you'll see a text announce too, in case you're
+using the text terminal at the time of the announce.
 <P>
 <DT><B>Forwarding   <I>(New since 0.8.0)</I></B><DD><P>You can set up a forward to another user even to another host
 if you're away. There are 3 different forwarding methods. See section 'Usage'.

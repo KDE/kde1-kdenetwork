@@ -1,3 +1,7 @@
+1998-09-29  David Faure  <faure@kde.org> (0.8.9)
+
+	* ktalkd/unixsock.cpp: Support for multiple-display ktalk.
+
 1998-09-13  David Faure  <faure@kde.org>
 
 	* ktalkd/find_user.cpp: Converted the get_display function to use
@@ -13,8 +17,6 @@
 	Internal to readcfg++.cpp.
 
 	* ktalkd/options.*: Now a structure instead of a class.
-
-	* ktalkd/unixsock.cpp: Support for multiple-display ktalk.
 
 1998-09-07  David Faure  <faure@kde.org>
 

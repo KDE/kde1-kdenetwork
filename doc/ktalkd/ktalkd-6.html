@@ -22,6 +22,30 @@
 
 <P>Here comes the <B>ChangeLog</B> :
 <PRE>
+1998-09-29  David Faure  &lt;faure@kde.org>
+
+        * ktalkd/unixsock.cpp: Support for multiple-display ktalk.
+
+1998-09-13  David Faure  &lt;faure@kde.org>
+
+        * ktalkd/find_user.cpp: Converted the get_display function to use
+        ifstream instead of read() and realloc()...
+
+        * ktalkd/announce.cpp: Do setuid from the beginning of announce().
+        Solves socket permissions for sendToKtalk and speeds up X announce.
+
+        * ktalkd/readcfg++.cpp: Handles two user config files : 
+        ktalkdrc &amp; ktalkannouncerc
+
+        * ktalkd/read*: Removed *kdebindir from readconf.h and readconf.cpp.
+        Internal to readcfg++.cpp.
+
+        * ktalkd/options.*: Now a structure instead of a class.
+
+1998-09-07  David Faure  &lt;faure@kde.org>
+
+        * ktalkd/announce.cpp: No text announce on a xterm if X announce was ok
+
 1998-09-03  David Faure  &lt;faure@kde.org> (0.8.8)
 
         * ktalkd/unixsock.cpp: Added chmod => ktalk can write to the socket.
