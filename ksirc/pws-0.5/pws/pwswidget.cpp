@@ -166,7 +166,7 @@ void PWSWidget::accept()
 
     QString config;
     config+="DefaultName ";
-    utsname u;
+    struct utsname u;
     uname (&u);
     config+=u.nodename;
     config+="\n";
