@@ -140,8 +140,8 @@ PingDlg::buildCommandLine(QString args)
   if (s.isNull()) {
       childProcess.clearArguments();
       childProcess.setExecutable("echo");
-      childProcess << _("You have a problem if your " 
-			"~/.kderc/share/config/knurc configuration file.\n"
+      childProcess << _("You have a problem in your " 
+			"~/.kde/share/config/knurc configuration file.\n"
 			"In the [")
 		   << this->name() 
 		   << _("] group, I cannot"
