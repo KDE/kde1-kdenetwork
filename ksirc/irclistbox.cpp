@@ -220,6 +220,8 @@ void KSircListBox::mousePressEvent(QMouseEvent *me){
 }
 
 void KSircListBox::mouseReleaseEvent(QMouseEvent *me){
+  int erow; // End row
+  
   ScrollToBottom = TRUE; // Unlock window
 //  cerr << "Mouse release event!\n";
   if(selectMode == FALSE)
@@ -228,22 +230,57 @@ void KSircListBox::mouseReleaseEvent(QMouseEvent *me){
   int row, line, rchar;
   ircListItem *it;
   if(!xlateToText(me->x(), me->y(), &row, &line, &rchar, &it)){
+    erow = lrow;
+    row = erow;
+    it = (ircListItem *) item(erow);
+    if(it == 0x0){
+      warning("Row out of range: %d", row);
+      return;
+    }
+  }
+  else{
+    erow = row;
+  }
+  if(erow == srow){
+    debug("Selected: %s", it->getRev().data());
+    kApp->clipboard()->setText(KSPainter::stripColourCodes(it->getRev()));
     it->setRevOne(-1);
     it->setRevTwo(-1);
-    kApp->beep();
-    return;
+    it->updateSize();
+    updateItem(row, TRUE);
   }
-  debug("Selected: %s", it->getRev().data());
-  kApp->clipboard()->setText(it->getRev());
-  it->setRevOne(-1);
-  it->setRevTwo(-1);
-  it->updateSize();
-  updateItem(row, TRUE);
+  else {
+    int trow, brow; // Top row, Bottom row
+    QString selected;
 
+    if(erow < srow){
+      trow = erow;
+      brow = srow;
+    }
+    else{
+      trow = srow;
+      brow = erow;
+    }
+    for(int crow = trow; crow <= brow; crow ++){
+      ircListItem *cit = (ircListItem *) item(crow);
+      if(cit == 0x0){
+        warning("Row out of range: %d", crow);
+        return;
+      }
+      selected.append(KSPainter::stripColourCodes(cit->getRev()));
+      selected.append("\n");
+      cit->setRevOne(-1);
+      cit->setRevTwo(-1);
+      cit->updateSize();
+      updateItem(crow, FALSE);
+    }
+    selected.truncate(selected.length()-1); // Remove the last \n
+    kApp->clipboard()->setText(selected);
+    debug("selected: %s", selected.data());
+  }
 }
 
 void KSircListBox::mouseMoveEvent(QMouseEvent *me){
-  int srow = -1, sline = -1, schar = -1;
   int row = -2, line = -2, rchar = -2;
   ircListItem *it;
   if(!xlateToText(me->x(), me->y(), &row, &line, &rchar, &it))
@@ -255,7 +292,6 @@ void KSircListBox::mouseMoveEvent(QMouseEvent *me){
     yoff = me->y() - spoint.y() > 0 ? me->y() - spoint.y() : spoint.y() - me->y();
     if(!(xoff > 5 || yoff > 5))
       return;
-    ircListItem *sit;
     if(!xlateToText(spoint.x(), spoint.y(),&srow, &sline, &schar, &sit)){
       spoint.setX(me->x());
       spoint.setY(me->y());
@@ -266,10 +302,81 @@ void KSircListBox::mouseMoveEvent(QMouseEvent *me){
     selectMode = TRUE;
   }
 //  if(schar == rchar)
-//    rchar++;
-  it->setRevTwo(rchar);
-  it->updateSize();
-  updateItem(row, FALSE);
+  //    rchar++;
+  if(row == srow){
+    it->setRevTwo(rchar);
+    it->updateSize();
+    updateItem(row, FALSE);
+  }
+  else if(row > srow){
+    sit->setRevTwo(strlen(sit->text()));
+    sit->updateSize();
+    updateItem(srow, FALSE);
+    for(int crow = srow + 1; crow < row; crow++){
+      ircListItem *cit = (ircListItem *) item(crow);
+      if(cit == 0x0){
+        warning("Row out of range: %d", crow);
+        return;
+      }
+      cit->setRevOne(0);
+      cit->setRevTwo(strlen(cit->text()));
+      cit->updateSize();
+      updateItem(crow, FALSE);
+    }
+    it->setRevOne(0);
+    it->setRevTwo(rchar);
+    it->updateSize();
+    updateItem(row, FALSE);
+  }
+  else if(row < srow){
+    sit->setRevTwo(0);
+    sit->updateSize();
+    updateItem(srow, FALSE);
+    for(int crow = srow - 1; crow > row; crow--){
+      ircListItem *cit = (ircListItem *) item(crow);
+      if(cit == 0x0){
+        warning("Row out of range: %d", crow);
+        return;
+      }
+      cit->setRevOne(0);
+      cit->setRevTwo(strlen(cit->text()));
+      cit->updateSize();
+      updateItem(crow, FALSE);
+    }
+    it->setRevOne(rchar);
+    it->setRevTwo(strlen(it->text()));
+    it->updateSize();
+    updateItem(row, FALSE);
+  }
+  if(lrow > row && lrow > srow){
+    int trow = row > srow ? row : srow;
+    for(int crow = lrow; crow > trow; crow --){
+      ircListItem *cit = (ircListItem *) item(crow);
+      if(cit == 0x0){
+        warning("Row out of range: %d", crow);
+        return;
+      }
+      cit->setRevOne(-1);
+      cit->setRevTwo(-1);
+      cit->updateSize();
+      updateItem(crow, FALSE);    
+    }
+  }
+  else if(lrow < row && lrow < srow){
+    int brow = row < srow ? row : srow;
+    for(int crow = lrow; crow < brow; crow++){
+      ircListItem *cit = (ircListItem *) item(crow);
+      if(cit == 0x0){
+        warning("Row out of range: %d", crow);
+        return;
+      }
+      cit->setRevOne(-1);
+      cit->setRevTwo(-1);
+      cit->updateSize();
+      updateItem(crow, FALSE);
+    }
+  }
+  lrow = row;
 }
 
 bool KSircListBox::xlateToText(int x, int y,
@@ -332,13 +439,21 @@ bool KSircListBox::xlateToText(int x, int y,
   for(;  xoff > fm.width(sline[0]); cchar++){
     xoff -= fm.width(sline[0]);
     sline.remove(0, 1);
-    if(sline.isEmpty())
-      return FALSE;
+    if(sline.isEmpty()){
+      break; // End of line, don't give up!
+    }
   }
+
+  //  debug("cchar: %d", cchar);
+
   if(!c2noc.at(cchar))
     return FALSE;
+
   cchar = *(c2noc.at(cchar)); // Convert to character offset with colour codes.
-  
+
+  if(sline.isEmpty()) // Adjust for end of line
+    cchar += 1;
+    
   // Give abolute pos from start of the line
   for(int l = line-1;  l >= 0; l --){
     cchar += strlen(it->paintText()->at(l));

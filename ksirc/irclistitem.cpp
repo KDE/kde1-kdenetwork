@@ -103,9 +103,9 @@ void ircListItem::setupPainterText()
 
   // Insert selection markers if turned on
 
-  if(revOne > 0){
+  if(revOne >= 0){
     itext.insert(revOne, "~s");
-    if(revTwo > 0)
+    if(revTwo >= 0)
       itext.insert(revTwo > revOne ? revTwo + 2 : revTwo, "~s");
   }
     
@@ -253,8 +253,8 @@ void ircListItem::setupPainterText()
   }
 
 //  if(revOne != -1 || revTwo != -1){
-//    debug("itext: %s", itext.data());
-//    debug("rtext: %s", rtext.data());
+//    debug("revOne: %d RevTwo: %d itext: %s", revOne, revTwo, itext.data());
+    //    debug("rtext: %s", rtext.data());
 //  }
 }
 
@@ -279,6 +279,7 @@ QString ircListItem::getRev(){
     if(revOne == -1 ||
        revTwo == -1)
       return QString();
+//    debug("getRev: revOne: %d RevTwo: %d", revOne, revTwo);
     QString seltext = rtext;
     if(revOne < revTwo)
       return seltext.mid(revOne, revTwo - revOne);
