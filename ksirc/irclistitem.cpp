@@ -104,9 +104,9 @@ void ircListItem::setupPainterText()
   // Insert selection markers if turned on
 
   if(revOne > 0){
-    itext.insert(revOne, "~r");
+    itext.insert(revOne, "~s");
     if(revTwo > 0)
-      itext.insert(revTwo > revOne ? revTwo + 2 : revTwo, "~r");
+      itext.insert(revTwo > revOne ? revTwo + 2 : revTwo, "~s");
   }
     
   // Wrapping code is a little slow, and a little silly, but it works.
@@ -253,7 +253,7 @@ void ircListItem::setupPainterText()
   }
 
   if(revOne != -1 || revTwo != -1){
-//    debug("itext: %s", itext.data());
+    debug("itext: %s", itext.data());
 //    debug("rtext: %s", rtext.data());
 
   }

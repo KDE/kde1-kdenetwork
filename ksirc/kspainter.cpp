@@ -46,6 +46,7 @@ void KSPainter::colourDrawText(QPainter *p, int startx, int starty,
   int loc = 0, i;
   buf[2] = 0;
   bool ReverseText = FALSE;
+  bool SelectText = FALSE;
 
   // Default pen (colour)
 
@@ -71,8 +72,14 @@ void KSPainter::colourDrawText(QPainter *p, int startx, int starty,
 	}
 	
 	pcolour = atoi(buf);
-	if(pcolour < maxcolour)
-	  p->setPen(num2colour[pcolour]);
+	if(pcolour < maxcolour){
+	  if(SelectText == FALSE)
+	    p->setPen(num2colour[pcolour]);
+	  else{
+	    p->setBackgroundColor(num2colour[pcolour]);
+	    p->setBackgroundMode(OpaqueMode);
+	  }
+	}
 	else
 	  i = loc;
 	if(str[i] == ','){
@@ -95,10 +102,13 @@ void KSPainter::colourDrawText(QPainter *p, int startx, int starty,
 		bcolour -= 1;
 	    }
 	    if(bcolour < maxcolour ){
-	      p->setBackgroundColor(num2colour[bcolour]);
-	      p->setBackgroundMode(OpaqueMode);
+	      if(SelectText == FALSE){
+		p->setBackgroundColor(num2colour[bcolour]);
+		p->setBackgroundMode(OpaqueMode);
+	      }
+	      else
+		p->setPen(num2colour[bcolour]);
 	    }
-
 	  }
 	}
       }
@@ -112,8 +122,15 @@ void KSPainter::colourDrawText(QPainter *p, int startx, int starty,
         QColor temppen;
 	switch(str[i+1]){
 	case 'c':
-	  p->setPen(qpDefPen);
-	  p->setBackgroundMode(TransparentMode);
+	  if(SelectText == FALSE){
+	    p->setPen(qpDefPen);
+	    p->setBackgroundMode(TransparentMode);
+	  }
+	  else{
+            temppen = p->pen().color();
+            p->setPen( p->backgroundColor() );
+            p->setBackgroundColor( temppen );
+	  }
 	  break;
 	case 'C':
 	  p->setPen(qpDefPen);
@@ -130,6 +147,19 @@ void KSPainter::colourDrawText(QPainter *p, int startx, int starty,
           }
           else {
             ReverseText = TRUE;
+            p->setBackgroundMode(OpaqueMode);
+          }
+          temppen = p->pen().color();
+          p->setPen( p->backgroundColor() );
+          p->setBackgroundColor( temppen );
+	  break;
+	case 's': // Same as ~r but s mens selection
+          if(SelectText == TRUE) {
+            SelectText = FALSE;
+            p->setBackgroundMode(TransparentMode);
+          }
+          else {
+            SelectText = TRUE;
             p->setBackgroundMode(OpaqueMode);
           }
           temppen = p->pen().color();
@@ -178,7 +208,7 @@ QString KSPainter::stripColourCodes(QString col, QList<int> *xlate){
     return noCol;
 
   col.detach();
-  col.replace(QRegExp("~r"), "");
+  col.replace(QRegExp("~s"), "");
 
   if(xlate != 0x0){
     xlate->clear();
@@ -202,6 +232,7 @@ QString KSPainter::stripColourCodes(QString col, QList<int> *xlate){
       case 'b':
       case 'u':
       case 'r':
+      case 's':
       case 'c':
       case 'i':
       case 'C':

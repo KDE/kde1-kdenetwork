@@ -216,9 +216,11 @@ void KSircListBox::mousePressEvent(QMouseEvent *me){
   spoint.setX(me->x());
   spoint.setY(me->y());
   cerr << "Mouse press event!\n";
+  ScrollToBottom = FALSE; // Lock window
 }
 
 void KSircListBox::mouseReleaseEvent(QMouseEvent *me){
+  ScrollToBottom = TRUE; // Unlock window
   cerr << "Mouse release event!\n";
   if(selectMode == FALSE)
     return;
