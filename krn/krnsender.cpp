@@ -13,12 +13,14 @@ extern QString outpath;
 void KRNSender::setNNTP(NNTP *_server)
 {
     server=_server;
+    setMethod(smSMTP);
 }
 
 bool KRNSender::send(KMMessage *aMsg, short sendnow=-1)
 {
     readConfig();
     debug ("KRNSender::send");
+    aMsg->cleanupHeader();
     if (sendnow==-1 && server->isConnected())
         sendnow=1;
     else if (sendnow==-1)
@@ -85,12 +87,26 @@ bool KRNSender::sendNow(KMMessage *aMsg)
         (!aMsg->bcc().isEmpty())) //It has an email recipient
     {
         debug ("sending by SMTP");
-        success=KMSender::send(aMsg,1);
+        KMSendSMTP *realSender = new KMSendSMTP(this);
+        success=realSender->start();
         if (!success)
         {
             warning ("failed to send by SMTP");
             return success;
         }
+        success=realSender->send(aMsg);
+        if (!success)
+        {
+            warning ("failed to send by SMTP");
+            return success;
+        }
+        success=realSender->finish();
+        if (!success)
+        {
+            warning ("failed to send by SMTP");
+            return success;
+        }
+        delete realSender;
     }
     if (!aMsg->groups().isEmpty())//It has destination groups
     {

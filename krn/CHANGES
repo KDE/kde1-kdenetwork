@@ -1,4 +1,13 @@
 -----------------------------------------------------------------------------
+Changes made Feb 9
+-----------------------------------------------------------------------------
+
+* [Roberto] Used Stefan's cleanupHeaders(), so Krn won't generate empty To:
+            headers when posting to a newsgroup.
+* [Roberto] Fixed a braino (I #ifdef'd the whole mail sending code in kmsender
+            with obvious results).
+
+-----------------------------------------------------------------------------
 Changes made Feb 8
 -----------------------------------------------------------------------------
 
