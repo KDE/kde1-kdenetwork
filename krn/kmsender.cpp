@@ -1,10 +1,7 @@
 // kmsender.cpp
 
 #include "kmsender.h"
-//#include "kmfoldermgr.h"
 #include "kmmessage.h"
-//#include "kmglobal.h"
-//#include "kmacctfolder.h"
 
 #include <Kconfig.h>
 #include <kapp.h>
@@ -18,6 +15,7 @@
 #define SENDER_GROUP "sending mail"
 
 extern KLocale *nls;
+extern QString outpath;
 
 //-----------------------------------------------------------------------------
 KMSender::KMSender()
@@ -45,7 +43,30 @@ bool KMSender::sendQueued(void)
 //-----------------------------------------------------------------------------
 bool KMSender::send(KMMessage* aMsg, short sendNow)
 {
-    return FALSE;
+    debug ("here it should get sent");
+
+    debug("------------MESSAGE START--------------");
+    debug (aMsg->asString());
+    debug("-------------MESSAGE END---------------");
+
+    //Basically, queing is just placing the message in the
+    //outgoing directory, no big deal.
+
+    QFile f(outpath+aMsg->id());
+    if (f.exists())
+    {
+        warning ("There exists another message with this ID!\n That shouldn't happen!!!");
+        return FALSE;
+    }
+    if (!f.open (IO_WriteOnly))
+    {
+        warning ("I can't open for writing, so I can't spool this thing");
+        return FALSE;
+    }
+    debug ("Spooling the message");
+    f.writeBlock(aMsg->asString(),strlen(aMsg->asString()));
+    f.close();
+    return TRUE;
 }
 
 

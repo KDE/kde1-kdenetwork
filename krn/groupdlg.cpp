@@ -528,6 +528,7 @@ bool Groupdlg::actions (int action,NewsGroup *group=0)
                 debug ("Configuring NNTP");
                 conf->setGroup("NNTP");
                 conf->writeEntry("NNTPServer",dlg.servername->text());
+                conf->writeEntry("SMTPServer",dlg.smtpserver->text());
                 conf->writeEntry("ConnectAtStart",dlg.connectatstart->isChecked());
                 conf->writeEntry("Authenticate",dlg.authenticate->isChecked());
                 conf->writeEntry("Username",dlg.username->text());

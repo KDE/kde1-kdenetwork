@@ -55,7 +55,7 @@ KMSender *msgSender;
 
 ArticleDict artSpool;
 
-QString krnpath,cachepath,artinfopath,groupinfopath,pixpath,dbasepath;
+QString krnpath,cachepath,artinfopath,groupinfopath,pixpath,dbasepath,outpath;
 
 KDecode *decoder;
 
@@ -96,6 +96,8 @@ int main( int argc, char **argv )
     mkdir (cachepath.data(),S_IREAD|S_IWRITE|S_IEXEC);
     groupinfopath=krnpath+"/groupinfo/";
     mkdir (groupinfopath.data(),S_IREAD|S_IWRITE|S_IEXEC);
+    outpath=krnpath+"/outgoing/";
+    mkdir (outpath.data(),S_IREAD|S_IWRITE|S_IEXEC);
 
     // Create the articles database
 

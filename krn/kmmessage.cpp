@@ -220,7 +220,47 @@ void KMMessage::setFollowup(const char* aStr)
   mMsg->Headers().FollowupTo().FromString(aStr);
 }
 
+//-----------------------------------------------------------------------------
+const char* KMMessage::groups(void) const
+{
+  DwHeaders& header = mMsg->Headers();
+  if (header.HasNewsgroups())
+      return header.Newsgroups().AsString().c_str();
+  else
+      return "";
+}
+//-----------------------------------------------------------------------------
+void KMMessage::setGroups(const char* aStr)
+{
+  if (!aStr) return;
+  mMsg->Headers().Newsgroups().FromString(aStr);
+}
 
+//-----------------------------------------------------------------------------
+const char* KMMessage::references(void) const
+{
+  DwHeaders& header = mMsg->Headers();
+  if (header.HasReferences())
+      return header.References().AsString().c_str();
+  else
+      return "";
+}
+//-----------------------------------------------------------------------------
+void KMMessage::setReferences(const char* aStr)
+{
+  if (!aStr) return;
+  mMsg->Headers().References().FromString(aStr);
+}
+
+//-----------------------------------------------------------------------------
+const char* KMMessage::id(void) const
+{
+  DwHeaders& header = mMsg->Headers();
+  if (header.HasMessageId())
+      return header.MessageId().AsString().c_str();
+  else
+      return "";
+}
 
 
 //-----------------------------------------------------------------------------

@@ -22,6 +22,7 @@ NNTPConfigDlg::NNTPConfigDlg
     setCaption( "KRN-NNTP configuration" );
     conf->setGroup("NNTP");
     servername->setText(conf->readEntry("NNTPServer").data());
+    smtpserver->setText(conf->readEntry("SMTPServer").data());
     connectatstart->setChecked(conf->readNumEntry("ConnectAtStart"));
     authenticate->setChecked(conf->readNumEntry("Authenticate"));
     username->setText(conf->readEntry("Username").data());

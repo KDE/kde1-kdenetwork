@@ -62,6 +62,8 @@
 #define CATCHUP 17
 #define TOGGLE_EXPIRE 18  // robert's cache stuff
 #define NO_LOCKED 19
+#define POSTANDMAIL 20
+#define FORWARD 21
 
 extern QString pixpath,cachepath;
 
@@ -88,9 +90,6 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     taggedArticle=new QPopupMenu;
     taggedArticle->insertItem("Save",SAVE_ARTICLE);
     taggedArticle->insertSeparator();
-    taggedArticle->insertItem("Reply by Mail",REP_MAIL);
-    taggedArticle->insertItem("Post Followup",FOLLOWUP);
-    taggedArticle->insertSeparator();
     taggedArticle->insertItem("Decode",DECODE_ARTICLE);
     taggedArticle->insertItem("Untag",TAG_ARTICLE);
     connect (taggedArticle,SIGNAL(activated(int)),SLOT(taggedActions(int)));
@@ -103,6 +102,8 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     article->insertItem("Print",PRINT_ARTICLE);
     article->insertItem("Reply by Mail",REP_MAIL);
     article->insertItem("Post Followup",FOLLOWUP);
+    article->insertItem("Post & Reply",POSTANDMAIL);
+    article->insertItem("Forward",FORWARD);
     article->insertSeparator();
     article->insertItem("Decode",DECODE_ONE_ARTICLE);
     article->insertItem("(Un)Tag",TAG_ARTICLE);
@@ -136,6 +137,13 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     tool = new KToolBar (this, "tool");
     QObject::connect (tool, SIGNAL (clicked (int)), this, SLOT (actions (int)));
     
+    pixmap=kapp->getIconLoader()->loadIcon("left.xpm");
+    tool->insertButton (pixmap, PREV, true, "Previous Message");
+    
+    pixmap=kapp->getIconLoader()->loadIcon("right.xpm");
+    tool->insertButton (pixmap, NEXT, true, "Next Message");
+    
+    tool->insertSeparator ();
     
     pixmap=kapp->getIconLoader()->loadIcon("save.xpm");
     tool->insertButton(pixmap,SAVE_ARTICLE,true,"Save Article");
@@ -149,15 +157,15 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
 
     pixmap=kapp->getIconLoader()->loadIcon("followup.xpm");
     tool->insertButton (pixmap, FOLLOWUP, true, "Post a Followup");
+
+    pixmap=kapp->getIconLoader()->loadIcon("mailpost.xpm");
+    tool->insertButton (pixmap, POSTANDMAIL, true, "Post & Mail");
+
+    pixmap=kapp->getIconLoader()->loadIcon("fileforward.xpm");
+    tool->insertButton (pixmap, FORWARD, true, "Forward");
+
     tool->insertSeparator ();
     
-    pixmap=kapp->getIconLoader()->loadIcon("left.xpm");
-    tool->insertButton (pixmap, PREV, true, "Previous Message");
-    
-    pixmap=kapp->getIconLoader()->loadIcon("right.xpm");
-    tool->insertButton (pixmap, NEXT, true, "Next Message");
-    
-    tool->insertSeparator ();
 
     pixmap=kapp->getIconLoader()->loadIcon("previous.xpm");
     tool->insertButton (pixmap, ARTLIST, true, "Get Article List");
@@ -529,6 +537,45 @@ bool Artdlg::actions (int action)
             comp->show();
             break;
         }
+    case FORWARD:
+        {
+            int index = list->currentItem();
+            
+            if(index < 0)
+                break;
+            
+            Article *art=artList.at(index);
+            DwMessage *m=new DwMessage();
+            QString *ts=server->article(art->ID.data());
+            m->FromString(ts->data());
+            delete ts;
+            m->Parse();
+
+            KMMessage *mm=new KMMessage(m);
+            KMComposeWin *comp=new KMComposeWin(0,"","",mm,actForward);
+            comp->show();
+            break;
+        }
+    case POSTANDMAIL:
+        {
+            int index = list->currentItem();
+            
+            if(index < 0)
+                break;
+            
+            Article *art=artList.at(index);
+            DwMessage *m=new DwMessage();
+            QString *ts=server->article(art->ID.data());
+            m->FromString(ts->data());
+            delete ts;
+            m->Parse();
+
+            KMMessage *mm=new KMMessage(m);
+            KMComposeWin *comp=new KMComposeWin(0,"",mm->from(),mm,actFollowup,true,"");
+            comp->show();
+            break;
+        }
+
     case CATCHUP:
       {
         group->catchup();

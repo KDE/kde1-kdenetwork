@@ -22,6 +22,7 @@ public:
     QCheckBox* authenticate;
     QLineEdit* username;
     QLineEdit* password;
+    QLineEdit* smtpserver;
 
 };
 

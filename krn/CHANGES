@@ -1,4 +1,17 @@
 -----------------------------------------------------------------------------
+Changes made Sep 26
+-----------------------------------------------------------------------------
+
+* [Roberto] Moved most things to the new CVS tree
+* [Roberto] Integrated most of kmail's composer, with small tweaks to allow
+            NNTP. Need to make my own KMSender now.
+* [Roberto] Added Mail&Post function
+* [Roberto] Added Forward function
+* [Roberto] Make composer remember its position. Size doesn't work, because
+            it's adjusted manually somewhere.
+* [Roberto] Outgoing spool works, now only the network part is missing.
+
+-----------------------------------------------------------------------------
 Changes made Sep 25
 -----------------------------------------------------------------------------
 

@@ -57,8 +57,18 @@ private:
   QLineEdit *ccLEdit;
   QLineEdit *groupsLEdit;
   KMMessage *currentMessage;
+
+  //Roberto: I add this, because there are some
+  //things that I want to be added automatically, be non-editable
+  //and yet are not fixed (references, for example)
+  //and couldn't think of another way to do it.
+  //If anybody has a better idea, please let me know.
+  KMMessage *futureMessage;
+
+
   KTabListBox *attWidget;
   QString SMTPServer;
+  QString NNTPServer;
   QString EMailAddress;
   QString ReplyToAddress;
   QStrList *urlList;
@@ -117,7 +127,8 @@ class KMComposeWin : public KTopLevelWidget
 
 public:
   KMComposeWin(QWidget *parent = 0, const char *name = 0, 
-	       QString emailAddress=0, KMMessage *message=0, Action action = actNoOp,bool isNNTP=false,QString groups=0,bool isMail=true);
+               QString emailAddress=0, KMMessage *message=0, Action action = actNoOp,bool isNNTP=false,QString groups=0,bool isMail=true);
+  ~KMComposeWin();
   virtual void show();
   QString encoding;
   friend class KMComposeView;  

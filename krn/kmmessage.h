@@ -144,12 +144,26 @@ public:
   /** Append a body part to the message. */
   virtual void addBodyPart(const KMMessagePart* aPart);
 
+  /** Get the groups it should be posted to */
+  virtual const char *groups(void) const;
+
+  /** Set the groups to be posted to */
+  virtual void setGroups(const char* aStr);
 
   /** Get the groups it should followup to */
   virtual const char *followup(void) const;
 
   /** Set the groups to followup to */
   virtual void setFollowup(const char* aStr);
+
+  /** Get the references for this message */
+  virtual const char *references(void) const;
+
+  /** Set the references for this message */
+  virtual void setReferences(const char* aStr);
+
+  /** Returns the message ID, useful for followups */
+  virtual const char *id(void) const;
   
   /** Owning folder or NULL if none. */
   KMFolder* owner(void) const { return mOwner; }
