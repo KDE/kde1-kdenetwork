@@ -493,6 +493,10 @@ void KMMainWin::slotEmptyFolder()
   if (!mFolder) return;
 
   kbp->busy();
+
+  // begin of critical part
+  // from here to "end..." no signal may change to another mFolder, otherwise
+  // the wrong folder will be truncated in expunge (dnaber, 1999-08-29)
   mFolder->open();
   mHeaders->setFolder(NULL);
   mMsgView->clear();
@@ -501,10 +505,13 @@ void KMMainWin::slotEmptyFolder()
   {
     while ((msg = mFolder->take(0)) != NULL)
       trashFolder->addMsg(msg);
-    statusMsg(i18n("Moved all messages into trash"));
   }
   mFolder->close();
   mFolder->expunge();
+  // end of critical
+
+  if (mFolder != trashFolder)
+    statusMsg(i18n("Moved all messages into trash"));
   mHeaders->setFolder(mFolder);
   kbp->idle();
 }
