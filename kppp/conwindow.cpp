@@ -111,10 +111,10 @@ void ConWindow::accounting(bool on) {
   MIN_SIZE(info2);
   MIN_SIZE(timelabel2);  
 
-  info2->setAlignment(AlignRight);
-  timelabel2->setAlignment(AlignRight);
-  session_bill->setAlignment(AlignRight);
-  total_bill->setAlignment(AlignRight);
+  info2->setAlignment(AlignRight|AlignVCenter);
+  timelabel2->setAlignment(AlignRight|AlignVCenter);
+  session_bill->setAlignment(AlignRight|AlignVCenter);
+  total_bill->setAlignment(AlignRight|AlignVCenter);
 
   // make sure that there's enough space for the bills
   QString s1 = session_bill->text();
