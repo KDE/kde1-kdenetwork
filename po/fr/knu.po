@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: knu\n"
 "POT-Creation-Date: 1998-04-16 18:09+0200\n"
 "PO-Revision-Date: 1998-03-01 20:15 CET\n"
-"Last-Translator: Bertrand Leconte <B.Leconte@mail.dotcom.fr>\n"
+"Last-Translator: Serge \"sergio\" Tellène <tells@mygale.org>\n"
 "Language-Team: Français\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso8859-1\n"
@@ -27,7 +27,7 @@ msgstr "&Résolution de noms"
 
 #: knu.cpp:163 knu.cpp:293
 msgid "&Finger"
-msgstr "F&inger"
+msgstr "&Finger"
 
 #: knu.cpp:174
 msgid ""
@@ -39,7 +39,7 @@ msgstr ""
 "Il n'y a aucune commande autorisée\n"
 "dans le fichier de configuration.\n"
 "\n"
-"Donc je ne peux rien faire...\n"
+"Vous n'allez avoir accès à aucune fonction ...\n"
 
 #: knu.cpp:219
 msgid "&New window"
@@ -51,7 +51,7 @@ msgstr "&Fermer la fenêtre"
 
 #: knu.cpp:233
 msgid "Select &all"
-msgstr "Selectionner &tout"
+msgstr "Sélectionner &tout"
 
 #: knu.cpp:236
 msgid "C&lear output window"
@@ -59,15 +59,15 @@ msgstr "Effacer la fenêtre d'affichage"
 
 #: knu.cpp:239
 msgid "P&references..."
-msgstr "&Préférences..."
+msgstr "&Préférences ..."
 
 #: knu.cpp:249
 msgid "About &Qt"
-msgstr "About &Qt"
+msgstr "A propos de &Qt"
 
 #: knu.cpp:432
 msgid "About..."
-msgstr "&A propos..."
+msgstr "&A propos ..."
 
 #: CommandDlg.cpp:116
 msgid "H&ost:"
@@ -86,8 +86,8 @@ msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
 msgstr ""
-"Cette commande n'a pas été trouvée. \n"
-"Vous pouvez donner son chemin par le menu Edition->Préférences..."
+"L'application correspondant à cette commande n'a pas été trouvée.\n"
+"Vous pouvez donner son chemin par le menu Edition->Préférences ..."
 
 #: CommandDlg.cpp:336
 #, c-format
@@ -103,12 +103,12 @@ msgid ""
 "to configure it again.\n"
 msgstr ""
 "\n"
-"Vous avez un problème dans votre fichier de configuration\n"
+"Incohérence détectée dans le fichier de configuration\n"
 "%s/%src.\n"
-"Dans le groupe [%s], je n'ai pas\n"
-"pu trouver d'entrée \"path=\" valide.\n"
+"Dans le groupe [%s], il n'y a pas\n"
+"d'entrée \"path=\" valide.\n"
 "\n"
-"Utilisez le menu Edition->Préférence...\n"
+"Veuillez utiliser le menu Edition->Préférences ...\n"
 "pour le configurer à nouveau.\n"
 
 #: CommandDlg.cpp:345
@@ -117,7 +117,7 @@ msgstr "Erreur dans le chemin du fichier"
 
 #: CommandDlg.cpp:478
 msgid "Binary"
-msgstr "Binaire"
+msgstr "Application"
 
 #: CommandDlg.cpp:486
 msgid "Path&name:"
@@ -125,11 +125,11 @@ msgstr "&Chemin du programme :"
 
 #: CommandDlg.cpp:495
 msgid "Additional &arguments:"
-msgstr "&Arguments additionnels :"
+msgstr "&Paramètres additionnels :"
 
 #: CommandDlg.cpp:520
 msgid "This command had been disabled in the configuration file."
-msgstr "Cette commande a été déactivée dans le fichier de configuration."
+msgstr "Cette commande a été désactivée dans le fichier de configuration."
 
 #: OptionsDlg.cpp:68
 msgid " - configuration"
@@ -137,7 +137,7 @@ msgstr " - configuration"
 
 #: PingDlg.cpp:94 TracerouteDlg.cpp:95
 msgid "Make host &name resolution"
-msgstr "Faire les résolutions de &noms"
+msgstr "Résoudre le  &noms"
 
 #: TracerouteDlg.cpp:112
 msgid "&Maximum number of hops:"

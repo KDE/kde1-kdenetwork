@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: krn\n"
 "POT-Creation-Date: 1998-04-16 18:09+0200\n"
 "PO-Revision-Date: 1998-02-25 22:45 CET\n"
-"Last-Translator: David Faure <david.faure@ifhamy.insa-lyon.fr>\n"
+"Last-Translator: Serge \"sergio\" Tellène <tells@mygale.org>\n"
 "Language-Team: Français\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; \n"
@@ -19,37 +19,36 @@ msgstr "Informations manquantes dans la configuration de KRN"
 
 #: main.cpp:228
 msgid "Please enter your email adress"
-msgstr "Entrez votre adresse électronique"
+msgstr "Veuillez entrer votre adresse électronique"
 
 #: main.cpp:240
 msgid "Please enter your real name"
-msgstr "Entrez votre nom"
+msgstr "Veuillez entrer votre nom"
 
 #: main.cpp:252
 msgid "Please enter your organization's name"
-msgstr "Entrez le nom de votre organisation"
+msgstr "Veuillez entrer le nom de votre organisation"
 
 #: main.cpp:267
 msgid "Please enter your NNTP server name"
-msgstr "Entrez le nom de votre serveur NNTP"
+msgstr "Veuillez entrer le nom de votre serveur NNTP"
 
 #: main.cpp:279
 msgid "Please enter your SMTP server name"
-msgstr "Entrez le nom de votre serveur SMTP"
+msgstr "Veuillez entrer le nom de votre serveur SMTP"
 
 #: NNTP.cpp:74
 #, c-format
 msgid "Received %.2f Kb"
-msgstr "Reçu %.2f Kb"
+msgstr "Reçu %.2f Ko"
 
 #: NNTP.cpp:552
-#, fuzzy
 msgid "Getting Article"
-msgstr "Chargement de la liste d'articles"
+msgstr "Chargement de l'article"
 
 #: NNTP.cpp:638
 msgid "Article Received"
-msgstr "Articles reçus"
+msgstr "Article reçu"
 
 #: groupdlg.cpp:125
 msgid "Connect to Server"
@@ -61,7 +60,7 @@ msgstr "Se déconnecter du serveur"
 
 #: groupdlg.cpp:127
 msgid "Get Active File"
-msgstr "Charger la liste des groupes"
+msgstr "Charger la liste des groupes actifs"
 
 #: groupdlg.cpp:129
 msgid "Post Queued Messages"
@@ -117,23 +116,23 @@ msgstr "&Marqués"
 
 #: groupdlg.cpp:166
 msgid "Identity..."
-msgstr "Identité..."
+msgstr "Identité ..."
 
 #: groupdlg.cpp:167
 msgid "NNTP Options..."
-msgstr "Options NNTP..."
+msgstr "Options NNTP ..."
 
 #: groupdlg.cpp:168
 msgid "Expire Options..."
-msgstr "Options d'expiration"
+msgstr "Options d'expiration ..."
 
 #: groupdlg.cpp:169
 msgid "Printing Options..."
-msgstr "Options d'impression..."
+msgstr "Options d'impression ..."
 
 #: groupdlg.cpp:176
 msgid "About Krn..."
-msgstr "A propos de Krn..."
+msgstr "A propos de Krn ..."
 
 #: groupdlg.cpp:188
 msgid "&Newsgroup"
@@ -153,11 +152,11 @@ msgstr "Charger la liste des groupes"
 
 #: groupdlg.cpp:201
 msgid "Find group"
-msgstr "Chercher un groupe"
+msgstr "Rechercher un groupe"
 
 #: groupdlg.cpp:207
 msgid "Check for Unread Articles"
-msgstr "Vérifier si articles non-lus"
+msgstr "Charger les articles non lus"
 
 #: groupdlg.cpp:337 groupdlg.cpp:362 groupdlg.cpp:565 groupdlg.cpp:901
 msgid "All Newsgroups."
@@ -209,7 +208,7 @@ msgid ""
 "Should I attempt one?"
 msgstr ""
 "Cette opération nécessite une connexion au serveur de News\n"
-"Dois-je en tenter une?"
+"Dois-je en tenter une ?"
 
 #: groupdlg.cpp:847
 msgid ""
@@ -217,7 +216,7 @@ msgid ""
 " get it from server?"
 msgstr ""
 "Vous n'avez pas de liste des groupes de discussion.\n"
-" la télécharger du serveur?"
+" Désirez-vous la télécharger du serveur?"
 
 #: groupdlg.cpp:863
 msgid "Listing active newsgroups"
@@ -229,7 +228,7 @@ msgstr "KRN - Recherche d'un groupe de discussion"
 
 #: groupdlg.cpp:876
 msgid "Enter the name of the Newsgroup"
-msgstr "Entrez le nom du groupe de discussion"
+msgstr "Veuillez entrer le nom du groupe de discussion"
 
 #: groupdlg.cpp:961
 msgid "Krn - Message"
@@ -237,7 +236,7 @@ msgstr "Krn - Message"
 
 #: groupdlg.cpp:962
 msgid "I can't find the group you want!"
-msgstr "Impossible de trouver le groupe démandé!"
+msgstr "Impossible de trouver le groupe demandé !"
 
 #: groupdlg.cpp:1053
 msgid "Getting messages in "
@@ -257,7 +256,7 @@ msgstr "Marquer comme lu"
 
 #: artdlg.cpp:139
 msgid "Mark Unread"
-msgstr "Marquer comme non-lu"
+msgstr "Marquer comme non lu"
 
 #: artdlg.cpp:141 artdlg.cpp:155
 msgid "Print"
@@ -273,7 +272,7 @@ msgstr "Empêcher l'expiration"
 
 #: artdlg.cpp:153
 msgid "Lookup in Altavista"
-msgstr "Regarder dans Altavista"
+msgstr "Rechercher dans Altavista"
 
 #: artdlg.cpp:157 artdlg.cpp:244
 msgid "Reply by Mail"
@@ -293,7 +292,7 @@ msgstr "Messages marqués"
 
 #: artdlg.cpp:177
 msgid "Show Only Unread Messages"
-msgstr "Afficher uniquement les messages non-lus"
+msgstr "Afficher uniquement les messages non lus"
 
 #: artdlg.cpp:179
 msgid "Show Only Cached Messages"
@@ -309,15 +308,15 @@ msgstr "Faire expirer"
 
 #: artdlg.cpp:184
 msgid "Appearance..."
-msgstr "Apparence..."
+msgstr "Apparence ..."
 
 #: artdlg.cpp:185
 msgid "Sorting..."
-msgstr "Tri en cours..."
+msgstr "Tri en cours ..."
 
 #: artdlg.cpp:189
 msgid "Edit Rules"
-msgstr "Editer les règles"
+msgstr "Modifier les règles"
 
 #: artdlg.cpp:190
 msgid "Update"
@@ -325,7 +324,7 @@ msgstr "Mettre à jour"
 
 #: artdlg.cpp:199
 msgid "&Scoring"
-msgstr "&Pertinance"
+msgstr "&Pertinence"
 
 #: artdlg.cpp:206
 msgid "Previous Message"
@@ -345,11 +344,11 @@ msgstr "Charger la liste d'articles"
 
 #: artdlg.cpp:217
 msgid "Refresh Display"
-msgstr ""
+msgstr "Rafraîchir l'écran"
 
 #: artdlg.cpp:240
 msgid "Save Article"
-msgstr "Sauver l'article"
+msgstr "Enregistrer l'article"
 
 #: artdlg.cpp:242
 msgid "Print Article"
@@ -376,9 +375,8 @@ msgid "Decode Article"
 msgstr "Décoder l'article"
 
 #: artdlg.cpp:262
-#, fuzzy
 msgid "Mark UnRead"
-msgstr "Marquer comme non-lu"
+msgstr "Marquer comme non lu"
 
 #: artdlg.cpp:284 sortDlg.cpp:34
 msgid "Sender"
@@ -398,7 +396,7 @@ msgstr "Sujet"
 
 #: artdlg.cpp:451
 msgid "Threading..."
-msgstr "Tri..."
+msgstr "Sous-processus ..."
 
 #: artdlg.cpp:460
 msgid "Showing Article List"
@@ -414,7 +412,7 @@ msgstr "Le fichier sélectionné existe déjà"
 
 #: artdlg.cpp:1280
 msgid "OverWrite"
-msgstr "Ecraser"
+msgstr "Remplacer"
 
 #: artdlg.cpp:1282
 msgid "Append"
@@ -431,8 +429,8 @@ msgstr ""
 "De : Krn\n"
 "A : Vous\n"
 "\n"
-"Error en chargeant l'article.\n"
-"Message du serveur:\n"
+"Erreur lors du chargement de l'article.\n"
+"Message du serveur :\n"
 
 #: artdlg.cpp:1417
 msgid "Getting Article List"
@@ -444,7 +442,7 @@ msgstr "KRN - Configuration de l'identité"
 
 #: identDlg.cpp:50
 msgid "Here you should enter your personal information"
-msgstr "Ici vous devez entrer vos informations personnelles"
+msgstr "Saisissez ici vos informations personnelles"
 
 #: identDlg.cpp:52
 msgid "You should know what these are!"
@@ -484,7 +482,7 @@ msgstr "Se connecter au démarrage"
 
 #: NNTPConfigDlg.cpp:56
 msgid "Connect without asking"
-msgstr "Se connecter sans poser la question"
+msgstr "Se connecter sans poser de question"
 
 #: NNTPConfigDlg.cpp:60
 msgid "Authenticate"
@@ -500,7 +498,7 @@ msgstr "Mot de passe"
 
 #: decoderDlg.cpp:31
 msgid "KRN - Decoder"
-msgstr "KRN - Decodeur"
+msgstr "KRN - Décodeur"
 
 #: decoderDlg.cpp:34
 msgid "ID"
@@ -512,7 +510,7 @@ msgstr "Répertoire de destination :"
 
 #: decoderDlg.cpp:47
 msgid "Decode All"
-msgstr "Décoder tout"
+msgstr "Tout décoder"
 
 #: kdecode.cpp:29
 msgid "KRN-Decoder"
@@ -521,7 +519,7 @@ msgstr "KRN - Décodeur"
 #: kdecode.cpp:208
 #, c-format
 msgid "Unsupported encoding type: %s."
-msgstr "Format d'encodage non supporté: %s."
+msgstr "Format d'encodage non supporté : %s."
 
 #: aboutDlg.cpp:28
 msgid "About KRN"
@@ -537,7 +535,7 @@ msgstr "Auteurs & Remerciements"
 
 #: aboutDlg.cpp:63
 msgid "And Many thanks to:"
-msgstr "Remerciements à:"
+msgstr "Remerciements à :"
 
 #: fontsDlg.cpp:39
 msgid "Message Display Settings"
@@ -545,35 +543,35 @@ msgstr "Configuration de l'affichage des messages"
 
 #: fontsDlg.cpp:46
 msgid "Header Style"
-msgstr "Style des entêtes"
+msgstr "Style des en-têtes"
 
 #: fontsDlg.cpp:48
 msgid "Fancy"
-msgstr "Fantaisies"
+msgstr "Fantaisie"
 
 #: fontsDlg.cpp:49
 msgid "Brief"
-msgstr "Brèves"
+msgstr "Bref"
 
 #: fontsDlg.cpp:50
 msgid "Standard"
-msgstr "Standards"
+msgstr "Standard"
 
 #: fontsDlg.cpp:51
 msgid "Long"
-msgstr "Longues"
+msgstr "Long"
 
 #: fontsDlg.cpp:52
 msgid "All"
-msgstr "Toutes"
+msgstr "Tous"
 
 #: fontsDlg.cpp:56
 msgid "Attachment Style"
-msgstr "Type de pièce-jointe"
+msgstr "Type de pièce jointe"
 
 #: fontsDlg.cpp:58
 msgid "Iconic"
-msgstr "Iconique"
+msgstr "Icônifiée"
 
 #: fontsDlg.cpp:59
 msgid "Smart"
@@ -645,7 +643,7 @@ msgstr "Dans le champ :"
 
 #: findArtDlg.cpp:56 rulesDlg.cpp:132
 msgid "Wildcard Mode"
-msgstr "Mode de jokers"
+msgstr "Mode joker"
 
 #: krnsender.cpp:48
 msgid "This server is read onlyyou can't post here!"
@@ -657,16 +655,15 @@ msgstr "KRN - Options d'expiration"
 
 #: expireDlg.cpp:36
 msgid "For how long should we keep things (in days)?"
-msgstr "Combien de temps garder les messages (en jours)?"
+msgstr "Combien de jours désirez-vous garder les messages ?"
 
 #: expireDlg.cpp:46
 msgid "Read:"
-msgstr ""
+msgstr "Lus :"
 
 #: expireDlg.cpp:47
-#, fuzzy
 msgid "Unread:"
-msgstr "Marquer comme non-lu"
+msgstr "Non lus :"
 
 #: expireDlg.cpp:50
 msgid "Article Bodies:"
@@ -702,7 +699,7 @@ msgstr "Imprimer en utilisant :"
 
 #: printdlg.cpp:52
 msgid "Feed it with:"
-msgstr "Lui envoyer :"
+msgstr "Format à lui donner :"
 
 #: printdlg.cpp:54
 msgid "Postscript"
@@ -766,7 +763,7 @@ msgstr "Trié par :"
 
 #: sortDlg.cpp:56
 msgid "Use Threading"
-msgstr "Utilise les fils de discussion"
+msgstr "Utilisation des sous-processus"
 
 #~ msgid "Sorry!"
 #~ msgstr "Désolé!"
