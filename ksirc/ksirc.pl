@@ -222,5 +222,5 @@ for (@words) {
 return "@words";
 }
 
-&tell("*** ~2,4~bLoaded KSirc.pl~c")
+&tell("*** ~2,4~bLoaded KSirc.pl~c");
 &tell("*** ~13,3~bWith Super Willy Enhancements~c");
