@@ -50,7 +50,6 @@
 #include <assert.h>
 #include <string.h>
 #include <errno.h>
-#include <regex.h>
 #include <netinet/in.h>
 #include <signal.h>
 #include <sys/wait.h>
@@ -348,20 +347,12 @@ bool Opener::createAuthFile(int authMethod, const char *username,
                             const char *password) {
   const char *authfile, *oldName, *newName;
   char line[100];
-  char regexp[2*MaxStrLen+30];
-  regex_t preg;
 
   if(!(authfile = authFile(authMethod)))
     return false;
 
   if(!(newName = authFile(authMethod, New)))
     return false;
-
-  // look for username, "username" or 'username'
-  // if you modify this RE you have to adapt regexp's size above
-  sprintf(regexp, "^[ \t]*%s[ \t]\\|^[ \t]*[\"\']%s[\"\']",
-          username,username);
-  assert(regcomp(&preg, regexp, REG_NOSUB) == 0);
 
   // copy to new file pap- or chap-secrets
   int old_umask = umask(0077);
@@ -371,8 +362,9 @@ bool Opener::createAuthFile(int authMethod, const char *username,
     FILE *fin = fopen(authfile, "r");
     if(fin) {
       while(fgets(line, sizeof(line), fin)) {
-        if(regexec(&preg, line, 0, 0L, 0) == 0)
-           continue;
+        // look for username, "username" or 'username'
+        if(matchUser(line, username))
+          continue;
         fputs(line, fout);
         // in case LF is missing at EOF
         if(line[strlen(line)-1] != '\n')
@@ -388,9 +380,6 @@ bool Opener::createAuthFile(int authMethod, const char *username,
 
   // restore umask
   umask(old_umask);
-
-  // free memory allocated by regcomp
-  regfree(&preg);
 
   if(!(oldName = authFile(authMethod, Old)))
     return false;
@@ -545,6 +534,29 @@ void Opener::parseargs(char* buf, char** args) {
   }
  
   *args = 0L;
+}
+
+
+bool Opener::matchUser(const char *line, const char *user) {
+  int quote = 0;
+  const char *p = line;
+
+  // skip leading space and tabs
+  while(*p == ' ' || *p == '\t')
+    p++;
+  // quoted username ?
+  if(*p == '"' || *p == '\'')
+    quote = *p++;
+  // compare usernames
+  if(strncmp(user, p, strlen(user)) != 0)
+    return false;
+  // check for proper termination (closing quote or whitespace)
+  p += strlen(user);
+  if((quote && *p != quote) ||
+     (!quote && *p != ' ' && *p != '\t' && *p != '\0' && *p != '\n'))
+    return false;
+
+  return true;
 }
 
 

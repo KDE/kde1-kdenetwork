@@ -48,6 +48,7 @@ private:
   bool execpppd(const char *arguments);
   bool killpppd();
   void parseargs(char* buf, char** args);
+  bool matchUser(const char *line, const char *user);
 
   int socket;
   int ttyfd;

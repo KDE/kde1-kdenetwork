@@ -265,18 +265,19 @@ void ConnectWidget::timerEvent(QTimerEvent *) {
     return;
   }
 
-  if(vmain == 3) {
-    messg->setText(i18n("Setting speaker volume..."));
-    emit debugMessage(i18n("Setting speaker volume..."));
+  if(vmain == 3)
+    if(!expecting) {
+      messg->setText(i18n("Setting speaker volume..."));
+      emit debugMessage(i18n("Setting speaker volume..."));
 
-    setExpect(gpppdata.modemInitResp());
-    QString vol("AT");
-    vol += gpppdata.volumeInitString();
-    writeline(vol.data());
-    usleep(gpppdata.modemInitDelay() * 10000); // 0.01 - 3.0 sec
-    vmain = 1;
-    return;
-  }
+      setExpect(gpppdata.modemInitResp());
+      QString vol("AT");
+      vol += gpppdata.volumeInitString();
+      writeline(vol.data());
+      usleep(gpppdata.modemInitDelay() * 10000); // 0.01 - 3.0 sec
+      vmain = 1;
+      return;
+    }
 
   // dial the number and wait to connect
   if(vmain == 1) {
@@ -308,6 +309,7 @@ void ConnectWidget::timerEvent(QTimerEvent *) {
   // if NO CARRIER or NO DIALTONE
   if(vmain == 100) {
     if(!expecting) {
+      myreadbuffer = gpppdata.modemConnectResp();
       setExpect("\n");
       vmain = 101;
       return;
@@ -793,7 +795,10 @@ void ConnectWidget::readChar(unsigned char c) {
     return;
 
     readbuffer += c;
-    myreadbuffer += c;
+
+    // scan speed after CONNECT
+    if(vmain == 101)
+      myreadbuffer += c;
 
     // While in scanning mode store each char to the scan buffer
     // for use in the prompt command
@@ -823,7 +828,8 @@ void ConnectWidget::readChar(unsigned char c) {
   if(expecting) {
     if(readbuffer.contains(expectstr)) {
       expecting = false;
-      readbuffer = "";
+      // keep everything after the expected string
+      readbuffer.remove(0, readbuffer.find(expectstr) + expectstr.length());
 
       QString ts = i18n("Found: ");
       ts += expectstr;
@@ -845,6 +851,9 @@ void ConnectWidget::readChar(unsigned char c) {
       loopend = false;
       loopnest++;
     }
+    // notify event loop if expected string was found
+    if(!expecting)
+      timerEvent((QTimerEvent *) 0);
   }
 }
 

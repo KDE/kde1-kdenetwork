@@ -1,10 +1,18 @@
+1999-03-15  Harri Porten  <porten@kde.org>
+
+	* opener.cpp: replaced regex library calls with self-written matching
+	algorithm. This hopefully prevents the segfaults reported with SuSE
+	and Caldera binaries.
+	* connect.cpp: fixed bugs of internal scripting loop. Possible
+	symptoms: broken 'Expect' command and incorrectly parsed modem speed.
+
 1999-03-10  Harri Porten  <porten@kde.org>
 
 	* modem.cpp: dropped ISTRIP option and made everything else "8-bit
 	clean" by using unsigned char and removing 0x7F AND'ing. Characters
 	like [§´°äöü] will work now.
 	* conwindow.cpp (ConWindow): initialise volinfo after discovering that
-	this prevents a segfault with Qt2.0 (without further investigation)
+	this prevents a segfault with Qt2.0 (turned out to be a beta bug only)
 
 1999-03-09  Harri Porten  <porten@kde.org>
 
@@ -19,6 +27,8 @@
 	by Martin Ostermann <ost@comnets.rwth-aachen.de>
 	* removed unused or doubled code
 
+=========================== KDE 1.1 released ==============================
+	
 1999-02-04  Harri Porten  <porten@kde.org>
 
 	* main.cpp: remove stale pidfile before creating new the
