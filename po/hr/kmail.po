@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KMail\n"
-"POT-Creation-Date: 1999-01-22 01:55+0100\n"
+"POT-Creation-Date: 1999-01-24 02:15+0100\n"
 "PO-Revision-Date: 1998-04-29 20:00-0500\n"
 "Last-Translator: Vladimir Vuksan <vuksan@veus.hr>\n"
 "Language-Team: Croatian\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: iso-8859-2\n"
 
-#: kmcomposewin.cpp:1514 kmmainwin.cpp:263 kpgp.cpp:546
+#: kmcomposewin.cpp:1514 kmmainwin.cpp:363 kpgp.cpp:546
 msgid ""
 "Sorry, but this feature\n"
 "is still missing"
@@ -21,23 +21,23 @@ msgstr ""
 "®alim, ali ta moguænost\n"
 "jo¹ ne postoji"
 
-#: kmmainwin.cpp:272
+#: kmmainwin.cpp:372
 msgid "New Folder"
 msgstr "Novi direktorij"
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:285 kmmainwin.cpp:319 main.cpp:334
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:385 kmmainwin.cpp:419 main.cpp:336
 msgid "KMail error"
 msgstr "KMail gre¹ka"
 
-#: kmmainwin.cpp:286 kmmainwin.cpp:320
+#: kmmainwin.cpp:386 kmmainwin.cpp:420
 msgid "Already checking for mail!"
 msgstr "Veæ provjeravam po¹tu!"
 
-#: kmmainwin.cpp:296 kmmainwin.cpp:330
+#: kmmainwin.cpp:396 kmmainwin.cpp:430
 msgid "No new mail available"
 msgstr "Nema novih poruka"
 
-#: kmmainwin.cpp:358
+#: kmmainwin.cpp:458
 msgid ""
 "Cannot modify a\n"
 "system folder."
@@ -45,11 +45,11 @@ msgstr ""
 "Ne mogu izmijeniti \n"
 "sistemski direktorij."
 
-#: kmmainwin.cpp:363
+#: kmmainwin.cpp:463
 msgid "Modify Folder"
 msgstr "Izmijeni direktorij"
 
-#: kmmainwin.cpp:378
+#: kmmainwin.cpp:478
 #, c-format
 msgid ""
 "Are you sure you want to discard the\n"
@@ -58,15 +58,15 @@ msgstr ""
 "Jeste li sigurni da ¾elite obrisati\n"
 "sadr¾aj ovog direktorija \"%s\" ?"
 
-#: kmmainwin.cpp:381 kmmainwin.cpp:420
+#: kmmainwin.cpp:481 kmmainwin.cpp:520
 msgid "Confirmation"
 msgstr "Potvrda"
 
-#: kmmainwin.cpp:393
+#: kmmainwin.cpp:493
 msgid "Moved all messages into trash"
 msgstr "Premjesti sve poruke u smeæe"
 
-#: kmmainwin.cpp:413
+#: kmmainwin.cpp:513
 msgid ""
 "Cannot remove a\n"
 "system folder."
@@ -74,7 +74,7 @@ msgstr ""
 "Ne mogu obrisati\n"
 "sistemski direktorij."
 
-#: kmmainwin.cpp:417
+#: kmmainwin.cpp:517
 #, c-format
 msgid ""
 "Are you sure you want to remove the folder\n"
@@ -83,296 +83,296 @@ msgstr ""
 "Jeste li sigurni da ¾elite obrisati direktorij\n"
 "\"%s\", sa cijelim sadr¾ajem ?"
 
-#: kmmainwin.cpp:480
+#: kmmainwin.cpp:580
 msgid "KMail notification!"
 msgstr "KMail obavijest!"
 
-#: kmmainwin.cpp:481
+#: kmmainwin.cpp:581
 msgid "Only messages in the outbox folder can be edited!"
 msgstr "Mo¾ete mijenjati samo poruke koje su u odlazeæem direktoriju!"
 
-#: kmmainwin.cpp:516
+#: kmmainwin.cpp:616
 msgid "Message as Plain Text"
 msgstr "Poruka kao Èisti Tekst"
 
-#: kmmainwin.cpp:523 kmmainwin.cpp:543
+#: kmmainwin.cpp:623 kmmainwin.cpp:643
 msgid "Select Folder"
 msgstr "Izaberi direktorij"
 
-#: kmmainwin.cpp:566
+#: kmmainwin.cpp:666
 msgid "Queued messages successfully sent."
 msgstr "Poredane poruke uspje¹no poslane."
 
-#: kmmainwin.cpp:568
+#: kmmainwin.cpp:668
 msgid "Failed to send (some) queued messages."
 msgstr "Nisam mogao poslati (neke) od poredanih poruka."
 
-#: kmmainwin.cpp:695
+#: kmmainwin.cpp:795
 msgid "Opening URL..."
 msgstr "Otvaram URL..."
 
-#: kmmainwin.cpp:750
+#: kmmainwin.cpp:850
 msgid "Address added to addressbook."
 msgstr "Adresa dodana u adresar."
 
-#: kmmainwin.cpp:762
+#: kmmainwin.cpp:862
 msgid "Address copied to clipboard."
 msgstr "Adresa iskopirana na odlagali¹te (clipboard)."
 
-#: kmmainwin.cpp:767
+#: kmmainwin.cpp:867
 msgid "URL copied to clipboard."
 msgstr "URL iskopiran na odlagali¹te (clipboard)."
 
-#: kmmainwin.cpp:794
+#: kmmainwin.cpp:894
 msgid "Send to..."
 msgstr "Po¹alji..."
 
-#: kmmainwin.cpp:796
+#: kmmainwin.cpp:896
 msgid "Send reply to..."
 msgstr "Po¹alji odgovor..."
 
-#: kmmainwin.cpp:798
+#: kmmainwin.cpp:898
 msgid "Forward to..."
 msgstr "Proslijedi..."
 
-#: kmmainwin.cpp:801
+#: kmmainwin.cpp:901
 msgid "Add to addressbook"
 msgstr "Dodaj u adresar"
 
-#: kmmainwin.cpp:803 kmmainwin.cpp:812
+#: kmmainwin.cpp:903 kmmainwin.cpp:912
 msgid "Copy to clipboard"
 msgstr "Iskopiraj na odlagali¹te (clipboard)."
 
-#: kmmainwin.cpp:810
+#: kmmainwin.cpp:910
 msgid "Open URL..."
 msgstr "Otvori URL..."
 
-#: kmmainwin.cpp:820 kmmainwin.cpp:937
+#: kmmainwin.cpp:920 kmmainwin.cpp:1037
 msgid "&Reply..."
 msgstr "Odgovo&ri..."
 
-#: kmmainwin.cpp:822 kmmainwin.cpp:939
+#: kmmainwin.cpp:922 kmmainwin.cpp:1039
 msgid "Reply &All..."
 msgstr "Odgovori svim&a"
 
-#: kmmainwin.cpp:824 kmmainwin.cpp:941
+#: kmmainwin.cpp:924 kmmainwin.cpp:1041
 msgid "&Forward..."
 msgstr "Prosli&jedi"
 
-#: kmmainwin.cpp:827 kmmainwin.cpp:951
+#: kmmainwin.cpp:927 kmmainwin.cpp:1051
 msgid "&Move..."
 msgstr "Pre&mjesti..."
 
-#: kmmainwin.cpp:829 kmmainwin.cpp:953
+#: kmmainwin.cpp:929 kmmainwin.cpp:1053
 msgid "&Copy..."
 msgstr "Is&kopiraj..."
 
-#: kmmainwin.cpp:856
+#: kmmainwin.cpp:956
 msgid "New Composer"
 msgstr "Novi Sastavljaè poruka"
 
-#: kmcomposewin.cpp:451 kmmainwin.cpp:858
+#: kmcomposewin.cpp:451 kmmainwin.cpp:958
 msgid "New Mailreader"
 msgstr "Novi Èitaè"
 
-#: kmmainwin.cpp:861
+#: kmmainwin.cpp:961
 msgid "Save As..."
 msgstr "Spremi pod drugim imenom..."
 
-#: kmmainwin.cpp:863
+#: kmmainwin.cpp:963
 msgid "Print..."
 msgstr "Ispis..."
 
-#: kmmainwin.cpp:866
+#: kmmainwin.cpp:966
 msgid "Check Mail..."
 msgstr "Provjeri po¹tu"
 
-#: kmmainwin.cpp:875
+#: kmmainwin.cpp:975
 msgid "Check Mail in..."
 msgstr "Provjeri po¹tu na..."
 
-#: kmmainwin.cpp:877
+#: kmmainwin.cpp:977
 msgid "Send Queued"
 msgstr "Po¹alji poredane poruke"
 
-#: kmmainwin.cpp:880
+#: kmmainwin.cpp:980
 msgid "&Settings..."
 msgstr "Po&stava..."
 
-#: kmcomposewin.cpp:443 kmmainwin.cpp:882
+#: kmcomposewin.cpp:443 kmmainwin.cpp:982
 msgid "&Addressbook..."
 msgstr "&Adresar"
 
-#: kmmainwin.cpp:884
+#: kmmainwin.cpp:984
 msgid "&Filter..."
 msgstr "&Filter..."
 
-#: kmmainwin.cpp:898
+#: kmmainwin.cpp:998
 msgid "&Find..."
 msgstr "&Naði..."
 
-#: kmmainwin.cpp:903
+#: kmmainwin.cpp:1003
 msgid "&Create..."
 msgstr "&Naèini..."
 
-#: kmmainwin.cpp:905
+#: kmmainwin.cpp:1005
 msgid "&Modify..."
 msgstr "Iz&mijeni..."
 
-#: kmmainwin.cpp:907
+#: kmmainwin.cpp:1007
 msgid "C&ompact"
 msgstr "Sa¾&mi"
 
-#: kmmainwin.cpp:910
+#: kmmainwin.cpp:1010
 msgid "&Empty"
 msgstr "I&sprazni"
 
-#: kmfilterdlg.cpp:149 kmmainwin.cpp:919
+#: kmfilterdlg.cpp:149 kmmainwin.cpp:1019
 msgid "New"
 msgstr "Nova"
 
-#: kmmainwin.cpp:920
+#: kmmainwin.cpp:1020
 msgid "Unread"
 msgstr "Neproèitana"
 
-#: kmmainwin.cpp:921
+#: kmmainwin.cpp:1021
 msgid "Read"
 msgstr "Proèitana"
 
-#: kmmainwin.cpp:922
+#: kmmainwin.cpp:1022
 msgid "Replied"
 msgstr "Odgovorena"
 
-#: kmmainwin.cpp:923
+#: kmmainwin.cpp:1023
 msgid "Queued"
 msgstr "Naredana"
 
-#: kmmainwin.cpp:924
+#: kmmainwin.cpp:1024
 msgid "Sent"
 msgstr "Poslana"
 
-#: kmmainwin.cpp:928
+#: kmmainwin.cpp:1028
 msgid "&Next"
 msgstr "&Slijedeæa"
 
-#: kmmainwin.cpp:930
+#: kmmainwin.cpp:1030
 msgid "Next unread"
 msgstr "Slijedeæa neproèitana"
 
-#: kmmainwin.cpp:932
+#: kmmainwin.cpp:1032
 msgid "&Previous"
 msgstr "&Prethodna"
 
-#: kmmainwin.cpp:934
+#: kmmainwin.cpp:1034
 msgid "Previous unread"
 msgstr "Prethodna neproèitana"
 
-#: kmmainwin.cpp:944
+#: kmmainwin.cpp:1044
 msgid "Edi&t..."
 msgstr "Promije&ni..."
 
-#: kmmainwin.cpp:947
+#: kmmainwin.cpp:1047
 msgid "&Set Status"
 msgstr "Podesi &status"
 
-#: kmmainwin.cpp:949
+#: kmmainwin.cpp:1049
 msgid "Mar&k all"
 msgstr "O&znaèi sve"
 
-#: kmmainwin.cpp:958
+#: kmmainwin.cpp:1058
 msgid "Send again..."
 msgstr "Po¹alji ponovo..."
 
-#: kmmainwin.cpp:960
+#: kmmainwin.cpp:1060
 msgid "Apply filters"
 msgstr "Primjeni filtere"
 
-#: kmmainwin.cpp:963
+#: kmmainwin.cpp:1063
 msgid "View Source..."
 msgstr "Pogledaj Izvor..."
 
-#: kmmainwin.cpp:970
+#: kmmainwin.cpp:1070
 msgid "&Brief Headers"
 msgstr "&Kratko Zaglavlje"
 
-#: kmmainwin.cpp:972
+#: kmmainwin.cpp:1072
 msgid "&Fancy Headers"
 msgstr "&Ukrasno Zaglavlje"
 
-#: kmmainwin.cpp:974
+#: kmmainwin.cpp:1074
 msgid "&Standard Headers"
 msgstr "&Standardno Zaglavlje"
 
-#: kmmainwin.cpp:976
+#: kmmainwin.cpp:1076
 msgid "&Long Headers"
 msgstr "&Dugo zaglavlje"
 
-#: kmmainwin.cpp:978
+#: kmmainwin.cpp:1078
 msgid "&All Headers"
 msgstr "&Cijelo zaglavlje"
 
-#: kmmainwin.cpp:981
+#: kmmainwin.cpp:1081
 msgid "Iconic Attachments"
 msgstr "Prilozi u obliku ikona"
 
-#: kmmainwin.cpp:982
+#: kmmainwin.cpp:1082
 msgid "Smart Attachments"
 msgstr "Pametni Prilozi"
 
-#: kmmainwin.cpp:983
+#: kmmainwin.cpp:1083
 msgid "Inlined Attachments"
 msgstr "Ugraðeni Prilozi"
 
-#: kmmainwin.cpp:994
+#: kmmainwin.cpp:1094
 msgid "F&older"
 msgstr "Direkt&orij"
 
-#: kmmainwin.cpp:995
+#: kmmainwin.cpp:1095
 msgid "&Message"
 msgstr "Poru&ka"
 
-#: kmcomposewin.cpp:573 kmmainwin.cpp:1014
+#: kmcomposewin.cpp:573 kmmainwin.cpp:1114
 msgid "Compose new message"
 msgstr "Sastavi novu poruku"
 
-#: kmcomposewin.cpp:578 kmmainwin.cpp:1019
+#: kmcomposewin.cpp:578 kmmainwin.cpp:1119
 msgid "Save message to file"
 msgstr "Spremi poruku u datoteku"
 
-#: kmcomposewin.cpp:583 kmmainwin.cpp:1024
+#: kmcomposewin.cpp:583 kmmainwin.cpp:1124
 msgid "Print message"
 msgstr "Ispi¹i poruku"
 
-#: kmmainwin.cpp:1031
+#: kmmainwin.cpp:1131
 msgid "Get new mail"
 msgstr "Pokupi novu po¹tu"
 
-#: kmmainwin.cpp:1037
+#: kmmainwin.cpp:1137
 msgid "Reply to author"
 msgstr "Odgovori autoru"
 
-#: kmmainwin.cpp:1042
+#: kmmainwin.cpp:1142
 msgid "Reply to all recipients"
 msgstr "Odgovori svim primateljima"
 
-#: kmmainwin.cpp:1047
+#: kmmainwin.cpp:1147
 msgid "Forward message"
 msgstr "Proslijedi poruku"
 
-#: kmmainwin.cpp:1052
+#: kmmainwin.cpp:1152
 msgid "Delete message"
 msgstr "Obri¹i poruku"
 
-#: kmcomposewin.cpp:607 kmmainwin.cpp:1058
+#: kmcomposewin.cpp:607 kmmainwin.cpp:1158
 msgid "Open addressbook..."
 msgstr "Otvori adresar..."
 
-#: kmmainwin.cpp:1070
+#: kmmainwin.cpp:1170
 msgid "Initializing..."
 msgstr "Inicijalizacija..."
 
 #: kmfolderdia.cpp:38 kmmsgpartdlg.cpp:62 kmsettings.cpp:175
-#: kmsettings.cpp:869
+#: kmsettings.cpp:884
 msgid "Name:"
 msgstr "Ime:"
 
@@ -388,7 +388,7 @@ msgstr "Povezano s"
 msgid "Unassociated Accounts"
 msgstr "Nepovezani kor. raèuni"
 
-#: kmfoldertree.cpp:47 kmsettings.cpp:528
+#: kmfoldertree.cpp:47 kmsettings.cpp:539
 msgid "Folders"
 msgstr "Direktoriji"
 
@@ -424,7 +424,7 @@ msgstr "Slanje po¹te"
 msgid "Sendmail"
 msgstr "Sendmail"
 
-#: kmsettings.cpp:223 kmsettings.cpp:876
+#: kmsettings.cpp:223 kmsettings.cpp:891
 msgid "Location:"
 msgstr "Lokacija:"
 
@@ -436,7 +436,7 @@ msgstr "SMTP"
 msgid "Server:"
 msgstr "Poslu¾itelj:"
 
-#: kmsettings.cpp:235 kmsettings.cpp:897
+#: kmsettings.cpp:235 kmsettings.cpp:912
 msgid "Port:"
 msgstr "Port:"
 
@@ -480,19 +480,16 @@ msgstr "Pismo tijela poruke:"
 msgid "Message List Font:"
 msgstr "Pismo popisa poruka"
 
-#: kmsettings.cpp:334
-msgid ""
-"Changing fonts currently only occurs when a new\n"
-"window is opened or kmail is restarted"
-msgstr ""
-"Pismo æe biti promijenjeno samo ako otvorite\n"
-"novi prozor ili ponovo pokrenete kmail"
+#: kmsettings.cpp:358
+#, fuzzy
+msgid "Long folder list"
+msgstr "&Dugo zaglavlje"
 
-#: kmsettings.cpp:376
+#: kmsettings.cpp:387
 msgid "Phrases"
 msgstr "Fraze"
 
-#: kmsettings.cpp:381
+#: kmsettings.cpp:392
 msgid ""
 "The following placeholders are supported in the reply phrases:\n"
 "%D=date, %S=subject, %F=sender, %%=percent sign"
@@ -500,167 +497,167 @@ msgstr ""
 "Slijedeæi posebni simboli su podr¾ani kod odgovaranja:\n"
 "%D=datum, %S=tema, %F=po¹iljaoc, %%=postotni znak"
 
-#: kmsettings.cpp:389
+#: kmsettings.cpp:400
 msgid "Reply to sender:"
 msgstr "Odgovori po¹iljaocu:"
 
-#: kmsettings.cpp:392
+#: kmsettings.cpp:403
 msgid "Reply to all:"
 msgstr "Odgovori svima:"
 
-#: kmsettings.cpp:395
+#: kmsettings.cpp:406
 msgid "Forward:"
 msgstr "Proslijedi:"
 
-#: kmsettings.cpp:398
+#: kmsettings.cpp:409
 msgid "Indentation:"
 msgstr "Uvlaèenje:"
 
-#: kmmessage.cpp:1340 kmsettings.cpp:410
+#: kmmessage.cpp:1352 kmsettings.cpp:421
 msgid "On %D, you wrote:"
 msgstr "Dana %D napisali ste:"
 
-#: kmmessage.cpp:1341 kmsettings.cpp:414
+#: kmmessage.cpp:1353 kmsettings.cpp:425
 msgid "On %D, %F wrote:"
 msgstr "Dana %D, %F je napisao/la:"
 
-#: kmmessage.cpp:1342 kmsettings.cpp:418
+#: kmmessage.cpp:1354 kmsettings.cpp:429
 msgid "Forwarded Message"
 msgstr "Proslijeðena poruka"
 
-#: kmsettings.cpp:429
+#: kmsettings.cpp:440
 msgid "Automatically append signature"
 msgstr "Automatski dodaj potpis"
 
-#: kmsettings.cpp:435
+#: kmsettings.cpp:446
 msgid "Automatically sign messages using PGP"
 msgstr "Automatski potpi¹i poruke uz pomoæ PGPa"
 
-#: kmsettings.cpp:440
+#: kmsettings.cpp:451
 msgid "Word wrap at column:"
 msgstr "Prelomi rijeè na stupcu:"
 
-#: kmsettings.cpp:450
+#: kmsettings.cpp:461
 msgid "Use monospaced font"
 msgstr "Koristi jednoliko pismo"
 
-#: kmsettings.cpp:462
+#: kmsettings.cpp:473
 msgid "When sending mail"
 msgstr "Slanje po¹te"
 
-#: kmsettings.cpp:465
+#: kmsettings.cpp:476
 msgid "Default sending:"
 msgstr "Podrazumijevano slanje:"
 
-#: kmsettings.cpp:468
+#: kmsettings.cpp:479
 msgid "send now"
 msgstr "po¹alji odmah"
 
-#: kmsettings.cpp:472
+#: kmsettings.cpp:483
 msgid "send later"
 msgstr "po¹alji kasnije"
 
-#: kmsettings.cpp:477
+#: kmsettings.cpp:488
 msgid "Send messages:"
 msgstr "Slanje poruka:"
 
-#: kmsettings.cpp:480
+#: kmsettings.cpp:491
 msgid "Allow 8-bit"
 msgstr "Dozvoli 8-bitno"
 
-#: kmsettings.cpp:485
+#: kmsettings.cpp:496
 msgid "MIME Compilant (Quoted Printable)"
 msgstr "MIME Compliant (Quoted Printable)"
 
-#: kmsettings.cpp:511
+#: kmsettings.cpp:522
 msgid "Composer"
 msgstr "Sastavljaè"
 
-#: kmsettings.cpp:532
+#: kmsettings.cpp:543
 msgid "empty trash on exit"
 msgstr "isprazni smeæe prilikom izlaska"
 
-#: kmsettings.cpp:536
+#: kmsettings.cpp:547
 msgid "Send Mail in outbox Folder on Check"
 msgstr "Po¹alji odlazeæe poruke prilikom provjere po¹te"
 
-#: kmsettings.cpp:551
+#: kmsettings.cpp:562
 msgid "Misc"
 msgstr "Razno"
 
-#: kmsettings.cpp:558
+#: kmsettings.cpp:569
 msgid "PGP"
 msgstr "PGP"
 
-#: kmsettings.cpp:581
+#: kmsettings.cpp:592
 msgid "Message Body Font"
 msgstr "Pismo tijela poruke"
 
-#: kmsettings.cpp:595
+#: kmsettings.cpp:606
 msgid "Message List Font"
 msgstr "Pismo popisa poruka"
 
-#: kmsettings.cpp:647
+#: kmsettings.cpp:658
 msgid "Select Account"
 msgstr "Odaberite korisnièki raèun"
 
-#: kmaccount.cpp:76 kmfilterdlg.cpp:472 kmsettings.cpp:666
+#: kmaccount.cpp:76 kmfilterdlg.cpp:472 kmsettings.cpp:677
 msgid "Unnamed"
 msgstr "Bezimen"
 
-#: kmsettings.cpp:685
+#: kmsettings.cpp:696
 msgid "Choose Sendmail Location"
 msgstr "Odaberite lokaciju Sendmaila"
 
-#: kmcomposewin.cpp:1621 kmsettings.cpp:694
+#: kmcomposewin.cpp:1621 kmsettings.cpp:705
 msgid "Choose Signature File"
 msgstr "Odaberite datoteku s potpisom"
 
-#: kmsettings.cpp:861
+#: kmsettings.cpp:876
 msgid "Type:"
 msgstr "Vrsta:"
 
-#: kmsettings.cpp:874
+#: kmsettings.cpp:889
 msgid "Local Account"
 msgstr "Lokalni korisnièki raèun"
 
-#: kmsettings.cpp:883
+#: kmsettings.cpp:898
 msgid "Pop Account"
 msgstr "Pop korisnièki raèun"
 
-#: kmsettings.cpp:885
+#: kmsettings.cpp:900
 msgid "Login:"
 msgstr "Prijavno Ime (login):"
 
-#: kmacctpop.cpp:468 kmsettings.cpp:888
+#: kmacctpop.cpp:468 kmsettings.cpp:903
 msgid "Password:"
 msgstr "Lozinka:"
 
-#: kmsettings.cpp:892
+#: kmsettings.cpp:907
 msgid "Host:"
 msgstr "Raèunalo:"
 
-#: kmsettings.cpp:900
+#: kmsettings.cpp:915
 msgid "Delete mail from server"
 msgstr "Pobri¹i po¹tu sa poslu¾itelja"
 
-#: kmsettings.cpp:905
+#: kmsettings.cpp:920
 msgid "Retrieve all mail from server"
 msgstr "Skini svu po¹tu sa poslu¾itelja"
 
-#: kmsettings.cpp:917
+#: kmsettings.cpp:932
 msgid "Enable interval Mail checking"
 msgstr "Podesi interval za provjeru po¹te"
 
-#: kmsettings.cpp:927
+#: kmsettings.cpp:942
 msgid "Store new mail in account:"
 msgstr "Spremi novu po¹tu u korisnièki raèun:"
 
-#: kmsettings.cpp:935
+#: kmsettings.cpp:950
 msgid "<none>"
 msgstr "<nijedan>"
 
-#: kmsettings.cpp:982
+#: kmsettings.cpp:997
 msgid "Choose Location"
 msgstr "Odaberite lokaciju"
 
@@ -676,7 +673,7 @@ msgstr "Ne mogu dodati poruku:"
 msgid "F"
 msgstr "D"
 
-#: kmheaders.cpp:41
+#: kmheaders.cpp:41 kmheaders.cpp:217
 msgid "Sender"
 msgstr "Po¹iljatelj"
 
@@ -688,58 +685,62 @@ msgstr "Tema"
 msgid "Date"
 msgstr "Datum"
 
-#: kmheaders.cpp:215
+#: kmheaders.cpp:216
+msgid "Receiver"
+msgstr ""
+
+#: kmheaders.cpp:219
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "Ukupno %d poruka od toga %d neproèitanih"
 
-#: kmheaders.cpp:217
+#: kmheaders.cpp:221
 msgid "Folder is read-only."
 msgstr "Direktorij je samo za èitanje."
 
-#: kmheaders.cpp:264
+#: kmheaders.cpp:268
 msgid "Unknown"
 msgstr "Nepoznato"
 
-#: kmheaders.cpp:267
+#: kmheaders.cpp:271
 msgid "No Subject"
 msgstr "Nema Teme"
 
-#: kmheaders.cpp:328
+#: kmheaders.cpp:332
 msgid "order of arrival"
 msgstr "redoslijed prispjeæa"
 
-#: kmheaders.cpp:337
+#: kmheaders.cpp:341
 msgid "subject"
 msgstr "tema"
 
-#: kmheaders.cpp:338
+#: kmheaders.cpp:342
 msgid "date"
 msgstr "datum"
 
-#: kmheaders.cpp:339
+#: kmheaders.cpp:343
 msgid "sender"
 msgstr "po¹iljatelj"
 
-#: kmheaders.cpp:340
+#: kmheaders.cpp:344
 msgid "status"
 msgstr "status"
 
-#: kmheaders.cpp:342
+#: kmheaders.cpp:346
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr "Sortiraj poruke silazno po %s"
 
-#: kmheaders.cpp:344
+#: kmheaders.cpp:348
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr "Sortiraj poruke uzlazno po %s"
 
-#: kmheaders.cpp:440
+#: kmheaders.cpp:444
 msgid "Message(s) saved."
 msgstr "Poruka(e) spremljena."
 
-#: kmheaders.cpp:442
+#: kmheaders.cpp:446
 msgid "Failed to save message(s)."
 msgstr "Ne mogu spremiti poruku(e)."
 
@@ -1019,21 +1020,21 @@ msgstr ""
 "Gre¹ka kod pokretanja KSpell. Molim vas provjerite je li ISpell ispravno "
 "pode¹en"
 
-#: kmfolder.cpp:145
+#: kmfolder.cpp:146
 #, c-format
 msgid "Folder `%s' changed. Recreating index."
 msgstr "Sadr¾aj direktorija `%s' se promijenio. Stvaram indeks."
 
-#: kmfolder.cpp:379
+#: kmfolder.cpp:386
 #, c-format
 msgid "Creating index file: %d messages done"
 msgstr "Stvaram indeksnu datoteku: %d poruka gotovo"
 
-#: kmfolder.cpp:461
+#: kmfolder.cpp:469
 msgid "Writing index file"
 msgstr "Zapisujem indeksnu datoteku"
 
-#: kmfolder.cpp:901
+#: kmfolder.cpp:909
 #, c-format
 msgid "Compacting folder: %d messages done"
 msgstr "Zbijam direktorij: %d poruka gotovo"
@@ -1171,11 +1172,11 @@ msgstr ""
 "\n"
 "Da li KMail pomakne direktorije sada ?"
 
-#: main.cpp:335
+#: main.cpp:337
 msgid "Loading addressbook failed"
 msgstr "Uèitavanje adresara nije uspjelo"
 
-#: main.cpp:411
+#: main.cpp:413
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr "Nepoznata opcija na komandoj liniji: %s"
@@ -1825,6 +1826,13 @@ msgstr "&7 bitno je ASCII"
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
 msgstr "&Quotiraj nepoznate znakove"
+
+#~ msgid ""
+#~ "Changing fonts currently only occurs when a new\n"
+#~ "window is opened or kmail is restarted"
+#~ msgstr ""
+#~ "Pismo æe biti promijenjeno samo ako otvorite\n"
+#~ "novi prozor ili ponovo pokrenete kmail"
 
 #~ msgid "Could not create temporary file"
 #~ msgstr "Ne mogu stvoriti privremenu datoteku"
