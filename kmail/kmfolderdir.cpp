@@ -142,8 +142,11 @@ bool KMFolderDir::reload(void)
 
     else if (fileInfo->isDir()) // a directory
     {
-      folderDir = new KMFolderDir(this, fname);
-      append(folderDir);
+      // Ignore subfolders - they do not work anyway
+      debug ("Subfolder ignored");
+      continue;
+      //folderDir = new KMFolderDir(this, fname);
+      //append(folderDir);
     }
 
     else // all other files are folders (at the moment ;-)
