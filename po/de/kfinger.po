@@ -2,39 +2,35 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kfinger 0.6.0\n"
 "POT-Creation-Date: 1998-12-19 02:18+0100\n"
-"PO-Revision-Date: 1998-11-16 12:10+0100\n"
+"PO-Revision-Date: 1999-01-10 13:20+MET\n"
 "Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
 "Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
 
 #: kfinger.C:30
-#, fuzzy
 msgid "F&inger Now"
-msgstr "Finger--jetzt!"
+msgstr "F&inger--jetzt!"
 
 #: kfinger.C:31
-#, fuzzy
 msgid "&Talk..."
-msgstr "Talk..."
+msgstr "&Talk..."
 
 #: kfinger.C:35
 msgid "Setup"
 msgstr "Einrichtung"
 
 #: kfinger.C:36
-#, fuzzy
 msgid "&Save Options"
-msgstr "Optionen sichern"
+msgstr "Optionen &speichern"
 
 #: kfinger.C:38
-#, fuzzy
 msgid ""
 "kfinger 0.8.0\n"
 "\n"
 "(c) Andrea Rizzi (rizzi@kde.org)"
 msgstr ""
-"KFinger 0.7.0\n"
-"(c) bei Andrea Rizzi\n"
-"rizzi@kde.org"
+"kfinger 0.8.0\n"
+"\n"
+"(c) Andrea Rizzi (rizzi@kde.org)"
 
 #: kfinger.C:47
 msgid "KDE finger utility"
@@ -58,7 +54,7 @@ msgstr "AutoFinger an/aus"
 
 #: kfinger.C:66
 msgid "Welcome to KDE Finger\n"
-msgstr ""
+msgstr "Willkommen bei KDE-Finger\n"
 
 #: kfinger.C:67
 msgid "Finger result"
@@ -72,17 +68,16 @@ msgstr "Fehler auf Server: %s"
 #: kfinger.C:288
 #, c-format
 msgid "Finger  %s@%s   --   %s"
-msgstr ""
+msgstr "Finger  %s@%s   --   %s"
 
 #: kfinger.C:305
-#, fuzzy
 msgid ""
 "Kfinger 0.8.0\n"
 "(c) by Andrea Rizzi\n"
 "rizzi@kde.org"
 msgstr ""
-"KFinger 0.7.0\n"
-"(c) bei Andrea Rizzi\n"
+"Kfinger 0.8.0\n"
+"(c) by Andrea Rizzi\n"
 "rizzi@kde.org"
 
 #: kfinger.C:351
@@ -205,18 +200,3 @@ msgstr "Speichern & Beenden"
 #: kfinger.C:859
 msgid "Output parameters "
 msgstr "Ausgabeparameter"
-
-#~ msgid "Talk.."
-#~ msgstr "Talk..."
-
-#~ msgid ""
-#~ "Welcome to KDE Finger \n"
-#~ "program by A.Rizzi rizzi@kde.org\n"
-#~ "18/09/1997 \n"
-#~ msgstr ""
-#~ "Willkommen bei KDE Finger \n"
-#~ "Programm von A.Rizzi rizzi@kde.org\n"
-#~ "18/09/1997 \n"
-
-#~ msgid "Finger result for : %s@%s"
-#~ msgstr "Finger-Ergebnus für: %s@%s"

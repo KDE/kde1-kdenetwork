@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
 "POT-Creation-Date: 1999-01-08 02:05+0100\n"
-"PO-Revision-Date: 1998-11-21 15:12+0100\n"
+"PO-Revision-Date: 1999-01-10 13:50+MET\n"
 "Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
 "Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
 
@@ -50,7 +50,7 @@ msgid ""
 msgstr ""
 "Löscht den ausgewählten Account\n"
 "\n"
-"<red><b>Vorsichtig benutzen!"
+"<red><b>Vorsichtig benutzen!</b></red>"
 
 #: accounts.cpp:106
 msgid "Phone Costs:"
@@ -256,7 +256,7 @@ msgstr "Timeout "
 
 #: connect.cpp:483 connect.cpp:484
 msgid "Hangup"
-msgstr "Hänge auf"
+msgstr "Lege auf"
 
 #: connect.cpp:497 connect.cpp:498
 msgid "Answer"
@@ -935,7 +935,6 @@ msgid "About kppp"
 msgstr "Über kppp"
 
 #: general.cpp:210
-#, fuzzy
 msgid ""
 "\n"
 "A dialer and front-end to pppd\n"
@@ -961,6 +960,7 @@ msgstr ""
 "    Harri Porten <porten@kde.org>\n"
 "    Mario Weilguni <mweilguni@kde.org>\n"
 "\n"
+"Ursprünglicher Autor: Bernd Johannes Wuebben\n"
 "Gegenwärtig betreut von Harri Porten and Mario\n"
 "Weilguni. Bitte senden Sie alle Fehlerberichte an den\n"
 "oder die aktuellen Betreuer.\n"
@@ -1021,7 +1021,6 @@ msgid "Line Termination:"
 msgstr "Zeilenende:"
 
 #: general.cpp:298
-#, fuzzy
 msgid ""
 "Specifies how AT commands are send to your\n"
 "modem. Most modems will work fine with the\n"
@@ -1033,7 +1032,7 @@ msgid ""
 msgstr ""
 "Gibt an, wie AT-Befehle an Ihr Modem geschickt\n"
 "werden. Die meisten funktionieren gut mit der Voreinstellung\n"
-"<i>CR</i>. Wenn Ihr Modem nicht auf den Init-String\n"
+"<i>CR/LF</i>. Wenn Ihr Modem nicht auf den Init-String\n"
 "reagiert, dann sollten Sie es an dieser Stelle mit anderen\n"
 "Einstellungen versuchen.\n"
 "\n"
@@ -1061,10 +1060,9 @@ msgstr ""
 
 #: general.cpp:364
 msgid "Use Lock File"
-msgstr ""
+msgstr "Lock-File verwenden"
 
 #: general.cpp:375
-#, fuzzy
 msgid ""
 "To prevent other programs from accessing the\n"
 "modem while a connection is established, a\n"
@@ -1079,12 +1077,12 @@ msgstr ""
 "Um andere Programme am Zugriff auf auf das Modem\n"
 "zu hindern, während eine Verbindung besteht, wird\n"
 "eine Datei erstellt, die anzeigt, daß das Modem in\n"
-"Benutzung ist. Hier können Sie das Verzeichnis\n"
-"auswählen, wo diese Datei erzeugt wird.\n"
+"Benutzung ist. Unter Linux wäre eine Beispieldatei\n"
+"<i>/var/lock/LCK..ttyS1</i>\n"
+"Hier können Sie bestimmen, ob diese Datei\n"
+"erzeugt wird.\n"
 "\n"
-"Ändern Sie hier nichts, wenn Sie nicht wissen, was\n"
-"Sie tun. Es gibt keine Voreinstellung, weil das Ganze\n"
-"vom jeweiligen Betriebssystem abhängt."
+"<b>Voreinstellung</b>: Ein"
 
 #: general.cpp:386
 msgid "Modem Timeout:"
@@ -1140,7 +1138,7 @@ msgid ""
 "If this does not work for your modem,\n"
 "you must modify the modem volume command"
 msgstr ""
-"Die meisten Modem haben einen Lautsprecher,\n"
+"Die meisten Modems haben einen Lautsprecher,\n"
 "der beim Wählen eine Menge Lärm macht. Hier\n"
 "können Sie das entweder abstellen oder eine\n"
 "niedrigere Lautstärke auswählen.\n"
@@ -1153,7 +1151,6 @@ msgid "Modem Asserts CD Line."
 msgstr "Modem fügt Trägererkennung ein."
 
 #: general.cpp:540
-#, fuzzy
 msgid ""
 "This controls how <i>kppp</i> detects that the modem\n"
 "is not responding. Unless you are having\n"
@@ -1161,11 +1158,11 @@ msgid ""
 "\n"
 "<b>Default</b>: off"
 msgstr ""
-"Hier wird kontrollier, wie <i>kppp</i> feststellt, daß das\n"
+"Hier wird kontrolliert, wie <i>kppp</i> feststellt, daß das\n"
 "Modem nicht reagiert. Sie sollten die Einstellung nur ändern,\n"
 "wenn Sie Probleme damit haben.\n"
 "\n"
-"<b>Voreinstellung</b>: ein"
+"<b>Voreinstellung</b>: Aus"
 
 #: general.cpp:553
 msgid "Modem Commands"
@@ -1305,7 +1302,7 @@ msgstr ""
 
 #: main.cpp:353
 msgid "Exit"
-msgstr ""
+msgstr "Verlassen"
 
 #: main.cpp:414
 msgid "Connect to: "
@@ -1416,11 +1413,11 @@ msgstr "Graphik"
 
 #: main.cpp:800
 msgid "Timeout expired while waiting for the PPP interface to come up!"
-msgstr ""
+msgstr "Zeitüberschreitung beim Warten auf das PPP-Interface!"
 
 #: main.cpp:805
 msgid "The pppd daemon died unexpectedly!"
-msgstr ""
+msgstr "Der pppd-Dämon wurde unerwartet beendet!"
 
 #: main.cpp:813
 msgid "Details..."
@@ -1432,6 +1429,9 @@ msgid ""
 "\n"
 "Since a further execution would be pointless, kppp will shut down right now."
 msgstr ""
+"Sorry. der kppp-Hilfsprozeß wurde beendet.\n"
+"\n"
+"Da eine weitere Ausführung sinnlos wäre, beendet sich kppp jetzt."
 
 #: main.cpp:875
 #, c-format
@@ -1494,7 +1494,7 @@ msgid ""
 "method PAP. This requires that you\n"
 "supply a username and a password!"
 msgstr ""
-"Sie haben die Authentifizierung-Methode\n"
+"Sie haben die Authentifizierungs-Methode\n"
 "PAP gewählt. Deshalb müssen Sie einen\n"
 "Benutzernamen und ein Paßwort angeben!"
 
@@ -1676,6 +1676,13 @@ msgid ""
 "\n"
 "chown {YourUsername} .kde/share/config/kppprc"
 msgstr ""
+"Die Konfigurationsdatei der Anwendung konnte nicht geöffnet werden,\n"
+"weder zum Lesen/Schreiben noch zum Nur-Lesen.\n"
+"\n"
+"Der Superuser muß eventuell die Eigentumsrechte ändern,\n"
+"und zwar mit dem folgenden Befehl in Ihrem Heimatverzeichnis:\n"
+"\n"
+"chown {Ihr Nutzername} .kde/share/config/kppprc"
 
 #: modeminfo.cpp:38
 msgid "ATI Query"
@@ -1804,7 +1811,7 @@ msgstr "initialisiere Modem"
 
 #: miniterm.cpp:205
 msgid "Hanging up ..."
-msgstr "Hänge auf..."
+msgstr "Lege auf..."
 
 #: miniterm.cpp:219
 msgid "Resetting Modem"
@@ -1889,7 +1896,7 @@ msgid ""
 "You´re not allowed to dial out with kppp.\n"
 "Contact your system administrator."
 msgstr ""
-"Sie haben keine Berechtigung mit kppp hinauszuwählen.\n"
+"Sie haben keine Berechtigung, mit kppp hinauszuwählen.\n"
 "Kontaktieren Sie Ihren Systemadministrator."
 
 #: runtests.cpp:372
@@ -1991,7 +1998,7 @@ msgstr ""
 
 #: ppplog.cpp:141
 msgid "You haven't started the PPP software on the peer system."
-msgstr ""
+msgstr "Sie haben auf dem Peer-System kein PPP-Programm gestartet."
 
 #: ppplog.cpp:144
 msgid "Check that you supplied the correct username and password!"
@@ -2019,6 +2026,8 @@ msgid ""
 "You have passed an invalid option to pppd. See `man pppd' for a complete "
 "list of valid arguments."
 msgstr ""
+"Sie haben eine ungültige Option an pppd übergeben. Siehe \"man pppd\" "
+"für eine komplette Liste gültiger Parameter."
 
 #: ppplog.cpp:170
 #, c-format
@@ -2077,34 +2086,3 @@ msgstr "kppp-Diagnose (nur eine Vermutung):"
 #: ppplog.cpp:241
 msgid "Write to file"
 msgstr "Schreibe in Datei"
-
-#~ msgid ""
-#~ "The application-specific config file\n"
-#~ "could not be opened neither\n"
-#~ "read-write nor read-only"
-#~ msgstr ""
-#~ "Die anwendungsspezifische Konfigurationsdatei\n"
-#~ "konnte weder zum Lesen/Schreiben\n"
-#~ "noch zum Nur-Lesen geöffnet werden"
-
-#~ msgid ""
-#~ "Do you use /dev/modem ? If so, you should specify the real device instead, "
-#~ "e.g. /dev/ttyS1 (COM2)."
-#~ msgstr ""
-#~ "Benutzen Sie /dev/modem? Falls ja, dann sollten Sie stattdessen ein "
-#~ "wirkliches Gerät, wie z.B. /dev/ttyS1 (COM2) benutzen."
-
-#~ msgid "Lock File Directory:"
-#~ msgstr "Verzeichnis für Lock-Datei:"
-
-#~ msgid "Advanced Security"
-#~ msgstr "Höhere Sicherheitsstufe"
-
-#~ msgid "Allowed users"
-#~ msgstr "Zugelassene Benutzer"
-
-#~ msgid "Allowed groups"
-#~ msgstr "Zugelassene Gruppen"
-
-#~ msgid "Ok"
-#~ msgstr "OK"

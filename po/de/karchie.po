@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: karchie 1.1.2\n"
 "POT-Creation-Date: 1999-01-05 02:12+0100\n"
-"PO-Revision-Date: 1998-11-15 13:51+0100\n"
+"PO-Revision-Date: 1999-01-10 13:00+MET\n"
 "Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
-"Language-Team: deutsch <de@li.org>\n"
+"Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ios-8859-1\n"
 "Content-Transfer-Encoding: iso-8859-1\n"
@@ -64,7 +64,7 @@ msgstr "Exakt, dann Teilstring"
 
 #: KAMenu.cpp:116
 msgid "Exact, then substring case ins."
-msgstr "Exakt, dann Teil. ohne G-/K"
+msgstr "Exakt, dann Teilstring ohne G-/K"
 
 #: KAMenu.cpp:117
 msgid "Exact, then regular expression"
@@ -132,7 +132,7 @@ msgstr "nach &Hostnamen"
 
 #: KAMenu.cpp:172
 msgid "by &Domain"
-msgstr "nach &Domäne"
+msgstr "nach &Domain"
 
 #: KAMenu.cpp:173
 msgid "by D&ate"
@@ -201,7 +201,7 @@ msgstr "%d Versuch."
 
 #: KAView.cpp:66
 msgid "Searchstring, press <ENTER> to start search"
-msgstr ""
+msgstr "Suchstring, drücken Sie <Eingabe>, um die Suche zu beginnen"
 
 #: KAView.cpp:68
 msgid "Search &Term"
@@ -266,7 +266,7 @@ msgstr "KArchie: falsche URL"
 
 #: KArchie.cpp:744
 msgid "KArchie: Wrong fileselection"
-msgstr "KArchie: Dateiauswahl falsch"
+msgstr "KArchie: falsche Dateiauswahl"
 
 #: KArchie.cpp:745
 msgid "The selected file is not writeable"
@@ -274,12 +274,12 @@ msgstr "In die ausgewählte Datei kann nicht geschrieben werden"
 
 #: KArchie.cpp:752
 msgid "KArchie: Overwrite file ?"
-msgstr "KArchie: Datei überschreiben ?"
+msgstr "KArchie: Datei überschreiben?"
 
 #: KArchie.cpp:753
 msgid ""
 "The selected file is not write protected\n"
-"Should it be overwritten ?"
+"Should it be overwritten?"
 msgstr ""
 "Die Datei ist nicht schreibgeschützt.\n"
 "Soll sie überschrieben werden?"

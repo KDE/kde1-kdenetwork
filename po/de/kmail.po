@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
 "POT-Creation-Date: 1999-01-02 02:11+0100\n"
-"PO-Revision-Date: 1998-11-28 08:55 +0100\n"
+"PO-Revision-Date: 1999-01-10 13:30+MET\n"
 "Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
 "Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
 
@@ -282,7 +282,7 @@ msgstr "&Filter anwenden"
 
 #: kmmainwin.cpp:962
 msgid "View Source..."
-msgstr "&HTML-Code ansehen"
+msgstr "HTML-Code ansehen..."
 
 #: kmmainwin.cpp:969
 msgid "&Brief Headers"
@@ -290,7 +290,7 @@ msgstr "&Kurze Header"
 
 #: kmmainwin.cpp:971
 msgid "&Fancy Headers"
-msgstr "&Hübsche Header"
+msgstr "&Verzierte Header"
 
 #: kmmainwin.cpp:973
 msgid "&Standard Headers"
@@ -379,7 +379,7 @@ msgstr "Verbunden mit"
 
 #: kmfolderdia.cpp:57
 msgid "Unassociated Accounts"
-msgstr "Ungebundene Postfächer"
+msgstr "Nicht zugeordnete Postfächer"
 
 #: kmfoldertree.cpp:47 kmsettings.cpp:529
 msgid "Folders"
@@ -885,14 +885,12 @@ msgid "&Attach..."
 msgstr "&Anhängen..."
 
 #: kmcomposewin.cpp:532
-#, fuzzy
 msgid "Attach &Public Key"
-msgstr "Ö&ffentlichen Schlüssel einfügen"
+msgstr "Ö&ffentlichen Schlüssel anhängen"
 
 #: kmcomposewin.cpp:534
-#, fuzzy
 msgid "Attach My &Public Key"
-msgstr "Ö&ffentlichen Schlüssel einfügen"
+msgstr "Meinen ö&ffentlichen Schlüssel anhängen"
 
 #: kmcomposewin.cpp:545
 msgid "&Save..."
@@ -928,7 +926,7 @@ msgstr "Datei anhängen"
 
 #: kmcomposewin.cpp:614
 msgid "sign message"
-msgstr "Nachricht unterzeichnen"
+msgstr "Nachricht mit Signatur versehen"
 
 #: kmcomposewin.cpp:619
 msgid "encrypt message"
@@ -964,11 +962,11 @@ msgstr "Datei einfügen"
 
 #: kmcomposewin.cpp:1246
 msgid "my pgp key"
-msgstr ""
+msgstr "mein PGP-Schlüssel"
 
 #: kmcomposewin.cpp:1274
 msgid "pgp key"
-msgstr ""
+msgstr "PGP-Schlüssel"
 
 #: kmcomposewin.cpp:1295 kmreaderwin.cpp:721
 msgid "View..."
@@ -1069,7 +1067,7 @@ msgstr "Von:"
 
 #: kmreaderwin.cpp:315 kmreaderwin.cpp:334 kmreaderwin.cpp:355
 msgid "To: "
-msgstr "An:"
+msgstr "An: "
 
 #: kmreaderwin.cpp:322 kmreaderwin.cpp:343 kmreaderwin.cpp:368
 msgid "References: "
@@ -1101,7 +1099,7 @@ msgstr "Kann Nachricht nicht entschlüsseln:"
 
 #: kmreaderwin.cpp:424
 msgid "Message was signed by"
-msgstr "Nachricht wurde unterschrieben von"
+msgstr "Nachricht enthält Signatur von"
 
 #: kmreaderwin.cpp:425
 msgid "Warning: Bad signature from"
@@ -1590,12 +1588,11 @@ msgstr "PGP-Sicherheitsüberprüfung"
 
 #: kpgp.cpp:769
 msgid "Please select the public key to insert"
-msgstr ""
+msgstr "Bitte wählen Sie den öffentlichen Schlüssel aus, der eingefügt werden soll."
 
 #: kpgp.cpp:800
-#, fuzzy
 msgid "Select key"
-msgstr "Ordner auswählen"
+msgstr "Schlüssel auswählen"
 
 #: kpgp.cpp:827
 msgid "PGP User Identity:"
@@ -1611,7 +1608,7 @@ msgstr "Zusätzlich eigenen Schlüssel verwenden"
 
 #: kpgpbase.cpp:320
 msgid "Bad pass Phrase; couldn't sign"
-msgstr "Falsches Paßwort; konnte nicht unterschreiben"
+msgstr "Falsches Paßwort; konnte Signatur nicht anfügen"
 
 #: kpgpbase.cpp:359
 msgid "error running pgp"

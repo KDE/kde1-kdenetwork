@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksirc \n"
 "POT-Creation-Date: 1998-12-28 02:07+0100\n"
-"PO-Revision-Date: 1998-11-18 00:15+0100\n"
+"PO-Revision-Date: 1999-01-10 16:00+MET\n"
 "Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
 "Translator: Stephan Kulow <coolo@kde.org>\n"
 
@@ -27,9 +27,8 @@ msgid "&Modify"
 msgstr "&Verändern"
 
 #: FilterRuleEditorData.cpp:126
-#, fuzzy
 msgid "New Rule"
-msgstr "&Neue Regel"
+msgstr "Neue Regel"
 
 #: FilterRuleEditorData.cpp:145
 msgid "Up"
@@ -103,9 +102,8 @@ msgid "&Dock"
 msgstr "&Andocken"
 
 #: servercontroller.cpp:168 servercontroller.cpp:748
-#, fuzzy
 msgid "New Server..."
-msgstr "&Neuer Server..."
+msgstr "Neuer Server..."
 
 #: servercontroller.cpp:169
 msgid "&Join Channel..."
@@ -128,9 +126,8 @@ msgid "&Filter Rule Editor..."
 msgstr "&Editor für Filter-Regeln"
 
 #: servercontroller.cpp:194 servercontroller.cpp:743
-#, fuzzy
 msgid "&Web Server Configuration..."
-msgstr "Aktive Server-Verbindungen"
+msgstr "&Web-Server Konfiguration..."
 
 #: servercontroller.cpp:197 servercontroller.cpp:745
 msgid "&Preferences..."
@@ -190,108 +187,101 @@ msgstr "Ben&utzer"
 
 #: welcomeWinData.cpp:35
 msgid "Show Again"
-msgstr ""
+msgstr "Nochmal anzeigen"
 
 #: welcomeWinData.cpp:44
 msgid "Dissmiss"
-msgstr ""
+msgstr "Abbrechen"
 
 #: KSColourPicker/kscolourpickerData.cpp:30
 msgid "Pick"
-msgstr ""
+msgstr "Auswählen"
 
 #: KSColourPicker/kscolourpickerData.cpp:46
 msgid "Sample Colour"
-msgstr ""
+msgstr "Beispielfarbe"
 
 #: KSCutDialog/KSCutDialogData.cpp:39
 msgid "Cop&y"
-msgstr ""
+msgstr "&Kopieren"
 
 #: KSOpenkSirc/open_ksircData.cpp:37
-#, fuzzy
 msgid "&Connect"
-msgstr "&Verbindungen"
+msgstr "&Verbinden"
 
 #: KSOpenkSirc/open_ksircData.cpp:54
 msgid "&Edit Servers"
-msgstr ""
+msgstr "Server &bearbeiten"
 
 #: KSOpenkSirc/open_ksircData.cpp:86
 msgid "Group:"
-msgstr ""
+msgstr "Gruppe:"
 
 #: KSOpenkSirc/open_ksircData.cpp:103
-#, fuzzy
 msgid "Server/Quick Connect to:"
-msgstr "Server-Kontrolle"
+msgstr "Server/Schnell-Verbindung mit:"
 
 #: KSOpenkSirc/open_ksircData.cpp:120
 msgid "Port:"
-msgstr ""
+msgstr "Port:"
 
 #: KSOpenkSirc/open_ksircData.cpp:147
-#, fuzzy
 msgid "Server Desc:"
-msgstr "Server:"
+msgstr "Server Beschr:"
 
 #: KSPrefs/UserMenuRefData.cpp:61
 msgid "Menu Name"
-msgstr ""
+msgstr "Menü-Name"
 
 #: KSPrefs/UserMenuRefData.cpp:70
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 #: KSPrefs/UserMenuRefData.cpp:79
 msgid "Command"
-msgstr ""
+msgstr "Befehl"
 
 #: KSPrefs/UserMenuRefData.cpp:87
 msgid "OP Only"
-msgstr ""
+msgstr "Nur OP"
 
 #: KSPrefs/UserMenuRefData.cpp:135
-#, fuzzy
 msgid "Modify"
-msgstr "&Verändern"
+msgstr "Ändern"
 
 #: KSPrefs/ksprefs.cpp:9
-#, fuzzy
 msgid "kSirc Prefrences"
-msgstr "&Einstellungen..."
+msgstr "kSirc-Einstellungen"
 
 #: KSPrefs/ksprefs.cpp:22
 msgid "&General"
-msgstr ""
+msgstr "&Allgemein"
 
 #: KSPrefs/ksprefs.cpp:23
 msgid "&StartUp"
-msgstr ""
+msgstr "&Programmstart"
 
 #: KSPrefs/ksprefs.cpp:24
-#, fuzzy
 msgid "Servers/&Channels"
-msgstr "Kanäle"
+msgstr "Server/&Kanäle"
 
 #: KSPrefs/ksprefs.cpp:25
-#, fuzzy
 msgid "&User Menu"
-msgstr "Ben&utzer"
+msgstr "Benutzer-&Menü"
 
 #: KSPrefs/ksprefs.cpp:26
 msgid "&Default Filters"
-msgstr ""
+msgstr "&Eingestellte Filter"
 
 #: KSTicker/speeddialogData.cpp:79
 msgid "Tick Interval"
-msgstr ""
+msgstr "Abstands-Intervall"
 
 #: KSTicker/speeddialogData.cpp:88
 msgid "Step Size"
-msgstr ""
+msgstr "Schrittgröße"
 
 #: puke/kdynlib.cpp:70
 #, c-format
 msgid "No such file \"%s\"!"
-msgstr ""
+msgstr "Datei existiert nicht: \"%s\"!"

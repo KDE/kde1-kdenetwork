@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: knu\n"
 "POT-Creation-Date: 1999-01-10 02:04+0100\n"
-"PO-Revision-Date: 1998-07-20 23:00+0100\n"
+"PO-Revision-Date: 1999-01-10 23:27+0100\n"
 "Last-Translator: Sebastià Pla <sastia@redestb.es>\n"
 "Language-Team: CATALAN <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -31,7 +31,7 @@ msgstr "F&inger"
 
 #: knu.cpp:190 knu.cpp:333
 msgid "&mtr"
-msgstr ""
+msgstr "&mtr"
 
 #: knu.cpp:201
 msgid ""
@@ -51,15 +51,15 @@ msgstr "Finestra &Nova"
 
 #: knu.cpp:249
 msgid "&Close window"
-msgstr "&Tancar finestra"
+msgstr "&Tanca finestra"
 
 #: knu.cpp:260
 msgid "Select &all"
-msgstr "Seleccionar &tot"
+msgstr "Selecciona-ho &tot"
 
 #: knu.cpp:263
 msgid "C&lear output window"
-msgstr "&Netejar la finestra de sortida"
+msgstr "&Neteja la finestra de sortida"
 
 #: knu.cpp:266
 msgid "P&references..."
@@ -86,6 +86,10 @@ msgid ""
 "\n"
 "Bertrand"
 msgstr ""
+"Knu\n"
+"Versió %s\n"
+"\n"
+"Bertrand"
 
 #: knu.cpp:469
 msgid "About..."
@@ -93,7 +97,7 @@ msgstr "Quant a..."
 
 #: knu.cpp:602
 msgid "Network utilities"
-msgstr ""
+msgstr "Utilitats de xarxa"
 
 #: CommandDlg.cpp:128
 msgid "H&ost:"
@@ -105,7 +109,7 @@ msgstr "&Vinga!"
 
 #: CommandDlg.cpp:147
 msgid "&Stop"
-msgstr "At&urar"
+msgstr "At&ura"
 
 #: CommandDlg.cpp:163
 msgid ""
@@ -164,39 +168,39 @@ msgstr " - configuració"
 
 #: MtrDlg.cpp:83
 msgid "#"
-msgstr ""
+msgstr "#"
 
 #: MtrDlg.cpp:84
 msgid "Hostname"
-msgstr ""
+msgstr "Nom de host"
 
 #: MtrDlg.cpp:85
 msgid "Loss"
-msgstr ""
+msgstr "Perd"
 
 #: MtrDlg.cpp:87
 msgid "Rcv"
-msgstr ""
+msgstr "Reb"
 
 #: MtrDlg.cpp:89
 msgid "Snt"
-msgstr ""
+msgstr "Env"
 
 #: MtrDlg.cpp:91
 msgid "Best"
-msgstr ""
+msgstr "Mill"
 
 #: MtrDlg.cpp:93
 msgid "Avg"
-msgstr ""
+msgstr "Prom"
 
 #: MtrDlg.cpp:95
 msgid "Worst"
-msgstr ""
+msgstr "Pitj"
 
 #: MtrDlg.cpp:138 PingDlg.cpp:100 TracerouteDlg.cpp:98
 msgid "Make host &name resolution"
-msgstr "Fer la resolució de &nom de host"
+msgstr "Fes la resolució de &nom de host"
 
 #: HostDlg.cpp:331 PingDlg.cpp:227
 msgid "hos&t"
@@ -240,11 +244,11 @@ msgstr "qualsevol registre (ANY)"
 
 #: HostDlg.cpp:124
 msgid "Se&arch for:"
-msgstr "&Cercar:"
+msgstr "&Cerca:"
 
 #: HostDlg.cpp:136 HostDlg.cpp:287
 msgid "default server"
-msgstr "servidor"
+msgstr "servidor per omissió"
 
 #: FingerDlg.cpp:95 HostDlg.cpp:145
 msgid "Ser&ver:"
@@ -253,6 +257,3 @@ msgstr "Ser&vidor:"
 #: FingerDlg.cpp:77
 msgid "&User:"
 msgstr "&Usuari:"
-
-#~ msgid "&Matt's traceroute"
-#~ msgstr "Traceroute de &Matt"

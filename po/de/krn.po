@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: krn\n"
 "POT-Creation-Date: 1999-01-10 02:04+0100\n"
-"PO-Revision-Date: 1998-11-17 18:20 +0100\n"
+"PO-Revision-Date: 1999-01-10 15:00+MET\n"
 "Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
 "Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
 
@@ -523,12 +523,11 @@ msgstr "Paßwort"
 
 #: NNTPConfigDlg.cpp:91
 msgid "Ask before downloading more than"
-msgstr ""
+msgstr "Nachfragen vor dem Herunterladen von mehr als"
 
 #: NNTPConfigDlg.cpp:94
-#, fuzzy
 msgid "articles"
-msgstr "Artikel markieren"
+msgstr "Artikel"
 
 #: aboutDlg.cpp:28
 msgid "About KRN"
@@ -548,16 +547,15 @@ msgstr "Vielen Dank auch an:"
 
 #: aboutDlg.cpp:71
 msgid "All KDE developers"
-msgstr ""
+msgstr "Alle KDE-Entwickler"
 
 #: aboutDlg.cpp:73
 msgid "Chuck, for helping in time of need"
-msgstr ""
+msgstr "Chuck: für die Hilfe in der Zeit der Not"
 
 #: aboutDlg.cpp:74
-#, fuzzy
 msgid "All testers"
-msgstr "Alle Newsgroups."
+msgstr "Alle Tester"
 
 #: fontsDlg.cpp:39
 msgid "Message Display Settings"
@@ -768,9 +766,8 @@ msgid "Replace..."
 msgstr "Ersetzen..."
 
 #: kmcomposewin.cpp:477
-#, fuzzy
 msgid "&Spellcheck..."
-msgstr "KMail: Rechtschreibprüfung"
+msgstr "&Rechtschreibprüfung"
 
 #: kmcomposewin.cpp:484
 msgid "&Urgent"
@@ -785,9 +782,8 @@ msgid "&Confirm read"
 msgstr "&Lesen bestätigen"
 
 #: kmcomposewin.cpp:491
-#, fuzzy
 msgid "&Spellchecker..."
-msgstr "KMail: Rechtschreibprüfung"
+msgstr "Rechtschreib&programm"
 
 #: kmcomposewin.cpp:494
 msgid "&Charsets..."
@@ -839,11 +835,11 @@ msgstr "&Datei einfügen"
 
 #: kmcomposewin.cpp:527
 msgid "Insert My &Public Key"
-msgstr ""
+msgstr "Meinen ö&ffentlichen Schlüssel einfügen"
 
 #: kmcomposewin.cpp:532
 msgid "&Attach..."
-msgstr "An&hängen"
+msgstr "An&hängen..."
 
 #: kmcomposewin.cpp:535
 msgid "&Save..."
@@ -858,9 +854,8 @@ msgid "&Attach"
 msgstr "Anhän&gen"
 
 #: kmcomposewin.cpp:558
-#, fuzzy
 msgid "Send message"
-msgstr "Sende Nachrichten: "
+msgstr "Nachricht senden"
 
 #: kmcomposewin.cpp:563
 msgid "Compose new message"
@@ -980,7 +975,7 @@ msgstr "Signatur-Datei auswählen"
 
 #: kmcomposewin.cpp:2018
 msgid "Spellcheck - KMail"
-msgstr ""
+msgstr "Rechtschreibprüfung - KMail"
 
 #: kmcomposewin.cpp:2044
 msgid ""
@@ -1321,7 +1316,7 @@ msgstr "Warnung: Fehlerhafte Signatur von"
 
 #: kmreaderwin.cpp:451
 msgid "unknown key ID"
-msgstr ""
+msgstr "unbekannte Schlüssel-ID"
 
 #: kmreaderwin.cpp:701
 msgid "Attachment: "
@@ -1362,7 +1357,7 @@ msgstr "Das Paßwort fehlt."
 
 #: kpgp.cpp:286 kpgp.cpp:312 kpgp.cpp:325 kpgp.cpp:344 kpgp.cpp:361
 msgid "PGP Warning"
-msgstr ""
+msgstr "PGP Warnung"
 
 #: kpgp.cpp:287
 msgid ""
@@ -1370,23 +1365,25 @@ msgid ""
 "recipients of this mail.\n"
 "Message will not be encrypted."
 msgstr ""
+"Konnte die öffentlichen Schlüssel nicht finden\n"
+"für die Empfänger dieser Mail.\n"
+"Die Nachricht wird nicht verschlüsselt."
 
 #: kpgp.cpp:296
 msgid "Could not find the public keys for\n"
-msgstr ""
+msgstr "Konnte öffentliche Schlüssel nicht finden für\n"
 
 #: kpgp.cpp:307
 msgid "These persons will not be able to\n"
-msgstr ""
+msgstr "Diese Personen werden nicht imstande sein\n"
 
 #: kpgp.cpp:309
 msgid "This person will not be able to\n"
-msgstr ""
+msgstr "Diese Person wird nicht imstande sein\n"
 
 #: kpgp.cpp:311
-#, fuzzy
 msgid "decrypt the message."
-msgstr "Nachricht verschlüsseln"
+msgstr "die Nachricht zu entschlüsseln"
 
 #: kpgp.cpp:326
 msgid ""
@@ -1394,26 +1391,33 @@ msgid ""
 "Do you wan't to try again, continue and\n"
 "leave the message unsigned, or cancel sending the message?"
 msgstr ""
+"Sie haben gerade ein ungültiges Paßwort eingegeben.\n"
+"Möchten Sie es nochmals versuchen, möchten Sie fortfahren und\n"
+"die Nachricht ohne Signatur lassen oder den Versand der Nachricht abbrechen?"
 
 #: kpgp.cpp:331
 msgid "Retry"
-msgstr ""
+msgstr "Nochmal"
 
 #: kpgp.cpp:342
 msgid ""
 "Do you wan't to encrypt anyway, leave the\n"
 "message as is, or cancel the message?"
 msgstr ""
+"Möchten Sie trotzdem verschlüsseln, die Nachricht so lassen,\n"
+"oder möchten Sie die Nachricht verwerfen?"
 
 #: kpgp.cpp:346
 msgid "Encrypt"
-msgstr ""
+msgstr "Verschlüsseln"
 
 #: kpgp.cpp:359
 msgid ""
 "Do you wan't to leave the message as is,\n"
 "or cancel the message?"
 msgstr ""
+"Möchten Sie die Nachricht lassen, wie sie ist,\n"
+"odere möchten Sie die Nachricht verwerfen?"
 
 #: kpgp.cpp:717
 msgid ""
@@ -1428,21 +1432,20 @@ msgid "PGP Security Check"
 msgstr "PGP-Sicherheitsüberprüfung"
 
 #: kpgp.cpp:765
-#, fuzzy
 msgid "Identity"
-msgstr "Identität..."
+msgstr "Identität"
 
 #: kpgp.cpp:771
 msgid "PGP User Identity:"
-msgstr ""
+msgstr "PGP Nutzer-Identität"
 
 #: kpgp.cpp:782
 msgid "Store passphrase"
-msgstr ""
+msgstr "Paßwort speichern"
 
 #: kpgp.cpp:788
 msgid "Always encrypt to self"
-msgstr ""
+msgstr "Zusätzlich eigenen Schlüssel verwenden"
 
 #: krnsender.cpp:60
 msgid "This server is read onlyyou can't post here!"
@@ -1634,7 +1637,7 @@ msgstr "Fehlerhaftes Paßwort; konnte nicht signieren"
 
 #: kpgpbase.cpp:354
 msgid "error running pgp"
-msgstr ""
+msgstr "Fehler bei der Ausführung von PGP"
 
 #: kpgpbase.cpp:371 kpgpbase.cpp:662
 msgid "Bad pass Phrase; couldn't decrypt"
@@ -1642,72 +1645,58 @@ msgstr "Fehlerhaftes Paßwort; konnte nicht entschlüsseln"
 
 #: kpgpbase.cpp:382 kpgpbase.cpp:673
 msgid "Do not have the secret key for this message"
-msgstr ""
+msgstr "Habe keinen geheimen Schlüssel für diese Nachricht"
 
 #: kpgpbase.cpp:410
 msgid "unknown key ID "
-msgstr ""
+msgstr "unbekannte Schlüssel-ID"
 
 #: kpgpbase.cpp:430
 msgid "??? (file ~/.pgp/pubring.pgp not found)"
-msgstr ""
+msgstr "??? (Datei ~/.pgp/pubring.pgp nicht gefunden)"
 
 #: kpgpbase.cpp:585
-#, fuzzy
 msgid "The passphrase you entered is invalid."
-msgstr "Das Paßwort fehlt."
+msgstr "Das eingegebene Paßwort ist ungültig."
 
 #: kpgpbase.cpp:611
 msgid ""
 "The key(s) you wan't to encrypt your message\n"
 "to are not trusted. No encryption done."
 msgstr ""
+"Einer oder mehrere Schlüssel, mit denen Sie Ihre Nachricht kodieren\n"
+"möchten, sind nicht zuverlässig. Keine Verschlüsselung vorgenommen."
 
 #: kpgpbase.cpp:614
-#, fuzzy, c-format
 msgid ""
 "The following key(s) are not trusted:\n"
 "%s\n"
 "They will not be able to decrypt the message"
 msgstr ""
-"Öffentlicher Schlüssel für %s nicht gefunden.\n"
-"Es wird dieser Person nicht möglich sein, die Nachricht zu entschlüsseln."
+"Die folgenden Schlüssel sind nicht zuverlässig:\n"
+"%s\n"
+"Es wird ihnen nicht möglich sein, die Nachricht zu entschlüsseln"
 
 #: TooManydlg.cpp:25
-#, fuzzy
 msgid "KRN-Confirmation"
-msgstr "KRN-NNTP Konfiguration"
+msgstr "KRN-Bestätigung"
 
 #: TooManydlg.cpp:30
 msgid "Read how many articles?"
-msgstr ""
+msgstr "Wieviele Artikel lesen"
 
 #: TooManydlg.cpp:36
 msgid "Get them from"
-msgstr ""
+msgstr "Holen von"
 
 #: TooManydlg.cpp:37
-#, fuzzy
 msgid "Oldest articles"
-msgstr "Artikel holen"
+msgstr "Älteste Artikel"
 
 #: TooManydlg.cpp:39
-#, fuzzy
 msgid "Newest articles"
-msgstr "Artikel holen"
+msgstr "Neueste Artikel"
 
 #: TooManydlg.cpp:43
 msgid "Make this the new threshold"
-msgstr ""
-
-#~ msgid "Error during PGP:"
-#~ msgstr "Fehler bei Ausführung von PGP:"
-
-#~ msgid "Message signed by"
-#~ msgstr "Nachricht signiert von"
-
-#~ msgid "Message has a bad signature from"
-#~ msgstr "Nachricht hat fehlerhafte Signatur von"
-
-#~ msgid "End PGP signed message"
-#~ msgstr "Ende der PGP-signierten Nachricht"
+msgstr "Als neuen Schwellenwert benutzen"
