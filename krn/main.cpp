@@ -280,7 +280,7 @@ void expireCache()   // robert's cache stuff
 {
     
     conf->setGroup("Cache");
-    int expireTime=conf->readNumEntry("ExpireDays",5);
+    int expireTime=conf->readNumEntry("ExpireBodies",5);
     
     QDir d(cachepath.data());
     d.setFilter(QDir::Files);

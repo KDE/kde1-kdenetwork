@@ -8,6 +8,8 @@ Changes made Jan 16
 * [Roberto] Added "tagged->not expire".
 * [Roberto] Implemented pine-style "Append/Overwrite" when saving to an
             already existing file.
+* [Roberto] Fixed bug in Makefile.am that didn't create ktreeview.moc
+* [Roberto] New dialog to customize expiration times.
 
 -----------------------------------------------------------------------------
 Changes made Jan 15

@@ -36,6 +36,7 @@
 
 #include "artdlg.h"
 #include "identDlg.h"
+#include "expireDlg.h"
 #include "NNTPConfigDlg.h"
 #include "rmbpop.h"
 #include "aboutDlg.h"
@@ -68,6 +69,7 @@
 #define FIND_GROUP 17
 #define POST 18
 #define POST_QUEUED 19
+#define CONFIG_EXPIRE 20
 
 extern QString krnpath,cachepath,artinfopath,pixpath,outpath;
 extern KConfig *conf;
@@ -163,6 +165,7 @@ Inherited (name)
     QPopupMenu *options = new QPopupMenu;
     options->insertItem(klocale->translate("Identity..."),CHANGE_IDENTITY);
     options->insertItem(klocale->translate("NNTP Options..."),CONFIG_NNTP);
+    options->insertItem(klocale->translate("Expire Options..."),CONFIG_EXPIRE);
     connect (options,SIGNAL(activated(int)),SLOT(currentActions(int)));
     
     QPopupMenu *help = new QPopupMenu;
@@ -590,6 +593,16 @@ bool Groupdlg::actions (int action,NewsGroup *group)
                 conf->sync();
                 msgSender->readConfig();
             }
+            qApp->restoreOverrideCursor ();
+            success = true;
+            break;
+        }
+
+    case CONFIG_EXPIRE:
+        {
+            qApp->setOverrideCursor (arrowCursor);
+            ExpireDlg *dlg=new ExpireDlg();
+            dlg->exec();
             qApp->restoreOverrideCursor ();
             success = true;
             break;
