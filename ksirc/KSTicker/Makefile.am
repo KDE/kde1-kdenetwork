@@ -15,7 +15,7 @@
 # just set the variable
 #APPSDIR = $(kde_appsdir)/Internet
 # set the include path for X, qt and KDE
-INCLUDES= @all_includes@
+INCLUDES= $(all_includes)
 # claim, which subdirectories you want to install
 # SUBDIRS = 
 # KSTicker KSprogress
@@ -51,7 +51,7 @@ ksticker_LDFLAGS =  @all_libraries@
 
 # the libraries to link against. Be aware of the order. First the libraries,
 # that depend on the following ones.
-ksticker_LDADD   = -lkdeui -lkdecore -lqt -lX11 -lXext @LIBSOCKET@     
+ksticker_LDADD   = -lkdeui -lkdecore -lXext $(LIB_QT)
 
 # this option you can leave out. Just, if you use "make dist", you need it
 noinst_HEADERS = ksticker.h          main.h              speeddialog.h       speeddialogData.h kspainter.h

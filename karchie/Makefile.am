@@ -42,7 +42,7 @@ karchie_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 
 # the libraries to link against. Be aware of the order. First the libraries,
 # that depend on the following ones.
-karchie_LDADD   = -lkfile -lkfm -lkdeui -lkdecore -lqt -lX11 -lXext $(LIBCOMPAT) $(LIBSOCKET)
+karchie_LDADD   = -lkfile -lkfm -lkdeui -lkdecore   -lXext $(LIBCOMPAT) $(LIB_QT)
 
 # this option you can leave out. Just, if you use "make dist", you need it
 noinst_HEADERS =

@@ -5,13 +5,13 @@ DEFS += -DKRN -DCHARSETS
 
 LDFLAGS = $(all_libraries) $(KDE_RPATH)
 krn_LDADD = -lkfile -lkfm $(LIB_KHTMLW) -lkdeui -lkdecore \
-	-lqt -lXext -lX11 -lmimelib -lgdbm $(LIBCOMPAT) $(LIBSOCKET)
+	 -lXext  -lmimelib -lgdbm $(LIBCOMPAT) $(LIB_QT)
 
-kdecode_LDADD = -lkfile -lkfm -lkdeui -lkdecore -lqt -lXext \
-	-lX11 $(LIBUU) $(KDE_RPATH) $(LIBCOMPAT) $(LIBSOCKET)
+kdecode_LDADD = -lkfile -lkfm -lkdeui -lkdecore -lXext \
+	 $(LIBUU) $(KDE_RPATH) $(LIBCOMPAT) $(LIB_QT)
 
 newkrn_LDADD = -lkfile -lkfm $(LIB_KHTMLW) -lkdeui -lkdecore \
-	-lqt -lXext -lX11 -lmimelib -lgdbm $(LIBCOMPAT) $(LIBSOCKET)
+	 -lXext  -lmimelib -lgdbm $(LIBCOMPAT) $(LIB_QT)
 
 
 ICONDIR = $(kde_icondir)

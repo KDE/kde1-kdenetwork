@@ -20,7 +20,7 @@ kbiff_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 
 # the libraries to link against. Be aware of the order. First the libraries,
 # that depend on the following ones.
-kbiff_LDADD   = -lkfile -lkfm -lkdeui -lkdecore -lmediatool -lqt -lX11 -lXext $(LIBSOCKET)
+kbiff_LDADD   = -lkfile -lkfm -lkdeui -lkdecore -lmediatool   -lXext $(LIB_QT)
 
 # this option you can leave out. Just, if you use "make dist", you need it
 noinst_HEADERS = setupdlg.h kbiff.h kbiffmonitor.h notify.h Trace.h

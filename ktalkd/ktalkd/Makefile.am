@@ -20,7 +20,7 @@ TALKD_CONF	=	$(kde_confdir)/ktalkdrc
 TALKD_CONF_NAME	=	ktalkdrc
 DEFS 		+=       -DHAVE_KDE
 ktalkd_SOURCES	=	announce.cpp print.cpp process.cpp readcfg++.cpp table.cpp talkd.cpp find_user.cpp threads.cpp options.cpp unixsock.cpp
-LDADD           =       machines/libmach.a -lkdecore -lqt -lXext -lX11 @LIBBSD@ @LIBSOCKET@
+LDADD           =       machines/libmach.a -lkdecore  -lXext  @LIBBSD@ $(LIB_QT)
 
 ###########################################################
 else
@@ -30,7 +30,7 @@ TALKD_CONF 	=	/etc/talkd.conf
 TALKD_CONF_NAME	=	talkd.conf
 DEFS		+=	-DTALKD_CONF=\"$(TALKD_CONF)\"
 ktalkd_SOURCES	=	announce.cpp print.cpp process.cpp readconf.cpp table.cpp talkd.cpp find_user.cpp threads.cpp options.cpp
-LDADD		=	machines/libmach.a @LIBBSD@ @LIBSOCKET@
+LDADD		=	machines/libmach.a @LIBBSD@ $(LIBSOCKET)
 
 endif
 ###########################################################
