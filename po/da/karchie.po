@@ -1,0 +1,303 @@
+# Danish translation for KDE Network, karchie
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# Erik Kjær Pedersen, erik@binghamton.edu 1998.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: KDE NETWORK/karchie\n"
+"POT-Creation-Date: 1999-01-05 02:12+0100\n"
+"PO-Revision-Date: 1999-01-17 17:00+CET-1\n"
+"Last-Translator: Erik Kjær Pedersen <erik@binghamton.edu>\n"
+"Language-Team: da <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO_8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: KAMenu.cpp:86
+msgid "O&pen in editor"
+msgstr "Å&bn i tekstbehandling"
+
+#: KAMenu.cpp:87 KAView.cpp:154
+msgid "&Open Dir"
+msgstr "&Åbn folder"
+
+#: KAMenu.cpp:88 KAView.cpp:155
+msgid "&Download..."
+msgstr "&Hent hjem..."
+
+#: KAMenu.cpp:91
+msgid "&Load List..."
+msgstr "&Indlæs listen..."
+
+#: KAMenu.cpp:92
+msgid "&Save List..."
+msgstr "&Gem listen..."
+
+#: KAMenu.cpp:93
+msgid "Expor&t List..."
+msgstr "Sen&d listen videre..."
+
+#: KAMenu.cpp:95
+msgid "&Exit"
+msgstr "&Afbryd"
+
+#: KAMenu.cpp:111
+msgid "&Exact"
+msgstr "&Nøjagtig"
+
+#: KAMenu.cpp:112
+msgid "&Substring"
+msgstr "&Delstreng"
+
+#: KAMenu.cpp:113
+msgid "Substring &case insensitive"
+msgstr "Delstreng &ikke afhængig af stere/små"
+
+#: KAMenu.cpp:114
+msgid "&Regular expression"
+msgstr "&Regulært udtryk"
+
+#: KAMenu.cpp:115
+msgid "Exact, then substring"
+msgstr "Nøjagtigt, derefter delstreng"
+
+#: KAMenu.cpp:116
+msgid "Exact, then substring case ins."
+msgstr "Nøjagtigt, derefter case ins."
+
+#: KAMenu.cpp:117
+msgid "Exact, then regular expression"
+msgstr "Nøjagtigt, derefter regulært udtryk"
+
+#: KAMenu.cpp:125
+msgid "n&ormal"
+msgstr "n&ormalt"
+
+#: KAMenu.cpp:126
+msgid "&nice"
+msgstr "&pænt"
+
+#: KAMenu.cpp:127
+msgid "&very nice"
+msgstr "&meget pænt"
+
+#: KAMenu.cpp:128
+msgid "&even more nice"
+msgstr "&endnu pænere"
+
+#: KAMenu.cpp:129
+msgid "n&icest"
+msgstr "&allerpænest"
+
+#: KAMenu.cpp:136
+msgid "Show &File discription"
+msgstr "Vis &fil beskrivelse"
+
+#: KAMenu.cpp:139
+msgid "Archie&server"
+msgstr "Archie&server"
+
+#: KAMenu.cpp:140
+msgid "Search&mode"
+msgstr "Søge&modus"
+
+#: KAMenu.cpp:141
+msgid "&Nicelevel"
+msgstr "&Pæntniveau"
+
+#: KAMenu.cpp:143
+msgid "&All..."
+msgstr "&Alle..."
+
+#: KAMenu.cpp:150
+msgid "for &Filename"
+msgstr "for &Filnavn"
+
+#: KAMenu.cpp:151
+msgid "for &Path/Location"
+msgstr "til &sti/sted"
+
+#: KAMenu.cpp:152
+msgid "for &Hostname"
+msgstr "til &værtnavn"
+
+#: KAMenu.cpp:154
+msgid "&STOP"
+msgstr "&STOP"
+
+#: KAMenu.cpp:171
+msgid "by &Hostname"
+msgstr "ved &værtnavn"
+
+#: KAMenu.cpp:172
+msgid "by &Domain"
+msgstr "ved &domæne"
+
+#: KAMenu.cpp:173
+msgid "by D&ate"
+msgstr "pr D&ato"
+
+#: KAMenu.cpp:174
+msgid "by &Filesize"
+msgstr "ved &filstørrelse"
+
+#: KAMenu.cpp:190
+msgid "&Settings"
+msgstr "&Indstillinger "
+
+#: KAMenu.cpp:191
+msgid "&Query"
+msgstr "&Forespørgsel"
+
+#: KAMenu.cpp:192
+msgid "S&ort"
+msgstr "S&orter"
+
+#: KASettings.cpp:567
+msgid "Reset"
+msgstr "Reset"
+
+#: KAStatusBar.cpp:50
+msgid "    0 hits"
+msgstr "    ramte 0 gange"
+
+#: KAStatusBar.cpp:51
+msgid "    0. try"
+msgstr "    0. forsøg"
+
+#: KAStatusBar.cpp:52
+msgid "Host: none                               "
+msgstr "Vært: ingen                               "
+
+#: KAStatusBar.cpp:53
+msgid "Status: ready                        "
+msgstr "Status: parat                        "
+
+#: KAStatusBar.cpp:81
+#,  c-format
+msgid "Status: %s"
+msgstr "Status: %s"
+
+#: KAStatusBar.cpp:91
+#,  c-format
+msgid "Hosts: %s"
+msgstr "Værter: %s"
+
+#: KAStatusBar.cpp:101
+#, c-format
+msgid "%d hits"
+msgstr "Ramte %d gange"
+
+#: KAStatusBar.cpp:111
+#, c-format
+msgid "Progress: %d"
+msgstr "Fremskridt: %d"
+
+#: KAStatusBar.cpp:121
+#, c-format
+msgid "%d try."
+msgstr "%d forsøg."
+
+#: KAView.cpp:66
+msgid "Searchstring, press <ENTER> to start search"
+msgstr "Søgestreng, tryk <ENTER> for at starte søgning"
+
+#: KAView.cpp:68
+msgid "Search &Term"
+msgstr "Søg &Led"
+
+#: KAView.cpp:134
+msgid "Host"
+msgstr "Vært"
+
+#: KAView.cpp:135
+msgid "Path"
+msgstr "Sti"
+
+#: KAView.cpp:268
+msgid "Host:"
+msgstr "Vært:"
+
+#: KAView.cpp:270
+msgid "Path:"
+msgstr "Sti:"
+
+#: KAView.cpp:272
+msgid "File:"
+msgstr "Fil:"
+
+#: KAView.cpp:274
+msgid "Size:"
+msgstr "Størrelse:"
+
+#: KAView.cpp:276
+msgid "Mode:"
+msgstr "Modus:"
+
+#: KAView.cpp:278
+msgid "Date:"
+msgstr "Dato:"
+
+#: KArchie.cpp:441 KArchie.cpp:483
+#,  c-format
+msgid ""
+"Couldn't open \n"
+"\"%s\""
+msgstr ""
+"Kunne ikke åbne filen:\n"
+"\"%s\""
+
+#: KArchie.cpp:446 KArchie.cpp:488
+msgid "KArchie: bad file"
+msgstr "KArchie: dårlig fil"
+
+#: KArchie.cpp:720
+msgid "Malformed url"
+msgstr "Forkert url"
+
+#: KArchie.cpp:724
+msgid "Maybe bad list entry, please select an other file"
+msgstr "Måske dårlig liste, vælg venligst en anden fil"
+
+#: KArchie.cpp:725
+msgid "KArchie: bad URL"
+msgstr "KArchie: dårlig URL"
+
+#: KArchie.cpp:744
+msgid "KArchie: Wrong fileselection"
+msgstr "KArchie: Dårligt filudvalg"
+
+#: KArchie.cpp:745
+msgid "The selected file is not writeable"
+msgstr "Den angivne fil er ikke skrivbar"
+
+#: KArchie.cpp:752
+msgid "KArchie: Overwrite file ?"
+msgstr "KArchie: Overskriv filen ?"
+
+#: KArchie.cpp:753
+msgid ""
+"The selected file is not write protected\n"
+"Should it be overwritten ?"
+msgstr ""
+"Den valgte fil er ikke skrivebeskyttet\n"
+"Skal den overskrives ?"
+
+#: KArchie.cpp:766
+msgid "KArchie: bad selection"
+msgstr "KArchie: dårligt valg"
+
+#: KArchie.cpp:767
+msgid ""
+"No file selected !\n"
+"Please select a file in the list of queryresults\n"
+"or do a query."
+msgstr ""
+"Ingen fil valgt!\n"
+"Vælg en fil i listen af forespørgselsresultater\n"
+"eller lav en forespørgsel."
+
+#: KArchie.cpp:793
+msgid "Success"
+msgstr "Sukces"
+

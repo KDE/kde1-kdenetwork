@@ -1,0 +1,234 @@
+# Danish translation for KDE Network, kbiff
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# Erik Kjær Pedersen, erik@binghamton.edu 1998.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: KDE NETWORK/kbiff\n"
+"POT-Creation-Date: 1998-12-20 02:10+0100\n"
+"PO-Revision-Date: 1999-01-18 17:00+CET-1\n"
+"Last-Translator: Erik Kjær Pedersen <erik@binghamton.edu>\n"
+"Language-Team: da <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO_8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: kbiff.cpp:506
+msgid "&UnDock"
+msgstr "&Udyk"
+
+#: kbiff.cpp:508
+msgid "&Dock"
+msgstr "&Dyk"
+
+#: kbiff.cpp:509
+msgid "&Setup..."
+msgstr "Op&sætning..."
+
+#: kbiff.cpp:511
+msgid "&Help..."
+msgstr "&Hjælp"
+
+#: kbiff.cpp:515
+msgid "&Check Mail Now"
+msgstr "&Kig efter post nu"
+
+#: kbiff.cpp:517
+msgid "&Read Mail Now"
+msgstr "&Læs post nu"
+
+#: kbiff.cpp:523
+msgid "&Stop"
+msgstr "&Stop"
+
+#: notify.cpp:28 notify.cpp:45
+msgid "You have new mail!"
+msgstr "Du har ny post"
+
+#: notify.cpp:53
+msgid "New Messages: %d"
+msgstr "Nye breve: %d"
+
+#: notify.cpp:58
+#, c-format
+msgid "Mailbox: %s"
+msgstr "Postboks: %s"
+
+#: setupdlg.cpp:79
+msgid "KBiff Setup"
+msgstr "KBiff opsætning"
+
+#: setupdlg.cpp:82
+msgid "Profile:"
+msgstr "Profil:"
+
+#: setupdlg.cpp:98
+msgid "&New..."
+msgstr "&Ny..."
+
+#: setupdlg.cpp:105
+msgid "&Rename..."
+msgstr "&Ændr navn..."
+
+#: setupdlg.cpp:139
+msgid "General"
+msgstr "Genrel"
+
+#: setupdlg.cpp:140
+msgid "New Mail"
+msgstr "Ny post"
+
+#: setupdlg.cpp:141
+msgid "Mailbox"
+msgstr "Postboks"
+
+#: setupdlg.cpp:356
+msgid "New Profile"
+msgstr "Ny profil"
+
+#: setupdlg.cpp:388
+#, c-format
+msgid "Rename Profile: %s"
+msgstr "Ændr profilnavn: %s"
+
+#: setupdlg.cpp:428
+#, c-format
+msgid "Delete Profile: %s"
+msgstr "Slet profil: %s"
+
+#: setupdlg.cpp:429
+msgid "Are you sure you wish to delete this profile?\n"
+msgstr "Er du sikker på at du vil slette denne profil?\n"
+
+#: setupdlg.cpp:489
+msgid "Poll (sec):"
+msgstr "Tjek (sek):"
+
+#: setupdlg.cpp:494
+msgid "Mail client:"
+msgstr "Post klient"
+
+#: setupdlg.cpp:507
+msgid "Dock in panel"
+msgstr "Dyk ned i panel"
+
+#: setupdlg.cpp:512
+msgid "Use session management"
+msgstr "Brug sessionsbehandling"
+
+#: setupdlg.cpp:517
+msgid "Icons:"
+msgstr "Ikoner:"
+
+#: setupdlg.cpp:535
+msgid "No Mail:"
+msgstr "Ingen post"
+
+#: setupdlg.cpp:544
+msgid "Old Mail"
+msgstr "Gammel post"
+
+#: setupdlg.cpp:554
+msgid "New Mail:"
+msgstr "Ny post"
+
+#: setupdlg.cpp:691
+msgid "Run Command"
+msgstr "Kør kommandoen"
+
+#: setupdlg.cpp:698 setupdlg.cpp:711 setupdlg.cpp:1051
+msgid "Browse"
+msgstr "Blad igennem"
+
+#: setupdlg.cpp:704
+msgid "Play Sound"
+msgstr "Spil lyd"
+
+#: setupdlg.cpp:717
+msgid "System Beep"
+msgstr "System lyd"
+
+#: setupdlg.cpp:722
+msgid "Notify"
+msgstr "Varsel"
+
+#: setupdlg.cpp:853
+msgid "Advanced Options"
+msgstr "Avancerede indstillinger"
+
+#: setupdlg.cpp:857
+msgid "Mailbox URL:"
+msgstr "Postboks URL:"
+
+#: setupdlg.cpp:861
+msgid "Port:"
+msgstr "Port:"
+
+#: setupdlg.cpp:865
+msgid "PREAUTH"
+msgstr "PREAUTH"
+
+#: setupdlg.cpp:872
+msgid "Keep Alive"
+msgstr "Hold ilive"
+
+#: setupdlg.cpp:998 setupdlg.cpp:1027
+msgid "Mailbox:"
+msgstr "Postboks:"
+
+#: setupdlg.cpp:1011 setupdlg.cpp:1321
+msgid "New Mailbox"
+msgstr "Ny postboks"
+
+#: setupdlg.cpp:1018
+msgid "Delete Mailbox"
+msgstr "Slet postboks"
+
+#: setupdlg.cpp:1024
+msgid "Protocol:"
+msgstr "Protokol:"
+
+#: setupdlg.cpp:1030
+msgid "Server:"
+msgstr "Server"
+
+#: setupdlg.cpp:1033
+msgid "User:"
+msgstr "Bruger:"
+
+#: setupdlg.cpp:1036
+msgid "Password:"
+msgstr "Kodeord:"
+
+#: setupdlg.cpp:1068
+msgid "Store password"
+msgstr "Gem kodeord"
+
+#: setupdlg.cpp:1071
+msgid "Advanced"
+msgstr "Avanceret"
+
+#: setupdlg.cpp:1508
+msgid "KBiff"
+msgstr "KBiff"
+
+#: setupdlg.cpp:1530
+#, c-format
+msgid ""
+"Version %s\n"
+"\n"
+"Copyright (C) 1998\n"
+"Kurt Granroth"
+msgstr ""
+"Version %s\n"
+"\n"
+"Copyright (C) 1998\n"
+"Kurt Granroth"
+
+#: setupdlg.cpp:1579
+msgid "New Name:"
+msgstr "Nyt navn:"
+
+#: setupdlg.cpp:1605
+msgid "New Name"
+msgstr "Nyt navn"

@@ -1,0 +1,209 @@
+# Danish translation for KDE Network, kfinger
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# Erik Kjær Pedersen, erik@binghamton.edu 1998.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: KDE NETWORK/kfinger\n"
+"POT-Creation-Date: 1998-12-19 02:18+0100\n"
+"PO-Revision-Date: 1999-01-18 17:00+CET-1\n"
+"Last-Translator: Erik Kjær Pedersen <erik@binghamton.edu>\n"
+"Language-Team: da <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO_8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: kfinger.C:30
+msgid "F&inger Now"
+msgstr "F&inger nu"
+
+#: kfinger.C:31
+msgid "&Talk..."
+msgstr "&Snak..."
+
+#: kfinger.C:35
+msgid "Setup"
+msgstr "Opsætning"
+
+#: kfinger.C:36
+msgid "&Save Options"
+msgstr "&Gem indstillinger"
+
+#: kfinger.C:38
+msgid ""
+"kfinger 0.8.0\n"
+"\n"
+"(c) Andrea Rizzi (rizzi@kde.org)"
+msgstr ""
+"kfinger 0.8.0\n"
+"\n"
+"(c) Andrea Rizzi (rizzi@kde.org)"
+
+#: kfinger.C:47
+msgid "KDE finger utility"
+msgstr "KDE finger værktøj"
+
+#: kfinger.C:50
+msgid "Finger"
+msgstr "Finger"
+
+#: kfinger.C:51
+msgid "Stop current finger"
+msgstr "Stands nuværende finger"
+
+#: kfinger.C:53
+msgid "Talk..."
+msgstr "Snak..."
+
+#: kfinger.C:54
+msgid "AutoFinger On/Off"
+msgstr "Autofinger til/fra"
+
+#: kfinger.C:66
+msgid "Welcome to KDE Finger\n"
+msgstr "Velkommen til KDE-Finger\n"
+
+#: kfinger.C:67
+msgid "Finger result"
+msgstr "Finger resultat"
+
+#: kfinger.C:269
+#, c-format
+msgid "Error on server : %s"
+msgstr "Fejl på serveren : %s"
+
+#: kfinger.C:288
+#, c-format
+msgid "Finger  %s@%s   --   %s"
+msgstr "Finger  %s@%s    --   %s"
+
+#: kfinger.C:305
+msgid ""
+"Kfinger 0.8.0\n"
+"(c) by Andrea Rizzi\n"
+"rizzi@kde.org"
+msgstr ""
+"Kfinger 0.8.0\n"
+"(c) by Andrea Rizzi\n"
+"rizzi@kde.org"
+
+#: kfinger.C:351
+msgid "Kfinger Setup"
+msgstr "Kfinger opsætning"
+
+#: kfinger.C:379 kfinger.C:419
+msgid "&Add"
+msgstr "&Tilføj"
+
+#: kfinger.C:389
+msgid "Server Name"
+msgstr "Servernavn"
+
+#: kfinger.C:393 kfinger.C:396
+msgid "Server list"
+msgstr "Serverliste"
+
+#: kfinger.C:429
+msgid "User Name"
+msgstr "Brugernavn"
+
+#: kfinger.C:433 kfinger.C:436
+msgid "Users list"
+msgstr "Brugerliste"
+
+#: kfinger.C:450
+msgid "Timed finger"
+msgstr "Finger på tid"
+
+#: kfinger.C:465 kfinger.C:652
+#, c-format
+msgid "Finger wait: %d\""
+msgstr "Finger vent: %d"
+
+#: kfinger.C:470
+msgid "Talk Command "
+msgstr "Snakkekommandoen"
+
+#: kfinger.C:480
+msgid "Misc"
+msgstr "Forskelligt"
+
+#: kfinger.C:485 kfinger.C:497
+msgid "Finger Output"
+msgstr "Finger resultat"
+
+#: kfinger.C:489
+msgid "Finger server"
+msgstr "Finger server"
+
+#: kfinger.C:493 kfinger.C:505
+msgid "Fixed"
+msgstr "Fast"
+
+#: kfinger.C:501
+msgid "Finger User"
+msgstr "Finger bruger"
+
+#: kfinger.C:521
+msgid "Lines to skip :"
+msgstr "Linier at hoppe over"
+
+#: kfinger.C:529 kfinger.C:534
+msgid "Format..."
+msgstr "Formater..."
+
+#: kfinger.C:541
+msgid "User"
+msgstr "Bruger"
+
+#: kfinger.C:552
+msgid "Server"
+msgstr "Server"
+
+#: kfinger.C:564
+msgid "Talk"
+msgstr "Snak"
+
+#: kfinger.C:699
+msgid "Talk with..."
+msgstr "Snak med..."
+
+#: kfinger.C:766
+msgid "Format string for var1(string)"
+msgstr "Formater streng for var1(streng)"
+
+#: kfinger.C:772
+msgid "Fromat string for var2(int)"
+msgstr "Formater streng for var2(int)"
+
+#: kfinger.C:792 kfinger.C:798
+msgid "Offset"
+msgstr "Offset"
+
+#: kfinger.C:811
+msgid "Only var1"
+msgstr "Kun var1"
+
+#: kfinger.C:817
+msgid "Only var2"
+msgstr "Kun var2"
+
+#: kfinger.C:823
+msgid "var1, var2"
+msgstr "var1, var2"
+
+#: kfinger.C:829
+msgid "var2, var1"
+msgstr "var2, var1"
+
+#: kfinger.C:842
+msgid "Output format string"
+msgstr "Output formateringsstreng"
+
+#: kfinger.C:849
+msgid "Save & Quit"
+msgstr "Gem & Afbryd"
+
+#: kfinger.C:859
+msgid "Output parameters "
+msgstr "Output parametre"
