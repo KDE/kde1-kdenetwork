@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kdenetwork\n"
-"POT-Creation-Date: 1998-12-17 01:54+0100\n"
+"POT-Creation-Date: 1998-12-19 02:18+0100\n"
 "PO-Revision-Date: 1998-03-15 20:00-0500\n"
 "Last-Translator: Vladimir Vuksan <vuksan@veus.hr> \n"
 "Language-Team: Croatian\n"
@@ -13,204 +13,204 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: main.cpp:227 main.cpp:240 main.cpp:254 main.cpp:272 main.cpp:287
+#: main.cpp:219 main.cpp:232 main.cpp:246 main.cpp:264 main.cpp:279
 msgid "KRN-Missing Configuration info"
 msgstr "KRN-Nedostaje info o postavi"
 
-#: main.cpp:228
+#: main.cpp:220
 msgid "Please enter your email adress"
 msgstr "Molim unesite va¹u adresu elektronske po¹te"
 
-#: main.cpp:241
+#: main.cpp:233
 msgid "Please enter your real name"
 msgstr "Molim unesite va¹e stvarno ime"
 
-#: main.cpp:255
+#: main.cpp:247
 msgid "Please enter your organization's name"
 msgstr "Molim unesite ime va¹e organizacije"
 
-#: main.cpp:273
+#: main.cpp:265
 msgid "Please enter your NNTP server name"
 msgstr "Molim unesite ime va¹eg NNTP poslu¾itelja"
 
-#: main.cpp:288
+#: main.cpp:280
 msgid "Please enter your SMTP server name"
 msgstr "Molim unesite ime va¹eg SMTP poslu¾itelja"
 
-#: NNTP.cpp:119
+#: NNTP.cpp:120
 #, c-format
 msgid "Received %.2f Kb"
 msgstr "Primljeno %.2f Kb"
 
-#: NNTP.cpp:584
+#: NNTP.cpp:607
 msgid "Getting Article"
 msgstr "Skidam èlanak"
 
-#: NNTP.cpp:726
+#: NNTP.cpp:749
 msgid "Article Received"
 msgstr "Èlanak Primljen"
 
-#: groupdlg.cpp:128
+#: groupdlg.cpp:130
 msgid "Connect to Server"
 msgstr "Spoji se na poslu¾itelj"
 
-#: groupdlg.cpp:129
+#: groupdlg.cpp:131
 msgid "Disconnect From Server"
 msgstr "Odspoji se od poslu¾itelja"
 
-#: groupdlg.cpp:130
+#: groupdlg.cpp:132
 msgid "Get Active File"
 msgstr "Dohvati aktivnu datoteku"
 
-#: groupdlg.cpp:132
+#: groupdlg.cpp:134
 msgid "Post Queued Messages"
 msgstr "Oglasi poruke iz reda"
 
-#: groupdlg.cpp:134
+#: groupdlg.cpp:136
 msgid "Exit"
 msgstr "Izlaz"
 
-#: groupdlg.cpp:137
+#: groupdlg.cpp:139
 msgid "KRN - Group List"
 msgstr "KRN - lista grupa"
 
-#: groupdlg.cpp:140 groupdlg.cpp:146
+#: groupdlg.cpp:142 groupdlg.cpp:148
 msgid "Get Subjects"
 msgstr "Dohvati subjekte"
 
-#: groupdlg.cpp:141 groupdlg.cpp:147
+#: groupdlg.cpp:143 groupdlg.cpp:149
 msgid "Get Articles"
 msgstr "Dohvati èlanke"
 
-#: groupdlg.cpp:142 groupdlg.cpp:150 groupdlg.cpp:158
+#: groupdlg.cpp:144 groupdlg.cpp:152 groupdlg.cpp:160
 msgid "Catchup"
 msgstr "Izjednaèi"
 
-#: groupdlg.cpp:148 groupdlg.cpp:156
+#: groupdlg.cpp:150 groupdlg.cpp:158
 msgid "(un)Subscribe"
 msgstr "(od)Pretplati"
 
-#: artdlg.cpp:150 groupdlg.cpp:149
+#: artdlg.cpp:158 groupdlg.cpp:151
 msgid "Untag"
 msgstr "Odznaèi"
 
-#: artdlg.cpp:159 findArtDlg.cpp:65 groupdlg.cpp:155
+#: artdlg.cpp:167 findArtDlg.cpp:65 groupdlg.cpp:157
 msgid "Find"
 msgstr "Pronaði"
 
-#: artdlg.cpp:170 groupdlg.cpp:157
+#: artdlg.cpp:178 groupdlg.cpp:159
 msgid "(Un)Tag"
 msgstr "O(d)znaèi"
 
-#: artdlg.cpp:163 artdlg.cpp:220 groupdlg.cpp:160 groupdlg.cpp:212
+#: artdlg.cpp:171 artdlg.cpp:228 groupdlg.cpp:162 groupdlg.cpp:214
 msgid "Post New Article"
 msgstr "Oglasi novi èlanak"
 
-#: groupdlg.cpp:161
+#: groupdlg.cpp:163
 msgid "Post All Queued Articles"
 msgstr "Oglasi sve èlanke iz reda"
 
-#: groupdlg.cpp:163
+#: groupdlg.cpp:165
 msgid "&Subscribed"
 msgstr "&Pretplaæen"
 
-#: artdlg.cpp:204 groupdlg.cpp:164
+#: artdlg.cpp:212 groupdlg.cpp:166
 msgid "&Tagged"
 msgstr "&Oznaèen"
 
-#: groupdlg.cpp:169
+#: groupdlg.cpp:171
 msgid "Identity..."
 msgstr "Identitet..."
 
-#: groupdlg.cpp:170
+#: groupdlg.cpp:172
 msgid "NNTP Options..."
 msgstr "NNTP odrednice..."
 
-#: groupdlg.cpp:171
+#: groupdlg.cpp:173
 msgid "Expire Options..."
 msgstr "Odrednice o zastari"
 
-#: groupdlg.cpp:172
+#: groupdlg.cpp:174
 msgid "Printing Options..."
 msgstr "Odrednice ispisa..."
 
-#: groupdlg.cpp:179
+#: groupdlg.cpp:181
 msgid "About Krn..."
 msgstr "O Krn..."
 
-#: groupdlg.cpp:191
+#: groupdlg.cpp:193
 msgid "&Newsgroup"
 msgstr "&Novinska grupa"
 
-#: groupdlg.cpp:198
+#: groupdlg.cpp:200
 msgid "Connect to server"
 msgstr "Spoji s poslu¾iteljem"
 
-#: groupdlg.cpp:200
+#: groupdlg.cpp:202
 msgid "Disconnect from server"
 msgstr "Odspoji od poslu¾itelja"
 
-#: groupdlg.cpp:203
+#: groupdlg.cpp:205
 msgid "Get list of active groups"
 msgstr "Dohvati popis aktivnih grupa"
 
-#: groupdlg.cpp:204
+#: groupdlg.cpp:206
 msgid "Find group"
 msgstr "Pronaði grupu"
 
-#: groupdlg.cpp:207
+#: groupdlg.cpp:209
 msgid "(Un)Subscribe"
 msgstr "(od)Pretplati"
 
-#: groupdlg.cpp:210
+#: groupdlg.cpp:212
 msgid "Check for Unread Articles"
 msgstr "Potra¾i neproèitane èlanke "
 
-#: groupdlg.cpp:363 groupdlg.cpp:585 groupdlg.cpp:926
+#: groupdlg.cpp:365 groupdlg.cpp:587 groupdlg.cpp:929
 msgid "All Newsgroups."
 msgstr "Sve novinske grupe"
 
-#: groupdlg.cpp:473 groupdlg.cpp:567
+#: groupdlg.cpp:475 groupdlg.cpp:569
 msgid "Subscribed Newsgroups."
 msgstr "Pretplaæene novinske grupe"
 
-#: groupdlg.cpp:522
+#: groupdlg.cpp:524
 msgid "Disconnected"
 msgstr "Odspojen"
 
-#: groupdlg.cpp:529
+#: groupdlg.cpp:531
 msgid "Connecting to server"
 msgstr "Spajanje s poslu¾iteljem"
 
-#: groupdlg.cpp:534
+#: groupdlg.cpp:536
 msgid "Connected to server - Posting not allowed"
 msgstr "Spojen s poslu¾iteljem - ogla¹avanje nije dozvoljeno"
 
-#: groupdlg.cpp:536
+#: groupdlg.cpp:538
 msgid "Connected to server - Posting allowed"
 msgstr "Spojen s poslu¾iteljem - ogla¹avanje dozvoljeno"
 
-#: groupdlg.cpp:542
+#: groupdlg.cpp:544
 msgid "Can't connect to server"
 msgstr "Ne mogu spojiti se s poslu¾iteljem"
 
-#: groupdlg.cpp:544
+#: groupdlg.cpp:546
 msgid "Connection to server failed"
 msgstr "Spajanje s poslu¾iteljem nije uspjelo"
 
-#: groupdlg.cpp:553
+#: groupdlg.cpp:555
 msgid "Authentication Failed"
 msgstr "Provjera neuspje¹na"
 
-#: groupdlg.cpp:556
+#: groupdlg.cpp:558
 msgid "Connection to server failed: Authentication problem"
 msgstr "Spajanje s poslu¾iteljem neuspje¹no: problem s provjerom"
 
-#: groupdlg.cpp:605
+#: groupdlg.cpp:607
 msgid "Krn-Question"
 msgstr "Krn-pitanje"
 
-#: groupdlg.cpp:606
+#: groupdlg.cpp:608
 msgid ""
 "The operation you requested needs a connection to the News server\n"
 "Should I attempt one?"
@@ -218,7 +218,7 @@ msgstr ""
 "Zatra¾ena operacija zahtijeva vezu sa novinskim poslu¾iteljem\n"
 "Da ju poku¹am ostvariti?"
 
-#: groupdlg.cpp:869
+#: groupdlg.cpp:872
 msgid ""
 "You don't have an active groups list.\n"
 " get it from server?"
@@ -226,227 +226,227 @@ msgstr ""
 "Nemate aktivnih grupa u popisu.\n"
 " dohvatiti ih s poslu¾itelja?"
 
-#: groupdlg.cpp:885
+#: groupdlg.cpp:888
 msgid "Listing active newsgroups"
 msgstr "Ispisujem aktivne novinske grupe"
 
-#: groupdlg.cpp:900
+#: groupdlg.cpp:903
 msgid "KRN - Find a Newsgroup"
 msgstr "KRN - Pronaði novinsku grupu"
 
-#: groupdlg.cpp:901
+#: groupdlg.cpp:904
 msgid "Enter the name of the Newsgroup"
 msgstr "Unesi ime novinske grupe"
 
-#: groupdlg.cpp:985
+#: groupdlg.cpp:988
 msgid "Krn - Message"
 msgstr "Krn - poruka"
 
-#: groupdlg.cpp:986
+#: groupdlg.cpp:989
 msgid "I can't find the group you want!"
 msgstr "Ne mogu pronaæi grupu koju ¾elite!"
 
-#: groupdlg.cpp:1079
+#: groupdlg.cpp:1082
 msgid "Getting messages in "
 msgstr "Dohvaæam poruke u "
 
-#: groupdlg.cpp:1092
+#: groupdlg.cpp:1095
 msgid "Getting list of messages in "
 msgstr "Dohvaæam popis poruka u "
 
-#: artdlg.cpp:143 artdlg.cpp:158
+#: artdlg.cpp:151 artdlg.cpp:166
 msgid "Download"
 msgstr "Preuzimanje datoteka"
 
-#: artdlg.cpp:145 artdlg.cpp:267
+#: artdlg.cpp:153 artdlg.cpp:275
 msgid "Mark Read"
 msgstr "Oznaèi proèitanim"
 
-#: artdlg.cpp:146
+#: artdlg.cpp:154
 msgid "Mark Unread"
 msgstr "Oznaèi neproèitanim"
 
-#: artdlg.cpp:149 artdlg.cpp:169
+#: artdlg.cpp:157 artdlg.cpp:177
 msgid "Decode"
 msgstr "Dekodiraj"
 
-#: artdlg.cpp:151 artdlg.cpp:171
+#: artdlg.cpp:159 artdlg.cpp:179
 msgid "Don't expire"
 msgstr "Ne istièe"
 
-#: artdlg.cpp:160
+#: artdlg.cpp:168
 msgid "Lookup in Altavista"
 msgstr "Tra¾ite na Altavisti"
 
-#: artdlg.cpp:164 artdlg.cpp:251
+#: artdlg.cpp:172 artdlg.cpp:259
 msgid "Reply by Mail"
 msgstr "Odgovori po¹tom"
 
-#: artdlg.cpp:165
+#: artdlg.cpp:173
 msgid "Post Followup"
 msgstr "Oglasi nastavak"
 
-#: artdlg.cpp:166
+#: artdlg.cpp:174
 msgid "Post & Reply"
 msgstr "Oglasi i Odgovori"
 
-#: artdlg.cpp:167 artdlg.cpp:257
+#: artdlg.cpp:175 artdlg.cpp:265
 msgid "Forward"
 msgstr ""
 
-#: artdlg.cpp:173 artdlg.cpp:241
+#: artdlg.cpp:181 artdlg.cpp:249
 msgid "Tagged"
 msgstr "Oznaèen"
 
-#: artdlg.cpp:184
+#: artdlg.cpp:192
 msgid "Show Only Unread Messages"
 msgstr "Prika¾i samo neproèitane poruke"
 
-#: artdlg.cpp:186
+#: artdlg.cpp:194
 msgid "Show Only Cached Messages"
 msgstr "Prika¾i samo poruke pri ruci"
 
-#: artdlg.cpp:188
+#: artdlg.cpp:196
 msgid "Show Locked Messages"
 msgstr "Prika¾i zakljuèane poruke"
 
-#: artdlg.cpp:190
+#: artdlg.cpp:198
 msgid "Expunge"
 msgstr "Obri¹i"
 
-#: artdlg.cpp:191
+#: artdlg.cpp:199
 msgid "Appearance..."
 msgstr "Pojava..."
 
-#: artdlg.cpp:192
+#: artdlg.cpp:200
 msgid "Sorting..."
 msgstr "Sortiram..."
 
-#: artdlg.cpp:196
+#: artdlg.cpp:204
 msgid "Edit Rules"
 msgstr "Uredi Pravila"
 
-#: artdlg.cpp:197
+#: artdlg.cpp:205
 msgid "Update"
 msgstr "Osvje¾i"
 
-#: artdlg.cpp:206
+#: artdlg.cpp:214
 msgid "&Scoring"
 msgstr "&Bodovanje"
 
-#: artdlg.cpp:213
+#: artdlg.cpp:221
 msgid "Previous Message"
 msgstr "Prethodna poruka"
 
-#: artdlg.cpp:215
+#: artdlg.cpp:223
 msgid "Next Message"
 msgstr "Slijedeæa poruka"
 
-#: artdlg.cpp:217
+#: artdlg.cpp:225
 msgid "Find Article"
 msgstr "Pronaði èlanak"
 
-#: artdlg.cpp:222
+#: artdlg.cpp:230
 msgid "Get Article List"
 msgstr "Dohvati popis èlanaka"
 
-#: artdlg.cpp:224
+#: artdlg.cpp:232
 msgid "Refresh Display"
 msgstr "Osvje¾i Prikaz"
 
-#: artdlg.cpp:240
+#: artdlg.cpp:248
 msgid "Current"
 msgstr "Tekuæi"
 
-#: artdlg.cpp:242 fontsDlg.cpp:52
+#: artdlg.cpp:250 fontsDlg.cpp:52
 msgid "All"
 msgstr "Cijelo"
 
-#: artdlg.cpp:243
+#: artdlg.cpp:251
 msgid "Read"
 msgstr "Proèitane"
 
-#: artdlg.cpp:244
+#: artdlg.cpp:252
 msgid "UnRead"
 msgstr "Neproèitane"
 
-#: artdlg.cpp:247
+#: artdlg.cpp:255
 msgid "Save Article"
 msgstr "Spremi èlanak"
 
-#: artdlg.cpp:249
+#: artdlg.cpp:257
 msgid "Print Article"
 msgstr "Ispi¹i èlanak"
 
-#: artdlg.cpp:253
+#: artdlg.cpp:261
 msgid "Post a Followup"
 msgstr "Oglasi nastavak"
 
-#: artdlg.cpp:255
+#: artdlg.cpp:263
 msgid "Post & Mail"
 msgstr "Oglasi i po¹alji po¹tom"
 
-#: artdlg.cpp:261
+#: artdlg.cpp:269
 msgid "Tag Article"
 msgstr "Oznaèi èlanak"
 
-#: artdlg.cpp:263
+#: artdlg.cpp:271
 msgid "Lock (keep in cache)"
 msgstr "Zakljuèaj (dr¾i pri ruci)"
 
-#: artdlg.cpp:265
+#: artdlg.cpp:273
 msgid "Decode Article"
 msgstr "Dekodiraj èlanak"
 
-#: artdlg.cpp:269
+#: artdlg.cpp:277
 msgid "Mark UnRead"
 msgstr "Oznaèi neproèitanim"
 
-#: artdlg.cpp:291 sortDlg.cpp:34
+#: artdlg.cpp:299 sortDlg.cpp:34
 msgid "Sender"
 msgstr "Po¹iljatelj"
 
-#: artdlg.cpp:292 sortDlg.cpp:35
+#: artdlg.cpp:300 sortDlg.cpp:35
 msgid "Date"
 msgstr ""
 
-#: artdlg.cpp:293 sortDlg.cpp:36
+#: artdlg.cpp:301 sortDlg.cpp:36
 msgid "Lines"
 msgstr "Linija"
 
-#: artdlg.cpp:294 sortDlg.cpp:33
+#: artdlg.cpp:302 sortDlg.cpp:33
 msgid "Score"
 msgstr "Rezultat"
 
-#: artdlg.cpp:295 sortDlg.cpp:32
+#: artdlg.cpp:303 sortDlg.cpp:32
 msgid "Subject"
 msgstr "Tema"
 
-#: artdlg.cpp:461
+#: artdlg.cpp:469
 msgid "Threading..."
 msgstr "Stavljanje u nit..."
 
-#: artdlg.cpp:470
+#: artdlg.cpp:478
 msgid "Showing Article List"
 msgstr "Prikazivanje popisa èlanaka"
 
-#: artdlg.cpp:1315
+#: artdlg.cpp:1323
 msgid "KRN - Existing File"
 msgstr "KRN - Postojeæa datoteka"
 
-#: artdlg.cpp:1316
+#: artdlg.cpp:1324
 msgid "The File you selected already exists"
 msgstr "Datoteka koju ste odabrali veæ postoji"
 
-#: artdlg.cpp:1322
+#: artdlg.cpp:1330
 msgid "OverWrite"
 msgstr "Zapi¹i preko"
 
-#: artdlg.cpp:1324
+#: artdlg.cpp:1332
 msgid "Append"
 msgstr "Dodaj na kraj"
 
-#: artdlg.cpp:1359 artdlg.cpp:1424
+#: artdlg.cpp:1367 artdlg.cpp:1432
 msgid ""
 "From: Krn\n"
 "To: You\n"
@@ -460,7 +460,7 @@ msgstr ""
 "Gre¹ka kod dohvaæanja èlanka.\n"
 "Poslu¾itelj je rekao:\n"
 
-#: artdlg.cpp:1526
+#: artdlg.cpp:1541
 msgid "Getting Article List"
 msgstr "Dohvaæanje popisa èlanaka"
 
@@ -488,41 +488,50 @@ msgstr "E-mail adresa"
 msgid "Organization"
 msgstr "Organizacija"
 
-#: NNTPConfigDlg.cpp:29
+#: NNTPConfigDlg.cpp:30
 msgid "KRN-NNTP configuration"
 msgstr "KRN-NNTP postava"
 
-#: NNTPConfigDlg.cpp:34
+#: NNTPConfigDlg.cpp:35
 msgid "Servers"
 msgstr "Poslu¾itelji"
 
-#: NNTPConfigDlg.cpp:36
+#: NNTPConfigDlg.cpp:37
 msgid "SMTP server"
 msgstr "SMTP poslu¾itelj"
 
-#: NNTPConfigDlg.cpp:41
+#: NNTPConfigDlg.cpp:42
 msgid "NNTP Server"
 msgstr "NNTP poslu¾itelj"
 
-#: NNTPConfigDlg.cpp:66
+#: NNTPConfigDlg.cpp:67
 msgid "Connect on Startup"
 msgstr "Spoji kod pokretanja"
 
-#: NNTPConfigDlg.cpp:70
+#: NNTPConfigDlg.cpp:71
 msgid "Connect without asking"
 msgstr "Spoji se bez pitanja"
 
-#: NNTPConfigDlg.cpp:74
+#: NNTPConfigDlg.cpp:75
 msgid "Authenticate"
 msgstr "Provjeri"
 
-#: NNTPConfigDlg.cpp:79
+#: NNTPConfigDlg.cpp:80
 msgid "User Name"
 msgstr "Korisnièko ime"
 
-#: NNTPConfigDlg.cpp:83
+#: NNTPConfigDlg.cpp:84
 msgid "Password"
 msgstr "Lozinka"
+
+#: NNTPConfigDlg.cpp:91
+msgid "Ask before downloading more than"
+msgstr ""
+
+#: NNTPConfigDlg.cpp:94
+#, fuzzy
+msgid "articles"
+msgstr "Oznaèi èlanak"
 
 #: aboutDlg.cpp:28
 msgid "About KRN"
@@ -1602,6 +1611,33 @@ msgid ""
 "The following key(s) are not trusted:\n"
 "%s\n"
 "They will not be able to decrypt the message"
+msgstr ""
+
+#: TooManydlg.cpp:25
+#, fuzzy
+msgid "KRN-Confirmation"
+msgstr "KRN-NNTP postava"
+
+#: TooManydlg.cpp:30
+msgid "Read how many articles?"
+msgstr ""
+
+#: TooManydlg.cpp:36
+msgid "Get them from"
+msgstr ""
+
+#: TooManydlg.cpp:37
+#, fuzzy
+msgid "Oldest articles"
+msgstr "Dohvati èlanke"
+
+#: TooManydlg.cpp:39
+#, fuzzy
+msgid "Newest articles"
+msgstr "Dohvati èlanke"
+
+#: TooManydlg.cpp:43
+msgid "Make this the new threshold"
 msgstr ""
 
 #~ msgid "Error during PGP:"

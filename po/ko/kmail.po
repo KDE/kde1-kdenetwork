@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-12-18 02:17+0100\n"
+"POT-Creation-Date: 1998-12-19 02:18+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: LinuxKorea Co. <kde@linuxkorea.co.kr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8BIT\n"
 
-#: kmcomposewin.cpp:1483 kmmainwin.cpp:263 kpgp.cpp:546
+#: kmcomposewin.cpp:1513 kmmainwin.cpp:263 kpgp.cpp:546
 msgid ""
 "Sorry, but this feature\n"
 "is still missing"
@@ -336,15 +336,15 @@ msgstr "폴더(&o)"
 msgid "&Message"
 msgstr "메시지(&M)"
 
-#: kmcomposewin.cpp:571 kmmainwin.cpp:1013
+#: kmcomposewin.cpp:572 kmmainwin.cpp:1013
 msgid "Compose new message"
 msgstr "새 메시지"
 
-#: kmcomposewin.cpp:576 kmmainwin.cpp:1018
+#: kmcomposewin.cpp:577 kmmainwin.cpp:1018
 msgid "Save message to file"
 msgstr "파일로 저장"
 
-#: kmcomposewin.cpp:581 kmmainwin.cpp:1023
+#: kmcomposewin.cpp:582 kmmainwin.cpp:1023
 msgid "Print message"
 msgstr "인쇄"
 
@@ -368,7 +368,7 @@ msgstr "전달"
 msgid "Delete message"
 msgstr "삭제"
 
-#: kmcomposewin.cpp:605 kmmainwin.cpp:1057
+#: kmcomposewin.cpp:606 kmmainwin.cpp:1057
 msgid "Open addressbook..."
 msgstr "주소록 열기..."
 
@@ -382,7 +382,7 @@ msgstr "초기화중..."
 msgid "Name:"
 msgstr "로그인 이름:"
 
-#: kmcomposewin.cpp:1491 kmfolderdia.cpp:44 kmfolderdia.cpp:120
+#: kmcomposewin.cpp:1521 kmfolderdia.cpp:44 kmfolderdia.cpp:120
 msgid "unnamed"
 msgstr "이름없음"
 
@@ -618,7 +618,7 @@ msgstr "이름없음"
 msgid "Choose Sendmail Location"
 msgstr "Sendmail 위치 선택"
 
-#: kmcomposewin.cpp:1590 kmsettings.cpp:695
+#: kmcomposewin.cpp:1620 kmsettings.cpp:695
 msgid "Choose Signature File"
 msgstr "서명 파일 선택"
 
@@ -816,15 +816,15 @@ msgstr "파일 삽입(&I)..."
 msgid "&New Composer..."
 msgstr "새 작성기(&N)..."
 
-#: kmcomposewin.cpp:470 kmcomposewin.cpp:701 kmcomposewin.cpp:1861
+#: kmcomposewin.cpp:470 kmcomposewin.cpp:702 kmcomposewin.cpp:1891
 msgid "Mark all"
 msgstr "모두 표시"
 
-#: kmcomposewin.cpp:473 kmcomposewin.cpp:703
+#: kmcomposewin.cpp:473 kmcomposewin.cpp:704
 msgid "Find..."
 msgstr "찾기..."
 
-#: kmcomposewin.cpp:475 kmcomposewin.cpp:704
+#: kmcomposewin.cpp:475 kmcomposewin.cpp:705
 msgid "Replace..."
 msgstr "바꾸기..."
 
@@ -898,72 +898,73 @@ msgstr "서명 추가(&i)"
 msgid "&Insert File"
 msgstr "파일 삽입(&I)"
 
-#: kmcomposewin.cpp:528
+#: kmcomposewin.cpp:529
 msgid "&Attach..."
 msgstr "첨부(&A)"
 
-#: kmcomposewin.cpp:530
-msgid "Insert &Public Key"
+#: kmcomposewin.cpp:531
+#, fuzzy
+msgid "Attach &Public Key"
+msgstr "파일 첨부"
+
+#: kmcomposewin.cpp:533
+msgid "Attach My &Public Key"
 msgstr ""
 
-#: kmcomposewin.cpp:532
-msgid "Insert My &Public Key"
-msgstr ""
-
-#: kmcomposewin.cpp:543
+#: kmcomposewin.cpp:544
 msgid "&Save..."
 msgstr "저장(&S)..."
 
-#: kmcomposewin.cpp:544
+#: kmcomposewin.cpp:545
 msgid "Pr&operties..."
 msgstr "등록정보(&o)"
 
-#: kmcomposewin.cpp:546
+#: kmcomposewin.cpp:547
 msgid "&Attach"
 msgstr "첨부(&A)"
 
-#: kmcomposewin.cpp:566
+#: kmcomposewin.cpp:567
 #, fuzzy
 msgid "Send message"
 msgstr "메시지 보내기:"
 
-#: kmcomposewin.cpp:590
+#: kmcomposewin.cpp:591
 msgid "Cut selection"
 msgstr "잘라내기"
 
-#: kmcomposewin.cpp:593
+#: kmcomposewin.cpp:594
 msgid "Copy selection"
 msgstr "복사하기"
 
-#: kmcomposewin.cpp:596
+#: kmcomposewin.cpp:597
 msgid "Paste clipboard contents"
 msgstr "붙이기"
 
-#: kmcomposewin.cpp:601
+#: kmcomposewin.cpp:602
 msgid "Attach file"
 msgstr "파일 첨부"
 
-#: kmcomposewin.cpp:612
+#: kmcomposewin.cpp:613
 msgid "sign message"
 msgstr "사인 메시지"
 
-#: kmcomposewin.cpp:617
+#: kmcomposewin.cpp:618
 msgid "encrypt message"
 msgstr "메시지 암호화"
 
-#: kmcomposewin.cpp:634 kmcomposewin.cpp:650
+#: kmcomposewin.cpp:635 kmcomposewin.cpp:651
 msgid "Column"
 msgstr "열"
 
-#: kmcomposewin.cpp:635 kmcomposewin.cpp:648
+#: kmcomposewin.cpp:636 kmcomposewin.cpp:649
 msgid "Line"
 msgstr "행"
 
-#: kmcomposewin.cpp:916
+#: kmcomposewin.cpp:917
 msgid "KMail Confirm"
 msgstr "KMail 확인"
 
-#: kmcomposewin.cpp:917
+#: kmcomposewin.cpp:918
 msgid ""
 "Close and discard\n"
 "edited message?"
@@ -971,52 +972,60 @@ msgstr ""
 "편집한 내용을 버리고\n"
 "닫으시겠습니까?"
 
-#: kmcomposewin.cpp:1190
+#: kmcomposewin.cpp:1191
 msgid "Attach File"
 msgstr "파일 첨부"
 
-#: kmcomposewin.cpp:1212
+#: kmcomposewin.cpp:1213
 msgid "Include File"
 msgstr "파일 포함"
 
-#: kmcomposewin.cpp:1264 kmreaderwin.cpp:721
+#: kmcomposewin.cpp:1245
+msgid "my pgp key"
+msgstr ""
+
+#: kmcomposewin.cpp:1273
+msgid "pgp key"
+msgstr ""
+
+#: kmcomposewin.cpp:1294 kmreaderwin.cpp:721
 msgid "View..."
 msgstr "보기..."
 
-#: kmcomposewin.cpp:1265
+#: kmcomposewin.cpp:1295
 msgid "Save..."
 msgstr "저장..."
 
-#: kmcomposewin.cpp:1266 kmreaderwin.cpp:724
+#: kmcomposewin.cpp:1296 kmreaderwin.cpp:724
 msgid "Properties..."
 msgstr "등록정보..."
 
-#: kmcomposewin.cpp:1270
+#: kmcomposewin.cpp:1300
 msgid "Attach..."
 msgstr "첨부..."
 
-#: kmcomposewin.cpp:1312 kmreaderwin.cpp:766
+#: kmcomposewin.cpp:1342 kmreaderwin.cpp:766
 msgid "View Attachment: "
 msgstr "첨부파일 보기:"
 
-#: kmcomposewin.cpp:1506
+#: kmcomposewin.cpp:1536
 msgid "To:"
 msgstr "수신:"
 
-#: kmcomposewin.cpp:1510
+#: kmcomposewin.cpp:1540
 msgid "Subject:"
 msgstr "제목:"
 
-#: kmcomposewin.cpp:1513
+#: kmcomposewin.cpp:1543
 #, fuzzy
 msgid "Date:"
 msgstr "날   짜: "
 
-#: kmcomposewin.cpp:2043
+#: kmcomposewin.cpp:2073
 msgid "Spellcheck - KMail"
 msgstr ""
 
-#: kmcomposewin.cpp:2069
+#: kmcomposewin.cpp:2099
 msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
 msgstr ""

@@ -1,32 +1,32 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 1998-12-08 02:14+0100\n"
+"POT-Creation-Date: 1998-12-19 02:18+0100\n"
 "Content-Type: text/plain; charset=\n"
 "Date: 1998-02-10 15:59:39+0100\n"
 "From: root (A. Rizzi),,, <root@BiliOne>\n"
 "Xgettext-Options: -ktranslate\n"
 "Files: finger.cpp kfinger.cpp\n"
 
-#: kfinger.C:29
+#: kfinger.C:30
 #, fuzzy
 msgid "F&inger Now"
 msgstr "Käynistä Finger"
 
-#: kfinger.C:30
+#: kfinger.C:31
 #, fuzzy
 msgid "&Talk..."
 msgstr "Juttele..."
 
-#: kfinger.C:34
+#: kfinger.C:35
 msgid "Setup"
 msgstr "Asetukset"
 
-#: kfinger.C:35
+#: kfinger.C:36
 #, fuzzy
 msgid "&Save Options"
 msgstr "Tallenna asetukset"
 
-#: kfinger.C:37
+#: kfinger.C:38
 #, fuzzy
 msgid ""
 "kfinger 0.8.0\n"
@@ -37,45 +37,45 @@ msgstr ""
 "(c) Andrea Rizzi\n"
 "rizzi@kde.org"
 
-#: kfinger.C:46
+#: kfinger.C:47
 msgid "KDE finger utility"
 msgstr "KDE finger työkalu"
 
-#: kfinger.C:49
+#: kfinger.C:50
 msgid "Finger"
 msgstr "Finger"
 
-#: kfinger.C:50
+#: kfinger.C:51
 msgid "Stop current finger"
 msgstr "Lopeta tämänhetkinen finger"
 
-#: kfinger.C:52
+#: kfinger.C:53
 msgid "Talk..."
 msgstr "Juttele..."
 
-#: kfinger.C:53
+#: kfinger.C:54
 msgid "AutoFinger On/Off"
 msgstr "Automaattinen On/Off"
 
-#: kfinger.C:65
+#: kfinger.C:66
 msgid "Welcome to KDE Finger\n"
 msgstr ""
 
-#: kfinger.C:66
+#: kfinger.C:67
 msgid "Finger result"
 msgstr "Finger tulos"
 
-#: kfinger.C:268
+#: kfinger.C:269
 #, c-format
 msgid "Error on server : %s"
 msgstr "Virhe palvelimella: %s"
 
-#: kfinger.C:287
+#: kfinger.C:288
 #, c-format
 msgid "Finger  %s@%s   --   %s"
 msgstr ""
 
-#: kfinger.C:304
+#: kfinger.C:305
 #, fuzzy
 msgid ""
 "Kfinger 0.8.0\n"
@@ -86,124 +86,124 @@ msgstr ""
 "(c) Andrea Rizzi\n"
 "rizzi@kde.org"
 
-#: kfinger.C:350
+#: kfinger.C:351
 msgid "Kfinger Setup"
 msgstr "KFinger asetukset"
 
-#: kfinger.C:378 kfinger.C:418
+#: kfinger.C:379 kfinger.C:419
 msgid "&Add"
 msgstr "&Lisää"
 
-#: kfinger.C:388
+#: kfinger.C:389
 msgid "Server Name"
 msgstr "Palvelimen nimi"
 
-#: kfinger.C:392 kfinger.C:395
+#: kfinger.C:393 kfinger.C:396
 msgid "Server list"
 msgstr "Palvleinlista"
 
-#: kfinger.C:428
+#: kfinger.C:429
 msgid "User Name"
 msgstr "Käyttäjänimi"
 
-#: kfinger.C:432 kfinger.C:435
+#: kfinger.C:433 kfinger.C:436
 msgid "Users list"
 msgstr "Käyttäjälista"
 
-#: kfinger.C:449
+#: kfinger.C:450
 msgid "Timed finger"
 msgstr "Ajastettu finger"
 
-#: kfinger.C:464 kfinger.C:651
+#: kfinger.C:465 kfinger.C:652
 #, c-format
 msgid "Finger wait: %d\""
 msgstr "Finger odota: %d\""
 
-#: kfinger.C:469
+#: kfinger.C:470
 msgid "Talk Command "
 msgstr "Talk komento "
 
-#: kfinger.C:479
+#: kfinger.C:480
 msgid "Misc"
 msgstr "Sekalaista"
 
-#: kfinger.C:484 kfinger.C:496
+#: kfinger.C:485 kfinger.C:497
 msgid "Finger Output"
 msgstr "Finger tulokset"
 
-#: kfinger.C:488
+#: kfinger.C:489
 msgid "Finger server"
 msgstr "Finger palvelin"
 
-#: kfinger.C:492 kfinger.C:504
+#: kfinger.C:493 kfinger.C:505
 msgid "Fixed"
 msgstr "Kiinteä"
 
-#: kfinger.C:500
+#: kfinger.C:501
 msgid "Finger User"
 msgstr "Fingeroi käyttäjää"
 
-#: kfinger.C:520
+#: kfinger.C:521
 msgid "Lines to skip :"
 msgstr "Ohitettavia rivejä :"
 
-#: kfinger.C:528 kfinger.C:533
+#: kfinger.C:529 kfinger.C:534
 msgid "Format..."
 msgstr "Ulkönäkö..."
 
-#: kfinger.C:540
+#: kfinger.C:541
 msgid "User"
 msgstr "Käyttäjä"
 
-#: kfinger.C:551
+#: kfinger.C:552
 msgid "Server"
 msgstr "Palvelin"
 
-#: kfinger.C:563
+#: kfinger.C:564
 msgid "Talk"
 msgstr "Juttelu"
 
-#: kfinger.C:698
+#: kfinger.C:699
 msgid "Talk with..."
 msgstr "Juttele ..."
 
-#: kfinger.C:765
+#: kfinger.C:766
 msgid "Format string for var1(string)"
 msgstr "Ulkonäköjono var1(string):lle"
 
-#: kfinger.C:771
+#: kfinger.C:772
 msgid "Fromat string for var2(int)"
 msgstr "Ulkonäköjono var2(int):lle"
 
-#: kfinger.C:791 kfinger.C:797
+#: kfinger.C:792 kfinger.C:798
 msgid "Offset"
 msgstr "Siirros"
 
-#: kfinger.C:810
+#: kfinger.C:811
 msgid "Only var1"
 msgstr "Vain var1"
 
-#: kfinger.C:816
+#: kfinger.C:817
 msgid "Only var2"
 msgstr "Vain var2"
 
-#: kfinger.C:822
+#: kfinger.C:823
 msgid "var1, var2"
 msgstr "var1, var2"
 
-#: kfinger.C:828
+#: kfinger.C:829
 msgid "var2, var1"
 msgstr "var2, var1"
 
-#: kfinger.C:841
+#: kfinger.C:842
 msgid "Output format string"
 msgstr "Tulosteen ulkonäköjono"
 
-#: kfinger.C:848
+#: kfinger.C:849
 msgid "Save & Quit"
 msgstr "Tallenna & Lopeta"
 
-#: kfinger.C:858
+#: kfinger.C:859
 msgid "Output parameters "
 msgstr "Tulosteen parametrit"
 

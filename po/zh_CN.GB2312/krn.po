@@ -5,210 +5,210 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: krn\n"
-"POT-Creation-Date: 1998-12-17 01:54+0100\n"
+"POT-Creation-Date: 1998-12-19 02:18+0100\n"
 "PO-Revision-Date: 1998-06-12 08:33 MET DST\n"
 "Last-Translator: Wang Jian <lark@linux.ustc.edu.cn>\n"
 "Language-Team: zh_CN ( gb2312)\n"
 
-#: main.cpp:227 main.cpp:240 main.cpp:254 main.cpp:272 main.cpp:287
+#: main.cpp:219 main.cpp:232 main.cpp:246 main.cpp:264 main.cpp:279
 msgid "KRN-Missing Configuration info"
 msgstr "KRN - 没有找到配置信息"
 
-#: main.cpp:228
+#: main.cpp:220
 msgid "Please enter your email adress"
 msgstr "请输入你的电子邮件地址"
 
-#: main.cpp:241
+#: main.cpp:233
 msgid "Please enter your real name"
 msgstr "请输入你的真实姓名"
 
-#: main.cpp:255
+#: main.cpp:247
 msgid "Please enter your organization's name"
 msgstr "请输入你所在的组织名称"
 
-#: main.cpp:273
+#: main.cpp:265
 msgid "Please enter your NNTP server name"
 msgstr "请输入你使用的 NNTP 服务器的名字"
 
-#: main.cpp:288
+#: main.cpp:280
 msgid "Please enter your SMTP server name"
 msgstr "请输入你使用的 SMTP 服务器的名字"
 
-#: NNTP.cpp:119
+#: NNTP.cpp:120
 #, c-format
 msgid "Received %.2f Kb"
 msgstr "接收到 %.2f Kb"
 
-#: NNTP.cpp:584
+#: NNTP.cpp:607
 msgid "Getting Article"
 msgstr "正在取文章"
 
-#: NNTP.cpp:726
+#: NNTP.cpp:749
 msgid "Article Received"
 msgstr "文章已取到"
 
-#: groupdlg.cpp:128
+#: groupdlg.cpp:130
 msgid "Connect to Server"
 msgstr "连接到服务器"
 
-#: groupdlg.cpp:129
+#: groupdlg.cpp:131
 msgid "Disconnect From Server"
 msgstr "从服务器断开"
 
-#: groupdlg.cpp:130
+#: groupdlg.cpp:132
 msgid "Get Active File"
 msgstr "取活动文件"
 
-#: groupdlg.cpp:132
+#: groupdlg.cpp:134
 msgid "Post Queued Messages"
 msgstr "发表排队的信件"
 
-#: groupdlg.cpp:134
+#: groupdlg.cpp:136
 msgid "Exit"
 msgstr "退出"
 
-#: groupdlg.cpp:137
+#: groupdlg.cpp:139
 msgid "KRN - Group List"
 msgstr "KRN - 讨论组列表"
 
-#: groupdlg.cpp:140 groupdlg.cpp:146
+#: groupdlg.cpp:142 groupdlg.cpp:148
 msgid "Get Subjects"
 msgstr "取标题"
 
-#: groupdlg.cpp:141 groupdlg.cpp:147
+#: groupdlg.cpp:143 groupdlg.cpp:149
 msgid "Get Articles"
 msgstr "取得文章"
 
-#: groupdlg.cpp:142 groupdlg.cpp:150 groupdlg.cpp:158
+#: groupdlg.cpp:144 groupdlg.cpp:152 groupdlg.cpp:160
 msgid "Catchup"
 msgstr "全部标为已读"
 
-#: groupdlg.cpp:148 groupdlg.cpp:156
+#: groupdlg.cpp:150 groupdlg.cpp:158
 msgid "(un)Subscribe"
 msgstr "(取消)订阅"
 
-#: artdlg.cpp:150 groupdlg.cpp:149
+#: artdlg.cpp:158 groupdlg.cpp:151
 msgid "Untag"
 msgstr "取消标记"
 
-#: artdlg.cpp:159 findArtDlg.cpp:65 groupdlg.cpp:155
+#: artdlg.cpp:167 findArtDlg.cpp:65 groupdlg.cpp:157
 msgid "Find"
 msgstr ""
 
-#: artdlg.cpp:170 groupdlg.cpp:157
+#: artdlg.cpp:178 groupdlg.cpp:159
 msgid "(Un)Tag"
 msgstr "(取消)标记"
 
-#: artdlg.cpp:163 artdlg.cpp:220 groupdlg.cpp:160 groupdlg.cpp:212
+#: artdlg.cpp:171 artdlg.cpp:228 groupdlg.cpp:162 groupdlg.cpp:214
 msgid "Post New Article"
 msgstr "发表新文章"
 
-#: groupdlg.cpp:161
+#: groupdlg.cpp:163
 msgid "Post All Queued Articles"
 msgstr "发表所有排队的文章"
 
-#: groupdlg.cpp:163
+#: groupdlg.cpp:165
 msgid "&Subscribed"
 msgstr "订阅[&S]"
 
-#: artdlg.cpp:204 groupdlg.cpp:164
+#: artdlg.cpp:212 groupdlg.cpp:166
 msgid "&Tagged"
 msgstr "标记的[&T]"
 
-#: groupdlg.cpp:169
+#: groupdlg.cpp:171
 msgid "Identity..."
 msgstr "身份..."
 
-#: groupdlg.cpp:170
+#: groupdlg.cpp:172
 msgid "NNTP Options..."
 msgstr "NNTP 选项..."
 
-#: groupdlg.cpp:171
+#: groupdlg.cpp:173
 msgid "Expire Options..."
 msgstr "过期选项..."
 
-#: groupdlg.cpp:172
+#: groupdlg.cpp:174
 msgid "Printing Options..."
 msgstr "打印选项..."
 
-#: groupdlg.cpp:179
+#: groupdlg.cpp:181
 msgid "About Krn..."
 msgstr "关于 Krn..."
 
-#: groupdlg.cpp:191
+#: groupdlg.cpp:193
 msgid "&Newsgroup"
 msgstr "新闻组[&N]"
 
-#: groupdlg.cpp:198
+#: groupdlg.cpp:200
 msgid "Connect to server"
 msgstr "连接到服务器"
 
-#: groupdlg.cpp:200
+#: groupdlg.cpp:202
 msgid "Disconnect from server"
 msgstr "从服务器断开"
 
-#: groupdlg.cpp:203
+#: groupdlg.cpp:205
 msgid "Get list of active groups"
 msgstr "取得活动讨论组列表"
 
-#: groupdlg.cpp:204
+#: groupdlg.cpp:206
 msgid "Find group"
 msgstr "查找讨论组"
 
-#: groupdlg.cpp:207
+#: groupdlg.cpp:209
 #, fuzzy
 msgid "(Un)Subscribe"
 msgstr "(取消)订阅"
 
-#: groupdlg.cpp:210
+#: groupdlg.cpp:212
 msgid "Check for Unread Articles"
 msgstr "检查未读文章"
 
-#: groupdlg.cpp:363 groupdlg.cpp:585 groupdlg.cpp:926
+#: groupdlg.cpp:365 groupdlg.cpp:587 groupdlg.cpp:929
 msgid "All Newsgroups."
 msgstr "所有新闻组."
 
-#: groupdlg.cpp:473 groupdlg.cpp:567
+#: groupdlg.cpp:475 groupdlg.cpp:569
 msgid "Subscribed Newsgroups."
 msgstr "订阅的新闻组."
 
-#: groupdlg.cpp:522
+#: groupdlg.cpp:524
 msgid "Disconnected"
 msgstr "已断开连接"
 
-#: groupdlg.cpp:529
+#: groupdlg.cpp:531
 msgid "Connecting to server"
 msgstr "正在连接服务器"
 
-#: groupdlg.cpp:534
+#: groupdlg.cpp:536
 msgid "Connected to server - Posting not allowed"
 msgstr "已连接到服务器 - 不允许发表文章"
 
-#: groupdlg.cpp:536
+#: groupdlg.cpp:538
 msgid "Connected to server - Posting allowed"
 msgstr "已连接到服务器 - 允许发表文章"
 
-#: groupdlg.cpp:542
+#: groupdlg.cpp:544
 msgid "Can't connect to server"
 msgstr "不能连接到服务器"
 
-#: groupdlg.cpp:544
+#: groupdlg.cpp:546
 msgid "Connection to server failed"
 msgstr "到服务器的连接失败"
 
-#: groupdlg.cpp:553
+#: groupdlg.cpp:555
 msgid "Authentication Failed"
 msgstr "身份验证失败"
 
-#: groupdlg.cpp:556
+#: groupdlg.cpp:558
 msgid "Connection to server failed: Authentication problem"
 msgstr "到服务器的连接失败: 身份验证问题"
 
-#: groupdlg.cpp:605
+#: groupdlg.cpp:607
 msgid "Krn-Question"
 msgstr "Krn - 问题"
 
-#: groupdlg.cpp:606
+#: groupdlg.cpp:608
 msgid ""
 "The operation you requested needs a connection to the News server\n"
 "Should I attempt one?"
@@ -216,7 +216,7 @@ msgstr ""
 "你请求的操作需要连接到新闻服务器上\n"
 "要尝试连接吗?"
 
-#: groupdlg.cpp:869
+#: groupdlg.cpp:872
 msgid ""
 "You don't have an active groups list.\n"
 " get it from server?"
@@ -224,229 +224,229 @@ msgstr ""
 "你没有活动讨论组列表.\n"
 "从服务器上取得 ?"
 
-#: groupdlg.cpp:885
+#: groupdlg.cpp:888
 msgid "Listing active newsgroups"
 msgstr "正在列出活动新闻组"
 
-#: groupdlg.cpp:900
+#: groupdlg.cpp:903
 msgid "KRN - Find a Newsgroup"
 msgstr "KRN - 找到一个新闻组"
 
-#: groupdlg.cpp:901
+#: groupdlg.cpp:904
 msgid "Enter the name of the Newsgroup"
 msgstr "输入新闻组的名字"
 
-#: groupdlg.cpp:985
+#: groupdlg.cpp:988
 msgid "Krn - Message"
 msgstr "Krn - 信件"
 
-#: groupdlg.cpp:986
+#: groupdlg.cpp:989
 msgid "I can't find the group you want!"
 msgstr "找不到你要的讨论组 !"
 
-#: groupdlg.cpp:1079
+#: groupdlg.cpp:1082
 msgid "Getting messages in "
 msgstr "取得信件 "
 
-#: groupdlg.cpp:1092
+#: groupdlg.cpp:1095
 msgid "Getting list of messages in "
 msgstr "取得信件列表 "
 
-#: artdlg.cpp:143 artdlg.cpp:158
+#: artdlg.cpp:151 artdlg.cpp:166
 msgid "Download"
 msgstr "下载"
 
-#: artdlg.cpp:145 artdlg.cpp:267
+#: artdlg.cpp:153 artdlg.cpp:275
 msgid "Mark Read"
 msgstr "标记已读"
 
-#: artdlg.cpp:146
+#: artdlg.cpp:154
 msgid "Mark Unread"
 msgstr "标记未读"
 
-#: artdlg.cpp:149 artdlg.cpp:169
+#: artdlg.cpp:157 artdlg.cpp:177
 msgid "Decode"
 msgstr "解码"
 
-#: artdlg.cpp:151 artdlg.cpp:171
+#: artdlg.cpp:159 artdlg.cpp:179
 msgid "Don't expire"
 msgstr "不过期"
 
-#: artdlg.cpp:160
+#: artdlg.cpp:168
 msgid "Lookup in Altavista"
 msgstr "在 Altavista 中查找"
 
-#: artdlg.cpp:164 artdlg.cpp:251
+#: artdlg.cpp:172 artdlg.cpp:259
 msgid "Reply by Mail"
 msgstr "用邮件回复"
 
-#: artdlg.cpp:165
+#: artdlg.cpp:173
 msgid "Post Followup"
 msgstr "发表讨论"
 
-#: artdlg.cpp:166
+#: artdlg.cpp:174
 msgid "Post & Reply"
 msgstr "发表和回复"
 
-#: artdlg.cpp:167 artdlg.cpp:257
+#: artdlg.cpp:175 artdlg.cpp:265
 msgid "Forward"
 msgstr ""
 
-#: artdlg.cpp:173 artdlg.cpp:241
+#: artdlg.cpp:181 artdlg.cpp:249
 msgid "Tagged"
 msgstr "已标记的"
 
-#: artdlg.cpp:184
+#: artdlg.cpp:192
 msgid "Show Only Unread Messages"
 msgstr "只显示未读的信件"
 
-#: artdlg.cpp:186
+#: artdlg.cpp:194
 msgid "Show Only Cached Messages"
 msgstr "只显示缓存的信件"
 
-#: artdlg.cpp:188
+#: artdlg.cpp:196
 msgid "Show Locked Messages"
 msgstr "显示锁住的信件"
 
-#: artdlg.cpp:190
+#: artdlg.cpp:198
 msgid "Expunge"
 msgstr "删除"
 
-#: artdlg.cpp:191
+#: artdlg.cpp:199
 msgid "Appearance..."
 msgstr "外观..."
 
-#: artdlg.cpp:192
+#: artdlg.cpp:200
 msgid "Sorting..."
 msgstr "正在排序..."
 
-#: artdlg.cpp:196
+#: artdlg.cpp:204
 msgid "Edit Rules"
 msgstr "编辑规则"
 
-#: artdlg.cpp:197
+#: artdlg.cpp:205
 msgid "Update"
 msgstr "更新"
 
-#: artdlg.cpp:206
+#: artdlg.cpp:214
 msgid "&Scoring"
 msgstr "记分[&S]"
 
-#: artdlg.cpp:213
+#: artdlg.cpp:221
 msgid "Previous Message"
 msgstr "前一个信件"
 
-#: artdlg.cpp:215
+#: artdlg.cpp:223
 msgid "Next Message"
 msgstr "下一个信件"
 
-#: artdlg.cpp:217
+#: artdlg.cpp:225
 msgid "Find Article"
 msgstr "查找文章"
 
-#: artdlg.cpp:222
+#: artdlg.cpp:230
 msgid "Get Article List"
 msgstr "取得文章列表"
 
-#: artdlg.cpp:224
+#: artdlg.cpp:232
 msgid "Refresh Display"
 msgstr "刷新显示"
 
-#: artdlg.cpp:240
+#: artdlg.cpp:248
 msgid "Current"
 msgstr ""
 
-#: artdlg.cpp:242 fontsDlg.cpp:52
+#: artdlg.cpp:250 fontsDlg.cpp:52
 msgid "All"
 msgstr "全部"
 
-#: artdlg.cpp:243
+#: artdlg.cpp:251
 #, fuzzy
 msgid "Read"
 msgstr "已读:"
 
-#: artdlg.cpp:244
+#: artdlg.cpp:252
 #, fuzzy
 msgid "UnRead"
 msgstr "未读:"
 
-#: artdlg.cpp:247
+#: artdlg.cpp:255
 msgid "Save Article"
 msgstr "保存文章"
 
-#: artdlg.cpp:249
+#: artdlg.cpp:257
 msgid "Print Article"
 msgstr "打印文章"
 
-#: artdlg.cpp:253
+#: artdlg.cpp:261
 msgid "Post a Followup"
 msgstr "发表讨论"
 
-#: artdlg.cpp:255
+#: artdlg.cpp:263
 msgid "Post & Mail"
 msgstr "发表和寄信"
 
-#: artdlg.cpp:261
+#: artdlg.cpp:269
 msgid "Tag Article"
 msgstr "标记文章"
 
-#: artdlg.cpp:263
+#: artdlg.cpp:271
 msgid "Lock (keep in cache)"
 msgstr "锁定 (保存在缓存中)"
 
-#: artdlg.cpp:265
+#: artdlg.cpp:273
 msgid "Decode Article"
 msgstr "对文章进行解码"
 
-#: artdlg.cpp:269
+#: artdlg.cpp:277
 msgid "Mark UnRead"
 msgstr "标记未读"
 
-#: artdlg.cpp:291 sortDlg.cpp:34
+#: artdlg.cpp:299 sortDlg.cpp:34
 msgid "Sender"
 msgstr "发信人"
 
-#: artdlg.cpp:292 sortDlg.cpp:35
+#: artdlg.cpp:300 sortDlg.cpp:35
 msgid "Date"
 msgstr ""
 
-#: artdlg.cpp:293 sortDlg.cpp:36
+#: artdlg.cpp:301 sortDlg.cpp:36
 msgid "Lines"
 msgstr "行"
 
-#: artdlg.cpp:294 sortDlg.cpp:33
+#: artdlg.cpp:302 sortDlg.cpp:33
 msgid "Score"
 msgstr "得分"
 
-#: artdlg.cpp:295 sortDlg.cpp:32
+#: artdlg.cpp:303 sortDlg.cpp:32
 msgid "Subject"
 msgstr "标题"
 
-#: artdlg.cpp:461
+#: artdlg.cpp:469
 msgid "Threading..."
 msgstr "正在串接 ..."
 
-#: artdlg.cpp:470
+#: artdlg.cpp:478
 msgid "Showing Article List"
 msgstr "正在显示文章列表"
 
-#: artdlg.cpp:1315
+#: artdlg.cpp:1323
 msgid "KRN - Existing File"
 msgstr "KRN - 存在的文件"
 
-#: artdlg.cpp:1316
+#: artdlg.cpp:1324
 msgid "The File you selected already exists"
 msgstr "你所选中的文件已经存在"
 
-#: artdlg.cpp:1322
+#: artdlg.cpp:1330
 msgid "OverWrite"
 msgstr "覆写"
 
-#: artdlg.cpp:1324
+#: artdlg.cpp:1332
 msgid "Append"
 msgstr "添加到结尾"
 
-#: artdlg.cpp:1359 artdlg.cpp:1424
+#: artdlg.cpp:1367 artdlg.cpp:1432
 msgid ""
 "From: Krn\n"
 "To: You\n"
@@ -460,7 +460,7 @@ msgstr ""
 "取文章时发生错误.\n"
 "服务器信息:\n"
 
-#: artdlg.cpp:1526
+#: artdlg.cpp:1541
 msgid "Getting Article List"
 msgstr "正在取文章列表"
 
@@ -488,41 +488,50 @@ msgstr "电子邮件地址"
 msgid "Organization"
 msgstr "组织"
 
-#: NNTPConfigDlg.cpp:29
+#: NNTPConfigDlg.cpp:30
 msgid "KRN-NNTP configuration"
 msgstr "KRN - NNTP 配置"
 
-#: NNTPConfigDlg.cpp:34
+#: NNTPConfigDlg.cpp:35
 msgid "Servers"
 msgstr "服务器"
 
-#: NNTPConfigDlg.cpp:36
+#: NNTPConfigDlg.cpp:37
 msgid "SMTP server"
 msgstr "SMTP 服务器"
 
-#: NNTPConfigDlg.cpp:41
+#: NNTPConfigDlg.cpp:42
 msgid "NNTP Server"
 msgstr "NNTP 服务器"
 
-#: NNTPConfigDlg.cpp:66
+#: NNTPConfigDlg.cpp:67
 msgid "Connect on Startup"
 msgstr "在启动时进行连接"
 
-#: NNTPConfigDlg.cpp:70
+#: NNTPConfigDlg.cpp:71
 msgid "Connect without asking"
 msgstr "不需问就进行连接"
 
-#: NNTPConfigDlg.cpp:74
+#: NNTPConfigDlg.cpp:75
 msgid "Authenticate"
 msgstr "身份验证"
 
-#: NNTPConfigDlg.cpp:79
+#: NNTPConfigDlg.cpp:80
 msgid "User Name"
 msgstr "用户名"
 
-#: NNTPConfigDlg.cpp:83
+#: NNTPConfigDlg.cpp:84
 msgid "Password"
 msgstr "密码"
+
+#: NNTPConfigDlg.cpp:91
+msgid "Ask before downloading more than"
+msgstr ""
+
+#: NNTPConfigDlg.cpp:94
+#, fuzzy
+msgid "articles"
+msgstr "标记文章"
 
 #: aboutDlg.cpp:28
 msgid "About KRN"
@@ -1632,6 +1641,33 @@ msgid ""
 "The following key(s) are not trusted:\n"
 "%s\n"
 "They will not be able to decrypt the message"
+msgstr ""
+
+#: TooManydlg.cpp:25
+#, fuzzy
+msgid "KRN-Confirmation"
+msgstr "KRN - NNTP 配置"
+
+#: TooManydlg.cpp:30
+msgid "Read how many articles?"
+msgstr ""
+
+#: TooManydlg.cpp:36
+msgid "Get them from"
+msgstr ""
+
+#: TooManydlg.cpp:37
+#, fuzzy
+msgid "Oldest articles"
+msgstr "取得文章"
+
+#: TooManydlg.cpp:39
+#, fuzzy
+msgid "Newest articles"
+msgstr "取得文章"
+
+#: TooManydlg.cpp:43
+msgid "Make this the new threshold"
 msgstr ""
 
 #~ msgid "Print"
