@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kbiff-1.1\n"
-"POT-Creation-Date: 1999-04-19 02:26+0200\n"
+"POT-Creation-Date: 1999-06-05 11:50-0700\n"
 "PO-Revision-Date: 1999-03-19 11:38+0100\n"
 "Last-Translator: Jañ-Mai Drapier <jdrapier@club-internet.fr>\n"
 "Language-Team: Brezhoneg <Suav.Icb@wanadoo.fr>\n"
@@ -14,223 +14,252 @@ msgstr ""
 "Content-Type: text/plain; charset=iso8859-1\n"
 "Content-Transfer-Encoding: 8 bit\n"
 
-#: kbiff.cpp:461
+#: kbiff.cpp:629
 msgid "&UnDock"
 msgstr "&Anensoc'hañ"
 
-#: kbiff.cpp:463
+#: kbiff.cpp:631
 msgid "&Dock"
 msgstr "&Ensoc'hañ"
 
-#: kbiff.cpp:464
+#: kbiff.cpp:632
 msgid "&Setup..."
 msgstr "&Kefluniañ..."
 
-#: kbiff.cpp:466
+#: kbiff.cpp:634
 msgid "&Help..."
 msgstr "&Skoazell..."
 
-#: kbiff.cpp:470
+#: kbiff.cpp:638
 msgid "&Check Mail Now"
 msgstr "&Gwiriañ postel bremañ"
 
-#: kbiff.cpp:472
+#: kbiff.cpp:640
 msgid "&Read Mail Now"
 msgstr "&Lenn postel bremañ"
 
-#: kbiff.cpp:478
+#: kbiff.cpp:646
 msgid "&Stop"
 msgstr "&Paouez"
 
-#: notify.cpp:28 notify.cpp:45
+#: notify.cpp:33 notify.cpp:50
 msgid "You have new mail!"
 msgstr "Postel nevez a zo evidoc'h !"
 
-#: notify.cpp:53
+#: notify.cpp:58 notify.cpp:103
 #, c-format
 msgid "New Messages: %d"
 msgstr "Kemennadoù nevez : %d"
 
-#: notify.cpp:58
+#: notify.cpp:63
 #, c-format
 msgid "Mailbox: %s"
 msgstr "Boest-lizheroù : %s"
 
-#: setupdlg.cpp:79
+#: notify.cpp:73
+#, fuzzy
+msgid "Mailer"
+msgstr "Boestoù-lizheroù"
+
+#: setupdlg.cpp:83
 msgid "KBiff Setup"
 msgstr "Kefluniañ KBiff"
 
-#: setupdlg.cpp:82
+#: setupdlg.cpp:86
 msgid "Profile:"
 msgstr "Profil :"
 
-#: setupdlg.cpp:98
+#: setupdlg.cpp:102
 msgid "&New..."
 msgstr "&Nevez..."
 
-#: setupdlg.cpp:105
+#: setupdlg.cpp:109
 msgid "&Rename..."
 msgstr "&Adenvel..."
 
-#: setupdlg.cpp:139
+#: setupdlg.cpp:143
 msgid "General"
 msgstr "Hollek"
 
-#: setupdlg.cpp:140
+#: setupdlg.cpp:144
 msgid "New Mail"
 msgstr "Postel nevez"
 
-#: setupdlg.cpp:141
+#: setupdlg.cpp:145 status.cpp:33
 msgid "Mailbox"
 msgstr "Boestoù-lizheroù"
 
-#: setupdlg.cpp:352
+#: setupdlg.cpp:391
 msgid "New Profile"
 msgstr "Profil nevez"
 
-#: setupdlg.cpp:384
+#: setupdlg.cpp:423
 #, c-format
 msgid "Rename Profile: %s"
 msgstr "Adenvel profil : %s"
 
-#: setupdlg.cpp:424
+#: setupdlg.cpp:463
 #, c-format
 msgid "Delete Profile: %s"
 msgstr "Dilemel profil : %s"
 
-#: setupdlg.cpp:425
+#: setupdlg.cpp:464
 msgid "Are you sure you wish to delete this profile?\n"
 msgstr "Ha sur oc'h e fell deoc'h dilemel ar profil-mañ ?\n"
 
-#: setupdlg.cpp:485
+#: setupdlg.cpp:524
 msgid "Poll (sec):"
 msgstr "Ged (eil) :"
 
-#: setupdlg.cpp:490
+#: setupdlg.cpp:529
 msgid "Mail client:"
 msgstr "Posteler :"
 
-#: setupdlg.cpp:503
+#: setupdlg.cpp:542
 msgid "Dock in panel"
 msgstr "Ensoc'hañ er banell"
 
-#: setupdlg.cpp:508
+#: setupdlg.cpp:547
 msgid "Use session management"
 msgstr "Arverañ mererezh an dalc'h"
 
-#: setupdlg.cpp:513
+#: setupdlg.cpp:552
 msgid "Icons:"
 msgstr "Arlunioù :"
 
-#: setupdlg.cpp:531
+#: setupdlg.cpp:570
 msgid "No Mail:"
 msgstr "Postel ebet :"
 
-#: setupdlg.cpp:540
+#: setupdlg.cpp:579
 msgid "Old Mail"
 msgstr "Postel kozh"
 
-#: setupdlg.cpp:550
+#: setupdlg.cpp:589
 msgid "New Mail:"
 msgstr "Postel nevez :"
 
-#: setupdlg.cpp:687
+# This is the icon that is displayed when KBiff could not make a connection
+# to a remote server
+#: setupdlg.cpp:599
+msgid "No Conn.:"
+msgstr ""
+
+#: setupdlg.cpp:756
 msgid "Run Command"
 msgstr "Seveniñ an urzhiad"
 
-#: setupdlg.cpp:694 setupdlg.cpp:707 setupdlg.cpp:1047
+#: setupdlg.cpp:763 setupdlg.cpp:783 setupdlg.cpp:1178
 msgid "Browse"
 msgstr "Furchal"
 
-#: setupdlg.cpp:700
+#: setupdlg.cpp:769
 msgid "Play Sound"
 msgstr "C'hoari son"
 
-#: setupdlg.cpp:713
+#: setupdlg.cpp:789
 msgid "System Beep"
 msgstr "Bip ar reizhiad"
 
-#: setupdlg.cpp:718
+#: setupdlg.cpp:794
 msgid "Notify"
 msgstr "Kemenn"
 
-#: setupdlg.cpp:849
+# If this is checked, then KBiff will popup a list of mailboxes with the
+# number of new mail whenever the user puts the cursor of a KBiff icon.
+#: setupdlg.cpp:798
+msgid "Floating Status"
+msgstr ""
+
+#: setupdlg.cpp:948
 msgid "Advanced Options"
 msgstr "Dibarzhoù araokaet"
 
-#: setupdlg.cpp:853
+#: setupdlg.cpp:952
 msgid "Mailbox URL:"
 msgstr "URL ar voest-lizheroù :"
 
-#: setupdlg.cpp:857
+#: setupdlg.cpp:956
 msgid "Port:"
 msgstr "Porzh :"
 
-#: setupdlg.cpp:861
+#: setupdlg.cpp:960
 msgid "PREAUTH"
 msgstr ""
 
-#: setupdlg.cpp:868
+#: setupdlg.cpp:967
 msgid "Keep Alive"
 msgstr "Derc'hel bev"
 
-#: setupdlg.cpp:994 setupdlg.cpp:1023
+# If this is selected, then KBiff will do all of it's network work in an
+# asynchronous mode.  That is, it will not wait for the response to any
+# given command... it will receive the response as an event, later.
+#: setupdlg.cpp:974
+msgid "Asynchronous"
+msgstr ""
+
+#: setupdlg.cpp:1123 setupdlg.cpp:1152
 msgid "Mailbox:"
 msgstr "Boest-lizheroù :"
 
-#: setupdlg.cpp:1007 setupdlg.cpp:1317
+#: setupdlg.cpp:1136 setupdlg.cpp:1474
 msgid "New Mailbox"
 msgstr "Boest-lizheroù nevez"
 
-#: setupdlg.cpp:1014
+#: setupdlg.cpp:1143
 msgid "Delete Mailbox"
 msgstr "Dilemel ar voest-lizheroù"
 
-#: setupdlg.cpp:1020
+#: setupdlg.cpp:1149
 msgid "Protocol:"
 msgstr "Komenad :"
 
-#: setupdlg.cpp:1026
+#: setupdlg.cpp:1155
 msgid "Server:"
 msgstr "Servijer :"
 
-#: setupdlg.cpp:1029
+#: setupdlg.cpp:1158
 msgid "User:"
 msgstr "Arveriad :"
 
-#: setupdlg.cpp:1032
+#: setupdlg.cpp:1161
 msgid "Password:"
 msgstr "Tremenger :"
 
-#: setupdlg.cpp:1064
+#: setupdlg.cpp:1195
 msgid "Store password"
 msgstr "Boniañ an tremenger"
 
-#: setupdlg.cpp:1067
+#: setupdlg.cpp:1198
 msgid "Advanced"
 msgstr "Araokaet"
 
-#: setupdlg.cpp:1504
+#: setupdlg.cpp:1675
 msgid "KBiff"
 msgstr "KBiff"
 
-#: setupdlg.cpp:1526
+#: setupdlg.cpp:1697
 #, c-format
 msgid ""
 "Version %s\n"
 "\n"
-"Copyright (C) 1998\n"
+"Copyright (C) 1999\n"
 "Kurt Granroth"
 msgstr ""
 "Doare %s\n"
 "\n"
-"Gwirioù eilañ (C) 1998\n"
+"Gwirioù eilañ (C) 1999\n"
 "Kurt Granroth"
 
-#: setupdlg.cpp:1575
+#: setupdlg.cpp:1746
 msgid "New Name:"
 msgstr "Anv nevez :"
 
-#: setupdlg.cpp:1601
+#: setupdlg.cpp:1772
 msgid "New Name"
 msgstr "Anv nevez"
+
+#: status.cpp:34
+#, fuzzy
+msgid "New"
+msgstr "Nevez"
