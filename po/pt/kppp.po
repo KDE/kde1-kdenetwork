@@ -268,8 +268,8 @@ msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
 msgstr ""
-"Comando pppd + argumentos excedem 2024caracteres de comprimento. O que é que "
-"está a fazer?"
+"Comando pppd + argumentos excedem 2024"
+"caracteres de comprimento. O que é que está a fazer?"
 
 #: conwindow.cpp:44
 msgid "Connected at:"
@@ -369,7 +369,7 @@ msgstr "Mascara da Subnet:"
 
 #: edit.cpp:191
 msgid "Dynamic IP Address"
-msgstr "Endereço IP Dinamico"
+msgstr "Endereço IP Dinâmico"
 
 #: edit.cpp:194
 msgid "Static IP Address"
@@ -457,7 +457,7 @@ msgstr "Visualizador de Relatórios:"
 
 #: general.cpp:98
 msgid "Automatic Redial on Disconnect"
-msgstr "Voltar a Ligar Automáticamente se Desconectado"
+msgstr "Voltar a Ligar Automaticamente se Desconectado"
 
 #: general.cpp:105
 msgid "Show Clock on Caption"
@@ -817,11 +817,11 @@ msgstr "Resultados de Query ao Modem"
 
 #: pppstatdlg.cpp:69
 msgid "kppp Statistics"
-msgstr "Estatisticas do kppp"
+msgstr "Estatísticas do kppp"
 
 #: pppstatdlg.cpp:74
 msgid "Statistics"
-msgstr "Estatisticas"
+msgstr "Estatísticas"
 
 #: pppstatdlg.cpp:147
 msgid "Local Addr:"
@@ -984,7 +984,7 @@ msgstr "kppp: ficheiro de regras não contem uma regra por defeito\n"
 
 #: ruleset.cpp:574
 msgid "kppp: rulefile does not contain a \"name=...\" line\n"
-msgstr ""
+msgstr "kppp: ficheiro de regras não contêm uma linha \"name=...\"\n"
 
 #: ruleset.cpp:578
 msgid "kppp: rulefile is ok\n"
@@ -1007,7 +1007,7 @@ msgid ""
 msgstr ""
 "Não consigo achar o daemon pppd!\n"
 "\n"
-"Verifique que o pppd está instaldo e\n"
+"Verifique que o pppd está instalado e\n"
 "que inserir a localização correcta.\n"
 
 #: runtests.cpp:109
@@ -1048,3 +1048,4 @@ msgstr ""
 "O visualizador de relatórios \"%s\" não foi encontrado!\n"
 "\n"
 "A voltar ao valor por defeito \"%s\"."
+

@@ -1,6 +1,6 @@
 
 # This has to be set. The rest should be reusable
-GMFILES = kmail.gmo knu.gmo kppp.gmo
+GMFILES = kmail.gmo knu.gmo kppp.gmo krn.gmo
 POFILES = $(GMFILES:.gmo=.po)
 
 LANG = pt

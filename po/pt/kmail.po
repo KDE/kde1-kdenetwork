@@ -38,13 +38,13 @@ msgstr ""
 "uma pasta de sistema."
 
 #: kmmainwin.cpp:338
-#, c-format
+#,  c-format
 msgid ""
 "Are you sure you want to remove the folder\n"
 "\"%s\", discarding it's contents ?"
 msgstr ""
-"Tem a certeza que quer remover a pasta\n"
-"\"%s\", perdendo o seu conteúdo?"
+"Tem a certeza que quer remover a pasta"
+"\"%s\", perdendo o seu conteúdo ?"
 
 #: kmmainwin.cpp:341
 msgid "Confirmation"
@@ -863,7 +863,7 @@ msgstr "Propriedades da Parte de Mensagem"
 
 #: kmmsgpartdlg.cpp:73
 msgid "Description:"
-msgstr "Descripção"
+msgstr "Descripção:"
 
 #: kmmsgpartdlg.cpp:83
 msgid "Encoding:"
@@ -915,7 +915,7 @@ msgstr "Grupos: "
 
 #: kmreaderwin.cpp:363
 msgid "Encrypted message"
-msgstr "Mensagem encriptadas"
+msgstr "Mensagem encriptada"
 
 #: kmreaderwin.cpp:369
 msgid "Cannot decrypt message:"
@@ -1044,7 +1044,7 @@ msgid ""
 "Cannot create folder `%s'\n"
 "in %s"
 msgstr ""
-"Não foi possivel a pasta `%s'\n"
+"Não foi possível a pasta `%s'\n"
 "em %s"
 
 #: kmsender.cpp:103
@@ -1077,7 +1077,7 @@ msgstr "Não consigo adicionar mensagem à pasta de saída"
 
 #: kmsender.cpp:164
 msgid "Sending still in progress"
-msgstr "Envia ainda a descorrer"
+msgstr "Envio ainda a decorrer"
 
 #: kmsender.cpp:216
 msgid "Initiating sender process..."
@@ -1085,7 +1085,7 @@ msgstr "A iniciar o processo de envio..."
 
 #: kmsender.cpp:232
 msgid "Sending message: "
-msgstr "Enviando mensagem: "
+msgstr "A enviar mensagem: "
 
 #: kmsender.cpp:256
 msgid "Done sending messages."
@@ -1302,7 +1302,7 @@ msgstr "Frase de passe inválida; não consegui desencriptar"
 
 #: kpgp.cpp:736
 msgid "Bad pass Phrase; couldn't sign"
-msgstr "Frase de passe inválida "
+msgstr "Frase de passe inválida; não consegui assinar"
 
 #: kpgp.cpp:793
 msgid ""
