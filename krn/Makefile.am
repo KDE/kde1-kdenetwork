@@ -5,7 +5,7 @@ DEFS += -DKRN -DCHARSETS
 
 LDFLAGS = $(all_libraries) $(KDE_RPATH)
 krn_LDADD = -lkfile -lkfm -lkhtmlw -ljscript -lkdeui -lkdecore $(LIBJPEG) \
-	-lqt -lXext -lX11 -lmimelib -lgdbm $(LIBCOMPAT) $(LIBSOCKET)
+	-lqt -lXext -lX11 -lmimelib -lgdbm -lstdc++ $(LIBCOMPAT) $(LIBSOCKET)
 
 kdecode_LDADD = -lkfile -lkfm -lkdeui -lkdecore -lqt -lXext \
 	-lX11 -luulib $(KDE_RPATH) $(LIBCOMPAT) $(LIBSOCKET)
