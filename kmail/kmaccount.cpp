@@ -188,7 +188,7 @@ void KMAccount::installTimer()
 //-----------------------------------------------------------------------------
 void KMAccount::deinstallTimer()
 {
-  printf("Calling deinstallTimer()\n");
+  debug("Calling deinstallTimer()");
   if(mTimer) {
     mTimer->stop();
     disconnect(mTimer);
