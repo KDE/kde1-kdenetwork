@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmail 0.4.4\n"
 "POT-Creation-Date: 1998-06-11 23:07+0200\n"
-"PO-Revision-Date: 1998-04-17 15:57 MET DST\n"
+"PO-Revision-Date: 1998-06-12 08:40 MET DST\n"
 "Last-Translator: Miroslav Flídr <flidr@ky.zcu.cz>\n"
 "Language-Team: Czech <sc@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -26,13 +26,12 @@ msgid "New Folder"
 msgstr "Nový poøadaè"
 
 #: kmmainwin.cpp:288 kmmainwin.cpp:318
-#, fuzzy
 msgid "KMail error"
-msgstr "fatální chyba"
+msgstr "Chyba KMailu"
 
 #: kmmainwin.cpp:289 kmmainwin.cpp:319
 msgid "Already checking for mail!"
-msgstr ""
+msgstr "Ji¾ probíhá kontrola, zda nedo¹la nová po¹ta!"
 
 #: kmmainwin.cpp:299 kmmainwin.cpp:329
 msgid "No new mail available"
@@ -181,9 +180,8 @@ msgid "Check Mail..."
 msgstr "Zkontrolovat po¹tu ..."
 
 #: kmmainwin.cpp:823
-#, fuzzy
 msgid "Check Mail in..."
-msgstr "Zkontrolovat po¹tu ..."
+msgstr "Zkontrolovat po¹tu v ..."
 
 #: kmmainwin.cpp:825
 msgid "Send Queued"
@@ -442,24 +440,24 @@ msgid "Network"
 msgstr "Sí»"
 
 #: kmsettings.cpp:311
-#, fuzzy
 msgid "Fonts"
-msgstr "obsahuje"
+msgstr "Fonty"
 
 #: kmsettings.cpp:316
 msgid "Message Body Font:"
-msgstr ""
+msgstr "Font tìla zprávy:"
 
 #: kmsettings.cpp:321
-#, fuzzy
 msgid "Message List Font:"
-msgstr "Prostá textová zpráva"
+msgstr "Font pro seznam zpráv:"
 
 #: kmsettings.cpp:325
 msgid ""
 "Changing fonts currently only occurs when a new\n"
 "window is opened or kmail is restarted"
 msgstr ""
+"Zmìna fontu se projeví a¾ po otevøení\n"
+"nového okna nebo po restartu kmailu"
 
 #: kmsettings.cpp:341 kmsettings.cpp:411
 msgid "Appearance"
@@ -563,12 +561,11 @@ msgstr "vyprázdnit ko¹ pøi ukonèení"
 
 #: kmsettings.cpp:556
 msgid "Message Body Font"
-msgstr ""
+msgstr "Font tìla zprávy"
 
 #: kmsettings.cpp:568
-#, fuzzy
 msgid "Message List Font"
-msgstr "Prostá textová zpráva"
+msgstr "Font pro seznam zpráv"
 
 #: kmsettings.cpp:618
 msgid "Select Account"
@@ -643,14 +640,12 @@ msgid "Subject"
 msgstr "Pøedmìt"
 
 #: kmheaders.cpp:209
-#, fuzzy
 msgid "Unknown"
-msgstr "Neznámá chyba"
+msgstr "Neznámý"
 
 #: kmheaders.cpp:212
-#, fuzzy
 msgid "No Subject"
-msgstr "Pøedmìt"
+msgstr "®ádný pøedmìt"
 
 #: kmheaders.cpp:259
 msgid "order of arrival"
@@ -952,11 +947,9 @@ msgstr ""
 "nastaven ISpell."
 
 #: kmfolder.cpp:144
-#, fuzzy, c-format
+#, c-format
 msgid "Folder `%s' changed. Recreating index."
-msgstr ""
-"Obsah poøadaèe '%s' se zmìnil.\n"
-"Vytváøím znovu indexový soubor."
+msgstr "Obsah poøadaèe '%s' se zmìnil. Vytváøím znovu indexový soubor."
 
 #: kmfolder.cpp:351
 #, c-format
@@ -1306,7 +1299,6 @@ msgstr ""
 "%s"
 
 #: kmfolderseldlg.cpp:29
-#, fuzzy
 msgid "Select folder"
 msgstr "Vybrat poøadaè"
 

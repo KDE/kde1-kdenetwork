@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kppp 0.9.6\n"
 "POT-Creation-Date: 1998-06-11 23:08+0200\n"
-"PO-Revision-Date: 1998-04-17 15:52 MET DST\n"
+"PO-Revision-Date: 1998-06-12 08:32 MET DST\n"
 "Last-Translator: Miroslav Flídr <flidr@kky.zcu.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -357,7 +357,7 @@ msgstr "Terminálem"
 
 #: edit.cpp:76
 msgid "CHAP"
-msgstr ""
+msgstr "CHAP"
 
 #: edit.cpp:82
 msgid "Store password"
@@ -496,9 +496,8 @@ msgid "Disconnect on X-server shutdown"
 msgstr "Odpojit pøi ukonèení X-serveru"
 
 #: general.cpp:124
-#, fuzzy
 msgid "Quit on Disconnect"
-msgstr "Odpojit"
+msgstr "Ukonèit pøi odpojení"
 
 #: general.cpp:130
 msgid "Minimize Window on Connect"
@@ -718,28 +717,27 @@ msgstr ""
 "pro PAP \"%s\""
 
 #: main.cpp:802
-#, fuzzy
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
 "supply a username and a password!"
 msgstr ""
-"Vybrali jste ovìøování pomocí PAP.\n"
+"Vybrali jste ovìøovací metodu CHAP.\n"
 "Toto vy¾aduje, aby jste poskytli\n"
 "u¾ivatelské jméno a heslo!"
 
 #: main.cpp:809
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
 "file \"%s\""
 msgstr ""
 "Není mo¾né vytvoøit ovìøovací soubor\n"
-"pro PAP \"%s\""
+"pro CHAP \"%s\""
 
 #: main.cpp:821
 msgid "You have to specify a telephone number !\n"
-msgstr ""
+msgstr "Je nutné zadat telefonní èíslo !\n"
 
 #: main.cpp:895
 msgid "Quit kPPP?"
@@ -1119,35 +1117,8 @@ msgid ""
 "a non-empty file that has appropriate\n"
 "read and write permissions."
 msgstr ""
-
-#~ msgid "pppd Path:"
-#~ msgstr "Cesta k pppd:"
-
-#~ msgid "Log Viewer:"
-#~ msgstr "Prohlí¾eè záznamù:"
-
-#~ msgid "started PPP connection:%s:%s"
-#~ msgstr "spu¹tìno PPP spojení:%s:%s"
-
-#~ msgid ""
-#~ "terminated PPP connection\n"
-#~ "COST OF SESSION: "
-#~ msgstr ""
-#~ "PPP spojení ukonèeno\n"
-#~ "CENA SEZENÍ:"
-
-#~ msgid ""
-#~ "\n"
-#~ "SUBTOTAL FOR:"
-#~ msgstr ""
-#~ "\n"
-#~ "ÈASTEÈNÝ SOUÈET PRO:"
-
-#~ msgid ""
-#~ "The logviewer \"%s\" was not found!\n"
-#~ "\n"
-#~ "Setting default back to \"%s\"."
-#~ msgstr ""
-#~ "Prohlí¾eè záznamù \"%s\" nebyl nalezen!\n"
-#~ "\n"
-#~ "Nastavuji zpìt na implicitní \"%s\"."
+"Chybí /etc/resolv.conf!\n"
+"\n"
+"Po¾ádejte správce systému, aby \n"
+"vytvoøil neprázdný soubor \n"
+"s pøíslu¹nými právy ke ètení a zápisu."
