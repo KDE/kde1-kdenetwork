@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1999-04-26 03:29+0200\n"
+"POT-Creation-Date: 1999-08-11 03:29+0200\n"
 "PO-Revision-Date: Sun Jul 11 1999 18:52:00+0200\n"
 "Last-Translator: 井村 竜一郎 <imura@cs.titech.ac.jp>\n"
 "Language-Team: japanese <kde-jp@albert.nikkeibp.co.jp>\n"
@@ -481,7 +481,7 @@ msgid ""
 "%D=date, %S=subject, %F=sender, %%=percent sign"
 msgstr ""
 "返信時の言いまわし\n"
-"%D=日時, %S=タイトル, %F=送信者名, %%=%を入れるとき"
+"%D=日時, %S=件名, %F=送信者名, %%=%を入れるとき"
 
 #: kmsettings.cpp:399
 msgid "Reply to sender:"
@@ -694,7 +694,7 @@ msgstr "不明"
 
 #: kmheaders.cpp:282
 msgid "No Subject"
-msgstr "Subject なし"
+msgstr "件名 なし"
 
 #: kmheaders.cpp:343
 msgid "order of arrival"
@@ -768,7 +768,7 @@ msgstr "&Bcc:"
 
 #: kmcomposewin.cpp:355
 msgid "&Subject:"
-msgstr "&Subject:"
+msgstr "件名(&S):"
 
 #: kmcomposewin.cpp:358
 msgid "&Newsgroups:"
@@ -860,11 +860,11 @@ msgstr "&Bcc"
 
 #: kmcomposewin.cpp:516
 msgid "&Subject"
-msgstr "&Subject"
+msgstr "件名(&S)"
 
 #: kmcomposewin.cpp:518
 msgid "&Newsgroups"
-msgstr "&Newsgroups"
+msgstr "ニュースグループ(&N)"
 
 #: kmcomposewin.cpp:519
 msgid "&Followup-To"
@@ -992,7 +992,7 @@ msgstr "To:"
 
 #: kmcomposewin.cpp:1543
 msgid "Subject:"
-msgstr "サブジェクト:"
+msgstr "件名:"
 
 #: kmcomposewin.cpp:1546
 msgid "Date:"
@@ -1074,7 +1074,7 @@ msgstr "References: "
 
 #: kmreaderwin.cpp:436 kmreaderwin.cpp:449
 msgid "Date: "
-msgstr "Date: "
+msgstr "日時: "
 
 #: kmreaderwin.cpp:458
 msgid "Bcc: "
