@@ -527,12 +527,11 @@ msgstr "Salasana"
 
 #: NNTPConfigDlg.cpp:91
 msgid "Ask before downloading more than"
-msgstr ""
+msgstr "Kysy ennen suurempaa siirtoa kuin"
 
 #: NNTPConfigDlg.cpp:94
-#, fuzzy
 msgid "articles"
-msgstr "Merkkaa viesti"
+msgstr "arikkelia"
 
 #: aboutDlg.cpp:28
 msgid "About KRN"
@@ -668,7 +667,7 @@ msgstr "KMail Muokkaaja"
 
 #: kmcomposewin.cpp:138
 msgid "F"
-msgstr ""
+msgstr "F"
 
 #: kmcomposewin.cpp:139
 msgid "Name"
@@ -759,9 +758,8 @@ msgid "Replace..."
 msgstr "Korvaa..."
 
 #: kmcomposewin.cpp:477
-#, fuzzy
 msgid "&Spellcheck..."
-msgstr "KMail: Oikeinkirjoitus"
+msgstr "&Oikeinkirjoitus..."
 
 #: kmcomposewin.cpp:484
 msgid "&Urgent"
@@ -776,9 +774,8 @@ msgid "&Confirm read"
 msgstr "&Varmista lukeminen"
 
 #: kmcomposewin.cpp:491
-#, fuzzy
 msgid "&Spellchecker..."
-msgstr "KMail: Oikeinkirjoitus"
+msgstr "&Oikeinkirjoitus..."
 
 #: kmcomposewin.cpp:494
 msgid "&Charsets..."
@@ -830,7 +827,7 @@ msgstr "&Liitä tiedosto"
 
 #: kmcomposewin.cpp:527
 msgid "Insert My &Public Key"
-msgstr ""
+msgstr "Liitä &Julkinen avain"
 
 #: kmcomposewin.cpp:532
 msgid "&Attach..."
@@ -849,9 +846,8 @@ msgid "&Attach"
 msgstr "&Liitä"
 
 #: kmcomposewin.cpp:558
-#, fuzzy
 msgid "Send message"
-msgstr "Lähetän viestiä: "
+msgstr "Lähetä viesti"
 
 #: kmcomposewin.cpp:563
 msgid "Compose new message"
@@ -971,7 +967,7 @@ msgstr "Valitse allekirjoitustiedosto"
 
 #: kmcomposewin.cpp:2018
 msgid "Spellcheck - KMail"
-msgstr ""
+msgstr "Oikeinkirjoitus - KMail"
 
 #: kmcomposewin.cpp:2044
 msgid ""
@@ -1260,7 +1256,7 @@ msgstr "base 64"
 
 #: kmmsgpartdlg.cpp:91
 msgid "quoted printable"
-msgstr ""
+msgstr "quoted printable"
 
 #: kmreaderwin.cpp:320 kmreaderwin.cpp:333 kmreaderwin.cpp:352
 #: kmreaderwin.cpp:373
@@ -1313,7 +1309,7 @@ msgstr "Varoitus: Viallinen allekirjoitus"
 
 #: kmreaderwin.cpp:451
 msgid "unknown key ID"
-msgstr ""
+msgstr "tuntematon avain ID"
 
 #: kmreaderwin.cpp:701
 msgid "Attachment: "
@@ -1354,7 +1350,7 @@ msgstr "Salasana puuttuu"
 
 #: kpgp.cpp:286 kpgp.cpp:312 kpgp.cpp:325 kpgp.cpp:344 kpgp.cpp:361
 msgid "PGP Warning"
-msgstr ""
+msgstr "PGP Varoitus"
 
 #: kpgp.cpp:287
 msgid ""
@@ -1362,23 +1358,25 @@ msgid ""
 "recipients of this mail.\n"
 "Message will not be encrypted."
 msgstr ""
+"En löytänyt viestin vastaanottajien\n"
+"julkisia avaimia.\n"
+"Viestiä ei salata."
 
 #: kpgp.cpp:296
 msgid "Could not find the public keys for\n"
-msgstr ""
+msgstr "En löydä julkista avainta\n"
 
 #: kpgp.cpp:307
 msgid "These persons will not be able to\n"
-msgstr ""
+msgstr "Nämä henkilöt eivät voi\n"
 
 #: kpgp.cpp:309
 msgid "This person will not be able to\n"
-msgstr ""
+msgstr "Tämä henkilö ei voi\n"
 
 #: kpgp.cpp:311
-#, fuzzy
 msgid "decrypt the message."
-msgstr "koodaa viesti"
+msgstr "pura viestin koodaus."
 
 #: kpgp.cpp:326
 msgid ""
@@ -1386,26 +1384,33 @@ msgid ""
 "Do you wan't to try again, continue and\n"
 "leave the message unsigned, or cancel sending the message?"
 msgstr ""
+"annoit virheellisen salasanan.\n"
+"Haluatko yrittää uudelleen, jatkaa vai\n"
+"jättää viesti allekirjoittamatta, vai peruuttaa viestin?"
 
 #: kpgp.cpp:331
 msgid "Retry"
-msgstr ""
+msgstr "Uudelleen"
 
 #: kpgp.cpp:342
 msgid ""
 "Do you wan't to encrypt anyway, leave the\n"
 "message as is, or cancel the message?"
 msgstr ""
+"Haluatko salata kuitenkin, jättää viestin\n"
+"ennalleen, vai peruuttaa viestin?"
 
 #: kpgp.cpp:346
 msgid "Encrypt"
-msgstr ""
+msgstr "Salaa"
 
 #: kpgp.cpp:359
 msgid ""
 "Do you wan't to leave the message as is,\n"
 "or cancel the message?"
 msgstr ""
+"Haluatko jättää viestin ennalleen, vai\n"
+"peruuttaa viestin?"
 
 #: kpgp.cpp:717
 msgid ""
@@ -1418,21 +1423,20 @@ msgid "PGP Security Check"
 msgstr "PGP turvallisuustarkastus"
 
 #: kpgp.cpp:765
-#, fuzzy
 msgid "Identity"
-msgstr "Henkilöllisyys..."
+msgstr "Henkilöllisyys"
 
 #: kpgp.cpp:771
 msgid "PGP User Identity:"
-msgstr ""
+msgstr "PGP käyttäjätunnus:"
 
 #: kpgp.cpp:782
 msgid "Store passphrase"
-msgstr ""
+msgstr "Tallenna salasana"
 
 #: kpgp.cpp:788
 msgid "Always encrypt to self"
-msgstr ""
+msgstr "Salaa aina itselle"
 
 #: krnsender.cpp:60
 msgid "This server is read onlyyou can't post here!"
@@ -1624,7 +1628,7 @@ msgstr "Viallinen salasana; en voi allekirjoittaa"
 
 #: kpgpbase.cpp:354
 msgid "error running pgp"
-msgstr ""
+msgstr "virhe ajettaessa pgp:tä"
 
 #: kpgpbase.cpp:371 kpgpbase.cpp:662
 msgid "Bad pass Phrase; couldn't decrypt"
@@ -1632,36 +1636,38 @@ msgstr "Viallinen salasana; en voi salata"
 
 #: kpgpbase.cpp:382 kpgpbase.cpp:673
 msgid "Do not have the secret key for this message"
-msgstr ""
+msgstr "Ei ole salaista avainta tälle viestille"
 
 #: kpgpbase.cpp:410
 msgid "unknown key ID "
-msgstr ""
+msgstr "tuntematon avain ID"
 
 #: kpgpbase.cpp:430
 msgid "??? (file ~/.pgp/pubring.pgp not found)"
-msgstr ""
+msgstr "??? (tiedosto ~/.pgp/pubring.pgp ei löytynyt)"
 
 #: kpgpbase.cpp:585
-#, fuzzy
 msgid "The passphrase you entered is invalid."
-msgstr "Salasana puuttuu"
+msgstr "Salasana on virheellinen."
 
 #: kpgpbase.cpp:611
 msgid ""
 "The key(s) you wan't to encrypt your message\n"
 "to are not trusted. No encryption done."
 msgstr ""
+"Avaimet joita käytät salaukseen eivät ole\n"
+"luotettavia. Slausta ei tehty."
 
 #: kpgpbase.cpp:614
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The following key(s) are not trusted:\n"
 "%s\n"
 "They will not be able to decrypt the message"
 msgstr ""
-"julkista avainta %s ei löytynyt.\n"
-"Tämä henkilö ei pysty purkamaan viestiä."
+"Seuraaviin avaimiin ei luoteta:\n"
+"%s\n"
+"Niitä ei voida käyttää viestin purkamiseen"
 
 #: TooManydlg.cpp:25
 #, fuzzy
@@ -1670,34 +1676,20 @@ msgstr "KRN-NNTP-asetukset"
 
 #: TooManydlg.cpp:30
 msgid "Read how many articles?"
-msgstr ""
+msgstr "Kuinka monta artikkelia luetaan?"
 
 #: TooManydlg.cpp:36
 msgid "Get them from"
-msgstr ""
+msgstr "Hae ne kohteesta"
 
 #: TooManydlg.cpp:37
-#, fuzzy
 msgid "Oldest articles"
-msgstr "Hae viestit"
+msgstr "Vanhimmat artikkelit"
 
 #: TooManydlg.cpp:39
-#, fuzzy
 msgid "Newest articles"
-msgstr "Hae viestit"
+msgstr "Uusimmat artikkelit"
 
 #: TooManydlg.cpp:43
 msgid "Make this the new threshold"
-msgstr ""
-
-#~ msgid "Error during PGP:"
-#~ msgstr "Virhe PGP:n aikana:"
-
-#~ msgid "Message signed by"
-#~ msgstr "Viestin on allekirjoittanut"
-
-#~ msgid "Message has a bad signature from"
-#~ msgstr "Viestissä on viallinen allekirjoitus"
-
-#~ msgid "End PGP signed message"
-#~ msgstr "PGP Allekirjoitetun viestin loppu"
+msgstr "Tee tästä uusi raja"

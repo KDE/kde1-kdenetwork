@@ -929,7 +929,6 @@ msgid "About kppp"
 msgstr "Tietoja kppp:ta"
 
 #: general.cpp:210
-#, fuzzy
 msgid ""
 "\n"
 "A dialer and front-end to pppd\n"
@@ -947,14 +946,20 @@ msgid ""
 "This program is distributed under the GNU GPL\n"
 "(GNU General Public License)."
 msgstr ""
-"MiniTerm - Terminaaliemulaattori KPPP:lle\n"
 "\n"
-"(c) 1997 Bernd Johannes Wuebben <wuebben@kde.org>\n"
-"(c) 1998 Harri Porten <porten@kde.org>\n"
-"(c) 1998 Mario Weilguni <mweilguni@kde.org>\n"
+"Soittaja ja käyttöliittymä pppd:lle\n"
 "\n"
-"Tämä ohjelma on julkaistu GNU GPL\n"
-"(GNU General Public License) lisenssillä."
+"(c) 1997, 1998\n"
+"    Bernd Johannes Wuebben <wuebben@kde.org>\n"
+"    Harri Porten <porten@kde.org>\n"
+"    Mario Weilguni <mweilguni@kde.org>\n"
+"\n"
+"Alkuperäinen tekijä: Bernd Johannes Wuebben\n"
+"Ylläpitäjät Harri Porten ja Mario Weilguni.\n"
+"Lähetä virhekuvaukset ylläpitäjille.\n"
+"\n"
+"Ohjelma on GNU GPL (GNU General Public License)\n"
+"lisenssin alainen."
 
 #: general.cpp:238
 msgid "Serial device"
@@ -988,7 +993,7 @@ msgstr "Vuonohjaus:"
 
 #: general.cpp:270
 msgid "None"
-msgstr ""
+msgstr "Ei mikään"
 
 #: general.cpp:279
 msgid ""
@@ -1047,7 +1052,6 @@ msgstr ""
 "suurempia nopeuksia)."
 
 #: general.cpp:375
-#, fuzzy
 msgid ""
 "To prevent other programs from accessing the\n"
 "modem while a connection is established, a\n"
@@ -1060,12 +1064,12 @@ msgid ""
 "<b>Default</b>: On"
 msgstr ""
 "Estääksesi muita ohjelmia käyttämästä modeemia\n"
-"yhteyden aikana luodaan tiedosto joka kertoo\n"
-"modeemin olevan käytössä. Tässä voit valita\n"
-"hakemiston jonne tiedosto luodaan.\n"
+"yhteyden aikana voidaan luoda tiedosto joka kertoo\n"
+"modeemin olevan käytössä. Linuxilla tiedosto on\n"
+"esimerkiksi <i>/var/lock/LCK..ttyS1</i>\n"
+"Tässä voit valita tehdäänkö lukitus vai ei.\n"
 "\n"
-"Älä koskea tähän ellet tiedä mitä teet. Arvolle\n"
-"ei ole oletusta koska se vaihtelee systeemistä toiseen."
+"<b>Oletus</b>: On"
 
 #: general.cpp:386
 msgid "Modem Timeout:"
@@ -1134,7 +1138,6 @@ msgid "Modem Asserts CD Line."
 msgstr "Modeemi asettaa CD-linjan."
 
 #: general.cpp:540
-#, fuzzy
 msgid ""
 "This controls how <i>kppp</i> detects that the modem\n"
 "is not responding. Unless you are having\n"
@@ -1142,11 +1145,11 @@ msgid ""
 "\n"
 "<b>Default</b>: off"
 msgstr ""
-"Tämä kontrolloi miten <i>kppp</i> havaitsee että\n"
+"Tämä kontrolloi miten <i>kppp</i> havaitsee, että\n"
 "modeemi ei vastaa komentoihin. Ellei sinulla ole\n"
 "ongelmia älä muuta tätä asetusta.\n"
 "\n"
-"<b>Oletusarvo</b>: on"
+"<b>Oletusarvo</b>: off"
 
 #: general.cpp:553
 msgid "Modem Commands"
@@ -1385,7 +1388,7 @@ msgstr "PPP"
 
 #: main.cpp:644
 msgid "Graph"
-msgstr ""
+msgstr "Graafi"
 
 #: main.cpp:818
 msgid "Details..."
@@ -1947,7 +1950,7 @@ msgstr ""
 
 #: ppplog.cpp:141
 msgid "You haven't started the PPP software on the peer system."
-msgstr ""
+msgstr "Et olet käynnistänyt PPP ohjelmistoa vastapäässä"
 
 #: ppplog.cpp:144
 msgid "Check that you supplied the correct username and password!"
@@ -1974,6 +1977,8 @@ msgid ""
 "You have passed an invalid option to pppd. See `man pppd' for a complete "
 "list of valid arguments."
 msgstr ""
+"Olet antanut virheellisen valitsimen pppd:lle. Katso `man pppd' saadaksesi "
+"täydellisen listan valitsimista."
 
 #: ppplog.cpp:170
 #, c-format
@@ -2030,25 +2035,3 @@ msgstr "kppp:n diagnoosi (arvailua):"
 #: ppplog.cpp:241
 msgid "Write to file"
 msgstr "Kirjoita tiedostoon"
-
-#~ msgid ""
-#~ "Do you use /dev/modem ? If so, you should specify the real device instead, "
-#~ "e.g. /dev/ttyS1 (COM2)."
-#~ msgstr ""
-#~ "Käytäkö /dev/modem laitetta ?. Jos käytät sinun tulisi määritellä, "
-#~ "todellinen laite esim. /dev/ttyS1 (COM2)."
-
-#~ msgid "Lock File Directory:"
-#~ msgstr "Lukkotiedoston hakemisto:"
-
-#~ msgid "Advanced Security"
-#~ msgstr "Edistynyt turvallisuus"
-
-#~ msgid "Allowed users"
-#~ msgstr "Sallitus käyttäjät"
-
-#~ msgid "Allowed groups"
-#~ msgstr "Sallitut ryhmät"
-
-#~ msgid "Ok"
-#~ msgstr "Ok"

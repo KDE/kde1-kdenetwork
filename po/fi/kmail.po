@@ -884,13 +884,12 @@ msgid "&Attach..."
 msgstr "Liitä..."
 
 #: kmcomposewin.cpp:531
-#, fuzzy
 msgid "Attach &Public Key"
-msgstr "Liitä tiedosto"
+msgstr "Liitä &Julkinen avain"
 
 #: kmcomposewin.cpp:533
 msgid "Attach My &Public Key"
-msgstr ""
+msgstr "Liitä &Julkinen avain"
 
 #: kmcomposewin.cpp:544
 msgid "&Save..."
@@ -962,11 +961,11 @@ msgstr "Liitä tiedosto"
 
 #: kmcomposewin.cpp:1245
 msgid "my pgp key"
-msgstr ""
+msgstr "pgp avaimeni"
 
 #: kmcomposewin.cpp:1273
 msgid "pgp key"
-msgstr ""
+msgstr "pgp avain"
 
 #: kmcomposewin.cpp:1294 kmreaderwin.cpp:721
 msgid "View..."
@@ -1103,7 +1102,6 @@ msgid "Warning: Bad signature from"
 msgstr "Varoitus: Huono allekirjoitus"
 
 #: kmreaderwin.cpp:435
-#, fuzzy
 msgid "unknown key ID"
 msgstr "tuntematon avain ID"
 
@@ -1584,12 +1582,11 @@ msgstr "PGP-turvallisuustarkastus"
 
 #: kpgp.cpp:769
 msgid "Please select the public key to insert"
-msgstr ""
+msgstr "Valitse liitettävä julkinen avain"
 
 #: kpgp.cpp:800
-#, fuzzy
 msgid "Select key"
-msgstr "Valitse kansio"
+msgstr "Valitse avain"
 
 #: kpgp.cpp:827
 msgid "PGP User Identity:"
@@ -1769,7 +1766,7 @@ msgstr "KMail virhe"
 
 #: kmaddrbook.cpp:26
 msgid "Storing the addressbook failed!\n"
-msgstr ""
+msgstr "Osoitekirjan tallennus epäonnistui!\n"
 
 #: kmaddrbookdlg.cpp:20
 msgid "Addressbook"

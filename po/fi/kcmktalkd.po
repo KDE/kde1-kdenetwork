@@ -24,12 +24,11 @@ msgstr "&Vastaaja"
 
 #: main.cpp:64
 msgid "&Forward"
-msgstr ""
+msgstr "&Edelleenohjaa"
 
 #: main.cpp:70
-#, fuzzy
 msgid "usage: kcmktalkd [-init | soundpage | answmachpage | forwmachpage ]\n"
-msgstr "käyttö: kcmktalkd [-init | soundpage | answmachpage]\n"
+msgstr "käyttö: kcmktalkd [-init | soundpage | answmachpage | forwmachpage ]\n"
 
 #: main.cpp:111
 msgid "KTalkd Configuration"
@@ -48,7 +47,6 @@ msgid "&Play sound"
 msgstr "&Soita ääni"
 
 #: soundpage.cpp:59
-#, fuzzy
 msgid "&Sound File"
 msgstr "Ääni&tiedosto"
 
@@ -156,15 +154,15 @@ msgstr "Viestin jätti vastaajaan %s@%s"
 
 #: forwmachpage.cpp:34
 msgid "Activate &forward"
-msgstr ""
+msgstr "Käytä &edelleenohjausta"
 
 #: forwmachpage.cpp:39
 msgid "&Destination (user or user@host)"
-msgstr ""
+msgstr "&Kohde (käyttäjä tai käyttäjä&isäntä)"
 
 #: forwmachpage.cpp:49
 msgid "Forward &method"
-msgstr ""
+msgstr "Edelleenohjaus&tapa"
 
 #: forwmachpage.cpp:54
 msgid ""
@@ -179,3 +177,13 @@ msgid ""
 "\n"
 "See Help for further explanations.\n"
 msgstr ""
+"FWA : Ohjaa vain ilmoitus. Kiinteä yhteys. Ei suositella.\n"
+"FWR : Ohjaa kaikki pyynnöt, muuta tietoja jos tarpeen. Kiinteä "
+"yhteys.\n"
+"FWT : Ohjaa kaikki pyynnöt ja juttele. Ei kiinteää yhteyttä.\n"
+"\n"
+"Suositeltava käyttö : FWT jos olet palomuurin takana (ja jos "
+"ktalkd\n"
+"näkee molemmat verkot), ja FWR muuten.\n"
+"\n"
+"Lue ohjetta saadaksesi lisää tietoja.\n"
