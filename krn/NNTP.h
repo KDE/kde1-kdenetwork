@@ -62,6 +62,7 @@ public:
     void save();
     void load();
     int  score();
+    bool refsLoaded;
     
     // robert's cache stuff
     bool canExpire();

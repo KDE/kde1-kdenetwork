@@ -39,13 +39,14 @@ extern GDBM_FILE artdb;
 
 Article::Article(void)
 {
-    setRead(false);
-    setAvailable(true);
-    setMarked (false);
+    isread=false;
+    isavail=true;
+    ismarked=false;
     refcount=0;
-    Refs.setAutoDelete(true);
     threadDepth=0;
-    setExpire(true);  // robert's cache stuff
+    expire=true;  // robert's cache stuff
+    refsLoaded=false;
+    Refs.setAutoDelete(true);
 }
 
 void Article::decref()
@@ -186,6 +187,7 @@ void Article::load()
 //gets the article info and data from the cache
 {
     QStrList tl;
+    tl.setAutoDelete(true);
     datum key;
     datum content;
 
@@ -236,6 +238,7 @@ void Article::load()
         }
     }
     free (content.dptr);
+    refsLoaded=true;
 }
 
 int Article::score()
@@ -250,17 +253,18 @@ bool Article::canExpire()  // robert's cache stuff
 
 void Article::setExpire(bool b)   // robert's cache stuff
 {
+  if (!refsLoaded) load();
   expire = b;
   save();
 }
 
 void Article::toggleExpire()   // robert's cache stuff
 {
+  if (!refsLoaded) load();
   if(expire)
     expire = false;
   else
     expire = true;
-
   save();
 }
 
@@ -550,6 +554,8 @@ void addToList(node *n,int dep,ArticleList *l)
         if (child->art)
         {
             l->append(child->art);
+            child->art->Refs.clear();
+            child->art->refsLoaded=false;
             child->art->threadDepth=dep;
             addToList (child,dep+1,l);
         }
@@ -564,6 +570,8 @@ void ArticleList::thread(bool)
     d->setAutoDelete(true);
     for (Article *iter=this->first();iter!=0;iter=this->next())
     {
+        if (!(iter->refsLoaded))
+            iter->load();
         do_insert(iter->ID,iter);
     }
     node *n=new node;
