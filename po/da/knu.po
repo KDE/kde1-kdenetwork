@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE NETWORK/knu\n"
 "POT-Creation-Date: 1999-01-23 02:09+0100\n"
-"PO-Revision-Date: 1999-01-18 17:00+CET-1\n"
+"PO-Revision-Date: 1999-01-26 17:00+CET-1\n"
 "Last-Translator: Erik Kjær Pedersen <erik@binghamton.edu>\n"
 "Language-Team: da <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -63,7 +63,7 @@ msgstr "R&yd output vindue"
 
 #: knu.cpp:266
 msgid "P&references..."
-msgstr "P&ræferancer"
+msgstr "P&ræferancer..."
 
 #: knu.cpp:281
 #, c-format
@@ -105,7 +105,7 @@ msgstr "&Vært:"
 
 #: CommandDlg.cpp:140
 msgid "&Go!"
-msgstr "&Kør"
+msgstr "&Kør!"
 
 #: CommandDlg.cpp:150
 msgid "&Stop"
@@ -156,7 +156,7 @@ msgstr "Sti&navn:"
 
 #: CommandDlg.cpp:533
 msgid "Additional &arguments:"
-msgstr "Ekstra &argumenter"
+msgstr "Ekstra &argumenter:"
 
 #: CommandDlg.cpp:558
 msgid "This command had been disabled in the configuration file."
@@ -212,7 +212,7 @@ msgstr "ns&lookup"
 
 #: TracerouteDlg.cpp:115
 msgid "&Maximum number of hops:"
-msgstr "&Maximalt antal hop"
+msgstr "&Maximalt antal hop:"
 
 #: HostDlg.cpp:112
 msgid "address (A)"
@@ -224,7 +224,7 @@ msgstr "navn (PTR)"
 
 #: HostDlg.cpp:114
 msgid "name server (NS)"
-msgstr "Navneserver"
+msgstr "Navneserver (NS)"
 
 #: HostDlg.cpp:115
 msgid "mail exchanger (MX)"
@@ -236,7 +236,7 @@ msgstr "alias (CNAME)"
 
 #: HostDlg.cpp:117
 msgid "start of authority (SOA)"
-msgstr "ibegyndelse på autoritet (SOA)"
+msgstr "begyndelse på autoritet (SOA)"
 
 #: HostDlg.cpp:118
 msgid "any record (ANY)"
@@ -244,7 +244,7 @@ msgstr "vilkårlig oplysning (ANY)"
 
 #: HostDlg.cpp:124
 msgid "Se&arch for:"
-msgstr "Led e&fter"
+msgstr "Led e&fter:"
 
 #: HostDlg.cpp:136 HostDlg.cpp:287
 msgid "default server"
@@ -252,8 +252,8 @@ msgstr "standard server"
 
 #: FingerDlg.cpp:95 HostDlg.cpp:145
 msgid "Ser&ver:"
-msgstr "Ser&ver"
+msgstr "Ser&ver:"
 
 #: FingerDlg.cpp:77
 msgid "&User:"
-msgstr ""
+msgstr "Br&uger:"

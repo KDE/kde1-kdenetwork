@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE NETWORK/ksirc\n"
 "POT-Creation-Date: 1999-01-21 02:02+0100\n"
-"PO-Revision-Date: 1999-01-19 17:00+CET-1\n"
+"PO-Revision-Date: 1999-01-26 17:00+CET-1\n"
 "Last-Translator: Erik Kjær Pedersen <erik@binghamton.edu>\n"
 "Language-Team: da <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -15,7 +15,7 @@ msgstr ""
 
 #: FilterRuleEditor.cpp:29
 msgid "Edit Filter Rules"
-msgstr ""
+msgstr "Redigerings filterregler"
 
 #: FilterRuleEditor.cpp:58 FilterRuleEditor.cpp:79
 #: FilterRuleEditorData.cpp:105
@@ -24,13 +24,15 @@ msgstr "Æ&ndr"
 
 #: FilterRuleEditor.cpp:74
 msgid "Missing Arguments"
-msgstr ""
+msgstr "Mangledne argumenter"
 
 #: FilterRuleEditor.cpp:75
 msgid ""
 "Cannot create a Rule since not\n"
 "all the fields are filled in."
 msgstr ""
+"Kan ikke lave en regel da ikke\n"
+"alle felter er udfyldt."
 
 #: FilterRuleEditorData.cpp:33
 msgid "Description:"
@@ -62,7 +64,7 @@ msgstr "Ned"
 
 #: KSircColour.cpp:33
 msgid "Colour Settings"
-msgstr ""
+msgstr "Farveindstillinger"
 
 #: KSircColourData.cpp:33
 msgid "Generic Text"
@@ -86,7 +88,7 @@ msgstr "Baggrund"
 
 #: dccDialog.cpp:22
 msgid "DCC Files Offered"
-msgstr ""
+msgstr "DCC filer tilbudt"
 
 #: dccDialogData.cpp:38
 msgid "&Get"
@@ -104,7 +106,7 @@ msgid ""
 "kSirc-ALPHA HAS EXPIRED!!\n"
 "Please upgrade or use a beta release"
 msgstr ""
-"kSirc Alpha udgaver han 8 ugers\n"
+"kSirc Alpha udgaver har en 8 ugers\n"
 "udløbsdato.\n"
 "\n"
 "kSirc-ALPHA ER UDLØBET!!\n"
@@ -124,7 +126,7 @@ msgstr ""
 
 #: open_top.cpp:26
 msgid "New Window For"
-msgstr ""
+msgstr "Nyt vindue for"
 
 #: open_topData.cpp:39
 msgid "Channel/Nick:"
@@ -140,7 +142,7 @@ msgstr "Ny server..."
 
 #: servercontroller.cpp:169
 msgid "&Join Channel..."
-msgstr "&Deltag i kanalen"
+msgstr "&Deltag i kanalen..."
 
 #: servercontroller.cpp:171
 msgid "&Connections"
@@ -148,7 +150,7 @@ msgstr "&Forbindelse"
 
 #: servercontroller.cpp:188 servercontroller.cpp:737
 msgid "&Colour Preferences..."
-msgstr "&Foretrukne farver"
+msgstr "&Foretrukne farver..."
 
 #: servercontroller.cpp:190 servercontroller.cpp:739
 msgid "&Global Fonts..."
@@ -164,7 +166,7 @@ msgstr "&Webserver indstillinger...."
 
 #: servercontroller.cpp:197 servercontroller.cpp:745
 msgid "&Preferences..."
-msgstr "&Præferencer: "
+msgstr "&Præferencer... "
 
 #: servercontroller.cpp:207
 msgid "Help on Colours..."
@@ -204,7 +206,7 @@ msgstr "&Afdyk"
 
 #: ssfeprompt.cpp:25
 msgid "Prompt"
-msgstr ""
+msgstr "Prompt"
 
 #: toplevel.cpp:140
 msgid "Lag in seconds to the server"
@@ -224,7 +226,7 @@ msgstr "&Brugere"
 
 #: welcomeWin.cpp:30
 msgid "Welcome to kSirc"
-msgstr ""
+msgstr "Velkommen til kSirc"
 
 #: welcomeWinData.cpp:35
 msgid "Show Again"
@@ -236,7 +238,7 @@ msgstr "Forkast"
 
 #: KSColourPicker/kscolourpicker.cpp:28
 msgid "kSirc Colour Picker"
-msgstr ""
+msgstr "kSirc farvevælger"
 
 #: KSColourPicker/kscolourpickerData.cpp:30
 msgid "Pick"
@@ -247,9 +249,8 @@ msgid "Sample Colour"
 msgstr "Eksempelfarve"
 
 #: KSCutDialog/KSCutDialog.cpp:27
-#, fuzzy
 msgid "Cut Window"
-msgstr "&Klip vinduet ud..."
+msgstr "Klip vinduet ud"
 
 #: KSCutDialog/KSCutDialogData.cpp:39
 msgid "Cop&y"
@@ -257,11 +258,11 @@ msgstr "&Kopier"
 
 #: KSOpenkSirc/open_ksirc.cpp:38
 msgid "Connect to Server"
-msgstr ""
+msgstr "Forbind til server"
 
 #: KSOpenkSirc/open_ksirc.cpp:186
 msgid "Not Avalable"
-msgstr ""
+msgstr "Ikke tilgængelig"
 
 #: KSOpenkSirc/open_ksircData.cpp:37
 msgid "&Connect"
@@ -343,23 +344,3 @@ msgstr "Trinstørrelse"
 #, c-format
 msgid "No such file \"%s\"!"
 msgstr "Ingen fil ved navn \"%s\"!"
-
-#, fuzzy
-#~ msgid "Colour"
-#~ msgstr "Eksempelfarve"
-
-#, fuzzy
-#~ msgid "Sample"
-#~ msgstr "Eksempelfarve"
-
-#, fuzzy
-#~ msgid "Servers"
-#~ msgstr "Server beskrivelse"
-
-#, fuzzy
-#~ msgid "Nick"
-#~ msgstr "Vælg"
-
-#, fuzzy
-#~ msgid "Real Name"
-#~ msgstr "Menunavn"

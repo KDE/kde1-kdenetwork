@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE NETWORK/kcmtalkd\n"
 "POT-Creation-Date: 1998-12-12 15:20+0100\n"
-"PO-Revision-Date: 1999-01-18 17:00+CET-1\n"
+"PO-Revision-Date: 1999-01-26 17:00+CET-1\n"
 "Last-Translator: Erik Kjær Pedersen <erik@binghamton.edu>\n"
 "Language-Team: da <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr "S&varmaskine"
 
 #: main.cpp:64
 msgid "&Forward"
-msgstr "&Send videre:"
+msgstr "&Send videre"
 
 #: main.cpp:70
 msgid "usage: kcmktalkd [-init | soundpage | answmachpage | forwmachpage ]\n"
@@ -35,7 +35,7 @@ msgstr "KTalkd indstilling"
 
 #: soundpage.cpp:46
 msgid "&Announcement program"
-msgstr "Annonceringsprogram"
+msgstr "&Annonceringsprogram"
 
 #: soundpage.cpp:53
 msgid "&Talk client"
@@ -51,7 +51,7 @@ msgstr "&Lydfil"
 
 #: soundpage.cpp:61
 msgid "Additional WAV files can be dropped onto the sound list."
-msgstr "Ekstra WAV-filer kan droppes ned på lydlisten"
+msgstr "Ekstra WAV-filer kan droppes ned på lydlisten."
 
 #: soundpage.cpp:76
 msgid "&Test"
@@ -78,7 +78,7 @@ msgid ""
 msgstr ""
 "Undskyld, men\n"
 "%s\n"
-"synes ikke at være en lydfil."
+"synes ikke at være en WAV-fil."
 
 #: soundpage.cpp:167
 msgid "Improper File Extension"
@@ -132,7 +132,7 @@ msgstr "&Modtag post selv når der ikke er tilbagemelding"
 
 #: answmachpage.cpp:74
 msgid "&Banner displayed on answering machine startup :"
-msgstr "&Banner som vises på den svarende maskine ved opstart"
+msgstr "&Banner som vises på den svarende maskine ved opstart :"
 
 #: answmachpage.cpp:83
 msgid ""
@@ -161,11 +161,11 @@ msgstr "Aktiver &videresend"
 
 #: forwmachpage.cpp:39
 msgid "&Destination (user or user@host)"
-msgstr "i&Mål (bruger eller bruger@vært)"
+msgstr "&Mål (bruger eller bruger@vært)"
 
 #: forwmachpage.cpp:49
 msgid "Forward &method"
-msgstr "Videresendelsemetode"
+msgstr "Videresendelse&metode"
 
 #: forwmachpage.cpp:54
 msgid ""
@@ -181,9 +181,9 @@ msgid ""
 "See Help for further explanations.\n"
 msgstr ""
 "FWA : Videresend kun annonceringer. Direkte forbindelse. Ikke anbefalet.\n"
-"FWR : Videresend alle forspørgsler, Æbdr info når nødvendigt. Direkte "
+"FWR : Videresend alle forspørgsler, Ændr info når nødvendigt. Direkte "
 "forbindelse.\n"
-"FWT : Videresedn alle forspørgsler og tag samtalen. Ingen direkte "
+"FWT : Videresend alle forspørgsler og tag samtalen. Ingen direkte "
 "forbindelse.\n"
 "\n"
 "Anbefalet brug: FWT Hvis du vil bruge det bag en brandmur (og hvis ktalkd\n"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE NETWORK/krn\n"
 "POT-Creation-Date: 1999-01-18 02:04+0100\n"
-"PO-Revision-Date: 1999-01-16 17:00+CET-1\n"
+"PO-Revision-Date: 1999-01-66 17:00+CET-1\n"
 "Last-Translator: Erik Kjær Pedersen <erik@binghamton.edu>\n"
 "Language-Team: da <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -15,7 +15,7 @@ msgstr ""
 
 #: main.cpp:219 main.cpp:232 main.cpp:246 main.cpp:264 main.cpp:279
 msgid "KRN-Missing Configuration info"
-msgstr "Manglende KRN indstillingsinformation"
+msgstr "Manglende KRN indstillingsinfo"
 
 #: main.cpp:220
 msgid "Please enter your email adress"
@@ -132,7 +132,7 @@ msgstr "Slette indstillinger..."
 
 #: groupdlg.cpp:174
 msgid "Printing Options..."
-msgstr "Trykke indstillinger"
+msgstr "Udskriftsindstillinger"
 
 #: groupdlg.cpp:181
 msgid "About Krn..."
@@ -168,11 +168,11 @@ msgstr "Undersøg om der er ulæste artikler"
 
 #: groupdlg.cpp:365 groupdlg.cpp:587 groupdlg.cpp:929
 msgid "All Newsgroups."
-msgstr "Alle nyhedsgrupper"
+msgstr "Alle nyhedsgrupper."
 
 #: groupdlg.cpp:475 groupdlg.cpp:569
 msgid "Subscribed Newsgroups."
-msgstr "Abonnerede nyhedsgrupper"
+msgstr "Abonnerede nyhedsgrupper."
 
 #: groupdlg.cpp:524
 msgid "Disconnected"
@@ -280,7 +280,7 @@ msgstr "Led efter i Altavista"
 
 #: artdlg.cpp:172 artdlg.cpp:259
 msgid "Reply by Mail"
-msgstr "Svar pr e-post:"
+msgstr "Svar pr e-post"
 
 #: artdlg.cpp:173
 msgid "Post Followup"
@@ -292,7 +292,7 @@ msgstr "Send & Svar"
 
 #: artdlg.cpp:175 artdlg.cpp:265
 msgid "Forward"
-msgstr "Send videre:"
+msgstr "Send videre"
 
 #: artdlg.cpp:181 artdlg.cpp:249
 msgid "Tagged"
@@ -376,7 +376,7 @@ msgstr "Gem artiklen"
 
 #: artdlg.cpp:257
 msgid "Print Article"
-msgstr "Tryk artiklen"
+msgstr "Udskriv artiklen"
 
 #: artdlg.cpp:261
 msgid "Post a Followup"
@@ -482,7 +482,7 @@ msgstr "Rigtige navn"
 
 #: identDlg.cpp:67
 msgid "E-mail Address"
-msgstr "E-post Adresse:"
+msgstr "E-post Adresse"
 
 #: identDlg.cpp:73
 msgid "Organization"
@@ -510,7 +510,7 @@ msgstr "Forbind ved opstart"
 
 #: NNTPConfigDlg.cpp:71
 msgid "Connect without asking"
-msgstr "Forbind uden at spørge."
+msgstr "Forbind uden at spørge"
 
 #: NNTPConfigDlg.cpp:75
 msgid "Authenticate"
@@ -546,7 +546,7 @@ msgstr "Credits & Tak"
 
 #: aboutDlg.cpp:66
 msgid "And Many thanks to:"
-msgstr "Og mange tak til"
+msgstr "Og mange tak til:"
 
 #: aboutDlg.cpp:71
 msgid "All KDE developers"
@@ -602,7 +602,7 @@ msgstr "I linien"
 
 #: fontsDlg.cpp:67
 msgid "Font Size:"
-msgstr "Skrift størrelse"
+msgstr "Skriftstørrelse:"
 
 #: fontsDlg.cpp:70
 msgid "Small"
@@ -790,7 +790,7 @@ msgstr "&Stavekontrollør..."
 
 #: kmcomposewin.cpp:494
 msgid "&Charsets..."
-msgstr "&Tegnsæt"
+msgstr "&Tegnsæt..."
 
 #: kmcomposewin.cpp:507
 msgid "&All Fields"
@@ -842,7 +842,7 @@ msgstr "Vedhæng min &offentlige nøgle"
 
 #: kmcomposewin.cpp:532
 msgid "&Attach..."
-msgstr "&Vedhæng"
+msgstr "&Vedhæng..."
 
 #: kmcomposewin.cpp:535
 msgid "&Save..."
@@ -870,7 +870,7 @@ msgstr "Gem brev til fil"
 
 #: kmcomposewin.cpp:573
 msgid "Print message"
-msgstr "Tryk brev"
+msgstr "Udskriv brev"
 
 #: kmcomposewin.cpp:582
 msgid "Cut selection"
@@ -890,7 +890,7 @@ msgstr "Vedhæng fil"
 
 #: kmcomposewin.cpp:597
 msgid "Open addressbook..."
-msgstr "Åbn addressebog"
+msgstr "Åbn addressebog..."
 
 #: kmcomposewin.cpp:604
 msgid "sign message"
@@ -946,7 +946,7 @@ msgstr "Vedhæng..."
 
 #: kmcomposewin.cpp:1287 kmreaderwin.cpp:782
 msgid "View Attachment: "
-msgstr "Se vedhæng"
+msgstr "Se vedhæng: "
 
 #: kmcomposewin.cpp:1458 kpgp.cpp:546
 msgid ""
@@ -1022,15 +1022,15 @@ msgstr "Initialiserer sendeprocessen..."
 
 #: kmsender.cpp:261
 msgid "Sending message: "
-msgstr "Sender brevet"
+msgstr "Sender brevet: "
 
 #: kmsender.cpp:289
 msgid "Done sending messages."
-msgstr "Færdig med at sende brevene"
+msgstr "Færdig med at sende brevene."
 
 #: kmsender.cpp:308
 msgid "Sending failed:"
-msgstr "Det mislykkedes at sende"
+msgstr "Det mislykkedes at sende:"
 
 #: kmsender.cpp:461
 msgid ""
@@ -1062,7 +1062,7 @@ msgstr ""
 
 #: kmsender.cpp:623
 msgid "Cannot close SMTP connection."
-msgstr "Kan ikke lukke SMTP forbindelsen"
+msgstr "Kan ikke lukke SMTP forbindelsen."
 
 #: kmsender.cpp:673
 msgid "transmitting message"
@@ -1096,7 +1096,7 @@ msgstr "KRN - Artikelsøger"
 
 #: findArtDlg.cpp:29
 msgid "Find Articles With:"
-msgstr "Find artikler med"
+msgstr "Find artikler med:"
 
 #: findArtDlg.cpp:34 rulesDlg.cpp:106
 msgid "In Field:"
@@ -1203,7 +1203,7 @@ msgid ""
 "Failed to make a backup copy of %s.\n"
 "Continue anyway ?"
 msgstr ""
-"Det mislykkedes at lave en backupfil\n"
+"Det mislykkedes at lave en sikkerhedskopi\n"
 "af %s.\n"
 " Fortsæt alligevel?"
 
@@ -1243,7 +1243,7 @@ msgstr "Brevdel egenskaber"
 
 #: kmmsgpartdlg.cpp:62
 msgid "Name:"
-msgstr "Navn"
+msgstr "Navn:"
 
 #: kmmsgpartdlg.cpp:73
 msgid "Description:"
@@ -1251,7 +1251,7 @@ msgstr "Beskrivelse:"
 
 #: kmmsgpartdlg.cpp:83
 msgid "Encoding:"
-msgstr "Indkoder: "
+msgstr "Indkoder:"
 
 #: kmmsgpartdlg.cpp:89
 msgid "none (8bit)"
@@ -1349,7 +1349,7 @@ msgid ""
 "Please check your PATH is set correctly."
 msgstr ""
 "Kunne ikke finde PGP programmet.\n"
-"Se efter om søgestien PATH er sat korrekt"
+"Se efter om søgestien PATH er sat korrekt."
 
 #: kpgp.cpp:207
 msgid "The pass phrase is missing."
@@ -1439,7 +1439,7 @@ msgstr "Identitet"
 
 #: kpgp.cpp:771
 msgid "PGP User Identity:"
-msgstr "PGP bruger identitet"
+msgstr "PGP bruger identitet:"
 
 #: kpgp.cpp:782
 msgid "Store passphrase"
@@ -1501,7 +1501,7 @@ msgstr "Artikelkroppen"
 
 #: expireDlg.cpp:55
 msgid "Article Headers:"
-msgstr "Artikel hoveder"
+msgstr "Artikel hoveder:"
 
 #: printdlg.cpp:21
 msgid "KRN - Print Settings"
@@ -1509,7 +1509,7 @@ msgstr "KRN - tryk indstillinger"
 
 #: printdlg.cpp:26
 msgid "KRN - Printing Settings"
-msgstr "KRN - tryk indstillinger"
+msgstr "KRN - udskriftsindstillinger"
 
 #: printdlg.cpp:33
 msgid "General"
@@ -1517,27 +1517,27 @@ msgstr "Generel"
 
 #: printdlg.cpp:35
 msgid "Printing System"
-msgstr "Trykkesystem"
+msgstr "Udskriftssystem"
 
 #: printdlg.cpp:37
 msgid "Use HTML Printing"
-msgstr "Brug HTML trykkemetode"
+msgstr "Brug HTML udskriftsemetode"
 
 #: printdlg.cpp:40
 msgid "Use Direct Printing"
-msgstr "Brug direkte tryk"
+msgstr "Brug direkte udskrift"
 
 #: printdlg.cpp:45
 msgid "Direct Printing"
-msgstr "Direkte tryk"
+msgstr "Direkte udskrift"
 
 #: printdlg.cpp:48
 msgid "Print using:"
-msgstr "Tryk idet du bruger"
+msgstr "Udskriv idet du bruger:"
 
 #: printdlg.cpp:52
 msgid "Feed it with:"
-msgstr "Put følgende ind i den"
+msgstr "Put følgende ind i den:"
 
 #: printdlg.cpp:54
 msgid "Postscript"
@@ -1637,7 +1637,7 @@ msgstr "Ukendte tegn i anførselstegn"
 
 #: expirestatusdlg.cpp:35
 msgid "Please wait a minute, I am expiring!"
-msgstr ""
+msgstr "Vent venligst et minut, jeg udløber!"
 
 #: kpgpbase.cpp:315
 msgid "Bad pass Phrase; couldn't sign"
