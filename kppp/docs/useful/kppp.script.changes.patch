@@ -1,0 +1,702 @@
+diff -cr kppp/kppp/Makefile.in kppp+loops/kppp/Makefile.in
+*** kppp/kppp/Makefile.in	Thu Dec 11 22:32:21 1997
+--- kppp+loops/kppp/Makefile.in	Fri Dec 12 21:27:45 1997
+***************
+*** 63,68 ****
+--- 63,69 ----
+  		pppdargs.cpp \
+  		pppdata.cpp \
+  		scriptedit.cpp\
++ 		pwentry.cpp \
+  		modeminfo.cpp\
+  		pppstatdlg.cpp\
+  		pppstats.cpp\
+***************
+*** 87,92 ****
+--- 88,94 ----
+  		pppdargs.h \
+  		pppdata.h \
+  		scriptedit.h\
++ 		pwentry.h \
+  		modeminfo.h\
+  		pppstatdlg.h\
+  		miniterm.h\
+***************
+*** 109,114 ****
+--- 111,117 ----
+  		pppdargs.o \
+  		pppdata.o \
+  		scriptedit.o\
++ 		pwentry.o\
+  		modeminfo.o\
+  		pppstatdlg.o\
+  		pppstats.o\
+***************
+*** 129,134 ****
+--- 132,138 ----
+  		moc_modemcmds.o \
+  		moc_pppdargs.o \
+  		moc_scriptedit.o\
++ 		moc_pwentry.o\
+  		moc_modeminfo.o\
+  		moc_pppstatdlg.o\
+  		moc_miniterm.o\
+***************
+*** 147,152 ****
+--- 151,157 ----
+  		moc_modemcmds.cpp \
+  		moc_pppdargs.cpp \
+  		moc_scriptedit.cpp\
++ 		moc_pwentry.cpp\
+  		moc_modeminfo.cpp\
+  		moc_pppstatdlg.cpp\
+  		moc_miniterm.cpp\
+***************
+*** 263,268 ****
+--- 268,276 ----
+  moc_scriptedit.o: moc_scriptedit.cpp \
+  		scriptedit.h \
+  
++ moc_pwentry.o: moc_pwentry.cpp \
++ 		pwentry.h \
++ 
+  moc_miniterm.cpp : miniterm.cpp miniterm.h
+  	$(MOC) miniterm.h -o moc_miniterm.cpp
+  
+***************
+*** 298,303 ****
+--- 306,314 ----
+  
+  moc_scriptedit.cpp: scriptedit.h
+  	$(MOC) scriptedit.h -o moc_scriptedit.cpp
++ 
++ moc_pwentry.cpp: pwentry.h
++ 	$(MOC) pwentry.h -o moc_pwentry.cpp
+  
+  moc_modeminfo.cpp: modeminfo.h
+  	$(MOC) modeminfo.h -o moc_modeminfo.cpp
+Only in kppp+loops/kppp: Makefile.in.orig
+diff -cr kppp/kppp/accounts.cpp kppp+loops/kppp/accounts.cpp
+*** kppp/kppp/accounts.cpp	Thu Dec 11 22:32:22 1997
+--- kppp+loops/kppp/accounts.cpp	Fri Dec 12 21:27:45 1997
+***************
+*** 291,309 ****
+      ok = true;
+  
+      if(result == QDialog::Accepted) {
+!       if(dial_w->save()) {
+! 	ip_w->save();
+! 	dns_w->save();
+! 	gateway_w->save();
+! 	script_w->save();
+! 	acct->save();
+!       }
+!       else {
+! 	QMessageBox::warning(this, "Error", 
+  			 "You must enter a unique\naccount name");
+! 	ok = false;
+        }
+!     }    
+    }
+    
+   delete tabWindow;
+--- 291,314 ----
+      ok = true;
+  
+      if(result == QDialog::Accepted) {
+!       if (script_w->check()) {
+!           if(dial_w->save()) {
+! 		ip_w->save();
+! 		dns_w->save();
+! 		gateway_w->save();
+! 		script_w->save();
+! 		acct->save();
+!          } else {
+! 		QMessageBox::warning(this, "Error", 
+  			 "You must enter a unique\naccount name");
+! 		ok = false;
+! 	 }
+!       } else {
+! 	      QMessageBox::warning(this, "Error", 
+! 			"Login script has unbalanced Loop Start/End" );
+! 	      ok = false;
+        }
+!     }
+    }
+    
+   delete tabWindow;
+Only in kppp+loops/kppp: accounts.cpp.orig
+diff -cr kppp/kppp/connect.cpp kppp+loops/kppp/connect.cpp
+*** kppp/kppp/connect.cpp	Thu Dec 11 22:32:22 1997
+--- kppp+loops/kppp/connect.cpp	Fri Dec 12 21:27:45 1997
+***************
+*** 63,68 ****
+--- 63,72 ----
+  
+    vmain = 0;
+    expecting = false;
++ 
++   loopnest = 0;
++   loopend = false;
++ 
+    pausing = false;
+    scriptindex = 0;
+    myreadbuffer = "";
+***************
+*** 110,115 ****
+--- 114,120 ----
+    
+    connect(this,SIGNAL(if_waiting_signal()),this,SLOT(if_waiting_slot()));
+  
++   prompt = new PWEntry( NULL, "pw" );         
+    if_timer = new QTimer(this);
+    connect(if_timer,SIGNAL(timeout()),SLOT(if_waiting_slot()));
+  
+***************
+*** 326,331 ****
+--- 331,337 ----
+          return;
+        }
+  
++ 
+        if(strcmp(gpppdata.scriptType(scriptindex), "Expect") == 0) {
+          QString bm = "Expecting ";
+          bm += gpppdata.script(scriptindex);
+***************
+*** 394,399 ****
+--- 400,499 ----
+  	return;
+        }
+   
++       if(strcmp(gpppdata.scriptType(scriptindex), "Prompt") == 0) {
++ 	QString bm = "prompting ";
++ 	bm += gpppdata.script(scriptindex);
++ 	messg->setText(bm);
++ 	p_xppp->debugwindow->statusLabel(bm);
++ 
++ 	/* if not around yet, then post window... */
++ 	if (prompt->Consumed()) {
++ 	   if (!(prompt->isVisible())) {
++ 		prompt->setPrompt(gpppdata.script(scriptindex));
++ 		prompt->setEchoModeNormal();
++ 	        prompt->show();
++ 	   }
++ 	} else {
++ 	    /* if prompt withdrawn ... then, */
++ 	    if (!(prompt->isVisible())) {
++ 	    	writeline(prompt->text());
++ 	        prompt->setConsumed();
++ 	        scriptindex++;
++         	return;
++ 	    }
++ 	    /* replace timeout value */
++ 	}
++       }
++ 
++       if(strcmp(gpppdata.scriptType(scriptindex), "Password") == 0) {
++ 	QString bm = "pwprompting ";
++ 	bm += gpppdata.script(scriptindex);
++ 	messg->setText(bm);
++ 	p_xppp->debugwindow->statusLabel(bm);
++ 
++ 	/* if not around yet, then post window... */
++ 	if (prompt->Consumed()) {
++ 	   if (!(prompt->isVisible())) {
++ 		prompt->setPrompt(gpppdata.script(scriptindex));
++ 		prompt->setEchoModePassword();
++ 	        prompt->show();
++ 	   }
++ 	} else {
++ 	    /* if prompt withdrawn ... then, */
++ 	    if (!(prompt->isVisible())) {
++ 	    	writeline(prompt->text());
++ 	        prompt->setConsumed();
++ 	        scriptindex++;
++         	return;
++ 	    }
++ 	    /* replace timeout value */
++ 	}
++       }
++ 
++       if(strcmp(gpppdata.scriptType(scriptindex), "LoopStart") == 0) {
++ 
++         QString bm = "LoopStart ";
++         bm += gpppdata.script(scriptindex);
++ 
++ 	if ( loopnest > (maxloopnest-2) ) {
++ 		bm += "ERROR: Nested too deep, ignored.";
++ 		vmain=20;
++ 		scriptindex++;
++ 		cancelbutton();
++ 	        QMessageBox::warning( 0, "Error", "Loops nested too deeply!");
++ 	} else {
++         	setExpect(gpppdata.script(scriptindex));
++ 		loopstartindex[loopnest] = scriptindex + 1;
++ 		loopstr[loopnest] = gpppdata.script(scriptindex);
++ 		loopend = false;
++ 		loopnest++;
++ 	}
++ 	messg->setText(bm);
++ 	p_xppp->debugwindow->statusLabel(bm);
++ 
++ 	scriptindex++;
++       }
++ 
++       if(strcmp(gpppdata.scriptType(scriptindex), "LoopEnd") == 0) {
++         QString bm = "LoopEnd ";
++         bm += gpppdata.script(scriptindex);
++ 	if ( loopnest <= 0 ) {
++ 		bm = "LoopEnd without mathing Start! Line: " + bm ;
++ 		vmain=20;
++ 		scriptindex++;
++ 		cancelbutton();
++ 	        QMessageBox::warning( 0, "Error", bm );
++ 		return;
++ 	} else {
++         	setExpect(gpppdata.script(scriptindex));
++ 		loopnest--;
++ 		loopend = true;
++ 	}
++ 	messg->setText(bm);
++ 	p_xppp->debugwindow->statusLabel(bm);
++ 
++ 	scriptindex++;
++       }
+     }
+    }
+  
+***************
+*** 547,554 ****
+--- 647,669 ----
+        QString ts = "Found: ";  
+        ts += expectstr;                 
+        p_xppp->debugwindow->statusLabel(ts);
++       if (loopend) {
++ 	loopend=false;
++       }
++       return;
++     }
++     if (loopend && readbuffer.contains(loopstr[loopnest])) {
++       expecting = false;
++       readbuffer = "";
++       QString ts = "Looping: ";  
++       ts += loopstr[loopnest];
++       p_xppp->debugwindow->statusLabel(ts);
++       scriptindex = loopstartindex[loopnest];
++       loopend = false;
++       loopnest++;
+      }
+    }
++   
+  }
+  
+  
+***************
+*** 559,564 ****
+--- 674,680 ----
+  }
+  
+  
++ 
+  void ConnectWidget::cancelbutton() {
+  
+    readtimer->stop();
+***************
+*** 579,584 ****
+--- 695,706 ----
+    p_xppp->con_win->stopClock();
+    closetty();
+    unlockdevice();
++ 
++   //abort prompt window...
++   if (prompt->isVisible()) {
++   	prompt->hide();
++   }
++   prompt->setConsumed();
+  }
+  
+  
+Only in kppp+loops/kppp: connect.cpp.orig
+diff -cr kppp/kppp/connect.h kppp+loops/kppp/connect.h
+*** kppp/kppp/connect.h	Thu Dec 11 22:32:22 1997
+--- kppp+loops/kppp/connect.h	Fri Dec 12 21:43:09 1997
+***************
+*** 50,55 ****
+--- 50,57 ----
+  #include "debug.h"
+  #include "pppdata.h"
+  
++ #include "pwentry.h"
++ 
+  extern QApplication *qApp;
+  
+  class ConnectWidget : public QWidget {
+***************
+*** 60,66 ****
+    
+    ConnectWidget(QWidget *parent=0, const char *name=0);
+    ~ConnectWidget();
+! 
+  
+  
+  public:
+--- 62,68 ----
+    
+    ConnectWidget(QWidget *parent=0, const char *name=0);
+    ~ConnectWidget();
+!   
+  
+  
+  public:
+***************
+*** 97,102 ****
+--- 99,111 ----
+  private:
+    int vmain;
+    int scriptindex;
++ 
++   static const int maxloopnest=(MAX_SCRIPT_ENTRIES/2);
++   int loopnest;
++   int loopstartindex[maxloopnest];
++   bool loopend;
++   QString loopstr[maxloopnest];
++ 
+    bool semaphore;
+    QTimer *inittimer;
+    QTimer *timeout_timer;
+***************
+*** 114,119 ****
+--- 123,129 ----
+    QString readbuffer;
+  
+    bool pausing;
++   PWEntry *prompt;
+  
+    int scriptTimeout;
+    QTimer *pausetimer;
+Only in kppp+loops/kppp: connect.h.orig
+diff -cr kppp/kppp/docs/kppp-4.html kppp+loops/kppp/docs/kppp-4.html
+*** kppp/kppp/docs/kppp-4.html	Thu Dec 11 22:32:24 1997
+--- kppp+loops/kppp/docs/kppp-4.html	Fri Dec 12 21:27:46 1997
+***************
+*** 115,120 ****
+--- 115,132 ----
+  <LI>Timeout: change the default timeout to the specified number of seconds
+  dynamically during script execution. You can change the timeout several times
+  during script execution if necessary.</LI>
++ <LI>Prompt: Prompt the kppp user to enter a string, given the specified
++ string as a hint.  The user will see what is typed.
++ <LI>Password: Prompt the kppp user to enter a string, given the specified
++ string as a hint.  An asterisk will be printed for each character typed.
++ <LI>LoopStart: kppp will wait for the specified string to be received.
++ It will save the string for use by LoopEnd
++ <LI>LoopEnd: kppp will wait for the specified string to be received to
++ exit the loop.  If the string given by the corresponding LoopStart is
++ received first, it will trigger a jump to the line after the LoopStart,
++ enabling repetition of username/password style paired dialogs.
++ 
++ 
+  </UL>
+  </P>
+  
+Only in kppp+loops/kppp/docs: kppp-4.html.orig
+diff -cr kppp/kppp/edit.cpp kppp+loops/kppp/edit.cpp
+*** kppp/kppp/edit.cpp	Thu Dec 11 22:32:22 1997
+--- kppp+loops/kppp/edit.cpp	Fri Dec 12 21:27:46 1997
+***************
+*** 116,121 ****
+--- 116,122 ----
+  }
+  
+  
++ 
+  bool DialWidget::save() {
+    //fist check to make sure that the account name is unique!
+    if(strcmp(connectname_l->text(), "") == 0 ||
+***************
+*** 459,464 ****
+--- 460,486 ----
+  }
+  
+  
++ bool ScriptWidget::check() {
++   uint lstart = 0;
++   uint lend  = 0;
++   uint errcnt = 0;
++ 
++   if(sl->count() > 0)   {
++     for( uint i=0; i <= sl->count()-1; i++) {
++ 	if ( 0 == strcmp( "LoopStart", stl->text(i)) )  {
++ 		lstart++;
++         }
++ 	if ( 0 == strcmp( "LoopEnd", stl->text(i)) )  {
++ 		lend++;
++         }
++ 	if ( lend > lstart ) errcnt++;
++     }
++     return ( (errcnt == 0 ) && (lstart == lend) );
++   } 
++   return true;
++ }
++ 
++ 
+  void ScriptWidget::save() {
+  
+    if(sl->count() > 0)   
+***************
+*** 534,539 ****
+--- 556,581 ----
+        sl->insertItem(se->text());
+        break;
+  
++     case ScriptEdit::Prompt:
++       stl->insertItem("Prompt");
++       sl->insertItem(se->text());
++       break;
++ 
++     case ScriptEdit::Password:
++       stl->insertItem("Password");
++       sl->insertItem(se->text());
++       break;
++ 
++     case ScriptEdit::LoopStart:
++       stl->insertItem("LoopStart");
++       sl->insertItem(se->text());
++       break;
++ 
++     case ScriptEdit::LoopEnd:
++       stl->insertItem("LoopEnd");
++       sl->insertItem(se->text());
++       break;
++ 
+      default:
+        break;
+    }
+***************
+*** 582,587 ****
+--- 624,649 ----
+  
+      case ScriptEdit::Timeout:
+        stl->insertItem("Timeout", stl->currentItem());
++       sl->insertItem(se->text(), sl->currentItem());
++       break;
++ 
++     case ScriptEdit::Prompt:
++       stl->insertItem("Prompt", stl->currentItem());
++       sl->insertItem(se->text(), sl->currentItem());
++       break;
++ 
++     case ScriptEdit::Password:
++       stl->insertItem("Password", stl->currentItem());
++       sl->insertItem(se->text(), sl->currentItem());
++       break;
++ 
++     case ScriptEdit::LoopStart:
++       stl->insertItem("LoopStart", stl->currentItem());
++       sl->insertItem(se->text(), sl->currentItem());
++       break;
++ 
++     case ScriptEdit::LoopEnd:
++       stl->insertItem("LoopEnd", stl->currentItem());
+        sl->insertItem(se->text(), sl->currentItem());
+        break;
+  
+Only in kppp+loops/kppp: edit.cpp.orig
+diff -cr kppp/kppp/edit.h kppp+loops/kppp/edit.h
+*** kppp/kppp/edit.h	Thu Dec 11 22:32:22 1997
+--- kppp+loops/kppp/edit.h	Fri Dec 12 21:27:46 1997
+***************
+*** 175,180 ****
+--- 175,181 ----
+  
+  public slots:
+    void save();
++   bool check();
+  
+  private slots:
+    void addButton();
+Only in kppp+loops/kppp: edit.h.orig
+diff -cr kppp/kppp/pwentry.cpp kppp+loops/kppp/pwentry.cpp
+*** kppp/kppp/pwentry.cpp	Fri Dec 12 22:38:00 1997
+--- kppp+loops/kppp/pwentry.cpp	Fri Dec 12 21:27:46 1997
+***************
+*** 0 ****
+--- 1,56 ----
++ 
++ 
++ #include <stdio.h>
++ #include "pwentry.h"
++ 
++ PWEntry::PWEntry( QWidget *parent, const char *name )
++ 	: QWidget(parent, name) {
++ 
++     setGeometry( 300, 300, 150, 70 );
++ 
++     pw = new QLineEdit( this, "le" );
++     pw->setGeometry( 10, 40, 130, 20 );
++ 
++     pl = new QLabel( pw, "Enter Password: ", this );
++     pl->setFont( QFont( "helvetica", 12, QFont::Normal ) ); 
++     pl->setGeometry( 10, 10, 130, 20 );
++ 
++     pw->setEchoMode( QLineEdit::Password ); 
++     connect( pw, SIGNAL(returnPressed()), this, SLOT(hide()) );
++     setCaption("Password Prompt");
++     pw->setText("Hello");
++     pw->setFont( QFont( "helvetica", 12, QFont::Normal ) ); 
++ 
++     isconsumed = TRUE;
++ }
++ 
++ const char *PWEntry::text() { return (pw->text()); }
++ 
++ void PWEntry::setEchoModeNormal() { pw->setEchoMode(QLineEdit::Normal); }
++ void PWEntry::setEchoModePassword() { pw->setEchoMode(QLineEdit::Password); }
++ 
++ void PWEntry::setPrompt(const char* p) {
++     pl->setText(p);
++ 
++ }
++ 
++ void PWEntry::show() {
++ 
++     pw->setText("");
++     isconsumed = FALSE;
++     QWidget::show();
++ }
++ 
++ bool PWEntry::Consumed() {
++     return(isconsumed);
++ }
++ 
++ void PWEntry::setConsumed() {
++     isconsumed = TRUE;
++ }
++ 
++ void PWEntry::hide() {
++   QWidget::hide();
++   return;
++ }
++ 
+Only in kppp+loops/kppp: pwentry.cpp.orig
+diff -cr kppp/kppp/pwentry.h kppp+loops/kppp/pwentry.h
+*** kppp/kppp/pwentry.h	Fri Dec 12 22:37:44 1997
+--- kppp+loops/kppp/pwentry.h	Fri Dec 12 21:27:46 1997
+***************
+*** 0 ****
+--- 1,38 ----
++ 
++ #ifndef PWENTRY_H
++ #define PWENTRY_H
++  
++ #include <qwidget.h>
++ #include <qpushbt.h>
++ #include <qlined.h>
++ #include <qlabel.h>
++ 
++ 
++ class PWEntry : public QWidget {
++ 	Q_OBJECT
++ public:
++    PWEntry( QWidget *parent=0,  const char *name=0 );   
++    bool Consumed();
++    void setConsumed();
++    const char *text();
++    void setPrompt( const char * t = "Enter Password:");
++ 
++ public slots:
++     void setEchoModeNormal();
++     void setEchoModePassword();
++     void hide();
++     void show();
++ 
++ signals:
++     void returnPressed();
++ 
++ protected:
++ 
++ private:
++     QLineEdit *pw;
++     QLabel *pl;
++     bool isconsumed;
++ 
++ };
++  
++ #endif
+Only in kppp+loops/kppp: pwentry.h.orig
+diff -cr kppp/kppp/scriptedit.cpp kppp+loops/kppp/scriptedit.cpp
+*** kppp/kppp/scriptedit.cpp	Thu Dec 11 22:32:23 1997
+--- kppp+loops/kppp/scriptedit.cpp	Fri Dec 12 21:27:46 1997
+***************
+*** 40,45 ****
+--- 40,49 ----
+    st->insertItem("Hangup");
+    st->insertItem("Answer");
+    st->insertItem("Timeout (sec)");
++   st->insertItem("Password");
++   st->insertItem("Prompt");
++   st->insertItem("LoopStart");
++   st->insertItem("LoopEnd");
+    connect(st, SIGNAL(activated(int)), SLOT(setType(int)));
+  
+    se = new QLineEdit(this, "se");
+***************
+*** 97,102 ****
+--- 101,126 ----
+      break;
+  
+    case Timeout:
++     se->setText("");
++     se->setEnabled(TRUE);
++     break;
++ 
++   case Prompt:
++     se->setText("");
++     se->setEnabled(TRUE);
++     break;
++ 
++   case Password:
++     se->setText("");
++     se->setEnabled(TRUE);
++     break;
++ 
++   case LoopStart:
++     se->setText("");
++     se->setEnabled(TRUE);
++     break;
++ 
++   case LoopEnd:
+      se->setText("");
+      se->setEnabled(TRUE);
+      break;
+Only in kppp+loops/kppp: scriptedit.cpp.orig
+diff -cr kppp/kppp/scriptedit.h kppp+loops/kppp/scriptedit.h
+*** kppp/kppp/scriptedit.h	Thu Dec 11 22:32:23 1997
+--- kppp+loops/kppp/scriptedit.h	Fri Dec 12 21:27:46 1997
+***************
+*** 60,66 ****
+  		 Pause = 2,
+  		 Hangup = 3,
+  		 Answer = 4,
+! 		 Timeout = 5 };
+  };
+  
+  #endif
+--- 60,70 ----
+  		 Pause = 2,
+  		 Hangup = 3,
+  		 Answer = 4,
+! 		 Timeout = 5, 
+! 		 Password = 6,
+! 		 Prompt = 7,
+! 		 LoopStart = 8,
+! 		 LoopEnd = 9 };
+  };
+  
+  #endif
+Only in kppp+loops/kppp: scriptedit.h.orig
+Only in kppp+loops/po: Makefile
+Only in kppp+loops/po/de: Makefile
+Only in kppp+loops/po/fi: Makefile
+Only in kppp+loops/po/fr: Makefile
+Only in kppp+loops/po/pt: Makefile

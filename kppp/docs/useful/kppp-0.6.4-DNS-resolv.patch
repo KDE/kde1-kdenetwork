@@ -1,0 +1,193 @@
+diff -ur kppp/connect.cpp kppp.dns-patch/connect.cpp
+--- kppp/connect.cpp	Sun Dec 14 13:22:02 1997
++++ kppp.dns-patch/connect.cpp	Sun Dec 14 13:23:05 1997
+@@ -1114,7 +1114,8 @@
+ 
+ }  
+ 
+-// Replace the DNS domain entry in the /etc/resolv.conf file
++// Replace the DNS domain entry in the /etc/resolv.conf file and
++// disable the nameserver entries if option is enabled
+ void add_domain(const char *domain) {
+ 
+   int fd;
+@@ -1144,7 +1145,8 @@
+       write(fd, " \t\t#kppp temp entry\n", 20);
+ 
+       for(int j=0; j < i; j++) {
+-	if(resolv[j].contains("domain") && 
++	if((resolv[j].contains("domain") ||
++	      ( resolv[j].contains("nameserver") && !resolv[j].contains("#kppp temp entry") && gpppdata.exDNSDisabled())) && 
+               ! resolv[j].contains("#entry disabled by kppp")) {
+ 
+           write(fd, "# ", 2);
+diff -ur kppp/docs/kppp-4.html kppp.dns-patch/docs/kppp-4.html
+--- kppp/docs/kppp-4.html	Sun Dec 14 13:22:02 1997
++++ kppp.dns-patch/docs/kppp-4.html	Sun Dec 14 13:23:05 1997
+@@ -80,6 +80,10 @@
+ to resolve human readable ip addresses such as ftp.kde.org. The DNS server
+ addresses supplied must be in numeric form, e.g 128.231.231.233. The
+ addresses will be added at runtime to /etc/resolv.config.</P>
++
++<DT><B>Disable existing DNS Servers during Connection</B>
++<DD><P>Select this option if you want kppp to disable already existing nameserver entries
++in /etc/resolv.conf during connection.</P>
+ </DL>
+ </P>
+ 
+diff -ur kppp/edit.cpp kppp.dns-patch/edit.cpp
+--- kppp/edit.cpp	Sun Dec 14 13:22:02 1997
++++ kppp.dns-patch/edit.cpp	Sun Dec 14 13:23:05 1997
+@@ -247,14 +247,14 @@
+ DNSWidget::DNSWidget( QWidget *parent, const char *name )
+   : QWidget(parent, name)
+ {
+-
+-
++  
++  
+   box = new QGroupBox(this,"box");
+   box->setGeometry(10,70,345,250);
+   box->setTitle("DNS Servers");
+ 
+   dnsdomain = new QLineEdit(this, "dnsdomain");
+-  dnsdomain->setGeometry(160, 30, 140, 25);
++  dnsdomain->setGeometry(160, 30, 147, 25);
+   dnsdomain->setMaxLength(DOMAIN_SIZE);
+ 
+   dnsdomain_label = new QLabel(this,"dnsdomainlabel");
+@@ -262,7 +262,7 @@
+   dnsdomain_label->setText("Domain Name:");
+ 
+   dnsipaddr = new IPLineEdit(this, "dnsipaddr");
+-  dnsipaddr->setGeometry(160, 95, 140, 25);
++  dnsipaddr->setGeometry(160, 95, 147, 25);
+   dnsipaddr->setMaxLength(IPADDR_SIZE);
+   connect(dnsipaddr, SIGNAL(returnPressed()), SLOT(adddns()));
+ 
+@@ -275,15 +275,20 @@
+   connect(add, SIGNAL(clicked()), SLOT(adddns()));
+ 
+   remove = new QPushButton("Remove", this, "remove");
+-  remove->setGeometry(160, 285, 70, 25);
++  remove->setGeometry(237, 140, 70, 25);
+   connect(remove, SIGNAL(clicked()), SLOT(removedns()));
+-
++  
+   dnsservers = new QListBox(this, "dnsservers");
+-  dnsservers->setGeometry(160, 175, 140, 100);
++  dnsservers->setGeometry(160, 175, 147, 100);
+ 
+   servers_label = new QLabel(this,"servers");
+   servers_label->setGeometry(30,175,120,25);
+   servers_label->setText("DNS Address List:");
++  
++  exdnsdisabled_toggle=new QCheckBox("Disable existing DNS Servers during Connection", this);
++  exdnsdisabled_toggle->adjustSize();
++  exdnsdisabled_toggle->setGeometry(30,285,300,exdnsdisabled_toggle->height());
++  exdnsdisabled_toggle->setChecked(gpppdata.exDNSDisabled());
+  
+   // restore data if editing
+   if(!isnewaccount){
+@@ -298,6 +303,7 @@
+   for(uint i=0; i < dnsservers->count(); i++)
+     gpppdata.setDns(i, dnsservers->text(i));
+   gpppdata.setDomain(dnsdomain->text());
++  gpppdata.setExDNSDisabled(exdnsdisabled_toggle->isChecked());
+ }
+ 
+ 
+diff -ur kppp/edit.h kppp.dns-patch/edit.h
+--- kppp/edit.h	Sun Dec 14 13:22:02 1997
++++ kppp.dns-patch/edit.h	Sun Dec 14 13:23:05 1997
+@@ -138,6 +138,7 @@
+   QListBox *dnsservers;
+   QLineEdit *dnsdomain;
+   QLabel *dnsdomain_label;
++  QCheckBox *exdnsdisabled_toggle;
+ };
+ 
+ 
+diff -ur kppp/pppdata.cpp kppp.dns-patch/pppdata.cpp
+--- kppp/pppdata.cpp	Sun Dec 14 13:22:02 1997
++++ kppp.dns-patch/pppdata.cpp	Sun Dec 14 13:23:05 1997
+@@ -112,7 +112,8 @@
+     setGateway(config->readEntry(GATEWAY_KEY));
+     setDefaultroute(config->readEntry(DEFAULTROUTE_KEY));
+     setDomain(config->readEntry(DOMAIN_KEY));
+-
++    setExDNSDisabled(config->readNumEntry(EXDNSDISABLED_KEY,false));
++    
+     // read lists
+     config->readListEntry(DNS_KEY, dnslist);
+     config->readListEntry(SCRIPTCOM_KEY, scriptcomlist);
+@@ -220,6 +221,7 @@
+     config->writeEntry(GATEWAY_KEY, gateway());
+     config->writeEntry(DEFAULTROUTE_KEY, (int) defaultroute());
+     config->writeEntry(DOMAIN_KEY, domain());
++    config->writeEntry(EXDNSDISABLED_KEY, exDNSDisabled());
+     // write lists
+     config->writeEntry(DNS_KEY, dnslist);
+     config->writeEntry(SCRIPTCOM_KEY, scriptcomlist);
+@@ -892,6 +894,32 @@
+   }
+ }
+ 
++void PPPData::setExDNSDisabled(bool _set){
++
++  if(_set){
++    strcpy(ad[caccount].exdnsdisabled,"TRUE");
++  }
++  else{	
++    strcpy(ad[caccount].exdnsdisabled,"FALSE");
++  }
++
++  return;
++}
++
++
++const bool PPPData::exDNSDisabled(){
++  
++  bool result;
++  
++  if(strcmp(ad[caccount].exdnsdisabled,"TRUE") == 0 ){
++    result = true;
++  }
++  else{
++    result = false;
++  }
++
++  return result;
++}
+ 
+ const char* PPPData::domain() {
+   return ad[caccount].domain;
+diff -ur kppp/pppdata.h kppp.dns-patch/pppdata.h
+--- kppp/pppdata.h	Sun Dec 14 13:22:02 1997
++++ kppp.dns-patch/pppdata.h	Sun Dec 14 13:23:05 1997
+@@ -122,6 +122,7 @@
+ #define DEFAULTROUTE_KEY   "DefaultRoute"
+ #define DOMAIN_KEY         "Domain"
+ #define DNS_KEY            "DNS"
++#define EXDNSDISABLED_KEY  "ExDNSDisabled"
+ #define SCRIPTCOM_KEY      "ScriptCommands"
+ #define SCRIPTARG_KEY      "ScriptArguments"
+ #define PPPDARG_KEY        "pppdArguments"
+@@ -173,6 +174,7 @@
+   char autoname[ARGUMENT_SIZE+1];		  // enable autoconfig hostname
+   char domain[DOMAIN_SIZE+1];       		  // domain name
+   char dns[MAX_DNS_ENTRIES][IPADDR_SIZE+1];       // dns ip address
++  char exdnsdisabled[BOOLEAN_SIZE+1];	          // existing dns servers are disabled during connection
+   char gateway[IPADDR_SIZE+1];                    // gateway ip address
+   char defaultroute[ARGUMENT_SIZE+1];		  // enable defaultroute
+   char stype[MAX_SCRIPT_ENTRIES][SCRIPT_TYPE_SIZE+1]; // type of script entry
+@@ -329,6 +331,9 @@
+ 
+   const char* domain();
+   void setDomain(const char *);
++  
++  const bool exDNSDisabled();
++  void setExDNSDisabled(bool set);
+ 
+   const char* scriptType(int);
+   void setScriptType(int, const char*);
