@@ -75,6 +75,7 @@
 
 #define Inherited servercontrollerData
 extern KConfig *kConfig;
+extern KApplication *kApp;
 
 servercontroller::servercontroller
 (
@@ -85,6 +86,9 @@ servercontroller::servercontroller
 	Inherited( parent, name )
 {
 	setCaption( "Server Control" );
+	QPopupMenu *file = new QPopupMenu();
+	file->insertItem("&Quit", kApp, SLOT(quit()), ALT + Key_F4);
+	MenuBar->insertItem("&File", file);
 	QPopupMenu *connections = new QPopupMenu();
 	connections->insertItem("&New Server...", this, SLOT(new_connection()), CTRL + Key_N );
 	connections->insertSeparator();

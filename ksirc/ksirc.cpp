@@ -46,7 +46,7 @@ int main( int argc, char ** argv )
   kSircConfig->colour_text = new QColor(kConfig->readColorEntry("text", &black));
   kSircConfig->colour_info = new QColor(kConfig->readColorEntry("info", &blue));
   kSircConfig->colour_chan = new QColor(kConfig->readColorEntry("chan", &green));
-  kSircConfig->colour_error = new QColor(kConfig->readColorEntry("red", &red));
+  kSircConfig->colour_error = new QColor(kConfig->readColorEntry("error", &red));
 
   //  KSircProcess proc("opus.dal.net");
   servercontroller *control = new servercontroller();
@@ -60,11 +60,16 @@ int main( int argc, char ** argv )
 
   //  toplevel->show();
   
-  //  kApp->setMainWidget(toplevel);
+  kApp->setMainWidget(control);
 
-  kApp->connect(kApp, SIGNAL(lastWindowClosed()), kApp, SLOT(quit()));
+  //  kApp->connect(kApp, SIGNAL(lastWindowClosed()), kApp, SLOT(quit()));
   
   kApp->exec();
+  kConfig->setGroup("Colours");
+  kConfig->writeEntry("text", *kSircConfig->colour_text);
+  kConfig->writeEntry("info", *kSircConfig->colour_info);
+  kConfig->writeEntry("chan", *kSircConfig->colour_chan);
+  kConfig->writeEntry("error", *kSircConfig->colour_error);
   kConfig->sync();
 
   //  kill(sirc_pid, 15);  // on normal exit, do try and kill dsirc...
