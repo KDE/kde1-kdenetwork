@@ -5,7 +5,7 @@ fi
 
 DO_NOT_COMPILE="$DO_NOT_COMPILE CVS"
 
-if ! test -s ./inst-apps; then
+if test ! -s ./inst-apps; then
   TOPSUBDIRS=""
 # this needs a good find. But only developers should need this case, since
 # distribution comes with SUBDIRS
