@@ -105,8 +105,14 @@ void ircListItem::setupPainterText()
 
   if(revOne >= 0){
     itext.insert(revOne, "~s");
-    if(revTwo >= 0)
-      itext.insert(revTwo > revOne ? revTwo + 2 : revTwo, "~s");
+    if(revTwo >= 0){
+      int rr = revTwo;
+      if(revOne < revTwo)
+        rr += 2;
+      if(rr > (int) itext.length())
+        rr = itext.length();
+      itext.insert(rr, "~s");
+    }
   }
     
   // Wrapping code is a little slow, and a little silly, but it works.

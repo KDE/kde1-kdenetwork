@@ -458,7 +458,7 @@ void KSircTopLevel::TabNickCompletion()  /*fold00*/
 
 }
   
-void KSircTopLevel::sirc_receive(QString str) /*fold00*/
+void KSircTopLevel::sirc_receive(QString str) /*FOLD00*/
 {
 
   /* 
@@ -669,7 +669,7 @@ void KSircTopLevel::sirc_write(QString &str) /*fold00*/
 
 }
 
-ircListItem *KSircTopLevel::parse_input(QString &string) /*fold00*/
+ircListItem *KSircTopLevel::parse_input(QString &string) /*FOLD00*/
 {
 
   /* 
