@@ -1,4 +1,25 @@
 -----------------------------------------------------------------------------
+Changes made Jul 29
+-----------------------------------------------------------------------------
+* [Roberto] Ok, time to start the big rewrite krn is needing.
+            Bugfixes still will be done to the old code, but no new features
+            there.
+            Now the makefile has a new target, called newkrn, it requires Qt
+            1.40, since the only piece that's here (a new group dialog) uses
+            QListView instead of ktreelist.
+            Newkrn currently has no net support at all, so don't even bother
+            looking at it.
+            However, the first new feature is that it will allow for an
+            arbitrary number of newsgroup hierarchies.
+            So, you will have ways to see groups per server, per a personal
+            choice, the long awaited sane search that works as grep, the works.
+            If you wanna test it, just put a lot of things that look like
+            text files containing sorted lists of data that look like names
+            of newsgroups into ~/.kde/share/apps/krn/folder, and see.
+
+            Since I am reusing lots of the difficult pieces of the old code,
+            this should advance rather quickly.
+-----------------------------------------------------------------------------
 Changes made Jul 21
 -----------------------------------------------------------------------------
 * [Roberto] Fixed session management.
