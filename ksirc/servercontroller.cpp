@@ -778,10 +778,9 @@ void dockServerController::paintEvent(QPaintEvent *pe) /*FOLD00*/
 {
 //  QFrame::paintEvent(pe);
   QPainter p(this);
-  QFrame::drawFrame(&p);
   QPixmap *pic = sc->pic_dock;
-  int x = this->lineWidth() + 1 + (12 - pic->width()/2);
-  int y = this->lineWidth() + 1 + (12 - pic->height()/2);
+  int x = 12 - pic->width()/2;
+  int y = 12 - pic->height()/2;
   p.drawPixmap(x , y, *pic);
   p.end();
 }

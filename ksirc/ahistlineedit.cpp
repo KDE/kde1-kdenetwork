@@ -131,13 +131,13 @@ void aHistLineEdit::keyPressEvent ( QKeyEvent *e )
     case Key_Enter:
       if(hist.count() > 20){
 	hist.removeFirst(); // more than 20 entries? ick
-      current--;          // backup counter
+        current--;          // backup counter
       }
       if(text() != ""){
 	hist.remove(current); // remove the "dummy" entry
 	hist.append(text()); // add the current text to the end
 	hist.append(""); // set the next line to blank
-	current++; // move ahead one.
+	current = hist.count() - 1; // move ahead one.
       }
     default:
       QLineEdit::keyPressEvent(e);
