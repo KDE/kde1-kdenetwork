@@ -1128,14 +1128,6 @@ void PPPData::setpppdRunning(bool set) {
   pppdisrunning = set;
 }
 
-pid_t PPPData::suidChildPid() {
-  return suidprocessid;
-}
-
-void PPPData::setSuidChildPid(pid_t id) {
-  suidprocessid = id;
-}
-
 int PPPData::pppdError() {
   return pppderror;
 }

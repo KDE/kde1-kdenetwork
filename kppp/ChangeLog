@@ -1,3 +1,9 @@
+1999-03-26  Harri Porten  <porten@kde.org>
+
+	* main.cpp: added flushX() before every command_execute()
+	* increased maximum modem string size
+	* store child pid in helper_pid instead of gpppdata.* (safer) 
+
 1999-03-20  Harri Porten  <porten@kde.org>
 
 	* connect.cpp: fixed "unknown speed" bug introduced in previous version

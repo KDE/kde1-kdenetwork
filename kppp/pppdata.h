@@ -45,7 +45,7 @@
 // string lengths
 
 #define PATH_SIZE 120 
-#define MODEMSTR_SIZE 50
+#define MODEMSTR_SIZE 80
 #define ACCNAME_SIZE 50
 #define PHONENUMBER_SIZE 60
 #define COMMAND_SIZE 255
@@ -376,9 +376,6 @@ public:
   //functions to change/set the child pppd process info
   bool pppdRunning();
   void setpppdRunning(bool set);
-
-  pid_t suidChildPid();
-  void setSuidChildPid(pid_t);
 
   int pppdError();
   void setpppdError(int err);
