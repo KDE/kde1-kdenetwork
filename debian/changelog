@@ -1,0 +1,74 @@
+kdenetwork (2:980311-2) frozen; urgency=low
+
+  * new compile cycle with qt-1.33 and libstc++-2.8
+
+ -- Stephan Kulow <coolo@kde.org>  Tue, 24 Mar 1998 19:59:56 +0100
+
+kdenetwork (2:980311-1) experimental; urgency=low
+
+  * New upstream release
+
+ -- Stephan Kulow <coolo@kde.org>  Thu, 12 Mar 1998 23:21:40 +0100
+
+kdenetwork (980228-1) experimental; urgency=low
+
+  * New upstream release
+
+ -- Stephan Kulow <coolo@kde.org>  Sat, 28 Feb 1998 22:17:39 +0100
+
+kdenetwork (980227-1) experimental; urgency=low
+
+  * changed maintainer field
+  * New upstream release
+
+ -- Stephan Kulow <coolo@kde.org>  Sat, 28 Feb 1998 02:28:33 +0100
+
+kdenetwork (1:Beta2-2.1) experimental; urgency=low
+
+  * New upstream release
+
+ -- Andreas Jellinghaus <aj@debian.org>  Fri,  5 Dec 1997 21:17:07 +0100
+
+kdenetwork (1:Beta2-2) unstable; urgency=low
+
+  * changed kmail to use umask(077) ! mailfolders should not be world
+    readable ...
+  * fixed debstd call in debian/rules
+  * removed virtual package names.
+
+ -- Andreas Jellinghaus <aj@debian.org>  Sun, 30 Nov 1997 17:08:07 +0100
+
+kdenetwork (1:Beta2-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Andreas Jellinghaus <aj@debian.org>  Sun, 23 Nov 1997 16:07:21 +0100
+
+kdenetwork (1:Beta1.2-2) unstable; urgency=low
+
+  * new compile cycle with bugfixes.
+
+ -- Andreas Jellinghaus <aj@debian.org>  Sun,  9 Nov 1997 19:42:58 +0100
+
+kdenetwork (1:Beta1.2-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Andreas Jellinghaus <aj@debian.org>  Mon, 27 Oct 1997 11:44:46 +0100
+
+kdenetwork (1:Beta1.1-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Andreas Jellinghaus <aj@debian.org>  Mon, 20 Oct 1997 11:15:00 +0200
+
+kdenetwork (971019-1) unstable; urgency=low
+
+  * Initial Release (my old version disapeared from my hard disk ?)
+
+ -- Andreas Jellinghaus <aj@debian.org>  Sun, 19 Oct 1997 17:59:43 +0200
+
+Local variables:
+mode: debian-changelog
+add-log-mailing-address: "aj@debian.org"
+End:
