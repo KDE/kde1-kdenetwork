@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-06-09 23:13+0000\n"
+"POT-Creation-Date: 1998-08-02 17:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,57 +14,61 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: ENCODING\n"
 
-#: main.cpp:54
+#: main.cpp:57
 msgid "&Announcement"
 msgstr ""
 
-#: main.cpp:57
+#: main.cpp:60
 msgid "Ans&wering machine"
 msgstr ""
 
 #: main.cpp:63
-msgid "usage: kcmktalkd [-init | soundpage | answmachpage]\n"
+msgid "&Forward"
 msgstr ""
 
-#: main.cpp:94
+#: main.cpp:69
+msgid "usage: kcmktalkd [-init | soundpage | answmachpage | forwmachpage ]\n"
+msgstr ""
+
+#: main.cpp:109
 msgid "KTalkd Configuration"
 msgstr ""
 
-#: soundpage.cpp:44
+#: soundpage.cpp:47
 msgid "&Announcement program"
 msgstr ""
 
-#: soundpage.cpp:51
+#: soundpage.cpp:54
 msgid "&Talk client"
 msgstr ""
 
-#: soundpage.cpp:55
+#: soundpage.cpp:58
 msgid "&Play sound"
 msgstr ""
 
-#: soundpage.cpp:57
-msgid "Sound &File"
+#: soundpage.cpp:60
+msgid "&Sound File"
 msgstr ""
 
-#: soundpage.cpp:59
+#: soundpage.cpp:62
 msgid "Additional WAV files can be dropped onto the sound list."
 msgstr ""
 
-#: soundpage.cpp:74
+#: soundpage.cpp:77
 msgid "&Test"
 msgstr ""
 
-#: soundpage.cpp:154
+#: soundpage.cpp:157
 msgid "Unsupported URL"
 msgstr ""
 
-#: soundpage.cpp:155
+#: soundpage.cpp:158
 msgid ""
 "Sorry, this type of URL is currently unsupportedby the KDE System Sound "
 "Module"
 msgstr ""
 
-#: soundpage.cpp:162
+#: soundpage.cpp:165
 #, c-format
 msgid ""
 "Sorry, but \n"
@@ -72,11 +76,11 @@ msgid ""
 "does not seem to be a WAV--file."
 msgstr ""
 
-#: soundpage.cpp:165
+#: soundpage.cpp:168
 msgid "Improper File Extension"
 msgstr ""
 
-#: soundpage.cpp:173
+#: soundpage.cpp:176
 #, c-format
 msgid ""
 "The file\n"
@@ -84,7 +88,7 @@ msgid ""
 "is already in the list"
 msgstr ""
 
-#: soundpage.cpp:177
+#: soundpage.cpp:180
 msgid "File Already in List"
 msgstr ""
 
@@ -137,4 +141,30 @@ msgstr ""
 #: answmachpage.cpp:172 answmachpage.cpp:191
 #, c-format
 msgid "Message left in the answering machine, by %s@%s"
+msgstr ""
+
+#: forwmachpage.cpp:34
+msgid "Activate &forward"
+msgstr ""
+
+#: forwmachpage.cpp:39
+msgid "&Destination (user or user@host)"
+msgstr ""
+
+#: forwmachpage.cpp:49
+msgid "Forward &method"
+msgstr ""
+
+#: forwmachpage.cpp:54
+msgid ""
+"FWA : Forward announcement only. Direct connection. Not recommended.\n"
+"FWR : Forward all requests, changing info when necessary. Direct "
+"connection.\n"
+"FWT : Forward all requests and take the talk. No direct connection.\n"
+"\n"
+"Recommended use : FWT it you want to use it behind a firewall (and if "
+"ktalkd\n"
+"can access both networks), and FWR otherwise.\n"
+"\n"
+"See Help for further explanations.\n"
 msgstr ""
