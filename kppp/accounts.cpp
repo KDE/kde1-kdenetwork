@@ -290,6 +290,17 @@ void AccountWidget::copyaccount() {
 
 void AccountWidget::deleteaccount() {
 
+  QString s;
+  s.sprintf(klocale->translate("Are you sure you want to delete\n"
+			       "the account \"%s\"?"),
+	    accountlist_l->text(accountlist_l->currentItem()));	    
+
+  if(KMsgBox::yesNo(this, 
+		    klocale->translate("Confirm"), 
+		    s.data(),
+		    KMsgBox::DB_SECOND) != 1)
+    return;
+
   if(gpppdata.deleteAccount(accountlist_l->text(accountlist_l->currentItem())))
     accountlist_l->removeItem(accountlist_l->currentItem());
 

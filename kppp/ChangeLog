@@ -1,4 +1,11 @@
-Tue Jan 20 15:30:08 1998  Mario Weilguni  <mario@loki.valhalla.at>
+Tue Jan 20 15:30:08 1998  Mario Weilguni  <mweilguni@sime.com>
+
+	* Sigh. After unintentionally deleting my account for the sixth
+	time, I added a yesNo() dialog to confirm deleting an
+	account. This is VERY important, because if you click on "Show
+	log" and double-click onto a file to view it and you have the bad
+	luck that the filename is just over the "Delete" button, the
+	account will be gone.
 
 	* runtests.cpp: gpppdata is now saved after modifications in
 	runtests(), and the default log viewer is set correctly
