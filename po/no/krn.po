@@ -649,9 +649,8 @@ msgid "On %D, %F wrote:"
 msgstr ""
 
 #: kmmessage.cpp:1262
-#, fuzzy
 msgid "Forwarded Message"
-msgstr "Vis låste meldinger"
+msgstr "Vidresend melding"
 
 #: kmcomposewin.cpp:122
 msgid "KMail Composer"
@@ -662,9 +661,8 @@ msgid "F"
 msgstr ""
 
 #: kmcomposewin.cpp:134
-#, fuzzy
 msgid "Name"
-msgstr "Virkelig navn"
+msgstr "Navn"
 
 #: kmcomposewin.cpp:135
 msgid "Size"
@@ -677,64 +675,59 @@ msgstr "&Poengsetting"
 
 #: kmcomposewin.cpp:137
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 #: kmcomposewin.cpp:344
 msgid "&From:"
-msgstr ""
+msgstr "&Fra:"
 
 #: kmcomposewin.cpp:346
 msgid "&Reply to:"
-msgstr ""
+msgstr "&Svar til:"
 
 #: kmcomposewin.cpp:348
 msgid "&To:"
-msgstr ""
+msgstr "&Til:"
 
 #: kmcomposewin.cpp:350
 msgid "&Cc:"
-msgstr ""
+msgstr "&Cc:"
 
 #: kmcomposewin.cpp:352
 msgid "&Bcc:"
-msgstr ""
+msgstr "&Bcc:"
 
 #: kmcomposewin.cpp:354
-#, fuzzy
 msgid "&Subject:"
-msgstr "Subjekt"
+msgstr "Subjekt:"
 
 #: kmcomposewin.cpp:357
-#, fuzzy
 msgid "&Newsgroups:"
-msgstr "&Nyhetsgruppe"
+msgstr "&Nyhetsgrupper:"
 
 #: kmcomposewin.cpp:359
-#, fuzzy
 msgid "&Followup-To:"
-msgstr "Post Followup"
+msgstr "&Oppfølling-til:"
 
 #: kmcomposewin.cpp:431
-#, fuzzy
 msgid "&Send"
-msgstr "Avsender"
+msgstr "&Send"
 
 #: kmcomposewin.cpp:434
-#, fuzzy
 msgid "S&end later"
-msgstr "Avsender"
+msgstr "S&end sender"
 
 #: kmcomposewin.cpp:436
 msgid "S&end now"
-msgstr ""
+msgstr "S&end nå"
 
 #: kmcomposewin.cpp:438
 msgid "&Insert File..."
-msgstr ""
+msgstr "&Sett inn fil..."
 
 #: kmcomposewin.cpp:441
 msgid "&Addressbook..."
-msgstr ""
+msgstr "&Adressebok..."
 
 #: kmcomposewin.cpp:446
 msgid "&New Composer..."
@@ -745,18 +738,16 @@ msgid "New Mailreader"
 msgstr ""
 
 #: kmcomposewin.cpp:469 kmcomposewin.cpp:678 kmcomposewin.cpp:1917
-#, fuzzy
 msgid "Mark all"
-msgstr "Merk lest"
+msgstr "Merk alt"
 
 #: kmcomposewin.cpp:472 kmcomposewin.cpp:680
 msgid "Find..."
-msgstr ""
+msgstr "Finn..."
 
 #: kmcomposewin.cpp:474 kmcomposewin.cpp:681
-#, fuzzy
 msgid "Replace..."
-msgstr "Utseende..."
+msgstr "Erstatt..."
 
 #: kmcomposewin.cpp:481
 msgid "&Urgent"
@@ -799,23 +790,20 @@ msgid "&Bcc"
 msgstr ""
 
 #: kmcomposewin.cpp:508
-#, fuzzy
 msgid "&Subject"
-msgstr "Subjekt"
+msgstr "&Subjekt"
 
 #: kmcomposewin.cpp:510
-#, fuzzy
 msgid "&Newsgroups"
-msgstr "&Nyhetsgruppe"
+msgstr "&Nyhetsgrupper"
 
 #: kmcomposewin.cpp:511
-#, fuzzy
 msgid "&Followup-To"
-msgstr "Post Followup"
+msgstr "&Oppfølging-til"
 
 #: kmcomposewin.cpp:516
 msgid "Append S&ignature"
-msgstr ""
+msgstr "Legg til s&ignatur"
 
 #: kmcomposewin.cpp:518
 msgid "&Insert File"
@@ -846,35 +834,32 @@ msgid "Save message to file"
 msgstr ""
 
 #: kmcomposewin.cpp:561
-#, fuzzy
 msgid "Print message"
-msgstr "KRn - melding"
+msgstr "Skriv ut melding"
 
 #: kmcomposewin.cpp:570
 msgid "Cut selection"
-msgstr ""
+msgstr "Klipp ut valg"
 
 #: kmcomposewin.cpp:573
 msgid "Copy selection"
-msgstr ""
+msgstr "Kopier valg"
 
 #: kmcomposewin.cpp:576
 msgid "Paste clipboard contents"
-msgstr ""
+msgstr "Lim inn innholdet til utklippsbordet"
 
 #: kmcomposewin.cpp:581
-#, fuzzy
 msgid "Attach file"
-msgstr "Vedleggsstil"
+msgstr "Legg ved fil"
 
 #: kmcomposewin.cpp:585
 msgid "Open addressbook..."
-msgstr ""
+msgstr "Åpne adressebok..."
 
 #: kmcomposewin.cpp:594
-#, fuzzy
 msgid "sign message"
-msgstr "KRn - melding"
+msgstr "signer melding"
 
 #: kmcomposewin.cpp:599
 #, fuzzy
