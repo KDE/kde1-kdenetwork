@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
 "POT-Creation-Date: 1999-01-30 02:00+0100\n"
-"PO-Revision-Date: 1999-01-31 16:05+0000\n"
+"PO-Revision-Date: 1999-02-01 01:05-0500\n"
 "Last-Translator: Thorarinn R. Einarsson <thori@mindspring.com>\n"
 "Language-Team: is <kde-isl@mmedia.is>\n"
 "MIME-Version: 1.0\n"
@@ -1389,7 +1389,7 @@ msgid ""
 "%s\n"
 "%s"
 msgstr ""
-"Gat ekki keyr atburðarit undirskriftar\n"
+"Gat ekki keyrt skriftu undirskriftar\n"
 "%s\n"
 "%s"
 
@@ -1520,7 +1520,7 @@ msgstr "Þessi einstaklingur mun ekki geta\n"
 
 #: kpgp.cpp:311
 msgid "decrypt the message."
-msgstr "afdulritað þetta bréf."
+msgstr "afdulrita þetta bréf."
 
 #: kpgp.cpp:326
 msgid ""
@@ -1606,7 +1606,7 @@ msgstr "Þú hefur ekki lykilinn að þessu bréfi"
 
 #: kpgpbase.cpp:415
 msgid "unknown key ID "
-msgstr "kennitala þessa lykils er óþekkt"
+msgstr "óþekktur lykill "
 
 #: kpgpbase.cpp:435
 msgid "??? (file ~/.pgp/pubring.pgp not found)"
@@ -1631,9 +1631,9 @@ msgid ""
 "%s\n"
 "They will not be able to decrypt the message"
 msgstr ""
-"Eftirfarandi lykli/lyklum má ekki treysta:\n"
+"Eftirfarandi lykli/lyklum er ekki treyst:\n"
 "%s\n"
-"því skilaboð gætu samt verið leshæf."
+"Dulritun mun því ekki skila sínu."
 
 #: kfileio.cpp:26 kmaddrbook.cpp:162
 msgid "File I/O Error"
@@ -1822,5 +1822,5 @@ msgstr "&7-bita ASCII"
 
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
-msgstr "Nota 'quoted printable' á óþekkta stafi"
+msgstr "'quoted printable' á óþekkta stafi"
 
