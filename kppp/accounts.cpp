@@ -89,17 +89,18 @@ AccountWidget::AccountWidget( QWidget *parent, const char *name )
   connect(copy_b, SIGNAL(clicked()), SLOT(copyaccount()));
   copy_b->setMinimumSize(copy_b->sizeHint());
   l111->addWidget(copy_b);
-  KQuickHelp::add(copy_b, "\
-Makes a copy of the selected account. All
-settings of the selected account are copied
-to a new account, that you modify to fit your
-needs");
+  KQuickHelp::add(copy_b, 
+		  "Makes a copy of the selected account. All\n"
+		  "settings of the selected account are copied\n"
+		  "to a new account, that you modify to fit your\n"
+		  "needs");
 
   delete_b = new QPushButton(i18n("Delete"), this);
   connect(delete_b, SIGNAL(clicked()), SLOT(deleteaccount()));
   delete_b->setMinimumSize(delete_b->sizeHint());
   l111->addWidget(delete_b);
-  KQuickHelp::add(delete_b, "Deletes the selected account\n\n<red><b>Use with care!");
+  KQuickHelp::add(delete_b, 
+		  "Deletes the selected account\n\n<red><b>Use with care!");
 
   QHBoxLayout *l12 = new QHBoxLayout;
   l1->addStretch(1);
@@ -119,13 +120,13 @@ needs");
   l121->addWidget(costedit);
   l121->addStretch(1);
   KQuickHelp::add(costlabel,
-  KQuickHelp::add(costedit, "\
-This shows the accumulated phone costs
-for the selected account.
-
-<b>Important</b>: If you have more than one 
-account - beware, this is <b>NOT</b> the sum 
-of the phone costs of all your accounts!"));
+  KQuickHelp::add(costedit, 
+		  "This shows the accumulated phone costs\n"
+		  "for the selected account.\n"
+		  "\n"
+		  "<b>Important</b>: If you have more than one \n"
+		  "account - beware, this is <b>NOT</b> the sum \n"
+		  "of the phone costs of all your accounts!"));
 
   vollabel = new QLabel(i18n("Volume:"), this);
   vollabel->setMinimumSize(vollabel->sizeHint());
@@ -137,13 +138,13 @@ of the phone costs of all your accounts!"));
   voledit->setEnabled(FALSE);
   l121->addWidget(voledit);
   KQuickHelp::add(vollabel,
-  KQuickHelp::add(voledit, "\
-This shows the number of transferred bytes
-for the selected account (not for all your
-accounts. You can select what to display on
-the accounting dialog.
-
-<link #volaccounting>More on volume accounting</link>"));
+  KQuickHelp::add(voledit, 
+		  "This shows the number of transferred bytes\n"
+		  "for the selected account (not for all your\n"
+		  "accounts. You can select what to display on\n"
+		  "the accounting dialog.\n"
+		  "\n"
+		  "<link #volaccounting>More on volume accounting</link>"));
 
   QVBoxLayout *l122 = new QVBoxLayout;
   l12->addStretch(1);

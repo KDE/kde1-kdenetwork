@@ -264,8 +264,10 @@ void PPPStatsDlg::paintGraph() {
     idx += MAX_GRAPH_WIDTH;
     
   // find good scaling factor    
-  int last_h_in = pm.height() - 8;
-  int last_h_out = pm.height() - 8;
+  int last_h_in = 
+    pm.height() - (int)((float)bin[idx]/max * (pm.height() - 8))-1;
+  int last_h_out = 
+    pm.height() - (int)((float)bout[idx]/max * (pm.height() - 8))-1;
   
   // plot scale line
   p.setPen(black);

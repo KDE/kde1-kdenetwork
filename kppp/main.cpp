@@ -387,13 +387,13 @@ KPPPWidget::KPPPWidget( QWidget *parent, const char *name )
 	  this, SLOT(enterPressedInID()));
   KQuickHelp::add(ID_Label, 
   KQuickHelp::add(ID_Edit,
-		  "Type in the username that you got from your
-ISP. This is especially important for PAP
-and CHAP. You may ommit this when you use
-Terminal based or Script based authentication.
-
-<b>Important</b>: case is important here:
-<i>myusername</i> is not the same as <i>MyUserName</i>!"));
+		  "Type in the username that you got from your\n"
+		  "ISP. This is especially important for PAP\n"
+		  "and CHAP. You may ommit this when you use\n"
+		  "Terminal based or Script based authentication.\n"
+		  "\n"
+		  "<b>Important</b>: case is important here:\n"
+		  "<i>myusername</i> is not the same as <i>MyUserName</i>!"));
 
   PW_Label = new QLabel(this);
   PW_Label->setText(i18n("Password:"));
@@ -410,13 +410,13 @@ Terminal based or Script based authentication.
  
   KQuickHelp::add(PW_Label, 
   KQuickHelp::add(PW_Edit,
-		  "Type in the password that you got from your
-ISP. This is especially important for PAP
-and CHAP. You may ommit this when you use
-Terminal based or Script based authentication.
-
-<b>Important</b>: case is important here:
-<i>mypassword</i> is not the same as <i>MyPassword</i>!"));
+		  "Type in the password that you got from your\n"
+		  "ISP. This is especially important for PAP\n"
+		  "and CHAP. You may ommit this when you use\n"
+		  "Terminal based or Script based authentication.\n"
+		  "\n"
+		  "<b>Important</b>: case is important here:\n"
+		  "<i>mypassword</i> is not the same as <i>MyPassword</i>!"));
 
 
   QHBoxLayout *l3 = new QHBoxLayout;
@@ -430,13 +430,13 @@ Terminal based or Script based authentication.
   log->setChecked(gpppdata.get_show_log_window());
   MIN_SIZE(log);
   l3->addWidget(log);
-  KQuickHelp::add(log, "\
-This controls whether a log window is shown.
-A log window shows the communication between
-<i>kppp</i> and your modem. This will help you
-to track down problems.
-
-Turn it off when <i>kppp</i> connects without problems");
+  KQuickHelp::add(log, 
+		  "This controls whether a log window is shown.\n"
+		  "A log window shows the communication between\n"
+		  "<i>kppp</i> and your modem. This will help you\n"
+		  "to track down problems.\n"
+		  "\n"
+		  "Turn it off when <i>kppp</i> connects without problems");
 
   fline = new QFrame(this);
   fline->setFrameStyle(QFrame::HLine |QFrame::Sunken);

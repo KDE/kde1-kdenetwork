@@ -1,3 +1,8 @@
+1998-09-15  Mario Weilguni <mweilguni@kde.org>
+
+	* replaced strings that span several lines with multiple
+	strings, it seems that this was a GCC-only feature
+
 1998-09-11  Mario Weilguni <mweilguni@kde.org>
 
 	* more code cleanups

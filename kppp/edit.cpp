@@ -911,5 +911,3 @@ void ScriptWidget::removeButton() {
 }
 
 #include "edit.moc"
-
-
