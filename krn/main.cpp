@@ -84,6 +84,7 @@ int main( int argc, char **argv )
     DwInitialize();
 
     KApplication a( argc, argv, "krn" );
+    a.enableSessionManagement();
 
     conf=a.getConfig();
     nls=a.getLocale();
