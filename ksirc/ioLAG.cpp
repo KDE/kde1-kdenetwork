@@ -18,7 +18,7 @@ KSircIOLAG::KSircIOLAG(KSircProcess *_proc)
   proc = _proc;
   setBroadcast(FALSE);
   startTimer(30000);
-  (proc->getWindowList())["!all"]->control_message(SET_LAG, "99");
+  //  (proc->getWindowList())["!all"]->control_message(SET_LAG, "99");
 }
 
 

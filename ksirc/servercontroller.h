@@ -111,6 +111,7 @@ public slots:
     virtual void filter_rule_editor();
     virtual void configChange();
     virtual void nickcompletion();
+    virtual void about_ksirc();
 
 private:
     // Hold a list of all KSircProcess's for access latter.  Index by server 

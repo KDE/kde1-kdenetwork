@@ -46,6 +46,7 @@
 
 #include <qclipbrd.h> 
 #include <qmsgbox.h> 
+#include <qtooltip.h>
 
 #include <knewpanner.h>
 #include <kiconloader.h>
@@ -114,9 +115,9 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
 
   lagmeter = new QLCDNumber(6, ktool->getFrame(10), "lagmeter");
   lagmeter->setFrameStyle(QFrame::NoFrame);
-  lagmeter->show();
   lagmeter->setFixedHeight(ktool->height() - 2);
-  lagmeter->display(15);
+  lagmeter->display("      ");
+  QToolTip::add(lagmeter, "Lag in seconds to the server");
   
   QPopupMenu *file = new QPopupMenu();
   file->insertItem("&User Menu...", this, SLOT(startUserMenuRef()));
@@ -127,8 +128,12 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
   file->insertItem("&Quit", this, SLOT(terminate()), CTRL + Key_Q );
 
   kmenu = new QMenuBar(ktool->getFrame(0), "menubar");
-  kmenu->show();
+  //  kmenu = new QMenuBar(this, "menubar");
+  kmenu->setFrameStyle(QFrame::NoFrame);
+  kmenu->setLineWidth(0);
   kmenu->insertItem("&File", file, 2, -1);
+  kmenu->setAccel(Key_F, 2);
+  topLevelWidget()->installEventFilter(kmenu);
 
   QPopupMenu *edit = new QPopupMenu();
   edit->insertItem("&Cut WIndow...", this, SLOT(openCutWindow()), CTRL + Key_X);
@@ -342,12 +347,21 @@ KSircTopLevel::~KSircTopLevel()
   delete LineBuffer;
   delete user_controls;
 
+  QToolTip::remove(lagmeter);
   delete kmenu;
+  delete ktool;
 
   //  close(sirc_stdin);  // close all the pipes
   //  close(sirc_stdout); // ditto
   //  close(sirc_stderr); // duh... ;)
 
+}
+
+void KSircTopLevel::show()
+{
+  KTopLevelWidget::show();
+  kmenu->show();
+  lagmeter->show();
 }
 
 //void KSircTopLevel::sirc_stop(bool STOP = FALSE)

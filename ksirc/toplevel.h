@@ -98,6 +98,11 @@ public:
     */
   ~KSircTopLevel();
 
+  /**
+    * Reimplement show() to popup the menu bars and toolbar items
+    */
+  virtual void show();
+
 signals:
   /**
     * signals thats the toplevel widget wishes to

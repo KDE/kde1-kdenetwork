@@ -72,6 +72,7 @@
 #include "config.h"
 #include "control_message.h"
 #include "FilterRuleEditor.h"
+#include "../config.h"
 #include <iostream.h>
 
 #include <kfontdialog.h>
@@ -129,6 +130,11 @@ servercontroller::servercontroller
 	options->insertItem("&Filter Rule Editor...",
 			    this, SLOT(filter_rule_editor()));
 	MenuBar->insertItem("&Options", options);
+
+	QPopupMenu *help = new QPopupMenu();
+	help->insertItem("About kSirc...",
+			 this, SLOT(about_ksirc()));
+	MenuBar->insertItem("&Help", help);
 
 	setMenu(MenuBar);
 	setView(BaseBorder);
@@ -360,3 +366,11 @@ void servercontroller::nickcompletion()
 }
 
 
+void servercontroller::about_ksirc()
+{
+  QString caption = PACKAGE;
+  caption += "-";
+  caption += VERSION;
+  caption += "\n\n(c) Copyright 1997, Andrew Stanley-Jones (asj@ksirc.org)\n\nkSirc Irc Client";
+  QMessageBox::about(this, "About kSirc", caption);
+}

@@ -32,10 +32,18 @@ public slots:
 
   virtual void sircDied(KProcess *);
 
+
+protected slots:
+  virtual void timerEvent ( QTimerEvent * );
+  virtual void procCTS(KProcess *);
+
 private:
   QString holder;
+  bool proc_CTS;
   KProcess *proc;
   KSircProcess *ksircproc;
+
+  QString buffer;
 
   QSocketNotifier *stdout_notif;   
 

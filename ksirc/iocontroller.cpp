@@ -96,6 +96,9 @@ KSircIOController::KSircIOController(KProcess *_proc, KSircProcess *_ksircproc)
   connect(proc, SIGNAL(processExited(KProcess *)),
 	  this, SLOT(sircDied(KProcess *)));
                                               // Notify on sirc dying
+  connect(proc, SIGNAL(wroteStdin(KProcess*)),
+	  this, SLOT(procCTS(KProcess*)));
+  proc_CTS = TRUE;
 }
 
 void KSircIOController::stdout_read(KProcess *, char *_buffer, int buflen)
@@ -226,7 +229,23 @@ void KSircIOController::stderr_read(KProcess *p, char *b, int l)
 void KSircIOController::stdin_write(QString &s)
 {
 
-  proc->writeStdin(s.data(), s.length());
+  buffer += s.data();
+  if(proc_CTS == TRUE){
+    if(proc->writeStdin(buffer.data(), buffer.length()) == FALSE){
+      //      cerr << "Failed to write but CTS HIGH! Setting low!: " << s << endl;
+      proc_CTS = FALSE;
+      killTimers();
+      startTimer(500);
+    }
+    else{
+      buffer.truncate(0);
+      proc_CTS = FALSE;
+    }
+  }
+
+  if(buffer.length() > 5000){
+    cerr << "IOController: KProcess barfing again!\n";
+  }
   //  write(sirc_stdin, s, s.length());
 
 }
@@ -238,4 +257,25 @@ void KSircIOController::sircDied(KProcess *)
   ksircproc->TopList["!all"]->sirc_receive("*E* KSIRC WINDOW HALTED");
   ksircproc->TopList["!all"]->sirc_receive("*E* Tried to run: " +  kSircConfig->kdedir + QString("/bin/dsirc") + "\n");
   ksircproc->TopList["!all"]->sirc_receive("*E* DID YOU READ THE INSTALL INTRUCTIONS?");
+}
+
+void KSircIOController::timerEvent ( QTimerEvent * )
+{
+  if(buffer.isEmpty() == TRUE){
+    killTimers();
+  }
+  else{
+    proc_CTS = TRUE;  // CTS was ok, but write failed, so force it high again
+    QString str = ""; // and try again.  This should simply work arround
+    stdin_write(str); // ksirc getting stuck wating for a procCTS().
+  }
+}
+
+void KSircIOController::procCTS ( KProcess *)
+{
+  proc_CTS = TRUE;
+  if(buffer.isEmpty() == FALSE){
+    QString str = "";
+    stdin_write(str);
+  }
 }
