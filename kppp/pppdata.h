@@ -111,6 +111,7 @@
 #define IPADDR_KEY         "IPAddr"
 #define SUBNETMASK_KEY     "SubnetMask"
 #define ACCTENABLED_KEY    "AccountingEnabled"
+#define VOLACCTENABLED_KEY "VolumeAccountingEnabled"
 #define ACCTFILE_KEY       "AccountingFile"
 #define AUTONAME_KEY       "AutoName"
 #define GATEWAY_KEY        "Gateway"
@@ -124,6 +125,7 @@
 #define ICONIFY_ON_CONNECT_KEY "iconifyOnConnect"
 #define DOCKING_KEY        "DockIntoPanel"
 #define TOTALCOSTS_KEY     "TotalCosts"
+#define TOTALBYTES_KEY     "TotalBytes"
 
 // pppd errors
 #define E_IF_TIMEOUT       1
@@ -302,6 +304,9 @@ public:
   const bool AcctEnabled();
   void setAcctEnabled(bool set);
 
+  const bool VolAcctEnabled();
+  void setVolAcctEnabled(bool set);
+
   const bool exDNSDisabled();
   void setExDNSDisabled(bool set);
 
@@ -345,6 +350,8 @@ public:
   const char *totalCosts();
   void setTotalCosts(const char *);
 
+  int totalBytes();
+  void  setTotalBytes(int);
 
 public:
   QString password;

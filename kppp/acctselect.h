@@ -55,7 +55,7 @@ private slots:
 
 private:
   KTreeList *tl;
-  QCheckBox *use;
+  QCheckBox *use, *use_vol;
   QPixmap pmfolder, pmfile;
   QLabel *selected;
   int choice;

@@ -51,7 +51,7 @@ AccountingSelector::AccountingSelector(QWidget *parent, const char *name)
   l->addLayout(l1, 1, 1);
   l1->addSpacing(10);
 
-  // checkbox for enabling/disabling accounting
+  // checkbox for enabling/disabling accounting  
   use = new QCheckBox(klocale->translate("Enable accounting"), this);
   use->setChecked(gpppdata.AcctEnabled());
   use->setMinimumSize(use->sizeHint());
@@ -80,6 +80,13 @@ AccountingSelector::AccountingSelector(QWidget *parent, const char *name)
   l11->addSpacing(10);
   l11->addWidget(selected, 1);
 
+  // volume accounting
+  use_vol = new QCheckBox(klocale->translate("Volume accounting"), this);
+  use_vol->setMinimumSize(use_vol->sizeHint());
+  use_vol->setChecked(gpppdata.VolAcctEnabled());
+  l1->addStretch(1);
+  l1->addWidget(use_vol);
+
   // load the pmfolder pixmap from KDEdir
   QString fname = KApplication::kde_datadir().copy();
   fname += "/kppp/pics/folder.xpm";
@@ -104,7 +111,7 @@ AccountingSelector::AccountingSelector(QWidget *parent, const char *name)
     pmfile = pmfile.xForm(wm);
   }
 
-  choice = -1;
+  choice = -1;  
 
   setupTreeWidget();
 
@@ -327,12 +334,13 @@ bool AccountingSelector::save() {
     QString s = indexToFileName(choice);
     gpppdata.setAccountingFile(s.data());
     gpppdata.setAcctEnabled(TRUE);
-
-
-  } else{
+  } else {
     gpppdata.setAccountingFile("");
     gpppdata.setAcctEnabled(FALSE);
   }
+
+  gpppdata.setVolAcctEnabled(use_vol->isChecked());
+
   return TRUE;
 }
 

@@ -60,6 +60,8 @@ bool 	reconnect_on_disconnect = false;
 bool 	modem_is_locked = false;
 bool    quit_on_disconnect = false;
 
+int totalbytes;
+
 QString old_hostname;
 QString local_ip_address;
 QString remote_ip_address;
@@ -631,10 +633,10 @@ void dieppp(int sig) {
 
 
       p_xppp->stopAccounting();
+
       p_xppp->con_win->stopClock();
       dock_widget->stop_stats();
-      dock_widget->undock();
-      
+      dock_widget->undock();      
 
       pppd_has_died = true;
       removedns();
@@ -867,8 +869,10 @@ void XPPPWidget::rulesetLoadError() {
 }
 
 void XPPPWidget::startAccounting() {
-  // load the ruleset
+  // volume accounting
+  totalbytes = 0;
 
+  // load the ruleset
   if(!gpppdata.AcctEnabled())
     return;
   
@@ -890,6 +894,9 @@ void XPPPWidget::startAccounting() {
 }
 
 void XPPPWidget::stopAccounting() {
+
+  // store volume accounting
+  gpppdata.setTotalBytes(totalbytes);
 
   if(!gpppdata.AcctEnabled())
     return;

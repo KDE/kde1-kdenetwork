@@ -57,6 +57,7 @@ extern int 	packetsunc;
 extern int 	packetsoutunc;
 extern QString  local_ip_address;
 extern QString  remote_ip_address;
+extern int      totalbytes; // main.cpp
 
 
 PPPStatsDlg::PPPStatsDlg(QWidget *parent, const char *name, QWidget *)
@@ -301,6 +302,9 @@ void PPPStatsDlg::paintIcon(){
 
  
 void PPPStatsDlg::timeclick() {
+  // volume accounting
+  totalbytes = gpppdata.totalBytes() + ibytes;  
+
   if( this->isVisible()){
     update_data(do_stats());  
     paintIcon();

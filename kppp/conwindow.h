@@ -86,6 +86,8 @@ private:
   QString time_string;
   QTimer *clocktimer;
   QHBoxLayout *tl;
+  QLabel *vollabel;
+  QLabel *volinfo;
 };
 
 

@@ -30,6 +30,7 @@ extern XPPPWidget *p_xppp;
 extern KApplication *app;
 extern PPPData gpppdata;
 extern DockWidget *dock_widget;
+extern int totalbytes;
 
 ConWindow::ConWindow(QWidget *parent, const char *name,QWidget *mainwidget)
   : QWidget(parent, name,0 )
@@ -51,6 +52,9 @@ ConWindow::ConWindow(QWidget *parent, const char *name,QWidget *mainwidget)
 
   timelabel2 = new QLabel(this,"timelabel");
   timelabel2->setText("000:00:00");
+
+  vollabel = new QLabel(klocale->translate("Volume:"), this);
+  volinfo  = new QLabel(this);
 
   // now the stuff for accounting
   session_bill_l = new QLabel(klocale->translate("Session Bill:"), this);
@@ -96,10 +100,15 @@ void ConWindow::accounting(bool on) {
   tl1->addLayout(tl);
   tl->addSpacing(20);
   QGridLayout *l1;
+
+  int vol_lines = 0;
+  if(gpppdata.VolAcctEnabled())
+    vol_lines = 1;
+
   if(on)
-    l1 = new QGridLayout(4, 2, 5);
+    l1 = new QGridLayout(4 + vol_lines, 2, 5);
   else
-    l1 = new QGridLayout(2, 2, 5);
+    l1 = new QGridLayout(2 + vol_lines, 2, 5);
   tl->addLayout(l1);
   l1->setColStretch(0, 0);
   l1->setColStretch(1, 1);
@@ -109,22 +118,28 @@ void ConWindow::accounting(bool on) {
   MIN_SIZE(session_bill_l);
   MIN_SIZE(total_bill_l);
   MIN_SIZE(info2);
-  MIN_SIZE(timelabel2);  
+  MIN_SIZE(timelabel2);
+  MIN_SIZE(vollabel);
 
   info2->setAlignment(AlignRight|AlignVCenter);
   timelabel2->setAlignment(AlignRight|AlignVCenter);
   session_bill->setAlignment(AlignRight|AlignVCenter);
   total_bill->setAlignment(AlignRight|AlignVCenter);
-
+  volinfo->setAlignment(AlignRight|AlignVCenter);
+ 
   // make sure that there's enough space for the bills
   QString s1 = session_bill->text();
   QString s2 = total_bill->text();
+  QString s3 = volinfo->text();
   session_bill->setText("888888.88 XXX");
   total_bill->setText("888888.88 XXX");
+  volinfo->setText("8888.8 MB");
   MIN_SIZE(session_bill);
   MIN_SIZE(total_bill);
+  MIN_SIZE(volinfo);
   session_bill->setText(s1.data());
   total_bill->setText(s2.data());
+  volinfo->setText(s3.data());
 
   l1->addWidget(info1, 0, 0);
   l1->addWidget(info2, 0, 1);
@@ -139,11 +154,32 @@ void ConWindow::accounting(bool on) {
     l1->addWidget(session_bill, 2, 1);
     l1->addWidget(total_bill_l, 3, 0);
     l1->addWidget(total_bill, 3, 1);
+
+    if(gpppdata.VolAcctEnabled()) {
+      vollabel->show();
+      volinfo->show();
+      l1->addWidget(vollabel, 4, 0);
+      l1->addWidget(volinfo, 4, 1);
+    } else {
+      vollabel->hide();
+      volinfo->hide();
+    }
+
   } else {
     session_bill_l->hide();
     session_bill->hide();
     total_bill_l->hide();
     total_bill->hide();
+
+    if(gpppdata.VolAcctEnabled()) {
+      vollabel->show();
+      volinfo->show();
+      l1->addWidget(vollabel, 2, 0);
+      l1->addWidget(volinfo, 2, 1);
+    } else {
+      vollabel->hide();
+      volinfo->hide();
+    }
   }
 
   tl->addSpacing(10);
@@ -216,6 +252,20 @@ void ConWindow::stopClock() {
 }
   
 void ConWindow::timeclick() {
+
+  // volume accounting
+  if(gpppdata.VolAcctEnabled()) {
+    QString s;
+    if(totalbytes < 1024*10)
+      s.sprintf("%d Byte", totalbytes);
+    else if(totalbytes < 1024*1024)
+      s.sprintf("%0.1f KB", ((float)totalbytes)/1024);
+    else
+      s.sprintf("%0.1f MB", ((float)totalbytes)/(1024*1024));
+
+    volinfo->setText(s.data());
+  }
+
   seconds++;
   
   if(seconds >= 60 ) {

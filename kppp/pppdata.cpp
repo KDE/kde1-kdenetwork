@@ -899,6 +899,18 @@ void PPPData::setAcctEnabled(bool set){
 
 }
 
+const bool PPPData::VolAcctEnabled(){
+
+  return (bool) readNumConfig(cgroup, VOLACCTENABLED_KEY, false);
+
+}
+
+void PPPData::setVolAcctEnabled(bool set){
+
+  writeConfig(cgroup, VOLACCTENABLED_KEY, (int) set);
+
+}
+
 
 const char* PPPData::gateway() {
 
@@ -1014,6 +1026,17 @@ const char *PPPData::totalCosts() {
 void PPPData::setTotalCosts(const char *n) {
 
   writeConfig(cgroup, TOTALCOSTS_KEY, n);
+
+}
+
+int PPPData::totalBytes() {
+
+  return readNumConfig(cgroup, TOTALBYTES_KEY, 0);
+}
+
+void PPPData::setTotalBytes(int n) {
+
+  writeConfig(cgroup, TOTALBYTES_KEY, n);
 
 }
 
