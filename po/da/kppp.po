@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE NETWORK/kppp\n"
 "POT-Creation-Date: 1999-02-05 02:06+0100\n"
-"PO-Revision-Date: 1999-01-26 17:00+CET-1\n"
+"PO-Revision-Date: 1999-02-17 17:00+CET-1\n"
 "Last-Translator: Erik Kjær Pedersen <erik@binghamton.edu>\n"
 "Language-Team: da <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -15,7 +15,7 @@ msgstr ""
 
 #: accounts.cpp:45
 msgid "Account Setup"
-msgstr "Konto indstillinger"
+msgstr "Kontoindstillinger"
 
 #: accounts.cpp:66
 msgid "Edit..."
@@ -615,7 +615,7 @@ msgstr ""
 
 #: edit.cpp:274
 msgid "Auto-configure hostname from this IP"
-msgstr "Auto-konfigurer værtnavn fra denne IP"
+msgstr "Auto-indstil værtnavn fra denne IP"
 
 #: edit.cpp:279
 msgid ""
@@ -809,7 +809,7 @@ msgstr ""
 "der ikke skal til det lokale net gå gennem \n"
 "PPP forbindelsen.\n"
 "\n"
-"Dett er hvad man normalt gør"
+"Dette er hvad man normalt gør"
 
 #: edit.cpp:703
 msgid "Edit Script"
@@ -1093,7 +1093,7 @@ msgstr ""
 
 #: general.cpp:386
 msgid "Modem Timeout:"
-msgstr "Modem tiden løb ud:"
+msgstr "Modem udløbstid:"
 
 #: general.cpp:405
 msgid ""
@@ -1123,7 +1123,7 @@ msgid ""
 "The default is 0 seconds, you should not change\n"
 "this unless you need to."
 msgstr ""
-"Angiver det antal sekunder der ventes for der \n"
+"Angiver det antal sekunder der ventes før der \n"
 "ringes op igen hvis alle numre er optaget. Dette\n"
 "er nødvendigt fordi visse modemer går i baglås\n"
 "hvis det samme nummer er optaget for tit.\n"
@@ -1257,7 +1257,7 @@ msgstr ""
 "der kaldes \"hurtighjælp\". Det er ligesom \n"
 "værktøjstip, men man kan aktivere det nårsomhelst.\n"
 "\n"
-"For starte denne, klik på en kontrol som en \n"
+"For at `starte denne, klik på en kontrol som en \n"
 "knap eller en etikette med den højre museknap.\n"
 "Hvis det du klikker på støtter hurtighjælp, vil\n"
 "en menu dukke op der fører til hurtighjælp.\n"
@@ -1808,7 +1808,7 @@ msgstr "Afslut MiniTerm"
 
 #: miniterm.cpp:112
 msgid "Reset Modem"
-msgstr "Reset Modem"
+msgstr "cwNulstilReset Modem"
 
 #: miniterm.cpp:138
 msgid "Initializing Modem"
@@ -1820,7 +1820,7 @@ msgstr "Lægger på ..."
 
 #: miniterm.cpp:221
 msgid "Resetting Modem"
-msgstr "Resetter modem"
+msgstr "Nulstiller modem"
 
 #: acctselect.cpp:47
 msgid "Accounting Setup"
@@ -1836,7 +1836,7 @@ msgstr "Valgt:"
 
 #: acctselect.cpp:87
 msgid "Volume accounting:"
-msgstr "Mængde afregning:"
+msgstr "Mængdeafregning:"
 
 #: acctselect.cpp:91
 msgid "No accounting"

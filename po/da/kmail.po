@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE NETWORK/kmail\n"
 "POT-Creation-Date: 1999-02-06 02:07+0100\n"
-"PO-Revision-Date: 1999-01-26 17:00+CET-1\n"
+"PO-Revision-Date: 1999-02-17 17:00+CET-1\n"
 "Last-Translator: Erik Kjær Pedersen <erik@binghamton.edu>\n"
 "Language-Team: da <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -694,15 +694,15 @@ msgstr "i ankomstrækkefølge"
 
 #: kmheaders.cpp:345
 msgid "subject"
-msgstr "emne"
+msgstr "efter emne"
 
 #: kmheaders.cpp:346
 msgid "date"
-msgstr "dato"
+msgstr "efter dato"
 
 #: kmheaders.cpp:347
 msgid "sender"
-msgstr "afsender"
+msgstr "efter afsender"
 
 #: kmheaders.cpp:348
 msgid "status"
@@ -711,12 +711,12 @@ msgstr "status"
 #: kmheaders.cpp:350
 #, c-format
 msgid "Sorting messages descending by %s"
-msgstr "Sorterer breve nedad efter %s"
+msgstr "Breve sorteret omvendt %s"
 
 #: kmheaders.cpp:352
 #, c-format
 msgid "Sorting messages ascending by %s"
-msgstr "Sorterer breve opad efter %s"
+msgstr "Breve sorteret %s"
 
 #: kmheaders.cpp:448
 msgid "Message(s) saved."
@@ -1809,11 +1809,11 @@ msgstr "Opgiver overførsel...\n"
 
 #: charsetsDlg.cpp:27
 msgid "KRN - Charset Settings"
-msgstr "KRN - tegnsæt indstillinger"
+msgstr "KRN - tegnsætindstillinger"
 
 #: charsetsDlg.cpp:29
 msgid "KMail - Charset Settings"
-msgstr "KMail tegnsæt indstillinger"
+msgstr "KMail tegnsætindstillinger"
 
 #: charsetsDlg.cpp:39
 msgid "Message charset"
@@ -1821,7 +1821,7 @@ msgstr "Brev tegnsæt"
 
 #: charsetsDlg.cpp:57
 msgid "Composer charset"
-msgstr "Brevskriver tegnsæt"
+msgstr "Brevskrivertegnsæt"
 
 #: charsetsDlg.cpp:75
 msgid "Set as &default"
@@ -1834,17 +1834,3 @@ msgstr "&7 bit er ASCII"
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
 msgstr "U&kendte tegn i anførselstegn"
-
-#~ msgid ""
-#~ "Cannot modify a\n"
-#~ "system folder."
-#~ msgstr ""
-#~ "Kan ikke ændre en\n"
-#~ "systemfolder."
-
-#~ msgid ""
-#~ "Are you sure you want to discard the\n"
-#~ "contents of the folder \"%s\" ?"
-#~ msgstr ""
-#~ "Er du sikker på at du\n"
-#~ "vil slette indholdet af folderen \"%s\" ?"

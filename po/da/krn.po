@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE NETWORK/krn\n"
 "POT-Creation-Date: 1999-01-18 02:04+0100\n"
-"PO-Revision-Date: 1999-01-66 17:00+CET-1\n"
+"PO-Revision-Date: 1999-02-17 17:00+CET-1\n"
 "Last-Translator: Erik Kjær Pedersen <erik@binghamton.edu>\n"
 "Language-Team: da <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -19,23 +19,23 @@ msgstr "Manglende KRN indstillingsinfo"
 
 #: main.cpp:220
 msgid "Please enter your email adress"
-msgstr "Vær venlig at anføre e-post adresse"
+msgstr "Indtast venligst din e-post adresse"
 
 #: main.cpp:233
 msgid "Please enter your real name"
-msgstr "Vær venlig at anføre dit navn"
+msgstr "Indtast venligst dit rigtige navn"
 
 #: main.cpp:247
 msgid "Please enter your organization's name"
-msgstr "Vær venlig at anføre din organisations navn"
+msgstr "Indtast venligst din organisations navn"
 
 #: main.cpp:265
 msgid "Please enter your NNTP server name"
-msgstr "Vær venlig at anføre din NNTP servers navn"
+msgstr "Indtast venligst din NNTP servers navn"
 
 #: main.cpp:280
 msgid "Please enter your SMTP server name"
-msgstr "Vær venlig at anføre din SMTP servers navn"
+msgstr "Indtast venligst din SMTP servers navn"
 
 #: NNTP.cpp:120
 #, c-format
@@ -128,7 +128,7 @@ msgstr "NNTP instillinger..."
 
 #: groupdlg.cpp:173
 msgid "Expire Options..."
-msgstr "Slette indstillinger..."
+msgstr "Sletteindstillinger..."
 
 #: groupdlg.cpp:174
 msgid "Printing Options..."
@@ -1324,12 +1324,12 @@ msgstr "Vedhæng: "
 
 #: kmreaderwin.cpp:813
 msgid "Could not create temporary file"
-msgstr "Kunne ikke lave en temporær fil"
+msgstr "Kunne ikke lave en midlertidig fil"
 
 #: kmreaderwin.cpp:834
 #, c-format
 msgid "Could not save temporary file %s"
-msgstr "Kunne ikke gemme de temporære fil %s"
+msgstr "Kunne ikke gemme de midlertidige fil %s"
 
 #: kmreaderwin.cpp:863
 msgid "Could not save file"
@@ -1609,19 +1609,19 @@ msgstr "Brug tråde"
 
 #: charsetsDlg.cpp:27
 msgid "KRN - Charset Settings"
-msgstr "KRN - tegnsæt indstillinger"
+msgstr "KRN - tegnsætindstillinger"
 
 #: charsetsDlg.cpp:29
 msgid "KMail - Charset Settings"
-msgstr "KMail tegnsæt indstillinger"
+msgstr "KMail tegnsætindstillinger"
 
 #: charsetsDlg.cpp:39
 msgid "Message charset"
-msgstr "Brev tegnsæt"
+msgstr "Brevtegnsæt"
 
 #: charsetsDlg.cpp:57
 msgid "Composer charset"
-msgstr "Brevskriver tegnsæt"
+msgstr "Brevskrivertegnsæt"
 
 #: charsetsDlg.cpp:75
 msgid "Set as &default"
