@@ -63,6 +63,7 @@ char copyright[] =
 #include "threads.h"
 #include "table.h"
 #include "machines/answmach.h"
+#include "machines/talkconn.h"
 
 #define TIMEOUT 20
  /* TIMEOUT was 30, but has been reduced to remove the
@@ -121,6 +122,8 @@ int main(int argc, char *argv[])
 	}
 	if (argc > 1 && strcmp(argv[1], "-d") == 0)
 		Options.debug_mode = 1;
+
+        TalkConnection::init(); /* global initialization */
 
         signal(SIGALRM, timeout);
         alarm(TIMEOUT);
