@@ -43,7 +43,7 @@
 #include <regex.h>
 #include <netinet/in.h>
 #include <signal.h>
-#include <wait.h>
+#include <sys/wait.h>
 
 #include "kpppconfig.h"
 #include "opener.h"
