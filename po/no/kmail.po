@@ -101,7 +101,7 @@ msgstr "Velg mappe"
 
 #: kmmainwin.cpp:666
 msgid "Queued messages successfully sent."
-msgstr "Meldinger i køen lyktes å sende."
+msgstr "Meldinger i køen avsendt."
 
 #: kmmainwin.cpp:668
 msgid "Failed to send (some) queued messages."
@@ -169,7 +169,7 @@ msgstr "&Kopier..."
 
 #: kmmainwin.cpp:956
 msgid "New Composer"
-msgstr "Ny komponist"
+msgstr "Ny melding"
 
 #: kmcomposewin.cpp:451 kmmainwin.cpp:958
 msgid "New Mailreader"
@@ -221,11 +221,11 @@ msgstr "&Modifiser..."
 
 #: kmmainwin.cpp:1007
 msgid "C&ompact"
-msgstr "K&ompakt"
+msgstr "K&omprimere"
 
 #: kmmainwin.cpp:1010
 msgid "&Empty"
-msgstr "&Tom"
+msgstr "&Tøm"
 
 #: kmfilterdlg.cpp:149 kmmainwin.cpp:1019
 msgid "New"
@@ -301,7 +301,7 @@ msgstr "S&tilige meldingshoder"
 
 #: kmmainwin.cpp:1074
 msgid "&Standard Headers"
-msgstr "&Standard melingshoder"
+msgstr "&Standard meldingshoder"
 
 #: kmmainwin.cpp:1076
 msgid "&Long Headers"
@@ -333,7 +333,7 @@ msgstr "&Melding"
 
 #: kmcomposewin.cpp:573 kmmainwin.cpp:1114
 msgid "Compose new message"
-msgstr "Komponer ny melding"
+msgstr "Skriv ny melding"
 
 #: kmcomposewin.cpp:578 kmmainwin.cpp:1119
 msgid "Save message to file"
@@ -345,7 +345,7 @@ msgstr "Skriv ut melding"
 
 #: kmmainwin.cpp:1131
 msgid "Get new mail"
-msgstr "Få tak i ny post"
+msgstr "Hent ny post"
 
 #: kmmainwin.cpp:1137
 msgid "Reply to author"
@@ -482,7 +482,7 @@ msgstr "Meldingslisteskrifttype:"
 
 #: kmsettings.cpp:358
 msgid "Long folder list"
-msgstr "Lang mappe listeing"
+msgstr "Lang mappeliste"
 
 #: kmsettings.cpp:387
 msgid "Phrases"
@@ -494,7 +494,7 @@ msgid ""
 "%D=date, %S=subject, %F=sender, %%=percent sign"
 msgstr ""
 "De følgende symbolene er støttet i svarstolkningen:\n"
-"%D=dato, %S=emne, %F=sender, %%=perosenttegn"
+"%D=dato, %S=emne, %F=sender, %%=prosenttegn"
 
 #: kmsettings.cpp:400
 msgid "Reply to sender:"
@@ -514,11 +514,11 @@ msgstr "Innrykk:"
 
 #: kmmessage.cpp:1352 kmsettings.cpp:421
 msgid "On %D, you wrote:"
-msgstr "%D, du skrev:"
+msgstr "%D, skrev du :"
 
 #: kmmessage.cpp:1353 kmsettings.cpp:425
 msgid "On %D, %F wrote:"
-msgstr "%D, %F skrev:"
+msgstr "%D, skrev %F:"
 
 #: kmmessage.cpp:1354 kmsettings.cpp:429
 msgid "Forwarded Message"
@@ -526,11 +526,11 @@ msgstr "Videresendt melding"
 
 #: kmsettings.cpp:440
 msgid "Automatically append signature"
-msgstr "Automatisk legg til signatur"
+msgstr "Legg automatisk til signatur"
 
 #: kmsettings.cpp:446
 msgid "Automatically sign messages using PGP"
-msgstr "Automatisk signer meldinger ved hjelp av PGP"
+msgstr "Signer automatisk meldinger ved hjelp av PGP"
 
 #: kmsettings.cpp:451
 msgid "Word wrap at column:"
@@ -538,7 +538,7 @@ msgstr "Bryt linje på kolonne:"
 
 #: kmsettings.cpp:461
 msgid "Use monospaced font"
-msgstr "Bruke monospaced skrifttype"
+msgstr "Bruk monospaced skrifttype"
 
 #: kmsettings.cpp:473
 msgid "When sending mail"
@@ -570,7 +570,7 @@ msgstr "MIME-kompilant (Quoted Printable)"
 
 #: kmsettings.cpp:522
 msgid "Composer"
-msgstr "Komponist"
+msgstr "Ny melding"
 
 #: kmsettings.cpp:543
 msgid "empty trash on exit"
@@ -646,7 +646,7 @@ msgstr "Mottar all post fra tjener"
 
 #: kmsettings.cpp:932
 msgid "Enable interval Mail checking"
-msgstr "Slå på internval-sjekking av epost"
+msgstr "Slå på periodisk sjekking av epost"
 
 #: kmsettings.cpp:942
 msgid "Store new mail in account:"
@@ -745,7 +745,7 @@ msgstr "Mislykkes å lagre melding(er)."
 
 #: kmcomposewin.cpp:128
 msgid "KMail Composer"
-msgstr "KMail Komponist"
+msgstr "Ny melding"
 
 #: kmcomposewin.cpp:141
 msgid "Size"
@@ -805,7 +805,7 @@ msgstr "&Sett inn fil..."
 
 #: kmcomposewin.cpp:448
 msgid "&New Composer..."
-msgstr "&Ny komponist..."
+msgstr "&Ny melding..."
 
 #: kmcomposewin.cpp:471 kmcomposewin.cpp:703 kmcomposewin.cpp:1892
 msgid "Mark all"
@@ -837,7 +837,7 @@ msgstr "&Bekreft lesing"
 
 #: kmcomposewin.cpp:493
 msgid "&Spellchecker..."
-msgstr "&Stavekontrollør..."
+msgstr "&Stavekontroll..."
 
 #: kmcomposewin.cpp:496
 msgid "&Charsets..."
@@ -1026,7 +1026,7 @@ msgstr "Mappen `%s' ble endret. Gjenoppretter indeks."
 #: kmfolder.cpp:386
 #, c-format
 msgid "Creating index file: %d messages done"
-msgstr "Lager indeks fil: %d meldinger ferdig"
+msgstr "Lager indeksfil: %d meldinger ferdig"
 
 #: kmfolder.cpp:469
 msgid "Writing index file"
@@ -1035,7 +1035,7 @@ msgstr "Skriver indeksfil"
 #: kmfolder.cpp:909
 #, c-format
 msgid "Compacting folder: %d messages done"
-msgstr "Lager indeks fil: %d meldinger ferdig"
+msgstr "Lager indeksfil: %d meldinger ferdig"
 
 #: kmmsgpartdlg.cpp:41
 msgid "Message Part Properties"
@@ -1170,7 +1170,7 @@ msgstr ""
 
 #: main.cpp:337
 msgid "Loading addressbook failed"
-msgstr "Lastign av adresseboken mislyktes"
+msgstr "Lasting av adresseboken mislyktes"
 
 #: main.cpp:413
 #, c-format
@@ -1239,7 +1239,7 @@ msgstr ""
 
 #: kmacctpop.cpp:459
 msgid "Login Name:"
-msgstr "Logginnnavn:"
+msgstr "Logginn-navn:"
 
 #: kmfolderdir.cpp:78
 #, c-format
@@ -1302,15 +1302,15 @@ msgstr "Sending pågår fremdeles"
 
 #: kmsender.cpp:245
 msgid "Initiating sender process..."
-msgstr "Starter sende prossessen..."
+msgstr "Starter sendeprosessen..."
 
 #: kmsender.cpp:261
 msgid "Sending message: "
-msgstr "Semder melding: "
+msgstr "Sender melding: "
 
 #: kmsender.cpp:289
 msgid "Done sending messages."
-msgstr "Ferdig med å sende meldinger."
+msgstr "Meldinger avsendt."
 
 #: kmsender.cpp:308
 msgid "Sending failed:"
@@ -1367,7 +1367,7 @@ msgstr ""
 "en SMTP-feil oppstod.\n"
 "Kommando: %s\n"
 "Respons: %s\n"
-"Retur kode: %d"
+"Returkode: %d"
 
 #: kmsender.cpp:724
 #, c-format
@@ -1573,8 +1573,8 @@ msgid ""
 "Please enter your\n"
 "PGP passphrase"
 msgstr ""
-"Vennligst skriv inn din\n"
-"PGP passphrase"
+"ennligst skriv inn\n"
+"ditt PGP-passord"
 
 #: kpgp.cpp:744
 msgid "PGP Security Check"
@@ -1594,15 +1594,15 @@ msgstr "PGP-brukeridentitet:"
 
 #: kpgp.cpp:838
 msgid "Store passphrase"
-msgstr "Lagre pass-frase"
+msgstr "Lagre PGP-passord"
 
 #: kpgp.cpp:844
 msgid "Always encrypt to self"
-msgstr "Alltid kryptere til selv"
+msgstr "Alltid kryptere til seg selv"
 
 #: kpgpbase.cpp:320
 msgid "Bad pass Phrase; couldn't sign"
-msgstr "Gal passord-frase; kunne ikke signere"
+msgstr "Uriktig passord-frase; kunne ikke signere"
 
 #: kpgpbase.cpp:359
 msgid "error running pgp"
@@ -1610,7 +1610,7 @@ msgstr "feil under kjøring av pgp"
 
 #: kpgpbase.cpp:376 kpgpbase.cpp:667
 msgid "Bad pass Phrase; couldn't decrypt"
-msgstr "Galt passord-frase; kunne ikke dekryptere"
+msgstr "Uriktig passord-frase; kunne ikke dekryptere"
 
 #: kpgpbase.cpp:387 kpgpbase.cpp:678
 msgid "Do not have the secret key for this message"
@@ -1802,7 +1802,7 @@ msgstr "Forbereder overføring..."
 
 #: kmnewiostatuswdg.cpp:60
 msgid "Transmission completed..."
-msgstr "Overføring fullfør..."
+msgstr "Overføring fullført..."
 
 #: kmnewiostatuswdg.cpp:95
 msgid "Aborting transmission...\n"
@@ -1822,7 +1822,7 @@ msgstr "Melding som enkel tekst"
 
 #: charsetsDlg.cpp:57
 msgid "Composer charset"
-msgstr "Komponist-tegnsett"
+msgstr "Tegnsett i redigerer"
 
 #: charsetsDlg.cpp:75
 msgid "Set as &default"
