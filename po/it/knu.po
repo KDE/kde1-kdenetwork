@@ -111,10 +111,21 @@ msgid ""
 "Please use Edit->Preferences... menu\n"
 "to configure it again.\n"
 msgstr ""
+"\n"
+"hai un problema nel tuo file\n"
+"%s/%src\n"
+"di configurazione.\n"
+"Nel gruppo [%s],\n"  
+"non riesco a trovare una voce \"path=\" valida.\n"
+"\n"
+"Per favore usa il menu Modifica->Preferenze...\n"
+"per configurarlo nuovamente.\n"
+
+
 
 #: CommandDlg.cpp:349
 msgid "Error in pathname"
-msgstr ""
+msgstr "Errore nel path"
 
 #: CommandDlg.cpp:482
 msgid "Binary"
