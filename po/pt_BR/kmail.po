@@ -1057,13 +1057,15 @@ msgstr "erro fatal"
 
 #: main.cpp:161
 msgid "KMail notification"
-msgstr ""
+msgstr "Notificação KMail"
 
 #: main.cpp:162
 msgid ""
 "$HOME is not set!\n"
 "KMail cannot start without it.\n"
 msgstr ""
+"Variável $HOME não está configurada!\n"
+"KMail não pode funcionar sem ela.\n"
 
 #: main.cpp:228
 msgid ""
@@ -1085,7 +1087,7 @@ msgstr ""
 
 #: main.cpp:322
 msgid "Loading addressbook failed"
-msgstr ""
+msgstr "Carregamento do livro de endereços falhou."
 
 #: main.cpp:392
 #, c-format
@@ -1555,7 +1557,7 @@ msgstr "Erro do KMail"
 
 #: kmaddrbook.cpp:26
 msgid "Storing the addressbook failed!\n"
-msgstr ""
+msgstr "Salvamento do livro de endereços falhou!\n"
 
 #: kmaddrbookdlg.cpp:20
 msgid "Addressbook"
