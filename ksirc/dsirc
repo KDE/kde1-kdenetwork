@@ -469,9 +469,9 @@ sub ctcp {
     if (&eq($towho, $nick)) {
       &tell("~$who~* \cb${who}\cb$puh1 $args"); # KSIRC MOD
     } elsif (&eq($towho, $talkchannel) && !$printchan) {
-      &tell("~$who~* $who $args");
+      &tell("~$towho~* $who $args"); #KSIRC MOD
     } else {
-      &tell("~$who~* $who$puh2 $args");
+      &tell("~$towho~* $who$puh2 $args"); #KSIRC MOD
     }
   } elsif ($what eq 'TIME') {
     &reply("TIME ".&date(time));

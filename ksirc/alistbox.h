@@ -16,6 +16,7 @@ public:
   aListBox(QWidget *parent = 0, const char *name = 0) : QListBox(parent,name)
     {
       clear();
+      p_scroll = palette().copy();
     }
 
   void clear();
@@ -25,12 +26,18 @@ public:
 
   bool isTop(int index);
 
+  virtual void setPalette ( const QPalette & );
+
 signals:
    void rightButtonPress(int index);
 
 protected:
   virtual void mousePressEvent ( QMouseEvent * );
   virtual int findSep();
+
+private:
+  QPalette p_scroll;
+
 
 };
 

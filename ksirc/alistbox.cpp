@@ -12,6 +12,7 @@
 
 #include "alistbox.h"
 #include "linelistitem.h"
+#include <qscrbar.h>
 
 // SEP has to be something that's never in a nick, !'s are not allowed in nicks
 
@@ -90,3 +91,9 @@ bool aListBox::isTop(int index)
     return TRUE;
 }
 
+void aListBox:: setPalette ( const QPalette &p )
+{
+  QListBox::setPalette(p);
+  ((QScrollBar*) QTableView::verticalScrollBar())->setPalette(p_scroll);
+  ((QScrollBar*) QTableView::horizontalScrollBar())->setPalette(p_scroll);
+}
