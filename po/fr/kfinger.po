@@ -30,13 +30,12 @@ msgid "&Save Options"
 msgstr "Enregistrer les options"
 
 #: kfinger.C:38
-#, fuzzy
 msgid ""
 "kfinger 0.8.1\n"
 "\n"
 "(c) Andrea Rizzi (rizzi@kde.org)"
 msgstr ""
-"kfinger 0.8.0 vf\n"
+"kfinger 0.8.1\n"
 "\n"
 "(c) Andrea Rizzi (rizzi@kde.org)"
 
@@ -76,7 +75,7 @@ msgstr "Erreur sur le serveur : %s"
 #: kfinger.C:284
 #, c-format
 msgid "Connection refused by  %s"
-msgstr ""
+msgstr "Connexion refusée par %s"
 
 #: kfinger.C:296
 #, c-format
@@ -84,13 +83,12 @@ msgid "Finger  %s@%s   --   %s"
 msgstr "Finger  %s@%s   --   %s"
 
 #: kfinger.C:317
-#, fuzzy
 msgid ""
 "Kfinger 0.8.1\n"
 "(c) by Andrea Rizzi\n"
 "rizzi@kde.org"
 msgstr ""
-"Kfinger 0.8.0\n"
+"Kfinger 0.8.1\n"
 "(c) par Andrea Rizzi\n"
 "rizzi@kde.org"
 
@@ -153,7 +151,7 @@ msgstr "Utilisateur de finger"
 
 #: kfinger.C:533
 msgid "Lines to skip :"
-msgstr "lignes à sauter :"
+msgstr "Lignes à sauter :"
 
 #: kfinger.C:541 kfinger.C:546
 msgid "Format..."
@@ -177,7 +175,7 @@ msgstr "Parler à..."
 
 #: kfinger.C:778
 msgid "Format string for var1(string)"
-msgstr "Format de la chaîne var1 (caractères)"
+msgstr "Format de la chaîne var1 (chaîne)"
 
 #: kfinger.C:784
 msgid "Fromat string for var2(int)"
