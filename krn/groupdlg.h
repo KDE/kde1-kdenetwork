@@ -42,11 +42,12 @@ public:
     );
 
     virtual ~Groupdlg();
+    void openGroup(KTreeViewItem *);
 
 public slots:
     void openGroup(QString name);
     void openGroup(int);
-    void openGroup(KTreeViewItem *);
+    void openGroup(KTreeViewItem *, bool&);
     void online();
     void offline();
     bool needsConnect();

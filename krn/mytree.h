@@ -11,6 +11,9 @@ public:
                WFlags f = 0) :
     KTreeView(parent , name , f) {};
     void setTopCell(int c) { KTreeView::setTopCell(c); }
+    void appendChildItem(KTreeViewItem* parent,
+                         KTreeViewItem* child){KTreeView::appendChildItem(parent,child);};
+
 };  
 
 #endif

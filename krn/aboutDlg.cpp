@@ -60,6 +60,7 @@ aboutDlg::aboutDlg
     tmpQListBox->insertItem( "César Ballardini <cballard@santafe.com.ar>" );
     tmpQListBox->insertItem( "Jacek Konieczny <jajcus@zeus.polsl.gliwice.pl>" );
     tmpQListBox->insertItem( "Hans Zoebelein <zocki@goldfish.cube.net>" );
+    tmpQListBox->insertItem( "Johannes Sixt <Johannes.Sixt@telecom.at>" );
     tmpQListBox->insertItem( "" );
     tmpQListBox->insertItem( klocale->translate("And Many thanks to:") );
     tmpQListBox->insertItem( "" );

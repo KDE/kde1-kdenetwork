@@ -214,7 +214,7 @@ Groupdlg::Groupdlg(const char *name):Inherited (name)
     
     list = new MyTreeList (this, "");
     QObject::connect (list, SIGNAL (selected (int)), this, SLOT (openGroup (int)));
-    QObject::connect (list, SIGNAL (expanding (KTreeViewItem*,bool&)), this, SLOT (openGroup (KTreeViewItem*)));
+    QObject::connect (list, SIGNAL (expanding (KTreeViewItem*,bool&)), this, SLOT (openGroup (KTreeViewItem*,bool&)));
     setView (list);
     RmbPop *filter=new RmbPop(list);
     delete (filter->pop);
@@ -327,23 +327,25 @@ void Groupdlg::openGroup (QString name)
     }
 }
 
-void Groupdlg::openGroup (KTreeViewItem *item)
+void Groupdlg::openGroup (KTreeViewItem *item, bool&)
 {
     item->setDelayedExpanding(false);
-    int i=list->itemRow(item);
-    KTreeViewItem *it=list->itemAt(i);
-    if (it->getText()==klocale->translate("All Newsgroups."))
-        loadActive();
-    openGroup(i);
+    openGroup(item);
 }
 
 void Groupdlg::openGroup (int index)
 {
+    KTreeViewItem *it=list->itemAt(index);
+    openGroup(it);
+}
+
+void Groupdlg::openGroup (KTreeViewItem *it)
+{
     QPixmap p;
     qApp->setOverrideCursor(waitCursor);
     QString base;
-    KTreeViewItem *it=list->itemAt(index);
-    if (it->getText()[strlen(it->getText())-1]!='.')
+
+    if (it->getText()[it->getText().length()-1]!='.')
     {
         QString temp=it->getText();
         int i=temp.find(' ');
@@ -422,19 +424,23 @@ void Groupdlg::openGroup (int index)
 
             for (char *name=items.first();name!=0;name=items.next())
             {
+		KTreeViewItem *itemp;
                 if (name[strlen(name)-1]=='.')
                 {
-                    KTreeViewItem *itemp=new KTreeViewItem(name,krnfolder);
+                    itemp=new KTreeViewItem(name,krnfolder);
                     itemp->setDelayedExpanding(true);
-                    list->appendChildItem(itemp,index);
+                    list->appendChildItem(it,itemp);
                 }
                 else
                 {
-                    list->appendChildItem(name,followup,index);
+                    itemp=new KTreeViewItem(name,followup);
+                    list->appendChildItem(it,itemp);
                 }
+		itemp->setDeleteChildren(true);
             }
 
-            list->expandItem(index);
+            //            list->expandItem(it);
+            it->setExpanded(true);
             list->forEveryVisibleItem(checkPixmap,NULL);
             list->repaint();
 
@@ -445,9 +451,11 @@ void Groupdlg::openGroup (int index)
         else
         {
             if (it->isExpanded())
-                list->collapseItem(index);
+                //                list->collapseItem(it);
+                it->setExpanded(false);
             else
-                list->expandItem(index);
+                it->setExpanded(true);
+//                list->expandItem(it);
         }
     }
     qApp->restoreOverrideCursor();
@@ -480,7 +488,7 @@ void Groupdlg::subscribe (NewsGroup *group)
         if (groupDict.find (group->name))
         {
             p=kapp->getIconLoader()->loadIcon("subscr.xpm");
-            list->appendChildItem (group->name, p, 0);
+            list->appendChildItem (list->itemAt(0),new KTreeViewItem(group->name, p));
             subscr.append (group->name);
             if (list->itemAt(0)->isExpanded() &&
                 ((unsigned int)list->currentItem()>list->itemAt(0)->childCount()+1))
@@ -562,6 +570,7 @@ void Groupdlg::fillTree ()
     if (subscr.count()>0)
         item->setDelayedExpanding(true);
     list->insertItem (item);
+    item->setDeleteChildren(true);
     QStrListIterator it(subscr);
     it.toFirst();
     NewsGroup *g;
@@ -571,13 +580,14 @@ void Groupdlg::fillTree ()
         if (!g)
             continue;
         p=kapp->getIconLoader()->loadIcon("subscr.xpm");
-        list->appendChildItem (g->name, p, 0);
+        list->appendChildItem (item,new KTreeViewItem(g->name, p));
     }
 
     p=kapp->getIconLoader()->loadIcon("krnfolder.xpm");
     item=new KTreeViewItem(klocale->translate("All Newsgroups."), p);
     item->setDelayedExpanding(true);
     list->insertItem (item);
+    item->setDeleteChildren(true);
 }
 
 bool Groupdlg::needsConnect()
@@ -899,7 +909,7 @@ void Groupdlg::findGroup()
     if (index!=-1)
     {
         //It exists in subscribed
-        list->expandItem(0);
+        list->itemAt(0)->setExpanded(true);
         list->setCurrentItem(index+1);
         return;
     }
@@ -914,7 +924,7 @@ void Groupdlg::findGroup()
         p.push (new QString(klocale->translate("All Newsgroups.")));
         
         if (!list->itemAt(p)->isExpanded())
-            openGroup(list->itemRow(list->itemAt(p)));
+            openGroup(list->itemAt(p));
         
         char *s=qstrdup(ask.entry->text());
         char *s2;
@@ -929,9 +939,9 @@ void Groupdlg::findGroup()
                 p.push(s1);
                 ss->append(s);
                 p.push (ss);
-                int index=list->itemRow(list->itemAt(p));
-                list->setCurrentItem(index);
-                list->setTopCell(index);
+		KTreeViewItem* it = list->itemAt(p);
+                list->setCurrentItem(list->itemRow(it));
+                list->scrollVisible(it,false);
                 break;
             }
             else
@@ -960,8 +970,7 @@ void Groupdlg::findGroup()
                 }
                 if (!it->isExpanded())
                 {
-                    int in=list->itemRow(it);
-                    openGroup(in);
+                    openGroup(it);
                 }
                 s=s2;
             }
