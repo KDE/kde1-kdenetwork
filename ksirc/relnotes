@@ -1,15 +1,16 @@
 ~b~12,4             kSirc Release Notes for 981025                             
 
-New Features:
+~2New Features:
 
-~4*~c Mini Web Server
-~4*~c MDI Mode (very experimental)
-~4*~c Better Caption support with optional Topic
-~4*~c New Server Picker, thanks Atko
-~4*~c Selecting windows in SC brings them to foreground
+~4~b*~C ~3Mini Web Server
+~4~b*~C ~3MDI Mode (very experimental)
+~4~b*~C ~3Better Caption support with optional Topic
+~4~b*~C ~3New Server Picker, thanks Atko
+~4~b*~C ~3Selecting windows in SC brings them to foreground
+~4~b*~C ~3Release notes are displayed to the screen on first run
 
 
-~b~12,4             Web Server Notes                                         
+~b~12,4             Web Server Notes                                           
 
 Credit: Thanks to Roberto for the PWS config dialog,
 99.9% of the work is his.
@@ -25,7 +26,7 @@ since running a web server is dangerous enough,
 much less giving potential root access away.
 
 
-~b~12,4                  MDI Mode                                          
+~b~12,4                  MDI Mode                                              
 
 Credit: Timothy Whitfield, ported the MDI interface
 from kEirc into a generic MDI interface for KDE.
@@ -48,7 +49,7 @@ never land.
 I'm personally not a big fan of the MDI interface
 but I'll work on making it work right as time permits.
 
-~b~12,4                  OTHER Stuff
+~b~12,4                  OTHER Stuff                                           
 
 There's been a bunch of bug fixes everywhere.
 

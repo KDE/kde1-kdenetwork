@@ -51,7 +51,6 @@ void DisplayMgrMDI::removeTopLevel(QWidget *w){
   if(km != 0x0){
     mgr->removeWindow(km);
     km->hide();
-    km->close(TRUE);
   }
   else
   warning("Could not find widget in removeTopLevel");
