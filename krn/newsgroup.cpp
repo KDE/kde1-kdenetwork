@@ -30,8 +30,6 @@
 
 #include "kfileio.h"
 
-extern ArticleDict artSpool;
-
 extern QString krnpath,cachepath,artinfopath,groupinfopath;
 
 extern GDBM_FILE artdb;
@@ -44,7 +42,7 @@ extern QDict <char> unreadDict;
 // Real docs soon.
 ////////////////////////////////////////////////////////////////////
 
-Article::Article(void)
+Article::Article (const char *_ID)
 {
     isread=false;
     isavail=true;
@@ -54,25 +52,23 @@ Article::Article(void)
     expire=true;  // robert's cache stuff
     refsLoaded=false;
     Refs.setAutoDelete(true);
+    ID=_ID;
+    lastAccess=0;
+    load();
 }
 
-void Article::decref()
+Article::Article(void)
 {
-    refcount--;
-    if (!refcount)
-    {
-        artSpool.remove(ID.data());
-    }
-};
-
-void Article::incref()
-{
-    refcount++;
-    if (refcount==1)
-    {
-        artSpool.insert(ID.data(),this);
-    }
-};
+    isread=false;
+    isavail=true;
+    ismarked=false;
+    refcount=0;
+    threadDepth=0;
+    expire=true;  // robert's cache stuff
+    refsLoaded=false;
+    lastAccess=0;
+    Refs.setAutoDelete(true);
+}
 
 Article::~Article()
 {
@@ -173,15 +169,25 @@ void Article::save()
     else
         _content+="0\n";
     
-    // end robert;s cache stuff
+    // end robert's cache stuff
     //
+
+    if(isMarked())
+        _content+="1\n";
+    else
+        _content+="0\n";
+
+    QString tt;
+    tt.setNum(lastAccess);
+    _content+=tt;
+    _content+="\n";
     
     for (char *iter=Refs.first();iter!=0;iter=Refs.next())
     {
         _content+=iter;
         _content+="\n";
     }
-    
+
     datum content;
     content.dptr=_content.data();
     content.dsize=_content.length()+1;
@@ -253,8 +259,15 @@ void Article::load()
         expire=true;
     else
         expire=false;
+
+    if (!strcmp(tl.at(7),"1"))
+        ismarked=true;
+    else
+        ismarked=false;
+
+    lastAccess=atoi(tl.at(8));
     
-    for (unsigned int i=7;i<tl.count();i++)
+    for (unsigned int i=9;i<tl.count();i++)
     {
         if(0<strlen(tl.at(i)))
         {
@@ -300,6 +313,7 @@ void Article::setExpire(bool b)   // robert's cache stuff
     save();
 }
 
+
 void Article::toggleExpire()   // robert's cache stuff
 {
     if (!refsLoaded) load();
@@ -307,6 +321,13 @@ void Article::toggleExpire()   // robert's cache stuff
         expire = false;
     else
         expire = true;
+    save();
+}
+
+void Article::setMarked(bool b)
+{
+    if (!refsLoaded) load();
+    ismarked = b;
     save();
 }
 
@@ -324,6 +345,7 @@ KMMessage *Article::createMessage ()
 
 NewsGroup::NewsGroup(const char *_name)
 {
+    artList.setAutoDelete(true);
     isVisible=0;
     sconf=0;
     name=qstrdup(_name);
@@ -345,20 +367,9 @@ void NewsGroup::addArticle(QString ID,bool onlyUnread)
     {
         return;
     }
-    Article *spart=artSpool.find(ID.data());
-    if (spart==NULL)
+    if (onlyUnread)
     {
-        if (onlyUnread)
-        {
-            if (unreadDict.find(ID.data()))
-            {
-                Article *art=new Article();
-                art->ID=ID;
-                art->load();
-                artList.append(art);
-            }
-        }
-        else
+        if (unreadDict.find(ID.data()))
         {
             Article *art=new Article();
             art->ID=ID;
@@ -368,8 +379,10 @@ void NewsGroup::addArticle(QString ID,bool onlyUnread)
     }
     else
     {
-        if (artList.findRef (spart)==-1)
-            artList.append(spart);
+        Article *art=new Article();
+        art->ID=ID;
+        art->load();
+        artList.append(art);
     }
 }
 
@@ -521,31 +534,6 @@ int NewsGroup::countNew(NNTP *server)
 // Real docs soon.
 ////////////////////////////////////////////////////////////////////
 
-void ArticleList::append(Article *item)
-{
-    item->incref();
-    ArticleListBase::append((const Article *)item);
-}
-
-bool ArticleList::remove(uint index)
-{
-    Article *art=at(index);
-    bool b=ArticleListBase::remove(index);
-    if (b)
-        art->decref();
-    return b;
-}
-
-bool ArticleList::remove()
-{
-    return remove(at());
-}
-
-void ArticleList::clear()
-{
-    while (!isEmpty())
-        remove(0);
-}
 
 QString noRe(QString subject)
 {

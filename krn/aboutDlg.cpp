@@ -34,7 +34,7 @@ aboutDlg::aboutDlg
 
     l->addButton ("logo",p);
     l->newLine();
-    l->addLabel("l3","0.2.0");
+    l->addLabel("l3","0.2.1");
     l->newLine();
     l->addLabel("l1",klocale->translate("Part of the KDE project."));
     l->newLine();

@@ -15,6 +15,7 @@ void KRNSender::setNNTP(NNTP *_server)
 
 bool KRNSender::send(KMMessage *aMsg, short sendnow=-1)
 {
+    readConfig();
     debug ("KRNSender::send");
     if (sendnow==-1 && server->isConnected())
         sendnow=1;

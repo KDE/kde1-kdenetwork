@@ -42,6 +42,7 @@ class Article
 {
 public:
     Article ();
+    Article (const char *ID);
     ~Article ();
     QString Number;
     QString Subject;
@@ -55,7 +56,7 @@ public:
     void setRead(bool b=true);
     bool isAvailable() {return isavail;};
     void setAvailable(bool b=true);
-    void setMarked(bool b=true) {ismarked=b;};
+    void setMarked(bool b=true) ;
     bool isMarked(){return ismarked;};
     void incref();
     void decref();
@@ -74,6 +75,7 @@ public:
     //This value is valid only for a few moments after running
     //thread() over an article list. It's not really meant to be used...
     int  threadDepth;
+    time_t lastAccess;
     
 private:
     bool isread;
@@ -90,12 +92,7 @@ class ArticleList: public ArticleListBase
 public:
     ArticleList();
     ~ArticleList();
-    void append(Article *item);
-    bool remove(uint index);
-    bool remove();
     void thread(bool sortBySubject=false);
-    virtual void clear();
-    bool visited;
 };
 
 typedef QDictT<Article>ArticleDictBase;

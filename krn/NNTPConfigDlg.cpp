@@ -56,7 +56,12 @@ NNTPConfigDlg::NNTPConfigDlg(QWidget* parent, const char* name):Inherited( paren
                                                 conf->readNumEntry("ConnectAtStart"))->widget);
 
     l->newLine();
-
+    silentconnect=(QCheckBox *)(l->addCheckBox("silentconnect",
+                                              klocale->translate("Connect without asking"),
+                                                conf->readNumEntry("SilentConnect"))->widget);
+    l->skip();
+    l->newLine();
+    
     l->addLabel ("l3",klocale->translate("User Name"));
     username=(QLineEdit *)(l->addLineEdit("username",conf->readEntry("Username"))->widget);
     
@@ -75,17 +80,29 @@ NNTPConfigDlg::NNTPConfigDlg(QWidget* parent, const char* name):Inherited( paren
     l->activate();
     
 
-    servername->setText(conf->readEntry("NNTPServer"));
-    connectatstart->setChecked(conf->readNumEntry("ConnectAtStart"));
-    authenticate->setChecked(conf->readNumEntry("Authenticate"));
-    username->setText(conf->readEntry("Username"));
-    password->setText(conf->readEntry("Password"));
-
-    connect (b1,SIGNAL(clicked()),SLOT(accept()));
+    connect (b1,SIGNAL(clicked()),SLOT(save()));
     connect (b2,SIGNAL(clicked()),SLOT(reject()));
 }
 
 
 NNTPConfigDlg::~NNTPConfigDlg()
 {
+}
+
+
+NNTPConfigDlg::save()
+{
+    conf->setGroup("NNTP");
+    conf->writeEntry("NNTPServer",servername->text());
+    conf->writeEntry("ConnectAtStart",connectatstart->isChecked());
+    conf->writeEntry("SilentConnect",silentconnect->isChecked());
+    conf->writeEntry("Authenticate",authenticate->isChecked());
+    conf->writeEntry("Username",username->text());
+    conf->writeEntry("Password",password->text());
+    conf->setGroup("sending mail");
+    conf->writeEntry("Smtp Host",smtpserver->text());
+    conf->sync();
+    accept();
+    debug ("deleting NNTP dialog");
+    delete this;
 }

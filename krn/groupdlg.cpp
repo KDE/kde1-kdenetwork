@@ -552,6 +552,7 @@ void Groupdlg::fillTree ()
 
 bool Groupdlg::needsConnect()
 {
+    
     bool success=false;
     qApp->setOverrideCursor (arrowCursor);
     if (server->isConnected())
@@ -559,9 +560,13 @@ bool Groupdlg::needsConnect()
         success=true;
     }
     else
+        
     {
-        if (1==KMsgBox::yesNo(0,klocale->translate("Krn-Question"),
-                              klocale->translate("The operation you requested needs a connection to the News server\nShould I attempt one?")))
+        conf->setGroup("NNTP");
+        if (conf->readNumEntry("SilentConnect") ||
+            (1==KMsgBox::yesNo(0,klocale->translate("Krn-Question"),
+                               klocale->translate("The operation you requested needs a connection to the News server\nShould I attempt one?")))
+           )
         {
             actions(CONNECT);
             success=true;
@@ -623,20 +628,8 @@ bool Groupdlg::actions (int action,NewsGroup *group)
     case CONFIG_NNTP:
         {
             qApp->setOverrideCursor (arrowCursor);
-            NNTPConfigDlg dlg;
-            if (dlg.exec())
-            {
-                conf->setGroup("NNTP");
-                conf->writeEntry("NNTPServer",dlg.servername->text());
-                conf->writeEntry("ConnectAtStart",dlg.connectatstart->isChecked());
-                conf->writeEntry("Authenticate",dlg.authenticate->isChecked());
-                conf->writeEntry("Username",dlg.username->text());
-                conf->writeEntry("Password",dlg.password->text());
-                conf->setGroup("sending mail");
-                conf->writeEntry("Smtp Host",dlg.smtpserver->text());
-                conf->sync();
-                msgSender->readConfig();
-            }
+            NNTPConfigDlg *dlg=new NNTPConfigDlg();
+            dlg->exec();
             qApp->restoreOverrideCursor ();
             success = true;
             break;

@@ -90,6 +90,8 @@ findArtDlg *FindDlg;
 Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     :Inherited (_group->name)
 {
+    IDList.setAutoDelete(true);
+    depths.setAutoDelete(true);
     group=0;
     server=0;
     FindDlg=new findArtDlg(0);
@@ -315,6 +317,8 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
 
 void Artdlg::init (NewsGroup *_group, NNTP* _server)
 {
+
+    IDList.clear();
     if (group) //make old group know I'm not showing him
         group->isVisible=0;
         
@@ -354,7 +358,7 @@ void Artdlg::copyText(bool)
 void Artdlg::closeEvent(QCloseEvent *)
 {
     group->artList.clear();
-    artList.clear();
+    IDList.clear();
     group->isVisible=0;
     delete this;
 } 
@@ -372,12 +376,14 @@ Artdlg::~Artdlg ()
 void Artdlg::fillTree ()
 
 {
+    group->getList();
+    ArticleList artList;
+    
     //save current ID if there is one
-    Article *currArt;
-    currArt=0;
+    char *currArt=0;
     int curr=list->currentItem();
     if (curr>-1)
-        currArt=artList.at(curr);
+        currArt=IDList.at(curr);
     
     qApp->setOverrideCursor(waitCursor);
     statusBar()->changeItem("Reading Article List",2);
@@ -385,8 +391,7 @@ void Artdlg::fillTree ()
 
     list->setAutoUpdate(false);
     list->clear();
-    artList.clear();
-    
+
     Article *iter;
     bool thiscached;
     for (iter=group->artList.first();iter!=0;iter=group->artList.next())
@@ -407,7 +412,9 @@ void Artdlg::fillTree ()
     
     //had to split this in two loops because the order of articles is not
     //the same in both article lists
-    
+
+    IDList.clear();
+    depths.clear();
     statusBar()->changeItem(klocale->translate("Showing Article List"),2);
     qApp->processEvents ();
     int i=0;
@@ -418,13 +425,21 @@ void Artdlg::fillTree ()
         list->insertItem (formatted.data());
         if (server->isCached(iter->ID.data()))
             list->changeItemColor(QColor(0,0,255),i);
+        IDList.append(iter->ID.data());
+        depths.append(new int(iter->threadDepth));
     }
     
     //restore current message
     if (curr>-1)
     {
-        list->setCurrentItem(artList.find(currArt));
-        list->setTopItem(artList.find(currArt));
+        int i=0;
+        for (iter=artList.first();iter!=0;iter=artList.next(),i++)
+        {
+            if (iter->ID==currArt)
+                break;
+        }
+        list->setCurrentItem(i);
+        list->setTopItem(i);
     }
     
     
@@ -433,9 +448,12 @@ void Artdlg::fillTree ()
     qApp->restoreOverrideCursor();
     statusBar()->changeItem("",2);
     QString s;
-    s.sprintf ("%d/%d",list->currentItem()+1,artList.count());
+    s.sprintf ("%d/%d",list->currentItem()+1,IDList.count());
     statusBar()->changeItem(s.data(),1);
     qApp->processEvents ();
+
+    artList.clear();
+    group->artList.clear();
 }
 
 bool Artdlg::taggedActions (int action)
@@ -449,9 +467,9 @@ bool Artdlg::taggedActions (int action)
         disconnect (list,SIGNAL(highlighted(int,int)),this,SLOT(loadArt(int,int)));
     }
     
-    for (Article *iter=artList.first();iter!=0;iter=artList.next())
+    for (char *iter=IDList.first();iter!=0;iter=IDList.next())
     {
-        if (iter->isMarked())
+        if (Article(iter).isMarked())
         {
             list->setCurrentItem(c);
             success=actions(action);
@@ -555,8 +573,7 @@ bool Artdlg::actions (int action)
             int index=list->currentItem();
             if (index<0)
                 break;
-            Article *art=artList.at(index);
-            saveArt(art->ID);
+            saveArt(IDList.at(index));
             break;
         }
     case NO_READ:
@@ -640,7 +657,7 @@ bool Artdlg::actions (int action)
             conf->setGroup("Composer");
             conf->writeEntry("headers",mShowHeaders);
 
-            Article *art=artList.at(index);
+            Article *art=new Article(IDList.at(index));
             KMMessage *mm=new KMMessage();
             QString *ts=server->article(art->ID.data());
             mm->fromString(ts->data());
@@ -673,7 +690,7 @@ bool Artdlg::actions (int action)
             conf->setGroup("Composer");
             conf->writeEntry("headers",mShowHeaders);
 
-            Article *art=artList.at(index);
+            Article *art=new Article(IDList.at(index));
             KMMessage *m=new KMMessage();
             QString *ts=server->article(art->ID.data());
             m->fromString(ts->data());
@@ -697,7 +714,7 @@ bool Artdlg::actions (int action)
             conf->setGroup("Composer");
             conf->writeEntry("headers",mShowHeaders);
             
-            Article *art=artList.at(index);
+            Article *art=new Article(IDList.at(index));
             KMMessage *m=new KMMessage();
             QString *ts=server->article(art->ID.data());
             m->fromString(ts->data());
@@ -717,7 +734,7 @@ bool Artdlg::actions (int action)
             
             if(index < 0)
                 break;
-            Article *art=artList.at(index);
+            Article *art=new Article(IDList.at(index));
             
             int mShowHeaders=0x6c;
             conf->setGroup("Composer");
@@ -743,12 +760,13 @@ bool Artdlg::actions (int action)
         
     case CATCHUP:
         {
-            QListIterator <Article> iter(artList);
+            QStrListIterator iter(IDList);
             for (;iter.current();++iter)
             {
-                if (!iter.current()->isRead())
+                Article art(iter.current());
+                if (!art.isRead())
                 {
-                    iter.current()->setRead();
+                    art.setRead();
                 }
             }
             fillTree();
@@ -771,19 +789,20 @@ bool Artdlg::actions (int action)
             if(index < 0)
                 break;
             
-            Article *art=artList.at(index);
+            Article art(IDList.at(index));
+            art.threadDepth=*depths.at(index);
             
-            if(art->canExpire()) {
+            if(art.canExpire()) {
                 article->setItemChecked(TOGGLE_EXPIRE, true);
-                art->toggleExpire();
+                art.toggleExpire();
             } else {
                 article->setItemChecked(TOGGLE_EXPIRE, false);
-                art->toggleExpire();
+                art.toggleExpire();
             }
             QString formatted;
-            art->formHeader(&formatted);
+            art.formHeader(&formatted);
             list->changeItem (formatted.data(),index);
-            if (server->isCached(art->ID.data()))
+            if (server->isCached(art.ID.data()))
                 list->changeItemColor(QColor(0,0,255),index);
             
             break;
@@ -798,8 +817,7 @@ bool Artdlg::actions (int action)
             int index = list->currentItem();
             if(index < 0)
                 break;
-            Article *art=artList.at(index);
-            QString id=art->ID;
+            QString id=IDList.at(index);
             if (!server->isConnected())
             {
                 if (!server->isCached(id.data()))
@@ -826,6 +844,7 @@ bool Artdlg::actions (int action)
 
 bool Artdlg::loadArt (QString id)
 {
+    debug ("flag0");
     disconnect (list,SIGNAL(highlighted(int,int)),this,SLOT(loadArt(int,int)));
     setEnabled (false);
     acc->setEnabled(false);
@@ -835,13 +854,13 @@ bool Artdlg::loadArt (QString id)
 
     int i=list->currentItem();
 
-    if (artList.at(i)->ID!=id)
+    if (id!=IDList.at(i))
     {
         int index=0;
-        QListIterator <Article> iter(artList);
+        QStrListIterator iter(IDList);
         for (;iter.current();++iter,++index)
         {
-            if (iter.current()->ID==id)
+            if (id==iter.current())
             {
                 list->setCurrentItem(index);
                 qApp->restoreOverrideCursor ();
@@ -850,7 +869,7 @@ bool Artdlg::loadArt (QString id)
                 list->setEnabled(true);
                 messwin->setEnabled(true);
                 QString s;
-                s.sprintf ("%d/%d",list->currentItem()+1,artList.count());
+                s.sprintf ("%d/%d",list->currentItem()+1,IDList.count());
                 statusBar()->changeItem(s.data(),1);
                 connect (list,SIGNAL(highlighted(int,int)),this,SLOT(loadArt(int,int)));
                 return true;
@@ -859,10 +878,13 @@ bool Artdlg::loadArt (QString id)
         }
     }
     
-    if (artList.at(i)->ID==id)
+    debug ("flag1");
+    if (id==IDList.at(i))
     {
         goTo(i);
     }
+
+    debug ("ID=%s",id.data());
     
     if (!server->isConnected())
     {
@@ -877,8 +899,10 @@ bool Artdlg::loadArt (QString id)
             }
         }
     }
+    debug ("flag2");
     QString *s;
     s=server->article(id.data());
+    debug ("flag3");
     if (s->isEmpty())
     {
         debug ("entered get from web");
@@ -914,15 +938,17 @@ bool Artdlg::loadArt (QString id)
     }
     delete s;
 
+    debug ("flag4");
     qApp->restoreOverrideCursor ();
     setEnabled (true);
     acc->setEnabled(true);
     list->setEnabled(true);
     messwin->setEnabled(true);
     QString sb;
-    sb.sprintf ("%d/%d",list->currentItem()+1,artList.count());
+    sb.sprintf ("%d/%d",list->currentItem()+1,IDList.count());
     statusBar()->changeItem(sb.data(),1);
     connect (list,SIGNAL(highlighted(int,int)),this,SLOT(loadArt(int,int)));
+    debug ("flag5");
     return true;
 }
 
@@ -1045,36 +1071,38 @@ void Artdlg::saveArt (QString id)
 void Artdlg::loadArt (int index,int)
 {
     if (index<0) return;
-    Article *art=artList.at(index);
-    if (loadArt(art->ID))
+    Article art(IDList.at(index));
+    if (loadArt(art.ID))
     {
-        art->setRead(true);
+        art.setRead(true);
+        art.threadDepth=*depths.at(index);
         QString formatted;
-        art->formHeader(&formatted);
+        art.formHeader(&formatted);
         list->changeItem (formatted.data(),index);
-        if (server->isCached(art->ID.data()))
+        if (server->isCached(art.ID.data()))
             list->changeItemColor(QColor(0,0,255),index);
-        
-        article->setItemChecked(TOGGLE_EXPIRE, !art->canExpire());  // robert's cache stuff
+        article->setItemChecked(TOGGLE_EXPIRE, !art.canExpire());  // robert's cache stuff
     }
 }
 
 void Artdlg::markArt (int index,int)
 {
     if (index<0) return;
-    Article *art=artList.at(index);
-    if (art->isMarked())
+    char *ID=IDList.at(index);
+    Article art(ID);
+    if (art.isMarked())
     {
-        art->setMarked(false);
+        art.setMarked(false);
     }
     else
     {
-        art->setMarked(true);
+        art.setMarked(true);
     }
+    art.threadDepth=*depths.at(index);
     QString formatted;
-    art->formHeader(&formatted);
+    art.formHeader(&formatted);
     list->changeItem (formatted.data(),index);
-    if (server->isCached(art->ID.data()))
+    if (server->isCached(ID))
         list->changeItemColor(QColor(0,0,255),index);
 }
 
@@ -1082,11 +1110,12 @@ void Artdlg::decArt (int index,int)
 {
     if (index<0) return;
     QString *s;
-    Article *art=artList.at(index);
+    Article art(IDList.at(index));
+    art.threadDepth=*depths.at(index);
     
     if (!server->isConnected())
     {
-        if (!server->isCached(art->ID.data()))
+        if (!server->isCached(art.ID.data()))
         {
             emit needConnection();
             if (!server->isConnected())
@@ -1097,27 +1126,27 @@ void Artdlg::decArt (int index,int)
         }
     }
     
-    art->setRead(true);
-    s=server->article(art->ID.data());
+    art.setRead(true);
+    s=server->article(art.ID.data());
     if (s)
     {
         if (!s->isEmpty())
         {
             QString p;
-            p=cachepath+"/"+art->ID;
+            p=cachepath+"/"+art.ID;
             decoder->load (p.data());
-            art->setAvailable(true);
+            art.setAvailable(true);
         }
         delete s;
     }
     else
     {
-        art->setAvailable(false);
+        art.setAvailable(false);
     }
-    QString formatted;
-    art->formHeader(&formatted);
+        QString formatted;
+    art.formHeader(&formatted);
     list->changeItem (formatted.data(),index);
-    if (server->isCached(art->ID.data()))
+    if (server->isCached(art.ID.data()))
         list->changeItemColor(QColor(0,0,255),index);
 }
 
@@ -1155,7 +1184,7 @@ void Artdlg::FindThis (const char *expr,const char *field)
     bool sameQuery=false;
     
     QRegExp regex(expr,false);
-    QListIterator <Article> iter(artList);
+    QStrListIterator iter(IDList);
     
     int index=list->currentItem();
     if (index>0)
@@ -1179,13 +1208,13 @@ void Artdlg::FindThis (const char *expr,const char *field)
 
     lastexpr=expr;
     lastfield=field;
-    
-    
+
     if (!strcmp(field,"Subject"))
     {
         for (;iter.current();++iter,++index)
         {
-            if (regex.match(iter.current()->Subject.data())>-1)
+            Article art(iter.current());
+            if (regex.match(art.Subject.data())>-1)
             {
                 list->changeItemColor(QColor(0,0,0),lastfound);
                 list->changeItemColor(QColor(255,0,0),index);
@@ -1200,7 +1229,8 @@ void Artdlg::FindThis (const char *expr,const char *field)
     {
         for (;iter.current();++iter,++index)
         {
-            if (regex.match(iter.current()->From.data())>-1)
+            Article art(iter.current());
+            if (regex.match(art.From.data())>-1)
             {
                 list->changeItemColor(QColor(0,0,0),lastfound);
                 list->changeItemColor(QColor(255,0,0),index);
@@ -1215,19 +1245,20 @@ void Artdlg::FindThis (const char *expr,const char *field)
 void Artdlg::markReadArt (int index,int)
 {
     if (index<0) return;
-    Article *art=artList.at(index);
-    if (art->isRead())
+    Article art(IDList.at(index));
+    art.threadDepth=*depths.at(index);
+    if (art.isRead())
     {
-        art->setRead(false);
+        art.setRead(false);
     }
     else
     {
-        art->setRead(true);
+        art.setRead(true);
     }
     QString formatted;
-    art->formHeader(&formatted);
+    art.formHeader(&formatted);
     list->changeItem (formatted.data(),index);
-    if (server->isCached(art->ID.data()))
+    if (server->isCached(art.ID.data()))
         list->changeItemColor(QColor(0,0,255),index);
 }
 

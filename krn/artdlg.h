@@ -77,7 +77,6 @@ private:
     char *groupname;
     QAccel *acc;
     NewsGroup *group;
-    ArticleList artList;
     KMenuBar *menu;
     QPopupMenu *article;
     QPopupMenu *taggedArticle;
@@ -88,6 +87,8 @@ private:
     KStatusBar *status;
     bool showlocked;
     bool showcached;
+    QStrList IDList;
+    QList <int> depths;
 };
 
 #endif // Artdlg_included

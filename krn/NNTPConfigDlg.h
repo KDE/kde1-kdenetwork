@@ -22,8 +22,11 @@ public:
     QLineEdit* servername;
     QCheckBox* connectatstart;
     QCheckBox* authenticate;
+    QCheckBox* silentconnect;
     QLineEdit* username;
     QLineEdit* password;
     QLineEdit* smtpserver;
+private slots:
+        save();
 };
 #endif // NNTPConfigDlg_included

@@ -59,12 +59,6 @@ public:
   int  contentTransferEncoding(void) const;
   void setContentTransferEncodingStr(const QString aStr);
   void setContentTransferEncoding(int aCte);
-  
-  /** Get the message part charset.*/
-  virtual const QString charset(void) const;
-  
-  /** Set the message part charset. */
-  virtual void setCharset(const QString aStr);
 
   /** Cte is short for ContentTransferEncoding.
       These functions are an alternative to the ones with longer names. */
@@ -90,7 +84,6 @@ protected:
   QString mContentDisposition;
   QString mBody;
   QString mName;
-  QString mCharset;
 };
 
 

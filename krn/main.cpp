@@ -110,6 +110,7 @@ int main( int argc, char **argv )
     keys = new KStdAccel(conf);
     kbp=new KBusyPtr();
     msgSender=new KRNSender();
+    msgSender->readConfig();
     msgSender->setMethod(KMSender::smSMTP);
     KMMessage::readConfig();
 

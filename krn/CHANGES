@@ -7,6 +7,16 @@ Changes made Feb 3
             Hey, I even made it the default!.
 * [Roberto] Made the "VertSplit" option available from the GUI (Sorry Bernd,
             it's not just for you anymore ;-)
+* [Roberto] Reduced Krn's humongous memory appetite (at least some)
+* [Roberto] Implemented last access date for XOVER data, sadly that will break
+            compatibility with yesterday's Krn, so it is now 0.2.1.
+            I feel like if I worked at MicroSoft, forcing everybody to get
+            my latest version :-(
+* [Roberto] Since I broke that already, I made tags persistent, so download
+            of tagged articles over multiple groups can be implemented.
+* [Roberto] Added "silent connect" option, so people stop calling Krn pedantic.
+            You are hurting my program's feelings! ;-)
+* [Roberto] Took all the kmail bugfixes.
 
 -----------------------------------------------------------------------------
 Changes made Jan 31

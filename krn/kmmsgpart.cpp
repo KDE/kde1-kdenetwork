@@ -39,6 +39,9 @@ void KMMessagePart::setBodyEncoded(const QString aStr)
   int encoding = contentTransferEncoding();
   int len = aStr.size();
 
+  debug("KMMessagePart::setBodyEncoded: len=%d, size=%d\n",
+	aStr.length(), aStr.size());
+
   switch (encoding)
   {
   case DwMime::kCteQuotedPrintable:
@@ -76,6 +79,9 @@ const QString KMMessagePart::bodyDecoded(void) const
   QString result;
   int encoding = contentTransferEncoding();
   int len;
+
+  debug("KMMessagePart::bodyDecoded: len=%d, size=%d\n",
+	mBody.length(), mBody.size());
 
   switch (encoding)
   {
@@ -308,17 +314,5 @@ void KMMessagePart::setName(const QString aStr)
   mName = aStr.copy();
 }
 
-//-----------------------------------------------------------------------------
-const QString KMMessagePart::charset(void) const
-{
 
-   return mCharset;
-}
-
-//-----------------------------------------------------------------------------
-void KMMessagePart::setCharset(const QString aStr)
-{
-
-  mCharset=aStr;
-}
 
