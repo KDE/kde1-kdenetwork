@@ -25,14 +25,13 @@ class KBiffStatusItem
 {
 public:
 	KBiffStatusItem(const QString& mailbox, const int num_new);
-	virtual ~KBiffStatusItem();
 
-	QString mailbox() const { return *_mailbox; }
-	QString newMessages() const { return *_newMessages; }
+	QString mailbox() const { return _mailbox; }
+	QString newMessages() const { return _newMessages; }
 
 protected:
-	QString *_mailbox;
-	QString *_newMessages;
+	QString _mailbox;
+	QString _newMessages;
 };
 
 typedef QList<KBiffStatusItem> KBiffStatusList;

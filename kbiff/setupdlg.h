@@ -1,6 +1,6 @@
 /*
  * setupdlg.h
- * Copyright (C) 1998 Kurt Granroth <granroth@kde.org>
+ * Copyright (C) 1999 Kurt Granroth <granroth@kde.org>
  *
  * This file contains the setup dialog and related widgets
  * for KBiff.  All user configuration is done here.
@@ -19,17 +19,23 @@
 #include <qwidget.h>
 #include <qdialog.h>
 
+// mediatool.h is needed by kaudio.h
+extern "C" {
+#include <mediatool.h>
+} 
+#include <kaudio.h>
+
 class QLineEdit;
 class QCheckBox;
 class QPushButton;
 class QComboBox;
 
 #include <kiconloaderdialog.h>
-#include <kurl.h>
+#include <kbiffurl.h>
 
 struct KBiffMailbox
 {
-	KURL url;
+	KBiffURL url;
 	bool store;
 };
 
@@ -43,12 +49,12 @@ class KBiffSetup : public QDialog
 {
 	Q_OBJECT
 public:
-	KBiffSetup(const char *name = 0, bool secure = false);
+	KBiffSetup(QString name = "", bool secure = false);
 	virtual ~KBiffSetup();
 
 	const QString getProfile() const;
-	const KURL getCurrentMailbox() const;
-	const QList<KURL> getMailboxList() const;
+	const KBiffURL getCurrentMailbox() const;
+	const QList<KBiffURL> getMailboxList() const;
 
 	const char* getMailClient() const;
 	const char* getRunCommandPath() const;
@@ -56,10 +62,12 @@ public:
 	const char* getNoMailIcon() const;
 	const char* getNewMailIcon() const;
 	const char* getOldMailIcon() const;
+	const char* getNoConnIcon() const;
 	const bool getSystemBeep() const;
 	const bool getRunCommand() const;
 	const bool getPlaySound() const;
 	const bool getNotify() const;
+	const bool getStatus() const;
 	const bool getDock() const;
 	const bool getSessionManagement() const;
 	const bool getSecure() const;
@@ -70,6 +78,9 @@ public slots:
 
 	void readConfig(const char *profile);
 	void saveConfig();
+
+protected:
+	QString getSomeProfile() const;
 
 protected slots:
 	void slotDone();
@@ -103,6 +114,7 @@ public:
 	const char* getButtonNewMail() const;
 	const char* getButtonOldMail() const;
 	const char* getButtonNoMail() const;
+	const char* getButtonNoConn() const;
 	const char* getMailClient() const;
 	const int   getPoll() const;
 	const bool  getDock() const;
@@ -121,6 +133,7 @@ private:
 	KIconLoaderButton *buttonNoMail;
 	KIconLoaderButton *buttonOldMail;
 	KIconLoaderButton *buttonNewMail;
+	KIconLoaderButton *buttonNoConn;
 };
 
 class KBiffNewMailTab : public QWidget
@@ -136,6 +149,7 @@ public:
 	const char* getPlaySoundPath() const;
 	const bool getSystemBeep() const;
 	const bool getNotify() const;
+	const bool getStatus() const;
 
 public slots:
 	void readConfig(const char *profile);
@@ -146,6 +160,7 @@ protected slots:
 	void enablePlaySound(bool);
 	void browseRunCommand();
 	void browsePlaySound();
+	void testPlaySound();
 
 private:
 	QLineEdit *editRunCommand;
@@ -155,9 +170,14 @@ private:
 	QCheckBox *checkPlaySound;
 	QCheckBox *checkBeep;
 	QCheckBox *checkNotify;
+	QCheckBox *checkStatus;
 
 	QPushButton *buttonBrowsePlaySound;
+	QPushButton *buttonTestPlaySound;
 	QPushButton *buttonBrowseRunCommand;
+
+	bool    hasAudio;
+	KAudio  audioServer;
 };
 
 class KBiffMailboxAdvanced : public QDialog
@@ -167,19 +187,21 @@ public:
 	KBiffMailboxAdvanced();
 	virtual ~KBiffMailboxAdvanced();
 
-	const KURL getMailbox() const;
+	const KBiffURL getMailbox() const;
 	const unsigned int getPort() const;
 	bool getPreauth() const;
 
 	void setPort(unsigned int the_port, bool enable = true);
-	void setMailbox(const KURL& url);
+	void setMailbox(const KBiffURL& url);
 	void setPreauth(bool on);
 	void setKeepalive(bool on);
+	void setAsync(bool on);
 
 protected slots:
 	void portModified(const char* text);
 	void preauthModified(bool toggled);
 	void keepaliveModified(bool toggled);
+	void asyncModified(bool toggled);
 
 private:
 	QString    password;
@@ -187,6 +209,7 @@ private:
 	QLineEdit *port;
 	QCheckBox *preauth;
 	QCheckBox *keepalive;
+	QCheckBox *async;
 };
 
 class KBiffMailboxTab : public QWidget
@@ -196,10 +219,10 @@ public:
 	KBiffMailboxTab(const char* profile = 0, QWidget *parent=0);
 	virtual ~KBiffMailboxTab();
 
-	void setMailbox(const KURL& url);
+	void setMailbox(const KBiffURL& url);
 
-	const KURL getMailbox() const;
-	const QList<KURL> getMailboxList() const;
+	const KBiffURL getMailbox() const;
+	const QList<KBiffURL> getMailboxList() const;
 
 public slots:
 	void readConfig(const char *profile);
@@ -216,7 +239,7 @@ protected slots:
 
 protected:
 	const char* scramble(const char* password, bool encode = true);
-	const KURL defaultMailbox() const;
+	const KBiffURL defaultMailbox() const;
 
 private:
 	QDict<KBiffMailbox> *mailboxHash;
@@ -225,6 +248,7 @@ private:
 	unsigned int port;
 	bool         preauth;
 	bool         keepalive;
+	bool         async;
 	QComboBox   *comboProtocol;
 	QLineEdit   *editMailbox;
 	QLineEdit   *editServer;

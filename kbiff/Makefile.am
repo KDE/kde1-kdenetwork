@@ -7,8 +7,6 @@ INCLUDES= $(all_includes) -I. -I$(srcdir) -I..
 # claim, which subdirectories you want to install
 SUBDIRS = doc pics
 
-AM_CPPFLAGS = -DDO_TRACE
-
 ####### This part is very kbiff specific
 # you can add here more. This one gets installed 
 bin_PROGRAMS = 	kbiff
@@ -16,7 +14,7 @@ bin_PROGRAMS = 	kbiff
 kbiff_METASOURCES =  USE_AUTOMOC
 
 # Which sources should be compiled for kbiff.
-kbiff_SOURCES	= setupdlg.cpp kbiff.cpp main.cpp kbiffmonitor.cpp notify.cpp Trace.cpp $(kbiff_METASOURCES)
+kbiff_SOURCES	= setupdlg.cpp kbiff.cpp main.cpp kbiffmonitor.cpp notify.cpp Trace.cpp kbiffurl.cpp status.cpp $(kbiff_METASOURCES)
 
 # the library search path
 kbiff_LDFLAGS = $(all_libraries) $(KDE_RPATH)
@@ -26,7 +24,7 @@ kbiff_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 kbiff_LDADD   =     -lmediatool     $(LIB_KFILE)
 
 # this option you can leave out. Just, if you use "make dist", you need it
-noinst_HEADERS = setupdlg.h kbiff.h kbiffmonitor.h notify.h Trace.h
+noinst_HEADERS = setupdlg.h kbiff.h kbiffmonitor.h notify.h Trace.h kbiffurl.h status.h
 
 # if you "make distclean", this files get removed. If you want to remove
 # them while "make clean", use CLEANFILES

@@ -142,12 +142,35 @@ Create a shell script like so:
 <PRE>
 if [ -L "$HOME/.netscape/lock" ]; 
 then 
-netscape -remote
- 'xfeDoCommand(openInbox)' 
+netscape -remote 'xfeDoCommand(openInbox)' 
 else 
 netscape -mail &amp; 
 fi
 </PRE>
+<P>
+<H3><A NAME="ss6.10">6.10 KBiff truncates the initial slash in IMAP mode.  Is this a bug?</A>
+</H3>
+
+<P>No, it's a feature!  It is very very rare that one uses an absolute path
+with IMAP.  Nearly all mailbox can (and are) accessed either relative to
+the user's home directory or use symbolic names like 'inbox.
+<P>If you are trying to read 
+<PRE>
+/var/spool/mail/username
+</PRE>
+ try entering
+<PRE>
+inbox
+</PRE>
+ as the mailbox name.
+<P>
+<H3><A NAME="ss6.11">6.11 I have this great feature I want implemented.  What should I do?</A>
+</H3>
+
+<P>First, look at the TODO file in the source distribution (or on the web
+page).  If your feature request is already there, then sit tight -- it may
+well be implemented.  If it is not there... well, it doesn't hurt to ask.
+Email me!
 <P>
 <P ALIGN="RIGHT">
 

@@ -58,7 +58,10 @@ TRACEINIT("main()");
 		{
 			setup = new KBiffSetup();
 			if (!setup->exec())
+			{
+				delete setup;
 				return 0;
+			}
 		}
 		kbiff.processSetup(setup, true);
 	}

@@ -1,6 +1,6 @@
 /*
  * kbiffmonitor.h
- * Copyright (C) 1998 Kurt Granroth <granroth@kde.org>
+ * Copyright (C) 1999 Kurt Granroth <granroth@kde.org>
  *
  * $Id$
  *
@@ -8,11 +8,13 @@
 #ifndef KBIFFMONITOR_H
 #define KBIFFMONITOR_H
 
+#include <sys/time.h>
+
 #include <qobject.h>
 #include <qlist.h>
 #include <qfileinf.h>
 
-class KURL;
+class KBiffURL;
 class QString;
 
 /**
@@ -37,6 +39,9 @@ protected:
 /**
  * @internal
  */
+
+#define SOCKET_TIMEOUT 5
+
 class KBiffSocket
 {
 public:
@@ -44,6 +49,10 @@ public:
 	virtual ~KBiffSocket();
 
 	bool connectSocket(const char* host, unsigned int port);
+	bool active();
+
+	bool isAsync();
+	void setAsync(bool on);
 
 	int numberOfMessages();
 	int numberOfNewMessages();
@@ -54,7 +63,12 @@ protected:
 	QString readLine();
 	int writeLine(const QString& line);
 
+	bool    async;
+
+	struct timeval socketTO;
+
 	int socketFD;
+	fd_set socketFDS;
 	int messages;
 	int newMessages;
 };
@@ -79,6 +93,8 @@ class KBiffPop : public KBiffSocket
 public:
 	virtual ~KBiffPop();
 
+	void close();
+
 	bool command(const QString& line);
 	KBiffUidlList getUidlList() const;
 
@@ -86,23 +102,43 @@ protected:
 	KBiffUidlList  uidlList;    
 };
 
+/**
+ * @internal
+ */
+class KBiffNntp : public KBiffSocket
+{
+public:
+	virtual ~KBiffNntp();
+
+	bool command(const QString& line);
+	int first() const;
+	int last() const;
+protected:
+	int firstMsg;
+	int lastMsg;
+};
+
 typedef enum
 {
 	NewMail,
 	NoMail,
 	OldMail,
+	NoConn,
 	UnknownState
 } KBiffMailState;
 
 /**
  * A "biff"-like class that can monitor local and remote mailboxes for new
- * mail.  KBiffMonitor currently supports four protocols.
+ * mail.  KBiffMonitor currently supports six protocols.
  * 
  * <UL>
  * <LI>mbox</LI> Unix style mailbox files
  * <LI>pop3</LI> POP3 
  * <LI>imap4</LI> imap4 
  * <LI>maildir</LI> Mailboxes in maildir format
+ * <LI>mh</LI> Mailboxes in MH format
+ * <LI>file</LI> Simple files (no parsing)
+ * <LI>nntp</LI> USENET newsgroups
  * </UL>
  *
  * A typical usage would look like so:
@@ -116,11 +152,12 @@ typedef enum
  *    connect(&mon, SIGNAL(signal_newMail()), this, SLOT(processNewMail()));
  *    connect(&mon, SIGNAL(signal_oldMail()), this, SLOT(processOldMail()));
  *    connect(&mon, SIGNAL(signal_noMail()), this, SLOT(processNoMail()));
+ *    connect(&mon, SIGNAL(signal_noConn()), this, SLOT(processNoConn()));
  * </PRE>
  *
  * @short A "biff" class that monitors local and remote mailboxes
  * @author Kurt Granroth <granroth@kde.org>
- * @version 0.5
+ * @version $Id$
  */
 class KBiffMonitor : public QObject
 {
@@ -147,7 +184,7 @@ public:
 	/**
 	 * Returns the current mailbox being monitored
 	 */
-	const char* getMailbox() const { return mailbox; }
+	const QString getMailbox() const { return simpleURL; }
 
 	/**
 	 * Returns the type of mailbox being monitored
@@ -166,7 +203,7 @@ public:
 
 public slots:
 	/**
-	 * Sets the mailbox to monitor.  It uses a KURL to specify the
+	 * Sets the mailbox to monitor.  It uses a KBiffURL to specify the
 	 * protocol, host, username, password, port and path (depending on
 	 * protocol type).  KBiffMonitor recognizes four protocols:
 	 * 
@@ -175,6 +212,8 @@ public slots:
 	 * <LI>pop3</LI> POP3 
 	 * <LI>imap4</LI> IMAP4 
 	 * <LI>maildir</LI> Mailboxes in maildir format
+	 * <LI>mh</LI> Mailboxes in MH format
+	 * <LI>nttp</LI> USENET newsgroups
 	 * </UL>
 	 *
 	 * Some examples:
@@ -198,7 +237,7 @@ public slots:
 	 * This would monitor IMAP4 mailbox 'Mail/mailbox' on server 'host.net'
 	 * with 'granroth' as the user and 'password' as the password.
 	 */
-	void setMailbox(KURL& url);
+	void setMailbox(KBiffURL& url);
 
 	/**
 	 * Overloaded for convenience
@@ -267,10 +306,27 @@ signals:
 	void signal_oldMail(const char* mailbox);
 
 	/**
+	 * This will get <CODE>emit</CODE>ed when no connection can be established
+	 */
+	void signal_noConn();
+
+	/**
+	 * This will get <CODE>emit</CODE>ed when no connection can be established
+	 */
+	void signal_noConn(const char* mailbox);
+
+	/**
 	 * This will get <CODE>emit</CODE>ed everytime the mailbox
 	 * should be checked (determined by @ref #setPollInterval)
 	 */
 	void signal_checkMail();
+
+	/**
+	 * This will get <CODE>emit</CODE>ed everytime the mailbox is
+	 * checked.  It contains the current mailbox name, state, and number
+	 * of new messages
+	 */
+	void signal_currentStatus(const int, const char*, const KBiffMailState);
 
 protected:
 	void timerEvent(QTimerEvent *);
@@ -279,9 +335,10 @@ protected slots:
 	void checkLocal();
 	void checkMbox();
 	void checkPop();
-    
 	void checkMaildir();
 	void checkImap();
+	void checkMHdir();
+	void checkNntp();
 
 protected:
 	// protected (non-slot) functions
@@ -299,8 +356,10 @@ private:
 	int     oldTimer;
 	bool    started;
 	int     newCount;
+	int     oldCount;
 
 	// Mailbox stuff
+	QString simpleURL;
 	QString protocol;
 	QString mailbox;
 	QString server;
@@ -309,7 +368,6 @@ private:
 	int     port;
 	bool    preauth;
 	bool    keepalive;
-	bool    active;
 
 	// State variables
 	KBiffMailState mailState;
@@ -319,8 +377,9 @@ private:
 	KBiffUidlList  uidlList;
 
 	// Socket protocols
-	KBiffImap      imap;
-	KBiffPop       pop;
+	KBiffImap      *imap;
+	KBiffPop       *pop;
+	KBiffNntp      *nntp;
 };
 
 #endif // KBIFFMONITOR_H

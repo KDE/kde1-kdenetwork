@@ -1,6 +1,6 @@
 /*
  * setupdlg.cpp
- * Copyright (C) 1998 Kurt Granroth <granroth@kde.org>
+ * Copyright (C) 1999 Kurt Granroth <granroth@kde.org>
  *
  * This file contains the implementation of the setup dialog
  * class for KBiff.
@@ -43,9 +43,10 @@
 #include <kapp.h>
 #include <ktabctl.h>
 #include <ksimpleconfig.h>
-#include <kurllabel.h>
+#include <kbiffurl.h>
 #include <kfm.h>
 #include <kprocess.h>
+#include <kurllabel.h>
 
 #include <stdlib.h>
 #include <unistd.h>
@@ -65,7 +66,7 @@
 ///////////////////////////////////////////////////////////////////////////
 // KBiffSetup
 ///////////////////////////////////////////////////////////////////////////
-KBiffSetup::KBiffSetup(const char *profile, bool secure)
+KBiffSetup::KBiffSetup(QString profile, bool secure)
 	: QDialog(0, 0, true, 0)
 {
 TRACEINIT("KBiffSetup::KBiffSetup()");
@@ -73,8 +74,11 @@ TRACEINIT("KBiffSetup::KBiffSetup()");
 	setIcon(ICON("kbiff.xpm"));
 
 	// make sure the profile is *something*
-	if (!profile)
-		profile = "Inbox";
+	QString the_profile;
+	if (profile.isEmpty())
+		the_profile = getSomeProfile();
+	else
+		the_profile = profile;
 
 	setCaption(i18n("KBiff Setup"));
 
@@ -123,9 +127,9 @@ TRACEINIT("KBiffSetup::KBiffSetup()");
 
 	// setup the tabs
 	KTabCtl *tabctl = new KTabCtl(this);
-	generalTab = new KBiffGeneralTab(profile, tabctl);
-	newmailTab = new KBiffNewMailTab(profile, tabctl);
-	mailboxTab = new KBiffMailboxTab(profile, tabctl);
+	generalTab = new KBiffGeneralTab(the_profile, tabctl);
+	newmailTab = new KBiffNewMailTab(the_profile, tabctl);
+	mailboxTab = new KBiffMailboxTab(the_profile, tabctl);
 	aboutTab   = new KBiffAboutTab(tabctl); 
 
 	connect(comboProfile, SIGNAL(highlighted(const char *)),
@@ -180,7 +184,7 @@ TRACEINIT("KBiffSetup::KBiffSetup()");
 	profile_layout->activate();
 	main_layout->activate();
 
-	readConfig(profile);
+	readConfig(the_profile);
 }
 
 KBiffSetup::~KBiffSetup()
@@ -197,12 +201,12 @@ const QString KBiffSetup::getProfile() const
 	return comboProfile->currentText();
 }
 
-const KURL KBiffSetup::getCurrentMailbox() const
+const KBiffURL KBiffSetup::getCurrentMailbox() const
 {
 	return mailboxTab->getMailbox();
 }
 
-const QList<KURL> KBiffSetup::getMailboxList() const
+const QList<KBiffURL> KBiffSetup::getMailboxList() const
 {
 	return mailboxTab->getMailboxList();
 }
@@ -225,6 +229,11 @@ const char* KBiffSetup::getNewMailIcon() const
 const char* KBiffSetup::getOldMailIcon() const
 {
 	return generalTab->getButtonOldMail();
+}
+
+const char* KBiffSetup::getNoConnIcon() const
+{
+	return generalTab->getButtonNoConn();
 }
 
 const bool KBiffSetup::getSessionManagement() const
@@ -272,6 +281,11 @@ const bool KBiffSetup::getNotify() const
 	return newmailTab->getNotify();
 }
 
+const bool KBiffSetup::getStatus() const
+{
+	return newmailTab->getStatus();
+}
+
 void KBiffSetup::invokeHelp()
 {
 	kapp->invokeHTMLHelp("kbiff/kbiff.html", "");
@@ -285,6 +299,10 @@ void KBiffSetup::readConfig(const char* profile)
 	KSimpleConfig *config = new KSimpleConfig(CONFIG_FILE, true);
 
 	config->setGroup("General");
+
+	// see if we have the new mailboxes
+//	ConvertWizard *wizard = new ConvertWizard;
+//	wizard->exec();
 
 	// read in the mailboxes
 	int number_of_mailboxes = config->readListEntry("Profiles", profile_list);
@@ -310,6 +328,27 @@ void KBiffSetup::readConfig(const char* profile)
 	}
 	else
 		comboProfile->insertItem(profile);
+}
+
+QString KBiffSetup::getSomeProfile() const
+{
+TRACEINIT("KBiffSetup::getSomeProfile()");
+	QStrList profile_list;
+
+	// open the config file
+	KSimpleConfig *config = new KSimpleConfig(CONFIG_FILE, true);
+	config->setGroup("General");
+
+	// read in the mailboxes
+	int number_of_mailboxes = config->readListEntry("Profiles", profile_list);
+	delete config;
+
+TRACEF("first profile = %s", profile_list.getLast());
+	// get the first mailbox if it exists
+	if (number_of_mailboxes > 0)
+		return QString(profile_list.getLast());
+	else
+		return QString("Inbox");
 }
 
 void KBiffSetup::saveConfig()
@@ -517,7 +556,7 @@ TRACEF("profile = %s", profile);
 	QVBoxLayout *icon_layout = new QVBoxLayout(icons_groupbox, 8);
 	icon_layout->addSpacing(8);
 
-	QGridLayout *icon_grid = new QGridLayout(2, 3);
+	QGridLayout *icon_grid = new QGridLayout(2, 4);
 	icon_layout->addLayout(icon_grid);
 
 	icon_grid->setColStretch(0, 1);
@@ -553,6 +592,16 @@ TRACEF("profile = %s", profile);
 	new_layout1->addWidget(newmail_label);
 	new_layout1->addStretch(1);
 
+	QBoxLayout *noconn_layout1 = new QBoxLayout(QBoxLayout::LeftToRight);
+	icon_grid->addLayout(noconn_layout1, 0, 3);
+
+	// "no conn" pixmap button
+	QLabel* noconn_label = new QLabel(i18n("No Conn.:"), icons_groupbox);
+	noconn_label->setMinimumSize(noconn_label->sizeHint());
+	noconn_layout1->addStretch(1);
+	noconn_layout1->addWidget(noconn_label);
+	noconn_layout1->addStretch(1);
+
 	QBoxLayout *no_layout = new QBoxLayout(QBoxLayout::LeftToRight);
 	icon_grid->addLayout(no_layout, 1, 0);
 
@@ -579,6 +628,15 @@ TRACEF("profile = %s", profile);
 	new_layout->addStretch(1);
 	new_layout->addWidget(buttonNewMail);
 	new_layout->addStretch(1);
+
+	QBoxLayout *noconn_layout = new QBoxLayout(QBoxLayout::LeftToRight);
+	icon_grid->addLayout(noconn_layout, 1, 3);
+
+	buttonNoConn = new KIconLoaderButton(icons_groupbox);
+	buttonNoConn->setFixedSize(50, 50);
+	noconn_layout->addStretch(1);
+	noconn_layout->addWidget(buttonNoConn);
+	noconn_layout->addStretch(1);
 
 	icon_layout->activate();
 	top_layout->activate();
@@ -615,6 +673,11 @@ const char* KBiffGeneralTab::getButtonNoMail() const
 	return buttonNoMail->icon();
 }
 
+const char* KBiffGeneralTab::getButtonNoConn() const
+{
+	return buttonNoConn->icon();
+}
+
 const char* KBiffGeneralTab::getMailClient() const
 {
 	return editCommand->text();
@@ -638,10 +701,11 @@ TRACEINIT("KBiffGeneralTab::readConfig()");
 	checkDock->setChecked(config->readBoolEntry("Docked", true));
 	checkNoSession->setChecked(config->readBoolEntry("Sessions", true));
 
-	QString no_mail, old_mail, new_mail;
+	QString no_mail, old_mail, new_mail, no_conn;
 	no_mail = config->readEntry("NoMailPixmap", "nomail.xpm");
 	old_mail = config->readEntry("OldMailPixmap", "oldmail.xpm");
 	new_mail = config->readEntry("NewMailPixmap", "newmail.xpm");
+	no_conn = config->readEntry("NoConnPixmap", "noconn.xpm");
 
 	buttonOldMail->setIcon(old_mail);
 	buttonOldMail->setPixmap(ICON(old_mail));
@@ -649,6 +713,8 @@ TRACEINIT("KBiffGeneralTab::readConfig()");
 	buttonNewMail->setPixmap(ICON(new_mail));
 	buttonNoMail->setIcon(no_mail);
 	buttonNoMail->setPixmap(ICON(no_mail));
+	buttonNoConn->setIcon(no_conn);
+	buttonNoConn->setPixmap(ICON(no_conn));
 
 	delete config;
 }
@@ -668,6 +734,7 @@ TRACEINIT("KBiffGeneralTab::saveConfig()");
 	config->writeEntry("NoMailPixmap", buttonNoMail->icon());
 	config->writeEntry("NewMailPixmap", buttonNewMail->icon());
 	config->writeEntry("OldMailPixmap", buttonOldMail->icon());
+	config->writeEntry("NoConnPixmap", buttonNoConn->icon());
 	delete config;
 }
 
@@ -678,36 +745,45 @@ KBiffNewMailTab::KBiffNewMailTab(const char* profile, QWidget *parent)
 	: QWidget(parent)
 {
 TRACEINIT("KBiffNewMailTab::KBiffNewMailTab()");
+	hasAudio = (audioServer.serverStatus() == 0) ? true : false;
+
 	QBoxLayout *top_layout = new QBoxLayout(this, QBoxLayout::Down, 12, 5);
 
-	QGridLayout *grid = new QGridLayout(4, 2);
+	QGridLayout *grid = new QGridLayout(4, 3);
 	top_layout->addLayout(grid);
 
 	// setup the Run Command stuff
 	checkRunCommand = new QCheckBox(i18n("Run Command"), this);
 	checkRunCommand->setMinimumSize(checkRunCommand->sizeHint());
-	grid->addWidget(checkRunCommand, 0, 0);
+	grid->addMultiCellWidget(checkRunCommand, 0, 0, 0, 1);
 
 	editRunCommand = new QLineEdit(this);
-	grid->addWidget(editRunCommand, 1, 0);
+	grid->addMultiCellWidget(editRunCommand, 1, 1, 0, 1);
 
 	buttonBrowseRunCommand = new QPushButton(i18n("Browse"), this);
 	buttonBrowseRunCommand->setMinimumSize(75, 25);
 	buttonBrowseRunCommand->setMaximumSize(buttonBrowseRunCommand->sizeHint());
-	grid->addWidget(buttonBrowseRunCommand, 1, 1);
+	grid->addWidget(buttonBrowseRunCommand, 1, 2);
 
 	// setup the Play Sound stuff
 	checkPlaySound = new QCheckBox(i18n("Play Sound"), this);
 	checkPlaySound->setMinimumSize(checkPlaySound->sizeHint());
 	grid->addWidget(checkPlaySound, 2, 0);
 
+	buttonTestPlaySound = new QPushButton(this);
+	buttonTestPlaySound->setPixmap(ICON("playsound.xpm"));
+	buttonTestPlaySound->setMinimumSize(14, 14);
+	buttonTestPlaySound->setMaximumSize(18, buttonTestPlaySound->sizeHint().height());
+	connect(buttonTestPlaySound, SIGNAL(clicked()), SLOT(testPlaySound()));
+	grid->addWidget(buttonTestPlaySound, 3, 0);
+
 	editPlaySound = new QLineEdit(this);
-	grid->addWidget(editPlaySound, 3, 0);
+	grid->addWidget(editPlaySound, 3, 1);
 
 	buttonBrowsePlaySound = new QPushButton(i18n("Browse"), this);
 	buttonBrowsePlaySound->setMinimumSize(75, 25);
 	buttonBrowsePlaySound->setMaximumSize(buttonBrowsePlaySound->sizeHint());
-	grid->addWidget(buttonBrowsePlaySound, 3, 1);
+	grid->addWidget(buttonBrowsePlaySound, 3, 2);
 
 	// setup the System Sound stuff
 	checkBeep = new QCheckBox(i18n("System Beep"), this);
@@ -718,6 +794,10 @@ TRACEINIT("KBiffNewMailTab::KBiffNewMailTab()");
 	checkNotify = new QCheckBox(i18n("Notify"), this);
 	checkNotify->setMinimumSize(checkNotify->sizeHint());
 	top_layout->addWidget(checkNotify);
+
+	checkStatus = new QCheckBox(i18n("Floating Status"), this);
+	checkStatus->setMinimumSize(checkStatus->sizeHint());
+	top_layout->addWidget(checkStatus);
 
 	top_layout->addStretch(1);
 
@@ -738,6 +818,17 @@ KBiffNewMailTab::~KBiffNewMailTab()
 {
 }
 
+void KBiffNewMailTab::testPlaySound()
+{
+TRACEINIT("KBiffNewMailTab::testPlaySound()");
+	if (hasAudio)
+	{
+		TRACE("I have audio!");
+		audioServer.play(getPlaySoundPath());
+		audioServer.sync();
+	}
+}
+
 void KBiffNewMailTab::readConfig(const char* profile)
 {
 TRACEINIT("KBiffNewMailTab::readConfig()");
@@ -750,7 +841,8 @@ TRACEINIT("KBiffNewMailTab::readConfig()");
 	checkRunCommand->setChecked(config->readBoolEntry("RunCommand", false));
 	checkPlaySound->setChecked(config->readBoolEntry("PlaySound", false));
 	checkBeep->setChecked(config->readBoolEntry("SystemBeep", true));
-	checkNotify->setChecked(config->readBoolEntry("Notify", false));
+	checkNotify->setChecked(config->readBoolEntry("Notify", true));
+	checkStatus->setChecked(config->readBoolEntry("Status", true));
 	editRunCommand->setText(config->readEntry("RunCommandPath"));
 	editPlaySound->setText(config->readEntry("PlaySoundPath"));
 
@@ -771,6 +863,7 @@ TRACEINIT("KBiffNewMailTab::saveConfig()");
 	config->writeEntry("PlaySound", checkPlaySound->isChecked());
 	config->writeEntry("SystemBeep", checkBeep->isChecked());
 	config->writeEntry("Notify", checkNotify->isChecked());
+	config->writeEntry("Status", checkStatus->isChecked());
 	config->writeEntry("RunCommandPath", editRunCommand->text());
 	config->writeEntry("PlaySoundPath", editPlaySound->text());
 
@@ -807,6 +900,11 @@ const bool KBiffNewMailTab::getNotify() const
 	return checkNotify->isChecked();
 }
 
+const bool KBiffNewMailTab::getStatus() const
+{
+	return checkStatus->isChecked();
+}
+
 void KBiffNewMailTab::enableRunCommand(bool enable)
 {
 	editRunCommand->setEnabled(enable);
@@ -817,6 +915,7 @@ void KBiffNewMailTab::enablePlaySound(bool enable)
 {
 	editPlaySound->setEnabled(enable);
 	buttonBrowsePlaySound->setEnabled(enable);
+	buttonTestPlaySound->setEnabled(enable);
 }
 
 void KBiffNewMailTab::browseRunCommand()
@@ -848,7 +947,7 @@ KBiffMailboxAdvanced::KBiffMailboxAdvanced()
 TRACEINIT("KBiffMailboxAdvanced::KBiffMailboxAdvanced()");
 	setCaption(i18n("Advanced Options"));
 
-	QGridLayout *layout = new QGridLayout(this, 5, 3, 12, 5);
+	QGridLayout *layout = new QGridLayout(this, 6, 3, 12, 5);
 
 	QLabel *mailbox_label = new QLabel(i18n("Mailbox URL:"), this);
 	mailbox_label->setMinimumSize(mailbox_label->sizeHint());
@@ -872,6 +971,13 @@ TRACEINIT("KBiffMailboxAdvanced::KBiffMailboxAdvanced()");
 
 	connect(keepalive, SIGNAL(toggled(bool)), SLOT(keepaliveModified(bool)));
 
+	async = new QCheckBox(i18n("Asynchronous"), this);
+	async->setMinimumSize(async->sizeHint());
+	async->setEnabled(false);
+	layout->addWidget(async, 4, 1);
+
+	connect(async, SIGNAL(toggled(bool)), SLOT(asyncModified(bool)));
+
 	mailbox = new QLineEdit(this);
 	mailbox->setMinimumHeight(25);
 	layout->addMultiCellWidget(mailbox, 0, 0, 1, 2);
@@ -884,7 +990,7 @@ TRACEINIT("KBiffMailboxAdvanced::KBiffMailboxAdvanced()");
 	              SLOT(portModified(const char*)));
 
 	QBoxLayout *button_layout = new QBoxLayout(QBoxLayout::LeftToRight, 12);
-	layout->addLayout(button_layout, 4, 2);
+	layout->addLayout(button_layout, 5, 2);
 
 	QPushButton *ok = new QPushButton(i18n("OK"), this);
 	ok->setMinimumSize(ok->sizeHint());
@@ -906,9 +1012,9 @@ KBiffMailboxAdvanced::~KBiffMailboxAdvanced()
 TRACEINIT("KBiffMailboxAdvanced::~KBiffMailboxAdvanced()");
 }
 
-const KURL KBiffMailboxAdvanced::getMailbox() const
+const KBiffURL KBiffMailboxAdvanced::getMailbox() const
 {
-	KURL url(mailbox->text());
+	KBiffURL url(mailbox->text());
 	url.setPassword(password);
 	return url;
 }
@@ -918,10 +1024,10 @@ const unsigned int KBiffMailboxAdvanced::getPort() const
 	return QString(port->text()).toInt();
 }
 
-void KBiffMailboxAdvanced::setMailbox(const KURL& url)
+void KBiffMailboxAdvanced::setMailbox(const KBiffURL& url)
 {
 	password = url.passwd();
-	KURL new_url(url);
+	KBiffURL new_url(url);
 	new_url.setPassword("");
 	mailbox->setText(new_url.url());
 }
@@ -934,7 +1040,7 @@ void KBiffMailboxAdvanced::setPort(unsigned int the_port, bool enable)
 
 void KBiffMailboxAdvanced::portModified(const char *text)
 {
-	KURL url = getMailbox();
+	KBiffURL url = getMailbox();
 	url.setPort(QString(text).toInt());
 	setMailbox(url);
 }
@@ -942,7 +1048,7 @@ void KBiffMailboxAdvanced::portModified(const char *text)
 void KBiffMailboxAdvanced::preauthModified(bool is_preauth)
 {
 TRACEINIT("KBiffMailboxAdvanced::preauthModified()");
-	KURL url = getMailbox();
+	KBiffURL url = getMailbox();
 	if (is_preauth)
 		url.setSearchPart("preauth");
 	else
@@ -953,13 +1059,30 @@ TRACEF("url = %s", url.url().data());
 
 void KBiffMailboxAdvanced::keepaliveModified(bool is_keepalive)
 {
-	KURL url = getMailbox();
+	KBiffURL url = getMailbox();
 	if (is_keepalive)
+	{
+		setAsync(false);
 		url.setReference("keepalive");
+	}
 	else
 		url.setReference("");
 	setMailbox(url);
 }
+
+void KBiffMailboxAdvanced::asyncModified(bool is_async)
+{
+	KBiffURL url = getMailbox();
+	if (is_async)
+	{
+		setKeepalive(false);
+		url.setReference("async");
+	}
+	else
+		url.setReference("");
+	setMailbox(url);
+}
+
 void KBiffMailboxAdvanced::setPreauth(bool on)
 {
 	preauth->setEnabled(true);
@@ -970,6 +1093,12 @@ void KBiffMailboxAdvanced::setKeepalive(bool on)
 {
 	keepalive->setEnabled(true);
 	keepalive->setChecked(on);
+}
+
+void KBiffMailboxAdvanced::setAsync(bool on)
+{
+	async->setEnabled(true);
+       	async->setChecked(on);
 }
 
 bool KBiffMailboxAdvanced::getPreauth() const
@@ -1035,10 +1164,12 @@ TRACE("Set mailboxes");
 	comboProtocol = new QComboBox(this);
 	comboProtocol->insertItem("");
 	comboProtocol->insertItem("mbox");
-	comboProtocol->insertItem("maildir");
+	comboProtocol->insertItem("maildir");	
 	comboProtocol->insertItem("imap4");
 	comboProtocol->insertItem("pop3");
+	comboProtocol->insertItem("mh");
 	comboProtocol->insertItem("file");
+	comboProtocol->insertItem("nntp");
 	comboProtocol->setMinimumSize(comboProtocol->sizeHint());
 
 	connect(comboProtocol, SIGNAL(highlighted(int)),
@@ -1120,7 +1251,7 @@ TRACE("After clears");
 		{
 			KBiffMailbox *mailbox = new KBiffMailbox();
 			QString key(mailbox_list.at(i));
-			mailbox->url = KURL(mailbox_list.at(i+1));
+			mailbox->url = KBiffURL(mailbox_list.at(i+1));
 			QString password(scramble(mailbox_list.at(i+2), false));
 
 			if (password.isEmpty())
@@ -1182,7 +1313,7 @@ TRACEINIT("KBiffMailboxTab::saveConfig()");
 		mailbox = mailboxHash->find(item_text);
 
 		QString password(scramble(mailbox->url.passwd()));
-		KURL url = mailbox->url;
+		KBiffURL url = mailbox->url;
 		url.setPassword("");
 
 		if (mailbox->store == false)
@@ -1198,9 +1329,9 @@ TRACEF("mailbox: %s -> %s", item_text.data(), url.url().data());
 	delete config;
 }
 
-void KBiffMailboxTab::setMailbox(const KURL& url)
+void KBiffMailboxTab::setMailbox(const KBiffURL& url)
 {
-TRACEINIT("KBiff()");
+TRACEINIT("KBiffMailboxTab::setMailbox()");
 	QString prot(url.protocol());
 
 	if (prot == "mbox")
@@ -1211,17 +1342,22 @@ TRACEINIT("KBiff()");
 		protocolSelected(3);
 	else if (prot == "pop3")
 		protocolSelected(4);
-	else if (prot == "file")
+	else if (prot == "mh")
 		protocolSelected(5);
+	else if (prot == "file")
+		protocolSelected(6);
+	else if (prot == "nntp")
+		protocolSelected(7);
 	else
 		return;
 
 	if (editMailbox->isEnabled())
 	{
 		QString path(url.path());
-		if (prot == "imap4" && !path.isEmpty() && path[0] == '/')
+		if (((prot == "imap4") || (prot == "nntp")) && !path.isEmpty() && path[0] == '/')
 				path.remove(0, 1);
 
+		KBiffURL::decodeURL(path);
 		editMailbox->setText(path);
 	}
 
@@ -1230,25 +1366,42 @@ TRACEINIT("KBiff()");
 	if (editServer->isEnabled())
 		editServer->setText(url.host());
 	if (editUser->isEnabled())
-		editUser->setText(url.user());
+	{
+		QString user(url.user());
+		KBiffURL::decodeURL(user);
+		editUser->setText(user);
+	}
 	if (editPassword->isEnabled())
-		editPassword->setText(url.passwd());
+	{
+		QString passwd(url.passwd());
+		KBiffURL::decodeURL(passwd);
+		editPassword->setText(passwd);
+	}
 
 	preauth = !strcmp(url.searchPart(), "preauth") ? true : false;
 	keepalive = !strcmp(url.reference(), "keepalive") ? true : false;
+	async = !strcmp(url.reference(), "async") ? true : false;
 }
 
-const KURL KBiffMailboxTab::getMailbox() const
+const KBiffURL KBiffMailboxTab::getMailbox() const
 {
-	KURL url;
+	KBiffURL url;
 
 	url.setProtocol(comboProtocol->currentText());
 
 	if (editUser->isEnabled())
-		url.setUser(editUser->text());
+	{
+		QString user(editUser->text());
+		KBiffURL::encodeURLStrict(user);
+		url.setUser(user);
+	}
 
 	if (editPassword->isEnabled())
-		url.setPassword(editPassword->text());
+	{
+		QString passwd(editPassword->text());
+		KBiffURL::encodeURLStrict(passwd);
+		url.setPassword(passwd);
+	}
 
 	if (editServer->isEnabled())
 		url.setHost(editServer->text());
@@ -1260,6 +1413,7 @@ const KURL KBiffMailboxTab::getMailbox() const
 		QString path(editMailbox->text());
 		if (!path.isEmpty() && path[0] != '/')
 			path.prepend("/");
+		KBiffURL::encodeURL(path);
 		url.setPath(path);
 	}
 
@@ -1269,20 +1423,23 @@ const KURL KBiffMailboxTab::getMailbox() const
 	if (keepalive)
 		url.setReference("keepalive");
 
+	if (async)
+		url.setReference("async");
+
 	return url;
 }
 
-const QList<KURL> KBiffMailboxTab::getMailboxList() const
+const QList<KBiffURL> KBiffMailboxTab::getMailboxList() const
 {
 TRACEINIT("KBiffMailboxTab::getMailboxList()");	
-	QList<KURL> url_list;
+	QList<KBiffURL> url_list;
 
 	for (QListViewItem *item = mailboxes->firstChild();
 	     item;
 		  item = item->nextSibling())
 	{
 		KBiffMailbox *mailbox = mailboxHash->find(item->text(0));
-		KURL *url = new KURL(mailbox->url);
+		KBiffURL *url = new KBiffURL(mailbox->url);
 		url_list.append(url);
 	}
 	return url_list;
@@ -1348,7 +1505,7 @@ TRACEINIT("KBiffMailboxTab::slotMailboxSelected()");
 		if (mailbox)
 		{
 			// change the hash only if the item is different
-			KURL url(getMailbox());
+			KBiffURL url(getMailbox());
 			bool checked = checkStorePassword->isChecked();
 			if (mailbox->url.url() != url.url() || mailbox->store != checked)
 			{
@@ -1379,7 +1536,8 @@ TRACEINIT("KBiffMailboxTab::protocolSelected()");
 	{
 		case 1: // mbox
 		case 2: // maildir
-		case 5: // file
+		case 5: // mh
+		case 6: // file
 			port = 0;
 			buttonBrowse->setEnabled(true);
 			editMailbox->setEnabled(true);
@@ -1390,6 +1548,15 @@ TRACEINIT("KBiffMailboxTab::protocolSelected()");
 			break;
 		case 3: // IMAP4
 			port = 143;
+			editMailbox->setEnabled(true);
+			buttonBrowse->setEnabled(false);
+			editServer->setEnabled(true);
+			editUser->setEnabled(true);
+			editPassword->setEnabled(true);
+			checkStorePassword->setEnabled(true);
+			break;
+		case 7: // NNTP
+		   port = 119;
 			editMailbox->setEnabled(true);
 			buttonBrowse->setEnabled(false);
 			editServer->setEnabled(true);
@@ -1432,7 +1599,7 @@ void KBiffMailboxTab::advanced()
 	KBiffMailboxAdvanced advanced_dlg;
 	QString prot(getMailbox().protocol());
 	
-	if (prot == "mbox" || prot == "maildir" || prot == "file")
+	if (prot == "mbox" || prot == "maildir" || prot == "file" || prot == "mh")
 		advanced_dlg.setPort(port, false);
 	else
 		advanced_dlg.setPort(port);
@@ -1441,10 +1608,14 @@ void KBiffMailboxTab::advanced()
 	{
 		advanced_dlg.setPreauth(preauth);
 		advanced_dlg.setKeepalive(keepalive);
+		advanced_dlg.setAsync(async);
 	}
 
-	if (prot == "pop3")
+	if ((prot == "pop3") || (prot == "nntp"))
+	{
 		advanced_dlg.setKeepalive(keepalive);
+		advanced_dlg.setAsync(async);
+	}
 
 	advanced_dlg.setMailbox(getMailbox());
 	if (advanced_dlg.exec())
@@ -1466,7 +1637,7 @@ const char* KBiffMailboxTab::scramble(const char* password, bool encode)
 	return ret_ptr;
 }
 
-const KURL KBiffMailboxTab::defaultMailbox() const
+const KBiffURL KBiffMailboxTab::defaultMailbox() const
 {
 	QFileInfo mailbox_info(getenv("MAIL"));
 	if (mailbox_info.exists() == false)
@@ -1481,7 +1652,7 @@ const KURL KBiffMailboxTab::defaultMailbox() const
 	                                               new QString("mbox:");
 	default_path->append(mailbox_info.absFilePath());
 
-	return KURL(*default_path);
+	return KBiffURL(*default_path);
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -1523,7 +1694,7 @@ TRACEINIT("KBiffAboutTab::KBiffAboutTab()");
 	QLabel *version = new QLabel(this);
 	version->setFont(QFont("helvetica", 12));
 	QString ver_str;
-	ver_str.sprintf(i18n("Version %s\n\nCopyright (C) 1998\nKurt Granroth"), "2.11");
+	ver_str.sprintf(i18n("Version %s\n\nCopyright (C) 1999\nKurt Granroth"), "2.3.6");
 	version->setText(ver_str);
 	version->setAutoResize(true);
 	version->move(x, y);

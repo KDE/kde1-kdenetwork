@@ -1,6 +1,6 @@
 /*
  * kbiff.cpp
- * Copyright (C) 1998 Kurt Granroth <granroth@kde.org>
+ * Copyright (C) 1999 Kurt Granroth <granroth@kde.org>
  *
  * This file contains the implementation of the main KBiff
  * widget
@@ -20,9 +20,13 @@
 
 #include "setupdlg.h"
 #include "notify.h"
+#include "status.h"
 
 KBiff::KBiff(QWidget *parent)
-	: QLabel(parent)
+	: QLabel(parent),
+	  statusTimer(0),
+	  status(0),
+	  statusChanged(true)
 {
 TRACEINIT("KBiff::KBiff()");
 	setAutoResize(true);
@@ -35,6 +39,11 @@ TRACEINIT("KBiff::KBiff()");
 	// enable the session management stuff
 	connect(kapp, SIGNAL(saveYourself()), this, SLOT(saveYourself()));
 
+	// nuke the list stuff when removed
+	monitorList.setAutoDelete(true);
+	notifyList.setAutoDelete(true);
+	statusList.setAutoDelete(true);
+
 	reset();
 }
 
@@ -42,6 +51,8 @@ KBiff::~KBiff()
 {
 TRACEINIT("KBiff::~KBiff()");
 	monitorList.clear();
+	notifyList.clear();
+	statusList.clear();
 }
 
 void KBiff::processSetup(const KBiffSetup* setup, bool run)
@@ -55,6 +66,7 @@ TRACEINIT("KBiff::processSetup()");
 	noMailIcon  = setup->getNoMailIcon();
 	newMailIcon = setup->getNewMailIcon();
 	oldMailIcon = setup->getOldMailIcon();
+	noConnIcon  = setup->getNoConnIcon();
 
 	// New mail
 	systemBeep     = setup->getSystemBeep();
@@ -63,6 +75,14 @@ TRACEINIT("KBiff::processSetup()");
 	playSound      = setup->getPlaySound();
 	playSoundPath  = setup->getPlaySoundPath();
 	notify         = setup->getNotify();
+	dostatus       = setup->getStatus();
+
+	// if we aren't going the status route, we should at least
+	// provide a tooltip!
+	if (dostatus == false)
+		QToolTip::add(this, profile);
+	else
+		QToolTip::remove(this);
 
 	// set all the new mailboxes
 	setMailboxList(setup->getMailboxList(), setup->getPoll());
@@ -76,23 +96,20 @@ TRACEF("setup->getDock() = %d", setup->getDock());
 	if (run)
 		start();
 
-	// add the profile as a tool tip
-	QToolTip::add(this, profile);
-
 	delete setup;
 }
 
-void KBiff::setMailboxList(const QList<KURL>& mailbox_list, unsigned int poll)
+void KBiff::setMailboxList(const QList<KBiffURL>& mailbox_list, unsigned int poll)
 {
 TRACEINIT("KBiff::setMailboxList");
-	QList<KURL> tmp_list = mailbox_list;
+	QList<KBiffURL> tmp_list = mailbox_list;
 
 	myMUTEX = true;
 	if (isRunning())
 		stop();
 	monitorList.clear();
 	
-	KURL *url;
+	KBiffURL *url;
 	for (url = tmp_list.first(); url != 0; url = tmp_list.next())
 	{
 		TRACEF("Now adding %s", url->url().data());
@@ -101,8 +118,11 @@ TRACEINIT("KBiff::setMailboxList");
 		monitor->setPollInterval(poll);
 		connect(monitor, SIGNAL(signal_newMail(const int, const char*)),
 		        this, SLOT(haveNewMail(const int, const char*)));
+		connect(monitor, SIGNAL(signal_currentStatus(const int, const char*, const KBiffMailState)),
+		        this, SLOT(currentStatus(const int, const char*, const KBiffMailState)));
 		connect(monitor, SIGNAL(signal_noMail()), this, SLOT(displayPixmap()));
 		connect(monitor, SIGNAL(signal_oldMail()), this, SLOT(displayPixmap()));
+		connect(monitor, SIGNAL(signal_noConn()), this, SLOT(displayPixmap()));
 		monitorList.append(monitor);
 	}
 	myMUTEX = false;
@@ -133,6 +153,22 @@ TRACEINIT("KBiff::readSesionConfig()");
 void KBiff::mousePressEvent(QMouseEvent *event)
 {
 TRACEINIT("KBiff::mousePressEvent()");
+	// regardless of which button, get rid of the status box
+	if (status)
+	{
+		status->hide();
+		delete status;
+		status = 0;
+	}
+
+	// also, ditch the timer
+	if (statusTimer)
+	{
+		statusTimer->stop();
+		delete statusTimer;
+		statusTimer = 0;
+	}
+
 	// check if this is a right click
 	if(event->button() == RightButton)
 	{
@@ -147,6 +183,82 @@ TRACEINIT("KBiff::mousePressEvent()");
 
 		readPop3MailNow();
 	}
+}
+
+void KBiff::enterEvent(QEvent *e)
+{
+TRACEINIT("KBiff::enterEvent()");
+	QLabel::enterEvent(e);
+
+	// return now if the user doesn't want this feature.
+	// *sniff*.. the ingrate.. I worked so hard on this, too... *sob*
+	if (dostatus == false)
+		return;
+
+	// don't do anything if we already have a timer
+	if (statusTimer)
+		return;
+
+	// popup the status in one second
+	statusTimer = new QTimer(this);
+	connect(statusTimer, SIGNAL(timeout()), this, SLOT(popupStatus()));
+
+	TRACE("Starting status timer for 1 second...");
+	statusTimer->start(1000, true);
+}
+
+void KBiff::leaveEvent(QEvent *e)
+{
+TRACEINIT("KBiff::leaveEvent()");
+	QLabel::leaveEvent(e);
+
+	// stop the timer if it is going
+	if (statusTimer)
+	{
+		statusTimer->stop();
+		delete statusTimer;
+		statusTimer = 0;
+	}
+
+	// get rid of the status box if it is activated
+	if (status)
+	{
+		status->hide();
+		delete status;
+		status = 0;
+	}
+}
+
+void KBiff::popupStatus()
+{
+TRACEINIT("KBiff::popupStatus()");
+	if (status)
+		delete status;
+
+	// if we don't get rid of the timer, then the very next
+	// time we float over the icon, the status box will
+	// *not* be activated!
+	if (statusTimer)
+	{
+		statusTimer->stop();
+		delete statusTimer;
+		statusTimer = 0;
+	}
+
+	if (statusChanged)
+	{
+		statusList.clear();
+		KBiffMonitor *monitor;
+		for(monitor = monitorList.first(); monitor; monitor = monitorList.next())
+		{
+			TRACEF("%s: %d\n", (const char*)monitor->getMailbox(), monitor->newMessages());
+			statusList.append(new KBiffStatusItem(monitor->getMailbox(), monitor->newMessages()));
+		}
+		statusChanged = false;
+	}
+
+	status = new KBiffStatus(profile, statusList);
+	status->popup(QCursor::pos());
 }
 
 bool KBiff::isGIF8x(const char* file_name)
@@ -228,7 +340,7 @@ TRACEINIT("KBiff::displayPixmap()");
 	// we will try to deduce the pixmap (or gif) name now.  it will
 	// vary depending on the dock and mail state
 	QString pixmap_name, mini_pixmap_name;
-	bool has_new = false, has_old = false, has_no = true;
+	bool has_new = false, has_old = false, has_no = true, has_noconn = false;
 	KBiffMonitor *monitor;
 	for (monitor = monitorList.first();
 	     monitor != 0 && has_new == false;
@@ -246,6 +358,9 @@ TRACEINIT("KBiff::displayPixmap()");
 			case OldMail:
 				has_old = true;
 				break;
+			case NoConn:
+				has_noconn = true;
+				break;
 			default:
 				has_no = true;
 				break;
@@ -257,8 +372,11 @@ TRACEINIT("KBiff::displayPixmap()");
 		pixmap_name = newMailIcon;
 	else if (has_old)
 		pixmap_name = oldMailIcon;
+	else if (has_noconn)
+		pixmap_name = noConnIcon;
 	else
 		pixmap_name = noMailIcon;
+
 	mini_pixmap_name = "mini-" + pixmap_name;
 
 	// Get a list of all the pixmap paths.  This is needed since the
@@ -293,6 +411,53 @@ TRACEINIT("KBiff::displayPixmap()");
 	else
 		setPixmap(QPixmap(file.absFilePath()));
 	adjustSize();
+}
+
+void KBiff::currentStatus(const int num, const char* the_mailbox, const KBiffMailState the_state)
+{
+TRACEINIT("KBiff::currentStatus()");
+TRACEF("num = %d mailbox = %s state = %d", num, the_mailbox, the_state);
+	statusChanged = true;
+
+	// iterate through all saved notify dialogs to see if "our" one is
+	// currently being displayed
+	KBiffNotify *notify;
+	for (notify = notifyList.first();
+	     notify != 0;
+		  notify = notifyList.next())
+	{
+		// if this one is not visible, delete it from the list.  the only
+		// way it will again become visible is if the haveNewMail slot
+		// gets triggered
+		if (notify->isVisible() == false)
+		{
+			notifyList.remove();
+		}
+		else
+		{
+			TRACEF("notify->mailbox = %s", (const char*)notify->getMailbox());
+			// if this box is visible (active), we see if it is the one
+			// we are looking for
+			if (notify->getMailbox() == the_mailbox)
+			{
+				// yep.  now, if there is new mail, we set the new number in
+				// the dialog.  if it is any other state, we remove this
+				// dialog from the list
+				switch (the_state)
+				{
+				case NewMail:
+					notify->setNew(num);
+					break;
+				case OldMail:
+				case NoMail:
+				case NoConn:
+				default:
+					notifyList.remove();
+					break;
+				}
+			}
+		}
+	}
 }
 
 void KBiff::haveNewMail(const int num, const char* the_mailbox)
@@ -334,8 +499,9 @@ TRACEINIT("KBiff::haveNewMail()");
 	if (notify)
 	{
 		TRACEF("Notifying %d in %s", num, the_mailbox);
-		KBiffNotify notify_dlg(num, the_mailbox);
-		notify_dlg.exec();
+		KBiffNotify *notify_dlg = new KBiffNotify(num, the_mailbox, mailClient);
+		notifyList.append(notify_dlg);
+		notify_dlg->show();
 	}
 }
 
@@ -370,7 +536,7 @@ TRACEINIT("KBiff::dock()");
 
 	// (un)dock it!
 	this->show();
-	displayPixmap();
+	QTimer::singleShot(1000, this, SLOT(displayPixmap()));
 }
 
 void KBiff::setup()
@@ -380,6 +546,8 @@ TRACEINIT("KBiff::setup()");
 
 	if (setup_dlg->exec())
 		processSetup(setup_dlg, true);
+	else
+		delete setup_dlg;
 }
 
 void KBiff::checkMailNow()
@@ -443,7 +611,7 @@ TRACEINIT("KBiff::start()");
 		monitor->start();
 	}
 	myMUTEX = false;
-	displayPixmap();
+	QTimer::singleShot(1000, this, SLOT(displayPixmap()));
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -500,11 +668,13 @@ TRACEINIT("KBiff::reset()");
 	runCommandPath = "";
 	playSound      = false;
 	playSoundPath  = "";
-	notify         = false;
+	notify         = true;
+	dostatus       = true;
 
 	noMailIcon  = "nomail.xpm";
 	newMailIcon = "newmail.xpm";
 	oldMailIcon = "oldmail.xpm";
+	noConnIcon  = "noconn.xpm";
 
 	docked    = false;
 	isSecure  = false;

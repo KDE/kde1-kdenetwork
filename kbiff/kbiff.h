@@ -1,6 +1,6 @@
 /*
  * kbiff.h
- * Copyright (C) 1998 Kurt Granroth <granroth@kde.org>
+ * Copyright (C) 1999 Kurt Granroth <granroth@kde.org>
  *
  * This file contains the declaration of the main KBiff
  * widget.
@@ -19,7 +19,7 @@
 #include <kbiffmonitor.h>
 #include <setupdlg.h>
 
-#include <kurl.h>
+#include <kbiffurl.h>
 #include <kapp.h>
 
 // mediatool.h is needed by kaudio.h
@@ -29,6 +29,10 @@ extern "C" {
 #include <kaudio.h>
 
 #include <qlabel.h>
+#include <qtimer.h>
+
+#include <notify.h>
+#include <status.h>
 
 class KBiff : public QLabel
 {
@@ -42,10 +46,12 @@ public:
 	void processSetup(const KBiffSetup* setup, bool start);
 	void readSessionConfig();
 
-	void setMailboxList(const QList<KURL>& mailbox_list, unsigned int poll = 60);
+	void setMailboxList(const QList<KBiffURL>& mailbox_list, unsigned int poll = 60);
 
 protected:
 	void mousePressEvent(QMouseEvent *);
+	void enterEvent(QEvent *);
+	void leaveEvent(QEvent *);
 
 protected:
 	void popupMenu();
@@ -59,6 +65,7 @@ protected slots:
 	void invokeHelp();
 	void displayPixmap();
 	void haveNewMail(const int, const char*);
+	void currentStatus(const int, const char*, const KBiffMailState);
 	void dock();
 	void setup();
 	void checkMailNow();
@@ -66,14 +73,18 @@ protected slots:
 	void readPop3MailNow();
 	void stop();
 	void start();
+	void popupStatus();
 
 protected:
 	bool myMUTEX;
 	QList<KBiffMonitor> monitorList;
+	QList<KBiffNotify>  notifyList;
+	KBiffStatusList     statusList;
 
 	// Capability
 	bool    hasAudio;
 	KAudio  audioServer;
+	QTimer  *statusTimer;
 	
 	// General settings
 	QString profile;
@@ -86,6 +97,7 @@ protected:
 	bool    playSound;
 	QString playSoundPath;
 	bool    notify;
+	bool    dostatus;
 
 	bool    docked;
 	bool    sessions;
@@ -95,6 +107,10 @@ protected:
 	QString noMailIcon;
 	QString newMailIcon;
 	QString oldMailIcon;
+	QString noConnIcon;
+
+	KBiffStatus *status;
+	bool         statusChanged;
 };
 
 #endif // KBIFF_H 

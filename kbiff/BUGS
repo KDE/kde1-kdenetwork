@@ -1,16 +1,24 @@
-UNFIXED BUGS
+BUGS:
 ============================================================================
 Description:
-  On some systems, EVERY new email will pop up a notify box
+  On some systems, EVERY new email will pop up a notify box (BUG #774)
 
 Status:
-  No clue on this one either.  I'm going to have to really study the code
-  to figure this out and I haven't found the time so far.
-
-----------------------------------------------------------------------------
-Description:
-  Having a username of 'something@somewhere' does NOT work in either pop3
+  No clue what is going on here.  This happens most often in mbox but it
+  looks like pop3 is affected too.  This should *never* happen in maildir
   or imap4
 
+Seriousness:
+  Very High!!
+---------------------------------------------------------------------------
+Description:
+  Once an animated icon appears, it will never go away.  This only happens
+  if the *next* icon is a pixmap -- the pixmap will never replace the GIF.
+  (BUG #695)
+
 Status:
-  This is fixed in the recent KBiff's.. just not in this version :-)
+  This looks like a Qt bug.
+
+Seriousness:
+  Moderate
+---------------------------------------------------------------------------

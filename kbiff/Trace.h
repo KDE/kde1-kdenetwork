@@ -44,19 +44,11 @@
 #include <stdio.h>
 #include <stdarg.h>
 
-#ifdef DO_TRACE
-#	define TRACEINIT         Trace __trace
-#	define TRACE             __trace.output
-#	define TRACEF            __trace.outputf
-#	define TRACEON           Trace __trace
-#	define TRACETAB          __trace.setTabStop
-#else
-#	define TRACEINIT(x)
-#	define TRACE(x)
-#	define TRACEF(x,y)
-#	define TRACEON(x)
-#	define TRACETAB(x)
-#endif
+#define TRACEINIT Trace __trace
+#define TRACE     __trace.output
+#define TRACEF    __trace.outputf
+#define TRACEON   Trace __trace
+#define TRACETAB  __trace.setTabStop
 
 class Trace
 {

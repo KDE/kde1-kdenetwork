@@ -17,7 +17,6 @@
 #include <qlayout.h>
 #include <qlabel.h>
 #include <qpoint.h>
-#include <klocale.h>
 
 KBiffStatus::KBiffStatus(const QString& profile, const KBiffStatusList& list)
 	: QFrame(0, 0, WStyle_Customize | WStyle_NoBorder),
@@ -25,8 +24,10 @@ KBiffStatus::KBiffStatus(const QString& profile, const KBiffStatusList& list)
 {
 TRACEINIT("KBiffStatus::KBiffStatus()");
 	setFrameStyle(WinPanel|Raised);
+	resize(0, 0);
 	QLabel *profile_label = new QLabel(profile, this);
 	profile_label->setFrameStyle(QFrame::Box | QFrame::Raised);
+	profile_label->setMinimumSize(profile_label->sizeHint());
 	profile_label->setAlignment(AlignCenter);
 
 	_listView->addColumn(i18n("Mailbox"));
@@ -47,11 +48,13 @@ TRACEINIT("KBiffStatus::KBiffStatus()");
 
 	_listView->setMinimumSize(_listView->sizeHint());
 	int list_height = (_listView->firstChild()->height() * ptr->count()) + 10;
+	TRACEF("list_height = %d", list_height);
 	_listView->setMinimumSize(_listView->sizeHint().width() + 5, list_height);
 
 	QVBoxLayout *layout = new QVBoxLayout(this, 0, 0);
 	layout->addWidget(profile_label);
 	layout->addWidget(_listView);
+	layout->activate();
 }
 
 KBiffStatus::~KBiffStatus()
@@ -84,19 +87,7 @@ void KBiffStatus::popup(const QPoint& pos)
 }
 
 KBiffStatusItem::KBiffStatusItem(const QString& mailbox, const int num_new)
-	: _mailbox(new QString(mailbox)),
-	  _newMessages(new QString(QString().setNum(num_new)))
+	: _mailbox(mailbox),
+	  _newMessages(QString().setNum(num_new))
 {
-}
-
-KBiffStatusItem::~KBiffStatusItem()
-{
-	if (_mailbox) {
-		delete _mailbox;
-		_mailbox = 0;
-	}
-	if (_newMessages) {
-		delete _newMessages;
-		_newMessages = 0;
-	}
 }

@@ -5,9 +5,9 @@
 <title>The KBiff Handbook
 <author>Kurt Granroth 
 <htmlurl url="mailto:granroth@kde.org" name="&lt;granroth@kde.org&gt;">
-<date>Version 2.1 Jan 13, 1999
+<date>Version 2.3.6 June 03, 1999
 <abstract>KBiff is a KDE aware mail notification utility. It supports MBOX (Unix
- style), Maildir (Qmail), POP3, and IMAP mailboxes.
+ style), Maildir (Qmail), MH, POP3, IMAP4, and NNTP mailboxes.
 <toc>
 <sect>Introduction
 <p>
@@ -25,8 +25,8 @@ KBiff is a mail notification utility for the KDE project. It has several
 <item><bf>Panel Docking</bf>. KBiff can be docked into the panel very easily. Handy when
  you are monitoring several mailboxes and don't have room anywhere else.
 <item><bf>Animated GIFs</bf>. You can use animated GIFs as your icons.
-<item><bf>Sounds</bf>. Kbiff has an option to play .wav files when new mail arrives.
-<item><bf>POP3, IMAP4, Maildir, MBOX</bf>. KBiff supports all major mailbox formats!
+<item><bf>Sounds</bf>. KBiff has an option to play .wav files when new mail arrives.
+<item><bf>POP3, IMAP4, NNTP, Maildir, MBOX, MH</bf>. KBiff supports all major mailbox formats!
 <item><bf>Multiple Mailbox</bf>. KBiff can monitor several mailboxes with one instance.
 <item><bf>Others</bf>. KBiff has scads of other options.
 </itemize>
@@ -38,16 +38,7 @@ Kurt Granroth
 
 
 <htmlurl url="mailto:granroth@kde.org" name="&lt;granroth@kde.org&gt;">
-<sect1>Planned Features
-<p>
 
-These are some of the features that I am either planning on adding or considering
- planning on adding. In no particular order:
-<itemize>
-<item>Put in some CORBA "hooks." Possibly implement a client/server model,
- too.
-<item>Monitor NNTP newsgroups? I'm waiting until somebody requests this.
-</itemize>
 <sect>Installation
 <p>
 <sect1>How to obtain KBiff
@@ -207,6 +198,14 @@ Enabling this will cause KBiff to popup a window when new mail arrives. The
 "notify" message box will list both the mailbox in question and the number of
 new mails.  This option is not recommended on mailboxes that receive lots of
 mail.
+
+<sect3>Floating Status
+<p>
+If this is enabled, KBiff will popup a small box listing all mailboxes
+with their newmail count whenever you the mouse is over the icon (after
+a one second delay).  The effect is similar to that of a tooltip... only
+better.  This isn't technically a new mail feature... but it doesn't fit
+easily anywhere else!
 
 <sect2>Mailbox Preferences
 <p>
@@ -464,11 +463,26 @@ You tried 'netscape -mail', didn't you? You then discovered that this caused
 </verb>
 <verb>if &lsqb; -L "&dollar;HOME/.netscape/lock" &rsqb;; 
 then 
-netscape -remote
- 'xfeDoCommand(openInbox)' 
+netscape -remote 'xfeDoCommand(openInbox)' 
 else 
 netscape -mail &amp; 
 fi
 </verb>
+
+<sect1>KBiff truncates the initial slash in IMAP mode.  Is this a bug?
+<p>
+No, it's a feature!  It is very very rare that one uses an absolute path
+with IMAP.  Nearly all mailbox can (and are) accessed either relative to
+the user's home directory or use symbolic names like 'inbox.
+<p>
+If you are trying to read <verb>/var/spool/mail/username</verb> try entering
+<verb>inbox</verb> as the mailbox name.
+
+<sect1>I have this great feature I want implemented.  What should I do?
+<p>
+First, look at the TODO file in the source distribution (or on the web
+page).  If your feature request is already there, then sit tight -- it may
+well be implemented.  If it is not there... well, it doesn't hurt to ask.
+Email me!
 
 </article>

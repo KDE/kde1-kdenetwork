@@ -1,6 +1,6 @@
 /*
  * kbiffmonitor.cpp
- * Copyright (C) 1998 Kurt Granroth <granroth@kde.org>
+ * Copyright (C) 1999 Kurt Granroth <granroth@kde.org>
  *
  * This file contains the implementation of KBiffMonitor and
  * associated classes.
@@ -18,8 +18,12 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <ctype.h>
 
-#include <kurl.h>
+#include <fcntl.h>
+#include <errno.h>
+
+#include <kbiffurl.h>
 
 #include <qapp.h>
 #include <qstring.h>
@@ -40,6 +44,8 @@ KBiffMonitor::KBiffMonitor()
 	  oldTimer(0),
 	  started(false),
 	  newCount(0),
+	  oldCount(0),
+	  simpleURL(""),
 	  protocol(""),
 	  mailbox(""),
 	  server(""),
@@ -48,9 +54,11 @@ KBiffMonitor::KBiffMonitor()
 	  port(0),
 	  preauth(false),
 	  keepalive(false),
-	  active(false),
 	  mailState(UnknownState),
-	  lastSize(0)
+	  lastSize(0),
+	  imap(0),
+	  pop(0),
+	  nntp(0)
 {
 TRACEINIT("KBiffMonitor::KBiffMonitor()");
 	lastRead.setTime_t(0);
@@ -60,6 +68,21 @@ TRACEINIT("KBiffMonitor::KBiffMonitor()");
 KBiffMonitor::~KBiffMonitor()
 {
 TRACEINIT("KBiffMonitor::~KBiffMonitor()");
+	if (imap)
+	{
+		delete imap;
+		imap = 0;
+	}
+	if (pop)
+	{
+		delete pop;
+		pop = 0;
+	}
+	if (nntp)
+	{
+		delete nntp;
+		nntp = 0;
+	}
 }
 
 void KBiffMonitor::start()
@@ -108,18 +131,36 @@ TRACEINIT("KBiffMonitor::setPollInterval()");
 void KBiffMonitor::setMailbox(const char* url)
 {
 TRACEINIT("KBiffMonitor::setMailbox()");
-	KURL kurl(url);
+	KBiffURL kurl(url);
 	setMailbox(kurl);
 }
 
-void KBiffMonitor::setMailbox(KURL& url)
+void KBiffMonitor::setMailbox(KBiffURL& url)
 {
 TRACEINIT("KBiffMonitor::setMailbox()");
+	if (imap)
+	{
+		delete imap;
+		imap = 0;
+	}
+	if (pop)
+	{
+		delete pop;
+		pop = 0;
+	}
+	if (nntp)
+	{
+		delete nntp;
+		nntp = 0;
+	}
+
 	protocol = url.protocol();
 
 	if (protocol == "imap4")
 	{
 		disconnect(this);
+
+		imap = new KBiffImap;
 
 		connect(this, SIGNAL(signal_checkMail()), SLOT(checkImap()));
 		server   = url.host();
@@ -131,13 +172,19 @@ TRACEINIT("KBiffMonitor::setMailbox()");
 
 		preauth = !strcmp(url.searchPart(), "preauth") ? true : false;
 		keepalive = !strcmp(url.reference(), "keepalive") ? true : false;
+		bool async = !strcmp(url.reference(), "async") ? true : false;
+		imap->setAsync(async);
 TRACEF("preauth = %d", preauth);
 TRACEF("keepalive = %d", keepalive);
+TRACEF("async = %d", imap->isAsync());
+		simpleURL = "imap4://" + server + "/" + mailbox;
 	}
 
 	if (protocol == "pop3")
 	{
 		disconnect(this);
+
+		pop = new KBiffPop;
 
 		connect(this, SIGNAL(signal_checkMail()), SLOT(checkPop()));
 		server   = url.host();
@@ -147,7 +194,12 @@ TRACEF("keepalive = %d", keepalive);
 		port     = (url.port() > 0) ? url.port() : 110;
 
 		keepalive = !strcmp(url.reference(), "keepalive") ? true : false;
+		bool async = !strcmp(url.reference(), "async") ? true : false;
+		pop->setAsync(async);
 TRACEF("keepalive = %d", keepalive);
+TRACEF("async = %d", pop->isAsync());
+
+		simpleURL = "pop3://" + server + "/" + mailbox;
 	}
 
 	if (protocol == "mbox")
@@ -156,6 +208,8 @@ TRACEF("keepalive = %d", keepalive);
 
 		connect(this, SIGNAL(signal_checkMail()), SLOT(checkMbox()));
 		mailbox = url.path();
+
+		simpleURL = "mbox:" + mailbox;
 	}
 
 	if (protocol == "file")
@@ -164,6 +218,8 @@ TRACEF("keepalive = %d", keepalive);
 
 		connect(this, SIGNAL(signal_checkMail()), SLOT(checkLocal()));
 		mailbox = url.path();
+
+		simpleURL = "file:" + mailbox;
 	}
 
 	if (protocol == "maildir")
@@ -172,7 +228,45 @@ TRACEF("keepalive = %d", keepalive);
 
 		connect(this, SIGNAL(signal_checkMail()), SLOT(checkMaildir()));
 		mailbox = url.path();
+
+		simpleURL = "maildir:" + mailbox;
 	}
+
+	if (protocol == "mh")
+	{
+		disconnect(this);
+
+		connect(this, SIGNAL(signal_checkMail()), SLOT(checkMHdir()));
+		mailbox = url.path();
+
+		simpleURL = "mh:" + mailbox;
+	}
+
+	if (protocol == "nntp")
+	{
+		disconnect(this);
+
+		nntp = new KBiffNntp;
+
+		connect(this, SIGNAL(signal_checkMail()), SLOT(checkNntp()));
+		server   = url.host();
+		user     = url.user();
+		password = url.passwd();
+
+		mailbox  = QString(url.path()).right(strlen(url.path()) - 1); 
+		port     = (url.port() > 0) ? url.port() : 119;
+
+		keepalive = !strcmp(url.reference(), "keepalive") ? true : false;
+		bool async = !strcmp(url.reference(), "async") ? true : false;
+		nntp->setAsync(async);
+TRACEF("keepalive = %d", keepalive);
+TRACEF("async = %d", nntp->isAsync());
+		simpleURL = "nntp://" + server + "/" + mailbox;
+	}
+	// decode user, password, and path
+	KBiffURL::decodeURL(user);
+	KBiffURL::decodeURL(password);
+	KBiffURL::decodeURL(mailbox);
 }
 
 void KBiffMonitor::setMailboxIsRead()
@@ -220,13 +314,6 @@ TRACEINIT("KBiffMonitor::checkMbox()");
 	// get the information about this local mailbox
 	QFileInfo mbox(mailbox);
 
-	// handle the NoMail case
-	if (mbox.size() == 0)
-	{
-		determineState(NoMail);
-		return;
-	}
-
 	// see if the state has changed
 	if ((mbox.lastModified() != lastModified) || (mbox.size() != lastSize))
 	{
@@ -241,7 +328,20 @@ TRACEINIT("KBiffMonitor::checkMbox()");
 		if (newCount > 0)
 			determineState(NewMail);
 		else
-			determineState(OldMail);
+		{
+			if (oldCount == 0)
+				determineState(NoMail);
+			else
+				determineState(OldMail);
+		}
+	}
+
+	// handle the NoMail case
+	if ((mbox.size() == 0) || (oldCount == 0))
+	{
+		newCount = 0;
+		determineState(NoMail);
+		return;
 	}
 }
 
@@ -250,41 +350,54 @@ void KBiffMonitor::checkPop()
 TRACEINIT("KBiffMonitor::checkPop()");
 	QString command;
 
-	if(pop.connectSocket(server, port) == false)
-		return;
+	// connect to the server unless it is active already
+	if (pop->active() == false)
+	{
+		if(pop->connectSocket(server, port) == false)
+		{
+			determineState(NoConn);
+			return;
+		}
 
-	command = "USER " + user + "\r\n";
-	if (pop.command(command) == false)
-		return;
+		command = "USER " + user + "\r\n";
+		if (pop->command(command) == false)
+		{
+			pop->close();
+			return;
+		}
 
-	command = "PASS " + password + "\r\n";
-	if (pop.command(command) == false)
-		return;
-
+		command = "PASS " + password + "\r\n";
+		if (pop->command(command) == false)
+		{
+			pop->close();
+			return;
+		}
+	}
+	
 	command = "UIDL\r\n";
-	if (pop.command(command) == false)
+	if (pop->command(command) == false)
 	{
 		command = "STAT\r\n";
-		if (pop.command(command) == false)
+		if (pop->command(command) == false)
 		{
 			command = "LIST\r\n";
-			if (pop.command(command) == false)
+			if (pop->command(command) == false)
 			{
 				// if this still doesn't work, then we
 				// close this port
-				pop.close();
+				pop->close();
 				return;
 			}
 		}
 	}
 
 	if (command == "UIDL\r\n")
-		determineState(pop.getUidlList());
+		determineState(pop->getUidlList());
 	else
-		determineState(pop.numberOfMessages());
+		determineState(pop->numberOfMessages());
 	
 	if (keepalive == false)
-		pop.close();
+		pop->close();
 }
 
 void KBiffMonitor::checkImap()
@@ -292,33 +405,36 @@ void KBiffMonitor::checkImap()
 TRACEINIT("KBiffMonitor::checkImap()");
 	QString command;
 	int seq = 1000;
+	bool do_login = false;
 
 	// connect to the server
-	if (active == false)
+	if (imap->active() == false)
 	{
-		if (imap.connectSocket(server, port) == false)
+		if (imap->connectSocket(server, port) == false)
+		{
+			determineState(NoConn);
 			return;
+		}
+
+		do_login = true;
 	}
 	
 	// imap allows spaces in usernames... we need to take care of that
-	user = imap.mungeUser(user);
+	user = imap->mungeUser(user);
 
 	// if we are preauthorized OR we want to keep the session alive, then
 	// we don't login.  Otherwise, we do.
-	if ((preauth == false) && (active == false))
+	if ((preauth == false) && (do_login == true))
 	{
 		command = QString().setNum(seq) + " LOGIN " + user + " " + password + "\r\n";
-		if (imap.command(command, seq) == false)
+		if (imap->command(command, seq) == false)
 			return;
 		seq++;
-
-		if (keepalive)
-			active = true;
 	}
 
 	// this will quite nicely get us the number of new messages
 	command = QString().setNum(seq) + " STATUS " + mailbox + " (messages unseen)\r\n";
-	if (imap.command(command, seq) == false)
+	if (imap->command(command, seq) == false)
 		return;
 	seq++;
 
@@ -326,21 +442,19 @@ TRACEINIT("KBiffMonitor::checkImap()");
 	if (keepalive == false)
 	{
 		command = QString().setNum(seq) + " LOGOUT\r\n";
-		if (imap.command(command, seq) == false)
+		if (imap->command(command, seq) == false)
 			return;
-		imap.close();
+		imap->close();
 	}
 
 	// what state are we in?
-	if (imap.numberOfMessages() == 0)
+	if (imap->numberOfMessages() == 0)
 		determineState(NoMail);
 	else
 	{
-		if (imap.numberOfNewMessages() > 0)
-		{
-			newCount = imap.numberOfNewMessages();
+		newCount = imap->numberOfNewMessages();
+		if (newCount > 0)
 			determineState(NewMail);
-		}
 		else
 			determineState(OldMail);
 	}
@@ -387,6 +501,274 @@ TRACEINIT("KBiffMonitor::checkMaildir()");
 	}
 }
 
+void KBiffMonitor::checkNntp()
+{
+TRACEINIT("KBiffMonitor::checkNntp()");
+	QString command;
+	bool do_login = false;
+
+	// connect to the server
+	if (nntp->active() == false)
+	{
+		if (nntp->connectSocket(server, port) == false)
+		{
+			determineState(NoConn);
+			return;
+		}
+
+		do_login = true;
+	}
+	
+	// if we are preauthorized OR we want to keep the session alive, then
+	// we don't login.  Otherwise, we do.
+	if ((preauth == false) && (do_login == true))
+	{
+		if (user.isEmpty() == false)
+		{
+			command = "authinfo user " + user + "\r\n";
+			if (nntp->command(command) == false)
+				return;
+		}
+		if (password.isEmpty() == false)
+		{
+			command = "authinfo pass " + password + "\r\n";
+			if (nntp->command(command) == false)
+				return;
+		}
+	}
+
+	command = "group " + mailbox + "\r\n";
+	if (nntp->command(command) == false)
+		return;
+
+	// lets not logout if we want to keep the session alive
+	if (keepalive == false)
+	{
+		command = "QUIT\r\n";
+		nntp->command(command);
+		nntp->close();
+	}
+
+	// now, we process the .newsrc file
+	QString home(getenv("HOME"));
+	QString newsrc_path(home + "/.newsrc");
+	QFile newsrc(newsrc_path);
+	if (newsrc.open(IO_ReadOnly) == false)
+	{
+		TRACEF("Could not open %s", (const char*)newsrc_path);
+		return;
+	}
+
+TRACEF("Opened %s", (const char*)newsrc_path);
+	char c_buffer[MAXSTR];
+	while(newsrc.readLine(c_buffer, MAXSTR) > 0)
+	{
+TRACEF("Checking '%s' vs '%s'", c_buffer, (const char*)mailbox);
+		// search for our mailbox name
+		QString str_buffer(c_buffer);
+		if (str_buffer.left(mailbox.length()) != mailbox)
+			continue;
+
+		// we now have our mailbox.  this parsing routine is so
+		// ugly, however, that I could almost cry.  it assumes way
+		// too much.  the "actual" range MUST be 1-something
+		// continuously and our read sequence MUST be sequentially in
+		// order
+		bool range = false;
+		int last = 1;
+		newCount = 0;
+		char *buffer = c_buffer;
+
+		// skip over the mailbox name
+		for(; buffer && *buffer != ' '; buffer++);
+
+TRACEF("Range: %s", buffer);
+TRACEF("Nntp First: %d\n", nntp->first());
+TRACEF("Nntp Last: %d\n", nntp->last());
+		// iterate over the sequence until we hit a newline or end of string
+		while (buffer && *buffer != '\n' && *buffer != '\0')
+		{
+			// make sure that this is a digit
+			if (!isdigit(*buffer))
+			{
+				buffer++;
+				continue;
+			}
+
+			// okay, what digit are we looking at?  atoi() will convert
+			// only those digits it recognizes to an it.  this will handily
+			// skip spaces, dashes, commas, etc
+			char *digit = buffer;
+			int current = atoi(digit);
+
+			// if our current digit is greater than is possible, then we
+			// should just quit while we're (somewhat) ahead
+			if (current > nntp->last())
+				break;
+
+			// we treat our sequences different ways if we are in a range
+			// or not.  specifically, if we are in the top half of a range,
+			// we don't do anything
+			if (range == false)
+			{
+				if (current > last)
+					newCount += current - last - 1;
+			}
+			else
+				range = false;
+
+			// set our 'last' one for the next go-round
+			last = current;
+
+			// skip over all of these digits
+			for(;buffer && isdigit(*buffer); buffer++);
+
+			// is this a range?
+			if (*buffer == '-')
+				range = true;
+		}
+
+		// get the last few new ones
+		if (last < nntp->last())
+			newCount += nntp->last() - last;
+
+		break;
+	}
+TRACEF("newCount = %d", newCount);
+	// with newsgroups, it is either new or non-existant.  it
+	// doesn't make sense to count the number of read mails
+	if (newCount > 0)
+		determineState(NewMail);
+	else
+		determineState(OldMail);
+}
+
+/*
+ * MH support provided by David Woodhouse <David.Woodhouse@mvhi.com>
+ */
+void KBiffMonitor::checkMHdir()
+{
+TRACEINIT("KBiffMonitor::checkMHdir()");
+	// get the information about this local mailbox
+	QDir mbox(mailbox);
+	char the_buffer[MAXSTR];
+	char *buffer = the_buffer;
+
+	// make sure the mailbox exists
+	if (mbox.exists())
+	{
+		QFile mhseq(mailbox+"/.mh_sequences");
+		if (mhseq.open(IO_ReadOnly) == true)
+		{
+			// Check the .mh_sequences file for 'unseen:'
+			
+			buffer[MAXSTR-1]=0;
+			
+			while(mhseq.readLine(buffer, MAXSTR-2) > 0)
+			{
+				if (!strchr(buffer, '\n') && !mhseq.atEnd())
+				{
+					// read till the end of the line
+
+					int c;
+					while((c=mhseq.getch()) >=0 && c !='\n');
+				}
+				if (!strncmp(buffer, "unseen:", 7))
+				{
+					// There are unseen messages
+					// we will now attempt to count exactly how
+					// many new messages there are
+
+					// an unseen sequence looks something like so:
+					// unseen: 1, 5-9, 27, 35-41
+					bool range = false;
+					int last = 0;
+
+					// initialize the number of new messages
+					newCount = 0;
+
+					// jump to the correct position and iterate through the
+					// rest of the buffer
+					buffer+=7;
+					while(*buffer != '\n' && buffer)
+					{
+						// is this a digit?  if so, it is the first of possibly
+						// several digits
+						if (isdigit(*buffer))
+						{
+							// whether or not this is a range, we are guaranteed
+							// of at least *one* new message
+							newCount++;
+							
+							// get a handle to this digit.  atoi() will convert
+							// only those digits it recognizes to an int.  so
+							// atoi("123garbage") would become 123
+							char *digit = buffer;
+
+							// if we are in the second half of a range, we need
+							// to compute the number of new messages.
+							if (range)
+							{
+								// remember that we have already counted the
+								// two extremes.. hence we need to subtract one.
+								newCount += atoi(digit) - last - 1;
+								range = false;
+							}
+
+							// skip over all digits
+							for(;buffer && isdigit(*buffer); buffer++);
+
+							// check if we are in a range
+							if (*buffer == '-')
+							{
+								// save the current digit for later computing
+								last = atoi(digit);
+								range = true;
+							}
+						}
+						else
+							buffer++;
+					}
+					mhseq.close();
+					determineState(NewMail);
+					return;
+				}
+			}
+			mhseq.close();
+		}
+			
+		// OK. No new messages listed in .mh_sequences. Check if 
+		//  there are any old ones.
+		//mbox.setFilter(QDir::Files);
+		QStrList mails = *mbox.entryList(QDir::Files);
+
+		for (const char * str = mails.first(); str; str = mails.next())
+		{
+			// Check each file in the directory.
+			// If it's a numeric filename, then it's a mail.
+			const char * c;
+
+			for (c=str; *c; c++)
+			{
+				if (!isdigit(*c))
+					break;
+			}
+			if (!(*c))
+			{
+				// We found a filename which was entirely
+				// made up of digits - it's a real mail, so
+				// respond accordingly.
+
+			   determineState(OldMail);
+				return;
+			}	
+		}
+
+		// We haven't found any valid filenames. No Mail.
+		determineState(NoMail);
+	}      
+}
+
 void KBiffMonitor::determineState(unsigned int size)
 {
 TRACEINIT("KBiffMonitor::determineState()");
@@ -397,10 +779,12 @@ TRACEINIT("KBiffMonitor::determineState()");
 		{
 			mailState = NoMail;
 			lastSize  = 0;
+			newCount  = 0;
 			emit(signal_noMail());
-			emit(signal_noMail(mailbox));
+			emit(signal_noMail(simpleURL));
 		}
 
+		emit(signal_currentStatus(newCount, simpleURL, mailState));
 		return;
 	}
 
@@ -413,9 +797,10 @@ TRACEINIT("KBiffMonitor::determineState()");
 			newCount  = size - lastSize;
 			lastSize  = size;
 			emit(signal_newMail());
-			emit(signal_newMail(newCount, mailbox));
+			emit(signal_newMail(newCount, simpleURL));
 		}
 
+		emit(signal_currentStatus(newCount, simpleURL, mailState));
 		return;
 	}
 
@@ -426,8 +811,9 @@ TRACEINIT("KBiffMonitor::determineState()");
 		mailState = OldMail;
 		lastSize  = size;
 		emit(signal_oldMail());
-		emit(signal_oldMail(mailbox));
+		emit(signal_oldMail(simpleURL));
 
+		emit(signal_currentStatus(newCount, simpleURL, mailState));
 		return;
 	}
 
@@ -439,9 +825,10 @@ TRACEINIT("KBiffMonitor::determineState()");
 			mailState = OldMail;
 			lastSize  = size;
 			emit(signal_oldMail());
-			emit(signal_oldMail(mailbox));
+			emit(signal_oldMail(simpleURL));
 		}
 	}
+	emit(signal_currentStatus(newCount, simpleURL, mailState));
 }
 
 void KBiffMonitor::determineState(KBiffUidlList uidl_list)
@@ -456,10 +843,10 @@ TRACEF("uidl_list.count() = %d", uidl_list.count());
 	{
 		if (mailState != NoMail)
 		{
-			lastSize  = 0;
+			lastSize  = newCount = 0;
 			mailState = NoMail;
 			emit(signal_noMail());
-			emit(signal_noMail(mailbox));
+			emit(signal_noMail(simpleURL));
 		}
 	}
 	else
@@ -483,17 +870,18 @@ TRACEF("new messages = %d", messages);
 			lastSize  = newCount = messages;
 			mailState = NewMail;
 			emit(signal_newMail());
-			emit(signal_newMail(newCount, mailbox));
+			emit(signal_newMail(newCount, simpleURL));
 		}
 		/*
 		else
 		{
 			mailState = OldMail;
 			emit(signal_oldMail());
-			emit(signal_oldMail(mailbox));
+			emit(signal_oldMail(simpleURL));
 		}
 		*/
 	}
+	emit(signal_currentStatus(newCount, simpleURL, mailState));
 }
     
 void KBiffMonitor::determineState(KBiffMailState state)
@@ -503,22 +891,30 @@ TRACEINIT("KBiffMonitor::determineState()");
 	{
 		mailState = NewMail;
 		emit(signal_newMail());
-		emit(signal_newMail(newCount, mailbox));
+		emit(signal_newMail(newCount, simpleURL));
 	}
 	else
 	if ((state == NoMail) && (mailState != NoMail))
 	{
 		mailState = NoMail;
 		emit(signal_noMail());
-		emit(signal_noMail(mailbox));
+		emit(signal_noMail(simpleURL));
 	}
 	else
 	if ((state == OldMail) && (mailState != OldMail))
 	{
 		mailState = OldMail;
 		emit(signal_oldMail());
-		emit(signal_oldMail(mailbox));
+		emit(signal_oldMail(simpleURL));
 	}
+	else
+	if ((state == NoConn) && (mailState != NoConn))
+	{
+		mailState = NoConn;
+		emit(signal_noConn());
+		emit(signal_noConn(simpleURL));
+	}
+	emit(signal_currentStatus(newCount, simpleURL, mailState));
 }
 
 void KBiffMonitor::determineState(unsigned int size, const QDateTime& last_read, const QDateTime& last_modified)
@@ -541,12 +937,10 @@ TRACEF("last_modified = %s", last_modified.toString().data());
 
 			// Let the world know of the new state
 			emit(signal_noMail());
-			emit(signal_noMail(mailbox));
+			emit(signal_noMail(simpleURL));
 		}
-
-		return;
 	}
-
+	else
 	// There is some mail.  See if it is new or not.  To be new, the
 	// mailbox must have been modified after it was last read AND the
 	// current size must be greater then it was before.
@@ -560,11 +954,9 @@ TRACEF("last_modified = %s", last_modified.toString().data());
 
 		// Let the world know of the new state
 		emit(signal_newMail());
-		emit(signal_newMail(1, mailbox));
-
-		return;
+		emit(signal_newMail(1, simpleURL));
 	}
-
+	else
 	// Finally, check if the state needs to change to OldMail
 	if ((mailState != OldMail) && (last_read > lastRead))
 	{
@@ -574,14 +966,13 @@ TRACEF("last_modified = %s", last_modified.toString().data());
 
 		// Let the world know of the new state
 		emit(signal_oldMail());
-		emit(signal_oldMail(mailbox));
-
-		return;
+		emit(signal_oldMail(simpleURL));
 	}
 
 	// If we get to this point, then the state now is exactly the
 	// same as the state when last we checked.  Do nothing at this
 	// point.
+	emit(signal_currentStatus(newCount, simpleURL, mailState));
 }
 
 /**
@@ -593,7 +984,7 @@ TRACEF("last_modified = %s", last_modified.toString().data());
 int KBiffMonitor::mboxMessages()
 {
 	QFile mbox(mailbox);
-	char *buffer         = new char[MAXSTR];
+	char buffer[MAXSTR];
 	int count            = 0;
 	int msg_count        = 0;
 	bool in_header       = false;
@@ -601,11 +992,10 @@ int KBiffMonitor::mboxMessages()
 	bool msg_read        = false;
 	long content_length  = 0;
 
+	oldCount = 0;
+
 	if (mbox.open(IO_ReadOnly) == false)
-	{
-		warning("countMail: file open error");
 		return 0;
-	}
 
 	buffer[MAXSTR-1] = 0;
 
@@ -639,29 +1029,55 @@ int KBiffMonitor::mboxMessages()
 				has_content_len = true;
 				content_length  = atol(buffer + 15);
 			}
-
-			if (compare_header(buffer, "Status"))
+			// This should handle those folders that double as IMAP or POP
+			// folders.  Possibly PINE uses these always
+			if (strcmp(buffer, "Subject: DON'T DELETE THIS MESSAGE -- FOLDER INTERNAL DATA\n") == 0)
 			{
-				const char *field = buffer;
-				field += 7;
-				while (field && (*field== ' ' || *field == '\t'))
-					field++;
-
-				if (*field == 'N' || *field == 'U')
-					msg_read = false;
-				else
-					msg_read = true;
+				oldCount--;
 			}
-			else if (buffer[0] == '\n' )
+			else
 			{
-				if (has_content_len)
-					mbox.at(mbox.at() + content_length);
+				if (compare_header(buffer, "Status"))
+				{
+					const char *field = buffer;
+					field += 7;
+					while (field && (*field== ' ' || *field == '\t'))
+						field++;
 
-				in_header = false;
+					if (*field == 'N' || *field == 'U')
+						msg_read = false;
+					else
+						msg_read = true;
+				}
+				// Netscape *sometimes* uses X-Mozilla-Status to determine
+				// unread vs read mail.  The only pattern I could see for
+				// sure, though, was that Read mails started with an '8'.
+				// I make no guarantees on this...
+				else if (compare_header(buffer, "X-Mozilla-Status"))
+				{
+					const char *field = buffer;
+					field += 17;
+					while (field && (*field== ' ' || *field == '\t'))
+						field++;
 
-				if (!msg_read)
-					count++;
-			} 
+					if (*field == '8')
+						msg_read = true;
+					else
+						msg_read = false;
+				}
+				else if (buffer[0] == '\n' )
+				{
+					if (has_content_len)
+						mbox.at(mbox.at() + content_length);
+
+					in_header = false;
+
+					oldCount++;
+
+					if (!msg_read)
+						count++;
+				} 
+			}
 		}//in header
 
 		if(++msg_count >= 100 )
@@ -679,8 +1095,16 @@ int KBiffMonitor::mboxMessages()
 ///////////////////////////////////////////////////////////////////////////
 // KBiffSocket
 ///////////////////////////////////////////////////////////////////////////
-KBiffSocket::KBiffSocket() : messages(0), newMessages(-1)
+KBiffSocket::KBiffSocket() : async(false), socketFD(-1), messages(0), newMessages(-1)
 {
+	FD_ZERO(&socketFDS);
+
+	/*
+	 * Set the socketTO once and DO NOT use it in any select call as this
+	 * may alter its value!
+	 */
+	socketTO.tv_sec = SOCKET_TIMEOUT;
+	socketTO.tv_usec = 0;
 }
 
 KBiffSocket::~KBiffSocket()
@@ -702,7 +1126,12 @@ int KBiffSocket::numberOfNewMessages()
 void KBiffSocket::close()
 {
 TRACEINIT("KBiffSocket::close()");
-	::close(socketFD);
+
+	if (socketFD != -1)
+		::close(socketFD);
+
+	socketFD = -1;
+	FD_ZERO(&socketFDS);
 }
 
 bool KBiffSocket::connectSocket(const char* host, unsigned int port)
@@ -710,7 +1139,11 @@ bool KBiffSocket::connectSocket(const char* host, unsigned int port)
 TRACEINIT("KBiffSocket::connectSocket()");
 	sockaddr_in  sin;
 	hostent     *hent; 
-	int addr;
+	int addr, n;
+
+	// if we still have a socket, close it
+	if (socketFD != -1)
+		close();
 
 	// get the socket
 	socketFD = ::socket(AF_INET, SOCK_STREAM, IPPROTO_IP);
@@ -725,7 +1158,32 @@ TRACEINIT("KBiffSocket::connectSocket()");
 	{
 		// get the address by host name
 		if ((hent = gethostbyname(host)) == 0)
+		{
+			switch (h_errno)
+			{
+				case HOST_NOT_FOUND: 
+TRACE("The specified host is unknown.");
+					break;
+
+				case NO_ADDRESS:
+TRACE("The requested name is valid but does not have an IP address.");
+					break;
+
+				case NO_RECOVERY:
+TRACE("A non-recoverable name server error occurred.");
+					break;
+
+				case TRY_AGAIN:
+TRACE("A temporary error occurred on an authoritative name server.");
+					break;
+
+			        default:
+TRACE("An unknown error occured when looking up mail server host name.");
+			}
+
+			close();
 			return false;
+		}
 
 		memcpy((void *)&sin.sin_addr, *(hent->h_addr_list), hent->h_length);
 	}
@@ -733,14 +1191,60 @@ TRACEINIT("KBiffSocket::connectSocket()");
 		// get the address by IP
 		memcpy((void *)&sin.sin_addr, (void *)&addr, sizeof(addr));
 
+
+	// Set up non-blocking io if requested
+	if (async)
+	{
+		int flags = fcntl(socketFD, F_GETFL);
+		if (flags < 0 || fcntl(socketFD, F_SETFL, flags | O_NONBLOCK) < 0)
+		{
+			async = false;
+TRACE("Cannot use asynchronous mode");
+		} 
+	}
+
+TRACEF("O_NONBLOCK = %d", (fcntl(socketFD, F_GETFL) & O_NONBLOCK) > 0);
+
+
 	// the socket is correctly setup.  now connect
-	if (::connect(socketFD, (sockaddr *)&sin, sizeof(sockaddr_in)) == -1)
+	if ((n = ::connect(socketFD, (sockaddr *)&sin, sizeof(sockaddr_in))) == -1 && 
+	    errno != EINPROGRESS)
+	{
+TRACE("Could not issue a connection to host");
+		close();
 		return false;
+	}
+
+
+	// Set the socket in the file descriptor set
+	FD_ZERO(&socketFDS);
+	FD_SET(socketFD, &socketFDS);
+
+	// For non-blocking io, the connection may need time to finish (n = -1)
+	if (n == -1 && async == true)
+	{
+		struct timeval tv = socketTO;
+
+		// Wait for the connection to come up
+		if (select(socketFD+1, NULL, &socketFDS, NULL, &tv) != 1)
+		{
+TRACE("Connection timed out");
+			errno = ETIMEDOUT;
+			close();
+			return false;
+		}
+	  
+		// The connection has finished. Catch any error in a call to readLine()
+	}
+
 
 	// we're connected!  see if the connection is good
 	QString line(readLine());
-	if ((line.find("OK") == -1) && (line.find("PREAUTH") == -1))
+	if (line.isNull() || ((line.find("200") == -1) && (line.find("OK") == -1) && (line.find("PREAUTH") == -1)))
 	{
+		if (line.isNull())
+TRACE("Could not connect to host");
+
 		close();
 		return false;
 	}
@@ -749,12 +1253,63 @@ TRACEINIT("KBiffSocket::connectSocket()");
 	return true;
 }
 
+bool KBiffSocket::active()
+{
+TRACEINIT("KBiffSocket::active()");
+TRACEF("active = %d", socketFD != -1);
+	return socketFD != -1;
+}
+
+bool KBiffSocket::isAsync()
+{
+TRACEINIT("KBiffSocket::isAsync()");
+TRACEF("async = %d", async);
+	return async;
+}
+
+void KBiffSocket::setAsync(bool on)
+{
+TRACEINIT("KBiffSocket::setAsync()");
+	int flags = 0;
+
+	async = on; 
+
+	if (active())
+	{
+		flags = fcntl(socketFD, F_GETFL);
+
+		switch (async)
+		{
+			case false:
+				if (flags >= 0)
+					fcntl(socketFD, F_SETFL, flags & ~O_NONBLOCK);
+				break;
+
+			case true:
+				if (flags < 0 || fcntl(socketFD, F_SETFL, flags | O_NONBLOCK) < 0)
+					async = false;
+				break;
+		}
+	}
+
+
+	if (async != on)
+TRACE("Cannot use asynchronous mode");
+
+TRACEF("O_NONBLOCK = %d", (fcntl(socketFD, F_GETFL) & O_NONBLOCK) > 0);
+TRACEF("async = %d", async);
+}
+
 int KBiffSocket::writeLine(const QString& line)
 {
 TRACEINIT("KBiffSocket::writeLine()");
-TRACEF("CLIENT> %s", (const char*)line);
 	int bytes;
 
+	// Do not try to write to a non active socket. Return error.
+	if (!active())
+		return -1;
+
+TRACEF("CLIENT> %s", (const char*)line);
 	if ((bytes = ::write(socketFD, line, line.size()-1)) <= 0)
 		close();
 
@@ -764,10 +1319,42 @@ TRACEF("CLIENT> %s", (const char*)line);
 QString KBiffSocket::readLine()
 {
 TRACEINIT("KBiffSocket::readLine()");
-	QString response;
+	QString fault, response;
 	char buffer;
-	while ((::read(socketFD, &buffer, 1) > 0) && (buffer != '\n'))
-		response += buffer;
+	ssize_t bytes = -1;
+
+	if (!async)
+		while (((bytes = ::read(socketFD, &buffer, 1)) > 0) && (buffer != '\n'))
+			response += buffer;
+	else
+	{
+		while ( (((bytes = ::read(socketFD, &buffer, 1)) > 0) && (buffer != '\n')) || 
+			((bytes < 0) && (errno == EWOULDBLOCK)) )
+		{
+			if (bytes > 0)
+				response += buffer;
+			else
+			{
+				struct timeval tv = socketTO;
+				if (select(socketFD+1,  &socketFDS, NULL, NULL, &tv) != 1)
+				{
+TRACE("Connection timed out");
+					errno = ETIMEDOUT;
+					break;
+				}
+			}
+		}
+	}
+
+	if (bytes == -1)
+	{
+TRACEF("Errno = %d", errno);
+		// Close the socket and hope for better luck with a new one
+		close();
+
+TRACE("Error on read");
+		return fault;
+	}
 
 TRACEF("SERVER> %s\n", (const char*)response);
 	return response;
@@ -794,6 +1381,10 @@ TRACEINIT("KBiffIMap::command()");
 	ok.sprintf("%d OK", seq);
 	while (response = readLine())
 	{
+		// if an error has occurred, we get a null string in return
+		if (response.isNull())
+			return false;
+
 		// if the response is either good or bad, then return
 		if (response.find(ok) > -1)
 			return true;
@@ -852,6 +1443,13 @@ TRACEINIT("KBiffPop::~KBiffPop()");
 	close();
 }
 
+void KBiffPop::close()
+{
+TRACEINIT("KBiffPop::close()");
+	command("QUIT\r\n");
+	KBiffSocket::close();
+}
+
 bool KBiffPop::command(const QString& line)
 {
 TRACEINIT("KBiffPop::command()");
@@ -862,7 +1460,7 @@ TRACEINIT("KBiffPop::command()");
 	response = readLine();
 
 	// check if the response was bad.  if so, return now
-	if (response.left(4) == "-ERR")
+	if (response.isNull() || response.left(4) == "-ERR")
 	{
 		// we used to close the socket here.. but this MAY be
 		// because the server didn't understand UIDL.  the server
@@ -875,7 +1473,8 @@ TRACEINIT("KBiffPop::command()");
 	if (line == "UIDL\r\n")
 	{
 		uidlList.clear();
-		for (response = readLine(); response.left(1) != ".";
+		for (response = readLine();
+		     !response.isNull() && response.left(1) != ".";
 		     response = readLine())
 		{
 			uidlList.append(new QString(response.right(response.length() -
@@ -887,21 +1486,80 @@ TRACEINIT("KBiffPop::command()");
 	// LIST and UIDL are return multilines so we have to loop around
 	if (line == "LIST\r\n")
 	{
-		for (messages = 0, response = readLine(); response.left(1) != ".";
+		for (messages = 0, response = readLine(); 
+		     !response.isNull() && response.left(1) != ".";
 		     messages++, response = readLine());
 	}
 	else
 	if (line == "STAT\r\n")
 	{
-		sscanf(response.data(), "+OK %d", &messages);
+		if (!response.isNull())
+			sscanf(response.data(), "+OK %d", &messages);
 	}
 
-	return true;
+	return !response.isNull();
 }
 
 KBiffUidlList KBiffPop::getUidlList() const
 {
 	return uidlList;
+}
+
+///////////////////////////////////////////////////////////////////////////
+// KBiffNntp
+///////////////////////////////////////////////////////////////////////////
+KBiffNntp::~KBiffNntp()
+{
+TRACEINIT("KBiffNntp::~KBiffNntp()");
+	close();
+}
+
+bool KBiffNntp::command(const QString& line)
+{
+TRACEINIT("KBiffNntp::command()");
+	int bogus;
+
+	if (writeLine(line) <= 0)
+		return false;
+
+	QString response;
+	while (response = readLine())
+	{
+		// return if the response is bad
+		if (response.find("500") > -1)
+		{
+			close();
+			return false;
+		}
+
+		// find return codes for tcp, user, pass
+		QString code(response.left(3));
+		TRACEF("code = %s", (const char*)code);
+		if ((code == "200") || (code == "281") || (code == "381"))
+			return true;
+
+		// look for the response to the GROUP command
+		// 211 <num> <first> <last> <group>
+		if (code == "211")
+		{
+			sscanf((const char*)response, "%d %d %d %d",
+					&bogus, &messages, &firstMsg, &lastMsg);
+			return true;
+		}
+	}
+
+	close();
+	return false;
+}
+
+int KBiffNntp::first() const
+{
+	return firstMsg;
+}
+
+int KBiffNntp::last() const
+{
+	return lastMsg;
 }
 
 /////////////////////////////////////////////////////////////////////////

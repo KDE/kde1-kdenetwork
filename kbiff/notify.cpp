@@ -1,6 +1,6 @@
 /*
  * notify.cpp
- * Copyright (C) 1998 Kurt Granroth <granroth@kde.org>
+ * Copyright (C) 1999 Kurt Granroth <granroth@kde.org>
  *
  * This file contains the implementation of the KBiffNotify
  * widget
@@ -18,12 +18,17 @@
 
 #include <kiconloaderdialog.h>
 #include <kapp.h>
+#include <kwm.h>
+#include <kprocess.h>
 
-KBiffNotify::KBiffNotify(const int num_new, const QString& mailbox)
-	: QDialog(0, 0, true, 0)
+KBiffNotify::KBiffNotify(const int num_new, const QString& mailbx, const QString& mail_client)
+	: QDialog(0, 0, false, 0)
 {
 TRACEINIT("KBiffNotify::KBiffNotify()");
-TRACEF("%d new messages in %s", num_new, mailbox.data());
+TRACEF("%d new messages in %s", num_new, mailbx.data());
+	// we do *not* want this window to have focus when it pops up
+	KWM::setDecoration(winId(), KWM::normalDecoration | KWM::noFocus);
+
 	setIcon(ICON("kbiff.xpm"));
 	setCaption(i18n("You have new mail!"));
 
@@ -51,11 +56,11 @@ TRACEF("%d new messages in %s", num_new, mailbox.data());
 
 	QString msg;
 	msg.sprintf(i18n("New Messages: %d"), num_new);
-	QLabel *how_many = new QLabel(msg, this);
-	how_many->setMinimumSize(how_many->sizeHint());
-	mailbox_layout->addWidget(how_many);
+	msgLabel = new QLabel(msg, this);
+	msgLabel->setMinimumSize(msgLabel->sizeHint());
+	mailbox_layout->addWidget(msgLabel);
 
-	msg.sprintf(i18n("Mailbox: %s"), mailbox.data());
+	msg.sprintf(i18n("Mailbox: %s"), mailbx.data());
 	QLabel *which_one = new QLabel(msg, this);
 	which_one->setMinimumSize(which_one->sizeHint());
 	mailbox_layout->addWidget(which_one);
@@ -65,16 +70,100 @@ TRACEF("%d new messages in %s", num_new, mailbox.data());
 	ok->setFixedSize(ok->sizeHint());
 	connect(ok, SIGNAL(clicked()), SLOT(accept()));
 
+	QPushButton *launch = new QPushButton(i18n("Mailer"), this);
+	launch->setFixedSize(ok->sizeHint());
+	if (mail_client.isEmpty())
+		launch->setEnabled(false);
+
+	connect(launch, SIGNAL(clicked()), SLOT(launchMailClient()));
+	connect(launch, SIGNAL(clicked()), SLOT(accept()));
+
 	QHBoxLayout *button_layout = new QHBoxLayout();
 	layout->addLayout(button_layout);
 
 	button_layout->addStretch(1);
+	button_layout->addWidget(launch);
 	button_layout->addWidget(ok);
 	button_layout->addStretch(1);
 
 	layout->activate();
+
+	mailbox = mailbx;
+	messages = num_new;
+	mailClient = mail_client;
 }
 
 KBiffNotify::~KBiffNotify()
 {
+}
+
+void KBiffNotify::setNew(const int num_new)
+{
+	QString msg;
+	msg.sprintf(i18n("New Messages: %d"), num_new);
+	msgLabel->setText(msg);
+	messages = num_new;
+}
+
+// THIS SHOULD BE A CORBA METHOD!
+void KBiffNotify::launchMailClient()
+{
+TRACEINIT("KBiffNotify::launchMailClient()");
+	/**
+	 * The KProcess object expects the first param to be the
+	 * command and every param after that to be the command's params.
+	 * As a result, though, if you pass it a string with spaces in it,
+	 * then it takes the first token of the string as the command
+	 * and ignores the rest of it!  We need to pass all tokens from
+	 * the command string on as individual parameters to get around
+	 * this.
+	 */
+	KProcess process;
+	int index, beg;
+	char param[60];
+	const char *pom=(const char *)mailClient;
+	index=0;
+	while(pom[index])
+	{
+		// simplyfies whitespaces
+		while(pom[index] && (pom[index]==' ' || (pom[index]>=9 && pom[index]<=13)))
+			index++;
+
+		beg=0;
+		if(pom[index]=='"')
+		{
+			index++;
+			while(pom[index] && pom[index]!='"')
+			{
+				if(pom[index]==92 && pom[index+1])   // '\'
+					index++;
+				if(beg<59)
+				{
+					param[beg]=pom[index];
+					beg++;
+				}
+				index++;
+			}  
+			index++;
+		}	
+		else
+		{
+			while(pom[index] && pom[index]>' ')
+			{
+				if(pom[index]==92 && pom[index+1])   // '\'
+					index++;
+				if(beg<59)
+				{
+					param[beg]=pom[index];
+					beg++;
+				}
+				index++;
+			}  
+		}	
+		param[beg]=0;  
+		if(beg)
+			process << param;  
+	}
+
+	process.start(KProcess::DontCare);
 }
