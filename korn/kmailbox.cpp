@@ -155,7 +155,7 @@ int KMailBox::countMail()
 
 	buffer[MAXSTR-1] = 0;
 
-	while(mbox.readLine(buffer, MAXSTR-2) != 0) {
+	while(mbox.readLine(buffer, MAXSTR-2) > 0) {
 
 		if( !strchr(buffer, '\n') && !mbox.atEnd() ){
 			int c;
