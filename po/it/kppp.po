@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1999-01-05 02:12+0100\n"
+"POT-Creation-Date: 1999-01-08 02:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -161,7 +161,7 @@ msgstr ""
 msgid "Login script has unbalanced loop Start/End"
 msgstr "Lo script di accesso contiene un Loop errato Inizio/Fine"
 
-#: connect.cpp:97 connect.cpp:195 main.cpp:978
+#: connect.cpp:97 connect.cpp:195 main.cpp:979
 msgid "Connecting to: "
 msgstr "Connessione a: "
 
@@ -174,7 +174,7 @@ msgstr "Spiacente, non posso creare il file di lock per il modem."
 msgid "Looking for Modem ..."
 msgstr "Cerco il modem....."
 
-#: connect.cpp:120 debug.cpp:80 main.cpp:991
+#: connect.cpp:120 debug.cpp:80 main.cpp:992
 msgid "Log"
 msgstr "Log"
 
@@ -851,7 +851,7 @@ msgstr "Fine linea:"
 msgid ""
 "Specifies how AT commands are send to your\n"
 "modem. Most modems will work fine with the\n"
-"default <i>CR</i>. If your modem does not react\n"
+"default <i>CR/LF</i>. If your modem does not react\n"
 "to the init string, you should try different\n"
 "settings here\n"
 "\n"
@@ -900,7 +900,7 @@ msgid ""
 "recommended value is 30 seconds."
 msgstr ""
 
-#: general.cpp:465 main.cpp:636
+#: general.cpp:465 main.cpp:637
 msgid "Modem"
 msgstr "Modem"
 
@@ -1032,14 +1032,14 @@ msgid ""
 "click a mouse button or a hit a key.\n"
 msgstr ""
 
-#: main.cpp:322
+#: main.cpp:323
 #, c-format
 msgid ""
 "kppp can't create or read from\n"
 "%s."
 msgstr ""
 
-#: main.cpp:346
+#: main.cpp:347
 #, c-format
 msgid ""
 "kppp has detected a %s file.\n"
@@ -1051,19 +1051,19 @@ msgid ""
 "delete the pid file, and restart kppp."
 msgstr ""
 
-#: main.cpp:352
+#: main.cpp:353
 msgid "Exit"
 msgstr ""
 
-#: main.cpp:413
+#: main.cpp:414
 msgid "Connect to: "
 msgstr "Connetti a:"
 
-#: main.cpp:424
+#: main.cpp:425
 msgid "Login ID:"
 msgstr "Nome utente per l' accesso:"
 
-#: main.cpp:437
+#: main.cpp:438
 msgid ""
 "Type in the username that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1074,11 +1074,11 @@ msgid ""
 "<i>myusername</i> is not the same as <i>MyUserName</i>!"
 msgstr ""
 
-#: main.cpp:446
+#: main.cpp:447
 msgid "Password:"
 msgstr "Password:"
 
-#: main.cpp:460
+#: main.cpp:461
 msgid ""
 "Type in the password that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1089,11 +1089,11 @@ msgid ""
 "<i>mypassword</i> is not the same as <i>MyPassword</i>!"
 msgstr ""
 
-#: main.cpp:474
+#: main.cpp:475
 msgid "Show Log Window"
 msgstr "Mostra finestra log"
 
-#: main.cpp:481
+#: main.cpp:482
 msgid ""
 "This controls whether a log window is shown.\n"
 "A log window shows the communication between\n"
@@ -1104,15 +1104,15 @@ msgid ""
 "problems"
 msgstr ""
 
-#: main.cpp:504
+#: main.cpp:505
 msgid "Setup"
 msgstr "Configurazione"
 
-#: main.cpp:520
+#: main.cpp:521
 msgid "Connect"
 msgstr "Connetti"
 
-#: main.cpp:604
+#: main.cpp:605
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -1121,47 +1121,47 @@ msgstr ""
 "Account inesistente:\n"
 "%s"
 
-#: main.cpp:618
+#: main.cpp:619
 msgid "kppp Configuration"
 msgstr "Configurazione Kppp"
 
-#: main.cpp:634
+#: main.cpp:635
 msgid "Accounts"
 msgstr "Accounts"
 
-#: main.cpp:635
+#: main.cpp:636
 msgid "Device"
 msgstr "Dispositivo"
 
-#: main.cpp:637
+#: main.cpp:638
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:638
+#: main.cpp:639
 msgid "Graph"
 msgstr ""
 
-#: main.cpp:799
+#: main.cpp:800
 msgid "Timeout expired while waiting for the PPP interface to come up!"
 msgstr ""
 
-#: main.cpp:804
+#: main.cpp:805
 msgid "The pppd daemon died unexpectedly!"
 msgstr ""
 
-#: main.cpp:812
+#: main.cpp:813
 #, fuzzy
 msgid "Details..."
 msgstr "Dettagli"
 
-#: main.cpp:837
+#: main.cpp:838
 msgid ""
 "Sorry. kppp's helper process just died.\n"
 "\n"
 "Since a further execution would be pointless, kppp will shut down right now."
 msgstr ""
 
-#: main.cpp:874
+#: main.cpp:875
 #, fuzzy, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1180,7 +1180,7 @@ msgstr ""
 " della finestra di setup.\n"
 " Grazie :-)"
 
-#: main.cpp:889
+#: main.cpp:890
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1193,7 +1193,7 @@ msgstr ""
 "Assicurarsi di avere dato i permessi (setuid) a kppp e che il programma\n"
 "pppd sia eseguibile."
 
-#: main.cpp:903
+#: main.cpp:904
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1214,7 +1214,7 @@ msgstr ""
 "finestra di setup.\n"
 "Grazie!"
 
-#: main.cpp:923
+#: main.cpp:924
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1224,7 +1224,7 @@ msgstr ""
 "autenticazione PAP. Dovete quindi\n"
 "inserire un utente ed una password!"
 
-#: main.cpp:932
+#: main.cpp:933
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1233,7 +1233,7 @@ msgstr ""
 "Impossibile creare il file di autenticazione\n"
 "PAP \"%s\""
 
-#: main.cpp:949
+#: main.cpp:950
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -1244,7 +1244,7 @@ msgstr ""
 "inserire un utente ed una password!"
 
 # ,c-format
-#: main.cpp:958
+#: main.cpp:959
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1253,20 +1253,20 @@ msgstr ""
 "Impossibile creare il file di autenticazione\n"
 "CHAP \"%s\""
 
-#: main.cpp:970
+#: main.cpp:971
 #, fuzzy
 msgid "You must specify a telephone number!"
 msgstr "Devi specificare un numero di telefono!\n"
 
-#: main.cpp:1057
+#: main.cpp:1058
 msgid "Quit kPPP?"
 msgstr "Esco da kPPP?"
 
-#: main.cpp:1058
+#: main.cpp:1059
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Uscendo da kPPP si chiudera` la sessione PPP."
 
-#: main.cpp:1093
+#: main.cpp:1094
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
