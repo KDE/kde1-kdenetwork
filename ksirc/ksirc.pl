@@ -344,7 +344,7 @@ sub hook_ksirc_who_end { #FOLD00
   chop($WHO_INFO{$info[1]}); # Remove trailing space
   my $c = ($WHO_TIME{$info[1]} == 0) ? "C" : "!";
   if(length($WHO_INFO{$info[1]}) > 0){
-    &print("~$info[1]~*$c* ExtUsers on $info[1]: $WHO_INFO{$info[1]}");
+    &print("~$info[1]~*$c* Users on $info[1]: $WHO_INFO{$info[1]}");
   }
   &print("~$info[1]~*c* Done Parsing Who");
 
@@ -383,7 +383,7 @@ sub hook_ksirc_who_list { #FOLD00
   $WHO_INFO{$info[1]} .= $who_nick . " ";
   if(length($WHO_INFO{$info[1]}) > 512){
     my $c = ($WHO_TIME{$info[1]} == 0) ? "C" : "!";
-    &print("~$info[1]~*$c* ExtUsers on $info[1]: $WHO_INFO{$info[1]}");
+    &print("~$info[1]~*$c* Users on $info[1]: $WHO_INFO{$info[1]}");
     $WHO_INFO{$info[1]} = "";
     $WHO_TIME{$info[1]}++;
   }

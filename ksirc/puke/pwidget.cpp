@@ -256,10 +256,13 @@ void PWidget::messageHandler(int fd, PukeMessage *pm)
   }
 }
 
-void PWidget::setWidget(QWidget *_w)
+void PWidget::setWidget(QObject *_w)
 {
-  //  debug("PWidget setwidget called");
-  w = _w;
+  debug("PWidget setWidget(QObject *) called");
+  if(_w != 0 && _w->inherits("QWidget") == FALSE)
+    throw(errorInvalidSet(_w, className()));
+
+  w = (QWidget *) _w;
   if(w != 0){
     widget()->installEventFilter(this);
   }

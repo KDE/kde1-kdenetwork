@@ -22,7 +22,7 @@ class PLabel : public PFrame
   
   virtual void messageHandler(int fd, PukeMessage *pm);
   
-  virtual void setWidget(QLabel *_l);
+  virtual void setWidget(QObject *_obj = 0);
   virtual QLabel *widget();
 
  public slots:

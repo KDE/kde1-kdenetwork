@@ -22,7 +22,7 @@ class PListBox : public PTableView
   
   virtual void messageHandler(int fd, PukeMessage *pm);
   
-  virtual void setWidget(QListBox *_lb);
+  virtual void setWidget(QObject *_lb);
   virtual QListBox *widget();
 
   public slots:

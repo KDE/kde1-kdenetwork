@@ -22,7 +22,7 @@ class PKSircListBox : public PListBox
   
   virtual void messageHandler(int fd, PukeMessage *pm);
   
-  virtual void setWidget(KSircListBox *_lb);
+  virtual void setWidget(QObject *_lb);
   virtual KSircListBox *widget();
 
   public slots:

@@ -258,6 +258,53 @@ sub close {
   #elete $self->{'gm_main'};
 }
 
+package DCCPopupMenu;
+use vars qw(@ISA);
+@ISA = qw(PPopupMenu);
+
+sub new {
+    my $class = shift;
+    my $self = $class->SUPER::new($class, @_);
+    $self->create();
+    return $self;
+}
+
+sub insertText {
+  my $self = shift;
+
+  my $id = $self->SUPER::insertText(@_);
+
+  my @arr;
+  
+  if(ref($self->{'Ids'}) ne 'ARRAY'){
+      $self->{'Ids'} = \@arr;
+  }
+  
+  @arr = @{$self->{'Ids'}};
+  
+  $arr[$#arr+1] = $id;
+
+  $self->{'Ids'} = \@arr;
+
+  return $id;
+}
+
+sub DESTROY {
+  my $self = shift;
+
+  my @arr = @{$self->{'Ids'}};
+  my $id;
+
+  foreach $id (@arr) {
+    $self->removeItem($id);
+  }
+
+  $self->sendMessage('iCommand' => $::PUKE_RELEASEWIDGET,
+                     'CallBack' => sub {});
+
+  
+}
+
 
 package main;
 use vars qw($KSIRC_DCC %KSIRC_DCC $who $KSIRC_DCCSTATUS $silent $nick $KSIRC_POPSC $KSIRC_POPDOCK);
@@ -428,22 +475,31 @@ sub popup_dccsend{
   $KSIRC_DCCSTATUS->sendClicked();
 }
 
-
-$KSIRC_POPSC = new PPopupMenu();
-if($KSIRC_POPSC->fetchWidget("servercontroller_menu_file") >= 0){
-  my $id_control = $KSIRC_POPSC->insertText("Show DCC Control");
-  my $id_send =    $KSIRC_POPSC->insertText("Show DCC Send");
-  $KSIRC_POPSC->installMenu($id_control, \&popup_dccstatus);
-  $KSIRC_POPSC->installMenu($id_send, \&popup_dccsend);
+if(!$KSIRC_POPSC){
+  $KSIRC_POPSC = new DCCPopupMenu();
+  if($KSIRC_POPSC->fetchWidget("servercontroller_menu_file") >= 0){
+    my $id_control = $KSIRC_POPSC->insertText("Show DCC Control ($::server)");
+    my $id_send =    $KSIRC_POPSC->insertText("Show DCC Send ($::server)");
+    $KSIRC_POPSC->installMenu($id_control, sub{&popup_dccstatus();});
+    $KSIRC_POPSC->installMenu($id_send, sub{&popup_dccsend();});
+  }
 }
 
-$KSIRC_POPDOCK = new PPopupMenu();
-if($KSIRC_POPDOCK->fetchWidget("dockServerController_menu_pop") >= 0){
-  my $id_control = $KSIRC_POPDOCK->insertText("Show DCC Control");
-  my $id_send =    $KSIRC_POPDOCK->insertText("Show DCC Send");
-  $KSIRC_POPDOCK->installMenu($id_control, \&popup_dccstatus);
-  $KSIRC_POPDOCK->installMenu($id_send, \&popup_dccsend);
+if(!$KSIRC_POPDOCK){
+  $KSIRC_POPDOCK = new DCCPopupMenu();
+  if($KSIRC_POPDOCK->fetchWidget("dockServerController_menu_pop") >= 0){
+    my $id_control = $KSIRC_POPDOCK->insertText("Show DCC Control ($::server)");
+    my $id_send =    $KSIRC_POPDOCK->insertText("Show DCC Send ($::server)");
+    $KSIRC_POPDOCK->installMenu($id_control, sub { &popup_dccstatus(); } );
+    $KSIRC_POPDOCK->installMenu($id_send, sub { &popup_dccsend(); } );
+  }
 }
 
+sub hook_quit_release {
+  $KSIRC_POPDOCK->DESTROY();
+  $KSIRC_POPSC->DESTROY();
+}
+
+&addhook("quit", "quit_release");
 
 1;

@@ -206,6 +206,9 @@ KSircProcess::KSircProcess( char *_server, QObject * parent, const char * name )
   iocontrol->stdin_write(command);
   command = "/load " + kSircConfig->kdedir + "/share/apps/ksirc/puke.pl\n";
   iocontrol->stdin_write(command);
+  command = "/load " + kSircConfig->kdedir + "/share/apps/ksirc/dcc_status.pm\n";
+  iocontrol->stdin_write(command);
+
 
 
   // Load all the filter rules.  Must be after /load filtes.pl so all
@@ -247,6 +250,11 @@ KSircProcess::~KSircProcess() /*FOLD00*/
 
   emit ProcMessage(QString(server), ProcCommand::procClose, QString());
 
+  // Do closing down commands, this should release all puke widgets
+  QString quit_cmd = "/eval &dohooks(\"quit\");\n";
+  proc->writeStdin(quit_cmd.data(), quit_cmd.length());
+  sleep(1);
+  
   delete proc;               // Delete process, seems to kill sirc, good.
   delete iocontrol;          // Take out io controller
   delete server;
@@ -383,7 +391,7 @@ void KSircProcess::close_toplevel(KSircTopLevel *wm, char *name) /*FOLD00*/
       cerr << "NO MORE WINDOWS?\n"; // We're out of windows with > 3
 				    // huh open, huh?
       TopList.remove("!default");   // let's not blow up to badly
-      QString command = "/quit\n";  // close this server connetion then
+      QString command = "/signoff\n";  // close this server connetion then
       iocontrol->stdin_write(command); // kill sirc
       delete this; // Delete ourself, WARNING MUST RETURN SINCE WE NO
                    // LONGER EXIST!!!!

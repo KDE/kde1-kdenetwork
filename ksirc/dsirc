@@ -116,6 +116,7 @@ if (open(H, "$libdir/sirc.help") || ((-f "$libdir/sirc.help.gz") &&
 }
 
 sub exit {
+  &dohooks("quit");
   close LOG if $logging;
   exit 0;
 }
@@ -139,6 +140,7 @@ sub tilde {
 
 sub sigquit {
   # really ugly hack, but it works...
+  &dohooks("quit");
   close($trysock);
 }
 
@@ -383,7 +385,7 @@ sub msg {
     } elsif ($towho =~ /^[\&\#\+]/) {
       &tell("~${towho}~<\c_$nick\c_> $what"); #KSIRC MOD
     } else {
-      &tell("~${towho}~>\cb${towho}\cb< $what"); #KSIRC MOD
+      &tell("~${towho}~>\cb${nick}\cb< $what"); #KSIRC MOD
     }
     &sl("PRIVMSG $towho :$what");
   } else {
@@ -871,6 +873,7 @@ sub docommand {
   } elsif ($cmd eq 'BYE' || $cmd eq 'QUIT' || $cmd eq 'EXIT' ||
 		$cmd eq 'SIGNOFF') {
     $args || ($args="using \cbsirc\cb version $version$add_ons");
+    &dohooks("quit");
     &sl("QUIT :$args") if $connected;
     &exit;
   } elsif ($cmd eq 'SERVER') {
@@ -1472,7 +1475,7 @@ sub remsel {
 	"raw_irc", "send_action", "send_dcc_chat", "send_text", "send_notice",
 	"signoff", "topic", "disconnect", "status", "print", "command",
         "chat_disconnect", "dcc_disconnect", "send_ctcp",
-        "dcc_send", "dcc_send_status", "dcc_get", "dcc_get_status");
+        "dcc_send", "dcc_send_status", "dcc_get", "dcc_get_status", "quit");
 
 sub addhook {
   local($type, $name)=@_;
@@ -1876,7 +1879,7 @@ sub donumeric {
     local($d)=&date($t);
     &tell("*\cbT\cb* Topic for $c set by $n on $d");
   } elsif ($cmd eq '318' || $cmd eq '315' || $cmd eq '369' ||
-	   $cmd eq '321' || $cmd eq '366' || $cmd eq '376' ||
+                $cmd eq '321' || $cmd eq '376' || # KSIRC MOD
 	   $cmd eq '365' || $cmd eq '368' || $cmd eq '374' ||
 	   $cmd eq '219' || $cmd eq '007') {
     #nothing!
@@ -1891,10 +1894,19 @@ sub donumeric {
     local($n)=$nick;
     $n =~ s/(\W)/\\$1/g;
     $r =~ s/^://;
-    &tell("~${c}~*\cb#\cb* Users on $c: $r");
+    if($DSIRC_NAMES == undef){ #KSIRC MOD
+      &tell("~${c}~*C* Users on $c: $r"); # KSIRC MOD
+      $DSIRC_NAMES = $c; # KSIRC MOD
+    }                    # KSIRC MOD
+    else {               # KSIRC MOD
+      &tell("~${c}~*\cb#\cb* Users on $c: $r"); # KSIRC MOD
+    }                                           # KSIRC MOD
     $c =~ tr/A-Z/a-z/;
     $haveops{$c}=1 if ($r =~ /\@${n}( |$)/i);
     &dostatus if &eq($c, $talkchannel);
+  } elsif ($cmd eq '366'){                      # KSIRC MOD
+    &tell("~${DSIRC_NAMES}~*c* Users on $DSIRC_NAMES:"); # KSIRC MOD
+    $DSIRC_NAMES = undef;                                # KSIRC MOD
   } elsif ($cmd eq '221') {
     &yetonearg;
     &tell("*\cb+\cb* Your user mode is \"$args\"");

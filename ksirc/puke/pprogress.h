@@ -22,7 +22,7 @@ public:
 
   virtual void messageHandler(int fd, PukeMessage *pm);
 
-  virtual void setWidget(KSProgress *_f);
+  virtual void setWidget(QObject *_f);
   virtual KSProgress *widget();
 
 signals:

@@ -28,7 +28,7 @@ class PTabDialog : public PWidget
   /**
    * Sets the current opbect
    */
-  virtual void setWidget(QTabDialog *tb);
+  virtual void setWidget(QObject *tb);
   
   /**
    * Returns the current object

@@ -22,7 +22,7 @@ class PAListBox : public PListBox
   
   virtual void messageHandler(int fd, PukeMessage *pm);
   
-  virtual void setWidget(aListBox *_lb);
+  virtual void setWidget(QObject *_lb = 0x0);
   virtual aListBox *widget();
 
   public slots:

@@ -92,10 +92,14 @@ void PProgress::cancelPressed(){ /*FOLD00*/
   emit outputMessage(widgetIden().fd, &pmRet);
 }
 
-void PProgress::setWidget(KSProgress *_f) /*FOLD00*/
+void PProgress::setWidget(QObject *_f) /*FOLD00*/
 {
   //  debug("PProgress setWidget called");
-  ksp = _f;
+  debug("PProgress setWidget(QObject *) called");
+  if(_f != 0 && _f->inherits("KSProgress") == FALSE)
+    throw(errorInvalidSet(_f, className()));
+
+  ksp = (KSProgress *) _f;
   if(widget() != 0){
     connect(widget(), SIGNAL(cancel()),
             this, SLOT(cancelPressed()));

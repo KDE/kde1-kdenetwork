@@ -22,7 +22,7 @@ class PKFileDialog : public PWidget
   
   virtual void messageHandler(int fd, PukeMessage *pm);
   
-  virtual void setWidget(KFileDialog *_f);
+  virtual void setWidget(QObject *_f = 0x0);
   virtual KFileDialog *widget();
 
  public slots:

@@ -22,7 +22,7 @@ class PTableView : public PFrame
   
   virtual void messageHandler(int fd, PukeMessage *pm);
   
-  virtual void setWidget(QTableView *_tbl);
+  virtual void setWidget(QObject *_tbl);
   virtual QTableView *widget();
 
   public slots:

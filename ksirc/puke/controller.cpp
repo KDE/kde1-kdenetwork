@@ -10,6 +10,7 @@
 #include <fcntl.h>
 #include <errno.h>
 #include <sys/stat.h>
+#include <string.h>
 
 //#include <dlfcn.h>
 
@@ -25,7 +26,7 @@
 
 uint PukeController::uiBaseWinId = 10; // Gives a little seperation from the controller id
 
-PukeController::PukeController(QString sock, QObject *parent, const char *name) /*fold00*/
+PukeController::PukeController(QString sock, QObject *parent, const char *name) /*FOLD00*/
   : PObject(parent, name)
 {
   int len, prev_umask;
@@ -85,6 +86,7 @@ PukeController::PukeController(QString sock, QObject *parent, const char *name) 
    * Setup widget data trees
    */
   WidgetList.setAutoDelete(TRUE);
+  revWidgetList.setAutoDelete(TRUE);
   widgetCF.setAutoDelete(TRUE);
 
   /*
@@ -96,23 +98,22 @@ PukeController::PukeController(QString sock, QObject *parent, const char *name) 
 
   initHdlr(); // Setup message command handlers.
 
-  /*
-  wrControl = new WidgetRunner(this, "widgetrunner");
-  connect(wrControl, SIGNAL(outputMessage(int, PukeMessage *)),
-	  this,  SLOT(writeBuffer(int, PukeMessage *)));
-  
-  lrControl = new LayoutRunner(wrControl, this, "layoutrunner");
-  connect(lrControl, SIGNAL(outputMessage(int, PukeMessage *)),
-          this,  SLOT(writeBuffer(int, PukeMessage *)));
-
-  */
   // Set umask back so it doesn't affect dcc's and so forth.
   umask(prev_umask);
+
+  /*
+   * We are a PObject so do some init code
+   */
+  // We're always terminate by someone else so set manTerm() right now
+  manTerm();
+  setWidget(0x0);
 
 }
 
 PukeController::~PukeController() /*fold00*/
 {
+  close(iListenFd);
+  disconnect(this); // We call disconnect this so don't listen to our own destroy() signal go out
   unlink(qsPukeSocket);
 }
 
@@ -165,7 +166,7 @@ void PukeController::Writeable(int fd) /*fold00*/
   }
 }
 
-void PukeController::writeBuffer(int fd, PukeMessage *message) /*fold00*/
+void PukeController::writeBuffer(int fd, PukeMessage *message) /*FOLD00*/
 {
   if(qidConnectFd[fd]){
     //    if(qidConnectFd[fd]->writeable == FALSE){
@@ -218,9 +219,9 @@ void PukeController::writeBuffer(int fd, PukeMessage *message) /*fold00*/
 #endif /* DEBUG */
 
         struct iovec iov[2];
-        iov[0].iov_base = (char *)message;
+        iov[0].iov_base = (void *) message;
         iov[0].iov_len = 5*sizeof(int);
-        iov[1].iov_base = message->cArg;
+        iov[1].iov_base = (void *) message->cArg;
         iov[1].iov_len = message->iTextSize;
         bytes = writev(fd, iov, 2);
       }
@@ -262,6 +263,9 @@ void PukeController::Traffic(int fd) /*fold00*/
 	   pm.iWinId,
 	   pm.iArg,
            pm.iTextSize);
+    if(pm.iCommand == 0x0){
+      abort();
+    }
 #endif /* DEBUG */
     if(pm.iHeader != iPukeHeader){
       warning("Invalid packet received, discarding!");
@@ -312,7 +316,7 @@ void PukeController::ServMessage(QString, int, QString) /*fold00*/
 // Message Dispatcher is in messagedispatcher.cpp
 
 
-void PukeController::MessageDispatch(int fd, PukeMessage *pm) /*fold00*/
+void PukeController::MessageDispatch(int fd, PukeMessage *pm) /*FOLD00*/
 {
     try {
 
@@ -327,22 +331,36 @@ void PukeController::MessageDispatch(int fd, PukeMessage *pm) /*fold00*/
         obj->messageHandler(fd, pm);
     }
     catch(errorNoSuchWidget &err){
-        PukeMessage pmRet;
-        pmRet.iCommand = PUKE_INVALID;
-        pmRet.iWinId = pm->iWinId;
-        pmRet.iArg = 0;
-        pmRet.iTextSize = 0;
-        emit outputMessage(fd, &pmRet);
-        return;
+      PukeMessage pmRet;
+      pmRet.iCommand = PUKE_INVALID;
+      pmRet.iWinId = pm->iWinId;
+      pmRet.iArg = 0;
+      pmRet.iTextSize = 0;
+      emit outputMessage(fd, &pmRet);
+      return;
     }
     catch(errorCommandFailed &err){
-        PukeMessage pmRet;
-        pmRet.iCommand = err.command();
-        pmRet.iWinId = pm->iWinId;
-	pmRet.iArg = err.iarg();
-	pmRet.iTextSize = 0;
-        emit outputMessage(fd, &pmRet);
-        return;
+      PukeMessage pmRet;
+      pmRet.iCommand = err.command();
+      pmRet.iWinId = pm->iWinId;
+      pmRet.iArg = err.iarg();
+      pmRet.iTextSize = 0;
+      emit outputMessage(fd, &pmRet);
+      return;
+    }
+    catch(errorInvalidSet &err){
+      if(err.from() != 0)
+        warning("Controller-ERROR: Tried setting a %s to a %s", err.from()->className(), err.to());
+      else
+        warning("Controller-ERROR: Tried setting a UNKOWN-0 to a %s", err.to());
+      
+      PukeMessage pmRet;
+      pmRet.iCommand = pm->iCommand;
+      pmRet.iWinId = pm->iWinId;
+      pmRet.iArg = 0;
+      pmRet.iTextSize = 0;
+      emit outputMessage(fd, &pmRet);
+      return;
     }
 }
 
@@ -421,7 +439,7 @@ void PukeController::hdlrPukeInvalid(int fd, PukeMessage *) /*fold00*/
 }
 
 
-void PukeController::hdlrPukeSetup(int fd, PukeMessage *pm) /*fold00*/
+void PukeController::hdlrPukeSetup(int fd, PukeMessage *pm) /*FOLD00*/
 {
   PukeMessage pmOut;
   memset(&pmOut, 0, sizeof(pmOut));
@@ -460,7 +478,7 @@ void PukeController::hdlrPukeDumpTree(int fd, PukeMessage *pm) /*fold00*/
 }
 
 
-void PukeController::hdlrPukeFetchWidget(int fd, PukeMessage *pm) /*fold00*/
+void PukeController::hdlrPukeFetchWidget(int fd, PukeMessage *pm) /*FOLD00*/
 {
   widgetId wIret;
   
@@ -523,15 +541,14 @@ void PukeController::hdlrPukeFetchWidget(int fd, PukeMessage *pm) /*fold00*/
   WidgetS *ws = new WidgetS;
   ws->pwidget = (widgetCF[iType]->wc)(arg);
   ws->type = iType;
-  connect(ws->pwidget, SIGNAL(widgetDestroyed(widgetId)),
-	  this, SLOT(closeWidget(widgetId)));
 
   connect(ws->pwidget, SIGNAL(outputMessage(int, PukeMessage*)),
 	  this, SIGNAL(outputMessage(int, PukeMessage*)));
 
   // insertPBoject(fd, uiBaseWinId, ws);
   // The widget list has to exist since we have ourselves in the list
-  WidgetList[wIret.fd]->insert(wIret.iWinId, ws);
+  //  WidgetList[wIret.fd]->insert(wIret.iWinId, ws);
+  insertPObject(wIret.fd, wIret.iWinId, ws);
 
   debug("Fetched widget setup");
 
@@ -554,7 +571,7 @@ void PukeController::hdlrPukeDeleteWidget(int fd, PukeMessage *pm) /*fold00*/
   if(pm->iWinId == ControllerWinId) // Don't try and delete ourselves
     throw(errorCommandFailed(PUKE_INVALID, INVALID_DEL_NO_CONTROL));
 
-  PukeMessage pmRet = *pm;
+  /*
   QIntDict<WidgetS> *qidWS = WidgetList[fd];
   if(qidWS == 0){
     debug("WidgetRunner:: no such set of widget descriptors?");
@@ -572,12 +589,25 @@ void PukeController::hdlrPukeDeleteWidget(int fd, PukeMessage *pm) /*fold00*/
   else {
     warning("WidgetRunner: no such widget: %d", wI.iWinId);
     throw(errorCommandFailed(PUKE_INVALID, INVALID_DEL_NO_SUCH_WIDGET));
+    }
+  */
+
+  if(checkWidgetId(&wI) == FALSE){
+    warning("WidgetRunner: no such widget: %d", wI.iWinId);
+    throw(errorCommandFailed(PUKE_INVALID, INVALID_DEL_NO_SUCH_WIDGET));
   }
+
+  debug("Delete widget %d", wI.iWinId);
+  WidgetList[fd]->find(wI.iWinId)->pwidget->manTerm();
+  delete WidgetList[fd]->find(wI.iWinId)->pwidget;
+  
+  PukeMessage pmRet = *pm;
+  pmRet.iCommand = PUKE_WIDGET_DELETE_ACK;
   
   emit outputMessage(fd, &pmRet);
 }
 
-void PukeController::closefd(int fd) /*fold00*/
+void PukeController::closefd(int fd) /*FOLD00*/
 {
   if(bClosing == TRUE)
     return;
@@ -605,53 +635,50 @@ void PukeController::closefd(int fd) /*fold00*/
   }
 
   qidWS->remove(PUKE_CONTROLLER);
-  QIntDictIterator<WidgetS> it(*qidWS);
-  if(it.count() == 0){
+
+  do {
+    
+    QIntDictIterator<WidgetS> it(*qidWS);
+    if(it.count() == 0){
       debug("WidgetRunner: nothing left to delete\n");
-  }
-  else{
+      return;
+    }
+
+    PObject *po = 0x0;
     while(it.current()){
       /*
        * Delete all the layouts first
        *
        */
-      long key = it.currentKey();
-      if(WidgetList[fd]->find(key) == 0x0 ||
-         WidgetList[fd]->find(key)->pwidget->widget()->inherits("QLayout") == FALSE){
-        ++it;
-        continue;
-      }
-      debug("Closing Layout: %ld", key);
-      if(WidgetList[fd]->find(key) != 0x0)
-        delete WidgetList[fd]->find(key)->pwidget;
-      else
-        debug("PUKE: Could no longer find request widget: %ld", it.currentKey());
-      if(WidgetList[fd]->find(key) != 0x0){
-        WidgetList[fd]->remove(key); // In case delete didn't get it
-      }
-      ++it;
-    }
-    /*
-     * reset
-     */
-    QIntDictIterator<WidgetS> it(*qidWS);
-    while(it.current()){
-      /*
-       * Now that the layouts are gone, remove the widgets
-       */
-      long key = it.currentKey();
-      debug("Closing: %ld", key);
-      if(WidgetList[fd]->find(key) != 0x0)
-        delete WidgetList[fd]->find(key)->pwidget;
-      else
-        debug("PUKE: Could no longer find request widget: %ld", it.currentKey());
-      if(WidgetList[fd]->find(key) != 0x0){
-        WidgetList[fd]->remove(key); // In case delete didn't get it
+      if(it.current()->type == POBJECT_LAYOUT){
+        po = it.current()->pwidget;
+        debug("Found Layout: %ld type %d id %d:", po, it.current()->type, it.currentKey());
+        break;
       }
       ++it;
     }
 
-  }
+    if(po != 0x0){
+      debug("Deleting Layout: %ld", po);
+      po->manTerm();
+      delete po;
+      continue;
+    }
+    
+    /*
+     * reset
+     */
+    debug("Deleting Widget");
+    it.toFirst();
+    debug("Found Widget: %ld type %d id %d:", po, it.current()->type, it.currentKey());
+    po = it.current()->pwidget;
+    debug("Deleting Widget: %ld", po);
+    po->manTerm();
+    delete po;
+    
+
+  } while (qidWS->count() > 0);
+  
   WidgetList.remove(fd);
   bClosing = FALSE;
 }
@@ -688,13 +715,54 @@ PWidget *PukeController::id2pwidget(widgetId *pwi){ /*fold00*/
   else
     throw(errorNoSuchWidget(*pwi));
 }
-void PukeController::insertPObject(int fd, int iWinId, WidgetS *obj){ /*fold00*/
-    if(WidgetList[fd] == NULL){
-        QIntDict<WidgetS> *qidWS = new QIntDict<WidgetS>;
-        qidWS->setAutoDelete(FALSE);
-        WidgetList.insert(fd, qidWS);
-    }
-    WidgetList[fd]->insert(iWinId, obj);
+void PukeController::insertPObject(int fd, int iWinId, WidgetS *obj){ /*FOLD00*/
+  // If no widget list exists for this fd, create one
+  if(WidgetList[fd] == NULL){
+    QIntDict<WidgetS> *qidWS = new QIntDict<WidgetS>;
+    qidWS->setAutoDelete(TRUE);
+    WidgetList.insert(fd, qidWS);
+  }
+  // Set main widget structure list
+  WidgetList[fd]->insert(iWinId, obj);
+
+  // Set reverse list used durring delete to remove the widget
+  widgetId *pwi = new widgetId;
+  pwi->fd = fd;
+  pwi->iWinId = iWinId;
+  char key[keySize];
+  memset(key, 0, keySize);
+  snprintf(key, keySize - 1, "%p", obj->pwidget);
+  revWidgetList.insert(key, pwi);
+
+  // Now connect to the destroyed signal so we can remove the object from the lists
+  // Once it is deleted
+  connect(obj->pwidget, SIGNAL(destroyed()),
+          this, SLOT(pobjectDestroyed()));
+}
+
+void PukeController::pobjectDestroyed(){
+
+  char key[keySize];
+  memset(key, 0, keySize);
+  snprintf(key, keySize - 1, "%p", this->sender());
+
+  widgetId *pwi = revWidgetList[key];
+
+  if(pwi == NULL){
+    debug("Someone broke the rules for pwi: %d, %d", pwi->fd, pwi->iWinId);
+    return;
+  }
+
+  if(checkWidgetId(pwi) == TRUE){
+    WidgetList[pwi->fd]->remove(pwi->iWinId);
+  }
+  else {
+    debug("Someone stole pwi: %d, %d", pwi->fd, pwi->iWinId);
+  }
+
+  pwi = 0x0; // remove deletes pwi
+  revWidgetList.remove(key);
+  
 }
 
 void PukeController::messageHandler(int fd, PukeMessage *pm) { /*fold00*/
@@ -831,37 +899,14 @@ widgetId PukeController::createWidget(widgetId wI, PukeMessage *pm) /*fold00*/
   CreateArgs arg(this, pm, &wIret, parent);
   ws->pwidget = (widgetCF[iType]->wc)(arg);
   ws->type = iType;
-  connect(ws->pwidget, SIGNAL(widgetDestroyed(widgetId)),
-	  this, SLOT(closeWidget(widgetId)));
 
   connect(ws->pwidget, SIGNAL(outputMessage(int, PukeMessage*)),
 	  this, SIGNAL(outputMessage(int, PukeMessage*)));
 
   // insertPBoject(fd, uiBaseWinId, ws);
   // The widget list has to exist since we have ourselves in the list
-  WidgetList[wIret.fd]->insert(wIret.iWinId, ws);
+  insertPObject(wIret.fd, wIret.iWinId, ws);
+//  WidgetList[wIret.fd]->insert(wIret.iWinId, ws);
   return wIret;
-}
-
-void PukeController::closeWidget(widgetId wI){ /*fold00*/
-  // Check to make sure we have a valid widget
-  // Then remove it from the list.
-  // Don't delete it since well, we're being called since it's already 
-  // being deleted.
-  //  debug("Want to delete: %d", wI.iWinId);
-  
-  if(checkWidgetId(&wI) == TRUE){
-    WidgetList[wI.fd]->remove(wI.iWinId);
-
-    PukeMessage pmRet;
-    memset(&pmRet, 0, sizeof(PukeMessage));
-    pmRet.iCommand = PUKE_WIDGET_DELETE_ACK;
-    pmRet.iWinId = wI.iWinId;
-    pmRet.iArg = 0;
-    emit outputMessage(wI.fd, &pmRet);
-//    debug("Sent close message to %d, returning", pmRet.iWinId);
-    return;
-  }
-  warning("WidgetRunner: widget delete %d %d failed", wI.fd, wI.iWinId);
 }
 

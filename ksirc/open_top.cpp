@@ -55,6 +55,7 @@ open_top::~open_top()
 
 void open_top::create_toplevel()
 {
+  hide();
   int item_found = 0;
   for(int i = 0; i < nameSLE->count() ; i++){
     if(strcasecmp(nameSLE->currentText(), nameSLE->text(i)) == 0){

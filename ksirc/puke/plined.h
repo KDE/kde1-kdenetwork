@@ -22,7 +22,7 @@ class PLineEdit : public PWidget
   
   virtual void messageHandler(int fd, PukeMessage *pm);
   
-  virtual void setWidget(QLineEdit *_f);
+  virtual void setWidget(QObject *_f);
   virtual QLineEdit *widget();
 
  public slots:

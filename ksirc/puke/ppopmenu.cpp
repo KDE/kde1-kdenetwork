@@ -72,9 +72,13 @@ void PPopupMenu::messageHandler(int fd, PukeMessage *pm)
   }
 }
 
-void PPopupMenu::setWidget(QPopupMenu *_menu)
+void PPopupMenu::setWidget(QObject *_menu)
 {
-  menu = _menu;
+  debug("PPopupMenu setWidget(QObject *) called");
+  if(_menu != 0 && _menu->inherits("QPopupMenu") == FALSE)
+    throw(errorInvalidSet(_menu, className()));
+
+  menu = (QPopupMenu *) _menu;
   if(menu != 0x0){
     connect(menu, SIGNAL(activated(int)),
             this, SLOT(got_activated(int)));

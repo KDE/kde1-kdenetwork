@@ -109,6 +109,9 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
   have_focus = 0;
   ticker = 0; // Set the ticker to NULL while it doesn't exist.
   tab_pressed = 0; // Tab (nick completion not pressed yet)
+  tab_start = -1;
+  tab_end = -1;
+
   KickWinOpen = false;
   current_size = size();
 //  startTimer( 500 ); // Start resize timer
@@ -421,7 +424,7 @@ void KSircTopLevel::show() /*fold00*/
 //  }
 //}
 
-void KSircTopLevel::TabNickCompletion()  /*fold00*/
+void KSircTopLevel::TabNickCompletion()  /*FOLD00*/
 {
   /* 
    * Gets current text from lined find the last item and try and perform
@@ -429,7 +432,7 @@ void KSircTopLevel::TabNickCompletion()  /*fold00*/
    */
 
   int start, end;
-  QString s, nick;
+  QString s;
 
   if(tab_pressed > 0){
     s = tab_saved.data();
@@ -446,33 +449,35 @@ void KSircTopLevel::TabNickCompletion()  /*fold00*/
 
   }
 
-  if(s.length() == 0)
+  if(s.length() == 0){
+    QString line = tab_nick + ": "; // tab_nick holds the last night since we haven't overritten it yet.
+    linee->setText(line);
+    linee->setCursorPosition(line.length());
     return;
+  }
 
   if (start == -1) {
-    cerr << "Start == -1: " << s.mid(0, end+1) << endl;
-    nick = findNick(s.mid(0, end+1), tab_pressed);
-    if(nick.isNull() == TRUE){
+    tab_nick = findNick(s.mid(0, end+1), tab_pressed);
+    if(tab_nick.isNull() == TRUE){
       tab_pressed = 0;
-      nick = findNick(s.mid(0, end+1), tab_pressed);
+      tab_nick = findNick(s.mid(0, end+1), tab_pressed);
     }
-    s.replace(0, end + 1, nick);
+    s.replace(0, end + 1, tab_nick);
   }
   else {
-//    cerr << "Looking up: " << s.mid(start + 1, end - start) << endl;
-    nick = findNick(s.mid(start + 1, end - start), tab_pressed);
-    if(nick.isNull() == TRUE){
+    tab_nick = findNick(s.mid(start + 1, end - start), tab_pressed);
+    if(tab_nick.isNull() == TRUE){
       tab_pressed = 0;
-      nick = findNick(s.mid(start + 1, end - start), tab_pressed);
+      tab_nick = findNick(s.mid(start + 1, end - start), tab_pressed);
     }
-    s.replace(start + 1, end - start, nick);
+    s.replace(start + 1, end - start, tab_nick);
   }
 
   int tab = tab_pressed + 1;
 
   linee->setText(s);
 
-  linee->setCursorPosition(start + nick.length() + 1);
+  linee->setCursorPosition(start + tab_nick.length() + 1);
   
   tab_pressed = tab; // setText causes lineeTextChanged to get called and erase tab_pressed
 

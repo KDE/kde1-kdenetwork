@@ -7,7 +7,7 @@ PLayout::PLayout(QObject *pobject)
   : PObject(pobject)
 {
   // Connect slots as needed
-  setWidget(0);
+  setWidget();
 }
 
 PLayout::~PLayout()
@@ -15,7 +15,7 @@ PLayout::~PLayout()
   //  debug("PObject: in destructor");
   delete widget();
   layout = 0;
-  setWidget(0);
+  setWidget();
 }
 
 PObject *PLayout::createWidget(CreateArgs &ca)
@@ -131,18 +131,19 @@ void PLayout::messageHandler(int fd, PukeMessage *pm)
 
 }
 
-void PLayout::setWidget(QBoxLayout *_layout)
+void PLayout::setWidget(QObject *_layout)
 {
   //  debug("PObject setwidget called");
-  layout = _layout;
-  if(layout != 0){
-  }
+  debug("PLayout: in setWidget");
+  if(_layout != 0 && _layout->inherits("QBoxLayout") == FALSE)
+      throw(errorInvalidSet(_layout, className()));
+
+  layout = (QBoxLayout *) _layout;
   PObject::setWidget(_layout);
   
 }
 
 QBoxLayout *PLayout::widget()
 {
-  //  debug("PObject widget called");
   return layout;
 }

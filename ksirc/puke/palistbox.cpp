@@ -119,9 +119,12 @@ void PAListBox::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
   }
 }
 
-void PAListBox::setWidget(aListBox *_lb) /*FOLD00*/
+void PAListBox::setWidget(QObject *_lb) /*FOLD00*/
 {
-  lb = _lb;
+  if(_lb != 0 && _lb->inherits("aListBox") == FALSE)
+    throw(errorInvalidSet(_lb, className()));
+
+  lb = (aListBox *) _lb;
   if(lb != 0){
   }
   PListBox::setWidget(lb);

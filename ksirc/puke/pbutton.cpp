@@ -78,10 +78,14 @@ void PButton::messageHandler(int fd, PukeMessage *pm)
   }
 }
 
-void PButton::setWidget(QButton *_qb)
+void PButton::setWidget(QObject *_qb)
 {
-  button = _qb;
-  if(_qb != 0){
+  debug("PButton setWidget(QObject *) called");
+  if(_qb != 0 && _qb->inherits("QButton") == FALSE)
+    throw(errorInvalidSet(_qb, className()));
+
+  button = (QButton *) _qb;
+  if(button != 0){
     connect(button, SIGNAL(pressed()),
 	    this, SLOT(buttonPressed()));
     connect(button, SIGNAL(released()),

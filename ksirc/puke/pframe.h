@@ -20,8 +20,8 @@ class PFrame : public PWidget
   virtual ~PFrame ();
   
   virtual void messageHandler(int fd, PukeMessage *pm);
-  
-  virtual void setWidget(QFrame *_f);
+
+  virtual void setWidget(QObject *w = 0x0);
   virtual QFrame *widget();
 
  signals:

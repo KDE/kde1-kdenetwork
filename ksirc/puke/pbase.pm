@@ -132,8 +132,15 @@ sub fetchWidget {
   }
   
   $self->ackWinId(%REPLY);
+  $self->{'Fetch'} = 1;
   #  $self->setRunable(0);
   return 0;
+}
+
+sub releaseWidget {
+    my $self = shift;
+    $self->sendMessage('iCommand' => $::PUKE_RELEASEWIDGET,
+                       'CallBack' => sub {});
 }
 
 sub treeInfo {
@@ -157,11 +164,17 @@ sub DESTROY {
 
   delete($::PBASE_IMORTALS{$self->{IMMORTAL}});
 
-  if($self->{DESTROYED} != 1 && $self->{Parent} == 0){
+  if($self->{'Fetch'} != 1 && $self->{DESTROYED} != 1 && $self->{Parent} == 0){
     $self->sendMessage('iCommand' => $::PUKE_WIDGET_DELETE,
-                       'CallBack' => sub {});
+		       'CallBack' => sub {});
   }
 
+  if($self->{'Fetch'} == 1){
+    $self->sendMessage('iCommand' => $::PUKE_RELEASEWIDGET,
+		       'CallBack' => sub {});
+
+  }
+  
   #  $self->setRunable(0);
   $self->{iWinId} = -1;
   $self->{DESTROYED} = 1;

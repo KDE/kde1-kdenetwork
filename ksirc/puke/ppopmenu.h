@@ -24,7 +24,7 @@ public:
 
   virtual void messageHandler(int fd, PukeMessage *pm);
 
-  virtual void setWidget(QPopupMenu *_menu);
+  virtual void setWidget(QObject *_menu);
   virtual QPopupMenu *widget();
 
 

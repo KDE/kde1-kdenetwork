@@ -94,9 +94,13 @@ void PLineEdit::messageHandler(int fd, PukeMessage *pm)
   }
 }
 
-void PLineEdit::setWidget(QLineEdit *_le)
+void PLineEdit::setWidget(QObject *_le)
 {
-  lineedit = _le;
+  debug("Plined: setWidget(QObject *) called");
+  if(_le != 0 && _le->inherits("QLineEdit") == FALSE)
+    throw(errorInvalidSet(_le, className()));
+
+  lineedit = (QLineEdit *) _le;
   if(lineedit != 0){
     connect(lineedit, SIGNAL(textChanged(const char *)),
 	    this, SLOT(updateText(const char *)));

@@ -23,7 +23,7 @@ class PButton : public PWidget
   
   virtual void messageHandler(int fd, PukeMessage *pm);
   
-  virtual void setWidget(QButton *_b);
+  virtual void setWidget(QObject *_qb = 0x0);
   virtual QButton *widget();
 
  public slots:

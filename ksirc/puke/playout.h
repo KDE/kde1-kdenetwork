@@ -29,7 +29,7 @@ class PLayout : public PObject
   /**
    * Sets the current opbect
    */
-  virtual void setWidget(QBoxLayout *qb);
+  virtual void setWidget(QObject *qb = 0x0);
   
   /**
    * Returns the current object

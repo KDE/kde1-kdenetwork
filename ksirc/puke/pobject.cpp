@@ -7,14 +7,16 @@ PObject::PObject(QObject *pobject, const char *name) /*fold00*/
   // Connect slots as needed
   obj = 0;
   setWidget(0);
+  manualTerm = FALSE;
 }
 
-PObject::~PObject() /*fold00*/
+PObject::~PObject() /*FOLD00*/
 {
-  //  debug("PObject: in destructor");
+  debug("PObject: in destructor");
   delete widget();
   obj = 0;
   setWidget(0);
+  debug("PObject: done destructor");
 }
 
 PObject *PObject::createWidget(CreateArgs &ca) /*fold00*/
@@ -31,7 +33,7 @@ PObject *PObject::createWidget(CreateArgs &ca) /*fold00*/
   return pw;
 }
 
-void PObject::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
+void PObject::messageHandler(int fd, PukeMessage *pm) /*fold00*/
 {
   PukeMessage pmRet;
   if(pm->iCommand == PUKE_WIDGET_DELETE){
@@ -44,6 +46,7 @@ void PObject::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
     pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
 
+    manTerm();
     delete this;
   }
   if(pm->iCommand == PUKE_RELEASEWIDGET){
@@ -60,6 +63,7 @@ void PObject::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
      * By setting the widget to 0 we loose the pointer and then don't delete it
      */
     setWidget(0);
+    manTerm();
     delete this;
   }
   else {
@@ -72,9 +76,16 @@ void PObject::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
   }
 }
 
-void PObject::setWidget(QObject *_o) /*fold00*/
+void PObject::setWidget(QObject *_o) /*FOLD00*/
 {
-  //  debug("PObject setwidget called");
+  // Disconnect everything from the object we where listning too
+  // Just in case it fires something off, we don't want to get it
+  debug("PObject: in setWidget");
+  if(widget() != 0){
+    disconnect(widget(), SIGNAL(destroyed()),
+               this, SLOT(swidgetDestroyed()));
+  }
+  
   obj = _o;
   if(obj != 0){
     connect(widget(), SIGNAL(destroyed()),
@@ -82,7 +93,7 @@ void PObject::setWidget(QObject *_o) /*fold00*/
   }
 }
 
-QObject *PObject::widget() /*fold00*/
+QObject *PObject::widget() /*FOLD00*/
 {
   //  debug("PObject widget called");
   return obj;
@@ -94,18 +105,29 @@ void PObject::setWidgetId(widgetId *pwI) /*fold00*/
   //  debug("PObject: set widget id %d", wI.iWinId);
 }
 
-widgetId PObject::widgetIden() /*FOLD00*/
+widgetId PObject::widgetIden() /*fold00*/
 {
   //  debug("PObject: called widget id %d", wI.iWinId);
   return wI;
 }
 
 void PObject::swidgetDestroyed(){ /*FOLD00*/
-  //  debug("PObject: got destroy %d", widgetIden().iWinId);
-  emit widgetDestroyed(wI);
+  debug("PObject: got destroy %d", widgetIden().iWinId);
+  setWidget(0x0);
+  debug("PObject: widget pointer: %d", this->widget());
+  if(manualTerm == FALSE){
+    manTerm();
+    debug("PObject: delete this");
+    delete this;
+  }
+  debug("PObject: done destroy");
 }
 
-PukeController *PObject::controller() { /*fold00*/
+PukeController *PObject::controller() { /*FOLD00*/
+  
   return pController;
 }
 
+void PObject::manTerm() {
+  manualTerm = TRUE;
+}

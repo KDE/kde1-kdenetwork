@@ -141,9 +141,13 @@ void PListBox::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
   }
 }
 
-void PListBox::setWidget(QListBox *_lb) /*FOLD00*/
+void PListBox::setWidget(QObject *_lb) /*FOLD00*/
 {
-  lb = _lb;
+  debug("PListBox setWidget(QObject *) called");
+  if(_lb != 0 && _lb->inherits("QListBox") == FALSE)
+    throw(errorInvalidSet(_lb, className()));
+
+  lb = (QListBox *) _lb;
   if(lb != 0){
     connect(lb, SIGNAL(highlighted(int)),
             this, SLOT(highlighted(int)));

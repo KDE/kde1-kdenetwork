@@ -17,4 +17,21 @@ typedef struct {
 
 const uint iPukeHeader = 42U;
 
+class errorInvalidSet {
+public:
+  errorInvalidSet(QObject *_from, const char *_to)
+    : __from(_from), __to(_to)
+  {
+  }
+
+  QObject *from() { return __from; }
+  const char *to() { return __to; }
+    
+private:
+  QObject *__from;
+  const char *__to;
+
+};
+
+
 #endif

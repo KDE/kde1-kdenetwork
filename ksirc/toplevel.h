@@ -335,9 +335,11 @@ private:
     */
   int tab_pressed;
   /**
-    * When tabs pressed save the line for use at a latter date.
+   * When tabs pressed save the line for use at a latter date.
+   * tab_nick holds the last nick found so when a blank tab is pressed
+   * we pop the last niick and ": " up.
     */
-  QString tab_saved;
+  QString tab_saved, tab_nick;
   int tab_start, tab_end;
     
 

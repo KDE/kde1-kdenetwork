@@ -13,6 +13,7 @@ class PukeController;
 #include <qobject.h>
 #include <qsocketnotifier.h>
 #include <qstring.h>
+#include <qdict.h>
 #include <qintdict.h>
 
 #include "pmessage.h"
@@ -107,15 +108,18 @@ signals:
 
 public slots:
   void ServMessage(QString, int, QString);
-  /**
-   * Closes a widget, checking for sanity
-   */
-  void closeWidget(widgetId);
 
 protected slots:
   void Traffic(int);
   void Writeable(int);
   void NewConnect(int);
+
+  /**
+   * When we delete a widget, this removes it from our internal
+   * list of widgets.  We never remove a widget ourselfs, we call delete
+   * and this function removes it.
+   */
+  void pobjectDestroyed();
 
   /**
    * Fd to write to
@@ -142,6 +146,9 @@ private:
   
   // List of widgets and the fle descriptors they belong too
   QIntDict<QIntDict<WidgetS> > WidgetList;
+  // I use a char * key that's the %p (hex address) of the pwidget
+  QDict<widgetId> revWidgetList;
+  enum { keySize = 10 };
 
   // Funtions used to create new widget
   QIntDict<widgetCreate> widgetCF; // widgetCreatingFuntion List

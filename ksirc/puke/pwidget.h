@@ -20,7 +20,7 @@ class PWidget : public PObject
 
   virtual void messageHandler(int fd, PukeMessage *pm);
 
-  virtual void setWidget(QWidget *w);
+  virtual void setWidget(QObject *w = 0x0);
   virtual QWidget *widget();
 
  signals:

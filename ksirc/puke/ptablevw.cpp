@@ -48,9 +48,13 @@ void PTableView::messageHandler(int fd, PukeMessage *pm)
   }
 }
 
-void PTableView::setWidget(QTableView *_tbv)
+void PTableView::setWidget(QObject *_tbv)
 {
-  tbl = _tbv;
+  debug("PTableView setWidget(QObject *) called");
+  if(_tbv != 0 && _tbv->inherits("QTableView") == FALSE)
+    throw(errorInvalidSet(_tbv, className()));
+
+  tbl = (QTableView *) _tbv;
   if(tbl != 0){
   }
   PFrame::setWidget(_tbv);

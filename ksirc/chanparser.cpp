@@ -38,6 +38,7 @@ ChannelParser::ChannelParser(KSircTopLevel *_top) /*FOLD00*/
     parserTable.insert("*!*", new parseFunc(&parseINFONicks)); // Normal
     parserTable.insert("*C*", new parseFunc(&parseINFONicks)); // 1st line
     parserTable.insert("*c*", new parseFunc(&parseINFONicks)); // Last line
+    parserTable.insert("*#*", new parseFunc(&parseINFONicks)); // Non enhanced
     parserTable.insert("*>*", new parseFunc(&parseINFOJoin));
     parserTable.insert("*<*", new parseFunc(&parseINFOPart));
     parserTable.insert("*N*", new parseFunc(&parseINFOChangeNick));
@@ -101,7 +102,7 @@ void ChannelParser::parse(QString string) /*fold00*/
   // If it's unkown we just fall out of the function
 }
 
-void ChannelParser::parseSSFEClear(QString string) /*fold00*/
+void ChannelParser::parseSSFEClear(QString string) /*FOLD00*/
 {
   top->mainw->clear();
   top->mainw->repaint(TRUE);
@@ -254,6 +255,10 @@ void ChannelParser::parseINFONicks(QString in_string) /*FOLD00*/
     string[1] = '!';
     clear_box = TRUE;
   }
+  if(string[1] == '#'){
+    string[1] = '!';
+    clear_box = FALSE;
+  }
   else if(string[1] == 'c'){
     top->nicks->setAutoUpdate(TRUE);         // clear and repaint the listbox
     if(current_item > 0)
@@ -266,7 +271,7 @@ void ChannelParser::parseINFONicks(QString in_string) /*FOLD00*/
   
   // Get the channel name portion of the string
   // Search for the first space, since : can be embeded into channel names.
-  count = sscanf(string, "*!* ExtUsers on %100[^ ]", channel_name);
+  count = sscanf(string, "*!* Users on %100[^ ]", channel_name);
   if(count < 1){
     throw(parseError(string, QString("Could not find channel name")));
   }
@@ -340,8 +345,6 @@ void ChannelParser::parseINFOJoin(QString string) /*FOLD00*/
     if(strcasecmp(top->channel_name, chan) == 0)
       top->show();
     emit top->open_toplevel(chan);
-    QString cmd = "/lag\n";
-    emit top->outputLine(cmd);
     throw(parseSucc(" " + string, kSircConfig->colour_chan, top->pix_greenp));
   }
   else if(sscanf(string, "%100s %*s has joined channel %100s", nick, channel) > 0){

@@ -73,6 +73,13 @@ class PObject : public QObject
     pController = pc;
   }
 
+  /**
+   * Before deleting the widget, call manTerm() to signal manual
+   * termination of the widget
+   */
+  void manTerm();
+   
+
  signals:
   void outputMessage(int fd, PukeMessage *pm);
   void widgetDestroyed(widgetId wI);
@@ -87,6 +94,8 @@ private:
   QObject *obj;
   PukeController *pController;
   widgetId wI;
+
+  bool manualTerm;
 };
 
 #include "controller.h"

@@ -57,12 +57,14 @@ void PFrame::messageHandler(int fd, PukeMessage *pm)
   }
 }
 
-void PFrame::setWidget(QFrame *_f)
+void PFrame::setWidget(QObject *w)
 {
-  //  debug("PFrame setWidget called");
-  frame = _f;
-  PWidget::setWidget(_f);
+  debug("PFrame setWidget(QObject *) called");
+  if(w != 0 && w->inherits("QFrame") == FALSE)
+    throw(errorInvalidSet(w, className()));
 
+  frame = (QFrame *) w;
+  PWidget::setWidget((QWidget *) w);
 }
 
 

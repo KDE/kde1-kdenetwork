@@ -75,10 +75,14 @@ void PTabDialog::messageHandler(int fd, PukeMessage *pm)
 
 }
 
-void PTabDialog::setWidget(QTabDialog *tb)
+void PTabDialog::setWidget(QObject *tb)
 {
   //  debug("PObject setwidget called");
-  tab = tb;
+  debug("PTabDialog setWidget(QObject *) called");
+  if(tb != 0 && tb->inherits("QTabDialog") == FALSE)
+    throw(errorInvalidSet(tb, className()));
+
+  tab = (QTabDialog *) tb;
   if(tab != 0){
   }
   PObject::setWidget(tb);

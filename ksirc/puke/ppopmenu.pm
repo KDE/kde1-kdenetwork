@@ -36,8 +36,8 @@ sub activated {
 
   my %ARG = %{shift()};
 
-  if($self->{'menu_id'}[$ARG{'iArg'}]){
-    &{$self->{'menu_id'}[$ARG{'iArg'}]}(%ARG);
+  if($self->{'menu_id'}{$ARG{'iArg'}}){
+    &{$self->{'menu_id'}{$ARG{'iArg'}}}(%ARG);
   }
   else {
     # There's not handler, don't make noise, since if we used fetchWidget()
@@ -51,7 +51,7 @@ sub installMenu {
 
   my $id = shift;
   my $func = shift;
-  $self->{'menu_id'}[$id] = $func;
+  $self->{'menu_id'}{$id} = $func;
 }
 
 sub popupAtCurrent {
