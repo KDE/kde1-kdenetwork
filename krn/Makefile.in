@@ -177,7 +177,7 @@ HEADERS = 	NNTP.h\
 
 ######### build rules ################
 
-all: Makefile depend $(TARGET)
+all: Makefile $(TARGET)
 #	$(INSTALL_DIR) $(LIBDIR)/pics
 
 Makefile: Makefile.in
