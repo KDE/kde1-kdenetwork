@@ -29,7 +29,7 @@ KSIRC_PROGRAM = ksirc
 #KSIRCSTATIC_PROGRAM = ksircstatic
 #endif
 
-bin_PROGRAMS = ${KSIRC_PROGRAM} # ${KSIRCSTATIC_PROGRAM}
+bin_PROGRAMS = ksirc # ${KSIRCSTATIC_PROGRAM}
 
 noinst_PROGRAMS = getdate
 
@@ -97,7 +97,7 @@ getdate: getdate.c
 cdate.h: getdate
 	./getdate > cdate.h
 
-ksircstatic: cdate.h $(ksircstaticOBJECTS) $(ksircstaticDEPENDENCIES) $(static_libkde) $(static_libqt)
+ksircstatic: cdate.h $(ksircstaticOBJECTS) $(ksircstaticDEPENDENCIES) $(static_libkde) $(static_libqt) $(ksircstaticLDADD)
 	@rm -f ksircstatic
 	$(LIBTOOL) --mode=link $(CC) $(CXXFLAGS) $(LDFLAGS) -o $@ $(ksircstaticLDFLAGS) $(ksircstaticOBJECTS) $(ksircstaticLDADD) $(STATIC_LIBS) $(LIBS)
 
