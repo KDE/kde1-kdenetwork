@@ -57,7 +57,6 @@ private slots:
   void pppdpathchanged(const char*);
   void pppdtimeoutchanged(const char *n);
   void logviewerchanged(const char*);
-  void setenter(int);
   void caption_toggled(bool);
   void redial_toggled(bool on);
   void xserver_toggled(bool on);
@@ -67,7 +66,7 @@ private:
 
   QGroupBox *box;
   QLabel *label1;
-  QLabel *label2;
+
   QLabel *label3;
   QLabel *label4;
   QLabel *label5;
@@ -83,7 +82,7 @@ private:
   QLineEdit *logviewer;
   QLabel    *logviewerlabel;
   QLineEdit *pppdpath;
-  QComboBox *enter;
+
 
 };
 
@@ -101,22 +100,21 @@ private slots:
 
   void setmodemdc(int);
   void setflowcontrol(int);
-
-
-
   void modemtimeoutchanged(const char*);
   void busywaitchanged(const char*);
   void modemlockfilechanged(const char*);
+  void setenter(int);
 
 private:
 
+  QComboBox *enter;
   QGroupBox *box;
   QLabel *label1;
   QLabel *label2;
   QLabel *label3;
   QLabel *label4;
   QLabel *labeltmp;
-
+  QLabel *labelenter;
   QComboBox *modemdevice;
   QComboBox *flowcontrol;
 

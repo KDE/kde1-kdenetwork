@@ -325,7 +325,8 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
   
   tabWindow->addTab( accounts, "Accounts" );
   tabWindow->addTab( modem, "Modem" );
-  tabWindow->addTab( general, "More ..." );
+  tabWindow->addTab( modem2, "More ..." );
+  tabWindow->addTab( general, "PPP" );
   tabWindow->addTab( about, "About" );
 
   con_win = new ConWindow(0,"conw",this);

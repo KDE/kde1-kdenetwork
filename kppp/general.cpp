@@ -70,31 +70,14 @@ GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
   labeltmp->setText("Seconds");
   labeltmp->setGeometry(175,85,50,20);
 
-  //Enter Charactor
-
-  label2 = new QLabel(this,"enter");
-  label2->setText("Enter is:");
-  label2->setGeometry(25,125,80,20);
-
-  enter = new QComboBox(false,this);
-  enter->setGeometry(130, 120, 75, 25);
-  enter->insertItem("CR");
-  enter->insertItem("LF");
-  enter->insertItem("CR/LF");
-  connect(enter, SIGNAL(activated(int)), SLOT(setenter(int)));
-  
-  for(int i=0; i <= enter->count()-1; i++) {
-    if(strcmp(gpppdata.enter(), enter->text(i)) == 0)
-      enter->setCurrentItem(i);
-  }
 
   logviewerlabel = new QLabel(this,"logviewerlabel");
   logviewerlabel->setText("Log Viewer:");
-  logviewerlabel->setGeometry(25,165,80,20);
+  logviewerlabel->setGeometry(25,125,80,20);
 
 
   logviewer = new QLineEdit(this, "logvieweredit");
-  logviewer->setGeometry(130, 160, 150, 23);
+  logviewer->setGeometry(130, 120, 150, 23);
   logviewer->setMaxLength(PATH_SIZE);
   logviewer->setText(gpppdata.logViewer());
   connect(logviewer, SIGNAL(textChanged(const char*)),
@@ -102,19 +85,19 @@ GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
 
   chkbox2 = new QCheckBox("Automatic Redial on Disconnect",this,"redialbox");
   chkbox2->adjustSize();
-  chkbox2->setGeometry(25,200,chkbox2->width(),chkbox2->height());
+  chkbox2->setGeometry(25,160,chkbox2->width(),chkbox2->height());
   chkbox2->setChecked(gpppdata.get_automatic_redial());
   connect(chkbox2,SIGNAL(toggled(bool)),this,SLOT(redial_toggled(bool)));
 
   chkbox3 = new QCheckBox("Show Clock on Caption",this,"captionbox");
   chkbox3->adjustSize();
-  chkbox3->setGeometry(25,220,160,chkbox3->height());
+  chkbox3->setGeometry(25,180,160,chkbox3->height());
   chkbox3->setChecked(gpppdata.get_show_clock_on_caption());
   connect(chkbox3,SIGNAL(toggled(bool)),this,SLOT(caption_toggled(bool)));
 
   chkbox4 = new QCheckBox("Disconnect on X-server shutdown",this,"captionbox");
   chkbox4->adjustSize();
-  chkbox4->setGeometry(25,240,240,chkbox4->height());
+  chkbox4->setGeometry(25,200,240,chkbox4->height());
   chkbox4->setChecked(gpppdata.get_xserver_exit_disconnect());
   connect(chkbox4,SIGNAL(toggled(bool)),this,SLOT(xserver_toggled(bool)));
 }
@@ -198,11 +181,6 @@ void GeneralWidget::pppdpathchanged(const char *n) {
 }
 
 
-void GeneralWidget::setenter(int i) {
-  i = i ;  // shut up compiler
-  gpppdata.setEnter(enter->text(enter->currentItem()));
-  gpppdata.save();
-}
 
 void GeneralWidget::pppdtimeoutchanged(const char *n) {
   gpppdata.setpppdTimeout(n);
@@ -288,13 +266,30 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   flowcontrol->insertItem("None");
   connect(flowcontrol, SIGNAL(activated(int)), SLOT(setflowcontrol(int)));
 
+
+  labelenter = new QLabel(this,"enter");
+  labelenter->setText("Enter is:");
+  labelenter->setGeometry(30,102,80,20);
+
+  enter = new QComboBox(false,this);
+  enter->setGeometry(155, 100, 150, 25);
+  enter->insertItem("CR");
+  enter->insertItem("LF");
+  enter->insertItem("CR/LF");
+  connect(enter, SIGNAL(activated(int)), SLOT(setenter(int)));
+  
+  for(int i=0; i <= enter->count()-1; i++) {
+    if(strcmp(gpppdata.enter(), enter->text(i)) == 0)
+      enter->setCurrentItem(i);
+  }
+
   //Modem Lock File
   label4 = new QLabel(this,"modemlockfilelabel");
-  label4->setGeometry(30,98,100,30);
+  label4->setGeometry(30,132,100,30);
   label4->setText("Modem Lock File:");
 
   modemlockfile = new QLineEdit(this, "modemlockfile");
-  modemlockfile->setGeometry(155, 100, 150, 23);
+  modemlockfile->setGeometry(155, 134, 150, 23);
   modemlockfile->setMaxLength(PATH_SIZE);
   modemlockfile->setText(gpppdata.modemLockFile());
   connect(modemlockfile, SIGNAL(textChanged(const char*)),
@@ -304,22 +299,22 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
 
   //Modem Timeout Line Edit Box
   label3 = new QLabel(this,"modemtimeoutlabel");
-  label3->setGeometry(30,132,100,30);
+  label3->setGeometry(30,164,100,30);
   label3->setText("Modem Timeout:");
 
   modemtimeout = new KIntLineEdit(this, "modemtimeout");
-  modemtimeout->setGeometry(155, 132, 40, 23);
+  modemtimeout->setGeometry(155, 166, 40, 23);
   modemtimeout->setMaxLength(TIMEOUT_SIZE);
   modemtimeout->setText(gpppdata.modemTimeout());
   connect(modemtimeout, SIGNAL(textChanged(const char*)),
 	  SLOT(modemtimeoutchanged(const char*)));
 
   label4 = new QLabel(this,"busywaitlabel");
-  label4->setGeometry(30,164,100,30);
+  label4->setGeometry(30,196,100,30);
   label4->setText("Busy Wait:");
 
   busywait = new KIntLineEdit(this, "busywait");
-  busywait->setGeometry(155, 164, 40, 23);
+  busywait->setGeometry(155, 198, 40, 23);
   busywait->setMaxLength(TIMEOUT_SIZE);
   busywait->setText(gpppdata.busyWait());
   connect(busywait, SIGNAL(textChanged(const char*)),
@@ -327,11 +322,11 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
 
 
   labeltmp = new QLabel(this,"seconds");
-  labeltmp->setGeometry(210,132,50,30);
+  labeltmp->setGeometry(210,164,50,30);
   labeltmp->setText("Seconds");
 
   labeltmp = new QLabel(this,"seconds");
-  labeltmp->setGeometry(210,164,50,30);
+  labeltmp->setGeometry(210,196,50,30);
   labeltmp->setText("Seconds");
 
 
@@ -346,8 +341,15 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
       flowcontrol->setCurrentItem(i);
   }
 
+
+
 }
 
+void ModemWidget::setenter(int i) {
+  i = i ;  // shut up compiler
+  gpppdata.setEnter(enter->text(enter->currentItem()));
+  gpppdata.save();
+}
 
 
 void ModemWidget::setmodemdc(int i) {
@@ -398,18 +400,18 @@ ModemWidget2::ModemWidget2( QWidget *parent, const char *name)
 
   box = new QGroupBox(this,"box");
   box->setGeometry(10,10,320,260);
-  box->setTitle("Modem Setup");
+  box->setTitle("More ...");
 
   modemcmds = new QPushButton("Modem Commands", this);
-  modemcmds->setGeometry(40, 198, 120, 25);
+  modemcmds->setGeometry(140, 80, 150, 25);
   connect(modemcmds, SIGNAL(clicked()), SLOT(modemcmdsbutton()));
 
   modeminfo_button = new QPushButton("Query Modem", this);
-  modeminfo_button->setGeometry(180, 198, 120, 25);
+  modeminfo_button->setGeometry(140, 120, 150, 25);
   connect(modeminfo_button, SIGNAL(clicked()), SLOT(query_modem()));
 
   terminal_button = new QPushButton("Terminal", this);
-  terminal_button->setGeometry(110, 232, 120, 25);
+  terminal_button->setGeometry(140, 160, 150, 25);
   connect(terminal_button, SIGNAL(clicked()), SLOT(terminal()));
 
 
