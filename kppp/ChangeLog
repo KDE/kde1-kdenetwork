@@ -1,3 +1,9 @@
+Sun May 24 23:39:42 1998  Bernd Johannes Wuebben  <wuebben@math.cornell.edu>
+
+	* Applied FreeBSD patch for the modem devices
+	  Affected File:general.cpp pppdata.cpp
+	  Look for __FreeBSD__
+
 Mon May 18 19:51:56 1998  Mario Weilguni <mweilguni@kde.org>
 
 	* introduced a separate log-viewer "kppplogview"
