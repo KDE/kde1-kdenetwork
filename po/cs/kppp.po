@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kppp 0.9.6\n"
 "POT-Creation-Date: 1998-08-03 21:27+0200\n"
-"PO-Revision-Date: 1998-06-19 09:26 MET DST\n"
+"PO-Revision-Date: 1998-10-24 23:59 CEST\n"
 "Last-Translator: Miroslav Flídr <flidr@kky.zcu.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -372,13 +372,12 @@ msgstr ""
 "pøi pøipojení:"
 
 #: edit.cpp:100
-#, fuzzy
 msgid ""
 "Execute program\n"
 "before disconnect:"
 msgstr ""
 "Vykonat program\n"
-"pøi odpojení:"
+"pøed odpojením:"
 
 #: edit.cpp:112
 msgid ""
@@ -568,7 +567,7 @@ msgstr "Rychlost spojení:"
 
 #: general.cpp:343
 msgid "Lock File Directory:"
-msgstr ""
+msgstr "Adresáø zamykacího souboru"
 
 #: general.cpp:360
 msgid "Modem Timeout:"
@@ -1119,6 +1118,3 @@ msgstr ""
 "Po¾ádejte správce systému, aby \n"
 "vytvoøil neprázdný soubor \n"
 "s pøíslu¹nými právy ke ètení a zápisu."
-
-#~ msgid "Modem Lock File:"
-#~ msgstr "Zámek modemu:"
