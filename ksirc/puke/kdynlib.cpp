@@ -47,12 +47,9 @@ extern "C" { // this is necessary, because the libc on Alpha/Linux is broken
 #include <dmalloc.h>
 #endif
 
-/*
 #ifndef RTLD_GLOBAL
-#warning You have a screwed up LD library set!!!
 #define RTLD_GLOBAL 0
 #endif
-*/
 
 
 KDynamicLibrary::KDynamicLibrary() {}
