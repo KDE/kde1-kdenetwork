@@ -1,12 +1,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail 1,31\n"
-"POT-Creation-Date: 1999-01-02 02:11+0100\n"
-"PO-Revision-Date: 1998-12-14 18:20-0500\n"
+"POT-Creation-Date: 1998-12-19 02:18+0100\n"
+"PO-Revision-Date: 1999-01-01 23:39+0100\n"
 "Last-Translator: Thorarinn R. Einarsson <thori@mindspring.com>\n"
 "Translator: Thorarinn R. Einarsson <thori@mindspring.com>\n"
 
-#: kmcomposewin.cpp:1514 kmmainwin.cpp:263 kpgp.cpp:546
+#: kmcomposewin.cpp:1513 kmmainwin.cpp:263 kpgp.cpp:546
 msgid ""
 "Sorry, but this feature\n"
 "is still missing"
@@ -18,7 +18,7 @@ msgstr ""
 msgid "New Folder"
 msgstr "Nýja möppu"
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:285 kmmainwin.cpp:318 main.cpp:334
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:285 kmmainwin.cpp:318 main.cpp:333
 msgid "KMail error"
 msgstr "KMail villa"
 
@@ -164,7 +164,7 @@ msgstr "&Afrita..."
 msgid "New Composer"
 msgstr "&Nýr ritill"
 
-#: kmcomposewin.cpp:451 kmmainwin.cpp:857
+#: kmcomposewin.cpp:450 kmmainwin.cpp:857
 msgid "New Mailreader"
 msgstr "Nýr &póstlesari"
 
@@ -192,7 +192,7 @@ msgstr "Senda póstinn sem bíður"
 msgid "&Settings..."
 msgstr "Stillingar..."
 
-#: kmcomposewin.cpp:443 kmmainwin.cpp:881
+#: kmcomposewin.cpp:442 kmmainwin.cpp:881
 msgid "&Addressbook..."
 msgstr "&Póstfangabók..."
 
@@ -324,15 +324,15 @@ msgstr "&Mappa"
 msgid "&Message"
 msgstr "&Bréf"
 
-#: kmcomposewin.cpp:573 kmmainwin.cpp:1013
+#: kmcomposewin.cpp:572 kmmainwin.cpp:1013
 msgid "Compose new message"
 msgstr "Skrifa nýtt bréf"
 
-#: kmcomposewin.cpp:578 kmmainwin.cpp:1018
+#: kmcomposewin.cpp:577 kmmainwin.cpp:1018
 msgid "Save message to file"
 msgstr "Vista bréf í skrá"
 
-#: kmcomposewin.cpp:583 kmmainwin.cpp:1023
+#: kmcomposewin.cpp:582 kmmainwin.cpp:1023
 msgid "Print message"
 msgstr "Prenta út bréf"
 
@@ -356,7 +356,7 @@ msgstr "Áframsenda bréf"
 msgid "Delete message"
 msgstr "Eyða bréfi"
 
-#: kmcomposewin.cpp:607 kmmainwin.cpp:1057
+#: kmcomposewin.cpp:606 kmmainwin.cpp:1057
 msgid "Open addressbook..."
 msgstr "Opna póstfangabók..."
 
@@ -369,7 +369,7 @@ msgstr "Frumstilling..."
 msgid "Name:"
 msgstr "Nafn:"
 
-#: kmcomposewin.cpp:1522 kmfolderdia.cpp:44 kmfolderdia.cpp:120
+#: kmcomposewin.cpp:1521 kmfolderdia.cpp:44 kmfolderdia.cpp:120
 msgid "unnamed"
 msgstr "nafnlaust"
 
@@ -410,7 +410,6 @@ msgid "Identity"
 msgstr "Persónulegar uppl."
 
 #: kmsettings.cpp:211
-#, fuzzy
 msgid "Sending Mail"
 msgstr "Sendi póst"
 
@@ -606,7 +605,7 @@ msgstr "Nafnlaust"
 msgid "Choose Sendmail Location"
 msgstr "Veldu Sendmail staðsetningu"
 
-#: kmcomposewin.cpp:1621 kmsettings.cpp:695
+#: kmcomposewin.cpp:1620 kmsettings.cpp:695
 msgid "Choose Signature File"
 msgstr "Veldu undirskriftarskrá"
 
@@ -749,205 +748,203 @@ msgstr "Stærð"
 msgid "Encoding"
 msgstr "Kóðun"
 
-#: kmcomposewin.cpp:345
+#: kmcomposewin.cpp:344
 msgid "&From:"
 msgstr "&Frá:"
 
-#: kmcomposewin.cpp:347
+#: kmcomposewin.cpp:346
 msgid "&Reply to:"
 msgstr "Senda sva&r til:"
 
-#: kmcomposewin.cpp:349
+#: kmcomposewin.cpp:348
 msgid "&To:"
 msgstr "&Til:"
 
-#: kmcomposewin.cpp:351
+#: kmcomposewin.cpp:350
 msgid "&Cc:"
 msgstr "&Afrit (Cc):"
 
-#: kmcomposewin.cpp:353
+#: kmcomposewin.cpp:352
 msgid "&Bcc:"
 msgstr "&Blint afrit (Bcc):"
 
-#: kmcomposewin.cpp:355
+#: kmcomposewin.cpp:354
 msgid "&Subject:"
 msgstr "&Umfangsefni:"
 
-#: kmcomposewin.cpp:358
+#: kmcomposewin.cpp:357
 msgid "&Newsgroups:"
 msgstr "Umræðu&hópar:"
 
-#: kmcomposewin.cpp:360
+#: kmcomposewin.cpp:359
 msgid "&Followup-To:"
 msgstr "S&var til:"
 
-#: kmcomposewin.cpp:432
+#: kmcomposewin.cpp:431
 msgid "&Send"
 msgstr "&Senda"
 
-#: kmcomposewin.cpp:435
+#: kmcomposewin.cpp:434
 msgid "S&end later"
 msgstr "S&enda síðar"
 
-#: kmcomposewin.cpp:437
+#: kmcomposewin.cpp:436
 msgid "S&end now"
 msgstr "Senda &núna"
 
-#: kmcomposewin.cpp:439
+#: kmcomposewin.cpp:438
 msgid "&Insert File..."
 msgstr "Setja &inn skrá..."
 
-#: kmcomposewin.cpp:448
+#: kmcomposewin.cpp:447
 msgid "&New Composer..."
 msgstr "&Nýr ritill..."
 
-#: kmcomposewin.cpp:471 kmcomposewin.cpp:703 kmcomposewin.cpp:1892
+#: kmcomposewin.cpp:470 kmcomposewin.cpp:702 kmcomposewin.cpp:1891
 msgid "Mark all"
 msgstr "Velja öll"
 
-#: kmcomposewin.cpp:474 kmcomposewin.cpp:705
+#: kmcomposewin.cpp:473 kmcomposewin.cpp:704
 msgid "Find..."
 msgstr "Finna..."
 
-#: kmcomposewin.cpp:476 kmcomposewin.cpp:706
+#: kmcomposewin.cpp:475 kmcomposewin.cpp:705
 msgid "Replace..."
 msgstr "Skipta um..."
 
-#: kmcomposewin.cpp:479
+#: kmcomposewin.cpp:478
 msgid "&Spellcheck..."
 msgstr "&Skoða stafsetningu..."
 
-#: kmcomposewin.cpp:486
+#: kmcomposewin.cpp:485
 msgid "&Urgent"
 msgstr "Áríð&andi"
 
-#: kmcomposewin.cpp:488
+#: kmcomposewin.cpp:487
 msgid "&Confirm delivery"
 msgstr "Staðfesta &móttöku"
 
-#: kmcomposewin.cpp:490
+#: kmcomposewin.cpp:489
 msgid "&Confirm read"
 msgstr "Staðfesta &lestur"
 
-#: kmcomposewin.cpp:493
+#: kmcomposewin.cpp:492
 msgid "&Spellchecker..."
 msgstr "&Stafsetningarráðgjafinn..."
 
-#: kmcomposewin.cpp:496
+#: kmcomposewin.cpp:495
 msgid "&Charsets..."
 msgstr "S&tafasett..."
 
-#: kmcomposewin.cpp:509
+#: kmcomposewin.cpp:508
 msgid "&All Fields"
 msgstr "Öll s&væði "
 
-#: kmcomposewin.cpp:511
+#: kmcomposewin.cpp:510
 msgid "&From"
 msgstr "&Frá"
 
-#: kmcomposewin.cpp:512
+#: kmcomposewin.cpp:511
 msgid "&Reply to"
 msgstr "&Svar til"
 
-#: kmcomposewin.cpp:513
+#: kmcomposewin.cpp:512
 msgid "&To"
 msgstr "&Til"
 
-#: kmcomposewin.cpp:514
+#: kmcomposewin.cpp:513
 msgid "&Cc"
 msgstr "&Afrit (Cc)"
 
-#: kmcomposewin.cpp:515
+#: kmcomposewin.cpp:514
 msgid "&Bcc"
 msgstr "&Blint svar (Bcc)"
 
-#: kmcomposewin.cpp:516
+#: kmcomposewin.cpp:515
 msgid "&Subject"
 msgstr "&Umfangsefni"
 
-#: kmcomposewin.cpp:518
+#: kmcomposewin.cpp:517
 msgid "&Newsgroups"
 msgstr "Umræðu&hópar"
 
-#: kmcomposewin.cpp:519
+#: kmcomposewin.cpp:518
 msgid "&Followup-To"
 msgstr "&Fylgja eftir til"
 
-#: kmcomposewin.cpp:525
+#: kmcomposewin.cpp:524
 msgid "Append S&ignature"
-msgstr "Setja und&irskrift"
+msgstr "Setja &undirskrift"
 
-#: kmcomposewin.cpp:527
+#: kmcomposewin.cpp:526
 msgid "&Insert File"
-msgstr "Setja inn skrá"
+msgstr "Setja inn &skrá"
 
-#: kmcomposewin.cpp:530
+#: kmcomposewin.cpp:529
 msgid "&Attach..."
 msgstr "&Hengja við..."
 
-#: kmcomposewin.cpp:532
-#, fuzzy
+#: kmcomposewin.cpp:531
 msgid "Attach &Public Key"
-msgstr "Bæta lyklinum mínum við"
+msgstr "Hengja &opinberan lykil við..."
 
-#: kmcomposewin.cpp:534
-#, fuzzy
+#: kmcomposewin.cpp:533
 msgid "Attach My &Public Key"
-msgstr "Bæta lyklinum mínum við"
+msgstr "Hengja opinbera lykilinn &minn við"
 
-#: kmcomposewin.cpp:545
+#: kmcomposewin.cpp:544
 msgid "&Save..."
 msgstr "&Vista..."
 
-#: kmcomposewin.cpp:546
+#: kmcomposewin.cpp:545
 msgid "Pr&operties..."
-msgstr "Stillingar..."
+msgstr "S&tillingar..."
 
-#: kmcomposewin.cpp:548
+#: kmcomposewin.cpp:547
 msgid "&Attach"
-msgstr "&Hengja við..."
+msgstr "Hengja &við"
 
-#: kmcomposewin.cpp:568
+#: kmcomposewin.cpp:567
 msgid "Send message"
 msgstr "Senda bréf"
 
-#: kmcomposewin.cpp:592
+#: kmcomposewin.cpp:591
 msgid "Cut selection"
 msgstr "Klippa"
 
-#: kmcomposewin.cpp:595
+#: kmcomposewin.cpp:594
 msgid "Copy selection"
 msgstr "Afrita"
 
-#: kmcomposewin.cpp:598
+#: kmcomposewin.cpp:597
 msgid "Paste clipboard contents"
 msgstr "Líma innihald klemmuspjalds"
 
-#: kmcomposewin.cpp:603
+#: kmcomposewin.cpp:602
 msgid "Attach file"
 msgstr "Hengja skrá við"
 
-#: kmcomposewin.cpp:614
+#: kmcomposewin.cpp:613
 msgid "sign message"
 msgstr "skrifa undir"
 
-#: kmcomposewin.cpp:619
+#: kmcomposewin.cpp:618
 msgid "encrypt message"
 msgstr "dulrita bréfið"
 
-#: kmcomposewin.cpp:636 kmcomposewin.cpp:652
+#: kmcomposewin.cpp:635 kmcomposewin.cpp:651
 msgid "Column"
 msgstr "Dálkur"
 
-#: kmcomposewin.cpp:637 kmcomposewin.cpp:650
+#: kmcomposewin.cpp:636 kmcomposewin.cpp:649
 msgid "Line"
 msgstr "Lína"
 
-#: kmcomposewin.cpp:918
+#: kmcomposewin.cpp:917
 msgid "KMail Confirm"
 msgstr "KMail staðfesting"
 
-#: kmcomposewin.cpp:919
+#: kmcomposewin.cpp:918
 msgid ""
 "Close and discard\n"
 "edited message?"
@@ -955,59 +952,59 @@ msgstr ""
 "Loka og hætta við\n"
 "þetta bréf?"
 
-#: kmcomposewin.cpp:1192
+#: kmcomposewin.cpp:1191
 msgid "Attach File"
 msgstr "Hengja skrá við"
 
-#: kmcomposewin.cpp:1214
+#: kmcomposewin.cpp:1213
 msgid "Include File"
 msgstr "Setja skrá með"
 
-#: kmcomposewin.cpp:1246
+#: kmcomposewin.cpp:1245
 msgid "my pgp key"
-msgstr ""
+msgstr "pgp lykillinn minn"
 
-#: kmcomposewin.cpp:1274
+#: kmcomposewin.cpp:1273
 msgid "pgp key"
-msgstr ""
+msgstr "pgp lykill"
 
-#: kmcomposewin.cpp:1295 kmreaderwin.cpp:721
+#: kmcomposewin.cpp:1294 kmreaderwin.cpp:721
 msgid "View..."
 msgstr "Skoða..."
 
-#: kmcomposewin.cpp:1296
+#: kmcomposewin.cpp:1295
 msgid "Save..."
 msgstr "Vista..."
 
-#: kmcomposewin.cpp:1297 kmreaderwin.cpp:724
+#: kmcomposewin.cpp:1296 kmreaderwin.cpp:724
 msgid "Properties..."
 msgstr "Stillingar..."
 
-#: kmcomposewin.cpp:1301
+#: kmcomposewin.cpp:1300
 msgid "Attach..."
 msgstr "Hengja við..."
 
-#: kmcomposewin.cpp:1343 kmreaderwin.cpp:766
+#: kmcomposewin.cpp:1342 kmreaderwin.cpp:766
 msgid "View Attachment: "
 msgstr "Skoða viðhengingu: "
 
-#: kmcomposewin.cpp:1537
+#: kmcomposewin.cpp:1536
 msgid "To:"
 msgstr "Til:"
 
-#: kmcomposewin.cpp:1541
+#: kmcomposewin.cpp:1540
 msgid "Subject:"
 msgstr "Umfangsefni:"
 
-#: kmcomposewin.cpp:1544
+#: kmcomposewin.cpp:1543
 msgid "Date:"
 msgstr "Dags:"
 
-#: kmcomposewin.cpp:2074
+#: kmcomposewin.cpp:2073
 msgid "Spellcheck - KMail"
 msgstr "Stafsetningarskoðun - KMail"
 
-#: kmcomposewin.cpp:2100
+#: kmcomposewin.cpp:2099
 msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
 msgstr "Villa í KSpell.  Vinsamlega athugaðu að þú hafir ISpell rétt stillt."
@@ -1135,19 +1132,19 @@ msgstr ""
 "hlutanum í stillingunum til að geta tekið\n"
 "á móti tölvupósti."
 
-#: main.cpp:105 main.cpp:228
+#: main.cpp:104 main.cpp:227
 msgid "warning"
 msgstr "aðvörun"
 
-#: main.cpp:112 main.cpp:113
+#: main.cpp:111 main.cpp:112
 msgid "fatal error"
 msgstr "slæm villa"
 
-#: main.cpp:163
+#: main.cpp:162
 msgid "KMail notification"
 msgstr "KMail tilkynning"
 
-#: main.cpp:164
+#: main.cpp:163
 msgid ""
 "$HOME is not set!\n"
 "KMail cannot start without it.\n"
@@ -1155,7 +1152,7 @@ msgstr ""
 "$HOME er ekki til/tilbúið !\n"
 "KMail getur ekki keyrt án þess.\n"
 
-#: main.cpp:230
+#: main.cpp:229
 msgid ""
 "The directory ~/KMail exists. From now on, KMail uses the\n"
 "directory ~/Mail for it's messages.\n"
@@ -1173,11 +1170,11 @@ msgstr ""
 "\n"
 "Viltu að KMail færi þessar póstmöppur núna ?"
 
-#: main.cpp:335
+#: main.cpp:334
 msgid "Loading addressbook failed"
 msgstr "Tókst ekki að sækja póstfangabók"
 
-#: main.cpp:405
+#: main.cpp:404
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr "Óþekktur skipanarofi: %s"
@@ -1590,9 +1587,8 @@ msgid "Please select the public key to insert"
 msgstr ""
 
 #: kpgp.cpp:800
-#, fuzzy
 msgid "Select key"
-msgstr "Velja möppu"
+msgstr "Veldu lykil"
 
 #: kpgp.cpp:827
 msgid "PGP User Identity:"
@@ -1606,35 +1602,35 @@ msgstr "Vista lykilorðssetningu"
 msgid "Always encrypt to self"
 msgstr "Alltaf dulrita til þín"
 
-#: kpgpbase.cpp:320
+#: kpgpbase.cpp:315
 msgid "Bad pass Phrase; couldn't sign"
 msgstr "Slæm setning: Gat ekki skrifað undir"
 
-#: kpgpbase.cpp:359
+#: kpgpbase.cpp:354
 msgid "error running pgp"
 msgstr "villa við að keyra PGP"
 
-#: kpgpbase.cpp:376 kpgpbase.cpp:667
+#: kpgpbase.cpp:371 kpgpbase.cpp:662
 msgid "Bad pass Phrase; couldn't decrypt"
 msgstr "Slæm setning: Gat ekki dulritað"
 
-#: kpgpbase.cpp:387 kpgpbase.cpp:678
+#: kpgpbase.cpp:382 kpgpbase.cpp:673
 msgid "Do not have the secret key for this message"
 msgstr "Þú hefur ekki lykilinn að þessu bréfi"
 
-#: kpgpbase.cpp:415
+#: kpgpbase.cpp:410
 msgid "unknown key ID "
 msgstr "kennitala þessa lykils er óþekkt"
 
-#: kpgpbase.cpp:435
+#: kpgpbase.cpp:430
 msgid "??? (file ~/.pgp/pubring.pgp not found)"
 msgstr "??? (Skrá ~/.pgp/pubring.pgp fannst ekki)"
 
-#: kpgpbase.cpp:590
+#: kpgpbase.cpp:585
 msgid "The passphrase you entered is invalid."
 msgstr "Lykilorðssetningin er röng."
 
-#: kpgpbase.cpp:616
+#: kpgpbase.cpp:611
 msgid ""
 "The key(s) you wan't to encrypt your message\n"
 "to are not trusted. No encryption done."
@@ -1642,7 +1638,7 @@ msgstr ""
 "Dulritun með þessum lykli/lyklum er ekki möguleg\n"
 "því honum/þeim er ekki treyst.  Dulritun var ekki framkvæmd."
 
-#: kpgpbase.cpp:619
+#: kpgpbase.cpp:614
 #, c-format
 msgid ""
 "The following key(s) are not trusted:\n"
@@ -1835,6 +1831,5 @@ msgid "&7 bit is ASCII"
 msgstr "&7-bita ASCII"
 
 #: charsetsDlg.cpp:84
-#, fuzzy
 msgid "&Qute unknonw characters"
-msgstr "&Frekar óþekktir stafir"
+msgstr "Nota `quoted printable' á óþekkta stafi"
