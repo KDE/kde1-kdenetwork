@@ -1,5 +1,11 @@
 #include "rules.h"
 
+#include <qdict.h>
+#include <ksimpleconfig.h>
+
+extern QDict <Rule> ruleDict;
+extern KSimpleConfig *ruleFile;
+
 
 Rule::Rule(const char *_name=0,const char *expr=0,Field _field,
            bool casesen,bool wildmode)
@@ -106,10 +112,30 @@ bool Rule::match(const Article art,NNTP *server)
     return matches;
 }
 
-void load(const char *name,KConfigBase *conf)
+void Rule::load(const char *name)
 {
+    ruleFile->setGroup(name);
+    regex=QRegExp(ruleFile->readEntry("Regexp",""),
+                  ruleFile->readNumEntry("CaseSensitive",false),
+                  ruleFile->readNumEntry("WildCard",false));
+    field=(Rule::Field)(ruleFile->readNumEntry("Field",0));
 }
-void save(const char *name,KConfigBase *conf)
+void Rule::save(const char *name)
 {
+    ruleFile->setGroup("Index");
+    QStrList names;
+    ruleFile->readListEntry("RuleNames",names);
+    if (names.find(name)==-1)
+    {
+        names.append(name);
+        ruleFile->writeEntry("RuleNames",names);
+    }
+    ruleFile->setGroup(name);
+    ruleFile->writeEntry("Name",name);
+    ruleFile->writeEntry("Regexp",regex.pattern());
+    ruleFile->writeEntry("Field",field);
+    ruleFile->writeEntry("WildCard",regex.wildcard());
+    ruleFile->writeEntry("CaseSensitive",regex.caseSensitive());
+    ruleFile->sync();
 }
 

@@ -16,8 +16,8 @@ public:
          bool casesen=false,bool wildmode=false);
     ~Rule();
 
-    void load(const char *name,KConfigBase *conf);
-    void save(const char *name,KConfigBase *conf);
+    void load(const char *name);
+    void save(const char *name);
     bool match (const Article art,NNTP *server=0);
     MessageParts missingParts();
     QRegExp regex;

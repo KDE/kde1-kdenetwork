@@ -69,6 +69,8 @@ KBusyPtr *kbp;
 KMAddrBook *addrBook;
 QDict <char> unreadDict(17,TRUE);
 
+QDict <Rule> ruleDict();
+KSimpleConfig *ruleFile;
 
 QString krnpath,cachepath,artinfopath,groupinfopath,pixpath,dbasepath,outpath;
 
@@ -181,6 +183,9 @@ int main( int argc, char **argv )
         free (key.dptr);
         key = nextkey;
     };
+
+    // Load the rules
+    ruleFile=new KSimpleConfig(krnpath+"/rules");
     
     Groupdlg k;
     main_widget = &k;

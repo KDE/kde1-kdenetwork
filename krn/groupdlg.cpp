@@ -548,7 +548,8 @@ void Groupdlg::fillTree ()
     QPixmap p;
     p=kapp->getIconLoader()->loadIcon("krnfolder.xpm");
     KTreeViewItem *item=new KTreeViewItem(klocale->translate("Subscribed Newsgroups."), p);
-    item->setDelayedExpanding(true);
+    if (subscr.count()>0)
+        item->setDelayedExpanding(true);
     list->insertItem (item);
     QListIterator <NewsGroup> it(subscr);
     it.toFirst();

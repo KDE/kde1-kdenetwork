@@ -1,16 +1,23 @@
 #include <qpushbt.h>
+#include <qlist.h>
+#include <qlined.h>
+#include <qlabel.h>
+#include <qlistbox.h>
 
 
 #include <kapp.h>
+#include <ksimpleconfig.h>
 
 
 #include "typelayout.h"
 #include "tlform.h"
+#include "asker.h"
 
 
 #include "rulesDlg.h"
 #include "rulesDlg.moc"
 
+extern KSimpleConfig *ruleFile;
 
 rulesDlg::rulesDlg():QDialog(0,0,true)
 {
@@ -21,13 +28,21 @@ rulesDlg::rulesDlg():QDialog(0,0,true)
     KTypeLayout *l=f->layout;
 
     l->addGroup ("top","",true);
-    l->addListBox("rulenames");
+
+    ruleFile->setGroup("Index");
+    QStrList names;
+    ruleFile->readListEntry("RuleNames",names);
+
+    list=(QListBox *)(l->addListBox("rulenames",&names)->widget);
     l->findWidget("rulenames")->setMinimumWidth(100);
 
     l->addGroup ("rulbut","");
     l->addButton ("save",klocale->translate("Save"));
     l->newLine();
-    l->addButton ("saveas",klocale->translate("Save as"));
+    QPushButton *saveas=(QPushButton *)
+        (l->addButton ("saveas",klocale->translate("Save as"))->widget);
+    connect (saveas,SIGNAL(clicked()),SLOT(saveRuleAs()));
+    
     l->newLine();
     l->addButton ("edit",klocale->translate("Edit"));
     l->newLine();
@@ -35,7 +50,7 @@ rulesDlg::rulesDlg():QDialog(0,0,true)
     l->endGroup(); //rulbut
 
     l->addGroup ("ruleedit","",true);
-    
+
 
     l->addLabel("l1",klocale->translate("Match Articles With:"));
     l->newLine();
@@ -84,4 +99,28 @@ rulesDlg::rulesDlg():QDialog(0,0,true)
 
 rulesDlg::~rulesDlg()
 {
+}
+
+
+void rulesDlg::editRule(char *name)
+{
+    
+}
+void rulesDlg::saveRule(char *name)
+{
+    
+}
+void rulesDlg::saveRuleAs()
+{
+    Asker ask;
+    ask.label->setText(klocale->translate("Rule name:"));
+    ask.exec();
+    rule=new Rule(ask.entry->text(),"",Rule::Sender,false,false);
+    rule->save(ask.entry->text());
+    list->insertItem(ask.entry->text());
+    delete rule;
+}
+void rulesDlg::loadRule(char *name)
+{
+    
 }

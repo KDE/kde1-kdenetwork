@@ -638,6 +638,33 @@ void KMMessage::setXMark(const QString aStr)
 
 
 //-----------------------------------------------------------------------------
+const QStrList KMMessage::headerAddrField(const QString aName) const
+{
+  static QStrList resultList;
+  DwHeaders& header = mMsg->Headers();
+  DwAddressList* addrList;
+  DwAddress* addr;
+  QString str;
+
+  if (aName.isEmpty()) return resultList;
+  addrList = (DwAddressList*)&header.FieldBody((const char*)aName);
+
+  for (addr=addrList->FirstAddress(); addr; addr=addr->Next())
+  {
+    resultList.append(decodeRFC1522String(addr->AsString().c_str()));
+  }
+
+  if (resultList.count()==0)
+  {
+    str = headerField(aName);
+    if (!str.isEmpty()) resultList.append(str);
+  }
+
+  return resultList;
+}
+
+
+//-----------------------------------------------------------------------------
 const QString KMMessage::headerField(const QString aName) const
 {
   DwHeaders& header = mMsg->Headers();
@@ -810,52 +837,42 @@ const QString KMMessage::body(void) const
 const QString KMMessage::bodyDecoded(void) const
 {
   DwString dwsrc, dwstr;
-  int len;
 
   dwsrc = mMsg->Body().AsString().c_str();
   switch (cte())
   {
   case DwMime::kCteBase64:
     DwDecodeBase64(dwsrc, dwstr);
-    len = dwstr.size();
-    result.resize(len+1);
-    memcpy((void*)result.data(), (void*)dwstr.c_str(), len);
     break;
   case DwMime::kCteQuotedPrintable:
     DwDecodeQuotedPrintable(dwsrc, dwstr);
-    result = dwstr.c_str();
     break;
   default:
-    result = dwsrc.c_str();
+    dwstr = dwsrc;
     break;
   }
 
-  return result;
+  return QString(dwstr.c_str(), dwsrc.size());
 }
 
 
 //-----------------------------------------------------------------------------
 void KMMessage::setBodyEncoded(const QString aStr)
 {
-  //  DwString dwSrc(aStr.data(), aStr.size(), 0, aStr.length());
-  DwString dwResult, dwSrc;
-  int len = aStr.size();
+  int len = aStr.length();
+  DwString dwSrc(aStr.data(), len);
+  DwString dwResult;
 
   switch (cte())
   {
   case DwMime::kCteBase64:
-    dwSrc.resize(len);
-    memcpy((void*)dwSrc.data(), (void*)aStr.data(), len);
     DwEncodeBase64(dwSrc, dwResult);
     break;
   case DwMime::kCteQuotedPrintable:
-    dwSrc.resize(len);
-    memcpy((void*)dwSrc.data(), (void*)aStr.data(), len);
     DwEncodeQuotedPrintable(dwSrc, dwResult);
     break;
   default:
-    dwResult.resize(len);
-    memcpy((void*)dwResult.data(), (void*)aStr.data(), len);
+    dwResult = dwSrc;
     break;
   }
 
