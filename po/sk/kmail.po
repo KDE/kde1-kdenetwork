@@ -84,13 +84,12 @@ msgstr ""
 "\"%s\" a tým zru¹i» jeho obsah?"
 
 #: kmmainwin.cpp:476
-#, fuzzy
 msgid "KMail notification!"
 msgstr "Upozornenie KMailu"
 
 #: kmmainwin.cpp:477
 msgid "Only messages in the outbox folder can be edited!"
-msgstr ""
+msgstr "Mô¾ete editova» iba správy v prieèinku outbox!"
 
 #: kmmainwin.cpp:512
 msgid "Message as Plain Text"
@@ -257,9 +256,8 @@ msgid "Previous unread"
 msgstr "Predchádzajúca nepreèítaná"
 
 #: kmmainwin.cpp:932
-#, fuzzy
 msgid "Edi&t..."
-msgstr "Tlaèi»..."
+msgstr "Edi&tova»..."
 
 #: kmmainwin.cpp:935
 msgid "&Set Status"
@@ -567,7 +565,7 @@ msgstr "vyprázdni» kô¹ pri ukonèení"
 
 #: kmsettings.cpp:533
 msgid "Send Mail in outbox Folder on Check"
-msgstr ""
+msgstr "Pri kontrole zasla» po¹tu z prieèinku outbox"
 
 #: kmsettings.cpp:572
 msgid "Message Body Font"
@@ -1124,11 +1122,8 @@ msgid "Unknown command line option: %s"
 msgstr "Neznáma voµba príkazového riadku: %s"
 
 #: kmacctlocal.cpp:69
-#, fuzzy
 msgid "Cannot open file:"
-msgstr ""
-"Nemô¾em otvori» súbor:\n"
-"%s"
+msgstr "Nemô¾em otvori» súbor:"
 
 #: kmacctlocal.cpp:95
 #, c-format

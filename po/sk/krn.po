@@ -155,7 +155,6 @@ msgid "Find group"
 msgstr "Nájs» skupinu"
 
 #: groupdlg.cpp:208
-#, fuzzy
 msgid "(Un)Subscribe"
 msgstr "Prihlási»/Odhlási»"
 
@@ -349,21 +348,19 @@ msgstr "Obnovi» displej"
 
 #: artdlg.cpp:241
 msgid "Current"
-msgstr ""
+msgstr "Súèasný"
 
 #: artdlg.cpp:243 fontsDlg.cpp:52
 msgid "All"
-msgstr "V¹etko"
+msgstr "V¹etky"
 
 #: artdlg.cpp:244
-#, fuzzy
 msgid "Read"
-msgstr "Preèítané:"
+msgstr "Preèítané"
 
 #: artdlg.cpp:245
-#, fuzzy
 msgid "UnRead"
-msgstr "Nepreèítané:"
+msgstr "Nepreèítané"
 
 #: artdlg.cpp:248
 msgid "Save Article"
@@ -584,18 +581,16 @@ msgid "Standard Font"
 msgstr "©tandardný font"
 
 #: fontsDlg.cpp:84
-#, fuzzy
 msgid "Standard Font Test"
-msgstr "©tandardný font"
+msgstr "©tandardný font (test)"
 
 #: fontsDlg.cpp:86
 msgid "Fixed Font"
 msgstr "Fixovaný font"
 
 #: fontsDlg.cpp:91
-#, fuzzy
 msgid "Fixed Font Test"
-msgstr "Fixovaný font"
+msgstr "Fixovaný font (test)"
 
 #: fontsDlg.cpp:94
 msgid "Background Color"
@@ -679,7 +674,7 @@ msgstr "V¹eobecné"
 
 #: printdlg.cpp:35
 msgid "Printing System"
-msgstr ""
+msgstr "Systém tlaèe"
 
 #: printdlg.cpp:37
 msgid "Use HTML Printing"
@@ -690,9 +685,8 @@ msgid "Use Direct Printing"
 msgstr "Pou¾i» priamu tlaè"
 
 #: printdlg.cpp:45
-#, fuzzy
 msgid "Direct Printing"
-msgstr "Pou¾i» priamu tlaè"
+msgstr "Priama tlaè"
 
 #: printdlg.cpp:48
 msgid "Print using:"
