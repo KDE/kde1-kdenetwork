@@ -55,19 +55,26 @@
 
 #define MAXLOOPNEST (MAX_SCRIPT_ENTRIES/2)
 
-class ConnectWidget : public QWidget, public Modem {
-
+// what a "meaningfull" class name
+class NewTimer : public QTimer {
   Q_OBJECT
-
 public:
-  
+  NewTimer(QObject *parent = 0, const char *name = 0);
+  int start(int msec, bool sshot = FALSE);
+  int interval() const;
+  void changeInterval(int msec);
+
+private:
+  int _interval;
+};
+
+class ConnectWidget : public QWidget, public Modem {
+  Q_OBJECT
+public:  
   ConnectWidget(QWidget *parent=0, const char *name=0);
   ~ConnectWidget();
   
-
-
 public:
-
   void set_con_speed_string();
   void setMsg(const char *);
   friend void sigint(int);
@@ -77,47 +84,48 @@ protected:
   void closeEvent( QCloseEvent *e );  
 
 private slots:
-    void readtty();
-    void pause();
-    void cancelbutton();
-    void debugbutton();
-    void if_waiting_slot();
+  void readtty();
+  void pause();
+  void cancelbutton();
+  void debugbutton();
+  void if_waiting_slot();
 
 public slots:
-    void init();
-    void preinit();
-    void script_timed_out();
-    void if_waiting_timed_out();
+  void init();
+  void preinit();
+  void script_timed_out();
+  void if_waiting_timed_out();
 
 signals:
-    void if_waiting_signal();
+  void if_waiting_signal();
 
 public:
-    QString myreadbuffer;  // we want to keep every thing in order to fish for the 
-                           // connection speed later on
-    QPushButton *debug;
-    int main_timer_ID;
-
+  QString myreadbuffer;  // we want to keep every thing in order to fish for the 
+  
+  // connection speed later on
+  QPushButton *debug;
+  int main_timer_ID;
+  
 private:
   int vmain;
   int scriptindex;
 
-//  static const int maxloopnest=(MAX_SCRIPT_ENTRIES/2);
+  //  static const int maxloopnest=(MAX_SCRIPT_ENTRIES/2);
   int loopnest;
   int loopstartindex[MAXLOOPNEST];
   bool loopend;
   QString loopstr[MAXLOOPNEST];
-
+  
   bool semaphore;
   QTimer *inittimer;
   QTimer *timeout_timer;
   bool execppp();
-
+  
   void setExpect(const char *);
   bool expecting;
   QString expectstr;
-
-  QTimer *readtimer;
+  
+  NewTimer *readtimer;  
   QString readbuffer;
 
   void setScan(const char *);
@@ -143,7 +151,6 @@ private:
   bool modem_in_connect_state; 
 
   unsigned int dialnumber; // the current number to dial
-
 };
 
 
@@ -155,3 +162,4 @@ void add_domain(const char* newdomain);
 void auto_hostname();
 
 #endif
+

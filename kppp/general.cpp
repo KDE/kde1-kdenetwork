@@ -180,11 +180,11 @@ void GeneralWidget::pppdtimeoutchanged(const char *n) {
 AboutWidget::AboutWidget( QWidget *parent, const char *name)
   : QWidget(parent, name)
 {
-  QGridLayout *tl = new QGridLayout(this, 4, 4, 10, 10);
+  QGridLayout *tl = new QGridLayout(this, 3, 3, 10, 10);
   tl->addRowSpacing(0, fontMetrics().lineSpacing() - 10); // magic
   box = new QGroupBox(this,"box");
   box->setTitle(i18n("About kppp"));
-  tl->addMultiCellWidget(box, 0, 3, 0, 3);
+  tl->addMultiCellWidget(box, 0, 2, 0, 2);
 
   label1 = new QLabel(this, "About");
   label1->setAlignment(AlignLeft|ExpandTabs);
@@ -192,33 +192,21 @@ AboutWidget::AboutWidget( QWidget *parent, const char *name)
   QString string;
   string = "kppp "KPPPVERSION;
   string += i18n("\nA dialer and front-end to pppd\n\n"
-			       "Copyright (c) 1997\nBernd Johannes Wuebben\n"
-			       "wuebben@math.cornell.edu");
+		 "(c) 1997, 1998\n"
+		 "    Bernd Johannes Wuebben <wuebben@kde.org>\n"
+		 "    Harri Porten <porten@kde.org>\n"
+		 "    Mario Weilguni <mweilguni@kde.org>\n\n"
+		 "Currently maintained by Harri Porten and Mario\n"
+		 "Weilguni. Please send all bug reports to the\n"
+		 "current maintainer.\n\n"
+		 "This program is distributed under the GNU GPL\n"
+		 "(GNU General Public License)."
+		 );
   label1->setText(string);
   label1->setMinimumSize(label1->sizeHint());
-  tl->addMultiCellWidget(label1, 1, 1, 1, 2);
+  tl->addWidget(label1, 1, 1);
 
   QString pixdir = KApplication::kde_datadir() +"/kppp/pics/";  
-
-  QPixmap pm((pixdir + "kppplogo.xpm").data());
-  QLabel *logo = new QLabel(this);
-  logo->setPixmap(pm);
-  logo->setFixedSize(pm.size());
-  tl->addWidget(logo, 2, 1);
-
-  QString string2 = 
-    i18n("With contributions from:\n\n"
-		       "Mario Weilguni\n"
-		       "Markus Wuebben\n"
-		       "Jesus Fuentes Saavedra\n"
-		       "Harri Porten\n"
-		       "Peter Silva");
-  
-  label2 = new QLabel(this,"About2");
-  label2->setAlignment(AlignLeft|ExpandTabs);
-  label2->setText(string2);
-  label2->setMinimumSize(label2->sizeHint());
-  tl->addWidget(label2, 2, 2);
   
   tl->activate();
 }
@@ -228,6 +216,8 @@ AboutWidget::AboutWidget( QWidget *parent, const char *name)
 ModemWidget::ModemWidget( QWidget *parent, const char *name)
   : QWidget(parent, name)
 {
+  int k;
+
   QGridLayout *tl = new QGridLayout(this, 10, 4, 10, 10);
   tl->addRowSpacing(0, fontMetrics().lineSpacing() - 10); // magic
 
@@ -239,29 +229,36 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   tl->addWidget(label1, 1, 1);
   
   modemdevice = new QComboBox(false,this, "modemdevice");
-#ifdef __FreeBSD__
-  modemdevice->insertItem("/dev/cuaa0");
-  modemdevice->insertItem("/dev/cuaa1");
-  modemdevice->insertItem("/dev/cuaa2");
-  modemdevice->insertItem("/dev/cuaa3");
-#else
-  modemdevice->insertItem("/dev/modem");
-  modemdevice->insertItem("/dev/cua0");
-  modemdevice->insertItem("/dev/cua1");
-  modemdevice->insertItem("/dev/cua2");
-  modemdevice->insertItem("/dev/cua3");
-  modemdevice->insertItem("/dev/ttyS0");
-  modemdevice->insertItem("/dev/ttyS1");
-  modemdevice->insertItem("/dev/ttyS2");
-  modemdevice->insertItem("/dev/ttyS3");
 
-#ifdef ISDNSUPPORT
-  modemdevice->insertItem("/dev/ttyI0");
-  modemdevice->insertItem("/dev/ttyI1");
-  modemdevice->insertItem("/dev/ttyI2");
-  modemdevice->insertItem("/dev/ttyI3");
+  static char *devices[] = {
+#ifdef __FreeBSD__
+  "/dev/cuaa0",
+  "/dev/cuaa1",
+  "/dev/cuaa2",
+  "/dev/cuaa3",
+#else
+  "/dev/modem",
+  "/dev/cua0",
+  "/dev/cua1",
+  "/dev/cua2",
+  "/dev/cua3",
+  "/dev/ttyS0",
+  "/dev/ttyS1",
+  "/dev/ttyS2",
+  "/dev/ttyS3",
+
+#ifndef NOISDNSUPPORT
+  "/dev/ttyI0",
+  "/dev/ttyI1",
+  "/dev/ttyI2",
+  "/dev/ttyI3",
 #endif
 #endif
+  0};
+
+  for(k = 0; devices[k]; k++)
+    modemdevice->insertItem(devices[k]);
+
   modemdevice->setMinimumWidth(modemdevice->sizeHint().width());
   modemdevice->setFixedHeight(modemdevice->sizeHint().height());
   tl->addWidget(modemdevice, 1, 2);
@@ -306,26 +303,32 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   tl->addLayout(l1, 4, 2);
   baud_c = new QComboBox(this, "baud_c");
 
+  static char *baudrates[] = {
+    
 #ifdef B460800 
-  baud_c->insertItem("460800");
+    "460800",
 #endif
 
 #ifdef B230400
-  baud_c->insertItem("230400");
+    "230400",
 #endif
 
 #ifdef B115200
-  baud_c->insertItem("115200");
+    "115200",
 #endif
 
 #ifdef B57600
-  baud_c->insertItem("57600");
+    "57600",
 #endif
 
-  baud_c->insertItem("38400");
-  baud_c->insertItem("19200");
-  baud_c->insertItem("9600");
-  baud_c->insertItem("2400");
+    "38400",
+    "19200",
+    "9600",
+    "2400",
+    0};
+
+  for(k = 0; baudrates[k]; k++)
+    baud_c->insertItem(baudrates[k]);
   
   baud_c->setCurrentItem(3);
   connect(baud_c, SIGNAL(activated(int)),
@@ -428,7 +431,7 @@ void ModemWidget::modemtimeoutchanged(const char *n) {
 
 // Add functions
 char *itoa(int n) {
-  static char buf[10];
+  static char buf[16];
   
   sprintf(buf,"%d",n);  
 

@@ -52,6 +52,9 @@
 #include "docking.h"
 #include "loginterm.h"
 
+#define FAST_READ_TIMER 1
+#define SLOW_READ_TIMER 20
+
 const int MAX_ARGS = 100;
 
 void parseargs(char* buf, char** args);
@@ -70,6 +73,28 @@ bool modified_hostname;
 LoginTerm *termwindow = 0L;
 
 extern int totalbytes;
+
+
+NewTimer::NewTimer(QObject *parent, const char *name) :
+  QTimer(parent, name)
+{
+  _interval = -1;
+}
+
+int NewTimer::start(int msec, bool sshot) {
+  int ret = QTimer::start(msec, sshot);
+  _interval = msec;
+  return ret;
+}
+
+int NewTimer::interval() const {
+  return _interval;
+}
+
+void NewTimer::changeInterval(int msec) {
+  QTimer::changeInterval(msec);
+  _interval = msec;
+}
 
 ConnectWidget::ConnectWidget(QWidget *parent, const char *name)
   : QWidget(parent, name)
@@ -147,7 +172,7 @@ ConnectWidget::ConnectWidget(QWidget *parent, const char *name)
 
   kapp->processEvents();
 
-  readtimer = new QTimer(this);
+  readtimer = new NewTimer(this);
   connect(readtimer, SIGNAL(timeout()), SLOT(readtty()));
 
   timeout_timer = new QTimer(this);
@@ -168,22 +193,19 @@ ConnectWidget::ConnectWidget(QWidget *parent, const char *name)
 
 
 ConnectWidget::~ConnectWidget() {
-
   delete prompt;
 }
 
-void ConnectWidget::preinit() {
 
+void ConnectWidget::preinit() {
   // this is all just to keep the GUI nice and snappy ....
   // you have to see to believe ...
-
   messg->setText(i18n("Looking for Modem ..."));
   inittimer->start(100);
 }
 
 
 void ConnectWidget::init() {
-
   pppd_has_died = false;
   gpppdata.setpppdError(0);
   inittimer->stop();
@@ -212,13 +234,13 @@ void ConnectWidget::init() {
 
   int lock = lockdevice();
 
-  if (lock == 1){
+  if (lock == 1) {
     
     messg->setText(i18n("Sorry, modem device is locked."));
     vmain = 20; // wait until cancel is pressed
     return;
   }
-  if (lock == -1){
+  if (lock == -1) {
     
     messg->setText(i18n("Sorry, can't create modem lock file."));
     vmain = 20; // wait until cancel is pressed
@@ -226,7 +248,7 @@ void ConnectWidget::init() {
   }
 
 
-  if(opentty()){
+  if(opentty()) {
     messg->setText(modemMessage());
     kapp->processEvents();
     if(hangup()) {
@@ -235,7 +257,7 @@ void ConnectWidget::init() {
 
       // this timer reads from the modem
       semaphore = false;
-      readtimer->start(10);
+      readtimer->start(SLOW_READ_TIMER);
       
       // if we are stuck anywhere we will time out
       timeout_timer->start(atoi(gpppdata.modemTimeout())*1000); 
@@ -326,7 +348,7 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
       p_kppp->debugwindow->readchar('\n');
       hangup();
 
-      if(gpppdata.busyWait() > 0){
+      if(gpppdata.busyWait() > 0) {
 
 	QString bm = i18n("Line Busy. Waiting: ");
 	bm += gpppdata.busyWait();
@@ -509,7 +531,7 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
 
 	QString idstring = gpppdata.storedUsername();
 	
-	if(!idstring.isEmpty() && firstrunID){
+	if(!idstring.isEmpty() && firstrunID) {
 	  // the user entered an Id on the main kppp dialog
 	  writeline(idstring.data());
 	  firstrunID = false;
@@ -546,7 +568,7 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
 
 	QString pwstring = gpppdata.Password();
 	
-	if(!pwstring.isEmpty() && firstrunPW){
+	if(!pwstring.isEmpty() && firstrunPW) {
 	  // the user entered a password on the main kppp dialog
 	  writeline(pwstring.data());
 	  firstrunPW = false;
@@ -789,7 +811,7 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
 }
 
 
-void ConnectWidget::set_con_speed_string(){
+void ConnectWidget::set_con_speed_string() {
 
   // Here we are trying to determine the speed at which we are connected.
   // Usually the modem responds after connect with something like
@@ -803,7 +825,7 @@ void ConnectWidget::set_con_speed_string(){
 
   // if ConnectResp is empty I don't know how to find the speed..
 
-  if (t.isEmpty()){
+  if (t.isEmpty()) {
     p_kppp->con_speed = i18n("unknown speed");
     return; 
   }
@@ -822,7 +844,7 @@ void ConnectWidget::set_con_speed_string(){
   int start = 0;
 
   start = r.match(myreadbuffer, 0, &len);
-  if (start != -1){
+  if (start != -1) {
     p = myreadbuffer.mid(start + strlen(gpppdata.modemConnectResp()) ,
 			 len - strlen(gpppdata.modemConnectResp()));      
     p = p.stripWhiteSpace();
@@ -837,11 +859,10 @@ void ConnectWidget::set_con_speed_string(){
 
 
 void ConnectWidget::readtty() {
-
-  char c;
-
   if(semaphore)
     return;
+
+  char c = 0;
 
   if(read(modemfd, &c, 1) == 1) {
     c = ((int)c & 0x7F);
@@ -850,11 +871,22 @@ void ConnectWidget::readtty() {
     
     // While in scanning mode store each char to the scan buffer
     // for use in the prompt command
-    if( scanning ) {
+    if( scanning )
        scanbuffer += c;
-    }
  
-    p_kppp->debugwindow->readchar(c); 
+    // add to debug window
+    p_kppp->debugwindow->readchar(c);
+
+    // ok, we received output from the modem, so it´s likely that we
+    // will receive further output. So I reduce the timer interval
+    // here to reduce latency
+    if(readtimer->interval() != FAST_READ_TIMER)
+      readtimer->changeInterval(FAST_READ_TIMER);
+  } else {
+    // since no output was received, let´s reduce the timer interval
+    // again to drop system load
+    if(readtimer->interval() != SLOW_READ_TIMER)
+      readtimer->changeInterval(SLOW_READ_TIMER);
   }
 
   // Let's check if we are finished with scanning:
@@ -952,9 +984,9 @@ void ConnectWidget::cancelbutton() {
 }
 
 
-void ConnectWidget::script_timed_out(){
+void ConnectWidget::script_timed_out() {
 
-  if(vmain == 20){ // we are in the 'wait for the user to cancel' state
+  if(vmain == 20) { // we are in the 'wait for the user to cancel' state
     timeout_timer->stop();
       p_kppp->stopAccounting();
       p_kppp->con_win->stopClock();
@@ -1008,7 +1040,7 @@ void ConnectWidget::setExpect(const char *n) {
   p_kppp->debugwindow->statusLabel(ts);
 }
 
-void ConnectWidget::if_waiting_timed_out(){
+void ConnectWidget::if_waiting_timed_out() {
 
 
   if_timer->stop();
@@ -1034,14 +1066,14 @@ void ConnectWidget::if_waiting_timed_out(){
 }
 
 
-void ConnectWidget::if_waiting_slot(){
+void ConnectWidget::if_waiting_slot() {
 
 
   messg->setText(i18n("Logging on to Network ..."));
 
-  if(!if_is_up()){
+  if(!if_is_up()) {
 
-    if(pppd_has_died){ // we are here if pppd died immediately after starting it.
+    if(pppd_has_died) { // we are here if pppd died immediately after starting it.
 
       if_timer->stop();
       // error message handled in main.cpp: die_ppp()
@@ -1191,7 +1223,7 @@ bool ConnectWidget::execppp() {
     command = command + "\"" + gpppdata.storedUsername() + "\"";
   }
 
-  if (command.length() > MAX_CMDLEN){
+  if (command.length() > MAX_CMDLEN) {
     QMessageBox::warning(this, 
 			 i18n("Error"), 
 			 i18n(
@@ -1201,6 +1233,10 @@ bool ConnectWidget::execppp() {
 			 );	
     return false; // nonsensically long command which would bust my buffer buf.
   }
+  
+  // check for debug
+  if(gpppdata.getPPPDebug())
+    command += " debug";
   
   strcpy(buf,command.data());
 
@@ -1256,24 +1292,20 @@ bool ConnectWidget::execppp() {
 
 
 
-void ConnectWidget::closeEvent( QCloseEvent *e ){
-
-        e->ignore();                            
-	
-	// We don't want to lose the conwindow since this is our last 
-	// connection to kppp. If we lost it we would have to kill the 
-	// program by hand to get on with life.
+void ConnectWidget::closeEvent( QCloseEvent *e ) {
+  // We don't want to lose the conwindow since this is our last 
+  // connection to kppp. If we lost it we would have to kill the 
+  // program by hand to get on with life.
+  e->ignore();                            
 }
-
 
 void ConnectWidget::setMsg(const char* msg) {
-
   messg->setText(msg);
-
 }
-// Set the hostname and domain from DNS Server
 
-void auto_hostname(){
+
+// Set the hostname and domain from DNS Server
+void auto_hostname() {
 
   struct in_addr local_ip;
   struct hostent *hostname_entry;
@@ -1284,11 +1316,11 @@ void auto_hostname(){
   gethostname(tmp_str, 100);
   old_hostname=tmp_str;
 
-  if (!local_ip_address.isEmpty() && gpppdata.autoname()){
+  if (!local_ip_address.isEmpty() && gpppdata.autoname()) {
     local_ip.s_addr=inet_addr((const char*)local_ip_address);
     hostname_entry=gethostbyaddr((const char *)&local_ip,sizeof(in_addr),AF_INET);
 
-    if (hostname_entry != NULL){
+    if (hostname_entry != NULL) {
       new_hostname=hostname_entry->h_name;
       dot=new_hostname.find('.');
       new_hostname=new_hostname.remove(dot,new_hostname.length()-dot);
@@ -1397,7 +1429,7 @@ void removedns() {
     if((fd = open("/etc/resolv.conf", O_WRONLY|O_TRUNC)) >= 0) {
       for(int j=0; j < i; j++) {
 	if(resolv[j].contains("#kppp temp entry")) continue;
-	if(resolv[j].contains("#entry disabled by kppp")){
+	if(resolv[j].contains("#entry disabled by kppp")) {
 	  write(fd, resolv[j].data()+2, resolv[j].length() - 27);
 	  write(fd, "\n", 1);
 	}
@@ -1411,7 +1443,7 @@ void removedns() {
 
   }
 
-  if (  modified_hostname ){
+  if (  modified_hostname ) {
     sethostname ((const char*)old_hostname,old_hostname.length());
     modified_hostname = FALSE;
   }
@@ -1419,7 +1451,7 @@ void removedns() {
 }  
 
 
-void parseargs(char* buf, char** args){
+void parseargs(char* buf, char** args) {
   int nargs = 0;
   int quotes;
 

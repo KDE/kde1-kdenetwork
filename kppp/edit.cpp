@@ -286,7 +286,7 @@ void IPWidget::resizeEvent(QResizeEvent *) {
 		 (box->geometry().bottom() + height())/2);
 }
 
-void IPWidget::autoname_t(bool on){
+void IPWidget::autoname_t(bool on) {
   on=on;
 }
 
@@ -535,8 +535,9 @@ void GatewayWidget::resizeEvent(QResizeEvent *) {
 		 (box->geometry().bottom() + height())/2);
 }
 
-void GatewayWidget::defaultroute_t(bool on){
-  on=on;
+void GatewayWidget::defaultroute_t(bool on) {
+  // Mario: what strange piece of code is this?
+  // on=on;
 }
 
 void GatewayWidget::save() {

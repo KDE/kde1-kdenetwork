@@ -1,3 +1,17 @@
+1998-08-22  Mario Weilguni <mweilguni@kde.org>
+
+	* some KDE style guide conformant changes
+	* some code cleanups
+	* removed -lkfile and -lkfm from Makefile.am
+	* added debug switch to pppd command line when debugging
+	is turned on
+	* Improved the response time for modem output. Modem output is
+	polled in slower intervals, if data is pending the polling time
+	is reduced, otherwise the polling time is set back to it´s 
+	original, rather high value
+	* re-worked the "About" widget. It was time to save poor old Bernd
+	from receiving bug-reports.
+
 1998-08-21  Harri Porten  <porten@kde.org>
 
 	* use SIGINT instead of SIGHUP to end a connection

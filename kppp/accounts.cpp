@@ -192,38 +192,11 @@ void AccountWidget::slotListBoxSelect(int idx) {
 }
 
 void AccountWidget::viewLogClicked(){
-
-//   QString d;
-//   d = QDir::homeDirPath() + "/";
-//   d += ACCOUNTING_PATH ;
-//   d += "/Log/";
-
-//   QString fileName = QFileDialog::getOpenFileName(d.data());
-
-//   if ( !fileName.isNull() ) {                
-
-//     /*      char *args[100];
-// 	    char buffer[2024];
-//      */
-
-//       QString cmd;
-//       cmd.sprintf("%s %s\n",gpppdata.logViewer(),fileName.data());
-
-//       // strncpy(buffer,cmd.data(),2023);
-//       // parseargs(buffer,args);
-//       // printf("tyring to execute %s %s\n",gpppdata.logViewer(),*args);
-
-
-    if(fork()==0){
-
+    if(fork() == 0) {
       setuid(getuid());
       system("kppplogview -kppp");
       exit(0);
-
     }
-
-    //    }
-
 }
 
 void AccountWidget::resetClicked(){
@@ -235,7 +208,7 @@ void AccountWidget::resetClicked(){
        i18n("Are you sure you want to reset the accumulated\n"
        "telephone costs for the selected account to zero?"),
 				    i18n("Yes"),
-				    i18n("Cancel"),"",1,1);
+				    i18n("No"),"",1,1);
 
   if(ok)
     return;
