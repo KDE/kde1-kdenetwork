@@ -34,6 +34,11 @@
 /* Autoconf: */
 #include <config.h>
 
+// strange symbol for HP-UX. It should not hurt on other systems.
+#ifndef notdef
+#define notdef 1
+#endif
+
 #include "includ.h"
 #ifdef HAVE_SYS_STAT_H
 #include <sys/stat.h>
