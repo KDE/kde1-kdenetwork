@@ -1,3 +1,28 @@
+
+1999-04-15 Sven Radej <radej@kde.org> (KMail-1.0.20) 
+
+	* Context sensitive menus in message/foldder list.
+
+	* No more stubbornly unread messages (bug #656)- from 
+	  Don Sanders <dsanders@cch.com.au>.
+
+	* More robust behavior in case of disaster: Never send signal 
+	  to pid 0 = don't  crash whole KDE. (bug #1140).
+
+	* Ignore any sub-directory found in Mail directory.
+
+	* Use paths.h if found, and delete critical lock files with 
+          unlink. (Thanks to Harri Porten for "reminding" me).
+
+	* Multipart/Alternative handling (not perfect, still; 
+	  such messages with attachments are still ugly - with or without
+          this change).
+
+	* Improved return and arrow key navigation/completion in composer.
+
+	* HTML widget honours the selected font size (it uses it as base 
+	  font size).
+
 1999-04-11  Stefan Taferner  <taferner@kde.org> (KMail-1.0.19)
 
 	* Added missing index-7.html and index-8.html to doc/Makefile.am
