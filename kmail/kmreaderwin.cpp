@@ -422,6 +422,7 @@ void KMReaderWin::parseMsg(KMMessage* aMsg)
 //-----------------------------------------------------------------------------
 void KMReaderWin::writeMsgHeader(void)
 {
+  if (!mMsg) return;
   QString str;
 
   switch (mHeaderStyle)

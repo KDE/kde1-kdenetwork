@@ -693,6 +693,7 @@ void KMMainWin::slotViewChange()
 //-----------------------------------------------------------------------------
 void KMMainWin::slotSetHeaderStyle(int id)
 {
+  if (!mHeaders->getMsg()) return;
   if (!mMsgView) return;
   if(id <= 5)
   {
