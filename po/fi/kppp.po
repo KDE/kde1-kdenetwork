@@ -717,7 +717,6 @@ msgstr ""
 "tiedostoon \"%s\""
 
 #: main.cpp:802
-#, fuzzy
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -728,7 +727,7 @@ msgstr ""
 "käyttäjänimen sekä salasanasi!"
 
 #: main.cpp:809
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
 "file \"%s\""
