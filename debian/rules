@@ -52,7 +52,8 @@ binary-arch: build
 	echo "[Traceroute]"              >> debian/tmp/etc/kde/knurc
 	echo "path=/usr/sbin/traceroute" >> debian/tmp/etc/kde/knurc
 	perl -w debian/kderules
-	chmod 755 debian/tmp/usr/share/apps/ksirc/*.pl
+	chmod 755 debian/tmp/usr/share/apps/ksirc/convert_commands.pl
+	chmod 755 debian/tmp/usr/share/apps/ksirc/tester.pl
 	dh_movefiles
 	dh_undocumented 
 	dh_installdocs
