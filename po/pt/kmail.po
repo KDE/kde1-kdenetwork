@@ -232,12 +232,11 @@ msgstr "Enviado"
 
 #: kmmainwin.cpp:863
 msgid "Next unread"
-msgstr ""
+msgstr "Próxima não lida"
 
 #: kmmainwin.cpp:867
-#, fuzzy
 msgid "Previous unread"
-msgstr "&Anterior"
+msgstr "Anterior não lida"
 
 #: kmmainwin.cpp:877
 msgid "&Set Status"
@@ -937,12 +936,12 @@ msgstr "A criar o ficheiro de índice: %d mensagens processadas"
 
 #: kmfolder.cpp:444
 msgid "Writing index file"
-msgstr ""
+msgstr "A escrever ficheiro índice"
 
 #: kmfolder.cpp:870
-#, fuzzy, c-format
+#, c-format
 msgid "Compacting folder: %d messages done"
-msgstr "A criar o ficheiro de índice: %d mensagens processadas"
+msgstr "A compactar pasta: %d mensagens processadas"
 
 #: kmmsgpartdlg.cpp:41
 msgid "Message Part Properties"
@@ -1590,18 +1589,3 @@ msgstr "&7 bit é ASCII"
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
 msgstr "&Mostrar caracteres desconhecidos"
-
-#~ msgid "&Remove"
-#~ msgstr "&Remover"
-
-#~ msgid "&Next"
-#~ msgstr "&Próxima"
-
-#~ msgid "Fonts"
-#~ msgstr "Fontes"
-
-#~ msgid "Appearance"
-#~ msgstr "Aparencia"
-
-#~ msgid "&Ok"
-#~ msgstr "&Ok"
