@@ -6,27 +6,26 @@
 const int ircListItem::maxcolour = 16;
 static const QColor brown	( 165,  42,  42 );
 static const QColor orange	( 255, 165,   0 );
-static const QColor lightGreen	( 144, 238, 144 );
 static const QColor lightCyan	( 224, 255, 255 );
 static const QColor lightBlue	( 173, 216, 230 );
 static const QColor pink	( 255, 192, 203 );
 
-const QColor ircListItem::num2colour[16] = { white,
-					     black,
-                                             darkBlue,
-                                             darkGreen,
-                                             red,
-                                             brown,
-                                             darkMagenta,
-                                             orange,
-                                             yellow,
-                                             green,
-                                             darkCyan,
-                                             cyan,
-                                             blue,
-                                             pink,
-                                             gray,
-                                             lightGray };
+const QColor ircListItem::num2colour[ircListItem::maxcolour] = { white,
+								 black,
+								 darkBlue,
+								 darkGreen,
+								 red,
+								 brown,
+								 darkMagenta,
+								 orange,
+								 yellow,
+								 green,
+								 darkCyan,
+								 cyan,
+								 blue,
+								 pink,
+								 gray,
+								 lightGray };
 
 ircListItem::ircListItem(QString s, const QColor *c, QListBox *lb, QPixmap *p = 0)
   : QObject(),
