@@ -243,7 +243,7 @@ void Modem::readtty(int) {
   int len;
 
   // read data in chunks of up to 200 bytes
-  while((len = ::read(modemfd, buffer, 200)) > 0) {
+  if((len = ::read(modemfd, buffer, 200)) > 0) {
     // split buffer into single characters for further processing
     for(int i = 0; i < len; i++) {
       c = buffer[i] & dataMask;
