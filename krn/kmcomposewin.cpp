@@ -2,7 +2,7 @@
 // Author: Markus Wuebben <markus.wuebben@kde.org>
 
 #include "kmcomposewin.h"
-#include "KEdit.h"
+#include "keditcl.h"
 #include "kmmessage.h"
 #include "kmmsgpart.h"
 #include "kmsender.h"
@@ -131,6 +131,10 @@ KMComposeWin::KMComposeWin(KMMessage *aMsg) : KMComposeWinInherited(),
     if(mEditor->text().isEmpty())
       mEditor->toggleModified(FALSE);
   }
+
+  if ( mAutoSign ) 
+    slotAppendSignature();
+
 }
 
 
@@ -150,10 +154,16 @@ void KMComposeWin::readConfig(void)
 
   config->setGroup("Composer");
   mAutoSign = (stricmp(config->readEntry("signature"),"auto")==0);
+  cout << "auto:" << mAutoSign << endl;
   mShowToolBar = config->readNumEntry("show-toolbar", 1);
   mSendImmediate = config->readNumEntry("send-immediate", -1);
   mDefEncoding = config->readEntry("encoding", "base64");
   mShowHeaders = config->readNumEntry("headers", HDR_STANDARD);
+  mWordWrap = config->readNumEntry("word-wrap", 1);
+  mLineBreak = config->readNumEntry("break-at", 80);
+  mBackColor = config->readEntry( "Back-Color","#ffffff");
+  mForeColor = config->readEntry( "Fore-Color","#000000");
+
 
   config->setGroup("Geometry");
   str = config->readEntry("composer", "480 510");
@@ -168,7 +178,7 @@ void KMComposeWin::readConfig(void)
 void KMComposeWin::writeConfig(bool aWithSync)
 {
   KConfig *config = kapp->getConfig();
-  QString str;
+  QString str(32);
 
   config->setGroup("Composer");
   config->writeEntry("signature", mAutoSign?"auto":"manual");
@@ -176,6 +186,9 @@ void KMComposeWin::writeConfig(bool aWithSync)
   config->writeEntry("send-immediate", mSendImmediate);
   config->writeEntry("encoding", mDefEncoding);
   config->writeEntry("headers", mShowHeaders);
+
+  config->writeEntry("Fore-Color",mForeColor);
+  config->writeEntry("Back-Color",mBackColor);
 
   config->setGroup("Geometry");
   str.sprintf("%d %d", width(), height());
@@ -366,14 +379,15 @@ void KMComposeWin::setupMenuBar(void)
   menu->insertItem(nls->translate("&Cc"), HDR_CC);
   menu->insertItem(nls->translate("&Bcc"), HDR_BCC);
   menu->insertItem(nls->translate("&Subject"), HDR_SUBJECT);
-  menu->insertItem(nls->translate("&Newsgroups"), HDR_NEWSGROUPS); //added for KRN
-  menu->insertItem(nls->translate("&Followup-To"), HDR_FOLLOWUP_TO); //added for KRN
+  menu->insertItem(nls->translate("&Newsgroups"), HDR_NEWSGROUPS); // for KRN
+  menu->insertItem(nls->translate("&Followup-To"), HDR_FOLLOWUP_TO); // for KRN
   mMenuBar->insertItem(nls->translate("&View"), menu);
 
-  //---------- Menu: Attach
   menu = new QPopupMenu();
   menu->insertItem(nls->translate("Append S&ignature"), this, 
 		   SLOT(slotAppendSignature()));
+  menu->insertItem(nls->translate("&Insert File"), this,
+		   SLOT(slotInsertFile()));
   menu->insertItem(nls->translate("&Attach..."), this, SLOT(slotAttachFile()));
   menu->insertSeparator();
   menu->insertItem(nls->translate("&Remove"), this, SLOT(slotAttachRemove()));
@@ -458,6 +472,43 @@ void KMComposeWin::setupEditor(void)
   //QPopupMenu* popup;
   mEditor = new KEdit(kapp, &mMainWidget);
   mEditor->toggleModified(FALSE);
+
+  // Word wrapping setup
+  if(mWordWrap) 
+    mEditor->setWordWrap(TRUE);
+  else {
+    mEditor->setWordWrap(FALSE);
+    mEditor->setFillColumnMode(0,FALSE);    
+  }
+  if(mWordWrap && (mLineBreak > 0)) 
+    mEditor->setFillColumnMode(mLineBreak,TRUE);
+
+
+  // Font setup
+
+
+  // Color setup
+  if( mForeColor.isEmpty())
+    mForeColor = "black";
+
+  if( mBackColor.isEmpty())
+    mBackColor = "white";
+
+  foreColor.setNamedColor(mForeColor);
+  backColor.setNamedColor(mBackColor);
+
+  QPalette myPalette = (mEditor->palette()).copy();
+  QColorGroup cgrp  = myPalette.normal();
+  QColorGroup ncgrp(foreColor,cgrp.background(),
+		    cgrp.light(),cgrp.dark(), cgrp.mid(), foreColor,
+		    backColor);
+  myPalette.setNormal(ncgrp);
+  myPalette.setDisabled(ncgrp);
+  myPalette.setActive(ncgrp);
+
+  mEditor->setPalette(myPalette);
+  mEditor->setBackgroundColor(backColor);
+  
 
 #ifdef BROKEN
   popup = new QPopupMenu();
@@ -644,7 +695,7 @@ void KMComposeWin::addAttach(KMMessagePart* msgPart)
 const QString KMComposeWin::msgPartLbxString(KMMessagePart* msgPart) const
 {
   unsigned int len;
-  QString lenStr;
+  QString lenStr(32);
 
   assert(msgPart != NULL);
 
@@ -664,10 +715,9 @@ void KMComposeWin::removeAttach(const QString aUrl)
   int idx;
   KMMessagePart* msgPart;
 
-  for(idx=0,msgPart=mAtmList.first(); msgPart; msgPart=mAtmList.next(),idx++)
-  {
-    if (msgPart->name() == aUrl)
-    {
+  for(idx=0,msgPart=mAtmList.first(); msgPart; 
+      msgPart=mAtmList.next(),idx++) {
+    if (msgPart->name() == aUrl) {
       removeAttach(idx);
       return;
     }
@@ -709,6 +759,39 @@ void KMComposeWin::slotAttachFile()
   addAttach(fileName);
 }
 
+
+void KMComposeWin::slotInsertFile()
+{
+  // Create File Dialog and return selected file
+
+  QString fileName;
+  QString strCopy;
+  char temp[256];
+  int col, line;
+  QFileDialog fdlg(".","*",this,NULL,TRUE);
+
+  fdlg.setCaption(nls->translate("Attach File"));
+  if (!fdlg.exec()) return;
+
+  fileName = fdlg.selectedFile();		
+  if(fileName.isEmpty()) return;
+
+  cout << fileName << endl;
+  QFile *f = new QFile(fileName);
+
+  if(!f->open(IO_ReadOnly))
+    return;
+
+  f->at(0);
+  while(!f->atEnd()) {
+    f->readLine(temp,255);
+    strCopy.append(temp);
+  }
+
+  mEditor->getCursorPosition(&line,&col);
+  mEditor->insertAt(strCopy, line ,col);
+  f->close();
+}  
 
 //-----------------------------------------------------------------------------
 void KMComposeWin::slotAttachPopupMenu(int index, int)
@@ -903,14 +986,19 @@ void KMComposeWin::slotDropAction()
 //----------------------------------------------------------------------------
 void KMComposeWin::slotSend()
 {
+  bool sentOk;
+
   kbp->busy();
   applyChanges();
-  if(msgSender->send(mMsg))
+  sentOk = msgSender->send(mMsg);
+  kbp->idle();
+
+  if (sentOk)
   {
     mAutoDeleteMsg = FALSE;
     close();
   }
-  kbp->idle();
+  else warning("Failed to send message.");
 }
 
 
@@ -949,7 +1037,6 @@ void KMComposeWin::slotAppendSignature()
 
   if (!sigText.isEmpty())
   {
-    mEditor->insertLine("\n--\n", -1);
     mEditor->insertLine(sigText, -1);
     mEditor->toggleModified(mod);
   }

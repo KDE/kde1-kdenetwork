@@ -391,7 +391,11 @@ typedef struct {
 
 static int accuracy;
 
-config_rec *confi;
+#ifdef KRN
+#define conf conf_
+#endif
+
+config_rec *conf;
 
 void  error( const char *msg, ... )
 {
@@ -413,7 +417,7 @@ test_table()
 	struct magic *prevm = NULL;
 
 	debug("%s: started", __FUNCTION__);
-	for (m = confi->magic; m; m = m->next) {
+	for (m = conf->magic; m; m = m->next) {
 		if (isprint((((unsigned long) m) >> 24) & 255) &&
 		    isprint((((unsigned long) m) >> 16) & 255) &&
 		    isprint((((unsigned long) m) >> 8) & 255) &&
@@ -478,9 +482,9 @@ apprentice()
 	int rule = 0;
 	char *fname;
 
-	if (!confi->magicfile)
+	if (!conf->magicfile)
 		return -1;
-	fname = confi->magicfile;
+	fname = conf->magicfile;
 	f = fopen(fname, "r");
 	if (f == NULL) {
 		error("kmimelib: can't read magic file %s: %s",
@@ -496,12 +500,12 @@ apprentice()
 	fclose(f);
 
 #if (MIME_MAGIC_DEBUG > 1)
-	debug("%s: confi=%p file=%s m=%s m->next=%s last=%s",
-	      __FUNCTION__, confi,
-	      confi->magicfile ? confi->magicfile : "NULL",
-	      confi->magic ? "set" : "NULL",
-	      (confi->magic && confi->magic->next) ? "set" : "NULL",
-	      confi->last ? "set" : "NULL");
+	debug("%s: conf=%p file=%s m=%s m->next=%s last=%s",
+	      __FUNCTION__, conf,
+	      conf->magicfile ? conf->magicfile : "NULL",
+	      conf->magic ? "set" : "NULL",
+	      (conf->magic && conf->magic->next) ? "set" : "NULL",
+	      conf->last ? "set" : "NULL");
 	debug("%s: read %d lines, %d rules, %d errors",
 	      __FUNCTION__, lineno, rule, errs);
 
@@ -541,11 +545,11 @@ buff_apprentice(char *buff)
 	} while (len > 0);
 
 #if (MIME_MAGIC_DEBUG > 1)
-	debug("%s: confi=%p m=%s m->next=%s last=%s",
-	      __FUNCTION__, confi,
-	      confi->magic ? "set" : "NULL",
-	      (confi->magic && confi->magic->next) ? "set" : "NULL",
-	      confi->last ? "set" : "NULL");
+	debug("%s: conf=%p m=%s m->next=%s last=%s",
+	      __FUNCTION__, conf,
+	      conf->magic ? "set" : "NULL",
+	      (conf->magic && conf->magic->next) ? "set" : "NULL",
+	      conf->last ? "set" : "NULL");
 	debug("%s: read %d lines, %d rules, %d errors",
 	      __FUNCTION__, lineno, rule, errs);
 
@@ -611,11 +615,11 @@ parse(char *l, int lineno)
 	}
 	/* append to linked list */
 	m->next = NULL;
-	if (!confi->magic || !confi->last) {
-		confi->magic = confi->last = m;
+	if (!conf->magic || !conf->last) {
+		conf->magic = conf->last = m;
 	} else {
-		confi->last->next = m;
-		confi->last = m;
+		conf->last->next = m;
+		conf->last = m;
 	}
 
 	/* set values in magic structure */
@@ -1508,13 +1512,13 @@ KMimeMagic::match(unsigned char *s, int nbytes)
 	struct magic *m;
 
 #if (MIME_MAGIC_DEBUG > 1)
-	debug("%s: confi=%p file=%s m=%s m->next=%s last=%s",
-	      __FUNCTION__, confi,
-	      confi->magicfile ? confi->magicfile : "NULL",
-	      confi->magic ? "set" : "NULL",
-	      (confi->magic && confi->magic->next) ? "set" : "NULL",
-	      confi->last ? "set" : "NULL");
-	for (m = confi->magic; m; m = m->next) {
+	debug("%s: conf=%p file=%s m=%s m->next=%s last=%s",
+	      __FUNCTION__, conf,
+	      conf->magicfile ? conf->magicfile : "NULL",
+	      conf->magic ? "set" : "NULL",
+	      (conf->magic && conf->magic->next) ? "set" : "NULL",
+	      conf->last ? "set" : "NULL");
+	for (m = conf->magic; m; m = m->next) {
 		if (isprint((((unsigned long) m) >> 24) & 255) &&
 		    isprint((((unsigned long) m) >> 16) & 255) &&
 		    isprint((((unsigned long) m) >> 8) & 255) &&
@@ -1530,7 +1534,7 @@ KMimeMagic::match(unsigned char *s, int nbytes)
 	}
 #endif
 
-	for (m = confi->magic; m; m = m->next) {
+	for (m = conf->magic; m; m = m->next) {
 #if (MIME_MAGIC_DEBUG > 1)
 		rule_counter++;
 		debug("%s: line=%d desc=%s", __FUNCTION__,
@@ -1974,7 +1978,7 @@ from_oct(int digs, char *where)
  * Don't know if we really need this within KDE?!
  * ... well i've to look into original file code.
  */
-KMimeMagicResult *
+const KMimeMagicResult *
 KMimeMagic::revision_suffix(const char * fn)
 {
 	int suffix_pos;
@@ -1999,15 +2003,15 @@ KMimeMagic::revision_suffix(const char * fn)
 KMimeMagic::KMimeMagic(const char * _configfile)
 {
 	int result;
-	confi = (config_rec *)calloc(1, sizeof(config_rec));
+	conf = (config_rec *)calloc(1, sizeof(config_rec));
 
 	/* set up the magic list (empty) */
-	confi->magic = confi->last = NULL;
+	conf->magic = conf->last = NULL;
 	magicResult = NULL;
 	followLinks = FALSE;
 
 	if (_configfile)
-		confi->magicfile = strdup(_configfile);
+		conf->magicfile = strdup(_configfile);
 	/* on the first time through we read the magic file */
 	result = apprentice();
 	if (result == -1)
@@ -2023,15 +2027,15 @@ KMimeMagic::KMimeMagic(const char * _configfile)
  */
 KMimeMagic::~KMimeMagic()
 {
-	if (confi) {
-		struct magic *p = confi->magic;
+	if (conf) {
+		struct magic *p = conf->magic;
 		struct magic *q;
 		while (p) {
 			q = p;
 			p = p->next;
 			free(q);
 		}
-		free(confi);
+		free(conf);
 	}
 	if (magicResult)
 		delete magicResult;
@@ -2042,16 +2046,16 @@ KMimeMagic::mergeConfig(const char * _configfile)
 {
 	int result;
 
-	if (confi) {
-		char * old_magicfile = confi->magicfile;
+	if (conf) {
+		char * old_magicfile = conf->magicfile;
 
 		if (_configfile)
-			confi->magicfile = strdup(_configfile);
+			conf->magicfile = strdup(_configfile);
 		else
 			return false;
 		result = apprentice();
 		if (result == -1) {
-			confi->magicfile = old_magicfile;
+			conf->magicfile = old_magicfile;
 			return false;
 		}
 #if (MIME_MAGIC_DEBUG > 1)
@@ -2067,7 +2071,7 @@ KMimeMagic::mergeBufConfig(char * _configbuf)
 {
 	int result;
 
-	if (confi) {
+	if (conf) {
 		result = buff_apprentice(_configbuf);
 		if (result == -1)
 			return false;
@@ -2085,15 +2089,15 @@ KMimeMagic::setFollowLinks( bool _enable )
 	followLinks = _enable;
 }
 
-KMimeMagicResult *
+const KMimeMagicResult *
 KMimeMagic::findBufferType(const char * buffer, int nbytes)
 {
 	unsigned char buf[HOWMANY + 1];	/* one extra for terminating '\0' */
 
 	resultBuf.resize(0);
 	if (magicResult) {
-		magicResult->setContent(QString(NULL));
-		magicResult->setEncoding(QString(NULL));
+		magicResult->setContent(QString(0));
+		magicResult->setEncoding(QString(0));
 	} else
 	  magicResult = new KMimeMagicResult();
 	accuracy = 100;
@@ -2131,11 +2135,11 @@ refineResult(KMimeMagicResult *r, const char * _filename)
 	}
 }
 
-KMimeMagicResult *
+const KMimeMagicResult *
 KMimeMagic::findBufferFileType( const char * buffer, int nbytes,
 				const char * fn)
 {
-	KMimeMagicResult * r = findBufferType( buffer, nbytes );
+	KMimeMagicResult * r = (KMimeMagicResult *)findBufferType( buffer, nbytes );
 	refineResult(r, fn);
         return r;
 }
@@ -2143,13 +2147,13 @@ KMimeMagic::findBufferFileType( const char * buffer, int nbytes,
 /*
  * Find the content-type of the given file.
  */
-KMimeMagicResult *
+const KMimeMagicResult *
 KMimeMagic::findFileType(const char *fn)
 {
         resultBuf.resize(0);
         if (magicResult) {
-                magicResult->setContent(QString(NULL));
-                magicResult->setEncoding(QString(NULL));
+                magicResult->setContent(QString(0));
+                magicResult->setEncoding(QString(0));
         } else
                 magicResult = new KMimeMagicResult();
 	accuracy = 100;

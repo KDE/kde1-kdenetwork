@@ -32,7 +32,7 @@ bool KRNSender::doSendNNTP (KMMessage *msg)
     if (msg->body().isEmpty())
         msg->setBody("\n\n\n");
     
-    msgStr = prepareStr(msg->asString(), TRUE);
+    msgStr = msg->asString();
     int errcode=server->myPost();
     debug ("post/errcode-->%d",errcode);
     if (!errcode)

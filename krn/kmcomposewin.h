@@ -12,6 +12,7 @@
 #include <qevent.h>
 #include <qwidget.h>
 #include <qclipbrd.h>
+#include <qpalette.h>
 #include <kmsgbox.h>
 #include "kmmsgpart.h"
 
@@ -101,6 +102,9 @@ public slots:
   /** Append signature file to the end of the text in the editor. */
   void slotAppendSignature();
 
+  /** Insert a file to the end of the text in the editor. */
+  void slotInsertFile();
+
   /** Popup a nice "not implemented" message. */
   void slotToDo();
 
@@ -185,6 +189,12 @@ protected:
   long mShowHeaders;
   QString mDefEncoding;
   int mNumHeaders;
+  int mLineBreak;
+  int mWordWrap;
+  QString mForeColor, mBackColor;
+
+private:
+  QColor foreColor,backColor;
 };
 #endif
 

@@ -6,7 +6,7 @@
 #include "kmsender.h"
 #include "NNTP.h"
 
-class KRNSender: public QObject,public KMSender
+class KRNSender: public KMSender
 {
     Q_OBJECT
 public:

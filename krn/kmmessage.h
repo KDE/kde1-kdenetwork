@@ -44,19 +44,21 @@ public:
 
   /** Create a new message that is a reply to this message, filling all 
     required header fields with the proper values. The returned message
-    is not stored in any folder. */
-  virtual KMMessage* createReply(bool replyToAll=FALSE) const;
+    is not stored in any folder. Marks this message as replied. */
+  virtual KMMessage* createReply(bool replyToAll=FALSE);
 
   /** Create a new message that is a forward of this message, filling all 
     required header fields with the proper values. The returned message
-    is not stored in any folder. */
-  virtual KMMessage* createForward(void) const;
+    is not stored in any folder. Marks this message as forwarded. */
+  virtual KMMessage* createForward(void);
 
   /** Parse the string and create this message from it. */
   virtual void fromString(const QString str);
 
   /** Return the entire message contents as a string. */
   virtual const QString asString(void);
+  /** Return header as string. */
+  virtual const QString headerAsString(void);
 
   /** Returns message body with quoting header and indented by the 
     given indentation string. This is suitable for including the message
@@ -142,6 +144,9 @@ public:
   virtual const QString headerField(const QString name) const;
   virtual void setHeaderField(const QString name, const QString value);
 
+  /** Remove header field with given name */
+  virtual void removeHeaderField(const QString name);
+  
   /** Get or set the 'Content-Type' header field
    The member functions that involve enumerated types (ints)
    will work only for well-known types or subtypes. */
@@ -208,6 +213,10 @@ public:
 
   /** Open a window containing the complete, unparsed, message. */
   virtual void viewSource(const QString windowCaption) const;
+
+  /** Set "Status" and "X-Status" fields of the message from the
+   * internal message status. */
+  virtual void setStatusFields(void);
 
   /** Strip email address from string. Examples:
    * "Stefan Taferner <taferner@kde.org>" returns "Stefan Taferner"

@@ -28,7 +28,8 @@ BUILTSOURCES =	groupdlg.moc \
                 kalarmtimer.moc\
                 kmreaderwin.moc\
                 kpgp.moc\
-                krnsender.moc
+                krnsender.moc\
+                kmsender.moc
 
 DISTCLEANFILES = $(BUILTSOURCES)
 
@@ -205,6 +206,10 @@ kmreaderwin.moc: kmreaderwin.h
 kpgp.cpp:kpgp.moc
 kpgp.moc: kpgp.h
 	$(MOC) kpgp.h -o kpgp.moc
+
+kmsender.cpp:kmsender.moc
+kmsender.moc: kmsender.h
+	$(MOC) kmsender.h -o kmsender.moc
 
 krnsender.cpp:krnsender.moc
 krnsender.moc: krnsender.h

@@ -66,6 +66,7 @@ const QString KMMessage::followup(void) const
       else return "";
   }
 }
+
 //-----------------------------------------------------------------------------
 void KMMessage::setFollowup(const QString aStr)
 {
@@ -117,6 +118,7 @@ const QString KMMessage::id(void) const
       return "";
 }
 
+//-----------------------------------------------------------------------------
 #ifdef KRN
 const QString KMMessage::refsAsAnchor(const QString references)
 {
@@ -149,7 +151,6 @@ const QString KMMessage::refsAsAnchor(const QString references)
     return result.data();
 }
 #endif
-
 /* End of functions added by KRN */
 
 
@@ -197,7 +198,26 @@ const QString KMMessage::asString(void)
   return resultStr;
 }
 
+//-----------------------------------------------------------------------------
+void KMMessage::setStatusFields(void)
+{
+  char str[3];
 
+  str[0] = (char)status();
+  str[1] = '\0';
+
+  setHeaderField("Status", status()==KMMsgStatusNew ? "R " : "RO");
+  setHeaderField("X-Status", str);
+}
+
+//----------------------------------------------------------------------------
+const QString KMMessage::headerAsString(void)
+{
+  DwHeaders& header = mMsg->Headers();
+  if(header.AsString() != "")
+    return header.AsString().c_str();
+  return "";
+}
 //-----------------------------------------------------------------------------
 void KMMessage::fromString(const QString aStr)
 {
@@ -263,7 +283,7 @@ const QString KMMessage::asQuotedString(const QString aHeaderStr,
   // type than "text".
   if (numBodyParts() == 0)
   {
-    resultStr = QString(body()).stripWhiteSpace().replace(reNL,nlIndentStr) +
+    resultStr = QString(bodyDecoded()).stripWhiteSpace().replace(reNL,nlIndentStr) +
                 aIndentStr;
   }
   else
@@ -275,7 +295,7 @@ const QString KMMessage::asQuotedString(const QString aHeaderStr,
       if (msgPart.typeStr()=="text")
       {
 	resultStr += aIndentStr;
-	resultStr += QString(msgPart.body()).replace(reNL,(const char*)nlIndentStr);
+	resultStr += QString(msgPart.bodyDecoded()).replace(reNL,(const char*)nlIndentStr);
 	resultStr += aIndentStr;
       }
       else
@@ -292,7 +312,7 @@ const QString KMMessage::asQuotedString(const QString aHeaderStr,
 
 
 //-----------------------------------------------------------------------------
-KMMessage* KMMessage::createReply(bool replyToAll) const
+KMMessage* KMMessage::createReply(bool replyToAll)
 {
   KMMessage* msg = new KMMessage;
   QString str, replyStr, loopToStr, replyToStr, toStr;
@@ -328,12 +348,14 @@ KMMessage* KMMessage::createReply(bool replyToAll) const
     msg->setSubject("Re: " + subject());
   else msg->setSubject(subject());
 
+  setStatus(KMMsgStatusReplied);
+
   return msg;
 }
 
 
 //-----------------------------------------------------------------------------
-KMMessage* KMMessage::createForward(void) const
+KMMessage* KMMessage::createForward(void)
 {
   KMMessage* msg = new KMMessage;
   QString str;
@@ -350,6 +372,8 @@ KMMessage* KMMessage::createForward(void) const
   if (strnicmp(subject(), "Fwd:", 4)!=0)
     msg->setSubject("Fwd: " + subject());
   else msg->setSubject(subject());
+
+  setStatus(KMMsgStatusForwarded);
 
   return msg;
 }
@@ -583,6 +607,20 @@ const QString KMMessage::headerField(const QString aName) const
   i = str.find(':');
   if (i>0) str.remove(0,i+2);
   return str;
+}
+
+
+//-----------------------------------------------------------------------------
+void KMMessage::removeHeaderField(const QString aName)
+{
+  DwHeaders& header = mMsg->Headers();
+  DwField* field;
+
+  field = header.FindField(aName);
+  if (!field) return;
+
+  header.RemoveField(field);
+  mNeedsAssembly = TRUE;
 }
 
 
@@ -822,7 +860,7 @@ void KMMessage::bodyPart(int aIdx, KMMessagePart* aPart) const
       aPart->setSubtypeStr("Plain");
     }
     // Modification by Markus
-    if(headers->ContentType().Name().c_str() != "" )
+    if (!headers->ContentType().Name().empty())
       aPart->setName(headers->ContentType().Name().c_str());
     else
       aPart->setName("unnamed");

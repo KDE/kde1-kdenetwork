@@ -76,14 +76,31 @@ void KMMsgBase::setStatus(KMMsgStatus aStatus)
 
 
 //-----------------------------------------------------------------------------
-void KMMsgBase::setStatus(const char* aStatusStr)
+void KMMsgBase::setStatus(const char* aStatusStr, const char* aXStatusStr)
 {
   int i;
 
-  for (i=0; i<NUM_STATUSLIST-1; i++)
-    if (strchr(aStatusStr, (char)sStatusList[i])) break;
+  mStatus = KMMsgStatusUnknown;
 
-  mStatus = sStatusList[i];
+  // first try to find status from "X-Status" field if given
+  if (aXStatusStr) for (i=0; i<NUM_STATUSLIST-1; i++)
+  {
+    if (strchr(aXStatusStr, (char)sStatusList[i]))
+    {
+      mStatus = sStatusList[i];
+      break;
+    }
+  }
+
+  // if not successful then use the "Status" field
+  if (mStatus == KMMsgStatusUnknown)
+  {
+    if (aStatusStr[0]=='R' && aStatusStr[1]=='O') mStatus=KMMsgStatusOld;
+    else if (aStatusStr[0]=='R') mStatus=KMMsgStatusUnread;
+    else if (aStatusStr[0]=='D') mStatus=KMMsgStatusDeleted;
+    else mStatus=KMMsgStatusNew;
+  }
+
   mDirty = TRUE;
 #ifndef KRN
   if (mParent) mParent->headerOfMsgChanged(this);
@@ -148,9 +165,9 @@ const QString KMMsgBase::dateStr(void) const
 const QString KMMsgBase::asIndexString(void) const
 {
   int i, len;
-  QString str;
+  QString str(256);
 
-  str.sprintf("%c %-.9lu %-.9lu %-.9lu %-100s %-100s\n",
+  str.sprintf("%c %-.9lu %-.9lu %-.9lu %-100.100s %-100.100s\n",
 	      (char)status(), folderOffset(), msgSize(), (unsigned long)date(),
 	      (const char*)decodeQuotedPrintableString(from()),
 	      (const char*)decodeQuotedPrintableString(subject()));
@@ -256,29 +273,43 @@ const char* KMMsgBase::skipKeyword(const QString aStr, char sepChar,
 //-----------------------------------------------------------------------------
 const QString KMMsgBase::decodeQuotedPrintableString(const QString aStr)
 {
-  //static QRegExp qpExp("=\\?[^? ]*\\?Q\?[^? ]*\\?=");
-  static QRegExp qpExp("=\\?[^\\ ]*\\?=");
-  int pos, end, start;
-  QString result, str;
+  static QString result;
+  int start, beg, mid, end=0;
 
-  str = aStr.copy();
-  pos = str.find(qpExp);
-  if (pos < 0)
-  {
-    return str;
-  }
+  start = 0;
+  result = "";
 
-  while (pos >= 0)
+  while (1)
   {
-    pos = str.find("?Q", pos+3);
-    end = str.find("?=", pos+3);
-    if (str.mid(pos+2,2)=="?_") pos += 2;
-    result += decodeQuotedPrintable(str.mid(pos+2, end-pos-2));
+    beg = aStr.find("=?", start);
+    if (beg < 0)
+    {
+      // no more suspicious string parts found -- done
+      result += aStr.mid(start, 32767);
+      break;
+    }
+
+    if (beg > start) result += aStr.mid(start, beg-start);
+    mid = aStr.find("?Q?", beg+2);
+    if (mid>beg) end = aStr.find("?=", mid+3);
+    if (mid < 0 || end < 0)
+    {
+      // no quoted printable part -- skip it
+      result += "=?";
+      start += 2;
+      continue;
+    }
+    if (aStr[mid+3]=='_' )
+    {
+      result += ' ';
+      mid++;
+    }
+    else if (aStr[mid+3]==' ') mid++;
+
+    if (end-mid-3 > 0)
+      result += decodeQuotedPrintable(aStr.mid(mid+3, end-mid-3).data());
     start = end+2;
-    pos = str.find(qpExp, start);
   }
-  result += str.mid(start, 32767);
-
   return result;
 }
 

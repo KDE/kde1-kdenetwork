@@ -17,7 +17,8 @@ KBusyPtr :: KBusyPtr ()
   frameDelay = 500;
   cursorList = NULL;
   bitmapList = NULL;
-  animated   = TRUE;
+  //animated   = TRUE;
+  animated   = FALSE;
 
   loadCursor("stopwatch.xbm","stopwatchMask.xbm");
 
@@ -137,11 +138,8 @@ void KBusyPtr :: loadCursor (const char* cursorName,const char* maskName)
   numCursors = numX * numY;
 
   if (bitmapList) delete[] bitmapList;
-  //  bitmapList = new QBitmap[numCursors](16,16);
-  bitmapList = new QBitmap[numCursors];
-  for (int i = 0; i < numCursors; i++)
-      bitmapList[i] = QBitmap(16,16);
-  
+  QSize size(16,16);
+  bitmapList = new QBitmap[numCursors](size);
   if (cursorList) delete[] cursorList;
   cursorList = new QCursor[numCursors];
 

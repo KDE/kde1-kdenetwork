@@ -76,6 +76,8 @@ void KMReaderWin::readConfig(void)
   config->setGroup("Reader");
   mAtmInline = config->readNumEntry("attach-inline", 100);
   mHeaderStyle = (HeaderStyle)config->readNumEntry("hdr-style", HdrFancy);
+  mAttachmentStyle = (AttachmentStyle)config->readNumEntry("attmnt-style",
+							IconicAttmnt);
 }
 
 
@@ -87,6 +89,7 @@ void KMReaderWin::writeConfig(bool aWithSync)
   config->setGroup("Reader");
   config->writeEntry("attach-inline", mAtmInline);
   config->writeEntry("hdr-style", (int)mHeaderStyle);
+  config->writeEntry("attmnt-style",(int)mAttachmentStyle);
 
   if (aWithSync) config->sync();
 }
@@ -134,6 +137,11 @@ void KMReaderWin::setHeaderStyle(KMReaderWin::HeaderStyle aHeaderStyle)
   update();
 }
 
+void KMReaderWin::setAttachmentStyle(int aAttachmentStyle)
+{  
+  mAttachmentStyle = (AttachmentStyle)aAttachmentStyle;
+  update();
+}
 
 //-----------------------------------------------------------------------------
 void KMReaderWin::setInlineAttach(int aAtmInline)
@@ -176,8 +184,8 @@ void KMReaderWin::parseMsg(void)
 {
   KMMessagePart msgPart;
   int i, numParts;
-  QString type, subtype, str;
-
+  QString type, subtype, str, contDisp;
+  bool asIcon;
   assert(mMsg!=NULL);
 
   mViewer->begin(mPicsDir);
@@ -193,22 +201,25 @@ void KMReaderWin::parseMsg(void)
       mMsg->bodyPart(i, &msgPart);
       type = msgPart.typeStr();
       subtype = msgPart.subtypeStr();
-      if (stricmp(type, "text")==0)
+      contDisp = msgPart.contentDisposition();
+      debug("content disposition: \"%s\"", contDisp.data());
+      
+      if (i <= 0) asIcon = FALSE;
+      else asIcon = (stricmp(contDisp,"inline")!=0);
+
+      if (!asIcon)
       {
-	str = msgPart.bodyDecoded();
-	if (str.size() > 100 && i>0) writePartIcon(&msgPart, i);
-	else if (stricmp(subtype, "html")==0)
+	if (stricmp(type, "text")==0 || stricmp(type, "message")==0)
 	{
+	  str = msgPart.bodyDecoded();
 	  if (i>0) mViewer->write("<BR><HR><BR>");
-	  mViewer->write(str);
+
+	  if (stricmp(subtype, "html")==0) mViewer->write(str);
+	  else writeBodyStr(str);
 	}
-	else
-	{
-	  if (i>0) mViewer->write("<BR><HR><BR>");
-	  writeBodyStr(str);
-	}
+	else asIcon = TRUE;
       }
-      else
+      if (asIcon)
       {
 	writePartIcon(&msgPart, i);
       }
@@ -228,6 +239,7 @@ void KMReaderWin::parseMsg(void)
 //-----------------------------------------------------------------------------
 void KMReaderWin::writeMsgHeader(void)
 {
+  QString t;
   switch (mHeaderStyle)
   {
   case HdrBrief:
@@ -277,7 +289,9 @@ void KMReaderWin::writeMsgHeader(void)
     break;
 
   case HdrAll:
-    emit statusMsg("`all' header style not yet implemented.");
+    t = mMsg->headerAsString();
+    t = t.replace(QRegExp("\n"),"<br>");
+    mViewer->write(t+"<br><br>");
     break;
 
   default:
@@ -363,7 +377,7 @@ void KMReaderWin::writeBodyStr(const QString aStr)
 //-----------------------------------------------------------------------------
 void KMReaderWin::writePartIcon(KMMessagePart* aMsgPart, int aPartNum)
 {
-  QString iconName, href, label, comment;
+  QString iconName, href(255), label, comment;
 
   assert(aMsgPart!=NULL);
 
@@ -388,9 +402,9 @@ void KMReaderWin::writePartIcon(KMMessagePart* aMsgPart, int aPartNum)
 //-----------------------------------------------------------------------------
 const QString KMReaderWin::strToHtml(const QString aStr, bool aDecodeQP) const
 {
-  QString htmlStr, qpstr;
+  QString htmlStr, qpstr, iStr,tStr;
   char ch, *pos, str[256];
-  int i;
+  int i,i1;
 
   if (aDecodeQP) qpstr = KMMsgBase::decodeQuotedPrintableString(aStr);
   else qpstr = aStr;
@@ -402,7 +416,8 @@ const QString KMReaderWin::strToHtml(const QString aStr, bool aDecodeQP) const
     else if (ch=='>') htmlStr += "&gt;";
     else if (ch=='&') htmlStr += "&amp;";
     else if ((ch=='h' && strncmp(pos,"http:",5)==0) ||
-	     (ch=='f' && strncmp(pos,"ftp:",4)==0))
+	     (ch=='f' && strncmp(pos,"ftp:",4)==0) ||
+	     (ch=='m' && strncmp(pos,"mailto:",7)==0))
     {
       for (i=0; *pos && *pos>' ' && i<255; i++, pos++)
 	str[i] = *pos;
@@ -414,6 +429,25 @@ const QString KMReaderWin::strToHtml(const QString aStr, bool aDecodeQP) const
       htmlStr += str;
       htmlStr += "</A>";
     }
+    else if (ch=='@')
+      {
+	for (i=0; *pos && *pos > ' ' && i<255; i++, pos--);
+	i1 = i;
+	pos++; 
+	for (i=0; *pos && *pos > ' ' && i<255; i++, pos++)
+	  iStr += *pos;
+	pos--; 
+	tStr = iStr.copy();
+	tStr.prepend("<A HREF=\"mailto:");
+	tStr += "\">";
+	tStr.append(iStr);
+	tStr += "</A>";
+	htmlStr.truncate(htmlStr.length() -i1);
+	htmlStr += tStr + " " ;
+	iStr = "";
+	tStr = "";
+      }	
+
     else htmlStr += ch;
   }
 
@@ -515,17 +549,34 @@ void KMReaderWin::slotUrlPopup(const char* aUrl, const QPoint& aPos)
 //-----------------------------------------------------------------------------
 void KMReaderWin::slotAtmOpen()
 {
-  QString str, pname, cmd;
-  char* fileName;
+  QString str, pname, cmd, fileName;
+  char* tmpName;
+  int c;
 
   KMMessagePart msgPart;
   mMsg->bodyPart(mAtmCurrent, &msgPart);
 
   pname = msgPart.name();
   if (pname.isEmpty()) pname="unnamed";
-  fileName = tempnam("/tmp", NULL);
-  strcat(fileName, "-");
-  strcat(fileName, (const char*)pname);
+  tmpName = tempnam(NULL, NULL);
+  if (!tmpName)
+  {
+    warning(nls->translate("Could not create temporary file"));
+    return;
+  }
+  fileName = tmpName;
+  free(tmpName);
+  fileName += '-';
+  fileName += pname;
+
+  // remove quotes from the filename so that the shell does not get confused
+  c = 0;
+  while ((c = fileName.find('"', c)) >= 0)
+    fileName.remove(c, 1);
+
+  c = 0;
+  while ((c = fileName.find('\'', c)) >= 0)
+    fileName.remove(c, 1);
 
   kbp->busy();
   str = msgPart.bodyDecoded();
@@ -533,9 +584,9 @@ void KMReaderWin::slotAtmOpen()
     warning(nls->translate("Could not save temporary file %s"),
 	    (const char*)fileName);
   kbp->idle();
-  cmd = "kfmclient openURL \"";
+  cmd = "kfmclient openURL \'";
   cmd += fileName;
-  cmd += "\"";
+  cmd += "\'";
   debug(cmd);
   system(cmd);
 }
@@ -575,7 +626,7 @@ void KMReaderWin::slotAtmPrint()
 void KMReaderWin::slotAtmProperties()
 {
   KMMessagePart msgPart;
-  KMMsgPartDlg  dlg;
+  KMMsgPartDlg  dlg(0,TRUE);
 
   kbp->busy();
   mMsg->bodyPart(mAtmCurrent, &msgPart);
