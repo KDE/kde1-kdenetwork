@@ -68,7 +68,7 @@ void NNTPObserver::Notify()
 /////////////////////////////////////////////////////////////////////////////
 
 
-NNTP::NNTP(char *host=0): DwNntpClient()
+NNTP::NNTP(char *host): DwNntpClient()
 {
     hostname=host;
     Connected=false;
@@ -94,14 +94,14 @@ void NNTP::PGetTextResponse()
     SetObserver(NULL);
 }
 
-void NNTP::resetCounters( bool byte=true,bool command=true)
+void NNTP::resetCounters( bool byte,bool command)
 {
     if (byte)
         byteCounter=0;
     if (command)
         commandCounter=0;
 }
-void NNTP::reportCounters (bool byte=true,bool command=true)
+void NNTP::reportCounters (bool byte,bool command)
 {
     reportBytes=byte;
     reportCommands=command;
@@ -267,7 +267,7 @@ int NNTP::setMode (char *mode)
     return mReplyCode;
 }
 
-int NNTP::listXover(int from=0,int to=0)
+int NNTP::listXover(int from,int to)
 {
     from=from >? first;
     to=to <? last;
@@ -460,7 +460,7 @@ bool NNTP::setGroup(const char *groupname)
 
 
 
-bool NNTP::artList(int from=0,int to=0)
+bool NNTP::artList(int from,int to)
 {
     int status=listXover(from,to);
     debug ("status-->%d",status);

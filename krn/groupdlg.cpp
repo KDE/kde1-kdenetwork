@@ -73,7 +73,7 @@ bool checkPixmap(KTreeListItem *item,void *)
     QString name(item->getText());
     if (name.right(1)==".") //it's a folder
     {
-        item->setPixmap(&kapp->getIconLoader()->loadIcon("folder.xpm"));
+        item->setPixmap(&kapp->getIconLoader()->loadIcon("krnfolder.xpm"));
         return false;
     }
     int i=groups.find(&NewsGroup(name));
@@ -330,7 +330,7 @@ void Groupdlg::openGroup (int index)
                             if (iter->isTagged)
                                 list->addChildItem(iter->data(),&kapp->getIconLoader()->loadIcon("tagged.xpm"),index);
                             else
-                                list->addChildItem(iter->data(),&kapp->getIconLoader()->loadIcon("folder.xpm"),index);
+                                list->addChildItem(iter->data(),&kapp->getIconLoader()->loadIcon("krnfolder.xpm"),index);
                         }
                         nextdot[0]=tc;
                     }
@@ -450,7 +450,7 @@ void Groupdlg::online()
 
 void Groupdlg::fillTree ()
 {
-    list->insertItem ("Subscribed Newsgroups.", &kapp->getIconLoader()->loadIcon("folder.xpm"));
+    list->insertItem ("Subscribed Newsgroups.", &kapp->getIconLoader()->loadIcon("krnfolder.xpm"));
     QListIterator <NewsGroup> it(subscr);
     it.toFirst();
     NewsGroup *g;
@@ -461,7 +461,7 @@ void Groupdlg::fillTree ()
         list->addChildItem (g->data(), &kapp->getIconLoader()->loadIcon("subscr.xpm"), 0);
     }
 
-    list->insertItem ("All Newsgroups.", &kapp->getIconLoader()->loadIcon("folder.xpm"));
+    list->insertItem ("All Newsgroups.", &kapp->getIconLoader()->loadIcon("krnfolder.xpm"));
 }
 
 bool Groupdlg::needsConnect()
@@ -486,7 +486,7 @@ bool Groupdlg::needsConnect()
 }
 
 
-bool Groupdlg::actions (int action,NewsGroup *group=0)
+bool Groupdlg::actions (int action,NewsGroup *group)
 {
     bool success=false;
     qApp->setOverrideCursor (waitCursor);

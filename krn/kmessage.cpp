@@ -91,7 +91,7 @@ Kmessage::~Kmessage()
         unlink(s);
 }
 
-void Kmessage::loadMessage( QString message, bool complete=TRUE )
+void Kmessage::loadMessage( QString message, bool complete )
 {
     format=new KFormatter(saveWidgetName,viewWidgetName,message,complete);
     CHECK_PTR(format);
