@@ -1,10 +1,12 @@
+# IMPORTANT:
+# Please consider this ruleset obsolete. Use TP_Lokalne instead.
+
 ################################################################
 # This is rule set for Poland local phone cost (up to 25 km).
 #
 # Piotr Haberko <gumis@wsi.edu.pl>
 # or Piotr Haberko <gumis@gumis.silesia.linux.org.pl>
 ################################################################
-
 
 ################################################################
 #

@@ -1,3 +1,8 @@
+# IMPORTANT:
+# Please consider this ruleset obsolete. Use TP_Lokalne instead.
+# WA¯NE:
+# Proszê u¿ywaæ TP_Lokalne zamiast tej regu³ki. Zostanie on wkrótce usuniêta
+
 ################################################################
 # This is rule set for Poland local phone cost (up to 25 km).
 # Po³±czenia lokalne (do 25 km lub polaczenia do TPNET) koszty.
