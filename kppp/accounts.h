@@ -2,8 +2,8 @@
  *            kPPP: A pppd front end for the KDE project
  *
  * $Id$
- * 
- *            Copyright (C) 1997 Bernd Johannes Wuebben 
+ *
+ *            Copyright (C) 1997 Bernd Johannes Wuebben
  *                   wuebben@math.cornell.edu
  *
  * based on EzPPP:
@@ -52,8 +52,12 @@ private slots:
 private:
   int doTab();
 
+signals:
+  void resetaccounts();
+  void resetCosts(const char *);
+
 private:
-  
+
   QTabDialog *tabWindow;
   DialWidget *dial_w;
   AccountingSelector *acct;
@@ -68,7 +72,7 @@ private:
   QLineEdit *costedit;
   QLabel *vollabel;
   QLineEdit *voledit;
-  
+
   QGroupBox *box;
   QListBox *accountlist_l;
   QPushButton *edit_b;
@@ -78,3 +82,4 @@ private:
 };
 
 #endif
+

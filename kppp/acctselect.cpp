@@ -3,8 +3,8 @@
  *            kPPP: A pppd front end for the KDE project
  *
  * $Id$
- * 
- *            Copyright (C) 1997 Bernd Johannes Wuebben 
+ *
+ *            Copyright (C) 1997 Bernd Johannes Wuebben
  *                   wuebben@math.cornell.edu
  *
  *
@@ -37,10 +37,9 @@
 #include "acctselect.h"
 #include "pppdata.h"
 
-extern bool isnewaccount;
-
-AccountingSelector::AccountingSelector(QWidget *parent, const char *name)
-  : QWidget(parent, name)
+AccountingSelector::AccountingSelector(QWidget *parent, bool _isnewaccount, const char *name)
+  : QWidget(parent, name),
+    isnewaccount(_isnewaccount)
 {
   QGridLayout *l = new QGridLayout(this, 3, 3, 10, 10);
   l->addRowSpacing(0, fontMetrics().lineSpacing() - 10);
@@ -52,7 +51,7 @@ AccountingSelector::AccountingSelector(QWidget *parent, const char *name)
   l->addLayout(l1, 1, 1);
   l1->addSpacing(10);
 
-  // checkbox for enabling/disabling accounting  
+  // checkbox for enabling/disabling accounting
   use = new QCheckBox(i18n("Enable accounting"), this);
   use->setChecked(gpppdata.AcctEnabled());
   use->setMinimumSize(use->sizeHint());
@@ -66,7 +65,7 @@ AccountingSelector::AccountingSelector(QWidget *parent, const char *name)
 	  this, SLOT(slotHighlighted(int)));
   tl->setMinimumSize(220, 200);
   l1->addWidget(tl, 1);
-  
+
   // label to display the currently selected ruleset
   QHBoxLayout *l11 = new QHBoxLayout;
   l1->addSpacing(10);
@@ -102,7 +101,7 @@ AccountingSelector::AccountingSelector(QWidget *parent, const char *name)
   QString fname = KApplication::kde_datadir().copy();
   fname += "/kppp/pics/folder.xpm";
   pmfolder.load(fname.data());
-  
+
   // scale the pixmap
   if(pmfolder.width() > 0) {
     QWMatrix wm;
@@ -114,7 +113,7 @@ AccountingSelector::AccountingSelector(QWidget *parent, const char *name)
   fname = KApplication::kde_datadir().copy();
   fname += "/kppp/pics/phone.xpm";
   pmfile.load(fname.data());
-  
+
   // scale the pixmap
   if(pmfile.width() > 0) {
     QWMatrix wm;
@@ -122,7 +121,7 @@ AccountingSelector::AccountingSelector(QWidget *parent, const char *name)
     pmfile = pmfile.xForm(wm);
   }
 
-  choice = -1;  
+  choice = -1;
 
   setupTreeWidget();
 
@@ -186,7 +185,7 @@ KTreeListItem *AccountingSelector::findByName(KTreeListItem *start,
 void AccountingSelector::insertDir(QDir d, KTreeListItem *root) {
 
   // sanity check
-  if(!d.exists() || !d.isReadable()) 
+  if(!d.exists() || !d.isReadable())
     return;
 
 
@@ -199,25 +198,25 @@ void AccountingSelector::insertDir(QDir d, KTreeListItem *root) {
   const QFileInfoList *list = d.entryInfoList();
   QFileInfoListIterator it( *list );
   QFileInfo *fi;
-  
+
   // traverse the list and insert into the widget
   while((fi = it.current()) != NULL) {
     ++it;
 
     QString samename = fi->fileName();
     KTreeListItem *i = findByName(root->getChild(), samename);
-    
+
     // skip this file if already in tree
     if(i != NULL)
       continue;
-   
+
     // check if this is the file we should mark
     QString name = fileNameToName(fi->baseName());
     KTreeListItem *tli = new KTreeListItem(name.data(), &pmfile);
-    
-    // check if this is the item we are searching for 
+
+    // check if this is the item we are searching for
     // (only in "Edit"-mode, not in "New"-mode
-    if(!isnewaccount && 
+    if(!isnewaccount &&
        (edit_s == QString(fi->filePath()).right(edit_s.length()))) {
       edit_item = tli;
     }
@@ -263,7 +262,7 @@ void expandBranch(KTreeList *tl, KTreeListItem *root) {
 void AccountingSelector::setupTreeWidget() {
   // search the item
   edit_item = NULL;
-  if(!isnewaccount) 
+  if(!isnewaccount)
     edit_s = gpppdata.accountingFile();
   else
     edit_s = "";
@@ -293,7 +292,7 @@ void AccountingSelector::setupTreeWidget() {
     expandBranch(tl, edit_item);
     tl->setCurrentItem(tl->itemIndex(edit_item));
     slotHighlighted(tl->itemIndex(edit_item));
-  } else 
+  } else
     tl->setExpandLevel(1);
 }
 
@@ -308,7 +307,7 @@ void AccountingSelector::enableItems(bool) {
     // replace underscores
     QString s = indexToFileName(choice);
     s = s.replace(QRegExp("_"), " ");
-    
+
     // remove .rst extension
     s = s.left(s.length()-4);
     if( 0 == (s.find('/')))
@@ -325,13 +324,13 @@ void AccountingSelector::slotHighlighted(int idx) {
 
   if(tli == NULL)
     return;
-  
+
   if(tli->hasChild())
     return;
 
   if(tli->getPixmap()->serialNumber() == pmfolder.serialNumber())
     return;
-  
+
   choice = idx;
   enableItems(TRUE);
 
@@ -356,3 +355,4 @@ bool AccountingSelector::save() {
 }
 
 #include "acctselect.moc"
+

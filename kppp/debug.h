@@ -40,7 +40,6 @@ class myMultiEdit : public QMultiLineEdit {
 public:
 
   myMultiEdit(QWidget *parent=0, const char *name=0);
-  ~myMultiEdit();
 
   void newLine();
   void  insertChar(char c);
@@ -51,11 +50,14 @@ class DebugWidget : public QDialog {
   Q_OBJECT
 public:
   DebugWidget(QWidget *parent=0, const char *name=0);
-  ~DebugWidget();
 
-  void readchar(char);
-  void statusLabel(const char *);
   void clear();
+
+public slots:
+  void statusLabel(const char *);
+  void statusLabel(QString);
+  void toggleVisibility();
+  void addChar(char);
 
 private slots:
   void hideit();

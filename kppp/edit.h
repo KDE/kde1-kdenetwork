@@ -54,7 +54,7 @@
 class DialWidget : public QWidget {
 Q_OBJECT
 public:
-  DialWidget( QWidget *parent=0, const char *name=0 );
+  DialWidget( QWidget *parent=0, bool isnewaccount = true, const char *name=0 );
   ~DialWidget() {}
 
 public slots:
@@ -92,7 +92,7 @@ private:
 class IPWidget : public QWidget {
 Q_OBJECT
 public:
-  IPWidget( QWidget *parent=0, const char *name=0 );
+  IPWidget( QWidget *parent=0, bool isnewaccount = true, const char *name=0 );
   ~IPWidget() {}
 
   virtual void resizeEvent(QResizeEvent *);
@@ -126,7 +126,7 @@ private:
 class DNSWidget : public QWidget {
 Q_OBJECT
 public:
-  DNSWidget( QWidget *parent=0, const char *name=0 );
+  DNSWidget( QWidget *parent=0, bool isnewaccount = true, const char *name=0 );
   ~DNSWidget() {}
 
 public slots:
@@ -154,7 +154,7 @@ private:
 class GatewayWidget : public QWidget {
 Q_OBJECT
 public:
-  GatewayWidget( QWidget *parent=0, const char *name=0 );
+  GatewayWidget( QWidget *parent=0, bool isnewaccount = true, const char *name=0 );
   ~GatewayWidget() {}
 
   virtual void resizeEvent(QResizeEvent *);
@@ -182,7 +182,7 @@ private:
 class ScriptWidget : public QWidget {
 Q_OBJECT
 public:
-  ScriptWidget( QWidget *parent=0, const char *name=0 );
+  ScriptWidget( QWidget *parent=0, bool isnewaccount = true, const char *name=0 );
   ~ScriptWidget() {}
 
 public slots:

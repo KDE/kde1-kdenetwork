@@ -27,7 +27,6 @@
 #define _GENERAL_H_
 
 #include <string.h>
-
 #include <qwidget.h>
 #include <qpainter.h>
 #include <qcombo.h>
@@ -36,6 +35,7 @@
 #include <qchkbox.h>
 #include <qradiobt.h>
 #include <qchkbox.h>
+#include <kslider.h>
 
 #include "modemcmds.h"
 #include "pppdata.h"
@@ -43,18 +43,12 @@
 #include "miniterm.h"
 
 class GeneralWidget : public QWidget {
-  
   Q_OBJECT
-
 public:
-  
-  GeneralWidget( QWidget *parent=0, const char *name=0 );
+    GeneralWidget( QWidget *parent=0, const char *name=0 );
 
 private slots:
-  
-//  void 	pppdpathchanged(const char*);
   void 	pppdtimeoutchanged(const char *n);
-  //  void 	logviewerchanged(const char*);
   void 	caption_toggled(bool);
   void  iconify_toggled(bool on); 
   void 	redial_toggled(bool on);
@@ -62,11 +56,8 @@ private slots:
   void  quit_toggled(bool);
   void  docking_toggled(bool on);
 
-
 private:
-
   QGroupBox 	*box;
-  //  QLabel 	*label1;
 
   QLabel 	*label3;
   QLabel 	*label4;
@@ -83,25 +74,15 @@ private:
   QCheckBox 	*chkbox7;
 
   QLineEdit 	*pppdtimeout;
-  //  QLineEdit 	*logviewer;
-  //  QLabel    	*logviewerlabel;
-  //  QLineEdit 	*pppdpath;
-
-
 };
 
 
 class ModemWidget : public QWidget {
-
   Q_OBJECT
-
 public:
-
   ModemWidget( QWidget *parent=0, const char *name=0 );
 
-
 private slots:
-
   void 	setmodemdc(int);
   void 	setflowcontrol(int);
   void 	modemtimeoutchanged(const char*);
@@ -110,7 +91,6 @@ private slots:
   void  speed_selection(int);
 
 private:
-
   QComboBox 	*enter;
   QGroupBox 	*box;
   QLabel 	*label1;
@@ -131,13 +111,9 @@ private:
 
 
 class ModemWidget2 : public QWidget {
-
   Q_OBJECT
-
 public:
-
   ModemWidget2( QWidget *parent=0, const char *name=0 );
-
 
 private slots:
   void 	busywaitchanged(const char*);
@@ -145,10 +121,9 @@ private slots:
   void 	modemcmdsbutton();
   void 	terminal();
   void 	query_modem();
-  void 	query_done();
+  void  volumeChanged(int);
 
 private:
-
   ModemTransfer *modemtrans;
   QLabel 	*label4;
   QLabel 	*labeltmp;
@@ -159,25 +134,19 @@ private:
   QFrame 	*fline;
   QLineEdit 	*busywait;
   QCheckBox 	*chkbox1;
+  KSlider       *volume;
 };
 
 class AboutWidget : public QWidget {
-
   Q_OBJECT
-
 public:
-  
-  AboutWidget( QWidget *parent=0, const char *name=0 );
+    AboutWidget( QWidget *parent=0, const char *name=0 );
 
 private:
-  
-  QGroupBox 	*box;
+    QGroupBox 	*box;
   QLabel 	*label1;
   QLabel 	*label2;
   QLabel 	*label3;
-
-
 };
-
 
 #endif

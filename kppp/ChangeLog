@@ -25,6 +25,23 @@
 	* fixed a few typos in the TEMPLATE
 	* prepared a replacement for the debug-window
 	* connwindow.cpp: code cleanups
+	* began to remove the code dependencies between main.cpp
+	(KPPPWidget) and the setup GUI components. This will help
+	to separate the dialer and the setup later
+	* general.cpp: code cleanups
+	* accounts.cpp: removed as many references to p_kppp as possible,
+	using signal/slots instead of. There´s only on occurence of p_kppp
+	left
+	* general.cpp: removed the mysterious function itoa (nowhere used)
+	* various files: a lot of code cleanups, removed many references
+	to extern variables, reduced the amount of functions called from
+	p_kppp directly (done with signal/slots now)	
+	* Added a new parser for modem speeds. The results are much better
+	now, especially for the new K56flex/X2/V.90 modems (where
+	different speeds are used for RX/TX)
+	* removed tons of "#ifdef MY_DEBUG" and replaced them with
+	functions "Debug", which is provided in log.cpp and is a
+	"printf()" like function
 	
 1998-08-21  Harri Porten  <porten@kde.org>
 

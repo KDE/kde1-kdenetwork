@@ -3,8 +3,8 @@
  *            kPPP: A pppd front end for the KDE project
  *
  * $Id$
- * 
- *            Copyright (C) 1997 Bernd Johannes Wuebben 
+ *
+ *            Copyright (C) 1997 Bernd Johannes Wuebben
  *                   wuebben@math.cornell.edu
  *
  * This file contributed by: Mario Weilguni, <mweilguni@sime.com>
@@ -42,10 +42,7 @@
 #include "accounting.h"
 #include "kpppconfig.h"
 #include "pppdata.h"
-
-#ifdef MY_DEBUG
-#include <stdio.h>
-#endif
+#include "log.h"
 
 // defines the maximum duration until the current costs
 // are saved again (to prevent loss due to "kill")
@@ -100,21 +97,18 @@ void Accounting::timerEvent(QTimerEvent *t) {
     double newLen;
 
     rules.getActiveRule(QDateTime::currentDateTime(), newCosts, newLen);
-    if(newLen < 1) { // changed to < 1     
+    if(newLen < 1) { // changed to < 1
       slotStop();
       return; // no default rule found
     }
-    
+
     // check if we have a new rule. If yes,
     // kill the timer and restart it with new
     // duration
     if((newCosts != _lastcosts) || (newLen != _lastlen)) {
 
-#ifdef MY_DEBUG
-      printf("SWITCHING RULES, new costs = %0.2f, new len = %0.2f\n",
+      Debug("SWITCHING RULES, new costs = %0.2f, new len = %0.2f\n",
 	     newCosts, newLen);
-#endif
-
 
       killTimer(acct_timer_id);
       if(newLen > 0)
@@ -140,7 +134,7 @@ void Accounting::timerEvent(QTimerEvent *t) {
 
     saveCosts();
   }
-  
+
 }
 
 QString timet2qstring(time_t t) {
@@ -184,7 +178,7 @@ void Accounting::slotStop() {
       killTimer(update_timer_id);
     acct_timer_id = 0;
     update_timer_id = 0;
-    
+
     QString s;
     s.sprintf(":%s:%0.4e:%0.4e:%u:%u\n",
 	      timet2qstring(time(0)).data(),
@@ -218,7 +212,7 @@ bool Accounting::loadRuleSet(const char *name) {
      int ret = rules.load(d.data());
      return (bool)(ret == 0);
    }
-  
+
   // load from KDE directory if file is found there
   d = KApplication::kde_datadir().copy();
   d += "/kppp/Rules/";
@@ -253,7 +247,7 @@ void Accounting::logMessage(QString s, bool newline) {
     }
 
     f.writeBlock(s.data(), s.length());
-		 
+
     f.close();
     chown(LogFileName.data(),getuid(),getgid());
     chmod(LogFileName.data(),S_IRUSR | S_IWUSR);
@@ -267,7 +261,7 @@ double Accounting::total() {
     return _total + rules.minimumCosts();
  }
 
- 
+
 
 double Accounting::session() {
 
@@ -279,17 +273,13 @@ double Accounting::session() {
 }
 
 // set costs back to zero ( typically once per month)
-bool Accounting::resetCosts(const char *accountname){
-
+void Accounting::resetCosts(const char *accountname){
   QString prev_account = gpppdata.accname();
 
   gpppdata.setAccount(accountname);
   gpppdata.setTotalCosts("");
 
   gpppdata.setAccount(prev_account);
-
-  return TRUE;
-
 }
 
 
@@ -305,7 +295,7 @@ bool Accounting::saveCosts() {
     return TRUE;
 
   } else
-    
+
     return FALSE;
 }
 
@@ -336,9 +326,10 @@ QString Accounting::getCosts(const char* accountname) {
   QString val = gpppdata.totalCosts();
 
   gpppdata.setAccount(prev_account);
-  
+
   return val;
 
 }
 
 #include "accounting.moc"
+

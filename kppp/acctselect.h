@@ -2,8 +2,8 @@
  *            kPPP: A pppd front end for the KDE project
  *
  * $Id$
- * 
- *            Copyright (C) 1997 Bernd Johannes Wuebben 
+ *
+ *            Copyright (C) 1997 Bernd Johannes Wuebben
  *                   wuebben@math.cornell.edu
  *
  *
@@ -37,9 +37,9 @@
 class AccountingSelector : public QWidget {
   Q_OBJECT
 public:
-  AccountingSelector(QWidget *parent = 0, const char *name = 0);
+  AccountingSelector(QWidget *parent = 0, bool _isnewaccount = false, const char *name = 0);
   ~AccountingSelector() {}
-  
+
   bool save();
 
 private:
@@ -64,6 +64,8 @@ private:
 
   KTreeListItem *edit_item;
   QString edit_s;
+  bool isnewaccount;
 };
 
 #endif
+

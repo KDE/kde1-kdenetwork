@@ -5,6 +5,7 @@
  *
  *            Copyright (C) 1997 Bernd Johannes Wuebben
  *                   wuebben@math.cornell.edu
+ *
  * This file contributed by: Mario Weilguni, <mweilguni@sime.com>
  *
  *
@@ -23,52 +24,34 @@
  * Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-#ifndef __ACCOUNTING__H__
-#define __ACCOUNTING__H__
+#include "log.h"
+#include <stdio.h>
+#include <ctype.h>
+#include <kapp.h>
 
-#include <qobject.h>
-#include <qmsgbox.h>
-#include "ruleset.h"
+const char *prgname() {
+  if(kapp==0)
+    return "kppp";
+  else {
+    char *p = kapp->argv()[0];
+    if(strrchr(p, '/'))
+      return strrchr(p, '/')+1;
+    else
+      return p;
+  }
+}
 
-class Accounting : public QObject {
+void PRINTDEBUG(char *file, int line, const char *fmt, ...) {
+  va_list ap;
+  va_start(ap, fmt);
+  
+  // strip newlines
+  QString s(fmt);
+  while(s.length() && s.right(1) == "\n")
+    s = s.left(s.length() - 1);
 
-  Q_OBJECT
-
-public:
-
-  Accounting(QObject *parent = 0);
-  ~Accounting();
-
-  bool running();
-  bool loadRuleSet(const char *name);
-  QString getCosts(const char* accountname);
-  double total();
-  double session();
-
-protected:
-  void timerEvent(QTimerEvent *);
-  void logMessage(QString, bool = FALSE);
-  bool saveCosts();
-  bool loadCosts();
-
-signals:
-  void changed(QString total, QString session);
-
-public slots:
-  void resetCosts(const char *accountname);
-  void slotStart();
-  void slotStop();
-
-private:
-
-  RuleSet rules;
-  QString LogFileName;
-  double _total, _session;
-  double _lastcosts;
-  double _lastlen;
-  int acct_timer_id, update_timer_id;
-
-};
-
-#endif
-
+  fprintf(stderr, "[%s:%s:%d]: ", prgname(), file, line);
+  vfprintf(stderr, s.data(), ap);
+  fprintf(stderr, "\n");
+  va_end(ap);
+}

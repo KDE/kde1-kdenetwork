@@ -27,11 +27,9 @@
 #include "termios.h"
 #include <qlayout.h>
 
-extern bool isnewaccount;
-
 #include "macros.h"
 
-DialWidget::DialWidget( QWidget *parent, const char *name )
+DialWidget::DialWidget( QWidget *parent, bool isnewaccount, const char *name )
   : QWidget(parent, name)
 {
   const int GRIDROWS = 11;
@@ -180,7 +178,7 @@ void DialWidget::pppdargsbutton() {
 //
 // IPWidget
 //
-IPWidget::IPWidget( QWidget *parent, const char *name )
+IPWidget::IPWidget( QWidget *parent, bool isnewaccount, const char *name )
   : QWidget(parent, name)
 {
 
@@ -320,7 +318,7 @@ void IPWidget::hitIPSelect( int i ) {
 
 
 
-DNSWidget::DNSWidget( QWidget *parent, const char *name )
+DNSWidget::DNSWidget( QWidget *parent, bool isnewaccount, const char *name )
   : QWidget(parent, name)
 {
   QGridLayout *tl = new QGridLayout(this, 3, 3, 10, 10);
@@ -445,7 +443,7 @@ void DNSWidget::removedns() {
 //
 // GatewayWidget
 //
-GatewayWidget::GatewayWidget( QWidget *parent, const char *name )
+GatewayWidget::GatewayWidget( QWidget *parent, bool isnewaccount, const char *name )
   : QWidget(parent, name)
 {
   box1 = new QGroupBox(this,"box1");
@@ -562,7 +560,7 @@ void GatewayWidget::hitGatewaySelect( int i ) {
 
 
 
-ScriptWidget::ScriptWidget( QWidget *parent, const char *name )
+ScriptWidget::ScriptWidget( QWidget *parent, bool isnewaccount, const char *name )
   : QWidget(parent, name)
 { 
   const int GRIDROWS = 3;

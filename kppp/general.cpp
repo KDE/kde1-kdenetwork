@@ -27,12 +27,11 @@
 #include <qdir.h>
 #include <kapp.h>
 #include <qlayout.h>
+#include <kintegerline.h>
 #include "general.h"
 #include "version.h"
-#include <kintegerline.h>
 #include "macros.h"
-
-QString ati_query_strings[NUM_OF_ATI];
+#include "log.h"
 
 GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
   : QWidget(parent, name)
@@ -42,23 +41,6 @@ GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
   box = new QGroupBox(i18n("kppp Setup"), this,"box");
   tl->addMultiCellWidget(box, 0, 9, 0, 3);
   
-//   label1 = new QLabel(this,"path");
-//   label1->setText(i18n("pppd Path:"));
-//   label1->setMinimumSize(label1->sizeHint());
-//   tl->addWidget(label1, 1, 1);
-
-//   //pppd Path Line Edit Box
-//   pppdpath = new QLineEdit(this, "pppdpath");
-//   pppdpath->setMinimumWidth(pppdpath->sizeHint().width());
-//   pppdpath->setFixedHeight(pppdpath->sizeHint().height());
-//   pppdpath->setMaxLength(PATH_SIZE);
-//   pppdpath->setText(gpppdata.pppdPath());
-//   connect(pppdpath, SIGNAL(textChanged(const char*)),
-// 	  SLOT(pppdpathchanged(const char*)));
-//   tl->addWidget(pppdpath, 1, 2);
-
-  //pppd Timeout Line Edit Box
-
   label6 = new QLabel(this,"timeout");
   label6->setText(i18n("pppd Timeout:"));
   label6->setMinimumSize(label6->sizeHint());
@@ -91,7 +73,7 @@ GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
   chkbox2 = new QCheckBox(i18n("Automatic Redial on Disconnect"),
 			  this,"redialbox");
   MIN_HEIGHT(chkbox2);
-  chkbox2->setChecked(gpppdata.get_automatic_redial());
+  chkbox2->setChecked(gpppdata.automatic_redial());
   connect(chkbox2,SIGNAL(toggled(bool)),this,SLOT(redial_toggled(bool)));
   tl->addMultiCellWidget(chkbox2, 4, 4, 1, 2);
 
@@ -123,59 +105,42 @@ GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
   tl->activate();
 }
 
+
 void GeneralWidget::docking_toggled(bool on){
-
   gpppdata.set_dock_into_panel(on);
-
 }
+
 
 void GeneralWidget::iconify_toggled(bool on){
   gpppdata.set_iconify_on_connect(on);
 }
+
  
 void GeneralWidget::caption_toggled(bool on){
   gpppdata.set_show_clock_on_caption(on);
-
 }
 
 
 void GeneralWidget::redial_toggled(bool on){
-
   gpppdata.set_automatic_redial(on);
-
 }
+
 
 void GeneralWidget::xserver_toggled(bool on){
-
   gpppdata.set_xserver_exit_disconnect(on);
-
 }
+
 
 void GeneralWidget::quit_toggled(bool on){
-
   gpppdata.set_quit_on_disconnect(on);
-
 }
-
-// void GeneralWidget::logviewerchanged(const char *n){
-   
-//   gpppdata.setlogViewer(n);
-
-// }
-
-
-// void GeneralWidget::pppdpathchanged(const char *n) {
-
-//   gpppdata.setpppdPath(n);
-
-// }
-
 
 
 void GeneralWidget::pppdtimeoutchanged(const char *n) {
   gpppdata.setpppdTimeout(n);
 
 }
+
 
 AboutWidget::AboutWidget( QWidget *parent, const char *name)
   : QWidget(parent, name)
@@ -218,7 +183,7 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
 {
   int k;
 
-  QGridLayout *tl = new QGridLayout(this, 10, 4, 10, 10);
+  QGridLayout *tl = new QGridLayout(this, 11, 4, 10, 10);
   tl->addRowSpacing(0, fontMetrics().lineSpacing() - 10); // magic
 
   box = new QGroupBox(i18n("Serial device"), this,"box");
@@ -399,6 +364,7 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   tl->activate();
 }
 
+
 void ModemWidget::speed_selection(int) {
   gpppdata.setSpeed(baud_c->text(baud_c->currentItem()));
 }
@@ -413,31 +379,20 @@ void ModemWidget::setmodemdc(int i) {
   gpppdata.setModemDevice(modemdevice->text(i));
 }
 
+
 void ModemWidget::setflowcontrol(int i) {
   gpppdata.setFlowcontrol(flowcontrol->text(i));
 }
+
 
 void ModemWidget::modemlockdirchanged(const char *n) {
   gpppdata.setModemLockDir(n);
 }
 
+
 void ModemWidget::modemtimeoutchanged(const char *n) {
   gpppdata.setModemTimeout(n);
 }
-
-
-
-
-
-// Add functions
-char *itoa(int n) {
-  static char buf[16];
-  
-  sprintf(buf,"%d",n);  
-
-  return buf;
-}
-
 
 
 ModemWidget2::ModemWidget2( QWidget *parent, const char *name)
@@ -482,6 +437,20 @@ ModemWidget2::ModemWidget2( QWidget *parent, const char *name)
   l1->addSpacing(10);
   l1->addStretch(1);
 
+  QHBoxLayout *hbl = new QHBoxLayout;
+  l1->addLayout(hbl);
+  QLabel *volumeLabel = new QLabel(i18n("Modem volume"), this);
+  volumeLabel->setAlignment(AlignVCenter|AlignRight);
+  MIN_SIZE(volumeLabel);
+  hbl->addStretch(1);
+  hbl->addWidget(volumeLabel);
+  volume = new KSlider(0, 2, 1, gpppdata.volume(), KSlider::Horizontal, this);
+  volume->setFixedSize(120, 25);  
+  hbl->addWidget(volume);
+  hbl->addStretch(1);
+  connect(volume, SIGNAL(valueChanged(int)),
+	  this, SLOT(volumeChanged(int)));
+
   QHBoxLayout *l12 = new QHBoxLayout;
   l1->addLayout(l12);
   l12->addStretch(1);
@@ -522,50 +491,39 @@ ModemWidget2::ModemWidget2( QWidget *parent, const char *name)
   connect(modemcmds, SIGNAL(clicked()), SLOT(modemcmdsbutton()));
   connect(modeminfo_button, SIGNAL(clicked()), SLOT(query_modem()));
   connect(terminal_button, SIGNAL(clicked()), SLOT(terminal()));
-
-
-//   fline = new QFrame(this,"line");
-//   fline->setFrameStyle(QFrame::HLine |QFrame::Sunken);
-//   fline->setGeometry(20,195,295,3);
-
 }
+
 
 void ModemWidget2::modemcmdsbutton() {
   ModemCommands mc(this);
   mc.exec();
 }
 
-void ModemWidget2::query_modem() {
 
-  for(int i = 0; i < NUM_OF_ATI; i++){
-    ati_query_strings[i] = "";
-  }
-
-  modemtrans = new ModemTransfer(this,"modemquery");
-  if(  modemtrans->exec() == QDialog::Accepted)
-    query_done();
-
+void ModemWidget2::query_modem() {  
+  modemtrans = new ModemTransfer(this);
+  modemtrans->exec();
+  delete modemtrans;
 }
 
-void ModemWidget2::query_done(){
-    
-    ModemInfo mi(NULL,NULL);
-    mi.exec();
-}
 
-void ModemWidget2::terminal(){
-  
-  MiniTerm terminal(NULL,NULL);
+void ModemWidget2::terminal() {
+    MiniTerm terminal(NULL,NULL);
   terminal.exec();
-
 }
 
-void ModemWidget2::use_cdline_toggled(bool on){
+
+void ModemWidget2::use_cdline_toggled(bool on) {
     gpppdata.setUseCDLine(on);
 }
 
+
 void ModemWidget2::busywaitchanged(const char *n) {
   gpppdata.setbusyWait(n);
+}
+
+void ModemWidget2::volumeChanged(int v) {
+  gpppdata.setVolume(v);
 }
 
 

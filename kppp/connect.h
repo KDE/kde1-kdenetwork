@@ -29,22 +29,22 @@
 #ifndef _CONNECT_H_
 #define _CONNECT_H_
 
-#include<sys/types.h>
-#include<sys/wait.h>
-#include<signal.h>
-#include<fcntl.h>
-#include<unistd.h>
-#include<termios.h>
-#include<stdlib.h>
-#include<string.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <signal.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <termios.h>
+#include <stdlib.h>
+#include <string.h>
 
-
-#include<qapp.h>
-#include<qdialog.h>
-#include<qtimer.h>
-#include<qpushbt.h>
-#include<qlabel.h>
-#include<qevent.h>
+#include <qapp.h>
+#include <qdialog.h>
+#include <qtimer.h>
+#include <qpushbt.h>
+#include <qlabel.h>
+#include <qevent.h>
+#include <qsocknot.h>
 
 #include "kpppconfig.h"
 #include "debug.h"
@@ -71,7 +71,7 @@ protected:
   void closeEvent( QCloseEvent *e );  
 
 private slots:
-  void readtty();
+  void readtty(int);
   void pause();
   void cancelbutton();
   void debugbutton();
@@ -85,6 +85,12 @@ public slots:
 
 signals:
   void if_waiting_signal();
+  void debugMessage(const char *);
+  void debugMessage(QString);
+  void toggleDebugWindow();
+  void debugPutChar(char);
+  void startAccounting();
+  void stopAccounting();
 
 public:
   QString myreadbuffer;  // we want to keep every thing in order to fish for the 
@@ -105,6 +111,11 @@ private:
   
   bool semaphore;
   QTimer *inittimer;
+
+  // Mario: not needed anymore, uses a socketnotifier instead of
+  // QTimer *readtimer;
+  QSocketNotifier *sn;
+
   QTimer *timeout_timer;
   bool execppp();
   
@@ -112,8 +123,6 @@ private:
   bool expecting;
   QString expectstr;
   
-  int readtimer_pri;
-  QTimer *readtimer;  
   QString readbuffer;
 
   void setScan(const char *);

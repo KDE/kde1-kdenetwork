@@ -1,3 +1,4 @@
+# Yow Emacs, this is a -*- makefile -*-
 
 # this 10 paths are KDE specific. Use them:
 # kde_htmldir       Where your docs should go to. (contains lang subdirs)
@@ -28,7 +29,11 @@ SUBDIRS = docs pixmaps icons logview Rules
 INSTALL_PROGRAM=$(INSTALL) -m 4755
 
 # This one gets installed 
-bin_PROGRAMS = 	kppp
+bin_PROGRAMS = 	kppp #kpppsetup
+
+#kpppsetup_SOURCES= setup.cpp pppdata.cpp general.cpp edit.cpp scriptedit.cpp accounts.cpp  modeminfo.cpp miniterm.cpp modem.cpp modemcmds.cpp iplined.cpp pppdargs.cpp acctselect.cpp
+
+#kpppsetup_CFLAGS= -DSETUPMODE
 
 # Which sources should be compiled for kppp.
 kppp_SOURCES	= accounts.cpp \
@@ -57,14 +62,17 @@ kppp_SOURCES	= accounts.cpp \
 		docking.cpp \
 		runtests.cpp \
 		loginterm.cpp \
-		ppplog.cpp
+		ppplog.cpp \
+		log.cpp
 
 # the library search path
 kppp_LDFLAGS = $(all_libraries) $(KDE_RPATH)
+#kpppsetup_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 
 # the libraries to link against. Be aware of the order. First the libraries,
 # that depend on the following ones.
 kppp_LDADD   = -lkdeui -lkdecore -lqt -lXext -lX11 -lm $(LIBSOCKET)
+#kpppsetup_LDADD   = -lkdeui -lkdecore -lqt -lXext -lX11 -lm $(LIBSOCKET)
 
 # this option you can leave out. Just, if you use "make dist", you need it
 noinst_HEADERS = accounts.h \
@@ -96,7 +104,8 @@ noinst_HEADERS = accounts.h \
 		auth.h \
 		version.h \
 		macros.h \
-		ppplog.h
+		ppplog.h \
+		log.h
 
 # just to make sure, automake makes them 
 BUILTSOURCES = accounts.moc \
@@ -115,7 +124,8 @@ BUILTSOURCES = accounts.moc \
 		miniterm.moc\
 		accounting.moc\
 		acctselect.moc\
-		docking.moc
+		docking.moc \
+		setup.moc
 
 # if you "make distclean", this files get removed. If you want to remove
 # them while "make clean", use CLEANFILES
@@ -224,3 +234,7 @@ pwentry.moc: pwentry.h
 scriptedit.cpp: scriptedit.moc;
 scriptedit.moc: scriptedit.h
 	$(MOC) scriptedit.h -o scriptedit.moc
+
+setup.cpp: setup.moc
+setup.moc: setup.h
+	$(MOC) setup.h -o setup.moc

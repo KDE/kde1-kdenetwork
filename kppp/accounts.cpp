@@ -38,7 +38,6 @@
 
 extern KPPPWidget *p_kppp;
 
-bool isnewaccount;
 void parseargs(char* buf, char** args);
 
 AccountWidget::AccountWidget( QWidget *parent, const char *name )
@@ -159,7 +158,6 @@ AccountWidget::AccountWidget( QWidget *parent, const char *name )
 
 
 void AccountWidget::slotListBoxSelect(int idx) {
-
   delete_b->setEnabled((bool)(idx != -1));
   edit_b->setEnabled((bool)(idx != -1));
   copy_b->setEnabled((bool)(idx != -1));
@@ -170,7 +168,7 @@ void AccountWidget::slotListBoxSelect(int idx) {
     costlabel->setEnabled(TRUE);
     costedit->setEnabled(TRUE);
     costedit->setText(p_kppp->accounting.getCosts(
-       		      accountlist_l->text(accountlist_l->currentItem())));
+        		      accountlist_l->text(accountlist_l->currentItem())));
 
     vollabel->setEnabled(TRUE);
     voledit->setEnabled(TRUE);
@@ -213,8 +211,7 @@ void AccountWidget::resetClicked(){
   if(ok)
     return;
   
-  p_kppp->accounting.resetCosts(
-       		      accountlist_l->text(accountlist_l->currentItem()));
+  emit resetCosts(accountlist_l->text(accountlist_l->currentItem()));
   costedit->setText("");
 
 
@@ -228,7 +225,7 @@ void AccountWidget::editaccount() {
 
   if(result == QDialog::Accepted) {
     accountlist_l->changeItem(gpppdata.accname(),accountlist_l->currentItem());
-    p_kppp->resetaccounts();
+    emit resetaccounts();
     gpppdata.save();
   }
 
@@ -250,7 +247,7 @@ void AccountWidget::newaccount() {
 
   if(result == QDialog::Accepted) {
     accountlist_l->insertItem(gpppdata.accname());
-    p_kppp->resetaccounts();
+    emit resetaccounts();
     gpppdata.save();
   }
   else {
@@ -276,7 +273,7 @@ void AccountWidget::copyaccount() {
   gpppdata.copyaccount(accountlist_l->currentItem());
 
   accountlist_l->insertItem(gpppdata.accname());
-  p_kppp->resetaccounts();
+  emit resetaccounts();
   gpppdata.save();
 
 }
@@ -298,7 +295,7 @@ void AccountWidget::deleteaccount() {
   if(gpppdata.deleteAccount(accountlist_l->text(accountlist_l->currentItem())))
     accountlist_l->removeItem(accountlist_l->currentItem());
 
-  p_kppp->resetaccounts();
+  emit resetaccounts();
   gpppdata.save();
 
   slotListBoxSelect(accountlist_l->currentItem());
@@ -308,14 +305,13 @@ void AccountWidget::deleteaccount() {
 
 
 int AccountWidget::doTab(){
-
   tabWindow = new QTabDialog(0,0,TRUE);
+  bool isnewaccount;
  
   if(strcmp(gpppdata.accname(), "") == 0) {
     tabWindow->setCaption(i18n("New Account"));
     isnewaccount = true;
-  }
-  else {
+  } else {
     QString tit = i18n("Edit Account: ");
     tit += gpppdata.accname();
     tabWindow->setCaption(tit);
@@ -328,19 +324,19 @@ int AccountWidget::doTab(){
 
   //  tabWindow->setApplyButton();
 
-  dial_w = new DialWidget(tabWindow, "dial_w");
+  dial_w = new DialWidget(tabWindow, isnewaccount);
 
-  ip_w = new IPWidget(tabWindow, "ip_w");
-  dns_w = new DNSWidget(tabWindow, "dns_w");
-  gateway_w = new GatewayWidget(tabWindow, "gateway_w");
-  script_w = new ScriptWidget(tabWindow, "script_w");
-  acct = new AccountingSelector(tabWindow, "acct_w");
+  ip_w = new IPWidget(tabWindow, isnewaccount);
+  dns_w = new DNSWidget(tabWindow, isnewaccount);
+  gateway_w = new GatewayWidget(tabWindow, isnewaccount);
+  script_w = new ScriptWidget(tabWindow, isnewaccount);
+  acct = new AccountingSelector(tabWindow, isnewaccount);
 
-  tabWindow->addTab(dial_w,i18n("Dial"));
-  tabWindow->addTab(ip_w,i18n("IP"));
-  tabWindow->addTab(dns_w,i18n("DNS"));
-  tabWindow->addTab(gateway_w,i18n("Gateway"));
-  tabWindow->addTab(script_w,i18n("Login Script"));
+  tabWindow->addTab(dial_w, i18n("Dial"));
+  tabWindow->addTab(ip_w, i18n("IP"));
+  tabWindow->addTab(dns_w, i18n("DNS"));
+  tabWindow->addTab(gateway_w, i18n("Gateway"));
+  tabWindow->addTab(script_w, i18n("Login Script"));
   tabWindow->addTab(acct, i18n("Accounting"));
 
   int result = 0;

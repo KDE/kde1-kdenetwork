@@ -5,7 +5,7 @@
  *
  *              Copyright (C) 1997 Bernd Johannes Wuebben
  *                      wuebben@math.cornell.edu
- * 
+ *
  * This file was contributed by Harri Porten <porten@tu-harburg.de>
  *
  *
@@ -44,7 +44,7 @@ DockWidget::DockWidget(const char *name)
 
   docked = false;
 
-  QString pixdir = KApplication::kde_datadir() + "/kppp/pics/";  
+  QString pixdir = KApplication::kde_datadir() + "/kppp/pics/";
   QString tmp;
 
 #define PMERROR(pm) \
@@ -71,7 +71,7 @@ DockWidget::DockWidget(const char *name)
 				 this, SLOT(toggle_window_state()));
   popup_m->insertItem(i18n("Details"), this, SLOT(show_stats()));
   popup_m->insertSeparator();
-  popup_m->insertItem(i18n("Disconnect"), 
+  popup_m->insertItem(i18n("Disconnect"),
 		      this, SLOT(disconnect()));
 
   statstring = statstring.sprintf("In: %.2f Out %.2f",
@@ -89,9 +89,7 @@ DockWidget::~DockWidget() {
 }
 
 void DockWidget::dock() {
-
   if (!docked) {
-
     // prepare panel to accept this widget
     KWM::setDockWindow (this->winId());
 
@@ -102,20 +100,17 @@ void DockWidget::dock() {
     this->show();
 
     docked = true;
-  } 
+  }
 }
 
+
 void DockWidget::undock() {
-
   if (docked) {
-
-    // the widget's window has to be destroyed in order 
+    // the widget's window has to be destroyed in order
     // to undock from the panel. Simply using hide() is
     // not enough (seems to be necessary though).
-
-    this->hide();
-
-    this->destroy(true, true);
+    hide();
+    destroy(true, true);
 
     // recreate window for further dockings
     this->create(0, true, false);
@@ -124,26 +119,22 @@ void DockWidget::undock() {
   }
 }
 
+
 const bool DockWidget::isDocked() {
-
   return docked;
-
 }
 
-void DockWidget::paintEvent (QPaintEvent *e) {
 
-  (void) e;
-
+void DockWidget::paintEvent (QPaintEvent *) {
   paintIcon();
-
 }
+
 
 void DockWidget::paintIcon () {
-
-  // animate modem lights 
+  // animate modem lights
 
   if((ibytes_last != ibytes) && (obytes_last != obytes)) {
-    bitBlt(this, 0, 0, &dock_both_pixmap);    
+    bitBlt(this, 0, 0, &dock_both_pixmap);
     ibytes_last = ibytes;
     obytes_last = obytes;
     /*QToolTip::remove(this);
@@ -154,7 +145,7 @@ void DockWidget::paintIcon () {
   }
 
   if(ibytes_last != ibytes) {
-    bitBlt(this, 0, 0, &dock_left_pixmap);    
+    bitBlt(this, 0, 0, &dock_left_pixmap);
     ibytes_last = ibytes;
     obytes_last = obytes;
     /*QToolTip::remove(this);
@@ -165,7 +156,7 @@ void DockWidget::paintIcon () {
   }
 
   if(obytes_last != obytes) {
-    bitBlt(this, 0, 0, &dock_right_pixmap);    
+    bitBlt(this, 0, 0, &dock_right_pixmap);
     ibytes_last = ibytes;
     obytes_last = obytes;
     /*    QToolTip::remove(this);
@@ -175,37 +166,35 @@ void DockWidget::paintIcon () {
     return;
   }
 
-  bitBlt(this, 0, 0, &dock_none_pixmap);    
+  bitBlt(this, 0, 0, &dock_none_pixmap);
   ibytes_last = ibytes;
   obytes_last = obytes;
-
 }
+
 
 void DockWidget::timeclick() {
-
   if(this->isVisible()){
-    (void) do_stats();  
+    (void) do_stats();
     paintIcon();
-  }  
+  }
 }
 
-void DockWidget::take_stats() {
 
+void DockWidget::take_stats() {
   if (docked) {
     init_stats();
     clocktimer->start(PPP_STATS_INTERVAL);
   }
 }
 
+
 void DockWidget::stop_stats() {
-
   clocktimer->stop();
-
 }
 
-void DockWidget::mousePressEvent(QMouseEvent *e) {
 
-  // open/close connect-window on right mouse button 
+void DockWidget::mousePressEvent(QMouseEvent *e) {
+  // open/close connect-window on right mouse button
   if ( e->button() == LeftButton ) {
     toggle_window_state();
   }
@@ -220,7 +209,7 @@ void DockWidget::mousePressEvent(QMouseEvent *e) {
       text = i18n("Minimize");
     else
       text = i18n("Restore");
-    
+
     popup_m->changeItem(text, toggleID);
     popup_m->popup(QPoint(x, y));
     popup_m->exec();
@@ -228,27 +217,27 @@ void DockWidget::mousePressEvent(QMouseEvent *e) {
 
 }
 
-void DockWidget::toggle_window_state() {
 
+void DockWidget::toggle_window_state() {
   // restore/hide connect-window
   if(p_kppp != 0L)  {
     if (p_kppp->con_win->isVisible())
       p_kppp->con_win->hide();
-    else 
+    else
       p_kppp->con_win->show();
   }
 }
 
+
 void DockWidget::show_stats() {
- 
   // show statistics
   if(p_kppp != 0L) {
     p_kppp->stats->show();
   }
 }
 
-void DockWidget::disconnect() {
 
+void DockWidget::disconnect() {
   // close ppp-connection
   if(p_kppp != 0L) {
     emit p_kppp->disconnect();
