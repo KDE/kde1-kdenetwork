@@ -41,13 +41,6 @@ const int KAStatusBar::progressId = 3;
 const int KAStatusBar::triesId = 4;
 const int KAStatusBar::ledId = 5;
 
-const char KAStatusBar::statusTxt[] = "Status: ";
-const char KAStatusBar::hostTxt[] = "Host: ";
-const char KAStatusBar::hitsTxt[] = " hits";
-const char KAStatusBar::progressTxt[] = "Progress: ";
-const char KAStatusBar::triesTxt[] = ". try";
-
-
 KAStatusBar::KAStatusBar(QWidget *parent, char *name)
   :KStatusBar( parent, name )
 {
@@ -84,8 +77,8 @@ KAStatusBar::stopLED()
 void 
 KAStatusBar::slotChangeStatus( const char *status  )
 {
-  QString tmp( statusTxt );
-  tmp += status;
+  QString tmp;
+  tmp.sprintf(i18n("Status: %s"), status );
   changeItem( tmp, statusId );
   //  repaint();
   updateRects();
@@ -94,8 +87,8 @@ KAStatusBar::slotChangeStatus( const char *status  )
 void 
 KAStatusBar::slotChangeHost( const char *host )
 {
-  QString tmp( hostTxt );
-  tmp += host;
+  QString tmp;
+  tmp.sprintf(i18n("Hosts: %s"), host);
   changeItem( tmp, hostId );
   //  repaint();
   updateRects();
@@ -105,8 +98,7 @@ void
 KAStatusBar::slotChangeHits( const int hits )
 {
   QString tmp;
-  tmp.setNum( hits );
-  tmp += hitsTxt;
+  tmp.sprintf(i18n("%d hits"), hits);
   changeItem( tmp, hitsId );
   //  repaint();
   updateRects();
@@ -116,8 +108,7 @@ void
 KAStatusBar::slotChangeProgress( const int progress )
 {
   QString tmp;
-  tmp.setNum( progress );
-  tmp = progress + tmp;
+  tmp.sprintf(i18n("Progress: %d"), progress);
   changeItem( tmp , progressId );
   //  repaint();
   updateRects();
@@ -127,8 +118,7 @@ void
 KAStatusBar::slotChangeTries( int tries )
 {
   QString tmp;
-  tmp.setNum( tries );
-  tmp += triesTxt;
+  tmp.sprintf(i18n("%d try."), tries);
   changeItem( tmp, triesId );
   //  repaint();  
   updateRects();
