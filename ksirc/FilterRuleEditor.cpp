@@ -11,6 +11,7 @@
 
 #include <kconfig.h>
 #include <qmsgbox.h> 
+#include <qregexp.h>
 #include <iostream.h>
 
 #define Inherited FilterRuleEditorData
@@ -73,21 +74,22 @@ void FilterRuleEditor::OkPressed()
     QMessageBox::warning(this, "Missing Arguments", 
 			 "Cannot create a Rule since not\nall the fields are filled in.");
     
-    return;
   }
-  ApplyButton->setText("&Modify");
-  kConfig->setGroup("FilterRules");
-  QString key;
-  key.sprintf("name-%d", number);
-  kConfig->writeEntry(key, name);
-  key.sprintf("search-%d", number);
-  kConfig->writeEntry(key, search);
-  key.sprintf("from-%d", number);
-  kConfig->writeEntry(key, from);
-  key.sprintf("to-%d", number);
-  kConfig->writeEntry(key, to);
-  //    kConfig->sync();
-  updateListBox(after);
+  else{
+    ApplyButton->setText("&Modify");
+    kConfig->setGroup("FilterRules");
+    QString key;
+    key.sprintf("name-%d", number);
+    kConfig->writeEntry(key, name);
+    key.sprintf("search-%d", number);
+    kConfig->writeEntry(key, search);
+    key.sprintf("from-%d", number);
+    kConfig->writeEntry(key, from);
+    key.sprintf("to-%d", number);
+    kConfig->writeEntry(key, to);
+    //    kConfig->sync();
+    updateListBox(after);
+  }
 }
 
 void FilterRuleEditor::updateListBox(int citem = 0)
@@ -101,7 +103,8 @@ void FilterRuleEditor::updateListBox(int citem = 0)
     key.sprintf("name-%d", number);
     RuleList->insertItem(kConfig->readEntry(key), 0);
   }
-  RuleList->setCurrentItem(citem);
+  if(RuleList->count() > 0)
+    RuleList->setCurrentItem(citem);
   RuleList->setAutoUpdate(FALSE);
   RuleList->repaint(); 
 }
@@ -142,7 +145,7 @@ void FilterRuleEditor::deleteRule()
     updateListBox();
   }
   else{
-    deleteButton->setEnabled(FALSE);
+    //    deleteButton->setEnabled(FALSE);
   }
 }
 
@@ -158,13 +161,13 @@ void FilterRuleEditor::newHighlight(int i)
   kConfig->setGroup("FilterRules");
   QString key;
   key.sprintf("name-%d", i);
-  LineTitle->setText(kConfig->readEntry(key));
+  LineTitle->setText(convertSpecial(kConfig->readEntry(key)));
   key.sprintf("search-%d", i);
-  LineSearch->setText(kConfig->readEntry(key));
+  LineSearch->setText(convertSpecial(kConfig->readEntry(key)));
   key.sprintf("from-%d", i);
-  LineFrom->setText(kConfig->readEntry(key));
+  LineFrom->setText(convertSpecial(kConfig->readEntry(key)));
   key.sprintf("to-%d", i);
-  LineTo->setText(kConfig->readEntry(key));
+  LineTo->setText(convertSpecial(kConfig->readEntry(key)));
 
 }
 
@@ -192,4 +195,10 @@ void FilterRuleEditor::lowerRule()
     moveRule(max+1, item+1);
     updateListBox(item+1);
   }
+}
+
+QString FilterRuleEditor::convertSpecial(QString str)
+{
+  str.replace(QRegExp("\\$"), "$$");
+  return str;
 }

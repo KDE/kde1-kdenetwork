@@ -11,6 +11,7 @@
 #define FilterRuleEditor_included
 
 #include "FilterRuleEditorData.h"
+#include <qstring.h>
 
 class FilterRuleEditor : public FilterRuleEditorData
 {
@@ -38,5 +39,6 @@ protected slots:
 protected:
      void updateListBox(int citem = 0);
      void moveRule(int, int);
+     QString convertSpecial(QString);
 };
 #endif // FilterRuleEditor_included

@@ -266,7 +266,7 @@ void KSircProcess::filters_update()
     next_part.sprintf("FROM==%s !!! ", kConfig->readEntry(key).data());
     command += next_part;
     key.sprintf("to-%d", number);
-    next_part.sprintf("TO==%s\n", kConfig->readEntry(key).data());
+    next_part.sprintf("TO==\"%s\"\n", kConfig->readEntry(key).data());
     command += next_part;
     iocontrol->stdin_write(command);
   }

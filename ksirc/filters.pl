@@ -11,9 +11,9 @@
 
 $#KSIRC_FILTER = 0;
 
-$KSIRC_FILTER[0]{'SEARCH'} = "^";
-$KSIRC_FILTER[0]{'FROM'} = "^~*[^~]*~*";
-$KSIRC_FILTER[0]{'TO'} = "~!all~";
+$KSIRC_FILTER[0]{'SEARCH'} = 'KILL message for';
+$KSIRC_FILTER[0]{'FROM'} = '(\sPath:\s\S+)';
+$KSIRC_FILTER[0]{'TO'} = '. $1';
 
 print "*** Loading filter parser...\n";
 
@@ -21,9 +21,8 @@ sub hook_ksircfilter {
   my($i) = 0;
   for(; $i <= $#KSIRC_FILTER; $i++){
     if($_[0] =~ m/$KSIRC_FILTER[$i]{'SEARCH'}/){
-       print STDERR "from $_[0]";
-       $_[0] =~ s/$KSIRC_FILTER[$i]{'FROM'}/$KSIRC_FILTER[$i]{'TO'}/;
-       print STDERR "=> $_[0]\n";
+       $_[0] =~ s/$KSIRC_FILTER[$i]{'FROM'}/$KSIRC_FILTER[$i]{'TO'}/ee;
+#       print "$i\n";
     }
   }
 }

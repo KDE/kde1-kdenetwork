@@ -462,11 +462,11 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
   //  if(channel.isEmpty() == FALSE)
   //    cerr << "Channel Specefic: " << channel << endl;
 
-  strncpy(&c, string.left(1), 1);          // Copy the first char into
+  //  strncpy(&c, string.left(1), 1);          // Copy the first char into
 					   // c, and then do a switch
 					   // on it
 
-  switch(c){
+  switch(string[0]){
   case '`':                                // ` is an ssfe command
     s2 = strstr(string, "#ssfe#");
     if(s2 > 0){
