@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp 0.9.6\n"
-"POT-Creation-Date: 1999-04-07 02:31+0200\n"
+"POT-Creation-Date: 1999-04-09 02:42+0200\n"
 "PO-Revision-Date: 1998-06-12 08:32 MET DST\n"
 "Last-Translator: Wang Jian <lark@linux.ustc.edu.cn>\n"
 "Language-Team: zh_CN ( gb2312)\n"
@@ -1285,12 +1285,12 @@ msgstr "调制解调器准备好了"
 msgid "Can't restore tty settings: tcsetattr()\n"
 msgstr "不能恢复 tty 设置: tcsetattr()\n"
 
-#: modem.cpp:335
+#: modem.cpp:343
 #, fuzzy
 msgid "Sorry, the modem doesn't respond."
 msgstr "抱歉,调制解调器没有准备好."
 
-#: modem.cpp:436
+#: modem.cpp:444
 #, fuzzy
 msgid "Unknown speed"
 msgstr "未知速度"

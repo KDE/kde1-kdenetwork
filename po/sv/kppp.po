@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1999-04-07 02:31+0200\n"
+"POT-Creation-Date: 1999-04-09 02:42+0200\n"
 "PO-Revision-Date: 1999-02-06 01:45+01:00\n"
 "Last-Translator: Anders Widell <d95-awi@nada.kth.se>\n"
 "Language-Team: Swedish\n"
@@ -1570,11 +1570,11 @@ msgstr "Modemet klart"
 msgid "Can't restore tty settings: tcsetattr()\n"
 msgstr "Kan inte återställa tty-inställningar: tcsetattr()\n"
 
-#: modem.cpp:335
+#: modem.cpp:343
 msgid "Sorry, the modem doesn't respond."
 msgstr "Tyvärr, modemet svarar inte."
 
-#: modem.cpp:436
+#: modem.cpp:444
 msgid "Unknown speed"
 msgstr "Okänd hastighet"
 

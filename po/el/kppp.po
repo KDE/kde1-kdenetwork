@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1999-04-07 02:31+0200\n"
+"POT-Creation-Date: 1999-04-09 02:42+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Theodore J. Soldatos <theodore@eexi.gr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1297,12 +1297,12 @@ msgstr "Το modem είναι έτοιμο"
 msgid "Can't restore tty settings: tcsetattr()\n"
 msgstr "Δεν μπορώ να επαναφέρω τις ρυθμίσεις tty: tcsetattr()\n"
 
-#: modem.cpp:335
+#: modem.cpp:343
 #, fuzzy
 msgid "Sorry, the modem doesn't respond."
 msgstr "Συγγνώμη, το modem δεν είναι έτοιμο."
 
-#: modem.cpp:436
+#: modem.cpp:444
 #, fuzzy
 msgid "Unknown speed"
 msgstr "ταχύτητα άγνωστη"
