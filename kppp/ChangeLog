@@ -1,3 +1,7 @@
+1998-04-30  Harri Porten  <porten@tu-harburg.de>
+
+	* connect.cpp: undid my stupid PAP/CHAP changes from yesterday
+
 1998-04-29  Harri Porten  <porten@tu-harburg.de>
 
 	* connect.cpp: prevented segfault on invalid lockfiles
