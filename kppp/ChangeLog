@@ -1,3 +1,12 @@
+1999-01-27  Harri Porten  <porten@kde.org>
+
+	* pppstats.cpp: removed debug output
+	* opener.cpp: delay closing the tty fd. Otherwise the ioctl() in
+	execpppd() can't succeed.
+	* opener.cpp: ignore TERM and INT signals. This is probably the
+	best until a safe clean-up & terminate routine is written.
+	* connect.cpp: added a removedns() call to cancelbutton().
+
 1999-01-25  Mario Weilguni <mweilguni@kde.org>
 
 	* updated and regenerated documentation

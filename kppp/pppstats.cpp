@@ -167,18 +167,15 @@ int if_is_up() {
 
     if ((ifr.ifr_flags  & IFF_UP ) != 0L){
 	is_up = 1;
-	printf("Interface is up\n");
-	//Debug("Interface is up\n");
+	Debug("Interface is up\n");
     } 
     else{
       is_up = 0;
       ::close(s);
       s = 0;
-      //      Debug("Interface is down\n");
-      printf("Interface is down\n");       
+      Debug("Interface is down\n");
     }
     
-    printf("Returning %d\n",is_up);
     return is_up;
 }
 

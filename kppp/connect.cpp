@@ -874,6 +874,7 @@ void ConnectWidget::cancelbutton() {
   // just to be sure
   Requester::rq->removeSecret(AUTH_PAP);
   Requester::rq->removeSecret(AUTH_CHAP);
+  removedns();
   
   kapp->processEvents();
 

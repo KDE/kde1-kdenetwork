@@ -26,6 +26,16 @@
  * Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
+/* A note to developers:
+ *
+ * Apart from the first dozen lines in main() the following code represents
+ * the setuid root part of kppp. So please be careful !
+ * o restrain from using X, Qt or KDE library calls
+ * o check for possible buffer overflows
+ * o handle requests from the parent process with care. They might be forged.
+ * o be paranoid and think twice about everything you change.
+ */
+
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -62,7 +72,10 @@ static void sighandler(int);
 static pid_t pppdPid = -1;
 
 Opener::Opener(int s) : socket(s), ttyfd(-1) {
+  lockfile[0] = '\0';
   signal(SIGUSR1, SIG_IGN);
+  signal(SIGTERM, SIG_IGN);
+  signal(SIGINT, SIG_IGN);
   signal(SIGCHLD, sighandler);
   mainLoop();
 }
@@ -88,8 +101,6 @@ void Opener::mainLoop() {
   msg.msg_control = 0L;
   msg.msg_controllen = 0;
 
-  lockfile[0] = '\0';
-
   // loop forever
   while(1) {
     len = recvmsg(socket, &msg, 0);
@@ -103,19 +114,17 @@ void Opener::mainLoop() {
     case OpenDevice:
       Debug("Opener: received OpenDevice");
       assert(len == sizeof(struct OpenModemRequest));
+      close(ttyfd);
       device = deviceByIndex(request.modem.deviceNum);
       response.status = 0;
-      if ((fd = open(device, O_RDWR|O_NDELAY|O_NOCTTY)) == -1) {
+      if ((ttyfd = open(device, O_RDWR|O_NDELAY|O_NOCTTY)) == -1) {
         Debug("error opening modem device !");
-        ttyfd = -1;
         fd = open(DEVNULL, O_RDONLY);
         response.status = -errno;
         sendFD(fd, &response);
-      } else {
-        ttyfd = fd;
-        sendFD(fd, &response);
-      }
-      close(fd);
+        close(fd);
+      } else
+        sendFD(ttyfd, &response);
       break;
 
     case OpenLock:
@@ -161,6 +170,8 @@ void Opener::mainLoop() {
     case RemoveLock:
       Debug("Opener: received RemoveLock");
       assert(len == sizeof(struct RemoveLockRequest));
+      close(ttyfd);
+      ttyfd = -1;
       response.status = unlink(lockfile);
       lockfile[0] = '\0';
       sendResponse(&response);
@@ -461,6 +472,8 @@ bool Opener::execpppd(const char *arguments) {
 
     default:
       Debug("In parent: pppd pid %d\n",pppdPid);
+      close(ttyfd);
+      ttyfd = -1;
       return true;
       break;
     }
