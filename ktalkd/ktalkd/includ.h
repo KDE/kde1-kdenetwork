@@ -11,6 +11,9 @@
 #include "talkd.h"
 #include <netinet/in.h> 
 
+#ifdef HAVE_UTMP_H
+#include <utmp.h>
+#endif
 #ifdef HAVE_PATHS_H
 #include <paths.h>
 #endif
