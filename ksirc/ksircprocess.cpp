@@ -308,7 +308,7 @@ void KSircProcess::new_toplevel(QString str) /*FOLD00*/
 //    KSircMessageReceiver *faker = new KSircMessageReceiver(this);
     //    TopList.insert(str, faker); // Insert place holder since the constructor for kSircTopLevel may parse the event queue which will cause us to try and create trhe window several times!!!
     debug("Calling new toplevel for: -%s-", str.data());
-    KSircTopLevel *wm = new KSircTopLevel(this, str.data(), QString(server) +"_" + str + "_" + str);
+    KSircTopLevel *wm = new KSircTopLevel(this, str.data(), QString(server) +"_" + str);
     //    insertChild(wm); // Keep ineheratence going so we can find children
     objFinder::insert(wm);
     installEventFilter(wm);
