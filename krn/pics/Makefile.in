@@ -19,7 +19,7 @@ FILES = black-bullet.xpm\
 	save.xpm
 
 
-DESTDIR = @prefix@/doc/HTML
+DESTDIR = @prefix@/lib/pics/krn
 INSTALL_DIR = @INSTALL@ -d -m 0755
 INSTALL_DATA = @INSTALL@ -m 644
 
