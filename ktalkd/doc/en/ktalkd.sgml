@@ -21,6 +21,7 @@
 
 <tt/ktalkd/ is an enhanced talk daemon - a program to handle incoming talk requests,
 announce them and allow you to respond to it using a talk client.
+
 GLOSSARY : In this document, if somebody wants to talk to you, you are 
 designated as the "callee".
 
@@ -86,7 +87,7 @@ ktalk supports both protocols as well.
 <p>
 
 <descrip>
-<tag/RedHat Linux 5.0/
+<tag/RedHat Linux 5.x/
 My development platform. Fully tested on it.
 
 <tag/Other Linux, BSD/
@@ -113,7 +114,7 @@ I've heard about problems about localtime, ctime, and assorted functions.
 <url url="http://www.kde.org">, part of the
 <bf/kdenetwork/ package.
 
-<p>You can download <tt/ktalkd/ from the main ftp site of the KDE project,
+<p>But you can always download the latest <tt/ktalkd/ from the main ftp site of the KDE project,
 <url url="ftp://ftp.kde.org/pub/kde"> and from its mirrors.
 It's usually found in <url url="ftp://ftp.kde.org/pub/kde/stable/latest/apps/network"> 
 
@@ -162,7 +163,17 @@ get <tt/ktalkd/ to compile on your platform.
 <sect>Usage
 <p>
 
-Not much to say about ktalkd : it is a daemon. No user interface for it.
+To use ktalkd, you need a talk client. The text-based <tt/talk/ is available on 
+most Unix systems. Try <tt/talk your_username/ to see what happens when you
+receive a talk request. You can also try the answering machine the same way :
+initiate a talk to yourself, ignore the announcement twice, and you'll see the
+answering machine.
+<p>
+There is a talk client with a graphical interface for the KDE, <tt/ktalk/.
+It's not yet shipped with KDE packages, but you can find it on
+ftp://ftp.kde.org. It should be in
+<url url="ftp://ftp.kde.org/pub/kde/stable/latest/apps/network">
+
 <p>The announcement dialog box is trivial : respond or ignore.
 <p>The configuration dialog should be rather straight forward, except for setting up a
 forward to another user (or even to another host).
