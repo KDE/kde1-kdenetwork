@@ -17,6 +17,8 @@
           has that accelerator. If default is Send now, composer  has also
           toolbar icon for send later (floppy icon).
 
+	* Patch from Daniel Naber for correct RMB in kmheaders
+        
         * TO/SHOULD DO: When sending == send now and you have some messages in
           outbox folder and you send some other message - all from outbox
           are sent; That means, outbox cannot be used as Draft folder :-(

@@ -985,8 +985,14 @@ void KMHeaders::setPalette(const QPalette& p)
 void KMHeaders::slotRMB(int idx, int colId)
 {
   
-  highlightMessage(idx, colId);
-  setCurrentItem(idx);
+  //highlightMessage(idx, colId);
+  //setCurrentItem(idx);
+
+  if( ! isMarked(idx) ) {
+    highlightMessage(idx, colId);
+    setCurrentItem(idx);
+  }
+
 
   if (!topLevelWidget()) return; // safe bet
   
