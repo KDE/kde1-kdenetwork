@@ -51,8 +51,6 @@ ac_cpp='$CXXCPP $CPPFLAGS $all_includes'
 AC_CHECK_HEADERS(uu.h uudeview.h)
 ac_cpp=$ac_cpp_safe
 
-AC_FIND_JPEG
-
 AC_LANG_CPLUSPLUS
 dnl Checks for header files.
 AC_HEADER_DIRENT
@@ -63,6 +61,9 @@ AC_CHECK_HEADERS(utmp.h sys/param.h linux/tcp.h asm/param.h sys/file.h)
 AC_CHECK_HEADERS(re_comp.h net/errno.h getopt.h resolv.h)
 AC_CHECK_FUNCS(flock)
 AC_CHECK_USLEEP
+
+AC_FIND_JPEG
+KDE_CHECK_KIMGIO
 
 dnl Checks for typedefs, structures, and compiler characteristics.
 AC_HEADER_TIME
