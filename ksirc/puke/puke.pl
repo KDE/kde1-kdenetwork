@@ -12,12 +12,20 @@ if($PUKEFd != undef){
 }
 
 #
+# Setup flag fo syncronous operation
+# 1 for sync
+# 0 for async/fly by the seat of your pants
+#
+$SYNC = 0;
+
+#
 # Setup debugging logger, comment out for production use
 #
-$DEBUG = 1 if !$DEBUG;
+$DEBUG = 1;
 if($DEBUG){
-    open(LOG, ">msg-log");
-    print LOG "Start time: ". `date`;
+  open(LOG, ">msg-log");
+  select(LOG); $| = 1; select(STDOUT);
+  print LOG "Start time: ". `date`;
 }
 
 # 
@@ -49,68 +57,110 @@ $proto = getprotobyname('tcp');
 socket($PUKEFd, PF_UNIX, SOCK_STREAM, 0) || print "PUKE: Sock failed: $!\n";
 $sun = sockaddr_un($sock);
 print "PUKE: Connecting to $sock\n";
-connect($PUKEFd,$sun) || warn "Puke: Connect failed: $!\n",$PUKEFailed=1;
+connect($PUKEFd,$sun) || (die "Puke: Connect failed: $!\n",$PUKEFailed=1);
 select($PUKEFd); $| = 1; select(STDOUT);
-fcntl($PUKEFd, F_SETFL, O_NONBLOCK);
+#fcntl($PUKEFd, F_SETFL, O_NONBLOCK);
 
 # Arg1: Command
 # Arg2: WinId
 # Arg3: iArg
 # Arg4: cArg
 sub PukeSendMessage {
-  my($cmd, $winid, $iarg, $carg, $handler) = @_;
+  my($cmd, $winid, $iarg, $carg, $handler, $waitfor) = @_;
   print("PUKE: cArg message too long $cArg\n") if(length($carg) > 50);
   $PUKE_HANDLER{$cmd}{$winid} = $handler if $handler != undef;
   syswrite($PUKEFd, pack($PukePacking, $cmd, $winid, $iarg, $carg), $PukeMSize);
   print LOG kgettimeofday() . " SEND message: CMD: $PUKE_NUM2NAME{$cmd} WIN: $winid IARG: $iarg CARG: $carg\n" if $DEBUG;
+  if($SYNC == 1 || $waitfor == 1){
+    return &sel_PukeRecvMessage(1, $winid, -$cmd, $carg);
+  }
+  return ();
 }
 
 sub sel_PukeRecvMessage {
+  my($wait, $wait_winid, $wait_cmd, $wait_carg) = @_;
   my($m);
   my($cmd, $winid, $iarg, $carg, $junk);
-  $len = sysread($PUKEFd, $m, $PukeMSize);
-  
-  if($len== 0){
-    &remsel($PUKEFd);
-    close($PUKEFd);
-    return;
-  }
-#  print "Length: $len " . length($m) . "\n";
-  ($cmd, $winid, $iarg, $carg) = unpack($PukePacking, $m);
-#  print("PUKE: Got => $PUKE_NUM2NAME{$cmd}/$cmd\n");
-#  print("PUKE: Got: $cmd, $winid, $iarg, $carg\n");
-  if($winid == undef){ $winid = 0; }
-  $blah = $carg;
-  $blah =~ s/\000//g;
-  print LOG kgettimeofday() . " GOT  message: CMD: $PUKE_NUM2NAME{$cmd} WIN: $winid IARG: $iarg CARG: $blah\n" if $DEBUG;
-  #
-  # Check both $cmd and the correct reply -$cmd
-  #
-  my(%ARG) = ('iCommand' => $cmd,
-	      'iWinId' => $winid,
-	      'iArg' => $iarg,
-	      'cArg' => $carg);
 
-#  print "*I* Def handler: $PUKE_DEF_HANDLER{$cmd}\n";
+  while(1){
+    $len = sysread($PUKEFd, $m, $PukeMSize);
 
-  if($PUKE_HANDLER{-$cmd}{$winid}){ # one shot/command handler
-    &{$PUKE_HANDLER{-$cmd}{$winid}}(\%ARG);
-  } elsif ($PUKE_HANDLER{$cmd}{$winid}){
-    &{$PUKE_HANDLER{$cmd}{$winid}}(\%ARG); 
-  } elsif ($PUKE_W_HANDLER{$cmd}{$winid}) { # widget specific handler
-    &{$PUKE_W_HANDLER{$cmd}{$winid}}(\%ARG);
-  } elsif ($PUKE_DEF_HANDLER{"$cmd"}) {# catch all
-    &{$PUKE_DEF_HANDLER{"$cmd"}}(\%ARG);
+    if($len== 0){
+      &remsel($PUKEFd);
+      close($PUKEFd);
+      return;
+    }
+    #  print "Length: $len " . length($m) . "\n";
+    ($cmd, $winid, $iarg, $carg) = unpack($PukePacking, $m);
+    #  print("PUKE: Got => $PUKE_NUM2NAME{$cmd}/$cmd\n");
+    #  print("PUKE: Got: $cmd, $winid, $iarg, $carg\n");
+    if($winid == undef){ $winid = 0; }
+    $blah = $carg;
+    $blah =~ s/\000//g;
+    print LOG kgettimeofday() . " GOT  message: CMD: $PUKE_NUM2NAME{$cmd} WIN: $winid IARG: $iarg CARG: $blah\n" if $DEBUG;
+    #
+    # Check both $cmd and the correct reply -$cmd
+    #
+    my(%ARG) = ('iCommand' => $cmd,
+                'iWinId' => $winid,
+                'iArg' => $iarg,
+                'cArg' => $carg);
+
+    #  print "*I* Def handler: $PUKE_DEF_HANDLER{$cmd}\n";
+
+    if($wait == 1 && $winid == $wait_winid && $wait_cmd == $cmd){
+      print LOG kgettimeofday() . " WAIT message: CMD: $PUKE_NUM2NAME{$cmd} WIN: $winid IARG: $iarg CARG: $blah\n" if $DEBUG;
+      return %ARG;
+    }
+
+    if($PUKE_HANDLER{-$cmd}{$winid}){ # one shot/command handler
+      &{$PUKE_HANDLER{-$cmd}{$winid}}(\%ARG);
+    } elsif ($PUKE_HANDLER{$cmd}{$winid}){
+      &{$PUKE_HANDLER{$cmd}{$winid}}(\%ARG);
+    } elsif ($PUKE_W_HANDLER{$cmd}{$winid}) { # widget specific handler
+      &{$PUKE_W_HANDLER{$cmd}{$winid}}(\%ARG);
+    } elsif ($PUKE_DEF_HANDLER{"$cmd"}) {# catch all
+      &{$PUKE_DEF_HANDLER{"$cmd"}}(\%ARG);
+    }
+    else {
+      #
+      # If there was no handler this is a widget creation falling throuhg
+      #
+
+      if($wait == 1 && (substr($wait_carg,0,7) eq substr($carg,0,7))){
+        print LOG kgettimeofday() . " WAI2 message: CMD: $PUKE_NUM2NAME{$cmd} WIN: $winid IARG: $iarg CARG: $blah\n" if $DEBUG;
+        return %ARG;
+      }
+      # No handler at all, unkown reply
+      print("*E* PUKE: Got unkown command: $cmd/$PUKE_NUM2NAME{$cmd}\n");
+      #    print("PUKE: Got: $cmd, $winid, $iarg, $carg\n");
+    }
+
+    #
+    # If we're not waiting for a message, return
+    #
+    if(!$wait){
+      return ();
+    }
+    
+    my($rin, $rout) =('', '');
+    vec($rin,fileno($PUKEFd),1) = 1;
+    $nfound = select($rout=$rin, undef, undef, 1);
+    if($nfound < 1){
+      print "*E* PUKE: Timed out waiting for reply, returning null\n";
+      return ();
+    }
   }
-  else {
-    # No handler at all, unkown reply
-    print("*E* PUKE: Got unkown command: $cmd/$PUKE_NUM2NAME{$cmd}\n");
-#    print("PUKE: Got: $cmd, $winid, $iarg, $carg\n");
-  }
+
 }
 
 &addsel($PUKEFd, "PukeRecvMessage", 0);
 
 # Basics are up and running, now init Puke/Ksirc Interface.
 
-&PukeSendMessage($PUKE_SETUP, 0, 0, $server, undef);
+my(%ARG) = &PukeSendMessage($PUKE_SETUP, $::PUKE_CONTROLLER, 0, $server, undef, 1);
+
+$PukeMSize = $ARG{'iArg'};
+print "*I* Puke: Initial Setup complete\n";
+print "*I* Puke: Communications operational\n";
+

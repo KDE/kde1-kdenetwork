@@ -12,16 +12,6 @@ class WidgetRunner;
 #include "pwidget.h"
 //#include "pframe.h"
 
-typedef struct {
-  PWidget *pwidget; // The widget
-  int type;        // The type so casting is "safer"
-} WidgetS;         // WidgetStruct
-
-typedef struct {
-  PWidget *(*wc)(widgetId *wI, PWidget *parent);
-  void *dlhandle;
-} widgetCreate;
-
 
 class WidgetRunner : public QObject
 {
@@ -41,24 +31,6 @@ class WidgetRunner : public QObject
  void outputMessage(int fd, PukeMessage *pm);
  
  private:
- QIntDict<QIntDict<WidgetS> > WidgetList;
-
- QIntDict<widgetCreate> widgetCF; // widgetCreatingFuntion List
-
- // WinId comes from a static unsigned int we increment for each new window
- static uint uiBaseWinId;
-
- /**
-  * Verifies the widgetId exists and is a valid widget.
-  * True is valid, false if invalid.
-  */
- bool checkWidgetId(widgetId *pwI);
-
- /**
-  * Create new Widget, returns new iWinId for it.
-  * Takes server fd and parent winid, and type as arguments
-  */
- widgetId createWidget(widgetId wI, int iType);
 
 };
 

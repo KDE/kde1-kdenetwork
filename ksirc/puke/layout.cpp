@@ -63,6 +63,21 @@ void LayoutRunner::inputMessage(int fd, PukeMessage *pm){
     //    debug("Create layout pmRet.cArg: %s", pmRet.cArg);
     emit outputMessage(fd, &pmRet);
   }
+  else if(pm->iCommand == PUKE_LAYOUT_DELETE){
+    if((pm->iArg < 0 ||
+        (uint) pm->iArg > uiBaseLayoutId) ){
+      pmRet.iArg = 1;
+    }
+    else{
+      LayoutList.remove(pm->iArg);
+      pmRet.iArg = 0;
+    }
+    // Everything's done, generate reply
+    pmRet.iCommand = PUKE_LAYOUT_DELETE_ACK;
+    pmRet.iWinId = pm->iArg;
+    pmRet.iArg = 0;
+    emit outputMessage(fd, &pmRet);
+  }
   else if(pm->iCommand == PUKE_LAYOUT_ADDWIDGET){
     widgetId wiWidget;
     wiWidget.fd = fd;
@@ -112,14 +127,33 @@ void LayoutRunner::inputMessage(int fd, PukeMessage *pm){
   }
   else if(pm->iCommand == PUKE_LAYOUT_ADDSTRUT){
     QBoxLayout *qlb = LayoutList[pm->iWinId];
-    qlb->addStrut(pm->iArg);
+
+    pmRet.iArg = 0; // setup failure case
+    if(qlb != 0x0)
+      qlb->addStrut(pm->iArg);
+    else
+      pmRet.iArg = 1;
 
     pmRet.iCommand = PUKE_LAYOUT_ADDSTRUT_ACK; // ack the add widget
     pmRet.iWinId = pm->iWinId;
-    pmRet.iArg = 0;
     pmRet.cArg[0] = 0;
     emit outputMessage(fd, &pmRet);
   }
+  else if(pm->iCommand == PUKE_LAYOUT_ACTIVATE){
+    QBoxLayout *qlb = LayoutList[pm->iWinId];
+
+    pmRet.iArg = 0; // setup failure case
+    if(qlb != 0x0)
+      qlb->activate();
+    else
+      pmRet.iArg = 1;
+
+    pmRet.iCommand = PUKE_LAYOUT_ACTIVATE_ACK; // ack the add widget
+    pmRet.iWinId = pm->iWinId;
+    pmRet.cArg[0] = 0;
+    emit outputMessage(fd, &pmRet);
+  }
+
 }
 
 

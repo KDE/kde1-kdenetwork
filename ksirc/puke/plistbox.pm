@@ -120,7 +120,49 @@ sub selected {
   my %ARGS = %{shift()};
 
   $self->{current} = $ARGS{'iArg'};
+  $ARGS{'cArg'} =~ s/\000//g;
   $self->{currentText} = $ARGS{'cArg'};
+}
+
+sub current {
+    my $self = shift;
+    return   $self->{current};
+}
+
+sub currentText {
+    my $self = shift;
+    return   $self->{currentText};
+}
+
+sub setCurrentItem {
+  my $self = shift;
+
+  my $index = shift;
+  my $rindex = $index;
+
+  # Async call be default, no need to wait result
+  $self->sendMessage('iCommand' => $::PUKE_LISTBOX_HIGHLIGHT,
+                     'iArg' => $index,
+                     'CallBack' => sub {});
+
+
+}
+
+sub removeItem {
+  my $self = shift;
+
+  my $index = shift;
+  my $rindex = $index;
+
+  splice(@{$self->{items}}, $index, 1);
+  $self->{count} --;
+
+  # Async call be default, no need to wait result
+  $self->sendMessage('iCommand' => $::PUKE_LISTBOX_REMOVE,
+                     'iArg' => $index,
+                     'CallBack' => sub {});
+
+
 }
 
 package main; #FOLD00

@@ -78,6 +78,19 @@ void PListBox::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
     pmRet.cArg[0] = 0;
     emit outputMessage(fd, &pmRet);
     break;
+  case PUKE_LISTBOX_REMOVE:
+    if(!checkWidget())
+      return;
+    
+    widget()->removeItem(pm->iArg);
+    
+    pmRet.iCommand = - pm->iCommand;
+    pmRet.iWinId = pm->iWinId;
+    pmRet.iArg = 0;
+    pmRet.cArg[0] = 0;
+    emit outputMessage(fd, &pmRet);
+    break;
+
   default:
     PTableView::messageHandler(fd, pm);
   }

@@ -4,32 +4,32 @@
 #include <qevent.h>
 
 PWidget::PWidget(PWidget *)
-  : QObject()
+  : PObject()
 {
   //  debug("PWidget constructor called");
 
   w = 0;
 
-  eventList[0] = eventNone;
-  eventList[1] = eventTimer;
-  eventList[2] = eventMouse;
-  eventList[3] = eventMouse;
-  eventList[4] = eventMouse;
-  eventList[5] = eventMouse;
-  eventList[6] = eventKey;
-  eventList[7] = eventKey;
-  eventList[8] = eventFocus;
-  eventList[9] = eventFocus;
-  eventList[10] = eventFocus;
-  eventList[11] = eventFocus;
-  eventList[12] = eventPaint;
-  eventList[13] = eventMove;
-  eventList[14] = eventResize;
-  eventList[15] = eventNone;
-  eventList[16] = eventNone;
-  eventList[17] = eventNone;
-  eventList[18] = eventNone;
-  eventList[19] = eventNone;
+  eventList[0] = &eventNone;
+  eventList[1] = &eventTimer;
+  eventList[2] = &eventMouse;
+  eventList[3] = &eventMouse;
+  eventList[4] = &eventMouse;
+  eventList[5] = &eventMouse;
+  eventList[6] = &eventKey;
+  eventList[7] = &eventKey;
+  eventList[8] = &eventFocus;
+  eventList[9] = &eventFocus;
+  eventList[10] = &eventFocus;
+  eventList[11] = &eventFocus;
+  eventList[12] = &eventPaint;
+  eventList[13] = &eventMove;
+  eventList[14] = &eventResize;
+  eventList[15] = &eventNone;
+  eventList[16] = &eventNone;
+  eventList[17] = &eventNone;
+  eventList[18] = &eventNone;
+  eventList[19] = &eventNone;
 
   // Connect slots as needed
 
@@ -43,12 +43,12 @@ PWidget::~PWidget()
   setWidget(0);
 }
 
-PWidget *PWidget::createWidget(widgetId *pwi, PWidget *parent)
+PObject *PWidget::createWidget(widgetId *pwi, PObject *parent)
 {
-  PWidget *pw = new PWidget(parent);
+  PWidget *pw = new PWidget();
   QWidget *tw;
-  if(parent != 0)
-    tw = new QWidget(parent->widget());
+  if(parent != 0 && parent->widget()->isWidgetType() == TRUE)
+    tw = new QWidget((QWidget *) parent->widget());
   else
     tw = new QWidget();
   pw->setWidget(tw);
@@ -167,8 +167,6 @@ void PWidget::setWidget(QWidget *_w)
   w = _w;
   if(w != 0){
     widget()->installEventFilter(this);
-    connect(widget(), SIGNAL(destroyed()),
-	    this, SLOT(swidgetDestroyed()));
   }
 }
 
@@ -176,23 +174,6 @@ QWidget *PWidget::widget()
 {
   //  debug("PWidget widget called");
   return w;
-}
-
-void PWidget::setWidgetId(widgetId *pwI)
-{
-  wI = *pwI;
-  //  debug("PWidget: set widget id %d", wI.iWinId);
-}
-
-widgetId PWidget::widgetIden()
-{
-  //  debug("PWidget: called widget id %d", wI.iWinId);
-  return wI;
-}
-
-void PWidget::swidgetDestroyed(){
-  //  debug("PWidget: got destroy %d", widgetIden().iWinId);
-  emit widgetDestroyed(widgetIden());
 }
 
 // PWidget specific

@@ -530,6 +530,19 @@
 // cArg: not defined
 #define PUKE_LISTBOX_HIGHLIGHT_ACK -1615
 
+// Desc: remove number
+// iWinId: window id
+// iArg: item index to remove
+// cArg: undef
+#define PUKE_LISTBOX_REMOVE 1620
+
+// Desc: ack
+// iWinId: window id
+// iArg: not defined
+// cArg: not defined
+#define PUKE_LISTBOX_REMOVE_ACK -1620
+
+
 // Desc: item highlighted, not used signal to dsirc
 // iWinId: undef
 // iArg: undef
@@ -566,7 +579,7 @@
 // iWinId: window id
 // iArg: not defined
 // cArg: not defined
-#define PUKE_LABEL_SETTEXT_AKC -1700
+#define PUKE_LABEL_SETTEXT_ACK -1700
 
 // Desc: Set label pixmap specified by filane name
 // iWinId: window id
@@ -612,6 +625,9 @@
 // Base commands are done, next describes Widget's
 //
 
+// OBJECT base class
+#define PWIDGET_OBJECT 1
+
 // WIDGET defines a base QWidget class
 #define PWIDGET_WIDGET 2
 
@@ -652,6 +668,19 @@
 // cArg: same random m character string as PUKE_LAYOUT_NEW
 #define PUKE_LAYOUT_NEW_ACK -11000
 
+// Desc: deletes layout
+// iWinId: layout id to delete
+// iArg: undef
+// cArg: undef
+#define PUKE_LAYOUT_DELETE 11001
+
+// Desc: deletes layout ack
+// iWinId: layout id to deleted
+// iArg: undef
+// cArg: undef
+#define PUKE_LAYOUT_DELETE_ACK -11001
+
+
 #define PUKE_LAYOUT_ADDLAYOUT 11005
 #define PUKE_LAYOUT_ADDLAYOUT_ACK -11005
 
@@ -678,4 +707,21 @@
 // cArg: not define
 #define PUKE_LAYOUT_ADDSTRUT_ACK -11015
 
+// Desc: activates layout management, like show() for widget
+// iWinId: Layout Manager to activate
+// iArg: undef
+// cArg: undef
+#define PUKE_LAYOUT_ACTIVATE 11020
 
+// Desc: ack for strut add widget
+// iWinId: Layout manager 
+// iArg: 1 on failure, 0 on success
+// cArg: not define
+#define PUKE_LAYOUT_ACTIVATE_ACK -11020
+
+/*
+ * ----------------------------------------------------------------------
+ * persistant objects
+ */
+
+#define PUKE_CONTROLLER 1

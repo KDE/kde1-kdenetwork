@@ -5,9 +5,10 @@ class PWidget;
 
 #include <qobject.h>
 #include <qwidget.h>
+#include "pobject.h"
 #include "pmessage.h"
 
-class PWidget : public QObject
+class PWidget : public PObject
 {
   Q_OBJECT
  public:
@@ -15,15 +16,12 @@ class PWidget : public QObject
   virtual ~PWidget();
 
   // Init and setup code
-  static PWidget *createWidget(widgetId *pwI, PWidget *parent);
+  static PObject *createWidget(widgetId *pwI, PObject *parent);
 
   virtual void messageHandler(int fd, PukeMessage *pm);
 
   virtual void setWidget(QWidget *w);
   virtual QWidget *widget();
-
-  virtual void setWidgetId(widgetId *pwI);
-  virtual widgetId widgetIden();
 
  signals:
   void outputMessage(int fd, PukeMessage *pm);
@@ -32,13 +30,8 @@ class PWidget : public QObject
  protected:
   bool eventFilter(QObject *o, QEvent *e);
 
- protected slots:
-  void swidgetDestroyed();
-
  private:
   QWidget *w;
-
-  widgetId wI;
 
   void (PWidget::*eventList[20])(QObject *, QEvent *);
 

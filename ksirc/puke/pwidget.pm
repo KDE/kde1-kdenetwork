@@ -45,7 +45,7 @@ sub show {
 
   # make sure we are runable then show continue.
   my @ARG = ();
-  $self->canRun($self, \&PWidget::show, \@ARG) || return;
+  #  $self->canRun($self, \&PWidget::show, \@ARG) || return;
 
   $self->sendMessage('iCommand' => $::PUKE_WIDGET_SHOW);
 }

@@ -27,12 +27,10 @@ bin_PROGRAMS = 	libpuke
 libpuke_SOURCES = \
 controller.cpp \
 mcontroller.cpp \
-widget.cpp \
-mwidget.cpp \
-layout.cpp \
-mlayout.cpp \
 pwidget.cpp \
-mpwidget.cpp
+mpwidget.cpp \
+pobject.cpp \
+mpobject.cpp
 
 
 libpukeSOURCES = $(libkscutdialog_SOURCES)
@@ -40,12 +38,11 @@ libpukeSOURCES = $(libkscutdialog_SOURCES)
 libpukeOBJECTS = \
 controller.o \
 mcontroller.o \
-widget.o \
-mwidget.o \
-layout.o \
-mlayout.o \
 pwidget.o \
-mpwidget.o
+mpwidget.o \
+pobject.o \
+mpobject.o
+
 
 libpuke.c: commands.h
 	perl convert_commands.pl

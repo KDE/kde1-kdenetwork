@@ -20,7 +20,6 @@ class PukeController;
 #include "../servercontroller.h"
 
 #include "commands.h"
-#include "widget.h"
 #include "layout.h"
 
 typedef struct {
@@ -34,8 +33,47 @@ typedef struct {
   void *dlhandle;
 } commandStruct;
 
-class PukeController : public QObject {
-  Q_OBJECT;
+typedef struct {
+  PObject *pwidget; // The widget
+  int type;         // The type so casting is "safer"
+} WidgetS;          // WidgetStruct
+
+typedef struct {
+  PObject *(*wc)(widgetId *wI, PObject *parent);
+  void *dlhandle;
+} widgetCreate;
+
+class errorNoSuchWidget {
+public:
+  errorNoSuchWidget(widgetId &_wi)
+  {
+    wi = _wi;
+  }
+
+  widgetId &widgetIden() {
+    return wi;
+  }
+private:
+  widgetId wi;
+};
+
+class errorCommandFailed {
+public:
+    errorCommandFailed(int _command, int _iarg){
+        __command = _command;
+        __iarg = _iarg;
+    }
+
+    command() { return __command; }
+    iarg() { return __iarg; }
+    
+private:
+    int __command, __iarg;
+};
+
+class PukeController : public PObject
+{
+  Q_OBJECT
 public:
   PukeController(QString socket = "", QObject *parent=0, const char *name=0);
   ~PukeController();
@@ -70,11 +108,75 @@ private:
   
   QIntDict<commandStruct> qidCommandTable;
 
+
+  /**
+   * Controller ID is defined as 1
+   */
+  enum { ControllerWinId = PUKE_CONTROLLER };
+      
+  
+  // List of widgets and the fle descriptors they belong too
+  QIntDict<QIntDict<WidgetS> > WidgetList;
+
+  // Funtions used to create new widget
+  QIntDict<widgetCreate> widgetCF; // widgetCreatingFuntion List
+
   void initHdlr();
 
   void closefd(int fd);
 
   void MessageDispatch(int fd, PukeMessage *pm);
+
+  /**
+   * WinId comes from a static unsigned int we increment for each new window
+   */
+  static uint uiBaseWinId;
+  
+  /**
+   * Verifies the widgetId exists and is a valid widget.
+   * True is valid, false if invalid.
+   */
+  bool checkWidgetId(widgetId *pwI);
+
+  /**
+   * Create new Widget, returns new iWinId for it.
+   * Takes server fd and parent winid, and type as arguments
+   */
+  widgetId createWidget(widgetId wI, int iType);
+
+  /**
+   * Used to process messages going to controller, winId #1
+   *
+   */
+  void messageHandler(int fd, PukeMessage *pm);
+
+  /**
+   * NOT APPLICAABLE
+   */
+  void setWidget(QObject *) { }
+  /**
+   * NOT APPLICAABLE
+   */
+  virtual QObject *widget() { return this; }
+
+  /**
+   * Inserts a PObject into our internal list
+   */
+  void insertPObject(int fd, int iWinId, WidgetS *obj);
+
+  /**
+   * id2pobject takes a window id and returns the reuired object
+   * it throw an errorNoSuchWidget on failures
+   */
+  PObject *id2pobject(int fd, int iWinId);
+  PObject *id2pobject(widgetId *pwi);
+
+  /**
+   * Closes a widget, checking for sanity
+   */
+  void closeWidget(widgetId wI);
+   
+
 
   // Message handlers
   void hdlrPukeSetup(int fd, PukeMessage *pm);

@@ -43,6 +43,7 @@ sub setText {
   # Don't need the ouput since GET_TEXT_ACK will be called and
   # we'll set it there
   $self->sendMessage('iCommand' => $::PUKE_LABEL_SETTEXT,
+                     'iArg' => 0,
 		     'cArg' => $text,
 		     'CallBack' => sub {});
 

@@ -1,33 +1,25 @@
-sub puke_setup_ack {
-  my(%ARG) = %{$_[0]};
-  $PukeMSize = $ARG{'iArg'};
-  print "*I* Puke: Initial Setup complete\n";
-  print "*I* Puke: Communications operational\n";
-}
-$PUKE_DEF_HANDLER{"$PUKE_SETUP_ACK"} = \&puke_setup_ack;
-
 sub puke_invalid_cmd {
   print "*E* Puke: Invalid command 0 ack'ed\n";
 }
 $PUKE_DEF_HANDLER{"$PUKE_INVALID"} = \&puke_invalid_cmd;
 
 
-sub puke_widget_create_ack {
-  my %ARG = %{$_[0]};
+#sub puke_widget_create_ack {
+#  my %ARG = %{$_[0]};
+#
+#  $ARG{cArg} =~ /^(.{8,8})/;
+#  my $string = $1; 
+#
+#  if($PUKE_CREATOR{$string}){
+#    &{$PUKE_CREATOR{$string}}(%ARG); # added %ARG
+#  }
+#  else {
+#    print "*E* Widget created: $string but no handler\n";
+#  }
+#}
 
-  $ARG{cArg} =~ /^(.{8,8})/;
-  my $string = $1; 
-
-  if($PUKE_CREATOR{$string}){
-    &{$PUKE_CREATOR{$string}}(%ARG); # added %ARG
-  }
-  else {
-    print "*E* Widget created: $string but no handler\n";
-  }
-}
-
-$PUKE_DEF_HANDLER{"$PUKE_WIDGET_CREATE_ACK"} = \&puke_widget_create_ack;
-$PUKE_DEF_HANDLER{"$PUKE_LAYOUT_NEW_ACK"} = \&puke_widget_create_ack;
+#$PUKE_DEF_HANDLER{"$PUKE_WIDGET_CREATE_ACK"} = \&puke_widget_create_ack;
+#$PUKE_DEF_HANDLER{"$PUKE_LAYOUT_NEW_ACK"} = \&puke_widget_create_ack;
 
 
 # By default we ignore all the EVENT's we get sent at us.

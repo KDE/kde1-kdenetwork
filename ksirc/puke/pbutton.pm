@@ -58,11 +58,11 @@ sub setPixmap {
 		     'CallBack' => 
                      sub {
                        my $arg = shift();
-                       $arg || return;
-		       my %ARG = %{shift()};
-		       if($ARG{'iArg'} == 0){
-			 print "*E* Pixmap set failed\n";
-		       }
+                       #                       if($arg == undef){ return; }
+                       #my %ARG = %{shift()};
+                       #if($ARG{'iArg'} == 0){
+                       #print "*E* Pixmap set failed\n";
+                         #}
 		     }
 		    );
 }

@@ -136,24 +136,20 @@ bin_PROGRAMS = 	libpuke
 libpuke_SOURCES = \
 controller.cpp \
 mcontroller.cpp \
-widget.cpp \
-mwidget.cpp \
-layout.cpp \
-mlayout.cpp \
 pwidget.cpp \
-mpwidget.cpp
+mpwidget.cpp \
+pobject.cpp \
+mpobject.cpp
 
 libpukeSOURCES = $(libkscutdialog_SOURCES)
 
 libpukeOBJECTS = \
 controller.o \
 mcontroller.o \
-widget.o \
-mwidget.o \
-layout.o \
-mlayout.o \
 pwidget.o \
-mpwidget.o
+mpwidget.o \
+pobject.o \
+mpobject.o
 
 # no install headers
 
@@ -185,8 +181,8 @@ PROGRAMS =  $(bin_PROGRAMS)
 DEFS = @DEFS@ -I. -I$(srcdir) -I../..
 CPPFLAGS = @CPPFLAGS@
 LIBS = @LIBS@
-libpuke_OBJECTS =  controller.o mcontroller.o widget.o mwidget.o \
-layout.o mlayout.o pwidget.o mpwidget.o
+libpuke_OBJECTS =  controller.o mcontroller.o pwidget.o mpwidget.o \
+pobject.o mpobject.o
 libpuke_LDADD = $(LDADD)
 libpuke_LDFLAGS = 
 CXXCOMPILE = $(CXX) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
@@ -200,9 +196,8 @@ DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
 
 TAR = tar
 GZIP = --best
-DEP_FILES =  .deps/controller.P .deps/layout.P .deps/mcontroller.P \
-.deps/mlayout.P .deps/mpwidget.P .deps/mwidget.P .deps/pwidget.P \
-.deps/widget.P
+DEP_FILES =  .deps/controller.P .deps/mcontroller.P .deps/mpobject.P \
+.deps/mpwidget.P .deps/pobject.P .deps/pwidget.P
 CXXMKDEP = $(CXX) -M $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
 SOURCES = $(libpuke_SOURCES)
 OBJECTS = $(libpuke_OBJECTS)

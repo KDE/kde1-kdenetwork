@@ -18,18 +18,15 @@ sub sendMessage {
   my $self = shift;
   
   my %ARG = @_;
-
-  if($self->runable() == 0){
-    $self->delayMessage(%ARG);
-    return;
-  }
-
   $ARG{"iWinId"} = $self->{iWinId} if($ARG{"iWinId"} == undef);
-  &::PukeSendMessage($ARG{"iCommand"}, 
-		     $ARG{"iWinId"}, 
-		     $ARG{"iArg"},
-		     $ARG{"cArg"},
-		     $ARG{"CallBack"});
+  
+  return &::PukeSendMessage($ARG{"iCommand"}, 
+	                    $ARG{"iWinId"}, 
+		            $ARG{"iArg"},
+                            $ARG{"cArg"},
+                            $ARG{"CallBack"},
+                            $ARG{"WaitFor"}
+                           );
 }
 
 sub rndchr {
@@ -59,7 +56,7 @@ sub new {
   $self->{widgetType} = $PBase::NO_WIDGET;
   $self->{messageQueue} = ();
 
-  $self->installHandler($::PUKE_WIDGET_DELETE_ACK, sub{$self->DESTROY});
+  #  $self->installHandler($::PUKE_WIDGET_DELETE_ACK, sub{$self->DESTROY});
   
   return $self;
 
@@ -80,29 +77,25 @@ sub create {
     return;
   }
 
-  # If the parent doesn't have it's iWinId set, it's still being
-  # created, So add ourselves to _*it's*_ canRun list.  Assuming it's not
-  # runable, which it shouldn't be if it's iWinId is -1, it'll call
-  # our creator after it get's it's iWinId set.
+  my $parent = $self->{Parent} ?  $self->{Parent}->{iWinId} : 0;
+  
+  #  print "*I* Createing widget of type: " . $self->{widgetType} . " with parent " . $parent . "\n";
 
-  if($self->{Parent}->{iWinId} == -1){
-    $self->{Parent}->canRun($self, \&PBase::create, \@_) || return;
-  }
-
-#  print "*I* Createing widget of type: " . $self->{widgetType} . " with parent " . $self->{Parent}->{iWinId} . "\n";
-
-  $::PUKE_CREATOR{$self->{initId}} =  sub{$self->ackWinId(@_);};
-
-  #$self->setRunable(1);
   $self->{runable} = 1;
 
-  $self->sendMessage('iCommand' => $::PUKE_WIDGET_CREATE,
-		     'iArg' => $self->{widgetType},
-		     'iWinId' => $self->{Parent}->{iWinId},
-		     'cArg' => $self->{initId},
-		     'CallBack' => sub { });
-
-  $self->setRunable(0);
+  my %REPLY = $self->sendMessage('iCommand' => $::PUKE_WIDGET_CREATE,
+                                 'iArg' => $self->{widgetType} +  $parent * 2**16,
+                                 'iWinId' => $::PUKE_CONTROLLER, 
+                                 'cArg' => $self->{initId},
+                                 'CallBack' => sub { },
+                                 'WaitFor' => 1);
+  
+  if($REPLY{iWinId} <= 0){
+    print "*E* Widget Create Failed!\n";
+  }
+  
+  $self->ackWinId(%REPLY);
+  #  $self->setRunable(0);
 }
 
 sub DESTROY {
@@ -111,14 +104,16 @@ sub DESTROY {
   print "*I* Widget Deleted\n";
   $self->hide();
 
-  $self->setRunable(1);
+  #  $self->setRunable(1);
 
-  if($self->{DESTROYED} != 1){
-    $self->sendMessage('iCommand' => $::PUKE_WIDGET_DELETE,
-		       'CallBack' => sub { print "Deleted\n"; });
+  delete($::PBASE_IMORTALS{$self->{IMMORTAL}});
+
+  if($self->{DESTROYED} != 1 && $self->{Parent} == 0){
+        $self->sendMessage('iCommand' => $::PUKE_WIDGET_DELETE,
+        	       'CallBack' => sub { print "Deleted\n"; });
   }
 
-  $self->setRunable(0);
+  #  $self->setRunable(0);
   $self->{iWinId} = -1;
   $self->{DESTROYED} = 1;
 
@@ -133,100 +128,101 @@ sub close {
   
 }
 
-sub runable {
-  my $self = shift;
-  return $self->{runable};
-}
-
-sub setRunable {
-  my $self = shift;
-
-  my $run = shift;
-
-  if($run == 0){
-    $self->{runable} = 0;
-  }
-  else {
-    $self->{runable} = 1;
-    $self->runDelayed();
-  }
-}
-
-sub delayMessage {
-  my $self = shift;
-  my %ARG = @_;
 
 
-  my $i = $#{$self->{messageQueue}} + 1;
-#  if($i = -1){ $i = 0 }
-
-  $self->{messageQueue}->[$i] = \%ARG;
-
-#  print "*I* Delaying " . $#{$self->{messageQueue}} . " messages\n";
-
-#  print Dumper($self);
-
-
-}
-
-sub runDelayed {
-  my $self = shift;
-
-  # Run the commandQueue first since this will run the constructors of
-  # sub widgets.
-
-  for(my $i=0; $i <= $#{$self->{commandQueue}}; $i++) {
-    my $obj = $self->{commandQueueObj}->[$i];
-    my $ARG = $self->{commandQueueArgs}->[$i];
-    &{$self->{commandQueue}->[$i]}($obj, @$ARG);
-  }
-  $self->{commandQueueObj} = ();
-  $self->{commandQueue} = ();
-  $self->{commandQueueArgs} = ();
-
-  for(my $i=0; $i <= $#{$self->{messageQueue}}; $i++) {
-    my %ARG = %{$self->{messageQueue}->[$i]};
-    $self->sendMessage(%ARG);
-  }
-  $self->{messageQueue} = ();
-
-}
+#sub runable {
+#  my $self = shift;
+#  return $self->{runable};
+#}
+#
+#sub setRunable {
+#  my $self = shift;
+#
+#  my $run = shift;
+#
+#  if($run == 0){
+#    $self->{runable} = 0;
+#  }
+#  else {
+#    $self->{runable} = 1;
+#    $self->runDelayed();
+#  }
+#}
+#
+#sub delayMessage {
+#  my $self = shift;
+#  my %ARG = @_;
+#
+#
+#  my $i = $#{$self->{messageQueue}} + 1;
+##  if($i = -1){ $i = 0 }
+#
+#  $self->{messageQueue}->[$i] = \%ARG;
+#
+##  print "*I* Delaying " . $#{$self->{messageQueue}} . " messages\n";
+#
+##  print Dumper($self);
+#
+#
+#}
+#
+#sub runDelayed {
+#  my $self = shift;
+#
+#  # Run the commandQueue first since this will run the constructors of
+#  # sub widgets.
+#
+#  for(my $i=0; $i <= $#{$self->{commandQueue}}; $i++) {
+#    my $obj = $self->{commandQueueObj}->[$i];
+#    my $ARG = $self->{commandQueueArgs}->[$i];
+#    &{$self->{commandQueue}->[$i]}($obj, @$ARG);
+#  }
+#  $self->{commandQueueObj} = ();
+#  $self->{commandQueue} = ();
+#  $self->{commandQueueArgs} = ();
+#
+#  for(my $i=0; $i <= $#{$self->{messageQueue}}; $i++) {
+#    my %ARG = %{$self->{messageQueue}->[$i]};
+#    $self->sendMessage(%ARG);
+#  }
+#  $self->{messageQueue} = ();
+#
+#}
 
 sub ackWinId {
   my $self = shift;
   my %ARG = @_;
 
-#  print "*E* ackWinId called, got args\n" . Dumper(\%ARG);
-
-
   $self->{iWinId} = $ARG{'iWinId'};
-  $self->setRunable(1);
-  $self->runDelayed();
 }
 
-sub canRun {
-  my $self = shift;
-
-  if($self->runable() == 1){
-    return 1;
-  }
-
-  # we can't process the command now, so delay it.
-  my $i = $#{$self->{commandQueue}} + 1;
-
-  $self->{commandQueueObj}->[$i] = shift;
-  $self->{commandQueue}->[$i] = shift;
-  $self->{commandQueueArgs}->[$i] = shift;
-
-  return 0;
-
-}
+#sub canRun {
+#
+#  #
+#  # Not needed anymore
+#  #
+#
+#  return 1;
+#  
+#  my $self = shift;
+#
+#  if($self->runable() == 1){
+#    return 1;
+#  }
+#
+#  # we can't process the command now, so delay it.
+#  my $i = $#{$self->{commandQueue}} + 1;
+#
+#  $self->{commandQueueObj}->[$i] = shift;
+#  $self->{commandQueue}->[$i] = shift;
+#  $self->{commandQueueArgs}->[$i] = shift;
+#
+#  return 0;
+#
+#}
 
 sub installHandler {
   my $self = shift;
-
-  my @ARG = @_;
-  $self->canRun($self, \&PBase::installHandler, \@ARG) || return;
 
   my $command = shift;
   my $handler = shift;
@@ -235,7 +231,7 @@ sub installHandler {
 
 #  print Dumper($::PUKE_W_HANDLER{$command});
 
-#  print "*I* Installed for $self->{iWinId}, $command handler to $handler\n";
+  #  print "*I* Installed for $self->{iWinId}, $command handler to $handler\n";
 }
 
 sub onNext {
@@ -248,6 +244,13 @@ sub onNext {
 		     'iWinId' => $self->{iWinId},
 		     'cArg' => "",
 		     'CallBack' => $cb);  
+}
+
+sub immortal {
+  my $self = shift;
+  $self->{IMMORTAL} = &rndchr;
+  $::PBASE_IMORTALS{$self->{IMMORTAL}} = $self;
+  return $self;
 }
 
 package main;
