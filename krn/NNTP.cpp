@@ -387,11 +387,11 @@ int NNTP::listXover(int from,int to)
                         sprintf (buffer,"Stored %d articles",counter);
                         emit newStatus(buffer);
                         counter++;
-                        //Write the article ID to the newsgroup file
-                        gi+=templ.at(OffsetID);
-                        gi+="\n";
-                        art.save();
                     }
+                    //Write the article ID to the newsgroup file
+                    gi+=templ.at(OffsetID);
+                    gi+="\n";
+                    art.save();
                     tok=strtok(NULL,"\n");
                 }
                 f.writeBlock(gi.data(),gi.length());

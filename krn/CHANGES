@@ -3,6 +3,8 @@ Changes made Nov 13
 -----------------------------------------------------------------------------
 
 * [Roberto] Major speedup for threading. It's still slow, but not so much.
+            It's kinda ok up to 1000 articles.
+* [Roberto] Fixed bug in listXover.
 
 -----------------------------------------------------------------------------
 Changes made Nov 12

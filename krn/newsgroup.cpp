@@ -460,45 +460,40 @@ QString noRe(QString subject)
 
 bool isParent(Article *parent,Article *child)
 {
-    if (child->Refs.contains(parent->ID.data()))
-        return true;
-    else
-        return false;
+    QListIterator <char> it(child->Refs);
+    for (;it.current();++it)
+    {
+        if (parent->ID==it.current())
+            return true;
+    }
+    return false;
 }
+
+int vc=0;
 
 void collectChildren(ArticleList *parentThread,QList<ArticleList> *children)
 {
+    parentThread->visited=true;
     qApp->processEvents();
     QListIterator <ArticleList> it(*children);
     for (;it.current();++it)
     {
-        if (it.current()==parentThread)
+        if (it.current()->visited)
+            continue;
+        if (isParent(parentThread->first(),it.current()->first()))
         {
-            //I can't be my own parent
-        }
-        else
-        {
-            if (it.current()->isEmpty())
+            //It's parent's daughter, make it collect its own kids,
+            it.current()->visited=true;
+            collectChildren(it.current(),children);
+            //and then adopt it
+            QListIterator <Article> it2(*it.current());
+            it2.toFirst();
+            for (;it2.current();++it2)
             {
-                //thread has already been adopted
+                it2.current()->threadDepth++;
+                parentThread->append(it2.current());
             }
-            else
-            {
-                if (isParent(parentThread->first(),it.current()->first()))
-                {
-                    //It's parent's daughter, make it collect its own kids,
-                    collectChildren(it.current(),children);
-                    //and then adopt it
-                    QListIterator <Article> it2(*it.current());
-                    it2.toFirst();
-                    for (;it2.current();++it2)
-                    {
-                        it2.current()->threadDepth++;
-                        parentThread->append(it2.current());
-                    }
-                    it.current()->clear();
-                }
-            }
+            it.current()->clear();
         }
     }
 }
@@ -531,8 +526,9 @@ void ArticleList::thread(bool sortBySubject=false)
     for (;thread.current();++thread)
     {
         parentThread=thread.current();
+        if (thread.current()->visited)
+            continue;
         if (thread.current()->isEmpty())
-            //thread has already been adopted
             continue;
         //look for current's children
         collectChildren(parentThread,&threads);
@@ -566,14 +562,9 @@ void ArticleList::thread(bool sortBySubject=false)
         threads=sortedThreads;
     }
 
-
-    //Now thread the subthreads
-    //And rebuild the list from them
-
     thread.toFirst();
     for (;thread.current();++thread)
     {
-        //The first one is a root for sure
         if (!thread.current()->isEmpty())
         {
             QListIterator <Article> it2(*thread.current());
@@ -584,6 +575,10 @@ void ArticleList::thread(bool sortBySubject=false)
         }
     }
 
+}
+ArticleList::ArticleList()
+{
+    visited=false;
 }
 
 ArticleList::~ArticleList()

@@ -86,13 +86,14 @@ typedef QListT<Article> ArticleListBase;
 class ArticleList: public ArticleListBase
 {
 public:
+    ArticleList();
     ~ArticleList();
     void append(Article *item);
     bool remove(uint index);
     bool remove();
     void thread(bool sortBySubject=false);
     virtual void clear();
-    
+    bool visited;
 };
 
 typedef QDictT<Article>ArticleDictBase;
