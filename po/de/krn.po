@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: krn\n"
 "POT-Creation-Date: 1998-01-04 18:20+0100\n"
-"PO-Revision-Date: 1998-01-03 18:20 +0100\n"
+"PO-Revision-Date: 1998-01-05 14:20 +0100\n"
 "Last-Translator: Oliver Hensel &l\n"
 
 #: main.cpp:210 main.cpp:222 main.cpp:234 main.cpp:248 main.cpp:260
@@ -68,19 +68,19 @@ msgstr "Artikel holen"
 
 #: artdlg.cpp:209 groupdlg.cpp:131 groupdlg.cpp:139 groupdlg.cpp:147
 msgid "Catchup"
-msgstr "auf aktuellen Stand setzen"
+msgstr "Auf aktuellen Stand setzen"
 
 #: groupdlg.cpp:137 groupdlg.cpp:145
 msgid "(un)Subscribe"
-msgstr "abonnieren/abbestellen"
+msgstr "Abonnieren an/aus"
 
 #: artdlg.cpp:111 groupdlg.cpp:138
 msgid "Untag"
-msgstr "Markierung löschen"
+msgstr "Markierung aus"
 
 #: artdlg.cpp:128 groupdlg.cpp:146
 msgid "(Un)Tag"
-msgstr "markieren/Markierung löschen"
+msgstr "Markierung an/aus"
 
 #: artdlg.cpp:121 artdlg.cpp:179 groupdlg.cpp:149 groupdlg.cpp:204
 msgid "Post New Article"
@@ -228,7 +228,7 @@ msgstr "Hole die Liste der Nachrichten aus "
 
 #: artdlg.cpp:110 artdlg.cpp:127
 msgid "Decode"
-msgstr "dekodieren"
+msgstr "Dekodieren"
 
 #: artdlg.cpp:120
 msgid "Print"
@@ -244,23 +244,23 @@ msgstr "Antwort veröffentlichen"
 
 #: artdlg.cpp:124
 msgid "Post & Reply"
-msgstr "veröffentlichen und antworten"
+msgstr "Veröffentlichen und Antworten"
 
 #: artdlg.cpp:130
 msgid "Tagged"
-msgstr "markierte"
+msgstr "Markierte"
 
 #: artdlg.cpp:132
 msgid "Don't expire"
-msgstr "behalten"
+msgstr "Behalten"
 
 #: artdlg.cpp:140
 msgid "Show Only Unread Messages"
-msgstr "nur ungelesene anzeigen"
+msgstr "Nur ungelesene anzeigen"
 
 #: artdlg.cpp:142
 msgid "Show Locked Messages"
-msgstr "gesperrte anzeigen"
+msgstr "Gesperrte anzeigen"
 
 #: artdlg.cpp:144
 msgid "Expunge"
@@ -304,7 +304,7 @@ msgstr "Antwort veröffentlichen"
 
 #: artdlg.cpp:188
 msgid "Post & Mail"
-msgstr "veröffentlichen & antworten"
+msgstr "Veröffentlichen & Antworten"
 
 #: artdlg.cpp:197
 msgid "Get Article List"
@@ -336,7 +336,7 @@ msgstr "Zeilen"
 
 #: artdlg.cpp:232
 msgid "Subject"
-msgstr "Betr."
+msgstr "Thema"
 
 #: artdlg.cpp:364
 msgid "Threading..."
@@ -599,7 +599,7 @@ msgstr "&Nachricht"
 
 #: kmcomposewin.cpp:361
 msgid "&All Fields"
-msgstr "&alle Felder"
+msgstr "&Alle Felder"
 
 #: kmcomposewin.cpp:363
 msgid "&From"
@@ -611,7 +611,7 @@ msgstr "An&twort an"
 
 #: kmcomposewin.cpp:365
 msgid "&To"
-msgstr "&An:"
+msgstr "A&n:"
 
 #: kmcomposewin.cpp:366
 msgid "&Cc"
@@ -627,7 +627,7 @@ msgstr "&Betreff:"
 
 #: kmcomposewin.cpp:369
 msgid "&Newsgroups"
-msgstr "&Newsgroups"
+msgstr "News&groups"
 
 #: kmcomposewin.cpp:370
 msgid "&Followup-To"
@@ -635,7 +635,7 @@ msgstr "Antwort &zu"
 
 #: kmcomposewin.cpp:375
 msgid "Append S&ignature"
-msgstr "Si&gnatur anhängen"
+msgstr "S&ignatur anhängen"
 
 #: kmcomposewin.cpp:377
 msgid "&Attach..."
@@ -655,7 +655,7 @@ msgstr "Ei&genschaften..."
 
 #: kmcomposewin.cpp:383
 msgid "&Attach"
-msgstr "&Anhängen"
+msgstr "An&hängen"
 
 #: kmcomposewin.cpp:408
 msgid "Compose new message"

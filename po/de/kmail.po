@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
 "POT-Creation-Date: 1998-01-04 19:16+0100\n"
-"PO-Revision-Date: 1998-01-03 17:15 +0100\n"
+"PO-Revision-Date: 1998-01-05 14:55 +0100\n"
 "Last-Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
 
 #: kmmainwin.cpp:248
@@ -84,7 +84,7 @@ msgstr "&Weiterleiten..."
 
 #: kmmainwin.cpp:548 kmmainwin.cpp:645
 msgid "&Move..."
-msgstr "&Verschieben..."
+msgstr "V&erschieben..."
 
 #: kmmainwin.cpp:550 kmmainwin.cpp:647
 msgid "&Copy..."
@@ -124,7 +124,7 @@ msgstr "&Filter..."
 
 #: kmmainwin.cpp:582
 msgid "&Addressbook..."
-msgstr "&Adreßbuch..."
+msgstr "A&dreßbuch..."
 
 #: kmmainwin.cpp:596
 msgid "&Cut"
@@ -216,7 +216,7 @@ msgstr "Ikonifizierte Attachments"
 
 #: kmmainwin.cpp:671
 msgid "Smart Attachments"
-msgstr "Schicke Attachments"
+msgstr "elegante Attachments"
 
 #: kmmainwin.cpp:672
 msgid "Inlined Attachments"
@@ -236,7 +236,7 @@ msgstr "Neue Nachricht erstellen"
 
 #: kmcomposewin.cpp:427 kmmainwin.cpp:708
 msgid "Save message to file"
-msgstr "Nachricht speichern in Datei"
+msgstr "Nachricht in Datei speichern"
 
 #: kmcomposewin.cpp:432 kmmainwin.cpp:713
 msgid "Print message"
@@ -252,7 +252,7 @@ msgstr "Antwort zum Autoren"
 
 #: kmmainwin.cpp:731
 msgid "Reply to all recipients"
-msgstr "Antowrt zu allen Empfängern"
+msgstr "Antwort an alle Empfängern"
 
 #: kmmainwin.cpp:736
 msgid "Forward message"
@@ -381,7 +381,7 @@ msgstr "Antworten zum Sender:"
 
 #: kmsettings.cpp:284
 msgid "Reply to all:"
-msgstr "Allen antworten"
+msgstr "Allen antworten:"
 
 #: kmsettings.cpp:287
 msgid "Forward:"
@@ -389,7 +389,7 @@ msgstr "Weiterleiten:"
 
 #: kmsettings.cpp:290
 msgid "Indentation:"
-msgstr "Einrücken"
+msgstr "Einrücken:"
 
 #: kmmessage.cpp:1102 kmsettings.cpp:302
 msgid "On %D, you wrote:"
@@ -409,7 +409,7 @@ msgstr "Erscheinung"
 
 #: kmsettings.cpp:320
 msgid "Automatically append signature"
-msgstr "Automatsich angehängte Signatur"
+msgstr "Automatisch angehängte Signatur"
 
 #: kmsettings.cpp:326
 msgid "Word wrap at column:"
@@ -538,7 +538,7 @@ msgstr "&Kopie:"
 
 #: kmcomposewin.cpp:246
 msgid "&Bcc:"
-msgstr "&Kopie:"
+msgstr "&Bcc:"
 
 #: kmcomposewin.cpp:248
 msgid "&Subject:"
@@ -618,7 +618,7 @@ msgstr "&Kopie"
 
 #: kmcomposewin.cpp:380
 msgid "&Bcc"
-msgstr "&Kopie"
+msgstr "&Bcc"
 
 #: kmcomposewin.cpp:381
 msgid "&Subject"
@@ -638,7 +638,7 @@ msgstr "Si&gnatur anhängen"
 
 #: kmcomposewin.cpp:389
 msgid "&Insert File"
-msgstr "&Datei einfügen..."
+msgstr "&Datei einfügen"
 
 #: kmcomposewin.cpp:391
 msgid "&Attach..."
@@ -856,7 +856,8 @@ msgid ""
 "Account: %s\n"
 "In %s:\n"
 "%s"
-msgstr "Postfach: %s\n"
+msgstr ""
+"Postfach: %s\n"
 "In %s:\n"
 "%s"
 

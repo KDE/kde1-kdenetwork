@@ -2,12 +2,12 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
 "POT-Creation-Date: 1998-01-04 18:20+0100\n"
-"PO-Revision-Date: 1998-01-04 18:12+0100\n"
+"PO-Revision-Date: 1998-01-05 13:44+0100\n"
 "Last-Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
 
 #: accounts.cpp:48
 msgid "Account Setup"
-msgstr "Account Einstellungen"
+msgstr "Zugangseinstellungen"
 
 #: accounts.cpp:55
 msgid "Edit..."
@@ -39,23 +39,23 @@ msgid ""
 "telephone costs for the selected account to zero?"
 msgstr ""
 "Sind Sie sicher, daß Sie die aufgelaufenen\n"
-"Telefonkosten für den gewählten Account auf null setzen möchten?"
+"Telefonkosten für den gewählten Zugang zurücksetzen möchten?"
 
 #: accounts.cpp:201 accounts.cpp:224
 msgid "Maximum number of accounts reached."
-msgstr "Maximale Anzahl von Accounts erreicht."
+msgstr "Maximale Anzahl von Zugängen erreicht."
 
 #: accounts.cpp:230
 msgid "No account selected."
-msgstr "Kein Account ausgewählt"
+msgstr "Kein Zugang ausgewählt"
 
 #: accounts.cpp:262
 msgid "New Account"
-msgstr "Neuer Account"
+msgstr "Neuer Zugang"
 
 #: accounts.cpp:266
 msgid "Edit Account: "
-msgstr "Account bearbeiten: "
+msgstr "Zugang bearbeiten: "
 
 #: accounts.cpp:286
 msgid "Dial"
@@ -63,15 +63,15 @@ msgstr "Wählen"
 
 #: accounts.cpp:287
 msgid "IP"
-msgstr "IP"
+msgstr ""
 
 #: accounts.cpp:288
 msgid "DNS"
-msgstr "DNS"
+msgstr ""
 
 #: accounts.cpp:289
 msgid "Gateway"
-msgstr "Gateway"
+msgstr ""
 
 #: accounts.cpp:290
 msgid "Login Script"
@@ -87,7 +87,7 @@ msgid ""
 "account name"
 msgstr ""
 "Sie müssen einen eindeutigen\n"
-"Account-Namen angeben"
+"Zugangsnamen angeben"
 
 #: accounts.cpp:315
 msgid "Login script has unbalanced Loop Start/End"
@@ -103,7 +103,7 @@ msgstr "Suche Modem..."
 
 #: connect.cpp:88 debug.cpp:86 main.cpp:610
 msgid "Log"
-msgstr "Loggen"
+msgstr ""
 
 #: connect.cpp:166 miniterm.cpp:161 modeminfo.cpp:130
 msgid "Sorry, modem device is locked."
@@ -155,11 +155,11 @@ msgstr "Erwarte "
 
 #: connect.cpp:360
 msgid "Pause "
-msgstr "Pause "
+msgstr ""
 
 #: connect.cpp:379
 msgid "Timeout "
-msgstr "Zeit aus"
+msgstr ""
 
 #: connect.cpp:393 connect.cpp:394
 msgid "Hangup"
@@ -171,7 +171,7 @@ msgstr "Antworte"
 
 #: connect.cpp:416
 msgid "ID "
-msgstr "ID "
+msgstr ""
 
 #: connect.cpp:453
 msgid "Password "
@@ -271,11 +271,11 @@ msgstr "Gesamtkosten:"
 
 #: conwindow.cpp:75
 msgid "Disconnect"
-msgstr "Verbindung trennen"
+msgstr "Trennen"
 
 #: conwindow.cpp:81
 msgid "Details"
-msgstr "Details"
+msgstr ""
 
 #: debug.cpp:49
 msgid "Login Script Debug Window"
@@ -327,7 +327,7 @@ msgstr "IP-Adresse:"
 
 #: edit.cpp:172
 msgid "Subnet Mask:"
-msgstr "Unternetz-Maske:"
+msgstr ""
 
 #: edit.cpp:180
 msgid "Dynamic IP Address"
@@ -419,7 +419,7 @@ msgstr "Automatische Neuwahl nach Trennung"
 
 #: general.cpp:93
 msgid "Show Clock on Caption"
-msgstr "Zeige die Uhrzeit"
+msgstr "Zeige Verbindungsdauer im Fenstertitel"
 
 #: general.cpp:100
 msgid "Disconnect on X-server shutdown"
@@ -430,6 +430,7 @@ msgid "About kppp"
 msgstr "Über kppp"
 
 #: general.cpp:159
+#, fuzzy
 msgid ""
 " a dialer and front-end to pppd\n"
 "\n"
@@ -437,13 +438,15 @@ msgid ""
 "wuebben@math.cornell.edu\n"
 "\n"
 msgstr ""
-" ein Wähler und Frontend für pppd\n"
 "\n"
-"Copyright (c) 1997 Bernd Johannes Wuebben\n"
-"wuebben@math.cornell.edu\n"
+"ein Wähler und Frontend für pppd\n"
 "\n"
+"Copyright (c) 1997\n"
+"\tBernd Johannes Wuebben\n"
+"\twuebben@math.cornell.edu"
 
 #: general.cpp:170
+#, fuzzy
 msgid ""
 "\n"
 "With contributions from:\n"
@@ -453,17 +456,16 @@ msgid ""
 "Harri Porten\n"
 "Peter Silva\n"
 msgstr ""
-"\n"
 "Mit Beigaben von:\n"
-"Mario Weilguni\n"
-"Markus Wuebben\n"
-"Jesus Fuentes Saavedra\n"
-"Harri Porten\n"
-"Peter Silva\n"
+"   Mario Weilguni\n"
+"   Markus Wuebben\n"
+"   Jesus Fuentes Saavedra\n"
+"   Harri Porten\n"
+"   Peter Silva"
 
 #: general.cpp:198
 msgid "Modem Setup"
-msgstr "Modem Einstellungen"
+msgstr "Modemeinstellungen"
 
 #: general.cpp:202
 msgid "Modem Device:"
@@ -511,11 +513,11 @@ msgstr "Modemabfrage"
 
 #: general.cpp:376
 msgid "Terminal"
-msgstr "Terminal"
+msgstr ""
 
 #: main.cpp:273
 msgid "Login ID:"
-msgstr "Einloggen als:"
+msgstr ""
 
 #: main.cpp:281
 msgid "Password:"
@@ -531,11 +533,11 @@ msgstr "Einstellungen"
 
 #: main.cpp:317
 msgid "Show Log Window"
-msgstr "Zeige Log-Fenster"
+msgstr "Log-Fenster anzeigen"
 
 #: main.cpp:324 main.cpp:327
 msgid "Connect"
-msgstr "Verbinde"
+msgstr "Verbinden"
 
 #: main.cpp:335
 msgid "kppp Configuration"
@@ -543,15 +545,15 @@ msgstr "kppp-Konfiguration"
 
 #: main.cpp:347
 msgid "Accounts"
-msgstr "Postfächer"
+msgstr "Zugänge"
 
 #: main.cpp:348
 msgid "Modem"
-msgstr "Modem"
+msgstr ""
 
 #: main.cpp:350
 msgid "PPP"
-msgstr "PPP"
+msgstr ""
 
 #: main.cpp:395
 #, c-format
@@ -559,7 +561,7 @@ msgid ""
 "No such Account:\n"
 "%s"
 msgstr ""
-"Account nicht vorhanden:\n"
+"Zugang nicht vorhanden:\n"
 "%s"
 
 #: main.cpp:523
@@ -608,8 +610,8 @@ msgid ""
 "the setup dialog.\n"
 " Thank You"
 msgstr ""
-"kppp kann nicht finden:\n"
-" %s\n"
+"kppp kann %s\n"
+" nicht finden.\n"
 "Bitte stellen Sie sicher, daß Sie\n"
 "Ihr Modem richtig eingestellt haben\n"
 "und/oder korrigieren Sie\n"
@@ -619,11 +621,11 @@ msgstr ""
 
 #: main.cpp:657
 msgid "Quit kPPP?"
-msgstr "kPPP beenden?"
+msgstr "kppp beenden?"
 
 #: main.cpp:658
 msgid "Exiting kPPP will close your PPP Session."
-msgstr "Das Verlassen von kPPP wird Ihre PPP-Sitzung schließen."
+msgstr "Das Verlassen von kppp schließt Ihre PPP-Sitzung."
 
 #: main.cpp:684
 msgid ""
@@ -639,11 +641,11 @@ msgstr "Bearbeite Modemkommandos"
 
 #: modemcmds.cpp:54
 msgid "Initialization String:"
-msgstr "Initialisierungs-Folge:"
+msgstr "Initialisierungsfolge:"
 
 #: modemcmds.cpp:61
 msgid "Init Response:"
-msgstr "Initialisierungs-Meldung:"
+msgstr "Initialisierungsmeldung:"
 
 #: modemcmds.cpp:68
 msgid "Dial String:"
@@ -651,11 +653,11 @@ msgstr "Wählfolge:"
 
 #: modemcmds.cpp:75
 msgid "Connect Response:"
-msgstr "Verbindungs-Meldung:"
+msgstr "Verbindungsmeldung:"
 
 #: modemcmds.cpp:82
 msgid "Busy Response:"
-msgstr "Besetzt-Meldung:"
+msgstr "Besetztmeldung:"
 
 #: modemcmds.cpp:89
 msgid "No Carrier Resonse:"
@@ -687,15 +689,15 @@ msgstr "Antwort-Meldung"
 
 #: modemcmds.cpp:138
 msgid "Escape String:"
-msgstr "Escape-Folge:"
+msgstr "Escapefolge:"
 
 #: modemcmds.cpp:145
 msgid "Escape Response:"
-msgstr "Escape-Meldung:"
+msgstr "Escapemeldung:"
 
 #: modemcmds.cpp:171
 msgid "Guard Time (sec/50):"
-msgstr "Guard-Zeit (sek/50):"
+msgstr "Guard-Dauer (sek/50):"
 
 #: pppdargs.cpp:33
 msgid "Customize pppd Arguments"
@@ -801,7 +803,7 @@ msgstr "nicht verfügbar"
 
 #: miniterm.cpp:56
 msgid "Kppp Mini-Terminal"
-msgstr "Kppp Mini-Terminal"
+msgstr "kppp Miniterminal"
 
 #: miniterm.cpp:62
 msgid "&Reset Modem"
@@ -809,7 +811,7 @@ msgstr "Modem zu&rücksetzen"
 
 #: miniterm.cpp:68
 msgid "&Modem"
-msgstr "&Modem"
+msgstr ""
 
 #: miniterm.cpp:111
 msgid "Quit MiniTerm"
