@@ -148,6 +148,8 @@ void servercontroller::new_ksircprocess(QString str)
 	  this, SLOT(delete_toplevel(QString, QString)));  //
   connect(proc, SIGNAL(changeChannel(QString, QString, QString)), //Name change
 	  this, SLOT(recvChangeChannel(QString, QString, QString)));
+  connect(this, SIGNAL(filters_update()),
+	  proc, SLOT(filters_update()));
   
   if(!ConnectionTree->getCurrentItem()){   // If nothing's highlighted
     ConnectionTree->setCurrentItem(0);     // highlight it.
@@ -259,5 +261,8 @@ void servercontroller::colour_prefs()
 
 void servercontroller::filter_rule_editor()
 {
-  (new FilterRuleEditor())->show();
+  FilterRuleEditor *fe = new FilterRuleEditor();
+  connect(fe, SIGNAL(destroyed()), 
+	  this, SIGNAL(filters_update()));
+  fe->show();
 }

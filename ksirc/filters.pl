@@ -11,22 +11,24 @@
 
 $#KSIRC_FILTER = 0;
 
-$KSIRC_FILTER[0]{'SEARCH'} = "^[^~]";
-$KSIRC_FILTER[0]{'FROM'} = "^";
+$KSIRC_FILTER[0]{'SEARCH'} = "^";
+$KSIRC_FILTER[0]{'FROM'} = "^~*[^~]*~*";
 $KSIRC_FILTER[0]{'TO'} = "~!all~";
 
-print "Loading filter parser...";
+print "*** Loading filter parser...\n";
 
 sub hook_ksircfilter {
   my($i) = 0;
   for(; $i <= $#KSIRC_FILTER; $i++){
-    if($_[0] =~ m/${$KSIRC_FILTER[$i]{'SEARCH'}}/){
-       $_[0] =~ s/${$KSIRC_FILTER[$i]{'FROM'}}/${$KSIRC_FILTER[$i]{'TO'}}/;
+    if($_[0] =~ m/$KSIRC_FILTER[$i]{'SEARCH'}/){
+       print STDERR "from $_[0]";
+       $_[0] =~ s/$KSIRC_FILTER[$i]{'FROM'}/$KSIRC_FILTER[$i]{'TO'}/;
+       print STDERR "=> $_[0]\n";
     }
   }
 }
 
-print "Done\n";
+print "*** Filter Parser Loaded\n";
 
 addhook("print", "ksircfilter");
 
@@ -41,20 +43,25 @@ addcmd("ksircprintrule");
 &docommand("^alias prule ksircprintrule");
 
 # 
-# Addrule command takes 4 arguments seperated by " !!! "
+# Addrule command takes 4 or arguments seperated by " key==value !!! key2==value2 ||| etc" 
 # 1. Name of rule
 # 2. Pattern to search for
 # 3. Substitution to take
 # 4. Sub to make 
 
 sub cmd_ksircappendrule {
-  my(@args) = split(/ !!! /, $args);
-  if($#args == 3){
+  my($rule, %PARSED);
+  foreach $rule (split(/ !!! /, $args)){
+    my($key,$value) = split(/==/, $rule);
+    $PARSED{$key} = $value;
+  }
+  if($PARSED{'DESC'} && $PARSED{'SEARCH'} && $PARSED{'FROM'} && $PARSED{'TO'}){
     my($i) = $#KSIRC_FILTER + 1;
-    $KISRC_FILTER[$i]{'DESC'} = $args[0];
-    $KSIRC_FILTER[$i]{'SEARCH'} = $args[1];
-    $KSIRC_FILTER[$i]{'FROM'} = $args[2];
-    $KSIRC_FILTER[$i]{'TO'} = $args[3];
+    my($key, $value);
+    while(($key, $value) = each %PARSED){
+      $KSIRC_FILTER[$i]{$key} = $value;
+    }
+    print "*** Added rule: " . $KSIRC_FILTER[$i]{'DESC'} . "\n";
   }
   else{
     print STDOUT "*E* Parse Error in Rule, format is: name !!! search !!! from !!! to\n";

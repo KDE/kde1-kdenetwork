@@ -110,6 +110,8 @@ KSircProcess::KSircProcess( char *_server=0L, QObject * parent=0, const char * n
   proc->start(KProcess::NotifyOnExit, KProcess::All);
 
   iocontrol = new KSircIOController(proc, this);
+  iocontrol->stdin_write("/load filters.pl\n");
+  filters_update();
 
   running_window = TRUE;        // True so we do create the default
   new_toplevel("!default");     // 
@@ -219,7 +221,8 @@ void KSircProcess::close_toplevel(KSircTopLevel *wm, char *name)
   emit delete_toplevel(QString(server), QString(name));
 }
 
-void KSircProcess::default_window(KSircTopLevel *w){
+void KSircProcess::default_window(KSircTopLevel *w)
+{
 
   //
   // If we want to track the default as it goes arround, change the
@@ -232,11 +235,39 @@ void KSircProcess::default_window(KSircTopLevel *w){
 }
 
 void KSircProcess::recvChangeChannel(QString old_chan, QString
-				     new_chan){
+				     new_chan)
+{
   //
   // Channel changed name, add our own name and off we go.
   // ServerController needs our name so it can have a uniq handle for
   // the window name.
   //
   emit changeChannel(QString(server), old_chan, new_chan);
+}
+
+void KSircProcess::filters_update()
+{
+  iocontrol->stdin_write(QString("/crule\n"));
+  kConfig->setGroup("FilterRules");
+  int max = kConfig->readNumEntry("Rules", 0);
+  QString command;
+  QString next_part;
+  QString key;
+  QString data;
+  for(int number = 1; number <= max; number++){
+    command.truncate(0);
+    key.sprintf("name-%d", number);
+    next_part.sprintf("/ksircappendrule DESC==%s !!! ", kConfig->readEntry(key).data());
+    command += next_part;
+    key.sprintf("search-%d", number);
+    next_part.sprintf("SEARCH==%s !!! ", kConfig->readEntry(key).data());
+    command += next_part;
+    key.sprintf("from-%d", number);
+    next_part.sprintf("FROM==%s !!! ", kConfig->readEntry(key).data());
+    command += next_part;
+    key.sprintf("to-%d", number);
+    next_part.sprintf("TO==%s\n", kConfig->readEntry(key).data());
+    command += next_part;
+    iocontrol->stdin_write(command);
+  }
 }

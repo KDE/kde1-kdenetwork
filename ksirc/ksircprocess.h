@@ -36,6 +36,8 @@ public slots:
   virtual void default_window(KSircTopLevel *);
   virtual void recvChangeChannel(QString, QString);
 
+  virtual void filters_update();
+
 private:
   KSircIOController *iocontrol;
   KProcess *proc;

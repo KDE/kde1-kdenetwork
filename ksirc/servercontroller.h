@@ -34,6 +34,9 @@ public:
 
     virtual ~servercontroller();
 
+signals:
+    virtual void filters_update();
+
 public slots:
     // All slots are described in servercontroll.cpp file
     virtual void new_connection(); 
