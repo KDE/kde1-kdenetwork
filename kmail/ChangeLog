@@ -1,3 +1,11 @@
+1999-07-20  Sven Radej <radej@kde.org> (KMail-1.0.26)
+
+        * Fixed bug reported by jbb <jb.nz@writeme.com>: Start kmail,
+          open composer, close reader. Now type "kmail -check" - reader
+          doesn't appear: close composer, and kmail doesn't exit (although
+          it has no visible windows). Fix: main.cpp: newly created windows
+          are shown(), existing ones are KWM::activated().
+
 1999-06-20  Sven Radej <radej@kde.org> (KMail-1.0.26)
 
         * Fix for references (Thanks Waldo, Roberto, Rik and Peter):

@@ -183,17 +183,18 @@ static void checkMessage()
     }
     else
       KWM::activate(kmmWin->winId());
-    //kmmWin->show();
-    //kmmWin->raise();
   }
   else if (cmd.find ("check") == 0)
   {
     //printf ("check();\n");
     if (!kmmWin)
+    {
       kmmWin = new KMMainWin;
-    KWM::activate(kmmWin->winId());
-    //kmmWin->show();
-    //kmmWin->raise();
+      kmmWin->show(); // thanks, jbb!
+    }
+    else
+      KWM::activate(kmmWin->winId());
+
     kmmWin->slotCheckMail();
   }
   else
