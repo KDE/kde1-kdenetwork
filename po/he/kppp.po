@@ -529,7 +529,7 @@ msgstr ""
 "ןבוו סוקרמ\n"
 "הרדווס סטנאופ סוסח\n"
 "ןטרופ יראה\n"
-"הבליס רטפ\n"
+"הבליס רטפ"
 #: general.cpp:248
 msgid "Serial device"
 msgstr "ילאירס םאתמ"
@@ -695,7 +695,7 @@ msgid ""
 "supply a username and a password!"
 msgstr ""
 "CHAP רוביחה ןונגנמב תרחב\n"
-"!המסיסו שמתשמ םש קפסל ןכל ביוחמ התא\n"
+"!המסיסו שמתשמ םש קפסל ןכל ביוחמ התא"
 
 #: main.cpp:809
 #, c-format
@@ -707,7 +707,7 @@ msgstr ""
 " \"%s\" "
 #: main.cpp:821
 msgid "You have to specify a telephone number !\n"
-msgstr "!ןופלט רפסמ ןייצל ךיילע"
+msgstr "!ןופלט רפסמ ןייצל ךיילע\n"
 
 #: main.cpp:895
 msgid "Quit kPPP?"
@@ -927,7 +927,7 @@ msgstr "םדומ לחתאמ"
 
 #: miniterm.cpp:262
 msgid "Can't restore tty settings: tcsetattr()\n"
-msgstr "tty תורדגה רזחשל ןתינ אל"
+msgstr "tty תורדגה רזחשל ןתינ אל\n"
 
 #: miniterm.cpp:283
 msgid "tcgetattr() failed\n"
@@ -935,7 +935,7 @@ msgstr "tcgetattr()  :ב האיגש\n"
 
 #: miniterm.cpp:330
 msgid "tcsetattr() failed\n"
-msgstr "tcsetattr()  :ב האיגש"
+msgstr "tcsetattr()  :ב האיגש\n"
 
 #: acctselect.cpp:48
 msgid "Accounting Setup"
@@ -975,12 +975,12 @@ msgstr "םינימז בקעמ יקוח"
 
 #: ruleset.cpp:541
 msgid "kppp: no rulefile specified\n"
-msgstr "בקעמ יקוח לש ץבוק רדגוה אל"
+msgstr "בקעמ יקוח לש ץבוק רדגוה אל\n"
 
 #: ruleset.cpp:547
 #, c-format
 msgid "kppp: rulefile \"%s\" not found\n"
-msgstr "אצמינ אל \"%s\" בקעמה יקוח ץבוק"
+msgstr "אצמינ אל \"%s\" בקעמה יקוח ץבוק\n"
 
 #: ruleset.cpp:552
 msgid "kppp: rulefiles must have the extension \".rst\"\n"
@@ -993,19 +993,19 @@ msgstr "בקעמה יללכ חונעיפב האיגש\n"
 #: ruleset.cpp:566
 #, c-format
 msgid "kppp: parse error in line %d\n"
-msgstr " %d :הרושב חונעיפ תאיגש"
+msgstr " %d :הרושב חונעיפ תאיגש\n"
 
 #: ruleset.cpp:572
 msgid "kppp: rulefile does not contain a default rule\n"
-msgstr "לדחמ תרירב ללכ ליכמ וניא םיללכה ץבוק"
+msgstr "לדחמ תרירב ללכ ליכמ וניא םיללכה ץבוק\n"
 
 #: ruleset.cpp:577
 msgid "kppp: rulefile does not contain a \"name=...\" line\n"
-msgstr "name=...  תרוש ליכמ אל םיללכה ץבוק"
+msgstr "name=...  תרוש ליכמ אל םיללכה ץבוק\n"
 
 #: ruleset.cpp:581
 msgid "kppp: rulefile is ok\n"
-msgstr "חנעופ םיללכה ץבוק"
+msgstr "חנעופ םיללכה ץבוק\n"
 
 #: docking.cpp:220
 msgid "Minimize"
@@ -1017,7 +1017,8 @@ msgid ""
 "Contact your system administrator."
 msgstr ""
 "תשרל גויח רוציל תואשרה ךל ןיא\n"
-"תואשרה תלבקל תכרעמה להנמל הנפ אנא\n"
+"תואשרה תלבקל תכרעמה להנמל הנפ אנא"
+
 #: runtests.cpp:137
 msgid ""
 "Cannot find the pppd-daemon!\n"
@@ -1028,7 +1029,7 @@ msgstr ""
 "pppd תא אוצמל חילצמ אל\n"
 "\n"
 "תקפיס יכו ןקתומ אוה יכ אדו אנא\n"
-"תורדגהב ורובע ןוכנה םוקימה תא"
+"תורדגהב ורובע ןוכנה םוקימה תא\n"
 #: runtests.cpp:149
 msgid ""
 "You do not have the permission\n"
