@@ -1,3 +1,12 @@
+1999-07-19  Harri Porten  <porten@kde.org>
+
+	* pppdata.cpp: fixed a cause of those "Timeout expired" errors: if 
+	the user never set the speed of the serial port gpppdata would return
+	an empty string as speed(). The modem initialization code would
+	fall back to 57600 but no speed would be passed to pppd. Whatever
+	pppd does in this case (I haven't checked the sources yet) breaks the
+	negotiation process.
+
 1999-07-13  Harri Porten  <porten@kde.org>
 
 	* added "Mode 7bit" and "Mode 8bit" script commands for CompuServe

@@ -335,7 +335,13 @@ void PPPData::setFlowcontrol(const char *n) {
 
 
 const char* PPPData::speed() {
-  return readConfig(MODEM_GRP, SPEED_KEY);
+  const char* s = readConfig(MODEM_GRP, SPEED_KEY, "57600");
+  // undo the damage of a bug in former versions. It left an empty Speed=
+  // entry in kppprc. kppp did set the serial port to 57600 as default but
+  // pppd wouldn't receive the speed via the command line.
+  if(!s || atoi(s) == 0)
+    s = "57600";
+  return s;
 }
 
 

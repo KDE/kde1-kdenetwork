@@ -338,7 +338,6 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   for(k = 0; baudrates[k]; k++)
     baud_c->insertItem(baudrates[k]);
   
-  baud_c->setCurrentItem(3);
   connect(baud_c, SIGNAL(activated(int)),
 	  this, SLOT(speed_selection(int)));
   FIXED_HEIGHT(baud_c);
