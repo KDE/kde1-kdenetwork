@@ -243,9 +243,8 @@ msgid "&Set Status"
 msgstr "Mudar &Status"
 
 #: kmmainwin.cpp:893
-#, fuzzy
 msgid "Mar&k all"
-msgstr "Marcar todos"
+msgstr "Mar&car todos"
 
 #: kmmainwin.cpp:902
 msgid "Send again..."
@@ -1058,13 +1057,15 @@ msgstr "erro fatal"
 
 #: main.cpp:161
 msgid "KMail notification"
-msgstr ""
+msgstr "Aviso do KMail"
 
 #: main.cpp:162
 msgid ""
 "$HOME is not set!\n"
 "KMail cannot start without it.\n"
 msgstr ""
+"A variável $HOME não está definida!\n"
+"KMail não pode funcionar sem ela.\n"
 
 #: main.cpp:228
 msgid ""
@@ -1086,7 +1087,7 @@ msgstr ""
 
 #: main.cpp:322
 msgid "Loading addressbook failed"
-msgstr ""
+msgstr "Carregamento do livro de endereços falhou"
 
 #: main.cpp:392
 #, c-format
@@ -1550,7 +1551,6 @@ msgid "Could only write %d bytes of %d."
 msgstr "Só consegui escrever %d bytes em %d"
 
 #: kmaddrbook.cpp:25
-#, fuzzy
 msgid "KMail Error"
 msgstr "Erro do KMail"
 
@@ -1567,9 +1567,8 @@ msgid "Addressbook Manager"
 msgstr "Gestor do Livro de Endereços"
 
 #: kmaddrbookdlg.cpp:179
-#, fuzzy
 msgid "Storing addressbook failed"
-msgstr "Adicionar ao livro de endereços..."
+msgstr "Gravação do livro de endereços falhou"
 
 #: kmiostatusdlg.cpp:32
 msgid "&Abort"
