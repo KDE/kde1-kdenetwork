@@ -1,8 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: korn\n"
 "POT-Creation-Date: 1999-01-10 14:26+0100\n"
-"PO-Revision-Date: 1999-01-15 10:15+MET\n"
+"PO-Revision-Date: 1999-03-23 22:00+MET\n"
+"Last Translator: Matthias Kiefer <matthias.kiefer@gmx.de>"
 "Language-Team: de <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
@@ -15,7 +16,7 @@ msgstr "countMail: Fehler beim Öffnen der Datei"
 
 #: korn.cpp:51
 msgid "&Setup"
-msgstr "&Einrichtung"
+msgstr "E&inrichtung"
 
 #: korn.cpp:54
 msgid "&About"
@@ -88,7 +89,7 @@ msgstr "KOrn-Optionen"
 
 #: optdata.cpp:76
 msgid "&New"
-msgstr "News"
+msgstr "&Neu"
 
 #: optdata.cpp:89
 msgid "Boxes"
@@ -108,7 +109,7 @@ msgstr "Pfad"
 
 #: optdata.cpp:152
 msgid "Poll time (sec)"
-msgstr "Prüfintervall (sec)"
+msgstr "Prüfintervall (sek)"
 
 #: optdata.cpp:158
 msgid "Notify Command"

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kbiff\n"
 "POT-Creation-Date: 1999-01-15 02:07+0100\n"
-"PO-Revision-Date: 1999-02-05 20:20+MET\n"
-"Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
+"PO-Revision-Date: 1999-03-23 21:30+MET\n"
+"Last-Translator: Matthias Kiefer <matthias.kiefer@gmx.de>\n"
 "Language-Team: German <kde-i18n@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
@@ -12,15 +12,15 @@ msgstr ""
 
 #: kbiff.cpp:461
 msgid "&UnDock"
-msgstr "&Nicht andocken"
+msgstr "Nicht &andocken"
 
 #: kbiff.cpp:463
 msgid "&Dock"
-msgstr "An&docken"
+msgstr "&Andocken"
 
 #: kbiff.cpp:464
 msgid "&Setup..."
-msgstr "&Einrichtung..."
+msgstr "E&inrichtung..."
 
 #: kbiff.cpp:466
 msgid "&Help..."
@@ -104,7 +104,7 @@ msgstr "Prüfintervall (sec):"
 
 #: setupdlg.cpp:494
 msgid "Mail client:"
-msgstr "Mail-Client"
+msgstr "EMail-Programm:"
 
 #: setupdlg.cpp:507
 msgid "Dock in panel"
@@ -124,7 +124,7 @@ msgstr "Keine Mail:"
 
 #: setupdlg.cpp:544
 msgid "Old Mail"
-msgstr "Alte Mail"
+msgstr "Alte Mail:"
 
 #: setupdlg.cpp:554
 msgid "New Mail:"
@@ -180,7 +180,7 @@ msgstr "Neues Postfach"
 
 #: setupdlg.cpp:1018
 msgid "Delete Mailbox"
-msgstr "Lösche Mailbox"
+msgstr "Postfach löschen"
 
 #: setupdlg.cpp:1024
 msgid "Protocol:"

@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
 "POT-Creation-Date: 1999-03-22 02:34+0100\n"
-"PO-Revision-Date: 1999-03-13 23:05+MET\n"
-"Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
-"Language-Team: German <kde-i18n@kde.org>\n"
+"PO-Revision-Date: 1999-03-23 22:15+MET\n"
+"Last-Translator: Matthias Kiefer <matthias.kiefer@gmx.de>\n"
+"Language-Team: German <kde-i18n-de@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -31,7 +31,7 @@ msgid ""
 "Create a new dialup connection\n"
 "to the internet"
 msgstr ""
-"Erstelle eine neue Dialup-Verbindung\n"
+"Erstellt einen neuen Telefon-Zugang\n"
 "zum Internet"
 
 #: accounts.cpp:89
@@ -74,7 +74,7 @@ msgstr ""
 "\n"
 "<b>Wichtig</b>: Wenn Sie mehr als einen Zugang\n"
 "haben - denken Sie daran, dies ist <b>NICHT</b> die Summe\n"
-"der Kosten für Ihre sämtlichen Zugangs!"
+"der Kosten für Ihre sämtlichen Zugänge!"
 
 #: accounts.cpp:128 conwindow.cpp:54
 msgid "Volume:"
@@ -188,7 +188,7 @@ msgstr "Verbinde mit: "
 #: connect.cpp:101 connect.cpp:205 miniterm.cpp:148 modeminfo.cpp:56
 #: modeminfo.cpp:135
 msgid "Sorry, can't create modem lock file."
-msgstr "Sorry, kann keine Sperrdatei für Modem erzeugen."
+msgstr "Sorry, kann keine Sperr-Datei für Modem erzeugen."
 
 #: connect.cpp:106 connect.cpp:163 modeminfo.cpp:61
 msgid "Looking for Modem ..."
@@ -196,7 +196,7 @@ msgstr "Suche Modem..."
 
 #: connect.cpp:115 debug.cpp:80 main.cpp:1063
 msgid "Log"
-msgstr "Log-Datei"
+msgstr "Log-Fenster"
 
 #: connect.cpp:199 miniterm.cpp:143 modeminfo.cpp:129
 msgid "Sorry, modem device is locked."
@@ -320,7 +320,7 @@ msgstr "Bitte einen Moment..."
 
 #: connect.cpp:923
 msgid "Script timed out!"
-msgstr "Timeout beim Script!"
+msgstr "Zeitüberschreitung beim Script!"
 
 #: connect.cpp:942
 msgid "Scanning: "
@@ -733,7 +733,7 @@ msgid ""
 msgstr ""
 "Wenn diese Option ausgewählt ist, dann werden alle\n"
 "DNS-Server in <i>/etc/resolv.conf</i> ignoriert\n"
-"während die Dialup-Verbindung aufgebaut wird. Wenn\n"
+"während die Telefon-Verbindung aufgebaut wird. Wenn\n"
 "die Verbindung geschlossen ist, wird das Server-Setup\n"
 "wieder in Kraft gesetzt.\n"
 "\n"
@@ -816,7 +816,7 @@ msgstr "kppp Einstellungen"
 
 #: general.cpp:56
 msgid "pppd Timeout:"
-msgstr "pppd-Timeout:"
+msgstr "pppd-Wartezeit:"
 
 #: general.cpp:69
 msgid ""
@@ -1064,7 +1064,7 @@ msgstr ""
 
 #: general.cpp:364
 msgid "Use Lock File"
-msgstr "Lock-File verwenden"
+msgstr "Sperr-Datei verwenden"
 
 #: general.cpp:375
 msgid ""
@@ -1090,7 +1090,7 @@ msgstr ""
 
 #: general.cpp:386
 msgid "Modem Timeout:"
-msgstr "Modem-Timeout:"
+msgstr "Modem-Wartezeit:"
 
 #: general.cpp:405
 msgid ""
@@ -1228,11 +1228,11 @@ msgstr "Textfarbe"
 
 #: general.cpp:657
 msgid "Input bytes color"
-msgstr "Farbe der Input-Bytes"
+msgstr "Farbe empfangener Bytes"
 
 #: general.cpp:664
 msgid "Output bytes color"
-msgstr "Farbe der Output-Bytes"
+msgstr "Farbe gesendeter Bytes"
 
 #: main.cpp:113
 msgid "Recent changes in kppp"
@@ -1252,14 +1252,13 @@ msgid ""
 "To test it, right-click somewhere in this text."
 msgstr ""
 "Seit Version 1.4.8 hat kppp ein neues Merkmal namens\n"
-"\"Quickhelp\". Es ähnelt einem Tool-Tip,\n"
+"\"Schnell-Hilfe\". Es ähnelt einem Tool-Tip,\n"
 "aber Sie können es aktivieren, wann immer Sie wollen.\n"
 "\n"
 "Um es zu aktivieren, klicken Sie mit der rechten Maustaste\n"
-"auf ein Kontroll-Tool (wie Knöpfe oder Label). Wenn das\n"
-"angeklickte Teil Quickhelp unterstützt, erscheint ein Popup-Menü,\n"
-"das zu Quickhelp führt.\n"
-"\n"
+"auf ein Kontroll-Element (wie Knöpfe oder Beschriftungen). Wenn\n"
+"das angeklickte Element die Schnell-Hilfe unterstützt, erscheint\n" 
+"ein Popup-Menü, das zur Schnell-Hilfe führt.\n" "\n"
 "Um das auszuprobieren, klicken Sie rechts irgendwo in diesen Text.."
 
 #: main.cpp:138
@@ -1272,7 +1271,7 @@ msgid ""
 "This window will stay open until you\n"
 "click a mouse button or a hit a key.\n"
 msgstr ""
-"Dies ist ein Beispiel für <b>QuickHelp</b>.\n"
+"Dies ist ein Beispiel für die <b>Schnell-Hilfe</b>.\n"
 "Das Fenster bleibt offen, bis Sie mit der Maus\n"
 "klicken oder eine Taste drücken.\n"
 
@@ -1314,7 +1313,7 @@ msgstr "Verbinde mit: "
 
 #: main.cpp:517
 msgid "Login ID:"
-msgstr "Login-ID:"
+msgstr "Benutzername:"
 
 #: main.cpp:530
 msgid ""
@@ -1326,12 +1325,12 @@ msgid ""
 "<b>Important</b>: case is important here:\n"
 "<i>myusername</i> is not the same as <i>MyUserName</i>!"
 msgstr ""
-"Geben Sie den Benutzernamen ein, der für Ihre Provider\n"
+"Geben Sie den Benutzernamen ein, der für Ihren Provider\n"
 "gilt. Dies ist besonders wichtig für PAP und CHAP. Sie\n"
 "können die Angabe weglassen, wenn Sie eine Terminal- oder\n"
 "Skript-basierte Authentifizierung benutzen.\n"
 "\n"
-"<b>Achtung</b>: Groß-/Kleinschreibung ist wichtig in diesem Fall:\n"
+"<b>Achtung</b>: Groß-/Kleinschreibung ist in diesem Fall wichtig:\n"
 "<i>meinbenutzername</i> ist nicht dasselbe wie <i>MeinBenutzerName</i>!"
 
 #: main.cpp:539
@@ -1353,7 +1352,7 @@ msgstr ""
 "können die Angabe weglassen, wenn Sie eine Terminal- oder\n"
 "Skript-basierte Authentifizierung benutzen.\n"
 "\n"
-"<b>Achtung</b>: Groß-/Kleinschreibung ist wichtig in diesem Fall:\n"
+"<b>Achtung</b>: Groß-/Kleinschreibung ist in diesem Fall wichtig:\n"
 "<i>meinpaßwort</i> ist nicht dasselbe wie <i>MeinPaßwort</i>!"
 
 #: main.cpp:567
@@ -1675,7 +1674,7 @@ msgstr ""
 "weder zum Lesen/Schreiben noch zum Nur-Lesen.\n"
 "\n"
 "Der Superuser muß eventuell die Eigentumsrechte ändern,\n"
-"und zwar mit dem folgenden Befehl in Ihrem Heimatverzeichnis:\n"
+"und zwar mit dem folgenden Befehl in Ihrem Persönlichen Verzeichnis:\n"
 "\n"
 "chown {Ihr Nutzername} .kde/share/config/kppprc"
 
