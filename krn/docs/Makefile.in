@@ -4,7 +4,7 @@ FILES = krn.html\
         offline.html\
         overview.html
 
-DESTDIR = @prefix@/share/doc/HTML/krn/
+DESTDIR = @prefix@/share/doc/en/HTML/krn/
 INSTALL_DIR = @INSTALL@ -d -m 0755
 INSTALL_DATA = @INSTALL@ -m 644
 

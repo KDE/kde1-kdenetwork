@@ -180,7 +180,7 @@ clean:
 	rm -f $(METASRC) $(TARGET) 
 
 distclean: clean
-	rm -f Makefile
+	rm -f Makefile pics/Makefile docs/Makefile
 
 install: all
 	$(INSTALL_DIR) $(prefix)/share/icons
