@@ -20,51 +20,16 @@ PObject *createWidget(CreateArgs &ca);
  * QMenuData
  */
 
-class PSubMenuData : public QMenuData
+class PMenuDataHelper : public QMenuData
 {
-    Q_OBJECT
 public:
-    PSubMenuData(const QMenuData &obj)
-    {
-        *this = obj;
-    }
-    ~PSubMenuData() {}
-    operator =(const QMenuData &obj)
-    {
-        memcpy((QMenuData *) this, &obj, sizeof(QMenuData));
-        return 1;
-    }
-
-    int active()
-    {
-        return QMenuData::actItem;
-    }
-    
-private:
-    PSubMenuData();
-};
-
-class PSubObject : public PObject
-{
-    Q_OBJECT
-public:
-    PSubObject(const PObject &obj)
-    {
-        *this = obj;
-    }
-    operator =(const PObject &obj)
-    {
-        memcpy((PObject *) this, &obj, sizeof(PObject));
-        return 1;
-    }
-
-
-    void outputMessage(int fd, PukeMessage *pm)
-    {
-        emit outputMessage(fd, pm);
-    }
-private:
-    PSubOjbect();
+  PMenuDataHelper(QMenuData &qmd) {
+    memcpy(this, &qmd, sizeof(QMenuData));
+  }
+  int active() {
+    return QMenuData::actItem;
+  }
+  int actItem;
 };
 
 /**
@@ -72,22 +37,23 @@ private:
  * We do not initialize NOR create it!!!!
  */
 
-class PMenuData
+class PMenuData :  public PObject
 {
- public:
+  Q_OBJECT
+public:
   PMenuData (PObject *_child);
   virtual ~PMenuData ();
-  
-  virtual bool messageHandler(int fd, PukeMessage *pm);
 
-  virtual void setWidget(QMenuData *_qmd);
-  virtual QMenuData *widget();
+  virtual void messageHandler(int fd, PukeMessage *pm);
+  virtual bool menuMessageHandler(int fd, PukeMessage *pm);
+
+//  virtual void setWidget(QMenuData *_qmd);
+ // virtual QMenuData *widget();
 
   virtual int activeItem()
-  {
-      PSubMenuData psub( *((QMenuData *) child->widget()));
-      return psub.active();
-  }
+    {
+      return PMenuDataHelper(*((QMenuData *) child->widget())).active();
+    }
 
  private:
    PObject *child;

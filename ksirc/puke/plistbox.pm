@@ -68,9 +68,8 @@ sub insertText { #FOLD00
   if($index < 0 || $index >= $self->{count}){
     $rindex = $self->{count};
   }
-  $self->{items}->[$rindex] = $text;
-  $self->{count} ++;
 
+  $self->{count} ++;
 
   # Don't need the ouput since GET_TEXT_ACK will be called and
   # we'll set it there
@@ -85,7 +84,15 @@ sub text { #FOLD00
   my $self = shift;
   my $index = shift;
 
-  return $self->{items}->[$index];
+  my %arg = $self->sendMessage('iCommand' => $::PUKE_LISTBOX_GETTEXT,
+			       'iArg' => $index,
+			       'WaitFor' => 1);
+
+  if($arg{'iArg'} != 1){
+    return undef;
+  }
+  $arg{'cArg'} =~ s/\000//g;
+  return $arg{'cArg'};
 }
 
 sub insertPixmap { #FOLD00
@@ -103,7 +110,7 @@ sub insertPixmap { #FOLD00
   if($index < 0 || $index >= $self->{count}){
     $rindex = $self->{count};
   }
-  $self->{items}->[$rindex] = "***PIXMAP***" . $file;
+  #  $self->{items}->[$rindex] = "***PIXMAP***" . $file;
   $self->{count} ++;
 
 
@@ -131,7 +138,7 @@ sub current {
 
 sub currentText {
     my $self = shift;
-    return   $self->{currentText};
+    return $self->text($self->{current});
 }
 
 sub setCurrentItem {
@@ -152,9 +159,7 @@ sub removeItem {
   my $self = shift;
 
   my $index = shift;
-  my $rindex = $index;
 
-  splice(@{$self->{items}}, $index, 1);
   $self->{count} --;
 
   # Async call be default, no need to wait result

@@ -580,6 +580,17 @@
 // cArg: not defined
 #define PUKE_LISTBOX_REMOVE_ACK -1620
 
+// Desc: Get text from item number
+// iWinId: window id
+// iArg: list item
+// cArg: not defined
+#define PUKE_LISTBOX_GETTEXT 1625
+
+// Desc: ack for get text with cArg set to text
+// iWinId: window id
+// iArg: 1 for sucsess, 0 for failure
+// cArg: text
+#define PUKE_LISTBOX_GETTEXT_ACK -1625 
 
 // Desc: item highlighted, not used signal to dsirc
 // iWinId: undef
@@ -681,6 +692,20 @@
 // iArg: object id
 // cArg: undef
 #define PUKE_MENUDATA_INSERT_PIXMAP_ACK -1801
+
+
+// Desc: Item got activated, not used, only ack
+// iWinId: undef
+// iArg: undef
+// cArg: uidef
+#define PUKE_POPUPMENU_ACTIVATED 1805
+
+// Desc: Item got activate
+// iWinId: window id
+// iArg: item id
+// cArg: undef
+#define  PUKE_POPUPMENU_ACTIVATED_ACK -1805
+
 
 
 

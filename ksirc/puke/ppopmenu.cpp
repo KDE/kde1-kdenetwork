@@ -6,7 +6,7 @@ PObject *createWidget(CreateArgs &ca)
   QPopupMenu *qpm;
   if(ca.fetchedObj != 0 && ca.fetchedObj->inherits("QPopupMenu") == TRUE)
     qpm= (QPopupMenu *) ca.fetchedObj;
-  if(ca.parent != 0 && ca.parent->widget()->isWidgetType() == TRUE)
+  else if(ca.parent != 0 && ca.parent->widget()->isWidgetType() == TRUE)
     qpm = new QPopupMenu((QWidget *) ca.parent->widget());
   else
     qpm = new QPopupMenu();
@@ -52,7 +52,7 @@ void PPopupMenu::messageHandler(int fd, PukeMessage *pm)
     break;
     */
   default:
-    if(pmd->messageHandler(fd, pm) == FALSE) // Call pmd's even filter
+    if(pmd->menuMessageHandler(fd, pm) == FALSE) // Call pmd's even filter
       PTableView::messageHandler(fd, pm);
   }
 }
@@ -60,6 +60,10 @@ void PPopupMenu::messageHandler(int fd, PukeMessage *pm)
 void PPopupMenu::setWidget(QPopupMenu *_menu)
 {
   menu = _menu;
+  if(menu != 0x0){
+    connect(menu, SIGNAL(activated(int)),
+            this, SLOT(got_activated(int)));
+  }
   PTableView::setWidget(menu);
 }
 
@@ -67,4 +71,19 @@ void PPopupMenu::setWidget(QPopupMenu *_menu)
 QPopupMenu *PPopupMenu::widget()
 {
   return menu;
+}
+
+void PPopupMenu::got_activated(int itemId){
+  warning("Item got activated: %d", itemId);
+  
+  widgetId wI;
+  PukeMessage pmRet;
+
+  wI = widgetIden();
+  pmRet.iCommand = PUKE_POPUPMENU_ACTIVATED_ACK;
+  pmRet.iWinId = wI.iWinId;
+  pmRet.iArg = itemId;
+  pmRet.cArg[0] = 0;
+  emit outputMessage(wI.fd, &pmRet);
+
 }

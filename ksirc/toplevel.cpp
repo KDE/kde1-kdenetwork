@@ -41,6 +41,8 @@
 #include "ssfeprompt.h"
 #include "estring.h"
 
+#include "objFinder.h"
+
 #include <iostream.h>
 #include <termios.h>
 #include <unistd.h>
@@ -109,7 +111,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
   tab_pressed = 0; // Tab (nick completion not pressed yet)
   KickWinOpen = false;
   current_size = size();
-  startTimer( 500 ); // Start resize timer
+//  startTimer( 500 ); // Start resize timer
 
 
   /*
@@ -130,7 +132,9 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
   lagmeter->display("      ");
   QToolTip::add(lagmeter, "Lag in seconds to the server");
   
-  QPopupMenu *file = new QPopupMenu();
+  file = new QPopupMenu(0x0, QString(channel_name) + "_popup_file");
+  //  this->insertChild(file);
+  objFinder::insert(file);
   file->insertItem("&New Window...", this, SLOT(newWindow()), CTRL + Key_N);
   file->insertItem("&Ticker Mode", this, SLOT(showTicker()), CTRL + Key_T);
   //  file->insertItem("&Root Window Mode", this, SLOT(toggleRootWindow()), CTRL + Key_Z);
@@ -156,7 +160,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
   kmenu->setAccel(Key_F, 2);
   //  topLevelWidget()->installEventFilter(kmenu);
 
-  QPopupMenu *edit = new QPopupMenu();
+  edit = new QPopupMenu();
   edit->insertItem("&Cut WIndow...", this, SLOT(openCutWindow()), CTRL + Key_X);
   edit->insertItem("&Paste", this, SLOT(pasteToWindow()), CTRL + Key_V);
   kmenu->insertItem("&Edit", edit, -1, -1);
@@ -339,7 +343,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
 }
 
 
-KSircTopLevel::~KSircTopLevel() /*fold00*/
+KSircTopLevel::~KSircTopLevel() /*FOLD00*/
 {
 
   // Cleanup and shutdown
@@ -377,8 +381,8 @@ KSircTopLevel::~KSircTopLevel() /*fold00*/
    * Let's hope this doesn't make a bigleak in older kde dists
    *
    */
-//  delete kmenu;
-//  delete ktool;
+  delete kmenu;
+  delete ktool;
 
 }
 
@@ -861,8 +865,11 @@ void KSircTopLevel::resizeEvent(QResizeEvent *e) /*FOLD00*/
 
   mainw->setAutoUpdate(update);
 
-  debug("Finished main window resize event");
+//  debug("Finished main window resize event");
   // The ListBox will get an implicit size change
+
+  // Delete QPopup menus
+  delete file;
 }
 
 void KSircTopLevel::gotFocus() /*fold00*/
@@ -1102,6 +1109,9 @@ void KSircTopLevel::iamDestroyed() /*FOLD00*/
 {
   emit objDestroyed(this);
 }
+
+#undef BLAH
+#ifdef BLAH
 void KSircTopLevel::timerEvent( QTimerEvent * ){ /*FOLD00*/
 //  debug("Tick:  current size: %d %d, real size: %d %d",
 //	current_size.width(), current_size.height(),
@@ -1118,6 +1128,7 @@ void KSircTopLevel::timerEvent( QTimerEvent * ){ /*FOLD00*/
     resize(current_size);
   }
 }
+#endif
 
 kstInside::kstInside ( QWidget * parent, const char * name, WFlags f,  /*fold00*/
 		       bool allowLines )

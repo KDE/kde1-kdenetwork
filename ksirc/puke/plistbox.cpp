@@ -92,7 +92,22 @@ void PListBox::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
     pmRet.cArg[0] = 0;
     emit outputMessage(fd, &pmRet);
     break;
-
+  case PUKE_LISTBOX_GETTEXT:
+    if(!checkWidget())
+       return;
+    
+    pmRet.iCommand = - pm->iCommand;
+    pmRet.iWinId = pm->iWinId;
+    if(widget()->text(pm->iArg) != 0x0){
+      pmRet.iArg = 1;
+      strncpy(pmRet.cArg, widget()->text(pm->iArg), 50);
+    }
+    else{
+      pmRet.iArg = 0;
+      pmRet.cArg[0] = 0x0;
+    }
+    emit outputMessage(fd, &pmRet);
+    break;
   default:
     PTableView::messageHandler(fd, pm);
   }

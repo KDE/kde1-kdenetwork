@@ -73,7 +73,8 @@ plabel.cpp \
 mplabel.cpp
 
 libpmenudta_la_SOURCES = \
-pmenudta.cpp 
+pmenudta.cpp \
+mpmenudta.cpp
 
 libppopmenu_la_SOURCES = \
 ppopmenu.cpp  \
@@ -97,7 +98,9 @@ ptablevw.h \
 plistbox.h \
 plabel.h \
 pobject.h \
-playout.h
+playout.h \
+pmenudta.h \
+ppopmenu.h
 
 # just to make sure, automake makes them 
 BUILTSOURCES =	
@@ -117,7 +120,7 @@ messages:
 # if you have more of them, create a subdirectory with an extra Makefile 
 install-data-local: 
 	$(mkinstalldirs) $(kde_datadir)/ksirc
-	$(INSTALL_DATA) *.pl *.pm *.so $(kde_datadir)/ksirc
+	$(INSTALL_DATA) *.pl *.pm $(kde_datadir)/ksirc
 
 #
 # remove ALL you have installed in install-data-local or install-exec-local

@@ -192,7 +192,8 @@ plabel.cpp \
 mplabel.cpp
 
 libpmenudta_la_SOURCES = \
-pmenudta.cpp 
+pmenudta.cpp \
+mpmenudta.cpp
 
 libppopmenu_la_SOURCES = \
 ppopmenu.cpp  \
@@ -213,7 +214,9 @@ ptablevw.h \
 plistbox.h \
 plabel.h \
 pobject.h \
-playout.h
+playout.h \
+pmenudta.h \
+ppopmenu.h
 
 # just to make sure, automake makes them 
 BUILTSOURCES =	
@@ -263,7 +266,7 @@ libplabel_la_LIBADD =
 libplabel_la_OBJECTS =  plabel.lo mplabel.lo
 libpmenudta_la_LDFLAGS = 
 libpmenudta_la_LIBADD = 
-libpmenudta_la_OBJECTS =  pmenudta.lo
+libpmenudta_la_OBJECTS =  pmenudta.lo mpmenudta.lo
 libppopmenu_la_LDFLAGS = 
 libppopmenu_la_LIBADD = 
 libppopmenu_la_OBJECTS =  ppopmenu.lo mppopmenu.lo
@@ -282,11 +285,12 @@ TAR = tar
 GZIP = --best
 DEP_FILES =  .deps/controller.P .deps/mcontroller.P .deps/mpbutton.P \
 .deps/mpframe.P .deps/mplabel.P .deps/mplayout.P .deps/mplined.P \
-.deps/mplistbox.P .deps/mpobject.P .deps/mppopmenu.P .deps/mpprogress.P \
-.deps/mppushbt.P .deps/mptablevw.P .deps/mpwidget.P .deps/pbutton.P \
-.deps/pframe.P .deps/plabel.P .deps/playout.P .deps/plined.P \
-.deps/plistbox.P .deps/pmenudta.P .deps/pobject.P .deps/ppopmenu.P \
-.deps/pprogress.P .deps/ppushbt.P .deps/ptablevw.P .deps/pwidget.P
+.deps/mplistbox.P .deps/mpmenudta.P .deps/mpobject.P .deps/mppopmenu.P \
+.deps/mpprogress.P .deps/mppushbt.P .deps/mptablevw.P .deps/mpwidget.P \
+.deps/pbutton.P .deps/pframe.P .deps/plabel.P .deps/playout.P \
+.deps/plined.P .deps/plistbox.P .deps/pmenudta.P .deps/pobject.P \
+.deps/ppopmenu.P .deps/pprogress.P .deps/ppushbt.P .deps/ptablevw.P \
+.deps/pwidget.P
 CXXMKDEP = $(CXX) -M $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
 SOURCES = $(libpuke_a_SOURCES) $(libpframe_la_SOURCES) $(libplined_la_SOURCES) $(libpbutton_la_SOURCES) $(libppushbt_la_SOURCES) $(libpprogress_la_SOURCES) $(libptablevw_la_SOURCES) $(libplistbox_la_SOURCES) $(libplabel_la_SOURCES) $(libpmenudta_la_SOURCES) $(libppopmenu_la_SOURCES)
 OBJECTS = $(libpuke_a_OBJECTS) $(libpframe_la_OBJECTS) $(libplined_la_OBJECTS) $(libpbutton_la_OBJECTS) $(libppushbt_la_OBJECTS) $(libpprogress_la_OBJECTS) $(libptablevw_la_OBJECTS) $(libplistbox_la_OBJECTS) $(libplabel_la_OBJECTS) $(libpmenudta_la_OBJECTS) $(libppopmenu_la_OBJECTS)
@@ -559,7 +563,7 @@ messages:
 # if you have more of them, create a subdirectory with an extra Makefile 
 install-data-local: 
 	$(mkinstalldirs) $(kde_datadir)/ksirc
-	$(INSTALL_DATA) *.pl *.pm *.so $(kde_datadir)/ksirc
+	$(INSTALL_DATA) *.pl *.pm $(kde_datadir)/ksirc
 
 #
 # remove ALL you have installed in install-data-local or install-exec-local

@@ -267,7 +267,7 @@ protected:
    /**
     * Timer checks size and updates it if need be
     */
-   virtual void timerEvent( QTimerEvent * );
+//   virtual void timerEvent( QTimerEvent * );
 
 private:
   bool continued_line;
@@ -290,6 +290,9 @@ private:
 
   bool Buffer;
   QStrList *LineBuffer;
+
+  // QPopupMenu's used for the menubar
+  QPopupMenu *file, *edit;
 
   ircListItem *parse_input(QString &string);
   void sirc_write(QString &str);

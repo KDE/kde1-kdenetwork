@@ -54,7 +54,9 @@ usercontrolmenu.cpp \
 kspainter.cpp \
 baserules.cpp \
 estring.cpp \
-chanparser.cpp
+chanparser.cpp \
+objFinder.cpp \
+mobjFinder.cpp
 
 ksircstatic_SOURCES = $(ksirc_SOURCES)
 

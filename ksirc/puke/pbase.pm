@@ -1,7 +1,7 @@
 
 package PBase;
 use Carp;
-use Data::Dumper;
+#use Data::Dumper;
 use strict;
 
 $PBase::NO_WIDGET = -1;

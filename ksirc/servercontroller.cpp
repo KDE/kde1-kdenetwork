@@ -72,6 +72,8 @@
 #include "KSPrefs/ksprefs.h"
 #include <iostream.h>
 
+#include "objFinder.h"
+
 #include <kfontdialog.h>
 #include <kiconloader.h>
 #include <kwm.h>
@@ -84,7 +86,7 @@ extern KConfig *kConfig;
 extern KApplication *kApp;
 extern global_config *kSircConfig;
 
-servercontroller::servercontroller /*fold00*/
+servercontroller::servercontroller /*FOLD00*/
 (
  QWidget*,
  const char* name
@@ -104,12 +106,14 @@ servercontroller::servercontroller /*fold00*/
   setFrameBorderWidth(5);
 
   QPopupMenu *file = new QPopupMenu(0, QString(name) + "_menu_file");
-  insertChild(file);
+  //  insertChild(file);
+  objFinder::insert(file);
   file->insertItem("&Quit", kApp, SLOT(quit()), ALT + Key_F4);
   MenuBar->insertItem("&File", file);
   
   connections = new QPopupMenu(0, QString(name) + "_menu_connections");
-  insertChild(connections);
+//  insertChild(connections);
+
   server_id = connections->insertItem("&New Server...", this, SLOT(new_connection()), CTRL + Key_N );
   join_id = connections->insertItem("&Join Channel...", this, SLOT(new_channel()), CTRL + Key_J);
   connections->setItemEnabled(join_id, FALSE);
@@ -118,7 +122,8 @@ servercontroller::servercontroller /*fold00*/
   
   kConfig->setGroup("GlobalOptions");
   options = new QPopupMenu(0, QString(name) + "_menu_options");
-  insertChild(options);
+  //insertChild(options);
+  objFinder::insert(options);
   options->setCheckable(TRUE);
 
   auto_id = options->insertItem("Auto Create Windows", 
@@ -147,7 +152,8 @@ servercontroller::servercontroller /*fold00*/
   
   
   QPopupMenu *help = new QPopupMenu(0, QString(name) + "_menu_help");
-  insertChild(help);
+  //insertChild(help);
+  objFinder::insert(help);
   //  help->insertItem("Help...",
   //		   this, SLOT(help_general()));
   help->insertItem("Help on Colours...",
@@ -210,7 +216,7 @@ void servercontroller::new_connection() /*fold00*/
   w->show();                                     // show the sucker!
 }
 
-void servercontroller::new_ksircprocess(QString str) /*fold00*/
+void servercontroller::new_ksircprocess(QString str) /*FOLD00*/
 {
 
   if(str.isEmpty() == TRUE)  // nothing entered, nothing done
@@ -232,7 +238,8 @@ void servercontroller::new_ksircprocess(QString str) /*fold00*/
   ProcMessage(str, ProcCommand::addTopLevel, QString("no_channel"));
   
   KSircProcess *proc = new KSircProcess(str.data(), 0, QString(name()) + "_" + str + "_ksp"); // Create proc
-  this->insertChild(proc);                           // Add it to out inheritance tree so we can retreive child widgets from it.
+  //this->insertChild(proc);                           // Add it to out inheritance tree so we can retreive child widgets from it.
+  objFinder::insert(proc);
   proc_list.insert(str.data(), proc);                      // Add proc to hash
   connect(proc, SIGNAL(ProcMessage(QString, int, QString)),
 	  this, SLOT(ProcMessage(QString, int, QString)));

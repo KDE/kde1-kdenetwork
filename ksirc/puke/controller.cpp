@@ -17,6 +17,7 @@
 #include "controller.h"
 #include "playout.h"
 #include "../config.h"
+#include "../objFinder.h"
 
 uint PukeController::uiBaseWinId = 10; // Gives a little seperation from the controller id
 
@@ -244,7 +245,7 @@ void PukeController::ServMessage(QString, int, QString) /*fold00*/
 // Message Dispatcher is in messagedispatcher.cpp
 
 
-void PukeController::MessageDispatch(int fd, PukeMessage *pm) /*fold00*/
+void PukeController::MessageDispatch(int fd, PukeMessage *pm) /*FOLD00*/
 {
     try {
 
@@ -377,7 +378,7 @@ void PukeController::hdlrPukeEcho(int fd, PukeMessage *pm) /*FOLD00*/
 
 void PukeController::hdlrPukeDumpTree(int fd, PukeMessage *pm)
 {
-  parent()->dumpObjectTree();
+  objFinder::dumpTree();
   
   PukeMessage pmOut;
   memcpy(&pmOut, pm, sizeof(PukeMessage));
@@ -424,6 +425,7 @@ void PukeController::hdlrPukeFetchWidget(int fd, PukeMessage *pm)
     obj = parent();
   }
   else {
+    /*
     QObjectList *list = parent()->queryList( 0, name, bRegex, TRUE );
     QObjectListIt it( *list );          // iterate over the widgets
     if(it.current() == 0){
@@ -432,6 +434,14 @@ void PukeController::hdlrPukeFetchWidget(int fd, PukeMessage *pm)
       throw(errorCommandFailed(PUKE_INVALID,5));
     }
     obj = it.current();
+    */
+    obj = objFinder::find(name, 0x0);
+    if(obj == 0){
+      wIret.fd = 0;
+      wIret.iWinId = 0;
+      throw(errorCommandFailed(PUKE_INVALID,5));
+    }
+    
   }
   debug("Found: %s", obj->name());
   obj->dumpObjectInfo();

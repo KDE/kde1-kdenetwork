@@ -97,6 +97,7 @@
 #include "iocontroller.h"
 #include "control_message.h"
 #include "config.h"
+#include "objFinder.h"
 
 #include <qmsgbox.h>
 
@@ -108,7 +109,7 @@ extern KApplication *kApp;
 extern KConfig *kConfig;
 extern global_config *kSircConfig;
 
-KSircProcess::KSircProcess( char *_server, QObject * parent, const char * name ) /*fold00*/
+KSircProcess::KSircProcess( char *_server, QObject * parent, const char * name ) /*FOLD00*/
   : QObject(parent, name)
 {
 
@@ -143,7 +144,8 @@ KSircProcess::KSircProcess( char *_server, QObject * parent, const char * name )
 
   proc = new KProcess();
   proc->setName(QString(name) + "_kprocess");
-  insertChild(proc);
+  objFinder::insert(proc);
+//  insertChild(proc);
 
   proc->setExecutable("perl");
   *proc << kSircConfig->kdedir + QString("/bin/dsirc") << "-8" << "-r" << "-s" << server;
@@ -296,7 +298,8 @@ void KSircProcess::new_toplevel(QString str) /*FOLD00*/
     //    TopList.insert(str, faker); // Insert place holder since the constructor for kSircTopLevel may parse the event queue which will cause us to try and create trhe window several times!!!
     debug("Calling new toplevel for: -%s-", str.data());
     KSircTopLevel *wm = new KSircTopLevel(this, str.data());
-    insertChild(wm); // Keep ineheratence going so we can find children
+    //    insertChild(wm); // Keep ineheratence going so we can find children
+    objFinder::insert(wm);
     installEventFilter(wm);
     TopList.insert(str, wm);
 //    TopList.replace(str, wm);
