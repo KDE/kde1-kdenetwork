@@ -9,6 +9,7 @@
 
 #include "ssfeprompt.h"
 #include "kplunger/kplunger.h"
+#include <kapp.h>
 
 #define Inherited ssfepromptdata
 

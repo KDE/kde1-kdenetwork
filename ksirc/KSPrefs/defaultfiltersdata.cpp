@@ -31,7 +31,7 @@ defaultfiltersdata::defaultfiltersdata
 	dlgedit_ButtonGroup_4->setMinimumSize( 10, 10 );
 	dlgedit_ButtonGroup_4->setMaximumSize( 32767, 32767 );
 	dlgedit_ButtonGroup_4->setFrameStyle( 49 );
-	dlgedit_ButtonGroup_4->setTitle( i18n("Highlight Your Nick") );
+	dlgedit_ButtonGroup_4->setTitle( "Highlight Your Nick" );
 	dlgedit_ButtonGroup_4->setAlignment( 1 );
 
 	QButtonGroup* dlgedit_ButtonGroup_2;
@@ -40,7 +40,7 @@ defaultfiltersdata::defaultfiltersdata
 	dlgedit_ButtonGroup_2->setMinimumSize( 10, 10 );
 	dlgedit_ButtonGroup_2->setMaximumSize( 32767, 32767 );
 	dlgedit_ButtonGroup_2->setFrameStyle( 49 );
-	dlgedit_ButtonGroup_2->setTitle( i18n("Colour Nicks in Channels") );
+	dlgedit_ButtonGroup_2->setTitle( "Colour Nicks in Channels" );
 	dlgedit_ButtonGroup_2->setAlignment( 1 );
 
 	QButtonGroup* dlgedit_ButtonGroup_1;
@@ -49,14 +49,14 @@ defaultfiltersdata::defaultfiltersdata
 	dlgedit_ButtonGroup_1->setMinimumSize( 10, 10 );
 	dlgedit_ButtonGroup_1->setMaximumSize( 32767, 32767 );
 	dlgedit_ButtonGroup_1->setFrameStyle( 49 );
-	dlgedit_ButtonGroup_1->setTitle( i18n("Allow External Colours") );
+	dlgedit_ButtonGroup_1->setTitle( "Allow External Colours" );
 	dlgedit_ButtonGroup_1->setAlignment( 1 );
 
 	kSircColours = new("QCheckBox") QCheckBox( this, "CheckBox_1" );
 	kSircColours->setGeometry( 110, 30, 170, 30 );
 	kSircColours->setMinimumSize( 10, 10 );
 	kSircColours->setMaximumSize( 32767, 32767 );
-	kSircColours->setText( i18n("Allow &kSirc Colour codes") );
+	kSircColours->setText( "Allow &kSirc Colour codes" );
 	kSircColours->setAutoRepeat( FALSE );
 	kSircColours->setAutoResize( FALSE );
 	kSircColours->setChecked( TRUE );
@@ -65,7 +65,7 @@ defaultfiltersdata::defaultfiltersdata
 	mircColours->setGeometry( 110, 60, 170, 30 );
 	mircColours->setMinimumSize( 10, 10 );
 	mircColours->setMaximumSize( 32767, 32767 );
-	mircColours->setText( i18n("&Allow &mirc Colour codes") );
+	mircColours->setText( "&Allow &mirc Colour codes" );
 	mircColours->setAutoRepeat( FALSE );
 	mircColours->setAutoResize( FALSE );
 	mircColours->setChecked( TRUE );
@@ -74,7 +74,7 @@ defaultfiltersdata::defaultfiltersdata
 	LabelNickB->setGeometry( 35, 185, 100, 30 );
 	LabelNickB->setMinimumSize( 10, 10 );
 	LabelNickB->setMaximumSize( 32767, 32767 );
-	LabelNickB->setText( i18n("Background") );
+	LabelNickB->setText( "Background" );
 	LabelNickB->setAlignment( 290 );
 	LabelNickB->setMargin( -1 );
 
@@ -83,7 +83,7 @@ defaultfiltersdata::defaultfiltersdata
 	dlgedit_Label_5->setGeometry( 35, 145, 100, 30 );
 	dlgedit_Label_5->setMinimumSize( 10, 10 );
 	dlgedit_Label_5->setMaximumSize( 32767, 32767 );
-	dlgedit_Label_5->setText( i18n("Foreground") );
+	dlgedit_Label_5->setText( "Foreground" );
 	dlgedit_Label_5->setAlignment( 290 );
 	dlgedit_Label_5->setMargin( -1 );
 
@@ -92,7 +92,7 @@ defaultfiltersdata::defaultfiltersdata
 	dlgedit_Label_6->setGeometry( 35, 255, 100, 30 );
 	dlgedit_Label_6->setMinimumSize( 10, 10 );
 	dlgedit_Label_6->setMaximumSize( 32767, 32767 );
-	dlgedit_Label_6->setText( i18n("Colour") );
+	dlgedit_Label_6->setText( "Colour" );
 	dlgedit_Label_6->setAlignment( 290 );
 	dlgedit_Label_6->setMargin( -1 );
 
@@ -100,7 +100,7 @@ defaultfiltersdata::defaultfiltersdata
 	SLE_SampleColourNick->setGeometry( 285, 165, 50, 30 );
 	SLE_SampleColourNick->setMinimumSize( 10, 10 );
 	SLE_SampleColourNick->setMaximumSize( 32767, 32767 );
-	SLE_SampleColourNick->setText( i18n("Sample") );
+	SLE_SampleColourNick->setText( "Sample" );
 	SLE_SampleColourNick->setMaxLength( 32767 );
 	SLE_SampleColourNick->setEchoMode( QLineEdit::Normal );
 	SLE_SampleColourNick->setFrame( TRUE );
@@ -109,7 +109,7 @@ defaultfiltersdata::defaultfiltersdata
 	SLE_SampleHighlight->setGeometry( 285, 255, 50, 30 );
 	SLE_SampleHighlight->setMinimumSize( 10, 10 );
 	SLE_SampleHighlight->setMaximumSize( 32767, 32767 );
-	SLE_SampleHighlight->setText( i18n("Sample") );
+	SLE_SampleHighlight->setText( "Sample" );
 	SLE_SampleHighlight->setMaxLength( 32767 );
 	SLE_SampleHighlight->setEchoMode( QLineEdit::Normal );
 	SLE_SampleHighlight->setFrame( TRUE );
