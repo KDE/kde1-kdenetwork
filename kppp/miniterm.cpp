@@ -152,9 +152,9 @@ void MiniTerm::init() {
     // send a carriage return and then wait a bit so that the modem will
     // let us issue commands.
     if(gpppdata.modemPreInitDelay() > 0) {
-      usleep(gpppdata.modemPreInitDelay() * 10000);
+      usleep(gpppdata.modemPreInitDelay() * 5000);
       Modem::modem->writeLine("");
-      usleep(gpppdata.modemPreInitDelay() * 10000);
+      usleep(gpppdata.modemPreInitDelay() * 5000);
     }
     Modem::modem->writeLine(gpppdata.modemInitStr());
     usleep(gpppdata.modemInitDelay() * 10000);

@@ -1,5 +1,11 @@
 1998-11-11  Harri Porten  <porten@kde.org>
 
+	* connect.cpp: allow a little delay after sending the volume
+	string. Prevents it from getting eaten by the next command.
+	Thanks to Craig Goodrich <craig@airnet.net> for providing the patch.
+
+1998-11-11  Harri Porten  <porten@kde.org>
+
 	* runtests.cpp: added header file to solve compilation problems
 
 1998-11-04  Harri Porten  <porten@kde.org>

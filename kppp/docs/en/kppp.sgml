@@ -996,6 +996,19 @@ same volume. If that doesn't work, make sure that the correct settings for
 your modem are specified in "Setup"/"Modem"/"Modem commands"!
 <p>
 
+<sect2>I turned the modem volume "off" and verified the modem commands,
+but I still hear that noise when dialing!<p>
+The volume initialization string can get lost if your modem can't cope with
+the speed it reveives its command from <em/kppp/. Increase the value of
+"Post-Init Delay" in "Setup"/"Modem"/"Modem commands"!
+<p>
+
+Click on "Setup", "Modem". You can control the modem volume here in three
+steps: off, medium and high. For most modems "medium" and "high" result in the
+same volume. If that doesn't work, make sure that the correct settings for
+your modem are specified in "Setup"/"Modem"/"Modem commands"!
+<p>
+
 <sect2><em/kppp/ reports an unusual modem speed like 115200, 57600 or similar <p>
 Many modems only report the speed of the serial line and not the speed over
 the telephone line as default. You must configure these modems to report the

@@ -66,11 +66,10 @@
 #include <linux/if_ether.h>
 #endif
 
-#include <asm/types.h>
-#include <linux/types.h>
-#include <linux/ppp_defs.h>
+#include <sys/types.h>
+#include <net/ppp_defs.h>
 #include "if_ppp.h"
-#endif
+#endif // linux
 
 
 #ifdef linux

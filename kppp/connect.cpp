@@ -285,6 +285,7 @@ void ConnectWidget::timerEvent(QTimerEvent *) {
     QString vol("AT");
     vol += gpppdata.volumeInitString();
     writeline(vol.data());
+    usleep(gpppdata.modemInitDelay() * 10000); // 0.01 - 3.0 sec
     vmain = 1;
     return;
   }
