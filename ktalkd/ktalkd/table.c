@@ -61,6 +61,7 @@
 #include "print.h"
 #include "defs.h"
 #include "table.h"
+#include "machines/machines.h" /* for forwMachDelete */
 
 #define MAX_ID 16000	/* << 2^15 so I don't have sign troubles */
 
@@ -71,36 +72,34 @@ struct	timezone txp;
 
 TABLE_ENTRY *table = NIL;
 
-static void delete_entry(register TABLE_ENTRY *ptr);
-
 /*
  * Look in the table for an invitation that matches the current
  * request looking for an invitation
  */
 CTL_MSG * find_match(register CTL_MSG *request)
 {
-	register TABLE_ENTRY *ptr;
-	time_t current_time;
+    register TABLE_ENTRY *ptr;
+    time_t current_time;
 
-	(void) gettimeofday(&tp, &txp);
-	current_time = tp.tv_sec;
-	for (ptr = table; ptr != NIL; ptr = ptr->next) {
-		if ((ptr->time - current_time) > MAX_LIFE) {
-			/* the entry is too old */
-			message2("deleting expired entry : id %d",
-				    ptr->request.id_num);
-			delete_entry(ptr);
-			continue;
-		}
-		if ((strcmp(request->l_name, ptr->request.r_name) == 0) &&
-		    (strcmp(request->r_name, ptr->request.l_name) == 0) &&
-		     (ptr->request.type == LEAVE_INVITE))
-		{
-			message2("Found match : id %d", ptr->request.id_num);
-			return (&ptr->request);
-		}
-	}
-	return ((CTL_MSG *)0);
+    (void) gettimeofday(&tp, &txp);
+    current_time = tp.tv_sec;
+    for (ptr = table; ptr != NIL; ptr = ptr->next) {
+        if ((ptr->time - current_time) > MAX_LIFE) {
+            /* the entry is too old */
+            message2("deleting expired entry : id %d",
+                     ptr->request.id_num);
+            delete_entry(ptr);
+            continue;
+        }
+        if ((strcmp(request->l_name, ptr->request.r_name) == 0) &&
+            (strcmp(request->r_name, ptr->request.l_name) == 0) &&
+            (ptr->request.type == LEAVE_INVITE) && (ptr->fwm == 0L))
+        {   /* Not the forw. machines : they aren't stored to match LOOK_UPs */
+            message2("Found match : id %d", ptr->request.id_num);
+            return (&ptr->request);
+        }
+    }
+    return ((CTL_MSG *)0);
 }
 
 /*
@@ -109,58 +108,60 @@ CTL_MSG * find_match(register CTL_MSG *request)
  */
 CTL_MSG * find_request(register CTL_MSG *request)
 {
-	register TABLE_ENTRY *ptr;
-	time_t current_time;
+    register TABLE_ENTRY *ptr;
+    time_t current_time;
 
-	(void) gettimeofday(&tp, &txp);
-	current_time = tp.tv_sec;
-	/*
-	 * See if this is a repeated message, and check for
-	 * out of date entries in the table while we are it.
-	 */
-	for (ptr = table; ptr != NIL; ptr = ptr->next) {
-		if ((ptr->time - current_time) > MAX_LIFE) {
-			/* the entry is too old */
-			message2("deleting expired entry : id %d",
-				    ptr->request.id_num);
-			delete_entry(ptr);
-			continue;
-		}
-		if (strcmp(request->r_name, ptr->request.r_name) == 0 &&
-		    strcmp(request->l_name, ptr->request.l_name) == 0 &&
-		    request->type == ptr->request.type &&
-		    request->pid == ptr->request.pid) {
-			/* update the time if we 'touch' it */
-			ptr->time = current_time;
-			message2("Found identical request : id %d", ptr->request.id_num);
-			return (&ptr->request);
-		}
-	}
-	return ((CTL_MSG *)0);
+    (void) gettimeofday(&tp, &txp);
+    current_time = tp.tv_sec;
+    /*
+     * See if this is a repeated message, and check for
+     * out of date entries in the table while we are it.
+     */
+    for (ptr = table; ptr != NIL; ptr = ptr->next) {
+        if ((ptr->time - current_time) > MAX_LIFE) {
+            /* the entry is too old */
+            message2("deleting expired entry : id %d",
+                     ptr->request.id_num);
+            delete_entry(ptr);
+            continue;
+        }
+        if (strcmp(request->r_name, ptr->request.r_name) == 0 &&
+            strcmp(request->l_name, ptr->request.l_name) == 0 &&
+            request->type == ptr->request.type &&
+            request->pid == ptr->request.pid) {
+            /* update the time if we 'touch' it */
+            ptr->time = current_time;
+            message2("Found identical request : id %d", ptr->request.id_num);
+            return (&ptr->request);
+        }
+    }
+    return ((CTL_MSG *)0);
 }
 
-void insert_table(CTL_MSG *request, CTL_RESPONSE *response)
+void insert_table(CTL_MSG *request, CTL_RESPONSE *response, char * fwm)
 {
-	register TABLE_ENTRY *ptr;
-	time_t current_time;
+    register TABLE_ENTRY *ptr;
+    time_t current_time;
 
-	gettimeofday(&tp, &txp);
-	current_time = tp.tv_sec;
-	request->id_num = new_id();
-	response->id_num = htonl(request->id_num);
-	/* insert a new entry into the top of the list */
-	ptr = (TABLE_ENTRY *)malloc(sizeof(TABLE_ENTRY));
-	if (ptr == NIL) {
-		syslog(LOG_ERR, "insert_table: Out of memory");
-		_exit(1);
-	}
-	ptr->time = current_time;
-	ptr->request = *request;
-	ptr->next = table;
-	if (ptr->next != NIL)
-		ptr->next->last = ptr;
-	ptr->last = NIL;
-	table = ptr;
+    gettimeofday(&tp, &txp);
+    current_time = tp.tv_sec;
+    request->id_num = new_id();
+    message2("Stored as id %d",request->id_num);
+    if (response != 0L) response->id_num = htonl(request->id_num);
+    /* insert a new entry into the top of the list */
+    ptr = (TABLE_ENTRY *)malloc(sizeof(TABLE_ENTRY));
+    if (ptr == NIL) {
+        syslog(LOG_ERR, "insert_table: Out of memory");
+        _exit(1);
+    }
+    ptr->fwm = fwm;
+    ptr->time = current_time;
+    ptr->request = *request;
+    ptr->next = table;
+    if (ptr->next != NIL)
+        ptr->next->last = ptr;
+    ptr->last = NIL;
+    table = ptr;
 }
 
 /*
@@ -168,48 +169,69 @@ void insert_table(CTL_MSG *request, CTL_RESPONSE *response)
  */
 int new_id()
 {
-	static int current_id = 0;
+    static int current_id = 0;
 
-	current_id = (current_id + 1) % MAX_ID;
-	/* 0 is reserved, helps to pick up bugs */
-	if (current_id == 0)
-		current_id = 1;
-	return (current_id);
+    current_id = (current_id + 1) % MAX_ID;
+    /* 0 is reserved, helps to pick up bugs */
+    if (current_id == 0)
+        current_id = 1;
+    return (current_id);
 }
 
 /*
  * Delete the invitation with id 'id_num'
  */
-int delete_invite(int id_num)
+int delete_invite(unsigned int id_num)
 {
-	register TABLE_ENTRY *ptr;
+    register TABLE_ENTRY *ptr;
 
-	ptr = table;
-	if (debug_mode)
-		syslog(LOG_DEBUG, "delete_invite(%d)", id_num);
-	for (ptr = table; ptr != NIL; ptr = ptr->next) {
-		if (ptr->request.id_num == id_num)
-			break;
-	}
-	if (ptr != NIL) {
-		message2("Deleted : id %d", ptr->request.id_num);
-		delete_entry(ptr);
-		return (SUCCESS);
-	}
-	return (NOT_HERE);
+    ptr = table;
+    if (debug_mode)
+        syslog(LOG_DEBUG, "delete_invite(%d)", id_num);
+    for (ptr = table; ptr != NIL; ptr = ptr->next) {
+        if (ptr->request.id_num == id_num)
+            break;
+    }
+    if (ptr != NIL) {
+        message2("Deleted : id %d", ptr->request.id_num);
+        delete_entry(ptr);
+        return (SUCCESS);
+    }
+    return (NOT_HERE);
+}
+
+/*
+ * Delete the forwarding machine 'fwm'
+ */
+int delete_forwmach(char * fwm)
+{
+    register TABLE_ENTRY *ptr;
+
+    ptr = table;
+    if (debug_mode)
+        syslog(LOG_DEBUG, "delete_forwmach(...)");
+    for (ptr = table; ptr != NIL; ptr = ptr->next) {
+        if (ptr->fwm == fwm)
+            break;
+    }
+    if (ptr != NIL) {
+        message2("Deleted : id %d", ptr->request.id_num);
+        delete_entry(ptr);
+        return (SUCCESS);
+    }
+    return (NOT_HERE);
 }
 
 /*
  * Classic delete from a double-linked list
  */
-static void delete_entry(register TABLE_ENTRY *ptr)
+void delete_entry(register TABLE_ENTRY *ptr)
 {
-
-	if (table == ptr)
-		table = ptr->next;
-	else if (ptr->last != NIL)
-		ptr->last->next = ptr->next;
-	if (ptr->next != NIL)
-		ptr->next->last = ptr->last;
-	free((char *)ptr);
+    if (table == ptr)
+        table = ptr->next;
+    else if (ptr->last != NIL)
+        ptr->last->next = ptr->next;
+    if (ptr->next != NIL)
+        ptr->next->last = ptr->last;
+    free((char *)ptr);
 }

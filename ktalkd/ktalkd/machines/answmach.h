@@ -33,11 +33,10 @@
  */
 #include "../includ.h"
 #include "talkconn.h"
-#include "talkmach.h"
 #include <stdio.h>
 
 /** Implements the answering machine. */
-class AnswMachine : public TalkMachine
+class AnswMachine
 {
   public:
     /** Constructor.
@@ -45,10 +44,10 @@ class AnswMachine : public TalkMachine
      * @param r_name Remote user name
      * @param l_name Local user name
      * @param _mode Answering machine mode, cf defs.h */
-    AnswMachine::AnswMachine(struct in_addr r_addr,
-                             char * r_name,
-                             char * l_name,
-                             int _mode);
+    AnswMachine(struct in_addr r_addr,
+                char * r_name,
+                char * l_name,
+                int _mode);
 
     /** Destructor. */
     virtual ~AnswMachine();
@@ -58,9 +57,14 @@ class AnswMachine : public TalkMachine
     
   private:
 
+    /** Read usercfg file to know if user wants it to be launched */
+    int LaunchIt(char * key);
+    
     int read_message(FILE * fd);   // message to mail
     void write_headers(FILE * fd, struct hostent * hp, char *
                        messg_myaddr, int usercfg); // mail headers
+
+    /** Do the actual talk. */
     void talk();
 
     // Protected members
@@ -74,4 +78,6 @@ class AnswMachine : public TalkMachine
     char NEUperson[NAME_SIZE];
     /** Caller's machine address */
     struct in_addr caller_machine_addr;
+    /** User config file */
+    int usercfg;
 };

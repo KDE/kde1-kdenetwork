@@ -150,10 +150,6 @@ int process_config_file(void)
                if (found("NEUBanner1")) { strncpy(OPTNEUBanner1,result,S_CFGLINE); }
                if (found("NEUBanner2")) { strncpy(OPTNEUBanner2,result,S_CFGLINE); }
                if (found("NEUBanner3")) { strncpy(OPTNEUBanner3,result,S_CFGLINE); }
-               if (found("NEUSetUserName")) { strncpy(OPTNEU_set_user_name,result,S_CFGLINE); }
-	       if ( OPTNEU_set_user_name[0]=='\000' && OPTNEU_behaviour==1 )
-    		 OPTNEU_behaviour = 0; // OPTNEU_set_user_name has to be set !
-
 	  }
      } while (ret);
      fclose(fd);

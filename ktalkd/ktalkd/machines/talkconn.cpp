@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 1983 Regents of the University of California.
+ * Copyright (c) 1983 Regents of the University of California, (c) 1998 David Faure
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -59,6 +59,7 @@
 #endif
 #include "../print.h"
 #include "../defs.h" // for hostname
+#include "../process.h" // for prepare_response()
 
 #ifndef VWERASE
 #ifdef VWERSE
@@ -72,13 +73,18 @@
 
 void TalkConnection::init()
 {
+#ifndef OTALK
     msg.vers = TALK_VERSION;
-    msg.id_num = htonl(0); // will be set by the daemon in response to look_up
+#endif
     msg.pid = htonl (getpid ()); // is it necessary ?
     *msg.r_tty = '\0';
 
     /* find the server's port */
+#ifdef OTALK
+    struct servent * sp = getservbyname("talk", "udp");
+#else
     struct servent * sp = getservbyname("ntalk", "udp");
+#endif
     if (sp == 0) {
         char buff[50];
         sprintf(buff, "talk: %s/%s: service is not registered.\n",
@@ -86,7 +92,7 @@ void TalkConnection::init()
         p_error(buff); /* quit */
     }
     daemon_port = sp->s_port; // already in network byte order
-    message2("Daemon port found : %d",htons(daemon_port));
+    // message2("Daemon port found : %d",htons(daemon_port));
 
     /* look up the address of the local host */
     struct hostent *hp = gethostbyname(hostname);
@@ -96,6 +102,7 @@ void TalkConnection::init()
     }
     memcpy(&my_machine_addr, hp->h_addr, hp->h_length);
 
+    ctl_sockt = -1; // Note that it is not initialized
 }
 
 TalkConnection::TalkConnection(struct in_addr caller_machine_addr, 
@@ -141,6 +148,12 @@ TalkConnection::TalkConnection(struct in_addr caller_machine_addr,
 #endif
 }
 
+TalkConnection::~TalkConnection()
+{
+    if (ctl_sockt != -1)
+        close_sockets();
+}
+
 void TalkConnection::open_sockets()
 {
     /* Control (daemon) address. */
@@ -176,10 +189,20 @@ void TalkConnection::open_sockets()
         p_error("Bad address for socket");
 
     /* save the result */
-    msg.addr = *(struct sockaddr *) &my_addr;
+
+    set_addr((const struct sockaddr *)&my_addr);
+    set_ctl_addr((const struct sockaddr *)&ctl_addr);
+}
+
+void TalkConnection::set_addr(const struct sockaddr * addr)
+{
+    msg.addr = *addr;
     msg.addr.sa_family = htons(AF_INET);
-      
-    msg.ctl_addr = *(struct sockaddr *) &ctl_addr;
+}
+
+void TalkConnection::set_ctl_addr(const struct sockaddr * ctl_addr)
+{
+    msg.ctl_addr = *ctl_addr;
     msg.ctl_addr.sa_family = htons(AF_INET);
 }
 
@@ -196,7 +219,7 @@ void TalkConnection::close_sockets()
  * not received an acknowledgement within a reasonable amount
  * of time
  */
-void TalkConnection::ctl_transact(struct in_addr target, int type)
+void TalkConnection::ctl_transact(int type, int id_num)
 {
     fd_set read_mask, ctl_mask;
     int nready=0, cc;
@@ -204,11 +227,13 @@ void TalkConnection::ctl_transact(struct in_addr target, int type)
     struct sockaddr_in daemon_addr;
 
     msg.type = type;
+    msg.id_num = htonl(id_num);
 
-    print_request("ctl_transact: ",&msg);
+    if (debug_mode)
+      print_request("ctl_transact: ",&msg);
 
     daemon_addr.sin_family = AF_INET;
-    daemon_addr.sin_addr = target;
+    daemon_addr.sin_addr = his_machine_addr;
     daemon_addr.sin_port = daemon_port;
     FD_ZERO(&ctl_mask);
     FD_SET(ctl_sockt, &ctl_mask);
@@ -230,13 +255,13 @@ void TalkConnection::ctl_transact(struct in_addr target, int type)
             read_mask = ctl_mask;
             wait.tv_sec = CTL_WAIT;
             wait.tv_usec = 0;
-            nready = select(ctl_sockt+1, &read_mask, 0, 0, &wait);
+            nready = ::select(ctl_sockt+1, &read_mask, 0, 0, &wait);
             if (nready < 0) {
                 if (errno == EINTR)
                     continue;
                 p_error("Error waiting for daemon response");
             }
-            if (nready == 0) message("select returned 0");
+            if (nready == 0) message("select returned 0 ! ");
         } while (nready == 0);
         /*
          * Keep reading while there are queued messages 
@@ -244,7 +269,7 @@ void TalkConnection::ctl_transact(struct in_addr target, int type)
          * request/acknowledgements being sent)
          */
         do {
-            cc = recv(ctl_sockt, (char *)&response, sizeof (response), 0);
+            cc = ::recv(ctl_sockt, (char *)&response, sizeof (response), 0);
             if (cc < 0) {
                 if (errno == EINTR)
                     continue;
@@ -253,14 +278,17 @@ void TalkConnection::ctl_transact(struct in_addr target, int type)
             read_mask = ctl_mask;
             /* an immediate poll */
             timerclear(&wait);
-            nready = select(ctl_sockt+1, &read_mask, 0, 0, &wait);
-        } while (nready > 0 && (response.vers != TALK_VERSION ||
-                                response.type != type));
-/*       message2("Talk version : %d",response.vers);
-         message2("should be : %d",TALK_VERSION);
-         message2("Response type : %d",response.type);
-         message2("should be : %d",type); */
-    } while (response.vers != TALK_VERSION || response.type != type);
+            nready = ::select(ctl_sockt+1, &read_mask, 0, 0, &wait);
+        } while (nready > 0 && (
+#ifndef OTALK
+                       response.vers != TALK_VERSION || 
+#endif
+                       response.type != type));
+    } while (
+#ifndef OTALK
+                       response.vers != TALK_VERSION || 
+#endif
+                       response.type != type);
     response.id_num = ntohl(response.id_num);
     response.addr.sa_family = ntohs(response.addr.sa_family);
 }
@@ -269,7 +297,8 @@ void TalkConnection::ctl_transact(struct in_addr target, int type)
 int TalkConnection::look_for_invite()
 {
     /* Check for invitation on caller's machine */
-    ctl_transact(his_machine_addr, LOOK_UP);
+
+    ctl_transact(LOOK_UP, 0);
 
     /* the switch is for later options, such as multiple invitations */
     switch (response.answer) {
@@ -277,6 +306,8 @@ int TalkConnection::look_for_invite()
 	case SUCCESS:
             msg.id_num = htonl(response.id_num);
             message("TalkConnection::look_for_invite : got SUCCESS");
+            if (response.addr.sa_family != AF_INET)
+                p_error("Response uses invalid network address");
             return (1);
 
 	default:
@@ -286,21 +317,34 @@ int TalkConnection::look_for_invite()
     }
 }
 
-void TalkConnection::send_delete()
+/** Prepare to accept a connection from another talk client */
+void TalkConnection::listen()
 {
-    ctl_transact(his_machine_addr, DELETE);
+    if (::listen(sockt, 5) != 0)
+        p_error("Error on attempt to listen for caller");
 }
 
-/** Talk initialization. */
+/** Accept a connection from another talk client */
+int TalkConnection::accept()
+{
+    int new_sockt;
+    while ((new_sockt = ::accept(sockt, 0, 0)) < 0) {
+        if (errno == EINTR)
+            continue;
+        p_error("Unable to connect with your party");
+    }
+    ::close(sockt);
+    sockt = new_sockt;
+    return sockt;
+}
+
+/** Connect to another talk client. */
 int TalkConnection::connect()
 {
-    message("Waiting to connect with caller");
+    message("Waiting to connect");
     do {
-        if (response.addr.sa_family != AF_INET)
-            p_error("Response uses invalid network address");
         errno = 0;
-        if (::connect(sockt, 
-               (struct sockaddr *)&response.addr, sizeof (response.addr)) != -1)
+        if (::connect(sockt, (struct sockaddr *) &response.addr, sizeof (struct sockaddr)) != -1)
             return 1;
     } while (errno == EINTR);
     if (errno == ECONNREFUSED) {
@@ -311,7 +355,7 @@ int TalkConnection::connect()
          * the talkd works LIFO.)
          */
         message("ECONNREFUSED");
-        send_delete();
+        ctl_transact(DELETE, 0);
         close_sockets();
         open_sockets();
         return 0;
@@ -348,7 +392,6 @@ void TalkConnection::write_banner(char * banner)
     int count = strlen(banner);
     int nbsent;
     char * str = banner;
-    message("write_banner");
     /*    message2("Count : %d.",count); */
     while (count>0) {
         /* let's send 16 -bytes-max packets */

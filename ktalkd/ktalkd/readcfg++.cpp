@@ -41,7 +41,7 @@
 #include <qstring.h>
 
 /* Ktalkd includes */
-#include "readcfg++.h"
+#include "readconf.h"
 #include "defs.h"
 #include <config.h>
 
@@ -244,16 +244,6 @@ int process_config_file(void)
       message2("NEUBehaviour : %d",OPTNEU_behaviour); 
   }
   
-  if (found("NEUSetUserName"))
-  {
-    qstrncpy(OPTNEU_set_user_name,result,S_CFGLINE);
-    message_s("NEUSetUserName: %s", OPTNEU_set_user_name);
-  }
-  
-  if (found("NEUBanner1")) { qstrncpy(OPTNEUBanner1,result,S_CFGLINE); }
-  if (found("NEUBanner2")) { qstrncpy(OPTNEUBanner2,result,S_CFGLINE); }
-  if (found("NEUBanner3")) { qstrncpy(OPTNEUBanner3,result,S_CFGLINE); }
-
   if (found("ExtPrg")) { 
     qstrncpy(OPTextprg,result,S_CFGLINE);
     message_s("Ext prg = %s",OPTextprg); }
@@ -262,9 +252,6 @@ int process_config_file(void)
       get_kdebindir(buffer, 250);
       snprintf(OPTextprg,S_CFGLINE,"%s/ktalkdlg",buffer);
   }
-
-  if ( OPTNEU_set_user_name[0]=='\000' && OPTNEU_behaviour==1 )
-    OPTNEU_behaviour = 0; // OPTNEU_set_user_name has to be set !
 
   delete syscfg;
   

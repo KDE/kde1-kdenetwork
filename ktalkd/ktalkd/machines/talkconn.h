@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 1983  Regents of the University of California, (c) 1997 David Faure
+ * Copyright (c) 1983 Regents of the University of California, (c) 1998 David Faure
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -45,19 +45,24 @@ class TalkConnection
                    char * r_name,
                    char * l_name);
 
+    /** Destructor. Closes the sockets if opened.*/
+    ~TalkConnection();
+    
     /** Create the sockets */
     void open_sockets();
     /** Close the sockets */
     void close_sockets();
     
-    void ctl_transact(struct in_addr target, int type);
-    
     /** Methods for talking to remote daemon */
+    void ctl_transact(int type, int id_num);
     int look_for_invite();
-    void send_delete();
-
-    /** Connect to caller. */
+    
+    /** Connect with address given back in response to LOOK_UP. */
     int connect();
+    /** Prepare to accept a connection from another talk client */
+    void listen();
+    /** Accept a connection from another talk client */
+    int accept();
     
     /** Exchange the first 3 characters, which are edit characters */
     void set_edit_chars();
@@ -65,13 +70,22 @@ class TalkConnection
     /** Write data into the socket, by 16 char blocks. */
     void write_banner(char * banner);
 
-    // Functions to retrieve some information
+    // Methods to retrieve some information
     /** Returns the erase char used by the caller. */
     char get_char_erase() { return char_erase; }
     /** Returns the caller's name. */
     char * get_caller_name() { return msg.r_name;}
     /** Returns socket, for reading or writing */
     int get_sockt() { return sockt; }
+    /** Returns response buffer */
+    CTL_RESPONSE * getResponse() { return &response; }
+    /** Returns connection socket address. For FWT. */
+    const struct sockaddr get_addr() { return msg.addr; }
+
+    // Methods to cheat with this talk connection
+    // Used by the forwarding machine
+    void set_addr(const struct sockaddr * addr);
+    void set_ctl_addr(const struct sockaddr * ctl_addr);
     
     /** Prints the system error message in the log and exits the current thread */
     static void p_error(const char * str);
@@ -84,7 +98,7 @@ class TalkConnection
     struct  in_addr my_machine_addr;
     struct  in_addr his_machine_addr;
 
-    u_short daemon_port;    /* port number of the talk daemon */
+    u_short daemon_port;    // port number of the talk daemon
     
     int     ctl_sockt;
     int     sockt;

@@ -35,13 +35,8 @@ class TimeoutDialog : public KMsgBox {
 };
 
 int main (int argc, char **argv) {
-    // if one arg :
     // argv[1] : user@host (caller)
-
-    // if three args :
-    // argv[1] : --user or whatever
-    // argv[2] : callee, non existent
-    // argv[3] : user@host (caller)
+    // argv[2] (optionnal) : callee, non existent
 
     KApplication a (argc, argv, "ktalkd"); // we want to read ktalkdrc
 
@@ -53,10 +48,10 @@ int main (int argc, char **argv) {
     QString s;
     s.sprintf ("%d:%02d", localclock->tm_hour, localclock->tm_min);
     s = i18n ("Message from talk demon at ") + s + " ...\n" +
-        i18n ("Talk connection requested by ") + argv [argc-1];
+        i18n ("Talk connection requested by ") + argv [1];
 
-    if ( argc==4 )		// called with a set-user-name option by announce.c
-    {				// we assume, the username is at 2nd position ...
+    if ( argc==3 )
+    {
       s += '\n';
       s += i18n ("for user ");
       
@@ -75,7 +70,6 @@ int main (int argc, char **argv) {
 
     debug ("#"); // don't erase this! - ktalkd waits for it!
     
-
 // debug code, to print locale found :
 #if 0
     const char *g_lang = getenv("LANG"); 
@@ -120,14 +114,10 @@ int main (int argc, char **argv) {
         QString cmd0 = cfg->readEntry ("talkprg", "$KDEBINDIR/kvt -e talk");
 	
 	QString cmd = cmd0.stripWhiteSpace();
-	for ( int i=1; i<argc; ++i ) 
-	{
-	  cmd += " '";
-	  cmd += argv[i];
-	  cmd += '\'';
-	}
-        cmd += " &";
-	
+	cmd += " '";
+        cmd += argv[1];
+        cmd += "' &";
+
         debug(cmd);
 
         // Open /dev/null for stdin, stdout and stderr:

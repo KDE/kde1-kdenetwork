@@ -57,7 +57,7 @@
 #include <netdb.h>
 #include "../defs.h"
 #include "../print.h"
-#include "../readcfg++.h"
+#include "../readconf.h"
 
 #define A_LONG_TIME 10000000  /* seconds before timeout */
 
@@ -66,7 +66,6 @@ AnswMachine::AnswMachine(struct in_addr r_addr,
                          char * r_name,
                          char * l_name,
                          int _mode)
-    : TalkMachine()
 {
     /* Copy the answering machine mode */
     mode = _mode;
@@ -94,20 +93,29 @@ AnswMachine::~AnswMachine()
     delete talkconn;
 }
 
+int AnswMachine::LaunchIt(char * key)
+{
+    int launchIt = 1;
+    if (usercfg) {
+        if (!read_bool_user_config(key,&launchIt))
+            launchIt=1;
+        if (launchIt==0)
+            message_s("Not launched. Option set to 0 : ", key);
+    }
+    return launchIt;
+}
+
 void AnswMachine::start()
 {
     /* Only wait if somebody could possibly answer.
        If NEU/not logged, start at once. */
     if (mode==PROC_REQ_ANSWMACH) {
-        /* Wait a little. The 'ringing your party again' has been displayed,
-           but it's probably still a bit early to launch the answering machine. */
+        /* Wait a little. The 'ringing your party again' has just been displayed,
+           so it's probably still a bit early to launch the answering machine. */
         sleep(OPTtime_before_answmach);
     }
     
-    if (mode==PROC_REQ_ANSWMACH_NOT_HERE)
-        init_user_cfg_file(OPTNEU_user);
-    else
-        init_user_cfg_file(local_user);
+    usercfg = init_user_config((mode==PROC_REQ_ANSWMACH_NOT_HERE) ? OPTNEU_user : local_user);
     
     if (LaunchIt("Answmach"))
     {
@@ -119,7 +127,7 @@ void AnswMachine::start()
         {
             /* There was an invitation waiting for us,
              * so connect with the other (hopefully waiting) party */
-            if (talkconn->connect()) 
+            if (talkconn->connect())
             {
                 /* send the first 3 chars, machine dependent */
                 talkconn->set_edit_chars();
@@ -158,7 +166,7 @@ void AnswMachine::talk()
 #ifdef USER_SETS_EMAIL
      if ((!usercfg) || (!read_user_config("Mail",messg_myaddr,S_MESSG-1)))
 #endif
-       strcpy(messg_myaddr,callee_name);
+       strcpy(messg_myaddr,local_user);
 
 #ifdef OLD_POPEN_METHOD   // never defined
      snprintf(command,S_COMMAND,"%s %s",OPTmailprog,messg_myaddr);
@@ -192,9 +200,8 @@ void AnswMachine::talk()
     message("Connection established");
 
     if (usercfg) {
-      if (!read_user_config("Msg1",customline,S_CFGLINE-1)) 
+      if (!read_user_config("Msg1",customline,S_CFGLINE-1))
 	{ message("Error reading Msg1"); end_user_config(); usercfg=0; }
-      else { strcat(customline,"\n"); }
     }
 
     /* No user-config'ed banner */
@@ -220,8 +227,6 @@ void AnswMachine::talk()
 		   m[3]=(++linenr)+'0';
 		   if (!read_user_config(m,customline,S_CFGLINE-1))
 			linenr=0; /* end of message */			
-		   else
-			strcat(customline,"\n");
 	      }
     }
     /* Banner displayed. Let's take the message. */
@@ -295,12 +300,6 @@ void AnswMachine::write_headers(FILE * fd, struct hostent * hp, char *
         strcat(messg,NEUperson);
         strcat(messg,"'");
     }
-    else if ( strcmp(local_user,callee_name)!=0 )
-    {
-      strcat(messg," => '");
-      strcat(messg,local_user);
-      strcat(messg,"'");
-    }
     fwrite(messg,strlen(messg),1,fd); /* First line of the message */
     fwrite("\n\n",2,1,fd);
 }
@@ -364,7 +363,7 @@ int AnswMachine::read_message(FILE * fd) // returns 1 if something has been ente
 
 extern "C" {
 /** C interface for Answering Machine */
-void launch_ans_mach(CTL_MSG msginfo, int mode) 
+void launchAnswMach(CTL_MSG msginfo, int mode) 
  {
   if ((fork()) == 0) /* let's fork to let the daemon process other messages */
     {

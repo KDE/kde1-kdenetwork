@@ -1,7 +1,7 @@
 [ktalkd]
 # Config file for ktalkd.
-# There is now a "Settings" entry with a configuration program
-# for the user's ktalkdrc. But how to provide a nice way to set systemwide params?
+# There is now a configuration dialog box (see "Settings" menu) for the user's
+# ktalkdrc. But how to provide a nice way to set system-wide parameters ?
 
 # Set to 1 to activate answering machine 
 # Warning : if set to 0, no user will be able to activate it.
@@ -23,7 +23,7 @@ XAnnounce=1
 ExtPrg=$KDEBINDIR/ktalkdlg
 
 # [If ktalkdlg] : which talk client should ktalkdlg launch ?
-# The default is "$KDEBINDIR/kvt -e talk"
+# The default is "$KDEBINDIR/kvt -e talk". If installed, use "$KDEBINDIR/ktalk"
 #   KDEBINDIR will be set by ktalkd.
 talkprg=$KDEBINDIR/kvt -e talk
 
@@ -36,8 +36,7 @@ SoundFile=ktalkd.wav
 # What should I do if somebody tries to talk to a non-existent user ?
 # 0 = Launch answer machine saying 'non-existent user...' 
 #                  and 'I' receive the message (to know that it happened)
-# 1 = 'I' take the talk. Set it only if your talk client support --user option.
-#                        A new mechanism for this will appear in ktalkd 0.8.x
+# 1 = 'I' take the talk. (The names of caller & callee appear to 'I')
 # 2 = Do nothing. ('Not logged' will appear to caller).
 NEUBehaviour=2
 
@@ -53,10 +52,6 @@ NEUBanner3=or leave a message which will be sent to the system administrator.
 
 # Who is 'I' ?  (=> who should take the talk / receive the message)
 NEUUser=
-
-# Commandline option for the talk client to appear as a different user.
-# Only important if NEUBehaviour is 1. You *have* to set it if NEUBehaviour=1.
-#NEUSetUserName=--user
 
 # Do you wish to receive an empty mail if the caller didn't leave any message ?
 #   (If "1", you'll only know who called you)

@@ -141,7 +141,7 @@ char *get_display(pid_t pid) {
 
 /* awful global variable, but how to pass it to select_process() otherwise ?
    scandir() doesn't allow this, of course... */
-int user_uid;
+unsigned int user_uid;
 
 /* selection function used by scandir */
 int select_process(struct dirent *direntry) {
@@ -350,7 +350,8 @@ int find_user(char *name, char *tty, char *disp) {
     if (status == SUCCESS) {
         (void) strcpy(tty, ttyFound);
         (void) strcpy(disp, dispFound);
-        syslog(LOG_DEBUG, "Returning line %s, display %s", ttyFound, dispFound);
+        if (debug_mode)
+         syslog(LOG_DEBUG, "Returning tty %s, display %s", ttyFound, dispFound);
     } else message2("Returning status %d",status);
     return (status);
 }

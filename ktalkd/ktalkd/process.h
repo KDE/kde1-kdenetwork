@@ -34,6 +34,15 @@
 
 #include "includ.h"
 
-int process_request(register CTL_MSG *mp,register CTL_RESPONSE *rp);
-int do_announce(register CTL_MSG *mp,CTL_RESPONSE *rp);
+#ifdef __cplusplus
+extern "C" 
+{
+#endif
 
+int prepare_response(register CTL_MSG *mp, register CTL_RESPONSE *rp);
+int process_request(register CTL_MSG *mp, register CTL_RESPONSE *rp);
+int do_announce(register CTL_MSG *mp, CTL_RESPONSE *rp, int usercfg);
+
+#ifdef __cplusplus
+}
+#endif
