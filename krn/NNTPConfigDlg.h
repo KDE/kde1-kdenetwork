@@ -27,6 +27,6 @@ public:
     QLineEdit* password;
     QLineEdit* smtpserver;
 private slots:
-        save();
+    void save();
 };
 #endif // NNTPConfigDlg_included

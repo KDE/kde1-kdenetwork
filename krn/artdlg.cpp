@@ -514,9 +514,29 @@ bool Artdlg::actions (int action)
         }
     case PRINT_ARTICLE:
         {
-            qApp->setOverrideCursor (arrowCursor);
-            messwin->printMsg();
-            qApp->restoreOverrideCursor ();
+            conf->setGroup("Printing");
+            if (conf->readNumEntry("HTMLPrinting",true))
+            {
+                qApp->setOverrideCursor (arrowCursor);
+                messwin->printMsg();
+                qApp->restoreOverrideCursor ();
+            }
+            else
+            {
+                QString cmd=qstrdup(conf->readEntry("CommandName","lpr"));
+                cmd+=" \"";
+                cmd+=cachepath;
+                cmd+="/";
+                cmd.replace(QRegExp("//"),"/");
+                cmd+=IDList.at(list->currentItem());
+                cmd+="\"";
+                debug ("print command: %s",cmd.data());
+                QString s;
+                s.sprintf("Printing %s",IDList.at(list->currentItem()));
+                qApp->processEvents ();
+                statusBar()->changeItem(s.data(),2);
+                system(cmd.data());
+            }
             break;
         }
     case ARTLIST:
@@ -844,7 +864,6 @@ bool Artdlg::actions (int action)
 
 bool Artdlg::loadArt (QString id)
 {
-    debug ("flag0");
     disconnect (list,SIGNAL(highlighted(int,int)),this,SLOT(loadArt(int,int)));
     setEnabled (false);
     acc->setEnabled(false);
@@ -878,7 +897,6 @@ bool Artdlg::loadArt (QString id)
         }
     }
     
-    debug ("flag1");
     if (id==IDList.at(i))
     {
         goTo(i);
@@ -899,10 +917,8 @@ bool Artdlg::loadArt (QString id)
             }
         }
     }
-    debug ("flag2");
     QString *s;
     s=server->article(id.data());
-    debug ("flag3");
     if (s->isEmpty())
     {
         debug ("entered get from web");
@@ -938,7 +954,6 @@ bool Artdlg::loadArt (QString id)
     }
     delete s;
 
-    debug ("flag4");
     qApp->restoreOverrideCursor ();
     setEnabled (true);
     acc->setEnabled(true);
@@ -948,7 +963,6 @@ bool Artdlg::loadArt (QString id)
     sb.sprintf ("%d/%d",list->currentItem()+1,IDList.count());
     statusBar()->changeItem(sb.data(),1);
     connect (list,SIGNAL(highlighted(int,int)),this,SLOT(loadArt(int,int)));
-    debug ("flag5");
     return true;
 }
 

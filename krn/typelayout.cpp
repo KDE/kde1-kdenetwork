@@ -370,7 +370,7 @@ TLObj *KTypeLayout::addIntLineEdit(const char *ID,const char *text,int maxlen)
     return addWidget(ID,g);
 }
 
-TLObj *KTypeLayout::addListBox (const char *ID,const QStrList *contents,int minRows)
+TLObj *KTypeLayout::addListBox (const char *ID,QStrList *contents,int minRows)
 {
     QWidget *g;
     QListBox *l=new QListBox(windowStack.top()->widget);
@@ -383,16 +383,29 @@ TLObj *KTypeLayout::addListBox (const char *ID,const QStrList *contents,int minR
     return addWidget(ID,g);
 }
 
-TLObj *KTypeLayout::addComboBox (const char *ID,const QStrList *contents)
+TLObj *KTypeLayout::addComboBox (const char *ID,QStrList *contents)
 {
     QWidget *g;
     QComboBox *l=new QComboBox(windowStack.top()->widget);
     g=l;
 
+    int w=0;
     if (contents)
+    {
         l->insertStrList(contents);
+        for (char *item=contents->first();item!=0;item=contents->next())
+        {
+            int w2=l->fontMetrics().width(item);
+            if (w<w2)
+                w=w2;
+        }
+    }
+    w=w+32;
+    if (w<75)
+        w=75;
     g->show();
-    g->setMinimumHeight(l->fontMetrics().height()+10);
+    g->setFixedHeight(l->fontMetrics().height()+10);
+    g->setFixedWidth(w);
     return addWidget(ID,g);
 }
 

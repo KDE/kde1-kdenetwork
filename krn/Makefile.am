@@ -31,7 +31,8 @@ BUILTSOURCES =	groupdlg.moc \
                 kmsender.moc\
                 kmaddrbookdlg.moc\
                 ktreeview.moc\
-                expireDlg.moc
+                expireDlg.moc\
+                printdlg.moc
 
 DISTCLEANFILES = $(BUILTSOURCES)
 
@@ -74,7 +75,8 @@ krn_SOURCES = 	main.cpp\
                 expireDlg.cpp\
                 tlform.cpp\
                 tlwidget.cpp\
-                typelayout.cpp
+                typelayout.cpp\
+                printdlg.cpp
 
 noinst_HEADERS = 	NNTP.h\
                 kmmessage.h\
@@ -112,7 +114,8 @@ noinst_HEADERS = 	NNTP.h\
                 expireDlg.h\
                 tlform.h\
                 tlwidget.h\
-                typelayout.h
+                typelayout.h\
+                printdlg.h
 
 
 SUBDIRS = docs pics
@@ -225,6 +228,10 @@ ktreeview.moc: ktreeview.h
 expireDlg.cpp:expireDlg.moc
 expireDlg.moc: expireDlg.h
 	$(MOC) expireDlg.h -o expireDlg.moc
+
+printdlg.cpp:printdlg.moc
+printdlg.moc: printdlg.h
+	$(MOC) printdlg.h -o printdlg.moc
 
 messages:
 	@XGETTEXT@ -ktranslate -C -x../../kdelibs/po/kde.pot $(krn_SOURCES)  && mv messages.po ../po/krn.pot

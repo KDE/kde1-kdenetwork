@@ -90,7 +90,7 @@ NNTPConfigDlg::~NNTPConfigDlg()
 }
 
 
-NNTPConfigDlg::save()
+void NNTPConfigDlg::save()
 {
     conf->setGroup("NNTP");
     conf->writeEntry("NNTPServer",servername->text());

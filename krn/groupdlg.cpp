@@ -40,8 +40,8 @@
 #include "NNTPConfigDlg.h"
 #include "rmbpop.h"
 #include "aboutDlg.h"
+#include "printdlg.h"
 #include "asker.h"
-#include "groupdlg.moc"
 
 #include "krnsender.h"
 #include "kmcomposewin.h"
@@ -49,6 +49,10 @@
 #include "kmidentity.h"
 #include "kfileio.h"
 #include "kbusyptr.h"
+#include "printdlg.h"
+
+#include "groupdlg.moc"
+
 
 #define CONNECT 1
 #define DISCONNECT 5
@@ -70,6 +74,7 @@
 #define POST 18
 #define POST_QUEUED 19
 #define CONFIG_EXPIRE 20
+#define CONFIG_PRINT 21
 
 extern QString krnpath,cachepath,artinfopath,pixpath,outpath;
 extern KConfig *conf;
@@ -166,6 +171,7 @@ Inherited (name)
     options->insertItem(klocale->translate("Identity..."),CHANGE_IDENTITY);
     options->insertItem(klocale->translate("NNTP Options..."),CONFIG_NNTP);
     options->insertItem(klocale->translate("Expire Options..."),CONFIG_EXPIRE);
+    options->insertItem(klocale->translate("Printing Options..."),CONFIG_PRINT);
     connect (options,SIGNAL(activated(int)),SLOT(currentActions(int)));
     
     QPopupMenu *help = new QPopupMenu;
@@ -629,6 +635,16 @@ bool Groupdlg::actions (int action,NewsGroup *group)
         {
             qApp->setOverrideCursor (arrowCursor);
             NNTPConfigDlg *dlg=new NNTPConfigDlg();
+            dlg->exec();
+            qApp->restoreOverrideCursor ();
+            success = true;
+            break;
+        }
+
+    case CONFIG_PRINT:
+        {
+            qApp->setOverrideCursor (arrowCursor);
+            PrintDlg *dlg=new PrintDlg();
             dlg->exec();
             qApp->restoreOverrideCursor ();
             success = true;
