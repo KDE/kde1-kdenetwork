@@ -1,3 +1,15 @@
+1998-01-24  Andrew Stanley-Jones  <asj@chowtown.cban.com>
+
+        * Ran ksirc through gprof and inlined a few small functions to
+ 	help in performance.
+
+	* toplevel.cpp: Fixed Menubar being offset.
+
+	* irclistitem.cpp (setupPainterText): Majour update to painting
+ 	routine.  Now pre draws the "line" in a QPixmap buffer, and simply
+ 	dumps the pixmap to the screen in a paintevent.  Essentially
+ 	double buffered, much faster, very nice.
+
 1998-01-21  Andrew Stanley-Jones  <asj@chowtown.cban.com>
 
 	* toplevel.cpp (UserParseMenu): User menus no longer support %s,
@@ -150,6 +162,9 @@
 $Revision$
 	
 $Log$
+Revision 1.20  1998/01/22 05:51:41  asj
+Checking in kspainter
+
 Revision 1.19  1998/01/22 05:32:46  asj
         * servercontroller.cpp (ProcMessage): Disabled Connections->Join
         Channel when last server connection is closed.

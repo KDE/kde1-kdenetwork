@@ -78,8 +78,10 @@ void KSircListBox::resizeEvent(QResizeEvent *e)
   QListBox::resizeEvent(e);
   vertScroll->resize(16, this->height());
   vertScroll->move(this->width() - vertScroll->width(), 0);
-  emit updateSize();
-  repaint(TRUE);
+  if(autoUpdate() == TRUE){
+    emit updateSize();
+    repaint(TRUE);
+  }
   //  QRect frame = frameRect();
   //  frame.setRight(frame.right() - 17);
   //  setFrameRect(frame);

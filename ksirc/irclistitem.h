@@ -25,7 +25,7 @@ class ircListItem : public QObject,
   }
 
   void setWrapping(bool);
-  bool wrapping();
+  inline bool wrapping();
 
   const QColor *defcolour(){
     return colour;
@@ -44,6 +44,9 @@ protected:
 private:
 
   QPixmap *pm;
+  QPixmap *dbuffer;
+  bool need_update;
+  int old_height, old_width;
   const QColor *colour;
   QString itext;
 
@@ -51,6 +54,7 @@ private:
 
   int linewidth;
   int lineheight;
+  int totalheight;
 
   QStrList *paint_text;
   QListBox *parent_lb;

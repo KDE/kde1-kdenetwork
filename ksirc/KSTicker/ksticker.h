@@ -28,6 +28,7 @@ public:
   void speed(int *, int *);
 
   virtual void setBackgroundColor ( const QColor & );
+  virtual void setPalette ( const QPalette & p );
 
 signals:
   void doubleClick();
@@ -75,6 +76,18 @@ private:
   QPixmap *pic;
 
   QPopupMenu *popup;
+
+  /*
+   * Drawing settings and variables
+   */
+  bool bold;
+  bool underline;
+  bool italics;
+  QColor defbg;
+  QColor deffg;
+  QColor bg;
+  QColor fg;
+
 
 };
 

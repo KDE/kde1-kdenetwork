@@ -51,7 +51,16 @@ KSTicker::KSTicker(QWidget * parent=0, const char * name=0, WFlags f=0)
 
   display = " ";
 
-      
+  /*
+   * Setup basic colours and background status info for ticker.
+   */
+  bold = FALSE;
+  underline = FALSE;
+  italics = FALSE;
+  defbg = backgroundColor();
+  deffg = foregroundColor();
+  bg = backgroundColor();
+  fg = foregroundColor();
 
 }
 
@@ -123,14 +132,6 @@ void KSTicker::timerEvent(QTimerEvent *)
   
   cOffset += tickStep;
   if(cOffset >= onechar){      
-    static const QColor defbg = backgroundColor();
-    static const QColor deffg = foregroundColor();
-    static QColor bg = backgroundColor();
-    static QColor fg = foregroundColor();
-    static bool bold = FALSE;
-    static bool underline = FALSE;
-    static bool italics = FALSE;
-    
     int step = 1; // Used to check if we did anything, and hence
     // catch ~c~c type things. Set to 1 to start loop
     while(((display[currentChar] == '~') || (display[currentChar] == 0x03))
@@ -332,4 +333,18 @@ void KSTicker::setBackgroundColor ( const QColor &c )
   QFrame::setBackgroundColor(c);
   pic->fill(c);  
   bitBlt(this, 0,0, pic);
+  defbg = backgroundColor();
+  bg = backgroundColor();
+}
+
+void KSTicker::setPalette ( const QPalette & p )
+{
+  QFrame::setPalette(p);
+  
+  pic->fill(backgroundColor());
+  bitBlt(this, 0,0, pic);
+  defbg = backgroundColor();
+  bg = backgroundColor();
+  deffg = p.normal().text();
+  fg = p.normal().text();
 }

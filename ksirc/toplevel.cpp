@@ -124,13 +124,23 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
   file->insertSeparator();
   file->insertItem("&Quit", this, SLOT(terminate()), CTRL + Key_Q );
 
-  kmenu = new QMenuBar(ktool->getFrame(0), "menubar");
+  QFrame *menu_frame = ktool->getFrame(0);
+  CHECK_PTR(menu_frame);
+  menu_frame->setFrameStyle(QFrame::NoFrame); // Turn off the frame style.
+  menu_frame->setLineWidth(0);
+  
+  kmenu = new QMenuBar(this, "menubar");
+  //  kmenu = new QMenuBar(menu_frame, "menubar");
   //  kmenu = new QMenuBar(this, "menubar");
-  kmenu->setFrameStyle(QFrame::NoFrame);
-  kmenu->setLineWidth(0);
+  kmenu->setFrameStyle(QFrame::NoFrame); // Turn off frame style.
+  kmenu->setLineWidth(0);  
+  if(style() == MotifStyle)
+    kmenu->recreate(menu_frame, 0, QPoint(0,-3));
+  else
+    kmenu->recreate(menu_frame, 0, QPoint(0,0));
   kmenu->insertItem("&File", file, 2, -1);
   kmenu->setAccel(Key_F, 2);
-  topLevelWidget()->installEventFilter(kmenu);
+  //  topLevelWidget()->installEventFilter(kmenu);
 
   QPopupMenu *edit = new QPopupMenu();
   edit->insertItem("&Cut WIndow...", this, SLOT(openCutWindow()), CTRL + Key_X);
@@ -230,6 +240,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
 
   opami = FALSE;
   continued_line = FALSE;
+  prompt_active = FALSE;
 
   /*
    * Load basic pics and images
@@ -795,38 +806,43 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
       case 'P':
       case 'p':
 	{
-	  QString prompt, caption;
-	  ssfePrompt *sp;
-	  int p1, p2;
-
-	  caption = mainw->text(mainw->count() - 1);
-	  if(caption.length() < 3){
-	    caption = mainw->text(mainw->count() - 2);
-	    if(caption.length() > 2)
-	      mainw->removeItem(mainw->count() - 2 );
+	  if(prompt_active == FALSE){
+	    QString prompt, caption;
+	    ssfePrompt *sp;
+	    int p1, p2;
+	    
+	    caption = mainw->text(mainw->count() - 1);
+	    if(caption.length() < 3){
+	      caption = mainw->text(mainw->count() - 2);
+	      if(caption.length() > 2)
+		mainw->removeItem(mainw->count() - 2 );
+	    }
+	    else
+	      mainw->removeItem(mainw->count() - 1 );
+	    p1 = string.find("ssfe#", 0) + 6; // ssfe#[pP] == 6
+	    p2 = string.length();
+	    if(p2 <= p1)
+	      prompt = "No Prompt Given?";
+	    else
+	      prompt = string.mid(p1, p2 - p1);
+	    prompt_active = TRUE;
+	    sp = new ssfePrompt(prompt, this);
+	    sp->setCaption(caption);
+	    if(s2[0] == 'P')
+	      sp->setPassword(TRUE);
+	    sp->exec();
+	    //	  cerr << "Entered: " << sp->text() << endl;
+	    prompt = sp->text();
+	    prompt += "\n";
+	    emit outputLine(prompt);
+	    delete sp;
+	    prompt_active = FALSE;
+	    string.truncate(0);
+	    no_output = 1;
+	    break;
 	  }
-	  else
-	    mainw->removeItem(mainw->count() - 1 );
-	  p1 = string.find("ssfe#", 0) + 6; // ssfe#[pP] == 6
-	  p2 = string.length();
-	  if(p2 <= p1)
-	    prompt = "No Prompt Given?";
-	  else
-	    prompt = string.mid(p1, p2 - p1);
-	  sp = new ssfePrompt(prompt, this);
-	  sp->setCaption(caption);
-	  if(s2[0] == 'P')
-	    sp->setPassword(TRUE);
-	  sp->exec();
-	  //	  cerr << "Entered: " << sp->text() << endl;
-	  prompt = sp->text();
-	  prompt += "\n";
-	  emit outputLine(prompt);
-	  delete sp;
-	  string.truncate(0);
-	  no_output = 1;
-	  break;
 	}
+	cerr << "Prompt already open!!!\n";
       default:
 	cerr << "Unkown ssfe command: " << string << endl;
 	string.truncate(0);                // truncate string... set
@@ -1125,7 +1141,8 @@ void KSircTopLevel::UserParseMenu(int id)
 			 "%s is deprecated, you MUST use $$dest_nick\n"
 			 "intead.  Any valid sirc\n"
 			 "variable may now be refrenced.\n"
-			 "This includes repeated uses.\n\n");
+			 "This includes repeated uses.\n\n"
+			 "Options->Prefrences->User Menu to change it\n");
     return;
   }
   QString s;
@@ -1215,7 +1232,7 @@ void KSircTopLevel::resizeEvent(QResizeEvent *e)
   mainw->setAutoUpdate(FALSE);
   KTopLevelWidget::resizeEvent(e);
 //  cerr << "Updating list box\n";
-  mainw->setTopItem(mainw->count()-1);
+  //  mainw->setTopItem(mainw->count()-1);
   if(mainw->maximumSize().width() > width()){
     mainw->setMinimumWidth(width() - 100);
   }
@@ -1300,6 +1317,7 @@ void KSircTopLevel::control_message(int command, QString str)
     mainw->setUpdatesEnabled(TRUE);
     nicks->setUpdatesEnabled(TRUE);
     linee->setUpdatesEnabled(TRUE);
+    emit changeSize(); // Have the ist box update correctly.
     setUpdatesEnabled(TRUE);
     repaint(TRUE);
     mainw->scrollToBottom();
@@ -1328,7 +1346,7 @@ void KSircTopLevel::showTicker()
   myrect = geometry();
   mypoint = pos();
   ticker = new KSTicker(0, "ticker", WStyle_NormalBorder);
-  ticker->setCaption(channel_name);
+  ticker->setCaption(caption);
   kConfig->setGroup("TickerDefaults");
   ticker->setFont(kConfig->readFontEntry("font", new QFont("fixed")));
   ticker->setSpeed(kConfig->readNumEntry("tick", 30), 

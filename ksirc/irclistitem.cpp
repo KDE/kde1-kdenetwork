@@ -20,8 +20,14 @@ ircListItem::ircListItem(QString s, const QColor *c, QListBox *lb, QPixmap *p = 
 
   rows = 1;
   linewidth = 0;
+  totalheight = 0;
 
   paint_text = new QStrList();
+
+  dbuffer = new QPixmap();
+  need_update = TRUE;
+
+  old_height = old_width = 0;
   
   setupPainterText();
 
@@ -30,35 +36,21 @@ ircListItem::ircListItem(QString s, const QColor *c, QListBox *lb, QPixmap *p = 
 ircListItem::~ircListItem()
 {
   delete paint_text;
+  delete dbuffer;
   itext.truncate(0);
   
 }
 
 void ircListItem::paint(QPainter *p)
 {
-  QPen pen = p->pen();
-  QColor bc = p->backgroundColor();
-  QFont font = p->font();
-  p->setPen(*colour);
-
-  if(pm)
-    p->drawPixmap(1,0,*pm);
-
-  char *txt;
-  int row = 0;
-  for(txt = paint_text->first(); txt != 0; txt = paint_text->next(), row++){
-    //    p->drawText(xPos,yPos+lineheight*row, txt);
-    KSPainter::colourDrawText(p, xPos,yPos+lineheight*row, txt);
-  }
-  p->setFont(font);
-  p->setBackgroundMode(TransparentMode);
-  p->setPen(pen);
-  p->setBackgroundColor(bc);
+  if(need_update == TRUE)
+    setupPainterText();
+  p->drawPixmap(0,0, *dbuffer);
 }
 
 int ircListItem::height(const QListBox *) const
 {
-  return rows*(lineheight) + 2;
+  return  totalheight;
 }
 
 int ircListItem::width(const QListBox *) const
@@ -90,6 +82,7 @@ void ircListItem::setupPainterText()
     xPos = 3;
   }
 
+    
   // Wrapping code is a little slow, and a little silly, but it works.
 
   // Main idea is this:
@@ -154,9 +147,56 @@ void ircListItem::setupPainterText()
   }
   else{
     rows = 1;
-    linewidth = fm.width(itext);
+    //    linewidth = fm.width(itext);
     paint_text->append(itext);
   }
+  linewidth = parent_lb->width()-35; // set out width to the parent width.
+  totalheight =  rows*(lineheight) + 2;
+
+  // Setup the QPixmap's size and colours if it's null.  When sizing
+  // changes, QPixmap is changed in updateSize().  rows which is used
+  // by width() and height() is set in the prior line sizing, so NEVER
+  // EVER call width and height before this point.
+
+  if((old_width != width(0)) ||
+     (old_height != height(0))){
+    old_width = width(0);
+    old_height = height(0);
+    dbuffer->resize(old_width + 35, old_height);
+    dbuffer->fill(parent_lb->backgroundColor());
+  }
+  
+  // Print everything to the pixmap so when a paint() comes along
+  // we just spit the pixmap out.
+
+  QPainter p;
+  if((dbuffer->isNull() == FALSE) && 
+     (p.begin(dbuffer) == TRUE)){
+    need_update = FALSE;
+
+    p.setFont(parent_lb->font());
+    p.setPen(*colour);
+    
+    if(pm)
+      p.drawPixmap(1,0,*pm);
+    
+    char *txt;
+    int row = 0;
+    for(txt = paint_text->first(); txt != 0; txt = paint_text->next(), row++){
+      KSPainter::colourDrawText(&p, xPos,yPos+lineheight*row, txt);
+    }
+    
+    p.end();
+  }
+  else{
+    cerr << "Start failed!\n";
+    if(dbuffer->isNull())
+      cerr << "dbuffer is NULL!!!!!!\n";
+    dbuffer->resize(1,1);
+    need_update = TRUE;
+  }
+    
+    
 }
 
 void ircListItem::updateSize(){
@@ -168,6 +208,6 @@ void ircListItem::setWrapping(bool _wrap){
   setupPainterText();
 }
 
-bool ircListItem::wrapping(){
+inline bool ircListItem::wrapping(){
   return Wrapping;
 }

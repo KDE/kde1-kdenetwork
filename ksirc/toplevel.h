@@ -298,6 +298,11 @@ private:
     */
   QPoint tickerpoint;
 
+  /**
+    * Never open mmore then one dialog box
+    */
+  bool prompt_active;
+
 };
 
 #endif
