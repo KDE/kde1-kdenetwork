@@ -51,9 +51,8 @@ msgid "Get Active File"
 msgstr "Gruppenliste holen"
 
 #: groupdlg.cpp:129
-#, fuzzy
 msgid "Post Queued Messages"
-msgstr "Gesperrte anzeigen"
+msgstr "Artikel in Warteschlange senden"
 
 #: groupdlg.cpp:131
 msgid "Exit"
@@ -112,9 +111,8 @@ msgid "NNTP Options..."
 msgstr "NNTP Optionen..."
 
 #: groupdlg.cpp:168
-#, fuzzy
 msgid "Expire Options..."
-msgstr "NNTP Optionen..."
+msgstr "Ablaufdatum-Optionen..."
 
 #: groupdlg.cpp:174
 msgid "About Krn..."
@@ -370,20 +368,19 @@ msgstr "Zeige Artikelliste"
 
 #: artdlg.cpp:968
 msgid "KRN - Existing File"
-msgstr ""
+msgstr "KRN - Datei existiert"
 
 #: artdlg.cpp:969
 msgid "The File you selected already exists"
-msgstr ""
+msgstr "Die gewählte Datei existiert bereits"
 
 #: artdlg.cpp:975
 msgid "OverWrite"
-msgstr ""
+msgstr "Überschreiben"
 
 #: artdlg.cpp:977
-#, fuzzy
 msgid "Append"
-msgstr "Senden"
+msgstr "Anhängen"
 
 #: artdlg.cpp:1024
 msgid ""
@@ -542,12 +539,11 @@ msgstr "Weitergeleitete Nachricht"
 
 #: kmcomposewin.cpp:101
 msgid "KMail Composer"
-msgstr "Nachricht erstellen"
+msgstr "KMail Editor"
 
 #: kmcomposewin.cpp:103
-#, fuzzy
 msgid "KRN Composer"
-msgstr "&Neu..."
+msgstr "KRN Editor"
 
 #: kmcomposewin.cpp:108
 msgid "F"
@@ -1200,20 +1196,16 @@ msgstr "Adressbuch-Verwaltung"
 
 #: expireDlg.cpp:19
 msgid "KRN - Expire Settings"
-msgstr ""
+msgstr "KRN - Ablaufdatums-Einstellungen"
 
 #: expireDlg.cpp:27 expireDlg.cpp:52
 msgid "For how long should we keep things (in days)?"
-msgstr ""
+msgstr "Für wie lange sollten wir die Sachen behalten (in Tagen)?"
 
 #: expireDlg.cpp:30
-#, fuzzy
 msgid "Article Bodies:"
-msgstr "Artikelliste holen"
+msgstr "Artikel-Inhalte:"
 
 #: expireDlg.cpp:40
 msgid "Article Headers:"
-msgstr ""
-
-#~ msgid "&Article"
-#~ msgstr "&Artikel"
+msgstr "Artikel-Header:"
