@@ -511,6 +511,7 @@ void Groupdlg::online()
             statusBar ()->changeItem (klocale->translate("Connected to server - Posting not allowed"), 2);
         else
             statusBar ()->changeItem (klocale->translate("Connected to server - Posting allowed"), 2);
+        toolBar()->setItemEnabled (DISCONNECT,true);
     }
     else
     {
@@ -534,7 +535,6 @@ void Groupdlg::online()
             toolBar()->setItemEnabled (CONNECT,true);
         }
     }
-    toolBar()->setItemEnabled (DISCONNECT,true);
 }
 
 void Groupdlg::fillTree ()

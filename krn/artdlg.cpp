@@ -44,6 +44,7 @@
 #include "rmbpop.h"
 #include "fontsDlg.h"
 #include "findArtDlg.h"
+#include "rulesDlg.h"
 
 #include "kmcomposewin.h"
 #include "kmreaderwin.h"
@@ -77,6 +78,8 @@
 #define EXPUNGE 24
 #define DOWNLOAD_ARTICLE 25
 #define NO_CACHED 26
+#define EDIT_RULES 27
+#define UPDATE_SCORES 28
 
 extern QString pixpath,cachepath;
 
@@ -86,7 +89,8 @@ extern KDecode *decoder;
 
 extern KConfig *conf;
 
-findArtDlg *FindDlg;
+findArtDlg *FindDlg=0;
+rulesDlg *RulesDlg=0;
 
 Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     :Inherited (_group->name)
@@ -95,10 +99,14 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     depths.setAutoDelete(true);
     group=0;
     server=0;
-    FindDlg=new findArtDlg(0);
+    if (!FindDlg)
+        FindDlg=new findArtDlg(0);
+    
     connect (FindDlg,SIGNAL(FindThis(const char *,const char*,bool,bool)),
              this,SLOT(FindThis(const char *,const char*,bool,bool)));
-    
+
+    if (!RulesDlg)
+        RulesDlg=new rulesDlg();
     
     conf->setGroup("ArticleListOptions");
     unread=conf->readNumEntry("ShowOnlyUnread");
@@ -152,11 +160,17 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     options->insertItem(klocale->translate("Expunge"), EXPUNGE);
     options->insertItem(klocale->translate("Appearance..."),CONFIG_FONTS);
     connect (options,SIGNAL(activated(int)),SLOT(actions(int)));
+
+    QPopupMenu *scoring=new QPopupMenu;
+    scoring->insertItem(klocale->translate("Edit Rules"),EDIT_RULES);
+    scoring->insertItem(klocale->translate("Update"),UPDATE_SCORES);
+    connect (scoring,SIGNAL(activated(int)),SLOT(actions(int)));
     
     menu = new KMenuBar (this, klocale->translate("menu"));
     menu->insertItem (klocale->translate("&File"), article);
     menu->insertItem (klocale->translate("&Tagged"), taggedArticle);
     menu->insertItem (klocale->translate("&Options"), options);
+    menu->insertItem (klocale->translate("&Scoring"), scoring);
     setMenu (menu);
     
     
@@ -502,6 +516,11 @@ bool Artdlg::actions (int action)
     qApp->setOverrideCursor (waitCursor);
     switch (action)
     {
+    case EDIT_RULES:
+        {
+            RulesDlg->show();
+            break;
+        }
     case CONFIG_FONTS:
         {
             qApp->setOverrideCursor (arrowCursor);

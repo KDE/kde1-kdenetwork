@@ -47,18 +47,18 @@ NNTPConfigDlg::NNTPConfigDlg(QWidget* parent, const char* name):Inherited( paren
 
     l->addGroup("lower");
 
-    authenticate=(QCheckBox *)(l->addCheckBox("authenticate",
-                                              klocale->translate("Authenticate"),
-                                              conf->readNumEntry("Authenticate"))->widget);
 
     connectatstart=(QCheckBox *)(l->addCheckBox("connectatstart",
                                               klocale->translate("Connect on Startup"),
                                                 conf->readNumEntry("ConnectAtStart"))->widget);
 
-    l->newLine();
     silentconnect=(QCheckBox *)(l->addCheckBox("silentconnect",
                                               klocale->translate("Connect without asking"),
                                                 conf->readNumEntry("SilentConnect"))->widget);
+    l->newLine();
+    authenticate=(QCheckBox *)(l->addCheckBox("authenticate",
+                                              klocale->translate("Authenticate"),
+                                              conf->readNumEntry("Authenticate"))->widget);
     l->skip();
     l->newLine();
     
