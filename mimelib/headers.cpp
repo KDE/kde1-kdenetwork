@@ -849,7 +849,7 @@ DwText& DwHeaders::Expires()
 
 DwText& DwHeaders::FollowupTo()
 {
-    return (DwText&) FieldBody("FollowupTo");
+    return (DwText&) FieldBody("Followup-To");
 }
 
 
