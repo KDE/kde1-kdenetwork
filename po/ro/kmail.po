@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1999-01-21 02:02+0100\n"
+"POT-Creation-Date: 1999-01-22 01:55+0100\n"
 "PO-Revision-Date: 1998-02-23 08:05 +0100\n"
 "Last-Translator: Vatafu Valerica <wally@chuck.tlnet.de>\n"
 
@@ -222,7 +222,7 @@ msgstr "C&omprimã"
 msgid "&Empty"
 msgstr "&Goleºte"
 
-#: kmfilterdlg.cpp:147 kmmainwin.cpp:919
+#: kmfilterdlg.cpp:149 kmmainwin.cpp:919
 msgid "New"
 msgstr ""
 
@@ -371,7 +371,7 @@ msgid "Initializing..."
 msgstr "Iniþializare..."
 
 #: kmfolderdia.cpp:38 kmmsgpartdlg.cpp:62 kmsettings.cpp:175
-#: kmsettings.cpp:870
+#: kmsettings.cpp:869
 msgid "Name:"
 msgstr "Nume:"
 
@@ -387,7 +387,7 @@ msgstr "Asociat cu"
 msgid "Unassociated Accounts"
 msgstr "Account neasociat"
 
-#: kmfoldertree.cpp:47 kmsettings.cpp:529
+#: kmfoldertree.cpp:47 kmsettings.cpp:528
 msgid "Folders"
 msgstr "Fiºier"
 
@@ -411,86 +411,86 @@ msgstr "Rãspunde la adresa:"
 msgid "Signature File:"
 msgstr "Fiºierul semnãturã:"
 
-#: kmsettings.cpp:192 kpgp.cpp:821
+#: kmsettings.cpp:193 kpgp.cpp:821
 msgid "Identity"
 msgstr "Identitate"
 
-#: kmsettings.cpp:211
+#: kmsettings.cpp:212
 msgid "Sending Mail"
 msgstr "Mail-uri trimise"
 
-#: kmsettings.cpp:217
+#: kmsettings.cpp:218
 msgid "Sendmail"
 msgstr "Trimite mail"
 
-#: kmsettings.cpp:222 kmsettings.cpp:877
+#: kmsettings.cpp:223 kmsettings.cpp:876
 msgid "Location:"
 msgstr "Locaþia:"
 
-#: kmsettings.cpp:227
+#: kmsettings.cpp:228
 msgid "SMTP"
 msgstr "SMTP"
 
-#: kmsettings.cpp:232
+#: kmsettings.cpp:233
 msgid "Server:"
 msgstr "Server:"
 
-#: kmsettings.cpp:234 kmsettings.cpp:898
+#: kmsettings.cpp:235 kmsettings.cpp:897
 msgid "Port:"
 msgstr "Port:"
 
-#: kmsettings.cpp:255
+#: kmsettings.cpp:257
 msgid "Incoming Mail"
 msgstr "Mail-ri venite"
 
-#: kmsettings.cpp:260
+#: kmsettings.cpp:262
 msgid "Accounts:   (add at least one account!)"
 msgstr "Account-uri:  (introdu cel puþin unu!)"
 
-#: kmcomposewin.cpp:140 kmsettings.cpp:265
+#: kmcomposewin.cpp:140 kmsettings.cpp:267
 msgid "Name"
 msgstr "Nume"
 
-#: kmcomposewin.cpp:143 kmsettings.cpp:266
+#: kmcomposewin.cpp:143 kmsettings.cpp:268
 msgid "Type"
 msgstr "Tipul"
 
-#: kmsettings.cpp:267
+#: kmsettings.cpp:269
 msgid "Folder"
 msgstr "Fiºier"
 
-#: kmsettings.cpp:275
+#: kmsettings.cpp:277
 msgid "Add..."
 msgstr "Adaugã..."
 
-#: kmsettings.cpp:278
+#: kmsettings.cpp:280
 msgid "Modify..."
 msgstr "Modificã..."
 
-#: kmsettings.cpp:301
+#: kmsettings.cpp:300
 msgid "Network"
 msgstr "Network"
 
-#: kmsettings.cpp:326
+#: kmsettings.cpp:325
 msgid "Message Body Font:"
 msgstr ""
 
-#: kmsettings.cpp:331
+#: kmsettings.cpp:330
 #, fuzzy
 msgid "Message List Font:"
 msgstr "Mesaj in text format"
 
-#: kmsettings.cpp:335
+#: kmsettings.cpp:334
 msgid ""
 "Changing fonts currently only occurs when a new\n"
 "window is opened or kmail is restarted"
 msgstr ""
 
-#: kmsettings.cpp:377
+#: kmsettings.cpp:376
 msgid "Phrases"
 msgstr "Fraze"
 
-#: kmsettings.cpp:382
+#: kmsettings.cpp:381
 msgid ""
 "The following placeholders are supported in the reply phrases:\n"
 "%D=date, %S=subject, %F=sender, %%=percent sign"
@@ -498,169 +498,169 @@ msgstr ""
 "Urmãtoarul format este susþinut la rãspunsuri:\n"
 "%D=Data, %S=Subiect, %F=Sender, %%=Semnul procent"
 
-#: kmsettings.cpp:390
+#: kmsettings.cpp:389
 msgid "Reply to sender:"
 msgstr "Rãspunde cãtre Sender:"
 
-#: kmsettings.cpp:393
+#: kmsettings.cpp:392
 msgid "Reply to all:"
 msgstr "Rãspunde la toþi:"
 
-#: kmsettings.cpp:396
+#: kmsettings.cpp:395
 msgid "Forward:"
 msgstr "Înainteazã:"
 
-#: kmsettings.cpp:399
+#: kmsettings.cpp:398
 msgid "Indentation:"
 msgstr "Indentation:"
 
-#: kmmessage.cpp:1340 kmsettings.cpp:411
+#: kmmessage.cpp:1340 kmsettings.cpp:410
 msgid "On %D, you wrote:"
 msgstr "Tu ai scris în %D :"
 
-#: kmmessage.cpp:1341 kmsettings.cpp:415
+#: kmmessage.cpp:1341 kmsettings.cpp:414
 msgid "On %D, %F wrote:"
 msgstr "În %D a scris %F:"
 
-#: kmmessage.cpp:1342 kmsettings.cpp:419
+#: kmmessage.cpp:1342 kmsettings.cpp:418
 msgid "Forwarded Message"
 msgstr "Mesaj înaintat"
 
-#: kmsettings.cpp:430
+#: kmsettings.cpp:429
 msgid "Automatically append signature"
 msgstr "Semnãtura este automat agîþatã"
 
-#: kmsettings.cpp:436
+#: kmsettings.cpp:435
 msgid "Automatically sign messages using PGP"
 msgstr "Mesaj semant automat cu PGP"
 
-#: kmsettings.cpp:441
+#: kmsettings.cpp:440
 msgid "Word wrap at column:"
 msgstr "Word wrap la coloana:"
 
-#: kmsettings.cpp:451
+#: kmsettings.cpp:450
 msgid "Use monospaced font"
 msgstr "Utilizeazã monospaced font"
 
-#: kmsettings.cpp:463
+#: kmsettings.cpp:462
 msgid "When sending mail"
 msgstr "La trimiterea mail-ui"
 
-#: kmsettings.cpp:466
+#: kmsettings.cpp:465
 msgid "Default sending:"
 msgstr "Trimite standard:"
 
-#: kmsettings.cpp:469
+#: kmsettings.cpp:468
 msgid "send now"
 msgstr "trimite acum"
 
-#: kmsettings.cpp:473
+#: kmsettings.cpp:472
 msgid "send later"
 msgstr "trimite mai tîrziu"
 
-#: kmsettings.cpp:478
+#: kmsettings.cpp:477
 msgid "Send messages:"
 msgstr "Trimite mesaj:"
 
-#: kmsettings.cpp:481
+#: kmsettings.cpp:480
 msgid "Allow 8-bit"
 msgstr "Permite 8-bit"
 
-#: kmsettings.cpp:486
+#: kmsettings.cpp:485
 msgid "MIME Compilant (Quoted Printable)"
 msgstr "MIME-Compatibil (Quoted Printable)"
 
-#: kmsettings.cpp:512
+#: kmsettings.cpp:511
 msgid "Composer"
 msgstr "Compune un mail"
 
-#: kmsettings.cpp:533
+#: kmsettings.cpp:532
 msgid "empty trash on exit"
 msgstr "La ieºire sterge trash-ul"
 
-#: kmsettings.cpp:537
+#: kmsettings.cpp:536
 msgid "Send Mail in outbox Folder on Check"
 msgstr ""
 
-#: kmsettings.cpp:552
+#: kmsettings.cpp:551
 msgid "Misc"
 msgstr "Amestecaturã"
 
-#: kmsettings.cpp:559
+#: kmsettings.cpp:558
 msgid "PGP"
 msgstr ""
 
-#: kmsettings.cpp:582
+#: kmsettings.cpp:581
 msgid "Message Body Font"
 msgstr ""
 
-#: kmsettings.cpp:596
+#: kmsettings.cpp:595
 #, fuzzy
 msgid "Message List Font"
 msgstr "Mesaj in text format"
 
-#: kmsettings.cpp:648
+#: kmsettings.cpp:647
 msgid "Select Account"
 msgstr "Selecteazã accountul"
 
-#: kmaccount.cpp:76 kmfilterdlg.cpp:458 kmsettings.cpp:667
+#: kmaccount.cpp:76 kmfilterdlg.cpp:472 kmsettings.cpp:666
 msgid "Unnamed"
 msgstr "Necunoscut"
 
-#: kmsettings.cpp:686
+#: kmsettings.cpp:685
 msgid "Choose Sendmail Location"
 msgstr "Cautã sendmail"
 
-#: kmcomposewin.cpp:1621 kmsettings.cpp:695
+#: kmcomposewin.cpp:1621 kmsettings.cpp:694
 msgid "Choose Signature File"
 msgstr "Alege fiºierul-semnãturã"
 
-#: kmsettings.cpp:862
+#: kmsettings.cpp:861
 msgid "Type:"
 msgstr "Tipul:"
 
-#: kmsettings.cpp:875
+#: kmsettings.cpp:874
 msgid "Local Account"
 msgstr "Account local"
 
-#: kmsettings.cpp:884
+#: kmsettings.cpp:883
 msgid "Pop Account"
 msgstr "POP-Account"
 
-#: kmsettings.cpp:886
+#: kmsettings.cpp:885
 msgid "Login:"
 msgstr "Login:"
 
-#: kmacctpop.cpp:468 kmsettings.cpp:889
+#: kmacctpop.cpp:468 kmsettings.cpp:888
 msgid "Password:"
 msgstr "Password:"
 
-#: kmsettings.cpp:893
+#: kmsettings.cpp:892
 msgid "Host:"
 msgstr "Pop-Server:"
 
-#: kmsettings.cpp:901
+#: kmsettings.cpp:900
 msgid "Delete mail from server"
 msgstr "ªterge mesajele de pe server"
 
-#: kmsettings.cpp:906
+#: kmsettings.cpp:905
 #, fuzzy
 msgid "Retrieve all mail from server"
 msgstr "ªterge mesajele de pe server"
 
-#: kmsettings.cpp:918
+#: kmsettings.cpp:917
 msgid "Enable interval Mail checking"
 msgstr ""
 
-#: kmsettings.cpp:928
+#: kmsettings.cpp:927
 msgid "Store new mail in account:"
 msgstr "Copiazã noul mesaj in account:"
 
-#: kmsettings.cpp:936
+#: kmsettings.cpp:935
 msgid "<none>"
 msgstr "<nimic>"
 
-#: kmsettings.cpp:983
+#: kmsettings.cpp:982
 msgid "Choose Location"
 msgstr "Alege fiºier"
 
@@ -668,7 +668,7 @@ msgstr "Alege fiºier"
 msgid "Receipt: "
 msgstr "Receipt: "
 
-#: kmaccount.cpp:148
+#: kmaccount.cpp:149
 msgid "Failed to add message:"
 msgstr "Eroare la adãugarea mesajului:"
 
@@ -707,44 +707,44 @@ msgstr "Eroare necunoscutã"
 msgid "No Subject"
 msgstr "Subiect"
 
-#: kmheaders.cpp:327
+#: kmheaders.cpp:328
 msgid "order of arrival"
 msgstr ""
 
-#: kmheaders.cpp:336
+#: kmheaders.cpp:337
 #, fuzzy
 msgid "subject"
 msgstr "Subiect"
 
-#: kmheaders.cpp:337
+#: kmheaders.cpp:338
 #, fuzzy
 msgid "date"
 msgstr "Data"
 
-#: kmheaders.cpp:338
+#: kmheaders.cpp:339
 #, fuzzy
 msgid "sender"
 msgstr "Sender"
 
-#: kmheaders.cpp:339
+#: kmheaders.cpp:340
 msgid "status"
 msgstr ""
 
-#: kmheaders.cpp:341
+#: kmheaders.cpp:342
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr ""
 
-#: kmheaders.cpp:343
+#: kmheaders.cpp:344
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr ""
 
-#: kmheaders.cpp:439
+#: kmheaders.cpp:440
 msgid "Message(s) saved."
 msgstr "Mesaj(ele) salvat(e)."
 
-#: kmheaders.cpp:441
+#: kmheaders.cpp:442
 msgid "Failed to save message(s)."
 msgstr "Mesaj(ele) nu poate fi salvat(e)"
 
@@ -1440,63 +1440,63 @@ msgstr ""
 msgid "Filter Rules"
 msgstr "Regulile de filtru"
 
-#: kmfilterdlg.cpp:141
+#: kmfilterdlg.cpp:143
 msgid "Up"
 msgstr "Sus"
 
-#: kmfilterdlg.cpp:144
+#: kmfilterdlg.cpp:146
 msgid "Down"
 msgstr "Jos"
 
-#: kmfilterdlg.cpp:530
+#: kmfilterdlg.cpp:544
 msgid "<nothing>"
 msgstr "<nimic>"
 
-#: kmfilterdlg.cpp:541
+#: kmfilterdlg.cpp:555
 msgid "ignore"
 msgstr "ignoreazã"
 
-#: kmfilterdlg.cpp:542
+#: kmfilterdlg.cpp:556
 msgid "and"
 msgstr "ºi"
 
-#: kmfilterdlg.cpp:543
+#: kmfilterdlg.cpp:557
 msgid "unless"
 msgstr "unless"
 
-#: kmfilterdlg.cpp:544
+#: kmfilterdlg.cpp:558
 msgid "or"
 msgstr "sau"
 
-#: kmfilterdlg.cpp:550
+#: kmfilterdlg.cpp:564
 msgid "equals"
 msgstr "egal"
 
-#: kmfilterdlg.cpp:551
+#: kmfilterdlg.cpp:565
 msgid "not equal"
 msgstr "neegal"
 
-#: kmfilterdlg.cpp:552
+#: kmfilterdlg.cpp:566
 msgid "contains"
 msgstr "conþinut"
 
-#: kmfilterdlg.cpp:553
+#: kmfilterdlg.cpp:567
 msgid "doesn't contain"
 msgstr "conþine nimic"
 
-#: kmfilterdlg.cpp:554
+#: kmfilterdlg.cpp:568
 msgid "regular expression"
 msgstr "expresie regularã"
 
-#: kmfilterdlg.cpp:561
+#: kmfilterdlg.cpp:575
 msgid "<message>"
 msgstr "<mesaj>"
 
-#: kmfilterdlg.cpp:562
+#: kmfilterdlg.cpp:576
 msgid "<body>"
 msgstr "<body>"
 
-#: kmfilterdlg.cpp:563
+#: kmfilterdlg.cpp:577
 msgid "<any header>"
 msgstr "<orice header>"
 

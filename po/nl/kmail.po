@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1999-01-21 02:02+0100\n"
+"POT-Creation-Date: 1999-01-22 01:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Case Roole <cjr@xs4all.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -231,7 +231,7 @@ msgstr "C&omprimeer"
 msgid "&Empty"
 msgstr "&Leeg"
 
-#: kmfilterdlg.cpp:147 kmmainwin.cpp:919
+#: kmfilterdlg.cpp:149 kmmainwin.cpp:919
 msgid "New"
 msgstr ""
 
@@ -380,7 +380,7 @@ msgid "Initializing..."
 msgstr "Start op..."
 
 #: kmfolderdia.cpp:38 kmmsgpartdlg.cpp:62 kmsettings.cpp:175
-#: kmsettings.cpp:870
+#: kmsettings.cpp:869
 msgid "Name:"
 msgstr "Naam:"
 
@@ -396,7 +396,7 @@ msgstr "Verbonden met"
 msgid "Unassociated Accounts"
 msgstr "Niet-verbonden accounts"
 
-#: kmfoldertree.cpp:47 kmsettings.cpp:529
+#: kmfoldertree.cpp:47 kmsettings.cpp:528
 msgid "Folders"
 msgstr "Mappen"
 
@@ -420,86 +420,86 @@ msgstr "Beantwoord-aan adres:"
 msgid "Signature File:"
 msgstr "Ondertekeningsbestand:"
 
-#: kmsettings.cpp:192 kpgp.cpp:821
+#: kmsettings.cpp:193 kpgp.cpp:821
 msgid "Identity"
 msgstr "Identiteit:"
 
-#: kmsettings.cpp:211
+#: kmsettings.cpp:212
 msgid "Sending Mail"
 msgstr "Post wordt verzonden"
 
-#: kmsettings.cpp:217
+#: kmsettings.cpp:218
 msgid "Sendmail"
 msgstr ""
 
-#: kmsettings.cpp:222 kmsettings.cpp:877
+#: kmsettings.cpp:223 kmsettings.cpp:876
 msgid "Location:"
 msgstr "Lokatie:"
 
-#: kmsettings.cpp:227
+#: kmsettings.cpp:228
 msgid "SMTP"
 msgstr ""
 
-#: kmsettings.cpp:232
+#: kmsettings.cpp:233
 msgid "Server:"
 msgstr ""
 
-#: kmsettings.cpp:234 kmsettings.cpp:898
+#: kmsettings.cpp:235 kmsettings.cpp:897
 msgid "Port:"
 msgstr "Poort:"
 
-#: kmsettings.cpp:255
+#: kmsettings.cpp:257
 msgid "Incoming Mail"
 msgstr "Inkomende post"
 
-#: kmsettings.cpp:260
+#: kmsettings.cpp:262
 msgid "Accounts:   (add at least one account!)"
 msgstr "Accounts:  (voeg tenminste een account toe!)"
 
-#: kmcomposewin.cpp:140 kmsettings.cpp:265
+#: kmcomposewin.cpp:140 kmsettings.cpp:267
 msgid "Name"
 msgstr "Naam"
 
-#: kmcomposewin.cpp:143 kmsettings.cpp:266
+#: kmcomposewin.cpp:143 kmsettings.cpp:268
 msgid "Type"
 msgstr ""
 
-#: kmsettings.cpp:267
+#: kmsettings.cpp:269
 msgid "Folder"
 msgstr "Map"
 
-#: kmsettings.cpp:275
+#: kmsettings.cpp:277
 msgid "Add..."
 msgstr "Voeg toe..."
 
-#: kmsettings.cpp:278
+#: kmsettings.cpp:280
 msgid "Modify..."
 msgstr "Wijzig..."
 
-#: kmsettings.cpp:301
+#: kmsettings.cpp:300
 msgid "Network"
 msgstr "Netwerk"
 
-#: kmsettings.cpp:326
+#: kmsettings.cpp:325
 msgid "Message Body Font:"
 msgstr ""
 
-#: kmsettings.cpp:331
+#: kmsettings.cpp:330
 #, fuzzy
 msgid "Message List Font:"
 msgstr "Boodschap als normale tekst"
 
-#: kmsettings.cpp:335
+#: kmsettings.cpp:334
 msgid ""
 "Changing fonts currently only occurs when a new\n"
 "window is opened or kmail is restarted"
 msgstr ""
 
-#: kmsettings.cpp:377
+#: kmsettings.cpp:376
 msgid "Phrases"
 msgstr "Uitdrukkingen"
 
-#: kmsettings.cpp:382
+#: kmsettings.cpp:381
 msgid ""
 "The following placeholders are supported in the reply phrases:\n"
 "%D=date, %S=subject, %F=sender, %%=percent sign"
@@ -507,170 +507,170 @@ msgstr ""
 "De volgende variabelen worden ondersteund in antwoord uitdrukkingen:\n"
 "%D=datum, %S=onderwerp, %F=afzender, %%=procent teken"
 
-#: kmsettings.cpp:390
+#: kmsettings.cpp:389
 msgid "Reply to sender:"
 msgstr "Beantwoord aan afzender:"
 
-#: kmsettings.cpp:393
+#: kmsettings.cpp:392
 msgid "Reply to all:"
 msgstr "Beantwoord aan allen:"
 
-#: kmsettings.cpp:396
+#: kmsettings.cpp:395
 msgid "Forward:"
 msgstr "Zend door:"
 
-#: kmsettings.cpp:399
+#: kmsettings.cpp:398
 msgid "Indentation:"
 msgstr "Indentatie:"
 
-#: kmmessage.cpp:1340 kmsettings.cpp:411
+#: kmmessage.cpp:1340 kmsettings.cpp:410
 msgid "On %D, you wrote:"
 msgstr "Op %D, schreef u:"
 
-#: kmmessage.cpp:1341 kmsettings.cpp:415
+#: kmmessage.cpp:1341 kmsettings.cpp:414
 msgid "On %D, %F wrote:"
 msgstr "Op %D, schreef %F:"
 
-#: kmmessage.cpp:1342 kmsettings.cpp:419
+#: kmmessage.cpp:1342 kmsettings.cpp:418
 msgid "Forwarded Message"
 msgstr "Doorgezonden boodschap"
 
-#: kmsettings.cpp:430
+#: kmsettings.cpp:429
 msgid "Automatically append signature"
 msgstr "Voeg ondertekening automatisch toe"
 
-#: kmsettings.cpp:436
+#: kmsettings.cpp:435
 msgid "Automatically sign messages using PGP"
 msgstr "Onderteken boodschappen automatisch met PGP"
 
-#: kmsettings.cpp:441
+#: kmsettings.cpp:440
 msgid "Word wrap at column:"
 msgstr "Breek woorden af in kolom:"
 
-#: kmsettings.cpp:451
+#: kmsettings.cpp:450
 msgid "Use monospaced font"
 msgstr "Gebruik lettertype met vaste breedte"
 
-#: kmsettings.cpp:463
+#: kmsettings.cpp:462
 msgid "When sending mail"
 msgstr "Wanneer post verzonden wordt"
 
-#: kmsettings.cpp:466
+#: kmsettings.cpp:465
 msgid "Default sending:"
 msgstr "Standaard verzendingswijze:"
 
-#: kmsettings.cpp:469
+#: kmsettings.cpp:468
 msgid "send now"
 msgstr "verzend nu"
 
-#: kmsettings.cpp:473
+#: kmsettings.cpp:472
 msgid "send later"
 msgstr "verzend later"
 
-#: kmsettings.cpp:478
+#: kmsettings.cpp:477
 msgid "Send messages:"
 msgstr "Verzend boodschappen:"
 
-#: kmsettings.cpp:481
+#: kmsettings.cpp:480
 msgid "Allow 8-bit"
 msgstr "Sta 8-bits toe"
 
 # FIXME: 'Compilant' should be 'Compliant'
-#: kmsettings.cpp:486
+#: kmsettings.cpp:485
 msgid "MIME Compilant (Quoted Printable)"
 msgstr "MIME Gehoorzamend (\"Quoted Printable\")"
 
-#: kmsettings.cpp:512
+#: kmsettings.cpp:511
 msgid "Composer"
 msgstr "Opsteller"
 
-#: kmsettings.cpp:533
+#: kmsettings.cpp:532
 msgid "empty trash on exit"
 msgstr "leeg de vuilnisbak bij afsluiten"
 
-#: kmsettings.cpp:537
+#: kmsettings.cpp:536
 msgid "Send Mail in outbox Folder on Check"
 msgstr ""
 
-#: kmsettings.cpp:552
+#: kmsettings.cpp:551
 msgid "Misc"
 msgstr "Allerhande"
 
-#: kmsettings.cpp:559
+#: kmsettings.cpp:558
 msgid "PGP"
 msgstr ""
 
-#: kmsettings.cpp:582
+#: kmsettings.cpp:581
 msgid "Message Body Font"
 msgstr ""
 
-#: kmsettings.cpp:596
+#: kmsettings.cpp:595
 #, fuzzy
 msgid "Message List Font"
 msgstr "Boodschap als normale tekst"
 
-#: kmsettings.cpp:648
+#: kmsettings.cpp:647
 msgid "Select Account"
 msgstr "Kies een account"
 
-#: kmaccount.cpp:76 kmfilterdlg.cpp:458 kmsettings.cpp:667
+#: kmaccount.cpp:76 kmfilterdlg.cpp:472 kmsettings.cpp:666
 msgid "Unnamed"
 msgstr "Naamloos"
 
-#: kmsettings.cpp:686
+#: kmsettings.cpp:685
 msgid "Choose Sendmail Location"
 msgstr "Kies Sendmail lokatie"
 
-#: kmcomposewin.cpp:1621 kmsettings.cpp:695
+#: kmcomposewin.cpp:1621 kmsettings.cpp:694
 msgid "Choose Signature File"
 msgstr "Kies ondertekeningsbestand"
 
-#: kmsettings.cpp:862
+#: kmsettings.cpp:861
 msgid "Type:"
 msgstr ""
 
-#: kmsettings.cpp:875
+#: kmsettings.cpp:874
 msgid "Local Account"
 msgstr "Lokaal Account"
 
-#: kmsettings.cpp:884
+#: kmsettings.cpp:883
 msgid "Pop Account"
 msgstr ""
 
-#: kmsettings.cpp:886
+#: kmsettings.cpp:885
 msgid "Login:"
 msgstr ""
 
-#: kmacctpop.cpp:468 kmsettings.cpp:889
+#: kmacctpop.cpp:468 kmsettings.cpp:888
 msgid "Password:"
 msgstr "Wachtwoord:"
 
-#: kmsettings.cpp:893
+#: kmsettings.cpp:892
 msgid "Host:"
 msgstr ""
 
-#: kmsettings.cpp:901
+#: kmsettings.cpp:900
 msgid "Delete mail from server"
 msgstr "Verwijder post van de server"
 
-#: kmsettings.cpp:906
+#: kmsettings.cpp:905
 #, fuzzy
 msgid "Retrieve all mail from server"
 msgstr "Verwijder post van de server"
 
-#: kmsettings.cpp:918
+#: kmsettings.cpp:917
 msgid "Enable interval Mail checking"
 msgstr ""
 
-#: kmsettings.cpp:928
+#: kmsettings.cpp:927
 msgid "Store new mail in account:"
 msgstr "Sla nieuwe post op in account:"
 
-#: kmsettings.cpp:936
+#: kmsettings.cpp:935
 msgid "<none>"
 msgstr "<niets>"
 
-#: kmsettings.cpp:983
+#: kmsettings.cpp:982
 msgid "Choose Location"
 msgstr "Kies lokatie"
 
@@ -678,7 +678,7 @@ msgstr "Kies lokatie"
 msgid "Receipt: "
 msgstr "Ontvangst:"
 
-#: kmaccount.cpp:148
+#: kmaccount.cpp:149
 msgid "Failed to add message:"
 msgstr "Faalde bij toevoegen van boodschap:"
 
@@ -717,41 +717,41 @@ msgstr "Onbekende fout"
 msgid "No Subject"
 msgstr "Onderwerp"
 
-#: kmheaders.cpp:327
+#: kmheaders.cpp:328
 msgid "order of arrival"
 msgstr "Volgorde van aankomst"
 
-#: kmheaders.cpp:336
+#: kmheaders.cpp:337
 msgid "subject"
 msgstr "onderwerp"
 
-#: kmheaders.cpp:337
+#: kmheaders.cpp:338
 msgid "date"
 msgstr "datum"
 
-#: kmheaders.cpp:338
+#: kmheaders.cpp:339
 msgid "sender"
 msgstr "afzender"
 
-#: kmheaders.cpp:339
+#: kmheaders.cpp:340
 msgid "status"
 msgstr ""
 
-#: kmheaders.cpp:341
+#: kmheaders.cpp:342
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr "Sorteren van boodschappen aflopend naar %s"
 
-#: kmheaders.cpp:343
+#: kmheaders.cpp:344
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr "Sorteren van boodschappen oplopend naar %s"
 
-#: kmheaders.cpp:439
+#: kmheaders.cpp:440
 msgid "Message(s) saved."
 msgstr "Boodschap(pen) opgeslagen"
 
-#: kmheaders.cpp:441
+#: kmheaders.cpp:442
 msgid "Failed to save message(s)."
 msgstr "Faalde bij het opslaan van boodschap(pen)"
 
@@ -1440,63 +1440,63 @@ msgstr ""
 msgid "Filter Rules"
 msgstr "Filter Regels"
 
-#: kmfilterdlg.cpp:141
+#: kmfilterdlg.cpp:143
 msgid "Up"
 msgstr "Omhoog"
 
-#: kmfilterdlg.cpp:144
+#: kmfilterdlg.cpp:146
 msgid "Down"
 msgstr "Omlaag"
 
-#: kmfilterdlg.cpp:530
+#: kmfilterdlg.cpp:544
 msgid "<nothing>"
 msgstr "<niets>"
 
-#: kmfilterdlg.cpp:541
+#: kmfilterdlg.cpp:555
 msgid "ignore"
 msgstr "negeer"
 
-#: kmfilterdlg.cpp:542
+#: kmfilterdlg.cpp:556
 msgid "and"
 msgstr "en"
 
-#: kmfilterdlg.cpp:543
+#: kmfilterdlg.cpp:557
 msgid "unless"
 msgstr "behalve wanneer"
 
-#: kmfilterdlg.cpp:544
+#: kmfilterdlg.cpp:558
 msgid "or"
 msgstr "of "
 
-#: kmfilterdlg.cpp:550
+#: kmfilterdlg.cpp:564
 msgid "equals"
 msgstr "is gelijk aan"
 
-#: kmfilterdlg.cpp:551
+#: kmfilterdlg.cpp:565
 msgid "not equal"
 msgstr "is ongelijk aan"
 
-#: kmfilterdlg.cpp:552
+#: kmfilterdlg.cpp:566
 msgid "contains"
 msgstr "bevat"
 
-#: kmfilterdlg.cpp:553
+#: kmfilterdlg.cpp:567
 msgid "doesn't contain"
 msgstr "bevat niet"
 
-#: kmfilterdlg.cpp:554
+#: kmfilterdlg.cpp:568
 msgid "regular expression"
 msgstr "reguliere uitdrukking"
 
-#: kmfilterdlg.cpp:561
+#: kmfilterdlg.cpp:575
 msgid "<message>"
 msgstr "<boodschap>"
 
-#: kmfilterdlg.cpp:562
+#: kmfilterdlg.cpp:576
 msgid "<body>"
 msgstr "<lichaam>"
 
-#: kmfilterdlg.cpp:563
+#: kmfilterdlg.cpp:577
 msgid "<any header>"
 msgstr "<enig hoofd>"
 

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSIONPOT-Creation-Date: 1998-01-17 07:40+0100\n"
-"POT-Creation-Date: 1999-01-21 02:02+0100\n"
+"POT-Creation-Date: 1999-01-22 01:55+0100\n"
 "PO-Revision-Date: 1998-01-22 17:20+0100\n"
 "Last-Translator: Andrea Rizzi <BILIBAO@ouverture.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -224,7 +224,7 @@ msgstr "C&omprimi"
 msgid "&Empty"
 msgstr "&Svuota"
 
-#: kmfilterdlg.cpp:147 kmmainwin.cpp:919
+#: kmfilterdlg.cpp:149 kmmainwin.cpp:919
 msgid "New"
 msgstr "Nuovo"
 
@@ -374,7 +374,7 @@ msgstr "Inizializzazione..."
 
 #
 #: kmfolderdia.cpp:38 kmmsgpartdlg.cpp:62 kmsettings.cpp:175
-#: kmsettings.cpp:870
+#: kmsettings.cpp:869
 msgid "Name:"
 msgstr "Nome:"
 
@@ -390,7 +390,7 @@ msgstr "Associato a"
 msgid "Unassociated Accounts"
 msgstr "Account non associati"
 
-#: kmfoldertree.cpp:47 kmsettings.cpp:529
+#: kmfoldertree.cpp:47 kmsettings.cpp:528
 msgid "Folders"
 msgstr "Cartelle"
 
@@ -414,75 +414,75 @@ msgstr "Risposte all'indirizzo:"
 msgid "Signature File:"
 msgstr "File \"firma\":"
 
-#: kmsettings.cpp:192 kpgp.cpp:821
+#: kmsettings.cpp:193 kpgp.cpp:821
 msgid "Identity"
 msgstr "Identità"
 
-#: kmsettings.cpp:211
+#: kmsettings.cpp:212
 msgid "Sending Mail"
 msgstr "Spedizione Posta"
 
-#: kmsettings.cpp:217
+#: kmsettings.cpp:218
 msgid "Sendmail"
 msgstr "Sendmail"
 
-#: kmsettings.cpp:222 kmsettings.cpp:877
+#: kmsettings.cpp:223 kmsettings.cpp:876
 msgid "Location:"
 msgstr "Locazione:"
 
-#: kmsettings.cpp:227
+#: kmsettings.cpp:228
 msgid "SMTP"
 msgstr "SMTP"
 
-#: kmsettings.cpp:232
+#: kmsettings.cpp:233
 msgid "Server:"
 msgstr "Server:"
 
-#: kmsettings.cpp:234 kmsettings.cpp:898
+#: kmsettings.cpp:235 kmsettings.cpp:897
 msgid "Port:"
 msgstr "Porta:"
 
-#: kmsettings.cpp:255
+#: kmsettings.cpp:257
 msgid "Incoming Mail"
 msgstr "Posta in Arrivo:"
 
-#: kmsettings.cpp:260
+#: kmsettings.cpp:262
 msgid "Accounts:   (add at least one account!)"
 msgstr "Account: (aggiungine almeno uno!)"
 
-#: kmcomposewin.cpp:140 kmsettings.cpp:265
+#: kmcomposewin.cpp:140 kmsettings.cpp:267
 msgid "Name"
 msgstr "Nome"
 
-#: kmcomposewin.cpp:143 kmsettings.cpp:266
+#: kmcomposewin.cpp:143 kmsettings.cpp:268
 msgid "Type"
 msgstr "Tipo"
 
-#: kmsettings.cpp:267
+#: kmsettings.cpp:269
 msgid "Folder"
 msgstr "Cartella"
 
-#: kmsettings.cpp:275
+#: kmsettings.cpp:277
 msgid "Add..."
 msgstr "Aggiungi..."
 
-#: kmsettings.cpp:278
+#: kmsettings.cpp:280
 msgid "Modify..."
 msgstr "Modifica"
 
-#: kmsettings.cpp:301
+#: kmsettings.cpp:300
 msgid "Network"
 msgstr "Rete"
 
-#: kmsettings.cpp:326
+#: kmsettings.cpp:325
 msgid "Message Body Font:"
 msgstr "Caratteri corpo del messaggio:"
 
-#: kmsettings.cpp:331
+#: kmsettings.cpp:330
 msgid "Message List Font:"
 msgstr "Caratteri della lista messaggi:"
 
-#: kmsettings.cpp:335
+#: kmsettings.cpp:334
 msgid ""
 "Changing fonts currently only occurs when a new\n"
 "window is opened or kmail is restarted"
@@ -490,11 +490,11 @@ msgstr ""
 "Il cambiamento di caratteri viene reso attivo\n"
 "all'apertura di una nuova finestra o al riavvio"
 
-#: kmsettings.cpp:377
+#: kmsettings.cpp:376
 msgid "Phrases"
 msgstr "Frasi"
 
-#: kmsettings.cpp:382
+#: kmsettings.cpp:381
 msgid ""
 "The following placeholders are supported in the reply phrases:\n"
 "%D=date, %S=subject, %F=sender, %%=percent sign"
@@ -502,169 +502,169 @@ msgstr ""
 "I seguenti identificatori sono ammessi nelle frasi di risposta \n"
 "%D=data, %S=oggetto, %F=mittente, %%=segno di percentuale"
 
-#: kmsettings.cpp:390
+#: kmsettings.cpp:389
 msgid "Reply to sender:"
 msgstr "Rispondi al mittente:"
 
-#: kmsettings.cpp:393
+#: kmsettings.cpp:392
 msgid "Reply to all:"
 msgstr "Rispondi a tutti:"
 
-#: kmsettings.cpp:396
+#: kmsettings.cpp:395
 msgid "Forward:"
 msgstr "Inoltra:"
 
-#: kmsettings.cpp:399
+#: kmsettings.cpp:398
 msgid "Indentation:"
 msgstr "Indentazione:"
 
-#: kmmessage.cpp:1340 kmsettings.cpp:411
+#: kmmessage.cpp:1340 kmsettings.cpp:410
 msgid "On %D, you wrote:"
 msgstr "On %D, you wrote:"
 
-#: kmmessage.cpp:1341 kmsettings.cpp:415
+#: kmmessage.cpp:1341 kmsettings.cpp:414
 msgid "On %D, %F wrote:"
 msgstr "On %D, %F wrote:"
 
-#: kmmessage.cpp:1342 kmsettings.cpp:419
+#: kmmessage.cpp:1342 kmsettings.cpp:418
 msgid "Forwarded Message"
 msgstr "Messaggio Inoltrato"
 
-#: kmsettings.cpp:430
+#: kmsettings.cpp:429
 msgid "Automatically append signature"
 msgstr "Firma automaticamente"
 
-#: kmsettings.cpp:436
+#: kmsettings.cpp:435
 msgid "Automatically sign messages using PGP"
 msgstr "Firma automaticamente con il PGP"
 
-#: kmsettings.cpp:441
+#: kmsettings.cpp:440
 msgid "Word wrap at column:"
 msgstr "A capo alla colonna:"
 
-#: kmsettings.cpp:451
+#: kmsettings.cpp:450
 msgid "Use monospaced font"
 msgstr "Usa font a spaziatura fissa"
 
-#: kmsettings.cpp:463
+#: kmsettings.cpp:462
 msgid "When sending mail"
 msgstr "Momento spedizione posta"
 
-#: kmsettings.cpp:466
+#: kmsettings.cpp:465
 msgid "Default sending:"
 msgstr "Spedizione di Default:"
 
-#: kmsettings.cpp:469
+#: kmsettings.cpp:468
 msgid "send now"
 msgstr "Subito"
 
-#: kmsettings.cpp:473
+#: kmsettings.cpp:472
 msgid "send later"
 msgstr "In seguito"
 
-#: kmsettings.cpp:478
+#: kmsettings.cpp:477
 msgid "Send messages:"
 msgstr "Spedisci Messaggi:"
 
-#: kmsettings.cpp:481
+#: kmsettings.cpp:480
 msgid "Allow 8-bit"
 msgstr "Autorizza 8-bit"
 
-#: kmsettings.cpp:486
+#: kmsettings.cpp:485
 msgid "MIME Compilant (Quoted Printable)"
 msgstr "MIME Compatibile (Quoted Printable)"
 
-#: kmsettings.cpp:512
+#: kmsettings.cpp:511
 msgid "Composer"
 msgstr "Compositore messaggi"
 
-#: kmsettings.cpp:533
+#: kmsettings.cpp:532
 msgid "empty trash on exit"
 msgstr "svuota cestino in uscita"
 
-#: kmsettings.cpp:537
+#: kmsettings.cpp:536
 msgid "Send Mail in outbox Folder on Check"
 msgstr "Spedisci posta in uscita nel controllo nuova posta"
 
-#: kmsettings.cpp:552
+#: kmsettings.cpp:551
 msgid "Misc"
 msgstr "Varie"
 
-#: kmsettings.cpp:559
+#: kmsettings.cpp:558
 msgid "PGP"
 msgstr "PGP"
 
-#: kmsettings.cpp:582
+#: kmsettings.cpp:581
 msgid "Message Body Font"
 msgstr "Caratteri corpo del messaggio"
 
-#: kmsettings.cpp:596
+#: kmsettings.cpp:595
 msgid "Message List Font"
 msgstr "Caratteri della lista messaggi"
 
-#: kmsettings.cpp:648
+#: kmsettings.cpp:647
 msgid "Select Account"
 msgstr "Scelta Account"
 
-#: kmaccount.cpp:76 kmfilterdlg.cpp:458 kmsettings.cpp:667
+#: kmaccount.cpp:76 kmfilterdlg.cpp:472 kmsettings.cpp:666
 msgid "Unnamed"
 msgstr "Senza Nome"
 
-#: kmsettings.cpp:686
+#: kmsettings.cpp:685
 msgid "Choose Sendmail Location"
 msgstr "Scelta Locazione Sendmail"
 
-#: kmcomposewin.cpp:1621 kmsettings.cpp:695
+#: kmcomposewin.cpp:1621 kmsettings.cpp:694
 msgid "Choose Signature File"
 msgstr "Scelta File firma"
 
 #
-#: kmsettings.cpp:862
+#: kmsettings.cpp:861
 msgid "Type:"
 msgstr "Tipo:"
 
-#: kmsettings.cpp:875
+#: kmsettings.cpp:874
 msgid "Local Account"
 msgstr "Account locale"
 
-#: kmsettings.cpp:884
+#: kmsettings.cpp:883
 msgid "Pop Account"
 msgstr "Account POP"
 
-#: kmsettings.cpp:886
+#: kmsettings.cpp:885
 msgid "Login:"
 msgstr "Nome utente (login):"
 
-#: kmacctpop.cpp:468 kmsettings.cpp:889
+#: kmacctpop.cpp:468 kmsettings.cpp:888
 msgid "Password:"
 msgstr "Password:"
 
-#: kmsettings.cpp:893
+#: kmsettings.cpp:892
 msgid "Host:"
 msgstr "Host:"
 
-#: kmsettings.cpp:901
+#: kmsettings.cpp:900
 msgid "Delete mail from server"
 msgstr "Elimina posta dal server"
 
 #
-#: kmsettings.cpp:906
+#: kmsettings.cpp:905
 msgid "Retrieve all mail from server"
 msgstr "Prendi tutta la posta dal server"
 
-#: kmsettings.cpp:918
+#: kmsettings.cpp:917
 msgid "Enable interval Mail checking"
 msgstr "Abilita controllo posta a tempo"
 
-#: kmsettings.cpp:928
+#: kmsettings.cpp:927
 msgid "Store new mail in account:"
 msgstr "Salva la nuova posta nell'account:"
 
-#: kmsettings.cpp:936
+#: kmsettings.cpp:935
 msgid "<none>"
 msgstr "<nessuno>"
 
-#: kmsettings.cpp:983
+#: kmsettings.cpp:982
 msgid "Choose Location"
 msgstr "Scelta locazione"
 
@@ -672,7 +672,7 @@ msgstr "Scelta locazione"
 msgid "Receipt: "
 msgstr "Destinatario:"
 
-#: kmaccount.cpp:148
+#: kmaccount.cpp:149
 msgid "Failed to add message:"
 msgstr "Impossibile aggiungere messaggio:"
 
@@ -710,41 +710,41 @@ msgstr "Sconosciuto"
 msgid "No Subject"
 msgstr "Senza  Oggetto"
 
-#: kmheaders.cpp:327
+#: kmheaders.cpp:328
 msgid "order of arrival"
 msgstr "ordine di arrivo"
 
-#: kmheaders.cpp:336
+#: kmheaders.cpp:337
 msgid "subject"
 msgstr "oggetto"
 
-#: kmheaders.cpp:337
+#: kmheaders.cpp:338
 msgid "date"
 msgstr "data"
 
-#: kmheaders.cpp:338
+#: kmheaders.cpp:339
 msgid "sender"
 msgstr "mittente"
 
-#: kmheaders.cpp:339
+#: kmheaders.cpp:340
 msgid "status"
 msgstr "stato"
 
-#: kmheaders.cpp:341
+#: kmheaders.cpp:342
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr "Ordini i messaggi decrescenti per %s"
 
-#: kmheaders.cpp:343
+#: kmheaders.cpp:344
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr "Ordino i messaggi crescenti per %s"
 
-#: kmheaders.cpp:439
+#: kmheaders.cpp:440
 msgid "Message(s) saved."
 msgstr "Messaggio/i salvato/i"
 
-#: kmheaders.cpp:441
+#: kmheaders.cpp:442
 msgid "Failed to save message(s)."
 msgstr "Impossibile salvare i(l) messaggio/i"
 
@@ -1439,63 +1439,63 @@ msgstr ""
 msgid "Filter Rules"
 msgstr "Regole Filtro"
 
-#: kmfilterdlg.cpp:141
+#: kmfilterdlg.cpp:143
 msgid "Up"
 msgstr "Su"
 
-#: kmfilterdlg.cpp:144
+#: kmfilterdlg.cpp:146
 msgid "Down"
 msgstr "Giù"
 
-#: kmfilterdlg.cpp:530
+#: kmfilterdlg.cpp:544
 msgid "<nothing>"
 msgstr "<niente>"
 
-#: kmfilterdlg.cpp:541
+#: kmfilterdlg.cpp:555
 msgid "ignore"
 msgstr "ignora"
 
-#: kmfilterdlg.cpp:542
+#: kmfilterdlg.cpp:556
 msgid "and"
 msgstr "e"
 
-#: kmfilterdlg.cpp:543
+#: kmfilterdlg.cpp:557
 msgid "unless"
 msgstr "non minore"
 
-#: kmfilterdlg.cpp:544
+#: kmfilterdlg.cpp:558
 msgid "or"
 msgstr "o"
 
-#: kmfilterdlg.cpp:550
+#: kmfilterdlg.cpp:564
 msgid "equals"
 msgstr "uguale"
 
-#: kmfilterdlg.cpp:551
+#: kmfilterdlg.cpp:565
 msgid "not equal"
 msgstr "diverso"
 
-#: kmfilterdlg.cpp:552
+#: kmfilterdlg.cpp:566
 msgid "contains"
 msgstr "contenente"
 
-#: kmfilterdlg.cpp:553
+#: kmfilterdlg.cpp:567
 msgid "doesn't contain"
 msgstr "non contenente"
 
-#: kmfilterdlg.cpp:554
+#: kmfilterdlg.cpp:568
 msgid "regular expression"
 msgstr "espressione regolare"
 
-#: kmfilterdlg.cpp:561
+#: kmfilterdlg.cpp:575
 msgid "<message>"
 msgstr "<messaggio>"
 
-#: kmfilterdlg.cpp:562
+#: kmfilterdlg.cpp:576
 msgid "<body>"
 msgstr "<corpo>"
 
-#: kmfilterdlg.cpp:563
+#: kmfilterdlg.cpp:577
 msgid "<any header>"
 msgstr "<intestazione>"
 
