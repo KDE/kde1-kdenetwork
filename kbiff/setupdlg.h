@@ -14,13 +14,7 @@
 #include <config.h>
 #endif //HAVE_CONFIG_H
 
-#include <qglobal.h> // need QT_VERSION
-
-#if QT_VERSION < 140
-#include <ktreeview.h>
-#else
 #include <qlistview.h>
-#endif // QT_VERSION < 140
 
 #include <qwidget.h>
 #include <qdialog.h>

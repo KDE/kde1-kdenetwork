@@ -10,11 +10,10 @@ DEFS = @DEFS@ -I. -I$(srcdir) -I.. -DDO_TRACE
 # you can add here more. This one gets installed 
 bin_PROGRAMS = 	kbiff
 
-kbiff_METASOURCES =  kbiff.moc.cpp kbiffmonitor.moc.cpp notify.moc.cpp setupdlg.moc.cpp 
+kbiff_METASOURCES =  USE_AUTOMOC
 
 # Which sources should be compiled for kbiff.
-#kbiff_SOURCES	= setupdlg.cpp kbiff.cpp main.cpp kbiffmonitor.cpp notify.cpp Trace.cpp ktreeview.cpp convert.cpp kwraplabel.cpp $(kbiff_METASOURCES)
-kbiff_SOURCES	= setupdlg.cpp kbiff.cpp main.cpp kbiffmonitor.cpp notify.cpp Trace.cpp ktreeview.cpp $(kbiff_METASOURCES)
+kbiff_SOURCES	= setupdlg.cpp kbiff.cpp main.cpp kbiffmonitor.cpp notify.cpp Trace.cpp $(kbiff_METASOURCES)
 
 # the library search path
 kbiff_LDFLAGS = $(all_libraries) $(KDE_RPATH)
@@ -24,8 +23,7 @@ kbiff_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 kbiff_LDADD   = -lkfile -lkfm -lkdeui -lkdecore -lmediatool -lqt -lX11 -lXext $(LIBSOCKET)
 
 # this option you can leave out. Just, if you use "make dist", you need it
-#noinst_HEADERS = setupdlg.h kbiff.h kbiffmonitor.h notify.h Trace.h ktreeview.h convert.h kwraplabel.h
-noinst_HEADERS = setupdlg.h kbiff.h kbiffmonitor.h notify.h Trace.h ktreeview.h
+noinst_HEADERS = setupdlg.h kbiff.h kbiffmonitor.h notify.h Trace.h
 
 # if you "make distclean", this files get removed. If you want to remove
 # them while "make clean", use CLEANFILES
@@ -53,18 +51,3 @@ uninstall-local:
 	-rm -f $(kde_icondir)/kbiff.xpm
 	-rm -f $(kde_minidir)/kbiff.xpm
 
-ktreeview.o : ktreeview.moc
-ktreeview.moc : ktreeview.h
-	$(MOC) ktreeview.h -o ktreeview.moc
-
-kbiff.moc.cpp : kbiff.h
-	$(MOC) kbiff.h -o kbiff.moc.cpp
-	
-kbiffmonitor.moc.cpp : kbiffmonitor.h
-	$(MOC) kbiffmonitor.h -o kbiffmonitor.moc.cpp
-
-notify.moc.cpp : notify.h
-	$(MOC) notify.h -o notify.moc.cpp
-
-setupdlg.moc.cpp : setupdlg.h
-	$(MOC) setupdlg.h -o setupdlg.moc.cpp
