@@ -43,9 +43,9 @@ BUILTSOURCES =	kfinger.moc finger.moc
 # them while "make clean", use CLEANFILES
 DISTCLEANFILES = $(BUILTSOURCES)
 
-# make messages.po. Move this one to ../po/ and "make merge" in po
+# make ../po/kfinger.pot. do make merge in ../po after that
 messages:
-	$(XGETTEXT) -C -ktranslate $(finger_SOURCES)
+	$(XGETTEXT) -C -ktranslate -ki18n -x $(includedir)/kde.pot $(kfinger_SOURCES) && mv messages.po ../kfinger.pot
 
 # just install datas here. Use install-exec-local for scripts and etc.
 # the binary itself is already installed from automake
