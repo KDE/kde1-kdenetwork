@@ -27,6 +27,7 @@ KDEINC = $(prefix)/include
 BINDIR = $(prefix)/bin
 LIBDIR = $(prefix)/lib
 PICSDIR = $(LIBDIR)/pics/krn
+APPSDIR = $(prefix)/apps
 
 ########### File Formats ###########
 
@@ -182,8 +183,11 @@ distclean: clean
 	rm -f Makefile
 
 install: all
+	$(INSTALL_DATA) krn.xpm $(LIBDIR)/pics
 	$(INSTALL_DIR) $(BINDIR)
 	$(INSTALL) $(TARGET) $(BINDIR)
+	$(INSTALL_DIR) $(APPSDIR)/Applications
+	$(INSTALL_DATA) Krn.kdelnk $(APPSDIR)/Applications
 	(cd pics && $(MAKE) install)
 
 uninstall:
