@@ -178,7 +178,7 @@ int KMFolder::create(void)
   assert(mOpenCount == 0);
 
   old_umask = umask(077);
-  mStream = fopen(location(), "w");
+  mStream = fopen(location(), "w+"); //sven; open RW
   umask(old_umask);
 
   if (!mStream) return errno;
@@ -186,7 +186,7 @@ int KMFolder::create(void)
   if (!path().isEmpty())
   {
     old_umask = umask(077);
-    mIndexStream = fopen(indexLocation(), "w");
+    mIndexStream = fopen(indexLocation(), "w+"); //sven; open RW
     umask(old_umask);
 
     if (!mIndexStream) return errno;
