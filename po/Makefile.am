@@ -1,7 +1,7 @@
 # $Id$
 
 SUBDIRS = br da de pt fr fi hu es hr pl cs it ro sk el no nl \
-	pt_BR ca zh_CN.GB2312 eo sv mk ko ru tr he is et hs
+	pt_BR ca zh_CN.GB2312 eo sv mk ko ru tr he is et hs ja
 
 # this is a general list for merging!
 APPS = kbiff kcmktalkd kfinger kmail knu kppp kppplogview krn ksirc \

@@ -1,0 +1,244 @@
+# KTranslator Generated File
+
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: KTranslator 0.3.1\n"
+"POT-Creation-Date: 1998-04-27 19:21:33+0200\n"
+"PO-Revision-Date: Fri Jan 29 1999 10:07:54+0900\n"
+"Last-Translator: 井村 竜一郎 <imura@cs.titech.ac.jp>\n"
+"Language-Team: 日本語 <kde-jp@albert.nikkeibp.co.jp>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=euc-jp\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KTranslator v 0.4.0"
+
+#: kbiff.cpp:461
+msgid "&UnDock"
+msgstr "パネルから出す (&U)"
+
+#: kbiff.cpp:463
+msgid "&Dock"
+msgstr "パネルに格納 (&D)"
+
+#: kbiff.cpp:464
+msgid "&Setup..."
+msgstr "セットアップ (&S)"
+
+#: kbiff.cpp:466
+msgid "&Help..."
+msgstr "ヘルプ (&H)"
+
+#: kbiff.cpp:470
+msgid "&Check Mail Now"
+msgstr "直ちにメールをチェックする (&C)"
+
+#: kbiff.cpp:472
+msgid "&Read Mail Now"
+msgstr "直ちにメールを読む (&R)"
+
+#: kbiff.cpp:478
+msgid "&Stop"
+msgstr "停止 (&S)"
+
+#: notify.cpp:28 notify.cpp:45
+msgid "You have new mail!"
+msgstr "あなたに新しいメールがあります！"
+
+#: notify.cpp:53
+#, c-format
+msgid "New Messages: %d"
+msgstr "新しいメッセージ：%d件"
+
+#: notify.cpp:58
+#, c-format
+msgid "Mailbox: %s"
+msgstr "メールボックス：%s"
+
+#: setupdlg.cpp:79
+msgid "KBiff Setup"
+msgstr "KBiff セットアップ"
+
+#: setupdlg.cpp:82
+msgid "Profile:"
+msgstr "プロフィール："
+
+#: setupdlg.cpp:98
+msgid "&New..."
+msgstr "新規 (&N)"
+
+#: setupdlg.cpp:105
+msgid "&Rename..."
+msgstr "名称変更 (&R)"
+
+#: setupdlg.cpp:139
+msgid "General"
+msgstr "一般"
+
+#: setupdlg.cpp:140
+msgid "New Mail"
+msgstr "新しいメール"
+
+#: setupdlg.cpp:141
+msgid "Mailbox"
+msgstr "メールボックス"
+
+#: setupdlg.cpp:356
+msgid "New Profile"
+msgstr "新しいプロフィール"
+
+#: setupdlg.cpp:388
+#, c-format
+msgid "Rename Profile: %s"
+msgstr "プロフィールの名称変更：%s"
+
+#: setupdlg.cpp:428
+#, c-format
+msgid "Delete Profile: %s"
+msgstr "プロフィールの削除：%s"
+
+#: setupdlg.cpp:429
+msgid "Are you sure you wish to delete this profile?\n"
+msgstr "本当にこのプロフィールを消す気ですか？\n"
+
+#: setupdlg.cpp:489
+msgid "Poll (sec):"
+msgstr "調査間隔 (秒)"
+
+#: setupdlg.cpp:494
+msgid "Mail client:"
+msgstr "チェックコマンド"
+
+#: setupdlg.cpp:507
+msgid "Dock in panel"
+msgstr "パネルに格納"
+
+#: setupdlg.cpp:512
+msgid "Use session management"
+msgstr "KDE セッションマネジメントを用いる"
+
+#: setupdlg.cpp:517
+msgid "Icons:"
+msgstr "アイコン："
+
+#: setupdlg.cpp:535
+msgid "No Mail:"
+msgstr "メールなし："
+
+#: setupdlg.cpp:544
+msgid "Old Mail"
+msgstr "古いメール"
+
+#: setupdlg.cpp:554
+msgid "New Mail:"
+msgstr "新規メール："
+
+#: setupdlg.cpp:691
+msgid "Run Command"
+msgstr "コマンド実行"
+
+#: setupdlg.cpp:698 setupdlg.cpp:711 setupdlg.cpp:1051
+msgid "Browse"
+msgstr "参照"
+
+#: setupdlg.cpp:704
+msgid "Play Sound"
+msgstr "音楽再生"
+
+#: setupdlg.cpp:717
+msgid "System Beep"
+msgstr "ビープ音"
+
+#: setupdlg.cpp:722
+msgid "Notify"
+msgstr "通知"
+
+#: setupdlg.cpp:853
+msgid "Advanced Options"
+msgstr "その他のオプション"
+
+#: setupdlg.cpp:857
+msgid "Mailbox URL:"
+msgstr "メールボックスのURL："
+
+#: setupdlg.cpp:861
+msgid "Port:"
+msgstr "ポート："
+
+#: setupdlg.cpp:865
+msgid "PREAUTH"
+msgstr "PREAUTH"
+
+#: setupdlg.cpp:872
+msgid "Keep Alive"
+msgstr "サーバにセッションを残す"
+
+#: setupdlg.cpp:998 setupdlg.cpp:1027
+msgid "Mailbox:"
+msgstr "メールボックス："
+
+#: setupdlg.cpp:1011 setupdlg.cpp:1321
+msgid "New Mailbox"
+msgstr "新しいメールボックス"
+
+#: setupdlg.cpp:1018
+msgid "Delete Mailbox"
+msgstr "メールボックスの削除"
+
+#: setupdlg.cpp:1024
+msgid "Protocol:"
+msgstr "プロトコル："
+
+#: setupdlg.cpp:1030
+msgid "Server:"
+msgstr "サーバー："
+
+#: setupdlg.cpp:1033
+msgid "User:"
+msgstr "ユーザー："
+
+#: setupdlg.cpp:1036
+msgid "Password:"
+msgstr "パスワード："
+
+#: setupdlg.cpp:1068
+msgid "Store password"
+msgstr "パスワードを保存する"
+
+#: setupdlg.cpp:1071
+msgid "Advanced"
+msgstr "その他"
+
+#: setupdlg.cpp:1508
+msgid "KBiff"
+msgstr "KBiff"
+
+#: setupdlg.cpp:1530
+#, c-format
+msgid ""
+"Version %s\n"
+"\n"
+"Copyright (C) 1998\n"
+"Kurt Granroth"
+msgstr ""
+"Version %s\n"
+"\n"
+"Copyright (C) 1998\n"
+"Kurt Granroth"
+
+#: setupdlg.cpp:1579
+msgid "New Name:"
+msgstr "新しい名前："
+
+#: setupdlg.cpp:1605
+msgid "New Name"
+msgstr "新しい名前"

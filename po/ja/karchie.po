@@ -1,0 +1,598 @@
+# KTranslator Generated File
+
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 1999-03-05 02:18+0100\n"
+"PO-Revision-Date: Sun May 9 1999 14:15:38+0900\n"
+"Last-Translator: 井村 竜一郎 <imura@cs.titech.ac.jp>\n"
+"Language-Team: 日本語 <kde-jp@albert.nikkeibp.co.jp>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=euc-jp\n"
+"Content-Transfer-Encoding: 8bit"
+"X-Generator: KTranslator v 0.4.0"
+
+#: KAMenu.cpp:75
+msgid "O&pen in editor"
+msgstr "エディタで開く(&O)"
+
+#: KAMenu.cpp:76 KAView.cpp:154
+msgid "&Open Dir"
+msgstr "ディレクトリを開く(&O)"
+
+#: KAMenu.cpp:77 KAView.cpp:155
+msgid "&Download..."
+msgstr "ダウンロード(&D)"
+
+#: KAMenu.cpp:80
+msgid "&Load List..."
+msgstr "リストの読み込み(&L)"
+
+#: KAMenu.cpp:81
+msgid "&Save List..."
+msgstr "リストのセーブ(&S)"
+
+#: KAMenu.cpp:82
+msgid "Expor&t List..."
+msgstr "リストをASCIIでセーブ(&T)"
+
+#: KAMenu.cpp:84
+msgid "&Exit"
+msgstr "終了(&E)"
+
+#: KAMenu.cpp:100
+msgid "&Exact"
+msgstr "精密(&E)"
+
+#: KAMenu.cpp:101
+msgid "&Substring"
+msgstr "大小文字の違い無視(&S)"
+
+#: KAMenu.cpp:102
+msgid "Substring &case insensitive"
+msgstr "無反応なら大小文字無視(&C)"
+
+#: KAMenu.cpp:103
+msgid "&Regular expression"
+msgstr "正規表現(&R)"
+
+#: KAMenu.cpp:104 KASettings.cpp:422
+msgid "Exact, then substring"
+msgstr "精密、それから大小文字無視"
+
+#: KAMenu.cpp:105
+msgid "Exact, then substring case ins."
+msgstr "精密、それから無反応なら大小文字無視"
+
+#: KAMenu.cpp:106 KASettings.cpp:424
+msgid "Exact, then regular expression"
+msgstr "精密、それから正規表現"
+
+#: KAMenu.cpp:114
+msgid "n&ormal"
+msgstr "普通(&O)"
+
+#: KAMenu.cpp:115
+msgid "&nice"
+msgstr "よい(&N)"
+
+#: KAMenu.cpp:116
+msgid "&very nice"
+msgstr "とてもよい(&V)"
+
+#: KAMenu.cpp:117
+msgid "&even more nice"
+msgstr "さらによい(&E)"
+
+#: KAMenu.cpp:118
+msgid "n&icest"
+msgstr "いちばんよい(&I)"
+
+#: KAMenu.cpp:125
+msgid "Show &File discription"
+msgstr "ファイルについて表示(&F)"
+
+#: KAMenu.cpp:128
+msgid "Archie&server"
+msgstr "archie サーバ(&S)"
+
+#: KAMenu.cpp:129
+msgid "Search&mode"
+msgstr "検索モード(&M)"
+
+#: KAMenu.cpp:130
+msgid "&Nicelevel"
+msgstr "ナイスレベル(&N)"
+
+#: KAMenu.cpp:132
+msgid "&All..."
+msgstr "すべて...(&A)"
+
+#: KAMenu.cpp:139
+msgid "for &Filename"
+msgstr "ファイル名で(&F)"
+
+#: KAMenu.cpp:140
+msgid "for &Path/Location"
+msgstr "パス/ロケーションで(&P)"
+
+#: KAMenu.cpp:141
+msgid "for &Hostname"
+msgstr "ホストネームで(&H)"
+
+#: KAMenu.cpp:143
+msgid "&STOP"
+msgstr "停止(&S)"
+
+#: KAMenu.cpp:160
+msgid "by &Hostname"
+msgstr "ホストネームで(&H)"
+
+#: KAMenu.cpp:161
+msgid "by &Domain"
+msgstr "ドメインで(&D)"
+
+#: KAMenu.cpp:162
+msgid "by D&ate"
+msgstr "日付で(&A)"
+
+#: KAMenu.cpp:163
+msgid "by &Filesize"
+msgstr "サイズで(&F)"
+
+#: KAMenu.cpp:169
+msgid "KArchie ver. "
+msgstr ""
+
+#: KAMenu.cpp:171
+msgid ""
+"\n"
+"\n"
+"by Jvrg Habenicht <j.habenicht@europemail.com>\n"
+"\n"
+"based on the work of:\n"
+"  - archie prospero client by\n"
+"      Clifford Neuman and\n"
+"      Brendan Kehoe (brendan@cygnus.com)\n"
+"  - and xarchie by\n"
+"      George Ferguson (ferguson@cs.rochester.edu)\n"
+"(See README files and copyright.h).\n"
+"My own code is based on the GPL"
+msgstr ""
+
+#: KAMenu.cpp:184
+msgid "&Settings"
+msgstr "設定(&S)"
+
+#: KAMenu.cpp:185
+msgid "&Query"
+msgstr "検索(&Q)"
+
+#: KAMenu.cpp:186
+msgid "S&ort"
+msgstr "ソート(&O)"
+
+#: KAQuery.cpp:180
+msgid "Query setup"
+msgstr "検索設定"
+
+#: KAQuery.cpp:289
+msgid "Query aborted"
+msgstr "検索中止"
+
+#: KAQuery.cpp:296 KArchie.cpp:793
+msgid "Success"
+msgstr "成功"
+
+#: KAQuery.cpp:297
+msgid "Port unknown"
+msgstr "未知のポート"
+
+#: KAQuery.cpp:298
+msgid "Can't open local UDP port"
+msgstr "ローカルなUDPポートを開けない"
+
+#: KAQuery.cpp:299
+msgid "Can't resolve hostname"
+msgstr "ホストネームを解決できない"
+
+#: KAQuery.cpp:300
+msgid "Didn't send entire message"
+msgstr "完全なメッセージを送信しなかった"
+
+#: KAQuery.cpp:301
+msgid "Timed out"
+msgstr "時間切れ"
+
+#: KAQuery.cpp:302
+msgid "Recvfrom failed"
+msgstr "Recvfrom 失敗"
+
+#: KAQuery.cpp:303
+msgid "Reply: sendto failed"
+msgstr "返答: sendto 失敗"
+
+#: KAQuery.cpp:304
+msgid "Link exists with same name"
+msgstr "同じ名前でリンクが存在する"
+
+#: KAQuery.cpp:306
+msgid "Link already exists"
+msgstr "リンクは既に存在する"
+
+#: KAQuery.cpp:307
+msgid "Replacing existing link"
+msgstr "存在するリンクを入れ換えている"
+
+#: KAQuery.cpp:308
+msgid "Prv entry not in dir->ulinks"
+msgstr "Prv エントリが dir->ulinks にない"
+
+#: KAQuery.cpp:309
+msgid "Temporary not found"
+msgstr "テンポラリーが見つからない"
+
+#: KAQuery.cpp:310
+msgid "Namespace not closed w/ object::"
+msgstr "ネームスペースが closed w/ オブジェクトでない::"
+
+#: KAQuery.cpp:311
+msgid "No alias for namespace NS#:"
+msgstr "ネームスペースNS#のエイリアスはない:"
+
+#: KAQuery.cpp:312
+msgid "Specified namespace not found"
+msgstr "指定されたネームスペースが見つからない"
+
+#: KAQuery.cpp:313
+msgid "File access method not supported"
+msgstr "ファイルのアクセス方法がサポートされていない"
+
+#: KAQuery.cpp:314
+msgid "Delete cached copy on close"
+msgstr "終了時にキャッシュしたコピーを消去"
+
+#: KAQuery.cpp:315
+msgid "Unable to retrieve file"
+msgstr "ファイルを回収できない"
+
+#: KAQuery.cpp:317
+msgid "Directory already exists"
+msgstr "ディレクトリが既にあります"
+
+#: KAQuery.cpp:319 KAQuery.cpp:337
+msgid "Link with name already exists"
+msgstr "名前を持ったリンクが既にあります"
+
+#: KAQuery.cpp:320
+msgid "Not a virtual system"
+msgstr "バーチャルシステムではありません"
+
+#: KAQuery.cpp:321
+msgid "Can't find directory"
+msgstr "ディレクトリがみつからない"
+
+#: KAQuery.cpp:322
+msgid "Not a directory name"
+msgstr "ディレクトリの名前ではない"
+
+#: KAQuery.cpp:323
+msgid "Object not found"
+msgstr "対象が見つからない"
+
+#: KAQuery.cpp:324
+msgid "Object has moved"
+msgstr "対象は移動しました"
+
+#: KAQuery.cpp:325
+msgid "File not found"
+msgstr "ファイルがみつかりません"
+
+#: KAQuery.cpp:326
+msgid "Directory in path not found"
+msgstr "パスが見つかりません"
+
+#: KAQuery.cpp:327
+msgid "Symbolic links nested too deep"
+msgstr "シンボリックリンクが入れ子しすぎています"
+
+#: KAQuery.cpp:328
+msgid "Can't read environment"
+msgstr "環境を読み込めません"
+
+#: KAQuery.cpp:329
+msgid "Can't traverse an external file"
+msgstr "外部ファイルを読めません"
+
+#: KAQuery.cpp:330
+msgid "Exceeded max forward depth"
+msgstr "最大進行深度を越えました"
+
+#: KAQuery.cpp:331
+msgid "Authentication required"
+msgstr "認証が要求されています"
+
+#: KAQuery.cpp:332
+msgid "Not authorized"
+msgstr "許可されていません"
+
+#: KAQuery.cpp:333
+msgid "Not found"
+msgstr "見つかりません"
+
+#: KAQuery.cpp:334
+msgid "Bad version number"
+msgstr "よくないバージョンナンバーです"
+
+#: KAQuery.cpp:335
+msgid "Not a directory"
+msgstr "ディレクトリではありません"
+
+#: KAQuery.cpp:336
+msgid "Identical link already exists"
+msgstr "同じリンクが既に存在します"
+
+#: KAQuery.cpp:338
+msgid "Command not implemented on server"
+msgstr "サーバでコマンドが実行されませんでした"
+
+#: KAQuery.cpp:339
+msgid "Bad format for response"
+msgstr "返答にしてはよくないフォーマットです"
+
+#: KAQuery.cpp:340
+msgid "Protocol error"
+msgstr "プロトコルエラー"
+
+#: KAQuery.cpp:341
+msgid "Unspecified server failure"
+msgstr "不明瞭なサーバの失敗"
+
+#: KAQuery.cpp:343
+msgid "Generic Failure"
+msgstr "一般的な失敗"
+
+#: KAQuery.cpp:347
+msgid "No warning"
+msgstr "警告なし"
+
+#: KAQuery.cpp:348
+msgid "You are using an old version of this program"
+msgstr "あなたはこのプログラムの古いバージョンを使っています"
+
+#: KAQuery.cpp:349
+msgid "From server: "
+msgstr "サーバより:"
+
+#: KAQuery.cpp:351
+msgid "Unrecognized line in response from server"
+msgstr "サーバからの返答で識別できない要素"
+
+#: KAQuery.cpp:409
+msgid "Query running"
+msgstr "検索中"
+
+#: KAQuery.cpp:453
+msgid "Query finished"
+msgstr "検索終了"
+
+#: KASettings.cpp:59
+msgid "&Host"
+msgstr "ホスト(&H)"
+
+#: KASettings.cpp:72
+msgid "&Timeout (seconds)"
+msgstr "時間制限(&T) (秒)"
+
+#: KASettings.cpp:83
+msgid "Maximal &retries"
+msgstr "最大リトライ回数(&R)"
+
+#: KASettings.cpp:284
+msgid "&Nice Level"
+msgstr "ナイスレベル(&N)"
+
+#: KASettings.cpp:291
+msgid "max. &Hits"
+msgstr "最大ヒット数(&H)"
+
+#: KASettings.cpp:418
+msgid "Exact"
+msgstr "精密"
+
+#: KASettings.cpp:419
+msgid "Substring"
+msgstr "大小文字違い無視"
+
+#: KASettings.cpp:420
+msgid "Substring case insensitive"
+msgstr "無反応なら大小文字違い無視"
+
+#: KASettings.cpp:421
+msgid "Regular expression"
+msgstr "正規表現"
+
+#: KASettings.cpp:423
+msgid "Exact, then substring case insensitive"
+msgstr "精密、それから無反応なら大小文字無視"
+
+#: KASettings.cpp:427
+msgid "Normal"
+msgstr "普通"
+
+#: KASettings.cpp:428
+msgid "Nice"
+msgstr "よい"
+
+#: KASettings.cpp:429
+msgid "Very nice"
+msgstr "とてもよい"
+
+#: KASettings.cpp:430
+msgid "Even more nice"
+msgstr "さらによい"
+
+#: KASettings.cpp:431
+msgid "Nicest"
+msgstr "いちばんよい"
+
+#: KASettings.cpp:525
+msgid "KArchie Settings"
+msgstr "KArchie 設定"
+
+#: KASettings.cpp:536
+msgid "Archie server settings"
+msgstr "archie サーバ設定"
+
+#: KASettings.cpp:543
+msgid "Search init"
+msgstr "検索初期化"
+
+#: KASettings.cpp:567
+msgid "Reset"
+msgstr "リセット"
+
+#: KAStatusBar.cpp:50
+msgid "    0 hits"
+msgstr "    0 ヒット"
+
+#: KAStatusBar.cpp:51
+msgid "    0. try"
+msgstr "    0. トライ"
+
+#: KAStatusBar.cpp:52
+msgid "Host: none                               "
+msgstr "ホスト: なし"
+
+#: KAStatusBar.cpp:53
+msgid "Status: ready                        "
+msgstr "状態: 準備完了"
+
+#: KAStatusBar.cpp:81
+#, c-format
+msgid "Status: %s"
+msgstr "状態: %s"
+
+#: KAStatusBar.cpp:91
+#, c-format
+msgid "Hosts: %s"
+msgstr "ホスト: %s"
+
+#: KAStatusBar.cpp:101
+#, c-format
+msgid "%d hits"
+msgstr "%d ヒット"
+
+#: KAStatusBar.cpp:111
+#, c-format
+msgid "Progress: %d"
+msgstr "経過: %d"
+
+#: KAStatusBar.cpp:121
+#, c-format
+msgid "%d try."
+msgstr "%d トライ."
+
+#: KAView.cpp:66
+msgid "Searchstring, press <ENTER> to start search"
+msgstr "検索語句、<ENTER>で検索をはじめます"
+
+#: KAView.cpp:68
+msgid "Search &Term"
+msgstr "検索語句(&T)"
+
+#: KAView.cpp:134
+msgid "Host"
+msgstr "ホスト"
+
+#: KAView.cpp:135
+msgid "Path"
+msgstr "パス"
+
+#: KAView.cpp:268
+msgid "Host:"
+msgstr "ホスト:"
+
+#: KAView.cpp:270
+msgid "Path:"
+msgstr "パス:"
+
+#: KAView.cpp:272
+msgid "File:"
+msgstr "ファイル:"
+
+#: KAView.cpp:274
+msgid "Size:"
+msgstr "サイズ:"
+
+#: KAView.cpp:276
+msgid "Mode:"
+msgstr "モード:"
+
+#: KAView.cpp:278
+msgid "Date:"
+msgstr "日付:"
+
+#: KArchie.cpp:441 KArchie.cpp:483
+#, c-format
+msgid ""
+"Couldn't open \n"
+"\"%s\""
+msgstr ""
+"このファイルを開けません \n"
+"\"%s\""
+
+#: KArchie.cpp:446 KArchie.cpp:488
+msgid "KArchie: bad file"
+msgstr "KArchi: ファイルの間違い"
+
+#: KArchie.cpp:720
+msgid "Malformed url"
+msgstr "変なURL"
+
+#: KArchie.cpp:724
+msgid "Maybe bad list entry, please select an other file"
+msgstr "おそらくリストエントリが間違っています。違うファイルを選んでください。"
+
+#: KArchie.cpp:725
+msgid "KArchie: bad URL"
+msgstr "KArchie: URLの間違い"
+
+#: KArchie.cpp:744
+msgid "KArchie: Wrong fileselection"
+msgstr "KArchie: 誤ったファイル選択"
+
+#: KArchie.cpp:745
+msgid "The selected file is not writeable"
+msgstr "選択したファイルは書き込み不可です"
+
+#: KArchie.cpp:752
+msgid "KArchie: Overwrite file ?"
+msgstr "KArchi: 上書きしますか？"
+
+#: KArchie.cpp:753
+msgid ""
+"The selected file is not write protected\n"
+"Should it be overwritten ?"
+msgstr ""
+"選択したファイルは書き込み許可が与え\n"
+"られていません。上書きしますか？"
+
+#: KArchie.cpp:766
+msgid "KArchie: bad selection"
+msgstr "KArchie: 選択の間違い"
+
+#: KArchie.cpp:767
+msgid ""
+"No file selected !\n"
+"Please select a file in the list of queryresults\n"
+"or do a query."
+msgstr ""
+"ファイルが選ばれていません！\n"
+"ファイルを検索結果のリストから選ぶか、\n"
+"検索を行ってください。"
