@@ -803,7 +803,7 @@ void PukeController::messageHandler(int fd, PukeMessage *pm) { /*FOLD00*/
       return;
     }
 
-    handle = KDynamicLibrary::loadLibrary(kSircConfig->kdedir + "/lib/lib" + QString(pm->cArg), KDynamicLibrary::ResolveLazy);
+    handle = KDynamicLibrary::loadLibrary(kSircConfig->kdedir + "/lib/ksirc/lib" + QString(pm->cArg), KDynamicLibrary::ResolveLazy);
     if (!handle) {
       emit(errorCommandFailed(-pm->iCommand, 1));
       return;

@@ -16,7 +16,8 @@
 #APPSDIR = $(kde_appsdir)/Internet
 # set the include path for X, qt and KDE
 INCLUDES= @all_includes@
-DEFS = @DEFS@ -I. -I$(srcdir) -I../.. -include ../kplunger/kplunger.h 
+DEFS = @DEFS@ -I. -I$(srcdir) -I../.. -include ../kplunger/kplunger.h
+ksirclibdir = $(kde_libraries)/ksirc
 # claim, which subdirectories you want to install
 # SUBDIRS = 
 # KSTicker KSprogress
@@ -26,7 +27,7 @@ DEFS = @DEFS@ -I. -I$(srcdir) -I../.. -include ../kplunger/kplunger.h
 #bin_PROGRAMS = 	libpuke
 #noinst_LIBRARIES = libpuke.a
 
-lib_LTLIBRARIES = libpuke.la libpframe.la libplined.la libpbutton.la libppushbt.la \
+ksirclib_LTLIBRARIES = libpuke.la libpframe.la libplined.la libpbutton.la libppushbt.la \
                   libpprogress.la libptablevw.la libplistbox.la libplabel.la \
                   libpmenudta.la libppopmenu.la libpalistbox.la libptabdialog.la \
                   libksirclistbox.la libpkfiledialog.la libpobjfinder.la
