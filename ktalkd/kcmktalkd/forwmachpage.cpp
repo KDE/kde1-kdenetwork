@@ -131,8 +131,8 @@ void KForwmachPageConfig::loadSettings() {
    
     config->setGroup("ktalkd");
 
-    QString forward = config->readEntry("Forward","");
-    forwmach_cb->setChecked(forward.length()!=0);
+    QString forward = config->readEntry("Forward","unset");
+    forwmach_cb->setChecked(forward!="unset");
     address_edit->setText(forward);
 
     QString forwardMethod = config->readEntry("ForwardMethod","");
@@ -152,7 +152,7 @@ void KForwmachPageConfig::saveSettings() {
     {
         config->writeEntry("Forward",address_edit->text());
     } else
-        config->writeEntry("Forward","");
+        config->deleteEntry("Forward", false /*non localized*/);
     config->writeEntry("ForwardMethod",method_combo->currentText());
     
     config->sync();
