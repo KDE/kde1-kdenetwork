@@ -217,7 +217,7 @@ Groupdlg::Groupdlg(const char *name):Inherited (name)
     filter->pop=newsgroup;
     
     
-    KStatusBar *status = new KStatusBar();
+    KStatusBar *status = new KStatusBar(this);
     setStatusBar( status );
     status->insertItem ("                               ", 1);
     status->insertItem ("", 2);

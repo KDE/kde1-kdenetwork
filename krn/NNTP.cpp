@@ -540,6 +540,7 @@ MessageParts NNTP::isCached (const char *_id)
 
 QString *NNTP::article(const char *_id)
 {
+    emit newStatus(klocale->translate("Getting Article"));
     QString id=saneID(_id);
     QString p=cachepath;
     QString *data=new QString("");

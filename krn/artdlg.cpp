@@ -166,7 +166,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     article->insertItem(klocale->translate("Don't expire"), TOGGLE_EXPIRE);  // robert's cache stuff
     article->setItemChecked(TOGGLE_EXPIRE, false);
     article->insertItem(klocale->translate("Quit"), QUIT);
-    connect (article,SIGNAL(activated(int)),SLOT(actions(int,int)));
+    connect (article,SIGNAL(activated(int)),SLOT(defaultActions(int)));
     
     
     
@@ -181,12 +181,12 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     options->insertItem(klocale->translate("Expunge"), EXPUNGE);
     options->insertItem(klocale->translate("Appearance..."),CONFIG_FONTS);
     options->insertItem(klocale->translate("Sorting..."),CONFIG_SORTING);
-    connect (options,SIGNAL(activated(int)),SLOT(actions(int,int)));
+    connect (options,SIGNAL(activated(int)),SLOT(defaultActions(int)));
 
     QPopupMenu *scoring=new QPopupMenu;
     scoring->insertItem(klocale->translate("Edit Rules"),EDIT_RULES);
     scoring->insertItem(klocale->translate("Update"),UPDATE_SCORES);
-    connect (scoring,SIGNAL(activated(int)),SLOT(actions(int,int)));
+    connect (scoring,SIGNAL(activated(int)),SLOT(defaultActions(int)));
 
     menu=new KMenuBar (this);
     setMenu(menu);
@@ -198,7 +198,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
 
     KToolBar *t1=new KToolBar(this);
     addToolBar(t1,0);
-    QObject::connect (t1, SIGNAL (clicked (int)), this, SLOT (actions (int,int)));
+    QObject::connect (t1, SIGNAL (clicked (int)), this, SLOT (defaultActions (int)));
 
     
     t1->insertButton (Icon("left.xpm"), PREV, true, klocale->translate("Previous Message"));
@@ -225,7 +225,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
 
     KToolBar *t2=new KToolBar(this);
     addToolBar(t2,1);
-    QObject::connect (t2, SIGNAL (clicked (int)), this, SLOT (actions (int,int)));
+    QObject::connect (t2, SIGNAL (clicked (int)), this, SLOT (defaultActions (int)));
     
     QStrList *comboContents=new QStrList();
     comboContents->append("Current");
@@ -340,7 +340,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     acc->insertItem(Key_S, FIND_ARTICLE);
     acc->insertItem(CTRL+Key_F, FIND_ARTICLE);
     
-    QObject::connect (acc,SIGNAL(activated(int)),this,SLOT(actions(int,int)));
+    QObject::connect (acc,SIGNAL(activated(int)),this,SLOT(defaultActions(int)));
     QObject::connect (messwin,SIGNAL(statusMsg(const char*)),this,SLOT(updateCounter(const char*)));
     conf->setGroup("Geometry");
     setGeometry(conf->readNumEntry("ArtX",100),
@@ -661,6 +661,12 @@ void Artdlg::updateScores()
         }
     }
 }
+
+bool Artdlg::defaultActions(int action)
+{
+    return actions(action);
+}
+
 
 bool Artdlg::actions (int action,int index)
 {
@@ -1606,7 +1612,7 @@ void Artdlg::setTarget(int target)
 {
     QObject::disconnect (toolBar(1),0,0,0);
     if (target==0)
-        QObject::connect (toolBar(1), SIGNAL (clicked (int)), this, SLOT (actions (int)));
+        QObject::connect (toolBar(1), SIGNAL (clicked (int)), this, SLOT (defaultActions (int)));
     else if (target==1)
         QObject::connect (toolBar(1), SIGNAL (clicked (int)), this, SLOT (taggedActions (int)));
     else if (target==2)
