@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ksirc \n"
-"POT-Creation-Date: 1999-01-18 02:04+0100\n"
+"POT-Creation-Date: 1999-01-21 02:02+0100\n"
 "PO-Revision-Date: 1999-01-20 21:55+MET\n"
 "Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
 "Translator: Stephan Kulow <coolo@kde.org>\n"
@@ -75,7 +75,7 @@ msgstr "Kanal-Nachrichten"
 msgid "Errors"
 msgstr "Fehler"
 
-#: KSPrefs/defaultfiltersdata.cpp:77 KSircColourData.cpp:115
+#: KSircColourData.cpp:115
 msgid "Background"
 msgstr "Hintergrund"
 
@@ -182,8 +182,7 @@ msgstr "Über kSirc..."
 msgid "Server Control"
 msgstr "Server-Kontrolle"
 
-#: KSPrefs/serverchanneldata.cpp:34 servercontroller.cpp:291
-#: servercontroller.cpp:455
+#: servercontroller.cpp:291 servercontroller.cpp:455
 msgid "Channels"
 msgstr "Kanäle"
 
@@ -199,7 +198,7 @@ msgstr "Aktive Server-Verbindungen"
 msgid "&Undock"
 msgstr "Nicht An&docken"
 
-#: ssfeprompt.cpp:24
+#: ssfeprompt.cpp:25
 msgid "Prompt"
 msgstr "Eingabeaufforderung"
 
@@ -303,78 +302,6 @@ msgstr "Nur OP"
 msgid "Modify"
 msgstr "Ändern"
 
-#: KSPrefs/defaultfiltersdata.cpp:34
-msgid "Highlight Your Nick"
-msgstr "Ihren Spitznamen hervorheben"
-
-#: KSPrefs/defaultfiltersdata.cpp:43
-msgid "Colour Nicks in Channels"
-msgstr "Spitznamen in Kanälen einfärben"
-
-#: KSPrefs/defaultfiltersdata.cpp:52
-msgid "Allow External Colours"
-msgstr "Externe Farben zulassen"
-
-#: KSPrefs/defaultfiltersdata.cpp:59
-msgid "Allow &kSirc Colour codes"
-msgstr "&kSirc Farbcodes zulassen"
-
-#: KSPrefs/defaultfiltersdata.cpp:68
-msgid "&Allow &mirc Colour codes"
-msgstr "&mirc Farbcodes zulassen"
-
-#: KSPrefs/defaultfiltersdata.cpp:86
-msgid "Foreground"
-msgstr "Vordergrund"
-
-#: KSPrefs/defaultfiltersdata.cpp:95
-msgid "Colour"
-msgstr "Farbe"
-
-#: KSPrefs/defaultfiltersdata.cpp:103 KSPrefs/defaultfiltersdata.cpp:112
-msgid "Sample"
-msgstr "Beispiel"
-
-#: KSPrefs/generalData.cpp:50
-msgid "Auto Create Windows"
-msgstr "Fenster autom. erstellen"
-
-#: KSPrefs/generalData.cpp:59
-msgid "Beep on Notify"
-msgstr "Ton bei Nachricht "
-
-#: KSPrefs/generalData.cpp:68
-msgid "Nick Completion"
-msgstr "Vervollständigung von Spitznamen"
-
-#: KSPrefs/generalData.cpp:77
-msgid "Colour Picker Popup"
-msgstr "Farbauswahl-Popup"
-
-#: KSPrefs/generalData.cpp:86
-msgid "Auto Rejoin"
-msgstr "Automatisch wieder teilnehmen"
-
-#: KSPrefs/generalData.cpp:95
-msgid "Enable Background Pixmap"
-msgstr "Hintergrund-Pixmap zulassen"
-
-#: KSPrefs/generalData.cpp:112
-msgid "Browse"
-msgstr "Blättern"
-
-#: KSPrefs/generalData.cpp:120
-msgid "Display Topic in Caption"
-msgstr "Thema in Überschrift anzeigen"
-
-#: KSPrefs/generalData.cpp:129
-msgid "Use MDI Mode (Must restart to take effect, experimental!!)"
-msgstr "MDI-Modus benutzen (Neustart erforderlich, experimentell!!)"
-
-#: KSPrefs/generalData.cpp:144
-msgid "Window History Length"
-msgstr "Länge des History-Fensters"
-
 #: KSPrefs/ksprefs.cpp:9
 msgid "kSirc Prefrences"
 msgstr "kSirc-Einstellungen"
@@ -399,34 +326,6 @@ msgstr "Benutzer-&Menü"
 msgid "&Default Filters"
 msgstr "&Eingestellte Filter"
 
-#: KSPrefs/serverchanneldata.cpp:43
-msgid "Servers"
-msgstr "Server"
-
-#: KSPrefs/startupdata.cpp:35
-msgid "Notify List"
-msgstr "Benachrichtigungsliste"
-
-#: KSPrefs/startupdata.cpp:43
-msgid "Nick"
-msgstr "Spitzname"
-
-#: KSPrefs/startupdata.cpp:52
-msgid "Real Name"
-msgstr "Richtiger Name"
-
-#: KSPrefs/startupdata.cpp:97
-msgid "&Add"
-msgstr "&Hinzufügen"
-
-#: KSProgress/ksprogressdata.cpp:46
-msgid "fileName"
-msgstr "Datei-Name"
-
-#: KSProgress/ksprogressdata.cpp:54
-msgid "XferStatus"
-msgstr "XferStatus"
-
 #: KSTicker/speeddialogData.cpp:79
 msgid "Tick Interval"
 msgstr "Tick-Intervall"
@@ -439,3 +338,78 @@ msgstr "Schrittgröße"
 #, c-format
 msgid "No such file \"%s\"!"
 msgstr "Datei existiert nicht: \"%s\"!"
+
+#~ msgid "Highlight Your Nick"
+#~ msgstr "Ihren Spitznamen hervorheben"
+
+#~ msgid "Colour Nicks in Channels"
+#~ msgstr "Spitznamen in Kanälen einfärben"
+
+#~ msgid "Allow External Colours"
+#~ msgstr "Externe Farben zulassen"
+
+#~ msgid "Allow &kSirc Colour codes"
+#~ msgstr "&kSirc Farbcodes zulassen"
+
+#~ msgid "&Allow &mirc Colour codes"
+#~ msgstr "&mirc Farbcodes zulassen"
+
+#~ msgid "Foreground"
+#~ msgstr "Vordergrund"
+
+#~ msgid "Colour"
+#~ msgstr "Farbe"
+
+#~ msgid "Sample"
+#~ msgstr "Beispiel"
+
+#~ msgid "Auto Create Windows"
+#~ msgstr "Fenster autom. erstellen"
+
+#~ msgid "Beep on Notify"
+#~ msgstr "Ton bei Nachricht "
+
+#~ msgid "Nick Completion"
+#~ msgstr "Vervollständigung von Spitznamen"
+
+#~ msgid "Colour Picker Popup"
+#~ msgstr "Farbauswahl-Popup"
+
+#~ msgid "Auto Rejoin"
+#~ msgstr "Automatisch wieder teilnehmen"
+
+#~ msgid "Enable Background Pixmap"
+#~ msgstr "Hintergrund-Pixmap zulassen"
+
+#~ msgid "Browse"
+#~ msgstr "Blättern"
+
+#~ msgid "Display Topic in Caption"
+#~ msgstr "Thema in Überschrift anzeigen"
+
+#~ msgid "Use MDI Mode (Must restart to take effect, experimental!!)"
+#~ msgstr "MDI-Modus benutzen (Neustart erforderlich, experimentell!!)"
+
+#~ msgid "Window History Length"
+#~ msgstr "Länge des History-Fensters"
+
+#~ msgid "Servers"
+#~ msgstr "Server"
+
+#~ msgid "Notify List"
+#~ msgstr "Benachrichtigungsliste"
+
+#~ msgid "Nick"
+#~ msgstr "Spitzname"
+
+#~ msgid "Real Name"
+#~ msgstr "Richtiger Name"
+
+#~ msgid "&Add"
+#~ msgstr "&Hinzufügen"
+
+#~ msgid "fileName"
+#~ msgstr "Datei-Name"
+
+#~ msgid "XferStatus"
+#~ msgstr "XferStatus"
