@@ -13,7 +13,11 @@
 #include <qstrlist.h>
 #include <kconfig.h>
 #include <kapp.h>
+#ifdef HAVE_UUDEVIEW_H
 #include <uudeview.h>
+#else
+#include <uu.h>
+#endif
 //#include <mimelib/mimepp.h>
 #include "ktempfile.h"
 #include <kapp.h>

@@ -42,6 +42,15 @@ AC_SUBST(LIBBSD)
 LIBKHTMLW="-lkhtmlw -ljscript" dnl this is somewhat historical, since jscript is ways needed
 AC_SUBST(LIBKHTMLW)
 
+dnl uu or uulib?
+AC_CHECK_LIB(uu,    UUInitialize, [LIBUU="-luu"   ], , $all_libraries)
+AC_CHECK_LIB(uulib, UUInitialize, [LIBUU="-luulib"], , $all_libraries)
+AC_SUBST(LIBUU)
+ac_cpp_safe=$ac_cpp
+ac_cpp='$CXXCPP $CPPFLAGS $all_includes'
+AC_CHECK_HEADERS(uu.h uudeview.h)
+ac_cpp=$ac_cpp_safe
+
 AC_FIND_JPEG
 
 AC_LANG_CPLUSPLUS

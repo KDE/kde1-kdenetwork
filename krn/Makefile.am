@@ -8,7 +8,7 @@ krn_LDADD = -lkfile -lkfm -lkhtmlw -ljscript -lkdeui -lkdecore $(LIBJPEG) \
 	-lqt -lXext -lX11 -lmimelib -lgdbm -lstdc++ $(LIBCOMPAT) $(LIBSOCKET)
 
 kdecode_LDADD = -lkfile -lkfm -lkdeui -lkdecore -lqt -lXext \
-	-lX11 -luulib $(KDE_RPATH) $(LIBCOMPAT) $(LIBSOCKET)
+	-lX11 $(LIBUU) $(KDE_RPATH) $(LIBCOMPAT) $(LIBSOCKET)
 
 newkrn_LDADD = -lkfile -lkfm -lkhtmlw -ljscript -lkdeui -lkdecore $(LIBJPEG) \
 	-lqt -lXext -lX11 -lmimelib -lgdbm $(LIBCOMPAT) $(LIBSOCKET)
