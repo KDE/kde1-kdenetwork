@@ -1,0 +1,781 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 1998-04-05 14:26+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Case Roole <cjr@xs4all.nl>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ENCODING\n"
+
+#: main.cpp:227 main.cpp:239 main.cpp:251 main.cpp:266 main.cpp:278
+msgid "KRN-Missing Configuration info"
+msgstr "KRN-Ontbrekende Configuratie info"
+
+#: main.cpp:228
+msgid "Please enter your email adress"
+msgstr "Voer a.u.b. uw email adres in"
+
+#: main.cpp:240
+msgid "Please enter your real name"
+msgstr "Voer a.u.b. uw volledige naam in"
+
+#: main.cpp:252
+msgid "Please enter your organization's name"
+msgstr "Voer a.u.b. de naam van uw organisatie in"
+
+#: main.cpp:267
+msgid "Please enter your NNTP server name"
+msgstr "Voer a.u.b. de naam van uw NNTP server in"
+
+#: main.cpp:279
+msgid "Please enter your SMTP server name"
+msgstr "Voer a.u.b. de naam van uw SMTP server in"
+
+#: NNTP.cpp:70
+#, c-format
+msgid "Received %.2f Kb"
+msgstr "Ontving %.2f Kb"
+
+#: NNTP.cpp:620
+msgid "Article Received"
+msgstr "Artikel ontvangen"
+
+#: groupdlg.cpp:125
+msgid "Connect to Server"
+msgstr "Verbind met Server"
+
+#: groupdlg.cpp:126
+msgid "Disconnect From Server"
+msgstr "Sluit verbinding met Server"
+
+#: groupdlg.cpp:127
+msgid "Get Active File"
+msgstr "Haal Actief Bestand"
+
+#: groupdlg.cpp:129
+msgid "Post Queued Messages"
+msgstr "Post Klaargelegde Boodschappen"
+
+#: groupdlg.cpp:131
+msgid "Exit"
+msgstr "Sluit af"
+
+#: groupdlg.cpp:134
+msgid "KRN - Group List"
+msgstr "KRN - Groepen Lijst"
+
+#: groupdlg.cpp:137 groupdlg.cpp:143
+msgid "Get Subjects"
+msgstr "Haal Onderwerpen"
+
+#: groupdlg.cpp:138 groupdlg.cpp:144
+msgid "Get Articles"
+msgstr "Haal Artikelen"
+
+#: groupdlg.cpp:139 groupdlg.cpp:147 groupdlg.cpp:155
+msgid "Catchup"
+msgstr "Werk achterstand bij"
+
+#: groupdlg.cpp:145 groupdlg.cpp:153
+msgid "(un)Subscribe"
+msgstr "(aan/af)Melden"
+
+#: artdlg.cpp:140 groupdlg.cpp:146
+msgid "Untag"
+msgstr "Demarkeer"
+
+#: artdlg.cpp:160 groupdlg.cpp:154
+msgid "(Un)Tag"
+msgstr "(De)markeer"
+
+#: artdlg.cpp:153 artdlg.cpp:205 groupdlg.cpp:157 groupdlg.cpp:207
+msgid "Post New Article"
+msgstr "Post Nieuw Artikel"
+
+#: groupdlg.cpp:158
+msgid "Post All Queued Articles"
+msgstr "Post alle klaargelegde artikelen"
+
+#: groupdlg.cpp:160
+msgid "&Subscribed"
+msgstr "Geaboneerd"
+
+#: artdlg.cpp:191 groupdlg.cpp:161
+msgid "&Tagged"
+msgstr "Gemarkeerd"
+
+#: groupdlg.cpp:166
+msgid "Identity..."
+msgstr "Identiteit"
+
+#: groupdlg.cpp:167
+msgid "NNTP Options..."
+msgstr "NNTP Opties..."
+
+#: groupdlg.cpp:168
+msgid "Expire Options..."
+msgstr "Verval Opties..."
+
+#: groupdlg.cpp:169
+msgid "Printing Options..."
+msgstr "Afdruk Opties..."
+
+#: groupdlg.cpp:176
+msgid "About Krn..."
+msgstr "Over Krn..."
+
+#: groupdlg.cpp:186
+msgid "&Newsgroup"
+msgstr "Nieuwgroep"
+
+#: groupdlg.cpp:193
+msgid "Connect to server"
+msgstr "Maak een verbinding met server"
+
+#: groupdlg.cpp:195
+msgid "Disconnect from server"
+msgstr "Verbreek verbinding met server"
+
+#: groupdlg.cpp:198
+msgid "Get list of active groups"
+msgstr "Haal lijst van actieve groepen"
+
+#: groupdlg.cpp:199
+msgid "Find group"
+msgstr "Vind groep"
+
+#: groupdlg.cpp:205
+msgid "Check for Unread Articles"
+msgstr "Controleer of er ongelezen artikelen zijn"
+
+#: groupdlg.cpp:315
+msgid "Sorry!"
+msgstr ""
+
+#: groupdlg.cpp:316
+msgid ""
+"That newsgroup is not in the current active file\n"
+" Krn can't handle this gracefully right now"
+msgstr ""
+"Deze nieuwsgroep is niet in het huidige actieve bestand\n"
+"Krn kan dit momenteel niet elegant behandelen"
+
+#: groupdlg.cpp:348 groupdlg.cpp:551 groupdlg.cpp:887
+msgid "All Newsgroups."
+msgstr "Alle nieuwsgroepen"
+
+#: groupdlg.cpp:442 groupdlg.cpp:536
+msgid "Subscribed Newsgroups."
+msgstr "Geabonneerde nieuwsgroepen."
+
+#: groupdlg.cpp:491
+msgid "Disconnected"
+msgstr "Verbinding verbroken"
+
+#: groupdlg.cpp:498
+msgid "Connecting to server"
+msgstr "Maak verbinding met server"
+
+#: groupdlg.cpp:503
+msgid "Connected to server - Posting not allowed"
+msgstr "Verbonden met server - Posten niet toegestaan"
+
+#: groupdlg.cpp:505
+msgid "Connected to server - Posting allowed"
+msgstr "Verbonden met server - Posten toegestaan"
+
+#: groupdlg.cpp:511
+msgid "Can't connect to server"
+msgstr "Kan niet verbinden met server"
+
+#: groupdlg.cpp:513
+msgid "Connection to server failed"
+msgstr "Verbinden met server faalde"
+
+#: groupdlg.cpp:522
+msgid "Authentication Failed"
+msgstr "Authenticatie faalde"
+
+#: groupdlg.cpp:525
+msgid "Connection to server failed: Authentication problem"
+msgstr "Verbinden met server faalde: Authenticatie probleem"
+
+#: groupdlg.cpp:570
+msgid "Krn-Question"
+msgstr "Krn-Vraag"
+
+#: groupdlg.cpp:571
+msgid ""
+"The operation you requested needs a connection to the News server\n"
+"Should I attempt one?"
+msgstr ""
+"De operatie welke u verzocht vereist een verbinding met de Nieuws server\n"
+"Zal ik dat proberen ?"
+
+#: groupdlg.cpp:833
+msgid ""
+"You don't have an active groups list.\n"
+" get it from server?"
+msgstr ""
+"U hebt geen actieve groepen lijst.\n"
+"Zal ik deze ophalen van de server ?"
+
+#: groupdlg.cpp:849
+msgid "Listing active newsgroups"
+msgstr "Opsommen van actieve nieuwsgroepen"
+
+#: groupdlg.cpp:861
+msgid "KRN - Find a Newsgroup"
+msgstr "KRN - Zoek een Nieuwsgroep"
+
+#: groupdlg.cpp:862
+msgid "Enter the name of the Newsgroup"
+msgstr "Voer de naam in van de Nieuwsgroep"
+
+#: groupdlg.cpp:947
+msgid "Krn - Message"
+msgstr "Krn - Boodschap"
+
+#: groupdlg.cpp:948
+msgid "I can't find the group you want!"
+msgstr "I kan de gevraagde groep niet vinden!"
+
+#: groupdlg.cpp:1039
+msgid "Getting messages in "
+msgstr "Haal nu de boodschappen op van "
+
+#: groupdlg.cpp:1052
+msgid "Getting list of messages in "
+msgstr "Haal nu de lijst van boodschappen op van "
+
+#: artdlg.cpp:133 artdlg.cpp:148
+msgid "Download"
+msgstr "Spons"
+
+#: artdlg.cpp:135 artdlg.cpp:239
+msgid "Mark Read"
+msgstr "Markeer als gelezen"
+
+#: artdlg.cpp:136
+msgid "Mark Unread"
+msgstr "Markeer als ongelezen"
+
+#: artdlg.cpp:138 artdlg.cpp:152
+msgid "Print"
+msgstr "Druk af"
+
+#: artdlg.cpp:139 artdlg.cpp:159
+msgid "Decode"
+msgstr "Ontcijfer"
+
+#: artdlg.cpp:141 artdlg.cpp:164
+msgid "Don't expire"
+msgstr "Laat niet vervallen"
+
+#: artdlg.cpp:150
+msgid "Lookup in Altavista"
+msgstr "Zoek op in Altavista"
+
+#: artdlg.cpp:154 artdlg.cpp:223
+msgid "Reply by Mail"
+msgstr "Beantwoord met Mail"
+
+#: artdlg.cpp:155
+msgid "Post Followup"
+msgstr "Post een aansluitende boodschap"
+
+#: artdlg.cpp:156
+msgid "Post & Reply"
+msgstr "Post & Beantwoord"
+
+#: artdlg.cpp:162
+msgid "Tagged"
+msgstr "Gemarkeerd"
+
+#: artdlg.cpp:173
+msgid "Show Only Unread Messages"
+msgstr "Toon enkel ongelezen boodschappen"
+
+#: artdlg.cpp:175
+msgid "Show Only Cached Messages"
+msgstr "Toon enkel opgeslagen boodschappen"
+
+#: artdlg.cpp:177
+msgid "Show Locked Messages"
+msgstr "Toon afgesloten boodschappen"
+
+#: artdlg.cpp:179
+msgid "Expunge"
+msgstr "Verwijder"
+
+#: artdlg.cpp:180
+msgid "Appearance..."
+msgstr "Verschijning..."
+
+#: artdlg.cpp:181
+msgid "Sorting..."
+msgstr "Sorterend..."
+
+#: artdlg.cpp:185
+msgid "Edit Rules"
+msgstr "Wijzig Regels"
+
+#: artdlg.cpp:186
+msgid "Update"
+msgstr "Breng bij de tijd"
+
+#: artdlg.cpp:193
+msgid "&Scoring"
+msgstr ""
+
+#: artdlg.cpp:198
+msgid "Previous Message"
+msgstr "Vorige Boodschap"
+
+#: artdlg.cpp:200
+msgid "Next Message"
+msgstr "Volgende Boodschap"
+
+#: artdlg.cpp:202
+msgid "Find Article"
+msgstr "Zoek Artikel"
+
+#: artdlg.cpp:207
+msgid "Get Article List"
+msgstr "Haal Artikelen Lijst"
+
+#: artdlg.cpp:219
+msgid "Save Article"
+msgstr "Sla artikel op"
+
+#: artdlg.cpp:221
+msgid "Print Article"
+msgstr "Druk artikel af"
+
+#: artdlg.cpp:225
+msgid "Post a Followup"
+msgstr "Post een aansluitende boodschap"
+
+#: artdlg.cpp:227
+msgid "Post & Mail"
+msgstr ""
+
+#: artdlg.cpp:233
+msgid "Tag Article"
+msgstr "Markeer artikel"
+
+#: artdlg.cpp:235
+msgid "Lock (keep in cache)"
+msgstr "Sluit af (sla op in cache)"
+
+#: artdlg.cpp:237
+msgid "Decode Article"
+msgstr "Ontcijfer Artikel"
+
+#: artdlg.cpp:241
+msgid "Mark UnRead"
+msgstr "Markeer als OnGelezen"
+
+#: artdlg.cpp:263 sortDlg.cpp:34
+msgid "Sender"
+msgstr "Afzender"
+
+#: artdlg.cpp:264 sortDlg.cpp:35
+msgid "Date"
+msgstr "Datum"
+
+#: artdlg.cpp:265 sortDlg.cpp:36
+msgid "Lines"
+msgstr "Regels"
+
+#: artdlg.cpp:266 sortDlg.cpp:33
+msgid "Score"
+msgstr ""
+
+#: artdlg.cpp:267 sortDlg.cpp:32
+msgid "Subject"
+msgstr "Onderwerp"
+
+#: artdlg.cpp:438
+msgid "Threading..."
+msgstr ""
+
+#: artdlg.cpp:447
+msgid "Showing Article List"
+msgstr "Toon Artikelen Lijst"
+
+#: artdlg.cpp:1226
+msgid "KRN - Existing File"
+msgstr "KRN - Bestaand Bestand"
+
+#: artdlg.cpp:1227
+msgid "The File you selected already exists"
+msgstr "Het bestand dat u koos bestaat reeds"
+
+#: artdlg.cpp:1233
+msgid "OverWrite"
+msgstr "Overschrijf"
+
+#: artdlg.cpp:1235
+msgid "Append"
+msgstr "Voeg toe"
+
+#: artdlg.cpp:1270
+msgid ""
+"From: Krn\n"
+"To: You\n"
+"\n"
+"Error getting article.\n"
+"Server said:\n"
+msgstr ""
+"Van: Krn\n"
+"Aan: U\n"
+"\n"
+"Fout bij ophalen artikel.\n"
+"Server zei:\n"
+
+
+#: artdlg.cpp:1370
+msgid "Getting Article List"
+msgstr "Artikelen Lijst wordt opgehaald"
+
+#: identDlg.cpp:41
+msgid "KRN-Identity Configuration"
+msgstr "KRN-Identiteit Configuratie"
+
+#: identDlg.cpp:50
+msgid "Here you should enter your personal information"
+msgstr "Hier dient u uw persoonlijke informatie in te voeren"
+
+#: identDlg.cpp:52
+msgid "You should know what these are!"
+msgstr "U zoudt moeten weten wat deze zijn!"
+
+#: identDlg.cpp:61
+msgid "Real Name"
+msgstr "Volledige Naam"
+
+#: identDlg.cpp:67
+msgid "E-mail Address"
+msgstr "E-mail adres"
+
+#: identDlg.cpp:73
+msgid "Organization"
+msgstr "Organisatie"
+
+#: NNTPConfigDlg.cpp:28
+msgid "KRN-NNTP configuration"
+msgstr "KRN-NNTP configuratie"
+
+#: NNTPConfigDlg.cpp:33
+msgid "Servers"
+msgstr ""
+
+#: NNTPConfigDlg.cpp:35
+msgid "SMTP server"
+msgstr ""
+
+#: NNTPConfigDlg.cpp:40
+msgid "NNTP Server"
+msgstr ""
+
+#: NNTPConfigDlg.cpp:52
+msgid "Connect on Startup"
+msgstr "Maak verbinding bij opstarten"
+
+#: NNTPConfigDlg.cpp:56
+msgid "Connect without asking"
+msgstr "Maak verbinding zonder te vragen"
+
+#: NNTPConfigDlg.cpp:60
+msgid "Authenticate"
+msgstr "Doe Authenticatie"
+
+#: NNTPConfigDlg.cpp:65
+msgid "User Name"
+msgstr "Gebruikers Naam"
+
+#: NNTPConfigDlg.cpp:69
+msgid "Password"
+msgstr "Wachtwoord"
+
+#: decoderDlg.cpp:31
+msgid "KRN - Decoder"
+msgstr "KRN - Ontcijferaar"
+
+#: decoderDlg.cpp:34
+msgid "ID"
+msgstr ""
+
+#: decoderDlg.cpp:37
+msgid "Name"
+msgstr "Naam"
+
+#: decoderDlg.cpp:44
+msgid "Destination directory:"
+msgstr "Bestemmings map:"
+
+#: decoderDlg.cpp:47
+msgid "Decode All"
+msgstr "Ontcijfer alles"
+
+#: kdecode.cpp:29
+msgid "KRN-Decoder"
+msgstr "KRN-Ontcijferaar"
+
+#: kdecode.cpp:208
+#, c-format
+msgid "Unsupported encoding type: %s."
+msgstr "Niet ondersteund coderings type: %s."
+
+#: aboutDlg.cpp:28
+msgid "About KRN"
+msgstr "Over KRN"
+
+#: aboutDlg.cpp:39
+msgid "Part of the KDE project."
+msgstr "Deel van het KDE project."
+
+#: aboutDlg.cpp:42
+msgid "Credits & Thanks"
+msgstr "Erkenning & Dank"
+
+#: aboutDlg.cpp:63
+msgid "And Many thanks to:"
+msgstr "end veel dank aan:"
+
+#: fontsDlg.cpp:39
+msgid "Message Display Settings"
+msgstr "Boodschap Vertonings Instellingen"
+
+#: fontsDlg.cpp:46
+msgid "Header Style"
+msgstr "Hoofd Stijl"
+
+#: fontsDlg.cpp:48
+msgid "Fancy"
+msgstr "Sjiek"
+
+#: fontsDlg.cpp:49
+msgid "Brief"
+msgstr "Kort"
+
+#: fontsDlg.cpp:50
+msgid "Standard"
+msgstr "Standaard"
+
+#: fontsDlg.cpp:51
+msgid "Long"
+msgstr "Lang"
+
+#: fontsDlg.cpp:52
+msgid "All"
+msgstr "Alles"
+
+#: fontsDlg.cpp:56
+msgid "Attachment Style"
+msgstr "Bijlage stijl"
+
+#: fontsDlg.cpp:58
+msgid "Iconic"
+msgstr "Pictogrammen"
+
+#: fontsDlg.cpp:59
+msgid "Smart"
+msgstr "Intelligent"
+
+#: fontsDlg.cpp:60
+msgid "Inline"
+msgstr "Voeg in"
+
+#: fontsDlg.cpp:67
+msgid "Font Size:"
+msgstr "Lettertype Grootte:"
+
+#: fontsDlg.cpp:70
+msgid "Small"
+msgstr "Klein"
+
+#: fontsDlg.cpp:72
+msgid "Large"
+msgstr "Groot"
+
+#: fontsDlg.cpp:73
+msgid "Huge"
+msgstr "Zeer Groot"
+
+#: fontsDlg.cpp:78
+msgid "Standard Font"
+msgstr "Standaard Lettertype"
+
+#: fontsDlg.cpp:86
+msgid "Fixed Font"
+msgstr "Vast Lettertype"
+
+#: fontsDlg.cpp:94
+msgid "Background Color"
+msgstr "Achtergrond Kleur"
+
+#: fontsDlg.cpp:97
+msgid "Foreground Color"
+msgstr "Voorgrond Kleur"
+
+#: fontsDlg.cpp:100
+msgid "Link Color"
+msgstr "Verbindings Kleur"
+
+#: fontsDlg.cpp:103
+msgid "Followed Color"
+msgstr "Gevolgd Kleur"
+
+#: fontsDlg.cpp:107
+msgid "Use only one window"
+msgstr "Gebruik enkel in een venster"
+
+#: fontsDlg.cpp:109
+msgid "Split window vertically"
+msgstr "Splijt venster verticaal"
+
+#: findArtDlg.cpp:22
+msgid "KRN - Article Searcher"
+msgstr "KRN - Artikel Zoeker"
+
+#: findArtDlg.cpp:29
+msgid "Find Articles With:"
+msgstr "Zoek Artikelen Met:"
+
+#: findArtDlg.cpp:34 rulesDlg.cpp:106
+msgid "In Field:"
+msgstr "In Veld:"
+
+#: findArtDlg.cpp:56 rulesDlg.cpp:132
+msgid "Wildcard Mode"
+msgstr ""
+
+# FIXME: 'read onlyyou' should be 'read-only, you'
+#: krnsender.cpp:48
+msgid "This server is read onlyyou can't post here!"
+msgstr "Deze server is alleen-lezen, u kunt hier niet posten!"
+
+#: expireDlg.cpp:22 expireDlg.cpp:27
+msgid "KRN - Expire Settings"
+msgstr "KRN - Verval Instellingen"
+
+#: expireDlg.cpp:36
+msgid "For how long should we keep things (in days)?"
+msgstr "Hoe lang moeten we alles bewaren (in dagen)?"
+
+#: expireDlg.cpp:46
+msgid "Read:"
+msgstr "Gelezen:"
+
+#: expireDlg.cpp:47
+msgid "Unread:"
+msgstr "Ongelezen:"
+
+#: expireDlg.cpp:50
+msgid "Article Bodies:"
+msgstr "Artikel lichamen:"
+
+#: expireDlg.cpp:55
+msgid "Article Headers:"
+msgstr "Artikel Hoofden:"
+
+#: printdlg.cpp:21
+msgid "KRN - Print Settings"
+msgstr "KRN - Afdruk instellingen"
+
+#: printdlg.cpp:26
+msgid "KRN - Printing Settings"
+msgstr "KRN - Afdruk instellingen"
+
+#: printdlg.cpp:33
+msgid "General"
+msgstr "Algemeen"
+
+#: printdlg.cpp:37
+msgid "Use HTML Printing"
+msgstr "Gebruik HTML afdrukken"
+
+#: printdlg.cpp:40
+msgid "Use Direct Printing"
+msgstr "Gebruik direct afdrukken"
+
+#: printdlg.cpp:48
+msgid "Print using:"
+msgstr "Druk af met:"
+
+#: printdlg.cpp:52
+msgid "Feed it with:"
+msgstr "Invoer als:"
+
+#: printdlg.cpp:54
+msgid "Postscript"
+msgstr ""
+
+#: printdlg.cpp:55
+msgid "HTML"
+msgstr ""
+
+#: printdlg.cpp:56
+msgid "Text"
+msgstr ""
+
+#: rulesDlg.cpp:38
+msgid "KRN - Scoring Rules Editor"
+msgstr "KRN - Scoor Regels Editor"
+
+#: rulesDlg.cpp:45
+msgid "Global Rules"
+msgstr "Globale Regels"
+
+#: rulesDlg.cpp:47
+msgid "All Rules"
+msgstr "Alle Regels"
+
+#: rulesDlg.cpp:63
+msgid "Active Rules"
+msgstr "Actieve Regels"
+
+#: rulesDlg.cpp:70
+msgid "Rule Editor"
+msgstr "Regel Editor"
+
+#: rulesDlg.cpp:87
+msgid "Save as"
+msgstr "Sla op als"
+
+#: rulesDlg.cpp:101
+msgid "Match Articles With:"
+msgstr "Vergelijk artikelen met:"
+
+#: rulesDlg.cpp:126
+msgid "Negative"
+msgstr "Negatief"
+
+#: rulesDlg.cpp:189
+msgid "Rule name:"
+msgstr "Regel naam:"
+
+#: sortDlg.cpp:23
+msgid "KRN - Header Sorting"
+msgstr "KRN - Hoofd sorteren"
+
+#: sortDlg.cpp:37
+msgid "None"
+msgstr "Niets"
+
+#: sortDlg.cpp:39
+msgid "Sort by:"
+msgstr "Sorteer op basis van:"
+
+#: sortDlg.cpp:56
+msgid "Use Threading"
+msgstr "Gebruik Threading"
