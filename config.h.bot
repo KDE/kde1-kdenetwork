@@ -18,3 +18,15 @@ const bool true = 1;
 #       define __BSD__ 1 /* needed so that #elif __BSD__ will work with gcc */
 #endif
 
+#ifndef HAVE_FUNC_SETENV
+#define HAVE_FUNC_SETENV
+#ifdef __cplusplus
+extern "C" {
+#endif
+int setenv(const char *name, const char *value, int overwrite);
+int unsetenv(const char *name);
+#ifdef __cplusplus
+}
+#endif
+#endif
+
