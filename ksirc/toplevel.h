@@ -19,6 +19,7 @@ class kstInside;
 #include <qregexp.h>
 #include <qaccel.h>
 #include <qlcdnum.h>
+#include <qdict.h>
 
 #include <ktopwidget.h>
 #include <kmenubar.h>
@@ -35,7 +36,12 @@ class kstInside;
 #include "KSTicker/ksticker.h"
 #include "usercontrolmenu.h"
 #include "irclistbox.h"
-#include "excp-parse.h"
+
+// Exceptions used exclusivly for parsing
+#include "chanparser.h"
+
+class KSircTopLevel;
+class kstInside;
 
 class kstInside : QFrame 
 {
@@ -61,6 +67,7 @@ class KSircTopLevel : public KTopLevelWidget,
 		      public KSircMessageReceiver
 {
   Q_OBJECT;
+  friend class ChannelParser;
 public:
   /**
     * Constructor, needs the controlling ksircprocess passed to it, so
@@ -342,11 +349,6 @@ private:
   QPoint tickerpoint;
 
   /**
-    * Never open mmore then one dialog box
-    */
-  bool prompt_active;
-
-  /**
     * True when we are on the root window, false otherwise
     *
     */
@@ -357,6 +359,14 @@ private:
    * Remember not to open 2
    */
   bool KickWinOpen;
+
+
+  /**
+   * Hold an internal parser object which does all our parsing for us.
+   * Since parsing an intergral part of TopLevel, it's also a friend
+   * of ours
+   */
+  ChannelParser *ChanParser;
 
 };
 

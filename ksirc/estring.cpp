@@ -1,12 +1,12 @@
 #include "estring.h"
 
 EString::EString(const QString &s) {
-  this->setStr(s.data());
+  QString::operator=(s);
 }
 
 EString &EString::operator= (const QString &s)
 {
-  this->setStr(s.data());
+  QString::operator=(s);
   return *this;
 }
 

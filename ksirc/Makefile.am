@@ -16,7 +16,7 @@
 APPSDIR = $(kde_appsdir)/Internet
 # set the include path for X, qt and KDE
 INCLUDES= @all_includes@
-DEFS = @DEFS@ -fhandle-exceptions -I. -I$(srcdir) -I..
+DEFS = @DEFS@ -I. -I$(srcdir) -I..
 # claim, which subdirectories you want to install
 SUBDIRS = KSTicker KSProgress KSCutDialog KSPrefs puke img doc
 
@@ -53,7 +53,8 @@ ssfeprompt.cpp mssfeprompt.cpp ssfepromptdata.cpp mssfepromptdata.cpp \
 usercontrolmenu.cpp \
 kspainter.cpp \
 baserules.cpp \
-estring.cpp
+estring.cpp \
+chanparser.cpp
 
 ksircstatic_SOURCES = $(ksirc_SOURCES)
 
@@ -106,7 +107,7 @@ alistbox.h                irclistbox.h              \
 config.h                  irclistitem.h             toplevel.h \
 ksircprocess.h            ksirc.kdelnk \
 ioLAG.h                   ioNotify.h                ssfeprompt.h \
-ssfepromptdata.h          usercontrolmenu.h\
+ssfepromptdata.h          usercontrolmenu.h         \
 dsirc                     filters.pl                ksirc.pl \
 sirc.help.gz              baserules.h               estring.h
 

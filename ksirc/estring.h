@@ -19,6 +19,9 @@ class EString : public QString
   {
   public:
     // Setup a few copy operators to be compatible with qstring
+    EString() : QString()
+      {
+      }
     EString (const QString &s);
     EString &operator= (const QString &s);
     // We'll just iherite most things, include constructors, etc

@@ -65,7 +65,7 @@ QPixmap *KSircTopLevel::pix_greenp = 0L;
 QPixmap *KSircTopLevel::pix_bluep = 0L;
 QPixmap *KSircTopLevel::pix_madsmile = 0L;
 
-KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name)  /*fold00*/
+KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name)  /*FOLD00*/
   : KTopLevelWidget(name),
     KSircMessageReceiver(_proc)
    
@@ -235,7 +235,6 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
 
   opami = FALSE;
   continued_line = FALSE;
-  prompt_active = FALSE;
   on_root = FALSE;
 
   /*
@@ -255,6 +254,13 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
     pix_bluep = new QPixmap(kicl->loadIcon("bluepin.gif"));
     pix_madsmile = new QPixmap(kicl->loadIcon("madsmiley.gif"));
   }
+
+  /*
+   * Create our basic parser object
+   */
+
+  ChanParser = new ChannelParser(this);
+  
 
   /* 
    * Create the user Controls popup menu, and connect it with the
@@ -653,12 +659,6 @@ ircListItem *KSircTopLevel::parse_input(QString &in_string) /*FOLD00*/
 {
 
   /* 
-   * welcome to the twilight zone
-   * Big time parsing, and no docs
-   * Variables are reused unsafly, big EWWW!
-   */
-
-  /* 
    * Parsing routines are broken into 3 majour sections 
    *
    * 1. Search and replace evil characters. The string is searched for
@@ -686,7 +686,6 @@ ircListItem *KSircTopLevel::parse_input(QString &in_string) /*FOLD00*/
    * pixmap: pixmap for left hand side of list box
    * */
 
-  char *s2;
 
   // \n: clear any line feeds                              -> " "
   // \r: clear stray carriage returns                      -> ""
@@ -699,163 +698,31 @@ ircListItem *KSircTopLevel::parse_input(QString &in_string) /*FOLD00*/
   QPixmap *pixmap = NULL;
   int offset; // Used for nicks->findNick() operations
 
-  EString string = in_string;
-
   /*
    * No-output get's set to 1 if we should ignore the line
    */
 
   int no_output = 0;
 
-  //  if(string[0] == '~'){
-  //    pos = 1;
-  //    pos2 = string.find("~", pos);
-  //    if(pos2 > pos){
-  //      channel = string.mid(pos, pos2-pos); // s3 now holds the channel name
-  //      channel = channel.lower();           // lower case s3
-  //      string.remove(pos-1, pos2-pos+2);
-  //    }
-  //  }
-  //
-  //  if(channel.isEmpty() == FALSE)
-  //    cerr << "Channel Specefic: " << channel << endl;
+  EString string = in_string;
 
-  //  strncpy(&c, string.left(1), 1);          // Copy the first char into
-					   // c, and then do a switch
-					   // on it
+  /*
+   * This is the second generation parsing code.
+   * Each line type is determined by the first 3 characters on it.
+   * Each line type is then sent to a parsing function.
+   */
+  try {
+    ChanParser->parse(string);
+  }
+  catch(parseSucc &item){
+    if(item.string.length() > 0)
+      return new ircListItem(item.string,item.colour,mainw,item.pm);
+    else
+      return NULL;
+  }
 
   try {
     switch(string[0]){
-    case '`':                                // ` is an ssfe command
-      s2 = strstr(string, "#ssfe#");
-      if(s2 > 0){
-	s2+=6;                               // move ahead character end
-	// of `ssfe control
-	// message, switch on end
-	// of control char
-	//      cerr << "s2: " << s2;
-	switch(s2[0]){
-	case 's':                            // moved [sirc] message
-	  s2+=10;                            // set the rest of the line
-	  // to the caption
-	  if(s2 != caption){
-	    if(s2[0] == '@')                 // If we're an op,,
-	      // update the nicks popup menu
-	      opami = TRUE;                  // opami = true sets us to an op
-	    else
-	      opami = FALSE;                 // FALSE, were not an ops
-	    UserUpdateMenu();                // update the menu
-	    setCaption(s2);
-	    if(ticker)
-	      ticker->setCaption(s2);
-	    caption = s2;           // Make copy so we're not
-	    // constantly changing the title bar
-	  }
-	  no_output = 1;                     // Don't print caption
-	  break;
-	case 'i':
-	  string.truncate(0);                // truncate string... set
-	  // no output, what's i?
-	  no_output = 1;
-	  break;
-	case 't':
-	  no_output = 1;
-	  pos = string.find("t/m ", 6);
-	  if(pos >= 0){
-	    pos += 4;
-	    try{
-	      pos2 = string.find(" ", pos);
-	    }
-	    catch (estringOutOfBounds &err){
-	      pos2 = string.length();
-	    }
-	    if(pos2 > pos){
-	      if(!nick_ring.contains(string.mid(pos, pos2-pos))){
-		nick_ring.append(string.mid(pos, pos2-pos));
-		//cerr << "Appending: " << string.mid(pos, pos2-pos) << endl;
-		if(nick_ring.count() > 10)
-		  nick_ring.removeFirst();
-	      }
-	    }
-	    break;
-	  }
-	case 'o':
-	  no_output = 1;
-	  string.truncate(0);
-	  break;
-	case 'l':
-	  mainw->clear();
-	  mainw->repaint(TRUE);
-	  string.truncate(0);
-	  no_output = 1;
-	  break;
-	case 'P':
-	case 'p':
-	  {
-	    if(prompt_active == FALSE){
-	      QString prompt, caption;
-	      ssfePrompt *sp;
-	      int p1, p2;
-	      
-	      // Flush the screen.
-	      // First remove the prompt message from the Buffer.
-	      // (it's garunteed to be the first one)
-	      LineBuffer->removeFirst();
-	      Buffer = FALSE;
-	      sirc_receive(QString(""));
-	      
-	      caption = mainw->text(mainw->count() - 1);
-	      if(caption.length() < 3){
-		caption = mainw->text(mainw->count() - 2);
-		if(caption.length() > 2)
-		  mainw->removeItem(mainw->count() - 2 );
-	      }
-	      else
-		mainw->removeItem(mainw->count() - 1 );
-	      p1 = string.find("ssfe#", 0) + 6; // ssfe#[pP] == 6
-	      p2 = string.length();
-	      if(p2 <= p1)
-		prompt = "No Prompt Given?";
-	      else
-		prompt = string.mid(p1, p2 - p1);
-	      prompt_active = TRUE;
-	      // If we use this, then it blows up
-	      // if we haven't popped up on the remote display yet.
-	      sp = new ssfePrompt(prompt, 0);
-	      sp->setCaption(caption);
-	      if(s2[0] == 'P')
-		sp->setPassword(TRUE);
-	      sp->exec();
-	      //	  cerr << "Entered: " << sp->text() << endl;
-	      prompt = sp->text();
-	      prompt += "\n";
-	      emit outputLine(prompt);
-	      delete sp;
-	      prompt_active = FALSE;
-	      string.truncate(0);
-	      no_output = 1;
-	      break;
-	    }
-	  }
-	  cerr << "Prompt already open!!!\n";
-	  throw (parseError(0, string, "Prompt already open!!"));
-	  break;
-	case 'R': // Reconnect, join channels, etc if needed.
-	  if(channel_name[0] == '#'){
-	    QString str = "/join " + QString(channel_name) + "\n";
-	    emit outputLine(str);
-	  }
-	  string.truncate(0);                // truncate string... set
-	  no_output = 1;
-	  break;
-	default:
-	  cerr << "Unkown ssfe command: " << string << endl;
-	  string.truncate(0);                // truncate string... set
-	  throw(parseError(0, "", "Unkown ssfe command, bailing out"));
-	  no_output = 1;
-	}
-      }
-      break;                                 // stop ssfe controls...
       //
       // Finish parsing ssfe control messages
       // Start parsing mode changes and other control messages, etc
@@ -871,21 +738,6 @@ ircListItem *KSircTopLevel::parse_input(QString &in_string) /*FOLD00*/
 	  continued_line = FALSE;             // a long user list
 	
 	switch(string[0]){
-	case '*':                             // * is an info message
-	  string.remove(0, 2);                // takes off the junk
-	  if(string.contains("Talking to")){
-	    cerr << "Removing Talking to\n";
-	    string.truncate(0);
-	    no_output = 1;
-	  }
-	  pixmap = pix_info;                 // Use the I/blue cir pixmap
-	  color = kSircConfig->colour_info;   // Colour is blue for info
-	  break;
-	case 'E':                            // E's an error message
-	  string.remove(0, 2);               // strip the junk
-	  pixmap = pix_madsmile;             // use the mad smiley
-	  color = kSircConfig->colour_error;  // set the clour to red
-	  break;
 	case '#':                             // Channel listing of who's in it
 	  // Get the channel name portion of the string
 	  try {
@@ -1709,7 +1561,8 @@ void kstInside::resizeEvent(QResizeEvent *e) /*fold00*/
 }
 
 
-QString KSircTopLevel::next_word(QString str, int index) throw(parseError) { /*fold00*/
+QString KSircTopLevel::next_word(QString str, int index) throw(parseError) /*fold00*/
+{
   int end;
   if(index < 0)
     throw(parseError(1, str, "Index offset less than 0 bailing out"));
@@ -1721,3 +1574,4 @@ QString KSircTopLevel::next_word(QString str, int index) throw(parseError) { /*f
     throw(parseError(1, str, "End offset for next_word in toplevel.cpp is broken "));
   return str.mid(index, end - index);
 }
+
