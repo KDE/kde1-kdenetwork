@@ -68,6 +68,7 @@ private slots:
     void popupMenu(int index,int column);
     void FindThis (const char *,const char *,bool casesen,bool wildmode);
     void goTo (int row);
+    void updateScores ();
         
 signals:
     void needConnection ();

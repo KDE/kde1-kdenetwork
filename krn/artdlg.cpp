@@ -98,6 +98,8 @@ extern KConfig *conf;
 
 extern Groupdlg *main_widget;
 
+extern QList <Rule> ruleList;
+
 findArtDlg *FindDlg=0;
 rulesDlg *RulesDlg=0;
 sortDlg *SortDlg=0;
@@ -535,6 +537,17 @@ bool Artdlg::taggedActions (int action)
     return success;
 }
 
+void Artdlg::updateScores()
+{
+    Article art;
+    for (char *ID=IDList.first();ID!=0;ID=IDList.next())
+    {
+        art.ID=ID;
+        art.load();
+        art.reScore(ruleList);
+    }
+}
+
 bool Artdlg::actions (int action)
 {
     setEnabled (false);
@@ -545,6 +558,12 @@ bool Artdlg::actions (int action)
     qApp->setOverrideCursor (waitCursor);
     switch (action)
     {
+    case UPDATE_SCORES:
+        {
+            updateScores();
+            fillTree();
+            break;
+        }
     case QUIT:
         {
             main_widget->close();

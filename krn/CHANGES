@@ -1,3 +1,9 @@
+-----------------------------------------------------------------------------
+Changes made Mar 8
+-----------------------------------------------------------------------------
+
+* [Roberto] Well, it's now time to start working in this baby again.
+            Implemented UPDATE_SCORES. The menu was there, but it did nothing.
 
 -----------------------------------------------------------------------------
 Changes made Feb 24
@@ -5,12 +11,7 @@ Changes made Feb 24
 
 * [Jacek] Fixed charset dialog 
 * [Jacek] Added more charset config dialog functionality
-	HTML-like unknown characters quoting as an option
-	    
------------------------------------------------------------------------------
-Changes made Feb 24
------------------------------------------------------------------------------
-
+ 	  HTML-like unknown characters quoting as an option
 * [Roberto] Global scoring works!!!!!!
             Per-newsgroup list of scoring rules soon, when this is debugged.
 * [Roberto] Now Krn should build again with gcc 2.7.x.

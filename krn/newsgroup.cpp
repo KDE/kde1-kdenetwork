@@ -329,7 +329,6 @@ void Article::reScore(RuleList rules)
             sc+=rule->value;
         }
     }
-
     s.setNum(sc);
     
     datum key;
