@@ -1,0 +1,210 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 1998 Free Software Foundation, Inc.
+# Hans Petter Bieker <zerium@webindex.no>, 1998.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 1998-10-09 15:54+0200\n"
+"PO-Revision-Date: 1998-10-14 01:10+0100\n"
+"Last-Translator: Karl Backström <backstrom@kde.org>\n"
+"Language-Team: Sv <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO_8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: knu.cpp:140 knu.cpp:301
+msgid "&Ping"
+msgstr "&Ping"
+
+#: knu.cpp:149 knu.cpp:307
+msgid "&Traceroute"
+msgstr "F&inna routen"
+
+#: knu.cpp:158 knu.cpp:313
+msgid "Host &resolution"
+msgstr "Värds&upplysning"
+
+#: knu.cpp:171
+msgid "F&inger"
+msgstr "Fin&ger"
+
+#: knu.cpp:181 knu.cpp:326
+msgid "&Matt's traceroute"
+msgstr "&Matts traceroute"
+
+#: knu.cpp:193
+msgid ""
+"There is no command enabled\n"
+"in the configuration file.\n"
+"\n"
+"So I can't do anything...\n"
+msgstr ""
+"Inget kommando finns angivet\n"
+"i konfigurationsfilen.\n"
+"\n"
+"Så jag kan inte göra något...\n"
+
+#: knu.cpp:238
+msgid "&New window"
+msgstr "&Nytt fönster"
+
+#: knu.cpp:241
+msgid "&Close window"
+msgstr "&Stäng fönster"
+
+#: knu.cpp:252
+msgid "Select &all"
+msgstr "Välj &allt"
+
+#: knu.cpp:255
+msgid "C&lear output window"
+msgstr "&Töm utfönstret"
+
+#: knu.cpp:258
+msgid "P&references..."
+msgstr "&Inställningar..."
+
+#: knu.cpp:273
+#, c-format
+msgid "&About %s"
+msgstr "Om %s"
+
+#: knu.cpp:275
+msgid "About &Qt"
+msgstr "Om &Qt"
+
+#: knu.cpp:319
+msgid "&Finger"
+msgstr "&Finger"
+
+#: knu.cpp:466
+msgid "About..."
+msgstr "Om..."
+
+#: CommandDlg.cpp:121
+msgid "H&ost:"
+msgstr "&Värd:"
+
+#: CommandDlg.cpp:130
+msgid "&Go!"
+msgstr "&Kör!"
+
+#: CommandDlg.cpp:140
+msgid "&Stop"
+msgstr "&Stopp"
+
+#: CommandDlg.cpp:156
+msgid ""
+"This command binary was not found. \n"
+"You can give its path in the Edit->Preferences... menu."
+msgstr ""
+"Kommandots binärfil hittades inte. \n"
+"Du kan uppge dess sökväg i Redigera->Inställningar... menyn."
+
+#: CommandDlg.cpp:341
+#, c-format
+msgid ""
+"\n"
+"You have a problem in your\n"
+"%s/%src\n"
+"configuration file.\n"
+"In the [%s] group,\n"
+"I can't find a valid \"path=\" entry.\n"
+"\n"
+"Please use Edit->Preferences... menu\n"
+"to configure it again.\n"
+msgstr ""
+"\n"
+"Du har ett fel i din\n"
+"%s/%src-\n"
+"konfigurationsfil.\n"
+"I [%s]-gruppen,\n"
+"Kan inte hitta giltig \"path=\"-parameter.\n"
+"\n"
+"Använd Redigera->Inställningar...-menyn\n"
+"för att ställa in det.\n"
+
+#: CommandDlg.cpp:350
+msgid "Error in pathname"
+msgstr "Fel i sökvägen"
+
+#: CommandDlg.cpp:483
+msgid "Binary"
+msgstr "Binärfil"
+
+#: CommandDlg.cpp:491
+msgid "Path&name:"
+msgstr "&Sökväg:"
+
+#: CommandDlg.cpp:500
+msgid "Additional &arguments:"
+msgstr "Ytterligare &argument:"
+
+#: CommandDlg.cpp:525
+msgid "This command had been disabled in the configuration file."
+msgstr "Det här kommandot var frånkopplat i konfigurationsfilen."
+
+#: OptionsDlg.cpp:69
+msgid " - configuration"
+msgstr " - konfiguration"
+
+#: PingDlg.cpp:97 TracerouteDlg.cpp:98
+msgid "Make host &name resolution"
+msgstr "Gör värds&namnsupplösning"
+
+#: TracerouteDlg.cpp:115
+msgid "&Maximum number of hops:"
+msgstr "&Maximalt antal hopp:"
+
+#: HostDlg.cpp:112
+msgid "address (A)"
+msgstr "adress (A)"
+
+#: HostDlg.cpp:113
+msgid "name (PTR)"
+msgstr "namn (PTR)"
+
+#: HostDlg.cpp:114
+msgid "name server (NS)"
+msgstr "namnserver (NS)"
+
+#: HostDlg.cpp:115
+msgid "mail exchanger (MX)"
+msgstr "postutdelare (MX)"
+
+#: HostDlg.cpp:116
+msgid "alias (CNAME)"
+msgstr "alias (CNAME)"
+
+#: HostDlg.cpp:117
+msgid "start of authority (SOA)"
+msgstr "start på autoritet (SOA)"
+
+#: HostDlg.cpp:118
+msgid "any record (ANY)"
+msgstr "vilken upplysning som helst (ANY)"
+
+#: HostDlg.cpp:124
+msgid "Se&arch for:"
+msgstr "&Leta efter:"
+
+#: HostDlg.cpp:136 HostDlg.cpp:287
+msgid "default server"
+msgstr "standardserver"
+
+#: FingerDlg.cpp:95 HostDlg.cpp:145
+msgid "Ser&ver:"
+msgstr ""
+
+#: HostDlg.cpp:331
+msgid "hos&t"
+msgstr "vär&d"
+
+#: HostDlg.cpp:335
+msgid "ns&lookup"
+msgstr "&nslookup"
+
+#: FingerDlg.cpp:77
+msgid "&User:"
+msgstr "&Användare:"

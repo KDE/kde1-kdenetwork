@@ -1,0 +1,233 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 1998 Free Software Foundation, Inc.
+# Hans Petter bieker <zerium@webindex.no>, 1998.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 1998-10-13 13:34+0200\n"
+"PO-Revision-Date: 1998-08-09 19:00+0200\n"
+"Last-Translator: Karl Backström <backström@kde.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO_8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: setupdlg.cpp:65
+msgid "KBiff Setup"
+msgstr "KBiff Inställningar"
+
+#: setupdlg.cpp:68
+msgid "Profile:"
+msgstr "Profil:"
+
+#: setupdlg.cpp:84
+#, fuzzy
+msgid "&New..."
+msgstr "&Hjälp..."
+
+#: setupdlg.cpp:91
+msgid "&Rename..."
+msgstr "&Ändra namn..."
+
+#: setupdlg.cpp:125
+msgid "General"
+msgstr "Generellt"
+
+#: setupdlg.cpp:126
+msgid "New Mail"
+msgstr "Ny post"
+
+#: setupdlg.cpp:127
+msgid "Mailbox"
+msgstr "Postlåda"
+
+#: setupdlg.cpp:335
+msgid "New Profile"
+msgstr "Ny profil"
+
+#: setupdlg.cpp:367
+#, c-format
+msgid "Rename Profile: %s"
+msgstr "Ändra profilnamnet: %s"
+
+#: setupdlg.cpp:407
+#, c-format
+msgid "Delete Profile: %s"
+msgstr "Ta bort profilen: %s"
+
+#: setupdlg.cpp:408
+msgid "Are you sure you wish to delete this profile?\n"
+msgstr "Är du säker att du vill ta bort den här profilen?\n"
+
+#: setupdlg.cpp:468
+msgid "Poll (sec):"
+msgstr "Titta (sek):"
+
+#: setupdlg.cpp:473
+msgid "Mail client:"
+msgstr "Postklient:"
+
+#: setupdlg.cpp:486
+msgid "Dock in panel"
+msgstr "Docka i panelen"
+
+#: setupdlg.cpp:491
+msgid "Use session management"
+msgstr "Använd sessionshantering"
+
+#: setupdlg.cpp:496
+msgid "Icons:"
+msgstr "Ikoner:"
+
+#: setupdlg.cpp:514
+msgid "No Mail:"
+msgstr "Ingen post:"
+
+#: setupdlg.cpp:523
+msgid "Old Mail"
+msgstr "Gammal post"
+
+#: setupdlg.cpp:533
+msgid "New Mail:"
+msgstr "Ny post:"
+
+#: setupdlg.cpp:670
+msgid "Run Command"
+msgstr "Kör kommando"
+
+#: setupdlg.cpp:677 setupdlg.cpp:690 setupdlg.cpp:985
+msgid "Browse"
+msgstr "Bläddra"
+
+#: setupdlg.cpp:683
+msgid "Play Sound"
+msgstr "Spela ljud"
+
+#: setupdlg.cpp:696
+msgid "System Beep"
+msgstr "Systempip"
+
+#: setupdlg.cpp:701
+msgid "Notify"
+msgstr "Uppmaning"
+
+#: setupdlg.cpp:829
+msgid "Advanced Options"
+msgstr "Avancerade val"
+
+#: setupdlg.cpp:833
+msgid "Mailbox URL:"
+msgstr "Postlåds-URL:"
+
+#: setupdlg.cpp:837
+msgid "Port:"
+msgstr "Port:"
+
+#: setupdlg.cpp:841
+msgid "PREAUTH"
+msgstr ""
+
+#: setupdlg.cpp:945 setupdlg.cpp:1238
+msgid "New Mailbox"
+msgstr "Ny postlåda"
+
+#: setupdlg.cpp:952
+msgid "Delete Mailbox"
+msgstr "Ta bort postlådan"
+
+#: setupdlg.cpp:958
+msgid "Protocol:"
+msgstr "Protokoll:"
+
+#: setupdlg.cpp:961
+msgid "Mailbox:"
+msgstr "Postlåda:"
+
+#: setupdlg.cpp:964
+msgid "Server:"
+msgstr "Server:"
+
+#: setupdlg.cpp:967
+msgid "User:"
+msgstr "Användare:"
+
+#: setupdlg.cpp:970
+msgid "Password:"
+msgstr "Lösenord:"
+
+#: setupdlg.cpp:1002
+msgid "Store password"
+msgstr "Spara lösenordet"
+
+#: setupdlg.cpp:1005
+msgid "Advanced"
+msgstr "Avancerat"
+
+#: setupdlg.cpp:1430
+msgid "KBiff"
+msgstr "KBiff"
+
+#: setupdlg.cpp:1452
+#, fuzzy, c-format
+msgid ""
+"Version %s\n"
+"\n"
+"Copyright (C) 1998\n"
+"Kurt Granroth"
+msgstr ""
+"Version %s\n"
+"\n"
+"Copyright (C) 1998\n"
+"Kurt Granroth"
+
+#: setupdlg.cpp:1501
+msgid "New Name:"
+msgstr "Nytt namn:"
+
+#: setupdlg.cpp:1527
+msgid "New Name"
+msgstr "Nytt namn"
+
+#: kbiff.cpp:468
+msgid "&UnDock"
+msgstr "&Odocka"
+
+#: kbiff.cpp:470
+msgid "&Dock"
+msgstr "&Docka"
+
+#: kbiff.cpp:471
+msgid "&Setup..."
+msgstr "&Inställningar..."
+
+#: kbiff.cpp:473
+msgid "&Help..."
+msgstr "&Hjälp..."
+
+#: kbiff.cpp:477
+msgid "&Check mail now"
+msgstr "&Kolla posten nu"
+
+#: kbiff.cpp:479
+#, fuzzy
+msgid "&Read Mail now"
+msgstr "&Läs posten nu"
+
+#: kbiff.cpp:485
+msgid "&Stop"
+msgstr "&Stopp"
+
+#: notify.cpp:28 notify.cpp:45
+msgid "You have new mail!"
+msgstr "Du har fått brev!"
+
+#: notify.cpp:53
+#, c-format
+msgid "New Messages: %d"
+msgstr "Nya meddelanden: %d"
+
+#: notify.cpp:58
+#, fuzzy, c-format
+msgid "Mailbox: %s"
+msgstr "Postlåda: %s"

@@ -1,0 +1,190 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 1998-10-01 18:13+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Karl Backstrom <backstrom@kde.org>\n"
+"Language-Team: Sv <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ENCODING\n"
+
+#: shell.cpp:226
+msgid "About KOrn"
+msgstr "Om KOrn"
+
+#: optdlg.cpp:113 shell.cpp:236
+msgid "&Setup.."
+msgstr "&Inställningar.."
+
+#: shell.cpp:239
+msgid "&About.."
+msgstr "&Om.."
+
+#: shell.cpp:250
+msgid "Welcome to KOrn"
+msgstr "Välkommen till KOrn"
+
+#: shell.cpp:251
+msgid ""
+"You do not appear to have used KOrn before. Would you like a basic "
+"configuration created for you?"
+msgstr ""
+"Det verkar inte som du har använt KOrn förut. Skulle du vilja ha "
+"en standardkonfiguration?"
+
+#: shell.cpp:253
+msgid "No, Exit"
+msgstr "Nej, avsluta"
+
+#: dropman.cpp:185
+msgid "Inbox"
+msgstr "Inkorgen"
+
+#: dropman.cpp:191
+msgid "Can't find mailbox"
+msgstr "Kan inte hitta brevlådorna"
+
+#: dropman.cpp:192
+msgid ""
+"Unable to find $MAIL environment variable. You'll have to configure the "
+"mailboxes yourself."
+msgstr ""
+"Hittade inte $MAIL-variabeln. Du måste konfigurera brevlådorna själv."
+
+#: dropman.cpp:254
+msgid " (clone)"
+msgstr " (klon)"
+
+#: typedlg.cpp:28
+msgid "Select a mailbox type..."
+msgstr "Välj brevlådetyp..."
+
+#: typedlg.cpp:44
+msgid "O&K"
+msgstr ""
+
+#: optdlg.cpp:30
+msgid "Korn: Options"
+msgstr "Korn: Inställningar"
+
+#: optdlg.cpp:42
+msgid "Horizontal"
+msgstr "Horisontell"
+
+#: optdlg.cpp:45
+msgid "Vertical"
+msgstr "Vertikal"
+
+#: optdlg.cpp:48
+msgid "Docked"
+msgstr "Dockad"
+
+#: optdlg.cpp:51
+msgid "&Layout"
+msgstr ""
+
+#: optdlg.cpp:80
+msgid "&Modify Box"
+msgstr "&Ändra lådan"
+
+#: optdlg.cpp:89
+msgid "&New Box"
+msgstr "&Ny låda"
+
+#: optdlg.cpp:95
+msgid "&Delete Box"
+msgstr "&Ta bort lådan"
+
+#: optdlg.cpp:104
+msgid "&Clone Box"
+msgstr "&Stäng lådan"
+
+#: optdlg.cpp:121
+msgid "&Boxes"
+msgstr "&Lådor"
+
+#: optdlg.cpp:243
+msgid "New Monitor"
+msgstr "Ny Monitor"
+
+#: dropdlg.cpp:22
+msgid "Korn Monitor"
+msgstr ""
+
+#: gencfg.cpp:28
+msgid "Caption"
+msgstr "Titel"
+
+#: gencfg.cpp:31
+msgid "On Receipt"
+msgstr "Vid mottagande"
+
+#: gencfg.cpp:34
+msgid "On Click"
+msgstr "Vid mustryckning"
+
+#: gencfg.cpp:42
+msgid "General"
+msgstr "Allmänt"
+
+#: pollcfg.cpp:26
+msgid "Poll"
+msgstr "Ta ur"
+
+#: pollcfg.cpp:40
+msgid "Check Frequency (sec)"
+msgstr "Tid mellan kollar (sek)"
+
+#: unixcfg.cpp:26
+msgid "Mailbox"
+msgstr "Brevlåda"
+
+#: unixcfg.cpp:41
+msgid "Mbox Path"
+msgstr "Brevlådans sökväg"
+
+#: qmailcfg.cpp:26
+msgid "Maildir"
+msgstr "Brevkatalogen"
+
+#: qmailcfg.cpp:38
+msgid "Maildir Path"
+msgstr "Brevkatalogens sökväg"
+
+#: newscfg.cpp:38 popcfg.cpp:44
+msgid "Server"
+msgstr ""
+
+#: popcfg.cpp:49
+msgid "Port"
+msgstr ""
+
+#: popcfg.cpp:52
+msgid "Username"
+msgstr "Avändaridentitet"
+
+#: popcfg.cpp:55
+msgid "Password"
+msgstr "Lösenord"
+
+#: popcfg.cpp:60
+msgid "Save Password"
+msgstr "Spara lösenordet"
+
+#: newscfg.cpp:26
+msgid "News"
+msgstr "Nyheter"
+
+#: newscfg.cpp:41
+msgid "Group"
+msgstr "Grupp"
+
+#: kfbrowsebtn.cpp:18
+msgid "Browse.."
+msgstr "Bläddra.."
