@@ -40,6 +40,13 @@ QList<UserControlMenu> *UserControlMenu::parseKConfig()
     // We found nothing, so let's use some defaults.
 
     UserMenu.setAutoDelete(TRUE);
+    UserMenu.append(new UserControlMenu("Follow", 
+					 "/follow $$dest_nick",
+					 0, UserControlMenu::Text));
+    UserMenu.append(new UserControlMenu("unFollow", 
+					 "/unfollow $$dest_nick",
+					 0, UserControlMenu::Text));
+    UserMenu.append(new UserControlMenu); // Defaults to a seperator
     UserMenu.append(new UserControlMenu("Whois", 
 					 "/whois $$dest_nick $$dest_nick",
 					 0, UserControlMenu::Text));

@@ -496,8 +496,6 @@ void KSircTopLevel::sirc_receive(QString str)
 	lines++; // Mode up lin counter
 	update = TRUE;
       }
-//      if(mainw->count() > 100)
-//	mainw->removeItem(0);
     }
     LineBuffer->clear(); // Clear it since it's been added
 
@@ -508,15 +506,10 @@ void KSircTopLevel::sirc_receive(QString str)
            mainw->removeItem(0);
     }
 
-    //    if(mainw->autoUpdate() == FALSE){
     mainw->setAutoUpdate(TRUE);
-    //      mainw->update();
-    //    mainw->repaint(TRUE);
-    //    }
 
-    // If we need to scroll, we, scroll =)
-    // scrollToBottom returns true if we should repaint.
     mainw->scrollToBottom();
+    mainw->repaint(FALSE); // Repaint, but not need to erase and cause fliker.
   }
   else{
     LineBuffer->append(str);

@@ -107,7 +107,7 @@ extern KApplication *kApp;
 extern KConfig *kConfig;
 extern global_config *kSircConfig;
 
-KSircProcess::KSircProcess( char *_server=0L, QObject * parent=0, const char * name=0 )
+KSircProcess::KSircProcess( char *_server=0l, QObject * parent=0, const char * name=0 )
   : QObject(parent, name)
 {
 
