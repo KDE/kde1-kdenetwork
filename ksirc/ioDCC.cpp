@@ -31,7 +31,7 @@ void KSircIODCC::sirc_receive(QString str)
     //
     // Find the filename first
     //
-    int pos1 = 20; // String starts at 20, fixed length.
+    int pos1 = 18; // String starts at 20, fixed length.
     int pos2 = str.find(" ", pos1);
     if(pos2 < 0)
       return;
@@ -67,7 +67,7 @@ void KSircIODCC::sirc_receive(QString str)
     //
     // Find the filename, it's first byte is fixed at 22.
     //
-    int pos1 = 22; // Starting bye is fixed.
+    int pos1 = 20; // Starting bye is fixed.
     int pos2 = str.find(" ", pos1);
     if(pos2 < 0)
       return;
@@ -285,8 +285,8 @@ filterRuleList *KSircIODCC::defaultRules()
   frl->setAutoDelete(TRUE);
   fr = new filterRule();
   fr->desc = "Capture DCC IO Messages";
-  fr->search = "\\*\\cbD\\cb\\*.*DCC";
-  fr->from = "^(?:~\\S+~)";
+  fr->search = "^\\*D\\*";
+  fr->from = "^";
   fr->to = "~!dcc~";
   frl->append(fr);
   return frl;
