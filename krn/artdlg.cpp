@@ -90,6 +90,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     :Inherited (_group->name)
 {
     group=0;
+    server=0;
     FindDlg=new findArtDlg(0);
     connect (FindDlg,SIGNAL(FindThis(const char *,const char*)),
              this,SLOT(FindThis(const char *,const char*)));
@@ -100,16 +101,15 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     showlocked=conf->readNumEntry("ShowLockedArticles");
     showcached=conf->readNumEntry("ShowCachedArticles");
     
-    server = _server;
-    QObject::connect (server,SIGNAL(newStatus(const char *)),
-                      this,SLOT(updateCounter(const char *)));
     
     taggedArticle=new QPopupMenu;
     taggedArticle->insertItem(klocale->translate("Save"),SAVE_ARTICLE);
     taggedArticle->insertItem(klocale->translate("Download"),DOWNLOAD_ARTICLE);
     taggedArticle->insertSeparator();
+    taggedArticle->insertItem(klocale->translate("Print"),PRINT_ARTICLE);
     taggedArticle->insertItem(klocale->translate("Decode"),DECODE_ARTICLE);
     taggedArticle->insertItem(klocale->translate("Untag"),TAG_ARTICLE);
+    taggedArticle->insertItem(klocale->translate("Don't expire"), TOGGLE_EXPIRE);  // robert's cache stuff
     connect (taggedArticle,SIGNAL(activated(int)),SLOT(taggedActions(int)));
     
     
@@ -320,6 +320,16 @@ void Artdlg::init (NewsGroup *_group, NNTP* _server)
     qApp->processEvents ();
     group->getList(this);
 
+    if (server)
+    {
+        disconnect (server,SIGNAL(newStatus(const char *)),
+                          this,SLOT(updateCounter(const char *)));
+    }
+    
+    server = _server;
+    QObject::connect (server,SIGNAL(newStatus(const char *)),
+                      this,SLOT(updateCounter(const char *)));
+
     if (server->isConnected())
     {
         actions(ARTLIST);
@@ -427,7 +437,7 @@ bool Artdlg::taggedActions (int action)
     qApp->setOverrideCursor (waitCursor);
     int c=0;
 
-    if (action==DOWNLOAD_ARTICLE)
+    if (action!=PRINT_ARTICLE)
     {
         disconnect (list,SIGNAL(highlighted(int,int)),this,SLOT(loadArt(int,int)));
     }
@@ -442,7 +452,7 @@ bool Artdlg::taggedActions (int action)
         c++;
     }
     
-    if (action==DOWNLOAD_ARTICLE)
+    if (action!=PRINT_ARTICLE)
     {
         connect (list,SIGNAL(highlighted(int,int)),this,SLOT(loadArt(int,int)));
     }

@@ -283,24 +283,25 @@ void expireCache()   // robert's cache stuff
     int expireTime=conf->readNumEntry("ExpireDays",5);
     
     QDir d(cachepath.data());
-    QStrList files=d.entryList();
+    d.setFilter(QDir::Files);
+    QStrList *files=new QStrList (*d.entryList("*"));
     
     struct stat st;
     time_t currenttime = time(NULL);
     char filename[255];
     
-    for (char *fname=files.first();fname!=0;fname=files.next())
+    for (char *fname=files->first();fname!=0;fname=files->next())
     {
         sprintf(filename, "%s%s", cachepath.data(), fname);
         
-        debug(filename);
         
         if(stat(filename, &st))
         {
             debug("couldn't stat %s", filename);
         } else {
-            if(((currenttime-st.st_atime) > DAY*expireTime) && !strcmp(fname, "."))
+            if((currenttime-st.st_atime) > DAY*expireTime)
             {
+                debug(filename);
                 Article *art = new Article();
                 
                 art->ID = fname;
@@ -314,6 +315,7 @@ void expireCache()   // robert's cache stuff
             }
         }
     }
+    delete files;
 }
 
 
