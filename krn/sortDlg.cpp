@@ -38,8 +38,6 @@ sortDlg::sortDlg():QDialog(0,0,true)
 
     l->addLabel("l1",klocale->translate("Sort by:"));
     l->newLine();
-    l->addLabel("l1","This now works, but doesn't do anything!");
-    l->newLine();
     l->addComboBox("key1",allkeys);
     l->newLine();
     l->addComboBox("key2",allkeys);

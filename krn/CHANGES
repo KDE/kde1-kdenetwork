@@ -8,6 +8,11 @@ Changes made Feb 10
             In that case, it still works, but an ugly threading side effect
             hides it.
             Clicking in a header will sort (unthreaded) by that field.
+* [Roberto] Fixed bugs kb97 and kb101, which are in fact the same:
+            "The tree widget doesn't display + or - signs
+            unless one has expanded and collapsed the tree."
+* [Roberto] Bumped version to 0.2.3, after all sorting is an important
+            feature.
 
 -----------------------------------------------------------------------------
 Changes made Feb 9

@@ -220,6 +220,7 @@ Inherited (name)
     
     list = new MyTreeList (this, "");
     QObject::connect (list, SIGNAL (selected (int)), this, SLOT (openGroup (int)));
+    QObject::connect (list, SIGNAL (expanding (KTreeViewItem*,bool&)), this, SLOT (openGroup (KTreeViewItem*)));
     setView (list);
     RmbPop *filter=new RmbPop(list);
     delete (filter->pop);
@@ -283,8 +284,6 @@ Groupdlg::~Groupdlg ()
 
 void Groupdlg::openGroup (QString name)
 {
-    if (name.find('/')==0)
-        name=name.right(name.length()-1);
     NewsGroup n(name);
     int i=groups.find(&n);
     if (groups.at(i)->isVisible)
@@ -333,7 +332,12 @@ void Groupdlg::openGroup (QString name)
     }
 }
 
-
+void Groupdlg::openGroup (KTreeViewItem *item)
+{
+    item->setDelayedExpanding(false);
+    int i=list->itemRow(item);
+    openGroup(i);
+}
 
 void Groupdlg::openGroup (int index)
 {
@@ -410,8 +414,10 @@ void Groupdlg::openGroup (int index)
                         {
                             // It's new, so add it to the base list
                             // and insert it as a folder
-			    dict.insert(iter->name, &nullItem);
-			    list->appendChildItem(iter->name,krnfolder,index);
+                            dict.insert(iter->name, &nullItem);
+                            KTreeViewItem *itemp=new KTreeViewItem(iter->name,krnfolder);
+                            itemp->setDelayedExpanding(true);
+                            list->appendChildItem(itemp,index);
                         }
                         nextdot[0]=tc;
                     }
@@ -541,7 +547,9 @@ void Groupdlg::fillTree ()
 {
     QPixmap p;
     p=kapp->getIconLoader()->loadIcon("krnfolder.xpm");
-    list->insertItem (klocale->translate("Subscribed Newsgroups."), p);
+    KTreeViewItem *item=new KTreeViewItem(klocale->translate("Subscribed Newsgroups."), p);
+    item->setDelayedExpanding(true);
+    list->insertItem (item);
     QListIterator <NewsGroup> it(subscr);
     it.toFirst();
     NewsGroup *g;
@@ -553,7 +561,9 @@ void Groupdlg::fillTree ()
     }
 
     p=kapp->getIconLoader()->loadIcon("krnfolder.xpm");
-    list->insertItem (klocale->translate("All Newsgroups."), p);
+    item=new KTreeViewItem(klocale->translate("All Newsgroups."), p);
+    item->setDelayedExpanding(true);
+    list->insertItem (item);
 }
 
 bool Groupdlg::needsConnect()

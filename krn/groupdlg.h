@@ -45,6 +45,8 @@ public:
 
 public slots:
     void openGroup(QString name);
+    void openGroup(int);
+    void openGroup(KTreeViewItem *);
     void online();
     void offline();
     bool needsConnect();
@@ -59,7 +61,6 @@ private slots:
     void fillTree();
     void tag(NewsGroup *group);
     void subscribe(NewsGroup *group);
-    void openGroup(int);
     void checkUnread();
     void getSubjects(NewsGroup *group);
     void getArticles(NewsGroup *group);
