@@ -68,7 +68,7 @@ ModemSelector::ModemSelector(QWidget *parent) : QDialog(parent, 0, true) {
 
   KButtonBox *bbox = new KButtonBox(this);
   bbox->addStretch(1);
-  ok = bbox->addButton(i18n("Ok"));
+  ok = bbox->addButton(i18n("OK"));
   ok->setDefault(true);
   ok->setEnabled(false);
   cancel =   bbox->addButton(i18n("Cancel"));
