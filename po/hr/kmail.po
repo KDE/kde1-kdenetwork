@@ -1,13 +1,14 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Prijevod Kmaila
+# Copyright (C) 1998 Free Software Foundation, Inc.
+# Zoran Sokol <zsokol@ci.tel.hr>, 1998
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: KMail\n"
 "POT-Creation-Date: 1998-04-16 18:09+0200\n"
 "PO-Revision-Date: 1998-04-29 20:00-0500\n"
 "Last-Translator: Zoran Sokol <zsokol@ci.tel.hr>\n"
+"Last-Translator: Vladimir Vuksan <vuksan@veus.hr>\n"
 "Language-Team: Croatian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
@@ -149,11 +150,11 @@ msgstr "Pre&mjesti..."
 
 #: kmmainwin.cpp:734 kmmainwin.cpp:826
 msgid "&Copy..."
-msgstr "&Kopiraj..."
+msgstr "Is&kopiraj..."
 
 #: kmmainwin.cpp:748
 msgid "New Composer"
-msgstr "Novi Sastavljaè"
+msgstr "Novi Sastavljaè poruka"
 
 #: kmmainwin.cpp:750
 msgid "New Mailreader"
@@ -253,7 +254,7 @@ msgstr "Primjeni filtere"
 
 #: kmmainwin.cpp:836
 msgid "View Source..."
-msgstr "Pregled Izvora..."
+msgstr "Pogledaj Izvor..."
 
 #: kmmainwin.cpp:843
 msgid "&Brief Headers"
@@ -417,11 +418,11 @@ msgstr "Direktorij"
 
 #: kmsettings.cpp:231
 msgid "Add..."
-msgstr "Dodaj..."
+msgstr "Novi..."
 
 #: kmsettings.cpp:234
 msgid "Modify..."
-msgstr "Izmijeni..."
+msgstr "Promijeni..."
 
 #: kmsettings.cpp:254
 msgid "Network"
@@ -489,7 +490,7 @@ msgstr "Koristi jednoliko pismo"
 
 #: kmsettings.cpp:360
 msgid "When sending mail"
-msgstr "Prilikom slanja po¹te"
+msgstr "Slanje po¹te"
 
 #: kmsettings.cpp:363
 msgid "Default sending:"
@@ -505,7 +506,7 @@ msgstr "po¹alji kasnije"
 
 #: kmsettings.cpp:375
 msgid "Send messages:"
-msgstr "Po¹alji poruke:"
+msgstr "Slanje poruka:"
 
 #: kmsettings.cpp:378
 msgid "Allow 8-bit"
@@ -553,7 +554,7 @@ msgstr "Pop korisnièki raèun"
 
 #: kmsettings.cpp:734
 msgid "Login:"
-msgstr "Prijava:"
+msgstr "Prijavno Ime (login):"
 
 #: kmacctpop.cpp:436 kmsettings.cpp:737
 msgid "Password:"
@@ -640,7 +641,7 @@ msgstr "Ne mogu spremiti poruku(e)."
 #: kmheaders.cpp:643
 #, c-format
 msgid "%d Messages, %d unread."
-msgstr "%d Poruka, %d neproèitanih"
+msgstr "Ukupno %d poruka od toga %d neproèitanih"
 
 #: kmheaders.cpp:645
 msgid "Folder is read-only."
@@ -808,7 +809,7 @@ msgstr "Umetni sadr¾aj odlagali¹ta (clipboard)"
 
 #: kmcomposewin.cpp:565
 msgid "Attach file"
-msgstr "Prikvaèi datoteku"
+msgstr "Prilo¾i datoteku"
 
 #: kmcomposewin.cpp:578
 msgid "sign message"
@@ -853,7 +854,7 @@ msgstr "Gre¹ka prilikom ¹ifriranja:"
 
 #: kmcomposewin.cpp:1140
 msgid "Attach File"
-msgstr "Prikvaèi datoteku"
+msgstr "Prilo¾i datoteku"
 
 #: kmcomposewin.cpp:1157
 msgid "Include File"
@@ -873,7 +874,7 @@ msgstr "Svojstva..."
 
 #: kmcomposewin.cpp:1184
 msgid "Attach..."
-msgstr "Prikvaèi..."
+msgstr "Prilo¾i..."
 
 #: kmcomposewin.cpp:1226 kmreaderwin.cpp:699
 msgid "View Attachment: "
