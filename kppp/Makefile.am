@@ -63,7 +63,8 @@ kppp_SOURCES	= accounts.cpp \
 		runtests.cpp \
 		loginterm.cpp \
 		ppplog.cpp \
-		log.cpp
+		log.cpp \
+		quickhelp.cpp
 
 # the library search path
 kppp_LDFLAGS = $(all_libraries) $(KDE_RPATH)
@@ -105,7 +106,8 @@ noinst_HEADERS = accounts.h \
 		version.h \
 		macros.h \
 		ppplog.h \
-		log.h
+		log.h \
+		quickhelp.h
 
 # just to make sure, automake makes them 
 BUILTSOURCES = accounts.moc \
@@ -125,7 +127,8 @@ BUILTSOURCES = accounts.moc \
 		accounting.moc\
 		acctselect.moc\
 		docking.moc \
-		setup.moc
+		setup.moc \
+		quickhelp.moc
 
 # if you "make distclean", this files get removed. If you want to remove
 # them while "make clean", use CLEANFILES
@@ -238,3 +241,7 @@ scriptedit.moc: scriptedit.h
 setup.cpp: setup.moc
 setup.moc: setup.h
 	$(MOC) setup.h -o setup.moc
+
+quickhelp.cpp: quickhelp.moc
+quickhelp.moc: quickhelp.h
+	$(MOC) quickhelp.h -o quickhelp.moc

@@ -56,6 +56,7 @@
 #include "modem.h"
 #include "ppplog.h"
 #include "log.h"
+#include "quickhelp.h"
 #include <X11/Xlib.h>
 
 KPPPWidget*	p_kppp;
@@ -302,20 +303,17 @@ int main( int argc, char **argv ) {
     exit(1);
   }
   
+  // Mario: testing
+  if(TESTING) {
+    a.exec();
+    exit(0);
+  }
+
   KPPPWidget kppp;
   p_kppp = &kppp;
 
   a.setMainWidget(&kppp);
-  a.setTopWidget(&kppp);  
-
-  // Mario: testing
-  if(TESTING) {
-    MiniTerm *w = new MiniTerm(0);
-    a.setMainWidget(w);
-    a.setTopWidget(w);
-    w->exec();
-    exit(0);
-  }
+  a.setTopWidget(&kppp);
 
   // we really don't want to die accidentally, since that would leave the
   // modem connected. If you really really want to kill me you must send 

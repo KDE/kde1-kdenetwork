@@ -72,23 +72,17 @@ ConWindow::ConWindow(QWidget *parent, const char *name,QWidget *mainwidget)
   statsbutton->setFocus();
   connect(statsbutton, SIGNAL(clicked()), this,SLOT(stats()));
 
-  /*  fline = new QFrame(this,"line");
-  fline->setFrameStyle(QFrame::HLine |QFrame::Sunken);
-  fline->setGeometry(10,65+50,300,5);
-  */
-
   clocktimer = new QTimer(this);
   connect(clocktimer, SIGNAL(timeout()), SLOT(timeclick()));
   tl = 0;
 }
-
 
 ConWindow::~ConWindow() {
   stopClock();
 }
 
 
-void ConWindow::accounting(bool on, bool debug) {
+void ConWindow::accounting(bool on) {
   // delete old layout
   if(tl != 0)
     delete tl;
@@ -197,10 +191,6 @@ void ConWindow::accounting(bool on, bool debug) {
 
   tl1->addSpacing(5);
 
-  // add loginterm-replacement here
-  if(debug)
-    ;
-
   tl1->freeze();
   setGeometry((QApplication::desktop()->width() - width()) / 2,
 	      (QApplication::desktop()->height() - height())/2,
@@ -281,19 +271,14 @@ void ConWindow::timeclick() {
   }
 
   time_string = "";
-
-
   time_string.sprintf("%02d:%02d",hours,minutes);
-
   time_string2 = "";
-  if (days){
+  if (days)
       time_string2.sprintf("%d d %02d:%02d:%02d",
 			   days,hours,minutes,seconds);
 
-  }
-  else{
-    time_string2.sprintf("%02d:%02d:%02d",hours,minutes,seconds);
-  }
+  else
+    time_string2.sprintf("%02d:%02d:%02d",hours,minutes,seconds);  
 
   caption_string = gpppdata.accname();
   caption_string += " ";

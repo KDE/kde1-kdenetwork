@@ -43,6 +43,8 @@
 #include <sys/param.h>
 #endif
 
+#include <qsocknot.h>
+
 #include "pap.h"
 #include "chap.h"
 #include "connect.h"
@@ -52,7 +54,6 @@
 #include "docking.h"
 #include "loginterm.h"
 #include "log.h"
-#include <qsocknot.h>
 
 #define READ_TIMER 2
 
@@ -157,12 +158,11 @@ ConnectWidget::ConnectWidget(QWidget *parent, const char *name)
 
   prompt = new PWEntry( this, "pw" );         
   if_timer = new QTimer(this);
-  connect(if_timer,SIGNAL(timeout()),SLOT(if_waiting_slot()));
+  connect(if_timer,SIGNAL(timeout()), SLOT(if_waiting_slot()));
 }
 
 
-ConnectWidget::~ConnectWidget() {  
-  delete prompt;
+ConnectWidget::~ConnectWidget() {
 }
 
 
@@ -203,13 +203,12 @@ void ConnectWidget::init() {
   int lock = lockdevice();
 
   if (lock == 1) {
-    
     messg->setText(i18n("Sorry, modem device is locked."));
     vmain = 20; // wait until cancel is pressed
     return;
   }
-  if (lock == -1) {
-    
+
+  if (lock == -1) {    
     messg->setText(i18n("Sorry, can't create modem lock file."));
     vmain = 20; // wait until cancel is pressed
     return;
@@ -254,7 +253,7 @@ void ConnectWidget::timerEvent(QTimerEvent *) {
   if (semaphore || pausing)
     return;
 
-  if(vmain == 0 || vmain == 3) {
+  if(vmain == 0) {
     messg->setText(i18n("Initializing Modem..."));
     emit debugMessage(i18n("Initializing Modem..."));
 
@@ -263,21 +262,22 @@ void ConnectWidget::timerEvent(QTimerEvent *) {
     // let us issue commands.
     //writeline("");
     //usleep(100000); 
+    setExpect(gpppdata.modemInitResp());
+    writeline(gpppdata.modemInitStr());
+    usleep(gpppdata.modemInitDelay() * 10000); // 0.01 - 3.0 sec       
+    vmain = 3;
+    return;
+  }
+
+  if(vmain == 3) {
+    messg->setText(i18n("Setting speaker volume..."));
+    emit debugMessage(i18n("Setting speaker volume..."));
 
     setExpect(gpppdata.modemInitResp());
-    if(vmain == 0) {
-      writeline(gpppdata.modemInitStr());
-      usleep(gpppdata.modemInitDelay() * 10000); // 0.01 - 3.0 sec       
-      vmain = 3;
-    } else {
-      QString vol("AT");
-      vol += gpppdata.volumeInitString();
-      writeline(vol.data());
-      usleep(gpppdata.modemInitDelay() * 10000); // 0.01 - 3.0 sec 
-      vmain = 1;
-    }
-      
-
+    QString vol("AT");
+    vol += gpppdata.volumeInitString();
+    writeline(vol.data());
+    vmain = 1;
     return;
   }
 
@@ -309,7 +309,6 @@ void ConnectWidget::timerEvent(QTimerEvent *) {
 
   // wait for connect, but redial if BUSY or wait for user cancel
   // if NO CARRIER or NO DIALTONE
-
   if(vmain == 100) {
     if(!expecting) {
       setExpect("\n");
@@ -326,7 +325,6 @@ void ConnectWidget::timerEvent(QTimerEvent *) {
       hangup();
 
       if(gpppdata.busyWait() > 0) {
-
 	QString bm = i18n("Line Busy. Waiting: ");
 	bm += gpppdata.busyWait();
 	bm += i18n(" seconds");
@@ -338,6 +336,7 @@ void ConnectWidget::timerEvent(QTimerEvent *) {
 	pausetimer->start(atoi(gpppdata.busyWait())*1000, true);
 	timeout_timer->stop();
       }
+
       modem_in_connect_state=false; 
       vmain = 0;
       return;
@@ -377,7 +376,6 @@ void ConnectWidget::timerEvent(QTimerEvent *) {
   }
 
   // execute the script
-
   if(vmain == 2) {
     if(!expecting && !pausing && !scanning) {
 
@@ -697,7 +695,8 @@ void ConnectWidget::timerEvent(QTimerEvent *) {
   }
 
   if(vmain == 30) {
-    if (termwindow->isVisible()) return;
+    if (termwindow->isVisible()) 
+      return;
     if (termwindow->pressedContinue())
       vmain = 10;
     else
@@ -1182,10 +1181,10 @@ bool ConnectWidget::execppp() {
 
 
 void ConnectWidget::closeEvent( QCloseEvent *e ) {
-
   e->ignore();
   emit cancelbutton();
 }
+
 
 void ConnectWidget::setMsg(const char* msg) {
   messg->setText(msg);

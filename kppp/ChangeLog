@@ -1,3 +1,9 @@
+1998-08-25  Mario Weilguni <mweilguni@kde.org>
+
+	* removed all QTimers for reading tty output, a QSocketNotifier is
+	now used. Much better response time now, lower CPU usage!
+	* "prompt" was deleted in the ConnectWidget destructor. Removed that
+
 1998-08-24  Harri Porten  <porten@kde.org>
 
 	* connect.cpp: re-enabled closeEvent()

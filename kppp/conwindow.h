@@ -59,7 +59,7 @@ public:
   void setConnectionSpeed();
   void startClock();
   void stopClock();
-  void accounting(bool, bool = FALSE); // show/ hide accounting info
+  void accounting(bool); // show/ hide accounting info
 
 public slots:
   void slotAccounting(QString, QString);

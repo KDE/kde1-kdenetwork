@@ -18,4 +18,6 @@ currency_digits=0
 # durata della connessione
 per_connection=152.4
 
+default=(0,0)
+
 # End of file
