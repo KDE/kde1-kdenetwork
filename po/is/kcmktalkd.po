@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcmktalkd\n"
 "POT-Creation-Date: 1998-12-12 15:20+0100\n"
-"PO-Revision-Date: 1999-03-25 23:00+0000\n"
+"PO-Revision-Date: 1999-03-26 16:40+0000\n"
 "Last-Translator: Bjarni R. Einarsson <bre@netverjar.is>\n"
 "Language-Team: is <kde-isl@mmedia.is>\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr "&Tilkynning"
 
 #: main.cpp:61
 msgid "Ans&wering machine"
-msgstr "S&jálfvirk svörun"
+msgstr "Svarþ&jónusta"
 
 #: main.cpp:64
 msgid "&Forward"
@@ -97,7 +97,7 @@ msgstr "Skráin er þegar á listanum"
 
 #: answmachpage.cpp:39
 msgid "&Activate answering machine"
-msgstr "&Virkja sjálfvirka svörun"
+msgstr "&Virkja svarþjónustu"
 
 #: answmachpage.cpp:44
 msgid "&Mail address"
@@ -119,7 +119,8 @@ msgstr "&Fyrsta lína"
 #: answmachpage.cpp:64
 #, c-format
 msgid "Use first %s for caller name, and second %s for caller hostname"
-msgstr "Fyrra '%s' táknar nafn notandans og það seinna '%s' táknar vélina hans"
+msgstr ""
+"Fyrra '%s' táknar nafn notandans og það seinna '%s' táknar vélina hans"
 
 #: answmachpage.cpp:68
 msgid "&Receive a mail even if no message left"
