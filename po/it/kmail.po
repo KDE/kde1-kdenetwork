@@ -1182,6 +1182,14 @@ msgid ""
 "\n"
 "Shall KMail move the mail folders now ?"
 msgstr ""
+"La directory ~/KMail esiste. Da adesso, KMail userà\n"
+"la directory ~/Mail per i suoi messaggi.\n"
+"KMail può spostare il contenuto della directory ~/KMail in\n"
+"~/Mail, ma in questo modo saranno sovrascritti i file già esistenti\n"
+"con lo stesso nome nella directory ~/Mail (per esempio inbox).\n"
+"\n"
+"Vuoi che KMail sposti le cartelle di posta ora ?"
+
 
 #: main.cpp:335
 msgid "Loading addressbook failed"
