@@ -37,6 +37,8 @@ extern QString krnpath,cachepath,artinfopath,groupinfopath;
 extern GDBM_FILE artdb;
 extern GDBM_FILE old_artdb;
 
+extern QDict <char> unreadDict;
+
 ////////////////////////////////////////////////////////////////////
 // Article class. Represents an article
 // Real docs soon.
@@ -207,20 +209,20 @@ void Article::load( bool onlyUnread)
     key.dptr=ID.data();
     key.dsize=ID.length() + 1;
 
-    if (gdbm_exists(artdb,key))
+    if (unreadDict.find(ID.data()))
     {
         content=gdbm_fetch(artdb,key);
     }
     else
     {
-        if (!onlyUnread)
-        {
-            content=gdbm_fetch(old_artdb,key);
-        }
-        else
+        if (onlyUnread)
         {
             ID="";
             return;
+        }
+        else
+        {
+            content=gdbm_fetch(old_artdb,key);
         }
     }
     
@@ -277,6 +279,10 @@ int Article::score()
 void Article::setRead(bool b)
 {
     if (!refsLoaded) load();
+    if (b)
+        unreadDict.remove(ID.data());
+    else
+        unreadDict.replace(ID.data(),ID.data());
     isread = b;
     save();
 }

@@ -35,6 +35,7 @@
 extern QString krnpath,cachepath,artinfopath;
 extern GDBM_FILE artdb;
 extern GDBM_FILE old_artdb;
+extern QDict <char> unreadDict;
 
 #include <mimelib/mimepp.h>
 
@@ -384,6 +385,7 @@ int NNTP::listXover(int from,int to,NewsGroup *n)
                                 }
                             }
                         }
+                        unreadDict.replace(art.ID.data(),art.ID.data());
                         art.save();
                     }
                     if (n)

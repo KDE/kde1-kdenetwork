@@ -25,6 +25,7 @@
 #include <qapp.h>
 #include <qfile.h>
 #include <qdir.h>
+#include <qdict.h>
 
 #include <kapp.h>
 #include <kconfig.h>
@@ -40,6 +41,7 @@
 #include "kmidentity.h"
 #include "kbusyptr.h"
 #include "kmmessage.h"
+#include "kfileio.h"
 #include <mimelib/mimepp.h>
 
 #include <gdbm.h>
@@ -62,6 +64,8 @@ KRNSender *msgSender;
 KMIdentity *identity;
 KStdAccel* keys;
 KBusyPtr *kbp;
+QDict <char> unreadDict(17,TRUE);
+
 
 ArticleDict artSpool;
 
@@ -160,6 +164,17 @@ int main( int argc, char **argv )
     artdb=gdbm_open(artinfopath.data(),0,GDBM_WRCREAT | GDBM_FAST,448,0);
     artinfopath=krnpath+"/old_artinfo.db";
     old_artdb=gdbm_open(artinfopath.data(),0,GDBM_WRCREAT | GDBM_FAST,448,0);
+
+    // Fill the unreadDict
+    datum key=gdbm_firstkey ( artdb );
+    datum nextkey;
+    while ( key.dptr )
+    {
+        unreadDict.insert(key.dptr,key.dptr);
+        nextkey = gdbm_nextkey ( artdb, key );
+        free (key.dptr);
+        key = nextkey;
+    };
     
     Groupdlg k;
     main_widget = &k;
@@ -172,15 +187,10 @@ int main( int argc, char **argv )
     a.exec();
     expireCache();
 
-    debug ("flag0");
     gdbm_reorganize(artdb);
-    debug ("flag1");
     gdbm_reorganize(old_artdb);
-    debug ("flag2");
     gdbm_close(artdb);
-    debug ("flag3");
     gdbm_close(old_artdb);
-    debug ("flag4");
     unlink((krnpath+"krn_lock").data());
 }
 
