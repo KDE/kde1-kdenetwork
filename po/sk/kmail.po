@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail 0.4.4\n"
-"POT-Creation-Date: 1998-10-30 12:57+0100\n"
+"POT-Creation-Date: 1998-11-03 10:19+0100\n"
 "PO-Revision-Date: 1998-03-08 10:42 MET\n"
 "Last-Translator: Juraj Bednár <bednar@isternet.sk>\n"
 "Language-Team: Slovak <bednar@isternet.sk>\n"
@@ -1006,7 +1006,7 @@ msgstr "Vytváram indexový súbor: %d správ hotových "
 msgid "Writing index file"
 msgstr "Zapisujem indexový súbor"
 
-#: kmfolder.cpp:899
+#: kmfolder.cpp:901
 #, c-format
 msgid "Compacting folder: %d messages done"
 msgstr "Komprimujem prieèinok: %d správ"
@@ -1597,6 +1597,7 @@ msgstr ""
 "nie sú dôveryhodné. Nekryptujem."
 
 #: kpgpbase.cpp:614
+#, c-format
 msgid ""
 "The following key(s) are not trusted:\n"
 "%s\n"
@@ -1790,4 +1791,3 @@ msgstr "&7 bit je ASCII"
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
 msgstr "Oznaèi» neznáme znaky"
-

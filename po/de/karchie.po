@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: karchie 1.1.2\n"
-"POT-Creation-Date: 1998-10-01 18:13+0200\n"
+"POT-Creation-Date: 1998-11-03 10:19+0100\n"
 "PO-Revision-Date: 1998-09-02 13:51+0200\n"
 "Last-Translator: Tobias Burnus <burnus@gmx.de>\n"
 "Language-Team: deutsch <de@li.org>\n"
@@ -23,19 +23,23 @@ msgid "&Open Dir"
 msgstr "Verzeichniss &anzeigen"
 
 #: KAMenu.cpp:88 KAView.cpp:156
-msgid "&Download.."
+#, fuzzy
+msgid "&Download..."
 msgstr "&herunterladen.."
 
 #: KAMenu.cpp:91
-msgid "&Load List.."
+#, fuzzy
+msgid "&Load List..."
 msgstr "Liste &laden.."
 
 #: KAMenu.cpp:92
-msgid "&Save List.."
+#, fuzzy
+msgid "&Save List..."
 msgstr "Liste &speichern.."
 
 #: KAMenu.cpp:93
-msgid "Expor&t List.."
+#, fuzzy
+msgid "Expor&t List..."
 msgstr "Liste expor&tieren..."
 
 #: KAMenu.cpp:95
@@ -107,7 +111,8 @@ msgid "&Nicelevel"
 msgstr "&Prioritätslevel"
 
 #: KAMenu.cpp:143
-msgid "&All.."
+#, fuzzy
+msgid "&All..."
 msgstr "&Alles.."
 
 #: KAMenu.cpp:150
@@ -154,21 +159,46 @@ msgstr "&Suche"
 msgid "S&ort"
 msgstr "S&ortieren"
 
-#: KAStatusBar.cpp:57
+#: KAStatusBar.cpp:50
 msgid "    0 hits"
 msgstr "    0 Treffer"
 
-#: KAStatusBar.cpp:58
+#: KAStatusBar.cpp:51
 msgid "    0. try"
 msgstr "    0. Versuch"
 
-#: KAStatusBar.cpp:59
+#: KAStatusBar.cpp:52
 msgid "Host: none                               "
 msgstr "Rechner: keiner"
 
-#: KAStatusBar.cpp:60
+#: KAStatusBar.cpp:53
 msgid "Status: ready                        "
 msgstr "Status: fertig"
+
+#: KAStatusBar.cpp:81
+#, c-format
+msgid "Status: %s"
+msgstr ""
+
+#: KAStatusBar.cpp:91
+#, fuzzy, c-format
+msgid "Hosts: %s"
+msgstr "Host"
+
+#: KAStatusBar.cpp:101
+#, c-format
+msgid "%d hits"
+msgstr ""
+
+#: KAStatusBar.cpp:111
+#, c-format
+msgid "Progress: %d"
+msgstr ""
+
+#: KAStatusBar.cpp:121
+#, c-format
+msgid "%d try."
+msgstr ""
 
 #: KASettings.cpp:567
 msgid "Reset"

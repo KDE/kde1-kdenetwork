@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-10-01 18:13+0200\n"
+"POT-Creation-Date: 1998-11-03 10:19+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Elvis Pfützenreuter <epx@netville.com.br>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,19 +22,23 @@ msgid "&Open Dir"
 msgstr "Ab&rir Dir"
 
 #: KAMenu.cpp:88 KAView.cpp:156
-msgid "&Download.."
+#, fuzzy
+msgid "&Download..."
 msgstr "&Receber..."
 
 #: KAMenu.cpp:91
-msgid "&Load List.."
+#, fuzzy
+msgid "&Load List..."
 msgstr "&Carregar Lista..."
 
 #: KAMenu.cpp:92
-msgid "&Save List.."
+#, fuzzy
+msgid "&Save List..."
 msgstr "Sa&lvar Lista..."
 
 #: KAMenu.cpp:93
-msgid "Expor&t List.."
+#, fuzzy
+msgid "Expor&t List..."
 msgstr "Expor&tar Lista..."
 
 #: KAMenu.cpp:95
@@ -106,7 +110,8 @@ msgid "&Nicelevel"
 msgstr "&Nível de leveza"
 
 #: KAMenu.cpp:143
-msgid "&All.."
+#, fuzzy
+msgid "&All..."
 msgstr "&Tudo..."
 
 #: KAMenu.cpp:150
@@ -153,21 +158,46 @@ msgstr "Cons&ulta"
 msgid "S&ort"
 msgstr "C&lassificar"
 
-#: KAStatusBar.cpp:57
+#: KAStatusBar.cpp:50
 msgid "    0 hits"
 msgstr "    0 items"
 
-#: KAStatusBar.cpp:58
+#: KAStatusBar.cpp:51
 msgid "    0. try"
 msgstr "    0. tente"
 
-#: KAStatusBar.cpp:59
+#: KAStatusBar.cpp:52
 msgid "Host: none                               "
 msgstr "Host: nenhum                             "
 
-#: KAStatusBar.cpp:60
+#: KAStatusBar.cpp:53
 msgid "Status: ready                        "
 msgstr "Status: pronto                       "
+
+#: KAStatusBar.cpp:81
+#, c-format
+msgid "Status: %s"
+msgstr ""
+
+#: KAStatusBar.cpp:91
+#, fuzzy, c-format
+msgid "Hosts: %s"
+msgstr "Host:"
+
+#: KAStatusBar.cpp:101
+#, c-format
+msgid "%d hits"
+msgstr ""
+
+#: KAStatusBar.cpp:111
+#, c-format
+msgid "Progress: %d"
+msgstr ""
+
+#: KAStatusBar.cpp:121
+#, c-format
+msgid "%d try."
+msgstr ""
 
 #: KASettings.cpp:567
 msgid "Reset"
