@@ -171,7 +171,8 @@ private:
     int reuse_id, join_id, server_id, auto_id, nickc_id;
     
     int open_toplevels;
-    
+
+    QPixmap *pic_icon;
     QPixmap *pic_channel;
     QPixmap *pic_server;
     QPixmap *pic_gf;

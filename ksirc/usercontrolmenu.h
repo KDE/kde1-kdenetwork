@@ -35,6 +35,7 @@ class UserControlMenu {
     * where %s will be expanded into the selected nick.
     */
   char *action;
+
   /**
     * Accelerator key, currently does nothing.
     */

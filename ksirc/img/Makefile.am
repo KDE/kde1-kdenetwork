@@ -46,6 +46,7 @@ install-data-local:
 	$(mkinstalldirs) $(kde_datadir)/ksirc
 	$(mkinstalldirs) $(kde_datadir)/ksirc/icons
 	$(INSTALL_DATA) *.gif $(kde_datadir)/ksirc/icons 
+	$(INSTALL_DATA) ksirc.gif $(kde_icondir)
 #
 # remove ALL you have installed in install-data-local or install-exec-local
 uninstall-local:

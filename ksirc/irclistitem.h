@@ -8,6 +8,7 @@
 #include <qpixmap.h>
 #include <qstrlist.h>
 
+#include "kspainter.h"
 
 class ircListItem : public QObject, 
 		    public QListBoxItem
@@ -26,6 +27,10 @@ class ircListItem : public QObject,
   void setWrapping(bool);
   bool wrapping();
 
+  const QColor *defcolour(){
+    return colour;
+  }
+
 public slots:
   virtual void updateSize();
   
@@ -35,8 +40,6 @@ protected:
   virtual int width ( const QListBox * ) const;  
   
   virtual void setupPainterText();
-
-  virtual void colourDrawText(QPainter *p, int startx, int starty, char *str);
 
 private:
 
@@ -56,9 +59,6 @@ private:
 
   bool Wrapping;
 
-  static const int maxcolour;
-  static const QColor num2colour[16];
-  
 
 };
 

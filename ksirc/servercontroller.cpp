@@ -104,7 +104,6 @@ servercontroller::servercontroller
   setView(sci, TRUE);
   setFrameBorderWidth(5);
 
-  setCaption( "Server Control" );
   QPopupMenu *file = new QPopupMenu();
   file->insertItem("&Quit", kApp, SLOT(quit()), ALT + Key_F4);
   MenuBar->insertItem("&File", file);
@@ -172,6 +171,10 @@ servercontroller::servercontroller
   pic_gf = new QPixmap(kicl->loadIcon("gf.gif"));
   pic_run = new QPixmap(kicl->loadIcon("mini-run.gif"));
   pic_ppl = new QPixmap(kicl->loadIcon("ppl.gif"));
+  pic_icon = new QPixmap(kicl->loadIcon("ksirc.gif"));
+
+  setCaption( "Server Control" );
+  setIcon(*pic_icon);
 
   resize( 450,200 );
 
@@ -180,6 +183,7 @@ servercontroller::servercontroller
 
 servercontroller::~servercontroller()
 {
+  delete pic_icon;
 }
 
 void servercontroller::new_connection()
@@ -447,11 +451,6 @@ void servercontroller::ProcMessage(QString server, int command, QString args)
     ConnectionTree->removeItem(&path); // Remove the item
     //cerr << "Removed child for: " << parent << "->" << child << endl;
     open_toplevels--;
-    if(open_toplevels <= 0)
-      connections->setItemEnabled(join_id, FALSE);
-    
-    if(proc_list.count() == 0)
-      ConnectionTree->clear();
     break;
 
   /**
@@ -493,6 +492,10 @@ void servercontroller::ProcMessage(QString server, int command, QString args)
     path.push(&server);
     ConnectionTree->removeItem(&path);
     proc_list.remove(server); // Remove process entry while we are at it
+    if(proc_list.count() == 0){
+      ConnectionTree->clear();
+      connections->setItemEnabled(join_id, FALSE);
+    }
     break;
   case ProcCommand::turnOffAutoCreate:
     autocreate();

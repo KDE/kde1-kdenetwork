@@ -49,7 +49,8 @@ linelistitem.cpp \
 ioLAG.cpp mioLAG.cpp \
 ioNotify.cpp mioNotify.cpp \
 ssfeprompt.cpp mssfeprompt.cpp ssfepromptdata.cpp mssfepromptdata.cpp \
-usercontrolmenu.cpp
+usercontrolmenu.cpp \
+kspainter.cpp
 
 ksircstatic_SOURCES = $(ksirc_SOURCES)
 
@@ -78,14 +79,15 @@ FilterRuleEditorData.h    dccDialog.h               messageReceiver.h \
 KSircColour.h             dccDialogData.h           open_ksirc.h \
 KSircColourData.h         ioBroadcast.h             open_ksircData.h \
 ioDCC.h                   open_top.h                usercontrolmenu.h \
-ioDiscard.h               open_topData.h \
+ioDiscard.h               open_topData.h            kspainter.h \
 ahistlineedit.h           iocontroller.h            servercontroller.h \
 alistbox.h                irclistbox.h              \
 config.h                  irclistitem.h             toplevel.h \
 ksircprocess.h            ksirc.kdelnk \
 ioLAG.h                   ioNotify.h                ssfeprompt.h \
-ssfepromptdata.h          usercontrolmenu.h \
-dsirc                     filters.pl                ksirc.pl
+ssfepromptdata.h          usercontrolmenu.h\
+dsirc                     filters.pl                ksirc.pl \
+sirc.help.gz
 
 
 # just to make sure, automake makes them 

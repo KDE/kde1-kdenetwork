@@ -9,6 +9,9 @@ public:
   StdInTicker();
   ~StdInTicker();
 
+protected:
+  void closeEvent ( QCloseEvent * );
+
 public slots:
 void readsocket(int socket);
   

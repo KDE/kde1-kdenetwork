@@ -1,5 +1,8 @@
 #include "usercontrolmenu.h"
 
+#include <qregexp.h>
+#include <iostream.h>
+
 extern KConfig *kConfig;
 
 QList<UserControlMenu> UserControlMenu::UserMenu;
@@ -38,42 +41,42 @@ QList<UserControlMenu> *UserControlMenu::parseKConfig()
 
     UserMenu.setAutoDelete(TRUE);
     UserMenu.append(new UserControlMenu("Whois", 
-					 "/whois %s",
+					 "/whois $$dest_nick $$dest_nick",
 					 0, UserControlMenu::Text));
     UserMenu.append(new UserControlMenu("Ping", 
-					 "/ping %s",
+					 "/ping $$dest_nick",
 					 0, UserControlMenu::Text));
     UserMenu.append(new UserControlMenu("Version", 
-					 "/ctcp %s VERSION",
+					 "/ctcp $$dest_nick VERSION",
 					 0, UserControlMenu::Text));
     UserMenu.append(new UserControlMenu); // Defaults to a seperator
     UserMenu.append(new UserControlMenu("Abuse", 
-					 "/me slaps %s around with a small 50lb Unix Manual",
+					 "/me slaps $$dest_nick around with a small 50lb Unix Manual",
 					 0, UserControlMenu::Text));
     UserMenu.append(new UserControlMenu); // Defaults to a seperator
     UserMenu.append(new UserControlMenu("Kick",
-					 "/kick %s",
+					 "/kick $$dest_nick",
 					 0,
 					 UserControlMenu::Text,
 					 TRUE));
     UserMenu.append(new UserControlMenu("Ban",
-					 "/ban %s",
+					 "/ban $$dest_nick",
 					 0,
 					 UserControlMenu::Text,
 					 TRUE));
     UserMenu.append(new UserControlMenu("UnBan",
-					 "/unban %s",
+					 "/unban $$dest_nick",
 					 0,
 					 UserControlMenu::Text,
 					 TRUE));
     UserMenu.append(new UserControlMenu());
     UserMenu.append(new UserControlMenu("Op",
-					 "/op %s",
+					 "/op $$dest_nick",
 					 0,
 					 UserControlMenu::Text,
 					 TRUE));
     UserMenu.append(new UserControlMenu("Deop",
-					 "/deop %s",
+					 "/deop $$dest_nick",
 					 0,
 					 UserControlMenu::Text,
 					 TRUE));
@@ -92,6 +95,7 @@ QList<UserControlMenu> *UserControlMenu::parseKConfig()
 	title = kConfig->readEntry(key);
 	key = "MenuAction-" + cindex;
 	action = kConfig->readEntry(key);
+	action.replace(QRegExp("\\$"), "$$");
 	key = "MenuAccel-" + cindex;
 	accel = kConfig->readNumEntry(key); 
 	key = "MenuOpOnly-" + cindex;
@@ -141,3 +145,4 @@ void UserControlMenu::writeKConfig()
   kConfig->sync();
 
 }
+

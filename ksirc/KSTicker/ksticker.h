@@ -27,6 +27,8 @@ public:
 
   void speed(int *, int *);
 
+  virtual void setBackgroundColor ( const QColor & );
+
 signals:
   void doubleClick();
   void closing();
@@ -58,6 +60,7 @@ private:
 
   int onechar;
   int chars;
+  int descent;
   
   int tickStep;
   int cOffset;
@@ -69,6 +72,8 @@ private:
   int currentChar;
 
   void startTicker();
+
+  QPixmap *pic;
 
   QPopupMenu *popup;
 

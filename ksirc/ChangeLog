@@ -1,3 +1,15 @@
+1998-01-21  Andrew Stanley-Jones  <asj@chowtown.cban.com>
+
+	* servercontroller.cpp (ProcMessage): Disabled Connections->Join
+	Channel when last server connection is closed.
+	Added icon, thanks to Druppy for making it.
+
+	* toplevel.cpp (showTicker): Fixed bug in starting ticker, was -5
+	instead of -i.
+
+	* KSTicker/ksticker.cpp (timerEvent): Added colour printing
+	support and double support.  Little cleaner, looks ok.
+
 1998-01-20  Andrew Stanley-Jones  <asj@chowtown.cban.com>
 
 	* ksircprocess.cpp (KSircProcess): Added sirc.help.gz and
@@ -133,6 +145,9 @@
 $Revision$
 	
 $Log$
+Revision 1.18  1998/01/19 16:27:34  asj
+Fixed help so it works correctly now.
+
 Revision 1.17  1998/01/19 16:15:39  asj
 	* Moved all UserMenu support into the prefrences list box, and all
  	that it entails.  Not 100% clean, but it's pretty good.

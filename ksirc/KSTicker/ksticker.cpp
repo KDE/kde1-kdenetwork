@@ -1,4 +1,5 @@
 #include <iostream.h>
+#include <stdlib.h>
 #include <qpainter.h>
 #include <qpaintd.h>
 
@@ -7,12 +8,17 @@
 #include "ksticker.h"
 #include "speeddialog.h"
 
+#include "../kspainter.h"
 
 KSTicker::KSTicker(QWidget * parent=0, const char * name=0, WFlags f=0) 
 : QFrame(parent, name, f)
 {
 
   pHeight = 1;
+
+  pic = new QPixmap(size());
+  pic->fill(backgroundColor());
+  //  pic->setBackgroundMode(TransparentMode);
 
   setFont(QFont("fixed"));
   // ring = "Hi";
@@ -22,7 +28,8 @@ KSTicker::KSTicker(QWidget * parent=0, const char * name=0, WFlags f=0)
   StrInfo.append(si);  
   StrInfo.setAutoDelete(TRUE);
   setMinimumSize(100, 10);
-  setFixedHeight((fontMetrics().ascent()+2)*pHeight);
+  setFixedHeight((fontMetrics().height()+fontMetrics().descent()*2)*pHeight);
+  descent =  fontMetrics().descent();
   onechar = fontMetrics().width("X");
 
   tickStep = 2;
@@ -44,6 +51,7 @@ KSTicker::KSTicker(QWidget * parent=0, const char * name=0, WFlags f=0)
 KSTicker::~KSTicker()
 {
   killTimers();
+  delete pic;
 }
 
 void KSTicker::show()
@@ -80,6 +88,7 @@ void KSTicker::setString(QString str)
 
 void KSTicker::mergeString(QString str)
 {
+  str.append("~C");
   ring += str;
   SInfo *si = new SInfo;
   si->length = str.length();
@@ -100,30 +109,135 @@ void KSTicker::timerEvent(QTimerEvent *)
     currentChar = 0;
   }
   if(ring.length() > (uint) chars){
-    QPainter p(this);
-    p.setPen( colorGroup().text() );
-    bitBlt(this, -tickStep, 0, this);
+    static BGMode bgmode = TransparentMode;
+    
+    bitBlt(pic, -tickStep, 0, pic);
+    QPainter p(pic);
+
     cOffset += tickStep;
-    if(cOffset >= onechar){
-      p.setBackgroundMode(OpaqueMode);
+    if(cOffset >= onechar){      
+      static const QColor defbg = backgroundColor();
+      static const QColor deffg = foregroundColor();
+      static QColor bg = backgroundColor();
+      static QColor fg = foregroundColor();
+      static bool bold = FALSE;
+      static bool underline = FALSE;
+      static bool italics = FALSE;
+      
+      int step = 1; // Used to check if we did anything, and hence
+                    // catch ~c~c type things. Set to 1 to start loop
+      while(((display[currentChar] == '~') || (display[currentChar] == 0x03))
+	    && (step > 0)){
+	step = 1; // reset in case it's our second, or more loop.
+	char *text = display.data() + currentChar;
+	char buf[3];
+	memset(buf, 0, sizeof(char)*3);
+
+	if((text[step] >= '0') && 
+	   (text[step] <= '9')) {
+	  buf[0] = text[step];
+	  step++;
+	  if((text[step] >= '0') && 
+	     (text[step] <= '9')) {
+	    buf[1] = text[step];
+	    step++;
+	  }
+	  int col = atoi(buf);
+	  if((col >= 0) || (col <= KSPainter::maxcolour)){
+	    fg = KSPainter::num2colour[col];
+	  }
+	  bg = defbg;
+	  if(text[step] == ','){
+	    step++;
+	    memset(buf, 0, sizeof(char)*3);
+	    if((text[step] >= '0') && 
+	       (text[step] <= '9')) {
+	      buf[0] = text[step];
+	      step++;
+	      if((text[step] >= '0') && 
+		 (text[step] <= '9')) {
+		buf[1] = text[step];
+		step++;
+	      }
+	      int col = atoi(buf);
+	      if((col >= 0) || (col <= KSPainter::maxcolour)){
+		bg = KSPainter::num2colour[col];
+		bgmode = OpaqueMode;
+	      }
+	    }
+	  }
+	  else{
+	    bgmode = TransparentMode;
+	  }
+	}
+	else{
+	  switch(text[step]){
+	  case 'c':
+	    fg = deffg;
+	    bg = defbg;
+	    step++;
+	    break;
+	  case 'C':
+	    fg = deffg;
+	    bg = defbg;
+	    bold = FALSE;
+	    underline = FALSE;
+	    italics = FALSE;
+	    step++;
+	    break;
+	  case 'b':
+	    bold == TRUE ? bold = FALSE : bold = TRUE;
+	    step++;
+	    break;
+	  case 'u':
+	    underline == TRUE ? underline = FALSE : underline = TRUE;
+	    step++;
+	    break;
+	  case 'i':
+	    italics == TRUE ? italics = FALSE : italics = TRUE;
+	    step++;
+	    break;
+	  case '~':
+	    currentChar++; // Move ahead 1, but...
+	    step = 0;      // Don't loop on next ~.
+	    break;
+	  default:
+	    if(display[currentChar] == 0x03){
+	      fg = deffg;
+	      bg = defbg;
+	    }
+	    else
+	      step = 0;
+	  }
+	}
+	currentChar += step;
+      }
+      if((uint)currentChar >= display.length()){ // Bail out if we're
+                                                 // at the end of the string.
+	return;
+      }
+      p.setFont(font());
+      p.setBackgroundMode(bgmode);
+
+      p.setPen(fg);
+      p.setBackgroundColor(bg);
+      QFont fnt = p.font();
+      fnt.setBold(bold);
+      fnt.setUnderline(underline);
+      fnt.setItalic(italics);
+      p.setFont(fnt);
       p.drawText(this->width() - onechar - cOffset,
 		 this->height() / 4 + p.fontMetrics().height() / 2,
 		 display.mid(currentChar, 1),
 		 1);
-      p.drawText(this->width() - cOffset,
-		 this->height() / 4 + p.fontMetrics().height() / 2,
-		 " ",
-		 1);
-      currentChar++;
-      cOffset -= onechar;
+      currentChar++; // Move ahead to next character.
+      cOffset -= onechar; // Set offset back one.
     }
     p.end();
+    bitBlt(this, 0, descent, pic);
   }
   else{
-    //    cerr << "timer\n";
     repaint(TRUE);
-    //    killTimers();
-    //    cerr << "Stopped timer\n";
   }
 }
 
@@ -131,36 +245,18 @@ void KSTicker::paintEvent( QPaintEvent *)
 {
   if(isVisible() == FALSE)
     return;
-  QPainter p(this);
-  p.setPen( colorGroup().text() );
-  //  p.setFont(QFont("fixed"));
-  if(ring.length() > (uint) chars){
-    if(currentChar > chars){
-      p.setBackgroundMode(OpaqueMode);
-      p.drawText(this->width() - chars*onechar - cOffset - onechar,
-		 pHeight*(this->height() / 4 + p.fontMetrics().height() / 2),
-		 display.data() + currentChar - chars,
-		 chars);
-    }
-    else{
-      p.setBackgroundMode(OpaqueMode);
-      p.drawText(this->width() - currentChar*onechar - cOffset - onechar,
-		 pHeight*(this->height() / 4 + p.fontMetrics().height() / 2),
-		 display.data(),
-		 display.length() - currentChar); 
-      p.drawText(this->width() - currentChar*onechar -display_old.length()*onechar - cOffset - onechar,
-		 pHeight*(this->height() / 4 + p.fontMetrics().height() / 2),
-		 display_old.data(),
-		 display_old.length()); 
-    }
-  }
+  if(ring.length() > (uint) chars)
+    bitBlt(this, 0, descent, pic);
   else {
-    p.drawText(0,
+    QPainter p(this);
+    p.setPen( colorGroup().text() );
+    KSPainter::colourDrawText(&p, 
+	       0,
 	       this->height() / 2 + p.fontMetrics().height() / 2,
-	       ring,
+	       ring.data(),
 	       ring.length());
+    p.end();
   }
-  p.end();
 }
 
 void KSTicker::resizeEvent( QResizeEvent *e)
@@ -169,6 +265,8 @@ void KSTicker::resizeEvent( QResizeEvent *e)
   onechar = fontMetrics().width("X");
   chars = this->width() / onechar;
   killTimers();
+  pic->resize(size());
+  pic->fill(backgroundColor());
   //  if(ring.length() > (uint) chars)
     startTicker();
 }
@@ -220,8 +318,9 @@ void KSTicker::scrollRate()
 
 void KSTicker::updateFont(const QFont &font){
   setFont(font);
-  setFixedHeight((fontMetrics().ascent()+2)*pHeight);
-  resize(fontMetrics().width("X")*chars, (fontMetrics().ascent()+2)*pHeight);
+  setFixedHeight((fontMetrics().height()+fontMetrics().descent()*2)*pHeight);
+  resize(fontMetrics().width("X")*chars, 
+	 (fontMetrics().height()+fontMetrics().descent())*pHeight);
 }
 
 void KSTicker::setSpeed(int _tickRate, int _tickStep){
@@ -233,4 +332,10 @@ void KSTicker::setSpeed(int _tickRate, int _tickStep){
 void KSTicker::speed(int *_tickRate, int *_tickStep){
   *_tickRate = tickRate;
   *_tickStep = tickStep;
+}
+
+void KSTicker::setBackgroundColor ( const QColor &c ) 
+{
+  QFrame::setBackgroundColor(c);
+  pic->fill(backgroundColor());  
 }

@@ -337,6 +337,7 @@ KSircTopLevel::~KSircTopLevel()
 
   if(ticker)
     delete ticker;
+  ticker = 0;
   //  delete gm; // Deletes everthing bellow it I guess...
   //  delete gm2; 
   //  delete pan; // Should be deleted by gm2
@@ -356,9 +357,15 @@ KSircTopLevel::~KSircTopLevel()
 
 void KSircTopLevel::show()
 {
-  KTopLevelWidget::show();
-  kmenu->show();
-  lagmeter->show();
+  if(ticker){
+    ticker->show();
+    ticker->raise();
+  }
+  else{
+    KTopLevelWidget::show();
+    kmenu->show();
+    lagmeter->show();
+  }
 }
 
 //void KSircTopLevel::sirc_stop(bool STOP = FALSE)
@@ -468,8 +475,16 @@ void KSircTopLevel::sirc_receive(QString str)
 	connect(this, SIGNAL(changeSize()),
 		item, SLOT(updateSize()));
 	mainw->insertItem(item, -1);
-	if(ticker)
-	  ticker->mergeString(item->getText() + " // ");
+	if(ticker){
+	  QString text;
+	  int colour = KSPainter::colour2num(*(item->defcolour()));
+	  if(colour >= 0){
+	    text.setNum(colour);
+	    text.prepend("~");
+	  }
+	  text.append(item->getText());
+	  ticker->mergeString(text + "~C // ");
+	}
 	lines++; // Mode up lin counter
 	update = TRUE;
       }
@@ -1101,15 +1116,28 @@ void KSircTopLevel::UserSelected(int index)
 void KSircTopLevel::UserParseMenu(int id)
 {
   if(nicks->currentItem() < 0){
-    cerr << "Warning, dork at the helm Captain!\n";
+    QMessageBox::warning(this, "Warning, dork at the helm Captain!\n",
+			 "Warning, dork at the helm Captain!\nTry Selecting a nick first!");
+    return;
+  }
+  if(strstr(user_menu->at(id)->action, "%s")){
+    QMessageBox::warning(this, "%s no longer valid in action string",
+			 "%s is deprecated, you MUST use $$dest_nick\n"
+			 "intead.  Any valid sirc\n"
+			 "variable may now be refrenced.\n"
+			 "This includes repeated uses.\n\n");
     return;
   }
   QString s;
-  s.sprintf(user_menu->at(id)->action, nicks->text(nicks->currentItem()));
-  QString txt = linee->text();
-  linee->setText(s);
-  sirc_line_return();
-  linee->setText(txt);
+  s = QString("/eval $dest_nick='") + 
+    QString(nicks->text(nicks->currentItem())) + 
+    QString("';\n");
+  sirc_write(s);
+  s = QString("/eval &docommand(eval{\"") + 
+    QString(user_menu->at(id)->action) +
+    QString("\"});\n");
+  s.replace(QRegExp("\\$\\$"), "$");
+  sirc_write(s);
 }
 
 void KSircTopLevel::UserUpdateMenu()
@@ -1322,8 +1350,8 @@ void KSircTopLevel::showTicker()
     ticker->recreate(0, 0, tickerpoint, TRUE);
   }
   for(int i = 5; i > 0; i--)
-    ticker->mergeString(QString(mainw->text(mainw->count()-5)) + " // ");
-
+    ticker->mergeString(QString(mainw->text(mainw->count()-i)) + " // ");
+  
   ticker->show();
 }
 
@@ -1402,7 +1430,6 @@ void KSircTopLevel::pasteToWindow()
     for(QString line = strtok(text.data(), "\n");
 	line.isNull() == FALSE;
 	line = strtok(NULL, "\n")){
-      cerr << "Putting line: " << line << endl;
       QString hold = linee->text();
       hold += line;
       linee->setText(hold);
@@ -1414,6 +1441,7 @@ void KSircTopLevel::pasteToWindow()
     linee->update();
   }
   else{
+    text.replace(QRegExp("\n"), "");
     QString line = linee->text();
     line += text;
     linee->setText(line);

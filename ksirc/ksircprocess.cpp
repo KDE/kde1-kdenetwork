@@ -95,6 +95,7 @@
 #include "ioNotify.h"
 #include "iocontroller.h"
 #include "control_message.h"
+#include "config.h"
 
 #include <qmsgbox.h>
 

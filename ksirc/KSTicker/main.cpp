@@ -15,7 +15,10 @@ StdInTicker::StdInTicker()
   : KSTicker()
 {
   kConfig->setGroup("defaults");
-  setFont(kConfig->readFontEntry("font"));
+  QFont font;
+  font = kConfig->readFontEntry("font");
+  font.setFixedPitch(TRUE);
+  setFont(font);
   setSpeed(kConfig->readNumEntry("tick", 30), 
 	   kConfig->readNumEntry("step", 3));
 }
@@ -25,7 +28,7 @@ StdInTicker::~StdInTicker()
   int tick, step;
   speed(&tick, &step);
   kConfig->setGroup("defaults");
-  kConfig->writeEntry("font", font());
+  kConfig->writeEntry("font", KSTicker::font());
   kConfig->writeEntry("tick", tick);
   kConfig->writeEntry("step", step);
   kConfig->writeEntry("text", colorGroup().text() ); 
@@ -40,6 +43,12 @@ void StdInTicker::readsocket(int socket)
   QString str(buf, bytes);
   str.replace(QRegExp("\n"), " // ");
   mergeString(str);
+}
+
+void StdInTicker::closeEvent ( QCloseEvent *e )
+{
+  KSTicker::closeEvent(e);
+  delete this;
 }
 
 

@@ -33,8 +33,8 @@ mspeeddialog.cpp \
 speeddialogData.cpp \
 mspeeddialogData.cpp \
 main.cpp \
-mmain.cpp
-
+mmain.cpp \
+kspainter.cpp
 
 # the library search path
 ksticker_LDFLAGS =  @all_libraries@
@@ -44,7 +44,7 @@ ksticker_LDFLAGS =  @all_libraries@
 ksticker_LDADD   = -lkdeui -lkdecore -lqt -lX11 -lXext @LIBSOCKET@     
 
 # this option you can leave out. Just, if you use "make dist", you need it
-noinst_HEADERS = ksticker.h          main.h              speeddialog.h       speeddialogData.h
+noinst_HEADERS = ksticker.h          main.h              speeddialog.h       speeddialogData.h kspainter.h
 
 libkstickerSOURCES = \
 ksticker.cpp \

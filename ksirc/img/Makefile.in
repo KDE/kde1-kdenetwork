@@ -150,9 +150,9 @@ default: all
 
 .SUFFIXES:
 $(srcdir)/Makefile.in: Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4) 
-	cd $(top_srcdir) && $(AUTOMAKE) --gnu ksirc/img/Makefile
+	cd $(top_srcdir) && $(AUTOMAKE) --gnu --include-deps ksirc/img/Makefile
 
-Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status $(BUILT_SOURCES)
+Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	cd $(top_builddir) \
 	  && CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= $(SHELL) ./config.status
 
@@ -182,10 +182,6 @@ distdir = $(top_builddir)/$(PACKAGE)-$(VERSION)/$(subdir)
 subdir = ksirc/img
 
 distdir: $(DISTFILES)
-	here=`cd $(top_builddir) && pwd`; \
-	top_distdir=`cd $(top_distdir) && pwd`; \
-	cd $(top_srcdir) \
-	  && $(AUTOMAKE) --include-deps --build-dir=$$here --srcdir-name=$(top_srcdir) --output-dir=$$top_distdir --gnu ksirc/img/Makefile
 	@for file in $(DISTFILES); do \
 	  d=$(srcdir); \
 	  test -f $(distdir)/$$file \
@@ -268,6 +264,7 @@ install-data-local:
 	$(mkinstalldirs) $(kde_datadir)/ksirc
 	$(mkinstalldirs) $(kde_datadir)/ksirc/icons
 	$(INSTALL_DATA) *.gif $(kde_datadir)/ksirc/icons 
+	$(INSTALL_DATA) ksirc.gif $(kde_icondir)
 #
 # remove ALL you have installed in install-data-local or install-exec-local
 uninstall-local:
