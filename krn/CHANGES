@@ -14,7 +14,7 @@ Changes made Dec 17
             since the article won't disappear forever :-)
             Implemented "are you sure you want to download a zillion
             articles" option.
-            Fixed a bug in TypeLayout that made checkboxes and radiobuttons
+            Fixed a bug in TypeLayout that made check boxes and radio buttons
             look bad when using a small font. Now all dialogs look and
             work ok on 640x480.
             Fixed a segfault when closing NNTPConfigDlg.
@@ -28,7 +28,7 @@ Changes made Dec 15
             Fixed the "lost last subscribed group" bug.
             Added a desperate way to get articles from servers that
             don't support "article <ID>". Those servers are broken,
-            but krn should now work with them...
+            but KRN should now work with them...
             ...as long as you don't try to read the same group from TWO
             broken servers, which will cause minor havoc.
             Databases are (again) incompatible, sorry!
@@ -37,7 +37,7 @@ Changes made Dec 15
             reasonable.
             Imported whole bunch of new files from kmail, which should
             include a lot of bugfixes and new features, in particular
-            this should fix the bug with pgp and comp.os.linux.announce.
+            this should fix the bug with PGP and comp.os.linux.announce.
             Switched artdlg and groupdlg to ktmainwindow, not
             completely yet.
             Trying to make binary decoding work again (this last worked in
@@ -58,23 +58,23 @@ Changes made Dec 15
                  5) post.
                  6) get article list.
             In my test system, it will not show the second post, which will
-            be missing forever! But I have no access to a real newsserver
+            be missing forever! But I have no access to a real news server
             that let me post, so I would LOVE some help here.
             END-IMPORTANT--------------------------------------------------
 
 -----------------------------------------------------------------------------
 Changes made Jul 31
 -----------------------------------------------------------------------------
-* [Roberto] Changes to let old krn build with the latest shortcut changes.
+* [Roberto] Changes to let old KRN build with the latest shortcut changes.
 -----------------------------------------------------------------------------
 Changes made Jul 29
 -----------------------------------------------------------------------------
-* [Roberto] Ok, time to start the big rewrite krn is needing.
+* [Roberto] Ok, time to start the big rewrite KRN is needing.
             Bugfixes still will be done to the old code, but no new features
             there.
             Now the makefile has a new target, called newkrn, it requires Qt
             1.40, since the only piece that's here (a new group dialog) uses
-            QListView instead of ktreelist.
+            QListView instead of KTreeList.
             Newkrn currently has no net support at all, so don't even bother
             looking at it.
             However, the first new feature is that it will allow for an
@@ -117,7 +117,7 @@ Changes made Jun 16
             I made some *very* minor changes to them, and will put them back
             in kmail so things are easier to sync. Of course this won't break
             kmail. And if you excuse me, I will go say a prayer to Kissmycoatl
-            the aztec god of hubris.
+            the Aztec god of hubris.
 -----------------------------------------------------------------------------
 Changes made Jun 16
 -----------------------------------------------------------------------------
@@ -197,7 +197,7 @@ Changes made Apr 25
 * [Roberto] Still fixing MORE bugs in groupdlg.
             Fixed them all. (Who am I kidding? ;-)
 *           Implemented better "get active groups". Now it merges new groups
-            with current list. This is good for multiserver support.
+            with current list. This is good for multi-server support.
 -----------------------------------------------------------------------------
 Changes made Apr 24
 -----------------------------------------------------------------------------
@@ -206,7 +206,7 @@ Changes made Apr 24
 Changes made Apr 23
 -----------------------------------------------------------------------------
 * [Roberto] Fixed article counting code. This will never be exact, but who
-            cares. No other newsreader's is accurate either.
+            cares. No other news reader is accurate either.
 *           Fixing gaping bug in groupdlg when "all newsgroups" hasn't
             been opened.
 *           Fixing misc bugs in catchup.
@@ -219,9 +219,9 @@ Changes made Apr 22
 -----------------------------------------------------------------------------
 Changes made Apr 21
 -----------------------------------------------------------------------------
-* [Roberto] Combobox that remembers server names.
+* [Roberto] Combo box that remembers server names.
             This also caused a bugfix in typelayout (there was no way to
-            create a rw combobox).
+            create a rw combo box).
 -----------------------------------------------------------------------------
 Changes made Apr 20
 -----------------------------------------------------------------------------
@@ -230,7 +230,7 @@ Changes made Apr 20
 Changes made Apr 18
 -----------------------------------------------------------------------------
 * [Roberto] Fixed a bug: Subjects starting with "{" cause a segfault in
-            ktablistbox. Now I remove the { but that's not nice.
+            KTabListBox. Now I remove the { but that's not nice.
 *           Implemented sane behaviour for "saving multiple". Now it saves
             all messages in a single file.
 *           Fixed ugly bugs in multiple actions.
@@ -248,7 +248,7 @@ Changes made Apr 17
 Changes made Apr 16
 -----------------------------------------------------------------------------
 * [Roberto] Enabled opening of subscribed newsgroups not in active.
-            I need that to read the mozilla groups.
+            I need that to read the Mozilla groups.
 *           Moved a line about 2 screens down, and krn becomes 1.5 MB smaller.
 *           Warped version to 0.4.0, which will be the Beta4 version.
 -----------------------------------------------------------------------------
@@ -256,7 +256,7 @@ Changes made Apr 15
 -----------------------------------------------------------------------------
 * [Roberto] Small statusbar fixes.
 *           Fixed ::connect warnings.
-*           Better illusion of multithreading (doesn't work AT ALL).
+*           Better illusion of multi-threading (doesn't work AT ALL).
 *           Infrastructure for detection of disconnection is there.
             It catches disconnections on request for articles.
             Adding it to every other NNTP action is just a matter of patience.
@@ -300,21 +300,21 @@ Changes made Apr 3
 *           Little cleanups of groupdlg's code.
 *           Groups now remove old ID's from their article list,
             not immediately, but it's done in a way to be not
-            too anoying.
+            too annoying.
 *           Oops, last changes broke article locking. Fixed.
 *           More debug messages removed.
-*           BugFix in artdlg's article counter.
+*           Bugfix in artdlg's article counter.
 *           Started working to make krn detect disconnections!
 -----------------------------------------------------------------------------
 Changes made Apr 2
 -----------------------------------------------------------------------------
-* [Roberto] Switched to kfiledialog.
-            This caused some weird #include trouble, ended #includeing
+* [Roberto] Switched to KFileDialog.
+            This caused some weird #include trouble, ended #including
             qdir.h in a header file.
 * [Roberto] Now uses toolBar() menuBar() and statusBar()
             It now also segfaults when closing last window, maybe
             because of all the latest ktopwidget movement :-(
-* [Roberto] New toolbar for the article window. A little more
+* [Roberto] New tool bar for the article window. A little more
             complex, but I think it's cool.
 * [Roberto] Started working in expire status dialog, so Krn
             exits more gracefully.
@@ -377,7 +377,7 @@ Changes made Feb 20
             and brief/standard/full/fancy header display.
             Bumped version to 0.2.9, so scoring will be 0.3.0
 
-* [Jacek]   Added basig charsets support.
+* [Jacek]   Added basic charsets support.
             Fixed bug that caused Content-Type header not being generated 
 	    correctly
 	    
@@ -442,7 +442,7 @@ Changes made Feb 11
             useful for testing, and as soon as I find exactly how DejaNews
             works it can have very nifty uses...
 * [Roberto] Created NNTP::isHeadCached and isBodyCached. (useful for more
-            sofisticated yet bandwidth saving search/scoring).
+            sophisticated yet bandwidth saving search/scoring).
 
 -----------------------------------------------------------------------------
 Changes made Feb 10
@@ -485,8 +485,8 @@ Changes made Feb 8
 Changes made Feb 7
 -----------------------------------------------------------------------------
 
-* [Roberto] Fix for bug kb59. Netscape can't show the bugs page, but kfm can!
-            Maybe we should have a button "visible only with kfm" ;-)
+* [Roberto] Fix for bug kb59. Netscape can't show the bugs page, but KFM can!
+            Maybe we should have a button "visible only with KFM" ;-)
 
 -----------------------------------------------------------------------------
 Changes made Feb 6
@@ -504,7 +504,7 @@ Changes made Feb 5
 
 * [Roberto] Started implementing a nicer printing system.
             Rationale: the htmlwidget's printing system is a pain if you want
-            to print more than one message, and a2ps prints *gorgeous* mesages.
+            to print more than one message, and a2ps prints *gorgeous* messages.
             Here is my command line:
             a2ps -1 --pretty-print=mailfolder --non-printable-format=space
             Also printing through the HTML widget is still possible.
@@ -524,7 +524,7 @@ Changes made Feb 3
 * [Roberto] Reduced Krn's humongous memory appetite (at least some)
 * [Roberto] Implemented last access date for XOVER data, sadly that will break
             compatibility with yesterday's Krn, so it is now 0.2.1.
-            I feel like if I worked at MicroSoft, forcing everybody to get
+            I feel like if I worked at Microsoft, forcing everybody to get
             my latest version :-(
 * [Roberto] Since I broke that already, I made tags persistent, so download
             of tagged articles over multiple groups can be implemented.
@@ -588,7 +588,7 @@ Changes made Jan 15
 * [Roberto] Switched to Johannes Sixt's KTreeView instead of KTreeList.
             MUCH faster group list now!
 * [Roberto] Prepared artdlg to allow one-article-window newsreading.
-* [Roberto] Added rudimentary support for signatures (autmatically adds
+* [Roberto] Added rudimentary support for signatures (automatically adds
             ~/.signature).
 
 -----------------------------------------------------------------------------
@@ -602,7 +602,7 @@ Changes made Jan 13
 Changes made Nov 22
 -----------------------------------------------------------------------------
 
-* [Roberto] Inmediate NNTP posting should work now (works here, with dnews).
+* [Roberto] Immediate NNTP posting should work now (works here, with dnews).
 * [Roberto] Removed some obsolete files.
 
 -----------------------------------------------------------------------------
@@ -619,8 +619,8 @@ Changes made Nov 21
             from kmail, where you are always composing mail because sometimes
             you are composing mail, sometimes news, sometimes both :-)
 * [Roberto] Imported last kmsender.
-            SMTP inmediate sending works.
-            Need to reimplement NNTP and delayed sending.
+            SMTP immediate sending works.
+            Need to re-implement NNTP and delayed sending.
             
 -----------------------------------------------------------------------------
 Changes made Nov 20
@@ -727,7 +727,7 @@ Changes made Oct 30&31
 Changes made Oct 29
 -----------------------------------------------------------------------------
 
-* [Roberto] Fixed bug that erased article state when regetting xover headers
+* [Roberto] Fixed bug that erased article state when re-getting xover headers
             for another group.
 * [Roberto] Better behaviour when creating article list (it now keeps the
             same article as current if possible).
@@ -770,7 +770,7 @@ Changes made Oct 22
 * [Roberto] Changed folder icon so treeview looks more like kcc's.
 * [Roberto] Added default for real name.
 * [Roberto] Added default for email address.
-* [Roberto] Started internacionalization....
+* [Roberto] Started internationalization....
 * [Roberto] Remembered to update this file ;-).
 * [Roberto] Huge speedup on long NNTP responses (DwString.c_str() is slow).
 * [Roberto] Ergonomized startup dialogs.
@@ -796,7 +796,7 @@ Changes made Sep 29
 Changes made Sep 28
 -----------------------------------------------------------------------------
 
-* [Roberto] Fixed a segfault when exitting.
+* [Roberto] Fixed a segfault when exiting.
 
 -----------------------------------------------------------------------------
 Changes made Sep 26
@@ -911,7 +911,7 @@ Changes made Aug 9
   rare, since at least one article would have to know the ID of a message
   that has not been posted yet, but I guess it could be done intentionally
   or by a (very rare) accident.
-* [Roberto] Drawed the dialog for visible headers choice.
+* [Roberto] Drew the dialog for visible headers choice.
 
 
 -----------------------------------------------------------------------------
@@ -919,7 +919,7 @@ Changes made Aug 8
 -----------------------------------------------------------------------------
 
 * [Roberto] Moved the "only unread" option under another menu and made it
-  persistant.
+  persistent.
 * [Roberto] Added font configuration for message display.
 * [Roberto] Merging Stefan Taferner's new ktablistbox.
 * [Roberto] Added "Get Subjects" command (good for offliners).
@@ -1157,9 +1157,9 @@ Changes made Jun 26
 Changes made Jun 25
 -----------------------------------------------------------------------------
 
-* ARGGGGGGHHHHH! People hate me! And they are right! The Jun-24 pakage
-  overwrites some pixmaps used by kfm! if you "make install".
-  Fixed (kindof). My most sincere apologies. I replaced the package with the
+* ARGGGGGGHHHHH! People hate me! And they are right! The Jun-24 package
+  overwrites some pixmaps used by KFM! if you "make install".
+  Fixed (kind of). My most sincere apologies. I replaced the package with the
   fixed one. SORRY,SORRY,SORRY!
 * Changed KMessage's URL generation to make Kurl happy
   BTW: Kurl isMalformed is too picky, since news:/group.name is
@@ -1191,7 +1191,7 @@ Changes made Jun 23
 * Fixed stupid bug in main.cpp which by chance didn't show on my box.
   My fault! (Thanks Bernd).
 * Started to implement the Newsgroup class. (This is big)
-* Updated the README acording to Stefan Kulow's suggestion
+* Updated the README according to Stefan Kulow's suggestion
 * Now if you don't set NNTPSERVER krn gives a nice warning before dying
 * I switched to the latest KIconloader and now no icon loads ARGHHHHH!
   I'll just leave this commented and try when a new KIconLoader appears.
@@ -1206,7 +1206,7 @@ Changes made Jun 22
 Changes made Jun 21
 -----------------------------------------------------------------------------
 
-* Small bug in Kmessage (background color not resetted) fixed.
+* Small bug in Kmessage (background color not reseted) fixed.
 * Fairly large bug in header display fixed.
 * Display of addresses in the header list normalized with DwMailbox.
 
@@ -1236,7 +1236,7 @@ Changes made Jun 19
 -----------------------------------------------------------------------------
 
 * Changed the Makefile to clean the mimepp directory
-* Fixed the historic "this fuction may return with/without a value" warning
+* Fixed the historic "this function may return with/without a value" warning
   Now krn compiles without warnings on gcc -W. gcc -Wall is another story.
 * After Stefan Kulow asked if he could include this on kdeapps, I'm looking
   again at the autoconf stuff. I guess my brain doesn't match with it,
@@ -1285,8 +1285,8 @@ Changes made Jun 16
   gonna save me a lot of work.
 * Same thing for uulib, part of uudeview.
 * Downloaded Socket++ lib, but it's probably not worth it.
-* Ok, it wasn't much, but it's monday and a holiday here, so it *feels*
-  like sunday :-)
+* Ok, it wasn't much, but it's Monday and a holiday here, so it *feels*
+  like Sunday :-)
 
 -----------------------------------------------------------------------------
 Changes made Jun 15
