@@ -896,7 +896,7 @@ bool Groupdlg::postQueued()
         debug ("have connected");
         QDir d(outpath.data());
         d.setFilter(QDir::Files);
-        const QStrList *files=d.entryList("*");
+        QStrList *files=new QStrList (*d.entryList("*"));
 
         debug ("%d files waiting",files->count());
         for (char *fname=files->first();fname!=0;fname=files->next())
