@@ -88,7 +88,10 @@ OBJECTS = 	main.o\
 		PartProps.o\
 		mPartProps.o\
 		PartPropsData.o\
-		mPartPropsData.o
+		mPartPropsData.o\
+                fontsDlg.o\
+                mfontsDlg.o\
+                fontsDlgData.o
 
 SRCMETA = 	mgroupdlg.o \
 		mNNTP.o \
@@ -105,7 +108,8 @@ SRCMETA = 	mgroupdlg.o \
 		maboutDlg.o\
 		mPostDialog.o\
 		mNewMsgDlg.o\
-		mPartProps.o   
+		mPartProps.o\
+                mfontsDlg.o
 
 
 METASRC =	mgroupdlg.cpp \
@@ -123,7 +127,8 @@ METASRC =	mgroupdlg.cpp \
                 maboutDlg.cpp\
                 mPostDialog.cpp\
                 mNewMsgDlg.cpp\
-                mPartProps.cpp 
+                mPartProps.cpp\
+                mfontsDlg.cpp
 
 
 
@@ -163,7 +168,9 @@ SOURCES = 	main.cpp\
                 NewMsgDlg.cpp\
                 NewMsgDlgData.cpp\
                 PartProps.cpp\
-                PartPropsData.cpp
+                PartPropsData.cpp\
+                fontsDlg.cpp\
+                fontsDlgData.cpp
 
 
 HEADERS = 	NNTP.h\
@@ -195,11 +202,14 @@ HEADERS = 	NNTP.h\
 		NewMsgDlg.h\
 		NewMsgDlgData.h\
 		PartProps.h\
-		PartPropsData.h
+		PartPropsData.h\
+                fontsDlg.h\
+                fontsDlgData.h
 
 ######### build rules ################
 
 all: Makefile $(TARGET)
+	$(INSTALL_DIR) $(LIBDIR)/pics
 
 Makefile: Makefile.in
 	cd .. && ONFIG_FILES=krn/$@ CONFIG_HEADERS= $(SHELL) ./config.status
@@ -284,6 +294,9 @@ mPartProps.cpp: PartProps.h
 
 mPartPropsData.cpp: PartPropsData.h
 	$(MOC) PartPropsData.h -o mPartPropsData.cpp
+
+mfontsDlg.cpp: fontsDlg.h
+	$(MOC) fontsDlg.h -o mfontsDlg.cpp
 
 depend:
 	@makedepend -I$(INCDIR) $(SOURCES) 2> /dev/null

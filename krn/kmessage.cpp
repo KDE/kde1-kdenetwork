@@ -31,6 +31,10 @@
 #include <qlist.h>
 #include <Kconfig.h>
 #include <kfm.h>
+#include <kurl.h>
+
+extern KConfig *conf;
+
 
 Kmessage::Kmessage
     (
@@ -41,6 +45,7 @@ Kmessage::Kmessage
     KHTMLView(parent,name)
 
 {
+    loadSettings();
     setFocusPolicy(QWidget::NoFocus);
 
     this->setScrolling(-1);
@@ -192,3 +197,35 @@ void Kmessage::renderWidgets()
     if(!viewImage->save(viewWidgetName,"XBM")) debug("Unable to save vW");
     else debug("view widget saved as %s",viewWidgetName.data());
 }
+void Kmessage::getFromWeb(QString id)
+{
+    char *buffer=new char[4096];
+    QString urldata("http://ww2.altavista.digital.com/cgi-bin/news.cgi?id@");
+    id=id.mid(1,id.length()-2);
+    //    KURL::encodeURL(id);
+    debug ("encoded?-->%s",id.data());
+    urldata+=id;
+    debug ("urldata-->%s",urldata.data());
+    KURL url(urldata.data());
+    debug ("url-->%s",url.url().data());
+    this->begin("file:/tmp/xxx");
+    sprintf (buffer,
+             "<h1>Error getting article</h1><hr>
+             The article seems to have expired or be missing from both
+             your news server and our local cache.<hr>
+             However, you may be able to find it at Altavista following
+             <a href=%s>this link</a>",url.url().data());
+    this->write (buffer);
+    this->end();
+    this->parse();
+}
+                          
+void Kmessage::loadSettings()
+{
+    conf->setGroup("ArticleListOptions");
+    getKHTMLWidget()->setDefaultFontBase(conf->readNumEntry("DefaultFontBase",3));
+    getKHTMLWidget()->setStandardFont(conf->readEntry("StandardFont",&QString("helvetica")));
+    getKHTMLWidget()->setFixedFont(conf->readEntry("FixedFont",&QString("courier")));
+}
+
+                          

@@ -45,7 +45,8 @@ signals:
     
 public slots:
     void loadMessage (QString message, bool complete=TRUE);
-
+    void getFromWeb(QString id);
+    void loadSettings();
 
 private slots:
     void URLClicked(KHTMLView *_view, const char *s, int _button, const char *_target );

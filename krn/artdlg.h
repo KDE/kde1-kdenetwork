@@ -74,6 +74,8 @@ private:
     ArticleList artList;
     KMenuBar *menu;
     QPopupMenu *article;
+    QPopupMenu *taggedArticle;
+    QPopupMenu *options;
     KToolBar *tool;
     KPanner *panner;
     QGridLayout *gl;

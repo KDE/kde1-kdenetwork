@@ -28,6 +28,7 @@
 #include <kmsgbox.h>
 #include <kkeyconf.h>
 #include <html.h>
+#include <Kconfig.h>
 
 #include <mimelib/mimepp.h>
 
@@ -35,6 +36,7 @@
 #include "kdecode.h"
 #include "rmbpop.h"
 #include "PostDialog.h"
+#include "fontsDlg.h"
 
 #define REP_MAIL 1
 #define FOLLOWUP 2
@@ -51,6 +53,7 @@
 #define DECODE_ONE_ARTICLE 13
 #define NO_READ 14
 #define PRINT_ARTICLE 15
+#define CONFIG_FONTS 16
 
 extern KIconLoader *iconloader;
 
@@ -60,6 +63,7 @@ extern ArticleDict artSpool;
 
 extern KDecode *decoder;
 
+extern KConfig *conf;
 
 Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     :Inherited (_group->data())
@@ -68,7 +72,9 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     group->isVisible=true;
     setCaption (group->data());
     groupname=group->data();
-    unread = true;
+
+    conf->setGroup("ArticleListOptions");
+    unread=conf->readNumEntry("ShowOnlyUnread");
     
     server = _server;
     
@@ -83,12 +89,10 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     article->insertSeparator();
     article->insertItem("Decode",DECODE_ONE_ARTICLE);
     article->insertItem("Tag",TAG_ARTICLE);
-    article->insertSeparator();
-    article->insertItem("Only unread messages", NO_READ);
-    article->setItemChecked(NO_READ,unread);
     connect (article,SIGNAL(activated(int)),SLOT(actions(int)));
 
-    QPopupMenu *taggedArticle=new QPopupMenu;
+    
+    taggedArticle=new QPopupMenu;
     taggedArticle->insertItem("Save",SAVE_ARTICLE);
     taggedArticle->insertSeparator();
     taggedArticle->insertItem("Reply by Mail",REP_MAIL);
@@ -97,10 +101,18 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     taggedArticle->insertItem("Decode",DECODE_ARTICLE);
     taggedArticle->insertItem("Untag",TAG_ARTICLE);
     connect (taggedArticle,SIGNAL(activated(int)),SLOT(taggedActions(int)));
+
+    options=new QPopupMenu;
+    options->setCheckable(true);
+    options->insertItem("Only unread messages", NO_READ);
+    options->setItemChecked(NO_READ,unread);
+    options->insertItem("Fonts",CONFIG_FONTS);
+    connect (options,SIGNAL(activated(int)),SLOT(actions(int)));
     
     menu = new KMenuBar (this, "menu");
     menu->insertItem ("&Article", article);
     menu->insertItem ("&Tagged", taggedArticle);
+    menu->insertItem ("&Options", options);
     setMenu (menu);
     
     
@@ -334,6 +346,18 @@ bool Artdlg::actions (int action)
     qApp->setOverrideCursor (waitCursor);
     switch (action)
     {
+    case CONFIG_FONTS:
+        {
+            debug ("configuring fonts");
+            qApp->setOverrideCursor (arrowCursor);
+            fontsDlg dlg;
+            if(dlg.exec()==1)
+            {
+                messwin->loadSettings();
+            }
+            qApp->restoreOverrideCursor ();
+            break;
+        }
     case PRINT_ARTICLE:
         {
             qApp->setOverrideCursor (arrowCursor);
@@ -413,7 +437,10 @@ bool Artdlg::actions (int action)
     case NO_READ:
         {
             unread = !unread;
-            article->setItemChecked(NO_READ, unread);
+            conf->setGroup("ArticleListOptions");
+            conf->writeEntry("ShowOnlyUnread",unread);
+            conf->sync();
+            options->setItemChecked(NO_READ, unread);
             fillTree();
             success = true;
             break;
@@ -468,6 +495,10 @@ bool Artdlg::loadArt (QString id)
         if (!s->isEmpty())
         {
             messwin->loadMessage(*s);
+        }
+        else
+        {
+            messwin->getFromWeb(id);
         }
         delete s;
     }

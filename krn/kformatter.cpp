@@ -96,7 +96,8 @@ bool KFormatter::isMultiPart(QList<int> part)
 const char* KFormatter::rawPart(QList<int> partno)
 {
     DwBodyPart* body=getPart(partno);
-    const char* data=body->Body().AsString().data();
+//    const char* data=body->Body().AsString().data(); XXXX
+    const char* data=body->Body().AsString().c_str();
     return data;
 }
 
@@ -177,9 +178,7 @@ QString KFormatter::htmlPart(QList<int> partno)
     QString encoding;
     if(body->Headers().HasCte())
     {
-        encoding=body->Headers().ContentTransferEncoding().AsString().data();
-        pos=encoding.find('\n');
-        if(pos!=-1) encoding=encoding.left(pos);
+        encoding=body->Headers().ContentTransferEncoding().AsString().c_str();
         encoding=encoding.lower();
     }
     else{
@@ -189,7 +188,7 @@ QString KFormatter::htmlPart(QList<int> partno)
 
     //debug("Formatting part %s: baseType: %s subType: %s wholeType: %s, encoding=%s",listToStr(partno).data(), baseType.data(), subType.data(), wholeType.data(),encoding.data());
 
-    const char* udata=body->Body().AsString().data();
+    const char* udata=body->Body().AsString().c_str();
     CHECK_PTR(udata);
     //debug("udata: %s",udata);
 
@@ -451,7 +450,7 @@ QString KFormatter::searchLink(QString subj, QString group)
 
 QString KFormatter::htmlHeader()
 {
-    QString header("<table>");
+    QString header("<pre>");
     //Build the header
     QStrIList visheaders;
     visheaders.setAutoDelete(true);
@@ -476,7 +475,7 @@ QString KFormatter::htmlHeader()
             int npos=headerContents.find('\n');
             if(npos!=-1) headerContents=headerContents.left(npos);
             debug("Header contents: %s",headerContents.data());
-            header+="<tr><td><b>"+headerName+": </b></td><td>";
+            header+="<b>"+headerName.leftJustify(10)+":</b> ";
 
             if(headerName=="Newsgroups" || headerName=="Followup-to")
             {
@@ -488,9 +487,10 @@ QString KFormatter::htmlHeader()
                 {
                     len=headerContents.find(',',index)-index;
                     group=headerContents.mid(index,len);
-                    header+="<a href=\"news://newsserver/"+group+"\">"+group+"</a> ";
+                    header+="<a href=\"news://newsserver/"+group+"\">"+group+"&nbsp;</a>";
                     index+=len+1;
                 }
+                header+="\n";
             }
             else if(headerName=="References")
             {
@@ -514,6 +514,7 @@ QString KFormatter::htmlHeader()
                     debug ("t-->%s",t.data());
                     header+=t;
                 }
+                header+="\n";
             }
             else if(headerName=="Date")
             {
@@ -570,7 +571,7 @@ QString KFormatter::htmlHeader()
                     }
                     else textDate+=dateFmt->at(pos);
                 }
-                header+=textDate;
+                header+=textDate+"\n";
             }
             else
                 // header without special formatting
@@ -581,11 +582,9 @@ QString KFormatter::htmlHeader()
                 s.replace(QRegExp(">"),"&gt;");
                 header=header+s+"\n";
             }
-
-            header+=+"</td>\n";
         }
     }
-    header+="</table>";
+    header+="</pre>";
     return header;
 }
 
