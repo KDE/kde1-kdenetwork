@@ -138,7 +138,7 @@ int FingerProtocol::writeString(QString st)
     unsigned int len;
 
     char    val=0; 
-    getsockopt(sock,SOL_SOCKET,SO_ERROR,&val,&len );                   
+    getsockopt(sock,SOL_SOCKET,SO_ERROR,(void*)&val,&len );                   
     //warning("error %d ",val);
     if(val==0)  
 	write(sock,st,strlen(st));
