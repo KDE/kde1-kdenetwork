@@ -60,6 +60,7 @@ DialWidget::DialWidget( QWidget *parent, const char *name )
 
   number_l = new QLineEdit(this, "number_l");
   number_l->setMaxLength(PHONENUMBER_SIZE);
+  
   FIXED_WIDTH(number_l);
   FIXED_HEIGHT(number_l);
   tl->addWidget(number_l, 2, 2);

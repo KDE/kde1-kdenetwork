@@ -880,8 +880,12 @@ void ConnectWidget::readtty() {
     // ok, we received output from the modem, so it´s likely that we
     // will receive further output. So I reduce the timer interval
     // here to reduce latency
-    if(readtimer->interval() != FAST_READ_TIMER)
-      readtimer->changeInterval(FAST_READ_TIMER);
+    if(c == '\n' || c == '\r')
+      readtimer->changeInterval(SLOW_READ_TIMER);
+    else {
+      if(readtimer->interval() != FAST_READ_TIMER)
+	readtimer->changeInterval(FAST_READ_TIMER);
+    }
   } else {
     // since no output was received, let´s reduce the timer interval
     // again to drop system load
