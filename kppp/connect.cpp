@@ -838,7 +838,6 @@ void ConnectWidget::readChar(unsigned char c) {
       if (loopend) {
 	loopend=false;
       }
-      return;
     }
 
     if (loopend && readbuffer.contains(loopstr[loopnest])) {
