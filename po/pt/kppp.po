@@ -23,7 +23,7 @@ msgstr "Custos Telefónico"
 
 #: accounts.cpp:116 conwindow.cpp:56
 msgid "Volume:"
-msgstr ""
+msgstr "Volume:"
 
 #: accounts.cpp:131
 msgid "Reset Costs"
@@ -168,9 +168,8 @@ msgid "Scanning "
 msgstr "A Procurar "
 
 #: connect.cpp:397
-#, fuzzy
 msgid "Saving "
-msgstr "A Procurar "
+msgstr "A Gravar "
 
 #: connect.cpp:416
 msgid "Sending "
@@ -739,7 +738,7 @@ msgstr "Resposta de Inicialização:"
 
 #: modemcmds.cpp:86
 msgid "Init Delay (sec/100):"
-msgstr ""
+msgstr "Demora de Resposta (sec/100):"
 
 #: modemcmds.cpp:91
 msgid "Dial String:"
@@ -975,12 +974,12 @@ msgstr "Seleccionada:"
 #: acctselect.cpp:88
 #, fuzzy
 msgid "Volume accounting:"
-msgstr "Activar contabilidade"
+msgstr "Contabilidade de volume"
 
 #: acctselect.cpp:92
 #, fuzzy
 msgid "No accounting"
-msgstr "Activar contabilidade"
+msgstr "Contabilidade de volume"
 
 #: acctselect.cpp:93
 #, fuzzy
@@ -1114,9 +1113,10 @@ msgid ""
 "itself.\n"
 "Contact your system administrator."
 msgstr ""
+"kppp detectou a opção 'lock' em /etc/ppp/option.\n"
+"\n"
+"Esta opção tem de ser removida uma vez que kppp toma conta do locking de "
+"dispositivos."
 
 #~ msgid "Dismiss"
 #~ msgstr "Sair"
-
-#~ msgid "Modem sustains fast initialization."
-#~ msgstr "Modem aceita inicialização rápida"

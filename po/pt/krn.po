@@ -368,7 +368,6 @@ msgid "Decode Article"
 msgstr "Descodificar Artigo"
 
 #: artdlg.cpp:262
-#, fuzzy
 msgid "Mark UnRead"
 msgstr "Marcar Não Lido"
 
@@ -653,12 +652,11 @@ msgstr "Por quando tempo mantemos mensagens (em dias)?"
 
 #: expireDlg.cpp:46
 msgid "Read:"
-msgstr ""
+msgstr "Lido:"
 
 #: expireDlg.cpp:47
-#, fuzzy
 msgid "Unread:"
-msgstr "Marcar Não Lido"
+msgstr "Não Lido:"
 
 #: expireDlg.cpp:50
 msgid "Article Bodies:"
@@ -775,6 +773,3 @@ msgstr "Utilizar Threads"
 
 #~ msgid "Name"
 #~ msgstr "Nome"
-
-#~ msgid "menu"
-#~ msgstr "menu"
