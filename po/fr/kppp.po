@@ -19,11 +19,11 @@ msgstr "Configuration du compte"
 
 #: accounts.cpp:72
 msgid "Edit..."
-msgstr "Edition ..."
+msgstr "Edition..."
 
 #: accounts.cpp:83
 msgid "New..."
-msgstr "Nouveau ..."
+msgstr "Nouveau..."
 
 #: accounts.cpp:105
 msgid "Phone Costs:"
@@ -128,8 +128,9 @@ msgid "Sorry, can't create modem lock file."
 msgstr "Désolé, je ne peux pas créer le fichier de verrouillage du modem."
 
 #: connect.cpp:122 connect.cpp:185 modeminfo.cpp:67
+#, fuzzy
 msgid "Looking for Modem ..."
-msgstr "Recherche du modem ..."
+msgstr "Recherche du modem..."
 
 #: connect.cpp:131 debug.cpp:86 main.cpp:842
 msgid "Log"
@@ -145,15 +146,16 @@ msgstr "Le modem est prêt"
 
 #: connect.cpp:266 connect.cpp:267
 msgid "Initializing Modem..."
-msgstr "Initialisation du modem ..."
+msgstr "Initialisation du modem..."
 
 #: connect.cpp:292
 msgid "Dialing"
 msgstr "Appel en cours"
 
 #: connect.cpp:325
+#, fuzzy
 msgid "Line Busy. Hanging up ..."
-msgstr "La ligne est occupée. Je raccroche ..."
+msgstr "La ligne est occupée. Je raccroche..."
 
 #: connect.cpp:331
 msgid "Line Busy. Waiting: "
@@ -236,8 +238,9 @@ msgid "LoopEnd without mathing Start! Line: "
 msgstr "Fin de boucle (LoopEnd) sans début (Start) à la ligne : "
 
 #: connect.cpp:747
+#, fuzzy
 msgid "Starting pppd ..."
-msgstr "Lancement de pppd ..."
+msgstr "Lancement de pppd..."
 
 #: connect.cpp:807 connect.cpp:833
 msgid "unknown speed"
@@ -256,8 +259,9 @@ msgid "Looping: "
 msgstr "Répétition : "
 
 #: connect.cpp:925 modeminfo.cpp:332
+#, fuzzy
 msgid "One Moment Please ..."
-msgstr "Un instant s'il vous plaît ..."
+msgstr "Un instant s'il vous plaît..."
 
 #: connect.cpp:969
 msgid "Script timed out!"
@@ -272,12 +276,14 @@ msgid "Expecting: "
 msgstr "Attente de : "
 
 #: connect.cpp:1040
+#, fuzzy
 msgid "Logging on to Network ..."
-msgstr "Connexion au réseau ..."
+msgstr "Connexion au réseau..."
 
 #: connect.cpp:1067
+#, fuzzy
 msgid "Running Startup Command ..."
-msgstr "Lancement de la commande de démarrage ..."
+msgstr "Lancement de la commande de démarrage..."
 
 #: connect.cpp:1133
 msgid "Sorry, can't open modem."
@@ -357,7 +363,7 @@ msgstr "Basée sur un terminal"
 
 #: edit.cpp:76
 msgid "CHAP"
-msgstr ""
+msgstr "CHAP"
 
 #: edit.cpp:82
 msgid "Store password"
@@ -493,9 +499,8 @@ msgid "Disconnect on X-server shutdown"
 msgstr "Se déconnecter en cas d'arrêt du serveur X"
 
 #: general.cpp:124
-#, fuzzy
 msgid "Quit on Disconnect"
-msgstr "Déconnecter"
+msgstr "Quitter à la déconnexion"
 
 #: general.cpp:130
 msgid "Minimize Window on Connect"
@@ -709,33 +714,32 @@ msgid ""
 "Cannot create PAP authentication\n"
 "file \"%s\""
 msgstr ""
-"Je ne peux pas créer le fichier d'identification\n"
+"Impossible de créer le fichier d'identification\n"
 "\"%s\" pour PAP"
 
 #: main.cpp:802
-#, fuzzy
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
 "supply a username and a password!"
 msgstr ""
 "Vous avez selectionné la méthode\n"
-"d'identification PAP. Cela suppose\n"
+"d'identification CHAP. Cela suppose\n"
 "que vous fournissiez un nom d'utilisateur\n"
 "et un mot de passe !"
 
 #: main.cpp:809
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
 "file \"%s\""
 msgstr ""
-"Je ne peux pas créer le fichier d'identification\n"
-"\"%s\" pour PAP"
+"Impossible de créer le fichier d'identification\n"
+"\"%s\" pour CHAP"
 
 #: main.cpp:821
 msgid "You have to specify a telephone number !\n"
-msgstr ""
+msgstr "Vous devez préciser un numéro de téléphone !\n"
 
 #: main.cpp:895
 msgid "Quit kPPP?"
@@ -750,7 +754,7 @@ msgid ""
 "Can not load the accounting\n"
 "ruleset \""
 msgstr ""
-"Je ne peux pas charger les règles de\n"
+"Impossible de charger les règles de\n"
 "facturation de compte \""
 
 #: modemcmds.cpp:40
@@ -948,8 +952,9 @@ msgid "Initializing Modem"
 msgstr "Initialisation du modem"
 
 #: miniterm.cpp:223
+#, fuzzy
 msgid "Hanging up ..."
-msgstr "Décrochage ..."
+msgstr "Décrochage..."
 
 #: miniterm.cpp:243
 msgid "Resetting Modem"
@@ -957,7 +962,7 @@ msgstr "Réinitialisation du modem en cours"
 
 #: miniterm.cpp:262
 msgid "Can't restore tty settings: tcsetattr()\n"
-msgstr "Je ne peux pas restaurer les paramètres tty: tcsetattr()\n"
+msgstr "Impossible de restaurer les paramètres tty: tcsetattr()\n"
 
 #: miniterm.cpp:283
 msgid "tcgetattr() failed\n"
@@ -1112,6 +1117,11 @@ msgid ""
 "a non-empty file that has appropriate\n"
 "read and write permissions."
 msgstr ""
+"/etc/resolv.conf est manquant !\n"
+"\n"
+"Demandez à votre administrateur système\n"
+"la création d'un fichier non vide de ce nom\n"
+"avec les permissions en lecture et écriture."
 
 #~ msgid "Use default script"
 #~ msgstr "Utiliser le script par défault"

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp 0.9.6\n"
-"POT-Creation-Date: 1998-06-11 23:08+0200\n"
+"POT-Creation-Date: 1998-06-18 22:50+0200\n"
 "PO-Revision-Date: 1998-06-12 08:32 MET DST\n"
 "Last-Translator: Wang Jian <lark@linux.ustc.edu.cn>\n"
 "Language-Team: zh_CN ( gb2312)\n"
@@ -46,8 +46,7 @@ msgstr "完全复位"
 msgid ""
 "Are you sure you want to reset the accumulated\n"
 "telephone costs for the selected account to zero?"
-msgstr ""
-"你确定要把选中的帐号的累计话费复位到零 ?"
+msgstr "你确定要把选中的帐号的累计话费复位到零 ?"
 
 #: accounts.cpp:271 accounts.cpp:294
 msgid "Maximum number of accounts reached."
@@ -295,7 +294,6 @@ msgstr ""
 "pppd 命令 + 命令行参数长度超过了 2024 个\n"
 "字符. 你在干什么 ?"
 
-
 #: conwindow.cpp:44
 msgid "Connected at:"
 msgstr "连接速度:"
@@ -456,10 +454,6 @@ msgstr "给这个网关赋给默认网关"
 msgid "Edit Script"
 msgstr "编辑脚本"
 
-#: edit.cpp:563
-msgid "Use default script"
-msgstr "使用默认脚本"
-
 #: edit.cpp:580
 msgid "Insert"
 msgstr "插入"
@@ -549,10 +543,6 @@ msgstr "调制解调器设备:"
 #: general.cpp:285
 msgid "Flow Control:"
 msgstr "流控制:"
-
-#: general.cpp:292
-msgid "None"
-msgstr "无"
 
 #: general.cpp:300
 msgid "Line Termination:"
@@ -742,8 +732,7 @@ msgstr "退出 kPPP 将结束你的 PPP 会话."
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
-msgstr ""
-"不能载入记帐规则集"
+msgstr "不能载入记帐规则集"
 
 #: modemcmds.cpp:40
 msgid "Edit Modem Commands"
@@ -1028,10 +1017,6 @@ msgstr "kppp: 规则文件没有包含 \"name=...\" 的一行\n"
 msgid "kppp: rulefile is ok\n"
 msgstr "kppp: 规则文件是对的\n"
 
-#: docking.cpp:70 docking.cpp:222
-msgid "Restore"
-msgstr "恢复"
-
 #: docking.cpp:220
 msgid "Minimize"
 msgstr "最小化"
@@ -1107,3 +1092,12 @@ msgstr ""
 "\n"
 "请要求你的系统管理员建立一个非空的文件,\n"
 "并设好正确的读写权限."
+
+#~ msgid "Use default script"
+#~ msgstr "使用默认脚本"
+
+#~ msgid "None"
+#~ msgstr "无"
+
+#~ msgid "Restore"
+#~ msgstr "恢复"

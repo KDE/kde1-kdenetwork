@@ -61,8 +61,9 @@ msgstr "Pulisci finestra messaggi"
 msgid "P&references..."
 msgstr "P&referenze"
 
-#: knu.cpp:272
 # c-format
+#: knu.cpp:272
+#, c-format
 msgid "&About %s"
 msgstr "&Info su %s"
 
@@ -115,13 +116,11 @@ msgstr ""
 "hai un problema nel tuo file\n"
 "%s/%src\n"
 "di configurazione.\n"
-"Nel gruppo [%s],\n"  
+"Nel gruppo [%s],\n"
 "non riesco a trovare una voce \"path=\" valida.\n"
 "\n"
 "Per favore usa il menu Modifica->Preferenze...\n"
 "per configurarlo nuovamente.\n"
-
-
 
 #: CommandDlg.cpp:349
 msgid "Error in pathname"
