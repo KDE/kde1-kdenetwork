@@ -142,6 +142,15 @@ void PWidget::messageHandler(int fd, PukeMessage *pm)
       pmRet.cArg[0] = 0;
       emit outputMessage(fd, &pmRet);
       break;
+  case PUKE_WIDGET_SETCAPTION:
+    widget()->setCaption(pm->cArg);
+    pmRet.iCommand = PUKE_WIDGET_SETCAPTION_ACK;
+    pmRet.iWinId = pm->iWinId;
+    pmRet.iArg = 0;
+    strncpy(pmRet.cArg, widget()->caption(), 49);
+    emit outputMessage(fd, &pmRet);
+    break;
+
   default:
     warning("PWidget: Unkown Command: %d", pm->iCommand);
     pmRet.iCommand = PUKE_INVALID;

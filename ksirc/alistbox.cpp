@@ -139,7 +139,7 @@ int aListBox::searchFor(QString nick, bool &found, bool top) /*FOLD00*/
       if(compare < 0){
 	min = current;
 	insert = real_max + 1;
-	debug("End check got one!");
+//	debug("End check got one!");
       }
       else if (compare == 0){// We got a match
 	insert = current;
@@ -155,15 +155,15 @@ int aListBox::searchFor(QString nick, bool &found, bool top) /*FOLD00*/
 
     if(loop == count())
     {
-        debug("Loop inifitly on: %s", nick.data());
+//        debug("Loop inifitly on: %s", nick.data());
     }
 
     if(found == TRUE){
-      debug("Found %s", nick.data());
+//      debug("Found %s", nick.data());
       return insert;
     }
   }
-  debug("%s is at %d", nick.data(), insert);
+//  debug("%s is at %d", nick.data(), insert);
   return insert;
        
 }

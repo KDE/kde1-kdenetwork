@@ -5,6 +5,7 @@
 &docommand("/load plined.pm");
 &docommand("/load pbutton.pm");
 &docommand("/load ppushbt.pm");
+&docommand("/load pprogress.pm");
 
 $pw = new PWidget;
 $pw->resize(250,500);
@@ -45,8 +46,11 @@ $pp->installHandler($::PUKE_BUTTON_CLICKED_ACK, sub
 		   );
 $pb2->addWidget($pp, 0, $PBoxLayout::AlignRight);
 
-#$pw->onNext(sub{$pw->show()});
-$pw->show();
+$pp = new PProgress;
+
+$pw->onNext(sub{$pw->show()});
+$pp->onNext(sub{$pw->show(); $pp->show()});
+#$pw->show();
 #$pf->show();
 #$pf2->show();
 

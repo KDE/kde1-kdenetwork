@@ -78,12 +78,14 @@ time:
 	echo -n "#define COMPILE_DATE " > cdate.h
 	date +%s >> cdate.h
 
-ksircstatic: $(ksircstatic_OBJECTS) $(ksircstatic_DEPENDENCIES)
+ksircstatic: dummy
 	@rm -f ksircstatic
-	@echo "*** Ignore any failures ***"
+	@echo "*** Ignore any failures ***"        
 	$(CXXLINK) $(ksircstatic_LDFLAGS) $(ksircstatic_OBJECTS) $(ksircstatic_LDADD) $(STATIC_LIBS) $(LIBS) || true
 	@touch ksircstatic
 	@echo "*** Ignore previous failure, if any ***"
+
+dummy:
 
 # this option you can leave out. Just, if you use "make dist", you need it
 #

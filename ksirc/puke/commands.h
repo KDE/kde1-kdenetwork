@@ -225,6 +225,18 @@
 // cArg: not defined
 #define PUKE_WIDGET_SETMAXSIZE_ACK -1070
 
+// Desc: set widget caption
+// iWinid: window id
+// iArg: not defined
+// cArg: widget caption
+#define PUKE_WIDGET_SETCAPTION 1075
+
+// Desc: ack for set caption
+// iWinid: window id
+// iArg: not define
+// cArg: new caption
+#define PUKE_WIDGET_SETCAPTION_ACK -1075
+
 // 1100 defines QFrame
 // Desc: set Frame style
 // iWinId: widget to chanse
@@ -400,6 +412,69 @@
 #define PUKE_BUTTON_TOGGLED_ACK -1353
 
 
+//------------------------------------------------
+
+// Desc: set's the range of the control
+// iWinId: window id
+// iArg: two packed short ints.  Lower is lower, upper is upper
+// cArg: not define
+#define PUKE_KSPROGRESS_SET_RANGE 1400
+
+// Desc: ack set's the range of the control
+// iWinId: window id
+// iArg: not define
+// cArg: not defined
+#define PUKE_KSPROGRESS_SET_RANGE_ACK -1400
+
+// Desc: set the top text line
+// iWinId: window id
+// iArg: not define
+// cArg: top line
+#define PUKE_KSPROGRESS_SET_TOPTEXT 1410
+
+// Desc: ack set the top text line
+// iWinId: window id
+// iArg: not defined
+// cArg: not defined
+#define PUKE_KSPROGRESS_SET_TOPTEXT_ACK -1410
+
+// Desc: set the bottom text line
+// iWinId: window id
+// iArg: not define
+// cArg: bottom line
+#define PUKE_KSPROGRESS_SET_BOTTEXT 1415
+
+// Desc: ack set the top text line
+// iWinId: window id
+// iArg: not defined
+// cArg: not defined
+#define PUKE_KSPROGRESS_SET_BOTTEXT_ACK -1415
+
+// Desc: set status value
+// iWinId: window id
+// iArg: not define
+// cArg: current value
+#define PUKE_KSPROGRESS_SET_VALUE 1420
+
+// Desc: ack set the top text line
+// iWinId: window id
+// iArg: not defined
+// cArg: not defined
+#define PUKE_KSPROGRESS_SET_VALUE_ACK -1420
+
+                                                
+// Desc: cancel pressed, typically only ack sent.
+// iWinId: window id
+// iArg: not define
+// cArg: current value
+#define PUKE_KSPROGRESS_CANCEL 1425
+
+// Desc: send message saying cancel button was pressed
+// iWinId: window id
+// iArg: not defined
+// cArg: not defined
+#define PUKE_KSPROGRESS_CANCEL_ACK -1425
+
 
 // ***********************************************************************
 // ***********************************************************************
@@ -422,6 +497,9 @@
 
 // PUSH defined the push button
 #define PWIDGET_PUSHBT 6
+
+// Progress window for dcc and stuff
+#define PWIDGET_KSPROGRESS 7
 
 
 // Group layout commands exist between 10000 and 11000

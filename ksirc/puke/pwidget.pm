@@ -118,6 +118,18 @@ sub setMaximumSize {
 
 }
 
+
+sub setCaption {
+  my $self = shift;
+
+  my $text = shift;
+  
+  $self->sendMessage('iCommand' => $::PUKE_WIDGET_SETCAPTION,
+		     'cArg' => $text,
+		     'CallBack' => sub {});
+
+}
+
 sub resizeEvent {
   my $self = shift;
 

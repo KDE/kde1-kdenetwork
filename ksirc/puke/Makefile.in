@@ -164,7 +164,8 @@ commands-handler.pl  pboxlayout.pm pwidget.pm \
 commands-perl.pl pframe.pm test.pl convert_commands.pl \
 plined.pm tester.pl pbase.pm puke.pl pframe.cpp plined.cpp \
 ppushbt.h ppushbt.cpp \
-pbutton.h pbutton.cpp
+pbutton.h pbutton.cpp \
+pprogress.h pprogress.cpp
 
 # just to make sure, automake makes them 
 BUILTSOURCES =	
@@ -393,7 +394,7 @@ libpuke.c: commands.h
 	@touch libpuke.c
 	@echo "Done"
 
-libpuke: $(libpukeOBJECTS) commands.h pframe.so plined.so pbutton.so ppushbt.so HOWTO-PUKE.txt
+libpuke: $(libpukeOBJECTS) commands.h pframe.so plined.so pbutton.so ppushbt.so pprogress.so HOWTO-PUKE.txt
 	./convert_commands.pl
 	ar cr libpuke.a $(libpukeOBJECTS)
 	ranlib libpuke.a || true
@@ -438,6 +439,16 @@ mppushbt.cpp: ppushbt.h
 mppushbt.o: mppushbt.cpp ppushbt.h
 	$(CXXCOMPILE) -fPIC -c mppushbt.cpp
 
+pprogress.so: pprogress.cpp mpprogress.o
+	$(CXXCOMPILE) -fPIC -c pprogress.cpp
+	gcc -shared -Wl -o pprogress.so pprogress.o mpprogress.o
+
+mpprogress.cpp: pprogress.h
+	moc pprogress.h -o mpprogress.cpp
+
+mpprogress.o: mpprogress.cpp pprogress.h
+	$(CXXCOMPILE) -fPIC -c mpprogress.cpp
+
 HOWTO-PUKE.txt: HOWTO-PUKE.pod
 	pod2text HOWTO-PUKE.pod > HOWTO-PUKE.txt
 
@@ -462,7 +473,7 @@ uninstall-local:
 # add a dependency for every moc file to be full portable
 # I've added a key binding to emacs for this. 
 m%.cpp: %.h
-	moc $< -o $@
+	$(MOC) $< -o $@
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
