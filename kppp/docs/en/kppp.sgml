@@ -7,8 +7,8 @@
 
 <title>The <em/kppp/ Handbook
 <author>Bernd Johannes Wuebben, <tt/wuebben@kde.org/
-<date>Version 1.6.11, April 25, 1999
-<abstract>This Handbook describes <em/kppp/ Version 1.6.11
+<date>Version 1.6.14, April 25, 1999
+<abstract>This Handbook describes <em/kppp/ Version 1.6.14
 
 <!-- Table of contents -->
 <toc>
@@ -870,7 +870,7 @@ If your NT RAS server is not a PDC (primary domain controller), it is
 necessary to include the NT domain name as part of the username, separated
 by a backslash.   Because the "\" character has a special meaning to pppd,
 it is necessary to use "\\".   This is explained here:
-<url url="http://metalab.unc.edu/LDP/FAQ/PPP-FAQ.html#ss12.2">
+<url url="http://metalab.unc.edu/LDP/FAQ/PPP-FAQ-12.html#ss12.2">
 
 My kppp settings:
 <itemize>

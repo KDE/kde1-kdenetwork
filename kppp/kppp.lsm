@@ -1,15 +1,16 @@
 Begin3
 Title:         kppp - a dialer and pppd front-end
-Version:       1.1.6
-Entered-date:  Mai 04, 1998
+Version:       1.6.14
+Entered-date:  13JUN99
 Description:   A fancy dialer and front-end to pppd 
-Keywords:      KDE, Qt, gui, X11, pppd, ppp, dialer
-Author:        <wuebben@math.cornell.edu> Bernd Johannes Wuebben
-Maintained-by: <wuebben@math.cornell.edu> Bernd Johannes Wuebben
-Primary-site:  ftp://fiwi02.wiwi.uni-tuebingen.de/pub/kde/stable/apps/network
-Home-Page:     http://math.cornell.edu/~wuebben/kppp/kppp.html
-Alternate-site:ftp://math.cornell.edu/pub/wuebben/kppp
-Original-site: ftp://ftp.kde.org/pub/kde/apps/network
-Platform:      Unix with pppd, Qt 1.31 or higher (http://www.troll.no)
+Keywords:      KDE, Qt, gui, X11, pppd, ppp, dialer, PAP, CHAP
+Author:        wuebben@kde.org (Bernd Johannes Wuebben)
+Maintained-by: porten@kde.org (Harri Porten)
+               mweilguni@sime.com (Mario Weilguni)
+Primary-site:  ftp.kde.org /pub/kde/stable/latest/distribution
+Home-Page:     http://devel-home.kde.org/kppp/index.html
+Alternate-site:http://devel-home.kde.org /kppp
+               792 kB kppp-1.6.14.tar.bz2
+Platform:      Unix with pppd, Qt 1.42 or higher, KDE 1.1.x
 Copying-policy: GPL 
 End
