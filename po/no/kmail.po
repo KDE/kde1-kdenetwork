@@ -252,9 +252,8 @@ msgid "&Set Status"
 msgstr "S&ett status"
 
 #: kmmainwin.cpp:893
-#, fuzzy
 msgid "Mar&k all"
-msgstr "Merk alle"
+msgstr "Mer&k alle"
 
 #: kmmainwin.cpp:902
 msgid "Send again..."
@@ -1068,13 +1067,15 @@ msgstr "fatal feil"
 
 #: main.cpp:161
 msgid "KMail notification"
-msgstr ""
+msgstr "KMail-varsel"
 
 #: main.cpp:162
 msgid ""
 "$HOME is not set!\n"
 "KMail cannot start without it.\n"
 msgstr ""
+"$HOME er ikke satt!\n"
+"KMail kan ikke starte uten den.\n"
 
 #: main.cpp:228
 msgid ""
@@ -1094,7 +1095,7 @@ msgstr ""
 
 #: main.cpp:322
 msgid "Loading addressbook failed"
-msgstr ""
+msgstr "Lastign av adresseboken mislyktes"
 
 #: main.cpp:392
 #, c-format
@@ -1558,13 +1559,12 @@ msgid "Could only write %d bytes of %d."
 msgstr "Kunne bare skrive %d bytes av %d."
 
 #: kmaddrbook.cpp:25
-#, fuzzy
 msgid "KMail Error"
-msgstr "KMail feil"
+msgstr "KMail-feil"
 
 #: kmaddrbook.cpp:26
 msgid "Storing the addressbook failed!\n"
-msgstr ""
+msgstr "Sortering av adresseboken mislyktes!\n"
 
 #: kmaddrbookdlg.cpp:20
 msgid "Addressbook"
@@ -1575,9 +1575,8 @@ msgid "Addressbook Manager"
 msgstr "Adressebokbehandler"
 
 #: kmaddrbookdlg.cpp:179
-#, fuzzy
 msgid "Storing addressbook failed"
-msgstr "Legg til i adresseboken"
+msgstr "Sortering av adresseboken mislyktes"
 
 #: kmiostatusdlg.cpp:32
 msgid "&Abort"
