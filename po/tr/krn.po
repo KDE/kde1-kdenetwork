@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE 1.0\n"
-"POT-Creation-Date: 1998-02-25 18:08+0100\n"
+"POT-Creation-Date: 1998-10-09 15:54+0200\n"
 "PO-Revision-Date: 1998-06-29 11:00+0200\n"
 "Last-Translator: Mehtap AYTAÇ <bbm666@hun.edu.tr>\n"
 "Language-Team: Hacettepe Linux Users Group <hacettepe@linux.org.tr>\n"
@@ -13,27 +13,27 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: ISO 8859-9\n"
 
-#: main.cpp:212 main.cpp:224 main.cpp:236 main.cpp:251 main.cpp:263
+#: main.cpp:213 main.cpp:226 main.cpp:240 main.cpp:258 main.cpp:273
 msgid "KRN-Missing Configuration info"
 msgstr "KRN-Eksik Ayar Bilgisi"
 
-#: main.cpp:213
+#: main.cpp:214
 msgid "Please enter your email adress"
 msgstr "E-Posta adresinizi giriniz"
 
-#: main.cpp:225
+#: main.cpp:227
 msgid "Please enter your real name"
 msgstr "Lütfen gerçek adýnýzý giriniz"
 
-#: main.cpp:237
+#: main.cpp:241
 msgid "Please enter your organization's name"
 msgstr "Lütfen kurumunuzun adýný giriniz"
 
-#: main.cpp:252
+#: main.cpp:259
 msgid "Please enter your NNTP server name"
 msgstr "Lütfen NNTP Sunucunuzun adýný giriniz"
 
-#: main.cpp:264
+#: main.cpp:274
 msgid "Please enter your SMTP server name"
 msgstr "SMTP Sunucunuzun adýný giriniz"
 
@@ -50,159 +50,168 @@ msgstr "Mesaj Alýnýyor"
 msgid "Article Received"
 msgstr "Mesaj Alýndý"
 
-#: groupdlg.cpp:129
+#: groupdlg.cpp:128
 msgid "Connect to Server"
 msgstr "Sunucuya Baðlanýldý"
 
-#: groupdlg.cpp:130
+#: groupdlg.cpp:129
 msgid "Disconnect From Server"
 msgstr "Sunucu ile Baðlantý Kesildi"
 
-#: groupdlg.cpp:131
+#: groupdlg.cpp:130
 msgid "Get Active File"
 msgstr "Aktif Gruplar Dosyasýný Al"
 
-#: groupdlg.cpp:133
+#: groupdlg.cpp:132
 msgid "Post Queued Messages"
 msgstr "Kuyruktaki Mesajlarý Gönder"
 
-#: groupdlg.cpp:135
+#: groupdlg.cpp:134
 msgid "Exit"
 msgstr "Çýkýþ"
 
-#: groupdlg.cpp:138
+#: groupdlg.cpp:137
 msgid "KRN - Group List"
 msgstr "KRM - Grup Listesi"
 
-#: groupdlg.cpp:141 groupdlg.cpp:147
+#: groupdlg.cpp:140 groupdlg.cpp:146
 msgid "Get Subjects"
 msgstr "Konularý Al"
 
-#: groupdlg.cpp:142 groupdlg.cpp:148
+#: groupdlg.cpp:141 groupdlg.cpp:147
 msgid "Get Articles"
 msgstr "Mesajlarý Al"
 
-#: groupdlg.cpp:143 groupdlg.cpp:151 groupdlg.cpp:159
+#: groupdlg.cpp:142 groupdlg.cpp:150 groupdlg.cpp:158
 msgid "Catchup"
 msgstr "Yakala"
 
-#: groupdlg.cpp:149 groupdlg.cpp:157
+#: groupdlg.cpp:148 groupdlg.cpp:156
 msgid "(un)Subscribe"
 msgstr "Üye Ol/(Sil)"
 
-#: artdlg.cpp:151 groupdlg.cpp:150
+#: artdlg.cpp:150 groupdlg.cpp:149
 msgid "Untag"
 msgstr "Etiketsiz"
 
-#: artdlg.cpp:171 groupdlg.cpp:158
+#: artdlg.cpp:159 findArtDlg.cpp:65 groupdlg.cpp:155
+msgid "Find"
+msgstr ""
+
+#: artdlg.cpp:170 groupdlg.cpp:157
 msgid "(Un)Tag"
 msgstr "Etiket(siz)"
 
-#: artdlg.cpp:164 artdlg.cpp:221 groupdlg.cpp:161 groupdlg.cpp:213
+#: artdlg.cpp:163 artdlg.cpp:220 groupdlg.cpp:160 groupdlg.cpp:212
 msgid "Post New Article"
 msgstr "Yeni Mesaj Gönder"
 
-#: groupdlg.cpp:162
+#: groupdlg.cpp:161
 msgid "Post All Queued Articles"
 msgstr "Kuyruktaki Bütün Mesajlarý Gönder"
 
-#: groupdlg.cpp:164
+#: groupdlg.cpp:163
 msgid "&Subscribed"
 msgstr "&Üye Ol"
 
-#: artdlg.cpp:205 groupdlg.cpp:165
+#: artdlg.cpp:204 groupdlg.cpp:164
 msgid "&Tagged"
 msgstr "&Etiketle"
 
-#: groupdlg.cpp:170
+#: groupdlg.cpp:169
 msgid "Identity..."
 msgstr "Kimlik..."
 
-#: groupdlg.cpp:171
+#: groupdlg.cpp:170
 msgid "NNTP Options..."
 msgstr "NNTP Seçenekleri"
 
-#: groupdlg.cpp:172
+#: groupdlg.cpp:171
 msgid "Expire Options..."
 msgstr "Bitirme Seçenekleri..."
 
-#: groupdlg.cpp:173
+#: groupdlg.cpp:172
 msgid "Printing Options..."
 msgstr "Yazdýrma Seçenekleri..."
 
-#: groupdlg.cpp:180
+#: groupdlg.cpp:179
 msgid "About Krn..."
 msgstr "Krn Hakkýnda..."
 
-#: groupdlg.cpp:192
+#: groupdlg.cpp:191
 msgid "&Newsgroup"
 msgstr "&Haber Gruplarý"
 
-#: groupdlg.cpp:199
+#: groupdlg.cpp:198
 msgid "Connect to server"
 msgstr "Sunucuya baðlanýldý"
 
-#: groupdlg.cpp:201
+#: groupdlg.cpp:200
 msgid "Disconnect from server"
 msgstr "Sunucu ile baðlantý kesildi"
 
-#: groupdlg.cpp:204
+#: groupdlg.cpp:203
 msgid "Get list of active groups"
 msgstr "Aktif gruplarýn dökümünü al"
 
-#: groupdlg.cpp:205
+#: groupdlg.cpp:204
 msgid "Find group"
 msgstr "Grup bul"
 
-#: groupdlg.cpp:211
+#: groupdlg.cpp:207
+#, fuzzy
+msgid "(Un)Subscribe"
+msgstr "Üye Ol/(Sil)"
+
+#: groupdlg.cpp:210
 msgid "Check for Unread Articles"
 msgstr "Okunmamýþ mesajlarý ara"
 
-#: groupdlg.cpp:362 groupdlg.cpp:584 groupdlg.cpp:925
+#: groupdlg.cpp:361 groupdlg.cpp:583 groupdlg.cpp:924
 msgid "All Newsgroups."
 msgstr "Bütün Haber Gruplarý"
 
-#: groupdlg.cpp:472 groupdlg.cpp:566
+#: groupdlg.cpp:471 groupdlg.cpp:565
 msgid "Subscribed Newsgroups."
 msgstr "Üye Olunmuþ Haber Gruplarý"
 
-#: groupdlg.cpp:521
+#: groupdlg.cpp:520
 msgid "Disconnected"
 msgstr "Baðlantý Kesildi"
 
-#: groupdlg.cpp:528
+#: groupdlg.cpp:527
 msgid "Connecting to server"
 msgstr "Sunucuya Baðlanýlýyor"
 
-#: groupdlg.cpp:533
+#: groupdlg.cpp:532
 msgid "Connected to server - Posting not allowed"
 msgstr "Sunucuya baðlanýldý - Göndermeye izin verilmiyor"
 
-#: groupdlg.cpp:535
+#: groupdlg.cpp:534
 msgid "Connected to server - Posting allowed"
 msgstr "Sunucuya baðlanýldý - Gönderme mümkün"
 
-#: groupdlg.cpp:541
+#: groupdlg.cpp:540
 msgid "Can't connect to server"
 msgstr "Sunucuya baðlanýlamadý"
 
-#: groupdlg.cpp:543
+#: groupdlg.cpp:542
 msgid "Connection to server failed"
 msgstr "Sunucuya baðlanma baþarýsýz oldu"
 
-#: groupdlg.cpp:552
+#: groupdlg.cpp:551
 msgid "Authentication Failed"
 msgstr "Doðrulama Baþarýsýz Oldu"
 
-#: groupdlg.cpp:555
+#: groupdlg.cpp:554
 msgid "Connection to server failed: Authentication problem"
 msgstr "Sunucuya baðlanma baþarýsýz oldu: Doðrulama problemi"
 
-#: groupdlg.cpp:604
+#: groupdlg.cpp:603
 msgid "Krn-Question"
 msgstr "Krn - Soru"
 
-#: groupdlg.cpp:605
+#: groupdlg.cpp:604
 msgid ""
 "The operation you requested needs a connection to the News server\n"
 "Should I attempt one?"
@@ -210,7 +219,7 @@ msgstr ""
 "Ýstediðiniz bu iþlem Haber sunucusuna baðlanmak gerektiriyor\n"
 "Bir kere deneyim mi?"
 
-#: groupdlg.cpp:868
+#: groupdlg.cpp:867
 msgid ""
 "You don't have an active groups list.\n"
 " get it from server?"
@@ -218,203 +227,229 @@ msgstr ""
 "Aktif gruplar listesine sahip deðilsiniz.\n"
 "Sunucudan alayým mý?"
 
-#: groupdlg.cpp:884
+#: groupdlg.cpp:883
 msgid "Listing active newsgroups"
 msgstr "Aktif haber gruplarý listeleniyor"
 
-#: groupdlg.cpp:899
+#: groupdlg.cpp:898
 msgid "KRN - Find a Newsgroup"
 msgstr "KRN - Bir haber grubu bul"
 
-#: groupdlg.cpp:900
+#: groupdlg.cpp:899
 msgid "Enter the name of the Newsgroup"
 msgstr "Haber Grubunun Adýný Giriniz"
 
-#: groupdlg.cpp:984
+#: groupdlg.cpp:983
 msgid "Krn - Message"
 msgstr "Krn - Mesaj"
 
-#: groupdlg.cpp:985
+#: groupdlg.cpp:984
 msgid "I can't find the group you want!"
 msgstr "Ýstediðiniz grup bulunamadý!"
 
-#: groupdlg.cpp:1078
+#: groupdlg.cpp:1077
 msgid "Getting messages in "
 msgstr "Mesajlar alýnýyor "
 
-#: groupdlg.cpp:1091
+#: groupdlg.cpp:1090
 msgid "Getting list of messages in "
 msgstr "Mesajlar listesi alýnýyor"
 
-#: artdlg.cpp:144 artdlg.cpp:159
+#: artdlg.cpp:143 artdlg.cpp:158
 msgid "Download"
 msgstr "Ýndir"
 
-#: artdlg.cpp:146 artdlg.cpp:268
+#: artdlg.cpp:145 artdlg.cpp:267
 msgid "Mark Read"
 msgstr "Okunaný Ýþaretle"
 
-#: artdlg.cpp:147
+#: artdlg.cpp:146
 msgid "Mark Unread"
 msgstr "Okunmayaný Ýþaretle"
 
-#: artdlg.cpp:150 artdlg.cpp:170
+#: artdlg.cpp:149 artdlg.cpp:169
 msgid "Decode"
 msgstr "Þifreyi Çöz"
 
-#: artdlg.cpp:152 artdlg.cpp:172
+#: artdlg.cpp:151 artdlg.cpp:171
 msgid "Don't expire"
 msgstr "Bitirme"
 
-#: artdlg.cpp:161
+#: artdlg.cpp:160
 msgid "Lookup in Altavista"
 msgstr "Altavista'da Bak"
 
-#: artdlg.cpp:165 artdlg.cpp:252
+#: artdlg.cpp:164 artdlg.cpp:251
 msgid "Reply by Mail"
 msgstr "Posta ile cevapla"
 
-#: artdlg.cpp:166
+#: artdlg.cpp:165
 msgid "Post Followup"
 msgstr "Sýradakini Gönder"
 
-#: artdlg.cpp:167
+#: artdlg.cpp:166
 msgid "Post & Reply"
 msgstr "Gönder & Cevap"
 
-#: artdlg.cpp:174
+#: artdlg.cpp:167 artdlg.cpp:257
+msgid "Forward"
+msgstr ""
+
+#: artdlg.cpp:173 artdlg.cpp:241
 msgid "Tagged"
 msgstr "Etiketli"
 
-#: artdlg.cpp:185
+#: artdlg.cpp:184
 msgid "Show Only Unread Messages"
 msgstr "Yanlýzca Okunmamýþ Mesajlarý Göster"
 
-#: artdlg.cpp:187
+#: artdlg.cpp:186
 msgid "Show Only Cached Messages"
 msgstr "Yanlýzca önbelleklenmiþ Mesajlarý Göster"
 
-#: artdlg.cpp:189
+#: artdlg.cpp:188
 msgid "Show Locked Messages"
 msgstr "Kitlenmiþ Mesajlarý Göster"
 
-#: artdlg.cpp:191
+#: artdlg.cpp:190
 msgid "Expunge"
 msgstr "Expunge"
 
-#: artdlg.cpp:192
+#: artdlg.cpp:191
 msgid "Appearance..."
 msgstr "Görünüþ..."
 
-#: artdlg.cpp:193
+#: artdlg.cpp:192
 msgid "Sorting..."
 msgstr "Sýralama..."
 
-#: artdlg.cpp:197
+#: artdlg.cpp:196
 msgid "Edit Rules"
 msgstr "Kurallar Ýle Oyna"
 
-#: artdlg.cpp:198
+#: artdlg.cpp:197
 msgid "Update"
 msgstr "Güncelle"
 
-#: artdlg.cpp:207
+#: artdlg.cpp:206
 msgid "&Scoring"
 msgstr "&Puanlama"
 
-#: artdlg.cpp:214
+#: artdlg.cpp:213
 msgid "Previous Message"
 msgstr "Önceki Mesaj"
 
-#: artdlg.cpp:216
+#: artdlg.cpp:215
 msgid "Next Message"
 msgstr "Sonraki Mesaj"
 
-#: artdlg.cpp:218
+#: artdlg.cpp:217
 msgid "Find Article"
 msgstr "Mesajý Bul"
 
-#: artdlg.cpp:223
+#: artdlg.cpp:222
 msgid "Get Article List"
 msgstr "Mesaj Listesini Al"
 
-#: artdlg.cpp:225
+#: artdlg.cpp:224
 msgid "Refresh Display"
 msgstr "Ekraný Tazele"
 
-#: artdlg.cpp:248
+#: artdlg.cpp:240
+msgid "Current"
+msgstr ""
+
+#: artdlg.cpp:242 fontsDlg.cpp:52
+msgid "All"
+msgstr "Hepsi"
+
+#: artdlg.cpp:243
+#, fuzzy
+msgid "Read"
+msgstr "Oku:"
+
+#: artdlg.cpp:244
+#, fuzzy
+msgid "UnRead"
+msgstr "Okunmamýþ:"
+
+#: artdlg.cpp:247
 msgid "Save Article"
 msgstr "Mesajý Kaydet"
 
-#: artdlg.cpp:250
+#: artdlg.cpp:249
 msgid "Print Article"
 msgstr "Mesajý Yazdýr"
 
-#: artdlg.cpp:254
+#: artdlg.cpp:253
 msgid "Post a Followup"
 msgstr "Mesaj Gönder"
 
-#: artdlg.cpp:256
+#: artdlg.cpp:255
 msgid "Post & Mail"
 msgstr "Gönder & Posta"
 
-#: artdlg.cpp:262
+#: artdlg.cpp:261
 msgid "Tag Article"
 msgstr "Etiket Baþlýðý"
 
-#: artdlg.cpp:264
+#: artdlg.cpp:263
 msgid "Lock (keep in cache)"
 msgstr "Kitle (önbellekte sakla)"
 
-#: artdlg.cpp:266
+#: artdlg.cpp:265
 msgid "Decode Article"
 msgstr "Mesajý Çöz"
 
-#: artdlg.cpp:270
+#: artdlg.cpp:269
 msgid "Mark UnRead"
 msgstr "Okunmamýþý Ýþaretle"
 
-#: artdlg.cpp:292 sortDlg.cpp:34
+#: artdlg.cpp:291 sortDlg.cpp:34
 msgid "Sender"
 msgstr "Gönderici"
 
-#: artdlg.cpp:294 sortDlg.cpp:36
+#: artdlg.cpp:292 sortDlg.cpp:35
+msgid "Date"
+msgstr ""
+
+#: artdlg.cpp:293 sortDlg.cpp:36
 msgid "Lines"
 msgstr "Satýrlar"
 
-#: artdlg.cpp:295 sortDlg.cpp:33
+#: artdlg.cpp:294 sortDlg.cpp:33
 msgid "Score"
 msgstr "Puan"
 
-#: artdlg.cpp:296 sortDlg.cpp:32
+#: artdlg.cpp:295 sortDlg.cpp:32
 msgid "Subject"
 msgstr "Konu"
 
-#: artdlg.cpp:462
+#: artdlg.cpp:461
 msgid "Threading..."
 msgstr "Threading..."
 
-#: artdlg.cpp:471
+#: artdlg.cpp:470
 msgid "Showing Article List"
 msgstr "Mesaj Listesi Gösteriliyor"
 
-#: artdlg.cpp:1316
+#: artdlg.cpp:1315
 msgid "KRN - Existing File"
 msgstr "KRN - Mevcut Dosya"
 
-#: artdlg.cpp:1317
+#: artdlg.cpp:1316
 msgid "The File you selected already exists"
 msgstr "Seçtiðiniz dosya zaten mevcut"
 
-#: artdlg.cpp:1323
+#: artdlg.cpp:1322
 msgid "OverWrite"
 msgstr "Üstüne Yaz"
 
-#: artdlg.cpp:1325
+#: artdlg.cpp:1324
 msgid "Append"
 msgstr "Sonuna Ekle"
 
-#: artdlg.cpp:1360 artdlg.cpp:1425
+#: artdlg.cpp:1359 artdlg.cpp:1424
 msgid ""
 "From: Krn\n"
 "To: You\n"
@@ -428,7 +463,7 @@ msgstr ""
 "Mesaj alýmýnda hata.\n"
 "Sunucu þöyle dedi:\n"
 
-#: artdlg.cpp:1527
+#: artdlg.cpp:1526
 msgid "Getting Article List"
 msgstr "Mesaj Listesi Alýnýyor"
 
@@ -532,10 +567,6 @@ msgstr "Standart"
 msgid "Long"
 msgstr "Uzun"
 
-#: fontsDlg.cpp:52
-msgid "All"
-msgstr "Hepsi"
-
 #: fontsDlg.cpp:56
 msgid "Attachment Style"
 msgstr "Ek Biçimi"
@@ -556,6 +587,18 @@ msgstr "Satýrsal"
 msgid "Font Size:"
 msgstr "Yazýyüzü Boyutu:"
 
+#: fontsDlg.cpp:70
+msgid "Small"
+msgstr ""
+
+#: fontsDlg.cpp:71
+msgid "Normal"
+msgstr ""
+
+#: fontsDlg.cpp:72
+msgid "Large"
+msgstr ""
+
 #: fontsDlg.cpp:73
 msgid "Huge"
 msgstr "Kocaman"
@@ -564,8 +607,18 @@ msgstr "Kocaman"
 msgid "Standard Font"
 msgstr "Standart Yazýyüzü"
 
+#: fontsDlg.cpp:84
+#, fuzzy
+msgid "Standard Font Test"
+msgstr "Standart Yazýyüzü"
+
 #: fontsDlg.cpp:86
 msgid "Fixed Font"
+msgstr "Sabit Yazýyüzü"
+
+#: fontsDlg.cpp:91
+#, fuzzy
+msgid "Fixed Font Test"
 msgstr "Sabit Yazýyüzü"
 
 #: fontsDlg.cpp:94
@@ -592,6 +645,439 @@ msgstr "Yanlýz bir pencere kullanýn"
 msgid "Split window vertically"
 msgstr "Düþey olarak pencereyi ayýr"
 
+#: kmmessage.cpp:1260
+msgid "On %D, you wrote:"
+msgstr ""
+
+#: kmmessage.cpp:1261
+msgid "On %D, %F wrote:"
+msgstr ""
+
+#: kmmessage.cpp:1262
+#, fuzzy
+msgid "Forwarded Message"
+msgstr "Kitlenmiþ Mesajlarý Göster"
+
+#: kmcomposewin.cpp:122
+msgid "KMail Composer"
+msgstr ""
+
+#: kmcomposewin.cpp:133
+msgid "F"
+msgstr ""
+
+#: kmcomposewin.cpp:134
+#, fuzzy
+msgid "Name"
+msgstr "Gerçek Adý"
+
+#: kmcomposewin.cpp:135
+msgid "Size"
+msgstr ""
+
+#: kmcomposewin.cpp:136
+#, fuzzy
+msgid "Encoding"
+msgstr "&Puanlama"
+
+#: kmcomposewin.cpp:137
+msgid "Type"
+msgstr ""
+
+#: kmcomposewin.cpp:344
+msgid "&From:"
+msgstr ""
+
+#: kmcomposewin.cpp:346
+msgid "&Reply to:"
+msgstr ""
+
+#: kmcomposewin.cpp:348
+msgid "&To:"
+msgstr ""
+
+#: kmcomposewin.cpp:350
+msgid "&Cc:"
+msgstr ""
+
+#: kmcomposewin.cpp:352
+msgid "&Bcc:"
+msgstr ""
+
+#: kmcomposewin.cpp:354
+#, fuzzy
+msgid "&Subject:"
+msgstr "Konu"
+
+#: kmcomposewin.cpp:357
+#, fuzzy
+msgid "&Newsgroups:"
+msgstr "&Haber Gruplarý"
+
+#: kmcomposewin.cpp:359
+#, fuzzy
+msgid "&Followup-To:"
+msgstr "Sýradakini Gönder"
+
+#: kmcomposewin.cpp:431
+#, fuzzy
+msgid "&Send"
+msgstr "Gönderici"
+
+#: kmcomposewin.cpp:434
+#, fuzzy
+msgid "S&end later"
+msgstr "Gönderici"
+
+#: kmcomposewin.cpp:436
+msgid "S&end now"
+msgstr ""
+
+#: kmcomposewin.cpp:438
+msgid "&Insert File..."
+msgstr ""
+
+#: kmcomposewin.cpp:441
+msgid "&Addressbook..."
+msgstr ""
+
+#: kmcomposewin.cpp:446
+msgid "&New Composer..."
+msgstr ""
+
+#: kmcomposewin.cpp:449
+msgid "New Mailreader"
+msgstr ""
+
+#: kmcomposewin.cpp:469 kmcomposewin.cpp:678 kmcomposewin.cpp:1917
+#, fuzzy
+msgid "Mark all"
+msgstr "Okunaný Ýþaretle"
+
+#: kmcomposewin.cpp:472 kmcomposewin.cpp:680
+msgid "Find..."
+msgstr ""
+
+#: kmcomposewin.cpp:474 kmcomposewin.cpp:681
+#, fuzzy
+msgid "Replace..."
+msgstr "Görünüþ..."
+
+#: kmcomposewin.cpp:481
+msgid "&Urgent"
+msgstr ""
+
+#: kmcomposewin.cpp:483
+msgid "&Confirm delivery"
+msgstr ""
+
+#: kmcomposewin.cpp:485
+msgid "&Confirm read"
+msgstr ""
+
+#: kmcomposewin.cpp:488
+msgid "&Charsets..."
+msgstr ""
+
+#: kmcomposewin.cpp:501
+msgid "&All Fields"
+msgstr ""
+
+#: kmcomposewin.cpp:503
+msgid "&From"
+msgstr ""
+
+#: kmcomposewin.cpp:504
+msgid "&Reply to"
+msgstr ""
+
+#: kmcomposewin.cpp:505
+msgid "&To"
+msgstr ""
+
+#: kmcomposewin.cpp:506
+msgid "&Cc"
+msgstr ""
+
+#: kmcomposewin.cpp:507
+msgid "&Bcc"
+msgstr ""
+
+#: kmcomposewin.cpp:508
+#, fuzzy
+msgid "&Subject"
+msgstr "Konu"
+
+#: kmcomposewin.cpp:510
+#, fuzzy
+msgid "&Newsgroups"
+msgstr "&Haber Gruplarý"
+
+#: kmcomposewin.cpp:511
+#, fuzzy
+msgid "&Followup-To"
+msgstr "Sýradakini Gönder"
+
+#: kmcomposewin.cpp:516
+msgid "Append S&ignature"
+msgstr ""
+
+#: kmcomposewin.cpp:518
+msgid "&Insert File"
+msgstr ""
+
+#: kmcomposewin.cpp:520
+msgid "&Attach..."
+msgstr ""
+
+#: kmcomposewin.cpp:523
+msgid "&Save..."
+msgstr ""
+
+#: kmcomposewin.cpp:524
+msgid "Pr&operties..."
+msgstr ""
+
+#: kmcomposewin.cpp:526
+msgid "&Attach"
+msgstr ""
+
+#: kmcomposewin.cpp:551
+msgid "Compose new message"
+msgstr ""
+
+#: kmcomposewin.cpp:556
+msgid "Save message to file"
+msgstr ""
+
+#: kmcomposewin.cpp:561
+#, fuzzy
+msgid "Print message"
+msgstr "Krn - Mesaj"
+
+#: kmcomposewin.cpp:570
+msgid "Cut selection"
+msgstr ""
+
+#: kmcomposewin.cpp:573
+msgid "Copy selection"
+msgstr ""
+
+#: kmcomposewin.cpp:576
+msgid "Paste clipboard contents"
+msgstr ""
+
+#: kmcomposewin.cpp:581
+#, fuzzy
+msgid "Attach file"
+msgstr "Ek Biçimi"
+
+#: kmcomposewin.cpp:585
+msgid "Open addressbook..."
+msgstr ""
+
+#: kmcomposewin.cpp:594
+#, fuzzy
+msgid "sign message"
+msgstr "Krn - Mesaj"
+
+#: kmcomposewin.cpp:599
+#, fuzzy
+msgid "encrypt message"
+msgstr "Sonraki Mesaj"
+
+#: kmcomposewin.cpp:611 kmcomposewin.cpp:627
+msgid "Column"
+msgstr ""
+
+#: kmcomposewin.cpp:612 kmcomposewin.cpp:625
+#, fuzzy
+msgid "Line"
+msgstr "Satýrlar"
+
+#: kmcomposewin.cpp:891
+msgid "KMail Confirm"
+msgstr ""
+
+#: kmcomposewin.cpp:892
+msgid ""
+"Close and discard\n"
+"edited message?"
+msgstr ""
+
+#: kmcomposewin.cpp:937
+#, c-format
+msgid ""
+"public key for %s not found.\n"
+"This person will not be able to decrypt the message."
+msgstr ""
+
+#: kmcomposewin.cpp:958
+msgid "Error during PGP:"
+msgstr ""
+
+#: kmcomposewin.cpp:1178
+#, fuzzy
+msgid "Attach File"
+msgstr "Ek Biçimi"
+
+#: kmcomposewin.cpp:1200
+msgid "Include File"
+msgstr ""
+
+#: kmcomposewin.cpp:1223 kmreaderwin.cpp:683
+msgid "View..."
+msgstr ""
+
+#: kmcomposewin.cpp:1224
+msgid "Save..."
+msgstr ""
+
+#: kmcomposewin.cpp:1225 kmreaderwin.cpp:686
+#, fuzzy
+msgid "Properties..."
+msgstr "Sýralama..."
+
+#: kmcomposewin.cpp:1229
+msgid "Attach..."
+msgstr ""
+
+#: kmcomposewin.cpp:1271 kmreaderwin.cpp:728
+#, fuzzy
+msgid "View Attachment: "
+msgstr "Ek Biçimi"
+
+#: kmcomposewin.cpp:1442 kpgp.cpp:357
+msgid ""
+"Sorry, but this feature\n"
+"is still missing"
+msgstr ""
+
+#: kmcomposewin.cpp:1450
+msgid "unnamed"
+msgstr ""
+
+#: kmcomposewin.cpp:1465
+msgid "To:"
+msgstr ""
+
+#: kmcomposewin.cpp:1469
+#, fuzzy
+msgid "Subject:"
+msgstr "Konu"
+
+#: kmcomposewin.cpp:1472
+msgid "Date:"
+msgstr ""
+
+#: kmcomposewin.cpp:1549
+msgid "Choose Signature File"
+msgstr ""
+
+#: kmcomposewin.cpp:1579
+msgid "KMail: Spellcheck"
+msgstr ""
+
+#: kmcomposewin.cpp:1603
+msgid ""
+"Error starting KSpell. Please make sure you have ISpell properly configured."
+msgstr ""
+
+#: kmsender.cpp:108
+msgid ""
+"Please specify a send\n"
+"method in the settings\n"
+"and try again."
+msgstr ""
+
+#: kmsender.cpp:114
+msgid ""
+"Please set the required fields in the\n"
+"identity settings:\n"
+"user-name and email-address"
+msgstr ""
+
+#: kmsender.cpp:139
+msgid "You must specify a receiver"
+msgstr ""
+
+#: kmsender.cpp:150
+msgid "Cannot add message to outbox folder"
+msgstr ""
+
+#: kmsender.cpp:173
+msgid "Sending still in progress"
+msgstr ""
+
+#: kmsender.cpp:225
+msgid "Initiating sender process..."
+msgstr ""
+
+#: kmsender.cpp:241
+#, fuzzy
+msgid "Sending message: "
+msgstr "Mesajlar alýnýyor "
+
+#: kmsender.cpp:269
+#, fuzzy
+msgid "Done sending messages."
+msgstr "Mesajlar alýnýyor "
+
+#: kmsender.cpp:288
+msgid "Sending failed:"
+msgstr ""
+
+#: kmsender.cpp:441
+msgid ""
+"Please specify a mailer program\n"
+"in the settings."
+msgstr ""
+
+#: kmsender.cpp:481
+#, c-format
+msgid "Failed to execute mailer program %s"
+msgstr ""
+
+#: kmsender.cpp:569
+#, fuzzy
+msgid "connecting to server"
+msgstr "Sunucuya Baðlanýlýyor"
+
+#: kmsender.cpp:574
+#, c-format
+msgid ""
+"Cannot open SMTP connection to\n"
+"host %s for sending:\n"
+"%s"
+msgstr ""
+
+#: kmsender.cpp:603
+msgid "Cannot close SMTP connection."
+msgstr ""
+
+#: kmsender.cpp:653
+#, fuzzy
+msgid "transmitting message"
+msgstr "Mesajlar alýnýyor "
+
+#: kmsender.cpp:687
+msgid "network error"
+msgstr ""
+
+#: kmsender.cpp:689
+#, c-format
+msgid ""
+"a SMTP error occured.\n"
+"Command: %s\n"
+"Response: %s\n"
+"Return code: %d"
+msgstr ""
+
+#: kmsender.cpp:704
+#, c-format
+msgid "Sending SMTP command: %s"
+msgstr ""
+
 #: findArtDlg.cpp:22
 msgid "KRN - Article Searcher"
 msgstr "KRN - Mesaj Araþtýrýcýsý"
@@ -604,13 +1090,288 @@ msgstr "Mesaj Bul(içeren):"
 msgid "In Field:"
 msgstr "Alanda:"
 
+#: findArtDlg.cpp:53 rulesDlg.cpp:131
+msgid "Case Sensitive"
+msgstr ""
+
 #: findArtDlg.cpp:56 rulesDlg.cpp:132
 msgid "Wildcard Mode"
 msgstr "Genel Arama Modu"
 
+#: findArtDlg.cpp:66 rulesDlg.cpp:144
+msgid "Done"
+msgstr ""
+
+#: kmidentity.cpp:162
+#, c-format
+msgid ""
+"Failed to execute signature script\n"
+"%s\n"
+"%s"
+msgstr ""
+
+#: kfileio.cpp:26 kmaddrbook.cpp:159
+msgid "File I/O Error"
+msgstr ""
+
+#: kfileio.cpp:47
+#, c-format
+msgid ""
+"The specified file does not exist:\n"
+"%s"
+msgstr ""
+
+#: kfileio.cpp:54
+#, c-format
+msgid ""
+"This is a directory and not a file:\n"
+"%s"
+msgstr ""
+
+#: kfileio.cpp:61
+#, c-format
+msgid ""
+"You do not have read permissions to the file:\n"
+"%s"
+msgstr ""
+
+#: kfileio.cpp:72 kmaddrbook.cpp:149
+#, c-format
+msgid ""
+"Could not read file:\n"
+"%s"
+msgstr ""
+
+#: kfileio.cpp:75 kmaddrbook.cpp:152
+#, c-format
+msgid ""
+"Could not open file:\n"
+"%s"
+msgstr ""
+
+#: kfileio.cpp:78
+#, c-format
+msgid ""
+"Error while reading file:\n"
+"%s"
+msgstr ""
+
+#: kfileio.cpp:95
+#, c-format
+msgid "Could only read %u bytes of %u."
+msgstr ""
+
+#: kfileio.cpp:124
+#, c-format
+msgid ""
+"File %s exists.\n"
+"Do you want to replace it ?"
+msgstr ""
+
+#: kfileio.cpp:144
+#, c-format
+msgid ""
+"Failed to make a backup copy of %s.\n"
+"Continue anyway ?"
+msgstr ""
+
+#: kfileio.cpp:156 kfileio.cpp:174
+#, c-format
+msgid ""
+"Could not write to file:\n"
+"%s"
+msgstr ""
+
+#: kfileio.cpp:159
+#, c-format
+msgid ""
+"Could not open file for writing:\n"
+"%s"
+msgstr ""
+
+#: kfileio.cpp:163 kmaddrbook.cpp:155
+#, c-format
+msgid ""
+"Error while writing file:\n"
+"%s"
+msgstr ""
+
+#: kfileio.cpp:180
+#, c-format
+msgid "Could only write %d bytes of %d."
+msgstr ""
+
+#: kmmsgpartdlg.cpp:41
+msgid "Message Part Properties"
+msgstr ""
+
+#: kmmsgpartdlg.cpp:62
+msgid "Name:"
+msgstr ""
+
+#: kmmsgpartdlg.cpp:73
+msgid "Description:"
+msgstr ""
+
+#: kmmsgpartdlg.cpp:83
+msgid "Encoding:"
+msgstr ""
+
+#: kmmsgpartdlg.cpp:89
+msgid "none (8bit)"
+msgstr ""
+
+#: kmmsgpartdlg.cpp:90
+msgid "base 64"
+msgstr ""
+
+#: kmmsgpartdlg.cpp:91
+msgid "quoted printable"
+msgstr ""
+
+#: kmreaderwin.cpp:309 kmreaderwin.cpp:322 kmreaderwin.cpp:341
+#: kmreaderwin.cpp:362
+msgid "Cc: "
+msgstr ""
+
+#: kmreaderwin.cpp:317 kmreaderwin.cpp:336 kmreaderwin.cpp:357
+msgid "From: "
+msgstr ""
+
+#: kmreaderwin.cpp:319 kmreaderwin.cpp:338 kmreaderwin.cpp:359
+msgid "To: "
+msgstr ""
+
+#: kmreaderwin.cpp:326 kmreaderwin.cpp:347 kmreaderwin.cpp:372
+msgid "References: "
+msgstr ""
+
+#: kmreaderwin.cpp:343 kmreaderwin.cpp:356
+msgid "Date: "
+msgstr ""
+
+#: kmreaderwin.cpp:365
+msgid "Bcc: "
+msgstr ""
+
+#: kmreaderwin.cpp:368
+#, fuzzy
+msgid "Reply to: "
+msgstr "Posta ile cevapla"
+
+#: kmreaderwin.cpp:375
+msgid "Groups: "
+msgstr ""
+
+#: kmreaderwin.cpp:412
+msgid "Encrypted message"
+msgstr ""
+
+#: kmreaderwin.cpp:418
+msgid "Cannot decrypt message:"
+msgstr ""
+
+#: kmreaderwin.cpp:436
+msgid "Message was signed by"
+msgstr ""
+
+#: kmreaderwin.cpp:437
+msgid "Warning: Bad signature from"
+msgstr ""
+
+#: kmreaderwin.cpp:647
+#, fuzzy
+msgid "Attachment: "
+msgstr "Ek Biçimi"
+
+#: kmreaderwin.cpp:759
+msgid "Could not create temporary file"
+msgstr ""
+
+#: kmreaderwin.cpp:780
+#, c-format
+msgid "Could not save temporary file %s"
+msgstr ""
+
+#: kmreaderwin.cpp:809
+#, fuzzy
+msgid "Could not save file"
+msgstr "Sunucuya baðlanma baþarýsýz oldu"
+
+#: kpgp.cpp:117
+msgid ""
+"Couldn't find PGP executable.\n"
+"Please check your PATH is set correctly."
+msgstr ""
+
+#: kpgp.cpp:163
+msgid ""
+"Could not find PGP executable.\n"
+"Please check your PATH is set correctly."
+msgstr ""
+
+#: kpgp.cpp:173
+msgid "The pass phrase is missing."
+msgstr ""
+
+#: kpgp.cpp:445
+msgid "Message signed by"
+msgstr ""
+
+#: kpgp.cpp:449
+msgid "Message has a bad signature from"
+msgstr ""
+
+#: kpgp.cpp:457
+msgid "End PGP signed message"
+msgstr ""
+
+#: kpgp.cpp:622
+msgid "Bad pass Phrase; couldn't decrypt"
+msgstr ""
+
+#: kpgp.cpp:708
+msgid "Bad pass Phrase; couldn't sign"
+msgstr ""
+
+#: kpgp.cpp:765
+#, fuzzy
+msgid ""
+"Please enter your\n"
+"PGP passphrase"
+msgstr "Lütfen gerçek adýnýzý giriniz"
+
+#: kpgp.cpp:792
+msgid "PGP Security Check"
+msgstr ""
+
 #: krnsender.cpp:59
 msgid "This server is read onlyyou can't post here!"
 msgstr "Bu sunucu salt okunur, postalama yapamazsýnýz!"
+
+#: kmaddrbookdlg.cpp:20
+msgid "Addressbook"
+msgstr ""
+
+#: kmaddrbookdlg.cpp:95
+msgid "Addressbook Manager"
+msgstr ""
+
+#: kmaddrbookdlg.cpp:178
+msgid "KMail error"
+msgstr ""
+
+#: kmaddrbookdlg.cpp:179
+msgid "Storing addressbook failed"
+msgstr ""
+
+#: kmaddrbook.cpp:25
+msgid "KMail Error"
+msgstr ""
+
+#: kmaddrbook.cpp:26
+msgid "Storing the addressbook failed!\n"
+msgstr ""
 
 #: expireDlg.cpp:22 expireDlg.cpp:27
 msgid "KRN - Expire Settings"
@@ -648,12 +1409,21 @@ msgstr "KRN - Yazdýrma Ayarlarý"
 msgid "General"
 msgstr "Genel"
 
+#: printdlg.cpp:35
+msgid "Printing System"
+msgstr ""
+
 #: printdlg.cpp:37
 msgid "Use HTML Printing"
 msgstr "HTML Yazdýrmayý Kullan"
 
 #: printdlg.cpp:40
 msgid "Use Direct Printing"
+msgstr "Doðrudan Basýmý Kullan"
+
+#: printdlg.cpp:45
+#, fuzzy
+msgid "Direct Printing"
 msgstr "Doðrudan Basýmý Kullan"
 
 #: printdlg.cpp:48
@@ -704,6 +1474,10 @@ msgstr "Farklý Kaydet"
 msgid "Match Articles With:"
 msgstr "Mesajlarý Karþýlaþtýr:"
 
+#: rulesDlg.cpp:124
+msgid "Weight:"
+msgstr ""
+
 #: rulesDlg.cpp:126
 msgid "Negative"
 msgstr "Olumsuz"
@@ -716,6 +1490,10 @@ msgstr "Kural Adý:"
 msgid "KRN - Header Sorting"
 msgstr "KRN - Baþlýk Sýralama"
 
+#: sortDlg.cpp:37
+msgid "None"
+msgstr ""
+
 #: sortDlg.cpp:39
 msgid "Sort by:"
 msgstr "Sýralama methodu:"
@@ -723,3 +1501,33 @@ msgstr "Sýralama methodu:"
 #: sortDlg.cpp:56
 msgid "Use Threading"
 msgstr "Threading kullan"
+
+#: charsetsDlg.cpp:27
+#, fuzzy
+msgid "KRN - Charset Settings"
+msgstr "KRN - Yazdýrma Ayarlarý"
+
+#: charsetsDlg.cpp:29
+#, fuzzy
+msgid "KMail - Charset Settings"
+msgstr "KRN - Yazdýrma Ayarlarý"
+
+#: charsetsDlg.cpp:39
+msgid "Message charset"
+msgstr ""
+
+#: charsetsDlg.cpp:57
+msgid "Composer charset"
+msgstr ""
+
+#: charsetsDlg.cpp:75
+msgid "Set as &default"
+msgstr ""
+
+#: charsetsDlg.cpp:80
+msgid "&7 bit is ASCII"
+msgstr ""
+
+#: charsetsDlg.cpp:84
+msgid "&Qute unknonw characters"
+msgstr ""
