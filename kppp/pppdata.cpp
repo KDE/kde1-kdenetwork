@@ -47,24 +47,24 @@ bool PPPData::open(const KApplication* app) {
 
   if (app->getConfigState() == KApplication::APPCONFIG_NONE) {
     QMessageBox::warning(0L, app->appName().data(),
-  			 "The application-specific config file\n"\
-  			 "could not be opened neither\n"\
-  			 "read-write nor read-only");
+                       "The application-specific config file\n"\
+                       "could not be opened neither\n"\
+                       "read-write nor read-only");
     return false;
-  } 
+  }
 
   config = app->getConfig();
 
   highcount = readNumConfig(GENERAL_GRP, NUMACCOUNTS_KEY, 0) - 1;
-  
+
   if(highcount >= 0) {
     if(strcmp(defaultAccount(), "") == 0) {
       setAccountbyIndex(0);
       setDefaultAccount(accname());
     }
   }
-  
-  return true;
+
+  return true;      
 
 }
 
