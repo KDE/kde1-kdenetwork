@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: krn \n"
 "POT-Creation-Date: 1998-01-23 23:18+0100\n"
-"PO-Revision-Date: 1998-01-15 11:15+0100\n"
+"PO-Revision-Date: 1998-01-24 20:33+0100\n"
 "Last-Translator: Pawe³ Jab³oñski <pawel.jablonski@mail.lze.lodz.pl>\n"
 "Content-Type: text/plain; charset=iso8859-2\n"
 
@@ -108,9 +108,8 @@ msgid "NNTP Options..."
 msgstr "Opcje &NNTP..."
 
 #: groupdlg.cpp:168
-#, fuzzy
 msgid "Expire Options..."
-msgstr "Opcje &NNTP..."
+msgstr "Opcje &wygasania..."
 
 #: groupdlg.cpp:174
 msgid "About Krn..."
@@ -366,20 +365,19 @@ msgstr "Pokazujê listê wiadomo¶ci"
 
 #: artdlg.cpp:968
 msgid "KRN - Existing File"
-msgstr ""
+msgstr "KRN - istniej±ce pliki"
 
 #: artdlg.cpp:969
 msgid "The File you selected already exists"
-msgstr ""
+msgstr "Plik, który wybra³e¶, ju¿ istnieje"
 
 #: artdlg.cpp:975
 msgid "OverWrite"
-msgstr ""
+msgstr "Nadpisz"
 
 #: artdlg.cpp:977
-#, fuzzy
 msgid "Append"
-msgstr "&Wy¶lij"
+msgstr "Do³±cz"
 
 #: artdlg.cpp:1024
 msgid ""
@@ -585,34 +583,28 @@ msgid "&Followup-To:"
 msgstr "&Nastêpnie do:"
 
 #: kmcomposewin.cpp:359
-#, fuzzy
 msgid "&Send"
 msgstr "&Wy¶lij"
 
 #: kmcomposewin.cpp:362
-#, fuzzy
 msgid "S&end later"
-msgstr "Wy¶lij pó¼niej"
+msgstr "Wy¶lij &pó¼niej"
 
 #: kmcomposewin.cpp:364
-#, fuzzy
 msgid "S&end now"
-msgstr "Wy¶lij teraz"
+msgstr "Wy¶lij &teraz"
 
 #: kmcomposewin.cpp:366
-#, fuzzy
 msgid "&Insert File..."
 msgstr "Wstaw &plik..."
 
 #: kmcomposewin.cpp:369
-#, fuzzy
 msgid "&Addressbook..."
-msgstr "Ksi±¿ka adresowa"
+msgstr "Ksi±¿ka adresowa..."
 
 #: kmcomposewin.cpp:374
-#, fuzzy
 msgid "&New Composer..."
-msgstr "&Nowa wiadomo¶æ"
+msgstr "&Nowa wiadomo¶æ..."
 
 #: kmcomposewin.cpp:395
 msgid "Mark all"
@@ -624,15 +616,15 @@ msgstr "Szukaj..."
 
 #: kmcomposewin.cpp:406
 msgid "&Urgent"
-msgstr ""
+msgstr "&Pilny"
 
 #: kmcomposewin.cpp:408
 msgid "&Confirm delivery"
-msgstr ""
+msgstr "&Potwierd¼ dostarczenie"
 
 #: kmcomposewin.cpp:410
 msgid "&Confirm read"
-msgstr ""
+msgstr "&Potwierd¼ przeczytanie"
 
 #: kmcomposewin.cpp:422
 msgid "&All Fields"
@@ -711,9 +703,8 @@ msgid "Print message"
 msgstr "Drukuj wiadomo¶æ"
 
 #: kmcomposewin.cpp:503
-#, fuzzy
 msgid "Open addressbook..."
-msgstr "&Ksi±¿ka adresowa..."
+msgstr "Otwórz ksi±¿kê adresow±..."
 
 #: kmcomposewin.cpp:512
 msgid "sign message"
@@ -781,9 +772,8 @@ msgid "Attach..."
 msgstr "Za³±cz..."
 
 #: kmcomposewin.cpp:1110 kmreaderwin.cpp:636
-#, fuzzy
 msgid "View Attachment: "
-msgstr "Za³±cznik:"
+msgstr "Poka¿ za³±czniki: "
 
 #: kmcomposewin.cpp:1215 kpgp.cpp:351
 msgid ""
@@ -793,7 +783,7 @@ msgstr "Ta opcja jest jeszcze niedostêpna"
 
 #: kmcomposewin.cpp:1223
 msgid "unnamed"
-msgstr ""
+msgstr "nienazwany"
 
 #: kmcomposewin.cpp:1238
 msgid "To:"
@@ -813,12 +803,13 @@ msgstr "Wybierz plik podpisu"
 
 #: kmcomposewin.cpp:1359
 msgid "KMail: Spellcheck"
-msgstr ""
+msgstr "KMail: Sprawdzanie pisowni"
 
 #: kmcomposewin.cpp:1383
 msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
 msgstr ""
+"B³±d uruchamienia KSpell. Upewniæ siê, ¿e masz poprawnie skonfigurowany ISpell."
 
 #: kmsender.cpp:103
 msgid ""
@@ -1203,7 +1194,7 @@ msgstr ""
 
 #: kpgp.cpp:820
 msgid "PGP Security Check"
-msgstr "Kontrola  PGP"
+msgstr "Kontrola PGP"
 
 #: kmaddrbookdlg.cpp:20
 msgid "Addressbook"
@@ -1215,45 +1206,16 @@ msgstr "Zarz±dzanie ksia¿k± adresow±"
 
 #: expireDlg.cpp:19
 msgid "KRN - Expire Settings"
-msgstr ""
+msgstr "KRN - Ustawienia wygasania"
 
 #: expireDlg.cpp:27 expireDlg.cpp:52
 msgid "For how long should we keep things (in days)?"
-msgstr ""
+msgstr "Na jak d³ugo zostawiæ wiadomo¶æi (w dniach)?"
 
 #: expireDlg.cpp:30
-#, fuzzy
 msgid "Article Bodies:"
-msgstr "Pobierz listê wiadomo¶ci"
+msgstr "Zawarto¶æ wiadomo¶æi:"
 
 #: expireDlg.cpp:40
 msgid "Article Headers:"
-msgstr ""
-
-#, fuzzy
-#~ msgid "KRN Composer"
-#~ msgstr "&Nowa wiadomo¶æ"
-
-#~ msgid "Send &later"
-#~ msgstr "Wy¶&lij pó¼niej"
-
-#~ msgid "Recip&ients..."
-#~ msgstr "Odb&iorcy..."
-
-#~ msgid "Insert &File"
-#~ msgstr "Ws&taw plik"
-
-#~ msgid "High"
-#~ msgstr "Wysoki"
-
-#~ msgid "Low"
-#~ msgstr "Niski"
-
-#~ msgid "Priority"
-#~ msgstr "Priorytet"
-
-#~ msgid "&Message"
-#~ msgstr "Wiado&mo¶æ"
-
-#~ msgid "&Article"
-#~ msgstr "Wiadomo¶ci"
+msgstr "Nag³owki widomo¶æi:"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmail \n"
 "POT-Creation-Date: 1998-01-23 23:18+0100\n"
-"PO-Revision-Date: 1998-01-15 08:15+0100\n"
+"PO-Revision-Date: 1998-01-24 20:25+0100\n"
 "Last-Translator: Pawe³ Jab³oñski <pawel.jablonski@mail.lze.lodz.pl>\n"
 "Content-Type: text/plain; charset=iso8859-2\n"
 
@@ -222,9 +222,8 @@ msgid "&Set Status"
 msgstr "&Zmieñ status"
 
 #: kmmainwin.cpp:801
-#, fuzzy
 msgid "Send again..."
-msgstr "Wysy³anie..."
+msgstr "Ponowne wysy³anie..."
 
 #: kmmainwin.cpp:804
 msgid "View Source..."
@@ -449,7 +448,7 @@ msgstr "On %D, %F wrote:"
 
 #: kmmessage.cpp:1165 kmsettings.cpp:316
 msgid "Forwarded Message"
-msgstr "Wiadomo¶æ przekazywana"
+msgstr "Forwarded Message"
 
 #: kmsettings.cpp:322
 msgid "Appearance"
@@ -474,53 +473,48 @@ msgid "Use monospaced font"
 msgstr "Czcionka sta³ej szeroko¶ci"
 
 #: kmsettings.cpp:360
-#, fuzzy
 msgid "When sending mail"
-msgstr "Poczta wychodz±ca"
+msgstr "Podczas wysy³ania"
 
 #: kmsettings.cpp:363
 msgid "Default sending:"
-msgstr ""
+msgstr "Domy¶lne ustawienia:"
 
 #: kmsettings.cpp:366
-#, fuzzy
 msgid "send now"
-msgstr "Wy¶lij teraz"
+msgstr "wy¶lij teraz"
 
 #: kmsettings.cpp:370
-#, fuzzy
 msgid "send later"
-msgstr "Wy¶lij pó¼niej"
+msgstr "wy¶lij pó¼niej"
 
 #: kmsettings.cpp:375
-#, fuzzy
 msgid "Send messages:"
-msgstr "Wysy³anie wiadomo¶ci: "
+msgstr "Wysy³anie wiadomo¶ci:"
 
 #: kmsettings.cpp:378
 msgid "Allow 8-bit"
-msgstr ""
+msgstr "Dopu¶æ 8 bitów"
 
 #: kmsettings.cpp:383
 msgid "MIME Compilant (Quoted Printable)"
-msgstr ""
+msgstr "MIME Compilant (Quoted Printable)"
 
 #: kmsettings.cpp:409
 msgid "Composer"
 msgstr "Format"
 
 #: kmsettings.cpp:426
-#, fuzzy
 msgid "Folders"
-msgstr "Folder"
+msgstr "Foldery"
 
 #: kmsettings.cpp:430
 msgid "empty trash on exit"
-msgstr ""
+msgstr "opró¿nij ¶mietnik przy wyj¶ciu"
 
 #: kmsettings.cpp:443
 msgid "Misc"
-msgstr ""
+msgstr "Ró¿ne"
 
 #: kmsettings.cpp:505
 msgid "Select Account"
@@ -579,14 +573,12 @@ msgid "Choose Location"
 msgstr "Wybierz po³o¿enie pliku"
 
 #: kmaccount.cpp:105
-#, fuzzy
 msgid "Receipt: "
 msgstr "Adres zwrotny: "
 
 #: kmaccount.cpp:133
-#, fuzzy
 msgid "Failed to add message:"
-msgstr "Zapisanie wiadmo¶ci nie powiod³o siê."
+msgstr "Dodanie wiadmo¶ci nie powiod³o siê:"
 
 #: kmcomposewin.cpp:111 kmheaders.cpp:35
 msgid "F"
@@ -662,29 +654,24 @@ msgid "&Followup-To:"
 msgstr "&Nastêpnie do:"
 
 #: kmcomposewin.cpp:335
-#, fuzzy
 msgid "&Send"
 msgstr "&Wy¶lij"
 
 #: kmcomposewin.cpp:338
-#, fuzzy
 msgid "S&end later"
-msgstr "Wy¶lij pó¼niej"
+msgstr "W&y¶lij pó¼niej"
 
 #: kmcomposewin.cpp:340
-#, fuzzy
 msgid "S&end now"
-msgstr "Wy¶lij teraz"
+msgstr "W&y¶lij teraz"
 
 #: kmcomposewin.cpp:342
-#, fuzzy
 msgid "&Insert File..."
 msgstr "Wstaw &plik..."
 
 #: kmcomposewin.cpp:350
-#, fuzzy
 msgid "&New Composer..."
-msgstr "&Nowa wiadomo¶æ"
+msgstr "&Nowa wiadomo¶æ..."
 
 #: kmcomposewin.cpp:371
 msgid "Mark all"
@@ -696,16 +683,15 @@ msgstr "Szukaj..."
 
 #: kmcomposewin.cpp:382
 msgid "&Urgent"
-msgstr ""
+msgstr "Pilna"
 
 #: kmcomposewin.cpp:384
 msgid "&Confirm delivery"
-msgstr ""
+msgstr "Potwierd¼ przes³anie"
 
 #: kmcomposewin.cpp:386
-#, fuzzy
 msgid "&Confirm read"
-msgstr "Potwierdzenie"
+msgstr "Pot&wierd¼ przeczytanie"
 
 #: kmcomposewin.cpp:398
 msgid "&All Fields"
@@ -833,9 +819,8 @@ msgid "Attach..."
 msgstr "Za³±cz..."
 
 #: kmcomposewin.cpp:1072 kmreaderwin.cpp:636
-#, fuzzy
 msgid "View Attachment: "
-msgstr "Za³±cznik:"
+msgstr "Poka¿ za³±czniki: "
 
 #: kmcomposewin.cpp:1200
 msgid "To:"
@@ -851,12 +836,14 @@ msgstr "Data:"
 
 #: kmcomposewin.cpp:1322
 msgid "KMail: Spellcheck"
-msgstr ""
+msgstr "KMail: Sprawdzanie pisowni"
 
 #: kmcomposewin.cpp:1346
 msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
 msgstr ""
+"B³±d uruchomienia KSpell. Upewnij siê, ¿e masz poprawnie skonfigurowany "
+"ISpell."
 
 #: kmfolder.cpp:133
 #, c-format
@@ -1464,27 +1451,3 @@ msgstr "Zarz±dzanie ksia¿k± adresow±"
 #: kmiostatusdlg.cpp:32
 msgid "&Abort"
 msgstr "Przerwij"
-
-#~ msgid "Send &later"
-#~ msgstr "Wy¶&lij pó¼niej"
-
-#~ msgid "Address &Book..."
-#~ msgstr "&Ksi±¿ka adresowa..."
-
-#~ msgid "New &Composer"
-#~ msgstr "&Nowa wiadomo¶æ"
-
-#~ msgid "Recip&ients..."
-#~ msgstr "Odb&iorcy..."
-
-#~ msgid "Insert &File"
-#~ msgstr "Ws&taw plik"
-
-#~ msgid "High"
-#~ msgstr "Wysoki"
-
-#~ msgid "Low"
-#~ msgstr "Niski"
-
-#~ msgid "Priority"
-#~ msgstr "Priorytet"
