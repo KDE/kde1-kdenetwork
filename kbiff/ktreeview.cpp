@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * KTreeView implementation
+ * QListView fake COMPLETELY taken from KTreeView
  * 
  * Copyright (C) 1997 Johannes Sixt
  * 
@@ -25,6 +25,10 @@
  */
 
 #include <ktreeview.h>
+
+#if QT_VERSION < 140
+#include <ktreeview.moc>
+
 #include <qapp.h>			/* used for QApplication::closingDown() */
 #include <qkeycode.h>			/* used for keyboard interface */
 #include <qpainter.h>			/* used to paint items */
@@ -33,13 +37,13 @@
 /*
  * -------------------------------------------------------------------
  * 
- * KTreeViewItem
+ * QListViewItem
  * 
  * -------------------------------------------------------------------
  */
 
 // constructor
-KTreeViewItem::KTreeViewItem(const QString& theText) :
+QListViewItem::QListViewItem(const QString& theText) :
 	owner(0),
 	numChildren(0),
 	doExpandButton(true),
@@ -52,11 +56,27 @@ KTreeViewItem::KTreeViewItem(const QString& theText) :
 	sibling(0),
 	deleteChildren(false)
 {
-    text = theText;
+    _text = theText;
 }
 
+QListViewItem::QListViewItem(QListView* parent, const QString& theText) :
+	owner(0),
+	numChildren(0),
+	doExpandButton(true),
+	expanded(false),
+	delayedExpanding(false),
+	doTree(true),
+	doText(true),
+	child(0),
+	parent(0),
+	sibling(0),
+	deleteChildren(false)
+{
+    _text = theText;
+	 parent->insertItem(this);
+}
 // constructor that takes a pixmap
-KTreeViewItem::KTreeViewItem(const QString& theText,
+QListViewItem::QListViewItem(const QString& theText,
 			     const QPixmap& thePixmap) :
 	owner(0),
 	numChildren(0),
@@ -70,18 +90,18 @@ KTreeViewItem::KTreeViewItem(const QString& theText,
 	sibling(0),
 	deleteChildren(false)
 {
-    text = theText;
+    _text = theText;
     pixmap = thePixmap;
 }
 
 // destructor
-KTreeViewItem::~KTreeViewItem()
+QListViewItem::~QListViewItem()
 {
     if (deleteChildren) {
 	// remove the children
-	KTreeViewItem* i = child;
+	QListViewItem* i = child;
 	while (i) {
-	    KTreeViewItem* d = i;
+	    QListViewItem* d = i;
 	    i = i->getSibling();
 	    delete d;
 	}
@@ -89,7 +109,7 @@ KTreeViewItem::~KTreeViewItem()
 }
 
 // appends a direct child
-void KTreeViewItem::appendChild(KTreeViewItem* newChild)
+void QListViewItem::appendChild(QListViewItem* newChild)
 {
     newChild->parent = this;
     newChild->owner = owner;
@@ -97,7 +117,7 @@ void KTreeViewItem::appendChild(KTreeViewItem* newChild)
 	child = newChild;
     }
     else {
-	KTreeViewItem* lastChild = getChild();
+	QListViewItem* lastChild = getChild();
 	while (lastChild->hasSibling()) {
 	    lastChild = lastChild->getSibling();
 	}
@@ -109,7 +129,7 @@ void KTreeViewItem::appendChild(KTreeViewItem* newChild)
 
 // returns the bounding rectangle of the item content (not including indent
 // and branches) for hit testing
-QRect KTreeViewItem::boundingRect(int indent) const
+QRect QListViewItem::boundingRect(int indent) const
 {
     const QFontMetrics& fm = owner->fontMetrics();
     int rectX = indent;
@@ -120,11 +140,11 @@ QRect KTreeViewItem::boundingRect(int indent) const
 }
 
 // returns the child item at the specified index
-KTreeViewItem* KTreeViewItem::childAt(int index) const
+QListViewItem* QListViewItem::childAt(int index) const
 {
     if (!hasChild())
 	return 0;
-    KTreeViewItem* item = getChild();
+    QListViewItem* item = getChild();
     while (index > 0 && item != 0) {
 	item = item->getSibling();
 	index--;
@@ -133,17 +153,17 @@ KTreeViewItem* KTreeViewItem::childAt(int index) const
 }
 
 // returns the number of children this item has
-uint KTreeViewItem::childCount() const
+uint QListViewItem::childCount() const
 {
     return numChildren;
 }
 
 /* returns the index of the given child item in this item's branch */
-int KTreeViewItem::childIndex(KTreeViewItem* searched) const
+int QListViewItem::childIndex(QListViewItem* searched) const
 {
     assert(searched != 0);
     int index = 0;
-    KTreeViewItem* item = getChild();
+    QListViewItem* item = getChild();
     while (item != 0 && item != searched) {
 	item = item->getSibling();
 	index++;
@@ -152,60 +172,60 @@ int KTreeViewItem::childIndex(KTreeViewItem* searched) const
 }
 
 // indicates whether mouse press is in expand button
-inline bool KTreeViewItem::expandButtonClicked(const QPoint& coord) const
+inline bool QListViewItem::expandButtonClicked(const QPoint& coord) const
 {
   return expandButton.contains(coord);
 }
 
 // returns a pointer to first child item
-KTreeViewItem* KTreeViewItem::getChild() const
+QListViewItem* QListViewItem::getChild() const
 {
     return child;
 }
 
 // returns the parent of this item
-KTreeViewItem* KTreeViewItem::getParent() const
+QListViewItem* QListViewItem::getParent() const
 {
     return parent;
 }
 
 // returns reference to the item pixmap
-const QPixmap& KTreeViewItem::getPixmap() const
+const QPixmap& QListViewItem::getPixmap() const
 {
     return pixmap;
 }
 
 // returns the sibling below this item
-KTreeViewItem* KTreeViewItem::getSibling() const
+QListViewItem* QListViewItem::getSibling() const
 {
     return sibling;
 }
 
 // returns a pointer to the item text
-const QString& KTreeViewItem::getText() const
+const QString& QListViewItem::getText() const
 {
-    return text;
+    return _text;
 }
 
 // indicates whether this item has any children
-bool KTreeViewItem::hasChild() const
+bool QListViewItem::hasChild() const
 {
     return child != 0;
 }
 
 // indicates whether this item has a parent
-bool KTreeViewItem::hasParent() const
+bool QListViewItem::hasParent() const
 {
     return parent != 0;
 }
 
 // indicates whether this item has a sibling below it
-bool KTreeViewItem::hasSibling() const
+bool QListViewItem::hasSibling() const
 {
     return sibling != 0;
 }
 
-int KTreeViewItem::height() const
+int QListViewItem::height() const
 {
     assert(owner != 0);
     return height(owner->fontMetrics());
@@ -213,7 +233,7 @@ int KTreeViewItem::height() const
 
 // returns the maximum height of text and pixmap including margins
 // or -1 if item is empty -- SHOULD NEVER BE -1!
-int KTreeViewItem::height(const QFontMetrics& fm) const
+int QListViewItem::height(const QFontMetrics& fm) const
 {
     int maxHeight = pixmap.height();
     int textHeight = fm.ascent() + fm.leading();
@@ -222,7 +242,7 @@ int KTreeViewItem::height(const QFontMetrics& fm) const
 }
 
 // inserts child item at specified index in branch
-void KTreeViewItem::insertChild(int index, KTreeViewItem* newChild)
+void QListViewItem::insertChild(int index, QListViewItem* newChild)
 {
     if (index < 0) {
 	appendChild(newChild);
@@ -235,8 +255,8 @@ void KTreeViewItem::insertChild(int index, KTreeViewItem* newChild)
 	child = newChild;
     }
     else {
-	KTreeViewItem* prevItem = getChild();
-	KTreeViewItem* nextItem = prevItem->getSibling();
+	QListViewItem* prevItem = getChild();
+	QListViewItem* nextItem = prevItem->getSibling();
 	while (--index > 0 && nextItem) {
 	    prevItem = nextItem;
 	    nextItem = prevItem->getSibling();
@@ -250,15 +270,15 @@ void KTreeViewItem::insertChild(int index, KTreeViewItem* newChild)
 // indicates whether this item is displayed expanded 
 // NOTE: a TRUE response does not necessarily indicate the item 
 // has any children
-bool KTreeViewItem::isExpanded() const
+bool QListViewItem::isExpanded() const
 {
     return expanded;
 }
 
 // returns true if all ancestors are expanded
-bool KTreeViewItem::isVisible() const
+bool QListViewItem::isVisible() const
 {
-    for (KTreeViewItem* p = getParent(); p != 0; p = p->getParent()) {
+    for (QListViewItem* p = getParent(); p != 0; p = p->getParent()) {
 	if (!p->isExpanded())
 	    return false;
     }
@@ -266,7 +286,7 @@ bool KTreeViewItem::isVisible() const
 }
 
 // paint this item, including tree branches and expand button
-void KTreeViewItem::paint(QPainter* p, int indent, const QColorGroup& cg,
+void QListViewItem::paint(QPainter* p, int indent, const QColorGroup& cg,
 			  bool highlighted) const
 {
     assert(getParent() != 0);		/* can't paint root item */
@@ -299,7 +319,7 @@ void KTreeViewItem::paint(QPainter* p, int indent, const QColorGroup& cg,
     p->restore();
 }
 
-void KTreeViewItem::paintExpandButton(QPainter* p, int indent, int cellHeight,
+void QListViewItem::paintExpandButton(QPainter* p, int indent, int cellHeight,
 				      const QColorGroup& cg) const
 {
     int parentLeaderX = indent - (22 / 2);
@@ -322,7 +342,7 @@ void KTreeViewItem::paintExpandButton(QPainter* p, int indent, int cellHeight,
 }
 
 // paint the highlight 
-void KTreeViewItem::paintHighlight(QPainter* p, int indent,
+void QListViewItem::paintHighlight(QPainter* p, int indent,
 	const QColorGroup& colorGroup, bool hasFocus, GUIStyle style) const
 {
 	QColor fc;
@@ -342,13 +362,13 @@ void KTreeViewItem::paintHighlight(QPainter* p, int indent,
 		if (hasFocus)
 		{
 			p->fillRect(outerRect, fc);	/* highlight background */
-			p->setPen(colorGroup.text());
-			p->setBrush(NoBrush);
-			p->drawRect(textRect);
+	//		p->setPen(colorGroup.text());
+	//		p->setBrush(NoBrush);
+	//		p->drawRect(textRect);
 		}
 		else
 		{
-			p->fillRect(outerRect, fc);	/* highlight background */
+			p->fillRect(textRect, fc);	/* highlight background */
 		}
 	}
 	else
@@ -367,7 +387,7 @@ void KTreeViewItem::paintHighlight(QPainter* p, int indent,
 }
 
 // draw the text, highlighted if requested
-void KTreeViewItem::paintText(QPainter* p, int indent, int cellHeight,
+void QListViewItem::paintText(QPainter* p, int indent, int cellHeight,
 			      const QColorGroup& cg, bool highlighted) const
 {
 	int textX = indent + pixmap.width() + 4;
@@ -384,11 +404,11 @@ void KTreeViewItem::paintText(QPainter* p, int indent, int cellHeight,
 		p->setPen(cg.text());
 		p->setBackgroundColor(cg.base());
 	}
-	p->drawText(textX, textY, text);
+	p->drawText(textX, textY, _text);
 }
 
 // paint the tree structure
-void KTreeViewItem::paintTree(QPainter* p, int indent, int cellHeight,
+void QListViewItem::paintTree(QPainter* p, int indent, int cellHeight,
 			      const QColorGroup& cg) const
 {
     int parentLeaderX = indent - (22 / 2);
@@ -429,7 +449,7 @@ void KTreeViewItem::paintTree(QPainter* p, int indent, int cellHeight,
      * If there are siblings of ancestors below, draw our portion of the
      * branches that extend through this cell.
      */
-    KTreeViewItem* prevRoot = parent;
+    QListViewItem* prevRoot = parent;
     while (prevRoot->getParent() != 0) {  /* while not root item */
 	if (prevRoot->hasSibling()) {
 	    int sibLeaderX = owner->indentation(prevRoot) - (22 / 2);
@@ -440,11 +460,11 @@ void KTreeViewItem::paintTree(QPainter* p, int indent, int cellHeight,
 }
 
 // removes the given (direct) child from the branch
-bool KTreeViewItem::removeChild(KTreeViewItem* theChild)
+bool QListViewItem::removeChild(QListViewItem* theChild)
 {
     // search item in list of children
-    KTreeViewItem* prevItem = 0;
-    KTreeViewItem* toRemove = getChild();
+    QListViewItem* prevItem = 0;
+    QListViewItem* toRemove = getChild();
     while (toRemove && toRemove != theChild) {
 	prevItem = toRemove;
 	toRemove = toRemove->getSibling();
@@ -466,58 +486,75 @@ bool KTreeViewItem::removeChild(KTreeViewItem* theChild)
 }
 
 // sets the delayed-expanding flag
-void KTreeViewItem::setDelayedExpanding(bool flag)
+void QListViewItem::setDelayedExpanding(bool flag)
 {
     delayedExpanding = flag;
 }
 
 // tells the item whether it shall delete child items
-void KTreeViewItem::setDeleteChildren(bool flag)
+void QListViewItem::setDeleteChildren(bool flag)
 {
     deleteChildren = flag;
 }
 
 // sets the draw expand button flag of this item
-void KTreeViewItem::setDrawExpandButton(bool doit)
+void QListViewItem::setDrawExpandButton(bool doit)
 {
     doExpandButton = doit;
 }
 
 // sets the draw text flag of this item
-void KTreeViewItem::setDrawText(bool doit)
+void QListViewItem::setDrawText(bool doit)
 {
     doText = doit;
 }
 
 // sets the draw tree branch flag of this item
-void KTreeViewItem::setDrawTree(bool doit)
+void QListViewItem::setDrawTree(bool doit)
 {
     doTree = doit;
 }
 
 // sets the expanded flag of this item
-void KTreeViewItem::setExpanded(bool is)
+void QListViewItem::setExpanded(bool is)
 {
     expanded = is;
 }
 
 // sets the item pixmap to the given pixmap
-void KTreeViewItem::setPixmap(const QPixmap& pm)
+void QListViewItem::setPixmap(const QPixmap& pm)
 {
     pixmap = pm;
 }
 
-// sets the item text to the given string
-void KTreeViewItem::setText(const QString& t)
+void QListViewItem::setPixmap(int, const QPixmap& pm)
 {
-    text = t;
+    pixmap = pm;
+
+    // if repaint necessary, do it if visible and auto update
+    // enabled
+	 if (isVisible() || getParent()->childCount() == 1)
+	 {
+		 bool autoU = owner->autoUpdate();
+		 owner->setAutoUpdate(FALSE);
+		 owner->updateVisibleItems();
+		 if(autoU && owner->isVisible())
+			 owner->repaint();
+		 owner->setAutoUpdate(autoU);
+	 }
+}
+
+// sets the item text to the given string
+void QListViewItem::setText(const QString& t)
+{
+    _text = t;
 }
 
 // counts the child items and stores the result in numChildren
-void KTreeViewItem::synchNumChildren()
+void QListViewItem::synchNumChildren()
 {
     numChildren = 0;
-    KTreeViewItem* item = getChild();
+    QListViewItem* item = getChild();
     while (item != 0) {
 	numChildren++;
 	item = item->getSibling();
@@ -528,28 +565,28 @@ void KTreeViewItem::synchNumChildren()
  * returns the bounding rect of the item text in cell coordinates couldn't
  * get QFontMetrics::boundingRect() to work right so I made my own
  */
-QRect KTreeViewItem::textBoundingRect(int indent) const
+QRect QListViewItem::textBoundingRect(int indent) const
 {
     const QFontMetrics& fm = owner->fontMetrics();
     int cellHeight = height(fm);
     int rectX = indent + pixmap.width() + 3;
     int rectY = (cellHeight - fm.ascent() - fm.leading()) / 2 + 2;
-    int rectW = fm.width(text) + 1;
+    int rectW = fm.width(_text) + 1;
     int rectH = fm.ascent() + fm.leading();
     return QRect(rectX, rectY, rectW, rectH);
 }
 
 // returns the total width of text and pixmap, including margins, spacing
 // and indent, or -1 if empty -- SHOULD NEVER BE -1!
-int KTreeViewItem::width(int indent) const
+int QListViewItem::width(int indent) const
 {
     return width(indent, owner->fontMetrics());
 }
 
-int KTreeViewItem::width(int indent, const QFontMetrics& fm) const
+int QListViewItem::width(int indent, const QFontMetrics& fm) const
 {
     int maxWidth = pixmap.width();
-    maxWidth += (4 + fm.width(text));
+    maxWidth += (4 + fm.width(_text));
     return maxWidth == 0  ?  -1  :  indent + maxWidth + 3;
 }
 
@@ -557,13 +594,13 @@ int KTreeViewItem::width(int indent, const QFontMetrics& fm) const
 /*
  * -------------------------------------------------------------------
  *
- * KTreeView
+ * QListView
  *
  * -------------------------------------------------------------------
  */
 
 // constructor
-KTreeView::KTreeView(QWidget *parent,
+QListView::QListView(QWidget *parent,
 		     const char *name,
 		     WFlags f) :
 	QTableView(parent, name, f),
@@ -573,7 +610,7 @@ KTreeView::KTreeView(QWidget *parent,
 	drawTree(true),
 	expansion(0),
 	goingDown(false),
-	itemIndent(22),
+	itemIndent(0),
 	showText(true),
 	itemCapacity(500),
 	visibleItems(0),
@@ -597,11 +634,11 @@ KTreeView::KTreeView(QWidget *parent,
 	setLineWidth(1);
     }
     setAcceptFocus(true);
-    treeRoot = new KTreeViewItem;
+    treeRoot = new QListViewItem;
     treeRoot->setExpanded(true);
     treeRoot->owner = this;
 
-    visibleItems = new KTreeViewItem*[itemCapacity];
+    visibleItems = new QListViewItem*[itemCapacity];
     // clear those pointers
     for (int j = itemCapacity-1; j >= 0; j--) {
 	visibleItems[j] = 0;
@@ -609,7 +646,7 @@ KTreeView::KTreeView(QWidget *parent,
 }
 
 // destructor
-KTreeView::~KTreeView()
+QListView::~QListView()
 {
     goingDown = true;
     clear();
@@ -619,29 +656,29 @@ KTreeView::~KTreeView()
 
 // appends a child to the item at the given index with the given text
 // and pixmap
-void KTreeView::appendChildItem(const char* theText, const QPixmap& thePixmap,
+void QListView::appendChildItem(const char* theText, const QPixmap& thePixmap,
 				int index)
 {
-    KTreeViewItem* item = new KTreeViewItem(theText, thePixmap);
+    QListViewItem* item = new QListViewItem(theText, thePixmap);
     item->setDeleteChildren(true);
     appendChildItem(item, index);
 }
 
 // appends a child to the item at the end of the given path with
 // the given text and pixmap
-void KTreeView::appendChildItem(const char* theText, const QPixmap& thePixmap,
+void QListView::appendChildItem(const char* theText, const QPixmap& thePixmap,
 				const KPath& thePath)
 {
-    KTreeViewItem* item = new KTreeViewItem(theText, thePixmap);
+    QListViewItem* item = new QListViewItem(theText, thePixmap);
     item->setDeleteChildren(true);
     appendChildItem(item, thePath);
 }
 
 // appends the given item to the children of the item at the given index
-void KTreeView::appendChildItem(KTreeViewItem* newItem, int index)
+void QListView::appendChildItem(QListViewItem* newItem, int index)
 {                                                                  
     /* find parent item and append new item to parent's sub tree */
-    KTreeViewItem* parentItem = itemAt(index);
+    QListViewItem* parentItem = itemAt(index);
     if (!parentItem)
 	return;
     appendChildItem(parentItem, newItem);
@@ -649,55 +686,55 @@ void KTreeView::appendChildItem(KTreeViewItem* newItem, int index)
 
 // appends the given item to the children of the item at the end of the
 // given path
-void KTreeView::appendChildItem(KTreeViewItem* newItem, const KPath& thePath)
+void QListView::appendChildItem(QListViewItem* newItem, const KPath& thePath)
 {                                
     /* find parent item and append new item to parent's sub tree */
-    KTreeViewItem* parentItem = itemAt(thePath);
+    QListViewItem* parentItem = itemAt(thePath);
     if (!parentItem)
 	return;
     appendChildItem(parentItem, newItem);
 }
                                  
 // indicates whether horizontal scrollbar appears only when needed
-bool KTreeView::autoBottomScrollBar() const
+bool QListView::autoBottomScrollBar() const
 {
   return testTableFlags(Tbl_autoHScrollBar);
 }
 
 // indicates whether vertical scrollbar appears only when needed
-bool KTreeView::autoScrollBar() const
+bool QListView::autoScrollBar() const
 {
   return testTableFlags(Tbl_autoVScrollBar);
 }
 
 // indicates whether display updates automatically on changes
-bool KTreeView::autoUpdate() const
+bool QListView::autoUpdate() const
 {
   return QTableView::autoUpdate();
 }
 
 // indicates whether horizontal scrollbar is present
-bool KTreeView::bottomScrollBar() const
+bool QListView::bottomScrollBar() const
 {
   return testTableFlags(Tbl_hScrollBar);
 }
 
 // find item at specified index and change pixmap and/or text
-void KTreeView::changeItem(const char *newText,
+void QListView::changeItem(const char *newText,
 			      const QPixmap *newPixmap,
 			      int index)
 {
-  KTreeViewItem *item = itemAt(index);
+  QListViewItem *item = itemAt(index);
   if(item)
     changeItem(item, index, newText, newPixmap);
 }
 
 // find item at end of specified path, and change pixmap and/or text
-void KTreeView::changeItem(const char* newText,
+void QListView::changeItem(const char* newText,
 			   const QPixmap* newPixmap,
 			   const KPath& thePath)
 {
-    KTreeViewItem* item = itemAt(thePath);
+    QListViewItem* item = itemAt(thePath);
     if (item) {
 	int index = itemRow(item);
 	changeItem(item, index, newText, newPixmap);
@@ -705,7 +742,7 @@ void KTreeView::changeItem(const char* newText,
 }
 
 // clear all items from list and erase display
-void KTreeView::clear()
+void QListView::clear()
 {
     setCurrentItem(-1);	
 
@@ -714,10 +751,10 @@ void KTreeView::clear()
 	
 	bool autoU = autoUpdate();
 	setAutoUpdate(FALSE);
-	QStack<KTreeViewItem> stack;
+	QStack<QListViewItem> stack;
 	stack.push(treeRoot);
 	while(!stack.isEmpty()) {
-		KTreeViewItem *item = stack.pop();
+		QListViewItem *item = stack.pop();
 		if(item->hasChild()) {
 			stack.push(item);
 			stack.push(item->getChild());
@@ -740,38 +777,38 @@ void KTreeView::clear()
 }
 
 // return a count of all the items in the tree, whether visible or not
-uint KTreeView::count()
+uint QListView::count()
 {
   int total = 0;
-  forEveryItem(&KTreeView::countItem, (void *)&total);
+  forEveryItem(&QListView::countItem, (void *)&total);
   return total;
 }
 
 // returns the index of the current (highlighted) item
-int KTreeView::currentItem() const
+int QListView::currentItemIndex() const
 {
   return current;
 }
 
 // collapses the item at the specified row index.
-void KTreeView::collapseItem(int index, bool emitSignal)
+void QListView::collapseItem(int index, bool emitSignal)
 {
-    KTreeViewItem* item = itemAt(index);
+    QListViewItem* item = itemAt(index);
     if (item)
 	collapseSubTree(item, emitSignal);
 }
 
 // expands the item at the specified row indes.
-void KTreeView::expandItem(int index, bool emitSignal)
+void QListView::expandItem(int index, bool emitSignal)
 {
-    KTreeViewItem* item = itemAt(index);
+    QListViewItem* item = itemAt(index);
     if (item)
 	expandSubTree(item, emitSignal);
 }
 
 // returns the depth the tree is automatically expanded to when
 // items are added
-int KTreeView::expandLevel() const
+int QListView::expandLevel() const
 {
   return expansion;
 }
@@ -779,7 +816,7 @@ int KTreeView::expandLevel() const
 // visits every item in the tree, visible or not and applies 
 // the user supplied function with the item and user data passed as parameters
 // if user supplied function returns true, traversal ends and function returns
-bool KTreeView::forEveryItem(KForEveryFunc func, void* user, KTreeViewItem* item)
+bool QListView::forEveryItem(KForEveryFunc func, void* user, QListViewItem* item)
 {
     if (item == 0) {
 	item = treeRoot;
@@ -806,8 +843,8 @@ bool KTreeView::forEveryItem(KForEveryFunc func, void* user, KTreeViewItem* item
 // user supplied function with the item and user data passed as parameters
 // if user supplied function returns TRUE, traversal ends and function
 // returns
-bool KTreeView::forEveryVisibleItem(KForEveryFunc func, void *user,
-				    KTreeViewItem* item)
+bool QListView::forEveryVisibleItem(KForEveryFunc func, void *user,
+				    QListViewItem* item)
 {
     if (item == 0) {
 	item = treeRoot;
@@ -836,16 +873,22 @@ bool KTreeView::forEveryVisibleItem(KForEveryFunc func, void *user,
     return false;
 }
 
-// returns a pointer to the KTreeViewItem at the current index
+// returns a pointer to the QListViewItem at the current index
 // or 0 if no current item
-KTreeViewItem *KTreeView::getCurrentItem()
+QListViewItem *QListView::getCurrentItem()
+{
+  if(current == -1) return 0;
+  return itemAt(current);
+}
+
+QListViewItem *QListView::currentItem()
 {
   if(current == -1) return 0;
   return itemAt(current);
 }
 
 // returns the current indent spacing
-int KTreeView::indentSpacing()
+int QListView::indentSpacing()
 {
     return itemIndent;
 }
@@ -854,12 +897,12 @@ int KTreeView::indentSpacing()
 // or after the item at the given index, depending on the value
 // of prefix
 // if index is negative, appends item to tree at root level
-bool KTreeView::insertItem(const char* theText, const QPixmap& thePixmap,
+bool QListView::insertItem(const char* theText, const QPixmap& thePixmap,
 			   int row, bool prefix)
 {
-    KTreeViewItem* refItem = itemAt(row);
+    QListViewItem* refItem = itemAt(row);
 
-    KTreeViewItem* item = new KTreeViewItem(theText, thePixmap);
+    QListViewItem* item = new QListViewItem(theText, thePixmap);
     item->setDeleteChildren(true);
 
     bool success = insertItem(refItem, item, prefix);
@@ -871,12 +914,12 @@ bool KTreeView::insertItem(const char* theText, const QPixmap& thePixmap,
 // inserts a new item with the specified text and pixmap before
 // or after the item at the end of the given path, depending on the value
 // of prefix
-bool KTreeView::insertItem(const char* theText, const QPixmap& thePixmap,
+bool QListView::insertItem(const char* theText, const QPixmap& thePixmap,
 			   const KPath& path, bool prefix)
 {
-    KTreeViewItem* refItem = itemAt(path);
+    QListViewItem* refItem = itemAt(path);
 
-    KTreeViewItem* item = new KTreeViewItem(theText, thePixmap);
+    QListViewItem* item = new QListViewItem(theText, thePixmap);
     item->setDeleteChildren(true);
 
     bool success = insertItem(refItem, item, prefix);
@@ -889,11 +932,11 @@ bool KTreeView::insertItem(const char* theText, const QPixmap& thePixmap,
 // or after the item at the given index, depending on the value
 // of prefix
 // if index is negative, appends item to tree at root level
-bool KTreeView::insertItem(KTreeViewItem* newItem,
+bool QListView::insertItem(QListViewItem* newItem,
 			   int index, bool prefix)
 {
     // find the item currently at the index, if there is one
-    KTreeViewItem* refItem = itemAt(index);
+    QListViewItem* refItem = itemAt(index);
 
     // insert new item at the appropriate place
     return insertItem(refItem, newItem, prefix);
@@ -902,21 +945,21 @@ bool KTreeView::insertItem(KTreeViewItem* newItem,
 // inserts the given item or derived object into the tree before
 // or after the item at the end of the given path, depending on the value
 // of prefix
-bool KTreeView::insertItem(KTreeViewItem* newItem,
+bool QListView::insertItem(QListViewItem* newItem,
 			   const KPath& thePath, bool prefix)
 {                              
     // find the item currently at the end of the path, if there is one
-    KTreeViewItem* refItem = itemAt(thePath);
+    QListViewItem* refItem = itemAt(thePath);
 
     // insert new item at appropriate place
     return insertItem(refItem, newItem, prefix);
 }
 
 /*
- * returns pointer to KTreeViewItem at the specifed row or 0 if row is out
+ * returns pointer to QListViewItem at the specifed row or 0 if row is out
  * of limits.
  */
-KTreeViewItem* KTreeView::itemAt(int row)
+QListViewItem* QListView::itemAt(int row)
 {
     if (row < 0 || row >= numRows()) {
 	return 0;
@@ -924,15 +967,15 @@ KTreeViewItem* KTreeView::itemAt(int row)
     else {
 	// lookup the item in the list of visible items
 	assert(row < itemCapacity);
-	KTreeViewItem* i = visibleItems[row];
+	QListViewItem* i = visibleItems[row];
 	assert(i != 0);
 	return i;
     }
 }
 
-// returns pointer to KTreeViewItem at the end of the
+// returns pointer to QListViewItem at the end of the
 // path or 0 if not found
-KTreeViewItem* KTreeView::itemAt(const KPath& path)
+QListViewItem* QListView::itemAt(const KPath& path)
 {
     if (path.isEmpty())
 	return 0;
@@ -947,9 +990,9 @@ KTreeViewItem* KTreeView::itemAt(const KPath& path)
 
 // computes the path of the item at the specified index
 // if index is invalid, nothing is done.
-void KTreeView::itemPath(int row, KPath& path)
+void QListView::itemPath(int row, KPath& path)
 {
-    KTreeViewItem* item = itemAt(row);
+    QListViewItem* item = itemAt(row);
     if (item != 0) {
 	itemPath(item, path);
     }
@@ -957,7 +1000,7 @@ void KTreeView::itemPath(int row, KPath& path)
 
 // returns the row in the visible tree of the given item or
 // -1 if not found
-int KTreeView::itemRow(KTreeViewItem* item)
+int QListView::itemRow(QListViewItem* item)
 {
     if (item->owner == this) {
 	// search in list of visible items
@@ -975,9 +1018,9 @@ int KTreeView::itemRow(KTreeViewItem* item)
  * move the subtree at the specified index up one branch level (make root
  * item a sibling of its current parent)
  */
-void KTreeView::join(int index)
+void QListView::join(int index)
 {
-  KTreeViewItem *item = itemAt(index);
+  QListViewItem *item = itemAt(index);
   if(item)
     join(item);
 }
@@ -986,49 +1029,49 @@ void KTreeView::join(int index)
  * move the subtree at the specified index up one branch level (make root
  * item a sibling of it's current parent)
  */
-void KTreeView::join(const KPath& path)
+void QListView::join(const KPath& path)
 {
-    KTreeViewItem *item = itemAt(path);
+    QListViewItem *item = itemAt(path);
     if (item)
 	join(item);
 }
 
 /* move item at specified index one slot down in its parent's sub tree */
-void KTreeView::lowerItem(int index)
+void QListView::lowerItem(int index)
 {
-  KTreeViewItem *item = itemAt(index);
+  QListViewItem *item = itemAt(index);
   if(item)
     lowerItem(item);
 }
 
 /* move item at specified path one slot down in its parent's sub tree */
-void KTreeView::lowerItem(const KPath& path)
+void QListView::lowerItem(const KPath& path)
 {
-    KTreeViewItem* item = itemAt(path);
+    QListViewItem* item = itemAt(path);
     if (item)
 	lowerItem(item);
 }
 
 /* move item at specified index one slot up in its parent's sub tree */
-void KTreeView::raiseItem(int index)
+void QListView::raiseItem(int index)
 {
-  KTreeViewItem* item = itemAt(index);
+  QListViewItem* item = itemAt(index);
     if (item)
 	raiseItem(item);
 }
 
 /* move item at specified path one slot up in its parent's sub tree */
-void KTreeView::raiseItem(const KPath& path)
+void QListView::raiseItem(const KPath& path)
 {
-    KTreeViewItem* item = itemAt(path);
+    QListViewItem* item = itemAt(path);
     if (item)
 	raiseItem(item);
 }
 
 // remove the item at the specified index and delete it
-void KTreeView::removeItem(int index)
+void QListView::removeItem(int index)
 {
-  KTreeViewItem *item = itemAt(index);
+  QListViewItem *item = itemAt(index);
   if(item) { 
     takeItem(item);
     delete item;
@@ -1036,9 +1079,9 @@ void KTreeView::removeItem(int index)
 }
 
 // remove the item at the end of the specified path and delete it
-void KTreeView::removeItem(const KPath& thePath)
+void QListView::removeItem(const KPath& thePath)
 {
-    KTreeViewItem* item = itemAt(thePath);
+    QListViewItem* item = itemAt(thePath);
     if (item) {
 	takeItem(item);
 	delete item;
@@ -1046,12 +1089,12 @@ void KTreeView::removeItem(const KPath& thePath)
 }
 
 // indicates whether vertical scrollbar is present
-bool KTreeView::scrollBar() const
+bool QListView::scrollBar() const
 {
   return testTableFlags(Tbl_vScrollBar);
 }
 
-void KTreeView::scrollVisible(KTreeViewItem* item, bool children)
+void QListView::scrollVisible(QListViewItem* item, bool children)
 {
     if (item == 0)
 	return;
@@ -1094,20 +1137,20 @@ void KTreeView::scrollVisible(KTreeViewItem* item, bool children)
 }
 
 // enables/disables auto update of display
-void KTreeView::setAutoUpdate(bool enable)
+void QListView::setAutoUpdate(bool enable)
 {
   QTableView::setAutoUpdate(enable);
 }
 
 // enables/disables horizontal scrollbar
-void KTreeView::setBottomScrollBar(bool enable)
+void QListView::setBottomScrollBar(bool enable)
 {
   enable ? setTableFlags(Tbl_hScrollBar) :
     clearTableFlags(Tbl_hScrollBar);
 }
 
 // sets the current item and hightlights it, emitting signals
-void KTreeView::setCurrentItem(int row)
+void QListView::setCurrentItem(int row)
 {
     if (row == current)
 	return;
@@ -1118,21 +1161,22 @@ void KTreeView::setCurrentItem(int row)
     current = row;
     if (oldCurrent < numVisible)
 	updateCell(oldCurrent, 0);
-    if (current > -1) {
-	updateCell(current, 0, false);
-	emit highlighted(current);
-    }
+	 if (current > -1) {
+		 updateCell(current, 0, false);
+		 emit highlighted(current);
+		 emit selectionChanged(currentItem());
+	 }
 }
 
 // enables/disables drawing of expand button
-void KTreeView::setExpandButtonDrawing(bool enable)
+void QListView::setExpandButtonDrawing(bool enable)
 {
     if (drawExpandButton == enable)
 	return;
     drawExpandButton = enable;
 
     // the user parameter is cast to a bool in setItemExpandButtonDrawing
-    forEveryItem(&KTreeView::setItemExpandButtonDrawing, enable ? &enable : 0);
+    forEveryItem(&QListView::setItemExpandButtonDrawing, enable ? &enable : 0);
 
     if (autoUpdate() && isVisible())
 	repaint();
@@ -1140,13 +1184,13 @@ void KTreeView::setExpandButtonDrawing(bool enable)
 
 // sets depth to which subtrees are automatically expanded, and
 // redraws tree if auto update enabled
-void KTreeView::setExpandLevel(int level)
+void QListView::setExpandLevel(int level)
 {
     if (expansion == level)
 	return;
     expansion = level;
-    KTreeViewItem* item = getCurrentItem();
-    forEveryItem(&KTreeView::setItemExpandLevel, 0);
+    QListViewItem* item = getCurrentItem();
+    forEveryItem(&QListView::setItemExpandLevel, 0);
     while (item != 0) {
 	if (item->getParent()->isExpanded())
 	    break;
@@ -1159,7 +1203,7 @@ void KTreeView::setExpandLevel(int level)
 }
 
 // sets the indent margin for all branches and repaints if auto update enabled
-void KTreeView::setIndentSpacing(int spacing)
+void QListView::setIndentSpacing(int spacing)
 {
     if (itemIndent == spacing)
 	return;
@@ -1170,82 +1214,82 @@ void KTreeView::setIndentSpacing(int spacing)
 }
 
 // enables/disables vertical scrollbar
-void KTreeView::setScrollBar(bool enable)
+void QListView::setScrollBar(bool enable)
 {
   enable ? setTableFlags(Tbl_vScrollBar) :
     clearTableFlags(Tbl_vScrollBar);
 }
 
 // enables/disables display of item text (keys)
-void KTreeView::setShowItemText(bool enable)
+void QListView::setShowItemText(bool enable)
 {
     if (showText == enable)
 	return;
     showText = enable;
 
     // the user parameter is cast to a bool in setItemShowText
-    forEveryItem(&KTreeView::setItemShowText, enable ? &enable : 0);
+    forEveryItem(&QListView::setItemShowText, enable ? &enable : 0);
 
     if (autoUpdate() && isVisible())
 	repaint();
 }
 
 // indicates whether vertical scrolling is by pixel or row
-void KTreeView::setSmoothScrolling(bool enable)
+void QListView::setSmoothScrolling(bool enable)
 {
   enable ? setTableFlags(Tbl_smoothVScrolling) :
     clearTableFlags(Tbl_smoothVScrolling);
 }
 
 // enables/disables tree branch drawing
-void KTreeView::setTreeDrawing(bool enable)
+void QListView::setTreeDrawing(bool enable)
 {
     if (drawTree == enable)
 	return;
     drawTree = enable;
 
     // the user parameter is cast to a bool in setItemTreeDrawing
-    forEveryItem(&KTreeView::setItemTreeDrawing, enable ? &enable : 0);
+    forEveryItem(&QListView::setItemTreeDrawing, enable ? &enable : 0);
 
     if (autoUpdate() && isVisible())
 	repaint();
 }
     
 // indicates whether item text keys are displayed
-bool KTreeView::showItemText() const
+bool QListView::showItemText() const
 {
   return showText;
 }
 
 // indicates whether scrolling is by pixel or row
-bool KTreeView::smoothScrolling() const
+bool QListView::smoothScrolling() const
 {
   return testTableFlags(Tbl_smoothVScrolling);
 }
 
 // indents the item at the given index, splitting the tree into
 // a new branch
-void KTreeView::split(int index)
+void QListView::split(int index)
 {
-  KTreeViewItem *item = itemAt(index);
+  QListViewItem *item = itemAt(index);
   if(item)
     split(item);
 }
 
 // indents the item at the given path, splitting the tree into
 // a new branch
-void KTreeView::split(const KPath& path)
+void QListView::split(const KPath& path)
 {
-    KTreeViewItem* item = itemAt(path);
+    QListViewItem* item = itemAt(path);
     if (item)
 	split(item);
 }
 
 // removes item at specified index from tree but does not delete it
 // returns pointer to the item or 0 if not succesful
-KTreeViewItem *KTreeView::takeItem(int index)
+QListViewItem *QListView::takeItem(int index)
 {
-  KTreeViewItem *item = itemAt(index);
+  QListViewItem *item = itemAt(index);
   if(item)
     takeItem(item);
   return item;
@@ -1253,24 +1297,24 @@ KTreeViewItem *KTreeView::takeItem(int index)
 
 // removes item at specified path from tree but does not delete it
 // returns pointer to the item or 0 if not successful
-KTreeViewItem* KTreeView::takeItem(const KPath& path)
+QListViewItem* QListView::takeItem(const KPath& path)
 {
-    KTreeViewItem* item = itemAt(path);
+    QListViewItem* item = itemAt(path);
     if (item)
 	takeItem(item);
     return item;
 }
 
 // indicates whether tree branches are drawn
-bool KTreeView::treeDrawing() const
+bool QListView::treeDrawing() const
 {
   return drawTree;
 }
 
 
 // appends a child to the specified parent item (note: a child, not a sibling, is added!)
-void KTreeView::appendChildItem(KTreeViewItem* theParent,
-				KTreeViewItem* newItem)
+void QListView::appendChildItem(QListViewItem* theParent,
+				QListViewItem* newItem)
 {
     theParent->appendChild(newItem);
 
@@ -1299,20 +1343,20 @@ void KTreeView::appendChildItem(KTreeViewItem* theParent,
 }
 
 // returns the height of the cell(row) at the specified row (index)
-int KTreeView::cellHeight(int row)
+int QListView::cellHeight(int row)
 {
   return itemAt(row)->height(fontMetrics());
 }
 
 // returns the width of the cells. Note: this is mostly for derived classes
 // which have more than 1 column
-int KTreeView::cellWidth(int /*col*/)
+int QListView::cellWidth(int /*col*/)
 {
   return maxItemWidth;
 }
 
 // changes the given item with the new text and/or pixmap
-void KTreeView::changeItem(KTreeViewItem* toChange, int itemRow,
+void QListView::changeItem(QListViewItem* toChange, int itemRow,
 			   const char* newText, const QPixmap* newPixmap)
 {
     int indent = indentation(toChange);
@@ -1330,14 +1374,14 @@ void KTreeView::changeItem(KTreeViewItem* toChange, int itemRow,
 }
 
 // collapses the subtree at the specified item
-void KTreeView::collapseSubTree(KTreeViewItem* subRoot, bool emitSignal)
+void QListView::collapseSubTree(QListViewItem* subRoot, bool emitSignal)
 {
     assert(subRoot->owner == this);
     if (!subRoot->isExpanded())
 	return;
 
     // must move the current item if it is visible
-    KTreeViewItem* cur = current >= 0  ?  itemAt(current)  :  0;
+    QListViewItem* cur = current >= 0  ?  itemAt(current)  :  0;
 
     subRoot->setExpanded(false);
     if (subRoot->isVisible()) {
@@ -1359,7 +1403,7 @@ void KTreeView::collapseSubTree(KTreeViewItem* subRoot, bool emitSignal)
 
 // used by count() with forEach() function to count total number
 // of items in the tree
-bool KTreeView::countItem(KTreeViewItem*, void* total)
+bool QListView::countItem(QListViewItem*, void* total)
 {
     int* t = static_cast<int*>(total);
     (*t)++;
@@ -1367,14 +1411,14 @@ bool KTreeView::countItem(KTreeViewItem*, void* total)
 }
 
 // expands the subtree at the given item
-void KTreeView::expandSubTree(KTreeViewItem* subRoot, bool emitSignal)
+void QListView::expandSubTree(QListViewItem* subRoot, bool emitSignal)
 {
     assert(subRoot->owner == this);
     if (subRoot->isExpanded())
 	return;
 
     // must move the current item if it is visible
-    KTreeViewItem* cur = current >= 0  ?  itemAt(current)  :  0;
+    QListViewItem* cur = current >= 0  ?  itemAt(current)  :  0;
 
     bool allow = true;
 
@@ -1404,10 +1448,10 @@ void KTreeView::expandSubTree(KTreeViewItem* subRoot, bool emitSignal)
 }
 
 // fix up branch levels out of whack from split/join operations on the tree
-void KTreeView::fixChildren(KTreeViewItem *parentItem)
+void QListView::fixChildren(QListViewItem *parentItem)
 {
-    KTreeViewItem* childItem = 0;
-    KTreeViewItem* siblingItem = 0;
+    QListViewItem* childItem = 0;
+    QListViewItem* siblingItem = 0;
 //    int childBranch = parentItem->getBranch() + 1;
     if(parentItem->hasChild()) {
 	childItem = parentItem->getChild(); 
@@ -1427,7 +1471,7 @@ void KTreeView::fixChildren(KTreeViewItem *parentItem)
 // handles QFocusEvent processing by setting current item to top
 // row if there is no current item, and updates cell to add or
 // delete the focus rectangle on the highlight bar
-void KTreeView::focusInEvent(QFocusEvent *)
+void QListView::focusInEvent(QFocusEvent *)
 {
   if(current < 0 && numRows() > 0)
     setCurrentItem(topCell());
@@ -1435,7 +1479,7 @@ void KTreeView::focusInEvent(QFocusEvent *)
 }
 
 // called by updateCellWidth() for each item in the visible list
-bool KTreeView::getMaxItemWidth(KTreeViewItem* item, void* user)
+bool QListView::getMaxItemWidth(QListViewItem* item, void* user)
 {
     assert(item->owner != 0);
     int indent = item->owner->indentation(item);
@@ -1446,15 +1490,15 @@ bool KTreeView::getMaxItemWidth(KTreeViewItem* item, void* user)
     return false;
 }
 
-int KTreeView::indentation(KTreeViewItem* item) const
+int QListView::indentation(QListViewItem* item) const
 {
     return level(item) * itemIndent + itemIndent + 3;
 }
 
 // inserts the new item before or after the reference item, depending
 // on the value of prefix
-bool KTreeView::insertItem(KTreeViewItem* referenceItem,
-			   KTreeViewItem* newItem,
+bool QListView::insertItem(QListViewItem* referenceItem,
+			   QListViewItem* newItem,
 			   bool prefix)
 {
     assert(newItem != 0);
@@ -1464,7 +1508,7 @@ bool KTreeView::insertItem(KTreeViewItem* referenceItem,
     newItem->setDrawExpandButton(drawExpandButton);
     newItem->setDrawTree(drawTree);
     newItem->setDrawText(showText);
-    KTreeViewItem* parentItem;
+    QListViewItem* parentItem;
     if (referenceItem) {
 	parentItem = referenceItem->getParent(); 
 	int insertIndex = parentItem->childIndex(referenceItem);
@@ -1503,7 +1547,7 @@ bool KTreeView::insertItem(KTreeViewItem* referenceItem,
 /*
  * returns pointer to item's path
  */
-void KTreeView::itemPath(KTreeViewItem* item, KPath& path) const
+void QListView::itemPath(QListViewItem* item, KPath& path) const
 {
     assert(item != 0);
     assert(item->owner == this);
@@ -1517,9 +1561,9 @@ void KTreeView::itemPath(KTreeViewItem* item, KPath& path) const
  * joins the item's branch into the tree, making the item a sibling of its
  * parent
  */
-void KTreeView::join(KTreeViewItem *item)
+void QListView::join(QListViewItem *item)
 {
-  KTreeViewItem *itemParent = item->getParent();
+  QListViewItem *itemParent = item->getParent();
   if(itemParent->hasParent()) {
     bool autoU = autoUpdate();
     setAutoUpdate(FALSE);
@@ -1532,52 +1576,52 @@ void KTreeView::join(KTreeViewItem *item)
 }
 
 // handles keyboard interface
-void KTreeView::keyPressEvent(QKeyEvent* e)
+void QListView::keyPressEvent(QKeyEvent* e)
 {
     if (numRows() == 0)
 	return;				/* nothing to do */
 
     /* if there's no current item, make the top item current */
-    if (currentItem() < 0)
+    if (currentItemIndex() < 0)
 	setCurrentItem(topCell());
-    assert(currentItem() >= 0);		/* we need a current item */
-    assert(itemAt(currentItem()) != 0);	/* we really need a current item */
+    assert(currentItemIndex() >= 0);		/* we need a current item */
+    assert(itemAt(currentItemIndex()) != 0);	/* we really need a current item */
 
     int pageSize, delta;
-    KTreeViewItem* item;
+    QListViewItem* item;
     int key = e->key();
 repeat:
     switch (key) {
     case Key_Up:
 	// make previous item current, scroll up if necessary
-	if (currentItem() > 0) {
-	    setCurrentItem(currentItem() - 1);
-	    scrollVisible(itemAt(currentItem()), false);
+	if (currentItemIndex() > 0) {
+	    setCurrentItem(currentItemIndex() - 1);
+	    scrollVisible(itemAt(currentItemIndex()), false);
 	}
 	break;
     case Key_Down:
 	// make next item current, scroll down if necessary
-	if (currentItem() < numRows() - 1) {
-	    setCurrentItem(currentItem() + 1);
-	    if (currentItem() > lastRowVisible()) {
+	if (currentItemIndex() < numRows() - 1) {
+	    setCurrentItem(currentItemIndex() + 1);
+	    if (currentItemIndex() > lastRowVisible()) {
 		// scrollVisible is not feasible here because
 		// it scrolls the item to the top
-		setTopCell(topCell() + currentItem() - lastRowVisible());
-	    } else if (currentItem() < topCell()) {
-		setTopCell(currentItem());
+		setTopCell(topCell() + currentItemIndex() - lastRowVisible());
+	    } else if (currentItemIndex() < topCell()) {
+		setTopCell(currentItemIndex());
 	    }
 	}
 	break;
     case Key_Next:
 	// move highlight one page down and scroll down
-	delta = currentItem() - topCell();
+	delta = currentItemIndex() - topCell();
 	pageSize = lastRowVisible() - topCell();
 	setTopCell(QMIN(topCell() +  pageSize, numRows() - 1));
 	setCurrentItem(QMIN(topCell() + delta, numRows() - 1));
 	break;
     case Key_Prior:
 	// move highlight one page up and scroll up
-	delta = currentItem() - topCell();
+	delta = currentItemIndex() - topCell();
 	pageSize = lastRowVisible() - topCell();
 	setTopCell(QMAX(topCell() - pageSize, 0));
 	setCurrentItem(QMAX(topCell() + delta, 0));
@@ -1585,7 +1629,7 @@ repeat:
     case Key_Plus:
     case Key_Right:
 	// if current item has subtree and is collapsed, expand it
-	item = itemAt(currentItem());
+	item = itemAt(currentItemIndex());
 	if (item->isExpanded() && item->hasChild() && key == Key_Right) {
 	    // going right on an expanded item is like going down
 	    key = Key_Down;
@@ -1598,7 +1642,7 @@ repeat:
     case Key_Minus:
     case Key_Left:
 	// if current item has subtree and is expanded, collapse it
-	item = itemAt(currentItem());
+	item = itemAt(currentItemIndex());
 	if ((!item->isExpanded() || !item->hasChild()) && key == Key_Left) {
 	    // going left on a collapsed item goes to its parent
 	    item = item->getParent();
@@ -1614,15 +1658,15 @@ repeat:
     case Key_Return:
     case Key_Enter:
 	// select the current item
-	if (currentItem() >= 0)
-	    emit selected(currentItem());
+	if (currentItemIndex() >= 0)
+	    emit selected(currentItemIndex());
 	break;
     default:
 	break;
     }
 }
 
-int KTreeView::level(KTreeViewItem* item) const
+int QListView::level(QListViewItem* item) const
 {
     assert(item != 0);
     assert(item->owner == this);
@@ -1637,9 +1681,9 @@ int KTreeView::level(KTreeViewItem* item) const
 }
 
 /* move specified item down one slot in parent's subtree */
-void KTreeView::lowerItem(KTreeViewItem *item)
+void QListView::lowerItem(QListViewItem *item)
 {
-  KTreeViewItem *itemParent = item->getParent();
+  QListViewItem *itemParent = item->getParent();
   uint itemChildIndex = itemParent->childIndex(item);
   if(itemChildIndex < itemParent->childCount() - 1) {
     bool autoU = autoUpdate();
@@ -1654,7 +1698,7 @@ void KTreeView::lowerItem(KTreeViewItem *item)
 
 // handle mouse double click events by selecting the clicked item
 // and emitting the signal
-void KTreeView::mouseDoubleClickEvent(QMouseEvent *e)
+void QListView::mouseDoubleClickEvent(QMouseEvent *e)
 {
   // find out which row has been clicked
 	
@@ -1666,7 +1710,7 @@ void KTreeView::mouseDoubleClickEvent(QMouseEvent *e)
   if(itemClicked == -1) 
     return;
 
-  KTreeViewItem *item = itemAt(itemClicked);
+  QListViewItem *item = itemAt(itemClicked);
   if(!item) return;
   
   // translate mouse coord to cell coord
@@ -1684,7 +1728,7 @@ void KTreeView::mouseDoubleClickEvent(QMouseEvent *e)
 }
 
 // handle mouse movement events
-void KTreeView::mouseMoveEvent(QMouseEvent *e)
+void QListView::mouseMoveEvent(QMouseEvent *e)
 {
   // in rubberband_mode we actually scroll the window now
   if (rubberband_mode) 
@@ -1695,7 +1739,7 @@ void KTreeView::mouseMoveEvent(QMouseEvent *e)
 
 
 // handle single mouse presses
-void KTreeView::mousePressEvent(QMouseEvent *e)
+void QListView::mousePressEvent(QMouseEvent *e)
 {
     // first: check which button was pressed
 
@@ -1725,7 +1769,7 @@ void KTreeView::mousePressEvent(QMouseEvent *e)
     if (itemClicked == -1)
 	return;
 
-    KTreeViewItem* item = itemAt(itemClicked);
+    QListViewItem* item = itemAt(itemClicked);
     if (!item)
 	return;
 
@@ -1751,7 +1795,7 @@ void KTreeView::mousePressEvent(QMouseEvent *e)
 }
 
 // handle mouse release events
-void KTreeView::mouseReleaseEvent(QMouseEvent *e)
+void QListView::mouseReleaseEvent(QMouseEvent *e)
 {
   /* if it's the MMB end rubberbanding */
   if (rubberband_mode && e->button()==MidButton) 
@@ -1761,7 +1805,7 @@ void KTreeView::mouseReleaseEvent(QMouseEvent *e)
 }
 
 // rubberband move: draw the rubberband
-void KTreeView::draw_rubberband()
+void QListView::draw_rubberband()
 {
     /*
      * RB: I'm using a white pen because of the XorROP mode. I would prefer
@@ -1781,7 +1825,7 @@ void KTreeView::draw_rubberband()
 }
 
 // rubberband move: start move
-void KTreeView::start_rubberband(const QPoint& where)
+void QListView::start_rubberband(const QPoint& where)
 {
   if (rubberband_mode) { // Oops!
     end_rubberband();
@@ -1805,7 +1849,7 @@ void KTreeView::start_rubberband(const QPoint& where)
 }
 
 // rubberband move: end move
-void KTreeView::end_rubberband()
+void QListView::end_rubberband()
 {
   if (!rubberband_mode) return;
   draw_rubberband();
@@ -1813,7 +1857,7 @@ void KTreeView::end_rubberband()
 }
 
 // rubberband move: hanlde mouse moves
-void KTreeView::move_rubberband(const QPoint& where)
+void QListView::move_rubberband(const QPoint& where)
 {
   if (!rubberband_mode) return;
 
@@ -1837,9 +1881,9 @@ void KTreeView::move_rubberband(const QPoint& where)
 
 // paints the cell at the specified row and col
 // col is ignored for now since there is only one
-void KTreeView::paintCell(QPainter* p, int row, int)
+void QListView::paintCell(QPainter* p, int row, int)
 {
-    KTreeViewItem* item = itemAt(row);
+    QListViewItem* item = itemAt(row);
     if (item == 0)
 	return;
 
@@ -1851,7 +1895,7 @@ void KTreeView::paintCell(QPainter* p, int row, int)
 
 
 /* This is needed to make the kcontrol's color setup working (Marcin Dalecki) */
-void KTreeView::paletteChange(const QPalette &)
+void QListView::paletteChange(const QPalette &)
 {
     setBackgroundColor(colorGroup().base());
     repaint(true);
@@ -1859,9 +1903,9 @@ void KTreeView::paletteChange(const QPalette &)
 
 
 /* raise the specified item up one slot in parent's subtree */
-void KTreeView::raiseItem(KTreeViewItem *item)
+void QListView::raiseItem(QListViewItem *item)
 {
-  KTreeViewItem *itemParent = item->getParent();
+  QListViewItem *itemParent = item->getParent();
   int itemChildIndex = itemParent->childIndex(item);
   if(itemChildIndex > 0) {
     bool autoU = autoUpdate();
@@ -1875,7 +1919,7 @@ void KTreeView::raiseItem(KTreeViewItem *item)
 }
 
 // find the item at the path
-KTreeViewItem* KTreeView::recursiveFind(KPath& path)
+QListViewItem* QListView::recursiveFind(KPath& path)
 {
     if (path.isEmpty())
 	return treeRoot;
@@ -1884,14 +1928,14 @@ KTreeViewItem* KTreeView::recursiveFind(KPath& path)
     QString* searchString = path.pop();
 
     // find the parent item
-    KTreeViewItem* parent = recursiveFind(path);
+    QListViewItem* parent = recursiveFind(path);
     if (parent == 0)
 	return 0;
 
     /*
      * Iterate through the parent's children searching for searchString.
      */
-    KTreeViewItem* sibling = parent->getChild();
+    QListViewItem* sibling = parent->getChild();
     while (sibling != 0) {
 	if (*searchString == sibling->getText()) {
 	    break;			/* found it! */
@@ -1901,7 +1945,7 @@ KTreeViewItem* KTreeView::recursiveFind(KPath& path)
     return sibling;
 }
 
-void KTreeView::setItemExpanded(KTreeViewItem* item)
+void QListView::setItemExpanded(QListViewItem* item)
 {
     if (level(item) < expansion) {
 	expandSubTree(item, true);
@@ -1911,7 +1955,7 @@ void KTreeView::setItemExpanded(KTreeViewItem* item)
 }
 
 // called by setExpandLevel for each item in tree
-bool KTreeView::setItemExpandLevel(KTreeViewItem* item, void*)
+bool QListView::setItemExpandLevel(QListViewItem* item, void*)
 {
     assert(item->owner != 0);
     item->owner->setItemExpanded(item);
@@ -1920,7 +1964,7 @@ bool KTreeView::setItemExpandLevel(KTreeViewItem* item, void*)
 
 // called by setExpandButtonDrawing for every item in tree
 // the parameter drawButton is used as (and implicitly cast to) a bool
-bool KTreeView::setItemExpandButtonDrawing(KTreeViewItem* item,
+bool QListView::setItemExpandButtonDrawing(QListViewItem* item,
 					   void* drawButton)
 {
     item->setDrawExpandButton(drawButton);
@@ -1929,7 +1973,7 @@ bool KTreeView::setItemExpandButtonDrawing(KTreeViewItem* item,
 
 // called by setShowItemText for every item in tree
 // the parameter newDrawText is used as (and implicitly cast to) a bool
-bool KTreeView::setItemShowText(KTreeViewItem* item, 
+bool QListView::setItemShowText(QListViewItem* item, 
 				void* newDrawText)
 {
     item->setDrawText(newDrawText);
@@ -1938,7 +1982,7 @@ bool KTreeView::setItemShowText(KTreeViewItem* item,
 
 // called by setTreeDrawing for every item in tree
 // the parameter drawTree is used as (and implicitly cast to) a bool
-bool KTreeView::setItemTreeDrawing(KTreeViewItem* item, void* drawTree)
+bool QListView::setItemTreeDrawing(QListViewItem* item, void* drawTree)
 {
     item->setDrawTree(drawTree);
     return false;
@@ -1946,9 +1990,9 @@ bool KTreeView::setItemTreeDrawing(KTreeViewItem* item, void* drawTree)
 
 // makes the item a child of the item above it, splitting
 // the tree into a new branch
-void KTreeView::split(KTreeViewItem *item)
+void QListView::split(QListViewItem *item)
 {
-  KTreeViewItem *itemParent = item->getParent();
+  QListViewItem *itemParent = item->getParent();
   int itemChildIndex = itemParent->childIndex(item);
   if(itemChildIndex == 0)
     return;
@@ -1962,7 +2006,7 @@ void KTreeView::split(KTreeViewItem *item)
 }
 
 // removes the item from the tree without deleting it
-void KTreeView::takeItem(KTreeViewItem* item)
+void QListView::takeItem(QListViewItem* item)
 {
     assert(item->owner == this);
 
@@ -1975,9 +2019,9 @@ void KTreeView::takeItem(KTreeViewItem* item)
      * below the taken-out subtree, we must move it up a number of rows if
      * the taken-out subtree is at least partially visible.
      */
-    KTreeViewItem* cur = current >= 0  ?  itemAt(current)  :  0;
+    QListViewItem* cur = current >= 0  ?  itemAt(current)  :  0;
     if (wasVisible && cur != 0) {
-	KTreeViewItem* c = cur;
+	QListViewItem* c = cur;
 	while (c != 0 && c != item) {
 	    c = c->getParent();
 	}
@@ -1988,7 +2032,7 @@ void KTreeView::takeItem(KTreeViewItem* item)
 		cur = 0;
 	}
     }
-    KTreeViewItem* parentItem = item->getParent();
+    QListViewItem* parentItem = item->getParent();
     parentItem->removeChild(item);
     item->sibling = 0;
     if (wasVisible || parentItem->childCount() == 0) {
@@ -2007,16 +2051,16 @@ void KTreeView::takeItem(KTreeViewItem* item)
 
 // visits each item, calculates the maximum width  
 // and updates QTableView
-void KTreeView::updateCellWidth()
+void QListView::updateCellWidth()
 {
     // make cells at least 1 pixel wide to avoid singularities (division by zero)
     int maxW = 1;
-    forEveryVisibleItem(&KTreeView::getMaxItemWidth, &maxW);
+    forEveryVisibleItem(&QListView::getMaxItemWidth, &maxW);
     maxItemWidth = maxW;
     updateTableSize();
 }
 
-void KTreeView::updateVisibleItems()
+void QListView::updateVisibleItems()
 {
     int index = 0;
     int count = 0;
@@ -2026,7 +2070,7 @@ void KTreeView::updateVisibleItems()
     updateCellWidth();
 }
 
-void KTreeView::updateVisibleItemRec(KTreeViewItem* item, int& index, int& count)
+void QListView::updateVisibleItemRec(QListViewItem* item, int& index, int& count)
 {
     if (!item->isExpanded()) {
 	// no visible items if not expanded
@@ -2046,7 +2090,7 @@ void KTreeView::updateVisibleItemRec(KTreeViewItem* item, int& index, int& count
 	do {
 	    newCapacity += newCapacity;
 	} while (newCapacity < count);
-	KTreeViewItem** newItems = new KTreeViewItem*[newCapacity];
+	QListViewItem** newItems = new QListViewItem*[newCapacity];
 	// clear the unneeded space
 	for (int i = index; i < newCapacity; i++) {
 	    newItems[i] = 0;
@@ -2060,8 +2104,9 @@ void KTreeView::updateVisibleItemRec(KTreeViewItem* item, int& index, int& count
 	itemCapacity = newCapacity;
     }
     // insert children
-    for (KTreeViewItem* i = item->getChild(); i != 0; i = i->getSibling()) {
+    for (QListViewItem* i = item->getChild(); i != 0; i = i->getSibling()) {
 	visibleItems[index++] = i;
 	updateVisibleItemRec(i, index, count);
     }
 }
+#endif

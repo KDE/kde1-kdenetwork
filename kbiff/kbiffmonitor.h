@@ -34,6 +34,58 @@ protected:
 	}
 };
 
+/**
+ * @internal
+ */
+class KBiffSocket
+{
+public:
+	KBiffSocket();
+	virtual ~KBiffSocket();
+
+	bool connectSocket(const char* host, unsigned int port);
+
+	int numberOfMessages();
+	int numberOfNewMessages();
+
+	void close();
+
+protected:
+	QString readLine();
+	int writeLine(const QString& line);
+
+	int socketFD;
+	int messages;
+	int newMessages;
+};
+
+/**
+ * @internal
+ */
+class KBiffImap : public KBiffSocket
+{
+public:
+	virtual ~KBiffImap();
+
+	bool command(const QString& line, unsigned int seq);
+	QString mungeUser(const QString& old_user);
+};
+
+/**
+ * @internal
+ */
+class KBiffPop : public KBiffSocket
+{
+public:
+	virtual ~KBiffPop();
+
+	bool command(const QString& line);
+	KBiffUidlList getUidlList() const;
+
+protected:
+	KBiffUidlList  uidlList;    
+};
+
 typedef enum
 {
 	NewMail,
@@ -255,6 +307,9 @@ private:
 	QString user;
 	QString password;
 	int     port;
+	bool    preauth;
+	bool    keepalive;
+	bool    active;
 
 	// State variables
 	KBiffMailState mailState;
@@ -262,53 +317,10 @@ private:
 	QDateTime      lastRead;
 	QDateTime      lastModified;
 	KBiffUidlList  uidlList;
+
+	// Socket protocols
+	KBiffImap      imap;
+	KBiffPop       pop;
 };
 
-
-/**
- * @internal
- */
-class KBiffSocket
-{
-public:
-	KBiffSocket();
-	virtual ~KBiffSocket();
-
-	bool connectSocket(const char* host, unsigned int port);
-
-	int numberOfMessages();
-	int numberOfNewMessages();
-
-protected:
-	QString readLine();
-	int writeLine(const QString& line);
-	void close();
-
-	int socketFD;
-	int messages;
-	int newMessages;
-};
-
-/**
- * @internal
- */
-class KBiffImap : public KBiffSocket
-{
-public:
-	bool command(const QString& line, unsigned int seq);
-	QString mungeUser(const QString& old_user);
-};
-
-/**
- * @internal
- */
-class KBiffPop : public KBiffSocket
-{
-public:
-	bool command(const QString& line);
-	KBiffUidlList getUidlList() const;
-
-protected:
-	KBiffUidlList  uidlList;    
-};
 #endif // KBIFFMONITOR_H

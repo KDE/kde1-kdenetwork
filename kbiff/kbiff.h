@@ -66,7 +66,7 @@ protected slots:
 	void stop();
 	void start();
 
-private:
+protected:
 	bool myMUTEX;
 	QList<KBiffMonitor> monitorList;
 

@@ -14,21 +14,24 @@
 #include <config.h>
 #endif //HAVE_CONFIG_H
 
+#include <qglobal.h> // need QT_VERSION
+
+#if QT_VERSION < 140
+#include <ktreeview.h>
+#else
+#include <qlistview.h>
+#endif // QT_VERSION < 140
+
 #include <qwidget.h>
 #include <qdialog.h>
-#include <qlineedit.h>
-#include <qcheckbox.h>
-#include <qpushbutton.h>
-#include <qcombobox.h>
-//#include <qlistview.h>
-#include <qdict.h>
-#include <qlist.h>
+
+class QLineEdit;
+class QCheckBox;
+class QPushButton;
+class QComboBox;
 
 #include <kiconloaderdialog.h>
 #include <kurl.h>
-
-class KTreeView;
-class KTreeViewItem;
 
 struct KBiffMailbox
 {
@@ -177,15 +180,19 @@ public:
 	void setPort(unsigned int the_port, bool enable = true);
 	void setMailbox(const KURL& url);
 	void setPreauth(bool on);
+	void setKeepalive(bool on);
 
 protected slots:
 	void portModified(const char* text);
+	void preauthModified(bool toggled);
+	void keepaliveModified(bool toggled);
 
 private:
 	QString    password;
 	QLineEdit *mailbox;
 	QLineEdit *port;
 	QCheckBox *preauth;
+	QCheckBox *keepalive;
 };
 
 class KBiffMailboxTab : public QWidget
@@ -207,8 +214,7 @@ public slots:
 protected slots:
 	void slotDeleteMailbox();
 	void slotNewMailbox();
-//	void slotMailboxSelected(QListViewItem *item);
-	void slotMailboxSelected(int index);
+	void slotMailboxSelected(QListViewItem *item);
 
 	void protocolSelected(int protocol);
 	void browse();
@@ -220,11 +226,11 @@ protected:
 
 private:
 	QDict<KBiffMailbox> *mailboxHash;
-//	QListViewItem       *oldItem;
-	KTreeViewItem       *oldItem;
+	QListViewItem       *oldItem;
 
 	unsigned int port;
 	bool         preauth;
+	bool         keepalive;
 	QComboBox   *comboProtocol;
 	QLineEdit   *editMailbox;
 	QLineEdit   *editServer;
@@ -232,8 +238,7 @@ private:
 	QLineEdit   *editPassword;
 	QCheckBox   *checkStorePassword;
 	QPushButton *buttonBrowse;
-//	QListView   *mailboxes;
-	KTreeView   *mailboxes;
+	QListView   *mailboxes;
 };
 
 class KBiffAboutTab : public QWidget

@@ -1,7 +1,7 @@
 /*
  * $Id$
  * 
- * KTreeView class interface
+ * QListView class interface COMPLETELY TAKEN from QListView
  * 
  * Copyright (C) 1997 Johannes Sixt
  * 
@@ -27,20 +27,28 @@
 #ifndef KDE_KTREE_VIEW_H
 #define KDE_KTREE_VIEW_H
 
+#include <qglobal.h>
+
+#if QT_VERSION < 140
 #include <qpixmap.h>			/* used in items */
 #include <qstack.h>			/* used to specify tree paths */
 #include <qstring.h>			/* used in items */
 #include <qtablevw.h>			/* base class for widget */
 
+struct Bogus
+{
+	void hide() {};
+};
+
 // use stack of strings to represent path information
 typedef QStack<QString> KPath;
 
-class KTreeView;			/* forward declaration */
+class QListView;			/* forward declaration */
 
-/** Items for the KTreeView widget */
-class KTreeViewItem
+/** Items for the QListView widget */
+class QListViewItem
 {
-    friend class KTreeView;
+    friend class QListView;
 public:
     /**
      * Item constructor. While text defaults to a null string, and the
@@ -52,11 +60,13 @@ public:
      * itself deleted. By default the creator of the item is responsible to
      * also delete the child items. (However, the versions of @ref
      * #appendChildItem and @ref #insertChildItem that do not take a
-     * KTreeViewItem set the delete-children flag to true.)
+     * QListViewItem set the delete-children flag to true.)
      *
      * @param text specifies the new item's text
      */
-    KTreeViewItem(const QString& text = QString()); // text can not be null when added to the list!
+    QListViewItem(const QString& text = QString()); // text can not be null when added to the list!
+
+QListViewItem(QListView* parent, const QString& text = QString()); // text can not be null when added to the list!
     /**
      * This overloaded constructor allows to specify a pixmap for the new
      * item.
@@ -64,20 +74,20 @@ public:
      * @param text specifies the item's text
      * @param pixmap specifies the item's pixmap
      */
-    KTreeViewItem(const QString& text, const QPixmap& pixmap);
+    QListViewItem(const QString& text, const QPixmap& pixmap);
 
     /**
      * Destructor. It destroys its children if this item has been marked
      * with setDeleteChildren(true).
      */
-    virtual ~KTreeViewItem();
+    virtual ~QListViewItem();
 
     /**
      * Appends a new (direct) child item at the end. It does not update
      * administrative data in newChild except for its parent (which is this
      * item) and owner.
      */
-    void appendChild(KTreeViewItem* newChild);
+    void appendChild(QListViewItem* newChild);
 
     /**
      * Returns a pointer to the child item at the given index in this
@@ -86,7 +96,7 @@ public:
      * @param index specifies the index of the direct child to return
      * @return the direct child at the specified index
      */	
-    KTreeViewItem* childAt(int index) const;
+    QListViewItem* childAt(int index) const;
 
     /**
      * Returns the number of child items in this item's sub tree.
@@ -100,7 +110,7 @@ public:
      * @param child specifies the child to look up; must not be 0
      * @returns the index of the specified direct child
      */
-    int childIndex(KTreeViewItem* child) const;
+    int childIndex(QListViewItem* child) const;
 
     /**
      * Determines whether the specified point is inside the expand button.
@@ -111,12 +121,12 @@ public:
      * Returns a pointer to the first child item in this item's sub tree, or
      * 0 if none.
      */
-    KTreeViewItem* getChild() const;
+    QListViewItem* getChild() const;
 
     /**
      * Returns a pointer to the parent of this item, or 0 if none.
      */
-    KTreeViewItem* getParent() const;
+    QListViewItem* getParent() const;
 
     /**
      * Returns a reference to this item's pixmap. If there is no pixmap
@@ -129,13 +139,14 @@ public:
      * Returns a pointer to the next sibling item in the same branch below this
      * one, or 0 if this item has no siblings below it.
      */
-    KTreeViewItem* getSibling() const;
+    QListViewItem* getSibling() const;
+QListViewItem* nextSibling() const { return getSibling(); }
 
     /**
      * Returns this item's text.
      */
     const QString& getText() const;
-
+const QString& text(int) const { return getText(); }
     /**
      * Indicates whether this item has any children.
      */
@@ -162,7 +173,7 @@ public:
      * @param index specifies the index of a direct child of this item
      * @param newChild specifies the new item to insert
      */
-    void insertChild(int index, KTreeViewItem* newChild);
+    void insertChild(int index, QListViewItem* newChild);
 
     /**
      * Indicates whether the item is expanded, that is, whether the child
@@ -186,9 +197,9 @@ public:
      * Removes the specified (direct) child from this item and returns
      * true. If it is not a direct child of this item, nothing happens, and
      * false is returned. This function does not update the owning
-     * KTreeView.
+     * QListView.
      */
-    bool removeChild(KTreeViewItem* child);
+    bool removeChild(QListViewItem* child);
 
     /**
      * Sets the delayed-expanding flag. If this flag is true, the signal
@@ -215,13 +226,15 @@ public:
 
     /**
      * Sets the item pixmap to the given pixmap. It does not redraw the
-     * item or update the owning KTreeView.
+     * item or update the owning QListView.
      */
     void setPixmap(const QPixmap& pm);
 
+void setPixmap(int, const QPixmap& pm);
+
     /**
      * Sets the item text. This function does not redraw the item or update
-     * the owning KTreeView.
+     * the owning QListView.
      */
      void setText(const QString& t);
 
@@ -233,7 +246,7 @@ protected:
 
     /**
      * Returns the height of the item. The default implementation uses font
-     * metrics of the owning KTreeView widget.
+     * metrics of the owning QListView widget.
      */
     virtual int height() const;
 
@@ -287,7 +300,7 @@ protected:
     /**
      * Returns the width of the item taking into account the specified
      * indentation. The default implementation uses font metrics of the
-     * owning KTreeView widget.
+     * owning QListView widget.
      */
     virtual int width(int indent) const;
 
@@ -298,8 +311,8 @@ protected:
     virtual int width(int indent, const QFontMetrics& fm) const;
 
 protected:
-    /** The KTreeView that this item belongs to */
-    KTreeView* owner;
+    /** The QListView that this item belongs to */
+    QListView* owner;
     int numChildren;
     bool doExpandButton;
     bool expanded;
@@ -307,16 +320,16 @@ protected:
     bool doTree;
     bool doText;
     mutable QRect expandButton;		/* is set in paint() */
-    KTreeViewItem* child;
-    KTreeViewItem* parent;
-    KTreeViewItem* sibling;
+    QListViewItem* child;
+    QListViewItem* parent;
+    QListViewItem* sibling;
     QPixmap pixmap;
-    QString text;
+    QString _text;
     bool deleteChildren;
 };
 
 /**
- * KTreeView is a class that provides a way to display hierarchical data in
+ * QListView is a class that provides a way to display hierarchical data in
  * a single-inheritance tree, similar to tree controls in Microsoft Windows
  * and other GUIs. It is most suitable for directory trees or outlines, but
  * I'm sure other uses will come to mind. It was designed mostly with the
@@ -329,7 +342,7 @@ protected:
  * The class features the following:
  *
  * - Displays both text and an optional pixmap supplied by the programmer.
- * A support class, KTreeViewItem, can be inherited and modified to draw
+ * A support class, QListViewItem, can be inherited and modified to draw
  * items as needed by the programmer.
  *
  * - The list items can be returned by index or logical path and the tree
@@ -352,27 +365,32 @@ protected:
  * @short A collapsible treelist widget
  * @author Johannes Sixt <Johannes.Sixt@telecom.at>, Keith Brown
  */
-class KTreeView : public QTableView
+class QListView : public QTableView
 {
-    friend class KTreeViewItem;
+    friend class QListViewItem;
     Q_OBJECT
 public:
+
+Bogus* header() { Bogus *b; return b; }
+
+void setFrameStyle(int){};
+void addColumn(const char*){};
     /**
      * Widget contructor. All parameters are passed on to base QTableView,
      * and are not used directly.
      */
-    KTreeView(QWidget* parent = 0, const char* name = 0, WFlags f = 0);
+    QListView(QWidget* parent = 0, const char* name = 0, WFlags f = 0);
 
     /**
      * Desctructor. Deletes all items from the topmost level that have been
      * marked with setDeleteChildren(true).
      */
-    virtual ~KTreeView();
+    virtual ~QListView();
 
     /**
      * Appends a new child item to the item at the specified row. If that
      * item already has children, the new item is appended below these
-     * children. A KTreeViewItem is created for which the delete-children
+     * children. A QListViewItem is created for which the delete-children
      * flag is set to true.
      * 
      * @param text specifies text for the new item; must not be 0
@@ -403,7 +421,7 @@ public:
      * @param index specifies the item of which the new item will be a child
      * @see #appendChildItem
      */
-    void appendChildItem(KTreeViewItem* newItem, int index);
+    void appendChildItem(QListViewItem* newItem, int index);
 
     /**
      * This overloaded function appends a new item to an item, which is
@@ -413,7 +431,7 @@ public:
      * @param path specifies the item of which the new item will be a child
      * @see #appendChildItem
      */
-    void appendChildItem(KTreeViewItem* newItem, const KPath& path);
+    void appendChildItem(QListViewItem* newItem, const KPath& path);
 
     /**
 	Returns a bool value indicating whether the list will display a
@@ -475,7 +493,7 @@ public:
 	Returns the index of the current (highlighted) item. If no current
 	item, returns -1.
 	*/
-  int currentItem() const;
+  int currentItemIndex() const;
 
     /**
      * Collapses the sub-tree at the specified row index. If the index is
@@ -507,7 +525,7 @@ public:
      * The type of member functions that is called by @ref #forEveryItem and
      * @ref #forEveryVisibleItem.
      */
-    typedef bool (*KForEveryFunc)(KTreeViewItem*, void*);
+    typedef bool (*KForEveryFunc)(QListViewItem*, void*);
 
     /**
      * Iterates every item in the tree, visible or not, and applies the
@@ -516,10 +534,10 @@ public:
      * (root itself is not visited!). If root is 0 all items in the tree
      * are visited. KForEveryFunc is defined as:
      * 
-     * typedef bool (KTreeView::*KForEveryFunc)(KTreeViewItem*, void*);
+     * typedef bool (QListView::*KForEveryFunc)(QListViewItem*, void*);
      * 
      * That is, a member function that returns bool and takes a pointer to
-     * a KTreeViewItem and pointer to void as parameters. The traversal
+     * a QListViewItem and pointer to void as parameters. The traversal
      * ends earlier if the supplied function returns bool. In this case the
      * return value is also true.
      *
@@ -530,7 +548,7 @@ public:
      * @see #forEveryVisibleItem
      */
     bool forEveryItem(KForEveryFunc func, void* user,
-		      KTreeViewItem* root = 0);
+		      QListViewItem* root = 0);
 
     /**
      * This function is like @ref #forEveryItem, but only iterates visible
@@ -544,12 +562,13 @@ public:
      * @see #forEveryItem
      */
     bool forEveryVisibleItem(KForEveryFunc func, void *user,
-			     KTreeViewItem* root = 0);
+			     QListViewItem* root = 0);
 
   /**
 	Returns a pointer to the current item if there is one, or 0.
 	*/
-  KTreeViewItem *getCurrentItem();
+  QListViewItem *getCurrentItem();
+QListViewItem *currentItem();
 
     /**
      * Returns the number of pixels an item is indented for each level. If,
@@ -565,7 +584,7 @@ public:
      * before or after the item at the given row. The new item is added to
      * the same branch as the referenced item (that is, the new item will
      * be sibling of the reference item). If row is -1, the item is simply
-     * appended to the tree at the topmost level. A KTreeViewItem is
+     * appended to the tree at the topmost level. A QListViewItem is
      * created for which the delete-children flag is set to true.
      * 
      * @param text specifies text for the new item; must not be 0
@@ -610,7 +629,7 @@ public:
      * otherwise false.
      * @see #insertItem
      */
-    bool insertItem(KTreeViewItem *newItem, 
+    bool insertItem(QListViewItem *newItem, 
 		    int row = -1, bool prefix = true); 
 
     /**
@@ -626,7 +645,7 @@ public:
      * otherwise false.
      * @see #insertItem
      */
-    bool insertItem(KTreeViewItem *newItem,
+    bool insertItem(QListViewItem *newItem,
 		    const KPath& thePath, bool prefix = true);
 
     /**
@@ -638,7 +657,8 @@ public:
      * @see #itemRow
      * @see #itemPath
      */
-    KTreeViewItem* itemAt(int row);
+    QListViewItem* itemAt(int row);
+QListViewItem* firstChild() { return itemAt(0); }
 
     /**
      * Returns a pointer to the item at the end of the path, or 0 if there
@@ -649,7 +669,7 @@ public:
      * @see #itemRow
      * @see #itemPath
      */
-    KTreeViewItem* itemAt(const KPath& path);
+    QListViewItem* itemAt(const KPath& path);
 
     /**
      * Looks up the row index at which the specified item is found in the
@@ -660,7 +680,7 @@ public:
      * @see #itemAt
      * @see #itemPath
      */
-    int itemRow(KTreeViewItem* item);
+    int itemRow(QListViewItem* item);
 
     /**
      * Fills path with the logical path to the item at the specified row.
@@ -733,7 +753,7 @@ public:
      * @param item specifies the item to make visible
      * @param children specifies whether children should be made visible
      */
-    void scrollVisible(KTreeViewItem* item, bool children);
+    void scrollVisible(QListViewItem* item, bool children);
 
     /**
 	If enable is TRUE (default), enables auto update, else disables it.
@@ -752,6 +772,8 @@ public:
      * @param row specifies the row to make the current item
      */
     void setCurrentItem(int row);
+
+void setSelected(QListViewItem*, bool) { setCurrentItem(0); }
 
   void setExpandButtonDrawing(bool enable);
 
@@ -812,12 +834,12 @@ public:
      * Removes the item at the given index from the tree, but does not
      * delete it, returning a pointer to the removed item.
      */
-    KTreeViewItem* takeItem(int index);
+    QListViewItem* takeItem(int index);
 
     /**
      * Same as above but uses a path to specify the item to take.
      */
-    KTreeViewItem* takeItem(const KPath& path);
+    QListViewItem* takeItem(const KPath& path);
 
   /**
 	Indicates whether the tree structure is drawn.
@@ -867,7 +889,7 @@ signals:
      * @param allow can be set to false to disallow expansion; no further
      * actions are taken then
      */
-    void expanding(KTreeViewItem* item, bool& allow);
+    void expanding(QListViewItem* item, bool& allow);
 
     /**
      * This signal is emitted when an item in the tree is highlighted.
@@ -875,6 +897,8 @@ signals:
      * @param index the row index of the highlighted item.
      */
     void highlighted(int index);
+
+void selectionChanged(QListViewItem* item);
 
     /**
      * This signal is emitted when an item in the tree is selected.
@@ -895,11 +919,11 @@ protected:
      * @param child specifies the new child item
      * @see #appendChildItem
      */
-    void appendChildItem(KTreeViewItem* parent,
-			 KTreeViewItem* child);
+    void appendChildItem(QListViewItem* parent,
+			 QListViewItem* child);
     virtual int cellHeight(int row);
     virtual int cellWidth(int col);
-    void changeItem(KTreeViewItem* toChange,
+    void changeItem(QListViewItem* toChange,
 		    int itemRow, const char* newText,
 		    const QPixmap* newPixmap);
     /**
@@ -910,10 +934,10 @@ protected:
      * @param item specifies the item to collapse.
      * @param emitSignal specifies whether the signal @ref #collapsed should be emitted.
      */
-    virtual void collapseSubTree(KTreeViewItem* item, bool emitSignal);
+    virtual void collapseSubTree(QListViewItem* item, bool emitSignal);
 
     /** Internal function used for counting items */
-    static bool countItem(KTreeViewItem* item, void* total);
+    static bool countItem(QListViewItem* item, void* total);
 
     /**
      * Expands the specified subtree and updates the display. The specified
@@ -923,25 +947,25 @@ protected:
      * @param item specifies the item to expand.
      * @param emitSignal specifies whether the signal @ref #expanded should be emitted.
      */
-    virtual void expandSubTree(KTreeViewItem* item, bool emitSignal);
-  void fixChildren(KTreeViewItem *parentItem);
+    virtual void expandSubTree(QListViewItem* item, bool emitSignal);
+  void fixChildren(QListViewItem *parentItem);
   virtual void focusInEvent(QFocusEvent *e);
 
     /** internal function used to determine maximum item width */
-    static bool getMaxItemWidth(KTreeViewItem* item, void *user);
+    static bool getMaxItemWidth(QListViewItem* item, void *user);
 
     /**
      * @param specifies a tree item of this tree
      * @return the total indentation of the specified item, in pixels
      */
-    virtual int indentation(KTreeViewItem* item) const;
+    virtual int indentation(QListViewItem* item) const;
 
     /**
      * Inserts a new item before or after a reference item. (That is, the
      * new item will become a sibling of the reference item.) If the
      * reference item is 0, the new item is appended at the topmost level.
      * If the reference item is not 0, it must be an item that is already
-     * in this KTreeView. Internal data is updated and the display is
+     * in this QListView. Internal data is updated and the display is
      * refreshed as necessary. The inserted item may still be invisible if
      * any of the parents is collapsed.
      * 
@@ -951,7 +975,7 @@ protected:
      * otherwise false.
      * @see #insertItem
      */
-    bool insertItem(KTreeViewItem* referenceItem, KTreeViewItem* newItem,
+    bool insertItem(QListViewItem* referenceItem, QListViewItem* newItem,
 		    bool prefix);
 
     /**
@@ -964,45 +988,45 @@ protected:
      * @see #itemRow
      * @see #itemAt
      */
-    void itemPath(KTreeViewItem* item, KPath& path) const;
+    void itemPath(QListViewItem* item, KPath& path) const;
 
-  void join(KTreeViewItem *item);
+  void join(QListViewItem *item);
   virtual void keyPressEvent(QKeyEvent *e);
-    int level(KTreeViewItem* item) const;
-  void lowerItem(KTreeViewItem *item);
+    int level(QListViewItem* item) const;
+  void lowerItem(QListViewItem *item);
   virtual void mouseDoubleClickEvent(QMouseEvent *e);
   virtual void mouseMoveEvent(QMouseEvent *e);
   virtual void mousePressEvent(QMouseEvent *e);
   virtual void mouseReleaseEvent(QMouseEvent *e);
   virtual void paintCell(QPainter *p, int row, int col);
     /*
-     * virtual void paintItem(QPainter *p, KTreeViewItem *item, 
+     * virtual void paintItem(QPainter *p, QListViewItem *item, 
 			      * bool highlighted);
      */
     /**
      * Internal. Needed to make kcontrol's color setup work.
      */
     void paletteChange(const QPalette&);
-    void raiseItem(KTreeViewItem* item);
+    void raiseItem(QListViewItem* item);
 
     /**
      * Internal function that finds the item at the given path. Returns 0
      * if the item cannot be found. The path is destroyed by this function.
      */
-    KTreeViewItem* recursiveFind(KPath& path);
+    QListViewItem* recursiveFind(KPath& path);
 
-    void setItemExpanded(KTreeViewItem* item);
-    static bool setItemExpandLevel(KTreeViewItem* item, void*);
-    static bool setItemExpandButtonDrawing(KTreeViewItem* item, void*);
-    static bool setItemShowText(KTreeViewItem* item, void*);
-    static bool setItemTreeDrawing(KTreeViewItem* item, void*);
-  void split(KTreeViewItem *item);
-  void takeItem(KTreeViewItem *item);
+    void setItemExpanded(QListViewItem* item);
+    static bool setItemExpandLevel(QListViewItem* item, void*);
+    static bool setItemExpandButtonDrawing(QListViewItem* item, void*);
+    static bool setItemShowText(QListViewItem* item, void*);
+    static bool setItemTreeDrawing(QListViewItem* item, void*);
+  void split(QListViewItem *item);
+  void takeItem(QListViewItem *item);
     virtual void updateCellWidth();
     virtual void updateVisibleItems();
-    void updateVisibleItemRec(KTreeViewItem* parent, int& count, int& width);
+    void updateVisibleItemRec(QListViewItem* parent, int& count, int& width);
 
-    KTreeViewItem* treeRoot;
+    QListViewItem* treeRoot;
     bool clearing;
     int current;
     bool drawExpandButton;
@@ -1014,7 +1038,7 @@ protected:
     bool showText;
     // list of visible items
     int itemCapacity;			/* for how many items we've space allocated */
-    KTreeViewItem** visibleItems;
+    QListViewItem** visibleItems;
 
   // Rainer Bawidamann: move window in "rubberband" mode
   bool rubberband_mode;             // true if in "rubberband_mode"
@@ -1027,4 +1051,5 @@ protected:
   void move_rubberband(const QPoint& where);
 };
 
+#endif // QT_VERSION < 140
 #endif // KDE_KTREE_VIEW_H

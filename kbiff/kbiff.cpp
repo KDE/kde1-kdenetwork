@@ -39,6 +39,8 @@ TRACEINIT("KBiff::KBiff()");
 
 KBiff::~KBiff()
 {
+TRACEINIT("KBiff::~KBiff()");
+	monitorList.clear();
 }
 
 void KBiff::processSetup(const KBiffSetup* setup, bool run)
@@ -474,9 +476,9 @@ TRACEINIT("KBiff::popupMenu()");
 		popup->insertSeparator();
 
 		int check_id;
-		check_id = popup->insertItem(i18n("&Check mail now"), this, SLOT(checkMailNow()));
+		check_id = popup->insertItem(i18n("&Check Mail Now"), this, SLOT(checkMailNow()));
 		int read_id;
-		read_id = popup->insertItem(i18n("&Read Mail now"), this, SLOT(readMailNow()));
+		read_id = popup->insertItem(i18n("&Read Mail Now"), this, SLOT(readMailNow()));
 
 		if (isRunning())
 		{

@@ -46,6 +46,9 @@ KBiffMonitor::KBiffMonitor()
 	  user(""),
 	  password(""),
 	  port(0),
+	  preauth(false),
+	  keepalive(false),
+	  active(false),
 	  mailState(UnknownState),
 	  lastSize(0)
 {
@@ -125,6 +128,11 @@ TRACEINIT("KBiffMonitor::setMailbox()");
 
 		mailbox  = QString(url.path()).right(strlen(url.path()) - 1); 
 		port     = (url.port() > 0) ? url.port() : 143;
+
+		preauth = !strcmp(url.searchPart(), "preauth") ? true : false;
+		keepalive = !strcmp(url.reference(), "keepalive") ? true : false;
+TRACEF("preauth = %d", preauth);
+TRACEF("keepalive = %d", keepalive);
 	}
 
 	if (protocol == "pop3")
@@ -137,6 +145,9 @@ TRACEINIT("KBiffMonitor::setMailbox()");
 		password = url.passwd();
 		mailbox  = url.user();
 		port     = (url.port() > 0) ? url.port() : 110;
+
+		keepalive = !strcmp(url.reference(), "keepalive") ? true : false;
+TRACEF("keepalive = %d", keepalive);
 	}
 
 	if (protocol == "mbox")
@@ -238,7 +249,6 @@ void KBiffMonitor::checkPop()
 {
 TRACEINIT("KBiffMonitor::checkPop()");
 	QString command;
-	KBiffPop pop;
 
 	if(pop.connectSocket(server, port) == false)
 		return;
@@ -267,6 +277,9 @@ TRACEINIT("KBiffMonitor::checkPop()");
 		determineState(pop.getUidlList());
 	else
 		determineState(pop.numberOfMessages());
+	
+	if (keepalive == false)
+		pop.close();
 }
 
 void KBiffMonitor::checkImap()
@@ -274,31 +287,46 @@ void KBiffMonitor::checkImap()
 TRACEINIT("KBiffMonitor::checkImap()");
 	QString command;
 	int seq = 1000;
-	KBiffImap imap;
 
-	if (imap.connectSocket(server, port) == false)
-		return;
+	// connect to the server
+	if (active == false)
+	{
+		if (imap.connectSocket(server, port) == false)
+			return;
+	}
 	
+	// imap allows spaces in usernames... we need to take care of that
 	user = imap.mungeUser(user);
 
-	// if user is null, assume PREAUTH
-	if (user.isEmpty() == false)
+	// if we are preauthorized OR we want to keep the session alive, then
+	// we don't login.  Otherwise, we do.
+	if ((preauth == false) && (active == false))
 	{
 		command = QString().setNum(seq) + " LOGIN " + user + " " + password + "\r\n";
 		if (imap.command(command, seq) == false)
 			return;
 		seq++;
+
+		if (keepalive)
+			active = true;
 	}
 
+	// this will quite nicely get us the number of new messages
 	command = QString().setNum(seq) + " STATUS " + mailbox + " (messages recent)\r\n";
 	if (imap.command(command, seq) == false)
 		return;
 	seq++;
 
-	command = QString().setNum(seq) + " LOGOUT\r\n";
-	if (imap.command(command, seq) == false)
-		return;
+	// lets not logout if we want to keep the session alive
+	if (keepalive == false)
+	{
+		command = QString().setNum(seq) + " LOGOUT\r\n";
+		if (imap.command(command, seq) == false)
+			return;
+		imap.close();
+	}
 
+	// what state are we in?
 	if (imap.numberOfMessages() == 0)
 		determineState(NoMail);
 	else
@@ -650,7 +678,7 @@ KBiffSocket::KBiffSocket() : messages(0), newMessages(-1)
 KBiffSocket::~KBiffSocket()
 {
 TRACEINIT("KBiffSocket::~KBiffSocket()");
-	::close(socketFD);
+	close();
 }
 
 int KBiffSocket::numberOfMessages()
@@ -704,7 +732,10 @@ TRACEINIT("KBiffSocket::connectSocket()");
 	// we're connected!  see if the connection is good
 	QString line(readLine());
 	if ((line.find("OK") == -1) && (line.find("PREAUTH") == -1))
+	{
+		close();
 		return false;
+	}
 
 	// everything is swell
 	return true;
@@ -713,7 +744,7 @@ TRACEINIT("KBiffSocket::connectSocket()");
 int KBiffSocket::writeLine(const QString& line)
 {
 TRACEINIT("KBiffSocket::writeLine()");
-printf("CLIENT> %s", (const char*)line);
+TRACEF("CLIENT> %s", (const char*)line);
 	int bytes;
 
 	if ((bytes = ::write(socketFD, line, line.size()-1)) <= 0)
@@ -730,13 +761,19 @@ TRACEINIT("KBiffSocket::readLine()");
 	while ((::read(socketFD, &buffer, 1) > 0) && (buffer != '\n'))
 		response += buffer;
 
-printf("SERVER> %s\n", (const char*)response);
+TRACEF("SERVER> %s\n", (const char*)response);
 	return response;
 }
 
 ///////////////////////////////////////////////////////////////////////////
 // KBiffImap
 ///////////////////////////////////////////////////////////////////////////
+KBiffImap::~KBiffImap()
+{
+TRACEINIT("KBiffImap::~KBiffImap()");
+	close();
+}
+
 bool KBiffImap::command(const QString& line, unsigned int seq)
 {
 TRACEINIT("KBiffIMap::command()");
@@ -753,9 +790,15 @@ TRACEINIT("KBiffIMap::command()");
 		if (response.find(ok) > -1)
 			return true;
 		if (response.find("BAD") > -1)
+		{
+			close();
 			return false;
+		}
 		if (response.find("NO ") > -1)
+		{
+			close();
 			return false;
+		}
 
 		// check the number of messages
 		QRegExp messages_re("MESSAGES [0-9]*");
@@ -768,6 +811,7 @@ TRACEINIT("KBiffIMap::command()");
 			newMessages = response.mid(match + 7, len - 7).toInt();
 	}
 
+	close();
 	return false;
 }
 
@@ -794,11 +838,15 @@ TRACEF("new_user = %s", new_user.data());
 ///////////////////////////////////////////////////////////////////////////
 // KBiffPop
 ///////////////////////////////////////////////////////////////////////////
+KBiffPop::~KBiffPop()
+{
+TRACEINIT("KBiffPop::~KBiffPop()");
+	close();
+}
+
 bool KBiffPop::command(const QString& line)
 {
 TRACEINIT("KBiffPop::command()");
-	int len;
-
 	if (writeLine(line) <= 0)
 		return false;
 
@@ -807,7 +855,10 @@ TRACEINIT("KBiffPop::command()");
 
 	// check if the response was bad.  if so, return now
 	if (response.left(4) == "-ERR")
+	{
+		close();
 		return false;
+	}
 
 	// if the command was UIDL then build up the newUidlList
 	if (line == "UIDL\r\n")

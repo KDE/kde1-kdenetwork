@@ -1,3 +1,10 @@
+10-13-98 - Kurt Granroth
+   o Hideously mangled KTreeView to look exactly like QListView... at least
+	  as far as kbiff is concerned.  It is *very* ugly.. but it works!  And
+	  the cool thing is when I decide to go with QListView (the real one)
+	  exclusively, well, I just have to nuke ktreeview.[cpp|h] and remove
+	  a few #ifs.
+
 10-10-98 - Kurt Granroth
    o Replaced QListView with KTreeView.  QListView isn't cool enough to
 	  require all kbiff users to upgrade to Qt 1.40.  Maybe after KDE 1.2

@@ -14,7 +14,7 @@
 #include <qlayout.h>
 #include <qlabel.h>
 #include <qpixmap.h>
-#include <qpushbutton.h>
+#include <qpushbt.h>
 
 #include <kiconloaderdialog.h>
 #include <kapp.h>

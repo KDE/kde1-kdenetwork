@@ -9,31 +9,47 @@
  */
 #include "setupdlg.h"
 
+//#include "convert.h"
+
 #include "Trace.h"
+
+#if QT_VERSION < 140
+#include <qgrpbox.h>
+#include <qfileinf.h>
+#include <qmsgbox.h>
+#include <qlined.h>
+#include <qchkbox.h>
+#include <qpushbt.h>
+#include <qcombo.h>
+#else
+#include <qgroupbox.h>
+#include <qfileinfo.h>
+#include <qmessagebox.h>
+#include <qlineedit.h>
+#include <qcheckbox.h>
+#include <qpushbutton.h>
+#include <qcombobox.h>
+#include <qheader.h>
+#endif // QT_VERSION < 140
 
 #include <qpixmap.h>
 #include <qfont.h>
 #include <qlabel.h>
-#include <qgroupbox.h>
-#include <qfileinfo.h>
 #include <qstrlist.h>
 #include <qlayout.h>
-#include <qmessagebox.h>
+#include <qtooltip.h>
+#include <qdict.h>
+#include <qlist.h>
 
+#include <kfiledialog.h>
 #include <kapp.h>
 #include <ktabctl.h>
 #include <ksimpleconfig.h>
+#include <kurllabel.h>
+#include <kfm.h>
+#include <kprocess.h>
 
-#include <ktreeview.h> // KBiffMailboxtab
-#include <qtooltip.h>  // KBiffMailboxTab
-
-#include <kfiledialog.h> // KBiffNewMailTab
-
-#include <kurllabel.h> // KBiffAboutTab
-#include <kfm.h>       // KBiffAboutTab
-#include <kprocess.h>  // KBiffAboutTab
-#include <stdlib.h>    // KBiffAboutTab
-
+#include <stdlib.h>
 #include <unistd.h>
 #include <pwd.h>
 #include <sys/types.h>
@@ -163,6 +179,9 @@ TRACEINIT("KBiffSetup::KBiffSetup()");
 	// are we secure
 	isSecure = secure;
 
+	profile_layout->activate();
+	main_layout->activate();
+
 	readConfig(profile);
 }
 
@@ -268,6 +287,10 @@ void KBiffSetup::readConfig(const char* profile)
 	KSimpleConfig *config = new KSimpleConfig(CONFIG_FILE);
 
 	config->setGroup("General");
+
+	// see if we have the new mailboxes
+//	ConvertWizard *wizard = new ConvertWizard;
+//	wizard->exec();
 
 	// read in the mailboxes
 	int number_of_mailboxes = config->readListEntry("Profiles", profile_list);
@@ -804,6 +827,7 @@ void KBiffNewMailTab::enablePlaySound(bool enable)
 
 void KBiffNewMailTab::browseRunCommand()
 {
+TRACEINIT("KBiffNewMailTab::browseRunCommand()");
 	QString command_path = KFileDialog::getOpenFileName();
 	if (!command_path.isEmpty() && !command_path.isNull())
 	{
@@ -813,6 +837,7 @@ void KBiffNewMailTab::browseRunCommand()
 
 void KBiffNewMailTab::browsePlaySound()
 {
+TRACEINIT("KBiffNewMailTab::browsePlaySound()");
 	QString sound_path = KFileDialog::getOpenFileName();
 	if (!sound_path.isEmpty() && !sound_path.isNull())
 	{
@@ -826,9 +851,10 @@ void KBiffNewMailTab::browsePlaySound()
 KBiffMailboxAdvanced::KBiffMailboxAdvanced()
 	: QDialog(0, 0, true, 0)
 {
+TRACEINIT("KBiffMailboxAdvanced::KBiffMailboxAdvanced()");
 	setCaption(i18n("Advanced Options"));
 
-	QGridLayout *layout = new QGridLayout(this, 4, 3, 12, 5);
+	QGridLayout *layout = new QGridLayout(this, 5, 3, 12, 5);
 
 	QLabel *mailbox_label = new QLabel(i18n("Mailbox URL:"), this);
 	mailbox_label->setMinimumSize(mailbox_label->sizeHint());
@@ -843,6 +869,15 @@ KBiffMailboxAdvanced::KBiffMailboxAdvanced()
 	preauth->setEnabled(false);
 	layout->addWidget(preauth, 2, 1);
 
+	connect(preauth, SIGNAL(toggled(bool)), SLOT(preauthModified(bool)));
+
+	keepalive = new QCheckBox(i18n("Keep Alive"), this);
+	keepalive->setMinimumSize(keepalive->sizeHint());
+	keepalive->setEnabled(false);
+	layout->addWidget(keepalive, 3, 1);
+
+	connect(keepalive, SIGNAL(toggled(bool)), SLOT(keepaliveModified(bool)));
+
 	mailbox = new QLineEdit(this);
 	mailbox->setMinimumHeight(25);
 	layout->addMultiCellWidget(mailbox, 0, 0, 1, 2);
@@ -855,7 +890,7 @@ KBiffMailboxAdvanced::KBiffMailboxAdvanced()
 	              SLOT(portModified(const char*)));
 
 	QBoxLayout *button_layout = new QBoxLayout(QBoxLayout::LeftToRight, 12);
-	layout->addLayout(button_layout, 3, 2);
+	layout->addLayout(button_layout, 4, 2);
 
 	QPushButton *ok = new QPushButton(i18n("OK"), this);
 	ok->setMinimumSize(ok->sizeHint());
@@ -867,10 +902,14 @@ KBiffMailboxAdvanced::KBiffMailboxAdvanced()
 	cancel->setMinimumSize(cancel->sizeHint());
 	button_layout->addWidget(cancel);
 	connect(cancel, SIGNAL(clicked()), SLOT(reject()));
+
+	layout->activate();
+	resize(sizeHint());
 }
 
 KBiffMailboxAdvanced::~KBiffMailboxAdvanced()
 {
+TRACEINIT("KBiffMailboxAdvanced::~KBiffMailboxAdvanced()");
 }
 
 const KURL KBiffMailboxAdvanced::getMailbox() const
@@ -906,10 +945,37 @@ void KBiffMailboxAdvanced::portModified(const char *text)
 	setMailbox(url);
 }
 
+void KBiffMailboxAdvanced::preauthModified(bool is_preauth)
+{
+TRACEINIT("KBiffMailboxAdvanced::preauthModified()");
+	KURL url = getMailbox();
+	if (is_preauth)
+		url.setSearchPart("preauth");
+	else
+		url.setSearchPart("");
+TRACEF("url = %s", url.url().data());
+	setMailbox(url);
+}
+
+void KBiffMailboxAdvanced::keepaliveModified(bool is_keepalive)
+{
+	KURL url = getMailbox();
+	if (is_keepalive)
+		url.setReference("keepalive");
+	else
+		url.setReference("");
+	setMailbox(url);
+}
 void KBiffMailboxAdvanced::setPreauth(bool on)
 {
 	preauth->setEnabled(true);
 	preauth->setChecked(on);
+}
+
+void KBiffMailboxAdvanced::setKeepalive(bool on)
+{
+	keepalive->setEnabled(true);
+	keepalive->setChecked(on);
 }
 
 bool KBiffMailboxAdvanced::getPreauth() const
@@ -929,14 +995,16 @@ TRACEINIT("KBiffMailboxTab::KBiffMailboxTab()");
 	QGridLayout *list_layout = new QGridLayout(2, 2);
 	top_layout->addLayout(list_layout);
 
-	mailboxes = new KTreeView(this);
-	mailboxes->setIndentSpacing(0);
-
+	mailboxes = new QListView(this);
+	mailboxes->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+	mailboxes->addColumn(i18n("Mailbox:"));
+	mailboxes->header()->hide();
+TRACE("Set mailboxes");
 	list_layout->addMultiCellWidget(mailboxes, 0, 0, 0, 1);
 	list_layout->setRowStretch(0, 1);
 
-	connect(mailboxes, SIGNAL(highlighted(int)),
-	                   SLOT(slotMailboxSelected(int)));
+	connect(mailboxes, SIGNAL(selectionChanged(QListViewItem *)),
+	                   SLOT(slotMailboxSelected(QListViewItem *)));
 
 	QPushButton *new_mailbox = new QPushButton(this);
 	new_mailbox->setPixmap(ICON("mailbox.xpm"));
@@ -1069,8 +1137,8 @@ TRACE("After clears");
 				mailbox->url.setPassword(password.data());
 			}
 
-			KTreeViewItem *item = new KTreeViewItem(key, QPixmap(ICON("mailbox.xpm")));
-			mailboxes->insertItem(item);
+			QListViewItem *item = new QListViewItem(mailboxes, key);
+			item->setPixmap(0, QPixmap(ICON("mailbox.xpm")));
 
 			mailboxHash->insert(key.data(), mailbox);
 		}
@@ -1082,11 +1150,11 @@ TRACE("After clears");
 		mailbox->url = defaultMailbox();
 		mailboxHash->insert("Default", mailbox);
 
-		KTreeViewItem *item = new KTreeViewItem(i18n("Default"), QPixmap(ICON("mailbox.xpm")));
-		mailboxes->insertItem(item);
+		QListViewItem *item = new QListViewItem(mailboxes, i18n("Default"));
+		item->setPixmap(0, QPixmap(ICON("mailbox.xpm")));
 	}
 
-	mailboxes->setCurrentItem(0);
+	mailboxes->setSelected(mailboxes->firstChild(), true);
 	delete config;
 }
 
@@ -1100,23 +1168,24 @@ TRACEINIT("KBiffMailboxTab::saveConfig()");
 
 	QStrList mailbox_list;
 
-	for (KTreeViewItem *item = mailboxes->itemAt(0);
+	for (QListViewItem *item = mailboxes->firstChild();
 	     item;
-		  item = item->getSibling())
+		  item = item->nextSibling())
 	{
 		KBiffMailbox *mailbox = new KBiffMailbox();
+		QString item_text(item->text(0));
 
 		// if this mailbox is the current one, then use the current
 		// settings instead of the hash
-		if (item == mailboxes->getCurrentItem())
+		if (item == mailboxes->currentItem())
 		{
 			mailbox->store = checkStorePassword->isChecked();
 			mailbox->url   = getMailbox();
 
-			mailboxHash->replace(item->getText(), mailbox);
+			mailboxHash->replace(item_text, mailbox);
 		}
 
-		mailbox = mailboxHash->find(item->getText());
+		mailbox = mailboxHash->find(item_text);
 
 		QString password(scramble(mailbox->url.passwd()));
 		KURL url = mailbox->url;
@@ -1125,8 +1194,8 @@ TRACEINIT("KBiffMailboxTab::saveConfig()");
 		if (mailbox->store == false)
 			password = "";
 	
-TRACEF("mailbox: %s -> %s", item->getText().data(), url.url().data());
-		mailbox_list.append(item->getText());
+TRACEF("mailbox: %s -> %s", item_text.data(), url.url().data());
+		mailbox_list.append(item_text);
 		mailbox_list.append(url.url());
 		mailbox_list.append(password);
 	}
@@ -1137,7 +1206,7 @@ TRACEF("mailbox: %s -> %s", item->getText().data(), url.url().data());
 
 void KBiffMailboxTab::setMailbox(const KURL& url)
 {
-TRACEINIT("KBiffMailboxTab::setMailbox()");
+TRACEINIT("KBiff()");
 	QString prot(url.protocol());
 
 	if (prot == "mbox")
@@ -1157,7 +1226,8 @@ TRACEINIT("KBiffMailboxTab::setMailbox()");
 	{
 		QString path(url.path());
 		if (prot == "imap4" && !path.isEmpty() && path[0] == '/')
-			path.remove(0, 1);
+				path.remove(0, 1);
+
 		editMailbox->setText(path);
 	}
 
@@ -1169,6 +1239,9 @@ TRACEINIT("KBiffMailboxTab::setMailbox()");
 		editUser->setText(url.user());
 	if (editPassword->isEnabled())
 		editPassword->setText(url.passwd());
+
+	preauth = !strcmp(url.searchPart(), "preauth") ? true : false;
+	keepalive = !strcmp(url.reference(), "keepalive") ? true : false;
 }
 
 const KURL KBiffMailboxTab::getMailbox() const
@@ -1195,6 +1268,13 @@ const KURL KBiffMailboxTab::getMailbox() const
 			path.prepend("/");
 		url.setPath(path);
 	}
+
+	if (preauth)
+		url.setSearchPart("preauth");
+
+	if (keepalive)
+		url.setReference("keepalive");
+
 	return url;
 }
 
@@ -1203,11 +1283,11 @@ const QList<KURL> KBiffMailboxTab::getMailboxList() const
 TRACEINIT("KBiffMailboxTab::getMailboxList()");	
 	QList<KURL> url_list;
 
-	for (KTreeViewItem *item = mailboxes->itemAt(0);
+	for (QListViewItem *item = mailboxes->firstChild();
 	     item;
-		  item = item->getSibling())
+		  item = item->nextSibling())
 	{
-		KBiffMailbox *mailbox = mailboxHash->find(item->getText());
+		KBiffMailbox *mailbox = mailboxHash->find(item->text(0));
 		KURL *url = new KURL(mailbox->url);
 		url_list.append(url);
 	}
@@ -1217,16 +1297,21 @@ TRACEINIT("KBiffMailboxTab::getMailboxList()");
 void KBiffMailboxTab::slotDeleteMailbox()
 {
 TRACEINIT("KBiffMailboxTab::slotDeleteMailbox()");
-	if (mailboxes->count() == 1)
+	/* I can't believe QListView doesn't have a 'count' member! */
+	int count = 0;
+	for (QListViewItem *it = mailboxes->firstChild();
+	     it;
+		  it = it->nextSibling(), count++);
+	if (count == 1)
 		return;
 
 	/* need some "Are you sure?" code here */
-	KTreeViewItem *item = mailboxes->getCurrentItem();
+	QListViewItem *item = mailboxes->currentItem();
 
-	mailboxHash->remove(item->getText());
+	mailboxHash->remove(item->text(0));
 	delete item;
 
-	mailboxes->setCurrentItem(0);
+	mailboxes->setSelected(mailboxes->firstChild(), true);
 }
 
 void KBiffMailboxTab::slotNewMailbox()
@@ -1243,30 +1328,28 @@ TRACEINIT("KBiffMailboxTab::slotNewMailbox()");
 		// continue only if we received a decent name
 		if (mailbox_name.isEmpty() == false)
 		{
-			KTreeViewItem *item = new KTreeViewItem(mailbox_name, QPixmap(ICON("mailbox.xpm")));
-			mailboxes->insertItem(item);
+			QListViewItem *item = new QListViewItem(mailboxes, mailbox_name);
+			item->setPixmap(0, QPixmap(ICON("mailbox.xpm")));
 
 			KBiffMailbox *mailbox = new KBiffMailbox();
 			mailbox->store = false;
 			mailbox->url   = defaultMailbox();
 
 			mailboxHash->insert(mailbox_name.data(), mailbox);
-			mailboxes->setCurrentItem(mailboxes->count()-1);
+			mailboxes->setSelected(item, true);
 		}
 	}
 }
 
-//void KBiffMailboxTab::slotMailboxSelected(QListViewItem *item)
-void KBiffMailboxTab::slotMailboxSelected(int index)
+void KBiffMailboxTab::slotMailboxSelected(QListViewItem *item)
 {
 TRACEINIT("KBiffMailboxTab::slotMailboxSelected()");
-	KTreeViewItem *item = mailboxes->itemAt(index);
-
 	KBiffMailbox *mailbox;
+
 	// if an "old" item exists, save the current info as it
-	if (oldItem && oldItem->getText())
+	if (oldItem && oldItem->text(0))
 	{
-		mailbox = mailboxHash->find(oldItem->getText());
+		mailbox = mailboxHash->find(oldItem->text(0));
 
 		if (mailbox)
 		{
@@ -1281,7 +1364,7 @@ TRACEINIT("KBiffMailboxTab::slotMailboxSelected()");
 		}
 	}
 
-	mailbox = mailboxHash->find(item->getText());
+	mailbox = mailboxHash->find(item->text(0));
 
 	if (mailbox)
 	{
@@ -1316,16 +1399,8 @@ TRACEINIT("KBiffMailboxTab::protocolSelected()");
 			editMailbox->setEnabled(true);
 			buttonBrowse->setEnabled(false);
 			editServer->setEnabled(true);
-			if (preauth)
-			{
-				editUser->setEnabled(false);
-				editPassword->setEnabled(false);
-			}
-			else
-			{
-				editUser->setEnabled(true);
-				editPassword->setEnabled(true);
-			}
+			editUser->setEnabled(true);
+			editPassword->setEnabled(true);
 			checkStorePassword->setEnabled(true);
 			break;
 		case 4: // POP3
@@ -1369,13 +1444,18 @@ void KBiffMailboxTab::advanced()
 		advanced_dlg.setPort(port);
 
 	if (prot == "imap4")
+	{
 		advanced_dlg.setPreauth(preauth);
+		advanced_dlg.setKeepalive(keepalive);
+	}
+
+	if (prot == "pop3")
+		advanced_dlg.setKeepalive(keepalive);
 
 	advanced_dlg.setMailbox(getMailbox());
 	if (advanced_dlg.exec())
 	{
 		port = advanced_dlg.getPort();
-		preauth = advanced_dlg.getPreauth();
 		setMailbox(advanced_dlg.getMailbox());
 	}
 }
@@ -1449,7 +1529,7 @@ TRACEINIT("KBiffAboutTab::KBiffAboutTab()");
 	QLabel *version = new QLabel(this);
 	version->setFont(QFont("helvetica", 12));
 	QString ver_str;
-	ver_str.sprintf(i18n("Version %s\n\nCopyright (C) 1998\nKurt Granroth"), "1.1.3");
+	ver_str.sprintf(i18n("Version %s\n\nCopyright (C) 1998\nKurt Granroth"), "1.1.5");
 	version->setText(ver_str);
 	version->setAutoResize(true);
 	version->move(x, y);
