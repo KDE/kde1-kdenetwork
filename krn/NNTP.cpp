@@ -281,6 +281,7 @@ int NNTP::setMode (char *mode)
 
 int NNTP::listXover(int from,int to)
 {
+    reportCounters (true,false);
     from=from >? first;
     to=to <? last;
     if (to)
@@ -378,6 +379,7 @@ int NNTP::listXover(int from,int to)
             warning ("Server said %s",StatusResponse().data());
         }
     }
+    resetCounters (true,true);
     return mReplyCode;
 }
 
