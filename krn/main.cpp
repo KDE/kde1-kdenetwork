@@ -36,6 +36,7 @@
 #include "NNTP.h"
 #include "kdecode.h"
 #include "kmsender.h"
+#include "krnsender.h"
 #include "kmidentity.h"
 #include "kbusyptr.h"
 #include "kmmessage.h"
@@ -101,7 +102,7 @@ int main( int argc, char **argv )
     nls=a.getLocale();
     keys = new KStdAccel(conf);
     kbp=new KBusyPtr();
-    msgSender=new KMSender();
+    msgSender=new KRNSender();
     msgSender->setMethod(KMSender::smSMTP);
     KMMessage::readConfig();
 

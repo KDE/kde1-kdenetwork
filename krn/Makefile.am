@@ -27,7 +27,8 @@ BUILTSOURCES =	groupdlg.moc \
                 kbusyptr.moc\
                 kalarmtimer.moc\
                 kmreaderwin.moc\
-                kpgp.moc
+                kpgp.moc\
+                krnsender.moc
 
 DISTCLEANFILES = $(BUILTSOURCES)
 
@@ -69,7 +70,8 @@ krn_SOURCES = 	main.cpp\
                 kbusyptr.cpp\
                 kalarmtimer.cpp\
                 kmreaderwin.cpp\
-                kpgp.cpp
+                kpgp.cpp\
+                krnsender.cpp
 
 
 noinst_HEADERS = 	NNTP.h\
@@ -107,7 +109,8 @@ noinst_HEADERS = 	NNTP.h\
                 kbusyptr.h\
                 kalarmtimer.h\
                 kmreaderwin.h\
-                kpgp.h
+                kpgp.h\
+                krnsender.h
 
 SUBDIRS = docs pics
 
@@ -202,3 +205,7 @@ kmreaderwin.moc: kmreaderwin.h
 kpgp.cpp:kpgp.moc
 kpgp.moc: kpgp.h
 	$(MOC) kpgp.h -o kpgp.moc
+
+krnsender.cpp:krnsender.moc
+krnsender.moc: krnsender.h
+	$(MOC) krnsender.h -o krnsender.moc
