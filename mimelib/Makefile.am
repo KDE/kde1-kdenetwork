@@ -100,6 +100,6 @@ uninstall-local:
 	rm -f $(includedir)/mimelib/$$p; \
 	done
 
-libmimelib_la_LDFLAGS = -version-info 0:2 -rpath $(libdir)
+libmimelib_la_LDFLAGS = -version-info 0:2
 
 
