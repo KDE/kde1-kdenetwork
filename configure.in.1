@@ -154,7 +154,7 @@ rm -r conftest.*
 
 AC_MSG_CHECKING(for static KDE libraries)
 if test -r "$ac_kde_libraries/libkdeui.a"; then
-  static_libkde="$ac_kde_libraries/libkdeui.a $ac_kde_libraries/libkdecore.a"
+  static_libkde="$ac_kde_libraries/libkdeui.a $ac_kde_libraries/libkdecore.a $ac_kde_libraries/libkfile.a $ac_kde_libraries/libkfm.a"
   AC_MSG_RESULT(found)
   AC_SUBST(static_libkde)
 else
