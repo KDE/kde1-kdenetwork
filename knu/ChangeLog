@@ -1,4 +1,10 @@
-Tue Jun  9 21:06:15 1998  Bertrand Leconte  <leconteb@arthur.tou.hol.fr>
+1998-10-09  Bertrand Leconte  <leconteb@arthur.tlse.club-internet.fr>
+
+	* CommandDlg.cpp (resetWaitCursor): added function to allow derivation.
+	replaced ibeam by arrowCursor
+	(installWaitCursor): added function
+
+Tue Jun  9 21:06:15 1998  Bertrand Leconte  <leconteb@arthur>
 
 	* HostDlg.cpp (buildCommandLine): arguments added to exec line 
 

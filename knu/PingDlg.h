@@ -24,6 +24,10 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.4  1998/03/01 19:30:18  leconte
+ * - added a finger tab
+ * - internal mods
+ *
  * Revision 1.3  1997/12/07 23:44:24  leconte
  * - handle the binary's name modification dynamicaly (problem reported
  *   by Conrad Sanderson)
@@ -67,5 +71,54 @@ protected:
   // layout
   QBoxLayout  *layout3;
 };
+
+
+
+#ifdef PING_CONFIG
+class PingCfgDlg: public CommandCfgDlg
+{
+  // Q_OBJECT
+
+public:
+  PingCfgDlg(const char *tcs, 
+	     QWidget* parent = NULL, const char* name = NULL);
+  virtual  ~PingDlgCfg();
+
+  /**
+   *
+   */
+  virtual QWidget *makeWidget(QWidget* parent, bool makeLayouts = TRUE);
+  virtual void deleteConfigWidget();
+
+  /**
+   * commit changes to the configfile
+   * 
+   * @return if the change have been done
+   * @see cancelChanges
+   */
+  virtual bool commitChanges();
+  
+  /**
+   * cancel changes to the configfile
+   *
+   * @see commitChanges
+   */
+  virtual void cancelChanges();
+
+  /**
+   * This is called just before the OptionDlg is shown
+   */
+  void readConfig();
+
+protected:
+
+  // The configWidget
+  QButtonGroup *cfgBG;
+  QRadioButton *cfgHostBtn, *cfgNslookupBtn;
+  QBoxLayout   *cfgLayout2;
+};
+
+#endif  // PING_CONFIG
+
 #endif // __PingDlg_h__
 

@@ -1,0 +1,341 @@
+diff -PC 2 mtr-0.21-orig/Makefile.am mtr-0.21/Makefile.am
+*** mtr-0.21-orig/Makefile.am	Tue May 12 00:30:23 1998
+--- mtr-0.21/Makefile.am	Fri Jun 12 22:01:02 1998
+***************
+*** 9,12 ****
+--- 9,13 ----
+                net.c net.h \
+                dns.c dns.h \
++               raw.c raw.h \
+                display.c display.h \
+                report.c report.h \
+diff -PC 2 mtr-0.21-orig/Makefile.in mtr-0.21/Makefile.in
+*** mtr-0.21-orig/Makefile.in	Tue May 12 02:33:29 1998
+--- mtr-0.21/Makefile.in	Wed Oct 14 19:56:29 1998
+***************
+*** 74,77 ****
+--- 74,78 ----
+                net.c net.h \
+                dns.c dns.h \
++               raw.c raw.h \
+                display.c display.h \
+                report.c report.h \
+***************
+*** 97,101 ****
+  LDFLAGS = @LDFLAGS@
+  LIBS = @LIBS@
+! mtr_OBJECTS =  mtr.o net.o dns.o display.o report.o getopt.o getopt1.o \
+  select.o
+  mtr_LDADD = $(LDADD)
+--- 98,102 ----
+  LDFLAGS = @LDFLAGS@
+  LIBS = @LIBS@
+! mtr_OBJECTS =  mtr.o net.o dns.o raw.o display.o report.o getopt.o getopt1.o \
+  select.o
+  mtr_LDADD = $(LDADD)
+***************
+*** 336,339 ****
+--- 337,341 ----
+  	mtr-gtk.h report.h select.h
+  dns.o dns.lo: dns.c config.h
++ raw.o raw.lo: raw.c display.h net.h dns.h raw.h
+  getopt.o getopt.lo: getopt.c config.h
+  getopt1.o getopt1.lo: getopt1.c config.h getopt.h
+diff -PC 2 mtr-0.21-orig/display.c mtr-0.21/display.c
+*** mtr-0.21-orig/display.c	Sun May 10 23:14:25 1998
+--- mtr-0.21/display.c	Fri Jun 12 22:00:31 1998
+***************
+*** 53,56 ****
+--- 53,60 ----
+  #endif
+  
++   case DisplayRaw:            /* BL */
++     raw_open();
++     break;
++ 
+  #ifndef NO_GTK
+    case DisplayGTK:
+***************
+*** 73,76 ****
+--- 77,84 ----
+  #endif
+  
++   case DisplayRaw:            /* BL */
++     raw_close();
++     break;
++     
+  #ifndef NO_GTK
+    case DisplayGTK:
+***************
+*** 89,92 ****
+--- 97,104 ----
+  #endif
+  
++   case DisplayRaw:            /* BL */
++     raw_redraw();
++     break;
++ 
+  #ifndef NO_GTK
+    case DisplayGTK:
+***************
+*** 104,107 ****
+--- 116,122 ----
+  #endif
+  
++   case DisplayRaw:		/* BL */
++     return raw_keyaction();
++ 
+  #ifndef NO_GTK
+    case DisplayGTK:
+***************
+*** 115,118 ****
+--- 130,134 ----
+    switch(DisplayMode) {
+    case DisplayCurses:
++   case DisplayRaw:            /* BL */
+    case DisplayReport:
+      select_loop();
+diff -PC 2 mtr-0.21-orig/display.h mtr-0.21/display.h
+*** mtr-0.21-orig/display.h	Sun May 10 23:12:49 1998
+--- mtr-0.21/display.h	Fri Jun 12 21:57:42 1998
+***************
+*** 19,23 ****
+  
+  enum { ActionNone, ActionQuit, ActionReset };
+! enum { DisplayReport, DisplayCurses, DisplayGTK };
+  
+  /*  Prototypes for display.c  */
+--- 19,23 ----
+  
+  enum { ActionNone, ActionQuit, ActionReset };
+! enum { DisplayReport, DisplayCurses, DisplayGTK, DisplayRaw };
+  
+  /*  Prototypes for display.c  */
+Common subdirectories: mtr-0.21-orig/img and mtr-0.21/img
+diff -PC 2 mtr-0.21-orig/mtr.c mtr-0.21/mtr.c
+*** mtr-0.21-orig/mtr.c	Tue May 12 00:33:02 1998
+--- mtr-0.21/mtr.c	Fri Jun 12 21:56:36 1998
+***************
+*** 49,52 ****
+--- 49,53 ----
+      { "gtk", 0, 0, 'g' },
+      { "interval", 1, 0, 'i' },
++     { "raw", 0, 0, 'k' },     /* BL */
+      { 0, 0, 0, 0 }
+    };
+***************
+*** 54,58 ****
+    opt = 0;
+    while(1) {
+!     opt = getopt_long(argc, argv, "hvrc:tli:", long_options, NULL);
+      if(opt == -1)
+        break;
+--- 55,59 ----
+    opt = 0;
+    while(1) {
+!     opt = getopt_long(argc, argv, "hvrc:tkli:", long_options, NULL);
+      if(opt == -1)
+        break;
+***************
+*** 77,80 ****
+--- 78,84 ----
+        DisplayMode = DisplayGTK;
+        break;
++     case 'k':                 /* BL */
++       DisplayMode = DisplayRaw;
++       break;
+      case 'i':
+        WaitTime = atof(optarg);
+***************
+*** 130,133 ****
+--- 134,138 ----
+      printf("usage: %s [-hvrctli] [--help] [--version] [--report]\n"
+  	   "\t\t[--report-cycles=COUNT] [--curses] [--gtk]\n"
++            "\t\t[--raw]\n"      /* BL */
+  	   "\t\t[--interval=SECONDS] HOSTNAME\n", argv[0]);
+      exit(0);
+diff -PC 2 mtr-0.21-orig/raw.c mtr-0.21/raw.c
+*** mtr-0.21-orig/raw.c	Thu Jan  1 01:00:00 1970
+--- mtr-0.21/raw.c	Sun Oct  4 20:37:55 1998
+***************
+*** 0 ****
+--- 1,146 ----
++ /*
++     mtr  --  a network diagnostic tool
++     Copyright (C) 1997  Matt Kimball
++ 
++     raw.c -- raw output (for inclusion in KDE Network Utilities or others
++                          GUI based tools)
++     Copyright (C) 1998  Bertrand Leconte <B.Leconte@mail.dotcom.fr>
++ 
++     This program is free software; you can redistribute it and/or modify
++     it under the terms of the GNU General Public License as published by
++     the Free Software Foundation; either version 2 of the License, or
++     (at your option) any later version.
++ 
++     This program is distributed in the hope that it will be useful,
++     but WITHOUT ANY WARRANTY; without even the implied warranty of
++     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++     GNU General Public License for more details.
++ 
++     You should have received a copy of the GNU General Public License
++     along with this program; if not, write to the Free Software
++     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
++ */
++ 
++ #include <ctype.h>
++ #include <stdlib.h>
++ #include <stdio.h>
++ 
++ /*#include "mtr-version.h"*/
++ #include "display.h"
++ #include "net.h"
++ #include "dns.h"
++ #include "raw.h"
++ 
++ extern char *Hostname;
++ extern int WaitTime;
++ 
++ /* There is 256 hops max in the IP header (coded with a byte) */
++ #define MAX_LINE_COUNT 256
++ #define MAX_LINE_SIZE  256
++ 
++ char Lines[MAX_LINE_COUNT][MAX_LINE_SIZE];
++ int  LineCount;
++ 
++ 
++ #define DEBUG 0
++ 
++ void 
++ raw_redraw() {
++   int   max;
++   int   at;
++   int   addr;
++   char *name;
++   char  newLine[MAX_LINE_SIZE];
++   int   i;
++ 
++ #if DEBUG
++   fprintf(stderr, "raw_redraw()\n"); 
++ #endif
++ 
++   /* 
++    * If there is less lines than last time, we delete them
++    * TEST THIS PLEASE
++    */
++   max = net_max();
++   for (i=LineCount; i>max; i--) {
++     printf("-%d\n", i);
++     LineCount--;
++   }
++ 
++   /*
++    * For each line, we compute the new one and we compare it to the old one
++    */
++   for(at = 0; at < max; at++) {
++     addr = net_addr(at);
++     
++     if(addr != 0) {
++       name = dns_lookup(addr);
++       if(name != NULL) {
++ 	/* May be we should test name's length */
++ 	sprintf(newLine, "%s %d %d %d %d %d %d", name,
++ 	       net_percent(at),
++ 	       net_returned(at), net_xmit(at),
++ 	       net_best(at), net_avg(at), net_worst(at));
++       } else {
++ 	sprintf(newLine, "%d.%d.%d.%d %d %d %d %d %d %d", 
++ 	       (addr >> 24) & 0xff, (addr >> 16) & 0xff, 
++ 	       (addr >> 8) & 0xff, addr & 0xff,
++ 	       net_percent(at),
++ 	       net_returned(at), net_xmit(at),
++ 	       net_best(at), net_avg(at), net_worst(at));
++       }
++     } else {
++       sprintf(newLine, "???");
++     }
++ 
++     if (strcmp(newLine, Lines[at]) == 0) {
++       /* The same, so do nothing */
++ #if DEBUG
++       printf("SAME LINE\n");
++ #endif
++     } else {
++       printf("%d %s\n", at+1, newLine);
++       fflush(stdout);
++       strcpy(Lines[at], newLine);
++       if (LineCount < (at+1)) {
++ 	LineCount = at+1;
++       }
++     }
++   }
++ }
++ 
++ void 
++ raw_open() {
++   int i;
++ #if DEBUG
++   printf("raw_open()\n");
++ #endif
++   LineCount = -1;
++   for (i=0; i<MAX_LINE_COUNT; i++) {
++     strcpy(Lines[i], "???");
++   }
++ }
++ 
++ void 
++ raw_close() {
++ #if DEBUG
++   printf("raw_close()\n");
++ #endif
++ }
++ 
++ int 
++ raw_keyaction() {
++   char c = getch();
++ 
++ #if DEBUG
++   printf("raw_keyaction()\n");
++ #endif
++   if(tolower(c) == 'q')
++     return ActionQuit;
++   if(c==3)
++     return ActionQuit;
++   if(tolower(c) == 'r')
++     return ActionReset;
++   
++   return 0;
++ }
+diff -PC 2 mtr-0.21-orig/raw.h mtr-0.21/raw.h
+*** mtr-0.21-orig/raw.h	Thu Jan  1 01:00:00 1970
+--- mtr-0.21/raw.h	Fri Jun 12 21:53:41 1998
+***************
+*** 0 ****
+--- 1,27 ----
++ /*
++     mtr  --  a network diagnostic tool
++     Copyright (C) 1997  Matt Kimball
++ 
++     raw.h -- raw output (for inclusion in KDE Network Utilities)
++     Copyright (C) 1998  Bertrand Leconte <B.Leconte@mail.dotcom.fr>
++ 
++     This program is free software; you can redistribute it and/or modify
++     it under the terms of the GNU General Public License as published by
++     the Free Software Foundation; either version 2 of the License, or
++     (at your option) any later version.
++ 
++     This program is distributed in the hope that it will be useful,
++     but WITHOUT ANY WARRANTY; without even the implied warranty of
++     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++     GNU General Public License for more details.
++ 
++     You should have received a copy of the GNU General Public License
++     along with this program; if not, write to the Free Software
++     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
++ */
++ 
++ /*  Prototypes for raw.c  */
++ void raw_open();
++ void raw_close();
++ void raw_redraw();
++ int raw_keyaction();

@@ -22,6 +22,10 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.5  1998/06/09 21:18:06  leconte
+ * Bertrand: correction of bug #745 (reported by Duncan Haldane):
+ * 	arguments are now added to the command line
+ *
  * Revision 1.4  1998/03/01 19:30:24  leconte
  * - added a finger tab
  * - internal mods
@@ -57,9 +61,7 @@
 #include "TracerouteDlg.h"
 #include "HostDlg.h"
 #include "FingerDlg.h"
-#ifdef MTR
 #include "MtrDlg.h"
-#endif
 #include "OptionsDlg.h"
 
 /**

@@ -24,6 +24,10 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.4  1998/03/01 19:30:12  leconte
+ * - added a finger tab
+ * - internal mods
+ *
  * Revision 1.3  1997/12/07 23:44:18  leconte
  * - handle the binary's name modification dynamicaly (problem reported
  *   by Conrad Sanderson)
@@ -79,6 +83,9 @@ public:
 
   void      resizeEvent(QResizeEvent *);
   void      checkBinaryAndDisplayWidget();
+
+  virtual void installWaitCursor();
+  virtual void resetWaitCursor();
 
 protected:
   virtual bool     checkInput(QString *);

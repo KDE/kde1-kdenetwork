@@ -23,6 +23,9 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.9  1998/09/23 16:24:13  bieker
+ * Use i18n() instead of _().
+ *
  * Revision 1.8  1998/06/28 13:15:19  kalle
  * Fixing...
  * Improved RPM spec file
@@ -173,5 +176,179 @@ PingDlg::buildCommandLine(QString args)
 }
 
 
+#ifdef PING_CONFIG
+
+/* ******************************************************************** */
+
+/**
+ * make a new config object
+ *
+ * @param parent parent widget
+ * @param name name of the widget
+ */
+PingCfgDlg::PingCfgDlg(const char *tcs,
+		       QWidget *parent, const char *name)
+  : CommandCfgDlg(tcs, parent, name)
+{
+}
+
+/*
+ * Destructor
+ */
+PingDlg::~PingDlg()
+{
+}
 
 
+/**
+ * make a new config widget
+ *
+ * @param parent parent widget
+ * @param makeLayouts name of the widget
+ */
+QWidget *
+PingCfgDlg::makeWidget(QWidget *parent, bool makeLayouts)
+{
+#define SET_ADJUSTED_FIXED_SIZE(_wdgt) \
+                  _wdgt->setFixedSize(_wdgt->sizeHint())
+
+  //debug("PingCfgDlg::makeWidget");
+  (void)CommandCfgDlg::makeWidget(parent, FALSE);
+
+  // Widgets
+  cfgBG = new QButtonGroup(cfgWidget);
+  CHECK_PTR(cfgBG);
+
+#if 0
+  
+  cfgPingBtn = new QRadioButton(i18n("hos&t"), cfgBG);
+  CHECK_PTR(cfgPingBtn);
+  SET_ADJUSTED_FIXED_SIZE(cfgPingBtn);
+
+  cfgNslookupBtn = new QRadioButton(i18n("ns&lookup"), cfgBG);
+  CHECK_PTR(cfgNslookupBtn);
+  SET_ADJUSTED_FIXED_SIZE(cfgNslookupBtn);
+#endif
+
+  if (makeLayouts) {
+    cfgLayoutTB = new QBoxLayout(cfgWidget, QBoxLayout::TopToBottom, 10);
+    CHECK_PTR(cfgLayoutTB);
+    
+    if (cfgWarning != 0) {
+      cfgLayoutTB->addLayout(cfgWarningLayout);
+      cfgWarningLayout->addStretch(10);
+      cfgWarningLayout->addWidget(cfgWarningPm, 0);
+      cfgWarningLayout->addWidget(cfgWarningLbl, 0);
+      cfgWarningLayout->addStretch(10);
+    }
+    cfgLayoutTB->addWidget(cfgBinGB);
+    
+    cfgLayoutGB = new QGridLayout(cfgBinGB, 3, 3, 10);
+    CHECK_PTR(cfgLayoutGB);
+    
+    cfgLayoutGB->addRowSpacing(0, 0);
+    cfgLayoutGB->addWidget(cfgBinNameLbl, 1, 0, AlignRight|AlignVCenter);
+    cfgLayoutGB->addWidget(cfgBinNameLE, 1, 1);
+    cfgLayoutGB->addWidget(cfgBinNameBrowse, 1, 2);
+    cfgLayoutGB->addWidget(cfgBinArgLbl, 2, 0, AlignRight|AlignVCenter);
+    cfgLayoutGB->addWidget(cfgBinArgLE, 2, 1);
+    cfgLayoutGB->setColStretch(0, 0);
+    cfgLayoutGB->setColStretch(1, 10);
+    cfgLayoutGB->activate();
+
+    // Our widget
+    cfgLayout2 = new QBoxLayout(cfgBG, QBoxLayout::LeftToRight, 10);
+    CHECK_PTR(cfgLayout2);
+    
+    cfgLayout2->addStretch(10);
+    cfgLayout2->addWidget(cfgPingBtn);
+    cfgLayout2->addStretch(10);
+    cfgLayout2->addWidget(cfgNslookupBtn);
+    cfgLayout2->addStretch(10);
+    cfgLayout2->activate();
+    
+    cfgLayoutTB->addWidget(cfgBG);
+
+    cfgLayoutTB->addStretch(10);
+
+    cfgWidget->adjustSize();
+    cfgLayoutTB->activate();
+    cfgWidget->adjustSize();
+    cfgWidget->setMinimumSize(cfgWidget->size());
+    
+    cfgLayoutTB->activate();
+  }
+  readConfig();
+  return (cfgWidget);
+#undef SET_ADJUSTED_FIXED_SIZE
+}
+
+/**
+ * delete the config widget
+ */
+void
+PingCfgDlg::deleteConfigWidget()
+{
+  //  debug("PingCfgDlg::deleteCondigWidget");
+  
+  delete cfgLayoutTB;
+  delete cfgLayoutGB;
+  delete cfgLayout2;
+  delete cfgBG;
+  delete cfgPingBtn;
+  delete cfgNslookupBtn;
+}
+
+/**
+ * commit changes to the configfile
+ * 
+ * @return if the change have been done
+ */
+bool
+PingCfgDlg::commitChanges()
+{ 
+  KConfig *kc = kapp->getConfig();
+
+  (void)CommandCfgDlg::commitChanges();
+  if (cfgNslookupBtn->isChecked()) {
+    kc->writeEntry("binaryType", "nslookup");
+  } else {
+    kc->writeEntry("binaryType", "ping");
+  }
+  return(TRUE);
+}
+
+/**
+ * cancel changes to the configfile
+ */
+void
+PingCfgDlg::cancelChanges()
+{
+  // Nothing to do...
+}
+
+/**
+ * read the configfile
+ */
+void
+PingCfgDlg::readConfig()
+{
+  QString s;
+  KConfig *kc = kapp->getConfig();
+
+  kc->setGroup(configGroupName);
+  
+  if (kc->hasKey("binaryType")) {
+    s = kc->readEntry("binaryType");
+    if (!stricmp(s, "nslookup")) {
+      cfgNslookupBtn->setChecked(TRUE);
+    } else {
+      cfgPingBtn->setChecked(TRUE);
+    }
+  } else {
+    cfgPingBtn->setChecked(TRUE);
+  }
+}
+
+
+#endif  // PING_CONFIG

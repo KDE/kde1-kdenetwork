@@ -21,6 +21,9 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.7  1998/09/23 16:24:15  bieker
+ * Use i18n() instead of _().
+ *
  * Revision 1.6  1998/06/11 19:20:36  leconte
  * - some accelerators added
  * - strings added to i18n
@@ -98,9 +101,7 @@ TopLevel::TopLevel(QWidget *, const char *name)
   TracerouteDlg   *td;
   HostDlg         *hd;
   FingerDlg       *fd;
-#ifdef MTR
   MtrDlg          *md;
-#endif
 
   windowList.setAutoDelete(FALSE);
   windowList.append(this);
@@ -172,7 +173,6 @@ TopLevel::TopLevel(QWidget *, const char *name)
     pagesNumber++;
   }
 
-#ifdef MTR
   // mtr tab 
   if (isTabEnabled("Mtr", kc)) {
     md = new MtrDlg("mtr", tabCtrl, i18n("&Matt's traceroute"));
@@ -181,7 +181,6 @@ TopLevel::TopLevel(QWidget *, const char *name)
     pages[pagesNumber] = md;
     pagesNumber++;
   }
-#endif
 
   if (pagesNumber == 0) {
     // There is *no* command enabled ! 
@@ -318,13 +317,11 @@ TopLevel::slotConfig()
   configPages[n] = ccd;
   n++;
 
-#ifdef MTR
   /* mtr */
   ccd = new CommandCfgDlg(i18n("&Matt's traceroute"), 0, "mtr_cfg");
   CHECK_PTR(ccd);
   configPages[n] = ccd;
   n++;
-#endif
 
   options = new OptionsDlg(configPages, n, 0);
   CHECK_PTR(options);

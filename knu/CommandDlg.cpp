@@ -23,6 +23,9 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.6  1998/09/23 16:24:07  bieker
+ * Use i18n() instead of _().
+ *
  * Revision 1.5  1998/04/17 21:20:12  leconte
  * Bertrand: french translation update
  *
@@ -319,7 +322,7 @@ CommandDlg::slotLauchCommand()
     commandStopBtn->setEnabled(TRUE);
 
     // Install waitCursor
-    commandTextArea->setCursor(waitCursor);
+    installWaitCursor();
 
     // separate commands with CR/LF
     if (commandTextArea->numLines() > 1) {
@@ -358,7 +361,9 @@ CommandDlg::slotLauchCommand()
     connect(&childProcess, SIGNAL(receivedStderr(KProcess *, char *, int)), 
 	    this, SLOT(slotCmdStdout(KProcess *, char *, int)));
 
-    if (!childProcess.start(KProcess::NotifyOnExit, KProcess::AllOutput)) {
+    // Test pour mtr: pb stdin?
+//    if (!childProcess.start(KProcess::NotifyOnExit, KProcess::AllOutput)) {
+    if (!childProcess.start(KProcess::NotifyOnExit, KProcess::All)) {
       // Process not started
       debug("Process not started");
       slotProcessDead(NULL);
@@ -399,7 +404,7 @@ CommandDlg::slotProcessDead(KProcess *)
   commandGoBtn->setEnabled(TRUE);
   commandStopBtn->setEnabled(FALSE);
 
-  commandTextArea->setCursor(ibeamCursor);
+  resetWaitCursor();
   
   // to be ready for a new command
   commandArgs->selectAll();
@@ -447,6 +452,24 @@ void
 CommandDlg::clearOutput()
 {
   commandTextArea->clear();
+}
+
+/**
+ * install wait cursor on the main widget
+ */
+void
+CommandDlg::installWaitCursor()
+{
+  commandTextArea->setCursor(waitCursor);
+}
+
+/**
+ * reset wait cursor on the main widget
+ */
+void
+CommandDlg::resetWaitCursor()
+{
+  commandTextArea->setCursor(arrowCursor);
 }
 
 

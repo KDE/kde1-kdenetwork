@@ -24,7 +24,7 @@ SUBDIRS = doc
 bin_PROGRAMS = 	knu
 
 # Which sources should be compiled for knu.
-knu_SOURCES	= knu.cpp CommandDlg.cpp OptionsDlg.cpp \
+knu_SOURCES	= knu.cpp CommandDlg.cpp OptionsDlg.cpp MtrDlg.cpp\
 			PingDlg.cpp TracerouteDlg.cpp HostDlg.cpp FingerDlg.cpp
 
 # the library search path.
@@ -35,13 +35,13 @@ knu_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 knu_LDADD   = -lkfile -lkfm -lkdeui -lkdecore -lqt -lXext -lX11 $(LIBSOCKET)
 
 # this option you can leave out. Just, if you use "make dist", you need it
-noinst_HEADERS = knu.h CommandDlg.h OptionsDlg.h \
+noinst_HEADERS = knu.h CommandDlg.h OptionsDlg.h MtrDlg.h\
                         PingDlg.h TracerouteDlg.h HostDlg.h FingerDlg.h
 
 EXTRA_DIST = version.h knu.kdelnk knu.xpm knu.lsm mini-knu.xpm
 
 # just to make sure, automake makes them 
-BUILTSOURCES =	knu.moc CommandDlg.moc OptionsDlg.moc \
+BUILTSOURCES =	knu.moc CommandDlg.moc OptionsDlg.moc MtrDlg.moc\
 			PingDlg.moc TracerouteDlg.moc HostDlg.moc FingerDlg.moc
 
 # if you "make distclean", this files get removed. If you want to remove
@@ -100,3 +100,7 @@ HostDlg.moc: HostDlg.h
 FingerDlg.cpp: FingerDlg.moc
 FingerDlg.moc: FingerDlg.h
 	$(MOC) FingerDlg.h -o FingerDlg.moc
+
+MtrDlg.cpp: MtrDlg.moc
+MtrDlg.moc: MtrDlg.h
+	$(MOC) MtrDlg.h -o MtrDlg.moc

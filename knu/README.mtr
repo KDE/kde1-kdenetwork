@@ -1,0 +1,19 @@
+mtr - Matt's Traceroute
+
+It's a wonderful program that makes a traceroute to the destination 
+and for each hop found makes a ping (http://www.mkimball.org/mtr.html)
+
+I've made some modifications to be able to integrate it to knu. I keep the
+way I've used with the others tools: I only call an external program to
+do the real job.
+
+I've put the mtr's tarball here for convenience. I give my modifications
+with the file mtr-0.21.diff (apply with "patch -p0 < mtr-0.21.diff").
+
+I've mailed the mtr's author for integrating the diffs within the standard
+distribution. I'm waiting his response.
+
+
+--
+Bertrand Leconte
+B.Leconte@mail.dotcom.fr
