@@ -89,6 +89,9 @@ signals:
                          
   /** The user has clicked onto an URL that is no attachment. */
   void urlClicked(const char* url, int button);
+
+  /** The user wants to see the attachment which is message */
+  void showAtmMsg (KMMessage *msg);
                          
 public slots:
   /** HTML Widget scrollbar and layout handling. */

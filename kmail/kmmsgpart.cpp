@@ -212,7 +212,10 @@ const QString KMMessagePart::iconName(void) const
   }
 
   if(icon.isEmpty()) // If no icon specified.
-    icon = "unknown.xpm";
+    if (mType == "message")
+      icon = "kmail.xpm";
+    else
+      icon = "unknown.xpm";
   return KApplication::kde_icondir() + "/" + icon;
 }
 

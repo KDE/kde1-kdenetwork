@@ -1,3 +1,13 @@
+1999-06-17  Sven Radej <radej@kde.org> (KMail-1.0.25)
+
+        * Fix for yesterday's try harder: handle nonexisting dir (message/*)
+
+        * Attachment of message/* have kmail icon instead of unknown
+
+        * View messages in new window (doubleclick on header) and view
+          message-attachment share same code; new window has working keys and
+          you can click on adresses and urls as in true reader window.
+
 1999-06-16  Sven Radej <radej@kde.org> (KMail-1.0.25)
 
         * Try harder when looking for attachment icon (go thro' all

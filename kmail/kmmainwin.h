@@ -54,6 +54,7 @@ public slots:
   virtual void show();
   virtual void hide();
   void slotCheckMail(); // sven moved here as public
+  void slotAtmMsg(KMMessage *msg); //sven: called from reader
 
   /** Output given message in the statusbar message field. */
   void statusMsg(const char* text);
@@ -64,6 +65,7 @@ protected:
   void setupStatusBar();
   void createWidgets();
   void activatePanners();
+  void showMsg(KMReaderWin *win, KMMessage *msg);
 
 protected slots:
   void slotCheckOneAccount(int);

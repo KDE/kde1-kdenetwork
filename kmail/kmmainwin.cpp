@@ -21,6 +21,7 @@
 #include "kmsender.h"
 #include "kmaddrbookdlg.h"
 #include "kmaddrbook.h"
+#include "kwm.h"
 
 #include <qclipbrd.h>
 #include <qaccel.h>
@@ -232,7 +233,11 @@ void KMMainWin::createWidgets(void)
   connect(mMsgView, SIGNAL(popupMenu(const char*,const QPoint&)),
 	  this, SLOT(slotMsgPopup(const char*,const QPoint&)));
   connect(mMsgView, SIGNAL(urlClicked(const char*,int)),
-	  this, SLOT(slotUrlClicked(const char*,int)));
+          this, SLOT(slotUrlClicked(const char*,int)));
+
+  connect(mMsgView, SIGNAL(showAtmMsg(KMMessage *)),
+          this, SLOT(slotAtmMsg(KMMessage *)));
+
   accel->connectItem(accel->insertItem(Key_Up),
 		     mMsgView, SLOT(slotScrollUp()));
   accel->connectItem(accel->insertItem(Key_Down), 
@@ -753,6 +758,7 @@ void KMMainWin::slotSetMsgStatus(int id)
 
 
 //-----------------------------------------------------------------------------
+//called from heders. Message must not be deleted on close
 void KMMainWin::slotMsgActivated(KMMessage *msg)
 {
   KMReaderWin *win;
@@ -760,9 +766,46 @@ void KMMainWin::slotMsgActivated(KMMessage *msg)
   assert(msg != NULL);
 
   win = new KMReaderWin;
+  showMsg(win, msg);
+}
+
+//called from reader win. message must be deleted on close
+void KMMainWin::slotAtmMsg(KMMessage *msg)
+{
+  KMReaderWin *win;
+
+  assert(msg != NULL);
+
+  win = new KMReaderWin;
+  win->setAutoDelete(true); //delete on end
+  showMsg(win, msg);
+}
+
+void KMMainWin::showMsg(KMReaderWin *win, KMMessage *msg)
+{
+  KWM::setMiniIcon(win->winId(), kapp->getMiniIcon());
   win->setCaption(msg->subject());
-  win->resize(550,600);
   win->setMsg(msg);
+  win->resize(550,600);
+  
+  connect(win, SIGNAL(statusMsg(const char*)),
+	  this, SLOT(statusMsg(const char*)));
+  connect(win, SIGNAL(popupMenu(const char*,const QPoint&)),
+	  this, SLOT(slotMsgPopup(const char*,const QPoint&)));
+  connect(win, SIGNAL(urlClicked(const char*,int)),
+          this, SLOT(slotUrlClicked(const char*,int)));
+
+  QAccel *accel = new QAccel(win);
+  
+  accel->connectItem(accel->insertItem(Key_Up),
+		     win, SLOT(slotScrollUp()));
+  accel->connectItem(accel->insertItem(Key_Down), 
+                     win, SLOT(slotScrollDown()));
+  accel->connectItem(accel->insertItem(Key_Prior),
+                     win, SLOT(slotScrollPrior()));
+  accel->connectItem(accel->insertItem(Key_Next), 
+                     win, SLOT(slotScrollNext()));
+  
   win->show();
 }
 

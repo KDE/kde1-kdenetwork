@@ -945,13 +945,10 @@ void KMReaderWin::slotUrlPopup(const char* aUrl, const QPoint& aPos)
 void KMReaderWin::atmViewMsg(KMMessagePart* aMsgPart)
 {
   KMMessage* msg = new KMMessage;
-  KMReaderWin* win = new KMReaderWin;
   assert(aMsgPart!=NULL);
 
   msg->fromString(aMsgPart->bodyDecoded());
-  win->setMsg(msg);
-  win->setAutoDelete(TRUE);
-  win->show();
+  emit showAtmMsg(msg);
 }
 
 
