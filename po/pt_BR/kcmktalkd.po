@@ -1,0 +1,137 @@
+# kcmktalkd messages
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# David Faure <David.Faure@insa-lyon.fr>, 1998.
+#
+"Project-Id-Version: kcmktalkd 0.6.1\n"
+"POT-Creation-Date: 1998-06-09 23:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ENCODING\n"
+
+#: main.cpp:54
+msgid "&Announcement"
+msgstr ""
+
+#: main.cpp:57
+msgid "Ans&wering machine"
+msgstr ""
+
+#: main.cpp:63
+msgid "usage: kcmktalkd [-init | soundpage | answmachpage]\n"
+msgstr ""
+
+#: main.cpp:94
+msgid "KTalkd Configuration"
+msgstr ""
+
+#: soundpage.cpp:44
+msgid "&Announcement program"
+msgstr ""
+
+#: soundpage.cpp:51
+msgid "&Talk client"
+msgstr ""
+
+#: soundpage.cpp:55
+msgid "&Play sound"
+msgstr ""
+
+#: soundpage.cpp:57
+msgid "Sound &File"
+msgstr ""
+
+#: soundpage.cpp:59
+msgid "Additional WAV files can be dropped onto the sound list."
+msgstr ""
+
+#: soundpage.cpp:74
+msgid "&Test"
+msgstr ""
+
+#: soundpage.cpp:154
+msgid "Unsupported URL"
+msgstr ""
+
+#: soundpage.cpp:155
+msgid ""
+"Sorry, this type of URL is currently unsupportedby the KDE System Sound "
+"Module"
+msgstr ""
+
+#: soundpage.cpp:162
+#, c-format
+msgid ""
+"Sorry, but \n"
+"%s\n"
+"does not seem to be a WAV--file."
+msgstr ""
+
+#: soundpage.cpp:165
+msgid "Improper File Extension"
+msgstr ""
+
+#: soundpage.cpp:173
+#, c-format
+msgid ""
+"The file\n"
+"%s\n"
+"is already in the list"
+msgstr ""
+
+#: soundpage.cpp:177
+msgid "File Already in List"
+msgstr ""
+
+#: answmachpage.cpp:39
+msgid "&Activate answering machine"
+msgstr ""
+
+#: answmachpage.cpp:44
+msgid "&Mail address"
+msgstr ""
+
+#: answmachpage.cpp:51
+msgid "Mail sub&ject"
+msgstr ""
+
+#: answmachpage.cpp:54
+#, c-format
+msgid "Use %s for the caller name"
+msgstr ""
+
+#: answmachpage.cpp:60
+msgid "Mail &first line"
+msgstr ""
+
+#: answmachpage.cpp:64
+#, c-format
+msgid "Use first %s for caller name, and second %s for caller hostname"
+msgstr ""
+
+#: answmachpage.cpp:68
+msgid "&Receive a mail even if no message left"
+msgstr ""
+
+#: answmachpage.cpp:74
+msgid "&Banner displayed on answering machine startup :"
+msgstr ""
+
+#: answmachpage.cpp:83
+msgid ""
+"The person you're asking to talk with is not answering.\n"
+"Please leave a message to be delivered via E-Mail.\n"
+"Just start typing and when you're done, exit normally."
+msgstr ""
+
+#: answmachpage.cpp:171 answmachpage.cpp:189
+#, c-format
+msgid "Message from %s"
+msgstr ""
+
+#: answmachpage.cpp:172 answmachpage.cpp:191
+#, c-format
+msgid "Message left in the answering machine, by %s@%s"
+msgstr ""
