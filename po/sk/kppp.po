@@ -1,0 +1,1060 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kppp 0.9.6\n"
+"POT-Creation-Date: 1998-02-24 21:40+0100\n"
+"PO-Revision-Date: 1998-03-08 10:42 MET\n"
+"Last-Translator: Juraj Bednár <bednar@isternet.sk>\n"
+"Language-Team: Slovak <bednar@isternet.sk>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-2\n"
+"Content-Transfer-Encoding: 8bit\n"    
+
+#: accounts.cpp:53
+msgid "Account Setup"
+msgstr "Nastavenie konta"
+
+#: accounts.cpp:72
+msgid "Edit..."
+msgstr "Upravi»..."
+
+#: accounts.cpp:83
+msgid "New..."
+msgstr "Nové..."
+
+#: accounts.cpp:105
+msgid "Phone Costs:"
+msgstr "Telefónne náklady"
+
+#: accounts.cpp:121
+msgid "Reset Costs"
+msgstr "Vynulova» náklady"
+
+#: accounts.cpp:128
+msgid "View Logs"
+msgstr "Zobrazi» záznamy"
+
+#: accounts.cpp:213
+msgid "Reset Total"
+msgstr "Vynulova» celkové náklady"
+
+#: accounts.cpp:214
+msgid ""
+"Are you sure you want to reset the accumulated\n"
+"telephone costs for the selected account to zero?"
+msgstr ""
+"Naozaj si prajete vynulova» nazhroma¾dené\n"
+"telefónne náklady vybraného konta?"
+
+#: accounts.cpp:249 accounts.cpp:272
+msgid "Maximum number of accounts reached."
+msgstr "Dosiahnutý maximálny poèet kônt."
+
+#: accounts.cpp:278
+msgid "No account selected."
+msgstr "Nie je vybrané ¾iadne konto."
+
+#: accounts.cpp:294
+#, c-format
+msgid ""
+"Are you sure you want to delete\n"
+"the account \"%s\"?"
+msgstr ""
+"Ste si istý, ¾e si prajete\n"
+"zmaza» konto \"%s\"?"
+
+#: accounts.cpp:299
+msgid "Confirm"
+msgstr "Potvrdi»"
+
+#: accounts.cpp:321
+msgid "New Account"
+msgstr "Nové konto"
+
+#: accounts.cpp:325
+msgid "Edit Account: "
+msgstr "Úprava konta: "
+
+#: accounts.cpp:345
+msgid "Dial"
+msgstr "Vytáèanie"
+
+#: accounts.cpp:346
+msgid "IP"
+msgstr "IP"
+
+#: accounts.cpp:347
+msgid "DNS"
+msgstr "DNS"
+
+#: accounts.cpp:348
+msgid "Gateway"
+msgstr "Brána"
+
+#: accounts.cpp:349
+msgid "Login Script"
+msgstr "Prihlasovací skript"
+
+#: accounts.cpp:350
+msgid "Accounting"
+msgstr "Úètovanie"
+
+#: accounts.cpp:369
+msgid ""
+"You must enter a unique\n"
+"account name"
+msgstr ""
+"Musíte zada» jedineèný\n"
+"názov konta"
+
+#: accounts.cpp:374
+msgid "Login script has unbalanced Loop Start/End"
+msgstr "Prihlasovací skript má nevyvá¾ené skoky zaèiatok/koniec"
+
+#: connect.cpp:94 connect.cpp:194 main.cpp:767
+msgid "Connecting to: "
+msgstr "Pripájanie k: "
+
+#: connect.cpp:103 connect.cpp:209 miniterm.cpp:162 modeminfo.cpp:63
+#: modeminfo.cpp:150
+msgid "Sorry, can't create modem lock file."
+msgstr "¥utujem, nemô¾em vytvori» súbor pre zamknutie modemu."
+
+#: connect.cpp:108 connect.cpp:171 modeminfo.cpp:68
+msgid "Looking for Modem ..."
+msgstr "Hµadám modem ..."
+
+#: connect.cpp:117 debug.cpp:86 main.cpp:780
+msgid "Log"
+msgstr "Záznam"
+
+#: connect.cpp:203 miniterm.cpp:157 modeminfo.cpp:145
+msgid "Sorry, modem device is locked."
+msgstr "¥utujem, modemové zariadenie je uzamknuté."
+
+#: connect.cpp:215 miniterm.cpp:176 miniterm.cpp:253 modeminfo.cpp:165
+msgid "Modem Ready"
+msgstr "Modem pripravený"
+
+#: connect.cpp:247 connect.cpp:248
+msgid "Initializing Modem..."
+msgstr "Inicializácia modemu ..."
+
+#: connect.cpp:272
+msgid "Dialing"
+msgstr "Vytáèam èíslo"
+
+#: connect.cpp:302
+msgid "Line Busy. Hanging up ..."
+msgstr "Linka obsadená, skladám ..."
+
+#: connect.cpp:308
+msgid "Line Busy. Waiting: "
+msgstr "Linka obsadená. Èakám: "
+
+#: connect.cpp:310 connect.cpp:399 connect.cpp:418
+msgid " seconds"
+msgstr "sekúnd"
+
+#: connect.cpp:328
+msgid "No Dialtone"
+msgstr "®iadny vyzváòací tón (na Slovensku treba zmeni» nastavenie modemu)"
+
+#: connect.cpp:338
+msgid "No Carrier"
+msgstr "®iadny nosiè"
+
+#: connect.cpp:373
+msgid "Sending "
+msgstr "Posielam "
+
+#: connect.cpp:385
+msgid "Expecting "
+msgstr "Oèakávam "
+
+#: connect.cpp:397
+msgid "Pause "
+msgstr "Pauza "
+
+#: connect.cpp:416
+msgid "Timeout "
+msgstr "Timeout"
+
+#: connect.cpp:430 connect.cpp:431
+msgid "Hangup"
+msgstr "Zavesenie"
+
+#: connect.cpp:444 connect.cpp:445
+msgid "Answer"
+msgstr "Odpoveï"
+
+#: connect.cpp:453
+msgid "ID "
+msgstr "ID"
+
+#: connect.cpp:490
+msgid "Password "
+msgstr "Heslo"
+
+#: connect.cpp:527
+msgid "Prompting "
+msgstr "Pýtam sa na "
+
+#: connect.cpp:552
+msgid "PW Prompt "
+msgstr "PW Prompt"
+
+#: connect.cpp:578
+msgid "Loop Start "
+msgstr "©tart sluèky"
+
+#: connect.cpp:582
+msgid "ERROR: Nested too deep, ignored."
+msgstr "CHYBA: Sluèka vnorená príli¹ hlboko, ignorujem."
+
+#: connect.cpp:587
+msgid "Loops nested too deeply!"
+msgstr "Sluèky vnorené príli¹ hlboko!"
+
+#: connect.cpp:605
+msgid "LoopEnd without mathing Start! Line: "
+msgstr "Koniec sluèky bez odpovedajúceheho riadku ©tart! : "
+
+#: connect.cpp:682
+msgid "Starting pppd ..."
+msgstr "©tartujem pppd ..."
+
+#: connect.cpp:742 connect.cpp:768
+msgid "unknown speed"
+msgstr "neznáma rýchlos»"
+
+#: connect.cpp:794
+msgid "Found: "
+msgstr "Nájdené: "
+
+#: connect.cpp:805
+msgid "Looping: "
+msgstr "Cyklus: "
+
+#: connect.cpp:837 modeminfo.cpp:333
+msgid "One Moment Please ..."
+msgstr "Momentík prosím ..."
+
+#: connect.cpp:880
+msgid "Script timed out!"
+msgstr "Timeout skriptu!"
+
+#: connect.cpp:907
+msgid "Expecting: "
+msgstr "Oèakávam:"
+
+#: connect.cpp:941
+msgid "Logging on to Network ..."
+msgstr "Prihlasovanie do siete ..."
+
+#: connect.cpp:967
+msgid "Running Startup Command ..."
+msgstr "Vykonávam ¹tartovací príkaz ..."
+
+#: connect.cpp:1032
+msgid "Sorry, can't open modem."
+msgstr "¥utujem, nemô¾em otvori» modem."
+
+#: connect.cpp:1039
+msgid "Sorry, the modem is not ready."
+msgstr "¥utujem, modem nie je pripravený."
+
+#: connect.cpp:1047 connect.cpp:1088 modeminfo.cpp:375
+msgid "Sorry, the modem is busy."
+msgstr "¥utujem,  modem je zaneprázdnený."
+
+#: connect.cpp:1322
+msgid ""
+"pppd command + command-line arguments exeed\n"
+"2024 characters in length. What are you doing?"
+msgstr ""
+"pppd príkaz + argumenty v príkazovom riadku\n"
+"presiahly då¾ku 2024 znakov. Èo robíte?"
+
+#: conwindow.cpp:44
+msgid "Connected at:"
+msgstr "Rýchlos» spojenia:"
+
+#: conwindow.cpp:50
+msgid "Time connected:"
+msgstr "Èas pripojenia:"
+
+#: conwindow.cpp:56
+msgid "Session Bill:"
+msgstr "Úèet za senasu:"
+
+#: conwindow.cpp:58
+msgid "Total Bill:"
+msgstr "Celkový úèet:"
+
+#: conwindow.cpp:64 docking.cpp:75
+msgid "Disconnect"
+msgstr "Odpoji»"
+
+#: conwindow.cpp:68 docking.cpp:73
+msgid "Details"
+msgstr "Detaily"
+
+#: debug.cpp:49
+msgid "Login Script Debug Window"
+msgstr "Ladiace okno pre prihla¹ovací skript"
+
+#: debug.cpp:65
+msgid "Dismiss"
+msgstr "Zavrie»"
+
+#: edit.cpp:42
+msgid "Dial Setup"
+msgstr "Nastavenie vytáèania"
+
+#: edit.cpp:46
+msgid "Connection Name:"
+msgstr "Meno spojenia:"
+
+#: edit.cpp:57
+msgid "Phone Number:"
+msgstr "Telefónne èíslo:"
+
+#: edit.cpp:68
+msgid "Authentication:"
+msgstr "Overenie:"
+
+#: edit.cpp:73
+msgid "Script-based"
+msgstr "Skriptom"
+
+#: edit.cpp:74
+msgid "PAP"
+msgstr "PAP"
+
+#: edit.cpp:75
+msgid "Terminal-based"
+msgstr "Terminálom"
+
+#: edit.cpp:81
+msgid "Store password"
+msgstr "Uklada» heslo"
+
+#: edit.cpp:87
+msgid ""
+"Execute program\n"
+"upon connect:"
+msgstr ""
+"Vykona» program\n"
+"pri pripojení:"
+
+#: edit.cpp:99
+msgid ""
+"Execute program\n"
+"upon disconnect:"
+msgstr ""
+"Vykona» program\n"
+"pri odpojení:"
+
+#: edit.cpp:111
+msgid "Edit pppd arguments:"
+msgstr "Úprava parametrov pppd:"
+
+#: edit.cpp:117
+msgid "Arguments"
+msgstr "Argumenty"
+
+#: edit.cpp:172
+msgid "IP Setup"
+msgstr "Nastavenie IP"
+
+#: edit.cpp:179
+msgid "IP Address:"
+msgstr "IP adresa:"
+
+#: edit.cpp:184
+msgid "Subnet Mask:"
+msgstr "Maska podsiete:"
+
+#: edit.cpp:192
+msgid "Dynamic IP Address"
+msgstr "Dynamická IP adresa"
+
+#: edit.cpp:195
+msgid "Static IP Address"
+msgstr "Statická IP adresa"
+
+#: edit.cpp:199
+msgid "Auto-configure hostname from this IP"
+msgstr "Automatická konfigurácia mena hostiteµa z tejto IP adresy"
+
+#: edit.cpp:313
+msgid "DNS Servers"
+msgstr "DNS servery"
+
+#: edit.cpp:329
+msgid "Domain Name:"
+msgstr "Meno domény:"
+
+#: edit.cpp:341
+msgid "DNS IP Address:"
+msgstr "IP adresa DNS:"
+
+#: edit.cpp:374
+msgid "DNS Address List:"
+msgstr "Zoznam adries DNS:"
+
+#: edit.cpp:384
+msgid "Disable existing DNS Servers during Connection"
+msgstr "Vyradi» existujúce DNS servery behom spojenia"
+
+#: edit.cpp:437
+msgid "Gateway Setup"
+msgstr "Nastavenie brány"
+
+#: edit.cpp:446
+msgid "Default Gateway"
+msgstr "©tandardná brána"
+
+#: edit.cpp:450
+msgid "Static Gateway"
+msgstr "Statická brána"
+
+#: edit.cpp:456
+msgid ""
+"Gateway\n"
+"IP Address:"
+msgstr ""
+"IP adresa\n"
+"brány:"
+
+#: edit.cpp:458
+msgid "Assign the Default Route to this Gateway"
+msgstr "Priradi» ¹tandardné smerovanie k tejto bráne"
+
+#: edit.cpp:557
+msgid "Edit Script"
+msgstr "Upravi» skript"
+
+#: edit.cpp:563
+msgid "Use default script"
+msgstr "Pou¾i» ¹tandardný skript"
+
+#: edit.cpp:580
+msgid "Insert"
+msgstr "Vlo¾i»"
+
+#: general.cpp:42
+msgid "kppp Setup"
+msgstr "Nastavenie kppp"
+
+#: general.cpp:46
+msgid "pppd Path:"
+msgstr "Cesta k pppd:"
+
+#: general.cpp:63
+msgid "pppd Timeout:"
+msgstr "pppd timeout:"
+
+#: general.cpp:78 general.cpp:363 general.cpp:460
+msgid "Seconds"
+msgstr "sekúnd"
+
+#: general.cpp:83
+msgid "Log Viewer:"
+msgstr "Prehlaidaè záznamov:"
+
+#: general.cpp:98
+msgid "Automatic Redial on Disconnect"
+msgstr "Automaticky znovuvytáèa» po odpojení"
+
+#: general.cpp:105
+msgid "Show Clock on Caption"
+msgstr "Zobrazova» hodiny v titulku"
+
+#: general.cpp:112
+msgid "Disconnect on X-server shutdown"
+msgstr "Odpoji» pri ukonèení X-serveru"
+
+#: general.cpp:118
+msgid "Minimize Window on Connect"
+msgstr "Minimalizova» okno po pripojení"
+
+#: general.cpp:124
+msgid "Dock into Panel on Connect"
+msgstr "Vsadi» do panelu pri pripojení"
+
+#: general.cpp:187
+msgid "About kppp"
+msgstr "Informácie o kppp"
+
+#: general.cpp:195
+msgid ""
+"\n"
+"A dialer and front-end to pppd\n"
+"\n"
+"Copyright (c) 1997\n"
+"Bernd Johannes Wuebben\n"
+"wuebben@math.cornell.edu"
+msgstr ""
+"\n"
+"Dialer a frontend pre pppd\n"
+"\n"
+"Copyright (c) 1997\n"
+"Bernd Johannes Wuebben\n"
+"wuebben@math.cornell.edu"
+
+#: general.cpp:211
+msgid ""
+"With contributions from:\n"
+"\n"
+"Mario Weilguni\n"
+"Markus Wuebben\n"
+"Jesus Fuentes Saavedra\n"
+"Harri Porten\n"
+"Peter Silva"
+msgstr ""
+"Prispeli:\n"
+"\n"
+"   Mario Weilguni\n"
+"   Markus Wuebben\n"
+"   Jesus Fuentes Saavedra\n"
+"   Harri Porten\n"
+"   Peter Silva"
+
+#: general.cpp:235
+msgid "Serial device"
+msgstr "Sériové zariadenie"
+
+#: general.cpp:238
+msgid "Modem Device:"
+msgstr "Modemové zariadenie:"
+
+#: general.cpp:258
+msgid "Flow Control:"
+msgstr "Riadenie toku:"
+
+#: general.cpp:265
+msgid "None"
+msgstr "®iadne"
+
+#: general.cpp:273
+msgid "Line Termination:"
+msgstr "Polo¾enie linky :"
+
+#: general.cpp:288
+msgid "Connection Speed:"
+msgstr "Rýchlos» spojenia:"
+
+#: general.cpp:331
+msgid "Modem Lock File:"
+msgstr "Zámok modemu:"
+
+#: general.cpp:348
+msgid "Modem Timeout:"
+msgstr "Timemout modemu:"
+
+#: general.cpp:433 main.cpp:477
+msgid "Modem"
+msgstr "Modem"
+
+#: general.cpp:445
+msgid "Busy Wait:"
+msgstr "Èaka» pri obsadení:"
+
+#: general.cpp:471
+msgid "Modem sustains fast initialization."
+msgstr "Modem podporuje rýchlu inicializáciu."
+
+#: general.cpp:484
+msgid "Modem Asserts CD Line."
+msgstr "Modem kontroluje Carrier Detect"
+
+#: general.cpp:500
+msgid "Modem Commands"
+msgstr "Modemové príkazy"
+
+#: general.cpp:501
+msgid "Query Modem"
+msgstr "Opýta» sa modemu"
+
+#: general.cpp:502
+msgid "Terminal"
+msgstr "Terminál"
+
+#: main.cpp:304
+msgid "Connect to: "
+msgstr "Pripoji» k: "
+
+#: main.cpp:315
+msgid "Login ID:"
+msgstr "Login ID:"
+
+#: main.cpp:327
+msgid "Password:"
+msgstr "Heslo:"
+
+#: main.cpp:344
+msgid "Show Log Window"
+msgstr "Zobrazova» okno so záznamom"
+
+#: main.cpp:366
+msgid "Setup"
+msgstr "Nastavenie"
+
+#: main.cpp:381
+msgid "Connect"
+msgstr "Pripoji»"
+
+#: main.cpp:446
+#, c-format
+msgid ""
+"No such Account:\n"
+"%s"
+msgstr ""
+"Toto konto neexistuje:\n"
+"%s"
+
+#: main.cpp:463
+msgid "kppp Configuration"
+msgstr "Konfigurácia kppp"
+
+#: main.cpp:475
+msgid "Accounts"
+msgstr "Kontá"
+
+#: main.cpp:476
+msgid "Device"
+msgstr "Zariadenie"
+
+#: main.cpp:478
+msgid "PPP"
+msgstr "PPP"
+
+#: main.cpp:702
+#, c-format
+msgid ""
+"kppp can not find:\n"
+" %s\n"
+"Please install pppd properly and/or adjust\n"
+" the location of the pppd executable on the PPP tab of\n"
+"the setup dialog.\n"
+" Thank You"
+msgstr ""
+"kppp nemô¾e nájs»:\n"
+" %s\n"
+"Prosím nain¹talujte správne pppd \n"
+"alebo upravte umiestnenie programu pppd \n"
+"v konfiguraènom dialógu\n"
+" Ïakujem vám"
+
+#: main.cpp:714
+#, c-format
+msgid ""
+"kppp can not execute:\n"
+" %s\n"
+"Please make sure thatyou have given kppp setuid permission and that\n"
+"pppd is executable."
+msgstr ""
+"kppp nemô¾e vykona»:\n"
+" %s\n"
+"Prosím uistite sa, ¾e ste nastavili setuid právo pre kppp\n"
+"a ¾e je pppd vykonávateµný."
+
+#: main.cpp:728
+#, c-format
+msgid ""
+"kppp can not find:\n"
+" %s\n"
+"Please make sure you have setup\n"
+"your modem device properly\n"
+"and/or adjust\n"
+" the location of the modem device on the modem tab of\n"
+"the setup dialog.\n"
+" Thank You"
+msgstr ""
+"kppp nemô¾e nájs»:\n"
+" %s\n"
+"Prosím, uistite sa, ¾e ste \n"
+"správne nastavili modemové \n"
+"zariadenie alebo upravte\n"
+" umiestnenie modemového zariadenia \n"
+"v konfiguraènom dialógu.\n"
+" Ïakujem vám"
+
+#: main.cpp:748
+msgid ""
+"You have selected the authentication\n"
+"method PAP. This requires that you\n"
+"supply a username and a password!"
+msgstr ""
+"Vybrali ste overovanie pomocou PAP.\n"
+"Toto vy¾aduje, aby jste poskytli\n"
+"u¾ívateµské meno a heslo!"
+
+#: main.cpp:755
+#, c-format
+msgid ""
+"Cannot create PAP authentication\n"
+"file \"%s\""
+msgstr ""
+"Nemô¾em vytvori» overovací súbor\n"
+"pre PAP \"%s\""
+
+#: main.cpp:832
+msgid "Quit kPPP?"
+msgstr "Ukonèi» kPPP?"
+
+#: main.cpp:833
+msgid "Exiting kPPP will close your PPP Session."
+msgstr "Ukonèenie kPPP uzavie va¹u PPP seansu."
+
+#: main.cpp:866
+msgid ""
+"Can not load the accounting\n"
+"ruleset \""
+msgstr ""
+"Nemô¾em naèíta» pravidlá\n"
+"pre úètovanie\""
+
+#: modemcmds.cpp:40
+msgid "Edit Modem Commands"
+msgstr "Úprava modemových príkazov"
+
+#: modemcmds.cpp:54
+msgid "Initialization String:"
+msgstr "Inicializaèný re»azec:"
+
+#: modemcmds.cpp:61
+msgid "Init Response:"
+msgstr "Poèiatoèná odozva:"
+
+#: modemcmds.cpp:68
+msgid "Dial String:"
+msgstr "Vytáèací re»azec:"
+
+#: modemcmds.cpp:75
+msgid "Connect Response:"
+msgstr "Odozva pri pripojení:"
+
+#: modemcmds.cpp:82
+msgid "Busy Response:"
+msgstr "Obsazovacia odozva:"
+
+#: modemcmds.cpp:89
+msgid "No Carrier Resonse:"
+msgstr "Odozva pri neprítomnosti nosièa:"
+
+#: modemcmds.cpp:96
+msgid "No Dialtone Response:"
+msgstr "Odozva pri neprítomnosti vyzvánacieho tónu:"
+
+#: modemcmds.cpp:103
+msgid "Hangup String:"
+msgstr "Re»azec pre zavesenie:"
+
+#: modemcmds.cpp:110
+msgid "Hangup Response:"
+msgstr "Odozva pre zavesenie:"
+
+#: modemcmds.cpp:117
+msgid "Answer String:"
+msgstr "Odpovedajúci re»azec:"
+
+#: modemcmds.cpp:124
+msgid "Ring Response:"
+msgstr "Vyzváòajúca odozva:"
+
+#: modemcmds.cpp:131
+msgid "Answer Response:"
+msgstr "Odpovedajúca odozva:"
+
+#: modemcmds.cpp:138
+msgid "Escape String:"
+msgstr "Ukonèovací re»azec:"
+
+#: modemcmds.cpp:145
+msgid "Escape Response:"
+msgstr "Ukonèovacia odozva:"
+
+#: modemcmds.cpp:172
+msgid "Guard Time (sec/50):"
+msgstr "Èas strá¾enia (sec/50)"
+
+#: pppdargs.cpp:33
+msgid "Customize pppd Arguments"
+msgstr "Úprava parametrov pppd"
+
+#: pppdargs.cpp:41
+msgid "Argument:"
+msgstr "Argument:"
+
+#: pppdargs.cpp:58
+msgid "Restore Defaults"
+msgstr "©tandardné"
+
+#: pppdata.cpp:50
+msgid ""
+"The application-specific config file\n"
+"could not be opened neither\n"
+"read-write nor read-only"
+msgstr ""
+"Nemô¾em otvori» konfiguraèný súbor\n"
+"aplikácie a to ani pre zápis ani\n"
+"pre èítanie."
+
+#: modeminfo.cpp:46
+msgid "ATI Query"
+msgstr "ATI otázka"
+
+#: modeminfo.cpp:131
+msgid "Modem Query timed out."
+msgstr "Vypr¹al èas pri komunikácii s modemom."
+
+#: miniterm.cpp:277 modeminfo.cpp:369
+msgid "Can't open Modem"
+msgstr "Nie je mo¾né otvori» modem"
+
+#: modeminfo.cpp:415
+msgid "Sorry, the modem is busy"
+msgstr "¥utujem, modem je zaneprázdnený"
+
+#: modeminfo.cpp:534
+msgid "Modem Query Results"
+msgstr "Výsledky vyhµadávania modemu"
+
+#: pppstatdlg.cpp:69
+msgid "kppp Statistics"
+msgstr "©tatistiky kppp"
+
+#: pppstatdlg.cpp:74
+msgid "Statistics"
+msgstr "©tatistiky"
+
+#: pppstatdlg.cpp:147
+msgid "Local Addr:"
+msgstr "Lokálna adresa:"
+
+#: pppstatdlg.cpp:153
+msgid "Remote Addr:"
+msgstr "Vzdialená adresa:"
+
+#: pppstatdlg.cpp:185
+msgid "bytes in"
+msgstr "pri¹lo bajtov"
+
+#: pppstatdlg.cpp:186
+msgid "bytes out"
+msgstr "odi¹lo bajtov"
+
+#: pppstatdlg.cpp:188
+msgid "packets in"
+msgstr "pri¹lo paketov"
+
+#: pppstatdlg.cpp:189
+msgid "packets out"
+msgstr "odi¹lo paketov"
+
+#: pppstatdlg.cpp:191
+msgid "vjcomp in"
+msgstr "pri¹lo vjcomp"
+
+#: pppstatdlg.cpp:192
+msgid "vjcomp out"
+msgstr "odi¹lo vjcomp"
+
+#: pppstatdlg.cpp:194
+msgid "vjunc in"
+msgstr "do¹lo vjunc"
+
+#: pppstatdlg.cpp:195
+msgid "vjunc out"
+msgstr "odi¹lo vjunc"
+
+#: pppstatdlg.cpp:197
+msgid "vjerr"
+msgstr "vjerr"
+
+#: pppstatdlg.cpp:198
+msgid "non-vj"
+msgstr "non-vj"
+
+#: pppstatdlg.cpp:351 pppstatdlg.cpp:358
+msgid "unavailable"
+msgstr "neprístupný"
+
+#: miniterm.cpp:52
+msgid "Kppp Mini-Terminal"
+msgstr "Kppp Mini-Terminal"
+
+#: miniterm.cpp:58
+msgid "&Reset Modem"
+msgstr "&Resetova» modem"
+
+#: miniterm.cpp:64
+msgid "&Modem"
+msgstr "&Modem"
+
+#: miniterm.cpp:107
+msgid "Quit MiniTerm"
+msgstr "Ukonèi» MiniTerm"
+
+#: miniterm.cpp:113
+msgid "Reset Modem"
+msgstr "Resetova» modem"
+
+#: miniterm.cpp:151
+msgid "Initializing Modem"
+msgstr "Inicializácia modemu"
+
+#: miniterm.cpp:223
+msgid "Hanging up ..."
+msgstr "Skladám ..."
+
+#: miniterm.cpp:243
+msgid "Resetting Modem"
+msgstr "Resetujem modem"
+
+#: miniterm.cpp:262
+msgid "Can't restore tty settings: tcsetattr()\n"
+msgstr "Nemô¾em obnovi» nastavenie tty: tcsetattr()\n"
+
+#: miniterm.cpp:283
+msgid "tcgetattr() failed\n"
+msgstr "zlyhanie tcgetattr()\n"
+
+#: miniterm.cpp:330
+msgid "tcsetattr() failed\n"
+msgstr "zlyhanie tcsetattr()\n"
+
+#: accounting.cpp:156
+#, c-format
+msgid "started PPP connection:%s:%s"
+msgstr "spustené PPP spojenie:%s:%s"
+
+#: accounting.cpp:171
+msgid ""
+"terminated PPP connection\n"
+"COST OF SESSION: "
+msgstr ""
+"PPP spojenie ukonèené\n"
+"CENA SEANSY:"
+
+#: accounting.cpp:174
+msgid ""
+"\n"
+"SUBTOTAL FOR:"
+msgstr ""
+"\n"
+"ÈIASTOÈNÝ SÚÈET PRE:"
+
+#: acctselect.cpp:47
+msgid "Accounting Setup"
+msgstr "Nastavenie úètovania"
+
+#: acctselect.cpp:55
+msgid "Enable accounting"
+msgstr "Sprístupni» úètovanie"
+
+#: acctselect.cpp:73
+msgid "Selected:"
+msgstr "Vybraných:"
+
+#: acctselect.cpp:147 acctselect.cpp:253
+msgid "Available rules"
+msgstr "Dostupné pravidlá"
+
+#: ruleset.cpp:538
+msgid "kppp: no rulefile specified\n"
+msgstr "kppp: ne¹pecifikované ¾iadne pravidlo\n"
+
+#: ruleset.cpp:544
+#, c-format
+msgid "kppp: rulefile \"%s\" not found\n"
+msgstr "kppp: nena¹iel som súbor s pravidlami - \"%s\"\n"
+
+#: ruleset.cpp:549
+msgid "kppp: rulefiles must have the extension \".rst\"\n"
+msgstr "kppp: súbory s pravidlami musia ma» koncovku \".rst\"\n"
+
+#: ruleset.cpp:558
+msgid "kppp: error parsing the ruleset\n"
+msgstr "kppp: chyba pri analýze pravidiel\n"
+
+#: ruleset.cpp:563
+#, c-format
+msgid "kppp: parse error in line %d\n"
+msgstr "kppp: chyba pri analýze na riadku %d\n"
+
+#: ruleset.cpp:569
+msgid "kppp: rulefile does not contain a default rule\n"
+msgstr "kppp: súbor s pravidlami neobsahuje implicitné pravidlo\n"
+
+#: ruleset.cpp:574
+msgid "kppp: rulefile does not contain a \"name=...\" line\n"
+msgstr "kppp: súbor s pravidlami neobsahuje riadok \"name=...\"\n"
+
+#: ruleset.cpp:578
+msgid "kppp: rulefile is ok\n"
+msgstr "kppp: súbor s pravidlami je v poriadku\n"
+
+#: docking.cpp:71 docking.cpp:223
+msgid "Restore"
+msgstr "Obnovi»"
+
+#: docking.cpp:221
+msgid "Minimize"
+msgstr "Minimalizova»"
+
+#: runtests.cpp:97
+msgid ""
+"Cannot find the pppd-daemon!\n"
+"\n"
+"Make sure that pppd is installed and\n"
+"you have entered the correct path.\n"
+msgstr ""
+"Nie je mo¾né nájs» pppd démon!\n"
+"\n"
+"Uistite sa, ¾e pppd je nain¹talovaný\n"
+"a ¾e ste zadali správnu cestu.\n"
+
+#: runtests.cpp:109
+msgid ""
+"You do not have the permission\n"
+"to start pppd!\n"
+"\n"
+"Contact your system administrator\n"
+"and ask to get access to pppd."
+msgstr ""
+"Nemáte práva pre spustenie pppd!\n"
+"\n"
+"Kontaktujte svojho systémového administrátora,\n"
+"aby vám umo¾nil prístup k pppd."
+
+#: runtests.cpp:120
+msgid ""
+"pppd is not properly installed!\n"
+"\n"
+"The pppd binary must be installed\n"
+"with the SUID bit set. Contact your\n"
+"system administrator."
+msgstr ""
+"pppd nie je správne nain¹talovaný!\n"
+"\n"
+"Program pppd musí by» nai¹talovaný\n"
+"s nastaveným SUID bitom. Kontaktujte\n"
+"svojho systémového administrátora."
+
+#: runtests.cpp:141
+#, c-format
+msgid ""
+"The logviewer \"%s\" was not found!\n"
+"\n"
+"Setting default back to \"%s\"."
+msgstr ""
+"Nena¹iel som prehliadaè záznamov \"%s\"!\n"
+"\n"
+"Nastavujem spä» na ¹tandardný \"%s\"."

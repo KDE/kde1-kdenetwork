@@ -1,0 +1,167 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: knu 0.3.4\n"
+"POT-Creation-Date: 1998-02-24 21:40+0100\n"
+"PO-Revision-Date: 1998-03-08 10:42 MET\n"
+"Last-Translator: Juraj Bednár <bednar@isternet.sk>\n"
+"Language-Team: Slovak <bednar@isternet.sk>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-2\n"
+"Content-Transfer-Encoding: 8bit\n"    
+
+#: knu.cpp:123 knu.cpp:256
+msgid "&Ping"
+msgstr "&Ping"
+
+#: knu.cpp:132 knu.cpp:261
+msgid "&Traceroute"
+msgstr "&Traceroute"
+
+#: knu.cpp:141 knu.cpp:266
+msgid "Host &resolution"
+msgstr "&Rezolúcia hostiteµa"
+
+#: knu.cpp:156
+msgid ""
+"There is no command enabled\n"
+"in the configuration file.\n"
+"\n"
+"So I can't do anything...\n"
+msgstr ""
+"V konfiguraènom súbore nie je\n"
+"aktivovaný ¾iadny príkaz.\n"
+"\n"
+"Tak¾e nemô¾em niè vykonáva»...\n"
+
+#: knu.cpp:201
+msgid "&New window"
+msgstr "&Nové okno"
+
+#: knu.cpp:204
+msgid "&Close window"
+msgstr "&Zavrie» okno"
+
+#: knu.cpp:215
+msgid "Select &all"
+msgstr "Vy&ber v¹etko"
+
+#: knu.cpp:218
+msgid "C&lear output window"
+msgstr "&Vyèisti» okno s výstupom"
+
+#: knu.cpp:221
+msgid "P&references..."
+msgstr "N&astavenie..."
+
+#: knu.cpp:231
+msgid "About &Qt"
+msgstr "Informácie o &Qt"
+
+#: knu.cpp:404
+msgid "About..."
+msgstr "Informácie..."
+
+#: CommandDlg.cpp:112
+msgid "H&ost:"
+msgstr "H&ostiteµ:"
+
+#: CommandDlg.cpp:121
+msgid "&Go!"
+msgstr "Vy&kona»!"
+
+#: CommandDlg.cpp:131
+msgid "&Stop"
+msgstr "&Stop"
+
+#: CommandDlg.cpp:147
+msgid ""
+"This command binary was not found. \n"
+"You can give its path in the Edit->Preferences... menu."
+msgstr ""
+"Program vykonávajúci túto funkciu nebol nájdený. \n"
+"Je mo¾né zada» jeho meno a cestu v menu Úpravy->Mo¾nosti..."
+
+#: CommandDlg.cpp:453
+msgid "Binary"
+msgstr "Program"
+
+#: CommandDlg.cpp:461
+msgid "Path&name:"
+msgstr "U&miestnenie:"
+
+#: CommandDlg.cpp:470
+msgid "Additional &arguments:"
+msgstr "&Ïal¹ie parametre"
+
+#: CommandDlg.cpp:495
+msgid "This command had been disabled in the configuration file."
+msgstr "Tento príkaz bol vypnutý v konfiguraènom súbore."
+
+#: OptionsDlg.cpp:68
+msgid " - configuration"
+msgstr " - konfigurácia"
+
+#: PingDlg.cpp:90 TracerouteDlg.cpp:91
+msgid "Make host &name resolution"
+msgstr "Prevádza» rezolúciu &mena hostiteµa"
+
+#: HostDlg.cpp:220 PingDlg.cpp:146 TracerouteDlg.cpp:168
+msgid ""
+"You have a problem in your ~/.kde/share/config/knurc configuration file.\n"
+"In the ["
+msgstr ""
+"Máte problém vo va¹om konfiguraènom súbore ~/.kde/share/config/knurc.\n"
+"V skupine ["
+
+#: HostDlg.cpp:224 PingDlg.cpp:150 TracerouteDlg.cpp:172
+msgid "] group, I cannotfind a correct \"path=\" entry."
+msgstr "] nie je mo¾né nájs» korektnú polo¾ku \"path=\"."
+
+#: TracerouteDlg.cpp:108
+msgid "&Maximum number of hops:"
+msgstr "&Maximálny poèet skokov:"
+
+#: HostDlg.cpp:101
+msgid "address (A)"
+msgstr "adresa (A)"
+
+#: HostDlg.cpp:102
+msgid "name (PTR)"
+msgstr "meno (PTR)"
+
+#: HostDlg.cpp:103
+msgid "name server (NS)"
+msgstr "menný server (NS)"
+
+#: HostDlg.cpp:104
+msgid "mail exchanger (MX)"
+msgstr "po¹tový sprostredkovateµ (MX)"
+
+#: HostDlg.cpp:105
+msgid "alias (CNAME)"
+msgstr "alias (CNAME)"
+
+#: HostDlg.cpp:106
+msgid "start of authority (SOA)"
+msgstr "¹tart autority (SOA)"
+
+#: HostDlg.cpp:107
+msgid "any record (ANY)"
+msgstr "µubovoµný záznam (ANY)"
+
+#: HostDlg.cpp:113
+msgid "Se&arch for:"
+msgstr "&Hµadaj:"
+
+#: HostDlg.cpp:125 HostDlg.cpp:271
+msgid "default server"
+msgstr "¹tandardný server"
+
+#: HostDlg.cpp:134
+msgid "Ser&ver:"
+msgstr "Ser&ver:"
+
