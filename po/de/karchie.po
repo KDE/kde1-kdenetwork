@@ -2,13 +2,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: karchie 1.1.2\n"
 "POT-Creation-Date: 1999-03-05 02:18+0100\n"
-"PO-Revision-Date: 1999-01-20 21:15+MET\n"
+"PO-Revision-Date: 1999-03-13 21:40+MET\n"
+"Translator: Jörg Habenicht <j.habenicht@europemail.com>\n"
 "Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ios-8859-1\n"
-"Content-Transfer-Encoding: iso-8859-1\n"
-"Translator: Jörg Habenicht <j.habenicht@europemail.com>\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8-bit\n"
 
 #: KAMenu.cpp:75
 msgid "O&pen in editor"
@@ -48,7 +48,7 @@ msgstr "&Teilstring"
 
 #: KAMenu.cpp:102
 msgid "Substring &case insensitive"
-msgstr "Teilstring &ohne Groß-/Kleinschreibung"
+msgstr "Teilstring &ohne Groß/Klein"
 
 #: KAMenu.cpp:103
 msgid "&Regular expression"
@@ -60,7 +60,7 @@ msgstr "Exakt, dann Teilstring"
 
 #: KAMenu.cpp:105
 msgid "Exact, then substring case ins."
-msgstr "Exakt, dann Teilstring ohne G-/K"
+msgstr "Exakt, dann Teilstring ohne ohne Groß/Klein"
 
 #: KAMenu.cpp:106 KASettings.cpp:424
 msgid "Exact, then regular expression"
@@ -139,12 +139,10 @@ msgid "by &Filesize"
 msgstr "nach Datei&größe"
 
 #: KAMenu.cpp:169
-#, fuzzy
 msgid "KArchie ver. "
-msgstr "Archie-S&erver"
+msgstr "KArchie version"
 
 #: KAMenu.cpp:171
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -159,7 +157,7 @@ msgid ""
 "(See README files and copyright.h).\n"
 "My own code is based on the GPL"
 msgstr ""
-"KArchie Ver. %s\n"
+"\n"
 "\n"
 "von Jörg Habenicht <j.habenicht@europemail.com>\n"
 "\n"
@@ -210,7 +208,7 @@ msgstr "Kann Rechnernamen nicht auflösen"
 
 #: KAQuery.cpp:300
 msgid "Didn't send entire message"
-msgstr "Habe nicht die komplette Nachricht verschickt"
+msgstr "Nachricht nicht komplett verschickt"
 
 #: KAQuery.cpp:301
 msgid "Timed out"
@@ -458,7 +456,7 @@ msgstr "Archie Server-Einstellungen"
 
 #: KASettings.cpp:543
 msgid "Search init"
-msgstr "Such-Muster"
+msgstr "Suchmuster"
 
 #: KASettings.cpp:567
 msgid "Reset"
@@ -523,7 +521,7 @@ msgstr "Pfad"
 
 #: KAView.cpp:268
 msgid "Host:"
-msgstr "Host:"
+msgstr "Rechner:"
 
 #: KAView.cpp:270
 msgid "Path:"
@@ -560,7 +558,7 @@ msgstr "KArchie: ungültige Datei"
 
 #: KArchie.cpp:720
 msgid "Malformed url"
-msgstr "Fehlerhafte URL"
+msgstr "Ungültige URL"
 
 #: KArchie.cpp:724
 msgid "Maybe bad list entry, please select an other file"
@@ -601,5 +599,5 @@ msgid ""
 "or do a query."
 msgstr ""
 "Keine Datei ausgewählt!\n"
-"Bitte Datei aus den Abfrage-Ergebnissen\n"
+"Bitte Datei aus den Abfrageergebnissen\n"
 "auswählen oder neue Suche starten."
