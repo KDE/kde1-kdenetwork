@@ -106,11 +106,10 @@ void KMReaderWin::makeAttachDir(void)
 
   if (access(mAttachDir, W_OK) != 0) // Not there or not writable
   {
-    if (access(str, W_OK) != 0 &&
-	(mkdir(str, 0) != 0 || chmod(str, S_IRWXU) != 0))
-      ok=false; //failed create
-    else if (mkdir(mAttachDir, 0) != 0 || chmod(mAttachDir, S_IRWXU) != 0)
-      ok=false; //failed create
+    if (mkdir(str, S_IRWXU) != 0 && chmod(str, S_IRWXU) != 0)
+      ok=false; //failed create new or chmod existing tmp/
+    else if (mkdir(mAttachDir, S_IRWXU) != 0 && chmod(mAttachDir, S_IRWXU) != 0)
+      ok=false; //failed create new or chmod exisiting kmail<pid>/
   }
 
   if (!ok) warning(i18n("Failed to create temporary "

@@ -6,6 +6,14 @@
           it has no visible windows). Fix: main.cpp: newly created windows
           are shown(), existing ones are KWM::activated().
 
+        * Fixed possible bug reported by Jacek Stolarczyk
+          <jacek@mer.chemia.polsl.gliwice.pl>: kmail could create attachment
+          dirs with zero permissions and then couldn use them.
+
+        * Strengthen security: unlink lock and message files before writing
+          to them (in case user is root and those files are symlinks to
+          something)
+
 1999-06-20  Sven Radej <radej@kde.org> (KMail-1.0.26)
 
         * Fix for references (Thanks Waldo, Roberto, Rik and Peter):

@@ -145,6 +145,7 @@ static void writePid (bool ready)
   FILE* lck;
   char nlck[80];
   sprintf (nlck, "%s.kmail%d.lck", _PATH_TMP, getuid());
+  unlink (nlck); // Security - in case it was a socket, link, device...
   lck = fopen (nlck, "w");
   if (!ready)
     fprintf (lck, "%d", 0-getpid());
@@ -717,6 +718,7 @@ main(int argc, char *argv[])
         exit (0);
       }
       sprintf (lf, "%s.kmail%d.msg", _PATH_TMP, getuid());
+      unlink (lf); // In case of socket, link...
       msg = fopen (lf, "w");
       int i;
       app = new KApplication(argc, argv, "kmail"); // clear arg list
