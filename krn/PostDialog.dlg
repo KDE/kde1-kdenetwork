@@ -1,0 +1,142 @@
+DlgEdit:v1.2:Dialog:
+Dialog {
+	ClassHeader {PostDialog.h}
+	ClassSource {PostDialog.cpp}
+	ClassName {PostDialog}
+	DataHeader {PostDialogData.h}
+	DataSource {PostDialogData.cpp}
+	DataName {PostDialogData}
+	WindowBaseClass {QDialog}
+	IsModal {TRUE}
+	WindowCaption {Article manager}
+}
+WidgetLayout {
+		Rect {5 103 490 430}
+		Grid {10}
+
+MultiLineEdit {
+		Line {}
+		ReadOnly {FALSE}
+		OverwriteMode {FALSE}
+		Rect {10 10 340 120}
+		Name {ErrorList}
+		Variable {errorList}
+}
+ScrollBar {
+		Orientation {Vertical}
+		Rect {350 10 20 120}
+		Name {ErrorScroll}
+}
+PushButton {
+		ToggleButton {FALSE}
+		Default {FALSE}
+		AutoDefault {FALSE}
+		Text {Post now}
+		AutoRepeat {FALSE}
+		AutoResize {FALSE}
+		Rect {10 140 100 30}
+		Name {PostButton}
+		Signal {[Protected]  clicked --> postNow  ()}
+}
+PushButton {
+		ToggleButton {FALSE}
+		Default {FALSE}
+		AutoDefault {FALSE}
+		Text {Edit part}
+		AutoRepeat {FALSE}
+		AutoResize {FALSE}
+		Rect {380 220 100 30}
+		Name {EditButton}
+		Signal {[Protected]  clicked --> editPart  ()}
+}
+PushButton {
+		ToggleButton {FALSE}
+		Default {FALSE}
+		AutoDefault {FALSE}
+		Text {Cancel}
+		AutoRepeat {FALSE}
+		AutoResize {FALSE}
+		Rect {270 140 100 30}
+		Name {CancelButton}
+		Signal {[Protected]  clicked --> cancel  ()}
+}
+ListBox {
+		DragSelect {TRUE}
+		AutoScroll {TRUE}
+		ScrollBar {FALSE}
+		AutoScrollBar {TRUE}
+		BottomScrollBar {FALSE}
+		AutoBottomScrollBar {TRUE}
+		SmoothScrolling {TRUE}
+		Style {51}
+		LineWidth {2}
+		Rect {10 180 360 210}
+		Name {PartList}
+		Variable {partList}
+		Signal {[Protected]  highlighted --> select  (int)}
+		Signal {[Protected]  selected --> editPart  (int)}
+}
+PushButton {
+		ToggleButton {FALSE}
+		Default {FALSE}
+		AutoDefault {FALSE}
+		Text {Add part}
+		AutoRepeat {FALSE}
+		AutoResize {FALSE}
+		Rect {380 180 100 30}
+		Name {AddButton}
+		Signal {[Protected]  clicked --> addPart  ()}
+}
+PushButton {
+		ToggleButton {FALSE}
+		Default {FALSE}
+		AutoDefault {FALSE}
+		Text {Remove part}
+		AutoRepeat {FALSE}
+		AutoResize {FALSE}
+		Rect {380 360 100 30}
+		Name {RemoveButton}
+		Signal {[Protected]  clicked --> removePart  ()}
+}
+PushButton {
+		ToggleButton {FALSE}
+		Default {FALSE}
+		AutoDefault {FALSE}
+		Text {Part properties}
+		AutoRepeat {FALSE}
+		AutoResize {FALSE}
+		Rect {380 260 100 30}
+		Name {PropsButton}
+		Signal {[Protected]  clicked --> propsPart  ()}
+}
+PushButton {
+		ToggleButton {FALSE}
+		Default {FALSE}
+		AutoDefault {FALSE}
+		Text {Help}
+		AutoRepeat {FALSE}
+		AutoResize {FALSE}
+		Rect {380 10 100 30}
+		Name {HelpButton}
+		Signal {[Protected]  clicked --> showHelp  ()}
+}
+Label {
+		Text {}
+		AutoResize {FALSE}
+		Margin {-1}
+		Style {17}
+		Rect {10 390 470 30}
+		Name {Long help}
+		Variable {helpLabel}
+}
+PushButton {
+		ToggleButton {FALSE}
+		Default {FALSE}
+		AutoDefault {FALSE}
+		Text {Post later}
+		AutoRepeat {FALSE}
+		AutoResize {FALSE}
+		Rect {120 140 100 30}
+		Name {LaterButton}
+		Signal {[Protected]  clicked --> postLater  ()}
+}}

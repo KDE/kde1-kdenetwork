@@ -1,0 +1,231 @@
+# This is a sample Makefile.in 
+
+# @CXXFLAGS@     : is set to -g -Wall (when debuging) or -O2 -Wall (when not)
+# @all_includes@ : is set to all needed include paths for QT, KDE and X11
+# -I.. 	         : needed for config.h
+CXXFLAGS= @CXXFLAGS@ @all_includes@ -DHAVE_CONFIG_H -I..
+
+# @LDFLAGS@    : is set to -s (when not debuging) for stripping
+# @all_libra.@ : is set to all needed libraries paths for QT, KDE and X11
+# you need also @LIBSOCKET@, if you link with -lkfm
+LDFLAGS	= @LDFLAGS@ @all_libraries@ -lkdecore -lkdeui -lkhtmlw -lqt -lXext -lX11 -lmimelib -luulib
+
+# both are clear, I think
+CXX     = @CXX@
+MOC   	= @MOC@
+
+############# INSTALL #################
+
+install = @INSTALL@
+INSTALL = $(install) -m 0755
+INSTALL_DATA = $(install) -m 0644
+INSTALL_DIR = $(install) -d -m 0755
+INSTALL_DIR_PRIVATE = $(install) -d -m 0700
+
+prefix = @prefix@
+KDEINC = $(prefix)/include
+BINDIR = $(prefix)/bin
+LIBDIR = $(prefix)/lib
+PICSDIR = $(LIBDIR)/pics/krn
+
+########### File Formats ###########
+
+.SUFFIXES: .cpp
+
+.cpp.o:
+	$(CXX) -c $(CXXFLAGS) $<
+
+%.moc: %.h
+	$(MOC) $< -o $@
+
+########## Files #####################
+
+OBJECTS = 	main.o\
+		NNTP.o\
+                mNNTP.o\
+		groupdlg.o\
+                mgroupdlg.o\
+		artdlg.o\
+		martdlg.o\
+		kmessage.o\
+                mkmessage.o\
+		ktablistbox.o\
+                mktablistbox.o\
+		multipar.o\
+                basicmsg.o\
+                newsgroup.o\
+                kstrtable.o\
+                asker.o\
+                masker.o\
+                askerData.o\
+                identDlg.o\
+                midentDlg.o\
+                identDlgData.o\
+                NNTPConfigDlg.o\
+                mNNTPConfigDlg.o\
+                NNTPConfigDlgData.o\
+                decoderDlg.o\
+                mdecoderDlg.o\
+                kformatter.o\
+                mrmbpop.o\
+                rmbpop.o\
+                kdecode.o\
+                mkdecode.o\
+                aboutDlg.o\
+                maboutDlg.o\
+                aboutDlgData.o
+
+SRCMETA = 	mgroupdlg.o \
+		mNNTP.o \
+                martdlg.o\
+                mkmessage.o\
+                mktablistbox.o\
+                mnewsgroup.o\
+                masker.o\
+                midentDlg.o\
+                mNNTPConfigDlg.o\
+                mrmbpop.o\
+                mdecoderDlg.o\
+                mkdecode.o\
+                maboutDlg.o
+
+METASRC =	mgroupdlg.cpp \
+		mNNTP.cpp \
+                martdlg.cpp\
+                mkmessage.cpp\
+                mktablistbox.cpp\
+                mnewsgroup.cpp\
+                masker.cpp\
+                midentDlg.cpp\
+                mNNTPConfigDlg.cpp\
+                mrmbpop.cpp\
+                mdecoderDlg.cpp\
+                mkdecode.cpp\
+                maboutDlg.cpp
+
+TARGET	=	krn
+
+SOURCES = 	main.cpp\
+		NNTP.cpp\
+                mNNTP.cpp\
+		groupdlg.cpp\
+                mgroupdlg.cpp\
+		artdlg.cpp\
+		martdlg.cpp\
+		kmessage.cpp\
+                mkmessage.cpp\
+		ktablistbox.cpp\
+                mktablistbox.cpp\
+		multipar.cpp\
+                basicmsg.cpp\
+                newsgroup.cpp\
+                kstrtable.cpp\
+                asker.cpp\
+                askerData.cpp\
+                identDlg.cpp\
+                identDlgData.cpp\
+                NNTPConfigDlg.cpp\
+                NNTPConfigDlgData.cpp\
+                decoderDlg.cpp\
+                kformatter.cpp\
+                rmbpop.cpp\
+                kdecode.cpp\
+                aboutDlg.cpp\
+                aboutDlgData.cpp
+
+HEADERS = 	NNTP.h\
+		basicmsg.h\
+                kmessage.h\
+                multipar.h\
+		artdlg.h\
+                groupdlg.h\
+                ktablistbox.h\
+                newsgroup.h\
+                kmessage.h\
+                kstrtable.h\
+                asker.h\
+                askerData.h\
+                identDlg.h\
+                identDlgData.h\
+                NNTPConfigDlg.h\
+                NNTPConfigDlgData.h\
+                decoderDlg.h\
+                kformatter.h\
+                rmbpop.h\
+                kdecode.h\
+                aboutDlg.h\
+                aboutDlgData.h
+
+
+
+######### build rules ################
+
+all: Makefile $(TARGET)
+
+Makefile: Makefile.in
+	cd .. && ONFIG_FILES=krn/$@ CONFIG_HEADERS= $(SHELL) ./config.status
+
+$(TARGET): $(SRCMETA) $(OBJECTS)
+	$(CXX) $(OBJECTS) -o $(TARGET) $(LDFLAGS)
+
+clean:
+	rm -f *.o *.bak *~ *% #*
+	rm -f $(METASRC) $(TARGET) 
+
+distclean: clean
+	rm -f Makefile
+
+install: all
+	$(INSTALL_DIR) $(BINDIR)
+	$(INSTALL) $(TARGET) $(BINDIR)
+	(cd pics && $(MAKE) install)
+
+uninstall:
+	rm -f $(BINDIR)/$(TARGET)
+	(cd pics && $(MAKE) uninstall)
+
+####### Meta objects
+
+mNNTP.cpp: NNTP.h
+	$(MOC) NNTP.h -o mNNTP.cpp
+
+mgroupdlg.cpp: groupdlg.h
+	$(MOC) groupdlg.h -o mgroupdlg.cpp
+
+martdlg.cpp: artdlg.h
+	$(MOC) artdlg.h -o martdlg.cpp
+
+mkmessage.cpp: kmessage.h
+	$(MOC) kmessage.h -o mkmessage.cpp
+
+mktablistbox.cpp: ktablistbox.h
+	$(MOC) ktablistbox.h -o mktablistbox.cpp
+
+mnewsgroup.cpp: newsgroup.h
+	$(MOC) newsgroup.h -o mnewsgroup.cpp
+
+masker.cpp: asker.h
+	$(MOC) asker.h -o masker.cpp
+
+midentDlg.cpp: identDlg.h
+	$(MOC) identDlg.h -o midentDlg.cpp
+
+mNNTPConfigDlg.cpp: NNTPConfigDlg.h
+	$(MOC) NNTPConfigDlg.h -o mNNTPConfigDlg.cpp
+
+mdecoderDlg.cpp: decoderDlg.h
+	$(MOC) decoderDlg.h -o mdecoderDlg.cpp
+
+mrmbpop.cpp: rmbpop.h
+	$(MOC) rmbpop.h -o mrmbpop.cpp
+
+mkdecode.cpp: kdecode.h
+	$(MOC) kdecode.h -o mkdecode.cpp
+
+maboutDlg.cpp: aboutDlg.h
+	$(MOC) aboutDlg.h -o maboutDlg.cpp
+
+depend:
+	@makedepend -I$(INCDIR) $(SOURCES) 2> /dev/null
+
+# DO NOT DELETE THIS LINE -- make depend depends on it.

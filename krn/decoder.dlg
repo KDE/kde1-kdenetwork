@@ -1,0 +1,47 @@
+DlgEdit {
+	ClassHeader {decoderDlg.h}
+	ClassSource {decoderDlg.cpp}
+	ClassName {decoderDlg}
+	DataHeader {decoderDlgData.h}
+	DataSource {decoderDlgData.cpp}
+	DataName {decoderDlgData}
+	DataInherited {TRUE}
+		WindowBaseClass {QDialog}
+		IsModal {TRUE}
+}
+WidgetLayout {
+		Rect {5 100 370 340}
+		Grid {10}
+
+ListBox {
+		DragSelect {TRUE}
+		AutoScroll {TRUE}
+		ScrollBar {FALSE}
+		AutoScrollBar {TRUE}
+		BottomScrollBar {FALSE}
+		AutoBottomScrollBar {TRUE}
+		SmoothScrolling {TRUE}
+		Style {51}
+		LineWidth {2}
+		Rect {10 10 350 280}
+		Name {ListBox_1}
+		Variable {list}
+}
+PushButton {
+		ToggleButton {FALSE}
+		Default {FALSE}
+		AutoDefault {FALSE}
+		Text {Decode}
+		Rect {10 300 100 30}
+		Name {PushButton_1}
+		Variable {b1}
+}
+PushButton {
+		ToggleButton {FALSE}
+		Default {FALSE}
+		AutoDefault {FALSE}
+		Text {Done}
+		Rect {260 300 100 30}
+		Name {PushButton_2}
+		Variable {b2}
+}}

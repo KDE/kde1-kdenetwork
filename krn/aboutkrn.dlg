@@ -1,0 +1,65 @@
+DlgEdit {
+	ClassHeader {aboutDlg.h}
+	ClassSource {aboutDlg.cpp}
+	ClassName {aboutDlg}
+	DataHeader {aboutDlgData.h}
+	DataSource {aboutDlgData.cpp}
+	DataName {aboutDlgData}
+	DataInherited {TRUE}
+		WindowBaseClass {QDialog}
+		IsModal {TRUE}
+		WindowCaption {About KRN}
+}
+WidgetLayout {
+		Rect {5 100 400 300}
+		Grid {10}
+
+PushButton {
+		ToggleButton {FALSE}
+		Default {FALSE}
+		AutoDefault {TRUE}
+		Text {OK}
+		Rect {10 260 380 30}
+		Name {PushButton_1}
+		Variable {b1}
+}
+Label {
+		Text {Part of the KDE project.}
+		Alignment {36}
+		Style {50}
+		Rect {10 120 380 30}
+		Name {Label_1}
+}
+ListBox {
+		Item {Roberto Alsina <ralsina@unl.edu.ar>}
+		Item {Magnus Reftel <d96reftl@dtek.chalmers.se>}
+		Item {Sander Alberink <sander.alberink@bigfoot.com>}
+		Item {And Many thanks to:}
+		Item {Doug Sauder <dwsauder@fwb.gulf.net>}
+		Item {Stephan Kulow <coolo@kde.org>}
+		Item {All KDE developers}
+		Item {All testers}
+		Item {Troll Tech}
+		DragSelect {TRUE}
+		AutoScroll {TRUE}
+		ScrollBar {TRUE}
+		AutoScrollBar {TRUE}
+		BottomScrollBar {FALSE}
+		AutoBottomScrollBar {TRUE}
+		SmoothScrolling {TRUE}
+		Style {51}
+		LineWidth {2}
+		Rect {10 190 380 60}
+		Name {ListBox_1}
+		Palette {16711680 16777215 16777215 6316128 10789024 255 16777215 8421504 12632256 16777215 6316128 10789024 8421504 12632256 0 12632256 16777215 6316128 10789024 0 16777215}
+}
+Label {
+		Text {Credits}
+		Alignment {292}
+		Rect {10 160 380 30}
+		Name {Label_3}
+}
+Frame {
+		Rect {10 10 380 100}
+		Name {Frame_1}
+}}
