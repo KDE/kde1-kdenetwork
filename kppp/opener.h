@@ -25,6 +25,7 @@ public:
   enum { MaxPathLen = 30, MaxStrLen = 40 };
 
 private:
+  enum { Original=0x100, New=0x200, Old=0x400 } Version;
   void mainLoop();
   int sendFD(const char *ttypath, int ttyfd, struct ResponseHeader *response);
   int sendResponse(struct ResponseHeader *response);
@@ -33,7 +34,6 @@ private:
   bool removeAuthFile(int authMethod);
   const char* authFile(int authMethod, int version = Original);
 
-  enum { Original=0x100, New=0x200, Old=0x400 } Version;
   int socket;
   char lockfile[MaxPathLen+1];
 };
