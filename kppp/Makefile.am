@@ -49,9 +49,9 @@ kppp_SOURCES	= accounts.cpp \
 		accounting.cpp \
 		acctselect.cpp\
 		ruleset.cpp \
-		homedir.cpp \
 		pap.cpp \
-		docking.cpp
+		docking.cpp \
+		runtests.cpp
 
 # the library search path
 kppp_LDFLAGS = $(all_libraries) $(KDE_RPATH)
@@ -81,9 +81,9 @@ noinst_HEADERS = accounts.h \
 		accounting.h \
 		acctselect.h\
 		ruleset.h \
-		homedir.h \
 		pap.h \
-		docking.h
+		docking.h \
+		runtests.h
 
 # just to make sure, automake makes them 
 BUILTSOURCES = accounts.moc \

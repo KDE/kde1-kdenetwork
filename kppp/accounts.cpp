@@ -24,13 +24,12 @@
  * Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
+#include <qdir.h>
 #include <qlayout.h>
 #include <qfiledlg.h>
 #include <kmsgbox.h>
 
 #include "macros.h"
-#include "homedir.h"
-#include "accounts.h"
 #include "main.h"
 
 
@@ -174,7 +173,7 @@ void AccountWidget::slotListBoxSelect(int idx) {
 void AccountWidget::viewLogClicked(){
 
   QString d;
-  d = getHomeDir();
+  d = QDir::homeDirPath() + "/";
   d += ACCOUNTING_PATH ;
   d += "/Log/";
 

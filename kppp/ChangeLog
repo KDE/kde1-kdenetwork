@@ -1,3 +1,20 @@
+Mon Jan 19 17:51:16 1998  Mario Weilguni  <mweilguni@sime.com>
+
+	* main.cpp: the setup dialog is now created on demand. Since in
+	most cases we only dial out, creating the setup dialog is a waste
+	of CPU and memory. This reduces memory by approx 200KB.
+
+	* geometry managment added to PPP statistic window
+
+	* tried to minimize dependencies on "main.h" by removing unneeded
+	#includes
+
+	* removed homedir.(cpp|h). It can be easily replaced with
+	QDir::homeDirPath().
+
+	* before doing anything else, a few tests will be started to
+	ensure that i.e. the pppd binary is found...
+
 Mon Jan 19 12:05:00 1998  Harri Porten  <porten@tu-harburg.de>
 
 	* set default for get_dock_into_panel() to false as safety

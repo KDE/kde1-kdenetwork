@@ -64,7 +64,7 @@ public:
   void update_data(bool data_available);
 
 private:
-
+  QLabel *pixmap_l;
   QWidget *main;
   QPushButton *cancelbutton;
   QTimer *clocktimer;
@@ -110,7 +110,3 @@ private:
 
 
 #endif
-
-
-
-

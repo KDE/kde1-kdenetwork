@@ -122,6 +122,8 @@ public:
   QPushButton *quit_b;
 
 private:
+  void prepareSetupDialog();
+
   QString ruleset_load_errmsg;
 
   QPushButton *help_b;

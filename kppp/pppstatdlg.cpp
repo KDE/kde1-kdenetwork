@@ -23,8 +23,6 @@
  */
 
 
-#include "main.h"
-
 #ifdef COMPILE_PIX
 #include "modemnone.h"
 #include "modemboth.h"
@@ -33,13 +31,16 @@
 #endif
 
 #include <kmsgbox.h>
+#include <qlayout.h>
+#include <qmsgbox.h>
+#include <kapp.h>
 
-
+#include "macros.h"
+#include "pppdata.h"
 #include "pppstatdlg.h"
 #include "kpppconfig.h"
+#include "iplined.h"
 
-extern XPPPWidget *p_xppp;
-extern KApplication *app;
 extern PPPData gpppdata;
 extern bool do_stats();
 extern bool init_stats();
@@ -58,71 +59,29 @@ extern QString  local_ip_address;
 extern QString  remote_ip_address;
 
 
-PPPStatsDlg::PPPStatsDlg(QWidget *parent, const char *name,QWidget *mainwidget)
-  : QWidget(parent, name,0 ){
+PPPStatsDlg::PPPStatsDlg(QWidget *parent, const char *name, QWidget *)
+  : QWidget(parent, name, 0 )
+{
+  int i;
 
+  setCaption(klocale->translate("kppp Statistics"));  
 
-  (void) mainwidget;
+  QVBoxLayout *tl = new QVBoxLayout(this, 10);
+  QGridLayout *l1 = new QGridLayout(3, 3);
+  tl->addLayout(l1, 1);
+  box = new QGroupBox(klocale->translate("Statistics"), this);
+  l1->addMultiCellWidget(box, 0, 2, 0, 2);
+  l1->addRowSpacing(0, fontMetrics().lineSpacing() - 10);
+  l1->setRowStretch(1, 1);
+  l1->setColStretch(1, 1);
+  
+  // inner part of the grid
+  QVBoxLayout *l11 = new QVBoxLayout;
+  l1->addLayout(l11, 1, 1);
 
-  this->setCaption(klocale->translate("kppp Statistics"));
-
-  box = new QGroupBox(klocale->translate("Statistics"),this);
-  box->setGeometry(5,5,410,300);
-
-  for(int i =0 ; i < 5; i++){
-    labela1[i] = new QLabel(this);
-    labela1[i]->setGeometry(20,110 + 40*i,80,25);
-
-    labela2[i] = new QLabel(this);
-    labela2[i]->setGeometry(105,110 + 40*i,90,25); 
-    labela2[i]->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
-//    labela2[i]->setBackgroundColor(white);
-
-    labelb1[i] = new QLabel(this);
-    labelb1[i]->setGeometry(220,110 + 40*i,85,25);
-
-    labelb2[i] = new QLabel(this);
-    labelb2[i]->setGeometry(310,110 + 40*i,90,25); 
-    labelb2[i]->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
-  //  labelb2[i]->setBackgroundColor(white);
-  }
-
-  labela1[0]->setText(klocale->translate("bytes in"));
-  labelb1[0]->setText(klocale->translate("bytes out"));
-
-  labela1[1]->setText(klocale->translate("packets in"));
-  labelb1[1]->setText(klocale->translate("packets out"));
-
-  labela1[2]->setText(klocale->translate("vjcomp in"));
-  labelb1[2]->setText(klocale->translate("vjcomp out"));
-
-  labela1[3]->setText(klocale->translate("vjunc in"));
-  labelb1[3]->setText(klocale->translate("vjunc out"));
-
-  labela1[4]->setText(klocale->translate("vjerr"));
-  labelb1[4]->setText(klocale->translate("non-vj"));
-
-  ip_address_label1 = new QLabel(this);
-  ip_address_label1->setGeometry(200,30,100,25);
-  ip_address_label1->setText(klocale->translate("Local Addr:"));
-
-
-  ip_address_label2 = new QLineEdit(this);
-  ip_address_label2->setGeometry(290,30,110,25);
-  ip_address_label2->setFocusPolicy(QWidget::NoFocus);
-
-  ip_address_label3 = new QLabel(this);
-  ip_address_label3->setGeometry(200,70,100,25);
-  ip_address_label3->setText(klocale->translate("Remote Addr:"));
-
-  ip_address_label4 = new QLineEdit(this);
-  ip_address_label4->setGeometry(290,70,110,25);
-  ip_address_label4->setFocusPolicy(QWidget::NoFocus);
-
-  cancelbutton = new QPushButton(this,"cancelbutton");
-  cancelbutton->setGeometry(310,315,90,25);
-  cancelbutton->setText(klocale->translate("OK"));
-  connect(cancelbutton, SIGNAL(clicked()), this,SLOT(cancel()));
+  // modem pixmap and IP labels
+  QHBoxLayout *l111 = new QHBoxLayout;
+  l11->addLayout(l111);
 
   /*
   if ( !modem_pixmap.loadFromData(Terminal_xpm_data, Terminal_xpm_len) ) {
@@ -139,7 +98,7 @@ PPPStatsDlg::PPPStatsDlg(QWidget *parent, const char *name,QWidget *mainwidget)
   }
   */
 
-  QString pixdir = app->kdedir() + QString("/share/apps/kppp/pics/");  
+  QString pixdir = kapp->kdedir() + QString("/share/apps/kppp/pics/");  
   QString tmp;
 
 #define PMERROR(pm) \
@@ -174,105 +133,182 @@ PPPStatsDlg::PPPStatsDlg(QWidget *parent, const char *name,QWidget *mainwidget)
   }
 #endif
 
+  pixmap_l = new QLabel(this);
+  pixmap_l->setMinimumSize(big_modem_both_pixmap.size());
+  l111->addWidget(pixmap_l, 1);
+  pixmap_l->setAlignment(AlignVCenter|AlignLeft);
 
-  this->setMinimumSize(420,350);
-  this->setMaximumSize(420,350);
+  QGridLayout *l1112 = new QGridLayout(3, 2);
+  l111->addLayout(l1112);
+  
+  ip_address_label1 = new QLabel(this);
+  ip_address_label1->setText(klocale->translate("Local Addr:"));
+
+  ip_address_label2 = new IPLineEdit(this);
+  ip_address_label2->setFocusPolicy(QWidget::NoFocus);
+
+  ip_address_label3 = new QLabel(this);
+  ip_address_label3->setText(klocale->translate("Remote Addr:"));
+
+  ip_address_label4 = new IPLineEdit(this);
+  ip_address_label4->setFocusPolicy(QWidget::NoFocus);
+
+  MIN_SIZE(ip_address_label1);
+  MIN_SIZE(ip_address_label2);
+  MIN_SIZE(ip_address_label3);
+  MIN_SIZE(ip_address_label4);
+
+  l1112->addWidget(ip_address_label1, 0, 0);
+  l1112->addWidget(ip_address_label2, 0, 1);
+  l1112->addWidget(ip_address_label3, 1, 0);
+  l1112->addWidget(ip_address_label4, 1, 1);
+
+  // consumes space on bottom
+  l1112->setRowStretch(2, 1);
+  
+  QGridLayout *l112 = new QGridLayout(5, 4);  
+  l11->addLayout(l112);
+  for(i =0 ; i < 5; i++){
+    labela1[i] = new QLabel(this);
+
+    labela2[i] = new QLabel(this);
+    labela2[i]->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+
+    labelb1[i] = new QLabel(this);
+
+    labelb2[i] = new QLabel(this);
+    labelb2[i]->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+ }
+
+  labela1[0]->setText(klocale->translate("bytes in"));
+  labelb1[0]->setText(klocale->translate("bytes out"));
+
+  labela1[1]->setText(klocale->translate("packets in"));
+  labelb1[1]->setText(klocale->translate("packets out"));
+
+  labela1[2]->setText(klocale->translate("vjcomp in"));
+  labelb1[2]->setText(klocale->translate("vjcomp out"));
+
+  labela1[3]->setText(klocale->translate("vjunc in"));
+  labelb1[3]->setText(klocale->translate("vjunc out"));
+
+  labela1[4]->setText(klocale->translate("vjerr"));
+  labelb1[4]->setText(klocale->translate("non-vj"));
+
+  for(i = 0; i < 5; i++) {
+    labela2[i]->setText("88888888");
+    labelb2[i]->setText("88888888");
+    MIN_SIZE(labela1[i]);
+    MIN_SIZE(labela2[i]);
+    MIN_SIZE(labelb1[i]);
+    MIN_SIZE(labelb2[i]);
+    labela2[i]->setText("");
+    labelb2[i]->setText("");
+
+    // add to layout
+    l112->addWidget(labela1[i], i, 0);
+    l112->addWidget(labela2[i], i, 1);
+    l112->addWidget(labelb1[i], i, 2);
+    l112->addWidget(labelb2[i], i, 3);
+  }
+
+  l112->setColStretch(1, 1);
+  l112->setColStretch(3, 1);
+
+  tl->addSpacing(5);
+  QHBoxLayout *l12 = new QHBoxLayout;
+  tl->addLayout(l12);
+  l12->addStretch(1);
+  
+
+  cancelbutton = new QPushButton(this, "cancelbutton");
+  cancelbutton->setText(klocale->translate("Close"));
+  cancelbutton->setFocus();
+  connect(cancelbutton, SIGNAL(clicked()), this,SLOT(cancel()));
+  FIXED_HEIGHT(cancelbutton);
+  cancelbutton->setMinimumWidth(QMAX(cancelbutton->sizeHint().width(), 70));   
+  l12->addWidget(cancelbutton);
 
   clocktimer = new QTimer(this);
   connect(clocktimer, SIGNAL(timeout()), SLOT(timeclick()));
 
+  tl->freeze();
 }
 
 
 PPPStatsDlg::~PPPStatsDlg() {
-
- clocktimer->stop();
-  
+  clocktimer->stop();
 }
 
 
-void PPPStatsDlg::cancel(){
-  
-  this->hide();
-
+void PPPStatsDlg::cancel() {
+  hide();
 }
 
 
-void PPPStatsDlg::take_stats(){
-
+void PPPStatsDlg::take_stats() {
   init_stats();
   ips_set = false;
   clocktimer->start(PPP_STATS_INTERVAL);
-
 }
 
-void PPPStatsDlg::stop_stats(){
-  
+
+void PPPStatsDlg::stop_stats() {
   clocktimer->stop();
-
 }
 
 
-void PPPStatsDlg::paintEvent (QPaintEvent *e) {
-
-  (void) e;
-
+void PPPStatsDlg::paintEvent (QPaintEvent *) {
   paintIcon();
-
 }
+
 
 void PPPStatsDlg::paintIcon(){
 
     if((ibytes_last != ibytes) && (obytes_last != obytes)){
       //      bitBlt( box, 35,25, &modem_both_pixmap );    
-      bitBlt( box, 30,20, &big_modem_both_pixmap );    
+      pixmap_l->setPixmap(big_modem_both_pixmap);
       ibytes_last = ibytes;
       obytes_last = obytes;
       return;
     }
     
     if (ibytes_last != ibytes){
-      //      bitBlt( box, 35,25, &modem_left_pixmap );    
-      bitBlt( box, 30,20, &big_modem_left_pixmap );    
+      pixmap_l->setPixmap(big_modem_left_pixmap);
       ibytes_last = ibytes;
       obytes_last = obytes;
       return;
     }
     
     if(obytes_last != obytes){
-      //      bitBlt( box, 35,25, &modem_right_pixmap );    
-      bitBlt( box, 30,20, &big_modem_right_pixmap );    
+      pixmap_l->setPixmap(big_modem_right_pixmap);
       ibytes_last = ibytes;
       obytes_last = obytes;
       return;
     }
     
-    //    bitBlt( box, 35,25, &modem_pixmap );    
-    bitBlt( box, 30,20, &big_modem_none_pixmap );    
+    pixmap_l->setPixmap(big_modem_none_pixmap);
     ibytes_last = ibytes;
     obytes_last = obytes;
 
 } 
+
  
 void PPPStatsDlg::timeclick() {
-
   if( this->isVisible()){
     update_data(do_stats());  
     paintIcon();
   }  
 }
 
-void PPPStatsDlg::closeEvent( QCloseEvent *e ){
 
-  e->ignore();                            
-	
+void PPPStatsDlg::closeEvent( QCloseEvent *e ) {
+  e->ignore();
 }
 
 
-void PPPStatsDlg::update_data(bool data_available){
+void PPPStatsDlg::update_data(bool) {
 
-  (void) data_available;
-  
   ibytes_string.sprintf("%d",ibytes);
   ipackets_string.sprintf("%d",ipackets);
   compressedin_string.sprintf("%d",compressedin);

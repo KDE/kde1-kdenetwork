@@ -22,17 +22,20 @@
  * Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
+#include <qdir.h>
 #include <unistd.h>
 #include "pap.h"
 #include "pppdata.h"
-#include "homedir.h"
+
 
 bool PAP_UsePAP() {
   return (bool)(gpppdata.authMethod() == AUTH_PAP);
 }
 
 QString PAP_AuthFile() {
-  return QString(getHomeDir() + PAP_AUTH_FILE);
+  QString s = QDir::homeDirPath() + "/";
+  s += PAP_AUTH_FILE;
+  return s;
 }
 
 bool PAP_CreateAuthFile() {  

@@ -39,10 +39,10 @@
 #include "acctselect.h"
 #include "main.h"
 #include "version.h"
-#include "homedir.h"
 #include "macros.h"
 #include "pap.h"
 #include "docking.h"
+#include "runtests.h"
 
 #include <X11/Xlib.h>
 
@@ -135,10 +135,9 @@ void make_directories(){
 
   QDir dir;
 
-  QString d;
-  d = getHomeDir();
-
+  QString d = QDir::homeDirPath() + "/";
   d += "/.kde";
+
   dir.setPath(d.data());
   if(!dir.exists()){
     dir.mkdir(d.data());
@@ -181,8 +180,7 @@ void make_directories(){
     chmod(d.data(),S_IRUSR | S_IWUSR | S_IXUSR);
   }
 
-  QString logdir;
-  logdir = getHomeDir();
+  QString logdir = QDir::homeDirPath() + "/";
   logdir += ACCOUNTING_PATH "/Log";
 
   dir.setPath(logdir.data());
@@ -274,10 +272,17 @@ int main( int argc, char **argv ) {
 
 
 XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
-  : QWidget(parent, name) {
+  : QWidget(parent, name) 
+{
+  tabWindow = 0;
 
   bool config;
   config = gpppdata.open(app);
+
+  // before doing anything else, run a few tests
+  int result = runTests();
+  if(result == TEST_CRITICAL)
+    exit(4);
 
   connected = false;
 
@@ -400,25 +405,6 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
   // the dialer through a command line argument
   connect(this,SIGNAL(cmdl_start()),this,SLOT(connectbutton())); 
 
-  tabWindow = new QTabDialog( 0, 0, TRUE );
-  tabWindow->setCaption( klocale->translate("kppp Configuration") );
-  tabWindow->setOkButton(klocale->translate("OK"));
-  tabWindow->setCancelButton(klocale->translate("Cancel"));
-  tabWindow->resize( 355, 350 );
-  tabWindow->setFixedSize( 355, 350 ); // this doesn't seem to work in Qt 1.1
-
-  accounts = new AccountWidget(tabWindow,"accounts");
-  modem = new ModemWidget(tabWindow,"modem");
-  modem2 = new ModemWidget2(tabWindow,"modem2");
-  general = new GeneralWidget(tabWindow,"general");
-  about  = new AboutWidget(tabWindow,"about");
-  
-  tabWindow->addTab( accounts, klocale->translate("Accounts") );
-  tabWindow->addTab( modem, klocale->translate("Device") );
-  tabWindow->addTab( modem2, klocale->translate("Modem") );
-  tabWindow->addTab( general, klocale->translate("PPP") );
-  tabWindow->addTab( about, klocale->translate("About") );
-
   con_win = new ConWindow(0,"conw",this);
   con_win->setGeometry(QApplication::desktop()->width()/2-160,
 		    QApplication::desktop()->height()/2-55,
@@ -472,6 +458,29 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
   }
 }
 
+void XPPPWidget::prepareSetupDialog() {
+  if(tabWindow == 0) {
+    tabWindow = new QTabDialog( 0, 0, TRUE );
+    tabWindow->setCaption( klocale->translate("kppp Configuration") );
+    tabWindow->setOkButton(klocale->translate("OK"));
+    tabWindow->setCancelButton(klocale->translate("Cancel"));
+    tabWindow->resize( 355, 350 );
+    tabWindow->setFixedSize( 355, 350 ); // this doesn't seem to work in Qt 1.1
+    
+    accounts = new AccountWidget(tabWindow,"accounts");
+    modem = new ModemWidget(tabWindow,"modem");
+    modem2 = new ModemWidget2(tabWindow,"modem2");
+    general = new GeneralWidget(tabWindow,"general");
+    about  = new AboutWidget(tabWindow,"about");
+    
+    tabWindow->addTab( accounts, klocale->translate("Accounts") );
+    tabWindow->addTab( modem, klocale->translate("Device") );
+    tabWindow->addTab( modem2, klocale->translate("Modem") );
+    tabWindow->addTab( general, klocale->translate("PPP") );
+    tabWindow->addTab( about, klocale->translate("About") );
+  }
+}
+
 void XPPPWidget::enterPressedInID() {
   PW_Edit->setFocus();
 }
@@ -489,6 +498,7 @@ void XPPPWidget::log_window_toggled(bool on){
 
 void XPPPWidget::setup()
 {
+  prepareSetupDialog();
 
   if(tabWindow->exec())
     gpppdata.save();

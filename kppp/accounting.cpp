@@ -39,7 +39,6 @@
 #include <kprogress.h>
 
 #include "accounting.h"
-#include "homedir.h"
 #include "kpppconfig.h"
 #include "pppdata.h"
 
@@ -189,9 +188,8 @@ bool Accounting::loadRuleSet(const char *name) {
     return TRUE;
   }
 
-  QString d;
   // load from home directory if file is found there
-  d = getHomeDir();
+  QString d = QDir::homeDirPath() + "/";
   d += ACCOUNTING_PATH ;
   d += "/Rules/";
   d += name;
@@ -225,7 +223,7 @@ void Accounting::logMessage(const char *s) {
 
 void Accounting::logMessage(QString s) {
 
-  QString fname = getHomeDir();
+  QString fname = QDir::homeDirPath() + "/";
   fname += ACCOUNTING_PATH;
   fname += "/Log/";
   fname += LogFileName;
@@ -347,7 +345,7 @@ QString Accounting::getCosts(const char* accountname) {
 
 /*
 void Accounting::truncateLogFile() {
-  QString fname = getHomeDir();
+  QString fname = QDir::homeDirPath() + "/";
   fname += ACCOUNTING_PATH;
   fname += "/LOG";
 

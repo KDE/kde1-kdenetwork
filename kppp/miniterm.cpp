@@ -30,9 +30,8 @@
 
 #include <kmsgbox.h>
 
-
-#include "main.h"
 #include "connect.h"
+#include "pppdata.h"
 #include "miniterm.h"
 
 #define T_WIDTH 550
@@ -42,8 +41,6 @@
 extern int usleep( long usec );
 #endif 
 
-extern XPPPWidget *p_xppp;
-extern KApplication *app;
 extern PPPData gpppdata;
 
 MiniTerm::MiniTerm(QWidget *parent=0, const char *name=0)
@@ -153,7 +150,7 @@ void MiniTerm::init() {
 
   inittimer->stop();
   statusbar->setText(klocale->translate("Initializing Modem"));
-  app->processEvents();
+  kapp->processEvents();
 
   int lock = lockdevice();
   if (lock == 1){
@@ -180,8 +177,8 @@ void MiniTerm::init() {
     statusbar->setText(klocale->translate("Modem Ready"));
     terminal->setFocus();
 
-    app->processEvents();
-    app->processEvents();
+    kapp->processEvents();
+    kapp->processEvents();
     readtimer->start(1);
   }
   else {// commmented out since this will now be set by the opentty() better.
@@ -225,8 +222,8 @@ void MiniTerm::cancelbutton() {
 
   readtimer->stop();
   statusbar->setText(klocale->translate("Hanging up ..."));
-  app->processEvents();
-  app->flushX();
+  kapp->processEvents();
+  kapp->flushX();
 
   if(modemfd >= 0) {
     writeline(gpppdata.modemHangupStr());
@@ -246,8 +243,8 @@ void MiniTerm::resetModem(){
  
   statusbar->setText(klocale->translate("Resetting Modem"));
   terminal->newLine();
-  app->processEvents();
-  app->flushX();
+  kapp->processEvents();
+  kapp->flushX();
 
   if(modemfd >= 0) {
     writeline(gpppdata.modemHangupStr());
@@ -472,7 +469,7 @@ void MiniTerm::closeEvent( QCloseEvent *e ){
 
 void MiniTerm::help(){
 
-  app->invokeHTMLHelp("kppp/kppp.html","");
+  kapp->invokeHTMLHelp("kppp/kppp.html","");
 
 }
 

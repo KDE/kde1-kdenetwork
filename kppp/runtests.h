@@ -1,11 +1,13 @@
-/* -*- C++ -*-
+/*
  *            kPPP: A pppd front end for the KDE project
  *
  * $Id$
  * 
  *            Copyright (C) 1997 Bernd Johannes Wuebben 
  *                   wuebben@math.cornell.edu
- *
+ * 
+ * This file was contributed by Mario Weilguni <mweilguni@sime.com>
+ * Thanks Mario !
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -22,24 +24,17 @@
  * Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-#include <qstring.h>
-#include <unistd.h>
-#include <pwd.h>
-#include <sys/types.h>
+#ifndef __RUNTESTS__H__
+#define __RUNTESTS__H__
 
-// returns the users homedirectory even if the program
-// is running SUID
-QString getHomeDir() {
-  struct passwd *pwd;
-  pwd = getpwuid(getuid());
-  if(pwd == NULL)
-    return QString("/");
-  
-  QString s = pwd->pw_dir;
-  if(s.right(1) != "/")
-    s += "/";
-  return s;
-}
-      
-    
-  
+#include "pppdata.h"
+
+const int TEST_OK = 0;
+const int TEST_WARNING = 1;
+const int TEST_NOCONNECT = 2;
+const int TEST_CRITICAL = 3;
+
+// Various tests to be run at starttime
+int runTests();
+
+#endif

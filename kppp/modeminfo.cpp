@@ -26,19 +26,17 @@
 
 
 #include <unistd.h>
-#include <qregexp.h> 
-#include "main.h"
+#include <qregexp.h>
+#include <kmsgbox.h>
+#include <kapp.h> 
 #include "modeminfo.h"
 #include "connect.h"
-#include <kmsgbox.h>
 #include "macros.h"
 
 #ifdef NO_USLEEP
 extern int usleep( long usec );
 #endif 
 
-extern XPPPWidget *p_xppp;
-extern KApplication *app;
 extern QString ati_query_strings[NUM_OF_ATI];
 
 
@@ -139,7 +137,7 @@ void ModemTransfer::init() {
   inittimer->stop();
   expecting = false;
 
-  app->processEvents();
+  kapp->processEvents();
 
   int lock = lockdevice();
   if (lock == 1){
@@ -165,9 +163,9 @@ void ModemTransfer::init() {
     }
 
     statusBar->setText(klocale->translate("Modem Ready"));
-    app->processEvents();
+    kapp->processEvents();
 
-    app->processEvents();
+    kapp->processEvents();
     //    readtimer->start(1); 		// this one read from the modem
     scripttimer->start(1000);	 	// this one does the ati query
 
@@ -333,7 +331,7 @@ void ModemTransfer::cancelbutton() {
   timeout_timer->stop();
 
   statusBar->setText(klocale->translate("One Moment Please ..."));
-  app->processEvents();
+  kapp->processEvents();
   
   if(modemfd >= 0) {
     writeline(gpppdata.modemHangupStr());

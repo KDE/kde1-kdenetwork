@@ -24,7 +24,7 @@
  */
 
 
-#include "acctselect.h"
+#include <qdir.h>
 #include <qgrpbox.h>
 #include <qlayout.h>
 #include <qdir.h>
@@ -32,7 +32,8 @@
 #include <qregexp.h>
 #include <qwmatrix.h>
 #include <stdio.h>
-#include "homedir.h"
+
+#include "acctselect.h"
 #include "pppdata.h"
 
 extern bool isnewaccount;
@@ -255,7 +256,7 @@ void AccountingSelector::setupTreeWidget() {
   tl->insertItem(i, -1, FALSE);
 
 
-  QString s = getHomeDir();
+  QString s = QDir::homeDirPath() + "/";
   s += ACCOUNTING_PATH "/Rules/";
 
   insertDir(QDir(s.data()), i);
