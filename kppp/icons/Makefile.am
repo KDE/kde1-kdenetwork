@@ -10,4 +10,6 @@ install-data-local:
 	$(INSTALL_DATA) $(srcdir)/kppp.xpm $(kde_icondir)
 	$(mkinstalldirs) $(kde_minidir)
 	$(INSTALL_DATA) $(srcdir)/mini-kppp.xpm $(kde_minidir)/kppp.xpm
+	$(mkinstalldirs) $(kde_icondir)/large
+	$(INSTALL_DATA) $(srcdir)/large-kppp.xpm $(kde_icondir)/large/kppp.xpm
 

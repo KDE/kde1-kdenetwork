@@ -46,10 +46,14 @@ install-data-local:
 	$(INSTALL_DATA) $(srcdir)/KMail.kdelnk $(appsdir)
 	$(mkinstalldirs) $(kde_minidir)
 	$(INSTALL_DATA) $(srcdir)/mini-kmail.xpm $(kde_minidir)/kmail.xpm
+	$(mkinstalldirs) $(kde_icondir)/large
+	$(INSTALL_DATA) $(srcdir)/large-kmail.xpm $(kde_icondir)/large/kmail.xpm
+
 
 uninstall-local:
 	rm -f $(appsdir)/KMail.kdelnk
 	rm -f $(kde_minidir)/kmail.xpm
+	rm -f $(kde_icondir)/large/kmail.xpm
 
 messages:
 	$(XGETTEXT) -C -ki18n -x $(includedir)/kde.pot $(kmail_SOURCES) && mv messages.po ../po/kmail.pot 

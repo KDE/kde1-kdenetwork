@@ -19,6 +19,8 @@ install-data-local:
 	$(INSTALL_DATA) $(srcdir)/KOrn.kdelnk $(kde_appsdir)/Internet
 	$(INSTALL_DATA) $(srcdir)/doc/index.html $(kde_htmldir)/en/korn
 	$(INSTALL_DATA) $(srcdir)/mini-korn.xpm $(kde_minidir)/korn.xpm
+	$(mkinstalldirs) $(kde_icondir)/large
+	$(INSTALL_DATA) $(srcdir)/large-korn.xpm $(kde_icondir)/large/korn.xpm
 
 uninstall-local:
 	rm -f $(kde_minidir)/korn.xpm
@@ -27,6 +29,7 @@ uninstall-local:
 	-rmdir $(kde_htmldir)/en/korn
 	-rmdir $(kde_htmldir)/en/
 	-rmdir $(kde_appsdir)/Internet
+	rm -f $(kde_icondir)/large/korn.xpm
 
 messages:
 	$(XGETTEXT) -C -ki18n -x $(includedir)/kde.pot $(korn_SOURCES) && mv messages.po ../po/korn.pot
