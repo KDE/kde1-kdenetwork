@@ -1,0 +1,23 @@
+FILES = krn.html\
+	articles.html\
+        groups.html\
+        offline.html\
+        overview.html
+
+DESTDIR = @prefix@/share/doc/HTML/krn/
+INSTALL_DIR = @INSTALL@ -d -m 0755
+INSTALL_DATA = @INSTALL@ -m 644
+
+all:
+
+install:
+	$(INSTALL_DIR) $(DESTDIR)
+	@for i in $(FILES); do \
+	 echo "$(INSTALL_DATA) $$i $(DESTDIR)"; \
+	 $(INSTALL_DATA) "$$i" $(DESTDIR); \
+	done
+
+uninstall:
+	for i in $(FILES); do \
+	 rm -f $(DESTDIR)/"$$i"; \
+	done
