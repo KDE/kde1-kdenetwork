@@ -411,7 +411,7 @@ int runTests() {
     } else {
       struct stat st;
       stat(f.data(), &st);
-      if((st.st_mode & S_ISUID) == 0 /* && getuid() != 0 */) {
+      if((st.st_mode & S_ISUID) == 0 && getuid() != 0 ) {
 	QMessageBox::warning(0,
 		     i18n("Error"),
 		     i18n("pppd is not properly installed!\n\n"

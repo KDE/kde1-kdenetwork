@@ -1,3 +1,7 @@
+1998-12-24  Harri Porten  <porten@kde.org>
+
+	* runtests.cpp: relaxed my previously enforced suid check for pppd
+
 1998-12-23  Harri Porten  <porten@kde.org>
 
 	* runtests.cpp, opener.cpp: fixed FreeBSD compile problem reported by Hans

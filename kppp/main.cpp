@@ -802,12 +802,12 @@ void dieppp(int sig) {
 	switch (gpppdata.pppdError())
 	  {
 	  case E_IF_TIMEOUT:
-	    msg = "Timeout expired while waiting for the PPP interface ";
-	    msg += "to come up!";
+	    msg = i18n("Timeout expired while waiting for the PPP interface "
+                       "to come up!");
 	    break;
 	  
 	  default: 
-	    msg = "The pppd daemon died unexpectedly!";
+	    msg = i18n("The pppd daemon died unexpectedly!");
 	  }
 	
 	KMsgBox msgb(0, 
