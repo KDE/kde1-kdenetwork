@@ -219,7 +219,8 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     list->setTabWidth(25);
     
     gl->addWidget( list, 0, 0 );
-    connect (list,SIGNAL(selected(int,int)),this,SLOT(loadArt(int,int)));
+    connect (list,SIGNAL(highlighted(int,int)),this,SLOT(loadArt(int,int)));
+    connect (list,SIGNAL(popupMenu(int,int)),this,SLOT(popupMenu(int,int)));
     
     RmbPop *filter=new RmbPop(list);
     delete (filter->pop);
@@ -814,4 +815,9 @@ void Artdlg::updateCounter(char *s)
 {
     statusBar()->changeItem (s, 1);
     qApp->processEvents();
+}
+
+void Artdlg::popupMenu(int index,int)
+{
+    markArt(index,0);
 }

@@ -60,6 +60,7 @@ private slots:
     void decArt (int index,int column);
     void saveArt (QString id);
     void copyText(bool b);
+    void popupMenu(int index,int column);
         
 signals:
     void needConnection ( );

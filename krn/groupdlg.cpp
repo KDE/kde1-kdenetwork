@@ -62,6 +62,7 @@
 #define CATCHUP 16
 #define FIND_GROUP 17
 #define POST 18
+#define POST_QUEUED 19
 
 extern QString krnpath,cachepath,artinfopath,pixpath;
 extern KConfig *conf;
@@ -139,6 +140,7 @@ Inherited (name)
     newsgroup->insertItem(klocale->translate("Catchup"),CATCHUP);
     newsgroup->insertSeparator();
     newsgroup->insertItem(klocale->translate("Post New Article"),POST);
+    newsgroup->insertItem(klocale->translate("Post All Queued Articles"),POST_QUEUED);
     newsgroup->insertSeparator();
     newsgroup->insertItem (klocale->translate("&Subscribed"), subscribed);
     newsgroup->insertItem (klocale->translate("&Tagged"), tagged);
@@ -654,6 +656,11 @@ bool Groupdlg::actions (int action,NewsGroup *group)
             KMComposeWin *comp=new KMComposeWin(0,"","",0,actFollowup,true,group->data(),false);
             comp->show();
             success=true;
+            break;
+        }
+    case POST_QUEUED:
+        {
+            success=msgSender->sendQueued();
             break;
         }
     };

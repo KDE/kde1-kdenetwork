@@ -43,6 +43,7 @@ KMSender::~KMSender()
 //-----------------------------------------------------------------------------
 bool KMSender::sendQueued(void)
 {
+  debug ("sending queued messages... not yet!");
   return FALSE;
 }
 
