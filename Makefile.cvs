@@ -30,7 +30,7 @@ dist:
 	cat configure.in.1 > configure.in ;\
 	echo "AC_OUTPUT(" >> configure.in ;\
 	mfs=`find . -name Makefile.am -print | sed -e "s#\.am##" | sed -e "s#\./##"` ; \
-	echo -n $$mfs")" >> configure.in ;\
+	echo $$mfs")" >> configure.in ;\
 	automake  --foreign --include-deps;\
 	cat configure.in.1 configure.in.2 > configure.in ;\
 	autoconf ;\
