@@ -41,6 +41,8 @@
 
 #include "groupdlg.moc"
 
+#include "kmsender.h"
+
 #define CONNECT 1
 #define DISCONNECT 5
 #define GET_ACTIVE 3
@@ -61,6 +63,7 @@
 extern QString krnpath,cachepath,artinfopath,pixpath;
 extern KConfig *conf;
 
+extern KMSender *msgSender;
 
 GroupList groups;
 GroupList subscr;
@@ -412,6 +415,7 @@ void Groupdlg::online()
     qApp->processEvents ();
     if (server->connect ())
     {
+        msgSender=new KMSender(server);
         if (server->isReadOnly ())
             statusBar ()->changeItem ("Connected to server - Posting not allowed", 2);
         else

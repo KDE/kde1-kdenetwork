@@ -472,6 +472,7 @@ void KMComposeView::slotSendNow()
     KMMessage *msg = new KMMessage();
     if((msg = prepareMessage()) == 0)
         return;
+    debug ("about to send");
     if(msgSender->send(msg))
         ((KMComposeWin *)parentWidget())->close();
 }

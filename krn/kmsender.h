@@ -9,6 +9,8 @@
 #include <mimelib/utility.h>
 #include <qstring.h>
 
+#include "NNTP.h"
+
 class KMMessage;
 class KMAcctFolder;
 class KMFolderMgr;
@@ -21,6 +23,7 @@ public:
   enum Method { smUnknown=0, smSMTP=1, smMail=2 };
 
   KMSender();
+  KMSender(NNTP *_nntp);
   KMSender(KMFolderMgr*);
   virtual ~KMSender();
 
@@ -80,6 +83,7 @@ private:
   QString mMailer;
   QString mSmtpHost;
   int mSmtpPort;
+  NNTP *nntp;
 };
 
 #endif /*kmsender_h*/

@@ -18,9 +18,17 @@ extern KLocale *nls;
 extern QString outpath;
 
 //-----------------------------------------------------------------------------
-KMSender::KMSender()
+//
+// I do this because opening connections to remote NNTP servers can be very
+// slow, and I already have one!
+// I know it is against KMSender's design :-(
+
+KMSender::KMSender(NNTP *_nntp)
 {
+    debug ("---------->creating sender<---------------");
+    nntp=_nntp;
 }
+
 KMSender::KMSender(KMFolderMgr* aFolderMgr)
 {
 }
@@ -66,6 +74,13 @@ bool KMSender::send(KMMessage* aMsg, short sendNow)
     debug ("Spooling the message");
     f.writeBlock(aMsg->asString(),strlen(aMsg->asString()));
     f.close();
+    if (sendNow)
+    {
+        if (nntp->postArticle(aMsg->id()))
+            return true;
+        else
+            return false;
+    }
     return TRUE;
 }
 

@@ -541,5 +541,31 @@ void NNTP::getResponse(QString *r )
 
 bool NNTP::postArticle (QString ID)
 {
+    debug ("sending now");
+    QString p;
+    p=krnpath+"/outgoing/";
+    p+=ID;
+    QFile f(p);
+    if (f.open (IO_ReadOnly))
+    {
+        char *buffer=new char[f.size()];
+        f.readBlock(buffer,f.size());
+        int errcode=Post();
+        if (errcode!=340)
+        {
+            debug ("error posting, I said post, and the server said:\n%s",
+                   StatusResponse().data());
+            return false;
+        }
+        SendData(buffer, f.size());
+        SendData("\r\n.\r\n",5);
+        f.close();
+        delete buffer;
+        return true;
+    }
+    else
+    {
+        warning ("Can't open the file I am supposed to post!");
+    }
     return false;
 }

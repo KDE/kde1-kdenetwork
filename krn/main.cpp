@@ -73,7 +73,6 @@ int main( int argc, char **argv )
 
     conf=a.getConfig();
     nls=a.getLocale();
-    msgSender=new KMSender();
 
     checkConf();
 
