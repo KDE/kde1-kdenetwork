@@ -1,4 +1,3 @@
-
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
@@ -43,6 +42,7 @@ msgstr ""
 "kann nicht gelöscht werden."
 
 #: kmmainwin.cpp:333
+#, c-format
 msgid ""
 "Are you sure you want to remove the folder\n"
 "\"%s\", discarding it's contents ?"
@@ -108,7 +108,7 @@ msgstr "Drucken..."
 
 #: kmmainwin.cpp:573
 msgid "Check Mail..."
-msgstr "Nach Mail sehen...
+msgstr "Nach Mail sehen..."
 
 #: kmmainwin.cpp:575
 msgid "Send Queued"
@@ -393,7 +393,7 @@ msgstr "Einrücken"
 
 #: kmmessage.cpp:1102 kmsettings.cpp:302
 msgid "On %D, you wrote:"
-msgstr "Am %D schriebst Du :\n"
+msgstr "Am %D schriebst Du:"
 
 #: kmmessage.cpp:1103 kmsettings.cpp:306
 msgid "On %D, %F wrote:"
@@ -684,7 +684,8 @@ msgstr ""
 msgid "Attach File"
 msgstr "Datei anhängen"
 
-#: kmcomposewin.cpp:#, fuzzy
+#: kmcomposewin.cpp:803
+msgid "View..."
 msgstr "Ansehen..."
 
 #: kmcomposewin.cpp:804
@@ -777,8 +778,7 @@ msgstr "Warnung: Falsche Unterschrift von"
 
 #: kmreaderwin.cpp:558
 msgid "Could not create temporary file"
-msgstr ""
-"Kann keine temporäre Datei anlegen"
+msgstr "Kann keine temporäre Datei anlegen"
 
 #: kmreaderwin.cpp:578
 #, c-format
@@ -808,7 +808,7 @@ msgid ""
 "Shall KMail move the mail folders now ?"
 msgstr ""
 "Das Verzeichnis ~/KMail existiert. Von nun an benutzt KMail das\n"
-"Verzeichns ~/Mail for seine Nachrichten.\"
+"Verzeichns ~/Mail for seine Nachrichten.\n"
 "KMail kann den Inhalt des ~/KMail Verzeichnisses in ~/Mail ver-\n"
 "schieben, aber dies wird existierende Dateien mit dem gleichen\n"
 "Namen (z.B. inbox) überschreiben\n"
@@ -822,8 +822,9 @@ msgid ""
 "mailbox `%s':\n"
 "%s"
 msgstr ""
-"Kann diese Nachricht nicht aus\n"
+"Kann Nachricht nicht aus\n"
 "Ordner \"s\" löschen:\n"
+"%s"
 
 #: kmacctpop.cpp:112
 msgid ""
@@ -1319,4 +1320,3 @@ msgstr "Start"
 #: kmiostatusdlg.cpp:32
 msgid "&Abort"
 msgstr "&Über"
-
