@@ -23,12 +23,11 @@ msgstr "Záz&namník"
 
 #: main.cpp:64
 msgid "&Forward"
-msgstr ""
+msgstr "&Posunú»"
 
 #: main.cpp:70
-#, fuzzy
 msgid "usage: kcmktalkd [-init | soundpage | answmachpage | forwmachpage ]\n"
-msgstr "pou¾itie: kcmktalkd [-init | soundpage | answmachpage]\n"
+msgstr "pou¾itie: kcmktalkd [-init | soundpage | answmachpage | forwmachpage ]\n"
 
 #: main.cpp:111
 msgid "KTalkd Configuration"
@@ -47,7 +46,6 @@ msgid "&Play sound"
 msgstr "&Prehráva» zvuky"
 
 #: soundpage.cpp:59
-#, fuzzy
 msgid "&Sound File"
 msgstr "&Súbor so zvukom"
 
@@ -158,15 +156,15 @@ msgstr "Správa zanechaná na odkazovaèi od %s@%s"
 
 #: forwmachpage.cpp:34
 msgid "Activate &forward"
-msgstr ""
+msgstr "Aktivova» &posunutie"
 
 #: forwmachpage.cpp:39
 msgid "&Destination (user or user@host)"
-msgstr ""
+msgstr "&Cieµ (u¾ívateµ alebo u¾ívateµ@host)"
 
 #: forwmachpage.cpp:49
 msgid "Forward &method"
-msgstr ""
+msgstr "&Metóda posunutia"
 
 #: forwmachpage.cpp:54
 msgid ""
@@ -181,3 +179,12 @@ msgid ""
 "\n"
 "See Help for further explanations.\n"
 msgstr ""
+"FWA : Posúva len oznam. Priame spojenie. Neodporúèané.\n"
+"FWR : Posúva v¹etky po¾iadavky, ak je potrebné mení informácie. Priame"
+" spojenie.\n"
+"FWT : Posúva v¹etky po¾iadavky a vezme hovor. ®iadne priame spojenie.\n"
+"\n"
+"Odporúèané pou¾itie : FWT, ak to chcete pou¾íva» za firewallom (a ktalkd\n"
+"mô¾e pristupova» na obidve siete), inak FWR.\n"
+"\n"
+"Pozrite dokumentáciu pre podrobnej¹í opis.\n"
