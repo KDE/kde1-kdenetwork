@@ -115,3 +115,58 @@ else
   AC_MSG_RESULT(no)
 fi
 rm -r conftest.*
+
+AC_MSG_CHECKING(Exception handling for kSirc)
+#
+# Check for C++ exception handling and don't compile kSirc
+# if it doesn't work.  Ones known to work are egcs and gcc28
+#
+AC_LANG_CPLUSPLUS
+cat > conftest.C <<EOF
+#include <iostream.h>
+
+int main(int argc, char **argv)
+{
+  try {
+  }
+  catch(...) {
+  }
+}
+EOF
+
+ac_compile='${CXX-g++} -c conftest.C'
+if AC_TRY_EVAL(ac_compile); then
+  AC_MSG_RESULT(yes)
+else
+  DO_NOT_COMPILE="$DO_NOT_COMPILE ksirc"
+  AC_MSG_RESULT([no...Skipping kSirc])
+fi
+rm -r conftest.*
+
+AC_MSG_CHECKING(for static KDE libraries)
+if test -r "$ac_kde_libraries/libkdeui.a"; then
+  static_libkde="$ac_kde_libraries/libkdeui.a $ac_kde_libraries/libkdecore.a"
+  AC_MSG_RESULT(found)
+  AC_SUBST(static_libkde)
+else
+  AC_MSG_RESULT([Not Found])
+fi
+
+AC_MSG_CHECKING(for static Qt libraries)
+if test -r "$ac_qt_libraries/libqt.a"; then
+  AC_MSG_RESULT(found)
+  static_libqt="$ac_qt_libraries/libqt.a"
+  AC_SUBST(static_libqt)
+else
+  AC_MSG_RESULT([Not Found])
+fi
+
+AC_MSG_CHECKING(for static libstdc++)
+
+static_libstdc=`$CC -print-file-name=libstdc++.a`
+if test ! -z "$static_libstdc"; then
+  AC_MSG_RESULT($static_libstdc)
+  AC_SUBST(static_libstdc)
+else
+  AC_MSG_RESULT([Not Found])
+fi
