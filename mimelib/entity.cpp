@@ -201,6 +201,7 @@ void DwEntity::Assemble()
     mHeaders->Assemble();
     mString = "";
     mString += mHeaders->AsString();
+    mString += DW_EOL;
     mString += mBody->AsString();
     mIsModified = 0;
 }
