@@ -11,6 +11,7 @@
 #include <qlist.h>
 #include <qevent.h>
 #include <qwidget.h>
+#include <qpushbt.h>
 #include <qclipbrd.h>
 #include <qpalette.h>
 #include <kmsgbox.h>
@@ -74,7 +75,8 @@ public:
     message, call applyChanges() first. */
   virtual KMMessage* msg(void) const { return mMsg; }
 
-  /** Applies the user changes to the message object of the composer. */
+  /** Applies the user changes to the message object of the composer
+    and signs/encrypts the message if activated. */
   virtual void applyChanges(void);
 
   /** If this flag is set the message of the composer is deleted when
@@ -123,6 +125,12 @@ public slots:
   /** Change visibility of a header field. */
   void slotMenuViewActivated(int id);
 
+  /** Select an email from the addressbook and add it to the line
+    the pressed button belongs to. */
+  void slotAddrBookTo();
+  void slotAddrBookCc();
+  void slotAddrBookBcc();
+
 protected:
   /** Install grid management and header fields. If fields exist that
     should not be there they are removed. Those that are needed are
@@ -165,10 +173,19 @@ protected:
     the given message part. */
   virtual const QString msgPartLbxString(KMMessagePart* msgPart) const;
 
+  /** Open addressbook and append selected addresses to the given
+    edit field. */
+  virtual void addrBookSelInto(KMLineEdit* destEdit);
+
+private:
+  /** Get message including signing and encrypting it */
+  virtual const QString pgpProcessedMsg(void);
+
 protected:
   QWidget   mMainWidget;
   KMLineEdit mEdtFrom, mEdtReplyTo, mEdtTo, mEdtCc, mEdtBcc, mEdtSubject;
   QLabel    mLblFrom, mLblReplyTo, mLblTo, mLblCc, mLblBcc, mLblSubject;
+  QPushButton mBtnTo, mBtnCc, mBtnBcc;
   /* start Added for KRN */
   KMLineEdit mEdtNewsgroups, mEdtFollowupTo;
   QLabel     mLblNewsgroups, mLblFollowupTo;
@@ -184,13 +201,14 @@ protected:
   KStatusBar *mStatusBar;
   KTabListBox *mAtmListBox;
   KMMsgPartList mAtmList;
-  bool mAutoSign, mShowToolBar, mAutoDeleteMsg;
+  bool mAutoSign, mAutoPgpSign, mShowToolBar, mAutoDeleteMsg;
   int  mSendImmediate;
   long mShowHeaders;
   QString mDefEncoding;
   int mNumHeaders;
   int mLineBreak;
   int mWordWrap;
+  int mBtnIdSign, mBtnIdEncrypt;
   QString mForeColor, mBackColor;
 
 private:

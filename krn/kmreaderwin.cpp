@@ -46,6 +46,7 @@ static unsigned char hand_mask_bits[] = {
 extern KApplication *app;
 extern KLocale *nls;
 extern KBusyPtr *kbp;
+extern KConfig *conf;
 #endif
 
 //-----------------------------------------------------------------------------
@@ -57,8 +58,8 @@ KMReaderWin::KMReaderWin(QWidget *aParent, const char *aName, int aFlags)
   mPicsDir = app->kdedir()+"/share/apps/kmail/pics/";
   mMsg = NULL;
 
-  readConfig();
   initHtmlWidget();
+  readConfig();
 }
 
 
@@ -78,6 +79,20 @@ void KMReaderWin::readConfig(void)
   mHeaderStyle = (HeaderStyle)config->readNumEntry("hdr-style", HdrFancy);
   mAttachmentStyle = (AttachmentStyle)config->readNumEntry("attmnt-style",
 							IconicAttmnt);
+#ifdef KRN
+  conf->setGroup("ArticleListOptions");
+  QColor c1=QColor("black");
+  QColor c2=QColor("blue");
+  QColor c3=QColor("red");
+  mViewer->setDefaultTextColors(conf->readColorEntry("ForegroundColor",&c1)
+                                ,conf->readColorEntry("LinkColor",&c2)
+                                ,conf->readColorEntry("FollowedColor",&c3));
+  mViewer->setDefaultFontBase(conf->readNumEntry("DefaultFontBase",3));
+  mViewer->setStandardFont(conf->readEntry("StandardFont",
+                                           QString("helvetica").data()));
+  mViewer->setFixedFont(conf->readEntry("FixedFont",
+                                        QString("courier").data()));
+#endif
 }
 
 
@@ -92,6 +107,7 @@ void KMReaderWin::writeConfig(bool aWithSync)
   config->writeEntry("attmnt-style",(int)mAttachmentStyle);
 
   if (aWithSync) config->sync();
+
 }
 
 
@@ -105,7 +121,14 @@ void KMReaderWin::initHtmlWidget(void)
   mViewer = new KHTMLWidget(this, mPicsDir);
   mViewer->resize(width()-16, height()-110);
   mViewer->setURLCursor(handCursor);
+#ifndef KRN
   mViewer->setDefaultBGColor(QColor("#ffffff"));
+#else
+  QColor c=QColor("white");
+  conf->setGroup("ArticleListOptions");
+  mViewer->setDefaultBGColor(conf->readColorEntry("BackgroundColor",&c));
+#endif
+  
   /*
   mViewer->setDefaultBGColor(pal->normal().background());
   mViewer->setDefaultTextColor(app->textColor, app->);
@@ -202,7 +225,6 @@ void KMReaderWin::parseMsg(void)
       type = msgPart.typeStr();
       subtype = msgPart.subtypeStr();
       contDisp = msgPart.contentDisposition();
-      debug("content disposition: \"%s\"", contDisp.data());
       
       if (i <= 0) asIcon = FALSE;
       else asIcon = (stricmp(contDisp,"inline")!=0);
@@ -254,13 +276,13 @@ void KMReaderWin::writeMsgHeader(void)
     mViewer->write(nls->translate("From: ") +
 		   KMMessage::emailAddrAsAnchor(mMsg->from()) + "<BR>");
     mViewer->write(nls->translate("To: ") +
-                   KMMessage::emailAddrAsAnchor(mMsg->to()) + "<BR><BR>");
+                   KMMessage::emailAddrAsAnchor(mMsg->to()) + "<BR>");
 #ifdef KRN
     if (!mMsg->references().isEmpty())
         mViewer->write(nls->translate("References: ") +
-                       KMMessage::refsAsAnchor(mMsg->references()) + "<BR><BR>");
+                       KMMessage::refsAsAnchor(mMsg->references()) + "<BR>");
 #endif
-
+    mViewer->write("<BR>");
     break;
 
   case HdrFancy:
@@ -285,7 +307,30 @@ void KMReaderWin::writeMsgHeader(void)
     break;
 
   case HdrLong:
-    emit statusMsg("`long' header style not yet implemented.");
+    mViewer->write("<FONT SIZE=+1><B>" +
+		   strToHtml(mMsg->subject()) + "</B></FONT><BR>");
+    mViewer->write(nls->translate("Date: ")+strToHtml(mMsg->dateStr())+"<BR>");
+    mViewer->write(nls->translate("From: ") +
+		   KMMessage::emailAddrAsAnchor(mMsg->from()) + "<BR>");
+    mViewer->write(nls->translate("To: ") +
+                   KMMessage::emailAddrAsAnchor(mMsg->to()) + "<BR>");
+    if (!mMsg->cc().isEmpty())
+      mViewer->write(nls->translate("Cc: ")+
+		     KMMessage::emailAddrAsAnchor(mMsg->cc()) + "<BR>");
+    if (!mMsg->bcc().isEmpty())
+      mViewer->write(nls->translate("Bcc: ")+
+		     KMMessage::emailAddrAsAnchor(mMsg->bcc()) + "<BR>");
+    if (!mMsg->replyTo().isEmpty())
+      mViewer->write(nls->translate("Reply to: ")+
+		     KMMessage::emailAddrAsAnchor(mMsg->replyTo()) + "<BR>");
+#ifdef KRN
+    if (!mMsg->references().isEmpty())
+        mViewer->write(nls->translate("References: ") +
+                       KMMessage::refsAsAnchor(mMsg->references()) + "<BR>");
+    if (!mMsg->groups().isEmpty())
+        mViewer->write(nls->translate("Groups: ")+mMsg->groups()+"<BR>");
+#endif
+    mViewer->write("<BR>");
     break;
 
   case HdrAll:
@@ -307,25 +352,32 @@ void KMReaderWin::writeBodyStr(const QString aStr)
   bool atStart = TRUE;
   bool quoted = FALSE;
   bool lastQuoted = FALSE;
-  QString line, sig;
+  QString line(256), sig;
   Kpgp* pgp = Kpgp::getKpgp();
-
-  assert(!aStr.isNull());
   assert(pgp != NULL);
+  assert(!aStr.isNull());
 
-#ifdef PGP
   if (pgp->setMessage(aStr))
   {
     if (pgp->isEncrypted())
     {
-      if(!pgp->decrypt()) pgp->decrypt(pgp->askForPass());
+      if(pgp->decrypt())
+      {
+	line.sprintf("<B>%s</B><BR>",
+		     (const char*)nls->translate("Encrypted message"));
+	mViewer->write(line);
+      }
+      else
+      {
+	line.sprintf("<B>%s</B><BR>%s<BR><BR>",
+		     (const char*)nls->translate("Cannot decrypt message:"),
+		     (const char*)pgp->lastErrorMsg());
+	mViewer->write(line);
+      }
     }
-    pos = pgp->getMessage().data();
+    pos = pgp->message().data();
   }
   else pos = aStr.data();
-#else
-  pos = aStr.data();
-#endif
 
   // skip leading empty lines
   for (beg=pos; *pos && *pos<=' '; pos++)
@@ -335,13 +387,12 @@ void KMReaderWin::writeBodyStr(const QString aStr)
 
   if (pgp->isSigned())
   {
-#ifdef PGP
     if (pgp->goodSignature()) sig = nls->translate("Message was signed by");
     else sig = nls->translate("Warning: Bad signature from");
-
-    line.sprintf("<B>%s %s</B><BR><BR>", sig, (const char*)pgp->signedBy());
+    
+    line.sprintf("<B>%s %s</B><BR>", sig.data(), 
+		 pgp->signedBy().data());
     mViewer->write(line);
-#endif
   }
 
   pos = beg;
@@ -502,7 +553,7 @@ void KMReaderWin::slotUrlOn(const char* aUrl)
   else
   {
     mMsg->bodyPart(id-1, &msgPart);
-    emit statusMsg(msgPart.name());
+    emit statusMsg(nls->translate("Attachment: ") + msgPart.name());
   }
 }
 
@@ -531,9 +582,10 @@ void KMReaderWin::slotUrlPopup(const char* aUrl, const QPoint& aPos)
   QPopupMenu *menu;
 
   id = msgPartFromUrl(aUrl);
-  if (id <= 0) emit popupMenu(aPos);
+  if (id <= 0) emit popupMenu(aUrl, aPos);
   else
   {
+    // Attachment popup
     mAtmCurrent = id-1;
     menu = new QPopupMenu();
     menu->insertItem(nls->translate("Open..."), this, SLOT(slotAtmOpen()));

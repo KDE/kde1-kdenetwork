@@ -41,6 +41,7 @@
 #include "kmidentity.h"
 #include "kbusyptr.h"
 #include "kmmessage.h"
+#include "kmaddrbook.h"
 #include "kfileio.h"
 #include <mimelib/mimepp.h>
 
@@ -64,6 +65,7 @@ KRNSender *msgSender;
 KMIdentity *identity;
 KStdAccel* keys;
 KBusyPtr *kbp;
+KMAddrBook *addrBook;
 QDict <char> unreadDict(17,TRUE);
 
 
@@ -117,6 +119,7 @@ int main( int argc, char **argv )
     else pixpath=pixdef;
 
     decoder=new KDecode;
+    addrBook=new KMAddrBook();
     
     // Create our directory. If it exists, no problem
     // Should do some checking, though

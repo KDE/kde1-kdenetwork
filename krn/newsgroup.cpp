@@ -88,26 +88,28 @@ void Article::formHeader(QString *s)
     
     if (isRead())
     {
-        ss.setStr("{R} ");
+        ss.setStr("{R}");
     }
     else
     {
-        ss.setStr("{N} ");
+        ss.setStr("{N}");
     }
     if (!isAvailable())
     {
-        ss.setStr("{T} ");
+        ss.setStr("{T}");
     }
     if (isMarked())
     {
-        ss.setStr("{M} ");
+//        ss.append("{M}");
+        ss.setStr("{M}");
     }
     if (!canExpire())
     {
-        ss.setStr("{L} ");
+//        ss.append("{L}");
+        ss.setStr("{L}");
     }
     
-    ss.append(" ");
+//    ss.append(" ");
     
     if (!From.isEmpty())
     {

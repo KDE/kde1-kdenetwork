@@ -74,6 +74,7 @@
 #define FIND_ARTICLE 23
 #define EXPUNGE 24
 #define DOWNLOAD_ARTICLE 25
+#define NO_CACHED 26
 
 extern QString pixpath,cachepath;
 
@@ -100,6 +101,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     conf->setGroup("ArticleListOptions");
     unread=conf->readNumEntry("ShowOnlyUnread");
     showlocked=conf->readNumEntry("ShowLockedArticles");
+    showcached=conf->readNumEntry("ShowCachedArticles");
     
     server = _server;
     QObject::connect (server,SIGNAL(newStatus(const char *)),
@@ -142,6 +144,8 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     options->setCheckable(true);
     options->insertItem(klocale->translate("Show Only Unread Messages"), NO_READ);
     options->setItemChecked(NO_READ,unread);
+    options->insertItem(klocale->translate("Show Only Cached Messages"), NO_CACHED);
+    options->setItemChecked(NO_CACHED,showcached);
     options->insertItem(klocale->translate("Show Locked Messages"), NO_LOCKED);
     options->setItemChecked(NO_LOCKED,showlocked);
     options->insertItem(klocale->translate("Expunge"), EXPUNGE);
@@ -356,10 +360,14 @@ void Artdlg::fillTree ()
     artList.clear();
     
     Article *iter;
+    bool thiscached;
     for (iter=group->artList.first();iter!=0;iter=group->artList.next())
     {
-        if( (!(unread && iter->isRead())) ||
-            (showlocked && (!iter->canExpire())) )
+        thiscached=server->isCached(iter->ID.data());
+        if(
+           (((thiscached && showcached) || (!showcached)) &&
+           (!(unread && iter->isRead()))) ||
+            (showlocked && (!iter->canExpire())))
         {
             artList.append(iter);
         }
@@ -374,11 +382,14 @@ void Artdlg::fillTree ()
     
     statusBar()->changeItem(klocale->translate("Showing Article List"),2);
     qApp->processEvents ();
-    for (iter=artList.first();iter!=0;iter=artList.next())
+    int i=0;
+    for (iter=artList.first();iter!=0;iter=artList.next(),i++)
     {
         QString formatted;
         iter->formHeader(&formatted);
         list->insertItem (formatted.data());
+        if (server->isCached(iter->ID.data()))
+            list->changeItemColor(QColor(0,0,255),i);
     }
     
     //restore current message
@@ -529,6 +540,17 @@ bool Artdlg::actions (int action)
             options->setItemChecked(NO_READ, unread);
             if (unread==false)
                 group->getList(this);
+            fillTree();
+            success = true;
+            break;
+        }
+    case NO_CACHED:
+        {
+            showcached = !showcached;
+            conf->setGroup("ArticleListOptions");
+            conf->writeEntry("ShowCachedArticles",showcached);
+            conf->sync();
+            options->setItemChecked(NO_CACHED, showcached);
             fillTree();
             success = true;
             break;
@@ -733,6 +755,8 @@ bool Artdlg::actions (int action)
             QString formatted;
             art->formHeader(&formatted);
             list->changeItem (formatted.data(),index);
+            if (server->isCached(art->ID.data()))
+                list->changeItemColor(QColor(0,0,255),index);
             
             break;
         }
@@ -761,6 +785,7 @@ bool Artdlg::actions (int action)
                 }
             }
             server->article(id.data());
+            list->changeItemColor(QColor(0,0,255),index);
         }
     }
     qApp->restoreOverrideCursor ();
@@ -957,6 +982,8 @@ void Artdlg::loadArt (int index,int)
         QString formatted;
         art->formHeader(&formatted);
         list->changeItem (formatted.data(),index);
+        if (server->isCached(art->ID.data()))
+            list->changeItemColor(QColor(0,0,255),index);
         
         article->setItemChecked(TOGGLE_EXPIRE, !art->canExpire());  // robert's cache stuff
     }
@@ -977,6 +1004,8 @@ void Artdlg::markArt (int index,int)
     QString formatted;
     art->formHeader(&formatted);
     list->changeItem (formatted.data(),index);
+    if (server->isCached(art->ID.data()))
+        list->changeItemColor(QColor(0,0,255),index);
 }
 
 void Artdlg::decArt (int index,int)
@@ -1018,6 +1047,8 @@ void Artdlg::decArt (int index,int)
     QString formatted;
     art->formHeader(&formatted);
     list->changeItem (formatted.data(),index);
+    if (server->isCached(art->ID.data()))
+        list->changeItemColor(QColor(0,0,255),index);
 }
 
 
@@ -1126,6 +1157,8 @@ void Artdlg::markReadArt (int index,int)
     QString formatted;
     art->formHeader(&formatted);
     list->changeItem (formatted.data(),index);
+    if (server->isCached(art->ID.data()))
+        list->changeItemColor(QColor(0,0,255),index);
 }
 
 void Artdlg::openURL (const char *s)

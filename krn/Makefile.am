@@ -21,7 +21,6 @@ BUILTSOURCES =	groupdlg.moc \
                 aboutDlg.moc\
                 fontsDlg.moc\
                 kmcomposewin.moc\
-                KEdit.moc\
                 findArtDlg.moc\
                 kmmsgpartdlg.moc\
                 kbusyptr.moc\
@@ -29,7 +28,8 @@ BUILTSOURCES =	groupdlg.moc \
                 kmreaderwin.moc\
                 kpgp.moc\
                 krnsender.moc\
-                kmsender.moc
+                kmsender.moc\
+                kmaddrbookdlg.moc
 
 DISTCLEANFILES = $(BUILTSOURCES)
 
@@ -59,7 +59,6 @@ krn_SOURCES = 	main.cpp\
                 kmmsgpart.cpp\
                 kmmsginfo.cpp\
                 kmcomposewin.cpp\
-                KEdit.cpp\
                 kmimemagic.cpp\
                 kmsender.cpp\
                 findArtDlgData.cpp\
@@ -72,7 +71,9 @@ krn_SOURCES = 	main.cpp\
                 kalarmtimer.cpp\
                 kmreaderwin.cpp\
                 kpgp.cpp\
-                krnsender.cpp
+                krnsender.cpp\
+                kmaddrbookdlg.cpp\
+                kmaddrbook.cpp
 
 
 noinst_HEADERS = 	NNTP.h\
@@ -97,7 +98,6 @@ noinst_HEADERS = 	NNTP.h\
                 kmmsgpart.h\
                 kmmsginfo.h\
                 kmcomposewin.h\
-                KEdit.h\
                 kmimemagic.h\
                 kmsender.h\
                 mytree.h\
@@ -111,7 +111,10 @@ noinst_HEADERS = 	NNTP.h\
                 kalarmtimer.h\
                 kmreaderwin.h\
                 kpgp.h\
-                krnsender.h
+                krnsender.h\
+                kmaddrbookdlg.h\
+                kmaddrbook.h
+
 
 SUBDIRS = docs pics
 
@@ -179,10 +182,6 @@ findArtDlg.cpp:findArtDlg.moc
 findArtDlg.moc: findArtDlg.h
 	$(MOC) findArtDlg.h -o findArtDlg.moc
 
-KEdit.cpp:KEdit.moc
-KEdit.moc: KEdit.h
-	$(MOC) KEdit.h -o KEdit.moc
-
 kmcomposewin.cpp:kmcomposewin.moc
 kmcomposewin.moc: kmcomposewin.h
 	$(MOC) kmcomposewin.h -o kmcomposewin.moc
@@ -214,6 +213,10 @@ kmsender.moc: kmsender.h
 krnsender.cpp:krnsender.moc
 krnsender.moc: krnsender.h
 	$(MOC) krnsender.h -o krnsender.moc
+
+kmaddrbookdlg.cpp:kmaddrbookdlg.moc
+kmaddrbookdlg.moc: kmaddrbookdlg.h
+	$(MOC) kmaddrbookdlg.h -o kmaddrbookdlg.moc
 
 messages:
 	@XGETTEXT@ -ktranslate -C -x../../kdelibs/po/kde.pot $(krn_SOURCES)  && mv messages.po ../po/krn.pot

@@ -20,7 +20,6 @@ extern KLocale *nls;
 extern KMIdentity *identity;
 #endif
 
-
 #include <kconfig.h>
 #include <kapp.h>
 #include <kprocess.h>
@@ -44,6 +43,7 @@ KMSender::KMSender()
   mSendDlg = NULL;
   mSendProc = NULL;
   mSendProcStarted = FALSE;
+  mSendInProgress = FALSE;
   mCurrentMsg = NULL;
   readConfig();
 }
@@ -53,6 +53,7 @@ KMSender::KMSender()
 KMSender::~KMSender()
 {
   writeConfig(FALSE);
+  if (mSendProc) delete mSendProc;
 }
 
 
@@ -115,7 +116,8 @@ bool KMSender::settingsOk(void) const
 //-----------------------------------------------------------------------------
 bool KMSender::send(KMMessage* aMsg, short sendNow)
 {
-  int rc=0;
+#ifndef KRN
+  int rc;
 
   assert(aMsg != NULL);
   if (!settingsOk()) return FALSE;
@@ -128,7 +130,6 @@ bool KMSender::send(KMMessage* aMsg, short sendNow)
 
   if (sendNow==-1) sendNow = mSendImmediate;
 
-#ifndef KRN
   outboxFolder->open();
   aMsg->setStatus(KMMsgStatusQueued);
   rc = outboxFolder->addMsg(aMsg);
@@ -138,51 +139,57 @@ bool KMSender::send(KMMessage* aMsg, short sendNow)
     return FALSE;
   }
 
-  if (sendNow) rc = sendQueued();
+  if (sendNow && !mSendInProgress) rc = sendQueued();
   else rc = TRUE;
   outboxFolder->close();
-#endif
   return rc;
+#else
+  return FALSE;
+#endif
 }
 
 
 //-----------------------------------------------------------------------------
 bool KMSender::sendQueued(void)
 {
+#ifndef KRN
   if (!settingsOk()) return FALSE;
 
-  if (mSendProc) 
+  if (mSendInProgress)
   {
     warning(nls->translate("Sending still in progress"));
     return FALSE;
   }
 
-#ifndef KRN
   // open necessary folders
   outboxFolder->open();
   sentFolder->open();
   mCurrentMsg = NULL;
 
   // create a sender
+  if (mSendProc) delete mSendProc;
   if (mMethod == smMail) mSendProc = new KMSendSendmail(this);
   else if (mMethod == smSMTP) mSendProc = new KMSendSMTP(this);
   else mSendProc = NULL;
   assert(mSendProc != NULL);
   connect(mSendProc,SIGNAL(idle()),SLOT(slotIdle()));
-#endif
+
   // start sending the messages
   doSendMsg();
   return TRUE;
+#else
+  return FALSE;
+#endif
 }
 
 
 //-----------------------------------------------------------------------------
 void KMSender::doSendMsg(void)
 {
+#ifndef KRN
   assert(mSendProc != NULL);
 
-#ifndef KRN
-  // Move last sent message to "sent" folder
+  // Move previously sent message to folder "sent"
   if (mCurrentMsg)
   {
     mCurrentMsg->setStatus(KMMsgStatusSent);
@@ -198,16 +205,18 @@ void KMSender::doSendMsg(void)
     cleanup();
     return;
   }
-#endif
+
   // start the sender process or initialize communication
   if (!mSendProcStarted)
   {
+    emit statusMsg(nls->translate("Initiating sender process..."));
     if (!mSendProc->start())
     {
       cleanup();
       return;
     }
     mSendProcStarted = TRUE;
+    mSendInProgress = TRUE;
   }
 
   // remove header fields that shall not be included in sending
@@ -216,6 +225,7 @@ void KMSender::doSendMsg(void)
 
   // start sending the current message
   mSendProc->preSendInit();
+  emit statusMsg(nls->translate("Sending message: ")+mCurrentMsg->subject());
   if (!mSendProc->send(mCurrentMsg))
   {
     cleanup();
@@ -223,32 +233,33 @@ void KMSender::doSendMsg(void)
   }
   // Do *not* add code here, after send(). It can happen that this method
   // is called recursively if send() emits the idle signal directly.
+#endif
 }
 
 
 //-----------------------------------------------------------------------------
 void KMSender::cleanup(void)
 {
+#ifndef KRN
   assert(mSendProc!=NULL);
 
-#ifndef KRN
   if (mSendProcStarted) mSendProc->finish();
+  mSendProcStarted = FALSE;
+  mSendInProgress = FALSE;
   sentFolder->close();
   outboxFolder->close();
   outboxFolder->expunge();
+  emit statusMsg(nls->translate("Done sending messages."));
 #endif
-  
-  delete mSendProc;
-  mSendProc = NULL;
-  mSendProcStarted = FALSE;
 }
 
 
 //-----------------------------------------------------------------------------
 void KMSender::slotIdle()
 {
+  debug("sender idle");
   assert(mSendProc != NULL);
-  assert(!mSendProc->sending());
+  //assert(!mSendProc->sending());
   if (mSendProc->sendOk())
   {
     // sending succeeded
@@ -349,6 +360,13 @@ const QString KMSendProc::prepareStr(const QString aStr, bool toCRLF)
   if (toCRLF) str.replace(QRegExp("\\n"), "\r\n");
 
   return str;
+}
+
+//-----------------------------------------------------------------------------
+void KMSendProc::statusMsg(const char* aMsg)
+{
+  if (mSender) emit mSender->statusMsg(aMsg);
+  app->processEvents(500);
 }
 
 
@@ -467,6 +485,7 @@ bool KMSendSMTP::start(void)
   mClient = new DwSmtpClient;
   assert(mClient != NULL);
 
+  smtpInCmd(nls->translate("connecting to server"));
   mClient->Open(mSender->smtpHost(), mSender->smtpPort()); // Open connection
   if(!mClient->IsOpen()) // Check if connection succeded
   {
@@ -479,7 +498,8 @@ bool KMSendSMTP::start(void)
     return FALSE;
   }
   app->processEvents(1000);
-  
+
+  smtpInCmd("HELO");
   replyCode = mClient->Helo(); // Send HELO command
   smtpDebug("HELO");
   if (replyCode != 250) return smtpFailed("HELO", replyCode);
@@ -528,10 +548,12 @@ bool KMSendSMTP::smtpSend(KMMessage* msg)
 
   msgStr = prepareStr(msg->asString(), TRUE);
 
+  smtpInCmd("MAIL");
   replyCode = mClient->Mail(identity->emailAddr());
-  smtpDebug("FROM");
-  if(replyCode != 250) return smtpFailed("FROM", replyCode);
+  smtpDebug("MAIL");
+  if(replyCode != 250) return smtpFailed("MAIL", replyCode);
 
+  smtpInCmd("RCPT");
   replyCode = mClient->Rcpt(msg->to()); // Send RCPT command
   smtpDebug("RCPT");
   if(replyCode != 250 && replyCode != 251) 
@@ -539,6 +561,7 @@ bool KMSendSMTP::smtpSend(KMMessage* msg)
 
   if(!msg->cc().isEmpty())  // Check if cc is set.
   {
+    smtpInCmd("RCPT");
     replyCode = mClient->Rcpt(msg->cc()); // Send RCPT command
     smtpDebug("RCPT");
     if(replyCode != 250 && replyCode != 251)
@@ -547,6 +570,7 @@ bool KMSendSMTP::smtpSend(KMMessage* msg)
 
   if(!msg->bcc().isEmpty())  // Check if bcc ist set.
   {
+    smtpInCmd("RCPT");
     replyCode = mClient->Rcpt(msg->bcc()); // Send RCPT command
     smtpDebug("RCPT");
     if(replyCode != 250 && replyCode != 251)
@@ -555,11 +579,13 @@ bool KMSendSMTP::smtpSend(KMMessage* msg)
 
   app->processEvents(1000);
 
+  smtpInCmd("DATA");
   replyCode = mClient->Data(); // Send DATA command
   smtpDebug("DATA");
   if(replyCode != 354) 
     return smtpFailed("DATA", replyCode);
 
+  smtpInCmd(nls->translate("transmitting message"));
   replyCode = mClient->SendData((const char*)msgStr);
   smtpDebug("<body>");
   if(replyCode != 250 && replyCode != 251)
@@ -579,15 +605,23 @@ bool KMSendSMTP::smtpFailed(const char* inCommand,
   if (replyCode==0 && (!errorStr || !*errorStr))
     errorStr = nls->translate("network error");
 
-  str.sprintf(nls->translate("Failed to send mail message\n"
-			     "because a SMTP error occured\n"
-			     "during the \"%s\" command.\n\n"
-			     "Return code: %d\n"
-			     "Response: `%s'"), 
-	      inCommand, replyCode, errorStr ? errorStr : "(NULL)");
-  warning((const char*)str);
+  str.sprintf(nls->translate("a SMTP error occured.\n"
+			     "Command: %s\n"
+			     "Response: %s\n" 
+			     "Return code: %d"),
+	      inCommand, errorStr ? errorStr : "(nothing)", replyCode);
+  mMsg = str;
 
   return FALSE;
+}
+
+
+//-----------------------------------------------------------------------------
+void KMSendSMTP::smtpInCmd(const char* inCommand)
+{
+  char str[80];
+  sprintf(str,nls->translate("Sending SMTP command: %s"), inCommand);
+  statusMsg(str);
 }
 
 
