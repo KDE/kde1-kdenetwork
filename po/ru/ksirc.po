@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ksirc\n"
-"POT-Creation-Date: 1998-12-16 01:59+0100\n"
+"POT-Creation-Date: 1998-12-28 02:07+0100\n"
 "PO-Revision-Date: 1998-12-31 07:03+07:00\n"
 "Last-Translator: Const Kaplinsky <const@ce.cctpu.edu.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -103,55 +103,55 @@ msgstr ""
 msgid "Channel/Nick:"
 msgstr "Канал/Ник:"
 
-#: servercontroller.cpp:161
+#: servercontroller.cpp:160
 msgid "&Dock"
 msgstr ""
 
-#: servercontroller.cpp:169 servercontroller.cpp:747
+#: servercontroller.cpp:168 servercontroller.cpp:748
 msgid "New Server..."
 msgstr "Новый сервер..."
 
-#: servercontroller.cpp:170
+#: servercontroller.cpp:169
 msgid "&Join Channel..."
 msgstr "&Присоединиться к каналу..."
 
-#: servercontroller.cpp:172
+#: servercontroller.cpp:171
 msgid "&Connections"
 msgstr "&Соединения"
 
-#: servercontroller.cpp:189 servercontroller.cpp:736
+#: servercontroller.cpp:188 servercontroller.cpp:737
 msgid "&Colour Preferences..."
 msgstr "&Настройка цвета"
 
-#: servercontroller.cpp:191 servercontroller.cpp:738
+#: servercontroller.cpp:190 servercontroller.cpp:739
 msgid "&Global Fonts..."
 msgstr "&Общие шрифты..."
 
-#: servercontroller.cpp:193 servercontroller.cpp:740
+#: servercontroller.cpp:192 servercontroller.cpp:741
 msgid "&Filter Rule Editor..."
 msgstr "&Редактор правил филтрации..."
 
-#: servercontroller.cpp:195 servercontroller.cpp:742
+#: servercontroller.cpp:194 servercontroller.cpp:743
 msgid "&Web Server Configuration..."
 msgstr "Конфигурация Web-сервера..."
 
-#: servercontroller.cpp:198 servercontroller.cpp:744
+#: servercontroller.cpp:197 servercontroller.cpp:745
 msgid "&Preferences..."
 msgstr "&Настройки..."
 
-#: servercontroller.cpp:208
+#: servercontroller.cpp:207
 msgid "Help on Colours..."
 msgstr "Помощь по цветам..."
 
-#: servercontroller.cpp:210
+#: servercontroller.cpp:209
 msgid "Help on Filters..."
 msgstr "Помощь по фильтрам..."
 
-#: servercontroller.cpp:212
+#: servercontroller.cpp:211
 msgid "Help on Keys..."
 msgstr "Помощь по клавишам..."
 
-#: servercontroller.cpp:215
+#: servercontroller.cpp:214
 msgid "About kSirc..."
 msgstr "О программе kSirc..."
 
@@ -167,11 +167,11 @@ msgstr "Каналы"
 msgid "Online"
 msgstr ""
 
-#: servercontroller.cpp:692
+#: servercontroller.cpp:693
 msgid "Active Server Connections"
 msgstr "Активные соединения сервера"
 
-#: servercontroller.cpp:733
+#: servercontroller.cpp:734
 msgid "&Undock"
 msgstr ""
 
@@ -255,42 +255,6 @@ msgstr ""
 msgid "Modify"
 msgstr "Изменить"
 
-#: KSPrefs/generalData.cpp:49
-msgid "Auto Create Windows"
-msgstr "Создавать окна автоматически"
-
-#: KSPrefs/generalData.cpp:58
-msgid "Beep on Notify"
-msgstr ""
-
-#: KSPrefs/generalData.cpp:67
-msgid "Nick Completion"
-msgstr ""
-
-#: KSPrefs/generalData.cpp:76
-msgid "Colour Picker Popup"
-msgstr ""
-
-#: KSPrefs/generalData.cpp:85
-msgid "Auto Rejoin"
-msgstr ""
-
-#: KSPrefs/generalData.cpp:94
-msgid "Enable Background Pixmap"
-msgstr "Разрешить фоновый рисунок"
-
-#: KSPrefs/generalData.cpp:111
-msgid "Browse"
-msgstr "Обзор"
-
-#: KSPrefs/generalData.cpp:119
-msgid "Display Topic in Caption"
-msgstr "Отображать тему в заголовке"
-
-#: KSPrefs/generalData.cpp:128
-msgid "Use MDI Mode (Must restart to take effect, experimental!!)"
-msgstr ""
-
 #: KSPrefs/ksprefs.cpp:9
 msgid "kSirc Prefrences"
 msgstr "Настройки kSirc"
@@ -327,3 +291,15 @@ msgstr ""
 #, c-format
 msgid "No such file \"%s\"!"
 msgstr "Нет такого файла: \"%s\"!"
+
+#~ msgid "Auto Create Windows"
+#~ msgstr "Создавать окна автоматически"
+
+#~ msgid "Enable Background Pixmap"
+#~ msgstr "Разрешить фоновый рисунок"
+
+#~ msgid "Browse"
+#~ msgstr "Обзор"
+
+#~ msgid "Display Topic in Caption"
+#~ msgstr "Отображать тему в заголовке"
