@@ -133,6 +133,8 @@ KpgpBase::run(const char *cmd, const char *passphrase)
 
   if (!input.isEmpty()) 
     write(pin[1], input.data(), input.length());
+  else
+    write(pin[1], "\n", 1);
   close(pin[1]);
  
   if (pout[0] >= 0)
