@@ -2,7 +2,8 @@
 APPSDIR = $(kde_appsdir)/Settings/Network
 
 INCLUDES = $(all_includes)
-LDADD = $(all_libraries) -lkdeui -lkdecore -lmediatool -lqt -lXext -lX11 $(LIBSOCKET) $(LIBCOMPAT) $(KDE_RPATH)
+LDFLAGS = $(all_libraries) $(KDE_RPATH)
+LDADD = -lkdeui -lkdecore -lmediatool -lqt -lXext -lX11 $(LIBSOCKET) $(LIBCOMPAT) 
 
 bin_PROGRAMS = kcmktalkd
 

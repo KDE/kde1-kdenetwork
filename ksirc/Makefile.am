@@ -75,18 +75,18 @@ ksircstaticSOURCES = $(ksirc_SOURCES)
 ksircstaticOBJECTS = $(ksirc_OBJECTS)
 
 # the library search path
-ksirc_LDFLAGS = -export-dynamic @all_libraries@ # -L$(srcdir)/KSProgress -L$(srcdir)/KSTicker -L$(srcdir)/KSCutDialog -L$(srcdir)/KSPrefs -L$(srcdir)/KSColourPicker -L$(srcdir)/puke 
+ksirc_LDFLAGS = -export-dynamic $(all_libraries) $(KDE_RPATH) # -L$(srcdir)/KSProgress -L$(srcdir)/KSTicker -L$(srcdir)/KSCutDialog -L$(srcdir)/KSPrefs -L$(srcdir)/KSColourPicker -L$(srcdir)/puke 
 
-ksircstaticLDFLAGS = --nostdlib $(ksirc_LDFLAGS)
+ksircstatic_LDFLAGS = --nostdlib $(ksirc_LDFLAGS)
 
 # the libraries to link against. Be aware of the order. First the libraries,
 # that depend on the following ones.
-ksirc_LDADD   = ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a ./KSColourPicker/libkscolourpicker.a KSOpenkSirc/libksopenksirc.a pws-0.5/pws/libpws.a puke/libpuke.la -lkdeui -lkdecore -lkfile -lkfm -lqt -lX11 -lXext @LIBSOCKET@  $(LIBDL)  $(KDE_RPATH)
+ksirc_LDADD   = ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a ./KSColourPicker/libkscolourpicker.a KSOpenkSirc/libksopenksirc.a pws-0.5/pws/libpws.a puke/libpuke.la $(LIB_KFILE) $(LIBDL) 
 
 ksircstaticLDADD = ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a ./KSColourPicker/libkscolourpicker.a pws-0.5/pws/libpws.a KSOpenkSirc/libksopenksirc.a puke/.libs/libpuke.a
 
 #if COMPILE_KSIRC_STATIC
-STATIC_LIBS = $(static_libkde) $(static_libqt) $(static_libstdc) $(static_pthread) -lX11 -lXext @LIBSOCKET@ $(LIBDL) -lm -lc
+STATIC_LIBS = $(static_libkde) $(static_libqt) $(static_libstdc) $(static_pthread) -lXext $(LIB_X11) $(LIBDL) -lm -lc
 #endif
 
 kdoc:
