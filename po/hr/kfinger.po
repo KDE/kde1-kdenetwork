@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1997-11-08 23:50+0100\n"
+"POT-Creation-Date: 1998-10-12 14:17+0200\n"
 "PO-Revision-Date: 1998-03-15 20:00-0500\n"
 "Last-Translator: Vladimir Vuksan <vuksan@veus.hr>\n"
 "Language-Team: Croatian\n"
@@ -11,214 +11,226 @@ msgstr ""
 "Xgettext-Options: -ktranslate\n"
 "Files: finger.cpp kfinger.cpp\n"
 
-#: kfinger.cpp:6 kfinger.cpp:31
+#: kfinger.C:8 kfinger.C:34
 msgid "KDE finger utility"
 msgstr "KDE finger korisnièki program"
 
-#: kfinger.cpp:12
+#: kfinger.C:14
 msgid "Finger Now"
 msgstr "Fingeriraj Sada"
 
-#: kfinger.cpp:13
+#: kfinger.C:15
 msgid "Talk.."
 msgstr "Razgovaraj.."
 
-#: kfinger.cpp:14
-msgid "Quit"
-msgstr "Zavr¹i"
-
-#: kfinger.cpp:16
+#: kfinger.C:18
 msgid "Setup"
 msgstr "Postava"
 
-#: kfinger.cpp:18
-msgid "Help"
-msgstr "Pomoæ"
-
-#: kfinger.cpp:19 kfinger.cpp:221
-msgid "About"
-msgstr "O programu"
-
-#: kfinger.cpp:20
-msgid "&File"
-msgstr "&Datoteka"
-
-#: kfinger.cpp:21
-msgid "&Options"
+#: kfinger.C:19
+#, fuzzy
+msgid "Save Options"
 msgstr "&Opcije"
 
-#: kfinger.cpp:23
-msgid "&Help"
-msgstr "&Pomoæ"
-
-#: kfinger.cpp:37
+#: kfinger.C:38
 msgid "Finger"
 msgstr "Finger"
 
-#: kfinger.cpp:39
+#: kfinger.C:39
+msgid "Stop current finger"
+msgstr ""
+
+#: kfinger.C:41
 msgid "Talk..."
 msgstr "Razgovaraj..."
 
-#: kfinger.cpp:41
-msgid "Settings"
-msgstr "Postava"
+#: kfinger.C:42
+msgid "AutoFinger On/Off"
+msgstr ""
 
-#: kfinger.cpp:56
+#: kfinger.C:54
+#, fuzzy
 msgid ""
 "Welcome to KDE Finger \n"
-"program by A.Rizzi bilibao@ouverture.it\n"
+"program by A.Rizzi rizzi@kde.org\n"
 "18/09/1997 \n"
 msgstr ""
 "Dobrodo¹li u KDE Finger \n"
 "program od strane A.Rizzi bilibao@ouverture.it\n"
 "18/09/1997 \n"
 
-#: kfinger.cpp:57
+#: kfinger.C:55
 msgid "Finger result"
 msgstr "Rezultat fingera"
 
-#: kfinger.cpp:201
+#: kfinger.C:266
+#, c-format
 msgid "Error on server : %s"
 msgstr "Gre¹ka na poslu¾itelju : %s"
 
-#: kfinger.cpp:210
+#: kfinger.C:285
+#, c-format
 msgid "Finger result for : %s@%s"
 msgstr "Rezultat fingera za : %s@%s"
 
-#: kfinger.cpp:221
+#: kfinger.C:301
+#, fuzzy
 msgid ""
-"Kfinger 0.3.2\n"
+"Kfinger 0.7.0\n"
 "(c) by Andrea Rizzi\n"
-"bilibao@ouverture.it"
+"rizzi@kde.org"
 msgstr ""
 "Kfinger 0.3.2\n"
 "(c) Andrea Rizzi\n"
 "bilibao@ouverture.it"
 
-#: kfinger.cpp:265
+#: kfinger.C:345
 msgid "Kfinger Setup"
 msgstr "Kfinger postava"
 
-#: kfinger.cpp:293 kfinger.cpp:333
+#: kfinger.C:373 kfinger.C:413
 msgid "&Add"
 msgstr "&Dodaj"
 
-#: kfinger.cpp:298 kfinger.cpp:338
-msgid "&Remove"
-msgstr "&Ukloni"
-
-#: kfinger.cpp:303
+#: kfinger.C:383
 msgid "Server Name"
 msgstr "Ime poslu¾itelja"
 
-#: kfinger.cpp:307 kfinger.cpp:310
+#: kfinger.C:387 kfinger.C:390
 msgid "Server list"
 msgstr "Popis poslu¾itelja"
 
-#: kfinger.cpp:343
+#: kfinger.C:423
 msgid "User Name"
 msgstr "Korisnièko ime"
 
-#: kfinger.cpp:347 kfinger.cpp:350
+#: kfinger.C:427 kfinger.C:430
 msgid "Users list"
 msgstr "Popis korisnika"
 
-#: kfinger.cpp:364
+#: kfinger.C:444
 msgid "Timed finger"
 msgstr "Mjereni finger"
 
-#: kfinger.cpp:382 kfinger.cpp:557
-msgid "Finger wait: %d"
+#: kfinger.C:459 kfinger.C:644
+#, fuzzy, c-format
+msgid "Finger wait: %d\""
 msgstr "Finger èekanje: %d"
 
-#: kfinger.cpp:386
-msgid "Time"
-msgstr "Vrijeme"
+#: kfinger.C:464
+msgid "Talk Command "
+msgstr ""
 
-#: kfinger.cpp:391 kfinger.cpp:403
+#: kfinger.C:474
+msgid "Misc"
+msgstr ""
+
+#: kfinger.C:479 kfinger.C:491
 msgid "Finger Output"
 msgstr "Rezultat Fingera"
 
-#: kfinger.cpp:395
+#: kfinger.C:483
 msgid "Finger server"
 msgstr "Finger poslu¾itelj"
 
-#: kfinger.cpp:399 kfinger.cpp:411
+#: kfinger.C:487 kfinger.C:499
 msgid "Fixed"
 msgstr "Fiksni "
 
-#: kfinger.cpp:407
+#: kfinger.C:495
 msgid "Finger User"
 msgstr "Finger korisnik"
 
-#: kfinger.cpp:427
+#: kfinger.C:515
 msgid "Lines to skip :"
 msgstr "Linije koje treba prekoèiti :"
 
-#: kfinger.cpp:435 kfinger.cpp:440
+#: kfinger.C:523 kfinger.C:528
 msgid "Format..."
 msgstr "Format..."
 
-#: kfinger.cpp:447
+#: kfinger.C:535
 msgid "User"
 msgstr "Korisnik"
 
-#: kfinger.cpp:458
+#: kfinger.C:546
 msgid "Server"
 msgstr "Poslu¾itelj"
 
-#: kfinger.cpp:470
+#: kfinger.C:558
 msgid "Talk"
 msgstr "Razgovaraj"
 
-#: kfinger.cpp:475 kfinger.cpp:611 kfinger.cpp:757
-msgid "Cancel"
-msgstr "Poni¹ti"
-
-#: kfinger.cpp:480
-msgid "Ok"
-msgstr "U redu"
-
-#: kfinger.cpp:603
+#: kfinger.C:691
 msgid "Talk with..."
 msgstr "Razgovaraj sa..."
 
-#: kfinger.cpp:670
+#: kfinger.C:758
 msgid "Format string for var1(string)"
 msgstr "Oblikuj niz za var1(niz)"
 
-#: kfinger.cpp:676
+#: kfinger.C:764
 msgid "Fromat string for var2(int)"
 msgstr "Oblikuj niz za var2(niz)"
 
-#: kfinger.cpp:696 kfinger.cpp:702
+#: kfinger.C:784 kfinger.C:790
 msgid "Offset"
 msgstr "Pomak"
 
-#: kfinger.cpp:715
+#: kfinger.C:803
 msgid "Only var1"
 msgstr "Samo var1"
 
-#: kfinger.cpp:721
+#: kfinger.C:809
 msgid "Only var2"
 msgstr "Samo var2"
 
-#: kfinger.cpp:727
+#: kfinger.C:815
 msgid "var1, var2"
 msgstr "var1, var2"
 
-#: kfinger.cpp:733
+#: kfinger.C:821
 msgid "var2, var1"
 msgstr "var2, var1"
 
-#: kfinger.cpp:746
+#: kfinger.C:834
 msgid "Output format string"
 msgstr "Oblik izlaznog niza"
 
-#: kfinger.cpp:753
+#: kfinger.C:841
 msgid "Save & Quit"
 msgstr "Spremi & Zavr¹i"
 
-#: kfinger.cpp:763
+#: kfinger.C:851
 msgid "Output parameters "
 msgstr "Izlazni parametri "
+
+#~ msgid "Quit"
+#~ msgstr "Zavr¹i"
+
+#~ msgid "Help"
+#~ msgstr "Pomoæ"
+
+#~ msgid "About"
+#~ msgstr "O programu"
+
+#~ msgid "&File"
+#~ msgstr "&Datoteka"
+
+#~ msgid "&Help"
+#~ msgstr "&Pomoæ"
+
+#~ msgid "Settings"
+#~ msgstr "Postava"
+
+#~ msgid "&Remove"
+#~ msgstr "&Ukloni"
+
+#~ msgid "Time"
+#~ msgstr "Vrijeme"
+
+#~ msgid "Cancel"
+#~ msgstr "Poni¹ti"
+
+#~ msgid "Ok"
+#~ msgstr "U redu"
