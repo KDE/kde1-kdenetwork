@@ -551,7 +551,7 @@ void ScriptWidget::addButton() {
 void ScriptWidget::insertButton() {
   //exit if there is no highlighted item, or we've reached the
   //maximum entries in the script list
-  if(sl->currentItem < 0 || (sl->count() == MAX_SCRIPT_ENTRIES-1))
+  if(sl->currentItem() < 0 || (sl->count() == MAX_SCRIPT_ENTRIES-1))
     return;
 
   switch(se->type()) {
