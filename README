@@ -4,6 +4,7 @@ In this file:
 * Debugging
 * Removal/Uninstallation
 * More Info
+* How to compile kSirc
 
 Common Mistakes
 ---------------
@@ -41,3 +42,16 @@ If you have problems compiling and installing this package, contact
 me at coolo@kde.org.
 
 General KDE discussions should go to the KDE mailing list (kde@kde.org).
+
+How to compile kSirc
+--------------------
+
+For those with CVS access, you can compile kSirc after doing the following
+in the kdenetwork directory:
+
+1. (cd .. && cvs -z9 checkout -r1.10 kdenetwork/ltconfig)
+2. mv ltconfig admin/ltconfig
+3. Re-run make -f Makefile.cvs and ./configure (not config.guess)
+
+Remember to remove admin/ltconfig before doing any commits so you don't
+commit the modified ltconfig.
