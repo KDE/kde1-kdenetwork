@@ -18,8 +18,8 @@ decoderDlg::decoderDlg (const char* name ) :Inherited( 0,name,true )
 {
     setCaption("KRN - Decoder");
     
-    list = new KTabListBox(this);
-    list->setNumCols(4);
+    list = new KTabListBox(this,"",4);
+//    list->setNumCols(4);
     list->setColumn(0,"ID",40);
     list->setColumn(1,"",20,KTabListBox::PixmapColumn);
     list->setColumn(2,"Size",100);

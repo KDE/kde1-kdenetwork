@@ -244,8 +244,17 @@ int NNTP::listOverview()
                 OffsetRef=of.left(index).contains('\n')+1;
             else
                 OffsetRef=0;
-            debug ("Offsets:%d,%d,%d,%d,%d,%d",OffsetSubject,OffsetFrom,OffsetLines,OffsetID,OffsetDate,OffsetRef);
         }
+        else
+        {
+            OffsetSubject=1;
+            OffsetFrom=2;
+            OffsetDate=3;
+            OffsetID=4;
+            OffsetRef=5;
+            OffsetLines=7;
+        }
+        debug ("Offsets:%d,%d,%d,%d,%d,%d",OffsetSubject,OffsetFrom,OffsetLines,OffsetID,OffsetDate,OffsetRef);
     }
     return mReplyCode;
 }

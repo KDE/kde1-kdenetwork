@@ -199,12 +199,12 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     setView (panner);
     
     gl = new QGridLayout( panner->child0(), 1, 1 );
-    list=new KTabListBox (panner->child0());
+    list=new KTabListBox (panner->child0(),"",4);
     list->clearTableFlags(Tbl_hScrollBar);
     list->clearTableFlags(Tbl_autoHScrollBar);
     list->setTableFlags(Tbl_autoVScrollBar);
     list->setSeparator('\n');
-    list->setNumCols(4);
+//    list->setNumCols(4);
     list->setColumn(0, "Sender", 150);
     list->setColumn(1, "Date", 75);
     list->setColumn(2, "Lines", 50);

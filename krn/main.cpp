@@ -204,9 +204,7 @@ void expireCache()   // robert's cache stuff
     QDir d(cachepath.data());
     QStrList files=d.entryList();
     
-    struct dirent **cdir;
     struct stat st;
-    int num_files;
     time_t currenttime = time(NULL);
     char filename[255];
     
