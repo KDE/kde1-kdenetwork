@@ -47,6 +47,7 @@
 
 #include "kmcomposewin.h"
 #include "kmreaderwin.h"
+#include "kfileio.h"
 
 #include "artdlg.moc"
 
@@ -1219,6 +1220,13 @@ void Artdlg::FindThis (const char *expr,const char *field)
         iter.toFirst();
         iter+=index;
     }
+    if (lastfound >-1)
+    {
+        if (server->isCached(IDList.at(lastfound)))
+            list->changeItemColor(QColor(0,0,255),lastfound);
+        else
+            list->changeItemColor(QColor(0,0,0),lastfound);
+    }
 
     lastexpr=expr;
     lastfield=field;
@@ -1230,7 +1238,6 @@ void Artdlg::FindThis (const char *expr,const char *field)
             Article art(iter.current());
             if (regex.match(art.Subject.data())>-1)
             {
-                list->changeItemColor(QColor(0,0,0),lastfound);
                 list->changeItemColor(QColor(255,0,0),index);
                 goTo(index);
                 lastfound=index;
@@ -1246,7 +1253,6 @@ void Artdlg::FindThis (const char *expr,const char *field)
             Article art(iter.current());
             if (regex.match(art.From.data())>-1)
             {
-                list->changeItemColor(QColor(0,0,0),lastfound);
                 list->changeItemColor(QColor(255,0,0),index);
                 goTo(index);
                 lastfound=index;
@@ -1254,6 +1260,38 @@ void Artdlg::FindThis (const char *expr,const char *field)
             }
         }
         return;
+    }
+    if (!strcmp(field,"Cached Body" ));
+    {
+        for (;iter.current();++iter,++index)
+        {
+            if (server->isCached(iter.current()))
+            {
+                if (regex.match(kFileToString(cachepath+"/"+iter.current()).data())>-1)
+                {
+                    list->changeItemColor(QColor(255,0,0),index);
+                    goTo(index);
+                    lastfound=index;
+                    break;
+                }
+            }
+        }
+    }
+    if (!strcmp(field,"Body" ));
+    {
+        for (;iter.current();++iter,++index)
+        {
+            QString *a=server->article(iter.current());
+            int i=regex.match(a->data());
+            delete a;
+            if (i>-1)
+            {
+                list->changeItemColor(QColor(255,0,0),index);
+                goTo(index);
+                lastfound=index;
+                break;
+            }
+        }
     }
 }
 void Artdlg::markReadArt (int index,int)

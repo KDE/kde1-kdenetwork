@@ -33,10 +33,13 @@ findArtDlg::findArtDlg (QWidget* parent,const char* name):Inherited( parent, nam
     l->addLabel("l2",klocale->translate("In Field:"));
     l->newLine();
 
-    field=(QComboBox *)(l->addComboBox("field")->widget);
-    field->insertItem( "Subject" );
-    field->insertItem( "Sender" );
-    field->setMinimumWidth(250); //just to make it prettier.
+    QStrList *fields=new QStrList;
+    fields->append( "Subject" );
+    fields->append( "Sender" );
+    fields->append( "Cached Body" );
+    fields->append( "Body" );
+    field=(QComboBox *)(l->addComboBox("field",fields)->widget);
+    delete fields;
     
     l->endGroup();
 

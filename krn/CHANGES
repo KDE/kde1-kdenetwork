@@ -3,6 +3,14 @@ Changes made Feb 5
 -----------------------------------------------------------------------------
 
 * [Roberto] Started implementing a nicer printing system.
+            Rationale: the htmlwidget's printing system is a pain if you want
+            to print more than one message, and a2ps prints *gorgeous* mesages.
+            Here is my command line:
+            a2ps -1 --pretty-print=mailfolder --non-printable-format=space
+            Also printing through the HTML widget is still possible.
+* [Roberto] Implemented body search, both for cached only and for cached or
+            uncached articles, and fixed a color bug in continued searches.
+            Still doesn't work right for not cached articles.
 
 -----------------------------------------------------------------------------
 Changes made Feb 3
