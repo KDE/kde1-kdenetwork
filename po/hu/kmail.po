@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-11-05 02:07+0100\n"
+"POT-Creation-Date: 1998-11-07 02:34+0100\n"
 "PO-Revision-Date: 1998-01-21 15:18+CET\n"
 "Last-Translator: Marcell Lengyel <mike.tkf@ibm.net>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -1081,23 +1081,23 @@ msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
 msgstr "Hiba a KSpell indításakor. Ellenõrizze, hogy az ISpell beállításait."
 
-#: kmfolder.cpp:146
+#: kmfolder.cpp:145
 #, fuzzy, c-format
 msgid "Folder `%s' changed. Recreating index."
 msgstr ""
 "A `%s' mappa tartalma megváltozott.\n"
 "Index fájl újragenerálása folyamatban."
 
-#: kmfolder.cpp:380
+#: kmfolder.cpp:379
 #, c-format
 msgid "Creating index file: %d messages done"
 msgstr "Index fájl elkészült: %d üzenet"
 
-#: kmfolder.cpp:462
+#: kmfolder.cpp:461
 msgid "Writing index file"
 msgstr ""
 
-#: kmfolder.cpp:902
+#: kmfolder.cpp:901
 #, fuzzy, c-format
 msgid "Compacting folder: %d messages done"
 msgstr "Index fájl elkészült: %d üzenet"

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail 0.4.4\n"
-"POT-Creation-Date: 1998-11-05 02:07+0100\n"
+"POT-Creation-Date: 1998-11-07 02:34+0100\n"
 "PO-Revision-Date: 1998-06-12 08:40 MET DST\n"
 "Last-Translator: Wang Jian <lark@linux.ustc.edu.cn>\n"
 "Language-Team: zh_CN (gb2312 )\n"
@@ -1004,21 +1004,21 @@ msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
 msgstr "启动KSpell是发生错误. 请确定你正确地配置了 ISpell."
 
-#: kmfolder.cpp:146
+#: kmfolder.cpp:145
 #, c-format
 msgid "Folder `%s' changed. Recreating index."
 msgstr "邮件夹 `%s' 改动了. 重新建立索引."
 
-#: kmfolder.cpp:380
+#: kmfolder.cpp:379
 #, c-format
 msgid "Creating index file: %d messages done"
 msgstr "建立索引文件: 完成 %d 个信件"
 
-#: kmfolder.cpp:462
+#: kmfolder.cpp:461
 msgid "Writing index file"
 msgstr ""
 
-#: kmfolder.cpp:902
+#: kmfolder.cpp:901
 #, fuzzy, c-format
 msgid "Compacting folder: %d messages done"
 msgstr "建立索引文件: 完成 %d 个信件"

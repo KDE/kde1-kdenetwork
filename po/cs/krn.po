@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: krn\n"
-"POT-Creation-Date: 1998-10-26 11:11+0100\n"
+"POT-Creation-Date: 1998-10-09 15:54+0200\n"
 "PO-Revision-Date: 1998-11-05 08:41+01:00\n"
 "Last-Translator: Miroslav Flídr <flidr@ky.zcu.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -93,6 +93,11 @@ msgstr "Pøihlásit/Odhlásit"
 #: artdlg.cpp:150 groupdlg.cpp:149
 msgid "Untag"
 msgstr "Zru¹it oznaèení"
+
+#: artdlg.cpp:159 findArtDlg.cpp:65 groupdlg.cpp:155
+#, fuzzy
+msgid "Find"
+msgstr "Nalézt..."
 
 #: artdlg.cpp:170 groupdlg.cpp:157
 msgid "(Un)Tag"
@@ -286,6 +291,10 @@ msgstr "Zveøejnit odpovìï"
 msgid "Post & Reply"
 msgstr "Zveøejnit a odpovìdìt"
 
+#: artdlg.cpp:167 artdlg.cpp:257
+msgid "Forward"
+msgstr ""
+
 #: artdlg.cpp:173 artdlg.cpp:241
 msgid "Tagged"
 msgstr "Oznaèené"
@@ -397,6 +406,11 @@ msgstr "Oznaèit jako nepøeètené"
 #: artdlg.cpp:291 sortDlg.cpp:34
 msgid "Sender"
 msgstr "Odesilatel"
+
+#: artdlg.cpp:292 sortDlg.cpp:35
+#, fuzzy
+msgid "Date"
+msgstr "Datum: "
 
 #: artdlg.cpp:293 sortDlg.cpp:36
 msgid "Lines"
@@ -572,6 +586,18 @@ msgstr "Vlo¾ený"
 msgid "Font Size:"
 msgstr "Velikost fontu:"
 
+#: fontsDlg.cpp:70
+msgid "Small"
+msgstr ""
+
+#: fontsDlg.cpp:71
+msgid "Normal"
+msgstr ""
+
+#: fontsDlg.cpp:72
+msgid "Large"
+msgstr ""
+
 #: fontsDlg.cpp:73
 msgid "Huge"
 msgstr "Obrovský"
@@ -635,6 +661,15 @@ msgstr "Editor KMailu"
 #: kmcomposewin.cpp:133
 msgid "F"
 msgstr "F"
+
+#: kmcomposewin.cpp:134
+#, fuzzy
+msgid "Name"
+msgstr "Skuteèné jnémo"
+
+#: kmcomposewin.cpp:135
+msgid "Size"
+msgstr ""
 
 #: kmcomposewin.cpp:136
 msgid "Encoding"
@@ -913,6 +948,11 @@ msgstr "Komu:"
 msgid "Subject:"
 msgstr "Pøedmìt:"
 
+#: kmcomposewin.cpp:1472
+#, fuzzy
+msgid "Date:"
+msgstr "Datum: "
+
 #: kmcomposewin.cpp:1549
 msgid "Choose Signature File"
 msgstr "Vyberte soubor se signaturou"
@@ -924,7 +964,9 @@ msgstr "KMail: kontrola pravopisu"
 #: kmcomposewin.cpp:1603
 msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
-msgstr "Chyba pøi spou¹»ení KSpellu. Prosím ujistìte se, ¾e máte správnì nastaven ISpell."
+msgstr ""
+"Chyba pøi spou¹»ení KSpellu. Prosím ujistìte se, ¾e máte správnì nastaven "
+"ISpell."
 
 #: kmsender.cpp:108
 msgid ""
@@ -1044,9 +1086,17 @@ msgstr "Najít èláneky s:"
 msgid "In Field:"
 msgstr "V polo¾ce:"
 
+#: findArtDlg.cpp:53 rulesDlg.cpp:131
+msgid "Case Sensitive"
+msgstr ""
+
 #: findArtDlg.cpp:56 rulesDlg.cpp:132
 msgid "Wildcard Mode"
 msgstr "Mód \"divokých karet\""
+
+#: findArtDlg.cpp:66 rulesDlg.cpp:144
+msgid "Done"
+msgstr ""
 
 #: kmidentity.cpp:162
 #, c-format
@@ -1175,6 +1225,10 @@ msgstr "Bylo mo¾né zapsat pouze %u bajtù z %u."
 #: kmmsgpartdlg.cpp:41
 msgid "Message Part Properties"
 msgstr "Vlastnosti èásti zprávy"
+
+#: kmmsgpartdlg.cpp:62
+msgid "Name:"
+msgstr ""
 
 #: kmmsgpartdlg.cpp:73
 msgid "Description:"
@@ -1442,6 +1496,10 @@ msgstr "Ulo¾it jako"
 msgid "Match Articles With:"
 msgstr "Porovnat èlánky s:"
 
+#: rulesDlg.cpp:124
+msgid "Weight:"
+msgstr ""
+
 #: rulesDlg.cpp:126
 msgid "Negative"
 msgstr "Negativní"
@@ -1453,6 +1511,10 @@ msgstr "Jnémo pravidla:"
 #: sortDlg.cpp:23
 msgid "KRN - Header Sorting"
 msgstr "KRN - Nastavení tøídìní"
+
+#: sortDlg.cpp:37
+msgid "None"
+msgstr ""
 
 #: sortDlg.cpp:39
 msgid "Sort by:"

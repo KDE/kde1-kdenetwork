@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail 0.4.4\n"
-"POT-Creation-Date: 1998-11-05 02:07+0100\n"
+"POT-Creation-Date: 1998-11-07 02:34+0100\n"
 "PO-Revision-Date: 1998-03-08 10:42 MET\n"
 "Last-Translator: Juraj Bednár <bednar@isternet.sk>\n"
 "Language-Team: Slovak <bednar@isternet.sk>\n"
@@ -1000,23 +1000,23 @@ msgstr ""
 "Chyba pri ¹tarte kontroly pravopisu. Prosím, uistite sa, ¾e máte správne "
 "nastavený ISpell."
 
-#: kmfolder.cpp:146
+#: kmfolder.cpp:145
 #, c-format
 msgid "Folder `%s' changed. Recreating index."
 msgstr ""
 "Prieèinok '%s' sa zmenil.\n"
 "Vytváram znovu indexový súbor."
 
-#: kmfolder.cpp:380
+#: kmfolder.cpp:379
 #, c-format
 msgid "Creating index file: %d messages done"
 msgstr "Vytváram indexový súbor: %d správ hotových "
 
-#: kmfolder.cpp:462
+#: kmfolder.cpp:461
 msgid "Writing index file"
 msgstr "Zapisujem indexový súbor"
 
-#: kmfolder.cpp:902
+#: kmfolder.cpp:901
 #, c-format
 msgid "Compacting folder: %d messages done"
 msgstr "Komprimujem prieèinok: %d správ"

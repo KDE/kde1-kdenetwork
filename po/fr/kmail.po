@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1998-11-05 02:07+0100\n"
+"POT-Creation-Date: 1998-11-07 02:34+0100\n"
 "PO-Revision-Date: 1998-02-25 22:31 CET\n"
 "Last-Translator: Serge \"sergio\" Tellène <tells@mygale.org>\n"
 "Language-Team: Français\n"
@@ -1005,23 +1005,23 @@ msgstr ""
 "Erreur lors du lancement de KSpell. Assurez-vous que\n"
 "ispell est correctement configuré sur votre système."
 
-#: kmfolder.cpp:146
+#: kmfolder.cpp:145
 #, c-format
 msgid "Folder `%s' changed. Recreating index."
 msgstr ""
 "Le contenu du dossier %s a changé.\n"
 "Recréation du fichier d'index."
 
-#: kmfolder.cpp:380
+#: kmfolder.cpp:379
 #, c-format
 msgid "Creating index file: %d messages done"
 msgstr "Création du fichier d'index : %d messages pris en compte"
 
-#: kmfolder.cpp:462
+#: kmfolder.cpp:461
 msgid "Writing index file"
 msgstr "Ecriture du fichier d'index en cours"
 
-#: kmfolder.cpp:902
+#: kmfolder.cpp:901
 #, c-format
 msgid "Compacting folder: %d messages done"
 msgstr "Compactage du dossier en cours : %d messages traités"
