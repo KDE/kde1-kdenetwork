@@ -1,0 +1,145 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 1998-07-20 15:16+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ENCODING\n"
+
+#: main.cpp:55
+msgid "&Announcement"
+msgstr "&Annonsering"
+
+#: main.cpp:58
+msgid "Ans&wering machine"
+msgstr "&Svaremaskin"
+
+#: main.cpp:64
+msgid "usage: kcmktalkd [-init | soundpage | answmachpage]\n"
+msgstr "bruk: kcmktalkd [-init | soundpage | answmachpage]\n"
+
+#: main.cpp:100
+msgid "KTalkd Configuration"
+msgstr "KTald-konfigurasjon"
+
+#: soundpage.cpp:47
+msgid "&Announcement program"
+msgstr "&Annonseringsprogram"
+
+#: soundpage.cpp:54
+msgid "&Talk client"
+msgstr "&Talk-klient"
+
+#: soundpage.cpp:58
+msgid "&Play sound"
+msgstr "&Spill lyd"
+
+#: soundpage.cpp:60
+msgid "Sound &File"
+msgstr "&Lydfil"
+
+#: soundpage.cpp:62
+msgid "Additional WAV files can be dropped onto the sound list."
+msgstr "Ytligere WAV-filer kan bli sluppet ned på lydlisten."
+
+#: soundpage.cpp:77
+msgid "&Test"
+msgstr "&Test"
+
+#: soundpage.cpp:157
+msgid "Unsupported URL"
+msgstr "Ustøttet URL"
+
+#: soundpage.cpp:158
+msgid ""
+"Sorry, this type of URL is currently unsupportedby the KDE System Sound "
+"Module"
+msgstr ""
+
+#: soundpage.cpp:165
+#, c-format
+msgid ""
+"Sorry, but \n"
+"%s\n"
+"does not seem to be a WAV--file."
+msgstr ""
+
+#: soundpage.cpp:168
+msgid "Improper File Extension"
+msgstr ""
+
+#: soundpage.cpp:176
+#, c-format
+msgid ""
+"The file\n"
+"%s\n"
+"is already in the list"
+msgstr ""
+"Filen\n"
+"%s\n"
+"er allerede i listen"
+
+#: soundpage.cpp:180
+msgid "File Already in List"
+msgstr "Fil allerede i liste"
+
+#: answmachpage.cpp:39
+msgid "&Activate answering machine"
+msgstr "&Aktiver svaremaskin"
+
+#: answmachpage.cpp:44
+msgid "&Mail address"
+msgstr "&Postadresse"
+
+#: answmachpage.cpp:51
+msgid "Mail sub&ject"
+msgstr "&Postemne"
+
+#: answmachpage.cpp:54
+#, c-format
+msgid "Use %s for the caller name"
+msgstr "Bruk %s for ringerens navn"
+
+#: answmachpage.cpp:60
+msgid "Mail &first line"
+msgstr "Post &første linje"
+
+#: answmachpage.cpp:64
+#, c-format
+msgid "Use first %s for caller name, and second %s for caller hostname"
+msgstr "Bruk første %s for ringerens navn, og den andre %s for ringerens vertsnavn"
+
+#: answmachpage.cpp:68
+msgid "&Receive a mail even if no message left"
+msgstr "&Motta post selv når ingen meldinger ble lagt igjen"
+
+#: answmachpage.cpp:74
+msgid "&Banner displayed on answering machine startup :"
+msgstr "&Banner som vises på den svarende maskinen ved oppstart:"
+
+#: answmachpage.cpp:83
+msgid ""
+"The person you're asking to talk with is not answering.\n"
+"Please leave a message to be delivered via E-Mail.\n"
+"Just start typing and when you're done, exit normally."
+msgstr ""
+"Personen du ønsker å snakke med svarer ikke.\n"
+"Vennligst legg igjen en melding for levering pr epost.\n"
+"Bare start å skrive, og bare avslutt normalt når du er ferdig."
+
+#: answmachpage.cpp:171 answmachpage.cpp:189
+#, c-format
+msgid "Message from %s"
+msgstr "Melding fra %s"
+
+#: answmachpage.cpp:172 answmachpage.cpp:191
+#, c-format
+msgid "Message left in the answering machine, by %s@%s"
+msgstr "Melding lagt igjen i svarende maskin av %s@%s"
