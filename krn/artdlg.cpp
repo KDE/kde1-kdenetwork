@@ -29,6 +29,7 @@
 #include <qregexp.h>
 
 #include <kapp.h>
+#include <kfm.h>
 
 #include <kmsgbox.h>
 #include <kkeyconf.h>
@@ -733,7 +734,7 @@ bool Artdlg::loadArt (QString id)
     if (s->isEmpty())
     {
         debug ("entered get from web");
-        QString buffer;
+        QString buffer(2048);
         QString urldata("http://ww2.altavista.digital.com/cgi-bin/news.cgi?id@");
         id=id.mid(1,id.length()-2);
         //    KURL::encodeURL(id);
@@ -752,7 +753,7 @@ bool Artdlg::loadArt (QString id)
                        "your news server and Krn's local cache\n"
                        "However, if you have a functional Internet connection, you may"
                        "be able to find it at Altavista following this link:\n"
-                       "http://%s\n",url.url().data());
+                       "%s\n\n\n",url.url().data());
 
         //Now, lets create a phony article with this data.
         KMMessage *m=new KMMessage();
@@ -1044,8 +1045,8 @@ void Artdlg::openURL (const char *s)
     if( url.isMalformed() )
     {
         warning("Invalid URL clicked!");
+        return;
     };
-    debug ("protocolo-->%s",url.protocol());
     if(strcmp(url.protocol(),"news")==0)
     {
         if(strchr(url.path(),'@')!=NULL)
@@ -1056,5 +1057,28 @@ void Artdlg::openURL (const char *s)
             loadArt(s);
         }
         else emit spawnGroup(url.path());
+        return;
+    }
+    if(strcmp(url.protocol(),"http")==0)
+    {
+        KFM fm;
+        fm.openURL(s);
+        return;
+    }
+    if(strcmp(url.protocol(),"ftp")==0)
+    {
+        KFM fm;
+        fm.openURL(s);
+        return;
+    }
+    if(strcmp(url.protocol(),"mailto")==0)
+    {
+        QString address(url.path());
+        KMMessage *m=new KMMessage();
+        QString buffer(2048);
+        buffer.sprintf ("To: %s\n\n\n",address.data());
+        m->fromString (buffer);
+        KMComposeWin *comp=new KMComposeWin(m);
+        comp->show();
     }
 }
