@@ -349,7 +349,7 @@ msgstr "Baseado em Terminal"
 
 #: edit.cpp:76
 msgid "CHAP"
-msgstr ""
+msgstr "CHAP"
 
 #: edit.cpp:82
 msgid "Store password"
@@ -488,9 +488,8 @@ msgid "Disconnect on X-server shutdown"
 msgstr "Desligar se o servidor X terminar"
 
 #: general.cpp:125
-#, fuzzy
 msgid "Quit on Disconnect"
-msgstr "Desligar"
+msgstr "Sair ao Desligar"
 
 #: general.cpp:131
 msgid "Minimize Window on Connect"
@@ -710,28 +709,27 @@ msgstr ""
 "autenticação PAP \"%s\""
 
 #: main.cpp:806
-#, fuzzy
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
 "supply a username and a password!"
 msgstr ""
 "Seleccionou o método de autenticação\n"
-"PAP. Isto requere que insira um nome\n"
+"CHAP. Isto requere que insira um nome\n"
 "de utilizador e uma password!"
 
 #: main.cpp:813
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
 "file \"%s\""
 msgstr ""
 "Não consigo criar ficheiro de\n"
-"autenticação PAP \"%s\""
+"autenticação CHAP \"%s\""
 
 #: main.cpp:825
 msgid "You have to specify a telephone number !\n"
-msgstr ""
+msgstr "Tem de especificar um número de telefone !\n"
 
 #: main.cpp:899
 msgid "Quit kPPP?"
@@ -1110,35 +1108,8 @@ msgid ""
 "a non-empty file that has appropriate\n"
 "read and write permissions."
 msgstr ""
-
-#~ msgid "pppd Path:"
-#~ msgstr "Localização do pppd:"
-
-#~ msgid "Log Viewer:"
-#~ msgstr "Visualizador de Relatórios:"
-
-#~ msgid "started PPP connection:%s:%s"
-#~ msgstr "conexão PPP iniciada:%s:%s"
-
-#~ msgid ""
-#~ "terminated PPP connection\n"
-#~ "COST OF SESSION: "
-#~ msgstr ""
-#~ "conexão PPP terminada\n"
-#~ "CUSTO DA SESSÃO: "
-
-#~ msgid ""
-#~ "\n"
-#~ "SUBTOTAL FOR:"
-#~ msgstr ""
-#~ "\n"
-#~ "SUBTOTAL PARA:"
-
-#~ msgid ""
-#~ "The logviewer \"%s\" was not found!\n"
-#~ "\n"
-#~ "Setting default back to \"%s\"."
-#~ msgstr ""
-#~ "O visualizador de relatórios \"%s\" não foi encontrado!\n"
-#~ "\n"
-#~ "A voltar ao valor por omissão \"%s\"."
+"/etc/resolv.conf não existe!\n"
+"\n"
+"Peça ao admnistrador do seu sistema para criar\n"
+"um ficheiro não vazio que tenha as permissões\n"
+"de escrita e leitura apropriadas."
