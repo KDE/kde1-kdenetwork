@@ -1,5 +1,6 @@
- /*
+/*
     KFinger - ver 0.8.2
+
     KDE project - kdenetwork
     
     finger.C : Internet Finger protocol
@@ -109,7 +110,7 @@ if(n==0)
 
 void FingerProtocol::readBuff( int     ) 
 {
-  
+  warning("read buff" );
   sockNotif->setEnabled(FALSE);
   char c,n;
   int mn = recv( sock,   s    , 1, MSG_PEEK );
@@ -135,9 +136,10 @@ void FingerProtocol::readBuff( int     )
 int FingerProtocol::writeString(QString st) 
 {
     unsigned int len;
-    char     val; 
+
+    char    val=0; 
     getsockopt(sock,SOL_SOCKET,SO_ERROR,&val,&len );                   
-    warning("%c ",val);
+    //warning("error %d ",val);
     if(val==0)  
 	write(sock,st,strlen(st));
     return val;  

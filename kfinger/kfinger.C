@@ -1,5 +1,5 @@
 /*
-    KFinger - ver 0.8.1
+    KFinger - ver 0.8.2
     KDE project - kdenetwork
     
     kfinger.C : Main Widget
