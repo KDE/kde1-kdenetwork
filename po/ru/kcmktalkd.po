@@ -4,9 +4,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: KTalkd\n"
+"Project-Id-Version: kcmktalkd\n"
 "POT-Creation-Date: 1998-07-20 15:16+0200\n"
-"PO-Revision-Date: 1998-09-14 15:00+0800\n"
+"PO-Revision-Date: 1998-11-20 01:40+07:00\n"
 "Last-Translator: Const Kaplinsky <const@ce.cctpu.edu.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -55,7 +55,7 @@ msgstr "&Тест"
 
 #: soundpage.cpp:157
 msgid "Unsupported URL"
-msgstr "Неподдерживаемый URL"
+msgstr "Неподдерживаемый тип URL"
 
 #: soundpage.cpp:158
 msgid ""
@@ -72,9 +72,9 @@ msgid ""
 "%s\n"
 "does not seem to be a WAV--file."
 msgstr ""
-"Извините, но \n"
+"Извините, но похоже, что \n"
 "%s\n"
-"не является допустимым WAV-файлом."
+"не является корректным WAV-файлом."
 
 #: soundpage.cpp:168
 msgid "Improper File Extension"
@@ -101,7 +101,7 @@ msgstr "&Включить автоответчик"
 
 #: answmachpage.cpp:44
 msgid "&Mail address"
-msgstr "&Почтовый адрес"
+msgstr "&Адрес E-mail"
 
 #: answmachpage.cpp:51
 msgid "Mail sub&ject"
@@ -110,16 +110,16 @@ msgstr "&Тема письма"
 #: answmachpage.cpp:54
 #, c-format
 msgid "Use %s for the caller name"
-msgstr "Использование %s для имени вызывающего"
+msgstr "Используйте %s для имени вызывающего"
 
 #: answmachpage.cpp:60
 msgid "Mail &first line"
-msgstr "&Отправить первую строку"
+msgstr "&Первая строка"
 
 #: answmachpage.cpp:64
 #, c-format
 msgid "Use first %s for caller name, and second %s for caller hostname"
-msgstr "Использование %s для имени вызывающего, и %s для имени его машины"
+msgstr "Используйте %s для имени вызывающего, %s для имени его машины"
 
 #: answmachpage.cpp:68
 msgid "&Receive a mail even if no message left"
@@ -138,7 +138,7 @@ msgstr ""
 "Человек, которого Вы вызываете, не отвечает.\n"
 "Оставьте, пожалуйста, сообщение для доставки по E-Mail.\n"
 "Просто начинайте набирать текст и по окончании\n"
-"завершайте сеанс как обычно."
+"завершайте сеанс обычным образом."
 
 #: answmachpage.cpp:171 answmachpage.cpp:189
 #, c-format

@@ -4,12 +4,14 @@
 #
 msgid ""
 msgstr ""
+"Project-Id-Version: kfinger\n"
 "POT-Creation-Date: 1998-10-12 14:17+0200\n"
+"PO-Revision-Date: 1998-11-20 01:11+07:00\n"
+"Last-Translator: Const Kaplinsky <const@ce.cctpu.edu.ru>\n"
+"Language-Team: Russian <ru@li.org>\n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=koi8-r\n"
-"Date: 1998-02-10 15:59:39+0100\n"
-"From: root (A. Rizzi),,, <root@BiliOne>\n"
-"Xgettext-Options: -ktranslate\n"
-"Files: finger.cpp kfinger.cpp\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: kfinger.C:8 kfinger.C:34
 msgid "KDE finger utility"
@@ -21,42 +23,40 @@ msgstr "Запуск Finger"
 
 #: kfinger.C:15
 msgid "Talk.."
-msgstr ""
+msgstr "Talk.."
 
 #: kfinger.C:18
 msgid "Setup"
 msgstr "Настройка"
 
 #: kfinger.C:19
-#, fuzzy
 msgid "Save Options"
-msgstr "Настройка"
+msgstr "Сохранить конфигурацию"
 
 #: kfinger.C:38
 msgid "Finger"
-msgstr ""
+msgstr "Finger"
 
 #: kfinger.C:39
 msgid "Stop current finger"
-msgstr ""
+msgstr "Остановить текущую попытку"
 
 #: kfinger.C:41
 msgid "Talk..."
-msgstr ""
+msgstr "Talk..."
 
 #: kfinger.C:42
 msgid "AutoFinger On/Off"
-msgstr ""
+msgstr "Вкл./Выкл. автообновление"
 
 #: kfinger.C:54
-#, fuzzy
 msgid ""
 "Welcome to KDE Finger \n"
 "program by A.Rizzi rizzi@kde.org\n"
 "18/09/1997 \n"
 msgstr ""
 "Добро пожаловать в KDE Finger \n"
-"автор A.Rizzi bilibao@ouverture.it\n"
+"автор: A.Rizzi rizzi@kde.org\n"
 "18/09/1997 \n"
 
 #: kfinger.C:55
@@ -79,6 +79,9 @@ msgid ""
 "(c) by Andrea Rizzi\n"
 "rizzi@kde.org"
 msgstr ""
+"Kfinger 0.7.0\n"
+"(c) Andrea Rizzi\n"
+"rizzi@kde.org"
 
 #: kfinger.C:345
 msgid "Kfinger Setup"
@@ -106,20 +109,20 @@ msgstr "Список пользователей"
 
 #: kfinger.C:444
 msgid "Timed finger"
-msgstr ""
+msgstr "Автообновление"
 
 #: kfinger.C:459 kfinger.C:644
-#, fuzzy, c-format
+#, c-format
 msgid "Finger wait: %d\""
-msgstr "Ожидание Finger: %d"
+msgstr "Ожидание Finger: %d\""
 
 #: kfinger.C:464
 msgid "Talk Command "
-msgstr ""
+msgstr "Команда Talk "
 
 #: kfinger.C:474
 msgid "Misc"
-msgstr ""
+msgstr "Разное"
 
 #: kfinger.C:479 kfinger.C:491
 msgid "Finger Output"
@@ -155,7 +158,7 @@ msgstr "Сервер"
 
 #: kfinger.C:558
 msgid "Talk"
-msgstr ""
+msgstr "Talk"
 
 #: kfinger.C:691
 msgid "Talk with..."
@@ -183,11 +186,11 @@ msgstr "Только var2"
 
 #: kfinger.C:815
 msgid "var1, var2"
-msgstr ""
+msgstr "var1, var2"
 
 #: kfinger.C:821
 msgid "var2, var1"
-msgstr ""
+msgstr "var2, var1"
 
 #: kfinger.C:834
 msgid "Output format string"
@@ -200,27 +203,3 @@ msgstr "Сохранить и выйти"
 #: kfinger.C:851
 msgid "Output parameters "
 msgstr "Выходные параметры "
-
-#~ msgid "Quit"
-#~ msgstr "Выход"
-
-#~ msgid "Help"
-#~ msgstr "Помощь"
-
-#~ msgid "About"
-#~ msgstr "О программе"
-
-#~ msgid "&File"
-#~ msgstr "Файл"
-
-#~ msgid "&Help"
-#~ msgstr "Помощь"
-
-#~ msgid "&Remove"
-#~ msgstr "&Удалить"
-
-#~ msgid "Time"
-#~ msgstr "Время"
-
-#~ msgid "Cancel"
-#~ msgstr "Отмена"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KBiff 1.1\n"
 "POT-Creation-Date: 1998-10-13 13:34+0200\n"
-"PO-Revision-Date: 1998-09-14 15:00+0800\n"
+"PO-Revision-Date: 1998-11-20 01:02+07:00\n"
 "Last-Translator: Const Kaplinsky <const@ce.cctpu.edu.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -22,9 +22,8 @@ msgid "Profile:"
 msgstr "Профиль:"
 
 #: setupdlg.cpp:84
-#, fuzzy
 msgid "&New..."
-msgstr "&Помощь..."
+msgstr "&Создать..."
 
 #: setupdlg.cpp:91
 msgid "&Rename..."
@@ -32,7 +31,7 @@ msgstr "&Переименовать..."
 
 #: setupdlg.cpp:125
 msgid "General"
-msgstr "Общие"
+msgstr "Общие установки"
 
 #: setupdlg.cpp:126
 msgid "New Mail"
@@ -49,7 +48,7 @@ msgstr "Новый профиль"
 #: setupdlg.cpp:367
 #, c-format
 msgid "Rename Profile: %s"
-msgstr "Переименование профиля: %s"
+msgstr "Смена имени профиля: %s"
 
 #: setupdlg.cpp:407
 #, c-format
@@ -86,7 +85,7 @@ msgstr "Нет почты:"
 
 #: setupdlg.cpp:523
 msgid "Old Mail"
-msgstr "Старая почта"
+msgstr "Старая почта:"
 
 #: setupdlg.cpp:533
 msgid "New Mail:"
@@ -126,7 +125,7 @@ msgstr "Порт:"
 
 #: setupdlg.cpp:841
 msgid "PREAUTH"
-msgstr ""
+msgstr "PREAUTH"
 
 #: setupdlg.cpp:945 setupdlg.cpp:1238
 msgid "New Mailbox"
@@ -162,21 +161,21 @@ msgstr "Сохранить пароль"
 
 #: setupdlg.cpp:1005
 msgid "Advanced"
-msgstr "Дополнительно"
+msgstr "Прочее"
 
 #: setupdlg.cpp:1430
 msgid "KBiff"
-msgstr ""
+msgstr "KBiff"
 
 #: setupdlg.cpp:1452
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Version %s\n"
 "\n"
 "Copyright (C) 1998\n"
 "Kurt Granroth"
 msgstr ""
-"Версия 1.1\n"
+"Версия %s\n"
 "\n"
 "Copyright (C) 1998\n"
 "Kurt Granroth"
@@ -210,9 +209,8 @@ msgid "&Check mail now"
 msgstr "П&роверить почту"
 
 #: kbiff.cpp:479
-#, fuzzy
 msgid "&Read Mail now"
-msgstr "П&роверить почту"
+msgstr "Пр&очитать почту"
 
 #: kbiff.cpp:485
 msgid "&Stop"
@@ -220,14 +218,14 @@ msgstr "&Стоп"
 
 #: notify.cpp:28 notify.cpp:45
 msgid "You have new mail!"
-msgstr ""
+msgstr "Для Вас есть новая почта!"
 
 #: notify.cpp:53
 #, c-format
 msgid "New Messages: %d"
-msgstr ""
+msgstr "Новые сообщения: %d"
 
 #: notify.cpp:58
-#, fuzzy, c-format
+#, c-format
 msgid "Mailbox: %s"
-msgstr "Почтовый ящик:"
+msgstr "Почтовый ящик: %s"

@@ -4,9 +4,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: KDE Network Utilities 0.4.1\n"
+"Project-Id-Version: knu\n"
 "POT-Creation-Date: 1998-10-30 12:57+0100\n"
-"PO-Revision-Date: 1998-09-14 16:00+0800\n"
+"PO-Revision-Date: 1998-11-20 01:18+07:00\n"
 "Last-Translator: Const Kaplinsky <const@ce.cctpu.edu.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -15,11 +15,11 @@ msgstr ""
 
 #: knu.cpp:147 knu.cpp:306
 msgid "&Ping"
-msgstr ""
+msgstr "&Ping"
 
 #: knu.cpp:156 knu.cpp:312
 msgid "&Traceroute"
-msgstr ""
+msgstr "&Traceroute"
 
 #: knu.cpp:165 knu.cpp:318
 msgid "Host &resolution"
@@ -27,11 +27,11 @@ msgstr "&Преобразование имен"
 
 #: knu.cpp:178
 msgid "F&inger"
-msgstr ""
+msgstr "F&inger"
 
 #: knu.cpp:187 knu.cpp:330
 msgid "&mtr"
-msgstr ""
+msgstr "&mtr"
 
 #: knu.cpp:198
 msgid ""
@@ -76,7 +76,7 @@ msgstr "О библиотеке &Qt"
 
 #: knu.cpp:324
 msgid "&Finger"
-msgstr ""
+msgstr "&Finger"
 
 #: knu.cpp:469
 msgid "About..."
@@ -84,7 +84,7 @@ msgstr "О программе..."
 
 #: CommandDlg.cpp:124
 msgid "H&ost:"
-msgstr "&Хост:"
+msgstr "&Машина:"
 
 #: CommandDlg.cpp:133
 msgid "&Go!"
@@ -150,35 +150,35 @@ msgstr " - конфигурация"
 
 #: MtrDlg.cpp:83
 msgid "#"
-msgstr ""
+msgstr "#"
 
 #: MtrDlg.cpp:84
 msgid "Hostname"
-msgstr ""
+msgstr "Имя машины"
 
 #: MtrDlg.cpp:85
 msgid "Loss"
-msgstr ""
+msgstr "Утеряно"
 
 #: MtrDlg.cpp:87
 msgid "Rcv"
-msgstr ""
+msgstr "Принято"
 
 #: MtrDlg.cpp:89
 msgid "Snt"
-msgstr ""
+msgstr "Послано"
 
 #: MtrDlg.cpp:91
 msgid "Best"
-msgstr ""
+msgstr "Лучшее"
 
 #: MtrDlg.cpp:93
 msgid "Avg"
-msgstr ""
+msgstr "Среднее"
 
 #: MtrDlg.cpp:95
 msgid "Worst"
-msgstr ""
+msgstr "Худшее"
 
 #: MtrDlg.cpp:138 PingDlg.cpp:100 TracerouteDlg.cpp:98
 msgid "Make host &name resolution"
@@ -186,11 +186,11 @@ msgstr "&Преобразование имен DNS"
 
 #: HostDlg.cpp:331 PingDlg.cpp:227
 msgid "hos&t"
-msgstr ""
+msgstr "hos&t"
 
 #: HostDlg.cpp:335 PingDlg.cpp:231
 msgid "ns&lookup"
-msgstr ""
+msgstr "ns&lookup"
 
 #: TracerouteDlg.cpp:115
 msgid "&Maximum number of hops:"
