@@ -29,19 +29,18 @@
 #include <sys/types.h>
 #include <kapp.h>
 #include "pppdata.h"
+#include "modem.h"
 #include "miniterm.h"
 
 #define T_WIDTH 550
 #define T_HEIGHT 400
 
 extern PPPData gpppdata;
+extern Modem *modem;
 
 MiniTerm::MiniTerm(QWidget *parent, const char *name)
   : QDialog(parent, name, TRUE)
 {
-  col = line = col_start = line_start = 0;
-  modemfd = -1;
-
   setCaption(i18n("Kppp Mini-Terminal"));
 
   m_file = new QPopupMenu;
@@ -70,7 +69,6 @@ MiniTerm::MiniTerm(QWidget *parent, const char *name)
   statusbar2->setFrameStyle(QFrame::Panel | QFrame::Sunken);
 
   terminal = new MyTerm(this,"term");
-  connect(terminal,SIGNAL(got_a_line()),this,SLOT(process_line()));
 
   setupToolbar();
 
@@ -121,15 +119,6 @@ void MiniTerm::setupToolbar() {
 }
 
 
-void MiniTerm::process_line() {
-  QString newline;
-  newline = terminal->textLine(line);
-  newline = newline.remove(0,col_start);
-  newline = newline.stripWhiteSpace();
-  writeline(newline.data());
-}
-
-
 void MiniTerm::resizeEvent(QResizeEvent*) {
   menubar->setGeometry(0,0,width(),30);
   toolbar->setGeometry(0,menubar->height(),width(),toolbar->height());
@@ -157,11 +146,9 @@ void MiniTerm::init() {
     return;
   }
 
-  if(opentty()) {
-    writeline(gpppdata.modemHangupStr());
-    usleep(100000);  // wait 0.1 secs
-    if(hangup()) {
-      writeline(gpppdata.modemInitStr());
+  if(modem->opentty()) {
+    if(modem->hangup()) {
+      modem->writeLine(gpppdata.modemInitStr());
       usleep(100000);
       
       statusbar->setText(i18n("Modem Ready"));
@@ -169,62 +156,51 @@ void MiniTerm::init() {
       
       kapp->processEvents();
       kapp->processEvents();
-      sn = new QSocketNotifier(modemfd, QSocketNotifier::Read, this);
-      connect(sn, SIGNAL(activated(int)),
-	      this, SLOT(readtty(int)));
+
+      modem->notify(this, SLOT(readChar(char)));
       return;
     }
   }
   
   // opentty() or hangup() failed 
-  statusbar->setText(modemMessage());
+  statusbar->setText(modem->modemMessage());
   unlockdevice();
 }                  
 
 
-void MiniTerm::readtty(int) {
-  char c = 0;
+void MiniTerm::readChar(char c) {
 
-  if(read(modemfd, &c, 1) == 1) {
-    c = ((int)c & 0x7F);
+  c = ((int)c & 0x7F);
 
-    switch((int)c) {
-    case 8:
-      terminal->backspace();
-      break;
-    case 10:
-      terminal->mynewline();
-      break;
-    case 13:
-      terminal->myreturn();
-      break;
-    case 127:
-      terminal->backspace();
-      break;
-    default:
-      terminal->insertChar(c);
-    }
+  switch((int)c) {
+  case 8:
+    terminal->backspace();
+    break;
+  case 10:
+    terminal->mynewline();
+    break;
+  case 13:
+    terminal->myreturn();
+    break;
+  case 127:
+    terminal->backspace();
+    break;
+  default:
+    terminal->insertChar(c);
   }
 }
 
 
 void MiniTerm::cancelbutton() {  
-  if(sn) {
-    delete sn;
-    sn = 0;
-  }
+  modem->stop();
 
   statusbar->setText(i18n("Hanging up ..."));
   kapp->processEvents();
   kapp->flushX();
 
-  if(modemfd >= 0) {
-    writeline(gpppdata.modemHangupStr());
-    usleep(100000); // 0.1 sec
-    hangup();
-  }
+  modem->hangup();
 
-  closetty();
+  modem->closetty();
   unlockdevice();
 
   reject();
@@ -237,17 +213,9 @@ void MiniTerm::resetModem() {
   kapp->processEvents();
   kapp->flushX();
 
-  if(modemfd >= 0) {
-    writeline(gpppdata.modemHangupStr());
-    usleep(100000); // 0.1 sec
-    hangup();
-  }
+  modem->hangup();
+
   statusbar->setText(i18n("Modem Ready"));
-}
-
-
-bool MiniTerm::writeChar(char c) {
-  return write(modemfd,&c,1) == 1;
 }
 
 
@@ -265,21 +233,18 @@ void MiniTerm::help() {
 MyTerm::MyTerm(QWidget *parent, const char* name)
   : QMultiLineEdit(parent, name)
 {
-   p_parent = (MiniTerm*)parent;
    this->setFont(QFont("courier",12,QFont::Normal));  
 }
 
 void MyTerm::keyPressEvent(QKeyEvent *k) {
   // ignore meta keys
-  if (k->ascii() == 0) return;
-
-  if(k->ascii() == 13) {
-    myreturn();
-    p_parent->writeChar((char) k->ascii());
+  if (k->ascii() == 0)
     return;
-  }
 
-  p_parent->writeChar((char) k->ascii());
+  if(k->ascii() == 13)
+    myreturn();
+
+  modem->writeChar((char) k->ascii());
 }
 
 

@@ -44,18 +44,15 @@
 #include <qpushbt.h>
 #include <qlabel.h>
 #include <qevent.h>
-#include <qsocknot.h>
 
 #include "kpppconfig.h"
 #include "debug.h"
-#include "pppdata.h"
 #include "pwentry.h"
 #include "docking.h"
-#include "modem.h"
 
 #define MAXLOOPNEST (MAX_SCRIPT_ENTRIES/2)
 
-class ConnectWidget : public QWidget, public Modem {
+class ConnectWidget : public QWidget {
   Q_OBJECT
 public:  
   ConnectWidget(QWidget *parent=0, const char *name=0);
@@ -71,13 +68,11 @@ protected:
   void closeEvent( QCloseEvent *e );  
 
 private slots:
-  void readtty(int);
+  void readChar(char);
   void pause();
   void cancelbutton();
   void debugbutton();
   void if_waiting_slot();
-  void stopNotifier();
-  void startNotifier();
 
 public slots:
   void init();
@@ -116,12 +111,9 @@ private:
   bool semaphore;
   QTimer *inittimer;
 
-  // Mario: not needed anymore, uses a socketnotifier instead of
-  // QTimer *readtimer;
-  QSocketNotifier *sn;
-
   QTimer *timeout_timer;
   bool execppp();
+  void writeline(const char*);
   
   void setExpect(const char *);
   bool expecting;
@@ -148,8 +140,6 @@ private:
 
   bool firstrunID;
   bool firstrunPW;
-
-  bool modem_in_connect_state; 
 
   unsigned int dialnumber; // the current number to dial
 };

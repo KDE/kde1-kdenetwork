@@ -146,7 +146,7 @@ private:
   QTabDialog *tabWindow;
   AccountWidget *accounts;
   GeneralWidget *general;
-  ModemWidget *modem;
+  ModemWidget *modem1;
   ModemWidget2 *modem2;
   GraphSetup *graph;
   AboutWidget *about;

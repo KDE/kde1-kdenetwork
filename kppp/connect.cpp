@@ -47,29 +47,28 @@
 #include <resolv.h>
 #endif
 
-#include <qsocknot.h>
-
 #include "pap.h"
 #include "chap.h"
 #include "connect.h"
 #include "main.h"
 #include "kpppconfig.h"
+#include "pppdata.h"
 #include "macros.h"
 #include "docking.h"
 #include "loginterm.h"
 #include "log.h"
+#include "modem.h"
 
 #ifndef _PATH_RESCONF
 #define _PATH_RESCONF "/etc/resolv.conf"
 #endif
-
-#define READ_TIMER 2
 
 const int MAX_ARGS = 100;
 
 void parseargs(char* buf, char** args);
 
 extern KPPPWidget *p_kppp;
+extern Modem *modem;
 extern DockWidget *dock_widget;
 extern int if_is_up();
 extern bool pppd_has_died;
@@ -93,16 +92,13 @@ ConnectWidget::ConnectWidget(QWidget *parent, const char *name)
     loopnest(0),
     loopend(false),
     semaphore(false),
-    sn(0),
     expecting(false),
     readbuffer(""),
     scanvar(""),
     scanning(false),
     pausing(false),
-    modem_in_connect_state(false),
     dialnumber(0)
 {
-  modemfd = -1;
   modified_hostname = false;
 
   QVBoxLayout *tl = new QVBoxLayout(this, 8, 10);
@@ -147,7 +143,7 @@ ConnectWidget::ConnectWidget(QWidget *parent, const char *name)
   l1->addWidget(cancel);
 
   tl->freeze();
-  
+
   pausetimer = new QTimer(this);
   connect(pausetimer, SIGNAL(timeout()), SLOT(pause()));
 
@@ -179,29 +175,6 @@ void ConnectWidget::preinit() {
   // you have to see to believe ...
   messg->setText(i18n("Looking for Modem ..."));
   inittimer->start(100);
-}
-
-
-void ConnectWidget::startNotifier() {
-  if(sn == 0) {
-    sn = new QSocketNotifier(modemfd, QSocketNotifier::Read, this);
-    connect(sn, SIGNAL(activated(int)),
-	    this, SLOT(readtty(int)));
-    Debug("QSocketNotifier started!");
-  } else {
-    Debug("QSocketNotifier re-enabled!");
-    sn->setEnabled(true);
-  }
-}
-
-
-void ConnectWidget::stopNotifier() {
-  if(sn != 0) {
-    sn->setEnabled(false);
-    delete sn;
-    sn = 0;
-    Debug("QSocketNotifier stopped!");
-  }
 }
 
 
@@ -248,18 +221,17 @@ void ConnectWidget::init() {
     return;
   }
 
-  if(opentty()) {
-    messg->setText(modemMessage());
+  if(modem->opentty()) {
+    messg->setText(modem->modemMessage());
     kapp->processEvents();
-    if(hangup()) {
+    if(modem->hangup()) {
 
       kapp->processEvents();
 
-      // this timer reads from the modem
       semaphore = false;
 
-      stopNotifier();
-      startNotifier();
+      modem->stop();
+      modem->notify(this, SLOT(readChar(char)));
       
       // if we are stuck anywhere we will time out
       timeout_timer->start(atoi(gpppdata.modemTimeout())*1000); 
@@ -272,7 +244,7 @@ void ConnectWidget::init() {
   }
 
   // initialization failed
-  messg->setText(modemMessage());
+  messg->setText(modem->modemMessage());
   vmain = 20; // wait until cancel is pressed
   unlockdevice();
 }                  
@@ -351,7 +323,7 @@ void ConnectWidget::timerEvent(QTimerEvent *) {
 
       messg->setText(i18n("Line Busy. Hanging up ..."));
       emit debugPutChar('\n');
-      hangup();
+      modem->hangup();
 
       if(gpppdata.busyWait() > 0) {
 	QString bm = i18n("Line Busy. Waiting: ");
@@ -366,7 +338,7 @@ void ConnectWidget::timerEvent(QTimerEvent *) {
 	timeout_timer->stop();
       }
 
-      modem_in_connect_state=false; 
+      modem->setDataMode(false); 
       vmain = 0;
       return;
     }
@@ -393,7 +365,7 @@ void ConnectWidget::timerEvent(QTimerEvent *) {
   // wait for newline after CONNECT response (so we get the speed)
   if(vmain == 101) {
     if(!expecting) {
-      modem_in_connect_state=true; // modem will no longer respond to AT commands
+      modem->setDataMode(true); // modem will no longer respond to AT commands
 
       emit startAccounting();
       p_kppp->con_win->startClock();
@@ -744,7 +716,7 @@ void ConnectWidget::timerEvent(QTimerEvent *) {
       if_timeout_timer->stop(); // better be sure.
 
       // stop reading of data
-      stopNotifier();
+      modem->stop();
 
       if(gpppdata.authMethod() == AUTH_TERMINAL) {
 	if (termwindow) {
@@ -752,7 +724,7 @@ void ConnectWidget::timerEvent(QTimerEvent *) {
 	  termwindow = 0L;
 	  this->show();
 	} else {
-	  termwindow = new LoginTerm(0L, 0L, modemfd);
+	  termwindow = new LoginTerm(0L, 0L);
 	  hide();
 	  termwindow->show();
 	  vmain = 30;
@@ -790,10 +762,10 @@ void ConnectWidget::timerEvent(QTimerEvent *) {
 	p_kppp->quit_b->setFocus();
 	p_kppp->show();
 	kapp->processEvents();
-	hangup();
+	modem->hangup();
 	emit stopAccounting();
 	p_kppp->con_win->stopClock();
-	closetty();
+	modem->closetty();
         unlockdevice();
 
       }
@@ -814,34 +786,19 @@ void ConnectWidget::set_con_speed_string() {
   // Usually the modem responds after connect with something like
   // CONNECT 115200, so all we need to do is find the number after CONNECT
   // or whatever the modemConnectResp() is.
-  QString t, r;
-
-  t = gpppdata.modemConnectResp();
-  t = t.stripWhiteSpace();
-  r = Modem::parseModemSpeed(t);
-  p_kppp->con_speed = r.data();
+  p_kppp->con_speed = modem->parseModemSpeed(myreadbuffer);
 }
 
 
 
-void ConnectWidget::readtty(int) {
+void ConnectWidget::readChar(char c) {
   if(semaphore)
     return;
 
-  char c = 0;
-
-  if(read(modemfd, &c, 1) == 1) {
     c = ((int)c & 0x7F);
     readbuffer += c;
     myreadbuffer += c;
 
-    // if this is a newline or carriage return, disable the notifier
-    // for a short time and then re-enable it (avoid reading too much)
-    if(sn != 0 && (c == '\n' || c == '\r')) {
-      sn->setEnabled(false);
-      QTimer::singleShot(20, this, SLOT(startNotifier()));
-    }
-    
     // While in scanning mode store each char to the scan buffer
     // for use in the prompt command
     if( scanning )
@@ -849,7 +806,7 @@ void ConnectWidget::readtty(int) {
  
     // add to debug window
     emit debugPutChar(c);
-  }
+
 
   // Let's check if we are finished with scanning:
   // The scanstring have to be in the buffer and the latest character
@@ -904,7 +861,7 @@ void ConnectWidget::pause() {
 
 
 void ConnectWidget::cancelbutton() {
-  stopNotifier();
+  modem->stop();
   killTimer(main_timer_ID);
   timeout_timer->stop();
 
@@ -922,7 +879,7 @@ void ConnectWidget::cancelbutton() {
   
   kapp->processEvents();
   
-  hangup();
+  modem->hangup();
 
   this->hide();
   messg->setText("");
@@ -930,7 +887,7 @@ void ConnectWidget::cancelbutton() {
   p_kppp->show();
   emit stopAccounting();	// just to be sure
   p_kppp->con_win->stopClock();
-  closetty();
+  modem->closetty();
   unlockdevice();
 
   //abort prompt window...
@@ -957,7 +914,7 @@ void ConnectWidget::script_timed_out() {
   
   prompt->setConsumed();
   messg->setText(i18n("Script timed out!"));
-  hangup();
+  modem->hangup();
   emit stopAccounting();
   p_kppp->con_win->stopClock();
 
@@ -1073,7 +1030,7 @@ void ConnectWidget::if_waiting_slot() {
     }
   }
 
-  closetty();
+  modem->closetty();
 }
 
 
@@ -1221,6 +1178,9 @@ void ConnectWidget::setMsg(const char* msg) {
   messg->setText(msg);
 }
 
+void ConnectWidget::writeline(const char *s) {
+  modem->writeLine(s);
+}
 
 // Set the hostname and domain from DNS Server
 void auto_hostname() {

@@ -45,6 +45,7 @@
 #include <kmsgbox.h>
 #include <kquickhelp.h>
 #include <kbuttonbox.h>
+#include <kiconloader.h>
 
 #include "acctselect.h"
 #include "main.h"
@@ -63,6 +64,7 @@
 #include <X11/Xlib.h>
 
 KPPPWidget*	p_kppp;
+Modem*          modem;
 DockWidget*     dock_widget;
 QString 	cmdl_account;
 QPixmap *miniIcon = 0;
@@ -334,8 +336,7 @@ int main( int argc, char **argv ) {
   // config file
   QString configFile = a.localconfigdir() + "/" + a.appName() + "rc";
   if(access(configFile.data(), F_OK) == 0) {
-//  TODO: Check whether this directory/file really should belong to the user
-//    chown(configFile.data(), getuid(), getgid());
+    chown(configFile.data(), getuid(), getgid());
     chmod(configFile.data(), S_IRUSR | S_IWUSR);
   }
   make_directories();
@@ -417,8 +418,6 @@ KPPPWidget::KPPPWidget( QWidget *parent, const char *name )
   int result = runTests();
   if(result == TEST_CRITICAL)
     exit(4);
-
-  connected = false;
 
   QVBoxLayout *tl = new QVBoxLayout(this, 10, 10);
 
@@ -563,6 +562,8 @@ KPPPWidget::KPPPWidget( QWidget *parent, const char *name )
 
   tl->freeze();
 
+  modem = new Modem;
+
   // we also connect cmld_start to the connectbutton so that I can run
   // the dialer through a command line argument
   connect(this,SIGNAL(cmdl_start()),this,SLOT(connectbutton())); 
@@ -647,14 +648,14 @@ void KPPPWidget::prepareSetupDialog() {
 	    this, SLOT(resetaccounts()));
     connect(accounts, SIGNAL(resetCosts(const char *)),
 	    &accounting, SLOT(resetCosts(const char *)));
-    modem = new ModemWidget(tabWindow);
+    modem1 = new ModemWidget(tabWindow);
     modem2 = new ModemWidget2(tabWindow);
     general = new GeneralWidget(tabWindow);
     graph = new GraphSetup(tabWindow);
     about  = new AboutWidget(tabWindow);
     
     tabWindow->addTab( accounts, i18n("Accounts") );
-    tabWindow->addTab( modem, i18n("Device") );
+    tabWindow->addTab( modem1, i18n("Device") );
     tabWindow->addTab( modem2, i18n("Modem") );
     tabWindow->addTab( general, i18n("PPP") );
     tabWindow->addTab( graph, i18n("Graph") );

@@ -28,6 +28,7 @@
 #include <sys/ioctl.h>
 #include <setjmp.h>
 #include <qregexp.h>
+#include <qtimer.h>
 
 #include "modem.h"
 #include "pppdata.h"
@@ -39,9 +40,8 @@ static jmp_buf jmp_buffer;
 bool modem_is_locked = false;
 
 
-Modem::Modem() {
-  modemfd = -1;
-  modem_in_connect_state = false;
+Modem::Modem() : modemfd(-1), data_mode(false) {
+
 }
 
 
@@ -174,6 +174,7 @@ bool Modem::closetty() {
     
     if(tcsetattr(modemfd, TCSANOW, &initial_tty) < 0){
       errmsg = i18n("Can't restore tty settings: tcsetattr()\n");
+      ::close(modemfd);
       return false;
     }
     ::close(modemfd);
@@ -182,7 +183,69 @@ bool Modem::closetty() {
   return true;
 }
 
-bool Modem::writeline(const char *buf) {
+void Modem::readtty(int) {
+  char c;
+
+  if(read(modemfd, &c, 1) == 1) {
+    emit charWaiting(c);
+    // if this is a newline or carriage return, disable the notifier
+    // for a short time and then re-enable it (avoid reading too much)
+    if(sn != 0 && (c == '\n' || c == '\r')) {
+      sn->setEnabled(false);
+      Debug("QSocketNotifier disabled!");
+      QTimer::singleShot(20, this, SLOT(startNotifier()));
+    }
+  }
+}
+
+
+void Modem::notify(const QObject *receiver, const char *member) {
+  connect(this, SIGNAL(charWaiting(char)), receiver, member);
+  startNotifier();
+}
+
+
+void Modem::stop() {
+  disconnect(SIGNAL(charWaiting(char)));
+  stopNotifier();
+}
+
+
+void Modem::startNotifier() {
+  if(sn == 0) {
+    sn = new QSocketNotifier(modemfd, QSocketNotifier::Read, this);
+    connect(sn, SIGNAL(activated(int)), SLOT(readtty(int)));
+    Debug("QSocketNotifier started!");
+  } else {
+    Debug("QSocketNotifier re-enabled!");
+    sn->setEnabled(true);
+  }
+}
+
+
+void Modem::stopNotifier() {
+  if(sn != 0) {
+    sn->setEnabled(false);
+    disconnect(sn);
+    delete sn;
+    sn = 0;
+    Debug("QSocketNotifier stopped!");
+  }
+}
+
+
+void Modem::flush() {
+  char c;
+  while(read(modemfd, &c, 1) == 1);
+}
+
+
+bool Modem::writeChar(char c) {
+  return write(modemfd, &c, 1) == 1;
+}
+
+
+bool Modem::writeLine(const char *buf) {
   // TODO check return code and think out how to proceed
   // in case of trouble.
   write(modemfd, buf, strlen(buf));
@@ -216,10 +279,10 @@ bool Modem::hangup() {
 
     // is this Escape & HangupStr stuff really necessary ? (Harri)
 
-    if ( modem_in_connect_state ) escape_to_command_mode(); 
+    if (data_mode) escape_to_command_mode(); 
 
     // Then hangup command
-    writeline(gpppdata.modemHangupStr());
+    writeLine(gpppdata.modemHangupStr());
     
     usleep(gpppdata.modemInitDelay() * 10000); // 0.01 - 3.0 sec 
 
@@ -273,7 +336,7 @@ void Modem::escape_to_command_mode() {
   tcflush(modemfd,TCOFLUSH);
   usleep((gpppdata.modemEscapeGuardTime()+3)*20000);
 
-  modem_in_connect_state = false;   // side-effect?
+  data_mode = false;
 }
 
 
@@ -282,7 +345,7 @@ char *Modem::modemMessage() {
 }
 
 
-QString Modem::parseModemSpeed(QString s) {
+QString Modem::parseModemSpeed(const QString &s) {
   // this is a small (and bad) parser for modem speeds
   int rx = -1;
   int tx = -1;
@@ -451,7 +514,6 @@ void alarm_handler(int) {
     longjmp(jmp_buffer, 1);
 }
 
-
 #ifndef HAVE_USLEEP
 
 // usleep for those of you out there who don't have a BSD 4.2 style usleep
@@ -473,3 +535,5 @@ void usleep(long usec){
 }
 
 #endif /* HAVE_USLEEP */
+
+#include "modem.moc"

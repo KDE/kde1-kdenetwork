@@ -35,6 +35,9 @@
 #include "log.h"
 #include "groupbox.h"
 #include "newwidget.h"
+#include "miniterm.h"
+#include "modeminfo.h"
+#include "modemcmds.h"
 
 
 /////////////////////////////////////////////////////////////////////////////

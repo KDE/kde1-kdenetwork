@@ -30,7 +30,9 @@
 #include <kapp.h> 
 #include "modeminfo.h"
 #include "macros.h"
+#include "modem.h"
 
+extern Modem *modem;
 
 ModemTransfer::ModemTransfer(QWidget *parent, const char *name)
   : QDialog(parent, name,TRUE, WStyle_Customize|WStyle_NormalBorder)
@@ -71,41 +73,27 @@ ModemTransfer::ModemTransfer(QWidget *parent, const char *name)
   l1->addStretch(1);
   l1->addWidget(cancel);
 
-  connect(this, SIGNAL(ati_done()),
-	  SLOT(ati_done_slot()));
-
-  modemfd = -1;
-  expecting = false;
   step = 0;
-  main_timer_ID = -1;
-  ati_counter = 1;
 
   ////////////////////////////////////////////////
 
-  inittimer = new QTimer(this);
-  connect(inittimer, SIGNAL(timeout()), SLOT(init()));
-
   timeout_timer = new QTimer(this);
   connect(timeout_timer, SIGNAL(timeout()), SLOT(time_out_slot()));
-
-  readtimer = new QTimer(this);
-  connect(readtimer, SIGNAL(timeout()), SLOT(readtty()));
 
   scripttimer = new QTimer(this);
   connect(scripttimer, SIGNAL(timeout()), SLOT(do_script()));
 
   timeout_timer->start(15000,TRUE); // 15 secs single shot
-  inittimer->start(500);
+  QTimer::singleShot(500, this, SLOT(init()));
 
   tl->freeze();
 }
 
 
-void ModemTransfer::ati_done_slot() {
-  readtimer->stop();
+void ModemTransfer::ati_done() {
   scripttimer->stop();
   timeout_timer->stop();
-  closetty();
+  modem->closetty();
   unlockdevice();
 
   // open the result window
@@ -121,7 +109,6 @@ void ModemTransfer::ati_done_slot() {
 
 void ModemTransfer::time_out_slot() {
   timeout_timer->stop();
-  readtimer->stop();
   scripttimer->stop();
 
   QMessageBox::warning(this, 
@@ -132,8 +119,6 @@ void ModemTransfer::time_out_slot() {
 
 
 void ModemTransfer::init() {
-  inittimer->stop();
-  expecting = false;
 
   kapp->processEvents();
 
@@ -151,13 +136,10 @@ void ModemTransfer::init() {
   }
 
 
-  if(opentty()) {
-    writeline(gpppdata.modemHangupStr());
-    usleep(100000);  // wait 0.1 secs
-
-    if(hangup()) {
+  if(modem->opentty()) {
+    if(modem->hangup()) {
       usleep(100000);  // wait 0.1 secs
-      writeline("ATE0Q1V1"); // E0 don't echo the commands I send ...
+      modem->writeLine("ATE0Q1V1"); // E0 don't echo the commands I send ...
 
       statusBar->setText(i18n("Modem Ready"));
       kapp->processEvents();
@@ -166,15 +148,15 @@ void ModemTransfer::init() {
       scripttimer->start(1000);	 	// this one does the ati query
 
       // clear modem buffer
-      char c;
-      while(read(modemfd, &c, 1) == 1);
+      modem->flush();
 
+      modem->notify(this, SLOT(readChar(char)));
       return;
     }
   }
   
   // opentty() or hangup() failed 
-  statusBar->setText(modemMessage());
+  statusBar->setText(modem->modemMessage());
   step = 99; // wait until cancel is pressed
   unlockdevice();
   
@@ -190,7 +172,7 @@ void ModemTransfer::do_script() {
     readtty();
     statusBar->setText("ATI ...");
     progressBar->advance(1);
-    writeline("ATI\n");
+    modem->writeLine("ATI\n");
     step++;
     break;
 
@@ -206,27 +188,25 @@ void ModemTransfer::do_script() {
     query.sprintf("ATI%d\n", step);
     statusBar->setText(msg.data());
     progressBar->advance(1);
-    writeline(query.data());
+    modem->writeLine(query.data());
     break;
 
   default:
     readtty();
-    emit ati_done();
+    ati_done();
   }
 }
 
+void ModemTransfer::readChar(char c) {
+  if(readbuffer.length() < 255)
+    readbuffer += c;
+}
 
 void ModemTransfer::readtty() {
-  char buffer[255];
-
-  memset(buffer,'\0', sizeof(buffer));
-  read(modemfd, buffer, sizeof(buffer)-1);
 
   if (step == 0)
     return;
 
-  readbuffer = buffer;
-    
   readbuffer.replace("\n"," ");         // remove stray \n
   readbuffer.replace("\r","");          // remove stray \r
   readbuffer = readbuffer.stripWhiteSpace(); // strip of leading or trailing white
@@ -236,39 +216,29 @@ void ModemTransfer::readtty() {
     ati_query_strings[step-1] = readbuffer.copy();
 
   readbuffer = "";
-  ati_counter++;
   step++;
 }
 
 
 void ModemTransfer::cancelbutton() {
   scripttimer->stop();
-  readtimer->stop();
+  modem->stop();
   timeout_timer->stop();
 
   statusBar->setText(i18n("One Moment Please ..."));
   kapp->processEvents();
   
-  if(modemfd >= 0) {
-    writeline(gpppdata.modemHangupStr());
-    usleep(10000); // 0.01 sec
-    hangup();
-  }
+  modem->hangup();
 
-  closetty();
+  modem->closetty();
   unlockdevice();
   reject();
 }
 
 
-void ModemTransfer::setExpect(const char *n) {
-  expectstr = n;
-  expecting = true;
-}
-
-
 void ModemTransfer::closeEvent( QCloseEvent *e ) {
-  e->ignore();     // don't let the user close the window
+  cancelbutton();
+  e->accept();
 }
 
 

@@ -34,32 +34,49 @@
 #include <termios.h>
 #include <unistd.h>
 
+#include <qsocknot.h>
+
 #include <config.h>
 
 void    alarm_handler(int);
 int     lockdevice();
 void    unlockdevice();
 
-class Modem {
+class Modem : public QObject {
+  Q_OBJECT
 public:
   Modem();
 
-public:
-  bool    opentty();
-  bool    closetty();
+  bool opentty();
+  bool closetty();
+  bool hangup();
+  bool writeChar(char);
+  bool writeLine(const char *);
+  bool dataMode() const { return data_mode; }
+  void setDataMode(bool set) { data_mode = set; }
+  char *modemMessage();  
   speed_t modemspeed();
-  bool    writeline(const char *);
-  bool    hangup();
-  void    escape_to_command_mode();
-  char    *modemMessage();  
+  static QString parseModemSpeed(const QString &);
+  void notify(const QObject *, const char *);
+  void stop();
+  void flush();
 
-  // private:
-  bool    modem_in_connect_state; 
-  int     modemfd;
+signals:
+  void charWaiting(char);
 
-  static QString parseModemSpeed(QString);
+private slots:
+  void startNotifier();
+  void stopNotifier();
+  void readtty(int);  
 
 private:
+  void escape_to_command_mode();
+
+
+private:
+  int modemfd;
+  QSocketNotifier *sn;
+  bool data_mode;
   QString errmsg;
   struct termios initial_tty;
   struct termios tty;

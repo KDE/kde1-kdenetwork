@@ -1,3 +1,13 @@
+1998-10-03  Harri Porten  <porten@kde.org>
+
+	* modem.cpp: disentangled Modem class from other Widgets, i.e.
+	removed the Multiple Inheritance I introduced earlier.
+	Drawback: another global pointer :(
+	* main.cpp: since KConfig neglects the real user id when creating
+        config files we have to give kppprc back to the user ourself.
+	* connect.cpp: pass something more useful to parseModemSpeed()	
+	* removed lots of unused/redundant code and variables
+
 1998-10-02  Mario Weilguni <mweilguni@kde.org>
 
 	* fixed that stupid segfault combined with the throughput graph

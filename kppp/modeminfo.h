@@ -52,49 +52,38 @@
 
 
 #include "pppdata.h"
-#include "modem.h"
 
 
-#define NUM_OF_ATI 8
+const int NUM_OF_ATI = 8;
 
 
-class ModemTransfer : public QDialog, public Modem {
+class ModemTransfer : public QDialog {
   Q_OBJECT
 public:
   ModemTransfer(QWidget *parent=0, const char *name=0);
   
-  QTimer *readModemTimer;
-  QTimer *initTimer;
-
-  QString answer;
-  KProgress *progressBar;
-  QLabel *statusBar;
-  QPushButton *cancel;
-
-  void  setExpect(const char *n);
-  void closeEvent( QCloseEvent *e);
-
-signals:
-  void ati_done();
-
 public slots:
   void init();
   void readtty();
   void do_script();
   void time_out_slot();
-  void ati_done_slot();
   void cancelbutton();
+  void readChar(char);
+
+private:
+  void ati_done();
 
 protected:
-  bool  expecting;
-  int 	step;
-  int   main_timer_ID;
-  int   ati_counter;
-  QString readbuffer;
-  QString expectstr;
+  void closeEvent(QCloseEvent *e);
 
-  QTimer *inittimer;
-  QTimer *readtimer;
+private:
+  int 	step;
+  QString readbuffer;
+
+  QPushButton *cancel;
+  KProgress *progressBar;
+  QLabel *statusBar;
+
   QTimer *timeout_timer;
   QTimer *scripttimer;
   QString ati_query_strings[NUM_OF_ATI];

@@ -45,13 +45,9 @@
 #include <ktoolbar.h>
 #include <kmenubar.h>
 #include <kiconloader.h>
-#include <qsocknot.h>
 
-#include "modem.h"
 
-class MiniTerm;
-
-class MyTerm : public QMultiLineEdit, public Modem {
+class MyTerm : public QMultiLineEdit {
   Q_OBJECT
 public:
   MyTerm(QWidget *parent=0, const char *name=0);
@@ -63,16 +59,10 @@ public:
   void del();
   void myreturn();
   void mynewline();
-  
-signals:
-  void got_a_line();
-
-private:
-  MiniTerm *p_parent;
 };
 
 
-class MiniTerm : public QDialog, public Modem {
+class MiniTerm : public QDialog {
   Q_OBJECT
 public:
 
@@ -85,11 +75,9 @@ public:
 public slots:
   void cancelbutton();
   void init();
-  void readtty(int);
-  void process_line();
+  void readChar(char);
   void help();
   void resetModem();
-  bool writeChar(char c);
 
 protected:
   void setupToolbar();
@@ -97,7 +85,6 @@ protected:
   QPushButton *cancel;
   MyTerm *terminal;
   QTimer *inittimer;
-  QSocketNotifier *sn;
 
   QMenuBar    * menubar;
   KToolBar     * toolbar;
@@ -116,12 +103,6 @@ protected:
   QPixmap pb2_pixmap;
   QPixmap pb3_pixmap;
   QPixmap pb4_pixmap;
-
-public:
-  int line;
-  int col;
-  int line_start;
-  int col_start;
 };
 
 

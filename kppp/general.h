@@ -35,14 +35,14 @@
 #include <qchkbox.h>
 #include <qradiobt.h>
 #include <qchkbox.h>
+#include <qgrpbox.h>
 #include <kslider.h>
 #include <kcolorbtn.h>
 
-#include "modemcmds.h"
 #include "pppdata.h"
-#include "modeminfo.h"
-#include "miniterm.h"
 #include "groupbox.h"
+
+class ModemTransfer;
 
 class GeneralWidget : public KGroupBox {
   Q_OBJECT

@@ -216,6 +216,10 @@ miniterm.cpp: miniterm.moc;
 miniterm.moc: miniterm.h
 	$(MOC) miniterm.h -o miniterm.moc
 
+modem.cpp: modem.moc;
+modem.moc: modem.h
+	$(MOC) modem.h -o modem.moc
+
 modemcmds.cpp: modemcmds.moc;
 modemcmds.moc: modemcmds.h
 	$(MOC) modemcmds.h -o modemcmds.moc

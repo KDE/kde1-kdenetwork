@@ -26,6 +26,7 @@
 
 #include "loginterm.h"
 #include "main.h"
+#include "modem.h"
 
 #include <stdio.h>
 #include <qlayout.h>
@@ -33,31 +34,18 @@
 #include <qapp.h>
 
 extern KPPPWidget *p_kppp;
+extern Modem *modem;
 
-LoginMultiLineEdit::LoginMultiLineEdit(QWidget *parent, const char *name,
-				       const int fd)
+LoginMultiLineEdit::LoginMultiLineEdit(QWidget *parent, const char *name)
   : QMultiLineEdit(parent, name)
 {
-  modemfd = fd;
-
-  readtimer = new QTimer(this);
-  connect(readtimer, SIGNAL(timeout()), this, SLOT(readtty()));
 }
 
 
 LoginMultiLineEdit::~LoginMultiLineEdit() {
-  stopTimer();
+  modem->stop();
 }
 
-
-void LoginMultiLineEdit::startTimer() {
-  readtimer->start(1);
-}
-
-
-void LoginMultiLineEdit::stopTimer() {
-  readtimer->stop();
-}
 
 void LoginMultiLineEdit::insertChar(char c) {
   QMultiLineEdit::insertChar(c);
@@ -83,45 +71,32 @@ void LoginMultiLineEdit::keyPressEvent(QKeyEvent *k) {
 
   if ((int)c == 0) return;
 
-  if((int)c != 13){
-    write(modemfd, &c, 1);
-    return;
-  }
-
-  if(strcmp(gpppdata.enter(), "CR/LF") == 0)
-    write(modemfd, "\r\n", 2);
-
-  if(strcmp(gpppdata.enter(), "LF") == 0)
-    write(modemfd, "\n", 1);
-
-  if(strcmp(gpppdata.enter(), "CR") == 0)
-    write(modemfd, "\r", 1);
-
+  if((int)c == 13)
+    modem->writeLine("");
+  else
+    modem->writeChar(c);
 }
 
 
-void LoginMultiLineEdit::readtty() {
-  char c;
-  if(read(modemfd, &c, 1) == 1) {
-    c = ((int)c & 0x7F);
+void LoginMultiLineEdit::readChar(char c) {
 
-    if(((int)c != 13) && ((int)c != 10) && ((int)c != 8))
-      insertChar(c);      
+  c = ((int)c & 0x7F);
 
-    if((int)c == 8)
-      backspace();
-    if((int)c == 127)
-      backspace();
-    if((int)c == 10)
-      mynewline();
-    if((int)c == 13)
-      myreturn();
-  }
+  if(((int)c != 13) && ((int)c != 10) && ((int)c != 8))
+    insertChar(c);      
 
+  if((int)c == 8)
+    backspace();
+  if((int)c == 127)
+    backspace();
+  if((int)c == 10)
+    mynewline();
+  if((int)c == 13)
+    myreturn();
 }
 
 
-LoginTerm::LoginTerm (QWidget *parent, const char *name, const int fd)
+LoginTerm::LoginTerm (QWidget *parent, const char *name)
   : QDialog(parent, name, FALSE)
 {
   setCaption("Login Terminal Window");
@@ -138,7 +113,7 @@ LoginTerm::LoginTerm (QWidget *parent, const char *name, const int fd)
   vgr->setRowStretch(0, 1);
   vgr->addRowSpacing(1, 40);
 
-  text_window = new LoginMultiLineEdit(this, "term", fd);
+  text_window = new LoginMultiLineEdit(this, "term");
   text_window->setFocus();
   vgr->addWidget(text_window, 0, 0);
 
@@ -166,7 +141,7 @@ LoginTerm::LoginTerm (QWidget *parent, const char *name, const int fd)
 
   cont = false;
 
-  text_window->startTimer();
+  modem->notify(text_window, SLOT(readChar(char)));
 }
 
 

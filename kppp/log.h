@@ -34,7 +34,7 @@ extern void PRINTDEBUG(char *, int, const char *, ...);
 
 #define Fatal(fmt, args...) { PRINTDEBUG(__FILE__, __LINE__, fmt, ##args); exit(1); }
 
-//#define MY_DEBUG
+#define MY_DEBUG
 #ifndef MY_DEBUG
 #define Debug(fmt, args...) ((void)0);
 #else
