@@ -1,12 +1,11 @@
-# SOME DESCRIPTIVE TITLE.
 # Copyright (C) 1998 Free Software Foundation, Inc.
-# Hans Petter bieker <zerium@webindex.no>, 1998.
+# Karl Backström <backstrom@kde.org>, 1998.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 1998-12-20 02:10+0100\n"
-"PO-Revision-Date: 1998-08-09 19:00+0200\n"
+"PO-Revision-Date: 1998-12-29 22:11+0100\n"
 "Last-Translator: Karl Backström <backström@kde.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -30,12 +29,10 @@ msgid "&Help..."
 msgstr "&Hjälp..."
 
 #: kbiff.cpp:515
-#, fuzzy
 msgid "&Check Mail Now"
 msgstr "&Kolla posten nu"
 
 #: kbiff.cpp:517
-#, fuzzy
 msgid "&Read Mail Now"
 msgstr "&Läs posten nu"
 
@@ -53,7 +50,7 @@ msgid "New Messages: %d"
 msgstr "Nya meddelanden: %d"
 
 #: notify.cpp:58
-#, fuzzy, c-format
+#, c-format
 msgid "Mailbox: %s"
 msgstr "Postlåda: %s"
 
@@ -66,9 +63,8 @@ msgid "Profile:"
 msgstr "Profil:"
 
 #: setupdlg.cpp:98
-#, fuzzy
 msgid "&New..."
-msgstr "&Hjälp..."
+msgstr "&Ny..."
 
 #: setupdlg.cpp:105
 msgid "&Rename..."
@@ -170,11 +166,11 @@ msgstr "Port:"
 
 #: setupdlg.cpp:865
 msgid "PREAUTH"
-msgstr ""
+msgstr "PREAUTH"
 
 #: setupdlg.cpp:872
 msgid "Keep Alive"
-msgstr ""
+msgstr "Håll vid liv"
 
 #: setupdlg.cpp:998 setupdlg.cpp:1027
 msgid "Mailbox:"
@@ -217,7 +213,7 @@ msgid "KBiff"
 msgstr "KBiff"
 
 #: setupdlg.cpp:1530
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Version %s\n"
 "\n"

@@ -1,17 +1,20 @@
+# Copyright (C) 1998 Free Software Foundation, Inc.
+# Karl Backström <backstrom@kde.org>, 1998.
+# 
 msgid ""
 msgstr ""
-"POT-Creation-Date: 1998-12-19 02:18+0100\n"
-"Last-Translator: Karl Backström <karl_b@geocities.com>\n"
+"POT-Creation-Date: 1998-12-29 22:18+0100\n"
+"Last-Translator: Karl Backström <backstrom@kde.org>\n"
 
 #: kfinger.C:30
 #, fuzzy
 msgid "F&inger Now"
-msgstr "Finger Nu"
+msgstr "F&inger Nu"
 
 #: kfinger.C:31
 #, fuzzy
 msgid "&Talk..."
-msgstr "Tala..."
+msgstr "&Tala..."
 
 #: kfinger.C:35
 msgid "Setup"
@@ -19,7 +22,7 @@ msgstr "Inställningar"
 
 #: kfinger.C:36
 msgid "&Save Options"
-msgstr ""
+msgstr "&Spara inställningarna"
 
 #: kfinger.C:38
 msgid ""
@@ -27,6 +30,9 @@ msgid ""
 "\n"
 "(c) Andrea Rizzi (rizzi@kde.org)"
 msgstr ""
+"kfinger 0.8.0\n"
+"\n"
+"(c) Andrea Rizzi (rizzi@kde.org)"
 
 #: kfinger.C:47
 msgid "KDE finger utility"
@@ -38,7 +44,7 @@ msgstr "Finger"
 
 #: kfinger.C:51
 msgid "Stop current finger"
-msgstr ""
+msgstr "Stoppa nuvarande finger"
 
 #: kfinger.C:53
 msgid "Talk..."
@@ -46,11 +52,11 @@ msgstr "Tala..."
 
 #: kfinger.C:54
 msgid "AutoFinger On/Off"
-msgstr ""
+msgstr "AutoFinger På/Av"
 
 #: kfinger.C:66
 msgid "Welcome to KDE Finger\n"
-msgstr ""
+msgstr "Välkommen til KDE Finger\n"
 
 #: kfinger.C:67
 msgid "Finger result"
@@ -64,7 +70,7 @@ msgstr "Fel på servern : %s"
 #: kfinger.C:288
 #, c-format
 msgid "Finger  %s@%s   --   %s"
-msgstr ""
+msgstr "Finger  %s@%s   --   %s"
 
 #: kfinger.C:305
 msgid ""
@@ -72,6 +78,9 @@ msgid ""
 "(c) by Andrea Rizzi\n"
 "rizzi@kde.org"
 msgstr ""
+"Kfinger 0.8.0\n"
+"(c) av Andrea Rizzi\n"
+"rizzi@kde.org"
 
 #: kfinger.C:351
 msgid "Kfinger Setup"
@@ -108,11 +117,11 @@ msgstr "Finger väntar: %d"
 
 #: kfinger.C:470
 msgid "Talk Command "
-msgstr ""
+msgstr "Tala kommando "
 
 #: kfinger.C:480
 msgid "Misc"
-msgstr ""
+msgstr "Övrigt"
 
 #: kfinger.C:485 kfinger.C:497
 msgid "Finger Output"
@@ -136,7 +145,7 @@ msgstr "Hoppa över linjer:"
 
 #: kfinger.C:529 kfinger.C:534
 msgid "Format..."
-msgstr ""
+msgstr "Format..."
 
 #: kfinger.C:541
 msgid "User"
@@ -144,7 +153,7 @@ msgstr "Användare"
 
 #: kfinger.C:552
 msgid "Server"
-msgstr ""
+msgstr "Server"
 
 #: kfinger.C:564
 msgid "Talk"
@@ -176,11 +185,11 @@ msgstr "Endast var2"
 
 #: kfinger.C:823
 msgid "var1, var2"
-msgstr ""
+msgstr "var1, var2"
 
 #: kfinger.C:829
 msgid "var2, var1"
-msgstr ""
+msgstr "var2, var1"
 
 #: kfinger.C:842
 msgid "Output format string"
@@ -193,46 +202,3 @@ msgstr "Spara & Avsluta"
 #: kfinger.C:859
 msgid "Output parameters "
 msgstr "Utskrifts parametrar"
-
-#~ msgid "Talk.."
-#~ msgstr "Tala.."
-
-#, fuzzy
-#~ msgid ""
-#~ "Welcome to KDE Finger \n"
-#~ "program by A.Rizzi rizzi@kde.org\n"
-#~ "18/09/1997 \n"
-#~ msgstr ""
-#~ "Välkommen till KDE Finger \n"
-#~ "ett program av A.Rizzi bilibao@ouverture.it\n"
-#~ "18/09/1997 \n"
-
-#~ msgid "Finger result for : %s@%s"
-#~ msgstr "Finger resultat för : %s@%s"
-
-#~ msgid "Quit"
-#~ msgstr "Avsluta"
-
-#~ msgid "Help"
-#~ msgstr "Hjälp"
-
-#~ msgid "About"
-#~ msgstr "Om"
-
-#~ msgid "&File"
-#~ msgstr "&Arkiv"
-
-#~ msgid "&Help"
-#~ msgstr "&Hjälp"
-
-#~ msgid "Settings"
-#~ msgstr "Inställningar"
-
-#~ msgid "&Remove"
-#~ msgstr "&Ta bort"
-
-#~ msgid "Time"
-#~ msgstr "Tid"
-
-#~ msgid "Cancel"
-#~ msgstr "Avbryt"

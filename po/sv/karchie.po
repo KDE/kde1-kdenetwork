@@ -1,13 +1,11 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# Copyright (C) 1998 Free Software Foundation, Inc.
+# Karl Backström <backstrom@kde.org>, 1998.
+#   
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 1998-12-08 02:14+0100\n"
-"PO-Revision-Date: 1998-10-28 20:20+0100\n"
+"PO-Revision-Date: 1998-12-29 22:13+0100\n"
 "Last-Translator: Karl Backström <backstrom@kde.org>\n"
 "Language-Team: Sv <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -23,24 +21,20 @@ msgid "&Open Dir"
 msgstr "&Öppna katalog"
 
 #: KAMenu.cpp:88 KAView.cpp:156
-#, fuzzy
 msgid "&Download..."
-msgstr "&Ladda ner.."
+msgstr "&Ladda ner..."
 
 #: KAMenu.cpp:91
-#, fuzzy
 msgid "&Load List..."
-msgstr "&Ladda lista.."
+msgstr "&Ladda lista..."
 
 #: KAMenu.cpp:92
-#, fuzzy
 msgid "&Save List..."
-msgstr "&Spara lista.."
+msgstr "&Spara lista..."
 
 #: KAMenu.cpp:93
-#, fuzzy
 msgid "Expor&t List..."
-msgstr "Expor&tera lista.."
+msgstr "Expor&tera lista..."
 
 #: KAMenu.cpp:95
 msgid "&Exit"
@@ -111,9 +105,8 @@ msgid "&Nicelevel"
 msgstr "&Finhetsnivå"
 
 #: KAMenu.cpp:143
-#, fuzzy
 msgid "&All..."
-msgstr "&Allt.."
+msgstr "&Allt..."
 
 #: KAMenu.cpp:150
 msgid "for &Filename"
@@ -182,27 +175,27 @@ msgstr "Status: färdig                       "
 #: KAStatusBar.cpp:81
 #, c-format
 msgid "Status: %s"
-msgstr ""
+msgstr "Status: %s"
 
 #: KAStatusBar.cpp:91
-#, fuzzy, c-format
+#, c-format
 msgid "Hosts: %s"
-msgstr "Värd:"
+msgstr "Värd: %s"
 
 #: KAStatusBar.cpp:101
 #, c-format
 msgid "%d hits"
-msgstr ""
+msgstr "%d träffar"
 
 #: KAStatusBar.cpp:111
 #, c-format
 msgid "Progress: %d"
-msgstr ""
+msgstr "Framgång: %d"
 
 #: KAStatusBar.cpp:121
 #, c-format
 msgid "%d try."
-msgstr ""
+msgstr "%d försök."
 
 #: KAView.cpp:69
 msgid "Search &Term"
@@ -278,7 +271,6 @@ msgid "KArchie: Overwrite file ?"
 msgstr "KArchie: Skriv över fil?"
 
 #: KArchie.cpp:753
-#, fuzzy
 msgid ""
 "The selected file is not write protected\n"
 "Should it be overwritten ?"

@@ -1,13 +1,11 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# Copyright (C) 1998 Free Software Foundation, Inc.
+# Karl Backström <backstrom@kde.org>, 1998.
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 1998-12-28 02:07+0100\n"
-"PO-Revision-Date: 1998-10-29 19:38+0100\n"
+"PO-Revision-Date: 1998-12-29 21:38+0100\n"
 "Last-Translator: Karl Backström <backstrom@kde.org>\n"
 "Language-Team: Sv <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -35,9 +33,8 @@ msgid "&Modify"
 msgstr "&Modifiera"
 
 #: FilterRuleEditorData.cpp:126
-#, fuzzy
 msgid "New Rule"
-msgstr "&Ny regel"
+msgstr "Ny regel"
 
 #: FilterRuleEditorData.cpp:145
 msgid "Up"
@@ -110,9 +107,8 @@ msgid "&Dock"
 msgstr "&Docka"
 
 #: servercontroller.cpp:168 servercontroller.cpp:748
-#, fuzzy
 msgid "New Server..."
-msgstr "&Ny server..."
+msgstr "Ny server..."
 
 #: servercontroller.cpp:169
 msgid "&Join Channel..."
@@ -135,9 +131,8 @@ msgid "&Filter Rule Editor..."
 msgstr "&Filter Regler..."
 
 #: servercontroller.cpp:194 servercontroller.cpp:743
-#, fuzzy
 msgid "&Web Server Configuration..."
-msgstr "Aktiva serveranslutningar"
+msgstr "&Webserver inställningar..."
 
 #: servercontroller.cpp:197 servercontroller.cpp:745
 msgid "&Preferences..."
@@ -185,7 +180,7 @@ msgstr "Fördröjning i sekunder till servern"
 
 #: toplevel.cpp:144
 msgid "&Ticker Mode"
-msgstr ""
+msgstr "&Ticker läge"
 
 #: toplevel.cpp:166
 msgid "&Cut Window..."
@@ -197,108 +192,101 @@ msgstr "&Användare"
 
 #: welcomeWinData.cpp:35
 msgid "Show Again"
-msgstr ""
+msgstr "Visa igen"
 
 #: welcomeWinData.cpp:44
 msgid "Dissmiss"
-msgstr ""
+msgstr "Avfärda"
 
 #: KSColourPicker/kscolourpickerData.cpp:30
 msgid "Pick"
-msgstr ""
+msgstr "Välj"
 
 #: KSColourPicker/kscolourpickerData.cpp:46
 msgid "Sample Colour"
-msgstr ""
+msgstr "Testfärg"
 
 #: KSCutDialog/KSCutDialogData.cpp:39
 msgid "Cop&y"
-msgstr ""
+msgstr "Ko&piera"
 
 #: KSOpenkSirc/open_ksircData.cpp:37
-#, fuzzy
 msgid "&Connect"
-msgstr "&Uppkoppling"
+msgstr "&Koppla upp"
 
 #: KSOpenkSirc/open_ksircData.cpp:54
 msgid "&Edit Servers"
-msgstr ""
+msgstr "&Ändra server"
 
 #: KSOpenkSirc/open_ksircData.cpp:86
 msgid "Group:"
-msgstr ""
+msgstr "Grupp:"
 
 #: KSOpenkSirc/open_ksircData.cpp:103
-#, fuzzy
 msgid "Server/Quick Connect to:"
-msgstr "Serverkontroll"
+msgstr "Server/Snabb uppkoppling mot:"
 
 #: KSOpenkSirc/open_ksircData.cpp:120
 msgid "Port:"
-msgstr ""
+msgstr "Port:"
 
 #: KSOpenkSirc/open_ksircData.cpp:147
-#, fuzzy
 msgid "Server Desc:"
-msgstr "Server:"
+msgstr "Server beskrivning:"
 
 #: KSPrefs/UserMenuRefData.cpp:61
 msgid "Menu Name"
-msgstr ""
+msgstr "Menynamn"
 
 #: KSPrefs/UserMenuRefData.cpp:70
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 #: KSPrefs/UserMenuRefData.cpp:79
 msgid "Command"
-msgstr ""
+msgstr "Kommando"
 
 #: KSPrefs/UserMenuRefData.cpp:87
 msgid "OP Only"
-msgstr ""
+msgstr "Enbart OP"
 
 #: KSPrefs/UserMenuRefData.cpp:135
-#, fuzzy
 msgid "Modify"
-msgstr "&Modifiera"
+msgstr "Modifiera"
 
 #: KSPrefs/ksprefs.cpp:9
-#, fuzzy
 msgid "kSirc Prefrences"
-msgstr "&Inställningar..."
+msgstr "kSirc Inställningar"
 
 #: KSPrefs/ksprefs.cpp:22
 msgid "&General"
-msgstr ""
+msgstr "&Generell"
 
 #: KSPrefs/ksprefs.cpp:23
 msgid "&StartUp"
-msgstr ""
+msgstr "&Uppstart"
 
 #: KSPrefs/ksprefs.cpp:24
-#, fuzzy
 msgid "Servers/&Channels"
-msgstr "Kanaler"
+msgstr "Servrar/&Kanaler"
 
 #: KSPrefs/ksprefs.cpp:25
-#, fuzzy
 msgid "&User Menu"
-msgstr "&Användare"
+msgstr "&Användarmeny"
 
 #: KSPrefs/ksprefs.cpp:26
 msgid "&Default Filters"
-msgstr ""
+msgstr "&Standard filter"
 
 #: KSTicker/speeddialogData.cpp:79
 msgid "Tick Interval"
-msgstr ""
+msgstr "Tidsinterval"
 
 #: KSTicker/speeddialogData.cpp:88
 msgid "Step Size"
-msgstr ""
+msgstr "Stegstorlek"
 
 #: puke/kdynlib.cpp:70
 #, c-format
 msgid "No such file \"%s\"!"
-msgstr ""
+msgstr "Ingen sådan fil \"%s\"!"

@@ -1,13 +1,11 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# Copyright (C) 1998 Free Software Foundation, Inc.
+# Karl Backström <backstrom@kde.org>, 1998.
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 1998-12-19 02:18+0100\n"
-"PO-Revision-Date: 1998-12-09 21:33+0100\n"
+"PO-Revision-Date: 1998-12-29 21:33+0100\n"
 "Last-Translator: Karl Backstrom <backstrom@kde.org>\n"
 "Language-Team: Sv\n"
 "MIME-Version: 1.0\n"
@@ -893,12 +891,10 @@ msgid "&Attach..."
 msgstr "Bifoga &bilaga..."
 
 #: kmcomposewin.cpp:531
-#, fuzzy
 msgid "Attach &Public Key"
-msgstr "Bifoga min &PGP-nyckel"
+msgstr "Bifoga &PGP-nyckel"
 
 #: kmcomposewin.cpp:533
-#, fuzzy
 msgid "Attach My &Public Key"
 msgstr "Bifoga min &PGP-nyckel"
 
@@ -972,11 +968,11 @@ msgstr "Infoga fil"
 
 #: kmcomposewin.cpp:1245
 msgid "my pgp key"
-msgstr ""
+msgstr "min PGP-nyckel"
 
 #: kmcomposewin.cpp:1273
 msgid "pgp key"
-msgstr ""
+msgstr "PGP-nyckel"
 
 #: kmcomposewin.cpp:1294 kmreaderwin.cpp:721
 msgid "View..."
@@ -1597,9 +1593,8 @@ msgid "Please select the public key to insert"
 msgstr ""
 
 #: kpgp.cpp:800
-#, fuzzy
 msgid "Select key"
-msgstr "Välj mapp"
+msgstr "Välj nyckel"
 
 #: kpgp.cpp:827
 msgid "PGP User Identity:"
