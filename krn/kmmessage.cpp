@@ -322,7 +322,7 @@ const QString KMMessage::asQuotedString(const QString aHeaderStr,
 	    stricmp(msgPart.typeStr(),"message")==0)
 	{
 	  result += aIndentStr;
-	  result += QString(msgPart.bodyDecoded())
+	  result += QString(msgPart.bodyDecoded()).copy()
 	    .replace(reNL,(const char*)nlIndentStr);
 	  result += '\n';
 	}
