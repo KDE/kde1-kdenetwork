@@ -49,12 +49,7 @@ messages:
 	(cd po && $(MAKE) -f Makefile.am merge)
 
 configure.in: configure.in.in subdirs
-	@mfs=`find . -name Makefile.am -print | sed -e "s#\.am##" | sed -e "s#\./##" | sort -r`; \
-	cp -f configure.in.in configure.in ;\
-	for i in $$mfs; do \
-	sed -e "s#AC_OUTPUT(#AC_OUTPUT($$i #" configure.in > configure.in.new \
-	 && mv configure.in.new configure.in ;\
-	done 
+	$(MAKE) -f admin/Makefile.common configure.in
 
 subdirs:
 	@files=`ls -1 | sort`; \
