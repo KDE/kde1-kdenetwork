@@ -274,13 +274,11 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
 
 void Artdlg::copyText(bool b)
 {
-    debug ("copyText");
     if (b)
     {
         //this is copied from kdehelp
         QString text;
         messwin->getKHTMLWidget()->getSelectedText( text );
-        debug ("copying %s",text.data());
         QClipboard *cb = kapp->clipboard();
         cb->setText( text ); 
     }
@@ -288,7 +286,6 @@ void Artdlg::copyText(bool b)
 
 void Artdlg::closeEvent(QCloseEvent *)
 {
-    debug ("close event");
     group->artList.clear();
     artList.clear();
     group->isVisible=0;
@@ -297,7 +294,6 @@ void Artdlg::closeEvent(QCloseEvent *)
 
 Artdlg::~Artdlg ()
 {
-    debug ("destroying articles window");
     conf->sync();
 }
 
@@ -323,11 +319,9 @@ void Artdlg::fillTree ()
         }
     }
 
-    debug ("count1-->%d",artList.count());
     statusBar()->changeItem(klocale->translate("Threading..."),1);
     qApp->processEvents ();
     artList.thread(true);
-    debug ("count2-->%d",artList.count());
 
     //had to split this in two loops because the order of articles is not
     //the same in both article lists
@@ -378,7 +372,6 @@ bool Artdlg::actions (int action)
     {
     case CONFIG_FONTS:
         {
-            debug ("configuring fonts");
             qApp->setOverrideCursor (arrowCursor);
             fontsDlg dlg;
             if(dlg.exec()==1)
@@ -391,7 +384,6 @@ bool Artdlg::actions (int action)
     case PRINT_ARTICLE:
         {
             qApp->setOverrideCursor (arrowCursor);
-            debug ("printing");
             messwin->getKHTMLWidget()->print();
             qApp->restoreOverrideCursor ();
             break;
@@ -693,7 +685,6 @@ void Artdlg::saveArt (QString id)
     {
         if (!s->isEmpty())
         {
-            debug ("saving article");
             qApp->setOverrideCursor (arrowCursor);
             QString f=QFileDialog::getSaveFileName(0,"*",this);
             qApp->restoreOverrideCursor ();

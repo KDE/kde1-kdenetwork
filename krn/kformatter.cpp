@@ -11,6 +11,8 @@
 #include <kapp.h>
 #include <mimelib/mimepp.h>
 
+extern char *debugbuf;
+
 KFormatter::KFormatter(QString sWN, QString vWN, QString s, bool c)
 {
     saveWidgetName=sWN;
@@ -27,7 +29,6 @@ KFormatter::KFormatter(QString sWN, QString vWN, QString s, bool c)
         dateFmt=defFmt;
     else
         delete defFmt;
-    debug("date format: %s",dateFmt->data());
     mcomplete=c;
 }
 
@@ -38,7 +39,6 @@ KFormatter::~KFormatter()
 
 DwBodyPart* KFormatter::ffwdPart(int n, DwBodyPart* body)
 {
-    //debug("ffdwing to %d",n);
     DwBodyPart* curr=body;
     for(int i=0; i<n; i++)
     {
@@ -51,7 +51,6 @@ DwBodyPart* KFormatter::ffwdPart(int n, DwBodyPart* body)
 
 DwBodyPart* KFormatter::getPartPrim(QList<int> partno, DwBodyPart* body)
 {
-    //debug("Getting part number %d on this level",*(partno.first()));
     //The base case
     if(partno.count()==1) return ffwdPart(*(partno.first()),body);
 
@@ -65,26 +64,21 @@ DwBodyPart* KFormatter::getPartPrim(QList<int> partno, DwBodyPart* body)
 DwBodyPart* KFormatter::getPart(QList<int> partno)
 {
     DwBodyPart* iter;
-    //debug("gP: getting part %s",listToStr(partno).data());
     iter=message->Body().FirstBodyPart();
     //Clone the main body is there was no bodyparts at all, and the first was
     //requested. Fail if the article does not exist at all
     if(!iter)
     {
-        //debug("Got NULL");
         if(partno.count()==1 && *(partno.at(0))==0)
         {
-            //debug("Creating DwBodyPart identical to message->Body()");
             return new DwBodyPart(message->AsString(), message);
         }
         else
         {
-            //debug("Part not found");
             return NULL;
         }
     }
 
-    //debug("starting gPP");
     return getPartPrim(partno,iter);
 }
 
@@ -120,7 +114,6 @@ QString KFormatter::htmlAll()
     while(!done)
     {
         l.append(&i);
-        debug("SEARCHING FOR PART %s",listToStr(l).data());
         if(getPart(l)) text+=htmlPart(l);
         else done=TRUE;
         l.remove(dummy);
@@ -128,7 +121,6 @@ QString KFormatter::htmlAll()
         if(!done) text+="<hr>";
         text+="\n";
     }
-    debug("All parts done");
     return text;
 }
 
@@ -144,15 +136,12 @@ QString KFormatter::htmlPart(QList<int> partno)
     QString baseType=body->Headers().ContentType().TypeStr().c_str();
     //Work-around for bug in mimelib
     pos=baseType.find('\n');
-    debug("\\n at %d",pos);
     if(pos!=-1) baseType=baseType.left(pos);
 
     pos=baseType.find('/');
-    debug("/ at %d",pos);
     if(pos!=-1) baseType=baseType.left(pos);
 
     baseType=baseType.lower();
-    debug("baseType=%s",baseType.data());
 
     QString subType=body->Headers().ContentType().SubtypeStr().data();
     //Work-around for bug in mimelib
@@ -161,12 +150,11 @@ QString KFormatter::htmlPart(QList<int> partno)
     pos=subType.find(';');
     if(pos!=-1) subType=subType.left(pos);
     subType=subType.lower();
-    debug("subType=%s",subType.data());
 
     //Set a default type, just in case we lack a "content-type" header
     if (baseType.isEmpty())
     {
-        debug ("no type, assuming text/plain");
+        KDEBUG (KDEBUG_INFO,3300,"no type, assuming text/plain");
         baseType="text";
         subType="plain";
     }
@@ -175,7 +163,6 @@ QString KFormatter::htmlPart(QList<int> partno)
     wholeType=baseType.copy();
     if(!subType.isEmpty()) wholeType+="/"+subType;
 
-    //debug("Reading encoding type");
     QString encoding;
     if(body->Headers().HasCte())
     {
@@ -183,46 +170,44 @@ QString KFormatter::htmlPart(QList<int> partno)
         encoding=encoding.lower();
     }
     else{
-        debug("No encoding, assuming 7bit");
+        KDEBUG (KDEBUG_INFO,3300,"No encoding, assuming 7bit");
         encoding="7bit";
     }
 
-    //debug("Formatting part %s: baseType: %s subType: %s wholeType: %s, encoding=%s",listToStr(partno).data(), baseType.data(), subType.data(), wholeType.data(),encoding.data());
 
     const char* udata=body->Body().AsString().c_str();
     CHECK_PTR(udata);
-    //debug("udata: %s",udata);
 
     const char* data=KDecode::decodeString(udata,encoding)->c_str();
     CHECK_PTR(data);
-    //debug("data: %s",data);
 
     if (baseType=="text")
     {
         DwToLocalEol(data,data);
         if (subType=="html")
         {
-            debug ("Found text/html part.");
+            KDEBUG (KDEBUG_INFO,3300,"Found text/html part.");
             return text_htmlFormatter(data,partno);
         }
         else if (subType=="plain")
         {
-            debug("Found text/plain part.");
+            KDEBUG (KDEBUG_INFO,3300,"Found text/plain part.");
             return text_plainFormatter(data, partno);
         }
         else if (subType=="richtext")
         {
-            debug("Found text/richtext part");
+            KDEBUG (KDEBUG_INFO,3300,"Found text/richtext part");
             return text_richtextFormatter(data, partno);
         }
         else if (subType=="x-vcard")
         {
-            debug("Found mozilla vcard.");
+            KDEBUG (KDEBUG_INFO,3300,"Found mozilla vcard.");
             return text_x_vcardFormatter(data, partno);
         }
         else
         {
-            debug("Found unknown text part! (%s)", subType.data());
+            sprintf (debugbuf,"Found unknown text part! (%s)", subType.data());
+            KDEBUG (KDEBUG_INFO,3300,debugbuf);
             return text_plainFormatter(data, partno);
         }
     }
@@ -230,14 +215,14 @@ QString KFormatter::htmlPart(QList<int> partno)
     {
         if(subType=="jpeg")
         {
-            debug("Found jpeg image");
+            KDEBUG (KDEBUG_INFO,3300,"Found jpeg image");
             QByteArray a(strlen(data));
             a.setRawData(data,strlen(data));
             return image_jpegFormatter(a,partno);
         }
         else
         {
-            debug("Found unknown image part!");
+            KDEBUG (KDEBUG_INFO,3300,"Found unknown image part!");
             QString part;
             part.sprintf("This message part consists of an image of an "
                          "unsupported type (%s)<br>.\n %s",

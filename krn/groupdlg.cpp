@@ -220,7 +220,6 @@ Groupdlg::Groupdlg
 
 Groupdlg::~Groupdlg ()
 {
-    debug ("saving groupdlg's properties");
 //    saveProperties(false); // Kalle: No longer needed
     QStrList openwin;
     //check for all open groups, and close them
@@ -228,7 +227,6 @@ Groupdlg::~Groupdlg ()
     {
         if (g->isVisible)
         {
-            debug ("%s is open, closing it",g->data());
             openwin.append (g->data());
             delete g->isVisible;
         }
@@ -241,11 +239,9 @@ void Groupdlg::openGroup (QString name)
 {
     if (name.find('/')==0)
         name=name.right(name.length()-1);
-    debug ("Really spawning %s",name.data());
     int i=groups.find(&NewsGroup(name));
     if (groups.at(i)->isVisible)
     {
-        debug ("well, no, I won't spawn it again");
         return;
     }
     if (i!=-1)
@@ -269,7 +265,6 @@ void Groupdlg::openGroup (int index)
 {
     QString base;
     KTreeListItem *it=list->itemAt(index);
-    debug ("clicked on %s",it->getText());
     if (it->getText()[strlen(it->getText())-1]!='.')
     {
         QString temp=it->getText();
@@ -356,7 +351,6 @@ void Groupdlg::openGroup (int index)
 
 void Groupdlg::subscribe (NewsGroup *group)
 {
-    debug ("subscribing to %s",group->data());
     KPath path;
     int index=subscr.find (group);
     if (-1 != index)
@@ -434,7 +428,6 @@ void Groupdlg::online()
     }
     if (conf->readNumEntry("Authenticate")!=0)
     {
-        debug ("authenticating");
         if (299<server->authinfo(conf->readEntry("Username"),conf->readEntry("Password")))
         {
             qApp->setOverrideCursor (arrowCursor);
@@ -458,7 +451,6 @@ void Groupdlg::fillTree ()
     for (;it.current();++it)
     {
         g=it.current();
-        debug ("adding %s",g->data());
         list->addChildItem (g->data(), &kapp->getIconLoader()->loadIcon("subscr.xpm"), 0);
     }
 
@@ -469,7 +461,6 @@ bool Groupdlg::needsConnect()
 {
     bool success=false;
     qApp->setOverrideCursor (arrowCursor);
-    debug ("asking to connect");
     if (server->isConnected())
     {
         success=true;
@@ -526,7 +517,6 @@ bool Groupdlg::actions (int action,NewsGroup *group)
             IdentDlg id;
             if (id.exec())
             {
-                debug ("Changing identity.... go undercover!");
                 conf->setGroup("Identity");
                 conf->writeEntry("Address",id.address->text());
                 conf->writeEntry("RealName",id.realname->text());
@@ -544,7 +534,6 @@ bool Groupdlg::actions (int action,NewsGroup *group)
             NNTPConfigDlg dlg;
             if (dlg.exec())
             {
-                debug ("Configuring NNTP");
                 conf->setGroup("NNTP");
                 conf->writeEntry("NNTPServer",dlg.servername->text());
                 conf->writeEntry("SMTPServer",dlg.smtpserver->text());
@@ -624,7 +613,6 @@ bool Groupdlg::actions (int action,NewsGroup *group)
     case HELP_ABOUT:
         {
             qApp->setOverrideCursor (arrowCursor);
-            debug ("about krn");
             aboutDlg ab;
             ab.exec();
             qApp->restoreOverrideCursor ();
@@ -726,7 +714,6 @@ bool Groupdlg::loadActive()
     else			// active file opens
     {
         f.close ();
-        debug ("loading %s\n",ac.data());
         statusBar ()->changeItem (klocale->translate("Listing active newsgroups"), 2);
         qApp->processEvents ();
         server->groupList (&groups,false);
@@ -753,7 +740,6 @@ bool Groupdlg::currentActions(int action)
             const char *text = list->getCurrentItem ()->getText ();
             index=groups.find (&NewsGroup(text));
         }
-        debug ("index-->%d",index);
         if (index!=-1)
             g=groups.at(index);
         actions(action,g);
@@ -771,11 +757,9 @@ bool Groupdlg::taggedActions(int action)
         i++;
         if (it.current()->isTagged)
         {
-            debug ("acting");
             actions(action,it.current());
         }
     }
-    debug ("groups-->%d",groups.count());
     return success;
 }
 
@@ -785,7 +769,6 @@ bool Groupdlg::subscrActions(int action)
     QListIterator <NewsGroup> it(subscr);
     for (;it.current();++it)
     {
-        debug ("doing action in group %s",it.current()->data());
         actions(action,it.current());
     }
     statusBar ()->changeItem ("Done", 2);
@@ -801,7 +784,6 @@ void Groupdlg::getArticles(NewsGroup *group)
         s+=group->data();
         statusBar ()->changeItem (s.data(), 2);
         qApp->processEvents();
-        debug ("Getting messages in %s",group->data());
         group->getMessages(server);
     }
 }
@@ -815,7 +797,6 @@ void Groupdlg::getSubjects(NewsGroup *group)
         s+=group->data();
         statusBar ()->changeItem (s.data(), 2);
         qApp->processEvents();
-        debug ("Getting subjects in %s",group->data());
         group->getSubjects(server);
     }
 }
@@ -835,9 +816,6 @@ void Groupdlg::checkUnread()
         gname=it;
         p.push(new QString(it));
         gname=gname.left(gname.find(' '));
-	//        server->setGroup(gname.data());
-	//        l=server->StatusResponse().c_str();
-	//        debug ("----->%s",l.data());
 	sprintf(countmessage, " [%d]", subscr.at(i)->countNew(server));
 
         l=gname+countmessage;
@@ -848,17 +826,11 @@ void Groupdlg::checkUnread()
         delete p.pop();
     }
     list->repaint();
-
-    //    int groupcnt = subscr.count();
-
-    //    for(int i=0; i < groupcnt-1; i++)
-    //debug("%d", subscr.at(i)->countNew(server));
 }
 
 
 void Groupdlg::updateCounter(char *s)
 {
-//    debug ("actualizando contador");
     statusBar()->changeItem (s, 1);
     qApp->processEvents();
 }

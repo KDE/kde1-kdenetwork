@@ -18,7 +18,7 @@
 
 void MsgCallBack(void *,char *msg, int )
 {
-    debug("UULIB message-->%s",msg);
+    KDEBUG (KDEBUG_INFO,3300,msg);
 }
 
 KDecode::KDecode()
@@ -83,24 +83,22 @@ void KDecode::showWindow()
             
             if (l->state&UUFILE_MISPART || l->state&UUFILE_NOEND)
             {
-                debug ("Found file with missing parts");
+                KDEBUG (KDEBUG_INFO,3300,"Found file with missing parts");
                 formatted="B\n";
             }
             else if (l->state&UUFILE_OK)
             {
-                debug ("Found ok file");
+                KDEBUG (KDEBUG_INFO,3300,"Found ok file");
                 formatted="G\n";
             }
             else if (l->state&UUFILE_NOBEGIN || l->state&UUFILE_NODATA)
             {
-                debug ("Found very broken file");
+                KDEBUG (KDEBUG_INFO,3300,"Found very broken file");
                 continue;
             }
-            debug ("size is %ld",l->size);
             t.setNum(l->size);
             formatted+=t+"\n";
             
-            debug ("called %s",l->filename);
             formatted=formatted+l->filename+"\n";
             t.setNum(c);
             formatted=t+"\n"+formatted;
@@ -122,18 +120,15 @@ void KDecode::decode(int line,int)
 {
     uulist *l;
     int i=dialog->list->text(line,0).toInt()-1;
-    debug ("Decoding ID-->%d",i);
     l=UUGetFileListItem(i);
     QString f= QFileDialog::getSaveFileName(0,0,0,l->filename);
     if (!f.isEmpty())
     {
-        debug ("saving to-->%s",f.data());
         i=UUDecodeFile (l,f.data());
-        debug ("return code-->%d",i);
         switch (i)
         {
         case UURET_OK:
-            debug ("decoding ok");
+                KDEBUG (KDEBUG_INFO,3300,"decoding ok");
             break;
         case UURET_IOERR:
             warning ("IO error while decoding");
@@ -159,7 +154,6 @@ void KDecode::decode(int line,int)
 DwString* KDecode::decodeString(const char* data, QString type)
 {
     type=type.lower();
-    debug("decoding %s",type.data());
     DwString idata=data;
     DwString* odata=new DwString;
     if(type=="base64") DwDecodeBase64(idata,*odata);
@@ -174,7 +168,6 @@ DwString* KDecode::decodeString(const char* data, QString type)
         {
             KTempFile tempfile;
             QString plugin=conf->readEntry(type);
-            debug("Plug-in found: %s",plugin.data());
             int i=tempfile.create("decode_in","");
             int o=tempfile.create("decode_out","");
             QFile* f=tempfile.file(i);
@@ -200,6 +193,5 @@ DwString* KDecode::decodeString(const char* data, QString type)
             *odata=idata;
         }
     }
-    //debug("decoded data: %s",odata->c_str());
     return odata;
 }          

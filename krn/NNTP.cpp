@@ -34,6 +34,7 @@ extern QString krnpath,cachepath,artinfopath;
 
 #include <mimelib/mimepp.h>
 
+char debugbuf[1024];
 
 #include "NNTP.moc"
 
@@ -79,7 +80,7 @@ NNTP::NNTP(char *host): DwNntpClient()
     hostname=host;
     Connected=false;
     Readonly=false;
-    debug (hostname);
+    KDEBUG (KDEBUG_INFO,3300,hostname);
     reportBytes=false;
     reportCommands=false;
     byteCounter=0;
@@ -91,7 +92,7 @@ NNTP::NNTP(char *host): DwNntpClient()
 
 void NNTP::PGetTextResponse()
 {
-    debug ("entered NNTP::PGetTextResponse()");
+    KDEBUG (KDEBUG_INFO,3300,"entered NNTP::PGetTextResponse()");
     partialResponse="";
     qApp->processEvents();
     SetObserver(extendPartialResponse);
@@ -99,7 +100,7 @@ void NNTP::PGetTextResponse()
     mTextResponse=qstrdup(partialResponse.c_str());
     partialResponse="";
     SetObserver(NULL);
-    debug ("exited NNTP::PGetTextResponse()");
+    KDEBUG (KDEBUG_INFO,3300,"exited NNTP::PGetTextResponse()");
 }
 
 void NNTP::resetCounters( bool byte,bool command)
@@ -131,9 +132,9 @@ bool NNTP::connect()
         return false;
     else
     {
-        debug ("Connecting to %s",hostname.data());
+        KDEBUG (KDEBUG_INFO,3300,"Connecting to ...")
+        KDEBUG (KDEBUG_INFO,3300,hostname.data());
         status=Open(hostname.data());
-        debug ("status-->%d",status);
     }
     if (status!=200 && status!=201)
         return false;
@@ -144,10 +145,8 @@ bool NNTP::connect()
     
     //this is needed sometimes for some versions of INN
     status=setMode("reader");
-    debug ("status-->%d",status);
 
     status=listOverview();
-    debug ("status-->%d",status);
 
     return Connected;
 }
@@ -158,9 +157,7 @@ bool NNTP::reConnect()
 bool NNTP::disconnect()
 {
     int status=Quit();
-    debug ("status-->%d",status);
     status=Close();
-    debug ("status-->%d",status);
     Connected=false;
     return true;
 }
@@ -262,7 +259,8 @@ int NNTP::listOverview()
             OffsetRef=5;
             OffsetLines=7;
         }
-        debug ("Offsets:%d,%d,%d,%d,%d,%d",OffsetSubject,OffsetFrom,OffsetLines,OffsetID,OffsetDate,OffsetRef);
+        sprintf (debugbuf,"Offsets:%d,%d,%d,%d,%d,%d",OffsetSubject,OffsetFrom,OffsetLines,OffsetID,OffsetDate,OffsetRef);
+        KDEBUG(KDEBUG_INFO,3300,debugbuf);
     }
     return mReplyCode;
 }
@@ -412,10 +410,11 @@ void NNTP::groupList(QList <NewsGroup> *grouplist, bool fromserver)
     if (fromserver)
     {
         int status=List();
-        debug ("status-->%d",status);
         if (status!=215)
         {
-            printf ("error getting group list\nServer said %s\n",StatusResponse().data());
+            sprintf (debugbuf,"error getting group list\nServer said %s\n",
+                     StatusResponse().data());
+            KDEBUG (KDEBUG_ERROR,3300,debugbuf);
             grouplist->clear();
             return;
         };
@@ -461,12 +460,12 @@ bool NNTP::setGroup(const char *groupname)
     GroupName=groupname;
     
     int status=Group(GroupName.data());
-    debug ("status-->%d",status);
     
     if (status!=211)
     {
-        printf ("can't change group!\n");
-        printf ("server said: %s\n",StatusResponse().data());
+        sprintf (debugbuf,"can't change group!\nserver said: %s\n",
+                 StatusResponse().data());
+        KDEBUG(KDEBUG_ERROR,3300,debugbuf);
         GroupName="";
     }
     else
@@ -495,8 +494,7 @@ bool NNTP::setGroup(const char *groupname)
 bool NNTP::artList(int from,int to)
 {
     int status=listXover(from,to);
-    debug ("status-->%d",status);
-    return true;
+    return (status>199);
 }
 
 bool NNTP::isCached (char *id)
@@ -566,7 +564,6 @@ bool NNTP::checkStatus( QString start)
 
 bool NNTP::postArticle (QString ID)
 {
-    debug ("sending now");
     QString p;
     p=krnpath+"/outgoing/";
     p+=ID;
@@ -579,8 +576,9 @@ bool NNTP::postArticle (QString ID)
         int errcode=Post();
         if (errcode!=340)
         {
-            debug ("error posting, I said post, and the server said:\n%s",
-                   StatusResponse().data());
+            sprintf (debugbuf,"error posting, I said post, and the server said:\n%s",
+                     StatusResponse().data());
+            KDEBUG(KDEBUG_ERROR,3300,debugbuf);
             return false;
         }
         SendData(buffer, f.size());
