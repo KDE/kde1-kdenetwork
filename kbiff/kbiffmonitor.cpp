@@ -269,7 +269,12 @@ TRACEINIT("KBiffMonitor::checkPop()");
 		{
 			command = "LIST\r\n";
 			if (pop.command(command) == false)
+			{
+				// if this still doesn't work, then we
+				// close this port
+				pop.close();
 				return;
+			}
 		}
 	}
 
@@ -857,7 +862,10 @@ TRACEINIT("KBiffPop::command()");
 	// check if the response was bad.  if so, return now
 	if (response.left(4) == "-ERR")
 	{
-		close();
+		// we used to close the socket here.. but this MAY be
+		// because the server didn't understand UIDL.  the server
+		// may react better with LIST or STAT so just fail quitely
+		// thanks to David Barth (dbarth@videotron.ca)
 		return false;
 	}
 

@@ -1,3 +1,8 @@
+01-30-98 - Kurt Granroth
+   o Thanks to David Barth (dbarth@videotron.ca) for pointing out that
+	  older POP3 servers (ones that don't support UIDL) will cause KBiff
+	  to fail even though there is code to get around that...(patched)
+
 01-13-98 - Kurt Granroth
    o Put KProcess handling code by itself so that all executing code passes
 	  through it.
