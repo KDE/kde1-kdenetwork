@@ -52,6 +52,19 @@
 // cArg: undef
 #define PUKE_DUMPTREE_ACK -997
 
+// Release a widget without delete'ing it, used after fetching a widget
+// iWinId: window id
+// iArg: undef
+// cArg: undef
+#define PUKE_RELEASEWIDGET 996
+
+// Desc: release ack
+// iWinId: window id
+// iArg: undef
+// cArg: undef
+#define PUKE_RELEASEWIDGET_ACK -996
+
+
 // Fetch widgets
 // Desc: get widget from parent
 // iWinId: not defined
@@ -641,6 +654,34 @@
 // iArg: alignment
 // cArg: not defined
 #define PUKE_LABEL_SETALIGNMENT_ACK -1715
+
+// -----------------------------------------------------------------------
+// PMenuData
+
+// Desc: Inserts newtext menu item
+// iWinId: window id
+// iArg: keyboard accelerator (-1 for none)
+// cArg: Text
+#define PUKE_MENUDATA_INSERT_TEXT 1800
+
+// Desc: ack for insert
+// iWinId: window id
+// iArg: object id
+// cArg: undef
+#define PUKE_MENUDATA_INSERT_TEXT_ACK -1800
+
+// Desc: Inserts new pixmap into menu
+// iWinId: window id
+// iArg: keyboard accelerator (-1 for none)
+// cArg: Text
+#define PUKE_MENUDATA_INSERT_PIXMAP 1801
+
+// Desc: ack for insert
+// iWinId: window id
+// iArg: object id
+// cArg: undef
+#define PUKE_MENUDATA_INSERT_PIXMAP_ACK -1801
+
 
 
 // ***********************************************************************

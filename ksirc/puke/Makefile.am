@@ -26,7 +26,8 @@ INCLUDES= @all_includes@
 noinst_LIBRARIES = libpuke.a
 
 lib_LTLIBRARIES = libpframe.la libplined.la libpbutton.la libppushbt.la \
-                  libpprogress.la libptablevw.la libplistbox.la libplabel.la
+                  libpprogress.la libptablevw.la libplistbox.la libplabel.la \
+                  libpmenudta.la
 
 libpuke_a_SOURCES = \
 controller.cpp \
@@ -71,6 +72,9 @@ libplabel_la_SOURCES = \
 plabel.cpp \
 mplabel.cpp
 
+libpmenudta_la_SOURCES = \
+pmenudta.cpp 
+
 HOWTO-PUKE.txt: HOWTO-PUKE.pod
 	pod2text HOWTO-PUKE.pod > HOWTO-PUKE.txt
 
@@ -87,7 +91,9 @@ pbutton.h \
 pprogress.h \
 ptablevw.h \
 plistbox.h \
-plabel.h
+plabel.h \
+pobject.h \
+playout.h
 
 # just to make sure, automake makes them 
 BUILTSOURCES =	
