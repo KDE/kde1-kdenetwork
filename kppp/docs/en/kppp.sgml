@@ -555,7 +555,7 @@ all modems are not equal, so your mileage may vary.
 
 A Modem session allows you to interact with the modem directly.
 You type commands, and it will respond.  To obtain a modem session, when no 
-connection is active, go into Settings/More/Terminal dialog.  This will open 
+connection is active, go into Setup/Modem/Terminal dialog.  This will open 
 a window for interactive configuration of the modem.  Try typing <bf>ATZ</bf> (which 
 resets your modem)  Your should get an <bf>OK</bf> response.  use File/Quit to 
 end the session.
@@ -575,7 +575,7 @@ have made.  To save changes,  Load the profile you
 want to change via <bf>ATZ</bf><em>n</em> (where <em>n</em> is the profile number).  Make the
 changes you want, then save it with <bf>AT&amp;W<em>n</em></bf>.  To have kppp use the profile
 you want, change the modem initialization string
-(Settings/More/Modem/Modem Commands/Initialization String.)  For example
+(Setup/Modem/Modem Commands/Initialization String.)  For example
 <bf>ATZ1</bf> will have the kppp reset the modem and use stored profile #1.
 <p>
 If you want reset you modem to get back to some known starting point, use
@@ -674,13 +674,13 @@ AT&amp;W		# Write to default profile
 <sect>PAP and CHAP<p>
 
 Starting with version 0.9.1 kppp supports directly the most commonly used
-form of PAP authentification. The section 'PAP and CHAP with Kppp' will
-descripe how to make PAP and CHAP work with Kppp in general, while the
-section 'PAP with Kppp' will describe in detail how to take advantage
-of Kppp's build in support for the most commonly encountered version of
+form of PAP authentification. The section 'PAP and CHAP with kppp' will
+descripe how to make PAP and CHAP work with kppp in general, while the
+section 'PAP with kppp' will describe in detail how to take advantage
+of kppp's build in support for the most commonly encountered version of
 PAP wich is  widely used by commercial Internet Service Providers (ISP). 
 
-<sect1>PAP and CHAP with Kppp<label id="PAP">
+<sect1>PAP and CHAP with kppp<label id="PAP">
 <p>
 
 The following is based on an email by <url url="kbrown@pdq.net" name="Keith Brown">
@@ -792,12 +792,12 @@ you do have such a file) does <bf>not</bf> contain one of the arguments:
 It is very unlikely that one of those arguments is already in there, but just
 to be sure.
 
-<item>Start kPPP
+<item>Start kppp
 <item>Click on <it>Setup</it>
 <item>Choose the account you want to use PAP with and click on <it>Edit</it>
 <item>Click on the <it>Dial</it> tab.
 <item>Select <it>PAP</it> in the checkbox <it>Authentication</it>
-<item>If do not want to retype the password each time you dial in, select
+<item>If you do not want to retype the password each time you dial in, select
 <it>Store password</it>. This will save the password. Make sure that nobody
 other than you has access to your account, otherwise this person will have
 access to your password.
