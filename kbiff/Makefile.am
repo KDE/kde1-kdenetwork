@@ -10,7 +10,7 @@ DEFS = @DEFS@ -I. -I$(srcdir) -I.. -DDO_TRACE
 # you can add here more. This one gets installed 
 bin_PROGRAMS = 	kbiff
 
-kbiff_METASOURCES =  kbiff.moc.cpp kbiffmonitor.moc.cpp notify.moc.cpp setupdlg.moc.cpp 
+kbiff_METASOURCES =  USE_AUTOMOC
 
 # Which sources should be compiled for kbiff.
 #kbiff_SOURCES	= setupdlg.cpp kbiff.cpp main.cpp kbiffmonitor.cpp notify.cpp Trace.cpp ktreeview.cpp convert.cpp kwraplabel.cpp $(kbiff_METASOURCES)
@@ -52,19 +52,3 @@ uninstall-local:
 	-rm -f $(APPSDIR)/kbiff.kdelnk
 	-rm -f $(kde_icondir)/kbiff.xpm
 	-rm -f $(kde_minidir)/kbiff.xpm
-
-ktreeview.o : ktreeview.moc
-ktreeview.moc : ktreeview.h
-	$(MOC) ktreeview.h -o ktreeview.moc
-
-kbiff.moc.cpp : kbiff.h
-	$(MOC) kbiff.h -o kbiff.moc.cpp
-	
-kbiffmonitor.moc.cpp : kbiffmonitor.h
-	$(MOC) kbiffmonitor.h -o kbiffmonitor.moc.cpp
-
-notify.moc.cpp : notify.h
-	$(MOC) notify.h -o notify.moc.cpp
-
-setupdlg.moc.cpp : setupdlg.h
-	$(MOC) setupdlg.h -o setupdlg.moc.cpp
