@@ -1,0 +1,219 @@
+msgid ""
+msgstr ""
+"Date: 1998-02-10 15:59:39+0100\n"
+"From: root (A. Rizzi),,, <root@BiliOne>\n"
+"Content-Type: text/plain; charset=\n"
+"Xgettext-Options: -ktranslate\n"
+"Files: finger.cpp kfinger.cpp\n"
+
+#: kfinger.cpp:6 kfinger.cpp:31
+msgid "KDE finger utility"
+msgstr "KDE finger työkalu"
+
+#: kfinger.cpp:12
+msgid "Finger Now"
+msgstr "Käynistä Finger"
+
+#: kfinger.cpp:13
+msgid "Talk.."
+msgstr "Juttele.."
+
+#: kfinger.cpp:14
+msgid "Quit"
+msgstr "Lopeta"
+
+#: kfinger.cpp:16
+msgid "Setup"
+msgstr "Asetukset"
+
+#: kfinger.cpp:18
+msgid "Help"
+msgstr "Ohje"
+
+#: kfinger.cpp:19 kfinger.cpp:221
+msgid "About"
+msgstr "Tietoja"
+
+#: kfinger.cpp:20
+msgid "&File"
+msgstr "&Tiedosto"
+
+#: kfinger.cpp:21
+msgid "&Options"
+msgstr "&Asetukset"
+
+#: kfinger.cpp:23
+msgid "&Help"
+msgstr "&Ohje"
+
+#: kfinger.cpp:37
+msgid "Finger"
+msgstr "Finger"
+
+#: kfinger.cpp:39
+msgid "Talk..."
+msgstr "Juttele..."
+
+#: kfinger.cpp:41
+msgid "Settings"
+msgstr "Asetukset"
+
+#: kfinger.cpp:56
+msgid ""
+"Welcome to KDE Finger \n"
+"program by A.Rizzi bilibao@ouverture.it\n"
+"18/09/1997 \n"
+msgstr ""
+"Tervetuloa KDE Finger ohjelmaan\n"
+"Tehnyt A.Rizzi bilibao@ouverture.it\n"
+"18/09/1997 \n"
+
+#: kfinger.cpp:57
+msgid "Finger result"
+msgstr "Finger tulos"
+
+#: kfinger.cpp:201
+msgid "Error on server : %s"
+msgstr "Virhe palvelimella: %s"
+
+#: kfinger.cpp:210
+msgid "Finger result for : %s@%s"
+msgstr "Finger tulos : %s@%s"
+
+#: kfinger.cpp:221
+msgid ""
+"Kfinger 0.3.2\n"
+"(c) by Andrea Rizzi\n"
+"bilibao@ouverture.it"
+msgstr ""
+"Kfinger 0.3.2\n"
+"(c) Andrea Rizzi\n"
+"bilibao@ouverture.it"
+
+#: kfinger.cpp:265
+msgid "Kfinger Setup"
+msgstr "KFinger asetukset"
+
+#: kfinger.cpp:293 kfinger.cpp:333
+msgid "&Add"
+msgstr "&Lisää"
+
+#: kfinger.cpp:298 kfinger.cpp:338
+msgid "&Remove"
+msgstr "&Poista"
+
+#: kfinger.cpp:303
+msgid "Server Name"
+msgstr "Palvelimen nimi"
+
+#: kfinger.cpp:307 kfinger.cpp:310
+msgid "Server list"
+msgstr "Palvleinlista"
+
+#: kfinger.cpp:343
+msgid "User Name"
+msgstr "Käyttäjänimi"
+
+#: kfinger.cpp:347 kfinger.cpp:350
+msgid "Users list"
+msgstr "Käyttäjälista"
+
+#: kfinger.cpp:364
+msgid "Timed finger"
+msgstr "Ajastettu finger"
+
+#: kfinger.cpp:382 kfinger.cpp:557
+msgid "Finger wait: %d"
+msgstr "Finger odoita: %d"
+
+#: kfinger.cpp:386
+msgid "Time"
+msgstr "Aika"
+
+#: kfinger.cpp:391 kfinger.cpp:403
+msgid "Finger Output"
+msgstr "Finger tulokset"
+
+#: kfinger.cpp:395
+msgid "Finger server"
+msgstr "Finger palvelin"
+
+#: kfinger.cpp:399 kfinger.cpp:411
+msgid "Fixed"
+msgstr "Kiinteä"
+
+#: kfinger.cpp:407
+msgid "Finger User"
+msgstr "Fingeroi käyttäjää"
+
+#: kfinger.cpp:427
+msgid "Lines to skip :"
+msgstr "Ohitettavia rivejä :"
+
+#: kfinger.cpp:435 kfinger.cpp:440
+msgid "Format..."
+msgstr "Ulkönäkö..."
+
+#: kfinger.cpp:447
+msgid "User"
+msgstr "Käyttäjä"
+
+#: kfinger.cpp:458
+msgid "Server"
+msgstr "Palvelin"
+
+#: kfinger.cpp:470
+msgid "Talk"
+msgstr "Juttelu"
+
+#: kfinger.cpp:475 kfinger.cpp:611 kfinger.cpp:757
+msgid "Cancel"
+msgstr "Peruuta"
+
+#: kfinger.cpp:480
+msgid "Ok"
+msgstr "Ok"
+
+#: kfinger.cpp:603
+msgid "Talk with..."
+msgstr "Juttele ..."
+
+#: kfinger.cpp:670
+msgid "Format string for var1(string)"
+msgstr "Ulkonäköjono var1(string):lle"
+
+#: kfinger.cpp:676
+msgid "Fromat string for var2(int)"
+msgstr "Ulkonäköjono var2(int):lle"
+
+#: kfinger.cpp:696 kfinger.cpp:702
+msgid "Offset"
+msgstr "Siirros"
+
+#: kfinger.cpp:715
+msgid "Only var1"
+msgstr "Vain var1"
+
+#: kfinger.cpp:721
+msgid "Only var2"
+msgstr "Vain var2"
+
+#: kfinger.cpp:727
+msgid "var1, var2"
+msgstr "var1, var2"
+
+#: kfinger.cpp:733
+msgid "var2, var1"
+msgstr "var2, var1"
+
+#: kfinger.cpp:746
+msgid "Output format string"
+msgstr "Tulosteen ulkonäköjono"
+
+#: kfinger.cpp:753
+msgid "Save & Quit"
+msgstr "Tallenna & Lopeta"
+
+#: kfinger.cpp:763
+msgid "Output parameters "
+msgstr "Tulosteen parametrit"
