@@ -95,6 +95,7 @@ void ModemTransfer::ati_done() {
   timeout_timer->stop();
   Modem::modem->closetty();
   Modem::modem->unlockdevice();
+  hide();
 
   // open the result window
   ModemInfo *mi = new ModemInfo(this);
