@@ -25,21 +25,17 @@ public:
     }
 
 signals:
-  virtual void made_toplevel(QString, QString);
-  virtual void delete_toplevel(QString, QString);
-  virtual void changeChannel(QString, QString, QString);
-
-  virtual void notify_nick_online(QString, QString);
-  virtual void notify_nick_offline(QString, QString);
+  void ProcMessage(QString, int, QString);
 
 public slots:
-  virtual void new_toplevel(QString);
-//  virtual void new_ksircprocess(QString);
-  virtual void close_toplevel(KSircTopLevel *, char *);
-  virtual void default_window(KSircTopLevel *);
-  virtual void recvChangeChannel(QString, QString);
-
-  virtual void filters_update();
+ virtual void ServMessage(QString server, int command, QString args);
+ virtual void new_toplevel(QString);
+ //  virtual void new_ksircprocess(QString);
+ virtual void close_toplevel(KSircTopLevel *, char *);
+ virtual void default_window(KSircTopLevel *);
+ virtual void recvChangeChannel(QString, QString);
+ 
+ virtual void filters_update();
 
   virtual void notify_forw_online(QString);
   virtual void notify_forw_offline(QString);

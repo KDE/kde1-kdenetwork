@@ -158,6 +158,7 @@ servercontroller::servercontroller
 	pic_channel = new QPixmap(kicl->loadIcon("mini-edit.gif"));
 	pic_gf = new QPixmap(kicl->loadIcon("gf.gif"));
 	pic_run = new QPixmap(kicl->loadIcon("mini-run.gif"));
+	pic_ppl = new QPixmap(kicl->loadIcon("ppl.gif"));
 
 }
 
@@ -182,23 +183,24 @@ void servercontroller::new_ksircprocess(QString str)
   if(proc_list[str.data()])   // if it already exists, quit
     return;
 
-  ConnectionTree->insertItem(str.data(), pic_server, -1, FALSE); // Insert new base
-                                                           // level parent
-  add_toplevel(str, QString("default"));                   // Set a dflt chan
+  QString channels("Channels"), online("Online");
+  KPath path;
+  path.push(&str);
+  // Insert new base
+  ConnectionTree->insertItem(str.data(), pic_server, -1, FALSE);
+  ConnectionTree->addChildItem(online.data(), pic_gf, &path);
+  ConnectionTree->addChildItem(channels.data(), pic_ppl, &path);
+
+      
+  ProcMessage(str, ProcCommand::addTopLevel, QString("default"));
+  // level parent
+  //add_toplevel(str, QString("default"));                   // Set a dflt chan
   KSircProcess *proc = new KSircProcess(str.data()); // Create proc
   proc_list.insert(str.data(), proc);                      // Add proc to hash
-  connect(proc, SIGNAL(made_toplevel(QString, QString)),   // Connect new 
-	  this, SLOT(add_toplevel(QString, QString)));     //
-  connect(proc, SIGNAL(delete_toplevel(QString, QString)), // Connect delete
-	  this, SLOT(delete_toplevel(QString, QString)));  //
-  connect(proc, SIGNAL(changeChannel(QString, QString, QString)), //Name change
-	  this, SLOT(recvChangeChannel(QString, QString, QString)));
-  connect(proc, SIGNAL(notify_nick_online(QString, QString)),
-	  this, SLOT(notify_nick_online(QString, QString)));
-  connect(proc, SIGNAL(notify_nick_offline(QString, QString)),
-	  this, SLOT(notify_nick_offline(QString, QString)));
-  connect(this, SIGNAL(filters_update()),
-	  proc, SLOT(filters_update()));
+  connect(proc, SIGNAL(ProcMessage(QString, int, QString)),
+	  this, SLOT(ProcMessage(QString, int, QString)));
+  connect(this, SIGNAL(ServMessage(QString, int, QString)),
+	  proc, SLOT(ServMessage(QString, int, QString)));
   
   if(!ConnectionTree->getCurrentItem()){   // If nothing's highlighted
     ConnectionTree->setCurrentItem(0);     // highlight it.
@@ -228,72 +230,6 @@ void servercontroller::new_toplevel(QString str)
     }
     //cerr << "Server is: " << citem->getText() << endl;
   }
-}
-
-void servercontroller::add_toplevel(QString parent, QString child)
-{
-  // Add new channel, first add the parent to the path
-  KPath path;
-  path.push(&parent);
-  if(child[0] == '!')
-    child.remove(0, 1); // If the first char is !, it's control, remove it
-  // add a new child item with parent as it's parent
-  ConnectionTree->addChildItem(child.data(), pic_channel, &path);
-  //  ConnectionTree->addChildItem("Online", pic_channel, &path);
-  //cerr << "Added child for: " << parent << "->" << child << endl;
-  open_toplevels++;
-}
-
-void servercontroller::delete_toplevel(QString parent, QString child)
-{
-
-  // Add parent to path
-  KPath path;
-  path.push(&parent);
-
-  // If the child is emtpy, delete the whole tree, otherwise just the child
-  if(child.isEmpty() == FALSE){
-    if(child[0] == '!')
-      child.remove(0, 1); // If the first char is !, it's control, remove it
-    path.push(&child);    // Since it's not null, add the child to be deleted
-  }
-  else
-    proc_list.remove(parent); // Remove process entry while we are at it
-  
-
-  ConnectionTree->removeItem(&path); // Remove the item
-  //cerr << "Removed child for: " << parent << "->" << child << endl;
-  open_toplevels--;
-  if(open_toplevels <= 0)
-    connections->setItemEnabled(join_id, FALSE);
-
-  if(proc_list.count() == 0)
-    ConnectionTree->clear();
-
-}
-
-
-void servercontroller::recvChangeChannel(QString parent, QString old_chan, QString new_chan)
-{
-
-  //  If the channel has a !, it's a control channel, remove the !
-
-  if(old_chan[0] == '!')
-    old_chan.remove(0, 1);
-  if(new_chan[0] == '!')
-    new_chan.remove(0, 1);
-
-  // The path to the old one it parent->old_chan, create it
-  KPath path;
-  path.push(&parent);
-  path.push(&old_chan);
-  // Delete the old one
-  //cerr << "Deleteing " << old_chan << endl;
-  ConnectionTree->removeItem(&path);
-  // Only create with the parent in the path
-  path.pop();
-  // Add new child.  Delete/creates wrecks the "random" sort order though.
-  ConnectionTree->addChildItem(new_chan.data(), pic_channel, &path);
 }
 
 void servercontroller::reuse()
@@ -340,7 +276,7 @@ void servercontroller::filter_rule_editor()
 {
   FilterRuleEditor *fe = new FilterRuleEditor();
   connect(fe, SIGNAL(destroyed()), 
-	  this, SIGNAL(filters_update()));
+	  this, SLOT(slot_filters_update()));
   fe->show();
 }
 
@@ -417,30 +353,129 @@ void servercontroller::help_keys()
   kApp->invokeHTMLHelp("ksirc/keys.html", "");
 }
 
-void servercontroller::notify_nick_online(QString server, QString nick)
+void servercontroller::ProcMessage(QString server, int command, QString args)
 {
-  static bool running = FALSE;
-  // Add new channel, first add the parent to the path
-  QString online("Online");
+  QString online("Online"), channels("Channels");
   KPath path;
-  path.push(&server);
-  if(running == FALSE){
-    ConnectionTree->addChildItem(online.data(), pic_gf, &path);
-    running = TRUE;
+
+  switch(command){
+    // Nick offline and online both remove the nick first.
+    // We remove the nick in case of an online so that we don't get
+    // duplicates.
+    // Args == nick comming on/offline.
+  case ProcCommand::nickOffline:
+    // Add new channel, first add the parent to the path
+    path.push(&server);
+    path.push(&online);
+    path.push(&args);
+    // add a new child item with parent as it's parent
+    ConnectionTree->removeItem(&path); // Remove the item    
+    break;
+  case ProcCommand::nickOnline:
+    // Add new channel, first add the parent to the path
+    path.push(&server);
+    path.push(&online);
+    path.push(&args);
+    // Remove old one if it's there
+    ConnectionTree->removeItem(&path); // Remove the item    
+    path.pop();
+    // add a new child item with parent as it's parent
+    ConnectionTree->addChildItem(args.data(), pic_run, &path);
+    KApplication::beep();
+    break;
+    /**
+      *  Args:
+      *	   parent: the server name that the new channel is being joined on
+      *    child: the new channel name
+      *  Action:
+      *    Adds "child" to the list of joined channles in the main 
+      *    window.  Always call this on new window creation!
+      */
+  case ProcCommand::addTopLevel:
+    // Add new channel, first add the parent to the path
+    path.push(&server);
+    path.push(&channels);
+    if(args[0] == '!')
+      args.remove(0, 1); // If the first char is !, it's control, remove it
+    // add a new child item with parent as it's parent
+    ConnectionTree->addChildItem(args.data(), pic_channel, &path);
+    //cerr << "Added child for: " << parent << "->" << child << endl;
+    open_toplevels++;
+    break;
+    /**
+      *  Args:
+      *    parent: the server name of which channel is closing
+      *	   child: the channle that is closing. IFF Emtpy, parent is 
+      *	   deleted.
+      *  Action:
+      *	   Deletes the "child" window from the list of connections.  If 
+      *	   the child is Empty the whole tree is removed since it is assumed 
+      *    the parent has disconnected and is closing.
+      */
+  case ProcCommand::deleteTopLevel:
+    path.push(&server);
+    path.push(&channels);
+    // If the child is emtpy, delete the whole tree, otherwise just the child
+    if(args[0] == '!')
+      args.remove(0, 1); // If the first char is !, it's control, remove it
+    path.push(&args);    // Since it's not null, add the child to be deleted
+    
+    ConnectionTree->removeItem(&path); // Remove the item
+    //cerr << "Removed child for: " << parent << "->" << child << endl;
+    open_toplevels--;
+    if(open_toplevels <= 0)
+      connections->setItemEnabled(join_id, FALSE);
+    
+    if(proc_list.count() == 0)
+      ConnectionTree->clear();
+    break;
+
+  /**
+      *  Args:
+      *    parent: parent server connection
+      *    old: the old name for the window
+      *    new: the new name for the window
+      *  Action:
+      *    Changes the old window name to the new window name in the tree
+      *    list box.  Call for all name change!
+      */
+  case ProcCommand::changeChannel:
+    {
+      char *new_s, *old_s;
+      new_s = new char[args.length()];
+      old_s = new char[args.length()];
+      sscanf(args.data(), "%s %s", old_s, new_s);
+      //  If the channel has a !, it's a control channel, remove the !
+      if(old_s[0] == '!')
+        // Even though, we want strlen() -1 characters, strlen doesn't
+        // include the \0, so we need to copy one more. -1 + 1 = 0.
+	memmove(old_s, old_s+1, strlen(old_s)); 
+      if(new_s[0] == '!')
+	memmove(new_s, new_s, strlen(new_s)); // See above for strlen()
+      path.push(&server);
+      path.push(&channels);
+      QString qs = old_s;
+      path.push(&qs);
+      ConnectionTree->removeItem(&path);
+      // Only create with the parent in the path
+      path.pop();
+      // Add new child.  Delete/creates wrecks the "random" sort order though.
+      ConnectionTree->addChildItem(new_s, pic_channel, &path);
+      delete[] new_s;
+      delete[] old_s;
+    }
+    break;
+  case ProcCommand::procClose:
+    path.push(&server);
+    ConnectionTree->removeItem(&path);
+    proc_list.remove(server); // Remove process entry while we are at it
+    break;
+  default:
+    cerr << "Unkown command: " << command << " from " << server << " " << args << endl;
   }
-  path.push(&online);
-  // add a new child item with parent as it's parent
-  ConnectionTree->addChildItem(nick.data(), pic_run, &path);
 }
 
-void servercontroller::notify_nick_offline(QString server, QString nick)
+void servercontroller::slot_filters_update()
 {
-  // Add new channel, first add the parent to the path
-  QString online("Online");
-  KPath path;
-  path.push(&server);
-  path.push(&online);
-  path.push(&nick);
-  // add a new child item with parent as it's parent
-  ConnectionTree->removeItem(&path); // Remove the item
+  emit ServMessage(QString(), ServCommand::updateFilters, QString());
 }

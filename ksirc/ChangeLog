@@ -1,3 +1,19 @@
+1998-01-15  Andrew Stanley-Jones  <asj@chowtown.cban.com>
+
+	* Ticker now starts with data right away, heck, I just plug it
+ 	with the last 5 lines!
+
+	* FilterRuleEditor.cpp (moveRule): Fixed error with $$var being
+ 	nuked.
+
+	* Updated the entire messaging system between ServerController and
+ 	ksirc process, they can now talk freely without a zillion signals
+ 	and slots.  Communications is fully bidirectional and should work
+ 	well.
+
+	* toplevel.cpp (parse_input): Now deals with ssfe#p correctly!!!
+ 	Finally!!!! (prompts, for say nicks and passwords, try /oper :) )
+
 1998-01-13  Andrew Stanley-Jones  <asj@chowtown.cban.com>
 
 	* servercontroller.cpp (notify_nick_online): Added grahical notify
@@ -87,6 +103,16 @@
 $Revision$
 	
 $Log$
+Revision 1.14  1998/01/14 05:11:49  asj
+Added grahical notify
+list.  It uses the server controller and adds an Online branch
+with the nicks of people currently online on each server.
+
+This meant adding new ioNotify to filter and catch messages.
+Adding notify_forw_* in ksircprocess to add the server and forward to
+the serverctronoller. Added servercontroller notify_* routines to add
+and delete nick, etc.
+
 Revision 1.13  1998/01/11 19:48:00  asj
 Fixed deleting of toplevel windows.  Toplevel windows are now always deleted
 on close, etc.

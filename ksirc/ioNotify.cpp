@@ -48,6 +48,7 @@ void KSircIONotify::sirc_receive(QString str)
     emit notify_offline(nick);
   }
   else{
+    proc->getWindowList()["!default"]->sirc_receive(str);
     cerr << "Nick Notifer got " << str << endl;
   }
 }

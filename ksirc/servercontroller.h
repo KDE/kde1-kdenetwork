@@ -14,12 +14,38 @@
 #ifndef servercontroller_included
 #define servercontroller_included
 
+class servercontroller;
+class ServMessage;
+
 #include <qdict.h>
 #include <qpixmap.h> 
 
 #include "servercontrollerData.h"
 
 #include "ksircprocess.h"
+
+class ProcCommand // ServerController message
+{
+ public:
+  static enum {
+    addTopLevel,
+    deleteTopLevel,
+    procClose,
+    newChannel,
+    changeChannel,
+    nickOnline,
+    nickOffline
+  } command;
+};
+
+
+class ServCommand // ServerController message
+{
+ public:
+  static enum {
+    updateFilters
+  } command;
+};
 
 class servercontroller : public servercontrollerData
 {
@@ -41,6 +67,8 @@ signals:
       */
     virtual void filters_update();
 
+    void ServMessage(QString server, int command, QString args);
+
 public slots:
     // All slots are described in servercontroll.cpp file
     /**
@@ -56,26 +84,6 @@ public slots:
       */
     virtual void new_ksircprocess(QString);
     /**
-      *  Args:
-      *	   parent: the server name that the new channel is being joined on
-      *    child: the new channel name
-      *  Action:
-      *    Adds "child" to the list of joined channles in the main 
-      *    window.  Always call this on new window creation!
-      */
-    virtual void add_toplevel(QString, QString); 
-    /**
-      *  Args:
-      *    parent: the server name of which channel is closing
-      *	   child: the channle that is closing. IFF Emtpy, parent is 
-      *	   deleted.
-      *  Action:
-      *	   Deletes the "child" window from the list of connections.  If 
-      *	   the child is Empty the whole tree is removed since it is assumed 
-      *    the parent has disconnected and is closing.
-      */
-    virtual void delete_toplevel(QString, QString); 
-    /**
       * Creates popup asking for new channel name
       */
     virtual void new_channel();
@@ -89,21 +97,16 @@ public slots:
       */
     virtual void new_toplevel(QString str);
     /**
-      *  Args:
-      *    parent: parent server connection
-      *    old: the old name for the window
-      *    new: the new name for the window
-      *  Action:
-      *    Changes the old window name to the new window name in the tree
-      *    list box.  Call for all name change!
-      */
-    virtual void recvChangeChannel(QString, QString, QString);
-    /**
       *  Action:
       *     Toggles the Global option to reuse the !default window on each
       *     call.  Sets the menu item.   
       */
     virtual void reuse();
+    /**
+      * Action:
+      *     Notify all ksircprocess' to update filters
+      */
+    virtual void slot_filters_update();
     virtual void autocreate();
     virtual void colour_prefs();
     virtual void font_prefs();
@@ -117,11 +120,7 @@ public slots:
     virtual void help_keys();
     virtual void about_ksirc();
 
-    /** When a new nick comes online via the nick notify, we add them
-      * to the Online list.  
-      */ 
-    virtual void notify_nick_online(QString, QString); 
-    virtual void notify_nick_offline(QString, QString);
+    virtual void ProcMessage(QString server, int command, QString args);
 
 private:
     // Hold a list of all KSircProcess's for access latter.  Index by server 
@@ -136,6 +135,7 @@ private:
   QPixmap *pic_server;
   QPixmap *pic_gf;
   QPixmap *pic_run;
+  QPixmap *pic_ppl;
 
 };
 #endif // servercontroller_included

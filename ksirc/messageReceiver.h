@@ -26,9 +26,9 @@ public:
     }
   virtual ~KSircMessageReceiver();
 
-  virtual void sirc_receive(QString str) = 0;
+  virtual void sirc_receive(QString str);
 
-  virtual void control_message(int, QString) = 0;
+  virtual void control_message(int, QString);
 
   bool getBroadcast();
   void setBroadcast(bool bd);

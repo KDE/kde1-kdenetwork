@@ -38,7 +38,7 @@ KSircListBox::~KSircListBox()
   delete vertScroll;
 }
 
-void KSircListBox::scrollToBottom(bool force = false)
+bool KSircListBox::scrollToBottom(bool force = false)
 {
   if(force == TRUE)
     ScrollToBottom = TRUE;
@@ -54,6 +54,11 @@ void KSircListBox::scrollToBottom(bool force = false)
       setYOffset(0);
     vertScroll->setRange(0, 0);
   }
+
+  if(ScrollToBottom == TRUE)
+    return TRUE;
+  else
+    return FALSE;
 }
 
 void KSircListBox::updateScrollBars()

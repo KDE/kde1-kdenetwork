@@ -38,6 +38,7 @@
 #include "control_message.h"
 #include "config.h"
 #include "KSCutDialog/KSCutDialog.h"
+#include "ssfeprompt.h"
 
 #include <iostream.h>
 #include <termios.h>
@@ -489,13 +490,14 @@ void KSircTopLevel::sirc_receive(QString str)
     }
 
     // If we need to scroll, we, scroll =)
-    mainw->scrollToBottom();
-
-    if(mainw->autoUpdate() == FALSE){
-      mainw->setAutoUpdate(TRUE);
-      mainw->repaint();
-      //      mainw->repaint(TRUE);
-      //mainw->update();
+    // scrollToBottom returns true if we should repaint.
+    if(mainw->scrollToBottom() == TRUE){
+      if(mainw->autoUpdate() == FALSE){
+	mainw->setAutoUpdate(TRUE);
+	mainw->repaint();
+	//      mainw->repaint(TRUE);
+	//mainw->update();
+      }
     }
     
   }
@@ -560,9 +562,11 @@ void KSircTopLevel::sirc_line_return()
 
   if((strncmp(s, "/join ", 6) == 0) || (strncmp(s, "/j ", 3) == 0)){
     s = s.lower();
-    int pos1 = s.findRev(' ', -1) + 1;
+    int pos1 = s.find(' ', 0) + 1;
     if(pos1 == -1)
       return;
+    while(s[pos1] == ' ')
+      pos1++;
     int pos2 = s.length() - 1;
     if(pos1 > 2){
       QString name = s.mid(pos1, pos2 - pos1); // make sure to remove line feed
@@ -777,6 +781,41 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	string.truncate(0);
 	no_output = 1;
 	break;
+      case 'P':
+      case 'p':
+	{
+	  QString prompt, caption;
+	  ssfePrompt *sp;
+	  int p1, p2;
+
+	  caption = mainw->text(mainw->count() - 1);
+	  if(caption.length() < 3){
+	    caption = mainw->text(mainw->count() - 2);
+	    if(caption.length() > 2)
+	      mainw->removeItem(mainw->count() - 2 );
+	  }
+	  else
+	    mainw->removeItem(mainw->count() - 1 );
+	  p1 = string.find("ssfe#", 0) + 6; // ssfe#[pP] == 6
+	  p2 = string.length();
+	  if(p2 <= p1)
+	    prompt = "No Prompt Given?";
+	  else
+	    prompt = string.mid(p1, p2 - p1);
+	  sp = new ssfePrompt(prompt, this);
+	  sp->setCaption(caption);
+	  if(s2[0] == 'P')
+	    sp->setPassword(TRUE);
+	  sp->exec();
+	  //	  cerr << "Entered: " << sp->text() << endl;
+	  prompt = sp->text();
+	  prompt += "\n";
+	  emit outputLine(prompt);
+	  delete sp;
+	  string.truncate(0);
+	  no_output = 1;
+	  break;
+	}
       default:
 	cerr << "Unkown ssfe command: " << string << endl;
 	string.truncate(0);                // truncate string... set
@@ -1291,6 +1330,7 @@ void KSircTopLevel::closeEvent(QCloseEvent *)
   //    emit outputLine(str);
   //  }
 
+  hide();
   // Let's say we're closing, what ever connects to this should delete us.
   emit closing(this, channel_name); // This should call "delete this".
   // This line is NEVER reached.
@@ -1422,6 +1462,9 @@ void KSircTopLevel::showTicker()
     ticker->setGeometry(tickerrect);
     ticker->recreate(0, 0, tickerpoint, TRUE);
   }
+  for(int i = 5; i > 0; i--)
+    ticker->mergeString(QString(mainw->text(mainw->count()-5)) + " // ");
+
   ticker->show();
 }
 

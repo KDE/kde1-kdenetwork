@@ -158,7 +158,8 @@ ioDiscard.cpp \
 ioDCC.cpp mioDCC.cpp dccDialog.cpp mdccDialog.cpp dccDialogData.cpp mdccDialogData.cpp \
 linelistitem.cpp \
 ioLAG.cpp mioLAG.cpp \
-ioNotify.cpp mioNotify.cpp
+ioNotify.cpp mioNotify.cpp \
+ssfeprompt.cpp mssfeprompt.cpp ssfepromptdata.cpp mssfepromptdata.cpp
 
 ksircstatic_SOURCES = $(ksirc_SOURCES)
 
@@ -188,7 +189,8 @@ ahistlineedit.h           iocontroller.h            servercontroller.h \
 alistbox.h                irclistbox.h              servercontrollerData.h \
 config.h                  irclistitem.h             toplevel.h \
 control.h                 ksircprocess.h            ksirc.kdelnk \
-ioLAG.h                   ioNotify.h \
+ioLAG.h                   ioNotify.h                ssfeprompt.h \
+ssfepromptdata.h \
 dsirc                     filters.pl                ksirc.pl
 
 # just to make sure, automake makes them 
@@ -218,7 +220,8 @@ control.o mcontrol.o KSircColour.o KSircColourData.o mKSircColour.o \
 mKSircColourData.o FilterRuleEditor.o FilterRuleEditorData.o \
 mFilterRuleEditor.o mFilterRuleEditorData.o ioDiscard.o ioDCC.o \
 mioDCC.o dccDialog.o mdccDialog.o dccDialogData.o mdccDialogData.o \
-linelistitem.o ioLAG.o mioLAG.o ioNotify.o mioNotify.o
+linelistitem.o ioLAG.o mioLAG.o ioNotify.o mioNotify.o ssfeprompt.o \
+mssfeprompt.o ssfepromptdata.o mssfepromptdata.o
 ksirc_DEPENDENCIES = 
 ksircstatic_OBJECTS =  toplevel.o ksirc.o irclistbox.o mirclistbox.o \
 irclistitem.o mirclistitem.o alistbox.o mtoplevel.o ahistlineedit.o \
@@ -232,7 +235,8 @@ control.o mcontrol.o KSircColour.o KSircColourData.o mKSircColour.o \
 mKSircColourData.o FilterRuleEditor.o FilterRuleEditorData.o \
 mFilterRuleEditor.o mFilterRuleEditorData.o ioDiscard.o ioDCC.o \
 mioDCC.o dccDialog.o mdccDialog.o dccDialogData.o mdccDialogData.o \
-linelistitem.o ioLAG.o mioLAG.o ioNotify.o mioNotify.o
+linelistitem.o ioLAG.o mioLAG.o ioNotify.o mioNotify.o ssfeprompt.o \
+mssfeprompt.o ssfepromptdata.o mssfepromptdata.o
 ksircstatic_DEPENDENCIES = 
 CXXCOMPILE = $(CXX) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
 CXXLINK = $(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@
@@ -261,9 +265,11 @@ DEP_FILES =  .deps/FilterRuleEditor.P .deps/FilterRuleEditorData.P \
 .deps/mirclistbox.P .deps/mirclistitem.P .deps/mksircprocess.P \
 .deps/mopen_ksirc.P .deps/mopen_ksircData.P .deps/mopen_top.P \
 .deps/mopen_topData.P .deps/mservercontroller.P \
-.deps/mservercontrollerData.P .deps/mtoplevel.P .deps/open_ksirc.P \
+.deps/mservercontrollerData.P .deps/mssfeprompt.P \
+.deps/mssfepromptdata.P .deps/mtoplevel.P .deps/open_ksirc.P \
 .deps/open_ksircData.P .deps/open_top.P .deps/open_topData.P \
-.deps/servercontroller.P .deps/servercontrollerData.P .deps/toplevel.P
+.deps/servercontroller.P .deps/servercontrollerData.P \
+.deps/ssfeprompt.P .deps/ssfepromptdata.P .deps/toplevel.P
 CXXMKDEP = $(CXX) -M $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
 SOURCES = $(ksirc_SOURCES) $(ksircstatic_SOURCES)
 OBJECTS = $(ksirc_OBJECTS) $(ksircstatic_OBJECTS)

@@ -116,19 +116,19 @@ void FilterRuleEditor::moveRule(int from, int to)
   QString dest;
   src.sprintf("name-%d", from);
   dest.sprintf("name-%d", to);
-  kConfig->writeEntry(dest, kConfig->readEntry(src));
+  kConfig->writeEntry(dest, convertSpecial(kConfig->readEntry(src)));
   kConfig->writeEntry(src, "", FALSE);
   src.sprintf("search-%d", from);
   dest.sprintf("search-%d", to);
-  kConfig->writeEntry(dest, kConfig->readEntry(src));
+  kConfig->writeEntry(dest, convertSpecial(kConfig->readEntry(src)));
   kConfig->writeEntry(src, "", FALSE);
   src.sprintf("from-%d", from);
   dest.sprintf("from-%d", to);
-  kConfig->writeEntry(dest, kConfig->readEntry(src));
+  kConfig->writeEntry(dest, convertSpecial(kConfig->readEntry(src)));
   kConfig->writeEntry(src, "", FALSE);
   src.sprintf("to-%d", from);
   dest.sprintf("to-%d", to);
-  kConfig->writeEntry(dest, kConfig->readEntry(src));
+  kConfig->writeEntry(dest, convertSpecial(kConfig->readEntry(src)));
   kConfig->writeEntry(src, "", FALSE);
 }
 

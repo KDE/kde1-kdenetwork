@@ -738,12 +738,14 @@ sub docommand {
       local($l)='';
       foreach (grep($notify{$_}, keys %notify)) {
 	&tell("*** Currently present: $l"), $l='' if length($l)>450;
+	&tell("*\cb)\cb* Signon by $_ detected!");
 	$l.=$_." ";
       }
       $l && &tell("*** Currently present: $l");
       $l='';
       foreach (grep(!$notify{$_}, keys %notify)) {
 	&tell("*** Currently absent: $l"), $l='' if length($l)>450;
+	&tell("*\cb(\cb* Signoff by $_ detected!");
 	$l.=$_." ";
       }
       $l && &tell("*** Currently absent: $l");

@@ -86,6 +86,7 @@
 
 
 #include "ksircprocess.h"
+#include "servercontroller.h"
 #include "toplevel.h"
 #include "ioBroadcast.h"
 #include "ioDiscard.h"
@@ -93,6 +94,7 @@
 #include "ioLAG.h"
 #include "ioNotify.h"
 #include "iocontroller.h"
+#include "control_message.h"
 #include <iostream.h>
 
 extern KApplication *kApp;
@@ -172,9 +174,10 @@ KSircProcess::~KSircProcess()
     ++it;
   }
 
+  emit ProcMessage(QString(server), ProcCommand::procClose, QString());
+
   delete proc;               // Delete process, seems to kill sirc, good.
   delete iocontrol;          // Take out io controller
-  emit delete_toplevel(QString(server), QString()); // Say we're closing.
   delete server;
 }
 
@@ -205,7 +208,8 @@ void KSircProcess::new_toplevel(QString str)
       connect(wm, SIGNAL(changeChannel(QString, QString)),
 	      this,SLOT(recvChangeChannel(QString, QString)));
       //    }
-    emit made_toplevel(QString(server), str);
+      emit ProcMessage(QString(server), ProcCommand::addTopLevel, str);
+      //    emit made_toplevel(QString(server), str);
     wm->show(); // Pop her up
   }
   else{
@@ -257,10 +261,17 @@ void KSircProcess::close_toplevel(KSircTopLevel *wm, char *name)
       cerr << "NO MORE WINDOWS?\n"; // We're out of windows with > 3
 				    // huh open, huh?
       TopList.remove("!default");   // let's not blow up to badly
+      QString command = "/quit\n";  // close this server connetion then
+      iocontrol->stdin_write(command); // kill sirc
+      delete this; // Delete ourself, WARNING MUST RETURN SINCE WE NO
+                   // LONGER EXIST!!!!
+      return;      // ^^^^^^^^^^^^^^^
+
     }
   }
   // Let's let em know she's deleted!
-  emit delete_toplevel(QString(server), QString(name));
+  emit ProcMessage(QString(server), ProcCommand::deleteTopLevel, 
+		   QString(name));
 }
 
 void KSircProcess::default_window(KSircTopLevel *w)
@@ -284,7 +295,8 @@ void KSircProcess::recvChangeChannel(QString old_chan, QString
   // ServerController needs our name so it can have a uniq handle for
   // the window name.
   //
-  emit changeChannel(QString(server), old_chan, new_chan);
+  emit ProcMessage(QString(server), ProcCommand::changeChannel,
+		   old_chan + " " + new_chan);
 }
 
 void KSircProcess::filters_update()
@@ -336,10 +348,24 @@ void KSircProcess::filters_update()
 
 void KSircProcess::notify_forw_online(QString nick)
 {
-  emit notify_nick_online(QString(server), nick);
+  emit ProcMessage(QString(server), ProcCommand::nickOnline, nick);
 }
 
 void KSircProcess::notify_forw_offline(QString nick)
 {
-  emit notify_nick_offline(QString(server), nick);
+  emit ProcMessage(QString(server), ProcCommand::nickOffline, nick);
+}
+
+void KSircProcess::ServMessage(QString dst_server, int command, QString args)
+{
+  if(dst_server.isEmpty() || (dst_server == QString(server))){
+    switch(command){
+    case ServCommand::updateFilters:
+      filters_update();
+      break;
+    default:
+      cerr << "Unkown command: " << command << " to " << command << " args " << args << endl;
+      break;
+    }
+  }
 }

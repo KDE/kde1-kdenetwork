@@ -18,14 +18,6 @@ StdInTicker::StdInTicker()
   setFont(kConfig->readFontEntry("font"));
   setSpeed(kConfig->readNumEntry("tick", 30), 
 	   kConfig->readNumEntry("step", 3));
-  QColorGroup cg = QColorGroup(colorGroup().foreground(), colorGroup().mid(), 
-                               colorGroup().light(), colorGroup().dark(),
-                               colorGroup().midlight(), 
-                               QColor(kConfig->readColorEntry("text", &black)),
-                               QColor(kConfig->readColorEntry("background", new
- QColor(colorGroup().mid()))));
-  setPalette(QPalette(cg,cg,cg)); 
-  setBackgroundColor( cg.background() );
 }
 
 StdInTicker::~StdInTicker()
