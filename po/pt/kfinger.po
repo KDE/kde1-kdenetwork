@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kfinger\n"
-"POT-Creation-Date: 1999-04-15 03:01+0200\n"
+"POT-Creation-Date: 1998-12-19 02:18+0100\n"
 "PO-Revision-Date: 1998-11-20 00:00:00+0000\n"
 "Last-Translator: Pedro Morais <morais@kde.org>\n"
 "Language-Team: pt\n"
@@ -26,9 +26,8 @@ msgid "&Save Options"
 msgstr "&Gravar Opções"
 
 #: kfinger.C:38
-#, fuzzy
 msgid ""
-"kfinger 0.8.1\n"
+"kfinger 0.8.0\n"
 "\n"
 "(c) Andrea Rizzi (rizzi@kde.org)"
 msgstr ""
@@ -64,25 +63,19 @@ msgstr "Bem vindo ao finger do KDE\n"
 msgid "Finger result"
 msgstr "Resultado"
 
-#: kfinger.C:272
+#: kfinger.C:269
 #, c-format
 msgid "Error on server : %s"
 msgstr "Erro no servidor: %s"
 
-#: kfinger.C:284
-#, c-format
-msgid "Connection refused by  %s"
-msgstr ""
-
-#: kfinger.C:296
+#: kfinger.C:288
 #, c-format
 msgid "Finger  %s@%s   --   %s"
 msgstr "Finger  %s@%s   --   %s"
 
-#: kfinger.C:317
-#, fuzzy
+#: kfinger.C:305
 msgid ""
-"Kfinger 0.8.1\n"
+"Kfinger 0.8.0\n"
 "(c) by Andrea Rizzi\n"
 "rizzi@kde.org"
 msgstr ""
@@ -90,123 +83,123 @@ msgstr ""
 "(c) por Andrea Rizzi\n"
 "rizzi@kde.org"
 
-#: kfinger.C:363
+#: kfinger.C:351
 msgid "Kfinger Setup"
 msgstr "Configuração do kfinger"
 
-#: kfinger.C:391 kfinger.C:431
+#: kfinger.C:379 kfinger.C:419
 msgid "&Add"
 msgstr "&Adicionar"
 
-#: kfinger.C:401
+#: kfinger.C:389
 msgid "Server Name"
 msgstr "Nome do servidor"
 
-#: kfinger.C:405 kfinger.C:408
+#: kfinger.C:393 kfinger.C:396
 msgid "Server list"
 msgstr "Lista de servidores"
 
-#: kfinger.C:441
+#: kfinger.C:429
 msgid "User Name"
 msgstr "Nome do utilizador"
 
-#: kfinger.C:445 kfinger.C:448
+#: kfinger.C:433 kfinger.C:436
 msgid "Users list"
 msgstr "Lista de utilizadores"
 
-#: kfinger.C:462
+#: kfinger.C:450
 msgid "Timed finger"
 msgstr "Finger temporizado"
 
-#: kfinger.C:477 kfinger.C:664
+#: kfinger.C:465 kfinger.C:652
 #, c-format
 msgid "Finger wait: %d\""
 msgstr "Espera do finger: %d\""
 
-#: kfinger.C:482
+#: kfinger.C:470
 msgid "Talk Command "
 msgstr "Comando de talk"
 
-#: kfinger.C:492
+#: kfinger.C:480
 msgid "Misc"
 msgstr "Misc"
 
-#: kfinger.C:497 kfinger.C:509
+#: kfinger.C:485 kfinger.C:497
 msgid "Finger Output"
 msgstr "Saída do finger"
 
-#: kfinger.C:501
+#: kfinger.C:489
 msgid "Finger server"
 msgstr "Servidor de finger"
 
-#: kfinger.C:505 kfinger.C:517
+#: kfinger.C:493 kfinger.C:505
 msgid "Fixed"
 msgstr "Fixo"
 
-#: kfinger.C:513
+#: kfinger.C:501
 msgid "Finger User"
 msgstr "Utilizador do finger"
 
-#: kfinger.C:533
+#: kfinger.C:521
 msgid "Lines to skip :"
 msgstr "Linhas a saltar :"
 
-#: kfinger.C:541 kfinger.C:546
+#: kfinger.C:529 kfinger.C:534
 msgid "Format..."
 msgstr "Formato..."
 
-#: kfinger.C:553
+#: kfinger.C:541
 msgid "User"
 msgstr "Utilizador"
 
-#: kfinger.C:564
+#: kfinger.C:552
 msgid "Server"
 msgstr "Servidor"
 
-#: kfinger.C:576
+#: kfinger.C:564
 msgid "Talk"
 msgstr "Falar"
 
-#: kfinger.C:711
+#: kfinger.C:699
 msgid "Talk with..."
 msgstr "Falar com..."
 
-#: kfinger.C:778
+#: kfinger.C:766
 msgid "Format string for var1(string)"
 msgstr "Cadeia de formato para var1(string)"
 
-#: kfinger.C:784
+#: kfinger.C:772
 msgid "Fromat string for var2(int)"
 msgstr "Cadeia de formato para var2(int)"
 
-#: kfinger.C:804 kfinger.C:810
+#: kfinger.C:792 kfinger.C:798
 msgid "Offset"
 msgstr "Deslocamento"
 
-#: kfinger.C:823
+#: kfinger.C:811
 msgid "Only var1"
 msgstr "Apenas var1"
 
-#: kfinger.C:829
+#: kfinger.C:817
 msgid "Only var2"
 msgstr "Apenas var2"
 
-#: kfinger.C:835
+#: kfinger.C:823
 msgid "var1, var2"
 msgstr "var1, var2"
 
-#: kfinger.C:841
+#: kfinger.C:829
 msgid "var2, var1"
 msgstr "var2, var1"
 
-#: kfinger.C:854
+#: kfinger.C:842
 msgid "Output format string"
 msgstr "Formato da cadeia de saída"
 
-#: kfinger.C:861
+#: kfinger.C:849
 msgid "Save & Quit"
 msgstr "Gravar & Sair"
 
-#: kfinger.C:871
+#: kfinger.C:859
 msgid "Output parameters "
 msgstr "Parâmetros de saída "

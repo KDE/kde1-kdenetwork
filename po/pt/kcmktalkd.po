@@ -19,12 +19,11 @@ msgstr "&Gravador de chamadas"
 
 #: main.cpp:64
 msgid "&Forward"
-msgstr ""
+msgstr "&Redireccionar"
 
 #: main.cpp:70
-#, fuzzy
 msgid "usage: kcmktalkd [-init | soundpage | answmachpage | forwmachpage ]\n"
-msgstr "utilização: kcmktalkd [-init | soundpage | answmachpage]\n"
+msgstr "utilização: kcmktalkd [-init | soundpage | answmachpage | formwmachpage ]\n"
 
 #: main.cpp:111
 msgid "KTalkd Configuration"
@@ -43,9 +42,8 @@ msgid "&Play sound"
 msgstr "&Reproduzir som"
 
 #: soundpage.cpp:59
-#, fuzzy
 msgid "&Sound File"
-msgstr "&Ficheiro"
+msgstr "&Som"
 
 #: soundpage.cpp:61
 msgid "Additional WAV files can be dropped onto the sound list."
@@ -114,14 +112,12 @@ msgstr "Utilize %s para o nome da pessoa que fez a chamada"
 
 #: answmachpage.cpp:60
 msgid "Mail &first line"
-msgstr "&Primeira linha da mensagem"
+msgstr "&Primeira linha"
 
 #: answmachpage.cpp:64
 #, c-format
 msgid "Use first %s for caller name, and second %s for caller hostname"
-msgstr ""
-"Utilize primeiro %s para o nome da pessoa que fez a chamada,\n"
-"e em seguida para o nome da máquina da pessoa."
+msgstr "Utilize %s primeiro para o nome da emissor, e em seguida para a máquina"
 
 #: answmachpage.cpp:68
 msgid "&Receive a mail even if no message left"
@@ -153,15 +149,15 @@ msgstr "Mensagem deixada no gravador de chamadas por %s@%s"
 
 #: forwmachpage.cpp:34
 msgid "Activate &forward"
-msgstr ""
+msgstr "Activar &redirecção"
 
 #: forwmachpage.cpp:39
 msgid "&Destination (user or user@host)"
-msgstr ""
+msgstr "&Destino (utilizador ou utilizador@maquina)"
 
 #: forwmachpage.cpp:49
 msgid "Forward &method"
-msgstr ""
+msgstr "&Método de redirecção"
 
 #: forwmachpage.cpp:54
 msgid ""
@@ -176,3 +172,11 @@ msgid ""
 "\n"
 "See Help for further explanations.\n"
 msgstr ""
+"FWA : Enviar anuncio apenas. Ligação directa. Não recomendado\n"
+"FWR : Enviar tudo, fazendo modificações quando necessário. Ligação "
+"directa.\n"
+"FWT : Enviar todos os pedidos e assumir o talk. Sem ligação directa.\n"
+"Uso recomendado : FWT se estiver atrás de uma firewall (e se o ktalkd\n"
+"conseguir aceder a ambas as redes), e FWR nos outros casos.\n"
+"\n"
+"Veja a Ajuda para mais explicações.\n"
