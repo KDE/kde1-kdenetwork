@@ -924,12 +924,12 @@ int KMFolder::compact(void)
     debug ("Not compacting %s; it's clean", name().data());
     return 0;
   }
-  if (count() == 0)
-  {
-    debug ("Expunging %s, it's empty ", name().data());
-    expunge();
-    return 0;
-  }
+  //if (count() == 0)
+  //{
+  //  debug ("Expunging %s, it's empty ", name().data());
+  //  expunge();
+  //  return 0;
+  //}
   
   debug ("Compacting %s ", name().data());
   

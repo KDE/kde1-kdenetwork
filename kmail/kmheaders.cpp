@@ -392,7 +392,8 @@ void KMHeaders::sortAndShow()
   if (idx >= 0) cur = (*mFolder)[idx];
   else cur = NULL;
 
-  sort();
+  if ((mSortCol != (int)KMMsgList::sfNone) || (mSortDescending != FALSE)) //Don
+    sort();
 
   if (cur) idx = mFolder->find(cur);
   else idx = 0;
