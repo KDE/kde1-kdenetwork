@@ -63,8 +63,7 @@ kppp_SOURCES	= accounts.cpp \
 		log.cpp \
 		groupbox.cpp \
 		newwidget.cpp \
-		security.cpp \
-		coninfo.cpp
+		security.cpp
 
 # the library search path
 kppp_LDFLAGS = $(all_libraries) $(KDE_RPATH)
@@ -109,8 +108,7 @@ noinst_HEADERS = accounts.h \
 		log.h \
 		groupbox.h \
 		newwidget.h \
-		security.h \
-		coninfo.h
+		security.h
 
 # just to make sure, automake makes them 
 BUILTSOURCES = accounts.moc \
@@ -132,8 +130,7 @@ BUILTSOURCES = accounts.moc \
 		docking.moc \
 		setup.moc \
 		groupbox.moc \
-		security.moc \
-		coninfo.moc
+		security.moc
 
 # if you "make distclean", this files get removed. If you want to remove
 # them while "make clean", use CLEANFILES
@@ -262,7 +259,3 @@ groupbox.moc: groupbox.h
 security.cpp: security.moc
 security.moc: security.h
 	$(MOC) security.h -o security.moc
-
-coninfo.cpp: coninfo.moc
-coninfo.moc: coninfo.h
-	$(MOC) coninfo.h -o coninfo.moc

@@ -26,7 +26,6 @@
 
 #include <config.h>
 
-#include "coninfo.h"
 
 #include <qfileinf.h>
 #include <unistd.h>
@@ -62,7 +61,6 @@
 #include "log.h"
 #include "groupbox.h"
 #include "newwidget.h"
-#include "security.h"
 
 #include <X11/Xlib.h>
 
