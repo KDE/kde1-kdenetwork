@@ -15,53 +15,54 @@ msgstr ""
 
 #: main.cpp:54
 msgid "&Announcement"
-msgstr ""
+msgstr "&Anúncio"
 
 #: main.cpp:57
 msgid "Ans&wering machine"
-msgstr ""
+msgstr "Máquina de &resposta"
 
 #: main.cpp:63
 msgid "usage: kcmktalkd [-init | soundpage | answmachpage]\n"
-msgstr ""
+msgstr "uso:  kcmktalkd [-init | soundpage | answmachpage]\n"
 
 #: main.cpp:94
 msgid "KTalkd Configuration"
-msgstr ""
+msgstr "Configuração do KTalkd"
 
 #: soundpage.cpp:44
 msgid "&Announcement program"
-msgstr ""
+msgstr "Programa de &Anúncio"
 
 #: soundpage.cpp:51
 msgid "&Talk client"
-msgstr ""
+msgstr "Cliente do &Talk"
 
 #: soundpage.cpp:55
 msgid "&Play sound"
-msgstr ""
+msgstr "&Reproduzir som"
 
 #: soundpage.cpp:57
 msgid "Sound &File"
-msgstr ""
+msgstr "Ar&quivo de Som"
 
 #: soundpage.cpp:59
 msgid "Additional WAV files can be dropped onto the sound list."
-msgstr ""
+msgstr "Arquivos WAV adicionais podem ser soltos na lista de sons."
 
 #: soundpage.cpp:74
 msgid "&Test"
-msgstr ""
+msgstr "&Teste"
 
 #: soundpage.cpp:154
 msgid "Unsupported URL"
-msgstr ""
+msgstr "URL não suportada"
 
 #: soundpage.cpp:155
 msgid ""
 "Sorry, this type of URL is currently unsupportedby the KDE System Sound "
 "Module"
-msgstr ""
+msgstr "Desculpe, esse tipo de URL não é suportado pelo módulo de sons de"
+       " sistema do KDE."
 
 #: soundpage.cpp:162
 #, c-format
@@ -70,10 +71,13 @@ msgid ""
 "%s\n"
 "does not seem to be a WAV--file."
 msgstr ""
+"Desculpe, mas \n"
+"%s\n"
+"não parece ser um arquivo WAV."
 
 #: soundpage.cpp:165
 msgid "Improper File Extension"
-msgstr ""
+msgstr "Extensão do arquivo é imprópria."
 
 #: soundpage.cpp:173
 #, c-format
@@ -82,44 +86,47 @@ msgid ""
 "%s\n"
 "is already in the list"
 msgstr ""
+"O arquivo\n"
+"%s\n"
+"já está na lista."
 
 #: soundpage.cpp:177
 msgid "File Already in List"
-msgstr ""
+msgstr "Arquivo já está na lista"
 
 #: answmachpage.cpp:39
 msgid "&Activate answering machine"
-msgstr ""
+msgstr "&Ativar máquina de respostas"
 
 #: answmachpage.cpp:44
 msgid "&Mail address"
-msgstr ""
+msgstr "Endereço e-&Mail"
 
 #: answmachpage.cpp:51
 msgid "Mail sub&ject"
-msgstr ""
+msgstr "Assunto &da mensagem"
 
 #: answmachpage.cpp:54
 #, c-format
 msgid "Use %s for the caller name"
-msgstr ""
+msgstr "Use %s para o nome do chamador"
 
 #: answmachpage.cpp:60
 msgid "Mail &first line"
-msgstr ""
+msgstr "&Primeira linha da mensagem"
 
 #: answmachpage.cpp:64
 #, c-format
 msgid "Use first %s for caller name, and second %s for caller hostname"
-msgstr ""
+msgstr "Use %s para o nome do chamador, e %s para o nome de host do chamador"
 
 #: answmachpage.cpp:68
 msgid "&Receive a mail even if no message left"
-msgstr ""
+msgstr "&Receber um e-mail mesmo se não houver mensagem"
 
 #: answmachpage.cpp:74
 msgid "&Banner displayed on answering machine startup :"
-msgstr ""
+msgstr "&Banner mostrado na iniciação da máquina de responder:"
 
 #: answmachpage.cpp:83
 msgid ""
@@ -127,13 +134,16 @@ msgid ""
 "Please leave a message to be delivered via E-Mail.\n"
 "Just start typing and when you're done, exit normally."
 msgstr ""
+"A pessoa com quem você quer falar não responde.\n"
+"Deixe uma mensagem a ser entregue via e-mail.\n"
+"Comece a digitar e saia normalmente quando terminar."
 
 #: answmachpage.cpp:171 answmachpage.cpp:189
 #, c-format
 msgid "Message from %s"
-msgstr ""
+msgstr "Mensagem de %s"
 
 #: answmachpage.cpp:172 answmachpage.cpp:191
 #, c-format
 msgid "Message left in the answering machine, by %s@%s"
-msgstr ""
+msgstr "Mensagem deixada na máquina de responder, por %s@%s"
