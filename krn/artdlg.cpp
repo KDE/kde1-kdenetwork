@@ -466,6 +466,7 @@ bool Artdlg::actions (int action)
         {
             actions(DECODE_ARTICLE);
             decoder->showWindow();
+            break;
         }
     case TAG_ARTICLE:
         {
