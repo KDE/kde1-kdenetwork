@@ -1,3 +1,8 @@
+1998-11-01  Harri Porten  <porten@kde.org>
+
+	* modemcmds.cpp: added a wait&CR&wait sequence before sending the
+	init string. This seems to be necessary to avoid locking some modems.
+
 1998-10-29  Harri Porten  <porten@kde.org>
 
 	* connect.cpp: fixed search&replace typo

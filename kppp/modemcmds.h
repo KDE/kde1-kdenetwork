@@ -67,6 +67,9 @@ private:
   QLineEdit *initresp;
   QLabel *label2;
 
+  QLabel *lpreinitslider;
+  QLabel *lpreinit;
+
   QLabel *linitslider;
   QLabel *label3;
 

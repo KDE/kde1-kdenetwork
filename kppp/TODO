@@ -7,8 +7,6 @@ o better FAQ
 o modem-setup wizard
 o provider-setup wizard
 o Some parts of the code are really a mess. Clean it up, especially
-  * The modem code. All modem related code should be put in one class (Harri 
-    already began this)
   * Create an own dialer communicating with slots. This will allow non-X
     kppp´s
   * Separate GUI and non-GUI code in different classes

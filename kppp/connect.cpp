@@ -256,11 +256,13 @@ void ConnectWidget::timerEvent(QTimerEvent *) {
     messg->setText(i18n("Initializing Modem..."));
     emit debugMessage(i18n("Initializing Modem..."));
 
-    // TODO
-    // carriage return and then wait a second so that the modem will
+    // send a carriage return and then wait a bit so that the modem will
     // let us issue commands.
-    //writeline("");
-    //usleep(100000); 
+    if(gpppdata.modemPreInitDelay() > 0) {
+      usleep(gpppdata.modemPreInitDelay() * 10000);
+      writeline("");
+      usleep(gpppdata.modemPreInitDelay() * 10000);
+    }
     setExpect(gpppdata.modemInitResp());
     writeline(gpppdata.modemInitStr());
     usleep(gpppdata.modemInitDelay() * 10000); // 0.01 - 3.0 sec       

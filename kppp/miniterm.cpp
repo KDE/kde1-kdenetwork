@@ -149,8 +149,15 @@ void MiniTerm::init() {
 
   if(Modem::modem->opentty()) {
     if(Modem::modem->hangup()) {
-      Modem::modem->writeLine(gpppdata.modemInitStr());
-      usleep(100000);
+    // send a carriage return and then wait a bit so that the modem will
+    // let us issue commands.
+    if(gpppdata.modemPreInitDelay() > 0) {
+      usleep(gpppdata.modemPreInitDelay() * 10000);
+      Modem::modem->writeLine("");
+      usleep(gpppdata.modemPreInitDelay() * 10000);
+    }
+    Modem::modem->writeLine(gpppdata.modemInitStr());
+    usleep(gpppdata.modemInitDelay() * 10000);
       
       statusbar->setText(i18n("Modem Ready"));
       terminal->setFocus();

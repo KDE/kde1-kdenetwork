@@ -84,6 +84,7 @@
 #define BUSYWAIT_KEY       "BusyWait"
 #define INITSTR_KEY        "InitString"
 #define INITRESP_KEY       "InitResponse"
+#define PREINITDELAY_KEY   "PreInitDelay"
 #define INITDELAY_KEY      "InitDelay"
 #define DIALSTR_KEY        "DialString"
 #define CONNECTRESP_KEY    "ConnectResponse"
@@ -252,6 +253,9 @@ public:
 
   const char* modemInitResp();
   void setModemInitResp(const char *);
+
+  const int modemPreInitDelay();
+  void setModemPreInitDelay(int);
 
   const int modemInitDelay();
   void setModemInitDelay(int);

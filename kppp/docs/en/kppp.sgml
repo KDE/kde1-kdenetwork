@@ -230,6 +230,11 @@ the defaults. I encourage you however to read  about the Hayes command
 in the Appendix of this documentation. The information supplied there 
 should also be of help in case  you experience trouble setting up a stable 
 connection with your ISP's modems.
+The two settings "Pre-Init Delay" and "Post-Init Delay" might be of special
+interest to if you experience any modem lock-ups. These will make <em/kppp/
+pause a bit before and after sending the initialization string. The
+"Pre-Init Delay" will be accompanied by sending a CR unless given a delay
+interval of 0.
 
 <tag/Query Modem/ Pushing the Query Modem Button will induce <em/kppp/ to ask
 your modem to identify itself. On success your modems response will be
@@ -923,13 +928,17 @@ The <em/kppp/ team has lately done a lot of work to make <em/kppp/ setuid-safe. 
 up to you to decide if you install and how you install it.
 
 <sect2><em/kppp/ just sits there and waits: Expecting OK
-<p>
-Have you played with the CR/LF setting?
 
-<p> Your modem might not sustain a fast initialisation.
-Increase the 'Init Delay Time' that can be found under 'Modem Commands' on the Modem tab dialog. You may do some fine tuning later.
+<itemize>
 
-<p>
+<item> Have you played with the CR/LF setting? Try CR, LF or CR/LF.
+
+<item> Your modem might need some time to respond to its initialization.
+Open the "Modem Commands" dialog on the "Modem" tab and adjust the "Pre-Init"
+and "Post-Init" delays. See if you are successful when drastically increasing
+their values and do some fine tuning later.
+
+</itemize>
 
 <sect2>The connection works fine but I can´t start any applications.<label id="autohostname"<p>
 

@@ -508,9 +508,21 @@ void PPPData::setModemInitResp(const char *n) {
 
 } 
 
+const int PPPData::modemPreInitDelay() {
+
+  return readNumConfig(MODEM_GRP, PREINITDELAY_KEY, 50);
+
+}
+
+void PPPData::setModemPreInitDelay(const int n) {
+
+  writeConfig(MODEM_GRP, PREINITDELAY_KEY, n);
+
+}
+
 const int PPPData::modemInitDelay() {
 
-  return readNumConfig(MODEM_GRP, INITDELAY_KEY, 1);
+  return readNumConfig(MODEM_GRP, INITDELAY_KEY, 50);
 
 }
 
