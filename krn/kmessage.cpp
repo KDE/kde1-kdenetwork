@@ -226,8 +226,8 @@ void Kmessage::loadSettings()
 {
     conf->setGroup("ArticleListOptions");
     getKHTMLWidget()->setDefaultFontBase(conf->readNumEntry("DefaultFontBase",3));
-    getKHTMLWidget()->setStandardFont(conf->readEntry("StandardFont",&QString("helvetica")));
-    getKHTMLWidget()->setFixedFont(conf->readEntry("FixedFont",&QString("courier")));
+    getKHTMLWidget()->setStandardFont(conf->readEntry("StandardFont",QString("helvetica")));
+    getKHTMLWidget()->setFixedFont(conf->readEntry("FixedFont",QString("courier")));
     getKHTMLWidget()->setDefaultBGColor(conf->readColorEntry("BackgroundColor",&QColor("white")));
     getKHTMLWidget()->setDefaultTextColors(
                                            conf->readColorEntry("ForegroundColor",&QColor("black")),

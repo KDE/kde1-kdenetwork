@@ -20,7 +20,7 @@ KFormatter::KFormatter(QString sWN, QString vWN, QString s, bool c)
     //Get the date format from the config
     QString *defFmt=new QString("%y%m%d %H:%M (%Z)");
     kapp->getConfig()->setGroup("Appearance");
-    dateFmt=new QString(kapp->getConfig()->readEntry("Dateformat",defFmt));
+    dateFmt=new QString(kapp->getConfig()->readEntry("Dateformat",*defFmt));
     CHECK_PTR(dateFmt);
     if(dateFmt->isEmpty())
         dateFmt=defFmt;
