@@ -180,7 +180,9 @@ Groupdlg::Groupdlg(const char *name):Inherited (name)
      QPopupMenu *help = kapp->getHelpMenu(true,"Krn 0.2.5");
     */
     
-    KMenuBar *menu = menuBar ();
+    KMenuBar *menu = new KMenuBar(this);
+    setMenu(menu);
+    addToolBar(new KToolBar(this));
     
     menu->insertItem (klocale->translate("&File"), file);
     menu->insertItem (klocale->translate("&Newsgroup"), newsgroup);
@@ -215,7 +217,8 @@ Groupdlg::Groupdlg(const char *name):Inherited (name)
     filter->pop=newsgroup;
     
     
-    KStatusBar *status =statusBar ();
+    KStatusBar *status = new KStatusBar();
+    setStatusBar( status );
     status->insertItem ("                               ", 1);
     status->insertItem ("", 2);
     

@@ -185,20 +185,20 @@ int main( int argc, char **argv )
     ruleFile=new KSimpleConfig(krnpath+"/rules");
     Rule::updateGlobals();
     
-    Groupdlg *k=new Groupdlg();
-    main_widget = k;
+    Groupdlg k;
+    main_widget = &k;
     
-//    a.setMainWidget( (QWidget *)k );
+    a.setMainWidget( &k );
     
-    k->setMinimumSize( 250, 250 );
-    k->show();
+    k.setMinimumSize( 250, 250 );
+    k.show();
     
     a.exec();
 
     
     expireCache();
 
-    k->close();
+    k.close();
     gdbm_sync(artdb);
     gdbm_sync(old_artdb);
     gdbm_reorganize(artdb);
