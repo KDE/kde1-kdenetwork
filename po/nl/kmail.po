@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-11-16 02:21+0100\n"
+"POT-Creation-Date: 1998-11-21 01:58+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Case Roole <cjr@xs4all.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -975,7 +975,7 @@ msgstr "Bevestig Bestand"
 msgid "Include File"
 msgstr "Voeg bestand in"
 
-#: kmcomposewin.cpp:1220 kmreaderwin.cpp:721
+#: kmcomposewin.cpp:1220 kmreaderwin.cpp:728
 msgid "View..."
 msgstr "Toon..."
 
@@ -983,7 +983,7 @@ msgstr "Toon..."
 msgid "Save..."
 msgstr "Sla op..."
 
-#: kmcomposewin.cpp:1222 kmreaderwin.cpp:724
+#: kmcomposewin.cpp:1222 kmreaderwin.cpp:731
 msgid "Properties..."
 msgstr "Eigenschappen..."
 
@@ -991,7 +991,7 @@ msgstr "Eigenschappen..."
 msgid "Attach..."
 msgstr "Bevestig..."
 
-#: kmcomposewin.cpp:1268 kmreaderwin.cpp:766
+#: kmcomposewin.cpp:1268 kmreaderwin.cpp:773
 msgid "View Attachment: "
 msgstr "Toon Bijlage:"
 
@@ -1110,20 +1110,24 @@ msgstr "Boodschap was ondertekend door"
 msgid "Warning: Bad signature from"
 msgstr "Waarschuwing: Slechte handtekening van"
 
-#: kmreaderwin.cpp:685
+#: kmreaderwin.cpp:450
+msgid "unknown key ID"
+msgstr ""
+
+#: kmreaderwin.cpp:692
 msgid "Attachment: "
 msgstr "Bijlage:"
 
-#: kmreaderwin.cpp:797
+#: kmreaderwin.cpp:804
 msgid "Could not create temporary file"
 msgstr "Kon geen tijdelijk bestand aanmaken"
 
-#: kmreaderwin.cpp:818
+#: kmreaderwin.cpp:825
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "Kon tijdelijk bestand %s niet opslaan"
 
-#: kmreaderwin.cpp:847
+#: kmreaderwin.cpp:854
 msgid "Could not save file"
 msgstr "Kon bestand niet opslaan"
 

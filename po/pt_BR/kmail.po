@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1998-11-16 02:21+0100\n"
+"POT-Creation-Date: 1998-11-21 01:58+0100\n"
 "PO-Revision-Date: 1998-06-23 09:00-0300\n"
 "Last-Translator: Elvis Pfützenreuter <epx@netville.com.br>\n"
 
@@ -950,7 +950,7 @@ msgstr "Anexar Arquivo"
 msgid "Include File"
 msgstr "Incluir Arquivo"
 
-#: kmcomposewin.cpp:1220 kmreaderwin.cpp:721
+#: kmcomposewin.cpp:1220 kmreaderwin.cpp:728
 msgid "View..."
 msgstr "Ver..."
 
@@ -958,7 +958,7 @@ msgstr "Ver..."
 msgid "Save..."
 msgstr "Salvar... "
 
-#: kmcomposewin.cpp:1222 kmreaderwin.cpp:724
+#: kmcomposewin.cpp:1222 kmreaderwin.cpp:731
 msgid "Properties..."
 msgstr "Propriedades..."
 
@@ -966,7 +966,7 @@ msgstr "Propriedades..."
 msgid "Attach..."
 msgstr "Anexar..."
 
-#: kmcomposewin.cpp:1268 kmreaderwin.cpp:766
+#: kmcomposewin.cpp:1268 kmreaderwin.cpp:773
 msgid "View Attachment: "
 msgstr "Ver Anexos..."
 
@@ -1084,20 +1084,25 @@ msgstr "Mensagem foi assinada por"
 msgid "Warning: Bad signature from"
 msgstr "Aviso: Assinatura inválida de"
 
-#: kmreaderwin.cpp:685
+#: kmreaderwin.cpp:450
+#, fuzzy
+msgid "unknown key ID"
+msgstr "Chave de identificação desconhecida "
+
+#: kmreaderwin.cpp:692
 msgid "Attachment: "
 msgstr "Anexo: "
 
-#: kmreaderwin.cpp:797
+#: kmreaderwin.cpp:804
 msgid "Could not create temporary file"
 msgstr "Não foi possível criar arquivo temporário"
 
-#: kmreaderwin.cpp:818
+#: kmreaderwin.cpp:825
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "Não consegui gravar arquivo temporário %s"
 
-#: kmreaderwin.cpp:847
+#: kmreaderwin.cpp:854
 msgid "Could not save file"
 msgstr "Não consegui gravar arquivo"
 

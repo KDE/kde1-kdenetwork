@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-11-16 02:21+0100\n"
+"POT-Creation-Date: 1998-11-21 01:58+0100\n"
 "PO-Revision-Date: 1998-01-21 15:18+CET\n"
 "Last-Translator: Marcell Lengyel <mike.tkf@ibm.net>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -1040,7 +1040,7 @@ msgstr "File csatolása"
 msgid "Include File"
 msgstr "File &beszúrása"
 
-#: kmcomposewin.cpp:1220 kmreaderwin.cpp:721
+#: kmcomposewin.cpp:1220 kmreaderwin.cpp:728
 #, fuzzy
 msgid "View..."
 msgstr "Nézet..."
@@ -1050,7 +1050,7 @@ msgstr "Nézet..."
 msgid "Save..."
 msgstr "Át&helyez..."
 
-#: kmcomposewin.cpp:1222 kmreaderwin.cpp:724
+#: kmcomposewin.cpp:1222 kmreaderwin.cpp:731
 #, fuzzy
 msgid "Properties..."
 msgstr "Tulajdonságok..."
@@ -1060,7 +1060,7 @@ msgstr "Tulajdonságok..."
 msgid "Attach..."
 msgstr "Csatolás..."
 
-#: kmcomposewin.cpp:1268 kmreaderwin.cpp:766
+#: kmcomposewin.cpp:1268 kmreaderwin.cpp:773
 #, fuzzy
 msgid "View Attachment: "
 msgstr "Csatolás megtekintése: "
@@ -1190,22 +1190,26 @@ msgstr "Üzenet aláírója:"
 msgid "Warning: Bad signature from"
 msgstr "Figyelem: Rossz aláírás:"
 
-#: kmreaderwin.cpp:685
+#: kmreaderwin.cpp:450
+msgid "unknown key ID"
+msgstr ""
+
+#: kmreaderwin.cpp:692
 #, fuzzy
 msgid "Attachment: "
 msgstr "Csatolt file: "
 
-#: kmreaderwin.cpp:797
+#: kmreaderwin.cpp:804
 #, fuzzy
 msgid "Could not create temporary file"
 msgstr "Ideiglenes file nem hozható létre"
 
-#: kmreaderwin.cpp:818
+#: kmreaderwin.cpp:825
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "%s nevû deiglenes file-ba nem lehet menteni"
 
-#: kmreaderwin.cpp:847
+#: kmreaderwin.cpp:854
 msgid "Could not save file"
 msgstr "File-ba mentés nem sikerült"
 

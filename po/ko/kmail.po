@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-11-16 02:21+0100\n"
+"POT-Creation-Date: 1998-11-21 01:58+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: LinuxKorea Co. <kde@linuxkorea.co.kr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -971,7 +971,7 @@ msgstr "파일 첨부"
 msgid "Include File"
 msgstr "파일 포함"
 
-#: kmcomposewin.cpp:1220 kmreaderwin.cpp:721
+#: kmcomposewin.cpp:1220 kmreaderwin.cpp:728
 msgid "View..."
 msgstr "보기..."
 
@@ -979,7 +979,7 @@ msgstr "보기..."
 msgid "Save..."
 msgstr "저장..."
 
-#: kmcomposewin.cpp:1222 kmreaderwin.cpp:724
+#: kmcomposewin.cpp:1222 kmreaderwin.cpp:731
 msgid "Properties..."
 msgstr "등록정보..."
 
@@ -987,7 +987,7 @@ msgstr "등록정보..."
 msgid "Attach..."
 msgstr "첨부..."
 
-#: kmcomposewin.cpp:1268 kmreaderwin.cpp:766
+#: kmcomposewin.cpp:1268 kmreaderwin.cpp:773
 msgid "View Attachment: "
 msgstr "첨부파일 보기:"
 
@@ -1106,20 +1106,24 @@ msgstr "메시지가 다음 사람에 의해 서명되었습니다"
 msgid "Warning: Bad signature from"
 msgstr "경  고: "
 
-#: kmreaderwin.cpp:685
+#: kmreaderwin.cpp:450
+msgid "unknown key ID"
+msgstr ""
+
+#: kmreaderwin.cpp:692
 msgid "Attachment: "
 msgstr "첨  부: "
 
-#: kmreaderwin.cpp:797
+#: kmreaderwin.cpp:804
 msgid "Could not create temporary file"
 msgstr "임시 파일을 만들 수 없습니다"
 
-#: kmreaderwin.cpp:818
+#: kmreaderwin.cpp:825
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "임시 파일 %에 저장할 수 없습니다"
 
-#: kmreaderwin.cpp:847
+#: kmreaderwin.cpp:854
 msgid "Could not save file"
 msgstr "파일을 저장할 수 없습니다"
 

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1998-11-16 02:21+0100\n"
+"POT-Creation-Date: 1998-11-21 01:58+0100\n"
 "PO-Revision-Date: 1998-07-03 16:01+0100\n"
 "Last-Translator: Sebastià Pla <sastia@redestb.es>\n"
 "Language-Team: CATALAN <LL@li.org>\n"
@@ -969,7 +969,7 @@ msgstr "Adjuntar fitxer"
 msgid "Include File"
 msgstr "Incloure fitxer"
 
-#: kmcomposewin.cpp:1220 kmreaderwin.cpp:721
+#: kmcomposewin.cpp:1220 kmreaderwin.cpp:728
 msgid "View..."
 msgstr "Veure..."
 
@@ -977,7 +977,7 @@ msgstr "Veure..."
 msgid "Save..."
 msgstr "Desar..."
 
-#: kmcomposewin.cpp:1222 kmreaderwin.cpp:724
+#: kmcomposewin.cpp:1222 kmreaderwin.cpp:731
 msgid "Properties..."
 msgstr "Propietats..."
 
@@ -985,7 +985,7 @@ msgstr "Propietats..."
 msgid "Attach..."
 msgstr "Adjuntar..."
 
-#: kmcomposewin.cpp:1268 kmreaderwin.cpp:766
+#: kmcomposewin.cpp:1268 kmreaderwin.cpp:773
 msgid "View Attachment: "
 msgstr "Veure adjunt: "
 
@@ -1105,20 +1105,24 @@ msgstr "Missatge signat per"
 msgid "Warning: Bad signature from"
 msgstr "Avís: signatura dolenta de"
 
-#: kmreaderwin.cpp:685
+#: kmreaderwin.cpp:450
+msgid "unknown key ID"
+msgstr ""
+
+#: kmreaderwin.cpp:692
 msgid "Attachment: "
 msgstr "Adjunt: "
 
-#: kmreaderwin.cpp:797
+#: kmreaderwin.cpp:804
 msgid "Could not create temporary file"
 msgstr "No s'ha pogut crear un fitxer temporal"
 
-#: kmreaderwin.cpp:818
+#: kmreaderwin.cpp:825
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "No s'ha pogut desar el fitxe temporal %s"
 
-#: kmreaderwin.cpp:847
+#: kmreaderwin.cpp:854
 msgid "Could not save file"
 msgstr "No s'ha pogut desar el fitxer"
 

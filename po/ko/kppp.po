@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-11-20 01:55+0100\n"
+"POT-Creation-Date: 1998-11-21 01:58+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: LinuxKorea Co. <kde@linuxkorea.co.kr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -166,169 +166,169 @@ msgstr ""
 msgid "Login script has unbalanced loop Start/End"
 msgstr "로그인 스트립트 내부에 Start/End가 올바르지 않게 사용되었습니다"
 
-#: connect.cpp:104 connect.cpp:202 main.cpp:976
+#: connect.cpp:97 connect.cpp:195 main.cpp:1032
 msgid "Connecting to: "
 msgstr "연결 대상:"
 
-#: connect.cpp:113 connect.cpp:217 miniterm.cpp:146 modeminfo.cpp:54
+#: connect.cpp:106 connect.cpp:210 miniterm.cpp:146 modeminfo.cpp:54
 #: modeminfo.cpp:132
 msgid "Sorry, can't create modem lock file."
 msgstr "모뎀 잠금 파일을 생성할 수 없읍니다"
 
-#: connect.cpp:118 connect.cpp:175 modeminfo.cpp:59
+#: connect.cpp:111 connect.cpp:168 modeminfo.cpp:59
 msgid "Looking for Modem ..."
 msgstr "모뎀 찾는 중..."
 
-#: connect.cpp:127 debug.cpp:80 main.cpp:989
+#: connect.cpp:120 debug.cpp:80 main.cpp:1045
 msgid "Log"
 msgstr "접속기록"
 
-#: connect.cpp:211 miniterm.cpp:141 modeminfo.cpp:126
+#: connect.cpp:204 miniterm.cpp:141 modeminfo.cpp:126
 msgid "Sorry, modem device is locked."
 msgstr "모뎀 장치가 잠겨 있읍니다"
 
-#: connect.cpp:263 connect.cpp:264
+#: connect.cpp:256 connect.cpp:257
 msgid "Initializing Modem..."
 msgstr "모뎀 초기화중..."
 
-#: connect.cpp:281 connect.cpp:282
+#: connect.cpp:274 connect.cpp:275
 msgid "Setting speaker volume..."
 msgstr ""
 
-#: connect.cpp:300
+#: connect.cpp:293
 msgid "Dialing"
 msgstr "전화거는 중"
 
-#: connect.cpp:332
+#: connect.cpp:325
 msgid "Line Busy. Hanging up ..."
 msgstr "통화중입니다. 전화를 끊습니다 ..."
 
-#: connect.cpp:337
+#: connect.cpp:330
 msgid "Line Busy. Waiting: "
 msgstr "통화중입니다. 잠시 대기합니다: "
 
-#: connect.cpp:339 connect.cpp:458 connect.cpp:477
+#: connect.cpp:332 connect.cpp:451 connect.cpp:470
 msgid " seconds"
 msgstr " 초"
 
-#: connect.cpp:357
+#: connect.cpp:350
 msgid "No Dialtone"
 msgstr "다이얼톤이 감지되지 않음"
 
-#: connect.cpp:366
+#: connect.cpp:359
 msgid "No Carrier"
 msgstr "캐리어가 검출되지 않음"
 
-#: connect.cpp:403
+#: connect.cpp:396
 msgid "Scanning "
 msgstr "검색중 "
 
-#: connect.cpp:414
+#: connect.cpp:407
 msgid "Saving "
 msgstr "저장중 "
 
-#: connect.cpp:433
+#: connect.cpp:426
 msgid "Sending "
 msgstr "전송중 "
 
-#: connect.cpp:444
+#: connect.cpp:437
 msgid "Expecting "
 msgstr "대기중 "
 
-#: connect.cpp:456
+#: connect.cpp:449
 msgid "Pause "
 msgstr "잠시 멈춤 "
 
-#: connect.cpp:475
+#: connect.cpp:468
 msgid "Timeout "
 msgstr "시간초과 "
 
-#: connect.cpp:489 connect.cpp:490
+#: connect.cpp:482 connect.cpp:483
 msgid "Hangup"
 msgstr "전화끊기"
 
-#: connect.cpp:503 connect.cpp:504
+#: connect.cpp:496 connect.cpp:497
 msgid "Answer"
 msgstr "응답"
 
-#: connect.cpp:512
+#: connect.cpp:505
 msgid "ID "
 msgstr "아이디"
 
-#: connect.cpp:549
+#: connect.cpp:542
 msgid "Password "
 msgstr "비밀번호"
 
-#: connect.cpp:587
+#: connect.cpp:580
 msgid "Prompting "
 msgstr ""
 
-#: connect.cpp:624
+#: connect.cpp:617
 msgid "PW Prompt "
 msgstr "암호 행"
 
-#: connect.cpp:650
+#: connect.cpp:643
 msgid "Loop Start "
 msgstr "루프 시작 "
 
-#: connect.cpp:654
+#: connect.cpp:647
 msgid "ERROR: Nested too deep, ignored."
 msgstr "오류: 너무 깊게 설정되어 있습니다, 무시합니다."
 
-#: connect.cpp:659
+#: connect.cpp:652
 msgid "Loops nested too deeply!"
 msgstr "루프가 너무 깊게 설정되어 있습니다!"
 
-#: connect.cpp:677
+#: connect.cpp:670
 #, fuzzy
 msgid "LoopEnd without matching Start! Line: "
 msgstr "LoopEnd에 Start가 없습니다! 행: "
 
-#: connect.cpp:752
+#: connect.cpp:745
 msgid "Starting pppd ..."
 msgstr "pppd를 시작합니다..."
 
-#: connect.cpp:830
+#: connect.cpp:823
 msgid "Scan Var: "
 msgstr "검색 값: "
 
-#: connect.cpp:840
+#: connect.cpp:833
 msgid "Found: "
 msgstr "발견: "
 
-#: connect.cpp:853
+#: connect.cpp:846
 msgid "Looping: "
 msgstr "루프: "
 
-#: connect.cpp:882 modeminfo.cpp:225
+#: connect.cpp:875 modeminfo.cpp:225
 msgid "One Moment Please ..."
 msgstr "잠시만 기다려 주십시오 ..."
 
-#: connect.cpp:924
+#: connect.cpp:917
 msgid "Script timed out!"
 msgstr "연결시간이 초과됨!"
 
-#: connect.cpp:943
+#: connect.cpp:936
 msgid "Scanning: "
 msgstr "검색중: "
 
-#: connect.cpp:953
+#: connect.cpp:946
 msgid "Expecting: "
 msgstr "대기중: "
 
-#: connect.cpp:980
+#: connect.cpp:973
 msgid "Logging on to Network ..."
 msgstr "네트웍으로 로그인중 ..."
 
-#: connect.cpp:1006
+#: connect.cpp:999
 msgid "Running Startup Command ..."
 msgstr "시작 명령을 실행중 ..."
 
-#: connect.cpp:1011 connect.cpp:1018
+#: connect.cpp:1004 connect.cpp:1011
 msgid "Done"
 msgstr ""
 
-#: connect.cpp:1127
+#: connect.cpp:1120
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
@@ -903,7 +903,7 @@ msgid ""
 "recommended value is 30 seconds."
 msgstr ""
 
-#: general.cpp:492 main.cpp:654
+#: general.cpp:492 main.cpp:700
 msgid "Modem"
 msgstr "모뎀"
 
@@ -1006,11 +1006,11 @@ msgstr ""
 msgid "Output bytes color"
 msgstr ""
 
-#: main.cpp:112
+#: main.cpp:114
 msgid "Recent changes in kppp"
 msgstr ""
 
-#: main.cpp:125
+#: main.cpp:127
 msgid ""
 "From version 1.4.8 on, kppp has a new feature\n"
 "called \"Quickhelp\". It's similar to a tooltip,\n"
@@ -1024,29 +1024,29 @@ msgid ""
 "To test it, right-click somewhere in this text."
 msgstr ""
 
-#: main.cpp:137
+#: main.cpp:139
 msgid "Don't show this hint again"
 msgstr ""
 
-#: main.cpp:142
+#: main.cpp:144
 msgid "Ok"
 msgstr ""
 
-#: main.cpp:156
+#: main.cpp:158
 msgid ""
 "This is an example for <b>QuickHelp</b>.\n"
 "This window will stay open until you\n"
 "click a mouse button or a hit a key.\n"
 msgstr ""
 
-#: main.cpp:341
+#: main.cpp:380
 #, c-format
 msgid ""
 "kppp can't create or read from\n"
 "%s."
 msgstr ""
 
-#: main.cpp:357
+#: main.cpp:396
 #, c-format
 msgid ""
 "kppp has detected a %s file.\n"
@@ -1058,15 +1058,15 @@ msgid ""
 "delete the pid file, and restart kppp."
 msgstr ""
 
-#: main.cpp:431
+#: main.cpp:477
 msgid "Connect to: "
 msgstr "연결 대상: "
 
-#: main.cpp:442
+#: main.cpp:488
 msgid "Login ID:"
 msgstr "로그인 ID:"
 
-#: main.cpp:455
+#: main.cpp:501
 msgid ""
 "Type in the username that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1077,11 +1077,11 @@ msgid ""
 "<i>myusername</i> is not the same as <i>MyUserName</i>!"
 msgstr ""
 
-#: main.cpp:464
+#: main.cpp:510
 msgid "Password:"
 msgstr "비밀 번호:"
 
-#: main.cpp:478
+#: main.cpp:524
 msgid ""
 "Type in the password that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1092,11 +1092,11 @@ msgid ""
 "<i>mypassword</i> is not the same as <i>MyPassword</i>!"
 msgstr ""
 
-#: main.cpp:492
+#: main.cpp:538
 msgid "Show Log Window"
 msgstr "접속기록 창 보기"
 
-#: main.cpp:499
+#: main.cpp:545
 msgid ""
 "This controls whether a log window is shown.\n"
 "A log window shows the communication between\n"
@@ -1107,15 +1107,15 @@ msgid ""
 "problems"
 msgstr ""
 
-#: main.cpp:522
+#: main.cpp:568
 msgid "Setup"
 msgstr "설정"
 
-#: main.cpp:538
+#: main.cpp:584
 msgid "Connect"
 msgstr "연결"
 
-#: main.cpp:622
+#: main.cpp:668
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -1124,32 +1124,32 @@ msgstr ""
 "다음 계정이 없음:\n"
 "%s"
 
-#: main.cpp:636
+#: main.cpp:682
 msgid "kppp Configuration"
 msgstr "kppp 구성"
 
-#: main.cpp:652
+#: main.cpp:698
 msgid "Accounts"
 msgstr "계정"
 
-#: main.cpp:653
+#: main.cpp:699
 msgid "Device"
 msgstr "장치"
 
-#: main.cpp:655
+#: main.cpp:701
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:656
+#: main.cpp:702
 msgid "Graph"
 msgstr ""
 
-#: main.cpp:829
+#: main.cpp:875
 #, fuzzy
 msgid "Details..."
 msgstr "세부사항"
 
-#: main.cpp:876
+#: main.cpp:930
 #, fuzzy, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1168,7 +1168,7 @@ msgstr ""
 "하십시오.\n"
 " 고맙습니다."
 
-#: main.cpp:891
+#: main.cpp:945
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1181,7 +1181,7 @@ msgstr ""
 "kppp에 setuid 권한을 설정하였는 지를 확인하신 후, pppd가 실행가능한지\n"
 "확인하십시오."
 
-#: main.cpp:905
+#: main.cpp:959
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1200,7 +1200,7 @@ msgstr ""
 "조정하십시오.\n"
 " 고맙습니다"
 
-#: main.cpp:925
+#: main.cpp:979
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1210,7 +1210,7 @@ msgstr ""
 "이 방법을 사용하려면 사용자 이름과 암호를\n"
 "제공하셔야 합니다!"
 
-#: main.cpp:932
+#: main.cpp:987
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1219,14 +1219,14 @@ msgstr ""
 "다음의 PAP 인증 파일을 생성할 수 없습니다:\n"
 "\"%s\""
 
-#: main.cpp:949
+#: main.cpp:1004
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
 "supply a username and a password!"
 msgstr ""
 
-#: main.cpp:956
+#: main.cpp:1012
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1235,20 +1235,20 @@ msgstr ""
 "다음의 CHAP 인증 파일을 생성할 수 없습니다:\n"
 "\"%s\""
 
-#: main.cpp:968
+#: main.cpp:1024
 #, fuzzy
 msgid "You must specify a telephone number!"
 msgstr "전화번호가 빠져있습니다 !\n"
 
-#: main.cpp:1055
+#: main.cpp:1111
 msgid "Quit kPPP?"
 msgstr "kPPP를 종료하시겠습니까?"
 
-#: main.cpp:1056
+#: main.cpp:1112
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "kPPP가 종료되면 해당 PPP 세션이 닫히게 됩니다."
 
-#: main.cpp:1091
+#: main.cpp:1147
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
@@ -1256,38 +1256,38 @@ msgstr ""
 "어카운팅 규칙집합 \" 을 불러올 수\n"
 "없습니다"
 
-#: modem.cpp:113
+#: modem.cpp:114
 msgid "Sorry, can't open modem."
 msgstr "모뎀을 열 수 없습니다"
 
-#: modem.cpp:119
+#: modem.cpp:120
 #, fuzzy
 msgid "Sorry, can't detect state of CD line."
 msgstr "모뎀 잠금 파일을 생성할 수 없읍니다"
 
-#: modem.cpp:125
+#: modem.cpp:126
 msgid "Sorry, the modem is not ready."
 msgstr "모뎀이 준비되지 않았습니다"
 
-#: modem.cpp:136 modem.cpp:180
+#: modem.cpp:137 modem.cpp:181
 msgid "Sorry, the modem is busy."
 msgstr "모뎀이 사용중입니다"
 
-#: modem.cpp:186
+#: modem.cpp:187
 #, fuzzy
 msgid "Modem Ready."
 msgstr "모뎀 준비"
 
-#: modem.cpp:197
+#: modem.cpp:198
 msgid "Can't restore tty settings: tcsetattr()\n"
 msgstr "터미널 설정을 복원할 수 없음: tcsetattr()\n"
 
-#: modem.cpp:323
+#: modem.cpp:324
 #, fuzzy
 msgid "Sorry, the modem doesn't respond."
 msgstr "모뎀이 준비되지 않았습니다"
 
-#: modem.cpp:424
+#: modem.cpp:425
 #, fuzzy
 msgid "Unknown speed"
 msgstr "알 수 없는 속도"
@@ -1384,7 +1384,7 @@ msgstr "인자:"
 msgid "Defaults"
 msgstr "세부사항"
 
-#: pppdata.cpp:107
+#: pppdata.cpp:108
 msgid ""
 "The application-specific config file\n"
 "could not be opened neither\n"
@@ -1594,7 +1594,7 @@ msgstr "kppp: 규칙파일이 올바르게 작성되었습니다\n"
 msgid "Minimize"
 msgstr "최소화"
 
-#: runtests.cpp:352
+#: runtests.cpp:354
 #, fuzzy
 msgid ""
 "You큥e not allowed to dial out with kppp.\n"
@@ -1603,7 +1603,7 @@ msgstr ""
 "kppp로 전화를 걸 수가 없습니다.\n"
 "시스템 관리자에게 문의하십시오."
 
-#: runtests.cpp:367
+#: runtests.cpp:369
 msgid ""
 "This kernel has no PPP support, neither\n"
 "compiled in nor via the kernel module\n"
@@ -1615,7 +1615,7 @@ msgid ""
 "  * install a kernel with PPP support\n"
 msgstr ""
 
-#: runtests.cpp:389
+#: runtests.cpp:391
 msgid ""
 "Cannot find the pppd-daemon!\n"
 "\n"
@@ -1627,7 +1627,7 @@ msgstr ""
 "pppd가 설치되었는지 경로가 올바른지\n"
 "확인하십시오.\n"
 
-#: runtests.cpp:401
+#: runtests.cpp:403
 msgid ""
 "You do not have the permission\n"
 "to start pppd!\n"
@@ -1641,7 +1641,7 @@ msgstr ""
 "시스템 관리자에게 문의하셔서\n"
 "pppd에 접근할 수 있도록 요청하십시오"
 
-#: runtests.cpp:412 runtests.cpp:427
+#: runtests.cpp:414 runtests.cpp:429
 msgid ""
 "pppd is not properly installed!\n"
 "\n"
@@ -1655,7 +1655,7 @@ msgstr ""
 "합니다. 시스템 관리자에게\n"
 "문의하십시오."
 
-#: runtests.cpp:461
+#: runtests.cpp:463
 msgid ""
 "kppp has detected a 'lock' option in /etc/ppp/options.\n"
 "\n"
@@ -1668,7 +1668,7 @@ msgstr ""
 "kppp가 스스로 장치 잠금을 하므로 이 옵션은 없애야 합니다.\n"
 "시스템 관리자에게 문의하십시오."
 
-#: runtests.cpp:485
+#: runtests.cpp:487
 #, fuzzy
 msgid ""
 "is missing!\n"
@@ -1683,36 +1683,36 @@ msgstr ""
 "파일 생성을 시스템 관리자에게\n"
 "요청하십시오."
 
-#: ppplog.cpp:160
+#: ppplog.cpp:148
 msgid ""
 "You have launched pppd before the remote server was ready to establish a PPP "
 "connection.\n"
 "Please use the terminal-based login to verify"
 msgstr ""
 
-#: ppplog.cpp:165
+#: ppplog.cpp:153
 msgid ""
 "Do you use /dev/modem ? If so, you should specify the real device instead, "
 "e.g. /dev/ttyS1 (COM2)."
 msgstr ""
 
-#: ppplog.cpp:169
+#: ppplog.cpp:157
 msgid "Check that you supplied the correct username and password!"
 msgstr ""
 
-#: ppplog.cpp:172
+#: ppplog.cpp:160
 msgid ""
 "You shouldn't pass 'lock' as an argument to pppd. Check /etc/ppp/options and "
 "~/.ppprc"
 msgstr ""
 
-#: ppplog.cpp:176
+#: ppplog.cpp:164
 msgid ""
 "The remote system does not seem to answer to\n"
 "configuration request! Contact your provider!"
 msgstr ""
 
-#: ppplog.cpp:191
+#: ppplog.cpp:179
 #, c-format
 msgid ""
 "Notice that the remote system has sent the following message:\n"
@@ -1720,12 +1720,12 @@ msgid ""
 "This may give you a hint why the the connection has failed."
 msgstr ""
 
-#: ppplog.cpp:210
+#: ppplog.cpp:198
 #, fuzzy
 msgid "Sorry. Can't help you here."
 msgstr "모뎀을 열 수 없습니다"
 
-#: ppplog.cpp:227
+#: ppplog.cpp:215
 msgid ""
 "KPPP could not prepare a PPP log. It큦 very likely\n"
 "that pppd was started without the \"debug\" option.\n"
@@ -1736,7 +1736,7 @@ msgid ""
 "Shall I turn it on now?"
 msgstr ""
 
-#: ppplog.cpp:238
+#: ppplog.cpp:226
 msgid ""
 "The \"debug\" option has been added. You\n"
 "should now try to reconnect. If that fails\n"
@@ -1744,15 +1744,15 @@ msgid ""
 "you to track down the connection problem."
 msgstr ""
 
-#: ppplog.cpp:253
+#: ppplog.cpp:241
 msgid "PPP log"
 msgstr ""
 
-#: ppplog.cpp:257
+#: ppplog.cpp:245
 msgid "kppp's diagnosis (just guessing):"
 msgstr ""
 
-#: ppplog.cpp:262
+#: ppplog.cpp:250
 msgid "Write to file"
 msgstr ""
 

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail \n"
-"POT-Creation-Date: 1998-11-16 02:21+0100\n"
+"POT-Creation-Date: 1998-11-21 01:58+0100\n"
 "PO-Revision-Date: 1998-10-24 05:55+0200\n"
 "Last-Translator: Jacek Stolarczyk <jacek@mer.chemia.polsl.gliwice.pl>\n"
 "Content-Type: text/plain; charset=iso8859-2\n"
@@ -979,7 +979,7 @@ msgstr "Za³±cz plik"
 msgid "Include File"
 msgstr "Wstaw &plik..."
 
-#: kmcomposewin.cpp:1220 kmreaderwin.cpp:721
+#: kmcomposewin.cpp:1220 kmreaderwin.cpp:728
 msgid "View..."
 msgstr "Widok..."
 
@@ -987,7 +987,7 @@ msgstr "Widok..."
 msgid "Save..."
 msgstr "Zapisz..."
 
-#: kmcomposewin.cpp:1222 kmreaderwin.cpp:724
+#: kmcomposewin.cpp:1222 kmreaderwin.cpp:731
 msgid "Properties..."
 msgstr "W³a¶ciwo¶ci..."
 
@@ -995,7 +995,7 @@ msgstr "W³a¶ciwo¶ci..."
 msgid "Attach..."
 msgstr "Za³±cz..."
 
-#: kmcomposewin.cpp:1268 kmreaderwin.cpp:766
+#: kmcomposewin.cpp:1268 kmreaderwin.cpp:773
 msgid "View Attachment: "
 msgstr "Poka¿ za³±czniki: "
 
@@ -1116,20 +1116,24 @@ msgstr "Wiadomo¶æ zosta³a podpisana przez"
 msgid "Warning: Bad signature from"
 msgstr "Ostrzerzenie: Z³y podpis od"
 
-#: kmreaderwin.cpp:685
+#: kmreaderwin.cpp:450
+msgid "unknown key ID"
+msgstr ""
+
+#: kmreaderwin.cpp:692
 msgid "Attachment: "
 msgstr "Za³±cznik:"
 
-#: kmreaderwin.cpp:797
+#: kmreaderwin.cpp:804
 msgid "Could not create temporary file"
 msgstr "Nie mo¿na utworzyæ pliku tymczasowego"
 
-#: kmreaderwin.cpp:818
+#: kmreaderwin.cpp:825
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "Nie mo¿na zapisaæ pliku tymczasowego %s"
 
-#: kmreaderwin.cpp:847
+#: kmreaderwin.cpp:854
 msgid "Could not save file"
 msgstr "Nie mo¿na zapisaæ pliku"
 
