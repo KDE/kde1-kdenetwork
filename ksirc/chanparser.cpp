@@ -75,6 +75,7 @@ void ChannelParser::parse(QString string) /*fold00*/
           break;
         }
       }
+      string.detach();
       string.remove(0, space);
       string.prepend("` ");
       string.prepend(s);
@@ -227,6 +228,7 @@ void ChannelParser::parseSSFEReconnect(QString string) /*fold00*/
 
 void ChannelParser::parseINFOInfo(QString string) /*fold00*/
 {
+  string.detach();
   string.remove(0, 3);                // takes off the junk
 
   throw(parseSucc(string, kSircConfig->colour_info, top->pix_info)); // Null string, don't display anything
@@ -234,6 +236,7 @@ void ChannelParser::parseINFOInfo(QString string) /*fold00*/
 
 void ChannelParser::parseINFOError(QString string) /*fold00*/
 {
+  string.detach();
   string.remove(0, 3);               // strip the junk
 
   throw(parseSucc(string,kSircConfig->colour_error, top->pix_madsmile)); // Null string, don't display anything
