@@ -1,0 +1,46 @@
+This sample file isn't necessary anymore : use the kcmktalkd dialog instead !
+
+[ktalkd]
+# User configurable email, to receive emails anywhere else than on
+# localhost. Not working with 'mail.local', of course. Need to set
+# (globally) sendmail or qmail as the mail sender.
+Mail=your.email@whereever.to.receive.messages
+
+# Set to 1 to activate answering machine.
+# Will work only if your administrator has enabled it.
+Answmach=1
+
+# Subject of the mail
+Subj=Message from %s
+# First line of the mail
+Head=Below is the message left by %s
+
+# Below are the lines (max 9) displayed by the answering machine
+#  In the future, there might be 3 or 4 groups of lines, to say
+#   'the person you're asking to talk with isn't logged' 
+#   or 'doesn't exist' (=> mail to root), or doesn't want talks...
+Msg1=The person you're asking to talk with is not answering.
+Msg2=Please leave a message to be delivered via E-Mail. 
+Msg3=Just start typing and when you're done, exit normally.
+
+# External program launched by ktalkd to notify a talk. Can be :
+# ktalkdlg, a pop-up KDE dialog box, which can launch any talk client
+# or ktalk, the KDE talk client.
+# Will be launched with the caller's address as parameter
+#   KDEBINDIR will be set by ktalkd.
+ExtPrg=$KDEBINDIR/ktalkdlg
+
+# [If ktalkdlg] : which talk client should ktalkdlg launch ?
+# The default is "$KDEBINDIR/kvt -e talk"
+#   KDEBINDIR will be set by ktalkd.
+talkprg=$KDEBINDIR/kvt -e talk
+
+# [If ktalkdlg only, currently]
+# Set to 1 to enable talk notifications with sound.
+Sound=1
+# Sound file - ktalkd.wav is included
+SoundFile=ktalkd.wav
+
+# Do you wish to receive an empty mail if the caller didn't leave any message ?
+#   (If "1", you'll only know who called you)
+EmptyMail=1
