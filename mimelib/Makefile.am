@@ -95,6 +95,11 @@ install-data-local:
 	$(INSTALL_DATA) ./mimelib/$$p $(includedir)/mimelib/$$p; \
 	done
  
+uninstall-local:
+	@list='$(mimelib_headers)'; for p in $$list; do \
+	rm -f $(includedir)/mimelib/$$p; \
+	done
+
 libmimelib_la_LDFLAGS = -version-info 0:2 -rpath $(libdir)
 
 
