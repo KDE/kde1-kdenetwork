@@ -369,6 +369,7 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
   if(connect_b->sizeHint().width() > minw)
     minw = connect_b->sizeHint().width();
 
+  minw = QMAX(minw,70);
   quit_b->setMinimumWidth(minw);
   setup_b->setMinimumWidth(minw);
   help_b->setMinimumWidth(minw);
