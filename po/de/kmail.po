@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1998-01-04 18:20+0100\n"
+"POT-Creation-Date: 1998-01-04 19:16+0100\n"
 "PO-Revision-Date: 1998-01-03 17:15 +0100\n"
 "Last-Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
 
@@ -421,7 +421,7 @@ msgstr "Schrift mit fester Breite"
 
 #: kmsettings.cpp:356
 msgid "Composer"
-msgstr ""
+msgstr "Nachrichten erstellen"
 
 #: kmsettings.cpp:386
 msgid "Select Account"
@@ -455,7 +455,7 @@ msgstr "POP-Postfach"
 msgid "Login:"
 msgstr "Benutzer:"
 
-#: kmacctpop.cpp:427 kmsettings.cpp:610
+#: kmacctpop.cpp:428 kmsettings.cpp:610
 msgid "Password:"
 msgstr "Paﬂwort:"
 
@@ -546,7 +546,7 @@ msgstr "&Betreff:"
 
 #: kmcomposewin.cpp:250
 msgid "&Newsgroups:"
-msgstr ""
+msgstr "&Newsgroups:"
 
 #: kmcomposewin.cpp:252
 msgid "&Followup-To:"
@@ -602,7 +602,7 @@ msgstr "&Alle Felder"
 
 #: kmcomposewin.cpp:376
 msgid "&From"
-msgstr "&Von:"
+msgstr "&Von"
 
 #: kmcomposewin.cpp:377
 msgid "&Reply to"
@@ -610,15 +610,15 @@ msgstr "&Antworten"
 
 #: kmcomposewin.cpp:378
 msgid "&To"
-msgstr "&An:"
+msgstr "&An"
 
 #: kmcomposewin.cpp:379
 msgid "&Cc"
-msgstr "&Kopie:"
+msgstr "&Kopie"
 
 #: kmcomposewin.cpp:380
 msgid "&Bcc"
-msgstr ""
+msgstr "&Kopie"
 
 #: kmcomposewin.cpp:381
 msgid "&Subject"
@@ -626,7 +626,7 @@ msgstr "&Betreff:"
 
 #: kmcomposewin.cpp:382
 msgid "&Newsgroups"
-msgstr ""
+msgstr "&Newsgroups"
 
 #: kmcomposewin.cpp:383
 msgid "&Followup-To"
@@ -744,11 +744,11 @@ msgstr "keine (8bit)"
 
 #: kmmsgpartdlg.cpp:79
 msgid "base 64"
-msgstr ""
+msgstr "base 64"
 
 #: kmmsgpartdlg.cpp:80
 msgid "quoted printable"
-msgstr ""
+msgstr "maskierte Zeichen"
 
 #: kmreaderwin.cpp:254 kmreaderwin.cpp:270
 msgid "From: "
@@ -850,15 +850,17 @@ msgstr "POP-Mail Netzwerkfehler"
 msgid "Unknown error"
 msgstr "Unbekannter Fehler"
 
-#: kmacctpop.cpp:266
-msgid "Account: "
-msgstr "Postfach:"
-
 #: kmacctpop.cpp:267
-msgid "In "
-msgstr ""
+#, c-format
+msgid ""
+"Account: %s\n"
+"In %s:\n"
+"%s"
+msgstr "Postfach: %s\n"
+"In %s:\n"
+"%s"
 
-#: kmacctpop.cpp:418
+#: kmacctpop.cpp:419
 msgid "Login Name:"
 msgstr "Benutzername:"
 

@@ -63,15 +63,15 @@ msgstr "Wählen"
 
 #: accounts.cpp:287
 msgid "IP"
-msgstr ""
+msgstr "IP"
 
 #: accounts.cpp:288
 msgid "DNS"
-msgstr ""
+msgstr "DNS"
 
 #: accounts.cpp:289
 msgid "Gateway"
-msgstr ""
+msgstr "Gateway"
 
 #: accounts.cpp:290
 msgid "Login Script"
@@ -103,7 +103,7 @@ msgstr "Suche Modem..."
 
 #: connect.cpp:88 debug.cpp:86 main.cpp:610
 msgid "Log"
-msgstr ""
+msgstr "Loggen"
 
 #: connect.cpp:166 miniterm.cpp:161 modeminfo.cpp:130
 msgid "Sorry, modem device is locked."
@@ -155,11 +155,11 @@ msgstr "Erwarte "
 
 #: connect.cpp:360
 msgid "Pause "
-msgstr ""
+msgstr "Pause "
 
 #: connect.cpp:379
 msgid "Timeout "
-msgstr ""
+msgstr "Zeit aus"
 
 #: connect.cpp:393 connect.cpp:394
 msgid "Hangup"
@@ -171,7 +171,7 @@ msgstr "Antworte"
 
 #: connect.cpp:416
 msgid "ID "
-msgstr ""
+msgstr "ID "
 
 #: connect.cpp:453
 msgid "Password "
@@ -275,7 +275,7 @@ msgstr "Verbindung trennen"
 
 #: conwindow.cpp:81
 msgid "Details"
-msgstr ""
+msgstr "Details"
 
 #: debug.cpp:49
 msgid "Login Script Debug Window"
@@ -327,7 +327,7 @@ msgstr "IP-Adresse:"
 
 #: edit.cpp:172
 msgid "Subnet Mask:"
-msgstr ""
+msgstr "Unternetz-Maske:"
 
 #: edit.cpp:180
 msgid "Dynamic IP Address"
@@ -511,11 +511,11 @@ msgstr "Modemabfrage"
 
 #: general.cpp:376
 msgid "Terminal"
-msgstr ""
+msgstr "Terminal"
 
 #: main.cpp:273
 msgid "Login ID:"
-msgstr ""
+msgstr "Einloggen als:"
 
 #: main.cpp:281
 msgid "Password:"
@@ -543,15 +543,15 @@ msgstr "kppp-Konfiguration"
 
 #: main.cpp:347
 msgid "Accounts"
-msgstr ""
+msgstr "Postfächer"
 
 #: main.cpp:348
 msgid "Modem"
-msgstr ""
+msgstr "Modem"
 
 #: main.cpp:350
 msgid "PPP"
-msgstr ""
+msgstr "PPP"
 
 #: main.cpp:395
 #, c-format
@@ -801,7 +801,7 @@ msgstr "nicht verfügbar"
 
 #: miniterm.cpp:56
 msgid "Kppp Mini-Terminal"
-msgstr ""
+msgstr "Kppp Mini-Terminal"
 
 #: miniterm.cpp:62
 msgid "&Reset Modem"
@@ -809,7 +809,7 @@ msgstr "Modem zu&rücksetzen"
 
 #: miniterm.cpp:68
 msgid "&Modem"
-msgstr ""
+msgstr "&Modem"
 
 #: miniterm.cpp:111
 msgid "Quit MiniTerm"

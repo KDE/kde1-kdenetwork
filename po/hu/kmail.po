@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-01-04 18:20+0100\n"
+"POT-Creation-Date: 1998-01-04 19:16+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -486,7 +486,7 @@ msgstr "POP ügyfél"
 msgid "Login:"
 msgstr "Bejelentkezési név:"
 
-#: kmacctpop.cpp:427 kmsettings.cpp:610
+#: kmacctpop.cpp:428 kmsettings.cpp:610
 msgid "Password:"
 msgstr "Jelszó:"
 
@@ -903,16 +903,15 @@ msgstr ""
 msgid "Unknown error"
 msgstr ""
 
-#: kmacctpop.cpp:266
-#, fuzzy
-msgid "Account: "
+#: kmacctpop.cpp:267
+#, fuzzy, c-format
+msgid ""
+"Account: %s\n"
+"In %s:\n"
+"%s"
 msgstr "Ügyfelek"
 
-#: kmacctpop.cpp:267
-msgid "In "
-msgstr ""
-
-#: kmacctpop.cpp:418
+#: kmacctpop.cpp:419
 #, fuzzy
 msgid "Login Name:"
 msgstr "Bejelentkezési név:"
