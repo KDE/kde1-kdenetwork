@@ -43,7 +43,6 @@ krn_SOURCES = 	main.cpp\
 		artdlg.cpp\
                 newsgroup.cpp\
                 asker.cpp\
-                askerData.cpp\
                 identDlg.cpp\
                 NNTPConfigDlg.cpp\
                 NNTPConfigDlgData.cpp\
@@ -85,7 +84,6 @@ noinst_HEADERS = 	NNTP.h\
 		artdlg.h\
                 groupdlg.h\
                 asker.h\
-                askerData.h\
                 identDlg.h\
                 NNTPConfigDlg.h\
                 NNTPConfigDlgData.h\

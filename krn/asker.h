@@ -20,22 +20,24 @@
 
 #include <qdialog.h>
 
-#include "askerData.h"
+class QLabel;
+class QLineEdit;
+class QPushButton;
 
-class Asker : public QDialog,
-			public AskerData
+class Asker : public QDialog
 {
     Q_OBJECT
-
+        
 public:
-
-    Asker
-    (
-        QWidget* parent = NULL,
-        const char* name = NULL
-    );
-
+    
+    Asker (QWidget* parent = NULL, const char* name = NULL);
+    
     virtual ~Asker();
-
+    
+    QLabel* label;
+    QLineEdit* entry;
+    QPushButton* b1;
+    
+    
 };
 #endif // Asker_included

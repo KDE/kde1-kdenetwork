@@ -17,20 +17,44 @@
 //////////////////////////////////////////////////////////////////////////////
 #include "asker.h"
 
+#include <kapp.h>
+#include <qpushbt.h>
+#include <qlabel.h>
+#include <qlined.h>
+
+#include "tlform.h"
+#include "typelayout.h"
+
 #include "asker.moc"
 
 #define Inherited QDialog
 
 Asker::Asker
-    (
-     QWidget* parent,
-     const char* name
-    )
-    :
-    Inherited( parent, name, TRUE ),
-    AskerData( this )
+    (QWidget* parent,const char* name) : Inherited( parent, name, TRUE )
 {
-    setCaption( "KRN" );
+
+    TLForm *f=new TLForm("identity","KRN",this);
+    
+    KTypeLayout *l=f->layout;
+
+    l->skip();
+    l->newLine();
+    label=(QLabel *)(l->addLabel("label","")->widget);
+    l->newLine();
+    l->skip();
+    l->newLine();
+
+    entry=(QLineEdit *)(l->addLineEdit("entry","")->widget);
+    l->newLine();
+    l->skip();
+    l->newLine();
+    b1=(QPushButton *)(l->addButton("b1",klocale->translate("OK"))->widget);
+
+    ((QLabel *)l->findWidget("label"))->setAlignment(AlignHCenter);
+    
+    l->activate();
+    resize( 350, 10 );
+
     QObject::connect (b1,SIGNAL(clicked()),SLOT(accept()));
     QObject::connect (entry,SIGNAL(returnPressed()),SLOT(accept()));
     entry->setFocus();
