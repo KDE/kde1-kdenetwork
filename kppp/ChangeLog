@@ -1,5 +1,8 @@
-Mon Jan 19 12:05:00 1998  Harri Porten  <hp@localhost>
+Mon Jan 19 12:05:00 1998  Harri Porten  <porten@tu-harburg.de>
 
+	* set default for get_dock_into_panel() to false as safety
+	  precaution
+	
 	* introduced docking. It allows kppp to be run as a small
  	  animated icon on the panel. Clicking on the icon with the left
 	  mouse button restores the regular window. The right button

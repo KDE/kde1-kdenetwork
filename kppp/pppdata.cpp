@@ -266,7 +266,7 @@ void PPPData::set_iconify_on_connect(bool set) {
 }
 
 const bool PPPData::get_dock_into_panel(){
-  return (bool) readNumConfig(GENERAL_GRP, DOCKING_KEY, TRUE);
+  return (bool) readNumConfig(GENERAL_GRP, DOCKING_KEY, false);
 }
 
 void PPPData::set_dock_into_panel(bool set){
