@@ -364,7 +364,7 @@ sub msg {
       (print $fh $what."\n") || &dcerror($fh);
       $dcvol{$n}+=length($what);
       &dohooks("send_dcc_chat", $towho, $what);
-      &tell("~$towho~|\cb$towho\cb| $what"); #KSIRC MOD
+      &tell("~=${towho}~|\cb$towho\cb| $what"); #KSIRC MOD
     } else {
       &tell("*\cbE\cb* No active DCC chat with $towho");
     }

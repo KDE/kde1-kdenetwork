@@ -182,6 +182,10 @@ void KSircIOController::stdout_read(KProcess *, char *_buffer, int buflen)
       }
     }
     if(!(ksircproc->TopList)[name]){
+      if((kSircConfig->message_window == TRUE) &&
+	 !ksircproc->TopList["!messages"]){
+	ksircproc->new_toplevel("!messages");
+      }
       if(kSircConfig->autocreate == TRUE){
 	ksircproc->new_toplevel(name);
       }
@@ -189,7 +193,7 @@ void KSircIOController::stdout_read(KProcess *, char *_buffer, int buflen)
 	name = "!default";
 	switch(line[0]){
 	case '`':
-	  line.prepend("*** ");
+	  name = "!discard";
 	  break;
 	case '>':
 	case '[':

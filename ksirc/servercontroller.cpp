@@ -107,8 +107,8 @@ servercontroller::servercontroller
 	options->setCheckable(TRUE);
 	reuse_id = options->insertItem("Seperate Message Window", 
 			    this, SLOT(reuse()));
-	options->setItemChecked(reuse_id, 
-				! kConfig->readNumEntry("Reuse", TRUE));
+	reuse(); // Invert it
+	reuse(); // invert it again to what it should be.
 	auto_id = options->insertItem("Auto Create Windows", 
 			    this, SLOT(autocreate()));
 	options->insertSeparator();
@@ -264,10 +264,12 @@ void servercontroller::reuse()
   if(kConfig->readNumEntry("Reuse", TRUE) == TRUE){
     options->setItemChecked(reuse_id, TRUE);
     kConfig->writeEntry("Reuse", FALSE);
+    kSircConfig->message_window = TRUE;
   }
   else{
     options->setItemChecked(reuse_id, FALSE);
     kConfig->writeEntry("Reuse", TRUE);
+    kSircConfig->message_window = FALSE;
   }
   kConfig->sync();
 }

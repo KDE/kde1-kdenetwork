@@ -14,6 +14,7 @@ class global_config {
 
   QFont defaultfont;
 
+  bool message_window;
   bool autocreate;
 };
 

@@ -420,11 +420,12 @@ void KSircTopLevel::sirc_line_return()
 
   if(strncmp(s, "/join ", 6) == 0){
     s = s.lower();
-    int pos2 = s.find(' ', 6);
-    if(pos2 == -1)
-      pos2 = s.length() - 1;
-    if(pos2 > 6){
-      QString name = s.mid(6, pos2 - 6); // make sure to remove line feed
+    int pos1 = s.findRev(' ', -1) + 1;
+    if(pos1 == -1)
+      return;
+    int pos2 = s.length() - 1;
+    if(pos1 > 5){
+      QString name = s.mid(pos1, pos2 - pos1); // make sure to remove line feed
       //cerr << "New channel: " << name << endl;
       emit open_toplevel(name);
       if(name[0] != '#'){
@@ -439,6 +440,16 @@ void KSircTopLevel::sirc_line_return()
     linee->setText("");
     return;
   }
+  else if((strncmp(s, "/part", 5) == 0) ||
+	  (strncmp(s, "/leave", 6) == 0) ||
+	  (strncmp(s, "/hop", 4) == 0) ||
+	  (strncmp(s, "/quit", 6) == 0)){
+    QApplication::postEvent(this, new QCloseEvent()); // WE'RE DEAD
+    linee->setText("");
+    s.truncate(0);
+    return;
+  }
+
 
   // 
   // Look at the command, if we're assigned a channel name, default
