@@ -42,6 +42,7 @@
 #include "groupdlg.moc"
 
 #include "kmsender.h"
+#include "kmcomposewin.h"
 
 #define CONNECT 1
 #define DISCONNECT 5
@@ -60,6 +61,7 @@
 #define GET_ARTICLES 15
 #define CATCHUP 16
 #define FIND_GROUP 17
+#define POST 18
 
 extern QString krnpath,cachepath,artinfopath,pixpath;
 extern KConfig *conf;
@@ -96,15 +98,15 @@ bool checkPixmap(KTreeListItem *item,void *)
 }
 
 Groupdlg::Groupdlg
-    (
-     const char *name
-    )
-    :
-    Inherited (name)
+(
+ const char *name
+)
+:
+Inherited (name)
 {
     groups.setAutoDelete(false);
     subscr.setAutoDelete(false);
-
+    
     QPopupMenu *file = new QPopupMenu;
     file->insertItem(klocale->translate("Connect to Server"),CONNECT);
     file->insertItem(klocale->translate("Disconnect From Server"),DISCONNECT);
@@ -112,15 +114,15 @@ Groupdlg::Groupdlg
     file->insertSeparator();
     file->insertItem(klocale->translate("Exit"),EXIT);
     connect (file,SIGNAL(activated(int)),SLOT(currentActions(int)));
-
+    
     setCaption (klocale->translate("KRN - Group List"));
-
+    
     QPopupMenu *subscribed = new QPopupMenu;
     subscribed->insertItem(klocale->translate("Get Subjects"),GET_SUBJECTS);
     subscribed->insertItem(klocale->translate("Get Articles"),GET_ARTICLES);
     subscribed->insertItem(klocale->translate("Catchup"),CATCHUP);
     connect (subscribed,SIGNAL(activated(int)),SLOT(subscrActions(int)));
-
+    
     QPopupMenu *tagged = new QPopupMenu;
     tagged->insertItem(klocale->translate("Get Subjects"),GET_SUBJECTS);
     tagged->insertItem(klocale->translate("Get Articles"),GET_ARTICLES);
@@ -128,13 +130,15 @@ Groupdlg::Groupdlg
     tagged->insertItem(klocale->translate("Untag"),TAGGROUP);
     tagged->insertItem(klocale->translate("Catchup"),CATCHUP);
     connect (tagged,SIGNAL(activated(int)),SLOT(taggedActions(int)));
-
+    
     QPopupMenu *newsgroup = new QPopupMenu;
     newsgroup->insertItem(klocale->translate("Open"),OPENGROUP);
     newsgroup->insertItem(klocale->translate("Find"),FIND_GROUP);
     newsgroup->insertItem(klocale->translate("(un)Subscribe"),SUBSCRIBE);
     newsgroup->insertItem(klocale->translate("(Un)Tag"),TAGGROUP);
     newsgroup->insertItem(klocale->translate("Catchup"),CATCHUP);
+    newsgroup->insertSeparator();
+    newsgroup->insertItem(klocale->translate("Post New Article"),POST);
     newsgroup->insertSeparator();
     newsgroup->insertItem (klocale->translate("&Subscribed"), subscribed);
     newsgroup->insertItem (klocale->translate("&Tagged"), tagged);
@@ -145,13 +149,13 @@ Groupdlg::Groupdlg
     options->insertItem(klocale->translate("Identity..."),CHANGE_IDENTITY);
     options->insertItem(klocale->translate("NNTP Options..."),CONFIG_NNTP);
     connect (options,SIGNAL(activated(int)),SLOT(currentActions(int)));
-
+    
     QPopupMenu *help = new QPopupMenu;
     help->insertItem(klocale->translate("Contents"),HELP_CONTENTS);
     help->insertSeparator();
     help->insertItem(klocale->translate("About Krn..."),HELP_ABOUT);
     connect (help,SIGNAL(activated(int)),SLOT(currentActions(int)));
-
+    
     KMenuBar *menu = new KMenuBar (this, "menu");
     
     menu->insertItem (klocale->translate("&File"), file);
@@ -169,7 +173,7 @@ Groupdlg::Groupdlg
     
     pixmap=kapp->getIconLoader()->loadIcon("connected.xpm");
     tool->insertButton (pixmap, CONNECT, true, klocale->translate("Connect to server"));
-
+    
     pixmap=kapp->getIconLoader()->loadIcon("disconnected.xpm");
     tool->insertButton (pixmap, DISCONNECT, false, klocale->translate("Disconnect from server"));
     tool->insertSeparator ();
@@ -184,7 +188,9 @@ Groupdlg::Groupdlg
     
     pixmap=kapp->getIconLoader()->loadIcon("reload.xpm");
     tool->insertButton (pixmap, CHECK_UNREAD, true, klocale->translate("Check for Unread Articles"));
-    
+
+    pixmap=kapp->getIconLoader()->loadIcon("filenew.xpm");
+    tool->insertButton (pixmap, POST, true, klocale->translate("Post New Article"));
     
     list = new MyTreeList (this, "");
     QObject::connect (list, SIGNAL (selected (int)), this, SLOT (openGroup (int)));
@@ -199,30 +205,30 @@ Groupdlg::Groupdlg
     status->insertItem ("", 2);
     status->show ();
     setStatusBar (status);
-
+    
     conf->setGroup("NNTP");
     QString sname=conf->readEntry("NNTPServer");
     server = new NNTP (sname.data());
     server->reportCounters (true,false);
-
+    
     connect (server,SIGNAL(newStatus(char *)),this,SLOT(updateCounter(char *)));
     show();
     actions (LOAD_FILES);
     fillTree();
-
+    
     conf->setGroup("NNTP");
     if (conf->readNumEntry("ConnectAtStart"))
         actions(CONNECT);
-
+    
     // readProperties(); Kalle: no longer needed
-
+    
     qApp->processEvents();
     //Open group windows
 }
 
 Groupdlg::~Groupdlg ()
 {
-//    saveProperties(false); // Kalle: No longer needed
+    //    saveProperties(false); // Kalle: No longer needed
     QStrList openwin;
     //check for all open groups, and close them
     for (NewsGroup *g=groups.first();g!=0;g=groups.next())
@@ -376,9 +382,9 @@ void Groupdlg::subscribe (NewsGroup *group)
         {
             list->addChildItem (group->data(), &kapp->getIconLoader()->loadIcon("subscr.xpm"), 0);
             subscr.append (group);
-        if (list->itemAt(0)->isExpanded() &&
-            ((unsigned int)list->currentItem()>list->itemAt(0)->childCount()+1))
-            list->setCurrentItem(list->currentItem()+1);
+            if (list->itemAt(0)->isExpanded() &&
+                ((unsigned int)list->currentItem()>list->itemAt(0)->childCount()+1))
+                list->setCurrentItem(list->currentItem()+1);
         }
     };
     list->forEveryVisibleItem(checkPixmap,NULL);
@@ -456,7 +462,7 @@ void Groupdlg::fillTree ()
         g=it.current();
         list->addChildItem (g->data(), &kapp->getIconLoader()->loadIcon("subscr.xpm"), 0);
     }
-
+    
     list->insertItem ("All Newsgroups.", &kapp->getIconLoader()->loadIcon("krnfolder.xpm"));
 }
 
@@ -530,7 +536,7 @@ bool Groupdlg::actions (int action,NewsGroup *group)
             success = true;
             break;
         }
-
+        
     case CONFIG_NNTP:
         {
             qApp->setOverrideCursor (arrowCursor);
@@ -583,7 +589,7 @@ bool Groupdlg::actions (int action,NewsGroup *group)
             {
                 statusBar ()->changeItem ("Getting active list from server", 2);
                 qApp->processEvents ();
-
+                
                 server->resetCounters (true,true);
                 server->reportCounters (true,false);
                 server->groupList (&groups,true);
@@ -638,6 +644,17 @@ bool Groupdlg::actions (int action,NewsGroup *group)
     case FIND_GROUP:
         {
             findGroup();
+            success = true;
+            break;
+        }
+    case POST:
+        {
+            if (!group)
+                break;
+            KMComposeWin *comp=new KMComposeWin(0,"","",0,actFollowup,true,group->data(),false);
+            comp->show();
+            success=true;
+            break;
         }
     };
     
@@ -750,6 +767,7 @@ void Groupdlg::findGroup()
     index=groups.find (&NewsGroup(ask.entry->text()));
     if (index!=-1)
     {
+        list->setAutoUpdate(false);
         //It exists and not in subscribed (ugh).
         
         KPath p;
@@ -758,10 +776,10 @@ void Groupdlg::findGroup()
         
         if (!list->itemAt(&p)->isExpanded())
             openGroup(list->itemIndex(list->itemAt(&p)));
-
+        
         char *s=qstrdup(ask.entry->text());
         char *s2;
-
+        
         while (1)
         {
             if (!strchr(s,'.'))
@@ -797,7 +815,10 @@ void Groupdlg::findGroup()
                 p.push(ss);
                 KTreeListItem *it=list->itemAt(&p);
                 if (!it)
+                {
                     debug ("no fsking item!!!!");
+                    break;
+                }
                 if (!it->isExpanded())
                 {
                     int in=list->itemIndex(it);
@@ -806,7 +827,8 @@ void Groupdlg::findGroup()
                 s=s2;
             }
         }
-
+        list->repaint();
+        list->setAutoUpdate(true);
         return;
     }
     qApp->setOverrideCursor (arrowCursor);
@@ -901,7 +923,7 @@ void Groupdlg::checkUnread()
     KTreeListItem *base=list->itemAt(0); //The "Subscribed Newsgroups" item.
     p.push(new QString(base->getText()));
     char countmessage[255];
-
+    
     int c=base->childCount();
     for (int i=0;i<c;i++)
     {
@@ -909,8 +931,8 @@ void Groupdlg::checkUnread()
         gname=it;
         p.push(new QString(it));
         gname=gname.left(gname.find(' '));
-	sprintf(countmessage, " [%d]", subscr.at(i)->countNew(server));
-
+        sprintf(countmessage, " [%d]", subscr.at(i)->countNew(server));
+        
         l=gname+countmessage;
         // Updating the test this way doesn't repaint properly,
         // so I have to do do the path hack.
