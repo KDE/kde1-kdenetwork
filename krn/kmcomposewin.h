@@ -167,6 +167,11 @@ public slots:
 
    void updateCursorPosition();
 
+#ifdef CHARSETS
+   void slotConfigureCharsets();
+   void slotSetCharsets(const char *message,const char *composer,bool def);
+#endif
+
 protected:
   /** Install grid management and header fields. If fields exist that
     should not be there they are removed. Those that are needed are
@@ -220,10 +225,10 @@ private:
 #ifdef CHARSETS  
   /** Convert message text for editing.
       Converts message to mComposeCharset charset (if neccessary).*/
-  QString convertToLocal(const QString str,const QString charset);
+  QString convertToLocal(const QString str);
   
   /** Converts message text for sending. */
-  QString convertToSend(const QString str,QString& charset);
+  QString convertToSend(const QString str);
  
   /** Test if string has any 8-bit characters */
   bool is8Bit(const QString str);
@@ -266,6 +271,7 @@ protected:
 #ifdef CHARSETS
   int m7BitAscii;
   QString mDefaultCharset;
+  QString mCharset;
   QString mDefComposeCharset; 
   QString mComposeCharset; 
 #endif  
