@@ -5,9 +5,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdenetwork\n"
 "POT-Creation-Date: 1998-12-19 02:18+0100\n"
-"PO-Revision-Date: 1998-10-15 15:00-0500\n"
+"PO-Revision-Date: 1999-01-31 15:00-0500\n"
 "Last-Translator: Vladimir Vuksan <vuksan@veus.hr>\n"
-"Language-Team: Croatian\n"
+"Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -15,32 +15,28 @@ msgstr ""
 "Files: finger.cpp kfinger.cpp\n"
 
 #: kfinger.C:30
-#, fuzzy
 msgid "F&inger Now"
-msgstr "Fingeriraj Sada"
+msgstr "Fingeriraj &sada"
 
 #: kfinger.C:31
-#, fuzzy
 msgid "&Talk..."
-msgstr "Razgovaraj..."
+msgstr "&Razgovaraj..."
 
 #: kfinger.C:35
 msgid "Setup"
 msgstr "Postava"
 
 #: kfinger.C:36
-#, fuzzy
 msgid "&Save Options"
-msgstr "Spremi opcije"
+msgstr "&Spremi opcije"
 
 #: kfinger.C:38
-#, fuzzy
 msgid ""
 "kfinger 0.8.0\n"
 "\n"
 "(c) Andrea Rizzi (rizzi@kde.org)"
 msgstr ""
-"Kfinger 0.7.0\n"
+"Kfinger 0.8.0\n"
 "(c) Andrea Rizzi\n"
 "bilibao@ouverture.it"
 
@@ -54,7 +50,7 @@ msgstr "Finger"
 
 #: kfinger.C:51
 msgid "Stop current finger"
-msgstr ""
+msgstr "Zaustavi trenutni finger"
 
 #: kfinger.C:53
 msgid "Talk..."
@@ -66,7 +62,7 @@ msgstr "Uklj./isklj. AutoFinger"
 
 #: kfinger.C:66
 msgid "Welcome to KDE Finger\n"
-msgstr ""
+msgstr "Dobrodo¹li u KDE Finger\n"
 
 #: kfinger.C:67
 msgid "Finger result"
@@ -80,16 +76,15 @@ msgstr "Gre¹ka na poslu¾itelju : %s"
 #: kfinger.C:288
 #, c-format
 msgid "Finger  %s@%s   --   %s"
-msgstr ""
+msgstr "Finger  %s@%s   --   %s"
 
 #: kfinger.C:305
-#, fuzzy
 msgid ""
 "Kfinger 0.8.0\n"
 "(c) by Andrea Rizzi\n"
 "rizzi@kde.org"
 msgstr ""
-"Kfinger 0.7.0\n"
+"Kfinger 0.8.0\n"
 "(c) Andrea Rizzi\n"
 "bilibao@ouverture.it"
 
@@ -213,18 +208,3 @@ msgstr "Spremi & Zavr¹i"
 #: kfinger.C:859
 msgid "Output parameters "
 msgstr "Izlazni parametri "
-
-#~ msgid "Talk.."
-#~ msgstr "Razgovaraj.."
-
-#~ msgid ""
-#~ "Welcome to KDE Finger \n"
-#~ "program by A.Rizzi rizzi@kde.org\n"
-#~ "18/09/1997 \n"
-#~ msgstr ""
-#~ "Dobrodo¹li u KDE Finger \n"
-#~ "program od strane A.Rizzi bilibao@ouverture.it\n"
-#~ "18/09/1997 \n"
-
-#~ msgid "Finger result for : %s@%s"
-#~ msgstr "Rezultat fingera za : %s@%s"
