@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE NETWORK/kppp\n"
-"POT-Creation-Date: 1998-12-22 02:11+0100\n"
+"POT-Creation-Date: 1998-12-23 02:05+0100\n"
 "PO-Revision-Date: 1998-03-24 19:24+0100\n"
 "Last-Translator: Hans Petter Bieker <zerium@webindex.no>\n"
 "Language-Team: no <LL@li.org>\n"
@@ -1634,13 +1634,14 @@ msgstr "Detaljer"
 
 #: pppdata.cpp:109
 msgid ""
-"The application-specific config file\n"
-"could not be opened neither\n"
-"read-write nor read-only"
+"The application-specific config file could not be\n"
+"opened neither read-write nor read-only.\n"
+"\n"
+"The superuser might have to change its ownership\n"
+"by issuing the following command in your home directory:\n"
+"\n"
+"chown {YourUsername} .kde/share/config/kppprc"
 msgstr ""
-"Applikasjons spesifikk konfigurasjons fil\n"
-"kunne ikke åpnes hverken som\n"
-"les-skriv eller kun-les"
 
 #: modeminfo.cpp:38
 msgid "ATI Query"
@@ -1983,7 +1984,7 @@ msgid ""
 "list of valid arguments."
 msgstr ""
 "Du har oppgitt et ugyldig valg til pppd. Se `man pppd' for en fullstendig "
-"liste over gyldige argumenter." 
+"liste over gyldige argumenter."
 
 #: ppplog.cpp:170
 #, c-format
@@ -2040,6 +2041,15 @@ msgstr "kppp sin diagnose (bare gjetter):"
 #: ppplog.cpp:241
 msgid "Write to file"
 msgstr "Skriv fil til"
+
+#~ msgid ""
+#~ "The application-specific config file\n"
+#~ "could not be opened neither\n"
+#~ "read-write nor read-only"
+#~ msgstr ""
+#~ "Applikasjons spesifikk konfigurasjons fil\n"
+#~ "kunne ikke åpnes hverken som\n"
+#~ "les-skriv eller kun-les"
 
 #~ msgid ""
 #~ "Do you use /dev/modem ? If so, you should specify the real device instead, "

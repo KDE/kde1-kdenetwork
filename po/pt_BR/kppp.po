@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1998-12-22 02:11+0100\n"
+"POT-Creation-Date: 1998-12-23 02:05+0100\n"
 "PO-Revision-Date: 1998-06-23 09:00-0300\n"
 "Last-Translator: Elvis Pfützenreuter<epx@netville.com.br>\n"
 
@@ -1632,13 +1632,14 @@ msgstr "Padrões"
 
 #: pppdata.cpp:109
 msgid ""
-"The application-specific config file\n"
-"could not be opened neither\n"
-"read-write nor read-only"
+"The application-specific config file could not be\n"
+"opened neither read-write nor read-only.\n"
+"\n"
+"The superuser might have to change its ownership\n"
+"by issuing the following command in your home directory:\n"
+"\n"
+"chown {YourUsername} .kde/share/config/kppprc"
 msgstr ""
-"O arquivo de configuração da\n"
-"não pode ser aberto nem para\n"
-"gravação nem para leitura"
 
 #: modeminfo.cpp:38
 msgid "ATI Query"
@@ -1979,8 +1980,9 @@ msgstr ""
 msgid ""
 "You have passed an invalid option to pppd. See `man pppd' for a complete "
 "list of valid arguments."
-msgstr "Você passou uma opção inválida para o pppd. Veja o manual do " 
- "pppd para uma lista completa dos argumentos válidos."
+msgstr ""
+"Você passou uma opção inválida para o pppd. Veja o manual do pppd para uma "
+"lista completa dos argumentos válidos."
 
 #: ppplog.cpp:170
 #, c-format
@@ -2038,6 +2040,15 @@ msgstr "Diagnose do kppp (adivinhação):"
 #: ppplog.cpp:241
 msgid "Write to file"
 msgstr "Gravar no arquivo"
+
+#~ msgid ""
+#~ "The application-specific config file\n"
+#~ "could not be opened neither\n"
+#~ "read-write nor read-only"
+#~ msgstr ""
+#~ "O arquivo de configuração da\n"
+#~ "não pode ser aberto nem para\n"
+#~ "gravação nem para leitura"
 
 #~ msgid ""
 #~ "Do you use /dev/modem ? If so, you should specify the real device instead, "

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp 0.9.6\n"
-"POT-Creation-Date: 1998-12-22 02:11+0100\n"
+"POT-Creation-Date: 1998-12-23 02:05+0100\n"
 "PO-Revision-Date: 1998-06-12 08:32 MET DST\n"
 "Last-Translator: Wang Jian <lark@linux.ustc.edu.cn>\n"
 "Language-Team: zh_CN ( gb2312)\n"
@@ -1371,12 +1371,14 @@ msgstr "详细资料"
 
 #: pppdata.cpp:109
 msgid ""
-"The application-specific config file\n"
-"could not be opened neither\n"
-"read-write nor read-only"
+"The application-specific config file could not be\n"
+"opened neither read-write nor read-only.\n"
+"\n"
+"The superuser might have to change its ownership\n"
+"by issuing the following command in your home directory:\n"
+"\n"
+"chown {YourUsername} .kde/share/config/kppprc"
 msgstr ""
-"程序定义的配置文件既不能以读写方式\n"
-"打开,也不能以只读打开"
 
 #: modeminfo.cpp:38
 msgid "ATI Query"
@@ -1739,6 +1741,14 @@ msgstr ""
 #: ppplog.cpp:241
 msgid "Write to file"
 msgstr ""
+
+#~ msgid ""
+#~ "The application-specific config file\n"
+#~ "could not be opened neither\n"
+#~ "read-write nor read-only"
+#~ msgstr ""
+#~ "程序定义的配置文件既不能以读写方式\n"
+#~ "打开,也不能以只读打开"
 
 #, fuzzy
 #~ msgid "Verify your password."
