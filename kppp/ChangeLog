@@ -2,6 +2,7 @@
 
 	* connect.cpp: prevented segfault on invalid lockfiles
 	* runtests.cpp: /etc/resolv.conf will be created if missing 
+	* connect.cpp: fixed reversal of command line options for PAP/CHAP
 
 Tue Apr 28 20:57:04 1998    Mario Weilguni <mweilguni@kde.org>
 

@@ -1401,13 +1401,13 @@ bool ConnectWidget::execppp() {
 
   // PAP settings
   if(gpppdata.authMethod() == AUTH_PAP) {
-    command += " -chap user ";
+    command += " -pap user ";
     command = command + "\"" + gpppdata.storedUsername() + "\"";
   }
 
-  // PAP settings
+  // CHAP settings
   if(gpppdata.authMethod() == AUTH_CHAP) {
-    command += " -pap user ";
+    command += " -chap user ";
     command = command + "\"" + gpppdata.storedUsername() + "\"";
   }
 
