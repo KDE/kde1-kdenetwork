@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 1998-12-07 01:56+0100\n"
-"PO-Revision-Date: 1998-10-29 19:33+0100\n"
+"PO-Revision-Date: 1998-12-09 21:33+0100\n"
 "Last-Translator: Karl Backstrom <backstrom@kde.org>\n"
 "Language-Team: Sv\n"
 "MIME-Version: 1.0\n"
@@ -261,7 +261,6 @@ msgid "Next unread"
 msgstr "Nästa olästa"
 
 #: kmmainwin.cpp:931
-#, fuzzy
 msgid "&Previous"
 msgstr "&Föregående"
 
@@ -592,7 +591,7 @@ msgstr "Övrigt"
 
 #: kmsettings.cpp:559
 msgid "PGP"
-msgstr ""
+msgstr "PGP"
 
 #: kmsettings.cpp:582
 msgid "Message Body Font"
@@ -647,9 +646,8 @@ msgid "Delete mail from server"
 msgstr "Ta bort brev från servern"
 
 #: kmsettings.cpp:906
-#, fuzzy
 msgid "Retrieve all mail from server"
-msgstr "Ta bort brev från servern"
+msgstr "Ta hem alla brev från servern"
 
 #: kmsettings.cpp:918
 msgid "Enable interval Mail checking"
@@ -823,9 +821,8 @@ msgid "Replace..."
 msgstr "Ersätt..."
 
 #: kmcomposewin.cpp:477
-#, fuzzy
 msgid "&Spellcheck..."
-msgstr "KMail: Rättstavning"
+msgstr "&Rättstavning..."
 
 #: kmcomposewin.cpp:484
 msgid "&Urgent"
@@ -840,9 +837,8 @@ msgid "&Confirm read"
 msgstr "Bekräfta &läsning"
 
 #: kmcomposewin.cpp:491
-#, fuzzy
 msgid "&Spellchecker..."
-msgstr "KMail: Rättstavning"
+msgstr "&Rättstavning..."
 
 #: kmcomposewin.cpp:494
 msgid "&Charsets..."
@@ -894,7 +890,7 @@ msgstr "Infoga &fil"
 
 #: kmcomposewin.cpp:527
 msgid "Insert My &Public Key"
-msgstr ""
+msgstr "Bifoga min &PGP-nyckel"
 
 #: kmcomposewin.cpp:532
 msgid "&Attach..."
@@ -1002,7 +998,7 @@ msgstr "Datum:"
 
 #: kmcomposewin.cpp:2018
 msgid "Spellcheck - KMail"
-msgstr ""
+msgstr "Rättstavning - KMail"
 
 #: kmcomposewin.cpp:2044
 msgid ""
@@ -1104,7 +1100,7 @@ msgstr "Varning: Felaktig signatur av"
 
 #: kmreaderwin.cpp:450
 msgid "unknown key ID"
-msgstr ""
+msgstr "okänt nyckel ID"
 
 #: kmreaderwin.cpp:700
 msgid "Attachment: "
@@ -1197,15 +1193,15 @@ msgstr ""
 
 #: kmacctpop.cpp:100
 msgid "Please set Password and Username"
-msgstr ""
+msgstr "Var god ange lösenord och användarnamn"
 
 #: kmacctpop.cpp:135
 msgid "Incorrect Username"
-msgstr ""
+msgstr "Felaktigt användarnamn"
 
 #: kmacctpop.cpp:148
 msgid "Incorrect Password"
-msgstr ""
+msgstr "Felaktigt lösenord"
 
 #: kmacctpop.cpp:184
 msgid ""
@@ -1277,7 +1273,7 @@ msgid ""
 "method in the settings\n"
 "and try again."
 msgstr ""
-"Vargod ange skicknings-\n"
+"Var god ange skicknings-\n"
 "metod och försök igen"
 
 #: kmsender.cpp:122
@@ -1286,7 +1282,7 @@ msgid ""
 "identity settings:\n"
 "user-name and email-address"
 msgstr ""
-"Vargod fyll i fälten under\n"
+"Var god fyll i fälten under\n"
 "identitetsinställningar:\n"
 "användarnamn och e-postadress"
 
@@ -1323,7 +1319,7 @@ msgid ""
 "Please specify a mailer program\n"
 "in the settings."
 msgstr ""
-"Vargod ange mailerprogram\n"
+"Var god ange mailerprogram\n"
 "under inställningar."
 
 #: kmsender.cpp:501
@@ -1507,9 +1503,8 @@ msgid "The pass phrase is missing."
 msgstr "Lösenordsfrasen saknas."
 
 #: kpgp.cpp:286 kpgp.cpp:312 kpgp.cpp:325 kpgp.cpp:344 kpgp.cpp:361
-#, fuzzy
 msgid "PGP Warning"
-msgstr "varning"
+msgstr "PGP varning"
 
 #: kpgp.cpp:287
 msgid ""
@@ -1517,24 +1512,25 @@ msgid ""
 "recipients of this mail.\n"
 "Message will not be encrypted."
 msgstr ""
+"Kan inte hitta den allmänna nyckeln för\n"
+"mottagarna till det här brevet.\n"
+"Meddelandet kommer inte att krypteras."
 
 #: kpgp.cpp:296
-#, fuzzy
 msgid "Could not find the public keys for\n"
-msgstr "Hittade inte den publika nyckeln för några personer.\n"
+msgstr "Hittade inte den PGP nyckeln för\n"
 
 #: kpgp.cpp:307
 msgid "These persons will not be able to\n"
-msgstr ""
+msgstr "Dessa personer kommer inte att kunna\n"
 
 #: kpgp.cpp:309
 msgid "This person will not be able to\n"
-msgstr ""
+msgstr "Den här personen kommer inte att kunna\n"
 
 #: kpgp.cpp:311
-#, fuzzy
 msgid "decrypt the message."
-msgstr "Kryptera meddelandet"
+msgstr "Dekryptera meddelandet."
 
 #: kpgp.cpp:326
 msgid ""
@@ -1542,33 +1538,40 @@ msgid ""
 "Do you wan't to try again, continue and\n"
 "leave the message unsigned, or cancel sending the message?"
 msgstr ""
+"Du skrev in en felaktig lösenordsfras.\n"
+"Vill du försöka igen, fortsätta och\n"
+"lämna brevet osignerat, eller avbryta skickningen av meddelandet?"
 
 #: kpgp.cpp:331
 msgid "Retry"
-msgstr ""
+msgstr "Försök igen"
 
 #: kpgp.cpp:342
 msgid ""
 "Do you wan't to encrypt anyway, leave the\n"
 "message as is, or cancel the message?"
 msgstr ""
+"Vill du kryptera ändå, lämna meddelandet\n"
+"som det är eller avbryta meddelandet?"
 
 #: kpgp.cpp:346
 msgid "Encrypt"
-msgstr ""
+msgstr "Kryptera"
 
 #: kpgp.cpp:359
 msgid ""
 "Do you wan't to leave the message as is,\n"
 "or cancel the message?"
 msgstr ""
+"Vill du lämna meddelandet som det är\n"
+"eller avbryta meddelandet?"
 
 #: kpgp.cpp:717
 msgid ""
 "Please enter your\n"
 "PGP passphrase"
 msgstr ""
-"Vargod och skriv in\n"
+"Var god och skriv in\n"
 "ditt PGP lösenordsfras"
 
 #: kpgp.cpp:744
@@ -1581,11 +1584,11 @@ msgstr "PGP-användaridentitet:"
 
 #: kpgp.cpp:782
 msgid "Store passphrase"
-msgstr ""
+msgstr "Spara lösenordsfrasen"
 
 #: kpgp.cpp:788
 msgid "Always encrypt to self"
-msgstr ""
+msgstr "Alltid kryptera till sig själv"
 
 #: kpgpbase.cpp:315
 msgid "Bad pass Phrase; couldn't sign"
@@ -1593,7 +1596,7 @@ msgstr "Felaktig lösenordsfras; kunde inte signera"
 
 #: kpgpbase.cpp:354
 msgid "error running pgp"
-msgstr ""
+msgstr "fel vid körningen av pgp"
 
 #: kpgpbase.cpp:371 kpgpbase.cpp:662
 msgid "Bad pass Phrase; couldn't decrypt"
@@ -1601,36 +1604,38 @@ msgstr "Felaktig lösenordsfras; kunde inte dekryptera"
 
 #: kpgpbase.cpp:382 kpgpbase.cpp:673
 msgid "Do not have the secret key for this message"
-msgstr ""
+msgstr "Har ingen hemlig nyckel för det här meddelandet"
 
 #: kpgpbase.cpp:410
 msgid "unknown key ID "
-msgstr ""
+msgstr "okänt nyckel ID "
 
 #: kpgpbase.cpp:430
 msgid "??? (file ~/.pgp/pubring.pgp not found)"
-msgstr ""
+msgstr "??? (filen ~/.pgp/pubring.pgp hittades inte)"
 
 #: kpgpbase.cpp:585
-#, fuzzy
 msgid "The passphrase you entered is invalid."
-msgstr "Lösenordsfrasen saknas."
+msgstr "Lösenordsfrasen är inte giltig."
 
 #: kpgpbase.cpp:611
 msgid ""
 "The key(s) you wan't to encrypt your message\n"
 "to are not trusted. No encryption done."
 msgstr ""
+"Nyckeln/Nycklarna som du vill kryptera meddelandet\n"
+"med är inte säkra. Ingen kryptering var gjord."
 
 #: kpgpbase.cpp:614
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The following key(s) are not trusted:\n"
 "%s\n"
 "They will not be able to decrypt the message"
 msgstr ""
-"%s publika nyckel hittades inte.\n"
-"Denna person kommer inte att kunna dekryptera sitt meddelande."
+"Följande nyckel/nycklar är inte säkra:\n"
+"%s\n"
+"Denna person/Dessa personer kommer inte att kunna dekryptera sitt meddelande."
 
 #: kfileio.cpp:26 kmaddrbook.cpp:162
 msgid "File I/O Error"
@@ -1779,11 +1784,11 @@ msgstr "Tar emot meddelanden från "
 
 #: kmnewiostatuswdg.cpp:54
 msgid "Preparing transmission..."
-msgstr "Förbereder skickning..."
+msgstr "Förbereder överföring..."
 
 #: kmnewiostatuswdg.cpp:60
 msgid "Transmission completed..."
-msgstr "Skickningen färdig..."
+msgstr "Överföringen färdig..."
 
 #: kmnewiostatuswdg.cpp:95
 msgid "Aborting transmission...\n"
@@ -1816,24 +1821,3 @@ msgstr "&7 bitar är ASCII"
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
 msgstr "&Citera okända tecken"
-
-#~ msgid "Error during PGP:"
-#~ msgstr "Fel under PGP:"
-
-#~ msgid "Message signed by"
-#~ msgstr "Meddelandet signerat av"
-
-#~ msgid "Message has a bad signature from"
-#~ msgstr "Meddelandet har en felaktig signatur av"
-
-#~ msgid "End PGP signed message"
-#~ msgstr "Slut på PGP signerat meddelande"
-
-#~ msgid ""
-#~ "Could not find public keys matching the\n"
-#~ "userid(s) %s. These persons won't be able\n"
-#~ "to read the message."
-#~ msgstr ""
-#~ "Kan inte hitta den publika nyckeln till\n"
-#~ "användarnamnet(namnen) %s. Dessa personer kommer\n"
-#~ "inte att kunna läsa meddelandet."
