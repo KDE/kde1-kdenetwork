@@ -578,6 +578,7 @@ void ArticleList::thread(bool)
     {
         if (!(iter->refsLoaded))
             iter->load();
+        iter->threadDepth=0;
         do_insert(iter->ID,iter);
     }
     node *n=new node;

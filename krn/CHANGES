@@ -4,6 +4,7 @@ Changes made Nov 18
 
 * [Roberto] Fixed (I think) a couple more leaks as reported by purify.
             not so impressive results, though (maybe saved .5MB)
+* [Roberto] Fixed a bug in NNTP::ListXover that affected threading
 
 -----------------------------------------------------------------------------
 Changes made Nov 17

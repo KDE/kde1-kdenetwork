@@ -367,15 +367,16 @@ int NNTP::listXover(int from,int to,NewsGroup *n)
                         {
                             while (1)
                             {
-                                int index=refsdata.find(' ');
+                                int index=refsdata.find('>');
                                 if (index==-1)
                                 {
+                                    refsdata=refsdata.stripWhiteSpace();
                                     art.Refs.append(refsdata.data());
                                     break;
                                 }
                                 else
                                 {
-                                    art.Refs.append(refsdata.left(index));
+                                    art.Refs.append(refsdata.stripWhiteSpace().left(index+1).data());
                                     refsdata=refsdata.right(refsdata.length()-index-1);
                                 }
                             }

@@ -103,8 +103,8 @@ Groupdlg::Groupdlg
 Inherited (name)
 {
     groups.setAutoDelete(true);
-    subscr.setAutoDelete(true);
-    tagged.setAutoDelete(true);
+    subscr.setAutoDelete(false);
+    tagged.setAutoDelete(false);
     
     QPopupMenu *file = new QPopupMenu;
     file->insertItem(klocale->translate("Connect to Server"),CONNECT);
