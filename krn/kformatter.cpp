@@ -137,15 +137,29 @@ QString KFormatter::htmlPart(QList<int> partno)
     body=getPart(partno);
     CHECK_PTR(body);
     body->Parse();
+    int pos;
 
-    //debug("Reading type");
     QString baseType=body->Headers().ContentType().TypeStr().data();
+    //Work-around for bug in mimelib
+    pos=baseType.find('\n');
+    debug("\\n at %d",pos);
+    if(pos!=-1) baseType=baseType.left(pos);
+
+    pos=baseType.find('/');
+    debug("/ at %d",pos);
+    if(pos!=-1) baseType=baseType.left(pos);
+
     baseType=baseType.lower();
-    //debug("baseType=%s",baseType.data());
+    debug("baseType=%s",baseType.data());
 
     QString subType=body->Headers().ContentType().SubtypeStr().data();
+    //Work-around for bug in mimelib
+    pos=subType.find('\n');
+    if(pos!=-1) subType=subType.left(pos);
+    pos=subType.find(';');
+    if(pos!=-1) subType=subType.left(pos);
     subType=subType.lower();
-    //debug("subType=%s",subType.data());
+    debug("subType=%s",subType.data());
 
     //Set a default type, just in case we lack a "content-type" header
     if (baseType.isEmpty())
@@ -164,6 +178,8 @@ QString KFormatter::htmlPart(QList<int> partno)
     if(body->Headers().HasCte())
     {
         encoding=body->Headers().ContentTransferEncoding().AsString().data();
+        pos=encoding.find('\n');
+        if(pos!=-1) encoding=encoding.left(pos);
         encoding=encoding.lower();
     }
     else{
@@ -171,15 +187,15 @@ QString KFormatter::htmlPart(QList<int> partno)
         encoding="7bit";
     }
 
-    debug("Formatting part %s: baseType: %s subType: %s wholeType: %s, encoding=%s",listToStr(partno).data(), baseType.data(), subType.data(), wholeType.data(),encoding.data());
+    //debug("Formatting part %s: baseType: %s subType: %s wholeType: %s, encoding=%s",listToStr(partno).data(), baseType.data(), subType.data(), wholeType.data(),encoding.data());
 
     const char* udata=body->Body().AsString().data();
     CHECK_PTR(udata);
-    debug("udata: %s",udata);
+    //debug("udata: %s",udata);
 
     const char* data=KDecode::decodeString(udata,encoding);
     CHECK_PTR(data);
-    debug("data: %s",data);
+    //debug("data: %s",data);
 
     if (baseType=="text")
     {
@@ -379,8 +395,15 @@ QString KFormatter::htmlPart(QList<int> partno)
 
 QString KFormatter::getType(QList<int> part)
 {
+    int pos;
     QString baseType=getPart(part)->Headers().ContentType().TypeStr().data();
+    pos=baseType.find('\n');
+    if(pos!=-1) baseType=baseType.left(pos);
+    pos=baseType.find(';');
+    if(pos!=-1) baseType=baseType.left(pos);
     QString subType=getPart(part)->Headers().ContentType().SubtypeStr().data();
+    pos=subType.find('\n');
+    if(pos!=-1) subType=subType.left(pos);
     QString wholeType=baseType;
     if(!subType.isEmpty()) baseType+=subType;
     return wholeType;
@@ -391,8 +414,11 @@ QString KFormatter::saveLink(QList<int> part, char* text)
     QString type=getType(part);
 
     QString link;
-    link.sprintf("<a href=\"save://%d/%s\">%s<img src=%s alt=\"save\"></a>",
-                 listToStr(part).data(), type.data(), text,
+    QString partno=listToStr(part);
+    debug("Creating save link for part %s of type %s. Text: %s Widgetname: %s",
+          partno.data(), type.data(), text, saveWidgetName.data());
+    link.sprintf("<a href=\"save://%s/%s\">%s<img src=%s alt=\"save\"></a>",
+                 partno.data(), type.data(), text,
                  saveWidgetName.data() );
     return link;
 }
@@ -402,7 +428,7 @@ QString KFormatter::viewLink(QList<int> part, char* text)
     QString type=getType(part);
 
     QString link;
-    link.sprintf("<a href=\"view://%d/%s\">%s<img src=%s alt=\"view\"></a>",
+    link.sprintf("<a href=\"view://%s/%s\">%s<img src=%s alt=\"view\"></a>",
                  listToStr(part).data(), type.data(), text,
                  viewWidgetName.data() );
     return link;
@@ -445,26 +471,30 @@ QString KFormatter::htmlHeader()
         if (message->Headers().HasField(iter))
         {
             QString headerName=iter;
+            QString headerContents=message->Headers().FieldBody(iter).AsString().data();
+            //Work-around for mimelib bug
+            int npos=headerContents.find('\n');
+            if(npos!=-1) headerContents=headerContents.left(npos);
+            debug("Header contents: %s",headerContents.data());
             header+="<b>"+headerName+": </b>";
 
             if(headerName=="Newsgroups" || headerName=="Followup-to")
             {
-                QString groups=message->Headers().FieldBody(iter).AsString().data();
-                groups.simplifyWhiteSpace();
-                groups+=',';
+                headerContents.simplifyWhiteSpace();
+                headerContents+=',';
                 unsigned int index=0, len;
                 QString group;
-                while(index<groups.length())
+                while(index<headerContents.length())
                 {
-                    len=groups.find(',',index)-index;
-                    group=groups.mid(index,len);
+                    len=headerContents.find(',',index)-index;
+                    group=headerContents.mid(index,len);
                     header+="<a href=\"news://newsserver/"+group+"\">"+group+"</a> ";
                     index+=len+1;
                 }
             }
             if(headerName=="References")
             {
-                QString articles=message->Headers().FieldBody(iter).AsString().data();
+                QString articles=headerContents;
                 articles.simplifyWhiteSpace();
                 articles+=' ';
                 debug("header: %s",articles.data());
@@ -488,7 +518,7 @@ QString KFormatter::htmlHeader()
             else if(headerName=="Date")
             {
                 debug ("Date formatter:%s",dateFmt->data());
-                DwDateTime realDate(message->Headers().FieldBody(iter).AsString().data());
+                DwDateTime realDate(headerContents.data());
                 debug("Real time: %s",realDate.AsString().data());
                 QString textDate="";
                 QString temp;
@@ -546,7 +576,7 @@ QString KFormatter::htmlHeader()
                 // header without special formatting
                 // needs to escape < and >
             {
-                QString s(message->Headers().FieldBody(iter).AsString().data());
+                QString s=headerContents;
                 s.replace(QRegExp("<"),"&lt;");
                 s.replace(QRegExp(">"),"&gt;");
                 header=header+s+"\n";
