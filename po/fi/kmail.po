@@ -244,9 +244,8 @@ msgid "&Set Status"
 msgstr "&Aseta tila"
 
 #: kmmainwin.cpp:893
-#, fuzzy
 msgid "Mar&k all"
-msgstr "Valitse kaikki"
+msgstr "Valitse &kaikki"
 
 #: kmmainwin.cpp:902
 msgid "Send again..."
@@ -942,7 +941,7 @@ msgstr "Luon indeksitiedostoa: %d viesti‰ valmiina"
 
 #: kmfolder.cpp:461
 msgid "Writing index file"
-msgstr ""
+msgstr "Kirjoitan indeksitiedostoa"
 
 #: kmfolder.cpp:894
 #, c-format
@@ -1059,13 +1058,15 @@ msgstr "vakava virhe"
 
 #: main.cpp:161
 msgid "KMail notification"
-msgstr ""
+msgstr "KMail muistutus"
 
 #: main.cpp:162
 msgid ""
 "$HOME is not set!\n"
 "KMail cannot start without it.\n"
 msgstr ""
+"$HOME:a ei ole asetettu!\n"
+"KMail ei toimi ilman t‰t‰.\n"
 
 #: main.cpp:228
 msgid ""
@@ -1087,7 +1088,7 @@ msgstr ""
 
 #: main.cpp:322
 msgid "Loading addressbook failed"
-msgstr ""
+msgstr "Osoitekirjan lataaminen ep‰onnistui"
 
 #: main.cpp:392
 #, c-format
@@ -1549,7 +1550,6 @@ msgid "Could only write %d bytes of %d."
 msgstr "Sain kirjoitettua vain %d tavua %d:ta."
 
 #: kmaddrbook.cpp:25
-#, fuzzy
 msgid "KMail Error"
 msgstr "KMail virhe"
 
@@ -1566,9 +1566,8 @@ msgid "Addressbook Manager"
 msgstr "Osoitekirjan hallinta"
 
 #: kmaddrbookdlg.cpp:179
-#, fuzzy
 msgid "Storing addressbook failed"
-msgstr "&Lis‰‰ osoitekirjaan"
+msgstr "Osoitekirjaan lis‰‰minen ep‰onnistui"
 
 #: kmiostatusdlg.cpp:32
 msgid "&Abort"
