@@ -10,8 +10,11 @@ KSircListBox::KSircListBox(QWidget * parent=0, const char * name=0, WFlags f=0) 
   vertScroll->setOrientation(QScrollBar::Vertical);
   vertScroll->resize(16, this->height());
   vertScroll->move(this->width() - vertScroll->width(), 0);
+  //  QRect frame = frameRect();
+  //  frame.setRight(frame.right() - 17);
+  //  setFrameRect(frame);
   updateScrollBars();
-  connect(vertScroll, SIGNAL(sliderMoved(int)),
+   connect(vertScroll, SIGNAL(sliderMoved(int)),
           SLOT(scrollTo(int)));
   connect(vertScroll, SIGNAL(nextLine()),
 	  SLOT(lineDown()));
@@ -26,7 +29,6 @@ KSircListBox::KSircListBox(QWidget * parent=0, const char * name=0, WFlags f=0) 
 
 void KSircListBox::scrollToBottom()
 {
-  // updateTableSize();
  setYOffset(totalHeight() - height() + fudge);
  updateScrollBars();
 }
@@ -40,10 +42,14 @@ void KSircListBox::updateScrollBars()
   }
 }
 
-void KSircListBox::resizeEvent(QResizeEvent *)
+void KSircListBox::resizeEvent(QResizeEvent *e)
 {
+  QListBox::resizeEvent(e);
   vertScroll->resize(16, this->height());
   vertScroll->move(this->width() - vertScroll->width(), 0);
+  //  QRect frame = frameRect();
+  //  frame.setRight(frame.right() - 17);
+  //  setFrameRect(frame);
 }
 
 void KSircListBox::setTopItem(int index)

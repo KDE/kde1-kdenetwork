@@ -69,6 +69,7 @@
 #include "open_ksirc.h"
 #include "open_top.h"
 #include "KSircColour.h"
+#include "FilterRuleEditor.h"
 #include <iostream.h>
 
 #include <qkeycode.h>
@@ -104,6 +105,8 @@ servercontroller::servercontroller
 				! kConfig->readNumEntry("Reuse", TRUE));
 	options->insertItem("Colour Preferences...",
 			    this, SLOT(colour_prefs()));
+	options->insertItem("Filter Rule Editor...",
+			    this, SLOT(filter_rule_editor()));
 	MenuBar->insertItem("&Options", options);
 
 	setMenu(MenuBar);
@@ -252,4 +255,9 @@ void servercontroller::reuse()
 void servercontroller::colour_prefs()
 {
   (new KSircColour())->show();
+}
+
+void servercontroller::filter_rule_editor()
+{
+  (new FilterRuleEditor())->show();
 }

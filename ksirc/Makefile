@@ -38,7 +38,8 @@ ksircprocess.cpp mksircprocess.cpp \
 open_ksirc.cpp open_ksircData.cpp mopen_ksirc.cpp mopen_ksircData.cpp \
 servercontroller.cpp servercontrollerData.cpp mservercontroller.cpp mservercontrollerData.cpp \
 control.cpp mcontrol.cpp \
-KSircColour.cpp KSircColourData.cpp mKSircColour.cpp mKSircColourData.cpp
+KSircColour.cpp KSircColourData.cpp mKSircColour.cpp mKSircColourData.cpp \
+FilterRuleEditor.cpp FilterRuleEditorData.cpp mFilterRuleEditor.cpp mFilterRuleEditorData.cpp
 
 OBJECTS = \
 toplevel.o \
@@ -62,7 +63,8 @@ servercontroller.o servercontrollerData.o \
 mservercontroller.o mservercontrollerData.o \
 control.o mcontrol.o \
 mahistlineedit.o \
-KSircColour.o KSircColourData.o mKSircColour.o mKSircColourData.o
+KSircColour.o KSircColourData.o mKSircColour.o mKSircColourData.o \
+FilterRuleEditor.o FilterRuleEditorData.o mFilterRuleEditor.o mFilterRuleEditorData.o
 
 TARGET = ksirc
 
