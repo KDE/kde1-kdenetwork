@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1999-03-12 02:44+0100\n"
+"POT-Creation-Date: 1999-03-17 02:17+0100\n"
 "PO-Revision-Date: 1999-02-03 23:40+0100\n"
 "Last-Translator: Sebastià Pla <sastia@redestb.es>\n"
 "Language-Team: CATALAN <LL@li.org>\n"
@@ -208,143 +208,143 @@ msgstr "Ho sento, el dispositiu de mòdem està bloquejat."
 msgid "Initializing Modem..."
 msgstr "S'està inicialitzant el mòdem..."
 
-#: connect.cpp:269 connect.cpp:270
+#: connect.cpp:270 connect.cpp:271
 msgid "Setting speaker volume..."
 msgstr "S'està establint el volum de l'altaveu..."
 
-#: connect.cpp:288
+#: connect.cpp:289
 msgid "Dialing"
 msgstr "S'està marcant"
 
-#: connect.cpp:320
+#: connect.cpp:322
 msgid "Line Busy. Hanging up ..."
 msgstr "Línia ocupada. S'està penjant ..."
 
-#: connect.cpp:325
+#: connect.cpp:327
 msgid "Line Busy. Waiting: "
 msgstr "Línia ocupada. Esperant: "
 
-#: connect.cpp:327 connect.cpp:447 connect.cpp:466
+#: connect.cpp:329 connect.cpp:449 connect.cpp:468
 msgid " seconds"
 msgstr " segons"
 
-#: connect.cpp:345
+#: connect.cpp:347
 msgid "No Dialtone"
 msgstr "Sense to de marcatge"
 
-#: connect.cpp:354
+#: connect.cpp:356
 msgid "No Carrier"
 msgstr "Sense portadora"
 
-#: connect.cpp:392
+#: connect.cpp:394
 msgid "Scanning "
 msgstr "S'està explorant "
 
-#: connect.cpp:403
+#: connect.cpp:405
 msgid "Saving "
 msgstr "S'està desant "
 
-#: connect.cpp:422
+#: connect.cpp:424
 msgid "Sending "
 msgstr "S'està enviant "
 
-#: connect.cpp:433
+#: connect.cpp:435
 msgid "Expecting "
 msgstr "S'està esperant "
 
-#: connect.cpp:445
+#: connect.cpp:447
 msgid "Pause "
 msgstr "Pausa "
 
-#: connect.cpp:464
+#: connect.cpp:466
 msgid "Timeout "
 msgstr "Expiració "
 
-#: connect.cpp:478 connect.cpp:479
+#: connect.cpp:480 connect.cpp:481
 msgid "Hangup"
 msgstr "Penjat"
 
-#: connect.cpp:492 connect.cpp:493
+#: connect.cpp:494 connect.cpp:495
 msgid "Answer"
 msgstr "Resposta"
 
-#: connect.cpp:501
+#: connect.cpp:503
 msgid "ID "
 msgstr "ID "
 
-#: connect.cpp:538
+#: connect.cpp:540
 msgid "Password "
 msgstr "Contrasenya "
 
-#: connect.cpp:576
+#: connect.cpp:578
 msgid "Prompting "
 msgstr "Demanant "
 
-#: connect.cpp:613
+#: connect.cpp:615
 msgid "PW Prompt "
 msgstr "Demana PW"
 
-#: connect.cpp:639
+#: connect.cpp:641
 msgid "Loop Start "
 msgstr "Inici Bucle "
 
-#: connect.cpp:643
+#: connect.cpp:645
 msgid "ERROR: Nested too deep, ignored."
 msgstr "ERROR: Niuat massa fondo, s'ignora."
 
-#: connect.cpp:648
+#: connect.cpp:650
 msgid "Loops nested too deeply!"
 msgstr "Bucles massa fondament niuats!"
 
-#: connect.cpp:666
+#: connect.cpp:668
 msgid "LoopEnd without matching Start! Line: "
 msgstr "Fi Bucle sense parell Inici! Línia: "
 
-#: connect.cpp:741
+#: connect.cpp:743
 msgid "Starting pppd ..."
 msgstr "S'està engegant pppd ..."
 
-#: connect.cpp:818
+#: connect.cpp:823
 msgid "Scan Var: "
 msgstr "Explorant Var: "
 
-#: connect.cpp:828
+#: connect.cpp:834
 msgid "Found: "
 msgstr "Trobat: "
 
-#: connect.cpp:841
+#: connect.cpp:847
 msgid "Looping: "
 msgstr "Buclant: "
 
-#: connect.cpp:871 modeminfo.cpp:227
+#: connect.cpp:880 modeminfo.cpp:227
 msgid "One Moment Please ..."
 msgstr "Un moment, si us plau ..."
 
-#: connect.cpp:915
+#: connect.cpp:924
 msgid "Script timed out!"
 msgstr "S'ha produït una expiració al guió!"
 
-#: connect.cpp:934
+#: connect.cpp:943
 msgid "Scanning: "
 msgstr "Explorant: "
 
-#: connect.cpp:944
+#: connect.cpp:953
 msgid "Expecting: "
 msgstr "Esperant: "
 
-#: connect.cpp:971
+#: connect.cpp:980
 msgid "Logging on to Network ..."
 msgstr "S'està registrant a la Xarxa ..."
 
-#: connect.cpp:997
+#: connect.cpp:1006
 msgid "Running Startup Command ..."
 msgstr "S'està executant l'ordre d'inici ..."
 
-#: connect.cpp:1002 connect.cpp:1009
+#: connect.cpp:1011 connect.cpp:1018
 msgid "Done"
 msgstr "Fet"
 
-#: connect.cpp:1119
+#: connect.cpp:1128
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"

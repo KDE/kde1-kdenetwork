@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE NETWORK/kppp\n"
-"POT-Creation-Date: 1999-03-12 02:44+0100\n"
+"POT-Creation-Date: 1999-03-17 02:17+0100\n"
 "PO-Revision-Date: 1999-02-17 17:00+CET-1\n"
 "Last-Translator: Erik Kjær Pedersen <erik@binghamton.edu>\n"
 "Language-Team: da <LL@li.org>\n"
@@ -210,143 +210,143 @@ msgstr "Desværre - modemet er låst."
 msgid "Initializing Modem..."
 msgstr "Initialiserer modem..."
 
-#: connect.cpp:269 connect.cpp:270
+#: connect.cpp:270 connect.cpp:271
 msgid "Setting speaker volume..."
 msgstr "Indstiller højtaler lydstyrke..."
 
-#: connect.cpp:288
+#: connect.cpp:289
 msgid "Dialing"
 msgstr "Ringer"
 
-#: connect.cpp:320
+#: connect.cpp:322
 msgid "Line Busy. Hanging up ..."
 msgstr "Linien er optaget. Lægger på ..."
 
-#: connect.cpp:325
+#: connect.cpp:327
 msgid "Line Busy. Waiting: "
 msgstr "Linien er optaget. Venter: "
 
-#: connect.cpp:327 connect.cpp:447 connect.cpp:466
+#: connect.cpp:329 connect.cpp:449 connect.cpp:468
 msgid " seconds"
 msgstr "sekunder"
 
-#: connect.cpp:345
+#: connect.cpp:347
 msgid "No Dialtone"
 msgstr "Ingen ringetone"
 
-#: connect.cpp:354
+#: connect.cpp:356
 msgid "No Carrier"
 msgstr "Ingen klartone"
 
-#: connect.cpp:392
+#: connect.cpp:394
 msgid "Scanning "
 msgstr "Leder "
 
-#: connect.cpp:403
+#: connect.cpp:405
 msgid "Saving "
 msgstr "Gemmer "
 
-#: connect.cpp:422
+#: connect.cpp:424
 msgid "Sending "
 msgstr "Sender "
 
-#: connect.cpp:433
+#: connect.cpp:435
 msgid "Expecting "
 msgstr "Forventer "
 
-#: connect.cpp:445
+#: connect.cpp:447
 msgid "Pause "
 msgstr "Pause "
 
-#: connect.cpp:464
+#: connect.cpp:466
 msgid "Timeout "
 msgstr "Tiden løb ud "
 
-#: connect.cpp:478 connect.cpp:479
+#: connect.cpp:480 connect.cpp:481
 msgid "Hangup"
 msgstr "Lægger på"
 
-#: connect.cpp:492 connect.cpp:493
+#: connect.cpp:494 connect.cpp:495
 msgid "Answer"
 msgstr "Svar"
 
-#: connect.cpp:501
+#: connect.cpp:503
 msgid "ID "
 msgstr "ID"
 
-#: connect.cpp:538
+#: connect.cpp:540
 msgid "Password "
 msgstr "Kodeord "
 
-#: connect.cpp:576
+#: connect.cpp:578
 msgid "Prompting "
 msgstr "Login skærm "
 
-#: connect.cpp:613
+#: connect.cpp:615
 msgid "PW Prompt "
 msgstr "PW Login "
 
-#: connect.cpp:639
+#: connect.cpp:641
 msgid "Loop Start "
 msgstr "Løkke start "
 
-#: connect.cpp:643
+#: connect.cpp:645
 msgid "ERROR: Nested too deep, ignored."
 msgstr "Fejl: for dybt nede, ignoreret."
 
-#: connect.cpp:648
+#: connect.cpp:650
 msgid "Loops nested too deeply!"
 msgstr "Løkker for dybt nede!"
 
-#: connect.cpp:666
+#: connect.cpp:668
 msgid "LoopEnd without matching Start! Line: "
 msgstr "LoopEnd uden tilsvarende Start! Line: "
 
-#: connect.cpp:741
+#: connect.cpp:743
 msgid "Starting pppd ..."
 msgstr "Starter pppd ..."
 
-#: connect.cpp:818
+#: connect.cpp:823
 msgid "Scan Var: "
 msgstr "Undersøg Var: "
 
-#: connect.cpp:828
+#: connect.cpp:834
 msgid "Found: "
 msgstr "Fundet: "
 
-#: connect.cpp:841
+#: connect.cpp:847
 msgid "Looping: "
 msgstr "Løkker: "
 
-#: connect.cpp:871 modeminfo.cpp:227
+#: connect.cpp:880 modeminfo.cpp:227
 msgid "One Moment Please ..."
 msgstr "Et øjeblik ..."
 
-#: connect.cpp:915
+#: connect.cpp:924
 msgid "Script timed out!"
 msgstr "Tiden løb ud for skriptet!"
 
-#: connect.cpp:934
+#: connect.cpp:943
 msgid "Scanning: "
 msgstr "Undersøger "
 
-#: connect.cpp:944
+#: connect.cpp:953
 msgid "Expecting: "
 msgstr "Forventer: "
 
-#: connect.cpp:971
+#: connect.cpp:980
 msgid "Logging on to Network ..."
 msgstr "Logger på netværket ..."
 
-#: connect.cpp:997
+#: connect.cpp:1006
 msgid "Running Startup Command ..."
 msgstr "Kører opstart kommando ..."
 
-#: connect.cpp:1002 connect.cpp:1009
+#: connect.cpp:1011 connect.cpp:1018
 msgid "Done"
 msgstr "Færdig"
 
-#: connect.cpp:1119
+#: connect.cpp:1128
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"

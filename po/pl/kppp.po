@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp \n"
-"POT-Creation-Date: 1999-03-12 02:44+0100\n"
+"POT-Creation-Date: 1999-03-17 02:17+0100\n"
 "PO-Revision-Date: 1999-01-24 15:45+0100\n"
 "Last-Translator: Jacek Stolarczyk <jacek@mer.chemia.polsl.gliwice.pl>\n"
 "Content-Type: text/plain; charset=iso-8859-2\n"
@@ -204,143 +204,143 @@ msgstr "Modem jest zablokowany."
 msgid "Initializing Modem..."
 msgstr "Inicjalizacja modemu..."
 
-#: connect.cpp:269 connect.cpp:270
+#: connect.cpp:270 connect.cpp:271
 msgid "Setting speaker volume..."
 msgstr "Ustawianie poziomu g³o¶no¶ci..."
 
-#: connect.cpp:288
+#: connect.cpp:289
 msgid "Dialing"
 msgstr "£±czenie z numerem"
 
-#: connect.cpp:320
+#: connect.cpp:322
 msgid "Line Busy. Hanging up ..."
 msgstr "Linia zajêta. Roz³±czam siê ..."
 
-#: connect.cpp:325
+#: connect.cpp:327
 msgid "Line Busy. Waiting: "
 msgstr "Linia zajêta. Czekam: "
 
-#: connect.cpp:327 connect.cpp:447 connect.cpp:466
+#: connect.cpp:329 connect.cpp:449 connect.cpp:468
 msgid " seconds"
 msgstr " sekund"
 
-#: connect.cpp:345
+#: connect.cpp:347
 msgid "No Dialtone"
 msgstr "Brak sygna³u"
 
-#: connect.cpp:354
+#: connect.cpp:356
 msgid "No Carrier"
 msgstr "Brak po³±czenia"
 
-#: connect.cpp:392
+#: connect.cpp:394
 msgid "Scanning "
 msgstr "Skanujê "
 
-#: connect.cpp:403
+#: connect.cpp:405
 msgid "Saving "
 msgstr "Zapisujê "
 
-#: connect.cpp:422
+#: connect.cpp:424
 msgid "Sending "
 msgstr "Wysy³am "
 
-#: connect.cpp:433
+#: connect.cpp:435
 msgid "Expecting "
 msgstr "Oczekujê na "
 
-#: connect.cpp:445
+#: connect.cpp:447
 msgid "Pause "
 msgstr "Przerwa "
 
-#: connect.cpp:464
+#: connect.cpp:466
 msgid "Timeout "
 msgstr "Min±³ czas oczekiwania "
 
-#: connect.cpp:478 connect.cpp:479
+#: connect.cpp:480 connect.cpp:481
 msgid "Hangup"
 msgstr "Roz³±cz"
 
-#: connect.cpp:492 connect.cpp:493
+#: connect.cpp:494 connect.cpp:495
 msgid "Answer"
 msgstr "Odpowiadam"
 
-#: connect.cpp:501
+#: connect.cpp:503
 msgid "ID "
 msgstr "ID "
 
-#: connect.cpp:538
+#: connect.cpp:540
 msgid "Password "
 msgstr "Has³o "
 
-#: connect.cpp:576
+#: connect.cpp:578
 msgid "Prompting "
 msgstr "Zg³oszenie "
 
-#: connect.cpp:613
+#: connect.cpp:615
 msgid "PW Prompt "
 msgstr "Pytanie o has³o (PW Prompt) "
 
-#: connect.cpp:639
+#: connect.cpp:641
 msgid "Loop Start "
 msgstr "Pocz±tej pêtli (Loop Start) "
 
-#: connect.cpp:643
+#: connect.cpp:645
 msgid "ERROR: Nested too deep, ignored."
 msgstr "B³±d: Zbyt g³êbokie zagnie¿d¿enia, zignorowano."
 
-#: connect.cpp:648
+#: connect.cpp:650
 msgid "Loops nested too deeply!"
 msgstr "Pêtle zagnie¿d¿one zbyt g³êboko!"
 
-#: connect.cpp:666
+#: connect.cpp:668
 msgid "LoopEnd without matching Start! Line: "
 msgstr "Koniec pêtli nie ma odpowiadaj±cego mu pocz±tka! Linia: "
 
-#: connect.cpp:741
+#: connect.cpp:743
 msgid "Starting pppd ..."
 msgstr "Startujê pppd ..."
 
-#: connect.cpp:818
+#: connect.cpp:823
 msgid "Scan Var: "
 msgstr "Sprawdzanie:"
 
-#: connect.cpp:828
+#: connect.cpp:834
 msgid "Found: "
 msgstr "Znaleziono: "
 
-#: connect.cpp:841
+#: connect.cpp:847
 msgid "Looping: "
 msgstr "W pêtli: "
 
-#: connect.cpp:871 modeminfo.cpp:227
+#: connect.cpp:880 modeminfo.cpp:227
 msgid "One Moment Please ..."
 msgstr "Zaczekaj chwilê, proszê ..."
 
-#: connect.cpp:915
+#: connect.cpp:924
 msgid "Script timed out!"
 msgstr "Przekroczono czas wykonywania skryptu!"
 
-#: connect.cpp:934
+#: connect.cpp:943
 msgid "Scanning: "
 msgstr "Skanujê: "
 
-#: connect.cpp:944
+#: connect.cpp:953
 msgid "Expecting: "
 msgstr "Czekam na: "
 
-#: connect.cpp:971
+#: connect.cpp:980
 msgid "Logging on to Network ..."
 msgstr "Logowanie do sieci ..."
 
-#: connect.cpp:997
+#: connect.cpp:1006
 msgid "Running Startup Command ..."
 msgstr "Uruchamiam polecenia startowe ..."
 
-#: connect.cpp:1002 connect.cpp:1009
+#: connect.cpp:1011 connect.cpp:1018
 msgid "Done"
 msgstr "Gotowe"
 
-#: connect.cpp:1119
+#: connect.cpp:1128
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"

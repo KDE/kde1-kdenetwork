@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE 1.0\n"
-"POT-Creation-Date: 1999-03-12 02:44+0100\n"
+"POT-Creation-Date: 1999-03-17 02:17+0100\n"
 "PO-Revision-Date: 1998-06-29 11:00+0200\n"
 "Last-Translator: Kerem ERZURUMLU <kerem@linux.org.tr>\n"
 "Language-Team: Hacettepe Linux Users Group <hacettepe@linux.org.tr>\n"
@@ -190,144 +190,144 @@ msgstr "Üzgünüm, modem cihazý kilitli."
 msgid "Initializing Modem..."
 msgstr "Modem Hazýrlanýyor..."
 
-#: connect.cpp:269 connect.cpp:270
+#: connect.cpp:270 connect.cpp:271
 msgid "Setting speaker volume..."
 msgstr ""
 
-#: connect.cpp:288
+#: connect.cpp:289
 msgid "Dialing"
 msgstr "Aranýyor"
 
-#: connect.cpp:320
+#: connect.cpp:322
 msgid "Line Busy. Hanging up ..."
 msgstr "Hat Dolu. Kapatýlýyor..."
 
-#: connect.cpp:325
+#: connect.cpp:327
 msgid "Line Busy. Waiting: "
 msgstr "Hat Dolu. Bekleniyor: "
 
-#: connect.cpp:327 connect.cpp:447 connect.cpp:466
+#: connect.cpp:329 connect.cpp:449 connect.cpp:468
 msgid " seconds"
 msgstr " saniye"
 
-#: connect.cpp:345
+#: connect.cpp:347
 msgid "No Dialtone"
 msgstr "Ara Tonu Yok"
 
-#: connect.cpp:354
+#: connect.cpp:356
 msgid "No Carrier"
 msgstr "Taþýyýcý yok"
 
-#: connect.cpp:392
+#: connect.cpp:394
 msgid "Scanning "
 msgstr "Taranýyor"
 
-#: connect.cpp:403
+#: connect.cpp:405
 msgid "Saving "
 msgstr "Kaydediliyor "
 
-#: connect.cpp:422
+#: connect.cpp:424
 msgid "Sending "
 msgstr "Gönderiliyor "
 
-#: connect.cpp:433
+#: connect.cpp:435
 msgid "Expecting "
 msgstr "Kabul ediliyor"
 
-#: connect.cpp:445
+#: connect.cpp:447
 msgid "Pause "
 msgstr "Dondur "
 
-#: connect.cpp:464
+#: connect.cpp:466
 msgid "Timeout "
 msgstr "Zaman doldu"
 
-#: connect.cpp:478 connect.cpp:479
+#: connect.cpp:480 connect.cpp:481
 msgid "Hangup"
 msgstr "Kapatýlýyor"
 
-#: connect.cpp:492 connect.cpp:493
+#: connect.cpp:494 connect.cpp:495
 msgid "Answer"
 msgstr "Cevap ver"
 
-#: connect.cpp:501
+#: connect.cpp:503
 msgid "ID "
 msgstr "ID "
 
-#: connect.cpp:538
+#: connect.cpp:540
 msgid "Password "
 msgstr "Parola "
 
-#: connect.cpp:576
+#: connect.cpp:578
 msgid "Prompting "
 msgstr "Ýstemler"
 
-#: connect.cpp:613
+#: connect.cpp:615
 msgid "PW Prompt "
 msgstr "Parola Ýstemi"
 
-#: connect.cpp:639
+#: connect.cpp:641
 msgid "Loop Start "
 msgstr "Döngü Baþlangýcý"
 
-#: connect.cpp:643
+#: connect.cpp:645
 msgid "ERROR: Nested too deep, ignored."
 msgstr "HATA: Çok derine iniyor, görmezden gelindi."
 
-#: connect.cpp:648
+#: connect.cpp:650
 msgid "Loops nested too deeply!"
 msgstr "Döngü çok derine indi!"
 
-#: connect.cpp:666
+#: connect.cpp:668
 #, fuzzy
 msgid "LoopEnd without matching Start! Line: "
 msgstr "Baþý belirtilmeden döngü bitti! Satýr: "
 
-#: connect.cpp:741
+#: connect.cpp:743
 msgid "Starting pppd ..."
 msgstr "pppd baþlýyor..."
 
-#: connect.cpp:818
+#: connect.cpp:823
 msgid "Scan Var: "
 msgstr "Deðiþken tara: "
 
-#: connect.cpp:828
+#: connect.cpp:834
 msgid "Found: "
 msgstr "Bulundu:"
 
-#: connect.cpp:841
+#: connect.cpp:847
 msgid "Looping: "
 msgstr "Döngüleniyor: "
 
-#: connect.cpp:871 modeminfo.cpp:227
+#: connect.cpp:880 modeminfo.cpp:227
 msgid "One Moment Please ..."
 msgstr "Bir Saniye Lütfen..."
 
-#: connect.cpp:915
+#: connect.cpp:924
 msgid "Script timed out!"
 msgstr "Komut kümesi zaman aþýmýna uðradý!"
 
-#: connect.cpp:934
+#: connect.cpp:943
 msgid "Scanning: "
 msgstr "Taranýyor: "
 
-#: connect.cpp:944
+#: connect.cpp:953
 msgid "Expecting: "
 msgstr "Kabul ediliyor: "
 
-#: connect.cpp:971
+#: connect.cpp:980
 msgid "Logging on to Network ..."
 msgstr "Að'a baðlanýlýyor..."
 
-#: connect.cpp:997
+#: connect.cpp:1006
 msgid "Running Startup Command ..."
 msgstr "Baþlangýç Komutlarý Çalýþtýrýlýyor..."
 
-#: connect.cpp:1002 connect.cpp:1009
+#: connect.cpp:1011 connect.cpp:1018
 msgid "Done"
 msgstr ""
 
-#: connect.cpp:1119
+#: connect.cpp:1128
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"

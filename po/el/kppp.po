@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1999-03-12 02:44+0100\n"
+"POT-Creation-Date: 1999-03-17 02:17+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Theodore J. Soldatos <theodore@eexi.gr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -191,146 +191,146 @@ msgstr "Συγγνώμη, το modem είναι κλειδωμένο."
 msgid "Initializing Modem..."
 msgstr "Αρχικοποίηση modem..."
 
-#: connect.cpp:269 connect.cpp:270
+#: connect.cpp:270 connect.cpp:271
 msgid "Setting speaker volume..."
 msgstr ""
 
-#: connect.cpp:288
+#: connect.cpp:289
 msgid "Dialing"
 msgstr "Κλήση εν εξελίξει"
 
-#: connect.cpp:320
+#: connect.cpp:322
 msgid "Line Busy. Hanging up ..."
 msgstr "Η γραμή είναι απασχολημένη. Κλείσιμο ..."
 
-#: connect.cpp:325
+#: connect.cpp:327
 msgid "Line Busy. Waiting: "
 msgstr "Η γραμμή είναι απασχολημένη. Αναμονή: "
 
-#: connect.cpp:327 connect.cpp:447 connect.cpp:466
+#: connect.cpp:329 connect.cpp:449 connect.cpp:468
 msgid " seconds"
 msgstr " δευτερόλεπτα"
 
-#: connect.cpp:345
+#: connect.cpp:347
 msgid "No Dialtone"
 msgstr "Δεν υπάρχει ήχος γραμμής"
 
-#: connect.cpp:354
+#: connect.cpp:356
 msgid "No Carrier"
 msgstr "Απουσία σήματος"
 
-#: connect.cpp:392
+#: connect.cpp:394
 msgid "Scanning "
 msgstr "Ανίχνευση "
 
-#: connect.cpp:403
+#: connect.cpp:405
 #, fuzzy
 msgid "Saving "
 msgstr "Ανίχνευση "
 
-#: connect.cpp:422
+#: connect.cpp:424
 msgid "Sending "
 msgstr "Αποστολή "
 
-#: connect.cpp:433
+#: connect.cpp:435
 msgid "Expecting "
 msgstr "Αναμονή "
 
-#: connect.cpp:445
+#: connect.cpp:447
 msgid "Pause "
 msgstr "Παύση "
 
-#: connect.cpp:464
+#: connect.cpp:466
 msgid "Timeout "
 msgstr "Τέλος χρόνου "
 
-#: connect.cpp:478 connect.cpp:479
+#: connect.cpp:480 connect.cpp:481
 msgid "Hangup"
 msgstr "Κλείσιμο"
 
-#: connect.cpp:492 connect.cpp:493
+#: connect.cpp:494 connect.cpp:495
 msgid "Answer"
 msgstr "Απάντηση"
 
-#: connect.cpp:501
+#: connect.cpp:503
 msgid "ID "
 msgstr "ID "
 
-#: connect.cpp:538
+#: connect.cpp:540
 msgid "Password "
 msgstr "Λέξη κλειδί "
 
-#: connect.cpp:576
+#: connect.cpp:578
 msgid "Prompting "
 msgstr "Ζήτηση "
 
-#: connect.cpp:613
+#: connect.cpp:615
 msgid "PW Prompt "
 msgstr "Ζήτηση λέξης κλειδί "
 
-#: connect.cpp:639
+#: connect.cpp:641
 msgid "Loop Start "
 msgstr "Αρχή ανακύκλωσης "
 
-#: connect.cpp:643
+#: connect.cpp:645
 msgid "ERROR: Nested too deep, ignored."
 msgstr "ΣΦΑΛΜΑ: Επίπεδο ανακύκλωσης πολύ μεγάλο, αγνοείται."
 
-#: connect.cpp:648
+#: connect.cpp:650
 msgid "Loops nested too deeply!"
 msgstr "Πολύ μεγάλα βάθη ανακύκλωσης!"
 
-#: connect.cpp:666
+#: connect.cpp:668
 #, fuzzy
 msgid "LoopEnd without matching Start! Line: "
 msgstr "Τέλος ανακύκλωσης (LoopEnd) χωρίς αντίστοιχη γραμμή έναρξης (Start!)"
 
-#: connect.cpp:741
+#: connect.cpp:743
 msgid "Starting pppd ..."
 msgstr "Εκκίνηση pppd ..."
 
-#: connect.cpp:818
+#: connect.cpp:823
 msgid "Scan Var: "
 msgstr "Μεταβλητή ανίχνευσης: "
 
-#: connect.cpp:828
+#: connect.cpp:834
 msgid "Found: "
 msgstr "Βρέθηκαν: "
 
-#: connect.cpp:841
+#: connect.cpp:847
 msgid "Looping: "
 msgstr "Ανακύκλωση: "
 
-#: connect.cpp:871 modeminfo.cpp:227
+#: connect.cpp:880 modeminfo.cpp:227
 msgid "One Moment Please ..."
 msgstr "Μια στιγμή παρακαλώ ..."
 
-#: connect.cpp:915
+#: connect.cpp:924
 msgid "Script timed out!"
 msgstr "Τέλος χρόνου αναμονής αρχείου εντολών!"
 
-#: connect.cpp:934
+#: connect.cpp:943
 msgid "Scanning: "
 msgstr "Ανίχνευση: "
 
-#: connect.cpp:944
+#: connect.cpp:953
 msgid "Expecting: "
 msgstr "Αναμονή για: "
 
-#: connect.cpp:971
+#: connect.cpp:980
 msgid "Logging on to Network ..."
 msgstr "Σύνδεση στο δίκτυο ..."
 
-#: connect.cpp:997
+#: connect.cpp:1006
 msgid "Running Startup Command ..."
 msgstr "Εκτέλεση αρχικής εντολής ..."
 
-#: connect.cpp:1002 connect.cpp:1009
+#: connect.cpp:1011 connect.cpp:1018
 #, fuzzy
 msgid "Done"
 msgstr "Κανένα"
 
-#: connect.cpp:1119
+#: connect.cpp:1128
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
