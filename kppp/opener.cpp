@@ -246,13 +246,9 @@ int Opener::sendFD(const char *path, int fd,
   control.cmsg.cmsg_level = SOL_SOCKET;
   control.cmsg.cmsg_type = MY_SCM_RIGHTS;
 
-  msg.msg_control = &control;
+  msg.msg_control = (char *) &control;
   msg.msg_controllen = control.cmsg.cmsg_len;
 
-  // What's the duplicating good for ?
-  //  *((int *) &control.cmsg.cmsg_data) = dup(ttyfd);
-
-// Let's try it this way. Should work on FreeBSD, too.
 #ifdef CMSG_DATA
   *((int *)CMSG_DATA(&control.cmsg)) = fd;
 #else

@@ -70,9 +70,9 @@
 #include <net/ppp_defs.h>
 #include "if_ppp.h"
 #include "requester.h"
-#include "main.h"
 #endif // linux
 
+#include "main.h"
 
 #ifdef linux
 // shamelessly stolen from pppd-2.3.5
