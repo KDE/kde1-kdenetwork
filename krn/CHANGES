@@ -8,7 +8,12 @@ Changes made Jan 31
 * [Roberto] Improved "About Krn" dialog.
 * [Roberto] Improved asker dialog.
 * [Roberto] Improved find article dialog.
-
+* [Roberto] Improved NNTP options dialog.
+            All these dialogs are now made using KTypeLayout, so they are
+            geometry managed. There is only one other dialog who needs
+            fixing, but it's 5:55AM, and I have been sitting here for 21 Hrs,
+            so I *really* should go sleep, eat,and feed my cat :-)
+            
 -----------------------------------------------------------------------------
 Changes made Jan 23
 -----------------------------------------------------------------------------
