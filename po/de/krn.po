@@ -5,31 +5,31 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: krn\n"
-"POT-Creation-Date: 1998-02-25 12:40+0100\n"
+"POT-Creation-Date: 1998-03-01 15:43+0100\n"
 "PO-Revision-Date: 1998-02-27 21:20 +0100\n"
 "Last-Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
 
-#: main.cpp:226 main.cpp:238 main.cpp:250 main.cpp:265 main.cpp:277
+#: main.cpp:221 main.cpp:233 main.cpp:245 main.cpp:260 main.cpp:272
 msgid "KRN-Missing Configuration info"
 msgstr "KRN-Information über fehlende Konfiguration"
 
-#: main.cpp:227
+#: main.cpp:222
 msgid "Please enter your email adress"
 msgstr "Bitte geben Sie Ihre E-Mail-Adresse ein"
 
-#: main.cpp:239
+#: main.cpp:234
 msgid "Please enter your real name"
 msgstr "Bitte geben Sie Ihren wirklichen Namen ein"
 
-#: main.cpp:251
+#: main.cpp:246
 msgid "Please enter your organization's name"
 msgstr "Bitte geben Sie den Namen Ihrer Organisation ein"
 
-#: main.cpp:266
+#: main.cpp:261
 msgid "Please enter your NNTP server name"
 msgstr "Bitte geben Sie Ihren NNTP-Servernamen ein"
 
-#: main.cpp:278
+#: main.cpp:273
 msgid "Please enter your SMTP server name"
 msgstr "Bitte geben Sie Ihren SMTP-Servernamen ein"
 
@@ -512,11 +512,11 @@ msgstr "ID"
 msgid "Name"
 msgstr "Name"
 
-#: decoderDlg.cpp:43
+#: decoderDlg.cpp:44
 msgid "Destination directory:"
 msgstr "Zielverzeichnis:"
 
-#: decoderDlg.cpp:46
+#: decoderDlg.cpp:47
 msgid "Decode All"
 msgstr "Alle dekodieren"
 
@@ -765,18 +765,14 @@ msgstr "Sortiert nach:"
 msgid "Use Threading"
 msgstr "Nach Threads"
 
-#: charsetsDlg.cpp:26
-msgid "KRN - Charset Settings"
-msgstr "KRN - Zeichensatz-Einstellung"
+#~ msgid "KRN - Charset Settings"
+#~ msgstr "KRN - Zeichensatz-Einstellung"
 
-#: charsetsDlg.cpp:28
-msgid "KMail - Charset Settings"
-msgstr "KMail - Zeichensatz-Einstellung"
+#~ msgid "KMail - Charset Settings"
+#~ msgstr "KMail - Zeichensatz-Einstellung"
 
-#: charsetsDlg.cpp:38
-msgid "Message charset"
-msgstr "Nachrichten-Zeichensatz"
+#~ msgid "Message charset"
+#~ msgstr "Nachrichten-Zeichensatz"
 
-#: charsetsDlg.cpp:56
-msgid "Composer charset"
-msgstr "Editor-Zeichensatz"
+#~ msgid "Composer charset"
+#~ msgstr "Editor-Zeichensatz"
