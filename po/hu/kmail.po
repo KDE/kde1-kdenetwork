@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-12-02 01:55+0100\n"
+"POT-Creation-Date: 1998-12-04 01:58+0100\n"
 "PO-Revision-Date: 1998-01-21 15:18+CET\n"
 "Last-Translator: Marcell Lengyel <mike.tkf@ibm.net>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -540,17 +540,17 @@ msgstr "Továbbított üzenet:"
 msgid "Indentation:"
 msgstr "Idézett sorok jelölése:"
 
-#: kmmessage.cpp:1313 kmsettings.cpp:411
+#: kmmessage.cpp:1340 kmsettings.cpp:411
 #, fuzzy
 msgid "On %D, you wrote:"
 msgstr "%D dátummal ezt írtad:"
 
-#: kmmessage.cpp:1314 kmsettings.cpp:415
+#: kmmessage.cpp:1341 kmsettings.cpp:415
 #, fuzzy
 msgid "On %D, %F wrote:"
 msgstr "%D dátummal %F ezt írta:"
 
-#: kmmessage.cpp:1315 kmsettings.cpp:419
+#: kmmessage.cpp:1342 kmsettings.cpp:419
 #, fuzzy
 msgid "Forwarded Message"
 msgstr "Továbbított üzenet"
@@ -715,79 +715,79 @@ msgstr "Címzett: "
 msgid "Failed to add message:"
 msgstr "Sikertelen üzenet:"
 
-#: kmcomposewin.cpp:138 kmheaders.cpp:39
+#: kmcomposewin.cpp:138 kmheaders.cpp:40
 msgid "F"
 msgstr "F"
 
-#: kmheaders.cpp:40
+#: kmheaders.cpp:41
 msgid "Sender"
 msgstr "Feladó"
 
-#: kmheaders.cpp:41
+#: kmheaders.cpp:42
 msgid "Subject"
 msgstr "Tárgy"
 
-#: kmheaders.cpp:42
+#: kmheaders.cpp:43
 msgid "Date"
 msgstr "Dátum"
 
-#: kmheaders.cpp:196
+#: kmheaders.cpp:206
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d üzenet, %d olvasatlan."
 
-#: kmheaders.cpp:198
+#: kmheaders.cpp:208
 msgid "Folder is read-only."
 msgstr "Mappa írásvédett."
 
-#: kmheaders.cpp:245
+#: kmheaders.cpp:255
 #, fuzzy
 msgid "Unknown"
 msgstr "Ismeretlen hiba"
 
-#: kmheaders.cpp:248
+#: kmheaders.cpp:258
 #, fuzzy
 msgid "No Subject"
 msgstr "Tárgy"
 
-#: kmheaders.cpp:308
+#: kmheaders.cpp:318
 msgid "order of arrival"
 msgstr ""
 
-#: kmheaders.cpp:317
+#: kmheaders.cpp:327
 #, fuzzy
 msgid "subject"
 msgstr "Tárgy"
 
-#: kmheaders.cpp:318
+#: kmheaders.cpp:328
 #, fuzzy
 msgid "date"
 msgstr "Dátum"
 
-#: kmheaders.cpp:319
+#: kmheaders.cpp:329
 #, fuzzy
 msgid "sender"
 msgstr "Feladó"
 
-#: kmheaders.cpp:320
+#: kmheaders.cpp:330
 msgid "status"
 msgstr ""
 
-#: kmheaders.cpp:322
+#: kmheaders.cpp:332
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr ""
 
-#: kmheaders.cpp:324
+#: kmheaders.cpp:334
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr ""
 
-#: kmheaders.cpp:420
+#: kmheaders.cpp:430
 msgid "Message(s) saved."
 msgstr "Üzenet(ek) elmentve."
 
-#: kmheaders.cpp:422
+#: kmheaders.cpp:432
 #, fuzzy
 msgid "Failed to save message(s)."
 msgstr "Nem sikerült elmenteni az üzenet(ek)et."

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1998-12-02 01:55+0100\n"
+"POT-Creation-Date: 1998-12-04 01:58+0100\n"
 "PO-Revision-Date: 1998-02-23 08:05 +0100\n"
 "Last-Translator: Vatafu Valerica <wally@chuck.tlnet.de>\n"
 
@@ -510,15 +510,15 @@ msgstr "Înainteazã:"
 msgid "Indentation:"
 msgstr "Indentation:"
 
-#: kmmessage.cpp:1313 kmsettings.cpp:411
+#: kmmessage.cpp:1340 kmsettings.cpp:411
 msgid "On %D, you wrote:"
 msgstr "Tu ai scris în %D :"
 
-#: kmmessage.cpp:1314 kmsettings.cpp:415
+#: kmmessage.cpp:1341 kmsettings.cpp:415
 msgid "On %D, %F wrote:"
 msgstr "În %D a scris %F:"
 
-#: kmmessage.cpp:1315 kmsettings.cpp:419
+#: kmmessage.cpp:1342 kmsettings.cpp:419
 msgid "Forwarded Message"
 msgstr "Mesaj înaintat"
 
@@ -672,79 +672,79 @@ msgstr "Receipt: "
 msgid "Failed to add message:"
 msgstr "Eroare la adãugarea mesajului:"
 
-#: kmcomposewin.cpp:138 kmheaders.cpp:39
+#: kmcomposewin.cpp:138 kmheaders.cpp:40
 msgid "F"
 msgstr "F"
 
-#: kmheaders.cpp:40
+#: kmheaders.cpp:41
 msgid "Sender"
 msgstr "Sender"
 
-#: kmheaders.cpp:41
+#: kmheaders.cpp:42
 msgid "Subject"
 msgstr "Subiect"
 
-#: kmheaders.cpp:42
+#: kmheaders.cpp:43
 msgid "Date"
 msgstr "Data"
 
-#: kmheaders.cpp:196
+#: kmheaders.cpp:206
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d Mesaje, %d necitite."
 
-#: kmheaders.cpp:198
+#: kmheaders.cpp:208
 msgid "Folder is read-only."
 msgstr "Fiºierul este read-only."
 
-#: kmheaders.cpp:245
+#: kmheaders.cpp:255
 #, fuzzy
 msgid "Unknown"
 msgstr "Eroare necunoscutã"
 
-#: kmheaders.cpp:248
+#: kmheaders.cpp:258
 #, fuzzy
 msgid "No Subject"
 msgstr "Subiect"
 
-#: kmheaders.cpp:308
+#: kmheaders.cpp:318
 msgid "order of arrival"
 msgstr ""
 
-#: kmheaders.cpp:317
+#: kmheaders.cpp:327
 #, fuzzy
 msgid "subject"
 msgstr "Subiect"
 
-#: kmheaders.cpp:318
+#: kmheaders.cpp:328
 #, fuzzy
 msgid "date"
 msgstr "Data"
 
-#: kmheaders.cpp:319
+#: kmheaders.cpp:329
 #, fuzzy
 msgid "sender"
 msgstr "Sender"
 
-#: kmheaders.cpp:320
+#: kmheaders.cpp:330
 msgid "status"
 msgstr ""
 
-#: kmheaders.cpp:322
+#: kmheaders.cpp:332
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr ""
 
-#: kmheaders.cpp:324
+#: kmheaders.cpp:334
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr ""
 
-#: kmheaders.cpp:420
+#: kmheaders.cpp:430
 msgid "Message(s) saved."
 msgstr "Mesaj(ele) salvat(e)."
 
-#: kmheaders.cpp:422
+#: kmheaders.cpp:432
 msgid "Failed to save message(s)."
 msgstr "Mesaj(ele) nu poate fi salvat(e)"
 

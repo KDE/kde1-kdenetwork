@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1998-12-02 01:55+0100\n"
+"POT-Creation-Date: 1998-12-04 01:58+0100\n"
 "PO-Revision-Date: 1998-07-03 16:01+0100\n"
 "Last-Translator: Sebastià Pla <sastia@redestb.es>\n"
 "Language-Team: CATALAN <LL@li.org>\n"
@@ -516,15 +516,15 @@ msgstr "Transmetre:"
 msgid "Indentation:"
 msgstr "Entrada:"
 
-#: kmmessage.cpp:1313 kmsettings.cpp:411
+#: kmmessage.cpp:1340 kmsettings.cpp:411
 msgid "On %D, you wrote:"
 msgstr "A %D, vàreu escriure:"
 
-#: kmmessage.cpp:1314 kmsettings.cpp:415
+#: kmmessage.cpp:1341 kmsettings.cpp:415
 msgid "On %D, %F wrote:"
 msgstr "A %D, %F va escriure:"
 
-#: kmmessage.cpp:1315 kmsettings.cpp:419
+#: kmmessage.cpp:1342 kmsettings.cpp:419
 msgid "Forwarded Message"
 msgstr "Missatge transmés"
 
@@ -678,75 +678,75 @@ msgstr "Recepció:"
 msgid "Failed to add message:"
 msgstr "S'ha fallat en afegir el missatge:"
 
-#: kmcomposewin.cpp:138 kmheaders.cpp:39
+#: kmcomposewin.cpp:138 kmheaders.cpp:40
 msgid "F"
 msgstr "T"
 
-#: kmheaders.cpp:40
+#: kmheaders.cpp:41
 msgid "Sender"
 msgstr "Remitent"
 
-#: kmheaders.cpp:41
+#: kmheaders.cpp:42
 msgid "Subject"
 msgstr "Assumpte"
 
-#: kmheaders.cpp:42
+#: kmheaders.cpp:43
 #, fuzzy
 msgid "Date"
 msgstr "Data: "
 
-#: kmheaders.cpp:196
+#: kmheaders.cpp:206
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d Missatges, %d sense llegir."
 
-#: kmheaders.cpp:198
+#: kmheaders.cpp:208
 msgid "Folder is read-only."
 msgstr "La carpeta és de només lectura."
 
-#: kmheaders.cpp:245
+#: kmheaders.cpp:255
 msgid "Unknown"
 msgstr "Desconegut"
 
-#: kmheaders.cpp:248
+#: kmheaders.cpp:258
 msgid "No Subject"
 msgstr "Cap assumpte"
 
-#: kmheaders.cpp:308
+#: kmheaders.cpp:318
 msgid "order of arrival"
 msgstr "ordre d'arribada"
 
-#: kmheaders.cpp:317
+#: kmheaders.cpp:327
 msgid "subject"
 msgstr "assumpte"
 
-#: kmheaders.cpp:318
+#: kmheaders.cpp:328
 msgid "date"
 msgstr "data"
 
-#: kmheaders.cpp:319
+#: kmheaders.cpp:329
 msgid "sender"
 msgstr "remitent"
 
-#: kmheaders.cpp:320
+#: kmheaders.cpp:330
 msgid "status"
 msgstr "estat"
 
-#: kmheaders.cpp:322
+#: kmheaders.cpp:332
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr "S'estàn ordenant els missatges descendent per %s"
 
-#: kmheaders.cpp:324
+#: kmheaders.cpp:334
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr "S'estàn ordenant els missatges ascendent per %s"
 
-#: kmheaders.cpp:420
+#: kmheaders.cpp:430
 msgid "Message(s) saved."
 msgstr "Missatge(s) desat(s)."
 
-#: kmheaders.cpp:422
+#: kmheaders.cpp:432
 msgid "Failed to save message(s)."
 msgstr "S'ha fallat en desar el(s) missatge(s)."
 

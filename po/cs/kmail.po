@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail 0.4.4\n"
-"POT-Creation-Date: 1998-12-02 01:55+0100\n"
+"POT-Creation-Date: 1998-12-04 01:58+0100\n"
 "PO-Revision-Date: 1998-11-05 09:01+01:00\n"
 "Last-Translator: Miroslav Flídr <flidr@ky.zcu.cz>\n"
 "Language-Team: Czech <sc@li.org>\n"
@@ -512,15 +512,15 @@ msgstr "Pøedat dál:"
 msgid "Indentation:"
 msgstr "Odsazení:"
 
-#: kmmessage.cpp:1313 kmsettings.cpp:411
+#: kmmessage.cpp:1340 kmsettings.cpp:411
 msgid "On %D, you wrote:"
 msgstr "Dne %D jste napsal(a):"
 
-#: kmmessage.cpp:1314 kmsettings.cpp:415
+#: kmmessage.cpp:1341 kmsettings.cpp:415
 msgid "On %D, %F wrote:"
 msgstr "Dne %D %F napsal(a):"
 
-#: kmmessage.cpp:1315 kmsettings.cpp:419
+#: kmmessage.cpp:1342 kmsettings.cpp:419
 msgid "Forwarded Message"
 msgstr "Pøedaná zpráva"
 
@@ -673,74 +673,74 @@ msgstr "Pøíjem:"
 msgid "Failed to add message:"
 msgstr "Nepodaøilo se pøidat zprávu:"
 
-#: kmcomposewin.cpp:138 kmheaders.cpp:39
+#: kmcomposewin.cpp:138 kmheaders.cpp:40
 msgid "F"
 msgstr "F"
 
-#: kmheaders.cpp:40
+#: kmheaders.cpp:41
 msgid "Sender"
 msgstr "Odesilatel"
 
-#: kmheaders.cpp:41
+#: kmheaders.cpp:42
 msgid "Subject"
 msgstr "Pøedmìt"
 
-#: kmheaders.cpp:42
+#: kmheaders.cpp:43
 msgid "Date"
 msgstr "Datum"
 
-#: kmheaders.cpp:196
+#: kmheaders.cpp:206
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d zpráv, %d nepøeèteno"
 
-#: kmheaders.cpp:198
+#: kmheaders.cpp:208
 msgid "Folder is read-only."
 msgstr "Poøadaè pøístupný pouze pro ètení."
 
-#: kmheaders.cpp:245
+#: kmheaders.cpp:255
 msgid "Unknown"
 msgstr "Neznámý"
 
-#: kmheaders.cpp:248
+#: kmheaders.cpp:258
 msgid "No Subject"
 msgstr "®ádný pøedmìt"
 
-#: kmheaders.cpp:308
+#: kmheaders.cpp:318
 msgid "order of arrival"
 msgstr "poøadí pøíchodu"
 
-#: kmheaders.cpp:317
+#: kmheaders.cpp:327
 msgid "subject"
 msgstr "pøedmìt"
 
-#: kmheaders.cpp:318
+#: kmheaders.cpp:328
 msgid "date"
 msgstr "datum"
 
-#: kmheaders.cpp:319
+#: kmheaders.cpp:329
 msgid "sender"
 msgstr "odesilatel"
 
-#: kmheaders.cpp:320
+#: kmheaders.cpp:330
 msgid "status"
 msgstr "status"
 
-#: kmheaders.cpp:322
+#: kmheaders.cpp:332
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr "Tøídím zprávy sestupnì podle %s"
 
-#: kmheaders.cpp:324
+#: kmheaders.cpp:334
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr "Tøídím zprávy vzestupnì podle %s"
 
-#: kmheaders.cpp:420
+#: kmheaders.cpp:430
 msgid "Message(s) saved."
 msgstr "Zpráva(y) ulo¾ena(y)"
 
-#: kmheaders.cpp:422
+#: kmheaders.cpp:432
 msgid "Failed to save message(s)."
 msgstr "Nepodaøilo se ulo¾it zprávu(y)."
 

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KMail\n"
-"POT-Creation-Date: 1998-12-02 01:55+0100\n"
+"POT-Creation-Date: 1998-12-04 01:58+0100\n"
 "PO-Revision-Date: 1998-04-29 20:00-0500\n"
 "Last-Translator: Vladimir Vuksan <vuksan@veus.hr>\n"
 "Language-Team: Croatian\n"
@@ -512,15 +512,15 @@ msgstr "Proslijedi:"
 msgid "Indentation:"
 msgstr "Uvlaèenje:"
 
-#: kmmessage.cpp:1313 kmsettings.cpp:411
+#: kmmessage.cpp:1340 kmsettings.cpp:411
 msgid "On %D, you wrote:"
 msgstr "Dana %D napisali ste:"
 
-#: kmmessage.cpp:1314 kmsettings.cpp:415
+#: kmmessage.cpp:1341 kmsettings.cpp:415
 msgid "On %D, %F wrote:"
 msgstr "Dana %D, %F je napisao/la:"
 
-#: kmmessage.cpp:1315 kmsettings.cpp:419
+#: kmmessage.cpp:1342 kmsettings.cpp:419
 msgid "Forwarded Message"
 msgstr "Proslijeðena poruka"
 
@@ -672,74 +672,74 @@ msgstr "Potvrda: "
 msgid "Failed to add message:"
 msgstr "Ne mogu dodati poruku:"
 
-#: kmcomposewin.cpp:138 kmheaders.cpp:39
+#: kmcomposewin.cpp:138 kmheaders.cpp:40
 msgid "F"
 msgstr "D"
 
-#: kmheaders.cpp:40
+#: kmheaders.cpp:41
 msgid "Sender"
 msgstr "Po¹iljatelj"
 
-#: kmheaders.cpp:41
+#: kmheaders.cpp:42
 msgid "Subject"
 msgstr "Tema"
 
-#: kmheaders.cpp:42
+#: kmheaders.cpp:43
 msgid "Date"
 msgstr "Datum"
 
-#: kmheaders.cpp:196
+#: kmheaders.cpp:206
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "Ukupno %d poruka od toga %d neproèitanih"
 
-#: kmheaders.cpp:198
+#: kmheaders.cpp:208
 msgid "Folder is read-only."
 msgstr "Direktorij je samo za èitanje."
 
-#: kmheaders.cpp:245
+#: kmheaders.cpp:255
 msgid "Unknown"
 msgstr "Nepoznato"
 
-#: kmheaders.cpp:248
+#: kmheaders.cpp:258
 msgid "No Subject"
 msgstr "Nema Teme"
 
-#: kmheaders.cpp:308
+#: kmheaders.cpp:318
 msgid "order of arrival"
 msgstr "redoslijed prispjeæa"
 
-#: kmheaders.cpp:317
+#: kmheaders.cpp:327
 msgid "subject"
 msgstr "tema"
 
-#: kmheaders.cpp:318
+#: kmheaders.cpp:328
 msgid "date"
 msgstr "datum"
 
-#: kmheaders.cpp:319
+#: kmheaders.cpp:329
 msgid "sender"
 msgstr "po¹iljatelj"
 
-#: kmheaders.cpp:320
+#: kmheaders.cpp:330
 msgid "status"
 msgstr "status"
 
-#: kmheaders.cpp:322
+#: kmheaders.cpp:332
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr "Sortiraj poruke silazno po %s"
 
-#: kmheaders.cpp:324
+#: kmheaders.cpp:334
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr "Sortiraj poruke uzlazno po %s"
 
-#: kmheaders.cpp:420
+#: kmheaders.cpp:430
 msgid "Message(s) saved."
 msgstr "Poruka(e) spremljena."
 
-#: kmheaders.cpp:422
+#: kmheaders.cpp:432
 msgid "Failed to save message(s)."
 msgstr "Ne mogu spremiti poruku(e)."
 

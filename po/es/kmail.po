@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 1998-12-02 01:55+0100\n"
+"POT-Creation-Date: 1998-12-04 01:58+0100\n"
 "PO-Revision-Date: 1998-10-18 15:38+0200\n"
 "Last-Translator: Alonso Lara <jlaram@nexo.es>\n"
 
@@ -503,15 +503,15 @@ msgstr "Reenviar:"
 msgid "Indentation:"
 msgstr "Sangría márgenes:"
 
-#: kmmessage.cpp:1313 kmsettings.cpp:411
+#: kmmessage.cpp:1340 kmsettings.cpp:411
 msgid "On %D, you wrote:"
 msgstr "El %D, escribiste:"
 
-#: kmmessage.cpp:1314 kmsettings.cpp:415
+#: kmmessage.cpp:1341 kmsettings.cpp:415
 msgid "On %D, %F wrote:"
 msgstr "El %D, %F escribió:"
 
-#: kmmessage.cpp:1315 kmsettings.cpp:419
+#: kmmessage.cpp:1342 kmsettings.cpp:419
 msgid "Forwarded Message"
 msgstr "Mensaje Reenviado"
 
@@ -664,74 +664,74 @@ msgstr "Acuse de recibo: "
 msgid "Failed to add message:"
 msgstr "Fallo al añadir mensaje:"
 
-#: kmcomposewin.cpp:138 kmheaders.cpp:39
+#: kmcomposewin.cpp:138 kmheaders.cpp:40
 msgid "F"
 msgstr "F"
 
-#: kmheaders.cpp:40
+#: kmheaders.cpp:41
 msgid "Sender"
 msgstr "Emisor"
 
-#: kmheaders.cpp:41
+#: kmheaders.cpp:42
 msgid "Subject"
 msgstr "Asunto"
 
-#: kmheaders.cpp:42
+#: kmheaders.cpp:43
 msgid "Date"
 msgstr "Fecha"
 
-#: kmheaders.cpp:196
+#: kmheaders.cpp:206
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d Mensajes, %d no leídos."
 
-#: kmheaders.cpp:198
+#: kmheaders.cpp:208
 msgid "Folder is read-only."
 msgstr "Carpeta de sólo lectura."
 
-#: kmheaders.cpp:245
+#: kmheaders.cpp:255
 msgid "Unknown"
 msgstr "Desconocido"
 
-#: kmheaders.cpp:248
+#: kmheaders.cpp:258
 msgid "No Subject"
 msgstr "Sin Asunto"
 
-#: kmheaders.cpp:308
+#: kmheaders.cpp:318
 msgid "order of arrival"
 msgstr "orden de llegada"
 
-#: kmheaders.cpp:317
+#: kmheaders.cpp:327
 msgid "subject"
 msgstr "asunto"
 
-#: kmheaders.cpp:318
+#: kmheaders.cpp:328
 msgid "date"
 msgstr "fecha"
 
-#: kmheaders.cpp:319
+#: kmheaders.cpp:329
 msgid "sender"
 msgstr "emisor"
 
-#: kmheaders.cpp:320
+#: kmheaders.cpp:330
 msgid "status"
 msgstr "estado"
 
-#: kmheaders.cpp:322
+#: kmheaders.cpp:332
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr "Orden descendiente por %s"
 
-#: kmheaders.cpp:324
+#: kmheaders.cpp:334
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr "Orden ascendiente por %s"
 
-#: kmheaders.cpp:420
+#: kmheaders.cpp:430
 msgid "Message(s) saved."
 msgstr "Mensaje(s) guardados."
 
-#: kmheaders.cpp:422
+#: kmheaders.cpp:432
 msgid "Failed to save message(s)."
 msgstr "Fallo al guardar mensaje(s)."
 

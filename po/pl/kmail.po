@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail \n"
-"POT-Creation-Date: 1998-12-02 01:55+0100\n"
+"POT-Creation-Date: 1998-12-04 01:58+0100\n"
 "PO-Revision-Date: 1998-10-24 05:55+0200\n"
 "Last-Translator: Jacek Stolarczyk <jacek@mer.chemia.polsl.gliwice.pl>\n"
 "Content-Type: text/plain; charset=iso8859-2\n"
@@ -514,15 +514,15 @@ msgstr "Przesy³anie:"
 msgid "Indentation:"
 msgstr "Wciêcie:"
 
-#: kmmessage.cpp:1313 kmsettings.cpp:411
+#: kmmessage.cpp:1340 kmsettings.cpp:411
 msgid "On %D, you wrote:"
 msgstr "On %D, you wrote:"
 
-#: kmmessage.cpp:1314 kmsettings.cpp:415
+#: kmmessage.cpp:1341 kmsettings.cpp:415
 msgid "On %D, %F wrote:"
 msgstr "On %D, %F wrote:"
 
-#: kmmessage.cpp:1315 kmsettings.cpp:419
+#: kmmessage.cpp:1342 kmsettings.cpp:419
 msgid "Forwarded Message"
 msgstr "Forwarded Message"
 
@@ -678,79 +678,79 @@ msgstr "Adres zwrotny: "
 msgid "Failed to add message:"
 msgstr "Dodanie wiadomo¶ci nie powiod³o siê:"
 
-#: kmcomposewin.cpp:138 kmheaders.cpp:39
+#: kmcomposewin.cpp:138 kmheaders.cpp:40
 msgid "F"
 msgstr "F"
 
-#: kmheaders.cpp:40
+#: kmheaders.cpp:41
 msgid "Sender"
 msgstr "Nadawca"
 
-#: kmheaders.cpp:41
+#: kmheaders.cpp:42
 msgid "Subject"
 msgstr "Temat"
 
-#: kmheaders.cpp:42
+#: kmheaders.cpp:43
 msgid "Date"
 msgstr "Data"
 
-#: kmheaders.cpp:196
+#: kmheaders.cpp:206
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d wiadomo¶æ(i), %d nieprzeczytanych. "
 
-#: kmheaders.cpp:198
+#: kmheaders.cpp:208
 msgid "Folder is read-only."
 msgstr "Folder tylko do odczytu."
 
-#: kmheaders.cpp:245
+#: kmheaders.cpp:255
 #, fuzzy
 msgid "Unknown"
 msgstr "Nieznany b³±d"
 
-#: kmheaders.cpp:248
+#: kmheaders.cpp:258
 #, fuzzy
 msgid "No Subject"
 msgstr "Brak tematu"
 
-#: kmheaders.cpp:308
+#: kmheaders.cpp:318
 msgid "order of arrival"
 msgstr "kolejno¶ci otrzymania"
 
-#: kmheaders.cpp:317
+#: kmheaders.cpp:327
 #, fuzzy
 msgid "subject"
 msgstr "tematu"
 
-#: kmheaders.cpp:318
+#: kmheaders.cpp:328
 #, fuzzy
 msgid "date"
 msgstr "daty"
 
-#: kmheaders.cpp:319
+#: kmheaders.cpp:329
 #, fuzzy
 msgid "sender"
 msgstr "nadawcy"
 
-#: kmheaders.cpp:320
+#: kmheaders.cpp:330
 msgid "status"
 msgstr "stanu"
 
-#: kmheaders.cpp:322
+#: kmheaders.cpp:332
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr "Sortowanie wiadomo¶ci malej±co wg %s"
 
-#: kmheaders.cpp:324
+#: kmheaders.cpp:334
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr "Sortowanie wiadomo¶ci rosn±co wg %s"
 
-#: kmheaders.cpp:420
+#: kmheaders.cpp:430
 msgid "Message(s) saved."
 msgstr "Wiadomo¶ci zapisano."
 
-#: kmheaders.cpp:422
+#: kmheaders.cpp:432
 msgid "Failed to save message(s)."
 msgstr "Zapisanie wiadomo¶ci nie powiod³o siê."
 
