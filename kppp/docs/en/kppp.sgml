@@ -7,8 +7,8 @@
 
 <title>The <em/kppp/ Handbook
 <author>Bernd Johannes Wuebben, <tt/wuebben@kde.org/
-<date>Version 1.6.2, February 5, 1999
-<abstract>This Handbook describes <em/kppp/ Version 1.6.2
+<date>Version 1.6.10, April 23, 1999
+<abstract>This Handbook describes <em/kppp/ Version 1.6.10
 
 <!-- Table of contents -->
 <toc>
@@ -67,6 +67,9 @@ proofreading some English text in the program
 <item><url name="Martin Häfner" url="mailto:mh@ap-dec717c.physik.uni-karlsruhe.de"> for the section on <ref id="cb" name="callback">
 <item><url name="Olaf Kirch" url="mailto:okir@caldera.de"> for the introduction
 to the mysteries of file descriptor passing.
+<item><url name="Ian Gordon" url="mailto:ig@cs.strath.ac.uk"> for providing a
+very valuable bugfix.
+serious bugs.
 </itemize>
 <p>
 
@@ -83,8 +86,10 @@ Public License"> (GPL). There is <ref id=warranty name="no warranty"> that this 
 <sect1>How to obtain <em/kppp/
 <p>
 <em/kppp/ is an application for the KDE project <url url="http://www.kde.org">.
-Kppp can be found on <url url="ftp://ftp.kde.org/pub/kde/">, the main ftp site
-of the KDE project.
+It is part of the kdenetwork package that can be found on <url url="ftp://ftp.kde.org/pub/kde/">, the main ftp site
+of the KDE project. The homepage linked to from
+<url url="http://www.kde.org/apphomepages.html"> is currently located at
+<url url="http://devel-home.kde.org/kppp/index.html">.
 
 <sect1>Requirements
 <p>
@@ -207,8 +212,18 @@ the first, /dev/ttyI1 for the second ISDN card and so on. These devices are only
 available in the Linux version
 <item><bf>/dev/modem</bf> - many Linux distributions make a symbolic link from
 the real modem device to /dev/modem. <bf>You should avoid using this
-one</bf>. Use /dev/ttySx (x is a digit) instead of.
+one</bf>. Use /dev/ttySx (x is a digit) instead.
 </itemize>
+
+If you can't get your modem to work at all you should verify that you don't
+have one of those so called <em/WinModems/. Some manufacturers leave out some
+essential hardware capabilities and let the CPU do the work. At the time of
+writing there are no Linux drivers to support these (mostly internal PCI)
+modems since their Windows counterparts are closed-source and the technical
+specifications are not freely available. The following webpage provides
+additional information and has a Linux compatibility database:
+
+<url url="http://www.o2.net/~gromitkc/winmodem.html" name="http://www.o2.net/~gromitkc/winmodem.html">
 
 <tag/Flow Control/ Select from Hardware (CRTSCTS), Software (XON/XOFF) and
 no flow control. The recommended setting is Hardware flow control.
@@ -252,6 +267,10 @@ pause a bit before and after sending the initialization string. The
 "Pre-Init Delay" will be accompanied by sending a CR unless given a delay
 interval of 0.
 
+If you intend to use the ISDN pseudo devices (/dev/ttyIx) you should remove
+the volume commands, choose ATD as dial string and specify your local phone
+number with AT&Ex (see "man ttyI" for further details).
+
 <tag/Query Modem/ Pushing the Query Modem Button will induce <em/kppp/ to ask
 your modem to identify itself. On success your modems response will be
 displayed in a dialog. This may or may not prove to be informative depending
@@ -288,9 +307,7 @@ X-server exits and <em/kppp/ terminates.
 
 <tag/Minimize Window on Connect/ <em/kppp/'s window will be minimized after a connection has been established. The elapsed connection time will be shown in the taskbar.
 
-<tag/Dock into Panel on Connect/ If this option is chosen <em/kppp/ will dock into the panel where it will be symbolized by a small animated icon. Use the left mouse button on this icon to restore <em/kppp/'s window. The right mouse button will open up a popup-menu
-
- that offers to restore the window, show further transfer statistics or close the connection.
+<tag/Dock into Panel on Connect/ If this option is chosen <em/kppp/ will dock into the panel where it will be symbolized by a small animated icon. Use the left mouse button on this icon to restore <em/kppp/'s window. The right mouse button will open up a popup-menu that offers to restore the window, show further transfer statistics or close the connection.
 This option overrides <em>Minimise Window on Connect</em>.
 </descrip>
 <p>
@@ -542,7 +559,7 @@ Send        3                          # choose option 3, i.e. PPP
 <tag/Accounting Setup/ Use the ``Enable accounting'' button to enable/disable
 phone cost accounting. Select a rule  appropriate for your region. If
 you can't find a rule for your region you will have to write one by following
-the supplied <tt>TEMPLATE</tt> in <tt>&dollar{KDEDIR}/share/doc/HTML/en/<em/kppp//</tt>. Don't
+the supplied <tt>TEMPLATE</tt> in <tt>&dollar{KDEDIR}/share/apps/kppp/Rules</tt>. Don't
 be afraid though it is really easy. Don't forget to submit your newly created
 rules file to me. The newly created rules file can be checked for valid
 syntax with the -r rule_file command line option to <em/kppp/ and
@@ -1085,7 +1102,7 @@ somewhat broken, and it will not work as expected.
 
 <sect2>How do I write a telephone cost rules file?<p>
 Just follow the TEMPLATE rules files supplied with <em/kppp/. You should be
-able to find a copy in the <tt>&dollar{KDEDIR}/doc/HTML/kppp</tt>. 
+able to find a copy in the <tt>&dollar{KDEDIR}/share/apps/kppp/Rules</tt>. 
 Use the <tt>-r</tt> <em/kppp/ command line options to check the syntax of your proposed
 rules file.
 <p>
@@ -1093,11 +1110,11 @@ rules file.
 <sect2>I have written a telephone cost rules file for my region. Where can I 
 submit it so that others can make use of it?
 <p>
-I would love to receive any rule files written. I will make them available
-on my <em/kppp/ <url url="http://math.cornell.edu/~wuebben/kppp/kppp.html" name="web page">.
+We would love to receive any rule files written. We will make them available
+on our <em/kppp/ <url url="http://devel-home.kde.org/kppp/index.html" name="web page">.
 Before you send me a new rules file make sure it is not already available on 
-the <em/kppp/ web page. Then email the new rules file  to 
-<url url="mailto:wuebben@math.cornell.edu" name="me">.
+the <em/kppp/ web page. Then email the new rules file to one of the current
+maintainers.
 <p>
 
 <sect2>Can my phone cost rulefile contain fractional time units, e.g. "(0.17,
@@ -1110,7 +1127,7 @@ doubt you'll notice with a modern CPU :-)
 <sect2>My country observes a moving holiday different from easter.<p>
 In that case you need to write new code that allows for the computation of that
 holiday. Please have a look at ruleset.cpp and emulate the ``easter'' example.
-Then send <url url="mailto:wuebben@math.cornell.edu" name="me"> the patches.
+Then send us the patches.
 <p>
 
 <sect2><em/kppp/ tells me "Sorry, the modem is not ready".<p>
@@ -1124,9 +1141,11 @@ The PPP daemon didn't get into contact with the remote server in time.
 Listed below are a few hints that helped several users:
 <itemize>
 <item> Play with the setting of Line Termination (Device tab)
-<item> Add a "Pause 1" scripting command (even if you're using PAP/CHAP)
+<item> Add a "Pause 1" or "Pause 2" scripting command (even if you're using
+PAP or CHAP)
 <item> Increase the pppd timeout (PPP tab)
-<item> Uncheck "Use Lock File" (Device tab)
+<item> Use the real device instead of a symbolic /dev/modem link
+<item> Toggle the "Use Lock File" setting (Device tab)
 </itemize>
 <p>
 

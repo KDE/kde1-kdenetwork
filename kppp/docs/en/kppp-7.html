@@ -275,7 +275,7 @@ somewhat broken, and it will not work as expected.
 <H4>How do I write a telephone cost rules file?</H4>
 
 <P>Just follow the TEMPLATE rules files supplied with <EM>kppp</EM>. You should be
-able to find a copy in the <CODE>${KDEDIR}/doc/HTML/kppp</CODE>. 
+able to find a copy in the <CODE>${KDEDIR}/share/apps/kppp/Rules</CODE>. 
 Use the <CODE>-r</CODE> <EM>kppp</EM> command line options to check the syntax of your proposed
 rules file.
 <P>
@@ -284,10 +284,10 @@ rules file.
 
 <P>I would love to receive any rule files written. I will make them available
 on my <EM>kppp</EM> 
-<A HREF="http://math.cornell.edu/~wuebben/kppp/kppp.html">web page</A>.
+<A HREF="http://devel-home.kde.org/kppp/index.html">web page</A>.
 Before you send me a new rules file make sure it is not already available on 
-the <EM>kppp</EM> web page. Then email the new rules file  to 
-<A HREF="mailto:wuebben@math.cornell.edu">me</A>.
+the <EM>kppp</EM> web page. Then email the new rules file one of the current
+maintainers.
 <P>
 <P>
 <H4>Can my phone cost rulefile contain fractional time units, e.g. "(0.17,45.5)"?</H4>
@@ -300,8 +300,7 @@ doubt you'll notice with a modern CPU :-)
 
 <P>In that case you need to write new code that allows for the computation of that
 holiday. Please have a look at ruleset.cpp and emulate the ``easter'' example.
-Then send 
-<A HREF="mailto:wuebben@math.cornell.edu">me</A> the patches.
+Then send us the patches.
 <P>
 <P>
 <H4><EM>kppp</EM> tells me "Sorry, the modem is not ready".</H4>
@@ -317,9 +316,11 @@ line.
 Listed below are a few hints that helped several users:
 <UL>
 <LI> Play with the setting of Line Termination (Device tab)</LI>
-<LI> Add a "Pause 1" scripting command (even if you're using PAP/CHAP)</LI>
+<LI> Add a "Pause 1" or "Pause 2" scripting command (even if you're using PAP
+or CHAP)</LI>
 <LI> Increase the pppd timeout (PPP tab)</LI>
-<LI> Uncheck "Use Lock File" (Device tab)</LI>
+<LI> Use the real device instead of a symbolic /dev/modem link</LI>
+<LI> Toggle the "Use Lock File" setting (Device tab)</LI>
 </UL>
 <P>
 <P>
