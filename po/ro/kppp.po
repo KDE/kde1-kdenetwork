@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-01-25 13:26+0100\n"
+"POT-Creation-Date: 1998-04-05 14:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Marian Rãdulescu <marian-r@usa.net>\n"
 "Language-Team: ROMANIAN <??@li.org>\n"
@@ -115,164 +115,183 @@ msgstr ""
 msgid "Login script has unbalanced Loop Start/End"
 msgstr "Script de conectare cu bucle Start/End incomplete"
 
-#: connect.cpp:90 connect.cpp:190 main.cpp:750
+#: connect.cpp:99 connect.cpp:201 main.cpp:779
 msgid "Connecting to: "
 msgstr "Comectare la: "
 
-#: connect.cpp:99 connect.cpp:205 miniterm.cpp:163 modeminfo.cpp:63
+#: connect.cpp:108 connect.cpp:216 miniterm.cpp:162 modeminfo.cpp:63
 #: modeminfo.cpp:150
 msgid "Sorry, can't create modem lock file."
 msgstr "Nu se poate bloca accesul la modem"
 
-#: connect.cpp:104 connect.cpp:167 modeminfo.cpp:68
+#: connect.cpp:113 connect.cpp:176 modeminfo.cpp:68
 msgid "Looking for Modem ..."
 msgstr "Detecþie modem ..."
 
-#: connect.cpp:113 debug.cpp:86 main.cpp:763
+#: connect.cpp:122 debug.cpp:86 main.cpp:792
 msgid "Log"
 msgstr "Jurnal"
 
-#: connect.cpp:199 miniterm.cpp:158 modeminfo.cpp:145
+#: connect.cpp:210 miniterm.cpp:157 modeminfo.cpp:145
 msgid "Sorry, modem device is locked."
 msgstr "Modemul nu poate fi accesat."
 
-#: connect.cpp:211 miniterm.cpp:177 miniterm.cpp:254 modeminfo.cpp:165
+#: connect.cpp:222 miniterm.cpp:176 miniterm.cpp:253 modeminfo.cpp:165
 msgid "Modem Ready"
 msgstr "Modemul este pregãtit"
 
-#: connect.cpp:243 connect.cpp:244
+#: connect.cpp:254 connect.cpp:255
 msgid "Initializing Modem..."
 msgstr "Iniþializare modem..."
 
-#: connect.cpp:268
+#: connect.cpp:275
 msgid "Dialing"
 msgstr "Apel"
 
-#: connect.cpp:298
+#: connect.cpp:305
 msgid "Line Busy. Hanging up ..."
 msgstr "Linie ocupatã. Deconectez..."
 
-#: connect.cpp:304
+#: connect.cpp:311
 msgid "Line Busy. Waiting: "
 msgstr "Linie ocupatã. Aºtept: "
 
-#: connect.cpp:306 connect.cpp:395 connect.cpp:414
+#: connect.cpp:313 connect.cpp:430 connect.cpp:449
 msgid " seconds"
 msgstr " secunde"
 
-#: connect.cpp:324
+#: connect.cpp:331
 msgid "No Dialtone"
 msgstr "Nu este ton"
 
-#: connect.cpp:334
+#: connect.cpp:341
 msgid "No Carrier"
 msgstr "Nu este purtatoare"
 
-#: connect.cpp:369
+#: connect.cpp:376
+#, fuzzy
+msgid "Scanning "
+msgstr "Transmit "
+
+#: connect.cpp:387
+#, fuzzy
+msgid "Saving "
+msgstr "Transmit "
+
+#: connect.cpp:405
 msgid "Sending "
 msgstr "Transmit "
 
-#: connect.cpp:381
+#: connect.cpp:416
 msgid "Expecting "
 msgstr "Aºtept "
 
-#: connect.cpp:393
+#: connect.cpp:428
 msgid "Pause "
 msgstr "Pauzã "
 
-#: connect.cpp:412
+#: connect.cpp:447
 msgid "Timeout "
 msgstr "Timeout "
 
-#: connect.cpp:426 connect.cpp:427
+#: connect.cpp:461 connect.cpp:462
 msgid "Hangup"
 msgstr "Deconectare"
 
-#: connect.cpp:440 connect.cpp:441
+#: connect.cpp:475 connect.cpp:476
 msgid "Answer"
 msgstr "Rãspuns"
 
-#: connect.cpp:449
+#: connect.cpp:484
 msgid "ID "
 msgstr "ID"
 
-#: connect.cpp:486
+#: connect.cpp:521
 msgid "Password "
 msgstr "Parolã "
 
-#: connect.cpp:523
+#: connect.cpp:558
 msgid "Prompting "
 msgstr "Prompting "
 
-#: connect.cpp:548
+#: connect.cpp:595
 msgid "PW Prompt "
 msgstr "PW Prompt "
 
-#: connect.cpp:574
+#: connect.cpp:621
 msgid "Loop Start "
 msgstr "Început de buclã "
 
-#: connect.cpp:578
+#: connect.cpp:625
 msgid "ERROR: Nested too deep, ignored."
 msgstr "EROARE: Nivel de imbricare prea adânc."
 
-#: connect.cpp:583
+#: connect.cpp:630
 msgid "Loops nested too deeply!"
 msgstr "Bucle imbricate prea adânc!"
 
-#: connect.cpp:601
+#: connect.cpp:648
 msgid "LoopEnd without mathing Start! Line: "
 msgstr "Bucla cu END farã START! Linia: "
 
-#: connect.cpp:655
+#: connect.cpp:725
 msgid "Starting pppd ..."
 msgstr "Pornesc pppd ..."
 
-#: connect.cpp:715 connect.cpp:741
+#: connect.cpp:785 connect.cpp:811
 msgid "unknown speed"
 msgstr "viteza nedeterminatã"
 
-#: connect.cpp:768
+#: connect.cpp:849
+msgid "Scan Var: "
+msgstr ""
+
+#: connect.cpp:860
 msgid "Found: "
 msgstr "Am gãsit: "
 
-#: connect.cpp:779
+#: connect.cpp:872
 msgid "Looping: "
 msgstr "Buclã: "
 
-#: connect.cpp:805 modeminfo.cpp:333
+#: connect.cpp:903 modeminfo.cpp:333
 msgid "One Moment Please ..."
 msgstr "Aºteptaþi puþin ..."
 
-#: connect.cpp:848
+#: connect.cpp:946
 msgid "Script timed out!"
 msgstr "Script timed out!"
 
-#: connect.cpp:875
+#: connect.cpp:972
+#, fuzzy
+msgid "Scanning: "
+msgstr "Transmit "
+
+#: connect.cpp:983
 msgid "Expecting: "
 msgstr "Aºtept: "
 
-#: connect.cpp:907
+#: connect.cpp:1017
 msgid "Logging on to Network ..."
 msgstr "Se face conectarea in reþea ..."
 
-#: connect.cpp:933
+#: connect.cpp:1043
 msgid "Running Startup Command ..."
 msgstr "Execut comenzile de pornire ..."
 
-#: connect.cpp:998
+#: connect.cpp:1108
 msgid "Sorry, can't open modem."
 msgstr "Nu se poate accesa modemul."
 
-#: connect.cpp:1005
+#: connect.cpp:1115
 msgid "Sorry, the modem is not ready."
 msgstr "Modemul nu este pregãtit."
 
-#: connect.cpp:1013 connect.cpp:1054 modeminfo.cpp:375
+#: connect.cpp:1123 connect.cpp:1164 modeminfo.cpp:375
 msgid "Sorry, the modem is busy."
 msgstr "Modemul este ocupat."
 
-#: connect.cpp:1290
+#: connect.cpp:1395
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
@@ -280,27 +299,31 @@ msgstr ""
 "Linia de comandaã pentru pppd depãºeºte 2024 de\n"
 "caractere. Ce încercaþi sã faceti?"
 
-#: conwindow.cpp:44
+#: conwindow.cpp:45
 msgid "Connected at:"
 msgstr "Conectat la:"
 
-#: conwindow.cpp:50
+#: conwindow.cpp:51
 msgid "Time connected:"
 msgstr "Durata conectãrii:"
 
 #: conwindow.cpp:56
+msgid "Volume:"
+msgstr ""
+
+#: conwindow.cpp:60
 msgid "Session Bill:"
 msgstr "Cost sesiune:"
 
-#: conwindow.cpp:58
+#: conwindow.cpp:62
 msgid "Total Bill:"
 msgstr "Cost total:"
 
-#: conwindow.cpp:64 docking.cpp:75
+#: conwindow.cpp:68 docking.cpp:75
 msgid "Disconnect"
 msgstr "Deconectare"
 
-#: conwindow.cpp:68 docking.cpp:73
+#: conwindow.cpp:72 docking.cpp:73
 msgid "Details"
 msgstr "Detalii"
 
@@ -336,11 +359,16 @@ msgstr "Script"
 msgid "PAP"
 msgstr "PAP"
 
-#: edit.cpp:80
+#: edit.cpp:75
+#, fuzzy
+msgid "Terminal-based"
+msgstr "Terminal"
+
+#: edit.cpp:81
 msgid "Store password"
 msgstr "Memoreazã parola"
 
-#: edit.cpp:86
+#: edit.cpp:87
 msgid ""
 "Execute program\n"
 "upon connect:"
@@ -348,7 +376,7 @@ msgstr ""
 "Dupã conectare, se\n"
 "executã programul:"
 
-#: edit.cpp:98
+#: edit.cpp:99
 msgid ""
 "Execute program\n"
 "upon disconnect:"
@@ -356,71 +384,71 @@ msgstr ""
 "Dupã deconectare, se\n"
 "executã programul:"
 
-#: edit.cpp:110
+#: edit.cpp:111
 msgid "Edit pppd arguments:"
 msgstr "Editare argumente pppd"
 
-#: edit.cpp:116
+#: edit.cpp:117
 msgid "Arguments"
 msgstr "Argumente"
 
-#: edit.cpp:171
+#: edit.cpp:172
 msgid "IP Setup"
 msgstr "Configurare IP"
 
-#: edit.cpp:178
+#: edit.cpp:179
 msgid "IP Address:"
 msgstr "Adresa IP:"
 
-#: edit.cpp:183
+#: edit.cpp:184
 msgid "Subnet Mask:"
 msgstr "Masca de reþea:"
 
-#: edit.cpp:191
+#: edit.cpp:192
 msgid "Dynamic IP Address"
 msgstr "Adresã IP dinamicã "
 
-#: edit.cpp:194
+#: edit.cpp:195
 msgid "Static IP Address"
 msgstr "Adresã IP staticã "
 
-#: edit.cpp:198
+#: edit.cpp:199
 msgid "Auto-configure hostname from this IP"
 msgstr "Configureazã automat numele sistemului pentru acest IP"
 
-#: edit.cpp:312
+#: edit.cpp:313
 msgid "DNS Servers"
 msgstr "Servere DNS"
 
-#: edit.cpp:328
+#: edit.cpp:329
 msgid "Domain Name:"
 msgstr "Nume domeniu:"
 
-#: edit.cpp:340
+#: edit.cpp:341
 msgid "DNS IP Address:"
 msgstr "Adresã IP pt DNS:"
 
-#: edit.cpp:373
+#: edit.cpp:374
 msgid "DNS Address List:"
 msgstr "Lista de adrese DNS:"
 
-#: edit.cpp:383
+#: edit.cpp:384
 msgid "Disable existing DNS Servers during Connection"
 msgstr "Dezactiveazã serverele DNS existente, pe durata conectãrii"
 
-#: edit.cpp:436
+#: edit.cpp:437
 msgid "Gateway Setup"
 msgstr "Configurare Gateway"
 
-#: edit.cpp:445
+#: edit.cpp:446
 msgid "Default Gateway"
 msgstr "Gateway implicit "
 
-#: edit.cpp:449
+#: edit.cpp:450
 msgid "Static Gateway"
 msgstr "Gateway static "
 
-#: edit.cpp:455
+#: edit.cpp:456
 msgid ""
 "Gateway\n"
 "IP Address:"
@@ -428,19 +456,19 @@ msgstr ""
 "Adresa IP\n"
 "pentru Gateway: "
 
-#: edit.cpp:457
+#: edit.cpp:458
 msgid "Assign the Default Route to this Gateway"
 msgstr "Asigneazã ruta implicitã la acest Gateway"
 
-#: edit.cpp:556
+#: edit.cpp:557
 msgid "Edit Script"
 msgstr "Editare script"
 
-#: edit.cpp:562
+#: edit.cpp:563
 msgid "Use default script"
 msgstr "Utilizare script implicit"
 
-#: edit.cpp:579
+#: edit.cpp:580
 msgid "Insert"
 msgstr "Inserare"
 
@@ -504,7 +532,6 @@ msgstr ""
 "Bernd Johannes Wuebben\n"
 "wuebben@math.cornell.edu"
 
-
 #: general.cpp:211
 msgid ""
 "With contributions from:\n"
@@ -555,7 +582,7 @@ msgstr "Fiºier de blocare a modemului:"
 msgid "Modem Timeout:"
 msgstr "Modem Timeout:"
 
-#: general.cpp:433 main.cpp:477
+#: general.cpp:433 main.cpp:489
 msgid "Modem"
 msgstr "Modem"
 
@@ -563,51 +590,47 @@ msgstr "Modem"
 msgid "Busy Wait:"
 msgstr "Pt. line ocupata se aºteaptã:"
 
-#: general.cpp:471
-msgid "Modem sustains fast initialization."
-msgstr "Modemul suportã iniþializare rapidã."
-
-#: general.cpp:484
+#: general.cpp:473
 msgid "Modem Asserts CD Line."
 msgstr "Modem Asserts CD Line."
 
-#: general.cpp:500
+#: general.cpp:489
 msgid "Modem Commands"
 msgstr "Comenzi modem"
 
-#: general.cpp:501
+#: general.cpp:490
 msgid "Query Modem"
 msgstr "Interogare modem"
 
-#: general.cpp:502
+#: general.cpp:491
 msgid "Terminal"
 msgstr "Terminal"
 
-#: main.cpp:304
+#: main.cpp:313
 msgid "Connect to: "
 msgstr "Conectare la: "
 
-#: main.cpp:315
+#: main.cpp:324
 msgid "Login ID:"
 msgstr "Nume de conectare:"
 
-#: main.cpp:327
+#: main.cpp:336
 msgid "Password:"
 msgstr "Parola de conectare:"
 
-#: main.cpp:344
+#: main.cpp:353
 msgid "Show Log Window"
 msgstr "Afiºare fereastra de jurnale"
 
-#: main.cpp:366
+#: main.cpp:375
 msgid "Setup"
 msgstr "Configurare"
 
-#: main.cpp:381
+#: main.cpp:390
 msgid "Connect"
 msgstr "Conectare"
 
-#: main.cpp:446
+#: main.cpp:458
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -616,27 +639,23 @@ msgstr ""
 "Nu existã un asemenea cont:\n"
 "%s"
 
-#: main.cpp:463
+#: main.cpp:475
 msgid "kppp Configuration"
 msgstr "Configurare kppp"
 
-#: main.cpp:475
+#: main.cpp:487
 msgid "Accounts"
 msgstr "Conturi"
 
-#: main.cpp:476
+#: main.cpp:488
 msgid "Device"
 msgstr "Dispozitiv"
 
-#: main.cpp:478
+#: main.cpp:490
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:645
-msgid "The pppd daemon died unexpectedly!"
-msgstr "Execuþia pppd s-a terminat în mod neºteptat!"
-
-#: main.cpp:685
+#: main.cpp:714
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -650,10 +669,9 @@ msgstr ""
 " %s\n"
 "Instalaþi corect pppd ºi/sau corectaþi locaþia pentru pppd\n"
 "în fila 'PPP' din dialogul de configurare.\n"
-""
 "Mulþumesc!"
 
-#: main.cpp:697
+#: main.cpp:726
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -666,7 +684,7 @@ msgstr ""
 "Verificaþi dacã aveþi datã permisia de setuid pentru kppp ºi dacã\n"
 "kppp este execuatbil."
 
-#: main.cpp:711
+#: main.cpp:740
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -686,7 +704,7 @@ msgstr ""
 "fila 'Modem' a dialogului de\n"
 "configurare. Mulþumesc!"
 
-#: main.cpp:731
+#: main.cpp:760
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -696,7 +714,7 @@ msgstr ""
 "PAP. Aceasta necesita furnizarea unui\n"
 "nume si a unei parole pentru login."
 
-#: main.cpp:738
+#: main.cpp:767
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -705,15 +723,15 @@ msgstr ""
 "Nu se poate crea fiºierul de autentificare\n"
 "PAP \"%s\""
 
-#: main.cpp:815
+#: main.cpp:844
 msgid "Quit kPPP?"
 msgstr "Închideþi kPPP?"
 
-#: main.cpp:816
+#: main.cpp:845
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Închizând kPPP, veþi termina sesiunea PPP."
 
-#: main.cpp:849
+#: main.cpp:880
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
@@ -733,55 +751,60 @@ msgstr "ªir de iniþializare:"
 msgid "Init Response:"
 msgstr "Mesaj la iniþializare:"
 
-#: modemcmds.cpp:68
-msgid "ªir pt. apel:"
-msgstr "Sir pt. apel"
+#: modemcmds.cpp:86
+msgid "Init Delay (sec/100):"
+msgstr ""
 
-#: modemcmds.cpp:75
+#: modemcmds.cpp:91
+#, fuzzy
+msgid "Dial String:"
+msgstr "Apel"
+
+#: modemcmds.cpp:98
 msgid "Connect Response:"
 msgstr "Mesaj la conectare:"
 
-#: modemcmds.cpp:82
+#: modemcmds.cpp:105
 msgid "Busy Response:"
 msgstr "Mesaj la Ocupat:"
 
-#: modemcmds.cpp:89
+#: modemcmds.cpp:112
 msgid "No Carrier Resonse:"
 msgstr "Mesaj la Nu este purtãtoare:"
 
-#: modemcmds.cpp:96
+#: modemcmds.cpp:119
 msgid "No Dialtone Response:"
 msgstr "Mesaj la Nu este ton:"
 
-#: modemcmds.cpp:103
+#: modemcmds.cpp:126
 msgid "Hangup String:"
 msgstr "ªir de deconectare:"
 
-#: modemcmds.cpp:110
+#: modemcmds.cpp:133
 msgid "Hangup Response:"
 msgstr "Mesaj la Deconectare"
 
-#: modemcmds.cpp:117
+#: modemcmds.cpp:140
 msgid "Answer String:"
 msgstr "ªir pt Raspuns:"
 
-#: modemcmds.cpp:124
+#: modemcmds.cpp:147
 msgid "Ring Response:"
 msgstr "Mesaj la Sonerie"
 
-#: modemcmds.cpp:131
+#: modemcmds.cpp:154
 msgid "Answer Response:"
 msgstr "Mesaj la Raspuns:"
 
-#: modemcmds.cpp:138
+#: modemcmds.cpp:161
 msgid "Escape String:"
 msgstr "ªir Escape"
 
-#: modemcmds.cpp:145
+#: modemcmds.cpp:168
 msgid "Escape Response:"
 msgstr "Mesaj la Escape"
 
-#: modemcmds.cpp:172
+#: modemcmds.cpp:195
 msgid "Guard Time (sec/50):"
 msgstr "Guard Time (sec/50):"
 
@@ -815,7 +838,7 @@ msgstr "Interogare ATI"
 msgid "Modem Query timed out."
 msgstr "Timp de interogare depaºit."
 
-#: miniterm.cpp:278 modeminfo.cpp:369
+#: miniterm.cpp:277 modeminfo.cpp:369
 msgid "Can't open Modem"
 msgstr "Nu pot deschide modemul"
 
@@ -827,107 +850,107 @@ msgstr "Modemul este ocupat"
 msgid "Modem Query Results"
 msgstr "Rezultate interogare modem"
 
-#: pppstatdlg.cpp:69
+#: pppstatdlg.cpp:70
 msgid "kppp Statistics"
 msgstr "Statistici kppp"
 
-#: pppstatdlg.cpp:74
+#: pppstatdlg.cpp:75
 msgid "Statistics"
 msgstr "Statistici"
 
-#: pppstatdlg.cpp:147
+#: pppstatdlg.cpp:148
 msgid "Local Addr:"
 msgstr "Adresã localã: "
 
-#: pppstatdlg.cpp:153
+#: pppstatdlg.cpp:154
 msgid "Remote Addr:"
 msgstr "Adresa remote: "
 
-#: pppstatdlg.cpp:185
+#: pppstatdlg.cpp:186
 msgid "bytes in"
 msgstr "bytes in"
 
-#: pppstatdlg.cpp:186
+#: pppstatdlg.cpp:187
 msgid "bytes out"
 msgstr "bytes out"
 
-#: pppstatdlg.cpp:188
+#: pppstatdlg.cpp:189
 msgid "packets in"
 msgstr "packets in"
 
-#: pppstatdlg.cpp:189
+#: pppstatdlg.cpp:190
 msgid "packets out"
 msgstr "packets out"
 
-#: pppstatdlg.cpp:191
+#: pppstatdlg.cpp:192
 msgid "vjcomp in"
 msgstr "vjcomp in"
 
-#: pppstatdlg.cpp:192
+#: pppstatdlg.cpp:193
 msgid "vjcomp out"
 msgstr "vjcomp out"
 
-#: pppstatdlg.cpp:194
+#: pppstatdlg.cpp:195
 msgid "vjunc in"
 msgstr "vjunc in"
 
-#: pppstatdlg.cpp:195
+#: pppstatdlg.cpp:196
 msgid "vjunc out"
 msgstr "vjunc out"
 
-#: pppstatdlg.cpp:197
+#: pppstatdlg.cpp:198
 msgid "vjerr"
 msgstr "vjerr"
 
-#: pppstatdlg.cpp:198
+#: pppstatdlg.cpp:199
 msgid "non-vj"
 msgstr "nin-vj"
 
-#: pppstatdlg.cpp:351 pppstatdlg.cpp:358
+#: pppstatdlg.cpp:355 pppstatdlg.cpp:362
 msgid "unavailable"
 msgstr "nu este disponibil"
 
-#: miniterm.cpp:53
+#: miniterm.cpp:52
 msgid "Kppp Mini-Terminal"
 msgstr "Mini Terminal Kppp"
 
-#: miniterm.cpp:59
+#: miniterm.cpp:58
 msgid "&Reset Modem"
 msgstr "&Resetare modem"
 
-#: miniterm.cpp:65
+#: miniterm.cpp:64
 msgid "&Modem"
 msgstr "&Modem"
 
-#: miniterm.cpp:108
+#: miniterm.cpp:107
 msgid "Quit MiniTerm"
 msgstr "Închide MiniTerm"
 
-#: miniterm.cpp:114
+#: miniterm.cpp:113
 msgid "Reset Modem"
 msgstr "Resetare modem"
 
-#: miniterm.cpp:152
+#: miniterm.cpp:151
 msgid "Initializing Modem"
 msgstr "Iniþializare modem"
 
-#: miniterm.cpp:224
+#: miniterm.cpp:223
 msgid "Hanging up ..."
 msgstr "Deconectare ..."
 
-#: miniterm.cpp:244
+#: miniterm.cpp:243
 msgid "Resetting Modem"
 msgstr "Resetare modem"
 
-#: miniterm.cpp:263
+#: miniterm.cpp:262
 msgid "Can't restore tty settings: tcsetattr()\n"
 msgstr "Nu se poate reface configurarea tty: tcsetattr()\n"
 
-#: miniterm.cpp:284
+#: miniterm.cpp:283
 msgid "tcgetattr() failed\n"
 msgstr "tcgetattr() eºuat\n"
 
-#: miniterm.cpp:331
+#: miniterm.cpp:330
 msgid "tcsetattr() failed\n"
 msgstr "tcsetattr() eºuat\n"
 
@@ -964,7 +987,12 @@ msgstr "Activare tarife"
 msgid "Selected:"
 msgstr "S-a selectat:"
 
-#: acctselect.cpp:147 acctselect.cpp:253
+#: acctselect.cpp:84
+#, fuzzy
+msgid "Volume accounting"
+msgstr "Activare tarife"
+
+#: acctselect.cpp:154 acctselect.cpp:260
 msgid "Available rules"
 msgstr "Tarife disponibile"
 
@@ -1010,7 +1038,7 @@ msgstr "Restaurare"
 msgid "Minimize"
 msgstr "Minimizare"
 
-#: runtests.cpp:97
+#: runtests.cpp:98
 msgid ""
 "Cannot find the pppd-daemon!\n"
 "\n"
@@ -1022,7 +1050,7 @@ msgstr ""
 "Verificaþi daca pppd este instalat si dacã\n"
 "aþi introdus calea corectã pentru executie.\n"
 
-#: runtests.cpp:109
+#: runtests.cpp:110
 msgid ""
 "You do not have the permission\n"
 "to start pppd!\n"
@@ -1036,7 +1064,7 @@ msgstr ""
 "Cantactaþi administratorul de sistem\n"
 "ºi cereþi drepturi de acces la pppd."
 
-#: runtests.cpp:120
+#: runtests.cpp:121
 msgid ""
 "pppd is not properly installed!\n"
 "\n"
@@ -1050,7 +1078,7 @@ msgstr ""
 "activat. Contactaþi administratorul\n"
 "de sistem."
 
-#: runtests.cpp:141
+#: runtests.cpp:142
 #, c-format
 msgid ""
 "The logviewer \"%s\" was not found!\n"
@@ -1060,3 +1088,21 @@ msgstr ""
 "Programul pentru vizualizarea jurnalelor\n"
 "\"%s\" nu poate fi gãsit!\n"
 "Se va folosi \"%s\"."
+
+#: runtests.cpp:166
+msgid ""
+"kppp has detected a 'lock' option in /etc/ppp/options.\n"
+"\n"
+"This option has to be removed since kppp takes care of device locking "
+"itself.\n"
+"Contact your system administrator."
+msgstr ""
+
+#~ msgid "Modem sustains fast initialization."
+#~ msgstr "Modemul suportã iniþializare rapidã."
+
+#~ msgid "The pppd daemon died unexpectedly!"
+#~ msgstr "Execuþia pppd s-a terminat în mod neºteptat!"
+
+#~ msgid "ªir pt. apel:"
+#~ msgstr "Sir pt. apel"
