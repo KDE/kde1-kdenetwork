@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 1998-01-16 22:13+0100\n"
+"POT-Creation-Date: 1998-01-19 22:19+0100\n"
 "Content-Type: text/plain; charset=\n"
 "Date: 1997-10-28 22:45:13+0100\n"
 "From: Bertrand Leconte,,, <leconteb@arthur>\n"
@@ -14,11 +14,11 @@ msgstr "&Ping"
 
 #: knu.cpp:132 knu.cpp:261
 msgid "&Traceroute"
-msgstr "&Traceroute"
+msgstr "&Tracear Ruta"
 
 #: knu.cpp:141 knu.cpp:266
 msgid "Host &resolution"
-msgstr "&Resolución de servidor"
+msgstr "&Resolver Máquina"
 
 #: knu.cpp:156
 msgid ""
@@ -30,7 +30,7 @@ msgstr ""
 "No hay ningún comando disponible\n"
 "en el fichero de configuración.\n"
 "\n"
-"Imposible realizar ninguna operción.\n"
+"Imposible realizar ninguna operación.\n"
 
 #: knu.cpp:201
 msgid "&New window"
@@ -54,7 +54,7 @@ msgstr "P&referencias..."
 
 #: knu.cpp:226
 msgid "&Contents"
-msgstr "&Contenido"
+msgstr "&Contenidos"
 
 #: knu.cpp:231
 msgid "About &Qt"
@@ -66,7 +66,7 @@ msgstr "Acerca de..."
 
 #: CommandDlg.cpp:112
 msgid "H&ost:"
-msgstr "&Servidor"
+msgstr "&Servidor:"
 
 #: CommandDlg.cpp:121
 msgid "&Go!"
@@ -74,7 +74,7 @@ msgstr "&Iniciar"
 
 #: CommandDlg.cpp:131
 msgid "&Stop"
-msgstr "&Parar"
+msgstr "&Detener"
 
 #: CommandDlg.cpp:147
 msgid ""
@@ -109,14 +109,12 @@ msgid "Make host &name resolution"
 msgstr "Resolver el nombre del servidor"
 
 #: HostDlg.cpp:220 PingDlg.cpp:146 TracerouteDlg.cpp:168
-#, fuzzy
 msgid ""
 "You have a problem in your ~/.kde/share/config/knurc configuration file.\n"
 "In the ["
 msgstr ""
-"Existe un problema en su fichero de configuración "
-"~/.kderc/share/config/knurc\n"
-"En el grupo["
+"Existe un problema en su fichero de configuración ~/.kde/share/config/knurc\n"
+"En el grupo ["
 
 #: HostDlg.cpp:224 PingDlg.cpp:150 TracerouteDlg.cpp:172
 msgid "] group, I cannotfind a correct \"path=\" entry."
@@ -140,7 +138,7 @@ msgstr "servidor de nombres (NS)"
 
 #: HostDlg.cpp:104
 msgid "mail exchanger (MX)"
-msgstr "pasarela de correo (MX)"
+msgstr "intercambiador de correo (MX)"
 
 #: HostDlg.cpp:105
 msgid "alias (CNAME)"
@@ -165,28 +163,3 @@ msgstr "servidor predeterminado"
 #: HostDlg.cpp:134
 msgid "Ser&ver:"
 msgstr "Ser&vidor:"
-
-#, fuzzy
-#~ msgid "&OK"
-#~ msgstr "C&ontinuar"
-
-#~ msgid "&Cancel"
-#~ msgstr "&Cancelar"
-
-#~ msgid "&About"
-#~ msgstr "&Acerca de"
-
-#~ msgid "&Quit"
-#~ msgstr "&Salir"
-
-#~ msgid "&Copy"
-#~ msgstr "&Copiar"
-
-#~ msgid "&File"
-#~ msgstr "&Fichero"
-
-#~ msgid "&Edit"
-#~ msgstr "&Editar"
-
-#~ msgid "&Help"
-#~ msgstr "&Ayuda"
