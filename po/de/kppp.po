@@ -364,12 +364,11 @@ msgstr ""
 "Programm aus:"
 
 #: edit.cpp:100
-#, fuzzy
 msgid ""
 "Execute program\n"
 "before disconnect:"
 msgstr ""
-"Führe nach Trennung\n"
+"Führe vor Trennung\n"
 "Programm aus:"
 
 #: edit.cpp:112
@@ -560,7 +559,7 @@ msgstr "Geschwindigkeit:"
 
 #: general.cpp:343
 msgid "Lock File Directory:"
-msgstr ""
+msgstr "Verzeichnis für Lock-Datei:"
 
 #: general.cpp:360
 msgid "Modem Timeout:"

@@ -76,13 +76,12 @@ msgstr ""
 "und sein gesamter Inhalt gelöscht werden soll?"
 
 #: kmmainwin.cpp:478
-#, fuzzy
 msgid "KMail notification!"
-msgstr "KMail Hinweis"
+msgstr "KMail Benachrichtigung!"
 
 #: kmmainwin.cpp:479
 msgid "Only messages in the outbox folder can be edited!"
-msgstr ""
+msgstr "Nur Nachrichten im Postausgang können editiert werden!"
 
 #: kmmainwin.cpp:514
 msgid "Message as Plain Text"
@@ -249,9 +248,8 @@ msgid "Previous unread"
 msgstr "Letzte un&gelesene"
 
 #: kmmainwin.cpp:940
-#, fuzzy
 msgid "Edi&t..."
-msgstr "&Drucken..."
+msgstr "Bearbei&ten..."
 
 #: kmmainwin.cpp:943
 msgid "&Set Status"
@@ -355,9 +353,8 @@ msgstr "Initialisiere..."
 
 #: kmfolderdia.cpp:38 kmmsgpartdlg.cpp:62 kmsettings.cpp:176
 #: kmsettings.cpp:869
-#, fuzzy
 msgid "Name:"
-msgstr "Benutzername:"
+msgstr "Name:"
 
 #: kmcomposewin.cpp:1451 kmfolderdia.cpp:44 kmfolderdia.cpp:120
 msgid "unnamed"
@@ -433,7 +430,7 @@ msgstr "Postfächer:  (mindest ein Postfach hinzufügen!)"
 
 #: kmcomposewin.cpp:135 kmsettings.cpp:269
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 #: kmcomposewin.cpp:138 kmsettings.cpp:270
 msgid "Type"
@@ -569,11 +566,11 @@ msgstr "Mülleimer bei Beenden leeren"
 
 #: kmsettings.cpp:541
 msgid "Send Mail in outbox Folder on Check"
-msgstr ""
+msgstr "Sende Email im Postausgang beim Nachsehen"
 
 #: kmsettings.cpp:556
 msgid "Misc"
-msgstr ""
+msgstr "Weiteres"
 
 #: kmsettings.cpp:580
 msgid "Message Body Font"
@@ -600,9 +597,8 @@ msgid "Choose Signature File"
 msgstr "Unterschrift-Datei auswählen"
 
 #: kmsettings.cpp:861
-#, fuzzy
 msgid "Type:"
-msgstr "Typ"
+msgstr "Typ:"
 
 #: kmsettings.cpp:874
 msgid "Local Account"
@@ -630,7 +626,7 @@ msgstr "Lösche Nachrichten vom Server"
 
 #: kmsettings.cpp:907
 msgid "Enable interval Mail checking"
-msgstr ""
+msgstr "Schalte regelmäßiges Nachsehen an"
 
 #: kmsettings.cpp:921
 msgid "Store new mail in account:"
@@ -665,9 +661,8 @@ msgid "Subject"
 msgstr "Betreff"
 
 #: kmheaders.cpp:42
-#, fuzzy
 msgid "Date"
-msgstr "Datum: "
+msgstr "Datum"
 
 #: kmheaders.cpp:187
 #, c-format
@@ -730,7 +725,7 @@ msgstr "Nachricht erstellen"
 
 #: kmcomposewin.cpp:136
 msgid "Size"
-msgstr ""
+msgstr "Größe"
 
 #: kmcomposewin.cpp:137
 msgid "Encoding"
@@ -877,9 +872,8 @@ msgid "&Attach"
 msgstr "&Anhängen..."
 
 #: kmcomposewin.cpp:547
-#, fuzzy
 msgid "Send message"
-msgstr "Sende Nachrichten:"
+msgstr "Sende Nachrichten"
 
 #: kmcomposewin.cpp:571
 msgid "Cut selection"
@@ -975,9 +969,8 @@ msgid "Subject:"
 msgstr "Betreff:"
 
 #: kmcomposewin.cpp:1473
-#, fuzzy
 msgid "Date:"
-msgstr "Datum: "
+msgstr "Datum:"
 
 #: kmcomposewin.cpp:1582
 msgid "KMail: Spellcheck"
@@ -1159,11 +1152,9 @@ msgid "Unknown command line option: %s"
 msgstr "Unbekannter Befehlszeilen-Parameter: %s"
 
 #: kmacctlocal.cpp:76
-#, fuzzy
 msgid "Cannot open file:"
 msgstr ""
-"Konnte Datei nicht öffnen:\n"
-"%s"
+"Konnte Datei nicht öffnen:"
 
 #: kmacctlocal.cpp:105
 #, c-format
@@ -1493,18 +1484,18 @@ msgid "Bad pass Phrase; couldn't decrypt"
 msgstr "Falsches Passwort; konnte nicht entschlüsseln"
 
 #: kpgp.cpp:836
-#, fuzzy, c-format
 msgid ""
 "Could not find public keys matching the\n"
 "userid(s) %s. These persons won't be able\n"
 "to read the message."
 msgstr ""
-"öffentlicher Schlüssel für %s nicht gefunden.\n"
-"Diese Person kann keine Nachrichten entschlüsseln."
+"Öffentlicher Schlüssel für Benutzer %s nicht gefunden.\n"
+"Diese Person(en) werden diese Nachrichten nicht\n"
+"entschlüsseln können"
 
 #: kpgp.cpp:848
 msgid "Could not find public keys for some persons.\n"
-msgstr ""
+msgstr "Konnte öffentliche Schlüssel für einige Personen nicht finden\n"
 
 #: kpgp.cpp:861
 msgid "Bad pass Phrase; couldn't sign"
