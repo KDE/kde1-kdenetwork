@@ -222,12 +222,11 @@ int KMMsgBase::compareByIndex(const KMMsgBase* other) const
 int KMMsgBase::compareBySubject(const KMMsgBase* other) const
 {
   //const char *subjStr, *otherSubjStr;
-  QString subjStr, otherSubjStr;
   bool hasKeywd, otherHasKeywd;
   int rc;
 
-  subjStr = skipKeyword(subject(), ':', &hasKeywd);
-  otherSubjStr = skipKeyword(other->subject(), ':', &otherHasKeywd);
+  QString subjStr = skipKeyword(subject(), ':', &hasKeywd);
+  QString otherSubjStr = skipKeyword(other->subject(), ':', &otherHasKeywd);
 
   rc = stricmp(subjStr, otherSubjStr);
   if (rc) return rc;
@@ -279,7 +278,7 @@ int KMMsgBase::compareByFrom(const KMMsgBase* other) const
 
 
 //-----------------------------------------------------------------------------
-const char* KMMsgBase::skipKeyword(const QString aStr, char sepChar,
+QString KMMsgBase::skipKeyword(const QString aStr, char sepChar,
 				   bool* hasKeyword)
 {
   int i, maxChars=3;
