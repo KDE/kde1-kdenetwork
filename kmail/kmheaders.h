@@ -87,6 +87,7 @@ public slots:
   void msgAdded(int);
   void msgRemoved(int);
   void headerClicked(int);
+  void sortAndShow();
   void nextMessage();
   void prevMessage();
   void nextUnreadMessage();

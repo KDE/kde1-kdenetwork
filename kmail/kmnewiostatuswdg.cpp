@@ -4,6 +4,7 @@
 
 #include <iostream.h>
 #include <kapp.h>
+#include <kwm.h>
 #include "kmnewiostatuswdg.h"
 #include "kmnewiostatuswdg.moc"
 
@@ -13,6 +14,7 @@ KMIOStatusWdg::KMIOStatusWdg(QWidget *parent, const char *name,
 
 
   initMetaObject();
+  KWM::setDecoration(winId(), KWM::normalDecoration | KWM::noFocus);
   abortPressedBool = false;
 
   setTask(type);

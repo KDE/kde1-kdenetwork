@@ -72,6 +72,8 @@ KMMainWin::KMMainWin(QWidget *, char *name) :
 
   connect(msgSender, SIGNAL(statusMsg(const char*)),
 	  SLOT(statusMsg(const char*)));
+  connect(acctMgr, SIGNAL( newMail(KMAccount *)),
+          SLOT( slotNewMail(KMAccount *)));
 
   // must be the last line of the constructor:
   mStartupDone = TRUE;
@@ -442,6 +444,9 @@ void KMMainWin::slotCheckOneAccount(int item)
   checkingMail = FALSE; 
 }
 
+void KMMainWin::slotNewMail(KMAccount *) {
+   mHeaders->sortAndShow();
+}
 
 //-----------------------------------------------------------------------------
 void KMMainWin::slotCompose()
@@ -709,6 +714,9 @@ void KMMainWin::folderSelected(KMFolder* aFolder)
       debug("KMMainWin::folderSelected(): aFolder == NULL");
       return;
     }
+
+  if (mFolder == aFolder)
+    return;
     
   kbp->busy();
   mFolder = (KMFolder*)aFolder;

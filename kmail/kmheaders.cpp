@@ -375,6 +375,34 @@ void KMHeaders::headerClicked(int column)
   kbp->idle();
 }
 
+void KMHeaders::sortAndShow()
+{
+  int idx = currentItem();
+  KMMsgBasePtr cur;
+  static bool working = FALSE;
+
+  if (working) return;
+  working = TRUE;
+
+  kbp->busy();
+  mFolder->quiet( true );
+
+  if (idx >= 0) cur = (*mFolder)[idx];
+  else cur = NULL;
+
+  sort();
+
+  if (cur) idx = mFolder->find(cur);
+  else idx = 0;
+
+  if (idx < 0) idx = 0;
+  setCurrentMsg(idx);
+
+  mFolder->quiet( false );
+  kapp->processEvents(200);
+  working = FALSE;
+  kbp->idle();
+}
 
 //-----------------------------------------------------------------------------
 void KMHeaders::setMsgStatus (KMMsgStatus status, int msgId)

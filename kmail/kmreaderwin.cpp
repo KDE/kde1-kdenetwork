@@ -231,6 +231,9 @@ void KMReaderWin::setInlineAttach(int aAtmInline)
 //-----------------------------------------------------------------------------
 void KMReaderWin::setMsg(KMMessage* aMsg)
 {
+  if (mMsg == aMsg)
+    return;
+
   mMsg = aMsg;
 
   mViewer->stopParser();
