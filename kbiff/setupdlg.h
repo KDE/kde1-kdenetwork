@@ -169,9 +169,11 @@ public:
 
 	const KURL getMailbox() const;
 	const unsigned int getPort() const;
+	bool getPreauth() const;
 
 	void setPort(unsigned int the_port, bool enable = true);
 	void setMailbox(const KURL& url);
+	void setPreauth(bool on);
 
 protected slots:
 	void portModified(const char* text);
@@ -180,6 +182,7 @@ private:
 	QString    password;
 	QLineEdit *mailbox;
 	QLineEdit *port;
+	QCheckBox *preauth;
 };
 
 class KBiffMailboxTab : public QWidget
@@ -216,6 +219,7 @@ private:
 	QListViewItem       *oldItem;
 
 	unsigned int port;
+	bool         preauth;
 	QComboBox   *comboProtocol;
 	QLineEdit   *editMailbox;
 	QLineEdit   *editServer;

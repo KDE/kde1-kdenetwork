@@ -110,6 +110,7 @@ TRACEINIT("KBiffMonitor::setMailbox()");
 		server   = url.host();
 		user     = url.user();
 		password = url.passwd();
+		mailbox  = url.user();
 		port     = (url.port() > 0) ? url.port() : 110;
 	}
 
@@ -201,10 +202,14 @@ TRACEINIT("KBiffMonitor::checkImap()");
 	
 	user = imap.mungeUser(user);
 
-	command = QString().setNum(seq) + " LOGIN " + user + " " + password + "\r\n";
-	if (imap.command(command, seq) == false)
-		return;
-	seq++;
+	// if user is null, assume PREAUTH
+	if (user.isEmpty() == false)
+	{
+		command = QString().setNum(seq) + " LOGIN " + user + " " + password + "\r\n";
+		if (imap.command(command, seq) == false)
+			return;
+		seq++;
+	}
 
 	command = QString().setNum(seq) + " STATUS " + mailbox + " (messages recent)\r\n";
 	if (imap.command(command, seq) == false)
@@ -229,6 +234,8 @@ TRACEINIT("KBiffMonitor::checkImap()");
 void KBiffMonitor::determineState(unsigned int size)
 {
 TRACEINIT("KBiffMonitor::determineState()");
+	int new_size = 0;
+
 	// check for no mail
 	if (size == 0)
 	{
@@ -249,9 +256,10 @@ TRACEINIT("KBiffMonitor::determineState()");
 		if (mailState != NewMail)
 		{
 			mailState = NewMail;
+			new_size  = size - lastSize;
 			lastSize  = size;
 			emit(signal_newMail());
-			emit(signal_newMail(size - lastSize, mailbox));
+			emit(signal_newMail(new_size, mailbox));
 		}
 
 		return;
@@ -471,7 +479,8 @@ TRACEINIT("KBiffSocket::connectSocket()");
 		return false;
 
 	// we're connected!  see if the connection is good
-	if (readLine().find("OK") == -1)
+	QString line(readLine());
+	if ((line.find("OK") == -1) && (line.find("PREAUTH") == -1))
 		return false;
 
 	// everything is swell

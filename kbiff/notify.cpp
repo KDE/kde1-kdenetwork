@@ -61,6 +61,7 @@ TRACEF("%d new messages in %s", num_new, mailbox.data());
 	mailbox_layout->addWidget(which_one);
 
 	QPushButton *ok = new QPushButton(i18n("OK"), this);
+	ok->setDefault(true);
 	ok->setFixedSize(ok->sizeHint());
 	connect(ok, SIGNAL(clicked()), SLOT(accept()));
 

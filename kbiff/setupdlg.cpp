@@ -341,12 +341,15 @@ void KBiffSetup::slotAddNewProfile()
 		}
 
 		// continue only if we received a decent name
-		if (profile_name.isNull() == false)
+		if (profile_name.isEmpty() == false)
 		{
 			comboProfile->insertItem(profile_name, 0);
 
 			saveConfig();
 			readConfig(profile_name);
+			generalTab->readConfig(profile_name);
+			newmailTab->readConfig(profile_name);
+			mailboxTab->readConfig(profile_name);
 		}
 	}
 }
@@ -418,7 +421,19 @@ void KBiffSetup::slotDeleteProfile()
 			delete config;
 
 			if (comboProfile->count() == 0)
+			{
 				readConfig("Inbox");
+				generalTab->readConfig("Inbox");
+				newmailTab->readConfig("Inbox");
+				mailboxTab->readConfig("Inbox");
+			}
+			else
+			{
+				readConfig(comboProfile->currentText());
+				generalTab->readConfig(comboProfile->currentText());
+				newmailTab->readConfig(comboProfile->currentText());
+				mailboxTab->readConfig(comboProfile->currentText());
+			}
 
 			break;
 		}
@@ -598,7 +613,7 @@ TRACEINIT("KBiffGeneralTab::readConfig()");
 	config->setGroup(profile);
 
 	editPoll->setText(config->readEntry("Poll", "60"));
-	editCommand->setText(config->readEntry("MailClient", "kmail"));
+	editCommand->setText(config->readEntry("MailClient", "kmail -check"));
 	checkDock->setChecked(config->readBoolEntry("Docked", true));
 	checkNoSession->setChecked(config->readBoolEntry("Sessions", true));
 
@@ -809,7 +824,7 @@ KBiffMailboxAdvanced::KBiffMailboxAdvanced()
 {
 	setCaption(i18n("Advanced Options"));
 
-	QGridLayout *layout = new QGridLayout(this, 3, 3, 12, 5);
+	QGridLayout *layout = new QGridLayout(this, 4, 3, 12, 5);
 
 	QLabel *mailbox_label = new QLabel(i18n("Mailbox URL:"), this);
 	mailbox_label->setMinimumSize(mailbox_label->sizeHint());
@@ -818,6 +833,11 @@ KBiffMailboxAdvanced::KBiffMailboxAdvanced()
 	QLabel *port_label = new QLabel(i18n("Port:"), this);
 	port_label->setMinimumSize(port_label->sizeHint());
 	layout->addWidget(port_label, 1, 0);
+
+	preauth = new QCheckBox(i18n("PREAUTH"), this);
+	preauth->setMinimumSize(preauth->sizeHint());
+	preauth->setEnabled(false);
+	layout->addWidget(preauth, 2, 1);
 
 	mailbox = new QLineEdit(this);
 	mailbox->setMinimumHeight(25);
@@ -831,7 +851,7 @@ KBiffMailboxAdvanced::KBiffMailboxAdvanced()
 	              SLOT(portModified(const char*)));
 
 	QBoxLayout *button_layout = new QBoxLayout(QBoxLayout::LeftToRight, 12);
-	layout->addLayout(button_layout, 2, 2);
+	layout->addLayout(button_layout, 3, 2);
 
 	QPushButton *ok = new QPushButton(i18n("OK"), this);
 	ok->setMinimumSize(ok->sizeHint());
@@ -880,6 +900,17 @@ void KBiffMailboxAdvanced::portModified(const char *text)
 	KURL url = getMailbox();
 	url.setPort(QString(text).toInt());
 	setMailbox(url);
+}
+
+void KBiffMailboxAdvanced::setPreauth(bool on)
+{
+	preauth->setEnabled(true);
+	preauth->setChecked(on);
+}
+
+bool KBiffMailboxAdvanced::getPreauth() const
+{
+	return preauth->isChecked();
 }
 
 KBiffMailboxTab::KBiffMailboxTab(const char* profile, QWidget *parent)
@@ -999,7 +1030,7 @@ TRACEINIT("KBiffMailboxTab::~KBiffMailboxTab()");
 void KBiffMailboxTab::readConfig(const char* profile)
 {
 TRACEINIT("KBiffMailboxTab::readConfig()");
-	// initalize some variables that need initing
+	// initialize some variables that need initing
 	oldItem = 0;
 
 	// open the config file
@@ -1209,7 +1240,7 @@ TRACEINIT("KBiffMailboxTab::slotNewMailbox()");
 		QString mailbox_name = dlg.getName();
 
 		// continue only if we received a decent name
-		if (mailbox_name.isNull() == false)
+		if (mailbox_name.isEmpty() == false)
 		{
 			QListViewItem *item = new QListViewItem(mailboxes, mailbox_name);
 			item->setPixmap(0, QPixmap(ICON("mailbox.xpm")));
@@ -1280,8 +1311,16 @@ TRACEINIT("KBiffMailboxTab::protocolSelected()");
 			editMailbox->setEnabled(true);
 			buttonBrowse->setEnabled(false);
 			editServer->setEnabled(true);
-			editUser->setEnabled(true);
-			editPassword->setEnabled(true);
+			if (preauth)
+			{
+				editUser->setEnabled(false);
+				editPassword->setEnabled(false);
+			}
+			else
+			{
+				editUser->setEnabled(true);
+				editPassword->setEnabled(true);
+			}
 			checkStorePassword->setEnabled(true);
 			break;
 		case 4: // POP3
@@ -1324,10 +1363,14 @@ void KBiffMailboxTab::advanced()
 	else
 		advanced_dlg.setPort(port);
 
+	if (prot == "imap4")
+		advanced_dlg.setPreauth(preauth);
+
 	advanced_dlg.setMailbox(getMailbox());
 	if (advanced_dlg.exec())
 	{
 		port = advanced_dlg.getPort();
+		preauth = advanced_dlg.getPreauth();
 		setMailbox(advanced_dlg.getMailbox());
 	}
 }
