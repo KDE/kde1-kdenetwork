@@ -42,7 +42,7 @@ extern int usleep( long usec );
 
 extern PPPData gpppdata;
 
-MiniTerm::MiniTerm(QWidget *parent=0, const char *name=0)
+MiniTerm::MiniTerm(QWidget *parent, const char *name)
   : QDialog(parent, name,TRUE, WStyle_Customize|WStyle_NormalBorder)
 {
 
@@ -417,10 +417,10 @@ void MiniTerm::help(){
 }
 
 
-MyTerm::MyTerm(QWidget *parent=0 ,const char* name=0)
+MyTerm::MyTerm(QWidget *parent, const char* name)
   : QMultiLineEdit(parent, name)
 {
-   p_parent =   (MiniTerm*)  parent;
+   p_parent = (MiniTerm*)parent;
    this->setFont(QFont("courier",12,QFont::Normal));
   
 }
