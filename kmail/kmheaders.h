@@ -81,6 +81,7 @@ signals:
 public slots:
   void selectMessage(int msgId, int colId);
   void highlightMessage(int msgId, int colId);
+  void slotRMB(int idx, int colId);
   void msgHeaderChanged(int msgId);
   void msgChanged();
   void msgAdded(int);

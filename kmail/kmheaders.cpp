@@ -67,7 +67,9 @@ KMHeaders::KMHeaders(KMMainWin *aOwner, QWidget *parent,
   connect(this,SIGNAL(selected(int,int)),
 	  this,SLOT(selectMessage(int,int)));
   connect(this,SIGNAL(highlighted(int,int)),
-	  this,SLOT(highlightMessage(int,int)));
+          this,SLOT(highlightMessage(int,int)));
+  connect(this,SIGNAL(popupMenu(int,int)),
+          this,SLOT(slotRMB(int,int)));
   connect(this,SIGNAL(headerClicked(int)),
 	  this,SLOT(headerClicked(int)));
 
@@ -921,5 +923,49 @@ void KMHeaders::setPalette(const QPalette& p)
 }
 
 
+//-----------------------------------------------------------------------------
+void KMHeaders::slotRMB(int idx, int colId)
+{
+  
+  highlightMessage(idx, colId);
+  setCurrentItem(idx);
+
+  if (!topLevelWidget()) return; // safe bet
+  
+  QPopupMenu *menu = new QPopupMenu;
+
+  if (colId == 0) // popup status menu
+  {
+    connect(menu, SIGNAL(activated(int)), topLevelWidget(),
+            SLOT(slotSetMsgStatus(int)));
+    menu->insertItem(i18n("New"), (int)KMMsgStatusNew);
+    menu->insertItem(i18n("Unread"), (int)KMMsgStatusUnread);
+    menu->insertItem(i18n("Read"), (int)KMMsgStatusOld);
+    menu->insertItem(i18n("Replied"), (int)KMMsgStatusReplied);
+    menu->insertItem(i18n("Queued"), (int)KMMsgStatusQueued);
+    menu->insertItem(i18n("Sent"), (int)KMMsgStatusSent);
+  }
+  else //else popup message menu
+  {
+    // no new strings here
+    menu->insertItem(i18n("&Reply..."), topLevelWidget(),
+                     SLOT(slotReplyToMsg()));
+    menu->insertItem(i18n("Reply &All..."), topLevelWidget(),
+                     SLOT(slotReplyAllToMsg()));
+    menu->insertItem(i18n("&Forward..."), topLevelWidget(),
+                     SLOT(slotForwardMsg()), Key_F);
+    menu->insertSeparator();
+    menu->insertItem(i18n("&Move..."), topLevelWidget(),
+                     SLOT(slotMoveMsg()), Key_M);
+    menu->insertItem(i18n("&Copy..."), topLevelWidget(),
+                     SLOT(slotCopyText()), Key_S);
+    menu->insertItem(i18n("&Delete"), topLevelWidget(),
+                     SLOT(slotDeleteMsg()), Key_D);
+  }
+
+  menu->exec (QCursor::pos(), 0);
+  delete menu;
+}
+                        
 //-----------------------------------------------------------------------------
 #include "kmheaders.moc"

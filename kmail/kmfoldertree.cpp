@@ -36,6 +36,8 @@ KMFolderTree::KMFolderTree(QWidget *parent,const char *name) :
 	  this, SLOT(doFolderSelected(int,int)));
   connect(folderMgr, SIGNAL(changed()),
 	  this, SLOT(doFolderListChanged()));
+  connect(this, SIGNAL(popupMenu(int,int)),
+	  this, SLOT(slotRMB(int,int)));
 
   conf->setGroup("Geometry");
   width = conf->readNumEntry(name, 80);
@@ -290,3 +292,32 @@ int KMFolderTree::indexOfFolder(const KMFolder* folder) const
   }
   return -1;
 }
+
+
+//-----------------------------------------------------------------------------
+void KMFolderTree::slotRMB(int index, int)
+{
+  doFolderSelected(index, 0);
+  setCurrentItem(index);
+
+  if (!topLevelWidget()) return; // safe bet
+
+  QPopupMenu *folderMenu = new QPopupMenu;
+
+  folderMenu->insertItem(i18n("&Create..."), topLevelWidget(),
+			 SLOT(slotAddFolder()));
+  folderMenu->insertItem(i18n("&Modify..."), topLevelWidget(),
+			 SLOT(slotModifyFolder()));
+  folderMenu->insertItem(i18n("C&ompact"), topLevelWidget(),
+			 SLOT(slotCompactFolder()));
+  folderMenu->insertSeparator();
+  folderMenu->insertItem(i18n("&Empty"), topLevelWidget(),
+			 SLOT(slotEmptyFolder()));
+  folderMenu->insertItem(i18n("&Remove"), topLevelWidget(),
+			 SLOT(slotRemoveFolder()));
+
+  folderMenu->exec (QCursor::pos(), 0);
+  delete folderMenu;
+
+}
+//-----------------------------------------------------------------------------

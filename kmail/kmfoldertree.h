@@ -27,6 +27,7 @@ signals:
 protected slots:
   void doFolderSelected(int,int);
 
+  void slotRMB(int, int);
   /** called by the folder-manager when the list of folders changed */
   void doFolderListChanged();
 
