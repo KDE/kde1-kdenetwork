@@ -469,6 +469,7 @@ bool isParent(Article *parent,Article *child)
 
 void collectChildren(ArticleList *parentThread,QList<ArticleList> *children)
 {
+    ArticleList l;
     qApp->processEvents();
     QListIterator <ArticleList> it(*children);
     for (;it.current();++it)
@@ -487,8 +488,6 @@ void collectChildren(ArticleList *parentThread,QList<ArticleList> *children)
             {
                 if (isParent(parentThread->first(),it.current()->first()))
                 {
-                    //It's parent's daughter, make it collect its own kids,
-                    collectChildren(it.current(),children);
                     //and then adopt it
                     QListIterator <Article> it2(*it.current());
                     it2.toFirst();
@@ -496,8 +495,11 @@ void collectChildren(ArticleList *parentThread,QList<ArticleList> *children)
                     {
                         it2.current()->threadDepth++;
                         parentThread->append(it2.current());
+                        l.append(it2.current());
                     }
                     it.current()->clear();
+                    //It's parent's daughter, make it collect its own kids,
+                    collectChildren(&l,children);
                 }
             }
         }

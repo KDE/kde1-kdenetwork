@@ -678,6 +678,7 @@ bool Artdlg::loadArt (QString id)
             if (iter.current()->ID==id)
             {
                 list->setCurrentItem(index);
+                qApp->restoreOverrideCursor ();
                 return true;
                 break;
             }
