@@ -1,9 +1,23 @@
+1998-07-15  David Faure  <David.Faure@insa-lyon.fr> (0.7.0)
+
+	* ktalkd/machines/talkconn.cpp (set_edit_chars): At least ! Fixed the bug in 
+	   answmach banners, which first appeared 8 months ago, erasing half of some lines !
+
+	* ktalkd/table.c, ktalkd/print.c: Improved logs.
+
+	* ktalkd/process.c (do_announce): Bug fixed : insert_table called even for NEU.
+
+	* machines/*: Converted the answering machine to C++. Split into 3 classes.
+	     TalkConnection : Handles the protocol.
+	     TalkMachine : Generic talk machine.
+	     AnswMachine : Answering machine. Inherits from TalkMachine and uses TalkConnection.
+
 1998-07-08  David Faure  <David.Faure@insa-lyon.fr> (0.6.2)
 
-	* ktalkd/*, ktalkdlg.cpp : Applied patch for NEUBehaviour=1 
+	* ktalkd/*, ktalkdlg.cpp: Applied patch for NEUBehaviour=1 
 	by Enrico Scholz <enrico.scholz@wirtschaft.tu-chemnitz.de> 
 
-	* answmach/init_disp.c : Handle VWERASE if not defined (for AIX)
+	* answmach/init_disp.c: Handle VWERASE if not defined (for AIX)
 	
 1998-07-06  David Faure  <David.Faure@insa-lyon.fr>
 
@@ -17,57 +31,57 @@
 
 1998-06-13  David Faure  <David.Faure@insa-lyon.fr> (0.6.1)
 
-	* includ.h, talkd.h : took talkd.h from ktalk. ktalkd doesn't use the
+	* includ.h, talkd.h: took talkd.h from ktalk. ktalkd doesn't use the
 	                        system one anymore.
 
-	* answmach/look_up.c : use sockaddr instead of osockaddr
+	* answmach/look_up.c: use sockaddr instead of osockaddr
 
-	* acincktalk.m4, configure.in.1 : removed the check for osockaddr
+	* acincktalk.m4, configure.in.1: removed the check for osockaddr
 
-	* talkd.c : Use sys/params.h where available, for hostname length
+	* ktalkd/talkd.c: Use sys/params.h where available, for hostname length
 
 1998-06-11  David Faure  <David.Faure@insa-lyon.fr> (0.6.0)
 
-	* ktalkd/ : Reorganised the directory structure, to ship ktalkd 
+	* ktalkd/: Reorganised the directory structure, to ship ktalkd 
 	with ktalkdlg and kcmktalkd in a single package.
 	
-	* talkd.c : Caller's hostname was limited to 32 ! Now 256.
+	* talkd.c: Caller's hostname was limited to 32 ! Now 256.
 
-	* Makefile.am : rewrote some of them, for non-KDE users.
+	* Makefile.am: rewrote some of them, for non-KDE users.
 
 1998-06-09  David Faure  <David.Faure@insa-lyon.fr> (0.5.7)
 
-	* kcmktalkd : First release of the configuration dialog
+	* kcmktalkd: First release of the configuration dialog
 	
 1998-05-16  David Faure  <David.Faure@insa-lyon.fr> (0.5.6)
 
 	* announce.c: Announces with ktalkdlg on ALL displays where the
            user is found. It works ! 
 
-	* readcfg++.cpp (init_user_config) :
+	* readcfg++.cpp (init_user_config):
 	   Added setenv("HOME",...) because the kdelibs rely on that to find 
 	   the user config file.
 
 1998-05-15  David Faure  <David.Faure@insa-lyon.fr> (0.5.5)
 
-	* doc/ : Made HTML documentation. Phew. Done.
+	* doc/: Made HTML documentation. Phew. Done.
 
-	* readcfg++.cpp (init_user_config) :
+	* readcfg++.cpp (init_user_config):
 	   Removed the un-necessary looking in pwd file. 
            KDElibs do that for us :)
 
-	* find_user.c :
+	* find_user.c:
 	   Disabled X processes scanning if uid < 10. (Security hole)
 	   Corrected a bug (S_ISCHR() is now "& 020") which didn't let you talk
 	   to tty2 if tty1 was "mesg n".
 
-	* announce.c : open user config file before calling announce_proc, so 
+	* announce.c: open user config file before calling announce_proc, so 
 	   that it *is* closed now. It wasn't because of 'return'.
 	
 
 1998-05-06  David Faure  <David.Faure@insa-lyon.fr>
 
-	* announce.c : now the non-KDE sound works with and without option.
+	* announce.c: now the non-KDE sound works with and without option.
 	* acinclude.m4.in - the ktalkd one : some more corrections for 
                                              working without X.
 
@@ -78,14 +92,14 @@
 
 1998-04-20  David Faure  <David.Faure@insa-lyon.fr> (0.5.3)
 	
-	* Makefile.am : Removed -lkdeui, not needed.
-	* io.c : Corrected an awful bug 
+	* Makefile.am: Removed -lkdeui, not needed.
+	* io.c: Corrected an awful bug 
                       (NEUBanner displayed instead of OPTinvitelines)
-	* readcfg++.cpp : Added missing "/" before 'ktalkdrc'
+	* readcfg++.cpp: Added missing "/" before 'ktalkdrc'
 
 1998-04-19  David Faure  <David.Faure@insa-lyon.fr> (0.5.2)
 
-	* readcfg++.cpp : added check for user config file.
+	* readcfg++.cpp: added check for user config file.
  	        (was created with root permission otherwise)
 	* acinclude.m4.in - the ktalkd one: updated
 

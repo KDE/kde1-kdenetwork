@@ -21,6 +21,20 @@
 
 Here comes the <CODE>ChangeLog</CODE> : <br>
 <br>
+1998-07-15  David Faure  &lt;David.Faure@insa-lyon.fr&gt; (0.7.0)<br>
+<br>
+	* ktalkd/machines/talkconn.cpp (set_edit_chars): At least ! Fixed the bug in <br>
+	   answmach banners, which first appeared 8 months ago, erasing half of some lines !<br>
+<br>
+	* ktalkd/table.c, ktalkd/print.c: Improved logs.<br>
+<br>
+	* ktalkd/process.c (do_announce): Bug fixed : insert_table called even for NEU.<br>
+<br>
+	* machines/*: Converted the answering machine to C++. Split into 3 classes.<br>
+	     TalkConnection : Handles the protocol.<br>
+	     TalkMachine : Generic talk machine.<br>
+	     AnswMachine : Answering machine. Inherits from TalkMachine and uses TalkConnection.<br>
+<br>
 1998-07-08  David Faure  &lt;David.Faure@insa-lyon.fr&gt; (0.6.2)<br>
 <br>
 	* ktalkd/*, ktalkdlg.cpp : Applied patch for NEUBehaviour=1 <br>
