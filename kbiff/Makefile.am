@@ -6,12 +6,13 @@ INCLUDES= $(all_includes)
 SUBDIRS = doc pics
 
 DEFS = @DEFS@ -I. -I$(srcdir) -I.. -DDO_TRACE
+CXXFLAGS = -ansi @CXXFLAGS@
 ####### This part is very kbiff specific
 # you can add here more. This one gets installed 
 bin_PROGRAMS = 	kbiff
 
 # Which sources should be compiled for kbiff.
-kbiff_SOURCES	= kbiff.cpp setupdlg.cpp main.cpp kbiffmonitor.cpp Trace.cpp
+kbiff_SOURCES	= setupdlg.cpp kbiff.cpp main.cpp kbiffmonitor.cpp Trace.cpp
 
 # the library search path
 kbiff_LDFLAGS = $(all_libraries) $(KDE_RPATH)

@@ -28,13 +28,12 @@ typedef enum
 
 /**
  * A "biff"-like class that can monitor local and remote mailboxes for new
- * mail.  KBiffMonitor currently supports five protocols.
+ * mail.  KBiffMonitor currently supports four protocols.
  * 
  * <UL>
  * <LI>mbox</LI> Local mbox style files
  * <LI>pop3</LI> POP3 
  * <LI>imap4</LI> imap4 
- * <LI>rsh</LI> Files accessible using rsh
  * <LI>maildir</LI> Mailboxes in maildir format
  * </UL>
  *
@@ -53,7 +52,7 @@ typedef enum
  *
  * @short A "biff" class that monitors local and remote mailboxes
  * @author Kurt Granroth <granroth@kde.org>
- * @version 0.4.7
+ * @version 0.4.8
  */
 class KBiffMonitor : public QObject
 {
@@ -92,13 +91,12 @@ public slots:
 	/**
 	 * Sets the mailbox to monitor.  It uses a KURL to specify the
 	 * protocol, host, username, password, port and path (depending on
-	 * protocol type).  KBiffMonitor recognizes five protocols:
+	 * protocol type).  KBiffMonitor recognizes four protocols:
 	 * 
 	 * <UL>
 	 * <LI>mbox</LI> Local files
 	 * <LI>pop3</LI> POP3 
 	 * <LI>imap4</LI> IMAP4 
-	 * <LI>rsh</LI> Files accessible using rsh
 	 * <LI>maildir</LI> Mailboxes in maildir format
 	 * </UL>
 	 *
@@ -122,19 +120,6 @@ public slots:
 	 *
 	 * This would monitor IMAP4 mailbox 'Mail/mailbox' on server 'host.net'
 	 * with 'granroth' as the user and 'password' as the password.
-	 *
-	 * <PRE>
-	 * rsh://granroth@remote.host/var/spool/kgranrot
-	 * </PRE>
-	 *
-	 * This would monitor mailbox '/var/spool/kgranrot' on host 'remote.host'.
-	 * Note that for this to work, the following command <EM>must</EM> work
-	 * without prompting for a password
-	 *
-	 * <PRE>
-	 * rsh -l granroth remote.host ls -o /var/spool/kgranrot
-	 * </PRE>
-	 *
 	 */
 	void setMailbox(KURL& url);
 
@@ -144,8 +129,7 @@ public slots:
 	void setMailbox(const char* url);
 
 	/**
-	 * Sets the password for the POP3 and IMAP4 protocols.  This will
-	 * <EM>not</EM> work for rsh
+	 * Sets the password for the POP3 and IMAP4 protocols.
 	 */
 	void setPassword(const char* password);
 
@@ -217,7 +201,6 @@ protected:
 protected slots:
 	void checkLocal();
 	void checkPop();
-	void checkRsh();
 	void checkMaildir();
 	void checkImap();
 
@@ -227,7 +210,6 @@ protected:
 	                    const QDateTime& last_modified);
 	void determineState(unsigned int size);
 	void determineState(KBiffMailState state);
-	unsigned int checkRshSize();
 
 private:
 	// General stuff

@@ -17,6 +17,7 @@
 #include <qlist.h>
 
 #include <kbiffmonitor.h>
+#include <setupdlg.h>
 
 #include <kurl.h>
 #include <kapp.h>
@@ -36,7 +37,14 @@ public:
 	KBiff(QWidget *parent = 0);
 	virtual ~KBiff();
 
-	void setMailboxList(const QList<KURL>& mailbox_list);
+	inline const bool isDocked() const;
+
+	void processSetup(const KBiffSetup* setup);
+	void readSessionConfig();
+
+	void setMailboxList(const QList<KURL>& mailbox_list, unsigned int poll = 60);
+
+	virtual void show();
 
 protected:
 	void mousePressEvent(QMouseEvent *);
@@ -57,6 +65,7 @@ protected slots:
 	void start();
 
 private:
+	bool myMUTEX;
 	QList<KBiffMonitor> monitorList;
 
 	// Capability
@@ -74,7 +83,8 @@ private:
 	QString playSoundPath;
 	bool    notify;
 
-	bool    isDocked;
+	bool    docked;
+	bool    sessions;
 
 	QString noMailIcon;
 	QString newMailIcon;

@@ -26,7 +26,6 @@ TRACEINIT("KBiff::KBiff()");
 	setMargin(0);
 	setAlignment(AlignLeft | AlignTop);
 
-
 	// Init the audio server.  serverStatus return 0 when it is ok
 	hasAudio = (audioServer.serverStatus() == 0) ? true : false;
 
@@ -37,24 +36,67 @@ KBiff::~KBiff()
 {
 }
 
-void KBiff::setMailboxList(const QList<KURL>& mailbox_list)
+void KBiff::processSetup(const KBiffSetup* setup)
+{
+TRACEINIT("KBiff::processSetup()");
+	// General settings
+	mailClient  = setup->getMailClient();
+	docked      = setup->getDock();
+	sessions    = setup->getSessionManagement();
+	noMailIcon  = setup->getNoMailIcon();
+	newMailIcon = setup->getNewMailIcon();
+	oldMailIcon = setup->getOldMailIcon();
+
+	// New mail
+	systemBeep     = setup->getSystemBeep();
+	runCommand     = setup->getRunCommand();
+	runCommandPath = setup->getRunCommandPath();
+	playSound      = setup->getPlaySound();
+	playSoundPath  = setup->getPlaySoundPath();
+	notify         = setup->getNotify();
+
+	setMailboxList(setup->getMailboxList(), setup->getPoll());
+
+	delete setup;
+}
+
+void KBiff::setMailboxList(const QList<KURL>& mailbox_list, unsigned int poll)
 {
 TRACEINIT("KBiff::setMailboxList");
 	QList<KURL> tmp_list = mailbox_list;
 
 	monitorList.clear();
 	
+	myMUTEX = true;
 	KURL *url;
 	for (url = tmp_list.first(); url != 0; url = tmp_list.next())
 	{
 		TRACEF("Now adding %s", url->url().data());
 		KBiffMonitor *monitor = new KBiffMonitor();
 		monitor->setMailbox(*url);
+		monitor->setPollInterval(poll);
 		connect(monitor, SIGNAL(signal_newMail()), this, SLOT(haveNewMail()));
 		connect(monitor, SIGNAL(signal_noMail()), this, SLOT(displayPixmap()));
 		connect(monitor, SIGNAL(signal_oldMail()), this, SLOT(displayPixmap()));
 		monitorList.append(monitor);
 	}
+	myMUTEX = false;
+}
+
+inline const bool KBiff::isDocked() const
+{
+	return docked;
+}
+
+void KBiff::readSessionConfig()
+{
+TRACEINIT("KBiff::readSesionConfig()");
+	KConfig *config = kapp->getSessionConfig();
+
+	config->setGroup("KBiff");
+
+	processSetup(new KBiffSetup(config->readEntry("Profile")));
+	docked = config->readBoolEntry("IsDocked");
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -72,7 +114,12 @@ TRACEINIT("KBiff::mousePressEvent()");
 	else
 	{
 		// force a "read"
-		//monitor.setMailboxIsRead();
+		KBiffMonitor *monitor;
+		for (unsigned int i = 0; i < monitorList.count(); i++)
+		{
+			monitor = monitorList.at(i);
+			monitor->setMailboxIsRead();
+		}
 
 		// execute the command
 		if (!mailClient.isEmpty())
@@ -94,6 +141,10 @@ void KBiff::invokeHelp()
 
 void KBiff::displayPixmap()
 {
+TRACEINIT("KBiff::displayPixmap()");
+	if (myMUTEX)
+		return;
+
 	// we will try to deduce the pixmap (or gif) name now.  it will
 	// vary depending on the dock and mail state
 	QString pixmap_name, mini_pixmap_name;
@@ -103,6 +154,7 @@ void KBiff::displayPixmap()
 	     monitor != 0 && has_new == false;
 		  monitor = monitorList.next())
 	{
+		TRACE("Checking mailbox");
 		switch (monitor->getMailState())
 		{
 			case NoMail:
@@ -119,6 +171,7 @@ void KBiff::displayPixmap()
 				break;
 		}
 	}
+	TRACE("Done checking mailboxes");
 
 	if (has_new)
 		pixmap_name = newMailIcon;
@@ -143,7 +196,7 @@ void KBiff::displayPixmap()
 		// if we are docked, check if the mini pixmap exists FIRST.
 		// if it does, we go with it.  if not, we look for the
 		// the regular size one
-		if (isDocked && mini_file.exists())
+		if (docked && mini_file.exists())
 		{
 			file = mini_file;
 			break;
@@ -153,6 +206,7 @@ void KBiff::displayPixmap()
 			break;
 	}
 
+	TRACEF("Displaying %s", file.absFilePath().data());
 	// at this point, we have the file to display.  so display it
 	QPixmap pixmap(file.absFilePath());
 	setPixmap(pixmap);
@@ -161,6 +215,7 @@ void KBiff::displayPixmap()
 
 void KBiff::haveNewMail()
 {
+TRACEINIT("KBiff::haveNewMail()");
 	displayPixmap();
 	// notify if we must
 	if (notify)
@@ -200,6 +255,7 @@ void KBiff::haveNewMail()
 
 void KBiff::dock()
 {
+TRACEINIT("KBiff::dock()");
 	// destroy the old window
 	if (this->isVisible())
 	{
@@ -210,21 +266,21 @@ void KBiff::dock()
 
 		// we don't want a "real" top widget if we are _going_ to
 		// be docked.
-		if (isDocked)
+		if (docked)
 			kapp->setTopWidget(this);
 		else
 			kapp->setTopWidget(new QWidget);
 	}
 
-	if (isDocked == false)
+	if (docked == false)
 	{
-		isDocked = true;
+		docked = true;
 
 		// enable docking
 		KWM::setDockWindow(this->winId());
 	}
 	else
-		isDocked = false;
+		docked = false;
 
 	// (un)dock it!
 	this->show();
@@ -233,13 +289,16 @@ void KBiff::dock()
 
 void KBiff::setup()
 {
-	KBiffSetup setup_dlg;
+TRACEINIT("KBiff::setup()");
+	KBiffSetup* setup_dlg = new KBiffSetup;
 
-	setup_dlg.exec();
+	if (setup_dlg->exec())
+		processSetup(setup_dlg);
 }
 
 void KBiff::checkMailNow()
 {
+TRACEINIT("KBiff::checkMailNow()");
 	KBiffMonitor *monitor;
 	for (monitor = monitorList.first();
 	     monitor != 0;
@@ -264,13 +323,24 @@ TRACEINIT("KBiff::stop()");
 void KBiff::start()
 {
 TRACEINIT("KBiff::start()");
+	myMUTEX = true;
 	KBiffMonitor *monitor;
-	for (int i = 0; i < monitorList.count(); i++)
+	for (unsigned int i = 0; i < monitorList.count(); i++)
 	{
 		TRACE("Starting a monitor");
 		monitor = monitorList.at(i);
 		monitor->start();
 	}
+	myMUTEX = false;
+
+	displayPixmap();
+}
+
+void KBiff::show()
+{
+	if (!isRunning())
+		start();
+	QLabel::show();
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -278,9 +348,10 @@ TRACEINIT("KBiff::start()");
 ///////////////////////////////////////////////////////////////////////////
 void KBiff::popupMenu()
 {
+TRACEINIT("KBiff::popupMenu()");
 	QPopupMenu *popup = new QPopupMenu(0, "popup");
 
-	if (isDocked)
+	if (docked)
 		popup->insertItem(i18n("&UnDock"), this, SLOT(dock()));
 	else
 		popup->insertItem(i18n("&Dock"), this, SLOT(dock()));
@@ -311,6 +382,7 @@ void KBiff::popupMenu()
 
 void KBiff::reset()
 {
+TRACEINIT("KBiff::reset()");
 	// reset all the member variables
 	systemBeep     = true;
 	runCommand     = false;
@@ -323,15 +395,18 @@ void KBiff::reset()
 	newMailIcon = "newmail.xpm";
 	oldMailIcon = "oldmail.xpm";
 
-	isDocked    = false;
+	docked    = false;
 
 	mailClient  = "xmutt";
+
+	myMUTEX = false;
 
 	displayPixmap();
 }
 
 bool KBiff::isRunning()
 {
+TRACEINIT("KBiff::isRunning()");
 	bool is_running = false;
 	KBiffMonitor *monitor;
 	for (monitor = monitorList.first();

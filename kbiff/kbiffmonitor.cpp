@@ -119,16 +119,6 @@ TRACEINIT("KBiffMonitor::setMailbox()");
 		mailbox = url.path();
 	}
 
-	if (!strcmp(url.protocol(), "rsh"))
-	{
-		disconnect(this);
-
-		connect(this, SIGNAL(signal_checkMail()), SLOT(checkRsh()));
-		server  = url.host();
-		user    = url.user();
-		mailbox = url.path();
-	}
-
 	if (!strcmp(url.protocol(), "maildir"))
 	{
 		disconnect(this);
@@ -173,17 +163,6 @@ TRACEINIT("KBiffMonitor::checkLocal()");
 	determineState(mbox.size(), mbox.lastRead(), mbox.lastModified());
 }
 
-void KBiffMonitor::checkRsh()
-{
-TRACEINIT("KBiffMonitor::checkRsh()");
-	// Get the size of the remote mailbox
-	unsigned int size;
-	size  = checkRshSize();
-
-	// Check if we have new mail
-	determineState(size);
-}
-
 void KBiffMonitor::checkPop()
 {
 TRACEINIT("KBiffMonitor::checkPop()");
@@ -193,12 +172,10 @@ TRACEINIT("KBiffMonitor::checkPop()");
 	if (pop.connectSocket(server, port) == false)
 		return;
 	
-//	command.sprintf("USER %s\r\n", (const char*)user);
 	command = "USER " + user + "\r\n";
 	if (pop.command(command) == false)
 		return;
 
-//	command.sprintf("PASS %s\r\n", (const char*)password);
 	command = "PASS " + user + "\r\n";
 	if (pop.command(command) == false)
 		return;
@@ -380,48 +357,6 @@ TRACEF("lastRead = %s", (const char*)lastRead.toString());
 	// If we get to this point, then the state now is exactly the
 	// same as the state when last we checked.  Do nothing at this
 	// point.
-}
-
-unsigned int KBiffMonitor::checkRshSize()
-{
-TRACEINIT("KBiffMonitor::checkRshSize()");
-	unsigned int size = 0;
-
-	// Get the file status from the remote host
-	QString rshcmd;
-	rshcmd.sprintf("rsh -l %s %s ls -o %s",
-		(const char*)user,
-		(const char*)server,
-		(const char*)mailbox);
-
-	// Now run the command in a pipe and parse the result
-	FILE *result = popen((const char*)rshcmd, "r");
-	if (result)
-	{
-		char line[256];
-		if (fgets(line, 256, result))
-		{
-			QString str(line);
-			// This will match e.g., "-r-w------ 1 user "
-			QRegExp perm("[-rwx]+[ \t]+[0-9]+[ \t]+[a-zA-Z0-9]+[ \t]+");
-			QRegExp sizere("[0-9]+");
-   			int perlen, size_len;
-			int pos;
-
-			if ((pos = perm.match(str, 0, &perlen)) != -1)
-			{
-				if((pos = sizere.match(str, perlen, &size_len)) != -1)
-				{
-					size = str.mid(pos, size_len).toUInt();
-				}
-			}
-		}
-		
-		// close the pipe
-		pclose(result);
-	}
-
-	return size;
 }
 
 void KBiffMonitor::checkMaildir()

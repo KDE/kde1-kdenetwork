@@ -1,4 +1,5 @@
 #include "kbiff.h"
+#include<kwm.h>
 #include <kapp.h>
 
 #include "setupdlg.h"
@@ -7,17 +8,50 @@ int main(int argc, char *argv[])
 {
 	KApplication app(argc, argv, "kbiff");
 	KBiff kbiff;
-	KBiffSetup setup;
-
-	if (setup.exec())
-	{
-		kbiff.setMailboxList(setup.getMailboxList());
-	}
-	else
-		return 0;
+	KBiffSetup* setup;
+	bool have_profile = false;
+	bool do_debug = false;
 
 	app.setMainWidget(&kbiff);
-	app.setTopWidget(&kbiff);
+
+	// parse the args for the -debug option
+	if (argc == 2)
+	{
+		// do something with this later
+		if (QString(argv[1]) == "-debug")
+			do_debug = true;
+	}
+
+	// parse the args to see if there is the -profile option
+	if (argc == 3)
+	{
+		// check if this is the argument we are looking for
+		if (QString(argv[1]) == "-profile")
+			have_profile = true;
+	}      
+
+	// do we have the profile option?
+	if (have_profile)
+		setup = new KBiffSetup(argv[2]);
+	else
+	{
+		setup = new KBiffSetup();
+		if (!setup->exec())
+			return 0;
+	}
+	kbiff.processSetup(setup);
+
+	// check if we are docked (only if restored)
+	if (kbiff.isDocked())
+	{
+		kapp->setTopWidget(new QWidget);
+		KWM::setDockWindow(kbiff.winId());
+	}
+	else
+		kapp->setTopWidget(&kbiff);
+
+	// enable session management
+	kapp->enableSessionManagement();
 
 	kbiff.show();
 

@@ -149,14 +149,79 @@ KBiffSetup::~KBiffSetup()
 {
 }
 
-KURL KBiffSetup::getCurrentMailbox() const
+inline const KURL KBiffSetup::getCurrentMailbox() const
 {
 	return mailboxTab->getMailbox();
 }
 
-QList<KURL> KBiffSetup::getMailboxList() const
+inline const QList<KURL> KBiffSetup::getMailboxList() const
 {
 	return mailboxTab->getMailboxList();
+}
+
+inline const char* KBiffSetup::getMailClient() const
+{
+	return generalTab->getMailClient();
+}
+
+inline const char* KBiffSetup::getNoMailIcon() const
+{
+	return generalTab->getButtonNoMail();
+}
+
+inline const char* KBiffSetup::getNewMailIcon() const
+{
+	return generalTab->getButtonNewMail();
+}
+
+inline const char* KBiffSetup::getOldMailIcon() const
+{
+	return generalTab->getButtonOldMail();
+}
+
+inline const bool KBiffSetup::getSessionManagement() const
+{
+	return generalTab->getSessionManagement();
+}
+
+inline const bool KBiffSetup::getDock() const
+{
+	return generalTab->getDock();
+}
+
+inline const unsigned int KBiffSetup::getPoll() const
+{
+	return generalTab->getPoll();
+}
+
+inline const char* KBiffSetup::getRunCommandPath() const
+{
+	return newmailTab->getRunCommandPath();
+}
+
+inline const char* KBiffSetup::getPlaySoundPath() const
+{
+	return newmailTab->getPlaySoundPath();
+}
+
+inline const bool KBiffSetup::getRunCommand() const
+{
+	return newmailTab->getRunCommand();
+}
+
+inline const bool KBiffSetup::getPlaySound() const
+{
+	return newmailTab->getPlaySound();
+}
+
+inline const bool KBiffSetup::getSystemBeep() const
+{
+	return newmailTab->getSystemBeep();
+}
+
+inline const bool KBiffSetup::getNotify() const
+{
+	return newmailTab->getNotify();
 }
 
 void KBiffSetup::invokeHelp()
@@ -467,75 +532,37 @@ KBiffGeneralTab::~KBiffGeneralTab()
 {
 }
 
-void KBiffGeneralTab::setSessionManagement(bool enable)
-{
-	checkNoSession->setChecked(enable);
-}
-
-const bool KBiffGeneralTab::getSessionManagement()
+inline const bool KBiffGeneralTab::getSessionManagement() const
 {
 	return checkNoSession->isChecked();
 }
 
-void KBiffGeneralTab::setDock(bool dock)
-{
-	checkDock->setChecked(dock);
-}
-
-const bool KBiffGeneralTab::getDock()
+inline const bool KBiffGeneralTab::getDock() const
 {
 	return checkDock->isChecked();
 }
 
-void KBiffGeneralTab::setButtonNewMail(const char* new_mail)
-{
-	buttonNewMail->setIcon(new_mail);
-	buttonNewMail->setPixmap(kapp->getIconLoader()->loadIcon(new_mail));
-}
-
-void KBiffGeneralTab::setButtonOldMail(const char* old_mail)
-{
-	buttonOldMail->setIcon(old_mail);
-	buttonOldMail->setPixmap(kapp->getIconLoader()->loadIcon(old_mail));
-}
-
-void KBiffGeneralTab::setButtonNoMail(const char* no_mail)
-{
-	buttonNoMail->setIcon(no_mail);
-	buttonNoMail->setPixmap(kapp->getIconLoader()->loadIcon(no_mail));
-}
-
-void KBiffGeneralTab::setPoll(int poll)
-{
-	editPoll->setText(QString().setNum(poll));
-}
-
-void KBiffGeneralTab::setMailClient(const char* client)
-{
-	editCommand->setText(client);
-}
-
-const char* KBiffGeneralTab::getButtonOldMail()
+inline const char* KBiffGeneralTab::getButtonOldMail() const
 {
 	return buttonOldMail->icon();
 }
 
-const char* KBiffGeneralTab::getButtonNewMail()
+inline const char* KBiffGeneralTab::getButtonNewMail() const
 {
 	return buttonNewMail->icon();
 }
 
-const char* KBiffGeneralTab::getButtonNoMail()
+inline const char* KBiffGeneralTab::getButtonNoMail() const
 {
 	return buttonNoMail->icon();
 }
 
-const char* KBiffGeneralTab::getMailClient()
+inline const char* KBiffGeneralTab::getMailClient() const
 {
 	return editCommand->text();
 }
 
-const int KBiffGeneralTab::getPoll()
+inline const int KBiffGeneralTab::getPoll() const
 {
 	return QString(editPoll->text()).toInt();
 }
@@ -698,61 +725,34 @@ TRACEINIT("KBiffNewMailTab::saveConfig()");
 	delete config;
 }
 
-bool KBiffNewMailTab::getRunCommand()
+inline const bool KBiffNewMailTab::getRunCommand() const
 {
 	return checkRunCommand->isChecked();
 }
 
-const char* KBiffNewMailTab::getRunCommandPath()
+inline const char* KBiffNewMailTab::getRunCommandPath() const
 {
 	return editRunCommand->text();
 }
 
-bool KBiffNewMailTab::getPlaySound()
+inline const bool KBiffNewMailTab::getPlaySound() const
 {
 	return checkPlaySound->isChecked();
 }
 
-const char* KBiffNewMailTab::getPlaySoundPath()
+inline const char* KBiffNewMailTab::getPlaySoundPath() const
 {
 	return editPlaySound->text();
 }
 
-bool KBiffNewMailTab::getBeep()
+inline const bool KBiffNewMailTab::getSystemBeep() const
 {
 	return checkBeep->isChecked();
 }
 
-bool KBiffNewMailTab::getNotify()
+inline const bool KBiffNewMailTab::getNotify() const
 {
 	return checkNotify->isChecked();
-}
-
-void KBiffNewMailTab::setRunCommand(bool run)
-{
-	checkRunCommand->setChecked(run);
-	enableRunCommand(run);
-}
-
-void KBiffNewMailTab::setRunCommandPath(const char* path)
-{
-	editRunCommand->setText(path);
-}
-
-void KBiffNewMailTab::setPlaySound(bool play)
-{
-	checkPlaySound->setChecked(play);
-	enablePlaySound(play);
-}
-
-void KBiffNewMailTab::setPlaySoundPath(const char* path)
-{
-	editPlaySound->setText(path);
-}
-
-void KBiffNewMailTab::setBeep(bool beep)
-{
-	checkBeep->setChecked(beep);
 }
 
 void KBiffNewMailTab::enableRunCommand(bool enable)
@@ -769,20 +769,20 @@ void KBiffNewMailTab::enablePlaySound(bool enable)
 
 void KBiffNewMailTab::browseRunCommand()
 {
-  QString command_path = KFileDialog::getOpenFileName();
-  if (!command_path.isEmpty() && !command_path.isNull())
-  {
-    setRunCommandPath(command_path);
-  }
+	QString command_path = KFileDialog::getOpenFileName();
+	if (!command_path.isEmpty() && !command_path.isNull())
+	{
+		editRunCommand->setText(command_path);
+	}
 }
 
 void KBiffNewMailTab::browsePlaySound()
 {
-  QString sound_path = KFileDialog::getOpenFileName();
-  if (!sound_path.isEmpty() && !sound_path.isNull())
-  {
-    setPlaySoundPath(sound_path);
-  }
+	QString sound_path = KFileDialog::getOpenFileName();
+	if (!sound_path.isEmpty() && !sound_path.isNull())
+	{
+		editPlaySound->setText(sound_path);
+	}
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -833,14 +833,14 @@ KBiffMailboxAdvanced::~KBiffMailboxAdvanced()
 {
 }
 
-KURL KBiffMailboxAdvanced::getMailbox() const
+inline const KURL KBiffMailboxAdvanced::getMailbox() const
 {
 	KURL url(mailbox->text());
 	url.setPassword(password);
 	return url;
 }
 
-unsigned int KBiffMailboxAdvanced::getPort() const
+inline const unsigned int KBiffMailboxAdvanced::getPort() const
 {
 	return QString(port->text()).toInt();
 }
@@ -1130,7 +1130,7 @@ TRACEINIT("KBiffMailboxTab::setMailbox()");
 		editPassword->setText(url.passwd());
 }
 
-KURL KBiffMailboxTab::getMailbox() const
+inline const KURL KBiffMailboxTab::getMailbox() const
 {
 	KURL url;
 
@@ -1157,7 +1157,7 @@ KURL KBiffMailboxTab::getMailbox() const
 	return url;
 }
 
-QList<KURL> KBiffMailboxTab::getMailboxList() const
+inline const QList<KURL> KBiffMailboxTab::getMailboxList() const
 {
 TRACEINIT("KBiffMailboxTab::getMailboxList()");	
 	QList<KURL> url_list;
@@ -1328,7 +1328,7 @@ void KBiffMailboxTab::advanced()
 	}
 }
 
-const char* KBiffMailboxTab::scramble(const char* password, bool encode)
+inline const char* KBiffMailboxTab::scramble(const char* password, bool encode)
 {
 	char *ptr = new char[strlen(password)];
 	char *ret_ptr = ptr;
@@ -1340,7 +1340,7 @@ const char* KBiffMailboxTab::scramble(const char* password, bool encode)
 	return ret_ptr;
 }
 
-inline KURL KBiffMailboxTab::defaultMailbox() const
+inline const KURL KBiffMailboxTab::defaultMailbox() const
 {
 	QFileInfo mailbox_info(getenv("MAIL"));
 	if (mailbox_info.exists() == false)
@@ -1394,7 +1394,7 @@ TRACEINIT("KBiffAboutTab::KBiffAboutTab()");
 
 	QLabel *version = new QLabel(this);
 	version->setFont(QFont("helvetica", 12));
-	version->setText(i18n("Version 1.1\n\nCopyright (C) 1998\nKurt Granroth"));
+	version->setText(i18n("Version 1.1.1\n\nCopyright (C) 1998\nKurt Granroth"));
 	version->setAutoResize(true);
 	version->move(x, y);
 	version->adjustSize();
