@@ -7,6 +7,10 @@
 #include<qcolor.h>
 #include<qapp.h>
 
+#ifdef HAVE_CONFIG_H
+#include "../config.h"
+#endif
+
 //#include"qaudio.h"
 
 #include"kornbutt.h"

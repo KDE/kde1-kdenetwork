@@ -1,6 +1,10 @@
 
 #include<stdlib.h>
 
+#ifdef HAVE_CONFIG_H
+#include "../config.h"
+#endif
+
 #include"kmailbox.h"
 
 #include<qobject.h>

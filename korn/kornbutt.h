@@ -10,7 +10,7 @@ class KornSettings;
 ///
 class KornButton: public KButton
 {
-	Q_OBJECT;
+	Q_OBJECT
 
 private:
 	class KMailBox *_box;

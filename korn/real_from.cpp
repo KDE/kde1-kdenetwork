@@ -5,6 +5,10 @@
 
 #include <qstring.h>
 
+#ifdef HAVE_CONFIG_H
+#include "../config.h"
+#endif
+
 #define whitespace(c)    (c == ' ' || c == '\t')
 
 #define skip_white(c)	 while(c && (*c) && whitespace(*c) ) c++

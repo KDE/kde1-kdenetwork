@@ -23,7 +23,7 @@ public:
 
 class Korn : public QFrame
 {
-	Q_OBJECT;
+	Q_OBJECT
 
 private:
 	QList<KornBox>	*options;
