@@ -576,35 +576,32 @@ bool NNTP::checkStatus( QString start)
     return success;
 }
 
-bool NNTP::postArticle (QString ID)
+bool NNTP::postArticle (KMMessage *aMsg)
 {
-    QString p;
-    p=krnpath+"/outgoing/";
-    p+=ID;
-    QFile f(p);
-    if (f.open (IO_ReadOnly))
+    int errcode=Post();
+    if (!errcode)
     {
-        char *buffer=new char[f.size()+1];
-        f.readBlock(buffer,f.size());
-        buffer[f.size()]=0;
-        int errcode=Post();
-        if (errcode!=340)
-        {
-            sprintf (debugbuf,"error posting, I said post, and the server said:\n%s",
-                     StatusResponse().data());
-            KDEBUG(KDEBUG_ERROR,3300,debugbuf);
-            return false;
-        }
-        SendData(buffer, f.size());
-        SendData("\r\n.\r\n",5);
-        f.close();
-        unlink (p.data());
-        delete[] buffer;
-        return true;
+        warning ("The server closed the connection!");
     }
-    else
+    if (errcode!=340)
     {
-        warning ("Can't open the file I am supposed to post!");
+        warning("error posting, I said POST, and the server said:\n%s",
+                 StatusResponse().data());
+        return false;
     }
-    return false;
+    QString s=aMsg->asString();
+    DwString dws;
+    DwToCrLfEol(s.data(),dws);
+    errcode=SendData(dws);
+    if (!errcode)
+    {
+        warning ("The server closed the connection!");
+    }
+    if (errcode>240)
+    {
+        warning("error posting, I said DATA, and the server said:\n%s",
+                 StatusResponse().data());
+        return false;
+    }
+    return true;
 }

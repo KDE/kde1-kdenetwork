@@ -41,7 +41,7 @@
 #include "asker.h"
 #include "groupdlg.moc"
 
-#include "kmsender.h"
+#include "krnsender.h"
 #include "kmcomposewin.h"
 #include "kmreaderwin.h"
 #include "kmidentity.h"
@@ -70,7 +70,7 @@ extern QString krnpath,cachepath,artinfopath,pixpath;
 extern KConfig *conf;
 
 extern KMIdentity *identity;
-extern KMSender *msgSender;
+extern KRNSender *msgSender;
 
 GroupList groups;
 GroupList subscr;
@@ -213,6 +213,8 @@ Inherited (name)
     QString sname=conf->readEntry("NNTPServer");
     server = new NNTP (sname.data());
     server->reportCounters (true,false);
+
+    msgSender->setNNTP(server);
     
     connect (server,SIGNAL(newStatus(const char *)),this,SLOT(updateCounter(const char *)));
     show();

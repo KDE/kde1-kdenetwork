@@ -529,6 +529,10 @@ QDict <node> *d;
 void do_insert(QString id,Article *art)
 {
     node *a=0;
+    if (!id)
+        return;
+    if (id.isEmpty())
+        return;
     a=d->find(id);
     if (a) //article is in the dict
     {

@@ -35,7 +35,6 @@
 #include "groupdlg.h" 
 #include "NNTP.h"
 #include "kdecode.h"
-#include "kmsender.h"
 #include "krnsender.h"
 #include "kmidentity.h"
 #include "kbusyptr.h"
@@ -58,7 +57,7 @@ KApplication *app;
 Groupdlg  *main_widget;
 KConfig *conf;
 KLocale *nls;
-KMSender *msgSender;
+KRNSender *msgSender;
 KMIdentity *identity;
 KStdAccel* keys;
 KBusyPtr *kbp;

@@ -179,7 +179,7 @@ public:
     bool    artList(int from=0,int to=0,NewsGroup *n=0);
     QString *article(char *id);
     bool    isCached(char *id);
-    bool    postArticle(QString ID);
+    bool    postArticle(KMMessage *aMsg);
     int     authinfo(const char *username,const char *password);
     int     setMode (char *mode);
     QString    	hostname;
