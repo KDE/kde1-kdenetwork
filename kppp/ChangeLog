@@ -1,3 +1,12 @@
+1998-12-20  Harri Porten  <porten@kde.org>
+
+	* docking.cpp: call KWM::activate() on connection window after
+	being re-opened from docking icon (recommended by Matthias on
+	kde-devel)
+	* ppplog.cpp: re-introduced reading messages with fgets() instead
+	of single chars. Should be faster.
+	* ppplog.cpp: worked on diagnostic messages
+
 1998-12-18  Harri Porten  <porten@kde.org>
 
 	* #include "auth.h" was needed after pap.h was removed

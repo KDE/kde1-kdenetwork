@@ -58,31 +58,18 @@
 
 int PPPL_MakeLog(QStrList &list) {
   int pid = -1, newpid;
-  char buffer[1024], *p, *pbuf;
-  char c;
+  char buffer[1024], *p;
   const char *pidp;
   int fd;
-  uint i;
 
   fd = Requester::rq->openSysLog();
   if(fd < 0) {
-    fprintf(stderr, "Cannot open logfile!\n");
+    list.append("Cannot open logfile!");
     return 1;
   }
 
-  pbuf = buffer;
-  i = 0;
-  // while(fgets(buffer, sizeof(buffer), f) != 0) { 
-  while(read(fd, &c, 1) != 0) {
-    if(c != '\n' && i++ < sizeof(buffer)-1) {
-      *pbuf++ = c;
-      continue;
-    }
-    *pbuf = '\0';
-    // reset pointer
-    pbuf = buffer;
-    i = 0;
-
+  FILE *f = fdopen(fd, "r");
+  while(fgets(buffer, sizeof(buffer), f) != 0) { 
     // pppd line ?
     p = (char *)strstr(buffer, "pppd[");
     if(p == 0)
@@ -151,8 +138,7 @@ void PPPL_AnalyseLog(QStrList &list, QStrList &result) {
 	  "Please use the terminal-based login to verify") },
 
     {"Serial line is looped back", 
-     i18n("Do you use /dev/modem ? If so, you should specify "
-	  "the real device instead, e.g. /dev/ttyS1 (COM2).") },
+     i18n("You haven't started the PPP software on the peer system.") },
     
     {"AP authentication failed",
      i18n("Check that you supplied the correct username and password!")} ,
@@ -164,6 +150,10 @@ void PPPL_AnalyseLog(QStrList &list, QStrList &result) {
     {"CP: timeout sending",
      i18n("The remote system does not seem to answer to\n"
 	  "configuration request! Contact your provider!") },
+
+    {"unrecognized option",
+     i18n("You have passed an invalid option to pppd. See `man pppd' "
+          "for a complete list of valid arguments.") },
 
     // terminator
     {0,0}

@@ -53,7 +53,11 @@
 #define _PATH_RESCONF "/etc/resolv.conf"
 #endif
 
+#ifndef MY_DEBUG
+#define Debug(s) ((void)0);
+#else
 #define Debug(s) fprintf(stderr, s "\n");
+#endif
 
 Opener::Opener(int s) : socket(s) {
   mainLoop();

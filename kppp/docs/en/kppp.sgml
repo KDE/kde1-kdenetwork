@@ -1032,6 +1032,18 @@ that your serial ports support higher speeds. Many systems based on i486 do
 not work correctly when you set the speed to 115200. If you have a 8250 UART
 chip, it won't work. If you have a 16550 or 16550A it should work flawlessly.
 <p>
+Additionally, consult your modem manual to look for init strings that enable a
+high speed mode.
+<p>
+
+<sect2>REALLY slow connection speed<p>
+If data drips in at a rate of just a few bytes per second you should check
+your hardware setup. If moving your mouse speeds up the transmission this is
+definetely a hardware issue.<p>
+Obtain some information about your serial port with
+<tt>setserial -a /dev/ttySx</tt> and check for interrupt conflicts with other
+components of your system.
+<p>
 
 <sect2>My phone line needs pulse dialing instead of tone dialing (or vice-versa)<p>
 You must modify you modem dial string. Nearly all modems support the 
@@ -1076,7 +1088,11 @@ holiday. Please have a look at ruleset.cpp and emulate the ``easter'' example.
 Then send <url url="mailto:wuebben@math.cornell.edu" name="me"> the patches.
 <p>
 
-
+<sect1>How to interpret the system's log<p>
+<sect2>Serial line is looped back<p>
+Short answer: You haven't started the PPP software on the peer system.<p>
+See a posting from Al Longyear on <url url="http://www.dejanews.com/getdoc.xp?AN=184945314"> for a more detailed explanation.
+<p>
 <sect>Appendix
 <p>
 <sect1>The Hayes Modem Command Set

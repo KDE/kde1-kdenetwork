@@ -213,8 +213,10 @@ void DockWidget::toggle_window_state() {
   if(p_kppp != 0L)  {
     if (p_kppp->con_win->isVisible())
       p_kppp->con_win->hide();
-    else
+    else {
       p_kppp->con_win->show();
+      KWM::activate(p_kppp->con_win->winId());
+    }
   }
 }
 
