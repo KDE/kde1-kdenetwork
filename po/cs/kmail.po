@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmail 0.4.4\n"
 "POT-Creation-Date: 1998-06-18 23:38+0200\n"
-"PO-Revision-Date: 1998-06-12 08:40 MET DST\n"
+"PO-Revision-Date: 1998-06-19 09:29 MET DST\n"
 "Last-Translator: Miroslav Flídr <flidr@ky.zcu.cz>\n"
 "Language-Team: Czech <sc@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -241,12 +241,11 @@ msgstr "Poslat"
 
 #: kmmainwin.cpp:863
 msgid "Next unread"
-msgstr ""
+msgstr "Následující nepøeètený"
 
 #: kmmainwin.cpp:867
-#, fuzzy
 msgid "Previous unread"
-msgstr "&Pøedchozí"
+msgstr "Pøedchozí nepøeètený"
 
 #: kmmainwin.cpp:877
 msgid "&Set Status"
@@ -947,12 +946,12 @@ msgstr "Vytváøení indexového souboru: hotovo %d zpráv"
 
 #: kmfolder.cpp:444
 msgid "Writing index file"
-msgstr ""
+msgstr "Zapisuji indexový soubor"
 
 #: kmfolder.cpp:870
-#, fuzzy, c-format
+#, c-format
 msgid "Compacting folder: %d messages done"
-msgstr "Vytváøení indexového souboru: hotovo %d zpráv"
+msgstr "Komprimuji poøadaè: hotovo %d zpráv"
 
 #: kmmsgpartdlg.cpp:41
 msgid "Message Part Properties"
@@ -1600,18 +1599,3 @@ msgstr "&7 bitové je ASCII"
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
 msgstr "&Oznaè neznámé znaky"
-
-#~ msgid "&Remove"
-#~ msgstr "&Odstranit"
-
-#~ msgid "&Next"
-#~ msgstr "&Následující"
-
-#~ msgid "Fonts"
-#~ msgstr "Fonty"
-
-#~ msgid "Appearance"
-#~ msgstr "Vzhled"
-
-#~ msgid "&Ok"
-#~ msgstr "&Ok"
