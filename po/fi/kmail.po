@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1999-01-17 02:04+0100\n"
+"POT-Creation-Date: 1999-01-18 02:04+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Kim Enkovaara <kim.enkovaara@iki.fi>\n"
 
@@ -1773,6 +1773,11 @@ msgstr "Osoitekirjaan lis‰‰minen ep‰onnistui"
 
 #: kmiostatusdlg.cpp:32
 msgid "&Abort"
+msgstr "&Poistu"
+
+#: kmnewiostatuswdg.cpp:24
+#, fuzzy
+msgid "Abort"
 msgstr "&Poistu"
 
 #: kmnewiostatuswdg.cpp:41

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp \n"
-"POT-Creation-Date: 1999-01-16 02:04+0100\n"
+"POT-Creation-Date: 1999-01-18 02:04+0100\n"
 "PO-Revision-Date: 1999-01-05 19:05+0100\n"
 "Last-Translator: Jacek Stolarczyk <jacek@mer.chemia.polsl.gliwice.pl>\n"
 "Content-Type: text/plain; charset=iso-8859-2\n"
@@ -312,7 +312,7 @@ msgstr "Znaleziono: "
 msgid "Looping: "
 msgstr "W pêtli: "
 
-#: connect.cpp:877 modeminfo.cpp:225
+#: connect.cpp:877 modeminfo.cpp:224
 msgid "One Moment Please ..."
 msgstr "Zaczekaj chwilê, proszê ..."
 
@@ -1688,7 +1688,7 @@ msgstr "Przekroczono czas oczekiwania na odpowied¼ modemu"
 msgid "Modem Ready"
 msgstr "Modem gotów"
 
-#: modeminfo.cpp:247
+#: modeminfo.cpp:246
 msgid "Modem Query Results"
 msgstr "Rezultaty odpytywania modemu"
 
@@ -1845,6 +1845,10 @@ msgstr "bajty WE i WY"
 msgid "Available rules"
 msgstr "Dostêpne cenniki"
 
+#: acctselect.cpp:305
+msgid "(none)"
+msgstr ""
+
 #: ruleset.cpp:544
 msgid "kppp: no rulefile specified\n"
 msgstr "kppp: nie wybrano pliku cennika\n"
@@ -1977,6 +1981,15 @@ msgstr ""
 "niepustego pliku, posiadaj±cego\n"
 "odpowiednie prawa do odczytu i zapisu."
 
+#: loginterm.cpp:120
+msgid "Ca&ncel"
+msgstr ""
+
+#: loginterm.cpp:125
+#, fuzzy
+msgid "&Continue"
+msgstr "Po³±cz"
+
 #: ppplog.cpp:136
 msgid ""
 "You have launched pppd before the remote server was ready to establish a PPP "
@@ -2080,10 +2093,11 @@ msgid "Select modem type..."
 msgstr "Wybierz typ modemu..."
 
 #: modemdb.cpp:48
+#, fuzzy
 msgid ""
-"To setup your modem, first choose it´s vendor in thelist to the left, and "
-"the select the model from theright list. If you don´t know which modem you "
-"have,you can try out one of the \"Generic\" modems."
+"To setup your modem, first choose its vendor in the list to the left, and "
+"then select the model from the right list. If you don´t know which modem you "
+"have, you can try out one of the \"Generic\" modems."
 msgstr ""
 "Aby wskazaæ modem, najpierw wybierz producenta z listy po³o¿onej na lewo, a "
 "potem wybierz model modemu z listy na prawo. Je¶li nie wiesz jaki masz modem "

@@ -1,10 +1,30 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ksirc \n"
-"POT-Creation-Date: 1998-12-28 02:07+0100\n"
+"POT-Creation-Date: 1999-01-18 02:04+0100\n"
 "PO-Revision-Date: 1999-01-04 19:10+0200\n"
 "Last-Translator: Piotr Roszatycki <dexter@fnet.pl>\n"
 "Content-Type: text/plain; charset=iso-8859-2\n"
+
+#: FilterRuleEditor.cpp:29
+msgid "Edit Filter Rules"
+msgstr ""
+
+# FilterRuleEditorData.cpp:105
+#: FilterRuleEditor.cpp:58 FilterRuleEditor.cpp:79
+#: FilterRuleEditorData.cpp:105
+msgid "&Modify"
+msgstr "&Zmieñ"
+
+#: FilterRuleEditor.cpp:74
+msgid "Missing Arguments"
+msgstr ""
+
+#: FilterRuleEditor.cpp:75
+msgid ""
+"Cannot create a Rule since not\n"
+"all the fields are filled in."
+msgstr ""
 
 # FilterRuleEditorData.cpp:33
 #: FilterRuleEditorData.cpp:33
@@ -26,11 +46,6 @@ msgstr "Od:"
 msgid "To:"
 msgstr "Do:"
 
-# FilterRuleEditorData.cpp:105
-#: FilterRuleEditorData.cpp:105
-msgid "&Modify"
-msgstr "&Zmieñ"
-
 # FilterRuleEditorData.cpp:126
 #: FilterRuleEditorData.cpp:126
 msgid "New Rule"
@@ -45,6 +60,10 @@ msgstr "Wy¿ej"
 #: FilterRuleEditorData.cpp:155
 msgid "Down"
 msgstr "Ni¿ej"
+
+#: KSircColour.cpp:33
+msgid "Colour Settings"
+msgstr ""
 
 # KSircColourData.cpp:33
 #: KSircColourData.cpp:33
@@ -67,9 +86,13 @@ msgid "Errors"
 msgstr "B³êdy"
 
 # KSircColourData.cpp:115
-#: KSircColourData.cpp:115
+#: KSPrefs/defaultfiltersdata.cpp:77 KSircColourData.cpp:115
 msgid "Background"
 msgstr "T³o"
+
+#: dccDialog.cpp:22
+msgid "DCC Files Offered"
+msgstr ""
 
 # dccDialogData.cpp:38
 #: dccDialogData.cpp:38
@@ -106,6 +129,10 @@ msgstr ""
 "kSirc Alpha dezaktualizuje siê po 8 tygodniach!\n"
 "\n"
 "TA WERSJA ZDEZAKTUALIZUJE SIÊ ZA 4 TYGODNIE"
+
+#: open_top.cpp:26
+msgid "New Window For"
+msgstr ""
 
 # open_topData.cpp:39
 #: open_topData.cpp:39
@@ -183,7 +210,8 @@ msgid "Server Control"
 msgstr "Kontrola serwera"
 
 # servercontroller.cpp:291 servercontroller.cpp:455
-#: servercontroller.cpp:291 servercontroller.cpp:455
+#: KSPrefs/serverchanneldata.cpp:34 servercontroller.cpp:291
+#: servercontroller.cpp:455
 msgid "Channels"
 msgstr "Kana³y"
 
@@ -201,6 +229,10 @@ msgstr "Aktywne po³±czenia serwera"
 #: servercontroller.cpp:734
 msgid "&Undock"
 msgstr "&Oddokuj"
+
+#: ssfeprompt.cpp:24
+msgid "Prompt"
+msgstr ""
 
 # toplevel.cpp:140
 #: toplevel.cpp:140
@@ -222,6 +254,10 @@ msgstr "&Zamknij okno..."
 msgid "&Users"
 msgstr "&U¿ytkownicy"
 
+#: welcomeWin.cpp:30
+msgid "Welcome to kSirc"
+msgstr ""
+
 # welcomeWinData.cpp:35
 #: welcomeWinData.cpp:35
 msgid "Show Again"
@@ -231,6 +267,10 @@ msgstr "Pokazuj ponownie"
 #: welcomeWinData.cpp:44
 msgid "Dissmiss"
 msgstr "Anuluj"
+
+#: KSColourPicker/kscolourpicker.cpp:28
+msgid "kSirc Colour Picker"
+msgstr ""
 
 # KSColourPicker/kscolourpickerData.cpp:30
 #: KSColourPicker/kscolourpickerData.cpp:30
@@ -242,10 +282,24 @@ msgstr "Pobierz"
 msgid "Sample Colour"
 msgstr "Przyk³adowy kolor"
 
+# toplevel.cpp:166
+#: KSCutDialog/KSCutDialog.cpp:27
+#, fuzzy
+msgid "Cut Window"
+msgstr "&Zamknij okno..."
+
 # KSCutDialog/KSCutDialogData.cpp:39
 #: KSCutDialog/KSCutDialogData.cpp:39
 msgid "Cop&y"
 msgstr "&Kopiuj"
+
+#: KSOpenkSirc/open_ksirc.cpp:38
+msgid "Connect to Server"
+msgstr ""
+
+#: KSOpenkSirc/open_ksirc.cpp:186
+msgid "Not Avalable"
+msgstr ""
 
 # KSOpenkSirc/open_ksircData.cpp:37
 #: KSOpenkSirc/open_ksircData.cpp:37
@@ -302,6 +356,82 @@ msgstr "Tylko dla opa"
 msgid "Modify"
 msgstr "Modyfikuj"
 
+#: KSPrefs/defaultfiltersdata.cpp:34
+msgid "Highlight Your Nick"
+msgstr ""
+
+#: KSPrefs/defaultfiltersdata.cpp:43
+msgid "Colour Nicks in Channels"
+msgstr ""
+
+#: KSPrefs/defaultfiltersdata.cpp:52
+msgid "Allow External Colours"
+msgstr ""
+
+#: KSPrefs/defaultfiltersdata.cpp:59
+msgid "Allow &kSirc Colour codes"
+msgstr ""
+
+#: KSPrefs/defaultfiltersdata.cpp:68
+msgid "&Allow &mirc Colour codes"
+msgstr ""
+
+#: KSPrefs/defaultfiltersdata.cpp:86
+msgid "Foreground"
+msgstr ""
+
+# KSColourPicker/kscolourpickerData.cpp:46
+#: KSPrefs/defaultfiltersdata.cpp:95
+#, fuzzy
+msgid "Colour"
+msgstr "Przyk³adowy kolor"
+
+# KSColourPicker/kscolourpickerData.cpp:46
+#: KSPrefs/defaultfiltersdata.cpp:103 KSPrefs/defaultfiltersdata.cpp:112
+#, fuzzy
+msgid "Sample"
+msgstr "Przyk³adowy kolor"
+
+#: KSPrefs/generalData.cpp:50
+msgid "Auto Create Windows"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:59
+msgid "Beep on Notify"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:68
+msgid "Nick Completion"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:77
+msgid "Colour Picker Popup"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:86
+msgid "Auto Rejoin"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:95
+msgid "Enable Background Pixmap"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:112
+msgid "Browse"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:120
+msgid "Display Topic in Caption"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:129
+msgid "Use MDI Mode (Must restart to take effect, experimental!!)"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:144
+msgid "Window History Length"
+msgstr ""
+
 # KSPrefs/ksprefs.cpp:9
 #: KSPrefs/ksprefs.cpp:9
 msgid "kSirc Prefrences"
@@ -331,6 +461,40 @@ msgstr "Menu &u¿ytkownika"
 #: KSPrefs/ksprefs.cpp:26
 msgid "&Default Filters"
 msgstr "&Domy¶lne filtry"
+
+# KSOpenkSirc/open_ksircData.cpp:147
+#: KSPrefs/serverchanneldata.cpp:43
+#, fuzzy
+msgid "Servers"
+msgstr "Opis serwera:"
+
+#: KSPrefs/startupdata.cpp:35
+msgid "Notify List"
+msgstr ""
+
+# KSColourPicker/kscolourpickerData.cpp:30
+#: KSPrefs/startupdata.cpp:43
+#, fuzzy
+msgid "Nick"
+msgstr "Pobierz"
+
+# KSPrefs/UserMenuRefData.cpp:61
+#: KSPrefs/startupdata.cpp:52
+#, fuzzy
+msgid "Real Name"
+msgstr "Nazwa menu"
+
+#: KSPrefs/startupdata.cpp:97
+msgid "&Add"
+msgstr ""
+
+#: KSProgress/ksprogressdata.cpp:46
+msgid "fileName"
+msgstr ""
+
+#: KSProgress/ksprogressdata.cpp:54
+msgid "XferStatus"
+msgstr ""
 
 # KSTicker/speeddialogData.cpp:79
 #: KSTicker/speeddialogData.cpp:79

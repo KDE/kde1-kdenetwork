@@ -1,13 +1,32 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ksirc\n"
-"POT-Creation-Date: 1998-12-28 02:07+0100\n"
+"POT-Creation-Date: 1999-01-18 02:04+0100\n"
 "PO-Revision-Date: 1998-11-20 00:00+0000\n"
 "Last-Translator: Pedro Morais <morais@kde.org>\n"
 "Language-Team: pt\n"
 "MIME-Version:\n"
 "Content-Type:\n"
 "Content-Transfer-Encoding:\n"
+
+#: FilterRuleEditor.cpp:29
+msgid "Edit Filter Rules"
+msgstr ""
+
+#: FilterRuleEditor.cpp:58 FilterRuleEditor.cpp:79
+#: FilterRuleEditorData.cpp:105
+msgid "&Modify"
+msgstr "&Modificar"
+
+#: FilterRuleEditor.cpp:74
+msgid "Missing Arguments"
+msgstr ""
+
+#: FilterRuleEditor.cpp:75
+msgid ""
+"Cannot create a Rule since not\n"
+"all the fields are filled in."
+msgstr ""
 
 #: FilterRuleEditorData.cpp:33
 msgid "Description:"
@@ -25,10 +44,6 @@ msgstr "De:"
 msgid "To:"
 msgstr "Para:"
 
-#: FilterRuleEditorData.cpp:105
-msgid "&Modify"
-msgstr "&Modificar"
-
 #: FilterRuleEditorData.cpp:126
 msgid "New Rule"
 msgstr "Nova Regra"
@@ -40,6 +55,10 @@ msgstr "Cima"
 #: FilterRuleEditorData.cpp:155
 msgid "Down"
 msgstr "Baixo"
+
+#: KSircColour.cpp:33
+msgid "Colour Settings"
+msgstr ""
 
 #: KSircColourData.cpp:33
 msgid "Generic Text"
@@ -57,9 +76,13 @@ msgstr ""
 msgid "Errors"
 msgstr "Erros"
 
-#: KSircColourData.cpp:115
+#: KSPrefs/defaultfiltersdata.cpp:77 KSircColourData.cpp:115
 msgid "Background"
 msgstr "Fundo"
+
+#: dccDialog.cpp:22
+msgid "DCC Files Offered"
+msgstr ""
 
 #: dccDialogData.cpp:38
 msgid "&Get"
@@ -84,6 +107,10 @@ msgid ""
 "expiry date.\n"
 "\n"
 "THIS VERSION WILL EXPIRE IN UNDER 4 WEEKS"
+msgstr ""
+
+#: open_top.cpp:26
+msgid "New Window For"
 msgstr ""
 
 #: open_topData.cpp:39
@@ -146,7 +173,8 @@ msgstr "Acerca do kSirc..."
 msgid "Server Control"
 msgstr ""
 
-#: servercontroller.cpp:291 servercontroller.cpp:455
+#: KSPrefs/serverchanneldata.cpp:34 servercontroller.cpp:291
+#: servercontroller.cpp:455
 msgid "Channels"
 msgstr "Canais"
 
@@ -160,6 +188,10 @@ msgstr ""
 
 #: servercontroller.cpp:734
 msgid "&Undock"
+msgstr ""
+
+#: ssfeprompt.cpp:24
+msgid "Prompt"
 msgstr ""
 
 #: toplevel.cpp:140
@@ -178,12 +210,20 @@ msgstr ""
 msgid "&Users"
 msgstr "&Utilizadores"
 
+#: welcomeWin.cpp:30
+msgid "Welcome to kSirc"
+msgstr ""
+
 #: welcomeWinData.cpp:35
 msgid "Show Again"
 msgstr ""
 
 #: welcomeWinData.cpp:44
 msgid "Dissmiss"
+msgstr ""
+
+#: KSColourPicker/kscolourpicker.cpp:28
+msgid "kSirc Colour Picker"
 msgstr ""
 
 #: KSColourPicker/kscolourpickerData.cpp:30
@@ -194,8 +234,20 @@ msgstr ""
 msgid "Sample Colour"
 msgstr ""
 
+#: KSCutDialog/KSCutDialog.cpp:27
+msgid "Cut Window"
+msgstr ""
+
 #: KSCutDialog/KSCutDialogData.cpp:39
 msgid "Cop&y"
+msgstr ""
+
+#: KSOpenkSirc/open_ksirc.cpp:38
+msgid "Connect to Server"
+msgstr ""
+
+#: KSOpenkSirc/open_ksirc.cpp:186
+msgid "Not Avalable"
 msgstr ""
 
 #: KSOpenkSirc/open_ksircData.cpp:37
@@ -242,6 +294,78 @@ msgstr "Apenas OP"
 msgid "Modify"
 msgstr "Modificar"
 
+#: KSPrefs/defaultfiltersdata.cpp:34
+msgid "Highlight Your Nick"
+msgstr ""
+
+#: KSPrefs/defaultfiltersdata.cpp:43
+msgid "Colour Nicks in Channels"
+msgstr ""
+
+#: KSPrefs/defaultfiltersdata.cpp:52
+msgid "Allow External Colours"
+msgstr ""
+
+#: KSPrefs/defaultfiltersdata.cpp:59
+msgid "Allow &kSirc Colour codes"
+msgstr ""
+
+#: KSPrefs/defaultfiltersdata.cpp:68
+msgid "&Allow &mirc Colour codes"
+msgstr ""
+
+#: KSPrefs/defaultfiltersdata.cpp:86
+msgid "Foreground"
+msgstr ""
+
+#: KSPrefs/defaultfiltersdata.cpp:95
+msgid "Colour"
+msgstr ""
+
+#: KSPrefs/defaultfiltersdata.cpp:103 KSPrefs/defaultfiltersdata.cpp:112
+msgid "Sample"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:50
+msgid "Auto Create Windows"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:59
+msgid "Beep on Notify"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:68
+msgid "Nick Completion"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:77
+msgid "Colour Picker Popup"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:86
+msgid "Auto Rejoin"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:95
+msgid "Enable Background Pixmap"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:112
+msgid "Browse"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:120
+msgid "Display Topic in Caption"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:129
+msgid "Use MDI Mode (Must restart to take effect, experimental!!)"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:144
+msgid "Window History Length"
+msgstr ""
+
 #: KSPrefs/ksprefs.cpp:9
 msgid "kSirc Prefrences"
 msgstr "Preferências"
@@ -264,6 +388,35 @@ msgstr ""
 
 #: KSPrefs/ksprefs.cpp:26
 msgid "&Default Filters"
+msgstr ""
+
+#: KSPrefs/serverchanneldata.cpp:43
+#, fuzzy
+msgid "Servers"
+msgstr "Desc Servidor:"
+
+#: KSPrefs/startupdata.cpp:35
+msgid "Notify List"
+msgstr ""
+
+#: KSPrefs/startupdata.cpp:43
+msgid "Nick"
+msgstr ""
+
+#: KSPrefs/startupdata.cpp:52
+msgid "Real Name"
+msgstr ""
+
+#: KSPrefs/startupdata.cpp:97
+msgid "&Add"
+msgstr ""
+
+#: KSProgress/ksprogressdata.cpp:46
+msgid "fileName"
+msgstr ""
+
+#: KSProgress/ksprogressdata.cpp:54
+msgid "XferStatus"
 msgstr ""
 
 #: KSTicker/speeddialogData.cpp:79

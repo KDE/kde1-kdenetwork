@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE NETWORK/kppp\n"
-"POT-Creation-Date: 1999-01-14 02:07+0100\n"
+"POT-Creation-Date: 1999-01-18 02:04+0100\n"
 "PO-Revision-Date: 1998-03-24 19:24+0100\n"
 "Last-Translator: Hans Petter Bieker <zerium@webindex.no>\n"
 "Language-Team: no <LL@li.org>\n"
@@ -316,7 +316,7 @@ msgstr "Funnet: "
 msgid "Looping: "
 msgstr "Looping: "
 
-#: connect.cpp:877 modeminfo.cpp:225
+#: connect.cpp:877 modeminfo.cpp:224
 msgid "One Moment Please ..."
 msgstr "Et øyeblikk ...."
 
@@ -1689,7 +1689,7 @@ msgstr "Modem Query timed out."
 msgid "Modem Ready"
 msgstr "Modem klart"
 
-#: modeminfo.cpp:247
+#: modeminfo.cpp:246
 msgid "Modem Query Results"
 msgstr "Modem forespørsel resultat"
 
@@ -1846,6 +1846,10 @@ msgstr "byter inng og ut"
 msgid "Available rules"
 msgstr "Tilgjengelige regler"
 
+#: acctselect.cpp:305
+msgid "(none)"
+msgstr ""
+
 #: ruleset.cpp:544
 msgid "kppp: no rulefile specified\n"
 msgstr "kppp: ingen regelfil spesifisert\n"
@@ -1978,6 +1982,15 @@ msgstr ""
 "en ikke-tom fil som har riktig lese- og\n"
 "skrivetillatelse."
 
+#: loginterm.cpp:120
+msgid "Ca&ncel"
+msgstr ""
+
+#: loginterm.cpp:125
+#, fuzzy
+msgid "&Continue"
+msgstr "Kopple opp"
+
 #: ppplog.cpp:136
 msgid ""
 "You have launched pppd before the remote server was ready to establish a PPP "
@@ -2081,18 +2094,15 @@ msgid "Select modem type..."
 msgstr "Velg modemtype..."
 
 #: modemdb.cpp:48
+#, fuzzy
 msgid ""
-"To setup your modem, first choose it´s vendor in thelist to the left, and "
-"the select the model from theright list. If you don´t know which modem you "
-"have,you can try out one of the \"Generic\" modems."
+"To setup your modem, first choose its vendor in the list to the left, and "
+"then select the model from the right list. If you don´t know which modem you "
+"have, you can try out one of the \"Generic\" modems."
 msgstr ""
-"For å sette opp modemet ditt, velg først en leverandør i listen til "
-"venstre, og velg så modell fra høyre liste. Hvis du ikke vet hvilket "
-"modem du har, kan du prøve en av de \"Generelle\" modemene."
-
-#: modemdb.cpp:71
-msgid "Ok"
-msgstr "OK"
+"For å sette opp modemet ditt, velg først en leverandør i listen til venstre, "
+"og velg så modell fra høyre liste. Hvis du ikke vet hvilket modem du har, "
+"kan du prøve en av de \"Generelle\" modemene."
 
 #: modemdb.cpp:151 modemdb.cpp:153 modemdb.cpp:223 modemdb.cpp:238
 msgid "<Generic>"
@@ -2101,3 +2111,6 @@ msgstr "<Generell>"
 #: modemdb.cpp:218
 msgid "Hayes(tm) compatible modem"
 msgstr "Hayes(tm)-kompatible modem"
+
+#~ msgid "Ok"
+#~ msgstr "OK"

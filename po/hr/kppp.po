@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kdenetwork\n"
-"POT-Creation-Date: 1999-01-16 02:04+0100\n"
+"POT-Creation-Date: 1999-01-18 02:04+0100\n"
 "PO-Revision-Date: 1998-11-22 20:00-0500\n"
 "Last-Translator: Vladimir Vuksan <vuksan@veus.hr> \n"
 "Language-Team: Croatian\n"
@@ -296,7 +296,7 @@ msgstr "Prona¹ao: "
 msgid "Looping: "
 msgstr "Kru¾im: "
 
-#: connect.cpp:877 modeminfo.cpp:225
+#: connect.cpp:877 modeminfo.cpp:224
 msgid "One Moment Please ..."
 msgstr "Jedan trenutak molim ..."
 
@@ -1418,7 +1418,7 @@ msgstr "Istek vremena za ispitivanje modema."
 msgid "Modem Ready"
 msgstr "Modem spreman"
 
-#: modeminfo.cpp:247
+#: modeminfo.cpp:246
 msgid "Modem Query Results"
 msgstr "Rezultati ispitivanja modema"
 
@@ -1567,6 +1567,10 @@ msgstr "Bajtova unutra i van"
 msgid "Available rules"
 msgstr "Dostupna pravila"
 
+#: acctselect.cpp:305
+msgid "(none)"
+msgstr ""
+
 #: ruleset.cpp:544
 msgid "kppp: no rulefile specified\n"
 msgstr "kppp: nije navedena datoteka s pravilima\n"
@@ -1693,6 +1697,15 @@ msgstr ""
 "dotiènu datoteku i da je otvori za\n"
 "èitanje svim korisnicima."
 
+#: loginterm.cpp:120
+msgid "Ca&ncel"
+msgstr ""
+
+#: loginterm.cpp:125
+#, fuzzy
+msgid "&Continue"
+msgstr "Spoji"
+
 #: ppplog.cpp:136
 msgid ""
 "You have launched pppd before the remote server was ready to establish a PPP "
@@ -1777,9 +1790,9 @@ msgstr ""
 
 #: modemdb.cpp:48
 msgid ""
-"To setup your modem, first choose it´s vendor in thelist to the left, and "
-"the select the model from theright list. If you don´t know which modem you "
-"have,you can try out one of the \"Generic\" modems."
+"To setup your modem, first choose its vendor in the list to the left, and "
+"then select the model from the right list. If you don´t know which modem you "
+"have, you can try out one of the \"Generic\" modems."
 msgstr ""
 
 #: modemdb.cpp:151 modemdb.cpp:153 modemdb.cpp:223 modemdb.cpp:238

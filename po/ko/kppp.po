@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1999-01-16 02:04+0100\n"
+"POT-Creation-Date: 1999-01-18 02:04+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: LinuxKorea Co. <kde@linuxkorea.co.kr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -300,7 +300,7 @@ msgstr "발견: "
 msgid "Looping: "
 msgstr "루프: "
 
-#: connect.cpp:877 modeminfo.cpp:225
+#: connect.cpp:877 modeminfo.cpp:224
 msgid "One Moment Please ..."
 msgstr "잠시만 기다려 주십시오 ..."
 
@@ -1423,7 +1423,7 @@ msgstr "모뎀 질의 시간 초과"
 msgid "Modem Ready"
 msgstr "모뎀 준비"
 
-#: modeminfo.cpp:247
+#: modeminfo.cpp:246
 msgid "Modem Query Results"
 msgstr "모뎀 질의 결과"
 
@@ -1573,6 +1573,10 @@ msgstr "바이트 받고 보냄"
 msgid "Available rules"
 msgstr "이용가능한 규칙"
 
+#: acctselect.cpp:305
+msgid "(none)"
+msgstr ""
+
 #: ruleset.cpp:544
 msgid "kppp: no rulefile specified\n"
 msgstr "kppp: 지정한 규칙파일이 없습니다\n"
@@ -1700,6 +1704,15 @@ msgstr ""
 "파일 생성을 시스템 관리자에게\n"
 "요청하십시오."
 
+#: loginterm.cpp:120
+msgid "Ca&ncel"
+msgstr ""
+
+#: loginterm.cpp:125
+#, fuzzy
+msgid "&Continue"
+msgstr "연결"
+
 #: ppplog.cpp:136
 msgid ""
 "You have launched pppd before the remote server was ready to establish a PPP "
@@ -1783,9 +1796,9 @@ msgstr ""
 
 #: modemdb.cpp:48
 msgid ""
-"To setup your modem, first choose it큦 vendor in thelist to the left, and "
-"the select the model from theright list. If you don큧 know which modem you "
-"have,you can try out one of the \"Generic\" modems."
+"To setup your modem, first choose its vendor in the list to the left, and "
+"then select the model from the right list. If you don큧 know which modem you "
+"have, you can try out one of the \"Generic\" modems."
 msgstr ""
 
 #: modemdb.cpp:151 modemdb.cpp:153 modemdb.cpp:223 modemdb.cpp:238

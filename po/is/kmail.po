@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1999-01-17 02:04+0100\n"
+"POT-Creation-Date: 1999-01-18 02:04+0100\n"
 "PO-Revision-Date: 1999-01-12 19:05+0000\n"
 "Last-Translator: Richard Allen <ra@hp.is>\n"
 "Language-Team: is <kde-isl@mmedia.is>\n"
@@ -1783,6 +1783,11 @@ msgstr "Vistun á netfangaskrá mistókst"
 
 #: kmiostatusdlg.cpp:32
 msgid "&Abort"
+msgstr "&Hætta við"
+
+#: kmnewiostatuswdg.cpp:24
+#, fuzzy
+msgid "Abort"
 msgstr "&Hætta við"
 
 #: kmnewiostatuswdg.cpp:41

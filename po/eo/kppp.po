@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1999-01-16 02:04+0100\n"
+"POT-Creation-Date: 1999-01-18 02:04+0100\n"
 "PO-Revision-Date: 1998-12-07 18:00+0100\n"
 "Last-Translator: Wolfram Diestel <diestel@rzaix340.rz-uni-leipzig.de>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
@@ -317,7 +317,7 @@ msgstr "Trovis: "
 msgid "Looping: "
 msgstr "Maþo: "
 
-#: connect.cpp:877 modeminfo.cpp:225
+#: connect.cpp:877 modeminfo.cpp:224
 msgid "One Moment Please ..."
 msgstr "Momenton bonvolu ..."
 
@@ -1684,7 +1684,7 @@ msgstr "Modemesploro daýris tro longe"
 msgid "Modem Ready"
 msgstr "Modemo preta"
 
-#: modeminfo.cpp:247
+#: modeminfo.cpp:246
 msgid "Modem Query Results"
 msgstr "Rezulto de modemesploro"
 
@@ -1841,6 +1841,10 @@ msgstr "leg. k send. bitokoj"
 msgid "Available rules"
 msgstr "Uzeblaj reguloj"
 
+#: acctselect.cpp:305
+msgid "(none)"
+msgstr ""
+
 #: ruleset.cpp:544
 msgid "kppp: no rulefile specified\n"
 msgstr "kppp: Vi ne indikis reguldosieron\n"
@@ -1973,6 +1977,15 @@ msgstr ""
 "nemalplenan dosieron kun konvenaj lego-\n"
 "kaj skribo-permesoj."
 
+#: loginterm.cpp:120
+msgid "Ca&ncel"
+msgstr ""
+
+#: loginterm.cpp:125
+#, fuzzy
+msgid "&Continue"
+msgstr "Kontaktu"
+
 #: ppplog.cpp:136
 msgid ""
 "You have launched pppd before the remote server was ready to establish a PPP "
@@ -2075,9 +2088,9 @@ msgstr ""
 
 #: modemdb.cpp:48
 msgid ""
-"To setup your modem, first choose it´s vendor in thelist to the left, and "
-"the select the model from theright list. If you don´t know which modem you "
-"have,you can try out one of the \"Generic\" modems."
+"To setup your modem, first choose its vendor in the list to the left, and "
+"then select the model from the right list. If you don´t know which modem you "
+"have, you can try out one of the \"Generic\" modems."
 msgstr ""
 
 #: modemdb.cpp:151 modemdb.cpp:153 modemdb.cpp:223 modemdb.cpp:238

@@ -5,13 +5,32 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-12-28 02:07+0100\n"
+"POT-Creation-Date: 1999-01-18 02:04+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Elvis Pfützenreuter <epx@netville.com.br>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: ENCODING\n"
+
+#: FilterRuleEditor.cpp:29
+msgid "Edit Filter Rules"
+msgstr ""
+
+#: FilterRuleEditor.cpp:58 FilterRuleEditor.cpp:79
+#: FilterRuleEditorData.cpp:105
+msgid "&Modify"
+msgstr "&Modificar"
+
+#: FilterRuleEditor.cpp:74
+msgid "Missing Arguments"
+msgstr ""
+
+#: FilterRuleEditor.cpp:75
+msgid ""
+"Cannot create a Rule since not\n"
+"all the fields are filled in."
+msgstr ""
 
 #: FilterRuleEditorData.cpp:33
 msgid "Description:"
@@ -29,10 +48,6 @@ msgstr "De:"
 msgid "To:"
 msgstr "Para:"
 
-#: FilterRuleEditorData.cpp:105
-msgid "&Modify"
-msgstr "&Modificar"
-
 #: FilterRuleEditorData.cpp:126
 msgid "New Rule"
 msgstr "Nova Regra"
@@ -44,6 +59,10 @@ msgstr "Acima"
 #: FilterRuleEditorData.cpp:155
 msgid "Down"
 msgstr "Abaixo"
+
+#: KSircColour.cpp:33
+msgid "Colour Settings"
+msgstr ""
 
 #: KSircColourData.cpp:33
 msgid "Generic Text"
@@ -61,9 +80,13 @@ msgstr "Mensagens de canal"
 msgid "Errors"
 msgstr "Erros"
 
-#: KSircColourData.cpp:115
+#: KSPrefs/defaultfiltersdata.cpp:77 KSircColourData.cpp:115
 msgid "Background"
 msgstr "Fundo"
+
+#: dccDialog.cpp:22
+msgid "DCC Files Offered"
+msgstr ""
 
 #: dccDialogData.cpp:38
 msgid "&Get"
@@ -91,6 +114,10 @@ msgid ""
 "\n"
 "THIS VERSION WILL EXPIRE IN UNDER 4 WEEKS"
 msgstr "Esta versão do kSirc-ALPHA vai expirar em 4 semanas."
+
+#: open_top.cpp:26
+msgid "New Window For"
+msgstr ""
 
 #: open_topData.cpp:39
 msgid "Channel/Nick:"
@@ -152,7 +179,8 @@ msgstr "Sobre o kSirc..."
 msgid "Server Control"
 msgstr "Controle do servidor"
 
-#: servercontroller.cpp:291 servercontroller.cpp:455
+#: KSPrefs/serverchanneldata.cpp:34 servercontroller.cpp:291
+#: servercontroller.cpp:455
 msgid "Channels"
 msgstr "Canais"
 
@@ -167,6 +195,10 @@ msgstr "Conexões ativas"
 #: servercontroller.cpp:734
 msgid "&Undock"
 msgstr "&Des-embutir"
+
+#: ssfeprompt.cpp:24
+msgid "Prompt"
+msgstr ""
 
 #: toplevel.cpp:140
 msgid "Lag in seconds to the server"
@@ -184,6 +216,10 @@ msgstr "&Cortar janela..."
 msgid "&Users"
 msgstr "&Usuários"
 
+#: welcomeWin.cpp:30
+msgid "Welcome to kSirc"
+msgstr ""
+
 #: welcomeWinData.cpp:35
 msgid "Show Again"
 msgstr "Mostrar novamente"
@@ -191,6 +227,11 @@ msgstr "Mostrar novamente"
 #: welcomeWinData.cpp:44
 msgid "Dissmiss"
 msgstr "Ignorar"
+
+#: KSColourPicker/kscolourpicker.cpp:28
+#, fuzzy
+msgid "kSirc Colour Picker"
+msgstr "Menu de contexto da paleta de cores"
 
 #: KSColourPicker/kscolourpickerData.cpp:30
 msgid "Pick"
@@ -200,9 +241,22 @@ msgstr "Pegar"
 msgid "Sample Colour"
 msgstr "Cor de exemplo"
 
+#: KSCutDialog/KSCutDialog.cpp:27
+#, fuzzy
+msgid "Cut Window"
+msgstr "&Cortar janela..."
+
 #: KSCutDialog/KSCutDialogData.cpp:39
 msgid "Cop&y"
 msgstr "Cop&iar"
+
+#: KSOpenkSirc/open_ksirc.cpp:38
+msgid "Connect to Server"
+msgstr ""
+
+#: KSOpenkSirc/open_ksirc.cpp:186
+msgid "Not Avalable"
+msgstr ""
 
 #: KSOpenkSirc/open_ksircData.cpp:37
 msgid "&Connect"
@@ -248,6 +302,81 @@ msgstr "Somente OP"
 msgid "Modify"
 msgstr "Modificar"
 
+#: KSPrefs/defaultfiltersdata.cpp:34
+msgid "Highlight Your Nick"
+msgstr ""
+
+#: KSPrefs/defaultfiltersdata.cpp:43
+msgid "Colour Nicks in Channels"
+msgstr ""
+
+#: KSPrefs/defaultfiltersdata.cpp:52
+msgid "Allow External Colours"
+msgstr ""
+
+#: KSPrefs/defaultfiltersdata.cpp:59
+msgid "Allow &kSirc Colour codes"
+msgstr ""
+
+#: KSPrefs/defaultfiltersdata.cpp:68
+msgid "&Allow &mirc Colour codes"
+msgstr ""
+
+#: KSPrefs/defaultfiltersdata.cpp:86
+msgid "Foreground"
+msgstr ""
+
+#: KSPrefs/defaultfiltersdata.cpp:95
+#, fuzzy
+msgid "Colour"
+msgstr "Cor de exemplo"
+
+#: KSPrefs/defaultfiltersdata.cpp:103 KSPrefs/defaultfiltersdata.cpp:112
+#, fuzzy
+msgid "Sample"
+msgstr "Cor de exemplo"
+
+#: KSPrefs/generalData.cpp:50
+msgid "Auto Create Windows"
+msgstr "Auto-criar janelas"
+
+#: KSPrefs/generalData.cpp:59
+msgid "Beep on Notify"
+msgstr "Apitar ao Notificar"
+
+#: KSPrefs/generalData.cpp:68
+msgid "Nick Completion"
+msgstr "Complementação de Apelido"
+
+#: KSPrefs/generalData.cpp:77
+msgid "Colour Picker Popup"
+msgstr "Menu de contexto da paleta de cores"
+
+#: KSPrefs/generalData.cpp:86
+msgid "Auto Rejoin"
+msgstr "Auto re-entrada"
+
+#: KSPrefs/generalData.cpp:95
+msgid "Enable Background Pixmap"
+msgstr "Permitir figura de fundo"
+
+#: KSPrefs/generalData.cpp:112
+msgid "Browse"
+msgstr "Navegar"
+
+#: KSPrefs/generalData.cpp:120
+msgid "Display Topic in Caption"
+msgstr "Mostrar tópico no cabeçalho"
+
+#: KSPrefs/generalData.cpp:129
+msgid "Use MDI Mode (Must restart to take effect, experimental!!)"
+msgstr ""
+"Usar modo MDI (é necessário reiniciar para entrar em vigor; experimental!!)"
+
+#: KSPrefs/generalData.cpp:144
+msgid "Window History Length"
+msgstr ""
+
 #: KSPrefs/ksprefs.cpp:9
 msgid "kSirc Prefrences"
 msgstr "Preferências do kSirc"
@@ -272,6 +401,37 @@ msgstr "&Menu de usuário"
 msgid "&Default Filters"
 msgstr "Filtros &Padrões"
 
+#: KSPrefs/serverchanneldata.cpp:43
+#, fuzzy
+msgid "Servers"
+msgstr "Descrição do servidor:"
+
+#: KSPrefs/startupdata.cpp:35
+msgid "Notify List"
+msgstr ""
+
+#: KSPrefs/startupdata.cpp:43
+#, fuzzy
+msgid "Nick"
+msgstr "Pegar"
+
+#: KSPrefs/startupdata.cpp:52
+#, fuzzy
+msgid "Real Name"
+msgstr "Nome de Menu"
+
+#: KSPrefs/startupdata.cpp:97
+msgid "&Add"
+msgstr ""
+
+#: KSProgress/ksprogressdata.cpp:46
+msgid "fileName"
+msgstr ""
+
+#: KSProgress/ksprogressdata.cpp:54
+msgid "XferStatus"
+msgstr ""
+
 #: KSTicker/speeddialogData.cpp:79
 msgid "Tick Interval"
 msgstr "Intervalo de Tique"
@@ -284,31 +444,3 @@ msgstr "Tamanho do passo"
 #, c-format
 msgid "No such file \"%s\"!"
 msgstr "Arquivo %s não existe !"
-
-#~ msgid "Auto Create Windows"
-#~ msgstr "Auto-criar janelas"
-
-#~ msgid "Beep on Notify"
-#~ msgstr "Apitar ao Notificar"
-
-#~ msgid "Nick Completion"
-#~ msgstr "Complementação de Apelido"
-
-#~ msgid "Colour Picker Popup"
-#~ msgstr "Menu de contexto da paleta de cores"
-
-#~ msgid "Auto Rejoin"
-#~ msgstr "Auto re-entrada"
-
-#~ msgid "Enable Background Pixmap"
-#~ msgstr "Permitir figura de fundo"
-
-#~ msgid "Browse"
-#~ msgstr "Navegar"
-
-#~ msgid "Display Topic in Caption"
-#~ msgstr "Mostrar tópico no cabeçalho"
-
-#~ msgid "Use MDI Mode (Must restart to take effect, experimental!!)"
-#~ msgstr ""
-#~ "Usar modo MDI (é necessário reiniciar para entrar em vigor; experimental!!)"

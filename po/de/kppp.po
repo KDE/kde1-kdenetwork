@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1999-01-16 02:04+0100\n"
+"POT-Creation-Date: 1999-01-18 02:04+0100\n"
 "PO-Revision-Date: 1999-01-10 13:50+MET\n"
 "Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
 "Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
@@ -310,7 +310,7 @@ msgstr "Gefunden: "
 msgid "Looping: "
 msgstr "Schleife: "
 
-#: connect.cpp:877 modeminfo.cpp:225
+#: connect.cpp:877 modeminfo.cpp:224
 msgid "One Moment Please ..."
 msgstr "Bitte einen Moment..."
 
@@ -1696,7 +1696,7 @@ msgstr "Zeitüberschreitung der Modemabfrage."
 msgid "Modem Ready"
 msgstr "Modem bereit"
 
-#: modeminfo.cpp:247
+#: modeminfo.cpp:246
 msgid "Modem Query Results"
 msgstr "Ergebnisse der Modemabfrage"
 
@@ -1853,6 +1853,10 @@ msgstr "Bytes gesendet/empfangen"
 msgid "Available rules"
 msgstr "Verfügbare Regelungen"
 
+#: acctselect.cpp:305
+msgid "(none)"
+msgstr ""
+
 #: ruleset.cpp:544
 msgid "kppp: no rulefile specified\n"
 msgstr "kppp: keine Regelungsdatei angegeben\n"
@@ -1986,6 +1990,15 @@ msgstr ""
 "eine nicht-leere Datei zu erstellen, die\n"
 "passende Lese- und Schreibrechte hat."
 
+#: loginterm.cpp:120
+msgid "Ca&ncel"
+msgstr ""
+
+#: loginterm.cpp:125
+#, fuzzy
+msgid "&Continue"
+msgstr "Verbinden"
+
 #: ppplog.cpp:136
 msgid ""
 "You have launched pppd before the remote server was ready to establish a PPP "
@@ -2093,9 +2106,9 @@ msgstr ""
 
 #: modemdb.cpp:48
 msgid ""
-"To setup your modem, first choose it´s vendor in thelist to the left, and "
-"the select the model from theright list. If you don´t know which modem you "
-"have,you can try out one of the \"Generic\" modems."
+"To setup your modem, first choose its vendor in the list to the left, and "
+"then select the model from the right list. If you don´t know which modem you "
+"have, you can try out one of the \"Generic\" modems."
 msgstr ""
 
 #: modemdb.cpp:151 modemdb.cpp:153 modemdb.cpp:223 modemdb.cpp:238

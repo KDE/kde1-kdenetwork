@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1999-01-17 02:04+0100\n"
+"POT-Creation-Date: 1999-01-18 02:04+0100\n"
 "PO-Revision-Date: 1999-01-10 13:30+MET\n"
 "Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
 "Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
@@ -1780,6 +1780,11 @@ msgstr "Speicherung des Adreﬂbuchs fehlgeschlagen"
 
 #: kmiostatusdlg.cpp:32
 msgid "&Abort"
+msgstr "&Abbrechen"
+
+#: kmnewiostatuswdg.cpp:24
+#, fuzzy
+msgid "Abort"
 msgstr "&Abbrechen"
 
 #: kmnewiostatuswdg.cpp:41

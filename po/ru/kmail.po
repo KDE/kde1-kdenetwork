@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1999-01-17 02:04+0100\n"
+"POT-Creation-Date: 1999-01-18 02:04+0100\n"
 "PO-Revision-Date: 1998-12-31 07:09+07:00\n"
 "Last-Translator: Const Kaplinsky <const@ce.cctpu.edu.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -1786,6 +1786,11 @@ msgstr "Сохранение адресной книги завершилось неудачей"
 
 #: kmiostatusdlg.cpp:32
 msgid "&Abort"
+msgstr "&Прервать"
+
+#: kmnewiostatuswdg.cpp:24
+#, fuzzy
+msgid "Abort"
 msgstr "&Прервать"
 
 #: kmnewiostatuswdg.cpp:41

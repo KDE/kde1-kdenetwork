@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1999-01-16 02:04+0100\n"
+"POT-Creation-Date: 1999-01-18 02:04+0100\n"
 "PO-Revision-Date: 1998-06-23 09:00-0300\n"
 "Last-Translator: Elvis Pfützenreuter<epx@netville.com.br>\n"
 
@@ -309,7 +309,7 @@ msgstr "Encontrei: "
 msgid "Looping: "
 msgstr "Ciclo: "
 
-#: connect.cpp:877 modeminfo.cpp:225
+#: connect.cpp:877 modeminfo.cpp:224
 msgid "One Moment Please ..."
 msgstr "Um Momento Por Favor ..."
 
@@ -1686,7 +1686,7 @@ msgstr "Estouro do tempo nas perguntas ao Modem."
 msgid "Modem Ready"
 msgstr "Modem Pronto"
 
-#: modeminfo.cpp:247
+#: modeminfo.cpp:246
 msgid "Modem Query Results"
 msgstr "Resultados de Perguntas ao Modem"
 
@@ -1843,6 +1843,10 @@ msgstr "Bytes recebidos e enviados"
 msgid "Available rules"
 msgstr "Regras disponíveis"
 
+#: acctselect.cpp:305
+msgid "(none)"
+msgstr ""
+
 #: ruleset.cpp:544
 msgid "kppp: no rulefile specified\n"
 msgstr "kppp: nenhum arquivo de regras especificado\n"
@@ -1975,6 +1979,15 @@ msgstr ""
 "criar um arquivo não vazio que tenha as\n"
 "permissões apropriadas de leitura/escrita."
 
+#: loginterm.cpp:120
+msgid "Ca&ncel"
+msgstr ""
+
+#: loginterm.cpp:125
+#, fuzzy
+msgid "&Continue"
+msgstr "Ligar"
+
 #: ppplog.cpp:136
 msgid ""
 "You have launched pppd before the remote server was ready to establish a PPP "
@@ -2079,10 +2092,11 @@ msgid "Select modem type..."
 msgstr "Selecione tipo de modem..."
 
 #: modemdb.cpp:48
+#, fuzzy
 msgid ""
-"To setup your modem, first choose it´s vendor in thelist to the left, and "
-"the select the model from theright list. If you don´t know which modem you "
-"have,you can try out one of the \"Generic\" modems."
+"To setup your modem, first choose its vendor in the list to the left, and "
+"then select the model from the right list. If you don´t know which modem you "
+"have, you can try out one of the \"Generic\" modems."
 msgstr ""
 "Para configurar seu modem, primeiro escolha seu fabricante na lista da "
 "esquerda, e então selecione o modelo da lista direita. Se você não sabe que "
