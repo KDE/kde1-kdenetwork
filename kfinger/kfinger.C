@@ -51,7 +51,7 @@ toolBar->setToggle(5,TRUE);
 	font.setCharSet( (QFont::CharSet)0 );
 	le->setFont( font );
 	 
-  le->setText( klocale->translate("Welcome to KDE Finger \nprogram by A.Rizzi bilibao@ouverture.it\n18/09/1997 \n"));
+  le->setText( klocale->translate("Welcome to KDE Finger \nprogram by A.Rizzi rizzi@kde.org\n18/09/1997 \n"));
     QToolTip::add( le, klocale->translate("Finger result" ));
 
 
@@ -298,7 +298,7 @@ toolBar->setItemEnabled(1,FALSE);
 
 void NetutilView::about()
 {
-KMsgBox::message(this,klocale->translate("About"),klocale->translate("Kfinger 0.7.0\n(c) by Andrea Rizzi\nbilibao@ouverture.it"));
+KMsgBox::message(this,klocale->translate("About"),klocale->translate("Kfinger 0.7.0\n(c) by Andrea Rizzi\nrizzi@kde.org"));
 }
 void NetutilView::HtmlHelp()
 { 
