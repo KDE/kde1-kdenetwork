@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kdenetwork\n"
-"POT-Creation-Date: 1998-12-01 01:56+0100\n"
+"POT-Creation-Date: 1999-01-23 02:09+0100\n"
 "PO-Revision-Date: 1999-01-31 00:05+0100\n"
 "Last-Translator: Jaime Robles <ea4abw@amsat.org>\n"
 "Language-Team: Spanish <kde-es@kde.org>\n"
@@ -9,27 +9,27 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8-bit\n"
 
-#: knu.cpp:147 knu.cpp:306
+#: knu.cpp:150 knu.cpp:309
 msgid "&Ping"
 msgstr "&Ping"
 
-#: knu.cpp:156 knu.cpp:312
+#: knu.cpp:159 knu.cpp:315
 msgid "&Traceroute"
 msgstr "&Traceroute"
 
-#: knu.cpp:165 knu.cpp:318
+#: knu.cpp:168 knu.cpp:321
 msgid "Host &resolution"
 msgstr "&Resolución de la máquina"
 
-#: knu.cpp:178
+#: knu.cpp:181
 msgid "F&inger"
 msgstr "F&inger"
 
-#: knu.cpp:187 knu.cpp:330
+#: knu.cpp:190 knu.cpp:333
 msgid "&mtr"
 msgstr "&mtr"
 
-#: knu.cpp:198
+#: knu.cpp:201
 msgid ""
 "There is no command enabled\n"
 "in the configuration file.\n"
@@ -41,56 +41,69 @@ msgstr ""
 "\n"
 "Así que no puedo hacer nada...\n"
 
-#: knu.cpp:243
+#: knu.cpp:246
 msgid "&New window"
 msgstr "&Nueva ventana"
 
-#: knu.cpp:246
+#: knu.cpp:249
 msgid "&Close window"
 msgstr "&Cerrar ventana"
 
-#: knu.cpp:257
+#: knu.cpp:260
 msgid "Select &all"
 msgstr "Seleccionar &todo"
 
-#: knu.cpp:260
+#: knu.cpp:263
 msgid "C&lear output window"
 msgstr "Limpiar la ventana de sa&lida"
 
-#: knu.cpp:263
+#: knu.cpp:266
 msgid "P&references..."
 msgstr "P&referencias..."
 
-#: knu.cpp:278
+#: knu.cpp:281
 #, c-format
 msgid "&About %s"
 msgstr "&Acerca de %s"
 
-#: knu.cpp:280
+#: knu.cpp:283
 msgid "About &Qt"
 msgstr "Sobre &Qt"
 
-#: knu.cpp:324
+#: knu.cpp:327
 msgid "&Finger"
 msgstr "&Finger"
+
+#: knu.cpp:466
+#, c-format
+msgid ""
+"Knu\n"
+"Version %s\n"
+"\n"
+"Bertrand"
+msgstr ""
 
 #: knu.cpp:469
 msgid "About..."
 msgstr "Sobre..."
 
-#: CommandDlg.cpp:128
+#: knu.cpp:602
+msgid "Network utilities"
+msgstr ""
+
+#: CommandDlg.cpp:131
 msgid "H&ost:"
 msgstr "Servid&or"
 
-#: CommandDlg.cpp:137
+#: CommandDlg.cpp:140
 msgid "&Go!"
 msgstr "¡Adelante!"
 
-#: CommandDlg.cpp:147
+#: CommandDlg.cpp:150
 msgid "&Stop"
 msgstr "Parar"
 
-#: CommandDlg.cpp:163
+#: CommandDlg.cpp:166
 msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
@@ -98,7 +111,7 @@ msgstr ""
 "Este comando no fue encontrado. \n"
 "Debes dar el trayecto en el menú Editar->Preferencias...."
 
-#: CommandDlg.cpp:348
+#: CommandDlg.cpp:351
 #, c-format
 msgid ""
 "\n"
@@ -119,23 +132,23 @@ msgstr ""
 "No encuentro una entrada \"path=\" válida\n"
 "para configurarlo otra vez.\n"
 
-#: CommandDlg.cpp:357
+#: CommandDlg.cpp:360
 msgid "Error in pathname"
 msgstr "Error en el trayecto"
 
-#: CommandDlg.cpp:511
+#: CommandDlg.cpp:516
 msgid "Binary"
 msgstr "Binario"
 
-#: CommandDlg.cpp:519
+#: CommandDlg.cpp:524
 msgid "Path&name:"
 msgstr "Trayecto &nombre"
 
-#: CommandDlg.cpp:528
+#: CommandDlg.cpp:533
 msgid "Additional &arguments:"
 msgstr "&Argumentos adicionales:"
 
-#: CommandDlg.cpp:553
+#: CommandDlg.cpp:558
 msgid "This command had been disabled in the configuration file."
 msgstr "Este comando se ha deshabilitado en el fichero de configuración."
 
@@ -143,39 +156,39 @@ msgstr "Este comando se ha deshabilitado en el fichero de configuración."
 msgid " - configuration"
 msgstr " - configuración"
 
-#: MtrDlg.cpp:83
+#: MtrDlg.cpp:87
 msgid "#"
 msgstr "#"
 
-#: MtrDlg.cpp:84
+#: MtrDlg.cpp:88
 msgid "Hostname"
 msgstr "Nombre de máquina"
 
-#: MtrDlg.cpp:85
+#: MtrDlg.cpp:89
 msgid "Loss"
 msgstr "Pérdida"
 
-#: MtrDlg.cpp:87
+#: MtrDlg.cpp:91
 msgid "Rcv"
 msgstr "Rcb"
 
-#: MtrDlg.cpp:89
+#: MtrDlg.cpp:93
 msgid "Snt"
 msgstr "Env"
 
-#: MtrDlg.cpp:91
+#: MtrDlg.cpp:95
 msgid "Best"
 msgstr "Mejor"
 
-#: MtrDlg.cpp:93
+#: MtrDlg.cpp:97
 msgid "Avg"
 msgstr "Media"
 
-#: MtrDlg.cpp:95
+#: MtrDlg.cpp:99
 msgid "Worst"
 msgstr "Peor"
 
-#: MtrDlg.cpp:138 PingDlg.cpp:100 TracerouteDlg.cpp:98
+#: MtrDlg.cpp:142 PingDlg.cpp:100 TracerouteDlg.cpp:98
 msgid "Make host &name resolution"
 msgstr "Resolver el &nombre"
 
