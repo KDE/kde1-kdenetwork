@@ -23,6 +23,9 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.7  1998/10/14 19:32:55  leconte
+ * Bertrand: Added mtr support (with a patch to mtr-0.21)
+ *
  * Revision 1.6  1998/09/23 16:24:07  bieker
  * Use i18n() instead of _().
  *
@@ -422,13 +425,14 @@ CommandDlg::slotCmdStdout(KProcess *, char *buffer, int buflen)
 {
   int  line, col;
   char *p;
+  QString *receivedLine;
   
   if (buflen <= 0) {
-    buffer = "--- nothing ---\n";
-    buflen = strlen(buffer);
+    receivedLine = new QString("--- nothing ---\n");
   } else {
-    buffer[buflen] = 0;		// mark eot
+    //buffer[buflen] = 0;		// mark eot
     //debug("stdout> %s", buffer);
+    receivedLine = new QString(buffer, buflen+1);
   }
 
   // goto end of data
@@ -441,7 +445,7 @@ CommandDlg::slotCmdStdout(KProcess *, char *buffer, int buflen)
   commandTextArea->setCursorPosition(line, col);
   
   // and insert text here
-  commandTextArea->insertAt(buffer, line, col);
+  commandTextArea->insertAt(*receivedLine, line, col);
   commandTextArea->setCursorPosition(commandTextArea->numLines(), 0);
 }
 
