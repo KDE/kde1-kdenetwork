@@ -33,7 +33,6 @@ fontsDlg::fontsDlg(QWidget* parent,const char* name):Inherited( parent, name, TR
     getFontList( *stdfl, "-*-*-*-*-*-*-*-*-*-*-m-*-*-*" );
     getFontList( *fixedfl, "-*-*-*-*-*-*-*-*-*-*-m-*-*-*" );
 
-    conf->setGroup("ArticleListOptions");
 
 
     TLForm *f=new TLForm("expiration",
@@ -43,6 +42,27 @@ fontsDlg::fontsDlg(QWidget* parent,const char* name):Inherited( parent, name, TR
     KTypeLayout *l=f->layout;
 
     l->addGroup("entries","",true);
+
+    l->addLabel("l7",klocale->translate("Header Style"));
+    QStrList *hdrstyles=new QStrList;
+    hdrstyles->append(klocale->translate("Fancy"));
+    hdrstyles->append(klocale->translate("Brief"));
+    hdrstyles->append(klocale->translate("Standard"));
+    hdrstyles->append(klocale->translate("Long"));
+    hdrstyles->append(klocale->translate("All"));
+    hdrstyle=(QComboBox *)(l->addComboBox("hdrstyle",hdrstyles)->widget);
+    delete hdrstyles;
+    l->newLine();
+    l->addLabel("l7",klocale->translate("Attachment Style"));
+    QStrList *atmstyles=new QStrList;
+    atmstyles->append(klocale->translate("Iconic"));
+    atmstyles->append(klocale->translate("Smart"));
+    atmstyles->append(klocale->translate("Inline"));
+    atmstyle=(QComboBox *)(l->addComboBox("atmstyle",atmstyles)->widget);
+    delete atmstyles;
+    l->newLine();
+
+    conf->setGroup("ArticleListOptions");
     
     l->addLabel("l1",klocale->translate("Font Size:"));
 
@@ -87,7 +107,9 @@ fontsDlg::fontsDlg(QWidget* parent,const char* name):Inherited( parent, name, TR
     singlewin=(QCheckBox *)(l->addCheckBox("singlewin",klocale->translate("Use only one window"),
                    conf->readNumEntry("SingleWindow",true))->widget);
     vertsplit=(QCheckBox *)(l->addCheckBox("vertsplit",klocale->translate("Split window vertically"),
-                   conf->readNumEntry("VerticalSplit",false))->widget);
+                                           conf->readNumEntry("VerticalSplit",false))->widget);
+
+    
     l->endGroup();
 
     l->newLine();
@@ -100,6 +122,11 @@ fontsDlg::fontsDlg(QWidget* parent,const char* name):Inherited( parent, name, TR
     l->activate();
     
 
+    l->setAlign("fontSize",AlignRight|AlignLeft);
+    l->setAlign("stdFontName",AlignRight|AlignLeft);
+    l->setAlign("fixedFontName",AlignRight|AlignLeft);
+    l->setAlign("hdrstyle",AlignRight|AlignLeft);
+    l->setAlign("atmstyle",AlignRight|AlignLeft);
 
     connect (b1,SIGNAL(clicked()),this,SLOT(accept()));
     connect (b1,SIGNAL(clicked()),this,SLOT(save()));
@@ -112,6 +139,12 @@ fontsDlg::fontsDlg(QWidget* parent,const char* name):Inherited( parent, name, TR
                                 (conf->readEntry("StandardFont",QString("helvetica").data())));
     fixedFontName->setCurrentItem(fixedfl->find
                                   (conf->readEntry("FixedFont",QString("courier").data())));
+
+    conf->setGroup("Reader");
+    hdrstyle->setCurrentItem(conf->readNumEntry
+                             ("hdr-style", 1)-1);
+    atmstyle->setCurrentItem(conf->readNumEntry
+                             ("attmnt-style",2)-1);
     syncFonts(0);
     delete stdfl;
     delete fixedfl;
@@ -152,6 +185,9 @@ void fontsDlg::save()
     conf->writeEntry ("FollowedColor",followColor->color());
     conf->writeEntry ("SingleWindow",singlewin->isChecked());
     conf->writeEntry ("VerticalSplit",vertsplit->isChecked());
+    conf->setGroup("Reader");
+    conf->writeEntry("hdr-style",hdrstyle->currentItem()+1);
+    conf->writeEntry("attmnt-style",atmstyle->currentItem()+1);
     conf->sync();
 }
 

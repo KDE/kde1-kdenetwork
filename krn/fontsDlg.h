@@ -35,7 +35,8 @@ public:
     KColorButton* followColor;
     QCheckBox* vertsplit;
     QCheckBox* singlewin;
-    
+    QComboBox* hdrstyle;
+    QComboBox* atmstyle;
     
 private slots:
     void save();
