@@ -28,6 +28,8 @@ class ProcCommand;
 
 #include "ksircprocess.h"
 
+#include "puke/controller.h"
+
 class ProcCommand // ServerController message
 {
  public:
@@ -175,6 +177,8 @@ private:
     QPixmap *pic_gf;
     QPixmap *pic_run;
     QPixmap *pic_ppl;
+
+    PukeController *PukeC;
 
 };
 #endif // servercontroller_included

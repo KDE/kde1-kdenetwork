@@ -27,11 +27,15 @@
 //#include "iocontroller.h"
 //#include "ioBroadcast.h"
 #include "servercontroller.h"
+
 #include <iostream.h>
+/*
 #include <termios.h>
 #include <unistd.h>
 #include <fcntl.h>
+*/
 #include <time.h> 
+
 
 #include <qfont.h>
 #include <qmsgbox.h> 

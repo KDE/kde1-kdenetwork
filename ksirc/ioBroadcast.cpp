@@ -67,12 +67,6 @@ filterRuleList *KSircIOBroadcast::defaultRules()
   filterRuleList *frl = new  filterRuleList();
   frl->setAutoDelete(TRUE);
   fr = new filterRule();
-  fr->desc = "Search for dump ~'s";
-  fr->search = "\\W~\\S+@\\S+\\W";
-  fr->from = "~(\\S+@)";
-  fr->to = "~~$1";
-  frl->append(fr);
-  fr = new filterRule();
   fr->desc = "Inverse to KSIRC inverse";
   fr->search = ".*";
   fr->from = "(?g)\\x16";

@@ -31,20 +31,20 @@ filterRuleList *KSMBaseRules::defaultRules()
     fr = new filterRule();
     fr->desc = "Add marker to second ~";
     fr->search = "^~\\S+~";
-    fr->from = "^(~\\S+~)";
-    fr->to = "$1;;;";
+    fr->from = "^~(\\S+)~";
+    fr->to = "~;;;$1~;;;";
     frl->append(fr);
     fr = new filterRule();
     fr->desc = "Escape kSirc Control Codes";
     fr->search = "~";
-    fr->from = "(?g)([^\\Z])~(?!;;;)";
+    fr->from = "(?g)~(?!;;;)";
     fr->to = "$1~~";
     frl->append(fr);
     fr = new filterRule();
     fr->desc = "Remove marker to second";
-    fr->search = "^~\\S+~;;;";
-    fr->from = "^(~\\S+~);;;";
-    fr->to = "$1";
+    fr->search = "^~;;;\\S+~;;;";
+    fr->from = "^~;;;(\\S+)~;;;";
+    fr->to = "~$1~";
     frl->append(fr);
 
   }

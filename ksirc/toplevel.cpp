@@ -135,6 +135,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
   //  kmenu = new QMenuBar(this, "menubar");
   kmenu->setFrameStyle(QFrame::NoFrame); // Turn off frame style.
   kmenu->setLineWidth(0);  
+  kmenu->resize(width(), height() - 2);
   if(style() == MotifStyle)
     kmenu->recreate(menu_frame, 0, QPoint(0,-3));
   else

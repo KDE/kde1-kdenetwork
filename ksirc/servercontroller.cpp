@@ -77,6 +77,8 @@
 
 #include <qkeycode.h>
 
+#include "puke/controller.h"
+
 extern KConfig *kConfig;
 extern KApplication *kApp;
 extern global_config *kSircConfig;
@@ -170,6 +172,20 @@ servercontroller::servercontroller
   setIcon(*pic_icon);
 
   resize( 450,200 );
+
+  // Server Controller is done setting up, create Puke interface.
+
+  PukeC = new PukeController(QString(), this, "Main Puke Controller");
+  if(PukeC->running == TRUE){
+    cerr << "Puke running\n";
+    connect(PukeC, SIGNAL(PukeMessages(QString, int, QString)),
+	    this, SLOT(ProcMessage(QString, int, QString)));
+    connect(this, SIGNAL(ServMessage(QString, int, QString)),
+	    PukeC, SLOT(ServMessage(QString, int, QString)));
+  }
+  else{
+    cerr << "Puke failed\n";
+  }
 
 }
 

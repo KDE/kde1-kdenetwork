@@ -126,7 +126,7 @@ APPSDIR = $(kde_appsdir)/Internet
 # set the include path for X, qt and KDE
 INCLUDES= @all_includes@
 # claim, which subdirectories you want to install
-SUBDIRS = KSTicker KSProgress KSCutDialog KSPrefs img doc
+SUBDIRS = KSTicker KSProgress KSCutDialog KSPrefs puke img doc
 
 ####### This part is very khexdit specific
 # you can add here more. This one gets installed 
@@ -165,13 +165,13 @@ baserules.cpp
 ksircstatic_SOURCES = $(ksirc_SOURCES)
 
 # the library search path
-ksirc_LDFLAGS = @all_libraries@ -L./KSProgress/ -L./KSTicker/ -L./KSCutDialog/ -LKSPrefs
+ksirc_LDFLAGS = @all_libraries@ -L./KSProgress/ -L./KSTicker/ -L./KSCutDialog/ -LKSPrefs -Lpuke
 
 ksircstatic_LDFLAGS = -static $(ksirc_LDFLAGS)
 
 # the libraries to link against. Be aware of the order. First the libraries,
 # that depend on the following ones.
-ksirc_LDADD   = -lksprogress -lksticker -lkscutdialog -lksprefs -lkdeui -lkdecore -lqt -lX11 -lXext @LIBSOCKET@     
+ksirc_LDADD   = -lksprogress -lksticker -lkscutdialog -lksprefs -lkdeui -lkdecore -lpuke -lqt -lX11 -lXext @LIBSOCKET@     
 
 ksircstatic_LDADD = $(ksirc_LDADD)
 
@@ -193,7 +193,7 @@ ksircprocess.h            ksirc.kdelnk \
 ioLAG.h                   ioNotify.h                ssfeprompt.h \
 ssfepromptdata.h          usercontrolmenu.h\
 dsirc                     filters.pl                ksirc.pl \
-sirc.help.gz
+sirc.help.gz              baserules.h
 
 # just to make sure, automake makes them 
 BUILTSOURCES =	
