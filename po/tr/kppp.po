@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE 1.0\n"
-"POT-Creation-Date: 1999-02-04 02:05+0100\n"
+"POT-Creation-Date: 1999-02-05 02:06+0100\n"
 "PO-Revision-Date: 1998-06-29 11:00+0200\n"
 "Last-Translator: Kerem ERZURUMLU <kerem@linux.org.tr>\n"
 "Language-Team: Hacettepe Linux Users Group <hacettepe@linux.org.tr>\n"
@@ -165,7 +165,7 @@ msgstr ""
 msgid "Login script has unbalanced loop Start/End"
 msgstr "Oturum açma komutlarý dengesiz"
 
-#: connect.cpp:92 connect.cpp:190 main.cpp:1060
+#: connect.cpp:92 connect.cpp:190 main.cpp:1064
 msgid "Connecting to: "
 msgstr "Baðlanýlýyor: "
 
@@ -178,7 +178,7 @@ msgstr "Üzgünüm, model kitleme dosyasýný yaratamýyorum."
 msgid "Looking for Modem ..."
 msgstr "Modem'e bakýyorum..."
 
-#: connect.cpp:115 debug.cpp:80 main.cpp:1073
+#: connect.cpp:115 debug.cpp:80 main.cpp:1077
 msgid "Log"
 msgstr "Kayýt"
 
@@ -903,7 +903,7 @@ msgid ""
 "recommended value is 30 seconds."
 msgstr ""
 
-#: general.cpp:466 main.cpp:730
+#: general.cpp:466 main.cpp:734
 msgid "Modem"
 msgstr "Modem"
 
@@ -1006,11 +1006,11 @@ msgstr ""
 msgid "Output bytes color"
 msgstr ""
 
-#: main.cpp:115
+#: main.cpp:118
 msgid "Recent changes in kppp"
 msgstr ""
 
-#: main.cpp:128
+#: main.cpp:131
 msgid ""
 "From version 1.4.8 on, kppp has a new feature\n"
 "called \"Quickhelp\". It's similar to a tooltip,\n"
@@ -1024,25 +1024,25 @@ msgid ""
 "To test it, right-click somewhere in this text."
 msgstr ""
 
-#: main.cpp:140
+#: main.cpp:143
 msgid "Don't show this hint again"
 msgstr ""
 
-#: main.cpp:159
+#: main.cpp:162
 msgid ""
 "This is an example for <b>QuickHelp</b>.\n"
 "This window will stay open until you\n"
 "click a mouse button or a hit a key.\n"
 msgstr ""
 
-#: main.cpp:409
+#: main.cpp:413
 #, c-format
 msgid ""
 "kppp can't create or read from\n"
 "%s."
 msgstr ""
 
-#: main.cpp:440
+#: main.cpp:444
 #, c-format
 msgid ""
 "kppp has detected a %s file.\n"
@@ -1054,19 +1054,19 @@ msgid ""
 "delete the pid file, and restart kppp."
 msgstr ""
 
-#: main.cpp:446
+#: main.cpp:450
 msgid "Exit"
 msgstr ""
 
-#: main.cpp:509
+#: main.cpp:513
 msgid "Connect to: "
 msgstr "Baðlan : "
 
-#: main.cpp:521
+#: main.cpp:525
 msgid "Login ID:"
 msgstr "Kullanýcý No:"
 
-#: main.cpp:534
+#: main.cpp:538
 msgid ""
 "Type in the username that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1077,11 +1077,11 @@ msgid ""
 "<i>myusername</i> is not the same as <i>MyUserName</i>!"
 msgstr ""
 
-#: main.cpp:543
+#: main.cpp:547
 msgid "Password:"
 msgstr "Parola:"
 
-#: main.cpp:557
+#: main.cpp:561
 msgid ""
 "Type in the password that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1092,11 +1092,11 @@ msgid ""
 "<i>mypassword</i> is not the same as <i>MyPassword</i>!"
 msgstr ""
 
-#: main.cpp:571
+#: main.cpp:575
 msgid "Show Log Window"
 msgstr "Kayýt Penceresini Göster"
 
-#: main.cpp:578
+#: main.cpp:582
 msgid ""
 "This controls whether a log window is shown.\n"
 "A log window shows the communication between\n"
@@ -1107,15 +1107,15 @@ msgid ""
 "problems"
 msgstr ""
 
-#: main.cpp:601
+#: main.cpp:605
 msgid "Setup"
 msgstr "Ayar"
 
-#: main.cpp:617
+#: main.cpp:621
 msgid "Connect"
 msgstr "Baðlan"
 
-#: main.cpp:697
+#: main.cpp:701
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -1124,47 +1124,47 @@ msgstr ""
 "%s\n"
 "isimli hesap yok"
 
-#: main.cpp:712
+#: main.cpp:716
 msgid "kppp Configuration"
 msgstr "kppp Yapýlandýrmasý"
 
-#: main.cpp:728
+#: main.cpp:732
 msgid "Accounts"
 msgstr "Hesaplar"
 
-#: main.cpp:729
+#: main.cpp:733
 msgid "Device"
 msgstr "Aygýt"
 
-#: main.cpp:731
+#: main.cpp:735
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:732
+#: main.cpp:736
 msgid "Graph"
 msgstr ""
 
-#: main.cpp:876
+#: main.cpp:880
 msgid "Timeout expired while waiting for the PPP interface to come up!"
 msgstr ""
 
-#: main.cpp:881
+#: main.cpp:885
 msgid "The pppd daemon died unexpectedly!"
 msgstr ""
 
-#: main.cpp:889
+#: main.cpp:893
 #, fuzzy
 msgid "Details..."
 msgstr "Ayrýntýlar"
 
-#: main.cpp:921
+#: main.cpp:925
 msgid ""
 "Sorry. kppp's helper process just died.\n"
 "\n"
 "Since a further execution would be pointless, kppp will shut down right now."
 msgstr ""
 
-#: main.cpp:955
+#: main.cpp:959
 #, fuzzy, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1183,7 +1183,7 @@ msgstr ""
 "doðru olarak belirtin.\n"
 " Teþekkürler"
 
-#: main.cpp:970
+#: main.cpp:974
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1195,7 +1195,7 @@ msgstr ""
 "çalýþtýramýyor. kppp'nin SUID olduðundan ve çalýþtýrma hakký \n"
 "bulundurduðundan emin olunuz!"
 
-#: main.cpp:985
+#: main.cpp:989
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1211,7 +1211,7 @@ msgstr ""
 "bulamadý. Modeminizi doðru ayarladýðýnýza emin olunuz\n"
 "Teþekkürler"
 
-#: main.cpp:1005
+#: main.cpp:1009
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1221,7 +1221,7 @@ msgstr ""
 "Bunun için bir kullanýcý adý ve parolasý\n"
 "girmeniz gerekecek."
 
-#: main.cpp:1014
+#: main.cpp:1018
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1230,7 +1230,7 @@ msgstr ""
 "PAP Onaylama Dosyasý\n"
 "%s yaratýlamýyor."
 
-#: main.cpp:1031
+#: main.cpp:1035
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -1240,7 +1240,7 @@ msgstr ""
 "Bunun için bir kullanýcý adý ve parolasý\n"
 "girmeniz gerekecek."
 
-#: main.cpp:1040
+#: main.cpp:1044
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1249,20 +1249,20 @@ msgstr ""
 "CHAP Onaylama Dosyasý\n"
 "%s yaratýlamýyor."
 
-#: main.cpp:1052
+#: main.cpp:1056
 #, fuzzy
 msgid "You must specify a telephone number!"
 msgstr "Bir telefon numarsý belirtmeniz gerekiyor !\n"
 
-#: main.cpp:1139
+#: main.cpp:1143
 msgid "Quit kPPP?"
 msgstr "kppp'den çýk?"
 
-#: main.cpp:1140
+#: main.cpp:1144
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "kppp'den çýkmak PPP oturumunuzu kapatacaktýr."
 
-#: main.cpp:1185
+#: main.cpp:1189
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
@@ -1613,7 +1613,7 @@ msgstr "kppp: kural dosyasý tamam\n"
 msgid "Minimize"
 msgstr "Küçült"
 
-#: runtests.cpp:383
+#: runtests.cpp:386
 msgid ""
 "You´re not allowed to dial out with kppp.\n"
 "Contact your system administrator."
@@ -1621,7 +1621,7 @@ msgstr ""
 "kppp ile telefon baðlantýsý kurma izniniz yok.\n"
 "Sistem sorumlunuzla görüþün."
 
-#: runtests.cpp:400
+#: runtests.cpp:403
 msgid ""
 "This kernel has no PPP support, neither\n"
 "compiled in nor via the kernel module\n"
@@ -1633,7 +1633,7 @@ msgid ""
 "  * install a kernel with PPP support\n"
 msgstr ""
 
-#: runtests.cpp:422
+#: runtests.cpp:425
 msgid ""
 "Cannot find the pppd-daemon!\n"
 "\n"
@@ -1645,7 +1645,7 @@ msgstr ""
 "pppd'nin yüklendiðine ve doðru yolun\n"
 "belirtildiðine emin olunuz\n"
 
-#: runtests.cpp:434
+#: runtests.cpp:438
 msgid ""
 "You do not have the permission\n"
 "to start pppd!\n"
@@ -1658,7 +1658,7 @@ msgstr ""
 "\n"
 "Sistem yöneticinize danýþýnýz."
 
-#: runtests.cpp:445 runtests.cpp:460
+#: runtests.cpp:449 runtests.cpp:463
 msgid ""
 "pppd is not properly installed!\n"
 "\n"
@@ -1671,7 +1671,7 @@ msgstr ""
 "þekilde yüklenmeli. Sistem yöneticinize\n"
 "danýþýnýz."
 
-#: runtests.cpp:494
+#: runtests.cpp:497
 msgid ""
 "kppp has detected a 'lock' option in /etc/ppp/options.\n"
 "\n"
@@ -1684,7 +1684,7 @@ msgstr ""
 "Bu seçenek kaldýrýlmalý\n"
 "Sistem Yöneticinize Baþvurunuz"
 
-#: runtests.cpp:518
+#: runtests.cpp:521
 #, fuzzy
 msgid ""
 "is missing!\n"

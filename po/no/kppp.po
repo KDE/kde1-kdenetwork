@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE NETWORK/kppp\n"
-"POT-Creation-Date: 1999-02-04 02:05+0100\n"
+"POT-Creation-Date: 1999-02-05 02:06+0100\n"
 "PO-Revision-Date: 1998-03-24 19:24+0100\n"
 "Last-Translator: Hans Petter Bieker <zerium@webindex.no>\n"
 "Language-Team: no <LL@li.org>\n"
@@ -183,7 +183,7 @@ msgstr ""
 msgid "Login script has unbalanced loop Start/End"
 msgstr "Innloggingskriptet har ubalansert loopstart/-slutt"
 
-#: connect.cpp:92 connect.cpp:190 main.cpp:1060
+#: connect.cpp:92 connect.cpp:190 main.cpp:1064
 msgid "Connecting to: "
 msgstr "Oppkobling til: "
 
@@ -196,7 +196,7 @@ msgstr "Beklager, kan ikke lage låsefil for modem."
 msgid "Looking for Modem ..."
 msgstr "Ser etter modem ..."
 
-#: connect.cpp:115 debug.cpp:80 main.cpp:1073
+#: connect.cpp:115 debug.cpp:80 main.cpp:1077
 msgid "Log"
 msgstr "Logg"
 
@@ -1090,7 +1090,7 @@ msgstr ""
 "<i>CONNECT</i>-respons fra modemet ditt.\n"
 "Anvefalt verdi er 30 sekunder."
 
-#: general.cpp:466 main.cpp:730
+#: general.cpp:466 main.cpp:734
 msgid "Modem"
 msgstr "Modem"
 
@@ -1224,11 +1224,11 @@ msgstr "Farge på innbyter"
 msgid "Output bytes color"
 msgstr "Farge på utbyter"
 
-#: main.cpp:115
+#: main.cpp:118
 msgid "Recent changes in kppp"
 msgstr "Nylige endringer i kppp"
 
-#: main.cpp:128
+#: main.cpp:131
 msgid ""
 "From version 1.4.8 on, kppp has a new feature\n"
 "called \"Quickhelp\". It's similar to a tooltip,\n"
@@ -1253,11 +1253,11 @@ msgstr ""
 "For å teste det, høyreklikk et eller annet sted\n"
 "i denne teksten."
 
-#: main.cpp:140
+#: main.cpp:143
 msgid "Don't show this hint again"
 msgstr "Vis ikke dette hintet igjen"
 
-#: main.cpp:159
+#: main.cpp:162
 msgid ""
 "This is an example for <b>QuickHelp</b>.\n"
 "This window will stay open until you\n"
@@ -1267,7 +1267,7 @@ msgstr ""
 "Dette vinduet vil stå åpent inntil du\n"
 "klikker en musknapp eller trykker en tast.\n"
 
-#: main.cpp:409
+#: main.cpp:413
 #, c-format
 msgid ""
 "kppp can't create or read from\n"
@@ -1276,7 +1276,7 @@ msgstr ""
 "kppp kan ikke opprette eller lese\n"
 "%s."
 
-#: main.cpp:440
+#: main.cpp:444
 #, c-format
 msgid ""
 "kppp has detected a %s file.\n"
@@ -1294,19 +1294,19 @@ msgstr ""
 "Forviss deg om at du ikke kjører en annen kopi av kppp,\n"
 "slett pid-filen og start kppp på nytt."
 
-#: main.cpp:446
+#: main.cpp:450
 msgid "Exit"
 msgstr "Avslutt"
 
-#: main.cpp:509
+#: main.cpp:513
 msgid "Connect to: "
 msgstr "Oppkobling til:"
 
-#: main.cpp:521
+#: main.cpp:525
 msgid "Login ID:"
 msgstr "Innloggings-ID:"
 
-#: main.cpp:534
+#: main.cpp:538
 msgid ""
 "Type in the username that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1323,11 +1323,11 @@ msgstr ""
 "<b>Viktig</b>: bokstavstørrelse er viktig her:\n"
 "<i>mittbrukernavn</i> er ikke det samme som <i>MittBrukerNavn</i>!"
 
-#: main.cpp:543
+#: main.cpp:547
 msgid "Password:"
 msgstr "Passord:"
 
-#: main.cpp:557
+#: main.cpp:561
 msgid ""
 "Type in the password that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1344,11 +1344,11 @@ msgstr ""
 "<b>Viktig</b>: bokstavstørrelse er viktig her:\n"
 "<i>mittpassord</i> er ikke det samme som <i>MittPassord</i>!"
 
-#: main.cpp:571
+#: main.cpp:575
 msgid "Show Log Window"
 msgstr "Vis loggvindu"
 
-#: main.cpp:578
+#: main.cpp:582
 msgid ""
 "This controls whether a log window is shown.\n"
 "A log window shows the communication between\n"
@@ -1366,15 +1366,15 @@ msgstr ""
 "Skrud det av hvis <i>kppp</i> du ikke har problemer\n"
 "med å koble til"
 
-#: main.cpp:601
+#: main.cpp:605
 msgid "Setup"
 msgstr "Oppsett"
 
-#: main.cpp:617
+#: main.cpp:621
 msgid "Connect"
 msgstr "Koble opp"
 
-#: main.cpp:697
+#: main.cpp:701
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -1383,39 +1383,39 @@ msgstr ""
 "Ingen slik konto:\n"
 "%s"
 
-#: main.cpp:712
+#: main.cpp:716
 msgid "kppp Configuration"
 msgstr "kppp-konfigurasjon"
 
-#: main.cpp:728
+#: main.cpp:732
 msgid "Accounts"
 msgstr "Kontoer"
 
-#: main.cpp:729
+#: main.cpp:733
 msgid "Device"
 msgstr "Enhet"
 
-#: main.cpp:731
+#: main.cpp:735
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:732
+#: main.cpp:736
 msgid "Graph"
 msgstr "Graf"
 
-#: main.cpp:876
+#: main.cpp:880
 msgid "Timeout expired while waiting for the PPP interface to come up!"
 msgstr "Tiden gikk ut mens vi ventet på at PPP-grensesnittet skulle komme opp!"
 
-#: main.cpp:881
+#: main.cpp:885
 msgid "The pppd daemon died unexpectedly!"
 msgstr "pppd-daemonen døde uventet!"
 
-#: main.cpp:889
+#: main.cpp:893
 msgid "Details..."
 msgstr "Detaljer..."
 
-#: main.cpp:921
+#: main.cpp:925
 msgid ""
 "Sorry. kppp's helper process just died.\n"
 "\n"
@@ -1425,7 +1425,7 @@ msgstr ""
 "\n"
 "Ettersom nærmere en forklaring er meningsløs, vil kppp avslutte nå."
 
-#: main.cpp:955
+#: main.cpp:959
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1446,7 +1446,7 @@ msgstr ""
 "PPP-tjenesteprogrammet.\n"
 "Takk"
 
-#: main.cpp:970
+#: main.cpp:974
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1459,7 +1459,7 @@ msgstr ""
 "Vennligst forsikre deg om at du har gitt kppp setuid tillatelse og at\n"
 "pppd er kjørbar."
 
-#: main.cpp:985
+#: main.cpp:989
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1480,7 +1480,7 @@ msgstr ""
 "oppsettsdialogen.\n"
 "Takk"
 
-#: main.cpp:1005
+#: main.cpp:1009
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1490,7 +1490,7 @@ msgstr ""
 "PAP. Dette krver at du oppgitt\n"
 "et brukernavn og et passord!"
 
-#: main.cpp:1014
+#: main.cpp:1018
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1499,7 +1499,7 @@ msgstr ""
 "Kan ikke lage PAP-autentiseringsfil\n"
 "\"%s\""
 
-#: main.cpp:1031
+#: main.cpp:1035
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -1509,7 +1509,7 @@ msgstr ""
 "PAP. Dette krver at du oppgir\n"
 "et brukernavn og et passord!"
 
-#: main.cpp:1040
+#: main.cpp:1044
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1518,19 +1518,19 @@ msgstr ""
 "Kan ikke lage CHAP-autentiseringsfil\n"
 "\"%s\""
 
-#: main.cpp:1052
+#: main.cpp:1056
 msgid "You must specify a telephone number!"
 msgstr "Du må oppgi et telefonnummer!"
 
-#: main.cpp:1139
+#: main.cpp:1143
 msgid "Quit kPPP?"
 msgstr "Avslutte kppp?"
 
-#: main.cpp:1140
+#: main.cpp:1144
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Går du ut av kppp vil dette lukke din PPP-sesjon."
 
-#: main.cpp:1185
+#: main.cpp:1189
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
@@ -1888,7 +1888,7 @@ msgstr "kppp: regelfil er ok\n"
 msgid "Minimize"
 msgstr "Minimer"
 
-#: runtests.cpp:383
+#: runtests.cpp:386
 msgid ""
 "You´re not allowed to dial out with kppp.\n"
 "Contact your system administrator."
@@ -1896,7 +1896,7 @@ msgstr ""
 "Du har ikke tillatelse til å ringe ut med kppp.\n"
 "Kontakt din systemadministrator."
 
-#: runtests.cpp:400
+#: runtests.cpp:403
 msgid ""
 "This kernel has no PPP support, neither\n"
 "compiled in nor via the kernel module\n"
@@ -1915,7 +1915,7 @@ msgstr ""
 "eller\n"
 "  * installer en kjerne med PPP-støtte\n"
 
-#: runtests.cpp:422
+#: runtests.cpp:425
 msgid ""
 "Cannot find the pppd-daemon!\n"
 "\n"
@@ -1927,7 +1927,7 @@ msgstr ""
 "Forsikre deg om at pppd er installert og\n"
 "at du har oppgitt korrekt sti.\n"
 
-#: runtests.cpp:434
+#: runtests.cpp:438
 msgid ""
 "You do not have the permission\n"
 "to start pppd!\n"
@@ -1941,7 +1941,7 @@ msgstr ""
 "Kontakt din systemadministrator\n"
 "og spør om adgang til pppd."
 
-#: runtests.cpp:445 runtests.cpp:460
+#: runtests.cpp:449 runtests.cpp:463
 msgid ""
 "pppd is not properly installed!\n"
 "\n"
@@ -1955,7 +1955,7 @@ msgstr ""
 "med SUID-bit satt. Kontakt din\n"
 "systemadministratror."
 
-#: runtests.cpp:494
+#: runtests.cpp:497
 msgid ""
 "kppp has detected a 'lock' option in /etc/ppp/options.\n"
 "\n"
@@ -1968,7 +1968,7 @@ msgstr ""
 "Denne opsjonen må fjernes siden kppp tar ansvar for enhetslåsing selv.\n"
 "Kontakt din systemadministratror."
 
-#: runtests.cpp:518
+#: runtests.cpp:521
 msgid ""
 "is missing!\n"
 "\n"

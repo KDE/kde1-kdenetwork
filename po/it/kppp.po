@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1999-02-04 02:05+0100\n"
+"POT-Creation-Date: 1999-02-05 02:06+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -161,7 +161,7 @@ msgstr ""
 msgid "Login script has unbalanced loop Start/End"
 msgstr "Lo script di accesso contiene un Loop errato Inizio/Fine"
 
-#: connect.cpp:92 connect.cpp:190 main.cpp:1060
+#: connect.cpp:92 connect.cpp:190 main.cpp:1064
 msgid "Connecting to: "
 msgstr "Connessione a: "
 
@@ -174,7 +174,7 @@ msgstr "Spiacente, non posso creare il file di lock per il modem."
 msgid "Looking for Modem ..."
 msgstr "Cerco il modem....."
 
-#: connect.cpp:115 debug.cpp:80 main.cpp:1073
+#: connect.cpp:115 debug.cpp:80 main.cpp:1077
 msgid "Log"
 msgstr "Log"
 
@@ -900,7 +900,7 @@ msgid ""
 "recommended value is 30 seconds."
 msgstr ""
 
-#: general.cpp:466 main.cpp:730
+#: general.cpp:466 main.cpp:734
 msgid "Modem"
 msgstr "Modem"
 
@@ -1003,11 +1003,11 @@ msgstr ""
 msgid "Output bytes color"
 msgstr ""
 
-#: main.cpp:115
+#: main.cpp:118
 msgid "Recent changes in kppp"
 msgstr ""
 
-#: main.cpp:128
+#: main.cpp:131
 msgid ""
 "From version 1.4.8 on, kppp has a new feature\n"
 "called \"Quickhelp\". It's similar to a tooltip,\n"
@@ -1021,25 +1021,25 @@ msgid ""
 "To test it, right-click somewhere in this text."
 msgstr ""
 
-#: main.cpp:140
+#: main.cpp:143
 msgid "Don't show this hint again"
 msgstr ""
 
-#: main.cpp:159
+#: main.cpp:162
 msgid ""
 "This is an example for <b>QuickHelp</b>.\n"
 "This window will stay open until you\n"
 "click a mouse button or a hit a key.\n"
 msgstr ""
 
-#: main.cpp:409
+#: main.cpp:413
 #, c-format
 msgid ""
 "kppp can't create or read from\n"
 "%s."
 msgstr ""
 
-#: main.cpp:440
+#: main.cpp:444
 #, c-format
 msgid ""
 "kppp has detected a %s file.\n"
@@ -1051,19 +1051,19 @@ msgid ""
 "delete the pid file, and restart kppp."
 msgstr ""
 
-#: main.cpp:446
+#: main.cpp:450
 msgid "Exit"
 msgstr ""
 
-#: main.cpp:509
+#: main.cpp:513
 msgid "Connect to: "
 msgstr "Connetti a:"
 
-#: main.cpp:521
+#: main.cpp:525
 msgid "Login ID:"
 msgstr "Nome utente per l' accesso:"
 
-#: main.cpp:534
+#: main.cpp:538
 msgid ""
 "Type in the username that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1074,11 +1074,11 @@ msgid ""
 "<i>myusername</i> is not the same as <i>MyUserName</i>!"
 msgstr ""
 
-#: main.cpp:543
+#: main.cpp:547
 msgid "Password:"
 msgstr "Password:"
 
-#: main.cpp:557
+#: main.cpp:561
 msgid ""
 "Type in the password that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1089,11 +1089,11 @@ msgid ""
 "<i>mypassword</i> is not the same as <i>MyPassword</i>!"
 msgstr ""
 
-#: main.cpp:571
+#: main.cpp:575
 msgid "Show Log Window"
 msgstr "Mostra finestra log"
 
-#: main.cpp:578
+#: main.cpp:582
 msgid ""
 "This controls whether a log window is shown.\n"
 "A log window shows the communication between\n"
@@ -1104,15 +1104,15 @@ msgid ""
 "problems"
 msgstr ""
 
-#: main.cpp:601
+#: main.cpp:605
 msgid "Setup"
 msgstr "Configurazione"
 
-#: main.cpp:617
+#: main.cpp:621
 msgid "Connect"
 msgstr "Connetti"
 
-#: main.cpp:697
+#: main.cpp:701
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -1121,47 +1121,47 @@ msgstr ""
 "Account inesistente:\n"
 "%s"
 
-#: main.cpp:712
+#: main.cpp:716
 msgid "kppp Configuration"
 msgstr "Configurazione Kppp"
 
-#: main.cpp:728
+#: main.cpp:732
 msgid "Accounts"
 msgstr "Accounts"
 
-#: main.cpp:729
+#: main.cpp:733
 msgid "Device"
 msgstr "Dispositivo"
 
-#: main.cpp:731
+#: main.cpp:735
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:732
+#: main.cpp:736
 msgid "Graph"
 msgstr ""
 
-#: main.cpp:876
+#: main.cpp:880
 msgid "Timeout expired while waiting for the PPP interface to come up!"
 msgstr ""
 
-#: main.cpp:881
+#: main.cpp:885
 msgid "The pppd daemon died unexpectedly!"
 msgstr ""
 
-#: main.cpp:889
+#: main.cpp:893
 #, fuzzy
 msgid "Details..."
 msgstr "Dettagli"
 
-#: main.cpp:921
+#: main.cpp:925
 msgid ""
 "Sorry. kppp's helper process just died.\n"
 "\n"
 "Since a further execution would be pointless, kppp will shut down right now."
 msgstr ""
 
-#: main.cpp:955
+#: main.cpp:959
 #, fuzzy, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1180,7 +1180,7 @@ msgstr ""
 " della finestra di setup.\n"
 " Grazie :-)"
 
-#: main.cpp:970
+#: main.cpp:974
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1193,7 +1193,7 @@ msgstr ""
 "Assicurarsi di avere dato i permessi (setuid) a kppp e che il programma\n"
 "pppd sia eseguibile."
 
-#: main.cpp:985
+#: main.cpp:989
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1214,7 +1214,7 @@ msgstr ""
 "finestra di setup.\n"
 "Grazie!"
 
-#: main.cpp:1005
+#: main.cpp:1009
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1224,7 +1224,7 @@ msgstr ""
 "autenticazione PAP. Dovete quindi\n"
 "inserire un utente ed una password!"
 
-#: main.cpp:1014
+#: main.cpp:1018
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1233,7 +1233,7 @@ msgstr ""
 "Impossibile creare il file di autenticazione\n"
 "PAP \"%s\""
 
-#: main.cpp:1031
+#: main.cpp:1035
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -1244,7 +1244,7 @@ msgstr ""
 "inserire un utente ed una password!"
 
 # ,c-format
-#: main.cpp:1040
+#: main.cpp:1044
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1253,20 +1253,20 @@ msgstr ""
 "Impossibile creare il file di autenticazione\n"
 "CHAP \"%s\""
 
-#: main.cpp:1052
+#: main.cpp:1056
 #, fuzzy
 msgid "You must specify a telephone number!"
 msgstr "Devi specificare un numero di telefono!\n"
 
-#: main.cpp:1139
+#: main.cpp:1143
 msgid "Quit kPPP?"
 msgstr "Esco da kPPP?"
 
-#: main.cpp:1140
+#: main.cpp:1144
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Uscendo da kPPP si chiudera` la sessione PPP."
 
-#: main.cpp:1185
+#: main.cpp:1189
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
@@ -1618,7 +1618,7 @@ msgstr "kppp: file delle regole OK\n"
 msgid "Minimize"
 msgstr "Minimizza"
 
-#: runtests.cpp:383
+#: runtests.cpp:386
 msgid ""
 "You´re not allowed to dial out with kppp.\n"
 "Contact your system administrator."
@@ -1626,7 +1626,7 @@ msgstr ""
 "Non avete i permessi per usare kppp.\n"
 "Contattate l'amministratore di sistema."
 
-#: runtests.cpp:400
+#: runtests.cpp:403
 msgid ""
 "This kernel has no PPP support, neither\n"
 "compiled in nor via the kernel module\n"
@@ -1638,7 +1638,7 @@ msgid ""
 "  * install a kernel with PPP support\n"
 msgstr ""
 
-#: runtests.cpp:422
+#: runtests.cpp:425
 msgid ""
 "Cannot find the pppd-daemon!\n"
 "\n"
@@ -1650,7 +1650,7 @@ msgstr ""
 "Controlla che pppd sia installato e\n"
 "che il path sia stato inserito correttamente.\n"
 
-#: runtests.cpp:434
+#: runtests.cpp:438
 msgid ""
 "You do not have the permission\n"
 "to start pppd!\n"
@@ -1664,7 +1664,7 @@ msgstr ""
 "Contattate l'amministratore di sistema\n"
 "e richiedete gli accessi al demone pppd."
 
-#: runtests.cpp:445 runtests.cpp:460
+#: runtests.cpp:449 runtests.cpp:463
 msgid ""
 "pppd is not properly installed!\n"
 "\n"
@@ -1678,7 +1678,7 @@ msgstr ""
 "bit di SUID settato. Contattate l'amministratore\n"
 "di sistema."
 
-#: runtests.cpp:494
+#: runtests.cpp:497
 msgid ""
 "kppp has detected a 'lock' option in /etc/ppp/options.\n"
 "\n"
@@ -1692,7 +1692,7 @@ msgstr ""
 "bloccare il dispositivo utilizzato.\n"
 "Contatta il tuo amministratore di sistema."
 
-#: runtests.cpp:518
+#: runtests.cpp:521
 #, fuzzy
 msgid ""
 "is missing!\n"
