@@ -1,4 +1,8 @@
-1998-11-15  David Faure  <faure@kde.org> (0.9.1)
+1998-12-02  David Faure  <faure@kde.org> (0.9.1)
+
+	* ktalkd/readc*.cpp: Fixed strncpy length arg for NEU_forwardmethod
+
+1998-11-15  David Faure  <faure@kde.org>
 
 	* ktalkd/readc*.cpp, ktalkd/options.*, ktalkd/process.cpp: Added
 	NEU forward method, for multi-networked hosts with forwards

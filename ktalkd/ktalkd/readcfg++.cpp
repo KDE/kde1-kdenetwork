@@ -221,7 +221,7 @@ int process_config_file(void)
       message("NEUBehaviour : %d",Options.NEU_behaviour); 
   }
   if (found("NEUForwardMethod"))   { 
-      qstrncpy(Options.NEU_forwardmethod,result,S_INVITE_LINES); 
+      qstrncpy(Options.NEU_forwardmethod,result,5); 
       message("NEUForwardMethod = %s", Options.NEU_forwardmethod); 
   }
   
