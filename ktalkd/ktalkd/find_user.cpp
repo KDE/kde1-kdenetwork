@@ -78,7 +78,7 @@ char *get_display(pid_t pid) {
     static char buf[1024];
     char *rbuf = 0, *dpy, *c;
     int fd, tot = 0, end_of_file = 0;
-    unsigned int n, l;
+    int n, l;
 
     sprintf(buf, "/proc/%d/environ", pid);
 
@@ -91,7 +91,7 @@ char *get_display(pid_t pid) {
     dpy = 0;
     /* if (debug_mode) syslog(LOG_DEBUG, "reading %s no %d...", buf, fd); */
     while ((n = read(fd, buf, sizeof buf - 1)) > 0) {
-        if (n < sizeof buf - 1)
+        if (n < (int)sizeof buf - 1)
             end_of_file = 1;
         if (n < 0) {
             syslog(LOG_ERR, "read: %m");
