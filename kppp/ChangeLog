@@ -1,3 +1,8 @@
+1999-01-28  Mario Weilguni <mweilguni@kde.org>
+
+	* fixed a bug in opener.cpp. recvmsg() was interrupted, and thus
+	the SUID part died.
+
 1999-01-28  Harri Porten  <porten@kde.org>
 
 	* modem.cpp: use sigsetjmp() instead of just setjmp() to solve

@@ -105,158 +105,164 @@ void Opener::mainLoop() {
   while(1) {
     len = recvmsg(socket, &msg, 0);
     if(len < 0) {
-      perror("Opener: error reading from socket");
-      _exit(1);
-    }
-
-    switch(request.header.type) {
-
-    case OpenDevice:
-      Debug("Opener: received OpenDevice");
-      assert(len == sizeof(struct OpenModemRequest));
-      close(ttyfd);
-      device = deviceByIndex(request.modem.deviceNum);
-      response.status = 0;
-      if ((ttyfd = open(device, O_RDWR|O_NDELAY|O_NOCTTY)) == -1) {
-        Debug("error opening modem device !");
-        fd = open(DEVNULL, O_RDONLY);
-        response.status = -errno;
-        sendFD(fd, &response);
-        close(fd);
-      } else
-        sendFD(ttyfd, &response);
-      break;
-
-    case OpenLock:
-      Debug("Opener: received OpenLock\n");
-      assert(len == sizeof(struct OpenLockRequest));
-      flags = request.lock.flags;
-      assert(flags == O_RDONLY || flags == O_WRONLY|O_TRUNC|O_CREAT); 
-      if(flags == O_WRONLY|O_TRUNC|O_CREAT)
-        mode = 0644;
-      else
-        mode = 0;
-
-      device = deviceByIndex(request.lock.deviceNum);
-      assert(strlen(LOCK_DIR)+strlen(device) < MaxPathLen);
-      strncpy(lockfile, LOCK_DIR"/LCK..", MaxPathLen);
-      strncat(lockfile, device + strlen("/dev/"),
-              MaxPathLen - strlen(lockfile));
-      lockfile[MaxPathLen] = '\0';
-      response.status = 0;
-      // TODO:
-//   struct stat st;
-//   if(stat(lockfile.data(), &st) == -1) {
-//     if(errno == EBADF)
-//       return -1;
-//   } else {
-//     // make sure that this is a regular file
-//     if(!S_ISREG(st.st_mode)) 
-//       return -1;
-//   }
-      if ((fd = open(lockfile, flags, mode)) == -1) {
-        Debug("error opening lockfile!");
-        lockfile[0] = '\0';
-        fd = open(DEVNULL, O_RDONLY);
-        response.status = -errno;
-        sendFD(fd, &response);
-      } else {
-	fchown(fd, 0, 0);
-        sendFD(fd, &response);
+      switch(errno) {
+      case EINTR:
+	Debug("Opener: interrupted system call, continuing");
+	break;
+      default:
+	perror("Opener: error reading from socket");
+	_exit(1);
       }
-      close(fd);
-      break;
+    } else {
+      switch(request.header.type) {
 
-    case RemoveLock:
-      Debug("Opener: received RemoveLock");
-      assert(len == sizeof(struct RemoveLockRequest));
-      close(ttyfd);
-      ttyfd = -1;
-      response.status = unlink(lockfile);
-      lockfile[0] = '\0';
-      sendResponse(&response);
-      break;
+      case OpenDevice:
+	Debug("Opener: received OpenDevice");
+	assert(len == sizeof(struct OpenModemRequest));
+	close(ttyfd);
+	device = deviceByIndex(request.modem.deviceNum);
+	response.status = 0;
+	if ((ttyfd = open(device, O_RDWR|O_NDELAY|O_NOCTTY)) == -1) {
+	  Debug("error opening modem device !");
+	  fd = open(DEVNULL, O_RDONLY);
+	  response.status = -errno;
+	  sendFD(fd, &response);
+	  close(fd);
+	} else
+	  sendFD(ttyfd, &response);
+	break;
 
-    case OpenResolv:
-      Debug("Opener: received OpenResolv");
-      assert(len == sizeof(struct OpenResolvRequest));
-      flags = request.resolv.flags;
-      response.status = 0;
-      if ((fd = open(_PATH_RESCONF, flags)) == -1) {
-        Debug("error opening resolv.conf!");
-        fd = open(DEVNULL, O_RDONLY);
-        response.status = -errno;
-        sendFD(fd, &response);
-      } else
-        sendFD(fd, &response);
-      close(fd);
-      break;
+      case OpenLock:
+	Debug("Opener: received OpenLock\n");
+	assert(len == sizeof(struct OpenLockRequest));
+	flags = request.lock.flags;
+	assert(flags == O_RDONLY || flags == O_WRONLY|O_TRUNC|O_CREAT); 
+	if(flags == O_WRONLY|O_TRUNC|O_CREAT)
+	  mode = 0644;
+	else
+	  mode = 0;
 
-    case OpenSysLog:
-      Debug("Opener: received OpenSysLog");
-      assert(len == sizeof(struct OpenLogRequest));
-      response.status = 0;
-      if ((fd = open("/var/log/messages", O_RDONLY)) == -1) {
-        if ((fd = open("/var/log/syslog.ppp", O_RDONLY)) == -1) {
-          Debug("error opening syslog file !");
-          fd = open(DEVNULL, O_RDONLY);
-          response.status = -errno;
-          sendFD(fd, &response);
-        } else
-          sendFD(fd, &response);
-      } else
-        sendFD(fd, &response);
-      close(fd);
-      break;
+	device = deviceByIndex(request.lock.deviceNum);
+	assert(strlen(LOCK_DIR)+strlen(device) < MaxPathLen);
+	strncpy(lockfile, LOCK_DIR"/LCK..", MaxPathLen);
+	strncat(lockfile, device + strlen("/dev/"),
+		MaxPathLen - strlen(lockfile));
+	lockfile[MaxPathLen] = '\0';
+	response.status = 0;
+	// TODO:
+	//   struct stat st;
+	//   if(stat(lockfile.data(), &st) == -1) {
+	//     if(errno == EBADF)
+	//       return -1;
+	//   } else {
+	//     // make sure that this is a regular file
+	//     if(!S_ISREG(st.st_mode)) 
+	//       return -1;
+	//   }
+	if ((fd = open(lockfile, flags, mode)) == -1) {
+	  Debug("error opening lockfile!");
+	  lockfile[0] = '\0';
+	  fd = open(DEVNULL, O_RDONLY);
+	  response.status = -errno;
+	  sendFD(fd, &response);
+	} else {
+	  fchown(fd, 0, 0);
+	  sendFD(fd, &response);
+	}
+	close(fd);
+	break;
 
-    case SetSecret:
-      Debug("Opener: received SetSecret");
-      assert(len == sizeof(struct SetSecretRequest));
-      response.status = !createAuthFile(request.secret.authMethod,
-					request.secret.username,
-					request.secret.password);
-      sendResponse(&response);
-      break;
+      case RemoveLock:
+	Debug("Opener: received RemoveLock");
+	assert(len == sizeof(struct RemoveLockRequest));
+	close(ttyfd);
+	ttyfd = -1;
+	response.status = unlink(lockfile);
+	lockfile[0] = '\0';
+	sendResponse(&response);
+	break;
 
-    case RemoveSecret:
-      Debug("Opener: received RemoveSecret");
-      assert(len == sizeof(struct RemoveSecretRequest));
-      response.status = !removeAuthFile(request.remove.authMethod);
-      sendResponse(&response);
-      break;
+      case OpenResolv:
+	Debug("Opener: received OpenResolv");
+	assert(len == sizeof(struct OpenResolvRequest));
+	flags = request.resolv.flags;
+	response.status = 0;
+	if ((fd = open(_PATH_RESCONF, flags)) == -1) {
+	  Debug("error opening resolv.conf!");
+	  fd = open(DEVNULL, O_RDONLY);
+	  response.status = -errno;
+	  sendFD(fd, &response);
+	} else
+	  sendFD(fd, &response);
+	close(fd);
+	break;
 
-    case SetHostname:
-      Debug("Opener: received SetHostname");
-      assert(len == sizeof(struct SetHostnameRequest));
-      response.status = 0;
-      if(sethostname(request.host.name, strlen(request.host.name)))
-        response.status = -errno;
-      sendResponse(&response);
-      break;
+      case OpenSysLog:
+	Debug("Opener: received OpenSysLog");
+	assert(len == sizeof(struct OpenLogRequest));
+	response.status = 0;
+	if ((fd = open("/var/log/messages", O_RDONLY)) == -1) {
+	  if ((fd = open("/var/log/syslog.ppp", O_RDONLY)) == -1) {
+	    Debug("error opening syslog file !");
+	    fd = open(DEVNULL, O_RDONLY);
+	    response.status = -errno;
+	    sendFD(fd, &response);
+	  } else
+	    sendFD(fd, &response);
+	} else
+	  sendFD(fd, &response);
+	close(fd);
+	break;
 
-    case ExecPPPDaemon:
-      Debug("Opener: received ExecPPPDaemon");
-      assert(len == sizeof(struct ExecDaemonRequest));
-      response.status = execpppd(request.daemon.arguments);
-      sendResponse(&response);
-      break;
+      case SetSecret:
+	Debug("Opener: received SetSecret");
+	assert(len == sizeof(struct SetSecretRequest));
+	response.status = !createAuthFile(request.secret.authMethod,
+					  request.secret.username,
+					  request.secret.password);
+	sendResponse(&response);
+	break;
 
-    case KillPPPDaemon:
-      Debug("Opener: received KillPPPDaemon");
-      assert(len == sizeof(struct KillDaemonRequest));
-      response.status = killpppd();
-      sendResponse(&response);
-      break;
+      case RemoveSecret:
+	Debug("Opener: received RemoveSecret");
+	assert(len == sizeof(struct RemoveSecretRequest));
+	response.status = !removeAuthFile(request.remove.authMethod);
+	sendResponse(&response);
+	break;
 
-    case Stop:
-      Debug("Opener: received STOP command");
-      _exit(0);
-      break;
+      case SetHostname:
+	Debug("Opener: received SetHostname");
+	assert(len == sizeof(struct SetHostnameRequest));
+	response.status = 0;
+	if(sethostname(request.host.name, strlen(request.host.name)))
+	  response.status = -errno;
+	sendResponse(&response);
+	break;
 
-    default:
-      Debug("Opener: unknown command type. Exiting ...");
-      _exit(1);
-    }
+      case ExecPPPDaemon:
+	Debug("Opener: received ExecPPPDaemon");
+	assert(len == sizeof(struct ExecDaemonRequest));
+	response.status = execpppd(request.daemon.arguments);
+	sendResponse(&response);
+	break;
+
+      case KillPPPDaemon:
+	Debug("Opener: received KillPPPDaemon");
+	assert(len == sizeof(struct KillDaemonRequest));
+	response.status = killpppd();
+	sendResponse(&response);
+	break;
+
+      case Stop:
+	Debug("Opener: received STOP command");
+	_exit(0);
+	break;
+
+      default:
+	Debug("Opener: unknown command type. Exiting ...");
+	_exit(1);
+      }
+    } // else
   }
 }
 
