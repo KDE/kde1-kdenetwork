@@ -5,18 +5,12 @@
  * I kept the name pmachine.h because it was already in all of the files...this
  * barely resembles the pmachine.h that comes with the real Prospero, though.
  *
- * $Revision$
  * gf 23 Nov 1992 : Added section for defining malloc() & co.
  */
 
 #ifdef u3b2
 # define USG
 # define NOREGEX
-# define MAXPATHLEN 1024       /* There's no maxpathlen in any 3b2 .h file.  */
-#endif
-
-#ifdef m88k
-#define MAXPATHLEN 1024
 #endif
 
 #ifdef hpux
