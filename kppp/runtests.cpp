@@ -38,16 +38,21 @@
 QString findFileInPath( const char *fname, const char *extraPath = 0 ) {
   QString f;  
 
+  if(access(fname, F_OK) == 0)
+    return QString(fname);
+
   // strip arguments
   QString _fname = fname;
   if(_fname.find(' ') != -1)
     _fname = _fname.left(_fname.find(' '));
 
   char path[2048];
+
+  // for absolute path
+  strcpy(path, ":");
+
   if(getenv("PATH") != NULL)
-    strncpy(path, getenv("PATH"), sizeof(path)-128);
-  else
-    strcpy(path, "");
+    strncat(path, getenv("PATH"), sizeof(path)-128);
 
   if(extraPath != 0)
     strcat(path, extraPath);
@@ -80,8 +85,10 @@ int runTests() {
     pppdFound = f.length() > 0;
 
     // save the new location
-    if(pppdFound)
+    if(pppdFound) {
       gpppdata.setpppdPath(f.data());
+      gpppdata.save();
+    }
   }
 
   if(!pppdFound) {
@@ -137,11 +144,10 @@ int runTests() {
       QMessageBox::information(0,
 			       klocale->translate("Information"),
 			       s.data());
-      gpppdata.setlogViewer("kvt -e vi");
+      gpppdata.setlogViewer(dflt.data());
+      gpppdata.save();
     }
   }
-
-  
 
   if(warning == 0)
     return TEST_OK;
