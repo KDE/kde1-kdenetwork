@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
 "POT-Creation-Date: 1998-02-24 21:39+0100\n"
-"PO-Revision-Date: 1998-02-10 15:55 +0100\n"
+"PO-Revision-Date: 1998-02-24 15:55 +0100\n"
 "Last-Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
 
 #: kmcomposewin.cpp:1266 kmmainwin.cpp:266 kpgp.cpp:349
@@ -786,12 +786,11 @@ msgstr "Nachricht verschlüsseln"
 
 #: kmcomposewin.cpp:552 kmcomposewin.cpp:566
 msgid "Column"
-msgstr ""
+msgstr "Spalte"
 
 #: kmcomposewin.cpp:553 kmcomposewin.cpp:564
-#, fuzzy
 msgid "Line"
-msgstr "Benutzer:"
+msgstr "Zeile"
 
 #: kmcomposewin.cpp:759
 msgid "KMail Confirm"
@@ -823,9 +822,8 @@ msgid "Attach File"
 msgstr "Datei anhängen"
 
 #: kmcomposewin.cpp:1050
-#, fuzzy
 msgid "Include File"
-msgstr "&Datei einfügen"
+msgstr "Datei einfügen"
 
 #: kmcomposewin.cpp:1071 kmreaderwin.cpp:623
 msgid "View..."

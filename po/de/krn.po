@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: krn\n"
 "POT-Creation-Date: 1998-02-25 12:40+0100\n"
-"PO-Revision-Date: 1998-02-12 21:20 +0100\n"
+"PO-Revision-Date: 1998-02-27 21:20 +0100\n"
 "Last-Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
 
 #: main.cpp:226 main.cpp:238 main.cpp:250 main.cpp:265 main.cpp:277
@@ -39,9 +39,8 @@ msgid "Received %.2f Kb"
 msgstr "%.2f Kb empfangen"
 
 #: NNTP.cpp:620
-#, fuzzy
 msgid "Article Received"
-msgstr "Artikel-Inhalte:"
+msgstr "Artikel empfangen"
 
 #: groupdlg.cpp:130
 msgid "Connect to Server"
@@ -424,7 +423,6 @@ msgid "Append"
 msgstr "Anhängen"
 
 #: artdlg.cpp:1178
-#, fuzzy
 msgid ""
 "From: Krn\n"
 "To: You\n"
@@ -432,6 +430,8 @@ msgid ""
 "Error getting article.\n"
 "Server said:\n"
 msgstr ""
+"Von: Krn\n"
+"An: Sie\n"
 "\n"
 "Fehler beim Artikelholen.\n"
 "Server antwortete:\n"
@@ -514,12 +514,11 @@ msgstr "Name"
 
 #: decoderDlg.cpp:43
 msgid "Destination directory:"
-msgstr ""
+msgstr "Zielverzeichnis:"
 
 #: decoderDlg.cpp:46
-#, fuzzy
 msgid "Decode All"
-msgstr "Dekodieren"
+msgstr "Alle dekodieren"
 
 #: kdecode.cpp:29
 msgid "KRN-Decoder"
@@ -552,44 +551,43 @@ msgstr "Nachrichtenanzeige-Einstellungen"
 
 #: fontsDlg.cpp:46
 msgid "Header Style"
-msgstr ""
+msgstr "Header-Stil"
 
 #: fontsDlg.cpp:48
 msgid "Fancy"
-msgstr ""
+msgstr "Kunstvoll"
 
 #: fontsDlg.cpp:49
 msgid "Brief"
-msgstr ""
+msgstr "Kurz"
 
 #: fontsDlg.cpp:50
-#, fuzzy
 msgid "Standard"
-msgstr "Standardschriftart"
+msgstr "Standard"
 
 #: fontsDlg.cpp:51
 msgid "Long"
-msgstr ""
+msgstr "Lang"
 
 #: fontsDlg.cpp:52
 msgid "All"
-msgstr ""
+msgstr "Alle"
 
 #: fontsDlg.cpp:56
 msgid "Attachment Style"
-msgstr ""
+msgstr "Anhang-Stil"
 
 #: fontsDlg.cpp:58
 msgid "Iconic"
-msgstr ""
+msgstr "Als Icon"
 
 #: fontsDlg.cpp:59
 msgid "Smart"
-msgstr ""
+msgstr "Intelligent"
 
 #: fontsDlg.cpp:60
 msgid "Inline"
-msgstr ""
+msgstr "Im Text"
 
 #: fontsDlg.cpp:67
 msgid "Font Size:"
@@ -721,21 +719,19 @@ msgstr "KRN - Bewertungsregeln bearbeiten"
 
 #: rulesDlg.cpp:45
 msgid "Global Rules"
-msgstr ""
+msgstr "Globale Regeln"
 
 #: rulesDlg.cpp:47
-#, fuzzy
 msgid "All Rules"
-msgstr "Regeln bearbeiten"
+msgstr "Alle Regeln"
 
 #: rulesDlg.cpp:63
-#, fuzzy
 msgid "Active Rules"
-msgstr "Gruppenliste holen"
+msgstr "Aktive Regeln"
 
 #: rulesDlg.cpp:70
 msgid "Rule Editor"
-msgstr ""
+msgstr "Regel-Editor"
 
 #: rulesDlg.cpp:87
 msgid "Save as"
@@ -747,12 +743,11 @@ msgstr "Artikel suchen mit:"
 
 #: rulesDlg.cpp:126
 msgid "Negative"
-msgstr ""
+msgstr "Negativ"
 
 #: rulesDlg.cpp:189
-#, fuzzy
 msgid "Rule name:"
-msgstr "Wirklicher Name"
+msgstr "Regelname:"
 
 #: sortDlg.cpp:23
 msgid "KRN - Header Sorting"
@@ -771,19 +766,17 @@ msgid "Use Threading"
 msgstr "Nach Threads"
 
 #: charsetsDlg.cpp:26
-#, fuzzy
 msgid "KRN - Charset Settings"
-msgstr "KRN - Druckereinstellung"
+msgstr "KRN - Zeichensatz-Einstellung"
 
 #: charsetsDlg.cpp:28
-#, fuzzy
 msgid "KMail - Charset Settings"
-msgstr "KRN - Druckereinstellung"
+msgstr "KMail - Zeichensatz-Einstellung"
 
 #: charsetsDlg.cpp:38
 msgid "Message charset"
-msgstr ""
+msgstr "Nachrichten-Zeichensatz"
 
 #: charsetsDlg.cpp:56
 msgid "Composer charset"
-msgstr ""
+msgstr "Editor-Zeichensatz"
