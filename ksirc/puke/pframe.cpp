@@ -1,5 +1,19 @@
 #include "pframe.h"
 
+PWidget *createWidget(widgetId *pwi, PWidget *parent)
+{
+  PFrame *pw = new PFrame(parent);
+  QFrame *tf;
+  if(parent != 0)
+    tf = new QFrame(parent->widget());
+  else
+    tf = new QFrame();
+  pw->setWidget(tf);
+  pw->setWidgetId(pwi);
+  return pw;
+}
+
+
 PFrame::PFrame( PWidget *parent)
   : PWidget(parent)
 {
@@ -14,20 +28,6 @@ PFrame::~PFrame()
   frame=0;      // Set it to 0
   setWidget(frame); // Now set all widget() calls to 0.
 }
-
-PWidget *PFrame::createWidget(widgetId *pwi, PWidget *parent)
-{
-  PFrame *pw = new PFrame(parent);
-  QFrame *tf;
-  if(parent != 0)
-    tf = new QFrame(parent->widget());
-  else
-    tf = new QFrame();
-  pw->setWidget(tf);
-  pw->setWidgetId(pwi);
-  return pw;
-}
-
 
 void PFrame::messageHandler(int fd, PukeMessage *pm)
 {

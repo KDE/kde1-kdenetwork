@@ -22,6 +22,19 @@
 #define PUKE_SETUP_ACK -1
 
 
+// Desc: sends the ack back.  Used for doing actions after returning to select.
+// iWinId: window id
+// iArg: not defined
+// cArg: not define
+#define PUKE_ECHO 5
+
+// Desc: sends the ack back.  Used for doing actions after returning to select.
+// iWinId: window id
+// iArg: not defined
+// cArg: not define
+#define PUKE_ECHO_ACK -5
+
+
 // From ksirc to sirc, event command unkown.
 // There should be somewhere better for this!!!
 
@@ -164,7 +177,17 @@
 // cArg: not define
 #define PUKE_WIDGET_MOVE_ACK -1050
 
+// Desc: open and load library file
+// iWinid: not defined
+// iArg: not defined
+// cArg: file name
+#define PUKE_WIDGET_LOAD 1055
 
+// Desc: ack the open library file
+// iWinid: not defined
+// iArg: widget number
+// cArg: not defined
+#define PUKE_WIDGET_LOAD_ACK -1055
 
 // 1100 defines QFrame
 // Desc: set Frame style
@@ -191,7 +214,6 @@
 // cArg: no define
 #define PUKE_QFRAME_SET_LINEWIDTH_ACK -1105
 
-
 // 
 // Base commands are done, next describes Widget's
 //
@@ -201,3 +223,34 @@
 
 // FRAME defines a base class
 #define PWIDGET_FRAME 3
+
+
+
+// Group layout commands exist between 10000 and 11000
+
+// Desc: create new box layout
+// iWinId: PWidget parent
+// iArg: 2 shorts, short[0] direction, short[1] border
+// cArg: random character string
+#define PUKE_LAYOUT_NEW 11000
+// Desc: ack for box layout
+// iWinId: Layout ID.
+// iArg: not define
+// cArg: same random m character string as PUKE_LAYOUT_NEW
+#define PUKE_LAYOUT_NEW_ACK -11000
+
+#define PUKE_LAYOUT_ADDLAYOUT 11005
+#define PUKE_LAYOUT_ADDLAYOUT_ACK -11005
+
+// Desc: add widget into layout manager
+// iWinId: Layout Manager to add widget too
+// iArg: Widget Id to be added
+// cArg: 2 characters, char[0] strech, char[1] alignement
+#define PUKE_LAYOUT_ADDWIDGET 11010
+// Desc: ack for add widget
+// iWinId: Layout manager 
+// iArg: not defined
+// cArg: not define
+#define PUKE_LAYOUT_ADDWIDGET_ACK -11010
+
+

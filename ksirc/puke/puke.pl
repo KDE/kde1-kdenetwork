@@ -26,8 +26,10 @@ if($PUKEFd != undef){
 
 #%PUKE_DEF_HANDLER = ();
 
-require 'commands-perl.pl';
-require 'commands-handler.pl';
+#require 'commands-perl.pl';
+&docommand("/load commands-perl.pl");
+#require 'commands-handler.pl';
+&docommand("/load commands-handler.pl");
 
 $PukePacking = "iiia50aa";  # aa padding to fill to 64 bytes
 $PukeMSize = 64;
@@ -77,17 +79,19 @@ sub sel_PukeRecvMessage {
 
 #  print "*I* Def handler: $PUKE_DEF_HANDLER{$cmd}\n";
 
-  if($PUKE_HANDLER{$cmd}{$winid}){
+  if($PUKE_HANDLER{$cmd}{$winid}){ # one shot/command handler
     &{$PUKE_HANDLER{$cmd}{$winid}}(\%ARG);
   } elsif ($PUKE_HANDLER{-$cmd}{$winid}){
-    &{$PUKE_HANDLER{-$cmd}{$winid}};
-  } elsif ($PUKE_DEF_HANDLER{"$cmd"}) {
+    &{$PUKE_HANDLER{-$cmd}{$winid}}; 
+  } elsif ($PUKE_W_HANDLER{$cmd}{$winid}) { # widget specific handler
+    &{$PUKE_W_HANDLER{$cmd}{$winid}}(\%ARG);
+  } elsif ($PUKE_DEF_HANDLER{"$cmd"}) {# catch all
     &{$PUKE_DEF_HANDLER{"$cmd"}}(\%ARG);
   }
   else {
     # No handler at all, unkown reply
     print("*E* PUKE: Got unkown command: $cmd/$PUKE_NUM2NAME{$cmd}\n");
-    print("PUKE: Got: $cmd, $winid, $iarg, $carg\n");
+#    print("PUKE: Got: $cmd, $winid, $iarg, $carg\n");
   }
 }
 

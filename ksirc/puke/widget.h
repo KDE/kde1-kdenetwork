@@ -10,7 +10,7 @@ class WidgetRunner;
 // PWidget definitions
 
 #include "pwidget.h"
-#include "pframe.h"
+//#include "pframe.h"
 
 typedef struct {
   PWidget *pwidget; // The widget
@@ -29,10 +29,12 @@ class WidgetRunner : public QObject
  WidgetRunner(QObject * parent=0, const char * name=0);
  ~WidgetRunner();
 
+ PWidget *id2pwidget(widgetId *pwi);
+
  public slots:
  void inputMessage(int fd, PukeMessage *pm);
-
  void closefd(int fd);
+ void closeWidget(widgetId);
 
  signals:
  void outputMessage(int fd, PukeMessage *pm);

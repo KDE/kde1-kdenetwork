@@ -29,17 +29,18 @@ controller.cpp \
 mcontroller.cpp \
 widget.cpp \
 mwidget.cpp \
+layout.cpp \
+mlayout.cpp \
 pwidget.cpp \
 mpwidget.cpp \
-pframe.cpp \
-mpframe.cpp
 
 noinst_HEADERS = \
-controller.h \
-widget.h \
-commands.h \
-pwidget.h \
-pframe.h
+commands.h    pframe.h      pwidget.h     widgethdlr.h \
+controller.h  pmessage.h    widget.h \
+commands-handler.pl  convert_commands.pl  tester.pl \
+commands-perl.pl     puke.pl \
+pframe.pm   pwidget.pm layout.h
+
 
 libpukeSOURCES = $(libkscutdialog_SOURCES)
 
@@ -48,20 +49,27 @@ controller.o \
 mcontroller.o \
 widget.o \
 mwidget.o \
+layout.o \
+mlayout.o \
 pwidget.o \
-mpwidget.o \
-pframe.o \
-mpframe.o
+mpwidget.o
 
 libpuke.c: commands.h
-	./convert_commands.pl
+	perl convert_commands.pl
 	@touch libpuke.c
 	@echo "Done"
 
-libpuke: $(libpukeOBJECTS) commands.h
+libpuke: $(libpukeOBJECTS) commands.h pframe.so
 	./convert_commands.pl
 	ar cr libpuke.a $(libpukeOBJECTS)
 	ranlib libpuke.a || true
+
+pframe.so: pframe.h mpframe.o
+	$(CXXCOMPILE) -fPIC -c pframe.cpp
+	gcc -shared -Wl -o pframe.so pframe.o mpframe.o
+
+mpframe.o: pframe.h
+	$(CXXCOMPILE) -fPIC -c mpframe.cpp
 
 # just to make sure, automake makes them 
 BUILTSOURCES =	
@@ -80,6 +88,8 @@ messages:
 # don't install a list of file. Just one file per install.
 # if you have more of them, create a subdirectory with an extra Makefile 
 install-data-local: 
+	$(mkinstalldirs) $(kde_datadir)/ksirc
+	$(INSTALL_DATA) *.pl *.pm $(kde_datadir)/ksirc
 
 #
 # remove ALL you have installed in install-data-local or install-exec-local

@@ -27,9 +27,13 @@ class PWidget : public QObject
 
  signals:
   void outputMessage(int fd, PukeMessage *pm);
+  void widgetDestroyed(widgetId wI);
 
  protected:
   bool eventFilter(QObject *o, QEvent *e);
+
+ protected slots:
+  void swidgetDestroyed();
 
  private:
   QWidget *w;

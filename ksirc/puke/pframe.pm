@@ -1,4 +1,9 @@
 
+&::PukeSendMessage($PUKE_WIDGE_LOAD, 
+		   0, 
+		   $PWIDGET_FRAME,
+		   "pframe.so");
+
 package PFrame;
 @ISA = qw(PWidget);
 use strict;
@@ -16,30 +21,14 @@ $PFrame::Sunken   = 0x0030;
 $PFrame::MShadow  = 0x00f0;
 
 sub new {
-  my $proto = shift;
-  my $class = ref($proto) || $proto;
-  my $self  = {};
+  my $class = shift;
+  my $self = $class->SUPER::new($class, @_);
 
-  my $parent = shift;
+  $self->{widgetType} = $::PWIDGET_FRAME;
 
-
-  $self->{iWinId} = -1;
-  $self->{Parent} = $parent->{iWinId} if $parent != undef;
-
-
-  bless($self, $class);
-
-  my $string = $self->rndchr();
-
-  $::PUKE_CREATOR{$string} = sub {$self->{iWinId} = ${_[0]}{iWinId}; };
-
-  $self->sendMessage('iCommand' => $::PUKE_WIDGET_CREATE,
-		     'iArg' => $::PWIDGET_FRAME,
-		     'iWinId' => $self->{Parent},
-		     'cArg' => $string,
-		     'CallBack' => sub {});
-
-  print "Done Creating PFrame\n";
+  if($class eq 'PFrame'){
+    $self->create();
+  }
 
   return $self;
 
@@ -52,7 +41,8 @@ sub setFrameStyle {
   my $repaint = shift;
 
   $self->sendMessage('iCommand' => $::PUKE_QFRAME_SET_FRAME,
-		     'iArg' => $frame);
+		     'iArg' => $frame,
+		    'CallBack' => sub {});
 
   $self->repaint(1) if($repaint == 1);
 

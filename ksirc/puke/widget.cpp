@@ -3,6 +3,7 @@
 
 #include "pwidget.h"
 
+#include <dlfcn.h>
 
 uint WidgetRunner::uiBaseWinId = 0;
 
@@ -18,9 +19,9 @@ WidgetRunner::WidgetRunner(QObject * parent=0, const char * name=0)
   wc->wc = PWidget::createWidget;
   widgetCF.insert(PWIDGET_WIDGET, wc);
 
-  wc = new widgetCreate;
-  wc->wc = PFrame::createWidget;
-  widgetCF.insert(PWIDGET_FRAME, wc);
+  //  wc = new widgetCreate;
+  //  wc->wc = PFrame::createWidget;
+  //  widgetCF.insert(PWIDGET_FRAME, wc);
 
   
 }
@@ -36,6 +37,13 @@ bool WidgetRunner::checkWidgetId(widgetId *pwi)
       return TRUE;
   
   return FALSE;
+}
+
+PWidget *WidgetRunner::id2pwidget(widgetId *pwi){
+  if(checkWidgetId(pwi) == TRUE){
+    return WidgetList[pwi->fd]->find(pwi->iWinId)->pwidget;
+  }
+  return 0;
 }
 
 void WidgetRunner::inputMessage(int fd, PukeMessage *pm){
@@ -64,8 +72,11 @@ void WidgetRunner::inputMessage(int fd, PukeMessage *pm){
     }
     if(qidWS->find(wI.iWinId)){
       debug("Closing: %d", wI.iWinId);
-      delete qidWS->find(wI.iWinId)->pwidget;
-      WidgetList[fd]->remove(wI.iWinId);
+      // Remove the list item then delete the widget.  This will stop
+      // the destroyed signal from trying to remove it again.
+      PWidget *pw = qidWS->find(wI.iWinId)->pwidget;
+      qidWS->remove(wI.iWinId);
+      delete pw; pw = 0;
       pmRet.iCommand = PUKE_WIDGET_DELETE_ACK;
     }
     else {
@@ -74,6 +85,32 @@ void WidgetRunner::inputMessage(int fd, PukeMessage *pm){
       pmRet.iCommand = PUKE_WIDGET_DELETE_ACK;
       warning("WidgetRunner: no such widget: %d", wI.iWinId);
     }
+    emit outputMessage(fd, &pmRet);
+  }
+  else if(pm->iCommand == PUKE_WIDGET_LOAD){
+    PukeMessage pmRet = *pm;
+    void *handle;
+    const char *error;
+    PWidget *(*wc)(widgetId *wI, PWidget *parent);
+    widgetCreate *wC;
+
+    pm->cArg[49] = 0;
+    handle = dlopen(pm->cArg, RTLD_LAZY);
+    if (!handle) {
+      fputs(dlerror(), stderr);
+      return;
+    }
+    wc =  (PWidget *(*)(widgetId *wI, PWidget *parent) )
+      dlsym(handle, "createWidget");
+    if ((error = dlerror()) != NULL)  {
+      fputs(error, stderr);
+      return;
+    }
+    wC = new widgetCreate;
+    wC->wc = wc;
+    widgetCF.insert(pm->iArg, wC);
+    
+    pmRet.iCommand = -pm->iCommand;
     emit outputMessage(fd, &pmRet);
   }
   else{
@@ -89,6 +126,26 @@ void WidgetRunner::inputMessage(int fd, PukeMessage *pm){
       emit outputMessage(fd, &pmRet);
     }
   }
+}
+
+void WidgetRunner::closeWidget(widgetId wI){
+  // Check to make sure we have a valid widget
+  // Then remove it from the list.
+  // Don't delete it since well, we're being called since it's already 
+  // being deleted.
+  if(checkWidgetId(&wI) == TRUE){
+    WidgetList[wI.fd]->remove(wI.iWinId);
+
+    PukeMessage pmRet;
+    memset(&pmRet, 0, sizeof(PukeMessage));
+    pmRet.iCommand = PUKE_WIDGET_DELETE_ACK;
+    pmRet.iWinId = wI.iWinId;
+    pmRet.iArg = 0;
+    emit outputMessage(wI.fd, &pmRet);
+    debug("Sent close message, returning");
+    return;
+  }
+  warning("WidgetRunner: widget delete %d %d failed", wI.fd, wI.iWinId);
 }
 
 widgetId WidgetRunner::createWidget(widgetId wI, int iType)
@@ -114,6 +171,8 @@ widgetId WidgetRunner::createWidget(widgetId wI, int iType)
 
   ws->pwidget = (widgetCF[iType]->wc)(&wIret, parent);
   ws->type = iType;
+  connect(ws->pwidget, SIGNAL(widgetDestroyed(widgetId)),
+	  this, SLOT(closeWidget(widgetId)));
 
   connect(ws->pwidget, SIGNAL(outputMessage(int, PukeMessage*)),
 	  this, SIGNAL(outputMessage(int, PukeMessage*)));
@@ -139,11 +198,14 @@ void WidgetRunner::closefd(int fd)
   if(it.count() == 0){
     debug("WidgetRunner: emtpy set?!?!?\n");
   }
-  while(it.current()){
-    debug("Closing: %ld", it.currentKey());
-    delete WidgetList[fd]->find(it.currentKey())->pwidget;
-    WidgetList[fd]->remove(it.currentKey());
-    ++it;
+  else{
+    while(it.current()){
+      debug("Closing: %ld", it.currentKey());
+      delete WidgetList[fd]->find(it.currentKey())->pwidget;
+      // deleting the widget gets it removed from the WidgetList[fd]
+      //    WidgetList[fd]->remove(it.currentKey());
+      ++it;
+    }
   }
   WidgetList.remove(fd);
 }

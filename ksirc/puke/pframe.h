@@ -8,6 +8,11 @@ class PFrame;
 #include "pwidget.h"
 #include "controller.h"
 
+// Init and setup code
+extern "C" {
+PWidget *createWidget(widgetId *pwi, PWidget *parent);
+}
+
 class PFrame : public PWidget
 {
   Q_OBJECT
@@ -15,9 +20,6 @@ class PFrame : public PWidget
   PFrame ( PWidget * parent );
   virtual ~PFrame ();
   
-  // Init and setup code
-  static PWidget *createWidget(widgetId *pwi, PWidget *parent);
-
   virtual void messageHandler(int fd, PukeMessage *pm);
   
   virtual void setWidget(QFrame *_f);

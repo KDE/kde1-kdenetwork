@@ -38,8 +38,9 @@ PWidget::PWidget(PWidget *)
 PWidget::~PWidget()
 {
   debug("PWidget: in destructor");
-  delete w;
+  delete widget();
   w = 0;
+  setWidget(0);
 }
 
 PWidget *PWidget::createWidget(widgetId *pwi, PWidget *parent)
@@ -128,8 +129,11 @@ void PWidget::setWidget(QWidget *_w)
 {
   debug("PWidget setwidget called");
   w = _w;
-  if(w != 0)
-    w->installEventFilter(this);
+  if(w != 0){
+    widget()->installEventFilter(this);
+    connect(widget(), SIGNAL(destroyed()),
+	    this, SLOT(swidgetDestroyed()));
+  }
 }
 
 QWidget *PWidget::widget()
@@ -150,7 +154,10 @@ widgetId PWidget::widgetIden()
   return wI;
 }
 
-
+void PWidget::swidgetDestroyed(){
+  debug("PWidget: got destroy %d", widgetIden().iWinId);
+  emit widgetDestroyed(widgetIden());
+}
 
 // PWidget specific
 bool PWidget::eventFilter(QObject *o, QEvent *e)
