@@ -402,7 +402,6 @@ void NNTP::groupList(QList <NewsGroup> *grouplist, bool fromserver)
             return;
         };
         groups=TextResponse().c_str();
-        debug (groups.data());
         if (groups.isEmpty())
         {
             grouplist->clear();
@@ -435,6 +434,7 @@ void NNTP::groupList(QList <NewsGroup> *grouplist, bool fromserver)
             f.close();
         }
     };
+    resetCounters (true,true);
 }
 
 bool NNTP::setGroup(const char *groupname)
