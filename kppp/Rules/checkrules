@@ -4,7 +4,7 @@ KPPP=`which kppp` || (echo "cannot find kppp"; exit 1)
 
 cd `dirname $0 2> /dev/null` || (echo "\"dirname\" required"; exit 1)
 
-FILESTOCHECK=`fnd -name "*.rst" -type f 2> /dev/null` || \
+FILESTOCHECK=`find -name "*.rst" -type f 2> /dev/null` || \
     (echo "\"find\" required\""; exit 1)
 
 for i in ${FILESTOCHECK}
