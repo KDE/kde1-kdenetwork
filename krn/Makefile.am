@@ -10,6 +10,10 @@ krn_LDADD = -lkfile -lkfm -lkhtmlw -ljscript -lkdeui -lkdecore $(LIBJPEG) \
 kdecode_LDADD = -lkfile -lkfm -lkdeui -lkdecore -lqt -lXext \
 	-lX11 -luulib $(KDE_RPATH) $(LIBCOMPAT) $(LIBSOCKET)
 
+newkrn_LDADD = -lkfile -lkfm -lkhtmlw -ljscript -lkdeui -lkdecore $(LIBJPEG) \
+	-lqt -lXext -lX11 -lmimelib -lgdbm $(LIBCOMPAT) $(LIBSOCKET)
+
+
 ICONDIR = $(kde_icondir)
 MINIDIR =  $(kde_minidir)
 # better would be Internet
@@ -47,7 +51,12 @@ BUILTSOURCES =	groupdlg.moc \
 
 DISTCLEANFILES = $(BUILTSOURCES)
 
-bin_PROGRAMS =	krn kdecode
+bin_PROGRAMS =	krn kdecode newkrn
+
+newkrn_SOURCES = new_main.cpp\
+		 new_groupdlg.cpp\
+                 new_globals.cpp\
+                 kfileio.cpp
 
 kdecode_SOURCES = kdecodemain.cpp\
                 decoderDlg.cpp\
@@ -285,6 +294,12 @@ expirestatusdlg.moc: expirestatusdlg.h
 kmtopwidget.cpp:kmtopwidget.moc
 kmtopwidget.moc: kmtopwidget.h
 	$(MOC) kmtopwidget.h -o kmtopwidget.moc
+
+new_groupdlg.cpp:new_groupdlg.moc
+new_groupdlg.moc: new_groupdlg.h
+	$(MOC) new_groupdlg.h -o new_groupdlg.moc
+
+
 
 messages:
 	@XGETTEXT@ -ktranslate -C -x../../kdelibs/po/kde.pot $(krn_SOURCES)  && mv messages.po ../po/krn.pot
