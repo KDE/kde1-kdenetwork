@@ -24,6 +24,7 @@ extern KConfig *conf;
 fontsDlg::fontsDlg(QWidget* parent,const char* name):Inherited( parent, name, TRUE )
 {
 
+    conf->setGroup("ArticleListOptions");
 
 
     TLForm *f=new TLForm("expiration",
@@ -64,6 +65,12 @@ fontsDlg::fontsDlg(QWidget* parent,const char* name):Inherited( parent, name, TR
     l->newLine();
     l->addLabel("l7", klocale->translate("Followed Color"));
     followColor=(KColorButton *)(l->addColorButton("followColor")->widget);
+    l->newLine();
+
+    singlewin=(QCheckBox *)(l->addCheckBox("singlewin",klocale->translate("Use only one window"),
+                   conf->readNumEntry("SingleWindow",true))->widget);
+    vertsplit=(QCheckBox *)(l->addCheckBox("vertsplit",klocale->translate("Split window vertically"),
+                   conf->readNumEntry("VerticalSplit",false))->widget);
     l->endGroup();
 
     l->newLine();
@@ -84,7 +91,6 @@ fontsDlg::fontsDlg(QWidget* parent,const char* name):Inherited( parent, name, TR
     connect (b1,SIGNAL(clicked()),this,SLOT(accept()));
     connect (b1,SIGNAL(clicked()),this,SLOT(save()));
     connect (b2,SIGNAL(clicked()),this,SLOT(reject()));
-    conf->setGroup("ArticleListOptions");
     fontSize->setCurrentItem(conf->readNumEntry("DefaultFontBase",3)-2);
     QStrList stdfl,fixedfl;
     getFontList( stdfl, "-*-*-*-*-*-*-*-*-*-*-p-*-*-*" );
@@ -136,6 +142,8 @@ void fontsDlg::save()
     conf->writeEntry ("ForegroundColor",fgColor->color());
     conf->writeEntry ("LinkColor",linkColor->color());
     conf->writeEntry ("FollowedColor",followColor->color());
+    conf->writeEntry ("SingleWindow",singlewin->isChecked());
+    conf->writeEntry ("VerticalSplit",vertsplit->isChecked());
     conf->sync();
 }
 

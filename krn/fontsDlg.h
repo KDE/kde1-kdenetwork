@@ -5,6 +5,7 @@
 #include <qcombo.h>
 #include <qlined.h>
 #include <qpushbt.h>
+#include <qchkbox.h>
 
 #include <kcolorbtn.h>
 
@@ -32,7 +33,10 @@ public:
     KColorButton* fgColor;
     KColorButton* linkColor;
     KColorButton* followColor;
-
+    QCheckBox* vertsplit;
+    QCheckBox* singlewin;
+    
+    
 private slots:
     void save();
     void syncFonts(int);

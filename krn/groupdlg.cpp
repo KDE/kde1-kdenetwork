@@ -288,9 +288,36 @@ void Groupdlg::openGroup (QString name)
     if (i!=-1)
     {
         groups.at(i)->load();
-        Artdlg *a = new Artdlg (groups.at(i),server);
-        QObject::connect(a->messwin,SIGNAL(spawnGroup(QString)),this,SLOT(openGroup(QString)));
-        QObject::connect(a,SIGNAL(needConnection()),this,SLOT(needsConnect()));
+        Artdlg *a=0;
+        QListIterator <NewsGroup> it(groups);
+
+        conf->setGroup("ArticleListOptions");
+        bool singleWin=conf->readNumEntry("SingleWindow",true);
+
+        if (singleWin)
+        {
+            NewsGroup *iter;
+            for (;it.current(); ++it)
+            {
+                iter=it.current();
+                if (iter->isVisible)
+                {
+                    a=iter->isVisible;
+                    break;
+                }
+            }
+        }
+
+        if (!a)
+        {
+            a = new Artdlg (groups.at(i),server);
+            QObject::connect(a->messwin,SIGNAL(spawnGroup(QString)),
+                             this,SLOT(openGroup(QString)));
+            QObject::connect(a,SIGNAL(needConnection()),
+                             this,SLOT(needsConnect()));
+        }
+        else
+            a->init(groups.at(i),server);
     }
     else
     {

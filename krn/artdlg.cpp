@@ -217,10 +217,16 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     tool->setBarPos( KToolBar::Top );
     tool->show();
     
-    if (conf->readNumEntry("VerticalSplit"))
+    if (conf->readNumEntry("VerticalSplit",false))
+    {
+        debug ("vertical");
         panner=new KPanner (this,"panner",KPanner::O_VERTICAL,33);
+    }
     else
+    {
+        debug ("horizontal");
         panner=new KPanner (this,"panner",KPanner::O_HORIZONTAL,33);
+    }
     panner->setSeparator(50);
     setView (panner);
     
