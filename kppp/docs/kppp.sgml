@@ -100,7 +100,7 @@ directory of the Kppp distribution:
 In order for kppp/pppd to work your kernel must have ppp support compiled in. If this is
 not the case get yourself the latest version of 
 <url url="ftp://sunsite.unc.edu/pub/Linux/system/Network/serial/ppp/" name=pppd>
-from any of the popular linux archives and recompile your kernel with ppp
+from any of the popular Linux archives and recompile your kernel with ppp
 support enabled. Don't fret since this sounds scarier than it actually is.
 Don't forget to install pppd afterwards. If unsure whether you
 have a kernel with ppp support issue <tt>dmesg</tt> at the command prompt
@@ -109,7 +109,7 @@ and look for something like this:<p>
 <tscreen><verb>
 PPP: version 2.3.0 (demand dialling)
 TCP compression code copyright 1989 Regents of the University of California
-PPP Dynamic channel allocation code coyright 1995 Caldera, Inc.
+PPP Dynamic channel allocation code copyright 1995 Caldera, Inc.
 PPP line discipline registered
 </verb></tscreen>
 
@@ -125,7 +125,7 @@ pppd daemon your system has, you can type:<p>
 </verb></tscreen>
 
 <p>None of the pppd daemons actually have a --version option, but putting
-the option in will cause the pppd daemon to error out from a unrecognized
+the option in will cause the pppd daemon to error out from a unrecognised
 option and print out a list of options, which includes the version of the
 pppd daemon. <p>
 
@@ -256,10 +256,10 @@ restrain from tinkering with the pppd options.
 <sect1>IP<p>
 
 <descrip>
-<tag/Dynamic IP Address/ Check this if your ISP uses dynamic ip address assignment.
-That is your ip address will most likely change every time you establish a connection.
+<tag/Dynamic IP Address/ Check this if your ISP uses dynamic IP address assignment.
+That is your IP address will most likely change every time you establish a connection.
 
-<tag/Static IP Address/ Check this is your ISP has given you a static ip address.
+<tag/Static IP Address/ Check this is your ISP has given you a static IP address.
 In that case you will also need to fill in that address and any Subnet Mask
 if applicable. Ask your ISP if unsure.
 
@@ -290,7 +290,7 @@ it may also cause lots of undesired side effect. Just play with it ...
 
 <tag/DNS Servers/ Add the Domain Name servers assigned to you by your ISP.
 You must specify at least a Domain Name server for your OS to be able
-to resolve human readable ip addresses such as ftp.kde.org. The DNS server
+to resolve human readable IP addresses such as ftp.kde.org. The DNS server
 addresses supplied must be in numeric form, e.g 128.231.231.233. The
 addresses will be added at runtime to /etc/resolv.config.
 
@@ -335,14 +335,14 @@ during script execution if necessary.
 <item>ID: If the ID field on Kppp's main dialog is filled in, send that ID.
  If the ID field is not filled in, prompt the kppp user to enter an ID, 
  given the specified string as a hint. The user will see what is typed.
- On a second passs, such as in a loop on the second iteration, a prompt
+ On a second pass, such as in a loop on the second iteration, a prompt
  will be displayed, given the specified string as a hint.
 
 <item>Password: If the password field on Kppp's main dialog is filled in, send that 
  password. If the password  field is not filled in, prompt the kppp user to enter 
  a password given the specified
  string as a hint.  An asterisk will be printed for each character typed.
- On a second passs, such as in a loop on the second iteration, a prompt
+ On a second pass, such as in a loop on the second iteration, a prompt
  will be displayed, given the specified string as a hint.
 
 <item>LoopStart: kppp will wait for the specified string to be received.
@@ -363,10 +363,10 @@ Here is a simple script I could use to connect to my ISP:
 
 <tscreen><verb>
 Expect      ID:                        # wait for ID:
-Send        myid                       # you have to substitue myid with your id
+Send        myid                       # you have to substitute myid with your id
 Expect      word:                      # wait for 'password'
 Send        4u3fjkl                    # send my password '4u3fjkl'
-Expect      granted                    # My ISP send 'Permission granted' on login succes.
+Expect      granted                    # My ISP send 'Permission granted' on login success.
 Send        ppp                        # This starts a ppp connection for 
                                        # me on the ISP side.
 </verb></tscreen>
@@ -375,7 +375,7 @@ Here a script for the same account with ID and password prompt: This
 script will prompt for ID and password each time, no matter what is
 typed into the ID and password field on Kppp's main dialog. This script
 also illustrated the use of the LoopStart/LoopEnd structure. If something
-goes wrong during the login proceedure, for example if I mistype the password,
+goes wrong during the login procedure, for example if I mistype the password,
 my ISP will print an error message and restart the id/password loop by issuing
 the string "ID:" again. If the string "ID" is caught before the LoopEnd keyword
 was parsed, kppp will start the script again after the LoopStart keyword.
@@ -385,7 +385,7 @@ LoopStart   ID:                        # wait for ID:
 Prompt      Enter ID:                  # Prompt me for my ID and send it off.
 Expect      word:                      # wait for 'password'
 PWPrompt    Enter Password:            # Prompt me for my password and send it off.
-LoopEnd     granted                    # My ISP send 'Permission granted' on login succes.
+LoopEnd     granted                    # My ISP send 'Permission granted' on login success.
 Send        ppp                        # This starts a ppp connection for me
 </verb></tscreen>
 
@@ -398,7 +398,7 @@ LoopStart   ID:                        # wait for ID:
 ID          Enter ID:                  # Prompt me for my ID and send it off.
 Expect      word:                      # wait for 'password'
 Password    Enter Password             # Prompt me for my password and send it off.
-LoopEnd     granted                    # My ISP send 'Permission granted' on login succes.
+LoopEnd     granted                    # My ISP send 'Permission granted' on login success.
 Send        ppp                        # This starts a ppp connection for me
                                        # on the ISP side
 </verb></tscreen>
@@ -411,12 +411,12 @@ Send        ppp                        # This starts a ppp connection for me
 <tag/Accounting Setup/ Use the ``Enable accounting'' button to enable/disable
 phone cost accounting. Select a rule  appropriate for your region. If
 you can't find a rule for your region you will have to write one by following
-the supplied <tt>TEMPLATE</tt> in <tt>&dollar(KDEDIR)/doc/HTML/.../kppp/</tt>. Don't
+the supplied <tt>TEMPLATE</tt> in <tt>&dollar(KDEDIR)/share/doc/HTML/en/kppp/</tt>. Don't
 be afraid though it is really easy. Don't forget to submit your newly created
 rules file to me. The newly created rules file can be checked for valid
 syntax with the -r rule_file command line option to kppp. and
-must be installed in <tt>&dollar(KDEDIR)/lib/kppp/Rules</tt> or in 
-<tt>&dollar(HOME)/.kde/kppp/Rules</tt> before you will be able to select it on this
+must be installed in <tt>&dollar(KDEDIR)/share/apps/kppp/Rules</tt> or in 
+<tt>&dollar(HOME)/.kde/share/apps/kppp/Rules</tt> before you will be able to select it on this
 dialog.
 
 </descrip>
@@ -460,7 +460,7 @@ all modems are not equal, so your mileage may vary.
 <sect1>Modem Sessions<p>
 
 A Modem session allows you to interact with the modem directly.
-You type commands, and it will responde.  To obtain a modem session, when no 
+You type commands, and it will respond.  To obtain a modem session, when no 
 connection is active, go into Settings/More/Terminal dialog.  This will open 
 a window for interactive configuration of the modem.  Try typing ATZ (which 
 resets your modem)  Your should get an OK response.  use File/Quit to 
@@ -480,8 +480,8 @@ will have the modem load the default profile, erasing any changes you
 have made.  To save changes,  Load the profile you
 want to change via ATZn (where n is the profile number).  Make the
 changes you want, then save it with AT&amp;Wn.  To have kppp use the profile
-you want, change the modem initialization string
-(Settings/More/Modem/Modem Commands/Initialization String.)  For example
+you want, change the modem initialisation string
+(Settings/More/Modem/Modem Commands/Initialisation String.)  For example
 ATZ1 will have the kppp reset the modem and use stored profile #1.
 <p>
 If you want reset you modem to get back to some known starting point, use
@@ -513,7 +513,7 @@ get a modem session. Then:
 ATZ		# reset to default profile
 AT&amp;D2		# Set to hang up on DTR drop.
 AT&amp;W		# Write to default profile
-</tscreen></verb>
+</verb></tscreen>
 
 <sect3>How The DTR Method Works<P>
 Whenever the Data Terminal Ready (DTR) line on the serial line between the host computer
@@ -532,7 +532,7 @@ interval like so:
 ATZ
 ATS12=5
 AT&amp;W
-</tscreen></verb>
+</verb></tscreen>
 
 Then use the Settings/More/Modem Commands/Guard Time slider to match the register
 (S12) value to match (5)  The modem should then hangup properly.
@@ -544,7 +544,7 @@ To have the modem accept the characters as commands for itself, one must put the
 modem into the command state.  The escape code does this.
 <P>
 The escape code is defined as a being three intervals of time whose length
-is defined by S12 (in fifieths of a second.)
+is defined by S12 (in fiftieths of a second.)
 
 <itemize>
 
@@ -566,7 +566,7 @@ your modem.
 If you can use tone dialing, the amount of time it takes to dial can be 
 changed using the S11 register.  It gives the duration (in 100ths of a second)
 to send each tone while dialing.  The default is usually 95 (almost a second.)
-How fast you can dial depends on the phone company's swithing equipment which
+How fast you can dial depends on the phone company's switching equipment which
 handles your line.  The minimum duration is 50, almost twice as fast, and
 that speed often works. 
 
@@ -574,7 +574,7 @@ that speed often works.
 ATZ		# reset to default profile
 ATS11=50	# fastest possible dialing, use a higher number if it doesn't work.
 AT&amp;W		# Write to default profile
-</tscreen></verb>
+</verb></tscreen>
 
 <sect>Questions and answers<p>
 
@@ -596,7 +596,7 @@ pitfalls.
 
 <item> Make sure you set the right permission. In case of trouble
     you might want to run it as root first and then later, when
-    everyhing is working o.k give it less harmfull permission if you can not
+    everything is working o.k give it less harmful permission if you can not
     afford to run kppp setuid root. The proper way to proceed would probably
     be creating a "modem" group.
 
@@ -630,7 +630,7 @@ kppp setuid root permissions do the following:
 Have you played with the CR/LF setting?
 
 <p> Your modem might not sustain
-a fast initialization. Turn off the 'Modem sustains fast initializiation'
+a fast initialisation. Turn off the 'Modem sustains fast initialisation'
 button on the Modem tab dialog.
 <p>
 
@@ -684,11 +684,11 @@ Then send <url url="mailto:wuebben@math.cornell.edu" name="me"> the patches.
 <p>
 I would like to thank the following people for contributions to kppp:<p>
 <itemize>
-<item><url url="mailto:jesus.fuentes@etsi.tel.uva.es" name="Jesus Fuentes Saaverdra"> for implemnting several options and miscellaneous work.
+<item><url url="mailto:jesus.fuentes@etsi.tel.uva.es" name="Jesus Fuentes Saaverdra"> for implementing several options and miscellaneous work.
 
 <item><url url="mailto:mweilguni@sime.com" name="Mario Weilguni">  for his work one phone time accounting.
 
-<item><url url="mailto:wuebben@eure.de" name="Markus Wuebben"> for the ati query dialog.
+<item><url url="mailto:wuebben@eure.de" name="Markus Wuebben"> for the ATI query dialog.
 <item><url url="mailto:porten@tu-harburg.de" name="Harri Porten"> for his kconfig related work.
 
 </itemize>
@@ -762,7 +762,7 @@ with the entry in the pap-secrets file.<p>
 
 That's all there is to it. You should now be able to set up your own
 connection to a server with PAP authentication. CHAP should not be much
-different. See the Linux Network Adminstrators' Guide for chap-secrets
+different. See the Linux Network Administrators' Guide for chap-secrets
 file format and pppd arguments used. The rest should be gravy, but...your
 mileage, ah you know the rest.</P>
 
@@ -785,5 +785,3 @@ of some of those can be changed at compile time.
 <p>
 <p>
 </article>
-
-
