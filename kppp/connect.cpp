@@ -1161,12 +1161,26 @@ bool ConnectWidget::execppp() {
     /*    printf("In child: fork() %d\n",id);*/
     Debug("%s \n",command.data());
 
-#ifdef BSD
-    setpgrp(0,0);    
-#else
-    setpgrp();
-#endif
+//  #ifdef BSD
+//      setpgrp(0,0);    
+//  #else
+//      setpgrp();
+//  #endif
     
+    // become a session leader and let /dev/ttySx
+    // be the controlling terminal.
+    int pgrpid = setsid();
+    int ttyfd = Modem::modem->fd();
+    // supplying '1' as 3rd argument would even steal the terminal from
+    // another session but we would need to have su rights then.
+    if(ioctl(ttyfd, TIOCSCTTY, 0)<0)
+      fprintf(stderr, "ioctl() failed.\n");
+    if(tcsetpgrp(ttyfd, pgrpid)<0)
+      fprintf(stderr, "tcsetpgrp() failed.\n");
+
+    dup2(ttyfd, 0);
+    dup2(ttyfd, 1);     
+
     execve(gpppdata.pppdPath(), args, '\0');
     _exit(0);
   }
