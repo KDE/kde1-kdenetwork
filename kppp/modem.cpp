@@ -43,7 +43,6 @@ Modem *Modem::modem = 0;
 Modem::Modem() : 
   modemfd(-1), 
   data_mode(false),
-  dataMask(0xFF),
   modem_is_locked(false)
 {
   sn = 0L;
@@ -227,16 +226,6 @@ bool Modem::closetty() {
 }
 
 
-void Modem::setReadMask(unsigned char mask) {
-  // this is a dirty hack to allow connecting to some CompuServe servers.
-  // To read their 7E1 data we'll just strip of the 8th bit by setting the
-  // mask to 0x7F instead of 0xFF.
-  // Configuring the serial port would be the cleaner solution, of course.
-  
-  dataMask = mask;
-}
-
-
 void Modem::readtty(int) {
   char buffer[200];
   unsigned char c;
@@ -246,7 +235,7 @@ void Modem::readtty(int) {
   if((len = ::read(modemfd, buffer, 200)) > 0) {
     // split buffer into single characters for further processing
     for(int i = 0; i < len; i++) {
-      c = buffer[i] & dataMask;
+      c = buffer[i] & 0x7F;
       emit charWaiting(c);
     }
   }

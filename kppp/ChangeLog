@@ -1,3 +1,14 @@
+1999-08-07  Harri Porten  <porten@kde.org>
+
+	* modem.cpp: removed the "Mode 7bit" CompuServe hack after I saw
+	that `chat' is always masking incoming data with 0x7F. The 7bit
+	command was a scripting command and wouldn't have any effect
+	before (and I read a posting from someone getting garbled text
+	when dialing). Now we are back to the behaviour <= KDE 1.1 and
+	CompuServe users won't need any extra scripting commands.
+	Let's implement a real parity and data bit handling in the KDE 2.0
+	branch. The current solution wasn't perfect. 
+
 1999-07-22  Harri Porten  <porten@kde.org>
 
 	* connect.cpp: visualize \n as <LF> in setExpect()'s debug messages
