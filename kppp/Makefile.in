@@ -166,7 +166,7 @@ Makefile: Makefile.in
 	cd .. && CONFIG_FILES=kppp/$@ CONFIG_HEADERS= $(SHELL) ./config.status
 
 $(TARGET): $(SRCMETA) $(OBJECTS)
-	$(LIBTOOL) -mode=link $(CXX) $(OBJECTS) -o $(TARGET) $(LDFLAGS) $(KDE_RPATH)
+	$(LIBTOOL) --mode=link $(CXX) $(OBJECTS) -o $(TARGET) $(LDFLAGS) $(KDE_RPATH)
 
 depend:
 	@makedepend $(SOURCES) 2> /dev/null
