@@ -4,7 +4,6 @@ In this file:
 * Debugging
 * Removal/Uninstallation
 * More Info
-* How to compile kSirc
 
 Common Mistakes
 ---------------
@@ -43,13 +42,3 @@ me at coolo@kde.org.
 
 General KDE discussions should go to the KDE mailing list (kde@kde.org).
 
-How to compile kSirc
---------------------
-
-To compile kSirc you need to:
-
-1. mv ksirc/ltconfig admin/ltconfig
-2. Re-run make -f Makefile.cvs and ./configure (not config.guess)
-
-Remember to remove admin/ltconfig before doing any commits so you don't
-commit the modified ltconfig.
