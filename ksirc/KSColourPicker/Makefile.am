@@ -28,11 +28,11 @@ libkscolourpicker_a_SOURCES = \
 kscolourpicker.cpp \
 mkscolourpicker.cpp \
 kscolourpickerData.cpp \
-mkscolourpickerData.cpp \
+mkscolourpickerData.cpp
 
 noinst_HEADERS = \
 kscolourpicker.h \
-kscolourpickerData.h \
+kscolourpickerData.h
 
 # just to make sure, automake makes them 
 BUILTSOURCES = \
