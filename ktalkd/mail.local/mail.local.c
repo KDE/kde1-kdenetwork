@@ -46,14 +46,21 @@ static char copyright[] =
  * compile on such architectures.
  */
 
+#include <config.h> /* autoconf */
+#ifdef HAVE_SYS_PARAM_H
 #include <sys/param.h>
+#endif
+#ifdef HAVE_SYS_STAT_H
 #include <sys/stat.h>
+#endif
 #include <sys/socket.h>
 
 #include <netinet/in.h>
 
 #include <errno.h>
+#ifdef HAVE_FCNTL_H
 #include <fcntl.h>
+#endif
 #include <netdb.h>
 #include <pwd.h>
 #include <stdio.h>
@@ -61,7 +68,9 @@ static char copyright[] =
 #include <string.h>
 #include <syslog.h>
 #include <time.h>
+#ifdef HAVE_UNISTD_H
 #include <unistd.h>
+#endif
 #ifdef EX_OK
 # undef EX_OK		/* unistd.h may have another use for this */
 #endif
@@ -95,7 +104,7 @@ static char copyright[] =
 #include <varargs.h>
 #endif
 
-#ifdef __GLIBC__
+#ifdef HAVE_SYS_FILE_H
 #include <sys/file.h>
 #endif
 
@@ -132,6 +141,7 @@ static char copyright[] =
 
 #ifdef USE_LOCKF
 # define flock(a, b)	lockf(a, b, 0)
+# undef LOCK_EX
 # define LOCK_EX	F_LOCK
 #endif
 
@@ -139,9 +149,9 @@ static char copyright[] =
 # define USE_VSYSLOG	1
 #endif
 
-#ifndef LOCK_EX
+/* #ifndef LOCK_EX
 # include <sys/file.h>
-#endif
+#endif */
 
 #ifdef BSD4_4
 # include "pathnames.h"
