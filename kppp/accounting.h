@@ -5,7 +5,7 @@
  * 
  *            Copyright (C) 1997 Bernd Johannes Wuebben 
  *                   wuebben@math.cornell.edu
- * This file contributed by: Mario Weilguni, <mweilguni@arctica.sime.com>
+ * This file contributed by: Mario Weilguni, <mweilguni@sime.com>
  *
  *
  * This program is free software; you can redistribute it and/or
@@ -46,14 +46,10 @@ public:
   double total();
   double session();
 
-  /// cuts off the logfile if it's too long
-  /*  static void truncateLogFile();*/ 
-
 protected:
 
   void timerEvent(QTimerEvent *);
-  void logMessage(const char *);
-  void logMessage(QString);
+  void logMessage(QString, bool = FALSE);
   bool saveCosts();
   bool loadCosts();
 

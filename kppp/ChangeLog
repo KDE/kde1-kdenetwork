@@ -1,3 +1,16 @@
+Tue May 12 18:55:02 1998    Mario Weilguni <mweilguni@kde.org>
+
+	* the format of the accounting logfile has changed to allow
+	  easier parsing from external files:
+	  
+	  the format is:
+	  CONNECT_TIME_FROM:CONNECTION_PEER:CURRENCY_SYMBOL: \
+	  CONNECT_TIME_UNTIL:SUBTOTAL:TOTAL:BYTES_IN_BYTES_OUT	
+
+	  there´s a small tcl script which converts the log files. Simply
+	  use "tclsh convlog.tcl" will convert all log-files, but NOT
+	  delete the old ones 
+
 Mon May  4 17:19:12 1998    Mario Weilguni <mweilguni@kde.org>
 
 	* Austrian rule files updated

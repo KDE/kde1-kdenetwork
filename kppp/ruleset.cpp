@@ -494,6 +494,9 @@ double round(double d, int digits) {
   return d;
 }
 
+QString RuleSet::currencySymbol() {
+  return _currency_symbol.copy();
+}
 
 QString RuleSet::currencyString(double f) {  
   QString s, fmt;

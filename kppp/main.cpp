@@ -278,10 +278,7 @@ int main( int argc, char **argv ) {
   p_xppp = &xppp;
 
   a.setMainWidget(&xppp);
-  a.setTopWidget(&xppp);
-
-//   CHAP_CreateAuthFile();
-//   exit(0);
+  a.setTopWidget(&xppp);  
 
   // we really don't want to die accidentally, since that would leave the
   // modem connected. If you really really want to kill me you must send 

@@ -7,7 +7,7 @@
  *            Copyright (C) 1997 Bernd Johannes Wuebben 
  *                   wuebben@math.cornell.edu
  *
- * This file contributed by: Mario Weilguni, <mweilguni@arctica.sime.com>
+ * This file contributed by: Mario Weilguni, <mweilguni@sime.com>
  * Thanks Mario!
  *
  * This program is free software; you can redistribute it and/or
@@ -37,6 +37,7 @@
 
 #include <kapp.h>
 #include <kprogress.h>
+#include <time.h>
 
 #include "accounting.h"
 #include "kpppconfig.h"
@@ -51,11 +52,9 @@
 // specifying -1 disables the features
 #define UPDATE_TIME    (5*60*1000)
 
-// maximum size of a logfile
-// #define LOGFILE_MAXSIZE	1000000
-
-
 extern PPPData gpppdata;
+extern int ibytes;
+extern int obytes;
 
 Accounting::Accounting(QObject *parent) : QObject(parent) {
 
@@ -64,6 +63,17 @@ Accounting::Accounting(QObject *parent) : QObject(parent) {
   acct_timer_id = 0;
   update_timer_id = 0;
 
+  QDate dt = QDate::currentDate();
+  LogFileName.sprintf("%s-%4d.log",
+		      dt.monthName(dt.month()),
+		      dt.year());
+
+  QString fname = QDir::homeDirPath() + "/";
+  fname += ACCOUNTING_PATH;
+  fname += "/Log/";
+  fname += LogFileName;
+
+  LogFileName = fname;
 }
 
 
@@ -134,6 +144,14 @@ void Accounting::timerEvent(QTimerEvent *t) {
 }
 
 
+QString timet2qstring(time_t t) {
+  QString s;
+
+  s.sprintf("%u", t);
+  return s;
+}
+
+
 void Accounting::slotStart() {
 
   if(!running()) {
@@ -146,16 +164,14 @@ void Accounting::slotStart() {
      if(UPDATE_TIME > 0)
        update_timer_id = startTimer(UPDATE_TIME);
 
-    QDate date;
-    LogFileName = date.monthName(QDate::currentDate().month());
-    LogFileName += "-";
-    QString yearstr;
-    yearstr.setNum(QDate::currentDate().year());
-    LogFileName += yearstr;
-    QString str;
-    str.sprintf(klocale->translate("started PPP connection:%s:%s"),
-		gpppdata.accname(),gpppdata.phonenumber());
-    logMessage(str.data());
+    QString s;
+    s = timet2qstring(time(0));
+    s += ":";
+    s += gpppdata.accname();
+    s += ":";
+    s += rules.currencySymbol();
+
+    logMessage(s, TRUE);
   }
 }
 
@@ -168,14 +184,16 @@ void Accounting::slotStop() {
       killTimer(update_timer_id);
     acct_timer_id = 0;
     update_timer_id = 0;
-    QString s = klocale->translate("terminated PPP connection\nCOST OF SESSION: ");
+    
+    QString s;
+    s.sprintf(":%s:%0.4e:%0.4e:%u:%u\n",
+	      timet2qstring(time(0)).data(),
+	      session(),
+	      total(),
+	      ibytes,
+	      obytes);
 
-    s += rules.currencyString(session()) \
-      + klocale->translate("\nSUBTOTAL FOR:") \
-      + gpppdata.accname() \
-      + ":"\
-      + rules.currencyString(total());
-    logMessage(s);
+    logMessage(s, FALSE);
     saveCosts();
   }
 }
@@ -216,51 +234,27 @@ bool Accounting::loadRuleSet(const char *name) {
 }
 
 
-void Accounting::logMessage(const char *s) {
-  logMessage(QString(s));
-}
+void Accounting::logMessage(QString s, bool newline) {
+  QFile f(LogFileName.data());
 
+  bool result = f.open(IO_ReadWrite);
+  if(result) {
+    if(newline) {
+      f.at(f.size() - 1);
+      char c = 0;
+      f.readBlock(&c, 1);
+      if(c != '\n')
+	f.writeBlock("\n", 1);
+    } else
+      f.at(f.size() - 1);
 
-void Accounting::logMessage(QString s) {
-
-  QString fname = QDir::homeDirPath() + "/";
-  fname += ACCOUNTING_PATH;
-  fname += "/Log/";
-  fname += LogFileName;
-
-  QFile f(fname.data());
-
-  if(f.open(IO_WriteOnly | IO_Append)) {
-
-    QString date = QDateTime::currentDateTime().toString() + ": ";
-    bool doreplace = TRUE;
-
-    while(s.length() > 0) {
-
-      f.writeBlock(date.data(), date.length());
-      int len;
-
-      if((len = s.find("\n")) == -1)
-	len = s.length();
-	
-      f.writeBlock(s.left(len).data(), len);
-      s = s.mid(len+1, s.length()-len+1);
-      f.writeBlock("\n", 1);
-
-      if(doreplace) {
-	date = date.replace(QRegExp("."), " ");
-	doreplace = FALSE;
-      }
-
-    }
-
+    f.writeBlock(s.data(), s.length());
+		 
     f.close();
-    chown(fname.data(),getuid(),getgid());
-    chmod(fname.data(),S_IRUSR | S_IWUSR);
+    chown(LogFileName.data(),getuid(),getgid());
+    chmod(LogFileName.data(),S_IRUSR | S_IWUSR);
   }
 }
-
-
 
 double Accounting::total() {
   if(rules.minimumCosts() <= _session)
@@ -342,65 +336,5 @@ QString Accounting::getCosts(const char* accountname) {
   return val;
 
 }
-
-/*
-void Accounting::truncateLogFile() {
-  QString fname = QDir::homeDirPath() + "/";
-  fname += ACCOUNTING_PATH;
-  fname += "/LOG";
-
-  QFile f(fname.data());
-  if(f.exists() && (f.size() > LOGFILE_MAXSIZE)) {
-    // rename the file to LOG~
-    QDir d;
-    if(!d.rename(fname.data(), (fname + "~").data()))
-      return; // ERROR
-
-    f.setName((fname + "~").data());
-    if(!f.open(IO_ReadOnly)) {
-      d.rename((fname + "~").data(), fname.data());
-      return; // ERROR
-    }
-
-    QFile fnew(fname.data());
-    if(!fnew.open(IO_WriteOnly)) {     
-      f.close();
-      d.rename((fname + "~").data(), fname.data());
-      return; // ERROR
-    }
-
-    // create a progress indicator
-    QWidget *w = new QWidget(0, "KPPP: Truncating logfile");
-    KProgress *prg = new KProgress(f.size()/2, f.size(), 0, 
-				   KProgress::Horizontal, w);
-    prg->setGeometry(30, 30, 300-2*30, 24);
-    w->setCaption("KPPP: Truncating logfile");
-    w->setGeometry((kapp->desktop()->width() - 300)/2, 
-		   (kapp->desktop()->height() - 82)/2,
-		   300, 84);
-    w->show();      
-
-    // copy approx. one half of the logfile
-    char buffer[2048];
-    f.at(f.size() / 2);
-    f.readLine(buffer, sizeof(buffer));
-    
-    while(!f.atEnd()) {
-      prg->setValue(f.at());
-      int br = f.readBlock(buffer, sizeof(buffer));
-      fnew.writeBlock(buffer, br);
-    }
-    
-    // done
-    f.close();
-    fnew.close();
-
-    // delete LOG~
-    d.remove((fname + "~").data());
-
-    delete w;
-  }
-}
-*/
 
 #include "accounting.moc"

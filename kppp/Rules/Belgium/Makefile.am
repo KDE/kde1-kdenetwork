@@ -1,3 +1,3 @@
-pkg_DATA = Belgium_interzonal.rst Belgium_zonal.rst
+data_DATA = Belgium_interzonal.rst Belgium_zonal.rst
 
-pkgdir = $(kde_datadir)/kppp/Rules/Belgium
+datadir = $(kde_datadir)/kppp/Rules/Belgium
