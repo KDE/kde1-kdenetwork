@@ -130,7 +130,7 @@ SUBDIRS = KSTicker KSProgress img
 
 ####### This part is very khexdit specific
 # you can add here more. This one gets installed 
-bin_PROGRAMS = 	ksirc
+bin_PROGRAMS = 	ksirc ksircstatic
 
 # Which sources should be compiled for khexdit.
 ksirc_SOURCES	= toplevel.cpp \
@@ -158,12 +158,18 @@ ioDiscard.cpp \
 ioDCC.cpp mioDCC.cpp dccDialog.cpp mdccDialog.cpp dccDialogData.cpp mdccDialogData.cpp \
 linelistitem.cpp
 
+ksircstatic_SOURCES = $(ksirc_SOURCES)
+
 # the library search path
 ksirc_LDFLAGS = @all_libraries@ -L./KSProgress/ -L./KSTicker/
 
+ksircstatic_LDFLAGS = -static $(ksirc_LDFLAGS)
+
 # the libraries to link against. Be aware of the order. First the libraries,
 # that depend on the following ones.
-ksirc_LDADD   = -lksprogress -lksticker -lkfm -lkdeui -lkdecore -lqt -lX11 -lXext @LIBSOCKET@     
+ksirc_LDADD   = -lksprogress -lksticker -lkdeui -lkdecore -lqt -lX11 -lXext @LIBSOCKET@     
+
+ksircstatic_LDADD = $(ksirc_LDADD)
 
 # this option you can leave out. Just, if you use "make dist", you need it
 #
@@ -211,11 +217,25 @@ mFilterRuleEditor.o mFilterRuleEditorData.o ioDiscard.o ioDCC.o \
 mioDCC.o dccDialog.o mdccDialog.o dccDialogData.o mdccDialogData.o \
 linelistitem.o
 ksirc_DEPENDENCIES = 
+ksircstatic_OBJECTS =  toplevel.o ksirc.o irclistbox.o mirclistbox.o \
+irclistitem.o mirclistitem.o alistbox.o mtoplevel.o ahistlineedit.o \
+mahistlineedit.o malistbox.o UserMenuRef.o UserMenuRefData.o \
+mUserMenuRef.o mUserMenuRefData.o iocontroller.o miocontroller.o \
+open_top.o open_topData.o mopen_top.o mopen_topData.o messageReceiver.o \
+ioBroadcast.o ksircprocess.o mksircprocess.o open_ksirc.o \
+open_ksircData.o mopen_ksirc.o mopen_ksircData.o servercontroller.o \
+servercontrollerData.o mservercontroller.o mservercontrollerData.o \
+control.o mcontrol.o KSircColour.o KSircColourData.o mKSircColour.o \
+mKSircColourData.o FilterRuleEditor.o FilterRuleEditorData.o \
+mFilterRuleEditor.o mFilterRuleEditorData.o ioDiscard.o ioDCC.o \
+mioDCC.o dccDialog.o mdccDialog.o dccDialogData.o mdccDialogData.o \
+linelistitem.o
+ksircstatic_DEPENDENCIES = 
 CXXCOMPILE = $(CXX) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
 CXXLINK = $(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@
 HEADERS =  $(noinst_HEADERS)
 
-DIST_COMMON =  README ChangeLog Makefile.am Makefile.in
+DIST_COMMON =  ChangeLog Makefile.am Makefile.in
 
 
 DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
@@ -241,8 +261,8 @@ DEP_FILES =  .deps/FilterRuleEditor.P .deps/FilterRuleEditorData.P \
 .deps/open_ksircData.P .deps/open_top.P .deps/open_topData.P \
 .deps/servercontroller.P .deps/servercontrollerData.P .deps/toplevel.P
 CXXMKDEP = $(CXX) -M $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
-SOURCES = $(ksirc_SOURCES)
-OBJECTS = $(ksirc_OBJECTS)
+SOURCES = $(ksirc_SOURCES) $(ksircstatic_SOURCES)
+OBJECTS = $(ksirc_OBJECTS) $(ksircstatic_OBJECTS)
 
 default: all
 
@@ -297,6 +317,10 @@ maintainer-clean-compile:
 ksirc: $(ksirc_OBJECTS) $(ksirc_DEPENDENCIES)
 	@rm -f ksirc
 	$(CXXLINK) $(ksirc_LDFLAGS) $(ksirc_OBJECTS) $(ksirc_LDADD) $(LIBS)
+
+ksircstatic: $(ksircstatic_OBJECTS) $(ksircstatic_DEPENDENCIES)
+	@rm -f ksircstatic
+	$(CXXLINK) $(ksircstatic_LDFLAGS) $(ksircstatic_OBJECTS) $(ksircstatic_LDADD) $(LIBS)
 .cpp.o:
 	$(CXXCOMPILE) -c $<
 

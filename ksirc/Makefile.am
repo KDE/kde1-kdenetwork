@@ -21,7 +21,7 @@ SUBDIRS = KSTicker KSProgress img
 
 ####### This part is very khexdit specific
 # you can add here more. This one gets installed 
-bin_PROGRAMS = 	ksirc
+bin_PROGRAMS = 	ksirc ksircstatic
 
 # Which sources should be compiled for khexdit.
 ksirc_SOURCES	= toplevel.cpp \
@@ -49,13 +49,18 @@ ioDiscard.cpp \
 ioDCC.cpp mioDCC.cpp dccDialog.cpp mdccDialog.cpp dccDialogData.cpp mdccDialogData.cpp \
 linelistitem.cpp
 
+ksircstatic_SOURCES = $(ksirc_SOURCES)
 
 # the library search path
 ksirc_LDFLAGS = @all_libraries@ -L./KSProgress/ -L./KSTicker/
 
+ksircstatic_LDFLAGS = -static $(ksirc_LDFLAGS)
+
 # the libraries to link against. Be aware of the order. First the libraries,
 # that depend on the following ones.
 ksirc_LDADD   = -lksprogress -lksticker -lkdeui -lkdecore -lqt -lX11 -lXext @LIBSOCKET@     
+
+ksircstatic_LDADD = $(ksirc_LDADD)
 
 # this option you can leave out. Just, if you use "make dist", you need it
 #
