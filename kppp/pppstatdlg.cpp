@@ -27,6 +27,7 @@
 #include <qlayout.h>
 #include <qmsgbox.h>
 #include <kapp.h>
+#include <kwm.h>
 
 #include "macros.h"
 #include "pppdata.h"
@@ -62,6 +63,7 @@ PPPStatsDlg::PPPStatsDlg(QWidget *parent, const char *name, QWidget *)
   pixstate = PIXINIT;
   need_to_paint = true;
   setCaption(i18n("kppp Statistics"));
+  KWM::setMiniIcon(winId(), kapp->getMiniIcon());
 
   QVBoxLayout *tl = new QVBoxLayout(this, 10);
   QGridLayout *l1 = new QGridLayout(4, 4);
@@ -242,10 +244,9 @@ void PPPStatsDlg::take_stats() {
     bout[i] = -1;
   }
   clocktimer->start(PPP_STATS_INTERVAL);
-  if(gpppdata.graphingEnabled()) {
-    graphTimer->start(GRAPH_UPDATE_TIME);
-    updateGraph();
-  }
+
+  if(gpppdata.graphingEnabled())
+    graphTimer->start(GRAPH_UPDATE_TIME);  
 }
 
 

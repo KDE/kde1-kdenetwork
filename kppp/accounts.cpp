@@ -28,7 +28,7 @@
 #include <qlayout.h>
 #include <kmsgbox.h>
 #include <kquickhelp.h>
-
+#include <kwm.h>
 #include "macros.h"
 #include "main.h"
 
@@ -57,6 +57,8 @@ AccountWidget::AccountWidget( QWidget *parent, const char *name )
   accountlist_l->setMinimumSize(160, 128);
   connect(accountlist_l, SIGNAL(highlighted(int)),
 	  this, SLOT(slotListBoxSelect(int)));
+  connect(accountlist_l, SIGNAL(selected(int)),
+	  this, SLOT(editaccount()));
   l11->addWidget(accountlist_l, 10);
 
   QVBoxLayout *l111 = new QVBoxLayout;
@@ -109,6 +111,7 @@ AccountWidget::AccountWidget( QWidget *parent, const char *name )
   l121->addWidget(costlabel);
 
   costedit = new QLineEdit(this);
+  costedit->setFocusPolicy(QWidget::NoFocus);
   costedit->setFixedHeight(costedit->sizeHint().height());
   costedit->setEnabled(FALSE);
   l121->addWidget(costedit);
@@ -128,6 +131,7 @@ AccountWidget::AccountWidget( QWidget *parent, const char *name )
   l121->addWidget(vollabel);
 
   voledit = new QLineEdit(this,"voledit");
+  voledit->setFocusPolicy(QWidget::NoFocus);
   voledit->setFixedHeight(voledit->sizeHint().height());
   voledit->setEnabled(FALSE);
   l121->addWidget(voledit);
@@ -231,6 +235,11 @@ void AccountWidget::resetClicked(){
 }
 
 
+void AccountWidget::editaccount(int) {
+  editaccount();
+}
+
+
 void AccountWidget::editaccount() {
   gpppdata.setAccount(accountlist_l->text(accountlist_l->currentItem()));
 
@@ -312,6 +321,7 @@ void AccountWidget::deleteaccount() {
 
 int AccountWidget::doTab(){
   tabWindow = new QTabDialog(0,0,TRUE);
+  KWM::setMiniIcon(tabWindow->winId(), kapp->getMiniIcon());
   bool isnewaccount;
  
   if(strcmp(gpppdata.accname(), "") == 0) {
@@ -329,7 +339,6 @@ int AccountWidget::doTab(){
   tabWindow->setCancelButton(i18n("Cancel"));
 
   dial_w = new DialWidget(tabWindow, isnewaccount);
-
   ip_w = new IPWidget(tabWindow, isnewaccount);
   dns_w = new DNSWidget(tabWindow, isnewaccount);
   gateway_w = new GatewayWidget(tabWindow, isnewaccount);

@@ -7,7 +7,6 @@ o modem-setup wizard
 o provider-setup wizard
 o Create an own dialer communicating with slots. This will allow non-X kppp´s
 o Separate GUI and non-GUI code in different classes
-o replace "$" in config entries with "$$"
 
 
 Dropped
@@ -22,4 +21,4 @@ o signal catching for accounting
 o help users with those "pppd died unexpected..." bugs
 o CHAP support
 o All modem related code should be put in one class
-
+o replace "$" in config entries with "$$"

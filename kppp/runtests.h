@@ -40,6 +40,7 @@ const int TEST_CRITICAL = 3;
 // Various tests to be run at starttime
 int securityTests();
 int runTests();
+const char *getHomeDir();
 
 #ifdef linux
 bool ppp_available(void);

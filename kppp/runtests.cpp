@@ -297,17 +297,45 @@ int uidFromName(const char *uname) {
 }
 
 
-int securityTests() {
+const char *homedirFromUid(uid_t uid) {
+  struct passwd *pw;
+  char *d = 0;
 
+  setpwent();
+  while((pw = getpwent()) != NULL) {
+    if(pw->pw_uid == uid) {
+      d = strdup(pw->pw_dir);
+      endpwent();
+      return d;
+    }
+  }
+
+  endpwent();
+  return d;
+}
+
+
+const char *getHomeDir() {
+  static const char *hd = 0;
+  static bool ranTest = false;
+  if(!ranTest) {
+    hd = homedirFromUid(getuid());
+    ranTest = true;
+  }
+  
+  return hd;
+}
+
+int securityTests() {
   // Test 1: check whether $HOME is valid. The KDE and Qt libraries
   //         rely on this variable and we don't want to allow anyone
   //         to exploit kppp's setuid status.
   // TODO?: check if this it is really the user's home directory 
+  QString homedir = getHomeDir();
   struct stat st;
-  const char *home = getenv("HOME");
   int ok = false;
-  if(home)
-    if(stat(home, &st) == 0)
+  if(homedir.length() > 0)
+    if(stat(homedir.data(), &st) == 0)
       if(S_ISDIR(st.st_mode) && st.st_uid == getuid())
         ok = true;
 

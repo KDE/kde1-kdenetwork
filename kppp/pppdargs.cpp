@@ -30,11 +30,13 @@
 #include "macros.h"
 #include "newwidget.h"
 #include <kbuttonbox.h>
+#include <kwm.h>
 
 PPPdArguments::PPPdArguments(QWidget *parent, const char *name)
   : QDialog(parent, name, TRUE)
 {
   setCaption(i18n("Customize pppd Arguments"));  
+  KWM::setMiniIcon(winId(), kapp->getMiniIcon());
   QVBoxLayout *l = new QVBoxLayout(this, 10, 10);
   QHBoxLayout *tl = new QHBoxLayout(10);
   l->addLayout(tl);

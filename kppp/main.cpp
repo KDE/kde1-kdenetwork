@@ -257,7 +257,8 @@ void make_directories() {
     chmod(d.data(),S_IRUSR | S_IWUSR | S_IXUSR);
   }
 
-  QString logdir = QDir::homeDirPath() + "/";
+  QString logdir = getHomeDir();
+  logdir += "/";
   logdir += ACCOUNTING_PATH "/Log";
 
   dir.setPath(logdir.data());
@@ -318,6 +319,9 @@ int main( int argc, char **argv ) {
   //
   // end of setuid-dropping block.
   // 
+
+  if(getHomeDir() != 0)
+    setenv("HOME", getHomeDir(), 1); 
 
   (void) new Requester(sockets[0]);
 
@@ -703,6 +707,7 @@ KPPPWidget::KPPPWidget( QWidget *parent, const char *name )
 void KPPPWidget::prepareSetupDialog() {
   if(tabWindow == 0) {
     tabWindow = new QTabDialog( 0, 0, TRUE );
+    KWM::setMiniIcon(tabWindow->winId(), kapp->getMiniIcon());
     tabWindow->setCaption( i18n("kppp Configuration") );
     tabWindow->setOkButton(i18n("OK"));
     tabWindow->setCancelButton(i18n("Cancel"));
@@ -1166,10 +1171,10 @@ void KPPPWidget::startAccounting() {
     return;
   
   QString d = AccountingBase::getAccountingFile(gpppdata.accountingFile());
-  if(::access(d.data(), X_OK) != 0)
+  //  if(::access(d.data(), X_OK) != 0)
     acct = new Accounting(this);
-  else
-    acct = new ExecutableAccounting(this);
+    //  else
+    //    acct = new ExecutableAccounting(this);
 
   // connect to the accounting object
   connect(acct, SIGNAL(changed(QString, QString)),
@@ -1294,7 +1299,7 @@ pid_t create_pidfile() {
     Debug("pidfile is stale\n");
   }
 
-  if((fd = open(pidfile.data(), O_WRONLY | O_CREAT,
+  if((fd = open(pidfile.data(), O_WRONLY | O_CREAT | O_EXCL,
                 S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)) == -1)
     return -1;
 

@@ -392,6 +392,7 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   modemtimeout = new KIntegerLine(this);
   modemtimeout->setFixedHeight(modemtimeout->sizeHint().height());
   modemtimeout->setMaxLength(TIMEOUT_SIZE);
+  modemtimeout->setMinimumWidth(fontMetrics().width('8')*3);
   modemtimeout->setText(gpppdata.modemTimeout());
   connect(modemtimeout, SIGNAL(textChanged(const char*)),
 	  SLOT(modemtimeoutchanged(const char*)));  

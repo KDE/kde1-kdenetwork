@@ -29,6 +29,7 @@
 #include <kbuttonbox.h>
 #include "modemcmds.h"
 #include <stdlib.h>
+#include <kwm.h>
 
 #define ADJUSTLABEL(l) l->setMinimumSize(l->sizeHint()); l->setAlignment(AlignLeft|AlignVCenter);
 
@@ -41,6 +42,7 @@ ModemCommands::ModemCommands(QWidget *parent, const char *name)
   : QDialog(parent, name, TRUE, WStyle_Customize|WStyle_NormalBorder)
 {
   setCaption(i18n("Edit Modem Commands"));
+  KWM::setMiniIcon(winId(), kapp->getMiniIcon());
 
   const int GRIDROWS = 20;
 

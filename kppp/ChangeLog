@@ -1,3 +1,18 @@
+1999-02-02  Mario Weilguni <mweilguni@kde.org>
+
+	* the value of the environment var $HOME is no longer trusted,
+	  kppp now uses getpwent() to find out the home directory.
+
+	* the pidfile is now created with O_EXCL
+
+	* added new portugal rules
+
+	* executable accounting rulesets are now disabled (will re-enable
+	  after KDE 1.1)
+
+	* fixed a bug that caused the throughput graph display
+          unreasonable high numbers
+
 1999-01-31  Mario Weilguni <mweilguni@kde.org>
 
 	* fixed a security bug (stdout or stderr closed on program start)
