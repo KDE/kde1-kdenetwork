@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+<TITLE>The ktalkd Handbook: Installation</TITLE>
+<META HTTP-EQUIV="content-type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="keywords" CONTENT="KTALKD talk talkd ntalk">
+<META NAME="description" CONTENT="KTALKD talk talkd ntalk">
+</HEAD>
+<BODY BGCOLOR="#ffffff" LINK="#aa0000" TEXT="#000000" > 
+<FONT FACE="Helvetica">
+<A HREF="http://www.kde.org/"><IMG SRC="logotp3.gif" BORDER="0" ALT="The K Desktop Environment"></A>
+<HR WIDTH="100%" SIZE=2 ALIGN="CENTER" NOSHADE>
+
+ 
+<P ALIGN="RIGHT">
+  <A HREF="ktalkd-4.html">Next</A>
+  <A HREF="ktalkd-2.html">Previous</A>
+  <A HREF="index.html#toc3">Table of Contents</A>
+</P>
+<H3><A NAME="s3">3. Installation</A></H3>
+
+<P>
+<H3><A NAME="ss3.1">3.1 How to obtain ktalkd</A>
+</H3>
+
+<P><CODE>ktalkd</CODE> is part of the KDE project and available at 
+<A HREF="http://www.insa-lyon.fr/People/AEDI/dfaure">http://www.insa-lyon.fr/People/AEDI/dfaure</A>.
+</P>
+<P>You can also download <CODE>ktalkd</CODE> from the KDE ftp site, 
+<A HREF="ftp://ftp.kde.org/pub/kde">ftp://ftp.kde.org/pub/kde</A>.
+</P>
+<H3><A NAME="ss3.2">3.2 Requirements</A>
+</H3>
+
+<P>
+  In order to successfully compile <CODE>ktalkd</CODE>, you need the latest versions 
+  of the KDE libraries as well as the Qt C++ library. All required 
+  libraries as well as ktalkd itself can be found on 
+<A HREF="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</A>. 
+</P>
+<P>
+<H3><A NAME="ss3.3">3.3 Compilation and installation</A>
+</H3>
+
+<P>
+  In order to compile and install <CODE>ktalkd</CODE> on your system, type the 
+  following in the base directory of the <CODE>ktalkd</CODE> distribution:
+<BLOCKQUOTE><CODE><PRE>
+% ./configure
+% make
+% make install
+</PRE>
+</CODE></BLOCKQUOTE>
+<P>
+As <CODE>ktalkd</CODE> is a daemon, <CODE>make install</CODE> will require root privileges.
+<br>
+<p>Don't forget to change the line concerning ntalk in /etc/inetd.conf.
+For ex., on a linux system, if kde is in /opt/kde, set it to : <br>
+<CODE>"ntalk  dgram   udp     wait    root    /usr/sbin/tcpd  /opt/kde/bin/ktalkd"
+</CODE><br>
+A script is provided, to make the necessary change automatically. <br>Update your inetd.conf file 
+just by running 
+<BLOCKQUOTE><CODE><PRE>
+% ./post-install.sh
+</PRE>
+</CODE></BLOCKQUOTE>
+Anyway, you'll have to <b>restart inetd</b> after this.
+On a Redhat 5 system, do :
+<BLOCKQUOTE><CODE><PRE>
+% /etc/rc.d/init.d/inet restart
+</PRE>
+</CODE></BLOCKQUOTE>
+</P>
+<P>
+  Please inform me of any modification you had to undertake in order to
+  get <CODE>ktalkd</CODE> to compile on your platform.
+<P>
+<P ALIGN="RIGHT">
+  <A HREF="ktalkd-4.html">Next</A>
+  <A HREF="ktalkd-2.html">Previous</A>
+  <A HREF="index.html#toc3">Table of Contents</A>
+</P>
+<CENTER>
+<HR WIDTH="100%" SIZE=3 ALIGN=CENTER NOSHADE>
+</CENTER>    
+</FONT>
+
+ 
+</BODY>
+</HTML>

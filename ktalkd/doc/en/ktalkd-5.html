@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+<TITLE>The ktalkd Handbook: Questions and answers</TITLE>
+<META HTTP-EQUIV="content-type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="keywords" CONTENT="KTALKD talk talkd ntalk">
+<META NAME="description" CONTENT="KTALKD talk talkd ntalk">
+</HEAD>
+<BODY BGCOLOR="#ffffff" LINK="#aa0000" TEXT="#000000" > 
+<FONT FACE="Helvetica">
+<A HREF="http://www.kde.org/"><IMG SRC="logotp3.gif" BORDER="0" ALT="The K Desktop Environment"></A>
+<HR WIDTH="100%" SIZE=2 ALIGN="CENTER" NOSHADE>
+
+ 
+<P ALIGN="RIGHT">
+  <A HREF="ktalkd-6.html">Next</A>
+  <A HREF="ktalkd-4.html">Previous</A>
+  <A HREF="index.html#toc5">Table of Contents</A>
+</P>
+<H3><A NAME="s5">5. Questions and answers</A></H3>
+
+<H4><A NAME="s5.1">5.1 Why doesn't root receive KDE announcements ?</A></H4>
+Because this would be security hole, with the current user detection.
+You can bypass the limitation by adding two lines in xdm config files
+(which are the same than kdm ones). <br>
+Those config files are situated in a directory such as /etc/X11/xdm,
+or /usr/X11R6/lib/X11/xdm on other systems. The following supposes
+that they are in /etc/X11/xdm, so you might have to translate them
+for another directory. <br>
+Here is what you have to do :
+Edit the file Xstartup, or create it, (in the xdm config directory) so that it reads :
+<BLOCKQUOTE><CODE><PRE>
+#!/bin/sh
+/etc/X11/xdm/GiveConsole
+sessreg -a -l $DISPLAY -x /etc/X11/xdm/Xservers $USER
+</PRE>
+</CODE></BLOCKQUOTE>
+and the file Xreset so that it reads :
+<BLOCKQUOTE><CODE><PRE>
+#!/bin/sh
+/etc/X11/xdm/TakeConsole
+sessreg -d -l $DISPLAY $USER   
+</PRE>
+</CODE></BLOCKQUOTE>
+Make sure that <CODE>xdm-config</CODE> make reference to those two
+files:
+<BLOCKQUOTE><CODE><PRE>
+DisplayManager._0.startup:      /etc/X11/xdm/Xstartup
+DisplayManager._0.reset:        /etc/X11/xdm/Xreset 
+</PRE>
+</CODE></BLOCKQUOTE>
+<P>
+This will make kdm (or xdm) log the user into utmp, which is the right 
+thing to do. It's not up to kvt, nor xterm, to log the user, but to
+xdm and kdm, in my opinion. However, this will not log the user as a X 
+user when using startx... Any hint about that ?
+
+<H4><A NAME="s5.2">5.2 Why don't I, as a normal user, receive KDE announcements ?</A></H4>
+<p>If you're running a linux system (with /proc enabled), this is a
+      bug. Please send me a description of it so that I correct it.</p>
+<p>Otherwise, this is normal : ktalkd can't find the user, as KDE doesn't 
+log him into utmp and the linux based (/proc) detection is disabled.
+The solution is the same as in section 5.1, provided that you run kdm
+or xdm to log into X.
+</P>
+<P ALIGN="RIGHT">
+  <A HREF="ktalkd-6.html">Next</A>
+  <A HREF="ktalkd-4.html">Previous</A>
+  <A HREF="index.html#toc5">Table of Contents</A>
+</P>
+<CENTER>
+<HR WIDTH="100%" SIZE=3 ALIGN=CENTER NOSHADE>
+</CENTER>    
+</FONT>
+
+ 
+</BODY>
+</HTML>
