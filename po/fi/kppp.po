@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KPPP\n"
-"POT-Creation-Date: 1999-01-18 02:04+0100\n"
+"POT-Creation-Date: 1999-01-08 02:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Kim Enkovaara <kim.enkovaara@iki.fi>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -183,7 +183,7 @@ msgstr ""
 msgid "Login script has unbalanced loop Start/End"
 msgstr "Sis‰‰nkirjoittautumisohjelmassa on eri m‰‰r‰ Loop Start/End pareja"
 
-#: connect.cpp:97 connect.cpp:195 main.cpp:1053
+#: connect.cpp:97 connect.cpp:195 main.cpp:979
 msgid "Connecting to: "
 msgstr "Yhdist‰:"
 
@@ -196,7 +196,7 @@ msgstr "Valitettavasti en voi luoda modeemin lukitustiedostoa."
 msgid "Looking for Modem ..."
 msgstr "Etsin modeemia..."
 
-#: connect.cpp:120 debug.cpp:80 main.cpp:1066
+#: connect.cpp:120 debug.cpp:80 main.cpp:992
 msgid "Log"
 msgstr "Loki"
 
@@ -316,7 +316,7 @@ msgstr "Lˆysin: "
 msgid "Looping: "
 msgstr "Alusta: "
 
-#: connect.cpp:877 modeminfo.cpp:224
+#: connect.cpp:877 modeminfo.cpp:225
 msgid "One Moment Please ..."
 msgstr "Pieni hetki ..."
 
@@ -344,7 +344,7 @@ msgstr "Ajan k‰ynnistyskomennon ..."
 msgid "Done"
 msgstr "Valmis"
 
-#: connect.cpp:1126
+#: connect.cpp:1123
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
@@ -1014,7 +1014,6 @@ msgid "Line Termination:"
 msgstr "Linjan Terminointi:"
 
 #: general.cpp:298
-#, fuzzy
 msgid ""
 "Specifies how AT commands are send to your\n"
 "modem. Most modems will work fine with the\n"
@@ -1026,7 +1025,7 @@ msgid ""
 msgstr ""
 "M‰‰rittelee miten modeemillesi l‰hetet‰‰n\n"
 "AT-komennot. Useimmat modeemit toimivat hyvin\n"
-"oletuksella <i>CR</i>. Jos modeemisi ei reagoi\n"
+"oletuksella <i>CR/LF</i>. Jos modeemisi ei reagoi\n"
 "asetusmerkkijonoon voit kokeilla\n"
 "eri asetuksia t‰ss‰\n"
 "\n"
@@ -1054,7 +1053,7 @@ msgstr ""
 
 #: general.cpp:364
 msgid "Use Lock File"
-msgstr ""
+msgstr "K‰yt‰ lukkotiedostoa"
 
 #: general.cpp:375
 msgid ""
@@ -1090,7 +1089,7 @@ msgstr ""
 "<i>CONNECT</i> vastausta modeemilta. Suositeltu\n"
 "arvo on 30 sekuntia"
 
-#: general.cpp:465 main.cpp:711
+#: general.cpp:465 main.cpp:637
 msgid "Modem"
 msgstr "Modeemi"
 
@@ -1259,7 +1258,7 @@ msgstr ""
 "T‰m‰ ikkuna on esilla kunnes painat hiiren\n"
 "nappia tai jotain n‰pp‰int‰.\n"
 
-#: main.cpp:393
+#: main.cpp:323
 #, c-format
 msgid ""
 "kppp can't create or read from\n"
@@ -1268,7 +1267,7 @@ msgstr ""
 "kppp ei voi lukea tiedostosta\n"
 "%s."
 
-#: main.cpp:423
+#: main.cpp:347
 #, c-format
 msgid ""
 "kppp has detected a %s file.\n"
@@ -1287,19 +1286,19 @@ msgstr ""
 "Varmista ettei toinen kppp ole k‰ynniss‰,\n"
 "ja tuhoa tiedosto, ja k‰ynnist‰ kppp uudelleen."
 
-#: main.cpp:429
+#: main.cpp:353
 msgid "Exit"
-msgstr ""
+msgstr "Lopeta"
 
-#: main.cpp:491
+#: main.cpp:414
 msgid "Connect to: "
 msgstr "Yhdist‰: "
 
-#: main.cpp:503
+#: main.cpp:425
 msgid "Login ID:"
 msgstr "K‰ytt‰j‰ ID:"
 
-#: main.cpp:516
+#: main.cpp:438
 msgid ""
 "Type in the username that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1318,11 +1317,11 @@ msgstr ""
 "<b>T‰rke‰‰</b>: kirjaiten koko vaikuttaa:\n"
 "<i>k‰ytt‰j‰nimi</i> ei ole sama kuin <i>K‰ytt‰j‰Nimi</i>!"
 
-#: main.cpp:525
+#: main.cpp:447
 msgid "Password:"
 msgstr "Salasana:"
 
-#: main.cpp:539
+#: main.cpp:461
 msgid ""
 "Type in the password that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1341,11 +1340,11 @@ msgstr ""
 "<b>T‰rke‰‰</b>: kirjaiten koko vaikuttaa:\n"
 "<i>salasana</i> ei ole sama kuin <i>SalaSana</i>!"
 
-#: main.cpp:553
+#: main.cpp:475
 msgid "Show Log Window"
 msgstr "N‰yt‰ loki-ikkuna"
 
-#: main.cpp:560
+#: main.cpp:482
 msgid ""
 "This controls whether a log window is shown.\n"
 "A log window shows the communication between\n"
@@ -1362,15 +1361,15 @@ msgstr ""
 "Laita t‰m‰ pois p‰‰lt‰ jos <i>kppp</i> ottaa yhteyden\n"
 "ilman ongelmia"
 
-#: main.cpp:583
+#: main.cpp:505
 msgid "Setup"
 msgstr "Asetukset"
 
-#: main.cpp:599
+#: main.cpp:521
 msgid "Connect"
 msgstr "Yhdist‰"
 
-#: main.cpp:679
+#: main.cpp:605
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -1379,46 +1378,49 @@ msgstr ""
 "Profiilia ei ole olemassa:\n"
 "%s"
 
-#: main.cpp:693
+#: main.cpp:619
 msgid "kppp Configuration"
 msgstr "kppp Asetukset"
 
-#: main.cpp:709
+#: main.cpp:635
 msgid "Accounts"
 msgstr "Profiilit"
 
-#: main.cpp:710
+#: main.cpp:636
 msgid "Device"
 msgstr "Laite"
 
-#: main.cpp:712
+#: main.cpp:638
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:713
+#: main.cpp:639
 msgid "Graph"
 msgstr "Graafi"
 
-#: main.cpp:874
+#: main.cpp:800
 msgid "Timeout expired while waiting for the PPP interface to come up!"
-msgstr ""
+msgstr "Aikavalvonta umpeutui odotettaessa PPP-yhteyden syntymist‰!"
 
-#: main.cpp:879
+#: main.cpp:805
 msgid "The pppd daemon died unexpectedly!"
-msgstr ""
+msgstr "pppd -daemoni kuoli odottamatta!"
 
-#: main.cpp:887
+#: main.cpp:813
 msgid "Details..."
 msgstr "Yksityiskohdat..."
 
-#: main.cpp:912
+#: main.cpp:838
 msgid ""
 "Sorry. kppp's helper process just died.\n"
 "\n"
 "Since a further execution would be pointless, kppp will shut down right now."
 msgstr ""
+"kppp:n apuprosessi kuoli juuri.\n"
+"\n"
+"Koska toiminnan jatkaminen ei kannata, kppp lopetetaan nyt."
 
-#: main.cpp:949
+#: main.cpp:875
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1437,7 +1439,7 @@ msgstr ""
 "Asetukset dialogissa.\n"
 " Kiitos"
 
-#: main.cpp:964
+#: main.cpp:890
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1450,7 +1452,7 @@ msgstr ""
 "Varmista, ett‰ kppp:lla on setuid oikeudet ja\n"
 "pppd on suoritettavissa."
 
-#: main.cpp:978
+#: main.cpp:904
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1471,7 +1473,7 @@ msgstr ""
 "asetukset dialogissa.\n"
 " Kiitos"
 
-#: main.cpp:998
+#: main.cpp:924
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1481,7 +1483,7 @@ msgstr ""
 "PAP:n. T‰m‰ vaatii sen, ett‰ annat\n"
 "k‰ytt‰j‰nimen sek‰ salasanasi!"
 
-#: main.cpp:1007
+#: main.cpp:933
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1490,7 +1492,7 @@ msgstr ""
 "En saa luotua PAP-tunnistusta\n"
 "tiedostoon \"%s\""
 
-#: main.cpp:1024
+#: main.cpp:950
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -1500,7 +1502,7 @@ msgstr ""
 "CHAP:n. T‰m‰ vaatii sen, ett‰ annat\n"
 "k‰ytt‰j‰nimen sek‰ salasanasi!"
 
-#: main.cpp:1033
+#: main.cpp:959
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1509,19 +1511,19 @@ msgstr ""
 "En saa luotua CHAP-tunnistusta\n"
 "tiedostoon \"%s\""
 
-#: main.cpp:1045
+#: main.cpp:971
 msgid "You must specify a telephone number!"
 msgstr "Sinun on annettava puhelinnumero !"
 
-#: main.cpp:1132
+#: main.cpp:1058
 msgid "Quit kPPP?"
 msgstr "Lopeta kPPP?"
 
-#: main.cpp:1133
+#: main.cpp:1059
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "kPPP:n lopetus sulkee PPP-istuntosi."
 
-#: main.cpp:1178
+#: main.cpp:1094
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
@@ -1553,11 +1555,11 @@ msgstr "Modeemi valmis."
 msgid "Can't restore tty settings: tcsetattr()\n"
 msgstr "En saa palautettua tty:n asetuksia: tcsetattr()\n"
 
-#: modem.cpp:327
+#: modem.cpp:324
 msgid "Sorry, the modem doesn't respond."
 msgstr "Valitettavasti modeemi ei vastaa."
 
-#: modem.cpp:428
+#: modem.cpp:425
 msgid "Unknown speed"
 msgstr "Tuntematon nopeus"
 
@@ -1672,7 +1674,7 @@ msgstr "Modeemin kyselyn aika loppui"
 msgid "Modem Ready"
 msgstr "Modeemi valmis"
 
-#: modeminfo.cpp:246
+#: modeminfo.cpp:247
 msgid "Modem Query Results"
 msgstr "Modeemin kyselyn tulos"
 
@@ -1829,10 +1831,6 @@ msgstr "Tavuja sis‰‰n ja ulos"
 msgid "Available rules"
 msgstr "Olemassaolevat s‰‰nnˆt"
 
-#: acctselect.cpp:305
-msgid "(none)"
-msgstr ""
-
 #: ruleset.cpp:544
 msgid "kppp: no rulefile specified\n"
 msgstr "kppp: ei s‰‰ntˆtiedostoa m‰‰ritelty\n"
@@ -1897,7 +1895,7 @@ msgstr ""
 "k‰‰nnettyn‰ tai modulia ei ole ladattu.\n"
 "\n"
 "Ratkaistaksesi ongelman:\n"
-"  * ota yhteytt‰ systeemisi yll‰pitoon\n"
+"  * ota yhteytt‰ j‰rjestelm‰si yll‰pitoon\n"
 "tai\n"
 "  * asenna kerneli PPP tuella\n"
 
@@ -1964,17 +1962,8 @@ msgid ""
 msgstr ""
 "puuttuu!\n"
 "\n"
-"Pyyd‰ systeemisi yll‰pit‰j‰‰ luomaan t‰m‰\n"
+"Pyyd‰ j‰rjestelm‰si yll‰pit‰j‰‰ luomaan t‰m‰\n"
 "tiedosto sopivilla k‰yttˆoikeuksilla."
-
-#: loginterm.cpp:120
-msgid "Ca&ncel"
-msgstr ""
-
-#: loginterm.cpp:125
-#, fuzzy
-msgid "&Continue"
-msgstr "Yhdist‰"
 
 #: ppplog.cpp:136
 msgid ""
@@ -2007,7 +1996,7 @@ msgid ""
 "The remote system does not seem to answer to\n"
 "configuration request! Contact your provider!"
 msgstr ""
-"Vastap‰‰n systeemi ei n‰yt‰ vastaavan asetuspyyntˆˆsi!\n"
+"Vastap‰‰n j‰rjestelm‰ ei n‰yt‰ vastaavan asetuspyyntˆˆsi!\n"
 "Ota yhteytt‰ palveluntarjoajaasi!"
 
 #: ppplog.cpp:155
@@ -2025,7 +2014,7 @@ msgid ""
 "\"%s\"\n"
 "This may give you a hint why the the connection has failed."
 msgstr ""
-"Huomaa ett‰ vastap‰‰n systeemi on l‰hett‰nyt seuraavan viestin:\n"
+"Huomaa ett‰ vastap‰‰n j‰rjestelm‰ on l‰hett‰nyt seuraavan viestin:\n"
 "\"%s\"\n"
 "Viesti voi antaa vinkkej‰ miksi yhteys ep‰onnistui."
 
@@ -2073,31 +2062,3 @@ msgstr "kppp:n diagnoosi (arvailua):"
 #: ppplog.cpp:241
 msgid "Write to file"
 msgstr "Kirjoita tiedostoon"
-
-#: modemdb.cpp:46
-msgid "Select modem type..."
-msgstr ""
-
-#: modemdb.cpp:48
-msgid ""
-"To setup your modem, first choose its vendor in the list to the left, and "
-"then select the model from the right list. If you don¥t know which modem you "
-"have, you can try out one of the \"Generic\" modems."
-msgstr ""
-
-#: modemdb.cpp:151 modemdb.cpp:153 modemdb.cpp:223 modemdb.cpp:238
-msgid "<Generic>"
-msgstr ""
-
-#: modemdb.cpp:218
-msgid "Hayes(tm) compatible modem"
-msgstr ""
-
-#~ msgid ""
-#~ "The application-specific config file\n"
-#~ "could not be opened neither\n"
-#~ "read-write nor read-only"
-#~ msgstr ""
-#~ "Sovelluksen asetustiedostoa\n"
-#~ "ei voida avata\n"
-#~ "kirjoitus/luku tai kirjoitussuojatussa tilassa"

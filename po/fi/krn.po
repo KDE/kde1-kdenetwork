@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KRN\n"
-"POT-Creation-Date: 1999-01-18 02:04+0100\n"
+"POT-Creation-Date: 1999-01-10 02:04+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Kim Enkovaara <kim.enkovaara@iki.fi>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -551,16 +551,15 @@ msgstr "Monet kiitokset:"
 
 #: aboutDlg.cpp:71
 msgid "All KDE developers"
-msgstr ""
+msgstr "Kaikki KDE:n kehittäjät"
 
 #: aboutDlg.cpp:73
 msgid "Chuck, for helping in time of need"
-msgstr ""
+msgstr "Chuck, kun autoit hädässä"
 
 #: aboutDlg.cpp:74
-#, fuzzy
 msgid "All testers"
-msgstr "Kaikki uutisryhmät."
+msgstr "Kaikki kokeilijat"
 
 #: fontsDlg.cpp:39
 msgid "Message Display Settings"
@@ -1517,7 +1516,7 @@ msgstr "Yleistä"
 
 #: printdlg.cpp:35
 msgid "Printing System"
-msgstr "Tulostussysteemi"
+msgstr "Tulostusjörjestelmä"
 
 #: printdlg.cpp:37
 msgid "Use HTML Printing"
@@ -1635,10 +1634,6 @@ msgstr "&7bit on ASCII"
 msgid "&Qute unknonw characters"
 msgstr "&Lainaa tuntemattoman kirjaimet"
 
-#: expirestatusdlg.cpp:35
-msgid "Please wait a minute, I am expiring!"
-msgstr ""
-
 #: kpgpbase.cpp:315
 msgid "Bad pass Phrase; couldn't sign"
 msgstr "Viallinen salasana; en voi allekirjoittaa"
@@ -1687,9 +1682,8 @@ msgstr ""
 "Niitä ei voida käyttää viestin purkamiseen"
 
 #: TooManydlg.cpp:25
-#, fuzzy
 msgid "KRN-Confirmation"
-msgstr "KRN-NNTP-asetukset"
+msgstr "KRN-Hyväksy"
 
 #: TooManydlg.cpp:30
 msgid "Read how many articles?"

@@ -158,6 +158,18 @@ msgid ""
 "(See README files and copyright.h).\n"
 "My own code is based on the GPL"
 msgstr ""
+"KArchie versio. %s\n"
+"\n"
+"Jörg Habenicht <j.habenicht@europemail.com>\n"
+"\n"
+"perustuu seuraavien henkilöiden työhön:\n"
+"  - archie prospero client\n"
+"      Clifford Neuman ja\n"
+"      Brendan Kehoe (brendan@cygnus.com)\n"
+"  - ja xarchie\n"
+"      George Ferguson (ferguson@cs.rochester.edu)\n"
+"(Katso README ja copyright.h tiedostoja).\n"
+"Tekijän oma ohjelmakoodi on GPL:n alla."
 
 #: KAMenu.cpp:190
 msgid "&Settings"
@@ -173,11 +185,11 @@ msgstr "&Järjestys"
 
 #: KAQuery.cpp:180
 msgid "Query setup"
-msgstr ""
+msgstr "Haun asetukset"
 
 #: KAQuery.cpp:289
 msgid "Query aborted"
-msgstr ""
+msgstr "Haku keskeytetty"
 
 #: KAQuery.cpp:296 KArchie.cpp:793
 msgid "Success"
@@ -185,282 +197,267 @@ msgstr "Onnistui"
 
 #: KAQuery.cpp:297
 msgid "Port unknown"
-msgstr ""
+msgstr "Portti tuntematon"
 
 #: KAQuery.cpp:298
 msgid "Can't open local UDP port"
-msgstr ""
+msgstr "En saa avattua paikallista UDP porttia"
 
 #: KAQuery.cpp:299
 msgid "Can't resolve hostname"
-msgstr ""
+msgstr "En saa selvitettyä isännän nimeä"
 
 #: KAQuery.cpp:300
 msgid "Didn't send entire message"
-msgstr ""
+msgstr "En saanut lähetettyä koko viestiä"
 
 #: KAQuery.cpp:301
 msgid "Timed out"
-msgstr ""
+msgstr "Aikavalvonta"
 
 #: KAQuery.cpp:302
 msgid "Recvfrom failed"
-msgstr ""
+msgstr "Recvfrom epäonnistui"
 
 #: KAQuery.cpp:303
 msgid "Reply: sendto failed"
-msgstr ""
+msgstr "Vastaus: sendto epäonnistui"
 
 #: KAQuery.cpp:304
 msgid "Link exists with same name"
-msgstr ""
+msgstr "Samalla nimellä on linkki"
 
 #: KAQuery.cpp:306
 msgid "Link already exists"
-msgstr ""
+msgstr "Linkki on jo olemassa"
 
 #: KAQuery.cpp:307
 msgid "Replacing existing link"
-msgstr ""
+msgstr "Korvaan olemassaolevan linkin"
 
 #: KAQuery.cpp:308
 msgid "Prv entry not in dir->ulinks"
-msgstr ""
+msgstr "Prv tietue ei dir->ulinks:ssä"
 
 #: KAQuery.cpp:309
 msgid "Temporary not found"
-msgstr ""
+msgstr "Väliaikaistiedostoa ei löydy"
 
 #: KAQuery.cpp:310
 msgid "Namespace not closed w/ object::"
-msgstr ""
+msgstr "Nimitilaa ei suljettu object::"
 
 #: KAQuery.cpp:311
 msgid "No alias for namespace NS#:"
-msgstr ""
+msgstr "Ei aliasta nimitilalle NS#:"
 
 #: KAQuery.cpp:312
 msgid "Specified namespace not found"
-msgstr ""
+msgstr "Määritettyä nimitilaa ei löydy"
 
 #: KAQuery.cpp:313
 msgid "File access method not supported"
-msgstr ""
+msgstr "Tiedostonhakua ei tueta"
 
 #: KAQuery.cpp:314
 msgid "Delete cached copy on close"
-msgstr ""
+msgstr "Tuhoa välimuistikopio lopetettaessa"
 
 #: KAQuery.cpp:315
 msgid "Unable to retrieve file"
-msgstr ""
+msgstr "Mahdotonta hakea tiedostoa"
 
 #: KAQuery.cpp:317
 msgid "Directory already exists"
-msgstr ""
+msgstr "Hakemisto on jo olemassa"
 
 #: KAQuery.cpp:319 KAQuery.cpp:337
 msgid "Link with name already exists"
-msgstr ""
+msgstr "Linkki nimellä on jo olemassa"
 
 #: KAQuery.cpp:320
 msgid "Not a virtual system"
-msgstr ""
+msgstr "Ei virtuaalinen järjestelmä"
 
 #: KAQuery.cpp:321
 msgid "Can't find directory"
-msgstr ""
+msgstr "En löydä hakemistoa"
 
 #: KAQuery.cpp:322
 msgid "Not a directory name"
-msgstr ""
+msgstr "Ei hakemiston nimi"
 
 #: KAQuery.cpp:323
 msgid "Object not found"
-msgstr ""
+msgstr "Objektia ei löydy"
 
 #: KAQuery.cpp:324
 msgid "Object has moved"
-msgstr ""
+msgstr "Objekti on siirtynyt"
 
 #: KAQuery.cpp:325
 msgid "File not found"
-msgstr ""
+msgstr "Tiedostoa ei löydy"
 
 #: KAQuery.cpp:326
 msgid "Directory in path not found"
-msgstr ""
+msgstr "Hakemistopolkua ei löydy"
 
 #: KAQuery.cpp:327
 msgid "Symbolic links nested too deep"
-msgstr ""
+msgstr "Liian monta sisäkkäistä linkkiä"
 
 #: KAQuery.cpp:328
 msgid "Can't read environment"
-msgstr ""
+msgstr "En voi lukea ympäristöä"
 
 #: KAQuery.cpp:329
 msgid "Can't traverse an external file"
-msgstr ""
+msgstr "En voi selata ulkoista tiedostoa"
 
 #: KAQuery.cpp:330
 msgid "Exceeded max forward depth"
-msgstr ""
+msgstr "Ylitettiin maksimisyvyys"
 
 #: KAQuery.cpp:331
 msgid "Authentication required"
-msgstr ""
+msgstr "Tunnistus tarpeellinen"
 
 #: KAQuery.cpp:332
 msgid "Not authorized"
-msgstr ""
+msgstr "Ei tunnistettu"
 
 #: KAQuery.cpp:333
 msgid "Not found"
-msgstr ""
+msgstr "Ei löydy"
 
 #: KAQuery.cpp:334
 msgid "Bad version number"
-msgstr ""
+msgstr "Virheelllinen versio"
 
 #: KAQuery.cpp:335
 msgid "Not a directory"
-msgstr ""
+msgstr "Ei hakemisto"
 
 #: KAQuery.cpp:336
 msgid "Identical link already exists"
-msgstr ""
+msgstr "Identtinen linkki on olemassa"
 
 #: KAQuery.cpp:338
 msgid "Command not implemented on server"
-msgstr ""
+msgstr "Komentoa ei tueta palvelimella"
 
 #: KAQuery.cpp:339
 msgid "Bad format for response"
-msgstr ""
+msgstr "Virheellinen vastaus"
 
 #: KAQuery.cpp:340
 msgid "Protocol error"
-msgstr ""
+msgstr "Protokollavirhe"
 
 #: KAQuery.cpp:341
 msgid "Unspecified server failure"
-msgstr ""
+msgstr "Määrittelemäyön palvelinvirhe"
 
 #: KAQuery.cpp:343
 msgid "Generic Failure"
-msgstr ""
+msgstr "Yleinen virhe"
 
 #: KAQuery.cpp:347
 msgid "No warning"
-msgstr ""
+msgstr "Ei varoitusta"
 
 #: KAQuery.cpp:348
 msgid "You are using an old version of this program"
-msgstr ""
+msgstr "Käytät ohjelman vanhaa versiota"
 
 #: KAQuery.cpp:349
 msgid "From server: "
-msgstr ""
+msgstr "Palvelimelta: "
 
 #: KAQuery.cpp:351
 msgid "Unrecognized line in response from server"
-msgstr ""
+msgstr "Tuntematon vastausrivi palvelimelta"
 
 #: KAQuery.cpp:409
 msgid "Query running"
-msgstr ""
+msgstr "Haku käynnissä"
 
 #: KAQuery.cpp:453
 msgid "Query finished"
-msgstr ""
+msgstr "Haku valmis"
 
 #: KASettings.cpp:59
-#, fuzzy
 msgid "&Host"
-msgstr "Isäntä"
+msgstr "&Isäntä"
 
 #: KASettings.cpp:72
 msgid "&Timeout (seconds)"
-msgstr ""
+msgstr "&Aikavalvonta (sek)"
 
 #: KASettings.cpp:83
 msgid "Maximal &retries"
 msgstr ""
 
 #: KASettings.cpp:284
-#, fuzzy
 msgid "&Nice Level"
 msgstr "&Kuormitus"
 
 #: KASettings.cpp:291
 msgid "max. &Hits"
-msgstr ""
+msgstr "maks. &Osumia"
 
 #: KASettings.cpp:418
-#, fuzzy
 msgid "Exact"
-msgstr "&Tarkka"
+msgstr "Tarkka"
 
 #: KASettings.cpp:419
-#, fuzzy
 msgid "Substring"
-msgstr "&Osajoukko"
+msgstr "Osajoukko"
 
 #: KASettings.cpp:420
-#, fuzzy
 msgid "Substring case insensitive"
-msgstr "Osajoukko &merkkitaso ei vaikuta"
+msgstr "Osajoukko merkkitaso ei vaikuta"
 
 #: KASettings.cpp:421
-#, fuzzy
 msgid "Regular expression"
-msgstr "&Säännöllinen lause"
+msgstr "Säännöllinen lause"
 
 #: KASettings.cpp:423
-#, fuzzy
 msgid "Exact, then substring case insensitive"
 msgstr "Tarkka, sitten osajoukko ilman merkkitasoa"
 
 #: KASettings.cpp:427
-#, fuzzy
 msgid "Normal"
-msgstr "&normaali"
+msgstr "Normaali"
 
 #: KASettings.cpp:428
-#, fuzzy
 msgid "Nice"
-msgstr "&pieni"
+msgstr "Pieni"
 
 #: KASettings.cpp:429
-#, fuzzy
 msgid "Very nice"
-msgstr "piene&mpi"
+msgstr "pienempi"
 
 #: KASettings.cpp:430
-#, fuzzy
 msgid "Even more nice"
-msgstr "&erittäin pieni"
+msgstr "erittäin pieni"
 
 #: KASettings.cpp:431
-#, fuzzy
 msgid "Nicest"
-msgstr "pien&in"
+msgstr "pienin"
 
 #: KASettings.cpp:525
-#, fuzzy
 msgid "KArchie Settings"
-msgstr "&Asetukset"
+msgstr "Asetukset"
 
 #: KASettings.cpp:536
-#, fuzzy
 msgid "Archie server settings"
-msgstr "Archie &palvelin"
+msgstr "Archie palvelinasetukset"
 
 #: KASettings.cpp:543
-#, fuzzy
 msgid "Search init"
-msgstr "&Hakusana"
+msgstr "Haun alustus"
 
 #: KASettings.cpp:567
 msgid "Reset"
@@ -509,7 +506,7 @@ msgstr "%d yritys."
 
 #: KAView.cpp:66
 msgid "Searchstring, press <ENTER> to start search"
-msgstr ""
+msgstr "Hakusana, paina <ETNER> aloittaaksesi haun"
 
 #: KAView.cpp:68
 msgid "Search &Term"

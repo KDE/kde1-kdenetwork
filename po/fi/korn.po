@@ -16,35 +16,35 @@ msgstr ""
 
 #: kmailbox.cpp:150
 msgid "countMail: file open error"
-msgstr ""
+msgstr "countMail: tiedostonavausvirhe"
 
 #: korn.cpp:51
-#, fuzzy
 msgid "&Setup"
-msgstr "&Asetukset.."
+msgstr "&Asetukset"
 
 #: korn.cpp:54
-#, fuzzy
 msgid "&About"
-msgstr "&Tietoja.."
+msgstr "&Tietoja"
 
 #: korn.cpp:109
 msgid "korn: configure now?"
-msgstr ""
+msgstr "korn: aseta nyt?"
 
 #: korn.cpp:110
 msgid ""
 "you have not yet configured korn.\n"
 "would you like to do this now?"
 msgstr ""
+"et ole vielä asettanut korn:a.\n"
+"haluatko tehdä tämän nyt?"
 
 #: korn.cpp:114
 msgid "No - Quit"
-msgstr ""
+msgstr "Ei - Lopeta"
 
 #: korn.cpp:119
 msgid "personal"
-msgstr ""
+msgstr "henkilökohtainen"
 
 #: korn.cpp:120
 msgid "Inbox"
@@ -58,169 +58,67 @@ msgid ""
 "\n"
 "The K Desktop Environment"
 msgstr ""
+"Korn %s -- Sirtaj Singh Kang\n"
+"taj@kde.org, 1997\n"
+"\n"
+"K Desktop Ympäristö"
 
 #: korn.cpp:249
-#, fuzzy
 msgid "About kOrn"
-msgstr "tietoja KOrn:ta"
+msgstr "Tietoja KOrn:ta"
 
 #: korn.cpp:257
 msgid "korn: no config set"
-msgstr ""
+msgstr "korn: ei asetuksia"
 
 #: korn.cpp:258
 msgid ""
 "Would you like to restart korn with\n"
 "the automatically generated configuration?"
 msgstr ""
+"Haluatko uudelleenkäynnistää korn:n uusilla\n"
+"automaattisesti luoduilla asetuksilla?"
 
 #: korn.cpp:261
 msgid "Yes, Restart"
-msgstr ""
+msgstr "Kyllä, Käynnistä"
 
 #: korn.cpp:261
 msgid "No, Exit"
 msgstr "Ei, Lopeta"
 
 #: kornopt.cpp:24
-#, fuzzy
 msgid "korn options"
-msgstr "Korn: Asetukset"
+msgstr "Korn asetukset"
 
 #: optdata.cpp:76
-#, fuzzy
 msgid "&New"
-msgstr "Uutiset"
+msgstr "&Uusi"
 
 #: optdata.cpp:89
-#, fuzzy
 msgid "Boxes"
-msgstr "&Laatikot"
+msgstr "Laatikot"
 
 #: optdata.cpp:118
 msgid "Name"
-msgstr ""
+msgstr "Nimi"
 
 #: optdata.cpp:124
 msgid "Caption"
 msgstr "Otsikko"
 
 #: optdata.cpp:138
-#, fuzzy
 msgid "Path"
-msgstr "Mbox polku"
+msgstr "Polku"
 
 #: optdata.cpp:152
 msgid "Poll time (sec)"
-msgstr ""
+msgstr "Hakuväli (sek)"
 
 #: optdata.cpp:158
 msgid "Notify Command"
-msgstr ""
+msgstr "Huomautuskomento"
 
 #: optdata.cpp:180
 msgid "Click Command"
-msgstr ""
-
-#~ msgid "Welcome to KOrn"
-#~ msgstr "Tervetuloa KOrn:n"
-
-#~ msgid ""
-#~ "You do not appear to have used KOrn before. Would you like a basic "
-#~ "configuration created for you?"
-#~ msgstr ""
-#~ "Et ole käyttänyt KOrn:a ennemmin. Haluatko että sinulle luodaan "
-#~ "perusasetukset?"
-
-#~ msgid "Can't find mailbox"
-#~ msgstr "En löydä postilaatikkoa"
-
-#~ msgid ""
-#~ "Unable to find $MAIL environment variable. You'll have to configure the "
-#~ "mailboxes yourself."
-#~ msgstr ""
-#~ "En löydä $MAIL ympäristömuuttujaa. Sinun täytyy asettaa postilaatikot itse."
-
-#~ msgid " (clone)"
-#~ msgstr " (klooni)"
-
-#~ msgid "Select a mailbox type..."
-#~ msgstr "Valitse postilaatikon tyyppi..."
-
-#~ msgid "O&K"
-#~ msgstr "&OK"
-
-#~ msgid "Horizontal"
-#~ msgstr "Vaakasuuntainen"
-
-#~ msgid "Vertical"
-#~ msgstr "Pystysuuntainen"
-
-#~ msgid "Docked"
-#~ msgstr "Nielaistu"
-
-#~ msgid "&Layout"
-#~ msgstr "&Ulkonäkö"
-
-#~ msgid "&Modify Box"
-#~ msgstr "&Muokkaa laatikkoa"
-
-#~ msgid "&New Box"
-#~ msgstr "&Uusi laatikko"
-
-#~ msgid "&Delete Box"
-#~ msgstr "&Tuhoa laatikko"
-
-#~ msgid "&Clone Box"
-#~ msgstr "&Kloobaa laatikko"
-
-#~ msgid "New Monitor"
-#~ msgstr "Uusi valvonta"
-
-#~ msgid "Korn Monitor"
-#~ msgstr "Korn valvonta"
-
-#~ msgid "On Receipt"
-#~ msgstr "Vastaanotettaessa"
-
-#~ msgid "On Click"
-#~ msgstr "Klikattaessa"
-
-#~ msgid "General"
-#~ msgstr "Yleiset"
-
-#~ msgid "Poll"
-#~ msgstr "Pollaa"
-
-#~ msgid "Check Frequency (sec)"
-#~ msgstr "Tarkistustaajuus (sek)"
-
-#~ msgid "Mailbox"
-#~ msgstr "Postilaatikko"
-
-#~ msgid "Maildir"
-#~ msgstr "Postihakemisto"
-
-#~ msgid "Maildir Path"
-#~ msgstr "Postihakemiston polku"
-
-#~ msgid "Server"
-#~ msgstr "Palvelin"
-
-#~ msgid "Port"
-#~ msgstr "Portti"
-
-#~ msgid "Username"
-#~ msgstr "Käyttäjänimi"
-
-#~ msgid "Password"
-#~ msgstr "Salasana"
-
-#~ msgid "Save Password"
-#~ msgstr "Tallenna salasana"
-
-#~ msgid "Group"
-#~ msgstr "Ryhmä"
-
-#~ msgid "Browse.."
-#~ msgstr "Selaa.."
+msgstr "Painalluskomento"
