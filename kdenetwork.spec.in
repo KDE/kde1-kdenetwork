@@ -23,6 +23,7 @@ korn: mailbox monitor tool
 kppp: easy PPP connection configuration
 krn: news reader
 ktalkd: talk daemon
+kbiff: mbox, maildir, POP3, and IMAP4 mail notification utility
 
 %prep
 rm -rf $RPM_BUILD_ROOT
