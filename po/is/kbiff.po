@@ -6,45 +6,45 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kbiff\n"
-"POT-Creation-Date: 1999-01-15 02:07+0100\n"
-"PO-Revision-Date: 1999-01-12 19:07+0000\n"
+"POT-Creation-Date: 1998-12-20 02:10+0100\n"
+"PO-Revision-Date: 1999-01-29 12:51+0000\n"
 "Last-Translator: Richard Allen <ra@hp.is>\n"
 "Language-Team: is <kde-isl@mmedia.is>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: ISO-8859-1\n"
 
-#: kbiff.cpp:461
+#: kbiff.cpp:506
 msgid "&UnDock"
-msgstr "&Af spjaldi"
+msgstr "&Af spjaldinu"
 
-#: kbiff.cpp:463
+#: kbiff.cpp:508
 msgid "&Dock"
-msgstr "Á spjal&dið"
+msgstr "Á spjal&d"
 
-#: kbiff.cpp:464
+#: kbiff.cpp:509
 msgid "&Setup..."
 msgstr "&Stillingar..."
 
-#: kbiff.cpp:466
+#: kbiff.cpp:511
 msgid "&Help..."
 msgstr "&Hjálp..."
 
-#: kbiff.cpp:470
+#: kbiff.cpp:515
 msgid "&Check Mail Now"
 msgstr "A&thuga póst"
 
-#: kbiff.cpp:472
+#: kbiff.cpp:517
 msgid "&Read Mail Now"
 msgstr "&Lesa póst"
 
-#: kbiff.cpp:478
+#: kbiff.cpp:523
 msgid "&Stop"
 msgstr "&Stöðva"
 
 #: notify.cpp:28 notify.cpp:45
 msgid "You have new mail!"
-msgstr "Þú hefur fengið nýjann póst!"
+msgstr "Þú hefur fengið nýjan póst!"
 
 #: notify.cpp:53
 #, c-format
@@ -104,7 +104,7 @@ msgstr "Ertu viss um að þú viljir eyða þessu hólfi?\n"
 
 #: setupdlg.cpp:489
 msgid "Poll (sec):"
-msgstr "Tími milli póstathuganna (sek):"
+msgstr "Tími milli póstathugana (sek.):"
 
 #: setupdlg.cpp:494
 msgid "Mail client:"
@@ -112,7 +112,7 @@ msgstr "Póstforrit:"
 
 #: setupdlg.cpp:507
 msgid "Dock in panel"
-msgstr "Á spjaldið"
+msgstr "Á spjald"
 
 #: setupdlg.cpp:512
 msgid "Use session management"
@@ -160,7 +160,7 @@ msgstr "Frekari stillingar"
 
 #: setupdlg.cpp:857
 msgid "Mailbox URL:"
-msgstr "Slóð á pósthólf"
+msgstr "Slóð að pósthólf"
 
 #: setupdlg.cpp:861
 msgid "Port:"

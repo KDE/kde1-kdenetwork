@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: krn\n"
-"POT-Creation-Date: 1999-01-18 02:04+0100\n"
-"PO-Revision-Date: 1999-01-11 22:07+0000\n"
+"POT-Creation-Date: 1999-01-10 02:04+0100\n"
+"PO-Revision-Date: 1999-01-31 13:38+0000\n"
 "Last-Translator: Richard Allen <ra@hp.is>\n"
 "Language-Team: is <kde-isl@mmedia.is>\n"
 "MIME-Version: 1.0\n"
@@ -699,35 +699,35 @@ msgstr "Tegund"
 
 #: kmcomposewin.cpp:343
 msgid "&From:"
-msgstr "&From:"
+msgstr "&Frá:"
 
 #: kmcomposewin.cpp:345
 msgid "&Reply to:"
-msgstr "&Reply to:"
+msgstr "&Svar til:"
 
 #: kmcomposewin.cpp:347
 msgid "&To:"
-msgstr "&To:"
+msgstr "&Til:"
 
 #: kmcomposewin.cpp:349
 msgid "&Cc:"
-msgstr "&Cc:"
+msgstr "&Samrit:"
 
 #: kmcomposewin.cpp:351
 msgid "&Bcc:"
-msgstr "&Bcc:"
+msgstr "&Blint samrit:"
 
 #: kmcomposewin.cpp:353
 msgid "&Subject:"
-msgstr "&Subject:"
+msgstr "&Viðfang:"
 
 #: kmcomposewin.cpp:356
 msgid "&Newsgroups:"
-msgstr "&Newsgroups:"
+msgstr "&Fréttahópar:"
 
 #: kmcomposewin.cpp:358
 msgid "&Followup-To:"
-msgstr "&Followup-To:"
+msgstr "&Svargrein til:"
 
 #: kmcomposewin.cpp:430
 msgid "&Send"
@@ -779,11 +779,11 @@ msgstr "Á&ríðandi"
 
 #: kmcomposewin.cpp:486
 msgid "&Confirm delivery"
-msgstr ""
+msgstr "&Staðfesta sendingu"
 
 #: kmcomposewin.cpp:488
 msgid "&Confirm read"
-msgstr ""
+msgstr "Staðfesta lestur"
 
 #: kmcomposewin.cpp:491
 msgid "&Spellchecker..."
@@ -791,87 +791,87 @@ msgstr "&Villupúki..."
 
 #: kmcomposewin.cpp:494
 msgid "&Charsets..."
-msgstr ""
+msgstr "Stafasett..."
 
 #: kmcomposewin.cpp:507
 msgid "&All Fields"
-msgstr ""
+msgstr "Ö&ll svið"
 
 #: kmcomposewin.cpp:509
 msgid "&From"
-msgstr ""
+msgstr "&Frá"
 
 #: kmcomposewin.cpp:510
 msgid "&Reply to"
-msgstr ""
+msgstr "&Svar til"
 
 #: kmcomposewin.cpp:511
 msgid "&To"
-msgstr ""
+msgstr "&Til"
 
 #: kmcomposewin.cpp:512
 msgid "&Cc"
-msgstr ""
+msgstr "&Samrit"
 
 #: kmcomposewin.cpp:513
 msgid "&Bcc"
-msgstr ""
+msgstr "&Blint samrit"
 
 #: kmcomposewin.cpp:514
 msgid "&Subject"
-msgstr ""
+msgstr "&Viðfang"
 
 #: kmcomposewin.cpp:516
 msgid "&Newsgroups"
-msgstr ""
+msgstr "&Fréttahópar"
 
 #: kmcomposewin.cpp:517
 msgid "&Followup-To"
-msgstr ""
+msgstr "Svargrein til"
 
 #: kmcomposewin.cpp:523
 msgid "Append S&ignature"
-msgstr ""
+msgstr "Bæta v&ið undirskrift"
 
 #: kmcomposewin.cpp:525
 msgid "&Insert File"
-msgstr ""
+msgstr "Skjóta inn skrá"
 
 #: kmcomposewin.cpp:527
 msgid "Insert My &Public Key"
-msgstr ""
+msgstr "Skjóta inn &dreifilykli mínum"
 
 #: kmcomposewin.cpp:532
 msgid "&Attach..."
-msgstr ""
+msgstr "Hengj&a við..."
 
 #: kmcomposewin.cpp:535
 msgid "&Save..."
-msgstr ""
+msgstr "&Vista..."
 
 #: kmcomposewin.cpp:536
 msgid "Pr&operties..."
-msgstr ""
+msgstr "&Eiginleikar..."
 
 #: kmcomposewin.cpp:538
 msgid "&Attach"
-msgstr ""
+msgstr "Hengja við"
 
 #: kmcomposewin.cpp:558
 msgid "Send message"
-msgstr ""
+msgstr "Senda grein"
 
 #: kmcomposewin.cpp:563
 msgid "Compose new message"
-msgstr ""
+msgstr "Rita nýja grein"
 
 #: kmcomposewin.cpp:568
 msgid "Save message to file"
-msgstr ""
+msgstr "Vista grein í skrá"
 
 #: kmcomposewin.cpp:573
 msgid "Print message"
-msgstr ""
+msgstr "Prenta grein"
 
 #: kmcomposewin.cpp:582
 msgid "Cut selection"
@@ -903,15 +903,15 @@ msgstr ""
 
 #: kmcomposewin.cpp:626 kmcomposewin.cpp:642
 msgid "Column"
-msgstr ""
+msgstr "Dálkur"
 
 #: kmcomposewin.cpp:627 kmcomposewin.cpp:640
 msgid "Line"
-msgstr ""
+msgstr "Lína"
 
 #: kmcomposewin.cpp:908
 msgid "KMail Confirm"
-msgstr ""
+msgstr "KMail staðfesting"
 
 #: kmcomposewin.cpp:909
 msgid ""
@@ -1568,14 +1568,10 @@ msgstr "Festa sem &sjálfgefið"
 
 #: charsetsDlg.cpp:80
 msgid "&7 bit is ASCII"
-msgstr "&7 bita er ASCII (Og kaninn er vangefinn)"
+msgstr "&7 bita er ASCII"
 
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
-msgstr ""
-
-#: expirestatusdlg.cpp:35
-msgid "Please wait a minute, I am expiring!"
 msgstr ""
 
 #: kpgpbase.cpp:315
