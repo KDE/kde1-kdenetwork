@@ -1,5 +1,10 @@
 1998-01-30  Andrew Stanley-Jones  <asj@chowtown.cban.com>
 
+	* New freeze slot for irc listitems, should speed up global
+ 	changes, etc.
+
+	* Misc changes and fixes.  
+
 	* toplevel.cpp (parse_input): If we see a nick change that's
  	pertinent to us, ie we're talking to a nick and he changes nicks,
  	try and follow the nick change.
@@ -186,6 +191,13 @@
 $Revision$
 	
 $Log$
+Revision 1.24  1998/01/30 22:44:01  asj
+1998-01-30  Andrew Stanley-Jones  <asj@chowtown.cban.com>
+
+	* toplevel.cpp (parse_input): If we see a nick change that's
+ 	pertinent to us, ie we're talking to a nick and he changes nicks,
+ 	try and follow the nick change.
+
 Revision 1.23  1998/01/29 05:23:35  asj
 	* toplevel.cpp (parse_input): Clears screan before displaying the
  	prompt.  Needed minor changes everywhere.

@@ -54,6 +54,7 @@ bool KSircListBox::scrollToBottom(bool force = false)
     if(ScrollToBottom == TRUE)
       setYOffset(0);
     vertScroll->setRange(0, 0);
+    repaint(FALSE);
   }
 
   if(ScrollToBottom == TRUE)
