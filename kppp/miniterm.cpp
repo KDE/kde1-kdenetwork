@@ -116,6 +116,8 @@ void MiniTerm::setupToolbar() {
 		      SLOT(help()), TRUE, i18n("Help"));
 
   toolbar->setBarPos( KToolBar::Top );
+  toolbar->enableMoving(false);
+  toolbar->updateRects(true);
 }
 
 
