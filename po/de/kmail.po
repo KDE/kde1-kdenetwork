@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1998-03-01 15:43+0100\n"
+"POT-Creation-Date: 1998-03-03 22:56+0100\n"
 "PO-Revision-Date: 1998-02-24 15:55 +0100\n"
 "Last-Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
 
@@ -551,7 +551,7 @@ msgstr "POP-Postfach"
 msgid "Login:"
 msgstr "Benutzer:"
 
-#: kmacctpop.cpp:432 kmsettings.cpp:737
+#: kmacctpop.cpp:436 kmsettings.cpp:737
 msgid "Password:"
 msgstr "Paﬂwort:"
 
@@ -1011,7 +1011,7 @@ msgstr ""
 "\n"
 "Soll KMail die Order nun verschieben?"
 
-#: kmacctlocal.cpp:85
+#: kmacctlocal.cpp:91
 #, c-format
 msgid ""
 "Cannot remove mail from\n"
@@ -1032,19 +1032,19 @@ msgstr ""
 "Ordner in den Einstellungen an und\n"
 "versuchen Sie es noch einmal."
 
-#: kmacctpop.cpp:249
+#: kmacctpop.cpp:253
 msgid "Pop Mail Error"
 msgstr "POP-Mail Fehler"
 
-#: kmacctpop.cpp:254
+#: kmacctpop.cpp:258
 msgid "Pop Mail Network Error"
 msgstr "POP-Mail Netzwerkfehler"
 
-#: kmacctpop.cpp:270
+#: kmacctpop.cpp:274
 msgid "Unknown error"
 msgstr "Unbekannter Fehler"
 
-#: kmacctpop.cpp:275
+#: kmacctpop.cpp:279
 #, c-format
 msgid ""
 "Account: %s\n"
@@ -1055,7 +1055,7 @@ msgstr ""
 "In %s:\n"
 "%s"
 
-#: kmacctpop.cpp:423
+#: kmacctpop.cpp:427
 msgid "Login Name:"
 msgstr "Benutzername:"
 
@@ -1478,6 +1478,26 @@ msgstr "Adressbuch-Verwaltung"
 #: kmiostatusdlg.cpp:32
 msgid "&Abort"
 msgstr "&Abbrechen"
+
+#: kmnewiostatuswdg.cpp:37
+msgid "Sending messages to "
+msgstr "Sende Nachricht an"
+
+#: kmnewiostatuswdg.cpp:48
+msgid "Retrieving messages from "
+msgstr "Empfange Nachrichten von "
+
+#: kmnewiostatuswdg.cpp:50
+msgid "Preparing transmission..."
+msgstr "Bereite ‹bertragung vor..."
+
+#: kmnewiostatuswdg.cpp:56
+msgid "Transmission completed..."
+msgstr "‹bertragung beendet..."
+
+#: kmnewiostatuswdg.cpp:91
+msgid "Aborting transmission...\n"
+msgstr "‹bertragung abbrechen...\n"
 
 #: charsetsDlg.cpp:27
 msgid "KRN - Charset Settings"
