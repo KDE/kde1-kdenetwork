@@ -1,3 +1,13 @@
+1999-04-30  Harri Porten  <porten@kde.org>
+
+	* conwindow.cpp: fixed deleting of old geometry layout
+	* logview/loginfo.cpp: added #include <string.h> for strsep
+	* "PPP support missing" is no longer fatal. Just a warning.
+	* pppstatdlg.cpp: update statistic data even if widget is not visible.
+	(patch by  Bastien Chevreux <B.Chevreux@dkfz-heidelberg.de>)
+
+=========================== KDE 1.1.1 released =============================
+
 1999-04-24  Harri Porten  <porten@kde.org>
 
 	* runtests.cpp: test for `lock' in /etc/ppp/options is not needed any-

@@ -386,7 +386,7 @@ int runTests() {
 				"  * contact your system adminstrator\n"
 				"or\n"
 				"  * install a kernel with PPP support\n"));
-      shutDown(1);
+      warning++;
     }
   }
 #endif

@@ -385,8 +385,8 @@ void PPPStatsDlg::timeclick() {
     break;
   }
 
+  update_data(do_stats());
   if( isVisible()) {
-    update_data(do_stats());
     paintIcon();
   }
 }

@@ -73,7 +73,7 @@ ConWindow::ConWindow(QWidget *parent, const char *name,QWidget *mainwidget)
 
   clocktimer = new QTimer(this);
   connect(clocktimer, SIGNAL(timeout()), SLOT(timeclick()));
-  tl = 0;
+  tl1 = 0;
 }
 
 ConWindow::~ConWindow() {
@@ -83,11 +83,11 @@ ConWindow::~ConWindow() {
 
 void ConWindow::accounting(bool on) {
   // delete old layout
-  if(tl != 0)
-    delete tl;
+  if(tl1 != 0)
+    delete tl1;
 
   // add layout now
-  QVBoxLayout *tl1 = new QVBoxLayout(this, 10, 10);
+  tl1 = new QVBoxLayout(this, 10, 10);
   tl1->addSpacing(5);
   QHBoxLayout *tl = new QHBoxLayout;
   tl1->addLayout(tl);
