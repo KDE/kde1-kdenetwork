@@ -128,9 +128,8 @@ msgid "Sorry, can't create modem lock file."
 msgstr "Désolé, je ne peux pas créer le fichier de verrouillage du modem."
 
 #: connect.cpp:122 connect.cpp:185 modeminfo.cpp:67
-#, fuzzy
 msgid "Looking for Modem ..."
-msgstr "Recherche du modem..."
+msgstr "Recherche de votre modem..."
 
 #: connect.cpp:131 debug.cpp:86 main.cpp:842
 msgid "Log"
@@ -153,7 +152,6 @@ msgid "Dialing"
 msgstr "Appel en cours"
 
 #: connect.cpp:325
-#, fuzzy
 msgid "Line Busy. Hanging up ..."
 msgstr "La ligne est occupée. Je raccroche..."
 
@@ -238,7 +236,6 @@ msgid "LoopEnd without mathing Start! Line: "
 msgstr "Fin de boucle (LoopEnd) sans début (Start) à la ligne : "
 
 #: connect.cpp:747
-#, fuzzy
 msgid "Starting pppd ..."
 msgstr "Lancement de pppd..."
 
@@ -259,9 +256,8 @@ msgid "Looping: "
 msgstr "Répétition : "
 
 #: connect.cpp:925 modeminfo.cpp:332
-#, fuzzy
 msgid "One Moment Please ..."
-msgstr "Un instant s'il vous plaît..."
+msgstr "Veuillez patienter..."
 
 #: connect.cpp:969
 msgid "Script timed out!"
@@ -276,12 +272,10 @@ msgid "Expecting: "
 msgstr "Attente de : "
 
 #: connect.cpp:1040
-#, fuzzy
 msgid "Logging on to Network ..."
 msgstr "Connexion au réseau..."
 
 #: connect.cpp:1067
-#, fuzzy
 msgid "Running Startup Command ..."
 msgstr "Lancement de la commande de démarrage..."
 
@@ -952,9 +946,8 @@ msgid "Initializing Modem"
 msgstr "Initialisation du modem"
 
 #: miniterm.cpp:223
-#, fuzzy
 msgid "Hanging up ..."
-msgstr "Décrochage..."
+msgstr "Raccrochage en cours..."
 
 #: miniterm.cpp:243
 msgid "Resetting Modem"
