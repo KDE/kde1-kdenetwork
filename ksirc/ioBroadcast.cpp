@@ -36,7 +36,7 @@ void KSircIOBroadcast::sirc_receive(QString str)
 
   while(it.current()){
     if(it.current()->getBroadcast() == TRUE)
-      it.current()->sirc_receive(QString(qstrdup(str.data())));
+      it.current()->sirc_receive(str);
     ++it;
   }
 
@@ -51,7 +51,7 @@ void KSircIOBroadcast::control_message(int command, QString str)
 
   while(it.current()){
     if(it.current() != this)
-      it.current()->control_message(command, QString(qstrdup(str.data())));
+      it.current()->control_message(command, str);
     ++it;
   }
 }
@@ -62,6 +62,12 @@ filterRuleList *KSircIOBroadcast::defaultRules()
   filterRule *fr;
   filterRuleList *frl = new  filterRuleList();
   frl->setAutoDelete(TRUE);
+  fr = new filterRule();
+  fr->desc = "Remove Just bold in parts and joins";
+  fr->search = "\\*\\x02\\S+\\x02\\*";
+  fr->from = "\\*\\x02(\\S+)\\x02\\*";
+  fr->to = "\\*$1\\*";
+  frl->append(fr);
   fr = new filterRule();
   fr->desc = "Search for dump ~'s";
   fr->search = "\\W~\\S+@\\S+\\W";
@@ -83,7 +89,7 @@ filterRuleList *KSircIOBroadcast::defaultRules()
   fr = new filterRule();
   fr->desc = "Bold to KSIRC bold";
   fr->search = ".*";
-  fr->from = "(?g)([^\\*])\\x02([^\\*])";
+  fr->from = "(?g)\\x02";
   fr->to = "$1~b$2";
   frl->append(fr);
   return frl;

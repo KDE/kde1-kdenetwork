@@ -40,11 +40,16 @@ class UserControlMenu {
 		  int _accel = 0, 
 		  int _type = 0, 
 		  bool _op_only = FALSE) 
-    { title = _title; 
-      action = _action; 
+    { title = qstrdup(_title); 
+      action = qstrdup(_action); 
       accel = _accel; 
       type = (itype) _type; 
       op_only = _op_only; }
+  ~UserControlMenu()
+    {
+      delete title;
+      delete action;
+    }
   char *title;
   char *action;
   int accel;
@@ -64,7 +69,7 @@ public:
   ~KSircTopLevel();
 
 signals:
-  void outputLine(QString);
+  void outputLine(QString&);
   void open_toplevel(QString);
   void closing(KSircTopLevel *, char *);
   void changeChannel(QString, QString);
@@ -102,14 +107,14 @@ protected:
    virtual QString findNick(QString);
 
 private:
-  int sirc_stdin, sirc_stdout, sirc_stderr;
-  char line_buf[1024];
   bool continued_line;
   KNewPanner *pan;
   KSircListBox *mainw;
   aHistLineEdit *linee;
   QSocketNotifier *sirc_r_notif;
   aListBox *nicks;
+  QVBoxLayout *gm;
+  QHBoxLayout *gm2;
 
   KSircProcess *proc;
 

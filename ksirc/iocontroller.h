@@ -28,7 +28,7 @@ public slots:
   virtual void stdout_read(KProcess *proc, char *_buffer, int buflen);
   virtual void stderr_read(KProcess *proc, char *_buffer, int buflen);
 
-  virtual void stdin_write(QString);
+  virtual void stdin_write(QString&);
 
   virtual void sircDied(KProcess *);
 

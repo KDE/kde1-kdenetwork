@@ -15,6 +15,7 @@ class ircListItem : public QObject,
  Q_OBJECT;
  public:
   ircListItem(QString s, const QColor *c, QListBox *lb, QPixmap *p=0, bool _WantColour = FALSE);
+  ~ircListItem();
 
   virtual int row();
 

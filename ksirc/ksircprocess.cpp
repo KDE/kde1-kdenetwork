@@ -100,7 +100,7 @@ KSircProcess::KSircProcess( char *_server=0L, QObject * parent=0, const char * n
   : QObject(parent, name)
 {
 
-  server = _server;
+  server = qstrdup(_server);
 
   QDict<KSircMessageReceiver> nTopList(17, FALSE);
   TopList = nTopList;
@@ -112,8 +112,10 @@ KSircProcess::KSircProcess( char *_server=0L, QObject * parent=0, const char * n
   proc->start(KProcess::NotifyOnExit, KProcess::All);
 
   iocontrol = new KSircIOController(proc, this);
-  iocontrol->stdin_write("/eval $version .= \"+9KSIRC\"\n");
-  iocontrol->stdin_write("/load filters.pl\n");
+  QString command = "/eval $version .= \"+9KSIRC\"\n";
+  iocontrol->stdin_write(command);
+  command = "/load filters.pl\n";
+  iocontrol->stdin_write(command);
 
   running_window = TRUE;        // True so we do create the default
   new_toplevel("!default");     // 
@@ -132,8 +134,8 @@ KSircProcess::KSircProcess( char *_server=0L, QObject * parent=0, const char * n
   TopList.insert("!all", new KSircIOBroadcast(this));
   TopList.insert("!discard", new KSircIODiscard(this));
   KSircIODCC *dcc = new KSircIODCC(this);
-  connect(dcc, SIGNAL(outputLine(QString)),
-	  iocontrol, SLOT(stdin_write(QString)));	      
+  connect(dcc, SIGNAL(outputLine(QString&)),
+	  iocontrol, SLOT(stdin_write(QString&)));	      
   TopList.insert("!dcc", dcc);
   filters_update();
   
@@ -146,6 +148,7 @@ KSircProcess::~KSircProcess()
   delete proc;               // Delete process, seems to kill sirc, good.
   delete iocontrol;          // Take out io controller
   emit delete_toplevel(QString(server), QString()); // Say we're closing.
+  delete server;
 }
 
 void KSircProcess::new_toplevel(QString str)
@@ -159,12 +162,12 @@ void KSircProcess::new_toplevel(QString str)
   else if(!TopList[str]){  // If the window doesn't exist, continue
     // Create a new toplevel, and add it to the toplist.  
     // TopList is a list of KSircReceivers so we still need wm.
-    KSircTopLevel *wm = new KSircTopLevel(this, qstrdup(str.data()));
+    KSircTopLevel *wm = new KSircTopLevel(this, str.data());
     TopList.insert(str, wm);
     // Connect needed signals.  For a !message window we never want it
     // becomming the default so we ignore focusIn events into it.
-    connect(wm, SIGNAL(outputLine(QString)), 
-	    iocontrol, SLOT(stdin_write(QString)));
+    connect(wm, SIGNAL(outputLine(QString&)), 
+	    iocontrol, SLOT(stdin_write(QString&)));
     connect(wm, SIGNAL(open_toplevel(QString)),
 	    this,SLOT(new_toplevel(QString)));
     connect(wm, SIGNAL(closing(KSircTopLevel *, char *)),
@@ -189,7 +192,8 @@ void KSircProcess::close_toplevel(KSircTopLevel *wm, char *name)
   bool is_default = FALSE; // Assume it's no default
 
   if(TopList.count() <= 5){ // If this is the last window shut down
-    iocontrol->stdin_write(QString("/quit\n")); // kill sirc
+    QString command = "/quit\n";
+    iocontrol->stdin_write(command); // kill sirc
     delete this; // Delete ourself, WARNING MUST RETURN SINCE WE NO
 		 // LONGER EXIST!!!!
     return;      // ^^^^^^^^^^^^^^^
@@ -256,7 +260,8 @@ void KSircProcess::recvChangeChannel(QString old_chan, QString
 void KSircProcess::filters_update()
 {
   QString command, next_part, key, data;
-  iocontrol->stdin_write(QString("/crule\n"));
+  command = "/crule\n";
+  iocontrol->stdin_write(command);
   QDictIterator<KSircMessageReceiver> it(TopList);
   filterRuleList *frl;
   filterRule *fr;

@@ -49,6 +49,11 @@ ircListItem::ircListItem(QString s, const QColor *c, QListBox *lb, QPixmap *p = 
 
 }
 
+ircListItem::~ircListItem()
+{
+  delete paint_text;
+}
+
 void ircListItem::paint(QPainter *p)
 {
   QPen pen = p->pen();

@@ -250,7 +250,8 @@ void KSircIODCC::getFile()
   QString filename = text.mid(pos, text.length() - pos);
   if(DlgList[filename]->isVisible() == FALSE)
     DlgList[filename]->show();
-  emit outputLine("/dcc get " + nick + " " + filename + "\n");
+  QString command = "/dcc get " + nick + " " + filename + "\n";
+  emit outputLine(command);
   for(uint i = 0; i < pending->fileListing()->count(); i++)
     if(QString(pending->fileListing()->text(i)) == (nick + " offered " + filename))
       pending->fileListing()->removeItem(i);
@@ -266,7 +267,8 @@ void KSircIODCC::forgetFile()
   QString nick = text.mid(0, pos);
   pos = text.find(" ", pos+1) + 1;
   QString filename = text.mid(pos, text.length() - pos);
-  emit outputLine("/dcc close get " + nick + " " + filename + "\n");
+  QString command = "/dcc close get " + nick + " " + filename + "\n";
+  emit outputLine(command);
   for(uint i = 0; i < pending->fileListing()->count(); i++)
     if(QString(pending->fileListing()->text(i)) == (nick + " offered " + filename))
       pending->fileListing()->removeItem(i);
@@ -284,7 +286,7 @@ filterRuleList *KSircIODCC::defaultRules()
   fr = new filterRule();
   fr->desc = "Capture DCC IO Messages";
   fr->search = "\\*\\cbD\\cb\\*.*DCC";
-  fr->from = "^(?:~\S+~)";
+  fr->from = "^(?:~\\S+~)";
   fr->to = "~!dcc~";
   frl->append(fr);
   return frl;

@@ -158,7 +158,7 @@ void servercontroller::new_ksircprocess(QString str)
   ConnectionTree->insertItem(str.data(), pic_server, -1, FALSE); // Insert new base
                                                            // level parent
   add_toplevel(str, QString("default"));                   // Set a dflt chan
-  KSircProcess *proc = new KSircProcess(qstrdup(str.data())); // Create proc
+  KSircProcess *proc = new KSircProcess(str.data()); // Create proc
   proc_list.insert(str.data(), proc);                      // Add proc to hash
   connect(proc, SIGNAL(made_toplevel(QString, QString)),   // Connect new 
 	  this, SLOT(add_toplevel(QString, QString)));     //

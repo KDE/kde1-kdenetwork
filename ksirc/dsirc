@@ -1766,10 +1766,6 @@ sub donumeric {
     &tell("*** You are marked as being away");
     $away=1;
     &dostatus;
-  } elsif ($cmd eq '309') {
-    &yetonearg;
-    &yetonearg;
-    &tell("*** $newarg is a Services Administrator");
   } elsif ($cmd eq '311') {
     local($g, $n, $u, $m, $g, $r)=split(/ +/, $args, 6);
     $r =~ s/^://;
@@ -1783,7 +1779,7 @@ sub donumeric {
   } elsif ($cmd eq '313') {
     &yetonearg;
     &yetonearg;
-    &tell("*** $newarg is an IRC Operator");
+    &tell("*** $newarg $args");
   } elsif ($cmd eq '314') {
     local($g, $n, $u, $m, $g, $r)=split(/ +/, $args, 6);
     $r =~ s/^://;

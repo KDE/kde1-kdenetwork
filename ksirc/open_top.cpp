@@ -57,7 +57,7 @@ void open_top::create_toplevel()
 {
   int item_found = 0;
   for(int i = 0; i < nameSLE->count() ; i++){
-    if(strcmp(nameSLE->currentText(), nameSLE->text(i)) == 0){
+    if(strcasecmp(nameSLE->currentText(), nameSLE->text(i)) == 0){
       item_found = 1;
       //cerr << "Found one!\n";
     }
@@ -67,7 +67,7 @@ void open_top::create_toplevel()
     nameSLE->insertItem(nameSLE->currentText(), -1);
 
   if(strlen(nameSLE->currentText()) > 0)
-    emit open_toplevel( (QString) nameSLE->currentText());
+    emit open_toplevel( ((QString) nameSLE->currentText()).lower());
 
   close(TRUE);
 

@@ -47,12 +47,12 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
 
   proc = _proc;
 
-  channel_name = cname;
+  channel_name = qstrdup(cname);
   if(channel_name){
-    QString s = channel_name;
-    int pos2 = s.find(' ', 0);
-    if(pos2 > 0)
-      channel_name = qstrdup(s.mid(0, pos2).data());
+  //    QString s = channel_name;
+  //    int pos2 = s.find(' ', 0);
+  //    if(pos2 > 0)
+  //      channel_name = qstrdup(s.mid(0, pos2).data());
     
     setCaption(channel_name);
     caption = channel_name;
@@ -90,8 +90,8 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
   QFrame *f = new QFrame(this, "frame");
   setView(f);  // Tell the KApplication what the main widget is.
 
-  QVBoxLayout *gm = new QVBoxLayout(f, 5); // Main top layout
-  QHBoxLayout *gm2 = new QHBoxLayout(10);   // Layout for users text and users box
+  gm = new QVBoxLayout(f, 5); // Main top layout
+  gm2 = new QHBoxLayout(10);   // Layout for users text and users box
   gm->addLayout(gm2);
 
   //  mainw = new QListBox(f, "mle");          // Make a flat QListBox.  I want the
@@ -249,8 +249,10 @@ KSircTopLevel::~KSircTopLevel()
   //  if(proc->getWindowList()[channel_name])
   //    proc->getWindowList().remove(channel_name);
 
-  if((channel_name[0] == '#') || (channel_name[0] == '&'))
-    emit outputLine(QString("/part ") + channel_name + "\n");
+  if((channel_name[0] == '#') || (channel_name[0] == '&')){
+    QString str = QString("/part ") + channel_name + "\n";
+    emit outputLine(str);
+  }
 
   int tick, step;
   ticker->speed(&tick, &step);
@@ -259,6 +261,14 @@ KSircTopLevel::~KSircTopLevel()
   kConfig->writeEntry("tick", tick);
   kConfig->writeEntry("step", step);
   kConfig->sync();
+
+  delete ticker;
+  delete gm; // Deletes everthing bellow it I guess...
+  //  delete gm2; 
+  //  delete pan; // Should be deleted by gm2
+  //  delete linee; // ditto
+  delete LineBuffer;
+  delete user_controls;
 
   //  close(sirc_stdin);  // close all the pipes
   //  close(sirc_stdout); // ditto
@@ -561,7 +571,7 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
       case 's':                            // moved [sirc] message
 	s2+=10;                            // set the rest of the line
 					   // to the caption
-	if(strcmp(s2, caption) != 0){
+	if(s2 != caption){
 	  if(s2[0] == '@')                 // If we're an op,, 
 	                                   // update the nicks popup menu
 	    opami = TRUE;                  // opami = true sets us to an op
@@ -570,7 +580,7 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	  UserUpdateMenu();                // update the menu
 	  setCaption(s2);
 	  ticker->setCaption(s2);
-	  caption = qstrdup(s2);           // Make copy so we're not 
+	  caption = s2;           // Make copy so we're not 
 	                                   // constantly changing the title bar
 	}
 	no_output = 1;                     // Don't print caption
@@ -712,6 +722,7 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	pixmap = pix_greenp;                   // set green pin
 	color =   kSircConfig->colour_chan;     // set green
 	if(string.contains("You have joined channel")){
+
 	  int chan = string.findRev(" ", -1) + 1;
 	  ASSERT(chan > 0);
 	  s3 = string.mid(chan, string.length() - chan);
@@ -757,45 +768,82 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	pixmap = pix_star;        // why? looks cool for dorks
 	break;
       case '+':
-	pos = string.find("Mode change \"+o ", 0);
 	if(pos > 0){
-	  pos += 16;
-	  pos2 = string.find("\"", pos);
-	  s3 = string.mid(pos, pos2-pos);
-	  for(uint i = 0; i < nicks->count(); i++){
-	    if(strcmp(s3, nicks->text(i)) == 0){
-	      nicks->setAutoUpdate(FALSE);
-	      nicks->removeItem(i);           // remove old nick
-	      ircListItem *irc = new ircListItem(s3, &red, nicks);
-	      irc->setWrapping(FALSE);
-	      // add new nick in sorted pass,with colour
-	      nicks->inSort(irc, TRUE);
-	      nicks->setAutoUpdate(TRUE);
-	      nicks->repaint();
+	  cerr << "Doing: " << string << endl;
+	  QStrList mode, arg;
+	  char plus[] = "+";
+	  pos += 13;
+	  int endmode = string.find(" ", pos);
+	  if(string[endmode-1] == '"')
+	    endmode--;
+	  int nextarg = endmode + 1;
+	  for(; pos < endmode; pos++){
+	    switch(string[pos]){
+	    case '+':
+	    case '-':
+	      plus[0] = string[pos];
+	      break;
+	    case 'o':
+	    case 'v':
+	    case 'b':
+	    case 'l':
+	    case 'k':
+	      mode.append(plus + string.mid(pos, 1));
+	      {
+		int end = string.find(" ", nextarg);
+		if(end == -1){
+		  cerr << "No arg: " << string << endl;
+		  arg.append("");
+		  break;
+		}
+		if(string[end-1] == '"')
+		  end--;
+		arg.append(string.mid(nextarg, end - nextarg));
+		nextarg = end+1;
+	      }
+	      break;
+	    default:
+	      mode.append(plus + string.mid(pos, 1));
+	      arg.append("");
 	    }
 	  }
-	}
-	pos = string.find("Mode change \"-o ", 0);
-	if(pos > 0){
-	  pos += 16;
-	  pos2 = string.find("\"", pos);
-	  s3 = string.mid(pos, pos2-pos);
-	  for(uint i = 0; i < nicks->count(); i++){
-	    if(strcmp(s3, nicks->text(i)) == 0){
-	      nicks->setAutoUpdate(FALSE);
-	      nicks->removeItem(i);           // remove old nick
-	      nicks->inSort(s3);    // add new nick in sorted pass,with colour
-	      nicks->setAutoUpdate(TRUE);
-	      nicks->repaint();
+	  for(uint i = 0; i < mode.count(); i++){
+	    if(strcasecmp(mode.at(i), "+o") == 0){
+	      for(uint j = 0; j < nicks->count(); j++){
+		if(strcmp(arg.at(i), nicks->text(j)) == 0){
+		  nicks->setAutoUpdate(FALSE);
+		  nicks->removeItem(j);           // remove old nick
+		  ircListItem *irc = new ircListItem(arg.at(i), &red, nicks);
+		  irc->setWrapping(FALSE);
+		  // add new nick in sorted pass,with colour
+		  nicks->inSort(irc, TRUE);
+		  nicks->setAutoUpdate(TRUE);
+		  nicks->repaint();
+		}
+	      }
+	    }
+	    else if(strcasecmp(mode.at(i), "-o") == 0){
+	      for(uint j = 0; j < nicks->count(); j++){
+		if(strcmp(arg.at(i), nicks->text(j)) == 0){
+		  nicks->setAutoUpdate(FALSE);
+		  nicks->removeItem(j);     // remove old nick
+		  nicks->inSort(arg.at(i)); // add new nick in sorted pass,with colour
+		  nicks->setAutoUpdate(TRUE);
+		  nicks->repaint();
+		}
+	      }
+	    }
+	    else{
+	      cerr << "Did not handle: " << mode.at(i) << " arg: " << arg.at(i)<<endl;
 	    }
 	  }
 	}
       default:
-	string.remove(0, 3);      // by dflt remove junk, and use a ball
-	pixmap = pix_bball;       // ball isn't used else where so we
-				  // can track down unkonws and add them
-	color = kSircConfig->colour_info;
-	//	cerr << "Unkoown control: " << c << endl;
+        string.remove(0, 3);      // by dflt remove junk, and use a ball
+        pixmap = pix_bball;       // ball isn't used else where so we
+	// can track down unkonws and add them
+        color = kSircConfig->colour_info;
+        //      cerr << "Unkoown control: " << c << endl;
       }
     }
     break;
@@ -982,7 +1030,7 @@ void KSircTopLevel::initPopUpMenu()
 	key = "MenuOpOnly-" + cindex;
 	oponly = kConfig->readNumEntry(key); 
 	
-	user_menu.append(new UserControlMenu(qstrdup(title.data()), qstrdup(action.data()), accel, type, (bool) oponly));
+	user_menu.append(new UserControlMenu(title.data(), action.data(), accel, type, (bool) oponly));
       }
     }
   }
@@ -1059,8 +1107,10 @@ void KSircTopLevel::resizeEvent(QResizeEvent *e)
 void KSircTopLevel::gotFocus()
 {
   if(have_focus == 0){
-    if(channel_name[0] == '#')
-      emit outputLine("/join " + QString(channel_name) + "\n");
+    if(channel_name[0] == '#'){
+      QString str = "/join " + QString(channel_name) + "\n";
+      emit outputLine(str);
+    }
     have_focus = 1;
     emit currentWindow(this);
     //    cerr << channel_name << " got focusIn Event\n";
@@ -1081,6 +1131,8 @@ void KSircTopLevel::control_message(int command, QString str)
 {
   switch(command){
   case CHANGE_CHANNEL: // 001 is defined as changeChannel
+    if(channel_name)
+      delete channel_name;
     channel_name = qstrdup(str.data());
     have_focus = 0;
     setCaption(channel_name);

@@ -146,7 +146,7 @@ void KSircIOController::stdout_read(KProcess *, char *_buffer, int buflen)
 
   //  buf[buflen] = 0;
 
-  QString buffer(buf, buflen+1);
+  QString buffer(_buffer, buflen+1);
 
   name = "!default";
 
@@ -177,7 +177,7 @@ void KSircIOController::stdout_read(KProcess *, char *_buffer, int buflen)
       pos3 = line.find('~', 1);
       if(pos3 > 0){
 	name = line.mid(1,pos3-1);
-	name = name.lower();
+	name = name.lower(); 
 	line.remove(0, pos3+1);
       }
     }
@@ -219,7 +219,7 @@ void KSircIOController::stderr_read(KProcess *p, char *b, int l)
   stdout_read(p, b, l);
 }
 
-void KSircIOController::stdin_write(QString s)
+void KSircIOController::stdin_write(QString &s)
 {
 
   proc->writeStdin(s.data(), s.length());

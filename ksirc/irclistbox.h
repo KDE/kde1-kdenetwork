@@ -7,7 +7,7 @@ class KSircListBox : public QListBox
  Q_OBJECT;
  public:
   KSircListBox(QWidget * parent=0, const char * name=0, WFlags f=0);
-
+  ~KSircListBox();
   virtual void scrollToBottom();
 
 //  virtual void scrollBarUpdates(bool);
