@@ -37,10 +37,10 @@ extern KApplication*	app;
 GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
   : QWidget(parent, name)
 {
-  QGridLayout *tl = new QGridLayout(this, 11, 4, 10, 10);
+  QGridLayout *tl = new QGridLayout(this, 10, 4, 10, 10);
   tl->addRowSpacing(0, fontMetrics().lineSpacing() - 10); // magic
   box = new QGroupBox(klocale->translate("kppp Setup"), this,"box");
-  tl->addMultiCellWidget(box, 0, 10, 0, 3);
+  tl->addMultiCellWidget(box, 0, 9, 0, 3);
   
 //   label1 = new QLabel(this,"path");
 //   label1->setText(klocale->translate("pppd Path:"));
@@ -69,6 +69,7 @@ GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
   pppdtimeout = new KIntegerLine(this, "pppdtimeout");
   pppdtimeout->setFixedHeight(pppdtimeout->sizeHint().height());
   pppdtimeout->setMaxLength(TIMEOUT_SIZE);
+  pppdtimeout->setMinimumWidth(pppdtimeout->sizeHint().width()/4);
   pppdtimeout->setText(gpppdata.pppdTimeout());
   connect(pppdtimeout, SIGNAL(textChanged(const char*)),
 	  SLOT(pppdtimeoutchanged(const char*)));
@@ -79,59 +80,59 @@ GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
   labeltmp->setMinimumSize(labeltmp->sizeHint());
   l1->addWidget(labeltmp, 2);
 
-  logviewerlabel = new QLabel(this,"logviewerlabel");
-  logviewerlabel->setText(klocale->translate("Log Viewer:"));
-  logviewerlabel->setMinimumSize(logviewerlabel->sizeHint());
-  tl->addWidget(logviewerlabel, 2, 1);
+//   logviewerlabel = new QLabel(this,"logviewerlabel");
+//   logviewerlabel->setText(klocale->translate("Log Viewer:"));
+//   logviewerlabel->setMinimumSize(logviewerlabel->sizeHint());
+//   tl->addWidget(logviewerlabel, 2, 1);
 
-  logviewer = new QLineEdit(this, "logvieweredit");
-  logviewer->setMinimumWidth(logviewer->sizeHint().width());
-  logviewer->setFixedHeight(logviewer->sizeHint().height());
-  logviewer->setMaxLength(PATH_SIZE);
-  logviewer->setText(gpppdata.logViewer());
-  connect(logviewer, SIGNAL(textChanged(const char*)),
-	  SLOT(logviewerchanged(const char*)));
-  tl->addWidget(logviewer, 2, 2);
+//   logviewer = new QLineEdit(this, "logvieweredit");
+//   logviewer->setMinimumWidth(logviewer->sizeHint().width());
+//   logviewer->setFixedHeight(logviewer->sizeHint().height());
+//   logviewer->setMaxLength(PATH_SIZE);
+//   logviewer->setText(gpppdata.logViewer());
+//   connect(logviewer, SIGNAL(textChanged(const char*)),
+// 	  SLOT(logviewerchanged(const char*)));
+//   tl->addWidget(logviewer, 2, 2);
 
-  tl->addRowSpacing(3, 5);
+  tl->addRowSpacing(2, 5);
 
   chkbox6 = new QCheckBox(klocale->translate("Dock into Panel on Connect"),this,"dockingbox");
   chkbox6->setMinimumSize(chkbox6->sizeHint());
   chkbox6->setChecked(gpppdata.get_dock_into_panel());
   connect(chkbox6,SIGNAL(toggled(bool)),this,SLOT(docking_toggled(bool)));
-  tl->addMultiCellWidget(chkbox6, 4, 4, 1, 2);
+  tl->addMultiCellWidget(chkbox6, 3, 3, 1, 2);
 
   chkbox2 = new QCheckBox(klocale->translate("Automatic Redial on Disconnect"),
 			  this,"redialbox");
   chkbox2->setMinimumSize(chkbox2->sizeHint());
   chkbox2->setChecked(gpppdata.get_automatic_redial());
   connect(chkbox2,SIGNAL(toggled(bool)),this,SLOT(redial_toggled(bool)));
-  tl->addMultiCellWidget(chkbox2, 5, 5, 1, 2);
+  tl->addMultiCellWidget(chkbox2, 4, 4, 1, 2);
 
   chkbox3 = new QCheckBox(klocale->translate("Show Clock on Caption"),
 			  this,"captionbox");
   chkbox3->setMinimumSize(chkbox3->sizeHint());
   chkbox3->setChecked(gpppdata.get_show_clock_on_caption());
   connect(chkbox3,SIGNAL(toggled(bool)),this,SLOT(caption_toggled(bool)));
-  tl->addMultiCellWidget(chkbox3, 6, 6, 1, 2);
+  tl->addMultiCellWidget(chkbox3, 5, 5, 1, 2);
 
   chkbox4 = new QCheckBox(klocale->translate("Disconnect on X-server shutdown"),this,"captionbox");
   chkbox4->setMinimumSize(chkbox4->sizeHint());
   chkbox4->setChecked(gpppdata.get_xserver_exit_disconnect());
   connect(chkbox4,SIGNAL(toggled(bool)),this,SLOT(xserver_toggled(bool)));
-  tl->addMultiCellWidget(chkbox4, 7, 7, 1, 2);
+  tl->addMultiCellWidget(chkbox4, 6, 6, 1, 2);
 
   chkbox7 = new QCheckBox(klocale->translate("Quit on Disconnect"),this,"quitbox");
   chkbox7->setMinimumSize(chkbox7->sizeHint());
   chkbox7->setChecked(gpppdata.quit_on_disconnect());
   connect(chkbox7,SIGNAL(toggled(bool)),this,SLOT(quit_toggled(bool)));
-  tl->addMultiCellWidget(chkbox7, 8, 8, 1, 2);
+  tl->addMultiCellWidget(chkbox7, 7, 7, 1, 2);
 
   chkbox5 = new QCheckBox(klocale->translate("Minimize Window on Connect"),this,"iconifybox");
   chkbox5->setMinimumSize(chkbox5->sizeHint());
   chkbox5->setChecked(gpppdata.get_iconify_on_connect());
   connect(chkbox5,SIGNAL(toggled(bool)),this,SLOT(iconify_toggled(bool)));
-  tl->addMultiCellWidget(chkbox5, 9, 9, 1, 2);
+  tl->addMultiCellWidget(chkbox5, 8, 8, 1, 2);
 
   tl->activate();
 }
@@ -170,11 +171,11 @@ void GeneralWidget::quit_toggled(bool on){
 
 }
 
-void GeneralWidget::logviewerchanged(const char *n){
+// void GeneralWidget::logviewerchanged(const char *n){
+   
+//   gpppdata.setlogViewer(n);
 
-  gpppdata.setlogViewer(n);
-
-}
+// }
 
 
 // void GeneralWidget::pppdpathchanged(const char *n) {

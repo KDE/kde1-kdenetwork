@@ -181,28 +181,28 @@ int runTests() {
     }
   }
 
-  // Test 3: search the logviewer
-  if(strlen(gpppdata.logViewer()) > 0) {
-    f = findFileInPath( gpppdata.logViewer() );
-    if( f.length() == 0 || access(f.data(), X_OK) != 0 ) {
-      QString s;
-      QString dflt;
+//   // Test 3: search the logviewer
+//   if(strlen(gpppdata.logViewer()) > 0) {
+//     f = findFileInPath( gpppdata.logViewer() );
+//     if( f.length() == 0 || access(f.data(), X_OK) != 0 ) {
+//       QString s;
+//       QString dflt;
 
-      // search default
-      dflt = findFileInPath( "kedit" );
-      if( dflt.length() == 0 || access(dflt.data(), X_OK) != 0 )
-	dflt = "kvt -e less";
+//       // search default
+//       dflt = findFileInPath( "kedit" );
+//       if( dflt.length() == 0 || access(dflt.data(), X_OK) != 0 )
+// 	dflt = "kvt -e less";
 
-      s.sprintf(klocale->translate("The logviewer \"%s\" was not found!\n\n"
-				   "Setting default back to \"%s\"."),
-		gpppdata.logViewer(), dflt.data());
-      QMessageBox::information(0,
-			       klocale->translate("Information"),
-			       s.data());
-      gpppdata.setlogViewer(dflt.data());
-      gpppdata.save();
-    }
-  }
+//       s.sprintf(klocale->translate("The logviewer \"%s\" was not found!\n\n"
+// 				   "Setting default back to \"%s\"."),
+// 		gpppdata.logViewer(), dflt.data());
+//       QMessageBox::information(0,
+// 			       klocale->translate("Information"),
+// 			       s.data());
+//       gpppdata.setlogViewer(dflt.data());
+//       gpppdata.save();
+//     }
+//   }
 
   // Test 4: check for undesired 'lock' option in /etc/ppp/options
   int fd;

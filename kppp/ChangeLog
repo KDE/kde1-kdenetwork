@@ -1,3 +1,9 @@
+Mon May 18 19:51:56 1998  Mario Weilguni <mweilguni@kde.org>
+
+	* introduced a separate log-viewer "kppplogview"
+	* removed the no-more needed entry widget for the log-viewer
+	* removed test code checking for log viewer
+
 1998-05-15  Harri Porten  <porten@tu-harburg.de>
 
 	* pppdata.cpp: temporary workaround for KConfig bug concerning

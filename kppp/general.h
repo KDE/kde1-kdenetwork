@@ -54,7 +54,7 @@ private slots:
   
 //  void 	pppdpathchanged(const char*);
   void 	pppdtimeoutchanged(const char *n);
-  void 	logviewerchanged(const char*);
+  //  void 	logviewerchanged(const char*);
   void 	caption_toggled(bool);
   void  iconify_toggled(bool on); 
   void 	redial_toggled(bool on);
@@ -83,8 +83,8 @@ private:
   QCheckBox 	*chkbox7;
 
   QLineEdit 	*pppdtimeout;
-  QLineEdit 	*logviewer;
-  QLabel    	*logviewerlabel;
+  //  QLineEdit 	*logviewer;
+  //  QLabel    	*logviewerlabel;
   //  QLineEdit 	*pppdpath;
 
 

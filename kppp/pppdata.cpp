@@ -341,17 +341,17 @@ void PPPData::setpppdPath(const char *n) {
 }
 
 
-const char* PPPData::logViewer() {
+// const char* PPPData::logViewer() {
 
-  return readConfig (GENERAL_GRP, LOGVIEWER_KEY, "kedit");
+//   return readConfig (GENERAL_GRP, LOGVIEWER_KEY, "kedit");
 
-}
+// }
 
-void PPPData::setlogViewer(const char *n) {
+// void PPPData::setlogViewer(const char *n) {
 
-  writeConfig(GENERAL_GRP, LOGVIEWER_KEY, n);
+//   writeConfig(GENERAL_GRP, LOGVIEWER_KEY, n);
 
-}
+// }
 
 const char* PPPData::pppdTimeout() {
 

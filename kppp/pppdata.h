@@ -66,7 +66,7 @@
 // general
 #define DEFAULTACCOUNT_KEY "DefaultAccount"
 #define PPPDPATH_KEY       "pppdPath"
-#define LOGVIEWER_KEY      "LogViewer"
+//#define LOGVIEWER_KEY      "LogViewer"
 #define PPPDTIMEOUT_KEY    "pppdTimeout"
 #define SHOWCLOCK_KEY      "ShowClock"
 #define SHOWLOGWIN_KEY     "ShowLogWindow"
@@ -184,8 +184,8 @@ public:
   void set_dock_into_panel(bool set);
   const bool get_dock_into_panel();
 
-  const char* logViewer();
-  void setlogViewer(const char*);
+//   const char* logViewer();
+//   void setlogViewer(const char*);
 
   const char* pppdPath();
   void setpppdPath(const char *);

@@ -34,6 +34,7 @@ foreach i [glob -nocomplain ~/.kde/share/apps/kppp/Log/*-199?] {
 	    puts -nonewline $fout "$date:$s2"
 	    set PHASE 2
 	} else {
+	    set PHASE 1
 	    if {[regexp {(.*:.*:.*):} $line s s1]} {
 		set date [clock scan $s1]
 		
@@ -42,8 +43,7 @@ foreach i [glob -nocomplain ~/.kde/share/apps/kppp/Log/*-199?] {
 		regexp {.*:\ *([0-9.]+)\ *(.*)} $line1 s s1 s2
 		regexp {.*:\ *([0-9.]+)\ *(.*)} $line2 s s3 s4
 		puts $fout ":$s2:$date:$s1:$s3:-1:-1"
-		set PHASE 1
-	    }	    
+	    }
 	}
     }
     close $fin

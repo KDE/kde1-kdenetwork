@@ -26,7 +26,7 @@
 
 #include <qdir.h>
 #include <qlayout.h>
-#include <qfiledlg.h>
+//#include <qfiledlg.h>
 #include <kmsgbox.h>
 
 #include "macros.h"
@@ -194,36 +194,36 @@ void AccountWidget::slotListBoxSelect(int idx) {
 
 void AccountWidget::viewLogClicked(){
 
-  QString d;
-  d = QDir::homeDirPath() + "/";
-  d += ACCOUNTING_PATH ;
-  d += "/Log/";
+//   QString d;
+//   d = QDir::homeDirPath() + "/";
+//   d += ACCOUNTING_PATH ;
+//   d += "/Log/";
 
-  QString fileName = QFileDialog::getOpenFileName(d.data());
+//   QString fileName = QFileDialog::getOpenFileName(d.data());
 
-  if ( !fileName.isNull() ) {                
+//   if ( !fileName.isNull() ) {                
 
-    /*      char *args[100];
-	    char buffer[2024];
-     */
+//     /*      char *args[100];
+// 	    char buffer[2024];
+//      */
 
-      QString cmd;
-      cmd.sprintf("%s %s\n",gpppdata.logViewer(),fileName.data());
+//       QString cmd;
+//       cmd.sprintf("%s %s\n",gpppdata.logViewer(),fileName.data());
 
-      // strncpy(buffer,cmd.data(),2023);
-      // parseargs(buffer,args);
-      // printf("tyring to execute %s %s\n",gpppdata.logViewer(),*args);
+//       // strncpy(buffer,cmd.data(),2023);
+//       // parseargs(buffer,args);
+//       // printf("tyring to execute %s %s\n",gpppdata.logViewer(),*args);
 
 
     if(fork()==0){
 
       setuid(getuid());
-      system(cmd.data());
+      system("kppplogview -kppp");
       exit(0);
 
     }
 
-    }
+    //    }
 
 }
 

@@ -20,7 +20,7 @@ apps_DATA = Kppp.kdelnk
 # set the include path for X, qt and KDE
 INCLUDES= $(all_includes)
 # claim, which subdirectories you want to install
-SUBDIRS = docs pixmaps icons
+SUBDIRS = docs pixmaps icons logview
 
 # kppp wants to be installed suid root
 INSTALL_PROGRAM=$(INSTALL) -m 4755
