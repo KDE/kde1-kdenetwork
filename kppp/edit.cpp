@@ -96,6 +96,18 @@ DialWidget::DialWidget( QWidget *parent, const char *name )
   MIN_WIDTH(command);
   tl->addWidget(command, 6, 2);
 
+  predisconnect_label = new QLabel(this);
+  predisconnect_label->setText(i18n("Execute program\nbefore disconnect:"));
+  predisconnect_label->setAlignment(AlignVCenter);
+  MIN_SIZE(predisconnect_label);
+  tl->addWidget(predisconnect_label, 7, 1);
+
+  predisconnect = new QLineEdit(this);
+  predisconnect->setMaxLength(COMMAND_SIZE);
+  FIXED_HEIGHT(predisconnect);
+  MIN_WIDTH(predisconnect);
+  tl->addWidget(predisconnect, 7, 2);
+
   discommand_label = new QLabel(this);
   discommand_label->setText(i18n("Execute program\nupon disconnect:"));
   discommand_label->setAlignment(AlignVCenter);
@@ -128,6 +140,7 @@ DialWidget::DialWidget( QWidget *parent, const char *name )
     number_l->setText(gpppdata.phonenumber());
     command->setText(gpppdata.command_on_connect());
     discommand->setText(gpppdata.command_on_disconnect());
+    predisconnect->setText(gpppdata.command_before_disconnect());
     auth->setCurrentItem(gpppdata.authMethod());
     store_password->setChecked(gpppdata.storePassword());
   }
@@ -148,6 +161,7 @@ bool DialWidget::save() {
     gpppdata.setAccname(connectname_l->text());
     gpppdata.setPhonenumber(number_l->text());
     gpppdata.setCommand_on_connect(command->text());
+    gpppdata.setCommand_before_disconnect(predisconnect->text());
     gpppdata.setCommand_on_disconnect(discommand->text());
     gpppdata.setAuthMethod(auth->currentItem());
     gpppdata.setStorePassword(store_password->isChecked());

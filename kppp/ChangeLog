@@ -1,3 +1,10 @@
+1998-07-19  Harri Porten  <porten@tu-harburg.de>
+
+	* merged killppp() and terminatepppd() in killpppd()	
+	* main.cpp: added execute_command() to launch external programms
+	* added "Command Before Disconnect" for people who have to clean
+	up before they leave the net
+
 1998-07-11  Harri Porten  <porten@tu-harburg.de>
 
 	* main.cpp: replaced ~/.kde with kdelocaldir() 

@@ -924,6 +924,18 @@ void PPPData::setCommand_on_disconnect( const char *n ) {
 
 }
 
+const char* PPPData::command_before_disconnect() {
+
+  return readConfig(cgroup, BEFORE_DISCONNECT_KEY);
+
+}
+
+void PPPData::setCommand_before_disconnect( const char *n ) {
+
+  writeConfig(cgroup, BEFORE_DISCONNECT_KEY, n);
+
+}
+
 const char* PPPData::ipaddr() {
 
   return readConfig(cgroup, IPADDR_KEY);

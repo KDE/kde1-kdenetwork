@@ -111,6 +111,7 @@
 #define STORE_PASSWORD_KEY "StorePassword"
 #define COMMAND_KEY        "Command"
 #define DISCONNECT_COMMAND_KEY "DisconnectCommand"
+#define BEFORE_DISCONNECT_KEY  "BeforeDisconnect"
 #define IPADDR_KEY         "IPAddr"
 #define SUBNETMASK_KEY     "SubnetMask"
 #define ACCTENABLED_KEY    "AccountingEnabled"
@@ -303,6 +304,9 @@ public:
 
   const char* command_on_disconnect();
   void setCommand_on_disconnect(const char*);
+
+  const char* command_before_disconnect();
+  void setCommand_before_disconnect(const char*);
 
   const char* ipaddr();
   void setIpaddr(const char *);

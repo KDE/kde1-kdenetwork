@@ -101,9 +101,6 @@ private slots:
 
 public slots:
   void disconnect();
-
-  //void lost_all_windows();
-
   void log_window_toggled(bool on);
 
 signals:
@@ -111,7 +108,6 @@ signals:
   void cmdl_start();
 
 public:
-  //  QCheckBox *log;
   QCheckBox *log;
   bool connected;
   DebugWidget *debugwindow;
@@ -154,7 +150,8 @@ private:
   AboutWidget *about;
 };
 
-extern void killppp();
+void killpppd();
 void dieppp(int);
+pid_t execute_command(const char *);
 
 #endif

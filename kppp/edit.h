@@ -73,6 +73,9 @@ private:
   QLineEdit *command;
   QLabel *command_label;
 
+  QLineEdit *predisconnect;
+  QLabel *predisconnect_label;
+
   QLineEdit *discommand;
   QLabel *discommand_label;
 

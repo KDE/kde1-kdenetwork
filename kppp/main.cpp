@@ -70,8 +70,6 @@ QString old_hostname;
 QString local_ip_address;
 QString remote_ip_address;
 
-void terminatepppd();
-
 void usage(char* progname){
 
   fprintf(stderr, "%s -- valid command line options:\n", progname);
@@ -597,15 +595,22 @@ void dieppp(int sig) {
   if(sig == SIGCHLD){
 
 #ifdef MY_DEBUG
-  printf("The Signal received was a SIGCHLD\n");
+    printf("The Signal received was a SIGCHLD\n");
 #endif
 
     signal(SIGCHLD, dieppp); // reinstall the sig handler
     id = wait(&st);
 
 #ifdef MY_DEBUG
-    printf("pid of the process which died: %d\n",id);
-    printf("status of that process: %i\n", st);
+    if (id > 0)
+      if(WIFEXITED(st))
+        printf("process %i exited normally with return code %i\n",
+               id, WEXITSTATUS(st));
+      else
+        printf("process %i exited abnormally.\n", id);
+    else
+      printf("wait() returned error %i\n", errno);
+    
 #endif
 
     // if we are not connected pppdpid is -1 so have have to check for that
@@ -627,24 +632,10 @@ void dieppp(int sig) {
 
       gpppdata.setpppdpid(-1);
 
-      if(strcmp(gpppdata.command_on_disconnect(), "") != 0) {
-    
-	pid_t id;
-
 #ifdef MY_DEBUG
-	printf(
-	       "Executing command on disconnect since pppd has died: %s\n",
-	       gpppdata.command_on_disconnect()
-	       );
+      printf("Executing command on disconnect since pppd has died:\n");
 #endif
-
-	if((id = fork()) == 0) {
-	  setuid(getuid());
-	  system(gpppdata.command_on_disconnect());
-	  exit(0);
-	}	 
-      }
-
+      execute_command(gpppdata.command_on_disconnect());
 
       p_kppp->stopAccounting();
 
@@ -702,6 +693,7 @@ void dieppp(int sig) {
     }
   }
 }
+
 
 void KPPPWidget::newdefaultaccount(int i) {
   gpppdata.setDefaultAccount(connectto_c->text(i));
@@ -846,11 +838,32 @@ void KPPPWidget::connectbutton() {
 
 void KPPPWidget::disconnect() {
 
+  if (strcmp(gpppdata.command_before_disconnect(), "") != 0) {
+
+    con_win->hide();
+    con->show();
+    con->setCaption("Disconnecting ...");
+    con->setMsg("Executing command before disconnection.");
+
+    kapp->processEvents();
+    pid_t id = execute_command(gpppdata.command_before_disconnect());
+    int i, status;
+
+    do {
+      kapp->processEvents();
+      i = waitpid(id, &status, WNOHANG);
+      usleep(500000);
+    } while (i == 0 && errno == 0);
+
+    con->hide();
+  }
+
   kapp->processEvents();
 
   stats->stop_stats();
-  terminatepppd();
-  gpppdata.setpppdpid(-1);
+  killpppd();
+
+  execute_command(gpppdata.command_on_disconnect());
   
   PAP_RemoveAuthFile();
   CHAP_RemoveAuthFile();
@@ -870,8 +883,8 @@ void KPPPWidget::disconnect() {
   if(quit_on_disconnect) {
     kapp->exit(0);
   } else {
-    p_kppp->quit_b->setFocus();
-    p_kppp->show();
+    this->quit_b->setFocus();
+    this->show();
   }
 }
 
@@ -895,8 +908,8 @@ void KPPPWidget::quitbutton() {
 				 i18n("No"));
 
     if(ok) {
-      terminatepppd();
-      gpppdata.setpppdpid(-1);
+      killpppd();
+      execute_command(gpppdata.command_on_disconnect());
       removedns();
       unlockdevice();
       kapp->quit();
@@ -975,45 +988,54 @@ void KPPPWidget::setPW_Edit(const char *pw) {
 }
 
 
-void terminatepppd() {
+void killpppd() {
   
 #ifdef MY_DEBUG
-printf("In terminatepppd(): I will attempt to kill pppd\n");
+  printf("In killpppd(): I will attempt to kill pppd\n");
 #endif
 
   int stat;
 
   if(gpppdata.pppdpid() >= 0) {
 
-
-    if(kill(gpppdata.pppdpid(), SIGTERM) < 0)
+    if(kill(gpppdata.pppdpid(), SIGTERM) < 0) {
+#ifdef MY_DEBUG
+      fprintf(stderr, "Error killing %d\n",gpppdata.pppdpid());
+#endif MY_DEBUG
       KApplication::beep();
+      return;
+    }
       
     wait(&stat);
 
     gpppdata.setpppdpid(-1);
 
-      if(strcmp(gpppdata.command_on_disconnect(), "") !=0) {
-    
-	pid_t id;
-
-#ifdef MY_DEBUG
-  printf(
-	 "Executing command on disconnect in terminatedpppd(): %s\n",
-	 gpppdata.command_on_disconnect()
-	 );
-#endif
-
-	if((id = fork()) == 0) {
-	  setuid(getuid());
-	  system(gpppdata.command_on_disconnect());
-	  exit(0);
-	}	 
-      }
-    
   }
 
-  gpppdata.setpppdpid(-1);
+}
+
+pid_t execute_command (const char *command) {
+  
+  if(!command || strcmp(command, "") ==0 || strlen(command) > COMMAND_SIZE)
+    return (pid_t) -1;
+    
+  pid_t id;
+    
+#ifdef MY_DEBUG
+  printf("Executing command: %s\n", command);
+#endif
+
+  if((id = fork()) == 0) {
+    // don't bother dieppp()
+    signal(SIGCHLD, SIG_IGN);
+    // drop privileges if running setuid root
+    setuid(getuid());
+    
+    system(command);
+    exit(0);
+  }	 
+
+  return id;
 
 }
 

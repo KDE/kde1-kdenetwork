@@ -708,7 +708,7 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
       cancelbutton();
   }
 
-  if(vmain == 10) {   // was 12
+  if(vmain == 10) { 
     if(!expecting) {
 
       int result;
@@ -1021,7 +1021,7 @@ void ConnectWidget::if_waiting_timed_out(){
   gpppdata.setpppdError(E_IF_TIMEOUT);
 
   // let's kill the stuck pppd
-  killppp();
+  killpppd();
 
   p_kppp->stopAccounting();
   p_kppp->con_win->stopClock();
@@ -1063,16 +1063,11 @@ void ConnectWidget::if_waiting_slot(){
 
   if(strcmp(gpppdata.command_on_connect(), "") != 0) {
     
-    pid_t id;
     messg->setText(i18n("Running Startup Command ..."));
 
     kapp->flushX(); /* make sure that we don't get any asyn errors*/
 
-    if((id = fork()) == 0) {
-      setuid(getuid());
-      system(gpppdata.command_on_connect());
-      exit(0);
-    }	 
+    execute_command(gpppdata.command_on_connect());
     
     messg->setText(i18n("Done"));
       
@@ -1345,14 +1340,13 @@ bool ConnectWidget::execppp() {
 
   command = "pppd";
 
-  command += " -detach";
-
   command += " ";
   command += gpppdata.modemDevice();
 
   command += " " ;
   command += gpppdata.speed();
 
+  command += " -detach";
 
   if(strcmp(gpppdata.ipaddr(), "0.0.0.0") != 0 ||
      strcmp(gpppdata.gateway(), "0.0.0.0") != 0) {
@@ -1494,33 +1488,11 @@ void ConnectWidget::closeEvent( QCloseEvent *e ){
 }
 
 
-void killppp() {
-  
-#ifdef MY_DEBUG
-printf("In killppp(): I will attempt to kill pppd\n");
-#endif MY_DEBUG
- 
+void ConnectWidget::setMsg(const char* msg) {
 
-  if(gpppdata.pppdpid() >= 0) {
-
-#ifdef MY_DEBUG
-printf("Sending SIGTERM to %d\n",gpppdata.pppdpid());
-#endif MY_DEBUG
-
-
-    if(kill(gpppdata.pppdpid(), SIGTERM) < 0)
-#ifdef MY_DEBUG
-printf("Error killing %d\n",gpppdata.pppdpid());
-#endif MY_DEBUG
-      kapp->beep();
-  }
-
-
+  messg->setText(msg);
 
 }
-
-
-
 // Set the hostname and domain from DNS Server
 
 void auto_hostname(){

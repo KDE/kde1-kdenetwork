@@ -52,8 +52,6 @@
 #include "pwentry.h"
 #include "docking.h"
 
-extern QApplication *qApp;
-
 #define MAXLOOPNEST (MAX_SCRIPT_ENTRIES/2)
 
 class ConnectWidget : public QWidget {
@@ -69,7 +67,8 @@ public:
 
 public:
 
-void  set_con_speed_string();
+  void set_con_speed_string();
+  void setMsg(const char *);
 
 protected:
   void timerEvent(QTimerEvent *);
@@ -156,7 +155,7 @@ private:
 
 
 // non-member function to kill&wait on the pppd child process
-void killppp();
+extern void killppp();
 void adddns();
 void removedns();
 void add_domain(const char* newdomain);
