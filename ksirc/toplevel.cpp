@@ -57,6 +57,9 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
   else
     caption = "";
 
+  LineBuffer = new QStrList();
+  Buffer = FALSE;
+
   have_focus = 0;
   
   QPopupMenu *file = new QPopupMenu();
@@ -89,7 +92,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
   mainw = new KSircListBox(f, "mle");
   mainw->setFocusPolicy(QWidget::NoFocus); // Background and base colour of
   mainw->setEnabled(FALSE);                // the lb to be the same as the main
-  //  mainw->setSmoothScrolling(TRUE);     // ColourGroup, but this is BAD BAD
+  mainw->setSmoothScrolling(TRUE);         // ColourGroup, but this is BAD BAD
   mainw->setFont(QFont("fixed", 10));      // Since we don't use KDE requested
   QColorGroup cg = QColorGroup(colorGroup().foreground(), colorGroup().mid(), 
     			       colorGroup().light(), colorGroup().dark(),
@@ -217,6 +220,18 @@ KSircTopLevel::~KSircTopLevel()
   //  close(sirc_stderr); // duh... ;)
 
 }
+
+void KSircTopLevel::sirc_stop(bool STOP = FALSE)
+{
+  if(STOP == TRUE){
+    Buffer = TRUE;
+  }
+  else{
+    Buffer = FALSE;
+    if(LineBuffer->isEmpty() == FALSE)
+      sirc_receive(QString(""));
+  }
+}
   
 void KSircTopLevel::sirc_receive(QString str)
 {
@@ -234,29 +249,52 @@ void KSircTopLevel::sirc_receive(QString str)
    * If we have to many lines, nuke the top 100, leave us with 100
    */
 
-  ircListItem *item;
+  if(Buffer == FALSE){
+    if(LineBuffer->count() >= 2){
+      mainw->setAutoUpdate(FALSE);
+    }
+    
+    if(str.isEmpty() == FALSE){
+      LineBuffer->append(str);
+    }
 
-  if(mainw->count() > 200){
-    mainw->setAutoUpdate(FALSE);
-    for(int i = 0; i < 100; i++)
-      mainw->removeItem(0);
-    mainw->setAutoUpdate(TRUE);
-    mainw->repaint(TRUE);
-  }
+    ircListItem *item = 0;
+    char *pchar;
+    QString string;
 
-  // Get the need list box item, with colour, etc all set
-  item = parse_input(str);
-  // If we shuold add anything, add it.
-  // Item might be null, if we shuoold ingore the line
-  
-  if(item){
-    // Insert line to the end
-    mainw->insertItem(item, -1);
+    for(pchar = LineBuffer->first(); pchar != 0; pchar=LineBuffer->next()){
+      // Get the need list box item, with colour, etc all set
+      string = pchar;
+      item = parse_input(string);
+      // If we shuold add anything, add it.
+      // Item might be null, if we shuoold ingore the line
+      
+      if(item){
+	// Insert line to the end
+	mainw->insertItem(item, -1);
+	lines++; // Mode up lin counter
+      }
+    }
+    LineBuffer->clear(); // Clear it since it's been added
+
+    if(mainw->count() > 200){
+      mainw->setAutoUpdate(FALSE);
+      while(mainw->count() > 100)
+	mainw->removeItem(0);
+    }
+
     // If we need to scroll, we, scroll =)
-    if(mainw->count() > (uint) mainw->numItemsVisible())
-      mainw->setTopItem(mainw->count()-1);
-      //      mainw->setTopItem(mainw->count() - mainw->numItemsVisible());
-    lines++; // Mode up lin counter
+    if((mainw->count() > (uint) mainw->numItemsVisible()) && (item != 0))
+      mainw->setTopItem(mainw->count() - mainw->numItemsVisible() + 1 + item->row());
+
+    if(mainw->autoUpdate() == FALSE){
+      mainw->setAutoUpdate(TRUE);
+      mainw->repaint(TRUE);
+    }
+    
+  }
+  else{
+    LineBuffer->append(str);
   }
 }
 
@@ -314,7 +352,7 @@ void KSircTopLevel::sirc_write(QString &str)
     }
     else if(strnicmp(str, "/me", 3) == 0){
       str.remove(0, 3);
-      str.prepend(QString("/de ") + channel_name + QString(" "));
+      str.prepend(QString("/de ") + channel_name);
     }
   }
   
@@ -725,9 +763,9 @@ void KSircTopLevel::AccelScrollDownPage()
   int topItem = ((int) mainw->topItem() + mainw->numItemsVisible()) + 1;
 
   if(topItem > ((int) mainw->count()))
-     topItem = mainw->count() -  mainw->numItemsVisible() + 1;
-
-  mainw->setTopItem(topItem);
+    mainw->setTopItem(mainw->count()-mainw->numItemsVisible());
+  else
+    mainw->setTopItem(topItem);
 }
 
 void KSircTopLevel::AccelScrollUpPage()

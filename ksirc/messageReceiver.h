@@ -15,8 +15,10 @@ public:
   virtual ~KSircMessageReceiver();
 
   virtual void sirc_receive(QString str) = 0;
+  virtual void sirc_stop(bool STOP = FALSE);
 
   virtual void control_message(QString str);
+
 
 private:
   KSircProcess *proc;

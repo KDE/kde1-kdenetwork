@@ -82,6 +82,7 @@ signals:
 
 public slots:
   void sirc_receive(QString str);
+  void sirc_stop(bool STOP = FALSE);
   void sirc_line_return(); 
 
   void control_message(QString str); 
@@ -118,6 +119,9 @@ private:
 
   QList<QString> contents;
   int lines;
+
+  bool Buffer;
+  QStrList *LineBuffer;
 
   ircListItem *parse_input(QString &string);
   void sirc_write(QString &str);

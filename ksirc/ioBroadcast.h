@@ -18,6 +18,7 @@ public:
   virtual ~KSircIOBroadcast();
 
   virtual void sirc_receive(QString str);
+  virtual void sirc_stop(bool STOP = FALSE);
 
 private:
   KSircProcess *proc;

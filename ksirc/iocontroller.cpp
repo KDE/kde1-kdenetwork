@@ -63,6 +63,7 @@ void KSircIOController::stdout_read(KProcess *, char *_buffer, int buflen)
     holder.truncate(0);
   }
   pos = pos2 = 0;
+  ksircproc->TopList["!all"]->sirc_stop(TRUE);
   do{
     pos2 = buffer.find('\n', pos);
     //      cerr << "Pos1/2: " << pos << '/' << pos2 << endl;
@@ -91,6 +92,7 @@ void KSircIOController::stdout_read(KProcess *, char *_buffer, int buflen)
   } while((uint) pos < buffer.length());
 
   holder = tmp;
+  ksircproc->TopList["!all"]->sirc_stop(FALSE);
 
 }
 
