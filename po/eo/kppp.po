@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1998-12-27 02:01+0100\n"
+"POT-Creation-Date: 1998-12-28 02:07+0100\n"
 "PO-Revision-Date: 1998-12-07 18:00+0100\n"
 "Last-Translator: Wolfram Diestel <diestel@rzaix340.rz-uni-leipzig.de>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
@@ -184,7 +184,7 @@ msgstr ""
 msgid "Login script has unbalanced loop Start/End"
 msgstr "Salutprogrameto havas nekongruan blokon Start/End"
 
-#: connect.cpp:97 connect.cpp:195 main.cpp:975
+#: connect.cpp:97 connect.cpp:195 main.cpp:978
 msgid "Connecting to: "
 msgstr "Kontaktita al: "
 
@@ -197,7 +197,7 @@ msgstr "Padonu, ne eblas krei þlosodosieron por modemo"
 msgid "Looking for Modem ..."
 msgstr "Rigardante je modemo..."
 
-#: connect.cpp:120 debug.cpp:80 main.cpp:988
+#: connect.cpp:120 debug.cpp:80 main.cpp:991
 msgid "Log"
 msgstr "Raporto"
 
@@ -1100,7 +1100,7 @@ msgstr ""
 "la modemrespondo <i>CONNECT</i>. La rekomendita\n"
 "valoro estas 30 sekundoj."
 
-#: general.cpp:465 main.cpp:634
+#: general.cpp:465 main.cpp:636
 msgid "Modem"
 msgstr "Modemo"
 
@@ -1270,7 +1270,7 @@ msgstr ""
 "Tiu æi fenestro restas malfermita øis\n"
 "vi premas musbutonon aý klavon.\n"
 
-#: main.cpp:320
+#: main.cpp:322
 #, c-format
 msgid ""
 "kppp can't create or read from\n"
@@ -1279,7 +1279,7 @@ msgstr ""
 "kppp ne povas krei aý legi de\n"
 "%s."
 
-#: main.cpp:344
+#: main.cpp:346
 #, c-format
 msgid ""
 "kppp has detected a %s file.\n"
@@ -1299,15 +1299,15 @@ msgstr ""
 "forigu la dosieron kun la procesnumero kaj\n"
 "relanæu kppp."
 
-#: main.cpp:411
+#: main.cpp:413
 msgid "Connect to: "
 msgstr "Kontaktu al:"
 
-#: main.cpp:422
+#: main.cpp:424
 msgid "Login ID:"
 msgstr "Salutnomo:"
 
-#: main.cpp:435
+#: main.cpp:437
 msgid ""
 "Type in the username that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1325,11 +1325,11 @@ msgstr ""
 "<b>Grave:</b>: uskleco gravas tie æi:\n"
 "<i>miasekreto</i> diferencas de <i>MiaSekreto</i>!"
 
-#: main.cpp:444
+#: main.cpp:446
 msgid "Password:"
 msgstr "Pasvorto:"
 
-#: main.cpp:458
+#: main.cpp:460
 msgid ""
 "Type in the password that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1347,11 +1347,11 @@ msgstr ""
 "<b>Grave:</b>: uskleco gravas tie æi:\n"
 "<i>miasekreto</i> diferencas de <i>MiaSekreto</i>!"
 
-#: main.cpp:472
+#: main.cpp:474
 msgid "Show Log Window"
 msgstr "Montru raportfenestron"
 
-#: main.cpp:479
+#: main.cpp:481
 msgid ""
 "This controls whether a log window is shown.\n"
 "A log window shows the communication between\n"
@@ -1369,15 +1369,15 @@ msgstr ""
 "Elþaltu, se <i>kppp</i> normale kontaktas sen\n"
 "problemoj"
 
-#: main.cpp:502
+#: main.cpp:504
 msgid "Setup"
 msgstr "Agordu"
 
-#: main.cpp:518
+#: main.cpp:520
 msgid "Connect"
 msgstr "Kontaktu"
 
-#: main.cpp:602
+#: main.cpp:604
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -1386,46 +1386,46 @@ msgstr ""
 "Ne ekzistas tiu konto:\n"
 "%s"
 
-#: main.cpp:616
+#: main.cpp:618
 msgid "kppp Configuration"
 msgstr "kppp-agorda¼o"
 
-#: main.cpp:632
+#: main.cpp:634
 msgid "Accounts"
 msgstr "kontoj"
 
-#: main.cpp:633
+#: main.cpp:635
 msgid "Device"
 msgstr "aparato"
 
-#: main.cpp:635
+#: main.cpp:637
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:636
+#: main.cpp:638
 msgid "Graph"
 msgstr "Grafo"
 
-#: main.cpp:798
+#: main.cpp:799
 msgid "Timeout expired while waiting for the PPP interface to come up!"
 msgstr ""
 
-#: main.cpp:803
+#: main.cpp:804
 msgid "The pppd daemon died unexpectedly!"
 msgstr ""
 
-#: main.cpp:811
+#: main.cpp:812
 msgid "Details..."
 msgstr "Detaloj..."
 
-#: main.cpp:836
+#: main.cpp:837
 msgid ""
 "Sorry. kppp's helper process just died.\n"
 "\n"
 "Since a further execution would be pointless, kppp will shut down right now."
 msgstr ""
 
-#: main.cpp:871
+#: main.cpp:874
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1446,7 +1446,7 @@ msgstr ""
 "servprogramon.\n"
 "Dankon"
 
-#: main.cpp:886
+#: main.cpp:889
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1459,7 +1459,7 @@ msgstr ""
 "bonvolu certigi, ke vi donis al kppp SUID-permeson kaj ke\n"
 "pppd estas rulebla."
 
-#: main.cpp:900
+#: main.cpp:903
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1480,7 +1480,7 @@ msgstr ""
 "de la konfigurodialogo.\n"
 "Dankon"
 
-#: main.cpp:920
+#: main.cpp:923
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1489,7 +1489,7 @@ msgstr ""
 "Vi elektis la identigmetodon PAP. Tio\n"
 "necesigas, ke vi donas uzantonomon kaj pasvorton!"
 
-#: main.cpp:929
+#: main.cpp:932
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1498,7 +1498,7 @@ msgstr ""
 "Ne eblis krei PAP-identig-dosieron\n"
 "\"%s\""
 
-#: main.cpp:946
+#: main.cpp:949
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -1507,7 +1507,7 @@ msgstr ""
 "Vi elektis la identigmetodon CHAP. Tio\n"
 "necesigas, ke vi donas uzantonomon kaj pasvorton!"
 
-#: main.cpp:955
+#: main.cpp:958
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1516,19 +1516,19 @@ msgstr ""
 "Ne eblis krei CHAP-identig-dosieron\n"
 "\"%s\""
 
-#: main.cpp:967
+#: main.cpp:970
 msgid "You must specify a telephone number!"
 msgstr "Vi devas doni telefonnumeron!"
 
-#: main.cpp:1054
+#: main.cpp:1057
 msgid "Quit kPPP?"
 msgstr "Æu fini kPPP?"
 
-#: main.cpp:1055
+#: main.cpp:1058
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Se vi finas kPPP ankaý finiøos via PPP-seanco."
 
-#: main.cpp:1090
+#: main.cpp:1093
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
