@@ -243,9 +243,9 @@ void IPWidget::resizeEvent(QResizeEvent *) {
   box1->setGeometry(10, 10, width() - 20, height() - 20);
 
   // calculate the best with for the frame
-  int minw = MAX(ipaddress_label->sizeHint().width() + 6,
+  int minw = QMAX(ipaddress_label->sizeHint().width() + 6,
 		 sub_label->sizeHint().width() + 6) +
-    MAX(ipaddress_l->sizeHint().width(),
+    QMAX(ipaddress_l->sizeHint().width(),
 	subnetmask_l->sizeHint().width()) + 10 + 20;
 
   int minh = 2 * ipaddress_l->sizeHint().height() + 
@@ -371,7 +371,7 @@ DNSWidget::DNSWidget( QWidget *parent, const char *name )
   connect(add, SIGNAL(clicked()), SLOT(adddns()));
   FIXED_HEIGHT(add);
   int width = add->sizeHint().width();
-  width = MAX(width,60);
+  width = QMAX(width,60);
   add->setMinimumWidth(width);
   l111->addWidget(add);
   l111->addStretch(1);
@@ -380,7 +380,7 @@ DNSWidget::DNSWidget( QWidget *parent, const char *name )
   connect(remove, SIGNAL(clicked()), SLOT(removedns()));
   FIXED_HEIGHT(remove);
   width = remove->sizeHint().width();
-  width = MAX(width,60);
+  width = QMAX(width,60);
   remove->setMinimumWidth(width);
 
   l111->addWidget(remove);
@@ -503,7 +503,7 @@ void GatewayWidget::resizeEvent(QResizeEvent *) {
     gatewayaddr->sizeHint().width() + 40;
 
   int minh = 
-    MAX(gatewayaddr->sizeHint().height(),
+    QMAX(gatewayaddr->sizeHint().height(),
 	gate_label->sizeHint().height()) +
 	fontMetrics().lineSpacing() + 20;
 
@@ -587,7 +587,7 @@ ScriptWidget::ScriptWidget( QWidget *parent, const char *name )
   connect(add, SIGNAL(clicked()), SLOT(addButton()));
   FIXED_HEIGHT(add);
   int width = add->sizeHint().width();
-  width = MAX(width,60);
+  width = QMAX(width,60);
   add->setMinimumWidth(width);
 
 
@@ -595,14 +595,14 @@ ScriptWidget::ScriptWidget( QWidget *parent, const char *name )
   connect(insert, SIGNAL(clicked()), SLOT(insertButton()));
   FIXED_HEIGHT(insert);
   width = insert->sizeHint().width();
-  width = MAX(width,60);
+  width = QMAX(width,60);
   insert->setMinimumWidth(width);
 
   remove = new QPushButton(i18n("Remove"), this, "remove");
   connect(remove, SIGNAL(clicked()), SLOT(removeButton()));
   FIXED_HEIGHT(remove);
   width = remove->sizeHint().width();
-  width = MAX(width,60);
+  width = QMAX(width,60);
   remove->setMinimumWidth(width);
 
   QHBoxLayout *l11 = new QHBoxLayout;

@@ -1,3 +1,9 @@
+1998-07-29  Harri Porten  <porten@tu-harburg.de>
+
+	* macros.h: replaced remaining MAX with QMAX
+	* main.cpp: followed recommendation of the Unix Programming FAQ to
+	use _exit() instead of exit() in child processes  
+
 1998-07-25  Harri Porten  <porten@tu-harburg.de>
 
 	* connect.cpp: rewrote check for stale lock files. After dropping

@@ -1033,7 +1033,7 @@ pid_t execute_command (const char *command) {
     setuid(getuid());
     
     system(command);
-    exit(0);
+    _exit(0);
   }	 
 
   return id;

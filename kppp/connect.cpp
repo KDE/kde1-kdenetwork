@@ -137,7 +137,7 @@ ConnectWidget::ConnectWidget(QWidget *parent, const char *name)
   cancel->setFocus();
   connect(cancel, SIGNAL(clicked()), SLOT(cancelbutton()));
 
-  int maxw = MAX(cancel->sizeHint().width(),
+  int maxw = QMAX(cancel->sizeHint().width(),
 		 debug->sizeHint().width());
   maxw = QMAX(maxw,65);
   debug->setFixedWidth(maxw);
@@ -1469,7 +1469,7 @@ bool ConnectWidget::execppp() {
 #endif
 
       execve(gpppdata.pppdPath(), args, '\0');
-      exit(0);
+      _exit(0);
   }
 
   return true;
@@ -1750,7 +1750,7 @@ int lockdevice() {
     printf("Device is locked by: %s\n", &oldlock);
 #endif
       
-    pid_t oldpid;
+    int oldpid;
     int match = sscanf(oldlock, "%d", &oldpid);
 
     // found a pid in lockfile ?
@@ -1758,7 +1758,7 @@ int lockdevice() {
       return 1;
     
     // check if process exists
-    if (kill(oldpid, 0) == 0)
+    if (kill((pid_t)oldpid, 0) == 0)
       return 1;
     if (errno != ESRCH)
       return 1;
