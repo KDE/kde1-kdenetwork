@@ -236,8 +236,9 @@ void checkConf()
         ask.entry->setText(getenv("ORGANIZATION"));
         ask.exec();
         data=ask.entry->text();
+        if (data.isEmpty())
+            data="-";
         conf->writeEntry("Organization",data);
-
         identity->setOrganization(data);
     }
 
