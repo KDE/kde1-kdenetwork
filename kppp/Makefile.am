@@ -23,7 +23,7 @@ INCLUDES= $(all_includes)
 SUBDIRS = docs pixmaps icons logview
 
 # kppp wants to be installed suid root
-INSTALL_PROGRAM=$(INSTALL) -m 4755
+INSTALL_PROGRAM=$(INSTALL) -m 4755 -o root
 
 # This one gets installed 
 bin_PROGRAMS = 	kppp
