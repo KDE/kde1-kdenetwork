@@ -112,7 +112,6 @@ private:
   QTimer *timeout_timer;
   void escape_to_command_mode();
   void hangup();
-  speed_t modemspeed();
   bool opentty();
   bool execppp();
 
@@ -160,9 +159,5 @@ void adddns();
 void removedns();
 void add_domain(const char* newdomain);
 void auto_hostname();
-
-extern bool modem_is_locked;
-int lockdevice();
-void unlockdevice();
 
 #endif

@@ -51,6 +51,7 @@
 #include "chap.h"
 #include "docking.h"
 #include "runtests.h"
+#include "modem.h"
 
 #include <X11/Xlib.h>
 
@@ -62,8 +63,10 @@ QPixmap *miniIcon = 0;
 bool	have_cmdl_account;
 bool 	pppd_has_died = false;
 bool 	reconnect_on_disconnect = false;
-bool 	modem_is_locked = false;
 bool    quit_on_disconnect = false;
+
+extern int lockdevice();
+extern void unlockdevice();
 
 int totalbytes;
 
@@ -623,7 +626,7 @@ void dieppp(int sig) {
 #ifdef MY_DEBUG
   printf("It was pppd that died\n");
 #endif
-      // when we killppp() on Cancel in ConnectWidget 
+      // when we killpppd() on Cancel in ConnectWidget 
       // we set pppid to -1 so we won't 
       // enter this block
 
@@ -991,25 +994,31 @@ void KPPPWidget::setPW_Edit(const char *pw) {
 
 void killpppd() {
   
-#ifdef MY_DEBUG
-  printf("In killpppd(): I will attempt to kill pppd\n");
-#endif
-
   int stat;
+  pid_t pid = gpppdata.pppdpid();
+  
+  if(pid >= 0) {
+    
+    gpppdata.setpppdpid(-1);
 
-  if(gpppdata.pppdpid() >= 0) {
-
-    if(kill(gpppdata.pppdpid(), SIGTERM) < 0) {
 #ifdef MY_DEBUG
-      fprintf(stderr, "Error killing %d\n",gpppdata.pppdpid());
+    printf("In killpppd(): Sending SIGTERM to %d\n", pid);
+#endif MY_DEBUG
+    
+    if(kill(pid, SIGTERM) < 0) {
+#ifdef MY_DEBUG
+      printf("Error terminating %d. Sending SIGKILL\n", pid);
+#endif MY_DEBUG
+      
+      if(kill(pid, SIGKILL) < 0)
+#ifdef MY_DEBUG
+        printf("Error killing %d\n", pid);
 #endif MY_DEBUG
       KApplication::beep();
       return;
     }
       
     wait(&stat);
-
-    gpppdata.setpppdpid(-1);
 
   }
 

@@ -39,6 +39,7 @@ kppp_SOURCES	= accounts.cpp \
 		general.cpp \
 		iplined.cpp \
 		main.cpp \
+                modem.cpp \
 		modemcmds.cpp \
 		pppdargs.cpp \
 		pppdata.cpp \
@@ -74,6 +75,7 @@ noinst_HEADERS = accounts.h \
 		general.h \
 		iplined.h \
 		main.h \
+                modem.h \
 		modemcmds.h \
 		pppdargs.h \
 		pppdata.h \

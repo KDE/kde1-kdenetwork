@@ -1,3 +1,12 @@
+1998-08-02  Harri Porten  <porten@tu-harburg.de>
+
+	* opentty(): fixed XON/XOFF flow control
+	* closetty(): flush data not read or transmitted
+	* main.cpp: enforce killpppd()
+	* modem.cpp: moved lockdevice(), unlockdevice() and modemspeed()
+	into this newly created file. opentty(), closetty() and hangup()
+	should follow soon to let them be shared between widgets.
+
 1998-07-30  Harri Porten  <porten@tu-harburg.de>
 
 	* connect.cpp: take the burden of specifying the modem lock file

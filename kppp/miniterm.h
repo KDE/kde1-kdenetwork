@@ -111,7 +111,6 @@ public slots:
   void readtty();
   void hangup();
   bool closetty();
-  speed_t modemspeed();
   void process_line();
   void help();
   void resetModem();

@@ -29,7 +29,7 @@
 #include <sys/types.h>
 
 
-#include "connect.h"
+#include "modem.h"
 #include "pppdata.h"
 #include "miniterm.h"
 
@@ -258,6 +258,9 @@ bool MiniTerm::closetty(){
 
   if(modemfd > 0)
 
+    /* discard data not read or transmitted */
+    tcflush(modemfd, TCIOFLUSH);
+
     if(tcsetattr(modemfd, TCSANOW, &initial_tty) < 0){
       statusbar->setText(i18n("Can't restore tty settings: tcsetattr()\n"));
     }
@@ -308,18 +311,18 @@ bool MiniTerm::opentty() {
   if(strcmp(gpppdata.flowcontrol(), "None") != 0) {
     if(strcmp(gpppdata.flowcontrol(), "CRTSCTS") == 0) {
       tty.c_cflag |= CRTSCTS;
-      tty.c_iflag &= ~IXOFF;
+      tty.c_iflag &= ~(IXON | IXOFF);
     }
     else {
       tty.c_cflag &= ~CRTSCTS;
-      tty.c_iflag |= IXOFF;
+      tty.c_iflag |= IXON | IXOFF;
       tty.c_cc[VSTOP]  = 0x13; // DC3 = XOFF = ^S 
       tty.c_cc[VSTART] = 0x11; // DC1 = XON  = ^Q 
     }
   }
   else {
     tty.c_cflag &= ~CRTSCTS;
-    tty.c_iflag &= ~IXOFF;
+    tty.c_iflag &= ~(IXON | IXOFF);
   }
 
   cfsetospeed(&tty, modemspeed());
@@ -334,62 +337,6 @@ bool MiniTerm::opentty() {
   return TRUE;
 }
 		
-
-
-speed_t MiniTerm::modemspeed() {
-
-  int i;
-
-  // convert the string modem speed int the gpppdata object to a t_speed type
-  // to set the modem.  The constants here should all be ifdef'd because
-  // other systems may not have them
-
-  i = atoi(gpppdata.speed())/100;
-
-  switch(i) {
-  case 24:
-    return B2400;
-    break;
-  case 96:
-    return B9600;
-    break;
-  case 192:
-    return B19200;
-    break;
-  case 384:
-    return B38400;
-    break;
-#ifdef B57600
-  case 576:
-    return B57600;
-    break;
-#endif
-
-#ifdef B115200
-  case 1152:
-    return B115200;
-    break;
-#endif
-
-#ifdef B230400
-  case 2304:
-    return B230400;
-    break;
-#endif
-
-#ifdef B460800 
-  case 4608:
-    return 4608;
-    break;
-#endif
-
-  default:            
-    return B9600;
-    break;
-  }
-}
-
-
 
 void MiniTerm::hangup() {
 

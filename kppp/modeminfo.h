@@ -72,7 +72,6 @@ public:
 
     bool 	opentty();
     bool 	closetty();
-    speed_t modemspeed();
     bool 	writeline(const char* );
     void  setExpect(const char *n);
     void hangup();
