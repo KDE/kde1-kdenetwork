@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 1998-10-12 14:17+0200\n"
+"POT-Creation-Date: 1998-12-06 01:58+0100\n"
 "Content-Type: text/plain; charset=\n"
 "Date: 1998-02-10 15:59:39+0100\n"
 "From: root (A. Rizzi),,, <root@BiliOne>\n"
@@ -9,69 +9,64 @@ msgstr ""
 "Translated to norwegian by: Svein Olav Aasen <svein.aasen@caa.no / "
 "soaasen@online.no>Date: 1998-03-17\n"
 
-#: kfinger.C:8 kfinger.C:34
+#: kfinger.C:23 kfinger.C:46
 msgid "KDE finger utility"
 msgstr "KDE Finger-verktøy"
 
-#: kfinger.C:14
+#: kfinger.C:29
 msgid "Finger Now"
 msgstr "Finger nå"
 
-#: kfinger.C:15
+#: kfinger.C:30
 msgid "Talk.."
 msgstr "Snakk..."
 
-#: kfinger.C:18
+#: kfinger.C:33
 msgid "Setup"
 msgstr "Oppsett"
 
-#: kfinger.C:19
+#: kfinger.C:34
 msgid "Save Options"
 msgstr "Lagre valg"
 
-#: kfinger.C:38
+#: kfinger.C:49
 msgid "Finger"
 msgstr "Finger"
 
-#: kfinger.C:39
+#: kfinger.C:50
 msgid "Stop current finger"
 msgstr "Sopp gjeldende finger"
 
-#: kfinger.C:41
+#: kfinger.C:52
 msgid "Talk..."
 msgstr "Snakk..."
 
-#: kfinger.C:42
+#: kfinger.C:53
 msgid "AutoFinger On/Off"
 msgstr "Autofinger på/av"
 
-#: kfinger.C:54
-msgid ""
-"Welcome to KDE Finger \n"
-"program by A.Rizzi rizzi@kde.org\n"
-"18/09/1997 \n"
+#: kfinger.C:65
+msgid "Welcome to KDE Finger\n"
 msgstr ""
-"Velkommen til KDE Finger \n"
-"et program av A.Rizzi rizzi@kde.org\n"
-"18/09/1997 \n"
 
-#: kfinger.C:55
+#: kfinger.C:66
 msgid "Finger result"
 msgstr "Finger resultat"
 
-#: kfinger.C:266
+#: kfinger.C:268
 #, c-format
 msgid "Error on server : %s"
 msgstr "Feil på tjener : %s"
 
-#: kfinger.C:285
+#: kfinger.C:287
 #, c-format
-msgid "Finger result for : %s@%s"
-msgstr "Finger resultat for : %s@%s"
+msgid "Finger  %s@%s   --   %s"
+msgstr ""
 
-#: kfinger.C:301
+#: kfinger.C:304
+#, fuzzy
 msgid ""
-"Kfinger 0.7.0\n"
+"Kfinger 0.8.0\n"
 "(c) by Andrea Rizzi\n"
 "rizzi@kde.org"
 msgstr ""
@@ -79,126 +74,138 @@ msgstr ""
 "(c) av Andrea Rizzi\n"
 "bilibao@ouverture.it"
 
-#: kfinger.C:345
+#: kfinger.C:350
 msgid "Kfinger Setup"
 msgstr "Kfinger-oppsett"
 
-#: kfinger.C:373 kfinger.C:413
+#: kfinger.C:378 kfinger.C:418
 msgid "&Add"
 msgstr "&Legg til"
 
-#: kfinger.C:383
+#: kfinger.C:388
 msgid "Server Name"
 msgstr "Tjenernavn"
 
-#: kfinger.C:387 kfinger.C:390
+#: kfinger.C:392 kfinger.C:395
 msgid "Server list"
 msgstr "Tjenerliste"
 
-#: kfinger.C:423
+#: kfinger.C:428
 msgid "User Name"
 msgstr "Brukernavn"
 
-#: kfinger.C:427 kfinger.C:430
+#: kfinger.C:432 kfinger.C:435
 msgid "Users list"
 msgstr "Brukerliste"
 
-#: kfinger.C:444
+#: kfinger.C:449
 msgid "Timed finger"
 msgstr "Timed finger"
 
-#: kfinger.C:459 kfinger.C:644
+#: kfinger.C:464 kfinger.C:651
 #, c-format
 msgid "Finger wait: %d\""
 msgstr "Finger vent: %d"
 
-#: kfinger.C:464
+#: kfinger.C:469
 msgid "Talk Command "
 msgstr "Talk-kommando "
 
-#: kfinger.C:474
+#: kfinger.C:479
 msgid "Misc"
 msgstr "Forskjellig"
 
-#: kfinger.C:479 kfinger.C:491
+#: kfinger.C:484 kfinger.C:496
 msgid "Finger Output"
 msgstr "Finger Output"
 
-#: kfinger.C:483
+#: kfinger.C:488
 msgid "Finger server"
 msgstr "Finger-tjener"
 
-#: kfinger.C:487 kfinger.C:499
+#: kfinger.C:492 kfinger.C:504
 msgid "Fixed"
 msgstr "Fast"
 
-#: kfinger.C:495
+#: kfinger.C:500
 msgid "Finger User"
 msgstr "Finger-bruker"
 
-#: kfinger.C:515
+#: kfinger.C:520
 msgid "Lines to skip :"
 msgstr "Linjer å hoppe over :"
 
-#: kfinger.C:523 kfinger.C:528
+#: kfinger.C:528 kfinger.C:533
 msgid "Format..."
 msgstr "Format..."
 
-#: kfinger.C:535
+#: kfinger.C:540
 msgid "User"
 msgstr "Bruker"
 
-#: kfinger.C:546
+#: kfinger.C:551
 msgid "Server"
 msgstr "Tjener"
 
-#: kfinger.C:558
+#: kfinger.C:563
 msgid "Talk"
 msgstr "Snakk"
 
-#: kfinger.C:691
+#: kfinger.C:698
 msgid "Talk with..."
 msgstr "Snakk med..."
 
-#: kfinger.C:758
+#: kfinger.C:765
 msgid "Format string for var1(string)"
 msgstr "Formater streng for var1(streng)"
 
-#: kfinger.C:764
+#: kfinger.C:771
 msgid "Fromat string for var2(int)"
 msgstr "Format streng for var2(int)"
 
-#: kfinger.C:784 kfinger.C:790
+#: kfinger.C:791 kfinger.C:797
 msgid "Offset"
 msgstr "Offset"
 
-#: kfinger.C:803
+#: kfinger.C:810
 msgid "Only var1"
 msgstr "Bare var1"
 
-#: kfinger.C:809
+#: kfinger.C:816
 msgid "Only var2"
 msgstr "Bare var2"
 
-#: kfinger.C:815
+#: kfinger.C:822
 msgid "var1, var2"
 msgstr "var1, var2"
 
-#: kfinger.C:821
+#: kfinger.C:828
 msgid "var2, var1"
 msgstr "var2, var1"
 
-#: kfinger.C:834
+#: kfinger.C:841
 msgid "Output format string"
 msgstr "Output format streng"
 
-#: kfinger.C:841
+#: kfinger.C:848
 msgid "Save & Quit"
 msgstr "Lagre avslutt"
 
-#: kfinger.C:851
+#: kfinger.C:858
 msgid "Output parameters "
 msgstr "Output parameters"
+
+#~ msgid ""
+#~ "Welcome to KDE Finger \n"
+#~ "program by A.Rizzi rizzi@kde.org\n"
+#~ "18/09/1997 \n"
+#~ msgstr ""
+#~ "Velkommen til KDE Finger \n"
+#~ "et program av A.Rizzi rizzi@kde.org\n"
+#~ "18/09/1997 \n"
+
+#~ msgid "Finger result for : %s@%s"
+#~ msgstr "Finger resultat for : %s@%s"
 
 #~ msgid "Quit"
 #~ msgstr "Avslutt"

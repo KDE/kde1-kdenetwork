@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-12-01 01:56+0100\n"
+"POT-Creation-Date: 1998-12-06 01:58+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Marian Rãdulescu <marian-r@usa.net>\n"
 "Language-Team: ROMANIAN <??@li.org>\n"
@@ -166,7 +166,7 @@ msgstr ""
 msgid "Login script has unbalanced loop Start/End"
 msgstr "Script de conectare cu bucle Start/End incomplete"
 
-#: connect.cpp:97 connect.cpp:195 main.cpp:984
+#: connect.cpp:97 connect.cpp:195 main.cpp:988
 msgid "Connecting to: "
 msgstr "Comectare la: "
 
@@ -179,7 +179,7 @@ msgstr "Nu se poate bloca accesul la modem"
 msgid "Looking for Modem ..."
 msgstr "Detecþie modem ..."
 
-#: connect.cpp:120 debug.cpp:80 main.cpp:997
+#: connect.cpp:120 debug.cpp:80 main.cpp:1001
 msgid "Log"
 msgstr "Jurnal"
 
@@ -302,37 +302,37 @@ msgstr "Am gãsit: "
 msgid "Looping: "
 msgstr "Buclã: "
 
-#: connect.cpp:876 modeminfo.cpp:225
+#: connect.cpp:877 modeminfo.cpp:225
 msgid "One Moment Please ..."
 msgstr "Aºteptaþi puþin ..."
 
-#: connect.cpp:918
+#: connect.cpp:920
 msgid "Script timed out!"
 msgstr "Script timed out!"
 
-#: connect.cpp:937
+#: connect.cpp:939
 #, fuzzy
 msgid "Scanning: "
 msgstr "Transmit "
 
-#: connect.cpp:947
+#: connect.cpp:949
 msgid "Expecting: "
 msgstr "Aºtept: "
 
-#: connect.cpp:974
+#: connect.cpp:976
 msgid "Logging on to Network ..."
 msgstr "Se face conectarea in reþea ..."
 
-#: connect.cpp:1000
+#: connect.cpp:1002
 msgid "Running Startup Command ..."
 msgstr "Execut comenzile de pornire ..."
 
-#: connect.cpp:1005 connect.cpp:1012
+#: connect.cpp:1007 connect.cpp:1014
 #, fuzzy
 msgid "Done"
 msgstr "Nimic"
 
-#: connect.cpp:1121
+#: connect.cpp:1123
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
@@ -910,7 +910,7 @@ msgid ""
 "recommended value is 30 seconds."
 msgstr ""
 
-#: general.cpp:493 main.cpp:646
+#: general.cpp:493 main.cpp:648
 msgid "Modem"
 msgstr "Modem"
 
@@ -1013,11 +1013,11 @@ msgstr ""
 msgid "Output bytes color"
 msgstr ""
 
-#: main.cpp:114
+#: main.cpp:115
 msgid "Recent changes in kppp"
 msgstr ""
 
-#: main.cpp:127
+#: main.cpp:128
 msgid ""
 "From version 1.4.8 on, kppp has a new feature\n"
 "called \"Quickhelp\". It's similar to a tooltip,\n"
@@ -1031,25 +1031,25 @@ msgid ""
 "To test it, right-click somewhere in this text."
 msgstr ""
 
-#: main.cpp:139
+#: main.cpp:140
 msgid "Don't show this hint again"
 msgstr ""
 
-#: main.cpp:158
+#: main.cpp:159
 msgid ""
 "This is an example for <b>QuickHelp</b>.\n"
 "This window will stay open until you\n"
 "click a mouse button or a hit a key.\n"
 msgstr ""
 
-#: main.cpp:333
+#: main.cpp:335
 #, c-format
 msgid ""
 "kppp can't create or read from\n"
 "%s."
 msgstr ""
 
-#: main.cpp:349
+#: main.cpp:351
 #, c-format
 msgid ""
 "kppp has detected a %s file.\n"
@@ -1061,15 +1061,15 @@ msgid ""
 "delete the pid file, and restart kppp."
 msgstr ""
 
-#: main.cpp:423
+#: main.cpp:425
 msgid "Connect to: "
 msgstr "Conectare la: "
 
-#: main.cpp:434
+#: main.cpp:436
 msgid "Login ID:"
 msgstr "Nume de conectare:"
 
-#: main.cpp:447
+#: main.cpp:449
 msgid ""
 "Type in the username that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1080,11 +1080,11 @@ msgid ""
 "<i>myusername</i> is not the same as <i>MyUserName</i>!"
 msgstr ""
 
-#: main.cpp:456
+#: main.cpp:458
 msgid "Password:"
 msgstr "Parola de conectare:"
 
-#: main.cpp:470
+#: main.cpp:472
 msgid ""
 "Type in the password that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1095,11 +1095,11 @@ msgid ""
 "<i>mypassword</i> is not the same as <i>MyPassword</i>!"
 msgstr ""
 
-#: main.cpp:484
+#: main.cpp:486
 msgid "Show Log Window"
 msgstr "Afiºare fereastra de jurnale"
 
-#: main.cpp:491
+#: main.cpp:493
 msgid ""
 "This controls whether a log window is shown.\n"
 "A log window shows the communication between\n"
@@ -1110,15 +1110,15 @@ msgid ""
 "problems"
 msgstr ""
 
-#: main.cpp:514
+#: main.cpp:516
 msgid "Setup"
 msgstr "Configurare"
 
-#: main.cpp:530
+#: main.cpp:532
 msgid "Connect"
 msgstr "Conectare"
 
-#: main.cpp:614
+#: main.cpp:616
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -1127,32 +1127,32 @@ msgstr ""
 "Nu existã un asemenea cont:\n"
 "%s"
 
-#: main.cpp:628
+#: main.cpp:630
 msgid "kppp Configuration"
 msgstr "Configurare kppp"
 
-#: main.cpp:644
+#: main.cpp:646
 msgid "Accounts"
 msgstr "Conturi"
 
-#: main.cpp:645
+#: main.cpp:647
 msgid "Device"
 msgstr "Dispozitiv"
 
-#: main.cpp:647
+#: main.cpp:649
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:648
+#: main.cpp:650
 msgid "Graph"
 msgstr ""
 
-#: main.cpp:821
+#: main.cpp:824
 #, fuzzy
 msgid "Details..."
 msgstr "Detalii"
 
-#: main.cpp:880
+#: main.cpp:884
 #, fuzzy, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1170,7 +1170,7 @@ msgstr ""
 "în fila 'PPP' din dialogul de configurare.\n"
 "Mulþumesc!"
 
-#: main.cpp:895
+#: main.cpp:899
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1183,7 +1183,7 @@ msgstr ""
 "Verificaþi dacã aveþi datã permisia de setuid pentru kppp ºi dacã\n"
 "kppp este execuatbil."
 
-#: main.cpp:909
+#: main.cpp:913
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1203,7 +1203,7 @@ msgstr ""
 "fila 'Modem' a dialogului de\n"
 "configurare. Mulþumesc!"
 
-#: main.cpp:929
+#: main.cpp:933
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1213,7 +1213,7 @@ msgstr ""
 "PAP. Aceasta necesita furnizarea unui\n"
 "nume si a unei parole pentru login."
 
-#: main.cpp:938
+#: main.cpp:942
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1222,7 +1222,7 @@ msgstr ""
 "Nu se poate crea fiºierul de autentificare\n"
 "PAP \"%s\""
 
-#: main.cpp:955
+#: main.cpp:959
 #, fuzzy
 msgid ""
 "You have selected the authentication\n"
@@ -1233,7 +1233,7 @@ msgstr ""
 "PAP. Aceasta necesita furnizarea unui\n"
 "nume si a unei parole pentru login."
 
-#: main.cpp:964
+#: main.cpp:968
 #, fuzzy, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1242,19 +1242,19 @@ msgstr ""
 "Nu se poate crea fiºierul de autentificare\n"
 "PAP \"%s\""
 
-#: main.cpp:976
+#: main.cpp:980
 msgid "You must specify a telephone number!"
 msgstr ""
 
-#: main.cpp:1063
+#: main.cpp:1067
 msgid "Quit kPPP?"
 msgstr "Închideþi kPPP?"
 
-#: main.cpp:1064
+#: main.cpp:1068
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Închizând kPPP, veþi termina sesiunea PPP."
 
-#: main.cpp:1099
+#: main.cpp:1103
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
