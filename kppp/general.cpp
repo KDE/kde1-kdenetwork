@@ -297,7 +297,7 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   KQuickHelp::add(enter, 
 		  i18n("Specifies how AT commands are send to your\n"
 		       "modem. Most modems will work fine with the\n"
-		       "default <i>CR</i>. If your modem does not react\n"
+		       "default <i>CR/LF</i>. If your modem does not react\n"
 		       "to the init string, you should try different\n"
 		       "settings here\n"
 		       "\n"
