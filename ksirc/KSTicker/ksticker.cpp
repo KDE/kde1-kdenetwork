@@ -16,8 +16,7 @@ KSTicker::KSTicker(QWidget * parent=0, const char * name=0, WFlags f=0)
 
   pHeight = 1;
 
-  pic = new QPixmap(size());
-  pic->fill(backgroundColor());
+  pic = new QPixmap(); // create pic map here, resize it later though.
   //  pic->setBackgroundMode(TransparentMode);
 
   setFont(QFont("fixed"));
@@ -31,6 +30,9 @@ KSTicker::KSTicker(QWidget * parent=0, const char * name=0, WFlags f=0)
   setFixedHeight((fontMetrics().height()+fontMetrics().descent()*2)*pHeight);
   descent =  fontMetrics().descent();
   onechar = fontMetrics().width("X");
+
+  pic->resize(width() + onechar, height());
+  pic->fill(backgroundColor());
 
   tickStep = 2;
   cOffset = 0;
@@ -217,7 +219,8 @@ void KSTicker::timerEvent(QTimerEvent *)
 	return;
       }
       p.setFont(font());
-      p.setBackgroundMode(bgmode);
+      //      p.setBackgroundMode(bgmode);
+      p.setBackgroundMode(OpaqueMode);
 
       p.setPen(fg);
       p.setBackgroundColor(bg);
@@ -226,7 +229,9 @@ void KSTicker::timerEvent(QTimerEvent *)
       fnt.setUnderline(underline);
       fnt.setItalic(italics);
       p.setFont(fnt);
-      p.drawText(this->width() - onechar - cOffset,
+      //      p.eraseRect(this->width() - 1, 
+      //		  0, pic->width() - this->width(), pic->height());
+      p.drawText(this->width() - cOffset + onechar, // remove -onechar.
 		 this->height() / 4 + p.fontMetrics().height() / 2,
 		 display.mid(currentChar, 1),
 		 1);
@@ -265,7 +270,7 @@ void KSTicker::resizeEvent( QResizeEvent *e)
   onechar = fontMetrics().width("X");
   chars = this->width() / onechar;
   killTimers();
-  pic->resize(size());
+  pic->resize(width() + onechar, height());
   pic->fill(backgroundColor());
   //  if(ring.length() > (uint) chars)
     startTicker();
