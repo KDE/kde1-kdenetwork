@@ -509,7 +509,7 @@ int Modem::lockdevice() {
   fd = Requester::rq->openLockfile(gpppdata.modemDevice(),
                                    O_WRONLY|O_TRUNC|O_CREAT);
   if(fd >= 0) {
-    sprintf(newlock,"%05d %s %s\n", getpid(), "kppp", "user" );
+    sprintf(newlock,"%010d\n", getpid());
     Debug("Locking Device: %s\n",newlock);
 
     write(fd, newlock, strlen(newlock));

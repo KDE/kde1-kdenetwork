@@ -773,6 +773,8 @@ ScriptWidget::ScriptWidget( QWidget *parent, bool isnewaccount, const char *name
     }
   }
 
+  remove->setEnabled(false);
+  insert->setEnabled(false);
   adjustScrollBar();
 
   tl->activate();
@@ -783,8 +785,8 @@ bool ScriptWidget::check() {
   uint lend  = 0;
   uint errcnt = 0;
 
-  if(sl->count() > 0)   {
-    for( uint i=0; i <= sl->count()-1; i++) {
+  if(stl->count() > 0)   {
+    for( uint i=0; i <= stl->count()-1; i++) {
 	if ( 0 == strcmp( "LoopStart", stl->text(i)) )  {
 		lstart++;
         }
@@ -801,7 +803,7 @@ bool ScriptWidget::check() {
 
 void ScriptWidget::save() {
   QStrList typelist, arglist;
-  for(uint i=0; i < sl->count(); i++) {
+  for(uint i=0; i < stl->count(); i++) {
     typelist.append(stl->text(i));
     arglist.append(sl->text(i));
   }
@@ -812,10 +814,10 @@ void ScriptWidget::save() {
 
 
 void ScriptWidget::adjustScrollBar() {
-  if((int)sl->count() <= sl->numItemsVisible())
+  if((int)stl->count() <= stl->numItemsVisible())
     slb->setRange(0, 0);
   else
-    slb->setRange(0, (sl->count() - sl->numItemsVisible())+1);
+    slb->setRange(0, (stl->count() - stl->numItemsVisible())+1);
 }
 
 
@@ -826,18 +828,25 @@ void ScriptWidget::scrolling(int i) {
 
 
 void ScriptWidget::slhighlighted(int i) {
+  insert->setEnabled(true);
+  remove->setEnabled(true);
   stl->setCurrentItem(i);
 }
 
 
 void ScriptWidget::stlhighlighted(int i) {
-  sl->setCurrentItem(i);
+  insert->setEnabled(true);
+  remove->setEnabled(true);
+  // don't highlight second column if were are in the process of adding
+  // commands. Prevents side effect (prevents warning about out of range index)
+  if(stl->count() == sl->count())
+    sl->setCurrentItem(i);
 }
 
 
 void ScriptWidget::addButton() {
   //don't allow more than the maximum script entries
-  if(sl->count() == MAX_SCRIPT_ENTRIES-1)
+  if(stl->count() == MAX_SCRIPT_ENTRIES-1)
     return;
 
   switch(se->type()) {
@@ -916,6 +925,10 @@ void ScriptWidget::addButton() {
       break;
   }
 
+  // higlight entry in second column, in cased this had to be
+  // supressed in stlhiglighted()
+  sl->setCurrentItem(stl->currentItem());
+
   //get the scrollbar adjusted, and scroll the list so we can see what
   //we're adding to
   adjustScrollBar();
@@ -929,7 +942,7 @@ void ScriptWidget::addButton() {
 void ScriptWidget::insertButton() {
   //exit if there is no highlighted item, or we've reached the
   //maximum entries in the script list
-  if(sl->currentItem() < 0 || (sl->count() == MAX_SCRIPT_ENTRIES-1))
+  if(stl->currentItem() < 0 || (stl->count() == MAX_SCRIPT_ENTRIES-1))
     return;
 
   switch(se->type()) {
@@ -1007,17 +1020,22 @@ void ScriptWidget::insertButton() {
     default:
       break;
   }
+
+  sl->setCurrentItem(stl->currentItem());
+
   adjustScrollBar();
   se->setText("");
 }
 
 
 void ScriptWidget::removeButton() {
- if(sl->currentItem() >= 0) {
-   int stlc = stl->currentItem();
-   sl->removeItem(sl->currentItem());
+ int stlc = stl->currentItem();
+ if(stl >= 0) {
+   sl->removeItem(stlc);
    stl->removeItem(stlc);
    adjustScrollBar();
+   insert->setEnabled(stl->currentItem() != -1);
+   remove->setEnabled(stl->currentItem() != -1);
  }
 }
 
