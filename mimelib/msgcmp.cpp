@@ -146,7 +146,7 @@ void DwMessageComponent::SetModified()
 
 
 //int DwMessageComponent::ClassId() const
-enum DwMessageComponent::componentType DwMessageComponent::ClassId() const
+DwMessageComponent::componentType DwMessageComponent::ClassId() const
 {
     return mClassId;
 }
