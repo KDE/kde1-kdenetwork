@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-12-28 02:07+0100\n"
+"POT-Creation-Date: 1998-12-31 02:00+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -82,11 +82,11 @@ msgstr "Aggiorna spesee"
 msgid "View Logs"
 msgstr "Visualizza log"
 
-#: accounts.cpp:219
+#: accounts.cpp:220
 msgid "Reset Total"
 msgstr "Aggiorna totali"
 
-#: accounts.cpp:220
+#: accounts.cpp:221
 msgid ""
 "Are you sure you want to reset the accumulated\n"
 "telephone costs for the selected account to zero?"
@@ -94,15 +94,15 @@ msgstr ""
 "Siete sicuro di volere aggiornare il totale costi\n"
 "accumulato dalle chiamate di questo account e azzerarle?"
 
-#: accounts.cpp:249 accounts.cpp:270
+#: accounts.cpp:250 accounts.cpp:271
 msgid "Maximum number of accounts reached."
 msgstr "Raggiunto il massimo numero di account previsti."
 
-#: accounts.cpp:276
+#: accounts.cpp:277
 msgid "No account selected."
 msgstr "Nessun account selezionato"
 
-#: accounts.cpp:291
+#: accounts.cpp:292
 #, c-format
 msgid ""
 "Are you sure you want to delete\n"
@@ -111,43 +111,43 @@ msgstr ""
 "Sicuro di voler cancellare\n"
 "l'account \"%s\"?"
 
-#: accounts.cpp:296
+#: accounts.cpp:297
 msgid "Confirm"
 msgstr "Conferma"
 
-#: accounts.cpp:317
+#: accounts.cpp:318
 msgid "New Account"
 msgstr "Nuovo account"
 
-#: accounts.cpp:320
+#: accounts.cpp:321
 msgid "Edit Account: "
 msgstr "Modifica account: "
 
-#: accounts.cpp:338
+#: accounts.cpp:339
 msgid "Dial"
 msgstr "Chiama..."
 
-#: accounts.cpp:339
+#: accounts.cpp:340
 msgid "IP"
 msgstr "IP"
 
-#: accounts.cpp:340
+#: accounts.cpp:341
 msgid "DNS"
 msgstr "DNS"
 
-#: accounts.cpp:341
+#: accounts.cpp:342
 msgid "Gateway"
 msgstr "Gateway"
 
-#: accounts.cpp:342
+#: accounts.cpp:343
 msgid "Login Script"
 msgstr "Script di accesso"
 
-#: accounts.cpp:343
+#: accounts.cpp:344
 msgid "Accounting"
 msgstr "Costi telefonici"
 
-#: accounts.cpp:362
+#: accounts.cpp:363
 #, fuzzy
 msgid ""
 "You must enter an unique\n"
@@ -156,7 +156,7 @@ msgstr ""
 "Devi inserire un solo\n"
 "nome per l'account"
 
-#: accounts.cpp:367
+#: accounts.cpp:368
 #, fuzzy
 msgid "Login script has unbalanced loop Start/End"
 msgstr "Lo script di accesso contiene un Loop errato Inizio/Fine"

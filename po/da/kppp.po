@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-12-28 02:07+0100\n"
+"POT-Creation-Date: 1998-12-31 02:00+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -87,11 +87,11 @@ msgstr "Nulstil omkostninger"
 msgid "View Logs"
 msgstr "Se log"
 
-#: accounts.cpp:219
+#: accounts.cpp:220
 msgid "Reset Total"
 msgstr "Nulstil total"
 
-#: accounts.cpp:220
+#: accounts.cpp:221
 msgid ""
 "Are you sure you want to reset the accumulated\n"
 "telephone costs for the selected account to zero?"
@@ -99,15 +99,15 @@ msgstr ""
 "Er du sikker på du vil sætte det\n"
 "akkumulerede forbrug for den valgte konto til nul?"
 
-#: accounts.cpp:249 accounts.cpp:270
+#: accounts.cpp:250 accounts.cpp:271
 msgid "Maximum number of accounts reached."
 msgstr "Maximum antal konti nået."
 
-#: accounts.cpp:276
+#: accounts.cpp:277
 msgid "No account selected."
 msgstr "Ingen konto valgt"
 
-#: accounts.cpp:291
+#: accounts.cpp:292
 #, c-format
 msgid ""
 "Are you sure you want to delete\n"
@@ -116,43 +116,43 @@ msgstr ""
 "Er du sikker på at du\n"
 "vil slette kontoen \"%s\"?"
 
-#: accounts.cpp:296
+#: accounts.cpp:297
 msgid "Confirm"
 msgstr "Bekræft"
 
-#: accounts.cpp:317
+#: accounts.cpp:318
 msgid "New Account"
 msgstr "Ny konto"
 
-#: accounts.cpp:320
+#: accounts.cpp:321
 msgid "Edit Account: "
 msgstr "Rediger konto: "
 
-#: accounts.cpp:338
+#: accounts.cpp:339
 msgid "Dial"
 msgstr "Ring op"
 
-#: accounts.cpp:339
+#: accounts.cpp:340
 msgid "IP"
 msgstr ""
 
-#: accounts.cpp:340
+#: accounts.cpp:341
 msgid "DNS"
 msgstr ""
 
-#: accounts.cpp:341
+#: accounts.cpp:342
 msgid "Gateway"
 msgstr ""
 
-#: accounts.cpp:342
+#: accounts.cpp:343
 msgid "Login Script"
 msgstr "Login skript"
 
-#: accounts.cpp:343
+#: accounts.cpp:344
 msgid "Accounting"
 msgstr "Omkostninger"
 
-#: accounts.cpp:362
+#: accounts.cpp:363
 #, fuzzy
 msgid ""
 "You must enter an unique\n"
@@ -161,7 +161,7 @@ msgstr ""
 "Du skal skrive\n"
 "et unikt kontonavn"
 
-#: accounts.cpp:367
+#: accounts.cpp:368
 msgid "Login script has unbalanced loop Start/End"
 msgstr ""
 

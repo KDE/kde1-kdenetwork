@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KPPP\n"
-"POT-Creation-Date: 1998-12-28 02:07+0100\n"
+"POT-Creation-Date: 1998-12-31 02:00+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Kim Enkovaara <kim.enkovaara@iki.fi>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -106,11 +106,11 @@ msgstr "Nollaa kulut"
 msgid "View Logs"
 msgstr "N‰yt‰ lokit"
 
-#: accounts.cpp:219
+#: accounts.cpp:220
 msgid "Reset Total"
 msgstr "Nollaa kokonaistulos"
 
-#: accounts.cpp:220
+#: accounts.cpp:221
 msgid ""
 "Are you sure you want to reset the accumulated\n"
 "telephone costs for the selected account to zero?"
@@ -118,15 +118,15 @@ msgstr ""
 "Oletko varma, ett‰ haluat nollata kertyneet\n"
 "puhelinkulut valitulla profiililla?"
 
-#: accounts.cpp:249 accounts.cpp:270
+#: accounts.cpp:250 accounts.cpp:271
 msgid "Maximum number of accounts reached."
 msgstr "Maksimim‰‰r‰ profiileja"
 
-#: accounts.cpp:276
+#: accounts.cpp:277
 msgid "No account selected."
 msgstr "Profiilia ei ole valittu."
 
-#: accounts.cpp:291
+#: accounts.cpp:292
 #, c-format
 msgid ""
 "Are you sure you want to delete\n"
@@ -135,43 +135,43 @@ msgstr ""
 "Oletko varma, ett‰ haluat tuhota\n"
 "profiilin \"%s\"?"
 
-#: accounts.cpp:296
+#: accounts.cpp:297
 msgid "Confirm"
 msgstr "Varmista"
 
-#: accounts.cpp:317
+#: accounts.cpp:318
 msgid "New Account"
 msgstr "Uusi profiili"
 
-#: accounts.cpp:320
+#: accounts.cpp:321
 msgid "Edit Account: "
 msgstr "Muokkaa profiilia: "
 
-#: accounts.cpp:338
+#: accounts.cpp:339
 msgid "Dial"
 msgstr "Soita"
 
-#: accounts.cpp:339
+#: accounts.cpp:340
 msgid "IP"
 msgstr "IP"
 
-#: accounts.cpp:340
+#: accounts.cpp:341
 msgid "DNS"
 msgstr "DNS"
 
-#: accounts.cpp:341
+#: accounts.cpp:342
 msgid "Gateway"
 msgstr "Yhdysk‰yt‰v‰"
 
-#: accounts.cpp:342
+#: accounts.cpp:343
 msgid "Login Script"
 msgstr "Sis‰‰nkirjoittautumisohjelma"
 
-#: accounts.cpp:343
+#: accounts.cpp:344
 msgid "Accounting"
 msgstr "Laskutus"
 
-#: accounts.cpp:362
+#: accounts.cpp:363
 msgid ""
 "You must enter an unique\n"
 "account name"
@@ -179,7 +179,7 @@ msgstr ""
 "Sinun pit‰‰ antaa uniikki\n"
 "profiilinimi"
 
-#: accounts.cpp:367
+#: accounts.cpp:368
 msgid "Login script has unbalanced loop Start/End"
 msgstr "Sis‰‰nkirjoittautumisohjelmassa on eri m‰‰r‰ Loop Start/End pareja"
 
