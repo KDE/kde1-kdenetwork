@@ -51,6 +51,7 @@ messages:
 # don't install a list of file. Just one file per install.
 # if you have more of them, create a subdirectory with an extra Makefile 
 install-data-local:
+	$(mkinstalldirs) $(kde_datadir)/ksirc
 	$(INSTALL_DATA) servers.txt $(kde_datadir)/ksirc
 	$(INSTALL_DATA) servers.ini $(kde_datadir)/ksirc
 
