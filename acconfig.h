@@ -29,6 +29,9 @@
 /* define to 1 under linux, using utmp (=>not working alone with xdm and kdm) */
 #undef UTMP_AND_PROC_FIND_USER 
 
+/* Define the file for utmp entries */
+#undef UTMP 
+
 /* define also this one under linux to find for X processes even without utmp */
 #undef ALL_PROCESSES_AND_PROC_FIND_USER
 
