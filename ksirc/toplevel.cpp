@@ -654,7 +654,7 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	    s3.remove(0, 1);
 	    ircListItem *irc = new ircListItem(s3, &red, nicks);
 	    irc->setWrapping(FALSE);
-	    nicks->inSort(irc);
+	    nicks->inSort(irc, TRUE);
 	  }
 	  else{
 	    nicks->inSort(s3);
@@ -664,6 +664,7 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	nicks->setAutoUpdate(TRUE);         // clear and repaint the listbox
 	nicks->repaint(TRUE);
 	color = kSircConfig->colour_info;    // set to cyan colouring
+	no_output = 1;
 	break;
       case '<':
 	string.remove(0, 2);                // clear junk
@@ -720,10 +721,18 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	for(uint i = 0; i < nicks->count(); i++){
 	  if(strcmp(s3, nicks->text(i)) == 0){
 	    no_output = 0;        // nick is in out list, so print the message
-	    nicks->removeItem(i); // remove old nick
-	    nicks->inSort(s4);    // add new nick in sorted poss
-	                          // can't use changeItem since it
-				  // doesn't maintain sort order
+	    bool isOp = nicks->isTop(i); // Are they an op?
+	    nicks->removeItem(i);        // remove old nick
+	    if(isOp == TRUE){
+	      ircListItem *irc = new ircListItem(s4, &red, nicks);
+	      irc->setWrapping(FALSE);
+	      nicks->inSort(irc, isOp);
+	    }
+	    else{
+	      nicks->inSort(s4);     // add new nick in sorted poss
+	                             // can't use changeItem since it
+				     // doesn't maintain sort order
+	    }
 	  }
 	}
 	break;
@@ -743,7 +752,8 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	      nicks->removeItem(i);           // remove old nick
 	      ircListItem *irc = new ircListItem(s3, &red, nicks);
 	      irc->setWrapping(FALSE);
-	      nicks->inSort(irc);    // add new nick in sorted pass,with colour
+	      // add new nick in sorted pass,with colour
+	      nicks->inSort(irc, TRUE);
 	      nicks->setAutoUpdate(TRUE);
 	      nicks->repaint();
 	    }

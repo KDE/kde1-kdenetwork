@@ -42,7 +42,8 @@ control.cpp mcontrol.cpp \
 KSircColour.cpp KSircColourData.cpp mKSircColour.cpp mKSircColourData.cpp \
 FilterRuleEditor.cpp FilterRuleEditorData.cpp mFilterRuleEditor.cpp mFilterRuleEditorData.cpp \
 ioDiscard.cpp \
-ioDCC.cpp mioDCC.cpp dccDialog.cpp mdccDialog.cpp dccDialogData.cpp mdccDialogData.cpp
+ioDCC.cpp mioDCC.cpp dccDialog.cpp mdccDialog.cpp dccDialogData.cpp mdccDialogData.cpp \
+linelistitem.cpp
 
 OBJECTS = \
 toplevel.o \
@@ -70,6 +71,7 @@ KSircColour.o KSircColourData.o mKSircColour.o mKSircColourData.o \
 FilterRuleEditor.o FilterRuleEditorData.o mFilterRuleEditor.o mFilterRuleEditorData.o \
 ioDiscard.o \
 ioDCC.o mioDCC.o dccDialog.o mdccDialog.o dccDialogData.o mdccDialogData.o \
+linelistitem.o \
 KSProgress/ksprogress.a KSTicker/ksticker.a
 
 TARGET = ksirc
@@ -187,8 +189,9 @@ toplevel.o: /usr/local/lib/qt/include/qdstream.h
 toplevel.o: /usr/local/lib/qt/include/qiodev.h ahistlineedit.h alistbox.h
 toplevel.o: messageReceiver.h ksircprocess.h iocontroller.h
 toplevel.o: /usr/local/lib/qt/include/qdict.h KSTicker/ksticker.h
-toplevel.o: UserMenuRef.h UserMenuRefData.h
-toplevel.o: /usr/local/lib/qt/include/qchkbox.h
+toplevel.o: /usr/local/lib/qt/include/qpopmenu.h
+toplevel.o: /usr/local/lib/qt/include/qmenudta.h UserMenuRef.h
+toplevel.o: UserMenuRefData.h /usr/local/lib/qt/include/qchkbox.h
 toplevel.o: /usr/local/lib/qt/include/qbutton.h
 toplevel.o: /usr/local/lib/qt/include/qpushbt.h
 toplevel.o: /usr/local/lib/qt/include/qcombo.h irclistbox.h open_top.h
@@ -201,22 +204,24 @@ ksirc.o: servercontroller.h /usr/local/lib/qt/include/qdict.h
 ksirc.o: /usr/local/lib/qt/include/qgdict.h
 ksirc.o: /usr/local/lib/qt/include/qcollect.h
 ksirc.o: /usr/local/lib/qt/include/qglobal.h
-ksirc.o: /usr/local/lib/qt/include/qgeneric.h servercontrollerData.h
-ksirc.o: control.h /usr/local/lib/qt/include/qframe.h
-ksirc.o: /usr/local/lib/qt/include/qwidget.h
+ksirc.o: /usr/local/lib/qt/include/qgeneric.h
+ksirc.o: /usr/local/lib/qt/include/qpixmap.h
+ksirc.o: /usr/local/lib/qt/include/qpaintd.h
 ksirc.o: /usr/local/lib/qt/include/qwindefs.h
 ksirc.o: /usr/local/lib/qt/include/qobjdefs.h
+ksirc.o: /usr/local/lib/qt/include/qrect.h /usr/local/lib/qt/include/qsize.h
+ksirc.o: /usr/local/lib/qt/include/qpoint.h
+ksirc.o: /usr/local/lib/qt/include/qcolor.h
+ksirc.o: /usr/local/lib/qt/include/qshared.h servercontrollerData.h control.h
+ksirc.o: /usr/local/lib/qt/include/qframe.h
+ksirc.o: /usr/local/lib/qt/include/qwidget.h
 ksirc.o: /usr/local/lib/qt/include/qobject.h
 ksirc.o: /usr/local/lib/qt/include/qstring.h
 ksirc.o: /usr/local/lib/qt/include/qarray.h
-ksirc.o: /usr/local/lib/qt/include/qgarray.h
-ksirc.o: /usr/local/lib/qt/include/qshared.h /usr/include/string.h
+ksirc.o: /usr/local/lib/qt/include/qgarray.h /usr/include/string.h
 ksirc.o: /usr/include/features.h /usr/include/sys/cdefs.h
-ksirc.o: /usr/local/lib/qt/include/qevent.h /usr/local/lib/qt/include/qrect.h
-ksirc.o: /usr/local/lib/qt/include/qsize.h /usr/local/lib/qt/include/qpoint.h
-ksirc.o: /usr/local/lib/qt/include/qpaintd.h
+ksirc.o: /usr/local/lib/qt/include/qevent.h
 ksirc.o: /usr/local/lib/qt/include/qpalette.h
-ksirc.o: /usr/local/lib/qt/include/qcolor.h
 ksirc.o: /usr/local/lib/qt/include/qcursor.h
 ksirc.o: /usr/local/lib/qt/include/qfont.h
 ksirc.o: /usr/local/lib/qt/include/qfontmet.h
@@ -267,6 +272,43 @@ irclistbox.o: /usr/local/lib/qt/include/qpen.h
 irclistbox.o: /usr/local/lib/qt/include/qbrush.h
 irclistbox.o: /usr/local/lib/qt/include/qpntarry.h
 irclistbox.o: /usr/local/lib/qt/include/qwmatrix.h
+mirclistbox.o: irclistbox.h /usr/local/lib/qt/include/qobject.h
+mirclistbox.o: /usr/local/lib/qt/include/qobjdefs.h
+mirclistbox.o: /usr/local/lib/qt/include/qglobal.h
+mirclistbox.o: /usr/local/lib/qt/include/qstring.h
+mirclistbox.o: /usr/local/lib/qt/include/qarray.h
+mirclistbox.o: /usr/local/lib/qt/include/qgarray.h
+mirclistbox.o: /usr/local/lib/qt/include/qshared.h
+mirclistbox.o: /usr/local/lib/qt/include/qgeneric.h /usr/include/string.h
+mirclistbox.o: /usr/include/features.h /usr/include/sys/cdefs.h
+mirclistbox.o: /usr/local/lib/qt/include/qevent.h
+mirclistbox.o: /usr/local/lib/qt/include/qwindefs.h
+mirclistbox.o: /usr/local/lib/qt/include/qrect.h
+mirclistbox.o: /usr/local/lib/qt/include/qsize.h
+mirclistbox.o: /usr/local/lib/qt/include/qpoint.h
+mirclistbox.o: /usr/local/lib/qt/include/qlistbox.h
+mirclistbox.o: /usr/local/lib/qt/include/qtablevw.h
+mirclistbox.o: /usr/local/lib/qt/include/qframe.h
+mirclistbox.o: /usr/local/lib/qt/include/qwidget.h
+mirclistbox.o: /usr/local/lib/qt/include/qpaintd.h
+mirclistbox.o: /usr/local/lib/qt/include/qpalette.h
+mirclistbox.o: /usr/local/lib/qt/include/qcolor.h
+mirclistbox.o: /usr/local/lib/qt/include/qcursor.h
+mirclistbox.o: /usr/local/lib/qt/include/qfont.h
+mirclistbox.o: /usr/local/lib/qt/include/qfontmet.h
+mirclistbox.o: /usr/local/lib/qt/include/qfontinf.h
+mirclistbox.o: /usr/local/lib/qt/include/qpixmap.h
+mirclistbox.o: /usr/local/lib/qt/include/qscrbar.h
+mirclistbox.o: /usr/local/lib/qt/include/qrangect.h
+mirclistbox.o: /usr/local/lib/qt/include/qdrawutl.h
+mirclistbox.o: /usr/local/lib/qt/include/qpainter.h
+mirclistbox.o: /usr/local/lib/qt/include/qregion.h
+mirclistbox.o: /usr/local/lib/qt/include/qpen.h
+mirclistbox.o: /usr/local/lib/qt/include/qbrush.h
+mirclistbox.o: /usr/local/lib/qt/include/qpntarry.h
+mirclistbox.o: /usr/local/lib/qt/include/qwmatrix.h
+mirclistbox.o: /usr/local/lib/qt/include/qmetaobj.h
+mirclistbox.o: /usr/local/lib/qt/include/qconnect.h
 irclistitem.o: irclistitem.h /usr/local/lib/qt/include/qobject.h
 irclistitem.o: /usr/local/lib/qt/include/qobjdefs.h
 irclistitem.o: /usr/local/lib/qt/include/qglobal.h
@@ -304,7 +346,9 @@ irclistitem.o: /usr/local/lib/qt/include/qlist.h
 irclistitem.o: /usr/local/lib/qt/include/qglist.h
 irclistitem.o: /usr/local/lib/qt/include/qcollect.h
 irclistitem.o: /usr/local/lib/qt/include/qdstream.h
-irclistitem.o: /usr/local/lib/qt/include/qiodev.h
+irclistitem.o: /usr/local/lib/qt/include/qiodev.h /usr/include/stdlib.h
+irclistitem.o: /usr/include/errno.h /usr/include/linux/errno.h
+irclistitem.o: /usr/include/asm/errno.h /usr/include/alloca.h
 mirclistitem.o: irclistitem.h /usr/local/lib/qt/include/qobject.h
 mirclistitem.o: /usr/local/lib/qt/include/qobjdefs.h
 mirclistitem.o: /usr/local/lib/qt/include/qglobal.h
@@ -370,7 +414,86 @@ alistbox.o: /usr/local/lib/qt/include/qfontinf.h
 alistbox.o: /usr/local/lib/qt/include/qlistbox.h
 alistbox.o: /usr/local/lib/qt/include/qtablevw.h
 alistbox.o: /usr/local/lib/qt/include/qframe.h
-alistbox.o: /usr/local/lib/qt/include/qpixmap.h
+alistbox.o: /usr/local/lib/qt/include/qpixmap.h irclistitem.h
+alistbox.o: /usr/local/lib/qt/include/qpainter.h
+alistbox.o: /usr/local/lib/qt/include/qregion.h
+alistbox.o: /usr/local/lib/qt/include/qpen.h
+alistbox.o: /usr/local/lib/qt/include/qbrush.h
+alistbox.o: /usr/local/lib/qt/include/qpntarry.h
+alistbox.o: /usr/local/lib/qt/include/qwmatrix.h
+alistbox.o: /usr/local/lib/qt/include/qstrlist.h
+alistbox.o: /usr/local/lib/qt/include/qlist.h
+alistbox.o: /usr/local/lib/qt/include/qglist.h
+alistbox.o: /usr/local/lib/qt/include/qcollect.h
+alistbox.o: /usr/local/lib/qt/include/qdstream.h
+alistbox.o: /usr/local/lib/qt/include/qiodev.h linelistitem.h
+mtoplevel.o: toplevel.h /usr/include/unistd.h /usr/include/features.h
+mtoplevel.o: /usr/include/sys/cdefs.h /usr/include/posix_opt.h
+mtoplevel.o: /usr/include/gnu/types.h /usr/include/confname.h
+mtoplevel.o: /usr/include/sys/types.h /usr/include/linux/types.h
+mtoplevel.o: /usr/include/linux/posix_types.h /usr/include/asm/posix_types.h
+mtoplevel.o: /usr/include/asm/types.h /usr/include/sys/bitypes.h
+mtoplevel.o: /usr/include/signal.h /usr/include/linux/signal.h
+mtoplevel.o: /usr/include/asm/signal.h /usr/local/lib/qt/include/qwidget.h
+mtoplevel.o: /usr/local/lib/qt/include/qwindefs.h
+mtoplevel.o: /usr/local/lib/qt/include/qobjdefs.h
+mtoplevel.o: /usr/local/lib/qt/include/qglobal.h
+mtoplevel.o: /usr/local/lib/qt/include/qobject.h
+mtoplevel.o: /usr/local/lib/qt/include/qstring.h
+mtoplevel.o: /usr/local/lib/qt/include/qarray.h
+mtoplevel.o: /usr/local/lib/qt/include/qgarray.h
+mtoplevel.o: /usr/local/lib/qt/include/qshared.h
+mtoplevel.o: /usr/local/lib/qt/include/qgeneric.h /usr/include/string.h
+mtoplevel.o: /usr/local/lib/qt/include/qevent.h
+mtoplevel.o: /usr/local/lib/qt/include/qrect.h
+mtoplevel.o: /usr/local/lib/qt/include/qsize.h
+mtoplevel.o: /usr/local/lib/qt/include/qpoint.h
+mtoplevel.o: /usr/local/lib/qt/include/qpaintd.h
+mtoplevel.o: /usr/local/lib/qt/include/qpalette.h
+mtoplevel.o: /usr/local/lib/qt/include/qcolor.h
+mtoplevel.o: /usr/local/lib/qt/include/qcursor.h
+mtoplevel.o: /usr/local/lib/qt/include/qfont.h
+mtoplevel.o: /usr/local/lib/qt/include/qfontmet.h
+mtoplevel.o: /usr/local/lib/qt/include/qfontinf.h
+mtoplevel.o: /usr/local/lib/qt/include/qsocknot.h
+mtoplevel.o: /usr/local/lib/qt/include/qlined.h
+mtoplevel.o: /usr/local/lib/qt/include/qmlined.h
+mtoplevel.o: /usr/local/lib/qt/include/qtablevw.h
+mtoplevel.o: /usr/local/lib/qt/include/qframe.h
+mtoplevel.o: /usr/local/lib/qt/include/qlist.h
+mtoplevel.o: /usr/local/lib/qt/include/qglist.h
+mtoplevel.o: /usr/local/lib/qt/include/qcollect.h
+mtoplevel.o: /usr/local/lib/qt/include/qlayout.h
+mtoplevel.o: /usr/local/lib/qt/include/qgmanagr.h
+mtoplevel.o: /usr/local/lib/qt/include/qintdict.h
+mtoplevel.o: /usr/local/lib/qt/include/qgdict.h
+mtoplevel.o: /usr/local/lib/qt/include/qlistbox.h
+mtoplevel.o: /usr/local/lib/qt/include/qpixmap.h
+mtoplevel.o: /usr/local/lib/qt/include/qscrbar.h
+mtoplevel.o: /usr/local/lib/qt/include/qrangect.h
+mtoplevel.o: /usr/local/lib/qt/include/qdrawutl.h
+mtoplevel.o: /usr/local/lib/qt/include/qpainter.h
+mtoplevel.o: /usr/local/lib/qt/include/qregion.h
+mtoplevel.o: /usr/local/lib/qt/include/qpen.h
+mtoplevel.o: /usr/local/lib/qt/include/qbrush.h
+mtoplevel.o: /usr/local/lib/qt/include/qpntarry.h
+mtoplevel.o: /usr/local/lib/qt/include/qwmatrix.h
+mtoplevel.o: /usr/local/lib/qt/include/qregexp.h
+mtoplevel.o: /usr/local/lib/qt/include/qaccel.h
+mtoplevel.o: /usr/local/lib/qt/include/qkeycode.h irclistitem.h
+mtoplevel.o: /usr/local/lib/qt/include/qstrlist.h
+mtoplevel.o: /usr/local/lib/qt/include/qdstream.h
+mtoplevel.o: /usr/local/lib/qt/include/qiodev.h ahistlineedit.h alistbox.h
+mtoplevel.o: messageReceiver.h ksircprocess.h iocontroller.h
+mtoplevel.o: /usr/local/lib/qt/include/qdict.h KSTicker/ksticker.h
+mtoplevel.o: /usr/local/lib/qt/include/qpopmenu.h
+mtoplevel.o: /usr/local/lib/qt/include/qmenudta.h UserMenuRef.h
+mtoplevel.o: UserMenuRefData.h /usr/local/lib/qt/include/qchkbox.h
+mtoplevel.o: /usr/local/lib/qt/include/qbutton.h
+mtoplevel.o: /usr/local/lib/qt/include/qpushbt.h
+mtoplevel.o: /usr/local/lib/qt/include/qcombo.h irclistbox.h
+mtoplevel.o: /usr/local/lib/qt/include/qmetaobj.h
+mtoplevel.o: /usr/local/lib/qt/include/qconnect.h
 ahistlineedit.o: ahistlineedit.h /usr/local/lib/qt/include/qlined.h
 ahistlineedit.o: /usr/local/lib/qt/include/qwidget.h
 ahistlineedit.o: /usr/local/lib/qt/include/qwindefs.h
@@ -401,6 +524,78 @@ ahistlineedit.o: /usr/local/lib/qt/include/qcollect.h
 ahistlineedit.o: /usr/local/lib/qt/include/qdstream.h
 ahistlineedit.o: /usr/local/lib/qt/include/qiodev.h
 ahistlineedit.o: /usr/local/lib/qt/include/qkeycode.h
+mahistlineedit.o: ahistlineedit.h /usr/local/lib/qt/include/qlined.h
+mahistlineedit.o: /usr/local/lib/qt/include/qwidget.h
+mahistlineedit.o: /usr/local/lib/qt/include/qwindefs.h
+mahistlineedit.o: /usr/local/lib/qt/include/qobjdefs.h
+mahistlineedit.o: /usr/local/lib/qt/include/qglobal.h
+mahistlineedit.o: /usr/local/lib/qt/include/qobject.h
+mahistlineedit.o: /usr/local/lib/qt/include/qstring.h
+mahistlineedit.o: /usr/local/lib/qt/include/qarray.h
+mahistlineedit.o: /usr/local/lib/qt/include/qgarray.h
+mahistlineedit.o: /usr/local/lib/qt/include/qshared.h
+mahistlineedit.o: /usr/local/lib/qt/include/qgeneric.h /usr/include/string.h
+mahistlineedit.o: /usr/include/features.h /usr/include/sys/cdefs.h
+mahistlineedit.o: /usr/local/lib/qt/include/qevent.h
+mahistlineedit.o: /usr/local/lib/qt/include/qrect.h
+mahistlineedit.o: /usr/local/lib/qt/include/qsize.h
+mahistlineedit.o: /usr/local/lib/qt/include/qpoint.h
+mahistlineedit.o: /usr/local/lib/qt/include/qpaintd.h
+mahistlineedit.o: /usr/local/lib/qt/include/qpalette.h
+mahistlineedit.o: /usr/local/lib/qt/include/qcolor.h
+mahistlineedit.o: /usr/local/lib/qt/include/qcursor.h
+mahistlineedit.o: /usr/local/lib/qt/include/qfont.h
+mahistlineedit.o: /usr/local/lib/qt/include/qfontmet.h
+mahistlineedit.o: /usr/local/lib/qt/include/qfontinf.h
+mahistlineedit.o: /usr/local/lib/qt/include/qstrlist.h
+mahistlineedit.o: /usr/local/lib/qt/include/qlist.h
+mahistlineedit.o: /usr/local/lib/qt/include/qglist.h
+mahistlineedit.o: /usr/local/lib/qt/include/qcollect.h
+mahistlineedit.o: /usr/local/lib/qt/include/qdstream.h
+mahistlineedit.o: /usr/local/lib/qt/include/qiodev.h
+mahistlineedit.o: /usr/local/lib/qt/include/qkeycode.h
+mahistlineedit.o: /usr/local/lib/qt/include/qmetaobj.h
+mahistlineedit.o: /usr/local/lib/qt/include/qconnect.h
+malistbox.o: alistbox.h /usr/local/lib/qt/include/qobject.h
+malistbox.o: /usr/local/lib/qt/include/qobjdefs.h
+malistbox.o: /usr/local/lib/qt/include/qglobal.h
+malistbox.o: /usr/local/lib/qt/include/qstring.h
+malistbox.o: /usr/local/lib/qt/include/qarray.h
+malistbox.o: /usr/local/lib/qt/include/qgarray.h
+malistbox.o: /usr/local/lib/qt/include/qshared.h
+malistbox.o: /usr/local/lib/qt/include/qgeneric.h /usr/include/string.h
+malistbox.o: /usr/include/features.h /usr/include/sys/cdefs.h
+malistbox.o: /usr/local/lib/qt/include/qevent.h
+malistbox.o: /usr/local/lib/qt/include/qwindefs.h
+malistbox.o: /usr/local/lib/qt/include/qrect.h
+malistbox.o: /usr/local/lib/qt/include/qsize.h
+malistbox.o: /usr/local/lib/qt/include/qpoint.h
+malistbox.o: /usr/local/lib/qt/include/qwidget.h
+malistbox.o: /usr/local/lib/qt/include/qpaintd.h
+malistbox.o: /usr/local/lib/qt/include/qpalette.h
+malistbox.o: /usr/local/lib/qt/include/qcolor.h
+malistbox.o: /usr/local/lib/qt/include/qcursor.h
+malistbox.o: /usr/local/lib/qt/include/qfont.h
+malistbox.o: /usr/local/lib/qt/include/qfontmet.h
+malistbox.o: /usr/local/lib/qt/include/qfontinf.h
+malistbox.o: /usr/local/lib/qt/include/qlistbox.h
+malistbox.o: /usr/local/lib/qt/include/qtablevw.h
+malistbox.o: /usr/local/lib/qt/include/qframe.h
+malistbox.o: /usr/local/lib/qt/include/qpixmap.h irclistitem.h
+malistbox.o: /usr/local/lib/qt/include/qpainter.h
+malistbox.o: /usr/local/lib/qt/include/qregion.h
+malistbox.o: /usr/local/lib/qt/include/qpen.h
+malistbox.o: /usr/local/lib/qt/include/qbrush.h
+malistbox.o: /usr/local/lib/qt/include/qpntarry.h
+malistbox.o: /usr/local/lib/qt/include/qwmatrix.h
+malistbox.o: /usr/local/lib/qt/include/qstrlist.h
+malistbox.o: /usr/local/lib/qt/include/qlist.h
+malistbox.o: /usr/local/lib/qt/include/qglist.h
+malistbox.o: /usr/local/lib/qt/include/qcollect.h
+malistbox.o: /usr/local/lib/qt/include/qdstream.h
+malistbox.o: /usr/local/lib/qt/include/qiodev.h
+malistbox.o: /usr/local/lib/qt/include/qmetaobj.h
+malistbox.o: /usr/local/lib/qt/include/qconnect.h
 UserMenuRefData.o: UserMenuRefData.h /usr/local/lib/qt/include/qframe.h
 UserMenuRefData.o: /usr/local/lib/qt/include/qwidget.h
 UserMenuRefData.o: /usr/local/lib/qt/include/qwindefs.h
@@ -433,6 +628,40 @@ UserMenuRefData.o: /usr/local/lib/qt/include/qpixmap.h
 UserMenuRefData.o: /usr/local/lib/qt/include/qlined.h
 UserMenuRefData.o: /usr/local/lib/qt/include/qcombo.h
 UserMenuRefData.o: /usr/local/lib/qt/include/qlabel.h
+mUserMenuRefData.o: UserMenuRefData.h /usr/local/lib/qt/include/qframe.h
+mUserMenuRefData.o: /usr/local/lib/qt/include/qwidget.h
+mUserMenuRefData.o: /usr/local/lib/qt/include/qwindefs.h
+mUserMenuRefData.o: /usr/local/lib/qt/include/qobjdefs.h
+mUserMenuRefData.o: /usr/local/lib/qt/include/qglobal.h
+mUserMenuRefData.o: /usr/local/lib/qt/include/qobject.h
+mUserMenuRefData.o: /usr/local/lib/qt/include/qstring.h
+mUserMenuRefData.o: /usr/local/lib/qt/include/qarray.h
+mUserMenuRefData.o: /usr/local/lib/qt/include/qgarray.h
+mUserMenuRefData.o: /usr/local/lib/qt/include/qshared.h
+mUserMenuRefData.o: /usr/local/lib/qt/include/qgeneric.h
+mUserMenuRefData.o: /usr/include/string.h /usr/include/features.h
+mUserMenuRefData.o: /usr/include/sys/cdefs.h
+mUserMenuRefData.o: /usr/local/lib/qt/include/qevent.h
+mUserMenuRefData.o: /usr/local/lib/qt/include/qrect.h
+mUserMenuRefData.o: /usr/local/lib/qt/include/qsize.h
+mUserMenuRefData.o: /usr/local/lib/qt/include/qpoint.h
+mUserMenuRefData.o: /usr/local/lib/qt/include/qpaintd.h
+mUserMenuRefData.o: /usr/local/lib/qt/include/qpalette.h
+mUserMenuRefData.o: /usr/local/lib/qt/include/qcolor.h
+mUserMenuRefData.o: /usr/local/lib/qt/include/qcursor.h
+mUserMenuRefData.o: /usr/local/lib/qt/include/qfont.h
+mUserMenuRefData.o: /usr/local/lib/qt/include/qfontmet.h
+mUserMenuRefData.o: /usr/local/lib/qt/include/qfontinf.h
+mUserMenuRefData.o: /usr/local/lib/qt/include/qchkbox.h
+mUserMenuRefData.o: /usr/local/lib/qt/include/qbutton.h
+mUserMenuRefData.o: /usr/local/lib/qt/include/qpushbt.h
+mUserMenuRefData.o: /usr/local/lib/qt/include/qlistbox.h
+mUserMenuRefData.o: /usr/local/lib/qt/include/qtablevw.h
+mUserMenuRefData.o: /usr/local/lib/qt/include/qpixmap.h
+mUserMenuRefData.o: /usr/local/lib/qt/include/qlined.h
+mUserMenuRefData.o: /usr/local/lib/qt/include/qcombo.h
+mUserMenuRefData.o: /usr/local/lib/qt/include/qmetaobj.h
+mUserMenuRefData.o: /usr/local/lib/qt/include/qconnect.h
 iocontroller.o: iocontroller.h /usr/local/lib/qt/include/qobject.h
 iocontroller.o: /usr/local/lib/qt/include/qobjdefs.h
 iocontroller.o: /usr/local/lib/qt/include/qglobal.h
@@ -492,12 +721,41 @@ iocontroller.o: /usr/local/lib/qt/include/qkeycode.h irclistitem.h
 iocontroller.o: /usr/local/lib/qt/include/qstrlist.h
 iocontroller.o: /usr/local/lib/qt/include/qdstream.h
 iocontroller.o: /usr/local/lib/qt/include/qiodev.h ahistlineedit.h alistbox.h
-iocontroller.o: KSTicker/ksticker.h UserMenuRef.h UserMenuRefData.h
-iocontroller.o: /usr/local/lib/qt/include/qchkbox.h
+iocontroller.o: KSTicker/ksticker.h /usr/local/lib/qt/include/qpopmenu.h
+iocontroller.o: /usr/local/lib/qt/include/qmenudta.h UserMenuRef.h
+iocontroller.o: UserMenuRefData.h /usr/local/lib/qt/include/qchkbox.h
 iocontroller.o: /usr/local/lib/qt/include/qbutton.h
 iocontroller.o: /usr/local/lib/qt/include/qpushbt.h
 iocontroller.o: /usr/local/lib/qt/include/qcombo.h irclistbox.h
 iocontroller.o: control_message.h config.h
+miocontroller.o: iocontroller.h /usr/local/lib/qt/include/qobject.h
+miocontroller.o: /usr/local/lib/qt/include/qobjdefs.h
+miocontroller.o: /usr/local/lib/qt/include/qglobal.h
+miocontroller.o: /usr/local/lib/qt/include/qstring.h
+miocontroller.o: /usr/local/lib/qt/include/qarray.h
+miocontroller.o: /usr/local/lib/qt/include/qgarray.h
+miocontroller.o: /usr/local/lib/qt/include/qshared.h
+miocontroller.o: /usr/local/lib/qt/include/qgeneric.h /usr/include/string.h
+miocontroller.o: /usr/include/features.h /usr/include/sys/cdefs.h
+miocontroller.o: /usr/local/lib/qt/include/qevent.h
+miocontroller.o: /usr/local/lib/qt/include/qwindefs.h
+miocontroller.o: /usr/local/lib/qt/include/qrect.h
+miocontroller.o: /usr/local/lib/qt/include/qsize.h
+miocontroller.o: /usr/local/lib/qt/include/qpoint.h
+miocontroller.o: /usr/local/lib/qt/include/qwidget.h
+miocontroller.o: /usr/local/lib/qt/include/qpaintd.h
+miocontroller.o: /usr/local/lib/qt/include/qpalette.h
+miocontroller.o: /usr/local/lib/qt/include/qcolor.h
+miocontroller.o: /usr/local/lib/qt/include/qcursor.h
+miocontroller.o: /usr/local/lib/qt/include/qfont.h
+miocontroller.o: /usr/local/lib/qt/include/qfontmet.h
+miocontroller.o: /usr/local/lib/qt/include/qfontinf.h
+miocontroller.o: /usr/local/lib/qt/include/qsocknot.h
+miocontroller.o: /usr/local/lib/qt/include/qdict.h
+miocontroller.o: /usr/local/lib/qt/include/qgdict.h
+miocontroller.o: /usr/local/lib/qt/include/qcollect.h messageReceiver.h
+miocontroller.o: ksircprocess.h /usr/local/lib/qt/include/qmetaobj.h
+miocontroller.o: /usr/local/lib/qt/include/qconnect.h
 open_top.o: open_top.h open_topData.h /usr/local/lib/qt/include/qdialog.h
 open_top.o: /usr/local/lib/qt/include/qwidget.h
 open_top.o: /usr/local/lib/qt/include/qwindefs.h
@@ -560,8 +818,10 @@ open_top.o: /usr/local/lib/qt/include/qstrlist.h
 open_top.o: /usr/local/lib/qt/include/qdstream.h
 open_top.o: /usr/local/lib/qt/include/qiodev.h ahistlineedit.h alistbox.h
 open_top.o: ksircprocess.h iocontroller.h /usr/local/lib/qt/include/qdict.h
-open_top.o: KSTicker/ksticker.h UserMenuRef.h UserMenuRefData.h
-open_top.o: /usr/local/lib/qt/include/qchkbox.h irclistbox.h
+open_top.o: KSTicker/ksticker.h /usr/local/lib/qt/include/qpopmenu.h
+open_top.o: /usr/local/lib/qt/include/qmenudta.h UserMenuRef.h
+open_top.o: UserMenuRefData.h /usr/local/lib/qt/include/qchkbox.h
+open_top.o: irclistbox.h
 open_topData.o: open_topData.h /usr/local/lib/qt/include/qdialog.h
 open_topData.o: /usr/local/lib/qt/include/qwidget.h
 open_topData.o: /usr/local/lib/qt/include/qwindefs.h
@@ -590,6 +850,101 @@ open_topData.o: /usr/local/lib/qt/include/qbutton.h
 open_topData.o: /usr/local/lib/qt/include/qcombo.h
 open_topData.o: /usr/local/lib/qt/include/qlabel.h
 open_topData.o: /usr/local/lib/qt/include/qframe.h
+mopen_top.o: open_top.h open_topData.h /usr/local/lib/qt/include/qdialog.h
+mopen_top.o: /usr/local/lib/qt/include/qwidget.h
+mopen_top.o: /usr/local/lib/qt/include/qwindefs.h
+mopen_top.o: /usr/local/lib/qt/include/qobjdefs.h
+mopen_top.o: /usr/local/lib/qt/include/qglobal.h
+mopen_top.o: /usr/local/lib/qt/include/qobject.h
+mopen_top.o: /usr/local/lib/qt/include/qstring.h
+mopen_top.o: /usr/local/lib/qt/include/qarray.h
+mopen_top.o: /usr/local/lib/qt/include/qgarray.h
+mopen_top.o: /usr/local/lib/qt/include/qshared.h
+mopen_top.o: /usr/local/lib/qt/include/qgeneric.h /usr/include/string.h
+mopen_top.o: /usr/include/features.h /usr/include/sys/cdefs.h
+mopen_top.o: /usr/local/lib/qt/include/qevent.h
+mopen_top.o: /usr/local/lib/qt/include/qrect.h
+mopen_top.o: /usr/local/lib/qt/include/qsize.h
+mopen_top.o: /usr/local/lib/qt/include/qpoint.h
+mopen_top.o: /usr/local/lib/qt/include/qpaintd.h
+mopen_top.o: /usr/local/lib/qt/include/qpalette.h
+mopen_top.o: /usr/local/lib/qt/include/qcolor.h
+mopen_top.o: /usr/local/lib/qt/include/qcursor.h
+mopen_top.o: /usr/local/lib/qt/include/qfont.h
+mopen_top.o: /usr/local/lib/qt/include/qfontmet.h
+mopen_top.o: /usr/local/lib/qt/include/qfontinf.h
+mopen_top.o: /usr/local/lib/qt/include/qpushbt.h
+mopen_top.o: /usr/local/lib/qt/include/qbutton.h
+mopen_top.o: /usr/local/lib/qt/include/qcombo.h messageReceiver.h toplevel.h
+mopen_top.o: /usr/include/unistd.h /usr/include/posix_opt.h
+mopen_top.o: /usr/include/gnu/types.h /usr/include/confname.h
+mopen_top.o: /usr/include/sys/types.h /usr/include/linux/types.h
+mopen_top.o: /usr/include/linux/posix_types.h /usr/include/asm/posix_types.h
+mopen_top.o: /usr/include/asm/types.h /usr/include/sys/bitypes.h
+mopen_top.o: /usr/include/signal.h /usr/include/linux/signal.h
+mopen_top.o: /usr/include/asm/signal.h /usr/local/lib/qt/include/qsocknot.h
+mopen_top.o: /usr/local/lib/qt/include/qlined.h
+mopen_top.o: /usr/local/lib/qt/include/qmlined.h
+mopen_top.o: /usr/local/lib/qt/include/qtablevw.h
+mopen_top.o: /usr/local/lib/qt/include/qframe.h
+mopen_top.o: /usr/local/lib/qt/include/qlist.h
+mopen_top.o: /usr/local/lib/qt/include/qglist.h
+mopen_top.o: /usr/local/lib/qt/include/qcollect.h
+mopen_top.o: /usr/local/lib/qt/include/qlayout.h
+mopen_top.o: /usr/local/lib/qt/include/qgmanagr.h
+mopen_top.o: /usr/local/lib/qt/include/qintdict.h
+mopen_top.o: /usr/local/lib/qt/include/qgdict.h
+mopen_top.o: /usr/local/lib/qt/include/qlistbox.h
+mopen_top.o: /usr/local/lib/qt/include/qpixmap.h
+mopen_top.o: /usr/local/lib/qt/include/qscrbar.h
+mopen_top.o: /usr/local/lib/qt/include/qrangect.h
+mopen_top.o: /usr/local/lib/qt/include/qdrawutl.h
+mopen_top.o: /usr/local/lib/qt/include/qpainter.h
+mopen_top.o: /usr/local/lib/qt/include/qregion.h
+mopen_top.o: /usr/local/lib/qt/include/qpen.h
+mopen_top.o: /usr/local/lib/qt/include/qbrush.h
+mopen_top.o: /usr/local/lib/qt/include/qpntarry.h
+mopen_top.o: /usr/local/lib/qt/include/qwmatrix.h
+mopen_top.o: /usr/local/lib/qt/include/qregexp.h
+mopen_top.o: /usr/local/lib/qt/include/qaccel.h
+mopen_top.o: /usr/local/lib/qt/include/qkeycode.h irclistitem.h
+mopen_top.o: /usr/local/lib/qt/include/qstrlist.h
+mopen_top.o: /usr/local/lib/qt/include/qdstream.h
+mopen_top.o: /usr/local/lib/qt/include/qiodev.h ahistlineedit.h alistbox.h
+mopen_top.o: ksircprocess.h iocontroller.h /usr/local/lib/qt/include/qdict.h
+mopen_top.o: KSTicker/ksticker.h /usr/local/lib/qt/include/qpopmenu.h
+mopen_top.o: /usr/local/lib/qt/include/qmenudta.h UserMenuRef.h
+mopen_top.o: UserMenuRefData.h /usr/local/lib/qt/include/qchkbox.h
+mopen_top.o: irclistbox.h /usr/local/lib/qt/include/qmetaobj.h
+mopen_top.o: /usr/local/lib/qt/include/qconnect.h
+mopen_topData.o: open_topData.h /usr/local/lib/qt/include/qdialog.h
+mopen_topData.o: /usr/local/lib/qt/include/qwidget.h
+mopen_topData.o: /usr/local/lib/qt/include/qwindefs.h
+mopen_topData.o: /usr/local/lib/qt/include/qobjdefs.h
+mopen_topData.o: /usr/local/lib/qt/include/qglobal.h
+mopen_topData.o: /usr/local/lib/qt/include/qobject.h
+mopen_topData.o: /usr/local/lib/qt/include/qstring.h
+mopen_topData.o: /usr/local/lib/qt/include/qarray.h
+mopen_topData.o: /usr/local/lib/qt/include/qgarray.h
+mopen_topData.o: /usr/local/lib/qt/include/qshared.h
+mopen_topData.o: /usr/local/lib/qt/include/qgeneric.h /usr/include/string.h
+mopen_topData.o: /usr/include/features.h /usr/include/sys/cdefs.h
+mopen_topData.o: /usr/local/lib/qt/include/qevent.h
+mopen_topData.o: /usr/local/lib/qt/include/qrect.h
+mopen_topData.o: /usr/local/lib/qt/include/qsize.h
+mopen_topData.o: /usr/local/lib/qt/include/qpoint.h
+mopen_topData.o: /usr/local/lib/qt/include/qpaintd.h
+mopen_topData.o: /usr/local/lib/qt/include/qpalette.h
+mopen_topData.o: /usr/local/lib/qt/include/qcolor.h
+mopen_topData.o: /usr/local/lib/qt/include/qcursor.h
+mopen_topData.o: /usr/local/lib/qt/include/qfont.h
+mopen_topData.o: /usr/local/lib/qt/include/qfontmet.h
+mopen_topData.o: /usr/local/lib/qt/include/qfontinf.h
+mopen_topData.o: /usr/local/lib/qt/include/qpushbt.h
+mopen_topData.o: /usr/local/lib/qt/include/qbutton.h
+mopen_topData.o: /usr/local/lib/qt/include/qcombo.h
+mopen_topData.o: /usr/local/lib/qt/include/qmetaobj.h
+mopen_topData.o: /usr/local/lib/qt/include/qconnect.h
 messageReceiver.o: messageReceiver.h /usr/local/lib/qt/include/qstring.h
 messageReceiver.o: /usr/local/lib/qt/include/qarray.h
 messageReceiver.o: /usr/local/lib/qt/include/qgarray.h
@@ -702,8 +1057,9 @@ ksircprocess.o: /usr/local/lib/qt/include/qkeycode.h irclistitem.h
 ksircprocess.o: /usr/local/lib/qt/include/qstrlist.h
 ksircprocess.o: /usr/local/lib/qt/include/qdstream.h
 ksircprocess.o: /usr/local/lib/qt/include/qiodev.h ahistlineedit.h alistbox.h
-ksircprocess.o: KSTicker/ksticker.h UserMenuRef.h UserMenuRefData.h
-ksircprocess.o: /usr/local/lib/qt/include/qchkbox.h
+ksircprocess.o: KSTicker/ksticker.h /usr/local/lib/qt/include/qpopmenu.h
+ksircprocess.o: /usr/local/lib/qt/include/qmenudta.h UserMenuRef.h
+ksircprocess.o: UserMenuRefData.h /usr/local/lib/qt/include/qchkbox.h
 ksircprocess.o: /usr/local/lib/qt/include/qbutton.h
 ksircprocess.o: /usr/local/lib/qt/include/qpushbt.h
 ksircprocess.o: /usr/local/lib/qt/include/qcombo.h irclistbox.h ioBroadcast.h
@@ -712,6 +1068,36 @@ ksircprocess.o: /usr/local/lib/qt/include/qsemimodal.h
 ksircprocess.o: /usr/local/lib/qt/include/qlabel.h
 ksircprocess.o: /usr/local/lib/qt/include/qprogbar.h KSProgress/ksprogress.h
 ksircprocess.o: KSProgress/ksprogressdata.h dccDialog.h dccDialogData.h
+mksircprocess.o: ksircprocess.h /usr/local/lib/qt/include/qobject.h
+mksircprocess.o: /usr/local/lib/qt/include/qobjdefs.h
+mksircprocess.o: /usr/local/lib/qt/include/qglobal.h
+mksircprocess.o: /usr/local/lib/qt/include/qstring.h
+mksircprocess.o: /usr/local/lib/qt/include/qarray.h
+mksircprocess.o: /usr/local/lib/qt/include/qgarray.h
+mksircprocess.o: /usr/local/lib/qt/include/qshared.h
+mksircprocess.o: /usr/local/lib/qt/include/qgeneric.h /usr/include/string.h
+mksircprocess.o: /usr/include/features.h /usr/include/sys/cdefs.h
+mksircprocess.o: /usr/local/lib/qt/include/qevent.h
+mksircprocess.o: /usr/local/lib/qt/include/qwindefs.h
+mksircprocess.o: /usr/local/lib/qt/include/qrect.h
+mksircprocess.o: /usr/local/lib/qt/include/qsize.h
+mksircprocess.o: /usr/local/lib/qt/include/qpoint.h iocontroller.h
+mksircprocess.o: /usr/local/lib/qt/include/qwidget.h
+mksircprocess.o: /usr/local/lib/qt/include/qpaintd.h
+mksircprocess.o: /usr/local/lib/qt/include/qpalette.h
+mksircprocess.o: /usr/local/lib/qt/include/qcolor.h
+mksircprocess.o: /usr/local/lib/qt/include/qcursor.h
+mksircprocess.o: /usr/local/lib/qt/include/qfont.h
+mksircprocess.o: /usr/local/lib/qt/include/qfontmet.h
+mksircprocess.o: /usr/local/lib/qt/include/qfontinf.h
+mksircprocess.o: /usr/local/lib/qt/include/qsocknot.h
+mksircprocess.o: /usr/local/lib/qt/include/qdict.h
+mksircprocess.o: /usr/local/lib/qt/include/qgdict.h
+mksircprocess.o: /usr/local/lib/qt/include/qcollect.h messageReceiver.h
+mksircprocess.o: /usr/local/lib/qt/include/qmetaobj.h
+mksircprocess.o: /usr/local/lib/qt/include/qconnect.h
+mksircprocess.o: /usr/local/lib/qt/include/qlist.h
+mksircprocess.o: /usr/local/lib/qt/include/qglist.h
 open_ksirc.o: open_ksirc.h open_ksircData.h
 open_ksirc.o: /usr/local/lib/qt/include/qdialog.h
 open_ksirc.o: /usr/local/lib/qt/include/qwidget.h
@@ -772,6 +1158,69 @@ open_ksircData.o: /usr/local/lib/qt/include/qbutton.h
 open_ksircData.o: /usr/local/lib/qt/include/qcombo.h
 open_ksircData.o: /usr/local/lib/qt/include/qlabel.h
 open_ksircData.o: /usr/local/lib/qt/include/qframe.h
+mopen_ksirc.o: open_ksirc.h open_ksircData.h
+mopen_ksirc.o: /usr/local/lib/qt/include/qdialog.h
+mopen_ksirc.o: /usr/local/lib/qt/include/qwidget.h
+mopen_ksirc.o: /usr/local/lib/qt/include/qwindefs.h
+mopen_ksirc.o: /usr/local/lib/qt/include/qobjdefs.h
+mopen_ksirc.o: /usr/local/lib/qt/include/qglobal.h
+mopen_ksirc.o: /usr/local/lib/qt/include/qobject.h
+mopen_ksirc.o: /usr/local/lib/qt/include/qstring.h
+mopen_ksirc.o: /usr/local/lib/qt/include/qarray.h
+mopen_ksirc.o: /usr/local/lib/qt/include/qgarray.h
+mopen_ksirc.o: /usr/local/lib/qt/include/qshared.h
+mopen_ksirc.o: /usr/local/lib/qt/include/qgeneric.h /usr/include/string.h
+mopen_ksirc.o: /usr/include/features.h /usr/include/sys/cdefs.h
+mopen_ksirc.o: /usr/local/lib/qt/include/qevent.h
+mopen_ksirc.o: /usr/local/lib/qt/include/qrect.h
+mopen_ksirc.o: /usr/local/lib/qt/include/qsize.h
+mopen_ksirc.o: /usr/local/lib/qt/include/qpoint.h
+mopen_ksirc.o: /usr/local/lib/qt/include/qpaintd.h
+mopen_ksirc.o: /usr/local/lib/qt/include/qpalette.h
+mopen_ksirc.o: /usr/local/lib/qt/include/qcolor.h
+mopen_ksirc.o: /usr/local/lib/qt/include/qcursor.h
+mopen_ksirc.o: /usr/local/lib/qt/include/qfont.h
+mopen_ksirc.o: /usr/local/lib/qt/include/qfontmet.h
+mopen_ksirc.o: /usr/local/lib/qt/include/qfontinf.h
+mopen_ksirc.o: /usr/local/lib/qt/include/qpushbt.h
+mopen_ksirc.o: /usr/local/lib/qt/include/qbutton.h
+mopen_ksirc.o: /usr/local/lib/qt/include/qcombo.h iocontroller.h
+mopen_ksirc.o: /usr/local/lib/qt/include/qsocknot.h
+mopen_ksirc.o: /usr/local/lib/qt/include/qdict.h
+mopen_ksirc.o: /usr/local/lib/qt/include/qgdict.h
+mopen_ksirc.o: /usr/local/lib/qt/include/qcollect.h messageReceiver.h
+mopen_ksirc.o: ksircprocess.h /usr/local/lib/qt/include/qmetaobj.h
+mopen_ksirc.o: /usr/local/lib/qt/include/qconnect.h
+mopen_ksirc.o: /usr/local/lib/qt/include/qlist.h
+mopen_ksirc.o: /usr/local/lib/qt/include/qglist.h
+mopen_ksircData.o: open_ksircData.h /usr/local/lib/qt/include/qdialog.h
+mopen_ksircData.o: /usr/local/lib/qt/include/qwidget.h
+mopen_ksircData.o: /usr/local/lib/qt/include/qwindefs.h
+mopen_ksircData.o: /usr/local/lib/qt/include/qobjdefs.h
+mopen_ksircData.o: /usr/local/lib/qt/include/qglobal.h
+mopen_ksircData.o: /usr/local/lib/qt/include/qobject.h
+mopen_ksircData.o: /usr/local/lib/qt/include/qstring.h
+mopen_ksircData.o: /usr/local/lib/qt/include/qarray.h
+mopen_ksircData.o: /usr/local/lib/qt/include/qgarray.h
+mopen_ksircData.o: /usr/local/lib/qt/include/qshared.h
+mopen_ksircData.o: /usr/local/lib/qt/include/qgeneric.h /usr/include/string.h
+mopen_ksircData.o: /usr/include/features.h /usr/include/sys/cdefs.h
+mopen_ksircData.o: /usr/local/lib/qt/include/qevent.h
+mopen_ksircData.o: /usr/local/lib/qt/include/qrect.h
+mopen_ksircData.o: /usr/local/lib/qt/include/qsize.h
+mopen_ksircData.o: /usr/local/lib/qt/include/qpoint.h
+mopen_ksircData.o: /usr/local/lib/qt/include/qpaintd.h
+mopen_ksircData.o: /usr/local/lib/qt/include/qpalette.h
+mopen_ksircData.o: /usr/local/lib/qt/include/qcolor.h
+mopen_ksircData.o: /usr/local/lib/qt/include/qcursor.h
+mopen_ksircData.o: /usr/local/lib/qt/include/qfont.h
+mopen_ksircData.o: /usr/local/lib/qt/include/qfontmet.h
+mopen_ksircData.o: /usr/local/lib/qt/include/qfontinf.h
+mopen_ksircData.o: /usr/local/lib/qt/include/qpushbt.h
+mopen_ksircData.o: /usr/local/lib/qt/include/qbutton.h
+mopen_ksircData.o: /usr/local/lib/qt/include/qcombo.h
+mopen_ksircData.o: /usr/local/lib/qt/include/qmetaobj.h
+mopen_ksircData.o: /usr/local/lib/qt/include/qconnect.h
 servercontroller.o: /usr/local/lib/qt/include/qpopmenu.h
 servercontroller.o: /usr/local/lib/qt/include/qtablevw.h
 servercontroller.o: /usr/local/lib/qt/include/qframe.h
@@ -802,6 +1251,7 @@ servercontroller.o: /usr/local/lib/qt/include/qmenudta.h servercontroller.h
 servercontroller.o: /usr/local/lib/qt/include/qdict.h
 servercontroller.o: /usr/local/lib/qt/include/qgdict.h
 servercontroller.o: /usr/local/lib/qt/include/qcollect.h
+servercontroller.o: /usr/local/lib/qt/include/qpixmap.h
 servercontroller.o: servercontrollerData.h control.h ksircprocess.h
 servercontroller.o: iocontroller.h /usr/local/lib/qt/include/qsocknot.h
 servercontroller.o: messageReceiver.h open_ksirc.h open_ksircData.h
@@ -825,7 +1275,6 @@ servercontroller.o: /usr/local/lib/qt/include/qlayout.h
 servercontroller.o: /usr/local/lib/qt/include/qgmanagr.h
 servercontroller.o: /usr/local/lib/qt/include/qintdict.h
 servercontroller.o: /usr/local/lib/qt/include/qlistbox.h
-servercontroller.o: /usr/local/lib/qt/include/qpixmap.h
 servercontroller.o: /usr/local/lib/qt/include/qscrbar.h
 servercontroller.o: /usr/local/lib/qt/include/qrangect.h
 servercontroller.o: /usr/local/lib/qt/include/qdrawutl.h
@@ -844,7 +1293,8 @@ servercontroller.o: /usr/local/lib/qt/include/qiodev.h ahistlineedit.h
 servercontroller.o: alistbox.h KSTicker/ksticker.h UserMenuRef.h
 servercontroller.o: UserMenuRefData.h /usr/local/lib/qt/include/qchkbox.h
 servercontroller.o: irclistbox.h KSircColour.h KSircColourData.h config.h
-servercontroller.o: FilterRuleEditor.h FilterRuleEditorData.h
+servercontroller.o: control_message.h FilterRuleEditor.h
+servercontroller.o: FilterRuleEditorData.h
 servercontrollerData.o: servercontrollerData.h control.h
 servercontrollerData.o: /usr/local/lib/qt/include/qframe.h
 servercontrollerData.o: /usr/local/lib/qt/include/qwidget.h
@@ -878,7 +1328,82 @@ servercontrollerData.o: /usr/local/lib/qt/include/qgdict.h
 servercontrollerData.o: /usr/local/lib/qt/include/qcollect.h
 servercontrollerData.o: /usr/local/lib/qt/include/qlist.h
 servercontrollerData.o: /usr/local/lib/qt/include/qglist.h
+mservercontroller.o: servercontroller.h /usr/local/lib/qt/include/qdict.h
+mservercontroller.o: /usr/local/lib/qt/include/qgdict.h
+mservercontroller.o: /usr/local/lib/qt/include/qcollect.h
+mservercontroller.o: /usr/local/lib/qt/include/qglobal.h
+mservercontroller.o: /usr/local/lib/qt/include/qgeneric.h
+mservercontroller.o: /usr/local/lib/qt/include/qpixmap.h
+mservercontroller.o: /usr/local/lib/qt/include/qpaintd.h
+mservercontroller.o: /usr/local/lib/qt/include/qwindefs.h
+mservercontroller.o: /usr/local/lib/qt/include/qobjdefs.h
+mservercontroller.o: /usr/local/lib/qt/include/qrect.h
+mservercontroller.o: /usr/local/lib/qt/include/qsize.h
+mservercontroller.o: /usr/local/lib/qt/include/qpoint.h
+mservercontroller.o: /usr/local/lib/qt/include/qcolor.h
+mservercontroller.o: /usr/local/lib/qt/include/qshared.h
+mservercontroller.o: servercontrollerData.h control.h
+mservercontroller.o: /usr/local/lib/qt/include/qframe.h
+mservercontroller.o: /usr/local/lib/qt/include/qwidget.h
+mservercontroller.o: /usr/local/lib/qt/include/qobject.h
+mservercontroller.o: /usr/local/lib/qt/include/qstring.h
+mservercontroller.o: /usr/local/lib/qt/include/qarray.h
+mservercontroller.o: /usr/local/lib/qt/include/qgarray.h
+mservercontroller.o: /usr/include/string.h /usr/include/features.h
+mservercontroller.o: /usr/include/sys/cdefs.h
+mservercontroller.o: /usr/local/lib/qt/include/qevent.h
+mservercontroller.o: /usr/local/lib/qt/include/qpalette.h
+mservercontroller.o: /usr/local/lib/qt/include/qcursor.h
+mservercontroller.o: /usr/local/lib/qt/include/qfont.h
+mservercontroller.o: /usr/local/lib/qt/include/qfontmet.h
+mservercontroller.o: /usr/local/lib/qt/include/qfontinf.h ksircprocess.h
+mservercontroller.o: iocontroller.h /usr/local/lib/qt/include/qsocknot.h
+mservercontroller.o: messageReceiver.h /usr/local/lib/qt/include/qmetaobj.h
+mservercontroller.o: /usr/local/lib/qt/include/qconnect.h
+mservercontrollerData.o: servercontrollerData.h control.h
+mservercontrollerData.o: /usr/local/lib/qt/include/qframe.h
+mservercontrollerData.o: /usr/local/lib/qt/include/qwidget.h
+mservercontrollerData.o: /usr/local/lib/qt/include/qwindefs.h
+mservercontrollerData.o: /usr/local/lib/qt/include/qobjdefs.h
+mservercontrollerData.o: /usr/local/lib/qt/include/qglobal.h
+mservercontrollerData.o: /usr/local/lib/qt/include/qobject.h
+mservercontrollerData.o: /usr/local/lib/qt/include/qstring.h
+mservercontrollerData.o: /usr/local/lib/qt/include/qarray.h
+mservercontrollerData.o: /usr/local/lib/qt/include/qgarray.h
+mservercontrollerData.o: /usr/local/lib/qt/include/qshared.h
+mservercontrollerData.o: /usr/local/lib/qt/include/qgeneric.h
+mservercontrollerData.o: /usr/include/string.h /usr/include/features.h
+mservercontrollerData.o: /usr/include/sys/cdefs.h
+mservercontrollerData.o: /usr/local/lib/qt/include/qevent.h
+mservercontrollerData.o: /usr/local/lib/qt/include/qrect.h
+mservercontrollerData.o: /usr/local/lib/qt/include/qsize.h
+mservercontrollerData.o: /usr/local/lib/qt/include/qpoint.h
+mservercontrollerData.o: /usr/local/lib/qt/include/qpaintd.h
+mservercontrollerData.o: /usr/local/lib/qt/include/qpalette.h
+mservercontrollerData.o: /usr/local/lib/qt/include/qcolor.h
+mservercontrollerData.o: /usr/local/lib/qt/include/qcursor.h
+mservercontrollerData.o: /usr/local/lib/qt/include/qfont.h
+mservercontrollerData.o: /usr/local/lib/qt/include/qfontmet.h
+mservercontrollerData.o: /usr/local/lib/qt/include/qfontinf.h
+mservercontrollerData.o: /usr/local/lib/qt/include/qmetaobj.h
+mservercontrollerData.o: /usr/local/lib/qt/include/qconnect.h
 control.o: control.h
+mcontrol.o: control.h /usr/local/lib/qt/include/qmetaobj.h
+mcontrol.o: /usr/local/lib/qt/include/qconnect.h
+mcontrol.o: /usr/local/lib/qt/include/qobject.h
+mcontrol.o: /usr/local/lib/qt/include/qobjdefs.h
+mcontrol.o: /usr/local/lib/qt/include/qglobal.h
+mcontrol.o: /usr/local/lib/qt/include/qstring.h
+mcontrol.o: /usr/local/lib/qt/include/qarray.h
+mcontrol.o: /usr/local/lib/qt/include/qgarray.h
+mcontrol.o: /usr/local/lib/qt/include/qshared.h
+mcontrol.o: /usr/local/lib/qt/include/qgeneric.h /usr/include/string.h
+mcontrol.o: /usr/include/features.h /usr/include/sys/cdefs.h
+mcontrol.o: /usr/local/lib/qt/include/qevent.h
+mcontrol.o: /usr/local/lib/qt/include/qwindefs.h
+mcontrol.o: /usr/local/lib/qt/include/qrect.h
+mcontrol.o: /usr/local/lib/qt/include/qsize.h
+mcontrol.o: /usr/local/lib/qt/include/qpoint.h
 KSircColour.o: KSircColour.h KSircColourData.h
 KSircColour.o: /usr/local/lib/qt/include/qframe.h
 KSircColour.o: /usr/local/lib/qt/include/qwidget.h
@@ -936,6 +1461,58 @@ KSircColourData.o: /usr/local/lib/qt/include/qgdict.h
 KSircColourData.o: /usr/local/lib/qt/include/qcollect.h
 KSircColourData.o: /usr/local/lib/qt/include/qlist.h
 KSircColourData.o: /usr/local/lib/qt/include/qglist.h
+mKSircColour.o: KSircColour.h KSircColourData.h
+mKSircColour.o: /usr/local/lib/qt/include/qframe.h
+mKSircColour.o: /usr/local/lib/qt/include/qwidget.h
+mKSircColour.o: /usr/local/lib/qt/include/qwindefs.h
+mKSircColour.o: /usr/local/lib/qt/include/qobjdefs.h
+mKSircColour.o: /usr/local/lib/qt/include/qglobal.h
+mKSircColour.o: /usr/local/lib/qt/include/qobject.h
+mKSircColour.o: /usr/local/lib/qt/include/qstring.h
+mKSircColour.o: /usr/local/lib/qt/include/qarray.h
+mKSircColour.o: /usr/local/lib/qt/include/qgarray.h
+mKSircColour.o: /usr/local/lib/qt/include/qshared.h
+mKSircColour.o: /usr/local/lib/qt/include/qgeneric.h /usr/include/string.h
+mKSircColour.o: /usr/include/features.h /usr/include/sys/cdefs.h
+mKSircColour.o: /usr/local/lib/qt/include/qevent.h
+mKSircColour.o: /usr/local/lib/qt/include/qrect.h
+mKSircColour.o: /usr/local/lib/qt/include/qsize.h
+mKSircColour.o: /usr/local/lib/qt/include/qpoint.h
+mKSircColour.o: /usr/local/lib/qt/include/qpaintd.h
+mKSircColour.o: /usr/local/lib/qt/include/qpalette.h
+mKSircColour.o: /usr/local/lib/qt/include/qcolor.h
+mKSircColour.o: /usr/local/lib/qt/include/qcursor.h
+mKSircColour.o: /usr/local/lib/qt/include/qfont.h
+mKSircColour.o: /usr/local/lib/qt/include/qfontmet.h
+mKSircColour.o: /usr/local/lib/qt/include/qfontinf.h
+mKSircColour.o: /usr/local/lib/qt/include/qmetaobj.h
+mKSircColour.o: /usr/local/lib/qt/include/qconnect.h
+mKSircColourData.o: KSircColourData.h /usr/local/lib/qt/include/qframe.h
+mKSircColourData.o: /usr/local/lib/qt/include/qwidget.h
+mKSircColourData.o: /usr/local/lib/qt/include/qwindefs.h
+mKSircColourData.o: /usr/local/lib/qt/include/qobjdefs.h
+mKSircColourData.o: /usr/local/lib/qt/include/qglobal.h
+mKSircColourData.o: /usr/local/lib/qt/include/qobject.h
+mKSircColourData.o: /usr/local/lib/qt/include/qstring.h
+mKSircColourData.o: /usr/local/lib/qt/include/qarray.h
+mKSircColourData.o: /usr/local/lib/qt/include/qgarray.h
+mKSircColourData.o: /usr/local/lib/qt/include/qshared.h
+mKSircColourData.o: /usr/local/lib/qt/include/qgeneric.h
+mKSircColourData.o: /usr/include/string.h /usr/include/features.h
+mKSircColourData.o: /usr/include/sys/cdefs.h
+mKSircColourData.o: /usr/local/lib/qt/include/qevent.h
+mKSircColourData.o: /usr/local/lib/qt/include/qrect.h
+mKSircColourData.o: /usr/local/lib/qt/include/qsize.h
+mKSircColourData.o: /usr/local/lib/qt/include/qpoint.h
+mKSircColourData.o: /usr/local/lib/qt/include/qpaintd.h
+mKSircColourData.o: /usr/local/lib/qt/include/qpalette.h
+mKSircColourData.o: /usr/local/lib/qt/include/qcolor.h
+mKSircColourData.o: /usr/local/lib/qt/include/qcursor.h
+mKSircColourData.o: /usr/local/lib/qt/include/qfont.h
+mKSircColourData.o: /usr/local/lib/qt/include/qfontmet.h
+mKSircColourData.o: /usr/local/lib/qt/include/qfontinf.h
+mKSircColourData.o: /usr/local/lib/qt/include/qmetaobj.h
+mKSircColourData.o: /usr/local/lib/qt/include/qconnect.h
 FilterRuleEditor.o: FilterRuleEditor.h FilterRuleEditorData.h
 FilterRuleEditor.o: /usr/local/lib/qt/include/qdialog.h
 FilterRuleEditor.o: /usr/local/lib/qt/include/qwidget.h
@@ -1010,6 +1587,74 @@ FilterRuleEditorData.o: /usr/local/lib/qt/include/qgdict.h
 FilterRuleEditorData.o: /usr/local/lib/qt/include/qcollect.h
 FilterRuleEditorData.o: /usr/local/lib/qt/include/qlist.h
 FilterRuleEditorData.o: /usr/local/lib/qt/include/qglist.h
+mFilterRuleEditor.o: FilterRuleEditor.h FilterRuleEditorData.h
+mFilterRuleEditor.o: /usr/local/lib/qt/include/qdialog.h
+mFilterRuleEditor.o: /usr/local/lib/qt/include/qwidget.h
+mFilterRuleEditor.o: /usr/local/lib/qt/include/qwindefs.h
+mFilterRuleEditor.o: /usr/local/lib/qt/include/qobjdefs.h
+mFilterRuleEditor.o: /usr/local/lib/qt/include/qglobal.h
+mFilterRuleEditor.o: /usr/local/lib/qt/include/qobject.h
+mFilterRuleEditor.o: /usr/local/lib/qt/include/qstring.h
+mFilterRuleEditor.o: /usr/local/lib/qt/include/qarray.h
+mFilterRuleEditor.o: /usr/local/lib/qt/include/qgarray.h
+mFilterRuleEditor.o: /usr/local/lib/qt/include/qshared.h
+mFilterRuleEditor.o: /usr/local/lib/qt/include/qgeneric.h
+mFilterRuleEditor.o: /usr/include/string.h /usr/include/features.h
+mFilterRuleEditor.o: /usr/include/sys/cdefs.h
+mFilterRuleEditor.o: /usr/local/lib/qt/include/qevent.h
+mFilterRuleEditor.o: /usr/local/lib/qt/include/qrect.h
+mFilterRuleEditor.o: /usr/local/lib/qt/include/qsize.h
+mFilterRuleEditor.o: /usr/local/lib/qt/include/qpoint.h
+mFilterRuleEditor.o: /usr/local/lib/qt/include/qpaintd.h
+mFilterRuleEditor.o: /usr/local/lib/qt/include/qpalette.h
+mFilterRuleEditor.o: /usr/local/lib/qt/include/qcolor.h
+mFilterRuleEditor.o: /usr/local/lib/qt/include/qcursor.h
+mFilterRuleEditor.o: /usr/local/lib/qt/include/qfont.h
+mFilterRuleEditor.o: /usr/local/lib/qt/include/qfontmet.h
+mFilterRuleEditor.o: /usr/local/lib/qt/include/qfontinf.h
+mFilterRuleEditor.o: /usr/local/lib/qt/include/qpushbt.h
+mFilterRuleEditor.o: /usr/local/lib/qt/include/qbutton.h
+mFilterRuleEditor.o: /usr/local/lib/qt/include/qlistbox.h
+mFilterRuleEditor.o: /usr/local/lib/qt/include/qtablevw.h
+mFilterRuleEditor.o: /usr/local/lib/qt/include/qframe.h
+mFilterRuleEditor.o: /usr/local/lib/qt/include/qpixmap.h
+mFilterRuleEditor.o: /usr/local/lib/qt/include/qlined.h
+mFilterRuleEditor.o: /usr/local/lib/qt/include/qmetaobj.h
+mFilterRuleEditor.o: /usr/local/lib/qt/include/qconnect.h
+mFilterRuleEditorData.o: FilterRuleEditorData.h
+mFilterRuleEditorData.o: /usr/local/lib/qt/include/qdialog.h
+mFilterRuleEditorData.o: /usr/local/lib/qt/include/qwidget.h
+mFilterRuleEditorData.o: /usr/local/lib/qt/include/qwindefs.h
+mFilterRuleEditorData.o: /usr/local/lib/qt/include/qobjdefs.h
+mFilterRuleEditorData.o: /usr/local/lib/qt/include/qglobal.h
+mFilterRuleEditorData.o: /usr/local/lib/qt/include/qobject.h
+mFilterRuleEditorData.o: /usr/local/lib/qt/include/qstring.h
+mFilterRuleEditorData.o: /usr/local/lib/qt/include/qarray.h
+mFilterRuleEditorData.o: /usr/local/lib/qt/include/qgarray.h
+mFilterRuleEditorData.o: /usr/local/lib/qt/include/qshared.h
+mFilterRuleEditorData.o: /usr/local/lib/qt/include/qgeneric.h
+mFilterRuleEditorData.o: /usr/include/string.h /usr/include/features.h
+mFilterRuleEditorData.o: /usr/include/sys/cdefs.h
+mFilterRuleEditorData.o: /usr/local/lib/qt/include/qevent.h
+mFilterRuleEditorData.o: /usr/local/lib/qt/include/qrect.h
+mFilterRuleEditorData.o: /usr/local/lib/qt/include/qsize.h
+mFilterRuleEditorData.o: /usr/local/lib/qt/include/qpoint.h
+mFilterRuleEditorData.o: /usr/local/lib/qt/include/qpaintd.h
+mFilterRuleEditorData.o: /usr/local/lib/qt/include/qpalette.h
+mFilterRuleEditorData.o: /usr/local/lib/qt/include/qcolor.h
+mFilterRuleEditorData.o: /usr/local/lib/qt/include/qcursor.h
+mFilterRuleEditorData.o: /usr/local/lib/qt/include/qfont.h
+mFilterRuleEditorData.o: /usr/local/lib/qt/include/qfontmet.h
+mFilterRuleEditorData.o: /usr/local/lib/qt/include/qfontinf.h
+mFilterRuleEditorData.o: /usr/local/lib/qt/include/qpushbt.h
+mFilterRuleEditorData.o: /usr/local/lib/qt/include/qbutton.h
+mFilterRuleEditorData.o: /usr/local/lib/qt/include/qlistbox.h
+mFilterRuleEditorData.o: /usr/local/lib/qt/include/qtablevw.h
+mFilterRuleEditorData.o: /usr/local/lib/qt/include/qframe.h
+mFilterRuleEditorData.o: /usr/local/lib/qt/include/qpixmap.h
+mFilterRuleEditorData.o: /usr/local/lib/qt/include/qlined.h
+mFilterRuleEditorData.o: /usr/local/lib/qt/include/qmetaobj.h
+mFilterRuleEditorData.o: /usr/local/lib/qt/include/qconnect.h
 ioDiscard.o: ioDiscard.h /usr/local/lib/qt/include/qobject.h
 ioDiscard.o: /usr/local/lib/qt/include/qobjdefs.h
 ioDiscard.o: /usr/local/lib/qt/include/qglobal.h
@@ -1073,6 +1718,46 @@ ioDCC.o: dccDialogData.h /usr/local/lib/qt/include/qlistbox.h
 ioDCC.o: /usr/local/lib/qt/include/qtablevw.h
 ioDCC.o: /usr/local/lib/qt/include/qpixmap.h
 ioDCC.o: /usr/local/lib/qt/include/qregexp.h
+mioDCC.o: ioDCC.h /usr/local/lib/qt/include/qobject.h
+mioDCC.o: /usr/local/lib/qt/include/qobjdefs.h
+mioDCC.o: /usr/local/lib/qt/include/qglobal.h
+mioDCC.o: /usr/local/lib/qt/include/qstring.h
+mioDCC.o: /usr/local/lib/qt/include/qarray.h
+mioDCC.o: /usr/local/lib/qt/include/qgarray.h
+mioDCC.o: /usr/local/lib/qt/include/qshared.h
+mioDCC.o: /usr/local/lib/qt/include/qgeneric.h /usr/include/string.h
+mioDCC.o: /usr/include/features.h /usr/include/sys/cdefs.h
+mioDCC.o: /usr/local/lib/qt/include/qevent.h
+mioDCC.o: /usr/local/lib/qt/include/qwindefs.h
+mioDCC.o: /usr/local/lib/qt/include/qrect.h /usr/local/lib/qt/include/qsize.h
+mioDCC.o: /usr/local/lib/qt/include/qpoint.h
+mioDCC.o: /usr/local/lib/qt/include/qdict.h
+mioDCC.o: /usr/local/lib/qt/include/qgdict.h
+mioDCC.o: /usr/local/lib/qt/include/qcollect.h
+mioDCC.o: /usr/local/lib/qt/include/qprogdlg.h
+mioDCC.o: /usr/local/lib/qt/include/qsemimodal.h
+mioDCC.o: /usr/local/lib/qt/include/qwidget.h
+mioDCC.o: /usr/local/lib/qt/include/qpaintd.h
+mioDCC.o: /usr/local/lib/qt/include/qpalette.h
+mioDCC.o: /usr/local/lib/qt/include/qcolor.h
+mioDCC.o: /usr/local/lib/qt/include/qcursor.h
+mioDCC.o: /usr/local/lib/qt/include/qfont.h
+mioDCC.o: /usr/local/lib/qt/include/qfontmet.h
+mioDCC.o: /usr/local/lib/qt/include/qfontinf.h
+mioDCC.o: /usr/local/lib/qt/include/qpushbt.h
+mioDCC.o: /usr/local/lib/qt/include/qbutton.h
+mioDCC.o: /usr/local/lib/qt/include/qlabel.h
+mioDCC.o: /usr/local/lib/qt/include/qframe.h
+mioDCC.o: /usr/local/lib/qt/include/qprogbar.h KSProgress/ksprogress.h
+mioDCC.o: KSProgress/ksprogressdata.h messageReceiver.h ksircprocess.h
+mioDCC.o: iocontroller.h /usr/local/lib/qt/include/qsocknot.h dccDialog.h
+mioDCC.o: dccDialogData.h /usr/local/lib/qt/include/qlistbox.h
+mioDCC.o: /usr/local/lib/qt/include/qtablevw.h
+mioDCC.o: /usr/local/lib/qt/include/qpixmap.h
+mioDCC.o: /usr/local/lib/qt/include/qmetaobj.h
+mioDCC.o: /usr/local/lib/qt/include/qconnect.h
+mioDCC.o: /usr/local/lib/qt/include/qlist.h
+mioDCC.o: /usr/local/lib/qt/include/qglist.h
 dccDialog.o: dccDialog.h dccDialogData.h /usr/local/lib/qt/include/qframe.h
 dccDialog.o: /usr/local/lib/qt/include/qwidget.h
 dccDialog.o: /usr/local/lib/qt/include/qwindefs.h
@@ -1101,6 +1786,36 @@ dccDialog.o: /usr/local/lib/qt/include/qbutton.h
 dccDialog.o: /usr/local/lib/qt/include/qlistbox.h
 dccDialog.o: /usr/local/lib/qt/include/qtablevw.h
 dccDialog.o: /usr/local/lib/qt/include/qpixmap.h
+mdccDialog.o: dccDialog.h dccDialogData.h /usr/local/lib/qt/include/qframe.h
+mdccDialog.o: /usr/local/lib/qt/include/qwidget.h
+mdccDialog.o: /usr/local/lib/qt/include/qwindefs.h
+mdccDialog.o: /usr/local/lib/qt/include/qobjdefs.h
+mdccDialog.o: /usr/local/lib/qt/include/qglobal.h
+mdccDialog.o: /usr/local/lib/qt/include/qobject.h
+mdccDialog.o: /usr/local/lib/qt/include/qstring.h
+mdccDialog.o: /usr/local/lib/qt/include/qarray.h
+mdccDialog.o: /usr/local/lib/qt/include/qgarray.h
+mdccDialog.o: /usr/local/lib/qt/include/qshared.h
+mdccDialog.o: /usr/local/lib/qt/include/qgeneric.h /usr/include/string.h
+mdccDialog.o: /usr/include/features.h /usr/include/sys/cdefs.h
+mdccDialog.o: /usr/local/lib/qt/include/qevent.h
+mdccDialog.o: /usr/local/lib/qt/include/qrect.h
+mdccDialog.o: /usr/local/lib/qt/include/qsize.h
+mdccDialog.o: /usr/local/lib/qt/include/qpoint.h
+mdccDialog.o: /usr/local/lib/qt/include/qpaintd.h
+mdccDialog.o: /usr/local/lib/qt/include/qpalette.h
+mdccDialog.o: /usr/local/lib/qt/include/qcolor.h
+mdccDialog.o: /usr/local/lib/qt/include/qcursor.h
+mdccDialog.o: /usr/local/lib/qt/include/qfont.h
+mdccDialog.o: /usr/local/lib/qt/include/qfontmet.h
+mdccDialog.o: /usr/local/lib/qt/include/qfontinf.h
+mdccDialog.o: /usr/local/lib/qt/include/qpushbt.h
+mdccDialog.o: /usr/local/lib/qt/include/qbutton.h
+mdccDialog.o: /usr/local/lib/qt/include/qlistbox.h
+mdccDialog.o: /usr/local/lib/qt/include/qtablevw.h
+mdccDialog.o: /usr/local/lib/qt/include/qpixmap.h
+mdccDialog.o: /usr/local/lib/qt/include/qmetaobj.h
+mdccDialog.o: /usr/local/lib/qt/include/qconnect.h
 dccDialogData.o: dccDialogData.h /usr/local/lib/qt/include/qframe.h
 dccDialogData.o: /usr/local/lib/qt/include/qwidget.h
 dccDialogData.o: /usr/local/lib/qt/include/qwindefs.h
@@ -1129,3 +1844,65 @@ dccDialogData.o: /usr/local/lib/qt/include/qbutton.h
 dccDialogData.o: /usr/local/lib/qt/include/qlistbox.h
 dccDialogData.o: /usr/local/lib/qt/include/qtablevw.h
 dccDialogData.o: /usr/local/lib/qt/include/qpixmap.h
+mdccDialogData.o: dccDialogData.h /usr/local/lib/qt/include/qframe.h
+mdccDialogData.o: /usr/local/lib/qt/include/qwidget.h
+mdccDialogData.o: /usr/local/lib/qt/include/qwindefs.h
+mdccDialogData.o: /usr/local/lib/qt/include/qobjdefs.h
+mdccDialogData.o: /usr/local/lib/qt/include/qglobal.h
+mdccDialogData.o: /usr/local/lib/qt/include/qobject.h
+mdccDialogData.o: /usr/local/lib/qt/include/qstring.h
+mdccDialogData.o: /usr/local/lib/qt/include/qarray.h
+mdccDialogData.o: /usr/local/lib/qt/include/qgarray.h
+mdccDialogData.o: /usr/local/lib/qt/include/qshared.h
+mdccDialogData.o: /usr/local/lib/qt/include/qgeneric.h /usr/include/string.h
+mdccDialogData.o: /usr/include/features.h /usr/include/sys/cdefs.h
+mdccDialogData.o: /usr/local/lib/qt/include/qevent.h
+mdccDialogData.o: /usr/local/lib/qt/include/qrect.h
+mdccDialogData.o: /usr/local/lib/qt/include/qsize.h
+mdccDialogData.o: /usr/local/lib/qt/include/qpoint.h
+mdccDialogData.o: /usr/local/lib/qt/include/qpaintd.h
+mdccDialogData.o: /usr/local/lib/qt/include/qpalette.h
+mdccDialogData.o: /usr/local/lib/qt/include/qcolor.h
+mdccDialogData.o: /usr/local/lib/qt/include/qcursor.h
+mdccDialogData.o: /usr/local/lib/qt/include/qfont.h
+mdccDialogData.o: /usr/local/lib/qt/include/qfontmet.h
+mdccDialogData.o: /usr/local/lib/qt/include/qfontinf.h
+mdccDialogData.o: /usr/local/lib/qt/include/qpushbt.h
+mdccDialogData.o: /usr/local/lib/qt/include/qbutton.h
+mdccDialogData.o: /usr/local/lib/qt/include/qlistbox.h
+mdccDialogData.o: /usr/local/lib/qt/include/qtablevw.h
+mdccDialogData.o: /usr/local/lib/qt/include/qpixmap.h
+mdccDialogData.o: /usr/local/lib/qt/include/qmetaobj.h
+mdccDialogData.o: /usr/local/lib/qt/include/qconnect.h
+linelistitem.o: /usr/local/lib/qt/include/qpainter.h
+linelistitem.o: /usr/local/lib/qt/include/qpaintd.h
+linelistitem.o: /usr/local/lib/qt/include/qwindefs.h
+linelistitem.o: /usr/local/lib/qt/include/qobjdefs.h
+linelistitem.o: /usr/local/lib/qt/include/qglobal.h
+linelistitem.o: /usr/local/lib/qt/include/qrect.h
+linelistitem.o: /usr/local/lib/qt/include/qsize.h
+linelistitem.o: /usr/local/lib/qt/include/qpoint.h
+linelistitem.o: /usr/local/lib/qt/include/qcolor.h
+linelistitem.o: /usr/local/lib/qt/include/qfontmet.h
+linelistitem.o: /usr/local/lib/qt/include/qfont.h
+linelistitem.o: /usr/local/lib/qt/include/qstring.h
+linelistitem.o: /usr/local/lib/qt/include/qarray.h
+linelistitem.o: /usr/local/lib/qt/include/qgarray.h
+linelistitem.o: /usr/local/lib/qt/include/qshared.h
+linelistitem.o: /usr/local/lib/qt/include/qgeneric.h /usr/include/string.h
+linelistitem.o: /usr/include/features.h /usr/include/sys/cdefs.h
+linelistitem.o: /usr/local/lib/qt/include/qfontinf.h
+linelistitem.o: /usr/local/lib/qt/include/qregion.h
+linelistitem.o: /usr/local/lib/qt/include/qpen.h
+linelistitem.o: /usr/local/lib/qt/include/qbrush.h
+linelistitem.o: /usr/local/lib/qt/include/qpntarry.h
+linelistitem.o: /usr/local/lib/qt/include/qwmatrix.h
+linelistitem.o: /usr/local/lib/qt/include/qlistbox.h
+linelistitem.o: /usr/local/lib/qt/include/qtablevw.h
+linelistitem.o: /usr/local/lib/qt/include/qframe.h
+linelistitem.o: /usr/local/lib/qt/include/qwidget.h
+linelistitem.o: /usr/local/lib/qt/include/qobject.h
+linelistitem.o: /usr/local/lib/qt/include/qevent.h
+linelistitem.o: /usr/local/lib/qt/include/qpalette.h
+linelistitem.o: /usr/local/lib/qt/include/qcursor.h
+linelistitem.o: /usr/local/lib/qt/include/qpixmap.h linelistitem.h
