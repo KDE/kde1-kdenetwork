@@ -566,7 +566,12 @@ bool Groupdlg::actions (int action,NewsGroup *group=0)
             {
                 statusBar ()->changeItem ("Getting active list from server", 2);
                 qApp->processEvents ();
+
+                server->resetCounters (true,true);
+                server->reportCounters (true,false);
                 server->groupList (&groups,true);
+                server->resetCounters (true,true);
+                server->reportCounters (false,false);
                 loadActive();
             }
             else

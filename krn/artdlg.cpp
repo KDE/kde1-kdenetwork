@@ -368,6 +368,7 @@ bool Artdlg::actions (int action)
             debug ("printing");
             messwin->getKHTMLWidget()->print();
             qApp->restoreOverrideCursor ();
+            break;
         }
     case ARTLIST:
         {

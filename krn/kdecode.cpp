@@ -80,12 +80,12 @@ void KDecode::showWindow()
             if (l->state&UUFILE_MISPART || l->state&UUFILE_NOEND)
             {
                 debug ("Found file with missing parts");
-                formatted="B\t";
+                formatted="B\n";
             }
             else if (l->state&UUFILE_OK)
             {
                 debug ("Found ok file");
-                formatted="G\t";
+                formatted="G\n";
             }
             else if (l->state&UUFILE_NOBEGIN || l->state&UUFILE_NODATA)
             {
@@ -94,12 +94,12 @@ void KDecode::showWindow()
             }
             debug ("size is %ld",l->size);
             t.setNum(l->size);
-            formatted+=t+"\t";
+            formatted+=t+"\n";
             
             debug ("called %s",l->filename);
-            formatted=formatted+l->filename+"\t";
+            formatted=formatted+l->filename+"\n";
             t.setNum(c);
-            formatted=t+"\t"+formatted;
+            formatted=t+"\n"+formatted;
             
             dialog->list->insertItem(formatted.data());
         }
@@ -121,9 +121,9 @@ void KDecode::decode(int line,int)
     debug ("Decoding ID-->%d",i);
     l=UUGetFileListItem(i);
     QString f= QFileDialog::getSaveFileName(0,0,0,l->filename);
-    debug ("saving to-->%s",f.data());
     if (!f.isEmpty())
     {
+        debug ("saving to-->%s",f.data());
         i=UUDecodeFile (l,f.data());
         debug ("return code-->%d",i);
         switch (i)
