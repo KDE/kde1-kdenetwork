@@ -2,12 +2,11 @@
 # Copyright (C) 1999 Free Software Foundation, Inc.
 # Thorarinn R. Einarsson <thori@mindspring.com>, 1999
 #
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
 "POT-Creation-Date: 1999-02-06 02:07+0100\n"
-"PO-Revision-Date: 1999-02-01 01:05-0500\n"
+"PO-Revision-Date: 1999-02-15 01:46-0500\n"
 "Last-Translator: Thorarinn R. Einarsson <thori@mindspring.com>\n"
 "Language-Team: is <kde-isl@mmedia.is>\n"
 "MIME-Version: 1.0\n"
@@ -169,11 +168,11 @@ msgstr "&Prenta..."
 
 #: kmmainwin.cpp:960
 msgid "Check Mail..."
-msgstr "Sækja póst..."
+msgstr "Athuga með póst..."
 
 #: kmmainwin.cpp:969
 msgid "Check Mail in..."
-msgstr "Sækja póst í..."
+msgstr "Athuga m/póst. Tenging: "
 
 #: kmmainwin.cpp:971
 msgid "Send Queued"
@@ -301,7 +300,7 @@ msgstr "Viðhengingar sem táknmyndir"
 
 #: kmmainwin.cpp:1076
 msgid "Smart Attachments"
-msgstr "&Flottar viðhengingar"
+msgstr "Flottar viðhengingar"
 
 #: kmmainwin.cpp:1077
 msgid "Inlined Attachments"
@@ -654,7 +653,7 @@ msgstr "Tókst ekki að bæta við bréfi:"
 
 #: kmcomposewin.cpp:139 kmheaders.cpp:42
 msgid "F"
-msgstr "F"
+msgstr "S"
 
 #: kmheaders.cpp:43 kmheaders.cpp:216
 msgid "Sender"
@@ -679,7 +678,7 @@ msgstr "%d tölvubréf, %d ólesin."
 
 #: kmheaders.cpp:220
 msgid "Folder is read-only."
-msgstr "Þessi mappa er ritvarin (lesmappa)."
+msgstr "Þessi mappa er ritvarin."
 
 #: kmheaders.cpp:272
 msgid "Unknown"
@@ -1115,6 +1114,9 @@ msgid ""
 "Mail checking aborted\n"
 "Check your account settings!"
 msgstr ""
+"Það vantar póstkassa fyrir %s tenginguna!\n"
+"Hætti við póstflutning\n"
+"Athugaðu stillingarnar fyrir þessa tengingu."
 
 #: kmacctmgr.cpp:207 kmacctmgr.cpp:264
 msgid ""
@@ -1271,7 +1273,7 @@ msgid ""
 "and try again."
 msgstr ""
 "Vinsamlega tilgreindu\n"
-"sendingaraðferð í stillingunum,\n"
+"sendingaraðferð í stillingunum\n"
 "og reyndu síðan aftur."
 
 #: kmsender.cpp:130
@@ -1350,7 +1352,7 @@ msgstr "sendi bréfið"
 
 #: kmsender.cpp:771
 msgid "network error"
-msgstr "netvilla"
+msgstr "netkerfisvilla"
 
 #: kmsender.cpp:773
 #, c-format
@@ -1578,7 +1580,7 @@ msgstr "PGP öryggis athugun"
 
 #: kpgp.cpp:769
 msgid "Please select the public key to insert"
-msgstr ""
+msgstr "Veldu dulritunarlykilinn sem á að nota"
 
 #: kpgp.cpp:800
 msgid "Select key"
@@ -1786,11 +1788,11 @@ msgstr "Hætta við"
 
 #: kmnewiostatuswdg.cpp:41
 msgid "Sending messages to "
-msgstr "Sendi tölvubréf til "
+msgstr "Sendi póst til "
 
 #: kmnewiostatuswdg.cpp:44
 msgid "Retrieving messages from "
-msgstr "Sæki tölvubréf frá "
+msgstr "Sæki póst frá "
 
 #: kmnewiostatuswdg.cpp:54
 msgid "Preparing transmission..."
