@@ -5,7 +5,7 @@
 AC_DEFUN(AC_FIND_USER_METHOD,
 [ 
 AC_MSG_CHECKING(ktalkd find_user method)
-if test -n "`echo $target_os | grep linux >/dev/null`" ; then
+if test -n "`echo $target_os | grep linux`" ; then
     if test -d /proc; then
        AC_DEFINE(PROC_FIND_USER)
 
@@ -18,10 +18,11 @@ if test -n "`echo $target_os | grep linux >/dev/null`" ; then
 
        AC_MSG_RESULT(using /proc.)
     else
-       AC_MSG_RESULT(/proc not found : using utmp.)
+       AC_MSG_RESULT(/proc not found, using utmp.)
     fi
 else
-    AC_MSG_RESULT(not a linux system : using utmp.)
+    AC_MSG_RESULT(not a linux system, using utmp.)
 fi
 
 ])
+
