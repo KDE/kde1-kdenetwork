@@ -65,11 +65,13 @@
 #define SOMAXCONN 5
 #endif
 
+#define CTL_WAIT 2	/* time to wait for a response, in seconds */
+
 TalkConnection::TalkConnection(struct in_addr caller_machine_addr, 
                                char * r_name,
                                char * local_user,
                                ProtocolType _protocol) : 
-   protocol(_protocol), his_machine_addr(caller_machine_addr)
+   protocol(_protocol), his_machine_addr(caller_machine_addr), ctl_sockt(-1), sockt(-1)
 {
     /* look up the address of the local host */
     struct hostent *hp = gethostbyname(Options::hostname);
@@ -79,115 +81,181 @@ TalkConnection::TalkConnection(struct in_addr caller_machine_addr,
     }
     memcpy(&my_machine_addr, hp->h_addr, hp->h_length);
 
-    if (protocol == noProtocol) {
-        /*        CheckProtocol checkProtocol(my_machine_addr);
-        if (checkProtocol.CheckHost(caller_machine_addr))
-            protocol=checkProtocol.getProtocol();
-        else
-            p_error("No protocol found. Aborting."); */
-        protocol = ntalkProtocol; // HACK FOR THE MOMENT
-    }
+    new_msg.vers = TALK_VERSION;
+    new_msg.pid = htonl (getpid ()); // is it necessary ?
+    *new_msg.r_tty = '\0';
+    old_msg.pid = htonl (getpid ()); // is it necessary ?
+    *old_msg.r_tty = '\0';
 
-    if (protocol == ntalkProtocol) {
-        new_msg.vers = TALK_VERSION;
-        new_msg.pid = htonl (getpid ()); // is it necessary ?
-        *new_msg.r_tty = '\0';
-    } else /* protocol == talkProtocol */ {
-        old_msg.pid = htonl (getpid ()); // is it necessary ?
-        *old_msg.r_tty = '\0';
-    }
     strncpy(new_msg.l_name,local_user,NEW_NAME_SIZE);
     strncpy(new_msg.r_name,r_name,NEW_NAME_SIZE);
     strncpy(old_msg.l_name,local_user,OLD_NAME_SIZE);
     strncpy(old_msg.r_name,r_name,OLD_NAME_SIZE);
 
-    /* find the server's port */
-    struct servent * sp = 
-        getservbyname((protocol == talkProtocol) ? "talk" : "ntalk", "udp");
+    /* find the server's ports */
+    struct servent * sp = getservbyname("talk", "udp");
     if (sp == 0)
-        p_error("Service is not registered.\n"); /* quit */
+        syslog(LOG_ERR, "talkconnection: talk/udp: service is not registered.\n");
+    talkDaemonPort = sp->s_port; // already in network byte order
 
-    daemon_port = sp->s_port; // already in network byte order
-    // message2("Daemon port found : %d",htons(daemon_port));
-
-    ctl_sockt = -1; // Note that it is not initialized
-
-#ifdef FvK
-    /* I'm not responsible for this patch. I include it because some people
-       asked me to. D.F. */
-    /* July 1998 : the answering machine has just been completely rewritten.
-       This patch has been copied here, but is completely UNTESTED and isn't
-       even supposed to compile. Send me necessary adaptations... */
-    /* <FvK> patch : (used to find the correct interface, when other than eth0). */
-    struct sockaddr_in foo;
-    int sock, i;
-    /* If socket fails, code will see it. */
-    sock = socket(AF_INET, SOCK_DGRAM, 0);
-
-    sin.sin_family = AF_INET;
-    sin.sin_addr.s_addr = his_machine_addr.s_addr;
-    sin.sin_port = sp->s_port;
-
-    /*  Now here is the trick.  We connect to the other side. */
-    if ((sock >= 0) &&
-        (connect(sock, (struct sockaddr *) &sin, sizeof(sin)) == 0)) {
-        /* Bingo.  Now fetch the address. */
-        foo = sin;
-        i = sizeof(foo);
-        if (getsockname(sock, (struct sockaddr *) &foo, &i) == 0) {
-            my_machine_addr = foo.sin_addr;
-        }
-    }
-    /* Loose the socket. */
-    close(sock);
-    /* </FvK> */
-#endif
+    sp = getservbyname("ntalk", "udp");
+    if (sp == 0)
+        syslog(LOG_ERR, "talkconnection: ntalk/udp: service is not registered.\n");
+    ntalkDaemonPort = sp->s_port; // already in network byte order
 }
 
 TalkConnection::~TalkConnection()
 {
-    if (ctl_sockt != -1)
-        close_sockets();
+    close_sockets();
+}
+
+int TalkConnection::open_socket (struct sockaddr_in *addr, int type)
+{
+    addr->sin_family = AF_INET;
+    addr->sin_addr = my_machine_addr;
+    addr->sin_port = 0;
+    int newSocket = socket (PF_INET, type, 0);
+    if (newSocket <= 0)
+        p_error ("Unable to open a new socket!");
+
+    ksize_t length = sizeof (*addr);
+    if (bind (newSocket, (struct sockaddr *) addr, length) != 0) {
+        ::close (newSocket);
+        p_error ("Error binding socket!");
+    }
+    if (getsockname (newSocket, (struct sockaddr *) addr, &length) == -1) {
+        ::close (newSocket);
+        p_error ("New socket has a bad address!");
+    }
+    return newSocket;
 }
 
 void TalkConnection::open_sockets()
 {
-    /* Control (daemon) address. */
     struct sockaddr_in ctl_addr;
-    /* My address. */
     struct sockaddr_in my_addr;
 
     /* open the ctl socket */
-    ksize_t length;
-    ctl_addr.sin_family = AF_INET;
-    ctl_addr.sin_addr = my_machine_addr;
-    ctl_addr.sin_port = 0;
-    ctl_sockt = socket(AF_INET, SOCK_DGRAM, 0);
-    if (ctl_sockt <= 0)
-        p_error("Bad socket");
-    if (bind(ctl_sockt,(struct sockaddr *)&ctl_addr, sizeof(ctl_addr)) != 0)
-        p_error("Couldn't bind to control socket");
-    length = sizeof(ctl_addr);
-    if (getsockname(ctl_sockt, (struct sockaddr *)&ctl_addr, &length) == -1)
-        p_error("Bad address for ctl socket");
+    ctl_sockt = open_socket(&ctl_addr, SOCK_DGRAM);
+    /* store its address */
+    set_ctl_addr((const struct sockaddr *)&ctl_addr);
 
     /* open the text socket */
-    my_addr.sin_family = AF_INET;
-    my_addr.sin_addr = my_machine_addr;
-    my_addr.sin_port = 0;
-    sockt = socket(AF_INET, SOCK_STREAM, 0);
-    if (sockt <= 0)
-        p_error("Bad socket");
-    if (bind(sockt, (struct sockaddr *)&my_addr, sizeof(my_addr)) != 0)
-        p_error("Binding local socket");
-    length = sizeof(my_addr);
-    if (getsockname(sockt, (struct sockaddr *)&my_addr, &length) == -1)
-        p_error("Bad address for socket");
-
-    /* save the result */
-
+    sockt = open_socket(&my_addr, SOCK_STREAM);
+    /* store its address */
     set_addr((const struct sockaddr *)&my_addr);
-    set_ctl_addr((const struct sockaddr *)&ctl_addr);
+}
+
+/** Check the remote protocol. Result stored in <protocol>.
+ * @return 1 if succeeded to find at least 1 protocol */
+void TalkConnection::findProtocol() {
+
+    message("Remote protocol unknown. Trying to find it. findProtocol()");
+    /* The existing ctl_sockt will be used for ntalk */
+    int new_socket = ctl_sockt;
+    /* We need a new SOCK_DGRAM socket for otalk */
+    struct sockaddr_in old_ctl_addr;
+    int old_socket = open_socket(&old_ctl_addr, SOCK_DGRAM);
+
+    /* Fill the old_msg return-address to match the address of old_socket */
+    old_msg.ctl_addr = *(struct sockaddr *)&old_ctl_addr;
+    old_msg.ctl_addr.sa_family = htons(AF_INET);
+
+    /* Prepare two LOOK_UP ctl messages */
+    old_msg.type = LOOK_UP;
+    old_msg.id_num = htonl(0L);
+    new_msg.type = LOOK_UP;
+    new_msg.id_num = htonl(0L);
+    char svg_r_name[NEW_NAME_SIZE]; // Save the real r_name
+    strcpy(svg_r_name, new_msg.r_name);
+    strcpy(old_msg.r_name, "ktalk");
+    strcpy(new_msg.r_name, "ktalk");
+
+    struct sockaddr_in daemon;
+    daemon.sin_family = AF_INET;
+    daemon.sin_addr = his_machine_addr;
+
+    /* Prepare the variables used for reading on sockets */
+    fd_set read_mask, ctl_mask;
+    int nready=0, cc;
+    struct timeval wait;
+
+    FD_ZERO(&ctl_mask);
+    FD_SET(new_socket, &ctl_mask);
+    FD_SET(old_socket, &ctl_mask);
+    int max_socket = (new_socket > old_socket) ? new_socket : old_socket;
+
+    /* Method : we send the two packets to the two remote daemons.
+       We wait for the first one correct answer, and then we stop everything.
+       If a wrong answer comes, ignore it (but note that we got it).
+       If no answer (or two wrong answers), retry, up to 3 times. */
+
+    for (int retry = 0; (retry < 3) && (protocol==noProtocol); retry ++)
+    {
+        message("Send packets. Retry = %d",retry);
+        /* Send the messages */
+        daemon.sin_port = ntalkDaemonPort;
+        int len = sendto (new_socket, (char *) &new_msg, sizeof new_msg, 0,
+                          (struct sockaddr *) &daemon, sizeof daemon);
+        if (len != sizeof new_msg) 
+            syslog(LOG_ERR, "findProtocol: sendto() for ntalk failed!");
+    
+        daemon.sin_port = talkDaemonPort;
+        len = sendto (old_socket, (char *) &old_msg, sizeof old_msg, 0,
+                      (struct sockaddr *) &daemon, sizeof daemon);
+        if (len != sizeof old_msg)
+            syslog(LOG_ERR, "findProtocol: sendto() for otalk failed!");
+
+        do {
+            /* Wait for response */
+            read_mask = ctl_mask;
+            wait.tv_sec = CTL_WAIT;
+            wait.tv_usec = 0;
+            nready = ::select(max_socket+1, &read_mask, 0, 0, &wait);
+            if (nready < 0) {
+                if (errno == EINTR)
+                    continue;
+                // Timeout. Let's exit this loop and retry sending.
+                break;
+            }
+            if (nready == 0) message("select returned 0 ! ");
+
+            /* Analyze response */
+            if (FD_ISSET(old_socket, &read_mask)) {
+                message("Reading on old_socket");
+                cc = ::recv(old_socket, (char *)&old_resp, sizeof (old_resp), 0);
+                if (cc < 0) {
+                    if (errno == EINTR)
+                        continue;
+                    // Wrong answer (e.g. too short).
+                } else
+                    if (old_resp.type == LOOK_UP) protocol=talkProtocol; // FOUND
+            }
+            if (FD_ISSET(new_socket, &read_mask)) {
+                message("Reading on new_socket");
+                cc = ::recv(new_socket, (char *)&new_resp, sizeof (new_resp), 0);
+                if (cc < 0) {
+                    if (errno == EINTR)
+                        continue;
+                    // Wrong answer (e.g. too short). Note ntalk answered
+                } else
+                    if ((new_resp.type == LOOK_UP) && (new_resp.vers == TALK_VERSION))
+                        protocol=ntalkProtocol;
+            }
+        } while (protocol==noProtocol);
+        // wait for a time out, or ok.
+    } // for
+
+    /* restore the real r_name */
+    strncpy(old_msg.r_name, svg_r_name, OLD_NAME_SIZE);
+    strncpy(new_msg.r_name, svg_r_name, NEW_NAME_SIZE);
+    /* restore old.ctl_addr */
+    old_msg.ctl_addr = new_msg.ctl_addr;
+    ::close(old_socket);
+    message("Exiting findProtocol");
+    if (protocol==ntalkProtocol) message("Exiting findProtocol with protocol = NTALK");
+    else if (protocol==talkProtocol) message("Exiting findProtocol with protocol = NTALK");
+    else p_error("FATAL : no protocol found.");
 }
 
 void TalkConnection::set_addr(const struct sockaddr * addr)
@@ -208,11 +276,9 @@ void TalkConnection::set_ctl_addr(const struct sockaddr * ctl_addr)
 
 void TalkConnection::close_sockets()
 {
-    close(sockt);
-    close(ctl_sockt);
+    if (sockt!=-1) { close(sockt); sockt = -1; }
+    if (ctl_sockt!=-1) { close(ctl_sockt); ctl_sockt = -1; }
 }
-
-#define CTL_WAIT 2	/* time to wait for a response, in seconds */
 
 /*
  * SOCKDGRAM is unreliable, so we must repeat messages if we have
@@ -221,6 +287,12 @@ void TalkConnection::close_sockets()
  */
 void TalkConnection::ctl_transact(int type, int id_num)
 {
+
+    if (protocol == noProtocol)
+        /** We've been so far, but we still don't know which protocol to use.
+         * Let's check it, the way ktalk does. */
+        findProtocol();
+
     fd_set read_mask, ctl_mask;
     int nready=0, cc, size, ok=0;
     struct timeval wait;
@@ -242,7 +314,7 @@ void TalkConnection::ctl_transact(int type, int id_num)
 
     daemon_addr.sin_family = AF_INET;
     daemon_addr.sin_addr = his_machine_addr;
-    daemon_addr.sin_port = daemon_port;
+    daemon_addr.sin_port = (protocol == talkProtocol) ? talkDaemonPort : ntalkDaemonPort;
     FD_ZERO(&ctl_mask);
     FD_SET(ctl_sockt, &ctl_mask);
 
@@ -373,7 +445,6 @@ int TalkConnection::connect()
         message("ECONNREFUSED");
         ctl_transact(DELETE, 0);
         close_sockets();
-        open_sockets();
         return 0;
     }
     p_error("Unable to connect with initiator");
@@ -408,7 +479,7 @@ void TalkConnection::write_banner(char * banner)
     int count = strlen(banner);
     int nbsent;
     char * str = banner;
-    /*    message2("Count : %d.",count); */
+    /*    message_d("Count : %d.",count); */
     while (count>0) {
         /* let's send 16 -bytes-max packets */
          if (count>=16) nbsent = write(sockt,str,16);

@@ -119,48 +119,31 @@ void print_addr(char *cp, struct sockaddr_in * addr)
  * Debug messages
  */
 
-#if 1
-
-/* Set to 0 if using glibc and libstdc++2.7.2 (syslog doesn't work) */
-/* Set to 1 with egcs-1.0.1 or gcc 2.8, or without KDE (c compiling) */
 void message(const char *string)
 {
   if (Options::debug_mode) syslog(LOG_DEBUG,string);
 }
 
-#else
-
-void message(const char *string)
-{
-  if (Options::debug_mode) {
-	char cmd[250];
-	sprintf(cmd,"echo `date +%%H:%%M:%%S` %s >>/tmp/ktalkd_debug",string);
-	system(cmd);
-  }
-}
-
-#endif
-
-void message2(const char *format,int value)
+void message(const char *format,int value)
 {
   if (Options::debug_mode)
     {
       int len = strlen(format)+10;
       char * buf = (char *)malloc(len);
       snprintf(buf,len,format,value);
-      message(buf);
+      syslog(LOG_DEBUG,buf);
       free(buf);
     }
 }
 
-void message_s(const char *format,const char *value)
+void message(const char *format,const char *value)
 {
   if (Options::debug_mode)
     {
       int len = strlen(format)+strlen(value);
       char * buf = (char *)malloc(len);
       snprintf(buf,len,format,value);
-      message(buf);
+      syslog(LOG_DEBUG,buf);
       free(buf);
     }
 }

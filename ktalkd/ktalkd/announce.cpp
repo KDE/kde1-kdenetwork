@@ -205,7 +205,7 @@ int announce_proc(NEW_CTL_MSG *request, const char *remote_machine,
                 {
                     syslog(LOG_DEBUG, "Trying to run '%s' at '%s' as '%s'", extprg, 
                            getenv("DISPLAY"), request->r_name );
-                    if (callee) message_s("With mention of callee : %s",callee);
+                    if (callee) message("With mention of callee : %s",callee);
                 }
                 /*
                  * point stdout, stderr of external program to the pipe
@@ -456,7 +456,7 @@ int sound_or_beep(int usercfg)
      if ((!usercfg) || (!read_bool_user_config("Sound",&bSound)))
          bSound=Options::sound;
      
-     message2("Sound option in sound_or_beep : %d",bSound);
+     message("Sound option in sound_or_beep : %d",bSound);
      
      if (bSound)
        {

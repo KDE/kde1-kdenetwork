@@ -75,7 +75,7 @@ class AnswMachine
     int mode;
     /** Talk Connection to the caller */
     TalkConnection * talkconn;
-    /** Local user name */
+    /** Local user name (for config file. Is also the default mail addr) */
     char local_user[NEW_NAME_SIZE];
     /** Non-existent user name, to be written in the mail. */
     char NEUperson[NEW_NAME_SIZE];

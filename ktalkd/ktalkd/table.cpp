@@ -70,7 +70,7 @@ NEW_CTL_MSG * KTalkdTable::find_match(register NEW_CTL_MSG *request)
     for (ptr = table; ptr != NIL; ptr = ptr->next) {
         if ((ptr->time - current_time) > MAX_LIFE) {
             /* the entry is too old */
-            message2("deleting expired entry : id %d",
+            message("deleting expired entry : id %d",
                      ptr->request.id_num);
             delete_entry(ptr);
             continue;
@@ -79,7 +79,7 @@ NEW_CTL_MSG * KTalkdTable::find_match(register NEW_CTL_MSG *request)
             (strcmp(request->r_name, ptr->request.l_name) == 0) &&
             (ptr->request.type == LEAVE_INVITE) && (ptr->fwm == 0L))
         {   /* Not the forw. machines : they aren't stored to match LOOK_UPs */
-            message2("Found match : id %d", ptr->request.id_num);
+            message("Found match : id %d", ptr->request.id_num);
             return (&ptr->request);
         }
     }
@@ -104,7 +104,7 @@ NEW_CTL_MSG * KTalkdTable::find_request(register NEW_CTL_MSG *request)
     for (ptr = table; ptr != NIL; ptr = ptr->next) {
         if ((ptr->time - current_time) > MAX_LIFE) {
             /* the entry is too old */
-            message2("deleting expired entry : id %d",
+            message("deleting expired entry : id %d",
                      ptr->request.id_num);
             delete_entry(ptr);
             continue;
@@ -115,7 +115,7 @@ NEW_CTL_MSG * KTalkdTable::find_request(register NEW_CTL_MSG *request)
             request->pid == ptr->request.pid) {
             /* update the time if we 'touch' it */
             ptr->time = current_time;
-            message2("Found identical request : id %d", ptr->request.id_num);
+            message("Found identical request : id %d", ptr->request.id_num);
             return (&ptr->request);
         }
     }
@@ -130,7 +130,7 @@ void KTalkdTable::insert_table(NEW_CTL_MSG *request, NEW_CTL_RESPONSE *response,
     gettimeofday(&tp, &txp);
     current_time = tp.tv_sec;
     request->id_num = new_id();
-    message2("Stored as id %d",request->id_num);
+    message("Stored as id %d",request->id_num);
     if (response != 0L) response->id_num = htonl(request->id_num);
     /* insert a new entry into the top of the list */
     ptr = (TABLE_ENTRY *)malloc(sizeof(TABLE_ENTRY));
@@ -170,7 +170,7 @@ int KTalkdTable::delete_invite(int id_num)
     register TABLE_ENTRY *ptr;
 
     ptr = table;
-    message2("delete_invite(%d)", id_num);
+    message("delete_invite(%d)", id_num);
     for (ptr = table; ptr != NIL; ptr = ptr->next) {
         if (ptr->request.id_num == id_num)
             break;
@@ -179,7 +179,7 @@ int KTalkdTable::delete_invite(int id_num)
         if (ptr->fwm) {
             ptr->fwm->sendDelete(); // Calls processDelete() in the child process.
         }
-        message2("Deleted : id %d", ptr->request.id_num);
+        message("Deleted : id %d", ptr->request.id_num);
         delete_entry(ptr);
         return (SUCCESS);
     }
@@ -208,10 +208,10 @@ KTalkdTable::~KTalkdTable()
       for (ptr = table; ptr != 0L; ptr = ptr->next) {
           if (ptr->fwm != 0L)
           {
-              message2("CLEAN : Found a forwarding machine to clean : id %d",ptr->request.id_num);
+              message("CLEAN : Found a forwarding machine to clean : id %d",ptr->request.id_num);
               delete ptr->fwm;
           }
-          message2("CLEAN : Deleting id %d", ptr->request.id_num);
+          message("CLEAN : Deleting id %d", ptr->request.id_num);
           delete_entry(ptr);
       }
 }

@@ -185,7 +185,7 @@ int do_announce(register NEW_CTL_MSG *mp, NEW_CTL_RESPONSE *rp, int usercfg)
     if ((ptr != NULL) && (
         (mp->id_num <= ptr->id_num) || (mp->id_num == (int)~0x0L))) {
         /* a duplicated request, so ignore it */
-        message2("dupannounce %d", mp->id_num);
+        message("dupannounce %d", mp->id_num);
         rp->id_num = htonl(ptr->id_num);
         rp->answer = SUCCESS;
         return PROC_REQ_ERR;
@@ -209,7 +209,7 @@ int do_announce(register NEW_CTL_MSG *mp, NEW_CTL_RESPONSE *rp, int usercfg)
 
         /* see if the user is logged */
 	result = find_user(mp->r_name, mp->r_tty, disp);
-        message2("find_user : result = %d",result);
+        message("find_user : result = %d",result);
         
 	if (result != SUCCESS) {
             message("Couldn t find user ...");
@@ -228,7 +228,6 @@ int do_announce(register NEW_CTL_MSG *mp, NEW_CTL_RESPONSE *rp, int usercfg)
 
                     syslog(LOG_ERR,"User unknown : %s.",mp->r_name);
                     syslog(LOG_ERR,"The caller is : %s.",mp->l_name);
-                    message2("Options::NEU_behaviour : %d",Options::NEU_behaviour);
                     
                     switch (Options::NEU_behaviour) {
                         case 2: /* Paranoid setting. Do nothing. */

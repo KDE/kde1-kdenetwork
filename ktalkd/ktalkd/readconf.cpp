@@ -56,8 +56,8 @@ int read_user_config(char * key, char * result, int max)
 int read_bool_user_config(char * key, int * result)
 {
     char msgtmpl[S_CFGLINE];
-    int ret = read_user_config(key, msgtmpl, S_CFGLINE);
-    if (ret) *result = booleanresult(msgtmpl);
+    int ret = read_user_config(key, msgtmpl, S_CFGLINE); // ret=1 if found
+    if (ret!=0) *result = booleanresult(msgtmpl);
     return ret;
 }
 
@@ -110,19 +110,19 @@ int process_config_file(void)
 		 
 	       if (found("AnswMach:")) {
 		    Options::answmach=booleanresult(result); 
-		    message2("AnswMach : %d",Options::answmach);}
+		    message("AnswMach : %d",Options::answmach);}
 		 
 	       if (found("XAnnounce:")) {
 		    Options::XAnnounce=booleanresult(result); 
-		    message2("XAnnounce : %d",Options::XAnnounce); }
+		    message("XAnnounce : %d",Options::XAnnounce); }
 	    
 	       if (found("Time:")) { 
 		    Options::time_before_answmach=atoi(result); 
-		    message2("Time : %d",Options::time_before_answmach); }
+		    message("Time : %d",Options::time_before_answmach); }
 
 	       if (found("Sound:")) { 
 		    Options::sound=booleanresult(result);
-		    message2("Sound : %d",Options::sound); }
+		    message("Sound : %d",Options::sound); }
 
 	       if (found("SoundFile:")) { 
 		    strncpy(Options::soundfile,result,S_CFGLINE);

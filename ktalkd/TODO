@@ -1,11 +1,10 @@
 
 TODO:
-        - protocol (otalk/ntalk) detection in talkconn.cpp (for forwards)
-	- communication with ktalk via unix domain sockets
+	- communication with ktalk via unix domain sockets (Burkhard ? :))
         - a 'not here' option, which launches the answmach at once. Will be 
             useful when a swallowed app. exists : when you leave, you switch
             'on' the answmach
-        - if a tty is more recent than X, take the tty for announcement.
+        - if a tty is more recent than X, take the tty for announcement. (?)
         - insensitive case and long logins supported for user names (big problem).
         - a kdelnk file, not for launching ktalkd, but to make
              kdehelp's helpindex find ktalkd :)   - how to avoid it to appear
@@ -16,4 +15,4 @@ TODO:
           "activate/desactivate answering machine" and to launch a talk client, 
 	  and to set up forwardings.             - could be part of ktalk.
 
-Last updated 30-Jun-1998
+Last updated 15-Aug-1998

@@ -8,8 +8,8 @@
 
 <title>The ktalkd Handbook
 <author>David Faure <tt/David.Faure@insa-lyon.fr/
-<date>Version 0.8.5, August 13, 1998
-<abstract>This Handbook describes ktalkd Version 0.8.5
+<date>Version 0.8.6, August 15, 1998
+<abstract>This Handbook describes ktalkd Version 0.8.6
 
 <!-- Table of contents -->
 <toc>
@@ -50,7 +50,7 @@ If you are logged remotely (e.g. with an
 <tt/"export DISPLAY=..."/ command), the X announcement will be made on
 this display too. Answer on the one you want !
 
-<tag/Forwarding   <it/(New in 0.8.0 !)//
+<tag/Forwarding   <it/(New since 0.8.0)//
 You can set up a forward to another user even to another host
 if you're away. There are 3 different forwarding methods. See section 'Usage'.
 
@@ -67,8 +67,8 @@ Under KDE, the announcement will be in your language provided that
 you set it in the KDE menus and that someone translated <bf/ktalkdlg/ to your
 language. Same for the configuration dialog, <bf/kcmktalkd/.
 
-<tag/Support for otalk and ntalk   <it/(New in 0.8.1 !)//
-ktalkd now supports both protocols. So does ktalk.
+<tag/Support for otalk and ntalk   <it/(New since 0.8.1)//
+ktalkd now supports both protocols, even when forwarding. ktalk supports both too.
 </descrip>
 
 <p>I hope you will enjoy this talk daemon,
@@ -268,11 +268,29 @@ also ktalkd's version number and the "./configure" output.
 <p>
 Here comes the <bf/ChangeLog/ :
 <verb>
+1998-08-15  David Faure  <David.Faure@insa-lyon.fr> (0.8.6)
+
+	* ktalkd/machines/talkconn.cpp: Added check for remote protocol.
+	This means that it is now possible to forward to an otalk machine ...
+
+	* ktalk/machines/forwmach.cpp: ... and/or from an otalk machine.
+
+	The first one who sends me an email after testing both, wins :)
+
+	* ktalkd/machines/check_protocol.cpp: Removed. Integrated into 
+	  talkconn.cpp. Thanks to Burkhard Lehner for the example code.
+
+	* ktalk/machines/answmach.cpp: Added a sleep(1) for not logged/NEU.
+
+	* ktalkd/print.cpp: Used c++ overriding to name "message()" the 
+	    former message_s() et message2().
+
 1998-08-12  David Faure  <David.Faure@insa-lyon.fr> (0.8.5)
 
-	* ktalkd/find_user.cpp: Fixed a nasty bug with unsigned int. Thanks Rolf.
-	   Also uncommented use of ut_host for PTYs (ex : xterms).
-	   Also exit the loop if XDM login found. Highest priority.
+	* ktalkd/find_user.cpp: A nasty bug with unsigned int fixed.
+	   Thanks to Rolf Offermanns who found it.
+	   Uncommented the use of ut_host for PTYs (ex : xterms).
+	   Exit the loop if XDM login found (highest priority).
 
 	* kotalkd/includ.h: Added a simpler version of includ.h.
 

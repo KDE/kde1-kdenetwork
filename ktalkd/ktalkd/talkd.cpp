@@ -131,7 +131,7 @@ int main(int argc, char *argv[])
 
                 if (Options::answmach && (ret_value>=PROC_REQ_MIN_A))
                 {
-                    message("Launch answer machine.");
+                    message("Launch answer machine, mode %d.", ret_value);
                     AnswMachine::launchAnswMach(request, ret_value);
                     new_process();
                 }

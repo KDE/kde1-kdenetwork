@@ -58,7 +58,6 @@
 #include "../defs.h"
 #include "../print.h"
 #include "../readconf.h"
-#include "check_protocol.h"
 
 #define A_LONG_TIME 10000000  /* seconds before timeout */
 
@@ -99,10 +98,9 @@ int AnswMachine::LaunchIt(char * key)
 {
     int launchIt = 1;
     if (usercfg) {
-        if (!read_bool_user_config(key,&launchIt))
-            launchIt=1;
+        read_bool_user_config(key,&launchIt);
         if (launchIt==0)
-            message_s("Not launched. Option set to 0 : ", key);
+            message("Not launched. Option set to 0 : ", key);
     }
     return launchIt;
 }
@@ -110,14 +108,14 @@ int AnswMachine::LaunchIt(char * key)
 void AnswMachine::start()
 {
     /* Only wait if somebody could possibly answer.
-       If NEU/not logged, start at once. */
-    if (mode==PROC_REQ_ANSWMACH) {
-        /* Wait a little. The 'ringing your party again' has just been displayed,
-           so it's probably still a bit early to launch the answering machine. */
-        sleep(Options::time_before_answmach);
-    }
+       (The 'ringing your party again' has just been displayed,
+       we want to leave a second chance for the callee to answer.)
+
+       If NEU/not logged, start quickly. (Wait just a little for the 
+       LEAVE_INVITE to come.) */
+    sleep( (mode==PROC_REQ_ANSWMACH) ? Options::time_before_answmach : 1 );
     
-    usercfg = init_user_config((mode==PROC_REQ_ANSWMACH_NOT_HERE) ? Options::NEU_user : local_user);
+    usercfg = init_user_config(local_user);
     
     if (LaunchIt("Answmach"))
     {
@@ -145,14 +143,13 @@ void AnswMachine::start()
 /** The actual talking (user to answering machine) */
 void AnswMachine::talk()
 {
-     extern int errno;
      char command[S_COMMAND];
      char messg_myaddr [S_MESSG];
      struct hostent *hp;
      FILE * fd = 0;      /* file descriptor, to write the message */
      char customline[S_CFGLINE];
      
-#ifndef OLD_POPEN_METHOD   // never defined
+#ifndef OLD_POPEN_METHOD  // never defined. Kept for systems without e.g. mkstemp.
      char fname[256];
      int fildes;
      int oldumask = umask(066);
@@ -165,9 +162,7 @@ void AnswMachine::talk()
      if (hp == (struct hostent *)0) 
 	  TalkConnection::p_error("Answering machine : Remote machine unknown.");
 
-#ifdef USER_SETS_EMAIL
      if ((!usercfg) || (!read_user_config("Mail",messg_myaddr,S_MESSG-1)))
-#endif
        strcpy(messg_myaddr,local_user);
 
 #ifdef OLD_POPEN_METHOD   // never defined
@@ -187,9 +182,6 @@ void AnswMachine::talk()
     }
 
     umask(oldumask);
-    
-    message(fname); // debugging purpose
-    
 #endif
     
     write_headers(fd, hp, messg_myaddr, usercfg);
@@ -208,7 +200,7 @@ void AnswMachine::talk()
 
     /* No user-config'ed banner */
     if (!usercfg)
-    { /* => Display Options::invitelines* */
+    { /* => Display Options::invitelines */
          talkconn->write_banner(Options::invitelines);
     }
     else if (mode==PROC_REQ_ANSWMACH_NOT_HERE)
@@ -246,7 +238,7 @@ void AnswMachine::talk()
         if ((retcode==127) || (retcode==-1))
           syslog(LOG_ERR,"system() error : %m");
         else if (retcode!=0)
-          syslog(LOG_WARNING,"cat %s | %s %s : %m", fname, Options::mailprog, messg_myaddr);
+          syslog(LOG_WARNING,"%s : %m", command);
     }
     (void)unlink(fname);
 #endif
@@ -315,6 +307,7 @@ int AnswMachine::read_message(FILE * fd) // returns 1 if something has been ente
      struct timeval wait;
      char buff[BUFSIZ];
      char line[80] = ""; // buffer for current line
+     char char_erase = talkconn->get_char_erase();
 
      sockt_mask = (1<<talkconn->get_sockt());
      read_template = sockt_mask;
@@ -342,7 +335,7 @@ int AnswMachine::read_message(FILE * fd) // returns 1 if something has been ente
 	       }
                something = 1;
 	       for (i=0; i<nb; i++ ) {
-		    if ((buff[i]==talkconn->get_char_erase()) && (pos>0)) /* backspace */
+		    if ((buff[i]==char_erase) && (pos>0)) /* backspace */
 			 pos--;
 		    else {
 			 if (pos == 79) {

@@ -39,9 +39,6 @@ Please leave a message and quit normally when finished.\n"
 #define NEU_BANNER2 "You may have mistyped the name, or network address. Try again"
 #define NEU_BANNER3 "or leave a message which will be sent to the system administrator."
 
-/*  User-configurable "To:" E-Mail address */
-#define USER_SETS_EMAIL
-
 /* return value from process_request : */
 #define PROC_REQ_OK 0
 #define PROC_REQ_ERR 1

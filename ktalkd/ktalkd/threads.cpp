@@ -47,7 +47,7 @@ void new_process()
 {
 	nb_child_to_wait++;
 #ifdef DEBUG_THREADS
-	message2("New Child. Nb child to wait : %d",nb_child_to_wait);
+	message("New Child. Nb child to wait : %d",nb_child_to_wait);
 #endif
 }
 
@@ -67,7 +67,7 @@ int wait_process(int pid)
         if (val != pid) {
             nb_child_to_wait--;
 #ifdef DEBUG_THREADS
-            message2("Child exited. Nb child to wait : %d",nb_child_to_wait);
+            message("Child exited. Nb child to wait : %d",nb_child_to_wait);
 #endif
         }
     } while (val != pid);
@@ -87,7 +87,7 @@ int ack_process()
             if ((pid!=0) & (nb_child_to_wait>0)) {
                 nb_child_to_wait--;
 #ifdef DEBUG_THREADS
-                message2("Child exited as expected. Nb child to wait : %d",nb_child_to_wait);
+                message("Child exited as expected. Nb child to wait : %d",nb_child_to_wait);
 #endif
             }
         } while ((pid>0) && (nb_child_to_wait>0));

@@ -158,5 +158,7 @@ class ForwMachine
     struct in_addr caller_machine_addr;
     /** Caller's announce id_num */
     int caller_id_num;
+    /** Caller's protocol */
+    ProtocolType callerProtocol;
 };
 #endif

@@ -35,7 +35,8 @@
 #define TALKCONNECTION_H
 
 #include "../includ.h"
-#include "check_protocol.h"
+
+enum ProtocolType {noProtocol, talkProtocol, ntalkProtocol};
 
 class TalkConnection
 {
@@ -97,14 +98,21 @@ class TalkConnection
     static void p_error(const char * str);
 
   protected:
+
+    /** Used by open_sockets. */
+    int open_socket (struct sockaddr_in *addr, int type);
+    /** Check remote protocol. Used by ctl_transact. */
+    void findProtocol();
+
     ProtocolType protocol;
     
     /* inet addresses of the two machines */
     struct  in_addr my_machine_addr;
     struct  in_addr his_machine_addr;
 
-    u_short daemon_port;    // port number of the talk daemon
-    
+    short int talkDaemonPort;          // Port number of talk demon  (517)
+    short int ntalkDaemonPort;         // Port number of ntalk demon (518)
+   
     int     ctl_sockt;
     int     sockt;
 

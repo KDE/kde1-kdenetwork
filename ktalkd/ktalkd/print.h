@@ -34,10 +34,14 @@
 
 #include "includ.h" 
 
-/* debug print routines */
-void print_addr(char *cp, struct sockaddr_in * addr);
+/* Debug print routines */
 void print_request(char *cp, register NEW_CTL_MSG *mp);
 void print_response(char *cp, register NEW_CTL_RESPONSE *rp);
+void print_addr(char *cp, struct sockaddr_in * addr);
+
+/* Print a simple string */
 void message(const char *string);
-void message2(const char *format,int value);
-void message_s(const char *format,const char * value);
+/* Print a message including an int. <format> must include %d */
+void message(const char *format,int value);
+/* Print a message including a string. <format> must include %s */
+void message(const char *format,const char * value);

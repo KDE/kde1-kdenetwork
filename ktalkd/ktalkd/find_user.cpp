@@ -137,7 +137,7 @@ char *get_display(pid_t pid) {
 
 /* As utmp isn't reliable (neither xdm nor kdm logs into it ! :( ),
    we have to look at processes directly. /proc helps a lot, under linux.
-   How do it under other unixes ? */
+   How to do it under other unixes ? */
 #ifdef ALL_PROCESSES_AND_PROC_FIND_USER
 
 /* awful global variable, but how to pass it to select_process() otherwise ?
@@ -164,8 +164,8 @@ int select_process(struct dirent *direntry) {
                     errno=0;
                     return 1;
                 }
-                /* else message2("st_uid=%d", statbuf.st_uid); */
-            } /* else message2("st_mode=%d", statbuf.st_mode); */
+                /* else message("st_uid=%d", statbuf.st_uid); */
+            } /* else message("st_mode=%d", statbuf.st_mode); */
         } else message("stat error : %m");
     }
 
@@ -289,7 +289,7 @@ int find_user(char *name, char *tty, char *disp) {
                 strcpy(ntty, ubuf->ut_line);
                 if (stat(ftty, &statb) != 0 || (!(statb.st_mode & 020)))
                 {
-                   message_s("Permission denied on %s", ntty);
+                   message("Permission denied on %s", ntty);
                    continue; /* not a char dev */
                 }
 
@@ -354,7 +354,7 @@ int find_user(char *name, char *tty, char *disp) {
         (void) strcpy(disp, dispFound);
         if (Options::debug_mode)
          syslog(LOG_DEBUG, "Returning tty '%s', display '%s'", ttyFound, dispFound);
-    } else message2("Returning status %d",status);
+    } else message("Returning status %d",status);
     return (status);
 }
 

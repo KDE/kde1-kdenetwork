@@ -47,6 +47,8 @@
 
 #include "print.h"
 
+/** Converts a string s into a boolean. Handles 0/1, on/off, true/false. 
+ * (case insensitive) */
 int booleanresult(const char * s)
 {
      if (strlen(s)==1)
@@ -59,19 +61,10 @@ int booleanresult(const char * s)
      }
 }
 
-/*  User configuration file, ktalkdrc in localconfigdir().
-
-It can contain one or more of : Mail, Subj, Head, Msg1..Msg3, Sound, SoundFile, Answmach
-In the future, it could contain also : XAnnounce, Time...
-
-Fisrt implementation : used only within io.c => ok for mail, subj, head, msg1..3
-Second : added Sound*, then Answmach, open/close moved to answmach.c */
-
+/*  User configuration file, ktalkdrc in localconfigdir(). */
 KConfig * cfg = 0;
 
-/* 
- *   Initiate user-config-file reading.
- */
+/*  Initiate user-config-file reading. */
 int init_user_config(char * l_name)
 {
   struct passwd * pw = getpwnam(l_name);
@@ -91,7 +84,8 @@ int init_user_config(char * l_name)
     endpwent();
   }
   if (stat(aFileName,&buf)!=-1)
- // check if it exists, otherwise it will be created with root as owner !
+      // check if it exists, 'cause otherwise it would be created empty with
+      // root as owner !
   {
     cfg = new KConfig( aFileName );
 
@@ -112,7 +106,7 @@ int init_user_config(char * l_name)
     message("User config file ok");
     return 1;
   } else {
-      message_s("No user config file %s !",(const char*)aFileName);
+      message("No user config file %s !",(const char*)aFileName);
       return 0;
     }
 }
@@ -143,13 +137,8 @@ int read_user_config(char * key, char * result, int max)
 int read_bool_user_config(char * key, int * result)
 {
     char msgtmpl[S_CFGLINE];
-    int ret = read_user_config(key, msgtmpl, S_CFGLINE);
-    
-    if (ret!=0) ret = booleanresult( msgtmpl );
-    
-    if (result!=NULL) *result = ret;
-    
-    
+    int ret = read_user_config(key, msgtmpl, S_CFGLINE); // ret=1 if found
+    if (ret!=0) *result = booleanresult(msgtmpl);
     return ret;
 }
 
@@ -196,35 +185,35 @@ int process_config_file(void)
   
   if (found("AnswMach")) {
     Options::answmach=booleanresult(result); 
-    message2("AnswMach : %d",Options::answmach);}
+    message("AnswMach : %d",Options::answmach);}
   
   if (found("XAnnounce")) {
     Options::XAnnounce=booleanresult(result); 
-    message2("XAnnounce : %d",Options::XAnnounce); }
+    message("XAnnounce : %d",Options::XAnnounce); }
   
   if (found("Time")) { 
     Options::time_before_answmach=atoi(result); 
-    message2("Time : %d",Options::time_before_answmach); }
+    message("Time : %d",Options::time_before_answmach); }
   
   if (found("Sound")) { 
     Options::sound=booleanresult(result);
-    message2("Sound : %d",Options::sound); }
+    message("Sound : %d",Options::sound); }
   
   if (found("SoundFile")) { 
     qstrncpy(Options::soundfile,result,S_CFGLINE);
-    message_s("SoundFile = %s",Options::soundfile); }
+    message("SoundFile = %s",Options::soundfile); }
   
   if (found("SoundPlayer")) { 
     qstrncpy(Options::soundplayer,result,S_CFGLINE); 
-    message_s("SoundPlayer = %s",Options::soundplayer); }
+    message("SoundPlayer = %s",Options::soundplayer); }
   
   if (found("SoundPlayerOpt")) { 
     qstrncpy(Options::soundplayeropt,result,S_CFGLINE);
-    message_s("SoundPlayerOpt = %s",Options::soundplayeropt); }
+    message("SoundPlayerOpt = %s",Options::soundplayeropt); }
   
   if (found("MailProg")) { 
     qstrncpy(Options::mailprog,result,S_CFGLINE);
-    message_s("Mail prog = %s",Options::mailprog); }
+    message("Mail prog = %s",Options::mailprog); }
   
   /* text based announcement */
   if (found("Announce1")) { qstrncpy(Options::announce1,result,S_CFGLINE); }
@@ -237,12 +226,12 @@ int process_config_file(void)
   }
   if (found("NEUBehaviour")) {
       Options::NEU_behaviour=atoi(result); 
-      message2("NEUBehaviour : %d",Options::NEU_behaviour); 
+      message("NEUBehaviour : %d",Options::NEU_behaviour); 
   }
   
   if (found("ExtPrg")) { 
     qstrncpy(Options::extprg,result,S_CFGLINE);
-    message_s("Ext prg = %s",Options::extprg); }
+    message("Ext prg = %s",Options::extprg); }
   else {   /* has to work even without config file at all */
       char buffer [250];
       get_kdebindir(buffer, 250);
