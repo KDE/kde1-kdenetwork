@@ -96,7 +96,8 @@ void KMReaderWin::readConfig(void)
   mViewer->setStandardFont(config->readEntry("StandardFont",
                                            QString("helvetica").data()));
   mViewer->setFixedFont(config->readEntry("FixedFont",
-                                        QString("courier").data()));
+                                          QString("courier").data()));
+  mViewer->parse();
 #endif
 
 }
