@@ -73,7 +73,7 @@ sub modeb {
   } else {
     $toban = "*.".$quad[@quad-2].".".$quad[@quad-1];
   }
-  &docommand("mode $talkchannel ${which}b *!*$user\@$toban");
+  &docommand("mode $talkchannel ${which}b *!*$user*\@$toban");
 }
 
 sub cmd_ban {
@@ -310,7 +310,7 @@ sub cmd_showfollows
 
 sub cmd_refresh
 {
-  &say("*** Refresh nick list");
+  &tell("*** Refresh nick list");
   &docommand("names *");
 }
 &addcmd("refresh");

@@ -131,7 +131,8 @@ INCLUDES= @all_includes@
 
 ####### This part is very khexdit specific
 # you can add here more. This one gets installed 
-bin_PROGRAMS = 	ksticker libksticker
+bin_PROGRAMS = 	ksticker
+noinst_LIBRARIES = libksticker.a
 
 # Which sources should be compiled for khexdit.
 ksticker_SOURCES = \
@@ -145,6 +146,14 @@ main.cpp \
 mmain.cpp \
 kspainter.cpp
 
+libksticker_a_SOURCES = \
+ksticker.cpp \
+mksticker.cpp \
+speeddialog.cpp \
+mspeeddialog.cpp \
+speeddialogData.cpp \
+mspeeddialogData.cpp
+
 # the library search path
 ksticker_LDFLAGS =  @all_libraries@
 
@@ -155,22 +164,6 @@ ksticker_LDADD   = -lkdeui -lkdecore -lqt -lX11 -lXext @LIBSOCKET@
 # this option you can leave out. Just, if you use "make dist", you need it
 noinst_HEADERS = ksticker.h          main.h              speeddialog.h       speeddialogData.h kspainter.h
 
-libkstickerSOURCES = \
-ksticker.cpp \
-mksticker.cpp \
-speeddialog.cpp \
-mspeeddialog.cpp \
-speeddialogData.cpp \
-mspeeddialogData.cpp
-
-libkstickerOBJECTS = \
-ksticker.o \
-mksticker.o \
-speeddialog.o \
-mspeeddialog.o \
-speeddialogData.o \
-mspeeddialogData.o
-
 # just to make sure, automake makes them 
 BUILTSOURCES =	
 
@@ -180,23 +173,23 @@ DISTCLEANFILES = $(BUILTSOURCES)
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = ../../config.h
 CONFIG_CLEAN_FILES = 
-PROGRAMS =  $(bin_PROGRAMS)
+LIBRARIES =  $(noinst_LIBRARIES)
 
 
 DEFS = @DEFS@ -I. -I$(srcdir) -I../..
 CPPFLAGS = @CPPFLAGS@
 LIBS = @LIBS@
+libksticker_a_LIBADD = 
+libksticker_a_OBJECTS =  ksticker.o mksticker.o speeddialog.o \
+mspeeddialog.o speeddialogData.o mspeeddialogData.o
+AR = ar
+PROGRAMS =  $(bin_PROGRAMS)
+
 ksticker_OBJECTS =  ksticker.o mksticker.o speeddialog.o mspeeddialog.o \
 speeddialogData.o mspeeddialogData.o main.o mmain.o kspainter.o
 ksticker_DEPENDENCIES = 
-libksticker_SOURCES = libksticker.c
-libksticker_OBJECTS =  libksticker.o
-libksticker_LDADD = $(LDADD)
-libksticker_LDFLAGS = 
 CXXCOMPILE = $(CXX) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
 CXXLINK = $(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@
-COMPILE = $(CC) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CFLAGS)
-LINK = $(CC) $(CFLAGS) $(LDFLAGS) -o $@
 HEADERS =  $(noinst_HEADERS)
 
 DIST_COMMON =  Makefile.am Makefile.in
@@ -206,12 +199,12 @@ DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
 
 TAR = tar
 GZIP = --best
-DEP_FILES =  .deps/kspainter.P .deps/ksticker.P .deps/libksticker.P \
-.deps/main.P .deps/mksticker.P .deps/mmain.P .deps/mspeeddialog.P \
+DEP_FILES =  .deps/kspainter.P .deps/ksticker.P .deps/main.P \
+.deps/mksticker.P .deps/mmain.P .deps/mspeeddialog.P \
 .deps/mspeeddialogData.P .deps/speeddialog.P .deps/speeddialogData.P
 CXXMKDEP = $(CXX) -M $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
-SOURCES = $(ksticker_SOURCES) libksticker.c
-OBJECTS = $(ksticker_OBJECTS) libksticker.o
+SOURCES = $(libksticker_a_SOURCES) $(ksticker_SOURCES)
+OBJECTS = $(libksticker_a_OBJECTS) $(ksticker_OBJECTS)
 
 default: all
 
@@ -224,6 +217,33 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status $(BUILT_SOURCES)
 	cd $(top_builddir) \
 	  && CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= $(SHELL) ./config.status
 
+
+mostlyclean-noinstLIBRARIES:
+
+clean-noinstLIBRARIES:
+	test -z "$(noinst_LIBRARIES)" || rm -f $(noinst_LIBRARIES)
+
+distclean-noinstLIBRARIES:
+
+maintainer-clean-noinstLIBRARIES:
+
+.c.o:
+	$(COMPILE) -c $<
+
+mostlyclean-compile:
+	rm -f *.o core
+
+clean-compile:
+
+distclean-compile:
+	rm -f *.tab.c
+
+maintainer-clean-compile:
+
+libksticker.a: $(libksticker_a_OBJECTS) $(libksticker_a_DEPENDENCIES)
+	rm -f libksticker.a
+	$(AR) cru libksticker.a $(libksticker_a_OBJECTS) $(libksticker_a_LIBADD)
+	$(RANLIB) libksticker.a
 
 mostlyclean-binPROGRAMS:
 
@@ -249,19 +269,6 @@ uninstall-binPROGRAMS:
 	list='$(bin_PROGRAMS)'; for p in $$list; do \
 	  rm -f $(bindir)/`echo $$p|sed '$(transform)'`; \
 	done
-
-.c.o:
-	$(COMPILE) -c $<
-
-mostlyclean-compile:
-	rm -f *.o core
-
-clean-compile:
-
-distclean-compile:
-	rm -f *.tab.c
-
-maintainer-clean-compile:
 
 ksticker: $(ksticker_OBJECTS) $(ksticker_DEPENDENCIES)
 	@rm -f ksticker
@@ -353,7 +360,7 @@ install: install-exec install-data all
 
 uninstall: uninstall-binPROGRAMS uninstall-local
 
-all: Makefile $(PROGRAMS) $(HEADERS)
+all: Makefile $(LIBRARIES) $(PROGRAMS) $(HEADERS)
 
 install-strip:
 	$(MAKE) INSTALL_PROGRAM='$(INSTALL_PROGRAM) -s' INSTALL_SCRIPT='$(INSTALL_PROGRAM)' install
@@ -375,39 +382,37 @@ distclean-generic:
 maintainer-clean-generic:
 	test -z "$(MAINTAINERCLEANFILES)" || rm -f $(MAINTAINERCLEANFILES)
 	test -z "$(BUILT_SOURCES)" || rm -f $(BUILT_SOURCES)
-mostlyclean:  mostlyclean-binPROGRAMS mostlyclean-compile \
-		mostlyclean-tags mostlyclean-depend mostlyclean-generic
+mostlyclean:  mostlyclean-noinstLIBRARIES mostlyclean-compile \
+		mostlyclean-binPROGRAMS mostlyclean-tags \
+		mostlyclean-depend mostlyclean-generic
 
-clean:  clean-binPROGRAMS clean-compile clean-tags clean-depend \
-		clean-generic mostlyclean
+clean:  clean-noinstLIBRARIES clean-compile clean-binPROGRAMS clean-tags \
+		clean-depend clean-generic mostlyclean
 
-distclean:  distclean-binPROGRAMS distclean-compile distclean-tags \
-		distclean-depend distclean-generic clean
+distclean:  distclean-noinstLIBRARIES distclean-compile \
+		distclean-binPROGRAMS distclean-tags distclean-depend \
+		distclean-generic clean
 	rm -f config.status
 
-maintainer-clean:  maintainer-clean-binPROGRAMS maintainer-clean-compile \
+maintainer-clean:  maintainer-clean-noinstLIBRARIES \
+		maintainer-clean-compile maintainer-clean-binPROGRAMS \
 		maintainer-clean-tags maintainer-clean-depend \
 		maintainer-clean-generic distclean
 	@echo "This command is intended for maintainers to use;"
 	@echo "it deletes files that may require special tools to rebuild."
 
-.PHONY: default mostlyclean-binPROGRAMS distclean-binPROGRAMS \
+.PHONY: default mostlyclean-noinstLIBRARIES distclean-noinstLIBRARIES \
+clean-noinstLIBRARIES maintainer-clean-noinstLIBRARIES \
+mostlyclean-compile distclean-compile clean-compile \
+maintainer-clean-compile mostlyclean-binPROGRAMS distclean-binPROGRAMS \
 clean-binPROGRAMS maintainer-clean-binPROGRAMS uninstall-binPROGRAMS \
-install-binPROGRAMS mostlyclean-compile distclean-compile clean-compile \
-maintainer-clean-compile tags mostlyclean-tags distclean-tags \
-clean-tags maintainer-clean-tags distdir mostlyclean-depend \
-distclean-depend clean-depend maintainer-clean-depend info dvi \
-installcheck install-exec install-data install uninstall all \
-installdirs mostlyclean-generic distclean-generic clean-generic \
-maintainer-clean-generic clean mostlyclean distclean maintainer-clean
+install-binPROGRAMS tags mostlyclean-tags distclean-tags clean-tags \
+maintainer-clean-tags distdir mostlyclean-depend distclean-depend \
+clean-depend maintainer-clean-depend info dvi installcheck install-exec \
+install-data install uninstall all installdirs mostlyclean-generic \
+distclean-generic clean-generic maintainer-clean-generic clean \
+mostlyclean distclean maintainer-clean
 
-
-libksticker.c:
-	echo "Done"
-
-libksticker: $(libkstickerOBJECTS)
-	ar cr libksticker.a $(libkstickerOBJECTS)
-	ranlib libksticker.a || true
 
 # make messages.po. Move this one to ../po/ and "make merge" in po
 messages:

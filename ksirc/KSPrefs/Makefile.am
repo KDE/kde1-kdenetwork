@@ -22,9 +22,9 @@ INCLUDES= @all_includes@
 
 ####### This part is very khexdit specific
 # you can add here more. This one gets installed 
-bin_PROGRAMS = 	libksprefs
+noinst_LIBRARIES = libksprefs.a
 
-libksprefs_SOURCES = \
+libksprefs_a_SOURCES = \
 ksprefs.cpp \
 mksprefs.cpp \
 startup.cpp \
@@ -54,36 +54,6 @@ UserMenuRef.h \
 UserMenuRefData.h \
 defaultfilters.h \
 defaultfiltersdata.h
-
-libksprefsSOURCES = $(libkscutdialog_SOURCES)
-
-libksprefsOBJECTS = \
-ksprefs.o \
-mksprefs.o \
-startup.o \
-mstartup.o \
-startupdata.o \
-mstartupdata.o \
-serverchannel.o \
-mserverchannel.o \
-serverchanneldata.o \
-mserverchanneldata.o \
-UserMenuRef.o \
-mUserMenuRef.o \
-UserMenuRefData.o \
-mUserMenuRefData.o \
-defaultfilters.o \
-mdefaultfilters.o \
-defaultfiltersdata.o \
-mdefaultfiltersdata.o
-
-
-libkscutdialog.c:
-	echo "Done"
-
-libksprefs: $(libksprefsOBJECTS)	
-	ar cr libksprefs.a $(libksprefsOBJECTS)
-	ranlib libksprefs.a || true
 
 # just to make sure, automake makes them 
 BUILTSOURCES =	

@@ -131,9 +131,9 @@ INCLUDES= @all_includes@
 
 ####### This part is very khexdit specific
 # you can add here more. This one gets installed 
-bin_PROGRAMS = 	libkscutdialog
+noinst_LIBRARIES = libkscutdialog.a
 
-libkscutdialog_SOURCES = \
+libkscutdialog_a_SOURCES = \
 KSCutDialog.cpp \
 mKSCutDialog.cpp \
 KSCutDialogData.cpp \
@@ -163,16 +163,16 @@ DISTCLEANFILES = $(BUILTSOURCES)
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = ../../config.h
 CONFIG_CLEAN_FILES = 
-PROGRAMS =  $(bin_PROGRAMS)
+LIBRARIES =  $(noinst_LIBRARIES)
 
 
 DEFS = @DEFS@ -I. -I$(srcdir) -I../..
 CPPFLAGS = @CPPFLAGS@
 LIBS = @LIBS@
-libkscutdialog_OBJECTS =  KSCutDialog.o mKSCutDialog.o KSCutDialogData.o \
-mKSCutDialogData.o cutmle.o mcutmle.o
-libkscutdialog_LDADD = $(LDADD)
-libkscutdialog_LDFLAGS = 
+libkscutdialog_a_LIBADD = 
+libkscutdialog_a_OBJECTS =  KSCutDialog.o mKSCutDialog.o \
+KSCutDialogData.o mKSCutDialogData.o cutmle.o mcutmle.o
+AR = ar
 CXXCOMPILE = $(CXX) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
 CXXLINK = $(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@
 HEADERS =  $(noinst_HEADERS)
@@ -187,8 +187,8 @@ GZIP = --best
 DEP_FILES =  .deps/KSCutDialog.P .deps/KSCutDialogData.P .deps/cutmle.P \
 .deps/mKSCutDialog.P .deps/mKSCutDialogData.P .deps/mcutmle.P
 CXXMKDEP = $(CXX) -M $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
-SOURCES = $(libkscutdialog_SOURCES)
-OBJECTS = $(libkscutdialog_OBJECTS)
+SOURCES = $(libkscutdialog_a_SOURCES)
+OBJECTS = $(libkscutdialog_a_OBJECTS)
 
 default: all
 
@@ -202,30 +202,14 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status $(BUILT_SOURCES)
 	  && CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= $(SHELL) ./config.status
 
 
-mostlyclean-binPROGRAMS:
+mostlyclean-noinstLIBRARIES:
 
-clean-binPROGRAMS:
-	test -z "$(bin_PROGRAMS)" || rm -f $(bin_PROGRAMS)
+clean-noinstLIBRARIES:
+	test -z "$(noinst_LIBRARIES)" || rm -f $(noinst_LIBRARIES)
 
-distclean-binPROGRAMS:
+distclean-noinstLIBRARIES:
 
-maintainer-clean-binPROGRAMS:
-
-install-binPROGRAMS: $(bin_PROGRAMS)
-	@$(NORMAL_INSTALL)
-	$(mkinstalldirs) $(bindir)
-	@list='$(bin_PROGRAMS)'; for p in $$list; do \
-	  if test -f $$p; then \
-	    echo "  $(INSTALL_PROGRAM) $$p $(bindir)/`echo $$p|sed '$(transform)'`"; \
-	     $(INSTALL_PROGRAM) $$p $(bindir)/`echo $$p|sed '$(transform)'`; \
-	  else :; fi; \
-	done
-
-uninstall-binPROGRAMS:
-	$(NORMAL_UNINSTALL)
-	list='$(bin_PROGRAMS)'; for p in $$list; do \
-	  rm -f $(bindir)/`echo $$p|sed '$(transform)'`; \
-	done
+maintainer-clean-noinstLIBRARIES:
 
 .c.o:
 	$(COMPILE) -c $<
@@ -239,6 +223,11 @@ distclean-compile:
 	rm -f *.tab.c
 
 maintainer-clean-compile:
+
+libkscutdialog.a: $(libkscutdialog_a_OBJECTS) $(libkscutdialog_a_DEPENDENCIES)
+	rm -f libkscutdialog.a
+	$(AR) cru libkscutdialog.a $(libkscutdialog_a_OBJECTS) $(libkscutdialog_a_LIBADD)
+	$(RANLIB) libkscutdialog.a
 .cpp.o:
 	$(CXXCOMPILE) -c $<
 
@@ -315,7 +304,7 @@ dvi:
 check: all
 	$(MAKE)
 installcheck:
-install-exec: install-binPROGRAMS
+install-exec: 
 	@$(NORMAL_INSTALL)
 
 install-data: install-data-local
@@ -324,14 +313,13 @@ install-data: install-data-local
 install: install-exec install-data all
 	@:
 
-uninstall: uninstall-binPROGRAMS uninstall-local
+uninstall: uninstall-local
 
-all: Makefile $(PROGRAMS) $(HEADERS)
+all: Makefile $(LIBRARIES) $(HEADERS)
 
 install-strip:
 	$(MAKE) INSTALL_PROGRAM='$(INSTALL_PROGRAM) -s' INSTALL_SCRIPT='$(INSTALL_PROGRAM)' install
 installdirs:
-	$(mkinstalldirs)  $(bindir)
 
 
 mostlyclean-generic:
@@ -348,25 +336,26 @@ distclean-generic:
 maintainer-clean-generic:
 	test -z "$(MAINTAINERCLEANFILES)" || rm -f $(MAINTAINERCLEANFILES)
 	test -z "$(BUILT_SOURCES)" || rm -f $(BUILT_SOURCES)
-mostlyclean:  mostlyclean-binPROGRAMS mostlyclean-compile \
+mostlyclean:  mostlyclean-noinstLIBRARIES mostlyclean-compile \
 		mostlyclean-tags mostlyclean-depend mostlyclean-generic
 
-clean:  clean-binPROGRAMS clean-compile clean-tags clean-depend \
+clean:  clean-noinstLIBRARIES clean-compile clean-tags clean-depend \
 		clean-generic mostlyclean
 
-distclean:  distclean-binPROGRAMS distclean-compile distclean-tags \
+distclean:  distclean-noinstLIBRARIES distclean-compile distclean-tags \
 		distclean-depend distclean-generic clean
 	rm -f config.status
 
-maintainer-clean:  maintainer-clean-binPROGRAMS maintainer-clean-compile \
-		maintainer-clean-tags maintainer-clean-depend \
-		maintainer-clean-generic distclean
+maintainer-clean:  maintainer-clean-noinstLIBRARIES \
+		maintainer-clean-compile maintainer-clean-tags \
+		maintainer-clean-depend maintainer-clean-generic \
+		distclean
 	@echo "This command is intended for maintainers to use;"
 	@echo "it deletes files that may require special tools to rebuild."
 
-.PHONY: default mostlyclean-binPROGRAMS distclean-binPROGRAMS \
-clean-binPROGRAMS maintainer-clean-binPROGRAMS uninstall-binPROGRAMS \
-install-binPROGRAMS mostlyclean-compile distclean-compile clean-compile \
+.PHONY: default mostlyclean-noinstLIBRARIES distclean-noinstLIBRARIES \
+clean-noinstLIBRARIES maintainer-clean-noinstLIBRARIES \
+mostlyclean-compile distclean-compile clean-compile \
 maintainer-clean-compile tags mostlyclean-tags distclean-tags \
 clean-tags maintainer-clean-tags distdir mostlyclean-depend \
 distclean-depend clean-depend maintainer-clean-depend info dvi \

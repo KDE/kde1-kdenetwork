@@ -171,7 +171,7 @@ void KSircIOController::stdout_read(KProcess *, char *_buffer, int buflen)
   ksircproc->TopList["!all"]->control_message(STOP_UPDATES, "");
   do{
     pos2 = buffer.find('\n', pos);
-    
+
     if(pos2 == -1)
       pos2 = buffer.length();
     
@@ -185,7 +185,10 @@ void KSircIOController::stdout_read(KProcess *, char *_buffer, int buflen)
       }
     }
     if(!(ksircproc->TopList)[name]){
-      if(kSircConfig->autocreate == TRUE){
+      // Ignore ssfe control messages with `
+      // we left channel, don't open a window for a control message
+      if(kSircConfig->autocreate == TRUE && line[0] != '`' && line[1] != '#'){
+        debug("Creating window for: %s because of: %s", name.data(), line.data());
 	ksircproc->new_toplevel(name);
       }
       else{

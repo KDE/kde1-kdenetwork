@@ -1,3 +1,18 @@
+1998-03-29  Andrew Stanley-Jones  <asj@chowtown.cban.com>
+
+	* Fixed problem with "/names" opening a zillion windows and
+	joining every channel in existance.
+
+	* toplevel.cpp: re-writting parse-input to do better checking and
+ 	error handling.  Now uses an internal EString, a QString class
+	which emits exceptions on error conditions.  Currently only 1
+	exception exists, the estringOutOfBounds exception to indicate
+	find returned a value out of the bounds of the string.  Other
+	exception handling include failure cases like parse errors.
+
+	* Added better puke support and more widgets.  Currently 8
+ 	diffrent widgets exist, and 1 layout manager.
+
 1998-03-13  Andrew Stanley-Jones  <asj@chowtown.cban.com>
 
 	* Nick list sorting works much better, still broken when
@@ -255,6 +270,9 @@
 $Revision$
 	
 $Log$
+Revision 1.30  1998/03/13 21:33:48  asj
+Misc changes, see the ChangeLog.
+
 Revision 1.29  1998/03/08 17:18:48  asj
 Modifications to Puke.
 

@@ -35,6 +35,7 @@ class kstInside;
 #include "KSTicker/ksticker.h"
 #include "usercontrolmenu.h"
 #include "irclistbox.h"
+#include "excp-parse.h"
 
 class kstInside : QFrame 
 {
@@ -273,6 +274,8 @@ private:
   ircListItem *parse_input(QString &string);
   void sirc_write(QString &str);
 
+  QString next_word(QString str, int index) throw(parseError);
+
   QPopupMenu *user_controls;
   static QList<UserControlMenu> *user_menu;
   int opami;
@@ -348,6 +351,12 @@ private:
     *
     */
   bool on_root;
+
+  /**
+   * Do we have a kick window open?
+   * Remember not to open 2
+   */
+  bool KickWinOpen;
 
 };
 

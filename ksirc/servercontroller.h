@@ -100,7 +100,7 @@ public slots:
     /**
       * Creates popup asking for new connection
       */
-    virtual void new_connection(); 
+    virtual void new_connection();
     /**
       *  Args:
       *    QString: new server name or IP to connect to.

@@ -22,7 +22,8 @@ INCLUDES= @all_includes@
 
 ####### This part is very khexdit specific
 # you can add here more. This one gets installed 
-bin_PROGRAMS = 	ksticker libksticker
+bin_PROGRAMS = 	ksticker
+noinst_LIBRARIES = libksticker.a
 
 # Which sources should be compiled for khexdit.
 ksticker_SOURCES = \
@@ -36,6 +37,15 @@ main.cpp \
 mmain.cpp \
 kspainter.cpp
 
+
+libksticker_a_SOURCES = \
+ksticker.cpp \
+mksticker.cpp \
+speeddialog.cpp \
+mspeeddialog.cpp \
+speeddialogData.cpp \
+mspeeddialogData.cpp
+
 # the library search path
 ksticker_LDFLAGS =  @all_libraries@
 
@@ -45,30 +55,6 @@ ksticker_LDADD   = -lkdeui -lkdecore -lqt -lX11 -lXext @LIBSOCKET@
 
 # this option you can leave out. Just, if you use "make dist", you need it
 noinst_HEADERS = ksticker.h          main.h              speeddialog.h       speeddialogData.h kspainter.h
-
-libkstickerSOURCES = \
-ksticker.cpp \
-mksticker.cpp \
-speeddialog.cpp \
-mspeeddialog.cpp \
-speeddialogData.cpp \
-mspeeddialogData.cpp
-
-libkstickerOBJECTS = \
-ksticker.o \
-mksticker.o \
-speeddialog.o \
-mspeeddialog.o \
-speeddialogData.o \
-mspeeddialogData.o
-
-
-libksticker.c:
-	echo "Done"
-
-libksticker: $(libkstickerOBJECTS)
-	ar cr libksticker.a $(libkstickerOBJECTS)
-	ranlib libksticker.a || true
 
 # just to make sure, automake makes them 
 BUILTSOURCES =	

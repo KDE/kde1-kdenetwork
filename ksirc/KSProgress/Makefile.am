@@ -22,9 +22,9 @@ INCLUDES= @all_includes@
 
 ####### This part is very khexdit specific
 # you can add here more. This one gets installed 
-bin_PROGRAMS = 	libksprogress
+noinst_LIBRARIES = libksprogress.a
 
-libksprogress_SOURCES = \
+libksprogress_a_SOURCES = \
 ksprogress.cpp \
 ksprogressdata.cpp \
 mksprogress.cpp \
@@ -32,30 +32,6 @@ mksprogressdata.cpp
 
 noinst_HEADERS = \
 ksprogress.h      ksprogressdata.h
-
-libksprogressSOURCES = \
-ksprogress.cpp \
-ksprogressdata.cpp \
-mksprogress.cpp \
-mksprogressdata.cpp
-
-libksprogressOBJECTS = \
-ksprogress.o \
-ksprogressdata.o \
-mksprogress.o \
-mksprogressdata.o
-
-#SUFFIXES = .c .o .cpp
-#
-#cpp.o:
-#	$(COMPILE) -c $< 
-
-libksprogress.c:
-	echo "Done"
-
-libksprogress: $(libksprogressOBJECTS)	
-	ar cr libksprogress.a $(libksprogressOBJECTS)
-	ranlib libksprogress.a || true
 
 # just to make sure, automake makes them 
 BUILTSOURCES =	

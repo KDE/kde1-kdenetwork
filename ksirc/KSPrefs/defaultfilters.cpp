@@ -61,6 +61,7 @@ void DefaultFilters::slot_apply()
   kConfig->writeEntry("kcolour", kSircConfig->filterKColour);
   kConfig->writeEntry("mcolour", kSircConfig->filterMColour);
   kConfig->writeEntry("nickfcolour", kSircConfig->nickFHighlight);
+  kConfig->writeEntry("nickbcolour", kSircConfig->nickBHighlight); 
   kConfig->writeEntry("uscolour", kSircConfig->usHighlight);
 }
 

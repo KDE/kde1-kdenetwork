@@ -22,9 +22,9 @@ INCLUDES= @all_includes@
 
 ####### This part is very khexdit specific
 # you can add here more. This one gets installed 
-bin_PROGRAMS = 	libkscutdialog
+noinst_LIBRARIES = libkscutdialog.a
 
-libkscutdialog_SOURCES = \
+libkscutdialog_a_SOURCES = \
 KSCutDialog.cpp \
 mKSCutDialog.cpp \
 KSCutDialogData.cpp \

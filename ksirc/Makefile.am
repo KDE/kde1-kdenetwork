@@ -16,6 +16,7 @@
 APPSDIR = $(kde_appsdir)/Internet
 # set the include path for X, qt and KDE
 INCLUDES= @all_includes@
+DEFS = @DEFS@ -fhandle-exceptions -I. -I$(srcdir) -I..
 # claim, which subdirectories you want to install
 SUBDIRS = KSTicker KSProgress KSCutDialog KSPrefs puke img doc
 
@@ -51,7 +52,8 @@ ioNotify.cpp mioNotify.cpp \
 ssfeprompt.cpp mssfeprompt.cpp ssfepromptdata.cpp mssfepromptdata.cpp \
 usercontrolmenu.cpp \
 kspainter.cpp \
-baserules.cpp
+baserules.cpp \
+estring.cpp
 
 ksircstatic_SOURCES = $(ksirc_SOURCES)
 
@@ -87,6 +89,7 @@ ksircstatic: dummy
 
 dummy:
 
+
 # this option you can leave out. Just, if you use "make dist", you need it
 #
 # DSIRC is on the bottom so make dist includes it!!!!!!!!!
@@ -105,7 +108,7 @@ ksircprocess.h            ksirc.kdelnk \
 ioLAG.h                   ioNotify.h                ssfeprompt.h \
 ssfepromptdata.h          usercontrolmenu.h\
 dsirc                     filters.pl                ksirc.pl \
-sirc.help.gz              baserules.h
+sirc.help.gz              baserules.h               estring.h
 
 
 # just to make sure, automake makes them 
