@@ -9,6 +9,9 @@
             so that new mail isn't always appended to the end of the
             current folders message list window.
 
+        * Fix to force update when changing header style (this was
+          introduced by one of Don's patches)
+        
         * Patch from Lars Knoll <knoll@mpi-hd.mpg.de> against
           pgp-thinks-very-long-before-starting-bug
 

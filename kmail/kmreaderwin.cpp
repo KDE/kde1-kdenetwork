@@ -229,9 +229,9 @@ void KMReaderWin::setInlineAttach(int aAtmInline)
 
 
 //-----------------------------------------------------------------------------
-void KMReaderWin::setMsg(KMMessage* aMsg)
+void KMReaderWin::setMsg(KMMessage* aMsg, bool force)
 {
-  if (mMsg == aMsg)
+  if (!force && mMsg == aMsg)
     return;
 
   mMsg = aMsg;

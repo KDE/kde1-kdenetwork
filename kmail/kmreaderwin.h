@@ -51,7 +51,7 @@ public:
 
   /** Set the message that shall be shown. If NULL, an empty page is 
     displayed. */
-  virtual void setMsg(KMMessage* msg);
+  virtual void setMsg(KMMessage* msg, bool force = false);
 
   /** Returns the current message or NULL if none. */
   KMMessage* msg(void) const { return mMsg; }
@@ -60,7 +60,7 @@ public:
   void clear(void) { setMsg(NULL); }
 
   /** Re-parse the current message. */
-  void update(void) { setMsg(mMsg); }
+  void update(bool force = false) { setMsg(mMsg, force); }
 
   /** Print current message. */
   virtual void printMsg(void);

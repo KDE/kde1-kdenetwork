@@ -702,6 +702,7 @@ void KMMainWin::slotSetHeaderStyle(int id)
     mViewMenu->setItemChecked(id, TRUE);
     mMsgView->setAttachmentStyle(id-5);
   }
+  mMsgView->update(true);
 }
 
 
