@@ -418,8 +418,17 @@ KMMessage* KMMessage::createForward(void)
 void KMMessage::initHeader(void)
 {
   assert(identity != NULL);
-  setFrom(identity->fullEmailAddr());
-  setReplyTo(identity->replyToAddr());
+  
+  if(identity->fullEmailAddr().isEmpty())
+    setFrom("");
+  else
+    setFrom(identity->fullEmailAddr());
+
+  if(identity->replyToAddr().isEmpty()) 
+    setReplyTo("");
+  else
+    setReplyTo(identity->replyToAddr());
+
   setTo("");
   setSubject("");
   setDateToday();
@@ -1044,17 +1053,21 @@ void KMMessage::setBodyPart(int aIdx, const KMMessagePart* aPart)
     headers.ContentType().SetTypeStr(type);
     headers.ContentType().SetSubtypeStr(subtype);
 #ifdef CHARSETS
-    if (charset!=""){
-         DwParameter *param=headers.ContentType().FirstParameter();
-	 while(param)
-	    if (param->Attribute()=="charset") break;
-	    else param=param->Next();
-	 if (!param){   
-            param=new DwParameter;
-            param->SetAttribute("charset");
-            headers.ContentType().AddParameter(param);
-	 }   
-         param->SetValue(charset);
+    if (!charset.empty())
+    {
+      DwParameter *param=headers.ContentType().FirstParameter();
+      while(param)
+      {
+	if (param->Attribute()=="charset") break;
+	else param=param->Next();
+      }
+      if (!param)
+      {
+	param=new DwParameter;
+	param->SetAttribute("charset");
+	headers.ContentType().AddParameter(param);
+      }   
+      param->SetValue(charset);
     }
 #endif
   }
@@ -1100,7 +1113,7 @@ void KMMessage::addBodyPart(const KMMessagePart* aPart)
     headers.ContentType().SetTypeStr((const char*)type);
     headers.ContentType().SetSubtypeStr((const char*)subtype);
 #ifdef CHARSETS
-    if (charset != ""){
+    if (!charset.isEmpty()){
          DwParameter *param;
          param=new DwParameter;
          param->SetAttribute("charset");
@@ -1155,7 +1168,7 @@ void KMMessage::viewSource(const QString aCaption) const
 //-----------------------------------------------------------------------------
 const QString KMMessage::stripEmailAddr(const QString aStr)
 {
-  int i, j;
+  int i, j, len;
   QString partA, partB, result;
   char endCh = '>';
 
@@ -1166,16 +1179,21 @@ const QString KMMessage::stripEmailAddr(const QString aStr)
     endCh = ')';
   }
   if (i<0) return aStr;
-  partA = aStr.left(i);
-  j = aStr.find(endCh,i);
+  partA = aStr.left(i).stripWhiteSpace();
+  j = aStr.find(endCh,i+1);
   if (j<0) return aStr;
-  partB = aStr.mid(i+1, j-i-1);
+  partB = aStr.mid(i+1, j-i-1).stripWhiteSpace();
 
-  if (partA.find('@') >= 0) 
-    result = partB.stripWhiteSpace();
-  else result = partA.stripWhiteSpace();
+  if (partA.find('@') >= 0 && !partB.isEmpty()) result = partB;
+  else if (!partA.isEmpty()) result = partA;
+  else result = aStr;
 
-  if (result[0]=='"' && result[result.length()-1]=='"')
+  len = result.length();
+  if (result[0]=='"' && result[len-1]=='"')
+    result = result.mid(1, result.length()-2);
+  else if (result[0]=='<' && result[len-1]=='>')
+    result = result.mid(1, result.length()-2);
+  else if (result[0]=='(' && result[len-1]==')')
     result = result.mid(1, result.length()-2);
   return result;
 }

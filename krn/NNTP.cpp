@@ -206,7 +206,9 @@ int NNTP::authinfo(const char *username,const char *password)
     if (password)
     {
         sprintf (mSendBuffer,"authinfo pass %s\r\n",password);
-        cout << "C: " << mSendBuffer << endl;
+
+        // This prints the password. Not really a smart thing :-)
+        // cout << "C: " << mSendBuffer << endl;
         
         mReplyCode = -1;
         int bufferLen = strlen(mSendBuffer);

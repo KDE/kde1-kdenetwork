@@ -1,7 +1,8 @@
 // kmreaderwin.cpp
 // Author: Markus Wuebben <markus.wuebben@kde.org>
 
-#include <qfiledlg.h>
+#include <qdir.h>
+#include <kfiledialog.h>
 #include <stdlib.h>
 #include <sys/stat.h>
 
@@ -34,6 +35,7 @@
 #include <qcursor.h>
 #include <qmlined.h>
 #include <qregexp.h>
+
 
 #define hand_width 16
 #define hand_height 16
@@ -87,10 +89,12 @@ void KMReaderWin::readConfig(void)
 							SmartAttmnt);
 #ifdef KRN
   config->setGroup("ArticleListOptions");
+#endif
   QColor c1=QColor("black");
   QColor c2=QColor("blue");
   QColor c3=QColor("red");
   QColor c4=QColor("white");
+
   mViewer->setDefaultBGColor(config->readColorEntry("BackgroundColor",&c4));
   mViewer->setDefaultTextColors(config->readColorEntry("ForegroundColor",&c1)
                                 ,config->readColorEntry("LinkColor",&c2)
@@ -100,7 +104,6 @@ void KMReaderWin::readConfig(void)
                                            QString("helvetica").data()));
   mViewer->setFixedFont(config->readEntry("FixedFont",
                                         QString("courier").data()));
-#endif
 
 }
 
@@ -531,12 +534,15 @@ const QString KMReaderWin::strToHtml(const QString aStr, bool aDecodeQP,
     }
     else if (ch=='@')
     {
+      char *startofstring = qpstr.data();
       char *startpos = pos;
-      for (i=0; *pos && (isalnum(*pos) || *pos=='@' || *pos=='.' ||
-			 *pos=='_'||*pos=='-' || *pos=='*' || *pos=='[' || *pos==']') 
+      for (i=0; pos >= startofstring && *pos 
+	     && (isalnum(*pos) 
+		 || *pos=='@' || *pos=='.' || *pos=='_'||*pos=='-' 
+		 || *pos=='*' || *pos=='[' || *pos==']') 
 	     && i<255; i++, pos--)
-      {
-      }
+	{
+	}
       i1 = i;
       pos++; 
       for (i=0; *pos && (isalnum(*pos)||*pos=='@'||*pos=='.'||
@@ -768,11 +774,15 @@ void KMReaderWin::slotAtmSave()
 {
   KMMessagePart msgPart;
   QString fileName, str;
+  fileName = QDir::currentDirPath();
+  fileName.append("/");
 
-  mMsg->bodyPart(mAtmCurrent, &msgPart);
   
-  fileName = msgPart.name();
-  fileName = QFileDialog::getSaveFileName(NULL, "*", this);
+  mMsg->bodyPart(mAtmCurrent, &msgPart);
+  fileName.append(msgPart.name());
+  debug (fileName.data());
+  
+  fileName = KFileDialog::getSaveFileName(fileName.data(), "*", this);
   if(fileName.isEmpty()) return;
 
   kbp->busy();

@@ -7,6 +7,12 @@ Changes made Jun 10
 *           Removed the lock file. Did you knew gdbm does internal locking? ;-)
 *           Integrating *old* patch from Johannes Sixt.
             Thanks Johannes!
+*           Syncing with latest kmail sources...
+            WARNING!!! I'm afraid I may have reintroduced some outdated
+            charset stuff into KRN!!!!!
+            Can't check it right now, tough :-(
+*           Bumped version to 0.4.6
+*           Ok, so Krn shouldn't print the password to stdout ;-)
 -----------------------------------------------------------------------------
 Changes made Apr 30
 -----------------------------------------------------------------------------

@@ -13,6 +13,7 @@
 #include "kmmsgpartdlg.h"
 #include "kpgp.h"
 #include "kmaddrbookdlg.h"
+#include "kmaddrbook.h"
 
 #include <assert.h>
 #include <drag.h>
@@ -91,7 +92,7 @@ KMComposeWin::KMComposeWin(KMMessage *aMsg) : KMComposeWinInherited(),
   mMainWidget(this), 
   mEdtFrom(this,&mMainWidget), mEdtReplyTo(this,&mMainWidget), 
   mEdtTo(this,&mMainWidget),  mEdtCc(this,&mMainWidget), 
-  mEdtBcc(this,&mMainWidget), mEdtSubject(this,&mMainWidget),
+  mEdtBcc(this,&mMainWidget), mEdtSubject(this,&mMainWidget, "subjectLine"),
   mLblFrom(&mMainWidget), mLblReplyTo(&mMainWidget), mLblTo(&mMainWidget),
   mLblCc(&mMainWidget), mLblBcc(&mMainWidget), mLblSubject(&mMainWidget),
   mBtnTo("...",&mMainWidget), mBtnCc("...",&mMainWidget), 
@@ -169,6 +170,9 @@ KMComposeWin::KMComposeWin(KMMessage *aMsg) : KMComposeWinInherited(),
   mKSpellConfig = new KSpellConfig;
   mKSpell = NULL;
 #endif
+
+  if (mEdtTo.isVisible())
+    mEdtTo.setFocus();
 }
 
 
@@ -183,6 +187,8 @@ KMComposeWin::~KMComposeWin()
   if (mKSpellConfig) delete KSpellConfig;
   if (mKSpell) delete mKSpell;
 #endif
+  delete mMenuBar;
+  delete mToolBar;
 }
 
 
@@ -356,6 +362,8 @@ void KMComposeWin::rethinkFields(void)
 
   if (mAtmList.count() > 0) mAtmListBox->show();
   else mAtmListBox->hide();
+  resize(this->size());
+  repaint();
 
   mGrid->activate();
 }
@@ -380,7 +388,7 @@ void KMComposeWin::rethinkHeaderLine(int aValue, int aMask, int& aRow,
     aEdt->show();
     aEdt->setMinimumSize(100, aLbl->height()+2);
     aEdt->setMaximumSize(1000, aLbl->height()+2);
-    aEdt->setFocusPolicy(QWidget::ClickFocus);
+    //aEdt->setFocusPolicy(QWidget::ClickFocus);
     //aEdt->setFocusPolicy(QWidget::StrongFocus);
     mEdtList.append(aEdt);
 
@@ -447,12 +455,9 @@ void KMComposeWin::setupMenuBar(void)
 		   SLOT(slotUndoEvent()), keys->undo());
   menu->insertSeparator();
 #endif //BROKEN
-  menu->insertItem(i18n("Cut"), this, SLOT(slotCut()),
-		   keys->cut());
-  menu->insertItem(i18n("Copy"), this, SLOT(slotCopy()),
-		   keys->copy());
-  menu->insertItem(i18n("Paste"), this, SLOT(slotPaste()),
-		   keys->paste());
+  menu->insertItem(i18n("Cut"), this, SLOT(slotCut()));
+  menu->insertItem(i18n("Copy"), this, SLOT(slotCopy()));
+  menu->insertItem(i18n("Paste"), this, SLOT(slotPaste()));
   menu->insertItem(i18n("Mark all"),this,
 		   SLOT(slotMarkAll()));
   menu->insertSeparator();
@@ -622,7 +627,7 @@ void KMComposeWin::setupEditor(void)
   QPopupMenu* menu;
   mEditor = new KMEdit(kapp, &mMainWidget, this);
   mEditor->toggleModified(FALSE);
-  mEditor->setFocusPolicy(QWidget::ClickFocus);
+  //mEditor->setFocusPolicy(QWidget::ClickFocus);
 
   // Word wrapping setup
   if(mWordWrap) 
@@ -715,9 +720,9 @@ void KMComposeWin::setMsg(KMMessage* newMsg, bool mayAutoSign)
     else if (KCharset(mCharset).isDisplayable()) mComposeCharset=mCharset;
     else mComposeCharset=mDefComposeCharset;
     cout<<"Compose charset: "<<mComposeCharset<<"\n";
-    mEditor->setText(convertToLocal(bodyPart.body()));
+    mEditor->setText(convertToLocal(bodyPart.bodyDecoded()));
 #else   
-    mEditor->setText(bodyPart.body());
+    mEditor->setText(bodyPart.bodyDecoded());
 #endif
     mEditor->insertLine("\n", -1);
 
@@ -741,10 +746,10 @@ void KMComposeWin::setMsg(KMMessage* newMsg, bool mayAutoSign)
     else if (KCharset(mCharset).isDisplayable()) mComposeCharset=mCharset;
     else mComposeCharset=mDefComposeCharset;
     cout<<"Compose charset: "<<mComposeCharset<<"\n";
-    mEditor->setText(convertToLocal(mMsg->body()));
+    mEditor->setText(convertToLocal(mMsg->bodyDecoded()));
   }  
 #else  
-  else mEditor->setText(mMsg->body());
+  else mEditor->setText(mMsg->bodyDecoded());
 #endif
 
   if (mAutoSign && mayAutoSign) slotAppendSignature();
@@ -861,14 +866,17 @@ void KMComposeWin::applyChanges(void)
 
 
 //-----------------------------------------------------------------------------
-void KMComposeWin::closeEvent(QCloseEvent* e)
+void KMComposeWin::closeEvent(QCloseEvent* )
 {
   if(mEditor->isModified())
     if((KMsgBox::yesNo(0,i18n("KMail Confirm"),
 		       i18n("Close and discard\nedited message?")) == 2))
       return;
   writeConfig();
-  KMComposeWinInherited::closeEvent(e);
+  delete this;
+
+  // KTW closEvent does nothing
+  //KMComposeWinInherited::closeEvent(e);
 }
 
 
@@ -1138,7 +1146,9 @@ void KMComposeWin::slotAttachFile()
   // We will not care about any permissions, existence or whatsoever in 
   // this function.
   QString fileName;
-  KFileDialog fdlg(".","*",this,NULL,TRUE);
+  QString path = QDir::currentDirPath();
+  
+  KFileDialog fdlg(path.data(),"*",this,NULL,TRUE);
 
   fdlg.setCaption(i18n("Attach File"));
   if (!fdlg.exec()) return;
@@ -1155,8 +1165,9 @@ void KMComposeWin::slotInsertFile()
 {
   QString fileName, str;
   int col, line;
-
-  KFileDialog fdlg(".", "*", this, NULL, TRUE);
+  QString path = QDir::currentDirPath();
+  
+  KFileDialog fdlg(path.data(), "*", this, NULL, TRUE);
   fdlg.setCaption(i18n("Include File"));
   if (!fdlg.exec()) return;
 
@@ -1240,7 +1251,8 @@ void KMComposeWin::slotAttachSave()
 {
   KMMessagePart* msgPart;
   QString fileName, pname;
-
+  QString path = QDir::currentDirPath();
+  
   int idx = mAtmListBox->currentItem();
   if (idx < 0) return;
 
@@ -1248,7 +1260,7 @@ void KMComposeWin::slotAttachSave()
   pname = msgPart->name();
   if (pname.isEmpty()) pname="unnamed";
 
-  fileName = KFileDialog::getSaveFileName(".", "*", NULL, pname);
+  fileName = KFileDialog::getSaveFileName(path.data(), "*", NULL, pname);
   if (fileName.isEmpty()) return;
   kStringToFile(msgPart->bodyDecoded(), fileName, TRUE);
 }
@@ -1310,8 +1322,16 @@ void KMComposeWin::slotCut()
   QWidget* fw = focusWidget();
   if (!fw) return;
 
+  if (fw->inherits("KEdit"))
+    ((QMultiLineEdit*)fw)->cut();
+  else if (fw->inherits("KMLineEdit"))
+    ((KMLineEdit*)fw)->cut();
+  else debug("wrong focus widget");
+
+#ifdef BROKEN
   QKeyEvent k(Event_KeyPress, Key_X , 0 , ControlButton);
   app->notify(fw, &k);
+#endif
 }
 
 
@@ -1487,7 +1507,7 @@ void KMComposeWin::slotAppendSignature()
   if (sigFileName.isEmpty())
   {
     // open a file dialog and let the user choose manually
-    KFileDialog dlg(0);
+    KFileDialog dlg(getenv("HOME"));
     dlg.setCaption(i18n("Choose Signature File"));
     if (!dlg.exec()) return;
     sigFileName = dlg.selectedFile();
@@ -1793,6 +1813,8 @@ KMLineEdit::KMLineEdit(KMComposeWin* composer, QWidget *parent,
 		       const char *name): KMLineEditInherited(parent,name)
 {
   mComposer = composer;
+  
+  connect (this, SIGNAL(completion()), this, SLOT(complete()));
 }
 
 //-----------------------------------------------------------------------------
@@ -1823,7 +1845,7 @@ void KMLineEdit::keyPressEvent(QKeyEvent* e)
 {
   if (e->key()==Key_Backtab && mComposer)
     mComposer->focusNextPrevEdit(this,FALSE);
-  else if ((e->key()==Key_Tab || e->key()==Key_Return) && mComposer)
+  else if ((/* e->key()==Key_Tab ||*/ e->key()==Key_Return) && mComposer)
     mComposer->focusNextPrevEdit(this,TRUE);
   else KMLineEditInherited::keyPressEvent(e);
 }
@@ -1858,6 +1880,69 @@ void KMLineEdit::paste()
 void KMLineEdit::markAll()
 {
   selectAll();
+}
+
+//-----------------------------------------------------------------------------
+void KMLineEdit::complete()
+{
+  QString t;
+  QString Name(name());
+  
+  if (Name == "subjectLine")
+  {
+    mComposer->focusNextPrevEdit(this,TRUE);
+    return;
+  }
+  
+  QPopupMenu *pop = new QPopupMenu;
+  int n;
+  
+  KMAddrBook *adb = new KMAddrBook();
+  adb->readConfig();
+  adb->load();
+
+  QString s(text());
+  s.append("*");
+  QRegExp regexp(s.data(), true, true);
+  
+  n=0;
+  
+  for (const char *a=adb->first(); a; a=adb->next())
+  {
+    t.setStr(a);
+    if (t.contains(regexp))
+    {
+      pop->insertItem(a);
+      n++;
+    }
+  }
+  
+  if (n>1)
+  {
+    int id;
+    pop->popup(parentWidget()->mapToGlobal(QPoint(x(), y()+height())));
+    pop->setActiveItem(pop->idAt(0));
+    id=pop->exec();
+    
+    if (id!=-1)
+    {
+      setText(pop->text(id));
+      delete pop;
+      mComposer->focusNextPrevEdit(this,TRUE);
+    }
+  }
+  else if (n==1)
+  {
+    setText(pop->text(pop->idAt(0)));
+    delete pop;
+    mComposer->focusNextPrevEdit(this,TRUE);
+  }
+  else
+  {
+    delete pop;
+    cursorAtEnd();
+    setFocus();
+  }
 }
 
 
