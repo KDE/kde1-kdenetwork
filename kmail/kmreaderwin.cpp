@@ -109,14 +109,36 @@ void KMReaderWin::readConfig(void)
   mViewer->setDefaultTextColors(config->readColorEntry("ForegroundColor",&c1)
                                 ,config->readColorEntry("LinkColor",&c2)
                                 ,config->readColorEntry("FollowedColor",&c3));
-  mViewer->setDefaultFontBase(config->readNumEntry("DefaultFontBase",3));
+  //moved to #ifdef KRN where it was before (sven):
+  //mViewer->setDefaultFontBase(config->readNumEntry("DefaultFontBase",3));
 
 #ifndef KRN
   config->setGroup("Fonts");
   mBodyFont = config->readEntry("body-font", "helvetica-medium-r-12");
   mViewer->setStandardFont(kstrToFont(mBodyFont).family());
+  // --- sven's get them font sizes right! start ---
+  int i, fntSize, diff;
+  fntSize = kstrToFont(mBodyFont).pointSize();
+  //debug ("Fontsize: %d", fntSize);
+
+  int fontsizes[7];
+  mViewer->resetFontSizes();
+  mViewer->getFontSizes(fontsizes);
+  diff= fntSize - fontsizes[3];
+  if (fontsizes[0]+diff > 0)
+  {
+    for (i=0;i<7; i++)
+    {
+      //debug ("Old fontsize #%d: %d", i, fontsizes[i]);
+      fontsizes[i]+=diff;
+      //debug ("New fontsize #%d: %d", i, fontsizes[i]);
+    }
+  }
+  mViewer->setFontSizes(fontsizes);
+  // --- sven's get them font sizes right! end ---
   //mViewer->setFixedFont(mFixedFont);
 #else
+  mViewer->setDefaultFontBase(config->readNumEntry("DefaultFontBase",3));
   mViewer->setStandardFont(config->readEntry("StandardFont","helvetica"));
   mViewer->setFixedFont(config->readEntry("FixedFont","courier"));
 #endif
