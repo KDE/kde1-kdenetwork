@@ -120,7 +120,7 @@ void Article::formHeader(QString *s)
     delete[] tempbuf;
 
     for (int i=0;i<threadDepth;i++)
-        s->append("\t");
+        s->append("  ");
     s->append(Subject);
 }
 
@@ -287,6 +287,20 @@ void NewsGroup::getSubjects(NNTP *server)
     }
 }
 
+void NewsGroup::getMessages(NNTP *server)
+{
+    server->resetCounter=false;
+    debug ("getting articles in %s",data());
+    load();
+    getSubjects(server);
+    getList();
+    int i=0;
+    for (Article *art=artList.first();art!=0;art=artList.next())
+    {
+        server->article(art->ID.data());
+    }
+    server->resetCounter=true;
+}
 
 ////////////////////////////////////////////////////////////////////
 // ArtList class. Represents a list of articles
@@ -388,7 +402,6 @@ void ArticleList::thread(bool sortBySubject=false)
     thread.toFirst();
     //Now consolidate threads
     ArticleList *parentThread;
-    ArticleList *childThread;
     thread.toFirst();
     for (;thread.current();++thread)
     {

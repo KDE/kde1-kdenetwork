@@ -2,11 +2,11 @@
 INTRODUCTION:
 *************************************************************************
 
-This is the third release of KRN, a news reader for the KDE project.
+This is the fourth release of KRN, a news reader for the KDE project.
 It doesn't do much yet, but it lets you connect to a server, 
 subscribe/unsubscribe to newsgroups, and even read them (sometimes :-).
 
-Krn is under the GPL, so it comes with no warranty, etc,etc.
+Krn is released under the GPL, so it comes with no warranty, etc,etc.
 Read the COPYING file if you want the lawyerspeak.
 
 *************************************************************************
@@ -16,15 +16,10 @@ NEW ON THIS VERSION
 Well, I don't really remember, but I think this list is more-or-less
 adequate:
 
-* Threading (not 100% correct I'm afraid)
-* Article printing
-* Option to see all/unread articles
-* Binary file decoding
-* Better installation
-* Preliminary preview of posting support (guaranteed to crash)
-* Nice icon, courtesy of Nico Schirwing
-* Lots o'bugfixing
-* Compiles with all the latest libs
+* Threading (about 99.99% corect now).
+* Message display options.
+* Automatic retrieval from the web of old/expired articles!
+* Lots of bugfixes.
 
 *************************************************************************
 IMPORTANT:

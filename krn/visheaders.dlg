@@ -1,0 +1,79 @@
+DlgEdit {
+	ClassHeader {visheadDlg.h}
+	ClassSource {visheadDlg.cpp}
+	ClassName {visheadDlg}
+	DataHeader {visheadDlgData.h}
+	DataSource {visheadDlgData.cpp}
+	DataName {visheadDlgData}
+	DataInherited {TRUE}
+		WindowBaseClass {QDialog}
+		IsModal {TRUE}
+		WindowCaption {Visible Headers}
+}
+WidgetLayout {
+		Rect {5 100 390 250}
+		Grid {10}
+
+LineEdit {
+		Text {}
+		Rect {10 10 120 30}
+		Name {LineEdit_1}
+		Variable {entry}
+}
+ListBox {
+		DragSelect {TRUE}
+		AutoScroll {TRUE}
+		ScrollBar {FALSE}
+		AutoScrollBar {TRUE}
+		BottomScrollBar {FALSE}
+		AutoBottomScrollBar {TRUE}
+		SmoothScrolling {TRUE}
+		Style {51}
+		LineWidth {2}
+		Rect {220 10 160 190}
+		Name {ListBox_1}
+		Variable {headerlist}
+}
+PushButton {
+		ToggleButton {FALSE}
+		Default {FALSE}
+		AutoDefault {FALSE}
+		Text {->}
+		Rect {140 10 70 30}
+		Name {PushButton_1}
+		Variable {b3}
+}
+PushButton {
+		ToggleButton {FALSE}
+		Default {FALSE}
+		AutoDefault {FALSE}
+		Text {OK}
+		Rect {10 210 100 30}
+		Name {PushButton_2}
+		Variable {b1}
+}
+PushButton {
+		ToggleButton {FALSE}
+		Default {FALSE}
+		AutoDefault {FALSE}
+		Text {Cancel}
+		Rect {280 210 100 30}
+		Name {PushButton_3}
+		Variable {b2}
+}
+PushButton {
+		ToggleButton {FALSE}
+		Default {FALSE}
+		AutoDefault {FALSE}
+		Text {<-}
+		Rect {140 70 70 30}
+		Name {PushButton_4}
+		Variable {b4}
+}
+CheckBox {
+		Checked {FALSE}
+		Text {Show All Headers}
+		Rect {10 150 200 30}
+		Name {CheckBox_1}
+		Variable {all}
+}}

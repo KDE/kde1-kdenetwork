@@ -50,13 +50,16 @@ public slots:
     void updateCounter();
     
 private slots:
-    bool actions(int);
+    bool actions(int,NewsGroup *group=0);
+    bool currentActions(int);
+    bool subscrActions(int);
     void fillTree();
     void tag();
     void subscribe();
     void openGroup(int);
     void checkUnread();
-    void getSubjects();
+    void getSubjects(NewsGroup *group);
+    void getArticles(NewsGroup *group);
 
 private:
     NNTP *server;

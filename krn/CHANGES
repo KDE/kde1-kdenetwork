@@ -1,13 +1,28 @@
 -----------------------------------------------------------------------------
-Changes made Aug 8
+Changes made Aug 9
 -----------------------------------------------------------------------------
 
 * [Roberto] Placed Aug-9 in the web site.
 
-* [Roberto] Wrote new threading code, it's no speed demon, but it looks more
-  correct than the old one. It threads 1500 articles in about 12 seconds in
-  my PC. It's still slow, but it's not optimized at all.
-  And it's much shorter than it used to be, too.
+* [Roberto] It's still not too fast, but now the threading code is correct,
+  except for the possibility of a reference loop. That should be extremely
+  rare, since at least one article would have to know the ID of a message
+  that has not been posted yet, but I guess it could be done intentionally
+  or by a (very rare) accident.
+
+* [Roberto] Drawed the dialog for visible headers choice.
+
+-- things below this line are not in the aug 9 release.
+
+* [Roberto] Implemented "Get messages" command. Sadly it doesn't get along
+  with the progress marker, because it's really a heck of a lot of small
+  commands, so it always says "Done" :-(
+  I'll have to see how to fix it.
+
+* [Roberto] Cleaned groupdlg a little. It's just opinion, though :-)
+
+* [Roberto] Fixed the progress marker to be either accumulative or
+  self-resetting, so it gives meaningful info in every case.
 
 -----------------------------------------------------------------------------
 Changes made Aug 8

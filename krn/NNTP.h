@@ -115,6 +115,7 @@ public:
     void getList();
     void updateList();
     void getSubjects(NNTP *server);
+    void getMessages(NNTP *server);
 private:
 };
 
@@ -168,6 +169,9 @@ public:
     QString    	hostname;
     char    *lastStatusResponse() { return Laststatus.data();};
     bool    reConnect();
+    //resetCounter indicates if I should reset the byteCounter
+    //at the end of a command. It's usually true
+    bool    resetCounter;
     
 private:
     int         listOverview();

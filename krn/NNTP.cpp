@@ -39,8 +39,8 @@ NNTPObserver::NNTPObserver (NNTP *_client)
 
 void NNTPObserver::Notify()
 {
+    client->byteCounter+=client->mTextResponse.length();
     client->partialResponse+=client->mTextResponse.c_str();
-    client->byteCounter=client->partialResponse.length();
     qApp->processEvents();
 }
 
@@ -63,18 +63,21 @@ NNTP::NNTP(char *host=0): DwNntpClient()
     byteCounter=0;
     extendPartialResponse=new NNTPObserver (this);
     SetObserver(extendPartialResponse);
+    resetCounter=true;
 }
 
 void NNTP::PGetTextResponse()
 {
     partialResponse="";
-    byteCounter=0;
+    if (resetCounter)
+        byteCounter=0;
     qApp->processEvents();
     SetObserver(extendPartialResponse);
     DwNntpClient::PGetTextResponse();
     mTextResponse=partialResponse.data();
     partialResponse="";
-    byteCounter=-1;
+    if (resetCounter)
+        byteCounter=-1;
     SetObserver(NULL);
 }
 

@@ -51,6 +51,7 @@
 #define HELP_CONTENTS 12
 #define HELP_ABOUT 13
 #define GET_SUBJECTS 14
+#define GET_ARTICLES 15
 
 extern QString krnpath,cachepath,artinfopath,pixpath;
 extern KConfig *conf;
@@ -111,28 +112,29 @@ Groupdlg::Groupdlg
     file->insertItem("Get Active File",GET_ACTIVE);
     file->insertSeparator();
     file->insertItem("Exit",EXIT);
-    connect (file,SIGNAL(activated(int)),SLOT(actions(int)));
+    connect (file,SIGNAL(activated(int)),SLOT(currentActions(int)));
 
     QPopupMenu *newsgroup = new QPopupMenu;
     newsgroup->insertItem("Open",OPENGROUP);
     newsgroup->insertItem("(un)Subscribe",SUBSCRIBE);
     newsgroup->insertItem("(Un)Tag",TAGGROUP);
-    connect (newsgroup,SIGNAL(activated(int)),SLOT(actions(int)));
+    connect (newsgroup,SIGNAL(activated(int)),SLOT(currentActions(int)));
 
     QPopupMenu *subscribed = new QPopupMenu;
     subscribed->insertItem("Get Subjects",GET_SUBJECTS);
-    connect (subscribed,SIGNAL(activated(int)),SLOT(actions(int)));
+    subscribed->insertItem("Get Articles",GET_ARTICLES);
+    connect (subscribed,SIGNAL(activated(int)),SLOT(subscrActions(int)));
     
     QPopupMenu *options = new QPopupMenu;
     options->insertItem("Identity",CHANGE_IDENTITY);
     options->insertItem("NNTP Options",CONFIG_NNTP);
-    connect (options,SIGNAL(activated(int)),SLOT(actions(int)));
+    connect (options,SIGNAL(activated(int)),SLOT(currentActions(int)));
 
     QPopupMenu *help = new QPopupMenu;
     help->insertItem("Contents",HELP_CONTENTS);
     help->insertSeparator();
     help->insertItem("About",HELP_ABOUT);
-    connect (help,SIGNAL(activated(int)),SLOT(actions(int)));
+    connect (help,SIGNAL(activated(int)),SLOT(currentActions(int)));
 
     KMenuBar *menu = new KMenuBar (this, "menu");
     
@@ -148,7 +150,7 @@ Groupdlg::Groupdlg
     QPixmap pixmap;
     
     KToolBar *tool = new KToolBar (this, "tool");
-    QObject::connect (tool, SIGNAL (clicked (int)), this, SLOT (actions (int)));
+    QObject::connect (tool, SIGNAL (clicked (int)), this, SLOT (currentActions (int)));
     
     pixmap.load (pixpath+"connected.xpm");
     tool->insertButton (pixmap, CONNECT, true, "Connect to server");
@@ -445,7 +447,7 @@ bool Groupdlg::needsConnect()
 }
 
 
-bool Groupdlg::actions (int action)
+bool Groupdlg::actions (int action,NewsGroup *group=0)
 {
     bool success=false;
     qApp->setOverrideCursor (waitCursor);
@@ -453,12 +455,17 @@ bool Groupdlg::actions (int action)
     {
     case GET_SUBJECTS:
         {
-            getSubjects ();
+            getSubjects(group);
+            break;
+        }
+    case GET_ARTICLES:
+        {
+            getArticles(group);
             break;
         }
     case OPENGROUP:
         {
-            openGroup (list->currentItem());
+            openGroup (group->data());
             break;
         }
     case TAGGROUP:
@@ -658,23 +665,67 @@ bool Groupdlg::loadActive()
     return success;
 };
 
-void Groupdlg::getSubjects()
+bool Groupdlg::currentActions(int action)
+{
+    bool success=true;
+    //Lets try to find the newsgroup
+    if (action==OPENGROUP)
+    {
+        openGroup(list->currentItem());
+        return success;
+    }
+    else
+    {
+        const char *text = list->getCurrentItem ()->getText ();
+        int index=groups.find (&NewsGroup(text));
+        NewsGroup *g=groups.at(index);
+        if (-1 != index)
+        {
+            actions(action,g);
+        }
+        list->forEveryItem(checkPixmap,NULL);
+        list->repaint();
+    }
+    return success;
+}
+
+bool Groupdlg::subscrActions(int action)
+{
+    bool success=true;
+    for (NewsGroup *group=subscr.first();group!=0;group=subscr.next())
+    {
+        debug ("doing action in group %s",group->data());
+        actions(action,group);
+    }
+    statusBar ()->changeItem ("Done", 2);
+    return success;
+}
+
+void Groupdlg::getArticles(NewsGroup *group)
 {
     if (needsConnect())
     {
         QString s;
-        debug ("Getting subjects");
-        for (NewsGroup *group=subscr.first();group!=0;group=subscr.next())
-        {
-            s="Getting list of messages in ";
-            s+=group->data();
-            statusBar ()->changeItem (s.data(), 2);
-            qApp->processEvents();
-            debug ("Getting subjects in %s",group->data());
-            group->getSubjects(server);
-        }
-        s="Got Subjects";
+        s="Getting messages in ";
+        s+=group->data();
         statusBar ()->changeItem (s.data(), 2);
+        qApp->processEvents();
+        debug ("Getting messages in %s",group->data());
+        group->getMessages(server);
+    }
+}
+
+void Groupdlg::getSubjects(NewsGroup *group)
+{
+    if (needsConnect())
+    {
+        QString s;
+        s="Getting list of messages in ";
+        s+=group->data();
+        statusBar ()->changeItem (s.data(), 2);
+        qApp->processEvents();
+        debug ("Getting subjects in %s",group->data());
+        group->getSubjects(server);
     }
 }
 
@@ -713,7 +764,6 @@ void Groupdlg::updateCounter()
     if (server->byteCounter>=0)
     {
         s.setNum(server->byteCounter);
-        s.rightJustify(8,'0');
         s=QString("Received ")+s+" bytes";
     }
     else
