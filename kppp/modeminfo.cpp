@@ -50,7 +50,7 @@ ModemTransfer::ModemTransfer(QWidget *parent=0, const char *name=0)
   setMaximumSize(250,130);
   setMinimumSize(250,130);
   
-  progressBar = new Progress(0,8,0,Progress::Horizontal,this,"bar");
+  progressBar = new Progress(0, 8, 0, Progress::Horizontal, this, "bar");
   progressBar->setGeometry(20,20,210,25);
 
   statusBar = new QLabel(this,"sBar");

@@ -24,7 +24,6 @@
  * Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-
 #include <qfileinf.h>
 #include <unistd.h>
 #include <kmsgbox.h>
@@ -243,7 +242,6 @@ int main( int argc, char **argv ) {
   // we really don't want to die accidentally, since that would leave the
   // modem connected. If you really really want to kill me you must send 
   // me a SIGKILL. 
-
   signal(SIGINT, SIG_IGN);
   signal(SIGTERM, SIG_IGN);
   signal(SIGHUP, SIG_IGN);

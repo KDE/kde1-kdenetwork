@@ -1,3 +1,9 @@
+Sun Jan  4 13:54:12 1998  Mario Weilguni <mweilguni@sime.com>
+	* modified the modemcommands dialog to use the layout
+	  classes of Qt. Replaced the scrollbar with a slider,
+	  because scrollbars are not the right widget to change
+	  values.
+
 Thu Jan  2 00:25:03 1998  Peter Silva <peter.silva@videotron.ca>
 	* added modem_in_connect_state, and checks for it
           to avoid unneccessary delays on modem initialization.

@@ -32,13 +32,11 @@
 #define _MODEMCMDS_H_
 
 #include <qgrpbox.h> 
-#include<qdialog.h>
-#include<qlined.h>
-#include<qpushbt.h>
-#include<qpainter.h>
-#include<qlabel.h>
-#include <qscrbar.h> 
-#include <qlcdnum.h>  
+#include <qdialog.h>
+#include <qlined.h>
+#include <qpushbt.h>
+#include <qpainter.h>
+#include <qlabel.h>
 
 #include "pppdata.h"
 
@@ -105,8 +103,7 @@ private:
   QLineEdit *escaperesp;
   QLabel *label14;
 
-  QScrollBar *escapeguardtime;
-  QLCDNumber *escapeguardtimelcd;
+  QLabel *lslider;
   QLabel *label15;
 };
 #endif

@@ -125,7 +125,7 @@ QString AccountingSelector::indexToFileName(int idx) {
     while(tli->hasParent()) {
       tli = tli->getParent();
       QString s = tli->getText();
-      if(s != "Available rules")
+      if(s != klocale->translate("Available rules"))
 	name = nameToFileName(s) + "/" + name;
     }
     return QString(name+".rst");
@@ -316,5 +316,3 @@ bool AccountingSelector::save() {
   }
   return TRUE;
 }
-
-

@@ -24,154 +24,173 @@
  * Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
+#include <qlayout.h>
+#include <qslider.h>
+#include <kbuttonbox.h>
 #include "modemcmds.h"
+#include <stdlib.h>
+
+#define ADJUSTLABEL(l) l->setMinimumSize(l->sizeHint()); l->setAlignment(AlignLeft|AlignVCenter);
+
+#define ADJUSTEDIT(e) e->setText("XXXXXXXXqy"); e->setMinimumSize(e->sizeHint()); e->setFixedHeight(e->sizeHint().height()); e->setText(""); e->setMaxLength(MODEMSTR_SIZE);
 
 ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
   : QDialog(parent, name, TRUE, WStyle_Customize|WStyle_NormalBorder)
 {
   setCaption(klocale->translate("Edit Modem Commands"));
 
-  box = new QGroupBox(this, "box");
-  box->setGeometry(5,5,330,465);
+  const int GRIDROWS = 17;
 
-  ok = new QPushButton(klocale->translate("OK"), this);
-  ok->setGeometry(10, 475, 70, 25);
-  connect(ok, SIGNAL(clicked()), SLOT(okbutton()));
+  // toplevel layout
+  QVBoxLayout *tl = new QVBoxLayout(this, 10, 4);
   
-  cancel = new QPushButton(klocale->translate("Cancel"), this);
-  cancel->setGeometry(90, 475, 70, 25);
-  cancel->setFocus();
-  connect(cancel, SIGNAL(clicked()), SLOT(cancelbutton()));
-
+  // add grid + frame
+  QGridLayout *l1 = new QGridLayout(GRIDROWS, 4);
+  tl->addLayout(l1);
+  box = new QGroupBox(this, "box");
+  l1->addMultiCellWidget(box, 0, GRIDROWS-1, 0, 3);
 
   initstr = new QLineEdit(this);
-  initstr->setGeometry(160, 15, 150, 25);
-  initstr->setMaxLength(MODEMSTR_SIZE);
-
-  label1 = new QLabel(this);
-  label1->setGeometry(20,15,135,25);
-  label1->setText(klocale->translate("Initialization String:"));
+  label1 = new QLabel(klocale->translate("Initialization String:"), this);
+  ADJUSTEDIT(initstr);
+  ADJUSTLABEL(label1);
+  l1->addWidget(label1, 1, 1);
+  l1->addWidget(initstr, 1, 2);
 
   initresp = new QLineEdit(this);
-  initresp->setGeometry(160, 45, 150, 25);
-  initresp->setMaxLength(MODEMSTR_SIZE);
-
-  label2 = new QLabel(this);
-  label2->setGeometry(20,45,135,25);
-  label2->setText(klocale->translate("Init Response:"));
+  label2 = new QLabel(klocale->translate("Init Response:"), this);
+  ADJUSTEDIT(initresp);
+  ADJUSTLABEL(label2);
+  l1->addWidget(label2, 2, 1);
+  l1->addWidget(initresp, 2, 2);
 
   dialstr = new QLineEdit(this);
-  dialstr->setGeometry(160, 75, 150, 25);
-  dialstr->setMaxLength(MODEMSTR_SIZE);
-
-  label3 = new QLabel(this);
-  label3->setGeometry(20,75,135,25);
-  label3->setText(klocale->translate("Dial String:"));
+  label3 = new QLabel(klocale->translate("Dial String:"),this);
+  ADJUSTEDIT(dialstr);
+  ADJUSTLABEL(label3);
+  l1->addWidget(label3, 3, 1);
+  l1->addWidget(dialstr, 3, 2);
 
   connectresp = new QLineEdit(this);
-  connectresp->setGeometry(160, 105, 150, 25);
-  connectresp->setMaxLength(MODEMSTR_SIZE);
-
-  label4 = new QLabel(this);
-  label4->setGeometry(20,105,135,25);
-  label4->setText(klocale->translate("Connect Response:"));
+  label4 = new QLabel(klocale->translate("Connect Response:"), this);
+  ADJUSTEDIT(connectresp);
+  ADJUSTLABEL(label4);
+  l1->addWidget(label4, 4, 1);
+  l1->addWidget(connectresp, 4, 2);
 
   busyresp = new QLineEdit(this);
-  busyresp->setGeometry(160, 135, 150, 25);
-  busyresp->setMaxLength(MODEMSTR_SIZE);
-
-
-  label5 = new QLabel(this);
-  label5->setGeometry(20,135,135,25);
-  label5->setText(klocale->translate("Busy Response:"));
+  label5 = new QLabel(klocale->translate("Busy Response:"), this);
+  ADJUSTEDIT(busyresp);
+  ADJUSTLABEL(label5);
+  l1->addWidget(label5, 5, 1);
+  l1->addWidget(busyresp, 5, 2);
 
   nocarrierresp = new QLineEdit(this);
-  nocarrierresp->setGeometry(160, 165, 150, 25);
-  nocarrierresp->setMaxLength(MODEMSTR_SIZE);
-
-  label6 = new QLabel(this);
-  label6->setGeometry(20,165,135,25);
-  label6->setText(klocale->translate("No Carrier Resonse:"));
+  label6 = new QLabel(klocale->translate("No Carrier Resonse:"), this);
+  ADJUSTEDIT(nocarrierresp);
+  ADJUSTLABEL(label6);
+  l1->addWidget(label6, 6, 1);
+  l1->addWidget(nocarrierresp, 6, 2);
 
   nodialtoneresp = new QLineEdit(this);
-  nodialtoneresp->setGeometry(160, 195, 150, 25);
-  nodialtoneresp->setMaxLength(MODEMSTR_SIZE);
-
-  label7 = new QLabel(this);
-  label7->setGeometry(20,195,135,25);
-  label7->setText(klocale->translate("No Dialtone Response:"));
+  label7 = new QLabel(klocale->translate("No Dialtone Response:"), this);
+  ADJUSTEDIT(nodialtoneresp);
+  ADJUSTLABEL(label7);
+  l1->addWidget(label7, 7, 1);
+  l1->addWidget(nodialtoneresp, 7, 2);
 
   hangupstr = new QLineEdit(this);
-  hangupstr->setGeometry(160, 225, 150, 25);
-  hangupstr->setMaxLength(MODEMSTR_SIZE);
-
-  label8 = new QLabel(this);
-  label8->setGeometry(20,225,135,25);
-  label8->setText(klocale->translate("Hangup String:"));
+  label8 = new QLabel(klocale->translate("Hangup String:"), this);
+  ADJUSTEDIT(hangupstr);
+  ADJUSTLABEL(label8);
+  l1->addWidget(label8, 8, 1);
+  l1->addWidget(hangupstr, 8, 2);
 
   hangupresp = new QLineEdit(this);
-  hangupresp->setGeometry(160, 255, 150, 25);
-  hangupresp->setMaxLength(MODEMSTR_SIZE);
-
-  label9 = new QLabel(this);
-  label9->setGeometry(20,255,135,25);
-  label9->setText(klocale->translate("Hangup Response:"));
+  label9 = new QLabel(klocale->translate("Hangup Response:"), this);
+  ADJUSTEDIT(hangupresp);
+  ADJUSTLABEL(label9);
+  l1->addWidget(label9, 9, 1);
+  l1->addWidget(hangupresp, 9, 2);
 
   answerstr = new QLineEdit(this);
-  answerstr->setGeometry(160, 285, 150, 25);
-  answerstr->setMaxLength(MODEMSTR_SIZE);
-
-  label10 = new QLabel(this);
-  label10->setGeometry(20,285,135,25);
-  label10->setText(klocale->translate("Answer String:"));
+  label10 = new QLabel(klocale->translate("Answer String:"), this);
+  ADJUSTEDIT(answerstr);
+  ADJUSTLABEL(label10);
+  l1->addWidget(label10, 10, 1);
+  l1->addWidget(answerstr, 10, 2);
 
   ringresp = new QLineEdit(this);
-  ringresp->setGeometry(160, 315, 150, 25);
-  ringresp->setMaxLength(MODEMSTR_SIZE);
-
-  label11 = new QLabel(this);
-  label11->setGeometry(20,315,135,25);
-  label11->setText(klocale->translate("Ring Response:"));
+  label11 = new QLabel(klocale->translate("Ring Response:"), this);
+  ADJUSTEDIT(ringresp);
+  ADJUSTLABEL(label11);
+  l1->addWidget(label11, 11, 1);
+  l1->addWidget(ringresp, 11, 2);
 
   answerresp = new QLineEdit(this);
-  answerresp->setGeometry(160, 345, 150, 25);
-  answerresp->setMaxLength(MODEMSTR_SIZE);
-
-  label12 = new QLabel(this);
-  label12->setGeometry(20,345,135,25);
-  label12->setText(klocale->translate("Answer Response:"));
+  label12 = new QLabel(klocale->translate("Answer Response:"), this);
+  ADJUSTEDIT(answerresp);
+  ADJUSTLABEL(label12);
+  l1->addWidget(label12, 12, 1);
+  l1->addWidget(answerresp, 12, 2);
 
   escapestr = new QLineEdit(this);
-  escapestr->setGeometry(160, 375, 150, 25);
-  escapestr->setMaxLength(MODEMSTR_SIZE);
-
-  label13 = new QLabel(this);
-  label13->setGeometry(20,375,135,25);
-  label13->setText(klocale->translate("Escape String:"));
+  label13 = new QLabel(klocale->translate("Escape String:"), this);
+  ADJUSTEDIT(escapestr);
+  ADJUSTLABEL(label13);
+  l1->addWidget(label13, 13, 1);
+  l1->addWidget(escapestr, 13, 2);
 
   escaperesp = new QLineEdit(this);
-  escaperesp->setGeometry(160, 405, 150, 25);
-  escaperesp->setMaxLength(MODEMSTR_SIZE);
+  label14 = new QLabel(klocale->translate("Escape Response:"), this);
+  ADJUSTEDIT(escaperesp);
+  ADJUSTLABEL(label14);
+  l1->addWidget(label14, 14, 1);
+  l1->addWidget(escaperesp, 14, 2);
 
-  label14 = new QLabel(this);
-  label14->setGeometry(20,405,135,25);
-  label14->setText(klocale->translate("Escape Response:"));
+  // put slider and label into a separate H-Box
+  QHBoxLayout *l2 = new QHBoxLayout;
+  l1->addLayout(l2, 15, 2);
+  lslider = new QLabel("MMMM", this);
 
-  escapeguardtime = new QScrollBar( 0, 255, 1, 10, 
-			gpppdata.modemEscapeGuardTime(),   // initial value.
-			QScrollBar::Horizontal,
-			this, "escapeguardtimesb");
-  escapeguardtime->setGeometry(204, 435, 108, 25);
+  // a little trick to make the label look like a disabled lineedit
+  lslider->setFixedWidth(lslider->sizeHint().width());
+  lslider->setFixedHeight(escapestr->sizeHint().height());
+  lslider->setAlignment(AlignCenter);
+  lslider->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+  lslider->setLineWidth(2);
+  QSlider *slider = new QSlider(0, 255, 1, 0,
+				QSlider::Horizontal, this);
+  slider->setFixedHeight(slider->sizeHint().height());
+  connect(slider, SIGNAL(valueChanged(int)),
+	  lslider, SLOT(setNum(int)));
+  slider->setValue(gpppdata.modemEscapeGuardTime());
+  l2->addWidget(lslider, 0);
+  l2->addWidget(slider, 1);
+  
+  label14 = new QLabel(klocale->translate("Guard Time (sec/50):"), this);
+  ADJUSTLABEL(label14);  
+  l1->addWidget(label14, 15, 1);
 
-  escapeguardtimelcd = new QLCDNumber( 3, this, "lcd" ); 
-  connect( escapeguardtime, SIGNAL(valueChanged(int)), 
-	    escapeguardtimelcd, SLOT(display(int)) ); 
-  escapeguardtimelcd->setGeometry(158, 435, 45, 25);
-  escapeguardtimelcd->display(gpppdata.modemEscapeGuardTime());
+  KButtonBox *bbox = new KButtonBox(this);
+  bbox->addStretch();
+  ok = bbox->addButton(klocale->translate("OK"));
+  ok->setDefault(TRUE);
+  cancel = bbox->addButton(klocale->translate("Cancel"));
+  
+  connect(ok, SIGNAL(clicked()), SLOT(okbutton()));
+  connect(cancel, SIGNAL(clicked()), SLOT(cancelbutton()));
 
-  label14 = new QLabel(this);
-  label14->setGeometry(20,435,135,25);
-  label14->setText(klocale->translate("Guard Time (sec/50):"));
+  bbox->layout();
+  tl->addWidget(bbox);
+  
+  initstr->setFocus();
+  
+  l1->addColSpacing(0, 10);
+  l1->addColSpacing(3, 10);
+  l1->addRowSpacing(0, 5);
+  l1->addRowSpacing(GRIDROWS-1, 5);
+  tl->freeze();
 
   //set stuff from gpppdata
   initstr->setText(gpppdata.modemInitStr());
@@ -192,9 +211,6 @@ ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
   answerstr->setText(gpppdata.modemAnswerStr());
   ringresp->setText(gpppdata.modemRingResp());
   answerresp->setText(gpppdata.modemAnswerResp());
-
-  this->setFixedSize(340, 505);
-
 }
 
 
@@ -210,7 +226,7 @@ void ModemCommands::okbutton() {
 
   gpppdata.setModemEscapeStr(escapestr->text());
   gpppdata.setModemEscapeResp(escaperesp->text());
-  gpppdata.setModemEscapeGuardTime(escapeguardtime->value());
+  gpppdata.setModemEscapeGuardTime(atoi(lslider->text()));
   gpppdata.setModemHangupStr(hangupstr->text());
   gpppdata.setModemHangupResp(hangupresp->text());
 
@@ -226,8 +242,3 @@ void ModemCommands::okbutton() {
 void ModemCommands::cancelbutton() {
   reject();
 }
-
-
-
-
-
