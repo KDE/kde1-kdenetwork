@@ -190,7 +190,7 @@ uninstall-local:
 # add a dependency for every moc file to be full portable
 # I've added a key binding to emacs for this. 
 m%.cpp: %.h
-	moc $< -o $@
+	$(MOC) $< -o $@
 
 .deps/ksirc.P: ksirc.cpp cdate.h
 	@echo "Computing dependencies for $<..."
