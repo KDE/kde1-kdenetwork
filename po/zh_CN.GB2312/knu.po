@@ -1,0 +1,209 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: knu 0.3.4\n"
+"POT-Creation-Date: 1998-06-16 14:20+0200\n"
+"PO-Revision-Date: 1998-06-12 08:33 MET DST\n"
+"Last-Translator: Wang Jian <lark@linux.ustc.edu.cn>\n"
+"Language-Team: zh_CN ( gb2312 )\n"
+
+#: knu.cpp:139 knu.cpp:300
+msgid "&Ping"
+msgstr "&Ping"
+
+#: knu.cpp:148 knu.cpp:306
+msgid "&Traceroute"
+msgstr "&Traceroute"
+
+#: knu.cpp:157 knu.cpp:312
+msgid "Host &resolution"
+msgstr "域名解析[&R]"
+
+#
+#: knu.cpp:170
+msgid "F&inger"
+msgstr "F&inger"
+
+#
+#: knu.cpp:180 knu.cpp:325
+msgid "&Matt's traceroute"
+msgstr "&Matt 的 traceroute"
+
+#: knu.cpp:192
+msgid ""
+"There is no command enabled\n"
+"in the configuration file.\n"
+"\n"
+"So I can't do anything...\n"
+msgstr ""
+"在配置文件中没有命令被允许\n"
+"执行.\n"
+"什么都不能做 ...\n"
+
+#: knu.cpp:237
+msgid "&New window"
+msgstr "打开新窗口[&N]"
+
+#: knu.cpp:240
+msgid "&Close window"
+msgstr "关闭窗口[&C]"
+
+#: knu.cpp:251
+msgid "Select &all"
+msgstr "选中所有的[&A]"
+
+#: knu.cpp:254
+msgid "C&lear output window"
+msgstr "清除输出窗口[&L]"
+
+#: knu.cpp:257
+msgid "P&references..."
+msgstr "偏好[&R]..."
+
+# c-format
+#: knu.cpp:272
+#, c-format
+msgid "&About %s"
+msgstr "关于 %s[&A]"
+
+#: knu.cpp:274
+msgid "About &Qt"
+msgstr "关于 &Qt"
+
+#: knu.cpp:318
+msgid "&Finger"
+msgstr "&Finger"
+
+#: knu.cpp:465
+msgid "About..."
+msgstr "关于..."
+
+#: CommandDlg.cpp:120
+msgid "H&ost:"
+msgstr "主机[&O]:"
+
+#: CommandDlg.cpp:129
+msgid "&Go!"
+msgstr "开始![&G]"
+
+#: CommandDlg.cpp:139
+msgid "&Stop"
+msgstr "停止[&S]"
+
+#: CommandDlg.cpp:155
+msgid ""
+"This command binary was not found. \n"
+"You can give its path in the Edit->Preferences... menu."
+msgstr ""
+"这个命令没有找到.\n"
+"你可以在 编辑->偏好... 菜单中设置它的路径."
+
+#: CommandDlg.cpp:340
+#, c-format
+msgid ""
+"\n"
+"You have a problem in your\n"
+"%s/%src\n"
+"configuration file.\n"
+"In the [%s] group,\n"
+"I can't find a valid \"path=\" entry.\n"
+"\n"
+"Please use Edit->Preferences... menu\n"
+"to configure it again.\n"
+msgstr ""
+"\n"
+"在你的培植文件\n"
+"%s/%src\n"
+"中有问题.\n"
+"在 [%s] 组中 ,\n"
+"不能找到有效的 \"path=\" 条目.\n"
+"\n"
+"请用 编辑->偏好... 菜单来\n"
+"重新配置.\n"
+
+#: CommandDlg.cpp:349
+msgid "Error in pathname"
+msgstr "在路径名中有错误"
+
+#: CommandDlg.cpp:482
+msgid "Binary"
+msgstr "程序"
+
+#: CommandDlg.cpp:490
+msgid "Path&name:"
+msgstr "路径名[&N]:"
+
+#: CommandDlg.cpp:499
+msgid "Additional &arguments:"
+msgstr "附加参数[&A]:"
+
+#: CommandDlg.cpp:524
+msgid "This command had been disabled in the configuration file."
+msgstr "在配置文件中此命令已经被禁止了."
+
+#: OptionsDlg.cpp:68
+msgid " - configuration"
+msgstr " - 配置"
+
+#: PingDlg.cpp:98 TracerouteDlg.cpp:99
+msgid "Make host &name resolution"
+msgstr "进行域名解析[&N]"
+
+#: TracerouteDlg.cpp:116
+msgid "&Maximum number of hops:"
+msgstr "最大驿站数目[&M]:"
+
+#: HostDlg.cpp:113
+msgid "address (A)"
+msgstr "地址 (A)"
+
+#: HostDlg.cpp:114
+msgid "name (PTR)"
+msgstr "名字 (PTR)"
+
+#: HostDlg.cpp:115
+msgid "name server (NS)"
+msgstr "名字服务器 (NS)"
+
+#: HostDlg.cpp:116
+msgid "mail exchanger (MX)"
+msgstr "邮件交换服务器 (MX)"
+
+#: HostDlg.cpp:117
+msgid "alias (CNAME)"
+msgstr "别名 (CNAME)"
+
+#: HostDlg.cpp:118
+msgid "start of authority (SOA)"
+msgstr "权力声明开始 (SOA)"
+
+#: HostDlg.cpp:119
+msgid "any record (ANY)"
+msgstr "任何记录 (ANY)"
+
+#: HostDlg.cpp:125
+msgid "Se&arch for:"
+msgstr "搜索[&A]:"
+
+#: HostDlg.cpp:137 HostDlg.cpp:288
+msgid "default server"
+msgstr "默认服务器"
+
+#: FingerDlg.cpp:94 HostDlg.cpp:146
+msgid "Ser&ver:"
+msgstr "服务器[&V]:"
+
+#: HostDlg.cpp:332
+msgid "hos&t"
+msgstr "主机[&T]"
+
+#: HostDlg.cpp:336
+msgid "ns&lookup"
+msgstr "ns&lookup"
+
+#: FingerDlg.cpp:76
+msgid "&User:"
+msgstr "用户[&U]:"
