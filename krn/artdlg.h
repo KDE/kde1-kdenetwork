@@ -43,6 +43,7 @@ public:
     virtual ~Artdlg();
     
     KMReaderWin *messwin;
+    bool unread;
 protected:
     virtual void closeEvent (QCloseEvent *e);
 
@@ -85,7 +86,6 @@ private:
     KPanner *panner;
     QGridLayout *gl;
     KStatusBar *status;
-    bool unread;
     bool showlocked;
 };
 

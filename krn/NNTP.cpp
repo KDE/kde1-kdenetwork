@@ -34,6 +34,7 @@
 
 extern QString krnpath,cachepath,artinfopath;
 extern GDBM_FILE artdb;
+extern GDBM_FILE old_artdb;
 
 #include <mimelib/mimepp.h>
 
@@ -354,7 +355,7 @@ int NNTP::listXover(int from,int to,NewsGroup *n)
                     key.dptr=art.ID.data();
                     key.dsize=art.ID.length()+1;
                     
-                    if (!gdbm_exists(artdb,key))
+                    if ((!gdbm_exists(artdb,key)) && (!gdbm_exists(old_artdb,key)))
                     {
                         art.Subject=templ.at(OffsetSubject);
                         art.From=templ.at(OffsetFrom);

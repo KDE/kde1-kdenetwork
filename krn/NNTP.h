@@ -60,7 +60,7 @@ public:
     void incref();
     void decref();
     void save();
-    void load();
+    void load(bool onlyUnread=false);
     int  score();
     bool refsLoaded;
     KMMessage *createMessage();
@@ -129,7 +129,7 @@ public:
     void getSubjects(NNTP *server);
     void getMessages(NNTP *server);
     void catchup();
-    void addArticle(QString ID);
+    void addArticle(QString ID,bool onlyUnread=false);
     int countNew(NNTP *server);
     char *name;
 private:

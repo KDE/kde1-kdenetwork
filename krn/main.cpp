@@ -69,6 +69,7 @@ QString krnpath,cachepath,artinfopath,groupinfopath,pixpath,dbasepath,outpath;
 KDecode *decoder;
 
 GDBM_FILE artdb;
+GDBM_FILE old_artdb;
 
 void checkConf();
 void expireCache();
@@ -138,6 +139,8 @@ int main( int argc, char **argv )
 
     artinfopath=krnpath+"/artinfo.db";
     artdb=gdbm_open(artinfopath.data(),0,GDBM_WRCREAT | GDBM_FAST,448,0);
+    artinfopath=krnpath+"/old_artinfo.db";
+    old_artdb=gdbm_open(artinfopath.data(),0,GDBM_WRCREAT | GDBM_FAST,448,0);
     
     Groupdlg k;
     main_widget = &k;
@@ -151,6 +154,9 @@ int main( int argc, char **argv )
     expireCache();
 
     gdbm_close(artdb);
+    gdbm_close(old_artdb);
+    gdbm_reorganize(artdb);
+    gdbm_reorganize(old_artdb);
 }
 
 void checkConf()

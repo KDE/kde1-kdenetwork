@@ -35,6 +35,7 @@ extern ArticleDict artSpool;
 extern QString krnpath,cachepath,artinfopath,groupinfopath;
 
 extern GDBM_FILE artdb;
+extern GDBM_FILE old_artdb;
 
 ////////////////////////////////////////////////////////////////////
 // Article class. Represents an article
@@ -84,7 +85,7 @@ void Article::formHeader(QString *s)
     QString ss;
     
     if (isRead())
-   {
+    {
         ss.setStr("{R} ");
     }
     else
@@ -103,9 +104,9 @@ void Article::formHeader(QString *s)
     {
         ss.setStr("{L} ");
     }
-
+    
     ss.append(" ");
-
+    
     if (!From.isEmpty())
     {
         s->append(KMMessage::stripEmailAddr(From));
@@ -115,8 +116,8 @@ void Article::formHeader(QString *s)
     {
         s->append("Unkown Address\n");
     }
-
-
+    
+    
     QString tempbuf;
     if (Date.data())
     {
@@ -131,11 +132,11 @@ void Article::formHeader(QString *s)
         s->append("-/-/-");
     }
     s->append("\n");
-
+    
     s->append(Lines);
     s->append(" ");
     s->append("\n");
-
+    
     
     for (int i=0;i<threadDepth;i++)
         s->append("\t");
@@ -146,11 +147,11 @@ void Article::formHeader(QString *s)
 void Article::save()
 //stores the article info and data into the cache
 {
-
+    
     datum key;
     key.dptr=ID.data();
     key.dsize=ID.length()+1;
-
+    
     QString _content;
     _content+=Subject+"\n";
     _content+=ID+"\n";
@@ -161,18 +162,18 @@ void Article::save()
         _content+="1\n";
     else
         _content+="0\n";
-
+    
     //
     // robert's cache stuff
-
+    
     if(canExpire())
-      _content+="1\n";
+        _content+="1\n";
     else
-      _content+="0\n";
-
+        _content+="0\n";
+    
     // end robert;s cache stuff
     //
-
+    
     for (char *iter=Refs.first();iter!=0;iter=Refs.next())
     {
         _content+=iter;
@@ -182,26 +183,51 @@ void Article::save()
     datum content;
     content.dptr=_content.data();
     content.dsize=_content.length()+1;
-    gdbm_store(artdb,key,content,GDBM_REPLACE);
-
+    
+    if (!isRead())
+    {
+        gdbm_store(artdb,key,content,GDBM_REPLACE);
+        gdbm_delete(old_artdb,key);
+    }
+    else
+    {
+        gdbm_store(old_artdb,key,content,GDBM_REPLACE);
+        gdbm_delete(artdb,key);
+    }
+    
 }
-void Article::load()
+void Article::load( bool onlyUnread)
 //gets the article info and data from the cache
 {
     QStrList tl;
     tl.setAutoDelete(true);
     datum key;
     datum content;
-
+    
     key.dptr=ID.data();
     key.dsize=ID.length() + 1;
 
-    content=gdbm_fetch(artdb,key);
-
+    if (gdbm_exists(artdb,key))
+    {
+        content=gdbm_fetch(artdb,key);
+    }
+    else
+    {
+        if (!onlyUnread)
+        {
+            content=gdbm_fetch(old_artdb,key);
+        }
+        else
+        {
+            ID="";
+            return;
+        }
+    }
+    
     QString s=(char *)content.dptr;
-
+    
     int index=0;
-
+    
     QString t;
     while (1)
     {
@@ -226,12 +252,12 @@ void Article::load()
         isread=true;
     else
         isread=false;
-
+    
     if (!strcmp(tl.at(6),"1"))
         expire=true;
     else
         expire=false;
-
+    
     for (unsigned int i=7;i<tl.count();i++)
     {
         if(0<strlen(tl.at(i)))
@@ -250,38 +276,38 @@ int Article::score()
 
 void Article::setRead(bool b)
 {
-  if (!refsLoaded) load();
-  isread = b;
-  save();
+    if (!refsLoaded) load();
+    isread = b;
+    save();
 }
 
 void Article::setAvailable(bool b)
 {
-  if (!refsLoaded) load();
-  isavail = b;
-  save();
+    if (!refsLoaded) load();
+    isavail = b;
+    save();
 }
 
 bool Article::canExpire()  // robert's cache stuff
 {
-  return(expire);
+    return(expire);
 }
 
 void Article::setExpire(bool b)   // robert's cache stuff
 {
-  if (!refsLoaded) load();
-  expire = b;
-  save();
+    if (!refsLoaded) load();
+    expire = b;
+    save();
 }
 
 void Article::toggleExpire()   // robert's cache stuff
 {
-  if (!refsLoaded) load();
-  if(expire)
-    expire = false;
-  else
-    expire = true;
-  save();
+    if (!refsLoaded) load();
+    if(expire)
+        expire = false;
+    else
+        expire = true;
+    save();
 }
 
 KMMessage *Article::createMessage ()
@@ -313,7 +339,7 @@ NewsGroup::~NewsGroup()
     }
     free (name);
 }
-void NewsGroup::addArticle(QString ID)
+void NewsGroup::addArticle(QString ID,bool onlyUnread)
 {
     if (ID.isEmpty())
     {
@@ -324,14 +350,15 @@ void NewsGroup::addArticle(QString ID)
     {
         Article *art=new Article();
         art->ID=ID;
-        art->load();
-        artList.append(art);
-    }
-    else
-    {
-        if (artList.findRef (spart)==-1)
-            artList.append(spart);
-    }
+        art->load(onlyUnread);
+        if (!(art->ID.isEmpty()))
+            artList.append(art);
+}
+else
+{
+    if (artList.findRef (spart)==-1)
+        artList.append(spart);
+}
 }
 
 void NewsGroup::getList(Artdlg *dialog)
@@ -340,28 +367,32 @@ void NewsGroup::getList(Artdlg *dialog)
     QString ac;
     QString status;
     ac=krnpath+name;
-
+    bool onlyUnread=false;
+    if (dialog)
+        onlyUnread=(dialog->unread);
     if (!QFile::exists(ac))
         return;
-
+    
     QString buffer=kFileToString (ac,true,true);
     if (buffer.isNull())
         return;
-
+    
     int index=0;
     int oldindex=0;
-
+    int counter=artList.count();
+    
     while (1)
     {
         index=buffer.find ('\n',oldindex);
         ID=buffer.mid(oldindex,index-oldindex);
         if (ID.isEmpty())
             break;
+        counter++;
         oldindex=index+1;
-        addArticle (ID);
-        if (dialog && !(artList.count()%50))
+        addArticle (ID,onlyUnread);
+        if (dialog && !(counter%50))
         {
-            status.sprintf ("Received %d articles",artList.count());
+            status.sprintf ("Received %d articles",counter);
             dialog->updateCounter(status);
         }
     }
@@ -389,7 +420,7 @@ int NewsGroup::lastArticle(NNTP *server)
     }
     sconf->setGroup(server->hostname.data());
     return sconf->readNumEntry("LastArticle",0);
-
+    
 }
 
 void NewsGroup::saveLastArticle(NNTP *server,int i)
@@ -403,7 +434,7 @@ void NewsGroup::saveLastArticle(NNTP *server,int i)
     sconf->setGroup(server->hostname.data());
     sconf->writeEntry("LastArticle",i);
     sconf->sync();
-
+    
 }
 
 void NewsGroup::getSubjects(NNTP *server)
@@ -452,23 +483,23 @@ void NewsGroup::catchup()
 
 int NewsGroup::countNew(NNTP *server)
 {
-  int count = 0;
-
-  load();
-  getList();
-
-  if(strcmp(server->group(), name))
-    server->setGroup(name);
-
-  if(server->last > lastArticle(server))
-    count = server->last - lastArticle(server);
-
-  for(Article *art=artList.first(); art!=0; art=artList.next()) {
-    if(!art->isRead())
-       count++;
-  }
-
-  return(count);
+    int count = 0;
+    
+    load();
+    getList();
+    
+    if(strcmp(server->group(), name))
+        server->setGroup(name);
+    
+    if(server->last > lastArticle(server))
+        count = server->last - lastArticle(server);
+    
+    for(Article *art=artList.first(); art!=0; art=artList.next()) {
+        if(!art->isRead())
+            count++;
+    }
+    
+    return(count);
 }
 
 ////////////////////////////////////////////////////////////////////
@@ -545,7 +576,7 @@ void do_insert(QString id,Article *art)
         a->parent=0;
         d->insert (id,a);
     }
-assert (a->art==art);
+    assert (a->art==art);
     if (!art->Refs.count())
         return;
     node *last=a;
