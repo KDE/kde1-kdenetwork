@@ -14,6 +14,7 @@ Comment[cs]=Indikátor novì do¹lých zpráv
 Comment[sv]=Fler-folders email-incikator
 Comment[hr]=Indikator novih e-mail poruka
 Comment[ro]=Monitorizeazã poºta nouã din mai multe casuþe poºtale
+Comment[pl]=Monitorowanie nowej poczty dla wielu folderów
 Exec=korn  -caption "%c" %i %m %f
 Icon=korn.xpm
 TerminalOptions=
