@@ -181,7 +181,7 @@ int KMailBox::countMail()
 				while(field && (*field== ' '||*field == '\t'))
 					field++;
 
-				if ( *field == 'N' )
+				if ( *field == 'N' || *field == 'U' )
 					msgRead = false;
 				else
 					msgRead = true;
