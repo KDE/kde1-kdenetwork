@@ -1053,8 +1053,12 @@ bool ConnectWidget::execppp() {
 
   command = "pppd";
 
-  command += " ";
-  command += gpppdata.modemDevice();
+  // as of version 2.3.6 pppd falls back to the real user rights when
+  // opening a device given in a command line. To avoid permission conflicts
+  // we'll simply leave this argument away. pppd will then use the default tty
+  // which is the serial port we connected stdin/stdout to in opener.cpp.
+  //  command += " ";
+  //  command += gpppdata.modemDevice();
 
   command += " " ;
   command += gpppdata.speed();

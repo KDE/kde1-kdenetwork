@@ -1,7 +1,13 @@
+1999-04-10  Harri Porten  <porten@kde.org>
+
+	* connect.cpp: solved problems with pppd 2.3.6 and 2.3.7
+	* pppdata.cpp: PPPDebug() defaults to `false'.
+
 1999-04-09  Harri Porten  <porten@kde.org>
 
 	* modem.cpp: improved protection against socket notifier zombie as
 	suggested by Brian Fisher <fisherb@hotdog.ccs.queensu.ca>.
+
 
 1999-04-06  Harri Porten  <porten@kde.org>
 	* modem.cpp: set modemfd to -1 in closetty().
@@ -26,7 +32,8 @@
 
 	* opener.cpp: replaced regex library calls with self-written matching
 	algorithm. This hopefully prevents the segfaults reported with SuSE
-	and Caldera binaries.
+	and Caldera binaries. (Update: identified the assert() around regcomp()
+	as the bug. It was left out when compiling with NODEBUG) 
 	* connect.cpp: fixed bugs of internal scripting loop. Possible
 	symptoms: broken 'Expect' command and incorrectly parsed modem speed.
 

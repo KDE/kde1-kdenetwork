@@ -78,6 +78,10 @@ bool PPPData::open() {
     }
   }
 
+  // start out with internal debugging disabled
+  // the user is still free to specify `debug' on his own
+  setPPPDebug(false);
+
   return true;      
 }
 
@@ -236,7 +240,7 @@ void PPPData::setPPPDebug(bool set) {
 
 
 const bool PPPData::getPPPDebug() {
-  return (bool)readNumConfig(GENERAL_GRP, PPP_DEBUG_OPTION, (int)TRUE);
+  return (bool)readNumConfig(GENERAL_GRP, PPP_DEBUG_OPTION, false);
 }
 
 

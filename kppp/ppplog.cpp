@@ -219,7 +219,7 @@ void PPPL_ShowLog() {
 			    "again, you will get a PPP log that may help\n"
 			    "you to track down the connection problem."),
 		       KMsgBox::INFORMATION);
-      return;
+      //      return;
     }
     
     //    return;
