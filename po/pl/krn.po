@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: krn \n"
 "POT-Creation-Date: 1999-01-10 02:04+0100\n"
-"PO-Revision-Date: 1998-10-25 23:00+0100\n"
+"PO-Revision-Date: 1998-01-10 17:38+0100\n"
 "Last-Translator: Jacek Stolarczyk <jacek@mer.chemia.polsl.gliwice.pl>\n"
 "Content-Type: text/plain; charset=iso8859-2\n"
 
@@ -39,12 +39,10 @@ msgid "Received %.2f Kb"
 msgstr "Odebrano %.2f Kb"
 
 #: NNTP.cpp:607
-#, fuzzy
 msgid "Getting Article"
 msgstr "Pobieranie wiadomo¶ci"
 
 #: NNTP.cpp:749
-#, fuzzy
 msgid "Article Received"
 msgstr "Artyku³ pobrany"
 
@@ -93,9 +91,8 @@ msgid "Untag"
 msgstr "Odznacz"
 
 #: artdlg.cpp:167 findArtDlg.cpp:65 groupdlg.cpp:157
-#, fuzzy
 msgid "Find"
-msgstr "Szukaj..."
+msgstr "Szukaj"
 
 #: artdlg.cpp:178 groupdlg.cpp:159
 msgid "(Un)Tag"
@@ -130,7 +127,6 @@ msgid "Expire Options..."
 msgstr "Opcje wygasania..."
 
 #: groupdlg.cpp:174
-#, fuzzy
 msgid "Printing Options..."
 msgstr "Opcje Wydruku..."
 
@@ -159,7 +155,6 @@ msgid "Find group"
 msgstr "Szukaj grupy"
 
 #: groupdlg.cpp:209
-#, fuzzy
 msgid "(Un)Subscribe"
 msgstr "(nie)Subskrybuj"
 
@@ -260,12 +255,10 @@ msgid "Download"
 msgstr "Pobierz"
 
 #: artdlg.cpp:153 artdlg.cpp:275
-#, fuzzy
 msgid "Mark Read"
 msgstr "Zaznacz przeczytane"
 
 #: artdlg.cpp:154
-#, fuzzy
 msgid "Mark Unread"
 msgstr "Zaznacz nieprzeczytane"
 
@@ -322,7 +315,6 @@ msgid "Appearance..."
 msgstr "Wygl±d..."
 
 #: artdlg.cpp:200
-#, fuzzy
 msgid "Sorting..."
 msgstr "Sortowanie..."
 
@@ -335,7 +327,6 @@ msgid "Update"
 msgstr "Uaktualnij"
 
 #: artdlg.cpp:214
-#, fuzzy
 msgid "&Scoring"
 msgstr "&Filtry"
 
@@ -368,14 +359,12 @@ msgid "All"
 msgstr "Wszystkie"
 
 #: artdlg.cpp:251
-#, fuzzy
 msgid "Read"
-msgstr "Przeczytana:"
+msgstr "Przeczytana"
 
 #: artdlg.cpp:252
-#, fuzzy
 msgid "UnRead"
-msgstr "Nieprzeczytana:"
+msgstr "Nieprzeczytana"
 
 #: artdlg.cpp:255
 msgid "Save Article"
@@ -406,7 +395,6 @@ msgid "Decode Article"
 msgstr "Dekoduj wiadomo¶æ"
 
 #: artdlg.cpp:277
-#, fuzzy
 msgid "Mark UnRead"
 msgstr "Zaznacz nieprzeczytane"
 
@@ -455,7 +443,6 @@ msgid "Append"
 msgstr "Do³±cz"
 
 #: artdlg.cpp:1367 artdlg.cpp:1432
-#, fuzzy
 msgid ""
 "From: Krn\n"
 "To: You\n"
@@ -502,9 +489,8 @@ msgid "KRN-NNTP configuration"
 msgstr "KRN - konfiguracja NNTP"
 
 #: NNTPConfigDlg.cpp:35
-#, fuzzy
 msgid "Servers"
-msgstr "Serwer NNTP"
+msgstr "Serwery"
 
 #: NNTPConfigDlg.cpp:37
 msgid "SMTP server"
@@ -519,7 +505,6 @@ msgid "Connect on Startup"
 msgstr "Po³±cz przy uruchomieniu"
 
 #: NNTPConfigDlg.cpp:71
-#, fuzzy
 msgid "Connect without asking"
 msgstr "Po³±cz z serwerem bez pytania"
 
@@ -537,12 +522,11 @@ msgstr "Has³o"
 
 #: NNTPConfigDlg.cpp:91
 msgid "Ask before downloading more than"
-msgstr ""
+msgstr "Zapytaj przed pobraniem wiêcej ni¿"
 
 #: NNTPConfigDlg.cpp:94
-#, fuzzy
 msgid "articles"
-msgstr "Zaznacz wiadomo¶æ"
+msgstr "wiadomo¶ci"
 
 #: aboutDlg.cpp:28
 msgid "About KRN"
@@ -562,21 +546,19 @@ msgstr "Wielkie dziêki tak¿e dla:"
 
 #: aboutDlg.cpp:71
 msgid "All KDE developers"
-msgstr ""
+msgstr "Wszystkich twórców KDE"
 
 #: aboutDlg.cpp:73
 msgid "Chuck, for helping in time of need"
-msgstr ""
+msgstr "Chuck, dziêki za pomoc w potrzebie"
 
 #: aboutDlg.cpp:74
-#, fuzzy
 msgid "All testers"
-msgstr "Wszystkie grupy."
+msgstr "Wszystkim testuj±cym"
 
 #: fontsDlg.cpp:39
-#, fuzzy
 msgid "Message Display Settings"
-msgstr "Ustawienia wy¶wietlania"
+msgstr "Ustawienia wy¶wietlania wiadomo¶ci"
 
 #: fontsDlg.cpp:46
 msgid "Header Style"
@@ -591,7 +573,6 @@ msgid "Brief"
 msgstr "Krótki"
 
 #: fontsDlg.cpp:50
-#, fuzzy
 msgid "Standard"
 msgstr "Typowy"
 
@@ -600,7 +581,6 @@ msgid "Long"
 msgstr "D³ugi"
 
 #: fontsDlg.cpp:56
-#, fuzzy
 msgid "Attachment Style"
 msgstr "Styl Za³±cznika:"
 
@@ -626,7 +606,7 @@ msgstr "Ma³a"
 
 #: fontsDlg.cpp:71
 msgid "Normal"
-msgstr ""
+msgstr "Normalna"
 
 #: fontsDlg.cpp:72
 msgid "Large"
@@ -641,18 +621,16 @@ msgid "Standard Font"
 msgstr "Domy¶lna czcionka"
 
 #: fontsDlg.cpp:84
-#, fuzzy
 msgid "Standard Font Test"
-msgstr "Domy¶lna czcionka"
+msgstr "Sprawdzenie domy¶lnej czcionki"
 
 #: fontsDlg.cpp:86
 msgid "Fixed Font"
 msgstr "Czcionka o sta³ej szer."
 
 #: fontsDlg.cpp:91
-#, fuzzy
 msgid "Fixed Font Test"
-msgstr "Czcionka o sta³ej szer."
+msgstr "Sprawdzenie czcionki o sta³ej szer."
 
 #: fontsDlg.cpp:94
 msgid "Background Color"
@@ -707,7 +685,6 @@ msgid "Size"
 msgstr "Rozmiar"
 
 #: kmcomposewin.cpp:141
-#, fuzzy
 msgid "Encoding"
 msgstr "Kodowanie:"
 
@@ -776,7 +753,6 @@ msgid "New Mailreader"
 msgstr "Nowe okno"
 
 #: kmcomposewin.cpp:469 kmcomposewin.cpp:693 kmcomposewin.cpp:1836
-#, fuzzy
 msgid "Mark all"
 msgstr "Zaznacz wszystkie"
 
@@ -785,14 +761,12 @@ msgid "Find..."
 msgstr "Szukaj..."
 
 #: kmcomposewin.cpp:474 kmcomposewin.cpp:696
-#, fuzzy
 msgid "Replace..."
-msgstr "Wygl±d..."
+msgstr "Zamieñ..."
 
 #: kmcomposewin.cpp:477
-#, fuzzy
 msgid "&Spellcheck..."
-msgstr "KMail: Sprawdzanie pisowni"
+msgstr "&Sprawdzanie pisowni"
 
 #: kmcomposewin.cpp:484
 msgid "&Urgent"
@@ -807,9 +781,8 @@ msgid "&Confirm read"
 msgstr "&Potwierd¼ przeczytanie"
 
 #: kmcomposewin.cpp:491
-#, fuzzy
 msgid "&Spellchecker..."
-msgstr "KMail: Sprawdzanie pisowni"
+msgstr "&Sprawdzanie pisowni"
 
 #: kmcomposewin.cpp:494
 msgid "&Charsets..."
@@ -861,7 +834,7 @@ msgstr "Wstaw &plik..."
 
 #: kmcomposewin.cpp:527
 msgid "Insert My &Public Key"
-msgstr ""
+msgstr "Wstaw mój klucz &publiczny"
 
 #: kmcomposewin.cpp:532
 msgid "&Attach..."
@@ -880,9 +853,8 @@ msgid "&Attach"
 msgstr "Za³±czni&ki"
 
 #: kmcomposewin.cpp:558
-#, fuzzy
 msgid "Send message"
-msgstr "Wysy³anie wiadomo¶ci: "
+msgstr "Wy¶lij wiadomo¶æ"
 
 #: kmcomposewin.cpp:563
 msgid "Compose new message"
@@ -893,9 +865,8 @@ msgid "Save message to file"
 msgstr "Zapisz wiadomo¶æ do pliku"
 
 #: kmcomposewin.cpp:573
-#, fuzzy
 msgid "Print message"
-msgstr "Podpisz wiadomo¶æ u¿ywaj±c PGP"
+msgstr "Drukuj wiadomo¶æ"
 
 #: kmcomposewin.cpp:582
 msgid "Cut selection"
@@ -910,7 +881,6 @@ msgid "Paste clipboard contents"
 msgstr "Wklej zawarto¶æ schowka"
 
 #: kmcomposewin.cpp:593
-#, fuzzy
 msgid "Attach file"
 msgstr "Za³±cz plik"
 
@@ -931,7 +901,6 @@ msgid "Column"
 msgstr "Kolumn"
 
 #: kmcomposewin.cpp:627 kmcomposewin.cpp:640
-#, fuzzy
 msgid "Line"
 msgstr "Linii"
 
@@ -952,9 +921,8 @@ msgid "Attach File"
 msgstr "Za³±cz plik"
 
 #: kmcomposewin.cpp:1204
-#, fuzzy
 msgid "Include File"
-msgstr "Wstaw &plik..."
+msgstr "Wstaw plik"
 
 #: kmcomposewin.cpp:1239 kmreaderwin.cpp:737
 msgid "View..."
@@ -1004,7 +972,7 @@ msgstr "Wybierz plik podpisu"
 
 #: kmcomposewin.cpp:2018
 msgid "Spellcheck - KMail"
-msgstr ""
+msgstr "Sprawdzanie pisowni"
 
 #: kmcomposewin.cpp:2044
 msgid ""
@@ -1059,7 +1027,7 @@ msgstr "Zakoñczono wysy³anie wiadomo¶ci."
 
 #: kmsender.cpp:308
 msgid "Sending failed:"
-msgstr "Wysy³anie nie powiod³o siê: "
+msgstr "Wysy³anie nie powiod³o siê:"
 
 #: kmsender.cpp:461
 msgid ""
@@ -1120,19 +1088,16 @@ msgid "Sending SMTP command: %s"
 msgstr "Wysy³am polecenie SMTP: %s"
 
 #: findArtDlg.cpp:22
-#, fuzzy
 msgid "KRN - Article Searcher"
 msgstr "KRN - Szukanie wiadomo¶ci:"
 
 #: findArtDlg.cpp:29
-#, fuzzy
 msgid "Find Articles With:"
 msgstr "Szukaj wiadomo¶ci z:"
 
 #: findArtDlg.cpp:34 rulesDlg.cpp:106
-#, fuzzy
 msgid "In Field:"
-msgstr "Wszystkie pola"
+msgstr "W polu"
 
 #: findArtDlg.cpp:53 rulesDlg.cpp:131
 msgid "Case Sensitive"
@@ -1159,7 +1124,7 @@ msgstr ""
 
 #: kfileio.cpp:26 kmaddrbook.cpp:162
 msgid "File I/O Error"
-msgstr "File I/O Error"
+msgstr "B³±d odczytu/zapisu do pliku"
 
 #: kfileio.cpp:47
 #, c-format
@@ -1272,9 +1237,8 @@ msgid "Could only write %d bytes of %d."
 msgstr "Mo¿na by³o zapisaæ tylko %d bajtów z %d"
 
 #: kmmsgpartdlg.cpp:41
-#, fuzzy
 msgid "Message Part Properties"
-msgstr "W³a¶ciwo¶ci za³±cznika"
+msgstr "W³a¶ciwo¶ci wiadomo¶ci"
 
 #: kmmsgpartdlg.cpp:62
 msgid "Name:"
@@ -1351,12 +1315,11 @@ msgstr "Ostrzerzenie: Z³y podpis od"
 
 #: kmreaderwin.cpp:451
 msgid "unknown key ID"
-msgstr ""
+msgstr "nieznany identyfikator klucza"
 
 #: kmreaderwin.cpp:701
-#, fuzzy
 msgid "Attachment: "
-msgstr "Poka¿ za³±czniki: "
+msgstr "Za³±cznik: "
 
 #: kmreaderwin.cpp:813
 msgid "Could not create temporary file"
@@ -1393,7 +1356,7 @@ msgstr "Brakuje has³a PGP"
 
 #: kpgp.cpp:286 kpgp.cpp:312 kpgp.cpp:325 kpgp.cpp:344 kpgp.cpp:361
 msgid "PGP Warning"
-msgstr ""
+msgstr "Ostrze¿enie PGP"
 
 #: kpgp.cpp:287
 msgid ""
@@ -1401,23 +1364,25 @@ msgid ""
 "recipients of this mail.\n"
 "Message will not be encrypted."
 msgstr ""
+"Nie mo¿na odnale¼æ kluczy publicznych dla\n"
+"odbiorców tej wiadomo¶ci.\n"
+"Wiadomo¶æ nie zostanie zakodowana."
 
 #: kpgp.cpp:296
 msgid "Could not find the public keys for\n"
-msgstr ""
+msgstr "Nie mo¿na odnale¼æ kluczy publicznych dla\n"
 
 #: kpgp.cpp:307
 msgid "These persons will not be able to\n"
-msgstr ""
+msgstr "Te osoby nie bêd± mog³y\n"
 
 #: kpgp.cpp:309
 msgid "This person will not be able to\n"
-msgstr ""
+msgstr "Ta osoba nie bêdzie mog³a\n"
 
 #: kpgp.cpp:311
-#, fuzzy
 msgid "decrypt the message."
-msgstr "Zaszyfruj wiadomo¶æ u¿ywaj±c PGP"
+msgstr "odszyfrowaæ wiadomo¶ci"
 
 #: kpgp.cpp:326
 msgid ""
@@ -1425,26 +1390,33 @@ msgid ""
 "Do you wan't to try again, continue and\n"
 "leave the message unsigned, or cancel sending the message?"
 msgstr ""
+"Podano niew³a¶ciwe has³o PGP.\n"
+"Czy chcesz spróbowac jeszcze raz, kontynuowaæ\n"
+"zostawiaj±c wiadomo¶æ nie podpisan± czy te¿ anulowaæ jej wysy³anie?"
 
 #: kpgp.cpp:331
 msgid "Retry"
-msgstr ""
+msgstr "Spróbuj ponownie"
 
 #: kpgp.cpp:342
 msgid ""
 "Do you wan't to encrypt anyway, leave the\n"
 "message as is, or cancel the message?"
 msgstr ""
+"Czy chcesz wiadomo¶æ mimo wszystko zakodowaæ,\n"
+"zostawiæ bez zmian czy j± anulowaæ?"
 
 #: kpgp.cpp:346
 msgid "Encrypt"
-msgstr ""
+msgstr "Zaszyfruj"
 
 #: kpgp.cpp:359
 msgid ""
 "Do you wan't to leave the message as is,\n"
 "or cancel the message?"
 msgstr ""
+"Czy chcesz zostawiæ wiadomo¶æ bez zmian,\n"
+"czy j± anulowaæ?"
 
 #: kpgp.cpp:717
 msgid ""
@@ -1459,21 +1431,20 @@ msgid "PGP Security Check"
 msgstr "Kontrola PGP"
 
 #: kpgp.cpp:765
-#, fuzzy
 msgid "Identity"
-msgstr "Identyfikacja..."
+msgstr "Identyfikacja"
 
 #: kpgp.cpp:771
 msgid "PGP User Identity:"
-msgstr ""
+msgstr "U¿ytkownik PGP:"
 
 #: kpgp.cpp:782
 msgid "Store passphrase"
-msgstr ""
+msgstr "Zapisz has³o PGP"
 
 #: kpgp.cpp:788
 msgid "Always encrypt to self"
-msgstr ""
+msgstr "Zawsze szyfruj do siebie"
 
 #: krnsender.cpp:60
 msgid "This server is read onlyyou can't post here!"
@@ -1488,18 +1459,16 @@ msgid "Addressbook Manager"
 msgstr "Zarz±dzanie ksia¿k± adresow±"
 
 #: kmaddrbookdlg.cpp:178
-#, fuzzy
 msgid "KMail error"
-msgstr "KRN Potwierdzenie"
+msgstr "B³±d KRN"
 
 #: kmaddrbookdlg.cpp:179
 msgid "Storing addressbook failed"
 msgstr "Zapisywanie ksi±¿ki adresowej nie powiod³o siê"
 
 #: kmaddrbook.cpp:25
-#, fuzzy
 msgid "KMail Error"
-msgstr "KRN Potwierdzenie"
+msgstr "B³±d KRN"
 
 #: kmaddrbook.cpp:26
 msgid "Storing the addressbook failed!\n"
@@ -1518,7 +1487,6 @@ msgid "Read:"
 msgstr "Przeczytana:"
 
 #: expireDlg.cpp:47
-#, fuzzy
 msgid "Unread:"
 msgstr "Nieprzeczytana:"
 
@@ -1531,17 +1499,14 @@ msgid "Article Headers:"
 msgstr "Nag³owki wiadomo¶ci:"
 
 #: printdlg.cpp:21
-#, fuzzy
 msgid "KRN - Print Settings"
-msgstr "KRN - Ustawienia wygasania"
+msgstr "KRN - Ustawienia wydruku"
 
 #: printdlg.cpp:26
-#, fuzzy
 msgid "KRN - Printing Settings"
-msgstr "KRN - Ustawienia wygasania"
+msgstr "KRN - Ustawienia drukowania"
 
 #: printdlg.cpp:33
-#, fuzzy
 msgid "General"
 msgstr "Ogólne"
 
@@ -1558,14 +1523,12 @@ msgid "Use Direct Printing"
 msgstr "Drukuj bezpo¶rednio."
 
 #: printdlg.cpp:45
-#, fuzzy
 msgid "Direct Printing"
-msgstr "Drukuj bezpo¶rednio."
+msgstr "Drukuj bezpo¶rednio"
 
 #: printdlg.cpp:48
-#, fuzzy
 msgid "Print using:"
-msgstr "Drukuj wiadomo¶æ"
+msgstr "Drukuj u¿ywaj±c"
 
 #: printdlg.cpp:52
 msgid "Feed it with:"
@@ -1596,7 +1559,6 @@ msgid "All Rules"
 msgstr "Wszystkie Regu³y"
 
 #: rulesDlg.cpp:63
-#, fuzzy
 msgid "Active Rules"
 msgstr "Aktywne regu³y"
 
@@ -1609,7 +1571,6 @@ msgid "Save as"
 msgstr "Zachowaj jako"
 
 #: rulesDlg.cpp:101
-#, fuzzy
 msgid "Match Articles With:"
 msgstr "Szukaj wiadomo¶ci"
 
@@ -1622,12 +1583,10 @@ msgid "Negative"
 msgstr "Odwróæ"
 
 #: rulesDlg.cpp:190
-#, fuzzy
 msgid "Rule name:"
 msgstr "Nazwa regu³y"
 
 #: sortDlg.cpp:23
-#, fuzzy
 msgid "KRN - Header Sorting"
 msgstr "KRN - Sortowanie Nag³ówków"
 
@@ -1640,29 +1599,24 @@ msgid "Sort by:"
 msgstr "Sortuj wzglêdem:"
 
 #: sortDlg.cpp:56
-#, fuzzy
 msgid "Use Threading"
 msgstr "U¿yj w±tków"
 
 #: charsetsDlg.cpp:27
-#, fuzzy
 msgid "KRN - Charset Settings"
-msgstr "KRN - Ustawienia wygasania"
+msgstr "KRN - Ustawienia kodowania znaków"
 
 #: charsetsDlg.cpp:29
-#, fuzzy
 msgid "KMail - Charset Settings"
-msgstr "KRN - Ustawienia wygasania"
+msgstr "KMail - Ustawienia kodowania znaków"
 
 #: charsetsDlg.cpp:39
-#, fuzzy
 msgid "Message charset"
-msgstr "W³asciwo¶ci za³±cznika"
+msgstr "Zestaw kodów znaków wiadomo¶ci"
 
 #: charsetsDlg.cpp:57
-#, fuzzy
 msgid "Composer charset"
-msgstr "W³asciwo¶ci za³±cznika"
+msgstr "Zestaw kodów znaków edycji"
 
 #: charsetsDlg.cpp:75
 msgid "Set as &default"
@@ -1682,7 +1636,7 @@ msgstr "Z³e has³o; nie mogê podpisaæ"
 
 #: kpgpbase.cpp:354
 msgid "error running pgp"
-msgstr ""
+msgstr "b³±d podczas uruchomienia pgp"
 
 #: kpgpbase.cpp:371 kpgpbase.cpp:662
 msgid "Bad pass Phrase; couldn't decrypt"
@@ -1690,63 +1644,62 @@ msgstr "Z³e has³o PGP: nie mogê odszyfrowaæ"
 
 #: kpgpbase.cpp:382 kpgpbase.cpp:673
 msgid "Do not have the secret key for this message"
-msgstr ""
+msgstr "Brak tajnego klucza dla tej wiadomo¶ci"
 
 #: kpgpbase.cpp:410
 msgid "unknown key ID "
-msgstr ""
+msgstr "nieznany identyfikator klucza"
 
 #: kpgpbase.cpp:430
 msgid "??? (file ~/.pgp/pubring.pgp not found)"
-msgstr ""
+msgstr "??? (brak pliku ~/.pgp/pubring.pgp)"
 
 #: kpgpbase.cpp:585
-#, fuzzy
 msgid "The passphrase you entered is invalid."
-msgstr "Brakuje has³a PGP"
+msgstr "Podane has³o PGP jest niew³a¶ciwe"
 
 #: kpgpbase.cpp:611
 msgid ""
 "The key(s) you wan't to encrypt your message\n"
 "to are not trusted. No encryption done."
 msgstr ""
+"Klucz(e), które chcesz u¿yæ do zaszyfrowania wiadomo¶ci\n"
+"nie nale¿± do zaufanych. Szyfrowanie nie zosta³o wykonane."
 
 #: kpgpbase.cpp:614
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The following key(s) are not trusted:\n"
 "%s\n"
 "They will not be able to decrypt the message"
 msgstr ""
-"Brak klucza publicznego dla %s.\n"
-" Nie mo¿na zaszyfrowaæ wiadomo¶ci dla tej osob."
+"Poni¿sze klucze nie nale¿± do zaufanych:\n"
+"%s.\n"
+"Nie bêdzie mo¿na odszyfrowaæ z ich pomoc± wiadomo¶ci."
 
 #: TooManydlg.cpp:25
-#, fuzzy
 msgid "KRN-Confirmation"
-msgstr "KRN - konfiguracja NNTP"
+msgstr "Potwierdzenie KRN"
 
 #: TooManydlg.cpp:30
 msgid "Read how many articles?"
-msgstr ""
+msgstr "Ile wiadomo¶ci zosta³o przeczytanych?"
 
 #: TooManydlg.cpp:36
 msgid "Get them from"
-msgstr ""
+msgstr "Pobierz je z"
 
 #: TooManydlg.cpp:37
-#, fuzzy
 msgid "Oldest articles"
-msgstr "Pobierz wiadomo¶ci"
+msgstr "Najstarsze wiadomo¶ci"
 
 #: TooManydlg.cpp:39
-#, fuzzy
 msgid "Newest articles"
-msgstr "Pobierz wiadomo¶ci"
+msgstr "Najnowszy wiadomo¶ci"
 
 #: TooManydlg.cpp:43
 msgid "Make this the new threshold"
-msgstr ""
+msgstr "Ustaw to jako nowy próg"
 
 #~ msgid "Error during PGP:"
 #~ msgstr "B³±d PGP"
@@ -1769,9 +1722,8 @@ msgstr ""
 #~ msgid "ID"
 #~ msgstr "ID"
 
-#, fuzzy
 #~ msgid "Decode All"
-#~ msgstr "Dekoduj"
+#~ msgstr "Dekoduj wszystko"
 
 #~ msgid "KRN-Decoder"
 #~ msgstr "Dekoder KRN"

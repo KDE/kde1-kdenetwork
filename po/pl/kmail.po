@@ -20,7 +20,6 @@ msgid "New Folder"
 msgstr "Nowy folder"
 
 #: kmaddrbookdlg.cpp:178 kmmainwin.cpp:285 kmmainwin.cpp:318 main.cpp:334
-#, fuzzy
 msgid "KMail error"
 msgstr "B³±d programu KMail"
 
@@ -45,7 +44,7 @@ msgid "Modify Folder"
 msgstr "Modyfikuj folder"
 
 #: kmmainwin.cpp:377
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Are you sure you want to discard the\n"
 "contents of the folder \"%s\" ?"
@@ -1016,7 +1015,7 @@ msgstr ""
 "ISpell."
 
 #: kmfolder.cpp:145
-#, fuzzy, c-format
+#, c-format
 msgid "Folder `%s' changed. Recreating index."
 msgstr ""
 "Zmieniono zawarto¶æ folderu `%s'.\n"
@@ -1032,9 +1031,9 @@ msgid "Writing index file"
 msgstr "Trwa zapisywanie pliku indeksu"
 
 #: kmfolder.cpp:901
-#, fuzzy, c-format
+#, c-format
 msgid "Compacting folder: %d messages done"
-msgstr "Tworzenie pliku indeksu: %d wiadomo¶ci skoñczono"
+msgstr "Kompresowanie folderu: %d wiadomo¶ci skoñczono"
 
 #: kmmsgpartdlg.cpp:41
 msgid "Message Part Properties"
@@ -1541,7 +1540,6 @@ msgid "This person will not be able to\n"
 msgstr "Ta osoba nie bêdzie mog³a\n"
 
 #: kpgp.cpp:311
-#, fuzzy
 msgid "decrypt the message."
 msgstr "odszyfrowaæ wiadomo¶ci"
 
@@ -1648,7 +1646,7 @@ msgstr ""
 "nie nale¿± do zaufanych. Szyfrowanie nie zosta³o wykonane."
 
 #: kpgpbase.cpp:619
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The following key(s) are not trusted:\n"
 "%s\n"
@@ -1828,7 +1826,6 @@ msgid "Message charset"
 msgstr "Kodowanie wiadomo¶ci"
 
 #: charsetsDlg.cpp:57
-#, fuzzy
 msgid "Composer charset"
 msgstr "Kodowanie edycji"
 
@@ -1856,7 +1853,6 @@ msgstr "&Cytuj nieznane znaki"
 #~ msgid "End PGP signed message"
 #~ msgstr "Koniec wiadomo¶ci podpisanej PGP"
 
-#, fuzzy
 #~ msgid ""
 #~ "Could not find public keys matching the\n"
 #~ "userid(s) %s. These persons won't be able\n"
@@ -1868,7 +1864,6 @@ msgstr "&Cytuj nieznane znaki"
 #~ msgid "&Remove"
 #~ msgstr "&Usuñ"
 
-#, fuzzy
 #~ msgid "Fonts"
 #~ msgstr "Czcionki"
 

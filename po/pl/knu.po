@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: knu \n"
 "POT-Creation-Date: 1999-01-10 02:04+0100\n"
-"PO-Revision-Date: 1998-10-24 06:05+0200\n"
+"PO-Revision-Date: 1998-01-10 17:32+0100\n"
 "Last-Translator: Jacek Stolarczyk <jacek@mer.chemia.polsl.pl>\n"
 "Content-Type: text/plain; charset=iso8859-2\n"
 
@@ -22,13 +22,12 @@ msgid "Host &resolution"
 msgstr "T³&umaczenie adresów"
 
 #: knu.cpp:181
-#, fuzzy
 msgid "F&inger"
-msgstr "Pin&g"
+msgstr "F&inger"
 
 #: knu.cpp:190 knu.cpp:333
 msgid "&mtr"
-msgstr ""
+msgstr "&mtr"
 
 #: knu.cpp:201
 msgid ""
@@ -63,7 +62,7 @@ msgid "P&references..."
 msgstr "&Ustawienia..."
 
 #: knu.cpp:281
-#, fuzzy, c-format
+#, c-format
 msgid "&About %s"
 msgstr "In&formacje o %s"
 
@@ -72,9 +71,8 @@ msgid "About &Qt"
 msgstr "Informacje o &Qt"
 
 #: knu.cpp:327
-#, fuzzy
 msgid "&Finger"
-msgstr "Pin&g"
+msgstr "&Finger"
 
 #: knu.cpp:466
 #, c-format
@@ -84,14 +82,18 @@ msgid ""
 "\n"
 "Bertrand"
 msgstr ""
+"Knu\n"
+"Wersja %s\n"
+"\n"
+"Bertrand"
 
 #: knu.cpp:469
 msgid "About..."
-msgstr "&Informacje o knu"
+msgstr "Informacje o knu..."
 
 #: knu.cpp:602
 msgid "Network utilities"
-msgstr ""
+msgstr "Narzêdzia sieciowe"
 
 #: CommandDlg.cpp:128
 msgid "H&ost:"
@@ -161,35 +163,35 @@ msgstr " - konfiguracja"
 
 #: MtrDlg.cpp:83
 msgid "#"
-msgstr ""
+msgstr "#"
 
 #: MtrDlg.cpp:84
 msgid "Hostname"
-msgstr ""
+msgstr "Nazwa komputera"
 
 #: MtrDlg.cpp:85
 msgid "Loss"
-msgstr ""
+msgstr "Utraconych"
 
 #: MtrDlg.cpp:87
 msgid "Rcv"
-msgstr ""
+msgstr "Otrz"
 
 #: MtrDlg.cpp:89
 msgid "Snt"
-msgstr ""
+msgstr "Wys³"
 
 #: MtrDlg.cpp:91
 msgid "Best"
-msgstr ""
+msgstr "Najlepszy"
 
 #: MtrDlg.cpp:93
 msgid "Avg"
-msgstr ""
+msgstr "¦red"
 
 #: MtrDlg.cpp:95
 msgid "Worst"
-msgstr ""
+msgstr "Najgorszy"
 
 #: MtrDlg.cpp:138 PingDlg.cpp:100 TracerouteDlg.cpp:98
 msgid "Make host &name resolution"
@@ -251,16 +253,14 @@ msgstr "Ser&wer:"
 msgid "&User:"
 msgstr "&U¿ytkownik"
 
-#, fuzzy
 #~ msgid "&Matt's traceroute"
 #~ msgstr "Trasowanie &Matta"
 
 #~ msgid "&Contents"
 #~ msgstr "Pomo&c"
 
-#, fuzzy
 #~ msgid "Server:"
-#~ msgstr "Ser&wer:"
+#~ msgstr "Serwer:"
 
 #~ msgid ""
 #~ "You have a problem in your ~/.kde/share/config/knurc configuration file.\n"
