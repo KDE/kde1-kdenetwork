@@ -83,6 +83,7 @@ protected:
   KMAcctFolder* mFolder;
   QTimer *mTimer;
   int mInterval;
+  bool mCheckingMail;
 };
 
 

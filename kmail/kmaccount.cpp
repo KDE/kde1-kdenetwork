@@ -35,6 +35,7 @@ KMAccount::KMAccount(KMAcctMgr* aOwner, const char* aName)
   mFolder = NULL;
   mTimer  = NULL;
   mInterval = 0;
+  mCheckingMail = FALSE;
 }
 
 
@@ -205,5 +206,8 @@ void KMAccount::deinstallTimer()
 //-----------------------------------------------------------------------------
 void KMAccount::mailCheck()
 {
+  if (mCheckingMail) return;
+  mCheckingMail = TRUE;
   acctMgr->singleCheckMail(this);
+  mCheckingMail = FALSE;
 }

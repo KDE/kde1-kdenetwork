@@ -220,6 +220,10 @@ void KMMainWin::createWidgets(void)
 		     mHeaders, SLOT(prevMessage()));
   accel->connectItem(accel->insertItem(Key_Right), 
 		     mHeaders, SLOT(nextMessage()));
+  accel->connectItem(accel->insertItem(Key_Left+SHIFT),
+		     mHeaders, SLOT(prevMessageMark()));
+  accel->connectItem(accel->insertItem(Key_Right+SHIFT), 
+		     mHeaders, SLOT(nextMessageMark()));
 
   // create HTML reader widget
   mMsgView = new KMReaderWin(pnrMsgView);

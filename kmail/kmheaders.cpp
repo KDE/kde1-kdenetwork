@@ -375,6 +375,8 @@ void KMHeaders::headerClicked(int column)
   kbp->idle();
 }
 
+
+//-----------------------------------------------------------------------------
 void KMHeaders::sortAndShow()
 {
   int idx = currentItem();
@@ -403,6 +405,7 @@ void KMHeaders::sortAndShow()
   working = FALSE;
   kbp->idle();
 }
+
 
 //-----------------------------------------------------------------------------
 void KMHeaders::setMsgStatus (KMMsgStatus status, int msgId)
@@ -715,7 +718,6 @@ KMMessage* KMHeaders::getMsg (int msgId)
 void KMHeaders::nextMessage()
 {
   int idx = currentItem();
-
   if (idx < mFolder->count()) setCurrentMsg(idx+1);
 }
 
@@ -724,7 +726,22 @@ void KMHeaders::nextMessage()
 void KMHeaders::prevMessage()
 {
   int idx = currentItem();
+  if (idx > 0) setCurrentMsg(idx-1);
+}
 
+
+//-----------------------------------------------------------------------------
+void KMHeaders::nextMessageMark()
+{
+  int idx = currentItem();
+  if (idx < mFolder->count()) setCurrentMsg(idx+1);
+}
+
+
+//-----------------------------------------------------------------------------
+void KMHeaders::prevMessageMark()
+{
+  int idx = currentItem();
   if (idx > 0) setCurrentMsg(idx-1);
 }
 

@@ -90,6 +90,8 @@ public slots:
   void sortAndShow();
   void nextMessage();
   void prevMessage();
+  void nextMessageMark();
+  void prevMessageMark();
   void nextUnreadMessage();
   void prevUnreadMessage();
 
