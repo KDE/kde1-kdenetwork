@@ -25,7 +25,7 @@ kscolourpicker::kscolourpicker
 	:
 	Inherited( parent, name )
 {
-  setCaption( "kSirc Colour Picker" );
+  setCaption( i18n("kSirc Colour Picker") );
 
   PB_Pick->hide();
 

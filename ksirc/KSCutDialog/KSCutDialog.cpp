@@ -24,7 +24,7 @@ KSCutDialog::KSCutDialog
 	:
 	Inherited( parent, name )
 {
-	setCaption( "Cut Window" );
+	setCaption( i18n("Cut Window") );
 	IrcMLE->setFocus();
 }
 

@@ -21,7 +21,7 @@ ssfePrompt::ssfePrompt
 	:
 	Inherited( parent, name )
 {
-	setCaption( "Prompt" );
+	setCaption( i18n("Prompt") );
 	prompt->setText(prompttext);
 	SLine->setFocus();
 }

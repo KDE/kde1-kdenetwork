@@ -32,7 +32,7 @@ startupdata::startupdata
 	dlgedit_ButtonGroup_1->setMinimumSize( 10, 10 );
 	dlgedit_ButtonGroup_1->setMaximumSize( 32767, 32767 );
 	dlgedit_ButtonGroup_1->setFrameStyle( 49 );
-	dlgedit_ButtonGroup_1->setTitle( "Notify List" );
+	dlgedit_ButtonGroup_1->setTitle( i18n("Notify List") );
 	dlgedit_ButtonGroup_1->setAlignment( 1 );
 
 	QLabel* dlgedit_Label_1;
@@ -40,7 +40,7 @@ startupdata::startupdata
 	dlgedit_Label_1->setGeometry( 10, 10, 100, 30 );
 	dlgedit_Label_1->setMinimumSize( 10, 10 );
 	dlgedit_Label_1->setMaximumSize( 32767, 32767 );
-	dlgedit_Label_1->setText( "Nick" );
+	dlgedit_Label_1->setText( i18n("Nick") );
 	dlgedit_Label_1->setAlignment( 289 );
 	dlgedit_Label_1->setMargin( -1 );
 
@@ -49,7 +49,7 @@ startupdata::startupdata
 	dlgedit_Label_2->setGeometry( 10, 50, 100, 30 );
 	dlgedit_Label_2->setMinimumSize( 10, 10 );
 	dlgedit_Label_2->setMaximumSize( 32767, 32767 );
-	dlgedit_Label_2->setText( "Real Name" );
+	dlgedit_Label_2->setText( i18n("Real Name") );
 	dlgedit_Label_2->setAlignment( 289 );
 	dlgedit_Label_2->setMargin( -1 );
 
@@ -85,7 +85,7 @@ startupdata::startupdata
 	dlgedit_PushButton_1->setMinimumSize( 10, 10 );
 	dlgedit_PushButton_1->setMaximumSize( 32767, 32767 );
 	connect( dlgedit_PushButton_1, SIGNAL(clicked()), SLOT(nicks_delete()) );
-	dlgedit_PushButton_1->setText( "&Delete" );
+	dlgedit_PushButton_1->setText( i18n("&Delete") );
 	dlgedit_PushButton_1->setAutoRepeat( FALSE );
 	dlgedit_PushButton_1->setAutoResize( FALSE );
 
@@ -94,7 +94,7 @@ startupdata::startupdata
 	B_AddNicks->setMinimumSize( 10, 10 );
 	B_AddNicks->setMaximumSize( 32767, 32767 );
 	connect( B_AddNicks, SIGNAL(clicked()), SLOT(nicks_add()) );
-	B_AddNicks->setText( "&Add" );
+	B_AddNicks->setText( i18n("&Add") );
 	B_AddNicks->setAutoRepeat( FALSE );
 	B_AddNicks->setAutoResize( FALSE );
 

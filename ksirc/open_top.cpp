@@ -23,7 +23,7 @@ open_top::open_top
 	:
 	Inherited( parent, name )
 {
-	setCaption( "New Window For" );
+	setCaption( i18n("New Window For") );
 	nameSLE->setFocus();
 	kConfig->setGroup("ChannelList");
 	okButton->setDefault(TRUE);

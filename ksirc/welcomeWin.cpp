@@ -27,7 +27,7 @@ welcomeWin::welcomeWin
 	Inherited( parent, name )
 {
   DisplayDialog->show();
-  setCaption( "Welcome to kSirc" );
+  setCaption( i18n("Welcome to kSirc") );
   QFile f(kSircConfig->kdedir + "/share/apps/ksirc/relnotes");
   if(f.open(IO_ReadOnly)){
     QTextStream t(&f);

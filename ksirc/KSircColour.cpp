@@ -30,7 +30,7 @@ KSircColour::KSircColour
 	:
 	Inherited( parent, name )
 {
-	setCaption( "Colour Settings" );
+	setCaption( i18n("Colour Settings") );
 
 	// Set the text colour for the 4 main buttons.
 	// Get the pointer values and off you go.

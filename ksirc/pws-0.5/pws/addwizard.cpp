@@ -127,18 +127,18 @@ ServerNamePage::ServerNamePage(QWidget *parent)
 {
     QVBoxLayout *vl=new("QVBoxLayout") QVBoxLayout (this,10);
     QLabel *l=new("QLabel") QLabel(this);
-    l->setText("Enter a name for this server.\n"
+    l->setText(i18n("Enter a name for this server.\n"
                "This name is used to identify\n"
-               "this configuration.");
+               "this configuration."));
     l->setMinimumSize(l->sizeHint());
     vl->addWidget(l,10);
 
     l=new("QLabel") QLabel(this);
-    l->setText ("Name:");
+    l->setText (i18n("Name:"));
     vl->addWidget(l,10);
 
     name=new("QLineEdit") QLineEdit(this);
-    name->setText("MyServer");
+    name->setText(i18n("MyServer"));
     name->setFixedHeight(name->sizeHint().height());
     vl->addWidget(name,0);
 
@@ -194,13 +194,13 @@ PublicDirPage::PublicDirPage(QWidget *parent)
     QVBoxLayout *vl=new("QVBoxLayout") QVBoxLayout (this,10);
     QHBoxLayout *hl=new("QHBoxLayout") QHBoxLayout ();
     QLabel *l=new("QLabel") QLabel(this);
-    l->setText("Enter the name of the directory where\n"
-               "the web pages are located.\n");
+    l->setText(i18n("Enter the name of the directory where\n"
+               "the web pages are located.\n"));
     l->setMinimumSize(l->sizeHint());
     vl->addWidget(l,10);
 
     l=new("QLabel") QLabel(this);
-    l->setText ("Directory:");
+    l->setText (i18n("Directory:"));
     vl->addWidget(l,10);
 
     name=new("QLineEdit") QLineEdit(this);
@@ -265,19 +265,19 @@ PortPage::PortPage(QWidget *parent)
 {
     QVBoxLayout *vl=new("QVBoxLayout") QVBoxLayout (this,10);
     QLabel *l=new("QLabel") QLabel(this);
-    l->setText("Enter a port for this server.\n"
+    l->setText(i18n("Enter a port for this server.\n"
                "The port is part of the URL for the server\n"
                "for example, in http://my.server.org:800\n"
                "800 is the port number.\n"
                "The standard port for web servers is 80\n"
                "To use a port number under 1024 you will \n"
-               "need the root password."
+               "need the root password.")
               );
     l->setMinimumSize(l->sizeHint());
     vl->addWidget(l,10);
 
     l=new("QLabel") QLabel(this);
-    l->setText ("Port Number:");
+    l->setText (i18n("Port Number:"));
     vl->addWidget(l,10);
 
     port=new("KIntLineEdit") KIntLineEdit(this);
@@ -314,10 +314,10 @@ EndPage::EndPage(QWidget *parent)
 {
     QVBoxLayout *vl=new("QVBoxLayout") QVBoxLayout (this,10);
     QLabel *l=new("QLabel") QLabel(this);
-    l->setText("You have finished configuring\n"
+    l->setText(i18n("You have finished configuring\n"
                "the web server.\n"
                "Press OK to save it, Cancel to\n"
-               "forget about it.\n");
+               "forget about it.\n"));
 
     l->setMinimumSize(280,170);
     vl->addWidget(l,10);

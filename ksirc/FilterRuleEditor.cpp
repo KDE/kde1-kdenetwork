@@ -26,7 +26,7 @@ FilterRuleEditor::FilterRuleEditor
 	:
 	Inherited( parent, name )
 {
-  setCaption( "Edit Filter Rules" );
+  setCaption( i18n("Edit Filter Rules") );
   ApplyButton->setAutoDefault(TRUE);
   ApplyButton->setDefault(TRUE);
   updateListBox();
@@ -44,18 +44,18 @@ void FilterRuleEditor::newRule()
   LineFrom->setText("");
   LineTo->setText("");
   LineTitle->setFocus();
-  ApplyButton->setText("&Insert");
+  ApplyButton->setText(i18n("&Insert"));
 }
 
 void FilterRuleEditor::OkPressed()
 {
   int number, after;
-  if(strcmp(ApplyButton->text(), "&Insert") == 0){
+  if(strcmp(ApplyButton->text(), i18n("&Insert")) == 0){
     number = kConfig->readNumEntry("Rules", 0) + 1;
     after = number - 1;
     kConfig->writeEntry("Rules", number);
   }
-  else if(strcmp(ApplyButton->text(), "&Modify") == 0){
+  else if(strcmp(ApplyButton->text(), i18n("&Modify")) == 0){
     number = RuleList->currentItem() + 1;
     after = number - 1;
   }
@@ -71,12 +71,12 @@ void FilterRuleEditor::OkPressed()
      (strlen(search) == 0) || 
      (strlen(from) == 0) ||
      (strlen(to) == 0)){
-    QMessageBox::warning(this, "Missing Arguments", 
-			 "Cannot create a Rule since not\nall the fields are filled in.");
+    QMessageBox::warning(this, i18n("Missing Arguments"), 
+			 i18n("Cannot create a Rule since not\nall the fields are filled in."));
     
   }
   else{
-    ApplyButton->setText("&Modify");
+    ApplyButton->setText(i18n("&Modify"));
     kConfig->setGroup("FilterRules");
     QString key;
     key.sprintf("name-%d", number);

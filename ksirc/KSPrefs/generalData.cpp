@@ -47,7 +47,7 @@ generalData::generalData
 	CB_AutoCreateWin->setGeometry( 20, 20, 170, 30 );
 	CB_AutoCreateWin->setMinimumSize( 10, 10 );
 	CB_AutoCreateWin->setMaximumSize( 32767, 32767 );
-	CB_AutoCreateWin->setText( "Auto Create Windows" );
+	CB_AutoCreateWin->setText( i18n("Auto Create Windows") );
 	CB_AutoCreateWin->setAutoRepeat( FALSE );
 	CB_AutoCreateWin->setAutoResize( FALSE );
 	CB_AutoCreateWin->setChecked( TRUE );
@@ -56,7 +56,7 @@ generalData::generalData
 	CB_BeepNotify->setGeometry( 240, 20, 170, 30 );
 	CB_BeepNotify->setMinimumSize( 10, 10 );
 	CB_BeepNotify->setMaximumSize( 32767, 32767 );
-	CB_BeepNotify->setText( "Beep on Notify" );
+	CB_BeepNotify->setText( i18n("Beep on Notify") );
 	CB_BeepNotify->setAutoRepeat( FALSE );
 	CB_BeepNotify->setAutoResize( FALSE );
 	CB_BeepNotify->setChecked( TRUE );
@@ -65,7 +65,7 @@ generalData::generalData
 	CB_NickCompletion->setGeometry( 20, 50, 170, 30 );
 	CB_NickCompletion->setMinimumSize( 10, 10 );
 	CB_NickCompletion->setMaximumSize( 32767, 32767 );
-	CB_NickCompletion->setText( "Nick Completion" );
+	CB_NickCompletion->setText( i18n("Nick Completion") );
 	CB_NickCompletion->setAutoRepeat( FALSE );
 	CB_NickCompletion->setAutoResize( FALSE );
 	CB_NickCompletion->setChecked( TRUE );
@@ -74,7 +74,7 @@ generalData::generalData
 	CB_ColourPicker->setGeometry( 240, 50, 170, 30 );
 	CB_ColourPicker->setMinimumSize( 10, 10 );
 	CB_ColourPicker->setMaximumSize( 32767, 32767 );
-	CB_ColourPicker->setText( "Colour Picker Popup" );
+	CB_ColourPicker->setText( i18n("Colour Picker Popup") );
 	CB_ColourPicker->setAutoRepeat( FALSE );
 	CB_ColourPicker->setAutoResize( FALSE );
 	CB_ColourPicker->setChecked( TRUE );
@@ -83,7 +83,7 @@ generalData::generalData
 	CB_AutoRejoin->setGeometry( 240, 90, 160, 20 );
 	CB_AutoRejoin->setMinimumSize( 10, 10 );
 	CB_AutoRejoin->setMaximumSize( 32767, 32767 );
-	CB_AutoRejoin->setText( "Auto Rejoin" );
+	CB_AutoRejoin->setText( i18n("Auto Rejoin") );
 	CB_AutoRejoin->setAutoRepeat( FALSE );
 	CB_AutoRejoin->setAutoResize( FALSE );
 	CB_AutoRejoin->setChecked( TRUE );
@@ -92,7 +92,7 @@ generalData::generalData
 	CB_BackgroundPix->setGeometry( 20, 200, 190, 30 );
 	CB_BackgroundPix->setMinimumSize( 10, 10 );
 	CB_BackgroundPix->setMaximumSize( 32767, 32767 );
-	CB_BackgroundPix->setText( "Enable Background Pixmap" );
+	CB_BackgroundPix->setText( i18n("Enable Background Pixmap") );
 	CB_BackgroundPix->setAutoRepeat( FALSE );
 	CB_BackgroundPix->setAutoResize( FALSE );
 
@@ -109,7 +109,7 @@ generalData::generalData
 	PB_BackgroundBrowse->setGeometry( 290, 240, 90, 30 );
 	PB_BackgroundBrowse->setMinimumSize( 10, 10 );
 	PB_BackgroundBrowse->setMaximumSize( 32767, 32767 );
-	PB_BackgroundBrowse->setText( "Browse" );
+	PB_BackgroundBrowse->setText( i18n("Browse") );
 	PB_BackgroundBrowse->setAutoRepeat( FALSE );
 	PB_BackgroundBrowse->setAutoResize( FALSE );
 
@@ -117,7 +117,7 @@ generalData::generalData
 	CB_DisplayTopic->setGeometry( 20, 80, 210, 30 );
 	CB_DisplayTopic->setMinimumSize( 10, 10 );
 	CB_DisplayTopic->setMaximumSize( 32767, 32767 );
-	CB_DisplayTopic->setText( "Display Topic in Caption" );
+	CB_DisplayTopic->setText( i18n("Display Topic in Caption") );
 	CB_DisplayTopic->setAutoRepeat( FALSE );
 	CB_DisplayTopic->setAutoResize( FALSE );
 	CB_DisplayTopic->setChecked( TRUE );
@@ -126,7 +126,7 @@ generalData::generalData
 	CB_MDIMode->setGeometry( 20, 110, 410, 30 );
 	CB_MDIMode->setMinimumSize( 10, 10 );
 	CB_MDIMode->setMaximumSize( 32767, 32767 );
-	CB_MDIMode->setText( "Use MDI Mode (Must restart to take effect, experimental!!)" );
+	CB_MDIMode->setText( i18n("Use MDI Mode (Must restart to take effect, experimental!!)") );
 	CB_MDIMode->setAutoRepeat( FALSE );
 	CB_MDIMode->setAutoResize( FALSE );
 	CB_MDIMode->setChecked( TRUE );
@@ -141,7 +141,7 @@ generalData::generalData
 	dlgedit_ScrollBackLineLabel->setGeometry( 180, 140, 250, 30 );
 	dlgedit_ScrollBackLineLabel->setMinimumSize( 10, 10 );
 	dlgedit_ScrollBackLineLabel->setMaximumSize( 32767, 32767 );
-	dlgedit_ScrollBackLineLabel->setText( "Window History Length" );
+	dlgedit_ScrollBackLineLabel->setText( i18n("Window History Length") );
 	dlgedit_ScrollBackLineLabel->setAlignment( 289 );
 	dlgedit_ScrollBackLineLabel->setMargin( -1 );
 

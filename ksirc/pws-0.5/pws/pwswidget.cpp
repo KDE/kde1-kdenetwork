@@ -78,17 +78,17 @@ PWSWidget::PWSWidget(QWidget *parent, const char *name)
     HLay1->addWidget(list,5);
     HLay1->addWidget(stack,10);
     
-    QPushButton *b1=new("QPushButton") QPushButton("Save Configuration",this, "b1");
+    QPushButton *b1=new("QPushButton") QPushButton(i18n("Save Configuration"),this, "b1");
     QObject::connect (b1,SIGNAL(clicked()),SLOT(accept()));
-    QPushButton *b2=new("QPushButton") QPushButton("(Re)Start Server",this, "b2");
+    QPushButton *b2=new("QPushButton") QPushButton(i18n("(Re)Start Server"),this, "b2");
     QObject::connect (b2,SIGNAL(clicked()),SLOT(slotRestart()));
-    QPushButton *b5=new("QPushButton") QPushButton("Log Window",this, "b5");
+    QPushButton *b5=new("QPushButton") QPushButton(i18n("Log Window"),this, "b5");
     QObject::connect (b5,SIGNAL(clicked()),SLOT(logWindow()));
-    QPushButton *b6=new("QPushButton") QPushButton("Delete Server",this, "b6");
+    QPushButton *b6=new("QPushButton") QPushButton(i18n("Delete Server"),this, "b6");
     QObject::connect (b6,SIGNAL(clicked()),SLOT(deleteServer()));
-    QPushButton *b3=new("QPushButton") QPushButton("Add Server",this, "b3");
+    QPushButton *b3=new("QPushButton") QPushButton(i18n("Add Server"),this, "b3");
     QObject::connect (b3,SIGNAL(clicked()),SLOT(addServer()));
-    QPushButton *b4=new("QPushButton") QPushButton("Quit",this, "b4");
+    QPushButton *b4=new("QPushButton") QPushButton(i18n("Quit"),this, "b4");
     QObject::connect (b4,SIGNAL(clicked()),SLOT(quit()));
 
     b1->setFixedSize(b1->sizeHint());

@@ -35,7 +35,7 @@ open_ksirc::open_ksirc
 	:
 	Inherited( parent, name )
 {
-  setCaption( "Connect to Server" );
+  setCaption( i18n("Connect to Server") );
 
   // TODO
   // check for existance of ~/.kde/share/apps/ksirc/servers.txt
@@ -183,7 +183,7 @@ void open_ksirc::setServer( const char * serveraddress )
 void open_ksirc::setServerDesc( QString description )
 {
   if (description.isNull() || description.isEmpty()) {
-    Label_ServerDesc->setText( "Not Avalable");
+    Label_ServerDesc->setText( i18n("Not Avalable"));
   } else {
     Label_ServerDesc->setText( description );
   }

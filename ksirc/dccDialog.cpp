@@ -19,7 +19,7 @@ dccDialog::dccDialog
 	:
 	Inherited( parent, name )
 {
-	setCaption( "DCC Files Offered" );
+	setCaption( i18n("DCC Files Offered") );
 	connect(getButton, SIGNAL(clicked()),
 		this, SIGNAL(getFile()));
 	connect(forgetButton, SIGNAL(clicked()),

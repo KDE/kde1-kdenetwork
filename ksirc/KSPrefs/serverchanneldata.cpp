@@ -31,7 +31,7 @@ serverchanneldata::serverchanneldata
 	dlgedit_ButtonGroup_2->setMinimumSize( 10, 10 );
 	dlgedit_ButtonGroup_2->setMaximumSize( 32767, 32767 );
 	dlgedit_ButtonGroup_2->setFrameStyle( 49 );
-	dlgedit_ButtonGroup_2->setTitle( "Channels" );
+	dlgedit_ButtonGroup_2->setTitle( i18n("Channels") );
 	dlgedit_ButtonGroup_2->setAlignment( 1 );
 
 	QButtonGroup* dlgedit_ButtonGroup_1;
@@ -40,7 +40,7 @@ serverchanneldata::serverchanneldata
 	dlgedit_ButtonGroup_1->setMinimumSize( 10, 10 );
 	dlgedit_ButtonGroup_1->setMaximumSize( 32767, 32767 );
 	dlgedit_ButtonGroup_1->setFrameStyle( 49 );
-	dlgedit_ButtonGroup_1->setTitle( "Servers" );
+	dlgedit_ButtonGroup_1->setTitle( i18n("Servers") );
 	dlgedit_ButtonGroup_1->setAlignment( 1 );
 
 	LB_Servers = new("QListBox") QListBox( this, "ListBox_3" );
@@ -65,7 +65,7 @@ serverchanneldata::serverchanneldata
 	dlgedit_PushButton_1->setMinimumSize( 10, 10 );
 	dlgedit_PushButton_1->setMaximumSize( 32767, 32767 );
 	connect( dlgedit_PushButton_1, SIGNAL(clicked()), SLOT(channels_delete()) );
-	dlgedit_PushButton_1->setText( "Delete" );
+	dlgedit_PushButton_1->setText( i18n("Delete") );
 	dlgedit_PushButton_1->setAutoRepeat( FALSE );
 	dlgedit_PushButton_1->setAutoResize( FALSE );
 
@@ -74,7 +74,7 @@ serverchanneldata::serverchanneldata
 	B_AddChannels->setMinimumSize( 10, 10 );
 	B_AddChannels->setMaximumSize( 32767, 32767 );
 	connect( B_AddChannels, SIGNAL(clicked()), SLOT(channels_add()) );
-	B_AddChannels->setText( "Add" );
+	B_AddChannels->setText( i18n("Add") );
 	B_AddChannels->setAutoRepeat( FALSE );
 	B_AddChannels->setAutoResize( FALSE );
 
@@ -84,7 +84,7 @@ serverchanneldata::serverchanneldata
 	dlgedit_PushButton_4->setMinimumSize( 10, 10 );
 	dlgedit_PushButton_4->setMaximumSize( 32767, 32767 );
 	connect( dlgedit_PushButton_4, SIGNAL(clicked()), SLOT(servers_delete()) );
-	dlgedit_PushButton_4->setText( "Delete" );
+	dlgedit_PushButton_4->setText( i18n("Delete") );
 	dlgedit_PushButton_4->setAutoRepeat( FALSE );
 	dlgedit_PushButton_4->setAutoResize( FALSE );
 
@@ -93,7 +93,7 @@ serverchanneldata::serverchanneldata
 	B_AddServers->setMinimumSize( 10, 10 );
 	B_AddServers->setMaximumSize( 32767, 32767 );
 	connect( B_AddServers, SIGNAL(clicked()), SLOT(servers_add()) );
-	B_AddServers->setText( "Add" );
+	B_AddServers->setText( i18n("Add") );
 	B_AddServers->setAutoRepeat( FALSE );
 	B_AddServers->setAutoResize( FALSE );
 
