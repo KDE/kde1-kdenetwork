@@ -85,11 +85,11 @@
 #ifdef __linux__
 # define LOCK_DIR "/var/lock"
 #else /* linux */
-# if defined(__FreeBSD__) || defined(__NetBSD__)
+# ifdef __BSD__
 #  define	LOCK_DIR "/var/spool/lock"
-# else  /* FreeBSD || NetBSD */
+# else  /* BSD */
 #  define	LOCK_DIR "/usr/spool/locks"
-# endif /* FreeBSD || NetBSD */
+# endif /* BSD */
 #endif  /* linux */
 
 // search path for pppd binary

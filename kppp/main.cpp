@@ -65,8 +65,6 @@ bool 	pppd_has_died = false;
 bool 	reconnect_on_disconnect = false;
 bool    quit_on_disconnect = false;
 
-extern int lockdevice();
-extern void unlockdevice();
 
 int totalbytes;
 
@@ -121,7 +119,7 @@ static int kppp_xio_errhandler( Display * ){
 
   if(gpppdata.get_xserver_exit_disconnect()){
 
-    printf("X11 Error!");
+    fprintf(stderr, "X11 Error!\n");
     if(gpppdata.pppdpid() >= 0) {
       kill(gpppdata.pppdpid(), SIGTERM);
     }

@@ -34,7 +34,7 @@
 
 #define ADJUSTEDIT(e) e->setText("XXXXXXXXqy"); e->setMinimumSize(e->sizeHint()); e->setFixedHeight(e->sizeHint().height()); e->setText(""); e->setMaxLength(MODEMSTR_SIZE);
 
-ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
+ModemCommands::ModemCommands(QWidget *parent, const char *name)
   : QDialog(parent, name, TRUE, WStyle_Customize|WStyle_NormalBorder)
 {
   setCaption(i18n("Edit Modem Commands"));

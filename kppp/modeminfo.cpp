@@ -28,24 +28,18 @@
 
 #include <unistd.h>
 #include <qregexp.h>
-#include <kmsgbox.h>
 #include <kapp.h> 
 #include "modeminfo.h"
-#include "modem.h"
 #include "macros.h"
-
-#ifdef NO_USLEEP
-extern int usleep( long usec );
-#endif 
 
 extern QString ati_query_strings[NUM_OF_ATI];
 
 
-ModemTransfer::ModemTransfer(QWidget *parent=0, const char *name=0)
+ModemTransfer::ModemTransfer(QWidget *parent, const char *name)
   : QDialog(parent, name,TRUE, WStyle_Customize|WStyle_NormalBorder)
 {
   setCaption(i18n("ATI Query"));
-  
+
   QVBoxLayout *tl = new QVBoxLayout(this, 10, 10);
   
   progressBar = new KProgress(0, 8, 0, KProgress::Horizontal, this, "bar");
@@ -102,7 +96,7 @@ ModemTransfer::ModemTransfer(QWidget *parent=0, const char *name=0)
   scripttimer = new QTimer(this);
   connect(scripttimer, SIGNAL(timeout()), SLOT(do_script()));
 
-  timeout_timer->start(15000,TRUE); // 15 secs singel shot
+  timeout_timer->start(15000,TRUE); // 15 secs single shot
   inittimer->start(500);
 
   tl->freeze();
@@ -154,13 +148,11 @@ void ModemTransfer::init() {
 
   if(opentty()){
 
-    if(modemfd >= 0) {
-      writeline(gpppdata.modemHangupStr());
-      usleep(100000);  // wait 0.1 secs
-      hangup();
-      usleep(100000);  // wait 0.1 secs
-      writeline("ATE0Q1V1"); // E0 don't echo the commands I send ...
-    }
+    writeline(gpppdata.modemHangupStr());
+    usleep(100000);  // wait 0.1 secs
+    hangup();
+    usleep(100000);  // wait 0.1 secs
+    writeline("ATE0Q1V1"); // E0 don't echo the commands I send ...
 
     statusBar->setText(i18n("Modem Ready"));
     kapp->processEvents();
@@ -171,8 +163,7 @@ void ModemTransfer::init() {
 
   }
   else {
-    // commeted out the next line because we let opentty set the status appropriately
-    //    statusBar->setText("Can't open modem device");
+    statusBar->setText(modemMessage());
     step = 99; // wait until cancel is pressed
     unlockdevice();
   }
@@ -183,14 +174,11 @@ void ModemTransfer::init() {
 
 void ModemTransfer::do_script() {
 
-  //  if(!expecting){
     if(step == 0) {
       readtty();
       statusBar->setText("ATI ...");
       progressBar->advance(1);
       writeline("ATI");
-      //usleep(10000); // wait 0.01 secs
-      //      setExpect("\r\n\r\nOK");
       step ++;
       return;
     }
@@ -200,8 +188,6 @@ void ModemTransfer::do_script() {
       statusBar->setText("ATI 1 ...");
       progressBar->advance(1);
       writeline("ATI1");
-      //usleep(10000); // wait 0.01 secs
-      //      setExpect("\r\n\r\nOK");
       return;
     }
 
@@ -210,8 +196,6 @@ void ModemTransfer::do_script() {
       statusBar->setText("ATI 2 ...");
       progressBar->advance(1);
       writeline("ATI2");
-      //usleep(10000); // wait 0.01 secs
-      //      setExpect("\r\n\r\nOK");
       return;
     }
 
@@ -220,8 +204,6 @@ void ModemTransfer::do_script() {
       statusBar->setText("ATI 3 ...");
       progressBar->advance(1);
       writeline("ATI3");
-      //      usleep(10000); // wait 0.01 secs
-      //setExpect("\r\n\r\nOK");
       return;
     }
 
@@ -230,8 +212,6 @@ void ModemTransfer::do_script() {
       statusBar->setText("ATI 4 ...");
       progressBar->advance(1);
       writeline("ATI4");
-      //      usleep(10000); // wait 0.01 secs
-      //setExpect("\r\n\r\nOK");
       return;
     }
 
@@ -240,8 +220,6 @@ void ModemTransfer::do_script() {
       statusBar->setText("ATI 5 ...");
       progressBar->advance(1);
       writeline("ATI5");
-      //      usleep(10000); // wait 0.01 secs
-      //setExpect("\r\n\r\nOK");
       return;
     }
 
@@ -250,8 +228,6 @@ void ModemTransfer::do_script() {
       statusBar->setText("ATI 6 ...");
       progressBar->advance(1);
       writeline("ATI6");
-      //usleep(10000); // wait 0.01 secs
-      //setExpect("\r\n\r\nOK");
       return;
     }
 
@@ -260,67 +236,39 @@ void ModemTransfer::do_script() {
       statusBar->setText("ATI 7 ...");
       progressBar->advance(1);
       writeline("ATI7");
-      //usleep(10000); // wait 0.01 secs
-      //setExpect("\r\n\r\nOK");
       return;
     }
     readtty();
     emit ati_done();
-    //  }
+
 }
 
 
 void ModemTransfer::readtty() {
 
-  //  char c;
   char buffer[255];
 
-  memset(buffer,'\0',254);
-  read(modemfd, buffer, 255);
+  memset(buffer,'\0',255);
+  read(modemfd, buffer, 254);
 
   if (step == 0)
     return;
-  //    c = ((int)c & 0x7F);
-  //  readbuffer += c;
-    //    printf("%x %c||",c,c);
-  //  }
 
   readbuffer = buffer;
 
-  /*  if(expecting) {
-
-    if(readbuffer.contains(expectstr)) {
-      //      printf("Read-buffer:%s\n",readbuffer.data());
-      expecting = false;
-
-      QString number;
-      number.sprintf("ATI%d",ati_counter);
-      
-      //      readbuffer.replace(number.data(),""); // remove the echoed ATI command
-      readbuffer.replace("\r\n\r\nOK","");  // remove the very last OK
-      */
-  
-  //    if(readbuffer.length() >4)
-  //  readbuffer = readbuffer.left(readbuffer.length() - 4);
     
-    readbuffer.replace("\n"," ");         // remove stray \n
-    readbuffer.replace("\r","");          // remove stray \r
-    readbuffer = readbuffer.stripWhiteSpace(); // strip of leading or trailing white
+  readbuffer.replace("\n"," ");         // remove stray \n
+  readbuffer.replace("\r","");          // remove stray \r
+  readbuffer = readbuffer.stripWhiteSpace(); // strip of leading or trailing white
                                                  // space
 
-//    printf("%s\n",readbuffer.data());
-    if(step < NUM_OF_ATI + 1){
-	ati_query_strings[step-1] = readbuffer.copy();
-//	printf("step:%d ::%s\n",step,readbuffer.data());
-    }
-      readbuffer = "";
-      ati_counter ++;
-      step ++;
+  if(step < NUM_OF_ATI + 1){
+    ati_query_strings[step-1] = readbuffer.copy();
+  }
+  readbuffer = "";
+  ati_counter ++;
+  step ++;
 
-      //      if(step > (NUM_OF_ATI - 1))
-      //	emit ati_done();
-      // }
-      //}
 }
 
 
@@ -353,120 +301,6 @@ void ModemTransfer::setExpect(const char *n) {
 }
 
 
-bool ModemTransfer::closetty(){
-
-  if(modemfd > 0)
-
-    /* discard data not read or transmitted */
-    tcflush(modemfd, TCIOFLUSH);
-
-    tcsetattr(modemfd, TCSANOW, &initial_tty);
-    ::close(modemfd);
-  return TRUE;
-}
-
-
-bool ModemTransfer::opentty() {
-
-  if((modemfd = open(gpppdata.modemDevice(), O_RDWR|O_NDELAY)) < 0){
-
-    statusBar->setText(i18n("Can't open Modem"));
-    return FALSE;
-  }
-
-  if(tcgetattr(modemfd, &tty) < 0){
-
-    statusBar->setText(i18n("Sorry, the modem is busy."));
-    return FALSE;
-  }
-
-  memset(&initial_tty,'\0',sizeof(initial_tty));
-
-  initial_tty = tty;
-
-  tty.c_cc[VMIN] = 0; // nonblocking 
-  tty.c_cc[VTIME] = 0;
-  tty.c_oflag = 0;
-  tty.c_lflag = 0;
-
-  // clearing CLOCAL as below ensures we observe the modem status lines
-  tty.c_cflag &= ~(CSIZE | CSTOPB | PARENB | CLOCAL);  
-  tty.c_cflag |= CS8 | CREAD;       
-  tty.c_iflag = IGNBRK | IGNPAR | ISTRIP;  // added ISTRIP
-  tty.c_lflag &= ~ICANON;
-  tty.c_lflag &= ~(ECHO|ECHOE|ECHOK|ECHOKE);
-
-  // flow control 
-  if(strcmp(gpppdata.flowcontrol(), "None") != 0) {
-    if(strcmp(gpppdata.flowcontrol(), "CRTSCTS") == 0) {
-      tty.c_cflag |= CRTSCTS;
-    }
-    else {
-      tty.c_iflag |= IXON | IXOFF;
-      tty.c_cc[VSTOP]  = 0x13; /* DC3 = XOFF = ^S */
-      tty.c_cc[VSTART] = 0x11; /* DC1 = XON  = ^Q */
-    }
-  }
-  else {
-    tty.c_cflag &= ~CRTSCTS;
-    tty.c_iflag &= ~(IXON | IXOFF);
-  }
-
-  cfsetospeed(&tty, modemspeed());
-  cfsetispeed(&tty, modemspeed());
-
-  if(tcsetattr(modemfd, TCSANOW, &tty) < 0){
-    statusBar->setText(i18n("Sorry, the modem is busy"));
-    return FALSE;
-  }
-
-  return TRUE;
-}
-		
-
-void ModemTransfer::hangup() {
-
-  struct termios temptty;
-
-  // TODO:
-  // does temptty need to be memset with zeroes ?????
-
-
-  tcsendbreak(modemfd, 0);
-  tcgetattr(modemfd, &temptty);
-  cfsetospeed(&temptty, B0);
-  cfsetispeed(&temptty, B0);
-  tcsetattr(modemfd, TCSAFLUSH, &temptty);
-
-  usleep(100000); // wait 0.01 secs 
-
-  cfsetospeed(&temptty, modemspeed());
-  cfsetispeed(&temptty, modemspeed());
-  tcsetattr(modemfd, TCSAFLUSH, &temptty);
-
-}
-
-
-
-bool ModemTransfer::writeline(const char *buf) {
-
-
-  write(modemfd, buf, strlen(buf));
-
-  if(strcmp(gpppdata.enter(), "CR/LF") == 0)
-    write(modemfd, "\r\n", 2);
- 
-  if(strcmp(gpppdata.enter(), "LF") == 0)
-    write(modemfd, "\n", 1);
- 
-  if(strcmp(gpppdata.enter(), "CR") == 0)
-    write(modemfd, "\r", 1);
- 
-  return true;
-}
-
-
-
 void ModemTransfer::closeEvent( QCloseEvent *e ){
 
   e->ignore();     // don't let the user close the window
@@ -474,7 +308,7 @@ void ModemTransfer::closeEvent( QCloseEvent *e ){
 }
 
 
-ModemInfo::ModemInfo(QWidget *parent=0 ,const char* name=0)
+ModemInfo::ModemInfo(QWidget *parent, const char* name)
   : QDialog(parent, name, TRUE, WStyle_Customize|WStyle_NormalBorder)
 {
   QString label_text;

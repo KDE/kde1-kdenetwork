@@ -25,16 +25,47 @@
  */
 
 #ifndef _MODEM_H_
-#define _MODEM_H
+#define _MODEM_H_
 
 #include <qdir.h>
 
 #include <sys/types.h>
 #include <signal.h>
 #include <termios.h>
+#include <unistd.h>
+
+#include <config.h>
 
 int     lockdevice();
 void    unlockdevice();
-speed_t modemspeed();
+
+class Modem {
+
+public:
+  Modem();
+  ~Modem() {}
+
+public:
+  bool    opentty();
+  bool    closetty();
+  speed_t modemspeed();
+  bool    writeline(const char *);
+  void    hangup();
+  void    escape_to_command_mode();
+  char    *modemMessage();
+  // private:
+  bool    modem_in_connect_state; 
+  int     modemfd;
+
+private:
+  QString errmsg;
+  struct termios initial_tty;
+  struct termios tty;
+
+};
+
+#ifndef HAVE_USLEEP
+void usleep (long);
+#endif
 
 #endif

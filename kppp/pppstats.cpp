@@ -129,9 +129,6 @@ bool get_ppp_cstats(struct ppp_comp_stats *csp);
 bool get_ppp_cstats(struct ppp_comp_stats *csp);
 bool strioctl( int fd, int cmd, char* ptr,int ilen, int olen);
 
-#ifdef NO_USLEEP
-int usleep( long usec );
-#endif 
 
 int if_is_up(){
 

@@ -22,23 +22,18 @@
  * Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-
+#include <qdir.h>
 #include <unistd.h>
 #include <sys/ioctl.h>
 #include <termios.h>
 #include <sys/types.h>
 
 
-#include "modem.h"
 #include "pppdata.h"
 #include "miniterm.h"
 
 #define T_WIDTH 550
 #define T_HEIGHT 400
-
-#ifdef NO_USLEEP
-extern int usleep( long usec );
-#endif 
 
 extern PPPData gpppdata;
 
@@ -165,13 +160,12 @@ void MiniTerm::init() {
 
   if(opentty()){
 
-    if(modemfd >= 0) {
-      writeline(gpppdata.modemHangupStr());
-      usleep(100000);  // wait 0.1 secs
-      hangup();
-      writeline(gpppdata.modemInitStr());
-      usleep(100000);
-    }
+    writeline(gpppdata.modemHangupStr());
+    usleep(100000);  // wait 0.1 secs
+    hangup();
+    writeline(gpppdata.modemInitStr());
+    usleep(100000);
+
 
     statusbar->setText(i18n("Modem Ready"));
     terminal->setFocus();
@@ -180,8 +174,8 @@ void MiniTerm::init() {
     kapp->processEvents();
     readtimer->start(1);
   }
-  else {// commmented out since this will now be set by the opentty() better.
-        // statusbar->setText("Can't open modem device");
+  else {
+    statusbar->setText(modemMessage());
     unlockdevice();
   }
 }                  
@@ -254,154 +248,12 @@ void MiniTerm::resetModem(){
 }
 
 
-bool MiniTerm::closetty(){
-
-  if(modemfd > 0)
-
-    /* discard data not read or transmitted */
-    tcflush(modemfd, TCIOFLUSH);
-
-    if(tcsetattr(modemfd, TCSANOW, &initial_tty) < 0){
-      statusbar->setText(i18n("Can't restore tty settings: tcsetattr()\n"));
-    }
-
-    ::close(modemfd);
-    modemfd = -1;
-  return TRUE;
-}
-
-
-bool MiniTerm::opentty() {
-
- memset(&initial_tty,'\0',sizeof(initial_tty)); 
- 
- if((modemfd = open(gpppdata.modemDevice(), O_RDWR|O_NDELAY)) < 0){
-
-    statusbar->setText(i18n("Can't open Modem"));
-    return FALSE;
-  }
- 
-  if(tcgetattr(modemfd, &tty) < 0){
-
-    statusbar->setText(i18n("tcgetattr() failed\n"));
-    return FALSE;
-  }
-
-  initial_tty = tty; // save a copy
-
-  tty.c_cc[VMIN] = 0; // nonblocking 
-  tty.c_cc[VTIME] = 0;
-  tty.c_oflag = 0;
-  tty.c_lflag = 0;
-
-  // clearing CLOCAL as below ensures we observe the modem status lines
-  //  tty.c_cflag &= ~(CSIZE | CSTOPB | PARENB | CLOCAL);  
- 
- 
-  tty.c_cflag &= ~(CSIZE | CSTOPB | PARENB);
-  tty.c_cflag |= CLOCAL ; //ignore modem satus lines
-  tty.c_oflag &= ~OPOST; //no outline processing -- transparent output
- 
-  tty.c_cflag |= CS8 | CREAD;       
-  tty.c_iflag = IGNBRK | IGNPAR | ISTRIP;       // added ISTRIP
-  tty.c_lflag &= ~ICANON;  			// non-canonical mode
-  tty.c_lflag &= ~(ECHO|ECHOE|ECHOK|ECHOKE);
-
- 
-  if(strcmp(gpppdata.flowcontrol(), "None") != 0) {
-    if(strcmp(gpppdata.flowcontrol(), "CRTSCTS") == 0) {
-      tty.c_cflag |= CRTSCTS;
-      tty.c_iflag &= ~(IXON | IXOFF);
-    }
-    else {
-      tty.c_cflag &= ~CRTSCTS;
-      tty.c_iflag |= IXON | IXOFF;
-      tty.c_cc[VSTOP]  = 0x13; // DC3 = XOFF = ^S 
-      tty.c_cc[VSTART] = 0x11; // DC1 = XON  = ^Q 
-    }
-  }
-  else {
-    tty.c_cflag &= ~CRTSCTS;
-    tty.c_iflag &= ~(IXON | IXOFF);
-  }
-
-  cfsetospeed(&tty, modemspeed());
-  cfsetispeed(&tty, modemspeed());
-
-  if(tcsetattr(modemfd, TCSANOW, &tty) < 0){
-
-    statusbar->setText(i18n("tcsetattr() failed\n"));
-    return FALSE;
-  }
-
-  return TRUE;
-}
-		
-
-void MiniTerm::hangup() {
-
-  struct termios temptty;
-
-  if(modemfd >= 0) {
-
-    // Properly bracketed escape code  
-    tcflush(modemfd,TCOFLUSH);
-    // +3 because quiet time must be greater than guard time.
-    usleep((gpppdata.modemEscapeGuardTime()+3)*20000);
-
-    write(modemfd, gpppdata.modemEscapeStr(), strlen(gpppdata.modemEscapeStr()) );  
-
-    tcflush(modemfd,TCOFLUSH);
-    usleep((gpppdata.modemEscapeGuardTime()+3)*20000);
-
-    // Then hangup command
-    writeline(gpppdata.modemHangupStr());
-    
-    usleep(gpppdata.modemInitDelay() * 10000); // 0.01 - 3.0 sec 
-
-    tcsendbreak(modemfd, 0);
-
-    tcgetattr(modemfd, &temptty);
-    cfsetospeed(&temptty, B0);
-    cfsetispeed(&temptty, B0);
-    tcsetattr(modemfd, TCSAFLUSH, &temptty);
-
-    usleep(gpppdata.modemInitDelay() * 10000); // 0.01 - 3.0 secs 
-
-    cfsetospeed(&temptty, modemspeed());
-    cfsetispeed(&temptty, modemspeed());
-    tcsetattr(modemfd, TCSAFLUSH, &temptty);
-   
-  }
-
-
-}
-
-
 bool MiniTerm::writeChar(char c){
 
   write(modemfd,&c,1);
   return true;
 
 }
-
-bool MiniTerm::writeline(const char *buf) {
-
-
-  write(modemfd, buf, strlen(buf));
-
-  if(strcmp(gpppdata.enter(), "CR/LF") == 0)
-    write(modemfd, "\r\n", 2);
- 
-  if(strcmp(gpppdata.enter(), "LF") == 0)
-    write(modemfd, "\n", 1);
- 
-  if(strcmp(gpppdata.enter(), "CR") == 0)
-    write(modemfd, "\r", 1);
-
-  return true;
-}
-
 
 
 void MiniTerm::closeEvent( QCloseEvent *e ){

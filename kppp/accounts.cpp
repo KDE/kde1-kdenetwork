@@ -26,7 +26,6 @@
 
 #include <qdir.h>
 #include <qlayout.h>
-//#include <qfiledlg.h>
 #include <kmsgbox.h>
 
 #include "macros.h"

@@ -51,10 +51,11 @@
 #include "pppdata.h"
 #include "pwentry.h"
 #include "docking.h"
+#include "modem.h"
 
 #define MAXLOOPNEST (MAX_SCRIPT_ENTRIES/2)
 
-class ConnectWidget : public QWidget {
+class ConnectWidget : public QWidget, public Modem {
 
   Q_OBJECT
 
@@ -84,7 +85,6 @@ private slots:
 public slots:
     void init();
     void preinit();
-    bool closetty();
     void script_timed_out();
     void if_waiting_timed_out();
 
@@ -110,16 +110,12 @@ private:
   bool semaphore;
   QTimer *inittimer;
   QTimer *timeout_timer;
-  void escape_to_command_mode();
-  void hangup();
-  bool opentty();
   bool execppp();
 
   void setExpect(const char *);
   bool expecting;
   QString expectstr;
 
-  bool writeline(const char *);
   QTimer *readtimer;
   QString readbuffer;
 
@@ -144,9 +140,6 @@ private:
   bool firstrunPW;
 
   bool modem_in_connect_state; 
-  int modemfd;
-  struct termios initial_tty;
-  struct termios tty;
 
   unsigned int dialnumber; // the current number to dial
 

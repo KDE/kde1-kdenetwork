@@ -50,11 +50,12 @@
 #include <fcntl.h>
 
 #include "pppdata.h"
+#include "modem.h"
 #include <kprogress.h>
 
 #define NUM_OF_ATI 8
 
-class ModemTransfer : public QDialog {
+class ModemTransfer : public QDialog, public Modem {
 
   Q_OBJECT
 
@@ -70,11 +71,7 @@ public:
     QLabel *statusBar;
     QPushButton *cancel;
 
-    bool 	opentty();
-    bool 	closetty();
-    bool 	writeline(const char* );
     void  setExpect(const char *n);
-    void hangup();
     void closeEvent( QCloseEvent *e);
 
 signals:
@@ -104,9 +101,6 @@ protected:
     QTimer *timeout_timer;
     QTimer *scripttimer;
 
-    int 	modemfd;
-    struct termios tty;
-    struct termios initial_tty;
 };
 
 

@@ -57,11 +57,11 @@
 #include <kmenubar.h>
 #include <kiconloader.h>
 
-#include "pppdata.h"
+#include "modem.h"
 
 class MiniTerm;
 
-class MyTerm : public QMultiLineEdit {
+class MyTerm : public QMultiLineEdit, public Modem {
 
   Q_OBJECT
 
@@ -90,7 +90,7 @@ private:
 };
 
 
-class MiniTerm : public QDialog {
+class MiniTerm : public QDialog, public Modem {
 
   Q_OBJECT
 
@@ -106,11 +106,7 @@ public slots:
 
   void cancelbutton();
   void init();
-  bool opentty();
-  bool writeline(const char *buf);
   void readtty();
-  void hangup();
-  bool closetty();
   void process_line();
   void help();
   void resetModem();
@@ -125,8 +121,6 @@ protected:
   QTimer *inittimer;
   QTimer *readtimer;
 
-  struct termios tty;
-  struct termios initial_tty;
   KMenuBar    * menubar;
   KToolBar     * toolbar;
   QPopupMenu  * m_file;
@@ -148,7 +142,6 @@ protected:
 
 
 public:
-  int 	modemfd;
   int line;
   int col;
   int line_start;

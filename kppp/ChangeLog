@@ -1,3 +1,12 @@
+1998-08-04  Harri Porten  <porten@tu-harburg.de>
+
+	* fixed replacement for systems without a BSD 4.2 style usleep()
+	* modem.cpp: continued to move modem related stuff to modem.cpp.
+	The new Modem class is inherited by the Connect-, MiniTerm- and
+	ATI-Query Widget for now. This should be way easier to maintain and
+	will reduce the binary's size.
+	* modeminfo.cpp: cleaned up  
+	
 1998-08-02  Harri Porten  <porten@tu-harburg.de>
 
 	* opentty(): fixed XON/XOFF flow control
