@@ -88,7 +88,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     article->insertItem("Post Followup",FOLLOWUP);
     article->insertSeparator();
     article->insertItem("Decode",DECODE_ONE_ARTICLE);
-    article->insertItem("Tag",TAG_ARTICLE);
+    article->insertItem("(Un)Tag",TAG_ARTICLE);
     connect (article,SIGNAL(activated(int)),SLOT(actions(int)));
 
     
@@ -655,20 +655,14 @@ void Artdlg::decArt (int index,int)
 
 void Artdlg::getSubjects()
 {
+    group->getSubjects(server);
+    
     qApp->setOverrideCursor(waitCursor);
     statusBar ()->changeItem ("Getting Article List", 1);
     qApp->processEvents ();
-    if (strcmp(server->group(),groupname))
-    {
-        server->setGroup(groupname);
-    }
-    if (server->last>group->lastArticle)
-    {
-        debug ("xover from %d to %d",group->lastArticle+1,server->last);
-        server->artList(group->lastArticle,server->last);
-        group->lastArticle=server->last;
-        group->save();
-    }
+
+    group->getSubjects(server);
+
     statusBar ()->changeItem ("", 1);
     qApp->processEvents ();
     qApp->restoreOverrideCursor();

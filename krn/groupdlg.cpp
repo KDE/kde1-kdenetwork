@@ -50,6 +50,7 @@
 #define TAGGROUP 11
 #define HELP_CONTENTS 12
 #define HELP_ABOUT 13
+#define GET_SUBJECTS 14
 
 extern QString krnpath,cachepath,artinfopath,pixpath;
 extern KConfig *conf;
@@ -117,6 +118,10 @@ Groupdlg::Groupdlg
     newsgroup->insertItem("(un)Subscribe",SUBSCRIBE);
     newsgroup->insertItem("(Un)Tag",TAGGROUP);
     connect (newsgroup,SIGNAL(activated(int)),SLOT(actions(int)));
+
+    QPopupMenu *subscribed = new QPopupMenu;
+    subscribed->insertItem("Get Subjects",GET_SUBJECTS);
+    connect (subscribed,SIGNAL(activated(int)),SLOT(actions(int)));
     
     QPopupMenu *options = new QPopupMenu;
     options->insertItem("Identity",CHANGE_IDENTITY);
@@ -133,6 +138,7 @@ Groupdlg::Groupdlg
     
     menu->insertItem ("&File", file);
     menu->insertItem ("&Newsgroup", newsgroup);
+    menu->insertItem ("&Subscribed", subscribed);
     menu->insertItem ("&Options", options);
     menu->insertSeparator();
     menu->insertItem ("&Help", help);
@@ -440,6 +446,11 @@ bool Groupdlg::actions (int action)
     qApp->setOverrideCursor (waitCursor);
     switch (action)
     {
+    case GET_SUBJECTS:
+        {
+            getSubjects ();
+            break;
+        }
     case OPENGROUP:
         {
             openGroup (list->currentItem());
@@ -642,6 +653,16 @@ bool Groupdlg::loadActive()
     return success;
 };
 
+void Groupdlg::getSubjects()
+{
+    debug ("Getting subjects");
+    for (NewsGroup *group=subscr.first();group!=0;group=subscr.next())
+    {
+        debug ("Getting subjects in %s",group->data());
+        group->getSubjects(server);
+    }
+}
+
 void Groupdlg::checkUnread()
 {
     QString l,status,howmany,first,last,gname;
@@ -656,9 +677,10 @@ void Groupdlg::checkUnread()
         p.push(new QString(it));
         gname=gname.left(gname.find(' '));
         server->setGroup(gname.data());
-        l=server->lastStatusResponse();
+        l=server->StatusResponse().c_str();
+        debug ("----->%s",l.data());
 
-        l=gname+" [ BROKEN unread]";
+        l=gname+" [ BROKEN unread ]";
         // Updating the test this way doesn't repaint properly,
         // so I have to do do the path hack.
         //        base->childAt(i)->setText(l.data());

@@ -33,10 +33,6 @@
 #include "ktablistbox.h"
 #include "kiconloader.h"
 
-
-
-#include "newsgroup.h"
-
 class Artdlg : public KTopLevelWidget 
 {
     Q_OBJECT

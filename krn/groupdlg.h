@@ -27,7 +27,6 @@
 #include <ktreelist.h>
 
 #include "NNTP.h"
-#include "newsgroup.h"
 
 class Groupdlg : public KTopLevelWidget 
 {
@@ -56,6 +55,7 @@ private slots:
     void subscribe();
     void openGroup(int);
     void checkUnread();
+    void getSubjects();
 
 private:
     NNTP *server;

@@ -30,7 +30,7 @@
 
 #include "asker.h"
 #include "groupdlg.h" 
-#include "newsgroup.h"
+#include "NNTP.h"
 #include "kdecode.h"
 #include <mimelib/mimepp.h>
 

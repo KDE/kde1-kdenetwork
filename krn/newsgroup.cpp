@@ -17,7 +17,7 @@
 //////////////////////////////////////////////////////////////////////////////
 #include <stdlib.h>
 
-#include "newsgroup.h"
+#include "NNTP.h"
 #include <qstrlist.h>
 #include <qlist.h>
 
@@ -261,6 +261,22 @@ void NewsGroup::load()
         QTextStream st(&f);
         lastArticle=st.readLine().toInt();
         f.close();
+    }
+}
+
+void NewsGroup::getSubjects(NNTP *server)
+{
+    load();
+    if (strcmp(server->group(),data()))
+    {
+        server->setGroup(data());
+    }
+    if (server->last>lastArticle)
+    {
+        debug ("xover from %d to %d",lastArticle+1,server->last);
+        server->artList(lastArticle,server->last);
+        lastArticle=server->last;
+        save();
     }
 }
 

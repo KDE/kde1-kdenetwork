@@ -180,7 +180,6 @@ HEADERS = 	NNTP.h\
 		artdlg.h\
                 groupdlg.h\
                 ktablistbox.h\
-                newsgroup.h\
                 kmessage.h\
                 kstrtable.h\
                 asker.h\
@@ -252,9 +251,6 @@ mkmessage.cpp: kmessage.h
 
 mktablistbox.cpp: ktablistbox.h
 	$(MOC) ktablistbox.h -o mktablistbox.cpp
-
-mnewsgroup.cpp: newsgroup.h
-	$(MOC) newsgroup.h -o mnewsgroup.cpp
 
 masker.cpp: asker.h
 	$(MOC) asker.h -o masker.cpp
