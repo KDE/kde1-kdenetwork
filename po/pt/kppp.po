@@ -425,7 +425,7 @@ msgstr "Configuração de Gateway"
 
 #: edit.cpp:446
 msgid "Default Gateway"
-msgstr "Gateway por Defeito"
+msgstr "Gateway por Omissão"
 
 #: edit.cpp:450
 msgid "Static Gateway"
@@ -441,7 +441,7 @@ msgstr ""
 
 #: edit.cpp:458
 msgid "Assign the Default Route to this Gateway"
-msgstr "Colocar a Rota por Defeito nesta Gateway"
+msgstr "Colocar a Rota por Omissão nesta Gateway"
 
 #: edit.cpp:557
 msgid "Edit Script"
@@ -449,7 +449,7 @@ msgstr "Editar Script"
 
 #: edit.cpp:563
 msgid "Use default script"
-msgstr "Utilizar script por defeito"
+msgstr "Utilizar script por omissão"
 
 #: edit.cpp:580
 msgid "Insert"
@@ -802,7 +802,7 @@ msgstr "Argumento:"
 
 #: pppdargs.cpp:58
 msgid "Restore Defaults"
-msgstr "Valores por Defeito"
+msgstr "Valores por Omissão"
 
 #: pppdata.cpp:50
 msgid ""
@@ -1019,7 +1019,7 @@ msgstr "kppp: erro na linha %d\n"
 
 #: ruleset.cpp:569
 msgid "kppp: rulefile does not contain a default rule\n"
-msgstr "kppp: ficheiro de regras não contem uma regra por defeito\n"
+msgstr "kppp: ficheiro de regras não contem uma regra por omissão\n"
 
 #: ruleset.cpp:574
 msgid "kppp: rulefile does not contain a \"name=...\" line\n"
@@ -1094,7 +1094,7 @@ msgid ""
 msgstr ""
 "O visualizador de relatórios \"%s\" não foi encontrado!\n"
 "\n"
-"A voltar ao valor por defeito \"%s\"."
+"A voltar ao valor por omissão \"%s\"."
 
 #: runtests.cpp:216
 msgid ""
