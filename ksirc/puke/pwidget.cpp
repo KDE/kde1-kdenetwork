@@ -210,6 +210,29 @@ void PWidget::messageHandler(int fd, PukeMessage *pm)
     pmRet.cArg = 0;
     emit outputMessage(fd, &pmRet);
     break;
+  case PUKE_WIDGET_RECREATE:
+  {
+    QWidget *nparent = 0x0;
+    if(pm->iArg != 0x0){
+      widgetId wiWidget;
+      wiWidget.fd = fd;
+      wiWidget.iWinId = pm->iArg;
+      nparent = controller()->id2pwidget(&wiWidget)->widget();
+    }
+    if(pm->iTextSize != 3*sizeof(int)){
+       throw(errorCommandFailed(pm->iCommand, pm->iArg));
+    }
+    int *point_show = (int *) pm->cArg;
+
+    widget()->recreate(nparent, (WFlags) 0, QPoint(point_show[0], point_show[1]), point_show[3]);
+
+   pmRet.iCommand = PUKE_WIDGET_RECREATE_ACK;
+   pmRet.iWinId = pm->iWinId;
+   pmRet.iArg = 0;
+   pmRet.cArg = 0;
+   emit outputMessage(fd, &pmRet);
+   break; 
+  }
   default:
     PObject::messageHandler(fd, pm);
   }

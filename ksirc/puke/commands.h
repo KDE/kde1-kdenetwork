@@ -323,6 +323,17 @@
 // cArg: not defined
 #define PUKE_WIDGET_SET_ENABLED_ACK -1090
 
+// Desc: recreate widget with new parent, etc
+// IwinId: window id
+// iArg: window ID for new parent, 0x0 for no parent, toplevel
+// cArg: 3 packed ints, 0 = x, 1 = y, 2 = showit
+#define PUKE_WIDGET_RECREATE 1091
+
+// Desc: ACK recreate widget with new parent, etc
+// IwinId: window id
+// iArg: 0 (for all ok, other for error)
+// cArg: 0
+#define PUKE_WIDGET_RECREATE_ACK -1091
 
 // QFrame gets 1100
 

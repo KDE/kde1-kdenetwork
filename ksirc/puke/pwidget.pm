@@ -205,6 +205,18 @@ sub setEnabled {
 
 }
 
+sub recreate {
+  my $self = shift;
+
+  my $nparent = shift;
+  my $wflags = shift; # Not used!
+  
+  $self->sendMessage('iCommand' => $::PUKE_WIDGET_RECREATE,
+                     'iArg' => $nparent->{'iWinId'},
+		     'cArg' => pack("iii", shift(), shift(), shift()),
+		     'CallBack' => sub {});
+
+}
 
 package main;
 

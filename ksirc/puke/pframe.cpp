@@ -11,6 +11,7 @@ PObject *createWidget(CreateArgs &ca)
     tf = new QFrame();
   pw->setWidget(tf);
   pw->setWidgetId(ca.pwI);
+  pw->setPukeController(ca.pc);  
   return pw;
 }
 
