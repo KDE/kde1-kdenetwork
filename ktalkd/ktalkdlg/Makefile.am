@@ -10,7 +10,7 @@ ktalkdlg_SOURCES =	ktalkdlg.cpp
 
 INCLUDES	=	$(all_includes)
 LDFLAGS		=	$(all_libraries) $(KDE_RPATH)
-LDADD		=	-lkdeui -lkdecore  -lXext  -lmediatool $(LIBCOMPAT) $(LIB_QT)
+LDADD		=	      -lmediatool $(LIBCOMPAT) $(LIB_KDEUI)
 
 endif
 

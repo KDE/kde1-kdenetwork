@@ -8,7 +8,7 @@ INCLUDES= $(all_includes)
 bin_PROGRAMS = korn
 korn_SOURCES = kmailbox.cpp kmailbox.h korn.cpp korn.h kornbutt.cpp kornbutt.h kornopt.cpp kornopt.h kornset.cpp kornset.h main.cpp optdata.cpp optdata.h real_from.cpp $(BUILT_SOURCES)
 korn_LDFLAGS = $(all_libraries) $(KDE_RPATH)
-korn_LDADD = -lkfile -lkfm -lkdeui -lkdecore  -lXext  $(LIB_QT)
+korn_LDADD = -lkfile -lkfm  $(LIB_KDEUI)
 CLEANFILES = $(BUILT_SOURCES)
 
 moc_kmailbox.cpp: kmailbox.h

@@ -4,14 +4,14 @@ INCLUDES = $(all_includes)
 DEFS += -DKRN -DCHARSETS
 
 LDFLAGS = $(all_libraries) $(KDE_RPATH)
-krn_LDADD = -lkfile -lkfm $(LIB_KHTMLW) -lkdeui -lkdecore \
-	 -lXext  -lmimelib -lgdbm $(LIBCOMPAT) $(LIB_QT)
+krn_LDADD = -lkfile -lkfm $(LIB_KHTMLW)  $(LIB_KDEUI) \
+	 -lmimelib -lgdbm $(LIBCOMPAT) 
 
-kdecode_LDADD = -lkfile -lkfm -lkdeui -lkdecore -lXext \
-	 $(LIBUU) $(KDE_RPATH) $(LIBCOMPAT) $(LIB_QT)
+kdecode_LDADD = -lkfile -lkfm  $(LIB_KDEUI) \
+	 $(LIBUU) $(LIBCOMPAT) 
 
-newkrn_LDADD = -lkfile -lkfm $(LIB_KHTMLW) -lkdeui -lkdecore \
-	 -lXext  -lmimelib -lgdbm $(LIBCOMPAT) $(LIB_QT)
+newkrn_LDADD = -lkfile -lkfm $(LIB_KHTMLW)  $(LIB_KDEUI) \
+	 -lmimelib -lgdbm $(LIBCOMPAT) 
 
 
 ICONDIR = $(kde_icondir)
