@@ -8,7 +8,7 @@ LDADD =   -lmediatool     $(LIB_KDEUI) $(LIBCOMPAT)
 bin_PROGRAMS = kcmktalkd
 
 #for extra warnings during compilation :
-#DEFS		+=	-ansi -pedantic -D_POSIX_SOURCE -D_BSD_SOURCE
+# AMDEFS		=	-ansi -pedantic -D_POSIX_SOURCE -D_BSD_SOURCE
 
 kcmktalkd_SOURCES = main.cpp soundpage.cpp answmachpage.cpp forwmachpage.cpp
 kcmktalkd_METASOURCES = USE_AUTOMOC 

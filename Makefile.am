@@ -1,7 +1,7 @@
 ## kdebase/Makefile.am
 ## (C) 1997 Stephan Kulow
 
-AUTOMAKE_OPTIONS = foreign 
+AUTOMAKE_OPTIONS = foreign 1.4
 SUBDIRS = $(TOPSUBDIRS)
 DISTCLEANFILES = inst-apps 
 

@@ -10,7 +10,7 @@ noinst_HEADERS	=	defs.h includ.h find_user.h announce.h print.h process.h readco
 ktalkd_DEPS	=	machines/libmach.a
 
 #for extra warnings during compilation :
-#DEFS		+=	-ansi -pedantic -D_POSIX_SOURCE -D_BSD_SOURCE
+#AM_CXXFLAGS =	-ansi -pedantic -D_POSIX_SOURCE -D_BSD_SOURCE
 
 ###########################################################
 if KDE_INSTALLED
@@ -18,7 +18,7 @@ if KDE_INSTALLED
 # Config file location
 TALKD_CONF	=	$(kde_confdir)/ktalkdrc
 TALKD_CONF_NAME	=	ktalkdrc
-DEFS 		+=      -DHAVE_KDE
+AM_CPPFLAGS 	=      -DHAVE_KDE
 ktalkd_SOURCES	=	announce.cpp print.cpp process.cpp readcfg++.cpp table.cpp talkd.cpp find_user.cpp threads.cpp options.cpp unixsock.cpp
 LDADD           =       machines/libmach.a $(LIBBSD) $(LIB_KDECORE)
 
@@ -28,7 +28,7 @@ else
 # Config file location
 TALKD_CONF 	=	/etc/talkd.conf
 TALKD_CONF_NAME	=	talkd.conf
-DEFS		+=	-DTALKD_CONF=\"$(TALKD_CONF)\"
+AM_CPPFLAGS =	-DTALKD_CONF=\"$(TALKD_CONF)\"
 ktalkd_SOURCES	=	announce.cpp print.cpp process.cpp readconf.cpp table.cpp talkd.cpp find_user.cpp threads.cpp options.cpp
 LDADD		=	machines/libmach.a $(LIBBSD) $(LIBSOCKET)
 

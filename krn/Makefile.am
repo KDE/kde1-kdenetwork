@@ -1,6 +1,6 @@
 
 INCLUDES = $(all_includes)
-DEFS += -DKRN -DCHARSETS
+AM_CPPFLAGS = -DKRN -DCHARSETS
 
 LDFLAGS = $(all_libraries) $(KDE_RPATH)
 krn_LDADD =  -lkspell  $(LIB_KHTMLW)  $(LIB_KFILE) \

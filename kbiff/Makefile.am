@@ -7,7 +7,7 @@ INCLUDES= $(all_includes) -I. -I$(srcdir) -I..
 # claim, which subdirectories you want to install
 SUBDIRS = doc pics
 
-DEFS += -DDO_TRACE
+AM_CPPFLAGS = -DDO_TRACE
 
 ####### This part is very kbiff specific
 # you can add here more. This one gets installed 

@@ -21,7 +21,7 @@ SUBDIRS = doc
 VERSION=1.1.2
 
 # own defines
-DEFS += -DKARCHIE -DKARCHIE_VERSION='"$(VERSION)"'
+AM_CPPFLAGS = -DKARCHIE -DKARCHIE_VERSION='"$(VERSION)"'
 # -pedantic
 
 ####### This part is very  specific
