@@ -104,6 +104,7 @@ servercontroller::servercontroller
 	
 	kConfig->setGroup("GlobalOptions");
 	options = new QPopupMenu();
+	options->setCheckable(TRUE);
 	reuse_id = options->insertItem("Seperate Message Window", 
 			    this, SLOT(reuse()));
 	options->setItemChecked(reuse_id, 
