@@ -179,7 +179,7 @@ TRACEINIT("KBiffMonitor::checkPop()");
 	if (pop.command(command) == false)
 		return;
 
-	command = "PASS " + user + "\r\n";
+	command = "PASS " + password + "\r\n";
 	if (pop.command(command) == false)
 		return;
 
