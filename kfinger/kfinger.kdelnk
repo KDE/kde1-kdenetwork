@@ -1,0 +1,27 @@
+# KDE Config File
+[KDE Desktop Entry]
+Comment[C]=KDE finger utility
+Comment[no]=KDE finger-verktøy
+Comment[it]= Finger KDE
+Comment[hr]=KDE finger
+Comment[fr]=Finger KDE
+Comment[sk]=Sie»ová slu¾ba finger
+Comment[pt]=Utilitário KDE Finger
+Comment[pt_BR]=Utilitário KDE Finger
+BinaryPattern=kfinger;
+Protocols=
+Name[C]=kfinger
+Name[no]=kfinger
+Name[hr]=kfinger
+Name[fr]=kfinger
+Name[sk]=kfinger
+Name[pt]=kfinger
+Name[pt_BR]=kfinger
+MimeType=
+Comment=
+Exec=kfinger
+Icon=knu.xpm
+TerminalOptions=
+Path=
+Type=Application
+Terminal=0
