@@ -1,3 +1,8 @@
+1998-11-03  David Faure  <faure@kde.org>
+
+	* ktalkd/process.cpp: Fixed a bug, when user config file doesn't
+	exist. Reported by valankar@bigfoot.com.
+	
 1998-10-02  David Faure  <faure@kde.org> (0.8.9)
 
 	* mail.local/mail.local.c: Started using config.h
