@@ -38,7 +38,7 @@
 #include "NNTPConfigDlg.h"
 #include "rmbpop.h"
 #include "aboutDlg.h"
-
+#include "asker.h"
 #include "groupdlg.moc"
 
 #include "kmsender.h"
@@ -59,6 +59,7 @@
 #define GET_SUBJECTS 14
 #define GET_ARTICLES 15
 #define CATCHUP 16
+#define FIND_GROUP 17
 
 extern QString krnpath,cachepath,artinfopath,pixpath;
 extern KConfig *conf;
@@ -130,6 +131,7 @@ Groupdlg::Groupdlg
 
     QPopupMenu *newsgroup = new QPopupMenu;
     newsgroup->insertItem(klocale->translate("Open"),OPENGROUP);
+    newsgroup->insertItem(klocale->translate("Find"),FIND_GROUP);
     newsgroup->insertItem(klocale->translate("(un)Subscribe"),SUBSCRIBE);
     newsgroup->insertItem(klocale->translate("(Un)Tag"),TAGGROUP);
     newsgroup->insertItem(klocale->translate("Catchup"),CATCHUP);
@@ -633,6 +635,10 @@ bool Groupdlg::actions (int action,NewsGroup *group)
             success = true;
             break;
         }
+    case FIND_GROUP:
+        {
+            findGroup();
+        }
     };
     
     
@@ -722,6 +728,92 @@ bool Groupdlg::loadActive()
     statusBar ()->changeItem ("", 2);
     return success;
 };
+
+void Groupdlg::findGroup()
+{
+    Asker ask;
+    ask.setCaption (klocale->translate("KRN - Find a Newsgroup"));
+    ask.label->setText(klocale->translate("Enter the name of the Newsgroup"));
+    ask.entry->setText("");
+    qApp->setOverrideCursor (arrowCursor);
+    ask.exec();
+    qApp->restoreOverrideCursor ();
+    int index=-1;
+    index=subscr.find (&NewsGroup(ask.entry->text()));
+    if (index!=-1)
+    {
+        //It exists in subscribed
+        list->expandItem(0);
+        list->setCurrentItem(index+1);
+        return;
+    }
+    index=groups.find (&NewsGroup(ask.entry->text()));
+    if (index!=-1)
+    {
+        //It exists and not in subscribed (ugh).
+        
+        KPath p;
+        
+        p.push (new QString("All Newsgroups."));
+        
+        if (!list->itemAt(&p)->isExpanded())
+            openGroup(list->itemIndex(list->itemAt(&p)));
+
+        char *s=qstrdup(ask.entry->text());
+        char *s2;
+
+        while (1)
+        {
+            if (!strchr(s,'.'))
+            {
+                QString *ss;
+                debug ("current to-->%s",s);
+                QString *s1=p.pop();
+                ss=new QString(qstrdup(s1->data()));
+                p.push(s1);
+                ss->append(s);
+                p.push (ss);
+                list->setCurrentItem(list->itemIndex(list->itemAt(&p)));
+                break;
+            }
+            else
+            {
+                s2=strchr(s,'.')+1;
+                *strchr(s,'.')=0;
+                QString *ss;
+                if (p.count()>1)
+                {
+                    QString *s1=p.pop();
+                    ss=new QString(qstrdup(s1->data()));
+                    p.push(s1);
+                }
+                else
+                {
+                    ss=new QString("");
+                }
+                ss->append(s);
+                ss->append(".");
+                p.push(ss);
+                debug ("opening-->%s",ss->data());
+                KTreeListItem *it=list->itemAt(&p);
+                if (!it)
+                    debug ("no fsking item!!!!");
+                if (!it->isExpanded())
+                {
+                    int in=list->itemIndex(it);
+                    openGroup(in);
+                }
+                s=s2;
+            }
+        }
+
+        return;
+    }
+    qApp->setOverrideCursor (arrowCursor);
+    KMsgBox::message(0,klocale->translate("Krn - Message"),
+                     klocale->translate("I can't find the group you want!"));
+    qApp->restoreOverrideCursor ();
+}
 
 bool Groupdlg::currentActions(int action)
 {

@@ -61,7 +61,7 @@ private slots:
     void checkUnread();
     void getSubjects(NewsGroup *group);
     void getArticles(NewsGroup *group);
-
+    void findGroup ();
 private:
     NNTP *server;
     KTreeList *list;
