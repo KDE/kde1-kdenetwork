@@ -23,7 +23,7 @@ const QColor ircListItem::num2colour[17] = {  black,
 
 
 
-ircListItem::ircListItem(QString s, const QColor *c, QListBox *lb, QPixmap *p = 0)
+ircListItem::ircListItem(QString s, const QColor *c, QListBox *lb, QPixmap *p = 0, bool _WantColour = FALSE)
   : QObject(),
     QListBoxItem()
     
@@ -33,6 +33,8 @@ ircListItem::ircListItem(QString s, const QColor *c, QListBox *lb, QPixmap *p = 
   colour = (QColor *) c;
   pm = p;
   parent_lb = lb;
+
+  WantColour = _WantColour;
 
   setText(s);
 
@@ -138,11 +140,11 @@ void ircListItem::colourDrawText(QPainter *p, int startx, int starty,
 				 char *str)
 {
   int offset = 0;
-  int colour;
+  int pcolour;
   char buf[3];
-  int loc, i;
+  int loc = 0, i;
   buf[2] = 0;
-  
+
   for(loc = 0; str[loc] != 0x00 ; loc++){
     if(str[loc] == 0x03 || str[loc] == '!'){
       i = loc;
@@ -162,12 +164,12 @@ void ircListItem::colourDrawText(QPainter *p, int startx, int starty,
 	  buf[1] = 0;
 	}
 	
-	colour = atoi(buf);
-	if(colour < maxcolour)
-	  p->setPen(num2colour[atoi(buf)]);
+	pcolour = atoi(buf);
+	if(pcolour < maxcolour)
+	  p->setPen(num2colour[pcolour]);
 	else
-	  cerr << "Invalid colour: " << colour << endl;
-
+	  i = loc;
+	
 	if(str[i] == ','){
 	  i++;
 	  if((str[i] >= 0x30) && (str[i] <= 0x39)){
@@ -180,15 +182,25 @@ void ircListItem::colourDrawText(QPainter *p, int startx, int starty,
 	    else{
 	      buf[1] = 0;
 	    }
-	    colour = atoi(buf);
-	    if(colour < maxcolour){
-	      p->setBackgroundColor(num2colour[colour]);
+	    pcolour = atoi(buf);
+	    if(pcolour < maxcolour){
+	      p->setBackgroundColor(num2colour[pcolour]);
 	      p->setBackgroundMode(OpaqueMode);
 	    }
 	    else
-	      cerr << "Invalid colour: " << colour << endl;
+	      i = loc;
 	  }
 	}
+      }
+      else if(str[i] == 0x03){
+	i++;
+	p->setPen(*colour);
+	p->setBackgroundMode(TransparentMode);
+      }
+      else if((str[i] == '!') && (str[i+1] == 'c')){
+	i += 2;
+	p->setPen(*colour);
+	p->setBackgroundMode(TransparentMode);
       }
       offset += i - loc;
     }

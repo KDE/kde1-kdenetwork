@@ -16,6 +16,7 @@
 #include <termios.h>
 #include <unistd.h>
 #include <string.h>
+#include <knewpanner.h>
 
 extern KConfig *kConfig;
 extern KApplication *kApp;
@@ -94,23 +95,34 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
   gm->addLayout(gm2);
 
   //  mainw = new QListBox(f, "mle");          // Make a flat QListBox.  I want the
-  mainw = new KSircListBox(f, "mle");
+
+  pan = new KNewPanner(f, "knewpanner", KNewPanner::Vertical,
+		       KNewPanner::Absolute, width()-1000);
+  gm2->addWidget(pan, 10);
+
+  mainw = new KSircListBox(pan, "mle");
   mainw->setFocusPolicy(QWidget::NoFocus); // Background and base colour of
   mainw->setEnabled(FALSE);                // the lb to be the same as the main
   mainw->setSmoothScrolling(TRUE);         // ColourGroup, but this is BAD BAD
   mainw->setFont(QFont("fixed"));      // Since we don't use KDE requested
+  mainw->setMinimumWidth(width() - 100);             // matched the main text window
+  connect(mainw, SIGNAL(updateSize()),
+	  this, SIGNAL(changeSize()));
   QColorGroup cg = QColorGroup(colorGroup().foreground(), colorGroup().mid(), 
     			       colorGroup().light(), colorGroup().dark(),
   			       colorGroup().midlight(), 
   			       colorGroup().text(), colorGroup().mid()); 
   mainw->setPalette(QPalette(cg,cg,cg));   // colours.  Font it also hard coded
-  gm2->addWidget(mainw, 10);               // which is bad bad.
+  //  gm2->addWidget(mainw, 10);               // which is bad bad.
 
-  nicks = new aListBox(f, "qlb");          // Make the users list box.
-  nicks->setMaximumWidth(100);             // Would be nice if it was flat and
-  nicks->setMinimumWidth(100);             // matched the main text window
+  nicks = new aListBox(pan, "qlb");          // Make the users list box.
+  //nicks->setMaximumWidth(100);             // Would be nice if it was flat and
+  //  nicks->setMinimumWidth(100);             // matched the main text window
   nicks->setPalette(QPalette(cg,cg,cg));   // HARD CODED COLOURS AGAIN!!!!
-  gm2->addWidget(nicks, 0);
+  //  gm2->addWidget(nicks, 0);
+
+  pan->activate(mainw, nicks);
+  mainw->setMinimumWidth(0);             // matched the main text window
 
   //  linee = new QLineEdit(f, "qle");
   linee = new aHistLineEdit(f, "qle");     // aHistEdit is a QLineEdit with 
@@ -360,8 +372,10 @@ void KSircTopLevel::sirc_line_return()
       QString name = s.mid(6, pos2 - 6); // make sure to remove line feed
       //cerr << "New channel: " << name << endl;
       emit open_toplevel(name);
-      linee->setText("");
-      return;
+      if(name[0] != '#'){
+	linee->setText("");
+	return;
+      }
     }
   }
 
@@ -539,6 +553,10 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	  }
 	  break;
 	}
+      case 'o':
+	no_output = 1;
+	string.truncate(0);
+	break;
       default:
 	cerr << "Unkown ssfe command: " << string << endl;
 	string.truncate(0);                // truncate string... set
@@ -715,7 +733,7 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 				   // anull pointer
     return NULL;
   else                             // otherwise create a new IrcListItem...
-    return new ircListItem(string,color,mainw,pixmap);
+    return new ircListItem(string,color,mainw,pixmap, TRUE);
 
   return NULL; // make compiler happy or else it complans about
 	       // getting to the end of a non-void func
@@ -952,6 +970,7 @@ void KSircTopLevel::resizeEvent(QResizeEvent *e)
 //  cerr << "Updating list box\n";
   mainw->setTopItem(mainw->count()-1);
   emit changeSize();
+  pan->setAbsSeperatorPos(width() - 100);
   mainw->setAutoUpdate(TRUE);
   repaint(TRUE);
 }

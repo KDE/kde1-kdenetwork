@@ -6,6 +6,7 @@ static const int fudge = 5;
 KSircListBox::KSircListBox(QWidget * parent=0, const char * name=0, WFlags f=0) : QListBox(parent,name,f)
 {
   setAutoScrollBar(FALSE);
+  setAutoBottomScrollBar(FALSE);
   vertScroll = new QScrollBar(this, "VertScrollBar");
   vertScroll->setOrientation(QScrollBar::Vertical);
   vertScroll->resize(16, this->height());
@@ -50,6 +51,8 @@ void KSircListBox::resizeEvent(QResizeEvent *e)
   QListBox::resizeEvent(e);
   vertScroll->resize(16, this->height());
   vertScroll->move(this->width() - vertScroll->width(), 0);
+  emit updateSize();
+  repaint(TRUE);
   //  QRect frame = frameRect();
   //  frame.setRight(frame.right() - 17);
   //  setFrameRect(frame);

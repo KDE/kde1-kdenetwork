@@ -12,6 +12,9 @@ class KSircListBox : public QListBox
 
 //  virtual void scrollBarUpdates(bool);
 
+ signals:
+  void updateSize();
+
  public slots:
   virtual void updateScrollBars();
   virtual void setTopItem(int);

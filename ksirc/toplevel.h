@@ -23,6 +23,7 @@ class UserControlMenu;
 #include <kmenubar.h>
 #include <kfm.h>
 #include <ksimpleconfig.h>
+#include <knewpanner.h>
 
 //#include "ahtmlview.h"
 #include "irclistitem.h"
@@ -102,6 +103,7 @@ private:
   int sirc_stdin, sirc_stdout, sirc_stderr;
   char line_buf[1024];
   bool continued_line;
+  KNewPanner *pan;
   KSircListBox *mainw;
   aHistLineEdit *linee;
   QSocketNotifier *sirc_r_notif;
