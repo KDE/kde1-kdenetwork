@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp 0.8.8\n"
-"POT-Creation-Date: 1998-01-13 23:06+0100\n"
+"POT-Creation-Date: 1998-01-16 22:13+0100\n"
 "PO-Revision-Date: 1998-01-11 21:08 MET\n"
 "Last-Translator: Miroslav Flídr <flidr@kky.zcu.cz>\n"
 "Language-Team: czech <LL@li.org>\n"
@@ -102,7 +102,7 @@ msgstr ""
 msgid "Login script has unbalanced Loop Start/End"
 msgstr "Pøihla¹ovací skript má nevyvá¾enout smyky strat/konec"
 
-#: connect.cpp:89 connect.cpp:188 main.cpp:719
+#: connect.cpp:89 connect.cpp:188 main.cpp:733
 msgid "Connecting to: "
 msgstr "Pøipojování k: "
 
@@ -115,7 +115,7 @@ msgstr "Lituji, není mo¾né vytvoøit soubor pro zámknutí modemu."
 msgid "Looking for Modem ..."
 msgstr "Hledání modemu ..."
 
-#: connect.cpp:112 debug.cpp:86 main.cpp:732
+#: connect.cpp:112 debug.cpp:86 main.cpp:746
 msgid "Log"
 msgstr "Záznam"
 
@@ -546,7 +546,7 @@ msgstr "Zámek modemu:"
 msgid "Modem Timeout:"
 msgstr "Timemout modemu:"
 
-#: general.cpp:421 main.cpp:410
+#: general.cpp:421 main.cpp:417
 msgid "Modem"
 msgstr "Modem"
 
@@ -574,48 +574,48 @@ msgstr "Dotázat se modemu"
 msgid "Terminal"
 msgstr "Terminál"
 
-#: main.cpp:295
+#: main.cpp:298
 msgid "Connect to: "
 msgstr "Pøipojit k: "
 
-#: main.cpp:306
+#: main.cpp:309
 msgid "Login ID:"
 msgstr "Login ID:"
 
-#: main.cpp:317
+#: main.cpp:322
 msgid "Password:"
 msgstr "Heslo:"
 
-#: main.cpp:332
+#: main.cpp:339
 msgid "Show Log Window"
 msgstr "Zobrazovat okno se záznamem"
 
-#: main.cpp:354
+#: main.cpp:361
 msgid "Setup"
 msgstr "Nastavení"
 
-#: main.cpp:369
+#: main.cpp:376
 msgid "Connect"
 msgstr "Pøipojit"
 
-#: main.cpp:396
+#: main.cpp:403
 msgid "kppp Configuration"
 msgstr "Konfigurace kppp"
 
-#: main.cpp:408
+#: main.cpp:415
 msgid "Accounts"
 msgstr "Konta"
 
-#: main.cpp:409
+#: main.cpp:416
 #, fuzzy
 msgid "Device"
 msgstr "Modemové zaøízení:"
 
-#: main.cpp:411
+#: main.cpp:418
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:451
+#: main.cpp:458
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -624,11 +624,11 @@ msgstr ""
 "Toto konto neexistuje:\n"
 "%s"
 
-#: main.cpp:613
+#: main.cpp:627
 msgid "The pppd daemon died unexpectedly!"
 msgstr "pppd démon neoèekávanì skonèil!"
 
-#: main.cpp:653
+#: main.cpp:667
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -645,7 +645,7 @@ msgstr ""
 "konfiguraèním dialogu\n"
 " Dìkuji vám"
 
-#: main.cpp:665
+#: main.cpp:679
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -658,7 +658,7 @@ msgstr ""
 "Prosím ujistìte se, ¾e jste nastavili setuid právo pro kppp\n"
 "a ¾e je pppd vykonavatelný."
 
-#: main.cpp:679
+#: main.cpp:693
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -679,29 +679,29 @@ msgstr ""
 "v konfiguraèním dialogu.\n"
 " Dìkuji vám"
 
-#: main.cpp:700
+#: main.cpp:714
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
 "supply a username and a password!"
 msgstr ""
 
-#: main.cpp:707
+#: main.cpp:721
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
 "file \"%s\""
 msgstr ""
 
-#: main.cpp:787
+#: main.cpp:801
 msgid "Quit kPPP?"
 msgstr "Ukonèit kPPP?"
 
-#: main.cpp:788
+#: main.cpp:802
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Ukonèení kPPP uzavøe va¹e PPP sezení."
 
-#: main.cpp:819
+#: main.cpp:833
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""

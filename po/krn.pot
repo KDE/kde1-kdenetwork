@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-01-14 15:58+0100\n"
+"POT-Creation-Date: 1998-01-16 22:13+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,27 +14,27 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: ENCODING\n"
 
-#: main.cpp:213 main.cpp:225 main.cpp:237 main.cpp:252 main.cpp:264
+#: main.cpp:214 main.cpp:226 main.cpp:238 main.cpp:253 main.cpp:265
 msgid "KRN-Missing Configuration info"
 msgstr ""
 
-#: main.cpp:214
+#: main.cpp:215
 msgid "Please enter your email adress"
 msgstr ""
 
-#: main.cpp:226
+#: main.cpp:227
 msgid "Please enter your real name"
 msgstr ""
 
-#: main.cpp:238
+#: main.cpp:239
 msgid "Please enter your organization's name"
 msgstr ""
 
-#: main.cpp:253
+#: main.cpp:254
 msgid "Please enter your NNTP server name"
 msgstr ""
 
-#: main.cpp:265
+#: main.cpp:266
 msgid "Please enter your SMTP server name"
 msgstr ""
 
@@ -43,336 +43,352 @@ msgstr ""
 msgid "Received %.2f Kb"
 msgstr ""
 
-#: groupdlg.cpp:123
+#: groupdlg.cpp:125
 msgid "Connect to Server"
 msgstr ""
 
-#: groupdlg.cpp:124
+#: groupdlg.cpp:126
 msgid "Disconnect From Server"
 msgstr ""
 
-#: groupdlg.cpp:125
+#: groupdlg.cpp:127
 msgid "Get Active File"
 msgstr ""
 
-#: groupdlg.cpp:127
+#: groupdlg.cpp:129
 msgid "Post Queued Messages"
 msgstr ""
 
-#: groupdlg.cpp:129
+#: groupdlg.cpp:131
 msgid "Exit"
 msgstr ""
 
-#: groupdlg.cpp:132
+#: groupdlg.cpp:134
 msgid "KRN - Group List"
 msgstr ""
 
-#: groupdlg.cpp:135 groupdlg.cpp:141
+#: groupdlg.cpp:137 groupdlg.cpp:143
 msgid "Get Subjects"
 msgstr ""
 
-#: groupdlg.cpp:136 groupdlg.cpp:142
+#: groupdlg.cpp:138 groupdlg.cpp:144
 msgid "Get Articles"
 msgstr ""
 
-#: artdlg.cpp:216 groupdlg.cpp:137 groupdlg.cpp:145 groupdlg.cpp:153
+#: artdlg.cpp:214 groupdlg.cpp:139 groupdlg.cpp:147 groupdlg.cpp:155
 msgid "Catchup"
 msgstr ""
 
-#: groupdlg.cpp:143 groupdlg.cpp:151
+#: groupdlg.cpp:145 groupdlg.cpp:153
 msgid "(un)Subscribe"
 msgstr ""
 
-#: artdlg.cpp:115 groupdlg.cpp:144
+#: artdlg.cpp:112 groupdlg.cpp:146
 msgid "Untag"
 msgstr ""
 
-#: artdlg.cpp:133 groupdlg.cpp:152
+#: artdlg.cpp:131 groupdlg.cpp:154
 msgid "(Un)Tag"
 msgstr ""
 
-#: artdlg.cpp:126 artdlg.cpp:186 groupdlg.cpp:155 groupdlg.cpp:210
+#: artdlg.cpp:124 artdlg.cpp:184 groupdlg.cpp:157 groupdlg.cpp:213
 msgid "Post New Article"
 msgstr ""
 
-#: groupdlg.cpp:156
+#: groupdlg.cpp:158
 msgid "Post All Queued Articles"
 msgstr ""
 
-#: groupdlg.cpp:158
+#: groupdlg.cpp:160
 msgid "&Subscribed"
 msgstr ""
 
-#: artdlg.cpp:157 groupdlg.cpp:159
+#: artdlg.cpp:155 groupdlg.cpp:161
 msgid "&Tagged"
 msgstr ""
 
-#: groupdlg.cpp:164
+#: groupdlg.cpp:166
 msgid "Identity..."
 msgstr ""
 
-#: groupdlg.cpp:165
+#: groupdlg.cpp:167
 msgid "NNTP Options..."
 msgstr ""
 
-#: groupdlg.cpp:171
+#: groupdlg.cpp:168
+msgid "Expire Options..."
+msgstr ""
+
+#: groupdlg.cpp:174
 msgid "About Krn..."
 msgstr ""
 
-#: groupdlg.cpp:177
+#: groupdlg.cpp:180
 msgid "&Newsgroup"
 msgstr ""
 
-#: groupdlg.cpp:190
+#: groupdlg.cpp:193
 msgid "Connect to server"
 msgstr ""
 
-#: groupdlg.cpp:193
+#: groupdlg.cpp:196
 msgid "Disconnect from server"
 msgstr ""
 
-#: groupdlg.cpp:197
+#: groupdlg.cpp:200
 msgid "Get list of active groups"
 msgstr ""
 
-#: groupdlg.cpp:199
+#: groupdlg.cpp:202
 msgid "Find group"
 msgstr ""
 
-#: groupdlg.cpp:207
+#: groupdlg.cpp:210
 msgid "Check for Unread Articles"
 msgstr ""
 
-#: groupdlg.cpp:294
+#: groupdlg.cpp:297
 msgid "Sorry!"
 msgstr ""
 
-#: groupdlg.cpp:295
+#: groupdlg.cpp:298
 msgid ""
 "That newsgroup is not in the current active file\n"
 " Krn can't handle this gracefully right now"
 msgstr ""
 
-#: groupdlg.cpp:322 groupdlg.cpp:503 groupdlg.cpp:824
+#: groupdlg.cpp:325 groupdlg.cpp:506 groupdlg.cpp:837
 msgid "All Newsgroups."
 msgstr ""
 
-#: groupdlg.cpp:397 groupdlg.cpp:491
+#: groupdlg.cpp:400 groupdlg.cpp:494
 msgid "Subscribed Newsgroups."
 msgstr ""
 
-#: groupdlg.cpp:446
+#: groupdlg.cpp:449
 msgid "Disconnected"
 msgstr ""
 
-#: groupdlg.cpp:453
+#: groupdlg.cpp:456
 msgid "Connecting to server"
 msgstr ""
 
-#: groupdlg.cpp:458
+#: groupdlg.cpp:461
 msgid "Connected to server - Posting not allowed"
 msgstr ""
 
-#: groupdlg.cpp:460
+#: groupdlg.cpp:463
 msgid "Connected to server - Posting allowed"
 msgstr ""
 
-#: groupdlg.cpp:465
+#: groupdlg.cpp:468
 msgid "Can't connect to server"
 msgstr ""
 
-#: groupdlg.cpp:467
+#: groupdlg.cpp:470
 msgid "Connection to server failed"
 msgstr ""
 
-#: groupdlg.cpp:476
+#: groupdlg.cpp:479
 msgid "Authentication Failed"
 msgstr ""
 
-#: groupdlg.cpp:479
+#: groupdlg.cpp:482
 msgid "Connection to server failed: Authentication problem"
 msgstr ""
 
-#: groupdlg.cpp:516
+#: groupdlg.cpp:519
 msgid "Krn-Question"
 msgstr ""
 
-#: groupdlg.cpp:517
+#: groupdlg.cpp:520
 msgid ""
 "The operation you requested needs a connection to the News server\n"
 "Should I attempt one?"
 msgstr ""
 
-#: groupdlg.cpp:770
+#: groupdlg.cpp:783
 msgid ""
 "You don't have an active groups list.\n"
 " get it from server?"
 msgstr ""
 
-#: groupdlg.cpp:786
+#: groupdlg.cpp:799
 msgid "Listing active newsgroups"
 msgstr ""
 
-#: groupdlg.cpp:798
+#: groupdlg.cpp:811
 msgid "KRN - Find a Newsgroup"
 msgstr ""
 
-#: groupdlg.cpp:799
+#: groupdlg.cpp:812
 msgid "Enter the name of the Newsgroup"
 msgstr ""
 
-#: groupdlg.cpp:884
+#: groupdlg.cpp:897
 msgid "Krn - Message"
 msgstr ""
 
-#: groupdlg.cpp:885
+#: groupdlg.cpp:898
 msgid "I can't find the group you want!"
 msgstr ""
 
-#: groupdlg.cpp:976
+#: groupdlg.cpp:989
 msgid "Getting messages in "
 msgstr ""
 
-#: groupdlg.cpp:989
+#: groupdlg.cpp:1002
 msgid "Getting list of messages in "
 msgstr ""
 
-#: artdlg.cpp:112 artdlg.cpp:122
+#: artdlg.cpp:108 artdlg.cpp:120
 msgid "Download"
 msgstr ""
 
-#: artdlg.cpp:114 artdlg.cpp:132
-msgid "Decode"
-msgstr ""
-
-#: artdlg.cpp:125
+#: artdlg.cpp:110 artdlg.cpp:123
 msgid "Print"
 msgstr ""
 
-#: artdlg.cpp:127 artdlg.cpp:189
-msgid "Reply by Mail"
+#: artdlg.cpp:111 artdlg.cpp:130
+msgid "Decode"
 msgstr ""
 
-#: artdlg.cpp:128
-msgid "Post Followup"
-msgstr ""
-
-#: artdlg.cpp:129
-msgid "Post & Reply"
-msgstr ""
-
-#: artdlg.cpp:135
-msgid "Tagged"
-msgstr ""
-
-#: artdlg.cpp:137
+#: artdlg.cpp:113 artdlg.cpp:135
 msgid "Don't expire"
 msgstr ""
 
-#: artdlg.cpp:145
+#: artdlg.cpp:125 artdlg.cpp:187
+msgid "Reply by Mail"
+msgstr ""
+
+#: artdlg.cpp:126
+msgid "Post Followup"
+msgstr ""
+
+#: artdlg.cpp:127
+msgid "Post & Reply"
+msgstr ""
+
+#: artdlg.cpp:133
+msgid "Tagged"
+msgstr ""
+
+#: artdlg.cpp:143
 msgid "Show Only Unread Messages"
 msgstr ""
 
-#: artdlg.cpp:147
+#: artdlg.cpp:145
 msgid "Show Only Cached Messages"
 msgstr ""
 
-#: artdlg.cpp:149
+#: artdlg.cpp:147
 msgid "Show Locked Messages"
 msgstr ""
 
-#: artdlg.cpp:151
+#: artdlg.cpp:149
 msgid "Expunge"
 msgstr ""
 
-#: artdlg.cpp:152
+#: artdlg.cpp:150
 msgid "Appearance..."
 msgstr ""
 
-#: artdlg.cpp:155
+#: artdlg.cpp:153
 msgid "menu"
 msgstr ""
 
-#: artdlg.cpp:156
-msgid "&Article"
-msgstr ""
-
-#: artdlg.cpp:168
+#: artdlg.cpp:166
 msgid "Previous Message"
 msgstr ""
 
-#: artdlg.cpp:171
+#: artdlg.cpp:169
 msgid "Next Message"
 msgstr ""
 
-#: artdlg.cpp:176
+#: artdlg.cpp:174
 msgid "Save Article"
 msgstr ""
 
-#: artdlg.cpp:179
+#: artdlg.cpp:177
 msgid "Print Article"
 msgstr ""
 
-#: artdlg.cpp:182
+#: artdlg.cpp:180
 msgid "Find Article"
 msgstr ""
 
-#: artdlg.cpp:192
+#: artdlg.cpp:190
 msgid "Post a Followup"
 msgstr ""
 
-#: artdlg.cpp:195
+#: artdlg.cpp:193
 msgid "Post & Mail"
 msgstr ""
 
-#: artdlg.cpp:204
+#: artdlg.cpp:202
 msgid "Get Article List"
 msgstr ""
 
-#: artdlg.cpp:207
+#: artdlg.cpp:205
 msgid "Tag Article"
 msgstr ""
 
-#: artdlg.cpp:210
+#: artdlg.cpp:208
 msgid "Lock (keep in cache)"
 msgstr ""
 
-#: artdlg.cpp:213
+#: artdlg.cpp:211
 msgid "Decode Article"
 msgstr ""
 
-#: artdlg.cpp:236
+#: artdlg.cpp:234
 msgid "Sender"
 msgstr ""
 
-#: artdlg.cpp:237
+#: artdlg.cpp:235
 msgid "Date"
 msgstr ""
 
-#: artdlg.cpp:238
+#: artdlg.cpp:236
 msgid "Lines"
 msgstr ""
 
-#: artdlg.cpp:239
+#: artdlg.cpp:237
 msgid "Subject"
 msgstr ""
 
-#: artdlg.cpp:376
+#: artdlg.cpp:398
 msgid "Threading..."
 msgstr ""
 
-#: artdlg.cpp:383
+#: artdlg.cpp:405
 msgid "Showing Article List"
 msgstr ""
 
-#: artdlg.cpp:964
+#: artdlg.cpp:968
+msgid "KRN - Existing File"
+msgstr ""
+
+#: artdlg.cpp:969
+msgid "The File you selected already exists"
+msgstr ""
+
+#: artdlg.cpp:975
+msgid "OverWrite"
+msgstr ""
+
+#: artdlg.cpp:977
+msgid "Append"
+msgstr ""
+
+#: artdlg.cpp:1024
 msgid ""
 "\n"
 "Error getting article.\n"
 "Server said:\n"
 msgstr ""
 
-#: artdlg.cpp:1062
+#: artdlg.cpp:1122
 msgid "Getting Article List"
 msgstr ""
 
@@ -428,7 +444,7 @@ msgstr ""
 msgid "ID"
 msgstr ""
 
-#: decoderDlg.cpp:27 kmcomposewin.cpp:105
+#: decoderDlg.cpp:27 kmcomposewin.cpp:109
 msgid "Name"
 msgstr ""
 
@@ -517,258 +533,262 @@ msgstr ""
 msgid "Forwarded Message"
 msgstr ""
 
-#: kmcomposewin.cpp:100
+#: kmcomposewin.cpp:101
 msgid "KMail Composer"
 msgstr ""
 
-#: kmcomposewin.cpp:104
-msgid "F"
-msgstr ""
-
-#: kmcomposewin.cpp:107
-msgid "Encoding"
+#: kmcomposewin.cpp:103
+msgid "KRN Composer"
 msgstr ""
 
 #: kmcomposewin.cpp:108
+msgid "F"
+msgstr ""
+
+#: kmcomposewin.cpp:111
+msgid "Encoding"
+msgstr ""
+
+#: kmcomposewin.cpp:112
 msgid "Type"
 msgstr ""
 
-#: kmcomposewin.cpp:245
+#: kmcomposewin.cpp:249
 msgid "&From:"
 msgstr ""
 
-#: kmcomposewin.cpp:247
+#: kmcomposewin.cpp:251
 msgid "&Reply to:"
 msgstr ""
 
-#: kmcomposewin.cpp:249
+#: kmcomposewin.cpp:253
 msgid "&To:"
 msgstr ""
 
-#: kmcomposewin.cpp:251
+#: kmcomposewin.cpp:255
 msgid "&Cc:"
 msgstr ""
 
-#: kmcomposewin.cpp:253
+#: kmcomposewin.cpp:257
 msgid "&Bcc:"
 msgstr ""
 
-#: kmcomposewin.cpp:255
+#: kmcomposewin.cpp:259
 msgid "&Subject:"
 msgstr ""
 
-#: kmcomposewin.cpp:257
+#: kmcomposewin.cpp:261
 msgid "&Newsgroups:"
 msgstr ""
 
-#: kmcomposewin.cpp:259
+#: kmcomposewin.cpp:263
 msgid "&Followup-To:"
 msgstr ""
 
-#: kmcomposewin.cpp:324
+#: kmcomposewin.cpp:328
 msgid "Send"
 msgstr ""
 
-#: kmcomposewin.cpp:325
+#: kmcomposewin.cpp:329
 msgid "Send &later"
 msgstr ""
 
-#: kmcomposewin.cpp:327
+#: kmcomposewin.cpp:331
 msgid "Address &Book..."
 msgstr ""
 
-#: kmcomposewin.cpp:332
+#: kmcomposewin.cpp:336
 msgid "New &Composer"
 msgstr ""
 
-#: kmcomposewin.cpp:353
+#: kmcomposewin.cpp:357
 msgid "Mark all"
 msgstr ""
 
-#: kmcomposewin.cpp:356
+#: kmcomposewin.cpp:360
 msgid "Find..."
 msgstr ""
 
-#: kmcomposewin.cpp:360
+#: kmcomposewin.cpp:364
 msgid "Recip&ients..."
 msgstr ""
 
-#: kmcomposewin.cpp:362
+#: kmcomposewin.cpp:366
 msgid "Insert &File"
 msgstr ""
 
-#: kmcomposewin.cpp:367
+#: kmcomposewin.cpp:371
 msgid "High"
 msgstr ""
 
-#: kmcomposewin.cpp:369
+#: kmcomposewin.cpp:373
 msgid "Low"
 msgstr ""
 
-#: kmcomposewin.cpp:370
+#: kmcomposewin.cpp:374
 msgid "Priority"
 msgstr ""
 
-#: kmcomposewin.cpp:371
+#: kmcomposewin.cpp:375
 msgid "&Message"
 msgstr ""
 
-#: kmcomposewin.cpp:381
+#: kmcomposewin.cpp:385
 msgid "&All Fields"
 msgstr ""
 
-#: kmcomposewin.cpp:383
+#: kmcomposewin.cpp:387
 msgid "&From"
 msgstr ""
 
-#: kmcomposewin.cpp:384
+#: kmcomposewin.cpp:388
 msgid "&Reply to"
 msgstr ""
 
-#: kmcomposewin.cpp:385
+#: kmcomposewin.cpp:389
 msgid "&To"
 msgstr ""
 
-#: kmcomposewin.cpp:386
+#: kmcomposewin.cpp:390
 msgid "&Cc"
 msgstr ""
 
-#: kmcomposewin.cpp:387
+#: kmcomposewin.cpp:391
 msgid "&Bcc"
 msgstr ""
 
-#: kmcomposewin.cpp:388
+#: kmcomposewin.cpp:392
 msgid "&Subject"
 msgstr ""
 
-#: kmcomposewin.cpp:389
+#: kmcomposewin.cpp:393
 msgid "&Newsgroups"
 msgstr ""
 
-#: kmcomposewin.cpp:390
+#: kmcomposewin.cpp:394
 msgid "&Followup-To"
 msgstr ""
 
-#: kmcomposewin.cpp:394
+#: kmcomposewin.cpp:398
 msgid "Append S&ignature"
 msgstr ""
 
-#: kmcomposewin.cpp:396
+#: kmcomposewin.cpp:400
 msgid "&Insert File"
 msgstr ""
 
-#: kmcomposewin.cpp:398
+#: kmcomposewin.cpp:402
 msgid "&Attach..."
 msgstr ""
 
-#: kmcomposewin.cpp:400
+#: kmcomposewin.cpp:404
 msgid "&Remove"
 msgstr ""
 
-#: kmcomposewin.cpp:401
+#: kmcomposewin.cpp:405
 msgid "&Save..."
 msgstr ""
 
-#: kmcomposewin.cpp:402
+#: kmcomposewin.cpp:406
 msgid "Pr&operties..."
 msgstr ""
 
-#: kmcomposewin.cpp:404
+#: kmcomposewin.cpp:408
 msgid "&Attach"
 msgstr ""
 
-#: kmcomposewin.cpp:429
+#: kmcomposewin.cpp:433
 msgid "Compose new message"
 msgstr ""
 
-#: kmcomposewin.cpp:434
+#: kmcomposewin.cpp:438
 msgid "Save message to file"
 msgstr ""
 
-#: kmcomposewin.cpp:439
+#: kmcomposewin.cpp:443
 msgid "Print message"
 msgstr ""
 
-#: kmcomposewin.cpp:465
+#: kmcomposewin.cpp:469
 msgid "sign message"
 msgstr ""
 
-#: kmcomposewin.cpp:470
+#: kmcomposewin.cpp:474
 msgid "encrypt message"
 msgstr ""
 
-#: kmcomposewin.cpp:532
+#: kmcomposewin.cpp:536
 msgid "Send now"
 msgstr ""
 
-#: kmcomposewin.cpp:534
+#: kmcomposewin.cpp:538
 msgid "Send later"
 msgstr ""
 
-#: kmcomposewin.cpp:543
+#: kmcomposewin.cpp:547
 msgid "Mark All"
 msgstr ""
 
-#: kmcomposewin.cpp:643
+#: kmcomposewin.cpp:647
 msgid "KMail Confirm"
 msgstr ""
 
-#: kmcomposewin.cpp:644
+#: kmcomposewin.cpp:648
 msgid ""
 "Close and discard\n"
 "edited message?"
 msgstr ""
 
-#: kmcomposewin.cpp:686
+#: kmcomposewin.cpp:690
 #, c-format
 msgid ""
 "public key for %s not found.\n"
 "This person will not be able to decrypt the message."
 msgstr ""
 
-#: kmcomposewin.cpp:707
+#: kmcomposewin.cpp:711
 msgid "Error during PGP:"
 msgstr ""
 
-#: kmcomposewin.cpp:871 kmcomposewin.cpp:892
+#: kmcomposewin.cpp:875 kmcomposewin.cpp:896
 msgid "Attach File"
 msgstr ""
 
-#: kmcomposewin.cpp:923
+#: kmcomposewin.cpp:927
 msgid "View..."
 msgstr ""
 
-#: kmcomposewin.cpp:924
+#: kmcomposewin.cpp:928
 msgid "Save..."
 msgstr ""
 
-#: kmcomposewin.cpp:925 kmreaderwin.cpp:594
+#: kmcomposewin.cpp:929 kmreaderwin.cpp:571
 msgid "Properties..."
 msgstr ""
 
-#: kmcomposewin.cpp:929
+#: kmcomposewin.cpp:933
 msgid "Attach..."
 msgstr ""
 
-#: kmcomposewin.cpp:1051 kpgp.cpp:351
+#: kmcomposewin.cpp:1055 kpgp.cpp:351
 msgid ""
 "Sorry, but this feature\n"
 "is still missing"
 msgstr ""
 
-#: kmcomposewin.cpp:1072
+#: kmcomposewin.cpp:1076
 msgid "To:"
 msgstr ""
 
-#: kmcomposewin.cpp:1076
+#: kmcomposewin.cpp:1080
 msgid "Subject:"
 msgstr ""
 
-#: kmcomposewin.cpp:1079
+#: kmcomposewin.cpp:1083
 msgid "Date:"
 msgstr ""
 
-#: kmcomposewin.cpp:1150
+#: kmcomposewin.cpp:1154
 msgid "Choose Signature File"
 msgstr ""
 
@@ -999,68 +1019,68 @@ msgstr ""
 msgid "quoted printable"
 msgstr ""
 
-#: kmreaderwin.cpp:276 kmreaderwin.cpp:292 kmreaderwin.cpp:313
+#: kmreaderwin.cpp:253 kmreaderwin.cpp:269 kmreaderwin.cpp:290
 msgid "From: "
 msgstr ""
 
-#: kmreaderwin.cpp:278 kmreaderwin.cpp:294 kmreaderwin.cpp:315
+#: kmreaderwin.cpp:255 kmreaderwin.cpp:271 kmreaderwin.cpp:292
 msgid "To: "
 msgstr ""
 
-#: kmreaderwin.cpp:282 kmreaderwin.cpp:303 kmreaderwin.cpp:328
+#: kmreaderwin.cpp:259 kmreaderwin.cpp:280 kmreaderwin.cpp:305
 msgid "References: "
 msgstr ""
 
-#: kmreaderwin.cpp:297 kmreaderwin.cpp:318
+#: kmreaderwin.cpp:274 kmreaderwin.cpp:295
 msgid "Cc: "
 msgstr ""
 
-#: kmreaderwin.cpp:299 kmreaderwin.cpp:312
+#: kmreaderwin.cpp:276 kmreaderwin.cpp:289
 msgid "Date: "
 msgstr ""
 
-#: kmreaderwin.cpp:321
+#: kmreaderwin.cpp:298
 msgid "Bcc: "
 msgstr ""
 
-#: kmreaderwin.cpp:324
+#: kmreaderwin.cpp:301
 msgid "Reply to: "
 msgstr ""
 
-#: kmreaderwin.cpp:331
+#: kmreaderwin.cpp:308
 msgid "Groups: "
 msgstr ""
 
-#: kmreaderwin.cpp:367
+#: kmreaderwin.cpp:344
 msgid "Encrypted message"
 msgstr ""
 
-#: kmreaderwin.cpp:373
+#: kmreaderwin.cpp:350
 msgid "Cannot decrypt message:"
 msgstr ""
 
-#: kmreaderwin.cpp:390
+#: kmreaderwin.cpp:367
 msgid "Message was signed by"
 msgstr ""
 
-#: kmreaderwin.cpp:391
+#: kmreaderwin.cpp:368
 msgid "Warning: Bad signature from"
 msgstr ""
 
-#: kmreaderwin.cpp:556
+#: kmreaderwin.cpp:533
 msgid "Attachment: "
 msgstr ""
 
-#: kmreaderwin.cpp:616
+#: kmreaderwin.cpp:593
 msgid "Could not create temporary file"
 msgstr ""
 
-#: kmreaderwin.cpp:636
+#: kmreaderwin.cpp:613
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr ""
 
-#: kmreaderwin.cpp:662
+#: kmreaderwin.cpp:639
 msgid "Could not save file"
 msgstr ""
 
@@ -1116,4 +1136,20 @@ msgstr ""
 
 #: kmaddrbookdlg.cpp:94
 msgid "Addressbook Manager"
+msgstr ""
+
+#: expireDlg.cpp:19
+msgid "KRN - Expire Settings"
+msgstr ""
+
+#: expireDlg.cpp:27 expireDlg.cpp:52
+msgid "For how long should we keep things (in days)?"
+msgstr ""
+
+#: expireDlg.cpp:30
+msgid "Article Bodies:"
+msgstr ""
+
+#: expireDlg.cpp:40
+msgid "Article Headers:"
 msgstr ""

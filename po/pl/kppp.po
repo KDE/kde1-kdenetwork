@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp \n"
-"POT-Creation-Date: 1998-01-13 23:06+0100\n"
+"POT-Creation-Date: 1998-01-16 22:13+0100\n"
 "PO-Revision-Date: 1998-01-13 14:11+0100\n"
 "Last-Translator: Pawe³ Jab³oñski <pawel.jablonski@mail.lze.lodz.pl>\n"
 "Content-Type: text/plain; charset=iso-8859-2\n"
@@ -96,7 +96,7 @@ msgstr ""
 "Skrypt loguj±cy ma nierówn± ilo¶æ\n"
 "pocz±tów/koñców pêtli (LoopStart LoopEnd)"
 
-#: connect.cpp:89 connect.cpp:188 main.cpp:719
+#: connect.cpp:89 connect.cpp:188 main.cpp:733
 msgid "Connecting to: "
 msgstr "Trwa ³±czenie do: "
 
@@ -109,7 +109,7 @@ msgstr "Nie mogê utworzyæ pliku blokuj±cego modem."
 msgid "Looking for Modem ..."
 msgstr "Szukam modemu ..."
 
-#: connect.cpp:112 debug.cpp:86 main.cpp:732
+#: connect.cpp:112 debug.cpp:86 main.cpp:746
 msgid "Log"
 msgstr "Podgl±d"
 
@@ -532,7 +532,7 @@ msgstr "Plik blokuj±cy modem:"
 msgid "Modem Timeout:"
 msgstr "Limit czasu modemu:"
 
-#: general.cpp:421 main.cpp:410
+#: general.cpp:421 main.cpp:417
 msgid "Modem"
 msgstr "Modem"
 
@@ -560,47 +560,47 @@ msgstr "Testuj modem"
 msgid "Terminal"
 msgstr "Terminal"
 
-#: main.cpp:295
+#: main.cpp:298
 msgid "Connect to: "
 msgstr "Po³±cz z:"
 
-#: main.cpp:306
+#: main.cpp:309
 msgid "Login ID:"
 msgstr "U¿ytkownik:"
 
-#: main.cpp:317
+#: main.cpp:322
 msgid "Password:"
 msgstr "Has³o:"
 
-#: main.cpp:332
+#: main.cpp:339
 msgid "Show Log Window"
 msgstr "Poka¿ podgl±d"
 
-#: main.cpp:354
+#: main.cpp:361
 msgid "Setup"
 msgstr "Opcje..."
 
-#: main.cpp:369
+#: main.cpp:376
 msgid "Connect"
 msgstr "Po³±cz"
 
-#: main.cpp:396
+#: main.cpp:403
 msgid "kppp Configuration"
 msgstr "Konfiguracja kppp"
 
-#: main.cpp:408
+#: main.cpp:415
 msgid "Accounts"
 msgstr "Po³±czenia"
 
-#: main.cpp:409
+#: main.cpp:416
 msgid "Device"
 msgstr "Port modemu:"
 
-#: main.cpp:411
+#: main.cpp:418
 msgid "PPP"
 msgstr "Ogólne"
 
-#: main.cpp:451
+#: main.cpp:458
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -609,13 +609,13 @@ msgstr ""
 "Brak po³±czenia:\n"
 "%s"
 
-#: main.cpp:613
+#: main.cpp:627
 msgid "The pppd daemon died unexpectedly!"
 msgstr ""
 "Demon pppd nieoczekiwanie\n"
 "zakoñczy³ dzia³anie"
 
-#: main.cpp:653
+#: main.cpp:667
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -631,7 +631,7 @@ msgstr ""
 "¶cie¿kê do programu pppd w pozycji PPP\n"
 "okna dialogowego konfiguracji kppp"
 
-#: main.cpp:665
+#: main.cpp:679
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -644,7 +644,7 @@ msgstr ""
 "Upewnij siê, ¿e kppp ma ustawione prawo SETUID oraz pppd\n"
 "jest wykonywalne. Szczegó³y w pomocy"
 
-#: main.cpp:679
+#: main.cpp:693
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -662,7 +662,7 @@ msgstr ""
 "i/lub ustaw w³a¶ciwy port modemu w pozycji Modem\n"
 "okna  dialogowego Konfiguracja kppp"
 
-#: main.cpp:700
+#: main.cpp:714
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -672,7 +672,7 @@ msgstr ""
 "Wymaga ona, by¶ poda³ swój\n"
 "login oraz haslo!"
 
-#: main.cpp:707
+#: main.cpp:721
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -682,15 +682,15 @@ msgstr ""
 "\"%s\"\n"
 "zawieraj±cego indentyfikacjê PAP"
 
-#: main.cpp:787
+#: main.cpp:801
 msgid "Quit kPPP?"
 msgstr "Zakoñczyæ kppp?"
 
-#: main.cpp:788
+#: main.cpp:802
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Zamkniecie kppp zakoñczy Twoje po³±czenie"
 
-#: main.cpp:819
+#: main.cpp:833
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
