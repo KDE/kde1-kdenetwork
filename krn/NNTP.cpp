@@ -97,12 +97,12 @@ NNTP::NNTP(char *host): DwNntpClient()
 void NNTP::PGetTextResponse()
 {
     KDEBUG (KDEBUG_INFO,3300,"entered NNTP::PGetTextResponse()");
-    partialResponse="";
+    partialResponse.clear();
     qApp->processEvents();
     SetObserver(extendPartialResponse);
     DwNntpClient::PGetTextResponse();
-    mTextResponse=qstrdup(partialResponse.c_str());
-    partialResponse="";
+    mTextResponse=partialResponse;
+    partialResponse.clear();
     SetObserver(NULL);
     KDEBUG (KDEBUG_INFO,3300,"exited NNTP::PGetTextResponse()");
 }
@@ -289,7 +289,7 @@ int NNTP::setMode (char *mode)
 int NNTP::listXover(int from,int to,NewsGroup *n)
 {
     datum key;
-    char buffer[1024];
+    char *buffer=new char[1024];
     int counter=0;
     DwString gi;
     reportCounters (true,false);
@@ -323,14 +323,13 @@ int NNTP::listXover(int from,int to,NewsGroup *n)
             }
             else
             {
-                QString resp=TextResponse().data();
-                if (resp.isEmpty())
+                if (!mTextResponse.length())
                 {
                     f.close();
                 }
                 //First break it up in an article list
                 class Article art;
-                char *tok=strtok(resp.data(),"\n");
+                char *tok=strtok((char *)mTextResponse.c_str(),"\n");
                 while (tok)
                 {
                     QStrList templ;
@@ -402,6 +401,7 @@ int NNTP::listXover(int from,int to,NewsGroup *n)
                 f.writeBlock(gi.data(),gi.length());
                 f.close();
                 gdbm_sync(artdb);
+                mTextResponse.clear();
             }
         }
         else
@@ -410,6 +410,7 @@ int NNTP::listXover(int from,int to,NewsGroup *n)
             warning ("Server said %s",StatusResponse().data());
         }
     }
+    delete[] buffer;
     resetCounters (true,true);
     return mReplyCode;
 }
@@ -422,8 +423,6 @@ void NNTP::groupList(QList <NewsGroup> *grouplist, bool fromserver)
     ac=krnpath+"/active";
     QFile f(ac.data());
     
-    QString groups;
-    
     if (fromserver)
     {
         int status=List();
@@ -435,25 +434,26 @@ void NNTP::groupList(QList <NewsGroup> *grouplist, bool fromserver)
             grouplist->clear();
             return;
         };
-        groups=TextResponse().c_str();
-        if (groups.isEmpty())
+        TextResponse();
+        if (!mTextResponse.length())
         {
             grouplist->clear();
             return;
         }
         if(f.open (IO_WriteOnly))
         {
-            f.writeBlock(groups.data(),groups.length());
+            f.writeBlock(mTextResponse.data(),mTextResponse.length());
             f.close();
             QString command="sort <";
             command=command+ac+">"+ac+"1; mv "+ac+"1 "+ac;
             system (command.data());
         }
+        mTextResponse.clear();
         groupList(grouplist,false);
     }
     else //read it from the active file
     {
-        static char buffer[2048]; // I hope no group has over 2000 chars in it's name ;-)
+        char *buffer=new char[2048]; // I hope no group has over 2000 chars in it's name ;-)
         if(f.open (IO_ReadOnly))
         {
             while (1)
@@ -467,6 +467,7 @@ void NNTP::groupList(QList <NewsGroup> *grouplist, bool fromserver)
             };
             f.close();
         }
+        delete[] buffer;
     };
     resetCounters (true,true);
 }
@@ -538,6 +539,7 @@ QString *NNTP::article(char *id)
             buffer[f.size()]=0;
             data->setStr(buffer);
             f.close();
+            delete[] buffer;
         }
     }
     else if(f.open (IO_WriteOnly))//get it, write it and return it

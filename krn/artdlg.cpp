@@ -315,6 +315,7 @@ void Artdlg::closeEvent(QCloseEvent *)
     group->artList.clear();
     artList.clear();
     group->isVisible=0;
+    debug ("artcount-->%d",artSpool.count());
     delete this;
 } 
 

@@ -180,7 +180,7 @@ void Article::save()
     content.dptr=_content.data();
     content.dsize=_content.length()+1;
     gdbm_store(artdb,key,content,GDBM_REPLACE);
-    
+
 }
 void Article::load()
 //gets the article info and data from the cache
@@ -235,6 +235,7 @@ void Article::load()
             Refs.append(tl.at(i));
         }
     }
+    free (content.dptr);
 }
 
 int Article::score()
