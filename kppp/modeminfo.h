@@ -68,7 +68,7 @@ public slots:
   void do_script();
   void time_out_slot();
   void cancelbutton();
-  void readChar(char);
+  void readChar(unsigned char);
 
 private:
   void ati_done();

@@ -49,7 +49,7 @@ public:
   bool opentty();
   bool closetty();
   bool hangup();
-  bool writeChar(char);
+  bool writeChar(unsigned char);
   bool writeLine(const char *);
   bool dataMode() const { return data_mode; }
   void setDataMode(bool set) { data_mode = set; }
@@ -67,7 +67,7 @@ public:
   static Modem *modem;
 
 signals:
-  void charWaiting(char);
+  void charWaiting(unsigned char);
 
 private slots:
   void startNotifier();

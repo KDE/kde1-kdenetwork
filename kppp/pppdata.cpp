@@ -120,7 +120,7 @@ int PPPData::access() {
 
 // functions to read/write date to configuration file
 const char* PPPData::readConfig(const char* group, const char* key,
-				const char* defvalue = "") {
+				const char* defvalue) {
   static QString s;
 
   if (config) {
@@ -1120,7 +1120,7 @@ bool PPPData::graphingEnabled() {
 //
 //functions to change/set the child pppd process info
 //
-const bool PPPData::pppdRunning() {
+bool PPPData::pppdRunning() {
   return pppdisrunning;
 }
 

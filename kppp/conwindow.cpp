@@ -52,7 +52,7 @@ ConWindow::ConWindow(QWidget *parent, const char *name,QWidget *mainwidget)
   timelabel2->setText("000:00:00");
 
   vollabel = new QLabel(i18n("Volume:"), this);
-  volinfo  = new QLabel(this);
+  volinfo  = new QLabel("", this);
 
   // now the stuff for accounting
   session_bill_l = new QLabel(i18n("Session Bill:"), this);

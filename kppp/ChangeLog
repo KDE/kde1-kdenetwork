@@ -1,3 +1,11 @@
+1999-03-10  Harri Porten  <porten@kde.org>
+
+	* modem.cpp: dropped ISTRIP option and made everything else "8-bit
+	clean" by using unsigned char and removing 0x7F AND'ing. Characters
+	like [§´°äöü] will work now.
+	* conwindow.cpp (ConWindow): initialise volinfo after discovering that
+	this prevents a segfault with Qt2.0 (without further investigation)
+
 1999-03-09  Harri Porten  <porten@kde.org>
 
 	* opener.cpp: utilize CMSG_LEN macro if present

@@ -31,7 +31,7 @@ myMultiEdit::myMultiEdit(QWidget *parent, const char *name)
 {
 }
 
-void myMultiEdit::insertChar(char c) {
+void myMultiEdit::insertChar(unsigned char c) {
   QMultiLineEdit::insertChar( c);
 }
 
@@ -87,7 +87,7 @@ void DebugWidget::clear() {
 }
 
 
-void DebugWidget::addChar(char c) {
+void DebugWidget::addChar(unsigned char c) {
   QString stuff;
 
   if(c == '\r' || c == '\n') {
@@ -108,11 +108,6 @@ void DebugWidget::statusLabel(QString s) {
 }
 
 
-/*
-void DebugWidget::keyPressEvent(QKeyEvent *k) {
-}
-
-*/
 void DebugWidget::resizeEvent(QResizeEvent *e){
   int w = width() ;
   int h = height();

@@ -167,7 +167,7 @@ void MiniTerm::init() {
       kapp->processEvents();
       kapp->processEvents();
 
-      Modem::modem->notify(this, SLOT(readChar(char)));
+      Modem::modem->notify(this, SLOT(readChar(unsigned char)));
       return;
     }
   }
@@ -178,9 +178,7 @@ void MiniTerm::init() {
 }                  
 
 
-void MiniTerm::readChar(char c) {
-
-  c = ((int)c & 0x7F);
+void MiniTerm::readChar(unsigned char c) {
 
   switch((int)c) {
   case 8:
@@ -254,11 +252,11 @@ void MyTerm::keyPressEvent(QKeyEvent *k) {
   if(k->ascii() == 13)
     myreturn();
 
-  Modem::modem->writeChar((char) k->ascii());
+  Modem::modem->writeChar(k->ascii());
 }
 
 
-void MyTerm::insertChar(char c) {  
+void MyTerm::insertChar(unsigned char c) {  
   QMultiLineEdit::insertChar(c);
 }
 

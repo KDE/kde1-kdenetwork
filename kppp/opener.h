@@ -41,7 +41,8 @@ private:
   int sendFD(int ttyfd, struct ResponseHeader *response);
   int sendResponse(struct ResponseHeader *response);
   const char *deviceByIndex(int idx);
-  bool createAuthFile(int authMethod, char *username, char *password);
+  bool createAuthFile(int authMethod, const char *username,
+                      const char *password);
   bool removeAuthFile(int authMethod);
   const char* authFile(int authMethod, int version = Original);
   bool execpppd(const char *arguments);

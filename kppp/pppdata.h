@@ -160,7 +160,7 @@ public:
   int  access();       // read/write access
 
   // function to read/write date to configuration file
-  const char* readConfig(const char *, const char *, const char *);
+  const char* readConfig(const char *, const char *, const char *defvalue = "");
   int readNumConfig(const char *, const char *, int);
   bool readListConfig(const char *, const char *, QStrList &, char sep = ',');
   void writeConfig(const char *, const char *, const char *);
@@ -374,7 +374,7 @@ public:
   void setpppdArgument(QStrList &);
 
   //functions to change/set the child pppd process info
-  const bool pppdRunning();
+  bool pppdRunning();
   void setpppdRunning(bool set);
 
   pid_t suidChildPid();

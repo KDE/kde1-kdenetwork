@@ -46,7 +46,7 @@ LoginMultiLineEdit::~LoginMultiLineEdit() {
 }
 
 
-void LoginMultiLineEdit::insertChar(char c) {
+void LoginMultiLineEdit::insertChar(unsigned char c) {
   QMultiLineEdit::insertChar(c);
   p_kppp->debugwindow->addChar(c);
 }
@@ -66,7 +66,7 @@ void LoginMultiLineEdit::mynewline() {
 
 
 void LoginMultiLineEdit::keyPressEvent(QKeyEvent *k) {
-  char c = (char) k->ascii();
+  unsigned char c = (unsigned char) k->ascii();
 
   if ((int)c == 0) return;
 
@@ -77,9 +77,7 @@ void LoginMultiLineEdit::keyPressEvent(QKeyEvent *k) {
 }
 
 
-void LoginMultiLineEdit::readChar(char c) {
-
-  c = ((int)c & 0x7F);
+void LoginMultiLineEdit::readChar(unsigned char c) {
 
   if(((int)c != 13) && ((int)c != 10) && ((int)c != 8))
     insertChar(c);      
@@ -140,7 +138,7 @@ LoginTerm::LoginTerm (QWidget *parent, const char *name)
 
   cont = false;
 
-  Modem::modem->notify(text_window, SLOT(readChar(char)));
+  Modem::modem->notify(text_window, SLOT(readChar(unsigned char)));
 }
 
 

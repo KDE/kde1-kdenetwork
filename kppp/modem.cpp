@@ -151,7 +151,7 @@ bool Modem::opentty() {
   tty.c_cflag &= ~(CSIZE | CSTOPB | PARENB);  
   tty.c_cflag |= CS8 | CREAD;
   tty.c_cflag |= CLOCAL;                   // ignore modem status lines      
-  tty.c_iflag = IGNBRK | IGNPAR | ISTRIP;  // added ISTRIP
+  tty.c_iflag = IGNBRK | IGNPAR /* | ISTRIP */ ;
   tty.c_lflag &= ~ICANON;                  // non-canonical mode
   tty.c_lflag &= ~(ECHO|ECHOE|ECHOK|ECHOKE);
 
@@ -205,7 +205,7 @@ bool Modem::closetty() {
 }
 
 void Modem::readtty(int) {
-  char c;
+  unsigned char c;
 
   if(read(modemfd, &c, 1) == 1) {
     emit charWaiting(c);
@@ -221,13 +221,13 @@ void Modem::readtty(int) {
 
 
 void Modem::notify(const QObject *receiver, const char *member) {
-  connect(this, SIGNAL(charWaiting(char)), receiver, member);
+  connect(this, SIGNAL(charWaiting(unsigned char)), receiver, member);
   startNotifier();
 }
 
 
 void Modem::stop() {
-  disconnect(SIGNAL(charWaiting(char)));
+  disconnect(SIGNAL(charWaiting(unsigned char)));
   stopNotifier();
 }
 
@@ -261,7 +261,7 @@ void Modem::flush() {
 }
 
 
-bool Modem::writeChar(char c) {
+bool Modem::writeChar(unsigned char c) {
   return write(modemfd, &c, 1) == 1;
 }
 

@@ -224,7 +224,7 @@ void ConnectWidget::init() {
       semaphore = false;
 
       Modem::modem->stop();
-      Modem::modem->notify(this, SLOT(readChar(char)));
+      Modem::modem->notify(this, SLOT(readChar(unsigned char)));
       
       // if we are stuck anywhere we will time out
       timeout_timer->start(atoi(gpppdata.modemTimeout())*1000); 
@@ -788,11 +788,10 @@ void ConnectWidget::set_con_speed_string() {
 
 
 
-void ConnectWidget::readChar(char c) {
+void ConnectWidget::readChar(unsigned char c) {
   if(semaphore)
     return;
 
-    c = ((int)c & 0x7F);
     readbuffer += c;
     myreadbuffer += c;
 

@@ -344,7 +344,8 @@ const char* Opener::deviceByIndex(int idx) {
   return device;
 }
 
-bool Opener::createAuthFile(int authMethod, char *username, char *password) {
+bool Opener::createAuthFile(int authMethod, const char *username,
+                            const char *password) {
   const char *authfile, *oldName, *newName;
   char line[100];
   char regexp[2*MaxStrLen+30];

@@ -674,8 +674,8 @@ KPPPWidget::KPPPWidget( QWidget *parent, const char *name )
 	  debugwindow, SLOT(statusLabel(QString)));
   connect(con, SIGNAL(toggleDebugWindow()),
 	  debugwindow, SLOT(toggleVisibility()));
-  connect(con, SIGNAL(debugPutChar(char)),
-	  debugwindow, SLOT(addChar(char)));
+  connect(con, SIGNAL(debugPutChar(unsigned char)),
+	  debugwindow, SLOT(addChar(unsigned char)));
   connect(con, SIGNAL(startAccounting()),
 	  this, SLOT(startAccounting()));
   connect(con, SIGNAL(stopAccounting()),

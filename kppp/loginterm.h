@@ -16,12 +16,12 @@ public:
   ~LoginMultiLineEdit();
 
   void keyPressEvent(QKeyEvent *k);
-  void insertChar(char c);
+  void insertChar(unsigned char c);
   void myreturn();
   void mynewline();
 
 public slots:
-  void readChar(char);
+  void readChar(unsigned char);
 };
 
 

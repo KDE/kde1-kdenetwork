@@ -151,7 +151,7 @@ void ModemTransfer::init() {
       // clear modem buffer
       Modem::modem->flush();
 
-      Modem::modem->notify(this, SLOT(readChar(char)));
+      Modem::modem->notify(this, SLOT(readChar(unsigned char)));
       return;
     }
   }
@@ -197,7 +197,7 @@ void ModemTransfer::do_script() {
   step++;
 }
 
-void ModemTransfer::readChar(char c) {
+void ModemTransfer::readChar(unsigned char c) {
   if(readbuffer.length() < 255)
     readbuffer += c;
 }

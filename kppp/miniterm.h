@@ -53,7 +53,7 @@ public:
   MyTerm(QWidget *parent=0, const char *name=0);
 
   void keyPressEvent (QKeyEvent*);
-  void insertChar(char c);
+  void insertChar(unsigned char c);
   void newLine();
   void backspace();
   void del();
@@ -75,7 +75,7 @@ public:
 public slots:
   void cancelbutton();
   void init();
-  void readChar(char);
+  void readChar(unsigned char);
   void help();
   void resetModem();
 
