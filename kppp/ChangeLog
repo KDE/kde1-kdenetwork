@@ -1,3 +1,8 @@
+1998-06-21  Harri Porten  <porten@tu-harburg.de>
+
+	* general.cpp (GeneralWidget): modified checkbox-size to avoid
+	warnings from QGManager
+
 1998-06-18  Harri Porten  <porten@tu-harburg.de>
 
 	* edit.cpp (ScriptWidget): deactivated "Use default script"-option
