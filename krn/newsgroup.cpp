@@ -117,6 +117,7 @@ void Article::formHeader(QString *s)
     delete[] tempbuf;
 
     s->append(Lines);
+    s->append(" ");
     s->append("\n");
 
     
@@ -305,6 +306,19 @@ void NewsGroup::getMessages(NNTP *server)
     }
     server->resetCounters (true,true);
     server->reportCounters (true,false);
+}
+void NewsGroup::catchup()
+{
+    debug ("catching up");
+    load();
+    getList();
+    for (Article *art=artList.first();art!=0;art=artList.next())
+    {
+        if (!art->isRead())
+        {
+            art->setRead();
+        }
+    }
 }
 
 ////////////////////////////////////////////////////////////////////

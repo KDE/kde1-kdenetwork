@@ -117,6 +117,7 @@ public:
     void updateList();
     void getSubjects(NNTP *server);
     void getMessages(NNTP *server);
+    void catchup();
 private:
 };
 

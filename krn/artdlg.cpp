@@ -157,8 +157,11 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     addToolBar (tool);
     tool->setBarPos( KToolBar::Top );
     tool->show();
-    
-    panner=new KPanner (this,"panner",KPanner::O_HORIZONTAL,33);
+
+    if (conf->readNumEntry("VerticalSplit"))
+        panner=new KPanner (this,"panner",KPanner::O_VERTICAL,33);
+    else
+        panner=new KPanner (this,"panner",KPanner::O_HORIZONTAL,33);
     panner->setSeparator(50);
     setView (panner);
     
@@ -180,14 +183,6 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     list->dict().insert("M",new QPixmap(pixpath+"tagged.xpm"));  //Marked message
 
     //and now the pixmap needed to make the tree
-
-    QPixmap *linepixmap=new QPixmap();
-    linepixmap->resize(16,16);
-    linepixmap->fill(QColor(white));
-    QPainter painter(linepixmap);
-    painter.drawLine(0,0,0,8);
-    painter.drawLine(0,8,15,8);
-    list->dict().insert("L",linepixmap);  //Marked message
 
     list->setTabWidth(25);
     
@@ -284,9 +279,6 @@ void Artdlg::fillTree ()
     qApp->processEvents ();
     group->getList();
     
-    //Here is where the filtering should happen
-    //Only put messages we want.
-    
     list->setAutoUpdate(false);
     list->clear();
     artList.clear();
@@ -317,9 +309,9 @@ void Artdlg::fillTree ()
         iter->formHeader(&formatted);
         list->insertItem (formatted.data());
     }
-
     list->setAutoUpdate(true);
-    list->repaint();
+    if (artList.count())
+        list->repaint();
     qApp->restoreOverrideCursor();
     statusBar()->changeItem("",1);
     qApp->processEvents ();

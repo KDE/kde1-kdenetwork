@@ -1,4 +1,28 @@
 -----------------------------------------------------------------------------
+Changes made Aug 21
+-----------------------------------------------------------------------------
+
+* [Roberto] Implemented Bernd Wuebben's request of a optional vertical split
+  in the article list.
+
+-----------------------------------------------------------------------------
+Changes made Aug 20
+-----------------------------------------------------------------------------
+
+* [Roberto] Implemented Catchup and, "Tagged" menu in groupdlg.
+
+* [Roberto] Cleaning up groupdlg. Fixed a segfault. Changed all loops
+  to use iterators (side effects sucked!)
+
+* [Roberto] Fixed several buglets.
+
+* [Roberto] Changed menus in groupdlg, moved "Subscribed" and "Tagged" as
+  submenus of Newsgroup. Looks much better this way. Now users shouldn't be
+  able to segfault just using menus :-)
+
+* [Roberto] Fixed the empty-newsgroup segfault.
+
+-----------------------------------------------------------------------------
 Changes made Aug 19
 -----------------------------------------------------------------------------
 

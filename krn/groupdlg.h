@@ -53,9 +53,10 @@ private slots:
     bool actions(int,NewsGroup *group=0);
     bool currentActions(int);
     bool subscrActions(int);
+    bool taggedActions(int);
     void fillTree();
-    void tag();
-    void subscribe();
+    void tag(NewsGroup *group);
+    void subscribe(NewsGroup *group);
     void openGroup(int);
     void checkUnread();
     void getSubjects(NewsGroup *group);

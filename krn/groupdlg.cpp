@@ -52,6 +52,7 @@
 #define HELP_ABOUT 13
 #define GET_SUBJECTS 14
 #define GET_ARTICLES 15
+#define CATCHUP 16
 
 extern QString krnpath,cachepath,artinfopath,pixpath;
 extern KConfig *conf;
@@ -82,13 +83,12 @@ bool checkPixmap(KTreeListItem *item,void *)
             return false;
         }
     }
-    if (subscr.find(&NewsGroup(name))==-1) //it ain't subscribed
+    if (subscr.find(&NewsGroup(name))!=-1) //it's subscribed
     {
-        item->setPixmap(txt_xpm);
+        item->setPixmap(sub_xpm);
         return false;
     }
-    
-    item->setPixmap(sub_xpm);
+    item->setPixmap(txt_xpm); //it's plain
     return false;
 }
 
@@ -99,8 +99,8 @@ Groupdlg::Groupdlg
     :
     Inherited (name)
 {
-    groups.setAutoDelete(true);
-    subscr.setAutoDelete(true);
+    groups.setAutoDelete(false);
+    subscr.setAutoDelete(false);
     txt_xpm = new QPixmap (pixpath+"txt.xpm");
     folder_xpm = new QPixmap (pixpath+"folder.xpm");
     sub_xpm = new QPixmap (pixpath+"subscr.xpm");
@@ -114,16 +114,31 @@ Groupdlg::Groupdlg
     file->insertItem("Exit",EXIT);
     connect (file,SIGNAL(activated(int)),SLOT(currentActions(int)));
 
-    QPopupMenu *newsgroup = new QPopupMenu;
-    newsgroup->insertItem("Open",OPENGROUP);
-    newsgroup->insertItem("(un)Subscribe",SUBSCRIBE);
-    newsgroup->insertItem("(Un)Tag",TAGGROUP);
-    connect (newsgroup,SIGNAL(activated(int)),SLOT(currentActions(int)));
 
     QPopupMenu *subscribed = new QPopupMenu;
     subscribed->insertItem("Get Subjects",GET_SUBJECTS);
     subscribed->insertItem("Get Articles",GET_ARTICLES);
+    subscribed->insertItem("Catchup",CATCHUP);
     connect (subscribed,SIGNAL(activated(int)),SLOT(subscrActions(int)));
+
+    QPopupMenu *tagged = new QPopupMenu;
+    tagged->insertItem("Get Subjects",GET_SUBJECTS);
+    tagged->insertItem("Get Articles",GET_ARTICLES);
+    tagged->insertItem("(un)Subscribe",SUBSCRIBE);
+    tagged->insertItem("Untag",TAGGROUP);
+    tagged->insertItem("Catchup",CATCHUP);
+    connect (tagged,SIGNAL(activated(int)),SLOT(taggedActions(int)));
+
+    QPopupMenu *newsgroup = new QPopupMenu;
+    newsgroup->insertItem("Open",OPENGROUP);
+    newsgroup->insertItem("(un)Subscribe",SUBSCRIBE);
+    newsgroup->insertItem("(Un)Tag",TAGGROUP);
+    newsgroup->insertItem("Catchup",CATCHUP);
+    newsgroup->insertSeparator();
+    newsgroup->insertItem ("&Subscribed", subscribed);
+    newsgroup->insertItem ("&Tagged", tagged);
+    
+    connect (newsgroup,SIGNAL(activated(int)),SLOT(currentActions(int)));
     
     QPopupMenu *options = new QPopupMenu;
     options->insertItem("Identity",CHANGE_IDENTITY);
@@ -140,7 +155,6 @@ Groupdlg::Groupdlg
     
     menu->insertItem ("&File", file);
     menu->insertItem ("&Newsgroup", newsgroup);
-    menu->insertItem ("&Subscribed", subscribed);
     menu->insertItem ("&Options", options);
     menu->insertSeparator();
     menu->insertItem ("&Help", help);
@@ -192,12 +206,11 @@ Groupdlg::Groupdlg
     show ();
     resize (500, 400);
     actions (LOAD_FILES);
+    fillTree();
+    connect (server,SIGNAL(newStatus(char *)),this,SLOT(updateCounter(char *)));
 
     if (conf->readNumEntry("ConnectAtStart"))
         actions(CONNECT);
-    fillTree();
-
-    connect (server,SIGNAL(newStatus(char *)),this,SLOT(updateCounter(char *)));
 }
 
 Groupdlg::~Groupdlg ()
@@ -263,8 +276,11 @@ void Groupdlg::openGroup (int index)
             char tc;
             QStrList bases;
             bases.setAutoDelete(true);
-            for (NewsGroup *iter = groups.first(); iter != 0; iter = groups.next ())
+            QListIterator <NewsGroup> it(groups);
+            NewsGroup *iter;
+            for (;it.current();++it)
             {
+                iter=it.current();
                 //this group's name matches the base
                 if (!strncmp(base.data(),iter->data(),l))
                 {
@@ -300,9 +316,9 @@ void Groupdlg::openGroup (int index)
                     }
                 }
             }
+            list->expandItem(index);
             list->forEveryVisibleItem(checkPixmap,NULL);
             list->repaint();
-            list->expandItem(index);
         }
         else
         {
@@ -317,52 +333,47 @@ void Groupdlg::openGroup (int index)
 
 
 
-void Groupdlg::subscribe ()
+void Groupdlg::subscribe (NewsGroup *group)
 {
-    const char *text = list->getCurrentItem ()->getText ();
+    debug ("subscribing to %s",group->data());
     KPath path;
-    int index=subscr.find (&NewsGroup(text));
+    int index=subscr.find (group);
     if (-1 != index)
     {
         subscr.remove ();
-
         path.push (new QString ("Subscribed Newsgroups."));
-        path.push (new QString (text));
+        path.push (new QString (group->data()));
+        int l=list->currentItem();
+        list->setCurrentItem(0);
         list->removeItem (&path);
         if (list->itemAt(0)->isExpanded() &&
-            ((unsigned int)list->currentItem()>list->itemAt(0)->childCount()+1))
-            list->setCurrentItem(list->currentItem()-1);
+            ((unsigned int)l>list->itemAt(0)->childCount()+1))
+            list->setCurrentItem(l-1);
+        else
+            list->setCurrentItem(l);
     }
     else
     {
-        NewsGroup *n=new NewsGroup(text);
-        if (-1 != groups.find (n))
+        if (-1 != groups.find (group))
         {
-            list->addChildItem (text, sub_xpm, 0);
-            subscr.append (new NewsGroup(text));
+            list->addChildItem (group->data(), sub_xpm, 0);
+            subscr.append (group);
         if (list->itemAt(0)->isExpanded() &&
             ((unsigned int)list->currentItem()>list->itemAt(0)->childCount()+1))
             list->setCurrentItem(list->currentItem()+1);
         }
-        delete n;
     };
     list->forEveryVisibleItem(checkPixmap,NULL);
     list->repaint();
     saveSubscribed();
 }
 
-void Groupdlg::tag ()
+void Groupdlg::tag (NewsGroup *group)
 {
-    const char *text = list->getCurrentItem ()->getText ();
-    int index=groups.find (&NewsGroup(text));
-    NewsGroup *g=groups.at(index);
-    if (-1 != index)
-    {
-        if(g->isTagged)
-            g->isTagged=false;
-        else
-            g->isTagged=true;
-    }
+    if(group->isTagged)
+        group->isTagged=false;
+    else
+        group->isTagged=true;
     list->forEveryVisibleItem(checkPixmap,NULL);
     list->repaint();
 }
@@ -418,8 +429,15 @@ void Groupdlg::online()
 void Groupdlg::fillTree ()
 {
     list->insertItem ("Subscribed Newsgroups.", folder_xpm);
-    for (NewsGroup *iter = subscr.first (); iter != 0; iter = subscr.next ())
-        list->addChildItem (iter->data(), sub_xpm, 0);
+    QListIterator <NewsGroup> it(subscr);
+    it.toFirst();
+    NewsGroup *g;
+    for (;it.current();++it)
+    {
+        g=it.current();
+        debug ("adding %s",g->data());
+        list->addChildItem (g->data(), sub_xpm, 0);
+    }
 
     list->insertItem ("All Newsgroups.", folder_xpm);
 }
@@ -454,11 +472,15 @@ bool Groupdlg::actions (int action,NewsGroup *group=0)
     {
     case GET_SUBJECTS:
         {
+            if (!group)
+                break;
             getSubjects(group);
             break;
         }
     case GET_ARTICLES:
         {
+            if (!group)
+                break;
             getArticles(group);
             break;
         }
@@ -469,7 +491,9 @@ bool Groupdlg::actions (int action,NewsGroup *group=0)
         }
     case TAGGROUP:
         {
-            tag();
+            if (!group)
+                break;
+            tag(group);
             break;
         }
     case CHANGE_IDENTITY:
@@ -553,7 +577,9 @@ bool Groupdlg::actions (int action,NewsGroup *group=0)
         }
     case SUBSCRIBE:
         {
-            subscribe ();
+            if (!group)
+                break;
+            subscribe (group);
             break;
         }
     case CHECK_UNREAD:
@@ -575,6 +601,14 @@ bool Groupdlg::actions (int action,NewsGroup *group=0)
             success = true;
             break;
         }
+    case CATCHUP:
+        {
+            if (!group)
+                break;
+            group->catchup();
+            success = true;
+            break;
+        }
     };
     
     
@@ -587,9 +621,9 @@ bool Groupdlg::loadSubscribed()
     QString ac;
     ac=krnpath+"subscribed";
     QFile f(ac.data ());
+    subscr.clear();
     if (f.open (IO_ReadOnly))
     {
-        subscr.clear();
         QTextStream st(&f);
         while (1)
         {
@@ -597,13 +631,14 @@ bool Groupdlg::loadSubscribed()
             if (st.eof())
                 break;
             subscr.append (new NewsGroup(ac.data()));
+            debug ("subscr-->%s",ac.data());
         };
         f.close ();
         return true;
     }
     else
     {
-        warning("Can't open subscribed file for writing!");
+        warning("Can't open subscribed file for reading!");
         return false;
     }
 }
@@ -616,9 +651,10 @@ bool Groupdlg::saveSubscribed()
     QFile f(ac.data ());
     if (f.open (IO_WriteOnly))
     {
-        for (NewsGroup *it = subscr.first (); it != 0; it = subscr.next ())
+        QListIterator <NewsGroup>it(subscr);
+        for (;it.current();++it)
         {
-            f.writeBlock(it->data(),it->length());
+            f.writeBlock(it.current()->data(),it.current()->length());
             f.writeBlock("\n",1);
         }
         f.close ();
@@ -686,19 +722,36 @@ bool Groupdlg::currentActions(int action)
         if (index!=-1)
             g=groups.at(index);
         actions(action,g);
-        list->forEveryItem(checkPixmap,NULL);
-        list->repaint();
     }
+    return success;
+}
+
+bool Groupdlg::taggedActions(int action)
+{
+    int i=0;
+    bool success=true;
+    QListIterator <NewsGroup> it(groups);
+    for (;it.current(); ++it)
+    {
+        i++;
+        if (it.current()->isTagged)
+        {
+            debug ("acting");
+            actions(action,it.current());
+        }
+    }
+    debug ("groups-->%d",groups.count());
     return success;
 }
 
 bool Groupdlg::subscrActions(int action)
 {
     bool success=true;
-    for (NewsGroup *group=subscr.first();group!=0;group=subscr.next())
+    QListIterator <NewsGroup> it(subscr);
+    for (;it.current();++it)
     {
-        debug ("doing action in group %s",group->data());
-        actions(action,group);
+        debug ("doing action in group %s",it.current()->data());
+        actions(action,it.current());
     }
     statusBar ()->changeItem ("Done", 2);
     return success;
@@ -757,7 +810,6 @@ void Groupdlg::checkUnread()
         delete p.pop();
     }
     list->repaint();
-    
 }
 
 

@@ -15,6 +15,7 @@
 // Magnus Reftel  <d96reftl@dtek.chalmers.se>                               //
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
+
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -22,6 +23,7 @@
 
 
 #include <qapp.h>
+#include <qfile.h>
 
 #include <kapp.h>
 #include <kiconloader.h>
@@ -35,7 +37,6 @@
 #include <mimelib/mimepp.h>
 
 
-
 Groupdlg  *main_widget;
 KConfig *conf;
 
@@ -43,7 +44,7 @@ KIconLoader *iconloader;
 
 ArticleDict artSpool;
 
-QString krnpath,cachepath,artinfopath,groupinfopath,pixpath;
+QString krnpath,cachepath,artinfopath,groupinfopath,pixpath,dbasepath;
 
 KDecode *decoder;
 
@@ -85,6 +86,7 @@ int main( int argc, char **argv )
 
     Groupdlg k;
     main_widget = &k;
+
     
     
     a.setMainWidget( (QWidget *) &k );
@@ -94,7 +96,8 @@ int main( int argc, char **argv )
 
     k.show();
     
-    return a.exec();
+    a.exec();
+
 }
 
 void checkConf()
