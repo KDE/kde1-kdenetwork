@@ -1,0 +1,236 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# Marcell Lengyel <miketkf@yahoo.com>, 1998.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: kdenetwork 981216\n"
+"POT-Creation-Date: 1998-11-23 01:56+0100\n"
+"PO-Revision-Date: 1998-12-18 09:53+0100\n"
+"Last-Translator: Marcell Lengyel <miketkf@yahoo.com>\n"
+"Language-Team: Hungarian <hu@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-2\n"
+"Content-Transfer-Encoding: 8-bit\n"
+
+#: kbiff.cpp:470
+msgid "&UnDock"
+msgstr "&KiDokkolás"
+
+#: kbiff.cpp:472
+msgid "&Dock"
+msgstr "&BeDokkolás"
+
+#: kbiff.cpp:473
+msgid "&Setup..."
+msgstr "&Beállítások..."
+
+#: kbiff.cpp:475
+msgid "&Help..."
+msgstr "&Súgó..."
+
+#: kbiff.cpp:479
+msgid "&Check Mail Now"
+msgstr "Új &levelek keresése"
+
+#: kbiff.cpp:481
+msgid "&Read Mail Now"
+msgstr "L&evél olvasás"
+
+#: kbiff.cpp:487
+msgid "&Stop"
+msgstr ""
+
+#: notify.cpp:28 notify.cpp:45
+msgid "You have new mail!"
+msgstr "Új levele érkezett!"
+
+#: notify.cpp:53
+#, c-format
+msgid "New Messages: %d"
+msgstr "Új Levelek: %d"
+
+#: notify.cpp:58
+#, c-format
+msgid "Mailbox: %s"
+msgstr "Postaláda: %s"
+
+#: setupdlg.cpp:81
+msgid "KBiff Setup"
+msgstr "KBiff Beállítások"
+
+#: setupdlg.cpp:84
+msgid "Profile:"
+msgstr "Profil:"
+
+#: setupdlg.cpp:100
+msgid "&New..."
+msgstr "&Új..."
+
+#: setupdlg.cpp:107
+msgid "&Rename..."
+msgstr "Á&tnevez..."
+
+#: setupdlg.cpp:141
+msgid "General"
+msgstr "Álltalános"
+
+#: setupdlg.cpp:142
+msgid "New Mail"
+msgstr "Új Levél"
+
+#: setupdlg.cpp:143
+msgid "Mailbox"
+msgstr "Postaláda"
+
+#: setupdlg.cpp:358
+msgid "New Profile"
+msgstr "Új Profil"
+
+#: setupdlg.cpp:390
+#, c-format
+msgid "Rename Profile: %s"
+msgstr "Profil Átnevezése: %s"
+
+#: setupdlg.cpp:430
+#, c-format
+msgid "Delete Profile: %s"
+msgstr "Profil Törlése: %s"
+
+#: setupdlg.cpp:431
+msgid "Are you sure you wish to delete this profile?\n"
+msgstr "Biztos benne, hogy törölni akarja ezt a profilt?\n"
+
+#: setupdlg.cpp:491
+msgid "Poll (sec):"
+msgstr "Ellenõrzés (mp):"
+
+#: setupdlg.cpp:496
+msgid "Mail client:"
+msgstr "Levél olvasó:"
+
+#: setupdlg.cpp:509
+msgid "Dock in panel"
+msgstr "Dokkoljon a panelba"
+
+#: setupdlg.cpp:514
+msgid "Use session management"
+msgstr "Vegyen részt a session management-ben"
+
+#: setupdlg.cpp:519
+msgid "Icons:"
+msgstr "Ikonok:"
+
+#: setupdlg.cpp:537
+msgid "No Mail:"
+msgstr "Nincs Üzenet"
+
+#: setupdlg.cpp:546
+msgid "Old Mail"
+msgstr "Régi Üzenet"
+
+#: setupdlg.cpp:556
+msgid "New Mail:"
+msgstr "Új Üzenet"
+
+#: setupdlg.cpp:693
+msgid "Run Command"
+msgstr "Parancs"
+
+#: setupdlg.cpp:700 setupdlg.cpp:713 setupdlg.cpp:1053
+msgid "Browse"
+msgstr "Kiválaszt"
+
+#: setupdlg.cpp:706
+msgid "Play Sound"
+msgstr "Hang Lejátszás"
+
+#: setupdlg.cpp:719
+msgid "System Beep"
+msgstr "Csipogás"
+
+#: setupdlg.cpp:724
+msgid "Notify"
+msgstr "Figyelmeztetés"
+
+#: setupdlg.cpp:855
+msgid "Advanced Options"
+msgstr "Haladó Beállítások"
+
+#: setupdlg.cpp:859
+msgid "Mailbox URL:"
+msgstr "Postaláda URL címe:"
+
+#: setupdlg.cpp:863
+msgid "Port:"
+msgstr ""
+
+#: setupdlg.cpp:867
+msgid "PREAUTH"
+msgstr ""
+
+#: setupdlg.cpp:874
+msgid "Keep Alive"
+msgstr "Életben tartás"
+
+#: setupdlg.cpp:1000 setupdlg.cpp:1029
+msgid "Mailbox:"
+msgstr "Postaláda:"
+
+#: setupdlg.cpp:1013 setupdlg.cpp:1323
+msgid "New Mailbox"
+msgstr "Új Postaláda"
+
+#: setupdlg.cpp:1020
+msgid "Delete Mailbox"
+msgstr "Postaláda Törlés"
+
+#: setupdlg.cpp:1026
+msgid "Protocol:"
+msgstr "Protokol:"
+
+#: setupdlg.cpp:1032
+msgid "Server:"
+msgstr "Kiszolgáló:"
+
+#: setupdlg.cpp:1035
+msgid "User:"
+msgstr "Felhasználó:"
+
+#: setupdlg.cpp:1038
+msgid "Password:"
+msgstr "Jelszó:"
+
+#: setupdlg.cpp:1070
+msgid "Store password"
+msgstr "Jelszó tárolása"
+
+#: setupdlg.cpp:1073
+msgid "Advanced"
+msgstr "Haladóknak"
+
+#: setupdlg.cpp:1510
+msgid "KBiff"
+msgstr ""
+
+#: setupdlg.cpp:1532
+#, c-format
+msgid ""
+"Version %s\n"
+"\n"
+"Copyright (C) 1998\n"
+"Kurt Granroth"
+msgstr ""
+"%s-ás verzió\n"
+"\n"
+"Copyright (C) 1998\n"
+"Kurt Granroth"
+
+#: setupdlg.cpp:1581
+msgid "New Name:"
+msgstr "Új Név:"
+
+#: setupdlg.cpp:1607
+msgid "New Name"
+msgstr "Új Név"
