@@ -203,6 +203,7 @@ Groupdlg::Groupdlg
     server = new NNTP (sname.data());
     server->reportCounters (true,false);
 
+    show();
     actions (LOAD_FILES);
     fillTree();
     connect (server,SIGNAL(newStatus(char *)),this,SLOT(updateCounter(char *)));
@@ -213,7 +214,6 @@ Groupdlg::Groupdlg
 
     // readProperties(); Kalle: no longer needed
 
-    show();
     qApp->processEvents();
     //Open group windows
 }
