@@ -50,3 +50,29 @@ SoundPlayer: /usr/local/bin/wavplay
 SoundPlayerOpt: -q
 # ==> SoundPlayer + SoundPlayerOpt = /usr/local/bin/wavplay -q
  
+########### Edit below to set up a forward ###########
+
+# Enable forward by uncommenting and editing this line 
+#Forward: user@host
+
+# Choose forward method :
+# None is perfect, they all have pros (+) and cons (-).
+#
+# FWA : Forward announcement only. Direct connection. Not recommended.
+#        (+) You know who is the caller, but
+#        (-) Caller will have to respond to an announcement from you. Annoying.
+#        (-) Don't use if you have an answering machine on your 'away' location
+#  (The answering machine can't popup an announcement, it would be confusing!)
+#
+# FWR : Forward all requests, changing info when necessary. Direct connection.
+#        (+) Caller won't know that you're away, but
+#        (-) You won't really know who's the caller - only his username,
+#            (so you might see "talk from Wintalk@my_host")
+#
+# FWT : Forward all requests and take the talk. No direct connection.
+#        (+) Same as above, but works also if you and caller can't be in direct 
+#            contact one with the other (e.g. firewall).
+#        (+) You'll be told who's really talking to you when you accept the talk
+#        (-) But as in FWR, you won't know his machine name in the announcement
+#
+#ForwardMethod: FWR
