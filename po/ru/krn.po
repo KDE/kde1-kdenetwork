@@ -1,12 +1,12 @@
 # Russian messages for KRN.
-# Copyright (C) 1998 KDE Team.
+# Copyright (C) 1998, 1999 KDE Team.
 # Const Kaplinsky <const@ce.cctpu.edu.ru>, 1998.
-#
+# Denis Pershin <dyp@inetlab.com>, 1999.
 msgid ""
 msgstr ""
 "Project-Id-Version: krn\n"
 "POT-Creation-Date: 1999-01-18 02:04+0100\n"
-"PO-Revision-Date: 1998-12-31 07:13+07:00\n"
+"PO-Revision-Date: 1999-06-06 13:04+07:00\n"
 "Last-Translator: Const Kaplinsky <const@ce.cctpu.edu.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -526,12 +526,11 @@ msgstr "Пароль"
 
 #: NNTPConfigDlg.cpp:91
 msgid "Ask before downloading more than"
-msgstr ""
+msgstr "Спрашивать перед загрузкой более чем"
 
 #: NNTPConfigDlg.cpp:94
-#, fuzzy
 msgid "articles"
-msgstr "Пометить статью"
+msgstr "статей"
 
 #: aboutDlg.cpp:28
 msgid "About KRN"
@@ -551,16 +550,15 @@ msgstr "А также большая благодарность:"
 
 #: aboutDlg.cpp:71
 msgid "All KDE developers"
-msgstr ""
+msgstr "Все разработчики KDE"
 
 #: aboutDlg.cpp:73
 msgid "Chuck, for helping in time of need"
-msgstr ""
+msgstr "Чак, за помощь в нужный момент"
 
 #: aboutDlg.cpp:74
-#, fuzzy
 msgid "All testers"
-msgstr "Все конференции."
+msgstr "Все тестеры"
 
 #: fontsDlg.cpp:39
 msgid "Message Display Settings"
@@ -1309,7 +1307,7 @@ msgstr "Зашифрованное сообщение"
 
 #: kmreaderwin.cpp:431
 msgid "Cannot decrypt message:"
-msgstr "Не удается дешифровать сообщение:"
+msgstr "Не удается расшифровать сообщение:"
 
 #: kmreaderwin.cpp:440
 msgid "Message was signed by"
@@ -1398,7 +1396,7 @@ msgid ""
 msgstr ""
 "Вы ввели неверную секретную фразу.\n"
 "Вы желаете повторить ввод, продолжить, оставив сообщение\n"
-"неподписанным, или отменить отправку сообщения вообще?"
+"не подписанным, или отменить отправку сообщения вообще?"
 
 #: kpgp.cpp:331
 msgid "Retry"
@@ -1448,10 +1446,9 @@ msgstr "Идентификация пользователя PGP:"
 msgid "Store passphrase"
 msgstr "Сохранить секретную фразу"
 
-# Что бы это значило?
 #: kpgp.cpp:788
 msgid "Always encrypt to self"
-msgstr ""
+msgstr "Всегда шифровать при посылке себе"
 
 #: krnsender.cpp:60
 msgid "This server is read onlyyou can't post here!"
@@ -1627,7 +1624,7 @@ msgstr "Кодировка редактора"
 
 #: charsetsDlg.cpp:75
 msgid "Set as &default"
-msgstr "&Установить в качестве умолчаний"
+msgstr "&Установить в качестве умолчания"
 
 #: charsetsDlg.cpp:80
 msgid "&7 bit is ASCII"
@@ -1639,7 +1636,7 @@ msgstr "&Кодировать неизвестные символы"
 
 #: expirestatusdlg.cpp:35
 msgid "Please wait a minute, I am expiring!"
-msgstr ""
+msgstr "Пожалуйста подождите, удаляю старые статьи!"
 
 #: kpgpbase.cpp:315
 msgid "Bad pass Phrase; couldn't sign"
@@ -1689,28 +1686,25 @@ msgstr ""
 "Они не смогут расшифровать сообщение"
 
 #: TooManydlg.cpp:25
-#, fuzzy
 msgid "KRN-Confirmation"
-msgstr "KRN-Конфигурация NNTP"
+msgstr "KRN-Подтверждение"
 
 #: TooManydlg.cpp:30
 msgid "Read how many articles?"
-msgstr ""
+msgstr "Сколько статей читать?"
 
 #: TooManydlg.cpp:36
 msgid "Get them from"
-msgstr ""
+msgstr "Брать из"
 
 #: TooManydlg.cpp:37
-#, fuzzy
 msgid "Oldest articles"
-msgstr "Получить статьи"
+msgstr "Самые старые статьи"
 
 #: TooManydlg.cpp:39
-#, fuzzy
 msgid "Newest articles"
-msgstr "Получить статьи"
+msgstr "Самые новые статьи"
 
 #: TooManydlg.cpp:43
 msgid "Make this the new threshold"
-msgstr ""
+msgstr "Установить это как новый порог"

@@ -1,12 +1,12 @@
 # Russian messages for KDE Network Utilities.
-# Copyright (C) 1998 KDE Team.
+# Copyright (C) 1998, 1999 KDE Team.
 # Const Kaplinsky <const@ce.cctpu.edu.ru>, 1998.
-#
+# Denis Pershin <dyp@inetlab.com>, 1999.
 msgid ""
 msgstr ""
 "Project-Id-Version: knu\n"
 "POT-Creation-Date: 1999-01-23 02:09+0100\n"
-"PO-Revision-Date: 1998-12-31 07:08+07:00\n"
+"PO-Revision-Date: 1999-06-06 12:59+07:00\n"
 "Last-Translator: Const Kaplinsky <const@ce.cctpu.edu.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -86,6 +86,10 @@ msgid ""
 "\n"
 "Bertrand"
 msgstr ""
+"Knu\n"
+"Версии %s\n"
+"\n"
+"Bertrand"
 
 #: knu.cpp:469
 msgid "About..."
@@ -93,7 +97,7 @@ msgstr "О программе..."
 
 #: knu.cpp:602
 msgid "Network utilities"
-msgstr ""
+msgstr "Сетевые утилиты"
 
 #: CommandDlg.cpp:131
 msgid "H&ost:"

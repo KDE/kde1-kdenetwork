@@ -1,12 +1,13 @@
 # Russian messages for KBiff.
-# Copyright (C) 1998 KDE Team.
+# Copyright (C) 1998, 1999 KDE Team.
 # Const Kaplinsky <const@ce.cctpu.edu.ru>, 1998.
-#
+# Denis Pershin <dyp@inetlab.com>, 1999.
+
 msgid ""
 msgstr ""
 "Project-Id-Version: kbiff\n"
 "POT-Creation-Date: 1999-06-05 11:50-0700\n"
-"PO-Revision-Date: 1998-12-31 07:09+07:00\n"
+"PO-Revision-Date: 1999-06-06 12:27+07:00\n"
 "Last-Translator: Const Kaplinsky <const@ce.cctpu.edu.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -58,7 +59,7 @@ msgstr "Почтовый ящик: %s"
 # This is on a button.  It launches the user's mail client
 #: notify.cpp:73
 msgid "Mailer"
-msgstr ""
+msgstr "Почтовая программа"
 
 #: setupdlg.cpp:83
 msgid "KBiff Setup"
@@ -142,7 +143,7 @@ msgstr "Новая почта:"
 # to a remote server
 #: setupdlg.cpp:599
 msgid "No Conn.:"
-msgstr ""
+msgstr "Нет соед.:"
 
 #: setupdlg.cpp:756
 msgid "Run Command"
@@ -168,7 +169,7 @@ msgstr "Уведомление"
 # number of new mail whenever the user puts the cursor of a KBiff icon.
 #: setupdlg.cpp:798
 msgid "Floating Status"
-msgstr ""
+msgstr "Показывать состояние"
 
 #: setupdlg.cpp:948
 msgid "Advanced Options"
@@ -188,14 +189,14 @@ msgstr "PREAUTH"
 
 #: setupdlg.cpp:967
 msgid "Keep Alive"
-msgstr ""
+msgstr "Сохранять соединение"
 
 # If this is selected, then KBiff will do all of it's network work in an
 # asynchronous mode.  That is, it will not wait for the response to any
 # given command... it will receive the response as an event, later.
 #: setupdlg.cpp:974
 msgid "Asynchronous"
-msgstr ""
+msgstr "Асинхронный"
 
 #: setupdlg.cpp:1123 setupdlg.cpp:1152
 msgid "Mailbox:"
@@ -260,6 +261,5 @@ msgstr "Новое имя"
 
 # This displays the number of new messages for a given mailbox
 #: status.cpp:34
-#, fuzzy
 msgid "New"
-msgstr "Создать"
+msgstr "Новых"

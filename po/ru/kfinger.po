@@ -1,7 +1,7 @@
 # Russian messages for KFinger.
-# Copyright (C) 1998 KDE Team.
+# Copyright (C) 1998, 1999 KDE Team.
 # Const Kaplinsky <const@ce.cctpu.edu.ru>, 1998.
-#
+# Denis Pershin <dyp@inetlab.com>, 1999.
 msgid ""
 msgstr ""
 "Project-Id-Version: kfinger\n"
@@ -30,13 +30,12 @@ msgid "&Save Options"
 msgstr "&Сохранить конфигурацию"
 
 #: kfinger.C:38
-#, fuzzy
 msgid ""
 "kfinger 0.8.1\n"
 "\n"
 "(c) Andrea Rizzi (rizzi@kde.org)"
 msgstr ""
-"kfinger 0.8.0\n"
+"kfinger 0.8.1\n"
 "\n"
 "(c) Andrea Rizzi (rizzi@kde.org)"
 
@@ -58,7 +57,7 @@ msgstr "Talk..."
 
 #: kfinger.C:54
 msgid "AutoFinger On/Off"
-msgstr "Вкл./Выкл. автообновление"
+msgstr "Вкл./Выкл. авто обновление"
 
 #: kfinger.C:66
 msgid "Welcome to KDE Finger\n"
@@ -76,7 +75,7 @@ msgstr "Ошибка на сервере : %s"
 #: kfinger.C:284
 #, c-format
 msgid "Connection refused by  %s"
-msgstr ""
+msgstr "Соединение отвергнуто %s"
 
 #: kfinger.C:296
 #, c-format
@@ -84,13 +83,12 @@ msgid "Finger  %s@%s   --   %s"
 msgstr "Finger  %s@%s   --   %s"
 
 #: kfinger.C:317
-#, fuzzy
 msgid ""
 "Kfinger 0.8.1\n"
 "(c) by Andrea Rizzi\n"
 "rizzi@kde.org"
 msgstr ""
-"Kfinger 0.8.0\n"
+"Kfinger 0.8.1\n"
 "(c) Andrea Rizzi\n"
 "rizzi@kde.org"
 
@@ -108,7 +106,7 @@ msgstr "Имя сервера"
 
 #: kfinger.C:405 kfinger.C:408
 msgid "Server list"
-msgstr "Список серверов"
+msgstr "Сервера"
 
 #: kfinger.C:441
 msgid "User Name"
@@ -116,16 +114,16 @@ msgstr "Имя пользователя"
 
 #: kfinger.C:445 kfinger.C:448
 msgid "Users list"
-msgstr "Список пользователей"
+msgstr "Пользователи"
 
 #: kfinger.C:462
 msgid "Timed finger"
-msgstr "Автообновление"
+msgstr "Авто обновление"
 
 #: kfinger.C:477 kfinger.C:664
 #, c-format
 msgid "Finger wait: %d\""
-msgstr "Ожидание Finger: %d\""
+msgstr "Период обновления: %d\""
 
 #: kfinger.C:482
 msgid "Talk Command "
@@ -146,7 +144,7 @@ msgstr "Сервер Finger"
 # Непонятен контекст
 #: kfinger.C:505 kfinger.C:517
 msgid "Fixed"
-msgstr ""
+msgstr "Фиксированный"
 
 #: kfinger.C:513
 msgid "Finger User"

@@ -1,7 +1,7 @@
 
 GMOFILES = \
 	kbiff.gmo kcmktalkd.gmo kfinger.gmo kmail.gmo knu.gmo kppp.gmo \
-	krn.gmo ksirc.gmo ktalkd.gmo
+	krn.gmo ksirc.gmo ktalkd.gmo kppplogview.gmo
 
 POFILES = $(GMOFILES:.gmo=.po)
 

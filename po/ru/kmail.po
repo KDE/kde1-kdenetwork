@@ -1,12 +1,12 @@
 # Russian messages for KMail.
-# Copyright (C) 1998 KDE Team.
+# Copyright (C) 1998, 1999 KDE Team.
 # Const Kaplinsky <const@ce.cctpu.edu.ru>, 1998.
-#
+# Denis Pershin <dyp@inetlab.com>, 1999.
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
 "POT-Creation-Date: 1999-04-26 03:29+0200\n"
-"PO-Revision-Date: 1998-12-31 07:09+07:00\n"
+"PO-Revision-Date: 1999-06-06 12:58+07:00\n"
 "Last-Translator: Const Kaplinsky <const@ce.cctpu.edu.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -464,9 +464,8 @@ msgid "Message List Font:"
 msgstr "Шрифт списка сообщений:"
 
 #: kmsettings.cpp:357
-#, fuzzy
 msgid "Long folder list"
-msgstr "&Расширенные заголовки"
+msgstr "Расширенный список папок"
 
 #: kmsettings.cpp:386
 msgid "Phrases"
@@ -622,7 +621,7 @@ msgstr "Сервер:"
 
 #: kmsettings.cpp:914
 msgid "Store POP password in config file"
-msgstr ""
+msgstr "Сохранять пароль POP в файле настроек"
 
 #: kmsettings.cpp:919
 msgid "Delete mail from server"
@@ -674,7 +673,7 @@ msgstr "Дата"
 
 #: kmheaders.cpp:222
 msgid "Receiver"
-msgstr ""
+msgstr "Получатель"
 
 #: kmheaders.cpp:225
 #, c-format
@@ -880,14 +879,12 @@ msgid "&Attach..."
 msgstr "&Подцепить..."
 
 #: kmcomposewin.cpp:532
-#, fuzzy
 msgid "Attach &Public Key"
-msgstr "Вставить &открытый ключ"
+msgstr "Подцепить &открытый ключ"
 
 #: kmcomposewin.cpp:534
-#, fuzzy
 msgid "Attach My &Public Key"
-msgstr "Вставить &открытый ключ"
+msgstr "Подцепить &открытый ключ"
 
 #: kmcomposewin.cpp:545
 msgid "&Save..."
@@ -959,11 +956,11 @@ msgstr "Вставить файл"
 
 #: kmcomposewin.cpp:1248
 msgid "my pgp key"
-msgstr ""
+msgstr "мой ключ pgp"
 
 #: kmcomposewin.cpp:1276
 msgid "pgp key"
-msgstr ""
+msgstr "pgp ключ"
 
 #: kmcomposewin.cpp:1297 kmreaderwin.cpp:906
 msgid "View..."
@@ -998,9 +995,8 @@ msgid "Date:"
 msgstr "Дата:"
 
 #: kmcomposewin.cpp:1670
-#, fuzzy
 msgid "Spellcheck complete."
-msgstr "Программа проверки орфографии..."
+msgstr "Проверка орфографии завершена."
 
 #: kmcomposewin.cpp:2113
 msgid "Spellcheck - KMail"
@@ -1094,7 +1090,7 @@ msgstr "Шифрованное сообщение"
 
 #: kmreaderwin.cpp:512
 msgid "Cannot decrypt message:"
-msgstr "Невозможно дешифровать сообщение:"
+msgstr "Невозможно расшифровать сообщение:"
 
 #: kmreaderwin.cpp:521
 msgid "Message was signed by"
@@ -1123,6 +1119,9 @@ msgid ""
 "Mail checking aborted\n"
 "Check your account settings!"
 msgstr ""
+"У аккаунта %s не определен почтовый ящик!\n"
+"Проверка почты прервана\n"
+"Проверьте настройки аккаунтов!"
 
 #: kmacctmgr.cpp:207 kmacctmgr.cpp:264
 msgid ""
@@ -1131,7 +1130,7 @@ msgid ""
 "receive mail."
 msgstr ""
 "Чтобы получать почту, Вам необходимо\n"
-"добавить аккаунт в резделе `Сеть'\n"
+"добавить аккаунт в разделе `Сеть'\n"
 "настроек программы."
 
 #: main.cpp:121 main.cpp:371
@@ -1558,7 +1557,7 @@ msgid ""
 "message as is, or cancel the message?"
 msgstr ""
 "Вы желаете зашифровать сообщение, оставить\n"
-"незашифрованным или отменить его вообще?"
+"не зашифрованным или отменить его вообще?"
 
 #: kpgp.cpp:346
 msgid "Encrypt"
@@ -1586,12 +1585,11 @@ msgstr "Проверка безопасности PGP"
 
 #: kpgp.cpp:769
 msgid "Please select the public key to insert"
-msgstr ""
+msgstr "Пожалуйста выберите публичный ключ, который хотите вставить"
 
 #: kpgp.cpp:800
-#, fuzzy
 msgid "Select key"
-msgstr "Выбор папки"
+msgstr "Выбор ключа"
 
 #: kpgp.cpp:827
 msgid "PGP User Identity:"
@@ -1790,9 +1788,8 @@ msgid "&Abort"
 msgstr "&Прервать"
 
 #: kmnewiostatuswdg.cpp:26
-#, fuzzy
 msgid "Abort"
-msgstr "&Прервать"
+msgstr "Прервать"
 
 #: kmnewiostatuswdg.cpp:43
 msgid "Sending messages to "
@@ -1832,7 +1829,7 @@ msgstr "Кодировка редактора сообщений"
 
 #: charsetsDlg.cpp:75
 msgid "Set as &default"
-msgstr "&Установить в качестве умолчаний"
+msgstr "&Установить в качестве умолчания"
 
 #: charsetsDlg.cpp:80
 msgid "&7 bit is ASCII"
@@ -1864,7 +1861,7 @@ msgstr "&Кодировать неизвестные символы"
 #~ "при открытии нового окна или перезапуске kmail"
 
 #~ msgid "Could not create temporary file"
-#~ msgstr "Ошибка создания временнного файла"
+#~ msgstr "Ошибка создания временного файла"
 
 #~ msgid "Could not save temporary file %s"
 #~ msgstr "Ошибка сохранения временного файла %s"

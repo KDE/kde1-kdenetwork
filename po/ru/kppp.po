@@ -1,12 +1,12 @@
 # Russian messages for kppp.
-# Copyright (C) 1998 KDE Team.
+# Copyright (C) 1998, 1999 KDE Team.
 # Const Kaplinsky <const@ce.cctpu.edu.ru>, 1998.
-#
+# Denis Pershin <dyp@inetlab.com>, 1999.
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
 "POT-Creation-Date: 1999-04-25 03:13+0200\n"
-"PO-Revision-Date: 1998-12-31 07:12+07:00\n"
+"PO-Revision-Date: 1999-06-06 13:26+07:00\n"
 "Last-Translator: Const Kaplinsky <const@ce.cctpu.edu.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr "Изменить..."
 
 #: accounts.cpp:68
 msgid "Allows you to modify the selected account"
-msgstr ""
+msgstr "Позволяет изменять выбранный аккаунт"
 
 #: accounts.cpp:77
 msgid "New..."
@@ -34,6 +34,8 @@ msgid ""
 "Create a new dialup connection\n"
 "to the internet"
 msgstr ""
+"Создать новое подключение\n"
+"к интернету"
 
 #: accounts.cpp:89
 msgid ""
@@ -42,6 +44,10 @@ msgid ""
 "to a new account, that you can modify to fit your\n"
 "needs"
 msgstr ""
+"Копирует выбранные аккаунты. Все\n"
+"установки из выбранного аккаунта копируются\n"
+"в новый, чтобы вы могли изменить их в\n"
+"соответствии со своими желаниями"
 
 #: accounts.cpp:99
 msgid ""
@@ -49,6 +55,9 @@ msgid ""
 "\n"
 "<red><b>Use with care!"
 msgstr ""
+"Удаляет выделенный аккаунт\n"
+"\n"
+"<red><b>Использовать осторожно!"
 
 #: accounts.cpp:108
 msgid "Phone Costs:"
@@ -63,6 +72,12 @@ msgid ""
 "account - beware, this is <b>NOT</b> the sum \n"
 "of the phone costs of all your accounts!"
 msgstr ""
+"Показывает суммарную стоимость звонков\n"
+"по выбранным аккаунтам.\n"
+"\n"
+"<b>Важно</b>: Если у вас больше чем один аккаунт,\n"
+"имейте ввиду, что это <b>НЕ</b> сумма стоимости\n"
+"по всем аккаунтам!"
 
 #: accounts.cpp:128 conwindow.cpp:54
 msgid "Volume:"
@@ -77,6 +92,12 @@ msgid ""
 "\n"
 "<link #volaccounting>More on volume accounting</link>"
 msgstr ""
+"Показывает переданный объем в байтах\n"
+"для выделенного аккаунта (не для всех ваших\n"
+"аккаунтов. Можете выбрать что показывать\n"
+"в настройках учета).\n"
+"\n"
+"<link #volaccounting>Подробнее об учете объема</link>"
 
 #: accounts.cpp:152
 msgid "Reset Costs"
@@ -190,7 +211,7 @@ msgstr "Инициализация модема..."
 
 #: connect.cpp:270 connect.cpp:271
 msgid "Setting speaker volume..."
-msgstr ""
+msgstr "Устанавливаю громкость динамика..."
 
 #: connect.cpp:289
 msgid "Dialing"
@@ -278,7 +299,7 @@ msgstr "Слишком глубокая вложенность циклов!"
 
 #: connect.cpp:668
 msgid "LoopEnd without matching Start! Line: "
-msgstr ""
+msgstr "Конец цикла без соответствующего начала! Строка: "
 
 #: connect.cpp:748
 msgid "Starting pppd ..."
@@ -286,7 +307,7 @@ msgstr "Запуск pppd ..."
 
 #: connect.cpp:828
 msgid "Scan Var: "
-msgstr ""
+msgstr "Скан перем: "
 
 #: connect.cpp:839
 msgid "Found: "
@@ -294,7 +315,7 @@ msgstr "Обнаружено: "
 
 #: connect.cpp:851
 msgid "Looping: "
-msgstr ""
+msgstr "Цикл: "
 
 #: connect.cpp:884 modeminfo.cpp:227
 msgid "One Moment Please ..."
@@ -386,7 +407,7 @@ msgstr ""
 
 #: edit.cpp:75
 msgid "Authentication:"
-msgstr "Авторизация:"
+msgstr "Аутентикация:"
 
 #: edit.cpp:79
 msgid "Script-based"
@@ -544,7 +565,7 @@ msgstr ""
 
 #: edit.cpp:274
 msgid "Auto-configure hostname from this IP"
-msgstr "Автоконфигурация DNS-имени по данному IP"
+msgstr "Авто конфигурация DNS-имени по данному IP"
 
 #: edit.cpp:279
 msgid ""
@@ -726,7 +747,7 @@ msgstr ""
 
 #: general.cpp:102
 msgid "Automatic Redial on Disconnect"
-msgstr "Автодозвон при разъединении"
+msgstr "Авто Дозвон при разъединении"
 
 #: general.cpp:108
 msgid ""
@@ -1159,7 +1180,6 @@ msgid ""
 msgstr ""
 
 #: main.cpp:950 runtests.cpp:400
-#, fuzzy
 msgid ""
 "Cannot find the PPP daemon!\n"
 "\n"
@@ -1169,7 +1189,7 @@ msgstr ""
 "Не удается найти демон pppd!\n"
 "\n"
 "Убедитесь, что pppd установлен и\n"
-"Вы указали правильную строку пути.\n"
+"Вы указали правильную строку пути."
 
 #: main.cpp:959
 #, c-format
@@ -1675,7 +1695,7 @@ msgstr ""
 "отсутствует!\n"
 "\n"
 "Обратитесь к вашему системному администратору\n"
-"с просьбой создать непустой файл с подходящими\n"
+"с просьбой создать негустой файл с подходящими\n"
 "правами на чтение и запись."
 
 #: loginterm.cpp:118
@@ -1683,9 +1703,8 @@ msgid "Ca&ncel"
 msgstr ""
 
 #: loginterm.cpp:123
-#, fuzzy
 msgid "&Continue"
-msgstr "Соединить"
+msgstr "Продолжить"
 
 #: ppplog.cpp:136
 msgid ""
