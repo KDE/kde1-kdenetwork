@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kdenetwork\n"
-"POT-Creation-Date: 1998-11-21 01:58+0100\n"
+"POT-Creation-Date: 1998-11-25 01:56+0100\n"
 "PO-Revision-Date: 1998-11-22 20:00-0500\n"
 "Last-Translator: Vladimir Vuksan <vuksan@veus.hr> \n"
 "Language-Team: Croatian\n"
@@ -163,7 +163,7 @@ msgstr ""
 msgid "Login script has unbalanced loop Start/End"
 msgstr "Prijavni scenario ima neuravnote¾enu petlju Start/End"
 
-#: connect.cpp:97 connect.cpp:195 main.cpp:1032
+#: connect.cpp:97 connect.cpp:195 main.cpp:970
 msgid "Connecting to: "
 msgstr "Spajanje na: "
 
@@ -176,7 +176,7 @@ msgstr "®ao mi je, ne mogu stvoriti datoteku za zakljuèavanje modema."
 msgid "Looking for Modem ..."
 msgstr "Tra¾im modem ..."
 
-#: connect.cpp:120 debug.cpp:80 main.cpp:1045
+#: connect.cpp:120 debug.cpp:80 main.cpp:983
 msgid "Log"
 msgstr "Dnevnik"
 
@@ -902,7 +902,7 @@ msgid ""
 "recommended value is 30 seconds."
 msgstr ""
 
-#: general.cpp:492 main.cpp:700
+#: general.cpp:492 main.cpp:640
 msgid "Modem"
 msgstr "Modem"
 
@@ -1026,10 +1026,6 @@ msgstr ""
 msgid "Don't show this hint again"
 msgstr ""
 
-#: main.cpp:144
-msgid "Ok"
-msgstr ""
-
 #: main.cpp:158
 msgid ""
 "This is an example for <b>QuickHelp</b>.\n"
@@ -1037,14 +1033,14 @@ msgid ""
 "click a mouse button or a hit a key.\n"
 msgstr ""
 
-#: main.cpp:380
+#: main.cpp:327
 #, c-format
 msgid ""
 "kppp can't create or read from\n"
 "%s."
 msgstr ""
 
-#: main.cpp:396
+#: main.cpp:343
 #, c-format
 msgid ""
 "kppp has detected a %s file.\n"
@@ -1056,15 +1052,15 @@ msgid ""
 "delete the pid file, and restart kppp."
 msgstr ""
 
-#: main.cpp:477
+#: main.cpp:417
 msgid "Connect to: "
 msgstr "Spoji sa: "
 
-#: main.cpp:488
+#: main.cpp:428
 msgid "Login ID:"
 msgstr "Prijavni ID:"
 
-#: main.cpp:501
+#: main.cpp:441
 msgid ""
 "Type in the username that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1075,11 +1071,11 @@ msgid ""
 "<i>myusername</i> is not the same as <i>MyUserName</i>!"
 msgstr ""
 
-#: main.cpp:510
+#: main.cpp:450
 msgid "Password:"
 msgstr "Lozinka:"
 
-#: main.cpp:524
+#: main.cpp:464
 msgid ""
 "Type in the password that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1090,11 +1086,11 @@ msgid ""
 "<i>mypassword</i> is not the same as <i>MyPassword</i>!"
 msgstr ""
 
-#: main.cpp:538
+#: main.cpp:478
 msgid "Show Log Window"
 msgstr "Poka¾i prozor dnevnika"
 
-#: main.cpp:545
+#: main.cpp:485
 msgid ""
 "This controls whether a log window is shown.\n"
 "A log window shows the communication between\n"
@@ -1105,15 +1101,15 @@ msgid ""
 "problems"
 msgstr ""
 
-#: main.cpp:568
+#: main.cpp:508
 msgid "Setup"
 msgstr "Postava"
 
-#: main.cpp:584
+#: main.cpp:524
 msgid "Connect"
 msgstr "Spoji"
 
-#: main.cpp:668
+#: main.cpp:608
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -1122,31 +1118,31 @@ msgstr ""
 "Nema takvog raèuna:\n"
 "%s"
 
-#: main.cpp:682
+#: main.cpp:622
 msgid "kppp Configuration"
 msgstr "Postava kppp-a"
 
-#: main.cpp:698
+#: main.cpp:638
 msgid "Accounts"
 msgstr "Raèuni"
 
-#: main.cpp:699
+#: main.cpp:639
 msgid "Device"
 msgstr "Ureðaj"
 
-#: main.cpp:701
+#: main.cpp:641
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:702
+#: main.cpp:642
 msgid "Graph"
 msgstr ""
 
-#: main.cpp:875
+#: main.cpp:815
 msgid "Details..."
 msgstr "Detalji..."
 
-#: main.cpp:930
+#: main.cpp:868
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1160,14 +1156,14 @@ msgid ""
 msgstr ""
 "kppp nije prona¹ao:\n"
 " %s\n"
-"Probajte ponovno instalirati pppd i/ili\n" 
-"provjerite lokaciju pppd izvr¹nog programa\n" 
+"Probajte ponovno instalirati pppd i/ili\n"
+"provjerite lokaciju pppd izvr¹nog programa\n"
 "na PPP kartici u postavi.\n"
 "To æe omoguæiti kpppu da pronaðe ispravni\n"
 "PPP daemon.\n"
 "Hvala"
 
-#: main.cpp:945
+#: main.cpp:883
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1180,7 +1176,7 @@ msgstr ""
 "Molim vas provjerite jeste li dali kppp-u setuid dozvolu i je li\n"
 "pppd izvr¹na datoteka."
 
-#: main.cpp:959
+#: main.cpp:897
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1201,7 +1197,7 @@ msgstr ""
 "dijalogu za postave.\n"
 " Hvala vam"
 
-#: main.cpp:979
+#: main.cpp:915
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1211,7 +1207,7 @@ msgstr ""
 "To zahtijeva od vas da\n"
 "date korisnièko ime i lozinku!"
 
-#: main.cpp:987
+#: main.cpp:924
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1220,7 +1216,7 @@ msgstr ""
 "Ne mogu stvoriti PAP datoteku\n"
 "provjere \"%s\""
 
-#: main.cpp:1004
+#: main.cpp:941
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -1230,7 +1226,7 @@ msgstr ""
 "To zahtijeva od vas da\n"
 "date korisnièko ime i lozinku!"
 
-#: main.cpp:1012
+#: main.cpp:950
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1239,19 +1235,19 @@ msgstr ""
 "Ne mogu stvoriti CHAP datoteku\n"
 "provjere \"%s\""
 
-#: main.cpp:1024
+#: main.cpp:962
 msgid "You must specify a telephone number!"
 msgstr "Morate upisati telefonski broj !"
 
-#: main.cpp:1111
+#: main.cpp:1049
 msgid "Quit kPPP?"
 msgstr "Napustiti kPPP?"
 
-#: main.cpp:1112
+#: main.cpp:1050
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Izla¾enje iz kPPP-a æe zatvoriti va¹u PPP sesiju."
 
-#: main.cpp:1147
+#: main.cpp:1085
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
@@ -1259,35 +1255,35 @@ msgstr ""
 "Ne mogu uèitati skup pravila\n"
 "za rad nad korisnièkim raèunima \""
 
-#: modem.cpp:114
+#: modem.cpp:115
 msgid "Sorry, can't open modem."
 msgstr "®ao mi je, ne mogu otvoriti modem."
 
-#: modem.cpp:120
+#: modem.cpp:121
 msgid "Sorry, can't detect state of CD line."
 msgstr "®alim, ne mogu utvrditi stanje CD linije."
 
-#: modem.cpp:126
+#: modem.cpp:127
 msgid "Sorry, the modem is not ready."
 msgstr "®alim, modem nije spreman."
 
-#: modem.cpp:137 modem.cpp:181
+#: modem.cpp:138 modem.cpp:182
 msgid "Sorry, the modem is busy."
 msgstr "®alim, modem je zaposlen."
 
-#: modem.cpp:187
+#: modem.cpp:188
 msgid "Modem Ready."
 msgstr "Modem spreman."
 
-#: modem.cpp:198
+#: modem.cpp:199
 msgid "Can't restore tty settings: tcsetattr()\n"
 msgstr "Ne mogu vratiti odrednice postave za tty: tcsetattr()\n"
 
-#: modem.cpp:324
+#: modem.cpp:325
 msgid "Sorry, the modem doesn't respond."
 msgstr "®ao mi je, modem ne odgovara mojim upitima."
 
-#: modem.cpp:425
+#: modem.cpp:426
 msgid "Unknown speed"
 msgstr "brzina nepoznata"
 
@@ -1379,7 +1375,7 @@ msgstr "Argument:"
 msgid "Defaults"
 msgstr "Uobièajeno"
 
-#: pppdata.cpp:108
+#: pppdata.cpp:109
 msgid ""
 "The application-specific config file\n"
 "could not be opened neither\n"
@@ -1676,40 +1672,40 @@ msgstr ""
 "dotiènu datoteku i da je otvori za\n"
 "èitanje svim korisnicima."
 
-#: ppplog.cpp:148
+#: ppplog.cpp:149
 msgid ""
 "You have launched pppd before the remote server was ready to establish a PPP "
 "connection.\n"
 "Please use the terminal-based login to verify"
 msgstr ""
 
-#: ppplog.cpp:153
+#: ppplog.cpp:154
 msgid ""
 "Do you use /dev/modem ? If so, you should specify the real device instead, "
 "e.g. /dev/ttyS1 (COM2)."
 msgstr ""
-"Da li koristite /dev/modem ? Ukoliko da probajte navesti stvarno ime ureðaja, "
-"npr. /dev/ttyS1 (COM2)."
+"Da li koristite /dev/modem ? Ukoliko da probajte navesti stvarno ime "
+"ureðaja, npr. /dev/ttyS1 (COM2)."
 
-#: ppplog.cpp:157
+#: ppplog.cpp:158
 msgid "Check that you supplied the correct username and password!"
 msgstr "Provjerite da li ste unijeli toèno ime i lozinku!"
 
-#: ppplog.cpp:160
+#: ppplog.cpp:161
 msgid ""
 "You shouldn't pass 'lock' as an argument to pppd. Check /etc/ppp/options and "
 "~/.ppprc"
 msgstr ""
-"Ne bi trebali slati 'lock' kao argument pppdu. Provjerite /etc/ppp/options "
-"i ~/.ppprc"
+"Ne bi trebali slati 'lock' kao argument pppdu. Provjerite /etc/ppp/options i "
+"~/.ppprc"
 
-#: ppplog.cpp:164
+#: ppplog.cpp:165
 msgid ""
 "The remote system does not seem to answer to\n"
 "configuration request! Contact your provider!"
 msgstr ""
 
-#: ppplog.cpp:179
+#: ppplog.cpp:180
 #, c-format
 msgid ""
 "Notice that the remote system has sent the following message:\n"
@@ -1717,11 +1713,11 @@ msgid ""
 "This may give you a hint why the the connection has failed."
 msgstr ""
 
-#: ppplog.cpp:198
+#: ppplog.cpp:199
 msgid "Sorry. Can't help you here."
 msgstr "®alim, ne mogu pomoæi."
 
-#: ppplog.cpp:215
+#: ppplog.cpp:216
 msgid ""
 "KPPP could not prepare a PPP log. It´s very likely\n"
 "that pppd was started without the \"debug\" option.\n"
@@ -1732,7 +1728,7 @@ msgid ""
 "Shall I turn it on now?"
 msgstr ""
 
-#: ppplog.cpp:226
+#: ppplog.cpp:227
 msgid ""
 "The \"debug\" option has been added. You\n"
 "should now try to reconnect. If that fails\n"
@@ -1740,26 +1736,17 @@ msgid ""
 "you to track down the connection problem."
 msgstr ""
 
-#: ppplog.cpp:241
+#: ppplog.cpp:242
 msgid "PPP log"
 msgstr "PPP dnevnik"
 
-#: ppplog.cpp:245
+#: ppplog.cpp:246
 msgid "kppp's diagnosis (just guessing):"
 msgstr "kpppova dijagnoza (¹pekulacija):"
 
-#: ppplog.cpp:250
+#: ppplog.cpp:251
 msgid "Write to file"
 msgstr "Pi¹i u datoteku"
 
-#: security.cpp:46
-msgid "Advanced Security"
-msgstr "Napredna za¹tita"
-
-#: security.cpp:49
-msgid "Allowed users"
-msgstr ""
-
-#: security.cpp:50
-msgid "Allowed groups"
-msgstr ""
+#~ msgid "Advanced Security"
+#~ msgstr "Napredna za¹tita"
