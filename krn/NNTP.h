@@ -57,7 +57,7 @@ public:
     void setAvailable(bool b=true) {isavail=b;save();};
     void setMarked(bool b=true) {ismarked=b;};
     bool isMarked(){return ismarked;};
-    void incref(){refcount++;};
+    void incref();
     void decref();
     void save();
     void load();

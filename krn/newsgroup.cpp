@@ -58,6 +58,15 @@ void Article::decref()
     }
 };
 
+void Article::incref()
+{
+    refcount++;
+    if (refcount==1)
+    {
+        artSpool.insert(ID.data(),this);
+    }
+};
+
 Article::~Article()
 {
 }
@@ -274,10 +283,10 @@ void Article::toggleExpire()   // robert's cache stuff
 
 
 NewsGroup::NewsGroup(const char *name)
-    :QString(name)
 {
     isVisible=0;
     sconf=0;
+    setStr(name);
 }
 
 
@@ -301,7 +310,6 @@ void NewsGroup::addArticle(QString ID)
         Article *art=new Article();
         art->ID=ID;
         art->load();
-//        artSpool.insert(ID.data(),art);
         artList.append(art);
     }
     else
@@ -609,6 +617,7 @@ ArticleList::~ArticleList()
 
 GroupList::GroupList()
 {
+    setAutoDelete(true);
 }
 
 GroupList::~GroupList()

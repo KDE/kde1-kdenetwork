@@ -312,6 +312,7 @@ void Artdlg::copyText(bool b)
 
 void Artdlg::closeEvent(QCloseEvent *)
 {
+    debug ("artcount-->%d",artSpool.count());
     group->artList.clear();
     artList.clear();
     group->isVisible=0;
