@@ -42,11 +42,11 @@ messages:
 # if you have more of them, create a subdirectory with an extra Makefile 
 install-data-local: 
 	$(mkinstalldirs) $(APPSDIR)
-	$(INSTALL_DATA) kbiff.kdelnk $(APPSDIR)
+	$(INSTALL_DATA) $(srcdir)/kbiff.kdelnk $(APPSDIR)
 	$(mkinstalldirs) $(kde_icondir)
-	$(INSTALL_DATA) kbiff.xpm $(kde_icondir)
+	$(INSTALL_DATA) $(srcdir)/kbiff.xpm $(kde_icondir)
 	$(mkinstalldirs) $(kde_minidir)
-	$(INSTALL_DATA) mini-kbiff.xpm $(kde_minidir)/kbiff.xpm
+	$(INSTALL_DATA) $(srcdir)/mini-kbiff.xpm $(kde_minidir)/kbiff.xpm
 
 # remove ALL you have installed in install-data-local or install-exec-local
 uninstall-local:

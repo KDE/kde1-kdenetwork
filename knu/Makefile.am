@@ -54,11 +54,11 @@ messages:
 # if you have more of them, create a subdirectory with an extra Makefile 
 install-data-local: 
 	$(mkinstalldirs) $(APPSDIR)
-	$(INSTALL_DATA) knu.kdelnk $(APPSDIR)
+	$(INSTALL_DATA) $(srcdir)/knu.kdelnk $(APPSDIR)
 	$(mkinstalldirs) $(kde_icondir)
-	$(INSTALL_DATA) knu.xpm $(kde_icondir)
+	$(INSTALL_DATA) $(srcdir)/knu.xpm $(kde_icondir)
 	$(mkinstalldirs) $(kde_minidir)
-	$(INSTALL_DATA) mini-knu.xpm $(kde_minidir)/knu.xpm
+	$(INSTALL_DATA) $(srcdir)/mini-knu.xpm $(kde_minidir)/knu.xpm
 
 # remove ALL you have installed in install-data-local or install-exec-local
 uninstall-local:

@@ -49,9 +49,9 @@ messages:
 # if you have more of them, create a subdirectory with an extra Makefile 
 install-data-local: 
 	$(mkinstalldirs) $(APPSDIR)
-	$(INSTALL_DATA) kfinger.kdelnk $(APPSDIR)
+	$(INSTALL_DATA) $(srcdir)/kfinger.kdelnk $(APPSDIR)
 	$(mkinstalldirs) $(kde_confdir)
-	$(INSTALL_DATA) kfingerrc $(kde_confdir)
+	$(INSTALL_DATA) $(srcdir)/kfingerrc $(kde_confdir)
 #	$(mkinstalldirs) $(kde_minidir)
 #	$(INSTALL_DATA) mini-khexdit.xpm $(kde_minidir)/khexdit.xpm
 

@@ -45,9 +45,9 @@ kde_icon_DATA = kmail.xpm
 
 install-data-local:
 	$(mkinstalldirs) $(appsdir)
-	$(INSTALL_DATA) KMail.kdelnk $(appsdir)
+	$(INSTALL_DATA) $(srcdir)/KMail.kdelnk $(appsdir)
 	$(mkinstalldirs) $(kde_minidir)
-	$(INSTALL_DATA) mini-kmail.xpm $(kde_minidir)/kmail.xpm
+	$(INSTALL_DATA) $(srcdir)/mini-kmail.xpm $(kde_minidir)/kmail.xpm
 
 uninstall-local:
 	rm -f $(appsdir)/KMail.kdelnk

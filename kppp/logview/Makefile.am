@@ -43,25 +43,5 @@ kppplogview_LDADD   =         $(LIB_KFILE)
 noinst_HEADERS = loginfo.h log.h monthly.h main.h
 
 # just to make sure, automake makes them 
-BUILTSOURCES = monthly.moc
+METASOURCES = monthly.moc main.moc
 
-# if you "make distclean", this files get removed. If you want to remove
-# them while "make clean", use CLEANFILES
-DISTCLEANFILES = $(BUILTSOURCES)
-
-messages:
-	#$(XGETTEXT) -C -ktranslate -ki18n -x $(includedir)/kde.pot $(kppp_SOURCES) && mv messages.po ../po/kppp.pot
-
-
-# dependencies
-log.cpp: log.moc
-log.moc: log.h
-	$(MOC) log.h -o log.moc
-
-monthly.cpp: monthly.moc
-monthly.moc: monthly.h
-	$(MOC) monthly.h -o monthly.moc
-
-main.cpp: main.moc
-main.moc: main.h
-	$(MOC) main.h -o main.moc

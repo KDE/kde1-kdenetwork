@@ -7,7 +7,7 @@ EXTRA_DIST = kppp.xpm mini-kppp.xpm
 # if you have more of them, create a subdirectory with an extra Makefile
 install-data-local:
 	$(mkinstalldirs) $(kde_icondir)
-	$(INSTALL_DATA) kppp.xpm $(kde_icondir)
+	$(INSTALL_DATA) $(srcdir)/kppp.xpm $(kde_icondir)
 	$(mkinstalldirs) $(kde_minidir)
-	$(INSTALL_DATA) mini-kppp.xpm $(kde_minidir)/kppp.xpm
+	$(INSTALL_DATA) $(srcdir)/mini-kppp.xpm $(kde_minidir)/kppp.xpm
 

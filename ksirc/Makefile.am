@@ -180,13 +180,13 @@ messages:
 # if you have more of them, create a subdirectory with an extra Makefile 
 install-data-local: 
 	$(mkinstalldirs) $(APPSDIR)
-	$(INSTALL_DATA) ksirc.kdelnk $(APPSDIR)
+	$(INSTALL_DATA) $(srcdir)/ksirc.kdelnk $(APPSDIR)
 	$(mkinstalldirs) $(kde_datadir)/ksirc
-	$(INSTALL_SCRIPT) dsirc $(bindir)
-	$(INSTALL_DATA) ksirc.pl $(kde_datadir)/ksirc
-	$(INSTALL_DATA) filters.pl $(kde_datadir)/ksirc
-	$(INSTALL_DATA) sirc.help.gz $(kde_datadir)/ksirc
-	$(INSTALL_DATA) relnotes $(kde_datadir)/ksirc
+	$(INSTALL_SCRIPT) $(srcdir)/dsirc $(bindir)
+	$(INSTALL_DATA) $(srcdir)/ksirc.pl $(kde_datadir)/ksirc
+	$(INSTALL_DATA) $(srcdir)/filters.pl $(kde_datadir)/ksirc
+	$(INSTALL_DATA) $(srcdir)/sirc.help.gz $(kde_datadir)/ksirc
+	$(INSTALL_DATA) $(srcdir)/relnotes $(kde_datadir)/ksirc
 #
 # remove ALL you have installed in install-data-local or install-exec-local
 uninstall-local:

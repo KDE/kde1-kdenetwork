@@ -43,12 +43,12 @@ install-data-local:
 if KDE_INSTALLED
 	$(mkinstalldirs) $(kde_confdir)
 	$(mkinstalldirs) $(kde_sounddir)
-	$(INSTALL_DATA) ktalkd.wav $(kde_sounddir)
+	$(INSTALL_DATA) $(srcdir)/ktalkd.wav $(kde_sounddir)
 endif
 	@echo "**************************************************************************"
 	@echo
 	@if [ -f $(TALKD_CONF) ]; then \
 	  echo "Please check $(TALKD_CONF) to be up-to-date."; \
 	else \
-	  $(INSTALL_DATA) $(TALKD_CONF_NAME) $(TALKD_CONF); \
+	  $(INSTALL_DATA) $(srcdir)/$(TALKD_CONF_NAME) $(TALKD_CONF); \
 	fi

@@ -15,10 +15,10 @@ kcmktalkd_METASOURCES = USE_AUTOMOC
 
 install-data-local: 
 	$(mkinstalldirs) $(APPSDIR)
-	$(INSTALL_DATA) kcmktalkd.kdelnk $(APPSDIR) 
+	$(INSTALL_DATA) $(srcdir)/kcmktalkd.kdelnk $(APPSDIR) 
 
 uninstall-local:
-	-rm -f $(APPSDIR)/syssound.kdelnk
+	-rm -f $(APPSDIR)/kcmktalkd.kdelnk
 
 messages:
 	$(XGETTEXT) -C -ktranslate -ki18n -x $(includedir)/kde.pot $(kcmktalkd_SOURCES) && mv messages.po ../../po/kcmktalkd.pot
