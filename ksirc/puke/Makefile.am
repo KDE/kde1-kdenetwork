@@ -22,9 +22,13 @@ INCLUDES= @all_includes@
 
 ####### This part is very khexdit specific
 # you can add here more. This one gets installed 
-bin_PROGRAMS = 	libpuke
+#bin_PROGRAMS = 	libpuke
+noinst_LIBRARIES = libpuke.a
 
-libpuke_SOURCES = \
+lib_LTLIBRARIES = libpframe.la libplined.la libpbutton.la libppushbt.la \
+                  libpprogress.la libptablevw.la libplistbox.la libplabel.la
+
+libpuke_a_SOURCES = \
 controller.cpp \
 mcontroller.cpp \
 pwidget.cpp \
@@ -35,109 +39,37 @@ playout.cpp \
 mplayout.cpp 
 
 
-libpukeSOURCES = $(libkscutdialog_SOURCES)
+libpframe_la_SOURCES = \
+pframe.cpp \
+mpframe.cpp
 
-libpukeOBJECTS = \
-controller.o \
-mcontroller.o \
-pwidget.o \
-mpwidget.o \
-pobject.o \
-mpobject.o \
-playout.o \
-mplayout.o 
+libplined_la_SOURCES = \
+plined.cpp \
+mplined.cpp
 
+libpbutton_la_SOURCES = \
+pbutton.cpp \
+mpbutton.cpp
 
+libppushbt_la_SOURCES = \
+ppushbt.cpp \
+mppushbt.cpp
 
-libpuke.c: commands.h
-	perl convert_commands.pl
-	@touch libpuke.c
-	@echo "Done"
+libpprogress_la_SOURCES = \
+pprogress.cpp \
+mpprogress.cpp
 
-libpuke: $(libpukeOBJECTS) commands.h pframe.so plined.so pbutton.so ppushbt.so pprogress.so ptablevw.so plistbox.so plabel.so HOWTO-PUKE.txt
-	./convert_commands.pl
-	ar cr libpuke.a $(libpukeOBJECTS)
-	ranlib libpuke.a || true
+libptablevw_la_SOURCES = \
+ptablevw.cpp \
+mptablevw.cpp
 
-pframe.so: pframe.o pframe.h mpframe.o
-	$(CXXCOMPILE) -fPIC -c pframe.cpp
-	gcc -shared -Wl -o pframe.so pframe.o mpframe.o
+libplistbox_la_SOURCES = \
+plistbox.cpp \
+mplistbox.cpp
 
-mpframe.cpp: pframe.h
-	moc pframe.h -o mpframe.cpp
-
-mpframe.o: pframe.h mpframe.cpp
-	$(CXXCOMPILE) -fPIC -c mpframe.cpp
-
-plined.so: plined.o mplined.o
-	$(CXXCOMPILE) -fPIC -c plined.cpp
-	gcc -shared -Wl -o plined.so plined.o mplined.o
-
-mplined.cpp: plined.h
-	moc plined.h -o mplined.cpp
-
-mplined.o: mplined.cpp plined.h
-	$(CXXCOMPILE) -fPIC -c mplined.cpp
-
-pbutton.so: pbutton.o mpbutton.o
-	$(CXXCOMPILE) -fPIC -c pbutton.cpp
-	gcc -shared -Wl -o pbutton.so pbutton.o mpbutton.o
-
-mpbutton.cpp: pbutton.h
-	moc pbutton.h -o mpbutton.cpp
-
-mpbutton.o: mpbutton.cpp pbutton.h
-	$(CXXCOMPILE) -fPIC -c mpbutton.cpp
-
-ppushbt.so: ppushbt.cpp mppushbt.o
-	$(CXXCOMPILE) -fPIC -c ppushbt.cpp
-	gcc -shared -Wl -o ppushbt.so ppushbt.o mppushbt.o
-
-mppushbt.cpp: ppushbt.h
-	moc ppushbt.h -o mppushbt.cpp
-
-mppushbt.o: mppushbt.cpp ppushbt.h
-	$(CXXCOMPILE) -fPIC -c mppushbt.cpp
-
-pprogress.so: pprogress.cpp mpprogress.o
-	$(CXXCOMPILE) -fPIC -c pprogress.cpp
-	gcc -shared -Wl -o pprogress.so pprogress.o mpprogress.o
-
-mpprogress.cpp: pprogress.h
-	moc pprogress.h -o mpprogress.cpp
-
-mpprogress.o: mpprogress.cpp pprogress.h
-	$(CXXCOMPILE) -fPIC -c mpprogress.cpp
-
-ptablevw.so: ptablevw.cpp mptablevw.o
-	$(CXXCOMPILE) -fPIC -c ptablevw.cpp
-	gcc -shared -Wl -o ptablevw.so ptablevw.o mptablevw.o
-
-mptablevw.cpp: ptablevw.h
-	moc ptablevw.h -o mptablevw.cpp
-
-mptablevw.o: mptablevw.cpp ptablevw.h
-	$(CXXCOMPILE) -fPIC -c mptablevw.cpp
-        
-plistbox.so: plistbox.cpp mplistbox.o
-	$(CXXCOMPILE) -fPIC -c plistbox.cpp
-	gcc -shared -Wl -o plistbox.so plistbox.o mplistbox.o
-
-mplistbox.cpp: plistbox.h
-	moc plistbox.h -o mplistbox.cpp
-
-mplistbox.o: mplistbox.cpp plistbox.h
-	$(CXXCOMPILE) -fPIC -c mplistbox.cpp
-
-plabel.so: plabel.cpp mplabel.o
-	$(CXXCOMPILE) -fPIC -c plabel.cpp
-	gcc -shared -Wl -o plabel.so plabel.o mplabel.o
-
-mplabel.cpp: plabel.h
-	moc plabel.h -o mplabel.cpp
-
-mplabel.o: mplabel.cpp plabel.h
-	$(CXXCOMPILE) -fPIC -c mplabel.cpp
+libplabel_la_SOURCES = \
+plabel.cpp \
+mplabel.cpp
 
 HOWTO-PUKE.txt: HOWTO-PUKE.pod
 	pod2text HOWTO-PUKE.pod > HOWTO-PUKE.txt
@@ -145,19 +77,17 @@ HOWTO-PUKE.txt: HOWTO-PUKE.pod
 # no install headers
 
 noinst_HEADERS = \
-commands.h layout.h plined.h pwidget.h widgethdlr.h \
-controller.h pframe.h pmessage.h widget.h HOWTO-PUKE.pod \
+commands.h plined.h pwidget.h widgethdlr.h \
+controller.h pframe.h pmessage.h HOWTO-PUKE.pod \
 commands-handler.pl  pboxlayout.pm pwidget.pm \
 commands-perl.pl pframe.pm test.pl convert_commands.pl \
-plined.pm tester.pl pbase.pm puke.pl pframe.cpp plined.cpp \
-ppushbt.h ppushbt.cpp \
-pbutton.h pbutton.cpp \
-pprogress.h pprogress.cpp \
-ptablevw.cpp ptablevw.h \
-plistbox.cpp plistbox.h \
-plabel.cpp plabel.h
-
-
+plined.pm tester.pl pbase.pm puke.pl \
+ppushbt.h \
+pbutton.h \
+pprogress.h \
+ptablevw.h \
+plistbox.h \
+plabel.h
 
 # just to make sure, automake makes them 
 BUILTSOURCES =	

@@ -38,13 +38,11 @@ sub setText {
 
   my $text = shift;
 
+  $self->{text} = $text;
+  
   $self->sendMessage('iCommand' => $::PUKE_BUTTON_SET_TEXT,
 		     'cArg' => $text,
-		     'CallBack' => 
-		     sub {
-		       my %ARG = %{shift()};
-		       $self->{text} = $ARG{'cArg'};
-		     }
+                     'CallBack' => sub {}
 		    );
 }
 

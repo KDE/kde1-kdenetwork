@@ -40,6 +40,19 @@
 
 #define PUKE_EVENT_UNKOWN -999
 
+// Fetch widgets
+// Desc: get widget from parent
+// iWinId: not defined
+// iArg: not defined
+// cArg: 2 feilds, tab sperated, must be returned unchanged. 1. random string.  3. Object Name.
+#define PUKE_FETCHWIDGET 998
+
+// Desc: Fetch widget ack
+// iWinId: new widget id
+// iArg: not defined
+// cArg: 2 feilds, tab sperated, must be returned unchanged. 1. random string. 3. Object Name.
+#define PUKE_FETCHWIDGET_ACK -998
+
 
 // Widget commands starts at 1000 and end at 10000
 

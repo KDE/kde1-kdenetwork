@@ -16,18 +16,24 @@ public:
     pwI = _pwI;
     parent = _parent;
     pm = _pm;
+    fetchedObj = 0;
   }
   PukeController *pc;
   widgetId *pwI;
   PObject *parent;
   PukeMessage *pm;
+
+  /**
+   * name of the widget which was fetched from kSirc, this has to be set explicitly
+   */
+  QObject *fetchedObj;
 };
 
 class PObject : public QObject
 {
   Q_OBJECT
  public:
-  PObject(QObject *parent = 0);
+  PObject(QObject *parent = 0, const char *name = 0);
   virtual ~PObject();
 
   /**

@@ -73,24 +73,29 @@ host_triplet = @host@
 target_alias = @target_alias@
 target_triplet = @target@
 CC = @CC@
-CFLAGS = @CFLAGS@
 CPP = @CPP@
 CXX = @CXX@
-CXXFLAGS = @CXXFLAGS@
 GLINC = @GLINC@
 GLLIB = @GLLIB@
 GMSGFMT = @GMSGFMT@
+KDE_EXTRA_RPATH = @KDE_EXTRA_RPATH@
 KDE_INCLUDES = @KDE_INCLUDES@
 KDE_LDFLAGS = @KDE_LDFLAGS@
-LDFLAGS = @LDFLAGS@
+KDE_RPATH = @KDE_RPATH@
+LD = @LD@
 LIBCOMPAT = @LIBCOMPAT@
+LIBCRYPT = @LIBCRYPT@
+LIBDL = @LIBDL@
 LIBJPEG = @LIBJPEG@
 LIBOBJS = @LIBOBJS@
 LIBSOCKET = @LIBSOCKET@
+LIBTOOL = @LIBTOOL@
+LIBUCB = @LIBUCB@
 LN_S = @LN_S@
 MAKEINFO = @MAKEINFO@
 MOC = @MOC@
 MSGFMT = @MSGFMT@
+NM = @NM@
 PACKAGE = @PACKAGE@
 PAMINC = @PAMINC@
 PAMLIBPATHS = @PAMLIBPATHS@
@@ -103,11 +108,14 @@ VERSION = @VERSION@
 XGETTEXT = @XGETTEXT@
 XPMINC = @XPMINC@
 XPMLIB = @XPMLIB@
+X_EXTRA_LIBS = @X_EXTRA_LIBS@
 X_INCLUDES = @X_INCLUDES@
 X_LDFLAGS = @X_LDFLAGS@
 all_includes = @all_includes@
 all_libraries = @all_libraries@
+install_root = @install_root@
 kde_appsdir = @kde_appsdir@
+kde_bindir = @kde_bindir@
 kde_cgidir = @kde_cgidir@
 kde_confdir = @kde_confdir@
 kde_datadir = @kde_datadir@
@@ -118,11 +126,14 @@ kde_libraries = @kde_libraries@
 kde_locale = @kde_locale@
 kde_mimedir = @kde_mimedir@
 kde_minidir = @kde_minidir@
+kde_partsdir = @kde_partsdir@
+kde_sounddir = @kde_sounddir@
 kde_toolbardir = @kde_toolbardir@
 kde_wallpaperdir = @kde_wallpaperdir@
 qt_includes = @qt_includes@
 qt_libraries = @qt_libraries@
-topdir = @topdir@
+x_includes = @x_includes@
+x_libraries = @x_libraries@
 
 INCLUDES= @all_includes@
 # claim, which subdirectories you want to install
@@ -131,9 +142,13 @@ INCLUDES= @all_includes@
 
 ####### This part is very khexdit specific
 # you can add here more. This one gets installed 
-bin_PROGRAMS = 	libpuke
+#bin_PROGRAMS = 	libpuke
+noinst_LIBRARIES = libpuke.a
 
-libpuke_SOURCES = \
+lib_LTLIBRARIES = libpframe.la libplined.la libpbutton.la libppushbt.la \
+                  libpprogress.la libptablevw.la libplistbox.la libplabel.la
+
+libpuke_a_SOURCES = \
 controller.cpp \
 mcontroller.cpp \
 pwidget.cpp \
@@ -143,32 +158,52 @@ mpobject.cpp \
 playout.cpp \
 mplayout.cpp 
 
-libpukeSOURCES = $(libkscutdialog_SOURCES)
+libpframe_la_SOURCES = \
+pframe.cpp \
+mpframe.cpp
 
-libpukeOBJECTS = \
-controller.o \
-mcontroller.o \
-pwidget.o \
-mpwidget.o \
-pobject.o \
-mpobject.o \
-playout.o \
-mplayout.o 
+libplined_la_SOURCES = \
+plined.cpp \
+mplined.cpp
+
+libpbutton_la_SOURCES = \
+pbutton.cpp \
+mpbutton.cpp
+
+libppushbt_la_SOURCES = \
+ppushbt.cpp \
+mppushbt.cpp
+
+libpprogress_la_SOURCES = \
+pprogress.cpp \
+mpprogress.cpp
+
+libptablevw_la_SOURCES = \
+ptablevw.cpp \
+mptablevw.cpp
+
+libplistbox_la_SOURCES = \
+plistbox.cpp \
+mplistbox.cpp
+
+libplabel_la_SOURCES = \
+plabel.cpp \
+mplabel.cpp
 
 # no install headers
 
 noinst_HEADERS = \
-commands.h layout.h plined.h pwidget.h widgethdlr.h \
-controller.h pframe.h pmessage.h widget.h HOWTO-PUKE.pod \
+commands.h plined.h pwidget.h widgethdlr.h \
+controller.h pframe.h pmessage.h HOWTO-PUKE.pod \
 commands-handler.pl  pboxlayout.pm pwidget.pm \
 commands-perl.pl pframe.pm test.pl convert_commands.pl \
-plined.pm tester.pl pbase.pm puke.pl pframe.cpp plined.cpp \
-ppushbt.h ppushbt.cpp \
-pbutton.h pbutton.cpp \
-pprogress.h pprogress.cpp \
-ptablevw.cpp ptablevw.h \
-plistbox.cpp plistbox.h \
-plabel.cpp plabel.h
+plined.pm tester.pl pbase.pm puke.pl \
+ppushbt.h \
+pbutton.h \
+pprogress.h \
+ptablevw.h \
+plistbox.h \
+plabel.h
 
 # just to make sure, automake makes them 
 BUILTSOURCES =	
@@ -179,18 +214,47 @@ DISTCLEANFILES = $(BUILTSOURCES)
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = ../../config.h
 CONFIG_CLEAN_FILES = 
-PROGRAMS =  $(bin_PROGRAMS)
+LIBRARIES =  $(noinst_LIBRARIES)
 
 
 DEFS = @DEFS@ -I. -I$(srcdir) -I../..
 CPPFLAGS = @CPPFLAGS@
+LDFLAGS = @LDFLAGS@
 LIBS = @LIBS@
-libpuke_OBJECTS =  controller.o mcontroller.o pwidget.o mpwidget.o \
+libpuke_a_LIBADD = 
+libpuke_a_OBJECTS =  controller.o mcontroller.o pwidget.o mpwidget.o \
 pobject.o mpobject.o playout.o mplayout.o
-libpuke_LDADD = $(LDADD)
-libpuke_LDFLAGS = 
+AR = ar
+LTLIBRARIES =  $(lib_LTLIBRARIES)
+
+libpframe_la_LDFLAGS = 
+libpframe_la_LIBADD = 
+libpframe_la_OBJECTS =  pframe.lo mpframe.lo
+libplined_la_LDFLAGS = 
+libplined_la_LIBADD = 
+libplined_la_OBJECTS =  plined.lo mplined.lo
+libpbutton_la_LDFLAGS = 
+libpbutton_la_LIBADD = 
+libpbutton_la_OBJECTS =  pbutton.lo mpbutton.lo
+libppushbt_la_LDFLAGS = 
+libppushbt_la_LIBADD = 
+libppushbt_la_OBJECTS =  ppushbt.lo mppushbt.lo
+libpprogress_la_LDFLAGS = 
+libpprogress_la_LIBADD = 
+libpprogress_la_OBJECTS =  pprogress.lo mpprogress.lo
+libptablevw_la_LDFLAGS = 
+libptablevw_la_LIBADD = 
+libptablevw_la_OBJECTS =  ptablevw.lo mptablevw.lo
+libplistbox_la_LDFLAGS = 
+libplistbox_la_LIBADD = 
+libplistbox_la_OBJECTS =  plistbox.lo mplistbox.lo
+libplabel_la_LDFLAGS = 
+libplabel_la_LIBADD = 
+libplabel_la_OBJECTS =  plabel.lo mplabel.lo
+CXXFLAGS = @CXXFLAGS@
 CXXCOMPILE = $(CXX) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
-CXXLINK = $(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@
+LTCXXCOMPILE = $(LIBTOOL) --mode=compile $(CXX) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
+CXXLINK = $(LIBTOOL) --mode=link $(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@
 HEADERS =  $(noinst_HEADERS)
 
 DIST_COMMON =  Makefile.am Makefile.in
@@ -200,17 +264,21 @@ DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
 
 TAR = tar
 GZIP = --best
-DEP_FILES =  .deps/controller.P .deps/mcontroller.P .deps/mplayout.P \
-.deps/mpobject.P .deps/mpwidget.P .deps/playout.P .deps/pobject.P \
+DEP_FILES =  .deps/controller.P .deps/mcontroller.P .deps/mpbutton.P \
+.deps/mpframe.P .deps/mplabel.P .deps/mplayout.P .deps/mplined.P \
+.deps/mplistbox.P .deps/mpobject.P .deps/mpprogress.P .deps/mppushbt.P \
+.deps/mptablevw.P .deps/mpwidget.P .deps/pbutton.P .deps/pframe.P \
+.deps/plabel.P .deps/playout.P .deps/plined.P .deps/plistbox.P \
+.deps/pobject.P .deps/pprogress.P .deps/ppushbt.P .deps/ptablevw.P \
 .deps/pwidget.P
 CXXMKDEP = $(CXX) -M $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
-SOURCES = $(libpuke_SOURCES)
-OBJECTS = $(libpuke_OBJECTS)
+SOURCES = $(libpuke_a_SOURCES) $(libpframe_la_SOURCES) $(libplined_la_SOURCES) $(libpbutton_la_SOURCES) $(libppushbt_la_SOURCES) $(libpprogress_la_SOURCES) $(libptablevw_la_SOURCES) $(libplistbox_la_SOURCES) $(libplabel_la_SOURCES)
+OBJECTS = $(libpuke_a_OBJECTS) $(libpframe_la_OBJECTS) $(libplined_la_OBJECTS) $(libpbutton_la_OBJECTS) $(libppushbt_la_OBJECTS) $(libpprogress_la_OBJECTS) $(libptablevw_la_OBJECTS) $(libplistbox_la_OBJECTS) $(libplabel_la_OBJECTS)
 
 default: all
 
 .SUFFIXES:
-.SUFFIXES: .c .cpp .o
+.SUFFIXES: .c .cpp .lo .o
 $(srcdir)/Makefile.in: Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4) 
 	cd $(top_srcdir) && $(AUTOMAKE) --gnu ksirc/puke/Makefile
 
@@ -219,30 +287,14 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status $(BUILT_SOURCES)
 	  && CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= $(SHELL) ./config.status
 
 
-mostlyclean-binPROGRAMS:
+mostlyclean-noinstLIBRARIES:
 
-clean-binPROGRAMS:
-	test -z "$(bin_PROGRAMS)" || rm -f $(bin_PROGRAMS)
+clean-noinstLIBRARIES:
+	test -z "$(noinst_LIBRARIES)" || rm -f $(noinst_LIBRARIES)
 
-distclean-binPROGRAMS:
+distclean-noinstLIBRARIES:
 
-maintainer-clean-binPROGRAMS:
-
-install-binPROGRAMS: $(bin_PROGRAMS)
-	@$(NORMAL_INSTALL)
-	$(mkinstalldirs) $(bindir)
-	@list='$(bin_PROGRAMS)'; for p in $$list; do \
-	  if test -f $$p; then \
-	    echo "  $(INSTALL_PROGRAM) $$p $(bindir)/`echo $$p|sed '$(transform)'`"; \
-	     $(INSTALL_PROGRAM) $$p $(bindir)/`echo $$p|sed '$(transform)'`; \
-	  else :; fi; \
-	done
-
-uninstall-binPROGRAMS:
-	$(NORMAL_UNINSTALL)
-	list='$(bin_PROGRAMS)'; for p in $$list; do \
-	  rm -f $(bindir)/`echo $$p|sed '$(transform)'`; \
-	done
+maintainer-clean-noinstLIBRARIES:
 
 .c.o:
 	$(COMPILE) -c $<
@@ -256,8 +308,77 @@ distclean-compile:
 	rm -f *.tab.c
 
 maintainer-clean-compile:
+
+.c.lo:
+	$(LIBTOOL) --mode=compile $(COMPILE) -c $<
+
+mostlyclean-libtool:
+	rm -f *.lo
+
+clean-libtool:
+	rm -rf .libs
+
+distclean-libtool:
+
+maintainer-clean-libtool:
+
+libpuke.a: $(libpuke_a_OBJECTS) $(libpuke_a_DEPENDENCIES)
+	rm -f libpuke.a
+	$(AR) cru libpuke.a $(libpuke_a_OBJECTS) $(libpuke_a_LIBADD)
+	$(RANLIB) libpuke.a
+
+mostlyclean-libLTLIBRARIES:
+
+clean-libLTLIBRARIES:
+	test -z "$(lib_LTLIBRARIES)" || rm -f $(lib_LTLIBRARIES)
+
+distclean-libLTLIBRARIES:
+
+maintainer-clean-libLTLIBRARIES:
+
+install-libLTLIBRARIES: $(lib_LTLIBRARIES)
+	@$(NORMAL_INSTALL)
+	$(mkinstalldirs) $(libdir)
+	@list='$(lib_LTLIBRARIES)'; for p in $$list; do \
+	  if test -f $$p; then \
+	    echo "$(LIBTOOL)  --mode=install $(INSTALL_PROGRAM) $$p $(libdir)/$$p"; \
+	    $(LIBTOOL)  --mode=install $(INSTALL_PROGRAM) $$p $(libdir)/$$p; \
+	  else :; fi; \
+	done
+
+uninstall-libLTLIBRARIES:
+	$(NORMAL_UNINSTALL)
+	list='$(lib_LTLIBRARIES)'; for p in $$list; do \
+	  $(LIBTOOL)  --mode=uninstall rm -f $(libdir)/$$p; \
+	done
+
+libpframe.la: $(libpframe_la_OBJECTS) $(libpframe_la_DEPENDENCIES)
+	$(CXXLINK) -rpath $(libdir) $(libpframe_la_LDFLAGS) $(libpframe_la_OBJECTS) $(libpframe_la_LIBADD) $(LIBS)
+
+libplined.la: $(libplined_la_OBJECTS) $(libplined_la_DEPENDENCIES)
+	$(CXXLINK) -rpath $(libdir) $(libplined_la_LDFLAGS) $(libplined_la_OBJECTS) $(libplined_la_LIBADD) $(LIBS)
+
+libpbutton.la: $(libpbutton_la_OBJECTS) $(libpbutton_la_DEPENDENCIES)
+	$(CXXLINK) -rpath $(libdir) $(libpbutton_la_LDFLAGS) $(libpbutton_la_OBJECTS) $(libpbutton_la_LIBADD) $(LIBS)
+
+libppushbt.la: $(libppushbt_la_OBJECTS) $(libppushbt_la_DEPENDENCIES)
+	$(CXXLINK) -rpath $(libdir) $(libppushbt_la_LDFLAGS) $(libppushbt_la_OBJECTS) $(libppushbt_la_LIBADD) $(LIBS)
+
+libpprogress.la: $(libpprogress_la_OBJECTS) $(libpprogress_la_DEPENDENCIES)
+	$(CXXLINK) -rpath $(libdir) $(libpprogress_la_LDFLAGS) $(libpprogress_la_OBJECTS) $(libpprogress_la_LIBADD) $(LIBS)
+
+libptablevw.la: $(libptablevw_la_OBJECTS) $(libptablevw_la_DEPENDENCIES)
+	$(CXXLINK) -rpath $(libdir) $(libptablevw_la_LDFLAGS) $(libptablevw_la_OBJECTS) $(libptablevw_la_LIBADD) $(LIBS)
+
+libplistbox.la: $(libplistbox_la_OBJECTS) $(libplistbox_la_DEPENDENCIES)
+	$(CXXLINK) -rpath $(libdir) $(libplistbox_la_LDFLAGS) $(libplistbox_la_OBJECTS) $(libplistbox_la_LIBADD) $(LIBS)
+
+libplabel.la: $(libplabel_la_OBJECTS) $(libplabel_la_DEPENDENCIES)
+	$(CXXLINK) -rpath $(libdir) $(libplabel_la_LDFLAGS) $(libplabel_la_OBJECTS) $(libplabel_la_LIBADD) $(LIBS)
 .cpp.o:
 	$(CXXCOMPILE) -c $<
+.cpp.lo:
+	$(LTCXXCOMPILE) -c $<
 
 tags: TAGS
 
@@ -332,7 +453,7 @@ dvi:
 check: all
 	$(MAKE)
 installcheck:
-install-exec: install-binPROGRAMS
+install-exec: install-libLTLIBRARIES
 	@$(NORMAL_INSTALL)
 
 install-data: install-data-local
@@ -341,14 +462,14 @@ install-data: install-data-local
 install: install-exec install-data all
 	@:
 
-uninstall: uninstall-binPROGRAMS uninstall-local
+uninstall: uninstall-libLTLIBRARIES uninstall-local
 
-all: Makefile $(PROGRAMS) $(HEADERS)
+all: Makefile $(LIBRARIES) $(LTLIBRARIES) $(HEADERS)
 
 install-strip:
 	$(MAKE) INSTALL_PROGRAM='$(INSTALL_PROGRAM) -s' INSTALL_SCRIPT='$(INSTALL_PROGRAM)' install
 installdirs:
-	$(mkinstalldirs)  $(bindir)
+	$(mkinstalldirs)  $(libdir)
 
 
 mostlyclean-generic:
@@ -365,122 +486,42 @@ distclean-generic:
 maintainer-clean-generic:
 	test -z "$(MAINTAINERCLEANFILES)" || rm -f $(MAINTAINERCLEANFILES)
 	test -z "$(BUILT_SOURCES)" || rm -f $(BUILT_SOURCES)
-mostlyclean:  mostlyclean-binPROGRAMS mostlyclean-compile \
+mostlyclean:  mostlyclean-noinstLIBRARIES mostlyclean-compile \
+		mostlyclean-libtool mostlyclean-libLTLIBRARIES \
 		mostlyclean-tags mostlyclean-depend mostlyclean-generic
 
-clean:  clean-binPROGRAMS clean-compile clean-tags clean-depend \
+clean:  clean-noinstLIBRARIES clean-compile clean-libtool \
+		clean-libLTLIBRARIES clean-tags clean-depend \
 		clean-generic mostlyclean
 
-distclean:  distclean-binPROGRAMS distclean-compile distclean-tags \
-		distclean-depend distclean-generic clean
+distclean:  distclean-noinstLIBRARIES distclean-compile \
+		distclean-libtool distclean-libLTLIBRARIES \
+		distclean-tags distclean-depend distclean-generic clean
 	rm -f config.status
+	rm -f libtool
 
-maintainer-clean:  maintainer-clean-binPROGRAMS maintainer-clean-compile \
-		maintainer-clean-tags maintainer-clean-depend \
-		maintainer-clean-generic distclean
+maintainer-clean:  maintainer-clean-noinstLIBRARIES \
+		maintainer-clean-compile maintainer-clean-libtool \
+		maintainer-clean-libLTLIBRARIES maintainer-clean-tags \
+		maintainer-clean-depend maintainer-clean-generic \
+		distclean
 	@echo "This command is intended for maintainers to use;"
 	@echo "it deletes files that may require special tools to rebuild."
 
-.PHONY: default mostlyclean-binPROGRAMS distclean-binPROGRAMS \
-clean-binPROGRAMS maintainer-clean-binPROGRAMS uninstall-binPROGRAMS \
-install-binPROGRAMS mostlyclean-compile distclean-compile clean-compile \
-maintainer-clean-compile tags mostlyclean-tags distclean-tags \
-clean-tags maintainer-clean-tags distdir mostlyclean-depend \
-distclean-depend clean-depend maintainer-clean-depend info dvi \
-installcheck install-exec install-data install uninstall all \
-installdirs mostlyclean-generic distclean-generic clean-generic \
-maintainer-clean-generic clean mostlyclean distclean maintainer-clean
+.PHONY: default mostlyclean-noinstLIBRARIES distclean-noinstLIBRARIES \
+clean-noinstLIBRARIES maintainer-clean-noinstLIBRARIES \
+mostlyclean-compile distclean-compile clean-compile \
+maintainer-clean-compile mostlyclean-libtool distclean-libtool \
+clean-libtool maintainer-clean-libtool mostlyclean-libLTLIBRARIES \
+distclean-libLTLIBRARIES clean-libLTLIBRARIES \
+maintainer-clean-libLTLIBRARIES uninstall-libLTLIBRARIES \
+install-libLTLIBRARIES tags mostlyclean-tags distclean-tags clean-tags \
+maintainer-clean-tags distdir mostlyclean-depend distclean-depend \
+clean-depend maintainer-clean-depend info dvi installcheck install-exec \
+install-data install uninstall all installdirs mostlyclean-generic \
+distclean-generic clean-generic maintainer-clean-generic clean \
+mostlyclean distclean maintainer-clean
 
-
-libpuke.c: commands.h
-	perl convert_commands.pl
-	@touch libpuke.c
-	@echo "Done"
-
-libpuke: $(libpukeOBJECTS) commands.h pframe.so plined.so pbutton.so ppushbt.so pprogress.so ptablevw.so plistbox.so plabel.so HOWTO-PUKE.txt
-	./convert_commands.pl
-	ar cr libpuke.a $(libpukeOBJECTS)
-	ranlib libpuke.a || true
-
-pframe.so: pframe.o pframe.h mpframe.o
-	$(CXXCOMPILE) -fPIC -c pframe.cpp
-	gcc -shared -Wl -o pframe.so pframe.o mpframe.o
-
-mpframe.cpp: pframe.h
-	moc pframe.h -o mpframe.cpp
-
-mpframe.o: pframe.h mpframe.cpp
-	$(CXXCOMPILE) -fPIC -c mpframe.cpp
-
-plined.so: plined.o mplined.o
-	$(CXXCOMPILE) -fPIC -c plined.cpp
-	gcc -shared -Wl -o plined.so plined.o mplined.o
-
-mplined.cpp: plined.h
-	moc plined.h -o mplined.cpp
-
-mplined.o: mplined.cpp plined.h
-	$(CXXCOMPILE) -fPIC -c mplined.cpp
-
-pbutton.so: pbutton.o mpbutton.o
-	$(CXXCOMPILE) -fPIC -c pbutton.cpp
-	gcc -shared -Wl -o pbutton.so pbutton.o mpbutton.o
-
-mpbutton.cpp: pbutton.h
-	moc pbutton.h -o mpbutton.cpp
-
-mpbutton.o: mpbutton.cpp pbutton.h
-	$(CXXCOMPILE) -fPIC -c mpbutton.cpp
-
-ppushbt.so: ppushbt.cpp mppushbt.o
-	$(CXXCOMPILE) -fPIC -c ppushbt.cpp
-	gcc -shared -Wl -o ppushbt.so ppushbt.o mppushbt.o
-
-mppushbt.cpp: ppushbt.h
-	moc ppushbt.h -o mppushbt.cpp
-
-mppushbt.o: mppushbt.cpp ppushbt.h
-	$(CXXCOMPILE) -fPIC -c mppushbt.cpp
-
-pprogress.so: pprogress.cpp mpprogress.o
-	$(CXXCOMPILE) -fPIC -c pprogress.cpp
-	gcc -shared -Wl -o pprogress.so pprogress.o mpprogress.o
-
-mpprogress.cpp: pprogress.h
-	moc pprogress.h -o mpprogress.cpp
-
-mpprogress.o: mpprogress.cpp pprogress.h
-	$(CXXCOMPILE) -fPIC -c mpprogress.cpp
-
-ptablevw.so: ptablevw.cpp mptablevw.o
-	$(CXXCOMPILE) -fPIC -c ptablevw.cpp
-	gcc -shared -Wl -o ptablevw.so ptablevw.o mptablevw.o
-
-mptablevw.cpp: ptablevw.h
-	moc ptablevw.h -o mptablevw.cpp
-
-mptablevw.o: mptablevw.cpp ptablevw.h
-	$(CXXCOMPILE) -fPIC -c mptablevw.cpp
-
-plistbox.so: plistbox.cpp mplistbox.o
-	$(CXXCOMPILE) -fPIC -c plistbox.cpp
-	gcc -shared -Wl -o plistbox.so plistbox.o mplistbox.o
-
-mplistbox.cpp: plistbox.h
-	moc plistbox.h -o mplistbox.cpp
-
-mplistbox.o: mplistbox.cpp plistbox.h
-	$(CXXCOMPILE) -fPIC -c mplistbox.cpp
-
-plabel.so: plabel.cpp mplabel.o
-	$(CXXCOMPILE) -fPIC -c plabel.cpp
-	gcc -shared -Wl -o plabel.so plabel.o mplabel.o
-
-mplabel.cpp: plabel.h
-	moc plabel.h -o mplabel.cpp
-
-mplabel.o: mplabel.cpp plabel.h
-	$(CXXCOMPILE) -fPIC -c mplabel.cpp
 
 HOWTO-PUKE.txt: HOWTO-PUKE.pod
 	pod2text HOWTO-PUKE.pod > HOWTO-PUKE.txt

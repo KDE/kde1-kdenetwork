@@ -1,8 +1,8 @@
 #include "pobject.h"
 #include "commands.h"
 
-PObject::PObject(QObject *pobject) /*FOLD00*/
-  : QObject(pobject)
+PObject::PObject(QObject *pobject, const char *name) /*FOLD00*/
+  : QObject(pobject, name)
 {
   // Connect slots as needed
   obj = 0;

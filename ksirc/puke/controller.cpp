@@ -12,6 +12,8 @@
 
 #include <dlfcn.h>
 
+#include <qobjcoll.h>
+
 #include "controller.h"
 #include "playout.h"
 #include "../config.h"
@@ -19,12 +21,13 @@
 uint PukeController::uiBaseWinId = 10; // Gives a little seperation from the controller id
 
 PukeController::PukeController(QString sock, QObject *parent=0, const char *name=0) /*FOLD00*/
-  : PObject(parent)
+  : PObject(parent, name)
 {
   int len, prev_umask;
   struct sockaddr_un unix_addr;
 
   running = FALSE; // Running has to be true before we do any work
+  bClosing = FALSE; // we're not trying to close so set this false.
 
   // Set the umask to something sane that doesn't allow others to take over ksirc
   prev_umask = umask(0177);
@@ -65,7 +68,7 @@ PukeController::PukeController(QString sock, QObject *parent=0, const char *name
   fcntl(iListenFd, F_SETFL, O_NONBLOCK);  // Set it non-block so that
                                           // accept() never blocks.
   
-  qsnListen = new QSocketNotifier(iListenFd, QSocketNotifier::Read, this);
+  qsnListen = new QSocketNotifier(iListenFd, QSocketNotifier::Read, this, QString(name) + "_iListen");
   connect(qsnListen, SIGNAL(activated(int)),
 	  this, SLOT(NewConnect(int)));
 
@@ -155,7 +158,7 @@ void PukeController::Writeable(int fd) /*fold00*/
   }
 }
 
-void PukeController::writeBuffer(int fd, PukeMessage *message) /*FOLD00*/
+void PukeController::writeBuffer(int fd, PukeMessage *message) /*fold00*/
 {
   if(qidConnectFd[fd]){
     //    if(qidConnectFd[fd]->writeable == FALSE){
@@ -182,8 +185,8 @@ void PukeController::writeBuffer(int fd, PukeMessage *message) /*FOLD00*/
     }
   }
   else{
-//    closefd(fd);
-//    cerr << "PUKE: Attempt to write to unkown fd:" << fd << endl;
+    closefd(fd);
+    cerr << "PUKE: Attempt to write to unkown fd:" << fd << endl;
   }
 }
 
@@ -217,6 +220,11 @@ void PukeController::Traffic(int fd) /*fold00*/
       break;
     case 0:
       break;     // We just read nothing, don't panic
+    case EIO:
+    case EISDIR:
+    case EBADF:
+    case EINVAL:
+    case EFAULT:
     default:
       perror("PukeController: read failed");
       closefd(fd);
@@ -315,6 +323,13 @@ void PukeController::initHdlr() /*FOLD00*/
   cs->dlhandle = 0x0;
   qidCommandTable.insert(PUKE_ECHO, cs);
 
+  // Fetch widget gets the requested widget from the ServerController
+  cs = new commandStruct;
+  cs->cmd = &hdlrPukeFetchWidget;
+  cs->dlhandle = 0x0;
+  qidCommandTable.insert(PUKE_FETCHWIDGET, cs);
+
+
 }
 
 // Start message handlers
@@ -343,7 +358,7 @@ void PukeController::hdlrPukeSetup(int fd, PukeMessage *pm) /*fold00*/
   this->writeBuffer(fd, &pmOut);
 }
 
-void PukeController::hdlrPukeEcho(int fd, PukeMessage *pm) /*fold00*/
+void PukeController::hdlrPukeEcho(int fd, PukeMessage *pm) /*FOLD00*/
 {
   PukeMessage pmOut;
   memcpy(&pmOut, pm, sizeof(PukeMessage));
@@ -353,20 +368,90 @@ void PukeController::hdlrPukeEcho(int fd, PukeMessage *pm) /*fold00*/
   this->writeBuffer(fd, &pmOut);
 }
 
-void PukeController::closefd(int fd) /*FOLD00*/
+void PukeController::hdlrPukeFetchWidget(int fd, PukeMessage *pm)
 {
+  widgetId wIret;
+  
+  /*
+   * The parent widget ID and type are packed into the iArg
+   * the pattern is 2 shorts.
+   */
+
+  unsigned short int *iaArg;
+  iaArg = (unsigned short int *) &pm->iArg;
+  int iParent = iaArg[1];
+  int iType = iaArg[0];
+
+  char rand[50],name[50];
+  sscanf(pm->cArg, "%s\t%s", rand, name);
+
+  debug("Fetching new widget, type: %d, parent: %d objname: %s", iType, iParent, name);
+
+  uiBaseWinId++; // Get a new base win id
+
+  // wIret holds the current widget id for the new widget
+  wIret.iWinId = uiBaseWinId;
+  wIret.fd = fd;
+
+  //  CreateArgs arg = CreateArgs(this, pm, &wIret, parent)
+  CreateArgs arg(this, pm, &wIret, 0);
+
+  // Let's go looking for the widget
+  // Match any class with the right name
+  QObjectList *list = parent()->queryList( 0, name );
+  QObjectListIt it( *list );          // iterate over the widgets
+  if(it.current() == 0){
+    wIret.fd = 0;
+    wIret.iWinId = 0;
+    throw(errorCommandFailed(PUKE_INVALID,5));
+  }
+  QObject *obj = it.current();
+  debug("Found: %s", obj->name());
+  obj->dumpObjectInfo();
+  obj->dumpObjectTree();
+
+  arg.fetchedObj = obj;
+  
+  WidgetS *ws = new WidgetS;
+  ws->pwidget = (widgetCF[iType]->wc)(arg);
+  ws->type = iType;
+  connect(ws->pwidget, SIGNAL(widgetDestroyed(widgetId)),
+	  this, SLOT(closeWidget(widgetId)));
+
+  connect(ws->pwidget, SIGNAL(outputMessage(int, PukeMessage*)),
+	  this, SIGNAL(outputMessage(int, PukeMessage*)));
+
+  // insertPBoject(fd, uiBaseWinId, ws);
+  // The widget list has to exist since we have ourselves in the list
+  WidgetList[wIret.fd]->insert(wIret.iWinId, ws);
+
+  debug("Fetched widget setup");
+
+  PukeMessage pmRet;
+  pmRet.iCommand = PUKE_WIDGET_CREATE_ACK;
+  pmRet.iWinId = wIret.iWinId;
+  pmRet.iArg = 0;
+  strncpy(pmRet.cArg, pm->cArg, 50);
+  emit outputMessage(fd, &pmRet);
+
+}
+void PukeController::closefd(int fd) /*fold00*/
+{
+  if(bClosing == TRUE)
+    return;
+  bClosing = TRUE;
   if(qidConnectFd[fd] == NULL){
     debug("PukeController: Connect table NULL, closed twice?");
     return;
   }
-  // Call wrControl after check for being called twice.
-  close(fd);
+  // Shutof the listener before closing the socket, just in case.
   qidConnectFd[fd]->sr->setEnabled(FALSE); // Shut them off
   qidConnectFd[fd]->sw->setEnabled(FALSE);
   delete qidConnectFd[fd]->sr;
   delete qidConnectFd[fd]->sw;
   qidConnectFd[fd]->server.truncate(0);
   qidConnectFd.remove(fd);
+  close(fd);
 
   /*
    * Now let's remove all traces of the widgets
@@ -428,7 +513,7 @@ void PukeController::closefd(int fd) /*FOLD00*/
   WidgetList.remove(fd);
 }
 
-bool PukeController::checkWidgetId(widgetId *pwi) /*FOLD00*/
+bool PukeController::checkWidgetId(widgetId *pwi) /*fold00*/
 {
   if(WidgetList[pwi->fd] != NULL)
     if(WidgetList[pwi->fd]->find(pwi->iWinId) != NULL)
@@ -527,7 +612,7 @@ void PukeController::messageHandler(int fd, PukeMessage *pm) { /*fold00*/
     widgetCreate *wC;
 
     pm->cArg[49] = 0;
-    handle = dlopen(kSircConfig->kdedir + "/share/apps/ksirc/" + QString(pm->cArg), RTLD_LAZY|RTLD_GLOBAL);
+    handle = dlopen(kSircConfig->kdedir + "/lib/lib" + QString(pm->cArg), RTLD_LAZY|RTLD_GLOBAL);
     if (!handle) {
       fputs(dlerror(), stderr);
       fputs("\n", stderr);
@@ -578,7 +663,7 @@ void PukeController::messageHandler(int fd, PukeMessage *pm) { /*fold00*/
   }
 }
 
-widgetId PukeController::createWidget(widgetId wI, PukeMessage *pm) /*fold00*/
+widgetId PukeController::createWidget(widgetId wI, PukeMessage *pm) /*FOLD00*/
 {
   widgetId wIret;
   PWidget *parent = 0; // Defaults to no parent
@@ -634,7 +719,7 @@ widgetId PukeController::createWidget(widgetId wI, PukeMessage *pm) /*fold00*/
   return wIret;
 }
 
-void PukeController::closeWidget(widgetId wI){ /*FOLD00*/
+void PukeController::closeWidget(widgetId wI){ /*fold00*/
   // Check to make sure we have a valid widget
   // Then remove it from the list.
   // Don't delete it since well, we're being called since it's already 

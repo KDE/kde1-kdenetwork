@@ -123,6 +123,7 @@ protected slots:
 private:
   QString qsPukeSocket;
   int iListenFd;
+  bool bClosing; // Set true if we are closing, we don't try and close twice at the same time.
   QSocketNotifier *qsnListen;
   QIntDict<fdStatus> qidConnectFd;
 
@@ -187,6 +188,7 @@ private:
   void hdlrPukeSetup(int fd, PukeMessage *pm);
   void hdlrPukeInvalid(int fd, PukeMessage *pm);
   void hdlrPukeEcho(int fd, PukeMessage *pm);
+  void hdlrPukeFetchWidget(int fd, PukeMessage *pm);
 
 };
 

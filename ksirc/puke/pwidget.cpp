@@ -48,7 +48,9 @@ PObject *PWidget::createWidget(CreateArgs &ca)
 {
   PWidget *pw = new PWidget();
   QWidget *tw;
-  if(ca.parent != 0 && ca.parent->widget()->isWidgetType() == TRUE)
+  if(ca.fetchedObj != 0 && ca.fetchedObj->inherits("QWidget") == TRUE)
+    tw = (QWidget *) ca.fetchedObj;
+  else if(ca.parent != 0 && ca.parent->widget()->isWidgetType() == TRUE)
     tw = new QWidget((QWidget *) ca.parent->widget());
   else
     tw = new QWidget();

@@ -42,7 +42,7 @@ void PButton::messageHandler(int fd, PukeMessage *pm)
     widget()->setText(pm->cArg);    // set the text
 
     pmRet.iCommand = - pm->iCommand;// Create ack
-    pmRet.iWinId = - pm->iWinId;
+    pmRet.iWinId = pm->iWinId;
     strncpy(pmRet.cArg, widget()->text(), 50);
     emit outputMessage(fd, &pmRet);
     break;

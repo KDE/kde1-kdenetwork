@@ -229,6 +229,9 @@ sub hook_ksirc_dcc_disconnect {
   my $time = shift;
   my $fh = shift;
 
+  my $window = $KSIRC_DCC{$fh}{$file}{'Window'};
+  print "*E* Window ref: $fh, $file, $window\n";
+  $window->DESTROY;
   $KSIRC_DCC{$fh}{$file}{'Window'}->DESTROY;
   delete $KSIRC_DCC{$fh}{$file};
   delete $KSIRC_DCC{$fh};
