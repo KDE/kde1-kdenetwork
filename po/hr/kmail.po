@@ -152,11 +152,11 @@ msgstr "Is&kopiraj..."
 
 #: kmmainwin.cpp:963
 msgid "New Composer"
-msgstr "Novi Sastavljaè poruka"
+msgstr "Novi sastavljaè poruka"
 
 #: kmcomposewin.cpp:451 kmmainwin.cpp:965
 msgid "New Mailreader"
-msgstr "Novi Èitaè"
+msgstr "Novi èitaè"
 
 #: kmmainwin.cpp:968
 msgid "Save As..."
@@ -184,7 +184,7 @@ msgstr "Po&stava..."
 
 #: kmcomposewin.cpp:443 kmmainwin.cpp:989
 msgid "&Addressbook..."
-msgstr "&Adresar"
+msgstr "&Adresar..."
 
 #: kmmainwin.cpp:991
 msgid "&Filter..."
@@ -464,9 +464,8 @@ msgid "Message List Font:"
 msgstr "Pismo popisa poruka"
 
 #: kmsettings.cpp:357
-#, fuzzy
 msgid "Long folder list"
-msgstr "&Dugo zaglavlje"
+msgstr "Dugi popis direktorija"
 
 #: kmsettings.cpp:386
 msgid "Phrases"
@@ -880,9 +879,8 @@ msgid "&Attach..."
 msgstr "Pr&ikvaèi..."
 
 #: kmcomposewin.cpp:532
-#, fuzzy
 msgid "Attach &Public Key"
-msgstr "Prilo¾i datoteku"
+msgstr "Prilo¾i jav&ni kljuè"
 
 #: kmcomposewin.cpp:534
 msgid "Attach My &Public Key"
@@ -997,13 +995,12 @@ msgid "Date:"
 msgstr "Datum:"
 
 #: kmcomposewin.cpp:1670
-#, fuzzy
 msgid "Spellcheck complete."
-msgstr "&Provjera pravopisa"
+msgstr "Provjera pisanja je zavr¹ila."
 
 #: kmcomposewin.cpp:2113
 msgid "Spellcheck - KMail"
-msgstr "Provjera pravopisa"
+msgstr "Provjera pisanja - KMail"
 
 #: kmcomposewin.cpp:2139
 msgid ""
@@ -1582,20 +1579,19 @@ msgstr ""
 
 #: kpgp.cpp:744
 msgid "PGP Security Check"
-msgstr "PGP Sigurnosna Provjera"
+msgstr "PGP sigurnosna provjera"
 
 #: kpgp.cpp:769
 msgid "Please select the public key to insert"
 msgstr "Molim izaberite javni kljuc za umetanje"
 
 #: kpgp.cpp:800
-#, fuzzy
 msgid "Select key"
-msgstr "Izaberi direktorij"
+msgstr "Izaberi kljuè"
 
 #: kpgp.cpp:827
 msgid "PGP User Identity:"
-msgstr "PGP Identitet"
+msgstr "PGP identitet"
 
 #: kpgp.cpp:838
 msgid "Store passphrase"
@@ -1607,19 +1603,19 @@ msgstr "Uvjek ¹ifiriraj za sebe"
 
 #: kpgpbase.cpp:322
 msgid "Bad pass Phrase; couldn't sign"
-msgstr "Lo¹a Lozinka; ne mogu potpisati"
+msgstr "Pogre¹na lozinka; ne mogu potpisati"
 
 #: kpgpbase.cpp:361
 msgid "error running pgp"
-msgstr "gre¹ka u izvodjenju pgp-a"
+msgstr "gre¹ka u izvoðenju pgp-a"
 
 #: kpgpbase.cpp:378 kpgpbase.cpp:669
 msgid "Bad pass Phrase; couldn't decrypt"
-msgstr "Lo¹a Lozinka; ne mogu de¹ifrirati"
+msgstr "Poge¹na lozinka; ne mogu de¹ifrirati"
 
 #: kpgpbase.cpp:389 kpgpbase.cpp:680
 msgid "Do not have the secret key for this message"
-msgstr ""
+msgstr "Ne posjedujem tajni kljuè za ovu poruku"
 
 #: kpgpbase.cpp:417
 msgid "unknown key ID "
@@ -1627,7 +1623,7 @@ msgstr ""
 
 #: kpgpbase.cpp:437
 msgid "??? (file ~/.pgp/pubring.pgp not found)"
-msgstr ""
+msgstr "??? (datoteka ~/.pgp/pubring.pgp nije naðena)"
 
 #: kpgpbase.cpp:592
 msgid "The passphrase you entered is invalid."
@@ -1790,9 +1786,8 @@ msgid "&Abort"
 msgstr "&Odustani"
 
 #: kmnewiostatuswdg.cpp:26
-#, fuzzy
 msgid "Abort"
-msgstr "&Odustani"
+msgstr "Odustani"
 
 #: kmnewiostatuswdg.cpp:43
 msgid "Sending messages to "
@@ -1841,30 +1836,3 @@ msgstr "&7 bitno je ASCII"
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
 msgstr "&Quotiraj nepoznate znakove"
-
-#~ msgid ""
-#~ "Cannot modify a\n"
-#~ "system folder."
-#~ msgstr ""
-#~ "Ne mogu izmijeniti \n"
-#~ "sistemski direktorij."
-
-#~ msgid ""
-#~ "Are you sure you want to discard the\n"
-#~ "contents of the folder \"%s\" ?"
-#~ msgstr ""
-#~ "Jeste li sigurni da ¾elite obrisati\n"
-#~ "sadr¾aj ovog direktorija \"%s\" ?"
-
-#~ msgid ""
-#~ "Changing fonts currently only occurs when a new\n"
-#~ "window is opened or kmail is restarted"
-#~ msgstr ""
-#~ "Pismo æe biti promijenjeno samo ako otvorite\n"
-#~ "novi prozor ili ponovo pokrenete kmail"
-
-#~ msgid "Could not create temporary file"
-#~ msgstr "Ne mogu stvoriti privremenu datoteku"
-
-#~ msgid "Could not save temporary file %s"
-#~ msgstr "Ne mogu spremiti privremenu datoteku %s"
