@@ -95,7 +95,7 @@ servercontroller::servercontroller
 	reuse_id = options->insertItem("Seperate Message Window", 
 			    this, SLOT(reuse()));
 	options->setItemChecked(reuse_id, 
-				kConfig->readNumEntry("Reuse", TRUE));
+				! kConfig->readNumEntry("Reuse", TRUE));
 	MenuBar->insertItem("&Options", options);
 
 	setMenu(MenuBar);
@@ -224,11 +224,11 @@ void servercontroller::reuse()
 {
   kConfig->setGroup("GlobalOptions");
   if(kConfig->readNumEntry("Reuse", TRUE) == TRUE){
-    options->setItemChecked(reuse_id, FALSE);
+    options->setItemChecked(reuse_id, TRUE);
     kConfig->writeEntry("Reuse", FALSE);
   }
   else{
-    options->setItemChecked(reuse_id, TRUE);
+    options->setItemChecked(reuse_id, FALSE);
     kConfig->writeEntry("Reuse", TRUE);
   }
   kConfig->sync();
