@@ -204,7 +204,7 @@ public:
     bool    disconnect();
     bool    isConnected() {return Connected;};
     bool    isReadOnly() {return Readonly;};
-    void    groupList(QList <NewsGroup> *grouplist, bool fromserver);
+    void    groupList(bool fromserver);
     bool    setGroup( const char *groupname);
     char    *group() {return GroupName.data();};
     bool    artList(int from=0,int to=0,NewsGroup *n=0);

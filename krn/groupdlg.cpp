@@ -28,6 +28,7 @@
 #include <qtstream.h>
 #include <qevent.h>
 #include <qdir.h>
+#include <qdict.h>
 
 #include <kapp.h>
 #include <kmsgbox.h>
@@ -78,14 +79,14 @@
 
 extern QString krnpath,cachepath,artinfopath,pixpath,outpath;
 extern KConfig *conf;
+extern QDict <NewsGroup> groupDict;
 
 extern KMIdentity *identity;
 extern KRNSender *msgSender;
 extern KBusyPtr *kbp;
 
-GroupList groups;
-GroupList subscr;
-GroupList tagged;
+QStrList subscr;
+QStrList tagged;
 
 bool checkPixmap(KTreeViewItem *item,void *)
 {
@@ -97,14 +98,13 @@ bool checkPixmap(KTreeViewItem *item,void *)
         item->setPixmap(p);
         return false;
     }
-    NewsGroup n(name);
-    if (tagged.find(&n)!=-1) //it's tagged
+    if (tagged.find(name.data())!=-1) //it's tagged
     {
         p=kapp->getIconLoader()->loadIcon("tagged.xpm");
         item->setPixmap(p);
         return false;
     }
-    if (subscr.find(&n)!=-1) //it's subscribed
+    if (subscr.find(name.data())!=-1) //it's subscribed
     {
         p=kapp->getIconLoader()->loadIcon("subscr.xpm");
         item->setPixmap(p);
@@ -117,7 +117,6 @@ bool checkPixmap(KTreeViewItem *item,void *)
 
 Groupdlg::Groupdlg(const char *name):Inherited (name)
 {
-    groups.setAutoDelete(true);
     subscr.setAutoDelete(false);
     tagged.setAutoDelete(false);
     
@@ -255,13 +254,17 @@ Groupdlg::~Groupdlg ()
     //    saveProperties(false); // Kalle: No longer needed
     QStrList openwin;
     //check for all open groups, and close them
-    for (NewsGroup *g=groups.first();g!=0;g=groups.next())
+    QDictIterator <NewsGroup> iter(groupDict);
+    NewsGroup *g;
+    while (iter.current())
     {
+        g=iter.current();
         if (g->isVisible)
         {
             openwin.append (g->name);
             delete g->isVisible;
         }
+        ++iter;
     }
     conf->setGroup("ArticleListOptions");
     conf->writeEntry("OpenWindows",openwin);
@@ -274,17 +277,16 @@ Groupdlg::~Groupdlg ()
 
 void Groupdlg::openGroup (QString name)
 {
-    NewsGroup n(name);
-    int i=groups.find(&n);
-    if (i!=-1)
+    NewsGroup *n=groupDict.find(name.data());
+    if (n)
     {
-        if (groups.at(i)->isVisible)
+        if (n->isVisible)
         {
             return;
         }
-        groups.at(i)->load();
+        n->load();
         Artdlg *a=0;
-        QListIterator <NewsGroup> it(groups);
+        QDictIterator <NewsGroup> it(groupDict);
 
         conf->setGroup("ArticleListOptions");
         bool singleWin=conf->readNumEntry("SingleWindow",true);
@@ -305,27 +307,18 @@ void Groupdlg::openGroup (QString name)
 
         if (!a)
         {
-            a = new Artdlg (groups.at(i),server);
+            a = new Artdlg (n,server);
             QObject::connect(a->messwin,SIGNAL(spawnGroup(QString)),
                              this,SLOT(openGroup(QString)));
             QObject::connect(a,SIGNAL(needConnection()),
                              this,SLOT(needsConnect()));
         }
         else
-            a->init(groups.at(i),server);
+            a->init(n,server);
     }
     else
     {
-        i=subscr.find(&n);
-        groups.append(subscr.at(i));
-        openGroup(name);
-        /*
-        qApp->setOverrideCursor(arrowCursor);
-        KMsgBox:: message (0, klocale->translate("Sorry!"),
-                           klocale->translate("That newsgroup is not in the current active file\n Krn can't handle this gracefully right now"),
-                           KMsgBox::INFORMATION);
-        qApp->restoreOverrideCursor();
-        */
+        debug ("weird, the group ain't in the groupDict!");
     }
 }
 
@@ -362,6 +355,7 @@ void Groupdlg::openGroup (int index)
             if (!strcmp(klocale->translate("All Newsgroups."),it->getText()))
             {
                 base="";
+                loadActive();
             }
             else
             {
@@ -370,60 +364,72 @@ void Groupdlg::openGroup (int index)
             int l=base.length();
             int c=base.contains('.');
             char tc;
-            QListIterator <NewsGroup> it(groups);
+            QDictIterator <NewsGroup> iterat(groupDict);
             NewsGroup *iter;
 
 	    // preload pixmaps
 	    QPixmap followup = 
 	      kapp->getIconLoader()->loadIcon("followup.xpm");
 	    QPixmap krnfolder = 
-	      kapp->getIconLoader()->loadIcon("frnfolder.xpm");
+	      kapp->getIconLoader()->loadIcon("krnfolder.xpm");
 
-	    // Lets take a larger prime number. For currently 40000 
-	    // newsgroups this means that each slot in the dict
-	    // contains approx. 17 entries.
-	    QDict<int> dict(2423);
 
-	    // we must insert non-NULL pointer into the dict,
+            //First make a list of all matches with
+            //the exact same beginning, and either the same or one extra
+            //dots. In two sorted lists.
+
+            // we must insert non-NULL pointer into the dict,
 	    // so we take a dummy
-	    int nullItem = 0;
-
-            for (;it.current(); ++it)
+            int nullItem = 0;
+            
+            QStrList items;
+            items.setAutoDelete(true);
+            QDict<int> dict(2423);
+            for (;iterat.current(); ++iterat)
             {
-                iter=it.current();
-
+                iter=iterat.current();
                 //this group's name matches the base
                 if (l == 0 || !strncmp(base.data(),iter->name,l))
                 {
-                    QString gname=iter->name;
-                    //Check the dot count.
-                    //If it's the same, then it's a group
-                    //Add it as a child
-                    if (gname.contains('.')==c)
+                    int c1=QString(iter->name).contains('.');
+                    if (c1==c)//leaf
+                        items.inSort(iter->name);
+                    else if(c1>c)
                     {
-                        list->appendChildItem(iter->name,followup,index);
-                    }
-                    
-                    else  //It may be a new hierarchy
-                    {
-                        //take what the new base would be
                         char *nextdot=strchr(iter->name+l+1,'.')+1;
                         tc=nextdot[0];
                         nextdot[0]=0;
-                        if (dict.find(iter->name) == 0)
+//                        strcpy(buffer,iter->name);
+                        if (!dict.find(iter->name))
                         {
                             // It's new, so add it to the base list
-                            // and insert it as a folder
+                            // and add it to the branch list
                             dict.insert(iter->name, &nullItem);
-                            KTreeViewItem *itemp=new KTreeViewItem(iter->name,krnfolder);
-                            itemp->setDelayedExpanding(true);
-                            list->appendChildItem(itemp,index);
+                            items.inSort(iter->name);
+//                            items.append(buffer);
                         }
                         nextdot[0]=tc;
                     }
                 }
             }
-	    list->expandItem(index);
+
+            //Now we add all the items to the tree
+
+            for (char *name=items.first();name!=0;name=items.next())
+            {
+                if (name[strlen(name)-1]=='.')
+                {
+                    KTreeViewItem *itemp=new KTreeViewItem(name,krnfolder);
+                    itemp->setDelayedExpanding(true);
+                    list->appendChildItem(itemp,index);
+                }
+                else
+                {
+                    list->appendChildItem(name,followup,index);
+                }
+            }
+
+            list->expandItem(index);
             list->forEveryVisibleItem(checkPixmap,NULL);
             list->repaint();
 
@@ -449,7 +455,7 @@ void Groupdlg::subscribe (NewsGroup *group)
 {
     QPixmap p;
     KPath path;
-    int index=subscr.find (group);
+    int index=subscr.find (group->name);
     if (-1 != index)
     {
         subscr.remove ();
@@ -466,11 +472,11 @@ void Groupdlg::subscribe (NewsGroup *group)
     }
     else
     {
-        if (-1 != groups.find (group))
+        if (groupDict.find (group->name))
         {
             p=kapp->getIconLoader()->loadIcon("subscr.xpm");
             list->appendChildItem (group->name, p, 0);
-            subscr.append (group);
+            subscr.append (group->name);
             if (list->itemAt(0)->isExpanded() &&
                 ((unsigned int)list->currentItem()>list->itemAt(0)->childCount()+1))
                 list->setCurrentItem(list->currentItem()+1);
@@ -483,13 +489,13 @@ void Groupdlg::subscribe (NewsGroup *group)
 
 void Groupdlg::tag (NewsGroup *group)
 {
-    if(tagged.find(group)>-1)
+    if(tagged.find(group->name)>-1)
     {
-        tagged.remove(group);
+        tagged.remove(group->name);
     }
     else
     {
-        tagged.append(group);
+        tagged.append(group->name);
     }
     list->forEveryVisibleItem(checkPixmap,NULL);
     list->repaint();
@@ -551,12 +557,14 @@ void Groupdlg::fillTree ()
     if (subscr.count()>0)
         item->setDelayedExpanding(true);
     list->insertItem (item);
-    QListIterator <NewsGroup> it(subscr);
+    QStrListIterator it(subscr);
     it.toFirst();
     NewsGroup *g;
     for (;it.current();++it)
     {
-        g=it.current();
+        g=groupDict.find(it.current());
+        if (!g)
+            continue;
         p=kapp->getIconLoader()->loadIcon("subscr.xpm");
         list->appendChildItem (g->name, p, 0);
     }
@@ -703,7 +711,7 @@ bool Groupdlg::actions (int action,NewsGroup *group)
                 
                 server->resetCounters (true,true);
                 server->reportCounters (true,false);
-                server->groupList (&groups,true);
+                server->groupList (true);
                 server->resetCounters (true,true);
                 server->reportCounters (false,false);
                 loadActive();
@@ -798,7 +806,13 @@ bool Groupdlg::loadSubscribed()
             ac=st.readLine ();
             if (st.eof())
                 break;
-            subscr.append (new NewsGroup(ac.data()));
+
+            if (!(groupDict.find(ac.data())))
+            {
+                NewsGroup *n=new NewsGroup(ac.data());
+                groupDict.insert(ac.data(),n);
+            }
+            subscr.append (ac.data());
         };
         f.close ();
         return true;
@@ -818,10 +832,10 @@ bool Groupdlg::saveSubscribed()
     QFile f(ac.data ());
     if (f.open (IO_WriteOnly))
     {
-        QListIterator <NewsGroup>it(subscr);
+        QStrListIterator it(subscr);
         for (;it.current();++it)
         {
-            f.writeBlock(it.current()->name,strlen(it.current()->name));
+            f.writeBlock(it.current(),strlen(it.current()));
             f.writeBlock("\n",1);
         }
         f.close ();
@@ -850,7 +864,7 @@ bool Groupdlg::loadActive()
         qApp->restoreOverrideCursor ();
         if (1 == i)
         {
-	    server->groupList(&groups,true);
+	    server->groupList(true);
             success=true;
         }
         else
@@ -862,7 +876,7 @@ bool Groupdlg::loadActive()
     {
         statusBar ()->changeItem (klocale->translate("Listing active newsgroups"), 2);
         qApp->processEvents ();
-        server->groupList (&groups,false);
+        server->groupList (false);
         success=true;
     };
     statusBar ()->changeItem ("", 2);
@@ -882,7 +896,7 @@ void Groupdlg::findGroup()
         return;
     int index=-1;
     NewsGroup n(ask.entry->text());
-    index=subscr.find (&n);
+    index=subscr.find (n.name);
     if (index!=-1)
     {
         //It exists in subscribed
@@ -890,8 +904,8 @@ void Groupdlg::findGroup()
         list->setCurrentItem(index+1);
         return;
     }
-    index=groups.find (&n);
-    if (index!=-1)
+    NewsGroup *ng=groupDict.find (n.name);
+    if (ng)
     {
         list->setAutoUpdate(false);
         //It exists and not in subscribed (ugh).
@@ -1007,28 +1021,24 @@ bool Groupdlg::currentActions(int action)
     }
     else
     {
-        int index=-1;
         NewsGroup *g=0;
         if (list->getCurrentItem())
         {
             const char *text = list->getCurrentItem ()->getText ();
-            NewsGroup n(text);
-            index=groups.find (&n);
+            g=groupDict.find(text);
         }
-        if (index!=-1)
-            g=groups.at(index);
         actions(action,g);
     }
     return success;
 }
 
-bool Groupdlg::listActions(int action ,GroupList _list)
+bool Groupdlg::listActions(int action ,QStrList _list)
 {
     bool success=true;
-    QListIterator <NewsGroup> it(_list);
+    QStrListIterator it(_list);
     for (;it.current();++it)
     {
-        actions(action,it.current());
+        actions(action,groupDict.find(it.current()));
     }
     statusBar ()->changeItem ("Done.", 2);
     return success;
@@ -1086,7 +1096,7 @@ void Groupdlg::checkUnread()
         gname=it;
         p.push(new QString(it));
         gname=gname.left(gname.find(' '));
-        sprintf(countmessage, " [%d]", subscr.at(i)->countNew(server));
+        sprintf(countmessage, " [%d]", groupDict.find(subscr.at(i))->countNew(server));
         
         l=gname+countmessage;
         // Updating the test this way doesn't repaint properly,

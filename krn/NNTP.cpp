@@ -30,6 +30,7 @@
 #include <qtstream.h>
 #include <qapp.h>
 #include <qregexp.h>
+#include <qdict.h>
 
 #include <kalarmtimer.h>
 
@@ -51,6 +52,7 @@ char debugbuf[1024];
 KAlarmTimer *refreshGUI;
 
 extern KConfig *conf;
+extern QDict <NewsGroup> groupDict;
 
 // NNTPObserver class. Used to get feedback from NNTP
 
@@ -438,10 +440,9 @@ int NNTP::listXover(int from,int to,NewsGroup *n)
     return mReplyCode;
 }
 
-void NNTP::groupList(QList <NewsGroup> *grouplist, bool fromserver)
+void NNTP::groupList(bool fromserver)
 {
     reportCounters (true,false);
-    grouplist->clear();
     QString ac;
     ac=krnpath+"/active";
     QFile f(ac.data());
@@ -454,13 +455,11 @@ void NNTP::groupList(QList <NewsGroup> *grouplist, bool fromserver)
             sprintf (debugbuf,"error getting group list\nServer said %s\n",
                      StatusResponse().c_str());
             KDEBUG (KDEBUG_ERROR,3300,debugbuf);
-            grouplist->clear();
             return;
         };
         TextResponse();
         if (!mTextResponse.length())
         {
-            grouplist->clear();
             return;
         }
 
@@ -473,7 +472,7 @@ void NNTP::groupList(QList <NewsGroup> *grouplist, bool fromserver)
             system (command.data());
         }
         mTextResponse.clear();
-        groupList(grouplist,false);
+        groupList(false);
     }
     else //read it from the active file
     {
@@ -485,9 +484,13 @@ void NNTP::groupList(QList <NewsGroup> *grouplist, bool fromserver)
                 QString s=st.readLine();
                 if (s.isEmpty())
                     break;
-                NewsGroup *gr=new NewsGroup(s.left(s.find(' ')));
-                grouplist->append(gr);
-            };
+                NewsGroup *gr=groupDict.find(s.data());
+                if (!gr)
+                {
+                    gr=new NewsGroup(s.left(s.find(' ')));
+                    groupDict.insert(s.data(),gr);
+                }
+            }
             f.close();
         }
     };

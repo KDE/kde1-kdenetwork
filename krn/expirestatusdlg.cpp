@@ -25,8 +25,7 @@
 extern GDBM_FILE artdb;
 extern GDBM_FILE old_artdb;
 extern KConfig *conf;
-
-extern GroupList groups;
+extern QDict <NewsGroup> groupDict;
 
 extern QString krnpath,cachepath,artinfopath,groupinfopath,dbasepath,outpath;
 
@@ -43,7 +42,7 @@ ExpireStatusDlg::ExpireStatusDlg()
 
 void ExpireStatusDlg::doExpire()
 {
-    QListIterator <NewsGroup> it(groups);
+    QDictIterator <NewsGroup> it(groupDict);
     
     NewsGroup *iter;
 

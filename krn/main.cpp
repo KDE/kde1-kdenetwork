@@ -66,6 +66,7 @@ KStdAccel* keys;
 KBusyPtr *kbp;
 KMAddrBook *addrBook;
 QDict <char> unreadDict(17,TRUE);
+QDict <NewsGroup> groupDict(17,TRUE);
 
 QList <Rule> ruleList;
 KSimpleConfig *ruleFile=0;
@@ -73,7 +74,6 @@ KSimpleConfig *ruleFile=0;
 QString krnpath,cachepath,artinfopath,groupinfopath,dbasepath,outpath;
 
 KDecode *decoder;
-extern GroupList groups;
 
 GDBM_FILE artdb;
 GDBM_FILE old_artdb;
@@ -293,7 +293,7 @@ void expireCache()   // robert's cache stuff
 {
 
     main_widget->hide();
-    QListIterator <NewsGroup> it(groups);
+    QDictIterator <NewsGroup> it(groupDict);
     
     NewsGroup *iter;
 

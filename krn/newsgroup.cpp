@@ -601,19 +601,22 @@ int NewsGroup::countNew(NNTP *server)
     int count = 0;
     
     load();
+
     getList();
-    
+
+    bool s=false;
     if(strcmp(server->group(), name))
-        server->setGroup(name);
-    
-    if(server->last > lastArticle(server))
-        count = server->last - lastArticle(server);
-    
-    for(Article *art=artList.first(); art!=0; art=artList.next()) {
+        s=server->setGroup(name);
+
+    if (s)
+    {
+        if(server->last > lastArticle(server))
+            count = server->last - lastArticle(server);
+    }
+    for(Article *art=artList.first(); art!=0; art=artList.next())
         if(!art->isRead())
             count++;
-    }
-    
+    artList.clear();
     return(count);
 }
 

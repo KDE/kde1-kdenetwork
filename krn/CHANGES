@@ -1,7 +1,21 @@
 -----------------------------------------------------------------------------
+Changes made Apr 24
+-----------------------------------------------------------------------------
+* [Roberto] Still fixing bugs in groupdlg. I think they are all squashed now.
+-----------------------------------------------------------------------------
+Changes made Apr 23
+-----------------------------------------------------------------------------
+* [Roberto] Fixed article counting code. This will never be exact, but who
+            cares. No other newsreader's is accurate either.
+*           Fixing gaping bug in groupdlg when "all newsgroups" hasn't
+            been opened.
+*           Fixing misc bugs in catchup.
+-----------------------------------------------------------------------------
 Changes made Apr 22
 -----------------------------------------------------------------------------
 * [Roberto] Fixed bug reported by TheQ ("Current"->decode didn't work).
+*           Adopted Markus' new KMReaderWin, but it still loops :-(
+            Reverted to older one.
 -----------------------------------------------------------------------------
 Changes made Apr 21
 -----------------------------------------------------------------------------
