@@ -510,6 +510,7 @@ void dieppp(int sig) {
       unlockdevice();
       
       if(!reconnect_on_disconnect){
+      p_xppp->quit_b->setFocus();
       p_xppp->show();
       p_xppp->con_win->stopClock();
       p_xppp->stopAccounting();
@@ -627,6 +628,7 @@ void XPPPWidget::disconnect() {
   con_win->stopClock();
   p_xppp->stopAccounting();
   con_win->hide();
+  p_xppp->quit_b->setFocus();
   p_xppp->show();
 }
 

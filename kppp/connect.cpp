@@ -636,6 +636,7 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
 	if_timeout_timer->stop();
 	this->hide();
 	messg->setText("");
+	p_xppp->quit_b->setFocus();
 	p_xppp->show();
 	app->processEvents();
 	hangup();
@@ -774,7 +775,7 @@ printf( "ConnectWidget::cancelbutton() \n" );
 
   this->hide();
   messg->setText("");
-
+  p_xppp->quit_b->setFocus();
   p_xppp->show();
   p_xppp->stopAccounting();	// just to be sure
   p_xppp->con_win->stopClock();

@@ -114,11 +114,11 @@ public:
   ConWindow *con_win;
   PPPStatsDlg *stats;
   Accounting accounting;
-  
+  QPushButton *quit_b;  
 
 private:
 
-  QPushButton *quit_b;
+
   QPushButton *help_b;
   QPushButton *setup_b;
   QFrame *fline;
