@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp \n"
-"POT-Creation-Date: 1998-12-15 02:02+0100\n"
+"POT-Creation-Date: 1998-12-17 01:54+0100\n"
 "PO-Revision-Date: 1998-10-25 23:05+0100\n"
 "Last-Translator: Jacek Stolarczyk <jacek@mer.chemia.polsl.gliwice.pl>\n"
 "Content-Type: text/plain; charset=iso-8859-2\n"
@@ -1552,37 +1552,37 @@ msgstr "bajtów WE i WY"
 msgid "Available rules"
 msgstr "Dostêpne cenniki"
 
-#: ruleset.cpp:538
+#: ruleset.cpp:544
 msgid "kppp: no rulefile specified\n"
 msgstr "kppp: nie wybrano pliku cennika\n"
 
-#: ruleset.cpp:544
+#: ruleset.cpp:550
 #, c-format
 msgid "kppp: rulefile \"%s\" not found\n"
 msgstr "kppp:  plik cennika \"%s\" nie odnaleziony\n"
 
-#: ruleset.cpp:549
+#: ruleset.cpp:555
 msgid "kppp: rulefiles must have the extension \".rst\"\n"
 msgstr "kppp: plik cennika musi mieæ rozszerzenie \".rst\"\n"
 
-#: ruleset.cpp:558
+#: ruleset.cpp:564
 msgid "kppp: error parsing the ruleset\n"
 msgstr "kppp: B³±d w pliku cennika\n"
 
-#: ruleset.cpp:563
+#: ruleset.cpp:569
 #, c-format
 msgid "kppp: parse error in line %d\n"
 msgstr "kppp: b³±d sk³adniowy w linii %d\n"
 
-#: ruleset.cpp:569
+#: ruleset.cpp:575
 msgid "kppp: rulefile does not contain a default rule\n"
 msgstr "kppp: cennik nie zawiera warto¶ci domy¶lnych\n"
 
-#: ruleset.cpp:574
+#: ruleset.cpp:580
 msgid "kppp: rulefile does not contain a \"name=...\" line\n"
 msgstr "kppp: Brak linii \"name=...\" w pliku cennika \n"
 
-#: ruleset.cpp:578
+#: ruleset.cpp:584
 msgid "kppp: rulefile is ok\n"
 msgstr "kppp: plik cennika jest prawid³owy\n"
 

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-12-07 01:56+0100\n"
+"POT-Creation-Date: 1998-12-17 01:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Case Roole <cjr@xs4all.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -698,60 +698,60 @@ msgstr "Onderwerp"
 msgid "Date"
 msgstr "Datum"
 
-#: kmheaders.cpp:211
+#: kmheaders.cpp:215
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d Boodschappen, %d ongelezen."
 
-#: kmheaders.cpp:213
+#: kmheaders.cpp:217
 msgid "Folder is read-only."
 msgstr "Map is alleen-lezen."
 
-#: kmheaders.cpp:260
+#: kmheaders.cpp:264
 #, fuzzy
 msgid "Unknown"
 msgstr "Onbekende fout"
 
-#: kmheaders.cpp:263
+#: kmheaders.cpp:267
 #, fuzzy
 msgid "No Subject"
 msgstr "Onderwerp"
 
-#: kmheaders.cpp:323
+#: kmheaders.cpp:327
 msgid "order of arrival"
 msgstr "Volgorde van aankomst"
 
-#: kmheaders.cpp:332
+#: kmheaders.cpp:336
 msgid "subject"
 msgstr "onderwerp"
 
-#: kmheaders.cpp:333
+#: kmheaders.cpp:337
 msgid "date"
 msgstr "datum"
 
-#: kmheaders.cpp:334
+#: kmheaders.cpp:338
 msgid "sender"
 msgstr "afzender"
 
-#: kmheaders.cpp:335
+#: kmheaders.cpp:339
 msgid "status"
 msgstr ""
 
-#: kmheaders.cpp:337
+#: kmheaders.cpp:341
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr "Sorteren van boodschappen aflopend naar %s"
 
-#: kmheaders.cpp:339
+#: kmheaders.cpp:343
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr "Sorteren van boodschappen oplopend naar %s"
 
-#: kmheaders.cpp:435
+#: kmheaders.cpp:439
 msgid "Message(s) saved."
 msgstr "Boodschap(pen) opgeslagen"
 
-#: kmheaders.cpp:437
+#: kmheaders.cpp:441
 msgid "Failed to save message(s)."
 msgstr "Faalde bij het opslaan van boodschap(pen)"
 
@@ -979,7 +979,7 @@ msgstr "Bevestig Bestand"
 msgid "Include File"
 msgstr "Voeg bestand in"
 
-#: kmcomposewin.cpp:1239 kmreaderwin.cpp:736
+#: kmcomposewin.cpp:1239 kmreaderwin.cpp:721
 msgid "View..."
 msgstr "Toon..."
 
@@ -987,7 +987,7 @@ msgstr "Toon..."
 msgid "Save..."
 msgstr "Sla op..."
 
-#: kmcomposewin.cpp:1241 kmreaderwin.cpp:739
+#: kmcomposewin.cpp:1241 kmreaderwin.cpp:724
 msgid "Properties..."
 msgstr "Eigenschappen..."
 
@@ -995,7 +995,7 @@ msgstr "Eigenschappen..."
 msgid "Attach..."
 msgstr "Bevestig..."
 
-#: kmcomposewin.cpp:1287 kmreaderwin.cpp:781
+#: kmcomposewin.cpp:1287 kmreaderwin.cpp:766
 msgid "View Attachment: "
 msgstr "Toon Bijlage:"
 
@@ -1065,73 +1065,73 @@ msgstr "base 64"
 msgid "quoted printable"
 msgstr ""
 
-#: kmreaderwin.cpp:320 kmreaderwin.cpp:333 kmreaderwin.cpp:352
-#: kmreaderwin.cpp:373
+#: kmreaderwin.cpp:305 kmreaderwin.cpp:318 kmreaderwin.cpp:337
+#: kmreaderwin.cpp:358
 msgid "Cc: "
 msgstr ""
 
-#: kmreaderwin.cpp:328 kmreaderwin.cpp:347 kmreaderwin.cpp:368
+#: kmreaderwin.cpp:313 kmreaderwin.cpp:332 kmreaderwin.cpp:353
 msgid "From: "
 msgstr "Van:"
 
-#: kmreaderwin.cpp:330 kmreaderwin.cpp:349 kmreaderwin.cpp:370
+#: kmreaderwin.cpp:315 kmreaderwin.cpp:334 kmreaderwin.cpp:355
 msgid "To: "
 msgstr "Aan:"
 
-#: kmreaderwin.cpp:337 kmreaderwin.cpp:358 kmreaderwin.cpp:383
+#: kmreaderwin.cpp:322 kmreaderwin.cpp:343 kmreaderwin.cpp:368
 msgid "References: "
 msgstr "Referenties:"
 
-#: kmreaderwin.cpp:354 kmreaderwin.cpp:367
+#: kmreaderwin.cpp:339 kmreaderwin.cpp:352
 msgid "Date: "
 msgstr "Datum:"
 
-#: kmreaderwin.cpp:376
+#: kmreaderwin.cpp:361
 msgid "Bcc: "
 msgstr ""
 
-#: kmreaderwin.cpp:379
+#: kmreaderwin.cpp:364
 msgid "Reply to: "
 msgstr "Beantwoord aan:"
 
-#: kmreaderwin.cpp:386
+#: kmreaderwin.cpp:371
 msgid "Groups: "
 msgstr "Groepen:"
 
-#: kmreaderwin.cpp:424
+#: kmreaderwin.cpp:409
 msgid "Encrypted message"
 msgstr "Gecodeerde boodschap"
 
-#: kmreaderwin.cpp:430
+#: kmreaderwin.cpp:415
 msgid "Cannot decrypt message:"
 msgstr "Kan boodschap niet ontcijferen:"
 
-#: kmreaderwin.cpp:439
+#: kmreaderwin.cpp:424
 msgid "Message was signed by"
 msgstr "Boodschap was ondertekend door"
 
-#: kmreaderwin.cpp:440
+#: kmreaderwin.cpp:425
 msgid "Warning: Bad signature from"
 msgstr "Waarschuwing: Slechte handtekening van"
 
-#: kmreaderwin.cpp:450
+#: kmreaderwin.cpp:435
 msgid "unknown key ID"
 msgstr ""
 
-#: kmreaderwin.cpp:700
+#: kmreaderwin.cpp:685
 msgid "Attachment: "
 msgstr "Bijlage:"
 
-#: kmreaderwin.cpp:812
+#: kmreaderwin.cpp:797
 msgid "Could not create temporary file"
 msgstr "Kon geen tijdelijk bestand aanmaken"
 
-#: kmreaderwin.cpp:833
+#: kmreaderwin.cpp:818
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "Kon tijdelijk bestand %s niet opslaan"
 
-#: kmreaderwin.cpp:862
+#: kmreaderwin.cpp:847
 msgid "Could not save file"
 msgstr "Kon bestand niet opslaan"
 

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KMail\n"
-"POT-Creation-Date: 1998-12-07 01:56+0100\n"
+"POT-Creation-Date: 1998-12-17 01:54+0100\n"
 "PO-Revision-Date: 1998-04-29 20:00-0500\n"
 "Last-Translator: Vladimir Vuksan <vuksan@veus.hr>\n"
 "Language-Team: Croatian\n"
@@ -688,58 +688,58 @@ msgstr "Tema"
 msgid "Date"
 msgstr "Datum"
 
-#: kmheaders.cpp:211
+#: kmheaders.cpp:215
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "Ukupno %d poruka od toga %d neproèitanih"
 
-#: kmheaders.cpp:213
+#: kmheaders.cpp:217
 msgid "Folder is read-only."
 msgstr "Direktorij je samo za èitanje."
 
-#: kmheaders.cpp:260
+#: kmheaders.cpp:264
 msgid "Unknown"
 msgstr "Nepoznato"
 
-#: kmheaders.cpp:263
+#: kmheaders.cpp:267
 msgid "No Subject"
 msgstr "Nema Teme"
 
-#: kmheaders.cpp:323
+#: kmheaders.cpp:327
 msgid "order of arrival"
 msgstr "redoslijed prispjeæa"
 
-#: kmheaders.cpp:332
+#: kmheaders.cpp:336
 msgid "subject"
 msgstr "tema"
 
-#: kmheaders.cpp:333
+#: kmheaders.cpp:337
 msgid "date"
 msgstr "datum"
 
-#: kmheaders.cpp:334
+#: kmheaders.cpp:338
 msgid "sender"
 msgstr "po¹iljatelj"
 
-#: kmheaders.cpp:335
+#: kmheaders.cpp:339
 msgid "status"
 msgstr "status"
 
-#: kmheaders.cpp:337
+#: kmheaders.cpp:341
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr "Sortiraj poruke silazno po %s"
 
-#: kmheaders.cpp:339
+#: kmheaders.cpp:343
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr "Sortiraj poruke uzlazno po %s"
 
-#: kmheaders.cpp:435
+#: kmheaders.cpp:439
 msgid "Message(s) saved."
 msgstr "Poruka(e) spremljena."
 
-#: kmheaders.cpp:437
+#: kmheaders.cpp:441
 msgid "Failed to save message(s)."
 msgstr "Ne mogu spremiti poruku(e)."
 
@@ -963,7 +963,7 @@ msgstr "Prilo¾i datoteku"
 msgid "Include File"
 msgstr "Umetni datoteku"
 
-#: kmcomposewin.cpp:1239 kmreaderwin.cpp:736
+#: kmcomposewin.cpp:1239 kmreaderwin.cpp:721
 msgid "View..."
 msgstr "&Pogled..."
 
@@ -971,7 +971,7 @@ msgstr "&Pogled..."
 msgid "Save..."
 msgstr "Spremi..."
 
-#: kmcomposewin.cpp:1241 kmreaderwin.cpp:739
+#: kmcomposewin.cpp:1241 kmreaderwin.cpp:724
 msgid "Properties..."
 msgstr "Svojstva..."
 
@@ -979,7 +979,7 @@ msgstr "Svojstva..."
 msgid "Attach..."
 msgstr "Prilo¾i..."
 
-#: kmcomposewin.cpp:1287 kmreaderwin.cpp:781
+#: kmcomposewin.cpp:1287 kmreaderwin.cpp:766
 msgid "View Attachment: "
 msgstr "Pogledaj Prilog: "
 
@@ -1049,73 +1049,73 @@ msgstr "Base 64"
 msgid "quoted printable"
 msgstr "Quoted Printable"
 
-#: kmreaderwin.cpp:320 kmreaderwin.cpp:333 kmreaderwin.cpp:352
-#: kmreaderwin.cpp:373
+#: kmreaderwin.cpp:305 kmreaderwin.cpp:318 kmreaderwin.cpp:337
+#: kmreaderwin.cpp:358
 msgid "Cc: "
 msgstr "Kopija: "
 
-#: kmreaderwin.cpp:328 kmreaderwin.cpp:347 kmreaderwin.cpp:368
+#: kmreaderwin.cpp:313 kmreaderwin.cpp:332 kmreaderwin.cpp:353
 msgid "From: "
 msgstr "Od: "
 
-#: kmreaderwin.cpp:330 kmreaderwin.cpp:349 kmreaderwin.cpp:370
+#: kmreaderwin.cpp:315 kmreaderwin.cpp:334 kmreaderwin.cpp:355
 msgid "To: "
 msgstr "Za: "
 
-#: kmreaderwin.cpp:337 kmreaderwin.cpp:358 kmreaderwin.cpp:383
+#: kmreaderwin.cpp:322 kmreaderwin.cpp:343 kmreaderwin.cpp:368
 msgid "References: "
 msgstr "Reference:"
 
-#: kmreaderwin.cpp:354 kmreaderwin.cpp:367
+#: kmreaderwin.cpp:339 kmreaderwin.cpp:352
 msgid "Date: "
 msgstr "Datum: "
 
-#: kmreaderwin.cpp:376
+#: kmreaderwin.cpp:361
 msgid "Bcc: "
 msgstr "Slijepa kopija: "
 
-#: kmreaderwin.cpp:379
+#: kmreaderwin.cpp:364
 msgid "Reply to: "
 msgstr "Odgovori na: "
 
-#: kmreaderwin.cpp:386
+#: kmreaderwin.cpp:371
 msgid "Groups: "
 msgstr "Grupe: "
 
-#: kmreaderwin.cpp:424
+#: kmreaderwin.cpp:409
 msgid "Encrypted message"
 msgstr "©ifriraj poruku"
 
-#: kmreaderwin.cpp:430
+#: kmreaderwin.cpp:415
 msgid "Cannot decrypt message:"
 msgstr "Ne mogu de¹ifrirati poruku:"
 
-#: kmreaderwin.cpp:439
+#: kmreaderwin.cpp:424
 msgid "Message was signed by"
 msgstr "Poruka potpisao"
 
-#: kmreaderwin.cpp:440
+#: kmreaderwin.cpp:425
 msgid "Warning: Bad signature from"
 msgstr "Upozorenje: Lo¹ potpis od"
 
-#: kmreaderwin.cpp:450
+#: kmreaderwin.cpp:435
 msgid "unknown key ID"
 msgstr "nepoznati key ID"
 
-#: kmreaderwin.cpp:700
+#: kmreaderwin.cpp:685
 msgid "Attachment: "
 msgstr "Prilog: "
 
-#: kmreaderwin.cpp:812
+#: kmreaderwin.cpp:797
 msgid "Could not create temporary file"
 msgstr "Ne mogu stvoriti privremenu datoteku"
 
-#: kmreaderwin.cpp:833
+#: kmreaderwin.cpp:818
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "Ne mogu spremiti privremenu datoteku %s"
 
-#: kmreaderwin.cpp:862
+#: kmreaderwin.cpp:847
 msgid "Could not save file"
 msgstr "Ne mogu spremiti datoteku"
 

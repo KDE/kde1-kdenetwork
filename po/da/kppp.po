@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-12-15 02:02+0100\n"
+"POT-Creation-Date: 1998-12-17 01:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1556,37 +1556,37 @@ msgstr "bytes ud"
 msgid "Available rules"
 msgstr "Tilgængelige regler"
 
-#: ruleset.cpp:538
+#: ruleset.cpp:544
 msgid "kppp: no rulefile specified\n"
 msgstr "kppp: intet regelsæt specificeret\n"
 
-#: ruleset.cpp:544
+#: ruleset.cpp:550
 #, c-format
 msgid "kppp: rulefile \"%s\" not found\n"
 msgstr "kppp: refelsæt \"%s\" ikke fundet\n"
 
-#: ruleset.cpp:549
+#: ruleset.cpp:555
 msgid "kppp: rulefiles must have the extension \".rst\"\n"
 msgstr "kppp: regelsæt skal have efternavnet \".rst\"\n"
 
-#: ruleset.cpp:558
+#: ruleset.cpp:564
 msgid "kppp: error parsing the ruleset\n"
 msgstr "kppp: fejl ved analysering af regelsættet\n"
 
-#: ruleset.cpp:563
+#: ruleset.cpp:569
 #, c-format
 msgid "kppp: parse error in line %d\n"
 msgstr "kppp: fejl i linie %d\n"
 
-#: ruleset.cpp:569
+#: ruleset.cpp:575
 msgid "kppp: rulefile does not contain a default rule\n"
 msgstr "kppp: regelsæt indeholder ingen standard regel\n"
 
-#: ruleset.cpp:574
+#: ruleset.cpp:580
 msgid "kppp: rulefile does not contain a \"name=...\" line\n"
 msgstr "kppp: regelsættet indeholder ingen \"name=...\" linie\n"
 
-#: ruleset.cpp:578
+#: ruleset.cpp:584
 msgid "kppp: rulefile is ok\n"
 msgstr "kppp: regelsæt ok\n"
 

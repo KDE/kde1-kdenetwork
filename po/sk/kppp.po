@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp 0.9.6\n"
-"POT-Creation-Date: 1998-12-15 02:02+0100\n"
+"POT-Creation-Date: 1998-12-17 01:54+0100\n"
 "PO-Revision-Date: 1998-03-08 10:42 MET\n"
 "Last-Translator: Juraj Bednár <bednar@isternet.sk>\n"
 "Language-Team: Slovak <bednar@isternet.sk>\n"
@@ -1737,37 +1737,37 @@ msgstr "Prijatých a odoslaných bajtov"
 msgid "Available rules"
 msgstr "Dostupné pravidlá"
 
-#: ruleset.cpp:538
+#: ruleset.cpp:544
 msgid "kppp: no rulefile specified\n"
 msgstr "kppp: ne¹pecifikovaný ¾iadny súbor pravidiel\n"
 
-#: ruleset.cpp:544
+#: ruleset.cpp:550
 #, c-format
 msgid "kppp: rulefile \"%s\" not found\n"
 msgstr "kppp: nena¹iel som súbor s pravidlami - \"%s\"\n"
 
-#: ruleset.cpp:549
+#: ruleset.cpp:555
 msgid "kppp: rulefiles must have the extension \".rst\"\n"
 msgstr "kppp: súbory s pravidlami musia ma» príponu \".rst\"\n"
 
-#: ruleset.cpp:558
+#: ruleset.cpp:564
 msgid "kppp: error parsing the ruleset\n"
 msgstr "kppp: chyba pri analýze pravidiel\n"
 
-#: ruleset.cpp:563
+#: ruleset.cpp:569
 #, c-format
 msgid "kppp: parse error in line %d\n"
 msgstr "kppp: chyba pri analýze na riadku %d\n"
 
-#: ruleset.cpp:569
+#: ruleset.cpp:575
 msgid "kppp: rulefile does not contain a default rule\n"
 msgstr "kppp: súbor s pravidlami neobsahuje implicitné pravidlo\n"
 
-#: ruleset.cpp:574
+#: ruleset.cpp:580
 msgid "kppp: rulefile does not contain a \"name=...\" line\n"
 msgstr "kppp: súbor s pravidlami neobsahuje riadok \"name=...\"\n"
 
-#: ruleset.cpp:578
+#: ruleset.cpp:584
 msgid "kppp: rulefile is ok\n"
 msgstr "kppp: súbor s pravidlami je v poriadku\n"
 

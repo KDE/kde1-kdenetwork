@@ -1,44 +1,44 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kuser\n"
-"POT-Creation-Date: 1998-10-09 15:54+0200\n"
+"POT-Creation-Date: 1998-12-17 01:54+0100\n"
 "PO-Revision-Date: 1998-03-23 00:00+0100\n"
 "Last-Translator: Sandro Henrique <sandro@conectiva.com.br>\n"
 
-#: main.cpp:213 main.cpp:226 main.cpp:240 main.cpp:258 main.cpp:273
+#: main.cpp:227 main.cpp:240 main.cpp:254 main.cpp:272 main.cpp:287
 msgid "KRN-Missing Configuration info"
 msgstr "KRN-Arquivo de Configuração não existe"
 
-#: main.cpp:214
+#: main.cpp:228
 msgid "Please enter your email adress"
 msgstr "Por favor insira o seu endereço de email"
 
-#: main.cpp:227
+#: main.cpp:241
 msgid "Please enter your real name"
 msgstr "Por favor insira o seu nome verdadeiro"
 
-#: main.cpp:241
+#: main.cpp:255
 msgid "Please enter your organization's name"
 msgstr "Por favor insira o nome da sua organização"
 
-#: main.cpp:259
+#: main.cpp:273
 msgid "Please enter your NNTP server name"
 msgstr "Por favor insira o nome do seu servidor NNTP"
 
-#: main.cpp:274
+#: main.cpp:288
 msgid "Please enter your SMTP server name"
 msgstr "Por favor insira o nome do seu servidor SMTP"
 
-#: NNTP.cpp:76
+#: NNTP.cpp:119
 #, c-format
 msgid "Received %.2f Kb"
 msgstr "Recebi %.2f Kb"
 
-#: NNTP.cpp:557
+#: NNTP.cpp:584
 msgid "Getting Article"
 msgstr "Pegando Artigo"
 
-#: NNTP.cpp:643
+#: NNTP.cpp:726
 msgid "Article Received"
 msgstr "Artigo Recebido"
 
@@ -158,51 +158,51 @@ msgstr "(des)Subscrever"
 msgid "Check for Unread Articles"
 msgstr "Verificar Mensagens Não Lidas"
 
-#: groupdlg.cpp:361 groupdlg.cpp:583 groupdlg.cpp:924
+#: groupdlg.cpp:363 groupdlg.cpp:585 groupdlg.cpp:926
 msgid "All Newsgroups."
 msgstr "Todos os Newsgroups."
 
-#: groupdlg.cpp:471 groupdlg.cpp:565
+#: groupdlg.cpp:473 groupdlg.cpp:567
 msgid "Subscribed Newsgroups."
 msgstr "Newsgroups Subscritos"
 
-#: groupdlg.cpp:520
+#: groupdlg.cpp:522
 msgid "Disconnected"
 msgstr "Desconectado"
 
-#: groupdlg.cpp:527
+#: groupdlg.cpp:529
 msgid "Connecting to server"
 msgstr "Ligando para o servidor"
 
-#: groupdlg.cpp:532
+#: groupdlg.cpp:534
 msgid "Connected to server - Posting not allowed"
 msgstr "Conectado ao servidor - Envio não permitido"
 
-#: groupdlg.cpp:534
+#: groupdlg.cpp:536
 msgid "Connected to server - Posting allowed"
 msgstr "Conectado ao servidor - Envio permitido"
 
-#: groupdlg.cpp:540
+#: groupdlg.cpp:542
 msgid "Can't connect to server"
 msgstr "Não foi possível conectar-se ao servidor"
 
-#: groupdlg.cpp:542
+#: groupdlg.cpp:544
 msgid "Connection to server failed"
 msgstr "Conexão com o servidor falhou"
 
-#: groupdlg.cpp:551
+#: groupdlg.cpp:553
 msgid "Authentication Failed"
 msgstr "Falha de Autenticação"
 
-#: groupdlg.cpp:554
+#: groupdlg.cpp:556
 msgid "Connection to server failed: Authentication problem"
 msgstr "Conexão com servidor falhou: Problemas de autenticação"
 
-#: groupdlg.cpp:603
+#: groupdlg.cpp:605
 msgid "Krn-Question"
 msgstr "Pergunta do Krn"
 
-#: groupdlg.cpp:604
+#: groupdlg.cpp:606
 msgid ""
 "The operation you requested needs a connection to the News server\n"
 "Should I attempt one?"
@@ -210,7 +210,7 @@ msgstr ""
 "A operação pedida necessita de uma ligação a um servidor de News\n"
 "Devo tentar estabelecê-la?"
 
-#: groupdlg.cpp:867
+#: groupdlg.cpp:869
 msgid ""
 "You don't have an active groups list.\n"
 " get it from server?"
@@ -218,31 +218,31 @@ msgstr ""
 "Não há uma lista de grupos ativos.\n"
 " Buscar no servidor?"
 
-#: groupdlg.cpp:883
+#: groupdlg.cpp:885
 msgid "Listing active newsgroups"
 msgstr "Listando newsgroups ativos"
 
-#: groupdlg.cpp:898
+#: groupdlg.cpp:900
 msgid "KRN - Find a Newsgroup"
 msgstr "KRN - Encontrar um Newsgroup"
 
-#: groupdlg.cpp:899
+#: groupdlg.cpp:901
 msgid "Enter the name of the Newsgroup"
 msgstr "Insira o nome do Newsgroup"
 
-#: groupdlg.cpp:983
+#: groupdlg.cpp:985
 msgid "Krn - Message"
 msgstr "Krn - Mensagem"
 
-#: groupdlg.cpp:984
+#: groupdlg.cpp:986
 msgid "I can't find the group you want!"
 msgstr "Não foi possível encontrar o grupo pretendido!"
 
-#: groupdlg.cpp:1077
+#: groupdlg.cpp:1079
 msgid "Getting messages in "
 msgstr "Recebendo mensagens em "
 
-#: groupdlg.cpp:1090
+#: groupdlg.cpp:1092
 msgid "Getting list of messages in "
 msgstr "Recebendo lista de mensagens em "
 
@@ -632,87 +632,87 @@ msgstr "Utilizar apenas uma janela"
 msgid "Split window vertically"
 msgstr "Dividir janela verticalmente"
 
-#: kmmessage.cpp:1260
+#: kmmessage.cpp:1340
 msgid "On %D, you wrote:"
 msgstr "Em %D, você escreveu:"
 
-#: kmmessage.cpp:1261
+#: kmmessage.cpp:1341
 msgid "On %D, %F wrote:"
 msgstr "Em %D, %F escreveu:"
 
-#: kmmessage.cpp:1262
+#: kmmessage.cpp:1342
 msgid "Forwarded Message"
 msgstr "Mensagem passada adiante"
 
-#: kmcomposewin.cpp:122
+#: kmcomposewin.cpp:127
 msgid "KMail Composer"
 msgstr "Compositor KMail"
 
-#: kmcomposewin.cpp:133
+#: kmcomposewin.cpp:138
 msgid "F"
 msgstr "F"
 
-#: kmcomposewin.cpp:134
+#: kmcomposewin.cpp:139
 msgid "Name"
 msgstr "Nome"
 
-#: kmcomposewin.cpp:135
+#: kmcomposewin.cpp:140
 msgid "Size"
 msgstr "Tamanho"
 
-#: kmcomposewin.cpp:136
+#: kmcomposewin.cpp:141
 msgid "Encoding"
 msgstr "Codificação"
 
-#: kmcomposewin.cpp:137
+#: kmcomposewin.cpp:142
 msgid "Type"
 msgstr "Tipo"
 
-#: kmcomposewin.cpp:344
+#: kmcomposewin.cpp:343
 msgid "&From:"
 msgstr "&De:"
 
-#: kmcomposewin.cpp:346
+#: kmcomposewin.cpp:345
 msgid "&Reply to:"
 msgstr "&Responder para:"
 
-#: kmcomposewin.cpp:348
+#: kmcomposewin.cpp:347
 msgid "&To:"
 msgstr "&Para:"
 
-#: kmcomposewin.cpp:350
+#: kmcomposewin.cpp:349
 msgid "&Cc:"
 msgstr "&Cc:"
 
-#: kmcomposewin.cpp:352
+#: kmcomposewin.cpp:351
 msgid "&Bcc:"
 msgstr "&Bcc:"
 
-#: kmcomposewin.cpp:354
+#: kmcomposewin.cpp:353
 msgid "&Subject:"
 msgstr "Ass&unto:"
 
-#: kmcomposewin.cpp:357
+#: kmcomposewin.cpp:356
 msgid "&Newsgroups:"
 msgstr "&Newsgroups:"
 
-#: kmcomposewin.cpp:359
+#: kmcomposewin.cpp:358
 msgid "&Followup-To:"
 msgstr "&Follow-up para:"
 
-#: kmcomposewin.cpp:431
+#: kmcomposewin.cpp:430
 msgid "&Send"
 msgstr "&Remeter"
 
-#: kmcomposewin.cpp:434
+#: kmcomposewin.cpp:433
 msgid "S&end later"
 msgstr "R&emeter mais tarde"
 
-#: kmcomposewin.cpp:436
+#: kmcomposewin.cpp:435
 msgid "S&end now"
 msgstr "Reme&ter agora"
 
-#: kmcomposewin.cpp:438
+#: kmcomposewin.cpp:437
 msgid "&Insert File..."
 msgstr "&Inserir arquivo..."
 
@@ -728,147 +728,166 @@ msgstr "&Novo Compositor..."
 msgid "New Mailreader"
 msgstr "Novo leitor de mail"
 
-#: kmcomposewin.cpp:469 kmcomposewin.cpp:678 kmcomposewin.cpp:1917
+#: kmcomposewin.cpp:469 kmcomposewin.cpp:693 kmcomposewin.cpp:1836
 msgid "Mark all"
 msgstr "Marcar tudo"
 
-#: kmcomposewin.cpp:472 kmcomposewin.cpp:680
+#: kmcomposewin.cpp:472 kmcomposewin.cpp:695
 msgid "Find..."
 msgstr "Procurar..."
 
-#: kmcomposewin.cpp:474 kmcomposewin.cpp:681
+#: kmcomposewin.cpp:474 kmcomposewin.cpp:696
 msgid "Replace..."
 msgstr "Trocar..."
 
-#: kmcomposewin.cpp:481
+#: kmcomposewin.cpp:477
+#, fuzzy
+msgid "&Spellcheck..."
+msgstr "KMail: checagem ortográfica"
+
+#: kmcomposewin.cpp:484
 msgid "&Urgent"
 msgstr "&Urgente"
 
-#: kmcomposewin.cpp:483
+#: kmcomposewin.cpp:486
 msgid "&Confirm delivery"
 msgstr "&Confirmar entrega"
 
-#: kmcomposewin.cpp:485
+#: kmcomposewin.cpp:488
 msgid "&Confirm read"
 msgstr "&Confirmar leitura"
 
-#: kmcomposewin.cpp:488
+#: kmcomposewin.cpp:491
+#, fuzzy
+msgid "&Spellchecker..."
+msgstr "KMail: checagem ortográfica"
+
+#: kmcomposewin.cpp:494
 msgid "&Charsets..."
 msgstr "&Charsets..."
 
-#: kmcomposewin.cpp:501
+#: kmcomposewin.cpp:507
 msgid "&All Fields"
 msgstr "&Todos os campos"
 
-#: kmcomposewin.cpp:503
+#: kmcomposewin.cpp:509
 msgid "&From"
 msgstr "&De"
 
-#: kmcomposewin.cpp:504
+#: kmcomposewin.cpp:510
 msgid "&Reply to"
 msgstr "&Responder para"
 
-#: kmcomposewin.cpp:505
+#: kmcomposewin.cpp:511
 msgid "&To"
 msgstr "&Para"
 
-#: kmcomposewin.cpp:506
+#: kmcomposewin.cpp:512
 msgid "&Cc"
 msgstr "&Cc"
 
-#: kmcomposewin.cpp:507
+#: kmcomposewin.cpp:513
 msgid "&Bcc"
 msgstr "&Bcc"
 
-#: kmcomposewin.cpp:508
+#: kmcomposewin.cpp:514
 msgid "&Subject"
 msgstr "Ass&unto"
 
-#: kmcomposewin.cpp:510
+#: kmcomposewin.cpp:516
 msgid "&Newsgroups"
 msgstr "&Newsgroups"
 
-#: kmcomposewin.cpp:511
+#: kmcomposewin.cpp:517
 msgid "&Followup-To"
 msgstr "&Follow-up para"
 
-#: kmcomposewin.cpp:516
+#: kmcomposewin.cpp:523
 msgid "Append S&ignature"
 msgstr "Adicionar &Assinatura"
 
-#: kmcomposewin.cpp:518
+#: kmcomposewin.cpp:525
 msgid "&Insert File"
 msgstr "&Inserir Arquivo"
 
-#: kmcomposewin.cpp:520
+#: kmcomposewin.cpp:527
+msgid "Insert My &Public Key"
+msgstr ""
+
+#: kmcomposewin.cpp:532
 msgid "&Attach..."
 msgstr "&Anexar..."
 
-#: kmcomposewin.cpp:523
+#: kmcomposewin.cpp:535
 msgid "&Save..."
 msgstr "&Salvar..."
 
-#: kmcomposewin.cpp:524
+#: kmcomposewin.cpp:536
 msgid "Pr&operties..."
 msgstr "Pr&opriedades..."
 
-#: kmcomposewin.cpp:526
+#: kmcomposewin.cpp:538
 msgid "&Attach"
 msgstr "&Anexar"
 
-#: kmcomposewin.cpp:551
+#: kmcomposewin.cpp:558
+#, fuzzy
+msgid "Send message"
+msgstr "Mandando mensagem: "
+
+#: kmcomposewin.cpp:563
 msgid "Compose new message"
 msgstr "Compor nova mensagem"
 
-#: kmcomposewin.cpp:556
+#: kmcomposewin.cpp:568
 msgid "Save message to file"
 msgstr "Salvar mensagem em arquivo"
 
-#: kmcomposewin.cpp:561
+#: kmcomposewin.cpp:573
 msgid "Print message"
 msgstr "Imprimir mensagem"
 
-#: kmcomposewin.cpp:570
+#: kmcomposewin.cpp:582
 msgid "Cut selection"
 msgstr "Cortar seleção"
 
-#: kmcomposewin.cpp:573
+#: kmcomposewin.cpp:585
 msgid "Copy selection"
 msgstr "Copiar seleção"
 
-#: kmcomposewin.cpp:576
+#: kmcomposewin.cpp:588
 msgid "Paste clipboard contents"
 msgstr "Colar conteúdo da área de transferência"
 
-#: kmcomposewin.cpp:581
+#: kmcomposewin.cpp:593
 msgid "Attach file"
 msgstr "Anexar arquivo"
 
-#: kmcomposewin.cpp:585
+#: kmcomposewin.cpp:597
 msgid "Open addressbook..."
 msgstr "Abrir livro de endereços..."
 
-#: kmcomposewin.cpp:594
+#: kmcomposewin.cpp:604
 msgid "sign message"
 msgstr "assinar mensagem"
 
-#: kmcomposewin.cpp:599
+#: kmcomposewin.cpp:609
 msgid "encrypt message"
 msgstr "encriptar mensagem"
 
-#: kmcomposewin.cpp:611 kmcomposewin.cpp:627
+#: kmcomposewin.cpp:626 kmcomposewin.cpp:642
 msgid "Column"
 msgstr "Coluna"
 
-#: kmcomposewin.cpp:612 kmcomposewin.cpp:625
+#: kmcomposewin.cpp:627 kmcomposewin.cpp:640
 msgid "Line"
 msgstr "Linha"
 
-#: kmcomposewin.cpp:891
+#: kmcomposewin.cpp:908
 msgid "KMail Confirm"
 msgstr "Confirmar KMail"
 
-#: kmcomposewin.cpp:892
+#: kmcomposewin.cpp:909
 msgid ""
 "Close and discard\n"
 "edited message?"
@@ -876,48 +895,35 @@ msgstr ""
 "Fechar e descartar\n"
 "mensagem editada?"
 
-#: kmcomposewin.cpp:937
-#, c-format
-msgid ""
-"public key for %s not found.\n"
-"This person will not be able to decrypt the message."
-msgstr ""
-"Chave pública para %s não encontrada.\n"
-"Esta pessoa não poderá decriptar a mensagem."
-
-#: kmcomposewin.cpp:958
-msgid "Error during PGP:"
-msgstr "Erro durante PGP:"
-
-#: kmcomposewin.cpp:1178
+#: kmcomposewin.cpp:1182
 msgid "Attach File"
 msgstr "Anexar Arquivo"
 
-#: kmcomposewin.cpp:1200
+#: kmcomposewin.cpp:1204
 msgid "Include File"
 msgstr "Incluir Arquivo"
 
-#: kmcomposewin.cpp:1223 kmreaderwin.cpp:683
+#: kmcomposewin.cpp:1239 kmreaderwin.cpp:737
 msgid "View..."
 msgstr "Ver..."
 
-#: kmcomposewin.cpp:1224
+#: kmcomposewin.cpp:1240
 msgid "Save..."
 msgstr "Salvar..."
 
-#: kmcomposewin.cpp:1225 kmreaderwin.cpp:686
+#: kmcomposewin.cpp:1241 kmreaderwin.cpp:740
 msgid "Properties..."
 msgstr "Propriedades..."
 
-#: kmcomposewin.cpp:1229
+#: kmcomposewin.cpp:1245
 msgid "Attach..."
 msgstr "Anexar..."
 
-#: kmcomposewin.cpp:1271 kmreaderwin.cpp:728
+#: kmcomposewin.cpp:1287 kmreaderwin.cpp:782
 msgid "View Attachment: "
 msgstr "Ver Anexação: "
 
-#: kmcomposewin.cpp:1442 kpgp.cpp:357
+#: kmcomposewin.cpp:1458 kpgp.cpp:546
 msgid ""
 "Sorry, but this feature\n"
 "is still missing"
@@ -925,37 +931,37 @@ msgstr ""
 "Desculpe, mas esse recurso\n"
 "ainda está faltando"
 
-#: kmcomposewin.cpp:1450
+#: kmcomposewin.cpp:1466
 msgid "unnamed"
 msgstr "sem nome"
 
-#: kmcomposewin.cpp:1465
+#: kmcomposewin.cpp:1481
 msgid "To:"
 msgstr "Para:"
 
-#: kmcomposewin.cpp:1469
+#: kmcomposewin.cpp:1485
 msgid "Subject:"
 msgstr "Assunto:"
 
-#: kmcomposewin.cpp:1472
+#: kmcomposewin.cpp:1488
 msgid "Date:"
 msgstr "Data:"
 
-#: kmcomposewin.cpp:1549
+#: kmcomposewin.cpp:1565
 msgid "Choose Signature File"
 msgstr "Escolher Arquivo de Assinatura"
 
-#: kmcomposewin.cpp:1579
-msgid "KMail: Spellcheck"
-msgstr "KMail: checagem ortográfica"
+#: kmcomposewin.cpp:2018
+msgid "Spellcheck - KMail"
+msgstr ""
 
-#: kmcomposewin.cpp:1603
+#: kmcomposewin.cpp:2044
 msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
 msgstr ""
 "Erro ao iniciar KSpell. Verifique se o ISpell está configurado corretamente."
 
-#: kmsender.cpp:108
+#: kmsender.cpp:116
 msgid ""
 "Please specify a send\n"
 "method in the settings\n"
@@ -965,7 +971,7 @@ msgstr ""
 "de remessa nas Configurações\n"
 "e tente novamente."
 
-#: kmsender.cpp:114
+#: kmsender.cpp:122
 msgid ""
 "Please set the required fields in the\n"
 "identity settings:\n"
@@ -975,35 +981,35 @@ msgstr ""
 "configurações de identificação:\n"
 "nome do usuário e endereço e-mail."
 
-#: kmsender.cpp:139
+#: kmsender.cpp:147
 msgid "You must specify a receiver"
 msgstr "Você precisa especificar um receptor"
 
-#: kmsender.cpp:150
+#: kmsender.cpp:158
 msgid "Cannot add message to outbox folder"
 msgstr "Não é possível adicionar mensagens à pasta OutBox"
 
-#: kmsender.cpp:173
+#: kmsender.cpp:189
 msgid "Sending still in progress"
 msgstr "Remessa ainda em andamento"
 
-#: kmsender.cpp:225
+#: kmsender.cpp:245
 msgid "Initiating sender process..."
 msgstr "Iniciando processo de remessa..."
 
-#: kmsender.cpp:241
+#: kmsender.cpp:261
 msgid "Sending message: "
 msgstr "Mandando mensagem: "
 
-#: kmsender.cpp:269
+#: kmsender.cpp:289
 msgid "Done sending messages."
 msgstr "Remessa de mensagens finalizada."
 
-#: kmsender.cpp:288
+#: kmsender.cpp:308
 msgid "Sending failed:"
 msgstr "Remessa falhou:"
 
-#: kmsender.cpp:441
+#: kmsender.cpp:461
 msgid ""
 "Please specify a mailer program\n"
 "in the settings."
@@ -1011,16 +1017,16 @@ msgstr ""
 "Queira especificar um programa de correio\n"
 "eletrônico nas configurações."
 
-#: kmsender.cpp:481
+#: kmsender.cpp:501
 #, c-format
 msgid "Failed to execute mailer program %s"
 msgstr "Não foi possível executar o programa de correio %s"
 
-#: kmsender.cpp:569
+#: kmsender.cpp:589
 msgid "connecting to server"
 msgstr "Ligando para o servidor"
 
-#: kmsender.cpp:574
+#: kmsender.cpp:594
 #, c-format
 msgid ""
 "Cannot open SMTP connection to\n"
@@ -1031,19 +1037,19 @@ msgstr ""
 "o host %s para remeter:\n"
 "%s"
 
-#: kmsender.cpp:603
+#: kmsender.cpp:623
 msgid "Cannot close SMTP connection."
 msgstr "Não foi possível fechar a conexão SMTP."
 
-#: kmsender.cpp:653
+#: kmsender.cpp:673
 msgid "transmitting message"
 msgstr "transmitindo mensagem"
 
-#: kmsender.cpp:687
+#: kmsender.cpp:707
 msgid "network error"
 msgstr "erro de rede"
 
-#: kmsender.cpp:689
+#: kmsender.cpp:709
 #, c-format
 msgid ""
 "a SMTP error occured.\n"
@@ -1056,7 +1062,7 @@ msgstr ""
 "Resposta: %s\n"
 "Cód. retorno: %d"
 
-#: kmsender.cpp:704
+#: kmsender.cpp:724
 #, c-format
 msgid "Sending SMTP command: %s"
 msgstr "Remetendo comando SMTP: %s"
@@ -1096,7 +1102,7 @@ msgstr ""
 "%s\n"
 "%s"
 
-#: kfileio.cpp:26 kmaddrbook.cpp:159
+#: kfileio.cpp:26 kmaddrbook.cpp:162
 msgid "File I/O Error"
 msgstr "Erro I/O de arquivo"
 
@@ -1127,7 +1133,7 @@ msgstr ""
 "Você não tem permissões para o arquivo:\n"
 "%s"
 
-#: kfileio.cpp:72 kmaddrbook.cpp:149
+#: kfileio.cpp:72 kmaddrbook.cpp:152
 #, c-format
 msgid ""
 "Could not read file:\n"
@@ -1136,7 +1142,7 @@ msgstr ""
 "Impossível ler o arquivo:\n"
 "%s"
 
-#: kfileio.cpp:75 kmaddrbook.cpp:152
+#: kfileio.cpp:75 kmaddrbook.cpp:155
 #, c-format
 msgid ""
 "Could not open file:\n"
@@ -1195,7 +1201,7 @@ msgstr ""
 "Impossível abrir o arquivo para escrita:\n"
 "%s"
 
-#: kfileio.cpp:163 kmaddrbook.cpp:155
+#: kfileio.cpp:163 kmaddrbook.cpp:158
 #, c-format
 msgid ""
 "Error while writing file:\n"
@@ -1237,73 +1243,77 @@ msgstr "base 64"
 msgid "quoted printable"
 msgstr "quoted imprimível"
 
-#: kmreaderwin.cpp:309 kmreaderwin.cpp:322 kmreaderwin.cpp:341
-#: kmreaderwin.cpp:362
+#: kmreaderwin.cpp:320 kmreaderwin.cpp:333 kmreaderwin.cpp:352
+#: kmreaderwin.cpp:373
 msgid "Cc: "
 msgstr "Cc: "
 
-#: kmreaderwin.cpp:317 kmreaderwin.cpp:336 kmreaderwin.cpp:357
+#: kmreaderwin.cpp:328 kmreaderwin.cpp:347 kmreaderwin.cpp:368
 msgid "From: "
 msgstr "De: "
 
-#: kmreaderwin.cpp:319 kmreaderwin.cpp:338 kmreaderwin.cpp:359
+#: kmreaderwin.cpp:330 kmreaderwin.cpp:349 kmreaderwin.cpp:370
 msgid "To: "
 msgstr "Para: "
 
-#: kmreaderwin.cpp:326 kmreaderwin.cpp:347 kmreaderwin.cpp:372
+#: kmreaderwin.cpp:337 kmreaderwin.cpp:358 kmreaderwin.cpp:383
 msgid "References: "
 msgstr "Referências: "
 
-#: kmreaderwin.cpp:343 kmreaderwin.cpp:356
+#: kmreaderwin.cpp:354 kmreaderwin.cpp:367
 msgid "Date: "
 msgstr "Data:  "
 
-#: kmreaderwin.cpp:365
+#: kmreaderwin.cpp:376
 msgid "Bcc: "
 msgstr "Bcc: "
 
-#: kmreaderwin.cpp:368
+#: kmreaderwin.cpp:379
 msgid "Reply to: "
 msgstr "Responder para: "
 
-#: kmreaderwin.cpp:375
+#: kmreaderwin.cpp:386
 msgid "Groups: "
 msgstr "Grupos: "
 
-#: kmreaderwin.cpp:412
+#: kmreaderwin.cpp:425
 msgid "Encrypted message"
 msgstr "Mensagem encriptada"
 
-#: kmreaderwin.cpp:418
+#: kmreaderwin.cpp:431
 msgid "Cannot decrypt message:"
 msgstr "Impossível decriptar mensagem:"
 
-#: kmreaderwin.cpp:436
+#: kmreaderwin.cpp:440
 msgid "Message was signed by"
 msgstr "Mensagem foi assinada por"
 
-#: kmreaderwin.cpp:437
+#: kmreaderwin.cpp:441
 msgid "Warning: Bad signature from"
 msgstr "Aviso: Assinatura inválida de"
 
-#: kmreaderwin.cpp:647
+#: kmreaderwin.cpp:451
+msgid "unknown key ID"
+msgstr ""
+
+#: kmreaderwin.cpp:701
 msgid "Attachment: "
 msgstr "Anexação: "
 
-#: kmreaderwin.cpp:759
+#: kmreaderwin.cpp:813
 msgid "Could not create temporary file"
 msgstr "Impossível criar arquivo temporário"
 
-#: kmreaderwin.cpp:780
+#: kmreaderwin.cpp:834
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "Impossível salvar arquivo temporário %s"
 
-#: kmreaderwin.cpp:809
+#: kmreaderwin.cpp:863
 msgid "Could not save file"
 msgstr "Não foi possível salvar o arquivNão foi possível salvar o arquivoo"
 
-#: kpgp.cpp:117
+#: kpgp.cpp:151
 msgid ""
 "Couldn't find PGP executable.\n"
 "Please check your PATH is set correctly."
@@ -1311,7 +1321,7 @@ msgstr ""
 "Impossível encontrar executável PGP.\n"
 "Queira checar se seu PATH está ok."
 
-#: kpgp.cpp:163
+#: kpgp.cpp:193
 msgid ""
 "Could not find PGP executable.\n"
 "Please check your PATH is set correctly."
@@ -1319,31 +1329,66 @@ msgstr ""
 "Impossível encontrar executável PGP.\n"
 "Queira checar se seu PATH está ok."
 
-#: kpgp.cpp:173
+#: kpgp.cpp:207
 msgid "The pass phrase is missing."
 msgstr "A frase-senha está faltando."
 
-#: kpgp.cpp:445
-msgid "Message signed by"
-msgstr "Mensagem assinada por"
+#: kpgp.cpp:286 kpgp.cpp:312 kpgp.cpp:325 kpgp.cpp:344 kpgp.cpp:361
+msgid "PGP Warning"
+msgstr ""
 
-#: kpgp.cpp:449
-msgid "Message has a bad signature from"
-msgstr "Mensagem tem uma assinatura inválida de"
+#: kpgp.cpp:287
+msgid ""
+"Could not find the public keys for the\n"
+"recipients of this mail.\n"
+"Message will not be encrypted."
+msgstr ""
 
-#: kpgp.cpp:457
-msgid "End PGP signed message"
-msgstr "Fim de mensagem PGP assinada"
+#: kpgp.cpp:296
+msgid "Could not find the public keys for\n"
+msgstr ""
 
-#: kpgp.cpp:622
-msgid "Bad pass Phrase; couldn't decrypt"
-msgstr "Frase-senha inválida; impossível decriptar"
+#: kpgp.cpp:307
+msgid "These persons will not be able to\n"
+msgstr ""
 
-#: kpgp.cpp:708
-msgid "Bad pass Phrase; couldn't sign"
-msgstr "Frase-senha inválida; impossível assinar"
+#: kpgp.cpp:309
+msgid "This person will not be able to\n"
+msgstr ""
 
-#: kpgp.cpp:765
+#: kpgp.cpp:311
+#, fuzzy
+msgid "decrypt the message."
+msgstr "encriptar mensagem"
+
+#: kpgp.cpp:326
+msgid ""
+"You just entered an invalid passphrase.\n"
+"Do you wan't to try again, continue and\n"
+"leave the message unsigned, or cancel sending the message?"
+msgstr ""
+
+#: kpgp.cpp:331
+msgid "Retry"
+msgstr ""
+
+#: kpgp.cpp:342
+msgid ""
+"Do you wan't to encrypt anyway, leave the\n"
+"message as is, or cancel the message?"
+msgstr ""
+
+#: kpgp.cpp:346
+msgid "Encrypt"
+msgstr ""
+
+#: kpgp.cpp:359
+msgid ""
+"Do you wan't to leave the message as is,\n"
+"or cancel the message?"
+msgstr ""
+
+#: kpgp.cpp:717
 msgid ""
 "Please enter your\n"
 "PGP passphrase"
@@ -1351,11 +1396,28 @@ msgstr ""
 "Por favor digite sua\n"
 "frase-senha PGP"
 
-#: kpgp.cpp:792
+#: kpgp.cpp:744
 msgid "PGP Security Check"
 msgstr "Checagem de segurança PGP"
 
-#: krnsender.cpp:59
+#: kpgp.cpp:765
+#, fuzzy
+msgid "Identity"
+msgstr "Identidade..."
+
+#: kpgp.cpp:771
+msgid "PGP User Identity:"
+msgstr ""
+
+#: kpgp.cpp:782
+msgid "Store passphrase"
+msgstr ""
+
+#: kpgp.cpp:788
+msgid "Always encrypt to self"
+msgstr ""
+
+#: krnsender.cpp:60
 msgid "This server is read onlyyou can't post here!"
 msgstr "Este servidor é só de leitura, não pode enviar para aqui!"
 
@@ -1538,6 +1600,63 @@ msgstr "&7 bit como ASCII"
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
 msgstr "&Delimitar caracteres desconhecidos"
+
+#: kpgpbase.cpp:315
+msgid "Bad pass Phrase; couldn't sign"
+msgstr "Frase-senha inválida; impossível assinar"
+
+#: kpgpbase.cpp:354
+msgid "error running pgp"
+msgstr ""
+
+#: kpgpbase.cpp:371 kpgpbase.cpp:662
+msgid "Bad pass Phrase; couldn't decrypt"
+msgstr "Frase-senha inválida; impossível decriptar"
+
+#: kpgpbase.cpp:382 kpgpbase.cpp:673
+msgid "Do not have the secret key for this message"
+msgstr ""
+
+#: kpgpbase.cpp:410
+msgid "unknown key ID "
+msgstr ""
+
+#: kpgpbase.cpp:430
+msgid "??? (file ~/.pgp/pubring.pgp not found)"
+msgstr ""
+
+#: kpgpbase.cpp:585
+#, fuzzy
+msgid "The passphrase you entered is invalid."
+msgstr "A frase-senha está faltando."
+
+#: kpgpbase.cpp:611
+msgid ""
+"The key(s) you wan't to encrypt your message\n"
+"to are not trusted. No encryption done."
+msgstr ""
+
+#: kpgpbase.cpp:614
+#, fuzzy, c-format
+msgid ""
+"The following key(s) are not trusted:\n"
+"%s\n"
+"They will not be able to decrypt the message"
+msgstr ""
+"Chave pública para %s não encontrada.\n"
+"Esta pessoa não poderá decriptar a mensagem."
+
+#~ msgid "Error during PGP:"
+#~ msgstr "Erro durante PGP:"
+
+#~ msgid "Message signed by"
+#~ msgstr "Mensagem assinada por"
+
+#~ msgid "Message has a bad signature from"
+#~ msgstr "Mensagem tem uma assinatura inválida de"
+
+#~ msgid "End PGP signed message"
+#~ msgstr "Fim de mensagem PGP assinada"
 
 #~ msgid "Print"
 #~ msgstr "Imprimir"

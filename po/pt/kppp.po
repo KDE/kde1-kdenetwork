@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1998-12-15 02:02+0100\n"
+"POT-Creation-Date: 1998-12-17 01:54+0100\n"
 "PO-Revision-Date: 1998-01-27 22:00+0000\n"
 "Last-Translator: Pedro Morais <pmmm@camoes.rnl.ist.utl.pt>\n"
 
@@ -1544,37 +1544,37 @@ msgstr "Bytes recebidos e enviados"
 msgid "Available rules"
 msgstr "Regras disponíveis"
 
-#: ruleset.cpp:538
+#: ruleset.cpp:544
 msgid "kppp: no rulefile specified\n"
 msgstr "kppp: nenhum ficheiro de regras especificado\n"
 
-#: ruleset.cpp:544
+#: ruleset.cpp:550
 #, c-format
 msgid "kppp: rulefile \"%s\" not found\n"
 msgstr "kppp: ficheiro de regras \"%s\" não encontrado\n"
 
-#: ruleset.cpp:549
+#: ruleset.cpp:555
 msgid "kppp: rulefiles must have the extension \".rst\"\n"
 msgstr "kppp: ficheiro de regras têm de ter a extensão \".rst\"\n"
 
-#: ruleset.cpp:558
+#: ruleset.cpp:564
 msgid "kppp: error parsing the ruleset\n"
 msgstr "kppp: erro ao processar regras\n"
 
-#: ruleset.cpp:563
+#: ruleset.cpp:569
 #, c-format
 msgid "kppp: parse error in line %d\n"
 msgstr "kppp: erro na linha %d\n"
 
-#: ruleset.cpp:569
+#: ruleset.cpp:575
 msgid "kppp: rulefile does not contain a default rule\n"
 msgstr "kppp: ficheiro de regras não contem uma regra por omissão\n"
 
-#: ruleset.cpp:574
+#: ruleset.cpp:580
 msgid "kppp: rulefile does not contain a \"name=...\" line\n"
 msgstr "kppp: ficheiro de regras não contêm uma linha \"name=...\"\n"
 
-#: ruleset.cpp:578
+#: ruleset.cpp:584
 msgid "kppp: rulefile is ok\n"
 msgstr "kppp: ficheiro de regras está ok\n"
 

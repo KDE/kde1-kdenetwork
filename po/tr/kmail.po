@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE 1.0\n"
-"POT-Creation-Date: 1998-12-07 01:56+0100\n"
+"POT-Creation-Date: 1998-12-17 01:54+0100\n"
 "PO-Revision-Date: 1998-06-29 11:00+0200\n"
 "Last-Translator: Makbule SHAKALLA <bbm756@hun.edu.tr>\n"
 "Language-Team: Hacettepe Linux Users Group <hacettepe@linux.org.tr>\n"
@@ -693,58 +693,58 @@ msgstr "Konu"
 msgid "Date"
 msgstr "Tarih: "
 
-#: kmheaders.cpp:211
+#: kmheaders.cpp:215
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d ileti ,%d okunmamýþ"
 
-#: kmheaders.cpp:213
+#: kmheaders.cpp:217
 msgid "Folder is read-only."
 msgstr "Dosya salt-okunur."
 
-#: kmheaders.cpp:260
+#: kmheaders.cpp:264
 msgid "Unknown"
 msgstr "Bilinmeyen"
 
-#: kmheaders.cpp:263
+#: kmheaders.cpp:267
 msgid "No Subject"
 msgstr "Konusuz"
 
-#: kmheaders.cpp:323
+#: kmheaders.cpp:327
 msgid "order of arrival"
 msgstr "varýþ sýrasý"
 
-#: kmheaders.cpp:332
+#: kmheaders.cpp:336
 msgid "subject"
 msgstr "konu"
 
-#: kmheaders.cpp:333
+#: kmheaders.cpp:337
 msgid "date"
 msgstr "tarih"
 
-#: kmheaders.cpp:334
+#: kmheaders.cpp:338
 msgid "sender"
 msgstr "gönderen"
 
-#: kmheaders.cpp:335
+#: kmheaders.cpp:339
 msgid "status"
 msgstr "durum"
 
-#: kmheaders.cpp:337
+#: kmheaders.cpp:341
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr "Ýletiler %s'e göre azalarak sýralanýyor"
 
-#: kmheaders.cpp:339
+#: kmheaders.cpp:343
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr "Ýletiler %s'e göre artarak sýralanýyor"
 
-#: kmheaders.cpp:435
+#: kmheaders.cpp:439
 msgid "Message(s) saved."
 msgstr "Ýleti(ler) kaydedildi"
 
-#: kmheaders.cpp:437
+#: kmheaders.cpp:441
 msgid "Failed to save message(s)."
 msgstr "Ýleti(ler) kaydedilemedi"
 
@@ -971,7 +971,7 @@ msgstr "Dosya baðlama"
 msgid "Include File"
 msgstr "Dosya Ekle"
 
-#: kmcomposewin.cpp:1239 kmreaderwin.cpp:736
+#: kmcomposewin.cpp:1239 kmreaderwin.cpp:721
 msgid "View..."
 msgstr "Görünüm"
 
@@ -979,7 +979,7 @@ msgstr "Görünüm"
 msgid "Save..."
 msgstr "Kaydet..."
 
-#: kmcomposewin.cpp:1241 kmreaderwin.cpp:739
+#: kmcomposewin.cpp:1241 kmreaderwin.cpp:724
 msgid "Properties..."
 msgstr "Özellikler.."
 
@@ -987,7 +987,7 @@ msgstr "Özellikler.."
 msgid "Attach..."
 msgstr "Ýliþtir..."
 
-#: kmcomposewin.cpp:1287 kmreaderwin.cpp:781
+#: kmcomposewin.cpp:1287 kmreaderwin.cpp:766
 msgid "View Attachment: "
 msgstr "Ýliþiktekini göster:"
 
@@ -1056,73 +1056,73 @@ msgstr "base 64"
 msgid "quoted printable"
 msgstr "quoted printable"
 
-#: kmreaderwin.cpp:320 kmreaderwin.cpp:333 kmreaderwin.cpp:352
-#: kmreaderwin.cpp:373
+#: kmreaderwin.cpp:305 kmreaderwin.cpp:318 kmreaderwin.cpp:337
+#: kmreaderwin.cpp:358
 msgid "Cc: "
 msgstr "Cc: "
 
-#: kmreaderwin.cpp:328 kmreaderwin.cpp:347 kmreaderwin.cpp:368
+#: kmreaderwin.cpp:313 kmreaderwin.cpp:332 kmreaderwin.cpp:353
 msgid "From: "
 msgstr "Kimden: "
 
-#: kmreaderwin.cpp:330 kmreaderwin.cpp:349 kmreaderwin.cpp:370
+#: kmreaderwin.cpp:315 kmreaderwin.cpp:334 kmreaderwin.cpp:355
 msgid "To: "
 msgstr "Kime: "
 
-#: kmreaderwin.cpp:337 kmreaderwin.cpp:358 kmreaderwin.cpp:383
+#: kmreaderwin.cpp:322 kmreaderwin.cpp:343 kmreaderwin.cpp:368
 msgid "References: "
 msgstr "Atýflar: "
 
-#: kmreaderwin.cpp:354 kmreaderwin.cpp:367
+#: kmreaderwin.cpp:339 kmreaderwin.cpp:352
 msgid "Date: "
 msgstr "Tarih: "
 
-#: kmreaderwin.cpp:376
+#: kmreaderwin.cpp:361
 msgid "Bcc: "
 msgstr "Bcc: "
 
-#: kmreaderwin.cpp:379
+#: kmreaderwin.cpp:364
 msgid "Reply to: "
 msgstr "Yanýt adresi: "
 
-#: kmreaderwin.cpp:386
+#: kmreaderwin.cpp:371
 msgid "Groups: "
 msgstr "Gruplar: "
 
-#: kmreaderwin.cpp:424
+#: kmreaderwin.cpp:409
 msgid "Encrypted message"
 msgstr "Þifreli ileti"
 
-#: kmreaderwin.cpp:430
+#: kmreaderwin.cpp:415
 msgid "Cannot decrypt message:"
 msgstr "Ýleti deþifre olamýyor"
 
-#: kmreaderwin.cpp:439
+#: kmreaderwin.cpp:424
 msgid "Message was signed by"
 msgstr "Ýletiyi imzalayan"
 
-#: kmreaderwin.cpp:440
+#: kmreaderwin.cpp:425
 msgid "Warning: Bad signature from"
 msgstr "Uyarý: Bozuk imza"
 
-#: kmreaderwin.cpp:450
+#: kmreaderwin.cpp:435
 msgid "unknown key ID"
 msgstr ""
 
-#: kmreaderwin.cpp:700
+#: kmreaderwin.cpp:685
 msgid "Attachment: "
 msgstr "Ýliþik: "
 
-#: kmreaderwin.cpp:812
+#: kmreaderwin.cpp:797
 msgid "Could not create temporary file"
 msgstr "Geçici dosya yaratýlamadý"
 
-#: kmreaderwin.cpp:833
+#: kmreaderwin.cpp:818
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "Geçici dosya %s kayýt edilemedi"
 
-#: kmreaderwin.cpp:862
+#: kmreaderwin.cpp:847
 msgid "Could not save file"
 msgstr "Dosya kayýt edilemedi"
 

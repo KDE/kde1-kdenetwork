@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1998-12-07 01:56+0100\n"
+"POT-Creation-Date: 1998-12-17 01:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Kim Enkovaara <kim.enkovaara@iki.fi>\n"
 
@@ -680,58 +680,58 @@ msgstr "Aihe"
 msgid "Date"
 msgstr "P‰iv‰"
 
-#: kmheaders.cpp:211
+#: kmheaders.cpp:215
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d Viesti‰, %d lukematta."
 
-#: kmheaders.cpp:213
+#: kmheaders.cpp:217
 msgid "Folder is read-only."
 msgstr "Kansio on kirjoitussuojattu"
 
-#: kmheaders.cpp:260
+#: kmheaders.cpp:264
 msgid "Unknown"
 msgstr "Tuntematon"
 
-#: kmheaders.cpp:263
+#: kmheaders.cpp:267
 msgid "No Subject"
 msgstr "Ei Aihetta"
 
-#: kmheaders.cpp:323
+#: kmheaders.cpp:327
 msgid "order of arrival"
 msgstr "vastaanottoj‰rjestys"
 
-#: kmheaders.cpp:332
+#: kmheaders.cpp:336
 msgid "subject"
 msgstr "aihe"
 
-#: kmheaders.cpp:333
+#: kmheaders.cpp:337
 msgid "date"
 msgstr "p‰iv‰"
 
-#: kmheaders.cpp:334
+#: kmheaders.cpp:338
 msgid "sender"
 msgstr "l‰hett‰j‰"
 
-#: kmheaders.cpp:335
+#: kmheaders.cpp:339
 msgid "status"
 msgstr "tila"
 
-#: kmheaders.cpp:337
+#: kmheaders.cpp:341
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr "J‰rjest‰n viestit k‰‰nteisesti l‰htien %s:t‰"
 
-#: kmheaders.cpp:339
+#: kmheaders.cpp:343
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr "J‰rjest‰n viestit l‰htien %s:t‰"
 
-#: kmheaders.cpp:435
+#: kmheaders.cpp:439
 msgid "Message(s) saved."
 msgstr "Viesti tallennettu."
 
-#: kmheaders.cpp:437
+#: kmheaders.cpp:441
 msgid "Failed to save message(s)."
 msgstr "Viestin tallennus ep‰onnistui"
 
@@ -955,7 +955,7 @@ msgstr "Liit‰ tiedosto"
 msgid "Include File"
 msgstr "Liit‰ tiedosto"
 
-#: kmcomposewin.cpp:1239 kmreaderwin.cpp:736
+#: kmcomposewin.cpp:1239 kmreaderwin.cpp:721
 msgid "View..."
 msgstr "N‰yt‰..."
 
@@ -963,7 +963,7 @@ msgstr "N‰yt‰..."
 msgid "Save..."
 msgstr "Tallenna..."
 
-#: kmcomposewin.cpp:1241 kmreaderwin.cpp:739
+#: kmcomposewin.cpp:1241 kmreaderwin.cpp:724
 msgid "Properties..."
 msgstr "&Ominaisuudet..."
 
@@ -971,7 +971,7 @@ msgstr "&Ominaisuudet..."
 msgid "Attach..."
 msgstr "Liite..."
 
-#: kmcomposewin.cpp:1287 kmreaderwin.cpp:781
+#: kmcomposewin.cpp:1287 kmreaderwin.cpp:766
 msgid "View Attachment: "
 msgstr "N‰yt‰ Liitteet: "
 
@@ -1040,74 +1040,74 @@ msgstr "Base 64"
 msgid "quoted printable"
 msgstr "quoted printable"
 
-#: kmreaderwin.cpp:320 kmreaderwin.cpp:333 kmreaderwin.cpp:352
-#: kmreaderwin.cpp:373
+#: kmreaderwin.cpp:305 kmreaderwin.cpp:318 kmreaderwin.cpp:337
+#: kmreaderwin.cpp:358
 msgid "Cc: "
 msgstr "Kopio:"
 
-#: kmreaderwin.cpp:328 kmreaderwin.cpp:347 kmreaderwin.cpp:368
+#: kmreaderwin.cpp:313 kmreaderwin.cpp:332 kmreaderwin.cpp:353
 msgid "From: "
 msgstr "L‰hett‰j‰:"
 
-#: kmreaderwin.cpp:330 kmreaderwin.cpp:349 kmreaderwin.cpp:370
+#: kmreaderwin.cpp:315 kmreaderwin.cpp:334 kmreaderwin.cpp:355
 msgid "To: "
 msgstr "Vastaanottaja:"
 
-#: kmreaderwin.cpp:337 kmreaderwin.cpp:358 kmreaderwin.cpp:383
+#: kmreaderwin.cpp:322 kmreaderwin.cpp:343 kmreaderwin.cpp:368
 msgid "References: "
 msgstr "Viitteet:"
 
-#: kmreaderwin.cpp:354 kmreaderwin.cpp:367
+#: kmreaderwin.cpp:339 kmreaderwin.cpp:352
 msgid "Date: "
 msgstr "P‰iv‰:"
 
-#: kmreaderwin.cpp:376
+#: kmreaderwin.cpp:361
 msgid "Bcc: "
 msgstr "&Tiedoksi: "
 
-#: kmreaderwin.cpp:379
+#: kmreaderwin.cpp:364
 msgid "Reply to: "
 msgstr "Vastaa: "
 
-#: kmreaderwin.cpp:386
+#: kmreaderwin.cpp:371
 msgid "Groups: "
 msgstr "Uutisryhm‰t: "
 
-#: kmreaderwin.cpp:424
+#: kmreaderwin.cpp:409
 msgid "Encrypted message"
 msgstr "Salattu viesti"
 
-#: kmreaderwin.cpp:430
+#: kmreaderwin.cpp:415
 msgid "Cannot decrypt message:"
 msgstr "En voi purkaa viesti‰:"
 
-#: kmreaderwin.cpp:439
+#: kmreaderwin.cpp:424
 msgid "Message was signed by"
 msgstr "Viestin allekirjoitti"
 
-#: kmreaderwin.cpp:440
+#: kmreaderwin.cpp:425
 msgid "Warning: Bad signature from"
 msgstr "Varoitus: Huono allekirjoitus"
 
-#: kmreaderwin.cpp:450
+#: kmreaderwin.cpp:435
 #, fuzzy
 msgid "unknown key ID"
 msgstr "tuntematon avain ID"
 
-#: kmreaderwin.cpp:700
+#: kmreaderwin.cpp:685
 msgid "Attachment: "
 msgstr "Liitteet: "
 
-#: kmreaderwin.cpp:812
+#: kmreaderwin.cpp:797
 msgid "Could not create temporary file"
 msgstr "En voinut luoda v‰liaikaistiedostoa"
 
-#: kmreaderwin.cpp:833
+#: kmreaderwin.cpp:818
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "En saanut tallennettua v‰liaikaistiedostoa %s"
 
-#: kmreaderwin.cpp:862
+#: kmreaderwin.cpp:847
 msgid "Could not save file"
 msgstr "En saanut tallennettua tiedostoa"
 
