@@ -727,7 +727,6 @@ void addToList(node *n,int dep,ArticleList *l)
 
 int compareArticles (Article *a1,Article *a2, int key)
 {
-    debug ("key->%d",key);
     int i=0;
     switch (key)
     {
@@ -809,7 +808,6 @@ int compareArticles (Article *a1,Article *a2, int key)
 
 int compareThreads(const void *t1,const void *t2)
 {
-    debug ("2->%d,%d,%d,%d",k1,k2,k3,k4);
     int i=0;
     i=compareArticles(((ArticleList **)t1)[0]->first(),
                       ((ArticleList **)t2)[0]->first(),k1);
@@ -831,7 +829,6 @@ int compareThreads(const void *t1,const void *t2)
 
 void ArticleList::thread(bool threaded,int key1,int key2,int key3,int key4)
 {
-    debug ("threaded %d,%d,%d,%d,%d",threaded,key1,key2,key3,key4);
     d=new QDict <node> (10271);
     d->setAutoDelete(true);
     QListIterator <Article> artit(*this);
@@ -904,7 +901,6 @@ void ArticleList::thread(bool threaded,int key1,int key2,int key3,int key4)
     k3=key3;
     k4=key4;
 
-    debug ("1->%d,%d,%d,%d",k1,k2,k3,k4);
     
     qsort(thrArr,count,sizeof(ArticleList *),compareThreads);
 
