@@ -246,7 +246,8 @@ void KSoundPageConfig::soundOnOff()
 void KSoundPageConfig::defaultSettings() {
 
     extprg_edit->setText(KApplication::kde_bindir()+"/ktalkdlg");
-    client_edit->setText(KApplication::kde_bindir()+"/ktalk");
+    client_edit->setText(KApplication::kde_bindir()+"/kvt -e talk");
+       // will be ktalk when ktalk is in CVS.
     sound_cb->setChecked(true);
 
     // Activate things according to configuration
@@ -262,7 +263,7 @@ void KSoundPageConfig::loadSettings() {
            // for the first reading of  the config file
 
     extprg_edit->setText(config->readEntry("ExtPrg",KApplication::kde_bindir()+"/ktalkdlg"));
-    client_edit->setText(announceconfig->readEntry("talkprg",KApplication::kde_bindir()+"/ktalk"));
+    client_edit->setText(announceconfig->readEntry("talkprg",KApplication::kde_bindir()+"/kvt -e talk")); // will be ktalk when ktalk is in CVS
 
     bool b = announceconfig->readBoolEntry("Sound",true/*default value*/);
     sound_cb->setChecked(b);
