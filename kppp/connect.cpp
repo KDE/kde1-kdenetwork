@@ -255,11 +255,7 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
 
     writeline(gpppdata.modemInitStr());
 
-    if(gpppdata.FastModemInit())
-      usleep(10000); // 0.01 sec
-    else
-      usleep(1000000); // 1 sec
-
+    usleep(gpppdata.modemInitDelay() * 10000); // 0.01 - 3.0 sec 
 
     setExpect(gpppdata.modemInitResp());
     vmain = 1;
@@ -1247,10 +1243,7 @@ void ConnectWidget::hangup() {
     // Then hangup command
     writeline(gpppdata.modemHangupStr());
     
-    if(gpppdata.FastModemInit())
-      usleep(10000); // 0.01 sec
-    else
-      usleep(1000000); // 1 sec
+    usleep(gpppdata.modemInitDelay() * 10000); // 0.01 - 3.0 sec 
 
     tcsendbreak(modemfd, 0);
 

@@ -1,3 +1,10 @@
+Wed Mar 18 01:13:50 1998  Harri Porten  <porten@tu-harburg.de>
+
+	* modemcmds.cpp: replaced 'Modem Sustains Fast Init' (from general.cpp)
+	option by an adjustable 'Init Delay'. Some users reported that they
+ 	had to increase the delay time to prevent kppp from hanging
+ 	after ATZ.
+
 Mon Mar 16 03:37:04 1998  Bernd Johannes Wuebben  <wuebben@math.cornell.edu>
 
 	* command line options need to be parse after creating a KApplications

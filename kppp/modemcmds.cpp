@@ -39,7 +39,7 @@ ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
 {
   setCaption(klocale->translate("Edit Modem Commands"));
 
-  const int GRIDROWS = 17;
+  const int GRIDROWS = 18;
 
   // toplevel layout
   QVBoxLayout *tl = new QVBoxLayout(this, 10, 4);
@@ -64,93 +64,116 @@ ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
   l1->addWidget(label2, 2, 1);
   l1->addWidget(initresp, 2, 2);
 
-  dialstr = new QLineEdit(this);
-  label3 = new QLabel(klocale->translate("Dial String:"),this);
-  ADJUSTEDIT(dialstr);
-  ADJUSTLABEL(label3);
-  l1->addWidget(label3, 3, 1);
-  l1->addWidget(dialstr, 3, 2);
+  QHBoxLayout *l2 = new QHBoxLayout;
+  l1->addLayout(l2, 3, 2);
+  linitslider = new QLabel("MMMM", this);
 
-  connectresp = new QLineEdit(this);
-  label4 = new QLabel(klocale->translate("Connect Response:"), this);
-  ADJUSTEDIT(connectresp);
+  linitslider->setFixedWidth(linitslider->sizeHint().width());
+  linitslider->setFixedHeight(initstr->sizeHint().height());
+  linitslider->setAlignment(AlignCenter);
+  linitslider->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
+  linitslider->setLineWidth(2);
+  QSlider *initslider = new QSlider(1, 300, 1, 0,
+				QSlider::Horizontal, this);
+  initslider->setFixedHeight(initslider->sizeHint().height());
+  connect(initslider, SIGNAL(valueChanged(int)),
+	  linitslider, SLOT(setNum(int)));
+  initslider->setValue(gpppdata.modemInitDelay());
+  linitslider->setNum(gpppdata.modemInitDelay());
+  l2->addWidget(linitslider, 0);
+  l2->addWidget(initslider, 1);
+  
+  label3 = new QLabel(klocale->translate("Init Delay (sec/100):"), this);
+  ADJUSTLABEL(label3);  
+  l1->addWidget(label3, 3, 1);
+
+  dialstr = new QLineEdit(this);
+  label4 = new QLabel(klocale->translate("Dial String:"),this);
+  ADJUSTEDIT(dialstr);
   ADJUSTLABEL(label4);
   l1->addWidget(label4, 4, 1);
-  l1->addWidget(connectresp, 4, 2);
+  l1->addWidget(dialstr, 4, 2);
 
-  busyresp = new QLineEdit(this);
-  label5 = new QLabel(klocale->translate("Busy Response:"), this);
-  ADJUSTEDIT(busyresp);
+  connectresp = new QLineEdit(this);
+  label5 = new QLabel(klocale->translate("Connect Response:"), this);
+  ADJUSTEDIT(connectresp);
   ADJUSTLABEL(label5);
   l1->addWidget(label5, 5, 1);
-  l1->addWidget(busyresp, 5, 2);
+  l1->addWidget(connectresp, 5, 2);
 
-  nocarrierresp = new QLineEdit(this);
-  label6 = new QLabel(klocale->translate("No Carrier Resonse:"), this);
-  ADJUSTEDIT(nocarrierresp);
+  busyresp = new QLineEdit(this);
+  label6 = new QLabel(klocale->translate("Busy Response:"), this);
+  ADJUSTEDIT(busyresp);
   ADJUSTLABEL(label6);
   l1->addWidget(label6, 6, 1);
-  l1->addWidget(nocarrierresp, 6, 2);
+  l1->addWidget(busyresp, 6, 2);
 
-  nodialtoneresp = new QLineEdit(this);
-  label7 = new QLabel(klocale->translate("No Dialtone Response:"), this);
-  ADJUSTEDIT(nodialtoneresp);
+  nocarrierresp = new QLineEdit(this);
+  label7 = new QLabel(klocale->translate("No Carrier Resonse:"), this);
+  ADJUSTEDIT(nocarrierresp);
   ADJUSTLABEL(label7);
   l1->addWidget(label7, 7, 1);
-  l1->addWidget(nodialtoneresp, 7, 2);
+  l1->addWidget(nocarrierresp, 7, 2);
 
-  hangupstr = new QLineEdit(this);
-  label8 = new QLabel(klocale->translate("Hangup String:"), this);
-  ADJUSTEDIT(hangupstr);
+  nodialtoneresp = new QLineEdit(this);
+  label8 = new QLabel(klocale->translate("No Dialtone Response:"), this);
+  ADJUSTEDIT(nodialtoneresp);
   ADJUSTLABEL(label8);
   l1->addWidget(label8, 8, 1);
-  l1->addWidget(hangupstr, 8, 2);
+  l1->addWidget(nodialtoneresp, 8, 2);
 
-  hangupresp = new QLineEdit(this);
-  label9 = new QLabel(klocale->translate("Hangup Response:"), this);
-  ADJUSTEDIT(hangupresp);
+  hangupstr = new QLineEdit(this);
+  label9 = new QLabel(klocale->translate("Hangup String:"), this);
+  ADJUSTEDIT(hangupstr);
   ADJUSTLABEL(label9);
   l1->addWidget(label9, 9, 1);
-  l1->addWidget(hangupresp, 9, 2);
+  l1->addWidget(hangupstr, 9, 2);
 
-  answerstr = new QLineEdit(this);
-  label10 = new QLabel(klocale->translate("Answer String:"), this);
-  ADJUSTEDIT(answerstr);
+  hangupresp = new QLineEdit(this);
+  label10 = new QLabel(klocale->translate("Hangup Response:"), this);
+  ADJUSTEDIT(hangupresp);
   ADJUSTLABEL(label10);
   l1->addWidget(label10, 10, 1);
-  l1->addWidget(answerstr, 10, 2);
+  l1->addWidget(hangupresp, 10, 2);
 
-  ringresp = new QLineEdit(this);
-  label11 = new QLabel(klocale->translate("Ring Response:"), this);
-  ADJUSTEDIT(ringresp);
+  answerstr = new QLineEdit(this);
+  label11 = new QLabel(klocale->translate("Answer String:"), this);
+  ADJUSTEDIT(answerstr);
   ADJUSTLABEL(label11);
   l1->addWidget(label11, 11, 1);
-  l1->addWidget(ringresp, 11, 2);
+  l1->addWidget(answerstr, 11, 2);
 
-  answerresp = new QLineEdit(this);
-  label12 = new QLabel(klocale->translate("Answer Response:"), this);
-  ADJUSTEDIT(answerresp);
+  ringresp = new QLineEdit(this);
+  label12 = new QLabel(klocale->translate("Ring Response:"), this);
+  ADJUSTEDIT(ringresp);
   ADJUSTLABEL(label12);
   l1->addWidget(label12, 12, 1);
-  l1->addWidget(answerresp, 12, 2);
+  l1->addWidget(ringresp, 12, 2);
 
-  escapestr = new QLineEdit(this);
-  label13 = new QLabel(klocale->translate("Escape String:"), this);
-  ADJUSTEDIT(escapestr);
+  answerresp = new QLineEdit(this);
+  label13 = new QLabel(klocale->translate("Answer Response:"), this);
+  ADJUSTEDIT(answerresp);
   ADJUSTLABEL(label13);
   l1->addWidget(label13, 13, 1);
-  l1->addWidget(escapestr, 13, 2);
+  l1->addWidget(answerresp, 13, 2);
 
-  escaperesp = new QLineEdit(this);
-  label14 = new QLabel(klocale->translate("Escape Response:"), this);
-  ADJUSTEDIT(escaperesp);
+  escapestr = new QLineEdit(this);
+  label14 = new QLabel(klocale->translate("Escape String:"), this);
+  ADJUSTEDIT(escapestr);
   ADJUSTLABEL(label14);
   l1->addWidget(label14, 14, 1);
-  l1->addWidget(escaperesp, 14, 2);
+  l1->addWidget(escapestr, 14, 2);
+
+  escaperesp = new QLineEdit(this);
+  label15 = new QLabel(klocale->translate("Escape Response:"), this);
+  ADJUSTEDIT(escaperesp);
+  ADJUSTLABEL(label15);
+  l1->addWidget(label15, 15, 1);
+  l1->addWidget(escaperesp, 15, 2);
 
   // put slider and label into a separate H-Box
-  QHBoxLayout *l2 = new QHBoxLayout;
-  l1->addLayout(l2, 15, 2);
+  QHBoxLayout *l3 = new QHBoxLayout;
+  l1->addLayout(l3, 16, 2);
   lslider = new QLabel("MMMM", this);
 
   // a little trick to make the label look like a disabled lineedit
@@ -166,12 +189,12 @@ ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
 	  lslider, SLOT(setNum(int)));
   slider->setValue(gpppdata.modemEscapeGuardTime());
   lslider->setNum(gpppdata.modemEscapeGuardTime());
-  l2->addWidget(lslider, 0);
-  l2->addWidget(slider, 1);
+  l3->addWidget(lslider, 0);
+  l3->addWidget(slider, 1);
   
-  label14 = new QLabel(klocale->translate("Guard Time (sec/50):"), this);
-  ADJUSTLABEL(label14);  
-  l1->addWidget(label14, 15, 1);
+  label16 = new QLabel(klocale->translate("Guard Time (sec/50):"), this);
+  ADJUSTLABEL(label16);  
+  l1->addWidget(label16, 16, 1);
 
   KButtonBox *bbox = new KButtonBox(this);
   bbox->addStretch();
@@ -212,12 +235,14 @@ ModemCommands::ModemCommands(QWidget *parent=0, const char *name=0)
   answerstr->setText(gpppdata.modemAnswerStr());
   ringresp->setText(gpppdata.modemRingResp());
   answerresp->setText(gpppdata.modemAnswerResp());
+
 }
 
 
 void ModemCommands::okbutton() {
   gpppdata.setModemInitStr(initstr->text());
   gpppdata.setModemInitResp(initresp->text());
+  gpppdata.setModemInitDelay(atoi(linitslider->text()));
 
   gpppdata.setModemDialStr(dialstr->text());
   gpppdata.setModemConnectResp(connectresp->text());

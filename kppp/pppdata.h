@@ -82,6 +82,7 @@
 #define BUSYWAIT_KEY       "BusyWait"
 #define INITSTR_KEY        "InitString"
 #define INITRESP_KEY       "InitResponse"
+#define INITDELAY_KEY      "InitDelay"
 #define DIALSTR_KEY        "DialString"
 #define CONNECTRESP_KEY    "ConnectResponse"
 #define BUSYRESP_KEY       "BusyResponse"
@@ -96,7 +97,6 @@
 #define ESCAPESTR_KEY      "EscapeString"
 #define ESCAPERESP_KEY     "EscapeResponse"
 #define ESCAPEGUARDTIME_KEY "EscapeGuardTime"
-#define FASTINIT_KEY       "FastModemInit"
 #define USECDLINE_KEY      "UseCDLine"
 
 // account
@@ -218,6 +218,9 @@ public:
   const char* modemInitResp();
   void setModemInitResp(const char *);
 
+  int modemInitDelay();
+  void setModemInitDelay(int);
+
   const char* modemDialStr();
   void setModemDialStr(const char*);
 
@@ -247,9 +250,6 @@ public:
 
   const char* modemAnswerResp();
   void setModemAnswerResp(const char*);
-
-  void setFastModemInit(const int n);
-  int  FastModemInit();
 
   void setUseCDLine(const int n);
   int  UseCDLine();

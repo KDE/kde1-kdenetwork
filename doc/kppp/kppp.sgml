@@ -758,8 +758,7 @@ pitfalls.
 
 <item> Make sure that you DON'T use the options "lock" as an argument
     for pppd (kppp is already taking care of device locking )
-<item> RedHat users: remove the "lock" option from your /etc/ppp/options 
-       file!
+<item> Remove the "lock" option from your /etc/ppp/options file!
 
 <item> Make sure you set the right permission. In case of trouble
     you might want to run it as root first and then later, when
@@ -823,9 +822,9 @@ didn't understand enough about Unix and device permissions.
 <p>
 Have you played with the CR/LF setting?
 
-<p> Your modem might not sustain
-a fast initialisation. Turn off the 'Modem sustains fast initialisation'
-button on the Modem tab dialog.
+<p> Your modem might not sustain a fast initialisation.
+Increase the 'Init Delay Time' that can be found under 'Modem Commands' on the Modem tab dialog. You may do some fine tuning later.
+
 <p>
 
 <sect2>How do I make kppp send a \n or a \r?

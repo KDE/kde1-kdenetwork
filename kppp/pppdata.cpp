@@ -342,14 +342,6 @@ int PPPData::UseCDLine() {
   return  readNumConfig(MODEM_GRP,USECDLINE_KEY,0);
 }
 
-void PPPData::setFastModemInit(const int n) {
-  writeConfig(MODEM_GRP,FASTINIT_KEY,n);
-}
-
-int PPPData::FastModemInit() {
-  return  readNumConfig(MODEM_GRP,FASTINIT_KEY,0);
-}
-
 const char*  PPPData::modemEscapeStr(){
 
   return readConfig(MODEM_GRP,ESCAPESTR_KEY,"+++");
@@ -452,6 +444,17 @@ void PPPData::setModemInitResp(const char *n) {
 
 } 
 
+int PPPData::modemInitDelay() {
+
+  return readNumConfig(MODEM_GRP, INITDELAY_KEY, 1);
+
+}
+
+void PPPData::setModemInitDelay(int n) {
+
+  writeConfig(MODEM_GRP, INITDELAY_KEY, n);
+
+}
 
 const char* PPPData::modemDialStr() {
 

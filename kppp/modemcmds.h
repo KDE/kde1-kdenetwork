@@ -67,43 +67,48 @@ private:
   QLineEdit *initresp;
   QLabel *label2;
 
-  QLineEdit *dialstr;
+  QLabel *linitslider;
   QLabel *label3;
 
-  QLineEdit *connectresp;
+  QLineEdit *dialstr;
   QLabel *label4;
 
-  QLineEdit *busyresp;
+  QLineEdit *connectresp;
   QLabel *label5;
 
-  QLineEdit *nocarrierresp;
+  QLineEdit *busyresp;
   QLabel *label6;
 
-  QLineEdit *nodialtoneresp;
+  QLineEdit *nocarrierresp;
   QLabel *label7;
 
-  QLineEdit *hangupstr;
+  QLineEdit *nodialtoneresp;
   QLabel *label8;
 
-  QLineEdit *hangupresp;
+  QLineEdit *hangupstr;
   QLabel *label9;
 
-  QLineEdit *answerstr;
+  QLineEdit *hangupresp;
   QLabel *label10;
 
-  QLineEdit *ringresp;
+  QLineEdit *answerstr;
   QLabel *label11;
 
-  QLineEdit *answerresp;
+  QLineEdit *ringresp;
   QLabel *label12;
 
-  QLineEdit *escapestr;
+  QLineEdit *answerresp;
   QLabel *label13;
 
-  QLineEdit *escaperesp;
+  QLineEdit *escapestr;
   QLabel *label14;
 
-  QLabel *lslider;
+  QLineEdit *escaperesp;
   QLabel *label15;
+
+  QLabel *lslider;
+  QLabel *label16;
 };
 #endif
+
+
