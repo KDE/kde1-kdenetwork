@@ -5,31 +5,31 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: krn\n"
-"POT-Creation-Date: 1998-07-20 15:18+0200\n"
+"POT-Creation-Date: 1998-08-03 21:27+0200\n"
 "PO-Revision-Date: 1998-04-21 21:20 +0100\n"
 "Last-Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
 
-#: main.cpp:213 main.cpp:226 main.cpp:240 main.cpp:258 main.cpp:273
+#: main.cpp:214 main.cpp:227 main.cpp:241 main.cpp:259 main.cpp:274
 msgid "KRN-Missing Configuration info"
 msgstr "KRN-Information über fehlende Konfiguration"
 
-#: main.cpp:214
+#: main.cpp:215
 msgid "Please enter your email adress"
 msgstr "Bitte geben Sie Ihre E-Mail-Adresse ein"
 
-#: main.cpp:227
+#: main.cpp:228
 msgid "Please enter your real name"
 msgstr "Bitte geben Sie Ihren wirklichen Namen ein"
 
-#: main.cpp:241
+#: main.cpp:242
 msgid "Please enter your organization's name"
 msgstr "Bitte geben Sie den Namen Ihrer Organisation ein"
 
-#: main.cpp:259
+#: main.cpp:260
 msgid "Please enter your NNTP server name"
 msgstr "Bitte geben Sie Ihren NNTP-Servernamen ein"
 
-#: main.cpp:274
+#: main.cpp:275
 msgid "Please enter your SMTP server name"
 msgstr "Bitte geben Sie Ihren SMTP-Servernamen ein"
 
@@ -149,6 +149,11 @@ msgstr "Liste der aktiven Newsgroups holen"
 #: groupdlg.cpp:205
 msgid "Find group"
 msgstr "Suche Newsgroup"
+
+#: groupdlg.cpp:208
+#, fuzzy
+msgid "(Un)Subscribe"
+msgstr "Abonnieren an/aus"
 
 #: groupdlg.cpp:211
 msgid "Check for Unread Articles"
@@ -278,7 +283,7 @@ msgstr "Antwort veröffentlichen"
 msgid "Post & Reply"
 msgstr "Veröffentlichen und Antworten"
 
-#: artdlg.cpp:174
+#: artdlg.cpp:174 artdlg.cpp:242
 msgid "Tagged"
 msgstr "Markierte"
 
@@ -337,6 +342,24 @@ msgstr "Artikelliste holen"
 #: artdlg.cpp:225
 msgid "Refresh Display"
 msgstr "Anzeige erneuern"
+
+#: artdlg.cpp:241
+msgid "Current"
+msgstr ""
+
+#: artdlg.cpp:243 fontsDlg.cpp:52
+msgid "All"
+msgstr "Alle"
+
+#: artdlg.cpp:244
+#, fuzzy
+msgid "Read"
+msgstr "Gelesen:"
+
+#: artdlg.cpp:245
+#, fuzzy
+msgid "UnRead"
+msgstr "Ungelesen:"
 
 #: artdlg.cpp:248
 msgid "Save Article"
@@ -528,10 +551,6 @@ msgstr "Standard"
 msgid "Long"
 msgstr "Lang"
 
-#: fontsDlg.cpp:52
-msgid "All"
-msgstr "Alle"
-
 #: fontsDlg.cpp:56
 msgid "Attachment Style"
 msgstr "Anhang-Stil"
@@ -560,8 +579,18 @@ msgstr "riesig"
 msgid "Standard Font"
 msgstr "Standardschriftart"
 
+#: fontsDlg.cpp:84
+#, fuzzy
+msgid "Standard Font Test"
+msgstr "Standardschriftart"
+
 #: fontsDlg.cpp:86
 msgid "Fixed Font"
+msgstr "feste Schriftart"
+
+#: fontsDlg.cpp:91
+#, fuzzy
+msgid "Fixed Font Test"
 msgstr "feste Schriftart"
 
 #: fontsDlg.cpp:94
@@ -644,12 +673,21 @@ msgstr "KRN - Druckereinstellung"
 msgid "General"
 msgstr "Allgemein"
 
+#: printdlg.cpp:35
+msgid "Printing System"
+msgstr ""
+
 #: printdlg.cpp:37
 msgid "Use HTML Printing"
 msgstr "HTML-Druckausgabe"
 
 #: printdlg.cpp:40
 msgid "Use Direct Printing"
+msgstr "Direkte Druckausgabe"
+
+#: printdlg.cpp:45
+#, fuzzy
+msgid "Direct Printing"
 msgstr "Direkte Druckausgabe"
 
 #: printdlg.cpp:48

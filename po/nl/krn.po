@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-07-20 15:18+0200\n"
+"POT-Creation-Date: 1998-08-03 21:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Case Roole <cjr@xs4all.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,27 +14,27 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: ENCODING\n"
 
-#: main.cpp:213 main.cpp:226 main.cpp:240 main.cpp:258 main.cpp:273
+#: main.cpp:214 main.cpp:227 main.cpp:241 main.cpp:259 main.cpp:274
 msgid "KRN-Missing Configuration info"
 msgstr "KRN-Ontbrekende Configuratie info"
 
-#: main.cpp:214
+#: main.cpp:215
 msgid "Please enter your email adress"
 msgstr "Voer a.u.b. uw email adres in"
 
-#: main.cpp:227
+#: main.cpp:228
 msgid "Please enter your real name"
 msgstr "Voer a.u.b. uw volledige naam in"
 
-#: main.cpp:241
+#: main.cpp:242
 msgid "Please enter your organization's name"
 msgstr "Voer a.u.b. de naam van uw organisatie in"
 
-#: main.cpp:259
+#: main.cpp:260
 msgid "Please enter your NNTP server name"
 msgstr "Voer a.u.b. de naam van uw NNTP server in"
 
-#: main.cpp:274
+#: main.cpp:275
 msgid "Please enter your SMTP server name"
 msgstr "Voer a.u.b. de naam van uw SMTP server in"
 
@@ -155,6 +155,11 @@ msgstr "Haal lijst van actieve groepen"
 #: groupdlg.cpp:205
 msgid "Find group"
 msgstr "Vind groep"
+
+#: groupdlg.cpp:208
+#, fuzzy
+msgid "(Un)Subscribe"
+msgstr "(aan/af)Melden"
 
 #: groupdlg.cpp:211
 msgid "Check for Unread Articles"
@@ -284,7 +289,7 @@ msgstr "Post een aansluitende boodschap"
 msgid "Post & Reply"
 msgstr "Post & Beantwoord"
 
-#: artdlg.cpp:174
+#: artdlg.cpp:174 artdlg.cpp:242
 msgid "Tagged"
 msgstr "Gemarkeerd"
 
@@ -343,6 +348,24 @@ msgstr "Haal Artikelen Lijst"
 #: artdlg.cpp:225
 msgid "Refresh Display"
 msgstr ""
+
+#: artdlg.cpp:241
+msgid "Current"
+msgstr ""
+
+#: artdlg.cpp:243 fontsDlg.cpp:52
+msgid "All"
+msgstr "Alles"
+
+#: artdlg.cpp:244
+#, fuzzy
+msgid "Read"
+msgstr "Gelezen:"
+
+#: artdlg.cpp:245
+#, fuzzy
+msgid "UnRead"
+msgstr "Ongelezen:"
 
 #: artdlg.cpp:248
 msgid "Save Article"
@@ -534,10 +557,6 @@ msgstr "Standaard"
 msgid "Long"
 msgstr "Lang"
 
-#: fontsDlg.cpp:52
-msgid "All"
-msgstr "Alles"
-
 #: fontsDlg.cpp:56
 msgid "Attachment Style"
 msgstr "Bijlage stijl"
@@ -566,8 +585,18 @@ msgstr "Zeer Groot"
 msgid "Standard Font"
 msgstr "Standaard Lettertype"
 
+#: fontsDlg.cpp:84
+#, fuzzy
+msgid "Standard Font Test"
+msgstr "Standaard Lettertype"
+
 #: fontsDlg.cpp:86
 msgid "Fixed Font"
+msgstr "Vast Lettertype"
+
+#: fontsDlg.cpp:91
+#, fuzzy
+msgid "Fixed Font Test"
 msgstr "Vast Lettertype"
 
 #: fontsDlg.cpp:94
@@ -651,12 +680,21 @@ msgstr "KRN - Afdruk instellingen"
 msgid "General"
 msgstr "Algemeen"
 
+#: printdlg.cpp:35
+msgid "Printing System"
+msgstr ""
+
 #: printdlg.cpp:37
 msgid "Use HTML Printing"
 msgstr "Gebruik HTML afdrukken"
 
 #: printdlg.cpp:40
 msgid "Use Direct Printing"
+msgstr "Gebruik direct afdrukken"
+
+#: printdlg.cpp:45
+#, fuzzy
+msgid "Direct Printing"
 msgstr "Gebruik direct afdrukken"
 
 #: printdlg.cpp:48

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-07-20 15:18+0200\n"
+"POT-Creation-Date: 1998-08-03 21:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Theodore J. Soldatos <theodore@eexi.gr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,27 +13,27 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: ENCODING\n"
 
-#: main.cpp:213 main.cpp:226 main.cpp:240 main.cpp:258 main.cpp:273
+#: main.cpp:214 main.cpp:227 main.cpp:241 main.cpp:259 main.cpp:274
 msgid "KRN-Missing Configuration info"
 msgstr "KRN-Δεν υπάρχουν πληροφορίες ρυθμίσεων"
 
-#: main.cpp:214
+#: main.cpp:215
 msgid "Please enter your email adress"
 msgstr "Παρακαλώ εισάγετε την ηλεκτρονική σας διεύθυνση"
 
-#: main.cpp:227
+#: main.cpp:228
 msgid "Please enter your real name"
 msgstr "Παρακαλώ εισάγετε το όνομά σας"
 
-#: main.cpp:241
+#: main.cpp:242
 msgid "Please enter your organization's name"
 msgstr "Παρακαλώ εισάγετε το όνομα οργανισμού"
 
-#: main.cpp:259
+#: main.cpp:260
 msgid "Please enter your NNTP server name"
 msgstr "Παρακαλώ εισάγετε το όνομα του NNTP εξυπηρετητή σας"
 
-#: main.cpp:274
+#: main.cpp:275
 msgid "Please enter your SMTP server name"
 msgstr "Παρακαλώ εισάγετε το όνομα του SMTP εξυπηρετητή σας"
 
@@ -154,6 +154,11 @@ msgstr "Κατέβασμα καταλόγου ενεργών ομάδων"
 #: groupdlg.cpp:205
 msgid "Find group"
 msgstr "Εύρεση ομάδας"
+
+#: groupdlg.cpp:208
+#, fuzzy
+msgid "(Un)Subscribe"
+msgstr "Εγγραφή/Τέλος εγγραφής"
 
 #: groupdlg.cpp:211
 msgid "Check for Unread Articles"
@@ -283,7 +288,7 @@ msgstr "Δημοσίευση απάντησης"
 msgid "Post & Reply"
 msgstr "Δημοσίευση και απάντηση με αλληλογραφία"
 
-#: artdlg.cpp:174
+#: artdlg.cpp:174 artdlg.cpp:242
 msgid "Tagged"
 msgstr "Σεσημασμένο (sic)"
 
@@ -342,6 +347,24 @@ msgstr "Κατέβασμα καταλόγου άρθρων"
 #: artdlg.cpp:225
 msgid "Refresh Display"
 msgstr ""
+
+#: artdlg.cpp:241
+msgid "Current"
+msgstr ""
+
+#: artdlg.cpp:243 fontsDlg.cpp:52
+msgid "All"
+msgstr "Πλήρεις"
+
+#: artdlg.cpp:244
+#, fuzzy
+msgid "Read"
+msgstr "Σήμανση ως αναγνωσμένο"
+
+#: artdlg.cpp:245
+#, fuzzy
+msgid "UnRead"
+msgstr "Σήμανση ως μη αναγνωσμένο"
 
 #: artdlg.cpp:248
 msgid "Save Article"
@@ -534,10 +557,6 @@ msgstr "Κανονικές"
 msgid "Long"
 msgstr "Επεκταμένες"
 
-#: fontsDlg.cpp:52
-msgid "All"
-msgstr "Πλήρεις"
-
 #: fontsDlg.cpp:56
 msgid "Attachment Style"
 msgstr "Μορφή συνημμένων"
@@ -566,8 +585,18 @@ msgstr "Τεράστιο"
 msgid "Standard Font"
 msgstr "Κανονική γραμματοσειρά"
 
+#: fontsDlg.cpp:84
+#, fuzzy
+msgid "Standard Font Test"
+msgstr "Κανονική γραμματοσειρά"
+
 #: fontsDlg.cpp:86
 msgid "Fixed Font"
+msgstr "Σταθερή γραμματοσειρά"
+
+#: fontsDlg.cpp:91
+#, fuzzy
+msgid "Fixed Font Test"
 msgstr "Σταθερή γραμματοσειρά"
 
 #: fontsDlg.cpp:94
@@ -653,12 +682,21 @@ msgstr "KRN - Ρυθμίσεις εκτύπωσης"
 msgid "General"
 msgstr "Γενικά"
 
+#: printdlg.cpp:35
+msgid "Printing System"
+msgstr ""
+
 #: printdlg.cpp:37
 msgid "Use HTML Printing"
 msgstr "Χρήση εκτύπωσης HTML"
 
 #: printdlg.cpp:40
 msgid "Use Direct Printing"
+msgstr "Χρήση άμεσης εκτύπωσης"
+
+#: printdlg.cpp:45
+#, fuzzy
+msgid "Direct Printing"
 msgstr "Χρήση άμεσης εκτύπωσης"
 
 #: printdlg.cpp:48

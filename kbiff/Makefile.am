@@ -1,7 +1,7 @@
 # just set the variable
 APPSDIR = $(kde_appsdir)/Internet
 # set the include path for X, qt and KDE
-INCLUDES= @all_includes@ 
+INCLUDES= $(all_includes)
 # claim, which subdirectories you want to install
 SUBDIRS = doc pics
 
@@ -14,11 +14,11 @@ bin_PROGRAMS = 	kbiff
 kbiff_SOURCES	= kbiff.cpp setupdlg.cpp main.cpp kbiffmonitor.cpp Trace.cpp
 
 # the library search path
-kbiff_LDFLAGS = @all_libraries@ @KDE_RPATH@
+kbiff_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 
 # the libraries to link against. Be aware of the order. First the libraries,
 # that depend on the following ones.
-kbiff_LDADD   = -lkfile -lkfm -lkdeui -lkdecore -lmediatool -lqt -lX11 -lXext @LIBSOCKET@     
+kbiff_LDADD   = -lkfile -lkfm -lkdeui -lkdecore -lmediatool -lqt -lX11 -lXext $(LIBSOCKET)
 
 # this option you can leave out. Just, if you use "make dist", you need it
 noinst_HEADERS = setupdlg.h kbiff.h kbiffmonitor.h Trace.h
@@ -32,7 +32,7 @@ DISTCLEANFILES = $(BUILTSOURCES)
 
 # make messages.po. Move this one to ../po/ and "make merge" in po
 messages:
-	$(XGETTEXT) -C -ki18n $(kbiff_SOURCES)
+	$(XGETTEXT) -C -ki18n -x $(includedir)/kde.pot $(kbiff_SOURCES) && mv messages.po ../po/kbiff.pot
 
 # just install datas here. Use install-exec-data for scripts and etc.
 # the binary itself is already installed from automake
@@ -65,3 +65,4 @@ setupdlg.moc: setupdlg.h
 kbiffmonitor.cpp:kbiffmonitor.moc
 kbiffmonitor.moc: kbiffmonitor.h
 	$(MOC) kbiffmonitor.h -o kbiffmonitor.moc
+

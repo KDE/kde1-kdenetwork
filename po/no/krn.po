@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-07-20 15:18+0200\n"
+"POT-Creation-Date: 1998-08-03 21:27+0200\n"
 "PO-Revision-Date: 1998-03-19 00:00+0100\n"
 "Last-Translator: Svein Olav Aasen <svein.aasen@caa.no / soaasen@online.no>\n"
 "Language-Team: no <LL@li.org>\n"
@@ -13,27 +13,27 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: ENCODING\n"
 
-#: main.cpp:213 main.cpp:226 main.cpp:240 main.cpp:258 main.cpp:273
+#: main.cpp:214 main.cpp:227 main.cpp:241 main.cpp:259 main.cpp:274
 msgid "KRN-Missing Configuration info"
 msgstr "KRN - mangler konfigurasjonsinfo"
 
-#: main.cpp:214
+#: main.cpp:215
 msgid "Please enter your email adress"
 msgstr "Vennnligst oppgi din epostadresse"
 
-#: main.cpp:227
+#: main.cpp:228
 msgid "Please enter your real name"
 msgstr "Vennligst oppgi ditt virkelig navn"
 
-#: main.cpp:241
+#: main.cpp:242
 msgid "Please enter your organization's name"
 msgstr "Vennligst oppgi din organisasjons navn"
 
-#: main.cpp:259
+#: main.cpp:260
 msgid "Please enter your NNTP server name"
 msgstr "Vennligst oppgi navnet til din NNTP-tjener"
 
-#: main.cpp:274
+#: main.cpp:275
 msgid "Please enter your SMTP server name"
 msgstr "Vennligst oppgi navnet til din SMTP-tjener"
 
@@ -153,6 +153,11 @@ msgstr "Få tak i liste av aktive grupper"
 #: groupdlg.cpp:205
 msgid "Find group"
 msgstr "Finn gruppe"
+
+#: groupdlg.cpp:208
+#, fuzzy
+msgid "(Un)Subscribe"
+msgstr "(U)abonner"
 
 #: groupdlg.cpp:211
 msgid "Check for Unread Articles"
@@ -282,7 +287,7 @@ msgstr "Post Followup"
 msgid "Post & Reply"
 msgstr "Post & svar"
 
-#: artdlg.cpp:174
+#: artdlg.cpp:174 artdlg.cpp:242
 msgid "Tagged"
 msgstr "Merket"
 
@@ -341,6 +346,24 @@ msgstr "Få tak i artikkelliste"
 #: artdlg.cpp:225
 msgid "Refresh Display"
 msgstr "Oppfrisk skjerm"
+
+#: artdlg.cpp:241
+msgid "Current"
+msgstr ""
+
+#: artdlg.cpp:243 fontsDlg.cpp:52
+msgid "All"
+msgstr "Alle"
+
+#: artdlg.cpp:244
+#, fuzzy
+msgid "Read"
+msgstr "Lest:"
+
+#: artdlg.cpp:245
+#, fuzzy
+msgid "UnRead"
+msgstr "Ulest:"
 
 #: artdlg.cpp:248
 msgid "Save Article"
@@ -532,10 +555,6 @@ msgstr "Standard"
 msgid "Long"
 msgstr "Lang"
 
-#: fontsDlg.cpp:52
-msgid "All"
-msgstr "Alle"
-
 #: fontsDlg.cpp:56
 msgid "Attachment Style"
 msgstr "Vedleggsstil"
@@ -564,8 +583,18 @@ msgstr "Veldig stor"
 msgid "Standard Font"
 msgstr "Standard skrifttype"
 
+#: fontsDlg.cpp:84
+#, fuzzy
+msgid "Standard Font Test"
+msgstr "Standard skrifttype"
+
 #: fontsDlg.cpp:86
 msgid "Fixed Font"
+msgstr "Fast skrifttype"
+
+#: fontsDlg.cpp:91
+#, fuzzy
+msgid "Fixed Font Test"
 msgstr "Fast skrifttype"
 
 #: fontsDlg.cpp:94
@@ -648,12 +677,21 @@ msgstr "KRN - Skriverinnstillinger"
 msgid "General"
 msgstr "Generell"
 
+#: printdlg.cpp:35
+msgid "Printing System"
+msgstr ""
+
 #: printdlg.cpp:37
 msgid "Use HTML Printing"
 msgstr "Bruk HTML-utskrift"
 
 #: printdlg.cpp:40
 msgid "Use Direct Printing"
+msgstr "Bruk direkte utskrift"
+
+#: printdlg.cpp:45
+#, fuzzy
+msgid "Direct Printing"
 msgstr "Bruk direkte utskrift"
 
 #: printdlg.cpp:48

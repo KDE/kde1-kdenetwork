@@ -5,32 +5,32 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: krn\n"
-"POT-Creation-Date: 1998-07-20 15:18+0200\n"
+"POT-Creation-Date: 1998-08-03 21:27+0200\n"
 "PO-Revision-Date: 1998-06-12 08:33 MET DST\n"
 "Last-Translator: Wang Jian <lark@linux.ustc.edu.cn>\n"
 "Language-Team: zh_CN ( gb2312)\n"
 
-#: main.cpp:213 main.cpp:226 main.cpp:240 main.cpp:258 main.cpp:273
+#: main.cpp:214 main.cpp:227 main.cpp:241 main.cpp:259 main.cpp:274
 msgid "KRN-Missing Configuration info"
 msgstr "KRN - 没有找到配置信息"
 
-#: main.cpp:214
+#: main.cpp:215
 msgid "Please enter your email adress"
 msgstr "请输入你的电子邮件地址"
 
-#: main.cpp:227
+#: main.cpp:228
 msgid "Please enter your real name"
 msgstr "请输入你的真实姓名"
 
-#: main.cpp:241
+#: main.cpp:242
 msgid "Please enter your organization's name"
 msgstr "请输入你所在的组织名称"
 
-#: main.cpp:259
+#: main.cpp:260
 msgid "Please enter your NNTP server name"
 msgstr "请输入你使用的 NNTP 服务器的名字"
 
-#: main.cpp:274
+#: main.cpp:275
 msgid "Please enter your SMTP server name"
 msgstr "请输入你使用的 SMTP 服务器的名字"
 
@@ -150,6 +150,11 @@ msgstr "取得活动讨论组列表"
 #: groupdlg.cpp:205
 msgid "Find group"
 msgstr "查找讨论组"
+
+#: groupdlg.cpp:208
+#, fuzzy
+msgid "(Un)Subscribe"
+msgstr "(取消)订阅"
 
 #: groupdlg.cpp:211
 msgid "Check for Unread Articles"
@@ -279,7 +284,7 @@ msgstr "发表讨论"
 msgid "Post & Reply"
 msgstr "发表和回复"
 
-#: artdlg.cpp:174
+#: artdlg.cpp:174 artdlg.cpp:242
 msgid "Tagged"
 msgstr "已标记的"
 
@@ -338,6 +343,24 @@ msgstr "取得文章列表"
 #: artdlg.cpp:225
 msgid "Refresh Display"
 msgstr "刷新显示"
+
+#: artdlg.cpp:241
+msgid "Current"
+msgstr ""
+
+#: artdlg.cpp:243 fontsDlg.cpp:52
+msgid "All"
+msgstr "全部"
+
+#: artdlg.cpp:244
+#, fuzzy
+msgid "Read"
+msgstr "已读:"
+
+#: artdlg.cpp:245
+#, fuzzy
+msgid "UnRead"
+msgstr "未读:"
 
 #: artdlg.cpp:248
 msgid "Save Article"
@@ -529,10 +552,6 @@ msgstr "标准"
 msgid "Long"
 msgstr "长"
 
-#: fontsDlg.cpp:52
-msgid "All"
-msgstr "全部"
-
 #: fontsDlg.cpp:56
 msgid "Attachment Style"
 msgstr "附件风格"
@@ -561,8 +580,18 @@ msgstr "非常大"
 msgid "Standard Font"
 msgstr "标准字体"
 
+#: fontsDlg.cpp:84
+#, fuzzy
+msgid "Standard Font Test"
+msgstr "标准字体"
+
 #: fontsDlg.cpp:86
 msgid "Fixed Font"
+msgstr "等宽字体"
+
+#: fontsDlg.cpp:91
+#, fuzzy
+msgid "Fixed Font Test"
 msgstr "等宽字体"
 
 #: fontsDlg.cpp:94
@@ -645,12 +674,21 @@ msgstr "KRN - 打印配置"
 msgid "General"
 msgstr "一般"
 
+#: printdlg.cpp:35
+msgid "Printing System"
+msgstr ""
+
 #: printdlg.cpp:37
 msgid "Use HTML Printing"
 msgstr "使用 HTML 打印"
 
 #: printdlg.cpp:40
 msgid "Use Direct Printing"
+msgstr "使用直接打印"
+
+#: printdlg.cpp:45
+#, fuzzy
+msgid "Direct Printing"
 msgstr "使用直接打印"
 
 #: printdlg.cpp:48

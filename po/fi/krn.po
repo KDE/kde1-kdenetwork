@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KRN\n"
-"POT-Creation-Date: 1998-07-20 15:18+0200\n"
+"POT-Creation-Date: 1998-08-03 21:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Kim Enkovaara <kim.enkovaara@iki.fi>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,27 +14,27 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: ENCODING\n"
 
-#: main.cpp:213 main.cpp:226 main.cpp:240 main.cpp:258 main.cpp:273
+#: main.cpp:214 main.cpp:227 main.cpp:241 main.cpp:259 main.cpp:274
 msgid "KRN-Missing Configuration info"
 msgstr "KRN-Asetustiedot puuttuvat"
 
-#: main.cpp:214
+#: main.cpp:215
 msgid "Please enter your email adress"
 msgstr "Anna sähkpostiosoitteesi"
 
-#: main.cpp:227
+#: main.cpp:228
 msgid "Please enter your real name"
 msgstr "Anna oikea nimesi"
 
-#: main.cpp:241
+#: main.cpp:242
 msgid "Please enter your organization's name"
 msgstr "Anna organisaatiosi nimi"
 
-#: main.cpp:259
+#: main.cpp:260
 msgid "Please enter your NNTP server name"
 msgstr "Anna NNTP-palvelimen nimi"
 
-#: main.cpp:274
+#: main.cpp:275
 msgid "Please enter your SMTP server name"
 msgstr "Anna SMTP-palvelimen nimi"
 
@@ -154,6 +154,11 @@ msgstr "Hae lista aktiivisista ryhmistä"
 #: groupdlg.cpp:205
 msgid "Find group"
 msgstr "Hae ryhmä"
+
+#: groupdlg.cpp:208
+#, fuzzy
+msgid "(Un)Subscribe"
+msgstr "Lisää/Poista tilaus"
 
 #: groupdlg.cpp:211
 msgid "Check for Unread Articles"
@@ -283,7 +288,7 @@ msgstr "Lähetä vastaus"
 msgid "Post & Reply"
 msgstr "Lähetä & Vastaa"
 
-#: artdlg.cpp:174
+#: artdlg.cpp:174 artdlg.cpp:242
 msgid "Tagged"
 msgstr "Merkattu"
 
@@ -342,6 +347,24 @@ msgstr "Hae viestilista"
 #: artdlg.cpp:225
 msgid "Refresh Display"
 msgstr "Päivitä näyttö"
+
+#: artdlg.cpp:241
+msgid "Current"
+msgstr ""
+
+#: artdlg.cpp:243 fontsDlg.cpp:52
+msgid "All"
+msgstr "Kaikki"
+
+#: artdlg.cpp:244
+#, fuzzy
+msgid "Read"
+msgstr "Luetut:"
+
+#: artdlg.cpp:245
+#, fuzzy
+msgid "UnRead"
+msgstr "Lukemattomat:"
 
 #: artdlg.cpp:248
 msgid "Save Article"
@@ -533,10 +556,6 @@ msgstr "Vakio"
 msgid "Long"
 msgstr "Pitkä"
 
-#: fontsDlg.cpp:52
-msgid "All"
-msgstr "Kaikki"
-
 #: fontsDlg.cpp:56
 msgid "Attachment Style"
 msgstr "Liitetyyli "
@@ -565,8 +584,18 @@ msgstr "Valtava"
 msgid "Standard Font"
 msgstr "Vakiofontti"
 
+#: fontsDlg.cpp:84
+#, fuzzy
+msgid "Standard Font Test"
+msgstr "Vakiofontti"
+
 #: fontsDlg.cpp:86
 msgid "Fixed Font"
+msgstr "Kiinteävälinen fontti"
+
+#: fontsDlg.cpp:91
+#, fuzzy
+msgid "Fixed Font Test"
 msgstr "Kiinteävälinen fontti"
 
 #: fontsDlg.cpp:94
@@ -649,12 +678,21 @@ msgstr "KRN - Tulostuksen asetukset"
 msgid "General"
 msgstr "Yleistä"
 
+#: printdlg.cpp:35
+msgid "Printing System"
+msgstr ""
+
 #: printdlg.cpp:37
 msgid "Use HTML Printing"
 msgstr "Käytä HTML-tulostusta"
 
 #: printdlg.cpp:40
 msgid "Use Direct Printing"
+msgstr "Käytä suoraa tulostusta"
+
+#: printdlg.cpp:45
+#, fuzzy
+msgid "Direct Printing"
 msgstr "Käytä suoraa tulostusta"
 
 #: printdlg.cpp:48

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-07-20 15:18+0200\n"
+"POT-Creation-Date: 1998-08-03 21:27+0200\n"
 "PO-Revision-Date: 1998-03-15 20:00-0500\n"
 "Last-Translator: Zoran Sokol <zoran.sokol@ci.tel.hr> \n"
 "Language-Team: Croatian\n"
@@ -13,27 +13,27 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: iso-8859-2\n"
 
-#: main.cpp:213 main.cpp:226 main.cpp:240 main.cpp:258 main.cpp:273
+#: main.cpp:214 main.cpp:227 main.cpp:241 main.cpp:259 main.cpp:274
 msgid "KRN-Missing Configuration info"
 msgstr "KRN-Nedostaje info o postavi"
 
-#: main.cpp:214
+#: main.cpp:215
 msgid "Please enter your email adress"
 msgstr "Molim unesite va¹u adresu elektronske po¹te"
 
-#: main.cpp:227
+#: main.cpp:228
 msgid "Please enter your real name"
 msgstr "Molim unesite va¹e stvarno ime"
 
-#: main.cpp:241
+#: main.cpp:242
 msgid "Please enter your organization's name"
 msgstr "Molim unesite ime va¹e organizacije"
 
-#: main.cpp:259
+#: main.cpp:260
 msgid "Please enter your NNTP server name"
 msgstr "Molim unesite ime va¹eg NNTP poslu¾itelja"
 
-#: main.cpp:274
+#: main.cpp:275
 msgid "Please enter your SMTP server name"
 msgstr "Molim unesite ime va¹eg SMPT poslu¾itelja"
 
@@ -153,6 +153,11 @@ msgstr "Dohvati popis aktivnih grupa"
 #: groupdlg.cpp:205
 msgid "Find group"
 msgstr "Pronaði grupu"
+
+#: groupdlg.cpp:208
+#, fuzzy
+msgid "(Un)Subscribe"
+msgstr "(od)Pretplati"
 
 #: groupdlg.cpp:211
 msgid "Check for Unread Articles"
@@ -282,7 +287,7 @@ msgstr "Oglasi nastavak"
 msgid "Post & Reply"
 msgstr "Oglasi i Odgovori"
 
-#: artdlg.cpp:174
+#: artdlg.cpp:174 artdlg.cpp:242
 msgid "Tagged"
 msgstr "Oznaèen"
 
@@ -341,6 +346,24 @@ msgstr "Dohvati popis èlanaka"
 #: artdlg.cpp:225
 msgid "Refresh Display"
 msgstr "Osvje¾i Prikaz"
+
+#: artdlg.cpp:241
+msgid "Current"
+msgstr ""
+
+#: artdlg.cpp:243 fontsDlg.cpp:52
+msgid "All"
+msgstr "Cijelo"
+
+#: artdlg.cpp:244
+#, fuzzy
+msgid "Read"
+msgstr "Proèitane:"
+
+#: artdlg.cpp:245
+#, fuzzy
+msgid "UnRead"
+msgstr "Neproèitane:"
 
 #: artdlg.cpp:248
 msgid "Save Article"
@@ -532,10 +555,6 @@ msgstr "Standardno"
 msgid "Long"
 msgstr "Dugo"
 
-#: fontsDlg.cpp:52
-msgid "All"
-msgstr "Cijelo"
-
 #: fontsDlg.cpp:56
 msgid "Attachment Style"
 msgstr "Stil Priloga: "
@@ -564,8 +583,18 @@ msgstr "Jako veliko"
 msgid "Standard Font"
 msgstr "Standardno pismo"
 
+#: fontsDlg.cpp:84
+#, fuzzy
+msgid "Standard Font Test"
+msgstr "Standardno pismo"
+
 #: fontsDlg.cpp:86
 msgid "Fixed Font"
+msgstr "Pismo stalne ¹irine"
+
+#: fontsDlg.cpp:91
+#, fuzzy
+msgid "Fixed Font Test"
 msgstr "Pismo stalne ¹irine"
 
 #: fontsDlg.cpp:94
@@ -648,12 +677,21 @@ msgstr "KRN - Postava ispisa"
 msgid "General"
 msgstr "Opæenito"
 
+#: printdlg.cpp:35
+msgid "Printing System"
+msgstr ""
+
 #: printdlg.cpp:37
 msgid "Use HTML Printing"
 msgstr "Koristi HTML ispisivanje"
 
 #: printdlg.cpp:40
 msgid "Use Direct Printing"
+msgstr "Koristi izravno ispisivanje"
+
+#: printdlg.cpp:45
+#, fuzzy
+msgid "Direct Printing"
 msgstr "Koristi izravno ispisivanje"
 
 #: printdlg.cpp:48

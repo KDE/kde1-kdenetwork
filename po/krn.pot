@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-07-20 15:18+0200\n"
+"POT-Creation-Date: 1998-08-03 21:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,27 +14,27 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: ENCODING\n"
 
-#: main.cpp:213 main.cpp:226 main.cpp:240 main.cpp:258 main.cpp:273
+#: main.cpp:214 main.cpp:227 main.cpp:241 main.cpp:259 main.cpp:274
 msgid "KRN-Missing Configuration info"
 msgstr ""
 
-#: main.cpp:214
+#: main.cpp:215
 msgid "Please enter your email adress"
 msgstr ""
 
-#: main.cpp:227
+#: main.cpp:228
 msgid "Please enter your real name"
 msgstr ""
 
-#: main.cpp:241
+#: main.cpp:242
 msgid "Please enter your organization's name"
 msgstr ""
 
-#: main.cpp:259
+#: main.cpp:260
 msgid "Please enter your NNTP server name"
 msgstr ""
 
-#: main.cpp:274
+#: main.cpp:275
 msgid "Please enter your SMTP server name"
 msgstr ""
 
@@ -153,6 +153,10 @@ msgstr ""
 
 #: groupdlg.cpp:205
 msgid "Find group"
+msgstr ""
+
+#: groupdlg.cpp:208
+msgid "(Un)Subscribe"
 msgstr ""
 
 #: groupdlg.cpp:211
@@ -279,7 +283,7 @@ msgstr ""
 msgid "Post & Reply"
 msgstr ""
 
-#: artdlg.cpp:174
+#: artdlg.cpp:174 artdlg.cpp:242
 msgid "Tagged"
 msgstr ""
 
@@ -337,6 +341,22 @@ msgstr ""
 
 #: artdlg.cpp:225
 msgid "Refresh Display"
+msgstr ""
+
+#: artdlg.cpp:241
+msgid "Current"
+msgstr ""
+
+#: artdlg.cpp:243 fontsDlg.cpp:52
+msgid "All"
+msgstr ""
+
+#: artdlg.cpp:244
+msgid "Read"
+msgstr ""
+
+#: artdlg.cpp:245
+msgid "UnRead"
 msgstr ""
 
 #: artdlg.cpp:248
@@ -524,10 +544,6 @@ msgstr ""
 msgid "Long"
 msgstr ""
 
-#: fontsDlg.cpp:52
-msgid "All"
-msgstr ""
-
 #: fontsDlg.cpp:56
 msgid "Attachment Style"
 msgstr ""
@@ -556,8 +572,16 @@ msgstr ""
 msgid "Standard Font"
 msgstr ""
 
+#: fontsDlg.cpp:84
+msgid "Standard Font Test"
+msgstr ""
+
 #: fontsDlg.cpp:86
 msgid "Fixed Font"
+msgstr ""
+
+#: fontsDlg.cpp:91
+msgid "Fixed Font Test"
 msgstr ""
 
 #: fontsDlg.cpp:94
@@ -640,12 +664,20 @@ msgstr ""
 msgid "General"
 msgstr ""
 
+#: printdlg.cpp:35
+msgid "Printing System"
+msgstr ""
+
 #: printdlg.cpp:37
 msgid "Use HTML Printing"
 msgstr ""
 
 #: printdlg.cpp:40
 msgid "Use Direct Printing"
+msgstr ""
+
+#: printdlg.cpp:45
+msgid "Direct Printing"
 msgstr ""
 
 #: printdlg.cpp:48

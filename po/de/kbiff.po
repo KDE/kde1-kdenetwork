@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kbiff\n"
-"POT-Creation-Date: 1998-05-24 18:45+0200\n"
+"POT-Creation-Date: 1998-08-03 21:27+0200\n"
 "PO-Revision-Date: 1998-06-04 13:10+0200\n"
 "Last-Translator: Tobias Burnus <burnus@berlin1.netsurf.de>\n"
 "Language-Team: German <kde-i18n@kde.org>\n"
@@ -9,207 +9,261 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: iso-8859-1\n"
 
-#: kbiff.cpp:468
-msgid "&Dock"
-msgstr "An&ocken"
-
-#: kbiff.cpp:470
+#: kbiff.cpp:224
 msgid "&UnDock"
 msgstr "&Nicht andocken"
 
-#: kbiff.cpp:471
+#: kbiff.cpp:226
+msgid "&Dock"
+msgstr "An&ocken"
+
+#: kbiff.cpp:227
 msgid "&Setup..."
 msgstr "&Einstellungen..."
 
-#: kbiff.cpp:473
+#: kbiff.cpp:229
 msgid "&Help..."
 msgstr "&Hilfe..."
 
-#: kbiff.cpp:475
-msgid "E&xit"
-msgstr "Be&enden"
-
-#: kbiff.cpp:570 kbiff.cpp:581 kbiff.cpp:590 kbiff.cpp:599
-msgid "POP3 Error"
-msgstr "POP3-Fehler"
-
-#: kbiff.cpp:570
-msgid "Error accessing "
-msgstr "Fehler beim Zugriff auf "
-
-#: kbiff.cpp:581
-msgid "No such user: "
-msgstr "Kein solcher Benutzer "
-
-#: kbiff.cpp:590
-msgid "Password incorrect: "
-msgstr "Passwort ungültig: "
-
-#: kbiff.cpp:599
-msgid "Remote STAT Error.  Cannot recover."
-msgstr "Server STAT-Fehler. Kann nicht fortsätzen."
-
-#: setupdlg.cpp:31
-msgid "Monitor local mailbox"
-msgstr "Beobachte lokale Mailbox"
-
-#: setupdlg.cpp:35
-msgid "Monitor remote mailbox"
-msgstr "Beobachte Server-Mailbox"
-
-#: setupdlg.cpp:49 setupdlg.cpp:292 setupdlg.cpp:302
-msgid "Browse"
-msgstr "Durchsuchen"
-
-#: setupdlg.cpp:64
-msgid "POP3 Server:"
-msgstr "POP3-Sever:"
-
-#: setupdlg.cpp:71
-msgid "Username:"
-msgstr "Benutzername:"
-
-#: setupdlg.cpp:78
-msgid "Password:"
-msgstr "Passwort:"
-
-#: setupdlg.cpp:86
-msgid "Store password"
-msgstr "Speichere Passwort"
-
-#: setupdlg.cpp:213 setupdlg.cpp:216
-msgid "KBiff"
-msgstr "KBiff"
-
-#: setupdlg.cpp:222 setupdlg.cpp:225
-msgid "Version 0.7"
-msgstr "Version 0.7"
-
-#: setupdlg.cpp:231 setupdlg.cpp:234
-msgid "Copyright (C) 1998"
-msgstr "Copyright (c) 1998"
-
-#: setupdlg.cpp:240 setupdlg.cpp:243
-msgid "Kurt Granroth"
-msgstr "Kurt Granroth"
-
-#: setupdlg.cpp:248 setupdlg.cpp:256
-msgid "kurt_granroth@pobox.com"
-msgstr "kurt_granroth@pobox.com"
-
-#: setupdlg.cpp:286
-msgid "Run Command"
-msgstr "Starte Befehl"
-
-#: setupdlg.cpp:296
-msgid "Play Sound"
-msgstr "Spiele Klang"
-
-#: setupdlg.cpp:306
-msgid "System Beep"
-msgstr "System-Ton"
-
-#: setupdlg.cpp:415
-msgid "Poll (sec):"
+#: kbiff.cpp:233
+msgid "&Check mail now"
 msgstr ""
 
-#: setupdlg.cpp:422
-msgid "Mail client:"
-msgstr "Email-Client"
+#: kbiff.cpp:237
+msgid "&Stop"
+msgstr ""
 
-#: setupdlg.cpp:428
-msgid "Dock in panel"
-msgstr "Am Panel andocken"
-
-#: setupdlg.cpp:433
-msgid "Enable session management"
-msgstr "Aktiviere Sitzungsmanagement"
-
-#: setupdlg.cpp:439
-msgid "Icons:"
-msgstr "Symbole:"
-
-#: setupdlg.cpp:444
-msgid "No Mail:"
-msgstr "Keine Email:"
-
-#: setupdlg.cpp:451
-msgid "Old Mail:"
-msgstr "Alte Email:"
-
-#: setupdlg.cpp:458
-msgid "New Mail:"
-msgstr "Neue Email:"
-
-#: setupdlg.cpp:578
-msgid "Help"
-msgstr "Hilfe"
-
-#: setupdlg.cpp:583 setupdlg.cpp:1202
-msgid "OK"
-msgstr "OK"
-
-#: setupdlg.cpp:590 setupdlg.cpp:1209
-msgid "Cancel"
-msgstr "Abbrechen"
-
-#: setupdlg.cpp:595
+#: setupdlg.cpp:50
 msgid "KBiff Setup"
 msgstr "KBiff Einstellungen"
 
-#: setupdlg.cpp:601
-msgid "Mailbox:"
-msgstr "Mailbox"
+#: setupdlg.cpp:53
+msgid "Profile:"
+msgstr ""
 
-#: setupdlg.cpp:615
-msgid "&New..."
-msgstr "&Neu..."
-
-#: setupdlg.cpp:622
-msgid "&Delete"
-msgstr "&Entfernen"
-
-#: setupdlg.cpp:628
+#: setupdlg.cpp:76
 msgid "&Rename..."
 msgstr "&Umbenennen..."
 
-#: setupdlg.cpp:681
+#: setupdlg.cpp:109
 msgid "General"
 msgstr "Allgemein"
 
-#: setupdlg.cpp:682
+#: setupdlg.cpp:110
 msgid "New Mail"
 msgstr "Neue Email"
 
-#: setupdlg.cpp:683
+#: setupdlg.cpp:111
 msgid "Mailbox"
 msgstr "Mailbox"
 
-#: setupdlg.cpp:684
-msgid "About"
-msgstr "Info"
-
-#: setupdlg.cpp:774
-msgid "New Profile Name"
+#: setupdlg.cpp:243
+#, fuzzy
+msgid "New Profile"
 msgstr "Neuer Profilname"
 
-#: setupdlg.cpp:823
-#, c-format
-msgid "Delete Mailbox Profile: %s"
+#: setupdlg.cpp:272
+#, fuzzy, c-format
+msgid "Rename Profile: %s"
 msgstr "Lösche Mailbox-Profil"
 
-#: setupdlg.cpp:824
+#: setupdlg.cpp:314
+#, fuzzy, c-format
+msgid "Delete Profile: %s"
+msgstr "Lösche Mailbox-Profil"
+
+#: setupdlg.cpp:315
 msgid "Are you sure you wish to delete this profile?\n"
 msgstr "Sind Sie sicher, daß Sie diese Profil löschen wollen?\n"
 
-#: setupdlg.cpp:981
-msgid "Inbox"
-msgstr "Inbox"
+#: setupdlg.cpp:361
+msgid "Poll (sec):"
+msgstr ""
 
-#: setupdlg.cpp:1189
-msgid "Mailbox Name (i.e., Inbox):"
-msgstr "Mailbox-Mame (z.B. Inbox):"
+#: setupdlg.cpp:366
+msgid "Mail client:"
+msgstr "Email-Client"
 
-#: setupdlg.cpp:1217
-msgid "New Mailbox Profile Name"
-msgstr "Neuer Mailbix Profilname"
+#: setupdlg.cpp:379
+msgid "Dock in panel"
+msgstr "Am Panel andocken"
+
+#: setupdlg.cpp:384
+#, fuzzy
+msgid "Use session management"
+msgstr "Aktiviere Sitzungsmanagement"
+
+#: setupdlg.cpp:389
+msgid "Icons:"
+msgstr "Symbole:"
+
+#: setupdlg.cpp:409
+msgid "No Mail:"
+msgstr "Keine Email:"
+
+#: setupdlg.cpp:418
+#, fuzzy
+msgid "Old Mail"
+msgstr "Alte Email:"
+
+#: setupdlg.cpp:428
+msgid "New Mail:"
+msgstr "Neue Email:"
+
+#: setupdlg.cpp:605
+msgid "Run Command"
+msgstr "Starte Befehl"
+
+#: setupdlg.cpp:612 setupdlg.cpp:625 setupdlg.cpp:937
+msgid "Browse"
+msgstr "Durchsuchen"
+
+#: setupdlg.cpp:618
+msgid "Play Sound"
+msgstr "Spiele Klang"
+
+#: setupdlg.cpp:631
+msgid "System Beep"
+msgstr "System-Ton"
+
+#: setupdlg.cpp:636
+msgid "Notify"
+msgstr ""
+
+#: setupdlg.cpp:794
+msgid "Advanced Options"
+msgstr ""
+
+#: setupdlg.cpp:798
+#, fuzzy
+msgid "Mailbox URL:"
+msgstr "Mailbox"
+
+#: setupdlg.cpp:802
+msgid "Port:"
+msgstr ""
+
+#: setupdlg.cpp:882 setupdlg.cpp:914
+msgid "Mailbox:"
+msgstr "Mailbox"
+
+#: setupdlg.cpp:898 setupdlg.cpp:1197
+#, fuzzy
+msgid "New Mailbox"
+msgstr "Neue Email"
+
+#: setupdlg.cpp:905
+#, fuzzy
+msgid "Delete Mailbox"
+msgstr "Lösche Mailbox-Profil"
+
+#: setupdlg.cpp:911
+msgid "Protocol:"
+msgstr ""
+
+#: setupdlg.cpp:917
+#, fuzzy
+msgid "Server:"
+msgstr "POP3-Sever:"
+
+#: setupdlg.cpp:920
+#, fuzzy
+msgid "User:"
+msgstr "Benutzername:"
+
+#: setupdlg.cpp:923
+msgid "Password:"
+msgstr "Passwort:"
+
+#: setupdlg.cpp:954
+msgid "Store password"
+msgstr "Speichere Passwort"
+
+#: setupdlg.cpp:959
+msgid "Advanced"
+msgstr ""
+
+#: setupdlg.cpp:1336
+msgid "KBiff"
+msgstr "KBiff"
+
+#: setupdlg.cpp:1357
+msgid ""
+"Version 1.1\n"
+"\n"
+"Copyright (C) 1998\n"
+"Kurt Granroth"
+msgstr ""
+
+#: setupdlg.cpp:1404
+#, fuzzy
+msgid "New Name:"
+msgstr "Neue Email:"
+
+#: setupdlg.cpp:1430
+#, fuzzy
+msgid "New Name"
+msgstr "Neuer Profilname"
+
+#~ msgid "E&xit"
+#~ msgstr "Be&enden"
+
+#~ msgid "POP3 Error"
+#~ msgstr "POP3-Fehler"
+
+#~ msgid "Error accessing "
+#~ msgstr "Fehler beim Zugriff auf "
+
+#~ msgid "No such user: "
+#~ msgstr "Kein solcher Benutzer "
+
+#~ msgid "Password incorrect: "
+#~ msgstr "Passwort ungültig: "
+
+#~ msgid "Remote STAT Error.  Cannot recover."
+#~ msgstr "Server STAT-Fehler. Kann nicht fortsätzen."
+
+#~ msgid "Monitor local mailbox"
+#~ msgstr "Beobachte lokale Mailbox"
+
+#~ msgid "Monitor remote mailbox"
+#~ msgstr "Beobachte Server-Mailbox"
+
+#~ msgid "Version 0.7"
+#~ msgstr "Version 0.7"
+
+#~ msgid "Copyright (C) 1998"
+#~ msgstr "Copyright (c) 1998"
+
+#~ msgid "Kurt Granroth"
+#~ msgstr "Kurt Granroth"
+
+#~ msgid "kurt_granroth@pobox.com"
+#~ msgstr "kurt_granroth@pobox.com"
+
+#~ msgid "Help"
+#~ msgstr "Hilfe"
+
+#~ msgid "OK"
+#~ msgstr "OK"
+
+#~ msgid "Cancel"
+#~ msgstr "Abbrechen"
+
+#~ msgid "&New..."
+#~ msgstr "&Neu..."
+
+#~ msgid "&Delete"
+#~ msgstr "&Entfernen"
+
+#~ msgid "About"
+#~ msgstr "Info"
+
+#~ msgid "Inbox"
+#~ msgstr "Inbox"
+
+#~ msgid "Mailbox Name (i.e., Inbox):"
+#~ msgstr "Mailbox-Mame (z.B. Inbox):"
+
+#~ msgid "New Mailbox Profile Name"
+#~ msgstr "Neuer Mailbix Profilname"

@@ -4,32 +4,32 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: krn \n"
-"POT-Creation-Date: 1998-07-20 15:18+0200\n"
+"POT-Creation-Date: 1998-08-03 21:27+0200\n"
 "PO-Revision-Date: 1998-06-23 07:10+0200\n"
 "Last-Translator: Jacek Stolarczyk <jacek@mer.chemia.polsl.gliwice.pl>\n"
 "Content-Type: text/plain; charset=iso8859-2\n"
 
-#: main.cpp:213 main.cpp:226 main.cpp:240 main.cpp:258 main.cpp:273
+#: main.cpp:214 main.cpp:227 main.cpp:241 main.cpp:259 main.cpp:274
 msgid "KRN-Missing Configuration info"
 msgstr "Nie odnaleziono o konfiguracji KRN"
 
-#: main.cpp:214
+#: main.cpp:215
 msgid "Please enter your email adress"
 msgstr "Podaj swój adres pocztowy"
 
-#: main.cpp:227
+#: main.cpp:228
 msgid "Please enter your real name"
 msgstr "Podaj imiê i nazwisko"
 
-#: main.cpp:241
+#: main.cpp:242
 msgid "Please enter your organization's name"
 msgstr "Podaj nazwê organizacji"
 
-#: main.cpp:259
+#: main.cpp:260
 msgid "Please enter your NNTP server name"
 msgstr "Podaj nazwê serwera NNTP"
 
-#: main.cpp:274
+#: main.cpp:275
 msgid "Please enter your SMTP server name"
 msgstr "Podaj nazwê serwera pocztowego"
 
@@ -152,6 +152,11 @@ msgstr "Pobierz listê aktywnych grup"
 #: groupdlg.cpp:205
 msgid "Find group"
 msgstr "Szukaj grupy"
+
+#: groupdlg.cpp:208
+#, fuzzy
+msgid "(Un)Subscribe"
+msgstr "(nie)Subskrybuj"
 
 #: groupdlg.cpp:211
 msgid "Check for Unread Articles"
@@ -283,7 +288,7 @@ msgstr "Odpowiedz grupie"
 msgid "Post & Reply"
 msgstr "Odpowiedz autorowi i grupie"
 
-#: artdlg.cpp:174
+#: artdlg.cpp:174 artdlg.cpp:242
 msgid "Tagged"
 msgstr "Zaznaczone"
 
@@ -344,6 +349,24 @@ msgstr "Pobierz listê wiadomo¶ci"
 #: artdlg.cpp:225
 msgid "Refresh Display"
 msgstr "Od¶wie¿ wygl±d"
+
+#: artdlg.cpp:241
+msgid "Current"
+msgstr ""
+
+#: artdlg.cpp:243 fontsDlg.cpp:52
+msgid "All"
+msgstr "Wszystkie"
+
+#: artdlg.cpp:244
+#, fuzzy
+msgid "Read"
+msgstr "Przeczytana:"
+
+#: artdlg.cpp:245
+#, fuzzy
+msgid "UnRead"
+msgstr "Nieprzeczytana:"
 
 #: artdlg.cpp:248
 msgid "Save Article"
@@ -541,10 +564,6 @@ msgstr "Typowy"
 msgid "Long"
 msgstr "D³ugi"
 
-#: fontsDlg.cpp:52
-msgid "All"
-msgstr "Wszystkie"
-
 #: fontsDlg.cpp:56
 #, fuzzy
 msgid "Attachment Style"
@@ -574,8 +593,18 @@ msgstr "Wielki"
 msgid "Standard Font"
 msgstr "Domy¶lna czcionka"
 
+#: fontsDlg.cpp:84
+#, fuzzy
+msgid "Standard Font Test"
+msgstr "Domy¶lna czcionka"
+
 #: fontsDlg.cpp:86
 msgid "Fixed Font"
+msgstr "Czcionka o sta³ej szer."
+
+#: fontsDlg.cpp:91
+#, fuzzy
+msgid "Fixed Font Test"
 msgstr "Czcionka o sta³ej szer."
 
 #: fontsDlg.cpp:94
@@ -665,12 +694,21 @@ msgstr "KRN - Ustawienia wygasania"
 msgid "General"
 msgstr "Ogólne"
 
+#: printdlg.cpp:35
+msgid "Printing System"
+msgstr ""
+
 #: printdlg.cpp:37
 msgid "Use HTML Printing"
 msgstr "Drukowanie HTML"
 
 #: printdlg.cpp:40
 msgid "Use Direct Printing"
+msgstr "Drukuj bezpo¶rednio."
+
+#: printdlg.cpp:45
+#, fuzzy
+msgid "Direct Printing"
 msgstr "Drukuj bezpo¶rednio."
 
 #: printdlg.cpp:48

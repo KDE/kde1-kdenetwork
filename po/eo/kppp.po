@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp 1.0pre2\n"
-"POT-Creation-Date: 1998-06-18 22:50+0200\n"
+"POT-Creation-Date: 1998-08-03 21:27+0200\n"
 "PO-Revision-Date: 1998-07-24 16:00+0100\n"
 "Last-Translator: Wolfram Diestel <diestel@rzaix340.rz-uni-leipzig.de>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
@@ -119,160 +119,160 @@ msgstr ""
 msgid "Login script has unbalanced Loop Start/End"
 msgstr "Salutprogrameto havas nekongruan blokon Start/End"
 
-#: connect.cpp:108 connect.cpp:212 main.cpp:829
+#: connect.cpp:109 connect.cpp:213 main.cpp:822
 msgid "Connecting to: "
 msgstr "Kontaktita al: "
 
-#: connect.cpp:117 connect.cpp:228 miniterm.cpp:162 modeminfo.cpp:62
-#: modeminfo.cpp:149
+#: connect.cpp:118 connect.cpp:229 miniterm.cpp:162 modeminfo.cpp:63
+#: modeminfo.cpp:150
 msgid "Sorry, can't create modem lock file."
 msgstr "Padonu, ne eblas krei þlosodosieron por modemo"
 
-#: connect.cpp:122 connect.cpp:185 modeminfo.cpp:67
+#: connect.cpp:123 connect.cpp:186 modeminfo.cpp:68
 msgid "Looking for Modem ..."
 msgstr "Rigardante je modemo..."
 
-#: connect.cpp:131 debug.cpp:86 main.cpp:842
+#: connect.cpp:132 debug.cpp:86 main.cpp:835
 msgid "Log"
 msgstr "Raporto"
 
-#: connect.cpp:222 miniterm.cpp:157 modeminfo.cpp:144
+#: connect.cpp:223 miniterm.cpp:157 modeminfo.cpp:145
 msgid "Sorry, modem device is locked."
 msgstr "Pardonu, modemaparato estas þlosita"
 
-#: connect.cpp:234 miniterm.cpp:176 miniterm.cpp:253 modeminfo.cpp:164
+#: connect.cpp:235 miniterm.cpp:176 miniterm.cpp:253 modeminfo.cpp:165
 msgid "Modem Ready"
 msgstr "Modemo preta"
 
-#: connect.cpp:266 connect.cpp:267
+#: connect.cpp:267 connect.cpp:268
 msgid "Initializing Modem..."
 msgstr "Initante modemon"
 
-#: connect.cpp:292
+#: connect.cpp:293
 msgid "Dialing"
 msgstr "Alvokante"
 
-#: connect.cpp:325
+#: connect.cpp:326
 msgid "Line Busy. Hanging up ..."
 msgstr "Lineo okupito. Æesante..."
 
-#: connect.cpp:331
+#: connect.cpp:332
 msgid "Line Busy. Waiting: "
 msgstr "Lineo okupita. Atendante: "
 
-#: connect.cpp:333 connect.cpp:451 connect.cpp:470
+#: connect.cpp:334 connect.cpp:452 connect.cpp:471
 msgid " seconds"
 msgstr " sekundojn"
 
-#: connect.cpp:351
+#: connect.cpp:352
 msgid "No Dialtone"
 msgstr "Neniu lineosono"
 
-#: connect.cpp:361
+#: connect.cpp:362
 msgid "No Carrier"
 msgstr "Neniu tensono"
 
-#: connect.cpp:396
+#: connect.cpp:397
 msgid "Scanning "
 msgstr "Seræante "
 
-#: connect.cpp:407
+#: connect.cpp:408
 msgid "Saving "
 msgstr "Sekurigante "
 
-#: connect.cpp:426
+#: connect.cpp:427
 msgid "Sending "
 msgstr "Sendante "
 
-#: connect.cpp:437
+#: connect.cpp:438
 msgid "Expecting "
 msgstr "Atendante "
 
-#: connect.cpp:449
+#: connect.cpp:450
 msgid "Pause "
 msgstr "Paýzo "
 
-#: connect.cpp:468
+#: connect.cpp:469
 msgid "Timeout "
 msgstr "Tempolimo "
 
-#: connect.cpp:482 connect.cpp:483
+#: connect.cpp:483 connect.cpp:484
 msgid "Hangup"
 msgstr "Malkontaktas"
 
-#: connect.cpp:496 connect.cpp:497
+#: connect.cpp:497 connect.cpp:498
 msgid "Answer"
 msgstr "Respondo"
 
-#: connect.cpp:505
+#: connect.cpp:506
 msgid "ID "
 msgstr "ID"
 
-#: connect.cpp:542
+#: connect.cpp:543
 msgid "Password "
 msgstr "Pasvorto"
 
-#: connect.cpp:580
+#: connect.cpp:581
 msgid "Prompting "
 msgstr "Demandu"
 
-#: connect.cpp:617
+#: connect.cpp:618
 msgid "PW Prompt "
 msgstr "Demandu pasvorton"
 
-#: connect.cpp:643
+#: connect.cpp:644
 msgid "Loop Start "
 msgstr "Maþkomenco"
 
-#: connect.cpp:647
+#: connect.cpp:648
 msgid "ERROR: Nested too deep, ignored."
 msgstr "ERARO: tro multaj maþoj."
 
-#: connect.cpp:652
+#: connect.cpp:653
 msgid "Loops nested too deeply!"
 msgstr "Tro multaj maþniveloj!"
 
-#: connect.cpp:670
+#: connect.cpp:671
 msgid "LoopEnd without mathing Start! Line: "
 msgstr "Maþofino sen koresponda komenco! Linio: "
 
-#: connect.cpp:747
+#: connect.cpp:748
 msgid "Starting pppd ..."
 msgstr "Lanæante pppd ..."
 
-#: connect.cpp:807 connect.cpp:833
+#: connect.cpp:808 connect.cpp:834
 msgid "unknown speed"
 msgstr "nekonata rapideco"
 
-#: connect.cpp:871
+#: connect.cpp:872
 msgid "Scan Var: "
 msgstr "Variablo: "
 
-#: connect.cpp:882
+#: connect.cpp:883
 msgid "Found: "
 msgstr "Trovis: "
 
-#: connect.cpp:894
+#: connect.cpp:895
 msgid "Looping: "
 msgstr "Maþo: "
 
-#: connect.cpp:925 modeminfo.cpp:332
+#: connect.cpp:926 modeminfo.cpp:333
 msgid "One Moment Please ..."
 msgstr "Momenton bonvolu ..."
 
-#: connect.cpp:969
+#: connect.cpp:970
 msgid "Script timed out!"
 msgstr "Programeto pasis tempolimon!"
 
-#: connect.cpp:995
+#: connect.cpp:996
 msgid "Scanning: "
 msgstr "Seræante: "
 
-#: connect.cpp:1006
+#: connect.cpp:1007
 msgid "Expecting: "
 msgstr "Atendante: "
 
-#: connect.cpp:1040
+#: connect.cpp:1041
 msgid "Logging on to Network ..."
 msgstr "Salutado en la reto ..."
 
@@ -280,19 +280,19 @@ msgstr "Salutado en la reto ..."
 msgid "Running Startup Command ..."
 msgstr "Lanæante startkomandon ..."
 
-#: connect.cpp:1133
+#: connect.cpp:1132
 msgid "Sorry, can't open modem."
 msgstr "Padonu, ne eblas malfermi modemon."
 
-#: connect.cpp:1140
+#: connect.cpp:1139
 msgid "Sorry, the modem is not ready."
 msgstr "Pardonu, la modemo ne estas preta."
 
-#: connect.cpp:1148 connect.cpp:1189 modeminfo.cpp:374
+#: connect.cpp:1147 connect.cpp:1189 modeminfo.cpp:379
 msgid "Sorry, the modem is busy."
 msgstr "Pardonu, la modemo estas okupita."
 
-#: connect.cpp:1424
+#: connect.cpp:1373
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
@@ -373,6 +373,15 @@ msgstr ""
 "æe kontakto:"
 
 #: edit.cpp:100
+#, fuzzy
+msgid ""
+"Execute program\n"
+"before disconnect:"
+msgstr ""
+"Lanæu programon\n"
+"æe malkontakto:"
+
+#: edit.cpp:112
 msgid ""
 "Execute program\n"
 "upon disconnect:"
@@ -380,71 +389,71 @@ msgstr ""
 "Lanæu programon\n"
 "æe malkontakto:"
 
-#: edit.cpp:112
+#: edit.cpp:124
 msgid "Edit pppd arguments:"
 msgstr "Redaktu pppd-argumentojn:"
 
-#: edit.cpp:118
+#: edit.cpp:130
 msgid "Arguments"
 msgstr "Argumentoj"
 
-#: edit.cpp:173
+#: edit.cpp:187
 msgid "IP Setup"
 msgstr "IP-konfigura¼o"
 
-#: edit.cpp:180
+#: edit.cpp:194
 msgid "IP Address:"
 msgstr "IP-adreso:"
 
-#: edit.cpp:185
+#: edit.cpp:199
 msgid "Subnet Mask:"
 msgstr "Subreta masko:"
 
-#: edit.cpp:193
+#: edit.cpp:207
 msgid "Dynamic IP Address"
 msgstr "Dinamika IP-adreso"
 
-#: edit.cpp:196
+#: edit.cpp:210
 msgid "Static IP Address"
 msgstr "Fiksa IP-adreso"
 
-#: edit.cpp:200
+#: edit.cpp:214
 msgid "Auto-configure hostname from this IP"
 msgstr "Aýtokonfiguru komputilnomon de tiu IP"
 
-#: edit.cpp:314
+#: edit.cpp:328
 msgid "DNS Servers"
 msgstr "DNS-serviloj"
 
-#: edit.cpp:330
+#: edit.cpp:344
 msgid "Domain Name:"
 msgstr "domajnnomo:"
 
-#: edit.cpp:342
+#: edit.cpp:356
 msgid "DNS IP Address:"
 msgstr "DNS IP-adreso:"
 
-#: edit.cpp:375
+#: edit.cpp:389
 msgid "DNS Address List:"
 msgstr "DNS-adres-listo:"
 
-#: edit.cpp:385
+#: edit.cpp:399
 msgid "Disable existing DNS Servers during Connection"
 msgstr "Malaktivigu ekzistantajn DNS-servilojn dum kontakto"
 
-#: edit.cpp:437
+#: edit.cpp:451
 msgid "Gateway Setup"
 msgstr "Enkursigil-konfigura¼o"
 
-#: edit.cpp:446
+#: edit.cpp:460
 msgid "Default Gateway"
 msgstr "Implicita enkursigilo"
 
-#: edit.cpp:450
+#: edit.cpp:464
 msgid "Static Gateway"
 msgstr "Fiksa enkursigilo"
 
-#: edit.cpp:456
+#: edit.cpp:470
 msgid ""
 "Gateway\n"
 "IP Address:"
@@ -452,15 +461,15 @@ msgstr ""
 "Enkursigila\n"
 "IP-adreso:"
 
-#: edit.cpp:458
+#: edit.cpp:472
 msgid "Assign the Default Route to this Gateway"
 msgstr "La implicita kurso iru tra tiu enkursigilo"
 
-#: edit.cpp:557
+#: edit.cpp:571
 msgid "Edit Script"
 msgstr "Redaktu programeton"
 
-#: edit.cpp:580
+#: edit.cpp:594
 msgid "Insert"
 msgstr "Enmetu"
 
@@ -472,39 +481,39 @@ msgstr "kppp-konfigura¼o"
 msgid "pppd Timeout:"
 msgstr "pppd-tempolimo:"
 
-#: general.cpp:78 general.cpp:390 general.cpp:487
+#: general.cpp:78 general.cpp:375 general.cpp:472
 msgid "Seconds"
 msgstr "sekundoj"
 
-#: general.cpp:98
+#: general.cpp:84
 msgid "Dock into Panel on Connect"
 msgstr "Moviøu al panelo æe kontakto"
 
-#: general.cpp:104
+#: general.cpp:90
 msgid "Automatic Redial on Disconnect"
 msgstr "Aýtomata realvoko æe malkontakto"
 
-#: general.cpp:111
+#: general.cpp:97
 msgid "Show Clock on Caption"
 msgstr "Montru horloøon en la titolo"
 
-#: general.cpp:118
+#: general.cpp:104
 msgid "Disconnect on X-server shutdown"
 msgstr "Malkontaktu æe fino de la X-servilo"
 
-#: general.cpp:124
+#: general.cpp:110
 msgid "Quit on Disconnect"
 msgstr "Finu æe malkontakto"
 
-#: general.cpp:130
+#: general.cpp:116
 msgid "Minimize Window on Connect"
 msgstr "Minimumigu fenestron æe kontakto"
 
-#: general.cpp:199
+#: general.cpp:185
 msgid "About kppp"
 msgstr "Pri kppp"
 
-#: general.cpp:207
+#: general.cpp:193
 msgid ""
 "\n"
 "A dialer and front-end to pppd\n"
@@ -520,7 +529,7 @@ msgstr ""
 "Bernd Johannes Wuebben\n"
 "wuebben@math.cornell.edu"
 
-#: general.cpp:224
+#: general.cpp:209
 msgid ""
 "With contributions from:\n"
 "\n"
@@ -538,83 +547,83 @@ msgstr ""
 "Harri Porten\n"
 "Peter Silva"
 
-#: general.cpp:248
+#: general.cpp:233
 msgid "Serial device"
 msgstr "Seria aparato"
 
-#: general.cpp:251
+#: general.cpp:236
 msgid "Modem Device:"
 msgstr "Modemaparato:"
 
-#: general.cpp:285
+#: general.cpp:270
 msgid "Flow Control:"
 msgstr "Fluokontrolo:"
 
-#: general.cpp:300
+#: general.cpp:285
 msgid "Line Termination:"
 msgstr "Liniofinsigno:"
 
-#: general.cpp:315
+#: general.cpp:300
 msgid "Connection Speed:"
 msgstr "Rapideco"
 
-#: general.cpp:358
-msgid "Modem Lock File:"
-msgstr "Modemþlosodosiero"
+#: general.cpp:343
+msgid "Lock File Directory:"
+msgstr ""
 
-#: general.cpp:375
+#: general.cpp:360
 msgid "Modem Timeout:"
 msgstr "Modema tempolimo:"
 
-#: general.cpp:460 main.cpp:503
+#: general.cpp:445 main.cpp:504
 msgid "Modem"
 msgstr "Modemo"
 
-#: general.cpp:472
+#: general.cpp:457
 msgid "Busy Wait:"
 msgstr "Atendo æe okupiteco:"
 
-#: general.cpp:500
+#: general.cpp:485
 msgid "Modem Asserts CD Line."
 msgstr "Modemo enþovas CD-signalojn"
 
-#: general.cpp:516
+#: general.cpp:501
 msgid "Modem Commands"
 msgstr "Modemokomandoj"
 
-#: general.cpp:517
+#: general.cpp:502
 msgid "Query Modem"
 msgstr "Rekonu modemon"
 
-#: general.cpp:518
+#: general.cpp:503
 msgid "Terminal"
 msgstr "Terminalo"
 
-#: main.cpp:327
+#: main.cpp:328
 msgid "Connect to: "
 msgstr "Kontaktu al:"
 
-#: main.cpp:338
+#: main.cpp:339
 msgid "Login ID:"
 msgstr "Salutnomo:"
 
-#: main.cpp:350
+#: main.cpp:351
 msgid "Password:"
 msgstr "Pasvorto:"
 
-#: main.cpp:367
+#: main.cpp:368
 msgid "Show Log Window"
 msgstr "Montru raportfenestron"
 
-#: main.cpp:389
+#: main.cpp:390
 msgid "Setup"
 msgstr "Konfiguru"
 
-#: main.cpp:404
+#: main.cpp:405
 msgid "Connect"
 msgstr "Kontaktu"
 
-#: main.cpp:472
+#: main.cpp:473
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -623,23 +632,23 @@ msgstr ""
 "Ne ekzistas tiu konto:\n"
 "%s"
 
-#: main.cpp:489
+#: main.cpp:490
 msgid "kppp Configuration"
 msgstr "kppp-konfigura¼o"
 
-#: main.cpp:501
+#: main.cpp:502
 msgid "Accounts"
 msgstr "kontoj"
 
-#: main.cpp:502
+#: main.cpp:503
 msgid "Device"
 msgstr "aparato"
 
-#: main.cpp:504
+#: main.cpp:505
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:732
+#: main.cpp:725
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -656,7 +665,7 @@ msgstr ""
 "la konfigurodialogo.\n"
 "Dankon"
 
-#: main.cpp:744
+#: main.cpp:737
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -669,7 +678,7 @@ msgstr ""
 "bonvolu certigi, ke vi donis al kppp SUID-permeson kaj ke\n"
 "pppd estas rulebla."
 
-#: main.cpp:758
+#: main.cpp:751
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -690,7 +699,7 @@ msgstr ""
 "de la konfigurodialogo.\n"
 "Dankon"
 
-#: main.cpp:778
+#: main.cpp:771
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -699,7 +708,7 @@ msgstr ""
 "Vi elektis la identigmetodon PAP. Tio\n"
 "necesigas, ke vi donas uzantonomon kaj pasvorton!"
 
-#: main.cpp:785
+#: main.cpp:778
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -708,7 +717,7 @@ msgstr ""
 "Ne eblis krei PAP-identig-dosieron\n"
 "\"%s\""
 
-#: main.cpp:802
+#: main.cpp:795
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -717,7 +726,7 @@ msgstr ""
 "Vi elektis la identigmetodon CHAP. Tio\n"
 "necesigas, ke vi donas uzantonomon kaj pasvorton!"
 
-#: main.cpp:809
+#: main.cpp:802
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -726,19 +735,19 @@ msgstr ""
 "Ne eblis krei CHAP-identig-dosieron\n"
 "\"%s\""
 
-#: main.cpp:821
+#: main.cpp:814
 msgid "You have to specify a telephone number !\n"
 msgstr "Vi devas doni telefonnumeron!\n"
 
-#: main.cpp:895
+#: main.cpp:909
 msgid "Quit kPPP?"
 msgstr "Æu fini kPPP"
 
-#: main.cpp:896
+#: main.cpp:910
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Se vi finas kPPP ankaý finiøos via PPP-seanco."
 
-#: main.cpp:931
+#: main.cpp:945
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
@@ -836,23 +845,23 @@ msgstr ""
 "ne estis malfermebla, eæ\n"
 "ne nurlege"
 
-#: modeminfo.cpp:46
+#: modeminfo.cpp:47
 msgid "ATI Query"
 msgstr "ATI-esploro"
 
-#: modeminfo.cpp:130
+#: modeminfo.cpp:131
 msgid "Modem Query timed out."
 msgstr "Modemesploro daýris tro longe"
 
-#: miniterm.cpp:277 modeminfo.cpp:368
+#: miniterm.cpp:280 modeminfo.cpp:373
 msgid "Can't open Modem"
 msgstr "Ne eblis malfermi modemon"
 
-#: modeminfo.cpp:414
+#: modeminfo.cpp:419
 msgid "Sorry, the modem is busy"
 msgstr "Pardonu, la modemo estas okupita"
 
-#: modeminfo.cpp:533
+#: modeminfo.cpp:482
 msgid "Modem Query Results"
 msgstr "Rezulto de modemesploro"
 
@@ -948,15 +957,15 @@ msgstr "Malkontaktante ..."
 msgid "Resetting Modem"
 msgstr "Remetante modemon"
 
-#: miniterm.cpp:262
+#: miniterm.cpp:265
 msgid "Can't restore tty settings: tcsetattr()\n"
 msgstr "Ne eblis restarigi tty-konfigura¼o: tcsetattr()\n"
 
-#: miniterm.cpp:283
+#: miniterm.cpp:286
 msgid "tcgetattr() failed\n"
 msgstr "tcgetattr() malsukcesis\n"
 
-#: miniterm.cpp:330
+#: miniterm.cpp:333
 msgid "tcsetattr() failed\n"
 msgstr "tcsetattr() malsukcesis\n"
 
@@ -1108,3 +1117,6 @@ msgstr ""
 "Demandu vian sistemadministranton por krei\n"
 "nemalplenan dosieron kun konvenaj lego-\n"
 "kaj skribo-permesoj."
+
+#~ msgid "Modem Lock File:"
+#~ msgstr "Modemþlosodosiero"
