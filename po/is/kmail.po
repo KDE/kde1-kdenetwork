@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
 "POT-Creation-Date: 1999-03-18 02:27+0100\n"
-"PO-Revision-Date: 1999-02-15 01:46-0500\n"
+"PO-Revision-Date: 1999-03-26 03:25-0500\n"
 "Last-Translator: Thorarinn R. Einarsson <thori@mindspring.com>\n"
 "Language-Team: is <kde-isl@mmedia.is>\n"
 "MIME-Version: 1.0\n"
@@ -43,7 +43,7 @@ msgstr "Breyta möppu"
 
 #: kmmainwin.cpp:488
 msgid "Moved all messages into trash"
-msgstr "Flutti öll skilaboð í ruslakörfuna"
+msgstr "Flutti öll bréf í ruslakörfuna"
 
 #: kmmainwin.cpp:507
 msgid ""
@@ -72,11 +72,11 @@ msgstr "KPóstur: Tilkynning!"
 
 #: kmmainwin.cpp:575
 msgid "Only messages in the outbox folder can be edited!"
-msgstr "Það er bara hægt að breyta skilaboðum sem eru í ÚT-möppunni!"
+msgstr "Það er bara hægt að breyta bréfum sem eru í ÚT-möppunni!"
 
 #: kmmainwin.cpp:610
 msgid "Message as Plain Text"
-msgstr "Skilaboð sem venjulegan texta"
+msgstr "Bréf sem venjulegur texti"
 
 #: kmmainwin.cpp:617 kmmainwin.cpp:637
 msgid "Select Folder"
@@ -116,7 +116,7 @@ msgstr "Senda svar til..."
 
 #: kmmainwin.cpp:892
 msgid "Forward to..."
-msgstr "Áframsenda til..."
+msgstr "Framsenda til..."
 
 #: kmmainwin.cpp:895
 msgid "Add to addressbook"
@@ -156,7 +156,7 @@ msgstr "&Nýr ritill"
 
 #: kmcomposewin.cpp:451 kmmainwin.cpp:952
 msgid "New Mailreader"
-msgstr "Nýr &KPósts gluggi"
+msgstr "Nýr KPóst&gluggi"
 
 #: kmmainwin.cpp:955
 msgid "Save As..."
@@ -188,7 +188,7 @@ msgstr "&Netfangaskrá..."
 
 #: kmmainwin.cpp:978
 msgid "&Filter..."
-msgstr "&Sía..."
+msgstr "&Síur..."
 
 #: kmmainwin.cpp:992
 msgid "&Find..."
@@ -196,7 +196,7 @@ msgstr "&Finna..."
 
 #: kmmainwin.cpp:997
 msgid "&Create..."
-msgstr "&Nýtt..."
+msgstr "&Ný..."
 
 #: kmmainwin.cpp:999
 msgid "&Modify..."
@@ -204,7 +204,7 @@ msgstr "&Breyta..."
 
 #: kmmainwin.cpp:1001
 msgid "C&ompact"
-msgstr "Þjappa saman"
+msgstr "Þja&ppa"
 
 #: kmmainwin.cpp:1004
 msgid "&Empty"
@@ -212,7 +212,7 @@ msgstr "&Tæma"
 
 #: kmfilterdlg.cpp:149 kmmainwin.cpp:1013
 msgid "New"
-msgstr "Ný/Nýtt"
+msgstr "Ný"
 
 #: kmmainwin.cpp:1014
 msgid "Unread"
@@ -240,7 +240,7 @@ msgstr "&Næsta"
 
 #: kmmainwin.cpp:1024
 msgid "Next unread"
-msgstr "Næsta ólesna"
+msgstr "Næsta ólesið"
 
 #: kmmainwin.cpp:1026
 msgid "&Previous"
@@ -296,15 +296,15 @@ msgstr "&Allir hausar"
 
 #: kmmainwin.cpp:1075
 msgid "Iconic Attachments"
-msgstr "Viðhengingar sem táknmyndir"
+msgstr "Viðhengi sem táknmyndir"
 
 #: kmmainwin.cpp:1076
 msgid "Smart Attachments"
-msgstr "Flottar viðhengingar"
+msgstr "Flott viðhengi"
 
 #: kmmainwin.cpp:1077
 msgid "Inlined Attachments"
-msgstr "Áfestar viðhengingar"
+msgstr "Áfest viðhengi"
 
 #: kmmainwin.cpp:1088
 msgid "F&older"
@@ -324,7 +324,7 @@ msgstr "Vista bréf í skrá"
 
 #: kmcomposewin.cpp:585 kmmainwin.cpp:1118
 msgid "Print message"
-msgstr "Prenta út bréf"
+msgstr "Prenta bréf"
 
 #: kmmainwin.cpp:1125
 msgid "Get new mail"
@@ -340,7 +340,7 @@ msgstr "Svara öllum"
 
 #: kmmainwin.cpp:1141
 msgid "Forward message"
-msgstr "Áframsenda bréf"
+msgstr "Framsenda bréf"
 
 #: kmmainwin.cpp:1146
 msgid "Delete message"
@@ -489,7 +489,7 @@ msgstr "Svara öllum:"
 
 #: kmsettings.cpp:405
 msgid "Forward:"
-msgstr "Áframsenda:"
+msgstr "Framsenda:"
 
 #: kmsettings.cpp:408
 msgid "Indentation:"
@@ -557,7 +557,7 @@ msgstr "Ritill"
 
 #: kmsettings.cpp:542
 msgid "empty trash on exit"
-msgstr "tæma rusl við lokun"
+msgstr "Tæma rusl við lokun"
 
 #: kmsettings.cpp:546
 msgid "Send Mail in outbox Folder on Check"
@@ -674,7 +674,7 @@ msgstr "Móttakandi"
 #: kmheaders.cpp:218
 #, c-format
 msgid "%d Messages, %d unread."
-msgstr "%d tölvubréf, %d ólesin."
+msgstr "%d bréf, %d ólesin."
 
 #: kmheaders.cpp:220
 msgid "Folder is read-only."
@@ -948,7 +948,7 @@ msgstr "Hengja skrá við"
 
 #: kmcomposewin.cpp:1216
 msgid "Include File"
-msgstr "Setja skrá með"
+msgstr "Setja inn skrá"
 
 #: kmcomposewin.cpp:1248
 msgid "my pgp key"
@@ -1081,7 +1081,7 @@ msgstr "Umræðuhópar: "
 
 #: kmreaderwin.cpp:414
 msgid "Encrypted message"
-msgstr "Dulritað tölvubréf"
+msgstr "Dulritað bréf"
 
 #: kmreaderwin.cpp:420
 msgid "Cannot decrypt message:"
@@ -1386,7 +1386,7 @@ msgstr "POP3"
 
 #: kmfilteraction.cpp:93 kmfilteraction.cpp:191
 msgid "transfer"
-msgstr "flutningur"
+msgstr "flytja í"
 
 #: kmfilteraction.cpp:160 kmfilteraction.cpp:193
 msgid "skip rest"
@@ -1452,11 +1452,11 @@ msgstr "eða"
 
 #: kmfilterdlg.cpp:564
 msgid "equals"
-msgstr "er sama og"
+msgstr "er jafnt og"
 
 #: kmfilterdlg.cpp:565
 msgid "not equal"
-msgstr "er ekki sama og"
+msgstr "er ekki jafnt og"
 
 #: kmfilterdlg.cpp:566
 msgid "contains"
@@ -1468,7 +1468,7 @@ msgstr "inniheldur ekki"
 
 #: kmfilterdlg.cpp:568
 msgid "regular expression"
-msgstr "venjuleg regla"
+msgstr "regluleg segð"
 
 #: kmfilterdlg.cpp:575
 msgid "<message>"
@@ -1500,7 +1500,7 @@ msgstr ""
 
 #: kpgp.cpp:207
 msgid "The pass phrase is missing."
-msgstr "Lykilorðssetninguna vantar."
+msgstr "Lykilsetninguna vantar."
 
 #: kpgp.cpp:286 kpgp.cpp:312 kpgp.cpp:325 kpgp.cpp:344 kpgp.cpp:361
 msgid "PGP Warning"

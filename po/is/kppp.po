@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
 "POT-Creation-Date: 1999-03-22 02:34+0100\n"
-"PO-Revision-Date: 1999-02-01 00:19-0500\n"
+"PO-Revision-Date: 1999-03-26 02:48-0500\n"
 "Last-Translator: Thorarinn R. Einarsson <thori@mindspring.com>\n"
 "Language-Team: is <kde-isl@mmedia.is>\n"
 "MIME-Version: 1.0\n"
@@ -1315,7 +1315,7 @@ msgstr "Loka"
 
 #: main.cpp:505
 msgid "Connect to: "
-msgstr "Tengja við: "
+msgstr "Hringja í: "
 
 #: main.cpp:517
 msgid "Login ID:"
@@ -1389,7 +1389,7 @@ msgstr "Uppsetning"
 
 #: main.cpp:613
 msgid "Connect"
-msgstr "Tengja"
+msgstr "Hringja"
 
 #: main.cpp:693
 #, c-format
@@ -1444,7 +1444,6 @@ msgstr ""
 "bara."
 
 #: main.cpp:951 runtests.cpp:400
-#, fuzzy
 msgid ""
 "Cannot find the PPP daemon!\n"
 "\n"
@@ -1454,7 +1453,7 @@ msgstr ""
 "Fann ekki ppp púkann (pppd)!\n"
 "\n"
 "Athugaðu hvort þú sért með hann á\n"
-"á þessari vél og að slóðin sé rétt.\n"
+"þessari vél og að slóðin sé rétt."
 
 #: main.cpp:960
 #, c-format
@@ -2093,15 +2092,14 @@ msgid "Select modem type..."
 msgstr "Veldu gerð módems..."
 
 #: modemdb.cpp:48
-#, fuzzy
 msgid ""
 "To setup your modem, first choose its vendor in the list to the left, and "
 "then select the model from the right list. If you don´t know which modem you "
 "have, you can try out one of the \"Generic\" modems."
 msgstr ""
-"Til að stilla módemið, veldu fyrst framleiðanda á listanum til vinstri "
-"ogsíðan módemið sjálft á listanum til hægri.  Ef þú veist ekki hvernig "
-"módemþú ert með, veldu þá \"Venjulegt\" módem."
+"Til að stilla módemið veldu þá fyrst framleiðanda á listanum til vinstri "
+"og síðan módemið sjálft á listanum til hægri.  Ef þú veist ekki hvernig "
+"módem þú ert með veldu þá \"Venjulegt\" módem."
 
 #: modemdb.cpp:151 modemdb.cpp:153 modemdb.cpp:223 modemdb.cpp:238
 msgid "<Generic>"
@@ -2110,22 +2108,3 @@ msgstr "<Venjulegt>"
 #: modemdb.cpp:218
 msgid "Hayes(tm) compatible modem"
 msgstr "Hayes(tm) staðlað módem"
-
-#~ msgid ""
-#~ "kppp can not find:\n"
-#~ " %s\n"
-#~ "Please install pppd properly and/or adjust\n"
-#~ "the location of the pppd executable on\n"
-#~ "the PPP tab of the setup dialog.\n"
-#~ "This will insure that kppp can find the\n"
-#~ "PPP daemon.\n"
-#~ "Thank You"
-#~ msgstr ""
-#~ "Kppp finnur ekki:\n"
-#~ " %s\n"
-#~ "Vinsamlega sjáðu til þess að ppp púkinn (pppd)\n"
-#~ "sé rétt settur inn í tölvuna og/eða breyttu\n"
-#~ "staðsetningunni á PPP flipanum í uppsetningunni.\n"
-#~ "Þetta tryggir að Kppp finni ppp púkann.\n"
-#~ "\n"
-#~ "Þakka þér."
