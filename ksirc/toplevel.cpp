@@ -56,8 +56,6 @@
 
 #include <kwm.h>
 
-#include "new-asj.h"
-
 extern KConfig *kConfig;
 extern KApplication *kApp;
 //extern KMDIMgr *MDIMgr;
