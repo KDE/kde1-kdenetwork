@@ -51,6 +51,7 @@ protected:
 	void popupMenu();
 	void reset();
 	bool isRunning();
+	bool isGIF8x(const char* file);
 
 protected slots:
 	void saveYourself();

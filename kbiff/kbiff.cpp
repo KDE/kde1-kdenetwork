@@ -12,6 +12,8 @@
 
 #include "Trace.h"
 
+#include <qmovie.h>
+
 #include <kiconloader.h>
 #include <kprocess.h>
 #include <kwm.h>
@@ -150,6 +152,49 @@ TRACEINIT("KBiff::mousePressEvent()");
 	}
 }
 
+bool KBiff::isGIF8x(const char* file_name)
+{
+TRACEINIT("KBiff::isGIF8x()");
+
+	/* The first test checks if we can open the file */
+	QFile gif8x(file_name);
+	if (gif8x.open(IO_ReadOnly) == false)
+		return false;
+
+	/**
+	 * The GIF89 format specifies that the first five bytes of
+	 * the file shall have the characters 'G' 'I' 'F' '8' '9'.
+	 * The GIF87a format specifies that the first six bytes
+	 * shall read 'G' 'I' 'F' '8' '7' 'a'.  Knowing that, we
+	 * shall read in the first six bytes and test away.
+	 */
+	char header[6];
+	int bytes_read = gif8x.readBlock(header, 6);
+
+	/* Close the file just to be nice */
+	gif8x.close();
+
+	/* If we read less than 6 bytes, then its definitely not GIF8x */
+	if (bytes_read < 6)
+		return false;
+
+	/* Now test for the magical GIF8(9|7a) */
+	if (header[0] == 'G' &&
+		 header[1] == 'I' &&
+		 header[2] == 'F' &&
+		 header[3] == '8' &&
+		 header[4] == '9' ||
+		(header[4] == '7' && header[5] == 'a'))
+	{
+		/* Success! */
+		TRACE("Is GIF8x!");
+		return true;
+	}
+
+	/* Apparently not GIF8(9|7a) */
+	return false;
+}
+
 ///////////////////////////////////////////////////////////////////////////
 // Protected Slots
 ///////////////////////////////////////////////////////////////////////////
@@ -246,8 +291,10 @@ TRACEINIT("KBiff::displayPixmap()");
 
 	TRACEF("Displaying %s", file.absFilePath().data());
 	// at this point, we have the file to display.  so display it
-	QPixmap pixmap(file.absFilePath());
-	setPixmap(pixmap);
+	if (isGIF8x(file.absFilePath()))
+		setMovie(QMovie(file.absFilePath().data()));
+	else
+		setPixmap(QPixmap(file.absFilePath()));
 	adjustSize();
 }
 
