@@ -30,6 +30,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <signal.h>
+#include <iovec.h>
 #include <sys/socket.h> 
 #include <sys/types.h>
 #include <sys/socket.h> 
