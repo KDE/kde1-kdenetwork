@@ -351,10 +351,6 @@ int NNTP::listXover(int from,int to)
                     while (!qit.isEmpty());
                     
                     
-                    art.Subject=templ.at(OffsetSubject);
-                    art.From=templ.at(OffsetFrom);
-                    art.Date=templ.at(OffsetDate);
-                    art.Lines=templ.at(OffsetLines);
                     art.ID=templ.at(OffsetID);
                     
                     key.dptr=art.ID.data();
@@ -362,6 +358,10 @@ int NNTP::listXover(int from,int to)
                     
                     if (!gdbm_exists(artdb,key))
                     {
+                        art.Subject=templ.at(OffsetSubject);
+                        art.From=templ.at(OffsetFrom);
+                        art.Date=templ.at(OffsetDate);
+                        art.Lines=templ.at(OffsetLines);
                         
                         //convert Refs to a strlist
                         art.Refs.clear();

@@ -148,6 +148,7 @@ void Article::save()
 
     QString _content;
     _content+=Subject+"\n";
+    _content+=ID+"\n";
     _content+=Lines+"\n";
     _content+=From+"\n";
     _content+=Date+"\n";
@@ -194,6 +195,7 @@ void Article::load()
 
     Subject=strtok ((char *)content.dptr,"\n");
 
+    ID=strtok(NULL,"\n");
     Lines=strtok(NULL,"\n");
     From=strtok(NULL,"\n");
     Date=strtok(NULL,"\n");
@@ -353,10 +355,7 @@ void NewsGroup::saveLastArticle(NNTP *server,int i)
 void NewsGroup::getSubjects(NNTP *server)
 {
     load();
-    if (strcmp(server->group(),data()))
-    {
-        server->setGroup(data());
-    }
+    server->setGroup(data());
     if (server->last>lastArticle(server))
     {
         debug ("xover from %d to %d",lastArticle(server)+1,server->last+5);
@@ -469,7 +468,6 @@ bool isParent(Article *parent,Article *child)
 
 void collectChildren(ArticleList *parentThread,QList<ArticleList> *children)
 {
-    ArticleList l;
     qApp->processEvents();
     QListIterator <ArticleList> it(*children);
     for (;it.current();++it)
@@ -488,6 +486,8 @@ void collectChildren(ArticleList *parentThread,QList<ArticleList> *children)
             {
                 if (isParent(parentThread->first(),it.current()->first()))
                 {
+                    //It's parent's daughter, make it collect its own kids,
+                    collectChildren(it.current(),children);
                     //and then adopt it
                     QListIterator <Article> it2(*it.current());
                     it2.toFirst();
@@ -495,11 +495,8 @@ void collectChildren(ArticleList *parentThread,QList<ArticleList> *children)
                     {
                         it2.current()->threadDepth++;
                         parentThread->append(it2.current());
-                        l.append(it2.current());
                     }
                     it.current()->clear();
-                    //It's parent's daughter, make it collect its own kids,
-                    collectChildren(&l,children);
                 }
             }
         }
