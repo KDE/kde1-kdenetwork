@@ -38,6 +38,8 @@
 #include "../table.h"
 #include "talkconn.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
 #include <signal.h>
 
 // Strangely enough, SIGUSR1 doesn't get caught ... Why ??

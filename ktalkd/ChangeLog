@@ -1,3 +1,24 @@
+1998-09-03  David Faure  <faure@kde.org> (0.8.8)
+
+	* ktalkd/unixsock.cpp: Added chmod => ktalk can write to the socket.
+
+1998-09-02  David Faure  <faure@kde.org>
+
+	* ktalkd/unixsock.cpp, .h: New. Direct communication with ktalk.
+	* ktalkd/announce.cpp: Call sendToKtalk.
+
+1998-08-29  David Faure  <faure@kde.org>
+
+	* ktalkd/options.cpp: Default values moved from .h to .cpp. 
+	Makes -ansi happier.
+
+1998-08-23  David Faure  <faure@kde.org>
+
+	* ktalkd/process.cpp (process_request): print_response enabled again.
+
+	* ktalkd/find_user.cpp: Removed the 'break;' for xdm, and didn't 
+	override tty. This way, you can have both announcements (text & X).
+
 1998-08-19  David Faure  <faure@kde.org> (0.8.7)
 
 	* ktalkd/mail.local: mail.local is back in the distrib. Has been 

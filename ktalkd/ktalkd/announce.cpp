@@ -62,6 +62,7 @@
 #include "readconf.h"
 #include "defs.h"
 #include "threads.h"
+#include "unixsock.h"
 
 #ifdef HAVE_SGTTY_H
 #include <sgtty.h>
@@ -73,7 +74,6 @@
 
 #define max(a,b) ( (a) > (b) ? (a) : (b) )
 #define N_LINES 5
-#define N_CHARS 120
 
 /*
  * Announce an invitation to talk.
@@ -163,7 +163,11 @@ int announce_proc(NEW_CTL_MSG *request, const char *remote_machine,
     localclock = localtime( (const time_t *) &clock.tv_sec );
     (void)snprintf(line_buf, N_CHARS, "%s@%s", request->l_name,
                    remote_machine);
-    
+
+#ifndef DONT_TRY_KTALK // never defined. Define if you want...
+    Xannounceok = sendToKtalk ( request->r_name, line_buf );
+    if (!Xannounceok) {
+#endif
     if ((!usercfg) || (!read_user_config("ExtPrg", extprg, S_MESSG)))
         /* try to read extprg from user config file, otherwise : */
         strcpy(extprg,Options::extprg); /* take default */            
@@ -268,7 +272,10 @@ int announce_proc(NEW_CTL_MSG *request, const char *remote_machine,
         adisp_begin=disp_ptr+1;
       } /* if */
     } /* for */
-    
+#ifndef DONT_TRY_KTALK
+    } // if
+#endif
+
     if (Xannounceok) {
 #ifndef NO_TEXT_ANNOUNCE_IF_X
         // never defined. Define it if you don't want text announce in 

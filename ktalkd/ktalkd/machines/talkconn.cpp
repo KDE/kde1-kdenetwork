@@ -462,7 +462,7 @@ void TalkConnection::set_edit_chars()
 {
 	char buf[3];
         int cc;
-        buf[0] = buf[1] = buf[2] = 0xff;
+        buf[0] = buf[1] = buf[2] = (char)0xff;
         /* Write our config to the caller */
 	cc = write(sockt, buf, sizeof(buf));
 	if (cc != sizeof(buf) )

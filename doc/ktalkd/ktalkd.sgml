@@ -8,8 +8,8 @@
 
 <title>The ktalkd Handbook
 <author>David Faure <tt/faure@kde.org/
-<date>Version 0.8.7, August 20, 1998
-<abstract>This Handbook describes ktalkd Version 0.8.7
+<date>Version 0.8.8, September 04, 1998
+<abstract>This Handbook describes ktalkd Version 0.8.8
 
 <!-- Table of contents -->
 <toc>
@@ -44,6 +44,8 @@ If desired, a sound is played with the announcement.
 <tag/X Announce/
 If compiled with KDE installed, ktalkd will use
 <bf/ktalkdlg/, a KDE dialog, for announcement.
+If ktalk is running, it will be asked to make the announcement 
+itself. (New since 0.8.8).
 
 <tag/Multiple displays annoucement/
 If you are logged remotely (e.g. with an
@@ -268,8 +270,33 @@ also ktalkd's version number and the "./configure" output.
 <p>
 Here comes the <bf/ChangeLog/ :
 <verb>
+1998-09-03  David Faure  <faure@kde.org> (0.8.8)
+
+	* ktalkd/unixsock.cpp: Added chmod => ktalk can write to the socket.
+
+1998-09-02  David Faure  <faure@kde.org>
+
+	* ktalkd/unixsock.cpp, .h: New. Direct communication with ktalk.
+	* ktalkd/announce.cpp: Call sendToKtalk.
+
+1998-08-29  David Faure  <faure@kde.org>
+
+	* ktalkd/options.cpp: Default values moved from .h to .cpp. 
+	Makes -ansi happier.
+
+1998-08-23  David Faure  <faure@kde.org>
+
+	* ktalkd/process.cpp (process_request): print_response enabled again.
+
+	* ktalkd/find_user.cpp: Removed the 'break;' for xdm, and didn't 
+	override tty. This way, you can have both announcements (text & X).
+
 1998-08-19  David Faure  <faure@kde.org> (0.8.7)
 
+	* ktalkd/mail.local: mail.local is back in the distrib. Has been 
+	forgotten since 0.7.0 !! I added a README.mail.local to explain
+	its purpose.
+	
 	* ktalkd/announce.cpp: Added text announce in addition to X announce.
 
 	* ktalkd/process.cpp: Removed check for the family field of addr. Oops.

@@ -154,8 +154,8 @@ int  process_request(register NEW_CTL_MSG *mp, register NEW_CTL_RESPONSE *rp)
 		rp->answer = UNKNOWN_REQUEST;
 		break;
 	}
+        print_response("=> response", rp);
         if (mp->vers == 0) { // it's kotalkd talking to us.
-            print_response("=> response", rp);
             // Let's prepare an OTALK response, shifting the first 2 fields
             rp->vers /*type in otalk*/ = rp->type;
             rp->type /*answer in otalk*/ = rp->answer;

@@ -6,8 +6,11 @@ SUBDIRS 	=	machines
 bin_PROGRAMS	=	ktalkd
 EXTRA_HEADERS	=	readcfg++.h
 INCLUDES	=	$(all_includes)
-noinst_HEADERS	=	defs.h includ.h find_user.h announce.h print.h process.h readconf.h table.h threads.h options.h
+noinst_HEADERS	=	defs.h includ.h find_user.h announce.h print.h process.h readconf.h table.h threads.h options.h unixsock.h
 ktalkd_DEPS	=	machines/libmach.a
+
+#for extra warnings during compilation :
+#DEFS		+=	-ansi -pedantic -D_POSIX_SOURCE -D_BSD_SOURCE
 
 ###########################################################
 if KDE_INSTALLED
@@ -16,7 +19,7 @@ if KDE_INSTALLED
 TALKD_CONF	=	$(kde_confdir)/ktalkdrc
 TALKD_CONF_NAME	=	ktalkdrc
 DEFS 		+=       -DHAVE_KDE
-ktalkd_SOURCES	=	announce.cpp print.cpp process.cpp readcfg++.cpp table.cpp talkd.cpp find_user.cpp threads.cpp options.cpp
+ktalkd_SOURCES	=	announce.cpp print.cpp process.cpp readcfg++.cpp table.cpp talkd.cpp find_user.cpp threads.cpp options.cpp unixsock.cpp
 LDADD           =       machines/libmach.a -lkdecore -lqt -lXext -lX11 @LIBBSD@ @LIBSOCKET@
 
 ###########################################################

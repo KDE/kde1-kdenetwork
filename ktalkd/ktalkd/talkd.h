@@ -18,7 +18,7 @@
 #define NEW_NAME_SIZE 12
 #define TTY_SIZE 16
 
-// Control Message structure for old talk protocol (earlier than BSD4.2)
+/* Control Message structure for old talk protocol (earlier than BSD4.2) */
 
 typedef struct {
   char     type;                   /* request type, see below */
@@ -32,7 +32,7 @@ typedef struct {
   struct sockaddr ctl_addr;        /* control socket address */
 } OLD_CTL_MSG;
 
-// Control Response structure for old talk protocol (earlier than BSD4.2)
+/* Control Response structure for old talk protocol (earlier than BSD4.2) */
 
 typedef struct {
   char      type;         /* type of request message, see below */
@@ -42,7 +42,7 @@ typedef struct {
   struct sockaddr addr;   /* address for establishing conversation */ 
 } OLD_CTL_RESPONSE;
 
-// Control Message structure for new talk protocol (BSD4.2 and later)
+/* Control Message structure for new talk protocol (BSD4.2 and later) */
 
 typedef struct {
   char      vers;                  /* protocol version */
@@ -57,7 +57,7 @@ typedef struct {
   char	    r_tty[TTY_SIZE];       /* callee's tty name */
 } NEW_CTL_MSG;
 
-// Control Response structure for new talk protocol (BSD4.2 and later)
+/* Control Response structure for new talk protocol (BSD4.2 and later) */
 
 typedef struct {
   char     vers;         /* protocol version */
@@ -99,7 +99,7 @@ typedef struct {
 #define BADADDR         7       /* request has invalid addr value */
 #define BADCTLADDR      8       /* request has invalid ctl_addr value */
 
-// Operational parameters.
+/* Operational parameters. */
 
 #define MAX_LIFE        60      /* max time daemon saves invitations */
 #define RING_WAIT       30      /* time to wait before resending invitation */

@@ -279,9 +279,7 @@ int find_user(char *name, char *tty, char *disp) {
                     if (prio < PRIO_XDM) {
                         strcpy(dispFound, ubuf->ut_line);
 			strcat(dispFound, " ");
-                        strcpy(ttyFound, dispFound);
                         prio = PRIO_XDM;
-			break; /* Highest prio => let's exit */
                     }
                     continue;
                 }
