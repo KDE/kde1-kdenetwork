@@ -368,7 +368,11 @@ void PPPData::setpppdTimeout(const char *n) {
 
 const char* PPPData::modemDevice() {
 
+#ifdef __FreeBSD__
+  return readConfig (MODEM_GRP, MODEMDEV_KEY, "/dev/cuaa0");
+#else
   return readConfig (MODEM_GRP, MODEMDEV_KEY, "/dev/modem");
+#endif
 
 }
 

@@ -253,6 +253,12 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   tl->addWidget(label1, 1, 1);
   
   modemdevice = new QComboBox(false,this, "modemdevice");
+#ifdef __FreeBSD__
+  modemdevice->insertItem("/dev/cuaa0");
+  modemdevice->insertItem("/dev/cuaa1");
+  modemdevice->insertItem("/dev/cuaa2");
+  modemdevice->insertItem("/dev/cuaa3");
+#else
   modemdevice->insertItem("/dev/modem");
   modemdevice->insertItem("/dev/cua0");
   modemdevice->insertItem("/dev/cua1");
@@ -262,13 +268,14 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   modemdevice->insertItem("/dev/ttyS1");
   modemdevice->insertItem("/dev/ttyS2");
   modemdevice->insertItem("/dev/ttyS3");
+
 #ifdef ISDNSUPPORT
   modemdevice->insertItem("/dev/ttyI0");
   modemdevice->insertItem("/dev/ttyI1");
   modemdevice->insertItem("/dev/ttyI2");
   modemdevice->insertItem("/dev/ttyI3");
 #endif
-
+#endif
   modemdevice->setMinimumWidth(modemdevice->sizeHint().width());
   modemdevice->setFixedHeight(modemdevice->sizeHint().height());
   tl->addWidget(modemdevice, 1, 2);
