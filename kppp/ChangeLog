@@ -1,6 +1,10 @@
 1998-12-18  Harri Porten  <porten@kde.org>
 
 	* #include "auth.h" was needed after pap.h was removed
+	* opener.h: workaround for glibc bug in RedHat 5.0. Since there is
+	presumably no way to detect the exact release version we'll simply
+	define SCM_RIGHTS to be 1 for every glibc2.0 on Linux. This should
+	solve the conflict with the kernel.  
 
 1998-12-18  Harri Porten  <porten@kde.org>
 

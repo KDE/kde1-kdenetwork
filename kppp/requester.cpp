@@ -84,7 +84,7 @@ int Requester::recvFD(char *filename, int size) {
 #endif
   control.cmsg.cmsg_len = cmsglen;
   control.cmsg.cmsg_level = SOL_SOCKET;
-  control.cmsg.cmsg_type = SCM_RIGHTS;
+  control.cmsg.cmsg_type = MY_SCM_RIGHTS;
 
   msg.msg_control = &control;
   msg.msg_controllen = control.cmsg.cmsg_len;

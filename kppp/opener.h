@@ -3,8 +3,10 @@
 
 #define DEVNULL "/dev/null"
 
-#ifndef KERNEL_VERSION
-#define KERNEL_VERSION(x,y,z) (((x)<<16)+((y)<<8)+(z))
+#if (__GLIBC__ == 2 && __GLIBC_MINOR__ == 0 && defined(__linux__))
+# define MY_SCM_RIGHTS 1
+#else
+# define MY_SCM_RIGHTS SCM_RIGHTS
 #endif
 
 class Opener {

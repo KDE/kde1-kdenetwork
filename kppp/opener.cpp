@@ -240,7 +240,7 @@ int Opener::sendFD(const char *path, int fd,
   // Send a (duplicate of) the file descriptor
   control.cmsg.cmsg_len = sizeof(struct cmsghdr) + sizeof(int);
   control.cmsg.cmsg_level = SOL_SOCKET;
-  control.cmsg.cmsg_type = SCM_RIGHTS;
+  control.cmsg.cmsg_type = MY_SCM_RIGHTS;
 
   msg.msg_control = &control;
   msg.msg_controllen = control.cmsg.cmsg_len;
