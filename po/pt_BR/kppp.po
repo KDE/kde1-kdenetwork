@@ -1402,7 +1402,6 @@ msgid "Details..."
 msgstr "Detalhes..."
 
 #: main.cpp:880
-#, fuzzy, c-format
 msgid ""
 "kppp can not find:\n"
 " %s\n"
@@ -1415,12 +1414,12 @@ msgid ""
 msgstr ""
 "kppp não consegue encontrar:\n"
 " %s\n"
-"Verifique se o modem\n"
-"foi configurado corretamente\n"
-"e/ou modifique\n"
-" a localização do modem na página modem\n"
-"do diálogo de configuração.\n"
-" Obrigado"
+"Instale o pppd apropriadamente e/ou ajuste\n"
+"a localização do executável pppd na\n"
+"aba PPP da janela de configuração.\n"
+"Isto garantirá que o kppp poderá achar o\n"
+"serviço PPP.\n"
+"Obrigado"
 
 #: main.cpp:895
 #, c-format
