@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp 0.9.6\n"
-"POT-Creation-Date: 1999-01-08 02:05+0100\n"
+"POT-Creation-Date: 1999-01-14 02:07+0100\n"
 "PO-Revision-Date: 1998-03-08 10:42 MET\n"
 "Last-Translator: Juraj Bednár <bednar@isternet.sk>\n"
 "Language-Team: Slovak <bednar@isternet.sk>\n"
@@ -182,7 +182,7 @@ msgstr ""
 msgid "Login script has unbalanced loop Start/End"
 msgstr "Prihlasovací skript má nevyvá¾ené skoky zaèiatok/koniec"
 
-#: connect.cpp:97 connect.cpp:195 main.cpp:979
+#: connect.cpp:97 connect.cpp:195 main.cpp:1053
 msgid "Connecting to: "
 msgstr "Pripájanie k: "
 
@@ -195,7 +195,7 @@ msgstr "¥utujem, nemô¾em vytvori» súbor pre zamknutie modemu."
 msgid "Looking for Modem ..."
 msgstr "Hµadám modem ..."
 
-#: connect.cpp:120 debug.cpp:80 main.cpp:992
+#: connect.cpp:120 debug.cpp:80 main.cpp:1066
 msgid "Log"
 msgstr "Záznam"
 
@@ -344,7 +344,7 @@ msgstr "Vykonávam ¹tartovací príkaz ..."
 msgid "Done"
 msgstr "Hotovo"
 
-#: connect.cpp:1123
+#: connect.cpp:1126
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
@@ -1090,7 +1090,7 @@ msgstr ""
 "<i>CONNECT</i> odpoveï od vá¹ho modemu. Odporúèaná\n"
 "hodnota je 30 sekúnd."
 
-#: general.cpp:465 main.cpp:637
+#: general.cpp:465 main.cpp:711
 msgid "Modem"
 msgstr "Modem"
 
@@ -1262,7 +1262,7 @@ msgstr ""
 "Toto okno zostane otvorené, pokiaµ\n"
 "nekliknete my¹ou alebo nestlaèíte kláves.\n"
 
-#: main.cpp:323
+#: main.cpp:393
 #, c-format
 msgid ""
 "kppp can't create or read from\n"
@@ -1271,7 +1271,7 @@ msgstr ""
 "kppp nemô¾e vytvori» alebo èíta» z\n"
 "%s."
 
-#: main.cpp:347
+#: main.cpp:423
 #, c-format
 msgid ""
 "kppp has detected a %s file.\n"
@@ -1290,19 +1290,19 @@ msgstr ""
 "Overte, ¾e nebe¾í iný kppp, zma¾te pid súbor a re¹tartnite\n"
 "kppp."
 
-#: main.cpp:353
+#: main.cpp:429
 msgid "Exit"
 msgstr "Ukonèi»"
 
-#: main.cpp:414
+#: main.cpp:491
 msgid "Connect to: "
 msgstr "Pripoji» k: "
 
-#: main.cpp:425
+#: main.cpp:503
 msgid "Login ID:"
 msgstr "Login ID:"
 
-#: main.cpp:438
+#: main.cpp:516
 msgid ""
 "Type in the username that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1320,11 +1320,11 @@ msgstr ""
 "<b>Dôle¾ité</b>: veµkos» písmen je dôle¾itá:\n"
 "<i>mojemeno</i> nie je to isté ako <i>MojeMeno</i>!"
 
-#: main.cpp:447
+#: main.cpp:525
 msgid "Password:"
 msgstr "Heslo:"
 
-#: main.cpp:461
+#: main.cpp:539
 msgid ""
 "Type in the password that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1342,11 +1342,11 @@ msgstr ""
 "<b>Dôle¾ité</b>: veµkos» písmen je dôle¾itá:\n"
 "<i>mojeheslo</i> nie je to isté ako <i>MojeHeslo</i>!"
 
-#: main.cpp:475
+#: main.cpp:553
 msgid "Show Log Window"
 msgstr "Zobrazova» okno so záznamom"
 
-#: main.cpp:482
+#: main.cpp:560
 msgid ""
 "This controls whether a log window is shown.\n"
 "A log window shows the communication between\n"
@@ -1364,15 +1364,15 @@ msgstr ""
 "Vypnite to ak sa <i>kppp</i> pripája bez akýchkoµvek\n"
 "problémov."
 
-#: main.cpp:505
+#: main.cpp:583
 msgid "Setup"
 msgstr "Nastavenie"
 
-#: main.cpp:521
+#: main.cpp:599
 msgid "Connect"
 msgstr "Pripoji»"
 
-#: main.cpp:605
+#: main.cpp:679
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -1381,39 +1381,39 @@ msgstr ""
 "Toto konto neexistuje:\n"
 "%s"
 
-#: main.cpp:619
+#: main.cpp:693
 msgid "kppp Configuration"
 msgstr "Nastavenie kppp"
 
-#: main.cpp:635
+#: main.cpp:709
 msgid "Accounts"
 msgstr "Kontá"
 
-#: main.cpp:636
+#: main.cpp:710
 msgid "Device"
 msgstr "Zariadenie"
 
-#: main.cpp:638
+#: main.cpp:712
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:639
+#: main.cpp:713
 msgid "Graph"
 msgstr "Graf"
 
-#: main.cpp:800
+#: main.cpp:874
 msgid "Timeout expired while waiting for the PPP interface to come up!"
 msgstr "Èasový limit vypr¹al pri èakaní na o¾ivenie PPP rozhrania !"
 
-#: main.cpp:805
+#: main.cpp:879
 msgid "The pppd daemon died unexpectedly!"
 msgstr "PPP démon neoèakávane spadol !"
 
-#: main.cpp:813
+#: main.cpp:887
 msgid "Details..."
 msgstr "Detaily..."
 
-#: main.cpp:838
+#: main.cpp:912
 msgid ""
 "Sorry. kppp's helper process just died.\n"
 "\n"
@@ -1423,7 +1423,7 @@ msgstr ""
 "\n"
 "Vzhµadom na to, ¾e ïal¹í beh by bol nezmyselný, kppp sa teraz ukonèí."
 
-#: main.cpp:875
+#: main.cpp:949
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1444,7 +1444,7 @@ msgstr ""
 "PPP daemon.\n"
 " Ïakujem vám"
 
-#: main.cpp:890
+#: main.cpp:964
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1457,7 +1457,7 @@ msgstr ""
 "Prosím uistite sa, ¾e ste nastavili setuid právo pre kppp\n"
 "a ¾e je pppd vykonávateµný."
 
-#: main.cpp:904
+#: main.cpp:978
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1478,7 +1478,7 @@ msgstr ""
 "v konfiguraènom dialógu.\n"
 " Ïakujem vám"
 
-#: main.cpp:924
+#: main.cpp:998
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1488,7 +1488,7 @@ msgstr ""
 "Toto vy¾aduje, aby ste poskytli\n"
 "u¾ívateµské meno a heslo!"
 
-#: main.cpp:933
+#: main.cpp:1007
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1497,7 +1497,7 @@ msgstr ""
 "Nemô¾em vytvori» overovací súbor\n"
 "pre PAP \"%s\""
 
-#: main.cpp:950
+#: main.cpp:1024
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -1507,7 +1507,7 @@ msgstr ""
 "Toto vy¾aduje, aby ste poskytli\n"
 "u¾ívateµské meno a heslo!"
 
-#: main.cpp:959
+#: main.cpp:1033
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1516,19 +1516,19 @@ msgstr ""
 "Nemô¾em vytvori» overovací súbor\n"
 "pre CHAP \"%s\""
 
-#: main.cpp:971
+#: main.cpp:1045
 msgid "You must specify a telephone number!"
 msgstr "Musíte zada» telefónne èíslo !"
 
-#: main.cpp:1058
+#: main.cpp:1132
 msgid "Quit kPPP?"
 msgstr "Ukonèi» kPPP?"
 
-#: main.cpp:1059
+#: main.cpp:1133
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Ukonèenie kPPP uzavrie va¹e PPP sedenie."
 
-#: main.cpp:1094
+#: main.cpp:1178
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
@@ -1560,11 +1560,11 @@ msgstr "Modem pripravený."
 msgid "Can't restore tty settings: tcsetattr()\n"
 msgstr "Nemô¾em obnovi» nastavenie tty: tcsetattr()\n"
 
-#: modem.cpp:324
+#: modem.cpp:327
 msgid "Sorry, the modem doesn't respond."
 msgstr "¥utujem, modem neodpovedá."
 
-#: modem.cpp:425
+#: modem.cpp:428
 msgid "Unknown speed"
 msgstr "Neznáma rýchlos»"
 
@@ -2073,3 +2073,26 @@ msgstr "kppp diagnostika (len hádam):"
 #: ppplog.cpp:241
 msgid "Write to file"
 msgstr "Zapísa» do súboru"
+
+#: modemdb.cpp:46
+msgid "Select modem type..."
+msgstr ""
+
+#: modemdb.cpp:48
+msgid ""
+"To setup your modem, first choose it´s vendor in thelist to the left, and "
+"the select the model from theright list. If you don´t know which modem you "
+"have,you can try out one of the \"Generic\" modems."
+msgstr ""
+
+#: modemdb.cpp:71
+msgid "Ok"
+msgstr ""
+
+#: modemdb.cpp:151 modemdb.cpp:153 modemdb.cpp:223 modemdb.cpp:238
+msgid "<Generic>"
+msgstr ""
+
+#: modemdb.cpp:218
+msgid "Hayes(tm) compatible modem"
+msgstr ""

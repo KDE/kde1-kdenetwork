@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp 0.9.6\n"
-"POT-Creation-Date: 1999-01-08 02:05+0100\n"
+"POT-Creation-Date: 1999-01-14 02:07+0100\n"
 "PO-Revision-Date: 1998-06-12 08:32 MET DST\n"
 "Last-Translator: Wang Jian <lark@linux.ustc.edu.cn>\n"
 "Language-Team: zh_CN ( gb2312)\n"
@@ -160,7 +160,7 @@ msgstr ""
 msgid "Login script has unbalanced loop Start/End"
 msgstr "登录脚本有不配对的循环 开始/结束"
 
-#: connect.cpp:97 connect.cpp:195 main.cpp:979
+#: connect.cpp:97 connect.cpp:195 main.cpp:1053
 msgid "Connecting to: "
 msgstr "正在连接到: "
 
@@ -173,7 +173,7 @@ msgstr "抱歉 , 不能建立调制解调器的锁文件."
 msgid "Looking for Modem ..."
 msgstr "正在寻找调制解调器..."
 
-#: connect.cpp:120 debug.cpp:80 main.cpp:992
+#: connect.cpp:120 debug.cpp:80 main.cpp:1066
 msgid "Log"
 msgstr "记录"
 
@@ -323,7 +323,7 @@ msgstr "正在运行启动命令 ..."
 msgid "Done"
 msgstr "无"
 
-#: connect.cpp:1123
+#: connect.cpp:1126
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
@@ -899,7 +899,7 @@ msgid ""
 "recommended value is 30 seconds."
 msgstr ""
 
-#: general.cpp:465 main.cpp:637
+#: general.cpp:465 main.cpp:711
 msgid "Modem"
 msgstr "调制解调器"
 
@@ -1031,14 +1031,14 @@ msgid ""
 "click a mouse button or a hit a key.\n"
 msgstr ""
 
-#: main.cpp:323
+#: main.cpp:393
 #, c-format
 msgid ""
 "kppp can't create or read from\n"
 "%s."
 msgstr ""
 
-#: main.cpp:347
+#: main.cpp:423
 #, c-format
 msgid ""
 "kppp has detected a %s file.\n"
@@ -1050,19 +1050,19 @@ msgid ""
 "delete the pid file, and restart kppp."
 msgstr ""
 
-#: main.cpp:353
+#: main.cpp:429
 msgid "Exit"
 msgstr ""
 
-#: main.cpp:414
+#: main.cpp:491
 msgid "Connect to: "
 msgstr "连接到: "
 
-#: main.cpp:425
+#: main.cpp:503
 msgid "Login ID:"
 msgstr "登录 ID:"
 
-#: main.cpp:438
+#: main.cpp:516
 msgid ""
 "Type in the username that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1073,11 +1073,11 @@ msgid ""
 "<i>myusername</i> is not the same as <i>MyUserName</i>!"
 msgstr ""
 
-#: main.cpp:447
+#: main.cpp:525
 msgid "Password:"
 msgstr "密码:"
 
-#: main.cpp:461
+#: main.cpp:539
 msgid ""
 "Type in the password that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1088,11 +1088,11 @@ msgid ""
 "<i>mypassword</i> is not the same as <i>MyPassword</i>!"
 msgstr ""
 
-#: main.cpp:475
+#: main.cpp:553
 msgid "Show Log Window"
 msgstr "显示记录窗口"
 
-#: main.cpp:482
+#: main.cpp:560
 msgid ""
 "This controls whether a log window is shown.\n"
 "A log window shows the communication between\n"
@@ -1103,15 +1103,15 @@ msgid ""
 "problems"
 msgstr ""
 
-#: main.cpp:505
+#: main.cpp:583
 msgid "Setup"
 msgstr "设置"
 
-#: main.cpp:521
+#: main.cpp:599
 msgid "Connect"
 msgstr "连接"
 
-#: main.cpp:605
+#: main.cpp:679
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -1120,47 +1120,47 @@ msgstr ""
 "没有这个帐号:\n"
 "%s"
 
-#: main.cpp:619
+#: main.cpp:693
 msgid "kppp Configuration"
 msgstr "kppp 配置"
 
-#: main.cpp:635
+#: main.cpp:709
 msgid "Accounts"
 msgstr "帐号"
 
-#: main.cpp:636
+#: main.cpp:710
 msgid "Device"
 msgstr "设备"
 
-#: main.cpp:638
+#: main.cpp:712
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:639
+#: main.cpp:713
 msgid "Graph"
 msgstr ""
 
-#: main.cpp:800
+#: main.cpp:874
 msgid "Timeout expired while waiting for the PPP interface to come up!"
 msgstr ""
 
-#: main.cpp:805
+#: main.cpp:879
 msgid "The pppd daemon died unexpectedly!"
 msgstr ""
 
-#: main.cpp:813
+#: main.cpp:887
 #, fuzzy
 msgid "Details..."
 msgstr "详细资料"
 
-#: main.cpp:838
+#: main.cpp:912
 msgid ""
 "Sorry. kppp's helper process just died.\n"
 "\n"
 "Since a further execution would be pointless, kppp will shut down right now."
 msgstr ""
 
-#: main.cpp:875
+#: main.cpp:949
 #, fuzzy, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1178,7 +1178,7 @@ msgstr ""
 "调整好 pppd 的执行文件的位置.\n"
 "谢谢"
 
-#: main.cpp:890
+#: main.cpp:964
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1190,7 +1190,7 @@ msgstr ""
 " %s\n"
 "请确定你已经把 kppp 设成 setuid 的 , 并且 pppd 是可以执行的."
 
-#: main.cpp:904
+#: main.cpp:978
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1209,7 +1209,7 @@ msgstr ""
 "表中调整好调制解调器设备的位置.\n"
 "谢谢"
 
-#: main.cpp:924
+#: main.cpp:998
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1218,7 +1218,7 @@ msgstr ""
 "你已经选中了 PAP 身份验证方法.这需要\n"
 "你提供一个用户名和密码!"
 
-#: main.cpp:933
+#: main.cpp:1007
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1227,7 +1227,7 @@ msgstr ""
 "不能建立 PAP 身份验证文件\n"
 "\"%s\""
 
-#: main.cpp:950
+#: main.cpp:1024
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -1236,7 +1236,7 @@ msgstr ""
 "你已经选中了 CHAP 身份验证方法.这需要\n"
 "你提供一个用户名和密码!"
 
-#: main.cpp:959
+#: main.cpp:1033
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1245,20 +1245,20 @@ msgstr ""
 "不能建立 CHAP 身份验证文件\n"
 "\"%s\""
 
-#: main.cpp:971
+#: main.cpp:1045
 #, fuzzy
 msgid "You must specify a telephone number!"
 msgstr "你必须指定一个电话号码 !\n"
 
-#: main.cpp:1058
+#: main.cpp:1132
 msgid "Quit kPPP?"
 msgstr "退出 kPPP?"
 
-#: main.cpp:1059
+#: main.cpp:1133
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "退出 kPPP 将结束你的 PPP 会话."
 
-#: main.cpp:1094
+#: main.cpp:1178
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
@@ -1290,12 +1290,12 @@ msgstr "调制解调器准备好了"
 msgid "Can't restore tty settings: tcsetattr()\n"
 msgstr "不能恢复 tty 设置: tcsetattr()\n"
 
-#: modem.cpp:324
+#: modem.cpp:327
 #, fuzzy
 msgid "Sorry, the modem doesn't respond."
 msgstr "抱歉,调制解调器没有准备好."
 
-#: modem.cpp:425
+#: modem.cpp:428
 #, fuzzy
 msgid "Unknown speed"
 msgstr "未知速度"
@@ -1763,6 +1763,29 @@ msgstr ""
 
 #: ppplog.cpp:241
 msgid "Write to file"
+msgstr ""
+
+#: modemdb.cpp:46
+msgid "Select modem type..."
+msgstr ""
+
+#: modemdb.cpp:48
+msgid ""
+"To setup your modem, first choose it磗 vendor in thelist to the left, and "
+"the select the model from theright list. If you don磘 know which modem you "
+"have,you can try out one of the \"Generic\" modems."
+msgstr ""
+
+#: modemdb.cpp:71
+msgid "Ok"
+msgstr ""
+
+#: modemdb.cpp:151 modemdb.cpp:153 modemdb.cpp:223 modemdb.cpp:238
+msgid "<Generic>"
+msgstr ""
+
+#: modemdb.cpp:218
+msgid "Hayes(tm) compatible modem"
 msgstr ""
 
 #~ msgid ""
