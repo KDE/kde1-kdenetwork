@@ -40,7 +40,9 @@
 #include <syslog.h>
 #include <stdio.h>
 #include <string.h>
+#ifdef HAVE_UTMP_H
 #include <utmp.h>
+#endif
 #define USE_UT_HOST
 #ifndef UT_LINESIZE
 #define UT_LINESIZE 12

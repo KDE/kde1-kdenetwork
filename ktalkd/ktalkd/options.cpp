@@ -18,6 +18,7 @@ struct sOptions Options = {
 /* NEUBanner1           :*/ {NEU_BANNER1},
 /* NEUBanner2           :*/ {NEU_BANNER2},
 /* NEUBanner3           :*/ {NEU_BANNER3},
+/* NEU_forwardmethod    :*/ {"FWR"},
 /* extprg               :*/ {""},
 /* hostname             :*/ {""},
 /* debug_mode           :*/ 0

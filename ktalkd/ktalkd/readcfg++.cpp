@@ -220,6 +220,10 @@ int process_config_file(void)
       Options.NEU_behaviour=atoi(result); 
       message("NEUBehaviour : %d",Options.NEU_behaviour); 
   }
+  if (found("NEUForwardMethod"))   { 
+      qstrncpy(Options.NEU_forwardmethod,result,S_INVITE_LINES); 
+      message("NEUForwardMethod = %s", Options.NEU_forwardmethod); 
+  }
   
   if (found("ExtPrg")) { 
     qstrncpy(Options.extprg,result,S_CFGLINE);

@@ -1,5 +1,5 @@
 /*
- *              readconf.c
+ *              readconf.cpp
  *
  * Routines for reading talkd.conf and .talkdrc
  *
@@ -150,6 +150,8 @@ int process_config_file(void)
                if (found("NEUBanner1")) { strncpy(Options.NEUBanner1,result,S_CFGLINE); }
                if (found("NEUBanner2")) { strncpy(Options.NEUBanner2,result,S_CFGLINE); }
                if (found("NEUBanner3")) { strncpy(Options.NEUBanner3,result,S_CFGLINE); }
+               if (found("NEUForwardMethod")) { strncpy(Options.NEU_forwardmethod,result,S_CFGLINE); }
+
 	  }
      } while (ret);
      fclose(fd);

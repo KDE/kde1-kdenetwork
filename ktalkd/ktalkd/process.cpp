@@ -94,73 +94,75 @@ int prepare_response(register NEW_CTL_MSG *mp, register NEW_CTL_RESPONSE *rp)
 
 int  process_request(register NEW_CTL_MSG *mp, register NEW_CTL_RESPONSE *rp)
 {
-	register NEW_CTL_MSG *ptr;
-        int ret;
-        int usercfg = 0;    /* set if a user config file exists */
+    register NEW_CTL_MSG *ptr;
+    int ret;
+    int usercfg = 0;    /* set if a user config file exists */
 
-        print_request("process_request", mp);
+    print_request("process_request", mp);
 
-        if (!prepare_response(mp, rp))
-            return PROC_REQ_ERR;
+    if (!prepare_response(mp, rp))
+        return PROC_REQ_ERR;
         
         /* Ensure names end with '\0' */
-        mp->l_name[NEW_NAME_SIZE-1] = '\0';
-        mp->r_name[NEW_NAME_SIZE-1] = '\0';
+    mp->l_name[NEW_NAME_SIZE-1] = '\0';
+    mp->r_name[NEW_NAME_SIZE-1] = '\0';
 
-        ret = PROC_REQ_OK;
+    ret = PROC_REQ_OK;
 
-	switch (mp->type) {
+    switch (mp->type) {
 
 	case ANNOUNCE:
-                /* Open user config file. */
-                usercfg = init_user_config(mp->r_name);
-		ret = do_announce(mp, rp, usercfg);
-                if (usercfg) end_user_config();
+            /* Open user config file. */
+            usercfg = init_user_config(mp->r_name);
+            ret = do_announce(mp, rp, usercfg);
+            if (usercfg) end_user_config();
 
-                /* Store in table if normal announce or answmach replacing it.
-                   Not if re-announce, nor if error, nor for forwarding machine */
-                if ((ret == PROC_REQ_OK) || (ret == PROC_REQ_ANSWMACH_NOT_LOGGED) || (ret == PROC_REQ_ANSWMACH_NOT_HERE))
-                    ktable->insert_table(mp, rp, 0L);
+            /* Store in table if normal announce or answmach replacing it.
+               Not if re-announce, nor if error, nor for forwarding machine */
+            if ((ret == PROC_REQ_OK) || (ret == PROC_REQ_ANSWMACH_NOT_LOGGED) 
+                || (ret == PROC_REQ_ANSWMACH_NOT_HERE))
+                ktable->insert_table(mp, rp, 0L);
 
 	case LEAVE_INVITE:
-		ptr = ktable->find_request(mp);
-		if (ptr != (NEW_CTL_MSG *)0) {
-			rp->id_num = htonl(ptr->id_num);
-			rp->answer = SUCCESS;
-		} else
-			ktable->insert_table(mp, rp, 0L);
-		break;
+            ptr = ktable->find_request(mp);
+            if (ptr != (NEW_CTL_MSG *)0) {
+                rp->id_num = htonl(ptr->id_num);
+                rp->answer = SUCCESS;
+            } else
+                ktable->insert_table(mp, rp, 0L);
+            break;
 
 	case LOOK_UP:
-                ptr = ktable->find_match(mp);
-		if (ptr != (NEW_CTL_MSG *)0) {
-			rp->id_num = htonl(ptr->id_num);
-			rp->addr = ptr->addr;
-			rp->addr.sa_family = htons(ptr->addr.sa_family);
-			rp->answer = SUCCESS;
-		} else {
-                    if (ForwMachine::forwMachProcessLookup(ktable->getTable(), mp)) {
-                        ret = PROC_REQ_FORWMACH; // Don't send any response, forwmach will do it
-                    } else
-                        rp->answer = NOT_HERE;
-                }
-		break;
+            ptr = ktable->find_match(mp);
+            if (ptr != (NEW_CTL_MSG *)0) {
+                rp->id_num = htonl(ptr->id_num);
+                rp->addr = ptr->addr;
+                rp->addr.sa_family = htons(ptr->addr.sa_family);
+                rp->answer = SUCCESS;
+            } else {
+                if (ForwMachine::forwMachProcessLookup(ktable->getTable(), mp)) {
+                    ret = PROC_REQ_FORWMACH; // Don't send any response, forwmach will do it
+                } else
+                    rp->answer = NOT_HERE;
+            }
+            break;
 
 	case DELETE:
-		rp->answer = ktable->delete_invite(mp->id_num);
-		break;
+            rp->answer = ktable->delete_invite(mp->id_num);
+            break;
 
 	default:
-		rp->answer = UNKNOWN_REQUEST;
-		break;
-	}
+            rp->answer = UNKNOWN_REQUEST;
+            break;
+    }
+    if (ret != PROC_REQ_FORWMACH)
         print_response("=> response", rp);
-        if (mp->vers == 0) { // it's kotalkd talking to us.
-            // Let's prepare an OTALK response, shifting the first 2 fields
-            rp->vers /*type in otalk*/ = rp->type;
-            rp->type /*answer in otalk*/ = rp->answer;
-        }
-        return ret;
+    if (mp->vers == 0) { // it's kotalkd talking to us.
+        // Let's prepare an OTALK response, shifting the first 2 fields
+        rp->vers /*type in otalk*/ = rp->type;
+        rp->type /*answer in otalk*/ = rp->answer;
+    }
+    return ret;
 }
 
 int do_announce(register NEW_CTL_MSG *mp, NEW_CTL_RESPONSE *rp, int usercfg)
@@ -234,7 +236,8 @@ int do_announce(register NEW_CTL_MSG *mp, NEW_CTL_RESPONSE *rp, int usercfg)
                             return PROC_REQ_ANSWMACH_NOT_HERE;
                         case 1: /* NEU_user will take the talk. */
                             message("Not here. I ll take the talk.");
-                            fwm = new ForwMachine(mp, Options.NEU_user, "FWR", mp->id_num);
+                            fwm = new ForwMachine(mp, Options.NEU_user, 
+                                                  Options.NEU_forwardmethod, mp->id_num);
                             /* store in table, because we'll receive the LOOK_UP */
                             ktable->insert_table(mp, 0L, fwm);
                             fwm->start(mp->id_num);

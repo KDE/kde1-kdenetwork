@@ -178,9 +178,12 @@ static char copyright[] =
 # define _BSD_VA_LIST_	va_list
 #endif
 
+#ifndef HAVE_VSNPRINTF
+extern int	snprintf __P((char *, int, const char *, ...));
+#endif
+
 #if !defined(BSD4_4) && !defined(linux) && !defined(_UNIXWARE)
 extern char	*strerror __P((int));
-extern int	snprintf __P((char *, int, const char *, ...));
 extern FILE	*fdopen __P((int, const char *));
 #endif
 
@@ -795,8 +798,7 @@ strerror(eno)
 
 # endif
 
-#if !defined(BSD4_4) && !defined(linux) && !defined(_UNIXWARE)
-
+#ifndef HAVE_VSNPRINTF
 # if __STDC__
 snprintf(char *buf, int bufsiz, const char *fmt, ...)
 # else

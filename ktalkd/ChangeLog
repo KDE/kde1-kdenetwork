@@ -1,3 +1,13 @@
+1998-11-15  David Faure  <faure@kde.org> (0.9.1)
+
+	* ktalkd/readc*.cpp, ktalkd/options.*, ktalkd/process.cpp: Added
+	NEU forward method, for multi-networked hosts with forwards
+
+	* ktalkd/includ.h: Improved used of <paths.h> and default settings
+
+	* mail.local/mail.local.c: Used HAVE_VSNPRINTF instead of
+	hardcoded list of OSes.
+
 1998-11-11  David Faure  <faure@kde.org> (0.9.0)
 
 	* ktalkd/talkconn.cpp: Moved static init to TalkConnection::init()

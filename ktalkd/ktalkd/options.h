@@ -27,8 +27,9 @@ struct sOptions
     char NEUBanner1 [S_CFGLINE];
     char NEUBanner2 [S_CFGLINE];
     char NEUBanner3 [S_CFGLINE];
+    char NEU_forwardmethod [5];
     char extprg [S_CFGLINE];
-    // No really an option, but it's useful to have it here.
+    // No really an option, but it's useful to have it here :
     char hostname[SYS_NMLN];
     int debug_mode;
 };
