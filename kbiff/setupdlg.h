@@ -1,3 +1,7 @@
+// A brief description of what this file does
+// should go here.
+// $Id$
+
 #ifndef SETUPDLG_H
 #define SETUPDLG_H
 
@@ -77,6 +81,7 @@ class KBiffNewMailTab : public QWidget
 	Q_OBJECT
 public:
 	KBiffNewMailTab(QWidget *parent=0);
+	~KBiffNewMailTab();
 
 	bool getRunCommand();
 	const char* getRunCommandPath();
