@@ -357,7 +357,7 @@ msgstr "Terminálom"
 
 #: edit.cpp:76
 msgid "CHAP"
-msgstr ""
+msgstr "CHAP"
 
 #: edit.cpp:82
 msgid "Store password"
@@ -496,9 +496,8 @@ msgid "Disconnect on X-server shutdown"
 msgstr "Odpoji» pri ukonèení X-serveru"
 
 #: general.cpp:125
-#, fuzzy
 msgid "Quit on Disconnect"
-msgstr "Odpoji»"
+msgstr "Ukonèi» pri odpojení"
 
 #: general.cpp:131
 msgid "Minimize Window on Connect"
@@ -718,28 +717,27 @@ msgstr ""
 "pre PAP \"%s\""
 
 #: main.cpp:806
-#, fuzzy
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
 "supply a username and a password!"
 msgstr ""
-"Vybrali ste overovanie pomocou PAP.\n"
+"Vybrali ste overovanie pomocou CHAP.\n"
 "Toto vy¾aduje, aby jste poskytli\n"
 "u¾ívateµské meno a heslo!"
 
 #: main.cpp:813
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
 "file \"%s\""
 msgstr ""
 "Nemô¾em vytvori» overovací súbor\n"
-"pre PAP \"%s\""
+"pre CHAP \"%s\""
 
 #: main.cpp:825
 msgid "You have to specify a telephone number !\n"
-msgstr ""
+msgstr "Musíte zada» telefónne èíslo !\n"
 
 #: main.cpp:899
 msgid "Quit kPPP?"
@@ -1118,35 +1116,9 @@ msgid ""
 "a non-empty file that has appropriate\n"
 "read and write permissions."
 msgstr ""
+"Nemô¾em nájs» súbor /etc/resolv.conf!\n"
+"\n"
+"Poproste vá¹ho administrátora, aby ho\n"
+"vytvoril so správnymi hodnotami a\n"
+"právami."
 
-#~ msgid "pppd Path:"
-#~ msgstr "Cesta k pppd:"
-
-#~ msgid "Log Viewer:"
-#~ msgstr "Prehliadaè záznamov:"
-
-#~ msgid "started PPP connection:%s:%s"
-#~ msgstr "spustené PPP spojenie:%s:%s"
-
-#~ msgid ""
-#~ "terminated PPP connection\n"
-#~ "COST OF SESSION: "
-#~ msgstr ""
-#~ "PPP spojenie ukonèené\n"
-#~ "CENA SEDENIA:"
-
-#~ msgid ""
-#~ "\n"
-#~ "SUBTOTAL FOR:"
-#~ msgstr ""
-#~ "\n"
-#~ "ÈIASTOÈNÝ SÚÈET PRE:"
-
-#~ msgid ""
-#~ "The logviewer \"%s\" was not found!\n"
-#~ "\n"
-#~ "Setting default back to \"%s\"."
-#~ msgstr ""
-#~ "Nena¹iel som prehliadaè záznamov \"%s\"!\n"
-#~ "\n"
-#~ "Nastavujem spä» na ¹tandardný \"%s\"."
