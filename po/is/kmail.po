@@ -1,5 +1,5 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
+# Icelandic translation of kmail.
+# Copyright (C) 1999 Free Software Foundation, Inc.
 # Thorarinn R. Einarsson <thori@mindspring.com>, 1999
 #
 #
@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
 "POT-Creation-Date: 1999-01-30 02:00+0100\n"
-"PO-Revision-Date: 1999-01-12 19:05+0000\n"
-"Last-Translator: Richard Allen <ra@hp.is>\n"
+"PO-Revision-Date: 1999-01-31 16:05+0000\n"
+"Last-Translator: Thorarinn R. Einarsson <thori@mindspring.com>\n"
 "Language-Team: is <kde-isl@mmedia.is>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
@@ -28,7 +28,7 @@ msgstr "Nýja möppu"
 
 #: kmaddrbookdlg.cpp:178 kmmainwin.cpp:385 kmmainwin.cpp:419 main.cpp:339
 msgid "KMail error"
-msgstr "KMail villa"
+msgstr "KPóstur: Villa"
 
 #: kmmainwin.cpp:386 kmmainwin.cpp:420
 msgid "Already checking for mail!"
@@ -69,7 +69,7 @@ msgstr "Staðfesting"
 
 #: kmmainwin.cpp:566
 msgid "KMail notification!"
-msgstr "KMail tilkynning!"
+msgstr "KPóstur: Tilkynning!"
 
 #: kmmainwin.cpp:567
 msgid "Only messages in the outbox folder can be edited!"
@@ -157,7 +157,7 @@ msgstr "&Nýr ritill"
 
 #: kmcomposewin.cpp:451 kmmainwin.cpp:944
 msgid "New Mailreader"
-msgstr "Nýr &kmail gluggi"
+msgstr "Nýr &KPósts gluggi"
 
 #: kmmainwin.cpp:947
 msgid "Save As..."
@@ -177,11 +177,11 @@ msgstr "Sækja póst í..."
 
 #: kmmainwin.cpp:963
 msgid "Send Queued"
-msgstr "Senda póstinn sem bíður"
+msgstr "Senda biðröð"
 
 #: kmmainwin.cpp:966
 msgid "&Settings..."
-msgstr "Stillingar..."
+msgstr "S&tillingar..."
 
 #: kmcomposewin.cpp:443 kmmainwin.cpp:968
 msgid "&Addressbook..."
@@ -297,7 +297,7 @@ msgstr "&Allir hausar"
 
 #: kmmainwin.cpp:1067
 msgid "Iconic Attachments"
-msgstr "Viðhenginar sem táknmyndir"
+msgstr "Viðhengingar sem táknmyndir"
 
 #: kmmainwin.cpp:1068
 msgid "Smart Attachments"
@@ -390,7 +390,7 @@ msgstr "Netfang:"
 
 #: kmsettings.cpp:182
 msgid "Reply-To Address:"
-msgstr "Svar-netfang:"
+msgstr "Svörunar-netfang:"
 
 #: kmsettings.cpp:184
 msgid "Signature File:"
@@ -465,9 +465,8 @@ msgid "Message List Font:"
 msgstr "Letur í bréfalista:"
 
 #: kmsettings.cpp:357
-#, fuzzy
 msgid "Long folder list"
-msgstr "&Langir hausar"
+msgstr "Langur möppulisti"
 
 #: kmsettings.cpp:386
 msgid "Phrases"
@@ -479,7 +478,7 @@ msgid ""
 "%D=date, %S=subject, %F=sender, %%=percent sign"
 msgstr ""
 "Eftirfarandi hausa má nota í svarsetningum:\n"
-"%D=Dags., %S=Umfangsefni, %F=Sendandi, %%=Prósentumerki"
+"%D=Dags., %S=Viðfangsefni, %F=Sendandi, %%=Prósentumerki"
 
 #: kmsettings.cpp:399
 msgid "Reply to sender:"
@@ -627,11 +626,11 @@ msgstr "Eyða pósti á miðlinum"
 
 #: kmsettings.cpp:919
 msgid "Retrieve all mail from server"
-msgstr "Sækja allann póst frá miðlinum"
+msgstr "Sækja allan póst frá miðlinum"
 
 #: kmsettings.cpp:931
 msgid "Enable interval Mail checking"
-msgstr "Leyfa reglubundna póstflutninga"
+msgstr "Nota reglubundna póstflutninga"
 
 #: kmsettings.cpp:941
 msgid "Store new mail in account:"
@@ -663,7 +662,7 @@ msgstr "Sendandi"
 
 #: kmheaders.cpp:44
 msgid "Subject"
-msgstr "Umfangsefni"
+msgstr "Viðfangssefni"
 
 #: kmheaders.cpp:45
 msgid "Date"
@@ -671,7 +670,7 @@ msgstr "Dags."
 
 #: kmheaders.cpp:215
 msgid "Receiver"
-msgstr ""
+msgstr "Móttakandi"
 
 #: kmheaders.cpp:218
 #, c-format
@@ -688,7 +687,7 @@ msgstr "Óþekkt"
 
 #: kmheaders.cpp:273
 msgid "No Subject"
-msgstr "Ekkert umfangsefni"
+msgstr "Ekkert viðfangssefni"
 
 #: kmheaders.cpp:334
 msgid "order of arrival"
@@ -696,7 +695,7 @@ msgstr "Komuröð"
 
 #: kmheaders.cpp:343
 msgid "subject"
-msgstr "umfangsefni"
+msgstr "viðfangssefni"
 
 #: kmheaders.cpp:344
 msgid "date"
@@ -730,7 +729,7 @@ msgstr "Tókst ekki að vista bréf."
 
 #: kmcomposewin.cpp:128
 msgid "KMail Composer"
-msgstr "KMail ritill"
+msgstr "KPóstur - ritill"
 
 #: kmcomposewin.cpp:141
 msgid "Size"
@@ -762,7 +761,7 @@ msgstr "&Blint afrit (Bcc):"
 
 #: kmcomposewin.cpp:355
 msgid "&Subject:"
-msgstr "&Umfangsefni:"
+msgstr "&Viðfangsefni:"
 
 #: kmcomposewin.cpp:358
 msgid "&Newsgroups:"
@@ -854,7 +853,7 @@ msgstr "&Blint svar (Bcc)"
 
 #: kmcomposewin.cpp:516
 msgid "&Subject"
-msgstr "&Umfangsefni"
+msgstr "&Viðfangsefni"
 
 #: kmcomposewin.cpp:518
 msgid "&Newsgroups"
@@ -934,7 +933,7 @@ msgstr "Lína"
 
 #: kmcomposewin.cpp:920
 msgid "KMail Confirm"
-msgstr "KMail staðfesting"
+msgstr "KPóstur - staðfesting"
 
 #: kmcomposewin.cpp:921
 msgid ""
@@ -986,20 +985,19 @@ msgstr "Til:"
 
 #: kmcomposewin.cpp:1543
 msgid "Subject:"
-msgstr "Umfangsefni:"
+msgstr "Viðfangsefni:"
 
 #: kmcomposewin.cpp:1546
 msgid "Date:"
 msgstr "Dags:"
 
 #: kmcomposewin.cpp:1670
-#, fuzzy
 msgid "Spellcheck complete."
-msgstr "&Stafsetningarráðgjafinn..."
+msgstr "Stafsetning í lagi."
 
 #: kmcomposewin.cpp:2076
 msgid "Spellcheck - KMail"
-msgstr "Stafsetningarskoðun - KMail"
+msgstr "Stafsetningarskoðun - KPóstur"
 
 #: kmcomposewin.cpp:2102
 msgid ""
@@ -1130,7 +1128,7 @@ msgstr "slæm villa"
 
 #: main.cpp:163
 msgid "KMail notification"
-msgstr "KMail tilkynning"
+msgstr "KPóstur: Tilkynning"
 
 #: main.cpp:164
 msgid ""
@@ -1138,7 +1136,7 @@ msgid ""
 "KMail cannot start without it.\n"
 msgstr ""
 "$HOME er ekki til/tilbúið !\n"
-"KMail getur ekki keyrt án þess.\n"
+"KPóstur getur ekki keyrt án þess.\n"
 
 #: main.cpp:230
 msgid ""
@@ -1150,13 +1148,13 @@ msgid ""
 "\n"
 "Shall KMail move the mail folders now ?"
 msgstr ""
-"Mappan ~/KMail er til staðar. Héðan í frá mun KMail hinsvegar\n"
+"Mappan ~/KMail er til staðar. Héðan í frá mun KPóstur hinsvegar\n"
 "nota möppuna ~/Mail fyrir öll sín bréf.\n"
-"KMail getur fært innihald möppunnar ~/KMail inn í\n"
+"KPóstur getur fært innihald möppunnar ~/KMail inn í\n"
 "~/Mail möppuna, en þetta mun yfirskrifa allar skrár með\n"
 "sama nafni í ~/Mail möppunni (t.d. inbox)\n"
 "\n"
-"Viltu að KMail færi þessar póstmöppur núna ?"
+"Viltu að KPóstur færi þessar póstmöppur núna ?"
 
 #: main.cpp:340
 msgid "Loading addressbook failed"
@@ -1184,7 +1182,7 @@ msgstr ""
 
 #: kmacctpop.cpp:100
 msgid "Please set Password and Username"
-msgstr "Stimplaðu inn lykilorð og notandanafn"
+msgstr "Sláðu inn lykilorð og notandanafn"
 
 #: kmacctpop.cpp:135
 msgid "Incorrect Username"
@@ -1752,7 +1750,7 @@ msgstr "Gat aðeins vistað %u bæta af alls %u."
 
 #: kmaddrbook.cpp:25
 msgid "KMail Error"
-msgstr "KMail Villa"
+msgstr "KPóstur: Villa"
 
 #: kmaddrbook.cpp:26
 msgid "Storing the addressbook failed!\n"
@@ -1775,9 +1773,8 @@ msgid "&Abort"
 msgstr "&Hætta við"
 
 #: kmnewiostatuswdg.cpp:24
-#, fuzzy
 msgid "Abort"
-msgstr "&Hætta við"
+msgstr "Hætta við"
 
 #: kmnewiostatuswdg.cpp:41
 msgid "Sending messages to "
@@ -1805,7 +1802,7 @@ msgstr "KRN - Stillingar stafatöflu"
 
 #: charsetsDlg.cpp:29
 msgid "KMail - Charset Settings"
-msgstr "KMail - Stillingar stafatöflu"
+msgstr "KPóstur - Stillingar stafatöflu"
 
 #: charsetsDlg.cpp:39
 msgid "Message charset"
@@ -1825,31 +1822,5 @@ msgstr "&7-bita ASCII"
 
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
-msgstr "Nota `quoted printable' á óþekkta stafi"
+msgstr "Nota 'quoted printable' á óþekkta stafi"
 
-#~ msgid ""
-#~ "Cannot modify a\n"
-#~ "system folder."
-#~ msgstr ""
-#~ "Get ekki breytt\n"
-#~ "kerfismöppu."
-
-#~ msgid ""
-#~ "Are you sure you want to discard the\n"
-#~ "contents of the folder \"%s\" ?"
-#~ msgstr ""
-#~ "Ertu viss um að þú viljir fleygja\n"
-#~ "innihaldi möppunnar \"%s\" ?"
-
-#~ msgid ""
-#~ "Changing fonts currently only occurs when a new\n"
-#~ "window is opened or kmail is restarted"
-#~ msgstr ""
-#~ "Breytingar á letri taka gildi þegar nýr gluggi\n"
-#~ "er opnaður eða kmail er endurræst"
-
-#~ msgid "Could not create temporary file"
-#~ msgstr "Gat ekki búið til tímabundna skrá"
-
-#~ msgid "Could not save temporary file %s"
-#~ msgstr "Vistun %s (tímabundið) ekki möguleg"
