@@ -29,7 +29,6 @@
 #ifndef _EDIT_H_
 #define _EDIT_H_
 
-
 #include <qdialog.h>
 #include <qpushbt.h>
 #include <qgrpbox.h> 
@@ -74,11 +73,13 @@ private:
   QLineEdit *command;
   QLabel *command_label;
 
-  QComboBox *baud_c;
-  QLabel *baud_label;
-
   QPushButton *pppdargs;
   QLabel *pppd_label;
+
+  QComboBox *auth;
+  QLabel *auth_l;
+
+  QCheckBox *store_password;
 };
 
 
@@ -186,6 +187,7 @@ private slots:
   void addButton();
   void insertButton();
   void removeButton();
+  void default_script_toggled(bool);
 
   //signals linked to the scroll bar
   void scrolling(int);
@@ -198,6 +200,8 @@ private:
   void adjustScrollBar();
   QGroupBox *box;
 
+  QCheckBox *default_script;
+
   ScriptEdit *se;
   QPushButton *add;
   QPushButton *remove;
@@ -208,11 +212,3 @@ private:
 };
 
 #endif
-
-
-
-
-
-
-
-

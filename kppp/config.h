@@ -35,7 +35,6 @@
 // users homedirectory)
 #define ACCOUNTING_PATH	".kde/share/apps/kppp/"
 
-
 // Define the default modem response timeout
 #define MODEM_TIMEOUT "60"
 

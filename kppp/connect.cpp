@@ -35,6 +35,8 @@
 
 #include <errno.h>
 
+#include "pap.h"
+#include "homedir.h"
 #include "connect.h"
 #include "main.h"
 #include "config.h"
@@ -788,12 +790,15 @@ void ConnectWidget::pause() {
 
 
 void ConnectWidget::cancelbutton() {
-
+  
   readtimer->stop();
   killTimer(main_timer_ID);
   timeout_timer->stop();
 
   messg->setText(klocale->translate("One Moment Please ..."));
+
+  // just to be sure
+  PAP_RemoveAuthFile();
   
 #ifdef MY_DEBUG
 printf( "ConnectWidget::cancelbutton() \n" );
@@ -906,7 +911,7 @@ void ConnectWidget::if_waiting_slot(){
       return;
     }
 
-    if_timer->start(500,TRUE); // single shot 
+    if_timer->start(200,TRUE); // single shot 
     return;
   }
 
@@ -956,7 +961,7 @@ void ConnectWidget::if_waiting_slot(){
   p_xppp->con_win->accounting(p_xppp->accounting.running());
 
   p_xppp->con_win->show();
-  
+    
   if(gpppdata.get_iconify_on_connect()) {
       p_xppp->con_win->iconify();
   }
@@ -1251,6 +1256,14 @@ bool ConnectWidget::execppp() {
     command += gpppdata.pppdArgument(i);
   }
 
+  // PAP settings
+  if(gpppdata.authMethod() == AUTH_PAP) {
+    command += " user ";
+    command += gpppdata.ID.data();
+    command += " +ua ";
+    command += getHomeDir();
+    command += PAP_AUTH_FILE;
+  }
 
   if (command.length() > 2023){
     QMessageBox::warning(this, klocale->translate("Error"), 
@@ -1337,6 +1350,7 @@ printf("In killppp(): I will attempt to kill pppd\n");
 #ifdef MY_DEBUG
 printf("Sending SIGTERM to %d\n",gpppdata.pppdpid());
 #endif MY_DEBUG
+
 
     if(kill(gpppdata.pppdpid(), SIGTERM) < 0)
 #ifdef MY_DEBUG
@@ -1569,12 +1583,27 @@ int lockdevice() {
     return 0;
   }
 
+  if (modem_is_locked) 
+    return 1;
 
-  if (modem_is_locked) return 1;
+  struct stat st;
+  if(stat(gpppdata.modemLockFile(), &st) == -1) {
+    if(errno == EBADF)
+      return -1;
+  } else {
+    // make sure that this is a file, not a special file
+    if(!S_ISREG(st.st_mode)) 
+      return -1;
+  }
 
   if ((fd = open(gpppdata.modemLockFile(), O_RDONLY)) >= 0) {
 
-    while (read(fd, &c, 1) == 1)  oldlock+=c;
+    // Mario: it's not necessary to read more than lets say 32 bytes. If
+    // file has more than 32 bytes, skip the rest
+    int ctr = 0;
+    while (ctr++ < 32 && read(fd, &c, 1) == 1) 
+      oldlock+=c;
+
 #ifdef MY_DEBUG
     printf("Device is locked by: %s\n",(const char*)oldlock);
 #endif
@@ -1592,7 +1621,8 @@ int lockdevice() {
       close(fd);
     }
 
-    if ((errno != ENOENT) && (atoi(oldlock.mid(start,len))!=getpid()) ) return 1;
+    if ((errno != ENOENT) && (atoi(oldlock.mid(start,len))!=getpid()) ) 
+      return 1;
 
 #else
     return 1;
@@ -1624,7 +1654,6 @@ int lockdevice() {
 void unlockdevice() {
 
   if (modem_is_locked) {
-
     unlink(gpppdata.modemLockFile());
     modem_is_locked=false;
 
@@ -1635,6 +1664,5 @@ void unlockdevice() {
   }
 
 }  
-
 
 #include "connect.moc"

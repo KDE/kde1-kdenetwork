@@ -43,6 +43,8 @@ public:
   void setText(const char *);
   int type();
 
+  virtual void setEnabled(bool);
+
 signals:
   void returnPressed();
 

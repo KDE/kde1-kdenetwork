@@ -71,7 +71,8 @@ SOURCES =	accounts.cpp \
 		accounting.cpp \
 		acctselect.cpp\
 		ruleset.cpp \
-		homedir.cpp
+		homedir.cpp \
+		pap.cpp
 
 HEADERS =	accounts.h \
 		config.h \
@@ -93,7 +94,8 @@ HEADERS =	accounts.h \
 		accounting.h \
 		acctselect.h\
 		ruleset.h \
-		homedir.h
+		homedir.h \
+		pap.h
 
 OBJECTS =	accounts.o \
 		connect.o \
@@ -115,7 +117,8 @@ OBJECTS =	accounts.o \
 		accounting.o\
 		acctselect.o\
 		ruleset.o\
-		homedir.o
+		homedir.o \
+		pap.o
 
 SRCMETA =	accounts.moc \
 		connect.moc \

@@ -77,6 +77,7 @@
 #define MODEMDEV_KEY       "Device"
 #define LOCKFILE_KEY       "Lockfile"
 #define FLOWCONTROL_KEY    "FlowControl"
+#define SPEED_KEY          "Speed"
 #define TIMEOUT_KEY        "Timeout"
 #define BUSYWAIT_KEY       "BusyWait"
 #define INITSTR_KEY        "InitString"
@@ -100,7 +101,10 @@
 // account
 #define NAME_KEY           "Name"
 #define PHONENUMBER_KEY    "Phonenumber"
-#define SPEED_KEY          "Speed"
+#define AUTH_KEY           "Authentication"
+#define STORED_PASSWORD_KEY "Password"
+#define STORED_USERNAME_KEY "Username"
+#define STORE_PASSWORD_KEY "StorePassword"
 #define COMMAND_KEY        "Command"
 #define IPADDR_KEY         "IPAddr"
 #define SUBNETMASK_KEY     "SubnetMask"
@@ -258,6 +262,18 @@ public:
   
   const char* phonenumber();
   void setPhonenumber(const char *);
+
+  const int authMethod();
+  void setAuthMethod(int);
+
+  const char *storedUsername();
+  void setStoredUsername(const char*);
+
+  const char *storedPassword();
+  void setStoredPassword(const char*);
+
+  const bool storePassword();
+  void setStorePassword(bool);
 
   const char* speed();
   void setSpeed(const char *);

@@ -101,10 +101,9 @@ private slots:
   void 	setmodemdc(int);
   void 	setflowcontrol(int);
   void 	modemtimeoutchanged(const char*);
-  void 	busywaitchanged(const char*);
   void 	modemlockfilechanged(const char*);
   void 	setenter(int);
-  void 	fast_modem_toggled(bool on);
+  void  speed_selection(int);
 
 private:
 
@@ -118,10 +117,11 @@ private:
   QLabel 	*labelenter;
   QComboBox 	*modemdevice;
   QComboBox 	*flowcontrol;
+  
+  QComboBox *baud_c;
+  QLabel *baud_label;
 
-  QCheckBox 	*chkbox;  
   QLineEdit 	*modemtimeout;
-  QLineEdit 	*busywait;
   QLineEdit 	*modemlockfile;
 };
 
@@ -136,7 +136,8 @@ public:
 
 
 private slots:
-
+  void 	busywaitchanged(const char*);
+  void 	fast_modem_toggled(bool);
   void 	modemcmdsbutton();
   void 	terminal();
   void 	query_modem();
@@ -145,13 +146,15 @@ private slots:
 private:
 
   ModemTransfer *modemtrans;
-
+  QLabel 	*label4;
+  QLabel 	*labeltmp;
   QGroupBox 	*box;
   QPushButton 	*modemcmds;
   QPushButton 	*modeminfo_button;
   QPushButton 	*terminal_button;
   QFrame 	*fline;
-
+  QLineEdit 	*busywait;
+  QCheckBox 	*chkbox;
 };
 
 class AboutWidget : public QWidget {

@@ -326,6 +326,19 @@ void PPPData::setFlowcontrol(const char *n) {
 }
 
 
+const char* PPPData::speed() {
+
+  return readConfig(MODEM_GRP, SPEED_KEY);
+
+}
+
+void PPPData::setSpeed( const char *n ) {
+
+  writeConfig(MODEM_GRP, SPEED_KEY, n);
+
+}
+
+
 void PPPData::setFastModemInit(const int n) {
   writeConfig(MODEM_GRP,FASTINIT_KEY,n);
 }
@@ -766,16 +779,42 @@ void PPPData::setPhonenumber( const char *n ) {
 }
 
 
-const char* PPPData::speed() {
-
-  return readConfig(cgroup, SPEED_KEY);
-
+const int PPPData::authMethod() {
+    return readNumConfig(cgroup, AUTH_KEY, 0);
 }
 
-void PPPData::setSpeed( const char *n ) {
+void PPPData::setAuthMethod(int value) {
+  writeConfig(cgroup, AUTH_KEY, value);
+}
 
-  writeConfig(cgroup, SPEED_KEY, n);
 
+const char * PPPData::storedUsername() {
+  return readConfig(cgroup, STORED_USERNAME_KEY, "");
+}
+
+
+void PPPData::setStoredUsername(const char *b) {
+  writeConfig(cgroup, STORED_USERNAME_KEY, b);
+}
+
+
+const char * PPPData::storedPassword() {
+  return readConfig(cgroup, STORED_PASSWORD_KEY, "");
+}
+
+
+void PPPData::setStoredPassword(const char *b) {
+  writeConfig(cgroup, STORED_PASSWORD_KEY, b);
+}
+
+
+const bool PPPData::storePassword() {
+  return (bool)readNumConfig(cgroup, STORE_PASSWORD_KEY, 1);
+}
+
+
+void PPPData::setStorePassword(bool b) {
+  writeConfig(cgroup, STORE_PASSWORD_KEY, (int)b);
 }
 
 
@@ -991,14 +1030,3 @@ pid_t PPPData::pppdpid() {
 void PPPData::setpppdpid(pid_t id) {
   pppdprocessid = id;
 }
-
-
-
-
-
-
-
-
-
-
-

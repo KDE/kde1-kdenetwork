@@ -29,6 +29,7 @@
 #include "general.h"
 #include "version.h"
 #include <kintegerline.h>
+#include "macros.h"
 
 QString ati_query_strings[NUM_OF_ATI];
 extern KApplication*	app;
@@ -215,11 +216,11 @@ AboutWidget::AboutWidget( QWidget *parent, const char *name)
 ModemWidget::ModemWidget( QWidget *parent, const char *name)
   : QWidget(parent, name)
 {
-  QGridLayout *tl = new QGridLayout(this, 9, 4, 10, 10);
+  QGridLayout *tl = new QGridLayout(this, 10, 4, 10, 10);
   tl->addRowSpacing(0, fontMetrics().lineSpacing() - 10); // magic
 
-  box = new QGroupBox(klocale->translate("Modem Setup"), this,"box");
-  tl->addMultiCellWidget(box, 0, 8, 0, 3);
+  box = new QGroupBox(klocale->translate("Serial device"), this,"box");
+  tl->addMultiCellWidget(box, 0, 9, 0, 3);
 
   label1 = new QLabel(klocale->translate("Modem Device:"), this,"modem");
   label1->setMinimumSize(label1->sizeHint());
@@ -269,7 +270,45 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   enter->setFixedHeight(enter->sizeHint().height());
   tl->addWidget(enter, 3, 2);
   connect(enter, SIGNAL(activated(int)), SLOT(setenter(int)));
+
+  baud_label = new QLabel(this);
+  baud_label->setText(klocale->translate("Connection Speed:"));
+  MIN_SIZE(baud_label);
+  tl->addWidget(baud_label, 4, 1);
   
+  QHBoxLayout *l1 = new QHBoxLayout;
+  tl->addLayout(l1, 4, 2);
+  baud_c = new QComboBox(this, "baud_c");
+
+#ifdef B460800 
+  baud_c->insertItem("460800");
+#endif
+
+#ifdef B230400
+  baud_c->insertItem("230400");
+#endif
+
+#ifdef B115200
+  baud_c->insertItem("115200");
+#endif
+
+#ifdef B57600
+  baud_c->insertItem("57600");
+#endif
+
+  baud_c->insertItem("38400");
+  baud_c->insertItem("19200");
+  baud_c->insertItem("9600");
+  baud_c->insertItem("2400");
+  
+  baud_c->setCurrentItem(3);
+  connect(baud_c, SIGNAL(activated(int)),
+	  this, SLOT(speed_selection(int)));
+  FIXED_HEIGHT(baud_c);
+  MIN_WIDTH(baud_c);
+  l1->addWidget(baud_c);
+  l1->addStretch(1);
+
   for(int i=0; i <= enter->count()-1; i++) {
     if(strcmp(gpppdata.enter(), enter->text(i)) == 0)
       enter->setCurrentItem(i);
@@ -279,7 +318,7 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   label4 = new QLabel(klocale->translate("Modem Lock File:"),
 		      this,"modemlockfilelabel");
   label4->setMinimumSize(label4->sizeHint());
-  tl->addWidget(label4, 4, 1);
+  tl->addWidget(label4, 6, 1);
 
   modemlockfile = new QLineEdit(this, "modemlockfile");
   modemlockfile->setMaxLength(PATH_SIZE);
@@ -289,16 +328,16 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   modemlockfile->setText(gpppdata.modemLockFile());
   connect(modemlockfile, SIGNAL(textChanged(const char*)),
 	  SLOT(modemlockfilechanged(const char*)));
-  tl->addWidget(modemlockfile, 4, 2);
+  tl->addWidget(modemlockfile, 6, 2);
 
   //Modem Timeout Line Edit Box
   label3 = new QLabel(this,"modemtimeoutlabel");
   label3->setText(klocale->translate("Modem Timeout:"));
   label3->setMinimumSize(label3->sizeHint());
-  tl->addWidget(label3, 5, 1);
+  tl->addWidget(label3, 7, 1);
 
-  QHBoxLayout *l1 = new QHBoxLayout;
-  tl->addLayout(l1, 5, 2);
+  QHBoxLayout *l2 = new QHBoxLayout;
+  tl->addLayout(l2, 7, 2);
 
   modemtimeout = new KIntegerLine(this, "modemtimeout");
   modemtimeout->setFixedHeight(modemtimeout->sizeHint().height());
@@ -306,39 +345,11 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   modemtimeout->setText(gpppdata.modemTimeout());
   connect(modemtimeout, SIGNAL(textChanged(const char*)),
 	  SLOT(modemtimeoutchanged(const char*)));  
-  l1->addWidget(modemtimeout, 1);
+  l2->addWidget(modemtimeout, 1);
 
   labeltmp = new QLabel(klocale->translate("Seconds"), this,"seconds");
   labeltmp->setMinimumSize(labeltmp->sizeHint());
-  l1->addWidget(labeltmp, 2);
-
-  label4 = new QLabel(this,"busywaitlabel");
-  label4->setText(klocale->translate("Busy Wait:"));
-  label4->setMinimumSize(label4->sizeHint());
-  tl->addWidget(label4, 6, 1);
-
-  l1 = new QHBoxLayout;
-  tl->addLayout(l1, 6, 2);
-  
-  busywait = new KIntegerLine(this, "busywait");
-  busywait->setFixedHeight(busywait->sizeHint().height());
-  busywait->setMaxLength(TIMEOUT_SIZE);
-  busywait->setText(gpppdata.busyWait());
-  connect(busywait, SIGNAL(textChanged(const char*)),
-	  SLOT(busywaitchanged(const char*)));
-  l1->addWidget(busywait, 1);
-
-  labeltmp = new QLabel(this,"seconds");
-  labeltmp->setText(klocale->translate("Seconds"));
-  labeltmp->setMinimumSize(labeltmp->sizeHint());
-  l1->addWidget(labeltmp, 2);
-
-  chkbox = new QCheckBox(klocale->translate("Modem sustains fast initialization."), 
-			 this, "fastinit");
-  chkbox->setMinimumSize(chkbox->sizeHint());
-  chkbox->setChecked(gpppdata.FastModemInit());
-  connect(chkbox,SIGNAL(toggled(bool)),this,SLOT(fast_modem_toggled(bool)));
-  tl->addMultiCellWidget(chkbox, 7, 7, 1, 2);
+  l2->addWidget(labeltmp, 2);
 
   //set stuff from gpppdata
   for(int i=0; i <= modemdevice->count()-1; i++) {
@@ -349,15 +360,20 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   for(int i=0; i <= flowcontrol->count()-1; i++) {
     if(strcmp(gpppdata.flowcontrol(), flowcontrol->text(i)) == 0)
       flowcontrol->setCurrentItem(i);
-  }
+  }     
+
+  //set the modem speed
+  for(int i=0; i < baud_c->count(); i++)
+    if(strcmp(baud_c->text(i), gpppdata.speed()) == 0)
+      baud_c->setCurrentItem(i);
 
   tl->activate();
 }
 
-void ModemWidget::fast_modem_toggled(bool on){
-
-    gpppdata.setFastModemInit(on);
+void ModemWidget::speed_selection(int) {
+  gpppdata.setSpeed(baud_c->text(baud_c->currentItem()));
 }
+
 
 void ModemWidget::setenter(int ) {
   gpppdata.setEnter(enter->text(enter->currentItem()));
@@ -380,18 +396,12 @@ void ModemWidget::modemtimeoutchanged(const char *n) {
   gpppdata.setModemTimeout(n);
 }
 
-void ModemWidget::busywaitchanged(const char *n) {
-  gpppdata.setbusyWait(n);
-}
-
-
-
 
 
 
 
 // Add functions
-char *itoa(int n){
+char *itoa(int n) {
   static char buf[10];
   
   sprintf(buf,"%d",n);  
@@ -404,12 +414,62 @@ char *itoa(int n){
 ModemWidget2::ModemWidget2( QWidget *parent, const char *name)
   : QWidget(parent, name)
 {
-  QGridLayout *tl = new QGridLayout(this, 7, 5, 10, 10);
+  QGridLayout *tl = new QGridLayout(this, 3, 3, 10, 10);
   tl->addRowSpacing(0, fontMetrics().lineSpacing() - 10); // magic
 
-  box = new QGroupBox(klocale->translate("More ..."), this,"box");
-  tl->addMultiCellWidget(box, 0, 6, 0, 4);
+  box = new QGroupBox(klocale->translate("Modem"), this,"box");
+  tl->addMultiCellWidget(box, 0, 2, 0, 2);
 
+  QVBoxLayout *l1 = new QVBoxLayout;
+  tl->addLayout(l1, 1, 1);
+  tl->setColStretch(1, 1);
+  tl->setRowStretch(1, 1);
+  l1->addStretch(1);
+
+  QHBoxLayout *l10 = new QHBoxLayout;
+  l1->addLayout(l10);
+  label4 = new QLabel(this,"busywaitlabel");
+  label4->setText(klocale->translate("Busy Wait:"));
+  label4->setMinimumSize(label4->sizeHint());
+  l10->addStretch(1);
+  l10->addWidget(label4);
+
+  busywait = new KIntegerLine(this, "busywait");
+  busywait->setFixedHeight(busywait->sizeHint().height());
+  busywait->setMaxLength(TIMEOUT_SIZE);
+  busywait->setText(gpppdata.busyWait());
+  busywait->setMinimumWidth(busywait->sizeHint().width()/3);
+  connect(busywait, SIGNAL(textChanged(const char*)),
+	  SLOT(busywaitchanged(const char*)));
+  l10->addWidget(busywait);
+
+  labeltmp = new QLabel(this,"seconds");
+  labeltmp->setText(klocale->translate("Seconds"));
+  labeltmp->setMinimumSize(labeltmp->sizeHint());
+  l10->addWidget(labeltmp, 1);
+  l10->addStretch(1);
+
+  // the checkbox
+  l1->addSpacing(10);
+  QHBoxLayout *l12 = new QHBoxLayout;
+  l1->addLayout(l12);
+  l12->addStretch(1);
+  chkbox = 
+    new QCheckBox(klocale->translate("Modem sustains fast initialization."), 
+		  this, "fastinit");
+  chkbox->setMinimumSize(chkbox->sizeHint());
+  chkbox->setChecked(gpppdata.FastModemInit());
+  connect(chkbox,SIGNAL(toggled(bool)),this,SLOT(fast_modem_toggled(bool)));
+  l12->addWidget(chkbox);
+  l12->addStretch(1);
+  l1->addStretch(1);
+
+  // add the buttons 
+  QHBoxLayout *l11 = new QHBoxLayout;
+  l1->addLayout(l11); 
+  l11->addStretch(1);
+  QVBoxLayout *l111 = new QVBoxLayout;
+  l11->addLayout(l111);
   modemcmds = new QPushButton(klocale->translate("Modem Commands"), this);
   modeminfo_button = new QPushButton(klocale->translate("Query Modem"), this);
   terminal_button = new QPushButton(klocale->translate("Terminal"), this);
@@ -419,9 +479,12 @@ ModemWidget2::ModemWidget2( QWidget *parent, const char *name)
   modeminfo_button->setFixedHeight(modeminfo_button->sizeHint().height());
   terminal_button->setMinimumWidth(terminal_button->sizeHint().width());
   terminal_button->setFixedHeight(terminal_button->sizeHint().height());
-  tl->addWidget(modemcmds, 2, 2);
-  tl->addWidget(modeminfo_button, 3, 2);
-  tl->addWidget(terminal_button, 4, 2);
+  l111->addWidget(modemcmds);
+  l111->addWidget(modeminfo_button);
+  l111->addWidget(terminal_button);
+  l11->addStretch(1);
+  l1->addStretch(1);
+
   tl->activate();
 
   connect(modemcmds, SIGNAL(clicked()), SLOT(modemcmdsbutton()));
@@ -464,5 +527,15 @@ void ModemWidget2::terminal(){
   terminal.exec();
 
 }
+
+void ModemWidget2::fast_modem_toggled(bool on){
+
+    gpppdata.setFastModemInit(on);
+}
+
+void ModemWidget2::busywaitchanged(const char *n) {
+  gpppdata.setbusyWait(n);
+}
+
 
 #include "general.moc"

@@ -67,6 +67,11 @@ ScriptEdit::ScriptEdit( QWidget *parent, const char *name )
 }
 
 
+void ScriptEdit::setEnabled(bool b) {
+  se->setEnabled(b);
+  st->setEnabled(b);
+}
+
 void ScriptEdit::seReturnPressed() {
   emit returnPressed();
 }

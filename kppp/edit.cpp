@@ -60,45 +60,27 @@ DialWidget::DialWidget( QWidget *parent, const char *name )
 
   number_l = new QLineEdit(this, "number_l");
   number_l->setMaxLength(PHONENUMBER_SIZE);
-  MIN_WIDTH(number_l);
+  FIXED_WIDTH(number_l);
   FIXED_HEIGHT(number_l);
   tl->addWidget(number_l, 2, 2);
 
-  baud_label = new QLabel(this);
-  baud_label->setText(klocale->translate("Connection Speed:"));
-  MIN_SIZE(baud_label);
-  tl->addWidget(baud_label, 4, 1);
+  auth_l = new QLabel(this);
+  auth_l->setText(klocale->translate("Authentication:"));
+  MIN_SIZE(auth_l);
+  tl->addWidget(auth_l, 4, 1);
 
-  QHBoxLayout *l1 = new QHBoxLayout;
-  tl->addLayout(l1, 4, 2);
-  baud_c = new QComboBox(this, "baud_c");
+  auth = new QComboBox(this);
+  auth->insertItem(klocale->translate("Script-based"));
+  auth->insertItem(klocale->translate("PAP"));
+  MIN_WIDTH(auth);
+  FIXED_HEIGHT(auth);
+  tl->addWidget(auth, 4, 2);
 
-#ifdef B460800 
-  baud_c->insertItem("460800");
-#endif
-
-#ifdef B230400
-  baud_c->insertItem("230400");
-#endif
-
-#ifdef B115200
-  baud_c->insertItem("115200");
-#endif
-
-#ifdef B57600
-  baud_c->insertItem("57600");
-#endif
-
-  baud_c->insertItem("38400");
-  baud_c->insertItem("19200");
-  baud_c->insertItem("9600");
-  baud_c->insertItem("2400");
-  
-  baud_c->setCurrentItem(3);
-  FIXED_HEIGHT(baud_c);
-  MIN_WIDTH(baud_c);
-  l1->addWidget(baud_c);
-  l1->addStretch(1);
+  store_password = new QCheckBox(this);
+  store_password->setText(klocale->translate("Store password"));
+  MIN_SIZE(store_password);
+  store_password->setChecked(TRUE);
+  tl->addMultiCellWidget(store_password, 5, 5, 1, 2);
 
   command_label = new QLabel(this);
   command_label->setText(klocale->translate("Execute Program\nupon Connect:"));
@@ -126,19 +108,15 @@ DialWidget::DialWidget( QWidget *parent, const char *name )
   l2->addWidget(pppdargs);
   l2->addStretch(3);
 
-  // Set defaults if editing an exhisting connection
+  // Set defaults if editing an existing connection
   if(!isnewaccount) {
     connectname_l->setText(gpppdata.accname());
     number_l->setText(gpppdata.phonenumber());
     command->setText(gpppdata.command());
-
-    //set the modem speed
-    for(int i=0; i < baud_c->count(); i++)
-      if(strcmp(baud_c->text(i), gpppdata.speed()) == 0)
-	baud_c->setCurrentItem(i);
+    auth->setCurrentItem(gpppdata.authMethod());
+    store_password->setChecked(gpppdata.storePassword());
   }
 
-  //  this->setFixedSize(340,322);
   tl->activate();
 }
 
@@ -154,8 +132,9 @@ bool DialWidget::save() {
   else {
     gpppdata.setAccname(connectname_l->text());
     gpppdata.setPhonenumber(number_l->text());
-    gpppdata.setSpeed(baud_c->text(baud_c->currentItem()));
     gpppdata.setCommand(command->text());
+    gpppdata.setAuthMethod(auth->currentItem());
+    gpppdata.setStorePassword(store_password->isChecked());
     return true;
   }
 }
@@ -560,6 +539,11 @@ ScriptWidget::ScriptWidget( QWidget *parent, const char *name )
 
   QVBoxLayout *l1 = new QVBoxLayout;
   tl->addLayout(l1, 1, 1);
+  default_script = 
+    new QCheckBox(klocale->translate("Use default script"), this);
+  MIN_SIZE(default_script);
+  l1->addWidget(default_script);
+  l1->addStretch(1);
 
   se = new ScriptEdit(this, "se");
   connect(se, SIGNAL(returnPressed()), SLOT(addButton()));
@@ -610,13 +594,21 @@ ScriptWidget::ScriptWidget( QWidget *parent, const char *name )
   l12->addWidget(sl, 3);
   l12->addWidget(slb, 0);
 
+  default_script->setChecked(TRUE);
+  connect(default_script, SIGNAL(toggled(bool)),
+	  this, SLOT(default_script_toggled(bool)));
+  default_script_toggled(TRUE);
+
   //load data from gpppdata
   if(!isnewaccount) {
+    int counter = 0;
     for( int i=0; gpppdata.scriptType(i) &&
-	   i <= MAX_SCRIPT_ENTRIES-1; i++) {
+	   i <= MAX_SCRIPT_ENTRIES-1; i++, counter++) {
       stl->insertItem(gpppdata.scriptType(i));
       sl->insertItem(gpppdata.script(i));
     }
+
+    default_script->setChecked( (bool) (counter==0));
   }
 
   adjustScrollBar();
@@ -624,6 +616,15 @@ ScriptWidget::ScriptWidget( QWidget *parent, const char *name )
   tl->activate();
 }
 
+
+void ScriptWidget::default_script_toggled(bool b) {
+  se->setEnabled(!b);
+  add->setEnabled(!b);
+  insert->setEnabled(!b);
+  remove->setEnabled(!b);
+  stl->setEnabled(!b);
+  sl->setEnabled(!b);
+}
 
 bool ScriptWidget::check() {
   uint lstart = 0;
@@ -647,8 +648,7 @@ bool ScriptWidget::check() {
 
 
 void ScriptWidget::save() {
-
-  if(sl->count() > 0)   
+  if(default_script->isChecked() == FALSE && sl->count() > 0)
     for( uint i=0; i <= sl->count()-1; i++) {
       gpppdata.setScriptType(i, stl->text(i));
       gpppdata.setScript(i, sl->text(i));

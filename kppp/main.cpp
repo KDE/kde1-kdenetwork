@@ -41,6 +41,7 @@
 #include "version.h"
 #include "homedir.h"
 #include "macros.h"
+#include "pap.h"
 
 #include <X11/Xlib.h>
 
@@ -192,7 +193,6 @@ void make_directories(){
 
 
 int main( int argc, char **argv ) { 
-
   int c;
   opterr = 0;
 
@@ -234,6 +234,12 @@ int main( int argc, char **argv ) {
   }
 
   KApplication a(argc, argv,"kppp");
+
+  // make sure that nobody can read the password from the
+  // config file
+  QString configFile = a.localconfigdir() + "/" + a.appName() + "rc";
+  if(access(configFile.data(), F_OK) == 0)
+    chmod(configFile.data(), S_IRUSR | S_IWUSR);
 
   app = &a;
 
@@ -302,7 +308,7 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
   l1->addWidget(ID_Label, 1, 1);
 
   ID_Edit = new QLineEdit(this,"idedit");
-  ID_Edit->setText(gpppdata.Id());
+  //ID_Edit->setText(gpppdata.Id());
   MIN_WIDTH(ID_Edit);
   FIXED_HEIGHT(ID_Edit);
   l1->addWidget(ID_Edit, 1, 2);
@@ -313,7 +319,6 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
   l1->addWidget(PW_Label, 2, 1);
 
   PW_Edit= new QLineEdit(this,"pwedit");
-  PW_Edit->setGeometry(120, 97,189,24);
   PW_Edit->setEchoMode(QLineEdit::Password);
   MIN_WIDTH(PW_Edit);
   FIXED_HEIGHT(PW_Edit);
@@ -401,8 +406,8 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
   about  = new AboutWidget(tabWindow,"about");
   
   tabWindow->addTab( accounts, klocale->translate("Accounts") );
-  tabWindow->addTab( modem, klocale->translate("Modem") );
-  tabWindow->addTab( modem2, klocale->translate("More ...") );
+  tabWindow->addTab( modem, klocale->translate("Device") );
+  tabWindow->addTab( modem2, klocale->translate("Modem") );
   tabWindow->addTab( general, klocale->translate("PPP") );
   tabWindow->addTab( about, klocale->translate("About") );
 
@@ -448,7 +453,7 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
       have_cmdl_account = false;
       this->show();
     }
-    else{
+    else {
       emit cmdl_start();
     }
   }
@@ -503,12 +508,22 @@ void XPPPWidget::resetaccounts() {
        if(strcmp(gpppdata.defaultAccount(), connectto_c->text(i)) == 0) {
  	connectto_c->setCurrentItem(i);
 	gpppdata.setAccountbyIndex(i);
+	
+	ID_Edit->setText(gpppdata.storedUsername());
+	PW_Edit->setText(gpppdata.storedPassword());
     }
   }
   else
     if(gpppdata.count() > 0) {
        gpppdata.setDefaultAccount(connectto_c->text(0));
     }
+
+
+  connect(ID_Edit, SIGNAL(textChanged(const char *)),
+ 	  this, SLOT(entryChanged(const char *)));
+
+  connect(PW_Edit, SIGNAL(textChanged(const char *)),
+ 	  this, SLOT(entryChanged(const char *)));
     
 }
 
@@ -550,6 +565,9 @@ void dieppp(int sig) {
       // we set pppid to -1 so we won't 
       // enter this block
 
+      // just to be sure
+      PAP_RemoveAuthFile();
+
       p_xppp->stopAccounting();
       p_xppp->con_win->stopClock();
       
@@ -557,26 +575,29 @@ void dieppp(int sig) {
 
       pppd_has_died = true;
       removedns();
-      unlockdevice();
+      unlockdevice();      
       
-      if(!reconnect_on_disconnect){
-      p_xppp->quit_b->setFocus();
-      p_xppp->show();
-      p_xppp->con_win->stopClock();
-      p_xppp->stopAccounting();
-      p_xppp->con_win->hide();
-      p_xppp->con->hide();
-
-      gpppdata.setpppdpid(-1);
-    
-      app->beep();
-      QMessageBox::warning( 0, klocale->translate("Error"), 
-			klocale->translate("The pppd daemon died unexpectedly!"));
+      if(!reconnect_on_disconnect) {
+	p_xppp->quit_b->setFocus();
+	p_xppp->show();
+	p_xppp->con_win->stopClock();
+	p_xppp->stopAccounting();
+	p_xppp->con_win->hide();
+	p_xppp->con->hide();
+	
+	gpppdata.setpppdpid(-1);
+	
+	app->beep();
+	QMessageBox::warning( 0, klocale->translate("Error"), 
+			      klocale->translate("The pppd daemon died unexpectedly!"));
       }
       else{/* reconnect on disconnect */
 #ifdef MY_DEBUG
   printf("Trying to reconnect\n");
 #endif
+        if(PAP_UsePAP())
+	  PAP_CreateAuthFile();
+
 	p_xppp->con_win->hide();
 	p_xppp->con_win->stopClock();
 	p_xppp->stopAccounting();
@@ -593,6 +614,8 @@ void dieppp(int sig) {
 void XPPPWidget::newdefaultaccount(int i) {
   gpppdata.setDefaultAccount(connectto_c->text(i));
   gpppdata.save();
+  ID_Edit->setText(gpppdata.storedUsername());
+  PW_Edit->setText(gpppdata.storedPassword());
 }
 
 
@@ -602,7 +625,6 @@ void XPPPWidget::expandbutton() {
 
 
 void XPPPWidget::connectbutton() {
-
   QFileInfo info(gpppdata.pppdPath());
   
   if(!info.exists()){
@@ -622,7 +644,9 @@ void XPPPWidget::connectbutton() {
     string.sprintf(klocale->translate("kppp can not execute:\n %s\nPlease make sure that"
 		   "you have given kppp setuid permission and that\n"
 		   "pppd is executable."),gpppdata.pppdPath());
-    QMessageBox::warning(this, "Error", string.data());
+    QMessageBox::warning(this, 
+			 klocale->translate("Error"),
+			 string.data());
     return;
 
   }
@@ -636,12 +660,38 @@ void XPPPWidget::connectbutton() {
 		   "and/or adjust\n the location of the modem device on "
 		   "the modem tab of\n"
 		   "the setup dialog.\n Thank You"),gpppdata.modemDevice());
-    QMessageBox::warning(this, "Error", string.data());
+    QMessageBox::warning(this, 
+			 klocale->translate("Error"),
+			 string.data());
     return;
   }
 
   gpppdata.setId(ID_Edit->text());
   gpppdata.setPassword(PW_Edit->text());
+
+  // if this is a PAP account, ensure that password and username are
+  // supplied
+  if(PAP_UsePAP()) {
+    if(strlen(ID_Edit->text()) == 0 || strlen(PW_Edit->text()) == 0) {
+      QMessageBox::warning(this,
+			   klocale->translate("Error"),
+			   klocale->translate(
+                           "You have selected the authentication\n"
+			   "method PAP. This requires that you\n"
+			   "supply a username and a password!"));
+      return;
+    } else {      
+      if(!PAP_CreateAuthFile()) {
+	QString s;
+	s.sprintf(klocale->translate("Cannot create PAP authentication\n"
+				     "file \"%s\""), PAP_AUTH_FILE);
+	QMessageBox::warning(this,
+			     klocale->translate("Error"),
+			     s.data());
+	return;
+      }
+    }
+  }
   
   this->hide();
 
@@ -673,6 +723,9 @@ void XPPPWidget::disconnect() {
   stats->stop_stats();
   terminatepppd();
   gpppdata.setpppdpid(-1);
+  
+  PAP_RemoveAuthFile();
+
   removedns();
   unlockdevice();
   
@@ -724,7 +777,7 @@ void XPPPWidget::quitbutton() {
     }
   }
   else {
-    qApp->quit();
+    kapp->quit();
   }
 
 }
@@ -764,6 +817,17 @@ void XPPPWidget::stopAccounting() {
     return;
 
   accounting.slotStop();
+}
+
+void XPPPWidget::entryChanged(const char *) {
+  // store username for later use
+  gpppdata.setStoredUsername(ID_Edit->text());
+  
+  // store the password if so requested
+  if(gpppdata.storePassword())
+    gpppdata.setStoredPassword(PW_Edit->text());
+  else
+    gpppdata.setStoredPassword("");
 }
 
 
