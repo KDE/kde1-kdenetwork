@@ -281,5 +281,3 @@ bool Requester::sendRequest(struct RequestHeader *request, int len) {
 void recv_timeout(int) {
   printf("timeout()\n");
 }
-
-#include "requester.moc"
