@@ -32,7 +32,7 @@ PrintDlg::PrintDlg() :
 
     l->addPage("General",klocale->translate("General"));
 
-    l->addGroup("g2","Printing System",true);
+    l->addGroup("g2",klocale->translate("Printing System"),true);
     l->newLine();
     l->addRadioButton("htmlprint","r1",klocale->translate("Use HTML Printing"),
                      conf->readNumEntry("HTMLPrinting",true));
@@ -42,7 +42,7 @@ PrintDlg::PrintDlg() :
     l->endGroup();//g2
     l->newLine();
     
-    l->addGroup("g1","Direct Printing",true);
+    l->addGroup("g1",klocale->translate("Direct Printing"),true);
 
     l->newLine();
     l->addLabel("l1",klocale->translate("Print using:"));

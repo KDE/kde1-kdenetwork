@@ -81,14 +81,14 @@ fontsDlg::fontsDlg(QWidget* parent,const char* name):Inherited( parent, name, TR
     l->skip();
     samp1=(QLineEdit *)(l->addLineEdit("samp1",
                                        conf->readEntry("StandardFontTest",
-                                                       QString("Standard Font Test").data()))->widget);
+                                                       QString(klocale->translate("Standard Font Test")).data()))->widget);
     l->newLine();
     l->addLabel("l3", klocale->translate("Fixed Font"));
     fixedFontName=(QComboBox *)(l->addComboBox("fixedFontName",fixedfl)->widget);
     l->newLine();
     l->skip();
     samp2=(QLineEdit *)(l->addLineEdit("samp2",
-                                       conf->readEntry("FixedFontTest",QString("Fixed Font Test").data()))->widget);
+                                       conf->readEntry("FixedFontTest",QString(klocale->translate("Fixed Font Test")).data()))->widget);
     l->newLine();
     
     l->addLabel("l4", klocale->translate("Background Color"));

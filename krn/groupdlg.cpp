@@ -205,7 +205,7 @@ Groupdlg::Groupdlg(const char *name):Inherited (name)
     toolBar()->insertButton (Icon("find.xpm"), FIND_GROUP, true, klocale->translate("Find group"));
     toolBar()->insertSeparator ();
     
-    toolBar()->insertButton (Icon("subscr.xpm"), SUBSCRIBE, true, "(Un)Subscribe");
+    toolBar()->insertButton (Icon("subscr.xpm"), SUBSCRIBE, true, klocale->translate("(Un)Subscribe"));
     toolBar()->insertSeparator ();
     
     toolBar()->insertButton (Icon("reload.xpm"), CHECK_UNREAD, true, klocale->translate("Check for Unread Articles"));

@@ -238,11 +238,11 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     QObject::connect (t2, SIGNAL (clicked (int)), this, SLOT (defaultActions (int)));
     
     QStrList *comboContents=new QStrList();
-    comboContents->append("Current");
-    comboContents->append("Tagged");
-    comboContents->append("All");
-    comboContents->append("Read");
-    comboContents->append("UnRead");
+    comboContents->append(klocale->translate("Current"));
+    comboContents->append(klocale->translate("Tagged"));
+    comboContents->append(klocale->translate("All"));
+    comboContents->append(klocale->translate("Read"));
+    comboContents->append(klocale->translate("UnRead"));
     t2->insertCombo(comboContents,1,false,SIGNAL(activated(int)),this,SLOT(setTarget(int)));
     
     t2->insertButton(Icon("save.xpm"),SAVE_ARTICLE,true,klocale->translate("Save Article"));
