@@ -1,3 +1,27 @@
+1998-02-17  Andrew Stanley-Jones  <asj@chowtown.cban.com>
+
+	* Default rules added: 
+	                       + Filter ksirc colours
+			       + Filter mirc colours
+			       + Colourize nicks
+			       + Colourize your nick
+
+	* KSPrefs/defaultfilters.cpp: Added default filters
+ 	configure/prefrences dialog.
+
+	* baserules.cpp (defaultRules): Added basic default filter rules.
+
+1998-02-16  Andrew Stanley-Jones  <asj@chowtown.cban.com>
+
+	* Numberous other changes in toplevel.cpp to support changes to
+ 	nick list.
+
+	* alistbox.cpp (nickListItem): New nick list item keeps all nicks
+ 	in special items with setable colours and op/voice status falgs.
+	(findNick): New findNick() function allows quick searchin of nick
+ 	list via binary search.
+	(item): Returns nickListItem now.
+
 1998-02-07  Andrew Stanley-Jones  <asj@chowtown.cban.com>
 
 	* Misc bug fixes and updates.
@@ -211,6 +235,9 @@
 $Revision$
 	
 $Log$
+Revision 1.27  1998/02/07 17:14:51  asj
+Basic updates for beta.
+
 Revision 1.26  1998/02/01 22:13:28  asj
 Bug fixes and other minor updates.
 

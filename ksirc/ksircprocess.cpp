@@ -93,6 +93,7 @@
 #include "ioDCC.h"
 #include "ioLAG.h"
 #include "ioNotify.h"
+#include "baserules.h"
 #include "iocontroller.h"
 #include "control_message.h"
 #include "config.h"
@@ -176,6 +177,8 @@ KSircProcess::KSircProcess( char *_server, QObject * parent, const char * name )
   connect(notify, SIGNAL(notify_offline(QString)),
 	  this, SLOT(notify_forw_offline(QString)));
   TopList.insert("!notify", notify);
+
+  TopList.insert("!base_rules", new KSMBaseRules(this));
 
   // Now that all windows are up, start sirc.
 
@@ -305,7 +308,7 @@ void KSircProcess::close_toplevel(KSircTopLevel *wm, char *name)
 
   bool is_default = FALSE; // Assume it's no default
 
-  if(TopList.count() <= 7){ // If this is the last window shut down
+  if(TopList.count() <= 8){ // If this is the last window shut down
     QString command = "/quit\n";
     iocontrol->stdin_write(command); // kill sirc
     delete this; // Delete ourself, WARNING MUST RETURN SINCE WE NO
@@ -391,10 +394,13 @@ void KSircProcess::filters_update()
   command = "/crule\n";
   iocontrol->stdin_write(command);
   QDictIterator<KSircMessageReceiver> it(TopList);
+  KSircMessageReceiver *cur, *br;
   filterRuleList *frl;
   filterRule *fr;
-  while(it.current()){
-    frl = it.current()->defaultRules();
+  cur = TopList["!base_rules"];
+  br = cur;
+  while(cur){
+    frl = cur->defaultRules();
     for ( fr=frl->first(); fr != 0; fr=frl->next() ){
       command.truncate(0);
       command += "/ksircappendrule DESC==";
@@ -410,6 +416,11 @@ void KSircProcess::filters_update()
     }
     delete frl;
     ++it;
+    cur = it.current();
+    if(cur == br){
+      ++it;
+      cur = it.current();
+    }
   }
   kConfig->setGroup("FilterRules");
   int max = kConfig->readNumEntry("Rules", 0);

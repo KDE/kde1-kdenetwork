@@ -6,8 +6,8 @@
 
 #include "startup.h"
 #include "serverchannel.h"
-
 #include "UserMenuRef.h"
+#include "defaultfilters.h"
 
 struct KSPrefsSettings
 {
@@ -43,5 +43,6 @@ private:
   StartUp *pStart;
   UserMenuRef *pMenu;
   ServerChannel *pServerChannel;
+  DefaultFilters *pFilters;
   
 };

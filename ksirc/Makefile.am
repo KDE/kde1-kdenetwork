@@ -21,7 +21,7 @@ SUBDIRS = KSTicker KSProgress KSCutDialog KSPrefs img doc
 
 ####### This part is very khexdit specific
 # you can add here more. This one gets installed 
-bin_PROGRAMS = 	ksirc ksircstatic
+bin_PROGRAMS = time ksirc ksircstatic
 
 # Which sources should be compiled for khexdit.
 ksirc_SOURCES	= toplevel.cpp \
@@ -50,7 +50,8 @@ ioLAG.cpp mioLAG.cpp \
 ioNotify.cpp mioNotify.cpp \
 ssfeprompt.cpp mssfeprompt.cpp ssfepromptdata.cpp mssfepromptdata.cpp \
 usercontrolmenu.cpp \
-kspainter.cpp
+kspainter.cpp \
+baserules.cpp
 
 ksircstatic_SOURCES = $(ksirc_SOURCES)
 
@@ -67,6 +68,13 @@ ksircstatic_LDADD = $(ksirc_LDADD)
 
 kdoc:
 	kdoc -ddoc ksirc *.h
+
+time.c:
+	touch time.c
+
+time:
+	echo -n "#define COMPILE_DATE " > cdate.h
+	date +%s >> cdate.h
 
 ksircstatic: $(ksircstatic_OBJECTS) $(ksircstatic_DEPENDENCIES)
 	@rm -f ksircstatic

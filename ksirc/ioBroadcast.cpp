@@ -67,12 +67,6 @@ filterRuleList *KSircIOBroadcast::defaultRules()
   filterRuleList *frl = new  filterRuleList();
   frl->setAutoDelete(TRUE);
   fr = new filterRule();
-  fr->desc = "Remove Just bold in parts and joins";
-  fr->search = "\\*\\x02\\S+\\x02\\*";
-  fr->from = "\\*\\x02(\\S+)\\x02\\*";
-  fr->to = "\\*$1\\*";
-  frl->append(fr);
-  fr = new filterRule();
   fr->desc = "Search for dump ~'s";
   fr->search = "\\W~\\S+@\\S+\\W";
   fr->from = "~(\\S+@)";

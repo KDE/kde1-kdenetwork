@@ -19,6 +19,12 @@ class global_config {
   bool autocreate;
   bool nickcompletion;
 
+  bool filterKColour;
+  bool filterMColour;
+  int nickFHighlight; // Foreground
+  int nickBHighlight; // Background
+  int usHighlight; // Background
+
   QString kdedir;
 };
 

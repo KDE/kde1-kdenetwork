@@ -147,7 +147,11 @@ mserverchanneldata.cpp \
 UserMenuRef.cpp \
 mUserMenuRef.cpp \
 UserMenuRefData.cpp \
-mUserMenuRefData.cpp
+mUserMenuRefData.cpp \
+defaultfilters.cpp \
+mdefaultfilters.cpp \
+defaultfiltersdata.cpp \
+mdefaultfiltersdata.cpp
 
 noinst_HEADERS = \
 ksprefs.h \
@@ -156,7 +160,9 @@ startupdata.h \
 serverchannel.h \
 startup.h \
 UserMenuRef.h \
-UserMenuRefData.h
+UserMenuRefData.h \
+defaultfilters.h \
+defaultfiltersdata.h
 
 libksprefsSOURCES = $(libkscutdialog_SOURCES)
 
@@ -174,7 +180,11 @@ mserverchanneldata.o \
 UserMenuRef.o \
 mUserMenuRef.o \
 UserMenuRefData.o \
-mUserMenuRefData.o
+mUserMenuRefData.o \
+defaultfilters.o \
+mdefaultfilters.o \
+defaultfiltersdata.o \
+mdefaultfiltersdata.o
 
 # just to make sure, automake makes them 
 BUILTSOURCES =	
@@ -194,7 +204,8 @@ LIBS = @LIBS@
 libksprefs_OBJECTS =  ksprefs.o mksprefs.o startup.o mstartup.o \
 startupdata.o mstartupdata.o serverchannel.o mserverchannel.o \
 serverchanneldata.o mserverchanneldata.o UserMenuRef.o mUserMenuRef.o \
-UserMenuRefData.o mUserMenuRefData.o
+UserMenuRefData.o mUserMenuRefData.o defaultfilters.o mdefaultfilters.o \
+defaultfiltersdata.o mdefaultfiltersdata.o
 libksprefs_LDADD = $(LDADD)
 libksprefs_LDFLAGS = 
 CXXCOMPILE = $(CXX) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
@@ -208,6 +219,14 @@ DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
 
 TAR = tar
 GZIP = --best
+DEP_FILES =  .deps/UserMenuRef.P .deps/UserMenuRefData.P \
+.deps/defaultfilters.P .deps/defaultfiltersdata.P .deps/ksprefs.P \
+.deps/mUserMenuRef.P .deps/mUserMenuRefData.P .deps/mdefaultfilters.P \
+.deps/mdefaultfiltersdata.P .deps/mksprefs.P .deps/mserverchannel.P \
+.deps/mserverchanneldata.P .deps/mstartup.P .deps/mstartupdata.P \
+.deps/serverchannel.P .deps/serverchanneldata.P .deps/startup.P \
+.deps/startupdata.P
+CXXMKDEP = $(CXX) -M $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
 SOURCES = $(libksprefs_SOURCES)
 OBJECTS = $(libksprefs_OBJECTS)
 
@@ -216,9 +235,9 @@ default: all
 .SUFFIXES:
 .SUFFIXES: .c .cpp .o
 $(srcdir)/Makefile.in: Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4) 
-	cd $(top_srcdir) && $(AUTOMAKE) --gnu --include-deps ksirc/KSPrefs/Makefile
+	cd $(top_srcdir) && $(AUTOMAKE) --gnu ksirc/KSPrefs/Makefile
 
-Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
+Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status $(BUILT_SOURCES)
 	cd $(top_builddir) \
 	  && CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= $(SHELL) ./config.status
 
@@ -288,12 +307,49 @@ distdir = $(top_builddir)/$(PACKAGE)-$(VERSION)/$(subdir)
 subdir = ksirc/KSPrefs
 
 distdir: $(DISTFILES)
+	here=`cd $(top_builddir) && pwd`; \
+	top_distdir=`cd $(top_distdir) && pwd`; \
+	cd $(top_srcdir) \
+	  && $(AUTOMAKE) --include-deps --build-dir=$$here --srcdir-name=$(top_srcdir) --output-dir=$$top_distdir --gnu ksirc/KSPrefs/Makefile
 	@for file in $(DISTFILES); do \
 	  d=$(srcdir); \
 	  test -f $(distdir)/$$file \
 	  || ln $$d/$$file $(distdir)/$$file 2> /dev/null \
 	  || cp -p $$d/$$file $(distdir)/$$file; \
 	done
+
+MKDEP = gcc -M $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CFLAGS)
+
+DEPS_MAGIC := $(shell mkdir .deps > /dev/null 2>&1 || :)
+-include .deps/.P
+.deps/.P: $(BUILT_SOURCES)
+	echo > $@
+
+-include $(DEP_FILES)
+
+mostlyclean-depend:
+
+clean-depend:
+
+distclean-depend:
+
+maintainer-clean-depend:
+	rm -rf .deps
+
+.deps/%.P: %.c
+	@echo "Computing dependencies for $<..."
+	@o='o'; \
+	test -n "$o" && o='$$o'; \
+	$(MKDEP) $< >$@.tmp \
+	  && sed "s,^\(.*\)\.o:,\1.$$o \1.l$$o $@:," < $@.tmp > $@ \
+	  && rm -f $@.tmp
+
+.deps/%.P: %.cpp
+	@echo "Computing dependencies for $<..."
+	@o='o'; \
+	$(CXXMKDEP) $< >$@.tmp \
+	  && sed "s,^\(.*\)\.o:,\1.$$o \1.l$$o $@:," < $@.tmp > $@ \
+	  && rm -f $@.tmp
 info:
 dvi:
 check: all
@@ -333,18 +389,18 @@ maintainer-clean-generic:
 	test -z "$(MAINTAINERCLEANFILES)" || rm -f $(MAINTAINERCLEANFILES)
 	test -z "$(BUILT_SOURCES)" || rm -f $(BUILT_SOURCES)
 mostlyclean:  mostlyclean-binPROGRAMS mostlyclean-compile \
-		mostlyclean-tags mostlyclean-generic
+		mostlyclean-tags mostlyclean-depend mostlyclean-generic
 
-clean:  clean-binPROGRAMS clean-compile clean-tags clean-generic \
-		mostlyclean
+clean:  clean-binPROGRAMS clean-compile clean-tags clean-depend \
+		clean-generic mostlyclean
 
 distclean:  distclean-binPROGRAMS distclean-compile distclean-tags \
-		distclean-generic clean
+		distclean-depend distclean-generic clean
 	rm -f config.status
 
 maintainer-clean:  maintainer-clean-binPROGRAMS maintainer-clean-compile \
-		maintainer-clean-tags maintainer-clean-generic \
-		distclean
+		maintainer-clean-tags maintainer-clean-depend \
+		maintainer-clean-generic distclean
 	@echo "This command is intended for maintainers to use;"
 	@echo "it deletes files that may require special tools to rebuild."
 
@@ -352,9 +408,10 @@ maintainer-clean:  maintainer-clean-binPROGRAMS maintainer-clean-compile \
 clean-binPROGRAMS maintainer-clean-binPROGRAMS uninstall-binPROGRAMS \
 install-binPROGRAMS mostlyclean-compile distclean-compile clean-compile \
 maintainer-clean-compile tags mostlyclean-tags distclean-tags \
-clean-tags maintainer-clean-tags distdir info dvi installcheck \
-install-exec install-data install uninstall all installdirs \
-mostlyclean-generic distclean-generic clean-generic \
+clean-tags maintainer-clean-tags distdir mostlyclean-depend \
+distclean-depend clean-depend maintainer-clean-depend info dvi \
+installcheck install-exec install-data install uninstall all \
+installdirs mostlyclean-generic distclean-generic clean-generic \
 maintainer-clean-generic clean mostlyclean distclean maintainer-clean
 
 

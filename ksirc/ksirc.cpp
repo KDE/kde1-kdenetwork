@@ -31,13 +31,17 @@
 #include <termios.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <time.h> 
 
 #include <qfont.h>
+#include <qmsgbox.h> 
 
 #include <kapp.h>
 #include <kconfig.h>
 
 #include "config.h"
+#include "../config.h"
+#include "cdate.h"
 
 KApplication *kApp;
 KConfig *kConfig;
@@ -50,7 +54,27 @@ int main( int argc, char ** argv )
   // Start the KDE application
   kApp = new KApplication( argc, argv, QString("ksirc") );
 
-  // Starts the toplevel and give it sirc pipe items.
+  QString ver = VERSION;
+  if(ver.contains(".") == 0){
+    // This is a development version
+    // 4 week timeout, warn after 2
+    int ntime = time(NULL);
+    if(ntime - COMPILE_DATE > 2419200){
+      // To Old
+      QMessageBox::critical(0, "kSirc",
+			    QString("kSirc Alpha releases have a 4 week\n") +
+			    QString("expiry date.\n\n") +
+			    QString("kSirc-ALPHA HAS EXPIRED!!\n") +
+			    QString("Please upgrade or use a beta release"));
+      exit(1);
+    }
+    else if(ntime - COMPILE_DATE > 1209600){
+      QMessageBox::warning(0, "kSirc",
+			   QString("kSirc Alpha release have a 4 week\n") +
+			   QString("expiry date.\n\n") +
+			   QString("THIS VERSION WILL EXPIRE IN UNDER 2 WEEKS"));
+    }
+  }
 
 
   // Get config, and setup internal structure.
@@ -66,6 +90,11 @@ int main( int argc, char ** argv )
   kSircConfig->colour_error = new QColor(kConfig->readColorEntry("error", &red));
 
   kSircConfig->colour_background = 0;
+  kSircConfig->filterKColour = kConfig->readNumEntry("kcolour", false);
+  kSircConfig->filterMColour = kConfig->readNumEntry("mcolour", false);
+  kSircConfig->nickFHighlight = kConfig->readNumEntry("nickfcolour", -1);
+  kSircConfig->nickBHighlight = kConfig->readNumEntry("nickbcolour", -1);
+  kSircConfig->usHighlight = kConfig->readNumEntry("uscolour", -1);
 
   kSircConfig->kdedir = getenv("KDEDIR");
   if(kSircConfig->kdedir.isEmpty()){

@@ -57,7 +57,7 @@ sub cmd_ksircappendrule {
     while(($key, $value) = each %PARSED){
       $KSIRC_FILTER[$i]{$key} = $value;
     }
-    &tell("*** Added rule: " . $KSIRC_FILTER[$i]{'DESC'} . "\n");
+#    &tell("*** Added rule: " . $KSIRC_FILTER[$i]{'DESC'} . "\n");
   }
   else{
     print "*E* Parse Error in Rule, format is: name !!! search !!! from !!! to\n";
@@ -69,7 +69,7 @@ addcmd("ksircappendrule");
 
 sub cmd_ksircclearrule {
   @KSIRC_FILTER = ();
-  &tell("*** ALL FILTER RULES ERASED - DEFAULTS ADDED\n");
+#  &tell("*** ALL FILTER RULES ERASED - DEFAULTS ADDED\n");
 }
 
 &addcmd("ksircclearrule");

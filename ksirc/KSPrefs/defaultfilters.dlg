@@ -1,0 +1,170 @@
+DlgEdit:v1.2:Dialog:
+Dialog {
+	ClassHeader {defaultfilters.h}
+	ClassSource {defaultfilters.cpp}
+	ClassName {DefaultFilters}
+	DataHeader {defaultfiltersdata.h}
+	DataSource {defaultfiltersdata.cpp}
+	DataName {defaultfiltersdata}
+	WindowBaseClass {QFrame}
+	WindowFlags {0}
+}
+WidgetLayout {
+InitialPos {-1 -1}
+Size {400 300}
+MinSize {400 300}
+MaxSize {400 300}
+Grid {5}
+
+ButtonGroup {
+		Title {Higlight Your Nick}
+		Alignment {Left}
+		Style {49}
+		Rect {80 235 225 55}
+		Name {ButtonGroup_4}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+ButtonGroup {
+		Title {Colour Nicks in Channels}
+		Alignment {Left}
+		Style {49}
+		Rect {80 110 225 120}
+		Name {ButtonGroup_2}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+ButtonGroup {
+		Title {Allow External Colours}
+		Alignment {Left}
+		Style {49}
+		Rect {80 5 225 100}
+		Name {ButtonGroup_1}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+CheckBox {
+		Checked {TRUE}
+		Text {Allow &kSirc Colour codes}
+		AutoRepeat {FALSE}
+		AutoResize {FALSE}
+		Rect {110 20 170 30}
+		Name {CheckBox_1}
+		Variable {kSircColours}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+CheckBox {
+		Checked {TRUE}
+		Text {&Allow &mirc Colour codes}
+		AutoRepeat {FALSE}
+		AutoResize {FALSE}
+		Rect {110 55 170 30}
+		Name {CheckBox_2}
+		Variable {mircColours}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+User {
+		UserClassHeader {kspinbox.h}
+		UserClassName {KNumericSpinBox}
+		Rect {195 145 55 30}
+		Name {User_1}
+		Variable {NickFColour}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+Label {
+		Text {-1 means no colour}
+		AutoResize {FALSE}
+		Margin {-1}
+		Rect {95 125 120 20}
+		Name {Label_1}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+User {
+		UserClassHeader {kspinbox.h}
+		UserClassName {KNumericSpinBox}
+		Rect {195 185 55 30}
+		Name {User_2}
+		Variable {NickBColour}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+Label {
+		Text {Foreground}
+		Alignment {290}
+		AutoResize {FALSE}
+		Margin {-1}
+		Rect {90 140 100 30}
+		Name {Label_2}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+Label {
+		Text {Background}
+		Alignment {290}
+		AutoResize {FALSE}
+		Margin {-1}
+		Rect {90 185 100 30}
+		Name {Label_3}
+		Variable {LabelNickB}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+Label {
+		Text {Foreground}
+		Alignment {290}
+		AutoResize {FALSE}
+		Margin {-1}
+		Rect {90 140 100 30}
+		Name {Label_4}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+Label {
+		Text {Foreground}
+		Alignment {290}
+		AutoResize {FALSE}
+		Margin {-1}
+		Rect {90 145 100 30}
+		Name {Label_5}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+Label {
+		Text {Colour}
+		Alignment {290}
+		AutoResize {FALSE}
+		Margin {-1}
+		Rect {90 250 100 30}
+		Name {Label_6}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+User {
+		UserClassHeader {kspinbox.h}
+		UserClassName {KNumericSpinBox}
+		Rect {195 250 55 30}
+		Name {User_5}
+		Variable {usHighlightColour}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+Layout {None}
+}

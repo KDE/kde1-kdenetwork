@@ -130,7 +130,7 @@ SUBDIRS = KSTicker KSProgress KSCutDialog KSPrefs img doc
 
 ####### This part is very khexdit specific
 # you can add here more. This one gets installed 
-bin_PROGRAMS = 	ksirc ksircstatic
+bin_PROGRAMS = time ksirc ksircstatic
 
 # Which sources should be compiled for khexdit.
 ksirc_SOURCES	= toplevel.cpp \
@@ -159,7 +159,8 @@ ioLAG.cpp mioLAG.cpp \
 ioNotify.cpp mioNotify.cpp \
 ssfeprompt.cpp mssfeprompt.cpp ssfepromptdata.cpp mssfepromptdata.cpp \
 usercontrolmenu.cpp \
-kspainter.cpp
+kspainter.cpp \
+baserules.cpp
 
 ksircstatic_SOURCES = $(ksirc_SOURCES)
 
@@ -209,6 +210,10 @@ PROGRAMS =  $(bin_PROGRAMS)
 DEFS = @DEFS@ -I. -I$(srcdir) -I..
 CPPFLAGS = @CPPFLAGS@
 LIBS = @LIBS@
+time_SOURCES = time.c
+time_OBJECTS =  time.o
+time_LDADD = $(LDADD)
+time_LDFLAGS = 
 ksirc_OBJECTS =  toplevel.o ksirc.o irclistbox.o mirclistbox.o \
 irclistitem.o mirclistitem.o alistbox.o mtoplevel.o ahistlineedit.o \
 mahistlineedit.o malistbox.o iocontroller.o miocontroller.o open_top.o \
@@ -221,7 +226,7 @@ mFilterRuleEditor.o mFilterRuleEditorData.o ioDiscard.o ioDCC.o \
 mioDCC.o dccDialog.o mdccDialog.o dccDialogData.o mdccDialogData.o \
 linelistitem.o ioLAG.o mioLAG.o ioNotify.o mioNotify.o ssfeprompt.o \
 mssfeprompt.o ssfepromptdata.o mssfepromptdata.o usercontrolmenu.o \
-kspainter.o
+kspainter.o baserules.o
 ksirc_DEPENDENCIES = 
 ksircstatic_OBJECTS =  toplevel.o ksirc.o irclistbox.o mirclistbox.o \
 irclistitem.o mirclistitem.o alistbox.o mtoplevel.o ahistlineedit.o \
@@ -235,10 +240,12 @@ mFilterRuleEditor.o mFilterRuleEditorData.o ioDiscard.o ioDCC.o \
 mioDCC.o dccDialog.o mdccDialog.o dccDialogData.o mdccDialogData.o \
 linelistitem.o ioLAG.o mioLAG.o ioNotify.o mioNotify.o ssfeprompt.o \
 mssfeprompt.o ssfepromptdata.o mssfepromptdata.o usercontrolmenu.o \
-kspainter.o
+kspainter.o baserules.o
 ksircstatic_DEPENDENCIES = 
 CXXCOMPILE = $(CXX) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
 CXXLINK = $(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@
+COMPILE = $(CC) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CFLAGS)
+LINK = $(CC) $(CFLAGS) $(LDFLAGS) -o $@
 HEADERS =  $(noinst_HEADERS)
 
 DIST_COMMON =  ChangeLog Makefile.am Makefile.in
@@ -248,17 +255,37 @@ DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
 
 TAR = tar
 GZIP = --best
-SOURCES = $(ksirc_SOURCES) $(ksircstatic_SOURCES)
-OBJECTS = $(ksirc_OBJECTS) $(ksircstatic_OBJECTS)
+DEP_FILES =  .deps/FilterRuleEditor.P .deps/FilterRuleEditorData.P \
+.deps/KSircColour.P .deps/KSircColourData.P .deps/ahistlineedit.P \
+.deps/alistbox.P .deps/baserules.P .deps/dccDialog.P \
+.deps/dccDialogData.P .deps/ioBroadcast.P .deps/ioDCC.P \
+.deps/ioDiscard.P .deps/ioLAG.P .deps/ioNotify.P .deps/iocontroller.P \
+.deps/irclistbox.P .deps/irclistitem.P .deps/ksirc.P \
+.deps/ksircprocess.P .deps/kspainter.P .deps/linelistitem.P \
+.deps/mFilterRuleEditor.P .deps/mFilterRuleEditorData.P \
+.deps/mKSircColour.P .deps/mKSircColourData.P .deps/mahistlineedit.P \
+.deps/malistbox.P .deps/mdccDialog.P .deps/mdccDialogData.P \
+.deps/messageReceiver.P .deps/mioDCC.P .deps/mioLAG.P .deps/mioNotify.P \
+.deps/miocontroller.P .deps/mirclistbox.P .deps/mirclistitem.P \
+.deps/mksircprocess.P .deps/mopen_ksirc.P .deps/mopen_ksircData.P \
+.deps/mopen_top.P .deps/mopen_topData.P .deps/mservercontroller.P \
+.deps/mssfeprompt.P .deps/mssfepromptdata.P .deps/mtoplevel.P \
+.deps/open_ksirc.P .deps/open_ksircData.P .deps/open_top.P \
+.deps/open_topData.P .deps/servercontroller.P .deps/ssfeprompt.P \
+.deps/ssfepromptdata.P .deps/time.P .deps/toplevel.P \
+.deps/usercontrolmenu.P
+CXXMKDEP = $(CXX) -M $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
+SOURCES = time.c $(ksirc_SOURCES) $(ksircstatic_SOURCES)
+OBJECTS = time.o $(ksirc_OBJECTS) $(ksircstatic_OBJECTS)
 
 default: all
 
 .SUFFIXES:
 .SUFFIXES: .c .cpp .o
 $(srcdir)/Makefile.in: Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4) 
-	cd $(top_srcdir) && $(AUTOMAKE) --gnu --include-deps ksirc/Makefile
+	cd $(top_srcdir) && $(AUTOMAKE) --gnu ksirc/Makefile
 
-Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
+Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status $(BUILT_SOURCES)
 	cd $(top_builddir) \
 	  && CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= $(SHELL) ./config.status
 
@@ -370,6 +397,10 @@ distdir = $(top_builddir)/$(PACKAGE)-$(VERSION)/$(subdir)
 subdir = ksirc
 
 distdir: $(DISTFILES)
+	here=`cd $(top_builddir) && pwd`; \
+	top_distdir=`cd $(top_distdir) && pwd`; \
+	cd $(top_srcdir) \
+	  && $(AUTOMAKE) --include-deps --build-dir=$$here --srcdir-name=$(top_srcdir) --output-dir=$$top_distdir --gnu ksirc/Makefile
 	@for file in $(DISTFILES); do \
 	  d=$(srcdir); \
 	  test -f $(distdir)/$$file \
@@ -384,6 +415,39 @@ distdir: $(DISTFILES)
 	  (cd $$subdir && $(MAKE) top_distdir=../$(top_distdir) distdir=../$(distdir)/$$subdir distdir) \
 	    || exit 1; \
 	done
+
+MKDEP = gcc -M $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CFLAGS)
+
+DEPS_MAGIC := $(shell mkdir .deps > /dev/null 2>&1 || :)
+-include .deps/.P
+.deps/.P: $(BUILT_SOURCES)
+	echo > $@
+
+-include $(DEP_FILES)
+
+mostlyclean-depend:
+
+clean-depend:
+
+distclean-depend:
+
+maintainer-clean-depend:
+	rm -rf .deps
+
+.deps/%.P: %.c
+	@echo "Computing dependencies for $<..."
+	@o='o'; \
+	test -n "$o" && o='$$o'; \
+	$(MKDEP) $< >$@.tmp \
+	  && sed "s,^\(.*\)\.o:,\1.$$o \1.l$$o $@:," < $@.tmp > $@ \
+	  && rm -f $@.tmp
+
+.deps/%.P: %.cpp
+	@echo "Computing dependencies for $<..."
+	@o='o'; \
+	$(CXXMKDEP) $< >$@.tmp \
+	  && sed "s,^\(.*\)\.o:,\1.$$o \1.l$$o $@:," < $@.tmp > $@ \
+	  && rm -f $@.tmp
 info: info-recursive
 dvi: dvi-recursive
 check: all-am
@@ -431,17 +495,18 @@ maintainer-clean-generic:
 	test -z "$(MAINTAINERCLEANFILES)" || rm -f $(MAINTAINERCLEANFILES)
 	test -z "$(BUILT_SOURCES)" || rm -f $(BUILT_SOURCES)
 mostlyclean-am:  mostlyclean-binPROGRAMS mostlyclean-compile \
-		mostlyclean-tags mostlyclean-generic
+		mostlyclean-tags mostlyclean-depend mostlyclean-generic
 
-clean-am:  clean-binPROGRAMS clean-compile clean-tags clean-generic \
-		mostlyclean-am
+clean-am:  clean-binPROGRAMS clean-compile clean-tags clean-depend \
+		clean-generic mostlyclean-am
 
 distclean-am:  distclean-binPROGRAMS distclean-compile distclean-tags \
-		distclean-generic clean-am
+		distclean-depend distclean-generic clean-am
 
 maintainer-clean-am:  maintainer-clean-binPROGRAMS \
 		maintainer-clean-compile maintainer-clean-tags \
-		maintainer-clean-generic distclean-am
+		maintainer-clean-depend maintainer-clean-generic \
+		distclean-am
 
 mostlyclean:  mostlyclean-recursive mostlyclean-am
 
@@ -463,15 +528,24 @@ uninstall-exec-recursive installdirs-recursive uninstalldirs-recursive \
 all-recursive check-recursive installcheck-recursive info-recursive \
 dvi-recursive mostlyclean-recursive distclean-recursive clean-recursive \
 maintainer-clean-recursive tags tags-recursive mostlyclean-tags \
-distclean-tags clean-tags maintainer-clean-tags distdir info dvi \
-installcheck all-am install-exec-am install-data-am uninstall-am \
-install-exec install-data install uninstall all installdirs \
-mostlyclean-generic distclean-generic clean-generic \
-maintainer-clean-generic clean mostlyclean distclean maintainer-clean
+distclean-tags clean-tags maintainer-clean-tags distdir \
+mostlyclean-depend distclean-depend clean-depend \
+maintainer-clean-depend info dvi installcheck all-am install-exec-am \
+install-data-am uninstall-am install-exec install-data install \
+uninstall all installdirs mostlyclean-generic distclean-generic \
+clean-generic maintainer-clean-generic clean mostlyclean distclean \
+maintainer-clean
 
 
 kdoc:
 	kdoc -ddoc ksirc *.h
+
+time.c:
+	touch time.c
+
+time:
+	echo -n "#define COMPILE_DATE " > cdate.h
+	date +%s >> cdate.h
 
 ksircstatic: $(ksircstatic_OBJECTS) $(ksircstatic_DEPENDENCIES)
 	@rm -f ksircstatic

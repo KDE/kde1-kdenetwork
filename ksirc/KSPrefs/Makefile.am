@@ -38,7 +38,11 @@ mserverchanneldata.cpp \
 UserMenuRef.cpp \
 mUserMenuRef.cpp \
 UserMenuRefData.cpp \
-mUserMenuRefData.cpp
+mUserMenuRefData.cpp \
+defaultfilters.cpp \
+mdefaultfilters.cpp \
+defaultfiltersdata.cpp \
+mdefaultfiltersdata.cpp
 
 noinst_HEADERS = \
 ksprefs.h \
@@ -47,7 +51,9 @@ startupdata.h \
 serverchannel.h \
 startup.h \
 UserMenuRef.h \
-UserMenuRefData.h
+UserMenuRefData.h \
+defaultfilters.h \
+defaultfiltersdata.h
 
 libksprefsSOURCES = $(libkscutdialog_SOURCES)
 
@@ -65,7 +71,11 @@ mserverchanneldata.o \
 UserMenuRef.o \
 mUserMenuRef.o \
 UserMenuRefData.o \
-mUserMenuRefData.o
+mUserMenuRefData.o \
+defaultfilters.o \
+mdefaultfilters.o \
+defaultfiltersdata.o \
+mdefaultfiltersdata.o
 
 
 libkscutdialog.c:

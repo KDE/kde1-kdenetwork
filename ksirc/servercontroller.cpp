@@ -307,6 +307,7 @@ void servercontroller::configChange()
 {
   QDictIterator<KSircProcess> it( proc_list );
   while(it.current()){
+    it.current()->filters_update();
     it.current()->getWindowList()["!all"]->control_message(REREAD_CONFIG, "");
     ++it;
   }
