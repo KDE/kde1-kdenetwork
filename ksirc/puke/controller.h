@@ -11,7 +11,7 @@
 class PukeController;
 
 #include <qobject.h>
-#include <qsocknot.h>
+#include <qsocketnotifier.h>
 #include <qstring.h>
 #include <qintdict.h>
 

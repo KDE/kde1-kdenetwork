@@ -26,7 +26,7 @@
 
 
 #include <qfont.h>
-#include <qmsgbox.h> 
+#include <qmessagebox.h> 
 
 #include <kapp.h>
 #include <kconfig.h>

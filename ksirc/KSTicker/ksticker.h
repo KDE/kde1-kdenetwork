@@ -5,7 +5,7 @@
 #include <qframe.h>
 #include <qstring.h>
 #include <qlist.h>
-#include <qpopmenu.h>
+#include <qpopupmenu.h>
 
 struct SInfo {
   int length;

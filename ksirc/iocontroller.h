@@ -3,7 +3,7 @@
 
 #include <qobject.h>
 #include <qwidget.h>
-#include <qsocknot.h>  
+#include <qsocketnotifier.h>  
 #include <qdict.h>
 
 #include <kapp.h>
