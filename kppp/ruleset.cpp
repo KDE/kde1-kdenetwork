@@ -117,7 +117,6 @@ int RuleSet::load(const char *filename) {
 
     // strip whitespace
     line = line.replace(QRegExp("[ \t]"), "");
-
     // skip comment lines
     if((line.left(1) == "#") || (line.length()==0))
       continue;
@@ -346,10 +345,10 @@ bool RuleSet::parseLine(QString &s) {
     return ok;
   }
   
-
   // check currency settings
   if(s.contains(QRegExp("currency_symbol=.*"))) {
-    _currency_symbol = s.mid(16, s.length() - 16);
+     _currency_symbol = s.mid(16, s.length()-16);
+
       return TRUE;
   }
 

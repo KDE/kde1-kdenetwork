@@ -196,6 +196,7 @@ install: $(TARGET)
 	$(INSTALL_DATA) ./pixmaps/*.xpm $(PICSDIR)
 	$(INSTALL_DIR) $(ICONSDIR)
 	$(INSTALL_DATA) ./pixmaps/kppp.xpm $(ICONSDIR)
+	$(INSTALL_DATA) ./pixmaps/mini-kppp.xpm $(ICONSDIR)/mini/kppp.xpm
 	$(INSTALL_DIR) $(APPLNKDIR)	
 	$(INSTALL_DATA) Kppp.kdelnk $(APPLNKDIR)
 	$(INSTALL_DIR) $(RULESDIR)
