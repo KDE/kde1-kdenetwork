@@ -1,3 +1,7 @@
+1999-01-31  Mario Weilguni <mweilguni@kde.org>
+
+	* fixed a security bug (stdout or stderr closed on program start)
+
 1999-01-28  Mario Weilguni <mweilguni@kde.org>
 
 	* fixed a bug in opener.cpp. recvmsg() was interrupted, and thus

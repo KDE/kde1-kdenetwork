@@ -32,6 +32,7 @@
 #include <sys/socket.h>
 #include <locale.h>
 #include <errno.h>
+#include <fcntl.h>
 
 #ifdef HAVE_SYS_PARAM_H
 #include <sys/param.h>
@@ -269,6 +270,17 @@ void make_directories() {
 
 
 int main( int argc, char **argv ) {
+  // make sure that open/fopen and so on NEVER return 1 or 2 (stdout and stderr)
+  // Expl: if stdout/stderr were closed on program start (by parent), open() 
+  // would return a FD of 1, 2 (or even 0 if stdin was closed too)
+  if(fcntl(0, F_GETFL) == -1)
+    (void)open("/dev/null", O_RDONLY);
+
+  if(fcntl(1, F_GETFL) == -1)
+    (void)open("/dev/null", O_WRONLY);
+  
+  if(fcntl(2, F_GETFL) == -1)
+    (void)open("/dev/null", O_WRONLY);
 
   // Don't insert anything above this line unless you really know what
   // you're doing. We're most likely running setuid root here,
