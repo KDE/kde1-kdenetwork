@@ -3,7 +3,7 @@
 #
 
 &addhelp("Ban",
-"~bAdded by KSirc.pl~b
+"\cbAdded by KSirc.pl\cb
 Usage: BAN <nickname>
 bans the specified user on the current channel. Only channel operators
 can use this command. Bans the user in the form *!*user\@hostmask.  
@@ -12,20 +12,20 @@ it is *.domain.com
 See Also: UNBAN");
 
 &addhelp("UnBan",
-"~bAdded by KSirc.pl~b
+"\cbAdded by KSirc.pl\cb
 Usage: UNBAN <nickname>
 Unbans the specified user on the given channel. Only channel operators
 can use this command.  See BAN");
 
 &addhelp("ClrBan",
-"~bAdded by KSirc.pl~b
+"\cbAdded by KSirc.pl\cb
 Usage: CLRBAN [<#channel>]
 Removes ALL bans from the given channel. Only channel operators can use
 this command.  The channel defaults to your current one.
 See Also: MODE [-b]");
 
 &addhelp("FC",
-"~bAdded by KSirc.pl~b
+"\cbAdded by KSirc.pl\cb
 Usage: FC [<#channel>] <Filter> <command>
 Does /names on the given channel.  Uses the current channel if none 
 specified. Does a userhost on each person received. if their name 
@@ -37,12 +37,12 @@ Examples:
   /fc *!*\@((\\d+)\\.){3}\\.(\\d+) say $1 has a numeric host.");
 
 &addhelp("Pig",
-"~bAdded by KSirc.pl~b
+"\cbAdded by KSirc.pl\cb
 Usage: PIG <message>
 Translates your message into piglatin and says it on the current channel.");
 
 &addhelp("WallOP",
-"~bAdded by KSirc.pl~b
+"\cbAdded by KSirc.pl\cb
 Usage: WALLOP [<#channel>] <message>
 Sends a message to all of the channel operators on the given channel.  
 Defaults the the current channel.");
@@ -161,7 +161,7 @@ sub cmd_fcmd { #fold00
   $mask =~ s/\*/.*/g;
   &addhook("353","filtercommand");
   &addhook("366","removefiltercommand");
-  &tell("\t~b~4Matching /$mask/i on $names...");
+  &tell("\t\cb~4Matching /$mask/i on $names...");
   &docommand("names $names");
 }
 &addcmd("fcmd");
@@ -223,17 +223,17 @@ return "@words";
 }
 
 &addhelp("follow",
-"~bAdded by KSirc.pl~b
+"\cbAdded by KSirc.pl\cb
 Usage: follow <nick>
 Highlight <nick> in colour when ever they say anything");
 
 &addhelp("unfollow",
-"~bAdded by KSirc.pl~b
+"\cbAdded by KSirc.pl\cb
 Usage: unfollow <nick>
 Stop highlighting the nick");
 
 &addhelp("showfollows",
-"~bAdded by KSirc.pl~b
+"\cbAdded by KSirc.pl\cb
 Usage: showfollows
 Shows who you are currently following");
 
@@ -315,7 +315,32 @@ sub cmd_refresh #fold00
 }
 &addcmd("refresh");
 
-sub cmd_extnames #FOLD00
+sub hook_url_who_list { #FOLD00
+    my @info = split(/\s+/, $_[0]);
+    &print("*I* URL: http://$info[3]:<port>/");
+    $silent = 1;
+}
+
+sub hook_url_end_who { #fold00
+    &remhook("352", "url_who_list");
+    &remhook("315", "url_end_who");
+}
+
+&addhelp("url",
+"\cbAdded by KSirc.pl\cb
+Usage: URL
+Prints out your url");
+
+
+sub cmd_url #fold00
+{
+    &addhook("352", "url_who_list");
+    &addhook("315", "url_end_who");
+    &sl("who :$nick");
+}
+&addcmd("url");
+
+sub cmd_extnames #fold00
 {
   if($who_active == 0){
     &addhook("352", "ksirc_who_list");
@@ -330,7 +355,7 @@ sub cmd_extnames #FOLD00
 }
 &addcmd("extnames");
 
-sub hook_ksirc_who_end { #FOLD00
+sub hook_ksirc_who_end { #fold00
   $who_active--;
   if($who_active == 0){
     &remhook("352", "ksirc_who_list");
@@ -352,7 +377,7 @@ sub hook_ksirc_who_end { #FOLD00
   delete($WHO_TIME{$info[1]});
 }
 
-sub hook_ksirc_who_list { #FOLD00
+sub hook_ksirc_who_list { #fold00
   my @info = split(/\s+/, $_[0]);
   # 0: our nick
   # 1: channel
@@ -389,8 +414,8 @@ sub hook_ksirc_who_list { #FOLD00
   }
 }
 
-&tell("*** \0032,4~bLoaded KSirc.pl\003");
-&tell("*** \00313,3~bWith: Super Willy Enhancements, LotR's exec\003");
+&tell("*** \0032,4\cbLoaded KSirc.pl\003");
+&tell("*** \00313,3\cbWith: Super Willy Enhancements, LotR's exec\003");
 sub cmd_exec { #fold00
 
 	my $how, $to;
@@ -428,3 +453,53 @@ sub hook_fixcolours { #fold00
 }
 
 &addhook("send_text", "fixcolours");
+
+sub cmd_help { #fold00
+  &tell("*\cbH\cb* Help not available"), return unless @help;
+  my $found ='';
+  $_[0] =~ /^help\s*(.*)/;
+  my $args = $1;
+  if($args =~ /^\s*$/){
+    my $line = '';
+    my %once;
+    foreach (@help) {  
+      if (/^\@/) {
+        if (&eq($_, "\@main")) {
+          $found=1;
+          &tell("*\cbH\cb* Help on $args") if $args ne 'main';  # KSIRC MOD
+        }          
+        else {     
+          $found = 0;
+          my $cmd = /\@(\S+)/;
+          next if $once{$1};
+          $once{$1} = 1;
+          $line .= "$1 " . " "x(15-length("$1 "));  # KSIRC MOD
+          if(length($line) > 50){
+            &tell("*\cbH\cb* $line");
+            $line = "";              
+          }                          
+        }                            
+      } else {                       
+        &tell("*\cbH\cb* $_") if $found;
+      }                               
+    }
+    &tell("*\cbH\cb* $line");         
+  }                                   
+  else{                               
+    $args =~ s/ *$//;
+    foreach (@help) {
+      if (/^\@/) {
+        last if $found;
+        if (&eq($_, "\@$args")) {
+          $found=1;
+          &tell("*\cbH\cb* Help on $args") if $args ne 'main';
+        }
+      } else {
+        &tell("*\cbH\cb* $_") if $found;
+      }
+    }
+  }                                    # KSIRC MOD
+  &tell("*\cbH\cb* Unknown help topic; try /help") unless $found;
+}
+
+&addcmd("help");

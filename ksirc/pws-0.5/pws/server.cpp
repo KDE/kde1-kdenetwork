@@ -10,8 +10,8 @@
 
 #include "server.moc"
 
-PWSServer::PWSServer(QObject *parent, QString script, QString logDir)
-    : QObject(parent)
+PWSServer::PWSServer(QString script, QString logDir)
+    : QObject()
 {
     log = new KSircListBox();
     log->setCaption("Web Server Event Log");
@@ -23,10 +23,10 @@ PWSServer::PWSServer(QObject *parent, QString script, QString logDir)
     fdWeb = open(logDir+"/WebLog", O_CREAT|O_RDONLY|O_NONBLOCK);
     if(fdWeb > 0){
         lseek(fdWeb, 0, SEEK_END);
-         web = new QTimer(this, "web_timer");
-         connect(web, SIGNAL(timeout()),
-                 this, SLOT(webLogData()));
-         web->start(1000, FALSE);
+        web = new QTimer(this, "web_timer");
+        connect(web, SIGNAL(timeout()),
+                this, SLOT(webLogData()));
+        web->start(10000, FALSE); // 10 seconds it more than enough waste
     }
     else {
         warning("Could not open WebLog");
@@ -39,7 +39,7 @@ PWSServer::PWSServer(QObject *parent, QString script, QString logDir)
         error = new QTimer(this, "error_timer");
         connect(error, SIGNAL(timeout()),
                 this, SLOT(errorLogData()));
-        error->start(1000, FALSE);
+        error->start(10000, FALSE); // 10 seconds, like since who really cares
     }
     else{
         warning("Could not open ErrorLog");
@@ -115,7 +115,16 @@ void PWSServer::stderrData(KProcess *proc, char *buf, int len)
 }
 void PWSServer::serverDied(KProcess *proc)
 {
+    web->stop();
+    error->stop();
+    webLogData();
+    errorLogData();
+    close(fdWeb);
+    fdWeb = -1;
+    close(fdError);
+    fdError = -1;
     logit("~0,4*** Server Exited ***");
+    logit("~0,4*** kSirc Server Shutdown ***");
 }
 
 void PWSServer::webLogData()
@@ -124,7 +133,7 @@ void PWSServer::webLogData()
     int bytes = read(fdWeb, buf, 1023);
     while(bytes > 0){
         if(bytes <= 1024)
-            buf[bytes+1] = 0x0;
+            buf[bytes] = 0x0; // Bytes since 0 is first (not bytes+1)
         char *line = strtok(buf, "\n");
         while(line){
             logit(line);
@@ -140,7 +149,7 @@ void PWSServer::errorLogData()
     int bytes = read(fdError, buf, 1023);
     while(bytes > 0){
         if(bytes <= 1024)
-            buf[bytes+1] = 0x0;
+            buf[bytes] = 0x0; // Bytes since 0 is first
         char *line = strtok(buf, "\n");
         while(line){
             QString sline = QString("~4") + line;

@@ -12,28 +12,32 @@
 
 class PWS : public KTopLevelWidget
 {
-	Q_OBJECT
+    Q_OBJECT
 public:
-	PWS(QWidget *parent = 0, const char *name = 0);
-        virtual ~PWS();
+    PWS(QWidget *parent = 0, const char *name = 0);
+    virtual ~PWS();
 
-        void startServer() {
-            if(view != 0x0)
-                view->restart();
-        }
+    void startServer() {
+        PWSWidget::restart();
+    }
+
+    virtual void show();
 
 signals:
-        void quitPressed(QObject *);
+    void quitPressed(QObject *);
 
 protected slots:
-	void invokeHelp();
+    void invokeHelp();
+    void closeView(QObject *);
 
 private:
-	KMenuBar   *menuBar;
-	KStatusBar *statusBar;
-	KToolBar   *toolBar;
+    KMenuBar   *menuBar;
+    KStatusBar *statusBar;
+    KToolBar   *toolBar;
 
-	PWSWidget *view;
+    PWSWidget *view;
+
+    bool createdUI;
 };
 
 #endif // PWS_H 

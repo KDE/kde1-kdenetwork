@@ -14,6 +14,7 @@
 #include <qwidgetstack.h>
 #include <qlined.h>
 #include <qpushbt.h>
+#include <qmessagebox.h>  
 
 #include <kapp.h>
 #include <kiconloader.h>
@@ -25,7 +26,10 @@
 #include <kfileio.h>
 #include <addwizard.h>
 
+
 static KConfig *conf;
+
+PWSServer *PWSWidget::server = 0x0;
 
 PWSWidget::PWSWidget(QWidget *parent, const char *name)
 	: QWidget(parent, name)
@@ -33,7 +37,6 @@ PWSWidget::PWSWidget(QWidget *parent, const char *name)
 
     debug("starting pwswidget");
     increaser=0;
-    server=0;
 
     conf = kapp->getConfig();
     
@@ -78,7 +81,7 @@ PWSWidget::PWSWidget(QWidget *parent, const char *name)
     QPushButton *b1=new QPushButton("Save Configuration",this, "b1");
     QObject::connect (b1,SIGNAL(clicked()),SLOT(accept()));
     QPushButton *b2=new QPushButton("(Re)Start Server",this, "b2");
-    QObject::connect (b2,SIGNAL(clicked()),SLOT(restart()));
+    QObject::connect (b2,SIGNAL(clicked()),SLOT(slotRestart()));
     QPushButton *b5=new QPushButton("Log Window",this, "b5");
     QObject::connect (b5,SIGNAL(clicked()),SLOT(logWindow()));
     QPushButton *b6=new QPushButton("Delete Server",this, "b6");
@@ -105,6 +108,8 @@ PWSWidget::PWSWidget(QWidget *parent, const char *name)
     HLay3->addWidget(b3,0);
     HLay3->addWidget(b4,0);
 
+    save = FALSE;
+
     debug("done pwswidget");
 }
 
@@ -114,8 +119,30 @@ PWSWidget::~PWSWidget()
 
 void PWSWidget::quit()
 {
-    debug ("forgetting everything");
-    emit quitPressed(parent());
+  debug ("forgetting everything");
+  if(save == TRUE){
+    switch(QMessageBox::information(this, "kSirc - PWS",
+                                    "You did not save your changes\n"
+                                    "For the changes to take effect you must\n"
+                                    "save your work and restart the web server\n\n"
+                                    "Do you want to save your changes and\n"
+                                    "restrart the server before exiting?\n",
+                                    "&Save+Restart Server", "&Don't Save", "&Cancel",
+                                    0, // Enter == button 0
+                                    2)) { // Escape == button 2
+                                    case 0:
+                                      accept();
+                                      restart();
+                                      break;
+                                    case 1:
+                                      emit quitPressed(parent());
+                                      break;
+                                    case 2:
+                                      return;
+                                      break;
+    }
+  }
+  emit quitPressed(parent());
 }
 
 void PWSWidget::accept()
@@ -268,78 +295,45 @@ void PWSWidget::accept()
     
     kStringToFile(config,KApplication::localkdedir()+"/share/apps/pws/server-config");
 
+    save = FALSE;
+
 }
 
 void PWSWidget::restart()
 {
-    conf->setGroup("Servers");
-    QStrList names;
-    conf->readListEntry("ServerNames",names);
-    bool needRoot=false;
-    /*
-    for (char *name=names.first();name!=0;name=names.next())
-    {
-        conf->setGroup(name);
-        if (conf->readBoolEntry("Enabled")!=false)
-            if (conf->readNumEntry("Port")<1024)
-                needRoot=true;
-        }
-    */
-    debug ("now saving configuration for mathopd");
-
-    /*
-    if (geteuid()==0) //I am root already
-        needRoot=false;
-    if (needRoot)
-        debug ("need root");
-    else
-        debug ("don't need root");
-    debug ("trying to kill old mathopd");
-    debug ("and starting new mathopd with new configuration");
-    */
-
-    /*
-    QString script,pid;
-    conf->setGroup("General");
-    QString pidfile=conf->readEntry("Logs")+"PIDFile";
-    if (QFile::exists(pidfile))
-        pid=kFileToString(pidfile);
-    if (!pid.isEmpty())
-    {
-        script+="echo \"Killing old server, with PID "+pid+"\"\n";
-        script+="kill "+pid+"\n";
-        script+="echo Done\n";
-    }
-    script+="echo Starting new server\n";
-    if (needRoot)
-    {
-        script+="echo Please enter root password, so I can start\n";
-        script+="echo the new daemon in the low port you selected.\n";
-        script+="su -c ";
-    }
-    script+="mathopd <";
-    script+=KApplication::localkdedir()+"/share/apps/pws/server-config\n";
-    script+="echo Done\n";
-    script+="echo Any errors should have appeared above\n";
-    script+="echo \"Press return to close this window\"\nread\n";
-
-    kStringToFile(script,KApplication::localkdedir()+"/share/apps/pws/server-script");
-
-    QString command;
-    command="kvt -e sh ";
-    command+=KApplication::localkdedir()+"/share/apps/pws/server-script";
-
-    debug ("command->%s",command.data());
-    */
+    conf = kapp->getConfig();
     conf->setGroup("General");
     QString logdir=conf->readEntry("Logs");
     
     if(server != 0)
         delete server;
-    server = new PWSServer(this, KApplication::localkdedir()+"/share/apps/pws/server-config", logdir);
+    server = new PWSServer(KApplication::localkdedir()+"/share/apps/pws/server-config", logdir);
     
 //    system(command.data());
 }
+
+void PWSWidget::slotRestart(){
+  if(save == TRUE){
+    switch(QMessageBox::information(this, "kSirc - PWS",
+                                    "You did not save your changes\n"
+                                    "For the changes to take effect you must\n"
+                                    "save your work.\n\n"
+                                    "Do you want to save your changes and\n\n",
+                                    "&Save+Restart Server", "&Cancel", "",
+                                    0, // Enter == button 0
+                                    2)) { // Escape == button 2
+                                    case 0:
+                                      accept();
+                                      restart();
+                                      break;
+                                    case 1:
+                                      return;
+                                      break;
+    }
+  }
+  PWSWidget::restart();
+}
+
 void PWSWidget::addServer()
 {
 
@@ -363,7 +357,9 @@ void PWSWidget::addServer()
         conf->sync();
     }
     loadServers();
+    save = TRUE;
 }
+
 
 void PWSWidget::deleteServer()
 {
@@ -393,6 +389,9 @@ void PWSWidget::deleteServer()
     list->setEnabled(TRUE);
     stack->setEnabled(TRUE);
     repaint(TRUE);
+    save = TRUE;
+    list->setSelected(list->firstChild(), TRUE);
+    
 
 }
 
@@ -404,7 +403,7 @@ void PWSWidget::loadServers()
 
     if (names.count()==0)
     {
-        //addServer();
+      //addServer();
     }
     conf->setGroup("Servers");
     conf->readListEntry("ServerNames",names);
@@ -483,3 +482,4 @@ void PWSListView::resizeEvent(QResizeEvent *e){
         this->setColumnWidth(0, 18);
         this->setColumnWidth(1, this->width()-19);
 }
+

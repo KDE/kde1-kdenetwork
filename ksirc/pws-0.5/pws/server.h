@@ -12,7 +12,7 @@
 class PWSServer : public QObject{
     Q_OBJECT
 public:
-    PWSServer(QObject *parent, QString script, QString LogDir);
+    PWSServer(QString script, QString LogDir);
     ~PWSServer();
 
     void showLogWindow(bool show=TRUE);

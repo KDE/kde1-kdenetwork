@@ -9,6 +9,7 @@
 #include <qwidget.h>
 #include <qdict.h>
 #include <qlistview.h>
+#include <qpushbutton.h>
 
 #include "server.h"
 
@@ -30,6 +31,7 @@ public:
     QWidgetStack *stack;
     int increaser;
     QDict <QWidget> pages;
+    static void restart(); // by being static is allows us to start servers with starting the whole UI
 signals:
     void quitPressed(QObject *);
 public slots:
@@ -37,7 +39,7 @@ public slots:
     void accept();
     void addServer();
     void deleteServer();
-    void restart();
+    void slotRestart();
     void flipPage(QListViewItem *item);
     void logWindow();
 protected slots:
@@ -45,8 +47,9 @@ protected slots:
 protected:
     virtual void resizeEvent(QResizeEvent *e);
 private:
-    PWSServer *server;
+    static PWSServer *server;
     QString current;
+    bool save;
 };
 
 class PWSListView : public QListView
