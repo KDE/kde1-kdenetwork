@@ -1,6 +1,8 @@
 # $Id$
 
-include_HEADERS=    \
+mimelibdir = $(includedir)/mimelib
+
+mimelib_HEADERS=    \
    address.h \
    addrlist.h \
    body.h \
