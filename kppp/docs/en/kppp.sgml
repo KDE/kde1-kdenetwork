@@ -756,7 +756,7 @@ pitfalls.
 
 <item> Make sure that your /etc/ppp/options file exists, but is empty!
 
-<item> Make sure that you DON'T use the options "lock" as an argument
+<item> Make sure that you DON'T use the option "lock" as an argument
     for pppd (kppp is already taking care of device locking )
 <item> Remove the "lock" option from your /etc/ppp/options file!
 

@@ -1,3 +1,8 @@
+Wed Mar 18 21:47:20 1998  Harri Porten  <porten@tu-harburg.de>
+
+	* runtests.cpp: added check for 'lock' option in /etc/ppp/options.
+	Hopefully, this check isn't too harsh and won't cause any false alarms.
+
 Wed Mar 18 01:13:50 1998  Harri Porten  <porten@tu-harburg.de>
 
 	* modemcmds.cpp: replaced 'Modem Sustains Fast Init' (from general.cpp)

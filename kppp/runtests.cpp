@@ -30,6 +30,7 @@
 #include <kmsgbox.h>
 #include <unistd.h>
 #include <qmsgbox.h>
+#include <qregexp.h>
 #include <sys/stat.h>
 #include <stdlib.h>
 #include <sys/types.h>
@@ -148,6 +149,29 @@ int runTests() {
       gpppdata.save();
     }
   }
+
+  // Test 4: check for undesired 'lock' option in /etc/ppp/options
+  int fd;
+  if ((fd = open(SYSOPTIONS, O_RDONLY)) >= 0) {
+    QString str;
+    char c;
+    while (str.length() < 50 && read(fd, &c, 1) == 1) 
+      str+=c;
+    QRegExp r1("^lock");
+    QRegExp r2("\\slock$");   // \s matches white space (9,10,11,12,13,32) 
+    QRegExp r3("\\slock\\s");
+    if (r1.match(str) >= 0 || r2.match(str) >= 0 || r3.match(str) >= 0) {
+      QMessageBox::warning(0,
+		   klocale->translate("Error"),
+		   klocale->translate("kppp has detected a 'lock' option in "
+				      "/etc/ppp/options.\n\nThis option has "
+				      "to removed since kppp takes care of "
+				      "device locking itself.\n"
+				      "Contact your system administrator."));
+      warning++;
+    }
+    close(fd);
+  } 
 
   if(warning == 0)
     return TEST_OK;

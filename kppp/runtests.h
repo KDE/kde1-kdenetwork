@@ -29,10 +29,14 @@
 
 #include "pppdata.h"
 
+#define SYSOPTIONS "/etc/ppp/options"
+
 const int TEST_OK = 0;
 const int TEST_WARNING = 1;
 const int TEST_NOCONNECT = 2;
 const int TEST_CRITICAL = 3;
+
+
 
 // Various tests to be run at starttime
 int runTests();
