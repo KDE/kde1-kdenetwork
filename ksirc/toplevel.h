@@ -312,12 +312,12 @@ private:
   QStrList *LineBuffer;
 
   // QPopupMenu's used for the menubar
-  KPopupMenu *file, *edit;
+  KAPopupMenu *file, *edit;
 
   ircListItem *parse_input(QString string);
   void sirc_write(QString str);
 
-  KPopupMenu *user_controls;
+  QPopupMenu *user_controls;
   static QList<UserControlMenu> *user_menu;
   int opami;
 

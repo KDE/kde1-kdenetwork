@@ -4,8 +4,8 @@
 #include <kapp.h>
 #include <qkeycode.h>
 
-bool KPopupMenu::visible = false;
-KGAccel *KPopupMenu::KGA = 0x0;
+bool KAPopupMenu::visible = false;
+KGAccel *KAPopupMenu::KGA = 0x0;
 
 KGAccel::KGAccel(QObject * parent = 0, const char * name=0 ) /*fold00*/
     : QObject(parent, name)
@@ -24,7 +24,7 @@ KGAccel::~KGAccel()
 
 bool KGAccel::eventFilter(QObject *, QEvent *e) /*FOLD00*/
 {
-    if(e->type() == Event_KeyPress && KPopupMenu::popVisible() == false){
+    if(e->type() == Event_KeyPress && KAPopupMenu::popVisible() == false){
     QKeyEvent *ke = Q_KEY_EVENT(e);
     if(ke->state() & (ControlButton | AltButton)){
       emit updateAccel();
@@ -49,7 +49,7 @@ bool KGAccel::eventFilter(QObject *, QEvent *e) /*FOLD00*/
   return FALSE;
 }
 
-void KGAccel::insertAccel(int key, int id, KPopupMenu *kp) /*FOLD00*/
+void KGAccel::insertAccel(int key, int id, KAPopupMenu *kp) /*FOLD00*/
 {
 
   removeAccel(key); // clear any old accelerators
@@ -79,7 +79,7 @@ void KGAccel::removeAccel(int key) /*FOLD00*/
   }
 }
 
-void KGAccel::clearAccelForPopup(KPopupMenu *kp)
+void KGAccel::clearAccelForPopup(KAPopupMenu *kp)
 {
     QIntDictIterator<accelItem> it(*accelDict);
     while(it.current()){
@@ -93,7 +93,7 @@ void KGAccel::clearAccelForPopup(KPopupMenu *kp)
 
 }
 
-KPopupMenu::KPopupMenu ( QWidget * parent=0, const char * name=0 ) /*FOLD00*/
+KAPopupMenu::KAPopupMenu ( QWidget * parent=0, const char * name=0 ) /*FOLD00*/
     : QPopupMenu(parent, name)
 {
   connect(this, SIGNAL(highlighted(int)),
@@ -116,27 +116,27 @@ KPopupMenu::KPopupMenu ( QWidget * parent=0, const char * name=0 ) /*FOLD00*/
   
 }
 
-KPopupMenu::~KPopupMenu() /*fold00*/
+KAPopupMenu::~KAPopupMenu() /*fold00*/
 {
     KGA->clearAccelForPopup(this);
 }
 
-void KPopupMenu::show(){ /*fold00*/
+void KAPopupMenu::show(){ /*fold00*/
   visible = true;
   QPopupMenu::show();
 }
 
-void KPopupMenu::hide(){ /*fold00*/
+void KAPopupMenu::hide(){ /*fold00*/
   visible = false;
   QPopupMenu::hide();
 }
 
-void KPopupMenu::current(int item) /*fold00*/
+void KAPopupMenu::current(int item) /*fold00*/
 {
   current_item = item;
 }
 
-void KPopupMenu::keyPressEvent(QKeyEvent *e) /*fold00*/
+void KAPopupMenu::keyPressEvent(QKeyEvent *e) /*fold00*/
 {
   if(e->state() & ControlButton | e->state() & AltButton){
     e->accept();
@@ -174,7 +174,7 @@ void KPopupMenu::keyPressEvent(QKeyEvent *e) /*fold00*/
   }
 }
 
-void KPopupMenu::updateAccel() /*fold00*/
+void KAPopupMenu::updateAccel() /*fold00*/
 {
   if(read_config == false){
     KConfig *cnf = kapp->getConfig();
@@ -201,7 +201,7 @@ void KPopupMenu::updateAccel() /*fold00*/
   }
 }
 
-void KPopupMenu::activated(int id) /*FOLD00*/
+void KAPopupMenu::activated(int id) /*FOLD00*/
 {
   QMenuItem *mi = findItem(id);
   if(mi != 0x0 && mi->signal() != 0x0)
@@ -212,7 +212,7 @@ void KPopupMenu::activated(int id) /*FOLD00*/
   debug("Got id: %d and QMenuItem: %p", id, mi);
 }
 
-void KPopupMenu::clearAccel(int id) /*fold00*/
+void KAPopupMenu::clearAccel(int id) /*fold00*/
 {
   QString other = text(id);
   int strip = other.find("\t");
@@ -222,7 +222,7 @@ void KPopupMenu::clearAccel(int id) /*fold00*/
 }
 
 
-QString KPopupMenu::keyToString(int key) /*fold00*/
+QString KAPopupMenu::keyToString(int key) /*fold00*/
 {
   static QIntDict<char> *ktos = 0x0;
   if(ktos == 0x0){

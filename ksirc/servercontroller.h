@@ -96,7 +96,7 @@ protected:
 
 private:
   servercontroller *sc;
-  KPopupMenu *pop;
+  QPopupMenu *pop;
 };
 
 class servercontroller : public KTopLevelWidget
@@ -210,7 +210,7 @@ private:
     // Hold a list of all KSircProcess's for access latter.  Index by server 
     // name
     QDict<KSircProcess> proc_list;
-    KPopupMenu *options, *connections;
+    KAPopupMenu *options, *connections;
     int join_id, server_id;
     
     int open_toplevels;

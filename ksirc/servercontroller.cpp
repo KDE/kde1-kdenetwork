@@ -155,14 +155,14 @@ servercontroller::servercontroller /*FOLD00*/
 
   setFrameBorderWidth(5);
 
-  KPopupMenu *file = new("KPopupMenu") KPopupMenu(0, QString(name) + "_menu_file");
+  KAPopupMenu *file = new("KAPopupMenu") KAPopupMenu(0, QString(name) + "_menu_file");
   //  insertChild(file);
   file->insertItem(i18n("&Dock"), this, SLOT(toggleDocking()));
   file->insertSeparator();
   file->insertItem(i18n("&Quit"), this, SLOT(endksirc()), ALT + Key_F4);
   MenuBar->insertItem(i18n("&File"), file);
   
-  connections = new("KPopupMenu") KPopupMenu(0, QString(name) + "_menu_connections");
+  connections = new("KAPopupMenu") KAPopupMenu(0, QString(name) + "_menu_connections");
 //  insertChild(connections);
 
   server_id = connections->insertItem(i18n("New Server..."), this, SLOT(new_connection()), CTRL + Key_N );
@@ -181,7 +181,7 @@ servercontroller::servercontroller /*FOLD00*/
   kSircConfig->DisplayTopic = kConfig->readNumEntry("DisplayTopic", TRUE);
   
   kConfig->setGroup("GlobalOptions");
-  options = new("KPopupMenu") KPopupMenu(0, QString(name) + "_menu_options");
+  options = new("KAPopupMenu") KAPopupMenu(0, QString(name) + "_menu_options");
   //insertChild(options);
   options->setCheckable(TRUE);
 
@@ -200,7 +200,7 @@ servercontroller::servercontroller /*FOLD00*/
   MenuBar->insertItem(i18n("&Options"), options);
   
   
-  KPopupMenu *help = new("KPopupMenu") KPopupMenu(0, QString(name) + "_menu_help");
+  KAPopupMenu *help = new("KAPopupMenu") KAPopupMenu(0, QString(name) + "_menu_help");
   //insertChild(help);
   //  help->insertItem("Help...",
   //		   this, SLOT(help_general()));
@@ -727,7 +727,7 @@ dockServerController::dockServerController(servercontroller *_sc, const char *_n
 {
   sc = _sc;
 
-  pop = new("KPopupMenu") KPopupMenu;
+  pop = new("QPopupMenu") QPopupMenu;
   pop->setName("dockServerController_menu_pop");
 
   pop->insertItem(i18n("&Quit"), kApp, SLOT(quit()));

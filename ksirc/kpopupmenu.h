@@ -9,12 +9,12 @@
 
 class accelItem;
 class KGAccel;
-class KPopupMenu;
+class KAPopupMenu;
 
 class accelItem
 {
 public:
-  accelItem(int i, KPopupMenu *k){
+  accelItem(int i, KAPopupMenu *k){
       identifier = i;
       kp = k;
   }
@@ -23,13 +23,13 @@ public:
     return identifier;
   }
 
-  KPopupMenu *menu(){
+  KAPopupMenu *menu(){
       return kp;
   }
   
 private:
     int identifier;
-    KPopupMenu *kp;
+    KAPopupMenu *kp;
 };
 
 class KGAccel : public QObject
@@ -40,9 +40,9 @@ public:
     virtual ~KGAccel();
 
     virtual bool eventFilter(QObject *, QEvent *);
-    virtual void insertAccel(int key, int id, KPopupMenu *);
+    virtual void insertAccel(int key, int id, KAPopupMenu *);
     virtual void removeAccel(int key);
-    virtual void clearAccelForPopup(KPopupMenu *);
+    virtual void clearAccelForPopup(KAPopupMenu *);
 
 signals:
     void updateAccel();
@@ -52,12 +52,12 @@ private:
     
 };
 
-class KPopupMenu : public QPopupMenu
+class KAPopupMenu : public QPopupMenu
 {
     Q_OBJECT
 public:
-    KPopupMenu ( QWidget * parent=0, const char * name=0 );
-    virtual ~KPopupMenu ();
+    KAPopupMenu ( QWidget * parent=0, const char * name=0 );
+    virtual ~KAPopupMenu ();
 
     virtual void show();
     virtual void hide();
