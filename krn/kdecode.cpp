@@ -34,7 +34,7 @@ KDecode::~KDecode()
 }
 
 
-void KDecode::load(char *filename)
+void KDecode::load(const char *filename)
 {
 
     filenames.append (filename);
@@ -121,7 +121,7 @@ void KDecode::decode(int line,int)
     decode(line,(char *)0);
 }
 
-void KDecode::decode(int line,char *destName)
+void KDecode::decode(int line,const char *destName)
 {
     uulist *l;
     int i=dialog->list->text(line,0).toInt()-1;

@@ -17,13 +17,13 @@ public:
     KDecode();
     ~KDecode();
 
-    void load(char *filenames);
+    void load(const char *filenames);
     void showWindow();
     static class DwString * decodeString(const char* data, QString type);
     static const char* encodeString(const char* data, QString type);
 
 public slots:
-    void decode(int ID,char *destName=0);
+    void decode(int ID,const char *destName=0);
     void decode(int ID,int);
 
 signals:
