@@ -13,7 +13,7 @@
 # kde_wallpaperdir  Where general wallpapers should go to.
 
 # just set the variable
-APPSDIR = $(kde_appsdir)/Network
+APPSDIR = $(kde_appsdir)/Internet
 # set the include path for X, qt and KDE
 INCLUDES= $(all_includes)
 # claim, which subdirectories you want to install
@@ -24,7 +24,7 @@ SUBDIRS = doc
 bin_PROGRAMS = 	knu
 
 # Which sources should be compiled for knu.
-knu_SOURCES	= knu.cpp CommandDlg.cpp OptionsDlg.cpp \
+knu_SOURCES	= knu.cpp CommandDlg.cpp OptionsDlg.cpp MtrDlg.cpp \
 			PingDlg.cpp TracerouteDlg.cpp HostDlg.cpp FingerDlg.cpp
 
 # the library search path.
@@ -35,13 +35,13 @@ knu_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 knu_LDADD   = -lkdeui -lkdecore -lqt -lXext -lX11 $(LIBSOCKET)
 
 # this option you can leave out. Just, if you use "make dist", you need it
-noinst_HEADERS = knu.h CommandDlg.h OptionsDlg.h\
+noinst_HEADERS = knu.h CommandDlg.h OptionsDlg.h MtrDlg.h\
                         PingDlg.h TracerouteDlg.h HostDlg.h FingerDlg.h
 
 EXTRA_DIST = version.h knu.kdelnk knu.xpm knu.lsm
 
 # just to make sure, automake makes them 
-BUILTSOURCES =	knu.moc CommandDlg.moc OptionsDlg.moc\
+BUILTSOURCES =	knu.moc CommandDlg.moc OptionsDlg.moc MtrDlg.moc\
 			PingDlg.moc TracerouteDlg.moc HostDlg.moc FingerDlg.moc
 
 # if you "make distclean", this files get removed. If you want to remove
@@ -89,6 +89,10 @@ OptionsDlg.moc: OptionsDlg.h
 PingDlg.cpp: PingDlg.moc
 PingDlg.moc: PingDlg.h
 	$(MOC) PingDlg.h -o PingDlg.moc
+
+MtrDlg.cpp: MtrDlg.moc
+MtrDlg.moc: MtrDlg.h
+	$(MOC) MtrDlg.h -o MtrDlg.moc
 
 TracerouteDlg.cpp: TracerouteDlg.moc
 TracerouteDlg.moc: TracerouteDlg.h
