@@ -1,7 +1,7 @@
 # $Id$
 
 SUBDIRS = da de pt fr fi hu es hr pl cs it ro sk el no nl \
-	pt_BR
+	pt_BR ca
 
 # this is a general list for merging!
 APPS = knu kmail krn kppp
