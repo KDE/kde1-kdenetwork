@@ -1,8 +1,9 @@
 msgid ""
-msgstr "Project-Id-Version: kuser\n"
-       "POT-Creation-Date: 1998-03-21 18:32+0300\n"
-       "PO-Revision-Date: 1998-03-23 00:00+0100\n"
-       "Last-Translator: Sandro Henrique <sandro@conectiva.com.br>\n"
+msgstr ""
+"Project-Id-Version: kuser\n"
+"POT-Creation-Date: 1998-06-18 22:50+0200\n"
+"PO-Revision-Date: 1998-03-23 00:00+0100\n"
+"Last-Translator: Sandro Henrique <sandro@conectiva.com.br>\n"
 
 #: accounts.cpp:53
 msgid "Account Setup"
@@ -20,7 +21,7 @@ msgstr "Nova..."
 msgid "Phone Costs:"
 msgstr "Custos Telefônicos"
 
-#: accounts.cpp:116 conwindow.cpp:56
+#: accounts.cpp:116 conwindow.cpp:55
 msgid "Volume:"
 msgstr "Volume:"
 
@@ -40,8 +41,9 @@ msgstr "Apagar Tudo"
 msgid ""
 "Are you sure you want to reset the accumulated\n"
 "telephone costs for the selected account to zero?"
-msgstr "Tem certeza que quer zerar os custos telefônicos\n"
-       "acumulados da conta selecionada ?"
+msgstr ""
+"Tem certeza que quer zerar os custos telefônicos\n"
+"acumulados da conta selecionada ?"
 
 #: accounts.cpp:271 accounts.cpp:294
 msgid "Maximum number of accounts reached."
@@ -56,8 +58,9 @@ msgstr "Nenhuma conta selecionada."
 msgid ""
 "Are you sure you want to delete\n"
 "the account \"%s\"?"
-msgstr "Tem certeza que quer apagar\n"
-       "a conta \"%s\"?"
+msgstr ""
+"Tem certeza que quer apagar\n"
+"a conta \"%s\"?"
 
 #: accounts.cpp:321
 msgid "Confirm"
@@ -99,214 +102,216 @@ msgstr "Contabilidade"
 msgid ""
 "You must enter a unique\n"
 "account name"
-msgstr "Informe um nome de\n"
-       "conta único"
+msgstr ""
+"Informe um nome de\n"
+"conta único"
 
 #: accounts.cpp:396
 msgid "Login script has unbalanced Loop Start/End"
 msgstr "Script login tem um Ciclo incorreto"
 
-#: connect.cpp:101 connect.cpp:204 main.cpp:779
+#: connect.cpp:108 connect.cpp:212 main.cpp:829
 msgid "Connecting to: "
 msgstr "Conectando-se com: "
 
-#: connect.cpp:110 connect.cpp:219 miniterm.cpp:162 modeminfo.cpp:63
-#: modeminfo.cpp:150
+#: connect.cpp:117 connect.cpp:228 miniterm.cpp:162 modeminfo.cpp:62
+#: modeminfo.cpp:149
 msgid "Sorry, can't create modem lock file."
 msgstr "Desculpe, não consegui criar arquivo de travamento do modem."
 
-#: connect.cpp:115 connect.cpp:178 modeminfo.cpp:68
+#: connect.cpp:122 connect.cpp:185 modeminfo.cpp:67
 msgid "Looking for Modem ..."
 msgstr "Procurando Modem ..."
 
-#: connect.cpp:124 debug.cpp:86 main.cpp:792
+#: connect.cpp:131 debug.cpp:86 main.cpp:842
 msgid "Log"
 msgstr "Registrar"
 
-#: connect.cpp:213 miniterm.cpp:157 modeminfo.cpp:145
+#: connect.cpp:222 miniterm.cpp:157 modeminfo.cpp:144
 msgid "Sorry, modem device is locked."
 msgstr "Desculpe, o modem está travado."
 
-#: connect.cpp:225 miniterm.cpp:176 miniterm.cpp:253 modeminfo.cpp:165
+#: connect.cpp:234 miniterm.cpp:176 miniterm.cpp:253 modeminfo.cpp:164
 msgid "Modem Ready"
 msgstr "Modem Pronto"
 
-#: connect.cpp:257 connect.cpp:258
+#: connect.cpp:266 connect.cpp:267
 msgid "Initializing Modem..."
 msgstr "Inicializando Modem..."
 
-#: connect.cpp:285
+#: connect.cpp:292
 msgid "Dialing"
 msgstr "Discando"
 
-#: connect.cpp:315
+#: connect.cpp:325
 msgid "Line Busy. Hanging up ..."
 msgstr "Linha Ocupada. Desligando ..."
 
-#: connect.cpp:321
+#: connect.cpp:331
 msgid "Line Busy. Waiting: "
 msgstr "Linha Ocupada. Aguardando..."
 
-#: connect.cpp:323 connect.cpp:441 connect.cpp:460
+#: connect.cpp:333 connect.cpp:451 connect.cpp:470
 msgid " seconds"
 msgstr " segundos"
 
-#: connect.cpp:341
+#: connect.cpp:351
 msgid "No Dialtone"
 msgstr "Sem Tom de Linha"
 
-#: connect.cpp:351
+#: connect.cpp:361
 msgid "No Carrier"
 msgstr "Sem portadora"
 
-#: connect.cpp:386
+#: connect.cpp:396
 msgid "Scanning "
 msgstr "Procurando "
 
-#: connect.cpp:397
+#: connect.cpp:407
 msgid "Saving "
 msgstr "Salvando "
 
-#: connect.cpp:416
+#: connect.cpp:426
 msgid "Sending "
 msgstr "Enviando "
 
-#: connect.cpp:427
+#: connect.cpp:437
 msgid "Expecting "
 msgstr "Esperando "
 
-#: connect.cpp:439
+#: connect.cpp:449
 msgid "Pause "
 msgstr "Pausa "
 
-#: connect.cpp:458
+#: connect.cpp:468
 msgid "Timeout "
 msgstr "Timeout "
 
-#: connect.cpp:472 connect.cpp:473
+#: connect.cpp:482 connect.cpp:483
 msgid "Hangup"
 msgstr "Desligar"
 
-#: connect.cpp:486 connect.cpp:487
+#: connect.cpp:496 connect.cpp:497
 msgid "Answer"
 msgstr "Responder"
 
-#: connect.cpp:495
+#: connect.cpp:505
 msgid "ID "
 msgstr "ID "
 
-#: connect.cpp:532
+#: connect.cpp:542
 msgid "Password "
 msgstr "Password "
 
-#: connect.cpp:570
+#: connect.cpp:580
 msgid "Prompting "
 msgstr "Pedindo"
 
-#: connect.cpp:607
+#: connect.cpp:617
 msgid "PW Prompt "
 msgstr "Prompt PW "
 
-#: connect.cpp:633
+#: connect.cpp:643
 msgid "Loop Start "
 msgstr "Início de Ciclo "
 
-#: connect.cpp:637
+#: connect.cpp:647
 msgid "ERROR: Nested too deep, ignored."
 msgstr "ERRO: Demasiado profundo, ignorado."
 
-#: connect.cpp:642
+#: connect.cpp:652
 msgid "Loops nested too deeply!"
 msgstr "Ciclos demasiadamente encadeados!"
 
-#: connect.cpp:660
+#: connect.cpp:670
 msgid "LoopEnd without mathing Start! Line: "
 msgstr "LoopEnd sem linha de Start:"
 
-#: connect.cpp:737
+#: connect.cpp:747
 msgid "Starting pppd ..."
 msgstr "Iniciando pppd ..."
 
-#: connect.cpp:797 connect.cpp:823
+#: connect.cpp:807 connect.cpp:833
 msgid "unknown speed"
 msgstr "velocidade desconhecida"
 
-#: connect.cpp:861
+#: connect.cpp:871
 msgid "Scan Var: "
 msgstr "Var de Scan: "
 
-#: connect.cpp:872
+#: connect.cpp:882
 msgid "Found: "
 msgstr "Encontrei: "
 
-#: connect.cpp:884
+#: connect.cpp:894
 msgid "Looping: "
 msgstr "Ciclo: "
 
-#: connect.cpp:915 modeminfo.cpp:333
+#: connect.cpp:925 modeminfo.cpp:332
 msgid "One Moment Please ..."
 msgstr "Um Momento Por Favor ..."
 
-#: connect.cpp:958
+#: connect.cpp:969
 msgid "Script timed out!"
 msgstr "Script demorou demais!"
 
-#: connect.cpp:984
+#: connect.cpp:995
 msgid "Scanning: "
 msgstr "Procurando: "
 
-#: connect.cpp:995
+#: connect.cpp:1006
 msgid "Expecting: "
 msgstr "Esperando "
 
-#: connect.cpp:1029
+#: connect.cpp:1040
 msgid "Logging on to Network ..."
 msgstr "Efetuando login na rede ..."
 
-#: connect.cpp:1056
+#: connect.cpp:1067
 msgid "Running Startup Command ..."
 msgstr "Executando Comando de Inicialização ..."
 
-#: connect.cpp:1121
+#: connect.cpp:1133
 msgid "Sorry, can't open modem."
 msgstr "Desculpe, não consegui localizar o modem."
 
-#: connect.cpp:1128
+#: connect.cpp:1140
 msgid "Sorry, the modem is not ready."
 msgstr "Desculpe, mas o modem não está pronto."
 
-#: connect.cpp:1136 connect.cpp:1177 modeminfo.cpp:375
+#: connect.cpp:1148 connect.cpp:1189 modeminfo.cpp:374
 msgid "Sorry, the modem is busy."
 msgstr "Desculpe, o modem está ocupado."
 
-#: connect.cpp:1408
+#: connect.cpp:1424
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
-msgstr "Comando pppd + argumentos excede 2024 caracteres.\n"
-       "O que você está tentando fazer ?"
+msgstr ""
+"Comando pppd + argumentos excede 2024 caracteres.\n"
+"O que você está tentando fazer ?"
 
-#: conwindow.cpp:45
+#: conwindow.cpp:44
 msgid "Connected at:"
 msgstr "Conectado a:"
 
-#: conwindow.cpp:51
+#: conwindow.cpp:50
 msgid "Time connected:"
 msgstr "Tempo da ligação:"
 
-#: conwindow.cpp:60
+#: conwindow.cpp:59
 msgid "Session Bill:"
 msgstr "Conta da Sessão:"
 
-#: conwindow.cpp:62
+#: conwindow.cpp:61
 msgid "Total Bill:"
 msgstr "Conta Total:"
 
-#: conwindow.cpp:68 docking.cpp:75
+#: conwindow.cpp:67 docking.cpp:74
 msgid "Disconnect"
 msgstr "Desligar"
 
-#: conwindow.cpp:72 docking.cpp:73
+#: conwindow.cpp:71 docking.cpp:72
 msgid "Details"
 msgstr "Detalhes"
 
@@ -342,73 +347,79 @@ msgstr "PAP"
 msgid "Terminal-based"
 msgstr "Baseado em Terminal"
 
-#: edit.cpp:81
+#: edit.cpp:76
+msgid "CHAP"
+msgstr ""
+
+#: edit.cpp:82
 msgid "Store password"
 msgstr "Guardar password"
 
-#: edit.cpp:87
+#: edit.cpp:88
 msgid ""
 "Execute program\n"
 "upon connect:"
-msgstr "Executar programa\n"
-       "quando obter ligação:"
+msgstr ""
+"Executar programa\n"
+"quando obter ligação:"
 
-#: edit.cpp:99
+#: edit.cpp:100
 msgid ""
 "Execute program\n"
 "upon disconnect:"
-msgstr "Executar programa\n"
-       "quando terminar ligação:"
+msgstr ""
+"Executar programa\n"
+"quando terminar ligação:"
 
-#: edit.cpp:111
+#: edit.cpp:112
 msgid "Edit pppd arguments:"
 msgstr "Editar argumentos do pppd:"
 
-#: edit.cpp:117
+#: edit.cpp:118
 msgid "Arguments"
 msgstr "Argumentos"
 
-#: edit.cpp:172
+#: edit.cpp:173
 msgid "IP Setup"
 msgstr "Configuração do IP"
 
-#: edit.cpp:179
+#: edit.cpp:180
 msgid "IP Address:"
 msgstr "Endereço IP:"
 
-#: edit.cpp:184
+#: edit.cpp:185
 msgid "Subnet Mask:"
 msgstr "Máscara da Subnet:"
 
-#: edit.cpp:192
+#: edit.cpp:193
 msgid "Dynamic IP Address"
 msgstr "Endereço IP Dinâmico"
 
-#: edit.cpp:195
+#: edit.cpp:196
 msgid "Static IP Address"
 msgstr "Endereço IP Estático"
 
-#: edit.cpp:199
+#: edit.cpp:200
 msgid "Auto-configure hostname from this IP"
 msgstr "Auto-configurar nome da host a partir deste IP"
 
-#: edit.cpp:313
+#: edit.cpp:314
 msgid "DNS Servers"
 msgstr "Servidores DNS"
 
-#: edit.cpp:329
+#: edit.cpp:330
 msgid "Domain Name:"
 msgstr "Nome do Domínio"
 
-#: edit.cpp:341
+#: edit.cpp:342
 msgid "DNS IP Address:"
 msgstr "Endereço IP do DNS:"
 
-#: edit.cpp:374
+#: edit.cpp:375
 msgid "DNS Address List:"
 msgstr "Lista de Endereços do DNS:"
 
-#: edit.cpp:384
+#: edit.cpp:385
 msgid "Disable existing DNS Servers during Connection"
 msgstr "Desativar Servidores DNS existentes durante a Conexão"
 
@@ -428,8 +439,9 @@ msgstr "Gateway Estático"
 msgid ""
 "Gateway\n"
 "IP Address:"
-msgstr "Endereço IP\n"
-       "do Gateway:"
+msgstr ""
+"Endereço IP\n"
+"do Gateway:"
 
 #: edit.cpp:458
 msgid "Assign the Default Route to this Gateway"
@@ -439,59 +451,52 @@ msgstr "Colocar a Rota Padrão neste Gateway"
 msgid "Edit Script"
 msgstr "Editar Script"
 
-#: edit.cpp:563
-msgid "Use default script"
-msgstr "Utilizar script padrão"
-
 #: edit.cpp:580
 msgid "Insert"
 msgstr "Inserir"
 
-#: general.cpp:42
+#: general.cpp:41
 msgid "kppp Setup"
 msgstr "Configuração do kppp"
 
-#: general.cpp:46
-msgid "pppd Path:"
-msgstr "Localização do pppd:"
-
-#: general.cpp:63
+#: general.cpp:62
 msgid "pppd Timeout:"
 msgstr "Timeout do pppd:"
 
-#: general.cpp:78 general.cpp:363 general.cpp:460
+#: general.cpp:78 general.cpp:390 general.cpp:487
 msgid "Seconds"
 msgstr "Segundos"
 
-#: general.cpp:83
-msgid "Log Viewer:"
-msgstr "Visualizador de Relatórios:"
-
 #: general.cpp:98
-msgid "Automatic Redial on Disconnect"
-msgstr "Voltar a Ligar Automaticamente se Desconectado"
-
-#: general.cpp:105
-msgid "Show Clock on Caption"
-msgstr "Mostrar Relógio no Título"
-
-#: general.cpp:112
-msgid "Disconnect on X-server shutdown"
-msgstr "Desconectar se o servidor X for encerrado"
-
-#: general.cpp:118
-msgid "Minimize Window on Connect"
-msgstr "Minimizar Janela quando Ligado"
-
-#: general.cpp:124
 msgid "Dock into Panel on Connect"
 msgstr "Ir para o Painel quando Ligado"
 
-#: general.cpp:187
+#: general.cpp:104
+msgid "Automatic Redial on Disconnect"
+msgstr "Voltar a Ligar Automaticamente se Desconectado"
+
+#: general.cpp:111
+msgid "Show Clock on Caption"
+msgstr "Mostrar Relógio no Título"
+
+#: general.cpp:118
+msgid "Disconnect on X-server shutdown"
+msgstr "Desconectar se o servidor X for encerrado"
+
+#: general.cpp:124
+#, fuzzy
+msgid "Quit on Disconnect"
+msgstr "Desligar"
+
+#: general.cpp:130
+msgid "Minimize Window on Connect"
+msgstr "Minimizar Janela quando Ligado"
+
+#: general.cpp:199
 msgid "About kppp"
 msgstr "Sobre kppp"
 
-#: general.cpp:195
+#: general.cpp:207
 msgid ""
 "\n"
 "A dialer and front-end to pppd\n"
@@ -499,14 +504,15 @@ msgid ""
 "Copyright (c) 1997\n"
 "Bernd Johannes Wuebben\n"
 "wuebben@math.cornell.edu"
-msgstr "\n"
-       "Um dialer e interface para o pppd\n"
-       "\n"
-       "Copyright (c) 1997\n"
-       "Bernd Johannes Wuebben\n"
-       "wuebben@math.cornell.edu"
+msgstr ""
+"\n"
+"Um dialer e interface para o pppd\n"
+"\n"
+"Copyright (c) 1997\n"
+"Bernd Johannes Wuebben\n"
+"wuebben@math.cornell.edu"
 
-#: general.cpp:211
+#: general.cpp:224
 msgid ""
 "With contributions from:\n"
 "\n"
@@ -515,119 +521,117 @@ msgid ""
 "Jesus Fuentes Saavedra\n"
 "Harri Porten\n"
 "Peter Silva"
-msgstr "Com contribuições de:\n"
-       "\n"
-       "Mario Weilguni\n"
-       "Markus Wuebben\n"
-       "Jesus Fuentes Saavedra\n"
-       "Harri Porten\n"
-       "Peter Silva"
+msgstr ""
+"Com contribuições de:\n"
+"\n"
+"Mario Weilguni\n"
+"Markus Wuebben\n"
+"Jesus Fuentes Saavedra\n"
+"Harri Porten\n"
+"Peter Silva"
 
-#: general.cpp:235
+#: general.cpp:248
 msgid "Serial device"
 msgstr "Dispositivo serial"
 
-#: general.cpp:238
+#: general.cpp:251
 msgid "Modem Device:"
 msgstr "Dispositivo Modem:"
 
-#: general.cpp:258
+#: general.cpp:285
 msgid "Flow Control:"
 msgstr "Controle de Fluxo:"
 
-#: general.cpp:265
-msgid "None"
-msgstr "Nenhum"
-
-#: general.cpp:273
+#: general.cpp:300
 msgid "Line Termination:"
 msgstr "Terminador de Linha:"
 
-#: general.cpp:288
+#: general.cpp:315
 msgid "Connection Speed:"
 msgstr "Velocidade de Ligação:"
 
-#: general.cpp:331
+#: general.cpp:358
 msgid "Modem Lock File:"
 msgstr "Arquivo de Travamento do Modem:"
 
-#: general.cpp:348
+#: general.cpp:375
 msgid "Modem Timeout:"
 msgstr "Timeout do Modem:"
 
-#: general.cpp:433 main.cpp:489
+#: general.cpp:460 main.cpp:503
 msgid "Modem"
 msgstr "Modem"
 
-#: general.cpp:445
+#: general.cpp:472
 msgid "Busy Wait:"
 msgstr "Quando ocupado esperar:"
 
-#: general.cpp:473
+#: general.cpp:500
 msgid "Modem Asserts CD Line."
 msgstr "Modem reconhece linha CD."
 
-#: general.cpp:489
+#: general.cpp:516
 msgid "Modem Commands"
 msgstr "Comandos do Modem"
 
-#: general.cpp:490
+#: general.cpp:517
 msgid "Query Modem"
 msgstr "Perguntar ao Modem"
 
-#: general.cpp:491
+#: general.cpp:518
 msgid "Terminal"
 msgstr "Terminal"
 
-#: main.cpp:313
+#: main.cpp:327
 msgid "Connect to: "
 msgstr "Ligar para:"
 
-#: main.cpp:324
+#: main.cpp:338
 msgid "Login ID:"
 msgstr "ID de Login:"
 
-#: main.cpp:336
+#: main.cpp:350
 msgid "Password:"
 msgstr "Senha:"
 
-#: main.cpp:353
+#: main.cpp:367
 msgid "Show Log Window"
 msgstr "Mostrar Janela de Relatório"
 
-#: main.cpp:375
+#: main.cpp:389
 msgid "Setup"
 msgstr "Configuração"
 
-#: main.cpp:390
+#: main.cpp:404
 msgid "Connect"
 msgstr "Ligar"
 
-#: main.cpp:458
+#: main.cpp:472
 #, c-format
 msgid ""
 "No such Account:\n"
 "%s"
-msgstr "Nenhuma Conta:\n"
-       "%s"
+msgstr ""
+"Nenhuma Conta:\n"
+"%s"
 
-#: main.cpp:475
+#: main.cpp:489
 msgid "kppp Configuration"
 msgstr "Configuração do kppp"
 
-#: main.cpp:487
+#: main.cpp:501
 msgid "Accounts"
 msgstr "Contas"
 
-#: main.cpp:488
+#: main.cpp:502
 msgid "Device"
 msgstr "Dispositivo"
 
-#: main.cpp:490
+#: main.cpp:504
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:714
+#: main.cpp:732
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -636,26 +640,28 @@ msgid ""
 " the location of the pppd executable on the PPP tab of\n"
 "the setup dialog.\n"
 " Thank You"
-msgstr "kppp não consegue encontrar:\n"
-       " %s\n"
-       "Por favor instale o pppd corretamente e/ou ajuste\n"
-       " a localização do executável do pppd na página PPP do\n"
-       "diálogo de configuração.\n"
-       " Obrigado"
+msgstr ""
+"kppp não consegue encontrar:\n"
+" %s\n"
+"Por favor instale o pppd corretamente e/ou ajuste\n"
+" a localização do executável do pppd na página PPP do\n"
+"diálogo de configuração.\n"
+" Obrigado"
 
-#: main.cpp:726
+#: main.cpp:744
 #, c-format
 msgid ""
 "kppp can not execute:\n"
 " %s\n"
 "Please make sure thatyou have given kppp setuid permission and that\n"
 "pppd is executable."
-msgstr "kppp não consegue executar:\n"
-       " %s\n"
-       "Por favor verifique as permissões setuid e que o\n"
-       "pppd seja um executável."
+msgstr ""
+"kppp não consegue executar:\n"
+" %s\n"
+"Por favor verifique as permissões setuid e que o\n"
+"pppd seja um executável."
 
-#: main.cpp:740
+#: main.cpp:758
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -666,46 +672,74 @@ msgid ""
 " the location of the modem device on the modem tab of\n"
 "the setup dialog.\n"
 " Thank You"
-msgstr "kppp não consegue encontrar:\n"
-       " %s\n"
-       "Verifique se o modem\n"
-       "foi configurado corretamente\n"
-       "e/ou modifique\n"
-       " a localização do modem na página modem\n"
-       "do diálogo de configuração.\n"
-       " Obrigado"
+msgstr ""
+"kppp não consegue encontrar:\n"
+" %s\n"
+"Verifique se o modem\n"
+"foi configurado corretamente\n"
+"e/ou modifique\n"
+" a localização do modem na página modem\n"
+"do diálogo de configuração.\n"
+" Obrigado"
 
-#: main.cpp:760
+#: main.cpp:778
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
 "supply a username and a password!"
-msgstr "Seleccionou o método de autenticação\n"
-       "PAP. Isto requer um nome\n"
-       "de usuário e uma senha."
+msgstr ""
+"Seleccionou o método de autenticação\n"
+"PAP. Isto requer um nome\n"
+"de usuário e uma senha."
 
-#: main.cpp:767
+#: main.cpp:785
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
 "file \"%s\""
-msgstr "Não foi possível criar arquivo de\n"
-       "autenticação PAP \"%s\""
+msgstr ""
+"Não foi possível criar arquivo de\n"
+"autenticação PAP \"%s\""
 
-#: main.cpp:844
+#: main.cpp:802
+#, fuzzy
+msgid ""
+"You have selected the authentication\n"
+"method CHAP. This requires that you\n"
+"supply a username and a password!"
+msgstr ""
+"Seleccionou o método de autenticação\n"
+"PAP. Isto requer um nome\n"
+"de usuário e uma senha."
+
+#: main.cpp:809
+#, fuzzy, c-format
+msgid ""
+"Cannot create CHAP authentication\n"
+"file \"%s\""
+msgstr ""
+"Não foi possível criar arquivo de\n"
+"autenticação PAP \"%s\""
+
+#: main.cpp:821
+msgid "You have to specify a telephone number !\n"
+msgstr ""
+
+#: main.cpp:895
 msgid "Quit kPPP?"
 msgstr "Sair do kPPP?"
 
-#: main.cpp:845
+#: main.cpp:896
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Sair do kPPP vai fechar a sua sessão PPP."
 
-#: main.cpp:880
+#: main.cpp:931
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
-msgstr "Não foi possível carregar as regras\n"
-       "de contabilidade \""
+msgstr ""
+"Não foi possível carregar as regras\n"
+"de contabilidade \""
 
 #: modemcmds.cpp:40
 msgid "Edit Modem Commands"
@@ -787,32 +821,33 @@ msgstr "Argumento:"
 msgid "Restore Defaults"
 msgstr "Restaurar Padrão"
 
-#: pppdata.cpp:50
+#: pppdata.cpp:52
 msgid ""
 "The application-specific config file\n"
 "could not be opened neither\n"
 "read-write nor read-only"
-msgstr "O arquivo de configuração da\n"
-       "não pode ser aberto nem para\n"
-       "gravação nem para leitura"
+msgstr ""
+"O arquivo de configuração da\n"
+"não pode ser aberto nem para\n"
+"gravação nem para leitura"
 
 #: modeminfo.cpp:46
 msgid "ATI Query"
 msgstr "ATI Query"
 
-#: modeminfo.cpp:131
+#: modeminfo.cpp:130
 msgid "Modem Query timed out."
 msgstr "Timeout nas perguntas ao Modem."
 
-#: miniterm.cpp:277 modeminfo.cpp:369
+#: miniterm.cpp:277 modeminfo.cpp:368
 msgid "Can't open Modem"
 msgstr "Não foi possível abrir Modem"
 
-#: modeminfo.cpp:415
+#: modeminfo.cpp:414
 msgid "Sorry, the modem is busy"
 msgstr "Desculpe, o modem está ocupado"
 
-#: modeminfo.cpp:534
+#: modeminfo.cpp:533
 msgid "Modem Query Results"
 msgstr "Resultados de Perguntas ao Modem"
 
@@ -920,25 +955,6 @@ msgstr "tcgetattr() falhou\n"
 msgid "tcsetattr() failed\n"
 msgstr "tcsetattr() falhou\n"
 
-#: accounting.cpp:156
-#, c-format
-msgid "started PPP connection:%s:%s"
-msgstr "conexão PPP iniciada:%s:%s"
-
-#: accounting.cpp:171
-msgid ""
-"terminated PPP connection\n"
-"COST OF SESSION: "
-msgstr "conexão PPP terminada\n"
-       "CUSTO DA SESSÃO: "
-
-#: accounting.cpp:174
-msgid ""
-"\n"
-"SUBTOTAL FOR:"
-msgstr "\n"
-       "SUBTOTAL PARA:"
-
 #: acctselect.cpp:48
 msgid "Accounting Setup"
 msgstr "Configuração da Contabilidade"
@@ -975,104 +991,93 @@ msgstr "Bytes recebidos e enviados"
 msgid "Available rules"
 msgstr "Regras disponíveis"
 
-#: ruleset.cpp:538
+#: ruleset.cpp:541
 msgid "kppp: no rulefile specified\n"
 msgstr "kppp: nenhum arquivo de regras especificado\n"
 
-#: ruleset.cpp:544
+#: ruleset.cpp:547
 #, c-format
 msgid "kppp: rulefile \"%s\" not found\n"
 msgstr "kppp: arquivo de regras \"%s\" não encontrado\n"
 
-#: ruleset.cpp:549
+#: ruleset.cpp:552
 msgid "kppp: rulefiles must have the extension \".rst\"\n"
 msgstr "kppp: arquivo de regras deve ter a extensão \".rst\"\n"
 
-#: ruleset.cpp:558
+#: ruleset.cpp:561
 msgid "kppp: error parsing the ruleset\n"
 msgstr "kppp: erro ao processar regras\n"
 
-#: ruleset.cpp:563
+#: ruleset.cpp:566
 #, c-format
 msgid "kppp: parse error in line %d\n"
 msgstr "kppp: erro na linha %d\n"
 
-#: ruleset.cpp:569
+#: ruleset.cpp:572
 msgid "kppp: rulefile does not contain a default rule\n"
 msgstr "kppp: arquivo de regras não contém uma regra padrão\n"
 
-#: ruleset.cpp:574
+#: ruleset.cpp:577
 msgid "kppp: rulefile does not contain a \"name=...\" line\n"
 msgstr "kppp: arquivo de regras não contém uma linha \"name=...\"\n"
 
-#: ruleset.cpp:578
+#: ruleset.cpp:581
 msgid "kppp: rulefile is ok\n"
 msgstr "kppp: arquivo de regras está ok\n"
 
-#: docking.cpp:71 docking.cpp:223
-msgid "Restore"
-msgstr "Restaurar"
-
-#: docking.cpp:221
+#: docking.cpp:220
 msgid "Minimize"
 msgstr "Minimizar"
 
-#: runtests.cpp:122
+#: runtests.cpp:121
 msgid ""
 "You´re not allowed to dial out with kppp.\n"
 "Contact your system administrator."
 msgstr ""
-       "Não tem permissão para ligar usando o kppp.\n"
-       "Contacte o seu administrador de sistemas."
+"Não tem permissão para ligar usando o kppp.\n"
+"Contacte o seu administrador de sistemas."
 
-#: runtests.cpp:148
+#: runtests.cpp:137
 msgid ""
 "Cannot find the pppd-daemon!\n"
 "\n"
 "Make sure that pppd is installed and\n"
 "you have entered the correct path.\n"
-msgstr "Não consigo achar o daemon pppd!\n"
-       "\n"
-       "Verifique que o pppd está instalado e\n"
-       "que foi informada a localização correta.\n"
+msgstr ""
+"Não consigo achar o daemon pppd!\n"
+"\n"
+"Verifique que o pppd está instalado e\n"
+"que foi informada a localização correta.\n"
 
-#: runtests.cpp:160
+#: runtests.cpp:149
 msgid ""
 "You do not have the permission\n"
 "to start pppd!\n"
 "\n"
 "Contact your system administrator\n"
 "and ask to get access to pppd."
-msgstr "Não tem permissão\n"
-       "para iniciar o pppd!\n"
-       "\n"
-       "Contacte o seu administrador de sistemas\n"
-       "e peça-lhe acesso ao pppd."
+msgstr ""
+"Não tem permissão\n"
+"para iniciar o pppd!\n"
+"\n"
+"Contacte o seu administrador de sistemas\n"
+"e peça-lhe acesso ao pppd."
 
-#: runtests.cpp:171
+#: runtests.cpp:160 runtests.cpp:175
 msgid ""
 "pppd is not properly installed!\n"
 "\n"
 "The pppd binary must be installed\n"
 "with the SUID bit set. Contact your\n"
 "system administrator."
-msgstr "pppd não está bem instalado!\n"
-       "\n"
-       "O executável pppd tem de ser instalado\n"
-       "com o bit de SUID ativado. Contacte o seu\n"
-       "administrador de sistemas."
-
-#: runtests.cpp:192
-#, c-format
-msgid ""
-"The logviewer \"%s\" was not found!\n"
+msgstr ""
+"pppd não está bem instalado!\n"
 "\n"
-"Setting default back to \"%s\"."
-msgstr "O visualizador de relatórios \"%s\" não foi encontrado!\n"
-       "\n"
-       "Retornando ao valor padrão \"%s\"."
+"O executável pppd tem de ser instalado\n"
+"com o bit de SUID ativado. Contacte o seu\n"
+"administrador de sistemas."
 
-#: runtests.cpp:216
+#: runtests.cpp:220
 msgid ""
 "kppp has detected a 'lock' option in /etc/ppp/options.\n"
 "\n"
@@ -1080,7 +1085,57 @@ msgid ""
 "itself.\n"
 "Contact your system administrator."
 msgstr ""
-       "kppp detectou a opção 'lock' em /etc/ppp/option.\n"
-       "\n"
-       "Esta opção tem de ser removida uma vez que kppp toma conta do locking de "
-       "dispositivos."
+"kppp detectou a opção 'lock' em /etc/ppp/option.\n"
+"\n"
+"Esta opção tem de ser removida uma vez que kppp toma conta do locking de "
+"dispositivos."
+
+#: runtests.cpp:245
+msgid ""
+"/etc/resolv.conf is missing!\n"
+"\n"
+"Ask your system administrator to create\n"
+"a non-empty file that has appropriate\n"
+"read and write permissions."
+msgstr ""
+
+#~ msgid "Use default script"
+#~ msgstr "Utilizar script padrão"
+
+#~ msgid "pppd Path:"
+#~ msgstr "Localização do pppd:"
+
+#~ msgid "Log Viewer:"
+#~ msgstr "Visualizador de Relatórios:"
+
+#~ msgid "None"
+#~ msgstr "Nenhum"
+
+#~ msgid "started PPP connection:%s:%s"
+#~ msgstr "conexão PPP iniciada:%s:%s"
+
+#~ msgid ""
+#~ "terminated PPP connection\n"
+#~ "COST OF SESSION: "
+#~ msgstr ""
+#~ "conexão PPP terminada\n"
+#~ "CUSTO DA SESSÃO: "
+
+#~ msgid ""
+#~ "\n"
+#~ "SUBTOTAL FOR:"
+#~ msgstr ""
+#~ "\n"
+#~ "SUBTOTAL PARA:"
+
+#~ msgid "Restore"
+#~ msgstr "Restaurar"
+
+#~ msgid ""
+#~ "The logviewer \"%s\" was not found!\n"
+#~ "\n"
+#~ "Setting default back to \"%s\"."
+#~ msgstr ""
+#~ "O visualizador de relatórios \"%s\" não foi encontrado!\n"
+#~ "\n"
+#~ "Retornando ao valor padrão \"%s\"."
