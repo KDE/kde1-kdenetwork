@@ -118,15 +118,17 @@ void ExpireStatusDlg::doExpire()
             tl.append (t.data());
         }
         
-        time_t lastAccess=atol(tl.at(8));
-        
-        if (threshold>lastAccess)
+        if (!strcmp(tl.at(6),"1"))
         {
-            debug ("deleting %s",key.dptr);
-            gdbm_delete(old_artdb,key);
-            free (key.dptr);
+            time_t lastAccess=atol(tl.at(8));
+            
+            if (threshold>lastAccess)
+            {
+                debug ("deleting %s",key.dptr);
+                gdbm_delete(old_artdb,key);
+                free (key.dptr);
+            }
         }
-        
         tl.clear();
         key=nextkey;
     }
@@ -158,14 +160,17 @@ void ExpireStatusDlg::doExpire()
                 continue;
             tl.append (t.data());
         }
-        
-        time_t lastAccess=atol(tl.at(8));
-        
-        if (threshold>lastAccess)
+
+        if (!strcmp(tl.at(6),"1"))
         {
-            debug ("deleting");
-            gdbm_delete(artdb,key);
-            free (key.dptr);
+            time_t lastAccess=atol(tl.at(8));
+            
+            if (threshold>lastAccess)
+            {
+                debug ("deleting");
+                gdbm_delete(artdb,key);
+                free (key.dptr);
+            }
         }
         tl.clear();
         key=nextkey;

@@ -3,13 +3,14 @@ Changes made Apr 3
 -----------------------------------------------------------------------------
 * [Roberto] Fixed yet another expiring bug (minutes DON'T have
             1 second!)
-            More usage of toolBar() (removed a couple of private
+*           More usage of toolBar() (removed a couple of private
             members), now it uses Icon(), too.
-            Removed some painful debug()s.
-            Little cleanups of groupdlg's code.
-            Groups now remove old ID's from their article list,
+*           Removed some painful debug()s.
+*           Little cleanups of groupdlg's code.
+*           Groups now remove old ID's from their article list,
             not immediately, but it's done in a way to be not
             too anoying.
+*           Oops, last changes broke article locking. Fixed.
 -----------------------------------------------------------------------------
 Changes made Apr 2
 -----------------------------------------------------------------------------
