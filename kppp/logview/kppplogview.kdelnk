@@ -1,6 +1,7 @@
 # KDE Config File
 [KDE Desktop Entry]
 Comment=Show Internet Dialer Logfiles
+Comment[da]=Vis internetopringerens logfiler
 Comment[pt_BR]=Mostrar arquivos de log do discador Internet
 Comment[ru]=Утилита для просмотра журналов KPPP
 Comment[sk]=UkА╬e log sЗbory vytАХacieho programu
@@ -8,6 +9,7 @@ Comment[sv]=Visa logfilerna fЖr internetuppkopplingen
 BinaryPattern=kppplogview;
 Protocols=
 Name=KPPP - Logview
+Name[da]=KPPP systemovervЕger
 Name[pt_BR]=KPPP - Ver Log
 Name[ru]=Просмотрщик журнала KPPP
 Name[sk]=KPPP - prehliadaХ logov
