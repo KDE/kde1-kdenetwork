@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1998-11-25 01:56+0100\n"
+"POT-Creation-Date: 1998-11-27 01:56+0100\n"
 "PO-Revision-Date: 1998-06-11 23:50+0100\n"
 "Last-Translator: Sebastià Pla <sastia@redestb.es>\n"
 "Language-Team: CATALAN <LL@li.org>\n"
@@ -165,7 +165,7 @@ msgstr ""
 msgid "Login script has unbalanced loop Start/End"
 msgstr "Guió de connexió amb inici/fi de bucle desaparellat"
 
-#: connect.cpp:97 connect.cpp:195 main.cpp:970
+#: connect.cpp:97 connect.cpp:195 main.cpp:977
 msgid "Connecting to: "
 msgstr "Connectant amb: "
 
@@ -178,7 +178,7 @@ msgstr "Ho sento, no puc crear el fitxer de bloqueig de modem"
 msgid "Looking for Modem ..."
 msgstr "Cercant el modem ..."
 
-#: connect.cpp:120 debug.cpp:80 main.cpp:983
+#: connect.cpp:120 debug.cpp:80 main.cpp:990
 msgid "Log"
 msgstr "Registre"
 
@@ -902,7 +902,7 @@ msgid ""
 "recommended value is 30 seconds."
 msgstr ""
 
-#: general.cpp:492 main.cpp:640
+#: general.cpp:492 main.cpp:646
 msgid "Modem"
 msgstr "Modem"
 
@@ -1034,14 +1034,14 @@ msgid ""
 "click a mouse button or a hit a key.\n"
 msgstr ""
 
-#: main.cpp:327
+#: main.cpp:333
 #, c-format
 msgid ""
 "kppp can't create or read from\n"
 "%s."
 msgstr ""
 
-#: main.cpp:343
+#: main.cpp:349
 #, c-format
 msgid ""
 "kppp has detected a %s file.\n"
@@ -1053,15 +1053,15 @@ msgid ""
 "delete the pid file, and restart kppp."
 msgstr ""
 
-#: main.cpp:417
+#: main.cpp:423
 msgid "Connect to: "
 msgstr "Connectar a: "
 
-#: main.cpp:428
+#: main.cpp:434
 msgid "Login ID:"
 msgstr "Identificador:"
 
-#: main.cpp:441
+#: main.cpp:447
 msgid ""
 "Type in the username that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1072,11 +1072,11 @@ msgid ""
 "<i>myusername</i> is not the same as <i>MyUserName</i>!"
 msgstr ""
 
-#: main.cpp:450
+#: main.cpp:456
 msgid "Password:"
 msgstr "Paraula de pas:"
 
-#: main.cpp:464
+#: main.cpp:470
 msgid ""
 "Type in the password that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1087,11 +1087,11 @@ msgid ""
 "<i>mypassword</i> is not the same as <i>MyPassword</i>!"
 msgstr ""
 
-#: main.cpp:478
+#: main.cpp:484
 msgid "Show Log Window"
 msgstr "Mostrar finestra de registre"
 
-#: main.cpp:485
+#: main.cpp:491
 msgid ""
 "This controls whether a log window is shown.\n"
 "A log window shows the communication between\n"
@@ -1102,15 +1102,15 @@ msgid ""
 "problems"
 msgstr ""
 
-#: main.cpp:508
+#: main.cpp:514
 msgid "Setup"
 msgstr "Valors"
 
-#: main.cpp:524
+#: main.cpp:530
 msgid "Connect"
 msgstr "Connectar"
 
-#: main.cpp:608
+#: main.cpp:614
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -1119,32 +1119,32 @@ msgstr ""
 "No hi és el compte:\n"
 "%s"
 
-#: main.cpp:622
+#: main.cpp:628
 msgid "kppp Configuration"
 msgstr "Configuració kppp"
 
-#: main.cpp:638
+#: main.cpp:644
 msgid "Accounts"
 msgstr "Comptes"
 
-#: main.cpp:639
+#: main.cpp:645
 msgid "Device"
 msgstr "Dispositiu"
 
-#: main.cpp:641
+#: main.cpp:647
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:642
+#: main.cpp:648
 msgid "Graph"
 msgstr ""
 
-#: main.cpp:815
+#: main.cpp:821
 #, fuzzy
 msgid "Details..."
 msgstr "Detalls"
 
-#: main.cpp:868
+#: main.cpp:875
 #, fuzzy, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1163,7 +1163,7 @@ msgstr ""
 "diàleg dels valors.\n"
 " Gràcies"
 
-#: main.cpp:883
+#: main.cpp:890
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1176,7 +1176,7 @@ msgstr ""
 "Assegureu-vos que heu donat permís setuid a kppp i que pppd\n"
 "és executable."
 
-#: main.cpp:897
+#: main.cpp:904
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1197,7 +1197,7 @@ msgstr ""
 "diàleg dels valors.\n"
 " Moltes gràcies"
 
-#: main.cpp:915
+#: main.cpp:922
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1207,7 +1207,7 @@ msgstr ""
 "PAP. Per tant heu de donar un\n"
 "nom d'usuari i una paraula de pas!"
 
-#: main.cpp:924
+#: main.cpp:931
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1216,7 +1216,7 @@ msgstr ""
 "No és pot crear el fitxer \"%s\"\n"
 "d'autenticació PAP"
 
-#: main.cpp:941
+#: main.cpp:948
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -1226,7 +1226,7 @@ msgstr ""
 "CHAP. Per tant heu de donar un\n"
 "nom d'usuari i una paraula de pas!"
 
-#: main.cpp:950
+#: main.cpp:957
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1235,20 +1235,20 @@ msgstr ""
 "No és pot crear el fitxer \"%s\"\n"
 "d'autenticació CHAP"
 
-#: main.cpp:962
+#: main.cpp:969
 #, fuzzy
 msgid "You must specify a telephone number!"
 msgstr "Heu d'especificar un número de telèfon !\n"
 
-#: main.cpp:1049
+#: main.cpp:1056
 msgid "Quit kPPP?"
 msgstr "Surto de kPPP?"
 
-#: main.cpp:1050
+#: main.cpp:1057
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Si sortiu de kPPP tancareu la vostra sessió PPP."
 
-#: main.cpp:1085
+#: main.cpp:1092
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp 0.9.6\n"
-"POT-Creation-Date: 1998-11-25 01:56+0100\n"
+"POT-Creation-Date: 1998-11-27 01:56+0100\n"
 "PO-Revision-Date: 1998-03-08 10:42 MET\n"
 "Last-Translator: Juraj Bednár <bednar@isternet.sk>\n"
 "Language-Team: Slovak <bednar@isternet.sk>\n"
@@ -182,7 +182,7 @@ msgstr ""
 msgid "Login script has unbalanced loop Start/End"
 msgstr "Prihlasovací skript má nevyvá¾ené skoky zaèiatok/koniec"
 
-#: connect.cpp:97 connect.cpp:195 main.cpp:970
+#: connect.cpp:97 connect.cpp:195 main.cpp:977
 msgid "Connecting to: "
 msgstr "Pripájanie k: "
 
@@ -195,7 +195,7 @@ msgstr "¥utujem, nemô¾em vytvori» súbor pre zamknutie modemu."
 msgid "Looking for Modem ..."
 msgstr "Hµadám modem ..."
 
-#: connect.cpp:120 debug.cpp:80 main.cpp:983
+#: connect.cpp:120 debug.cpp:80 main.cpp:990
 msgid "Log"
 msgstr "Záznam"
 
@@ -1087,7 +1087,7 @@ msgstr ""
 "<i>CONNECT</i> odpoveï od vá¹ho modemu. Odporúèaná\n"
 "hodnota je 30 sekúnd."
 
-#: general.cpp:492 main.cpp:640
+#: general.cpp:492 main.cpp:646
 msgid "Modem"
 msgstr "Modem"
 
@@ -1225,14 +1225,14 @@ msgid ""
 "click a mouse button or a hit a key.\n"
 msgstr ""
 
-#: main.cpp:327
+#: main.cpp:333
 #, c-format
 msgid ""
 "kppp can't create or read from\n"
 "%s."
 msgstr ""
 
-#: main.cpp:343
+#: main.cpp:349
 #, c-format
 msgid ""
 "kppp has detected a %s file.\n"
@@ -1244,15 +1244,15 @@ msgid ""
 "delete the pid file, and restart kppp."
 msgstr ""
 
-#: main.cpp:417
+#: main.cpp:423
 msgid "Connect to: "
 msgstr "Pripoji» k: "
 
-#: main.cpp:428
+#: main.cpp:434
 msgid "Login ID:"
 msgstr "Login ID:"
 
-#: main.cpp:441
+#: main.cpp:447
 msgid ""
 "Type in the username that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1263,11 +1263,11 @@ msgid ""
 "<i>myusername</i> is not the same as <i>MyUserName</i>!"
 msgstr ""
 
-#: main.cpp:450
+#: main.cpp:456
 msgid "Password:"
 msgstr "Heslo:"
 
-#: main.cpp:464
+#: main.cpp:470
 msgid ""
 "Type in the password that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1278,11 +1278,11 @@ msgid ""
 "<i>mypassword</i> is not the same as <i>MyPassword</i>!"
 msgstr ""
 
-#: main.cpp:478
+#: main.cpp:484
 msgid "Show Log Window"
 msgstr "Zobrazova» okno so záznamom"
 
-#: main.cpp:485
+#: main.cpp:491
 msgid ""
 "This controls whether a log window is shown.\n"
 "A log window shows the communication between\n"
@@ -1293,15 +1293,15 @@ msgid ""
 "problems"
 msgstr ""
 
-#: main.cpp:508
+#: main.cpp:514
 msgid "Setup"
 msgstr "Nastavenie"
 
-#: main.cpp:524
+#: main.cpp:530
 msgid "Connect"
 msgstr "Pripoji»"
 
-#: main.cpp:608
+#: main.cpp:614
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -1310,31 +1310,31 @@ msgstr ""
 "Toto konto neexistuje:\n"
 "%s"
 
-#: main.cpp:622
+#: main.cpp:628
 msgid "kppp Configuration"
 msgstr "Nastavenie kppp"
 
-#: main.cpp:638
+#: main.cpp:644
 msgid "Accounts"
 msgstr "Kontá"
 
-#: main.cpp:639
+#: main.cpp:645
 msgid "Device"
 msgstr "Zariadenie"
 
-#: main.cpp:641
+#: main.cpp:647
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:642
+#: main.cpp:648
 msgid "Graph"
 msgstr "Graf"
 
-#: main.cpp:815
+#: main.cpp:821
 msgid "Details..."
 msgstr "Detaily..."
 
-#: main.cpp:868
+#: main.cpp:875
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1355,7 +1355,7 @@ msgstr ""
 "PPP daemon.\n"
 " Ïakujem vám"
 
-#: main.cpp:883
+#: main.cpp:890
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1368,7 +1368,7 @@ msgstr ""
 "Prosím uistite sa, ¾e ste nastavili setuid právo pre kppp\n"
 "a ¾e je pppd vykonávateµný."
 
-#: main.cpp:897
+#: main.cpp:904
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1389,7 +1389,7 @@ msgstr ""
 "v konfiguraènom dialógu.\n"
 " Ïakujem vám"
 
-#: main.cpp:915
+#: main.cpp:922
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1399,7 +1399,7 @@ msgstr ""
 "Toto vy¾aduje, aby ste poskytli\n"
 "u¾ívateµské meno a heslo!"
 
-#: main.cpp:924
+#: main.cpp:931
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1408,7 +1408,7 @@ msgstr ""
 "Nemô¾em vytvori» overovací súbor\n"
 "pre PAP \"%s\""
 
-#: main.cpp:941
+#: main.cpp:948
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -1418,7 +1418,7 @@ msgstr ""
 "Toto vy¾aduje, aby ste poskytli\n"
 "u¾ívateµské meno a heslo!"
 
-#: main.cpp:950
+#: main.cpp:957
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1427,19 +1427,19 @@ msgstr ""
 "Nemô¾em vytvori» overovací súbor\n"
 "pre CHAP \"%s\""
 
-#: main.cpp:962
+#: main.cpp:969
 msgid "You must specify a telephone number!"
 msgstr "Musíte zada» telefónne èíslo !"
 
-#: main.cpp:1049
+#: main.cpp:1056
 msgid "Quit kPPP?"
 msgstr "Ukonèi» kPPP?"
 
-#: main.cpp:1050
+#: main.cpp:1057
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Ukonèenie kPPP uzavrie va¹e PPP sedenie."
 
-#: main.cpp:1085
+#: main.cpp:1092
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""

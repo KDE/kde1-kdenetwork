@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-11-25 01:56+0100\n"
+"POT-Creation-Date: 1998-11-27 01:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Theodore J. Soldatos <theodore@eexi.gr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -166,7 +166,7 @@ msgid "Login script has unbalanced loop Start/End"
 msgstr ""
 "Το αρχείο εντολών σύνδεσης περιέχει μη ισσοροπημένη ανακύκλωση Start/End"
 
-#: connect.cpp:97 connect.cpp:195 main.cpp:970
+#: connect.cpp:97 connect.cpp:195 main.cpp:977
 msgid "Connecting to: "
 msgstr "Σύνδεση στο: "
 
@@ -179,7 +179,7 @@ msgstr "Συγγνώμη, δεν μπορώ να δημιουργήσω αρχείο κλειδώματος modem."
 msgid "Looking for Modem ..."
 msgstr "Ψάξιμο για modem..."
 
-#: connect.cpp:120 debug.cpp:80 main.cpp:983
+#: connect.cpp:120 debug.cpp:80 main.cpp:990
 msgid "Log"
 msgstr "Αρχείο"
 
@@ -905,7 +905,7 @@ msgid ""
 "recommended value is 30 seconds."
 msgstr ""
 
-#: general.cpp:492 main.cpp:640
+#: general.cpp:492 main.cpp:646
 msgid "Modem"
 msgstr "Modem"
 
@@ -1037,14 +1037,14 @@ msgid ""
 "click a mouse button or a hit a key.\n"
 msgstr ""
 
-#: main.cpp:327
+#: main.cpp:333
 #, c-format
 msgid ""
 "kppp can't create or read from\n"
 "%s."
 msgstr ""
 
-#: main.cpp:343
+#: main.cpp:349
 #, c-format
 msgid ""
 "kppp has detected a %s file.\n"
@@ -1056,15 +1056,15 @@ msgid ""
 "delete the pid file, and restart kppp."
 msgstr ""
 
-#: main.cpp:417
+#: main.cpp:423
 msgid "Connect to: "
 msgstr "Σύνδεση στο: "
 
-#: main.cpp:428
+#: main.cpp:434
 msgid "Login ID:"
 msgstr "Όνομα χρήστη:"
 
-#: main.cpp:441
+#: main.cpp:447
 msgid ""
 "Type in the username that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1075,11 +1075,11 @@ msgid ""
 "<i>myusername</i> is not the same as <i>MyUserName</i>!"
 msgstr ""
 
-#: main.cpp:450
+#: main.cpp:456
 msgid "Password:"
 msgstr "Λέξη κλειδί:"
 
-#: main.cpp:464
+#: main.cpp:470
 msgid ""
 "Type in the password that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1090,11 +1090,11 @@ msgid ""
 "<i>mypassword</i> is not the same as <i>MyPassword</i>!"
 msgstr ""
 
-#: main.cpp:478
+#: main.cpp:484
 msgid "Show Log Window"
 msgstr "Εμφάνιση παραθύρου αρχείου"
 
-#: main.cpp:485
+#: main.cpp:491
 msgid ""
 "This controls whether a log window is shown.\n"
 "A log window shows the communication between\n"
@@ -1105,15 +1105,15 @@ msgid ""
 "problems"
 msgstr ""
 
-#: main.cpp:508
+#: main.cpp:514
 msgid "Setup"
 msgstr "Ρυθμίσεις"
 
-#: main.cpp:524
+#: main.cpp:530
 msgid "Connect"
 msgstr "Σύνδεση"
 
-#: main.cpp:608
+#: main.cpp:614
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -1122,32 +1122,32 @@ msgstr ""
 "Δεν υπάρχει ο λογαριασμός:\n"
 "%s"
 
-#: main.cpp:622
+#: main.cpp:628
 msgid "kppp Configuration"
 msgstr "Ρυθμίσεις kppp"
 
-#: main.cpp:638
+#: main.cpp:644
 msgid "Accounts"
 msgstr "Λογαριασμοί"
 
-#: main.cpp:639
+#: main.cpp:645
 msgid "Device"
 msgstr "Συσκευή"
 
-#: main.cpp:641
+#: main.cpp:647
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:642
+#: main.cpp:648
 msgid "Graph"
 msgstr ""
 
-#: main.cpp:815
+#: main.cpp:821
 #, fuzzy
 msgid "Details..."
 msgstr "Λεπτομέρειες"
 
-#: main.cpp:868
+#: main.cpp:875
 #, fuzzy, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1166,7 +1166,7 @@ msgstr ""
 " του διαλόγου ρυθμίσεων.\n"
 " Ευχαριστώ."
 
-#: main.cpp:883
+#: main.cpp:890
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1179,7 +1179,7 @@ msgstr ""
 "Παρακαλώ βεβαιωθείτε ότι έχετε δώσει στο kppp άδεια setuid και ότι\n"
 "το pppd είναι εκτελέσιμο."
 
-#: main.cpp:897
+#: main.cpp:904
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1198,7 +1198,7 @@ msgstr ""
 "συσκευής modem στην ετικέττα modem του διαλόγου ρυθμίσεων.\n"
 " Ευχαριστώ."
 
-#: main.cpp:915
+#: main.cpp:922
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1208,7 +1208,7 @@ msgstr ""
 "Αυτό προϋποθέτει την εισαγωγή ονόματος χρήστη\n"
 "και λέξης κλειδί!"
 
-#: main.cpp:924
+#: main.cpp:931
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1217,7 +1217,7 @@ msgstr ""
 "Δεν μπορώ να δημιουργήσω το αρχείο \n"
 "πιστοποίησης PAP \"%s\""
 
-#: main.cpp:941
+#: main.cpp:948
 #, fuzzy
 msgid ""
 "You have selected the authentication\n"
@@ -1228,7 +1228,7 @@ msgstr ""
 "Αυτό προϋποθέτει την εισαγωγή ονόματος χρήστη\n"
 "και λέξης κλειδί!"
 
-#: main.cpp:950
+#: main.cpp:957
 #, fuzzy, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1237,19 +1237,19 @@ msgstr ""
 "Δεν μπορώ να δημιουργήσω το αρχείο \n"
 "πιστοποίησης PAP \"%s\""
 
-#: main.cpp:962
+#: main.cpp:969
 msgid "You must specify a telephone number!"
 msgstr ""
 
-#: main.cpp:1049
+#: main.cpp:1056
 msgid "Quit kPPP?"
 msgstr "Επιβεβαίωση εξόδου από το kPPP;"
 
-#: main.cpp:1050
+#: main.cpp:1057
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Η έξοδος από το kPPP θα κλεισει την σύνδεσή σας."
 
-#: main.cpp:1085
+#: main.cpp:1092
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""

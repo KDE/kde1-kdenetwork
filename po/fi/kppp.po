@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KPPP\n"
-"POT-Creation-Date: 1998-11-25 01:56+0100\n"
+"POT-Creation-Date: 1998-11-27 01:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Kim Enkovaara <kim.enkovaara@iki.fi>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -183,7 +183,7 @@ msgstr ""
 msgid "Login script has unbalanced loop Start/End"
 msgstr "Sis‰‰nkirjoittautumisohjelmassa on eri m‰‰r‰ Loop Start/End pareja"
 
-#: connect.cpp:97 connect.cpp:195 main.cpp:970
+#: connect.cpp:97 connect.cpp:195 main.cpp:977
 msgid "Connecting to: "
 msgstr "Yhdist‰:"
 
@@ -196,7 +196,7 @@ msgstr "Valitettavasti en voi luoda modeemin lukitustiedostoa."
 msgid "Looking for Modem ..."
 msgstr "Etsin modeemia..."
 
-#: connect.cpp:120 debug.cpp:80 main.cpp:983
+#: connect.cpp:120 debug.cpp:80 main.cpp:990
 msgid "Log"
 msgstr "Loki"
 
@@ -1074,7 +1074,7 @@ msgstr ""
 "<i>CONNECT</i> vastausta modeemilta. Suositeltu\n"
 "arvo on 30 sekuntia"
 
-#: general.cpp:492 main.cpp:640
+#: general.cpp:492 main.cpp:646
 msgid "Modem"
 msgstr "Modeemi"
 
@@ -1243,7 +1243,7 @@ msgstr ""
 "T‰m‰ ikkuna on esilla kunnes painat hiiren\n"
 "nappia tai jotain n‰pp‰int‰.\n"
 
-#: main.cpp:327
+#: main.cpp:333
 #, c-format
 msgid ""
 "kppp can't create or read from\n"
@@ -1252,7 +1252,7 @@ msgstr ""
 "kppp ei voi lukea tiedostosta\n"
 "%s."
 
-#: main.cpp:343
+#: main.cpp:349
 #, c-format
 msgid ""
 "kppp has detected a %s file.\n"
@@ -1271,15 +1271,15 @@ msgstr ""
 "Varmista ettei toinen kppp ole k‰ynniss‰,\n"
 "ja tuhoa tiedosto, ja k‰ynnist‰ kppp uudelleen."
 
-#: main.cpp:417
+#: main.cpp:423
 msgid "Connect to: "
 msgstr "Yhdist‰: "
 
-#: main.cpp:428
+#: main.cpp:434
 msgid "Login ID:"
 msgstr "K‰ytt‰j‰ ID:"
 
-#: main.cpp:441
+#: main.cpp:447
 msgid ""
 "Type in the username that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1298,11 +1298,11 @@ msgstr ""
 "<b>T‰rke‰‰</b>: kirjaiten koko vaikuttaa:\n"
 "<i>k‰ytt‰j‰nimi</i> ei ole sama kuin <i>K‰ytt‰j‰Nimi</i>!"
 
-#: main.cpp:450
+#: main.cpp:456
 msgid "Password:"
 msgstr "Salasana:"
 
-#: main.cpp:464
+#: main.cpp:470
 msgid ""
 "Type in the password that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1321,11 +1321,11 @@ msgstr ""
 "<b>T‰rke‰‰</b>: kirjaiten koko vaikuttaa:\n"
 "<i>salasana</i> ei ole sama kuin <i>SalaSana</i>!"
 
-#: main.cpp:478
+#: main.cpp:484
 msgid "Show Log Window"
 msgstr "N‰yt‰ loki-ikkuna"
 
-#: main.cpp:485
+#: main.cpp:491
 msgid ""
 "This controls whether a log window is shown.\n"
 "A log window shows the communication between\n"
@@ -1342,15 +1342,15 @@ msgstr ""
 "Laita t‰m‰ pois p‰‰lt‰ jos <i>kppp</i> ottaa yhteyden\n"
 "ilman ongelmia"
 
-#: main.cpp:508
+#: main.cpp:514
 msgid "Setup"
 msgstr "Asetukset"
 
-#: main.cpp:524
+#: main.cpp:530
 msgid "Connect"
 msgstr "Yhdist‰"
 
-#: main.cpp:608
+#: main.cpp:614
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -1359,31 +1359,31 @@ msgstr ""
 "Profiilia ei ole olemassa:\n"
 "%s"
 
-#: main.cpp:622
+#: main.cpp:628
 msgid "kppp Configuration"
 msgstr "kppp Asetukset"
 
-#: main.cpp:638
+#: main.cpp:644
 msgid "Accounts"
 msgstr "Profiilit"
 
-#: main.cpp:639
+#: main.cpp:645
 msgid "Device"
 msgstr "Laite"
 
-#: main.cpp:641
+#: main.cpp:647
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:642
+#: main.cpp:648
 msgid "Graph"
 msgstr ""
 
-#: main.cpp:815
+#: main.cpp:821
 msgid "Details..."
 msgstr "Yksityiskohdat..."
 
-#: main.cpp:868
+#: main.cpp:875
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1402,7 +1402,7 @@ msgstr ""
 "Asetukset dialogissa.\n"
 " Kiitos"
 
-#: main.cpp:883
+#: main.cpp:890
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1415,7 +1415,7 @@ msgstr ""
 "Varmista, ett‰ kppp:lla on setuid oikeudet ja\n"
 "pppd on suoritettavissa."
 
-#: main.cpp:897
+#: main.cpp:904
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1436,7 +1436,7 @@ msgstr ""
 "asetukset dialogissa.\n"
 " Kiitos"
 
-#: main.cpp:915
+#: main.cpp:922
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1446,7 +1446,7 @@ msgstr ""
 "PAP:n. T‰m‰ vaatii sen, ett‰ annat\n"
 "k‰ytt‰j‰nimen sek‰ salasanasi!"
 
-#: main.cpp:924
+#: main.cpp:931
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1455,7 +1455,7 @@ msgstr ""
 "En saa luotua PAP-tunnistusta\n"
 "tiedostoon \"%s\""
 
-#: main.cpp:941
+#: main.cpp:948
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -1465,7 +1465,7 @@ msgstr ""
 "CHAP:n. T‰m‰ vaatii sen, ett‰ annat\n"
 "k‰ytt‰j‰nimen sek‰ salasanasi!"
 
-#: main.cpp:950
+#: main.cpp:957
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1474,19 +1474,19 @@ msgstr ""
 "En saa luotua CHAP-tunnistusta\n"
 "tiedostoon \"%s\""
 
-#: main.cpp:962
+#: main.cpp:969
 msgid "You must specify a telephone number!"
 msgstr "Sinun on annettava puhelinnumero !"
 
-#: main.cpp:1049
+#: main.cpp:1056
 msgid "Quit kPPP?"
 msgstr "Lopeta kPPP?"
 
-#: main.cpp:1050
+#: main.cpp:1057
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "kPPP:n lopetus sulkee PPP-istuntosi."
 
-#: main.cpp:1085
+#: main.cpp:1092
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
