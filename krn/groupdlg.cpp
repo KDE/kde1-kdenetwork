@@ -333,6 +333,9 @@ void Groupdlg::openGroup (KTreeViewItem *item)
 {
     item->setDelayedExpanding(false);
     int i=list->itemRow(item);
+    KTreeViewItem *it=list->itemAt(i);
+    if (it->getText()==klocale->translate("All Newsgroups."))
+        loadActive();
     openGroup(i);
 }
 
@@ -688,7 +691,7 @@ bool Groupdlg::actions (int action,NewsGroup *group)
     case LOAD_FILES:
         {
             loadSubscribed();
-            loadActive();
+//            loadActive();
             break;
         }
     case GET_ACTIVE:
