@@ -1,4 +1,26 @@
 -----------------------------------------------------------------------------
+Changes made Aug 1
+-----------------------------------------------------------------------------
+
+* [Roberto] Threading. It works, but isn't 100% correct.
+  I don't think anybody would notice.
+  I will rewrite it :-)
+  
+-----------------------------------------------------------------------------
+Changes made Jul 31
+-----------------------------------------------------------------------------
+
+* [Roberto] Kmessage uses the khtmlview. Some cosmetic changes.
+
+* [Roberto] Fixed Dave Mccaney's bug report.
+
+* [Roberto] Placed the hook for threading support.
+
+* [Roberto] Restored keyboard support in artdlg.
+
+* [Roberto] Restored links in artdlg.
+
+-----------------------------------------------------------------------------
 Changes made Jul 29
 -----------------------------------------------------------------------------
 

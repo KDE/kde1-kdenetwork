@@ -26,7 +26,7 @@
 
 extern QString krnpath,cachepath,artinfopath;
 
-#include <mimelib/nntp.h>
+#include <mimelib/mimepp.h>
 
 extern KConfig *conf;
 

@@ -3,10 +3,7 @@
 
 #include <qstring.h>
 #include <qlist.h>
-#include <mimelib/body.h>
-#include <mimelib/headers.h>
-#include <mimelib/bodypart.h>
-#include <mimelib/message.h>
+#include <mimelib/mimepp.h>
 #include "ktempfile.h"
 
 class KFormatter

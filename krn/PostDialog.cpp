@@ -16,12 +16,7 @@
 #include <kmsgbox.h>
 #include "PartProps.h"
 #include "NewMsgDlg.h"
-#include <mimelib/message.h>
-#include <mimelib/field.h>
-#include <mimelib/headers.h>
-#include <mimelib/body.h>
-#include <mimelib/bodypart.h>
-#include <mimelib/group.h>
+#include <mimelib/mimepp.h>
 
 #define Inherited PostDialogData
 

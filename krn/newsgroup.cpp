@@ -18,7 +18,8 @@
 #include <stdlib.h>
 
 #include "newsgroup.h"
-
+#include <qstrlist.h>
+#include <qlist.h>
 
 extern ArticleDict artSpool;
 
@@ -157,9 +158,13 @@ void Article::load()
         ID=st.readLine();
         Date=st.readLine();
         if (st.readLine()=="1")
-            setRead(true);
+            isread=true;
+        else
+            isread=false;
         if (st.readLine()=="1")
-            setAvailable(true);
+            isavail=true;
+        else
+            isavail=false;
         Refs.clear();
         while (1)
         {
@@ -287,6 +292,192 @@ void ArticleList::clear()
 {
     while (!isEmpty())
         remove(0);
+}
+
+QString noRe(QString subject)
+{
+    if (subject.find("Re: ")==0)
+    {
+        return subject.right(subject.length()-4);
+    }
+    else if (subject.find("Re:")==0)
+    {
+        return subject.right(subject.length()-3);
+    }
+    return subject;
+}
+
+void ArticleList::thread()
+{
+    if (count()<=1)
+    {
+        return; //not much to thread
+    }
+    
+    QDict <ArticleList> threads;
+    QStrList IDs;
+    QStrList roots;
+    
+    //Make a list of article IDs
+    Article *iter;
+    for (iter=this->first();iter!=0;iter=this->next())
+    {
+        IDs.append(iter->ID.data());
+    }
+    
+    for (iter=this->first();iter!=0;iter=this->next())
+    {
+        bool root=true;
+        
+        //For each reference
+        
+        for (char *ref=iter->Refs.first();ref!=0;ref=iter->Refs.next())
+        {
+            //See if it refers to any of these articles
+            int index=IDs.find(ref);
+            if (index!=-1)
+            {
+                //if it is a loop
+                if (artSpool[IDs.at(index)]->Refs.contains(ref))
+                {
+                    //hate it, and then skip the reference.
+                    debug ("breaking reference loop! (maybe)");
+                    continue;
+                }
+                root=false;
+                break;
+            }
+        }
+        //If it's a root item, start a thread with it
+        if (root)
+        {
+            ArticleList *list=new ArticleList();
+            list->append(iter);
+            threads.insert(iter->ID.data(),list);
+            //Add it to the list of roots, sorted by order of subject!
+            int i=0;
+            for (char *_root=roots.first();_root!=0;_root=roots.next())
+            {
+                if (noRe(threads.find(_root)->first()->Subject) >=
+                    noRe(iter->Subject).data())
+                {
+                    break;
+                }
+                i++;
+            }
+            roots.insert(i,iter->ID.data());
+        }
+    }
+
+    //Remove all roots from the list
+    for (char *s=roots.first();s!=0;s=roots.next())
+    {
+        //Ain't this a fine statement?
+        this->remove(this->findRef(threads[s]->first()));
+    }
+
+    //This shouldn't exist: an article that makes a reference to another
+    //but not to it's ancesters and/or our root article in the
+    //thread of the second.
+    //But.... it happens about 10% of the time
+
+    ArticleList brokenlist;
+    ArticleList notbrokenlist;
+    
+    for (iter=this->first();iter!=0;iter=this->next())
+    {
+        bool broken=true;
+        
+        //For each reference
+        for (char *ref=iter->Refs.first();ref!=0;ref=iter->Refs.next())
+        {
+            //See if it refers to any of these articles
+            if (roots.find(ref)!=-1)
+            {
+                broken=false;
+                break;
+            }
+        }
+        //If it's a broken item, complain
+        if (broken)
+        {
+            debug ("Broken reference, fixing it");
+            //put it in the broken list
+            brokenlist.append(iter);
+        }
+    }
+
+    //add the broken references as roots. this sucks, but inserting
+    //them properly looks like work
+    for (Article *art=brokenlist.first();art!=0;art=brokenlist.next())
+    {
+        ArticleList *list=new ArticleList();
+        list->append(art);
+        threads.insert(art->ID.data(),list);
+        //remove it from the current list
+        this->removeRef(art);
+        //Add it to the list of roots, sorted by order of subject!
+        int i=0;
+        for (char *_root=roots.first();_root!=0;_root=roots.next())
+        {
+            if (noRe(threads.find(_root)->first()->Subject) >=
+                noRe(art->Subject).data())
+            {
+                break;
+            }
+            i++;
+        }
+        roots.insert(i,art->ID.data());
+    }
+
+    
+    for (iter=this->first();iter!=0;)
+    {
+        bool inserted=false;
+        for (char *ref=iter->Refs.first();ref!=0;ref=iter->Refs.next())
+        {
+            //If this ref is to an existing root,
+            //I'll place this article in that thread.
+            int i=roots.find(ref);
+            if (i!=-1)
+            {
+                threads[ref]->append(iter);
+                inserted=true;
+            }
+        }
+        this->remove();
+        iter=this->first();
+    }
+
+    //whack the list
+    debug ("this should be 0-->%d or I'm losing articles",count());
+    clear();
+    debug ("found %d threads",roots.count());
+    
+    //And now reassemble the list from the threads
+    //Iterate all the threads
+    for (char *s=roots.first();s!=0;s=roots.next())
+    {
+        ArticleList *l=threads.find(s);
+        // Thread the thread
+        // I know the first one is the root, but the rest is suspect.
+        // So, I'll take the root, thread the rest, and then add them.
+        if (l->first())
+            this->append(l->first());
+        else
+        {
+            debug ("huh? bad pointer in athread with %d articles!",l->count());
+            continue;
+        }
+        l->remove(0);
+        l->thread();
+        //Add all articles in the thread back to the list
+        for (Article *art=l->first();art!=0;art=l->next())
+        {
+            this->append(art);
+        }
+    }
+
 }
 
 ArticleList::~ArticleList()

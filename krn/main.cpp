@@ -89,7 +89,7 @@ int main( int argc, char **argv )
     a.setMainWidget( (QWidget *) &k );
     
     k.setMinimumSize( 250, 250 );
-    k.setCaption( "KRN 0.1 - Group list" );
+    k.setCaption( "KRN 0.0.3 - Group list" );
     
     k.show();
     

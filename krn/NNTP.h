@@ -29,7 +29,7 @@
 
 #include "newsgroup.h"
 
-#include <mimelib/nntp.h>
+#include <mimelib/mimepp.h>
 
 class NNTP: public DwNntpClient
 {

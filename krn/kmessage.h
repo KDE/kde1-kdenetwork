@@ -39,15 +39,16 @@ public:
 
     virtual ~Kmessage();
 
-public slots:
-    void loadMessage (QString message, bool complete=TRUE);
-
 signals:
     void spawnGroup(QString);
     void spawnArticle(QString);
+    
+public slots:
+    void loadMessage (QString message, bool complete=TRUE);
+
 
 private slots:
-    void URLClicked(const char*,int);
+    void URLClicked(KHTMLView *_view, const char *s, int _button, const char *_target );
     void renderWidgets();
 
 private:

@@ -9,7 +9,6 @@
 #include <Kconfig.h>
 #include <kapp.h>
 #include <uudeview.h>
-#include <mimelib/string.h>
 #include <mimelib/mimepp.h>
 #include "ktempfile.h"
 

@@ -70,7 +70,9 @@ public:
     void append(Article *item);
     bool remove(uint index);
     bool remove();
+    void thread();
     virtual void clear();
+
 };
 
 typedef QDictT<Article>ArticleDictBase;

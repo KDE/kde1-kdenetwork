@@ -65,7 +65,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     group->isVisible=true;
     setCaption (group->data());
     groupname=group->data();
-    unread = false;
+    unread = true;
     
     server = _server;
     
@@ -81,6 +81,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     article->insertItem("Tag",TAG_ARTICLE);
     article->insertSeparator();
     article->insertItem("Only unread messages", NO_READ);
+    article->setItemChecked(NO_READ,unread);
     connect (article,SIGNAL(activated(int)),SLOT(actions(int)));
     
     QPopupMenu *taggedArticle=new QPopupMenu;
@@ -198,8 +199,8 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     acc->insertItem(Key_Prior,PAGE_UP_ARTICLE);
     acc->insertItem(ALT + Key_Up, PREV);
     acc->insertItem(ALT + Key_Down, NEXT);
-    acc->insertItem(Key_Up, SCROLL_DOWN_ARTICLE);
-    acc->insertItem(Key_Down, SCROLL_UP_ARTICLE);
+    acc->insertItem(Key_Up, SCROLL_UP_ARTICLE);
+    acc->insertItem(Key_Down, SCROLL_DOWN_ARTICLE);
     
     QObject::connect (acc,SIGNAL(activated(int)),this,SLOT(actions(int)));
     QObject::connect (messwin,SIGNAL(spawnArticle(QString)),this,SLOT(loadArt(QString)));
@@ -244,23 +245,37 @@ void Artdlg::fillTree ()
     //Here is where the filtering should happen
     //Only put messages we want.
     
-    statusBar()->changeItem("Showing Article List",1);
-    qApp->processEvents ();
     list->setAutoUpdate(false);
     list->clear();
-    
-    for (Article *iter=group->artList.first();iter!=0;iter=group->artList.next())
+    artList.clear();
+
+    Article *iter;
+    for (iter=group->artList.first();iter!=0;iter=group->artList.next())
     {
-        QString formatted;
-        
-        artList.append(iter);
-        iter->formHeader(&formatted);
         if (!(iter->isRead() && unread)) // We want to see only the unread messages
         {
-            list->insertItem (formatted.data());
+            artList.append(iter);
         }
     }
+
+    debug ("count1-->%d",artList.count());
+    statusBar()->changeItem("Threading...",1);
+    qApp->processEvents ();
+    artList.thread();
+    debug ("count2-->%d",artList.count());
+
+    //had to split this in two loops because the order of articles is not
+    //the same in both article lists
     
+    statusBar()->changeItem("Showing Article List",1);
+    qApp->processEvents ();
+    for (iter=artList.first();iter!=0;iter=artList.next())
+    {
+        QString formatted;
+        iter->formHeader(&formatted);
+        list->insertItem (formatted.data());
+    }
+
     list->setAutoUpdate(true);
     list->repaint();
     qApp->restoreOverrideCursor();
@@ -370,22 +385,29 @@ bool Artdlg::actions (int action)
         {
             unread = !unread;
             article->setItemChecked(NO_READ, unread);
-            list->setAutoUpdate(false);
-            list->clear();
-            artList.clear();
-            for (Article *iter=group->artList.first();iter!=NULL;iter=group->artList.next())
-            {
-                QString formatted;
-                iter->formHeader(&formatted);
-                if (!(iter->isRead() && unread))		// We want to see only read messages.
-                {
-                    artList.append(iter);
-                    list->insertItem (formatted.data());
-                }
-            }
-            list->setAutoUpdate(true);
-            list->repaint();
+            fillTree();
             success = true;
+            break;
+        }
+    case PAGE_UP_ARTICLE:
+        {
+            messwin->slotVertSubtractPage();
+            break;
+        }
+    case SCROLL_UP_ARTICLE:
+        {
+            messwin->slotVertSubtractLine();
+            break;
+        }
+    case PAGE_DOWN_ARTICLE:
+        {
+            messwin->slotVertAddPage();
+            break;
+        }
+    case SCROLL_DOWN_ARTICLE:
+
+        {
+            messwin->slotVertAddLine();
             break;
         }
     case REP_MAIL:

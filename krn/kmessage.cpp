@@ -43,24 +43,22 @@ Kmessage::Kmessage
 {
     setFocusPolicy(QWidget::NoFocus);
 
-    view=this;
-
-    view->setScrolling(-1);
-    view->resize(400,300);
-    view->begin("file:/tmp/xxx");
-    view->write ("<html><head><title>Krn message view</title></head>\n"
+    this->setScrolling(-1);
+    this->resize(400,300);
+    this->begin("file:/tmp/xxx");
+    this->write ("<html><head><title>Krn message view</title></head>\n"
                  "<body bgcolor=#ffffff><hr><h4>Krn:&nbsp;A&nbsp;Newsreader&nbsp;for&nbsp;KDE</h4><hr>");
     debug("HTML Header=\""
           "<html><head><title>Krn message view</title></head>\n"
           "<body bgcolor=#ffffff><hr><h4>Krn:&nbsp;A&nbsp;Newsreader&nbsp;for&nbsp;KDE</h4><hr>"
           "\"");
-    view->end();
-    view->parse();
+    this->end();
+    this->parse();
 
-    view->setBackgroundColor(QColor("white"));
+    this->setBackgroundColor(QColor("white"));
     kapp->processEvents();
 
-    KApplication::connect(view,SIGNAL(URLSelected(const char*,int)),this,SLOT(URLClicked(const char*,int)));
+    KApplication::connect(this,SIGNAL(URLSelected(const char*,int)),this,SLOT(URLClicked(const char*,int)));
 
     saveWidgetName=tmpnam(NULL);
     tmpFiles.append(saveWidgetName);
@@ -68,9 +66,15 @@ Kmessage::Kmessage
     tmpFiles.append(viewWidgetName);
 
     renderWidgets();
-    KApplication::connect(kapp,SIGNAL(kdisplayPaletteChanged()),this, SLOT(renderWidgets()));
-    KApplication::connect(kapp,SIGNAL(kdisplayStyleChanged()),this, SLOT(renderWidgets()));
-    KApplication::connect(kapp,SIGNAL(kdisplayFontChanged()),this, SLOT(renderWidgets()));
+    QObject::connect(kapp,SIGNAL(kdisplayPaletteChanged()),this, SLOT(renderWidgets()));
+    QObject::connect(kapp,SIGNAL(kdisplayStyleChanged()),this, SLOT(renderWidgets()));
+    QObject::connect(kapp,SIGNAL(kdisplayFontChanged()),this, SLOT(renderWidgets()));
+
+    QObject::connect(this,
+                     SIGNAL(URLSelected( KHTMLView *, const char *, int , const char *)),
+                     this,
+                     SLOT(URLClicked( KHTMLView *, const char *, int , const char *)));
+
 }
 
 Kmessage::~Kmessage()
@@ -85,19 +89,18 @@ void Kmessage::loadMessage( QString message, bool complete=TRUE )
     format=new KFormatter(saveWidgetName,viewWidgetName,message,complete);
     CHECK_PTR(format);
 
-    view->begin("file:/tmp/xxx");
+    this->begin("file:/tmp/xxx");
     QString header=format->htmlHeader();
-    view->write(header+"<hr>");
-    view->parse();
+    this->write(header+"<hr>");
+    this->parse();
     QString body=format->htmlAll();
-    view->write(body+"</html>\n");
-    view->end();
-    view->repaint();
-    view->show();
+    this->write(body+"</html>\n");
+    this->end();
+    this->repaint();
+    this->show();
 
 }
-
-void Kmessage::URLClicked(const char* s,int)
+void Kmessage::URLClicked(KHTMLView *, const char *s, int , const char * )
 {
     debug("Got URL %s.",s);
 
