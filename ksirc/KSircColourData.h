@@ -15,6 +15,7 @@
 
 #include <qframe.h>
 #include "kcolorbtn.h"
+#include <kapp.h>
 
 class KSircColourData : public QFrame
 {

@@ -58,7 +58,7 @@ UserMenuRefData::UserMenuRefData
 	dlgedit_Label_1->setGeometry( 170, 40, 100, 30 );
 	dlgedit_Label_1->setMinimumSize( 10, 10 );
 	dlgedit_Label_1->setMaximumSize( 32767, 32767 );
-	dlgedit_Label_1->setText( "Menu Name" );
+	dlgedit_Label_1->setText( i18n("Menu Name") );
 	dlgedit_Label_1->setAlignment( 290 );
 	dlgedit_Label_1->setMargin( -1 );
 
@@ -67,7 +67,7 @@ UserMenuRefData::UserMenuRefData
 	dlgedit_Label_2->setGeometry( 170, 80, 100, 30 );
 	dlgedit_Label_2->setMinimumSize( 10, 10 );
 	dlgedit_Label_2->setMaximumSize( 32767, 32767 );
-	dlgedit_Label_2->setText( "Type" );
+	dlgedit_Label_2->setText( i18n("Type") );
 	dlgedit_Label_2->setAlignment( 290 );
 	dlgedit_Label_2->setMargin( -1 );
 
@@ -76,7 +76,7 @@ UserMenuRefData::UserMenuRefData
 	dlgedit_Label_3->setGeometry( 180, 120, 90, 30 );
 	dlgedit_Label_3->setMinimumSize( 10, 10 );
 	dlgedit_Label_3->setMaximumSize( 32767, 32767 );
-	dlgedit_Label_3->setText( "Command" );
+	dlgedit_Label_3->setText( i18n("Command") );
 	dlgedit_Label_3->setAlignment( 290 );
 	dlgedit_Label_3->setMargin( -1 );
 
@@ -84,7 +84,7 @@ UserMenuRefData::UserMenuRefData
 	MenuOpOnly->setGeometry( 280, 160, 100, 30 );
 	MenuOpOnly->setMinimumSize( 10, 10 );
 	MenuOpOnly->setMaximumSize( 32767, 32767 );
-	MenuOpOnly->setText( "OP Only" );
+	MenuOpOnly->setText( i18n("OP Only") );
 	MenuOpOnly->setAutoRepeat( FALSE );
 	MenuOpOnly->setAutoResize( FALSE );
 
@@ -93,7 +93,7 @@ UserMenuRefData::UserMenuRefData
 	ApplyButton->setMinimumSize( 10, 10 );
 	ApplyButton->setMaximumSize( 32767, 32767 );
 	connect( ApplyButton, SIGNAL(clicked()), SLOT(terminate()) );
-	ApplyButton->setText( "Close" );
+	ApplyButton->setText( i18n("Close") );
 	ApplyButton->setAutoRepeat( FALSE );
 	ApplyButton->setAutoResize( FALSE );
 
@@ -102,7 +102,7 @@ UserMenuRefData::UserMenuRefData
 	insertButton->setMinimumSize( 10, 10 );
 	insertButton->setMaximumSize( 32767, 32767 );
 	connect( insertButton, SIGNAL(clicked()), SLOT(insertMenu()) );
-	insertButton->setText( "Insert" );
+	insertButton->setText( i18n("Insert") );
 	insertButton->setAutoRepeat( FALSE );
 	insertButton->setAutoResize( FALSE );
 
@@ -122,7 +122,7 @@ UserMenuRefData::UserMenuRefData
 	dlgedit_PushButton_3->setMinimumSize( 10, 10 );
 	dlgedit_PushButton_3->setMaximumSize( 32767, 32767 );
 	connect( dlgedit_PushButton_3, SIGNAL(clicked()), SLOT(deleteMenu()) );
-	dlgedit_PushButton_3->setText( "Delete" );
+	dlgedit_PushButton_3->setText( i18n("Delete") );
 	dlgedit_PushButton_3->setAutoRepeat( FALSE );
 	dlgedit_PushButton_3->setAutoResize( FALSE );
 
@@ -132,7 +132,7 @@ UserMenuRefData::UserMenuRefData
 	dlgedit_PushButton_4->setMinimumSize( 10, 10 );
 	dlgedit_PushButton_4->setMaximumSize( 32767, 32767 );
 	connect( dlgedit_PushButton_4, SIGNAL(clicked()), SLOT(modifyMenu()) );
-	dlgedit_PushButton_4->setText( "Modify" );
+	dlgedit_PushButton_4->setText( i18n("Modify") );
 	dlgedit_PushButton_4->setAutoRepeat( FALSE );
 	dlgedit_PushButton_4->setAutoResize( FALSE );
 

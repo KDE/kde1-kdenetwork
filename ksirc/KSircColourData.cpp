@@ -30,7 +30,7 @@ KSircColourData::KSircColourData
 	dlgedit_Label_1->setGeometry( 10, 10, 100, 30 );
 	dlgedit_Label_1->setMinimumSize( 10, 10 );
 	dlgedit_Label_1->setMaximumSize( 32767, 32767 );
-	dlgedit_Label_1->setText( "Generic Text" );
+	dlgedit_Label_1->setText( i18n("Generic Text") );
 	dlgedit_Label_1->setAlignment( 289 );
 	dlgedit_Label_1->setMargin( -1 );
 
@@ -59,7 +59,7 @@ KSircColourData::KSircColourData
 	dlgedit_Label_2->setGeometry( 10, 50, 100, 30 );
 	dlgedit_Label_2->setMinimumSize( 10, 10 );
 	dlgedit_Label_2->setMaximumSize( 32767, 32767 );
-	dlgedit_Label_2->setText( "Info" );
+	dlgedit_Label_2->setText( i18n("Info") );
 	dlgedit_Label_2->setAlignment( 289 );
 	dlgedit_Label_2->setMargin( -1 );
 
@@ -68,7 +68,7 @@ KSircColourData::KSircColourData
 	dlgedit_Label_3->setGeometry( 10, 90, 100, 30 );
 	dlgedit_Label_3->setMinimumSize( 10, 10 );
 	dlgedit_Label_3->setMaximumSize( 32767, 32767 );
-	dlgedit_Label_3->setText( "Chan Messages" );
+	dlgedit_Label_3->setText( i18n("Chan Messages") );
 	dlgedit_Label_3->setAlignment( 289 );
 	dlgedit_Label_3->setMargin( -1 );
 
@@ -77,7 +77,7 @@ KSircColourData::KSircColourData
 	dlgedit_Label_4->setGeometry( 10, 130, 100, 30 );
 	dlgedit_Label_4->setMinimumSize( 10, 10 );
 	dlgedit_Label_4->setMaximumSize( 32767, 32767 );
-	dlgedit_Label_4->setText( "Errors" );
+	dlgedit_Label_4->setText( i18n("Errors") );
 	dlgedit_Label_4->setAlignment( 289 );
 	dlgedit_Label_4->setMargin( -1 );
 
@@ -87,7 +87,7 @@ KSircColourData::KSircColourData
 	dlgedit_PushButton_1->setMinimumSize( 10, 10 );
 	dlgedit_PushButton_1->setMaximumSize( 32767, 32767 );
 	connect( dlgedit_PushButton_1, SIGNAL(clicked()), SLOT(ok()) );
-	dlgedit_PushButton_1->setText( "Ok" );
+	dlgedit_PushButton_1->setText( i18n("Ok") );
 	dlgedit_PushButton_1->setAutoRepeat( FALSE );
 	dlgedit_PushButton_1->setAutoResize( FALSE );
 	dlgedit_PushButton_1->setAutoDefault( TRUE );
@@ -98,7 +98,7 @@ KSircColourData::KSircColourData
 	dlgedit_PushButton_2->setMinimumSize( 10, 10 );
 	dlgedit_PushButton_2->setMaximumSize( 32767, 32767 );
 	connect( dlgedit_PushButton_2, SIGNAL(clicked()), SLOT(cancel()) );
-	dlgedit_PushButton_2->setText( "Cancel" );
+	dlgedit_PushButton_2->setText( i18n("Cancel") );
 	dlgedit_PushButton_2->setAutoRepeat( FALSE );
 	dlgedit_PushButton_2->setAutoResize( FALSE );
 
@@ -112,7 +112,7 @@ KSircColourData::KSircColourData
 	dlgedit_Label_5->setGeometry( 10, 170, 100, 30 );
 	dlgedit_Label_5->setMinimumSize( 10, 10 );
 	dlgedit_Label_5->setMaximumSize( 32767, 32767 );
-	dlgedit_Label_5->setText( "Background" );
+	dlgedit_Label_5->setText( i18n("Background") );
 	dlgedit_Label_5->setAlignment( 289 );
 	dlgedit_Label_5->setMargin( -1 );
 

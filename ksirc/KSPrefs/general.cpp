@@ -10,7 +10,7 @@
 #include "general.h"
 #include "../config.h"
 #include <kconfig.h>
-#include <qfiledlg.h>
+#include <kfiledialog.h>
 
 extern KConfig *kConfig;
 extern global_config *kSircConfig;
@@ -58,7 +58,7 @@ general::~general()
 
 void general::slot_openBrowser()
 {
-  QFileDialog *FileDialog = new QFileDialog( ".", "*.gif");
+  KFileDialog *FileDialog = new KFileDialog( ".", "*.gif");
   connect(FileDialog, SIGNAL(fileSelected(const char*)),
           this, SLOT(slot_setBackgroundFile(const char*)));
   FileDialog->show();

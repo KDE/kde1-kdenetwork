@@ -36,7 +36,7 @@ open_ksircData::open_ksircData
 		font.setCharSet( (QFont::CharSet)0 );
 		dlgedit_Label_1->setFont( font );
 	}
-	dlgedit_Label_1->setText( "Server:" );
+	dlgedit_Label_1->setText( i18n("Server:") );
 	dlgedit_Label_1->setAlignment( 33 );
 	dlgedit_Label_1->setMargin( -1 );
 
@@ -51,7 +51,7 @@ open_ksircData::open_ksircData
 		okButton->setFont( font );
 	}
 	connect( okButton, SIGNAL(clicked()), SLOT(create_toplevel()) );
-	okButton->setText( "Ok" );
+	okButton->setText( i18n("Ok") );
 	okButton->setAutoRepeat( FALSE );
 	okButton->setAutoResize( FALSE );
 	okButton->setAutoDefault( TRUE );
@@ -62,7 +62,7 @@ open_ksircData::open_ksircData
 	dlgedit_PushButton_2->setMinimumSize( 10, 10 );
 	dlgedit_PushButton_2->setMaximumSize( 32767, 32767 );
 	connect( dlgedit_PushButton_2, SIGNAL(clicked()), SLOT(terminate()) );
-	dlgedit_PushButton_2->setText( "Cancel" );
+	dlgedit_PushButton_2->setText( i18n("Cancel") );
 	dlgedit_PushButton_2->setAutoRepeat( FALSE );
 	dlgedit_PushButton_2->setAutoResize( FALSE );
 

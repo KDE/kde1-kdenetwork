@@ -89,6 +89,10 @@ STATIC_LIBS = $(static_libkde) $(static_libqt) $(static_libstdc) $(static_pthrea
 kdoc:
 	kdoc -ddoc ksirc *.h
 
+i18n:
+	perl conv-i18n-h `find . -name '*Data.h' -print |grep -Ev '.*/m.*'`	
+	perl -n -i conv-i18n-cpp `find . -name '*Data.cpp' -print |grep -Ev '.*/m.*'`
+
 getdate_SOURCES = getdate.c
 
 getdate: getdate.c

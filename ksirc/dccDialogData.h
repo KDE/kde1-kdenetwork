@@ -16,6 +16,7 @@
 #include <qframe.h>
 #include <qpushbt.h>
 #include <qlistbox.h>
+#include <kapp.h>
 
 class dccDialogData : public QFrame
 {

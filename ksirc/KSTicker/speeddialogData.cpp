@@ -76,7 +76,7 @@ speeddialogData::speeddialogData
 	dlgedit_Label_1->setGeometry( 10, 5, 80, 30 );
 	dlgedit_Label_1->setMinimumSize( 10, 10 );
 	dlgedit_Label_1->setMaximumSize( 32767, 32767 );
-	dlgedit_Label_1->setText( "Tick Interval" );
+	dlgedit_Label_1->setText( i18n("Tick Interval") );
 	dlgedit_Label_1->setAlignment( 289 );
 	dlgedit_Label_1->setMargin( -1 );
 
@@ -85,7 +85,7 @@ speeddialogData::speeddialogData
 	dlgedit_Label_2->setGeometry( 10, 40, 80, 30 );
 	dlgedit_Label_2->setMinimumSize( 10, 10 );
 	dlgedit_Label_2->setMaximumSize( 32767, 32767 );
-	dlgedit_Label_2->setText( "Step Size" );
+	dlgedit_Label_2->setText( i18n("Step Size") );
 	dlgedit_Label_2->setAlignment( 289 );
 	dlgedit_Label_2->setMargin( -1 );
 
@@ -95,7 +95,7 @@ speeddialogData::speeddialogData
 	dlgedit_PushButton_2->setMinimumSize( 10, 10 );
 	dlgedit_PushButton_2->setMaximumSize( 32767, 32767 );
 	connect( dlgedit_PushButton_2, SIGNAL(pressed()), SLOT(terminate()) );
-	dlgedit_PushButton_2->setText( "&Close" );
+	dlgedit_PushButton_2->setText( i18n("&Close") );
 	dlgedit_PushButton_2->setAutoRepeat( FALSE );
 	dlgedit_PushButton_2->setAutoResize( FALSE );
 

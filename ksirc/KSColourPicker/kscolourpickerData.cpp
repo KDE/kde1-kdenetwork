@@ -27,7 +27,7 @@ kscolourpickerData::kscolourpickerData
 	PB_Pick->setGeometry( 120, 50, 100, 25 );
 	PB_Pick->setMinimumSize( 10, 10 );
 	PB_Pick->setMaximumSize( 32767, 32767 );
-	PB_Pick->setText( "Pick" );
+	PB_Pick->setText( i18n("Pick") );
 	PB_Pick->setAutoRepeat( FALSE );
 	PB_Pick->setAutoResize( FALSE );
 
@@ -35,7 +35,7 @@ kscolourpickerData::kscolourpickerData
 	PB_Cancel->setGeometry( 235, 50, 100, 25 );
 	PB_Cancel->setMinimumSize( 10, 10 );
 	PB_Cancel->setMaximumSize( 32767, 32767 );
-	PB_Cancel->setText( "Cancel" );
+	PB_Cancel->setText( i18n("Cancel") );
 	PB_Cancel->setAutoRepeat( FALSE );
 	PB_Cancel->setAutoResize( FALSE );
 
@@ -43,7 +43,7 @@ kscolourpickerData::kscolourpickerData
 	SLE_SampleText->setGeometry( 15, 50, 95, 25 );
 	SLE_SampleText->setMinimumSize( 10, 10 );
 	SLE_SampleText->setMaximumSize( 32767, 32767 );
-	SLE_SampleText->setText( "Sample Colour" );
+	SLE_SampleText->setText( i18n("Sample Colour") );
 	SLE_SampleText->setMaxLength( 32767 );
 	SLE_SampleText->setEchoMode( QLineEdit::Normal );
 	SLE_SampleText->setFrame( TRUE );

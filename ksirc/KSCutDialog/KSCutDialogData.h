@@ -15,6 +15,7 @@
 
 #include <qdialog.h>
 #include "cutmle.h"
+#include <kapp.h>
 
 class KSCutDialogData : public QDialog
 {

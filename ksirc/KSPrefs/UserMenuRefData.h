@@ -19,6 +19,7 @@
 #include <qlistbox.h>
 #include <qlined.h>
 #include <qcombo.h>
+#include <kapp.h>
 
 class UserMenuRefData : public QFrame
 {

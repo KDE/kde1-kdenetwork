@@ -30,7 +30,7 @@ FilterRuleEditorData::FilterRuleEditorData
 	dlgedit_Label_1->setGeometry( 140, 10, 80, 30 );
 	dlgedit_Label_1->setMinimumSize( 0, 0 );
 	dlgedit_Label_1->setMaximumSize( 32767, 32767 );
-	dlgedit_Label_1->setText( "Description:" );
+	dlgedit_Label_1->setText( i18n("Description:") );
 	dlgedit_Label_1->setAlignment( 289 );
 	dlgedit_Label_1->setMargin( -1 );
 
@@ -48,7 +48,7 @@ FilterRuleEditorData::FilterRuleEditorData
 	dlgedit_Label_4->setGeometry( 140, 50, 70, 30 );
 	dlgedit_Label_4->setMinimumSize( 0, 0 );
 	dlgedit_Label_4->setMaximumSize( 32767, 32767 );
-	dlgedit_Label_4->setText( "Match:" );
+	dlgedit_Label_4->setText( i18n("Match:") );
 	dlgedit_Label_4->setAlignment( 289 );
 	dlgedit_Label_4->setMargin( -1 );
 
@@ -66,7 +66,7 @@ FilterRuleEditorData::FilterRuleEditorData
 	dlgedit_Label_7->setGeometry( 140, 90, 80, 30 );
 	dlgedit_Label_7->setMinimumSize( 0, 0 );
 	dlgedit_Label_7->setMaximumSize( 32767, 32767 );
-	dlgedit_Label_7->setText( "From:" );
+	dlgedit_Label_7->setText( i18n("From:") );
 	dlgedit_Label_7->setAlignment( 289 );
 	dlgedit_Label_7->setMargin( -1 );
 
@@ -75,7 +75,7 @@ FilterRuleEditorData::FilterRuleEditorData
 	dlgedit_Label_9->setGeometry( 140, 130, 70, 30 );
 	dlgedit_Label_9->setMinimumSize( 0, 0 );
 	dlgedit_Label_9->setMaximumSize( 32767, 32767 );
-	dlgedit_Label_9->setText( "To:" );
+	dlgedit_Label_9->setText( i18n("To:") );
 	dlgedit_Label_9->setAlignment( 289 );
 	dlgedit_Label_9->setMargin( -1 );
 
@@ -102,7 +102,7 @@ FilterRuleEditorData::FilterRuleEditorData
 	ApplyButton->setMinimumSize( 10, 10 );
 	ApplyButton->setMaximumSize( 32767, 32767 );
 	connect( ApplyButton, SIGNAL(clicked()), SLOT(OkPressed()) );
-	ApplyButton->setText( "&Modify" );
+	ApplyButton->setText( i18n("&Modify") );
 	ApplyButton->setAutoRepeat( FALSE );
 	ApplyButton->setAutoResize( FALSE );
 	ApplyButton->setAutoDefault( TRUE );
@@ -113,7 +113,7 @@ FilterRuleEditorData::FilterRuleEditorData
 	dlgedit_PushButton_2->setMinimumSize( 10, 10 );
 	dlgedit_PushButton_2->setMaximumSize( 32767, 32767 );
 	connect( dlgedit_PushButton_2, SIGNAL(clicked()), SLOT(closePressed()) );
-	dlgedit_PushButton_2->setText( "&Close" );
+	dlgedit_PushButton_2->setText( i18n("&Close") );
 	dlgedit_PushButton_2->setAutoRepeat( FALSE );
 	dlgedit_PushButton_2->setAutoResize( FALSE );
 
@@ -123,7 +123,7 @@ FilterRuleEditorData::FilterRuleEditorData
 	dlgedit_PushButton_7->setMinimumSize( 10, 10 );
 	dlgedit_PushButton_7->setMaximumSize( 32767, 32767 );
 	connect( dlgedit_PushButton_7, SIGNAL(clicked()), SLOT(newRule()) );
-	dlgedit_PushButton_7->setText( "&New Rule" );
+	dlgedit_PushButton_7->setText( i18n("&New Rule") );
 	dlgedit_PushButton_7->setAutoRepeat( FALSE );
 	dlgedit_PushButton_7->setAutoResize( FALSE );
 
@@ -132,7 +132,7 @@ FilterRuleEditorData::FilterRuleEditorData
 	deleteButton->setMinimumSize( 10, 10 );
 	deleteButton->setMaximumSize( 32767, 32767 );
 	connect( deleteButton, SIGNAL(clicked()), SLOT(deleteRule()) );
-	deleteButton->setText( "&Delete" );
+	deleteButton->setText( i18n("&Delete") );
 	deleteButton->setAutoRepeat( FALSE );
 	deleteButton->setAutoResize( FALSE );
 
@@ -142,7 +142,7 @@ FilterRuleEditorData::FilterRuleEditorData
 	dlgedit_PushButton_9->setMinimumSize( 10, 10 );
 	dlgedit_PushButton_9->setMaximumSize( 32767, 32767 );
 	connect( dlgedit_PushButton_9, SIGNAL(clicked()), SLOT(raiseRule()) );
-	dlgedit_PushButton_9->setText( "Up" );
+	dlgedit_PushButton_9->setText( i18n("Up") );
 	dlgedit_PushButton_9->setAutoRepeat( FALSE );
 	dlgedit_PushButton_9->setAutoResize( FALSE );
 
@@ -152,7 +152,7 @@ FilterRuleEditorData::FilterRuleEditorData
 	dlgedit_PushButton_10->setMinimumSize( 10, 10 );
 	dlgedit_PushButton_10->setMaximumSize( 32767, 32767 );
 	connect( dlgedit_PushButton_10, SIGNAL(clicked()), SLOT(lowerRule()) );
-	dlgedit_PushButton_10->setText( "Down" );
+	dlgedit_PushButton_10->setText( i18n("Down") );
 	dlgedit_PushButton_10->setAutoRepeat( FALSE );
 	dlgedit_PushButton_10->setAutoResize( FALSE );
 

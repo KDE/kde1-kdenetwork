@@ -35,7 +35,7 @@ dccDialogData::dccDialogData
 	getButton->setGeometry( 10, 210, 100, 30 );
 	getButton->setMinimumSize( 10, 10 );
 	getButton->setMaximumSize( 32767, 32767 );
-	getButton->setText( "&Get" );
+	getButton->setText( i18n("&Get") );
 	getButton->setAutoRepeat( FALSE );
 	getButton->setAutoResize( FALSE );
 
@@ -43,7 +43,7 @@ dccDialogData::dccDialogData
 	forgetButton->setGeometry( 120, 210, 100, 30 );
 	forgetButton->setMinimumSize( 10, 10 );
 	forgetButton->setMaximumSize( 32767, 32767 );
-	forgetButton->setText( "&Forget" );
+	forgetButton->setText( i18n("&Forget") );
 	forgetButton->setAutoRepeat( FALSE );
 	forgetButton->setAutoResize( FALSE );
 

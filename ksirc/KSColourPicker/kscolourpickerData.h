@@ -16,6 +16,7 @@
 #include <qdialog.h>
 #include <qpushbt.h>
 #include <qlined.h>
+#include <kapp.h>
 
 class kscolourpickerData : public QDialog
 {

@@ -17,6 +17,7 @@
 #include <qpushbt.h>
 #include <qlistbox.h>
 #include <qlined.h>
+#include <kapp.h>
 
 class FilterRuleEditorData : public QDialog
 {

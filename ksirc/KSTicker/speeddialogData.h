@@ -16,6 +16,7 @@
 #include <qdialog.h>
 #include <qslider.h>
 #include <qlcdnum.h>
+#include <kapp.h>
 
 class speeddialogData : public QDialog
 {

@@ -36,7 +36,7 @@ KSCutDialogData::KSCutDialogData
 	dlgedit_PushButton_9->setMinimumSize( 100, 30 );
 	dlgedit_PushButton_9->setMaximumSize( 100, 30 );
 	connect( dlgedit_PushButton_9, SIGNAL(clicked()), SLOT(copy()) );
-	dlgedit_PushButton_9->setText( "Cop&y" );
+	dlgedit_PushButton_9->setText( i18n("Cop&y") );
 	dlgedit_PushButton_9->setAutoRepeat( FALSE );
 	dlgedit_PushButton_9->setAutoResize( FALSE );
 
@@ -46,7 +46,7 @@ KSCutDialogData::KSCutDialogData
 	dlgedit_PushButton_10->setMinimumSize( 100, 30 );
 	dlgedit_PushButton_10->setMaximumSize( 100, 30 );
 	connect( dlgedit_PushButton_10, SIGNAL(clicked()), SLOT(terminate()) );
-	dlgedit_PushButton_10->setText( "&Close" );
+	dlgedit_PushButton_10->setText( i18n("&Close") );
 	dlgedit_PushButton_10->setAutoRepeat( FALSE );
 	dlgedit_PushButton_10->setAutoResize( FALSE );
 
