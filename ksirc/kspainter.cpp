@@ -184,13 +184,17 @@ QString KSPainter::stripColourCodes(QString col, QList<int> *xlate){
         i+=2; // Move ahead 2 characters (~x == 2)
         break;
       default:
-//        i++; // Move to next character
-        break;
+	//        i++; // Move to next character
+	noCol += col.mid(i, 1);
+	if(xlate != 0x0)
+	  xlate->append(new int(i));
+	i+=2; // Move ahead to next character
+	break;
       }
     }
     else{
       // It's a printable character
-//      cerr << i << "-" << col.mid(i, 1) << " ";
+      //      cerr << i << "-" << col.mid(i, 1) << " ";
       noCol += col.mid(i, 1);
       if(xlate != 0x0)
         xlate->append(new int(i));
