@@ -109,6 +109,14 @@ public:
     TLObj *addLineEdit(const char *ID,const char *text="",int maxlen=-1);
 
     /**
+     Adds a Line for Integer data entry ( a KIntLineEdit).
+     text is the text it should contain.
+     maxlen is an enforced maximum length. It affects the data entered, not
+     the size of the widget, -1 means no limit.
+     */
+    TLObj *addIntLineEdit(const char *ID,const char *text="",int maxlen=-1);
+
+    /**
      Adds a ListBox.
      contents is a list of textual contents. If you want to set contents
      later, or use pixmaps, just set it to 0, and use findWidget() later.

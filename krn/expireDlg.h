@@ -3,6 +3,7 @@
 
 #include <qdialog.h>
 #include <keditcl.h>
+#include <qlined.h>
 
 class ExpireDlg: public QDialog
 {

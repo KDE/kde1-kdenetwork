@@ -10,6 +10,7 @@
 #include <qradiobt.h>
 #include <qpixmap.h>
 #include <qlistbox.h>
+#include <keditcl.h>
 
 #include <ktabctl.h>
 
@@ -332,6 +333,25 @@ TLObj *KTypeLayout::addLineEdit(const char *ID,const char *text,int maxlen)
 
     g->show();
     g->setFixedHeight(l->fontMetrics().height()+10);
+    if (maxlen>0)
+        g->setMaximumWidth(10+maxlen*l->fontMetrics().maxWidth());
+    return addWidget(ID,g);
+}
+
+TLObj *KTypeLayout::addIntLineEdit(const char *ID,const char *text,int maxlen)
+{
+    QWidget *g;
+    KIntLineEdit *l=new KIntLineEdit(windowStack.top()->widget);
+    g=l;
+
+    if (maxlen>=0)
+        l->setMaxLength(maxlen);
+    l->setText(text);
+
+    g->show();
+    g->setFixedHeight(l->fontMetrics().height()+10);
+    if (maxlen>0)
+        g->setMaximumWidth(10+maxlen*l->fontMetrics().width("8"));
     return addWidget(ID,g);
 }
 
