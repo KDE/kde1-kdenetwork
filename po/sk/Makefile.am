@@ -3,7 +3,7 @@
 GMFILES = kmail.gmo krn.gmo knu.gmo kppp.gmo
 POFILES = $(GMFILES:.gmo=.po)
 
-LANG = de
+LANG = sk
 
 localedir = $(kde_locale)
 
