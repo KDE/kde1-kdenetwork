@@ -7,8 +7,8 @@
 
 <title>The <em/kppp/ Handbook
 <author>Bernd Johannes Wuebben, <tt/wuebben@kde.org/
-<date>Version 1.6.14, April 25, 1999
-<abstract>This Handbook describes <em/kppp/ Version 1.6.14
+<date>Version 1.6.22, Sep 4, 1999
+<abstract>This Handbook describes <em/kppp/ Version 1.6.22
 
 <!-- Table of contents -->
 <toc>
@@ -215,6 +215,7 @@ the real modem device to /dev/modem. <bf>You should avoid using this
 one</bf>. Use /dev/ttySx (x is a digit) instead.
 </itemize>
 
+<label id="winmodem">
 If you can't get your modem to work at all you should verify that you don't
 have one of those so called <em/WinModems/. Some manufacturers leave out some
 essential hardware capabilities and let the CPU do the work. At the time of
@@ -1016,7 +1017,9 @@ their values and do some fine tuning later.
 You probably have activated the <ref id="Auto-configure hostname"> option and the X Server has problems connecting to your newly named host. If you really need this option (chances are that you don´t) you are on your own to setup the appropriate authorisations.
 Issuing <it>xhost +</it> before starting the connection would do the job, but be <bf>warned</bf> of any security risks that involves since everyone else is granted access to your X Server.
 <p> 
-
+Another source of trouble (note to Red Hat users): one of the pre-installed
+network scripts might be playing tricks on you. Rename <tt>/etc/ppp/ip-up</tt>
+to stop pppd from executing it automatically on every connection.<p>
 
 <sect2><em/kppp/ reports a successful connection, but Netscape just says "The 
 server does not have a DNS entry"<p>
@@ -1178,6 +1181,19 @@ PAP or CHAP)
 </itemize>
 <p>
 
+<sect2>"Sorry, the modem is busy"<p>
+<itemize>
+<item> you might be an unlucky owner of a <ref id="winmodem" name="WinModem">.
+<item> did you correctly configure the serial port or internal modem ?
+The interrupts might not be set up correctly.
+<item> verify that no other software is currently accessing the modem
+<item> If you're using a 2.2.5 (or newer) Linux kernel there might be a
+conflict with the serial support module. See
+<url url="http://www.suse.de/sdb/en/html/sf_seriell.html"> for further details.
+</itemize>
+
+<sect2>How do I disable dial tone detection ?<p>
+Put X3 into your dial string in the Modem Commands setup dialog, e.g. ATX3DT.
 
 <sect1>How to interpret the system's log<p>
 <sect2>Serial line is looped back<p>

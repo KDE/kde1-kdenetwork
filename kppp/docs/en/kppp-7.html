@@ -145,6 +145,9 @@ their values and do some fine tuning later.
  option and the X Server has problems connecting to your newly named host. If you really need this option (chances are that you don´t) you are on your own to setup the appropriate authorisations.
 Issuing <I>xhost +</I> before starting the connection would do the job, but be <B>warned</B> of any security risks that involves since everyone else is granted access to your X Server.
 <P> 
+Another source of trouble (note to Red Hat users): one of the pre-installed
+network scripts might be playing tricks on you. Rename <CODE>/etc/ppp/ip-up</CODE>
+to stop pppd from executing it automatically on every connection.
 <P>
 <P>
 <H4><EM>kppp</EM> reports a successful connection, but Netscape just says "The server does not have a DNS entry"</H4>
@@ -318,6 +321,26 @@ or CHAP)</LI>
 </UL>
 <P>
 <P>
+<H4>"Sorry, the modem is busy"</H4>
+
+<P>
+<UL>
+<LI> you might be an unlucky owner of a
+<A HREF="kppp-3.html#winmodem">WinModem</A></LI>
+<LI> did you correctly configure the serial port or internal modem ?
+The interrupts might not be set up correctly.</LI>
+<LI> verify that no other software is currently accessing the modem</LI>
+<LI> If you're using a 2.2.5 (or newer) Linux kernel there might be a
+conflict with the serial support module. See
+<A HREF="http://www.suse.de/sdb/en/html/sf_seriell.html">http://www.suse.de/sdb/en/html/sf_seriell.html</A> for further details.</LI>
+</UL>
+<P>
+<H4>How do I disable dial tone detection ?</H4>
+
+<P>Put X3 into your dial string, e.g. ATX3DT.
+<P>
+<H2><A NAME="ss7.2">7.2 How to interpret the system's log</A>
+</H2>
 
 <H3><A NAME="ss7.2">7.2 How to interpret the system's log</A>
 </H3>
