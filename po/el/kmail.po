@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1999-01-15 02:07+0100\n"
+"POT-Creation-Date: 1999-01-16 02:03+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Theodore J. Soldatos <theodore@eexi.gr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -992,7 +992,7 @@ msgstr ""
 msgid "pgp key"
 msgstr ""
 
-#: kmcomposewin.cpp:1295 kmreaderwin.cpp:721
+#: kmcomposewin.cpp:1295 kmreaderwin.cpp:784
 msgid "View..."
 msgstr "Προβολή..."
 
@@ -1000,7 +1000,7 @@ msgstr "Προβολή..."
 msgid "Save..."
 msgstr "Αποθήκευση..."
 
-#: kmcomposewin.cpp:1297 kmreaderwin.cpp:724
+#: kmcomposewin.cpp:1297 kmreaderwin.cpp:787
 msgid "Properties..."
 msgstr "Ιδιότητες..."
 
@@ -1008,7 +1008,7 @@ msgstr "Ιδιότητες..."
 msgid "Attach..."
 msgstr "Προσθήκη συνημμένου..."
 
-#: kmcomposewin.cpp:1343 kmreaderwin.cpp:766
+#: kmcomposewin.cpp:1343 kmreaderwin.cpp:829
 msgid "View Attachment: "
 msgstr "Προβολή συνημμένου: "
 
@@ -1080,73 +1080,64 @@ msgstr "base 64"
 msgid "quoted printable"
 msgstr "quoted printable"
 
-#: kmreaderwin.cpp:305 kmreaderwin.cpp:318 kmreaderwin.cpp:337
-#: kmreaderwin.cpp:358
+#: kmreaderwin.cpp:308 kmreaderwin.cpp:321 kmreaderwin.cpp:340
+#: kmreaderwin.cpp:361
 msgid "Cc: "
 msgstr "Αντίγραφο: "
 
-#: kmreaderwin.cpp:313 kmreaderwin.cpp:332 kmreaderwin.cpp:353
+#: kmreaderwin.cpp:316 kmreaderwin.cpp:335 kmreaderwin.cpp:356
 msgid "From: "
 msgstr "Από: "
 
-#: kmreaderwin.cpp:315 kmreaderwin.cpp:334 kmreaderwin.cpp:355
+#: kmreaderwin.cpp:318 kmreaderwin.cpp:337 kmreaderwin.cpp:358
 msgid "To: "
 msgstr "Προς: "
 
-#: kmreaderwin.cpp:322 kmreaderwin.cpp:343 kmreaderwin.cpp:368
+#: kmreaderwin.cpp:325 kmreaderwin.cpp:346 kmreaderwin.cpp:371
 msgid "References: "
 msgstr "Αναφορές: "
 
-#: kmreaderwin.cpp:339 kmreaderwin.cpp:352
+#: kmreaderwin.cpp:342 kmreaderwin.cpp:355
 msgid "Date: "
 msgstr "Ημερομηνία: "
 
-#: kmreaderwin.cpp:361
+#: kmreaderwin.cpp:364
 msgid "Bcc: "
 msgstr "Bcc: "
 
-#: kmreaderwin.cpp:364
+#: kmreaderwin.cpp:367
 msgid "Reply to: "
 msgstr "Απάντηση προς: "
 
-#: kmreaderwin.cpp:371
+#: kmreaderwin.cpp:374
 msgid "Groups: "
 msgstr "Ομάδες: "
 
-#: kmreaderwin.cpp:409
+#: kmreaderwin.cpp:412
 msgid "Encrypted message"
 msgstr "Κρυπτογραφημένο μήνυμα"
 
-#: kmreaderwin.cpp:415
+#: kmreaderwin.cpp:418
 msgid "Cannot decrypt message:"
 msgstr "Δεν μπορώ να αποκρυπτογραφήσω το μήνυμα:"
 
-#: kmreaderwin.cpp:424
+#: kmreaderwin.cpp:427
 msgid "Message was signed by"
 msgstr "Το μήνυμα είναι υπογεγραμμένο από"
 
-#: kmreaderwin.cpp:425
+#: kmreaderwin.cpp:428
 msgid "Warning: Bad signature from"
 msgstr "Προσοχή: ’κυρη υπογραφή από"
 
-#: kmreaderwin.cpp:435
+#: kmreaderwin.cpp:438
 msgid "unknown key ID"
 msgstr ""
 
-#: kmreaderwin.cpp:685
+#: kmreaderwin.cpp:748
 msgid "Attachment: "
 msgstr "Συνημμένο: "
 
-#: kmreaderwin.cpp:797
-msgid "Could not create temporary file"
-msgstr "Δεν μπορώ να δημιουργήσω προσωρινό αρχείο"
-
-#: kmreaderwin.cpp:818
-#, c-format
-msgid "Could not save temporary file %s"
-msgstr "Δεν μπορώ να αποθηκεύσω το προσωρινό αρχείο %s"
-
-#: kmreaderwin.cpp:847
+#: kmreaderwin.cpp:916
 msgid "Could not save file"
 msgstr "Δεν μπορώ να αποθηκεύσω το αρχείο"
 
@@ -1200,7 +1191,7 @@ msgstr ""
 msgid "Loading addressbook failed"
 msgstr ""
 
-#: main.cpp:405
+#: main.cpp:411
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr ""
@@ -1855,6 +1846,12 @@ msgstr "7 bit ASCII"
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
 msgstr "Εγκλεισμός άγνωστων χαρακτήρων"
+
+#~ msgid "Could not create temporary file"
+#~ msgstr "Δεν μπορώ να δημιουργήσω προσωρινό αρχείο"
+
+#~ msgid "Could not save temporary file %s"
+#~ msgstr "Δεν μπορώ να αποθηκεύσω το προσωρινό αρχείο %s"
 
 #~ msgid "Error during PGP:"
 #~ msgstr "Σφάλμα κατά την PGP κρυπτογράφηση:"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1999-01-15 02:07+0100\n"
+"POT-Creation-Date: 1999-01-16 02:03+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Kim Enkovaara <kim.enkovaara@iki.fi>\n"
 
@@ -967,7 +967,7 @@ msgstr "pgp avaimeni"
 msgid "pgp key"
 msgstr "pgp avain"
 
-#: kmcomposewin.cpp:1295 kmreaderwin.cpp:721
+#: kmcomposewin.cpp:1295 kmreaderwin.cpp:784
 msgid "View..."
 msgstr "Näytä..."
 
@@ -975,7 +975,7 @@ msgstr "Näytä..."
 msgid "Save..."
 msgstr "Tallenna..."
 
-#: kmcomposewin.cpp:1297 kmreaderwin.cpp:724
+#: kmcomposewin.cpp:1297 kmreaderwin.cpp:787
 msgid "Properties..."
 msgstr "&Ominaisuudet..."
 
@@ -983,7 +983,7 @@ msgstr "&Ominaisuudet..."
 msgid "Attach..."
 msgstr "Liite..."
 
-#: kmcomposewin.cpp:1343 kmreaderwin.cpp:766
+#: kmcomposewin.cpp:1343 kmreaderwin.cpp:829
 msgid "View Attachment: "
 msgstr "Näytä Liitteet: "
 
@@ -1052,73 +1052,64 @@ msgstr "Base 64"
 msgid "quoted printable"
 msgstr "quoted printable"
 
-#: kmreaderwin.cpp:305 kmreaderwin.cpp:318 kmreaderwin.cpp:337
-#: kmreaderwin.cpp:358
+#: kmreaderwin.cpp:308 kmreaderwin.cpp:321 kmreaderwin.cpp:340
+#: kmreaderwin.cpp:361
 msgid "Cc: "
 msgstr "Kopio:"
 
-#: kmreaderwin.cpp:313 kmreaderwin.cpp:332 kmreaderwin.cpp:353
+#: kmreaderwin.cpp:316 kmreaderwin.cpp:335 kmreaderwin.cpp:356
 msgid "From: "
 msgstr "Lähettäjä:"
 
-#: kmreaderwin.cpp:315 kmreaderwin.cpp:334 kmreaderwin.cpp:355
+#: kmreaderwin.cpp:318 kmreaderwin.cpp:337 kmreaderwin.cpp:358
 msgid "To: "
 msgstr "Vastaanottaja:"
 
-#: kmreaderwin.cpp:322 kmreaderwin.cpp:343 kmreaderwin.cpp:368
+#: kmreaderwin.cpp:325 kmreaderwin.cpp:346 kmreaderwin.cpp:371
 msgid "References: "
 msgstr "Viitteet:"
 
-#: kmreaderwin.cpp:339 kmreaderwin.cpp:352
+#: kmreaderwin.cpp:342 kmreaderwin.cpp:355
 msgid "Date: "
 msgstr "Päivä:"
 
-#: kmreaderwin.cpp:361
+#: kmreaderwin.cpp:364
 msgid "Bcc: "
 msgstr "&Tiedoksi: "
 
-#: kmreaderwin.cpp:364
+#: kmreaderwin.cpp:367
 msgid "Reply to: "
 msgstr "Vastaa: "
 
-#: kmreaderwin.cpp:371
+#: kmreaderwin.cpp:374
 msgid "Groups: "
 msgstr "Uutisryhmät: "
 
-#: kmreaderwin.cpp:409
+#: kmreaderwin.cpp:412
 msgid "Encrypted message"
 msgstr "Salattu viesti"
 
-#: kmreaderwin.cpp:415
+#: kmreaderwin.cpp:418
 msgid "Cannot decrypt message:"
 msgstr "En voi purkaa viestiä:"
 
-#: kmreaderwin.cpp:424
+#: kmreaderwin.cpp:427
 msgid "Message was signed by"
 msgstr "Viestin allekirjoitti"
 
-#: kmreaderwin.cpp:425
+#: kmreaderwin.cpp:428
 msgid "Warning: Bad signature from"
 msgstr "Varoitus: Huono allekirjoitus"
 
-#: kmreaderwin.cpp:435
+#: kmreaderwin.cpp:438
 msgid "unknown key ID"
 msgstr "tuntematon avain ID"
 
-#: kmreaderwin.cpp:685
+#: kmreaderwin.cpp:748
 msgid "Attachment: "
 msgstr "Liitteet: "
 
-#: kmreaderwin.cpp:797
-msgid "Could not create temporary file"
-msgstr "En voinut luoda väliaikaistiedostoa"
-
-#: kmreaderwin.cpp:818
-#, c-format
-msgid "Could not save temporary file %s"
-msgstr "En saanut tallennettua väliaikaistiedostoa %s"
-
-#: kmreaderwin.cpp:847
+#: kmreaderwin.cpp:916
 msgid "Could not save file"
 msgstr "En saanut tallennettua tiedostoa"
 
@@ -1174,7 +1165,7 @@ msgstr ""
 msgid "Loading addressbook failed"
 msgstr "Osoitekirjan lataaminen epäonnistui"
 
-#: main.cpp:405
+#: main.cpp:411
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr "Tuntematon komentorivioptio: %s"
@@ -1831,3 +1822,9 @@ msgstr "&7-bittinen ASCII"
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
 msgstr "&Koodaa tuntemattomat merkistöt"
+
+#~ msgid "Could not create temporary file"
+#~ msgstr "En voinut luoda väliaikaistiedostoa"
+
+#~ msgid "Could not save temporary file %s"
+#~ msgstr "En saanut tallennettua väliaikaistiedostoa %s"

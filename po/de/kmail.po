@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1999-01-15 02:07+0100\n"
+"POT-Creation-Date: 1999-01-16 02:03+0100\n"
 "PO-Revision-Date: 1999-01-10 13:30+MET\n"
 "Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
 "Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
@@ -968,7 +968,7 @@ msgstr "mein PGP-Schlüssel"
 msgid "pgp key"
 msgstr "PGP-Schlüssel"
 
-#: kmcomposewin.cpp:1295 kmreaderwin.cpp:721
+#: kmcomposewin.cpp:1295 kmreaderwin.cpp:784
 msgid "View..."
 msgstr "Ansehen..."
 
@@ -976,7 +976,7 @@ msgstr "Ansehen..."
 msgid "Save..."
 msgstr "Speichern..."
 
-#: kmcomposewin.cpp:1297 kmreaderwin.cpp:724
+#: kmcomposewin.cpp:1297 kmreaderwin.cpp:787
 msgid "Properties..."
 msgstr "Eigenschaften..."
 
@@ -984,7 +984,7 @@ msgstr "Eigenschaften..."
 msgid "Attach..."
 msgstr "Anhängen..."
 
-#: kmcomposewin.cpp:1343 kmreaderwin.cpp:766
+#: kmcomposewin.cpp:1343 kmreaderwin.cpp:829
 msgid "View Attachment: "
 msgstr "Anlage ansehen: "
 
@@ -1056,73 +1056,64 @@ msgstr "base 64"
 msgid "quoted printable"
 msgstr "quoted printable"
 
-#: kmreaderwin.cpp:305 kmreaderwin.cpp:318 kmreaderwin.cpp:337
-#: kmreaderwin.cpp:358
+#: kmreaderwin.cpp:308 kmreaderwin.cpp:321 kmreaderwin.cpp:340
+#: kmreaderwin.cpp:361
 msgid "Cc: "
 msgstr "Kopie: "
 
-#: kmreaderwin.cpp:313 kmreaderwin.cpp:332 kmreaderwin.cpp:353
+#: kmreaderwin.cpp:316 kmreaderwin.cpp:335 kmreaderwin.cpp:356
 msgid "From: "
 msgstr "Von:"
 
-#: kmreaderwin.cpp:315 kmreaderwin.cpp:334 kmreaderwin.cpp:355
+#: kmreaderwin.cpp:318 kmreaderwin.cpp:337 kmreaderwin.cpp:358
 msgid "To: "
 msgstr "An: "
 
-#: kmreaderwin.cpp:322 kmreaderwin.cpp:343 kmreaderwin.cpp:368
+#: kmreaderwin.cpp:325 kmreaderwin.cpp:346 kmreaderwin.cpp:371
 msgid "References: "
 msgstr "Referenzen: "
 
-#: kmreaderwin.cpp:339 kmreaderwin.cpp:352
+#: kmreaderwin.cpp:342 kmreaderwin.cpp:355
 msgid "Date: "
 msgstr "Datum: "
 
-#: kmreaderwin.cpp:361
+#: kmreaderwin.cpp:364
 msgid "Bcc: "
 msgstr "Blindkopie (Bcc): "
 
-#: kmreaderwin.cpp:364
+#: kmreaderwin.cpp:367
 msgid "Reply to: "
 msgstr "Antworten an: "
 
-#: kmreaderwin.cpp:371
+#: kmreaderwin.cpp:374
 msgid "Groups: "
 msgstr "Newsgroups: "
 
-#: kmreaderwin.cpp:409
+#: kmreaderwin.cpp:412
 msgid "Encrypted message"
 msgstr "Verschlüsselte Nachricht"
 
-#: kmreaderwin.cpp:415
+#: kmreaderwin.cpp:418
 msgid "Cannot decrypt message:"
 msgstr "Kann Nachricht nicht entschlüsseln:"
 
-#: kmreaderwin.cpp:424
+#: kmreaderwin.cpp:427
 msgid "Message was signed by"
 msgstr "Nachricht enthält Signatur von"
 
-#: kmreaderwin.cpp:425
+#: kmreaderwin.cpp:428
 msgid "Warning: Bad signature from"
 msgstr "Warnung: Fehlerhafte Signatur von"
 
-#: kmreaderwin.cpp:435
+#: kmreaderwin.cpp:438
 msgid "unknown key ID"
 msgstr "Unbekannte Schlüssel-ID"
 
-#: kmreaderwin.cpp:685
+#: kmreaderwin.cpp:748
 msgid "Attachment: "
 msgstr "Anlage: "
 
-#: kmreaderwin.cpp:797
-msgid "Could not create temporary file"
-msgstr "Kann temporäre Datei nicht anlegen"
-
-#: kmreaderwin.cpp:818
-#, c-format
-msgid "Could not save temporary file %s"
-msgstr "Konnte temporäre Datei %s nicht speichern"
-
-#: kmreaderwin.cpp:847
+#: kmreaderwin.cpp:916
 msgid "Could not save file"
 msgstr "Konnte Datei nicht speichern"
 
@@ -1178,7 +1169,7 @@ msgstr ""
 msgid "Loading addressbook failed"
 msgstr "Laden des Adreßbuchs fehlgeschlagen"
 
-#: main.cpp:405
+#: main.cpp:411
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr "Unbekannter Befehlszeilen-Parameter: %s"
@@ -1838,3 +1829,9 @@ msgstr "&7-Bit ist ASCII"
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
 msgstr "&Unbekannte Zeichen anzeigen"
+
+#~ msgid "Could not create temporary file"
+#~ msgstr "Kann temporäre Datei nicht anlegen"
+
+#~ msgid "Could not save temporary file %s"
+#~ msgstr "Konnte temporäre Datei %s nicht speichern"

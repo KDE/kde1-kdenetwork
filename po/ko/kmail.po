@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1999-01-15 02:07+0100\n"
+"POT-Creation-Date: 1999-01-16 02:03+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: LinuxKorea Co. <kde@linuxkorea.co.kr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -988,7 +988,7 @@ msgstr ""
 msgid "pgp key"
 msgstr ""
 
-#: kmcomposewin.cpp:1295 kmreaderwin.cpp:721
+#: kmcomposewin.cpp:1295 kmreaderwin.cpp:784
 msgid "View..."
 msgstr "보기..."
 
@@ -996,7 +996,7 @@ msgstr "보기..."
 msgid "Save..."
 msgstr "저장..."
 
-#: kmcomposewin.cpp:1297 kmreaderwin.cpp:724
+#: kmcomposewin.cpp:1297 kmreaderwin.cpp:787
 msgid "Properties..."
 msgstr "등록정보..."
 
@@ -1004,7 +1004,7 @@ msgstr "등록정보..."
 msgid "Attach..."
 msgstr "첨부..."
 
-#: kmcomposewin.cpp:1343 kmreaderwin.cpp:766
+#: kmcomposewin.cpp:1343 kmreaderwin.cpp:829
 msgid "View Attachment: "
 msgstr "첨부파일 보기:"
 
@@ -1074,73 +1074,64 @@ msgstr "베이스 64"
 msgid "quoted printable"
 msgstr "인쇄할 수 있는 인용구"
 
-#: kmreaderwin.cpp:305 kmreaderwin.cpp:318 kmreaderwin.cpp:337
-#: kmreaderwin.cpp:358
+#: kmreaderwin.cpp:308 kmreaderwin.cpp:321 kmreaderwin.cpp:340
+#: kmreaderwin.cpp:361
 msgid "Cc: "
 msgstr "참조:"
 
-#: kmreaderwin.cpp:313 kmreaderwin.cpp:332 kmreaderwin.cpp:353
+#: kmreaderwin.cpp:316 kmreaderwin.cpp:335 kmreaderwin.cpp:356
 msgid "From: "
 msgstr "보낸 이: "
 
-#: kmreaderwin.cpp:315 kmreaderwin.cpp:334 kmreaderwin.cpp:355
+#: kmreaderwin.cpp:318 kmreaderwin.cpp:337 kmreaderwin.cpp:358
 msgid "To: "
 msgstr "받는 이: "
 
-#: kmreaderwin.cpp:322 kmreaderwin.cpp:343 kmreaderwin.cpp:368
+#: kmreaderwin.cpp:325 kmreaderwin.cpp:346 kmreaderwin.cpp:371
 msgid "References: "
 msgstr "참   고: "
 
-#: kmreaderwin.cpp:339 kmreaderwin.cpp:352
+#: kmreaderwin.cpp:342 kmreaderwin.cpp:355
 msgid "Date: "
 msgstr "날   짜: "
 
-#: kmreaderwin.cpp:361
+#: kmreaderwin.cpp:364
 msgid "Bcc: "
 msgstr "추가참고: "
 
-#: kmreaderwin.cpp:364
+#: kmreaderwin.cpp:367
 msgid "Reply to: "
 msgstr "답장: "
 
-#: kmreaderwin.cpp:371
+#: kmreaderwin.cpp:374
 msgid "Groups: "
 msgstr "그룹: "
 
-#: kmreaderwin.cpp:409
+#: kmreaderwin.cpp:412
 msgid "Encrypted message"
 msgstr "암호 처리한 메시지"
 
-#: kmreaderwin.cpp:415
+#: kmreaderwin.cpp:418
 msgid "Cannot decrypt message:"
 msgstr "메시지를 암호 처리 할 수 없습니다:"
 
-#: kmreaderwin.cpp:424
+#: kmreaderwin.cpp:427
 msgid "Message was signed by"
 msgstr "메시지가 다음 사람에 의해 서명되었습니다"
 
-#: kmreaderwin.cpp:425
+#: kmreaderwin.cpp:428
 msgid "Warning: Bad signature from"
 msgstr "경  고: "
 
-#: kmreaderwin.cpp:435
+#: kmreaderwin.cpp:438
 msgid "unknown key ID"
 msgstr ""
 
-#: kmreaderwin.cpp:685
+#: kmreaderwin.cpp:748
 msgid "Attachment: "
 msgstr "첨  부: "
 
-#: kmreaderwin.cpp:797
-msgid "Could not create temporary file"
-msgstr "임시 파일을 만들 수 없습니다"
-
-#: kmreaderwin.cpp:818
-#, c-format
-msgid "Could not save temporary file %s"
-msgstr "임시 파일 %에 저장할 수 없습니다"
-
-#: kmreaderwin.cpp:847
+#: kmreaderwin.cpp:916
 msgid "Could not save file"
 msgstr "파일을 저장할 수 없습니다"
 
@@ -1194,7 +1185,7 @@ msgstr ""
 msgid "Loading addressbook failed"
 msgstr ""
 
-#: main.cpp:405
+#: main.cpp:411
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr "알 수 없는 명령행 선택사항: %s"
@@ -1849,6 +1840,12 @@ msgstr "7비트 아스키(&7)"
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
 msgstr "알 수 없는 글자모음(&Q)"
+
+#~ msgid "Could not create temporary file"
+#~ msgstr "임시 파일을 만들 수 없습니다"
+
+#~ msgid "Could not save temporary file %s"
+#~ msgstr "임시 파일 %에 저장할 수 없습니다"
 
 #~ msgid "Error during PGP:"
 #~ msgstr "PGP 도중에 오류:"

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kdenetwork VERSION\n"
-"POT-Creation-Date: 1999-01-15 02:07+0100\n"
+"POT-Creation-Date: 1999-01-16 02:03+0100\n"
 "PO-Revision-Date: 1998-12-18 08:18+0100\n"
 "Last-Translator: Marcell Lengyel <miketkf@yahoo.com>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -1060,7 +1060,7 @@ msgstr ""
 msgid "pgp key"
 msgstr ""
 
-#: kmcomposewin.cpp:1295 kmreaderwin.cpp:721
+#: kmcomposewin.cpp:1295 kmreaderwin.cpp:784
 #, fuzzy
 msgid "View..."
 msgstr "Nézet..."
@@ -1070,7 +1070,7 @@ msgstr "Nézet..."
 msgid "Save..."
 msgstr "Mentés..."
 
-#: kmcomposewin.cpp:1297 kmreaderwin.cpp:724
+#: kmcomposewin.cpp:1297 kmreaderwin.cpp:787
 #, fuzzy
 msgid "Properties..."
 msgstr "Tulajdonságok..."
@@ -1080,7 +1080,7 @@ msgstr "Tulajdonságok..."
 msgid "Attach..."
 msgstr "Csatolás..."
 
-#: kmcomposewin.cpp:1343 kmreaderwin.cpp:766
+#: kmcomposewin.cpp:1343 kmreaderwin.cpp:829
 #, fuzzy
 msgid "View Attachment: "
 msgstr "Csatolás megtekintése: "
@@ -1153,82 +1153,72 @@ msgstr ""
 msgid "quoted printable"
 msgstr "idézett, nyomtatható"
 
-#: kmreaderwin.cpp:305 kmreaderwin.cpp:318 kmreaderwin.cpp:337
-#: kmreaderwin.cpp:358
+#: kmreaderwin.cpp:308 kmreaderwin.cpp:321 kmreaderwin.cpp:340
+#: kmreaderwin.cpp:361
 #, fuzzy
 msgid "Cc: "
 msgstr "Másolat: "
 
-#: kmreaderwin.cpp:313 kmreaderwin.cpp:332 kmreaderwin.cpp:353
+#: kmreaderwin.cpp:316 kmreaderwin.cpp:335 kmreaderwin.cpp:356
 #, fuzzy
 msgid "From: "
 msgstr "Feladó: "
 
-#: kmreaderwin.cpp:315 kmreaderwin.cpp:334 kmreaderwin.cpp:355
+#: kmreaderwin.cpp:318 kmreaderwin.cpp:337 kmreaderwin.cpp:358
 #, fuzzy
 msgid "To: "
 msgstr "Címzett: "
 
-#: kmreaderwin.cpp:322 kmreaderwin.cpp:343 kmreaderwin.cpp:368
+#: kmreaderwin.cpp:325 kmreaderwin.cpp:346 kmreaderwin.cpp:371
 msgid "References: "
 msgstr "Referenciák: "
 
-#: kmreaderwin.cpp:339 kmreaderwin.cpp:352
+#: kmreaderwin.cpp:342 kmreaderwin.cpp:355
 #, fuzzy
 msgid "Date: "
 msgstr "Dátum: "
 
-#: kmreaderwin.cpp:361
+#: kmreaderwin.cpp:364
 #, fuzzy
 msgid "Bcc: "
 msgstr "Titkos másolat: "
 
-#: kmreaderwin.cpp:364
+#: kmreaderwin.cpp:367
 #, fuzzy
 msgid "Reply to: "
 msgstr "Válaszcím: "
 
-#: kmreaderwin.cpp:371
+#: kmreaderwin.cpp:374
 msgid "Groups: "
 msgstr "Csoportok: "
 
-#: kmreaderwin.cpp:409
+#: kmreaderwin.cpp:412
 #, fuzzy
 msgid "Encrypted message"
 msgstr "Kódolt üzenet"
 
-#: kmreaderwin.cpp:415
+#: kmreaderwin.cpp:418
 msgid "Cannot decrypt message:"
 msgstr "Az üzenet nem dekódolható:"
 
-#: kmreaderwin.cpp:424
+#: kmreaderwin.cpp:427
 msgid "Message was signed by"
 msgstr "Üzenet aláírója:"
 
-#: kmreaderwin.cpp:425
+#: kmreaderwin.cpp:428
 msgid "Warning: Bad signature from"
 msgstr "Figyelem: Rossz aláírás:"
 
-#: kmreaderwin.cpp:435
+#: kmreaderwin.cpp:438
 msgid "unknown key ID"
 msgstr "ismeretlen kulcs azonosító"
 
-#: kmreaderwin.cpp:685
+#: kmreaderwin.cpp:748
 #, fuzzy
 msgid "Attachment: "
 msgstr "Függelék: "
 
-#: kmreaderwin.cpp:797
-#, fuzzy
-msgid "Could not create temporary file"
-msgstr "Ideiglenes fájl nem hozható létre"
-
-#: kmreaderwin.cpp:818
-#, c-format
-msgid "Could not save temporary file %s"
-msgstr "%s nevû deiglenes fájlba nem lehet menteni"
-
-#: kmreaderwin.cpp:847
+#: kmreaderwin.cpp:916
 msgid "Could not save file"
 msgstr "Fájlba mentés nem sikerült"
 
@@ -1282,7 +1272,7 @@ msgstr ""
 msgid "Loading addressbook failed"
 msgstr "A címjegyzék betöltése nem sikerült"
 
-#: main.cpp:405
+#: main.cpp:411
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr "Ismeretlen parancssori opció: %s"
@@ -1969,6 +1959,13 @@ msgstr "&7 bites ASCII"
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
 msgstr "&Idézze az ismeretlen karaktereket"
+
+#, fuzzy
+#~ msgid "Could not create temporary file"
+#~ msgstr "Ideiglenes fájl nem hozható létre"
+
+#~ msgid "Could not save temporary file %s"
+#~ msgstr "%s nevû deiglenes fájlba nem lehet menteni"
 
 #~ msgid "Error during PGP:"
 #~ msgstr "PGP hiba:"
