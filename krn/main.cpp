@@ -29,7 +29,6 @@
 
 #include <kapp.h>
 #include <kconfig.h>
-#include <kkeyconf.h>
 #include <kmsgbox.h>
 
 #include "rules.h"
