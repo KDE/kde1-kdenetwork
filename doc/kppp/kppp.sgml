@@ -69,7 +69,7 @@ as you have pppd installed on those systems.
 <p>
 If wish to compile kppp on a platform  different from Linux, please check briefly the
 first couple of lines of  pppstats.cpp and make sure the defines and includes are O.K.
-Most like however they should be fine. Please inform me of any necessary changes.
+Most likely however they should be fine. Please inform me of any necessary changes.
 
 <p>
 Kppp needs write permission to /etc/resolv.conf if you want to be able
@@ -166,7 +166,7 @@ Enter the path-name of the desired modem lock file.
 This is typically /var/lock/LCK.modem and you shouldn't change this
 to anything else unless you know what you are doing. Programs such
 as mgetty depend on the existence of such lock files and kppp will
-not work with mgetty if the lock file name is not set corretly.
+not work with mgetty if the lock file name is not set correctly.
 If you leave this edit-box empty, kppp will not attempt to create a 
 lockfile. Make sure that you don't use the option "lock" to pppd
 if you entered a modem lock file and thus want kppp to lock the modem,
@@ -585,9 +585,9 @@ AT&amp;W		# Write to default profile
 
 Starting with version 0.9.1 kppp supports directly the most commonly used
 form of PAP authentification. The section 'PAP and CHAP with Kppp' will
-descript how to make PAP and CHAP work with Kppp in general, while the
-section 'PAP with Kppp' will describe in detail how take advantage
-of Kppp's build in support for the most commonly encounter version of
+descripe how to make PAP and CHAP work with Kppp in general, while the
+section 'PAP with Kppp' will describe in detail how to take advantage
+of Kppp's build in support for the most commonly encountered version of
 PAP wich is  widely used by commercial Internet Service Providers (ISP). 
 
 <sect1>PAP and CHAP with Kppp<label id="PAP">
@@ -670,7 +670,7 @@ commercial ISPs. It basically means that you (or your computer) must
 authenticate yourself to the ISPs PPP server. The PPP server must not
 authenticate himself to your computer, but typically this is not necessary
 since you know which computer you are connected to (because the connection was
-estableshed by yourself). So this is no major security issue. kPPP supports
+established by yourself). So this is no major security issue. kPPP supports
 this variant directly. See below for instruction how use this one.
 
 <p>If your ISP just gives you a username and a password and tells you to use
@@ -781,11 +781,11 @@ that will have access to the /var/lock file.
 There is no need for the SETUID bit, if you know a bit of Unix systems 
 administration. Simply create a modem group, add all users that you
 want to give access to the modem to that group and make the modem
-device read/writeable for that group. Also if you wnat DNS configuration
-to work with Kppp, then /etc/resolf.conf must be read/writeable by the
+device read/writeable for that group. Also if you want DNS configuration
+to work with Kppp, then /etc/resolv.conf must be read/writeable by the
 members of that group. 
 
-Please do not critisize me for installing Kppp with setuid bit
+Please do not criticize me for installing Kppp with setuid bit
 on, I simply can no longer handle the amount of mail I used to get from
 desperate users who had problems getting kppp to work because they 
 didn't understand enough about Unix and device permissions.
@@ -903,7 +903,7 @@ of some of those can be changed at compile time.
 
 <!-- Mario -->
 <sect1>Reporting problems with kppp<p>
-Before reporting a problem or potential but to the 
+Before reporting a problem or potential bug to the 
 <htmlurl url="mailto:wuebben@kde.org" name="maintainer"> of kPPP, 
 please make sure that you have read the section <ref id="kppp FAQ"
 name="Frequently asked Questions"> carefully.

@@ -1,24 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
 <HTML>
 <HEAD>
 <TITLE>The Kppp Handbook: Questions and answers</TITLE>
+<META HTTP-EQUIV="content-type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="keywords" CONTENT="kppp dialer ppp ISP Linux KDE">
+<META NAME="description" CONTENT="kppp Documentation">
 </HEAD>
-<BODY>
-<A HREF="kppp-7.html">Previous</A>
+<BODY BGCOLOR="#ffffff" LINK="#aa0000" TEXT="#000000" > 
+<FONT FACE="Helvetica">
+<A HREF="http://www.kde.org/"><IMG SRC="logotp3.gif" BORDER="0" ALT="The K Desktop Environment"></A>
+<HR WIDTH="100%" SIZE=2 ALIGN="CENTER" NOSHADE>
+
+ 
+<P ALIGN="RIGHT">
+
 <A HREF="kppp-9.html">Next</A>
+<A HREF="kppp-7.html">Previous</A>
 <A HREF="kppp.html#toc8">Table of Contents</A>
-<HR>
-<H2><A NAME="s8">8. Questions and answers</A></H2>
-
-
-<H2><A NAME="ss8.1">8.1 Frequently Asked Questions</A></H2>
+</P>
+<H3><A NAME="s8">8. Questions and answers</A></H3>
 
 <P>
-<A NAME="kppp FAQ"></A> 
-</P>
-<H3>I can't get kppp to work. kppp tells me that pppd has died! </H3>
+<H3><A NAME="ss8.1">8.1 Frequently Asked Questions</A>
+</H3>
+
+<P>
+<A NAME="kppp FAQ"></A> <H4>I can't get kppp to work. kppp tells me that pppd has died! </H4>
 
 <P>Did you read the this manual carefully? Here once more the most common
-pitfalls.</P>
+pitfalls.
 <P>
 <UL>
 <LI> Make sure that pppd is the actual pppd binary not a script
@@ -37,11 +47,10 @@ afford to run kppp setuid root. The proper way to proceed would probably
 be creating a "modem" group.
 </LI>
 </UL>
-</P>
+<P>
+<H4>kppp tells me ``Sorry, can't open the modem''.</H4>
 
-<H3>kppp tells me ``Sorry, can't open the modem''.</H3>
-
-
+<P>
 <P>This means that kppp doesn't have permissions to open the modem
 device or that you selected a modem device on the Modem Tab Dialog that is
 not valid. First make sure you selected the right modem device. Once you are
@@ -51,7 +60,7 @@ device and to be able to modify /etc/resolv.conf in case you want kppp to
 configure DNS correctly for you. If you can afford to run kppp setuid root
 this would solve all access problems for you, if not you will have to figure
 out what the right permissions are for your purposes. In order to give
-kppp setuid root permissions do the following:</P>
+kppp setuid root permissions do the following:
 <P>
 <BLOCKQUOTE><CODE>
 <PRE>
@@ -61,10 +70,9 @@ kppp setuid root permissions do the following:</P>
 % exit
 </PRE>
 </CODE></BLOCKQUOTE>
-</P>
-
-
-<H3>kppp tells me it can't create a modem lock file.</H3>
+<P>
+<P>
+<H4>kppp tells me it can't create a modem lock file.</H4>
 
 <P>This in most instances means that you have installed kppp
 without SETUID bit on while you, the person executing kppp, 
@@ -74,34 +82,34 @@ RedHat systems. Check the modem dialog for the
 precise location you have chosen. The solution is easy --
 either run kppp SETUID if you can afford to, or give regular
 users write access to /var/lock or create a modem group
-that will have access to the /var/lock file.</P>
+that will have access to the /var/lock file.
+<P>
+<P>
+<H4>Why is Kppp installed with the SETUID bit on?</H4>
 
-
-<H3>Why is Kppp installed with the SETUID bit on?</H3>
-
-
+<P>
 <P>There is no need for the SETUID bit, if you know a bit of Unix systems 
 administration. Simply create a modem group, add all users that you
 want to give access to the modem to that group and make the modem
-device read/writeable for that group. Also if you wnat DNS configuration
-to work with Kppp, then /etc/resolf.conf must be read/writeable by the
-members of that group. </P>
-<P>Please do not critisize me for installing Kppp with setuid bit
+device read/writeable for that group. Also if you want DNS configuration
+to work with Kppp, then /etc/resolv.conf must be read/writeable by the
+members of that group. 
+<P>Please do not criticize me for installing Kppp with setuid bit
 on, I simply can no longer handle the amount of mail I used to get from
 desperate users who had problems getting kppp to work because they 
-didn't understand enough about Unix and device permissions.</P>
+didn't understand enough about Unix and device permissions.
+<P>
+<P>
+<H4>kppp just sits there and waits: Expecting OK</H4>
 
-
-<H3>kppp just sits there and waits: Expecting OK</H3>
-
-<P>Have you played with the CR/LF setting?</P>
-
+<P>Have you played with the CR/LF setting?
+<P>
 <P> Your modem might not sustain
 a fast initialisation. Turn off the 'Modem sustains fast initialisation'
-button on the Modem tab dialog.</P>
-
-
-<H3>How do I make kppp send a \n or a \r?</H3>
+button on the Modem tab dialog.
+<P>
+<P>
+<H4>How do I make kppp send a \n or a \r?</H4>
 
 <P>Just send an empty string such as in the following script:
 <BLOCKQUOTE><CODE>
@@ -116,20 +124,20 @@ Send        ppp
                                        
 </PRE>
 </CODE></BLOCKQUOTE>
-</P>
+<P>
+<H4>kppp complains: "Can't create lock file"</H4>
 
-<H3>kppp complains: "Can't create lock file"</H3>
-
-
+<P>
 <P>This means that you don't have permissions to create a lock file.
 If for example you have specified '/var/lock/LCK..modem" on the
 modem dialog tab, you must have write permission to write
 to /var/lock/. This is of course no problem if you have
 given kppp setuid permissions. Please read the section on 
-<A HREF="kppp-3.html#lock files">lock files</A>.</P>
-
-
-<H3>Can I do PAP and CHAP with kppp?</H3>
+<A HREF="kppp-3.html#lock files">lock files</A>
+.
+<P>
+<P>
+<H4>Can I do PAP and CHAP with kppp?</H4>
 
 <P>Yes you can. Please the see the section on using 
 <A HREF="kppp-7.html#PAP">PAP and CHAP</A> 
@@ -140,39 +148,46 @@ submissions of
 detailed step by step explanations of how to do PAP and/or CHAP with kppp.
 I would then include this here in the kppp documentation. I am sure
 this would be of help to a great number of beginners. Please consider
-helping out and giving something back in return for kppp. Thanks!</P>
-
-
-<H3>How do I write a telephone cost rules file?</H3>
+helping out and giving something back in return for kppp. Thanks!
+<P>
+<P>
+<H4>How do I write a telephone cost rules file?</H4>
 
 <P>Just follow the TEMPLATE rules files supplied with kppp. You should be
 able to find a copy in the <CODE>$(KDEDIR)/doc/HTML/kppp</CODE>. 
 Use the -r kppp command line options to check the syntax of your proposed
-rules file.</P>
-
-
-<H3>I have written a telephone cost rules file for my region. Where can I submit it so that others can make use of it?</H3>
+rules file.
+<P>
+<P>
+<H4>I have written a telephone cost rules file for my region. Where can I submit it so that others can make use of it?</H4>
 
 <P>I would love to receive any rule files written. I will make them available
 on my kppp 
 <A HREF="http://math.cornell.edu/~wuebben/kppp/kppp.html">web page</A>.
 Before you send me a new rules file make sure it is not already available on 
 the kppp web page. Then email the new rules file  to 
-<A HREF="mailto:wuebben@math.cornell.edu">me</A>.</P>
-
-
-<H3>My country observes a moving holiday different from easter.</H3>
+<A HREF="mailto:wuebben@math.cornell.edu">me</A>.
+<P>
+<P>
+<H4>My country observes a moving holiday different from easter.</H4>
 
 <P>In that case you need to write new code that allows for the computation of that
 holiday. Please have a look at ruleset.cpp and emulate the ``easter'' example.
 Then send 
-<A HREF="mailto:wuebben@math.cornell.edu">me</A> the patches.</P>
+<A HREF="mailto:wuebben@math.cornell.edu">me</A> the patches.
+<P>
+<P>
+<P ALIGN="RIGHT">
 
-
-
-<HR>
-<A HREF="kppp-7.html">Previous</A>
 <A HREF="kppp-9.html">Next</A>
+<A HREF="kppp-7.html">Previous</A>
 <A HREF="kppp.html#toc8">Table of Contents</A>
+</P>
+<CENTER>
+<HR WIDTH="100%" SIZE=3 ALIGN=CENTER NOSHADE>
+</CENTER>    
+</FONT>
+
+ 
 </BODY>
 </HTML>
