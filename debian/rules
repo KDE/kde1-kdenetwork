@@ -16,10 +16,10 @@ $(BUILDDIR)/build-stamp:
 	cd $(BUILDDIR) ;\
 	CFLAGS="-O2 -g -Wall" \
 	 CXXFLAGS="-O2 -g -Wall" \
-	../configure --enable-debug --with-install-root=`pwd`/../debian/tmp \
+	../configure --with-install-root=`pwd`/../debian/tmp \
 	--disable-rpath \
 	--includedir="\$$(prefix)/include/kde" \
-	--libdir="\$$(prefix)/lib" --prefix=/usr
+	--libdir="\$$(prefix)/lib" --prefix=/usr --with-qt-dir=/usr/lib/qt1g
 
 	make -C $(BUILDDIR)
 
