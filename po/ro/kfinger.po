@@ -1,0 +1,228 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: kfinger 0.6.0\n"
+"POT-Creation-Date: 1998-03-01 15:43+0100\n"
+"PO-Revision-Date: 1998-03-01 20:10+0100\n"
+"Last-Translator: Vatafu Valerica <wally@socrates.tlnet.de>\n"
+
+#: kfinger.cpp:6 kfinger.cpp:31
+msgid "KDE finger utility"
+msgstr "KDE finger"
+
+#: kfinger.cpp:12
+msgid "Finger Now"
+msgstr "Finger"
+
+#: kfinger.cpp:13
+msgid "Talk.."
+msgstr "Talk..."
+
+#: kfinger.cpp:14
+msgid "Quit"
+msgstr "Sfîrºeºte"
+
+#: kfinger.cpp:16
+msgid "Setup"
+msgstr "Setarea"
+
+#: kfinger.cpp:18
+msgid "Help"
+msgstr "Ajutor"
+
+#: kfinger.cpp:19 kfinger.cpp:221
+msgid "About"
+msgstr "Despre"
+
+#: kfinger.cpp:20
+msgid "&File"
+msgstr "&Fiºier"
+
+#: kfinger.cpp:21
+msgid "&Options"
+msgstr "&Opþiuni"
+
+#: kfinger.cpp:23
+msgid "&Help"
+msgstr "&Ajutor"
+
+#: kfinger.cpp:37
+msgid "Finger"
+msgstr "Finger"
+
+#: kfinger.cpp:39
+msgid "Talk..."
+msgstr "Talk..."
+
+#: kfinger.cpp:41
+msgid "Settings"
+msgstr "Setãri"
+
+#: kfinger.cpp:56
+msgid ""
+"Welcome to KDE Finger \n"
+"program by A.Rizzi bilibao@ouverture.it\n"
+"18/09/1997 \n"
+msgstr ""
+"Bine aþi venit în KDE Finger\n"
+"program realizat de A.Rizzi <bilibao@ouverture.it>\n"
+"18.09.1997\n"
+
+#: kfinger.cpp:57
+msgid "Finger result"
+msgstr "Resultat finger"
+
+#: kfinger.cpp:201
+msgid "Error on server : %s"
+msgstr "Eroare pe server : %s"
+
+#: kfinger.cpp:210
+msgid "Finger result for : %s@%s"
+msgstr "Finger resultat pentru : %s@%s"
+
+#: kfinger.cpp:221
+#, fuzzy
+msgid ""
+"Kfinger 0.3.2\n"
+"(c) by Andrea Rizzi\n"
+"bilibao@ouverture.it"
+msgstr ""
+"KFinger 0.6.0\n"
+"(C) Andrea Rizzi\n"
+"<bilibao@ouverture.it>"
+
+#: kfinger.cpp:265
+msgid "Kfinger Setup"
+msgstr "Setarea KFinger"
+
+#: kfinger.cpp:293 kfinger.cpp:333
+msgid "&Add"
+msgstr "&Adaugã"
+
+#: kfinger.cpp:298 kfinger.cpp:338
+msgid "&Remove"
+msgstr "&ªterge"
+
+#: kfinger.cpp:303
+msgid "Server Name"
+msgstr "Numele serverului"
+
+#: kfinger.cpp:307 kfinger.cpp:310
+msgid "Server list"
+msgstr "Lista de server"
+
+#: kfinger.cpp:343
+msgid "User Name"
+msgstr "Numele utilizatorului"
+
+#: kfinger.cpp:347 kfinger.cpp:350
+msgid "Users list"
+msgstr "Lista utilizatorilor"
+
+#: kfinger.cpp:364
+msgid "Timed finger"
+msgstr "Repetã finger"
+
+#: kfinger.cpp:382 kfinger.cpp:557
+msgid "Finger wait: %d"
+msgstr "Interval : %d"
+
+#: kfinger.cpp:386
+msgid "Time"
+msgstr ""
+
+#: kfinger.cpp:391 kfinger.cpp:403
+msgid "Finger Output"
+msgstr "Finger Output"
+
+#: kfinger.cpp:395
+msgid "Finger server"
+msgstr "Finger server"
+
+#: kfinger.cpp:399 kfinger.cpp:411
+msgid "Fixed"
+msgstr "Fixat"
+
+#: kfinger.cpp:407
+msgid "Finger User"
+msgstr "Utilizatorul Finger"
+
+#: kfinger.cpp:427
+msgid "Lines to skip :"
+msgstr "Sãri peste liniile :"
+
+#: kfinger.cpp:435 kfinger.cpp:440
+msgid "Format..."
+msgstr "Format..."
+
+#: kfinger.cpp:447
+msgid "User"
+msgstr "Utilizator"
+
+#: kfinger.cpp:458
+msgid "Server"
+msgstr "Server"
+
+#: kfinger.cpp:470
+msgid "Talk"
+msgstr "Talk"
+
+#: kfinger.cpp:475 kfinger.cpp:611 kfinger.cpp:757
+msgid "Cancel"
+msgstr "Cancel"
+
+#: kfinger.cpp:480
+msgid "Ok"
+msgstr "Ok"
+
+#: kfinger.cpp:603
+msgid "Talk with..."
+msgstr "Talk cu..."
+
+#: kfinger.cpp:670
+msgid "Format string for var1(string)"
+msgstr "String formatat pentru var1(string)"
+
+#: kfinger.cpp:676
+msgid "Fromat string for var2(int)"
+msgstr "String formatat pentru var2(int)"
+
+#: kfinger.cpp:696 kfinger.cpp:702
+msgid "Offset"
+msgstr "Offset"
+
+#: kfinger.cpp:715
+msgid "Only var1"
+msgstr "Numai var1"
+
+#: kfinger.cpp:721
+msgid "Only var2"
+msgstr "Numai var2"
+
+#: kfinger.cpp:727
+msgid "var1, var2"
+msgstr "var1, var2"
+
+#: kfinger.cpp:733
+msgid "var2, var1"
+msgstr "var2, var1"
+
+#: kfinger.cpp:746
+msgid "Output format string"
+msgstr "Output string formatat"
+
+#: kfinger.cpp:753
+msgid "Save & Quit"
+msgstr "Salveazã & terminã"
+
+#: kfinger.cpp:763
+msgid "Output parameters "
+msgstr "Output parametri"
+
+#~ msgid "Save Options"
+#~ msgstr "Salveazã opþiunile"
+
+#~ msgid "Talk Command "
+#~ msgstr "Comandã Talk"
+
+#~ msgid "Misc"
+#~ msgstr "Amestecate"

@@ -1,0 +1,220 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: kcmkpanel\n"
+"POT-Creation-Date: 1998-02-25 16:11+0100\n"
+"PO-Revision-Date: 1998-02-21 05:04+0800\n"
+"Last-Translator: Wang Jian <lark@linux.ustc.edu.cn>\n"
+"Language-Team: zh_CN ( gb2312 )\n"
+
+#: kfinger.cpp:6 kfinger.cpp:31
+msgid "KDE finger utility"
+msgstr "KDE finger 实用程序"
+
+#: kfinger.cpp:12
+msgid "Finger Now"
+msgstr "现在 finger"
+
+#: kfinger.cpp:13
+msgid "Talk.."
+msgstr "交谈.."
+
+#: kfinger.cpp:14
+msgid "Quit"
+msgstr "离开"
+
+#: kfinger.cpp:16
+msgid "Setup"
+msgstr "设置"
+
+#: kfinger.cpp:18
+msgid "Help"
+msgstr "帮助"
+
+#: kfinger.cpp:19 kfinger.cpp:221
+msgid "About"
+msgstr "关于"
+
+#: kfinger.cpp:20
+msgid "&File"
+msgstr "文件[&F]"
+
+#: kfinger.cpp:21
+msgid "&Options"
+msgstr "选项[&O]"
+
+#: kfinger.cpp:23
+msgid "&Help"
+msgstr "帮助[&H]"
+
+#: kfinger.cpp:37
+msgid "Finger"
+msgstr "Finger"
+
+#: kfinger.cpp:39
+msgid "Talk..."
+msgstr "交谈..."
+
+#: kfinger.cpp:41
+msgid "Settings"
+msgstr "设定"
+
+#: kfinger.cpp:56
+msgid ""
+"Welcome to KDE Finger \n"
+"program by A.Rizzi bilibao@ouverture.it\n"
+"18/09/1997 \n"
+msgstr ""
+"欢迎使用 KDE Finger\n"
+"作者: A.Rizzi bilibao@ouverture.it\n"
+"18/09/1997 \n"
+
+#: kfinger.cpp:57
+msgid "Finger result"
+msgstr "Finger 结果"
+
+#: kfinger.cpp:201
+msgid "Error on server : %s"
+msgstr "在服务器上出错: %s"
+
+#: kfinger.cpp:210
+msgid "Finger result for : %s@%s"
+msgstr "Finger %s@%s 的结果"
+
+#: kfinger.cpp:221
+msgid ""
+"Kfinger 0.3.2\n"
+"(c) by Andrea Rizzi\n"
+"bilibao@ouverture.it"
+msgstr ""
+"Kfinger 0.3.2\n"
+"(c) Andrea Rizzi\n"
+"bilibao@ouverture.it"
+
+#: kfinger.cpp:265
+msgid "Kfinger Setup"
+msgstr "Kfinger 设置"
+
+#: kfinger.cpp:293 kfinger.cpp:333
+msgid "&Add"
+msgstr "添加[&A]"
+
+#: kfinger.cpp:298 kfinger.cpp:338
+msgid "&Remove"
+msgstr "去除[&R]"
+
+#: kfinger.cpp:303
+msgid "Server Name"
+msgstr "服务器名"
+
+#: kfinger.cpp:307 kfinger.cpp:310
+msgid "Server list"
+msgstr "服务器列表"
+
+#
+#: kfinger.cpp:343
+msgid "User Name"
+msgstr "用户名"
+
+#: kfinger.cpp:347 kfinger.cpp:350
+msgid "Users list"
+msgstr "用户列表"
+
+#: kfinger.cpp:364
+msgid "Timed finger"
+msgstr "定时 finger"
+
+#: kfinger.cpp:382 kfinger.cpp:557
+msgid "Finger wait: %d"
+msgstr "Finger 等待: %d"
+
+#: kfinger.cpp:386
+msgid "Time"
+msgstr "时间"
+
+#: kfinger.cpp:391 kfinger.cpp:403
+msgid "Finger Output"
+msgstr "Finger 输出"
+
+#: kfinger.cpp:395
+msgid "Finger server"
+msgstr "Finger 服务器"
+
+#: kfinger.cpp:399 kfinger.cpp:411
+msgid "Fixed"
+msgstr "固定"
+
+#: kfinger.cpp:407
+msgid "Finger User"
+msgstr "Finger 用户"
+
+#: kfinger.cpp:427
+msgid "Lines to skip :"
+msgstr "要跳过的行 :"
+
+#: kfinger.cpp:435 kfinger.cpp:440
+msgid "Format..."
+msgstr "格式..."
+
+#: kfinger.cpp:447
+msgid "User"
+msgstr "用户"
+
+#: kfinger.cpp:458
+msgid "Server"
+msgstr "服务器"
+
+#: kfinger.cpp:470
+msgid "Talk"
+msgstr "交谈"
+
+#: kfinger.cpp:475 kfinger.cpp:611 kfinger.cpp:757
+msgid "Cancel"
+msgstr "取消"
+
+#: kfinger.cpp:480
+msgid "Ok"
+msgstr "确定"
+
+#: kfinger.cpp:603
+msgid "Talk with..."
+msgstr "与...交谈"
+
+#: kfinger.cpp:670
+msgid "Format string for var1(string)"
+msgstr "格式化 var1 字符串(字符串)"
+
+#: kfinger.cpp:676
+msgid "Fromat string for var2(int)"
+msgstr "格式化 var2 字符串(整型)"
+
+#: kfinger.cpp:696 kfinger.cpp:702
+msgid "Offset"
+msgstr "偏移"
+
+#: kfinger.cpp:715
+msgid "Only var1"
+msgstr "只有 var1"
+
+#: kfinger.cpp:721
+msgid "Only var2"
+msgstr "只有 var2"
+
+#: kfinger.cpp:727
+msgid "var1, var2"
+msgstr "var1, var2"
+
+#: kfinger.cpp:733
+msgid "var2, var1"
+msgstr "var2, var1"
+
+#: kfinger.cpp:746
+msgid "Output format string"
+msgstr "输出格式串"
+
+#: kfinger.cpp:753
+msgid "Save & Quit"
+msgstr "保存并退出"
+
+#: kfinger.cpp:763
+msgid "Output parameters "
+msgstr "输出参数"

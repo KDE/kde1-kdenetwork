@@ -1,0 +1,219 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=\n"
+"Date: 1998-02-10 15:59:39+0100\n"
+"From: root (A. Rizzi),,, <root@BiliOne>\n"
+"Xgettext-Options: -ktranslate\n"
+"Files: finger.cpp kfinger.cpp\n"
+
+#: kfinger.cpp:6 kfinger.cpp:31
+msgid "KDE finger utility"
+msgstr "Utilidad de finger del KDE"
+
+#: kfinger.cpp:12
+msgid "Finger Now"
+msgstr "Hacer finger ahora"
+
+#: kfinger.cpp:13
+msgid "Talk.."
+msgstr "Charlar..."
+
+#: kfinger.cpp:14
+msgid "Quit"
+msgstr "Salir"
+
+#: kfinger.cpp:16
+msgid "Setup"
+msgstr "Configuración"
+
+#: kfinger.cpp:18
+msgid "Help"
+msgstr "Ayuda"
+
+#: kfinger.cpp:19 kfinger.cpp:221
+msgid "About"
+msgstr "Acerca"
+
+#: kfinger.cpp:20
+msgid "&File"
+msgstr "&Fichero"
+
+#: kfinger.cpp:21
+msgid "&Options"
+msgstr "&Opciones"
+
+#: kfinger.cpp:23
+msgid "&Help"
+msgstr "&Ayuda"
+
+#: kfinger.cpp:37
+msgid "Finger"
+msgstr "Finger"
+
+#: kfinger.cpp:39
+msgid "Talk..."
+msgstr "Charlar..."
+
+#: kfinger.cpp:41
+msgid "Settings"
+msgstr "Configuración"
+
+#: kfinger.cpp:56
+msgid ""
+"Welcome to KDE Finger \n"
+"program by A.Rizzi bilibao@ouverture.it\n"
+"18/09/1997 \n"
+msgstr ""
+"Bienevenido al KDE Finger \n"
+"programa escrito por A.Rizzi bilibao@ouverture.it\n"
+"18/09/1997 \n"
+
+#: kfinger.cpp:57
+msgid "Finger result"
+msgstr "Resultado del finger"
+
+#: kfinger.cpp:201
+msgid "Error on server : %s"
+msgstr "Error en el servidor: %s"
+
+#: kfinger.cpp:210
+msgid "Finger result for : %s@%s"
+msgstr "Resultado del finger para: %s@%s"
+
+#: kfinger.cpp:221
+msgid ""
+"Kfinger 0.3.2\n"
+"(c) by Andrea Rizzi\n"
+"bilibao@ouverture.it"
+msgstr ""
+"Kfinger 0.3.2\n"
+"(c) por Andrea Rizzi\n"
+"bilibao@ouverture.it"
+
+#: kfinger.cpp:265
+msgid "Kfinger Setup"
+msgstr "Configuración del Kfinger"
+
+#: kfinger.cpp:293 kfinger.cpp:333
+msgid "&Add"
+msgstr "&Añadir"
+
+#: kfinger.cpp:298 kfinger.cpp:338
+msgid "&Remove"
+msgstr "&Eliminar"
+
+#: kfinger.cpp:303
+msgid "Server Name"
+msgstr "Servidor de nombres"
+
+#: kfinger.cpp:307 kfinger.cpp:310
+msgid "Server list"
+msgstr "Lista de servidores"
+
+#: kfinger.cpp:343
+msgid "User Name"
+msgstr "Nombre de Usuario"
+
+#: kfinger.cpp:347 kfinger.cpp:350
+msgid "Users list"
+msgstr "Lista de usuarios"
+
+#: kfinger.cpp:364
+msgid "Timed finger"
+msgstr "Tiempo para el finger"
+
+#: kfinger.cpp:382 kfinger.cpp:557
+msgid "Finger wait: %d"
+msgstr "Espera del finger: %d"
+
+#: kfinger.cpp:386
+msgid "Time"
+msgstr "Tiempo"
+
+#: kfinger.cpp:391 kfinger.cpp:403
+msgid "Finger Output"
+msgstr "Salida del Finger"
+
+#: kfinger.cpp:395
+msgid "Finger server"
+msgstr "Servidor de finger"
+
+#: kfinger.cpp:399 kfinger.cpp:411
+msgid "Fixed"
+msgstr "Ajustado"
+
+#: kfinger.cpp:407
+msgid "Finger User"
+msgstr "Finger a Usuario"
+
+#: kfinger.cpp:427
+msgid "Lines to skip :"
+msgstr "Lineas a ignorar"
+
+#: kfinger.cpp:435 kfinger.cpp:440
+msgid "Format..."
+msgstr "Formato..."
+
+#: kfinger.cpp:447
+msgid "User"
+msgstr "Usuario"
+
+#: kfinger.cpp:458
+msgid "Server"
+msgstr "Servidor"
+
+#: kfinger.cpp:470
+msgid "Talk"
+msgstr "Charlar"
+
+#: kfinger.cpp:475 kfinger.cpp:611 kfinger.cpp:757
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: kfinger.cpp:480
+msgid "Ok"
+msgstr "Aceptar"
+
+#: kfinger.cpp:603
+msgid "Talk with..."
+msgstr "Charlar con..."
+
+#: kfinger.cpp:670
+msgid "Format string for var1(string)"
+msgstr "Formato de cadena para var1(string)"
+
+#: kfinger.cpp:676
+msgid "Fromat string for var2(int)"
+msgstr "Formato de cadena para var2(int)"
+
+#: kfinger.cpp:696 kfinger.cpp:702
+msgid "Offset"
+msgstr "Offset"
+
+#: kfinger.cpp:715
+msgid "Only var1"
+msgstr "Sólo var1"
+
+#: kfinger.cpp:721
+msgid "Only var2"
+msgstr "Sólo var2"
+
+#: kfinger.cpp:727
+msgid "var1, var2"
+msgstr "var1, var2"
+
+#: kfinger.cpp:733
+msgid "var2, var1"
+msgstr "var2, var1"
+
+#: kfinger.cpp:746
+msgid "Output format string"
+msgstr "Formato de la cadena de salida"
+
+#: kfinger.cpp:753
+msgid "Save & Quit"
+msgstr "Grabar & Salir"
+
+#: kfinger.cpp:763
+msgid "Output parameters "
+msgstr "Parámetros de salida"

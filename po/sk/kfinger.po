@@ -1,0 +1,222 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: kfinger\n"
+"POT-Creation-Date: 1998-03-05 12:11+0100\n"
+"PO-Revision-Date: 1998-03-20 12:20 MET\n"
+"Last-Translator: Juraj Bednár <bednar@isternet.sk>\n"
+"Language-Team: Slovak <bednar@isternet.sk>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-2\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: kfinger.cpp:6 kfinger.cpp:31
+msgid "KDE finger utility"
+msgstr "KDE finger"
+
+#: kfinger.cpp:12
+msgid "Finger Now"
+msgstr "Fingerni teraz"
+
+#: kfinger.cpp:13
+msgid "Talk.."
+msgstr "Rozprávaj.."
+
+#: kfinger.cpp:14
+msgid "Quit"
+msgstr "Koniec"
+
+#: kfinger.cpp:16
+msgid "Setup"
+msgstr "Nastavenie"
+
+#: kfinger.cpp:18
+msgid "Help"
+msgstr "Pomocník"
+
+#: kfinger.cpp:19 kfinger.cpp:221
+msgid "About"
+msgstr "Informácie"
+
+#: kfinger.cpp:20
+msgid "&File"
+msgstr "&Súbor"
+
+#: kfinger.cpp:21
+msgid "&Options"
+msgstr "M&o¾nosti"
+
+#: kfinger.cpp:23
+msgid "&Help"
+msgstr "&Pomocník"
+
+#: kfinger.cpp:37
+msgid "Finger"
+msgstr "Finger"
+
+#: kfinger.cpp:39
+msgid "Talk..."
+msgstr "Rozprávaj..."
+
+#: kfinger.cpp:41
+msgid "Settings"
+msgstr "Nastavenie"
+
+#: kfinger.cpp:56
+msgid ""
+"Welcome to KDE Finger \n"
+"program by A.Rizzi bilibao@ouverture.it\n"
+"18/09/1997 \n"
+msgstr ""
+"Vitajte v programe KDE Finger\n"
+"napísal ho A.Rizzi bilibao@ouverture.it\n"
+"18. 9. 1997 \n"
+
+#: kfinger.cpp:57
+msgid "Finger result"
+msgstr "Výsledok fingeru"
+
+#: kfinger.cpp:201
+msgid "Error on server : %s"
+msgstr "Chyba na serveri : %s"
+
+#: kfinger.cpp:210
+msgid "Finger result for : %s@%s"
+msgstr "Výsledok pre : %s@%s"
+
+#: kfinger.cpp:221
+msgid ""
+"Kfinger 0.3.2\n"
+"(c) by Andrea Rizzi\n"
+"bilibao@ouverture.it"
+msgstr ""
+"Kfinger 0.3.2\n"
+"napísal Andrea Rizzi\n"
+"bilibao@ouverture.it"
+
+#: kfinger.cpp:265
+msgid "Kfinger Setup"
+msgstr "Nastavenie KFingeru"
+
+#: kfinger.cpp:293 kfinger.cpp:333
+msgid "&Add"
+msgstr "&Pridaj"
+
+#: kfinger.cpp:298 kfinger.cpp:338
+msgid "&Remove"
+msgstr "&Odstráò"
+
+#: kfinger.cpp:303
+msgid "Server Name"
+msgstr "Meno servera"
+
+#: kfinger.cpp:307 kfinger.cpp:310
+msgid "Server list"
+msgstr "Zoznam serverov"
+
+#: kfinger.cpp:343
+msgid "User Name"
+msgstr "Meno u¾ívateµa"
+
+#: kfinger.cpp:347 kfinger.cpp:350
+msgid "Users list"
+msgstr "Zoznam u¾ívateµov"
+
+#: kfinger.cpp:364
+msgid "Timed finger"
+msgstr "Èasovaný finger"
+
+#: kfinger.cpp:382 kfinger.cpp:557
+msgid "Finger wait: %d"
+msgstr "Èakanie: %d"
+
+#: kfinger.cpp:386
+msgid "Time"
+msgstr "Èas"
+
+#: kfinger.cpp:391 kfinger.cpp:403
+msgid "Finger Output"
+msgstr "Výstup z fingera"
+
+#: kfinger.cpp:395
+msgid "Finger server"
+msgstr "Meno finger servera"
+
+#: kfinger.cpp:399 kfinger.cpp:411
+msgid "Fixed"
+msgstr "Pevné"
+
+#: kfinger.cpp:407
+msgid "Finger User"
+msgstr "U¾ívateµ"
+
+#: kfinger.cpp:427
+msgid "Lines to skip :"
+msgstr "Preskoèi» riadkov:"
+
+#: kfinger.cpp:435 kfinger.cpp:440
+msgid "Format..."
+msgstr "Formát..."
+
+#: kfinger.cpp:447
+msgid "User"
+msgstr "U¾ívateµ"
+
+#: kfinger.cpp:458
+msgid "Server"
+msgstr "Server"
+
+#: kfinger.cpp:470
+msgid "Talk"
+msgstr "Rozprávaj"
+
+#: kfinger.cpp:475 kfinger.cpp:611 kfinger.cpp:757
+msgid "Cancel"
+msgstr "Zru¹i»"
+
+#: kfinger.cpp:480
+msgid "Ok"
+msgstr "Ok"
+
+#: kfinger.cpp:603
+msgid "Talk with..."
+msgstr "Rozprávaj s..."
+
+#: kfinger.cpp:670
+msgid "Format string for var1(string)"
+msgstr "Re»azec formátu pre var1(string)"
+
+#: kfinger.cpp:676
+msgid "Fromat string for var2(int)"
+msgstr "Re»azec formátu pre var2(int)"
+
+#: kfinger.cpp:696 kfinger.cpp:702
+msgid "Offset"
+msgstr "Offset"
+
+#: kfinger.cpp:715
+msgid "Only var1"
+msgstr "Iba var1"
+
+#: kfinger.cpp:721
+msgid "Only var2"
+msgstr "Iba var2"
+
+#: kfinger.cpp:727
+msgid "var1, var2"
+msgstr "var1, var2"
+
+#: kfinger.cpp:733
+msgid "var2, var1"
+msgstr "var2, var1"
+
+#: kfinger.cpp:746
+msgid "Output format string"
+msgstr "Výstupný formát"
+
+#: kfinger.cpp:753
+msgid "Save & Quit"
+msgstr "Ulo¾ a ukonèi"
+
+#: kfinger.cpp:763
+msgid "Output parameters "
+msgstr "Výstupné parametre "
