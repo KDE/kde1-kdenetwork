@@ -91,7 +91,7 @@ mimelib_headers = \
    uuencode.h \
    binhex.h
 
-INCLUDES = -I.
+INCLUDES = -I. -I$(srcdir)
 DEFS = -D$(LIBVERSION) @DEFS@
 
 install-data-local:
