@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: krn\n"
-"POT-Creation-Date: 1998-06-11 23:07+0200\n"
+"POT-Creation-Date: 1998-06-16 14:20+0200\n"
 "PO-Revision-Date: 1998-03-08 10:42 MET\n"
 "Last-Translator: Juraj Bednár <bednar@isternet.sk>\n"
 "Language-Team: Slovak <bednar@isternet.sk>\n"
@@ -158,51 +158,51 @@ msgstr "Nájs» skupinu"
 msgid "Check for Unread Articles"
 msgstr "Pozrie» sa po nepreèítaných èlánkoch"
 
-#: groupdlg.cpp:362 groupdlg.cpp:587 groupdlg.cpp:924
+#: groupdlg.cpp:361 groupdlg.cpp:583 groupdlg.cpp:921
 msgid "All Newsgroups."
 msgstr "V¹etky diskusné skupiny."
 
-#: groupdlg.cpp:475 groupdlg.cpp:569
+#: groupdlg.cpp:471 groupdlg.cpp:565
 msgid "Subscribed Newsgroups."
 msgstr "Prihlásené diskusné skupiny."
 
-#: groupdlg.cpp:524
+#: groupdlg.cpp:520
 msgid "Disconnected"
 msgstr "Odpojený"
 
-#: groupdlg.cpp:531
+#: groupdlg.cpp:527
 msgid "Connecting to server"
 msgstr "Pripojovanie k serveru"
 
-#: groupdlg.cpp:536
+#: groupdlg.cpp:532
 msgid "Connected to server - Posting not allowed"
 msgstr "Pripojený k serveru - posielanie nepovolené"
 
-#: groupdlg.cpp:538
+#: groupdlg.cpp:534
 msgid "Connected to server - Posting allowed"
 msgstr "Pripojený k serveru - posielanie povolené"
 
-#: groupdlg.cpp:544
+#: groupdlg.cpp:540
 msgid "Can't connect to server"
 msgstr "Nemô¾em sa pripoji» k serveru"
 
-#: groupdlg.cpp:546
+#: groupdlg.cpp:542
 msgid "Connection to server failed"
 msgstr "Spojenie so serverom sa nepodarilo"
 
-#: groupdlg.cpp:555
+#: groupdlg.cpp:551
 msgid "Authentication Failed"
 msgstr "Overenie prístupu sa nepodarilo"
 
-#: groupdlg.cpp:558
+#: groupdlg.cpp:554
 msgid "Connection to server failed: Authentication problem"
 msgstr "Spojenie so serverom sa nepodarilo: problém pri overovaní prístupu"
 
-#: groupdlg.cpp:607
+#: groupdlg.cpp:603
 msgid "Krn-Question"
 msgstr "Krn - Otázka"
 
-#: groupdlg.cpp:608
+#: groupdlg.cpp:604
 msgid ""
 "The operation you requested needs a connection to the News server\n"
 "Should I attempt one?"
@@ -210,7 +210,7 @@ msgstr ""
 "Po¾adovaná operácia vy¾aduje spojenie s News serverom\n"
 "Mám sa pokúsi» spoji»?"
 
-#: groupdlg.cpp:870
+#: groupdlg.cpp:867
 msgid ""
 "You don't have an active groups list.\n"
 " get it from server?"
@@ -218,31 +218,31 @@ msgstr ""
 "Nemáte k dispozícii zoznam aktívnych skupín.\n"
 " Získa» ich zo servera?"
 
-#: groupdlg.cpp:886
+#: groupdlg.cpp:883
 msgid "Listing active newsgroups"
 msgstr "Vypisujem aktívne diskusné skupiny"
 
-#: groupdlg.cpp:898
+#: groupdlg.cpp:895
 msgid "KRN - Find a Newsgroup"
 msgstr "KRN - Nájs» diskusnú skupinu"
 
-#: groupdlg.cpp:899
+#: groupdlg.cpp:896
 msgid "Enter the name of the Newsgroup"
 msgstr "Zadajte meno diskusnej skupiny"
 
-#: groupdlg.cpp:983
+#: groupdlg.cpp:980
 msgid "Krn - Message"
 msgstr "KRN - Správa"
 
-#: groupdlg.cpp:984
+#: groupdlg.cpp:981
 msgid "I can't find the group you want!"
 msgstr "Nemô¾em nájs» vami po¾adovanú skupinu!"
 
-#: groupdlg.cpp:1077
+#: groupdlg.cpp:1074
 msgid "Getting messages in "
 msgstr "Získavam správy z "
 
-#: groupdlg.cpp:1090
+#: groupdlg.cpp:1087
 msgid "Getting list of messages in "
 msgstr "Získavam zoznam správ z "
 
@@ -257,10 +257,6 @@ msgstr "Oznaèi» ako preèítané"
 #: artdlg.cpp:147
 msgid "Mark Unread"
 msgstr "Oznaèi» ako nepreèítané"
-
-#: artdlg.cpp:149 artdlg.cpp:163
-msgid "Print"
-msgstr "Tlaèi»"
 
 #: artdlg.cpp:150 artdlg.cpp:170
 msgid "Decode"
@@ -560,14 +556,6 @@ msgstr "Vlo¾ený"
 msgid "Font Size:"
 msgstr "Veµkos» fontu:"
 
-#: fontsDlg.cpp:70
-msgid "Small"
-msgstr "Malý"
-
-#: fontsDlg.cpp:72
-msgid "Large"
-msgstr "Veµký"
-
 #: fontsDlg.cpp:73
 msgid "Huge"
 msgstr "Obrovský"
@@ -728,10 +716,6 @@ msgstr "Názov pravidla"
 msgid "KRN - Header Sorting"
 msgstr "KRN - Nastavenie expirácie"
 
-#: sortDlg.cpp:37
-msgid "None"
-msgstr "®iadny"
-
 #: sortDlg.cpp:39
 msgid "Sort by:"
 msgstr "Triedi» podµa:"
@@ -739,6 +723,18 @@ msgstr "Triedi» podµa:"
 #: sortDlg.cpp:56
 msgid "Use Threading"
 msgstr "Pou¾i» vlákna ..."
+
+#~ msgid "Print"
+#~ msgstr "Tlaèi»"
+
+#~ msgid "Small"
+#~ msgstr "Malý"
+
+#~ msgid "Large"
+#~ msgstr "Veµký"
+
+#~ msgid "None"
+#~ msgstr "®iadny"
 
 #~ msgid "KRN - Decoder"
 #~ msgstr "KRN - Dekóder"

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-06-11 23:07+0200\n"
+"POT-Creation-Date: 1998-06-16 14:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Case Roole <cjr@xs4all.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -160,51 +160,51 @@ msgstr "Vind groep"
 msgid "Check for Unread Articles"
 msgstr "Controleer of er ongelezen artikelen zijn"
 
-#: groupdlg.cpp:362 groupdlg.cpp:587 groupdlg.cpp:924
+#: groupdlg.cpp:361 groupdlg.cpp:583 groupdlg.cpp:921
 msgid "All Newsgroups."
 msgstr "Alle nieuwsgroepen"
 
-#: groupdlg.cpp:475 groupdlg.cpp:569
+#: groupdlg.cpp:471 groupdlg.cpp:565
 msgid "Subscribed Newsgroups."
 msgstr "Geabonneerde nieuwsgroepen."
 
-#: groupdlg.cpp:524
+#: groupdlg.cpp:520
 msgid "Disconnected"
 msgstr "Verbinding verbroken"
 
-#: groupdlg.cpp:531
+#: groupdlg.cpp:527
 msgid "Connecting to server"
 msgstr "Maak verbinding met server"
 
-#: groupdlg.cpp:536
+#: groupdlg.cpp:532
 msgid "Connected to server - Posting not allowed"
 msgstr "Verbonden met server - Posten niet toegestaan"
 
-#: groupdlg.cpp:538
+#: groupdlg.cpp:534
 msgid "Connected to server - Posting allowed"
 msgstr "Verbonden met server - Posten toegestaan"
 
-#: groupdlg.cpp:544
+#: groupdlg.cpp:540
 msgid "Can't connect to server"
 msgstr "Kan niet verbinden met server"
 
-#: groupdlg.cpp:546
+#: groupdlg.cpp:542
 msgid "Connection to server failed"
 msgstr "Verbinden met server faalde"
 
-#: groupdlg.cpp:555
+#: groupdlg.cpp:551
 msgid "Authentication Failed"
 msgstr "Authenticatie faalde"
 
-#: groupdlg.cpp:558
+#: groupdlg.cpp:554
 msgid "Connection to server failed: Authentication problem"
 msgstr "Verbinden met server faalde: Authenticatie probleem"
 
-#: groupdlg.cpp:607
+#: groupdlg.cpp:603
 msgid "Krn-Question"
 msgstr "Krn-Vraag"
 
-#: groupdlg.cpp:608
+#: groupdlg.cpp:604
 msgid ""
 "The operation you requested needs a connection to the News server\n"
 "Should I attempt one?"
@@ -212,7 +212,7 @@ msgstr ""
 "De operatie welke u verzocht vereist een verbinding met de Nieuws server\n"
 "Zal ik dat proberen ?"
 
-#: groupdlg.cpp:870
+#: groupdlg.cpp:867
 msgid ""
 "You don't have an active groups list.\n"
 " get it from server?"
@@ -220,31 +220,31 @@ msgstr ""
 "U hebt geen actieve groepen lijst.\n"
 "Zal ik deze ophalen van de server ?"
 
-#: groupdlg.cpp:886
+#: groupdlg.cpp:883
 msgid "Listing active newsgroups"
 msgstr "Opsommen van actieve nieuwsgroepen"
 
-#: groupdlg.cpp:898
+#: groupdlg.cpp:895
 msgid "KRN - Find a Newsgroup"
 msgstr "KRN - Zoek een Nieuwsgroep"
 
-#: groupdlg.cpp:899
+#: groupdlg.cpp:896
 msgid "Enter the name of the Newsgroup"
 msgstr "Voer de naam in van de Nieuwsgroep"
 
-#: groupdlg.cpp:983
+#: groupdlg.cpp:980
 msgid "Krn - Message"
 msgstr "Krn - Boodschap"
 
-#: groupdlg.cpp:984
+#: groupdlg.cpp:981
 msgid "I can't find the group you want!"
 msgstr "I kan de gevraagde groep niet vinden!"
 
-#: groupdlg.cpp:1077
+#: groupdlg.cpp:1074
 msgid "Getting messages in "
 msgstr "Haal nu de boodschappen op van "
 
-#: groupdlg.cpp:1090
+#: groupdlg.cpp:1087
 msgid "Getting list of messages in "
 msgstr "Haal nu de lijst van boodschappen op van "
 
@@ -259,10 +259,6 @@ msgstr "Markeer als gelezen"
 #: artdlg.cpp:147
 msgid "Mark Unread"
 msgstr "Markeer als ongelezen"
-
-#: artdlg.cpp:149 artdlg.cpp:163
-msgid "Print"
-msgstr "Druk af"
 
 #: artdlg.cpp:150 artdlg.cpp:170
 msgid "Decode"
@@ -562,14 +558,6 @@ msgstr "Voeg in"
 msgid "Font Size:"
 msgstr "Lettertype Grootte:"
 
-#: fontsDlg.cpp:70
-msgid "Small"
-msgstr "Klein"
-
-#: fontsDlg.cpp:72
-msgid "Large"
-msgstr "Groot"
-
 #: fontsDlg.cpp:73
 msgid "Huge"
 msgstr "Zeer Groot"
@@ -731,10 +719,6 @@ msgstr "Regel naam:"
 msgid "KRN - Header Sorting"
 msgstr "KRN - Hoofd sorteren"
 
-#: sortDlg.cpp:37
-msgid "None"
-msgstr "Niets"
-
 #: sortDlg.cpp:39
 msgid "Sort by:"
 msgstr "Sorteer op basis van:"
@@ -742,6 +726,18 @@ msgstr "Sorteer op basis van:"
 #: sortDlg.cpp:56
 msgid "Use Threading"
 msgstr "Gebruik Threading"
+
+#~ msgid "Print"
+#~ msgstr "Druk af"
+
+#~ msgid "Small"
+#~ msgstr "Klein"
+
+#~ msgid "Large"
+#~ msgstr "Groot"
+
+#~ msgid "None"
+#~ msgstr "Niets"
 
 #~ msgid "KRN - Decoder"
 #~ msgstr "KRN - Ontcijferaar"

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KRN\n"
-"POT-Creation-Date: 1998-06-11 23:07+0200\n"
+"POT-Creation-Date: 1998-06-16 14:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Kim Enkovaara <kim.enkovaara@iki.fi>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -159,51 +159,51 @@ msgstr "Hae ryhmä"
 msgid "Check for Unread Articles"
 msgstr "Tarkista lukemattomat viestit"
 
-#: groupdlg.cpp:362 groupdlg.cpp:587 groupdlg.cpp:924
+#: groupdlg.cpp:361 groupdlg.cpp:583 groupdlg.cpp:921
 msgid "All Newsgroups."
 msgstr "Kaikki uutisryhmät."
 
-#: groupdlg.cpp:475 groupdlg.cpp:569
+#: groupdlg.cpp:471 groupdlg.cpp:565
 msgid "Subscribed Newsgroups."
 msgstr "Tilatut uutisryhmät."
 
-#: groupdlg.cpp:524
+#: groupdlg.cpp:520
 msgid "Disconnected"
 msgstr "Yhteys poikki"
 
-#: groupdlg.cpp:531
+#: groupdlg.cpp:527
 msgid "Connecting to server"
 msgstr "Yhdistän palvelimeen"
 
-#: groupdlg.cpp:536
+#: groupdlg.cpp:532
 msgid "Connected to server - Posting not allowed"
 msgstr "Yhdistetty palvelimeen - lähetys ei ole sallittu"
 
-#: groupdlg.cpp:538
+#: groupdlg.cpp:534
 msgid "Connected to server - Posting allowed"
 msgstr "Yhdistetty palvelimeen - lähetys sallittu"
 
-#: groupdlg.cpp:544
+#: groupdlg.cpp:540
 msgid "Can't connect to server"
 msgstr "En saa yhdistettyä palvelimeen"
 
-#: groupdlg.cpp:546
+#: groupdlg.cpp:542
 msgid "Connection to server failed"
 msgstr "Yhteys palvelimeen epäonnistui"
 
-#: groupdlg.cpp:555
+#: groupdlg.cpp:551
 msgid "Authentication Failed"
 msgstr "Tunnistus epäonnistui"
 
-#: groupdlg.cpp:558
+#: groupdlg.cpp:554
 msgid "Connection to server failed: Authentication problem"
 msgstr "Yhteys palvelimeen epäonnistui: Tunnistusongelma"
 
-#: groupdlg.cpp:607
+#: groupdlg.cpp:603
 msgid "Krn-Question"
 msgstr "Krn-Kysymys"
 
-#: groupdlg.cpp:608
+#: groupdlg.cpp:604
 msgid ""
 "The operation you requested needs a connection to the News server\n"
 "Should I attempt one?"
@@ -211,7 +211,7 @@ msgstr ""
 "Toimenpide vaatii yhteyttä uutispalvelimeen\n"
 "Yritänkö luoda?"
 
-#: groupdlg.cpp:870
+#: groupdlg.cpp:867
 msgid ""
 "You don't have an active groups list.\n"
 " get it from server?"
@@ -219,31 +219,31 @@ msgstr ""
 "Sinulla ei ole aktiivisten ryhmien listaa.\n"
 " haenko sen palvelimelta?"
 
-#: groupdlg.cpp:886
+#: groupdlg.cpp:883
 msgid "Listing active newsgroups"
 msgstr "Listaan aktiiviset viestiryhmät"
 
-#: groupdlg.cpp:898
+#: groupdlg.cpp:895
 msgid "KRN - Find a Newsgroup"
 msgstr "KRN - Esti yytisryhmä"
 
-#: groupdlg.cpp:899
+#: groupdlg.cpp:896
 msgid "Enter the name of the Newsgroup"
 msgstr "Anna uutisryhmän nimi"
 
-#: groupdlg.cpp:983
+#: groupdlg.cpp:980
 msgid "Krn - Message"
 msgstr "KRN - Viesti"
 
-#: groupdlg.cpp:984
+#: groupdlg.cpp:981
 msgid "I can't find the group you want!"
 msgstr "En löydä haluamaasi ryhmää!"
 
-#: groupdlg.cpp:1077
+#: groupdlg.cpp:1074
 msgid "Getting messages in "
 msgstr "Haen viestejä ryhmästä "
 
-#: groupdlg.cpp:1090
+#: groupdlg.cpp:1087
 msgid "Getting list of messages in "
 msgstr "Haen viestien listaa ryhmästä "
 
@@ -258,10 +258,6 @@ msgstr "Merkitse luetuksi"
 #: artdlg.cpp:147
 msgid "Mark Unread"
 msgstr "Merkitse lukemattomaksi"
-
-#: artdlg.cpp:149 artdlg.cpp:163
-msgid "Print"
-msgstr "Tulosta"
 
 #: artdlg.cpp:150 artdlg.cpp:170
 msgid "Decode"
@@ -561,14 +557,6 @@ msgstr "Sisällytetty"
 msgid "Font Size:"
 msgstr "Kirjasimen koko:"
 
-#: fontsDlg.cpp:70
-msgid "Small"
-msgstr "Pieni"
-
-#: fontsDlg.cpp:72
-msgid "Large"
-msgstr "Suuri"
-
 #: fontsDlg.cpp:73
 msgid "Huge"
 msgstr "Valtava"
@@ -729,10 +717,6 @@ msgstr "Säännön nimi:"
 msgid "KRN - Header Sorting"
 msgstr "KRN - Otsikoiden järjestys"
 
-#: sortDlg.cpp:37
-msgid "None"
-msgstr "Ei mikään"
-
 #: sortDlg.cpp:39
 msgid "Sort by:"
 msgstr "Järjestä:"
@@ -740,6 +724,18 @@ msgstr "Järjestä:"
 #: sortDlg.cpp:56
 msgid "Use Threading"
 msgstr "Käytä threadeja"
+
+#~ msgid "Print"
+#~ msgstr "Tulosta"
+
+#~ msgid "Small"
+#~ msgstr "Pieni"
+
+#~ msgid "Large"
+#~ msgstr "Suuri"
+
+#~ msgid "None"
+#~ msgstr "Ei mikään"
 
 #~ msgid "KRN - Decoder"
 #~ msgstr "KRN - Purkaja"

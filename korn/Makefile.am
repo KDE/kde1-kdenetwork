@@ -42,3 +42,5 @@ uninstall-local:
 	-rmdir $(kde_htmldir)/en/
 	-rmdir $(kde_appsdir)/Internet
 
+messages:
+

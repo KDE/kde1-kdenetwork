@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: krn\n"
-"POT-Creation-Date: 1998-06-11 23:07+0200\n"
+"POT-Creation-Date: 1998-06-16 14:20+0200\n"
 "PO-Revision-Date: 1998-02-03 12:00+0000\n"
 "Last-Translator: Pedro Morais <pmmm@camoes.rnl.ist.utl.pt>\n"
 
@@ -150,51 +150,51 @@ msgstr "Encontra grupo"
 msgid "Check for Unread Articles"
 msgstr "Verificar Mensagens Não Lidas"
 
-#: groupdlg.cpp:362 groupdlg.cpp:587 groupdlg.cpp:924
+#: groupdlg.cpp:361 groupdlg.cpp:583 groupdlg.cpp:921
 msgid "All Newsgroups."
 msgstr "Todos os Newsgroups."
 
-#: groupdlg.cpp:475 groupdlg.cpp:569
+#: groupdlg.cpp:471 groupdlg.cpp:565
 msgid "Subscribed Newsgroups."
 msgstr "Newsgroups Subscritos"
 
-#: groupdlg.cpp:524
+#: groupdlg.cpp:520
 msgid "Disconnected"
 msgstr "Desligado"
 
-#: groupdlg.cpp:531
+#: groupdlg.cpp:527
 msgid "Connecting to server"
 msgstr "A efectuar ligação ao servidor"
 
-#: groupdlg.cpp:536
+#: groupdlg.cpp:532
 msgid "Connected to server - Posting not allowed"
 msgstr "Ligado ao servidor - Envio não permitido"
 
-#: groupdlg.cpp:538
+#: groupdlg.cpp:534
 msgid "Connected to server - Posting allowed"
 msgstr "Ligado ao servidor - Envia permitido"
 
-#: groupdlg.cpp:544
+#: groupdlg.cpp:540
 msgid "Can't connect to server"
 msgstr "Não consigo ligar ao servidor"
 
-#: groupdlg.cpp:546
+#: groupdlg.cpp:542
 msgid "Connection to server failed"
 msgstr "Ligação com o servidor falhou"
 
-#: groupdlg.cpp:555
+#: groupdlg.cpp:551
 msgid "Authentication Failed"
 msgstr "Falha de Autenticação"
 
-#: groupdlg.cpp:558
+#: groupdlg.cpp:554
 msgid "Connection to server failed: Authentication problem"
 msgstr "Ligação ao servidor falhou: Problema de autenticação"
 
-#: groupdlg.cpp:607
+#: groupdlg.cpp:603
 msgid "Krn-Question"
 msgstr "Pergunta do Krn"
 
-#: groupdlg.cpp:608
+#: groupdlg.cpp:604
 msgid ""
 "The operation you requested needs a connection to the News server\n"
 "Should I attempt one?"
@@ -202,7 +202,7 @@ msgstr ""
 "A operação que pediu necessita de uma ligação a um servidor de News\n"
 "Devo tentar estabelece-la?"
 
-#: groupdlg.cpp:870
+#: groupdlg.cpp:867
 msgid ""
 "You don't have an active groups list.\n"
 " get it from server?"
@@ -210,31 +210,31 @@ msgstr ""
 "Não tem uma lista de grupos activos.\n"
 " recebe-la do servidor?"
 
-#: groupdlg.cpp:886
+#: groupdlg.cpp:883
 msgid "Listing active newsgroups"
 msgstr "A listar newsgroups activos"
 
-#: groupdlg.cpp:898
+#: groupdlg.cpp:895
 msgid "KRN - Find a Newsgroup"
 msgstr "KRN - Encontrar um Newsgroup"
 
-#: groupdlg.cpp:899
+#: groupdlg.cpp:896
 msgid "Enter the name of the Newsgroup"
 msgstr "Insira o nome do Newsgroup"
 
-#: groupdlg.cpp:983
+#: groupdlg.cpp:980
 msgid "Krn - Message"
 msgstr "Krn - Mensagem"
 
-#: groupdlg.cpp:984
+#: groupdlg.cpp:981
 msgid "I can't find the group you want!"
 msgstr "Não consigo encontrar o grupo pretendido!"
 
-#: groupdlg.cpp:1077
+#: groupdlg.cpp:1074
 msgid "Getting messages in "
 msgstr "Receber mensagens em "
 
-#: groupdlg.cpp:1090
+#: groupdlg.cpp:1087
 msgid "Getting list of messages in "
 msgstr "Receber lista de mensagens em "
 
@@ -249,10 +249,6 @@ msgstr "Marcar Lido"
 #: artdlg.cpp:147
 msgid "Mark Unread"
 msgstr "Marcar Não Lido"
-
-#: artdlg.cpp:149 artdlg.cpp:163
-msgid "Print"
-msgstr "Imprimir"
 
 #: artdlg.cpp:150 artdlg.cpp:170
 msgid "Decode"
@@ -552,14 +548,6 @@ msgstr "Embebidos"
 msgid "Font Size:"
 msgstr "Tamanho da Fonte:"
 
-#: fontsDlg.cpp:70
-msgid "Small"
-msgstr "Pequena"
-
-#: fontsDlg.cpp:72
-msgid "Large"
-msgstr "Grande"
-
 #: fontsDlg.cpp:73
 msgid "Huge"
 msgstr "Enorme"
@@ -720,10 +708,6 @@ msgstr "Nome da regra:"
 msgid "KRN - Header Sorting"
 msgstr "KRN - Ordenação de Cabeçalhos"
 
-#: sortDlg.cpp:37
-msgid "None"
-msgstr "Nenhuma"
-
 #: sortDlg.cpp:39
 msgid "Sort by:"
 msgstr "Ordenar por:"
@@ -731,6 +715,18 @@ msgstr "Ordenar por:"
 #: sortDlg.cpp:56
 msgid "Use Threading"
 msgstr "Utilizar Threads"
+
+#~ msgid "Print"
+#~ msgstr "Imprimir"
+
+#~ msgid "Small"
+#~ msgstr "Pequena"
+
+#~ msgid "Large"
+#~ msgstr "Grande"
+
+#~ msgid "None"
+#~ msgstr "Nenhuma"
 
 #~ msgid "KRN - Decoder"
 #~ msgstr "KRN - Descodificador"
