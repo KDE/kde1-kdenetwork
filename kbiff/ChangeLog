@@ -1,3 +1,16 @@
+08-24-99 - Kurt Granroth (2.3.10a)
+   o Had to split my sources again since we can only commit bug fixes during
+     the freeze for KDE 1.2.  This does *not* have the internal code changes
+	 from 2.3.8
+   o "Launch" button should now look better i18n'ed
+   o Empty Status: lines in mbox should now be flagged as read (patch from
+     Dirk Foersterling)
+   o KBiff should compile on HP-UX again (patch from Stefan Becker)
+   o Popup no longer shows 1 new mail when there is 0 messages (patch from
+     Riko Jacob)
+   o KBiff should no longer dump core when restarting a session.  Don't know
+     when this bug was introduced... but it's squashed now.
+
 06-06-99 - Kurt Granroth (2.3.7)
    o Passwords with '(' in them should now work...
 

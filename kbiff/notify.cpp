@@ -67,11 +67,11 @@ TRACEF("%d new messages in %s", num_new, mailbx.data());
 
 	QPushButton *ok = new QPushButton(i18n("OK"), this);
 	ok->setDefault(true);
-	ok->setFixedSize(ok->sizeHint());
 	connect(ok, SIGNAL(clicked()), SLOT(accept()));
 
 	QPushButton *launch = new QPushButton(i18n("Mailer"), this);
-	launch->setFixedSize(ok->sizeHint());
+	launch->setFixedSize(launch->sizeHint());
+	ok->setFixedSize(launch->sizeHint());
 	if (mail_client.isEmpty())
 		launch->setEnabled(false);
 

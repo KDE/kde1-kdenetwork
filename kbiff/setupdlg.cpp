@@ -1692,7 +1692,7 @@ TRACEINIT("KBiffAboutTab::KBiffAboutTab()");
 	QLabel *version = new QLabel(this);
 	version->setFont(QFont("helvetica", 12));
 	QString ver_str;
-	ver_str.sprintf(i18n("Version %s\n\nCopyright (C) 1999\nKurt Granroth"), "2.3.7");
+	ver_str.sprintf(i18n("Version %s\n\nCopyright (C) 1999\nKurt Granroth"), "2.3.10a");
 	version->setText(ver_str);
 	version->setAutoResize(true);
 	version->move(x, y);

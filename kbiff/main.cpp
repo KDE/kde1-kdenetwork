@@ -9,8 +9,8 @@ int main(int argc, char *argv[])
 {
 	KApplication app(argc, argv, "kbiff");
 	KBiff kbiff;
-	KBiffSetup* setup;
-	bool is_secure = false;
+	KBiffSetup* setup = 0;
+	bool is_secure    = false;
 	bool have_profile = false;
 	QString profile;
 

@@ -35,6 +35,10 @@
 
 #define MAXSTR (1024)
 
+#if defined (_HPUX_SOURCE)
+extern int h_errno;
+#endif
+
 static bool real_from(const char *buffer);
 static const char *compare_header(const char *header, const char *field);
 
@@ -449,7 +453,10 @@ TRACEINIT("KBiffMonitor::checkImap()");
 
 	// what state are we in?
 	if (imap->numberOfMessages() == 0)
+	{
+		newCount = 0;
 		determineState(NoMail);
+	}
 	else
 	{
 		newCount = imap->numberOfNewMessages();
@@ -1044,7 +1051,7 @@ int KBiffMonitor::mboxMessages()
 					while (field && (*field== ' ' || *field == '\t'))
 						field++;
 
-					if (*field == 'N' || *field == 'U')
+					if (*field == 'N' || *field == 'U' || *field == 0x0a)
 						msg_read = false;
 					else
 						msg_read = true;
