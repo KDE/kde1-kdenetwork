@@ -10,8 +10,8 @@
 
 <title>The Kppp Handbook
 <author>Bernd Johannes Wuebben, <tt/wuebben@kde.org/
-<date>Version 1.0.6, 31 March 1998
-<abstract>This Handbook describes Kppp Version 1.0.6
+<date>Version 1.1.1, 17 April 1998
+<abstract>This Handbook describes Kppp Version 1.1.1
 
 <!-- Table of contents -->
 <toc>
@@ -237,7 +237,8 @@ X-server exits and kppp terminates.
 
 <tag/Minimize Window on Connect/ kppp's window will be minimized after a connection has been established. The elapsed connection time will be shown in the taskbar.
 
-<tag/Dock into Panel on Connect/ If this option is chosen kppp will dock into the panel where it will be symbolized by a small animated icon. Use the left mouse button on this icon to restore kppp's window. The right mouse button will open up a popup-menu that offers to restore the window, show further transfer statistics or close the connection.
+<tag/Dock into Panel on Connect/ If this option is chosen kppp will dock into the panel where it will be symbolized by a small animated icon. Use the left mouse button on this icon to restore kppp's window. The right mouse button will open up a popup-menu
+ that offers to restore the window, show further transfer statistics or close the connection.
 This option overrides <em>Minimize Window on Connect</em>.
 </descrip>
 <p>

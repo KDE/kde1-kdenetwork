@@ -288,7 +288,43 @@ dialog.
 </DL>
 <P>
 <P>
+<H3><A NAME="ss4.7">4.7 Volume accounting</A>
+</H3>
+
 <P>
+<H4>What is volume accounting?</H4>
+
+<P>It basically means to count the number of bytes transmitted from or to the
+internet. Kppp can count incoming bytes, outgoing bytes or both. It´s up to
+you what you want (or must) use.
+<P>
+<H4>Why should I use volume accounting?</H4>
+
+<P>Because nowadays, many Internet Service Providers begin to bill their
+customers depending on the number of bytes transferred. Or very often those
+ISP give you an arbitrary transfer limit, and charge you for every megabyte
+above this limit. Kppp shows you your current volume and can help you keeping
+your bills to the minimum. Of course, if you do not have volume limits and you
+are curious, you can use it too...
+<P>
+<H4>What type of volume accounting should I select?</H4>
+
+<P>That depends on your provider. Many of them only count how many megabytes you
+get from internet and ignore how much you send. In that case you should choose
+"Bytes in". If you have to pay for both you should select "Bytes in and
+out". "Bytes out" is not of much use and is only here for completeness.
+<P>
+<H4>Drawbacks</H4>
+
+<P>Unfortunately there´s a drawback on volume accounting. Kppp will just count the
+number of bytes regardless their origin. Many providers set their limit only
+for internet access, not for their own network. So, if you do a little web
+surfing and you use a proxy-cache, the proxy will reside inside the network of
+your provider and he will not charge you for bytes transferred from his proxy
+cache. However, kppp will not know that these IP packets are coming from the
+proxy and thus count them. So, if you use a proxy, or your provider uses a
+caching news server (like nntpcached), the volume reported by kppp may be
+higher.
 <P>
 <P>
 <P ALIGN="RIGHT">
