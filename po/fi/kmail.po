@@ -19,7 +19,7 @@ msgstr "Uusi kansio"
 
 #: kmmainwin.cpp:288
 msgid "No new mail available"
-msgstr ""
+msgstr "Ei uutta postia"
 
 #: kmmainwin.cpp:312
 msgid ""
@@ -34,22 +34,21 @@ msgid "Modify Folder"
 msgstr "Muokkaa kansiota"
 
 #: kmmainwin.cpp:332
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Are you sure you want to discard the\n"
 "contents of the folder \"%s\" ?"
 msgstr ""
-"Oletko varma että haluat poistaa kansion \"%s\"\n"
-"ja kaikki sen alikansiot?"
+"Oletko varma että haluat poistaa kansion\n"
+"\"%s\" sisällön?"
 
 #: kmmainwin.cpp:335 kmmainwin.cpp:370
 msgid "Confirmation"
 msgstr "Varmistus"
 
 #: kmmainwin.cpp:349
-#, fuzzy
 msgid "Moved all messages into trash"
-msgstr "Lähetän viestiä: "
+msgstr "Siirsin kaikki viestit roskakoriin "
 
 #: kmmainwin.cpp:363
 msgid ""
@@ -242,7 +241,7 @@ msgstr "Lähetä uudelleen..."
 
 #: kmmainwin.cpp:833
 msgid "Apply filters"
-msgstr ""
+msgstr "Käytä suodattimia"
 
 #: kmmainwin.cpp:836
 msgid "View Source..."
@@ -438,7 +437,7 @@ msgid ""
 "The following placeholders are supported in the reply phrases:\n"
 "%D=date, %S=subject, %F=sender, %%=percent sign"
 msgstr ""
-"Seuraavat paikanpitimet ovat tuettuina vastauslauseissa:\n"
+"Seuraavat lyhenteet ovat tuettuina vastauslauseissa:\n"
 "%D=päivä, %S=aihe, %F=lähettäjä, %%=prosenttimerkki"
 
 #: kmsettings.cpp:287
@@ -507,7 +506,7 @@ msgstr "lähetä myöhemmin"
 
 #: kmsettings.cpp:375
 msgid "Send messages:"
-msgstr "Lähetän viestejä: "
+msgstr "Viestin lähetys: "
 
 #: kmsettings.cpp:378
 msgid "Allow 8-bit"
@@ -527,7 +526,7 @@ msgstr "Kansiot"
 
 #: kmsettings.cpp:430
 msgid "empty trash on exit"
-msgstr "tyhjennä roskat lopetetettaessa"
+msgstr "tyhjennä roskakori lopetetettaessa"
 
 #: kmsettings.cpp:443
 msgid "Misc"
@@ -579,7 +578,7 @@ msgstr "Tuhoa posti palvelimelta"
 
 #: kmsettings.cpp:761
 msgid "Store new mail in account:"
-msgstr "Tallenna uusi posti profiiliin:"
+msgstr "Tallenna uusi posti kansioon:"
 
 #: kmsettings.cpp:769
 msgid "<none>"
@@ -615,36 +614,33 @@ msgstr "Päivä"
 
 #: kmheaders.cpp:223
 msgid "order of arrival"
-msgstr ""
+msgstr "vastaanottojärjestys"
 
 #: kmheaders.cpp:232
-#, fuzzy
 msgid "subject"
-msgstr "Aihe"
+msgstr "aihe"
 
 #: kmheaders.cpp:233
-#, fuzzy
 msgid "date"
-msgstr "Päivä"
+msgstr "päivä"
 
 #: kmheaders.cpp:234
-#, fuzzy
 msgid "sender"
-msgstr "Lähettäjä"
+msgstr "lähettäjä"
 
 #: kmheaders.cpp:235
 msgid "status"
-msgstr ""
+msgstr "tila"
 
 #: kmheaders.cpp:237
 #, c-format
 msgid "Sorting messages descending by %s"
-msgstr ""
+msgstr "Järjestän viestit käänteisesti lähtien %s:tä"
 
 #: kmheaders.cpp:238
 #, c-format
 msgid "Sorting messages ascending by %s"
-msgstr ""
+msgstr "Järjestän viestit lähtien %s:tä"
 
 #: kmheaders.cpp:328
 msgid "Message(s) saved."
@@ -732,9 +728,8 @@ msgid "Find..."
 msgstr "Etsi..."
 
 #: kmcomposewin.cpp:461 kmcomposewin.cpp:676
-#, fuzzy
 msgid "Replace..."
-msgstr "&Vastaa..."
+msgstr "Korvaa..."
 
 #: kmcomposewin.cpp:468
 msgid "&Urgent"
@@ -749,9 +744,8 @@ msgid "&Confirm read"
 msgstr "Varmista &luku"
 
 #: kmcomposewin.cpp:475
-#, fuzzy
 msgid "&Charsets..."
-msgstr "&Luo..."
+msgstr "&Merkistöt..."
 
 #: kmcomposewin.cpp:488
 msgid "&All Fields"
@@ -815,19 +809,17 @@ msgstr "&Liitä"
 
 #: kmcomposewin.cpp:557
 msgid "Cut selection"
-msgstr ""
+msgstr "Leikaa valinta"
 
 #: kmcomposewin.cpp:560
-#, fuzzy
 msgid "Copy selection"
-msgstr "Valitse sijainti"
+msgstr "Kopioi valinta"
 
 #: kmcomposewin.cpp:563
 msgid "Paste clipboard contents"
-msgstr ""
+msgstr "Liitä leikepöydän sisältö"
 
 #: kmcomposewin.cpp:568
-#, fuzzy
 msgid "Attach file"
 msgstr "Liitä tiedosto"
 
@@ -841,12 +833,11 @@ msgstr "salaa viesti"
 
 #: kmcomposewin.cpp:598 kmcomposewin.cpp:614
 msgid "Column"
-msgstr ""
+msgstr "Sarake"
 
 #: kmcomposewin.cpp:599 kmcomposewin.cpp:612
-#, fuzzy
 msgid "Line"
-msgstr "Käyttäjätunnus:"
+msgstr "Rivi"
 
 #: kmcomposewin.cpp:867
 msgid "KMail Confirm"
@@ -878,7 +869,6 @@ msgid "Attach File"
 msgstr "Liitä tiedosto"
 
 #: kmcomposewin.cpp:1160
-#, fuzzy
 msgid "Include File"
 msgstr "Liitä tiedosto"
 
@@ -1033,6 +1023,9 @@ msgid ""
 "section of the settings in order to\n"
 "receive mail."
 msgstr ""
+"Sinun tulee lisätä verkkoprofiili\n"
+"asetuksista voidaksesi vastaanottaa\n"
+"postia."
 
 #: main.cpp:97 main.cpp:214
 msgid "warning"
@@ -1063,7 +1056,7 @@ msgstr ""
 #: main.cpp:378
 #, c-format
 msgid "Unknown command line option: %s"
-msgstr ""
+msgstr "Tuntematon komentorivioptio: %s"
 
 #: kmacctlocal.cpp:91
 #, c-format
@@ -1136,7 +1129,9 @@ msgstr ""
 msgid ""
 "Cannot create folder `%s'\n"
 "in %s"
-msgstr "Kansion `%s' luominen ei onnistunut."
+msgstr ""
+"En voi luoda kansiota `%s'\n"
+"kohteeseen %s"
 
 #: kmsender.cpp:108
 msgid ""
@@ -1519,82 +1514,60 @@ msgstr "Sain kirjoitettua vain %d tavua %d:ta."
 
 #: kmaddrbookdlg.cpp:20
 msgid "Addressbook"
-msgstr "Osoite&kirja"
+msgstr "Osoitekirja"
 
 #: kmaddrbookdlg.cpp:95
 msgid "Addressbook Manager"
-msgstr "Osoite&kirjan hallinta"
+msgstr "Osoitekirjan hallinta"
 
 #: kmiostatusdlg.cpp:32
 msgid "&Abort"
 msgstr "&Poistu"
 
 #: kmnewiostatuswdg.cpp:37
-#, fuzzy
 msgid "Sending messages to "
-msgstr "Lähetän viestiä: "
+msgstr "Lähetän viestiä osoitteeseen "
 
 #: kmnewiostatuswdg.cpp:40
-#, fuzzy
 msgid "Retrieving messages from "
-msgstr "lähetän viestiä"
+msgstr "Haen viestejä "
 
 #: kmnewiostatuswdg.cpp:50
 msgid "Preparing transmission..."
-msgstr ""
+msgstr "Valmistelen siirtoa..."
 
 #: kmnewiostatuswdg.cpp:56
 msgid "Transmission completed..."
-msgstr ""
+msgstr "Siirto valmis..."
 
 #: kmnewiostatuswdg.cpp:91
 msgid "Aborting transmission...\n"
-msgstr ""
+msgstr "Keskeytän siirron...\n"
 
 #: charsetsDlg.cpp:27
 msgid "KRN - Charset Settings"
-msgstr ""
+msgstr "KRN - Merkistöasetukset"
 
 #: charsetsDlg.cpp:29
 msgid "KMail - Charset Settings"
-msgstr ""
+msgstr "KMail - Merkistöasetukset"
 
 #: charsetsDlg.cpp:39
-#, fuzzy
 msgid "Message charset"
-msgstr "Viesti puhtaana tekstinä"
+msgstr "Viestin merkistö"
 
 #: charsetsDlg.cpp:57
-#, fuzzy
 msgid "Composer charset"
-msgstr "Kirjoitusohjelma"
+msgstr "Kirjoitusmerkistö"
 
 #: charsetsDlg.cpp:75
 msgid "Set as &default"
-msgstr ""
+msgstr "Aseta &oletukseksi"
 
 #: charsetsDlg.cpp:80
 msgid "&7 bit is ASCII"
-msgstr ""
+msgstr "&7 bittinen ASCII"
 
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
-msgstr ""
-
-#~ msgid "&Cut"
-#~ msgstr "&Leikkaa"
-
-#~ msgid "Send now"
-#~ msgstr "Lähetä nyt"
-
-#~ msgid "Send later"
-#~ msgstr "Lähetä &myöhemmin"
-
-#~ msgid "Mark All"
-#~ msgstr "Valitse kaikki"
-
-#~ msgid "Failed to pipe mail message into mailer program %s"
-#~ msgstr "Viestin putkitus postiohjelmaan %s epäonnistui"
-
-#~ msgid "You do not have write permissionto this file.\n"
-#~ msgstr "Sinulla ei ole kirjoitusoikeuksia tiedostoon.\n"
+msgstr "&Koodaa tuntemattomat merkistöt"

@@ -27,9 +27,8 @@ msgid "Host &resolution"
 msgstr "Isännän &selvitys"
 
 #: knu.cpp:163 knu.cpp:293
-#, fuzzy
 msgid "&Finger"
-msgstr "&Ping"
+msgstr "&Finger"
 
 #: knu.cpp:174
 msgid ""
@@ -104,10 +103,19 @@ msgid ""
 "Please use Edit->Preferences... menu\n"
 "to configure it again.\n"
 msgstr ""
+"\n"
+"Asetustiedostossa\n"
+"%s/%src\n"
+"on virhe.\n"
+"Ryhmässä [%s],\n"
+"Ei ole oikeaa \"path=\" tietuetta.\n"
+"\n"
+"Käytä Muokkaa->Asetukset... valikkoa\n"
+"asettaaksesi sen uudelleen.\n"
 
 #: CommandDlg.cpp:345
 msgid "Error in pathname"
-msgstr ""
+msgstr "Virhe polkunimessä"
 
 #: CommandDlg.cpp:478
 msgid "Binary"
@@ -131,7 +139,7 @@ msgstr " - asetus"
 
 #: PingDlg.cpp:94 TracerouteDlg.cpp:95
 msgid "Make host &name resolution"
-msgstr "Tee isännän &nimen selvitys"
+msgstr "Tee isännän &nimenselvitys"
 
 #: TracerouteDlg.cpp:112
 msgid "&Maximum number of hops:"
@@ -179,22 +187,8 @@ msgstr "Pal&velin"
 
 #: FingerDlg.cpp:68
 msgid "User:"
-msgstr ""
+msgstr "Käyttäjä:"
 
 #: FingerDlg.cpp:86
-#, fuzzy
 msgid "Server:"
-msgstr "Pal&velin"
-
-#~ msgid ""
-#~ "You have a problem in your ~/.kde/share/config/knurc configuration file.\n"
-#~ "In the ["
-#~ msgstr ""
-#~ "Sinulla on ongelma ~/.kde/share/config/knurc asetustiedostossa.\n"
-#~ "["
-
-#~ msgid "] group, I cannotfind a correct \"path=\" entry."
-#~ msgstr "] osiossa, En löydä oikeaa \"path=\" tietuetta."
-
-#~ msgid "&Contents"
-#~ msgstr "&Sisältö"
+msgstr "Palvelin:"

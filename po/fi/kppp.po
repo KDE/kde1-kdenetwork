@@ -97,7 +97,7 @@ msgstr "Yhdysk‰yt‰v‰"
 
 #: accounts.cpp:349
 msgid "Login Script"
-msgstr "Sis‰‰nkirjotaautumis skripti"
+msgstr "Sis‰‰nkirjoittautumisohjelma"
 
 #: accounts.cpp:350
 msgid "Accounting"
@@ -113,7 +113,7 @@ msgstr ""
 
 #: accounts.cpp:374
 msgid "Login script has unbalanced Loop Start/End"
-msgstr "Sis‰‰nkirjottautumis skriptiss‰ on eri m‰‰r‰ Loop Start/End pareja"
+msgstr "Sis‰‰nkirjoittautumisohjelmassa on eri m‰‰r‰ Loop Start/End pareja"
 
 #: connect.cpp:99 connect.cpp:201 main.cpp:779
 msgid "Connecting to: "
@@ -169,14 +169,12 @@ msgid "No Carrier"
 msgstr "Ei linja‰‰nt‰"
 
 #: connect.cpp:376
-#, fuzzy
 msgid "Scanning "
-msgstr "L‰het‰n "
+msgstr "Selaan "
 
 #: connect.cpp:387
-#, fuzzy
 msgid "Saving "
-msgstr "L‰het‰n "
+msgstr "Talletan "
 
 #: connect.cpp:405
 msgid "Sending "
@@ -244,7 +242,7 @@ msgstr "ei nopeutta"
 
 #: connect.cpp:849
 msgid "Scan Var: "
-msgstr ""
+msgstr "Selausmuuttuja:"
 
 #: connect.cpp:860
 msgid "Found: "
@@ -263,9 +261,8 @@ msgid "Script timed out!"
 msgstr "Ohjelman aika loppui!"
 
 #: connect.cpp:972
-#, fuzzy
 msgid "Scanning: "
-msgstr "L‰het‰n "
+msgstr "Selaan: "
 
 #: connect.cpp:983
 msgid "Expecting: "
@@ -273,7 +270,7 @@ msgstr "Odotan: "
 
 #: connect.cpp:1017
 msgid "Logging on to Network ..."
-msgstr "Kirjottaudun verkkoon ..."
+msgstr "Kirjoittaudun verkkoon ..."
 
 #: connect.cpp:1043
 msgid "Running Startup Command ..."
@@ -309,7 +306,7 @@ msgstr "Yhteysaika:"
 
 #: conwindow.cpp:56
 msgid "Volume:"
-msgstr ""
+msgstr "M‰‰r‰:"
 
 #: conwindow.cpp:60
 msgid "Session Bill:"
@@ -329,7 +326,7 @@ msgstr "Yksityiskohdat"
 
 #: debug.cpp:49
 msgid "Login Script Debug Window"
-msgstr "K‰ynnistys skriptin tarkkailuikkuna"
+msgstr "K‰ynnistysohjelman tarkkailuikkuna"
 
 #: debug.cpp:65
 msgid "Dismiss"
@@ -360,9 +357,8 @@ msgid "PAP"
 msgstr "PAP"
 
 #: edit.cpp:75
-#, fuzzy
 msgid "Terminal-based"
-msgstr "Terminaali"
+msgstr "Terminaalipohjainen"
 
 #: edit.cpp:81
 msgid "Store password"
@@ -462,11 +458,11 @@ msgstr "Aseta oletusreitti t‰lle yhdysk‰yt‰v‰lle"
 
 #: edit.cpp:557
 msgid "Edit Script"
-msgstr "Editoi Skripti‰"
+msgstr "Editoi ohjelmaa"
 
 #: edit.cpp:563
 msgid "Use default script"
-msgstr "K‰yt‰ oletusskripti‰"
+msgstr "K‰yt‰ oletusohjelmaa"
 
 #: edit.cpp:580
 msgid "Insert"
@@ -510,7 +506,7 @@ msgstr "Pienenn‰ ikkunan sis‰ltˆ yhdistett‰ess‰"
 
 #: general.cpp:124
 msgid "Dock into Panel on Connect"
-msgstr "Siirr‰ paneliin yhdistett‰ess‰"
+msgstr "Nielaise paneliin yhdistett‰ess‰"
 
 #: general.cpp:187
 msgid "About kppp"
@@ -754,7 +750,7 @@ msgstr "Asetuksen vastaus:"
 
 #: modemcmds.cpp:86
 msgid "Init Delay (sec/100):"
-msgstr ""
+msgstr "Asetusviibe (sek/100):"
 
 #: modemcmds.cpp:91
 msgid "Dial String:"
@@ -988,9 +984,8 @@ msgid "Selected:"
 msgstr "Valittu:"
 
 #: acctselect.cpp:84
-#, fuzzy
-msgid "Volume accounting"
-msgstr "Salli laskutus"
+msgid "Volume accounting:"
+msgstr "M‰‰r‰laskutus:"
 
 #: acctselect.cpp:154 acctselect.cpp:260
 msgid "Available rules"
@@ -1098,8 +1093,3 @@ msgid ""
 "Contact your system administrator."
 msgstr ""
 
-#~ msgid "Modem sustains fast initialization."
-#~ msgstr "Modeemi siet‰‰ nopean asetuksen."
-
-#~ msgid "The pppd daemon died unexpectedly!"
-#~ msgstr "pppd daemoni kuoli odottamatta!"
