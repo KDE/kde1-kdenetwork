@@ -401,7 +401,7 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
       }
  
       if(strcmp(gpppdata.scriptType(scriptindex), "Prompt") == 0) {
-	QString bm = "prompting ";
+	QString bm = "Prompting ";
 	bm += gpppdata.script(scriptindex);
 	messg->setText(bm);
 	p_xppp->debugwindow->statusLabel(bm);
@@ -426,7 +426,7 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
       }
 
       if(strcmp(gpppdata.scriptType(scriptindex), "Password") == 0) {
-	QString bm = "pwprompting ";
+	QString bm = "PW-prompting ";
 	bm += gpppdata.script(scriptindex);
 	messg->setText(bm);
 	p_xppp->debugwindow->statusLabel(bm);
@@ -709,14 +709,18 @@ printf( "ConnectWidget::cancelbutton() \n" );
 
 void ConnectWidget::script_timed_out(){
 
-  if(vmain == 20){ // we are in the wait for the user to cancel state
+  if(vmain == 20){ // we are in the 'wait for the user to cancel' state
     timeout_timer->stop();
       p_xppp->stopAccounting();
       p_xppp->con_win->stopClock();
     return;
   }
 
-  
+  if (prompt->isVisible()) {
+  	prompt->hide();
+  }
+  prompt->setConsumed();
+
   messg->setText("Script timed out!");
   
   hangup();
@@ -1182,7 +1186,7 @@ void ConnectWidget::closeEvent( QCloseEvent *e ){
         e->ignore();                            
 	
 	// We don't want to lose the conwindow since this is our last 
-	// connection to kppp. If we lost it we could only kill the 
+	// connection to kppp. If we lost it we would have to kill the 
 	// program by hand to get on with life.
 }
 
