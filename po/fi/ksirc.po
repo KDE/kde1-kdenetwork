@@ -16,7 +16,7 @@ msgstr ""
 
 #: FilterRuleEditor.cpp:29
 msgid "Edit Filter Rules"
-msgstr ""
+msgstr "Muokkaa suodatinsääntöjä"
 
 #: FilterRuleEditor.cpp:58 FilterRuleEditor.cpp:79
 #: FilterRuleEditorData.cpp:105
@@ -25,13 +25,15 @@ msgstr "&Muokkaa"
 
 #: FilterRuleEditor.cpp:74
 msgid "Missing Arguments"
-msgstr ""
+msgstr "Puuttuvia kenttiä"
 
 #: FilterRuleEditor.cpp:75
 msgid ""
 "Cannot create a Rule since not\n"
 "all the fields are filled in."
 msgstr ""
+"En voi luoda sääntöä, koska\n"
+"kaikkai kenttiä ei ole täytetty."
 
 #: FilterRuleEditorData.cpp:33
 msgid "Description:"
@@ -63,7 +65,7 @@ msgstr "Alas"
 
 #: KSircColour.cpp:33
 msgid "Colour Settings"
-msgstr ""
+msgstr "Väriasetukset"
 
 #: KSircColourData.cpp:33
 msgid "Generic Text"
@@ -87,7 +89,7 @@ msgstr "Tausta"
 
 #: dccDialog.cpp:22
 msgid "DCC Files Offered"
-msgstr ""
+msgstr "DCC Tiedostoja tarjottu"
 
 #: dccDialogData.cpp:38
 msgid "&Get"
@@ -125,7 +127,7 @@ msgstr ""
 
 #: open_top.cpp:26
 msgid "New Window For"
-msgstr ""
+msgstr "Uusi ikkuna"
 
 #: open_topData.cpp:39
 msgid "Channel/Nick:"
@@ -205,7 +207,7 @@ msgstr "&Työpöydälle"
 
 #: ssfeprompt.cpp:25
 msgid "Prompt"
-msgstr ""
+msgstr "Komentokehote"
 
 #: toplevel.cpp:140
 msgid "Lag in seconds to the server"
@@ -225,7 +227,7 @@ msgstr "&Käyttäjät"
 
 #: welcomeWin.cpp:30
 msgid "Welcome to kSirc"
-msgstr ""
+msgstr "Tervetuloa kSirc:n"
 
 #: welcomeWinData.cpp:35
 msgid "Show Again"
@@ -237,7 +239,7 @@ msgstr "Hylkää"
 
 #: KSColourPicker/kscolourpicker.cpp:28
 msgid "kSirc Colour Picker"
-msgstr ""
+msgstr "kSirc värivalitsin"
 
 #: KSColourPicker/kscolourpickerData.cpp:30
 msgid "Pick"
@@ -248,9 +250,8 @@ msgid "Sample Colour"
 msgstr "Värimalli"
 
 #: KSCutDialog/KSCutDialog.cpp:27
-#, fuzzy
 msgid "Cut Window"
-msgstr "&Leikkaa ikkuna..."
+msgstr "Leikkaa ikkuna"
 
 #: KSCutDialog/KSCutDialogData.cpp:39
 msgid "Cop&y"
@@ -258,11 +259,11 @@ msgstr "&Kopioi"
 
 #: KSOpenkSirc/open_ksirc.cpp:38
 msgid "Connect to Server"
-msgstr ""
+msgstr "Yhdistä palvelimeen"
 
 #: KSOpenkSirc/open_ksirc.cpp:186
 msgid "Not Avalable"
-msgstr ""
+msgstr "Ei saatavilla"
 
 #: KSOpenkSirc/open_ksircData.cpp:37
 msgid "&Connect"
@@ -344,23 +345,3 @@ msgstr "Askelkoko"
 #, c-format
 msgid "No such file \"%s\"!"
 msgstr "Tiedostoa \"%s\" ei löydy!"
-
-#, fuzzy
-#~ msgid "Colour"
-#~ msgstr "Värimalli"
-
-#, fuzzy
-#~ msgid "Sample"
-#~ msgstr "Värimalli"
-
-#, fuzzy
-#~ msgid "Servers"
-#~ msgstr "Palvelinkuvaus:"
-
-#, fuzzy
-#~ msgid "Nick"
-#~ msgstr "Poimi"
-
-#, fuzzy
-#~ msgid "Real Name"
-#~ msgstr "Valikkonimi"

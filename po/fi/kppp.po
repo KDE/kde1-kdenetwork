@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KPPP\n"
-"POT-Creation-Date: 1999-01-29 02:02+0100\n"
+"POT-Creation-Date: 1999-01-28 02:19+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Kim Enkovaara <kim.enkovaara@iki.fi>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1531,35 +1531,35 @@ msgstr ""
 "En saa ladattua laskutus\n"
 "sääntöä \""
 
-#: modem.cpp:113
+#: modem.cpp:114
 msgid "Sorry, can't open modem."
 msgstr "En saa avattua modeemia."
 
-#: modem.cpp:119
+#: modem.cpp:120
 msgid "Sorry, can't detect state of CD line."
 msgstr "Valitettavasti en voi tarkastaa CD-linjan tilaa."
 
-#: modem.cpp:125
+#: modem.cpp:126
 msgid "Sorry, the modem is not ready."
 msgstr "Modeemi ei ole valmis"
 
-#: modem.cpp:136 modem.cpp:180
+#: modem.cpp:137 modem.cpp:181
 msgid "Sorry, the modem is busy."
 msgstr "Modeemi on jo käytössä"
 
-#: modem.cpp:186
+#: modem.cpp:187
 msgid "Modem Ready."
 msgstr "Modeemi valmis."
 
-#: modem.cpp:197
+#: modem.cpp:198
 msgid "Can't restore tty settings: tcsetattr()\n"
 msgstr "En saa palautettua tty:n asetuksia: tcsetattr()\n"
 
-#: modem.cpp:324
+#: modem.cpp:327
 msgid "Sorry, the modem doesn't respond."
 msgstr "Valitettavasti modeemi ei vastaa."
 
-#: modem.cpp:425
+#: modem.cpp:428
 msgid "Unknown speed"
 msgstr "Tuntematon nopeus"
 
@@ -1833,7 +1833,7 @@ msgstr "Olemassaolevat säännöt"
 
 #: acctselect.cpp:305
 msgid "(none)"
-msgstr ""
+msgstr "(ei mikään)"
 
 #: ruleset.cpp:544
 msgid "kppp: no rulefile specified\n"
@@ -1971,12 +1971,11 @@ msgstr ""
 
 #: loginterm.cpp:120
 msgid "Ca&ncel"
-msgstr ""
+msgstr "&Peruuta"
 
 #: loginterm.cpp:125
-#, fuzzy
 msgid "&Continue"
-msgstr "Yhdistä"
+msgstr "&Jatka"
 
 #: ppplog.cpp:136
 msgid ""
@@ -2078,7 +2077,7 @@ msgstr "Kirjoita tiedostoon"
 
 #: modemdb.cpp:46
 msgid "Select modem type..."
-msgstr ""
+msgstr "Valitse modeemityyppi..."
 
 #: modemdb.cpp:48
 msgid ""
@@ -2086,11 +2085,14 @@ msgid ""
 "then select the model from the right list. If you don´t know which modem you "
 "have, you can try out one of the \"Generic\" modems."
 msgstr ""
+"Asettaaksei modeemin, valitse ensin valmistaja vasemmalla olevasta listasta "
+"ja sitten valitse malli oikealta. Jos et tiedä modeemisi tyyppiä, voit "
+"yrittää jotain \"Yleisistä\" modeemeista."
 
 #: modemdb.cpp:151 modemdb.cpp:153 modemdb.cpp:223 modemdb.cpp:238
 msgid "<Generic>"
-msgstr ""
+msgstr "<Yleinen>"
 
 #: modemdb.cpp:218
 msgid "Hayes(tm) compatible modem"
-msgstr ""
+msgstr "Hayes(tm) yhteensopiva modeemi"
