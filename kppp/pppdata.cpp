@@ -339,6 +339,14 @@ void PPPData::setSpeed( const char *n ) {
 }
 
 
+void PPPData::setUseCDLine(const int n) {
+  writeConfig(MODEM_GRP,USECDLINE_KEY,n);
+}
+
+int PPPData::UseCDLine() {
+  return  readNumConfig(MODEM_GRP,USECDLINE_KEY,true);
+}
+
 void PPPData::setFastModemInit(const int n) {
   writeConfig(MODEM_GRP,FASTINIT_KEY,n);
 }

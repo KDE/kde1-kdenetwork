@@ -991,12 +991,14 @@ bool ConnectWidget::opentty() {
     return FALSE;
   }
 
-  ioctl( modemfd, TIOCMGET, &flags ); 
-  if ((flags&TIOCM_CD)==0) {
-    messg->setText(klocale->translate("Sorry, the modem is not ready."));
-    ::close(modemfd);
-    modemfd=-1;
-    return FALSE;
+  if(gpppdata.UseCDLine()) {
+    ioctl( modemfd, TIOCMGET, &flags ); 
+    if ((flags&TIOCM_CD)==0) {
+      messg->setText(klocale->translate("Sorry, the modem is not ready."));
+      ::close(modemfd);
+      modemfd=-1;
+      return FALSE;
+    }
   }
 	
   if(tcgetattr(modemfd, &tty) < 0){

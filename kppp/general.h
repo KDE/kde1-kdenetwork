@@ -138,6 +138,7 @@ public:
 private slots:
   void 	busywaitchanged(const char*);
   void 	fast_modem_toggled(bool);
+  void 	use_cdline_toggled(bool);
   void 	modemcmdsbutton();
   void 	terminal();
   void 	query_modem();
@@ -155,6 +156,7 @@ private:
   QFrame 	*fline;
   QLineEdit 	*busywait;
   QCheckBox 	*chkbox;
+  QCheckBox 	*chkbox2;
 };
 
 class AboutWidget : public QWidget {

@@ -450,7 +450,7 @@ ModemWidget2::ModemWidget2( QWidget *parent, const char *name)
   l10->addWidget(labeltmp, 1);
   l10->addStretch(1);
 
-  // the checkbox
+  // the checkboxes
   l1->addSpacing(10);
   QHBoxLayout *l12 = new QHBoxLayout;
   l1->addLayout(l12);
@@ -464,6 +464,20 @@ ModemWidget2::ModemWidget2( QWidget *parent, const char *name)
   l12->addWidget(chkbox);
   l12->addStretch(1);
   l1->addStretch(1);
+
+  QHBoxLayout *l13 = new QHBoxLayout;
+  l1->addLayout(l13);
+  l13->addStretch(1);
+  chkbox2 = 
+    new QCheckBox(klocale->translate("Modem Asserts CD Line."), 
+		  this, "fastinit");
+  chkbox2->setMinimumSize(chkbox->sizeHint());
+  chkbox2->setChecked(gpppdata.UseCDLine());
+  connect(chkbox2,SIGNAL(toggled(bool)),this,SLOT(use_cdline_toggled(bool)));
+  l13->addWidget(chkbox2);
+  l13->addStretch(1);
+  l1->addStretch(1);
+
 
   // add the buttons 
   QHBoxLayout *l11 = new QHBoxLayout;
@@ -530,8 +544,11 @@ void ModemWidget2::terminal(){
 }
 
 void ModemWidget2::fast_modem_toggled(bool on){
-
     gpppdata.setFastModemInit(on);
+}
+
+void ModemWidget2::use_cdline_toggled(bool on){
+    gpppdata.setUseCDLine(on);
 }
 
 void ModemWidget2::busywaitchanged(const char *n) {

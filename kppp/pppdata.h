@@ -97,6 +97,7 @@
 #define ESCAPERESP_KEY     "EscapeResponse"
 #define ESCAPEGUARDTIME_KEY "EscapeGuardTime"
 #define FASTINIT_KEY       "FastModemInit"
+#define USECDLINE_KEY      "UseCDLine"
 
 // account
 #define NAME_KEY           "Name"
@@ -245,6 +246,9 @@ public:
 
   void setFastModemInit(const int n);
   int  FastModemInit();
+
+  void setUseCDLine(const int n);
+  int  UseCDLine();
   // functions to set/get account information
 
   int count();
