@@ -12,6 +12,9 @@
 #
 # Make sure you type 'make clean' after compiling one version before
 # compiling a different version.
+
+SUBDIRS = mimelib
+
 LIBVERSION = DW_DEVELOPMENT_VERSION
 # LIBVERSION = DW_PRODUCTION_VERSION
 # LIBVERSION = DW_DEBUG_VERSION
