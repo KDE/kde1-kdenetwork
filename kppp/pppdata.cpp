@@ -140,6 +140,18 @@ const char* PPPData::readListConfig(const char* group,
 
 }
 
+bool PPPData::readWholeListConfig(const char* group, const char* key,
+				  QStrList &list, char sep = ',') {
+  list.clear();
+  if (config) {
+    config->setGroup(group);
+    config->readListEntry(key, list, sep);
+    return true;
+  } else
+    return false;
+
+}
+
 void PPPData::writeConfig(const char* group, const char* key,
 			  const char* value) {
   if (config) {
@@ -168,6 +180,14 @@ void PPPData::writeListConfig(const char* group, const char* key,
       list.remove(); 
     if (n) list.append(n);
     config->writeEntry(key, list);
+  }
+}
+
+void PPPData::writeWholeListConfig(const char* group, const char* key,
+				   QStrList &list, char sep = ',') {
+  if (config) {
+    config->setGroup(group);
+    config->writeEntry(key, list, sep);
   }
 }
 
@@ -803,7 +823,15 @@ void PPPData::setAccname( const char *n ) {
 }
 
 
-const char* PPPData::phonenumber() {
+#define SEPARATOR_CHAR ':'
+QStrList &PPPData::phonenumbers() {
+
+  readWholeListConfig(cgroup, PHONENUMBER_KEY, phonelist, SEPARATOR_CHAR);
+
+  return phonelist;
+}
+
+const char *PPPData::phonenumber() {
 
   return readConfig(cgroup, PHONENUMBER_KEY);
 
@@ -811,7 +839,7 @@ const char* PPPData::phonenumber() {
 
 void PPPData::setPhonenumber( const char *n ) {
 
-  writeConfig(cgroup, PHONENUMBER_KEY, n);
+  writeConfig(cgroup, PHONENUMBER_KEY, n);	
 
 }
 

@@ -150,6 +150,8 @@ private:
   struct termios initial_tty;
   struct termios tty;
 
+  unsigned int dialnumber; // the current number to dial
+
 };
 
 

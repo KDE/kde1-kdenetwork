@@ -143,7 +143,6 @@ void Accounting::timerEvent(QTimerEvent *t) {
   
 }
 
-
 QString timet2qstring(time_t t) {
   QString s;
 
@@ -172,6 +171,7 @@ void Accounting::slotStart() {
     s += rules.currencySymbol();
 
     logMessage(s, TRUE);
+
   }
 }
 

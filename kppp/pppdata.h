@@ -32,11 +32,13 @@
 #include <kapp.h>
 #include <qstring.h>
 #include <qmsgbox.h>
+#include <qstrlist.h>
 #include <string.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <stdlib.h>
 #include <pwd.h>
 
 #include "kpppconfig.h"
@@ -147,9 +149,11 @@ public:
   const char* readConfig(const char *, const char *, const char *);
   int readNumConfig(const char *, const char *, int);
   const char* readListConfig(const char *, const char *, int);
+  bool readWholeListConfig(const char *, const char *, QStrList &, char);
   void writeConfig(const char *, const char *, const char *);
   void writeConfig(const char *, const char *, int);
   void writeListConfig(const char *, const char *, int, const char*);
+  void writeWholeListConfig(const char *, const char *, QStrList &, char);
 
   // functions to set/get general xppp info
 
@@ -275,7 +279,8 @@ public:
   const char* accname();
   void setAccname(const char *);
   
-  const char* phonenumber();
+  QStrList &phonenumbers();
+  const char *phonenumber();
   void setPhonenumber(const char *);
 
   const int authMethod();
@@ -371,6 +376,8 @@ private:
   pid_t pppdprocessid;                   // process ID of the child pppd
                                          // daemon
   int pppderror;                         // error encounterd running pppd
+
+  QStrList phonelist;
 
 };
 

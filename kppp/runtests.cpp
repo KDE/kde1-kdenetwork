@@ -106,7 +106,7 @@ int runTests() {
 	  if(s[0] == '#' || s.length() == 0)
 	    continue;
 
-	  if(uidFromName(s.data()) == getuid()) {
+	  if((uid_t)uidFromName(s.data()) == getuid()) {
 	    access = TRUE;
 	    fclose(f);
 	  }

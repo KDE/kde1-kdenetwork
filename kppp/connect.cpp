@@ -86,6 +86,7 @@ ConnectWidget::ConnectWidget(QWidget *parent, const char *name)
   // initialize some important variables
 
   vmain = 0;
+
   expecting = false;
 
   loopnest = 0;
@@ -102,6 +103,8 @@ ConnectWidget::ConnectWidget(QWidget *parent, const char *name)
   modemfd = -1;
   semaphore = false;
   modified_hostname = FALSE;
+
+  dialnumber = 0;
 
   QString tit = klocale->translate("Connecting to: ");
   setCaption(tit);
@@ -200,6 +203,7 @@ void ConnectWidget::init() {
   firstrunID = true;
   firstrunPW = true;
   totalbytes = 0;
+  dialnumber = 0;
 
   p_xppp->con_speed = "";
 
@@ -286,14 +290,17 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
       timeout_timer->stop();
       timeout_timer->start(atoi(gpppdata.modemTimeout())*1000);
 
-      QString bm = klocale->translate("Dialing");;
-      bm += " "; 
-      bm += gpppdata.phonenumber();
+      QString bm = klocale->translate("Dialing");
+      QStrList *plist = &gpppdata.phonenumbers();
+      bm += " ";
+      bm += plist->at(dialnumber);
       messg->setText(bm);
       p_xppp->debugwindow->statusLabel(bm);
 
       QString pn = gpppdata.modemDialStr();
-      pn += gpppdata.phonenumber();
+      pn += plist->at(dialnumber);
+      if(++dialnumber >= plist->count())
+        dialnumber = 0;
       writeline(pn);
       
       setExpect(gpppdata.modemConnectResp());
@@ -1332,7 +1339,7 @@ bool ConnectWidget::execppp() {
   pid_t id;
 
   QString command;
-  const int MAX_CMDLEN = 2024;
+  const unsigned int MAX_CMDLEN = 2024;
   char buf[MAX_CMDLEN];
   char *args[MAX_ARGS];
 
@@ -1626,7 +1633,7 @@ void removedns() {
   if((fd = open("/etc/resolv.conf", O_RDONLY)) >= 0) {
 
     int i=0;
-    while(read(fd, &c, 1) == 1 && i < 30) {
+    while(read(fd, &c, 1) == 1 && i < MAX_RESOLVCONF_LINES) {
       if(c == '\n') {
 	i++;
       }
