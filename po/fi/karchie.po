@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KARCHIE\n"
-"POT-Creation-Date: 1998-11-03 10:19+0100\n"
+"POT-Creation-Date: 1998-12-08 02:14+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Kim Enkovaara <kim.enkovaara@iki.fi>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -154,6 +154,10 @@ msgstr "&Haku"
 msgid "S&ort"
 msgstr "&Järjestys"
 
+#: KASettings.cpp:567
+msgid "Reset"
+msgstr "Alusta"
+
 #: KAStatusBar.cpp:50
 msgid "    0 hits"
 msgstr "    0 osumaa"
@@ -194,10 +198,6 @@ msgstr "Edistyminen: %d"
 #, c-format
 msgid "%d try."
 msgstr "%d yritys."
-
-#: KASettings.cpp:567
-msgid "Reset"
-msgstr "Alusta"
 
 #: KAView.cpp:69
 msgid "Search &Term"

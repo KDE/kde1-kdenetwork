@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 1998-12-07 01:56+0100\n"
+"POT-Creation-Date: 1998-12-08 02:14+0100\n"
 "Content-Type: text/plain; charset=\n"
 "Date: 1998-06-11 22:52:27+0100\n"
 "From: TMS (T. Fejos),,, <tms@rt.dunaferr.hu>\n"
@@ -30,55 +30,63 @@ msgstr "Beállítás"
 msgid "&Save Options"
 msgstr "&Opciók"
 
-#: kfinger.C:39
-msgid "&About kfinger..."
+# kfinger.cpp:221
+#: kfinger.C:37
+#, fuzzy
+msgid ""
+"kfinger 0.8.0\n"
+"\n"
+"(c) Andrea Rizzi (rizzi@kde.org)"
 msgstr ""
+"Kfinger 0.3.2\n"
+"(c) Andrea Rizzi\n"
+"bilibao@ouverture.it"
 
 # kfinger.cpp:6 kfinger.cpp:31
-#: kfinger.C:48
+#: kfinger.C:46
 msgid "KDE finger utility"
 msgstr "KDE finger utility"
 
 # kfinger.cpp:37
-#: kfinger.C:51
+#: kfinger.C:49
 msgid "Finger"
 msgstr "Finger"
 
-#: kfinger.C:52
+#: kfinger.C:50
 msgid "Stop current finger"
 msgstr ""
 
 # kfinger.cpp:39
-#: kfinger.C:54
+#: kfinger.C:52
 msgid "Talk..."
 msgstr "Beszélgetés..."
 
-#: kfinger.C:55
+#: kfinger.C:53
 msgid "AutoFinger On/Off"
 msgstr ""
 
-#: kfinger.C:67
+#: kfinger.C:65
 msgid "Welcome to KDE Finger\n"
 msgstr ""
 
 # kfinger.cpp:57
-#: kfinger.C:68
+#: kfinger.C:66
 msgid "Finger result"
 msgstr "Finger eredmény"
 
 # kfinger.cpp:201
-#: kfinger.C:270
+#: kfinger.C:268
 #, c-format
 msgid "Error on server : %s"
 msgstr "Hiba a szerveren : %s"
 
-#: kfinger.C:289
+#: kfinger.C:287
 #, c-format
 msgid "Finger  %s@%s   --   %s"
 msgstr ""
 
 # kfinger.cpp:221
-#: kfinger.C:306
+#: kfinger.C:304
 #, fuzzy
 msgid ""
 "Kfinger 0.8.0\n"
@@ -90,151 +98,151 @@ msgstr ""
 "bilibao@ouverture.it"
 
 # kfinger.cpp:265
-#: kfinger.C:352
+#: kfinger.C:350
 msgid "Kfinger Setup"
 msgstr "Kfinger telepítõ"
 
 # kfinger.cpp:293 kfinger.cpp:333
-#: kfinger.C:380 kfinger.C:420
+#: kfinger.C:378 kfinger.C:418
 msgid "&Add"
 msgstr "&Add"
 
 # kfinger.cpp:303
-#: kfinger.C:390
+#: kfinger.C:388
 msgid "Server Name"
 msgstr "Szerver Név"
 
 # kfinger.cpp:307 kfinger.cpp:310
-#: kfinger.C:394 kfinger.C:397
+#: kfinger.C:392 kfinger.C:395
 msgid "Server list"
 msgstr "Szerver lista"
 
 # kfinger.cpp:343
-#: kfinger.C:430
+#: kfinger.C:428
 msgid "User Name"
 msgstr "Felhasználó Név"
 
 # kfinger.cpp:347 kfinger.cpp:350
-#: kfinger.C:434 kfinger.C:437
+#: kfinger.C:432 kfinger.C:435
 msgid "Users list"
 msgstr "Felhasználók listája"
 
 # kfinger.cpp:364
-#: kfinger.C:451
+#: kfinger.C:449
 msgid "Timed finger"
 msgstr "Idõzített finger"
 
 # kfinger.cpp:382 kfinger.cpp:557
-#: kfinger.C:466 kfinger.C:653
+#: kfinger.C:464 kfinger.C:651
 #, fuzzy, c-format
 msgid "Finger wait: %d\""
 msgstr "Finger várakozás: %d"
 
-#: kfinger.C:471
+#: kfinger.C:469
 msgid "Talk Command "
 msgstr ""
 
-#: kfinger.C:481
+#: kfinger.C:479
 msgid "Misc"
 msgstr ""
 
 # kfinger.cpp:391 kfinger.cpp:403
-#: kfinger.C:486 kfinger.C:498
+#: kfinger.C:484 kfinger.C:496
 msgid "Finger Output"
 msgstr "Finger Kimenet"
 
 # kfinger.cpp:395
-#: kfinger.C:490
+#: kfinger.C:488
 msgid "Finger server"
 msgstr "Finger szerver"
 
 # kfinger.cpp:399 kfinger.cpp:411
-#: kfinger.C:494 kfinger.C:506
+#: kfinger.C:492 kfinger.C:504
 msgid "Fixed"
 msgstr "Megcsinálva"
 
 # kfinger.cpp:407
-#: kfinger.C:502
+#: kfinger.C:500
 msgid "Finger User"
 msgstr "Finger Felhasználó"
 
 # kfinger.cpp:427
-#: kfinger.C:522
+#: kfinger.C:520
 msgid "Lines to skip :"
 msgstr "Kihagyandó sorok :"
 
 # kfinger.cpp:435 kfinger.cpp:440
-#: kfinger.C:530 kfinger.C:535
+#: kfinger.C:528 kfinger.C:533
 msgid "Format..."
 msgstr "Formázás..."
 
 # kfinger.cpp:447
-#: kfinger.C:542
+#: kfinger.C:540
 msgid "User"
 msgstr "Felhasználó"
 
 # kfinger.cpp:458
-#: kfinger.C:553
+#: kfinger.C:551
 msgid "Server"
 msgstr "Szerver"
 
 # kfinger.cpp:470
-#: kfinger.C:565
+#: kfinger.C:563
 msgid "Talk"
 msgstr "Beszélgetés"
 
 # kfinger.cpp:603
-#: kfinger.C:700
+#: kfinger.C:698
 msgid "Talk with..."
 msgstr "Beszélgetés..."
 
 # kfinger.cpp:670
-#: kfinger.C:767
+#: kfinger.C:765
 msgid "Format string for var1(string)"
 msgstr "Formátum karakterlánc a(z) var1(string) -hez"
 
 # kfinger.cpp:676
-#: kfinger.C:773
+#: kfinger.C:771
 msgid "Fromat string for var2(int)"
 msgstr "Formátum karakterlánc a(z) var1(string) -hez"
 
 # kfinger.cpp:696 kfinger.cpp:702
-#: kfinger.C:793 kfinger.C:799
+#: kfinger.C:791 kfinger.C:797
 msgid "Offset"
 msgstr "Eltolás"
 
 # kfinger.cpp:715
-#: kfinger.C:812
+#: kfinger.C:810
 msgid "Only var1"
 msgstr "Csak var1"
 
 # kfinger.cpp:721
-#: kfinger.C:818
+#: kfinger.C:816
 msgid "Only var2"
 msgstr "Csak var2"
 
 # kfinger.cpp:727
-#: kfinger.C:824
+#: kfinger.C:822
 msgid "var1, var2"
 msgstr "var1, var2"
 
 # kfinger.cpp:733
-#: kfinger.C:830
+#: kfinger.C:828
 msgid "var2, var1"
 msgstr "var2, var1"
 
 # kfinger.cpp:746
-#: kfinger.C:843
+#: kfinger.C:841
 msgid "Output format string"
 msgstr "Kimeneti formátum karalterlánc"
 
 # kfinger.cpp:753
-#: kfinger.C:850
+#: kfinger.C:848
 msgid "Save & Quit"
 msgstr "Ment és Kilép"
 
 # kfinger.cpp:763
-#: kfinger.C:860
+#: kfinger.C:858
 msgid "Output parameters "
 msgstr "Kimeneti paraméterek"
 

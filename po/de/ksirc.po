@@ -1,149 +1,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ksirc \n"
-"POT-Creation-Date: 1998-10-02 00:14+0200\n"
+"POT-Creation-Date: 1998-12-08 02:14+0100\n"
 "PO-Revision-Date: 1998-11-18 00:15+0100\n"
 "Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
 "Translator: Stephan Kulow <coolo@kde.org>\n"
-
-#: toplevel.cpp:134
-msgid "Lag in seconds to the server"
-msgstr "Verzögerung (in sec.) zum Server"
-
-#: toplevel.cpp:138
-msgid "&Ticker Mode"
-msgstr "&Ticker-Modus"
-
-#: toplevel.cpp:160
-msgid "&Cut Window..."
-msgstr "Aus&schneide-Fenster..."
-
-#: toplevel.cpp:291
-msgid "&Users"
-msgstr "Ben&utzer"
-
-#: ksirc.cpp:56
-msgid ""
-"kSirc Alpha releases have an 8 week\n"
-"expiry date.\n"
-"\n"
-"kSirc-ALPHA HAS EXPIRED!!\n"
-"Please upgrade or use a beta release"
-msgstr ""
-"kSirc Alpha-Veröffentlichungen haben eine\n"
-"8 Wochen Verfallsdauer.\n"
-"\n"
-"kSirc-ALPHA ist abgelaufen!!\n"
-"Bitte besorgen Sie eine neuere Version,\n"
-"oder benutzen Sie eine Beta-Version"
-
-#: ksirc.cpp:64
-msgid ""
-"kSirc Alpha release have an 8 week\n"
-"expiry date.\n"
-"\n"
-"THIS VERSION WILL EXPIRE IN UNDER 4 WEEKS"
-msgstr ""
-"kSirc Alpha-Veröffentlichungen haben eine\n"
-"8 Wochen Verfallsdauer.\n"
-"\n"
-"DIESE VERSION WIRD IN WENIGER ALS 4 WOCHEN ABLAUFEN!"
-
-#: open_topData.cpp:39
-msgid "Channel/Nick:"
-msgstr "Kanal/Spitzname:"
-
-#: open_ksircData.cpp:39
-msgid "Server:"
-msgstr "Server:"
-
-#: servercontroller.cpp:118
-msgid "&Dock"
-msgstr "&Andocken"
-
-#: servercontroller.cpp:126 servercontroller.cpp:643
-msgid "&New Server..."
-msgstr "&Neuer Server..."
-
-#: servercontroller.cpp:127
-msgid "&Join Channel..."
-msgstr "&In Kanal einschleusen..."
-
-#: servercontroller.cpp:129
-msgid "&Connections"
-msgstr "&Verbindungen"
-
-#: servercontroller.cpp:145 servercontroller.cpp:634
-msgid "&Colour Preferences..."
-msgstr "&Farb-Einstellungen.."
-
-#: servercontroller.cpp:147 servercontroller.cpp:636
-msgid "&Global Fonts..."
-msgstr "&Allgemeiner Zeichensatz..."
-
-#: servercontroller.cpp:149 servercontroller.cpp:638
-msgid "&Filter Rule Editor..."
-msgstr "&Editor für Filter-Regeln"
-
-#: servercontroller.cpp:152 servercontroller.cpp:640
-msgid "&Preferences..."
-msgstr "&Einstellungen..."
-
-#: servercontroller.cpp:162
-msgid "Help on Colours..."
-msgstr "Hilfe bei Farben..."
-
-#: servercontroller.cpp:164
-msgid "Help on Filters..."
-msgstr "Hilfe bei Filter..."
-
-#: servercontroller.cpp:166
-msgid "Help on Keys..."
-msgstr "Hilfe bei Tasten..."
-
-#: servercontroller.cpp:169
-msgid "About kSirc..."
-msgstr "Über kSirc..."
-
-#: servercontroller.cpp:186
-msgid "Server Control"
-msgstr "Server-Kontrolle"
-
-#: servercontroller.cpp:243 servercontroller.cpp:395
-msgid "Channels"
-msgstr "Kanäle"
-
-#: servercontroller.cpp:243 servercontroller.cpp:395
-msgid "Online"
-msgstr "Online"
-
-#: servercontroller.cpp:589
-msgid "Active Server Connections"
-msgstr "Aktive Server-Verbindungen"
-
-#: servercontroller.cpp:631
-msgid "&Undock"
-msgstr "Nicht An&docken"
-
-#: KSircColourData.cpp:33
-msgid "Generic Text"
-msgstr "Allgemeiner Text"
-
-#: KSircColourData.cpp:62
-msgid "Info"
-msgstr "Info"
-
-#: KSircColourData.cpp:71
-msgid "Chan Messages"
-msgstr "Kanal-Nachrichten"
-
-#: KSircColourData.cpp:80
-msgid "Errors"
-msgstr "Fehler"
-
-#: KSircColourData.cpp:115
-msgid "Background"
-msgstr "Hintergrund"
 
 #: FilterRuleEditorData.cpp:33
 msgid "Description:"
@@ -177,6 +38,26 @@ msgstr "Aufwärts"
 msgid "Down"
 msgstr "Abwärts"
 
+#: KSircColourData.cpp:33
+msgid "Generic Text"
+msgstr "Allgemeiner Text"
+
+#: KSircColourData.cpp:62
+msgid "Info"
+msgstr "Info"
+
+#: KSircColourData.cpp:71
+msgid "Chan Messages"
+msgstr "Kanal-Nachrichten"
+
+#: KSircColourData.cpp:80
+msgid "Errors"
+msgstr "Fehler"
+
+#: KSircColourData.cpp:115
+msgid "Background"
+msgstr "Hintergrund"
+
 #: dccDialogData.cpp:38
 msgid "&Get"
 msgstr "&Holen"
@@ -184,3 +65,267 @@ msgstr "&Holen"
 #: dccDialogData.cpp:46
 msgid "&Forget"
 msgstr "&Vergessen"
+
+#: ksirc.cpp:60
+msgid ""
+"kSirc Alpha releases have an 8 week\n"
+"expiry date.\n"
+"\n"
+"kSirc-ALPHA HAS EXPIRED!!\n"
+"Please upgrade or use a beta release"
+msgstr ""
+"kSirc Alpha-Veröffentlichungen haben eine\n"
+"8 Wochen Verfallsdauer.\n"
+"\n"
+"kSirc-ALPHA ist abgelaufen!!\n"
+"Bitte besorgen Sie eine neuere Version,\n"
+"oder benutzen Sie eine Beta-Version"
+
+#: ksirc.cpp:68
+msgid ""
+"kSirc Alpha release have an 8 week\n"
+"expiry date.\n"
+"\n"
+"THIS VERSION WILL EXPIRE IN UNDER 4 WEEKS"
+msgstr ""
+"kSirc Alpha-Veröffentlichungen haben eine\n"
+"8 Wochen Verfallsdauer.\n"
+"\n"
+"DIESE VERSION WIRD IN WENIGER ALS 4 WOCHEN ABLAUFEN!"
+
+#: open_topData.cpp:39
+msgid "Channel/Nick:"
+msgstr "Kanal/Spitzname:"
+
+#: servercontroller.cpp:160
+msgid "&Dock"
+msgstr "&Andocken"
+
+#: servercontroller.cpp:168 servercontroller.cpp:746
+msgid "&New Server..."
+msgstr "&Neuer Server..."
+
+#: servercontroller.cpp:169
+msgid "&Join Channel..."
+msgstr "&In Kanal einschleusen..."
+
+#: servercontroller.cpp:171
+msgid "&Connections"
+msgstr "&Verbindungen"
+
+#: servercontroller.cpp:188 servercontroller.cpp:735
+msgid "&Colour Preferences..."
+msgstr "&Farb-Einstellungen.."
+
+#: servercontroller.cpp:190 servercontroller.cpp:737
+msgid "&Global Fonts..."
+msgstr "&Allgemeiner Zeichensatz..."
+
+#: servercontroller.cpp:192 servercontroller.cpp:739
+msgid "&Filter Rule Editor..."
+msgstr "&Editor für Filter-Regeln"
+
+#: servercontroller.cpp:194 servercontroller.cpp:741
+#, fuzzy
+msgid "&Web Server Configuration..."
+msgstr "Aktive Server-Verbindungen"
+
+#: servercontroller.cpp:197 servercontroller.cpp:743
+msgid "&Preferences..."
+msgstr "&Einstellungen..."
+
+#: servercontroller.cpp:207
+msgid "Help on Colours..."
+msgstr "Hilfe bei Farben..."
+
+#: servercontroller.cpp:209
+msgid "Help on Filters..."
+msgstr "Hilfe bei Filter..."
+
+#: servercontroller.cpp:211
+msgid "Help on Keys..."
+msgstr "Hilfe bei Tasten..."
+
+#: servercontroller.cpp:214
+msgid "About kSirc..."
+msgstr "Über kSirc..."
+
+#: servercontroller.cpp:231
+msgid "Server Control"
+msgstr "Server-Kontrolle"
+
+#: servercontroller.cpp:290 servercontroller.cpp:454
+msgid "Channels"
+msgstr "Kanäle"
+
+#: servercontroller.cpp:290 servercontroller.cpp:454
+msgid "Online"
+msgstr "Online"
+
+#: servercontroller.cpp:691
+msgid "Active Server Connections"
+msgstr "Aktive Server-Verbindungen"
+
+#: servercontroller.cpp:732
+msgid "&Undock"
+msgstr "Nicht An&docken"
+
+#: toplevel.cpp:140
+msgid "Lag in seconds to the server"
+msgstr "Verzögerung (in sec.) zum Server"
+
+#: toplevel.cpp:144
+msgid "&Ticker Mode"
+msgstr "&Ticker-Modus"
+
+#: toplevel.cpp:166
+msgid "&Cut Window..."
+msgstr "Aus&schneide-Fenster..."
+
+#: toplevel.cpp:297
+msgid "&Users"
+msgstr "Ben&utzer"
+
+#: welcomeWinData.cpp:35
+msgid "Show Again"
+msgstr ""
+
+#: welcomeWinData.cpp:44
+msgid "Dissmiss"
+msgstr ""
+
+#: KSColourPicker/kscolourpickerData.cpp:30
+msgid "Pick"
+msgstr ""
+
+#: KSColourPicker/kscolourpickerData.cpp:46
+msgid "Sample Colour"
+msgstr ""
+
+#: KSCutDialog/KSCutDialogData.cpp:39
+msgid "Cop&y"
+msgstr ""
+
+#: KSOpenkSirc/open_ksircData.cpp:37
+#, fuzzy
+msgid "&Connect"
+msgstr "&Verbindungen"
+
+#: KSOpenkSirc/open_ksircData.cpp:54
+msgid "&Edit Servers"
+msgstr ""
+
+#: KSOpenkSirc/open_ksircData.cpp:86
+msgid "Group:"
+msgstr ""
+
+#: KSOpenkSirc/open_ksircData.cpp:103
+#, fuzzy
+msgid "Server/Quick Connect to:"
+msgstr "Server-Kontrolle"
+
+#: KSOpenkSirc/open_ksircData.cpp:120
+msgid "Port:"
+msgstr ""
+
+#: KSOpenkSirc/open_ksircData.cpp:147
+#, fuzzy
+msgid "Server Desc:"
+msgstr "Server:"
+
+#: KSPrefs/UserMenuRefData.cpp:61
+msgid "Menu Name"
+msgstr ""
+
+#: KSPrefs/UserMenuRefData.cpp:70
+msgid "Type"
+msgstr ""
+
+#: KSPrefs/UserMenuRefData.cpp:79
+msgid "Command"
+msgstr ""
+
+#: KSPrefs/UserMenuRefData.cpp:87
+msgid "OP Only"
+msgstr ""
+
+#: KSPrefs/UserMenuRefData.cpp:135
+#, fuzzy
+msgid "Modify"
+msgstr "&Verändern"
+
+#: KSPrefs/generalData.cpp:49
+msgid "Auto Create Windows"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:58
+msgid "Beep on Notify"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:67
+msgid "Nick Completion"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:76
+msgid "Colour Picker Popup"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:85
+msgid "Auto Rejoin"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:94
+msgid "Enable Background Pixmap"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:111
+msgid "Browse"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:119
+msgid "Display Topic in Caption"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:128
+msgid "Use MDI Mode (Must restart to take effect, experimental!!)"
+msgstr ""
+
+#: KSPrefs/ksprefs.cpp:9
+#, fuzzy
+msgid "kSirc Prefrences"
+msgstr "&Einstellungen..."
+
+#: KSPrefs/ksprefs.cpp:22
+msgid "&General"
+msgstr ""
+
+#: KSPrefs/ksprefs.cpp:23
+msgid "&StartUp"
+msgstr ""
+
+#: KSPrefs/ksprefs.cpp:24
+#, fuzzy
+msgid "Servers/&Channels"
+msgstr "Kanäle"
+
+#: KSPrefs/ksprefs.cpp:25
+#, fuzzy
+msgid "&User Menu"
+msgstr "Ben&utzer"
+
+#: KSPrefs/ksprefs.cpp:26
+msgid "&Default Filters"
+msgstr ""
+
+#: KSTicker/speeddialogData.cpp:79
+msgid "Tick Interval"
+msgstr ""
+
+#: KSTicker/speeddialogData.cpp:88
+msgid "Step Size"
+msgstr ""
+
+#: puke/kdynlib.cpp:70
+#, c-format
+msgid "No such file \"%s\"!"
+msgstr ""

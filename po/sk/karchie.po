@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: karchie\n"
-"POT-Creation-Date: 1998-11-03 10:19+0100\n"
+"POT-Creation-Date: 1998-12-08 02:14+0100\n"
 "Last-Translator: Juraj Bednar <bednar@isternet.sk>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -152,6 +152,10 @@ msgstr "&Otázka"
 msgid "S&ort"
 msgstr "T&riedenie"
 
+#: KASettings.cpp:567
+msgid "Reset"
+msgstr "Reset"
+
 #: KAStatusBar.cpp:50
 msgid "    0 hits"
 msgstr " 0 nájdených"
@@ -192,10 +196,6 @@ msgstr "Postup: %d"
 #, c-format
 msgid "%d try."
 msgstr "%d pokus."
-
-#: KASettings.cpp:567
-msgid "Reset"
-msgstr "Reset"
 
 #: KAView.cpp:69
 msgid "Search &Term"

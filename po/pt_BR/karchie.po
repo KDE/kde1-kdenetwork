@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-11-03 10:19+0100\n"
+"POT-Creation-Date: 1998-12-08 02:14+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Elvis Pfützenreuter <epx@netville.com.br>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -153,6 +153,10 @@ msgstr "Cons&ulta"
 msgid "S&ort"
 msgstr "C&lassificar"
 
+#: KASettings.cpp:567
+msgid "Reset"
+msgstr "Reiniciar"
+
 #: KAStatusBar.cpp:50
 msgid "    0 hits"
 msgstr "    0 items"
@@ -193,10 +197,6 @@ msgstr "Progresso: %d"
 #, c-format
 msgid "%d try."
 msgstr "%d tentativas."
-
-#: KASettings.cpp:567
-msgid "Reset"
-msgstr "Reiniciar"
 
 #: KAView.cpp:69
 msgid "Search &Term"

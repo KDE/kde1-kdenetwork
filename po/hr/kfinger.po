@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kdenetwork\n"
-"POT-Creation-Date: 1998-12-07 01:56+0100\n"
+"POT-Creation-Date: 1998-12-08 02:14+0100\n"
 "PO-Revision-Date: 1998-10-15 15:00-0500\n"
 "Last-Translator: Vladimir Vuksan <vuksan@veus.hr>\n"
 "Language-Team: Croatian\n"
@@ -33,49 +33,56 @@ msgstr "Postava"
 msgid "&Save Options"
 msgstr "Spremi opcije"
 
-#: kfinger.C:39
-msgid "&About kfinger..."
+#: kfinger.C:37
+#, fuzzy
+msgid ""
+"kfinger 0.8.0\n"
+"\n"
+"(c) Andrea Rizzi (rizzi@kde.org)"
 msgstr ""
+"Kfinger 0.7.0\n"
+"(c) Andrea Rizzi\n"
+"bilibao@ouverture.it"
 
-#: kfinger.C:48
+#: kfinger.C:46
 msgid "KDE finger utility"
 msgstr "KDE finger korisnièki program"
 
-#: kfinger.C:51
+#: kfinger.C:49
 msgid "Finger"
 msgstr "Finger"
 
-#: kfinger.C:52
+#: kfinger.C:50
 msgid "Stop current finger"
 msgstr ""
 
-#: kfinger.C:54
+#: kfinger.C:52
 msgid "Talk..."
 msgstr "Razgovaraj..."
 
-#: kfinger.C:55
+#: kfinger.C:53
 msgid "AutoFinger On/Off"
 msgstr "Uklj./isklj. AutoFinger"
 
-#: kfinger.C:67
+#: kfinger.C:65
 msgid "Welcome to KDE Finger\n"
 msgstr ""
 
-#: kfinger.C:68
+#: kfinger.C:66
 msgid "Finger result"
 msgstr "Rezultat fingera"
 
-#: kfinger.C:270
+#: kfinger.C:268
 #, c-format
 msgid "Error on server : %s"
 msgstr "Gre¹ka na poslu¾itelju : %s"
 
-#: kfinger.C:289
+#: kfinger.C:287
 #, c-format
 msgid "Finger  %s@%s   --   %s"
 msgstr ""
 
-#: kfinger.C:306
+#: kfinger.C:304
 #, fuzzy
 msgid ""
 "Kfinger 0.8.0\n"
@@ -86,124 +93,124 @@ msgstr ""
 "(c) Andrea Rizzi\n"
 "bilibao@ouverture.it"
 
-#: kfinger.C:352
+#: kfinger.C:350
 msgid "Kfinger Setup"
 msgstr "Kfinger postava"
 
-#: kfinger.C:380 kfinger.C:420
+#: kfinger.C:378 kfinger.C:418
 msgid "&Add"
 msgstr "&Dodaj"
 
-#: kfinger.C:390
+#: kfinger.C:388
 msgid "Server Name"
 msgstr "Ime poslu¾itelja"
 
-#: kfinger.C:394 kfinger.C:397
+#: kfinger.C:392 kfinger.C:395
 msgid "Server list"
 msgstr "Popis poslu¾itelja"
 
-#: kfinger.C:430
+#: kfinger.C:428
 msgid "User Name"
 msgstr "Korisnièko ime"
 
-#: kfinger.C:434 kfinger.C:437
+#: kfinger.C:432 kfinger.C:435
 msgid "Users list"
 msgstr "Popis korisnika"
 
-#: kfinger.C:451
+#: kfinger.C:449
 msgid "Timed finger"
 msgstr "Mjereni finger"
 
-#: kfinger.C:466 kfinger.C:653
+#: kfinger.C:464 kfinger.C:651
 #, c-format
 msgid "Finger wait: %d\""
 msgstr "Finger èekanje: %d"
 
-#: kfinger.C:471
+#: kfinger.C:469
 msgid "Talk Command "
 msgstr "Naredba za razgovor"
 
-#: kfinger.C:481
+#: kfinger.C:479
 msgid "Misc"
 msgstr "Razno"
 
-#: kfinger.C:486 kfinger.C:498
+#: kfinger.C:484 kfinger.C:496
 msgid "Finger Output"
 msgstr "Rezultat Fingera"
 
-#: kfinger.C:490
+#: kfinger.C:488
 msgid "Finger server"
 msgstr "Finger poslu¾itelj"
 
-#: kfinger.C:494 kfinger.C:506
+#: kfinger.C:492 kfinger.C:504
 msgid "Fixed"
 msgstr "Jednoliki"
 
-#: kfinger.C:502
+#: kfinger.C:500
 msgid "Finger User"
 msgstr "Finger korisnik"
 
-#: kfinger.C:522
+#: kfinger.C:520
 msgid "Lines to skip :"
 msgstr "Linije koje treba prekoèiti :"
 
-#: kfinger.C:530 kfinger.C:535
+#: kfinger.C:528 kfinger.C:533
 msgid "Format..."
 msgstr "Format..."
 
-#: kfinger.C:542
+#: kfinger.C:540
 msgid "User"
 msgstr "Korisnik"
 
-#: kfinger.C:553
+#: kfinger.C:551
 msgid "Server"
 msgstr "Poslu¾itelj"
 
-#: kfinger.C:565
+#: kfinger.C:563
 msgid "Talk"
 msgstr "Razgovaraj"
 
-#: kfinger.C:700
+#: kfinger.C:698
 msgid "Talk with..."
 msgstr "Razgovaraj sa..."
 
-#: kfinger.C:767
+#: kfinger.C:765
 msgid "Format string for var1(string)"
 msgstr "Oblikuj niz za var1(niz)"
 
-#: kfinger.C:773
+#: kfinger.C:771
 msgid "Fromat string for var2(int)"
 msgstr "Oblikuj niz za var2(niz)"
 
-#: kfinger.C:793 kfinger.C:799
+#: kfinger.C:791 kfinger.C:797
 msgid "Offset"
 msgstr "Pomak"
 
-#: kfinger.C:812
+#: kfinger.C:810
 msgid "Only var1"
 msgstr "Samo var1"
 
-#: kfinger.C:818
+#: kfinger.C:816
 msgid "Only var2"
 msgstr "Samo var2"
 
-#: kfinger.C:824
+#: kfinger.C:822
 msgid "var1, var2"
 msgstr "var1, var2"
 
-#: kfinger.C:830
+#: kfinger.C:828
 msgid "var2, var1"
 msgstr "var2, var1"
 
-#: kfinger.C:843
+#: kfinger.C:841
 msgid "Output format string"
 msgstr "Oblik izlaznog niza"
 
-#: kfinger.C:850
+#: kfinger.C:848
 msgid "Save & Quit"
 msgstr "Spremi & Zavr¹i"
 
-#: kfinger.C:860
+#: kfinger.C:858
 msgid "Output parameters "
 msgstr "Izlazni parametri "
 

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-11-03 10:19+0100\n"
+"POT-Creation-Date: 1998-12-08 02:14+0100\n"
 "PO-Revision-Date: 1998-10-28 20:20+0100\n"
 "Last-Translator: Karl Backström <backstrom@kde.org>\n"
 "Language-Team: Sv <LL@li.org>\n"
@@ -159,6 +159,10 @@ msgstr "&Fråga"
 msgid "S&ort"
 msgstr "S&ortera"
 
+#: KASettings.cpp:567
+msgid "Reset"
+msgstr "Reset"
+
 #: KAStatusBar.cpp:50
 msgid "    0 hits"
 msgstr "    0 hits"
@@ -199,10 +203,6 @@ msgstr ""
 #, c-format
 msgid "%d try."
 msgstr ""
-
-#: KASettings.cpp:567
-msgid "Reset"
-msgstr "Reset"
 
 #: KAView.cpp:69
 msgid "Search &Term"

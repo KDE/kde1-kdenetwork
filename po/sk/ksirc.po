@@ -5,149 +5,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ksirc\n"
-"POT-Creation-Date: 1998-10-02 00:14+0200\n"
+"POT-Creation-Date: 1998-12-08 02:14+0100\n"
 "Last-Translator: Juraj Bednar <bednar@isternet.sk>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: toplevel.cpp:134
-msgid "Lag in seconds to the server"
-msgstr "Lag v sekundách k serveru"
-
-#: toplevel.cpp:138
-msgid "&Ticker Mode"
-msgstr "&Pásový mód"
-
-#: toplevel.cpp:160
-msgid "&Cut Window..."
-msgstr "&Vystihnú» okno..."
-
-#: toplevel.cpp:291
-msgid "&Users"
-msgstr "&U¾ívatelia"
-
-#: ksirc.cpp:56
-msgid ""
-"kSirc Alpha releases have an 8 week\n"
-"expiry date.\n"
-"\n"
-"kSirc-ALPHA HAS EXPIRED!!\n"
-"Please upgrade or use a beta release"
-msgstr ""
-"kSirc alfa verzia expirujú ka¾dých\n"
-"8 tý¾dòov.\n"
-"\n"
-"kSirc-ALPHA EXPIROVALA!!\n"
-"Prosím upgradnite alebo pou¾ívajte beta verziu"
-
-#: ksirc.cpp:64
-msgid ""
-"kSirc Alpha release have an 8 week\n"
-"expiry date.\n"
-"\n"
-"THIS VERSION WILL EXPIRE IN UNDER 4 WEEKS"
-msgstr ""
-"kSirc alfa verzie expirujú ka¾dých 8\n"
-"tý¾dòov.\n"
-"TÁTO VERZIA EXPIRUJE O 4 TÝ®DNE !!!"
-
-#: open_topData.cpp:39
-msgid "Channel/Nick:"
-msgstr "Kanál/Nick:"
-
-#: open_ksircData.cpp:39
-msgid "Server:"
-msgstr "Server:"
-
-#: servercontroller.cpp:118
-msgid "&Dock"
-msgstr "&Do panelu"
-
-#: servercontroller.cpp:126 servercontroller.cpp:643
-msgid "&New Server..."
-msgstr "&Nový server..."
-
-#: servercontroller.cpp:127
-msgid "&Join Channel..."
-msgstr "&Pripoji» sa ku kanálu..."
-
-#: servercontroller.cpp:129
-msgid "&Connections"
-msgstr "&Spojenia"
-
-#: servercontroller.cpp:145 servercontroller.cpp:634
-msgid "&Colour Preferences..."
-msgstr "&Nastavenie farieb..."
-
-#: servercontroller.cpp:147 servercontroller.cpp:636
-msgid "&Global Fonts..."
-msgstr "Globálne &písma..."
-
-#: servercontroller.cpp:149 servercontroller.cpp:638
-msgid "&Filter Rule Editor..."
-msgstr "Editor &filtrovacích pravidiel..."
-
-#: servercontroller.cpp:152 servercontroller.cpp:640
-msgid "&Preferences..."
-msgstr "&Nastavenie..."
-
-#: servercontroller.cpp:162
-msgid "Help on Colours..."
-msgstr "Pomocník o farbách..."
-
-#: servercontroller.cpp:164
-msgid "Help on Filters..."
-msgstr "Pomocník o filtroch..."
-
-#: servercontroller.cpp:166
-msgid "Help on Keys..."
-msgstr "Pomocník o klávesách..."
-
-#: servercontroller.cpp:169
-msgid "About kSirc..."
-msgstr "Informácie o kSirc..."
-
-#: servercontroller.cpp:186
-msgid "Server Control"
-msgstr "Kontrola servera"
-
-#: servercontroller.cpp:243 servercontroller.cpp:395
-msgid "Channels"
-msgstr "Kanály"
-
-#: servercontroller.cpp:243 servercontroller.cpp:395
-msgid "Online"
-msgstr "Online"
-
-#: servercontroller.cpp:589
-msgid "Active Server Connections"
-msgstr "Aktívne serverovské spojenia"
-
-#: servercontroller.cpp:631
-msgid "&Undock"
-msgstr "&Z panelu"
-
-#: KSircColourData.cpp:33
-msgid "Generic Text"
-msgstr "V¹eobecný text"
-
-#: KSircColourData.cpp:62
-msgid "Info"
-msgstr "Info"
-
-#: KSircColourData.cpp:71
-msgid "Chan Messages"
-msgstr "Správy kanála"
-
-#: KSircColourData.cpp:80
-msgid "Errors"
-msgstr "Chyby"
-
-#: KSircColourData.cpp:115
-msgid "Background"
-msgstr "Pozadie"
 
 #: FilterRuleEditorData.cpp:33
 msgid "Description:"
@@ -181,6 +44,26 @@ msgstr "Hore"
 msgid "Down"
 msgstr "Dole"
 
+#: KSircColourData.cpp:33
+msgid "Generic Text"
+msgstr "V¹eobecný text"
+
+#: KSircColourData.cpp:62
+msgid "Info"
+msgstr "Info"
+
+#: KSircColourData.cpp:71
+msgid "Chan Messages"
+msgstr "Správy kanála"
+
+#: KSircColourData.cpp:80
+msgid "Errors"
+msgstr "Chyby"
+
+#: KSircColourData.cpp:115
+msgid "Background"
+msgstr "Pozadie"
+
 #: dccDialogData.cpp:38
 msgid "&Get"
 msgstr "&Získa»"
@@ -188,3 +71,265 @@ msgstr "&Získa»"
 #: dccDialogData.cpp:46
 msgid "&Forget"
 msgstr "&Necha» tak"
+
+#: ksirc.cpp:60
+msgid ""
+"kSirc Alpha releases have an 8 week\n"
+"expiry date.\n"
+"\n"
+"kSirc-ALPHA HAS EXPIRED!!\n"
+"Please upgrade or use a beta release"
+msgstr ""
+"kSirc alfa verzia expirujú ka¾dých\n"
+"8 tý¾dòov.\n"
+"\n"
+"kSirc-ALPHA EXPIROVALA!!\n"
+"Prosím upgradnite alebo pou¾ívajte beta verziu"
+
+#: ksirc.cpp:68
+msgid ""
+"kSirc Alpha release have an 8 week\n"
+"expiry date.\n"
+"\n"
+"THIS VERSION WILL EXPIRE IN UNDER 4 WEEKS"
+msgstr ""
+"kSirc alfa verzie expirujú ka¾dých 8\n"
+"tý¾dòov.\n"
+"TÁTO VERZIA EXPIRUJE O 4 TÝ®DNE !!!"
+
+#: open_topData.cpp:39
+msgid "Channel/Nick:"
+msgstr "Kanál/Nick:"
+
+#: servercontroller.cpp:160
+msgid "&Dock"
+msgstr "&Do panelu"
+
+#: servercontroller.cpp:168 servercontroller.cpp:746
+msgid "&New Server..."
+msgstr "&Nový server..."
+
+#: servercontroller.cpp:169
+msgid "&Join Channel..."
+msgstr "&Pripoji» sa ku kanálu..."
+
+#: servercontroller.cpp:171
+msgid "&Connections"
+msgstr "&Spojenia"
+
+#: servercontroller.cpp:188 servercontroller.cpp:735
+msgid "&Colour Preferences..."
+msgstr "&Nastavenie farieb..."
+
+#: servercontroller.cpp:190 servercontroller.cpp:737
+msgid "&Global Fonts..."
+msgstr "Globálne &písma..."
+
+#: servercontroller.cpp:192 servercontroller.cpp:739
+msgid "&Filter Rule Editor..."
+msgstr "Editor &filtrovacích pravidiel..."
+
+#: servercontroller.cpp:194 servercontroller.cpp:741
+#, fuzzy
+msgid "&Web Server Configuration..."
+msgstr "Aktívne serverovské spojenia"
+
+#: servercontroller.cpp:197 servercontroller.cpp:743
+msgid "&Preferences..."
+msgstr "&Nastavenie..."
+
+#: servercontroller.cpp:207
+msgid "Help on Colours..."
+msgstr "Pomocník o farbách..."
+
+#: servercontroller.cpp:209
+msgid "Help on Filters..."
+msgstr "Pomocník o filtroch..."
+
+#: servercontroller.cpp:211
+msgid "Help on Keys..."
+msgstr "Pomocník o klávesách..."
+
+#: servercontroller.cpp:214
+msgid "About kSirc..."
+msgstr "Informácie o kSirc..."
+
+#: servercontroller.cpp:231
+msgid "Server Control"
+msgstr "Kontrola servera"
+
+#: servercontroller.cpp:290 servercontroller.cpp:454
+msgid "Channels"
+msgstr "Kanály"
+
+#: servercontroller.cpp:290 servercontroller.cpp:454
+msgid "Online"
+msgstr "Online"
+
+#: servercontroller.cpp:691
+msgid "Active Server Connections"
+msgstr "Aktívne serverovské spojenia"
+
+#: servercontroller.cpp:732
+msgid "&Undock"
+msgstr "&Z panelu"
+
+#: toplevel.cpp:140
+msgid "Lag in seconds to the server"
+msgstr "Lag v sekundách k serveru"
+
+#: toplevel.cpp:144
+msgid "&Ticker Mode"
+msgstr "&Pásový mód"
+
+#: toplevel.cpp:166
+msgid "&Cut Window..."
+msgstr "&Vystihnú» okno..."
+
+#: toplevel.cpp:297
+msgid "&Users"
+msgstr "&U¾ívatelia"
+
+#: welcomeWinData.cpp:35
+msgid "Show Again"
+msgstr ""
+
+#: welcomeWinData.cpp:44
+msgid "Dissmiss"
+msgstr ""
+
+#: KSColourPicker/kscolourpickerData.cpp:30
+msgid "Pick"
+msgstr ""
+
+#: KSColourPicker/kscolourpickerData.cpp:46
+msgid "Sample Colour"
+msgstr ""
+
+#: KSCutDialog/KSCutDialogData.cpp:39
+msgid "Cop&y"
+msgstr ""
+
+#: KSOpenkSirc/open_ksircData.cpp:37
+#, fuzzy
+msgid "&Connect"
+msgstr "&Spojenia"
+
+#: KSOpenkSirc/open_ksircData.cpp:54
+msgid "&Edit Servers"
+msgstr ""
+
+#: KSOpenkSirc/open_ksircData.cpp:86
+msgid "Group:"
+msgstr ""
+
+#: KSOpenkSirc/open_ksircData.cpp:103
+#, fuzzy
+msgid "Server/Quick Connect to:"
+msgstr "Kontrola servera"
+
+#: KSOpenkSirc/open_ksircData.cpp:120
+msgid "Port:"
+msgstr ""
+
+#: KSOpenkSirc/open_ksircData.cpp:147
+#, fuzzy
+msgid "Server Desc:"
+msgstr "Server:"
+
+#: KSPrefs/UserMenuRefData.cpp:61
+msgid "Menu Name"
+msgstr ""
+
+#: KSPrefs/UserMenuRefData.cpp:70
+msgid "Type"
+msgstr ""
+
+#: KSPrefs/UserMenuRefData.cpp:79
+msgid "Command"
+msgstr ""
+
+#: KSPrefs/UserMenuRefData.cpp:87
+msgid "OP Only"
+msgstr ""
+
+#: KSPrefs/UserMenuRefData.cpp:135
+#, fuzzy
+msgid "Modify"
+msgstr "&Zmeni»"
+
+#: KSPrefs/generalData.cpp:49
+msgid "Auto Create Windows"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:58
+msgid "Beep on Notify"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:67
+msgid "Nick Completion"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:76
+msgid "Colour Picker Popup"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:85
+msgid "Auto Rejoin"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:94
+msgid "Enable Background Pixmap"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:111
+msgid "Browse"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:119
+msgid "Display Topic in Caption"
+msgstr ""
+
+#: KSPrefs/generalData.cpp:128
+msgid "Use MDI Mode (Must restart to take effect, experimental!!)"
+msgstr ""
+
+#: KSPrefs/ksprefs.cpp:9
+#, fuzzy
+msgid "kSirc Prefrences"
+msgstr "&Nastavenie..."
+
+#: KSPrefs/ksprefs.cpp:22
+msgid "&General"
+msgstr ""
+
+#: KSPrefs/ksprefs.cpp:23
+msgid "&StartUp"
+msgstr ""
+
+#: KSPrefs/ksprefs.cpp:24
+#, fuzzy
+msgid "Servers/&Channels"
+msgstr "Kanály"
+
+#: KSPrefs/ksprefs.cpp:25
+#, fuzzy
+msgid "&User Menu"
+msgstr "&U¾ívatelia"
+
+#: KSPrefs/ksprefs.cpp:26
+msgid "&Default Filters"
+msgstr ""
+
+#: KSTicker/speeddialogData.cpp:79
+msgid "Tick Interval"
+msgstr ""
+
+#: KSTicker/speeddialogData.cpp:88
+msgid "Step Size"
+msgstr ""
+
+#: puke/kdynlib.cpp:70
+#, c-format
+msgid "No such file \"%s\"!"
+msgstr ""

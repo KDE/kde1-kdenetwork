@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: karchie\n"
-"POT-Creation-Date: 1998-11-03 10:19+0100\n"
+"POT-Creation-Date: 1998-12-08 02:14+0100\n"
 "PO-Revision-Date: 1998-11-05 09:04+01:00\n"
 "Last-Translator: Miroslav Flídr <flidr@kky.zcu.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -153,6 +153,10 @@ msgstr "&Dotaz"
 msgid "S&ort"
 msgstr "&Tøídìní"
 
+#: KASettings.cpp:567
+msgid "Reset"
+msgstr "Obnovit"
+
 #: KAStatusBar.cpp:50
 msgid "    0 hits"
 msgstr "    0 nalezených"
@@ -193,10 +197,6 @@ msgstr "Vývoj: %d"
 #, c-format
 msgid "%d try."
 msgstr "%d pokus."
-
-#: KASettings.cpp:567
-msgid "Reset"
-msgstr "Obnovit"
 
 #: KAView.cpp:69
 msgid "Search &Term"

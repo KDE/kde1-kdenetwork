@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: karchie 1.1.2\n"
-"POT-Creation-Date: 1998-11-03 10:19+0100\n"
+"POT-Creation-Date: 1998-12-08 02:14+0100\n"
 "PO-Revision-Date: 1998-11-15 13:51+0100\n"
 "Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
 "Language-Team: deutsch <de@li.org>\n"
@@ -154,6 +154,10 @@ msgstr "&Suche"
 msgid "S&ort"
 msgstr "S&ortieren"
 
+#: KASettings.cpp:567
+msgid "Reset"
+msgstr "Rücksetzen"
+
 #: KAStatusBar.cpp:50
 msgid "    0 hits"
 msgstr "    0 Treffer"
@@ -194,10 +198,6 @@ msgstr "Fortschritt: %d"
 #, c-format
 msgid "%d try."
 msgstr "%d Versuch."
-
-#: KASettings.cpp:567
-msgid "Reset"
-msgstr "Rücksetzen"
 
 #: KAView.cpp:69
 msgid "Search &Term"
