@@ -270,6 +270,7 @@ int Opener::sendFD(int fd, struct ResponseHeader *response) {
   struct { struct cmsghdr cmsg; int fd; } control;
   struct msghdr	msg;
   struct iovec iov;
+  size_t cmsglen;
 
   msg.msg_name = 0L;
   msg.msg_namelen = 0;
@@ -280,13 +281,19 @@ int Opener::sendFD(int fd, struct ResponseHeader *response) {
   iov.iov_base = IOV_BASE_CAST response;
   iov.iov_len = sizeof(struct ResponseHeader);
 
-  // Send a (duplicate of) the file descriptor
-  control.cmsg.cmsg_len = sizeof(struct cmsghdr) + sizeof(int);
+#ifdef CMSG_LEN
+  cmsglen = CMSG_LEN(sizeof(int));
+#else
+  cmsglen = sizeof(struct cmsghdr) + sizeof(int);
+#endif
+
+  // Send the file descriptor
+  control.cmsg.cmsg_len = cmsglen;
   control.cmsg.cmsg_level = SOL_SOCKET;
   control.cmsg.cmsg_type = MY_SCM_RIGHTS;
 
   msg.msg_control = (char *) &control;
-  msg.msg_controllen = control.cmsg.cmsg_len;
+  msg.msg_controllen = cmsglen;
 
 #ifdef CMSG_DATA
   *((int *)CMSG_DATA(&control.cmsg)) = fd;
@@ -353,7 +360,7 @@ bool Opener::createAuthFile(int authMethod, char *username, char *password) {
   // if you modify this RE you have to adapt regexp's size above
   sprintf(regexp, "^[ \t]*%s[ \t]\\|^[ \t]*[\"\']%s[\"\']",
           username,username);
-  assert(regcomp(&preg, regexp, 0) == 0);
+  assert(regcomp(&preg, regexp, REG_NOSUB) == 0);
 
   // copy to new file pap- or chap-secrets
   int old_umask = umask(0077);
@@ -366,6 +373,9 @@ bool Opener::createAuthFile(int authMethod, char *username, char *password) {
         if(regexec(&preg, line, 0, 0L, 0) == 0)
            continue;
         fputs(line, fout);
+        // in case LF is missing at EOF
+        if(line[strlen(line)-1] != '\n')
+          putc('\n', fout);
       }
       fclose(fin);    
     }

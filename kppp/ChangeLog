@@ -1,3 +1,9 @@
+1999-03-09  Harri Porten  <porten@kde.org>
+
+	* opener.cpp: utilize CMSG_LEN macro if present
+	* opener.cpp: insert LF if missing at end of *-secrets file
+	* opener.cpp: supply REG_NOSUB flag to regcomp
+
 1999-03-05  Harri Porten  <porten@kde.org>
 
 	* requester.cpp: relaxed check for msg_controllen due to alignment
