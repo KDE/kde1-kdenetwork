@@ -60,9 +60,6 @@
 #define MY_DEBUG
 */
 
-// NOTE: Any changes made here will make your current kpppdata file
-//       incompatible with the new kPPP program!
-
 // Define the maximum number of accounts
 #define MAX_ACCOUNTS 10
 
