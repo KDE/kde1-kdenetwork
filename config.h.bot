@@ -12,3 +12,9 @@ const bool true = 1;
 #define true (bool)1;
 #endif
 #endif
+
+#if defined(__FreeBSD__) || defined(__NetBSD__) || defined(__OpenBSD)
+#       undef __BSD__
+#       define __BSD__ 1 /* needed so that #elif __BSD__ will work with gcc */
+#endif
+
