@@ -91,5 +91,5 @@ private:
 
 };
 
-#endif KSTICKER_H
+#endif // KSTICKER_H
 
