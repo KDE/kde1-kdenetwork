@@ -311,8 +311,8 @@ void KMComposeView::slotRemoveAttachment()
     
     if(attachmentListBox->count() == 0) // Hide ListBox if it was 
     {attachmentListBox->hide(); // the last item in the list
-        grid->setRowStretch(3,100);
-    grid->setRowStretch(9,0);
+        grid->setRowStretch(4,100);
+    grid->setRowStretch(10,0);
     resize(this->size());
     }
 }
