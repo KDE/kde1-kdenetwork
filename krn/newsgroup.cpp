@@ -452,20 +452,20 @@ void collectChildren(ArticleList *parentThread,QList<ArticleList> *children)
         if (it.current()->isEmpty())
             //thread has already been adopted
             continue;
-        ArticleList *childThread=it.current();
-        if (isParent(parentThread->first(),childThread->first()))
+//        ArticleList *childThread=it.current();
+        if (isParent(parentThread->first(),it.current()->first()))
         {
             //It's parent's daughter, make it collect its own kids,
-            collectChildren(childThread,children);
+            collectChildren(it.current(),children);
             //and then adopt it
-            QListIterator <Article> it2(*childThread);
+            QListIterator <Article> it2(*it.current());
             it2.toFirst();
             for (;it2.current();++it2)
             {
                 it2.current()->threadDepth++;
                 parentThread->append(it2.current());
             }
-            childThread->clear();
+            it.current()->clear();
         }
     }
 }
