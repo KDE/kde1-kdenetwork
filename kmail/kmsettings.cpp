@@ -387,9 +387,12 @@ void KMSettings::createTabComposer(QWidget *parent)
   box->addWidget(grp);
   grid = new QGridLayout(grp, 7, 3, 20, 4);
 
-  lbl = new QLabel(i18n(
+  QString t = i18n(
         "The following placeholders are supported in the reply phrases:\n"
-	"%D=date, %S=subject, %F=sender, %%=percent sign, %_=space"), grp);
+        "%D=date, %S=subject, %F=sender, %%=percent sign");
+
+  t.append (i18n(", %_=space"));
+  lbl = new QLabel(t.data(), grp);
   lbl->adjustSize();
   lbl->setMinimumSize(100,lbl->size().height());
   grid->setRowStretch(0,10);
