@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1999-02-03 01:59+0100\n"
+"POT-Creation-Date: 1999-02-04 02:05+0100\n"
 "PO-Revision-Date: 1999-01-21 23:54+0100\n"
 "Last-Translator: Sebastià Pla <sastia@redestb.es>\n"
 "Language-Team: CATALAN <LL@li.org>\n"
@@ -183,7 +183,7 @@ msgstr ""
 msgid "Login script has unbalanced loop Start/End"
 msgstr "Guió de connexió amb inici/fi de bucle desaparellat"
 
-#: connect.cpp:92 connect.cpp:190 main.cpp:1059
+#: connect.cpp:92 connect.cpp:190 main.cpp:1060
 msgid "Connecting to: "
 msgstr "S'està connectant amb: "
 
@@ -196,7 +196,7 @@ msgstr "Ho sento, no puc crear el fitxer de bloqueig de mòdem"
 msgid "Looking for Modem ..."
 msgstr "S'està cercant el mòdem ..."
 
-#: connect.cpp:115 debug.cpp:80 main.cpp:1072
+#: connect.cpp:115 debug.cpp:80 main.cpp:1073
 msgid "Log"
 msgstr "Registre"
 
@@ -1100,7 +1100,7 @@ msgstr ""
 "una resposta <i>CONNECT</i> del mòdem. El\n"
 "valor recomanat són 30 segons."
 
-#: general.cpp:466 main.cpp:729
+#: general.cpp:466 main.cpp:730
 msgid "Modem"
 msgstr "Mòdem"
 
@@ -1282,7 +1282,7 @@ msgstr ""
 "kppp no pot crear o llegir de\n"
 "%s."
 
-#: main.cpp:439
+#: main.cpp:440
 #, c-format
 msgid ""
 "kppp has detected a %s file.\n"
@@ -1301,19 +1301,19 @@ msgstr ""
 "Assegureu-vos que no esteu executant un altre kppp,\n"
 "esborreu el fitxer pid i reengegeu kppp."
 
-#: main.cpp:445
+#: main.cpp:446
 msgid "Exit"
 msgstr "Sortida"
 
-#: main.cpp:508
+#: main.cpp:509
 msgid "Connect to: "
 msgstr "Connecta a: "
 
-#: main.cpp:520
+#: main.cpp:521
 msgid "Login ID:"
 msgstr "Identificador:"
 
-#: main.cpp:533
+#: main.cpp:534
 msgid ""
 "Type in the username that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1331,11 +1331,11 @@ msgstr ""
 "<b>Important</b>: la caixa és important aquí:\n"
 "<i>nomusuari</i> no és el mateix que <i>NomUsuari</i>!"
 
-#: main.cpp:542
+#: main.cpp:543
 msgid "Password:"
 msgstr "Contrasenya:"
 
-#: main.cpp:556
+#: main.cpp:557
 msgid ""
 "Type in the password that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1353,11 +1353,11 @@ msgstr ""
 "<b>Important</b>: la caixa és important aquí:\n"
 "<i>despertaferro</i> no és el mateix que <i>DespertaFerro</i>!"
 
-#: main.cpp:570
+#: main.cpp:571
 msgid "Show Log Window"
 msgstr "Mostra la finestra de registre"
 
-#: main.cpp:577
+#: main.cpp:578
 msgid ""
 "This controls whether a log window is shown.\n"
 "A log window shows the communication between\n"
@@ -1375,15 +1375,15 @@ msgstr ""
 "Desactiveu-ho si <i>kppp</i> es connecta normalment\n"
 "sense problemes"
 
-#: main.cpp:600
+#: main.cpp:601
 msgid "Setup"
 msgstr "Valors"
 
-#: main.cpp:616
+#: main.cpp:617
 msgid "Connect"
 msgstr "Connecta"
 
-#: main.cpp:696
+#: main.cpp:697
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -1392,39 +1392,39 @@ msgstr ""
 "No hi és el compte:\n"
 "%s"
 
-#: main.cpp:711
+#: main.cpp:712
 msgid "kppp Configuration"
 msgstr "Configuració kppp"
 
-#: main.cpp:727
+#: main.cpp:728
 msgid "Accounts"
 msgstr "Comptes"
 
-#: main.cpp:728
+#: main.cpp:729
 msgid "Device"
 msgstr "Dispositiu"
 
-#: main.cpp:730
+#: main.cpp:731
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:731
+#: main.cpp:732
 msgid "Graph"
 msgstr "Gràfic"
 
-#: main.cpp:875
+#: main.cpp:876
 msgid "Timeout expired while waiting for the PPP interface to come up!"
 msgstr "Expiració mentre s'esperava que la interfície PPP engegués!"
 
-#: main.cpp:880
+#: main.cpp:881
 msgid "The pppd daemon died unexpectedly!"
 msgstr "El dimoni pppd ha mort inesperadament!"
 
-#: main.cpp:888
+#: main.cpp:889
 msgid "Details..."
 msgstr "Detalls..."
 
-#: main.cpp:920
+#: main.cpp:921
 msgid ""
 "Sorry. kppp's helper process just died.\n"
 "\n"
@@ -1433,7 +1433,7 @@ msgstr ""
 "Ho sento. El procés d'ajuda de kppp s'acaba de morir.\n"
 "Com que una altra execució no tindria sentit, kppp s'aturarà ara mateix."
 
-#: main.cpp:954
+#: main.cpp:955
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1454,7 +1454,7 @@ msgstr ""
 "dimoni PPP.\n"
 " Gràcies"
 
-#: main.cpp:969
+#: main.cpp:970
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1467,7 +1467,7 @@ msgstr ""
 "Assegureu-vos que heu donat permís setuid a kppp i que pppd\n"
 "és executable."
 
-#: main.cpp:984
+#: main.cpp:985
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1488,7 +1488,7 @@ msgstr ""
 "diàleg dels valors.\n"
 " Moltes gràcies"
 
-#: main.cpp:1004
+#: main.cpp:1005
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1498,7 +1498,7 @@ msgstr ""
 "PAP. Per tant heu de donar un\n"
 "nom d'usuari i una contrasenya!"
 
-#: main.cpp:1013
+#: main.cpp:1014
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1507,7 +1507,7 @@ msgstr ""
 "No és pot crear el fitxer \"%s\"\n"
 "d'autenticació PAP"
 
-#: main.cpp:1030
+#: main.cpp:1031
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -1517,7 +1517,7 @@ msgstr ""
 "CHAP. Per tant heu de donar un\n"
 "nom d'usuari i una contrasenya!"
 
-#: main.cpp:1039
+#: main.cpp:1040
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1526,19 +1526,19 @@ msgstr ""
 "No és pot crear el fitxer \"%s\"\n"
 "d'autenticació CHAP"
 
-#: main.cpp:1051
+#: main.cpp:1052
 msgid "You must specify a telephone number!"
 msgstr "Heu d'especificar un número de telèfon!"
 
-#: main.cpp:1138
+#: main.cpp:1139
 msgid "Quit kPPP?"
 msgstr "Surto de kPPP?"
 
-#: main.cpp:1139
+#: main.cpp:1140
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Si sortiu de kPPP tancareu la vostra sessió PPP."
 
-#: main.cpp:1184
+#: main.cpp:1185
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
