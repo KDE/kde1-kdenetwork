@@ -1,0 +1,203 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 1997-12-17 22:54+0100\n"
+"Content-Type: text/plain; charset=\n"
+"Date: 1997-10-28 22:45:13+0100\n"
+"From: Bertrand Leconte,,, <leconteb@arthur>\n"
+"Xgettext-Options: -C -k_\n"
+"Files: knu.cpp CommandDlg.cpp OptionsDlg.cpp ktabctl.cpp PingDlg.cpp "
+"TracerouteDlg.cpp HostDlg.cpp\n"
+
+#: knu.cpp:123 knu.cpp:256
+msgid "&Ping"
+msgstr "&Ping"
+
+#: knu.cpp:132 knu.cpp:261
+msgid "&Traceroute"
+msgstr "&Tracear ruta"
+
+#: knu.cpp:141 knu.cpp:266
+msgid "Host &resolution"
+msgstr "&Resolver Host"
+
+#: knu.cpp:156
+msgid ""
+"There is no command enabled\n"
+"in the configuration file.\n"
+"\n"
+"So I can't do anything...\n"
+msgstr ""
+"No hay ning·n comando habilitado\n"
+"en el fichero de configuraci›n.\n"
+"\n"
+"As­ que no puedo hacer nada...\n"
+
+#: knu.cpp:201
+msgid "&New window"
+msgstr "&Nueva Ventana"
+
+#: knu.cpp:204
+msgid "&Close window"
+msgstr "&Cerrar Ventana"
+
+#: knu.cpp:207
+msgid "&Quit"
+msgstr "&Salir"
+
+#: knu.cpp:212
+msgid "&Copy"
+msgstr "&Copiar"
+
+#: knu.cpp:215
+msgid "Select &all"
+msgstr "Seleccion&ar Todo"
+
+#: knu.cpp:218
+msgid "C&lear output window"
+msgstr "&Limpiar ventana de Salida"
+
+#: knu.cpp:221
+msgid "P&references..."
+msgstr "P&referencias..."
+
+#: knu.cpp:226
+msgid "&Contents"
+msgstr "&Contenidos"
+
+#: knu.cpp:229
+msgid "&About"
+msgstr "&Acerca de"
+
+#: knu.cpp:231
+msgid "About &Qt"
+msgstr "Acerca de &Qt"
+
+#: knu.cpp:235
+msgid "&File"
+msgstr "&Fichero"
+
+#: knu.cpp:236
+msgid "&Edit"
+msgstr "&Editar"
+
+#: OptionsDlg.cpp:97 knu.cpp:238
+msgid "&Help"
+msgstr "A&yuda"
+
+#: knu.cpp:404
+msgid "About..."
+msgstr "Acerca de..."
+
+#: CommandDlg.cpp:121
+msgid "H&ost:"
+msgstr "H&ost:"
+
+#: CommandDlg.cpp:130
+msgid "&Go!"
+msgstr "&Iniciar"
+
+#: CommandDlg.cpp:140
+msgid "&Stop"
+msgstr "&Detener"
+
+#: CommandDlg.cpp:156
+msgid ""
+"This command binary was not found. \n"
+"You can give its path in the Edit->Preferences... menu."
+msgstr ""
+"Este comando no pudo ser encontrado en el sistema. \n"
+"Puede modificarlo en el men· Editar->Preferencias..."
+
+#: CommandDlg.cpp:462
+msgid "Binary"
+msgstr "Programa"
+
+#: CommandDlg.cpp:470
+msgid "Path&name:"
+msgstr "Localizaci›&n"
+
+#: CommandDlg.cpp:479
+msgid "Additional &arguments:"
+msgstr "&Argumentos adicionales"
+
+#: CommandDlg.cpp:484
+msgid "Browse..."
+msgstr ""
+
+#: CommandDlg.cpp:504
+msgid "This command had been disabled in the configuration file."
+msgstr "Este comando ha sido desabilitado en el fichero de configuraci›n."
+
+#: OptionsDlg.cpp:68
+msgid " - configuration"
+msgstr " - configuraci›n"
+
+#: OptionsDlg.cpp:91
+#, fuzzy
+msgid "&OK"
+msgstr "&Aceptar"
+
+#: OptionsDlg.cpp:102
+msgid "&Cancel"
+msgstr "&Cancelar"
+
+#: PingDlg.cpp:87 TracerouteDlg.cpp:88
+msgid "Make host &name resolution"
+msgstr "Resolver &nombre de host"
+
+#: HostDlg.cpp:217 PingDlg.cpp:143 TracerouteDlg.cpp:165
+msgid ""
+"You have a problem if your ~/.kderc/share/config/knurc configuration file.\n"
+"In the ["
+msgstr ""
+"Tiene un problema en su fichero de configuraci›n ~/.kderc/share/config/knurc "
+"\n"
+"En el ["
+
+#: HostDlg.cpp:221 PingDlg.cpp:147 TracerouteDlg.cpp:169
+msgid "] group, I cannotfind a correct \"path=\" entry."
+msgstr "] grupo, No se pudo encontrar una entrada correcta \"path=\"."
+
+#: TracerouteDlg.cpp:105
+msgid "&Maximum number of hops:"
+msgstr "&Mßximo n·mero de saltos:"
+
+#: HostDlg.cpp:98
+msgid "address (A)"
+msgstr "direcci›n (A)"
+
+#: HostDlg.cpp:99
+msgid "name (PTR)"
+msgstr "nombre (PTR)"
+
+#: HostDlg.cpp:100
+msgid "name server (NS)"
+msgstr "servidor de nombres (NS)"
+
+#: HostDlg.cpp:101
+msgid "mail exchanger (MX)"
+msgstr "intecambiador correo (MX)"
+
+#: HostDlg.cpp:102
+msgid "alias (CNAME)"
+msgstr "alias (CNAME)"
+
+#: HostDlg.cpp:103
+msgid "start of authority (SOA)"
+msgstr "inicio de autoridad (SOA)"
+
+#: HostDlg.cpp:104
+msgid "any record (ANY)"
+msgstr "cualquier registro (ANY)"
+
+#: HostDlg.cpp:110
+msgid "Se&arch for:"
+msgstr "Loc&alizar:"
+
+#: HostDlg.cpp:122 HostDlg.cpp:268
+msgid "default server"
+msgstr "Servidor por defecto"
+
+#: HostDlg.cpp:131
+msgid "Ser&ver:"
+msgstr "Ser&vidor:"
