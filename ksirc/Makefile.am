@@ -176,7 +176,7 @@ install-data-local:
 	$(mkinstalldirs) $(APPSDIR)
 	$(INSTALL_DATA) ksirc.kdelnk $(APPSDIR)
 	$(mkinstalldirs) $(kde_datadir)/ksirc
-	$(INSTALL_DATA) dsirc $(bindir)
+	$(INSTALL_SCRIPT) dsirc $(bindir)
 	$(INSTALL_DATA) ksirc.pl $(kde_datadir)/ksirc
 	$(INSTALL_DATA) filters.pl $(kde_datadir)/ksirc
 	$(INSTALL_DATA) sirc.help.gz $(kde_datadir)/ksirc
