@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp 0.9.6\n"
-"POT-Creation-Date: 1998-12-24 02:00+0100\n"
+"POT-Creation-Date: 1998-12-21 02:10+0100\n"
 "PO-Revision-Date: 1998-03-08 10:42 MET\n"
 "Last-Translator: Juraj Bednár <bednar@isternet.sk>\n"
 "Language-Team: Slovak <bednar@isternet.sk>\n"
@@ -13,23 +13,23 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: accounts.cpp:45
+#: accounts.cpp:49
 msgid "Account Setup"
 msgstr "Nastavenie konta"
 
-#: accounts.cpp:64
+#: accounts.cpp:68
 msgid "Edit..."
 msgstr "Upravi»..."
 
-#: accounts.cpp:66
+#: accounts.cpp:70
 msgid "Allows you to modify the selected account"
 msgstr "Dovoµuje vám zmeni» zvolený úèet"
 
-#: accounts.cpp:75
+#: accounts.cpp:80
 msgid "New..."
 msgstr "Nové..."
 
-#: accounts.cpp:79
+#: accounts.cpp:84
 msgid ""
 "Create a new dialup connection\n"
 "to the internet"
@@ -37,7 +37,7 @@ msgstr ""
 "Vytvori» nové dialup pripojenie do\n"
 "internetu"
 
-#: accounts.cpp:87
+#: accounts.cpp:92
 msgid ""
 "Makes a copy of the selected account. All\n"
 "settings of the selected account are copied\n"
@@ -48,7 +48,7 @@ msgstr ""
 "zvoleného úètu sú skopírované do nového\n"
 "úètu. Potom ho mô¾ete zmeni», aby vám vyhovoval."
 
-#: accounts.cpp:97
+#: accounts.cpp:102
 msgid ""
 "Deletes the selected account\n"
 "\n"
@@ -58,11 +58,11 @@ msgstr ""
 "\n"
 "<red><b>Pou¾ívajte opatrne!"
 
-#: accounts.cpp:106
+#: accounts.cpp:111
 msgid "Phone Costs:"
 msgstr "Telefónne náklady"
 
-#: accounts.cpp:118
+#: accounts.cpp:123
 msgid ""
 "This shows the accumulated phone costs\n"
 "for the selected account.\n"
@@ -78,11 +78,11 @@ msgstr ""
 "nezabudnite, ¾e toto <b>NIE JE</b> súèet\n"
 "nákladov za v¹etky úèty!"
 
-#: accounts.cpp:125 conwindow.cpp:54
+#: accounts.cpp:130 conwindow.cpp:54
 msgid "Volume:"
 msgstr "Objem dát:"
 
-#: accounts.cpp:136
+#: accounts.cpp:141
 msgid ""
 "This shows the number of bytes transferred\n"
 "for the selected account (not for all of your\n"
@@ -97,19 +97,19 @@ msgstr ""
 "\n"
 "<link #volaccounting>Viac o úètovaní podµa objemu dát</link>"
 
-#: accounts.cpp:148
+#: accounts.cpp:153
 msgid "Reset Costs"
 msgstr "Vynulova» náklady"
 
-#: accounts.cpp:154
+#: accounts.cpp:159
 msgid "View Logs"
 msgstr "Zobrazi» záznamy"
 
-#: accounts.cpp:219
+#: accounts.cpp:224
 msgid "Reset Total"
 msgstr "Vynulova» celkové náklady"
 
-#: accounts.cpp:220
+#: accounts.cpp:225
 msgid ""
 "Are you sure you want to reset the accumulated\n"
 "telephone costs for the selected account to zero?"
@@ -117,15 +117,15 @@ msgstr ""
 "Naozaj si prajete vynulova» zhroma¾dené\n"
 "telefónne náklady vybraného konta?"
 
-#: accounts.cpp:249 accounts.cpp:270
+#: accounts.cpp:254 accounts.cpp:275
 msgid "Maximum number of accounts reached."
 msgstr "Dosiahnutý maximálny poèet kônt."
 
-#: accounts.cpp:276
+#: accounts.cpp:281
 msgid "No account selected."
 msgstr "Nie je vybrané ¾iadne konto."
 
-#: accounts.cpp:291
+#: accounts.cpp:296
 #, c-format
 msgid ""
 "Are you sure you want to delete\n"
@@ -134,43 +134,43 @@ msgstr ""
 "Ste si istý, ¾e si prajete\n"
 "zmaza» konto \"%s\"?"
 
-#: accounts.cpp:296
+#: accounts.cpp:301
 msgid "Confirm"
 msgstr "Potvrdi»"
 
-#: accounts.cpp:317
+#: accounts.cpp:322
 msgid "New Account"
 msgstr "Nové konto"
 
-#: accounts.cpp:320
+#: accounts.cpp:325
 msgid "Edit Account: "
 msgstr "Úprava konta: "
 
-#: accounts.cpp:338
+#: accounts.cpp:347
 msgid "Dial"
 msgstr "Vytáèanie"
 
-#: accounts.cpp:339
+#: accounts.cpp:348
 msgid "IP"
 msgstr "IP"
 
-#: accounts.cpp:340
+#: accounts.cpp:349
 msgid "DNS"
 msgstr "DNS"
 
-#: accounts.cpp:341
+#: accounts.cpp:350
 msgid "Gateway"
 msgstr "Brána"
 
-#: accounts.cpp:342
+#: accounts.cpp:351
 msgid "Login Script"
 msgstr "Prihlasovací skript"
 
-#: accounts.cpp:343
+#: accounts.cpp:352
 msgid "Accounting"
 msgstr "Úètovanie"
 
-#: accounts.cpp:362
+#: accounts.cpp:371
 msgid ""
 "You must enter an unique\n"
 "account name"
@@ -178,7 +178,7 @@ msgstr ""
 "Musíte zada» jedineèný\n"
 "názov konta"
 
-#: accounts.cpp:367
+#: accounts.cpp:376
 msgid "Login script has unbalanced loop Start/End"
 msgstr "Prihlasovací skript má nevyvá¾ené skoky zaèiatok/koniec"
 
@@ -428,7 +428,7 @@ msgstr "Terminálom"
 msgid "CHAP"
 msgstr "CHAP"
 
-#: edit.cpp:88
+#: edit.cpp:90
 msgid ""
 "Specifies the method used to identify yourself to\n"
 "the PPP server. Most universities still use\n"
@@ -445,11 +445,11 @@ msgstr ""
 "zatiaµèo väè¹ina ISP pou¾íva <b>PAP</b> a/alebo <b>CHAP</b>.\n"
 "Ak si nie ste istý, kontaktujte svojho ISP."
 
-#: edit.cpp:97
+#: edit.cpp:99
 msgid "Store password"
 msgstr "Uklada» heslo"
 
-#: edit.cpp:101
+#: edit.cpp:103
 msgid ""
 "When this is turned on, your ISP password\n"
 "will be saved in <i>kppp</i>'s config file, so\n"
@@ -469,7 +469,7 @@ msgstr ""
 "èíta» len vy. Uistite sa, ¾e nikto nezíska prístup k\n"
 "tomuto súboru !"
 
-#: edit.cpp:110
+#: edit.cpp:112
 msgid ""
 "Execute program\n"
 "upon connect:"
@@ -477,7 +477,7 @@ msgstr ""
 "Vykona» program\n"
 "pri pripojení:"
 
-#: edit.cpp:121
+#: edit.cpp:123
 msgid ""
 "Allows you to run a program <b>after</b> a connection\n"
 "is established. When your program is called, all\n"
@@ -492,7 +492,7 @@ msgstr ""
 "\n"
 "Veµmi u¾itoèné pre s»ahovanie po¹ty a newsov"
 
-#: edit.cpp:129
+#: edit.cpp:131
 msgid ""
 "Execute program\n"
 "before disconnect:"
@@ -500,7 +500,7 @@ msgstr ""
 "Vykona» program\n"
 "pred odpojením:"
 
-#: edit.cpp:141
+#: edit.cpp:143
 msgid ""
 "Allows you to run a program <b>before</b> a connection\n"
 "is closed. The connection will stay open until\n"
@@ -510,7 +510,7 @@ msgstr ""
 "spojenie. Spojenie zostane otvorené a¾ pokým program\n"
 "neskonèí."
 
-#: edit.cpp:145
+#: edit.cpp:147
 msgid ""
 "Execute program\n"
 "upon disconnect:"
@@ -518,29 +518,29 @@ msgstr ""
 "Vykona» program\n"
 "pri odpojení:"
 
-#: edit.cpp:157
+#: edit.cpp:159
 msgid ""
 "Allows you to run a program <b>after</b> a connection\n"
 "has been closed."
 msgstr "Dovoµuje vám spusti» program <b>po</b> ukonèení spojenia."
 
-#: edit.cpp:161
+#: edit.cpp:163
 msgid "Edit pppd arguments:"
 msgstr "Úprava parametrov pppd:"
 
-#: edit.cpp:166
+#: edit.cpp:168
 msgid "Arguments"
 msgstr "Argumenty"
 
-#: edit.cpp:223
+#: edit.cpp:236
 msgid "IP Setup"
 msgstr "Nastavenie IP"
 
-#: edit.cpp:229
+#: edit.cpp:242
 msgid "IP Address:"
 msgstr "IP adresa:"
 
-#: edit.cpp:232
+#: edit.cpp:245
 msgid ""
 "If your computer has a permanent internet\n"
 "address, you must supply your IP address here"
@@ -548,11 +548,11 @@ msgstr ""
 "Ak vá¹ poèítaè má permanentnú internetovú\n"
 "adresu, musíte sem zada» va¹u IP adresu"
 
-#: edit.cpp:237
+#: edit.cpp:250
 msgid "Subnet Mask:"
 msgstr "Maska podsiete:"
 
-#: edit.cpp:240
+#: edit.cpp:253
 msgid ""
 "If your computer has a static Internet address,\n"
 "you must supply a network mask here. In almost\n"
@@ -569,11 +569,11 @@ msgstr ""
 "Ak ste si nie istý, kontaktujte svojho poskytovateµa\n"
 "slu¾ieb Internetu."
 
-#: edit.cpp:254
+#: edit.cpp:267
 msgid "Dynamic IP Address"
 msgstr "Dynamická IP adresa"
 
-#: edit.cpp:256
+#: edit.cpp:269
 msgid ""
 "Select this option when your computer gets an\n"
 "internet address (IP) everytime a\n"
@@ -588,11 +588,11 @@ msgstr ""
 "Takmer ka¾dý poskytovateµ slu¾ieb Internetu\n"
 "pou¾íva túto metódu, tak¾e by mala by» zapnutá."
 
-#: edit.cpp:264
+#: edit.cpp:277
 msgid "Static IP Address"
 msgstr "Statická IP adresa"
 
-#: edit.cpp:268
+#: edit.cpp:281
 msgid ""
 "Select this option when your computer has a\n"
 "fixed internet address (IP). Most computers\n"
@@ -605,11 +605,11 @@ msgstr ""
 "mali zvoli» dynamickú IP adresáciu, iba ak by ste\n"
 "vedeli, èo robíte."
 
-#: edit.cpp:274
+#: edit.cpp:287
 msgid "Auto-configure hostname from this IP"
 msgstr "Automatická konfigurácia mena hostiteµa z tejto IP adresy"
 
-#: edit.cpp:279
+#: edit.cpp:292
 msgid ""
 "Whenever you connect, this reconfigures\n"
 "your hostname to match the IP address you\n"
@@ -629,15 +629,15 @@ msgstr ""
 "\n"
 "Nepovoµujte túto voµbu ak ju naozaj nepotrebujete!"
 
-#: edit.cpp:396
+#: edit.cpp:409
 msgid "DNS Servers"
 msgstr "DNS servery"
 
-#: edit.cpp:411
+#: edit.cpp:424
 msgid "Domain Name:"
 msgstr "Meno domény:"
 
-#: edit.cpp:422
+#: edit.cpp:435
 msgid ""
 "If you enter a domain name here, this domain\n"
 "name is used for your computer while you are\n"
@@ -655,11 +655,11 @@ msgstr ""
 "Ak necháte toto miesto prázdne, nebudú sa v\n"
 "nastavení domény robi» ¾iadne zmeny."
 
-#: edit.cpp:431
+#: edit.cpp:444
 msgid "DNS IP Address:"
 msgstr "IP adresa DNS:"
 
-#: edit.cpp:446
+#: edit.cpp:459
 msgid ""
 "Allows you to specify a new DNS server to be\n"
 "used while you are connected. When the\n"
@@ -676,7 +676,7 @@ msgstr ""
 "Ak chcete prida» DNS server, zadajte IP adresu\n"
 "DNS servera a kliknite na <b>Prida»</b>"
 
-#: edit.cpp:465
+#: edit.cpp:478
 msgid ""
 "Click this button to add the DNS server\n"
 "specified in the field above. The entry\n"
@@ -686,7 +686,7 @@ msgstr ""
 "¹pecifikovaného v kolonke nad tlaèidlom.\n"
 "Polo¾ka sa potom pridá dole do zoznamu."
 
-#: edit.cpp:477
+#: edit.cpp:490
 msgid ""
 "Click this button to remove the selected DNS\n"
 "server entry from the list below"
@@ -694,11 +694,11 @@ msgstr ""
 "Kliknite na toto tlaèidlo pre zmazanie DNS\n"
 "servera zo zoznamu dole."
 
-#: edit.cpp:480
+#: edit.cpp:493
 msgid "DNS Address List:"
 msgstr "Zoznam adries DNS:"
 
-#: edit.cpp:491
+#: edit.cpp:504
 msgid ""
 "This shows all defined DNS servers to use\n"
 "while you are connected. Use the <b>Add</b> and\n"
@@ -709,11 +709,11 @@ msgstr ""
 "tlaèítka <b>Prida»</b> a <b>Zmaza»</b>\n"
 "na zmenu zoznamu."
 
-#: edit.cpp:496
+#: edit.cpp:509
 msgid "Disable existing DNS Servers during Connection"
 msgstr "Vyradi» existujúce DNS servery behom spojenia"
 
-#: edit.cpp:503
+#: edit.cpp:516
 msgid ""
 "When this option is selected, all DNS\n"
 "servers specified in <i>/etc/resolv.conf</i> are\n"
@@ -734,15 +734,15 @@ msgstr ""
 "Väè¹inou nie je dôvod pou¾íva» túto voµbu, ale mô¾e\n"
 "by» u¾itoèná za urèitých podmienok."
 
-#: edit.cpp:572
+#: edit.cpp:585
 msgid "Gateway Setup"
 msgstr "Nastavenie brány"
 
-#: edit.cpp:581
+#: edit.cpp:594
 msgid "Default Gateway"
 msgstr "©tandardná brána"
 
-#: edit.cpp:584
+#: edit.cpp:597
 msgid ""
 "This makes the PPP peer computer (the computer\n"
 "you are connected to with your modem) to act as\n"
@@ -761,11 +761,11 @@ msgstr ""
 "Toto je ¹tandardná vlastnos» väè¹iny ISP, tak¾e by\n"
 "ste mali asi túto voµbu ponecha» zapnutú."
 
-#: edit.cpp:595
+#: edit.cpp:608
 msgid "Static Gateway"
 msgstr "Statická brána"
 
-#: edit.cpp:598
+#: edit.cpp:611
 msgid ""
 "Allows you to specify which computer you want\n"
 "to use as gateway (see <i>Default Gateway</i> above"
@@ -773,7 +773,7 @@ msgstr ""
 "Dovoµuje vám ¹pecifikova», ktorý poèítaè chcete\n"
 "pou¾íva» ako bránu (pozrite <i>©tandardnú bránu</i> hore"
 
-#: edit.cpp:603
+#: edit.cpp:616
 msgid ""
 "Gateway\n"
 "IP Address:"
@@ -781,11 +781,11 @@ msgstr ""
 "IP adresa\n"
 "brány:"
 
-#: edit.cpp:605
+#: edit.cpp:618
 msgid "Assign the Default Route to this Gateway"
 msgstr "Priradi» ¹tandardné smerovanie k tejto bráne"
 
-#: edit.cpp:608
+#: edit.cpp:621
 msgid ""
 "If this option is enabled, all packets not\n"
 "going to the local net are routed through\n"
@@ -798,7 +798,7 @@ msgstr ""
 "\n"
 "Normálne by ste to mali necha» zapnuté."
 
-#: edit.cpp:703
+#: edit.cpp:716
 msgid "Edit Script"
 msgstr "Upravi» skript"
 
@@ -928,7 +928,6 @@ msgid "About kppp"
 msgstr "O kppp"
 
 #: general.cpp:210
-#, fuzzy
 msgid ""
 "\n"
 "A dialer and front-end to pppd\n"
@@ -954,6 +953,7 @@ msgstr ""
 "    Harri Porten <porten@kde.org>\n"
 "    Mario Weilguni <mweilguni@kde.org>\n"
 "\n"
+"Pôvodný autor: Bernd Johannes Wuebben\n"
 "Momentálne spravuje Harri Porten a Mario Weilguni\n"
 "Prosím posielajte v¹etky informácie\n"
 "o chybách aktuálnemu správcovi.\n"
@@ -1051,7 +1051,6 @@ msgstr ""
 "podporuje vy¹¹ie rýchlosti)."
 
 #: general.cpp:375
-#, fuzzy
 msgid ""
 "To prevent other programs from accessing the\n"
 "modem while a connection is established, a\n"
@@ -1065,12 +1064,12 @@ msgid ""
 msgstr ""
 "Aby sme zabránili iným programom pristupova» k\n"
 "modemu, zatiaµèo sa spájame, vytvorí sa súbor, ktorý\n"
-"znamená, ¾e modem sa pou¾íva. Tu si mô¾ete zvoli»\n"
-"prieèinok, kde sa tento súbor vytvorí\n"
+"znamená, ¾e modem sa pou¾íva. Napríklad na Linuxe\n"
+"je to <i>/var/lock/LCK..ttyS1</i>\n"
 "\n"
-"Nemeòte toto nastavenie, ak neviete, èo robíte.\n"
-"Nie je tu ¹tandardná hodnota, lebo veµmi závisí na\n"
-"va¹om operaènom systéme."
+"Tu si mô¾ete zvoli», èi sa skutoène bude zamyka».\n"
+"\n"
+"<b>Implicitne</b>: Zapnuté"
 
 #: general.cpp:386
 msgid "Modem Timeout:"
@@ -1126,6 +1125,12 @@ msgid ""
 "If this does not work for your modem,\n"
 "you must modify the modem volume command"
 msgstr ""
+"Väè¹ina modemov má reproduktor, ktorý robí\n"
+"veµa hluku pri vytáèaní. Tu mô¾ete vypnú»\n"
+"alebo zní¾i» hlasitos» reproduktoru.\n"
+"\n"
+"Ak to nefunguje pre vá¹ modem, musíte zmeni»\n"
+"príkaz modemu pre zmenu hlasitosti."
 
 #: general.cpp:532
 msgid "Modem Asserts CD Line."
@@ -1139,6 +1144,11 @@ msgid ""
 "\n"
 "<b>Default</b>: off"
 msgstr ""
+"Toto kontroluje ako <i>kppp</i> deteguje, ¾e modem\n"
+"neodpovedá. Ak nemáte s týmto problémy, nemodifikujte\n"
+"toto nastavenie.\n"
+"\n"
+"<b>Implicitne</b>: vypnuté"
 
 #: general.cpp:553
 msgid "Modem Commands"
@@ -1149,6 +1159,7 @@ msgid ""
 "Allows you to change the AT command for\n"
 "your modem."
 msgstr ""
+"Dovoµuje zmeni» AT príkaz pre vá¹ modem."
 
 #: general.cpp:558
 msgid "Query Modem"
@@ -1163,6 +1174,12 @@ msgid ""
 "this information.  It can be useful to help\n"
 "you setup the modem"
 msgstr ""
+"Väè¹ina modemov podporuje sadu príkazov ATI\n"
+"na nájdenie autora a verziu vá¹ho modemu.\n"
+"\n"
+"Stlaète toto tlaèítko na zistenie týchto\n"
+"informácií z modemu. Mô¾e to by» u¾itoèné\n"
+"pri nastavovaní."
 
 #: general.cpp:567
 msgid "Terminal"
@@ -1174,30 +1191,33 @@ msgid ""
 "can use this if you want to play around\n"
 "with your modem's AT command set"
 msgstr ""
+"Otvorí vstavaný terminálový program. Mô¾ete\n"
+"to pou¾i», ak sa chcete pohra» s AT príkazmi\n"
+"vá¹ho modemu."
 
 #: general.cpp:633
 msgid "Throughput graph"
-msgstr ""
+msgstr "Graf priepustnosti"
 
 #: general.cpp:642
 msgid "Background color"
-msgstr ""
+msgstr "Farba pozadia"
 
 #: general.cpp:649
 msgid "Text color"
-msgstr ""
+msgstr "Farba textu"
 
 #: general.cpp:656
 msgid "Input bytes color"
-msgstr ""
+msgstr "Farba bajtov vstupu"
 
 #: general.cpp:663
 msgid "Output bytes color"
-msgstr ""
+msgstr "Farba bajtov výstupu"
 
 #: main.cpp:114
 msgid "Recent changes in kppp"
-msgstr ""
+msgstr "Posledné zmeny v kppp"
 
 #: main.cpp:127
 msgid ""
@@ -1212,10 +1232,21 @@ msgid ""
 "\n"
 "To test it, right-click somewhere in this text."
 msgstr ""
+"Od verzie 1.4.8, kppp má novú vlastnos» nazývanú\n"
+"\"Quickhelp\". Je to podobné ako tooltipy, ale\n"
+"mô¾ete si túto mo¾nos» aktivova» kedy chcete.\n"
+"\n"
+"Pre aktiváciu, kliknite na kontrolku (napr.\n"
+"tlaèítko alebo popisok) pravým tlaèítkom my¹i.\n"
+"Ak pomôcka podporuje Quickhelp, zobrazí sa popup\n"
+"menu, ktoré vás nasmeruje ku Quickhelpu.\n"
+"\n"
+"Ak to chcete otestova», kliknite pravým tlaèítkom\n"
+"niekde v tomto texte."
 
 #: main.cpp:139
 msgid "Don't show this hint again"
-msgstr ""
+msgstr "Neukazova» u¾ túto radu"
 
 #: main.cpp:158
 msgid ""
@@ -1223,6 +1254,9 @@ msgid ""
 "This window will stay open until you\n"
 "click a mouse button or a hit a key.\n"
 msgstr ""
+"Toto je príklad <b>QuickHelpu</b>.\n"
+"Toto okno zostane otvorené, pokiaµ\n"
+"nekliknete my¹ou alebo nestlaèíte kláves.\n"
 
 #: main.cpp:329
 #, c-format
@@ -1230,6 +1264,8 @@ msgid ""
 "kppp can't create or read from\n"
 "%s."
 msgstr ""
+"kppp nemô¾e vytvori» alebo èíta» z\n"
+"%s."
 
 #: main.cpp:345
 #, c-format
@@ -1242,6 +1278,13 @@ msgid ""
 "Make sure that you are not running another kppp,\n"
 "delete the pid file, and restart kppp."
 msgstr ""
+"kppp detegol súbor %s.\n"
+"\n"
+"Iná in¹tancia kppp pravdepodobne be¾í s èíslom procesu\n"
+"%d.\n"
+"\n"
+"Overte, ¾e nebe¾í iný kppp, zma¾te pid súbor a re¹tartnite\n"
+"kppp."
 
 #: main.cpp:419
 msgid "Connect to: "
@@ -1261,6 +1304,13 @@ msgid ""
 "<b>Important</b>: case is important here:\n"
 "<i>myusername</i> is not the same as <i>MyUserName</i>!"
 msgstr ""
+"Sem zadajte meno u¾ívateµa, ktoré ste získali\n"
+"od vá¹ho ISP. Toto je hlavne dôle¾ité pre PAP\n"
+"a CHAP. Nemusíte to zadáva», ak pou¾ívate terminálové\n"
+"alebo skriptové overovanie.\n"
+"\n"
+"<b>Dôle¾ité</b>: veµkos» písmen je dôle¾itá:\n"
+"<i>mojemeno</i> nie je to isté ako <i>MojeMeno</i>!"
 
 #: main.cpp:452
 msgid "Password:"
@@ -1276,6 +1326,13 @@ msgid ""
 "<b>Important</b>: case is important here:\n"
 "<i>mypassword</i> is not the same as <i>MyPassword</i>!"
 msgstr ""
+"Sem zadajte va¹e heslo, ktoré ste pravdepodobne získali\n"
+"od vá¹ho ISP. Toto je hlavne dôle¾ité pre PAP\n"
+"a CHAP. Nemusíte to zadáva», ak pou¾ívate terminálové\n"
+"alebo skriptové overovanie.\n"
+"\n"
+"<b>Dôle¾ité</b>: veµkos» písmen je dôle¾itá:\n"
+"<i>mojeheslo</i> nie je to isté ako <i>MojeHeslo</i>!"
 
 #: main.cpp:480
 msgid "Show Log Window"
@@ -1291,6 +1348,13 @@ msgid ""
 "Turn it off if <i>kppp</i> routinely connects without\n"
 "problems"
 msgstr ""
+"Toto kontroluje, èi sa uká¾e logovacie okno.\n"
+"Logovacie okno ukazuje komunikáciu medzi\n"
+"<i>kppp</i> a va¹ím modemom. Toto vám pomô¾e\n"
+"pri hµadaní problémov.\n"
+"\n"
+"Vypnite to ak sa <i>kppp</i> pripája bez akýchkoµvek\n"
+"problémov."
 
 #: main.cpp:510
 msgid "Setup"
@@ -1328,14 +1392,6 @@ msgstr "PPP"
 #: main.cpp:644
 msgid "Graph"
 msgstr "Graf"
-
-#: main.cpp:805
-msgid "Timeout expired while waiting for the PPP interface to come up!"
-msgstr ""
-
-#: main.cpp:810
-msgid "The pppd daemon died unexpectedly!"
-msgstr ""
 
 #: main.cpp:818
 msgid "Details..."
@@ -1576,14 +1632,13 @@ msgstr "©tandardné"
 
 #: pppdata.cpp:109
 msgid ""
-"The application-specific config file could not be\n"
-"opened neither read-write nor read-only.\n"
-"\n"
-"The superuser might have to change its ownership\n"
-"by issuing the following command in your home directory:\n"
-"\n"
-"chown {YourUsername} .kde/share/config/kppprc"
+"The application-specific config file\n"
+"could not be opened neither\n"
+"read-write nor read-only"
 msgstr ""
+"Nemô¾em otvori» konfiguraèný súbor\n"
+"aplikácie a to ani pre zápis ani\n"
+"pre èítanie."
 
 #: modeminfo.cpp:38
 msgid "ATI Query"
@@ -1660,7 +1715,7 @@ msgstr "non-vj"
 #: pppstatdlg.cpp:284
 #, c-format
 msgid "%d kb/s"
-msgstr ""
+msgstr "%d kb/s"
 
 #: pppstatdlg.cpp:431 pppstatdlg.cpp:436
 msgid "unavailable"
@@ -1685,6 +1740,14 @@ msgid ""
 "This program is published under the GNU GPL\n"
 "(GNU General Public License)"
 msgstr ""
+"MiniTerm - Emulátor terminálu pre KPPP\n"
+"\n"
+"(c) 1997 Bernd Johannes Wuebben <wuebben@kde.org>\n"
+"(c) 1998 Harri Porten <porten@kde.org>\n"
+"(c) 1998 Mario Weilguni <mweilguni@kde.org>\n"
+"\n"
+"Tento program je publikovaný pod GNU GPL\n"
+"(GNU General Public License)"
 
 #: miniterm.cpp:61
 msgid "&Modem"
@@ -1803,6 +1866,13 @@ msgid ""
 "or\n"
 "  * install a kernel with PPP support\n"
 msgstr ""
+"Toto jadro nemá podporu PPP (ani vkompilovanú\n"
+"ani cez kernel loader.).\n"
+"\n"
+"Na vyrie¹enie problému:\n"
+"  * kontaktujte vá¹ho správcu systému\n"
+"alebo\n"
+"  * nain¹talujte jadro s podporou PPP\n"
 
 #: runtests.cpp:394
 msgid ""
@@ -1883,7 +1953,7 @@ msgstr ""
 
 #: ppplog.cpp:141
 msgid "You haven't started the PPP software on the peer system."
-msgstr ""
+msgstr "Nespustili ste PPP softvér na druhej strane."
 
 #: ppplog.cpp:144
 msgid "Check that you supplied the correct username and password!"
@@ -1910,6 +1980,8 @@ msgid ""
 "You have passed an invalid option to pppd. See `man pppd' for a complete "
 "list of valid arguments."
 msgstr ""
+"Zadali ste nesprávnu voµbu pre pppd. Pozrite `man pppd' pre podrobný popis "
+"platných parametrov."
 
 #: ppplog.cpp:170
 #, c-format
@@ -1967,31 +2039,3 @@ msgstr "kppp diagnostika (len hádam):"
 #: ppplog.cpp:241
 msgid "Write to file"
 msgstr "Zapísa» do súboru"
-
-#~ msgid ""
-#~ "The application-specific config file\n"
-#~ "could not be opened neither\n"
-#~ "read-write nor read-only"
-#~ msgstr ""
-#~ "Nemô¾em otvori» konfiguraèný súbor\n"
-#~ "aplikácie a to ani pre zápis ani\n"
-#~ "pre èítanie."
-
-#~ msgid ""
-#~ "Do you use /dev/modem ? If so, you should specify the real device instead, "
-#~ "e.g. /dev/ttyS1 (COM2)."
-#~ msgstr ""
-#~ "Pou¾ívate /dev/modem ? Ak je tak, mali by ste namiesto toho ¹pecifikova» "
-#~ "skutoèné zariadenie, napr. /dev/ttyS1 (COM2)."
-
-#~ msgid "Lock File Directory:"
-#~ msgstr "Prieèinok pre uzamykanie:"
-
-#~ msgid "Advanced Security"
-#~ msgstr "Roz¹írená bezpeènos»"
-
-#~ msgid "Allowed users"
-#~ msgstr "Povolení u¾ívatelia"
-
-#~ msgid "Allowed groups"
-#~ msgstr "Povolené skupiny"

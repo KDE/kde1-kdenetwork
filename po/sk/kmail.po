@@ -414,7 +414,7 @@ msgstr "Súbor s podpisom:"
 
 #: kmsettings.cpp:192 kpgp.cpp:821
 msgid "Identity"
-msgstr "&Identita"
+msgstr "Identita"
 
 #: kmsettings.cpp:211
 msgid "Sending Mail"
@@ -803,7 +803,10 @@ msgstr "P&osla» teraz"
 msgid "&Insert File..."
 msgstr "Vlo¾i» &súbor..."
 
-#: kmcomposewin.cpp:447
+#: kmcomposewin.cpp:438
+msgid "Insert My &Public Key"
+msgstr "Vlo¾i» &môj verejný kµúè"
+
 msgid "&New Composer..."
 msgstr "&Nový editor správ..."
 
@@ -892,14 +895,12 @@ msgid "&Attach..."
 msgstr "&Prilo¾i»..."
 
 #: kmcomposewin.cpp:531
-#, fuzzy
 msgid "Attach &Public Key"
-msgstr "Vlo¾i» &môj verejný kµúè"
+msgstr "Prilo¾i» &verejný kµúè"
 
 #: kmcomposewin.cpp:533
-#, fuzzy
 msgid "Attach My &Public Key"
-msgstr "Vlo¾i» &môj verejný kµúè"
+msgstr "Prilo¾i» &môj verejný kµúè"
 
 #: kmcomposewin.cpp:544
 msgid "&Save..."
@@ -971,11 +972,11 @@ msgstr "Vlo¾it súbor"
 
 #: kmcomposewin.cpp:1245
 msgid "my pgp key"
-msgstr ""
+msgstr "moj verejny kluc"
 
 #: kmcomposewin.cpp:1273
 msgid "pgp key"
-msgstr ""
+msgstr "verejny kluc"
 
 #: kmcomposewin.cpp:1294 kmreaderwin.cpp:721
 msgid "View..."
@@ -1596,12 +1597,11 @@ msgstr "Kontrola bezpeènosti PGP"
 
 #: kpgp.cpp:769
 msgid "Please select the public key to insert"
-msgstr ""
+msgstr "Prosím zvoµte si kµúè, ktorý mám vlo¾i»"
 
 #: kpgp.cpp:800
-#, fuzzy
 msgid "Select key"
-msgstr "Vybra» prieèinok"
+msgstr "Vybra» kµúè"
 
 #: kpgp.cpp:827
 msgid "PGP User Identity:"
