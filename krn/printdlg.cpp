@@ -91,6 +91,7 @@ PrintDlg::PrintDlg() :
     
     l->activate();
     
+    b1->setDefault(true);
     QObject::connect (b1,SIGNAL(clicked()),SLOT(save()));
     QObject::connect (b2,SIGNAL(clicked()),SLOT(reject()));
 }

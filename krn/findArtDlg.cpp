@@ -70,6 +70,7 @@ findArtDlg::findArtDlg (QWidget* parent,const char* name):Inherited( parent, nam
     
     expr->setFocus();
     
+    b1->setDefault(true);
     QObject::connect(b1,SIGNAL(clicked()),this,SLOT(find()));
     QObject::connect(b2,SIGNAL(clicked()),this,SLOT(close()));
     QObject::connect(expr,SIGNAL(returnPressed()),this,SLOT(find()));

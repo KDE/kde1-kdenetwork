@@ -88,6 +88,7 @@ aboutDlg::aboutDlg
     
     l->activate();
 
+    b1->setDefault(true);
     connect ((QPushButton *)l->findWidget("logo"),SIGNAL(clicked()),
              b1,SIGNAL(clicked()));
     connect(b1,SIGNAL(clicked()),SLOT(accept()));

@@ -68,6 +68,7 @@ ExpireDlg::ExpireDlg() :
 
     l->activate();
 
+    b1->setDefault(true);
     connect (b1,SIGNAL(clicked()),SLOT(save()));
     connect (b2,SIGNAL(clicked()),SLOT(reject()));
 

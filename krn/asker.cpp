@@ -55,6 +55,7 @@ Asker::Asker
     l->activate();
     resize( 350, 10 );
 
+    b1->setDefault(true);
     QObject::connect (b1,SIGNAL(clicked()),SLOT(accept()));
     QObject::connect (entry,SIGNAL(returnPressed()),SLOT(accept()));
     entry->setFocus();

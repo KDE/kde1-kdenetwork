@@ -52,6 +52,7 @@ decoderDlg::decoderDlg (const char* name ) :Inherited( 0,name,true )
     QPushButton *b2=new QPushButton(klocale->translate("Decode All"),this,"");
     QPushButton *b1=new QPushButton(klocale->translate("Done"),this,"");
 
+    b1->setDefault(true);
     b1->setFixedHeight(30);
     b2->setFixedHeight(30);
     destdir->setFixedHeight(30);

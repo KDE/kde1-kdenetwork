@@ -81,6 +81,7 @@ IdentDlg::IdentDlg
     
     l->addGroup("buttons","",false);
     b1=(QPushButton *)(l->addButton("b1",klocale->translate("OK"))->widget);
+    b1->setDefault(true);
     b2=(QPushButton *)(l->addButton("b2",klocale->translate("Cancel"))->widget);
     l->endGroup();
     

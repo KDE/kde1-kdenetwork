@@ -64,6 +64,7 @@ sortDlg::sortDlg():QDialog(0,0,true)
     QPushButton *b2=(QPushButton *)(l->addButton("b2",klocale->translate("Cancel"))->widget);
     l->endGroup();
 
+    b1->setDefault(true);
     connect (b1,SIGNAL(clicked()),SLOT(save()));
     connect (b2,SIGNAL(clicked()),SLOT(reject()));
 

@@ -144,6 +144,7 @@ rulesDlg::rulesDlg():QDialog(0,0,true)
     QPushButton *b1=(QPushButton *)(l->addButton("b1",klocale->translate("Done"))->widget);
     l->endGroup();
 
+    b1->setDefault(true);
     connect (b1,SIGNAL(clicked()),SLOT(accept()));
 
     l->setAlign("value",AlignRight|AlignLeft);
