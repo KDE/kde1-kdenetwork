@@ -11,6 +11,7 @@
 #include "../kspainter.h"
 
 #include <kwm.h>
+#include <kapp.h>
 
 KSTicker::KSTicker(QWidget * parent, const char * name, WFlags f)  /*FOLD00*/
 : QFrame(parent, name, f)
@@ -21,7 +22,10 @@ KSTicker::KSTicker(QWidget * parent, const char * name, WFlags f)  /*FOLD00*/
   pic = new QPixmap(); // create pic map here, resize it later though.
   //  pic->setBackgroundMode(TransparentMode);
 
-  bScrollConstantly = TRUE;
+  KConfig *conf = kapp->getConfig();
+  conf->setGroup("KSTicker");
+  bScrollConstantly = conf->readNumEntry("ScollConst", TRUE);
+
   bAtEnd = FALSE;
 
   setFont(QFont("fixed"));
@@ -364,6 +368,10 @@ void KSTicker::scrollConstantly() /*FOLD00*/
   popup->setItemChecked(iScrollItem, bScrollConstantly);
   if(bScrollConstantly == TRUE)
     startTicker();
+  KConfig *conf = kapp->getConfig();
+  conf->setGroup("KSTicker");
+  conf->writeEntry("ScollConst", bScrollConstantly);
+  conf->sync();
 }
 
 void KSTicker::updateFont(const QFont &font){ /*fold00*/
