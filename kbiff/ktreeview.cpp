@@ -27,6 +27,7 @@
 #include <ktreeview.h>
 
 #if QT_VERSION < 140
+#include <ktreeview.moc>
 
 #include <qapp.h>			/* used for QApplication::closingDown() */
 #include <qkeycode.h>			/* used for keyboard interface */
