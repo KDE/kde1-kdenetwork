@@ -23,9 +23,8 @@ msgid "Profile:"
 msgstr "Profiili:"
 
 #: setupdlg.cpp:84
-#, fuzzy
 msgid "&New..."
-msgstr "&Ohje..."
+msgstr "&Uusi..."
 
 #: setupdlg.cpp:91
 msgid "&Rename..."
@@ -170,14 +169,14 @@ msgid "KBiff"
 msgstr "KBiff"
 
 #: setupdlg.cpp:1452
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Version %s\n"
 "\n"
 "Copyright (C) 1998\n"
 "Kurt Granroth"
 msgstr ""
-"Versio 1.1\n"
+"Versio %s\n"
 "\n"
 "Copyright (C) 1998\n"
 "Kurt Granroth"
@@ -211,9 +210,8 @@ msgid "&Check mail now"
 msgstr "&Tarkista posti nyt"
 
 #: kbiff.cpp:479
-#, fuzzy
 msgid "&Read Mail now"
-msgstr "&Tarkista posti nyt"
+msgstr "&Lue posti nyt"
 
 #: kbiff.cpp:485
 msgid "&Stop"
@@ -221,14 +219,14 @@ msgstr "&Pysäytä"
 
 #: notify.cpp:28 notify.cpp:45
 msgid "You have new mail!"
-msgstr ""
+msgstr "Sinulla on uutta postia!"
 
 #: notify.cpp:53
 #, c-format
 msgid "New Messages: %d"
-msgstr ""
+msgstr "Uusia viestejä: %d"
 
 #: notify.cpp:58
-#, fuzzy, c-format
+#, c-format
 msgid "Mailbox: %s"
-msgstr "Postilaatikko:"
+msgstr "Postilaatikko: %s"

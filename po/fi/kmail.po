@@ -221,7 +221,7 @@ msgstr "&Tyhjä"
 
 #: kmfilterdlg.cpp:147 kmmainwin.cpp:917
 msgid "New"
-msgstr ""
+msgstr "Uusi"
 
 #: kmmainwin.cpp:918
 msgid "Unread"
@@ -245,16 +245,15 @@ msgstr "Lähetetty"
 
 #: kmmainwin.cpp:926
 msgid "&Next"
-msgstr ""
+msgstr "&Seuraava"
 
 #: kmmainwin.cpp:928
 msgid "Next unread"
 msgstr "Seuraava lukematon"
 
 #: kmmainwin.cpp:930
-#, fuzzy
 msgid "&Previous"
-msgstr "Edellinen lukematon"
+msgstr "&Edellinen"
 
 #: kmmainwin.cpp:932
 msgid "Previous unread"
@@ -583,7 +582,7 @@ msgstr "Sekalaista"
 
 #: kmsettings.cpp:559
 msgid "PGP"
-msgstr ""
+msgstr "PGP"
 
 #: kmsettings.cpp:582
 msgid "Message Body Font"
@@ -1464,9 +1463,8 @@ msgid "The pass phrase is missing."
 msgstr "Salasana puuttuu."
 
 #: kpgp.cpp:286 kpgp.cpp:312 kpgp.cpp:325 kpgp.cpp:344 kpgp.cpp:361
-#, fuzzy
 msgid "PGP Warning"
-msgstr "varoitus"
+msgstr "PGP varoitus"
 
 #: kpgp.cpp:287
 msgid ""
@@ -1474,24 +1472,25 @@ msgid ""
 "recipients of this mail.\n"
 "Message will not be encrypted."
 msgstr ""
+"En löytänyt julkisia avaimia\n"
+"postin vastaanottajille.\n"
+"Viestiä ei salata."
 
 #: kpgp.cpp:296
-#, fuzzy
 msgid "Could not find the public keys for\n"
-msgstr "En löytänyt julkisia avaimia joillekin henkilöille.\n"
+msgstr "En löytänyt julkisia avaimia\n"
 
 #: kpgp.cpp:307
 msgid "These persons will not be able to\n"
-msgstr ""
+msgstr "Nämä henkilöt eivät voi\n"
 
 #: kpgp.cpp:309
 msgid "This person will not be able to\n"
-msgstr ""
+msgstr "Tämä henkilö ei voi\n"
 
 #: kpgp.cpp:311
-#, fuzzy
 msgid "decrypt the message."
-msgstr "salaa viesti"
+msgstr "pura viesti."
 
 #: kpgp.cpp:326
 msgid ""
@@ -1499,26 +1498,33 @@ msgid ""
 "Do you wan't to try again, continue and\n"
 "leave the message unsigned, or cancel sending the message?"
 msgstr ""
+"annoit virheellisen salasanan.\n"
+"Haluatko yrittää uudelleen, jatkaa vai\n"
+"jättää viestin allekirjoittamatta tai perua lähetyksen?"
 
 #: kpgp.cpp:331
 msgid "Retry"
-msgstr ""
+msgstr "Uudelleenyritä"
 
 #: kpgp.cpp:342
 msgid ""
 "Do you wan't to encrypt anyway, leave the\n"
 "message as is, or cancel the message?"
 msgstr ""
+"Haluatko salata kuitenkin, jättää viestin\n"
+"ennalleen tai perua viestin?"
 
 #: kpgp.cpp:346
 msgid "Encrypt"
-msgstr ""
+msgstr "Salaa"
 
 #: kpgp.cpp:359
 msgid ""
 "Do you wan't to leave the message as is,\n"
 "or cancel the message?"
 msgstr ""
+"Haluatko jättää viestin ennalleen vai\n"
+"perua viestin?"
 
 #: kpgp.cpp:711
 msgid ""
@@ -1536,11 +1542,11 @@ msgstr "PGP-Henkilöllisyys:"
 
 #: kpgp.cpp:776
 msgid "Store passphrase"
-msgstr ""
+msgstr "Tallenna salasana"
 
 #: kpgp.cpp:782
 msgid "Always encrypt to self"
-msgstr ""
+msgstr "Salaa aina itselle"
 
 #: kpgpbase.cpp:315
 msgid "Bad pass Phrase; couldn't sign"
@@ -1548,7 +1554,7 @@ msgstr "Väärä salasana; en voi allekirjoittaa"
 
 #: kpgpbase.cpp:354
 msgid "error running pgp"
-msgstr ""
+msgstr "virhe pgp:tä ajettaessa"
 
 #: kpgpbase.cpp:371 kpgpbase.cpp:662
 msgid "Bad pass Phrase; couldn't decrypt"
@@ -1556,36 +1562,38 @@ msgstr "Väärä salasana; en voi purkaa"
 
 #: kpgpbase.cpp:382 kpgpbase.cpp:673
 msgid "Do not have the secret key for this message"
-msgstr ""
+msgstr "Tälle viestille ei ole salaista avainta"
 
 #: kpgpbase.cpp:410
 msgid "unknown key ID "
-msgstr ""
+msgstr "tuntematon avain ID"
 
 #: kpgpbase.cpp:430
 msgid "??? (file ~/.pgp/pubring.pgp not found)"
-msgstr ""
+msgstr "??? (tiedostoa ~/.pgp/pubring.pgp ei löydy)"
 
 #: kpgpbase.cpp:585
-#, fuzzy
 msgid "The passphrase you entered is invalid."
-msgstr "Salasana puuttuu."
+msgstr "Salasana jonka annoit on virheellinen."
 
 #: kpgpbase.cpp:611
 msgid ""
 "The key(s) you wan't to encrypt your message\n"
 "to are not trusted. No encryption done."
 msgstr ""
+"Avaimet joita haluat käyttää salaamiseen\n"
+"eivät ole luotettavia. Viestiä ei salattu."
 
 #: kpgpbase.cpp:614
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The following key(s) are not trusted:\n"
 "%s\n"
 "They will not be able to decrypt the message"
 msgstr ""
-"julkista avainta %s ei löydy.\n"
-"Tämä käyttäjä ei voi purkaa salattuja viestejä."
+"Seuraaviin avaimiin ei luoteta:\n"
+"%s\n"
+"Ne eivät voi purkaa viestiä"
 
 #: kfileio.cpp:26 kmaddrbook.cpp:162
 msgid "File I/O Error"
@@ -1772,23 +1780,3 @@ msgstr "&7-bittinen ASCII"
 msgid "&Qute unknonw characters"
 msgstr "&Koodaa tuntemattomat merkistöt"
 
-#~ msgid "Error during PGP:"
-#~ msgstr "Virhe PGP:n aikana:"
-
-#~ msgid "Message signed by"
-#~ msgstr "Viestin allekirjoittanut"
-
-#~ msgid "Message has a bad signature from"
-#~ msgstr "Viestissä on väärä allekirjoitus"
-
-#~ msgid "End PGP signed message"
-#~ msgstr "Lopeta PGP-allekirjoitettu viesti"
-
-#~ msgid ""
-#~ "Could not find public keys matching the\n"
-#~ "userid(s) %s. These persons won't be able\n"
-#~ "to read the message."
-#~ msgstr ""
-#~ "En löydä julkista avainta joka liittyy\n"
-#~ "käyttäjätunnuskeen %s. Nämä henkilöt eivät voi\n"
-#~ "lukea viestiä."

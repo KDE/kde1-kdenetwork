@@ -24,9 +24,8 @@ msgid "Setup"
 msgstr "Asetukset"
 
 #: kfinger.C:19
-#, fuzzy
 msgid "Save Options"
-msgstr "&Asetukset"
+msgstr "Tallenna asetukset"
 
 #: kfinger.C:38
 msgid "Finger"
@@ -34,7 +33,7 @@ msgstr "Finger"
 
 #: kfinger.C:39
 msgid "Stop current finger"
-msgstr ""
+msgstr "Lopeta tämänhetkinen finger"
 
 #: kfinger.C:41
 msgid "Talk..."
@@ -42,17 +41,16 @@ msgstr "Juttele..."
 
 #: kfinger.C:42
 msgid "AutoFinger On/Off"
-msgstr ""
+msgstr "Automaattinen On/Off"
 
 #: kfinger.C:54
-#, fuzzy
 msgid ""
 "Welcome to KDE Finger \n"
 "program by A.Rizzi rizzi@kde.org\n"
 "18/09/1997 \n"
 msgstr ""
 "Tervetuloa KDE Finger ohjelmaan\n"
-"Tehnyt A.Rizzi bilibao@ouverture.it\n"
+"Tehnyt A.Rizzi rizzi@kde.org\n"
 "18/09/1997 \n"
 
 #: kfinger.C:55
@@ -70,15 +68,14 @@ msgid "Finger result for : %s@%s"
 msgstr "Finger tulos : %s@%s"
 
 #: kfinger.C:301
-#, fuzzy
 msgid ""
 "Kfinger 0.7.0\n"
 "(c) by Andrea Rizzi\n"
 "rizzi@kde.org"
 msgstr ""
-"Kfinger 0.3.2\n"
+"Kfinger 0.7.0\n"
 "(c) Andrea Rizzi\n"
-"bilibao@ouverture.it"
+"rizzi@kde.org"
 
 #: kfinger.C:345
 msgid "Kfinger Setup"
@@ -109,17 +106,17 @@ msgid "Timed finger"
 msgstr "Ajastettu finger"
 
 #: kfinger.C:459 kfinger.C:644
-#, fuzzy, c-format
+#, c-format
 msgid "Finger wait: %d\""
-msgstr "Finger odoita: %d"
+msgstr "Finger odota: %d\""
 
 #: kfinger.C:464
 msgid "Talk Command "
-msgstr ""
+msgstr "Talk komento "
 
 #: kfinger.C:474
 msgid "Misc"
-msgstr ""
+msgstr "Sekalaista"
 
 #: kfinger.C:479 kfinger.C:491
 msgid "Finger Output"
@@ -201,32 +198,3 @@ msgstr "Tallenna & Lopeta"
 msgid "Output parameters "
 msgstr "Tulosteen parametrit"
 
-#~ msgid "Quit"
-#~ msgstr "Lopeta"
-
-#~ msgid "Help"
-#~ msgstr "Ohje"
-
-#~ msgid "About"
-#~ msgstr "Tietoja"
-
-#~ msgid "&File"
-#~ msgstr "&Tiedosto"
-
-#~ msgid "&Help"
-#~ msgstr "&Ohje"
-
-#~ msgid "Settings"
-#~ msgstr "Asetukset"
-
-#~ msgid "&Remove"
-#~ msgstr "&Poista"
-
-#~ msgid "Time"
-#~ msgstr "Aika"
-
-#~ msgid "Cancel"
-#~ msgstr "Peruuta"
-
-#~ msgid "Ok"
-#~ msgstr "Ok"
