@@ -1,0 +1,1231 @@
+# German Language file for Krn - Newsreader for the KDE Desktop Project.
+# Copyright (C) 1997 Oliver Hensel <oliver.hensel@gmx.de>.
+# Published under Terms of LGPL (see LICENSE somewhere in this Package)
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: krn\n"
+"POT-Creation-Date: 1998-01-24 14:25+0100\n"
+"PO-Revision-Date: 1998-01-24 14:20 +0100\n"
+"Last-Translator: Oliver Hensel &l\n"
+
+#: main.cpp:214 main.cpp:226 main.cpp:238 main.cpp:253 main.cpp:265
+msgid "KRN-Missing Configuration info"
+msgstr "Informaþii despre configuraþia KRN-lui lipsesc"
+
+#: main.cpp:215
+msgid "Please enter your email adress"
+msgstr "Vã rugãm sã introduceþi adresa email-lui dvs."
+
+#: main.cpp:227
+msgid "Please enter your real name"
+msgstr "Vã rugãm sã introduceþi numele adevãrat"
+
+#: main.cpp:239
+msgid "Please enter your organization's name"
+msgstr "Vã rugãm sã introduceþi numele organizaþiei"
+
+#: main.cpp:254
+msgid "Please enter your NNTP server name"
+msgstr "Vã rugãm sã introduceþi numele serverului NNTP"
+
+#: main.cpp:266
+msgid "Please enter your SMTP server name"
+msgstr "Vã rugãm sã introduceþi numele serverului SMTP"
+
+#: NNTP.cpp:67
+#, c-format
+msgid "Received %.2f Kb"
+msgstr "%.2f Kb am receptat"
+
+#: groupdlg.cpp:125
+msgid "Connect to Server"
+msgstr "Conecteazã cu serverul"
+
+#: groupdlg.cpp:126
+msgid "Disconnect From Server"
+msgstr "Disconecteazã serverul"
+
+#: groupdlg.cpp:127
+msgid "Get Active File"
+msgstr "Aduce listele de grupe"
+
+#: groupdlg.cpp:129
+msgid "Post Queued Messages"
+msgstr "Trimite articolul la coada de mesaje"
+
+#: groupdlg.cpp:131
+msgid "Exit"
+msgstr "Sfîrºeºte"
+
+#: groupdlg.cpp:134
+msgid "KRN - Group List"
+msgstr "KRN - Lista de grupe"
+
+#: groupdlg.cpp:137 groupdlg.cpp:143
+msgid "Get Subjects"
+msgstr "Aduce subiectele"
+
+#: groupdlg.cpp:138 groupdlg.cpp:144
+msgid "Get Articles"
+msgstr "Aduce articolele"
+
+#: artdlg.cpp:214 groupdlg.cpp:139 groupdlg.cpp:147 groupdlg.cpp:155
+msgid "Catchup"
+msgstr "Toate articolele marchezã ca ºi citite"
+
+#: groupdlg.cpp:145 groupdlg.cpp:153
+msgid "(un)Subscribe"
+msgstr "Aboneazã (da/nu)"
+
+#: artdlg.cpp:112 groupdlg.cpp:146
+msgid "Untag"
+msgstr "ªterge marcajurile"
+
+#: artdlg.cpp:131 groupdlg.cpp:154
+msgid "(Un)Tag"
+msgstr "Marcajurile (da/nu)"
+
+#: artdlg.cpp:124 artdlg.cpp:184 groupdlg.cpp:157 groupdlg.cpp:213
+msgid "Post New Article"
+msgstr "Posteazã un articol nou"
+
+#: groupdlg.cpp:158
+msgid "Post All Queued Articles"
+msgstr "Toate articolele le trimit in coada de mesaje"
+
+#: groupdlg.cpp:160
+msgid "&Subscribed"
+msgstr "&Aboneazã"
+
+#: artdlg.cpp:155 groupdlg.cpp:161
+msgid "&Tagged"
+msgstr "&Marcat"
+
+#: groupdlg.cpp:166
+msgid "Identity..."
+msgstr "Identitatea..."
+
+#: groupdlg.cpp:167
+msgid "NNTP Options..."
+msgstr "Opþiunile NNTP..."
+
+#: groupdlg.cpp:168
+msgid "Expire Options..."
+msgstr "Opþiuni expirate..."
+
+#: groupdlg.cpp:174
+msgid "About Krn..."
+msgstr "Despre Krn..."
+
+#: groupdlg.cpp:180
+msgid "&Newsgroup"
+msgstr "&Newsgroup"
+
+#: groupdlg.cpp:193
+msgid "Connect to server"
+msgstr "Conecteazã cu serverul"
+
+#: groupdlg.cpp:196
+msgid "Disconnect from server"
+msgstr "Disconecteaza serverul"
+
+#: groupdlg.cpp:200
+msgid "Get list of active groups"
+msgstr "Aduce lista de grupe active "
+
+#: groupdlg.cpp:202
+msgid "Find group"
+msgstr "Cautã Newsgroup"
+
+#: groupdlg.cpp:210
+msgid "Check for Unread Articles"
+msgstr "Cautã articole necitite"
+
+#: groupdlg.cpp:297
+msgid "Sorry!"
+msgstr "Scuzi!"
+
+#: groupdlg.cpp:298
+msgid ""
+"That newsgroup is not in the current active file\n"
+" Krn can't handle this gracefully right now"
+msgstr ""
+"Aceastã grupã nu se gãseºte în fiºierul activ curent\n"
+" Krn nu poate momentan sã facã nimic"
+
+#: groupdlg.cpp:325 groupdlg.cpp:506 groupdlg.cpp:837
+msgid "All Newsgroups."
+msgstr "Toate grupele."
+
+#: groupdlg.cpp:400 groupdlg.cpp:494
+msgid "Subscribed Newsgroups."
+msgstr "Aboneazã grupe."
+
+#: groupdlg.cpp:449
+msgid "Disconnected"
+msgstr "Disconecteazã"
+
+#: groupdlg.cpp:456
+msgid "Connecting to server"
+msgstr "Conecteazã cu serverul"
+
+#: groupdlg.cpp:461
+msgid "Connected to server - Posting not allowed"
+msgstr "conectat-postarea este interzisã"
+
+#: groupdlg.cpp:463
+msgid "Connected to server - Posting allowed"
+msgstr "conectat-postarea este permisã"
+
+#: groupdlg.cpp:468
+msgid "Can't connect to server"
+msgstr "Nu pot sã conectez cu serverul"
+
+#: groupdlg.cpp:470
+msgid "Connection to server failed"
+msgstr "Conecþia la server nu funcþioneazã"
+
+#: groupdlg.cpp:479
+msgid "Authentication Failed"
+msgstr "Autentificarea nu funcþioneazã"
+
+#: groupdlg.cpp:482
+msgid "Connection to server failed: Authentication problem"
+msgstr "Conecþia la server nu funcþioneazã:Probleme de Autentificare"
+
+#: groupdlg.cpp:519
+msgid "Krn-Question"
+msgstr "Krn-Întrebare"
+
+#: groupdlg.cpp:520
+msgid ""
+"The operation you requested needs a connection to the News server\n"
+"Should I attempt one?"
+msgstr ""
+"Operaþia doritã are nevoie de o conectare al serverul de News\n"
+"Încerc sã fac legãtura?"
+
+#: groupdlg.cpp:783
+msgid ""
+"You don't have an active groups list.\n"
+" get it from server?"
+msgstr ""
+"Nu aveþi o listã activã de grupe.\n"
+"Pot sã încerc sã iau una de la server?"
+
+#: groupdlg.cpp:799
+msgid "Listing active newsgroups"
+msgstr "Listeazã grupele active"
+
+#: groupdlg.cpp:811
+msgid "KRN - Find a Newsgroup"
+msgstr "KRN - Cautã o Newsgroup"
+
+#: groupdlg.cpp:812
+msgid "Enter the name of the Newsgroup"
+msgstr "Introduceþi numele grupei"
+
+#: groupdlg.cpp:897
+msgid "Krn - Message"
+msgstr "Krn - Mesaj"
+
+#: groupdlg.cpp:898
+msgid "I can't find the group you want!"
+msgstr "Nu pot gãsi grupa pe care o doriþi!"
+
+#: groupdlg.cpp:989
+msgid "Getting messages in "
+msgstr "Aduce mesaje din "
+
+#: groupdlg.cpp:1002
+msgid "Getting list of messages in "
+msgstr "Aduce liste de mesaje din "
+
+#: artdlg.cpp:108 artdlg.cpp:120
+msgid "Download"
+msgstr "Download"
+
+#: artdlg.cpp:110 artdlg.cpp:123
+msgid "Print"
+msgstr "Tipãreºte"
+
+#: artdlg.cpp:111 artdlg.cpp:130
+msgid "Decode"
+msgstr "Decodeazã"
+
+#: artdlg.cpp:113 artdlg.cpp:135
+msgid "Don't expire"
+msgstr "Nu o arunca"
+
+#: artdlg.cpp:125 artdlg.cpp:187
+msgid "Reply by Mail"
+msgstr "Rãspunde prin Mail"
+
+#: artdlg.cpp:126
+msgid "Post Followup"
+msgstr "Publicã un rãspuns"
+
+#: artdlg.cpp:127
+msgid "Post & Reply"
+msgstr "Publicã & Rãspunde"
+
+#: artdlg.cpp:133
+msgid "Tagged"
+msgstr "Marcaj"
+
+#: artdlg.cpp:143
+msgid "Show Only Unread Messages"
+msgstr "Aratã numai mesajele necitite"
+
+#: artdlg.cpp:145
+msgid "Show Only Cached Messages"
+msgstr "Aratã numai mesajele din cache"
+
+#: artdlg.cpp:147
+msgid "Show Locked Messages"
+msgstr "Mesaje blocate"
+
+#: artdlg.cpp:149
+msgid "Expunge"
+msgstr "ªterge"
+
+#: artdlg.cpp:150
+msgid "Appearance..."
+msgstr "Aparenþe..."
+
+#: artdlg.cpp:153
+msgid "menu"
+msgstr "Menu"
+
+#: artdlg.cpp:166
+msgid "Previous Message"
+msgstr "Mesajul precedent"
+
+#: artdlg.cpp:169
+msgid "Next Message"
+msgstr "Mesajul urmãtor"
+
+#: artdlg.cpp:174
+msgid "Save Article"
+msgstr "Salveazã articolul"
+
+#: artdlg.cpp:177
+msgid "Print Article"
+msgstr "Tipãreºte articolul"
+
+#: artdlg.cpp:180
+msgid "Find Article"
+msgstr "Cautã articolul"
+
+#: artdlg.cpp:190
+msgid "Post a Followup"
+msgstr "Publicã rãspunsul"
+
+#: artdlg.cpp:193
+msgid "Post & Mail"
+msgstr "Publicã & Rãspunde(prin Mail)"
+
+#: artdlg.cpp:202
+msgid "Get Article List"
+msgstr "Aduce lista de articole"
+
+#: artdlg.cpp:205
+msgid "Tag Article"
+msgstr "Marcheazã articolul"
+
+#: artdlg.cpp:208
+msgid "Lock (keep in cache)"
+msgstr "Închide (þine in cache)"
+
+#: artdlg.cpp:211
+msgid "Decode Article"
+msgstr "Decodeazã articolul"
+
+#: artdlg.cpp:234
+msgid "Sender"
+msgstr "De la"
+
+#: artdlg.cpp:235
+msgid "Date"
+msgstr "Data"
+
+#: artdlg.cpp:236
+msgid "Lines"
+msgstr "Linii"
+
+#: artdlg.cpp:237
+msgid "Subject"
+msgstr "Tema"
+
+#: artdlg.cpp:398
+msgid "Threading..."
+msgstr "Sorteazã..."
+
+#: artdlg.cpp:405
+msgid "Showing Article List"
+msgstr "Aratã Lista de articole"
+
+#: artdlg.cpp:968
+msgid "KRN - Existing File"
+msgstr "KRN - Fiºierul existã"
+
+#: artdlg.cpp:969
+msgid "The File you selected already exists"
+msgstr "Fiºierul selectat existã deja"
+
+#: artdlg.cpp:975
+msgid "OverWrite"
+msgstr "Suprascrie"
+
+#: artdlg.cpp:977
+msgid "Append"
+msgstr "Append"
+
+#: artdlg.cpp:1024
+msgid ""
+"\n"
+"Error getting article.\n"
+"Server said:\n"
+msgstr ""
+"\n"
+"Eroare la aducerea articolelor.\n"
+"Serverul zice:\n"
+
+#: artdlg.cpp:1122
+msgid "Getting Article List"
+msgstr "Aduce lista cu articole"
+
+#: identDlg.cpp:40
+msgid "KRN-Identity Configuration"
+msgstr "KRN-Configuraþia de identitate"
+
+#: identDlgData.cpp:14
+msgid "Real Name"
+msgstr "Numele Real"
+
+#: identDlgData.cpp:22
+msgid "E-mail Address"
+msgstr "Adresa E-Mail"
+
+#: identDlgData.cpp:30
+msgid "Organization"
+msgstr "Organizaþia"
+
+#: NNTPConfigDlg.cpp:23
+msgid "KRN-NNTP configuration"
+msgstr "KRN-Configuraþia NNTP"
+
+#: NNTPConfigDlgData.cpp:30
+msgid "NNTP Server"
+msgstr "Serverul NNTP"
+
+#: NNTPConfigDlgData.cpp:34
+msgid "Connect on Startup"
+msgstr "Odatã cu startup conecteazã"
+
+#: NNTPConfigDlgData.cpp:38
+msgid "Authenticate"
+msgstr "Autentificarea"
+
+#: NNTPConfigDlgData.cpp:42
+msgid "User Name"
+msgstr "Numele utilizatorului"
+
+#: NNTPConfigDlgData.cpp:46
+msgid "Password"
+msgstr "Parola"
+
+#: NNTPConfigDlgData.cpp:58
+msgid "SMTP server"
+msgstr "Serverul SMTP"
+
+#: decoderDlg.cpp:21
+msgid "KRN - Decoder"
+msgstr "KRN - Decoderul"
+
+#: decoderDlg.cpp:24
+msgid "ID"
+msgstr "ID"
+
+#: decoderDlg.cpp:27 kmcomposewin.cpp:113
+msgid "Name"
+msgstr "Nume"
+
+#: kdecode.cpp:25
+msgid "KRN-Decoder"
+msgstr "KRN-Decoderul"
+
+#: kdecode.cpp:190
+#, c-format
+msgid "Unsupported encoding type: %s."
+msgstr "Tip codificat nesuportat: %s."
+
+#: aboutDlg.cpp:18
+msgid "About KRN"
+msgstr "Despre KRN"
+
+#: aboutDlgData.cpp:34
+msgid "Part of the KDE project."
+msgstr "Parte din KDE-Proiect."
+
+#: aboutDlgData.cpp:57
+msgid "And Many thanks to:"
+msgstr "Multe mulþumiri ºi la:"
+
+#: aboutDlgData.cpp:69
+msgid "Credits & Thanks"
+msgstr "Credite & Mulþumiri"
+
+#: fontsDlg.cpp:29
+msgid "Message Display Fonts"
+msgstr "Fonturi pentru afiºarea mesajelor"
+
+#: fontsDlgData.cpp:23
+msgid "Small"
+msgstr "mic"
+
+#: fontsDlgData.cpp:25
+msgid "Large"
+msgstr "mare"
+
+#: fontsDlgData.cpp:26
+msgid "Huge"
+msgstr "uriaº"
+
+#: fontsDlgData.cpp:31
+msgid "Font Size:"
+msgstr "Mãrimea fontului:"
+
+#: fontsDlgData.cpp:35 fontsDlgData.cpp:39
+msgid "test"
+msgstr "test"
+
+#: fontsDlgData.cpp:51
+msgid "Standard Font"
+msgstr "Font Standard"
+
+#: fontsDlgData.cpp:55
+msgid "Fixed Font"
+msgstr "Font fix"
+
+#: fontsDlgData.cpp:67
+msgid "Background Color"
+msgstr "Culoarea de fond"
+
+#: fontsDlgData.cpp:71
+msgid "Foreground Color"
+msgstr "Culoarea din faþã"
+
+#: fontsDlgData.cpp:75
+msgid "Link Color"
+msgstr "Culoarea legãturilor"
+
+#: fontsDlgData.cpp:79
+msgid "Followed Color"
+msgstr "Culoarea legãturilor visitate"
+
+#: kmmessage.cpp:1222
+msgid "On %D, you wrote:"
+msgstr "În %D, aþi scris:"
+
+#: kmmessage.cpp:1223
+msgid "On %D, %F wrote:"
+msgstr "În %D, %F a scris:"
+
+#: kmmessage.cpp:1224
+msgid "Forwarded Message"
+msgstr "Mesaj înaintat"
+
+#: kmcomposewin.cpp:102
+msgid "KMail Composer"
+msgstr "Alcãtuieºte mesaj"
+
+#: kmcomposewin.cpp:112
+msgid "F"
+msgstr "F"
+
+#: kmcomposewin.cpp:115
+msgid "Encoding"
+msgstr "Codificare"
+
+#: kmcomposewin.cpp:116
+msgid "Type"
+msgstr "Tip"
+
+#: kmcomposewin.cpp:280
+msgid "&From:"
+msgstr "&De la:"
+
+#: kmcomposewin.cpp:282
+msgid "&Reply to:"
+msgstr "&Rãspunde la:"
+
+#: kmcomposewin.cpp:284
+msgid "&To:"
+msgstr "&La:"
+
+#: kmcomposewin.cpp:286
+msgid "&Cc:"
+msgstr "&Cc:"
+
+#: kmcomposewin.cpp:288
+msgid "&Bcc:"
+msgstr "&Bcc:"
+
+#: kmcomposewin.cpp:290
+msgid "&Subject:"
+msgstr "&Subiect:"
+
+#: kmcomposewin.cpp:292
+msgid "&Newsgroups:"
+msgstr "&Newsgroups:"
+
+#: kmcomposewin.cpp:294
+msgid "&Followup-To:"
+msgstr "Rãspunde &la:"
+
+#: kmcomposewin.cpp:359
+msgid "&Send"
+msgstr "&Trimite"
+
+#: kmcomposewin.cpp:362
+msgid "S&end later"
+msgstr "T&rimite mai tîrziu"
+
+#: kmcomposewin.cpp:364
+msgid "S&end now"
+msgstr "&Trimite acum"
+
+#: kmcomposewin.cpp:366
+msgid "&Insert File..."
+msgstr "&Insereazã fiºierul..."
+
+#: kmcomposewin.cpp:369
+msgid "&Addressbook..."
+msgstr "&Cartea de adrese..."
+
+#: kmcomposewin.cpp:374
+msgid "&New Composer..."
+msgstr "&Un nou mesaj..."
+
+#: kmcomposewin.cpp:395
+msgid "Mark all"
+msgstr "Marcheazã totul"
+
+#: kmcomposewin.cpp:398
+msgid "Find..."
+msgstr "Cautã..."
+
+#: kmcomposewin.cpp:406
+msgid "&Urgent"
+msgstr "&Urgent"
+
+#: kmcomposewin.cpp:408
+msgid "&Confirm delivery"
+msgstr "&Confirmã livrarea"
+
+#: kmcomposewin.cpp:410
+msgid "&Confirm read"
+msgstr "&Confirmã citrea"
+
+#: kmcomposewin.cpp:422
+msgid "&All Fields"
+msgstr "&Toate pãrþile"
+
+#: kmcomposewin.cpp:424
+msgid "&From"
+msgstr "&De la"
+
+#: kmcomposewin.cpp:425
+msgid "&Reply to"
+msgstr "&Rãspunde la"
+
+#: kmcomposewin.cpp:426
+msgid "&To"
+msgstr "&La"
+
+#: kmcomposewin.cpp:427
+msgid "&Cc"
+msgstr "&Cc:"
+
+#: kmcomposewin.cpp:428
+msgid "&Bcc"
+msgstr "&Bcc"
+
+#: kmcomposewin.cpp:429
+msgid "&Subject"
+msgstr "&Subiect"
+
+#: kmcomposewin.cpp:430
+msgid "&Newsgroups"
+msgstr "News&groups"
+
+#: kmcomposewin.cpp:431
+msgid "&Followup-To"
+msgstr "&Rãspunde la"
+
+#: kmcomposewin.cpp:435
+msgid "Append S&ignature"
+msgstr "Append s&emnãtura"
+
+#: kmcomposewin.cpp:437
+msgid "&Insert File"
+msgstr "&Insereazã fiºierul"
+
+#: kmcomposewin.cpp:439
+msgid "&Attach..."
+msgstr "&Ataºeazã..."
+
+#: kmcomposewin.cpp:441
+msgid "&Remove"
+msgstr "&ªterge"
+
+#: kmcomposewin.cpp:442
+msgid "&Save..."
+msgstr "&Salveazã..."
+
+#: kmcomposewin.cpp:443
+msgid "Pr&operties..."
+msgstr "Pr&oprietãþi..."
+
+#: kmcomposewin.cpp:445
+msgid "&Attach"
+msgstr "&Ataºeazã"
+
+#: kmcomposewin.cpp:470
+msgid "Compose new message"
+msgstr "Compune un nou mesaj"
+
+#: kmcomposewin.cpp:475
+msgid "Save message to file"
+msgstr "Salveazã mesaj in fiºier"
+
+#: kmcomposewin.cpp:480
+msgid "Print message"
+msgstr "Tipãreºte mesajul"
+
+#: kmcomposewin.cpp:503
+msgid "Open addressbook..."
+msgstr "Deschide cartea de adrese..."
+
+#: kmcomposewin.cpp:512
+msgid "sign message"
+msgstr "semneazã mesajul"
+
+#: kmcomposewin.cpp:517
+msgid "encrypt message"
+msgstr "codificã mesajul"
+
+#: kmcomposewin.cpp:583
+msgid "Send now"
+msgstr "Trimite acum"
+
+#: kmcomposewin.cpp:585
+msgid "Send later"
+msgstr "Trimite mai tîrziu"
+
+#: kmcomposewin.cpp:594
+msgid "Mark All"
+msgstr "Marcheazã totul"
+
+#: kmcomposewin.cpp:736
+msgid "KMail Confirm"
+msgstr "Confirmã KMail"
+
+#: kmcomposewin.cpp:737
+msgid ""
+"Close and discard\n"
+"edited message?"
+msgstr ""
+"Închide ºi schimbã\n"
+"mesajul editat?"
+
+#: kmcomposewin.cpp:779
+#, c-format
+msgid ""
+"public key for %s not found.\n"
+"This person will not be able to decrypt the message."
+msgstr ""
+"Cheia publicã a persoanei %s nu existã :-(.\n"
+"Aceastã persoanã nu poate sã decodifice mesajele."
+
+#: kmcomposewin.cpp:800
+msgid "Error during PGP:"
+msgstr "Eroare in PGP:"
+
+#: kmcomposewin.cpp:1010 kmcomposewin.cpp:1031
+msgid "Attach File"
+msgstr "Ataºeazã fiºier"
+
+#: kmcomposewin.cpp:1062 kmreaderwin.cpp:611
+msgid "View..."
+msgstr "Aratã..."
+
+#: kmcomposewin.cpp:1063
+msgid "Save..."
+msgstr "Salveazã..."
+
+#: kmcomposewin.cpp:1064 kmreaderwin.cpp:614
+msgid "Properties..."
+msgstr "Proprietãþi..."
+
+#: kmcomposewin.cpp:1068
+msgid "Attach..."
+msgstr "Ataºeazã..."
+
+#: kmcomposewin.cpp:1110 kmreaderwin.cpp:636
+msgid "View Attachment: "
+msgstr "Aratã ataºamentele: "
+
+
+
+
+
+
+
+#: kmcomposewin.cpp:1215 kpgp.cpp:351
+msgid ""
+"Sorry, but this feature\n"
+"is still missing"
+msgstr ""
+"Din pãcate aceast menu-punct\n"
+"lispseºte încã"
+
+#: kmcomposewin.cpp:1223
+msgid "unnamed"
+msgstr "nenumit"
+
+#: kmcomposewin.cpp:1238
+msgid "To:"
+msgstr "Cãtre:"
+
+#: kmcomposewin.cpp:1242
+msgid "Subject:"
+msgstr "Subiect:"
+
+#: kmcomposewin.cpp:1245
+msgid "Date:"
+msgstr "Data:"
+
+#: kmcomposewin.cpp:1330
+msgid "Choose Signature File"
+msgstr "Alege fiºierul de semnãturã"
+
+#: kmcomposewin.cpp:1359
+msgid "KMail: Spellcheck"
+msgstr "KMail: Spellcheck"
+
+#: kmcomposewin.cpp:1383
+msgid ""
+"Error starting KSpell. Please make sure you have ISpell properly configured."
+msgstr ""
+"Eroare la rularea lui KSpell. Vã rugam sã controloþi încã odatã configuraþia."
+
+#: kmsender.cpp:103
+msgid ""
+"Please specify a send\n"
+"method in the settings\n"
+"and try again."
+msgstr ""
+"Vã rugãm sã specificaþi\n"
+"metoda de trimitere\n"
+"ºi încercaþi încã o datã."
+
+#: kmsender.cpp:109
+msgid ""
+"Please set the required fields in the\n"
+"identity settings:\n"
+"user-name and email-address"
+msgstr ""
+"Vã rugãm completaþi datele \n"
+"de identitate:\n"
+"numele utilizatorului ºi adresa email"
+
+#: kmsender.cpp:130
+msgid "You must specify a receiver"
+msgstr "Specificaþi destinatarul"
+
+#: kmsender.cpp:141
+msgid "Cannot add message to outbox folder"
+msgstr "Nu pot trimite acest mesaj înainte"
+
+#: kmsender.cpp:164
+msgid "Sending still in progress"
+msgstr "Trimiterea nu a luat sfîrºit"
+
+#: kmsender.cpp:216
+msgid "Initiating sender process..."
+msgstr "Iniþializez procesul de trimitere..."
+
+#: kmsender.cpp:232
+msgid "Sending message: "
+msgstr "Trimite mesajul: "
+
+#: kmsender.cpp:256
+msgid "Done sending messages."
+msgstr "Am trimis mesajele."
+
+#: kmsender.cpp:276
+msgid "Sending failed:"
+msgstr "Trimiterea a dat greº:"
+
+#: kmsender.cpp:404
+msgid ""
+"Please specify a mailer program\n"
+"in the settings."
+msgstr ""
+"Vã rugãm sã specificaþi un mailer program\n"
+"în setãri!"
+
+#: kmsender.cpp:442
+#, c-format
+msgid "Failed to execute mailer program %s"
+msgstr "Greºealã la executarea lui %s"
+
+#: kmsender.cpp:450
+#, c-format
+msgid "Failed to pipe mail message into mailer program %s"
+msgstr "Greºealã la trimiterea mesajului cãtre mail program %s"
+
+#: kmsender.cpp:499
+msgid "connecting to server"
+msgstr "cupleazã cu server-ul"
+
+#: kmsender.cpp:504
+#, c-format
+msgid ""
+"Cannot open SMTP connection to\n"
+"host %s for sending:\n"
+"%s"
+msgstr ""
+"Nu pot sã deschid SMTP conecþie cu host %s\n"
+"ca sã trimit mesajul:\n"
+"%s"
+
+#: kmsender.cpp:533
+msgid "Cannot close SMTP connection."
+msgstr "Nu pot închide conecþia SMTP."
+
+#: kmsender.cpp:583
+msgid "transmitting message"
+msgstr "transmite mesajul"
+
+#: kmsender.cpp:637
+msgid "network error"
+msgstr "network error"
+
+#: kmsender.cpp:639
+#, c-format
+msgid ""
+"a SMTP error occured.\n"
+"Command: %s\n"
+"Response: %s\n"
+"Return code: %d"
+msgstr ""
+"SMTP eroare.\n"
+"Comanda: %s\n"
+"Rãspunsul: %s\n"
+"Return code: %d"
+
+#: kmsender.cpp:654
+#, c-format
+msgid "Sending SMTP command: %s"
+msgstr "Trimite comanda SMTP: %s"
+
+#: kmidentity.cpp:162
+#, c-format
+msgid ""
+"Failed to execute signature script\n"
+"%s\n"
+"%s"
+msgstr ""
+"Eroare la executarea programului de semnat\n"
+"%s\n"
+"%s"
+
+#: kfileio.cpp:26
+msgid "File I/O Error"
+msgstr "Eroare I/O la fiºier"
+
+#: kfileio.cpp:45
+#, c-format
+msgid ""
+"The specified file does not exist:\n"
+"%s"
+msgstr ""
+"Fiºierul specificat nu existã:\n"
+"%s"
+
+#: kfileio.cpp:52
+#, c-format
+msgid ""
+"This is a directory and not a file:\n"
+"%s"
+msgstr ""
+"Acesta este un director ci nu un fiºier:\n"
+"%s"
+
+#: kfileio.cpp:59
+#, c-format
+msgid ""
+"You do not have read permissions to the file:\n"
+"%s"
+msgstr ""
+"Nu aveþi dreptul de a citi acest fiºier:\n"
+"%s"
+
+#: kfileio.cpp:69
+#, c-format
+msgid ""
+"Could not read file:\n"
+"%s"
+msgstr ""
+"Nu am putut citi acest fiºier:\n"
+"%s"
+
+#: kfileio.cpp:72
+#, c-format
+msgid ""
+"Could not open file:\n"
+"%s"
+msgstr ""
+"Nu pot deschide fiºierul:\n"
+"%s"
+
+#: kfileio.cpp:75
+#, c-format
+msgid ""
+"Error while reading file:\n"
+"%s"
+msgstr ""
+"Eroare in timpul citirii fiºierului:\n"
+"%s"
+
+#: kfileio.cpp:92
+#, c-format
+msgid "Could only read %u bytes of %u."
+msgstr "Nu am putut citi decît %u Bytes din %u."
+
+#: kfileio.cpp:121
+#, c-format
+msgid ""
+"File %s exists.\n"
+"Do you want to replace it ?"
+msgstr ""
+"Fiºierul %s existã.\n"
+"Doriþi sã-l suprascrieþi?"
+
+#: kfileio.cpp:124 kfileio.cpp:142
+msgid "&Ok"
+msgstr "&Ok"
+
+#: kfileio.cpp:141
+#, c-format
+msgid ""
+"Failed to make a backup copy of %s.\n"
+"Continue anyway ?"
+msgstr ""
+"Nu pot face o backup copie lui%s\n"
+"Pot continua oricum?"
+
+#: kfileio.cpp:153 kfileio.cpp:170
+#, c-format
+msgid ""
+"Could not write to file:\n"
+"%s"
+msgstr ""
+"Nu pot scrie fiºierul:\n"
+"%s"
+
+#: kfileio.cpp:156
+#, c-format
+msgid ""
+"Could not open file for writing:\n"
+"%s"
+msgstr ""
+"Nu pot deschide fiºierul pentru al scrie:\n"
+"%s"
+
+#: kfileio.cpp:160
+#, c-format
+msgid ""
+"Error while writing file:\n"
+"%s"
+msgstr ""
+"Eroare in timpul scrieri fiºierului:\n"
+"%s"
+
+#: kfileio.cpp:176
+#, c-format
+msgid "Could only write %d bytes of %d."
+msgstr "Nu am scris decît %u Bytes din %u."
+
+#: kmmsgpartdlg.cpp:41
+msgid "Message Part Properties"
+msgstr "Proprietãþile pãrþii mesajului"
+
+#: kmmsgpartdlg.cpp:62
+msgid "Name:"
+msgstr "Nume:"
+
+#: kmmsgpartdlg.cpp:73
+msgid "Description:"
+msgstr "Descrierea:"
+
+#: kmmsgpartdlg.cpp:83
+msgid "Encoding:"
+msgstr "Codificarea:"
+
+#: kmmsgpartdlg.cpp:89
+msgid "none (8bit)"
+msgstr "none (8bit)"
+
+#: kmmsgpartdlg.cpp:90
+msgid "base 64"
+msgstr "base 64"
+
+#: kmmsgpartdlg.cpp:91
+msgid "quoted printable"
+msgstr "caractere mascate"
+
+#: kmreaderwin.cpp:273 kmreaderwin.cpp:289 kmreaderwin.cpp:310
+msgid "From: "
+msgstr "De la:"
+
+#: kmreaderwin.cpp:275 kmreaderwin.cpp:291 kmreaderwin.cpp:312
+msgid "To: "
+msgstr "Cãtre: "
+
+#: kmreaderwin.cpp:279 kmreaderwin.cpp:300 kmreaderwin.cpp:325
+msgid "References: "
+msgstr "Referenþe: "
+
+#: kmreaderwin.cpp:294 kmreaderwin.cpp:315
+msgid "Cc: "
+msgstr "Cc: "
+
+#: kmreaderwin.cpp:296 kmreaderwin.cpp:309
+msgid "Date: "
+msgstr "Data: "
+
+#: kmreaderwin.cpp:318
+msgid "Bcc: "
+msgstr "Bcc: "
+
+#: kmreaderwin.cpp:321
+msgid "Reply to: "
+msgstr "Rãspunde la: "
+
+#: kmreaderwin.cpp:328
+msgid "Groups: "
+msgstr "Grupe: "
+
+#: kmreaderwin.cpp:363
+msgid "Encrypted message"
+msgstr "Mesaj codificat"
+
+#: kmreaderwin.cpp:369
+msgid "Cannot decrypt message:"
+msgstr "Nu pot decodifica mesajul:"
+
+#: kmreaderwin.cpp:387
+msgid "Message was signed by"
+msgstr "Mesajul a fost semnat de"
+
+#: kmreaderwin.cpp:388
+msgid "Warning: Bad signature from"
+msgstr "Atenþie: Semnãturã falsã de la"
+
+#: kmreaderwin.cpp:575
+msgid "Attachment: "
+msgstr "Ataºament: "
+
+#: kmreaderwin.cpp:660
+msgid "Could not create temporary file"
+msgstr "Nu pot crea fiºier temporar"
+
+#: kmreaderwin.cpp:680
+#, c-format
+msgid "Could not save temporary file %s"
+msgstr "Nu pot salva fiºierul temporar %s "
+
+#: kmreaderwin.cpp:706
+msgid "Could not save file"
+msgstr "Nu pot salva fiºierul"
+
+#: kpgp.cpp:112
+msgid ""
+"Couldn't find PGP executable.\n"
+"Please check your PATH is set correctly."
+msgstr ""
+"Nu gãsesc programul PGP.\n"
+"Vã rugãm sã setaþi PATH-ul corect."
+
+#: kpgp.cpp:157
+msgid ""
+"Could not find PGP executable.\n"
+"Please check your PATH is set correctly."
+msgstr ""
+"Nu gãsesc programul PGP.\n"
+"Vã rugãm sã setaþi PATH-ul corect."
+
+#: kpgp.cpp:167
+msgid "The pass phrase is missing."
+msgstr "Parola lipseºte."
+
+#: kpgp.cpp:439
+msgid "Message signed by"
+msgstr "Mesajul semnat de"
+
+#: kpgp.cpp:443
+msgid "Message has a bad signature from"
+msgstr "Mesajul are o semnãturã falsã de la"
+
+#: kpgp.cpp:451
+msgid "End PGP signed message"
+msgstr "Sfîrºitul mesajului PGP semnat"
+
+#: kpgp.cpp:647
+msgid "Bad pass Phrase; couldn't decrypt"
+msgstr "Parolã falsã; nu pot decodifica"
+
+#: kpgp.cpp:736
+msgid "Bad pass Phrase; couldn't sign"
+msgstr "Parolã falsã; nu pot semna"
+
+#: kpgp.cpp:793
+msgid ""
+"Please enter your\n"
+"PGP passphrase"
+msgstr ""
+"Vã rugãm sã introduceþi \n"
+"Parola PGP"
+
+#: kpgp.cpp:820
+msgid "PGP Security Check"
+msgstr "Controlul securitãþii PGP"
+
+#: kmaddrbookdlg.cpp:20
+msgid "Addressbook"
+msgstr "Cartea de adrese"
+
+#: kmaddrbookdlg.cpp:94
+msgid "Addressbook Manager"
+msgstr "Administratorul cãrþii de adrese"
+
+#: expireDlg.cpp:19
+msgid "KRN - Expire Settings"
+msgstr "KRN - Setãrile de expirare"
+
+#: expireDlg.cpp:27 expireDlg.cpp:52
+msgid "For how long should we keep things (in days)?"
+msgstr "Cît timp sã þin aceste mesaje (în zile)?"
+
+#: expireDlg.cpp:30
+msgid "Article Bodies:"
+msgstr "Corpul articolului:"
+
+#: expireDlg.cpp:40
+msgid "Article Headers:"
+msgstr "Header-ul articolului:"
