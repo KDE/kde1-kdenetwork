@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: krn \n"
 "POT-Creation-Date: 1998-10-09 15:54+0200\n"
-"PO-Revision-Date: 1998-06-23 07:10+0200\n"
+"PO-Revision-Date: 1998-10-25 23:00+0100\n"
 "Last-Translator: Jacek Stolarczyk <jacek@mer.chemia.polsl.gliwice.pl>\n"
 "Content-Type: text/plain; charset=iso8859-2\n"
 
@@ -295,7 +295,7 @@ msgstr "Odpowiedz autorowi i grupie"
 
 #: artdlg.cpp:167 artdlg.cpp:257
 msgid "Forward"
-msgstr ""
+msgstr "Prze¶lij dalej"
 
 #: artdlg.cpp:173 artdlg.cpp:241
 msgid "Tagged"
@@ -361,7 +361,7 @@ msgstr "Od¶wie¿ wygl±d"
 
 #: artdlg.cpp:240
 msgid "Current"
-msgstr ""
+msgstr "Bie¿±cy"
 
 #: artdlg.cpp:242 fontsDlg.cpp:52
 msgid "All"
@@ -682,7 +682,7 @@ msgstr "Nazwa"
 
 #: kmcomposewin.cpp:135
 msgid "Size"
-msgstr ""
+msgstr "Rozmiar"
 
 #: kmcomposewin.cpp:136
 #, fuzzy
@@ -707,7 +707,7 @@ msgstr "&Do:"
 
 #: kmcomposewin.cpp:350
 msgid "&Cc:"
-msgstr "Dw:"
+msgstr "D&w:"
 
 #: kmcomposewin.cpp:352
 msgid "&Bcc:"
@@ -751,7 +751,7 @@ msgstr "&Nowa wiadomo¶æ..."
 
 #: kmcomposewin.cpp:449
 msgid "New Mailreader"
-msgstr ""
+msgstr "Nowe okno"
 
 #: kmcomposewin.cpp:469 kmcomposewin.cpp:678 kmcomposewin.cpp:1917
 #, fuzzy
@@ -781,7 +781,7 @@ msgstr "&Potwierd¼ przeczytanie"
 
 #: kmcomposewin.cpp:488
 msgid "&Charsets..."
-msgstr ""
+msgstr "&Zestawy znaków"
 
 #: kmcomposewin.cpp:501
 msgid "&All Fields"
@@ -858,15 +858,15 @@ msgstr "Podpisz wiadomo¶æ u¿ywaj±c PGP"
 
 #: kmcomposewin.cpp:570
 msgid "Cut selection"
-msgstr ""
+msgstr "Wytnij zaznaczone"
 
 #: kmcomposewin.cpp:573
 msgid "Copy selection"
-msgstr ""
+msgstr "Kopiuj zaznaczone"
 
 #: kmcomposewin.cpp:576
 msgid "Paste clipboard contents"
-msgstr ""
+msgstr "Wklej zawarto¶æ schowka"
 
 #: kmcomposewin.cpp:581
 #, fuzzy
@@ -887,7 +887,7 @@ msgstr "Zaszyfruj wiadomo¶æ u¿ywaj±c PGP"
 
 #: kmcomposewin.cpp:611 kmcomposewin.cpp:627
 msgid "Column"
-msgstr ""
+msgstr "Kolumn"
 
 #: kmcomposewin.cpp:612 kmcomposewin.cpp:625
 #, fuzzy
@@ -1108,7 +1108,7 @@ msgstr "Wszystkie pola"
 
 #: findArtDlg.cpp:53 rulesDlg.cpp:131
 msgid "Case Sensitive"
-msgstr ""
+msgstr "Ma³e/wielkie litery"
 
 #: findArtDlg.cpp:56 rulesDlg.cpp:132
 msgid "Wildcard Mode"
@@ -1116,7 +1116,7 @@ msgstr "Dowolne"
 
 #: findArtDlg.cpp:66 rulesDlg.cpp:144
 msgid "Done"
-msgstr ""
+msgstr "Gotowe"
 
 #: kmidentity.cpp:162
 #, c-format
@@ -1246,7 +1246,7 @@ msgstr "Mo¿na by³o zapisaæ tylko %d bajtów z %d"
 #: kmmsgpartdlg.cpp:41
 #, fuzzy
 msgid "Message Part Properties"
-msgstr "W³asciwo¶ci za³±cznika"
+msgstr "W³a¶ciwo¶ci za³±cznika"
 
 #: kmmsgpartdlg.cpp:62
 msgid "Name:"
@@ -1410,7 +1410,7 @@ msgstr "KRN Potwierdzenie"
 
 #: kmaddrbookdlg.cpp:179
 msgid "Storing addressbook failed"
-msgstr ""
+msgstr "Zapisywanie ksi±¿ki adresowej nie powiod³o siê"
 
 #: kmaddrbook.cpp:25
 #, fuzzy
@@ -1419,7 +1419,7 @@ msgstr "KRN Potwierdzenie"
 
 #: kmaddrbook.cpp:26
 msgid "Storing the addressbook failed!\n"
-msgstr ""
+msgstr "Zapisywanie ksi±¿ki adresowej nie powiod³o siê!\n"
 
 #: expireDlg.cpp:22 expireDlg.cpp:27
 msgid "KRN - Expire Settings"
@@ -1463,7 +1463,7 @@ msgstr "Ogólne"
 
 #: printdlg.cpp:35
 msgid "Printing System"
-msgstr ""
+msgstr "Drukowanie"
 
 #: printdlg.cpp:37
 msgid "Use HTML Printing"
@@ -1531,7 +1531,7 @@ msgstr "Szukaj wiadomo¶ci"
 
 #: rulesDlg.cpp:124
 msgid "Weight:"
-msgstr ""
+msgstr "Waga"
 
 #: rulesDlg.cpp:126
 msgid "Negative"
@@ -1549,7 +1549,7 @@ msgstr "KRN - Sortowanie Nag³ówków"
 
 #: sortDlg.cpp:37
 msgid "None"
-msgstr ""
+msgstr "¯aden"
 
 #: sortDlg.cpp:39
 msgid "Sort by:"
@@ -1582,15 +1582,15 @@ msgstr "W³asciwo¶ci za³±cznika"
 
 #: charsetsDlg.cpp:75
 msgid "Set as &default"
-msgstr ""
+msgstr "Ustaw jako &domy¶lne"
 
 #: charsetsDlg.cpp:80
 msgid "&7 bit is ASCII"
-msgstr ""
+msgstr "&7 bitów to ASCII"
 
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
-msgstr ""
+msgstr "&Cytuj nieznane znaki"
 
 #~ msgid "Print"
 #~ msgstr "Drukuj"

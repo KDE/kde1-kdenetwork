@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmail \n"
 "POT-Creation-Date: 1998-10-13 13:34+0200\n"
-"PO-Revision-Date: 1998-06-23 07:00+0200\n"
+"PO-Revision-Date: 1998-10-24 05:55+0200\n"
 "Last-Translator: Jacek Stolarczyk <jacek@mer.chemia.polsl.gliwice.pl>\n"
 "Content-Type: text/plain; charset=iso8859-2\n"
 
@@ -22,7 +22,7 @@ msgstr "Nowy folder"
 #: kmaddrbookdlg.cpp:178 kmmainwin.cpp:284 kmmainwin.cpp:319 main.cpp:321
 #, fuzzy
 msgid "KMail error"
-msgstr "powa¿ny b³±d"
+msgstr "Powa¿ny b³±d"
 
 #: kmmainwin.cpp:285 kmmainwin.cpp:320
 msgid "Already checking for mail!"
@@ -50,8 +50,8 @@ msgid ""
 "Are you sure you want to discard the\n"
 "contents of the folder \"%s\" ?"
 msgstr ""
-"Na pewno chcesz usun±æ folder\n"
-"\"%s\" wraz z zawarto¶ci±?"
+"Na pewno chcesz usun±æ\n"
+"zawarto¶æ folderu \"%s\"?"
 
 #: kmmainwin.cpp:381 kmmainwin.cpp:420
 msgid "Confirmation"
@@ -81,11 +81,11 @@ msgstr ""
 
 #: kmmainwin.cpp:480
 msgid "KMail notification!"
-msgstr ""
+msgstr "Powiadomienie KMail"
 
 #: kmmainwin.cpp:481
 msgid "Only messages in the outbox folder can be edited!"
-msgstr ""
+msgstr "Jedynie wiadomo¶ci w folderze outbox mog± byæ edytowane!"
 
 #: kmmainwin.cpp:516
 msgid "Message as Plain Text"
@@ -226,7 +226,7 @@ msgstr "&Opró¼nij"
 
 #: kmfilterdlg.cpp:147 kmmainwin.cpp:917
 msgid "New"
-msgstr ""
+msgstr "Nowy"
 
 #: kmmainwin.cpp:918
 msgid "Unread"
@@ -254,7 +254,7 @@ msgstr "&Nastêpna"
 
 #: kmmainwin.cpp:928
 msgid "Next unread"
-msgstr ""
+msgstr "Nastêpna nieprzeczytana"
 
 #: kmmainwin.cpp:930
 #, fuzzy
@@ -264,7 +264,7 @@ msgstr "&Poprzednia"
 #: kmmainwin.cpp:932
 #, fuzzy
 msgid "Previous unread"
-msgstr "&Poprzednia"
+msgstr "Poprzednia nieprzeczytana"
 
 #: kmmainwin.cpp:942
 #, fuzzy
@@ -590,7 +590,7 @@ msgstr "opró¿nij ¶mietnik przy wyj¶ciu"
 
 #: kmsettings.cpp:541
 msgid "Send Mail in outbox Folder on Check"
-msgstr ""
+msgstr "Wy¶lij wiadomo¶ci z folderu outbox podczas sprawdzania poczty"
 
 #: kmsettings.cpp:556
 msgid "Misc"
@@ -651,7 +651,7 @@ msgstr "Usuwaj pocztê z serwera"
 
 #: kmsettings.cpp:907
 msgid "Enable interval Mail checking"
-msgstr ""
+msgstr "Uaktywnij sprawdzanie poczty co pewien czas"
 
 #: kmsettings.cpp:921
 msgid "Store new mail in account:"
@@ -747,7 +747,7 @@ msgstr "Wiadomo¶ci zapisano."
 
 #: kmheaders.cpp:411
 msgid "Failed to save message(s)."
-msgstr "Zapisanie wiadmo¶ci nie powiod³o siê."
+msgstr "Zapisanie wiadomo¶ci nie powiod³o siê."
 
 #: kmcomposewin.cpp:123
 msgid "KMail Composer"
@@ -755,7 +755,7 @@ msgstr "Nowa wiadomo¶æ"
 
 #: kmcomposewin.cpp:136
 msgid "Size"
-msgstr ""
+msgstr "Rozmiar"
 
 #: kmcomposewin.cpp:137
 msgid "Encoding"
@@ -803,7 +803,7 @@ msgstr "W&y¶lij pó¼niej"
 
 #: kmcomposewin.cpp:439
 msgid "S&end now"
-msgstr "W&y¶lij teraz"
+msgstr "Wy¶lij te&raz"
 
 #: kmcomposewin.cpp:441
 msgid "&Insert File..."
@@ -828,15 +828,15 @@ msgstr "Zamieñ..."
 
 #: kmcomposewin.cpp:484
 msgid "&Urgent"
-msgstr "Pilna"
+msgstr "&Pilna"
 
 #: kmcomposewin.cpp:486
 msgid "&Confirm delivery"
-msgstr "Potwierd¼ przes³anie"
+msgstr "P&otwierd¼ przes³anie"
 
 #: kmcomposewin.cpp:488
 msgid "&Confirm read"
-msgstr "Pot&wierd¼ przeczytanie"
+msgstr "Potwierd¼ prze&czytanie"
 
 #: kmcomposewin.cpp:491
 #, fuzzy
@@ -1151,13 +1151,15 @@ msgstr "powa¿ny b³±d"
 
 #: main.cpp:161
 msgid "KMail notification"
-msgstr ""
+msgstr "powiadomienie KMail"
 
 #: main.cpp:162
 msgid ""
 "$HOME is not set!\n"
 "KMail cannot start without it.\n"
 msgstr ""
+"zmienna $HOME nie jest ustawiona!\n"
+"KMail nie moze bez tego wystartowaæ.\n"
 
 #: main.cpp:228
 msgid ""
@@ -1175,11 +1177,11 @@ msgstr ""
 "do ~/Mail, ale mo¿e zamieniæ istniej±ce pliki o tych samych\n"
 "nazwach do katalogu ~/Mail (np. inbox).\n"
 "\n"
-"KMail powinien przenie¶æ foldery teraz?"
+"Czy KMail powinien przenie¶æ foldery teraz?"
 
 #: main.cpp:322
 msgid "Loading addressbook failed"
-msgstr ""
+msgstr "£adowanie ksi±¿ki adresowej nie powiod³o siê"
 
 #: main.cpp:392
 #, c-format
@@ -1189,9 +1191,7 @@ msgstr "Nieznana opcja linii poleceñ: %s"
 #: kmacctlocal.cpp:76
 #, fuzzy
 msgid "Cannot open file:"
-msgstr ""
-"Nie mo¿na otworzyæ pliku:\n"
-"%s"
+msgstr "Nie mo¿na otworzyæ pliku:"
 
 #: kmacctlocal.cpp:105
 #, c-format
@@ -1491,7 +1491,7 @@ msgid ""
 "Please check your PATH is set correctly."
 msgstr ""
 "Nie mo¿na odnale¼æ pliku wykonywalnego PGP.\n"
-"Sprawd¼, czy masz dobrze ustawione ¶cie¿ki."
+"Sprawd¼, czy masz dobrze ustawione ¶cie¿ki (zmienna PATH)."
 
 #: kpgp.cpp:178
 msgid ""
@@ -1499,7 +1499,7 @@ msgid ""
 "Please check your PATH is set correctly."
 msgstr ""
 "Nie mo¿na odnale¼æ pliku wykonywalnego PGP.\n"
-"Sprawd¼, czy masz dobrze ustawione ¶cie¿ki."
+"Sprawd¼, czy masz dobrze ustawione ¶cie¿ki (zmienna PATH)."
 
 #: kpgp.cpp:188
 msgid "The pass phrase is missing."
@@ -1529,7 +1529,7 @@ msgid ""
 "to read the message."
 msgstr ""
 "Brak klucza publicznego dla %s.\n"
-" Nie mo¿na zaszyfrowaæ wiadomo¶ci dla tej osoby."
+"Te osoby nie bêd± mog³y odczytaæ wiadomo¶ci."
 
 #: kpgp.cpp:885
 msgid "Could not find public keys for some persons.\n"
@@ -1671,7 +1671,7 @@ msgstr "powa¿ny b³±d"
 
 #: kmaddrbook.cpp:26
 msgid "Storing the addressbook failed!\n"
-msgstr ""
+msgstr "Zapisywanie ksi±¿ki adresowej nie powiod³o siê!\n"
 
 #: kmaddrbookdlg.cpp:20
 msgid "Addressbook"
@@ -1684,11 +1684,11 @@ msgstr "Zarz±dzanie ksia¿k± adresow±"
 #: kmaddrbookdlg.cpp:179
 #, fuzzy
 msgid "Storing addressbook failed"
-msgstr "Dodaj do ksi±¿ki adresowej"
+msgstr "Zapisywanie ksi±¿ki adresowej nie powiod³o siê"
 
 #: kmiostatusdlg.cpp:32
 msgid "&Abort"
-msgstr "Przerwij"
+msgstr "&Przerwij"
 
 #: kmnewiostatuswdg.cpp:41
 #, fuzzy
@@ -1771,4 +1771,4 @@ msgstr "&Cytuj nieznane znaki"
 #~ msgstr "Nie mozna przes³aæ wiadomo¶ci przez %s"
 
 #~ msgid "You do not have write permissionto this file.\n"
-#~ msgstr "Nie masz praw zapisu do tego pliku..\n"
+#~ msgstr "Nie masz praw zapisu do tego pliku.\n"

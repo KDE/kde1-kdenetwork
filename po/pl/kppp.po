@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kppp \n"
 "POT-Creation-Date: 1998-08-03 21:27+0200\n"
-"PO-Revision-Date: 1998-06-23 07:05+0200\n"
+"PO-Revision-Date: 1998-10-25 23:05+0100\n"
 "Last-Translator: Jacek Stolarczyk <jacek@mer.chemia.polsl.gliwice.pl>\n"
 "Content-Type: text/plain; charset=iso-8859-2\n"
 
@@ -375,7 +375,7 @@ msgstr "Po po³±czeniu uruchom:"
 msgid ""
 "Execute program\n"
 "before disconnect:"
-msgstr "Po roz³±czeniu uruchom:"
+msgstr "Przed roz³±czeniem uruchom:"
 
 #: edit.cpp:112
 msgid ""
@@ -562,7 +562,7 @@ msgstr "Szybko¶æ portu:"
 
 #: general.cpp:343
 msgid "Lock File Directory:"
-msgstr ""
+msgstr "Kartoteka pliku blokuj±cego"
 
 #: general.cpp:360
 msgid "Modem Timeout:"
@@ -945,7 +945,7 @@ msgstr "Inicjalizacja modemu"
 
 #: miniterm.cpp:223
 msgid "Hanging up ..."
-msgstr "Roz³±czanie"
+msgstr "Roz³±czanie ..."
 
 #: miniterm.cpp:243
 msgid "Resetting Modem"
@@ -1172,4 +1172,4 @@ msgstr ""
 #~ msgstr "Szybka inicjalizacja modemu."
 
 #~ msgid "The pppd daemon died unexpectedly!"
-#~ msgstr "Demon pppd nieoczekiwaniezakoñczy³ dzia³anie"
+#~ msgstr "Demon pppd nieoczekiwanie zakoñczy³ dzia³anie!"
