@@ -44,6 +44,8 @@ KBiffSetup::KBiffSetup(const char *profile)
 	: QDialog(0, 0, true, 0)
 {
 TRACEINIT("KBiffSetup::KBiffSetup()");
+	// set the icon just to be cute
+	setIcon(ICON("kbiff.xpm"));
 
 	// make sure the profile is *something*
 	if (!profile)
@@ -664,6 +666,7 @@ TRACEINIT("KBiffNewMailTab::KBiffNewMailTab()");
 	// setup the System Sound stuff
 	checkNotify = new QCheckBox(i18n("Notify"), this);
 	checkNotify->setMinimumSize(checkNotify->sizeHint());
+	checkNotify->setEnabled(false);
 	top_layout->addWidget(checkNotify);
 
 	top_layout->addStretch(1);

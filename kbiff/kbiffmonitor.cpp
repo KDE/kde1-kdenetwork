@@ -196,6 +196,8 @@ TRACEINIT("KBiffMonitor::checkImap()");
 	if (imap.connectSocket(server, port) == false)
 		return;
 	
+	user = imap.mungeUser(user);
+
 	command = QString().setNum(seq) + " LOGIN " + user + " " + password + "\r\n";
 	if (imap.command(command, seq) == false)
 		return;
@@ -516,6 +518,8 @@ TRACEINIT("KBiffIMap::command()");
 			return true;
 		if (response.find("BAD") > -1)
 			return false;
+		if (response.find("NO ") > -1)
+			return false;
 
 		// check the number of messages
 		QRegExp messages_re("MESSAGES [0-9]*");
@@ -529,6 +533,26 @@ TRACEINIT("KBiffIMap::command()");
 	}
 
 	return false;
+}
+
+QString KBiffImap::mungeUser(const QString& old_user)
+{
+TRACEINIT("KBiffImap::mungeUser()");
+TRACEF("old_user = %s", old_user.data());
+	if (old_user.contains(' ') > 0)
+	{
+		QString new_user(old_user);
+
+		if (new_user.left(1) != "\"")
+			new_user.prepend("\"");
+		if (new_user.right(1) != "\"")
+			new_user.append("\"");
+
+TRACEF("new_user = %s", new_user.data());
+		return new_user;
+	}
+	else
+		return old_user;
 }
 
 ///////////////////////////////////////////////////////////////////////////

@@ -261,6 +261,7 @@ class KBiffImap : public KBiffSocket
 {
 public:
 	bool command(const QString& line, unsigned int seq);
+	QString mungeUser(const QString& old_user);
 };
 
 /**
