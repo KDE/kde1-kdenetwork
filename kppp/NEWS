@@ -1,3 +1,8 @@
+Jun 11 1999:
+        * detection of stale lock files works again
+        * "PPP support missing" warning is no longer fatal
+        * line termination defaults to CR instead of CR/LF
+
 Apr 10 1999:
         * support for pppd 2.3.6 and 2.3.7
         * solved crash on SuSE and Caldera systems

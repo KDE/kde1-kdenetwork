@@ -134,11 +134,11 @@ messages:
 # if you have more of them, create a subdirectory with an extra Makefile 
 install-data-local:
 	@echo ""
-	@echo "Don't forget to send me a phone tarif rules file for your"
+	@echo "Don't forget to send us a phone tarif rules file for your"
 	@echo "telecom company/country/region. Thanks."
 	@echo ""
-	@echo "I am maintaining an archive on the kppp page at"
-	@echo "http://math.cornell.edu/~wuebben/kde.html"
+	@echo "We will be maintaining an archive on the kppp page at"
+	@echo "http://devel-home.kde.org/kppp/index.html"
 	@echo "WARNING: kppp is by default installed with SETUID bit on!"
 	@echo  "If you are concerned about the SETUID bit, create a modem"
 	@echo "group instead."

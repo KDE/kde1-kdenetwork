@@ -617,7 +617,7 @@ void PPPData::setModemAnswerResp(const char *n) {
 
 
 const char* PPPData::enter() {
-  return readConfig(MODEM_GRP, ENTER_KEY, "CR/LF");
+  return readConfig(MODEM_GRP, ENTER_KEY, "CR");
 }
 
 
