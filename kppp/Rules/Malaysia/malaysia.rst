@@ -1,36 +1,38 @@
 ################################################################
-# Malaysia Internet Rate
-# 
-# 25/8/98 -by Binary ( 1010110@netexecutive.com )
-################################################################
-################################################################
+# This is the cost rule for local calls in Malaysia, if you
+# using Telekom, TMnet or Jaring  as of 03/01/98.
+# This cost rule include only Dial-Up charge from Telekom and 
+# not Access charges from both Jaring or TMnet
+#	Acess 	: RM0.01 per minute (from TMnet and Jaring)
+#	Dial-up	: RM0.015 per minute (from Telekom)
+#	Total	: RM0.025 per minute
+# Or in other words the cost rule only calculate phone bill !
 #
-# Both Jaring and TMnet user will have the same rate
-#
+# Choong Hong Cheng
+# chc@tm.net.my OR chc@rocketmail.com
 ################################################################
-name=MY_Rate
 
-# defines RM (Ringgit Malaysia) to be used as currency
-# symbol is RM
+
+################################################################
+#
+# NAME OF THE RULESET. This is NEEDED for accounting purposes.
+#
+################################################################
+name=Malaysia_Telekom
+
+################################################################
+# currency settings
+################################################################
+
 currency_symbol=RM
-
-# Define the position of the currency symbol.
-# RM 1.00 is normally used.
 currency_position=left 
-
-# Define the number of significat digits.
-# (not absolutely needed, default is "2"
 currency_digits=2
-
-
 
 ################################################################
 # connection settings
 ################################################################
 
-# minimum costs per per connection. If the costs of a phone
-# call are less than this value, this value is used instead
-minimum_costs=0.01
-
-# Every 60 seconds, RM 0.01 or 1 cent are added to the bill"
-default=(0.01, 60)
+per_connection=0.015
+minimum_costs=0.015
+flat_init_costs=(0.015,60)
+default=(0.015, 60)
