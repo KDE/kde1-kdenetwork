@@ -143,7 +143,7 @@ static char copyright[] =
  * If you don't have flock, you could try using lockf instead.
  */
 
-#ifdef USE_LOCKF
+#ifdef USE_LOCKF || !defined(HAVE_FLOCK)
 # define flock(a, b)	lockf(a, b, 0)
 # undef LOCK_EX
 # define LOCK_EX	F_LOCK
