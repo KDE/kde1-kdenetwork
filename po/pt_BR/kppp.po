@@ -1424,7 +1424,6 @@ msgstr ""
 "Como uma nova execução não teria sentido, o Kppp terminará agora."
 
 #: main.cpp:951 runtests.cpp:400
-#, fuzzy
 msgid ""
 "Cannot find the PPP daemon!\n"
 "\n"
@@ -1434,7 +1433,7 @@ msgstr ""
 "Não consigo achar o daemon pppd!\n"
 "\n"
 "Verifique que o pppd está instalado e\n"
-"que foi informada a localização correta.\n"
+"que foi informada a localização correta."
 
 #: main.cpp:960
 #, c-format
