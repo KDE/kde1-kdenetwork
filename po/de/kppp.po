@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1998-01-25 13:26+0100\n"
-"PO-Revision-Date: 1998-01-14 15:44+0100\n"
+"POT-Creation-Date: 1998-01-25 20:35+0100\n"
+"PO-Revision-Date: 1998-01-24 15:44+0100\n"
 "Last-Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
 
 #: accounts.cpp:53
@@ -55,10 +55,12 @@ msgid ""
 "Are you sure you want to delete\n"
 "the account \"%s\"?"
 msgstr ""
+"Sind Sie sicher, daß Sie den\n"
+"Zugang \"%s\" löschen möchten?"
 
 #: accounts.cpp:299
 msgid "Confirm"
-msgstr ""
+msgstr "Bestätigen"
 
 #: accounts.cpp:321
 msgid "New Account"
@@ -471,7 +473,7 @@ msgstr "Minimiere Fenster nach dem Verbinden"
 
 #: general.cpp:124
 msgid "Dock into Panel on Connect"
-msgstr ""
+msgstr "Ins Panel einbinden bei Verbindung"
 
 #: general.cpp:187
 msgid "About kppp"
@@ -625,7 +627,7 @@ msgid "The pppd daemon died unexpectedly!"
 msgstr "Der pppd-Daemon beendete sich unerwartet!"
 
 #: main.cpp:685
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "kppp can not find:\n"
 " %s\n"
@@ -638,7 +640,7 @@ msgstr ""
 "nicht finden.\n"
 "Bitte installieren Sie pppd richtig und/oder\n"
 " stellen Sie den Standort der pppd-Programms im\n"
-"Veschiedenes-Bereich der Einstellungen ein.\n"
+"Bereich PPP der Einstellungen ein.\n"
 " Danke schön"
 
 #: main.cpp:697
@@ -992,13 +994,12 @@ msgid "kppp: rulefile is ok\n"
 msgstr "kppp: Regeldatei ist in Ordnung\n"
 
 #: docking.cpp:71 docking.cpp:223
-#, fuzzy
 msgid "Restore"
-msgstr "Modem zurücksetzen"
+msgstr "Wiederherstellen"
 
 #: docking.cpp:221
 msgid "Minimize"
-msgstr ""
+msgstr "Minimieren"
 
 #: runtests.cpp:97
 msgid ""
@@ -1007,6 +1008,10 @@ msgid ""
 "Make sure that pppd is installed and\n"
 "you have entered the correct path.\n"
 msgstr ""
+"Kann den pppd-Daemon nicht finden!\n"
+"\n"
+"Stellen Sie sicher, daß pppd installiert ist\n"
+"und Sie den richtigen Pfad angegeben haben.\n"
 
 #: runtests.cpp:109
 msgid ""
@@ -1016,6 +1021,11 @@ msgid ""
 "Contact your system administrator\n"
 "and ask to get access to pppd."
 msgstr ""
+"Sie haben keine Berechtigung zum\n"
+"Start von pppd!\n"
+"\n"
+"Kontaktieren Sie Ihren Systemadministrator\n"
+"und fragen Sie nach einem Zugriff auf pppd."
 
 #: runtests.cpp:120
 msgid ""
@@ -1025,6 +1035,11 @@ msgid ""
 "with the SUID bit set. Contact your\n"
 "system administrator."
 msgstr ""
+"pppd ist nicht richtig installiert!\n"
+"\n"
+"Das pppd-Programm muß mit gesetztem\n"
+"SUID-Bit installiert werden. Kontaktieren\n"
+"Sie Ihren Systemadministrator."
 
 #: runtests.cpp:141
 #, c-format
@@ -1033,6 +1048,6 @@ msgid ""
 "\n"
 "Setting default back to \"%s\"."
 msgstr ""
-
-#~ msgid "Edit default pppd:"
-#~ msgstr "Bearbeite Standard-pppd:"
+"Der Logdatei-Betrachter \"%s\" wurde nicht gefunden!\n"
+"\n"
+"Setze auf Standard zurück: \"%s\"."
