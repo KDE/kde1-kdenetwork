@@ -50,7 +50,6 @@ void PTableView::messageHandler(int fd, PukeMessage *pm)
 
 void PTableView::setWidget(QObject *_tbv)
 {
-  debug("PTableView setWidget(QObject *) called");
   if(_tbv != 0 && _tbv->inherits("QTableView") == FALSE)
     throw(errorInvalidSet(_tbv, className()));
 

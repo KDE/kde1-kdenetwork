@@ -10,9 +10,6 @@ PObject *createWidget(CreateArgs &ca)
   QTabDialog *qtd;
   // Retreive the border and direction information out of the
   // carg string
-
-  cerr << "Bong!\n";
-  
   if(ca.fetchedObj != 0 && ca.fetchedObj->inherits("QTabDialog") == TRUE)
     qtd = (QTabDialog *) ca.fetchedObj;
   else if(ca.parent != 0 && ca.parent->widget()->isWidgetType() == TRUE)
@@ -29,7 +26,6 @@ PTabDialog::PTabDialog(QObject *pobject)
   : PWidget()
 {
     // Connect slots as needed
-    cerr << "Bong2!\n";
   setWidget(0);
 }
 
@@ -77,8 +73,6 @@ void PTabDialog::messageHandler(int fd, PukeMessage *pm)
 
 void PTabDialog::setWidget(QObject *tb)
 {
-  //  debug("PObject setwidget called");
-  debug("PTabDialog setWidget(QObject *) called");
   if(tb != 0 && tb->inherits("QTabDialog") == FALSE)
     throw(errorInvalidSet(tb, className()));
 

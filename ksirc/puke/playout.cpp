@@ -134,7 +134,6 @@ void PLayout::messageHandler(int fd, PukeMessage *pm)
 void PLayout::setWidget(QObject *_layout)
 {
   //  debug("PObject setwidget called");
-  debug("PLayout: in setWidget");
   if(_layout != 0 && _layout->inherits("QBoxLayout") == FALSE)
       throw(errorInvalidSet(_layout, className()));
 

@@ -80,7 +80,6 @@ void PButton::messageHandler(int fd, PukeMessage *pm)
 
 void PButton::setWidget(QObject *_qb)
 {
-  debug("PButton setWidget(QObject *) called");
   if(_qb != 0 && _qb->inherits("QButton") == FALSE)
     throw(errorInvalidSet(_qb, className()));
 

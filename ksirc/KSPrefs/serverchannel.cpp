@@ -29,15 +29,11 @@ ServerChannel::ServerChannel
   B_AddServers->setEnabled(FALSE);
   B_AddChannels->setEnabled(FALSE);
 
+  QStrList recent;
   kConfig->setGroup("ServerList");
-  items = kConfig->readNumEntry("Number");
-  for(int i = 0; i < items; i++){
-    cindex.setNum(i);
-    server = "Server-" + cindex;
-    LB_Servers->insertItem(kConfig->readEntry(server), 0);
-  }
+  kConfig->readListEntry("RecentServers", recent);
+  LB_Servers->insertStrList(&recent, 0);
   LB_Servers->setCurrentItem(0);
-
 
   kConfig->setGroup("ChannelList"); 
   items = kConfig->readNumEntry("Number");
@@ -58,14 +54,14 @@ ServerChannel::~ServerChannel()
 void ServerChannel::slot_apply(){
   QString server, cindex;
   int items;
+
+  QStrList recent;
   kConfig->setGroup("ServerList");
   items = LB_Servers->count();
-  kConfig->writeEntry("Number", items);
   for(int i = 0; i < items; i++){
-    cindex.setNum(i);
-    server = "Server-" + cindex;
-    kConfig->writeEntry(server, LB_Servers->text(i));
+    recent.insert(0, LB_Servers->text(i));
   }
+  kConfig->writeEntry("RecentServers", recent);
 
   kConfig->setGroup("ChannelList");
   items = LB_Channels->count();

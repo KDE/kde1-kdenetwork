@@ -88,7 +88,6 @@ void PLabel::messageHandler(int fd, PukeMessage *pm)
 
 void PLabel::setWidget(QObject *_l)
 {
-  debug("PLabel setWidget(QObject *) called");
   if(_l != 0 && _l->inherits("QLabel") == FALSE)
     throw(errorInvalidSet(_l, className()));
 

@@ -138,6 +138,7 @@ servercontroller::servercontroller /*FOLD00*/
   kSircConfig->AutoRejoin = kConfig->readNumEntry("AutoRejoin", TRUE);
   kSircConfig->BackgroundPix = kConfig->readNumEntry("BackgroundPix", FALSE);
   kSircConfig->BackgroundFile = kConfig->readEntry("BackgroundFile");
+  kSircConfig->DisplayTopic = kConfig->readNumEntry("DisplayTopic", TRUE);
   
   kConfig->setGroup("GlobalOptions");
   options = new QPopupMenu(0, QString(name) + "_menu_options");

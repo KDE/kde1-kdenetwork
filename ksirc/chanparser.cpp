@@ -11,7 +11,7 @@
 QDict<parseFunc> ChannelParser::parserTable;
 
 
-ChannelParser::ChannelParser(KSircTopLevel *_top) /*FOLD00*/
+ChannelParser::ChannelParser(KSircTopLevel *_top) /*fold00*/
 {
   top = _top;
 
@@ -43,6 +43,7 @@ ChannelParser::ChannelParser(KSircTopLevel *_top) /*FOLD00*/
     parserTable.insert("*<*", new parseFunc(&parseINFOPart));
     parserTable.insert("*N*", new parseFunc(&parseINFOChangeNick));
     parserTable.insert("*+*", new parseFunc(&parseINFOMode));
+    parserTable.insert("*T*", new parseFunc(&parseINFOTopic));
     // End of info message
     parserTable.insert("*  ", new parseFunc(&parseCTCPAction));
   }
@@ -104,7 +105,7 @@ void ChannelParser::parse(QString string) /*fold00*/
   // If it's unkown we just fall out of the function
 }
 
-void ChannelParser::parseSSFEClear(QString string) /*FOLD00*/
+void ChannelParser::parseSSFEClear(QString string) /*fold00*/
 {
   string.detach();
   top->mainw->clear();
@@ -113,7 +114,7 @@ void ChannelParser::parseSSFEClear(QString string) /*FOLD00*/
   throw(parseSucc(QString(""))); // Null string, don't display anything
 }
 
-void ChannelParser::parseSSFEStatus(QString string) /*fold00*/
+void ChannelParser::parseSSFEStatus(QString string) /*FOLD00*/
 {
   string.detach();
   string.remove(0, 4); // strip off the first 4 characters
@@ -121,21 +122,33 @@ void ChannelParser::parseSSFEStatus(QString string) /*fold00*/
   if(string.length() < 8)
     throw(parseError("", "Unable to parse status string"));
   status = &string[8];
+  char nick[101], modes[101], chan[101], chanmode[101];
+  int found = sscanf(status, "%100s (%100[^)]) on %100s (%100[^)])", nick, modes, chan, chanmode);
+  if(found != 4)
+    throw(parseError("", "Unable to parse status string"));
+  QString status_line = chan;
+  status_line += QString(" (") + chanmode + ") " +  nick +  " (" + modes + ") ";
+  if(kSircConfig->DisplayTopic){
+    if(top->topic.length() > 0)
+      status_line += "T: " + top->topic;
+    else
+      status_line += "T: " + QString("<No Topic Set>");
+  }
 
-  if(strcmp(top->caption, status) != 0){
-    if(status[0] == '@')                 // If we're an op,,
+  if(strcmp(top->caption, status_line) != 0){
+    if(nick[0] == '@')                 // If we're an op,,
       // update the nicks popup menu
       top->opami = TRUE;                  // opami = true sets us to an op
     else
       top->opami = FALSE;                 // FALSE, were not an ops
     top->UserUpdateMenu();                // update the menu
-    top->setCaption(status);
-    top->setIconText(status);
+    top->setCaption(status_line);
+    top->setIconText(status_line);
     if(top->ticker) {
-      top->ticker->setCaption(status);
-      top->ticker->setIconText(status);
+      top->ticker->setCaption(status_line);
+      top->ticker->setIconText(status_line);
     }
-    top->caption = status;           // Make copy so we're not
+    top->caption = status_line;           // Make copy so we're not
     top->caption.detach();
     // constantly changing the title bar
   }
@@ -245,7 +258,7 @@ void ChannelParser::parseINFOError(QString string) /*fold00*/
   throw(parseSucc(string,kSircConfig->colour_error, top->pix_madsmile)); // Null string, don't display anything
 }
 
-void ChannelParser::parseINFONicks(QString in_string) /*FOLD00*/
+void ChannelParser::parseINFONicks(QString in_string) /*fold00*/
 {
 
   EString string = in_string;
@@ -342,7 +355,7 @@ void ChannelParser::parseINFONicks(QString in_string) /*FOLD00*/
   throw(parseSucc(QString("")));           // Parsing ok, don't print anything though
 }
 
-void ChannelParser::parseINFOJoin(QString string) /*FOLD00*/
+void ChannelParser::parseINFOJoin(QString string) /*fold00*/
 {
   char nick[101], channel[101];
   string.detach();
@@ -517,7 +530,7 @@ void ChannelParser::parseINFOChangeNick(QString string) /*fold00*/
   else {
     throw(parseSucc(QString("")));
     //	  warning("Toplevel-N: nick change search failed on %s", s3.data());
-  } /*FOLD01*/
+  } /*fold01*/
 
 }
 
@@ -687,4 +700,34 @@ void ChannelParser::parseCTCPAction(QString string) /*fold00*/
   string.remove(0, 2);      // * <something> use fancy * pixmap. Remove 2, leave one for space after te *
                             // why? looks cool for dorks
   throw(parseSucc(string, kSircConfig->colour_text, top->pix_star));
+}
+
+void ChannelParser::parseINFOTopic(QString string) /*FOLD00*/
+{
+  char channel[101];
+  string.detach();
+  string.remove(0, 4); // Remove the leading *T* and space
+  // *T* Topic for #kde: Don't use koffice! You will get into deep emotional problems!
+  int found = sscanf(string, "Topic for %100[^:]: ", channel);
+  if(found == 1){
+    // If this is the correct channel, set the status line for the topic
+    if(strcasecmp(top->channel_name, channel) == 0){
+      int start = string.find(": ")+1;
+      int end = string.length() - start;
+      top->topic = string.mid(start, end);
+    }
+  }
+  else {
+    found = sscanf(string, "%*s has changed the topic on channel %100s to", channel);
+    if(found == 1){
+      if(strcasecmp(top->channel_name, channel) == 0){
+        int start = string.find(" \"")+2;
+        int end = string.length() - start - 1; // 1 to remove trailing "
+        top->topic = string.mid(start, end);
+        QString cmd = "/eval &dostatus();\n";
+        top->sirc_write(cmd);
+      }
+    }
+  }
+  throw(parseSucc(" " + string, kSircConfig->colour_info, top->pix_bball));
 }

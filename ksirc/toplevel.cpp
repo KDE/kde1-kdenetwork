@@ -395,7 +395,7 @@ KSircTopLevel::~KSircTopLevel() /*fold00*/
 
 }
 
-void KSircTopLevel::show() /*fold00*/
+void KSircTopLevel::show() /*FOLD00*/
 {
   if(ticker){
     ticker->show();
@@ -482,7 +482,7 @@ void KSircTopLevel::TabNickCompletion()  /*FOLD00*/
   
 }
   
-void KSircTopLevel::sirc_receive(QString str) /*fold00*/
+void KSircTopLevel::sirc_receive(QString str) /*FOLD00*/
 {
 
   /* 
@@ -675,7 +675,7 @@ void KSircTopLevel::sirc_write(QString &str) /*fold00*/
 
 }
 
-ircListItem *KSircTopLevel::parse_input(QString &string) /*fold00*/
+ircListItem *KSircTopLevel::parse_input(QString &string) /*FOLD00*/
 {
 
   /* 
@@ -1061,7 +1061,7 @@ QString KSircTopLevel::findNick(QString part, uint which) /*fold00*/
     
 }
 
-void KSircTopLevel::openCutWindow() /*fold00*/
+void KSircTopLevel::openCutWindow() /*FOLD00*/
 {
   KSCutDialog *kscd = new KSCutDialog();
   QString buffer;
@@ -1150,7 +1150,7 @@ void KSircTopLevel::timerEvent( QTimerEvent * ){ /*fold00*/
 }
 #endif
 
-kstInside::kstInside ( QWidget * parent, const char * name, WFlags f,  /*fold00*/
+kstInside::kstInside ( QWidget * parent, const char * name, WFlags f,  /*FOLD00*/
 		       bool allowLines )
   : QFrame(parent, name, f, allowLines)
 {
@@ -1175,7 +1175,7 @@ kstInside::kstInside ( QWidget * parent, const char * name, WFlags f,  /*fold00*
 
 }
 
-kstInside::~kstInside() /*fold00*/
+kstInside::~kstInside() /*FOLD00*/
 {
   delete mainw;
   delete nicks;
@@ -1184,7 +1184,7 @@ kstInside::~kstInside() /*fold00*/
 }
 
 
-void kstInside::resizeEvent(QResizeEvent *e) /*fold00*/
+void kstInside::resizeEvent(QResizeEvent *e) /*FOLD00*/
 {
   QFrame::resizeEvent(e);
 
@@ -1194,11 +1194,9 @@ void kstInside::resizeEvent(QResizeEvent *e) /*fold00*/
 		     width() - 10, linee_height);
   pan->setGeometry(5, 5,
                    width() - 10, real_height - linee_height - 15);
-  debug("kstInsize: finished resize event");
-  
 }
 
-void kstInside::setName(const char *name) /*fold00*/
+void kstInside::setName(const char *name) /*FOLD00*/
 {
   QObject::setName(name);
   my_name = name;

@@ -47,18 +47,6 @@ PushButton {
 		MinimumSize {10 10}
 		MaximumSize {32767 32767}
 }
-ComboBox {
-		Style {ReadWrite}
-		SizeLimit {10}
-		Policy {AtTop}
-		AutoResize {FALSE}
-		Rect {120 30 230 30}
-		Name {ComboBox_1}
-		Variable {ComboB_ServerName}
-		LayoutStatus {NoLayout}
-		MinimumSize {10 10}
-		MaximumSize {32767 32767}
-}
 PushButton {
 		ToggleButton {FALSE}
 		Default {FALSE}
@@ -158,6 +146,16 @@ Label {
 		Rect {10 70 110 20}
 		Name {Label_6}
 		Font {"helvetica" 12 75 0 0 0 0 0 0}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+User {
+		UserClassHeader {enter_combo.h}
+		UserClassName {EnterCombo}
+		Rect {120 30 230 30}
+		Name {ServerNameCombo}
+		Variable {ComboB_ServerName}
 		LayoutStatus {NoLayout}
 		MinimumSize {10 10}
 		MaximumSize {32767 32767}

@@ -96,7 +96,6 @@ void PLineEdit::messageHandler(int fd, PukeMessage *pm)
 
 void PLineEdit::setWidget(QObject *_le)
 {
-  debug("Plined: setWidget(QObject *) called");
   if(_le != 0 && _le->inherits("QLineEdit") == FALSE)
     throw(errorInvalidSet(_le, className()));
 

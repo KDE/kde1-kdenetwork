@@ -42,7 +42,6 @@ void PPushButton::messageHandler(int fd, PukeMessage *pm)
 
 void PPushButton::setWidget(QObject *_qb)
 {
-  debug("PPushButton: setWidget(QObject *) called");
   if(_qb != 0 && _qb->inherits("QPushButton") == FALSE)
     throw(errorInvalidSet(_qb, className()));
 

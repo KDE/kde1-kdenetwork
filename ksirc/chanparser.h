@@ -262,6 +262,12 @@ private:
    * *  is a ctcp actiion.  Simply print a pretty * for the user
    */
   void parseCTCPAction(QString string);
+
+  /*
+   * *T* is a topic message, catch it and update the status is required
+   */
+  void parseINFOTopic(QString string);
+
   
 };
 

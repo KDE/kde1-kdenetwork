@@ -29,13 +29,15 @@ libksopenksirc_a_SOURCES = \
 	mopen_ksirc.cpp\
 	open_ksircData.cpp\
 	mopen_ksircData.cpp\
-	serverFileParser.cpp
+	serverFileParser.cpp\
+        enter_combo.cpp\
+        menter_combo.cpp
         
 # this option you can leave out. Just, if you use "make dist", you need it
-noinst_HEADERS = open_ksirc.h open_ksircData.h serverDataType.h serverFileParser.h 
+noinst_HEADERS = open_ksirc.h open_ksircData.h serverDataType.h serverFileParser.h enter_combo.h
 
 # just to make sure, automake makes them 
-BUILTSOURCES = mopen_ksirc.cpp mopen_ksircData.cpp   
+BUILTSOURCES = mopen_ksirc.cpp mopen_ksircData.cpp menter_combo.cpp
 
 # if you "make distclean", this files get removed. If you want to remove
 # them while "make clean", use CLEANFILES

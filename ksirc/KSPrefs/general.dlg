@@ -11,7 +11,7 @@ Dialog {
 }
 WidgetLayout {
 InitialPos {-1 -1}
-Size {400 300}
+Size {450 300}
 MinSize {0 0}
 MaxSize {32767 32767}
 Grid {10}
@@ -20,7 +20,7 @@ ButtonGroup {
 		Title {}
 		Alignment {Left}
 		Style {49}
-		Rect {10 10 380 110}
+		Rect {10 10 430 110}
 		Name {ButtonGroup_4}
 		LayoutStatus {NoLayout}
 		MinimumSize {10 10}
@@ -30,7 +30,7 @@ ButtonGroup {
 		Title {}
 		Alignment {Left}
 		Style {49}
-		Rect {10 160 380 130}
+		Rect {10 160 430 130}
 		Name {ButtonGroup_3}
 		LayoutStatus {NoLayout}
 		MinimumSize {10 10}
@@ -53,7 +53,7 @@ CheckBox {
 		Text {Beep on Notify}
 		AutoRepeat {FALSE}
 		AutoResize {FALSE}
-		Rect {210 20 170 30}
+		Rect {240 20 170 30}
 		Name {CheckBox_3}
 		Variable {CB_BeepNotify}
 		LayoutStatus {NoLayout}
@@ -77,7 +77,7 @@ CheckBox {
 		Text {Colour Picker Popup}
 		AutoRepeat {FALSE}
 		AutoResize {FALSE}
-		Rect {210 50 170 30}
+		Rect {240 50 170 30}
 		Name {CheckBox_5}
 		Variable {CB_ColourPicker}
 		LayoutStatus {NoLayout}
@@ -130,6 +130,18 @@ PushButton {
 		Rect {290 220 90 30}
 		Name {PushButton_7}
 		Variable {PB_BackgroundBrowse}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+CheckBox {
+		Checked {TRUE}
+		Text {Display Topic in Caption}
+		AutoRepeat {FALSE}
+		AutoResize {FALSE}
+		Rect {240 80 170 30}
+		Name {CheckBox_9}
+		Variable {CB_DisplayTopic}
 		LayoutStatus {NoLayout}
 		MinimumSize {10 10}
 		MaximumSize {32767 32767}

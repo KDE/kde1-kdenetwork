@@ -20,6 +20,7 @@ class kstInside;
 #include <qaccel.h>
 #include <qlcdnum.h>
 #include <qdict.h>
+#include <qlabel.h>
 
 #include <ktopwidget.h>
 #include <kmenubar.h>
@@ -67,7 +68,6 @@ class kstInside : QFrame
   QString mainw_name;
   QString nicks_name;
   QString linee_name;
-
 
 };
 
@@ -326,6 +326,10 @@ private:
     * Caption at the top of the window.
     */
   QString caption;
+  /**
+   * Current topic for the channel
+   */
+  QString topic;
 
   /**
     * Does the window have focus? 1 when yes, 0 when no.

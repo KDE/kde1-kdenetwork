@@ -79,7 +79,6 @@ void PKSircListBox::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
 
 void PKSircListBox::setWidget(QObject *_lb) /*FOLD00*/
 {
-  debug("PKSircListBox setWidget(QObject *) called");
   if(_lb != 0 && _lb->inherits("KSircListBox") == FALSE)
     throw(errorInvalidSet(_lb, className()));
 

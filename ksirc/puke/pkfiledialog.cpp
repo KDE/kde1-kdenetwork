@@ -88,7 +88,6 @@ void PKFileDialog::messageHandler(int fd, PukeMessage *pm)
 
 void PKFileDialog::setWidget(QObject *_kbfd)
 {
-  debug("PKFileDialog setWidget(QObject *) called");
   if(_kbfd != 0 && _kbfd->inherits("KFileBaseDialog") == FALSE)
     throw(errorInvalidSet(_kbfd, className()));
 

@@ -14,14 +14,14 @@ PObject *createWidget(CreateArgs &ca) /*FOLD00*/
 }
 
 
-PProgress::PProgress( PObject *parent) /*fold00*/
+PProgress::PProgress( PObject *parent) /*FOLD00*/
   : PWidget(parent)
 {
   //  debug("PProgress PProgress called");
   ksp = 0;
 }
 
-PProgress::~PProgress() /*fold00*/
+PProgress::~PProgress() /*FOLD00*/
 {
   //  debug("PProgress: in destructor"); 
   delete widget(); // Delete the frame
@@ -95,7 +95,6 @@ void PProgress::cancelPressed(){ /*FOLD00*/
 void PProgress::setWidget(QObject *_f) /*FOLD00*/
 {
   //  debug("PProgress setWidget called");
-  debug("PProgress setWidget(QObject *) called");
   if(_f != 0 && _f->inherits("KSProgress") == FALSE)
     throw(errorInvalidSet(_f, className()));
 

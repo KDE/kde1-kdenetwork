@@ -143,7 +143,6 @@ void PListBox::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
 
 void PListBox::setWidget(QObject *_lb) /*FOLD00*/
 {
-  debug("PListBox setWidget(QObject *) called");
   if(_lb != 0 && _lb->inherits("QListBox") == FALSE)
     throw(errorInvalidSet(_lb, className()));
 

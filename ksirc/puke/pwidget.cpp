@@ -166,7 +166,6 @@ void PWidget::messageHandler(int fd, PukeMessage *pm)
       pmRet.cArg = new char[15];
       pmRet.iTextSize = 15;
       QColor back = widget()->backgroundColor();
-      debug("Colour are: %d %d %d", back.red(), back.green(), back.blue());
       sprintf(pmRet.cArg, "%d,%d,%d", back.red(), back.green(), back.blue());
       
       pmRet.iCommand = -pm->iCommand;
@@ -178,7 +177,6 @@ void PWidget::messageHandler(int fd, PukeMessage *pm)
     }
   case PUKE_WIDGET_SET_BACKGROUND_PIXMAP:
     widget()->setBackgroundPixmap(QPixmap(pm->cArg));
-    debug("Current background Mode: %d", widget()->backgroundMode());
 
     pmRet.iCommand = -pm->iCommand;
     pmRet.iWinId = pm->iWinId;
@@ -258,7 +256,6 @@ void PWidget::messageHandler(int fd, PukeMessage *pm)
 
 void PWidget::setWidget(QObject *_w)
 {
-  debug("PWidget setWidget(QObject *) called");
   if(_w != 0 && _w->inherits("QWidget") == FALSE)
     throw(errorInvalidSet(_w, className()));
 

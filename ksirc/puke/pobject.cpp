@@ -80,7 +80,6 @@ void PObject::setWidget(QObject *_o) /*FOLD00*/
 {
   // Disconnect everything from the object we where listning too
   // Just in case it fires something off, we don't want to get it
-  debug("PObject: in setWidget");
   if(widget() != 0){
     disconnect(widget(), SIGNAL(destroyed()),
                this, SLOT(swidgetDestroyed()));
@@ -112,15 +111,11 @@ widgetId PObject::widgetIden() /*fold00*/
 }
 
 void PObject::swidgetDestroyed(){ /*FOLD00*/
-  debug("PObject: got destroy %d", widgetIden().iWinId);
   setWidget(0x0);
-  debug("PObject: widget pointer: %d", this->widget());
   if(manualTerm == FALSE){
     manTerm();
-    debug("PObject: delete this");
     delete this;
   }
-  debug("PObject: done destroy");
 }
 
 PukeController *PObject::controller() { /*FOLD00*/

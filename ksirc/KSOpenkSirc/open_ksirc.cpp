@@ -16,8 +16,11 @@
 #include <unistd.h>
 
 #include <qmessagebox.h>
+#include <qevent.h>
+#include <qkeycode.h>
 
 // #include <qapplication.h>
+#include <iostream.h>
 #include <kapp.h>
 
 QList<Server> Groups;
@@ -65,14 +68,15 @@ open_ksirc::open_ksirc
   conf->readListEntry("RecentServers", recent);
   char *rs;
   for(rs = recent.first(); rs != 0; rs=recent.next()){
+    cerr << "First listed: " << rs << endl;
     char *name = strtok(rs, ":");
     char *p =    strtok(NULL, ":");
     if(p == 0x0)
       p = "6667";
     QList<port> rp;
     rp.inSort(new port(p));
-    Groups.inSort( new Server(QString("Recent"), name, rp,
-			      QString("Recent Server"), ""));
+    Groups.insert(0, new Server(QString("Recent"), name, rp,
+				QString("Recent Server"), ""));
   }
 
 
@@ -96,7 +100,7 @@ open_ksirc::open_ksirc
   PB_Connect->setAutoDefault(TRUE);
 
   ComboB_ServerName->setFocus();
-  
+  connect(ComboB_ServerName, SIGNAL(enterPressed()), this, SLOT(clickConnect()));
 }
 
 // insert a sorted list of groups into ComboB_ServerGroup, note that 
@@ -210,6 +214,8 @@ void open_ksirc::clickConnect()
   QStrList recent;
   KConfig *conf = kapp->getConfig();
 
+  hide();
+
   server = ComboB_ServerName->currentText();
   port = atoi(ComboB_ServerPort->currentText());
 
@@ -233,12 +239,16 @@ void open_ksirc::clickConnect()
 //  debug("Str: %s", str.data());
   if(found == -1){
     recent.insert(0, str);
+    cerr << "Not found: " << str << endl;
     conf->writeEntry("RecentServers", recent);
+    conf->sync();
   }
   else {
     recent.remove(found);
     recent.insert(0, str);
+    cerr << "Found: " << str << endl;
     conf->writeEntry("RecentServers", recent);
+    conf->sync();
   }
   
   emit open_ksircprocess( server, port, script );
@@ -264,3 +274,4 @@ void open_ksirc::clickEdit()
 open_ksirc::~open_ksirc()
 {
 }
+

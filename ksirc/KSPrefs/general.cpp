@@ -42,6 +42,8 @@ general::general
   CB_AutoRejoin->setChecked(kConfig->readNumEntry("AutoRejoin", TRUE));
   kSircConfig->AutoRejoin = kConfig->readNumEntry("AutoRejoin", TRUE);
 
+  CB_DisplayTopic->setChecked(kSircConfig->DisplayTopic);
+
   // not yet =P
   CB_BackgroundPix->hide();
   CB_BackgroundPix->setChecked(kConfig->readNumEntry("BackgroundPix", FALSE));
@@ -83,6 +85,7 @@ void general::slot_apply()
   kSircConfig->AutoRejoin = CB_AutoRejoin->isChecked();
   kSircConfig->BackgroundPix = CB_BackgroundPix->isChecked();
   kSircConfig->BackgroundFile = SLE_BackgroundFile->text();
+  kSircConfig->DisplayTopic = CB_DisplayTopic->isChecked();
 
   kConfig->setGroup("General");
   kConfig->writeEntry("AutoCreateWin", kSircConfig->AutoCreateWin);
@@ -92,5 +95,6 @@ void general::slot_apply()
   kConfig->writeEntry("AutoRejoin", kSircConfig->AutoRejoin);
   kConfig->writeEntry("BackgroundPix", kSircConfig->BackgroundPix);
   kConfig->writeEntry("BackgroundFile", kSircConfig->BackgroundFile);
+  kConfig->writeEntry("DisplayTopic", kSircConfig->DisplayTopic);
   kConfig->sync();
 }

@@ -74,7 +74,6 @@ void PPopupMenu::messageHandler(int fd, PukeMessage *pm)
 
 void PPopupMenu::setWidget(QObject *_menu)
 {
-  debug("PPopupMenu setWidget(QObject *) called");
   if(_menu != 0 && _menu->inherits("QPopupMenu") == FALSE)
     throw(errorInvalidSet(_menu, className()));
 
