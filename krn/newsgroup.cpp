@@ -498,84 +498,96 @@ void collectChildren(ArticleList *parentThread,QList<ArticleList> *children)
     }
 }
 
+struct node
+{
+    Article *art;
+    bool placeholder;
+    void *parent;
+    QList <void> children;
+};
+
+QDict <node> *d;
+
+void do_insert(QString id,Article *art)
+{
+    node *a;
+    a=d->find(id);
+    if (a) //article is in the dict
+    {
+        if (a->placeholder && art)
+        {
+            a->art=art;
+            a->placeholder=false;
+        }
+    }
+    else //article is not in the dict
+    {
+        a=new node;
+        a->placeholder=false;
+        a->art=art;
+        d->insert (id,a);
+    }
+    node *last=a;
+    for (char *ref=art->Refs.last();ref!=0;ref=art->Refs.prev())
+    {
+        node *b=d->find(ref);
+        if (!b)
+        {
+            b=new node;
+            b->art=0;
+            b->placeholder=true;
+            d->insert (ref,b);
+            b->parent=0;
+        }
+        last->parent=b;
+        b->children.append(last);
+        last=b;
+        if (b->parent)
+            break;
+    }
+}
+
+void addToList(node *n,int dep,ArticleList *l)
+{
+    for (node *child=(node *)n->children.first();child!=0;child=(node *)n->children.next())
+    {
+        if (!(child->placeholder))
+        {
+            l->append(child->art);
+            child->art->threadDepth=dep;
+            addToList (child,dep+1,l);
+        }
+        else
+            addToList (child,dep,l);
+    }
+}
+
 void ArticleList::thread(bool sortBySubject=false)
 {
-    if (count()<2)
+    d=new QDict <node>;
+    for (Article *iter=this->first();iter!=0;iter=this->next())
     {
-        return; //not much to thread
+        do_insert(iter->ID,iter);
     }
-    QList <ArticleList> threads;
-    QListIterator <ArticleList> thread(threads);
-    threads.setAutoDelete(false);
-    Article *iter;
-    //Make a thread for each article
-    //And set their depth to 0
-    for (iter=this->first();iter!=0;iter=this->next())
+    node *n=new node;
+    n->placeholder=true;
+    n->art=0;
+    n->parent=0;
+    QDictIterator <node> it(*d);
+    while (it.current())
     {
-        ArticleList *l=new ArticleList;
-        l->append(iter);
-        threads.append(l);
-        iter->threadDepth=0;
-    }
-
-
-    thread.toFirst();
-    //Now consolidate threads
-    ArticleList *parentThread;
-    thread.toFirst();
-    for (;thread.current();++thread)
-    {
-        parentThread=thread.current();
-        if (thread.current()->visited)
-            continue;
-        if (thread.current()->isEmpty())
-            continue;
-        //look for current's children
-        collectChildren(parentThread,&threads);
-    }
-    clear();
-
-    //If requested, sort the threads by subject
-
-    QList <ArticleList> sortedThreads;
-    if (sortBySubject)
-    {
-        thread.toFirst();
-        for (;thread.current();++thread)
+        if (!(it.current()->parent))
         {
-            if (thread.current()->isEmpty())
-                continue;
-            uint i;
-            for (i=0;i<sortedThreads.count();i++)
-            {
-                if (noRe(sortedThreads.at(i)->first()->Subject)
-                    >=noRe(thread.current()->first()->Subject).data())
-                    //hijole with the condition!
-                    break;
-            }
-            if (i<sortedThreads.count())
-                sortedThreads.insert (i,thread.current());
-            else
-                sortedThreads.append (thread.current());
-            qApp->processEvents();
+            it.current()->parent=n;
+            n->children.append(it.current());
         }
-        threads=sortedThreads;
+        ++it;
     }
-
-    thread.toFirst();
-    for (;thread.current();++thread)
-    {
-        if (!thread.current()->isEmpty())
-        {
-            QListIterator <Article> it2(*thread.current());
-            for (;it2.current();++it2)
-            {
-                append(it2.current());
-            }
-        }
-    }
-
+    this->clear();
+    addToList (n,0,this);
+    delete d;
 }
+
 ArticleList::ArticleList()
 {
     visited=false;

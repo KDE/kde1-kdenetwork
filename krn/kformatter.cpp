@@ -454,7 +454,6 @@ QString KFormatter::htmlHeader()
         {
             QString headerName=iter;
             QString headerContents=message->Headers().FieldBody(iter).AsString().c_str();
-            debug("Header contents: %s",headerContents.data());
             header+="<b>"+headerName.leftJustify(10)+":</b> ";
 
             if(headerName=="Newsgroups" || headerName=="Followup-to")

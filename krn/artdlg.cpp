@@ -252,7 +252,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     
     
     status = new KStatusBar (this, "status");
-    status->insertItem ("         ", 1);
+    status->insertItem ("                 ", 1);
     status->insertItem ("", 2);
     status->show ();
     setStatusBar (status);
