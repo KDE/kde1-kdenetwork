@@ -326,7 +326,8 @@ void Artdlg::fillTree ()
     statusBar()->changeItem("Reading Article List",1);
     qApp->processEvents ();
     group->getList();
-    
+
+    debug ("flag!!!");
     list->setAutoUpdate(false);
     list->clear();
     artList.clear();
@@ -692,7 +693,7 @@ bool Artdlg::loadArt (QString id)
         }
         else
         {
-            if (list->lastRowVisible()<i)
+            if (list->lastRowVisible()<(i+1))
             {
                 list->setTopItem(i+2-(list->height()/list->cellHeight(i)));
             }

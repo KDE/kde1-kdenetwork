@@ -20,6 +20,7 @@
 #include "NNTP.h"
 #include <qstrlist.h>
 #include <qlist.h>
+#include <qbuffer.h>
 
 #include <gdbm.h>
 
@@ -274,9 +275,15 @@ void NewsGroup::getList()
     QString ac;
     ac=krnpath+data();
     QFile f(ac);
+    QByteArray arr(f.size());
+    
     if (f.open(IO_ReadOnly))
     {
-        QTextStream st(&f);
+        f.readBlock(arr.data(),f.size());
+        f.close();
+        QBuffer b(arr);
+        b.open(IO_ReadOnly);
+        QTextStream st(&b);
         while (!st.eof())
         {
             c++;
@@ -299,6 +306,8 @@ void NewsGroup::getList()
                 artList.append(spart);
             }
         }
+        b.close();
+        arr.resize(0);
     }
 }
 

@@ -350,9 +350,6 @@ int NNTP::listXover(int from,int to)
                     }
                     while (!qit.isEmpty());
                     
-                    //Write the article ID to the newsgroup file
-                    gi+=templ.at(OffsetID);
-                    gi+="\n";
                     
                     art.Subject=templ.at(OffsetSubject);
                     art.From=templ.at(OffsetFrom);
@@ -390,17 +387,15 @@ int NNTP::listXover(int from,int to)
                         sprintf (buffer,"Stored %d articles",counter);
                         emit newStatus(buffer);
                         counter++;
-                        
+                        //Write the article ID to the newsgroup file
+                        gi+=templ.at(OffsetID);
+                        gi+="\n";
                         art.save();
                     }
                     tok=strtok(NULL,"\n");
                 }
                 f.writeBlock(gi.data(),gi.length());
                 f.close();
-                QString command="cat ";
-                command=command+p+"| sort |uniq >"+p+"1; mv "+p+"1 "+p;
-                system (command.data());
-                
                 gdbm_sync(artdb);
             }
         }
