@@ -6,8 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: knu\n"
 "POT-Creation-Date: 1998-06-16 14:20+0200\n"
-"PO-Revision-Date: 1998-03-01 20:15 CET\n"
+"PO-Revision-Date: 1998-06-16 22:33 CEST\n"
 "Last-Translator: Serge \"sergio\" Tellène <tells@mygale.org>\n"
+"Last-Translator: Bertrand Leconte <B.Leconte@mail.dotcom.fr>\n"
 "Language-Team: Français\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso8859-1\n"
@@ -26,14 +27,12 @@ msgid "Host &resolution"
 msgstr "&Résolution de noms"
 
 #: knu.cpp:170
-#, fuzzy
 msgid "F&inger"
-msgstr "&Finger"
+msgstr "F&inger"
 
 #: knu.cpp:180 knu.cpp:325
-#, fuzzy
 msgid "&Matt's traceroute"
-msgstr "&Traceroute"
+msgstr "Traceroute de &Matt"
 
 #: knu.cpp:192
 msgid ""
@@ -45,7 +44,7 @@ msgstr ""
 "Il n'y a aucune commande autorisée\n"
 "dans le fichier de configuration.\n"
 "\n"
-"Vous n'allez avoir accès à aucune fonction ...\n"
+"Vous n'allez avoir accès à aucune fonction...\n"
 
 #: knu.cpp:237
 msgid "&New window"
@@ -61,16 +60,16 @@ msgstr "Sélectionner &tout"
 
 #: knu.cpp:254
 msgid "C&lear output window"
-msgstr "Effacer la fenêtre d'affichage"
+msgstr "&Effacer la fenêtre d'affichage"
 
 #: knu.cpp:257
 msgid "P&references..."
-msgstr "&Préférences ..."
+msgstr "&Préférences..."
 
 #: knu.cpp:272
-#, fuzzy, c-format
+#, c-format
 msgid "&About %s"
-msgstr "A propos de &Qt"
+msgstr "&A propos de %s"
 
 #: knu.cpp:274
 msgid "About &Qt"
@@ -82,7 +81,7 @@ msgstr "&Finger"
 
 #: knu.cpp:465
 msgid "About..."
-msgstr "&A propos ..."
+msgstr "A propos..."
 
 #: CommandDlg.cpp:120
 msgid "H&ost:"
@@ -101,8 +100,8 @@ msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
 msgstr ""
-"L'application correspondant à cette commande n'a pas été trouvée.\n"
-"Vous pouvez donner son chemin par le menu Edition->Préférences ..."
+"L'application correspondante à cette commande n'a pas été trouvée.\n"
+"Vous pouvez donner son chemin par le menu Edition->Préférences..."
 
 #: CommandDlg.cpp:340
 #, c-format
@@ -118,12 +117,12 @@ msgid ""
 "to configure it again.\n"
 msgstr ""
 "\n"
-"Incohérence détectée dans le fichier de configuration\n"
+"Il y a une incohérence dans le fichier de configuration\n"
 "%s/%src.\n"
 "Dans le groupe [%s], il n'y a pas\n"
 "d'entrée \"path=\" valide.\n"
 "\n"
-"Veuillez utiliser le menu Edition->Préférences ...\n"
+"Veuillez utiliser le menu Edition->Préférences...\n"
 "pour le configurer à nouveau.\n"
 
 #: CommandDlg.cpp:349
@@ -152,7 +151,7 @@ msgstr " - configuration"
 
 #: PingDlg.cpp:98 TracerouteDlg.cpp:99
 msgid "Make host &name resolution"
-msgstr "Résoudre le  &noms"
+msgstr "Résoudre les &noms"
 
 #: TracerouteDlg.cpp:116
 msgid "&Maximum number of hops:"
@@ -200,16 +199,12 @@ msgstr "Ser&veur :"
 
 #: HostDlg.cpp:332
 msgid "hos&t"
-msgstr ""
+msgstr "hos&t"
 
 #: HostDlg.cpp:336
 msgid "ns&lookup"
-msgstr ""
+msgstr "ns&lookup"
 
 #: FingerDlg.cpp:76
-#, fuzzy
 msgid "&User:"
 msgstr "&Utilisateur :"
-
-#~ msgid "Server:"
-#~ msgstr "Ser&veur :"
