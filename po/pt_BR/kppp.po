@@ -251,7 +251,7 @@ msgstr "Pausa "
 
 #: connect.cpp:469
 msgid "Timeout "
-msgstr "Timeout "
+msgstr "Tempo máximo "
 
 #: connect.cpp:483 connect.cpp:484
 msgid "Hangup"
@@ -808,7 +808,7 @@ msgstr "Configuração do kppp"
 
 #: general.cpp:56
 msgid "pppd Timeout:"
-msgstr "Timeout do pppd:"
+msgstr "Tempo máximo do pppd:"
 
 #: general.cpp:69
 msgid ""
@@ -1074,7 +1074,7 @@ msgstr ""
 
 #: general.cpp:386
 msgid "Modem Timeout:"
-msgstr "Timeout do Modem:"
+msgstr "Tempo máximo do Modem:"
 
 #: general.cpp:404
 msgid ""
@@ -1395,11 +1395,11 @@ msgstr "Gráfico"
 
 #: main.cpp:805
 msgid "Timeout expired while waiting for the PPP interface to come up!"
-msgstr ""
+msgstr "Tempo máximo esgotou-se na espera pela interface PPP !"
 
 #: main.cpp:810
 msgid "The pppd daemon died unexpectedly!"
-msgstr ""
+msgstr "O serviço pppd terminou inesperadamente !"
 
 #: main.cpp:818
 msgid "Details..."
@@ -1648,6 +1648,13 @@ msgid ""
 "\n"
 "chown {YourUsername} .kde/share/config/kppprc"
 msgstr ""
+"O arquivo de configuração da aplicação não pôde ser\n"
+"aberto nem para escrita nem para leitura.\n"
+"\n"
+"O superusuário pode ter que mudar suas permissões\n"
+"executando o seguinte comando em seu diretório-base:\n"
+"\n"
+"chown {SeuNomeDeUsuário} .kde/share/config/kppprc"
 
 #: modeminfo.cpp:38
 msgid "ATI Query"
@@ -1655,7 +1662,7 @@ msgstr "ATI Query"
 
 #: modeminfo.cpp:114
 msgid "Modem Query timed out."
-msgstr "Timeout nas perguntas ao Modem."
+msgstr "Estouro do tempo nas perguntas ao Modem."
 
 #: miniterm.cpp:162 miniterm.cpp:226 modeminfo.cpp:142
 msgid "Modem Ready"
