@@ -14,5 +14,5 @@ install-data-local:
 	ln -sf $(kde_htmldir)/en/kppp/kppp.html \
 	       $(kde_htmldir)/en/kppp/index.html
 
-kppp.html: kppp.sgml
+docs: kppp.sgml
 	ksgml2html kppp.sgml
