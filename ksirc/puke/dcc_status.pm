@@ -17,6 +17,9 @@
 
 &docommand("/load dcc_progress.pm");
 
+&docommand("/load plined.pm");
+&docommand("/load pprogress.pm");  
+
 use POSIX qw(getcwd);
 use strict;
 
