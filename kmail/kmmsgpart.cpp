@@ -6,7 +6,7 @@
 #include "kmmessage.h"
 #include "kmimemagic.h"
 #include <kapp.h>
-#include <kconfig.h>
+#include <ksimpleconfig.h>
 
 #include <mimelib/enum.h>
 #include <mimelib/body.h>
@@ -184,15 +184,31 @@ const QString KMMessagePart::iconName(void) const
     KConfig config(fileName);
     config.setGroup("KDE Desktop Entry");
     icon = config.readEntry("Icon");
-    if(icon.isEmpty()) // If no icon specified.
-      icon = "unknown.xpm";
   }
-  else
+  else //Try harder
   {
-    // not found, use default
-    icon = "unknown.xpm";
+    QString mime;
+    mime = mType + "/" + mSubtype;
+    dir.setPath(KApplication::kde_mimedir() + "/" + mType);
+    unsigned int i;
+    QString fqn;
+    for (i=0; i<dir.count(); i++)
+    {
+      if (strcmp (dir[i], ".") == 0 || strcmp (dir[i], "..") == 0)
+        continue;
+      fqn = dir.path();
+      fqn += "/";
+      fqn += dir[i];
+      //debug ("try: %s", fqn.data());
+      KSimpleConfig conf(fqn.data(), true);
+      conf.setGroup("KDE Desktop Entry");
+      if (conf.readEntry ("MimeType") == mime)
+        icon = conf.readEntry("Icon");
+    }
   }
 
+  if(icon.isEmpty()) // If no icon specified.
+    icon = "unknown.xpm";
   return KApplication::kde_icondir() + "/" + icon;
 }
 
