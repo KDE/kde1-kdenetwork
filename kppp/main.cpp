@@ -37,6 +37,7 @@
 #include <getopt.h>
 #endif
 
+
 #include "acctselect.h"
 #include "main.h"
 #include "version.h"
@@ -240,6 +241,7 @@ int main( int argc, char **argv ) {
   XPPPWidget xppp;
   p_xppp = &xppp;
 
+
   a.setMainWidget(&xppp);
   a.setTopWidget(&xppp);
 
@@ -334,7 +336,8 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
   con_win->setGeometry(QApplication::desktop()->width()/2-160,
 		    QApplication::desktop()->height()/2-55,
 		    320,110);
-  
+  KWM::setMiniIcon(con_win->winId(), app->getMiniIcon());
+
   // connect to the accounting object
   connect(&accounting, SIGNAL(changed(QString, QString)),
 	  con_win, SLOT(slotAccounting(QString, QString)));
@@ -356,6 +359,8 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
   con->setGeometry(QApplication::desktop()->width()/2-175,
 		    QApplication::desktop()->height()/2-55,
 		    350,110);
+
+
 
   this->setGeometry(QApplication::desktop()->width()/2-190,
 		    QApplication::desktop()->height()/2-75,

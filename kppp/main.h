@@ -56,6 +56,8 @@
 #include <qchkbox.h>
 
 #include <kapp.h>
+#include <kwm.h>
+
 #include <kconfig.h>
 
 #include "accounting.h"
