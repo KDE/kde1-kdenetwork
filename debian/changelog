@@ -1,3 +1,12 @@
+kdenetwork (4:1.1.1-19990612-2) unstable; urgency=low
+
+  * Migrating -dev files into their own package per Debian policy
+  * Changing Section to contrib/net (was contrib/mail) 
+  * Updating README.debian (still had old information in it)
+  * Added files in /etc/kde to conffiles directive
+
+ -- Ivan E. Moore II <rkrusty@debian.org>  Mon, 14 Jun 1999 03:30:56 -0400
+
 kdenetwork (4:1.1.1-19990612-1) unstable; urgency=low
 
   * new upstream CVS version

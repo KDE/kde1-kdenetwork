@@ -1,8 +1,11 @@
 KDE NOTICE
 ==========
 
-There are two version of kde.deb : one made by debian, and one made by
-kde. This version is created by debian. Bug reports should go to
-debian, not to kde.
+There used to be two versions of kde.deb : one made by debian, and
+one made by the KDE team. Fortunatly this has changed to the better
+and this package is both: the debian package and the kde package.
 
-Andreas Jellinghaus <aj@debian.org>  Sun, 12 Oct 1997 14:19:46 +0200
+Andreas Jellinghaus <aj@debian.org> used to maintain the debian part
+and I took over, when he orphaned them.
+
+Stephan Kulow <coolo@kde.org> Mon, 09 Mar 1998 23:14:46 +0100
