@@ -4,7 +4,7 @@ SUBDIRS = da de pt fr fi hu es hr pl cs it ro sk el no nl \
 	pt_BR ca zh_CN.GB2312 eo sv
 
 # this is a general list for merging!
-APPS = kbiff kcmktalkd kfinger kmail knu kppp krn ksirc ktalkd
+APPS = kbiff kcmktalkd kfinger kmail knu kppp krn ksirc ktalkd karchie
 
 merge:
 	@apps='$(APPS)'; \
