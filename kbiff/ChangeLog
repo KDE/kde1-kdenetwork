@@ -1,3 +1,12 @@
+02-01-98 - Kurt Granroth
+   o Changed imap code to use 'unseen' flag instead of 'recent'
+	o Slightly modified Trace.cpp code to compile on NetBSD (tip o' the hat
+	  to Jaromir Dolecek <jdolecek@per4mance.cz> for that).  Apparently,
+	  the va_start() macro on NetBSD does NOT like the (const char*)
+	  overloaded method for QString
+   o Small change to kbiffmonitor.cpp so that pop3 doesn't produce hundreds
+	  of new 'notify' boxes (patch by Martin Hill <mjhill@home.com>)
+
 01-30-98 - Kurt Granroth
    o Thanks to David Barth (dbarth@videotron.ca) for pointing out that
 	  older POP3 servers (ones that don't support UIDL) will cause KBiff

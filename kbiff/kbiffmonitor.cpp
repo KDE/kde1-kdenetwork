@@ -473,6 +473,10 @@ TRACEF("uidl_list.count() = %d", uidl_list.count());
 		}
 TRACEF("new messages = %d", messages);
 
+		// put this before the emit.  don't know why it matters... but it
+		// apparently does on some systems!
+		uidlList = uidl_list;
+
 		// if there are any new messages, then notify
 		if (messages > 0) 
 		{
@@ -490,8 +494,6 @@ TRACEF("new messages = %d", messages);
 		}
 		*/
 	}
-
-	uidlList = uidl_list;
 }
     
 void KBiffMonitor::determineState(KBiffMailState state)
