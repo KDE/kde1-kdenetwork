@@ -548,6 +548,7 @@ QString *NNTP::article(char *id)
     }
     else if(f.open (IO_WriteOnly))//get it, write it and return it
     {
+        bool success=false;
         int status=Article (id);
         if (status==220)
         {
@@ -555,8 +556,26 @@ QString *NNTP::article(char *id)
             f.close();
             delete data;
             data=article(id);
+            success=true;
         }
-        else
+        //for some reason some INN servers force
+        //readers to get head and body separately!
+        else if (status==223)
+        {
+            status=Head(id);
+            if (status==221)
+            {
+                f.writeBlock(TextResponse().data(),TextResponse().length());
+                status=Body(id);
+                if (status==222)
+                {
+                    f.writeBlock(TextResponse().data(),TextResponse().length());
+                }
+                else success=false;
+            }
+            else success=false;
+        }
+        if (!success)
         {
             warning ("error getting data\nserver said %s\n",StatusResponse().c_str());
             f.close();

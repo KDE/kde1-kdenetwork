@@ -798,6 +798,7 @@ bool Artdlg::actions (int action)
 
 bool Artdlg::loadArt (QString id)
 {
+    disconnect (list,SIGNAL(highlighted(int,int)),this,SLOT(loadArt(int,int)));
     setEnabled (false);
     acc->setEnabled(false);
     list->setEnabled(false);
@@ -823,6 +824,7 @@ bool Artdlg::loadArt (QString id)
                 QString s;
                 s.sprintf ("%d/%d",list->currentItem()+1,artList.count());
                 statusBar()->changeItem(s.data(),1);
+                connect (list,SIGNAL(highlighted(int,int)),this,SLOT(loadArt(int,int)));
                 return true;
                 break;
             }
@@ -842,6 +844,7 @@ bool Artdlg::loadArt (QString id)
             if (!server->isConnected())
             {
                 qApp->restoreOverrideCursor ();
+                connect (list,SIGNAL(highlighted(int,int)),this,SLOT(loadArt(int,int)));
                 return false;
             }
         }
@@ -891,6 +894,7 @@ bool Artdlg::loadArt (QString id)
     QString sb;
     sb.sprintf ("%d/%d",list->currentItem()+1,artList.count());
     statusBar()->changeItem(sb.data(),1);
+    connect (list,SIGNAL(highlighted(int,int)),this,SLOT(loadArt(int,int)));
     return true;
 }
 
