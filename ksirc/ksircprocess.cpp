@@ -88,6 +88,7 @@
 #include "ksircprocess.h"
 #include "toplevel.h"
 #include "ioBroadcast.h"
+#include "ioDiscard.h"
 #include "iocontroller.h"
 #include <iostream.h>
 
@@ -128,6 +129,7 @@ KSircProcess::KSircProcess( char *_server=0L, QObject * parent=0, const char * n
   default_follow_focus = TRUE;
 
   TopList.insert("!all", new KSircIOBroadcast(this));
+  TopList.insert("!discard", new KSircIODiscard(this));
   
   //  wm->show();
 
@@ -180,7 +182,7 @@ void KSircProcess::close_toplevel(KSircTopLevel *wm, char *name)
 
   bool is_default = FALSE; // Assume it's no default
 
-  if(TopList.count() <= 3){ // If this is the last window shut down
+  if(TopList.count() <= 4){ // If this is the last window shut down
     iocontrol->stdin_write(QString("/quit\n")); // kill sirc
     delete this; // Delete ourself, WARNING MUST RETURN SINCE WE NO
 		 // LONGER EXIST!!!!

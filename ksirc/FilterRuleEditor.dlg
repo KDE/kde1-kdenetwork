@@ -106,26 +106,6 @@ LineEdit {
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
 }
-ListBox {
-		DragSelect {TRUE}
-		AutoScroll {TRUE}
-		ScrollBar {FALSE}
-		AutoScrollBar {TRUE}
-		BottomScrollBar {FALSE}
-		AutoBottomScrollBar {TRUE}
-		SmoothScrolling {TRUE}
-		MultiSelection {FALSE}
-		Style {51}
-		LineWidth {2}
-		Rect {10 10 120 190}
-		Name {ListBox_2}
-		Variable {RuleList}
-		Signal {[Protected]  highlighted --> newHighlight  (int)}
-		Signal {[Protected]  selected --> newHighlight  (int)}
-		LayoutStatus {NoLayout}
-		MinimumSize {10 10}
-		MaximumSize {32767 32767}
-}
 PushButton {
 		ToggleButton {FALSE}
 		Default {FALSE}
@@ -208,6 +188,26 @@ PushButton {
 		Rect {75 210 55 30}
 		Name {PushButton_10}
 		Signal {[Protected]  clicked --> lowerRule  ()}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+ListBox {
+		DragSelect {FALSE}
+		AutoScroll {FALSE}
+		ScrollBar {FALSE}
+		AutoScrollBar {TRUE}
+		BottomScrollBar {FALSE}
+		AutoBottomScrollBar {FALSE}
+		SmoothScrolling {FALSE}
+		MultiSelection {FALSE}
+		Style {51}
+		LineWidth {2}
+		Rect {10 10 120 190}
+		Name {ListBox_2}
+		Variable {RuleList}
+		Signal {[Protected]  highlighted --> newHighlight  (int)}
+		Signal {[Protected]  selected --> newHighlight  (int)}
 		LayoutStatus {NoLayout}
 		MinimumSize {10 10}
 		MaximumSize {32767 32767}
