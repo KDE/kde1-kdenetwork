@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 1999-01-10 14:26+0100\n"
-"PO-Revision-Date: 1998-11-28 11:50+MET\n"
+"PO-Revision-Date: 1999-01-15 10:15+MET\n"
 "Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
 "Language-Team: de <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -14,35 +14,35 @@ msgstr ""
 
 #: kmailbox.cpp:150
 msgid "countMail: file open error"
-msgstr ""
+msgstr "countMail: Fehler beim Öffnen der Datei"
 
 #: korn.cpp:51
-#, fuzzy
 msgid "&Setup"
-msgstr "&Einrichtung..."
+msgstr "&Einrichtung"
 
 #: korn.cpp:54
-#, fuzzy
 msgid "&About"
-msgstr "&Über..."
+msgstr "&Über"
 
 #: korn.cpp:109
 msgid "korn: configure now?"
-msgstr ""
+msgstr "KOrn: jetzt einrichten?"
 
 #: korn.cpp:110
 msgid ""
 "you have not yet configured korn.\n"
 "would you like to do this now?"
 msgstr ""
+"Sie haben KOrn bisher nicht eingerichtet.\n"
+"Möchten Sie das jetzt tun?"
 
 #: korn.cpp:114
 msgid "No - Quit"
-msgstr ""
+msgstr "Nein - Abbrechen"
 
 #: korn.cpp:119
 msgid "personal"
-msgstr ""
+msgstr "Persönlich"
 
 #: korn.cpp:120
 msgid "Inbox"
@@ -56,170 +56,67 @@ msgid ""
 "\n"
 "The K Desktop Environment"
 msgstr ""
+"KOrn %s -- Sirtaj Singh Kang\n"
+"taj@kde.org, 1997\n"
+"\n"
+"Das K Desktop Environment"
 
 #: korn.cpp:249
-#, fuzzy
-msgid "About kOrn"
+msgid "About KOrn"
 msgstr "Über KOrn"
 
 #: korn.cpp:257
 msgid "korn: no config set"
-msgstr ""
+msgstr "KOrn: keine Konfiguration festgelegt"
 
 #: korn.cpp:258
 msgid ""
 "Would you like to restart korn with\n"
 "the automatically generated configuration?"
 msgstr ""
+"Möchten Sie KOrn mit der automatisch erzeugten\n"
+"Konfiguration neu starten?"
 
 #: korn.cpp:261
 msgid "Yes, Restart"
-msgstr ""
+msgstr "Ja. Neu starten."
 
 #: korn.cpp:261
 msgid "No, Exit"
 msgstr "Nein. Beenden."
 
 #: kornopt.cpp:24
-#, fuzzy
 msgid "korn options"
 msgstr "KOrn-Optionen"
 
 #: optdata.cpp:76
-#, fuzzy
 msgid "&New"
 msgstr "News"
 
 #: optdata.cpp:89
-#, fuzzy
 msgid "Boxes"
-msgstr "Post&fächer"
+msgstr "Postfächer"
 
 #: optdata.cpp:118
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 #: optdata.cpp:124
 msgid "Caption"
-msgstr "Bildunterschrift"
+msgstr "Untertitel"
 
 #: optdata.cpp:138
-#, fuzzy
 msgid "Path"
-msgstr "Pfad f. Fach"
+msgstr "Pfad"
 
 #: optdata.cpp:152
 msgid "Poll time (sec)"
-msgstr ""
+msgstr "Überprüfungsintervall (sec)"
 
 #: optdata.cpp:158
 msgid "Notify Command"
-msgstr ""
+msgstr "Befehl für Benachrichtigung"
 
 #: optdata.cpp:180
 msgid "Click Command"
-msgstr ""
-
-#~ msgid "Welcome to KOrn"
-#~ msgstr "Willkommen bei KOrn"
-
-#~ msgid ""
-#~ "You do not appear to have used KOrn before. Would you like a basic "
-#~ "configuration created for you?"
-#~ msgstr ""
-#~ "Sie haben KOrn anscheinend noch nicht benutzt. Möchten Sie, daß eine "
-#~ "einfache Voreinstellung für Sie erstellt wird?"
-
-#~ msgid "Can't find mailbox"
-#~ msgstr "Kann Postfach nicht finden"
-
-#~ msgid ""
-#~ "Unable to find $MAIL environment variable. You'll have to configure the "
-#~ "mailboxes yourself."
-#~ msgstr ""
-#~ "Kann $MAIL Umgebungs-Variable nicht finden. Sie müssen die Postfächer selbst "
-#~ "einrichten."
-
-#~ msgid " (clone)"
-#~ msgstr " (duplizieren)"
-
-#~ msgid "Select a mailbox type..."
-#~ msgstr "Art des Postfachs auswählen..."
-
-#~ msgid "O&K"
-#~ msgstr "&OK"
-
-#~ msgid "Horizontal"
-#~ msgstr "Horizontal"
-
-#~ msgid "Vertical"
-#~ msgstr "Vertikal"
-
-#~ msgid "Docked"
-#~ msgstr "Angedockt"
-
-#~ msgid "&Layout"
-#~ msgstr "&Layout"
-
-#~ msgid "&Modify Box"
-#~ msgstr "&Postfach bearbeiten"
-
-#~ msgid "&New Box"
-#~ msgstr "&Neues Postfach"
-
-#~ msgid "&Delete Box"
-#~ msgstr "Postfach &löschen"
-
-#~ msgid "&Clone Box"
-#~ msgstr "Postfach &duplizieren"
-
-#~ msgid "New Monitor"
-#~ msgstr "Neuer Monitor"
-
-#~ msgid "Korn Monitor"
-#~ msgstr "KOrn Monitor"
-
-#~ msgid "On Receipt"
-#~ msgstr "Bei Empfang"
-
-#~ msgid "On Click"
-#~ msgstr "Bei Anklicken"
-
-#~ msgid "General"
-#~ msgstr "Allgemein"
-
-#~ msgid "Poll"
-#~ msgstr "Nachsehen"
-
-#~ msgid "Check Frequency (sec)"
-#~ msgstr "Wie oft nachsehen (sec)?"
-
-#~ msgid "Mailbox"
-#~ msgstr "Postfach"
-
-#~ msgid "Maildir"
-#~ msgstr "Ordner f. Post"
-
-#~ msgid "Maildir Path"
-#~ msgstr "Pfad f. Post"
-
-#~ msgid "Server"
-#~ msgstr "Server"
-
-#~ msgid "Port"
-#~ msgstr "Port"
-
-#~ msgid "Username"
-#~ msgstr "Benutzername"
-
-#~ msgid "Password"
-#~ msgstr "Paßwort"
-
-#~ msgid "Save Password"
-#~ msgstr "Paßwort sichern"
-
-#~ msgid "Group"
-#~ msgstr "Gruppe"
-
-#~ msgid "Browse.."
-#~ msgstr "Durchsuchen..."
+msgstr "Klickbefehl"
