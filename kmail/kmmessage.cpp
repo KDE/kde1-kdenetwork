@@ -406,18 +406,18 @@ const QString KMMessage::asQuotedString(const QString aHeaderStr,
 KMMessage* KMMessage::createReply(bool replyToAll)
 {
   KMMessage* msg = new KMMessage;
-  QString str, replyStr, loopToStr, replyToStr, toStr;
+  QString str, replyStr, mailingListStr, replyToStr, toStr, refStr;
 
   msg->initHeader();
 
-  loopToStr = headerField("X-Loop");
+  mailingListStr = headerField("X-Mailing-List");
   replyToStr = replyTo();
 
   if (replyToAll)
   {
     int i;
     if (!replyToStr.isEmpty()) toStr += replyToStr + ", ";
-    else if (!loopToStr.isEmpty()) toStr = loopToStr + ", ";
+    // else if (!loopToStr.isEmpty()) toStr = loopToStr + ", "; //no to loop
     if (!from().isEmpty()) toStr += from() + ", ";
     if (!to().isEmpty()) toStr += to() + ", ";
     toStr = toStr.simplifyWhiteSpace() + " ";
@@ -446,24 +446,57 @@ KMMessage* KMMessage::createReply(bool replyToAll)
       ccStr = ccStr.left(pos1) + toStr.right(ccStr.size() - pos2 - 1); //Daniel
     }
     ccStr.truncate(ccStr.length()-2);
-    msg->setCc(ccStr);
+
+    // remove leading or trailing "," and spaces - might confuse some MTAs
+    if (!ccStr.isEmpty())
+    {
+      ccStr = ccStr.stripWhiteSpace(); //from start and end
+      if (ccStr[0] == ',')  ccStr[0] = ' ';
+      ccStr = ccStr.simplifyWhiteSpace(); //mAybe it was ",  "
+      if (ccStr[ccStr.length()-1] == ',')
+        ccStr.truncate(ccStr.length()-1);
+      msg->setCc(ccStr);
+    }
+    
   }
   else
   {
     if (!replyToStr.isEmpty()) toStr = replyToStr;
-    else if (!loopToStr.isEmpty()) toStr = loopToStr; // move this down? sven
+    // else if (!loopToStr.isEmpty()) toStr = loopToStr; //no sending to loop
     else if (!from().isEmpty()) toStr = from();
   }
 
-  if (!toStr.isEmpty()) msg->setTo(toStr);
+  
+  // remove leading or trailing "," and spaces - might confuse some MTAs
+  if (!toStr.isEmpty())
+  {
+    toStr = toStr.stripWhiteSpace(); //from start and end
+    if (toStr[0] == ',')  toStr[0] = ' ';
+    toStr = toStr.simplifyWhiteSpace(); //maybe it was ",  "
+    if (toStr[toStr.length()-1] == ',')
+      toStr.truncate(toStr.length()-1);
+    msg->setTo(toStr);
+  }
 
-  if (replyToAll || !loopToStr.isEmpty()) replyStr = sReplyAllStr;
+  
+
+  //References = original "In-Reply-To"
+  //should add  original "References" too but it would bloat the message
+  refStr = headerField("In-Reply-To"); // + " " + headerField("References");
+  refStr.stripWhiteSpace();
+  if (!refStr.isEmpty())
+    msg->setReferences(refStr);
+  //debug ("References: %s", refStr.data());
+
+  //In-Reply-To = original msg-id
+  msg->setHeaderField("In-Reply-To", headerField("Message-Id"));
+  //debug ("In-Reply-To: %s", headerField("Message-Id").data());
+
+  if (replyToAll || !mailingListStr.isEmpty()) replyStr = sReplyAllStr;
   else replyStr = sReplyStr;
 
-  //debug("msg-id: %s", headerField("Message-Id").data());
-  msg->setReferences(headerField("Message-Id"));
   msg->setBody(asQuotedString(replyStr, sIndentPrefixStr));
-
+  
   if (strnicmp(subject(), "Re:", 3)!=0)
     msg->setSubject("Re: " + subject());
   else msg->setSubject(subject());
@@ -493,7 +526,7 @@ KMMessage* KMMessage::createForward(void)
   str += "From: " + from() + "\n";
   str += "\n";
   str = asQuotedString(str, "", FALSE);
-
+  str += "\n-------------------------------------------------------\n";
   if (numBodyParts() <= 0)
   {
     msg->setBody(str);
