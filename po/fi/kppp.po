@@ -64,10 +64,12 @@ msgid ""
 "Are you sure you want to delete\n"
 "the account \"%s\"?"
 msgstr ""
+"Oletko varma että haluat tuhota\n"
+"profiilin \"%s\"?"
 
 #: accounts.cpp:299
 msgid "Confirm"
-msgstr ""
+msgstr "Varmista"
 
 #: accounts.cpp:321
 msgid "New Account"
@@ -480,7 +482,7 @@ msgstr "Pienennä ikkunan sisältö yhdistettäessä"
 
 #: general.cpp:124
 msgid "Dock into Panel on Connect"
-msgstr ""
+msgstr "Siirrä paneliin yhdistettäessä"
 
 #: general.cpp:187
 msgid "About kppp"
@@ -1000,13 +1002,12 @@ msgid "kppp: rulefile is ok\n"
 msgstr "kppp: sääntötiedosto on OK\n"
 
 #: docking.cpp:71 docking.cpp:219
-#, fuzzy
 msgid "Restore"
-msgstr "Resetoi modeemi"
+msgstr "Palauta"
 
 #: docking.cpp:217
 msgid "Minimize"
-msgstr ""
+msgstr "Pienennä"
 
 #: runtests.cpp:97
 msgid ""
@@ -1015,6 +1016,10 @@ msgid ""
 "Make sure that pppd is installed and\n"
 "you have entered the correct path.\n"
 msgstr ""
+"En löydä pppd-daemonia!\n"
+"\n"
+"Varmista että pppd on asennettu\n"
+"ja olet antanut oikean polun.\n"
 
 #: runtests.cpp:109
 msgid ""
@@ -1024,6 +1029,11 @@ msgid ""
 "Contact your system administrator\n"
 "and ask to get access to pppd."
 msgstr ""
+"Sinulla ei ole oikeuksia pppd:n\n"
+"käynnistykseen!\n"
+"\n"
+"Ota yhteys systeemin ylläpitäjään ja\n"
+"pyydä oikeudet pppd ohjelmaan."
 
 #: runtests.cpp:120
 msgid ""
@@ -1033,6 +1043,11 @@ msgid ""
 "with the SUID bit set. Contact your\n"
 "system administrator."
 msgstr ""
+"pppd ei ole oikein asennettu!\n"
+"\n"
+"pppd ohjelma pitää olla asennettu\n"
+"SUID bitti asetettuna. Ota yhteys\n"
+"systeemin ylläpitäjään."
 
 #: runtests.cpp:141
 #, c-format
@@ -1041,3 +1056,6 @@ msgid ""
 "\n"
 "Setting default back to \"%s\"."
 msgstr ""
+"Lokinnäyttäjää \"%s\" ei löydy!\n"
+"\n"
+"Asetan oletuksen takaisin \"%s\":n."

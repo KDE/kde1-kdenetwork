@@ -73,7 +73,7 @@ msgstr "Hae aiheet"
 
 #: groupdlg.cpp:138 groupdlg.cpp:144
 msgid "Get Articles"
-msgstr "Hae artikkelit"
+msgstr "Hae viestit"
 
 #: artdlg.cpp:214 groupdlg.cpp:139 groupdlg.cpp:147 groupdlg.cpp:155
 msgid "Catchup"
@@ -93,11 +93,11 @@ msgstr "Merkkaa/Poista merkki"
 
 #: artdlg.cpp:124 artdlg.cpp:184 groupdlg.cpp:157 groupdlg.cpp:213
 msgid "Post New Article"
-msgstr "Lähetä uusi artikkeli"
+msgstr "Lähetä uusi viesti"
 
 #: groupdlg.cpp:158
 msgid "Post All Queued Articles"
-msgstr "Lähetä kaikki jonossa olevat artikkelit"
+msgstr "Lähetä kaikki jonossa olevat viestit"
 
 #: groupdlg.cpp:160
 msgid "&Subscribed"
@@ -116,9 +116,8 @@ msgid "NNTP Options..."
 msgstr "NNTP Asetukset..."
 
 #: groupdlg.cpp:168
-#, fuzzy
 msgid "Expire Options..."
-msgstr "NNTP Asetukset..."
+msgstr "Kuoletuksen asetukset..."
 
 #: groupdlg.cpp:174
 msgid "About Krn..."
@@ -146,7 +145,7 @@ msgstr "Hae ryhmä"
 
 #: groupdlg.cpp:210
 msgid "Check for Unread Articles"
-msgstr "Tarkista lukemattomat artikkelit"
+msgstr "Tarkista lukemattomat viestit"
 
 #: groupdlg.cpp:297
 msgid "Sorry!"
@@ -262,7 +261,7 @@ msgstr "Pura"
 
 #: artdlg.cpp:113 artdlg.cpp:135
 msgid "Don't expire"
-msgstr "Älä ikäännytä"
+msgstr "Älä kuoleta"
 
 #: artdlg.cpp:125 artdlg.cpp:187
 msgid "Reply by Mail"
@@ -334,11 +333,11 @@ msgstr "Vastaa & Postita"
 
 #: artdlg.cpp:202
 msgid "Get Article List"
-msgstr "Hae artikkelilista"
+msgstr "Hae viestilista"
 
 #: artdlg.cpp:205
 msgid "Tag Article"
-msgstr "Merkkaa artikkeli"
+msgstr "Merkkaa viesti"
 
 #: artdlg.cpp:208
 msgid "Lock (keep in cache)"
@@ -346,7 +345,7 @@ msgstr "Lukitse (pidä välimustissa)"
 
 #: artdlg.cpp:211
 msgid "Decode Article"
-msgstr "Pura artikkeli"
+msgstr "Pura viesti"
 
 #: artdlg.cpp:234
 msgid "Sender"
@@ -370,24 +369,23 @@ msgstr "Säikeet..."
 
 #: artdlg.cpp:405
 msgid "Showing Article List"
-msgstr "Näytä artikkelilista"
+msgstr "Näytä viestilista"
 
 #: artdlg.cpp:968
 msgid "KRN - Existing File"
-msgstr ""
+msgstr "KRN - Olemassaoleva tiedosto"
 
 #: artdlg.cpp:969
 msgid "The File you selected already exists"
-msgstr ""
+msgstr "Valitsemasi tiedosto on jo olemassa"
 
 #: artdlg.cpp:975
 msgid "OverWrite"
-msgstr ""
+msgstr "Ylikirjoita"
 
 #: artdlg.cpp:977
-#, fuzzy
 msgid "Append"
-msgstr "Lähetä"
+msgstr "Lisää"
 
 #: artdlg.cpp:1024
 msgid ""
@@ -396,12 +394,12 @@ msgid ""
 "Server said:\n"
 msgstr ""
 "\n"
-"Virhe artikkelia haettaessa.\n"
+"Virhe viestiä haettaessa.\n"
 "Palvelin sanoi:\n"
 
 #: artdlg.cpp:1122
 msgid "Getting Article List"
-msgstr "Haen artikkelilistaa"
+msgstr "Haen viestilistaa"
 
 #: identDlg.cpp:40
 msgid "KRN-Identity Configuration"
@@ -593,34 +591,28 @@ msgid "&Followup-To:"
 msgstr "&Kopiot"
 
 #: kmcomposewin.cpp:359
-#, fuzzy
 msgid "&Send"
-msgstr "Lähetä"
+msgstr "&Lähetä"
 
 #: kmcomposewin.cpp:362
-#, fuzzy
 msgid "S&end later"
-msgstr "Lähetä myöhemmin"
+msgstr "Lähetä &myöhemmin"
 
 #: kmcomposewin.cpp:364
-#, fuzzy
 msgid "S&end now"
-msgstr "Lähetä nyt"
+msgstr "Lähetä &nyt"
 
 #: kmcomposewin.cpp:366
-#, fuzzy
 msgid "&Insert File..."
-msgstr "Lisää &Tiedosto"
+msgstr "Lisää &Tiedosto..."
 
 #: kmcomposewin.cpp:369
-#, fuzzy
 msgid "&Addressbook..."
-msgstr "Osoitekirja"
+msgstr "Osoitekirja..."
 
 #: kmcomposewin.cpp:374
-#, fuzzy
 msgid "&New Composer..."
-msgstr "&Uusi kirjoitusohjelma"
+msgstr "&Uusi kirjoitusohjelma..."
 
 #: kmcomposewin.cpp:395
 msgid "Mark all"
@@ -632,15 +624,15 @@ msgstr "Etsi..."
 
 #: kmcomposewin.cpp:406
 msgid "&Urgent"
-msgstr ""
+msgstr "&Kiireinen"
 
 #: kmcomposewin.cpp:408
 msgid "&Confirm delivery"
-msgstr ""
+msgstr "&Varmista perillepääsy"
 
 #: kmcomposewin.cpp:410
 msgid "&Confirm read"
-msgstr ""
+msgstr "&Varmista lukeminen"
 
 #: kmcomposewin.cpp:422
 msgid "&All Fields"
@@ -719,9 +711,8 @@ msgid "Print message"
 msgstr "Tulosta viesti"
 
 #: kmcomposewin.cpp:503
-#, fuzzy
 msgid "Open addressbook..."
-msgstr "&Osoitekirja"
+msgstr "&Osoitekirja..."
 
 #: kmcomposewin.cpp:512
 msgid "sign message"
@@ -789,9 +780,8 @@ msgid "Attach..."
 msgstr "Liitä..."
 
 #: kmcomposewin.cpp:1110 kmreaderwin.cpp:636
-#, fuzzy
 msgid "View Attachment: "
-msgstr "Liiteet: "
+msgstr "Näytä Liiteet: "
 
 #: kmcomposewin.cpp:1215 kpgp.cpp:351
 msgid ""
@@ -803,7 +793,7 @@ msgstr ""
 
 #: kmcomposewin.cpp:1223
 msgid "unnamed"
-msgstr ""
+msgstr "nimetön"
 
 #: kmcomposewin.cpp:1238
 msgid "To:"
@@ -823,12 +813,13 @@ msgstr "Valitse allekirjoitustiedosto"
 
 #: kmcomposewin.cpp:1359
 msgid "KMail: Spellcheck"
-msgstr ""
+msgstr "KMail: Oikeinkirjoitus"
 
 #: kmcomposewin.cpp:1383
 msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
 msgstr ""
+"Virhe käynnistettäessä ohjelmaa KSpell. Varmista että ISpell on oikein asetettu."
 
 #: kmsender.cpp:103
 msgid ""
@@ -1222,45 +1213,17 @@ msgstr "Osoitekirjan hallinta"
 
 #: expireDlg.cpp:19
 msgid "KRN - Expire Settings"
-msgstr ""
+msgstr "KRN - Kuoletuksen asetukset"
 
 #: expireDlg.cpp:27 expireDlg.cpp:52
 msgid "For how long should we keep things (in days)?"
-msgstr ""
+msgstr "Kauanko viestejä säilytetään (päivissä)?"
 
 #: expireDlg.cpp:30
-#, fuzzy
 msgid "Article Bodies:"
-msgstr "Hae artikkelilista"
+msgstr "Viestirungot:"
 
 #: expireDlg.cpp:40
 msgid "Article Headers:"
-msgstr ""
+msgstr "Viestien otsikot:"
 
-#, fuzzy
-#~ msgid "KRN Composer"
-#~ msgstr "&Uusi kirjoitusohjelma"
-
-#~ msgid "Send &later"
-#~ msgstr "Lähetä &myöhemmin"
-
-#~ msgid "Recip&ients..."
-#~ msgstr "Va&staanottajat"
-
-#~ msgid "Insert &File"
-#~ msgstr "Lisää &Tiedosto"
-
-#~ msgid "High"
-#~ msgstr "Korkea"
-
-#~ msgid "Low"
-#~ msgstr "Matala"
-
-#~ msgid "Priority"
-#~ msgstr "Prioriteetti"
-
-#~ msgid "&Message"
-#~ msgstr "&Viesti"
-
-#~ msgid "&Article"
-#~ msgstr "&Artikkeli"

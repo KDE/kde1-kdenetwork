@@ -1,18 +1,10 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: kmail\n"
 "POT-Creation-Date: 1998-01-23 23:18+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Kim Enkovaara <kim.enkovaara@iki.fi>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
-"Content-Transfer-Encoding: ENCODING\n"
 
 #: kmcomposewin.cpp:1177 kmmainwin.cpp:261 kpgp.cpp:351
 msgid ""
@@ -232,9 +224,8 @@ msgid "&Set Status"
 msgstr "&Aseta tila"
 
 #: kmmainwin.cpp:801
-#, fuzzy
 msgid "Send again..."
-msgstr "Lähetä..."
+msgstr "Lähetä uudelleen..."
 
 #: kmmainwin.cpp:804
 msgid "View Source..."
@@ -482,53 +473,48 @@ msgid "Use monospaced font"
 msgstr "Käytä kiinteävälistä kirjasinta"
 
 #: kmsettings.cpp:360
-#, fuzzy
 msgid "When sending mail"
-msgstr "Postin lähetys"
+msgstr "Postia lähetettäessä"
 
 #: kmsettings.cpp:363
 msgid "Default sending:"
-msgstr ""
+msgstr "Oletuslähetys:"
 
 #: kmsettings.cpp:366
-#, fuzzy
 msgid "send now"
-msgstr "Lähetä nyt"
+msgstr "lähetä nyt"
 
 #: kmsettings.cpp:370
-#, fuzzy
 msgid "send later"
-msgstr "Lähetä &myöhemmin"
+msgstr "lähetä myöhemmin"
 
 #: kmsettings.cpp:375
-#, fuzzy
 msgid "Send messages:"
-msgstr "Lähetän viestiä: "
+msgstr "Lähetän viestejä: "
 
 #: kmsettings.cpp:378
 msgid "Allow 8-bit"
-msgstr ""
+msgstr "Salli 8-bittiä"
 
 #: kmsettings.cpp:383
 msgid "MIME Compilant (Quoted Printable)"
-msgstr ""
+msgstr "MIME Yhteensopiva (QP)"
 
 #: kmsettings.cpp:409
 msgid "Composer"
 msgstr "Kirjoitusohjelma"
 
 #: kmsettings.cpp:426
-#, fuzzy
 msgid "Folders"
-msgstr "Kansio"
+msgstr "Kansiot"
 
 #: kmsettings.cpp:430
 msgid "empty trash on exit"
-msgstr ""
+msgstr "tyhjennä roskat lopetetettaessa"
 
 #: kmsettings.cpp:443
 msgid "Misc"
-msgstr ""
+msgstr "Sekalaista"
 
 #: kmsettings.cpp:505
 msgid "Select Account"
@@ -587,14 +573,12 @@ msgid "Choose Location"
 msgstr "Valitse sijainti"
 
 #: kmaccount.cpp:105
-#, fuzzy
 msgid "Receipt: "
-msgstr "Vastaa: "
+msgstr "Kuittaus: "
 
 #: kmaccount.cpp:133
-#, fuzzy
 msgid "Failed to add message:"
-msgstr "Viestin tallennus epäonnistui"
+msgstr "Viestin lisäys epäonnistui"
 
 #: kmcomposewin.cpp:111 kmheaders.cpp:35
 msgid "F"
@@ -670,29 +654,24 @@ msgid "&Followup-To:"
 msgstr "&Kopiot:"
 
 #: kmcomposewin.cpp:335
-#, fuzzy
 msgid "&Send"
-msgstr "Lähetä"
+msgstr "&Lähetä"
 
 #: kmcomposewin.cpp:338
-#, fuzzy
 msgid "S&end later"
 msgstr "Lähetä &myöhemmin"
 
 #: kmcomposewin.cpp:340
-#, fuzzy
 msgid "S&end now"
-msgstr "Lähetä nyt"
+msgstr "Lähetä &nyt"
 
 #: kmcomposewin.cpp:342
-#, fuzzy
 msgid "&Insert File..."
-msgstr "Liitä tiedosto"
+msgstr "Liitä &tiedosto"
 
 #: kmcomposewin.cpp:350
-#, fuzzy
 msgid "&New Composer..."
-msgstr "&Uusi viesti"
+msgstr "&Uusi viesti..."
 
 #: kmcomposewin.cpp:371
 msgid "Mark all"
@@ -704,16 +683,15 @@ msgstr "Etsi..."
 
 #: kmcomposewin.cpp:382
 msgid "&Urgent"
-msgstr ""
+msgstr "&Kiireinen"
 
 #: kmcomposewin.cpp:384
 msgid "&Confirm delivery"
-msgstr ""
+msgstr "&Varmista lähetys"
 
 #: kmcomposewin.cpp:386
-#, fuzzy
 msgid "&Confirm read"
-msgstr "Varmistus"
+msgstr "Varmista &luku"
 
 #: kmcomposewin.cpp:398
 msgid "&All Fields"
@@ -776,7 +754,6 @@ msgid "&Attach"
 msgstr "&Liitä"
 
 #: kmcomposewin.cpp:488
-#, fuzzy
 msgid "sign message"
 msgstr "allekirjoita viesti"
 
@@ -842,9 +819,8 @@ msgid "Attach..."
 msgstr "Liite..."
 
 #: kmcomposewin.cpp:1072 kmreaderwin.cpp:636
-#, fuzzy
 msgid "View Attachment: "
-msgstr "Liitteet: "
+msgstr "Näytä Liitteet: "
 
 #: kmcomposewin.cpp:1200
 msgid "To:"
@@ -860,12 +836,13 @@ msgstr "Päivä:"
 
 #: kmcomposewin.cpp:1322
 msgid "KMail: Spellcheck"
-msgstr ""
+msgstr "KMail: Oikeinkirjoitus"
 
 #: kmcomposewin.cpp:1346
 msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
 msgstr ""
+"Virhe käynnistettäessä KSpelliä. Varmista että ISpell on oikein asetettu."
 
 #: kmfolder.cpp:133
 #, c-format
@@ -1469,26 +1446,3 @@ msgstr "Osoite&kirjan hallinta"
 msgid "&Abort"
 msgstr "&Poistu"
 
-#~ msgid "Send &later"
-#~ msgstr "Lähetä &myöhemmin"
-
-#~ msgid "Address &Book..."
-#~ msgstr "Osoite&kirja"
-
-#~ msgid "New &Composer"
-#~ msgstr "&Uusi viesti"
-
-#~ msgid "Recip&ients..."
-#~ msgstr "&Vastaanottajat..."
-
-#~ msgid "Insert &File"
-#~ msgstr "Liitä tiedosto"
-
-#~ msgid "High"
-#~ msgstr "Korkea"
-
-#~ msgid "Low"
-#~ msgstr "Matala"
-
-#~ msgid "Priority"
-#~ msgstr "Prioriteetti"
