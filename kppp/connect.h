@@ -115,6 +115,7 @@ private:
   QTimer *timeout_timer;
   bool execppp();
   void writeline(const char*);
+  void checkBuffers();
   
   void setExpect(const char *);
   bool expecting;

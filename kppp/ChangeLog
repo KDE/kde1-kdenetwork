@@ -1,3 +1,8 @@
+1999-07-11  Harri Porten  <porten@kde.org>
+
+	* connect.cpp: moved some code from readChar() into checkBuffers() 
+	to clean up the setExpect() race condition fix.
+
 1999-07-06  Harri Porten  <porten@kde.org>
 
 	* modem.cpp: adhere to the lock file format described in the
