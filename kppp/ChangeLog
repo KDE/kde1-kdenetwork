@@ -1,3 +1,8 @@
+1998-05-15  Harri Porten  <porten@tu-harburg.de>
+
+	* pppdata.cpp: temporary workaround for KConfig bug concerning
+	lists without a trailing separator 
+
 Fri May 15 22:27:02 1998    Mario Weilguni <mweilguni@kde.org>
 	* removed the writeline("") once again, it does not work
 

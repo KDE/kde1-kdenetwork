@@ -820,6 +820,14 @@ void XPPPWidget::connectbutton() {
     }
   }
   
+  if (strlen(gpppdata.phonenumber()) == 0) {
+    QString s;
+    s.sprintf(klocale->translate("You have to specify a telephone "
+                                 "number !\n"));
+    QMessageBox::warning(this, klocale->translate("Error"), s.data());
+    return;
+  }
+
   this->hide();
 
   QString tit = klocale->translate("Connecting to: ");
