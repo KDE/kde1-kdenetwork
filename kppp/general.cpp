@@ -197,8 +197,7 @@ AboutWidget::AboutWidget( QWidget *parent, const char *name)
   label1->setMinimumSize(label1->sizeHint());
   tl->addMultiCellWidget(label1, 1, 1, 1, 2);
 
-  QString pixdir = kapp->kde_datadir() +
-    QString("/kppp/pics/");  
+  QString pixdir = KApplication::kde_datadir() +"/kppp/pics/";  
 
   QPixmap pm((pixdir + "kppplogo.xpm").data());
   QLabel *logo = new QLabel(this);

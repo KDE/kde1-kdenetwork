@@ -126,7 +126,7 @@ int PPPData::readNumConfig(const char* group, const char* key,
     if (!config->hasKey(key)) config->writeEntry(key, defvalue);
     return config->readNumEntry(key);
   } else
-    return 0L;
+    return 0;
 
 }
 
@@ -1140,7 +1140,7 @@ void PPPData::setpppdArgument(int i, const char *n) {
 
 void PPPData::setpppdArgumentDefaults() {
 
-  setpppdArgument(0, "-detach");
+  setpppdArgument(0, 0L);
 
 }
 

@@ -44,7 +44,7 @@ DockWidget::DockWidget(const char *name)
 
   docked = false;
 
-  QString pixdir = kapp->kde_datadir() + QString("/kppp/pics/");  
+  QString pixdir = KApplication::kde_datadir() + "/kppp/pics/";  
   QString tmp;
 
 #define PMERROR(pm) \

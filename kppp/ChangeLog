@@ -1,3 +1,8 @@
+1998-07-11  Harri Porten  <porten@tu-harburg.de>
+
+	* main.cpp: replaced ~/.kde with kdelocaldir() 
+	* connect.cpp: hardcoded ´-detach´ as pppd argument
+
 1998-06-21  Harri Porten  <porten@tu-harburg.de>
 
 	* general.cpp (GeneralWidget): modified checkbox-size to avoid

@@ -28,7 +28,6 @@
 
 #include <qfileinf.h>
 #include <unistd.h>
-#include <kmsgbox.h>
 #include <stdio.h>
 #include <locale.h>
 
@@ -145,7 +144,7 @@ void make_directories(){
 
   QDir dir;
 
-  QString d = QDir::homeDirPath() + "/.kde";
+  QString d = KApplication::localkdedir();
 
   dir.setPath(d.data());
   if(!dir.exists()){
@@ -667,7 +666,7 @@ void dieppp(int sig) {
 
 	gpppdata.setpppdpid(-1);
 	
-	kapp->beep();
+	KApplication::beep();
 	QString msg;
 	switch (gpppdata.pppdError())
 	  {
@@ -697,14 +696,12 @@ void dieppp(int sig) {
 	p_kppp->con_win->stopClock();
 	p_kppp->stopAccounting();
 	gpppdata.setpppdpid(-1);
-	kapp->beep();
+	KApplication::beep();
 	emit p_kppp->cmdl_start();
       }
     }
   }
 }
-
-
 
 void KPPPWidget::newdefaultaccount(int i) {
   gpppdata.setDefaultAccount(connectto_c->text(i));
@@ -990,7 +987,7 @@ printf("In terminatepppd(): I will attempt to kill pppd\n");
 
 
     if(kill(gpppdata.pppdpid(), SIGTERM) < 0)
-      kapp->beep();
+      KApplication::beep();
       
     wait(&stat);
 

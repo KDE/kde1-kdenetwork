@@ -1345,6 +1345,8 @@ bool ConnectWidget::execppp() {
 
   command = "pppd";
 
+  command += " -detach";
+
   command += " ";
   command += gpppdata.modemDevice();
 
