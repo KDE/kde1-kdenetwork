@@ -285,8 +285,14 @@ package main;
 if($online == undef){
   $online = new UserList();
   $online->setCaption("Users Online");
-  $online->resize(250, 450);
   $online->show();
+  $online->resize(196,740);
+  $online->move(823,0);
+ 
+  $main::polar = new PWidget();
+  $main::polar->fetchWidget("199.247.156.200_toplevel");
+  $main::polar->move(0,0);
+  $main::polar->resize(816, 740);
 
   $users_online = {};
 }
