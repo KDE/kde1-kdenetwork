@@ -227,7 +227,7 @@ int main( int argc, char **argv ) {
   }
 
   if(!cmdl_account.isEmpty()){
- 
+
    have_cmdl_account = true;
 
 #ifdef MY_DEBUG
@@ -678,6 +678,11 @@ void XPPPWidget::expandbutton() {
 
 
 void XPPPWidget::connectbutton() {
+
+  // make sure to connect to the account that is selected in the combo box
+  // (exeption: an account given by a command line argument)
+  if(!have_cmdl_account) gpppdata.setAccount(connectto_c->currentText());
+
   QFileInfo info(gpppdata.pppdPath());
 
   if(!info.exists()){

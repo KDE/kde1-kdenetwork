@@ -1,3 +1,9 @@
+Sat Jan 31 19:56:03 1998  Harri Porten  <porten@tu-harburg.de>
+
+	* main.cpp: in some cases kppp connected to an account 
+	different from the one selected in the combo box. Added
+	setAccount() in connectbutton() to fix that, hopefully.
+
 Sun Jan 25 00:45:45 1998  Harri Porten  <porten@tu-harburg.de>
 
 	* docking.cpp: included a hide() statement to cleanly undock
