@@ -32,6 +32,7 @@ public:
     int increaser;
     QDict <QWidget> pages;
     static void restart(); // by being static is allows us to start servers with starting the whole UI
+    static void stop();    // allows us to kill the server
 signals:
     void quitPressed(QObject *);
 public slots:

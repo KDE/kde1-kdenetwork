@@ -20,7 +20,7 @@ PWSServer::PWSServer(QString script, QString logDir)
     web = 0x0;
     error = 0x0;
     
-    fdWeb = open(logDir+"/WebLog", O_CREAT|O_RDONLY|O_NONBLOCK);
+    fdWeb = open(logDir+"/WebLog", O_CREAT|O_RDONLY|O_NONBLOCK, S_IRUSR|S_IWUSR);
     if(fdWeb > 0){
         lseek(fdWeb, 0, SEEK_END);
         web = new("QTimer") QTimer(this, "web_timer");
@@ -33,7 +33,7 @@ PWSServer::PWSServer(QString script, QString logDir)
         perror("Failed");
     }
     
-    fdError = open(logDir+"/ErrorLog", O_CREAT|O_RDONLY|O_NONBLOCK);
+    fdError = open(logDir+"/ErrorLog", O_CREAT|O_RDONLY|O_NONBLOCK, S_IRUSR|S_IWUSR);
     if(fdError > 0){
         lseek(fdError, 0, SEEK_END);
         error = new("QTimer") QTimer(this, "error_timer");
@@ -81,6 +81,7 @@ PWSServer::PWSServer(QString script, QString logDir)
 
 PWSServer::~PWSServer()
 {
+    debug("Sending kill");
     server->kill();
     disconnect(server, 0, this, 0);
     // I don't delete the server controller since it only gets created once and ends once and It's segfaulting and I'm not sure why

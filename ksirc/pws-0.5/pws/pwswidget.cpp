@@ -115,6 +115,10 @@ PWSWidget::PWSWidget(QWidget *parent, const char *name)
 
 PWSWidget::~PWSWidget()
 {
+    if(server != 0){
+        delete server;
+        debug("Deleted old mathpod");
+    }
 }
 
 void PWSWidget::quit()
@@ -310,6 +314,14 @@ void PWSWidget::restart()
     server = new("PWSServer") PWSServer(KApplication::localkdedir()+"/share/apps/pws/server-config", logdir);
     
 //    system(command.data());
+}
+
+void PWSWidget::stop()
+{
+    if(server != 0)
+        delete server;
+    server = 0x0;
+
 }
 
 void PWSWidget::slotRestart(){

@@ -21,6 +21,10 @@ public:
         PWSWidget::restart();
     }
 
+    void stopServer() {
+        PWSWidget::stop();
+    }
+
     virtual void show();
 
 signals:

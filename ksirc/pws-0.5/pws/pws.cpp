@@ -1,5 +1,27 @@
+#include <sys/types.h>
+#include <dirent.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <qdir.h>
+
 #include <pws.h>
 #include <pws.moc>
+
+void testDir( const char *_name );
+
+void testDir( const char *_name )
+{
+    DIR *dp;
+    QString c = KApplication::localkdedir();
+    c += _name;
+    dp = opendir( c.data() );
+    if ( dp == NULL )
+        ::mkdir( c.data(), S_IRWXU );
+    else
+        closedir( dp );
+} 
+
 
 PWS::PWS(QWidget *parent, const char *name)
 	: KTopLevelWidget(name)
@@ -9,10 +31,17 @@ PWS::PWS(QWidget *parent, const char *name)
     statusBar = 0x0;
     toolBar = 0x0;
     view = 0x0;
+
+    testDir ("/share");
+    testDir ("/share/config");
+    testDir ("/share/apps");
+    testDir ("/share/apps/pws");
 }
 
 PWS::~PWS()
 {
+    if(view != 0)
+        delete view;
 }
 
 void PWS::invokeHelp()

@@ -262,8 +262,10 @@ servercontroller::servercontroller /*FOLD00*/
 }
 
 
-servercontroller::~servercontroller() /*fold00*/
+servercontroller::~servercontroller() /*FOLD00*/
 {
+  if(PWSTopLevel != 0)
+      PWSTopLevel->stopServer();
   delete PWSTopLevel;
   delete pic_icon;
   if(PukeC != 0x0){
