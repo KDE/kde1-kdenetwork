@@ -1,3 +1,8 @@
+1998-04-29  Harri Porten  <porten@tu-harburg.de>
+
+	* connect.cpp: prevented segfault on invalid lockfiles
+	* runtests.cpp: /etc/resolv.conf will be created if missing 
+
 Tue Apr 28 20:57:04 1998    Mario Weilguni <mweilguni@kde.org>
 
 	* added CHAP (client side only) authentication

@@ -227,6 +227,29 @@ int runTests() {
     close(fd);
   } 
 
+  // Test 5: check for existence of /etc/resolv.conf
+  
+  if ((fd = open("/etc/resolv.conf", O_RDONLY)) >= 0)
+    close(fd);
+  else {
+    if (geteuid() == 0) {
+      if ((fd = open("/etc/resolv.conf", O_WRONLY|O_CREAT)) >= 0) {
+	// file will be owned by root and world readible
+	fchown(fd, 0, 0);
+	fchmod(fd, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+	close (fd);
+      }
+    } else {
+      QMessageBox::warning
+	(0, klocale->translate("Error"),
+	 klocale->translate("/etc/resolv.conf is missing!\n\n"
+			    "Ask your system administrator to create\n"
+			    "a non-empty file that has appropriate\n"
+			    "read and write permissions."));
+      warning ++;
+    }
+  }
+      
   if(warning == 0)
     return TEST_OK;
   else

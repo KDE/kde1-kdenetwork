@@ -210,6 +210,7 @@ void ConnectWidget::init() {
   app->processEvents();
 
   int lock = lockdevice();
+
   if (lock == 1){
     
     messg->setText(klocale->translate("Sorry, modem device is locked."));
@@ -1625,7 +1626,7 @@ void removedns() {
   if((fd = open("/etc/resolv.conf", O_RDONLY)) >= 0) {
 
     int i=0;
-    while(read(fd, &c, 1) == 1) {
+    while(read(fd, &c, 1) == 1 && i < 30) {
       if(c == '\n') {
 	i++;
       }
@@ -1766,6 +1767,7 @@ int lockdevice() {
     int ctr = 0;
     while (ctr++ < 32 && read(fd, &c, 1) == 1) 
       oldlock+=c;
+    close(fd);
 
 #ifdef MY_DEBUG
     printf("Device is locked by: %s\n",(const char*)oldlock);
@@ -1775,10 +1777,11 @@ int lockdevice() {
 
     oldlock.stripWhiteSpace();
     start=r.match(oldlock,0,&len);
+    if (start == -1)
+      return 1;
     procpid+="/";
     procpid+=oldlock.mid(start,len);
     procpid.stripWhiteSpace();
-    close(fd);
 
     if ((fd = open((const char*)procpid, O_RDONLY)) >= 0) {
       close(fd);
