@@ -6,10 +6,16 @@
 #  $Id$
 #
 
+kde_libraries = @kde_libraries@
+qt_libraries = @qt_libraries@
+top_builddir = ..
+LIBTOOL = @LIBTOOL@
+KDE_RPATH = @KDE_RPATH@
+SHELL = /bin/sh
 
 CXXFLAGS= @CXXFLAGS@ @all_includes@ -DHAVE_CONFIG_H  -I.. -I.
-LDFLAGS	= @LDFLAGS@ @all_libraries@  -lkdecore  -lqt \
-	  -lXext -lX11 @LIBSOCKET@ -lkdeui -lkdecore
+LDFLAGS	= @LDFLAGS@ @all_libraries@  -lkdeui -lkdecore  -lqt \
+	  -lXext -lX11 @LIBSOCKET@ 
 CXX     = @CXX@
 MOC   	= @MOC@
 
@@ -160,7 +166,7 @@ Makefile: Makefile.in
 	cd .. && CONFIG_FILES=kppp/$@ CONFIG_HEADERS= $(SHELL) ./config.status
 
 $(TARGET): $(SRCMETA) $(OBJECTS)
-	$(CXX) $(OBJECTS) -o $(TARGET) $(LDFLAGS)
+	$(LIBTOOL) -mode=link $(CXX) $(OBJECTS) -o $(TARGET) $(LDFLAGS) $(KDE_RPATH)
 
 depend:
 	@makedepend $(SOURCES) 2> /dev/null
