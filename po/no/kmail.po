@@ -241,12 +241,11 @@ msgstr "Sendt"
 
 #: kmmainwin.cpp:863
 msgid "Next unread"
-msgstr ""
+msgstr "Neste ulest"
 
 #: kmmainwin.cpp:867
-#, fuzzy
 msgid "Previous unread"
-msgstr "&Forrige"
+msgstr "Forrige ulest"
 
 #: kmmainwin.cpp:877
 msgid "&Set Status"
@@ -947,10 +946,10 @@ msgstr "Lager indeks fil: %d meldinger ferdig"
 
 #: kmfolder.cpp:444
 msgid "Writing index file"
-msgstr ""
+msgstr "Skriver indeksfil"
 
 #: kmfolder.cpp:870
-#, fuzzy, c-format
+#, c-format
 msgid "Compacting folder: %d messages done"
 msgstr "Lager indeks fil: %d meldinger ferdig"
 
@@ -1598,18 +1597,3 @@ msgstr "&7-bitt er ASCII"
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
 msgstr "&Ukjente tegn i anførselstegn"
-
-#~ msgid "&Remove"
-#~ msgstr "&Fjern"
-
-#~ msgid "&Next"
-#~ msgstr "&Neste"
-
-#~ msgid "Fonts"
-#~ msgstr "Skrifttyper"
-
-#~ msgid "Appearance"
-#~ msgstr "Utseende"
-
-#~ msgid "&Ok"
-#~ msgstr "&Ok"
