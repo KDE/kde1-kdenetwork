@@ -478,12 +478,12 @@ Send        3                          # choose option 3, i.e. PPP
 <tag/Accounting Setup/ Use the ``Enable accounting'' button to enable/disable
 phone cost accounting. Select a rule  appropriate for your region. If
 you can't find a rule for your region you will have to write one by following
-the supplied <tt>TEMPLATE</tt> in <tt>&dollar(KDEDIR)/share/doc/HTML/en/kppp/</tt>. Don't
+the supplied <tt>TEMPLATE</tt> in <tt>&dollar{KDEDIR}/share/doc/HTML/en/kppp/</tt>. Don't
 be afraid though it is really easy. Don't forget to submit your newly created
 rules file to me. The newly created rules file can be checked for valid
 syntax with the -r rule_file command line option to kppp and
-must be installed in <tt>&dollar(KDEDIR)/share/apps/kppp/Rules</tt> or in 
-<tt>&dollar(HOME)/.kde/share/apps/kppp/Rules</tt> before you will be able to select it on this
+must be installed in <tt>&dollar{KDEDIR}/share/apps/kppp/Rules</tt> or in 
+<tt>&dollar{HOME}/.kde/share/apps/kppp/Rules</tt> before you will be able to select it on this
 dialog.
 </descrip>
 <p>
@@ -863,8 +863,8 @@ kppp setuid root permissions do the following:
 
 <tscreen><verb>
 % su root
-% chown root:root &dollar(KDEDIR)/bin/kppp
-% chmod +s &dollar(KDEDIR)/bin/kppp
+% chown root:root &dollar{KDEDIR}/bin/kppp
+% chmod +s &dollar{KDEDIR}/bin/kppp
 % exit
 </verb></tscreen>
 <p>
@@ -944,7 +944,7 @@ given kppp setuid permissions. Please read the section on <ref id="lock files">.
 
 <sect2>How do I write a telephone cost rules file?<p>
 Just follow the TEMPLATE rules files supplied with kppp. You should be
-able to find a copy in the <tt>&dollar(KDEDIR)/doc/HTML/kppp</tt>. 
+able to find a copy in the <tt>&dollar{KDEDIR}/doc/HTML/kppp</tt>. 
 Use the <tt>-r</tt> kppp command line options to check the syntax of your proposed
 rules file.
 <p>
@@ -996,14 +996,14 @@ By default kppp makes use of the following files and directories. The location
 of some of those can be changed at compile time.
 
 <tscreen><verb>
-&dollar(KDEDIR)/bin/kppp
-&dollar(KDEDIR)/share/doc/HTML/.../kppp/*
-&dollar(KDEDIR)/share/apps/kppp
-&dollar(KDEDIR)/share/apps/kppp/Rules/*/*.rst
-&dollar(KDEDIR)/share/apps/kppp/pics/*
-&dollar(HOMEDIR)/.kde/share/apps/kppp
-&dollar(HOMEDIR)/.kde/share/apps/kppp/Log/*
-&dollar(HOMEDIR)/.kde/share/config/kppprc
+&dollar{KDEDIR}/bin/kppp
+&dollar{KDEDIR}/share/doc/HTML/.../kppp/*
+&dollar{KDEDIR}/share/apps/kppp
+&dollar{KDEDIR}/share/apps/kppp/Rules/*/*.rst
+&dollar{KDEDIR}/share/apps/kppp/pics/*
+&dollar{HOMEDIR}/.kde/share/apps/kppp
+&dollar{HOMEDIR}/.kde/share/apps/kppp/Log/*
+&dollar{HOMEDIR}/.kde/share/config/kppprc
 </verb></tscreen>
 
 <!-- Mario -->

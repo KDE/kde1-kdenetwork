@@ -79,8 +79,8 @@ kppp setuid root permissions do the following:
 <BLOCKQUOTE><CODE>
 <PRE>
 % su root
-% chown root:root $(KDEDIR)/bin/kppp
-% chmod +s $(KDEDIR)/bin/kppp
+% chown root:root ${KDEDIR}/bin/kppp
+% chmod +s ${KDEDIR}/bin/kppp
 % exit
 </PRE>
 </CODE></BLOCKQUOTE>
@@ -167,7 +167,7 @@ given kppp setuid permissions. Please read the section on
 <H4>How do I write a telephone cost rules file?</H4>
 
 <P>Just follow the TEMPLATE rules files supplied with kppp. You should be
-able to find a copy in the <CODE>$(KDEDIR)/doc/HTML/kppp</CODE>. 
+able to find a copy in the <CODE>${KDEDIR}/doc/HTML/kppp</CODE>. 
 Use the <CODE>-r</CODE> kppp command line options to check the syntax of your proposed
 rules file.
 <P>
