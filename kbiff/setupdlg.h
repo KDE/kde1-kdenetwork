@@ -1,7 +1,12 @@
-// A brief description of what this file does
-// should go here.
-// $Id$
-
+/*
+ * setupdlg.h
+ * Copyright (C) 1998 Kurt Granroth <granroth@kde.org>
+ *
+ * This file contains the setup dialog and related widgets
+ * for KBiff.  All user configuration is done here.
+ *
+ * $Id$
+ */
 #ifndef SETUPDLG_H
 #define SETUPDLG_H
 
@@ -11,10 +16,10 @@
 
 #include <qwidget.h>
 #include <qdialog.h>
-#include <qlineedit.h>
-#include <qcheckbox.h>
-#include <qpushbutton.h>
-#include <qcombobox.h>
+#include <qlined.h>
+#include <qchkbox.h>
+#include <qpushbt.h>
+#include <qcombo.h>
 
 #include <kiconloaderdialog.h>
 #include <kurl.h>
@@ -34,7 +39,43 @@ public:
 public slots:
 	void invokeHelp();
 
+protected slots:
+	void slotDone();
+	void slotProfileSelected(int profile);
+
+protected:
+	void initDefaults();
+	void setWidgets();
+
 private:
+	// profile data
+	QString      profile;
+
+	// General
+	unsigned int poll;
+	QString      mailClient;
+	bool         dockInPanel;
+	bool         useSessions;
+	QString      oldmailPixmap;
+	QString      newmailPixmap;
+	QString      nomailPixmap;
+
+	// New Mail
+	bool    runCommand;
+	QString commandPath;
+	bool    playSound;
+	QString soundPath;
+	bool    playBeep;
+
+	// Mailbox
+	KURL mailbox;
+
+	// "outer" dialog
+	QComboBox   *comboProfile;
+	QPushButton *help;
+	QPushButton *ok;
+	QPushButton *cancel;
+
 	// tabs
 	KBiffGeneralTab *generalTab;
 	KBiffNewMailTab *newmailTab;
@@ -47,11 +88,12 @@ class KBiffGeneralTab : public QWidget
 	Q_OBJECT
 public:
 	KBiffGeneralTab(QWidget *parent=0);
+	virtual ~KBiffGeneralTab();
 
 	const char* getButtonNewMail();
 	const char* getButtonOldMail();
 	const char* getButtonNoMail();
-	const char* getCommand();
+	const char* getMailClient();
 	const int   getPoll();
 	const bool  getDock();
 	const bool  getSessionManagement();
@@ -61,7 +103,7 @@ public slots:
 	void setButtonNewMail(const char*);
 	void setButtonNoMail(const char*);
 	void setButtonOldMail(const char*);
-	void setCommand(const char*);
+	void setMailClient(const char*);
 	void setPoll(int);
 	void setDock(bool);
 
@@ -81,7 +123,7 @@ class KBiffNewMailTab : public QWidget
 	Q_OBJECT
 public:
 	KBiffNewMailTab(QWidget *parent=0);
-	~KBiffNewMailTab();
+	virtual ~KBiffNewMailTab();
 
 	bool getRunCommand();
 	const char* getRunCommandPath();
@@ -114,22 +156,51 @@ private:
 	QPushButton *buttonBrowseRunCommand;
 };
 
+class KBiffMailboxAdvanced : public QDialog
+{
+	Q_OBJECT
+public:
+	KBiffMailboxAdvanced();
+	virtual ~KBiffMailboxAdvanced();
+
+	KURL getMailbox() const;
+	unsigned int getPort() const;
+	void setPort(unsigned int the_port, bool enable = true);
+	void setMailbox(const KURL& url);
+
+protected slots:
+	void portModified(const char* text);
+
+private:
+	QString    password;
+	QLineEdit *mailbox;
+	QLineEdit *port;
+};
+
 class KBiffMailboxTab : public QWidget
 {
 	Q_OBJECT
 public:
 	KBiffMailboxTab(QWidget *parent=0);
+	virtual ~KBiffMailboxTab();
 
 	void setMailbox(const KURL& url);
-	KURL getMailbox();
+	KURL getMailbox() const;
+
+protected slots:
+	void protocolSelected(int protocol);
+	void browse();
+	void advanced();
 
 private:
-	QComboBox *comboProtocol;
-	QLineEdit *editMailbox;
-	QLineEdit *editServer;
-	QLineEdit *editUser;
-	QLineEdit *editPassword;
-	QCheckBox *checkStorePassword;
+	unsigned int port;
+	QComboBox   *comboProtocol;
+	QLineEdit   *editMailbox;
+	QLineEdit   *editServer;
+	QLineEdit   *editUser;
+	QLineEdit   *editPassword;
+	QCheckBox   *checkStorePassword;
+	QPushButton *buttonBrowse;
 };
 
 class KBiffAboutTab : public QWidget
@@ -137,6 +208,7 @@ class KBiffAboutTab : public QWidget
 	Q_OBJECT
 public:
 	KBiffAboutTab(QWidget *parent=0);
+	virtual ~KBiffAboutTab();
 
 protected slots:
 	void mailTo(const char*);

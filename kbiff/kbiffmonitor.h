@@ -1,3 +1,13 @@
+/*
+ * kbiffmonitor.h
+ * Copyright (C) 1998 Kurt Granroth <granroth@kde.org>
+ *
+ * $Id$
+ *
+ * $Log$
+ * Revision 1.1  1998/07/28 01:09:28  granroth
+ * Added KURLLabel class
+ */
 #ifndef KBIFFMONITOR_H
 #define KBIFFMONITOR_H
 
@@ -24,7 +34,7 @@ typedef enum
  * mail.  KBiffMonitor currently supports five protocols.
  * 
  * <UL>
- * <LI>file</LI> Local files
+ * <LI>mbox</LI> Local mbox style files
  * <LI>pop3</LI> POP3 
  * <LI>imap4</LI> imap4 
  * <LI>rsh</LI> Files accessible using rsh
@@ -46,7 +56,7 @@ typedef enum
  *
  * @short A "biff" class that monitors local and remote mailboxes
  * @author Kurt Granroth <granroth@kde.org>
- * @version 0.4
+ * @version 0.4.5
  */
 class KBiffMonitor : public QObject
 {
@@ -68,7 +78,12 @@ public:
 	 * Returns the current state of the mailbox (NewMail, OldMail, NoMail, or
 	 * UnknownState)
 	 */
-	KBiffMailState getMailState() { return mailState; }
+	KBiffMailState getMailState() const { return mailState; }
+
+	/**
+	 * Returns the current mailbox being monitored
+	 */
+	const char* getMailbox() const { return mailbox; }
 
 	/**
 	 * Returns <CODE>true</CODE> is KBiffMonitor is currently monitoring
@@ -83,7 +98,7 @@ public slots:
 	 * protocol type).  KBiffMonitor recognizes five protocols:
 	 * 
 	 * <UL>
-	 * <LI>file</LI> Local files
+	 * <LI>mbox</LI> Local files
 	 * <LI>pop3</LI> POP3 
 	 * <LI>imap4</LI> IMAP4 
 	 * <LI>rsh</LI> Files accessible using rsh
@@ -92,7 +107,7 @@ public slots:
 	 *
 	 * Some examples:
 	 * <PRE>
-	 * file:/var/spool/mail/granroth
+	 * mbox:/var/spool/mail/granroth
 	 * </PRE>
 	 *
 	 * This would monitor a local file called '/var/spool/mail/granroth'
@@ -241,7 +256,7 @@ protected:
 
 	int socketFD;
 	int messages;
-	int firstNew;
+	int newMessages;
 };
 
 /**

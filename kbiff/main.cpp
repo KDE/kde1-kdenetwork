@@ -1,15 +1,21 @@
 #include "kbiff.h"
 #include <kapp.h>
 
+#include "setupdlg.h"
+
 int main(int argc, char *argv[])
 {
 	KApplication app(argc, argv, "kbiff");
-	KBiff widget;
+	KBiff kbiff;
+	KBiffSetup setup;
 
-	app.setMainWidget(&widget);
-	app.setTopWidget(&widget);
+	if (!setup.exec())
+		return 0;
 
-	widget.show();
+	app.setMainWidget(&kbiff);
+	app.setTopWidget(&kbiff);
+
+	kbiff.show();
 
 	return app.exec();
 }

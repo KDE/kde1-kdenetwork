@@ -1,3 +1,12 @@
+/*
+ * kbiff.cpp
+ * Copyright (C) 1998 Kurt Granroth <granroth@kde.org>
+ *
+ * This file contains the implementation of the main KBiff
+ * widget
+ *
+ * $Id$
+ */
 #include "kbiff.h"
 #include "kbiff.moc"
 

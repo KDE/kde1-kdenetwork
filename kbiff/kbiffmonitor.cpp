@@ -1,3 +1,12 @@
+/*
+ * kbiffmonitor.cpp
+ * Copyright (C) 1998 Kurt Granroth <granroth@kde.org>
+ *
+ * This file contains the implementation of KBiffMonitor and
+ * associated classes.
+ *
+ * $Id$
+ */
 #include "kbiffmonitor.h"
 #include "kbiffmonitor.moc"
 
@@ -103,7 +112,7 @@ TRACEINIT("KBiffMonitor::setMailbox()");
 		port     = (url.port() > 0) ? url.port() : 110;
 	}
 
-	if (!strcmp(url.protocol(), "file"))
+	if (!strcmp(url.protocol(), "mbox"))
 	{
 		disconnect(this);
 
@@ -213,12 +222,7 @@ TRACEINIT("KBiffMonitor::checkImap()");
 		return;
 	seq++;
 
-	command = QString().setNum(seq) + " SELECT " + mailbox + "\r\n";
-	if (imap.command(command, seq) == false)
-		return;
-	seq++;
-
-	command = QString().setNum(seq) + " CLOSE\r\n";
+	command = QString().setNum(seq) + " STATUS " + mailbox + " (messages recent)\r\n";
 	if (imap.command(command, seq) == false)
 		return;
 	seq++;
@@ -456,7 +460,7 @@ TRACEINIT("KBiffMonitor::checkMaildir()");
 ///////////////////////////////////////////////////////////////////////////
 // KBiffSocket
 ///////////////////////////////////////////////////////////////////////////
-KBiffSocket::KBiffSocket() : messages(0), firstNew(-1)
+KBiffSocket::KBiffSocket() : messages(0), newMessages(-1)
 {
 }
 
@@ -473,7 +477,7 @@ int KBiffSocket::numberOfMessages()
 
 int KBiffSocket::numberOfNewMessages()
 {
-	return (firstNew > -1) ? firstNew : 0;
+	return (newMessages > -1) ? newMessages : 0;
 }
 
 void KBiffSocket::close()
@@ -568,14 +572,14 @@ TRACEINIT("KBiffIMap::command()");
 			return false;
 
 		// check the number of messages
-		QRegExp message_re("[0-9]* EXISTS");
-		if ((match = message_re.match(response, 0, &len)) > -1)
-			messages = response.mid(match, len - 7).toInt();
+		QRegExp messages_re("MESSAGES [0-9]*");
+		if ((match = messages_re.match(response, 0, &len)) > -1)
+			messages = response.mid(match + 9, len - 9).toInt();
 
 		// check for new mail
-		QRegExp unseen_re("UNSEEN [0-9]*");
-		if ((match = unseen_re.match(response, 0, &len)) > -1)
-			firstNew = response.mid(match + 7, len - 7).toInt();
+		QRegExp recent_re("RECENT [0-9]*");
+		if ((match = recent_re.match(response, 0, &len)) > -1)
+			newMessages = response.mid(match + 7, len - 7).toInt();
 	}
 
 	return false;

@@ -4,9 +4,9 @@ int Trace::traceIndent = 0;
 int Trace::tabStop = 2;
 bool Trace::traceOn = true;
 
-Trace::Trace(const string& function_name)
+Trace::Trace(const QString& function_name)
 {
-	if( traceOn )
+	if(traceOn)
 	{
 		m_functionName = function_name;
 
@@ -18,7 +18,7 @@ Trace::Trace(const string& function_name)
 
 Trace::~Trace()
 {
-	if( traceOn )
+	if(traceOn)
 	{
 		traceIndent--;
 		m_indent();
@@ -27,16 +27,16 @@ Trace::~Trace()
 	}
 }
 
-void Trace::outputf(const string& message ...)
+void Trace::outputf(const QString& message ...)
 {
-	if( traceOn )
+	if(traceOn)
 	{
 		va_list arglist;
 
-		va_start(arglist, message.c_str());
+		va_start(arglist, (const char*)message);
 
 		char buffer[512];
-		vsprintf(buffer, message.c_str(), arglist );
+		vsprintf(buffer, message, arglist );
 
 		va_end(arglist);
 
@@ -45,15 +45,15 @@ void Trace::outputf(const string& message ...)
 	}
 }
 
-void Trace::output(const string& message)
+void Trace::output(const QString& message)
 {
-	if( traceOn )
+	if(traceOn)
 		outputf(message);
 }
 
-void Trace::output(const string& message, void* object )
+void Trace::output(const QString& message, void* object )
 {
-	if( traceOn )
+	if(traceOn)
 	{
 		m_indent();
 		cout << m_functionName << " : " << message << (void*)object << endl;
@@ -67,7 +67,7 @@ void Trace::setTraceOn(const bool trace_on)
 
 void Trace::setTabStop(const int tabstop)
 {
-	if( tabstop >= 0 )
+	if(tabstop >= 0)
 		tabStop = tabstop;
 	else
 		tabStop = 2;
@@ -77,7 +77,7 @@ void Trace::m_indent()
 {
 	for(int i = 0; i < traceIndent; i++ )
 	{
-		for( int j = 0; j < tabStop; j++ )
+		for(int j = 0; j < tabStop; j++)
 			cout << " ";
 	}
 }

@@ -39,7 +39,7 @@
 #ifndef TRACE_H
 #define TRACE_H
 
-#include <string>
+#include <qstring.h>
 #include <iostream.h>
 #include <stdio.h>
 #include <stdarg.h>
@@ -61,22 +61,22 @@
 class Trace
 {
 public:
-	Trace(const string& function_name);
+	Trace(const QString& function_name);
 	virtual ~Trace();
 
 	static int traceIndent;
 	static int tabStop;
 	static bool traceOn;
 
-	virtual void output(const string& message);
-	virtual void output(const string& message, void * object);
-	virtual void outputf(const string& message ...);
+	virtual void output(const QString& message);
+	virtual void output(const QString& message, void * object);
+	virtual void outputf(const QString& message ...);
 
 	void setTraceOn(const bool trace_on = true);
 	void setTabStop(const int tabstop);
 
 protected:
 	void m_indent();
-	string m_functionName;
+	QString m_functionName;
 };
 #endif TRACE_H

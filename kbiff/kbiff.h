@@ -1,3 +1,12 @@
+/*
+ * kbiff.h
+ * Copyright (C) 1998 Kurt Granroth <granroth@kde.org>
+ *
+ * This file contains the declaration of the main KBiff
+ * widget.
+ *
+ * $Id$
+ */
 #ifndef KBIFF_H 
 #define KBIFF_H 
 
