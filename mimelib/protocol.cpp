@@ -45,6 +45,8 @@
 #include <sys/time.h>
 
 #if defined(_AIX)
+#include <sys/select.h>
+#include <sys/types.h>
 #include <strings.h>
 #endif
 
