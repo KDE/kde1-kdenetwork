@@ -50,7 +50,7 @@ msgid ""
 "Are you sure you want to reset the accumulated\n"
 "telephone costs for the selected account to zero?"
 msgstr ""
-"Naozaj si prajete vynulova» nazhroma¾dené\n"
+"Naozaj si prajete vynulova» zhroma¾dené\n"
 "telefónne náklady vybraného konta?"
 
 #: accounts.cpp:271 accounts.cpp:294
@@ -165,7 +165,7 @@ msgstr "sekúnd"
 
 #: connect.cpp:351
 msgid "No Dialtone"
-msgstr "Neprítomný vyzváòací tón (na Slovensku treba zmeni» nastavenie modemu)"
+msgstr "Neprítomný oznamovací tón (na Slovensku treba zmeni» nastavenie modemu)"
 
 #: connect.cpp:361
 msgid "No Carrier"
@@ -501,7 +501,7 @@ msgstr "Minimalizova» okno po pripojení"
 
 #: general.cpp:199
 msgid "About kppp"
-msgstr "Informácie o kppp"
+msgstr "O kppp"
 
 #: general.cpp:207
 msgid ""
@@ -624,7 +624,7 @@ msgstr ""
 
 #: main.cpp:489
 msgid "kppp Configuration"
-msgstr "Konfigurácia kppp"
+msgstr "Nastavenie kppp"
 
 #: main.cpp:501
 msgid "Accounts"
@@ -696,7 +696,7 @@ msgid ""
 "supply a username and a password!"
 msgstr ""
 "Vybrali ste overovanie pomocou PAP.\n"
-"Toto vy¾aduje, aby jste poskytli\n"
+"Toto vy¾aduje, aby ste poskytli\n"
 "u¾ívateµské meno a heslo!"
 
 #: main.cpp:785
@@ -715,7 +715,7 @@ msgid ""
 "supply a username and a password!"
 msgstr ""
 "Vybrali ste overovanie pomocou CHAP.\n"
-"Toto vy¾aduje, aby jste poskytli\n"
+"Toto vy¾aduje, aby ste poskytli\n"
 "u¾ívateµské meno a heslo!"
 
 #: main.cpp:809
@@ -737,7 +737,7 @@ msgstr "Ukonèi» kPPP?"
 
 #: main.cpp:896
 msgid "Exiting kPPP will close your PPP Session."
-msgstr "Ukonèenie kPPP uzavie va¹e PPP sedenie."
+msgstr "Ukonèenie kPPP uzavrie va¹e PPP sedenie."
 
 #: main.cpp:931
 msgid ""
@@ -749,7 +749,7 @@ msgstr ""
 
 #: modemcmds.cpp:40
 msgid "Edit Modem Commands"
-msgstr "Úprava modemových príkazov"
+msgstr "Úprava príkazov modemu"
 
 #: modemcmds.cpp:54
 msgid "Initialization String:"
@@ -761,7 +761,7 @@ msgstr "Poèiatoèná odozva:"
 
 #: modemcmds.cpp:86
 msgid "Init Delay (sec/100):"
-msgstr "Poèiatoèné èakania(sek/100):"
+msgstr "Poèiatoèné èakanie(sek/100):"
 
 #: modemcmds.cpp:91
 msgid "Dial String:"
@@ -781,7 +781,7 @@ msgstr "Odozva pri neprítomnosti nosnej:"
 
 #: modemcmds.cpp:119
 msgid "No Dialtone Response:"
-msgstr "Odozva pri neprítomnosti vyzváòacieho tónu:"
+msgstr "Odozva pri neprítomnosti oznamovacieho tónu:"
 
 #: modemcmds.cpp:126
 msgid "Hangup String:"
@@ -825,7 +825,7 @@ msgstr "Argument:"
 
 #: pppdargs.cpp:58
 msgid "Restore Defaults"
-msgstr "©tandardné"
+msgstr "Obnovi» implicitné"
 
 #: pppdata.cpp:52
 msgid ""
@@ -843,7 +843,7 @@ msgstr "Zis»ujem nastavenie modemu"
 
 #: modeminfo.cpp:130
 msgid "Modem Query timed out."
-msgstr "Vypr¹al èas pri komunikácii s modemom."
+msgstr "Vypr¹al èas pre komunikáciu s modemom."
 
 #: miniterm.cpp:277 modeminfo.cpp:368
 msgid "Can't open Modem"
@@ -975,7 +975,7 @@ msgstr "Vybraných:"
 
 #: acctselect.cpp:88
 msgid "Volume accounting:"
-msgstr "Prenosové úètovanie:"
+msgstr "Úètovanie objemu:"
 
 #: acctselect.cpp:92
 msgid "No accounting"
@@ -1008,7 +1008,7 @@ msgstr "kppp: nena¹iel som súbor s pravidlami - \"%s\"\n"
 
 #: ruleset.cpp:552
 msgid "kppp: rulefiles must have the extension \".rst\"\n"
-msgstr "kppp: súbory s pravidlami musia ma» koncovku \".rst\"\n"
+msgstr "kppp: súbory s pravidlami musia ma» príponu \".rst\"\n"
 
 #: ruleset.cpp:561
 msgid "kppp: error parsing the ruleset\n"
@@ -1108,13 +1108,5 @@ msgstr ""
 "\n"
 "Poproste vá¹ho administrátora, aby ho\n"
 "vytvoril so správnymi hodnotami a\n"
-"právami."
+"prístupovými právami na èítanie a zápis."
 
-#~ msgid "Use default script"
-#~ msgstr "Pou¾i» ¹tandardný skript"
-
-#~ msgid "None"
-#~ msgstr "®iadne"
-
-#~ msgid "Restore"
-#~ msgstr "Obnovi»"

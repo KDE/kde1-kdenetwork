@@ -64,7 +64,7 @@ msgstr "Potvrdenie"
 
 #: kmmainwin.cpp:375
 msgid "Moved all messages into trash"
-msgstr "Presunul som v¹etky správy do ko¹a"
+msgstr "V¹etky správy presunuté do ko¹a"
 
 #: kmmainwin.cpp:389
 msgid ""
@@ -109,11 +109,11 @@ msgstr "Adresa pridaná do knihy adries."
 
 #: kmmainwin.cpp:698
 msgid "Address copied to clipboard."
-msgstr "Adresa skopírovaná do clipboardu."
+msgstr "Adresa skopírovaná do schránky."
 
 #: kmmainwin.cpp:703
 msgid "URL copied to clipboard."
-msgstr "URL skopírované do clipboardu."
+msgstr "URL skopírované do schránky."
 
 #: kmmainwin.cpp:730
 msgid "Send to..."
@@ -133,7 +133,7 @@ msgstr "Prida» do knihy adries"
 
 #: kmmainwin.cpp:739 kmmainwin.cpp:748
 msgid "Copy to clipboard"
-msgstr "Skopírova» do clipboardu"
+msgstr "Skopírova» do schránky"
 
 #: kmmainwin.cpp:746
 msgid "Open URL..."
@@ -165,7 +165,7 @@ msgstr "Nový Editor správ"
 
 #: kmcomposewin.cpp:448 kmmainwin.cpp:792
 msgid "New Mailreader"
-msgstr "Nový Prehliadaè správ"
+msgstr "Nový prehliadaè správ"
 
 #: kmmainwin.cpp:795
 msgid "Save As..."
@@ -241,12 +241,11 @@ msgstr "Posla»"
 
 #: kmmainwin.cpp:863
 msgid "Next unread"
-msgstr ""
+msgstr "Ïal¹ia nepreèítaná"
 
 #: kmmainwin.cpp:867
-#, fuzzy
 msgid "Previous unread"
-msgstr "&Predchádzajúca"
+msgstr "Predchádzajúca nepreèítaná"
 
 #: kmmainwin.cpp:877
 msgid "&Set Status"
@@ -610,7 +609,7 @@ msgstr "Výber umiestnenia"
 
 #: kmaccount.cpp:109
 msgid "Receipt: "
-msgstr "Príjem: "
+msgstr "Prijaté: "
 
 #: kmaccount.cpp:138
 msgid "Failed to add message:"
@@ -841,7 +840,7 @@ msgstr "Kopírova» výber"
 
 #: kmcomposewin.cpp:574
 msgid "Paste clipboard contents"
-msgstr "Vlo¾i» obsah clipboardu"
+msgstr "Vlo¾i» obsah schránky"
 
 #: kmcomposewin.cpp:579
 msgid "Attach file"
@@ -945,16 +944,15 @@ msgstr ""
 #: kmfolder.cpp:364
 #, c-format
 msgid "Creating index file: %d messages done"
-msgstr "Vytváram indexový súbor: hotovo %d správ"
+msgstr "Vytváram indexový súbor: %d správ hotových "
 
 #: kmfolder.cpp:444
 msgid "Writing index file"
-msgstr ""
+msgstr "Zapisujem indexový súbor"
 
 #: kmfolder.cpp:870
-#, fuzzy, c-format
 msgid "Compacting folder: %d messages done"
-msgstr "Vytváram indexový súbor: hotovo %d správ"
+msgstr "Komprimujem prieèinok: %d správ"
 
 #: kmmsgpartdlg.cpp:41
 msgid "Message Part Properties"
@@ -1057,7 +1055,7 @@ msgstr ""
 
 #: main.cpp:102 main.cpp:220
 msgid "warning"
-msgstr "pozor"
+msgstr "varovanie"
 
 #: main.cpp:109 main.cpp:110
 msgid "fatal error"
@@ -1074,12 +1072,12 @@ msgid ""
 "Shall KMail move the mail folders now ?"
 msgstr ""
 "Prieèinok ~/KMail existuje. Od tohoto okam¾iku bude KMail\n"
-"pou¾íva» pre správy prieèinok ~/Mail.\n"
+"pou¾íva» prieèinok ~/Mail pre svoje správy.\n"
 "KMail mô¾e presunú» obsah prieèinka ~/KMail do ~/Mail,\n"
 "ale to spôsobí nahradenie existujúcich súborov s rovnakými\n"
 "menami v prieèinku ~/Mail (napr. inbox).\n"
 "\n"
-"Má KMail presunú» prieèinky teraz?"
+"Má teda KMail presunú» prieèinky teraz?"
 
 #: main.cpp:382
 #, c-format
@@ -1109,11 +1107,11 @@ msgstr ""
 
 #: kmacctpop.cpp:253
 msgid "Pop Mail Error"
-msgstr "Chyba Pop po¹ty"
+msgstr "Chyba POP po¹ty"
 
 #: kmacctpop.cpp:258
 msgid "Pop Mail Network Error"
-msgstr "Sie»ová chyba Pop po¹ty"
+msgstr "Sie»ová chyba POP po¹ty"
 
 #: kmacctpop.cpp:274
 msgid "Unknown error"
@@ -1132,7 +1130,7 @@ msgstr ""
 
 #: kmacctpop.cpp:427
 msgid "Login Name:"
-msgstr "Login meno:"
+msgstr "Prihl. meno:"
 
 #: kmfolderdir.cpp:78
 #, c-format
@@ -1534,7 +1532,7 @@ msgid ""
 "Error while writing file:\n"
 "%s"
 msgstr ""
-"Chyba pri zápisu súboru:\n"
+"Chyba pri zápise súboru:\n"
 "%s"
 
 #: kfileio.cpp:179
@@ -1588,11 +1586,11 @@ msgstr "Znaková sada správy"
 
 #: charsetsDlg.cpp:57
 msgid "Composer charset"
-msgstr "Znaková sada composera"
+msgstr "Znaková sada editora"
 
 #: charsetsDlg.cpp:75
 msgid "Set as &default"
-msgstr "Nastav ako ¹tandardné"
+msgstr "Nastavi» ako ¹tandardné"
 
 #: charsetsDlg.cpp:80
 msgid "&7 bit is ASCII"
@@ -1602,35 +1600,3 @@ msgstr "&7 bit je ASCII"
 msgid "&Qute unknonw characters"
 msgstr "Oznaèi» neznáme znaky"
 
-#~ msgid "&Remove"
-#~ msgstr "&Odstráni»"
-
-#~ msgid "&Next"
-#~ msgstr "&Nasledujúca"
-
-#~ msgid "Fonts"
-#~ msgstr "Písma"
-
-#~ msgid "Appearance"
-#~ msgstr "Vzhµad"
-
-#~ msgid "&Ok"
-#~ msgstr "&Ok"
-
-#~ msgid "Name:"
-#~ msgstr "Meno:"
-
-#~ msgid "Name"
-#~ msgstr "Meno"
-
-#~ msgid "Misc"
-#~ msgstr "Rôzne"
-
-#~ msgid "Type:"
-#~ msgstr "Typ:"
-
-#~ msgid "Date"
-#~ msgstr "Dátum"
-
-#~ msgid "Date:"
-#~ msgstr "Dátum:"

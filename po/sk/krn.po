@@ -15,7 +15,7 @@ msgstr ""
 
 #: main.cpp:212 main.cpp:224 main.cpp:236 main.cpp:251 main.cpp:263
 msgid "KRN-Missing Configuration info"
-msgstr "KRN - Informácie o chýbajúcej konfigurácii"
+msgstr "KRN - Informácie o chýbajúcom nastavení"
 
 #: main.cpp:213
 msgid "Please enter your email adress"
@@ -44,11 +44,11 @@ msgstr "Prijatých %.2f Kb"
 
 #: NNTP.cpp:557
 msgid "Getting Article"
-msgstr "Získavam èlánok"
+msgstr "Získavam príspevok"
 
 #: NNTP.cpp:643
 msgid "Article Received"
-msgstr "Èlánok stiahnutý"
+msgstr "Príspevok prijatý"
 
 #: groupdlg.cpp:129
 msgid "Connect to Server"
@@ -80,11 +80,11 @@ msgstr "Získa» témy"
 
 #: groupdlg.cpp:142 groupdlg.cpp:148
 msgid "Get Articles"
-msgstr "Získa» èlánky"
+msgstr "Získa» príspevky"
 
 #: groupdlg.cpp:143 groupdlg.cpp:151 groupdlg.cpp:159
 msgid "Catchup"
-msgstr "Oznaèi» v¹etky èlánky ako preèítané"
+msgstr "Oznaèi» v¹etky príspevky ako preèítané"
 
 #: groupdlg.cpp:149 groupdlg.cpp:157
 msgid "(un)Subscribe"
@@ -96,15 +96,15 @@ msgstr "Zru¹i» oznaèenie"
 
 #: artdlg.cpp:171 groupdlg.cpp:158
 msgid "(Un)Tag"
-msgstr "Oznaèenie vypnú»/zapnú»"
+msgstr "Oznaèi»/zru¹i» oznaèenie"
 
 #: artdlg.cpp:164 artdlg.cpp:221 groupdlg.cpp:161 groupdlg.cpp:213
 msgid "Post New Article"
-msgstr "Zverejni» nový èlánok"
+msgstr "Zverejni» nový príspevok"
 
 #: groupdlg.cpp:162
 msgid "Post All Queued Articles"
-msgstr "Zverejni» èlánky zaradené do fronty"
+msgstr "Zverejni» príspevky zaradené do fronty"
 
 #: groupdlg.cpp:164
 msgid "&Subscribed"
@@ -144,7 +144,7 @@ msgstr "Pripoji» k serveru"
 
 #: groupdlg.cpp:201
 msgid "Disconnect from server"
-msgstr "Odpoji» od serveru"
+msgstr "Odpoji» od servera"
 
 #: groupdlg.cpp:204
 msgid "Get list of active groups"
@@ -156,7 +156,7 @@ msgstr "Nájs» skupinu"
 
 #: groupdlg.cpp:211
 msgid "Check for Unread Articles"
-msgstr "Pozrie» sa po nepreèítaných èlánkoch"
+msgstr "Pozrie» sa po nepreèítaných príspevkoch"
 
 #: groupdlg.cpp:362 groupdlg.cpp:584 groupdlg.cpp:925
 msgid "All Newsgroups."
@@ -188,7 +188,7 @@ msgstr "Nemô¾em sa pripoji» k serveru"
 
 #: groupdlg.cpp:543
 msgid "Connection to server failed"
-msgstr "Spojenie so serverom sa nepodarilo"
+msgstr "Spojenie so serverom sa zlyhalo"
 
 #: groupdlg.cpp:552
 msgid "Authentication Failed"
@@ -196,7 +196,7 @@ msgstr "Overenie prístupu sa nepodarilo"
 
 #: groupdlg.cpp:555
 msgid "Connection to server failed: Authentication problem"
-msgstr "Spojenie so serverom sa nepodarilo: problém pri overovaní prístupu"
+msgstr "Spojenie so serverom sa zlyhalo: problém pri overovaní prístupu"
 
 #: groupdlg.cpp:604
 msgid "Krn-Question"
@@ -216,7 +216,7 @@ msgid ""
 " get it from server?"
 msgstr ""
 "Nemáte k dispozícii zoznam aktívnych skupín.\n"
-" Získa» ich zo servera?"
+" Prajete si ich získa» zo servera?"
 
 #: groupdlg.cpp:884
 msgid "Listing active newsgroups"
@@ -288,11 +288,11 @@ msgstr "Oznaèené"
 
 #: artdlg.cpp:185
 msgid "Show Only Unread Messages"
-msgstr "Zobrazi» len nepreèítané správy"
+msgstr "Zobrazi» iba nepreèítané správy"
 
 #: artdlg.cpp:187
 msgid "Show Only Cached Messages"
-msgstr "Zobrazi» len cacheované správy"
+msgstr "Zobrazi» iba ke¹ované správy"
 
 #: artdlg.cpp:189
 msgid "Show Locked Messages"
@@ -312,7 +312,7 @@ msgstr "Triedenie ..."
 
 #: artdlg.cpp:197
 msgid "Edit Rules"
-msgstr "Nastav pravidlá"
+msgstr "Upravi» pravidlá"
 
 #: artdlg.cpp:198
 msgid "Update"
@@ -332,11 +332,11 @@ msgstr "Nasledujúca správa"
 
 #: artdlg.cpp:218
 msgid "Find Article"
-msgstr "Nájs» èlánok"
+msgstr "Nájs» príspevok"
 
 #: artdlg.cpp:223
 msgid "Get Article List"
-msgstr "Získa» zoznam èlánkov"
+msgstr "Získa» zoznam príspevkov"
 
 #: artdlg.cpp:225
 msgid "Refresh Display"
@@ -344,11 +344,11 @@ msgstr "Obnovi» displej"
 
 #: artdlg.cpp:248
 msgid "Save Article"
-msgstr "Ulo¾i» èlánok"
+msgstr "Ulo¾i» príspevok"
 
 #: artdlg.cpp:250
 msgid "Print Article"
-msgstr "Tlaèi» èlánok"
+msgstr "Vytlaèi» príspevok"
 
 #: artdlg.cpp:254
 msgid "Post a Followup"
@@ -360,15 +360,15 @@ msgstr "Zverejni» a posla» po¹tou"
 
 #: artdlg.cpp:262
 msgid "Tag Article"
-msgstr "Oznaèi» èlánok"
+msgstr "Oznaèi» príspevok"
 
 #: artdlg.cpp:264
 msgid "Lock (keep in cache)"
-msgstr "Uzamknú» (uchova» v cache)"
+msgstr "Uzamknú» (uchova» v ke¹i)"
 
 #: artdlg.cpp:266
 msgid "Decode Article"
-msgstr "Dekódova» èlánok"
+msgstr "Dekódova» príspevok"
 
 #: artdlg.cpp:270
 msgid "Mark UnRead"
@@ -392,7 +392,7 @@ msgstr "Predmet"
 
 #: artdlg.cpp:462
 msgid "Threading..."
-msgstr "Triedenie..."
+msgstr "Zluèovanie..."
 
 #: artdlg.cpp:471
 msgid "Showing Article List"
@@ -430,7 +430,7 @@ msgstr ""
 
 #: artdlg.cpp:1527
 msgid "Getting Article List"
-msgstr "Získavam zoznam èlánkov"
+msgstr "Získavam zoznam príspevkov"
 
 #: identDlg.cpp:41
 msgid "KRN-Identity Configuration"
@@ -478,11 +478,11 @@ msgstr "Spoji» pri ¹tarte"
 
 #: NNTPConfigDlg.cpp:70
 msgid "Connect without asking"
-msgstr "Pripoji» bez pýtania"
+msgstr "Pripoji» sa bez pýtania"
 
 #: NNTPConfigDlg.cpp:74
 msgid "Authenticate"
-msgstr "Overi» prístup"
+msgstr "Overi» toto¾nos»"
 
 #: NNTPConfigDlg.cpp:79
 msgid "User Name"
@@ -518,7 +518,7 @@ msgstr "©týl hlavièky"
 
 #: fontsDlg.cpp:48
 msgid "Fancy"
-msgstr "Fancy"
+msgstr "Veselý"
 
 #: fontsDlg.cpp:49
 msgid "Brief"
@@ -594,15 +594,15 @@ msgstr "Rozdeli» okno vertikálne"
 
 #: findArtDlg.cpp:22
 msgid "KRN - Article Searcher"
-msgstr "KRN - Prehµadávaè èlánkov"
+msgstr "KRN - Prehµadávaè príspevkov"
 
 #: findArtDlg.cpp:29
 msgid "Find Articles With:"
-msgstr "Nájs» èlánky s:"
+msgstr "Nájs» príspevky s:"
 
 #: findArtDlg.cpp:34 rulesDlg.cpp:106
 msgid "In Field:"
-msgstr "V polo¾ke"
+msgstr "V poli:"
 
 #: findArtDlg.cpp:56 rulesDlg.cpp:132
 msgid "Wildcard Mode"
@@ -618,7 +618,7 @@ msgstr "KRN - Nastavenie expirácie"
 
 #: expireDlg.cpp:36
 msgid "For how long should we keep things (in days)?"
-msgstr "Na akú dobu si prajete uchováva» èlánky (v dòoch)?"
+msgstr "Na akú dobu si prajete uchováva» príspevky (v dòoch)?"
 
 #: expireDlg.cpp:46
 msgid "Read:"
@@ -658,7 +658,7 @@ msgstr "Pou¾i» priamu tlaè"
 
 #: printdlg.cpp:48
 msgid "Print using:"
-msgstr "Tlaèi» pomocou:"
+msgstr "Vytlaèi» pomocou:"
 
 #: printdlg.cpp:52
 msgid "Feed it with:"
@@ -702,7 +702,7 @@ msgstr "Ulo¾i» ako"
 
 #: rulesDlg.cpp:101
 msgid "Match Articles With:"
-msgstr "Porovna» èlánky s:"
+msgstr "Porovna» príspevky s:"
 
 #: rulesDlg.cpp:126
 msgid "Negative"
@@ -722,34 +722,5 @@ msgstr "Triedi» podµa:"
 
 #: sortDlg.cpp:56
 msgid "Use Threading"
-msgstr "Pou¾i» vlákna ..."
+msgstr "Pou¾i» zluèovanie ..."
 
-#~ msgid "Print"
-#~ msgstr "Tlaèi»"
-
-#~ msgid "Small"
-#~ msgstr "Malý"
-
-#~ msgid "Large"
-#~ msgstr "Veµký"
-
-#~ msgid "None"
-#~ msgstr "®iadny"
-
-#~ msgid "KRN - Decoder"
-#~ msgstr "KRN - Dekóder"
-
-#~ msgid "ID"
-#~ msgstr "ID"
-
-#~ msgid "Destination directory:"
-#~ msgstr "Cieµový prieèinok:"
-
-#~ msgid "Decode All"
-#~ msgstr "Dekódova»"
-
-#~ msgid "KRN-Decoder"
-#~ msgstr "KRN-Dekóder"
-
-#~ msgid "Unsupported encoding type: %s."
-#~ msgstr "Nepodporovaný typ kódovania: %s"
