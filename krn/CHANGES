@@ -1,4 +1,18 @@
 -----------------------------------------------------------------------------
+Changes made Apr 18
+-----------------------------------------------------------------------------
+* [Roberto] Fixed a bug: Subjects starting with "{" cause a segfault in
+            ktablistbox. Now I remove the { but that's not nice.
+*           Implemented sane behaviour for "saving multiple". Now it saves
+            all messages in a single file.
+-----------------------------------------------------------------------------
+Changes made Apr 17
+-----------------------------------------------------------------------------
+* [Roberto] Disabled URLification of email addresses (infinite loops)
+*           Don't make group actions jump.
+*           Trying to avoid flickering in group actions (Not really worked).
+*           Added a little more disconnection resistance.
+-----------------------------------------------------------------------------
 Changes made Apr 16
 -----------------------------------------------------------------------------
 * [Roberto] Enabled opening of subscribed newsgroups not in active.

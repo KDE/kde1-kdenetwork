@@ -160,6 +160,8 @@ void Article::formHeader(QString *s)
     for (int i=0;i<threadDepth;i++)
         s->append("\t");
     s->append(ss.data());
+    while (Subject[0]=='{')
+        Subject=Subject.right(Subject.length()-1);
     s->append(Subject);
 }
 

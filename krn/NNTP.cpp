@@ -157,13 +157,19 @@ bool NNTP::connect()
         return false;
     if (status==201)
         Readonly=true;
+    if (!status)
+        return false;
     
     Connected=true;
     
     //this is needed sometimes for some versions of INN
     status=setMode("reader");
-
+    if (!status)
+        return false;
+    
     status=listOverview();
+    if (!status)
+        return false;
 
     return Connected;
 }

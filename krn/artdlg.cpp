@@ -96,6 +96,7 @@
 #define SCOREFRAME 34
 #define FILL_TREE 35
 #define CLOSE_WINDOW 36
+#define MULTI_SAVE 37
 
 extern QString pixpath,cachepath;
 
@@ -106,6 +107,8 @@ extern KConfig *conf;
 extern Groupdlg *main_widget;
 
 extern QList <Rule> ruleList;
+
+QString MultiSavePath;
 
 findArtDlg *FindDlg=0;
 rulesDlg *RulesDlg=0;
@@ -360,8 +363,12 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
 void Artdlg::init (NewsGroup *_group, NNTP* _server)
 {
     IDList.clear();
-    if (group) //make old group know I'm not showing him
-        group->isVisible=0;
+    if (group) 
+    {
+        if (group->dirty)
+            group->clean();
+        group->isVisible=0; //make old group know I'm not showing him
+    }
     
     group=_group;
     group->isVisible=this;
@@ -501,8 +508,14 @@ void Artdlg::fillTree ()
 
 bool Artdlg::taggedActions (int action)
 {
+    if (action==SAVE_ARTICLE)
+    {
+        action=MULTI_SAVE;
+        MultiSavePath="";
+    }
     bool success=false;
     qApp->setOverrideCursor (waitCursor);
+    list->setUpdatesEnabled(FALSE);
     int c=0;
     
     if (action!=PRINT_ARTICLE)
@@ -520,7 +533,6 @@ bool Artdlg::taggedActions (int action)
             qApp->processEvents();
         c++;
     }
-    goTo(c);
     
     if (action!=PRINT_ARTICLE)
     {
@@ -528,6 +540,8 @@ bool Artdlg::taggedActions (int action)
     }
     
     qApp->restoreOverrideCursor ();
+    list->setUpdatesEnabled(TRUE);
+    list->update();
     switch (action)
     {
     case DECODE_ARTICLE:
@@ -538,8 +552,14 @@ bool Artdlg::taggedActions (int action)
 
 bool Artdlg::readActions (int action)
 {
+    if (action==SAVE_ARTICLE)
+    {
+        action=MULTI_SAVE;
+        MultiSavePath="";
+    }
     bool success=false;
     qApp->setOverrideCursor (waitCursor);
+    list->setUpdatesEnabled(FALSE);
     int c=0;
     
     if (action!=PRINT_ARTICLE)
@@ -558,14 +578,14 @@ bool Artdlg::readActions (int action)
             qApp->processEvents();
     }
 
-    goTo(c);
-    
     if (action!=PRINT_ARTICLE)
     {
         connect (list,SIGNAL(highlighted(int,int)),this,SLOT(loadArt(int,int)));
     }
     
     qApp->restoreOverrideCursor ();
+    list->setUpdatesEnabled(TRUE);
+    list->update();
     switch (action)
     {
     case DECODE_ARTICLE:
@@ -576,8 +596,14 @@ bool Artdlg::readActions (int action)
 
 bool Artdlg::unreadActions (int action)
 {
+    if (action==SAVE_ARTICLE)
+    {
+        action=MULTI_SAVE;
+        MultiSavePath="";
+    }
     bool success=false;
     qApp->setOverrideCursor (waitCursor);
+    list->setUpdatesEnabled(FALSE);
     int c=0;
     
     if (action!=PRINT_ARTICLE)
@@ -595,7 +621,6 @@ bool Artdlg::unreadActions (int action)
         if (!(c%5))
             qApp->processEvents();
     }
-    goTo(c);
     
     if (action!=PRINT_ARTICLE)
     {
@@ -603,6 +628,8 @@ bool Artdlg::unreadActions (int action)
     }
     
     qApp->restoreOverrideCursor ();
+    list->setUpdatesEnabled(TRUE);
+    list->update();
     switch (action)
     {
     case DECODE_ARTICLE:
@@ -613,8 +640,14 @@ bool Artdlg::unreadActions (int action)
 
 bool Artdlg::allActions (int action)
 {
+    if (action==SAVE_ARTICLE)
+    {
+        action=MULTI_SAVE;
+        MultiSavePath="";
+    }
     bool success=false;
     qApp->setOverrideCursor (waitCursor);
+    list->setUpdatesEnabled(FALSE);
     int c=0;
     
     if (action!=PRINT_ARTICLE)
@@ -629,7 +662,6 @@ bool Artdlg::allActions (int action)
         if (!(c%5))
             qApp->processEvents();
     }
-    goTo(c);
     
     if (action!=PRINT_ARTICLE)
     {
@@ -637,6 +669,8 @@ bool Artdlg::allActions (int action)
     }
     
     qApp->restoreOverrideCursor ();
+    list->setUpdatesEnabled(TRUE);
+    list->update();
     switch (action)
     {
     case DECODE_ARTICLE:
@@ -857,6 +891,14 @@ bool Artdlg::actions (int action,int index)
             saveArt(IDList.at(index));
             break;
         }
+    case MULTI_SAVE:
+        {
+            if (index<0)
+                break;
+            multiSaveArt(IDList.at(index));
+            break;
+        }
+
     case NO_READ:
         {
             unread = !unread;
@@ -1327,6 +1369,70 @@ void Artdlg::saveArt (QString id)
     return;
 }
 
+void Artdlg::multiSaveArt (QString id)
+{
+    if (!server->isConnected())
+    {
+        if (!(server->isCached(id.data())==PART_ALL))
+        {
+            emit needConnection();
+            if (!server->isConnected())
+            {
+                qApp->restoreOverrideCursor ();
+                return;
+            }
+        }
+    }
+    qApp->setOverrideCursor (waitCursor);
+    QString *s;
+    s=server->article(id.data());
+    if (s)
+    {
+        if (!s->isEmpty())
+        {
+            qApp->setOverrideCursor (arrowCursor);
+            QString f=MultiSavePath;
+            if (f.isEmpty())
+                f=KFileDialog::getSaveFileName(0,"*",this);
+            if (!f.isEmpty())
+            {
+                MultiSavePath=f;
+                if (QFile::exists(f))
+                {
+                    QFile fi(f);
+                    if (fi.open(IO_WriteOnly | IO_Append))
+                    {
+                        fi.writeBlock(s->data(),s->length());
+                        fi.close();
+                    }
+                    else
+                    {
+                        warning ("Can't open file for writing");
+                    }
+                }
+                else
+                {
+                    kStringToFile(*s,f,false,true);
+                }
+            }
+            qApp->restoreOverrideCursor ();
+        }
+        delete s;
+    }
+    else
+    {
+        s=new QString(klocale->translate("From: Krn\nTo: You\n\nError getting article.\nServer said:\n"));
+        s->append(server->lastStatusResponse());
+        KMMessage *m=new KMMessage();
+        m->fromString(s->data());
+        messwin->setMsg(m);
+        delete s;
+        qApp->restoreOverrideCursor ();
+        return;
+    }
+    qApp->restoreOverrideCursor ();
+    return;
+}
 
 //column is useless right now.
 void Artdlg::loadArt (int index,int)

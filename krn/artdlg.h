@@ -69,6 +69,7 @@ private slots:
     void markReadArt (int index,int column);
     void decArt (int index,int column);
     void saveArt (QString id);
+    void multiSaveArt (QString id);
     void copyText(bool b);
     void popupMenu(int index,int column);
     void FindThis (const char *,const char *,bool casesen,bool wildmode);
