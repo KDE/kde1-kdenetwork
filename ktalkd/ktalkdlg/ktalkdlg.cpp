@@ -67,7 +67,7 @@ int main (int argc, char **argv) {
     // argv[1] : user@host (caller)
     // argv[2] (optionnal) : callee, non existent
 
-    KApplication a (argc, argv, "ktalkannounce"); // we want to read ktalkannouncerc
+    KApplication a (argc, argv, "ktalkd"); // we want to ktalkd translations
 
     struct timeval clock;
     struct timezone zone; 
@@ -101,7 +101,8 @@ int main (int argc, char **argv) {
     printf("#\n");
     fflush(stdout);
     
-    KConfig *cfg = a.getConfig();
+    KConfig *cfg = new KConfig ( kapp->kde_configdir() + "/ktalkannouncerc" , 
+				 kapp->localconfigdir() + "/ktalkannouncerc" );
     cfg->setGroup ("ktalkannounce");
     bool bSound = cfg->readNumEntry ("Sound", 0);
     KAudio *audio = 0;
