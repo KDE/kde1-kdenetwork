@@ -1,0 +1,48 @@
+all: 
+	@echo "This Makefile is only for the CVS repository"
+	@echo "I will delete it before making the distribution"
+	@echo ""
+	cp configure.in.1 configure.in
+	aclocal 
+	autoheader
+	cat configure.in.1 > configure.in 
+	echo "AC_OUTPUT(" >> configure.in
+	mfs=`find . -name Makefile.am -print | sed -e "s#\.am##" | sed -e "s#\./##"` ; \
+	echo $$mfs")" >> configure.in ;\
+	automake
+	cat configure.in.1 configure.in.2 > configure.in
+	autoconf
+	touch -r configure.in.1 configure.in
+	touch configure
+	touch stamp-h.in
+	rm -f ./SUBDIRS 
+	dirs=`find . -type d -depth -maxdepth 1 -print | sed -e "s#./##" | sed -e "s/\.//"` ;\
+	for i in $$dirs; do \
+	echo $$i >> ./SUBDIRS ;\
+	done
+
+dist:
+	@cp configure.in.1 configure.in ;\
+	aclocal ;\
+	autoheader ;\
+	cat configure.in.1 > configure.in ;\
+	echo "AC_OUTPUT(" >> configure.in ;\
+	mfs=`find . -name Makefile.am -print | sed -e "s#\.am##" | sed -e "s#\./##"` ; \
+	echo -n $$mfs")" >> configure.in ;\
+	automake  --foreign --include-deps;\
+	cat configure.in.1 configure.in.2 > configure.in ;\
+	autoconf ;\
+	touch -r configure.in.1 configure.in ;\
+	touch configure ;\
+	touch stamp-h.in ;\
+	rm -f ./SUBDIRS ;\
+	dirs=`find . -type d -depth -maxdepth 1 -print | sed -e "s#./##" | sed -e "s/\.//"` ;\
+	for i in $$dirs; do \
+	echo $$i >> ./SUBDIRS ;\
+	done ;\
+	LIST=`find ./po -name "*.po"`; \
+	for i in $$LIST; do \
+	 file2=`echo $$i | sed -e "s#\.po#\.gmo#"`; \
+	 msgfmt -o $$file2 $$i; \
+	done ;\
+	rm -f configure.in.1 configure.in.2 Makefile.cvs

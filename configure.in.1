@@ -1,0 +1,75 @@
+# Original Author was Kalle@kde.org
+# I lifted it in some mater. (Stephan Kulow)
+# I used much code from Janos Farkas
+
+dnl Process this file with autoconf to produce a configure script.
+
+AC_INIT(acinclude.m4) dnl a source file from your sub dir
+AC_MSG_WARN("This Code is alpha. It may not even compile.  Use at your own risk.")
+AC_CANONICAL_SYSTEM 
+AC_ARG_PROGRAM
+AC_ISC_POSIX
+
+dnl Automake doc recommends to do this only here. (Janos)
+AM_INIT_AUTOMAKE(kdenetwork, 0.1) dnl searches for some needed programs
+
+dnl make $KDEDIR the default for the installation
+AC_PREFIX_DEFAULT(${KDEDIR:-/usr/local/kde})
+
+dnl generate the config header
+AM_CONFIG_HEADER(config.h) dnl at the distribution this done
+
+dnl checks, if the debug code is wanted
+AC_CHECK_FLAGS
+
+dnl Checks for programs.
+AC_PROG_CC
+AC_PROG_CPP
+test "$CCC" = "" && CCC="xlC DCC"
+AC_PROG_CXX
+AC_PROG_LN_S
+AC_PROG_RANLIB
+
+dnl for NLS support. Call them in this order!
+dnl WITH_NLS is for the po files
+AM_KDE_WITH_NLS
+
+dnl I need to check for libsocket before testing X
+AC_CHECK_LIB(socket, socket, [LIBSOCKET="-lsocket -lnsl"]) dnl for Solaris
+AC_SUBST(LIBSOCKET)
+AC_PATH_KDE
+
+AC_LANG_CPLUSPLUS
+dnl Checks for libraries. 
+AC_CHECK_LIB(compat, main, [LIBCOMPAT="-lcompat"]) dnl for FreeBSD
+AC_SUBST(LIBCOMPAT)
+AC_CHECK_LIB(crypt, main, [LIBCRYPT="-lcrypt"]) dnl for BSD
+AC_SUBST(LIBCRYPT)
+LIBKHTMLW="-lkhtmlw -ljscript" dnl this is somewhat historical, since jscript is ways needed
+AC_SUBST(LIBKHTMLW)
+
+AC_FIND_GIF
+AC_FIND_JPEG
+
+dnl Checks for header files.
+AC_HEADER_DIRENT
+AC_HEADER_STDC
+AC_CHECK_HEADERS(fcntl.h sys/time.h unistd.h)
+
+dnl Checks for typedefs, structures, and compiler characteristics.
+AC_HEADER_TIME
+
+dnl check if the compiler has bool
+AC_CHECK_BOOL
+
+dnl Checks for library functions. MISCOBJS is for kdecore
+AC_CHECK_KSIZE_T
+AC_CHECK_SETENV
+
+dnl output files
+topdir=`pwd`
+AC_SUBST(topdir)
+
+dnl Perform program name transformation
+AC_ARG_PROGRAM
+
