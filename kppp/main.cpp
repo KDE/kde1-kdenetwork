@@ -44,6 +44,7 @@
 
 #include <kmsgbox.h>
 #include <kquickhelp.h>
+#include <kbuttonbox.h>
 
 #include "acctselect.h"
 #include "main.h"
@@ -57,6 +58,7 @@
 #include "ppplog.h"
 #include "log.h"
 #include "groupbox.h"
+#include "newwidget.h"
 
 #include <X11/Xlib.h>
 
@@ -99,6 +101,67 @@ void banner(char* progname){
   fprintf(stderr,"(c) 1998 Harri Porten <porten@kde.org>\n");
   fprintf(stderr,"Use -h for the list of valid command line options.\n\n");
   exit(0);
+}
+
+void showNews() {
+  /*
+   * Introduce the QuickHelp feature to new users of this version
+   */
+  #define QUICKHELP_HINT "Hint_QuickHelp"
+  if(gpppdata.readNumConfig(GENERAL_GRP, QUICKHELP_HINT, 0) == 0) {
+    QDialog dlg(0, 0, true);
+    dlg.setCaption(i18n("Recent changes in kppp"));
+    
+    QVBoxLayout *tl = new QVBoxLayout(&dlg, 10, 10);
+    QHBoxLayout *l1 = new QHBoxLayout(10);
+    QVBoxLayout *l2 = new QVBoxLayout(10);
+    tl->addLayout(l1);
+
+    QLabel *icon = new QLabel(&dlg);
+    icon->setPixmap(ICON("exclamation.xpm"));
+    icon->setFixedSize(icon->sizeHint());
+    l1->addWidget(icon);
+    l1->addLayout(l2);
+
+    QLabel *l = newLabel(i18n("From version 1.4.8 on, kppp has a new feature\n"
+			      "called \"Quickhelp\". It's similar to a tooltip,\n"
+			      "but you can activate it whenever you want.\n"
+			      "\n"
+			      "To activate it, simply click on a control like\n"
+			      "a button or a label with the right mouse button.\n"
+			      "If the item supports Quickhelp, a popup menu\n"
+			      "will appear leading to quickhelp.\n"
+			      "\n"
+			      "To test it, right-click somewhere into this text."),
+			 &dlg);
+    
+    QCheckBox *cb = new QCheckBox(i18n("Don't show this hint again"), &dlg);
+    cb->setFixedSize(cb->sizeHint());
+
+    KButtonBox *bbox = new KButtonBox(&dlg);
+    bbox->addStretch(1);
+    QPushButton *ok = bbox->addButton(i18n("Ok"));
+    ok->setDefault(true);
+    dlg.connect(ok, SIGNAL(clicked()),
+		&dlg, SLOT(accept()));
+    bbox->addStretch(1);
+    bbox->layout();
+
+    l2->addWidget(l);
+    l2->addWidget(cb);
+    tl->addWidget(bbox);
+    tl->freeze();
+
+    KQuickHelp::add(cb, 
+    KQuickHelp::add(l, i18n(
+			    "This is an example for <b>QuickHelp</b>.\n"
+			    "This window will stay open until you\n"
+			    "click a mouse button or a hit a key.\n")));
+
+    dlg.exec();
+    if(cb->isChecked())
+      gpppdata.writeConfig(GENERAL_GRP, QUICKHELP_HINT, 1);   
+  }
 }
 
 extern "C" {
@@ -305,13 +368,16 @@ int main( int argc, char **argv ) {
   
   // Mario: testing
   if(TESTING) {
-    PPPdArguments d(0);
-    d.exec();
+    showNews();
     exit(0);
   }
 
   KPPPWidget kppp;
   p_kppp = &kppp;
+
+  // keep user informed about recent changes
+  if(!have_cmdl_account)
+    showNews();
 
   a.setMainWidget(&kppp);
   a.setTopWidget(&kppp);
@@ -390,13 +456,13 @@ KPPPWidget::KPPPWidget( QWidget *parent, const char *name )
 	  this, SLOT(enterPressedInID()));
   KQuickHelp::add(ID_Label, 
   KQuickHelp::add(ID_Edit,
-		  "Type in the username that you got from your\n"
-		  "ISP. This is especially important for PAP\n"
-		  "and CHAP. You may ommit this when you use\n"
-		  "Terminal based or Script based authentication.\n"
-		  "\n"
-		  "<b>Important</b>: case is important here:\n"
-		  "<i>myusername</i> is not the same as <i>MyUserName</i>!"));
+		  i18n("Type in the username that you got from your\n"
+		       "ISP. This is especially important for PAP\n"
+		       "and CHAP. You may ommit this when you use\n"
+		       "Terminal based or Script based authentication.\n"
+		       "\n"
+		       "<b>Important</b>: case is important here:\n"
+		       "<i>myusername</i> is not the same as <i>MyUserName</i>!")));
 
   PW_Label = new QLabel(this);
   PW_Label->setText(i18n("Password:"));
@@ -413,13 +479,13 @@ KPPPWidget::KPPPWidget( QWidget *parent, const char *name )
  
   KQuickHelp::add(PW_Label, 
   KQuickHelp::add(PW_Edit,
-		  "Type in the password that you got from your\n"
-		  "ISP. This is especially important for PAP\n"
-		  "and CHAP. You may ommit this when you use\n"
-		  "Terminal based or Script based authentication.\n"
-		  "\n"
-		  "<b>Important</b>: case is important here:\n"
-		  "<i>mypassword</i> is not the same as <i>MyPassword</i>!"));
+		  i18n("Type in the password that you got from your\n"
+		       "ISP. This is especially important for PAP\n"
+		       "and CHAP. You may ommit this when you use\n"
+		       "Terminal based or Script based authentication.\n"
+		       "\n"
+		       "<b>Important</b>: case is important here:\n"
+		       "<i>mypassword</i> is not the same as <i>MyPassword</i>!")));
 
 
   QHBoxLayout *l3 = new QHBoxLayout;
@@ -434,12 +500,12 @@ KPPPWidget::KPPPWidget( QWidget *parent, const char *name )
   MIN_SIZE(log);
   l3->addWidget(log);
   KQuickHelp::add(log, 
-		  "This controls whether a log window is shown.\n"
-		  "A log window shows the communication between\n"
-		  "<i>kppp</i> and your modem. This will help you\n"
-		  "to track down problems.\n"
-		  "\n"
-		  "Turn it off when <i>kppp</i> connects without problems");
+		  i18n("This controls whether a log window is shown.\n"
+		       "A log window shows the communication between\n"
+		       "<i>kppp</i> and your modem. This will help you\n"
+		       "to track down problems.\n"
+		       "\n"
+		       "Turn it off when <i>kppp</i> connects without problems"));
 
   fline = new QFrame(this);
   fline->setFrameStyle(QFrame::HLine |QFrame::Sunken);
@@ -897,7 +963,7 @@ void KPPPWidget::connectbutton() {
   if (strlen(gpppdata.phonenumber()) == 0) {
     QString s;
     s.sprintf(i18n("You have to specify a telephone "
-		   "number !\n"));
+		   "number!"));
     QMessageBox::warning(this, i18n("Error"), s.data());
     return;
   }

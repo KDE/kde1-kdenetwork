@@ -5,7 +5,7 @@ data_DATA =	Terminal.xpm back.xpm exit.xpm fileopen.xpm \
 		modemleft.xpm modemnone.xpm modemright.xpm phone.xpm \
 		start.xpm terminal_both.xpm terminal_left.xpm \
 		terminal_right.xpm dock_none.xpm dock_left.xpm \
-		dock_right.xpm dock_both.xpm 
+		dock_right.xpm dock_both.xpm exclamation.xpm
 
 datadir = $(kde_datadir)/kppp/pics
 
