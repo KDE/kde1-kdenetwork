@@ -18,13 +18,12 @@ msgid "New Folder"
 msgstr "Uusi kansio"
 
 #: kmmainwin.cpp:288 kmmainwin.cpp:318
-#, fuzzy
 msgid "KMail error"
-msgstr "vakava virhe"
+msgstr "KMail virhe"
 
 #: kmmainwin.cpp:289 kmmainwin.cpp:319
 msgid "Already checking for mail!"
-msgstr ""
+msgstr "Tarkistan jo postia!"
 
 #: kmmainwin.cpp:299 kmmainwin.cpp:329
 msgid "No new mail available"
@@ -173,7 +172,6 @@ msgid "Check Mail..."
 msgstr "Tarkista posti..."
 
 #: kmmainwin.cpp:823
-#, fuzzy
 msgid "Check Mail in..."
 msgstr "Tarkista posti..."
 
@@ -434,24 +432,24 @@ msgid "Network"
 msgstr "Verkko"
 
 #: kmsettings.cpp:311
-#, fuzzy
 msgid "Fonts"
-msgstr "sisältää"
+msgstr "Kirjasimet"
 
 #: kmsettings.cpp:316
 msgid "Message Body Font:"
-msgstr ""
+msgstr "Viestirungon kirjasin:"
 
 #: kmsettings.cpp:321
-#, fuzzy
 msgid "Message List Font:"
-msgstr "Viesti puhtaana tekstinä"
+msgstr "Viestilistan kirjasin:"
 
 #: kmsettings.cpp:325
 msgid ""
 "Changing fonts currently only occurs when a new\n"
 "window is opened or kmail is restarted"
 msgstr ""
+"Fonttien muutos tapahtuu vain uutta ikkunaa avattaessa\n"
+"tai kun kmail käynnistetään uudelleen"
 
 #: kmsettings.cpp:341 kmsettings.cpp:411
 msgid "Appearance"
@@ -555,12 +553,11 @@ msgstr "tyhjennä roskakori lopetetettaessa"
 
 #: kmsettings.cpp:556
 msgid "Message Body Font"
-msgstr ""
+msgstr "Viestirungon kirjasin"
 
 #: kmsettings.cpp:568
-#, fuzzy
 msgid "Message List Font"
-msgstr "Viesti puhtaana tekstinä"
+msgstr "Viestilistakirjasin"
 
 #: kmsettings.cpp:618
 msgid "Select Account"
@@ -635,14 +632,12 @@ msgid "Subject"
 msgstr "Aihe"
 
 #: kmheaders.cpp:209
-#, fuzzy
 msgid "Unknown"
-msgstr "Tuntematon virhe"
+msgstr "Tuntematon"
 
 #: kmheaders.cpp:212
-#, fuzzy
 msgid "No Subject"
-msgstr "Aihe"
+msgstr "Ei Aihetta"
 
 #: kmheaders.cpp:259
 msgid "order of arrival"
@@ -943,11 +938,9 @@ msgstr ""
 "Virhe käynnistettäessä KSpelliä. Varmista että ISpell on oikein asetettu."
 
 #: kmfolder.cpp:144
-#, fuzzy, c-format
+#, c-format
 msgid "Folder `%s' changed. Recreating index."
-msgstr ""
-"Kansion `%s' sisältö muuttui.\n"
-"Luon indeksin uudelleen."
+msgstr "Kansion `%s' sisältö muuttui. Luon indeksin uudelleen."
 
 #: kmfolder.cpp:351
 #, c-format
@@ -1297,7 +1290,6 @@ msgstr ""
 "%s"
 
 #: kmfolderseldlg.cpp:29
-#, fuzzy
 msgid "Select folder"
 msgstr "Valitse kansio"
 

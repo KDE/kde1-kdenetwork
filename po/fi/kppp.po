@@ -358,7 +358,7 @@ msgstr "Terminaalipohjainen"
 
 #: edit.cpp:76
 msgid "CHAP"
-msgstr ""
+msgstr "CHAP"
 
 #: edit.cpp:82
 msgid "Store password"
@@ -497,9 +497,8 @@ msgid "Disconnect on X-server shutdown"
 msgstr "Lopeta yhteys X-palvelimen lopetuksessa"
 
 #: general.cpp:124
-#, fuzzy
 msgid "Quit on Disconnect"
-msgstr "Katkaise"
+msgstr "Lopeta katkaistaessa"
 
 #: general.cpp:130
 msgid "Minimize Window on Connect"
@@ -725,7 +724,7 @@ msgid ""
 "supply a username and a password!"
 msgstr ""
 "Olet valinnut tunnistuksen muodoksi\n"
-"PAP:n. Tämä vaatii sen, että annat\n"
+"CHAP:n. Tämä vaatii sen, että annat\n"
 "käyttäjänimen sekä salasanasi!"
 
 #: main.cpp:809
@@ -734,12 +733,12 @@ msgid ""
 "Cannot create CHAP authentication\n"
 "file \"%s\""
 msgstr ""
-"En saa luotua PAP tunnistusta\n"
+"En saa luotua CHAP tunnistusta\n"
 "tiedostoon \"%s\""
 
 #: main.cpp:821
 msgid "You have to specify a telephone number !\n"
-msgstr ""
+msgstr "Sinun on annettava puhelinnumero !"
 
 #: main.cpp:895
 msgid "Quit kPPP?"
@@ -1108,6 +1107,10 @@ msgid ""
 "itself.\n"
 "Contact your system administrator."
 msgstr ""
+"kppp on huomannut 'lock' asetuksen tiedostossa /etc/ppp/options.\n"
+"\n"
+"Tämä asetus on poistettava koska kppp hoitaa itse laitteen lukitukset.\n "
+"Ota yhteyttä systeemin ylläpitoon."
 
 #: runtests.cpp:245
 msgid ""
@@ -1117,38 +1120,8 @@ msgid ""
 "a non-empty file that has appropriate\n"
 "read and write permissions."
 msgstr ""
+"/etc/resolv.conf puuttuu!\n"
+"\n"
+"Pyydä systeemisi ylläpitäjää luomaan tämä\n"
+"tiedosto sopivilla käyttöoikeuksilla.\n" 
 
-#~ msgid "pppd Path:"
-#~ msgstr "pppd:n Polku:"
-
-#~ msgid "Log Viewer:"
-#~ msgstr "Lokin näyttäjä:"
-
-#~ msgid "started PPP connection:%s:%s"
-#~ msgstr "aloitettiin PPP yhteys:%s:%s"
-
-#~ msgid ""
-#~ "terminated PPP connection\n"
-#~ "COST OF SESSION: "
-#~ msgstr ""
-#~ "lopetettiin PPP yhteys\n"
-#~ "YHTEYDEN HINTA: "
-
-#~ msgid ""
-#~ "\n"
-#~ "SUBTOTAL FOR:"
-#~ msgstr ""
-#~ "\n"
-#~ "VÄLISUMMA:"
-
-#~ msgid ""
-#~ "The logviewer \"%s\" was not found!\n"
-#~ "\n"
-#~ "Setting default back to \"%s\"."
-#~ msgstr ""
-#~ "Lokinnäyttäjää \"%s\" ei löydy!\n"
-#~ "\n"
-#~ "Asetan oletuksen takaisin \"%s\":n."
-
-#~ msgid "Dismiss"
-#~ msgstr "Lopeta"
