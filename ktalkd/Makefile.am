@@ -7,6 +7,12 @@ else
 SUBDIRS 	=	ktalkd doc 
 endif
 
+messages:
+	@for subdir in $(SUBDIRS); do \
+	echo "Making messages in $$subdir"; \
+	 (cd $$subdir && $(MAKE) messages) \
+	done
+
 
 install-data-local:
 	@echo "**************************************************************************"

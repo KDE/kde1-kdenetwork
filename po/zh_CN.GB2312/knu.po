@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: knu 0.3.4\n"
-"POT-Creation-Date: 1998-06-16 14:20+0200\n"
+"POT-Creation-Date: 1998-07-20 15:18+0200\n"
 "PO-Revision-Date: 1998-06-12 08:33 MET DST\n"
 "Last-Translator: Wang Jian <lark@linux.ustc.edu.cn>\n"
 "Language-Team: zh_CN ( gb2312 )\n"
@@ -148,59 +148,59 @@ msgstr "在配置文件中此命令已经被禁止了."
 msgid " - configuration"
 msgstr " - 配置"
 
-#: PingDlg.cpp:98 TracerouteDlg.cpp:99
+#: PingDlg.cpp:96 TracerouteDlg.cpp:97
 msgid "Make host &name resolution"
 msgstr "进行域名解析[&N]"
 
-#: TracerouteDlg.cpp:116
+#: TracerouteDlg.cpp:114
 msgid "&Maximum number of hops:"
 msgstr "最大驿站数目[&M]:"
 
-#: HostDlg.cpp:113
+#: HostDlg.cpp:111
 msgid "address (A)"
 msgstr "地址 (A)"
 
-#: HostDlg.cpp:114
+#: HostDlg.cpp:112
 msgid "name (PTR)"
 msgstr "名字 (PTR)"
 
-#: HostDlg.cpp:115
+#: HostDlg.cpp:113
 msgid "name server (NS)"
 msgstr "名字服务器 (NS)"
 
-#: HostDlg.cpp:116
+#: HostDlg.cpp:114
 msgid "mail exchanger (MX)"
 msgstr "邮件交换服务器 (MX)"
 
-#: HostDlg.cpp:117
+#: HostDlg.cpp:115
 msgid "alias (CNAME)"
 msgstr "别名 (CNAME)"
 
-#: HostDlg.cpp:118
+#: HostDlg.cpp:116
 msgid "start of authority (SOA)"
 msgstr "权力声明开始 (SOA)"
 
-#: HostDlg.cpp:119
+#: HostDlg.cpp:117
 msgid "any record (ANY)"
 msgstr "任何记录 (ANY)"
 
-#: HostDlg.cpp:125
+#: HostDlg.cpp:123
 msgid "Se&arch for:"
 msgstr "搜索[&A]:"
 
-#: HostDlg.cpp:137 HostDlg.cpp:288
+#: HostDlg.cpp:135 HostDlg.cpp:286
 msgid "default server"
 msgstr "默认服务器"
 
-#: FingerDlg.cpp:94 HostDlg.cpp:146
+#: FingerDlg.cpp:94 HostDlg.cpp:144
 msgid "Ser&ver:"
 msgstr "服务器[&V]:"
 
-#: HostDlg.cpp:332
+#: HostDlg.cpp:330
 msgid "hos&t"
 msgstr "主机[&T]"
 
-#: HostDlg.cpp:336
+#: HostDlg.cpp:334
 msgid "ns&lookup"
 msgstr "ns&lookup"
 

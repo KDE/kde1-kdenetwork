@@ -1,8 +1,9 @@
 msgid ""
-msgstr "Project-Id-Version: knu\n"
-       "POT-Creation-Date: 1998-03-21 18:32+0300\n"
-       "PO-Revision-Date: 1998-06-23 09:00-0300\n"
-       "Last-Translator: Elvis Pfützenreuter<epx@netville.com.br>\n"
+msgstr ""
+"Project-Id-Version: knu\n"
+"POT-Creation-Date: 1998-07-20 15:18+0200\n"
+"PO-Revision-Date: 1998-06-23 09:00-0300\n"
+"Last-Translator: Elvis Pfützenreuter<epx@netville.com.br>\n"
 
 #: knu.cpp:139 knu.cpp:300
 msgid "&Ping"
@@ -30,10 +31,11 @@ msgid ""
 "in the configuration file.\n"
 "\n"
 "So I can't do anything...\n"
-msgstr "Não há nenhum comando ativado\n"
-       "no arquivo de configuração.\n"
-       "\n"
-       "Por isso não posso fazer nada...\n"
+msgstr ""
+"Não há nenhum comando ativado\n"
+"no arquivo de configuração.\n"
+"\n"
+"Por isso não posso fazer nada...\n"
 
 #: knu.cpp:237
 msgid "&New window"
@@ -88,8 +90,9 @@ msgstr "&Parar"
 msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
-msgstr "O executável deste comando não foi encontrado. \n"
-       "Pode inserir a sua localização no menu Editar->Preferências."
+msgstr ""
+"O executável deste comando não foi encontrado. \n"
+"Pode inserir a sua localização no menu Editar->Preferências."
 
 #: CommandDlg.cpp:340
 #, c-format
@@ -104,15 +107,15 @@ msgid ""
 "Please use Edit->Preferences... menu\n"
 "to configure it again.\n"
 msgstr ""
-       "\n"
-       "Há um problema em seu\n"
-       "arquivo de configuração\n"
-       "%s/%src.\n"
-       "No grupo [%s], não consigo\n"
-       "encontrar uma entrada \"path=\" válida.\n"
-       "\n"
-       "Por favor use o menu Editar->Preferências\n"
-       "para configurá-lo novamente.\n"
+"\n"
+"Há um problema em seu\n"
+"arquivo de configuração\n"
+"%s/%src.\n"
+"No grupo [%s], não consigo\n"
+"encontrar uma entrada \"path=\" válida.\n"
+"\n"
+"Por favor use o menu Editar->Preferências\n"
+"para configurá-lo novamente.\n"
 
 #: CommandDlg.cpp:349
 msgid "Error in pathname"
@@ -138,59 +141,59 @@ msgstr "Este comando foi desativado no arquivo de configuração"
 msgid " - configuration"
 msgstr " - configuração"
 
-#: PingDlg.cpp:98 TracerouteDlg.cpp:99
+#: PingDlg.cpp:96 TracerouteDlg.cpp:97
 msgid "Make host &name resolution"
 msgstr "Resolver o &nome do host"
 
-#: TracerouteDlg.cpp:116
+#: TracerouteDlg.cpp:114
 msgid "&Maximum number of hops:"
 msgstr "Número &máximo de hops:"
 
-#: HostDlg.cpp:113
+#: HostDlg.cpp:111
 msgid "address (A)"
 msgstr "endereço (A)"
 
-#: HostDlg.cpp:114
+#: HostDlg.cpp:112
 msgid "name (PTR)"
 msgstr "nome (PTR)"
 
-#: HostDlg.cpp:115
+#: HostDlg.cpp:113
 msgid "name server (NS)"
 msgstr "servidor de nomes (NS)"
 
-#: HostDlg.cpp:116
+#: HostDlg.cpp:114
 msgid "mail exchanger (MX)"
 msgstr "processador de mails (MX)"
 
-#: HostDlg.cpp:117
+#: HostDlg.cpp:115
 msgid "alias (CNAME)"
 msgstr "alias (CNAME)"
 
-#: HostDlg.cpp:118
+#: HostDlg.cpp:116
 msgid "start of authority (SOA)"
 msgstr "início de autoridade (SOA)"
 
-#: HostDlg.cpp:119
+#: HostDlg.cpp:117
 msgid "any record (ANY)"
 msgstr "qualquer registro (QUALQUER)"
 
-#: HostDlg.cpp:125
+#: HostDlg.cpp:123
 msgid "Se&arch for:"
 msgstr "Procur&ar por:"
 
-#: HostDlg.cpp:137 HostDlg.cpp:288
+#: HostDlg.cpp:135 HostDlg.cpp:286
 msgid "default server"
 msgstr "servidor padrão"
 
-#: FingerDlg.cpp:94 HostDlg.cpp:146
+#: FingerDlg.cpp:94 HostDlg.cpp:144
 msgid "Ser&ver:"
 msgstr "Ser&vidor:"
 
-#: HostDlg.cpp:332
+#: HostDlg.cpp:330
 msgid "hos&t"
 msgstr "hos&t"
 
-#: HostDlg.cpp:336
+#: HostDlg.cpp:334
 msgid "ns&lookup"
 msgstr "ns&lookup"
 
