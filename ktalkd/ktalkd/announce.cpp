@@ -269,12 +269,19 @@ int announce_proc(NEW_CTL_MSG *request, const char *remote_machine,
       } /* if */
     } /* for */
     
-    if ( Xannounceok ) {
-      if (request->r_tty[0])
-	print_std_mesg( request, remote_machine, usercfg );
-      return (SUCCESS);
-    } else
-        return (print_std_mesg( request, remote_machine, usercfg ));
+    if (Xannounceok) {
+#ifndef NO_TEXT_ANNOUNCE_IF_X
+        // never defined. Define it if you don't want text announce in 
+        // addition to X announce
+        if (request->r_tty[0]!='\0') {
+            message("Doing also text announce on %s",request->r_tty);
+            print_std_mesg(request, remote_machine, usercfg, 1 /*force no sound*/);
+        }
+#endif
+        return (SUCCESS);
+    }
+    else
+        return (print_std_mesg( request, remote_machine, usercfg, 0 ));
         
   } else {
 #else
@@ -283,11 +290,12 @@ int announce_proc(NEW_CTL_MSG *request, const char *remote_machine,
     /*
      * He is not in X, or X announces disabled -> print standard message
      */
-    return( print_std_mesg( request, remote_machine, usercfg ) );
+    return( print_std_mesg( request, remote_machine, usercfg, 0 ) );
   }
 }
 
-int print_std_mesg( NEW_CTL_MSG *request, const char *remote_machine, int usercfg ) {
+int print_std_mesg( NEW_CTL_MSG *request, const char *remote_machine, int
+                    usercfg, int force_no_sound ) {
 
   char full_tty[32];
   FILE *tf;
@@ -308,7 +316,7 @@ int print_std_mesg( NEW_CTL_MSG *request, const char *remote_machine, int usercf
     return (PERMISSION_DENIED);
   if ((stbuf.st_mode&020) == 0)
     return (PERMISSION_DENIED);
-  print_mesg(tf, request, remote_machine, usercfg);
+  print_mesg(tf, request, remote_machine, usercfg, force_no_sound);
   fclose(tf);
   return (SUCCESS);
 }
@@ -320,7 +328,7 @@ int print_std_mesg( NEW_CTL_MSG *request, const char *remote_machine, int usercf
  * in in vi at the time
  */
 void print_mesg(FILE * tf, NEW_CTL_MSG * request, const char *
-                remote_machine, int usercfg)
+                remote_machine, int usercfg, int force_no_sound)
 {
 	struct timeval clock;
 	struct timezone zone;
@@ -378,8 +386,9 @@ void print_mesg(FILE * tf, NEW_CTL_MSG * request, const char *
 	max_size = max(max_size, sizes[i]);
 	i++;
 	bptr = big_buf;
-	if (sound_or_beep(usercfg)) /* if no sound then : */
-	  *bptr++ = ''; /* send something to wake them up */
+        if (!force_no_sound) /* set if a X announce has been done */
+            if (sound_or_beep(usercfg)) /* if no sound then : */
+                *bptr++ = ''; /* send something to wake them up */
 	*bptr++ = '\r';	/* add a \r in case of raw mode */
 	*bptr++ = '\n';
 	for (i = 0; i < N_LINES; i++) {

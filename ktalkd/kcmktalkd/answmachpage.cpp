@@ -1,7 +1,7 @@
 /*
  * answmachpage.cpp - Answering machine settings for KTalkd
  *
- * Copyright (C) 1998 David Faure (David.Faure@insa-lyon.Fr)
+ * Copyright (C) 1998 David Faure, faure@kde.org
  *
  * Requires the Qt widget libraries, available at no cost at
  * http://www.troll.no/

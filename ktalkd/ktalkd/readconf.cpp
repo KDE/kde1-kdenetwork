@@ -3,7 +3,7 @@
  *
  * Routines for reading talkd.conf and .talkdrc
  *
- * by David Faure <David.Faure@ifhamy.insa-lyon.fr
+ * by David Faure, faure@kde.org
  */
 
 #include <pwd.h>

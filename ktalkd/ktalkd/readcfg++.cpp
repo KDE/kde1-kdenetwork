@@ -1,6 +1,6 @@
 /* This file is part of ktalkd
 
-    Copyright (C) 1997 David Faure (david.faure@ifhamy.insa-lyon.fr)
+    Copyright (C) 1997 David Faure (faure@kde.org)
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Library General Public
@@ -20,8 +20,6 @@
 /*
  * Routines for reading configuration from KDE configuration
  *  for ktalkd.
- *
- * by David Faure <David.Faure@ifhamy.insa-lyon.fr>
  */
 
 /* Unix includes */

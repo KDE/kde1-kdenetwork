@@ -34,6 +34,6 @@
 
 int announce(NEW_CTL_MSG * request, const char *remote_machine, char *disp, int usercfg, char * callee);
 int announce_proc(NEW_CTL_MSG * request, const char * remote_machine, char *disp, int usercfg, char * callee);
-int print_std_mesg(NEW_CTL_MSG *request, const char *remote_machine, int usercfg);
-void print_mesg(FILE * tf,NEW_CTL_MSG * request, const char * remote_machine, int usercfg);
+int print_std_mesg(NEW_CTL_MSG *request, const char *remote_machine, int usercfg, int force_no_sound);
+void print_mesg(FILE * tf,NEW_CTL_MSG * request, const char * remote_machine, int usercfg, int force_no_sound);
 int sound_or_beep(int usercfg);

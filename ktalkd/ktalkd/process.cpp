@@ -81,15 +81,9 @@ int prepare_response(register NEW_CTL_MSG *mp, register NEW_CTL_RESPONSE *rp)
 	}
 	mp->id_num = ntohl(mp->id_num);
 	mp->addr.sa_family = ntohs(mp->addr.sa_family);
-	if (mp->addr.sa_family != AF_INET) {
-		syslog(LOG_WARNING, "Bad address, family %d",
-		    mp->addr.sa_family);
-		rp->answer = BADADDR;
-		return 0;
-	}
 	mp->ctl_addr.sa_family = ntohs(mp->ctl_addr.sa_family);
 	if (mp->ctl_addr.sa_family != AF_INET) {
-		syslog(LOG_WARNING, "Bad control address, family %d",
+		syslog(LOG_WARNING, "Bad address, family %d",
 		    mp->ctl_addr.sa_family);
 		rp->answer = BADCTLADDR;
 		return 0;
