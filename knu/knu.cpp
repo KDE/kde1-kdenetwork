@@ -21,16 +21,16 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.4  1998/03/01 19:30:22  leconte
+ * - added a finger tab
+ * - internal mods
+ *
  * Revision 1.3  1997/12/07 23:44:14  leconte
  * - handle the binary's name modification dynamicaly (problem reported
  *   by Conrad Sanderson)
  * - added browse button to the option dialog (for binary selection)
  * - code clean-up
-<<<<<<<<<<<<<< variant A
- * - better fallback to"nslookup" if "host" is not found
->>>>>>>>>>>>>> variant B
  * - better fallback to "nslookup" if "host" is not found
-======= end of combination
  *
  * Revision 1.2  1997/11/23 22:28:17  leconte
  * - Id and Log added in the headers
@@ -92,6 +92,9 @@ TopLevel::TopLevel(QWidget *, const char *name)
   TracerouteDlg   *td;
   HostDlg         *hd;
   FingerDlg       *fd;
+#ifdef MTR
+  MtrDlg          *md;
+#endif
 
   windowList.setAutoDelete(FALSE);
   windowList.append(this);
@@ -162,6 +165,17 @@ TopLevel::TopLevel(QWidget *, const char *name)
     pages[pagesNumber] = fd;
     pagesNumber++;
   }
+
+#ifdef MTR
+  // mtr tab 
+  if (isTabEnabled("Mtr", kc)) {
+    md = new MtrDlg("mtr", tabCtrl, _("&Matt's traceroute"));
+    CHECK_PTR(md);
+    tabCtrl->addTab(md, md->name());
+    pages[pagesNumber] = md;
+    pagesNumber++;
+  }
+#endif
 
   if (pagesNumber == 0) {
     // There is *no* command enabled ! 
@@ -235,13 +249,20 @@ TopLevel::createMenu()
   configIndex = editMenu->insertItem(_("P&references..."), 
 				     this, SLOT(slotConfig()));
 
+  
+#if 0
+  // In the future
+  helpMenu = getHelpMenu(true, at.data());
+#endif
+
   helpMenu = new QPopupMenu;
   CHECK_PTR(helpMenu);
   helpMenu->insertItem(_("&Contents"),
 		       this, SLOT(slotHelp()), key.help());
   helpMenu->insertSeparator();
-  helpMenu->insertItem(_("&About"),
-		       this, SLOT(slotAbout()), SHIFT+Key_F1);
+  QString str;
+  str.sprintf(_("&About %s"), KNU_APPNAME);
+  helpMenu->insertItem(str, this, SLOT(slotAbout()), SHIFT+Key_F1);
   helpMenu->insertItem(_("About &Qt"), this, SLOT(slotAboutQt()));
   
   menuBar = new KMenuBar(this);
@@ -290,6 +311,14 @@ TopLevel::slotConfig()
   CHECK_PTR(ccd);
   configPages[n] = ccd;
   n++;
+
+#ifdef MTR
+  /* mtr */
+  ccd = new CommandCfgDlg(_("&Matt's traceroute"), 0, "mtr_cfg");
+  CHECK_PTR(ccd);
+  configPages[n] = ccd;
+  n++;
+#endif
 
   options = new OptionsDlg(configPages, n, 0);
   CHECK_PTR(options);

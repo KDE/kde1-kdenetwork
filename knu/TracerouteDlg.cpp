@@ -23,6 +23,10 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.6  1998/03/01 19:30:20  leconte
+ * - added a finger tab
+ * - internal mods
+ *
  * Revision 1.5  1998/01/03 16:40:06  kulow
  * corrected typos
  *
@@ -157,7 +161,7 @@ TracerouteDlg::buildCommandLine(QString args)
 {
   int     iMaxHops;
   QString sMaxHops;
-  QString s;
+  QString s, ss;
   KConfig *kc = kapp->getConfig();
   
   kc->setGroup(configGroupName);
@@ -167,6 +171,18 @@ TracerouteDlg::buildCommandLine(QString args)
   } else {
     childProcess.clearArguments();
     childProcess.setExecutable(s);
+
+    // Add arguments
+    s = (kc->readEntry("arguments")).simplifyWhiteSpace();
+
+    if (!s.isEmpty()) {
+      while (s.contains(' ', FALSE) != 0) {
+	int pos = s.find(' ', 0, FALSE);
+	childProcess << s.left(pos);
+	s = s.remove(0, pos+1);
+      }
+      childProcess << s;
+    }
     
     // Check the Maximum hop count
     iMaxHops = atoi(tracerouteLe2->text());

@@ -23,6 +23,10 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.1  1998/03/01 19:30:10  leconte
+ * - added a finger tab
+ * - internal mods
+ *
  */
 
 #include "FingerDlg.h"
@@ -139,6 +143,18 @@ FingerDlg::buildCommandLine(QString args)
     //debug("getExecutable = %s", (const char *)s);
     childProcess.clearArguments();
     childProcess.setExecutable(s);
+
+    // Add arguments
+    s = (kc->readEntry("arguments")).simplifyWhiteSpace();
+
+    if (!s.isEmpty()) {
+      while (s.contains(' ', FALSE) != 0) {
+	int pos = s.find(' ', 0, FALSE);
+	childProcess << s.left(pos);
+	s = s.remove(0, pos+1);
+      }
+      childProcess << s;
+    }
 
     as.sprintf("%s@%s", (const char *)args, 
 	       (const char *)fingerCb2->currentText());

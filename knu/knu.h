@@ -22,6 +22,10 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.4  1998/03/01 19:30:24  leconte
+ * - added a finger tab
+ * - internal mods
+ *
  * Revision 1.3  1997/12/07 23:44:15  leconte
  * - handle the binary's name modification dynamicaly (problem reported
  *   by Conrad Sanderson)
@@ -53,6 +57,9 @@
 #include "TracerouteDlg.h"
 #include "HostDlg.h"
 #include "FingerDlg.h"
+#ifdef MTR
+#include "MtrDlg.h"
+#endif
 #include "OptionsDlg.h"
 
 /**

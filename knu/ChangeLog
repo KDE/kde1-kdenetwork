@@ -1,4 +1,27 @@
-Tue Nov  4 21:54:31 1997  Bertrand Leconte  <leconteb@arthur.tou.hol.fr>
+Tue Jun  9 21:06:15 1998  Bertrand Leconte  <leconteb@arthur.tou.hol.fr>
+
+	* HostDlg.cpp (buildCommandLine): arguments added to exec line 
+
+	* PingDlg.cpp (buildCommandLine): arguments added to exec line 
+
+	* FingerDlg.cpp (buildCommandLine): arguments added to exec line 
+
+	* TracerouteDlg.cpp (buildCommandLine): corrected bug 745
+ 	(reported by Duncan Haldane): arguments added to exec line
+
+	* knu.cpp (createMenu): Replaced "About" with "About knu" (asked
+ 	by Pedro Morais)
+
+Sun Mar  8 18:35:49 1998  Bertrand Leconte  <leconteb@arthur>
+
+	* knu.kdelnk (Exec): Added -caption and %i %m (asked by
+ 	Matthias Ettrich).
+
+Sun Feb  8 17:00:00 1998  Bertrand Leconte  <leconteb@arthur>
+
+	* knu.cpp (TopLevel): added a finger tab
+	
+Tue Nov  4 21:54:31 1997  Bertrand Leconte  <leconteb@arthur>
 
 	* knu.cpp (TopLevel): minimumSize() for the KTabCtl is given
 	to the KTopLevelWidget (bug of ktlw ?)

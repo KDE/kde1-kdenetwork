@@ -23,6 +23,10 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.6  1998/03/01 19:30:13  leconte
+ * - added a finger tab
+ * - internal mods
+ *
  * Revision 1.5  1998/01/03 16:40:03  kulow
  * corrected typos
  *
@@ -225,6 +229,18 @@ HostDlg::buildCommandLine(QString args)
   
     childProcess.clearArguments();
     childProcess.setExecutable(bin);
+
+    // Add arguments
+    s = (kc->readEntry("arguments")).simplifyWhiteSpace();
+
+    if (!s.isEmpty()) {
+      while (s.contains(' ', FALSE) != 0) {
+	int pos = s.find(' ', 0, FALSE);
+	childProcess << s.left(pos);
+	s = s.remove(0, pos+1);
+      }
+      childProcess << s;
+    }
     
     // search for: combobox
     s = ((QString)(hostCb1->currentText())).stripWhiteSpace();;
