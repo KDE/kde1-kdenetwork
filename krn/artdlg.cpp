@@ -40,6 +40,7 @@
 #include <mimelib/mimepp.h>
 
 #include "decoderDlg.h"
+#include "groupdlg.h"
 #include "kdecode.h"
 #include "rmbpop.h"
 #include "fontsDlg.h"
@@ -86,6 +87,7 @@
 #define MARK_READ 30
 #define MARK_UNREAD 31
 #define LOOKUP_ALTAVISTA 32
+#define QUIT 33
 
 extern QString pixpath,cachepath;
 
@@ -94,6 +96,8 @@ extern ArticleDict artSpool;
 extern KDecode *decoder;
 
 extern KConfig *conf;
+
+extern Groupdlg *main_widget;
 
 findArtDlg *FindDlg=0;
 rulesDlg *RulesDlg=0;
@@ -154,6 +158,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     article->insertSeparator(); // robert
     article->insertItem(klocale->translate("Don't expire"), TOGGLE_EXPIRE);  // robert's cache stuff
     article->setItemChecked(TOGGLE_EXPIRE, false);
+    article->insertItem(klocale->translate("Quit"), QUIT);
     connect (article,SIGNAL(activated(int)),SLOT(actions(int)));
     
     
@@ -527,6 +532,11 @@ bool Artdlg::actions (int action)
     qApp->setOverrideCursor (waitCursor);
     switch (action)
     {
+    case QUIT:
+        {
+            main_widget->close();
+            break;
+        }
     case LOOKUP_ALTAVISTA:
         {
             int index=list->currentItem();

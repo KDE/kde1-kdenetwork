@@ -24,6 +24,7 @@ public:
 
 public slots:
     void decode(int ID,char *destName=0);
+    void decode(int ID,int);
 
 signals:
     void message();

@@ -116,6 +116,11 @@ void KDecode::showWindow()
     filenames.clear();
 }
 
+void KDecode::decode(int line,int)
+{
+    decode(line,(char *)0);
+}
+
 void KDecode::decode(int line,char *destName)
 {
     uulist *l;
@@ -125,7 +130,11 @@ void KDecode::decode(int line,char *destName)
     if (!destName)
         f= QFileDialog::getSaveFileName(0,0,0,l->filename);
     else
+    {
         f=destName;
+        f+="/";
+        f+=l->filename;
+    }
     if (!f.isEmpty())
     {
         i=UUDecodeFile (l,f.data());

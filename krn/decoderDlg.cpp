@@ -52,6 +52,7 @@ decoderDlg::decoderDlg (const char* name ) :Inherited( 0,name,true )
     l1->setFixedHeight(30);
     
     QObject::connect(b1,SIGNAL(clicked()),this,SLOT(close()));
+    QObject::connect(b2,SIGNAL(clicked()),this,SLOT(decodeAll()));
 
     l->addWidget(list,10);
     l->addWidget(l1,0);
@@ -70,6 +71,10 @@ decoderDlg::~decoderDlg()
 
 void decoderDlg::decodeAll()
 {
+    for (unsigned int i=0;i<list->count();i++)
+    {
+        decoder->decode(i,destdir->text());
+    }
 }
 
 void decoderDlg::close()
