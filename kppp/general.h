@@ -105,7 +105,7 @@ private slots:
   void 	setmodemdc(int);
   void 	setflowcontrol(int);
   void 	modemtimeoutchanged(const char*);
-  void 	modemlockfilechanged(const char*);
+  void 	modemlockdirchanged(const char*);
   void 	setenter(int);
   void  speed_selection(int);
 
@@ -126,7 +126,7 @@ private:
   QLabel *baud_label;
 
   QLineEdit 	*modemtimeout;
-  QLineEdit 	*modemlockfile;
+  QLineEdit 	*modemlockdir;
 };
 
 

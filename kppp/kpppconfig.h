@@ -81,8 +81,16 @@
 // Define the maximun number of lines of /etc/resolv.conf
 #define MAX_RESOLVCONF_LINES 128
 
-// Lock File for the modem device (Needed by mgetty users)
-#define MODEM_LOCK_FILE "/var/lock/LCK..modem"
+// Directory for modem lock files (Needed by mgetty users)
+#ifdef __linux__
+# define LOCK_DIR "/var/lock"
+#else /* linux */
+# if defined(__FreeBSD__) || defined(__NetBSD__)
+#  define	LOCK_DIR "/var/spool/lock"
+# else  /* FreeBSD || NetBSD */
+#  define	LOCK_DIR "/usr/spool/locks"
+# endif /* FreeBSD || NetBSD */
+#endif  /* linux */
 
 // search path for pppd binary
 #define PPPDSEARCHPATH "/sbin:/usr/sbin:/usr/local/sbin:/usr/bin:/usr/local/bin"

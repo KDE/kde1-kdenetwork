@@ -1,3 +1,9 @@
+1998-07-30  Harri Porten  <porten@tu-harburg.de>
+
+	* connect.cpp: take the burden of specifying the modem lock file
+	from the user. Just entering the directory should be easier and
+	safer. Presets for different systems can be found in kpppconfig.h 
+
 1998-07-29  Harri Porten  <porten@tu-harburg.de>
 
 	* macros.h: replaced remaining MAX with QMAX

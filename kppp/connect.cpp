@@ -68,6 +68,7 @@ extern bool reconnect_on_disconnect;
 extern QString old_hostname;
 extern QString local_ip_address;
 extern bool quit_on_disconnect;
+QString lockfile;
 
 bool modified_hostname;
 
@@ -1709,23 +1710,31 @@ int lockdevice() {
   int fd;
   char newlock[80]="";
 
-  QString lockfile;
-  lockfile = gpppdata.modemLockFile();
-  lockfile = lockfile.stripWhiteSpace();
+  QDir lockdir(gpppdata.modemLockDir());
 
-  if(lockfile.isEmpty()){
+  if(lockdir == ".") {
 #ifdef MY_DEBUG
-    printf("gpppdata.modemLockFile is empty ..."\
+  printf("gpppdata.modemLockDir is empty ..."\
 	   "assuming the user doesn't want a lockfile.\n");
 #endif
     return 0;
   }
 
+  QString device = gpppdata.modemDevice();
+
+  // bail out if we encounter anything else than /dev/*
+  if (device.left(5) != "/dev/" || device.findRev('/') != 4)
+    return -1;
+
+  lockfile = lockdir.absPath();
+  lockfile += "/LCK.."; 
+  lockfile += device.right(device.length() - 5);
+
   if (modem_is_locked) 
     return 1;
 
   struct stat st;
-  if(stat(gpppdata.modemLockFile(), &st) == -1) {
+  if(stat(lockfile.data(), &st) == -1) {
     if(errno == EBADF)
       return -1;
   } else {
@@ -1735,7 +1744,7 @@ int lockdevice() {
   }
 
 
-  if ((fd = open(gpppdata.modemLockFile(), O_RDONLY)) >= 0) {
+  if ((fd = open(lockfile.data(), O_RDONLY)) >= 0) {
 
     // Mario: it's not necessary to read more than lets say 32 bytes. If
     // file has more than 32 bytes, skip the rest
@@ -1768,7 +1777,7 @@ int lockdevice() {
 #endif
   }
 
-  if((fd = open(gpppdata.modemLockFile(), O_WRONLY|O_TRUNC|O_CREAT,0644)) >= 0) {
+  if((fd = open(lockfile.data(), O_WRONLY|O_TRUNC|O_CREAT,0644)) >= 0) {
     sprintf(newlock,"%05d %s %s\n", getpid(), "kppp", "user" );
 
 #ifdef MY_DEBUG
@@ -1792,7 +1801,7 @@ int lockdevice() {
 void unlockdevice() {
 
   if (modem_is_locked) {
-    unlink(gpppdata.modemLockFile());
+    unlink(lockfile);
     modem_is_locked=false;
 
 #ifdef MY_DEBUG

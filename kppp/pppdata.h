@@ -78,7 +78,7 @@
 
 // modem
 #define MODEMDEV_KEY       "Device"
-#define LOCKFILE_KEY       "Lockfile"
+#define LOCKDIR_KEY        "LockDirectory"
 #define FLOWCONTROL_KEY    "FlowControl"
 #define SPEED_KEY          "Speed"
 #define TIMEOUT_KEY        "Timeout"
@@ -200,8 +200,8 @@ public:
   const char * busyWait();
   void setbusyWait(const char *);
 
-  const char* modemLockFile();
-  void setModemLockFile(const char *);
+  const char* modemLockDir();
+  void setModemLockDir(const char *);
 
   int modemEscapeGuardTime();
   void setModemEscapeGuardTime(int i);

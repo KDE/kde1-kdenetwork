@@ -340,20 +340,20 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   }
 
   //Modem Lock File
-  label4 = new QLabel(i18n("Modem Lock File:"),
-		      this,"modemlockfilelabel");
+  label4 = new QLabel(i18n("Lock File Directory:"),
+		      this,"modemlockdirlabel");
   label4->setMinimumSize(label4->sizeHint());
   tl->addWidget(label4, 6, 1);
 
-  modemlockfile = new QLineEdit(this, "modemlockfile");
-  modemlockfile->setMaxLength(PATH_SIZE);
-  modemlockfile->setText("XXXXXXXXXXXX");
-  modemlockfile->setMinimumWidth(modemlockfile->sizeHint().width());
-  modemlockfile->setFixedHeight(modemlockfile->sizeHint().height());
-  modemlockfile->setText(gpppdata.modemLockFile());
-  connect(modemlockfile, SIGNAL(textChanged(const char*)),
-	  SLOT(modemlockfilechanged(const char*)));
-  tl->addWidget(modemlockfile, 6, 2);
+  modemlockdir = new QLineEdit(this, "modemlockdir");
+  modemlockdir->setMaxLength(PATH_SIZE);
+  modemlockdir->setText("XXXXXXXXXXXX");
+  modemlockdir->setMinimumWidth(modemlockdir->sizeHint().width());
+  modemlockdir->setFixedHeight(modemlockdir->sizeHint().height());
+  modemlockdir->setText(gpppdata.modemLockDir());
+  connect(modemlockdir, SIGNAL(textChanged(const char*)),
+	  SLOT(modemlockdirchanged(const char*)));
+  tl->addWidget(modemlockdir, 6, 2);
 
   //Modem Timeout Line Edit Box
   label3 = new QLabel(this,"modemtimeoutlabel");
@@ -413,8 +413,8 @@ void ModemWidget::setflowcontrol(int i) {
   gpppdata.setFlowcontrol(flowcontrol->text(i));
 }
 
-void ModemWidget::modemlockfilechanged(const char *n) {
-  gpppdata.setModemLockFile(n);
+void ModemWidget::modemlockdirchanged(const char *n) {
+  gpppdata.setModemLockDir(n);
 }
 
 void ModemWidget::modemtimeoutchanged(const char *n) {
