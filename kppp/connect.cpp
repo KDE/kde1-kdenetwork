@@ -242,7 +242,7 @@ void ConnectWidget::init() {
   }
 
   // initialization failed
-  messg->setText(Modem::Modem::modem->modemMessage());
+  messg->setText(Modem::modem->modemMessage());
   vmain = 20; // wait until cancel is pressed
   Modem::modem->unlockdevice();
 }                  
