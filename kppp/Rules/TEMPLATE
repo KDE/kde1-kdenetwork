@@ -65,7 +65,7 @@ per_connection=0.0
 minimum_costs=0.0
 
 
-# You pay .74 for the first 180 secons ( 3minutes) no matter
+# You pay .74 for the first 180 seconds ( 3 minutes) no matter
 # whether you are connected for 1 second or 180 seconds.
 # This rule will take priority during the first 180 seconds
 # over any other rule, in particular the 'default' rule.

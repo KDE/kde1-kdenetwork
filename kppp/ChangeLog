@@ -1,3 +1,13 @@
+1998-04-15  Harri Porten  <porten@tu-harburg.de>
+
+	* connect.cpp: extended parseargs() to deal with quoted arguments
+	* fixed bug in 'Save' that made multiple use impossible.
+	* enclosed username and password with quotes to ensure proper
+	handling of whitespace characters
+	* pap.cpp: fixed regexp to recognize entries in pap-secrets with
+	usernames that are either quoted or preceeded by whitspace. Phew !
+	That should eliminate one source of these "pppd	died" errors.
+	
 Mon Apr  6 20:18:40 1998    <mweilguni@kde.org>
 
 	* fixed a volume accounting bug

@@ -487,7 +487,7 @@ dialog.
 
 <sect1>Volume accounting<p>
 <sect2>What is volume accounting?<p>
-It basicly means to count the number of bytes transmitted from or to the
+It basically means to count the number of bytes transmitted from or to the
 internet. Kppp can count incoming bytes, outgoing bytes or both. It´s up to
 you what you want (or must) use.
 
@@ -506,12 +506,12 @@ get from internet and ignore how much you send. In that case you should choose
 out". "Bytes out" is not of much use and is only here for completeness.
 
 <sect2>Drawbacks<p>
-Unfortunatly there´s a drawback on volume accounting. Kppp will just count the
+Unfortunately there´s a drawback on volume accounting. Kppp will just count the
 number of bytes regardless their origin. Many providers set their limit only
 for internet access, not for their own network. So, if you do a little web
 surfing and you use a proxy-cache, the proxy will reside inside the network of
 your provider and he will not charge you for bytes transferred from his proxy
-cache. However, Kppp will not know that these IP packets are coming from the
+cache. However, kppp will not know that these IP packets are coming from the
 proxy and thus count them. So, if you use a proxy, or your provider uses a
 caching news server (like nntpcached), the volume reported by kppp may be
 higher.

@@ -43,8 +43,10 @@ bool PAP_CreateAuthFile() {
   if(fout.open(IO_WriteOnly)) {
     QString user = gpppdata.storedUsername();
     QString pass = gpppdata.password;
-    QRegExp r_user((user + "[ \t]").data());
-    
+    //    QRegExp r_user((user + "[ \t]").data());
+    QRegExp r_user("\\s*" + user + "[ \t]");		
+    QRegExp r_user2("\\s*[\"\']" + user + "[\"\']");
+
     // copy old file
     fin.setName(PAP_AUTH_FILE);
     if(fin.open(IO_ReadOnly)) {
@@ -53,7 +55,7 @@ bool PAP_CreateAuthFile() {
       
       while(!t.eof()) {
 	line = t.readLine();
-	if(line.find(r_user) == 0)
+	if(line.find(r_user) == 0 || line.find(r_user2) == 0)
 	  continue;
 
 	fout.writeBlock(line.data(), line.length());
@@ -61,7 +63,7 @@ bool PAP_CreateAuthFile() {
       }
 
       // append user/pass pair
-      line = user + "\t*\t" + pass;
+      line = "\"" + user + "\"\t*\t\"" + pass + "\"\n";
       fout.writeBlock(line.data(), line.length());
       fin.close();
     }

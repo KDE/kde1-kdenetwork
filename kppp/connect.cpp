@@ -401,6 +401,7 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
 
 	if(stricmp(gpppdata.script(scriptindex), "password") == 0) {
 	  gpppdata.setPassword(scanvar.data());
+	  p_xppp->setPW_Edit(scanvar.data());
 	  if(gpppdata.storePassword())
 	    gpppdata.setStoredPassword(scanvar.data());
 	  firstrunPW = true;
@@ -536,14 +537,14 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
 	QString pwstring = gpppdata.Password();
 	
 	if(!pwstring.isEmpty() && firstrunPW){
-	  // the user entered an Id on the main kppp dialog
+	  // the user entered a password on the main kppp dialog
 	  writeline(pwstring.data());
 	  firstrunPW = false;
 	  scriptindex++;
 	}
 	else{
-	  // the user didn't enter and Id on the main kppp dialog
-	  // let's query for an ID
+	  // the user didn't enter a password on the main kppp dialog
+	  // let's query for a password
 	     /* if not around yet, then post window... */
 	     if (prompt->Consumed()) {
 	       if (!(prompt->isVisible())) {
@@ -554,6 +555,7 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
 	     } else {
 	       /* if prompt withdrawn ... then, */
 	       if(!(prompt->isVisible())) {
+		 p_xppp->setPW_Edit(prompt->text());
 		 writeline(prompt->text());
 		 prompt->setConsumed();
 		 scriptindex++;
@@ -1396,7 +1398,7 @@ bool ConnectWidget::execppp() {
   // PAP settings
   if(gpppdata.authMethod() == AUTH_PAP) {
     command += " user ";
-    command += gpppdata.storedUsername();
+    command = command + "\"" + gpppdata.storedUsername() + "\"";
   }
 
   if (command.length() > MAX_CMDLEN){
@@ -1669,30 +1671,44 @@ int usleep( long usec ){
 
 #endif /* NO_USLEPP */
 
-
-
 void parseargs(char* buf, char** args){
   int nargs = 0;
+  int quotes;
 
   while(nargs < MAX_ARGS -1 && *buf != '\0') {
     
-    // Strip whitespace. Use nulls, so that the previous argument is terminated 
-    // automatically.
+    quotes = 0;
+    
+    // Strip whitespace. Use nulls, so that the previous argument is
+    // terminated automatically.
      
     while ((*buf == ' ' ) || (*buf == '\t' ) || (*buf == '\n' ) )
       *buf++ ='\0';
     
+    // detect begin of quoted argument
+    if (*buf == '"' || *buf == '\'') {
+      quotes = *buf;
+      *buf++ ='\0';
+    }
+
     // save the argument
-    if(*buf != '\0')
-    *args++ = buf;
-    nargs++;
+    if(*buf != '\0') {
+      *args++ = buf;
+      nargs++;
+    }
     
-    while ((*buf != '\0') && (*buf != '\n') && (*buf != '\t') && (*buf != ' '))
-      buf++;
-    
+    if (!quotes)
+      while ((*buf != '\0') && (*buf != '\n') &&
+	     (*buf != '\t') && (*buf != ' '))
+	buf++;
+    else {
+      while ((*buf != '\0') && (*buf != quotes))
+	buf++;
+      *buf++ = '\0';
+    } 
   }
  
-  *args ='\0';
+  *args = 0L;
 }
 
 // Lock modem device. Returns 0 on success 1 if the modem is locked and -1 if

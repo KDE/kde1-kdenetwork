@@ -920,6 +920,12 @@ void XPPPWidget::passwordChanged(const char *) {
     gpppdata.setStoredPassword("");
 }
 
+void XPPPWidget::setPW_Edit(const char *pw) {
+
+  PW_Edit->setText(pw);
+
+}
+
 
 void terminatepppd() {
   

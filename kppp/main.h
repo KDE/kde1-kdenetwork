@@ -84,6 +84,7 @@ public:
 
   void startAccounting();
   void stopAccounting();
+  void setPW_Edit(const char *);
 
 private slots:
   void newdefaultaccount(int);
