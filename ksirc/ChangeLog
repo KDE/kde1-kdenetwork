@@ -1,5 +1,10 @@
 1998-01-21  Andrew Stanley-Jones  <asj@chowtown.cban.com>
 
+	* toplevel.cpp (UserParseMenu): User menus no longer support %s,
+ 	but rather the perl variable $$dest_nick, this means you can now
+ 	use any sirc variable available, and as many times as you like.
+  	This is going to break a lot of things!
+
 	* servercontroller.cpp (ProcMessage): Disabled Connections->Join
 	Channel when last server connection is closed.
 	Added icon, thanks to Druppy for making it.
@@ -145,6 +150,17 @@
 $Revision$
 	
 $Log$
+Revision 1.19  1998/01/22 05:32:46  asj
+        * servercontroller.cpp (ProcMessage): Disabled Connections->Join
+        Channel when last server connection is closed.
+        Added icon, thanks to Druppy for making it.
+
+        * toplevel.cpp (showTicker): Fixed bug in starting ticker, was -5
+        instead of -i.
+
+        * KSTicker/ksticker.cpp (timerEvent): Added colour printing
+        support and double support.  Little cleaner, looks ok.
+
 Revision 1.18  1998/01/19 16:27:34  asj
 Fixed help so it works correctly now.
 
