@@ -3,6 +3,7 @@
 #include <iostream.h>
 
 #include <qregexp.h>
+#include <qapp.h>
 
 const int KSPainter::maxcolour = 16;
 const QColor KSPainter::brown    ( 165,  42,  42 );
@@ -45,12 +46,8 @@ void KSPainter::colourDrawText(QPainter *p, int startx, int starty,
   char buf[3];
   int loc = 0, i;
   buf[2] = 0;
-  bool ReverseText = FALSE;
-  bool SelectText = FALSE;
 
-  // Default pen (colour)
-
-  const QPen qpDefPen = p->pen();
+  PainterState curState(p);
 
   for(loc = 0; (str[loc] != 0x00) && (loc != length) ; loc++){
     if(str[loc] == 0x03 || str[loc] == '~'){
@@ -72,16 +69,11 @@ void KSPainter::colourDrawText(QPainter *p, int startx, int starty,
 	}
 	
 	pcolour = atoi(buf);
-	if(pcolour < maxcolour){
-	  if(SelectText == FALSE)
-	    p->setPen(num2colour[pcolour]);
-	  else{
-	    p->setBackgroundColor(num2colour[pcolour]);
-	    p->setBackgroundMode(OpaqueMode);
-	  }
-	}
+        if(pcolour < maxcolour)
+          curState.setFGCol(num2colour[pcolour]);
 	else
-	  i = loc;
+          i = loc;
+        
 	if(str[i] == ','){
 	  i++;
 	  if((str[i] >= 0x30) && (str[i] <= 0x39)){
@@ -101,89 +93,44 @@ void KSPainter::colourDrawText(QPainter *p, int startx, int starty,
 	      else
 		bcolour -= 1;
 	    }
-	    if(bcolour < maxcolour ){
-	      if(SelectText == FALSE){
-		p->setBackgroundColor(num2colour[bcolour]);
-		p->setBackgroundMode(OpaqueMode);
-	      }
-	      else
-		p->setPen(num2colour[bcolour]);
-	    }
+            if(bcolour < maxcolour )
+              curState.setBGCol(num2colour[bcolour]);
+            
 	  }
 	}
       }
       else if(str[i] == 0x03){
-	i++;
-	p->setPen(qpDefPen);
-	p->setBackgroundMode(TransparentMode);
+        i++;
+        curState.resetCol();
       }
       else if((str[i] == '~') && ((str[i+1] >= 0x61) || (str[i+1] <= 0x7a))){
 	QFont fnt = p->font();
         QColor temppen;
 	switch(str[i+1]){
-	case 'c':
-	  if(SelectText == FALSE){
-	    p->setPen(qpDefPen);
-	    p->setBackgroundMode(TransparentMode);
-	  }
-	  else{
-            temppen = p->pen().color();
-            p->setPen( p->backgroundColor() );
-            p->setBackgroundColor( temppen );
-	  }
+        case 'c':
+          curState.resetCol();
 	  break;
-	case 'C':
-	  p->setPen(qpDefPen);
-	  p->setBackgroundMode(TransparentMode);
-	  fnt.setBold(FALSE);
-	  fnt.setItalic(FALSE);
-	  fnt.setUnderline(FALSE);
-	  ReverseText = TRUE; // Force reverse removed, all fall through.
-	  // FALL THROUGH.
-        case 'r':
-          if(ReverseText == TRUE) {
-            ReverseText = FALSE;
-            p->setBackgroundMode(TransparentMode);
-          }
-          else {
-            ReverseText = TRUE;
-            p->setBackgroundMode(OpaqueMode);
-          }
-          temppen = p->pen().color();
-          p->setPen( p->backgroundColor() );
-          p->setBackgroundColor( temppen );
-	  break;
-	case 's': // Same as ~r but s mens selection
-          if(SelectText == TRUE) {
-            SelectText = FALSE;
-            p->setBackgroundMode(TransparentMode);
-          }
-          else {
-            SelectText = TRUE;
-            p->setBackgroundMode(OpaqueMode);
-          }
-          temppen = p->pen().color();
-          p->setPen( p->backgroundColor() );
-          p->setBackgroundColor( temppen );
+        case 'C':
+          curState.resetAll();
           break;
-	case 'b':
-	  if(fnt.bold() == TRUE)
-	    fnt.setBold(FALSE);
-	  else
-	    fnt.setBold(TRUE);
+        case 'r':
+          curState.toggleRev();
 	  break;
-	case 'i':
-	  if(fnt.italic() == TRUE)
-	    fnt.setItalic(FALSE);
-	  else
-	    fnt.setItalic(TRUE);
+        case 's': // Same as ~r but s mens selection
+          curState.toggleSel();
+          break;
+        case 'b':
+          curState.toggleBold();
 	  break;
-	case 'u':
-	  if(fnt.underline() == TRUE)
-	    fnt.setUnderline(FALSE);
-	  else
-	    fnt.setUnderline(TRUE);
-	  break;
+        case 'i':
+          curState.toggleItalics();
+          break;
+        case 'u':
+          curState.toggleUnderline();
+          break;
+        case 'p':
+          QApplication::beep();
+          break;
 	case '~':
 	  loc++; // Skip ahead 2 characters
 	  break;
@@ -214,7 +161,7 @@ QString KSPainter::stripColourCodes(QString col, QList<int> *xlate){
     xlate->clear();
     xlate->setAutoDelete(TRUE);
   }
-  debug("Processing: %s", col.data());
+//  debug("Processing: %s", col.data());
   for(uint i = 0; i < col.length() ;){
     if(((col[i] == '~') || (col[i] == 0x03)) && ((col[i+1] >= '0') && (col[i+1] <= '9'))){
       i += 2; // Step over the ~ and the first number
@@ -236,6 +183,7 @@ QString KSPainter::stripColourCodes(QString col, QList<int> *xlate){
       case 'c':
       case 'i':
       case 'C':
+      case 'p':
         i+=2; // Move ahead 2 characters (~x == 2)
         break;
       default:
@@ -257,4 +205,97 @@ QString KSPainter::stripColourCodes(QString col, QList<int> *xlate){
 //debug("NoCol: %s", noCol.data());
   return noCol;
   
+}
+
+PainterState::PainterState(QPainter *p){
+  painter = p;
+
+  qcDefBGCol = p->backgroundColor();
+  qcDefFGCol = p->pen().color();
+  qfDefFont = p->font();
+  qfCurFont = qfDefFont;
+
+  bSelect = FALSE;
+  bReverse = FALSE;
+
+  p->setBackgroundMode(OpaqueMode);
+  
+}
+
+PainterState::~PainterState(){
+}
+
+inline void PainterState::resetCol(){
+  if(bSelect == FALSE && bSelect == FALSE){
+    painter->setPen(qcDefFGCol);
+    painter->setBackgroundColor(qcDefBGCol);
+  }
+  else{
+    painter->setPen(qcDefBGCol);
+    painter->setBackgroundColor(qcDefFGCol);
+  }
+}
+
+inline void PainterState::resetAll(){
+  if(bSelect == FALSE){
+    painter->setPen(qcDefFGCol);
+    painter->setBackgroundColor(qcDefBGCol);
+    painter->setFont(qfDefFont);
+  }
+  else{
+    painter->setPen(qcDefBGCol);
+    painter->setBackgroundColor(qcDefFGCol);
+    painter->setFont(qfDefFont);
+
+  }
+}
+
+inline void PainterState::setFGCol(const QColor &col){
+  if(bSelect == FALSE && bSelect == FALSE){
+    painter->setPen(col);
+  }
+  else
+    painter->setBackgroundColor(col);
+}
+    
+inline void PainterState::setBGCol(const QColor &col){
+  if(bSelect == FALSE && bSelect == FALSE)
+    painter->setBackgroundColor(col);
+  else
+    painter->setPen(col);
+}
+
+inline void PainterState::toggleRev(){
+  if(bReverse == FALSE)
+    bReverse = TRUE;
+  else // bReverse == TRUE
+    bReverse = FALSE;
+  QColor tmpcol = painter->backgroundColor();
+  painter->setBackgroundColor(painter->pen().color());
+  painter->setPen(tmpcol);
+}
+
+inline void PainterState::toggleSel(){
+  if(bSelect == FALSE)
+    bSelect = TRUE;
+  else // bReverse == TRUE
+    bSelect = FALSE;
+  QColor tmpcol = painter->backgroundColor();
+  painter->setBackgroundColor(painter->pen().color());
+  painter->setPen(tmpcol);
+}
+
+inline void PainterState::toggleItalics(){
+  qfCurFont.setItalic(!qfCurFont.italic());
+  painter->setFont(qfCurFont);
+}
+
+inline void PainterState::toggleBold(){
+  qfCurFont.setBold(!qfCurFont.bold());
+  painter->setFont(qfCurFont);
+}
+
+inline void PainterState::toggleUnderline(){
+  qfCurFont.setUnderline(!qfCurFont.underline());
+  painter->setFont(qfCurFont);
 }

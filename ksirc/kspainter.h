@@ -5,6 +5,37 @@
 #include <qobject.h>
 #include <qlist.h>
 
+class PainterState {
+public:
+  PainterState(QPainter *p);
+  ~PainterState();
+
+  inline void resetCol();
+  inline void resetAll();
+  
+  inline void setFGCol(const QColor&);
+  inline void setBGCol(const QColor&);
+
+  // Reverse video selectors
+  inline void toggleRev();
+  inline void toggleSel();
+
+  // Font modifiers
+  inline void toggleItalics();
+  inline void toggleUnderline();
+  inline void toggleBold();
+  
+private:
+  QPainter *painter;
+  QColor  qcDefBGCol;
+  QColor  qcDefFGCol;
+
+  QFont qfDefFont, qfCurFont;
+
+  bool bSelect, bReverse;
+  
+};
+
 class KSPainter 
 {
  public:

@@ -252,11 +252,10 @@ void ircListItem::setupPainterText()
     need_update = TRUE;
   }
 
-  if(revOne != -1 || revTwo != -1){
-    debug("itext: %s", itext.data());
+//  if(revOne != -1 || revTwo != -1){
+//    debug("itext: %s", itext.data());
 //    debug("rtext: %s", rtext.data());
-
-  }
+//  }
 }
 
 void ircListItem::updateSize(){

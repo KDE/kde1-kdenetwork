@@ -215,20 +215,24 @@ void KSircListBox::mousePressEvent(QMouseEvent *me){
   selectMode = FALSE;
   spoint.setX(me->x());
   spoint.setY(me->y());
-  cerr << "Mouse press event!\n";
+//  cerr << "Mouse press event!\n";
   ScrollToBottom = FALSE; // Lock window
 }
 
 void KSircListBox::mouseReleaseEvent(QMouseEvent *me){
   ScrollToBottom = TRUE; // Unlock window
-  cerr << "Mouse release event!\n";
+//  cerr << "Mouse release event!\n";
   if(selectMode == FALSE)
     return;
   selectMode = FALSE;
   int row, line, rchar;
   ircListItem *it;
-  if(!xlateToText(me->x(), me->y(), &row, &line, &rchar, &it))
+  if(!xlateToText(me->x(), me->y(), &row, &line, &rchar, &it)){
+    it->setRevOne(-1);
+    it->setRevTwo(-1);
+    kApp->beep();
     return;
+  }
   debug("Selected: %s", it->getRev().data());
   kApp->clipboard()->setText(it->getRev());
   it->setRevOne(-1);
@@ -244,7 +248,7 @@ void KSircListBox::mouseMoveEvent(QMouseEvent *me){
   ircListItem *it;
   if(!xlateToText(me->x(), me->y(), &row, &line, &rchar, &it))
     return;
-  debug("rchar: %d", rchar);
+//  debug("rchar: %d", rchar);
   if(selectMode == FALSE){
     int xoff, yoff;
     xoff = me->x() - spoint.x() > 0 ? me->x() - spoint.x() : spoint.x() - me->x();
@@ -284,17 +288,23 @@ bool KSircListBox::xlateToText(int x, int y,
     y = 0;
   else if(y > height())
     y = height();
+  int ttotal = 0;
+  for(top = topItem()-1; top >= 0; top--){
+    ttotal += item(top)->height(this);
+  }
+//  debug("Total height: %d, yOffset: %d, diffrence: %d", ttotal, yOffset(), yOffset() - ttotal);
+  
 //  cerr << "Selected: " << selectMode << " x: " << x << " y: " << y << endl;
   top = topItem();
-  setTopItem(top);
+//  setTopItem(top);
   lineheight = fontMetrics().lineSpacing();
-  int yoff = y;
+  int yoff = y + (yOffset() - ttotal);
   if(item(top) == 0x0)
     return FALSE;
   for(row = top; yoff > item(row)->height(this); row++) {
     yoff -= item(row)->height(this);
     if(item(row+1) == 0x0)
-      break;
+      return FALSE;
   }
   for(line = 0; yoff > lineheight; line++) {
     yoff -= lineheight;
@@ -325,15 +335,17 @@ bool KSircListBox::xlateToText(int x, int y,
     if(sline.isEmpty())
       return FALSE;
   }
+  if(!c2noc.at(cchar))
+    return FALSE;
+  cchar = *(c2noc.at(cchar)); // Convert to character offset with colour codes.
+  
   // Give abolute pos from start of the line
-  for(int l = line-1;  l > 0; l --){
+  for(int l = line-1;  l >= 0; l --){
     cchar += KSPainter::stripColourCodes(it->paintText()->at(l)).length();
   }
   //  cerr << "On char: " << sline[0] << " Index: " << cchar << endl;
   *rrow = row;
-  if(!c2noc.at(cchar))
-    return FALSE;
-  *rchar = *(c2noc.at(cchar)); // Convert to character offset with colour codes.
+  *rchar = cchar;
   *rline = line;
   *rit = it;
   return TRUE;
