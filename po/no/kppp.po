@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE NETWORK/kppp\n"
-"POT-Creation-Date: 1998-12-14 01:59+0100\n"
+"POT-Creation-Date: 1998-12-15 02:02+0100\n"
 "PO-Revision-Date: 1998-03-24 19:24+0100\n"
 "Last-Translator: Hans Petter Bieker <zerium@webindex.no>\n"
 "Language-Team: no <LL@li.org>\n"
@@ -1843,7 +1843,7 @@ msgstr "kppp: regelfil er ok\n"
 msgid "Minimize"
 msgstr "Minimer"
 
-#: runtests.cpp:354
+#: runtests.cpp:355
 msgid ""
 "You´re not allowed to dial out with kppp.\n"
 "Contact your system administrator."
@@ -1851,7 +1851,7 @@ msgstr ""
 "Du har ikke tillatelse til å ringe ut med kppp.\n"
 "Kontakt din systemadministrator."
 
-#: runtests.cpp:369
+#: runtests.cpp:372
 msgid ""
 "This kernel has no PPP support, neither\n"
 "compiled in nor via the kernel module\n"
@@ -1870,7 +1870,7 @@ msgstr ""
 "eller\n"
 "  * installer en kjerne med PPP-støtte\n"
 
-#: runtests.cpp:391
+#: runtests.cpp:394
 msgid ""
 "Cannot find the pppd-daemon!\n"
 "\n"
@@ -1882,7 +1882,7 @@ msgstr ""
 "Forsikre deg om at pppd er installert og\n"
 "at du har oppgitt korrekt sti.\n"
 
-#: runtests.cpp:403
+#: runtests.cpp:406
 msgid ""
 "You do not have the permission\n"
 "to start pppd!\n"
@@ -1896,7 +1896,7 @@ msgstr ""
 "Kontakt din system administrator\n"
 "og spør om adgang til pppd."
 
-#: runtests.cpp:414 runtests.cpp:429
+#: runtests.cpp:417 runtests.cpp:432
 msgid ""
 "pppd is not properly installed!\n"
 "\n"
@@ -1910,7 +1910,7 @@ msgstr ""
 "med SUID-bit satt. Kontakt din\n"
 "systemadministratror."
 
-#: runtests.cpp:463
+#: runtests.cpp:466
 msgid ""
 "kppp has detected a 'lock' option in /etc/ppp/options.\n"
 "\n"
@@ -1923,7 +1923,7 @@ msgstr ""
 "Denne opsjonen må fjernes siden kppp tar ansvar for enhetslåsing selv.\n"
 "Kontakt din systemadministratror."
 
-#: runtests.cpp:487
+#: runtests.cpp:490
 msgid ""
 "is missing!\n"
 "\n"

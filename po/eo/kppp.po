@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp 1.0pre2\n"
-"POT-Creation-Date: 1998-12-14 01:59+0100\n"
+"POT-Creation-Date: 1998-12-15 02:02+0100\n"
 "PO-Revision-Date: 1998-07-24 16:00+0100\n"
 "Last-Translator: Wolfram Diestel <diestel@rzaix340.rz-uni-leipzig.de>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
@@ -1590,7 +1590,7 @@ msgstr "kppp: reguldosiero estas en ordo\n"
 msgid "Minimize"
 msgstr "Minimumigu"
 
-#: runtests.cpp:354
+#: runtests.cpp:355
 msgid ""
 "You´re not allowed to dial out with kppp.\n"
 "Contact your system administrator."
@@ -1598,7 +1598,7 @@ msgstr ""
 "Vi ne havas permeson voki per kppp.\n"
 "Kontaktu vian sistemadministranton."
 
-#: runtests.cpp:369
+#: runtests.cpp:372
 msgid ""
 "This kernel has no PPP support, neither\n"
 "compiled in nor via the kernel module\n"
@@ -1610,7 +1610,7 @@ msgid ""
 "  * install a kernel with PPP support\n"
 msgstr ""
 
-#: runtests.cpp:391
+#: runtests.cpp:394
 msgid ""
 "Cannot find the pppd-daemon!\n"
 "\n"
@@ -1622,7 +1622,7 @@ msgstr ""
 "Certigu, ke pppd estas instalita kaj\n"
 "ke vi entajpis la øustan padon.\n"
 
-#: runtests.cpp:403
+#: runtests.cpp:406
 msgid ""
 "You do not have the permission\n"
 "to start pppd!\n"
@@ -1636,7 +1636,7 @@ msgstr ""
 "Kontaktu vian sistemadministranton\n"
 "kaj petu lin pri aliro al pppd."
 
-#: runtests.cpp:414 runtests.cpp:429
+#: runtests.cpp:417 runtests.cpp:432
 msgid ""
 "pppd is not properly installed!\n"
 "\n"
@@ -1650,7 +1650,7 @@ msgstr ""
 "kun SUID-bito. Kontaktu vian sistem-\n"
 "administranton."
 
-#: runtests.cpp:463
+#: runtests.cpp:466
 msgid ""
 "kppp has detected a 'lock' option in /etc/ppp/options.\n"
 "\n"
@@ -1663,7 +1663,7 @@ msgstr ""
 "Tiu opcio ne plu estas uzata, æar kppp mem atentas pri þlosado.\n"
 "Kontaktu vian sistem-administranton."
 
-#: runtests.cpp:487
+#: runtests.cpp:490
 #, fuzzy
 msgid ""
 "is missing!\n"

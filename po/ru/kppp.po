@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1998-12-14 01:59+0100\n"
+"POT-Creation-Date: 1998-12-15 02:02+0100\n"
 "PO-Revision-Date: 1998-11-19 23:46+07:00\n"
 "Last-Translator: Const Kaplinsky <const@ce.cctpu.edu.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -1556,7 +1556,7 @@ msgstr "kppp: файл правил корректен\n"
 msgid "Minimize"
 msgstr "Свернуть"
 
-#: runtests.cpp:354
+#: runtests.cpp:355
 msgid ""
 "You╢re not allowed to dial out with kppp.\n"
 "Contact your system administrator."
@@ -1564,7 +1564,7 @@ msgstr ""
 "Вам не разрешено осуществлять звонки с помощью kppp.\n"
 "Обратитесь к вашему системному администратору."
 
-#: runtests.cpp:369
+#: runtests.cpp:372
 msgid ""
 "This kernel has no PPP support, neither\n"
 "compiled in nor via the kernel module\n"
@@ -1576,7 +1576,7 @@ msgid ""
 "  * install a kernel with PPP support\n"
 msgstr ""
 
-#: runtests.cpp:391
+#: runtests.cpp:394
 msgid ""
 "Cannot find the pppd-daemon!\n"
 "\n"
@@ -1584,7 +1584,7 @@ msgid ""
 "you have entered the correct path.\n"
 msgstr ""
 
-#: runtests.cpp:403
+#: runtests.cpp:406
 msgid ""
 "You do not have the permission\n"
 "to start pppd!\n"
@@ -1597,7 +1597,7 @@ msgstr ""
 "Обратитесь к вашему системному администратору\n"
 "и попросите доступ к pppd."
 
-#: runtests.cpp:414 runtests.cpp:429
+#: runtests.cpp:417 runtests.cpp:432
 msgid ""
 "pppd is not properly installed!\n"
 "\n"
@@ -1611,7 +1611,7 @@ msgstr ""
 "установленный бит SUID. Обратитесь\n"
 "к вашему системному администратору."
 
-#: runtests.cpp:463
+#: runtests.cpp:466
 msgid ""
 "kppp has detected a 'lock' option in /etc/ppp/options.\n"
 "\n"
@@ -1624,7 +1624,7 @@ msgstr ""
 "Этот ключ должен быть удален, так как kppp заботится о блокировании\n"
 "устройств самостоятельно. Обратитесь к вашему системному администратору."
 
-#: runtests.cpp:487
+#: runtests.cpp:490
 #, fuzzy
 msgid ""
 "is missing!\n"
