@@ -53,7 +53,8 @@ KMFilterDlg::KMFilterDlg(QWidget* parent, const char* name):
   QGridLayout *fgrid, *grid, *agrid;
   int h, w, i;
   QSize sz;
-
+  updown_move_semaphore = 1;
+  
   initMetaObject();
 
   grid  = new QGridLayout(this, 4, 2, 4, 4);
@@ -302,7 +303,7 @@ void KMFilterDlg::applyFilterChanges(void)
   KMFilterAction* action;
   int i;
 
-  if (!mFilter) return;
+  if (!mFilter || !updown_move_semaphore) return;
 
   mFilter->ruleA().init(mRuleFieldA->currentText(), 
 			(KMFilterRule::Function)mRuleFuncA->currentItem(),
@@ -450,6 +451,8 @@ void KMFilterDlg::slotBtnUp()
 
   if (idx < 1) return;
 
+  updown_move_semaphore = 0;
+
   filter = filterMgr->take(idx);
   assert(filter != NULL);
   filterMgr->insert(idx-1, filter);
@@ -458,6 +461,8 @@ void KMFilterDlg::slotBtnUp()
   mFilterList->insertItem(filter->name(), idx-1);
 
   mFilterList->setCurrentItem(idx-1);
+
+  updown_move_semaphore = 1;
 }
 
 
@@ -469,6 +474,8 @@ void KMFilterDlg::slotBtnDown()
 
   if (idx < 0 || idx >= (int)mFilterList->count()-1) return;
 
+  updown_move_semaphore = 0;
+
   filter = filterMgr->take(idx);
   assert(filter != NULL);
   filterMgr->insert(idx+1, filter);
@@ -477,6 +484,8 @@ void KMFilterDlg::slotBtnDown()
   mFilterList->insertItem(filter->name(), idx+1);
 
   mFilterList->setCurrentItem(idx+1);
+
+  updown_move_semaphore = 1;
 }
 
 
@@ -518,14 +527,19 @@ void KMFilterDlg::slotBtnDelete()
 //-----------------------------------------------------------------------------
 void KMFilterDlg::slotBtnOk()
 {
-  if (mFilter) applyFilterChanges();
-  accept();
+  if (mFilter) 
+  {
+    applyFilterChanges();
+    filterMgr->writeConfig();
+  }
+    accept();
 }
 
 
 //-----------------------------------------------------------------------------
 void KMFilterDlg::slotBtnCancel()
 {
+  filterMgr->readConfig();
   reject();
 }
 

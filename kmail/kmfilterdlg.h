@@ -79,6 +79,10 @@ protected:
   QComboBox   *mRuleFieldA, *mRuleFieldB;
   QLineEdit   *mRuleValueA, *mRuleValueB;
   QComboBox   *mRuleFuncA, *mRuleFuncB, *mRuleOp;
+
+private:
+  // ugly workaround against filter-up-down-move bug
+  bool updown_move_semaphore;
 };
 
 

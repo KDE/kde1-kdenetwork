@@ -6,7 +6,9 @@
           - Fix against deleteing two messages at once when in trash (bug 1037)
           - Corrected prepending of "--" before signature
           - Button "Help" works now in filter dialog
-
+          - Cancel/Reject fix for kmfilterdialog.cpp
+          - updown-bugfix in filter dialog: moving a filter up could screw the
+            filter list
 
 1999-05-25  Stefan Taferner  <taferner@kde.org> (KMail-1.0.23)
 
