@@ -21,7 +21,9 @@
           - Cancel/Reject fix for kmfilterdialog.cpp
           - updown-bugfix in filter dialog: moving a filter up could screw the
             filter list
-
+          - Note: Johannes Sixt <Johannes.Sixt@telecom.at> also fixed
+            wrongly sorted message list when sorting by subject was requested.
+            
 1999-05-25  Stefan Taferner  <taferner@kde.org> (KMail-1.0.23)
 
 	* Updated documentation about PGP5 and new filter actions.
