@@ -1,3 +1,12 @@
+1999-06-16  Sven Radej <radej@kde.org> (KMail-1.0.25)
+
+        * Don found the culprit for nasty bug reported by Daniel Naber:
+          open composer, change visible header fields, close composer,
+          open it again... poof, gone. Culprit was QLabel::setBuddy.
+
+        * Fixed bug reported by jb.nz@writeme.com: move last message
+          from folder, then try to set header style -> segfault.
+          
 1999-06-15  Sven Radej <radej@kde.org> (KMail-1.0.25)
 
         * Once for all clear corruption when compacting (I hope)
