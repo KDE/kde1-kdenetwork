@@ -267,9 +267,11 @@ void Modem::stopNotifier() {
 
 
 void Modem::resumeNotifier() {
-  if(sn != 0) {
-    sn->setEnabled(true);
-    Debug("QSocketNotifier resumed operation.");
+  if(modemfd >= 0) {
+    if(sn != 0) {
+      sn->setEnabled(true);
+      Debug("QSocketNotifier resumed operation.");
+    }
   }
 }
 
