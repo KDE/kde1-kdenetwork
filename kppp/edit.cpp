@@ -29,10 +29,7 @@
 
 extern bool isnewaccount;
 
-#define MIN_SIZE(w) w->setMinimumSize(w->sizeHint());
-#define FIXED_SIZE(w) w->setFixedSize(w->sizeHint());
-#define FIXED_HEIGHT(w) w->setFixedHeight(w->sizeHint().height());
-#define MIN_WIDTH(w) w->setMinimumWidth(w->sizeHint().width());
+#include "macros.h"
 
 DialWidget::DialWidget( QWidget *parent, const char *name )
   : QWidget(parent, name)
@@ -243,6 +240,10 @@ IPWidget::IPWidget( QWidget *parent, const char *name )
 
 }
 
+void IPWidget::resizeEvent(QResizeEvent *) {
+  box1->setGeometry(10, 10, width() - 20, height() - 20);
+}
+
 void IPWidget::autoname_t(bool on){
   on=on;
 }
@@ -401,8 +402,6 @@ void DNSWidget::removedns() {
 GatewayWidget::GatewayWidget( QWidget *parent, const char *name )
   : QWidget(parent, name)
 {
-
-
   box1 = new QGroupBox(this,"box1");
   box1->setGeometry(10,10,345,310);
   box1->setTitle(klocale->translate("Gateway Setup"));
@@ -458,6 +457,10 @@ GatewayWidget::GatewayWidget( QWidget *parent, const char *name )
     hitGatewaySelect(0);
     defaultroute->setChecked(TRUE);
   }
+}
+
+void GatewayWidget::resizeEvent(QResizeEvent *) {
+  box1->setGeometry(10, 10, width() - 20, height() - 20);
 }
 
 void GatewayWidget::defaultroute_t(bool on){

@@ -32,6 +32,7 @@
 #include <qdialog.h>
 #include <qframe.h>
 #include <qevent.h>
+#include <qlayout.h>
 
 class ConWindow : public QWidget {
 Q_OBJECT
@@ -82,6 +83,7 @@ private:
   QString time_string2;
   QString time_string;
   QTimer *clocktimer;
+  QHBoxLayout *tl;
 };
 
 

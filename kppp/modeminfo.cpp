@@ -31,6 +31,7 @@
 #include "modeminfo.h"
 #include "connect.h"
 #include <kmsgbox.h>
+#include "macros.h"
 
 #ifdef NO_USLEEP
 extern int usleep( long usec );
@@ -44,26 +45,42 @@ extern QString ati_query_strings[NUM_OF_ATI];
 ModemTransfer::ModemTransfer(QWidget *parent=0, const char *name=0)
   : QDialog(parent, name,TRUE, WStyle_Customize|WStyle_NormalBorder)
 {
-
   setCaption(klocale->translate("ATI Query"));
   
-  setMaximumSize(250,130);
-  setMinimumSize(250,130);
+  QVBoxLayout *tl = new QVBoxLayout(this, 10, 10);
   
   progressBar = new KProgress(0, 8, 0, KProgress::Horizontal, this, "bar");
-  progressBar->setGeometry(20,20,210,25);
   progressBar->setBarStyle(KProgress::Blocked);
+  progressBar->setFixedHeight(progressBar->sizeHint().height());
+  tl->addWidget(progressBar);
 
   statusBar = new QLabel(this,"sBar");
   statusBar->setFrameStyle(QFrame::Panel|QFrame::Sunken);
-  statusBar->setGeometry(20,60,210,25);
   statusBar->setAlignment(AlignCenter);
+
+  // This is a rather complicated case. Since we do not know which
+  // message is the widest in the national language, we'd to
+  // search all these messages. This is a little overkill, so I take
+  // the longest english message, translate it and give it additional
+  // 20 percent space. Hope this is enough.
+  statusBar->setText(klocale->
+		     translate("Sorry, can't create modem lock file."));
+  statusBar->setMinimumWidth((statusBar->sizeHint().width() * 12) / 10);
+  MIN_HEIGHT(statusBar);
+
+  // set original text
   statusBar->setText(klocale->translate("Looking for Modem ..."));
+  tl->addWidget(statusBar);
 
   cancel = new QPushButton(klocale->translate("Cancel"), this);
-  cancel->setGeometry(160, 95, 70, 30);
   cancel->setFocus();
   connect(cancel, SIGNAL(clicked()), SLOT(cancelbutton()));
+  FIXED_SIZE(cancel);
+
+  QHBoxLayout *l1 = new QHBoxLayout;
+  tl->addLayout(l1);
+  l1->addStretch(1);
+  l1->addWidget(cancel);
 
   connect(this, SIGNAL(ati_done()),SLOT(ati_done_slot()));
 
@@ -90,8 +107,8 @@ ModemTransfer::ModemTransfer(QWidget *parent=0, const char *name=0)
   timeout_timer->start(15000,TRUE); // 15 secs singel shot
   inittimer->start(500);
 
-}  
-
+  tl->freeze();
+}
 
 
 void ModemTransfer::ati_done_slot(){
@@ -105,18 +122,17 @@ void ModemTransfer::ati_done_slot(){
 
 }
 
-void ModemTransfer::time_out_slot(){
+void ModemTransfer::time_out_slot() {
 
   timeout_timer->stop();
   readtimer->stop();
   scripttimer->stop();
 
-  QMessageBox::warning(this, klocale->translate("Error"),klocale->translate("Modem Query timed out."));
-  reject();  
-
+  QMessageBox::warning(this, 
+		       klocale->translate("Error"),
+		       klocale->translate("Modem Query timed out."));
+  reject();
 }
-	  
-
 
 void ModemTransfer::init() {
 
@@ -519,32 +535,50 @@ ModemInfo::ModemInfo(QWidget *parent=0 ,const char* name=0)
 
   setCaption(klocale->translate("Modem Query Results"));
 
-  box = new QGroupBox(this, "box");
-  box->setGeometry(5,5,330,360);
+  QVBoxLayout *tl = new QVBoxLayout(this, 10, 10);
 
-  ok = new QPushButton(klocale->translate("OK"), this);
-  ok->setGeometry(260, 375, 70, 30);
-  connect(ok, SIGNAL(clicked()), SLOT(okbutton()));
-  
-  for(int  i = 0 ; i< NUM_OF_ATI ; i++){
+  QGridLayout *l1 = new QGridLayout(NUM_OF_ATI, 2, 5);
+  tl->addLayout(l1, 1);
+  for(int  i = 0 ; i < NUM_OF_ATI ; i++) {
 
     label_text = "";
     if ( i == 0)
       label_text.sprintf("ATI :");
     else
-      label_text.sprintf("ATI %d:",i );
+      label_text.sprintf("ATI %d:", i );
 
-    ati_label[i] = new QLabel(label_text.data(),this);
-    ati_label[i]->setGeometry(20,30 + i* 40,50,25);
+    ati_label[i] = new QLabel(label_text.data(), this);
+    MIN_SIZE(ati_label[i]);
+    l1->addWidget(ati_label[i], i, 0);
 
-    ati_label_result[i] =  new QLineEdit(this);
-    ati_label_result[i]->setGeometry(70,30 + i* 40 ,240,25);
-    //    ati_label_result[i]->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
-    //    ati_label_result[i]->setBackgroundColor(white);
+    ati_label_result[i] =  new QLineEdit(this);    
     ati_label_result[i]->setText(ati_query_strings[i]);
-  
+    MIN_SIZE(ati_label_result[i]);
+    FIXED_HEIGHT(ati_label_result[i]);
+    l1->addWidget(ati_label_result[i], i, 1); 
   }
+  //tl->addSpacing(1);
 
+  QHBoxLayout *l2 = new QHBoxLayout;
+  ok = new QPushButton(klocale->translate("Close"), this);
+  ok->setDefault(TRUE);
+  ok->setFocus();
+
+  // Motif default buttons + Qt layout do not work tight together
+  if(ok->style() == MotifStyle) {
+    ok->setFixedWidth(ok->sizeHint().width() + 10);
+    ok->setFixedHeight(ok->sizeHint().height() + 10);
+    tl->addSpacing(8);
+  } else
+    FIXED_SIZE(ok);
+
+  tl->addLayout(l2);
+  l2->addStretch(1);
+
+  connect(ok, SIGNAL(clicked()), SLOT(okbutton()));
+  l2->addWidget(ok);
+  
+  tl->freeze();
 }
 
 void ModemInfo::okbutton() {

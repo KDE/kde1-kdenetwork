@@ -40,6 +40,7 @@
 #include "main.h"
 #include "version.h"
 #include "homedir.h"
+#include "macros.h"
 
 #include <X11/Xlib.h>
 
@@ -246,7 +247,7 @@ int main( int argc, char **argv ) {
 
   // we really don't want to die accidentally, since that would leave the
   // modem connected. If you really really want to kill me you must send 
-  // me a SIGKILL. 
+  // me a SIGKILL.
   signal(SIGINT, SIG_IGN);
   signal(SIGTERM, SIG_IGN);
   signal(SIGHUP, SIG_IGN);
@@ -270,67 +271,92 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
 
   connected = false;
 
+  QVBoxLayout *tl = new QVBoxLayout(this, 10, 10);
+
   fline1 = new QFrame(this,"line");
   fline1->setFrameStyle(QFrame::HLine |QFrame::Sunken);
-  fline1->setGeometry(15,7,327,3);
+  fline1->setFixedHeight(3);
+  tl->addWidget(fline1);
 
-  ID_Label = new QLabel(this,"lableid");
-  ID_Label->setText(klocale->translate("Login ID:"));
-  ID_Label->setGeometry(30,27,70,20);
-
-  ID_Edit = new QLineEdit(this,"idedit");
-  ID_Edit->setGeometry(120,25,189,24);
-  ID_Edit->setText(gpppdata.Id());
-
-  PW_Label = new QLabel(this,"lablepw");
-  PW_Label->setText(klocale->translate("Password:"));
-  PW_Label->setGeometry(30,62,70,20);
-
-
-  PW_Edit= new QLineEdit(this,"pwedit");
-  PW_Edit->setGeometry(120,60,189,24);
-  PW_Edit->setEchoMode(QLineEdit::Password);
+  QGridLayout *l1 = new QGridLayout(3, 2);
+  tl->addLayout(l1);
 
   label1 = new QLabel(this,"lable1");
   label1->setText(klocale->translate("Connect to: "));
-  label1->setGeometry(30,100,70,20);
+  MIN_SIZE(label1);
+  l1->addWidget(label1, 0, 0);
 
   connectto_c = new QComboBox(true,this, "connectto_c");
-  connectto_c->setGeometry(120, 97, 190, 28);
-  connect(connectto_c, SIGNAL(activated(int)), SLOT(newdefaultaccount(int)));
+  connect(connectto_c, SIGNAL(activated(int)), 
+	  SLOT(newdefaultaccount(int)));
+  MIN_SIZE(connectto_c);
+  l1->addWidget(connectto_c, 0, 1);
 
+  ID_Label = new QLabel(this,"lableid");
+  ID_Label->setText(klocale->translate("Login ID:"));
+  MIN_SIZE(ID_Label);
+  l1->addWidget(ID_Label, 1, 0);
+
+  ID_Edit = new QLineEdit(this,"idedit");
+  ID_Edit->setText(gpppdata.Id());
+  MIN_WIDTH(ID_Edit);
+  FIXED_HEIGHT(ID_Edit);
+  l1->addWidget(ID_Edit, 1, 1);
+
+  PW_Label = new QLabel(this,"lablepw");
+  PW_Label->setText(klocale->translate("Password:"));
+  MIN_SIZE(PW_Label);
+  l1->addWidget(PW_Label, 2, 0);
+
+  PW_Edit= new QLineEdit(this,"pwedit");
+  PW_Edit->setGeometry(120, 97,189,24);
+  PW_Edit->setEchoMode(QLineEdit::Password);
+  MIN_WIDTH(PW_Edit);
+  FIXED_HEIGHT(PW_Edit);
+  l1->addWidget(PW_Edit, 2, 1);
+
+  log = new QCheckBox(klocale->translate("Show Log Window"), this,"log");
+  connect(log, SIGNAL(toggled(bool)), 
+	  this, SLOT(log_window_toggled(bool)));
+  log->setChecked(gpppdata.get_show_log_window());
+  MIN_SIZE(log);
+  tl->addWidget(log);
 
   fline = new QFrame(this,"line");
   fline->setFrameStyle(QFrame::HLine |QFrame::Sunken);
-  fline->setGeometry(15,172,327,3);
+  fline->setFixedHeight(3);
+  tl->addWidget(fline);
+
+  QHBoxLayout *l2 = new QHBoxLayout;
+  tl->addLayout(l2);
 
   quit_b = new QPushButton(klocale->translate("Quit"), this, "quit");
-  quit_b->setGeometry(15, 187, 70, 25);
   connect( quit_b, SIGNAL(clicked()), SLOT(quitbutton()));
+  MIN_SIZE(quit_b);
+  l2->addWidget(quit_b);
 
   setup_b = new QPushButton(klocale->translate("Setup"), this, "setup");
-  setup_b->setGeometry(90, 187, 70, 25);
   connect( setup_b, SIGNAL(clicked()), SLOT(expandbutton()));
+  MIN_SIZE(setup_b);
+  l2->addWidget(setup_b);
 
-  if (!config) setup_b->setEnabled(false);
+  if (!config) 
+    setup_b->setEnabled(false);
 
   help_b = new QPushButton(klocale->translate("Help"), this, "help");
-  help_b->setGeometry(165, 187, 70, 25);
   connect( help_b, SIGNAL(clicked()), SLOT(helpbutton()));
+  MIN_SIZE(help_b);
+  l2->addWidget(help_b);
+  l2->addSpacing(20);
 
-
-  log = new QCheckBox(klocale->translate("Show Log Window"), this,"log");
-  log->adjustSize();
-  log->setGeometry(30,145,150,log->height());
-  connect(log,SIGNAL(toggled(bool)),this,SLOT(log_window_toggled(bool)));
-
-  log->setChecked(gpppdata.get_show_log_window());
-
-  connect_b = new QPushButton(klocale->translate("Connect"), this, "connect_b");
-  connect_b->setGeometry(265, 187, 80, 25);
+  connect_b = new QPushButton(klocale->translate("Connect"), 
+			      this, "connect_b");
   connect_b->setFocus();
-  connect_b->setText(klocale->translate("Connect"));
   connect(connect_b, SIGNAL(clicked()), SLOT(connectbutton()));
+  MIN_SIZE(connect_b);
+  l2->addWidget(connect_b);
+
+  tl->freeze();
 
   // we also connect cmld_start to the connectbutton so that I can run
   // the dialer through a command line argument
@@ -382,15 +408,10 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
   con->setGeometry(QApplication::desktop()->width()/2-175,
 		    QApplication::desktop()->height()/2-55,
 		    350,110);
-
-
-
-  this->setGeometry(QApplication::desktop()->width()/2 - 180,
-		    QApplication::desktop()->height()/2 - 110,
-		    360,220);
-
-  this->setFixedSize(360,220);
-
+    
+  setGeometry(QApplication::desktop()->width()/2 - width()/2,
+	      QApplication::desktop()->height()/2 - height()/2,
+	      width(), height());
 
   if(have_cmdl_account){
     bool result;

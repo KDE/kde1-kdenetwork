@@ -42,7 +42,6 @@
 #include <qmsgbox.h>
 #include <qrangect.h>
 #include <qfont.h>
-#include <qmlined.h> 
 
 #include <unistd.h>
 #include <termios.h>
@@ -130,11 +129,8 @@ private:
 
   QLabel *ati_label[NUM_OF_ATI];
   QLineEdit *ati_label_result[NUM_OF_ATI];
-  QMultiLineEdit *nl;
-  QGroupBox *box;
-  
+  QGroupBox *box;  
   QPushButton *ok;
-
 };
 
 

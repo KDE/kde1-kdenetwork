@@ -24,7 +24,7 @@
 #include <qdir.h>
 #include "conwindow.h"
 #include "main.h"
-
+#include "macros.h"
 
 extern XPPPWidget *p_xppp;
 extern KApplication *app;
@@ -33,40 +33,29 @@ extern PPPData gpppdata;
 ConWindow::ConWindow(QWidget *parent, const char *name,QWidget *mainwidget)
   : QWidget(parent, name,0 )
 {
-
-
   main = mainwidget;
   minutes = 0;
   seconds = 0;
   hours = 0;
   days = 0;
 
-
   info1 = new QLabel(this,"infolabel1");
-  info1->setGeometry(40,10,150,25);
   info1->setText(klocale->translate("Connected at:"));
 
   info2 = new QLabel(this,"infolabel");
-  info2->setGeometry(150,10,150,25);
   info2->setText("");
  
   timelabel1 = new QLabel(this,"timelabel1");
-  timelabel1->setGeometry(40,30,200,25);
   timelabel1->setText(klocale->translate("Time connected:"));
 
   timelabel2 = new QLabel(this,"timelabel");
-  timelabel2->setGeometry(150,30,200,25);
   timelabel2->setText("000:00:00");
 
   // now the stuff for accounting
   session_bill_l = new QLabel(klocale->translate("Session Bill:"), this);
-  session_bill_l->setGeometry(40, 30+20, 200, 25);
   session_bill = new QLabel("", this);
-  session_bill->setGeometry(150, 30+20, 200, 25);
   total_bill_l = new QLabel(klocale->translate("Total Bill:"), this);
-  total_bill_l->setGeometry(40, 30+20+20, 200, 25);
   total_bill = new QLabel("", this);
-  total_bill->setGeometry(150, 30+20+20, 200, 25);
 
   this->setCaption("kppp");
 
@@ -74,15 +63,11 @@ ConWindow::ConWindow(QWidget *parent, const char *name,QWidget *mainwidget)
 
   cancelbutton->setText(klocale->translate("Disconnect"));
   connect(cancelbutton, SIGNAL(clicked()), main,SLOT(disconnect()));
-  cancelbutton->setGeometry(225,75+40,80,25);
 
   statsbutton = new QPushButton(this,"statsbutton");
-  statsbutton->setGeometry(225,40,80,25);
   statsbutton->setText(klocale->translate("Details"));
   statsbutton->setFocus();
   connect(statsbutton, SIGNAL(clicked()), this,SLOT(stats()));
-
-
 
   /*  fline = new QFrame(this,"line");
   fline->setFrameStyle(QFrame::HLine |QFrame::Sunken);
@@ -91,50 +76,79 @@ ConWindow::ConWindow(QWidget *parent, const char *name,QWidget *mainwidget)
 
   clocktimer = new QTimer(this);
   connect(clocktimer, SIGNAL(timeout()), SLOT(timeclick()));
+  tl = 0;
 }
 
 
 ConWindow::~ConWindow() {
-
- this->stopClock();
-  
+  stopClock();
 }
 
+void ConWindow::accounting(bool on) {
+  // delete old layout
+  if(tl != 0)
+    delete tl;
 
+  // add layout now  
+  tl = new QHBoxLayout(this, 10, 10);
+  QGridLayout *l1;
+  if(on)
+    l1 = new QGridLayout(4, 2, 5);
+  else
+    l1 = new QGridLayout(2, 2, 5);
+  tl->addLayout(l1);
+  l1->setColStretch(0, 0);
+  l1->setColStretch(1, 1);
 
-void ConWindow::accounting(bool on){
+  MIN_SIZE(info1);
+  MIN_SIZE(timelabel1);
+  MIN_SIZE(session_bill_l);
+  MIN_SIZE(total_bill_l);
+  MIN_SIZE(info2);
+  MIN_SIZE(timelabel2);
+  MIN_SIZE(session_bill);
 
-  if(on){
-    cancelbutton->move(225,70);
-    cancelbutton->show();
-    statsbutton->move(225,40);
-    timelabel1->move(40,30);
-    timelabel2->move(150,30);
-    statsbutton->show();
-    session_bill->show();
+  // make sure that there's enough space for the total bill
+  total_bill->setText("888888.88 XXX");
+  MIN_SIZE(total_bill);
+  total_bill->setText("");
+
+  l1->addWidget(info1, 0, 0);
+  l1->addWidget(info2, 0, 1);
+  l1->addWidget(timelabel1, 1, 0);
+  l1->addWidget(timelabel2, 1, 1);
+  if(on) {
     session_bill_l->show();
+    session_bill->show();
     total_bill_l->show();
     total_bill->show();
-    setFixedSize(320, 110);
-    setGeometry(QApplication::desktop()->width()/2-160,
-		QApplication::desktop()->height()/2-55,
-		320,110);
-  }
-  else{
-      cancelbutton->move(225,62);
-      statsbutton->move(225,32);
-      session_bill->hide();
-      session_bill_l->hide();
-      total_bill_l->hide();
-      total_bill->hide();
-      timelabel1->move(40,33);
-      timelabel2->move(150,33);
-      setFixedSize(320, 97);
-      setGeometry(QApplication::desktop()->width()/2-160,
-		  QApplication::desktop()->height()/2-47,
-		  320,97);
+    l1->addWidget(session_bill_l, 2, 0);
+    l1->addWidget(session_bill, 2, 1);
+    l1->addWidget(total_bill_l, 3, 0);
+    l1->addWidget(total_bill, 3, 1);
+  } else {
+    session_bill_l->hide();
+    session_bill->hide();
+    total_bill_l->hide();
+    total_bill->hide();
   }
 
+  QVBoxLayout *l2 = new QVBoxLayout;
+  tl->addLayout(l2);
+  l2->addStretch(1);
+  MIN_WIDTH(cancelbutton);
+  FIXED_HEIGHT(cancelbutton);
+  MIN_WIDTH(statsbutton);
+  FIXED_HEIGHT(statsbutton);
+  l2->addWidget(statsbutton);
+  l2->addWidget(cancelbutton);
+  l2->addStretch(1);
+
+  tl->freeze();
+  setGeometry((QApplication::desktop()->width() - width()) / 2,
+	      (QApplication::desktop()->height() - height())/2,
+	      width(),
+	      height());
 }
 
 

@@ -38,6 +38,7 @@
 #include "connect.h"
 #include "main.h"
 #include "config.h"
+#include "macros.h"
 
 #ifdef NO_USLEEP
 int usleep( long usec );
@@ -57,7 +58,10 @@ extern bool quit_on_disconnect;
 bool modified_hostname;
 
 ConnectWidget::ConnectWidget(QWidget *parent, const char *name)
-  : QWidget(parent, name){
+  : QWidget(parent, name)
+{
+
+  QVBoxLayout *tl = new QVBoxLayout(this, 15, 10);
 
   // initalize some important varibles
 
@@ -79,23 +83,31 @@ ConnectWidget::ConnectWidget(QWidget *parent, const char *name)
   QString tit = klocale->translate("Connecting to: ");
   setCaption(tit);
 
-  messg = new QLabel(klocale->translate("Looking for Modem ..."), 
-		     this, "messg");
+  messg = new QLabel(this, "messg");
   messg->setFrameStyle(QFrame::Panel|QFrame::Sunken);
   messg->setAlignment(AlignCenter);
-  messg->setGeometry(20, 30, 310, 30);
+  messg->setText(klocale->translate("Sorry, can't create modem lock file."));  
+  MIN_HEIGHT(messg);
+  messg->setMinimumWidth((messg->sizeHint().width() * 12) / 10);
+  tl->addWidget(messg);
+  messg->setText(klocale->translate("Looking for Modem ..."));
 
+  tl->addSpacing(5);
+  QHBoxLayout *l1 = new QHBoxLayout(10);
+  tl->addLayout(l1);
+  l1->addStretch(1);
   debug = new QPushButton(klocale->translate("Log"), this);
-  debug->setGeometry(197, 75, 65, 30);
+  FIXED_SIZE(debug);
   connect(debug, SIGNAL(clicked()), SLOT(debugbutton()));
+  l1->addWidget(debug);
 
   cancel = new QPushButton(klocale->translate("Cancel"), this);
-  cancel->setGeometry(267, 75, 65, 30);
+  FIXED_SIZE(cancel);
   cancel->setFocus();
   connect(cancel, SIGNAL(clicked()), SLOT(cancelbutton()));
+  l1->addWidget(cancel);
 
-  this->setMinimumSize(350,110); 
-  this->setMaximumSize(350,110);
+  tl->freeze();
   
   pausetimer = new QTimer(this);
   connect(pausetimer, SIGNAL(timeout()), SLOT(pause()));
@@ -119,7 +131,6 @@ ConnectWidget::ConnectWidget(QWidget *parent, const char *name)
   prompt = new PWEntry( this, "pw" );         
   if_timer = new QTimer(this);
   connect(if_timer,SIGNAL(timeout()),SLOT(if_waiting_slot()));
-
 }
 
 

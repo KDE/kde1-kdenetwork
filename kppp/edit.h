@@ -88,6 +88,8 @@ public:
   IPWidget( QWidget *parent=0, const char *name=0 );
   ~IPWidget() {}
 
+  virtual void resizeEvent(QResizeEvent *);
+
 public slots:
   void save();
 
@@ -147,6 +149,8 @@ Q_OBJECT
 public:
   GatewayWidget( QWidget *parent=0, const char *name=0 );
   ~GatewayWidget() {}
+
+  virtual void resizeEvent(QResizeEvent *);
 
 public slots:
   void save();
