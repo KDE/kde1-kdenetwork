@@ -36,6 +36,8 @@ KSTicker::KSTicker(QWidget * parent=0, const char * name=0, WFlags f=0)
   popup = new QPopupMenu();
   popup->insertItem("Font...", this, SLOT(fontSelector()));
   popup->insertItem("Scroll Rate...", this, SLOT(scrollRate()));
+  popup->insertSeparator();
+  popup->insertItem("Hide...", this, SIGNAL(doubleClick()));
 }
 
 KSTicker::~KSTicker()

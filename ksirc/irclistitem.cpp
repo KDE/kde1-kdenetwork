@@ -1,6 +1,28 @@
 #include "irclistitem.h"
 #include "iostream.h"
 
+#include <stdlib.h> 
+
+const int ircListItem::maxcolour = 17;
+const QColor ircListItem::num2colour[17] = {  black,
+					      darkRed,
+					      darkGreen,
+					      darkBlue,
+					      darkMagenta,
+					      darkCyan,
+					      darkYellow,
+					      lightGray,
+					      darkGray,
+					      red,
+					      green,
+					      blue,
+					      magenta,
+					      cyan,
+					      yellow,
+					      white };
+
+
+
 ircListItem::ircListItem(QString s, const QColor *c, QListBox *lb, QPixmap *p = 0)
   : QObject(),
     QListBoxItem()
@@ -26,6 +48,7 @@ ircListItem::ircListItem(QString s, const QColor *c, QListBox *lb, QPixmap *p = 
 void ircListItem::paint(QPainter *p)
 {
   QPen pen = p->pen();
+  QColor bc = p->backgroundColor();
   p->setPen(*colour);
 
   if(pm)
@@ -34,9 +57,12 @@ void ircListItem::paint(QPainter *p)
   char *txt;
   int row = 0;
   for(txt = paint_text->first(); txt != 0; txt = paint_text->next(), row++){
-    p->drawText(xPos,yPos+lineheight*row, txt);
+    //    p->drawText(xPos,yPos+lineheight*row, txt);
+    colourDrawText(p, xPos,yPos+lineheight*row, txt);
   }
+  p->setBackgroundMode(TransparentMode);
   p->setPen(pen);
+  p->setBackgroundColor(bc);
 }
 
 int ircListItem::height(const QListBox *) const
@@ -106,5 +132,67 @@ void ircListItem::setupPainterText()
 
 void ircListItem::updateSize(){
   setupPainterText();
+}
+
+void ircListItem::colourDrawText(QPainter *p, int startx, int starty,
+				 char *str)
+{
+  int offset = 0;
+  int colour;
+  char buf[3];
+  int loc, i;
+  buf[2] = 0;
+  
+  for(loc = 0; str[loc] != 0x00 ; loc++){
+    if(str[loc] == 0x03 || str[loc] == '!'){
+      i = loc;
+      p->drawText(startx, starty, str + offset, i-offset);
+      startx += p->fontMetrics().width(str + offset, i-offset);
+      offset = i;
+      //      lastp = i;
+      if((str[i+1] >= 0x30) && (str[i+1] <= 0x39)){
+	i++;
+	buf[0] = str[i];
+	i++;
+	if((str[i] >= 0x30) && (str[i] <= 0x39)){
+	  buf[1] = str[i];
+	  i++;
+	}
+	else{
+	  buf[1] = 0;
+	}
+	
+	colour = atoi(buf);
+	if(colour < maxcolour)
+	  p->setPen(num2colour[atoi(buf)]);
+	else
+	  cerr << "Invalid colour: " << colour << endl;
+
+	if(str[i] == ','){
+	  i++;
+	  if((str[i] >= 0x30) && (str[i] <= 0x39)){
+	    buf[0] = str[i];
+	    i++;
+	    if((str[i] >= 0x30) && (str[i] <= 0x39)){
+	      buf[1] = str[i];
+	      i++;
+	    }
+	    else{
+	      buf[1] = 0;
+	    }
+	    colour = atoi(buf);
+	    if(colour < maxcolour){
+	      p->setBackgroundColor(num2colour[colour]);
+	      p->setBackgroundMode(OpaqueMode);
+	    }
+	    else
+	      cerr << "Invalid colour: " << colour << endl;
+	  }
+	}
+      }
+      offset += i - loc;
+    }
+  }
+  p->drawText(startx, starty, str + offset, loc-offset);
 }
 

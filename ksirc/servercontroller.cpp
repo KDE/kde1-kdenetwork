@@ -122,6 +122,10 @@ servercontroller::servercontroller
 	
 	ConnectionTree->setExpandLevel(2);
 	open_toplevels = 0;
+
+	pic_server = new QPixmap("img/mini-display.xpm");
+	pic_channel = new QPixmap("img/mini-edit.xpm");
+
 }
 
 
@@ -145,7 +149,7 @@ void servercontroller::new_ksircprocess(QString str)
   if(proc_list[str.data()])   // if it already exists, quit
     return;
 
-  ConnectionTree->insertItem(str.data(), NULL, -1, FALSE); // Insert new base
+  ConnectionTree->insertItem(str.data(), pic_server, -1, FALSE); // Insert new base
                                                            // level parent
   add_toplevel(str, QString("default"));                   // Set a dflt chan
   KSircProcess *proc = new KSircProcess(qstrdup(str.data())); // Create proc
@@ -195,7 +199,7 @@ void servercontroller::add_toplevel(QString parent, QString child)
   KPath path;
   path.push(&parent);
   // add a new child item with parent as it's parent
-  ConnectionTree->addChildItem(child.data(), NULL, &path);
+  ConnectionTree->addChildItem(child.data(), pic_channel, &path);
   //cerr << "Added child for: " << parent << "->" << child << endl;
   open_toplevels++;
 }
@@ -245,7 +249,7 @@ void servercontroller::recvChangeChannel(QString parent, QString old_chan, QStri
   // Only create with the parent in the path
   path.pop();
   // Add new child.  Delete/creates wrecks the "random" sort order though.
-  ConnectionTree->addChildItem(new_chan.data(), NULL, &path);
+  ConnectionTree->addChildItem(new_chan.data(), pic_channel, &path);
 }
 
 void servercontroller::reuse()

@@ -66,9 +66,9 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
   
   QPopupMenu *file = new QPopupMenu();
   file->insertItem("&User Menu...", this, SLOT(startUserMenuRef()));
-  file->insertItem("&New Window...", this, SLOT(newWindow()));
+  file->insertItem("&New Window...", this, SLOT(newWindow()), CTRL + Key_N);
   file->insertSeparator();
-  file->insertItem("&Ticker Mode", this, SLOT(showTicker()));
+  file->insertItem("&Ticker Mode", this, SLOT(showTicker()), CTRL + Key_T);
   file->insertSeparator();
   file->insertItem("&Quit", this, SLOT(terminate()), CTRL + Key_Q );
 
@@ -176,7 +176,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
 
   user_controls = new QPopupMenu();
   user_menu_list.append(user_controls);
-  menu->insertItem("Users", user_controls);
+  menu->insertItem("&Users", user_controls);
 
   if(user_menu_list.count() < 2)
     initPopUpMenu();
@@ -237,6 +237,7 @@ KSircTopLevel::~KSircTopLevel()
   kConfig->writeEntry("font", font());
   kConfig->writeEntry("tick", tick);
   kConfig->writeEntry("step", step);
+  kConfig->sync();
 
   //  close(sirc_stdin);  // close all the pipes
   //  close(sirc_stdout); // ditto
@@ -350,12 +351,7 @@ void KSircTopLevel::sirc_line_return()
    * Parse line forcommand we handle
    */
 
-  if(s == "/dump\n")
-    for(QString *s3 = contents.first(); s3 != 0; s3 = contents.next())
-      cerr << *s3 << endl;
-
   if(strncmp(s, "/join ", 6) == 0){
-    //cerr << "Got a join\n";
     s = s.lower();
     int pos2 = s.find(' ', 6);
     if(pos2 == -1)
@@ -364,6 +360,8 @@ void KSircTopLevel::sirc_line_return()
       QString name = s.mid(6, pos2 - 6); // make sure to remove line feed
       //cerr << "New channel: " << name << endl;
       emit open_toplevel(name);
+      linee->setText("");
+      return;
     }
   }
 
@@ -1001,6 +999,7 @@ void KSircTopLevel::control_message(QString str)
 	channel_name = qstrdup(s.data());
       //cerr << "Channel name now: " << channel_name << endl;
       have_focus = 0;
+      setCaption(channel_name);
       emit changeChannel("!default", channel_name);
       break;
     case STOP_UPDATES:

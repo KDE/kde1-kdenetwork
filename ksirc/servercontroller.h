@@ -15,6 +15,7 @@
 #define servercontroller_included
 
 #include <qdict.h>
+#include <qpixmap.h> 
 
 #include "servercontrollerData.h"
 
@@ -59,6 +60,9 @@ private:
   int reuse_id, join_id, server_id, auto_id;
 
   int open_toplevels;
+
+  QPixmap *pic_channel;
+  QPixmap *pic_server;
 
 };
 #endif // servercontroller_included

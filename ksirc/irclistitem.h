@@ -32,6 +32,8 @@ protected:
   
   virtual void setupPainterText();
 
+  virtual void colourDrawText(QPainter *p, int startx, int starty, char *str);
+
 private:
 
   QPixmap *pm;
@@ -47,6 +49,10 @@ private:
   QListBox *parent_lb;
   int yPos;
   int xPos;
+
+  static const int maxcolour;
+  static const QColor num2colour[17];
+  
 
 };
 
