@@ -8,7 +8,7 @@ msgstr ""
 "POT-Creation-Date: 1999-04-25 03:13+0200\n"
 "PO-Revision-Date: 1999-02-17 17:00+CET-1\n"
 "Last-Translator: Erik Kjær Pedersen <erik@binghamton.edu>\n"
-"Language-Team: da <LL@li.org>\n"
+"Language-Team: da <da@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO_8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,7 +19,7 @@ msgstr "Kontoindstillinger"
 
 #: accounts.cpp:66
 msgid "Edit..."
-msgstr "Rediger..."
+msgstr "Redigér..."
 
 #: accounts.cpp:68
 msgid "Allows you to modify the selected account"
@@ -145,7 +145,7 @@ msgstr "Ny konto"
 
 #: accounts.cpp:331
 msgid "Edit Account: "
-msgstr "Rediger konto: "
+msgstr "Redigér konto: "
 
 #: accounts.cpp:348
 msgid "Dial"
@@ -165,7 +165,7 @@ msgstr "Gateway"
 
 #: accounts.cpp:352
 msgid "Login Script"
-msgstr "Login skript"
+msgstr "LogPå skript"
 
 #: accounts.cpp:353
 msgid "Accounting"
@@ -182,7 +182,7 @@ msgstr ""
 #: accounts.cpp:377
 msgid "Login script has unbalanced loop Start/End"
 msgstr ""
-"Login skriptet har en ubalanceret løkke\n"
+"LogPå skriptet har en ubalanceret løkke\n"
 "Start/Slut"
 
 #: connect.cpp:92 connect.cpp:190 main.cpp:1049
@@ -280,11 +280,11 @@ msgstr "Kodeord "
 
 #: connect.cpp:578
 msgid "Prompting "
-msgstr "Login skærm "
+msgstr "LogPå skærm "
 
 #: connect.cpp:615
 msgid "PW Prompt "
-msgstr "PW Login "
+msgstr "PW LogPå "
 
 #: connect.cpp:641
 msgid "Loop Start "
@@ -380,7 +380,7 @@ msgstr "Detaljer"
 
 #: debug.cpp:47
 msgid "Login Script Debug Window"
-msgstr "Login skript problemløsningsvindue"
+msgstr "LogPå skript problemløsningsvindue"
 
 #: edit.cpp:43
 msgid "Dial Setup"
@@ -813,7 +813,7 @@ msgstr ""
 
 #: edit.cpp:703
 msgid "Edit Script"
-msgstr "Rediger skript"
+msgstr "Redigér skript"
 
 #: general.cpp:50
 msgid "kppp Setup"
@@ -841,7 +841,7 @@ msgstr "Sekunder"
 
 #: general.cpp:87
 msgid "Dock into Panel on Connect"
-msgstr "Dyk i Panel ved forbindelse"
+msgstr "Vis i Panel ved forbindelse"
 
 #: general.cpp:89
 msgid ""
@@ -2099,19 +2099,3 @@ msgstr "<Generisk>"
 msgid "Hayes(tm) compatible modem"
 msgstr "Hayes(tm) kompatibelt modem"
 
-#~ msgid ""
-#~ "kppp can not find:\n"
-#~ " %s\n"
-#~ "Please install pppd properly and/or adjust\n"
-#~ "the location of the pppd executable on\n"
-#~ "the PPP tab of the setup dialog.\n"
-#~ "This will insure that kppp can find the\n"
-#~ "PPP daemon.\n"
-#~ "Thank You"
-#~ msgstr ""
-#~ "kppp kan ikke finde:\n"
-#~ " %s\n"
-#~ "Installer venligst pppd korrekt eller juster\n"
-#~ "placeringen af pppd på PPP fanebladet i opsætningsdialogen.\n"
-#~ "Dette vil sikre at kppp kan finde PPP dæmonen.\n"
-#~ "Tak."

@@ -8,14 +8,14 @@ msgstr ""
 "POT-Creation-Date: 1999-03-05 02:18+0100\n"
 "PO-Revision-Date: 1999-02-17 17:00+CET-1\n"
 "Last-Translator: Erik Kjær Pedersen <erik@binghamton.edu>\n"
-"Language-Team: da <LL@li.org>\n"
+"Language-Team: da <da@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO_8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: FilterRuleEditor.cpp:29
 msgid "Edit Filter Rules"
-msgstr "Redigerings filterregler"
+msgstr "Redigér filterregler"
 
 #: FilterRuleEditor.cpp:58 FilterRuleEditor.cpp:79
 #: FilterRuleEditorData.cpp:105
@@ -134,7 +134,7 @@ msgstr "Kanal/kælenavn:"
 
 #: servercontroller.cpp:160
 msgid "&Dock"
-msgstr "&Dyk"
+msgstr "&Vis i panel"
 
 #: servercontroller.cpp:168 servercontroller.cpp:750
 msgid "New Server..."
@@ -154,7 +154,7 @@ msgstr "&Foretrukne farver..."
 
 #: servercontroller.cpp:190 servercontroller.cpp:741
 msgid "&Global Fonts..."
-msgstr "&Global skrift..."
+msgstr "&Globale skrifttyper..."
 
 #: servercontroller.cpp:192 servercontroller.cpp:743
 msgid "&Filter Rule Editor..."
@@ -162,11 +162,11 @@ msgstr "Filter &regelskriver..."
 
 #: servercontroller.cpp:194 servercontroller.cpp:745
 msgid "&Web Server Configuration..."
-msgstr "&Webserver indstillinger...."
+msgstr "&Netserver indstillinger...."
 
 #: servercontroller.cpp:197 servercontroller.cpp:747
 msgid "&Preferences..."
-msgstr "&Præferencer... "
+msgstr "&Indstillinger... "
 
 #: servercontroller.cpp:207
 msgid "Help on Colours..."
@@ -202,7 +202,7 @@ msgstr "Aktive serverforbindelser"
 
 #: servercontroller.cpp:736
 msgid "&Undock"
-msgstr "&Afdyk"
+msgstr "Fjern fr&a panelet"
 
 #: ssfeprompt.cpp:25
 msgid "Prompt"
@@ -270,7 +270,7 @@ msgstr "&Forbind"
 
 #: KSOpenkSirc/open_ksircData.cpp:54
 msgid "&Edit Servers"
-msgstr "R&ediger serverne"
+msgstr "R&edigér serverne"
 
 #: KSOpenkSirc/open_ksircData.cpp:86
 msgid "Group:"

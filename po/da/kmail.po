@@ -8,7 +8,7 @@ msgstr ""
 "POT-Creation-Date: 1999-04-26 03:29+0200\n"
 "PO-Revision-Date: 1999-02-17 17:00+CET-1\n"
 "Last-Translator: Erik Kjær Pedersen <erik@binghamton.edu>\n"
-"Language-Team: da <LL@li.org>\n"
+"Language-Team: da <da@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO_8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: kmmainwin.cpp:386
 msgid "New Folder"
-msgstr "Ny folder"
+msgstr "Ny mappe"
 
 #: kmaddrbookdlg.cpp:178 kmmainwin.cpp:399 kmmainwin.cpp:433 main.cpp:484
 msgid "KMail error"
@@ -39,11 +39,11 @@ msgstr "Der er ingen ny post"
 
 #: kmmainwin.cpp:474
 msgid "Modify Folder"
-msgstr "Ændr folder"
+msgstr "Ændr mappe"
 
 #: kmmainwin.cpp:497
 msgid "Moved all messages into trash"
-msgstr "Flyttede alle breve til affald"
+msgstr "Flyttede alle breve til papirkurven"
 
 #: kmmainwin.cpp:516
 msgid ""
@@ -51,7 +51,7 @@ msgid ""
 "system folder."
 msgstr ""
 "Kan ikke fjerne en\n"
-"system folder."
+"systemmappe."
 
 #: kmmainwin.cpp:520
 #, c-format
@@ -59,7 +59,7 @@ msgid ""
 "Are you sure you want to remove the folder\n"
 "\"%s\", discarding it's contents ?"
 msgstr ""
-"Er du sikker på at du vil fjerne folderen\n"
+"Er du sikker på at du vil fjerne mappen\n"
 "\"%s\" og slette dens indhold?"
 
 #: kmmainwin.cpp:523
@@ -80,7 +80,7 @@ msgstr "Brev som almindelig tekst"
 
 #: kmmainwin.cpp:626 kmmainwin.cpp:646
 msgid "Select Folder"
-msgstr "Vælg folder"
+msgstr "Vælg mappe"
 
 #: kmmainwin.cpp:669
 msgid "Queued messages successfully sent."
@@ -373,7 +373,7 @@ msgstr "Uassocierede konti"
 
 #: kmfoldertree.cpp:49 kmsettings.cpp:538
 msgid "Folders"
-msgstr "Foldere"
+msgstr "Mapper"
 
 #: kmsettings.cpp:54
 msgid "Settings"
@@ -441,7 +441,7 @@ msgstr "Type"
 
 #: kmsettings.cpp:269
 msgid "Folder"
-msgstr "Folder"
+msgstr "Mappe"
 
 #: kmsettings.cpp:277
 msgid "Add..."
@@ -465,7 +465,7 @@ msgstr "Skrift i brevlisten"
 
 #: kmsettings.cpp:357
 msgid "Long folder list"
-msgstr "Lang folderliste"
+msgstr "Lang mappeliste"
 
 #: kmsettings.cpp:386
 msgid "Phrases"
@@ -609,7 +609,7 @@ msgstr "Pop Konto"
 
 #: kmsettings.cpp:899
 msgid "Login:"
-msgstr "Login:"
+msgstr "LogPå:"
 
 #: kmacctpop.cpp:486 kmsettings.cpp:902
 msgid "Password:"
@@ -682,7 +682,7 @@ msgstr "%d breve, %d ulæste."
 
 #: kmheaders.cpp:227
 msgid "Folder is read-only."
-msgstr "Folderen er kun læsbar"
+msgstr "Mappen er kun læsbar"
 
 #: kmheaders.cpp:279
 msgid "Unknown"
@@ -796,7 +796,7 @@ msgstr "&Ny brevskriver..."
 
 #: kmcomposewin.cpp:471 kmcomposewin.cpp:705 kmcomposewin.cpp:1923
 msgid "Mark all"
-msgstr "Marker alt"
+msgstr "Markér alt"
 
 #: kmcomposewin.cpp:474 kmcomposewin.cpp:707
 msgid "Find..."
@@ -1162,13 +1162,13 @@ msgid ""
 "\n"
 "Shall KMail move the mail folders now ?"
 msgstr ""
-"Der er en folder der hedder ~/Kmail. KMail bruger folderen\n"
+"Der er et katalog der hedder ~/Kmail. KMail bruger kataloget\n"
 "~/Mail til brevene fra nu af.\n"
-"KMail kan flytte indholdet af folderen ~/KMail over i ~/Mail,\n"
+"KMail kan flytte indholdet af kataloget ~/KMail over i ~/Mail,\n"
 "men det vil erstatte eksisterende filer med samme navn i\n"
-"folderen ~/Mail (for eksempel inbox).\n"
+"kataloget ~/Mail (for eksempel inbox).\n"
 "\n"
-"Skal KMail flytte brevfolderne nu ?"
+"Skal KMail flytte brevmapperne nu ?"
 
 #: main.cpp:485
 msgid "Loading addressbook failed"
@@ -1248,7 +1248,7 @@ msgid ""
 "Error while creating folder `%s':\n"
 "%s"
 msgstr ""
-"Fejl ved forsøg på at lave folder `%s':\n"
+"Fejl ved forsøg på at lave mappe `%s':\n"
 "%s"
 
 #: kmfoldermgr.cpp:136
@@ -1257,7 +1257,7 @@ msgid ""
 "Creating missing folder\n"
 "`%s'"
 msgstr ""
-"Laver den manglende folder\n"
+"Laver den manglende mappe\n"
 "`%s'"
 
 #: kmfoldermgr.cpp:139
@@ -1266,7 +1266,7 @@ msgid ""
 "Cannot create folder `%s'\n"
 "in %s"
 msgstr ""
-"Kan ikke lave folderen `%s'\n"
+"Kan ikke lave mappen `%s'\n"
 "in %s"
 
 #: kmsender.cpp:124
@@ -1294,7 +1294,7 @@ msgstr "Du skal angive en modtager!"
 
 #: kmsender.cpp:166
 msgid "Cannot add message to outbox folder"
-msgstr "Kan ikke tilføje breve til outbox folderen"
+msgstr "Kan ikke tilføje breve til outbox mappen"
 
 #: kmsender.cpp:197
 msgid "Sending still in progress"
@@ -1407,7 +1407,7 @@ msgstr ""
 
 #: kmfolderseldlg.cpp:32
 msgid "Select folder"
-msgstr "Vælg folder"
+msgstr "Vælg mappe"
 
 #: kmfilter.cpp:197
 #, c-format
@@ -1670,7 +1670,7 @@ msgid ""
 "This is a directory and not a file:\n"
 "%s"
 msgstr ""
-"Dette er en folder og ikke en fil:\n"
+"Dette er et katalog og ikke en fil:\n"
 "%s"
 
 #: kfileio.cpp:61
