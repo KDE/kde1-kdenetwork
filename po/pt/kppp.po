@@ -1,9 +1,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1998-12-31 02:00+0100\n"
+"POT-Creation-Date: 1998-12-28 02:07+0100\n"
 "PO-Revision-Date: 1998-01-27 22:00+0000\n"
-"Last-Translator: Pedro Morais <pmmm@camoes.rnl.ist.utl.pt>\n"
+"Last-Translator: Pedro Morais <morais@kde.org>\n"
+"Language-Team: pt\n"
+"MIME-Version:\n"
+"Content-Type:\n"
+"Content-Transfer-Encoding:\n"
 
 #: accounts.cpp:45
 msgid "Account Setup"
@@ -78,11 +82,11 @@ msgstr "Apagar Custos"
 msgid "View Logs"
 msgstr "Ver Relatórios"
 
-#: accounts.cpp:220
+#: accounts.cpp:219
 msgid "Reset Total"
 msgstr "Apagar Total"
 
-#: accounts.cpp:221
+#: accounts.cpp:220
 msgid ""
 "Are you sure you want to reset the accumulated\n"
 "telephone costs for the selected account to zero?"
@@ -90,15 +94,15 @@ msgstr ""
 "Tem a certeza que quer colocar os custos telefónicos\n"
 "acumulados da conta seleccionada a zero?"
 
-#: accounts.cpp:250 accounts.cpp:271
+#: accounts.cpp:249 accounts.cpp:270
 msgid "Maximum number of accounts reached."
 msgstr "Número máximo de contas atingido."
 
-#: accounts.cpp:277
+#: accounts.cpp:276
 msgid "No account selected."
 msgstr "Nenhuma conta seleccionada."
 
-#: accounts.cpp:292
+#: accounts.cpp:291
 #, c-format
 msgid ""
 "Are you sure you want to delete\n"
@@ -107,55 +111,53 @@ msgstr ""
 "Tem a certeza que quer apagar\n"
 "a conta \"%s\"?"
 
-#: accounts.cpp:297
+#: accounts.cpp:296
 msgid "Confirm"
 msgstr "Confirmar"
 
-#: accounts.cpp:318
+#: accounts.cpp:317
 msgid "New Account"
 msgstr "Nova Conta"
 
-#: accounts.cpp:321
+#: accounts.cpp:320
 msgid "Edit Account: "
 msgstr "Editar Conta: "
 
-#: accounts.cpp:339
+#: accounts.cpp:338
 msgid "Dial"
 msgstr "Ligar"
 
-#: accounts.cpp:340
+#: accounts.cpp:339
 msgid "IP"
 msgstr "IP"
 
-#: accounts.cpp:341
+#: accounts.cpp:340
 msgid "DNS"
 msgstr "DNS"
 
-#: accounts.cpp:342
+#: accounts.cpp:341
 msgid "Gateway"
 msgstr "Gateway"
 
-#: accounts.cpp:343
+#: accounts.cpp:342
 msgid "Login Script"
 msgstr "Script de Login"
 
-#: accounts.cpp:344
+#: accounts.cpp:343
 msgid "Accounting"
 msgstr "Contabilidade"
 
-#: accounts.cpp:363
-#, fuzzy
+#: accounts.cpp:362
 msgid ""
 "You must enter an unique\n"
 "account name"
 msgstr ""
-"Tem de entrar um nome de\n"
+"Tem de inserir um nome de\n"
 "conta único"
 
-#: accounts.cpp:368
-#, fuzzy
+#: accounts.cpp:367
 msgid "Login script has unbalanced loop Start/End"
-msgstr "Script the login tem um Ciclo incorrecto"
+msgstr "Script de login tem um Ciclo incorrecto"
 
 #: connect.cpp:97 connect.cpp:195 main.cpp:978
 msgid "Connecting to: "
@@ -271,9 +273,8 @@ msgid "Loops nested too deeply!"
 msgstr "Ciclos demasiado encadeados!"
 
 #: connect.cpp:671
-#, fuzzy
 msgid "LoopEnd without matching Start! Line: "
-msgstr "LoopEnd sem linha de Start:"
+msgstr "LoopEnd sem linha de Start: "
 
 #: connect.cpp:746
 msgid "Starting pppd ..."
@@ -446,13 +447,12 @@ msgid ""
 msgstr ""
 
 #: edit.cpp:129
-#, fuzzy
 msgid ""
 "Execute program\n"
 "before disconnect:"
 msgstr ""
 "Executar programa\n"
-"quando terminar ligação:"
+"antes de desligar:"
 
 #: edit.cpp:141
 msgid ""
@@ -540,7 +540,7 @@ msgstr ""
 
 #: edit.cpp:274
 msgid "Auto-configure hostname from this IP"
-msgstr "Auto-configurar nome da host a partir deste IP"
+msgstr "Auto-configurar nome do servidor a partir deste IP"
 
 #: edit.cpp:279
 msgid ""
@@ -915,9 +915,8 @@ msgid ""
 msgstr ""
 
 #: general.cpp:508
-#, fuzzy
 msgid "Modem volume"
-msgstr "Ficheiro de Lock do Modem:"
+msgstr "Volume do modem"
 
 #: general.cpp:520
 msgid ""
@@ -1141,9 +1140,8 @@ msgid "The pppd daemon died unexpectedly!"
 msgstr ""
 
 #: main.cpp:812
-#, fuzzy
 msgid "Details..."
-msgstr "Detalhes"
+msgstr "Detalhes..."
 
 #: main.cpp:837
 msgid ""
@@ -1153,7 +1151,7 @@ msgid ""
 msgstr ""
 
 #: main.cpp:874
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "kppp can not find:\n"
 " %s\n"
@@ -1168,7 +1166,9 @@ msgstr ""
 " %s\n"
 "Por favor instale o pppd correctamente e/ou ajuste\n"
 "a localização do executável do pppd na página PPP do\n"
-"diálogo de configuração."
+"diálogo de configuração.\n"
+"Isto irá garantir que o kppp encontrar o daemon PPP.\n"
+"Obrigado."
 
 #: main.cpp:889
 #, c-format
@@ -1243,9 +1243,8 @@ msgstr ""
 "autenticação CHAP \"%s\""
 
 #: main.cpp:970
-#, fuzzy
 msgid "You must specify a telephone number!"
-msgstr "Tem de especificar um número de telefone !\n"
+msgstr "Tem de especificar um número de telefone!"
 
 #: main.cpp:1057
 msgid "Quit kPPP?"
@@ -1268,9 +1267,8 @@ msgid "Sorry, can't open modem."
 msgstr "Desculpe, não consegui abrir o modem."
 
 #: modem.cpp:120
-#, fuzzy
 msgid "Sorry, can't detect state of CD line."
-msgstr "Desculpe, não consegui criar ficheiro de lock do modem."
+msgstr "Desculpe, não consigo detectar o estado da linha CD."
 
 #: modem.cpp:126
 msgid "Sorry, the modem is not ready."
@@ -1281,41 +1279,36 @@ msgid "Sorry, the modem is busy."
 msgstr "Desculpe, o modem está ocupado."
 
 #: modem.cpp:187
-#, fuzzy
 msgid "Modem Ready."
-msgstr "Modem Pronto"
+msgstr "Modem Pronto."
 
 #: modem.cpp:198
 msgid "Can't restore tty settings: tcsetattr()\n"
 msgstr "Não consigo restaurar configurações do tty: tcsetattr()\n"
 
 #: modem.cpp:324
-#, fuzzy
 msgid "Sorry, the modem doesn't respond."
-msgstr "Desculpe, mas o modem não está pronto."
+msgstr "Desculpe, mas o modem não responde"
 
 #: modem.cpp:425
-#, fuzzy
 msgid "Unknown speed"
-msgstr "velocidade desconhecida"
+msgstr "Velocidade desconhecida"
 
 #: modemcmds.cpp:43
 msgid "Edit Modem Commands"
 msgstr "Editar Comandos do Modem"
 
 #: modemcmds.cpp:70
-#, fuzzy
 msgid "Pre-Init Delay (sec/100):"
-msgstr "Demora de Resposta (sec/100):"
+msgstr "Demora de PreInit (sec/100):"
 
 #: modemcmds.cpp:75
 msgid "Initialization String:"
 msgstr "Cadeia de Inicialização:"
 
 #: modemcmds.cpp:93
-#, fuzzy
 msgid "Post-Init Delay (sec/100):"
-msgstr "Demora de Resposta (sec/100):"
+msgstr "Demora de PostInit (sec/100):"
 
 #: modemcmds.cpp:98
 msgid "Init Response:"
@@ -1334,9 +1327,8 @@ msgid "Busy Response:"
 msgstr "Resposta de Ocupado:"
 
 #: modemcmds.cpp:126
-#, fuzzy
 msgid "No Carrier Response:"
-msgstr "Resposta de Sem Carrier"
+msgstr "Resposta de Sem Carrier:"
 
 #: modemcmds.cpp:133
 msgid "No Dialtone Response:"
@@ -1387,9 +1379,8 @@ msgid "Argument:"
 msgstr "Argumento:"
 
 #: pppdargs.cpp:78
-#, fuzzy
 msgid "Defaults"
-msgstr "Detalhes"
+msgstr ""
 
 #: pppdata.cpp:108
 msgid ""
@@ -1508,9 +1499,8 @@ msgid "&Modem"
 msgstr "&Modem"
 
 #: miniterm.cpp:105
-#, fuzzy
 msgid "Close MiniTerm"
-msgstr "Sair do MiniTerm"
+msgstr "Fechar MiniTerm"
 
 #: miniterm.cpp:110
 msgid "Reset Modem"
@@ -1676,7 +1666,6 @@ msgstr ""
 "dispositivos."
 
 #: runtests.cpp:490
-#, fuzzy
 msgid ""
 "is missing!\n"
 "\n"
@@ -1684,7 +1673,7 @@ msgid ""
 "a non-empty file that has appropriate\n"
 "read and write permissions."
 msgstr ""
-"/etc/resolv.conf não existe!\n"
+"não existe!\n"
 "\n"
 "Peça ao admnistrador do seu sistema para criar\n"
 "um ficheiro não vazio que tenha as permissões\n"
@@ -1732,9 +1721,8 @@ msgid ""
 msgstr ""
 
 #: ppplog.cpp:189
-#, fuzzy
 msgid "Sorry. Can't help you here."
-msgstr "Desculpe, não consegui abrir o modem."
+msgstr "Desculpe. Não o posso ajudar."
 
 #: ppplog.cpp:206
 msgid ""
@@ -1766,66 +1754,3 @@ msgstr ""
 #: ppplog.cpp:241
 msgid "Write to file"
 msgstr ""
-
-#~ msgid ""
-#~ "The application-specific config file\n"
-#~ "could not be opened neither\n"
-#~ "read-write nor read-only"
-#~ msgstr ""
-#~ "O ficheiro de configuração da\n"
-#~ "não pode ser aberto nem para\n"
-#~ "escrita nem para leitura"
-
-#, fuzzy
-#~ msgid "Verify your password."
-#~ msgstr "Guardar password"
-
-#~ msgid "Insert"
-#~ msgstr "Inserir"
-
-#~ msgid ""
-#~ "\n"
-#~ "A dialer and front-end to pppd\n"
-#~ "\n"
-#~ "Copyright (c) 1997\n"
-#~ "Bernd Johannes Wuebben\n"
-#~ "wuebben@math.cornell.edu"
-#~ msgstr ""
-#~ "\n"
-#~ "Um dialer e interface para o pppd\n"
-#~ "\n"
-#~ "Copyright (c) 1997\n"
-#~ "Bernd Johannes Wuebben\n"
-#~ "wuebben@math.cornell.edu"
-
-#~ msgid ""
-#~ "With contributions from:\n"
-#~ "\n"
-#~ "Mario Weilguni\n"
-#~ "Markus Wuebben\n"
-#~ "Jesus Fuentes Saavedra\n"
-#~ "Harri Porten\n"
-#~ "Peter Silva"
-#~ msgstr ""
-#~ "Com contribuições de:\n"
-#~ "\n"
-#~ "Mario Weilguni\n"
-#~ "Markus Wuebben\n"
-#~ "Jesus Fuentes Saavedra\n"
-#~ "Harri Porten\n"
-#~ "Peter Silva"
-
-#~ msgid "Restore Defaults"
-#~ msgstr "Por Omissão"
-
-#~ msgid "Can't open Modem"
-#~ msgstr "Não consigo abrir Modem"
-
-#~ msgid "Sorry, the modem is busy"
-#~ msgstr "Desculpe, o modem está ocupado"
-
-#~ msgid "tcgetattr() failed\n"
-#~ msgstr "tcgetattr() falhou\n"
-
-#~ msgid "tcsetattr() failed\n"
-#~ msgstr "tcsetattr() falhou\n"

@@ -1,41 +1,39 @@
 msgid ""
 msgstr ""
+"Project-Id-Version: kfinger\n"
 "POT-Creation-Date: 1998-12-19 02:18+0100\n"
-"Content-Type: text/plain; charset=\n"
-"Date: 1998-02-10 15:59:39+0100\n"
-"From: root (A. Rizzi),,, <root@BiliOne>\n"
-"Xgettext-Options: -ktranslate\n"
-"Files: finger.cpp kfinger.cpp\n"
+"PO-Revision-Date: 1998-11-20 00:00:00+0000\n"
+"Last-Translator: Pedro Morais <morais@kde.org>\n"
+"Language-Team: pt\n"
+"MIME-Version:\n"
+"Content-Type:\n"
+"Content-Transfer-Encoding:\n"
 
 #: kfinger.C:30
-#, fuzzy
 msgid "F&inger Now"
-msgstr "Finger Agora"
+msgstr "F&inger Agora"
 
 #: kfinger.C:31
-#, fuzzy
 msgid "&Talk..."
-msgstr "Falar..."
+msgstr "&Falar..."
 
 #: kfinger.C:35
 msgid "Setup"
 msgstr "Configuração"
 
 #: kfinger.C:36
-#, fuzzy
 msgid "&Save Options"
-msgstr "&Opções"
+msgstr "&Gravar Opções"
 
 #: kfinger.C:38
-#, fuzzy
 msgid ""
 "kfinger 0.8.0\n"
 "\n"
 "(c) Andrea Rizzi (rizzi@kde.org)"
 msgstr ""
-"Kfinger 0.3.2\n"
-"(c) por Andrea Rizzi\n"
-"bilibao@ouverture.it"
+"Kfinger 0.8.0\n"
+"\n"
+"(c) por Andrea Rizzi (rizzi@kde.org)"
 
 #: kfinger.C:47
 msgid "KDE finger utility"
@@ -47,7 +45,7 @@ msgstr "Finger"
 
 #: kfinger.C:51
 msgid "Stop current finger"
-msgstr ""
+msgstr "Parar finger actual"
 
 #: kfinger.C:53
 msgid "Talk..."
@@ -55,11 +53,11 @@ msgstr "Falar..."
 
 #: kfinger.C:54
 msgid "AutoFinger On/Off"
-msgstr ""
+msgstr "Autofinger"
 
 #: kfinger.C:66
 msgid "Welcome to KDE Finger\n"
-msgstr ""
+msgstr "Bem vindo ao finger do KDE\n"
 
 #: kfinger.C:67
 msgid "Finger result"
@@ -73,18 +71,17 @@ msgstr "Erro no servidor: %s"
 #: kfinger.C:288
 #, c-format
 msgid "Finger  %s@%s   --   %s"
-msgstr ""
+msgstr "Finger  %s@%s   --   %s"
 
 #: kfinger.C:305
-#, fuzzy
 msgid ""
 "Kfinger 0.8.0\n"
 "(c) by Andrea Rizzi\n"
 "rizzi@kde.org"
 msgstr ""
-"Kfinger 0.3.2\n"
+"Kfinger 0.8.0\n"
 "(c) por Andrea Rizzi\n"
-"bilibao@ouverture.it"
+"rizzi@kde.org"
 
 #: kfinger.C:351
 msgid "Kfinger Setup"
@@ -115,17 +112,17 @@ msgid "Timed finger"
 msgstr "Finger temporizado"
 
 #: kfinger.C:465 kfinger.C:652
-#, fuzzy, c-format
+#, c-format
 msgid "Finger wait: %d\""
-msgstr "Espera do finger: %d"
+msgstr "Espera do finger: %d\""
 
 #: kfinger.C:470
 msgid "Talk Command "
-msgstr ""
+msgstr "Comando de talk"
 
 #: kfinger.C:480
 msgid "Misc"
-msgstr ""
+msgstr "Misc"
 
 #: kfinger.C:485 kfinger.C:497
 msgid "Finger Output"
@@ -206,49 +203,3 @@ msgstr "Gravar & Sair"
 #: kfinger.C:859
 msgid "Output parameters "
 msgstr "Parâmetros de saída "
-
-#~ msgid "Talk.."
-#~ msgstr "Falar.."
-
-#, fuzzy
-#~ msgid ""
-#~ "Welcome to KDE Finger \n"
-#~ "program by A.Rizzi rizzi@kde.org\n"
-#~ "18/09/1997 \n"
-#~ msgstr ""
-#~ "Bemvindo ao utitário de finger do KDE\n"
-#~ "um programa por A.Rizzi bilibao@ouverture.it\n"
-#~ "18/09/1997 \n"
-
-#~ msgid "Finger result for : %s@%s"
-#~ msgstr "Resultado para : %s@%s"
-
-#~ msgid "Quit"
-#~ msgstr "Sair"
-
-#~ msgid "Help"
-#~ msgstr "Ajuda"
-
-#~ msgid "About"
-#~ msgstr "Acerca"
-
-#~ msgid "&File"
-#~ msgstr "&Ficheiro"
-
-#~ msgid "&Help"
-#~ msgstr "&Ajuda"
-
-#~ msgid "Settings"
-#~ msgstr "Configuração"
-
-#~ msgid "&Remove"
-#~ msgstr "&Remover"
-
-#~ msgid "Time"
-#~ msgstr "Tempo"
-
-#~ msgid "Cancel"
-#~ msgstr "Cancelar"
-
-#~ msgid "Ok"
-#~ msgstr "Ok"

@@ -1,0 +1,231 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: kbiff\n"
+"POT-Creation-Date: 1998-12-20 02:10+0100\n"
+"PO-Revision-Date: 1998-11-07 00:00+0000\n"
+"Last-Translator: Pedro Morais <morais@kde.org>\n"
+"Language-Team: pt\n"
+"MIME-Version:\n"
+"Content-Type:\n"
+"Content-Transfer-Encoding:\n"
+
+#: kbiff.cpp:506
+msgid "&UnDock"
+msgstr "&DesAtracar"
+
+#: kbiff.cpp:508
+msgid "&Dock"
+msgstr "&Atracar"
+
+#: kbiff.cpp:509
+msgid "&Setup..."
+msgstr "&Configuração..."
+
+#: kbiff.cpp:511
+msgid "&Help..."
+msgstr "&Ajuda..."
+
+#: kbiff.cpp:515
+msgid "&Check Mail Now"
+msgstr "&Verificar Correio Agora"
+
+#: kbiff.cpp:517
+msgid "&Read Mail Now"
+msgstr "&Ler Correio Agora"
+
+#: kbiff.cpp:523
+msgid "&Stop"
+msgstr "&Parar"
+
+#: notify.cpp:28 notify.cpp:45
+msgid "You have new mail!"
+msgstr "Tem correio novo!"
+
+#: notify.cpp:53
+#, c-format
+msgid "New Messages: %d"
+msgstr "Novas Mensagens: %d"
+
+#: notify.cpp:58
+#, c-format
+msgid "Mailbox: %s"
+msgstr "Caixa: %s"
+
+#: setupdlg.cpp:79
+msgid "KBiff Setup"
+msgstr "Configuração do KBiff"
+
+#: setupdlg.cpp:82
+msgid "Profile:"
+msgstr "Perfil:"
+
+#: setupdlg.cpp:98
+msgid "&New..."
+msgstr "&Novo..."
+
+#: setupdlg.cpp:105
+msgid "&Rename..."
+msgstr "&Renomear..."
+
+#: setupdlg.cpp:139
+msgid "General"
+msgstr "Geral"
+
+#: setupdlg.cpp:140
+msgid "New Mail"
+msgstr "Novo Correio"
+
+#: setupdlg.cpp:141
+msgid "Mailbox"
+msgstr "Caixa"
+
+#: setupdlg.cpp:356
+msgid "New Profile"
+msgstr "Novo Perfil"
+
+#: setupdlg.cpp:388
+#, c-format
+msgid "Rename Profile: %s"
+msgstr "Renomear Perfil: %s"
+
+#: setupdlg.cpp:428
+#, c-format
+msgid "Delete Profile: %s"
+msgstr "Apagar Perfil: %s"
+
+#: setupdlg.cpp:429
+msgid "Are you sure you wish to delete this profile?\n"
+msgstr "Tem a certeza que quer apagar este perfil?\n"
+
+#: setupdlg.cpp:489
+msgid "Poll (sec):"
+msgstr "Intervalo (seg):"
+
+#: setupdlg.cpp:494
+msgid "Mail client:"
+msgstr "Cliente de correio:"
+
+#: setupdlg.cpp:507
+msgid "Dock in panel"
+msgstr "Ícone no painel"
+
+#: setupdlg.cpp:512
+msgid "Use session management"
+msgstr "Utilizar gestor de sessões"
+
+#: setupdlg.cpp:517
+msgid "Icons:"
+msgstr "Ícones:"
+
+#: setupdlg.cpp:535
+msgid "No Mail:"
+msgstr "Sem Correio:"
+
+#: setupdlg.cpp:544
+msgid "Old Mail"
+msgstr "Correio Antigo:"
+
+#: setupdlg.cpp:554
+msgid "New Mail:"
+msgstr "Correio Novo:"
+
+#: setupdlg.cpp:691
+msgid "Run Command"
+msgstr "Executar Comando"
+
+#: setupdlg.cpp:698 setupdlg.cpp:711 setupdlg.cpp:1051
+msgid "Browse"
+msgstr "Procurar"
+
+#: setupdlg.cpp:704
+msgid "Play Sound"
+msgstr "Tocar Som"
+
+#: setupdlg.cpp:717
+msgid "System Beep"
+msgstr "Campaínha"
+
+#: setupdlg.cpp:722
+msgid "Notify"
+msgstr "Avisar"
+
+#: setupdlg.cpp:853
+msgid "Advanced Options"
+msgstr "Opções Avançadas"
+
+#: setupdlg.cpp:857
+msgid "Mailbox URL:"
+msgstr "URL Caixa:"
+
+#: setupdlg.cpp:861
+msgid "Port:"
+msgstr "Porto:"
+
+#: setupdlg.cpp:865
+msgid "PREAUTH"
+msgstr "PREAUTH"
+
+#: setupdlg.cpp:872
+msgid "Keep Alive"
+msgstr "Keep Alive"
+
+#: setupdlg.cpp:998 setupdlg.cpp:1027
+msgid "Mailbox:"
+msgstr "Caixa:"
+
+#: setupdlg.cpp:1011 setupdlg.cpp:1321
+msgid "New Mailbox"
+msgstr "Nova Caixa"
+
+#: setupdlg.cpp:1018
+msgid "Delete Mailbox"
+msgstr "Apagar Caixa"
+
+#: setupdlg.cpp:1024
+msgid "Protocol:"
+msgstr "Protocolo:"
+
+#: setupdlg.cpp:1030
+msgid "Server:"
+msgstr "Servidor:"
+
+#: setupdlg.cpp:1033
+msgid "User:"
+msgstr "Utilizador:"
+
+#: setupdlg.cpp:1036
+msgid "Password:"
+msgstr "Password:"
+
+#: setupdlg.cpp:1068
+msgid "Store password"
+msgstr "Guardar password"
+
+#: setupdlg.cpp:1071
+msgid "Advanced"
+msgstr "Avançado"
+
+#: setupdlg.cpp:1508
+msgid "KBiff"
+msgstr "KBiff"
+
+#: setupdlg.cpp:1530
+#, c-format
+msgid ""
+"Version %s\n"
+"\n"
+"Copyright (C) 1998\n"
+"Kurt Granroth"
+msgstr ""
+"Versão %s\n"
+"\n"
+"Copyright (C) 1998\n"
+"Kurt Granroth"
+
+#: setupdlg.cpp:1579
+msgid "New Name:"
+msgstr "Novo Nome:"
+
+#: setupdlg.cpp:1605
+msgid "New Name"
+msgstr "Novo Nome"

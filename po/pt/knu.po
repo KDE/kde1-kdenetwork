@@ -3,7 +3,11 @@ msgstr ""
 "Project-Id-Version: knu\n"
 "POT-Creation-Date: 1998-12-01 01:56+0100\n"
 "PO-Revision-Date: 1998-01-22 00:00+0100\n"
-"Last-Translator: Pedro Morais <pmmm@camoes.rnl.ist.utl.pt>\n"
+"Last-Translator: Pedro Morais <morais@kde.org>\n"
+"Language-Team: pt\n"
+"MIME-Version:\n"
+"Content-Type:\n"
+"Content-Transfer-Encoding:\n"
 
 #: knu.cpp:147 knu.cpp:306
 msgid "&Ping"
@@ -15,7 +19,7 @@ msgstr "&Traçar rota"
 
 #: knu.cpp:165 knu.cpp:318
 msgid "Host &resolution"
-msgstr "&Resolução da host"
+msgstr "&Resolução de servidor"
 
 #: knu.cpp:178
 msgid "F&inger"
@@ -23,7 +27,7 @@ msgstr "F&inger"
 
 #: knu.cpp:187 knu.cpp:330
 msgid "&mtr"
-msgstr ""
+msgstr "&mtr"
 
 #: knu.cpp:198
 msgid ""
@@ -141,39 +145,39 @@ msgstr " - configuração"
 
 #: MtrDlg.cpp:83
 msgid "#"
-msgstr ""
+msgstr "#"
 
 #: MtrDlg.cpp:84
 msgid "Hostname"
-msgstr ""
+msgstr "Servidor"
 
 #: MtrDlg.cpp:85
 msgid "Loss"
-msgstr ""
+msgstr "Percas"
 
 #: MtrDlg.cpp:87
 msgid "Rcv"
-msgstr ""
+msgstr "Rcb"
 
 #: MtrDlg.cpp:89
 msgid "Snt"
-msgstr ""
+msgstr "Env"
 
 #: MtrDlg.cpp:91
 msgid "Best"
-msgstr ""
+msgstr "Melhor"
 
 #: MtrDlg.cpp:93
 msgid "Avg"
-msgstr ""
+msgstr "Média"
 
 #: MtrDlg.cpp:95
 msgid "Worst"
-msgstr ""
+msgstr "Pior"
 
 #: MtrDlg.cpp:138 PingDlg.cpp:100 TracerouteDlg.cpp:98
 msgid "Make host &name resolution"
-msgstr "Resolver o &nome da host"
+msgstr "Resolver o &nome do servidor"
 
 #: HostDlg.cpp:331 PingDlg.cpp:227
 msgid "hos&t"
@@ -201,7 +205,7 @@ msgstr "servidor de nomes (NS)"
 
 #: HostDlg.cpp:115
 msgid "mail exchanger (MX)"
-msgstr "processador de mails (MX)"
+msgstr "processador de correio (MX)"
 
 #: HostDlg.cpp:116
 msgid "alias (CNAME)"
@@ -230,6 +234,3 @@ msgstr "Ser&vidor:"
 #: FingerDlg.cpp:77
 msgid "&User:"
 msgstr "&Utilizador:"
-
-#~ msgid "&Matt's traceroute"
-#~ msgstr "Traçar rota do &Matt"
