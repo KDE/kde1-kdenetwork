@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kppp 0.9.6\n"
 "POT-Creation-Date: 1999-01-18 02:04+0100\n"
-"PO-Revision-Date: 1998-12-26 20:50 CET\n"
+"PO-Revision-Date: 1999-01-18 08:48+01:00\n"
 "Last-Translator: Miroslav Flídr <flidr@kky.zcu.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1024,7 +1024,6 @@ msgid "Line Termination:"
 msgstr "Ukonèení øádky:"
 
 #: general.cpp:298
-#, fuzzy
 msgid ""
 "Specifies how AT commands are send to your\n"
 "modem. Most modems will work fine with the\n"
@@ -1036,11 +1035,11 @@ msgid ""
 msgstr ""
 "Udává jakým zpùsobem jsou pøedávány AT pøíkazy\n"
 "modemu. Vìt¹ina modemù bude dobøe pracovat\n"
-"s implicitní hosnotou <i>CR/LF</i>. Nereaguje-li\n"
+"s implicitní hodnotou <i>CR/LF</i>. Nereaguje-li\n"
 "modem na inicializaèní øe»ezec, zkuste zde zadat\n"
 "jiné nastavení.\n"
 "\n"
-"<b>Implivitnì</b>: CR/LF"
+"<b>Implicitnì</b>: CR/LF"
 
 #: general.cpp:306
 msgid "Connection Speed:"
@@ -1305,7 +1304,7 @@ msgstr ""
 
 #: main.cpp:429
 msgid "Exit"
-msgstr ""
+msgstr "Ukonèit"
 
 #: main.cpp:491
 msgid "Connect to: "
@@ -1858,7 +1857,7 @@ msgstr "Dostupná pravidla"
 
 #: acctselect.cpp:305
 msgid "(none)"
-msgstr ""
+msgstr "(¾ádná)) "
 
 #: ruleset.cpp:544
 msgid "kppp: no rulefile specified\n"
@@ -1996,12 +1995,11 @@ msgstr ""
 
 #: loginterm.cpp:120
 msgid "Ca&ncel"
-msgstr ""
+msgstr "Pøe&ru¹it"
 
 #: loginterm.cpp:125
-#, fuzzy
 msgid "&Continue"
-msgstr "Pøipojit"
+msgstr "&Pokraèovat"
 
 #: ppplog.cpp:136
 msgid ""
@@ -2105,19 +2103,19 @@ msgstr "Zapsat do souboru"
 
 #: modemdb.cpp:46
 msgid "Select modem type..."
-msgstr ""
+msgstr "Vyberte typ modemu..."
 
 #: modemdb.cpp:48
 msgid ""
 "To setup your modem, first choose its vendor in the list to the left, and "
 "then select the model from the right list. If you don´t know which modem you "
 "have, you can try out one of the \"Generic\" modems."
-msgstr ""
+msgstr "Pøi nastavení Va¹eho modemu vyberte nejprve jeho výrobce ze seznamu vlevo a pak vyberte jeho model ze seznamu vpravo. Nevíte-li jaký máte modem, mù¾ete vyzkou¹et jeden z \"obecných\" modemù."
 
 #: modemdb.cpp:151 modemdb.cpp:153 modemdb.cpp:223 modemdb.cpp:238
 msgid "<Generic>"
-msgstr ""
+msgstr "<Obecný>"
 
 #: modemdb.cpp:218
 msgid "Hayes(tm) compatible modem"
-msgstr ""
+msgstr "Hayes(tm) compatibilní modem"
