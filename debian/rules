@@ -52,7 +52,7 @@ binary-arch: build
 	dh_undocumented `cat debian/man-pages`
 	dh_installdocs
 	dh_installmenu
-	dh_installchangelogs
+	dh_installchangelogs ChangeLog
 	dh_strip
 	dh_compress
 	dh_fixperms
