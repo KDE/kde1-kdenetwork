@@ -204,9 +204,9 @@ void DwEntity::Assemble()
 
     int len = mString.length();
 #if defined(DW_EOL_CRLF)
-    if (len>1 && (mString[len-1]!='\n' || mString[len-3]!='\n'))
+    if (len>=3 && (mString[len-1]!='\n' || mString[len-3]!='\n'))
 #else
-    if (len>3 && (mString[len-1]!='\n' || mString[len-2]!='\n'))
+    if (len>=2 && (mString[len-1]!='\n' || mString[len-2]!='\n'))
 #endif
     {
       mString += DW_EOL;
