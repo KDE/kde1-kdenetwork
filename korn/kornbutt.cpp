@@ -114,12 +114,12 @@ void KornButton::drawButton( QPainter *painter )
 	if( _reversed ){
 
 		painter->fillRect(1, 1, width()-1, height()-1,
-			colorGroup().dark() );
+			colorGroup().foreground() );
 
 		painter->setPen( colorGroup().background() );
 	}
 	else {
-		painter->setPen( black );
+		painter->setPen( colorGroup().foreground() );
 	}
 
 	painter->drawText(0, 0, width(), height(), AlignCenter, 
