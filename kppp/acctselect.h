@@ -32,6 +32,7 @@
 #include <qchkbox.h>
 #include <qpixmap.h>
 #include <qlist.h>
+#include <qcombo.h>
 
 class AccountingSelector : public QWidget {
   Q_OBJECT
@@ -55,7 +56,8 @@ private slots:
 
 private:
   KTreeList *tl;
-  QCheckBox *use, *use_vol;
+  QCheckBox *use;
+  QComboBox *use_vol;
   QPixmap pmfolder, pmfile;
   QLabel *selected;
   int choice;

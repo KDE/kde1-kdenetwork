@@ -113,6 +113,16 @@ AccountWidget::AccountWidget( QWidget *parent, const char *name )
   l121->addWidget(costedit);
   l121->addStretch(1);
 
+  vollabel = new QLabel(klocale->translate("Volume:"), this);
+  vollabel->setMinimumSize(vollabel->sizeHint());
+  vollabel->setEnabled(FALSE);
+  l121->addWidget(vollabel);
+
+  voledit = new QLineEdit(this,"voledit");
+  voledit->setFixedHeight(voledit->sizeHint().height());
+  voledit->setEnabled(FALSE);
+  l121->addWidget(voledit);
+
   QVBoxLayout *l122 = new QVBoxLayout;
   l12->addStretch(1);
   l12->addLayout(l122);
@@ -154,19 +164,31 @@ void AccountWidget::slotListBoxSelect(int idx) {
   delete_b->setEnabled((bool)(idx != -1));
   edit_b->setEnabled((bool)(idx != -1));
   copy_b->setEnabled((bool)(idx != -1));
-  if(idx!=-1){
+  if(idx!=-1) {
+    QString account = gpppdata.accname();
+    gpppdata.setAccountbyIndex(accountlist_l->currentItem());
     reset->setEnabled(TRUE);
     costlabel->setEnabled(TRUE);
     costedit->setEnabled(TRUE);
     costedit->setText(p_xppp->accounting.getCosts(
        		      accountlist_l->text(accountlist_l->currentItem())));
+
+    vollabel->setEnabled(TRUE);
+    voledit->setEnabled(TRUE);
+    int bytes = gpppdata.totalBytes();
+    QString s;
+    s.setNum(bytes);
+    voledit->setText(s.data());
+    gpppdata.setAccount(account.data());
  }
   else{
     reset->setEnabled(FALSE);
     costlabel->setEnabled(FALSE);
     costedit->setText("");
     costedit->setEnabled(FALSE);
-
+    vollabel->setEnabled(FALSE);
+    voledit->setText("");
+    voledit->setEnabled(FALSE);
   }
 }
 

@@ -899,15 +899,15 @@ void PPPData::setAcctEnabled(bool set){
 
 }
 
-const bool PPPData::VolAcctEnabled(){
+const int PPPData::VolAcctEnabled() {
 
-  return (bool) readNumConfig(cgroup, VOLACCTENABLED_KEY, false);
+  return readNumConfig(cgroup, VOLACCTENABLED_KEY, 0);
 
 }
 
-void PPPData::setVolAcctEnabled(bool set){
+void PPPData::setVolAcctEnabled(int set) {
 
-  writeConfig(cgroup, VOLACCTENABLED_KEY, (int) set);
+  writeConfig(cgroup, VOLACCTENABLED_KEY, set);
 
 }
 

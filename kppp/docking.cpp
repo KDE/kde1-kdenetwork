@@ -147,7 +147,7 @@ void DockWidget::paintIcon () {
     bitBlt(this, 0, 0, &dock_both_pixmap);    
     ibytes_last = ibytes;
     obytes_last = obytes;
-    /*    QToolTip::remove(this);
+    /*QToolTip::remove(this);
     statstring = statstring.sprintf("In: %.2f Out %.2f",
 				    (float)ibytes/1000,(float)obytes/1000);
     QToolTip::add( this, statstring.data() );*/
@@ -158,7 +158,7 @@ void DockWidget::paintIcon () {
     bitBlt(this, 0, 0, &dock_left_pixmap);    
     ibytes_last = ibytes;
     obytes_last = obytes;
-    /*    QToolTip::remove(this);
+    /*QToolTip::remove(this);
     statstring = statstring.sprintf("In: %.2f Out %.2f",
 				    (float)ibytes/1000,(float)obytes/1000);
     QToolTip::add( this, statstring.data() );*/
@@ -258,9 +258,3 @@ void DockWidget::disconnect() {
 
 
 #include "docking.moc"
-
-
-
-
-
-

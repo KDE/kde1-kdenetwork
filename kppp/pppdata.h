@@ -304,8 +304,8 @@ public:
   const bool AcctEnabled();
   void setAcctEnabled(bool set);
 
-  const bool VolAcctEnabled();
-  void setVolAcctEnabled(bool set);
+  const int VolAcctEnabled();
+  void setVolAcctEnabled(int set);
 
   const bool exDNSDisabled();
   void setExDNSDisabled(bool set);

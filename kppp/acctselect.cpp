@@ -33,6 +33,7 @@
 #include <qwmatrix.h>
 #include <stdio.h>
 
+#include "macros.h"
 #include "acctselect.h"
 #include "pppdata.h"
 
@@ -81,11 +82,21 @@ AccountingSelector::AccountingSelector(QWidget *parent, const char *name)
   l11->addWidget(selected, 1);
 
   // volume accounting
-  use_vol = new QCheckBox(klocale->translate("Volume accounting"), this);
-  use_vol->setMinimumSize(use_vol->sizeHint());
-  use_vol->setChecked(gpppdata.VolAcctEnabled());
   l1->addStretch(1);
-  l1->addWidget(use_vol);
+  QHBoxLayout *l12 = new QHBoxLayout;
+  l1->addLayout(l12);
+  QLabel *usevol_l = new QLabel(klocale->translate("Volume accounting:"),
+				this);
+  MIN_SIZE(usevol_l);
+  use_vol = new QComboBox(this);
+  use_vol->insertItem(klocale->translate("No accounting"), 0);
+  use_vol->insertItem(klocale->translate("Bytes in"), 1);
+  use_vol->insertItem(klocale->translate("Bytes out"), 2);
+  use_vol->insertItem(klocale->translate("Bytes in and out"), 3);
+  MIN_SIZE(use_vol);
+  use_vol->setCurrentItem(gpppdata.VolAcctEnabled());
+  l12->addWidget(usevol_l);
+  l12->addWidget(use_vol);
 
   // load the pmfolder pixmap from KDEdir
   QString fname = KApplication::kde_datadir().copy();
@@ -339,7 +350,7 @@ bool AccountingSelector::save() {
     gpppdata.setAcctEnabled(FALSE);
   }
 
-  gpppdata.setVolAcctEnabled(use_vol->isChecked());
+  gpppdata.setVolAcctEnabled(use_vol->currentItem());
 
   return TRUE;
 }

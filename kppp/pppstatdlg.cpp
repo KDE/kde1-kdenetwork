@@ -303,7 +303,22 @@ void PPPStatsDlg::paintIcon(){
  
 void PPPStatsDlg::timeclick() {
   // volume accounting
-  totalbytes = gpppdata.totalBytes() + ibytes;  
+  switch(gpppdata.VolAcctEnabled()) {
+  case 0: // no accounting
+    break;
+
+  case 1: // bytes in
+    totalbytes = gpppdata.totalBytes() + ibytes;
+    break;
+
+  case 2:
+    totalbytes = gpppdata.totalBytes() + obytes;
+    break;
+
+  case 3:
+    totalbytes = gpppdata.totalBytes() + ibytes + obytes;
+    break;
+  }
 
   if( this->isVisible()){
     update_data(do_stats());  

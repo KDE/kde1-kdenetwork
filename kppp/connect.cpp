@@ -69,6 +69,8 @@ bool modified_hostname;
 
 LoginTerm *termwindow = 0L;
 
+extern int totalbytes;
+
 
 ConnectWidget::ConnectWidget(QWidget *parent, const char *name)
   : QWidget(parent, name)
@@ -193,6 +195,7 @@ void ConnectWidget::init() {
   scanvar = "";
   firstrunID = true;
   firstrunPW = true;
+  totalbytes = 0;
 
   p_xppp->con_speed = "";
 
@@ -227,7 +230,7 @@ void ConnectWidget::init() {
 
     // this timer reads from the modem
     semaphore = false;
-    readtimer->start(1);
+    readtimer->start(10);
     
     // if we are stuck anywhere we will time out
     timeout_timer->start(atoi(gpppdata.modemTimeout())*1000); 
@@ -254,7 +257,14 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
     messg->setText(klocale->translate("Initializing Modem..."));
     p_xppp->debugwindow->statusLabel(klocale->translate("Initializing Modem..."));
 
+    // TODO
+    // carriage return and then wait a second so that the modem will
+    // let us issue commands.
+//     writeline("\r");
+//     usleep(gpppdata.modemInitDelay() * 10000); // 0.01 - 3.0 sec
+
     writeline(gpppdata.modemInitStr());
+    printf("sending %s\n", gpppdata.modemInitStr());
 
     usleep(gpppdata.modemInitDelay() * 10000); // 0.01 - 3.0 sec 
 
@@ -1025,14 +1035,15 @@ void ConnectWidget::if_waiting_slot(){
       return;
     }
 
-    if_timer->start(200,TRUE); // single shot 
+    if_timer->start(200, TRUE); // single shot 
     return;
   }
 
   // O.K the ppp interface is up and running
-
+  // give it a few time to come up completly (0.2 seconds)
   if_timeout_timer->stop(); 
   if_timer->stop();
+  usleep(200000);
 
   p_xppp->stats->take_stats(); // start taking ppp statistics
   auto_hostname();
@@ -1044,9 +1055,6 @@ void ConnectWidget::if_waiting_slot(){
 
     app->flushX(); /* make sure that we don't get any asyn errors*/
 
-    // remove the authentication file
-    PAP_RemoveAuthFile();
-
     if((id = fork()) == 0) {
       setuid(getuid());
       system(gpppdata.command_on_connect());
@@ -1056,6 +1064,9 @@ void ConnectWidget::if_waiting_slot(){
     messg->setText(klocale->translate("Done"));
       
   }
+
+  // remove the authentication file
+  PAP_RemoveAuthFile();
 
   p_xppp->debugwindow->statusLabel(klocale->translate("Done"));
   set_con_speed_string();

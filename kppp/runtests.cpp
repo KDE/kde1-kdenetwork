@@ -35,6 +35,7 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <pwd.h>
 
 QString findFileInPath( const char *fname, const char *extraPath = 0 ) {
   QString f;  
@@ -73,9 +74,58 @@ QString findFileInPath( const char *fname, const char *extraPath = 0 ) {
   return f;
 }
 
+int uidFromName(const char *uname) {
+  struct passwd *pw;
+
+  setpwent();
+  while((pw = getpwent()) != NULL) {
+    if(strcmp(uname, pw->pw_name) == 0) {
+      int uid = pw->pw_uid;
+      endpwent();
+      return uid;
+    }
+  }
+
+  endpwent();
+  return -1;
+}
+
 int runTests() {
   int warning = 0;
 
+  // Test pre-1: check if the user is allowed to dial-out
+  if(access("/etc/kppp.allow", R_OK) == 0 && getuid() != 0) {
+    bool access = FALSE;
+    FILE *f;
+    if((f = fopen("/etc/kppp.allow", "r")) != NULL) {
+      char buf[2048];
+      while(!feof(f)) {
+	if(fgets(buf, sizeof(buf), f) != NULL) {
+	  QString s(buf, sizeof(buf));
+	  
+	  s = s.stripWhiteSpace();
+	  if(s[0] == '#' || s.length() == 0)
+	    continue;
+
+	  if(uidFromName(s.data()) == getuid()) {
+	    access = TRUE;
+	    fclose(f);
+	  }
+	}
+      }
+      fclose(f);
+    }
+
+    if(!access) {
+      QMessageBox::warning(0, 
+		 klocale->translate("Error"),
+		 klocale->translate("You´re not allowed to dial out with "
+				    "kppp.\nContact your system administrator."
+				    ));
+      exit(1);
+    }
+  }
+  
   // Test 1: search the pppd binary
   QString f = gpppdata.pppdPath();
   bool pppdFound = FALSE;

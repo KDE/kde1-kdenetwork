@@ -896,7 +896,8 @@ void XPPPWidget::startAccounting() {
 void XPPPWidget::stopAccounting() {
 
   // store volume accounting
-  gpppdata.setTotalBytes(totalbytes);
+  if(totalbytes != 0)
+    gpppdata.setTotalBytes(totalbytes);
 
   if(!gpppdata.AcctEnabled())
     return;

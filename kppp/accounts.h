@@ -66,6 +66,8 @@ private:
   QPushButton *log;
   QLabel *costlabel;
   QLineEdit *costedit;
+  QLabel *vollabel;
+  QLineEdit *voledit;
   
   QGroupBox *box;
   QListBox *accountlist_l;
@@ -76,9 +78,3 @@ private:
 };
 
 #endif
-
-
-
-
-
-

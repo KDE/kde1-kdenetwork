@@ -1,3 +1,15 @@
+Mon Apr  6 20:18:40 1998    <mweilguni@kde.org>
+
+	* fixed a volume accounting bug
+	* volume accounting is now configureable (bytes in, out, in/out)
+	* added new feature (very usefull for sysadmins). If there´s a
+	file /etc/kppp.allow, only users from that file may use kppp to
+	dial out. Format is one entry per line, comments begin with "#",
+	users specified by their login names
+	* fixed a bug where the PAP authetication record was only removed
+	from /etc/ppp/pap-secrets if an external program is started on 
+	login (stupid me :-)	
+
 Wed Apr  1 21:09:05 1998  Harri Porten  <porten@tu-harburg.de>
 
 	* connect.cpp: small fixes for 'Scan'

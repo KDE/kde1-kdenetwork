@@ -1,3 +1,6 @@
-o CHAP and MS-CHAP support
+o CHAP support
 o deal with interfaces different from ppp0
 o signal catching for accounting
+
+Done/Removed
+MS-CHAP support (since this relies on pppd, we cannot do it)
