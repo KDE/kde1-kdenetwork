@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1999-03-22 02:34+0100\n"
+"POT-Creation-Date: 1999-03-30 02:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: LinuxKorea Co. <kde@linuxkorea.co.kr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -166,7 +166,7 @@ msgstr ""
 msgid "Login script has unbalanced loop Start/End"
 msgstr "로그인 스트립트 내부에 Start/End가 올바르지 않게 사용되었습니다"
 
-#: connect.cpp:92 connect.cpp:190 main.cpp:1050
+#: connect.cpp:92 connect.cpp:190 main.cpp:1047
 msgid "Connecting to: "
 msgstr "연결 대상:"
 
@@ -179,7 +179,7 @@ msgstr "모뎀 잠금 파일을 생성할 수 없읍니다"
 msgid "Looking for Modem ..."
 msgstr "모뎀 찾는 중..."
 
-#: connect.cpp:115 debug.cpp:80 main.cpp:1063
+#: connect.cpp:115 debug.cpp:80 main.cpp:1060
 msgid "Log"
 msgstr "접속기록"
 
@@ -904,7 +904,7 @@ msgid ""
 "recommended value is 30 seconds."
 msgstr ""
 
-#: general.cpp:466 main.cpp:726
+#: general.cpp:466 main.cpp:722
 msgid "Modem"
 msgstr "모뎀"
 
@@ -1007,11 +1007,11 @@ msgstr ""
 msgid "Output bytes color"
 msgstr ""
 
-#: main.cpp:113
+#: main.cpp:116
 msgid "Recent changes in kppp"
 msgstr ""
 
-#: main.cpp:126
+#: main.cpp:129
 msgid ""
 "From version 1.4.8 on, kppp has a new feature\n"
 "called \"Quickhelp\". It's similar to a tooltip,\n"
@@ -1025,25 +1025,25 @@ msgid ""
 "To test it, right-click somewhere in this text."
 msgstr ""
 
-#: main.cpp:138
+#: main.cpp:141
 msgid "Don't show this hint again"
 msgstr ""
 
-#: main.cpp:157
+#: main.cpp:160
 msgid ""
 "This is an example for <b>QuickHelp</b>.\n"
 "This window will stay open until you\n"
 "click a mouse button or a hit a key.\n"
 msgstr ""
 
-#: main.cpp:405
+#: main.cpp:403
 #, c-format
 msgid ""
 "kppp can't create or read from\n"
 "%s."
 msgstr ""
 
-#: main.cpp:436
+#: main.cpp:432
 #, c-format
 msgid ""
 "kppp has detected a %s file.\n"
@@ -1055,19 +1055,19 @@ msgid ""
 "delete the pid file, and restart kppp."
 msgstr ""
 
-#: main.cpp:442
+#: main.cpp:438
 msgid "Exit"
 msgstr ""
 
-#: main.cpp:505
+#: main.cpp:501
 msgid "Connect to: "
 msgstr "연결 대상: "
 
-#: main.cpp:517
+#: main.cpp:513
 msgid "Login ID:"
 msgstr "로그인 ID:"
 
-#: main.cpp:530
+#: main.cpp:526
 msgid ""
 "Type in the username that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1078,11 +1078,11 @@ msgid ""
 "<i>myusername</i> is not the same as <i>MyUserName</i>!"
 msgstr ""
 
-#: main.cpp:539
+#: main.cpp:535
 msgid "Password:"
 msgstr "비밀 번호:"
 
-#: main.cpp:553
+#: main.cpp:549
 msgid ""
 "Type in the password that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1093,11 +1093,11 @@ msgid ""
 "<i>mypassword</i> is not the same as <i>MyPassword</i>!"
 msgstr ""
 
-#: main.cpp:567
+#: main.cpp:563
 msgid "Show Log Window"
 msgstr "접속기록 창 보기"
 
-#: main.cpp:574
+#: main.cpp:570
 msgid ""
 "This controls whether a log window is shown.\n"
 "A log window shows the communication between\n"
@@ -1108,15 +1108,15 @@ msgid ""
 "problems"
 msgstr ""
 
-#: main.cpp:597
+#: main.cpp:593
 msgid "Setup"
 msgstr "설정"
 
-#: main.cpp:613
+#: main.cpp:609
 msgid "Connect"
 msgstr "연결"
 
-#: main.cpp:693
+#: main.cpp:689
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -1125,47 +1125,47 @@ msgstr ""
 "다음 계정이 없음:\n"
 "%s"
 
-#: main.cpp:708
+#: main.cpp:704
 msgid "kppp Configuration"
 msgstr "kppp 구성"
 
-#: main.cpp:724
+#: main.cpp:720
 msgid "Accounts"
 msgstr "계정"
 
-#: main.cpp:725
+#: main.cpp:721
 msgid "Device"
 msgstr "장치"
 
-#: main.cpp:727
+#: main.cpp:723
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:728
+#: main.cpp:724
 msgid "Graph"
 msgstr ""
 
-#: main.cpp:872
+#: main.cpp:869
 msgid "Timeout expired while waiting for the PPP interface to come up!"
 msgstr ""
 
-#: main.cpp:877
+#: main.cpp:874
 msgid "The pppd daemon died unexpectedly!"
 msgstr ""
 
-#: main.cpp:885
+#: main.cpp:882
 #, fuzzy
 msgid "Details..."
 msgstr "세부사항"
 
-#: main.cpp:917
+#: main.cpp:914
 msgid ""
 "Sorry. kppp's helper process just died.\n"
 "\n"
 "Since a further execution would be pointless, kppp will shut down right now."
 msgstr ""
 
-#: main.cpp:951 runtests.cpp:400
+#: main.cpp:948 runtests.cpp:400
 #, fuzzy
 msgid ""
 "Cannot find the PPP daemon!\n"
@@ -1178,7 +1178,7 @@ msgstr ""
 "pppd가 설치되었는지 경로가 올바른지\n"
 "확인하십시오.\n"
 
-#: main.cpp:960
+#: main.cpp:957
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1191,7 +1191,7 @@ msgstr ""
 "kppp에 setuid 권한을 설정하였는 지를 확인하신 후, pppd가 실행가능한지\n"
 "확인하십시오."
 
-#: main.cpp:975
+#: main.cpp:972
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1210,7 +1210,7 @@ msgstr ""
 "조정하십시오.\n"
 " 고맙습니다"
 
-#: main.cpp:995
+#: main.cpp:992
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1220,7 +1220,7 @@ msgstr ""
 "이 방법을 사용하려면 사용자 이름과 암호를\n"
 "제공하셔야 합니다!"
 
-#: main.cpp:1004
+#: main.cpp:1001
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1229,14 +1229,14 @@ msgstr ""
 "다음의 PAP 인증 파일을 생성할 수 없습니다:\n"
 "\"%s\""
 
-#: main.cpp:1021
+#: main.cpp:1018
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
 "supply a username and a password!"
 msgstr ""
 
-#: main.cpp:1030
+#: main.cpp:1027
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1245,16 +1245,16 @@ msgstr ""
 "다음의 CHAP 인증 파일을 생성할 수 없습니다:\n"
 "\"%s\""
 
-#: main.cpp:1042
+#: main.cpp:1039
 #, fuzzy
 msgid "You must specify a telephone number!"
 msgstr "전화번호가 빠져있습니다 !\n"
 
-#: main.cpp:1129
+#: main.cpp:1128
 msgid "Quit kPPP?"
 msgstr "kPPP를 종료하시겠습니까?"
 
-#: main.cpp:1130
+#: main.cpp:1129
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "kPPP가 종료되면 해당 PPP 세션이 닫히게 됩니다."
 

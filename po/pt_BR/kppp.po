@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1999-03-22 02:34+0100\n"
+"POT-Creation-Date: 1999-03-30 02:41+0200\n"
 "PO-Revision-Date: 1998-06-23 09:00-0300\n"
 "Last-Translator: Elvis Pfützenreuter<epx@netville.com.br>\n"
 
@@ -176,7 +176,7 @@ msgstr ""
 msgid "Login script has unbalanced loop Start/End"
 msgstr "Script login tem um Ciclo incorreto"
 
-#: connect.cpp:92 connect.cpp:190 main.cpp:1050
+#: connect.cpp:92 connect.cpp:190 main.cpp:1047
 msgid "Connecting to: "
 msgstr "Conectando-se com: "
 
@@ -189,7 +189,7 @@ msgstr "Desculpe, não consegui criar arquivo de travamento do modem."
 msgid "Looking for Modem ..."
 msgstr "Procurando Modem ..."
 
-#: connect.cpp:115 debug.cpp:80 main.cpp:1063
+#: connect.cpp:115 debug.cpp:80 main.cpp:1060
 msgid "Log"
 msgstr "Registrar"
 
@@ -1090,7 +1090,7 @@ msgstr ""
 "resposta <i>CONNECT</i> de seu modem. O valor\n"
 "recomendado é 30 segundos."
 
-#: general.cpp:466 main.cpp:726
+#: general.cpp:466 main.cpp:722
 msgid "Modem"
 msgstr "Modem"
 
@@ -1220,11 +1220,11 @@ msgstr "Cor dos bytes de entrada"
 msgid "Output bytes color"
 msgstr "Cor dos bytes de saída"
 
-#: main.cpp:113
+#: main.cpp:116
 msgid "Recent changes in kppp"
 msgstr "Mudanças recentes no kppp"
 
-#: main.cpp:126
+#: main.cpp:129
 msgid ""
 "From version 1.4.8 on, kppp has a new feature\n"
 "called \"Quickhelp\". It's similar to a tooltip,\n"
@@ -1249,11 +1249,11 @@ msgstr ""
 "Para testá-la, clique em algum lugar deste texto,\n"
 "com o botão direito do mouse."
 
-#: main.cpp:138
+#: main.cpp:141
 msgid "Don't show this hint again"
 msgstr "Não mostrar esta dica novamente"
 
-#: main.cpp:157
+#: main.cpp:160
 msgid ""
 "This is an example for <b>QuickHelp</b>.\n"
 "This window will stay open until you\n"
@@ -1263,7 +1263,7 @@ msgstr ""
 "Esta janela permanecerá aberta até que\n"
 "você clique o mouse ou pressione uma tecla.\n"
 
-#: main.cpp:405
+#: main.cpp:403
 #, c-format
 msgid ""
 "kppp can't create or read from\n"
@@ -1272,7 +1272,7 @@ msgstr ""
 "O kppp não pode criar ou ler\n"
 "%s."
 
-#: main.cpp:436
+#: main.cpp:432
 #, c-format
 msgid ""
 "kppp has detected a %s file.\n"
@@ -1291,19 +1291,19 @@ msgstr ""
 "Verifique que você não está rodando outro kppp,\n"
 "apague o arquivo pid, e reinicie o kppp."
 
-#: main.cpp:442
+#: main.cpp:438
 msgid "Exit"
 msgstr "Sair"
 
-#: main.cpp:505
+#: main.cpp:501
 msgid "Connect to: "
 msgstr "Ligar para:"
 
-#: main.cpp:517
+#: main.cpp:513
 msgid "Login ID:"
 msgstr "ID de Login:"
 
-#: main.cpp:530
+#: main.cpp:526
 msgid ""
 "Type in the username that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1320,11 +1320,11 @@ msgstr ""
 "<b>Importante</b>: maiúsculas/minúsculas são diferenciadas:\n"
 "<i>meunome</i> é diferente de <i>MeuNome</i>!"
 
-#: main.cpp:539
+#: main.cpp:535
 msgid "Password:"
 msgstr "Senha:"
 
-#: main.cpp:553
+#: main.cpp:549
 msgid ""
 "Type in the password that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1342,11 +1342,11 @@ msgstr ""
 "<b>Importante</b>: maiúsculas/minúsculas são diferenciadas:\n"
 "<i>minhasenha</i> é diferente de <i>MinhaSenha</i>!"
 
-#: main.cpp:567
+#: main.cpp:563
 msgid "Show Log Window"
 msgstr "Mostrar Janela de Relatório"
 
-#: main.cpp:574
+#: main.cpp:570
 msgid ""
 "This controls whether a log window is shown.\n"
 "A log window shows the communication between\n"
@@ -1364,15 +1364,15 @@ msgstr ""
 "Desligue se o <i>kppp</i> conecta rotineiramente sem\n"
 "quaisquer problemas"
 
-#: main.cpp:597
+#: main.cpp:593
 msgid "Setup"
 msgstr "Configuração"
 
-#: main.cpp:613
+#: main.cpp:609
 msgid "Connect"
 msgstr "Ligar"
 
-#: main.cpp:693
+#: main.cpp:689
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -1381,39 +1381,39 @@ msgstr ""
 "Nenhuma Conta:\n"
 "%s"
 
-#: main.cpp:708
+#: main.cpp:704
 msgid "kppp Configuration"
 msgstr "Configuração do kppp"
 
-#: main.cpp:724
+#: main.cpp:720
 msgid "Accounts"
 msgstr "Contas"
 
-#: main.cpp:725
+#: main.cpp:721
 msgid "Device"
 msgstr "Dispositivo"
 
-#: main.cpp:727
+#: main.cpp:723
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:728
+#: main.cpp:724
 msgid "Graph"
 msgstr "Gráfico"
 
-#: main.cpp:872
+#: main.cpp:869
 msgid "Timeout expired while waiting for the PPP interface to come up!"
 msgstr "Tempo máximo esgotou-se na espera pela interface PPP !"
 
-#: main.cpp:877
+#: main.cpp:874
 msgid "The pppd daemon died unexpectedly!"
 msgstr "O serviço pppd terminou inesperadamente !"
 
-#: main.cpp:885
+#: main.cpp:882
 msgid "Details..."
 msgstr "Detalhes..."
 
-#: main.cpp:917
+#: main.cpp:914
 msgid ""
 "Sorry. kppp's helper process just died.\n"
 "\n"
@@ -1423,7 +1423,7 @@ msgstr ""
 "\n"
 "Como uma nova execução não teria sentido, o Kppp terminará agora."
 
-#: main.cpp:951 runtests.cpp:400
+#: main.cpp:948 runtests.cpp:400
 msgid ""
 "Cannot find the PPP daemon!\n"
 "\n"
@@ -1435,7 +1435,7 @@ msgstr ""
 "Verifique que o pppd está instalado e\n"
 "que foi informada a localização correta."
 
-#: main.cpp:960
+#: main.cpp:957
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1448,7 +1448,7 @@ msgstr ""
 "Por favor verifique as permissões setuid e que o\n"
 "pppd seja um executável."
 
-#: main.cpp:975
+#: main.cpp:972
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1469,7 +1469,7 @@ msgstr ""
 "do diálogo de configuração.\n"
 " Obrigado"
 
-#: main.cpp:995
+#: main.cpp:992
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1479,7 +1479,7 @@ msgstr ""
 "PAP. Isto requer um nome\n"
 "de usuário e uma senha."
 
-#: main.cpp:1004
+#: main.cpp:1001
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1488,7 +1488,7 @@ msgstr ""
 "Não foi possível criar arquivo de\n"
 "autenticação PAP \"%s\""
 
-#: main.cpp:1021
+#: main.cpp:1018
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -1498,7 +1498,7 @@ msgstr ""
 "autenticação. Isso requer que você\n"
 "forneça um nome de usuário e uma senha."
 
-#: main.cpp:1030
+#: main.cpp:1027
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1507,15 +1507,15 @@ msgstr ""
 "Não foi possível criar arquivo de\n"
 "autenticação CHAP \"%s\""
 
-#: main.cpp:1042
+#: main.cpp:1039
 msgid "You must specify a telephone number!"
 msgstr "Você precisa especificar um telefone."
 
-#: main.cpp:1129
+#: main.cpp:1128
 msgid "Quit kPPP?"
 msgstr "Sair do kPPP?"
 
-#: main.cpp:1130
+#: main.cpp:1129
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Sair do kPPP vai fechar a sua sessão PPP."
 

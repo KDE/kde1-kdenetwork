@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp-1.1\n"
-"POT-Creation-Date: 1999-03-22 02:34+0100\n"
+"POT-Creation-Date: 1999-03-30 02:41+0200\n"
 "PO-Revision-Date: 1999-03-24 12:15+0100\n"
 "Last-Translator: Jañ-Mai Drapier <jdrapier@club-internet.fr>\n"
 "Language-Team: Brezhoneg <Suav.Icb@wanadoo.fr>\n"
@@ -185,7 +185,7 @@ msgstr ""
 msgid "Login script has unbalanced loop Start/End"
 msgstr "Ar skrid ereañ zo ennañ un dol Start/End digempouez"
 
-#: connect.cpp:92 connect.cpp:190 main.cpp:1050
+#: connect.cpp:92 connect.cpp:190 main.cpp:1047
 msgid "Connecting to: "
 msgstr "Kevreañ ouzh :"
 
@@ -198,7 +198,7 @@ msgstr "Ho tigarez, n'hellan ket krouiñ restr prennañ ar modem."
 msgid "Looking for Modem ..."
 msgstr "O klask ar modem..."
 
-#: connect.cpp:115 debug.cpp:80 main.cpp:1063
+#: connect.cpp:115 debug.cpp:80 main.cpp:1060
 msgid "Log"
 msgstr "Kerzlevr"
 
@@ -1107,7 +1107,7 @@ msgstr ""
 "respont <i>CONNECT</i> a-berzh ho modem. 30\n"
 "eilenn eo an talvoud erbedet."
 
-#: general.cpp:466 main.cpp:726
+#: general.cpp:466 main.cpp:722
 msgid "Modem"
 msgstr "Modem"
 
@@ -1239,11 +1239,11 @@ msgstr "Liv an oktedoù enkaset"
 msgid "Output bytes color"
 msgstr "Liv an oktedoù diskaset"
 
-#: main.cpp:113
+#: main.cpp:116
 msgid "Recent changes in kppp"
 msgstr "Kemmoù nevezik e kppp"
 
-#: main.cpp:126
+#: main.cpp:129
 msgid ""
 "From version 1.4.8 on, kppp has a new feature\n"
 "called \"Quickhelp\". It's similar to a tooltip,\n"
@@ -1267,11 +1267,11 @@ msgstr ""
 "\n"
 "Evit e arnodiñ, klikit ul lec'h bennak er skrid-mañ."
 
-#: main.cpp:138
+#: main.cpp:141
 msgid "Don't show this hint again"
 msgstr "Na ziskouezit ket an tun-mañ adarre"
 
-#: main.cpp:157
+#: main.cpp:160
 msgid ""
 "This is an example for <b>QuickHelp</b>.\n"
 "This window will stay open until you\n"
@@ -1281,7 +1281,7 @@ msgstr ""
 "Chom a raio ar prenestr-mañ digor betek ma\n"
 "klikot un afell al logodenn pe waskot un stokell.\n"
 
-#: main.cpp:405
+#: main.cpp:403
 #, c-format
 msgid ""
 "kppp can't create or read from\n"
@@ -1290,7 +1290,7 @@ msgstr ""
 "N'hell ket kppp krouiñ na lenn diwar\n"
 "%s."
 
-#: main.cpp:436
+#: main.cpp:432
 #, c-format
 msgid ""
 "kppp has detected a %s file.\n"
@@ -1309,19 +1309,19 @@ msgstr ""
 "It da wiriañ n'oc'h ket war erounit ur c'hkppp all,\n"
 "dilamit ar restr, hag adloc'hit kppp."
 
-#: main.cpp:442
+#: main.cpp:438
 msgid "Exit"
 msgstr "Er-maez"
 
-#: main.cpp:505
+#: main.cpp:501
 msgid "Connect to: "
 msgstr "Kevreañ ouzh :"
 
-#: main.cpp:517
+#: main.cpp:513
 msgid "Login ID:"
 msgstr "Anv arveriad :"
 
-#: main.cpp:530
+#: main.cpp:526
 msgid ""
 "Type in the username that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1339,11 +1339,11 @@ msgstr ""
 "<b>Da ziwall</b> : talvoudus eo ar c'hef amañ :\n"
 "<i>maanvarveriad</i> zo disheñvel diouzh <i>MaAnvArveriad</i> !"
 
-#: main.cpp:539
+#: main.cpp:535
 msgid "Password:"
 msgstr "Tremenger :"
 
-#: main.cpp:553
+#: main.cpp:549
 msgid ""
 "Type in the password that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1361,11 +1361,11 @@ msgstr ""
 "<b>Da ziwall</b> : talvoudus eo ar c'hef amañ :\n"
 "<i>mazremenger</i> zo disheñvel diouzh <i>MaZremenGer</i> !"
 
-#: main.cpp:567
+#: main.cpp:563
 msgid "Show Log Window"
 msgstr "Diskouez prenestr ar c'herzlevr"
 
-#: main.cpp:574
+#: main.cpp:570
 msgid ""
 "This controls whether a log window is shown.\n"
 "A log window shows the communication between\n"
@@ -1383,15 +1383,15 @@ msgstr ""
 "Lazhit se ma 'z eo boas <i>kppp</i> da gevreañ\n"
 "digudenn."
 
-#: main.cpp:597
+#: main.cpp:593
 msgid "Setup"
 msgstr "Kefluniañ"
 
-#: main.cpp:613
+#: main.cpp:609
 msgid "Connect"
 msgstr "Kevreañ"
 
-#: main.cpp:693
+#: main.cpp:689
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -1400,39 +1400,39 @@ msgstr ""
 "Kont ebet evel-hen :\n"
 "%s"
 
-#: main.cpp:708
+#: main.cpp:704
 msgid "kppp Configuration"
 msgstr "Kefluniadur kppp"
 
-#: main.cpp:724
+#: main.cpp:720
 msgid "Accounts"
 msgstr "Kontoù"
 
-#: main.cpp:725
+#: main.cpp:721
 msgid "Device"
 msgstr "Trobarzhell"
 
-#: main.cpp:727
+#: main.cpp:723
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:728
+#: main.cpp:724
 msgid "Graph"
 msgstr "Kevregat"
 
-#: main.cpp:872
+#: main.cpp:869
 msgid "Timeout expired while waiting for the PPP interface to come up!"
 msgstr "Amzer-hont p'emeur o c'hortoz e vije savet ar c'hetal PPP !"
 
-#: main.cpp:877
+#: main.cpp:874
 msgid "The pppd daemon died unexpectedly!"
 msgstr "Marv eo an diaoul pppd ent dic'hortoz !"
 
-#: main.cpp:885
+#: main.cpp:882
 msgid "Details..."
 msgstr "Munudoù..."
 
-#: main.cpp:917
+#: main.cpp:914
 msgid ""
 "Sorry. kppp's helper process just died.\n"
 "\n"
@@ -1443,7 +1443,7 @@ msgstr ""
 "Gant ma vije didalvoud kenderc'hel da vont en-dro, kppp a serro "
 "bremañ-souden."
 
-#: main.cpp:951 runtests.cpp:400
+#: main.cpp:948 runtests.cpp:400
 #, fuzzy
 msgid ""
 "Cannot find the PPP daemon!\n"
@@ -1456,7 +1456,7 @@ msgstr ""
 "Gwiriit mar plij eo staliaet pppd hag\n"
 "oc'h eus spisaet an hent reizh.\n"
 
-#: main.cpp:960
+#: main.cpp:957
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1469,7 +1469,7 @@ msgstr ""
 "Bezit sur oc'h eus roet da kppp an aotre setuid hag\n"
 "ez eo sevenadus pppd."
 
-#: main.cpp:975
+#: main.cpp:972
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1490,7 +1490,7 @@ msgstr ""
 "ar c'hendiviz kefluniañ.\n"
 "Trugarez deoc'h"
 
-#: main.cpp:995
+#: main.cpp:992
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1500,7 +1500,7 @@ msgstr ""
 "PAP. Kement-mañ a c'houlenn diganeoc'h\n"
 "pourvezañ un anv arveriad hag un tremenger !"
 
-#: main.cpp:1004
+#: main.cpp:1001
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1509,7 +1509,7 @@ msgstr ""
 "N'hellan ket krouiñ a restr gwiriadur\n"
 "PAP \"%s\""
 
-#: main.cpp:1021
+#: main.cpp:1018
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -1519,7 +1519,7 @@ msgstr ""
 "CHAP. Kement-mañ a c'houlenn diganeoc'h\n"
 "pourvezañ un anv arveriad hag un tremenger !"
 
-#: main.cpp:1030
+#: main.cpp:1027
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1528,15 +1528,15 @@ msgstr ""
 "N'hellan ket krouiñ a restr gwiriadur\n"
 "CHAP \"%s\""
 
-#: main.cpp:1042
+#: main.cpp:1039
 msgid "You must specify a telephone number!"
 msgstr "Ret eo deoc'h spisaat un niverenn bellgomz !"
 
-#: main.cpp:1129
+#: main.cpp:1128
 msgid "Quit kPPP?"
 msgstr "Kuitaat kPPP ?"
 
-#: main.cpp:1130
+#: main.cpp:1129
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Kuitaat kPPP a serro holl ho dalc'hoù PPP."
 

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp 0.9.6\n"
-"POT-Creation-Date: 1999-03-22 02:34+0100\n"
+"POT-Creation-Date: 1999-03-30 02:41+0200\n"
 "PO-Revision-Date: 1998-06-12 08:32 MET DST\n"
 "Last-Translator: Wang Jian <lark@linux.ustc.edu.cn>\n"
 "Language-Team: zh_CN ( gb2312)\n"
@@ -160,7 +160,7 @@ msgstr ""
 msgid "Login script has unbalanced loop Start/End"
 msgstr "登录脚本有不配对的循环 开始/结束"
 
-#: connect.cpp:92 connect.cpp:190 main.cpp:1050
+#: connect.cpp:92 connect.cpp:190 main.cpp:1047
 msgid "Connecting to: "
 msgstr "正在连接到: "
 
@@ -173,7 +173,7 @@ msgstr "抱歉 , 不能建立调制解调器的锁文件."
 msgid "Looking for Modem ..."
 msgstr "正在寻找调制解调器..."
 
-#: connect.cpp:115 debug.cpp:80 main.cpp:1063
+#: connect.cpp:115 debug.cpp:80 main.cpp:1060
 msgid "Log"
 msgstr "记录"
 
@@ -899,7 +899,7 @@ msgid ""
 "recommended value is 30 seconds."
 msgstr ""
 
-#: general.cpp:466 main.cpp:726
+#: general.cpp:466 main.cpp:722
 msgid "Modem"
 msgstr "调制解调器"
 
@@ -1002,11 +1002,11 @@ msgstr ""
 msgid "Output bytes color"
 msgstr ""
 
-#: main.cpp:113
+#: main.cpp:116
 msgid "Recent changes in kppp"
 msgstr ""
 
-#: main.cpp:126
+#: main.cpp:129
 msgid ""
 "From version 1.4.8 on, kppp has a new feature\n"
 "called \"Quickhelp\". It's similar to a tooltip,\n"
@@ -1020,25 +1020,25 @@ msgid ""
 "To test it, right-click somewhere in this text."
 msgstr ""
 
-#: main.cpp:138
+#: main.cpp:141
 msgid "Don't show this hint again"
 msgstr ""
 
-#: main.cpp:157
+#: main.cpp:160
 msgid ""
 "This is an example for <b>QuickHelp</b>.\n"
 "This window will stay open until you\n"
 "click a mouse button or a hit a key.\n"
 msgstr ""
 
-#: main.cpp:405
+#: main.cpp:403
 #, c-format
 msgid ""
 "kppp can't create or read from\n"
 "%s."
 msgstr ""
 
-#: main.cpp:436
+#: main.cpp:432
 #, c-format
 msgid ""
 "kppp has detected a %s file.\n"
@@ -1050,19 +1050,19 @@ msgid ""
 "delete the pid file, and restart kppp."
 msgstr ""
 
-#: main.cpp:442
+#: main.cpp:438
 msgid "Exit"
 msgstr ""
 
-#: main.cpp:505
+#: main.cpp:501
 msgid "Connect to: "
 msgstr "连接到: "
 
-#: main.cpp:517
+#: main.cpp:513
 msgid "Login ID:"
 msgstr "登录 ID:"
 
-#: main.cpp:530
+#: main.cpp:526
 msgid ""
 "Type in the username that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1073,11 +1073,11 @@ msgid ""
 "<i>myusername</i> is not the same as <i>MyUserName</i>!"
 msgstr ""
 
-#: main.cpp:539
+#: main.cpp:535
 msgid "Password:"
 msgstr "密码:"
 
-#: main.cpp:553
+#: main.cpp:549
 msgid ""
 "Type in the password that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1088,11 +1088,11 @@ msgid ""
 "<i>mypassword</i> is not the same as <i>MyPassword</i>!"
 msgstr ""
 
-#: main.cpp:567
+#: main.cpp:563
 msgid "Show Log Window"
 msgstr "显示记录窗口"
 
-#: main.cpp:574
+#: main.cpp:570
 msgid ""
 "This controls whether a log window is shown.\n"
 "A log window shows the communication between\n"
@@ -1103,15 +1103,15 @@ msgid ""
 "problems"
 msgstr ""
 
-#: main.cpp:597
+#: main.cpp:593
 msgid "Setup"
 msgstr "设置"
 
-#: main.cpp:613
+#: main.cpp:609
 msgid "Connect"
 msgstr "连接"
 
-#: main.cpp:693
+#: main.cpp:689
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -1120,47 +1120,47 @@ msgstr ""
 "没有这个帐号:\n"
 "%s"
 
-#: main.cpp:708
+#: main.cpp:704
 msgid "kppp Configuration"
 msgstr "kppp 配置"
 
-#: main.cpp:724
+#: main.cpp:720
 msgid "Accounts"
 msgstr "帐号"
 
-#: main.cpp:725
+#: main.cpp:721
 msgid "Device"
 msgstr "设备"
 
-#: main.cpp:727
+#: main.cpp:723
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:728
+#: main.cpp:724
 msgid "Graph"
 msgstr ""
 
-#: main.cpp:872
+#: main.cpp:869
 msgid "Timeout expired while waiting for the PPP interface to come up!"
 msgstr ""
 
-#: main.cpp:877
+#: main.cpp:874
 msgid "The pppd daemon died unexpectedly!"
 msgstr ""
 
-#: main.cpp:885
+#: main.cpp:882
 #, fuzzy
 msgid "Details..."
 msgstr "详细资料"
 
-#: main.cpp:917
+#: main.cpp:914
 msgid ""
 "Sorry. kppp's helper process just died.\n"
 "\n"
 "Since a further execution would be pointless, kppp will shut down right now."
 msgstr ""
 
-#: main.cpp:951 runtests.cpp:400
+#: main.cpp:948 runtests.cpp:400
 #, fuzzy
 msgid ""
 "Cannot find the PPP daemon!\n"
@@ -1173,7 +1173,7 @@ msgstr ""
 "请确定系统中安装了 pppd , 并且你输入\n"
 "正确的路径.\n"
 
-#: main.cpp:960
+#: main.cpp:957
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1185,7 +1185,7 @@ msgstr ""
 " %s\n"
 "请确定你已经把 kppp 设成 setuid 的 , 并且 pppd 是可以执行的."
 
-#: main.cpp:975
+#: main.cpp:972
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1204,7 +1204,7 @@ msgstr ""
 "表中调整好调制解调器设备的位置.\n"
 "谢谢"
 
-#: main.cpp:995
+#: main.cpp:992
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1213,7 +1213,7 @@ msgstr ""
 "你已经选中了 PAP 身份验证方法.这需要\n"
 "你提供一个用户名和密码!"
 
-#: main.cpp:1004
+#: main.cpp:1001
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1222,7 +1222,7 @@ msgstr ""
 "不能建立 PAP 身份验证文件\n"
 "\"%s\""
 
-#: main.cpp:1021
+#: main.cpp:1018
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -1231,7 +1231,7 @@ msgstr ""
 "你已经选中了 CHAP 身份验证方法.这需要\n"
 "你提供一个用户名和密码!"
 
-#: main.cpp:1030
+#: main.cpp:1027
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1240,16 +1240,16 @@ msgstr ""
 "不能建立 CHAP 身份验证文件\n"
 "\"%s\""
 
-#: main.cpp:1042
+#: main.cpp:1039
 #, fuzzy
 msgid "You must specify a telephone number!"
 msgstr "你必须指定一个电话号码 !\n"
 
-#: main.cpp:1129
+#: main.cpp:1128
 msgid "Quit kPPP?"
 msgstr "退出 kPPP?"
 
-#: main.cpp:1130
+#: main.cpp:1129
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "退出 kPPP 将结束你的 PPP 会话."
 
