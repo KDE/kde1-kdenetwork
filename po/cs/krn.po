@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: krn\n"
 "POT-Creation-Date: 1998-10-09 15:54+0200\n"
-"PO-Revision-Date: 1998-11-05 08:41+01:00\n"
+"PO-Revision-Date: 1998-11-09 09:03+01:00\n"
 "Last-Translator: Miroslav Flídr <flidr@ky.zcu.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -95,9 +95,8 @@ msgid "Untag"
 msgstr "Zru¹it oznaèení"
 
 #: artdlg.cpp:159 findArtDlg.cpp:65 groupdlg.cpp:155
-#, fuzzy
 msgid "Find"
-msgstr "Nalézt..."
+msgstr "Nalézt"
 
 #: artdlg.cpp:170 groupdlg.cpp:157
 msgid "(Un)Tag"
@@ -293,7 +292,7 @@ msgstr "Zveøejnit a odpovìdìt"
 
 #: artdlg.cpp:167 artdlg.cpp:257
 msgid "Forward"
-msgstr ""
+msgstr "Pøedat zprávu dál"
 
 #: artdlg.cpp:173 artdlg.cpp:241
 msgid "Tagged"
@@ -408,9 +407,8 @@ msgid "Sender"
 msgstr "Odesilatel"
 
 #: artdlg.cpp:292 sortDlg.cpp:35
-#, fuzzy
 msgid "Date"
-msgstr "Datum: "
+msgstr "Datum"
 
 #: artdlg.cpp:293 sortDlg.cpp:36
 msgid "Lines"
@@ -588,15 +586,15 @@ msgstr "Velikost fontu:"
 
 #: fontsDlg.cpp:70
 msgid "Small"
-msgstr ""
+msgstr "Malý"
 
 #: fontsDlg.cpp:71
 msgid "Normal"
-msgstr ""
+msgstr "Støední"
 
 #: fontsDlg.cpp:72
 msgid "Large"
-msgstr ""
+msgstr "Velký"
 
 #: fontsDlg.cpp:73
 msgid "Huge"
@@ -663,13 +661,12 @@ msgid "F"
 msgstr "F"
 
 #: kmcomposewin.cpp:134
-#, fuzzy
 msgid "Name"
-msgstr "Skuteèné jnémo"
+msgstr "Jméno"
 
 #: kmcomposewin.cpp:135
 msgid "Size"
-msgstr ""
+msgstr "Velikost"
 
 #: kmcomposewin.cpp:136
 msgid "Encoding"
@@ -949,9 +946,8 @@ msgid "Subject:"
 msgstr "Pøedmìt:"
 
 #: kmcomposewin.cpp:1472
-#, fuzzy
 msgid "Date:"
-msgstr "Datum: "
+msgstr "Datum:"
 
 #: kmcomposewin.cpp:1549
 msgid "Choose Signature File"
@@ -1088,7 +1084,7 @@ msgstr "V polo¾ce:"
 
 #: findArtDlg.cpp:53 rulesDlg.cpp:131
 msgid "Case Sensitive"
-msgstr ""
+msgstr "Rozli¹ovat velikost"
 
 #: findArtDlg.cpp:56 rulesDlg.cpp:132
 msgid "Wildcard Mode"
@@ -1096,7 +1092,7 @@ msgstr "Mód \"divokých karet\""
 
 #: findArtDlg.cpp:66 rulesDlg.cpp:144
 msgid "Done"
-msgstr ""
+msgstr "Hotovo"
 
 #: kmidentity.cpp:162
 #, c-format
@@ -1228,7 +1224,7 @@ msgstr "Vlastnosti èásti zprávy"
 
 #: kmmsgpartdlg.cpp:62
 msgid "Name:"
-msgstr ""
+msgstr "Jméno:"
 
 #: kmmsgpartdlg.cpp:73
 msgid "Description:"
@@ -1498,7 +1494,7 @@ msgstr "Porovnat èlánky s:"
 
 #: rulesDlg.cpp:124
 msgid "Weight:"
-msgstr ""
+msgstr "Váha:"
 
 #: rulesDlg.cpp:126
 msgid "Negative"
@@ -1514,7 +1510,7 @@ msgstr "KRN - Nastavení tøídìní"
 
 #: sortDlg.cpp:37
 msgid "None"
-msgstr ""
+msgstr "®ádné"
 
 #: sortDlg.cpp:39
 msgid "Sort by:"
