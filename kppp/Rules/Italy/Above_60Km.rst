@@ -6,14 +6,11 @@
 #
 ################################################################
 
-name=Italy_Above_60Km
+name=Italy_0-15_Km
 currency_symbol=L.
 currency_position=right 
 currency_digits=0
 
-default=(201.11,60)
-on (monday..friday) between (8:00..18:30) use(453.39, 60)
-on (monday..friday) between (18:30..22:00) use(274.89, 60)  
-on (saturday) between (8:00..13:00) use (453.39, 60)
-on (saturday) between (13:00..22:00) use (274.89, 60)
-on (sunday) between (8:00..22:00) use (274.89, 60)
+default=(182.4, 60)
+on (monday..friday) between (8:00..18:30) use(406.8, 60)
+on (saturday) between (8:00..13:00) use (406.8, 60)

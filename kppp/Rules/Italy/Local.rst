@@ -1,10 +1,8 @@
 ################################################################
 #
-# Ruleset for Italian Telecom
-# based on pppcosts-0.5
+# Ruleset for Italian Telecom ( iva compresa )
 #
-# written by Mario Weilguni <mweilguni@sime.com>
-# NOT YET TESTED
+# written by Marco Giacomassi <giaco@computech.it>
 #
 ################################################################
 
@@ -13,6 +11,6 @@ currency_symbol=L.
 currency_position=right 
 currency_digits=0
 
-default=(151.13,400)
-on (monday..friday) between (8:30..18:30) use(151.13,220)
-on (saturday) between(8:00..13:00) use (151.13, 220)
+default=(152.4,400)
+on (monday..friday) between (8:00..18:30) use(152.4,220)
+on (saturday) between(8:00..13:00) use (152.4, 220)
