@@ -1,0 +1,310 @@
+<TITLE>KDE network utilities</TITLE>
+<H1>KDE network utilities</H1>
+
+<I> This documentation was last updated for <strong>knu</strong> version
+0.3.2. Please make any comments and addition to the author.</I>
+
+<H3>Table of contents:</H3>
+<UL>
+<LI><A HREF=#presentation>Presentation</a>
+<LI><A HREF=#ping>The <i>ping</i> tab</a>
+<LI><A HREF=#traceroute>The <i>traceroute</i> tab</a>
+<LI><A HREF=#host>The <i>host resolution</i> tab</a>
+<LI><A HREF=#config>Configuration</a>
+<LI><A HREF=#authors>Authors</a>
+<LI><A HREF=#copyright>Copyright</a>
+</UL>
+
+<P>
+<A name=presentation>
+<H2>Presentation</H2></A>
+
+The <I>KDE network utilities</i> program allows you to make a ping, 
+a traceroute or an host resolution without lauching a terminal emulator.  
+<p>
+
+You choose which utility you want to run by selecting the
+corresponding tab. You give the parameters needed for it and then
+click on the "<tt>Go!</tt>" button (or hit <i>return</i>). While the
+command is running, you can stop it by pushing the "<tt>Stop</tt>" button.
+
+<P>
+<A name=ping>
+<H2>The <i>ping</i> tab</H2></A>
+
+<IMG SRC=knu-ping.gif ALT="A screen shot of the ping tab">
+
+<H4>What is it?</H4> 
+
+The <tt><A HREF=man:ping>ping(8)</a></tt> command send ICMP
+<TT>ECHO_REQUEST</tt> packets to network hosts to check for network
+reachability. A response from a host (or anything that have an IP
+address) says that this host is running at least a TCP/IP network
+stack and indicates that the network route to go to this host is
+opened. The <i>ping</i> tab allows the execution of the
+<tt>ping(8)</tt> command.
+
+<H4>Description</H4>
+
+Ping uses the ICMP protocol's mandatory <tt>ECHO_REQUEST</tt> datagram
+to elicit an ICMP <tt>ECHO_RESPONSE</tt> from a host or gateway.
+<tt>ECHO_REQUEST</tt> datagrams (``<i>pings</i>'') have an IP and ICMP header,
+followed by a <tt>struct timeval</tt> and then an arbitrary number of
+<i>pad</i> bytes used to fill out the packet. 
+
+<p>
+<u><b>Options:</b></u>
+<ul>
+
+<li><B>Make host name resolution</B><br>
+
+Print addresses numerically rather than symbolically and
+numerically (this saves a nameserver address-to-name lookup).
+</ul>
+
+<p>
+
+When using ping for fault isolation, it should first be run on the
+local host, to verify that the local network interface is up and
+running.  Then, hosts and gateways further and further away should be
+``<i>pinged</i>''. Round-trip times and packet loss statistics are
+computed.  If duplicate packets are received, they are not included in
+the packet loss calculation, although the round trip time of these
+packets is used in calculating the minimum/average/maximum
+round-trip time numbers.  When the program is terminated, a brief
+summary is displayed.
+
+<B>This program is intended for use in network testing, measurement and
+management.  Because of the load it can impose on the network, it is
+unwise to use ping during normal operations or for too long.</B>
+
+<P>
+<A name=traceroute>
+<H2>The <i>traceroute</i> tab</H2></A>
+
+<IMG SRC=knu-traceroute.gif ALT="A screen shot of the traceroute tab">
+
+<H4>What is it?</H4> 
+
+The <tt><A HREF=man:traceroute>traceroute(8)</a></tt> command print
+the route that packets take to network host. The <i>traceroute</i> tab
+allows the execution of the <tt>traceroute(8)</tt> command.
+
+<H4>Description</H4> 
+
+The Internet is a large and complex aggregation of network hardware,
+connected together by gateways.  Tracking the route one's packets
+follow (or finding the miscreant gateway that's discarding your
+packets) can be difficult.  Traceroute utilizes the IP protocol
+<i>time to live</i> field and attempts to elicit an ICMP
+<tt>TIME_EXCEEDED</tt> response from each gateway along the path to
+some host.
+
+<p>
+<u><b>Options:</b></u>
+<ul>
+
+<li><B>Make host name resolution</B><br>
+
+Print hop addresses numerically rather than symbolically and
+numerically (this saves a nameserver address-to-name lookup for each
+gateway found on the path).
+
+<li><B>Max number of hops</B><br>
+
+Set the max time-to-live (maximum number of hops) used in outgoing
+probe packets.  The default is 30 hops (the same default used for
+TCP connections).
+
+</ul>
+
+<P>
+
+This program attempts to trace the route an IP packet would follow to
+some internet host by launching UDP probe packets with a small ttl
+(time to live) then listening for an ICMP "<tt>time exceeded</tt>"
+reply from a gateway.  We start our probes with a ttl of one and
+increase by one until we get an ICMP "<tt>port unreachable</tt>"
+(which means we got to "<i>host</i>") or hit a max (which defaults to
+30 hops and can be changed with the <B>Max number of hops</B> option).
+Three probes are sent at each ttl setting and a line is printed
+showing the ttl, address of the gateway and round trip time of each
+probe.  If the probe answers come from different gateways, the address
+of each responding system will be printed.  If there is no response
+within a 3 sec. timeout interval, a "*" is printed for that probe.
+
+<P>
+We don't want the destination host to process the UDP probe packets so
+the destination port is set to an unlikely value.
+<P>
+
+<B>
+This program is intended for use in network testing, measurement and
+management.  It should be used primarily for manual fault isolation.
+Because of the load it could impose on the network, it is unwise to
+use traceroute during normal operations or for too long.</B>
+
+<h5>Traceroute's authors</h5>
+Implemented by Van Jacobson from a suggestion by Steve Deering.  Debugged
+by a cast of thousands with particularly cogent suggestions or fixes from
+C. Philip Wood, Tim Seaver and Ken Adelman.
+
+
+<P>
+<A name=host>
+<H2>The <i>host resolution</i> tab</H2></A>
+
+<IMG SRC=knu-host.gif ALT="A screen shot of the host resolution tab">
+
+<H4>What is it?</H4> 
+
+The <i>host resolution</i> tab allows the execution of a host
+resolution program (<tt><A HREF=man:host>host(1)</A></tt> or
+<tt><A HREF=man:nslookup>nslookup(8)</A></tt>).  This host resolution
+program will asks the Domain Name Server the answer to the question
+asked.
+
+<H4>Description</H4> 
+
+This command looks for information about Internet hosts and domain
+names.  It gets this information from a set of interconnected servers
+that are spread across the world. This set of interconnected servers
+are called the Domain Name Servers (DNS). The information is stored in
+the form of <i>resource records</i> belonging to hierarchically organized
+<i>zones</i>.
+
+<p>
+
+By default, the command simply converts between host names and
+Internet addresses. However, with the <i>Search for</i> options, it
+can be used to find all of the information about domain names that is
+maintained by the domain name­server system.  The information printed
+consists of various fields of the associated resource records that
+were retrieved.
+
+<p>
+
+The host field can be either host names (domain names) or numeric
+Internet addresses.  
+
+<p>
+
+A numeric Internet address consists of four decimal numbers separated
+by dots, e.g. <tt>192.16.199.1</tt>, representing the four bytes of the 32-bit
+address.  The default action is to look up the associated host name.
+
+<p>
+
+A host name or domain name consists of component names (labels)
+separated by dots, e.g. <tt>nikhefh.nikhef.nl</tt>. The default action
+is to look up all of its Internet addresses.
+
+<p>
+
+For single names without a trailing dot, the local domain is
+automatically tacked on the end.  Thus a user in domain
+<tt>nikhef.nl</tt> can type in <tt>nikhapo</tt>, and it will actually
+look up <tt>nikhapo.nikhef.nl</tt>.  In all other cases, the name is
+tried unchanged.  Single names with trailing dot are considered
+top-level domain specifications, e.g. <tt>nl.</tt>
+
+<p> 
+
+For a more precise description of the behaviour of this command,
+please see the underlying program's man-page <tt><A
+HREF=man:host>host(1)</A></tt> or <tt><A
+HREF=man:nslookup>nslookup(8)</A></tt>.
+
+<p>
+<u><b>Options:</b></u>
+<ul>
+
+<li><B>Search for</B><br> 
+
+This allows you to specify a particular type of resource record
+information to be looked up.  Supported types are listed below. 
+
+<li><B>Server</B><br>
+
+This is the name (or the address) of the domain name server to ask.
+
+</ul>
+
+
+The resource type possible are:
+
+<table>
+<tr><td> A  </td><td> the host's Internet address.</tr>
+<tr><td> PTR </td><td> the host name. </tr>
+<tr><td> NS </td><td> the name server for the named zone.</tr>
+<tr><td> MX </td><td> the mail exchanger.</tr>
+<tr><td> CNAME </td><td> the canonical name for an alias.</tr>
+<tr><td> SOA </td><td> the domain's ``start-of-authority'' information.</tr>
+<tr><td> <i>ANY</i> </td><td> all informations available.</tr>
+</table>
+      
+
+<h5>Host's authors</h5>
+This program is originally from Rutgers University. It has been rewritten
+by Eric Wassenaar, NIKHEF, &lt;e07@nikhef.nl&gt;.
+
+<h5>Nslookup's authors</h5>
+Andrew Cherenson
+
+<P>
+<A name=config>
+<H2>Configuration</H2></A>
+
+<IMG SRC=knu-config.gif ALT="A screen shot of the configuration dialog box">
+
+<p>
+
+You can configure the pathname of the command used by <i>KDE network
+utilities</i> if you don't want the command found in the <tt>PATH</TT>
+variable to be used or if the command in not found the the
+<tt>PATH</tt>. This can be done in the Edit -&gt; Preferences...
+menu. You can also add arguments to the program. For example, on Sun
+Solaris computers, you can add <tt>-s</tt> as argument.
+
+<p>
+
+For the host resolution tab, you will have to choose the type of the
+underlying command used, <tt>host</tt> or <tt>nslookup</tt>.
+
+<p>
+
+You can disable a command by editing the configuration file (by hand)
+and in the corresponding group, just modify to read <tt>enable = 0</tt>.
+
+<P>
+<A name=authors>
+<H2>Authors</H2></A>
+
+Bertrand Leconte &lt;<A HREF=mailto:B.Leconte@mail.dotcom.fr>B.Leconte@mail.dotcom.fr</a>&gt; 
+
+<p>
+
+The documentation comes mainly from the Linux <tt>ping(8)</tt>,
+<tt>traceroute(8)</tt>, <tt>host(1)</tt> and <tt>nslookup(8)</tt> man pages.
+
+<P>
+<A name=copyright>
+<H2>Copyright</H2></A>
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+<p>
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+<P>
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+
+
+<p>
