@@ -1,5 +1,8 @@
 1999-06-16  Sven Radej <radej@kde.org> (KMail-1.0.25)
 
+        * Try harder when looking for attachment icon (go thro' all
+          the mimelinks in <type>/ dir to see which one has the <subtype>)
+
         * Don found the culprit for nasty bug reported by Daniel Naber:
           open composer, change visible header fields, close composer,
           open it again... poof, gone. Culprit was QLabel::setBuddy.
