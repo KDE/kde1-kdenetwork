@@ -3,6 +3,8 @@
 # Po³±czenia lokalne (do 25 km lub polaczenia do TPNET) koszty.
 # Piotr Haberko <gumis@wsi.edu.pl>
 # or Piotr Haberko <gumis@gumis.silesia.linux.org.pl>
+# updates by Jacek Stolarczyk <jacek@mer.chemia.polsl.gliwice.pl>
+# for TP S.A. specific ruleset see TP-Lokalne.rst
 ################################################################
 
 name=Poland
@@ -12,7 +14,10 @@ currency_digits=2
 per_connection=0.0
 minimum_costs=0.0
 
-# Therefore the following rule means: "Every 180 seconds 0.26 (with VAT)
+# Therefore the following rule means: "Every 360 seconds 0.29 (with VAT)
 # PLN are added to the bill"
-# Co 180 sekund dodawane bedzie 26 groszy do rachunku.
-default=(0.26, 180)
+# Co 360 sekund dodawane bedzie 29 groszy do rachunku (taryfa nocna).
+default=(0.29, 360)
+# taryfa dzienna
+on (monday..sunday) between (8:00..21:59) use (0.29, 180)
+

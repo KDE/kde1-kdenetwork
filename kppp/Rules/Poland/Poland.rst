@@ -49,4 +49,8 @@ minimum_costs=0.0
 
 # Therefore the following rule means: "Every 180 seconds 0.17
 # PLN are added to the bill"
-default=(0.17, 180)
+# taryfa nocna
+default=(0.29, 360)
+# taryfa dzienna
+on (monday..sunday) between (8:00..21:59) use (0.29, 180)
+
