@@ -2076,7 +2076,7 @@ msgstr "Gravar no arquivo"
 
 #: modemdb.cpp:46
 msgid "Select modem type..."
-msgstr ""
+msgstr "Selecione tipo de modem..."
 
 #: modemdb.cpp:48
 msgid ""
@@ -2084,41 +2084,18 @@ msgid ""
 "the select the model from theright list. If you don´t know which modem you "
 "have,you can try out one of the \"Generic\" modems."
 msgstr ""
+"Para configurar seu modem, primeiro escolha seu fabricante na lista da "
+"esquerda, e então selecione o modelo da lista direita. Se você não sabe que "
+"modem possui, tente um dos modems \"Genéricos\"."
 
 #: modemdb.cpp:71
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: modemdb.cpp:151 modemdb.cpp:153 modemdb.cpp:223 modemdb.cpp:238
 msgid "<Generic>"
-msgstr ""
+msgstr "<Genérico>"
 
 #: modemdb.cpp:218
 msgid "Hayes(tm) compatible modem"
-msgstr ""
-
-#~ msgid ""
-#~ "The application-specific config file\n"
-#~ "could not be opened neither\n"
-#~ "read-write nor read-only"
-#~ msgstr ""
-#~ "O arquivo de configuração da\n"
-#~ "não pode ser aberto nem para\n"
-#~ "gravação nem para leitura"
-
-#~ msgid ""
-#~ "Do you use /dev/modem ? If so, you should specify the real device instead, "
-#~ "e.g. /dev/ttyS1 (COM2)."
-#~ msgstr ""
-#~ "Você usa /dev/modem ? Se sim, você deve especificar o dispositivo real,  por "
-#~ "exemplo /dev/ttyS1 (COM2)."
-
-#~ msgid "Lock File Directory:"
-#~ msgstr "Diretório do Arquivo de Trava:"
-
-#~ msgid ""
-#~ "kppp can not find:\n"
-#~ " %s\n"
-#~ msgstr ""
-#~ "kppp não pôde encontrar:\n"
-#~ " %s\n"
+msgstr "Modem compatível com Hayes(tm)"
