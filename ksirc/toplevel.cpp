@@ -617,6 +617,8 @@ void KSircTopLevel::sirc_write(QString str) /*FOLD00*/
    * Parse line forcommand we handle
    */
 
+  str.detach();
+
   if((strncmp(str, "/join ", 6) == 0) ||
      (strncmp(str, "/j ", 3) == 0) ||
      (strncmp(str, "/query ", 7) == 0)){
@@ -662,6 +664,7 @@ void KSircTopLevel::sirc_write(QString str) /*FOLD00*/
   //
 
   if(channel_name[0] != '!'){
+    str.detach();
     if(str[0] != '/'){
       str.prepend(QString("/msg ") + channel_name + QString(" "));
     }
