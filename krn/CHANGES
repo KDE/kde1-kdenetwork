@@ -1,4 +1,15 @@
 -----------------------------------------------------------------------------
+Changes made Oct 22
+-----------------------------------------------------------------------------
+
+* [Roberto] Remembered to update this file ;-).
+* [Roberto] Huge speedup on long NNTP responses (DwString.c_str() is slow).
+* [Roberto] Ergonomized startup dialogs.
+* [Roberto] Added user feedback to several actions.
+* [Roberto] Improved NNTPObserver() (less event hungry).
+* [Roberto] Other things I made in the last week and forgot already :-)
+
+-----------------------------------------------------------------------------
 Changes made Oct 14
 -----------------------------------------------------------------------------
 
