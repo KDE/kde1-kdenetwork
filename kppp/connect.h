@@ -70,7 +70,7 @@ public:
 
   void set_con_speed_string();
   void setMsg(const char *);
-  friend void hangup(int);
+  friend void sigint(int);
 
 protected:
   void timerEvent(QTimerEvent *);

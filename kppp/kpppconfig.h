@@ -92,6 +92,9 @@
 # endif /* BSD */
 #endif  /* linux */
 
+// Define pid file relative to localkdedir() (usually ~/.kde)
+#define PIDFILE "/share/apps/kppp/kppp.pid"
+
 // search path for pppd binary
 #define PPPDSEARCHPATH "/sbin:/usr/sbin:/usr/local/sbin:/usr/bin:/usr/local/bin"
 

@@ -188,7 +188,7 @@ void PPPL_ShowLog() {
 
   if(!foundLCP) {
     int result = KMsgBox::yesNo(0,
-				i18n("Warnung"),
+				i18n("Warning"),
 				i18n("
 KPPP could not prepare a PPP log. It´s very likely
 that pppd was started without the \"debug\" option.\n
@@ -276,3 +276,5 @@ This may give you a hint why the connection has failed."), p + strlen(rmsg));
   }
   delete dlg;
 }
+
+

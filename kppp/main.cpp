@@ -67,6 +67,7 @@ bool	have_cmdl_account;
 bool 	pppd_has_died = false;
 bool 	reconnect_on_disconnect = false;
 bool    quit_on_disconnect = false;
+bool    terminate_connection = false;
 
 
 int totalbytes;
@@ -74,6 +75,7 @@ int totalbytes;
 QString old_hostname;
 QString local_ip_address;
 QString remote_ip_address;
+QString pidfile;
 
 void usage(char* progname){
 
@@ -213,7 +215,7 @@ int main( int argc, char **argv ) {
   // set portable locale for decimal point
   setlocale(LC_NUMERIC ,"C");
 
-  while ((c = getopt(argc, argv, "c:hvr:q")) != EOF){
+  while ((c = getopt(argc, argv, "c:khvr:q")) != EOF){
     switch (c)
       {
 
@@ -233,6 +235,9 @@ int main( int argc, char **argv ) {
 	  cmdl_account = tmp;
 	  break;
 	}
+      case 'k':
+        terminate_connection = true;
+        break;
       case 'h':
 	usage(argv[0]);
 	break;
@@ -240,7 +245,7 @@ int main( int argc, char **argv ) {
 	banner(argv[0]);
 	break;
       case 'q':
-	quit_on_disconnect = TRUE;
+	quit_on_disconnect = true;
 	break;
       case 'r':
 	{
@@ -263,17 +268,47 @@ int main( int argc, char **argv ) {
 #endif
 
   }
+
   // load mini-icon
   miniIcon = new QPixmap(a.getMiniIcon());
 
   // make sure that nobody can read the password from the
   // config file
   QString configFile = a.localconfigdir() + "/" + a.appName() + "rc";
-  if(access(configFile.data(), F_OK) == 0)
+  if(access(configFile.data(), F_OK) == 0) {
+//  TODO: Check whether this directory/file really should belong to the user
+//    chown(configFile.data(), getuid(), getgid());
     chmod(configFile.data(), S_IRUSR | S_IWUSR);
-
+  }
   make_directories();
-
+  
+  QString msg;
+  int pid = create_pidfile();
+  if(pid < 0) {
+    msg.sprintf(i18n("kppp can't create or read from\n%s."), pidfile.data());
+    QMessageBox::warning(0L, i18n("Error"), msg.data());
+    exit(1);
+  }
+  
+  if (terminate_connection) {
+    if (pid > 0)
+      kill(pid, SIGINT);
+    else
+      remove_pidfile();
+    exit(0);
+  }
+  
+  if (pid > 0) {
+    msg.sprintf(i18n("kppp has detected a %s file.\n\n"
+                     "Another instance of kppp seems to be "
+                     "running under\nprocess-ID %d.\n\n"
+                     "Make sure that you are not running another "
+                     "kppp,\ndelete the pid file, and restart kppp."),
+                pidfile.data(), pid);
+    QMessageBox::warning(0L, i18n("Error"), msg.data());
+    exit(1);
+  }
+  
   KPPPWidget kppp;
   p_kppp = &kppp;
 
@@ -292,17 +327,19 @@ int main( int argc, char **argv ) {
   // we really don't want to die accidentally, since that would leave the
   // modem connected. If you really really want to kill me you must send 
   // me a SIGKILL.
-  signal(SIGINT, SIG_IGN);
+  signal(SIGINT, sigint);
   signal(SIGTERM, SIG_IGN);
-
-  signal(SIGHUP, hangup);
+  signal(SIGHUP, SIG_IGN);
   signal(SIGCHLD, dieppp);
 
   XSetErrorHandler( kppp_x_errhandler );
   XSetIOErrorHandler( kppp_xio_errhandler );
                                                  
-  return a.exec();
+  int ret = a.exec();
 
+  remove_pidfile();
+
+  return ret;
 }
 
 
@@ -596,19 +633,20 @@ void KPPPWidget::resetaccounts() {
     
 }
 
-void hangup(int) {
+void sigint(int) {
 
 #ifdef MY_DEBUG
-  printf("Received a SIGHUP\n");
+  printf("Received a SIGINT\n");
 #endif
 
-  signal(SIGHUP, hangup); // reinstall the sig handler
+  signal(SIGINT, sigint); // reinstall the sig handler
 
   // interrupt dial up
   if (p_kppp->con->isVisible())
     emit p_kppp->con->cancelbutton();
 
   // disconnect if online
+
   if (gpppdata.pppdpid() != -1)
     emit p_kppp->disconnect();
 
@@ -1086,6 +1124,76 @@ pid_t execute_command (const char *command) {
 
   return id;
 
+}
+
+// Create a file containing the current pid. Returns 0 on success, 
+// -1 on failure or the pid of an already running kppp process. 
+
+pid_t create_pidfile() {
+
+  int fd = -1;
+  char pidstr[40];
+  
+  pidfile = KApplication::localkdedir() + PIDFILE;
+
+  if(access(pidfile.data(), F_OK) == 0) {
+    
+    if((access(pidfile.data(), R_OK) < 0) ||
+       (fd = open(pidfile.data(), O_RDONLY)) < 0)
+      return -1;
+
+    int sz = read(fd, &pidstr, 32);
+    close (fd);
+    if (sz <= 0)
+      return -1;
+    pidstr[sz] = '\0';
+#ifdef MY_DEBUG
+    printf("found kppp.pid containing: %s\n", pidstr);
+#endif
+
+    int oldpid;
+    int match = sscanf(pidstr, "%d", &oldpid);
+
+    // found a pid in pidfile ?
+    if (match < 1 || oldpid <= 0)
+      return -1;
+
+    // check if process exists
+    if (kill((pid_t)oldpid, 0) == 0 || errno != ESRCH)
+      return oldpid;
+
+#ifdef MY_DEBUG
+    printf("pidfile is stale\n");
+#endif
+  }
+
+  if((fd = open(pidfile.data(), O_WRONLY | O_CREAT,
+                S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)) == -1)
+    return -1;
+
+  fchown(fd, getuid(), getgid());
+
+  sprintf(pidstr, "%d\n", getpid());
+  write(fd, pidstr, strlen(pidstr));
+  close(fd);
+
+  return 0;
+}
+
+bool remove_pidfile() {
+
+  struct stat st;
+  
+  // only remove regular files with user write permissions
+  if(stat(pidfile.data(), &st) == 0 )
+    if(S_ISREG(st.st_mode) && (access(pidfile.data(), W_OK) == 0)) {
+      unlink(pidfile.data());
+      return true;
+    }
+
+  printf("error removing pidfile.\n");
+  return false;
+  
 }
 
 #include "main.moc"

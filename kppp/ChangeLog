@@ -1,3 +1,9 @@
+1998-08-21  Harri Porten  <porten@kde.org>
+
+	* use SIGINT instead of SIGHUP to end a connection
+	* implemented command line option 'kppp -k' that will
+	terminate a connection
+	
 1998-08-21  Mario Weilguni <mweilguni@kde.org>
 
 	* Added a graphical display of the current modem line
