@@ -44,7 +44,6 @@
 
 #define COL_NUM_IN_VIEW 3
 #define LIST_SEPARATOR '|'
-#define SEARCHTERM_TOOLTIP i18n("Searchstring, press <ENTER> to start search")
 
 /* Static members */
 const int KAViewSearchterm::offsetwidth = 5;
@@ -64,7 +63,7 @@ KAViewSearchterm::KAViewSearchterm(QWidget *parent, const char *name)
   // setup the searchterm line editor
   searchterm = new KLined( this, "searchtermled" );
   searchterm->adjustSize();
-  QToolTip::add( searchterm, i18n(SEARCHTERM_TOOLTIP) );
+  QToolTip::add( searchterm, i18n("Searchstring, press <ENTER> to start search") );
 
   searchlabel = new QLabel( searchterm, i18n("Search &Term"), this, "searchlabel" );
   searchlabel->adjustSize();
