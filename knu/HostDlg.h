@@ -20,6 +20,11 @@
  *   along with this program; if not, write to the Free Software
  *   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
+/*
+ * $Id$
+ *
+ * $Log$
+ * Revision 1.2  1997/11/23 22:28:09  leconte
  * - $Id$ and $Log$ added in the headers
  * - Patch from C.Czezatke applied (preparation of KProcess new version)
  *

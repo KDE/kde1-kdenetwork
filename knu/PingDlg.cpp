@@ -19,6 +19,11 @@
  *   along with this program; if not, write to the Free Software
  *   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
+/*
+ * $Id$
+ *
+ * $Log$
+ * Revision 1.4  1997/12/07 23:44:23  leconte
  * - handle the binary's name modification dynamicaly (problem reported
  *   by Conrad Sanderson)
  * - added browse button to the option dialog (for binary selection)
@@ -97,8 +102,8 @@
 
 /*
  * Destructor
+ */
 PingDlg::~PingDlg()
-      childProcess.clearArguments();
 {
 }
 
@@ -107,8 +112,8 @@ PingDlg::~PingDlg()
  */
 void
 		   << this.name() 
+{
   QString s;
-    childProcess.clearArguments();
   KConfig *kc = kapp->getConfig();
   
   kc->setGroup(configGroupName);

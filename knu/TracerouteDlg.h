@@ -20,6 +20,11 @@
  *   along with this program; if not, write to the Free Software
  *   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
+/*
+ * $Id$
+ *
+ * $Log$
+ * Revision 1.3  1997/12/07 23:44:26  leconte
  * - $Id$ and $Log$ added in the headers
  *   by Conrad Sanderson)
  * - added browse button to the option dialog (for binary selection)

@@ -19,6 +19,11 @@
  *   along with this program; if not, write to the Free Software
  *   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
+/*
+ * $Id$
+ *
+ * $Log$
+ * Revision 1.4  1997/12/07 23:44:25  leconte
  * - handle the binary's name modification dynamicaly (problem reported
  *   by Conrad Sanderson)
  * - added browse button to the option dialog (for binary selection)
@@ -119,8 +124,8 @@
  * Destructor
  */
 TracerouteDlg::~TracerouteDlg()
+{
 }
-      childProcess.clearArguments();
 
 /**
  * build the command line from widgets
@@ -128,6 +133,7 @@ TracerouteDlg::~TracerouteDlg()
 void
 TracerouteDlg::buildCommandLine(QString args)
 {
+		   << this.name() 
   QString sMaxHops;
   QString s;
   KConfig *kc = kapp->getConfig();
@@ -138,7 +144,6 @@ TracerouteDlg::buildCommandLine(QString args)
       childProcess.clearArguments();
       childProcess.setExecutable("echo");
       childProcess << _("You have a problem if your " 
-    childProcess.clearArguments();
 			"~/.kderc/share/config/knurc configuration file.\n"
 			"In the [")
 		   << this->name() 

@@ -19,6 +19,11 @@
  *   along with this program; if not, write to the Free Software
  *   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
+/*
+ * $Id$
+ *
+ * $Log$
+ * Revision 1.4  1997/12/07 23:44:28  leconte
  * - handle the binary's name modification dynamicaly (problem reported
  *   by Conrad Sanderson)
  * - added browse button to the option dialog (for binary selection)
@@ -167,7 +172,7 @@ HostDlg::~HostDlg()
 {
 }
 
-      childProcess.clearArguments();
+
 /**
  * build the command line from widgets
  */
@@ -181,8 +186,8 @@ HostDlg::buildCommandLine(QString args)
   KConfig *kc = kapp->getConfig();
   
   kc->setGroup(configGroupName);
+  bin = kc->readEntry("path");
   if (bin.isNull()) {
-    childProcess.clearArguments();
       childProcess.clearArguments();
       childProcess.setExecutable("echo");
       childProcess << _("You have a problem if your " 
