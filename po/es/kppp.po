@@ -1,18 +1,9 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 1998-06-18 22:50+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
-"Content-Transfer-Encoding: ENCODING\n"
+"PO-Revision-Date: 1998-06-21 20:00+0100\n"
+"Last-Translator: Raimundo Alba <raimon@alcavia.net>\n"
 
 #: accounts.cpp:53
 msgid "Account Setup"
@@ -32,7 +23,7 @@ msgstr "Costes Teléfono:"
 
 #: accounts.cpp:116 conwindow.cpp:55
 msgid "Volume:"
-msgstr ""
+msgstr "Volumen:"
 
 #: accounts.cpp:131
 msgid "Reset Costs"
@@ -173,14 +164,12 @@ msgid "No Carrier"
 msgstr "No hay respuesta"
 
 #: connect.cpp:396
-#, fuzzy
 msgid "Scanning "
-msgstr "Enviando "
+msgstr "Escaneando "
 
 #: connect.cpp:407
-#, fuzzy
 msgid "Saving "
-msgstr "Enviando "
+msgstr "Guardando "
 
 #: connect.cpp:426
 msgid "Sending "
@@ -216,11 +205,12 @@ msgstr "Contraseña "
 
 #: connect.cpp:580
 msgid "Prompting "
-msgstr ""
+msgstr "Prompting"
 
 #: connect.cpp:617
+#, fuzzy
 msgid "PW Prompt "
-msgstr ""
+msgstr "PW Prompt"
 
 #: connect.cpp:643
 msgid "Loop Start "
@@ -267,9 +257,8 @@ msgid "Script timed out!"
 msgstr "!Script fuera de tiempo¡"
 
 #: connect.cpp:995
-#, fuzzy
 msgid "Scanning: "
-msgstr "Enviando "
+msgstr "Escaneando: "
 
 #: connect.cpp:1006
 msgid "Expecting: "
@@ -356,13 +345,12 @@ msgid "PAP"
 msgstr "Mediante PAP"
 
 #: edit.cpp:75
-#, fuzzy
 msgid "Terminal-based"
-msgstr "Terminal"
+msgstr "Basada en Terminal"
 
 #: edit.cpp:76
 msgid "CHAP"
-msgstr ""
+msgstr "Mediante CHAP"
 
 #: edit.cpp:82
 msgid "Store password"
@@ -497,9 +485,8 @@ msgid "Disconnect on X-server shutdown"
 msgstr "Desconectar al apagar el Servidor X"
 
 #: general.cpp:124
-#, fuzzy
 msgid "Quit on Disconnect"
-msgstr "Desconectar"
+msgstr "Salir al Desconectar"
 
 #: general.cpp:130
 msgid "Minimize Window on Connect"
@@ -715,28 +702,27 @@ msgstr ""
 "PAP \"%s\""
 
 #: main.cpp:802
-#, fuzzy
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
 "supply a username and a password!"
 msgstr ""
 "Ha seleccionado el método de Autentificación\n"
-"PAP. !Este requiere que usted suministre un\n"
+"CHAP. !Este requiere que usted suministre un\n"
 "nombre de usuario y contraseña!"
 
 #: main.cpp:809
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
 "file \"%s\""
 msgstr ""
 "No se puede crear fichero de Autentificación\n"
-"PAP \"%s\""
+"CHAP \"%s\""
 
 #: main.cpp:821
 msgid "You have to specify a telephone number !\n"
-msgstr ""
+msgstr "¡Tiene que especificar un número de teléfono !\n"
 
 #: main.cpp:895
 msgid "Quit kPPP?"
@@ -768,7 +754,7 @@ msgstr "Respuesta de Inicio:"
 
 #: modemcmds.cpp:86
 msgid "Init Delay (sec/100):"
-msgstr ""
+msgstr "Retardo de Inicio (seg/100)"
 
 #: modemcmds.cpp:91
 msgid "Dial String:"
@@ -981,29 +967,24 @@ msgid "Selected:"
 msgstr "Tarifa Seleccionada:"
 
 #: acctselect.cpp:88
-#, fuzzy
 msgid "Volume accounting:"
-msgstr "Activar Seguimiento de Costes"
+msgstr "Volumen Seguimiento de Costes:"
 
 #: acctselect.cpp:92
-#, fuzzy
 msgid "No accounting"
-msgstr "Activar Seguimiento de Costes"
+msgstr "Sin Seguimiento de Costes"
 
 #: acctselect.cpp:93
-#, fuzzy
 msgid "Bytes in"
-msgstr "bytes de entrada"
+msgstr "Bytes de entrada"
 
 #: acctselect.cpp:94
-#, fuzzy
 msgid "Bytes out"
-msgstr "bytes de salida"
+msgstr "Bytes de salida"
 
 #: acctselect.cpp:95
-#, fuzzy
 msgid "Bytes in and out"
-msgstr "bytes de salida"
+msgstr "Bytes de entrada y salida"
 
 #: acctselect.cpp:165 acctselect.cpp:271
 msgid "Available rules"
@@ -1048,16 +1029,12 @@ msgid "Minimize"
 msgstr "Minimizar"
 
 #: runtests.cpp:121
-#, fuzzy
 msgid ""
 "You´re not allowed to dial out with kppp.\n"
 "Contact your system administrator."
 msgstr ""
-"¡No tiene permiso para\n"
-"iniciar el pppd!\n"
-"\n"
-"Contacte con su administrador de sistemas\n"
-"y pídale que le de acceso a pppd."
+"No tiene permiso para llamar con kppp.\n"
+"Contacte con su administrador de sistemas."
 
 #: runtests.cpp:137
 msgid ""
@@ -1093,7 +1070,7 @@ msgid ""
 "with the SUID bit set. Contact your\n"
 "system administrator."
 msgstr ""
-"¡Pppd no está instalado correctamente!\n"
+"¡pppd no está instalado correctamente!\n"
 "\n"
 "El ejecutable pppd debe de ser instalado\n"
 "con el bit SUID activado. Contacte con su\n"
@@ -1107,6 +1084,11 @@ msgid ""
 "itself.\n"
 "Contact your system administrator."
 msgstr ""
+"Kppp ha detectado la opción 'lock' en el fichero /etc/ppp/options.\n"
+"\n"
+"Esta opción tiene que ser quitada ya que Kppp se encarga del bloqueo de "
+"dispositivos el mismo.\n"
+"Contacte con su administrador del sistema."
 
 #: runtests.cpp:245
 msgid ""
@@ -1116,53 +1098,8 @@ msgid ""
 "a non-empty file that has appropriate\n"
 "read and write permissions."
 msgstr ""
-
-#~ msgid "Use default script"
-#~ msgstr "Usar Script genérico"
-
-#~ msgid "None"
-#~ msgstr "Ninguno"
-
-#~ msgid "Restore"
-#~ msgstr "Restaurar"
-
-#~ msgid "pppd Path:"
-#~ msgstr "Localización del ejecutable pppd:"
-
-#~ msgid "Log Viewer:"
-#~ msgstr "Visor de Logs:"
-
-#~ msgid "started PPP connection:%s:%s"
-#~ msgstr "conexión PPP iniciada:%s:%s"
-
-#~ msgid ""
-#~ "terminated PPP connection\n"
-#~ "COST OF SESSION: "
-#~ msgstr ""
-#~ "Conexión PPP Finalizada\n"
-#~ "Coste de la Sesión: "
-
-#~ msgid ""
-#~ "\n"
-#~ "SUBTOTAL FOR:"
-#~ msgstr ""
-#~ "\n"
-#~ "SUBTOTAL Para:"
-
-#~ msgid ""
-#~ "The logviewer \"%s\" was not found!\n"
-#~ "\n"
-#~ "Setting default back to \"%s\"."
-#~ msgstr ""
-#~ "¡El visor de históricos \"%s\" no ha sido encontrado!\n"
-#~ "\n"
-#~ "Utilizando por defecto \"%s\"."
-
-#~ msgid "Dismiss"
-#~ msgstr "Descartar"
-
-#~ msgid "Modem sustains fast initialization."
-#~ msgstr "El Modem requiere inicialización rápida."
-
-#~ msgid "The pppd daemon died unexpectedly!"
-#~ msgstr "!La conexión finalizó inesperadamente¡"
+"¡El fichero /etc/resolv.conf no existe!\n"
+"\n"
+"Pídale a su administrador de sistemas que\n"
+"cree este fichero con los permisos de lectura\n"
+"y escritura adecuados."

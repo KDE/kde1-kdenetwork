@@ -2,9 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdenetwork\n"
 "POT-Creation-Date: 1998-06-16 14:20+0200\n"
-"PO-Revision-Date: 1998-04-18 13:23+0200\n"
-"Last-Translator: Boris Wesslowski <bwess@gmx.net>\n"
-"First-Translator: Bertrand Leconte\n"
+"PO-Revision-Date: 1998-06-21 13:23+0200\n"
+"Last-Translator: Raimundo Alba <raimon@alcavia.net>\n"
 
 #: knu.cpp:139 knu.cpp:300
 msgid "&Ping"
@@ -19,14 +18,12 @@ msgid "Host &resolution"
 msgstr "&Resolver nombres"
 
 #: knu.cpp:170
-#, fuzzy
 msgid "F&inger"
 msgstr "&Finger"
 
 #: knu.cpp:180 knu.cpp:325
-#, fuzzy
 msgid "&Matt's traceroute"
-msgstr "&Buscar ruta"
+msgstr "B&uscar ruta (Matt)"
 
 #: knu.cpp:192
 msgid ""
@@ -61,9 +58,9 @@ msgid "P&references..."
 msgstr "P&referencias..."
 
 #: knu.cpp:272
-#, fuzzy, c-format
+#, c-format
 msgid "&About %s"
-msgstr "Acerca de &Qt"
+msgstr "Acerca de %s"
 
 #: knu.cpp:274
 msgid "About &Qt"
@@ -194,16 +191,12 @@ msgstr "Ser&vidor:"
 
 #: HostDlg.cpp:332
 msgid "hos&t"
-msgstr ""
+msgstr "hos&t"
 
 #: HostDlg.cpp:336
 msgid "ns&lookup"
-msgstr ""
+msgstr "ns&lookup"
 
 #: FingerDlg.cpp:76
-#, fuzzy
 msgid "&User:"
-msgstr "Usuario:"
-
-#~ msgid "Server:"
-#~ msgstr "Servidor:"
+msgstr "&Usuario:"
