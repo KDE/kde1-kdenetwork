@@ -844,3 +844,4 @@ void PukeController::closeWidget(widgetId wI){ /*FOLD00*/
   }
   warning("WidgetRunner: widget delete %d %d failed", wI.fd, wI.iWinId);
 }
+

@@ -31,3 +31,4 @@ class EString : public QString
   };
 
 #endif
+

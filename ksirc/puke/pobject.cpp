@@ -108,3 +108,4 @@ void PObject::swidgetDestroyed(){ /*FOLD00*/
 PukeController *PObject::controller() { /*fold00*/
   return pController;
 }
+
