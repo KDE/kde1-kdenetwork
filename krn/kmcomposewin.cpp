@@ -115,6 +115,7 @@ KMComposeWin::KMComposeWin(KMMessage *aMsg) : KMComposeWinInherited(),
   mBtnReplyTo.setFocusPolicy(QWidget::NoFocus);
 
   mAtmListBox = new KTabListBox(&mMainWidget, NULL, 5);
+  mAtmListBox->setFocusPolicy(QWidget::NoFocus);
   mAtmListBox->setColumn(0, i18n("F"),16, KTabListBox::PixmapColumn);
   mAtmListBox->setColumn(1, i18n("Name"), 200);
   mAtmListBox->setColumn(2, i18n("Size"), 80);
@@ -735,7 +736,9 @@ void KMComposeWin::applyChanges(void)
     else bodyPart.setCteStr("8bit"); 
     bodyPart.setTypeStr("text");
     bodyPart.setSubtypeStr("plain");
-    bodyPart.setBodyEncoded(pgpProcessedMsg());
+    str = pgpProcessedMsg();
+    str.truncate(str.length()); // to ensure str.size()==str.length()+1
+    bodyPart.setBodyEncoded(str);
     mMsg->addBodyPart(&bodyPart);
 
     // Since there is at least one more attachment create another bodypart
@@ -834,7 +837,7 @@ void KMComposeWin::addAttach(const QString aUrl)
 
   // load the file
   kbp->busy();
-  str = kFileToString(aUrl,TRUE);
+  str = kFileToString(aUrl,FALSE);
   if (str.isNull())
   {
     kbp->idle();
@@ -891,8 +894,8 @@ const QString KMComposeWin::msgPartLbxString(const KMMessagePart* msgPart) const
 
   assert(msgPart != NULL);
 
-  len = msgPart->body().size()-1;
-  if (len > 9999) lenStr.sprintf("%uK", len>>10);
+  len = msgPart->size();
+  if (len > 9999) lenStr.sprintf("%uK", (len>>10));
   else lenStr.sprintf("%u", len);
 
   return (" \n" + msgPart->name() + "\n" + lenStr + "\n" +
@@ -1379,7 +1382,7 @@ void KMComposeWin::slotAppendSignature()
     if (!dlg.exec()) return;
     sigFileName = dlg.selectedFile();
     if (sigFileName.isEmpty()) return;
-    sigText = kFileToString(sigFileName);
+    sigText = kFileToString(sigFileName, TRUE);
   }
   else sigText = identity->signature();
 

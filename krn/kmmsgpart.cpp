@@ -22,6 +22,7 @@ KMMessagePart::KMMessagePart() :
   mType("text"), mSubtype("plain"), mCte("7bit"), mContentDescription(),
   mContentDisposition(), mBody(), mName()
 {
+  mBodySize = 0;
 }
 
 
@@ -32,43 +33,72 @@ KMMessagePart::~KMMessagePart()
 
 
 //-----------------------------------------------------------------------------
+int KMMessagePart::size(void) const
+{
+  if (mBodySize < 0)
+  {
+    ((KMMessagePart*)this)->mBodySize = 
+      bodyDecoded().size() - 1;
+  }
+  return mBodySize;
+}
+
+
+//-----------------------------------------------------------------------------
+void KMMessagePart::setBody(const QString aStr)
+{
+  int encoding = contentTransferEncoding();
+
+  mBody = aStr.copy();
+
+  if (encoding!=DwMime::kCteQuotedPrintable &&
+      encoding!=DwMime::kCteBase64)
+  {
+    mBodySize = mBody.size() - 1;
+  }
+  else mBodySize = -1;
+}
+
+
+//-----------------------------------------------------------------------------
 void KMMessagePart::setBodyEncoded(const QString aStr)
 {
   DwString dwResult, dwSrc;
-  QString result;
   int encoding = contentTransferEncoding();
-  int len = aStr.size();
+  int len;
 
-  debug("KMMessagePart::setBodyEncoded: len=%d, size=%d\n",
-	aStr.length(), aStr.size());
+  mBodySize = aStr.size() - 1;
 
   switch (encoding)
   {
   case DwMime::kCteQuotedPrintable:
-    dwSrc.resize(len);
-    memcpy((void*)dwSrc.data(), (void*)aStr.data(), len);
+    dwSrc = DwString(aStr.data(), aStr.size()-1);
     DwEncodeQuotedPrintable(dwSrc, dwResult);
-    result = dwResult.c_str();
-    result.detach();
+    len = dwResult.size();
+    mBody.truncate(len);
+    memcpy(mBody.data(), dwResult.c_str(), len+1);
     break;
   case DwMime::kCteBase64:
-    dwSrc.resize(len);
-    memcpy((void*)dwSrc.data(), (void*)aStr.data(), len);
+    dwSrc = DwString(aStr.data(), aStr.size()-1);
     DwEncodeBase64(dwSrc, dwResult);
-    result = dwResult.c_str();
-    result.detach();
+    len = dwResult.size();
+    mBody.truncate(len);
+    memcpy(mBody.data(), dwResult.c_str(), len+1);
     break;
-  case DwMime::kCte7bit:
-  case DwMime::kCte8bit:
-  case DwMime::kCteBinary:
-    result = aStr;
+    len = aStr.size()-1;
+    dwSrc = DwString(aStr.data(), len);
+    DwEncodeBase64(dwSrc, dwResult);
+    mBody = QString(dwResult.c_str(),dwResult.size());
     break;
   default:
     debug("WARNING -- unknown encoding `%s'. Assuming 8bit.", 
 	  (const char*)cteStr());
-    result = aStr;
+  case DwMime::kCte7bit:
+  case DwMime::kCte8bit:
+  case DwMime::kCteBinary:
+    mBody = aStr;
+    break;
   }
-  mBody = result;
 }
 
 
@@ -80,34 +110,38 @@ const QString KMMessagePart::bodyDecoded(void) const
   int encoding = contentTransferEncoding();
   int len;
 
-  debug("KMMessagePart::bodyDecoded: len=%d, size=%d\n",
-	mBody.length(), mBody.size());
-
   switch (encoding)
   {
   case DwMime::kCteQuotedPrintable:
-    dwSrc = mBody;
+    dwSrc = DwString(mBody.data(), mBody.size());
     DwDecodeQuotedPrintable(dwSrc, dwResult);
+    len = dwResult.size() + 1;
+    result.resize(len);
+    memcpy((void*)result.data(), (void*)dwResult.c_str(), len);
+    break;
     result = dwResult.c_str();
     result.detach();
     break;
   case DwMime::kCteBase64:
-    dwSrc = mBody;
+    dwSrc = DwString(mBody.data(), mBody.size());
     DwDecodeBase64(dwSrc, dwResult);
-    len = dwResult.size();
-    result.resize(len+1);
+    len = dwResult.size() + 1;
+    result.resize(len);
     memcpy((void*)result.data(), (void*)dwResult.c_str(), len);
     break;
+  default:
+    debug("WARNING -- unknown encoding `%s'. Assuming 8bit.", 
+	  (const char*)cteStr());
   case DwMime::kCte7bit:
   case DwMime::kCte8bit:
   case DwMime::kCteBinary:
     result = mBody;
     break;
-  default:
-    debug("WARNING -- unknown encoding `%s'. Assuming 8bit.", 
-	  (const char*)cteStr());
-    result = mBody;
   }
+
+  debug("bodyDecoded (%s): len=%d, size=%d", cteStr().data(), 
+	result.length(), result.size());
+
   return result;
 }
 
@@ -291,13 +325,6 @@ void KMMessagePart::setContentDisposition(const QString aStr)
 const QString KMMessagePart::body(void) const
 {
   return mBody;
-}
-
-
-//-----------------------------------------------------------------------------
-void KMMessagePart::setBody(const QString aStr)
-{
-  mBody = aStr.copy();
 }
 
 
