@@ -30,6 +30,7 @@ class KBiffGeneralTab;
 class KBiffNewMailTab;
 class KBiffMailboxTab;
 class KBiffAboutTab;
+class KBiffNewDlg;
 
 class KBiffSetup : public QDialog
 {
@@ -48,6 +49,9 @@ public slots:
 
 protected slots:
 	void slotDone();
+	void slotAddNewProfile();
+	void slotRenameProfile();
+	void slotDeleteProfile();
 
 private:
 	// "outer" dialog
@@ -113,6 +117,7 @@ public:
 	bool getPlaySound();
 	const char* getPlaySoundPath();
 	bool getBeep();
+	bool getNotify();
 
 public slots:
 	void readConfig(const char *profile);
@@ -137,6 +142,7 @@ private:
 	QCheckBox *checkRunCommand;
 	QCheckBox *checkPlaySound;
 	QCheckBox *checkBeep;
+	QCheckBox *checkNotify;
 
 	QPushButton *buttonBrowsePlaySound;
 	QPushButton *buttonBrowseRunCommand;
@@ -208,6 +214,19 @@ public:
 protected slots:
 	void mailTo(const char*);
 	void homepage(const char*);
+};
+
+class KBiffNewDlg : public QDialog
+{
+	Q_OBJECT
+public:
+	KBiffNewDlg(QWidget* parent = 0, const char* name = 0);
+
+	const char* getName()
+		{ return editName->text(); }
+
+private:
+	QLineEdit *editName;
 };
 
 #endif // SETUPDLG_H
