@@ -154,6 +154,9 @@
 
 class DW_EXPORT DwNntpClient : public DwProtocolClient {
 
+friend class NNTP;
+friend class NNTPObserver;
+    
 public:
 
     enum {
