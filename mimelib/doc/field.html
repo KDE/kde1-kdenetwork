@@ -1,0 +1,366 @@
+<!-- $Revision$ -->
+<!-- $Date$ -->
+<HTML>
+<HEAD>
+<TITLE>
+    DwField Man Page
+</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+<FONT COLOR="navy">
+<H2>NAME</H2>
+</FONT>
+DwField -- Class representing a MIME header field
+<FONT COLOR="navy">
+<H2>SYNOPSIS</H2>
+</FONT>
+<PRE>
+class DwField : public <A HREF="msgcmp.html">DwMessageComponent</A> {
+    friend class DwHeader;
+
+public:
+
+    <A HREF="field.html#DwField">DwField</A>();
+    <A HREF="field.html#DwField">DwField</A>(const DwField&amp; aField);
+    <A HREF="field.html#DwField">DwField</A>(const DwString&amp; aStr, DwMessageComponent* aParent=0);
+    virtual <A HREF="field.html#~DwField">~DwField</A>();
+    const DwField&amp; <A HREF="field.html#op_eq">operator =</A> (const DwField&amp; aField);
+    virtual void <A HREF="field.html#Parse">Parse</A>();
+    virtual void <A HREF="field.html#Assemble">Assemble</A>();
+    virtual DwMessageComponent* <A HREF="field.html#Clone">Clone</A>() const;
+    DwFieldBody* <A HREF="field.html#FieldBody">FieldBody</A>() const;
+    const DwString&amp; <A HREF="field.html#FieldNameStr">FieldNameStr</A>() const;
+    const DwString&amp; <A HREF="field.html#FieldBodyStr">FieldBodyStr</A>() const;
+    DwField* <A HREF="field.html#Next">Next</A>() const;
+    void <A HREF="field.html#SetFieldBody">SetFieldBody</A>(DwFieldBody* aFieldBody);
+    void <A HREF="field.html#SetFieldNameStr">SetFieldNameStr</A>(const DwString&amp; aStr);
+    void <A HREF="field.html#SetFieldBodyStr">SetFieldBodyStr</A>(const DwString&amp; aStr);
+    void <A HREF="field.html#SetNext">SetNext</A>(const DwField* aField);
+    static DwField* <A HREF="field.html#NewField">NewField</A>(const DwString&amp; aStr,
+        DwMessageComponent* aParent);
+    static DwFieldBody* <A HREF="field.html#CreateFieldBody">CreateFieldBody</A>(const DwString&amp; aFieldName,
+        const DwString&amp; aFieldBody, DwMessageComponent* aParent);
+    static DwFieldBody* <A HREF="field.html#_CreateFieldBody">_CreateFieldBody</A>(const DwString&amp; aFieldName,
+        const DwString&amp; aFieldBody, DwMessageComponent* aParent);
+    static DwField* (*<A HREF="field.html#sNewField">sNewField</A>)(const DwString&amp;, DwMessageComponent*);
+    static DwFieldBody* (*<A HREF="field.html#sCreateFieldBody">sCreateFieldBody</A>)(const DwString&amp; aFieldName,
+        const DwString&amp; aFieldBody, DwMessageComponent* aParent);
+
+protected:
+
+    DwString <A HREF="field.html#mFieldNameStr">mFieldNameStr</A>;
+    DwString <A HREF="field.html#mFieldBodyStr">mFieldBodyStr</A>;
+    DwFieldBody* <A HREF="field.html#mFieldBody">mFieldBody</A>;
+    void <A HREF="field.html#_SetFieldBody">_SetFieldBody</A>(DwFieldBody* aFieldBody);
+
+#if defined(DEBUG_VERSION)
+
+public:
+
+    virtual void <A HREF="field.html#PrintDebugInfo">PrintDebugInfo</A>(ostream&amp; aStrm, int aDepth=0) const;
+    virtual void <A HREF="field.html#CheckInvariants">CheckInvariants</A>() const;
+
+#endif // defined(DEBUG_VERSION)
+
+};
+</PRE>
+
+<FONT COLOR="navy">
+<H2>DESCRIPTION</H2>
+</FONT>
+<B><TT>DwField</TT></B> represents a <I>field</I> as described in RFC-822.  A
+<I>field</I> consists of a <I>field-name</I> and a <I>field-body</I>.  In
+MIME++, a <B><TT>DwField</TT></B> contains a <B><TT>DwString</TT></B> that contains its
+<I>field-name</I>, a <B><TT>DwString</TT></B> that contains its <I>field-body</I>, and
+a <B><TT>DwFieldBody</TT></B> that contains a broken-down version of its
+<I>field-body</I>.
+A <B><TT>DwField</TT></B> object has only one child, which is the <B><TT>DwFieldBody</TT></B>
+object it contains.  The parent of a <B><TT>DwField</TT></B> object is the
+<B><TT>DwHeader</TT></B> object that contains it.  (See the discussion in the entry
+for <B><TT>DwMessageComponent</TT></B>.)
+<P>
+A <B><TT>DwField</TT></B> object can be included in a list of <B><TT>DwField</TT></B>
+objects; usually this is the list of <B><TT>DwField</TT></B> objects maintained
+by its parent <B><TT>DwHeader</TT></B> object.
+
+<FONT COLOR="navy">
+<H2>
+Public Member Functions
+</H2>
+
+</FONT>
+<FONT COLOR="teal"><B>
+<A NAME="DwField">DwField</A>()
+<BR>
+DwField(const DwField&amp; aField)
+<BR>
+DwField(const DwString&amp; aStr, DwMessageComponent* aParent=0)
+</B></FONT><P>
+
+The first constructor is the default constructor, which sets the
+<B><TT>DwField</TT></B> object's <I>field-name</I> string and
+<I>field-body</I> string to the empty
+string, set its parent to NULL, and sets its <B><TT>DwFieldBody</TT></B>
+object to NULL.
+<P>
+The second constructor is the copy constructor, which
+copies the <I>field-name</I> string,
+<I>field-body</I> string, and the attached <B><TT>DwFieldBody</TT></B> object
+from <B><TT>aField</TT></B>.
+<P>
+The third constructor copies <B><TT>aStr</TT></B> to the object's string
+representation and sets <B><TT>aParent</TT></B> as the object's parent.
+The virtual member function <B><TT>Parse()</TT></B> should be called
+immediately after this constructor in order to parse the string
+representation.
+Unless it is NULL, <B><TT>aParent</TT></B> should point to an object of a class
+derived from <B><TT>DwHeader</TT></B>.
+
+<P>
+<FONT COLOR="teal"><B>
+virtual <A NAME="~DwField">~DwField</A>()
+</B></FONT><P>
+
+
+<P>
+<FONT COLOR="teal"><B>
+const DwField&amp; <A NAME="op_eq">operator =</A> (const DwField&amp; aField)
+</B></FONT><P>
+
+Assignment operator.  This operator copies the field name string,
+field body string, and the attached <B><TT>DwFieldBody</TT></B> object
+from <B><TT>aField</TT></B>.
+
+<P>
+<FONT COLOR="teal"><B>
+virtual void <A NAME="Parse">Parse</A>()
+</B></FONT><P>
+
+This virtual function, inherited from <B><TT>DwMessageComponent</TT></B>,
+executes the parse method for <B><TT>DwField</TT></B> objects.
+The parse method parses the string representation of
+the <B><TT>DwField</TT></B> object into its broken-down representation.  This
+member function must be called after the string representation is
+set or modified, and before the <I>field-name</I>
+or <I>field-body</I> is retrieved.
+
+<P>
+<FONT COLOR="teal"><B>
+virtual void <A NAME="Assemble">Assemble</A>()
+</B></FONT><P>
+
+This virtual function, inherited from <B><TT>DwMessageComponent</TT></B>,
+executes the assemble method for <B><TT>DwField</TT></B> objects.
+The assemble method assembles the
+broken-down representation of the <B><TT>DwField</TT></B> object into its
+string representation.  This member function must be called after
+any component of the broken-down representation is set or modified
+and before the string representation is retrieved.
+
+<P>
+<FONT COLOR="teal"><B>
+virtual DwMessageComponent* <A NAME="Clone">Clone</A>() const
+</B></FONT><P>
+
+This virtual function, inherited from <B><TT>DwMessageComponent</TT></B>,
+creates a new <B><TT>DwField</TT></B> on the free store that has the same
+value as this <B><TT>DwField</TT></B> object.  The basic idea is that of
+a ``virtual copy constructor.''
+
+<P>
+<FONT COLOR="teal"><B>
+Dw<A NAME="FieldBody">FieldBody</A>* FieldBody() const
+</B></FONT><P>
+
+Returns the <B><TT>DwFieldBody</TT></B> object contained by this <B><TT>DwField</TT></B>
+object.  If there is no field body, a NULL will be returned.
+
+<P>
+<FONT COLOR="teal"><B>
+const DwString&amp; <A NAME="FieldNameStr">FieldNameStr</A>() const
+</B></FONT><P>
+
+Returns the <I>field-name</I> of this <I>field</I> as a string.
+
+<P>
+<FONT COLOR="teal"><B>
+const DwString&amp; <A NAME="FieldBodyStr">FieldBodyStr</A>() const
+</B></FONT><P>
+
+Returns the <I>field-body</I> of this <I>field</I> as a string.
+
+<P>
+<FONT COLOR="teal"><B>
+DwField* <A NAME="Next">Next</A>() const
+</B></FONT><P>
+
+Returns the next <B><TT>DwField</TT></B> object following this
+<B><TT>DwField</TT></B> object in the list contained in a <B><TT>DwHeader</TT></B>.
+Returns NULL if this object is last in the list.
+
+<P>
+<FONT COLOR="teal"><B>
+void <A NAME="SetFieldBody">SetFieldBody</A>(DwFieldBody* aFieldBody)
+</B></FONT><P>
+
+Sets the <B><TT>DwFieldBody</TT></B> object contained by this object.
+
+<P>
+<FONT COLOR="teal"><B>
+void <A NAME="SetFieldNameStr">SetFieldNameStr</A>(const DwString&amp; aStr)
+</B></FONT><P>
+
+Sets the <I>field-name</I> of this field.
+
+<P>
+<FONT COLOR="teal"><B>
+void <A NAME="SetFieldBodyStr">SetFieldBodyStr</A>(const DwString&amp; aStr)
+</B></FONT><P>
+
+Sets the <I>field-body</I> of this field.
+
+<P>
+<FONT COLOR="teal"><B>
+void <A NAME="SetNext">SetNext</A>(const DwField* aField)
+</B></FONT><P>
+
+This <I>advanced</I> function sets <B><TT>aField</TT></B> as the next
+<I>field</I> following this
+<I>field</I> in the list of <I>field</I>s contained in a <I>header</I>.
+Since <B><TT>DwHeader</TT></B>
+contains member functions for adding <B><TT>DwField</TT></B> objects
+to its list, this function is not useful for most applications.
+
+<P>
+<FONT COLOR="teal"><B>
+static DwField* <A NAME="NewField">NewField</A>(const DwString&amp; aStr, DwMessageComponent* aParent)
+</B></FONT><P>
+
+Creates a new <B><TT>DwField</TT></B> object on the free store.
+If the static data member <B><TT>sNewField</TT></B> is NULL,
+this member function will create a new <B><TT>DwField</TT></B>
+and return it.  Otherwise, <B><TT>NewField()</TT></B> will call
+the user-supplied function pointed to by <B><TT>sNewField</TT></B>,
+which is assumed to return an object from a class derived from
+<B><TT>DwField</TT></B>, and return that object.
+
+<P>
+<FONT COLOR="teal"><B>
+static DwFieldBody* <A NAME="CreateFieldBody">CreateFieldBody</A>(const DwString&amp; aFieldName, const DwString&amp; aFieldBody, DwMessageComponent* aParent)
+</B></FONT><P>
+
+The static member function <B><TT>CreateFieldBody()</TT></B>
+is called from the <B><TT>Parse()</TT></B>
+member function and is responsible for creating a
+<B><TT>DwFieldBody</TT></B> object for this particular field.  A typical
+scenario might go as follows:
+This member function examines the <I>field-name</I> for this field,
+finds that it contains "To", creates a <B><TT>DwAddressList</TT></B> object
+to contain the <I>field-body</I>, calls the <B><TT>Parse()</TT></B> member
+function for the <B><TT>DwAddressList</TT></B>, and sets the <B><TT>DwAddressList</TT></B>
+object as this <B><TT>DwField</TT></B> object's <B><TT>DwFieldBody</TT></B>.
+<P>
+If you want to override the behavior of <B><TT>CreateFieldBody()</TT></B>,
+you can do so by setting the public data member
+<B><TT>sCreateFieldBody</TT></B> to point to your own function.
+<B><TT>CreateFieldBody()</TT></B> first checks to see if
+<B><TT>sCreateFieldBody</TT></B> is NULL.  If it is not,
+<B><TT>CreateFieldBody()</TT></B> will assume that it points to a user-supplied
+function and will call that function.  If it is NULL,
+<B><TT>CreateFieldBody()</TT></B> will call <B><TT>_CreateFieldBody()</TT></B>, which
+actually creates the <B><TT>DwFieldBody</TT></B> object.  You may call
+<B><TT>_CreateFieldBody()</TT></B> from your own function for fields you
+do not wish to handle.
+
+<P>
+<FONT COLOR="teal"><B>
+static DwFieldBody* <A NAME="_CreateFieldBody">_CreateFieldBody</A>(const DwString&amp; aFieldName, const DwString&amp; aFieldBody, DwMessageComponent* aParent)
+</B></FONT><P>
+
+
+<P>
+<FONT COLOR="teal"><B>
+virtual void <A NAME="PrintDebugInfo">PrintDebugInfo</A>(ostream&amp; aStrm, int aDepth=0) const
+</B></FONT><P>
+
+This virtual function, inherited from <B><TT>DwMessageComponent</TT></B>,
+prints debugging information about this object to <B><TT>aStrm</TT></B>.
+It will also call <B><TT>PrintDebugInfo()</TT></B> for any of its child
+components down to a level of <B><TT>aDepth</TT></B>.
+<P>
+This member function is available only in the debug version of
+the library.
+
+<P>
+<FONT COLOR="teal"><B>
+virtual void <A NAME="CheckInvariants">CheckInvariants</A>() const
+</B></FONT><P>
+
+Aborts if one of the invariants of the object fails.  Use this
+member function to track down bugs.
+<P>
+This member function is available only in the debug version of
+the library.
+
+<P>
+<FONT COLOR="navy">
+<H2>
+Public Data Members
+</H2>
+
+</FONT>
+<FONT COLOR="teal"><B>
+static DwField* (*<A NAME="sNewField">sNewField</A>)(const DwString&amp;, DwMessageComponent*)
+</B></FONT><P>
+
+If <B><TT>sNewField</TT></B> is not NULL, it is assumed to point to a
+user-supplied function that returns an object from a class derived from
+<B><TT>DwField</TT></B>.
+
+<P>
+<FONT COLOR="teal"><B>
+static DwFieldBody* (*<A NAME="sCreateFieldBody">sCreateFieldBody</A>)(const DwString&amp; aFieldName, const DwString&amp; aFieldBody, DwMessageComponent* aParent)
+</B></FONT><P>
+
+See CreateFieldBody().
+
+<P>
+<FONT COLOR="navy">
+<H2>
+Protected Member Functions
+</H2>
+
+</FONT>
+<B><FONT COLOR="teal">
+void <A NAME="_SetFieldBody">_SetFieldBody</A>(DwFieldBody* aFieldBody)
+</B></FONT><P>
+
+This function does not set the is-modified flag
+
+<P>
+<FONT COLOR="navy">
+<H2>
+Protected Data Members
+</H2>
+
+</FONT>
+<FONT COLOR="teal"><B>
+DwString <A NAME="mFieldNameStr">mFieldNameStr</A>
+</B></FONT><P>
+
+
+<P>
+<FONT COLOR="teal"><B>
+DwString <A NAME="mFieldBodyStr">mFieldBodyStr</A>
+</B></FONT><P>
+
+
+<P>
+<FONT COLOR="teal"><B>
+DwFieldBody* <A NAME="mFieldBody">mFieldBody</A>
+</B></FONT><P>
+
+
+<P>
+</BODY>
+</HTML>

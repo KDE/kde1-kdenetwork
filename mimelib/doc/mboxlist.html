@@ -1,0 +1,261 @@
+<!-- $Revision$ -->
+<!-- $Date$ -->
+<HTML>
+<HEAD>
+<TITLE>
+    DwMailboxList Man Page
+</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+<FONT COLOR="navy">
+<H2>NAME</H2>
+</FONT>
+DwMailboxList -- Class for containing DwMailbox objects
+<FONT COLOR="navy">
+<H2>SYNOPSIS</H2>
+</FONT>
+<PRE>
+class DwMailboxList : public <A HREF="fieldbdy.html">DwFieldBody</A> {
+
+public:
+
+    <A HREF="mboxlist.html#DwMailboxList">DwMailboxList</A>();
+    <A HREF="mboxlist.html#DwMailboxList">DwMailboxList</A>(const DwMailboxList&amp; aList);
+    <A HREF="mboxlist.html#DwMailboxList">DwMailboxList</A>(const DwString&amp; aStr, DwMessageComponent* aParent=0);
+    virtual <A HREF="mboxlist.html#~DwMailboxList">~DwMailboxList</A>();
+    const DwMailboxList&amp; <A HREF="mboxlist.html#op_eq">operator =</A> (const DwMailboxList&amp; aList);
+    virtual void <A HREF="mboxlist.html#Parse">Parse</A>();
+    virtual void <A HREF="mboxlist.html#Assemble">Assemble</A>();
+    virtual DwMessageComponent* <A HREF="mboxlist.html#Clone">Clone</A>() const;
+    DwMailbox* <A HREF="mboxlist.html#FirstMailbox">FirstMailbox</A>() const;
+    void <A HREF="mboxlist.html#Add">Add</A>(DwMailbox* aMailbox);
+    void <A HREF="mboxlist.html#Remove">Remove</A>(DwMailbox* aMailbox);
+    void <A HREF="mboxlist.html#DeleteAll">DeleteAll</A>();
+    static DwMailboxList* <A HREF="mboxlist.html#NewMailboxList">NewMailboxList</A>(const DwString&amp; aStr,
+        DwMessageComponent* aParent);
+    static DwMailboxList* (*<A HREF="mboxlist.html#sNewMailboxList">sNewMailboxList</A>)(const DwString&amp;,
+        DwMessageComponent*);
+
+protected:
+
+    DwMailbox* <A HREF="mboxlist.html#mFirstMailbox">mFirstMailbox</A>;
+    void <A HREF="mboxlist.html#_AddMailbox">_AddMailbox</A>(DwMailbox* aMailbox);
+    void <A HREF="mboxlist.html#_DeleteAll">_DeleteAll</A>();
+
+#if defined(DEBUG_VERSION)
+
+public:
+
+    virtual void <A HREF="mboxlist.html#PrintDebugInfo">PrintDebugInfo</A>(ostream&amp; aStrm, int aDepth=0) const;
+    virtual void <A HREF="mboxlist.html#CheckInvariants">CheckInvariants</A>() const;
+
+#endif // defined(DEBUG_VERSION)
+
+};
+</PRE>
+
+<FONT COLOR="navy">
+<H2>DESCRIPTION</H2>
+</FONT>
+<B><TT>DwMailboxList</TT></B> represents a list of <I>mailboxes</I> as described
+in RFC-822.
+
+<FONT COLOR="navy">
+<H2>
+Public Member Functions
+</H2>
+
+</FONT>
+<FONT COLOR="teal"><B>
+<A NAME="DwMailboxList">DwMailboxList</A>()
+<BR>
+DwMailboxList(const DwMailboxList&amp; aList)
+<BR>
+DwMailboxList(const DwString&amp; aStr, DwMessageComponent* aParent=0)
+</B></FONT><P>
+
+The first constructor is the default constructor, which sets the
+<B><TT>DwMailboxList</TT></B> object's string representation to the empty string
+and sets its parent to NULL.
+<P>
+The second constructor is the copy constructor, which copies the
+string representation and all <B><TT>DwMailbox</TT></B>es from <B><TT>aList</TT></B>.
+The parent of the new <B><TT>DwMailboxList</TT></B> object is set to NULL.
+<P>
+The third constructor copies <B><TT>aStr</TT></B> to the <B><TT>DwMailboxList</TT></B>
+object's string representation and sets <B><TT>aParent</TT></B> as its parent.
+The virtual member function <B><TT>Parse()</TT></B> should be called immediately
+after this constructor in order to parse the string representation.
+Unless it is NULL, <B><TT>aParent</TT></B> should point to an object of a class
+derived from <B><TT>DwField</TT></B>.
+
+<P>
+<FONT COLOR="teal"><B>
+virtual <A NAME="~DwMailboxList">~DwMailboxList</A>()
+</B></FONT><P>
+
+
+<P>
+<FONT COLOR="teal"><B>
+const DwMailboxList&amp; <A NAME="op_eq">operator =</A> (const DwMailboxList&amp; aList)
+</B></FONT><P>
+
+This is the assignment operator, which follows regular semantics.
+
+<P>
+<FONT COLOR="teal"><B>
+virtual void <A NAME="Parse">Parse</A>()
+</B></FONT><P>
+
+This virtual function, inherited from <B><TT>DwMessageComponent</TT></B>,
+executes the parse method for <B><TT>DwMailboxList</TT></B> objects.
+It should be called immediately after the string representation
+is modified and before the parts of the broken-down
+representation are accessed.
+
+<P>
+<FONT COLOR="teal"><B>
+virtual void <A NAME="Assemble">Assemble</A>()
+</B></FONT><P>
+
+This virtual function, inherited from <B><TT>DwMessageComponent</TT></B>,
+executes the assemble method for <B><TT>DwMailboxList</TT></B> objects.
+It should be called whenever one of the object's attributes
+is changed in order to assemble the string representation from
+its broken-down representation.  It will be called
+automatically for this object by the parent object's
+<B><TT>Assemble()</TT></B> member function if the is-modified flag is set.
+
+<P>
+<FONT COLOR="teal"><B>
+virtual DwMessageComponent* <A NAME="Clone">Clone</A>() const
+</B></FONT><P>
+
+This virtual function, inherited from <B><TT>DwMessageComponent</TT></B>,
+creates a new <B><TT>DwMailboxList</TT></B> on the free store that has the same
+value as this <B><TT>DwMailboxList</TT></B> object.  The basic idea is that of
+a ``virtual copy constructor.''
+
+<P>
+<FONT COLOR="teal"><B>
+DwMailbox* <A NAME="FirstMailbox">FirstMailbox</A>() const
+</B></FONT><P>
+
+Gets the first <B><TT>DwMailbox</TT></B> object in the list.
+Use the member function <B><TT>DwMailbox::Next()</TT></B> to iterate.
+Returns NULL if the list is empty.
+
+<P>
+<FONT COLOR="teal"><B>
+void <A NAME="Add">Add</A>(DwMailbox* aMailbox)
+</B></FONT><P>
+
+Adds <B><TT>aMailbox</TT></B> to the end of the list of <B><TT>DwMailbox</TT></B> objects
+maintained by this <B><TT>DwMailboxList</TT></B> object.
+
+<P>
+<FONT COLOR="teal"><B>
+void <A NAME="Remove">Remove</A>(DwMailbox* aMailbox)
+</B></FONT><P>
+
+Removes <B><TT>aMailbox</TT></B> from the list of <B><TT>DwMailbox</TT></B> objects
+maintained by this <B><TT>DwMailboxList</TT></B> object.  The <B><TT>DwMailbox</TT></B>
+object is not freed by this member function.
+
+<P>
+<FONT COLOR="teal"><B>
+void <A NAME="DeleteAll">DeleteAll</A>()
+</B></FONT><P>
+
+Removes and frees all <B><TT>DwMailbox</TT></B> objects from the list
+maintained by this <B><TT>DwMailboxList</TT></B> object.
+
+<P>
+<FONT COLOR="teal"><B>
+static DwMailboxList* <A NAME="NewMailboxList">NewMailboxList</A>(const DwString&amp; aStr, DwMessageComponent* aParent)
+</B></FONT><P>
+
+Creates a new <B><TT>DwMailboxList</TT></B> object on the free store.
+If the static data member <B><TT>sNewMailboxList</TT></B> is NULL,
+this member function will create a new <B><TT>DwMailboxList</TT></B>
+and return it.  Otherwise, <B><TT>NewMailboxList()</TT></B> will call
+the user-supplied function pointed to by <B><TT>sNewMailboxList</TT></B>,
+which is assumed to return an object from a class derived from
+<B><TT>DwMailboxList</TT></B>, and return that object.
+
+<P>
+<FONT COLOR="teal"><B>
+virtual void <A NAME="PrintDebugInfo">PrintDebugInfo</A>(ostream&amp; aStrm, int aDepth=0) const
+</B></FONT><P>
+
+This virtual function, inherited from <B><TT>DwMessageComponent</TT></B>,
+prints debugging information about this object to <B><TT>aStrm</TT></B>.
+It will also call <B><TT>PrintDebugInfo()</TT></B> for any of its child
+components down to a level of <B><TT>aDepth</TT></B>.
+<P>
+This member function is available only in the debug version of
+the library.
+
+<P>
+<FONT COLOR="teal"><B>
+virtual void <A NAME="CheckInvariants">CheckInvariants</A>() const
+</B></FONT><P>
+
+Aborts if one of the invariants of the object fails.  Use this
+member function to track down bugs.
+<P>
+This member function is available only in the debug version of
+the library.
+
+<P>
+<FONT COLOR="navy">
+<H2>
+Public Data Members
+</H2>
+
+</FONT>
+<FONT COLOR="teal"><B>
+static DwMailboxList* (*<A NAME="sNewMailboxList">sNewMailboxList</A>)(const DwString&amp;, DwMessageComponent*)
+</B></FONT><P>
+
+If <B><TT>sNewMailboxList</TT></B> is not NULL, it is assumed to point to a
+user-supplied function that returns an object from a class derived from
+<B><TT>DwMailboxList</TT></B>.
+
+<P>
+<FONT COLOR="navy">
+<H2>
+Protected Member Functions
+</H2>
+
+</FONT>
+<B><FONT COLOR="teal">
+void <A NAME="_AddMailbox">_AddMailbox</A>(DwMailbox* aMailbox)
+</B></FONT><P>
+
+Adds a mailbox, but does not set the is-modified flag
+
+<P>
+<B><FONT COLOR="teal">
+void <A NAME="_DeleteAll">_DeleteAll</A>()
+</B></FONT><P>
+
+Removes and deletes all <B><TT>DwMailbox</TT></B> objects from the list
+maintained by this <B><TT>DwMailboxList</TT></B> object.  Doesn't set the
+is-modified flag.
+
+<P>
+<FONT COLOR="navy">
+<H2>
+Protected Data Members
+</H2>
+
+</FONT>
+<FONT COLOR="teal"><B>
+DwMailbox* <A NAME="mFirstMailbox">mFirstMailbox</A>
+</B></FONT><P>
+
+
+<P>
+</BODY>
+</HTML>

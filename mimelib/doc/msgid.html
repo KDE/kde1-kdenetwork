@@ -1,0 +1,235 @@
+<!-- $Revision$ -->
+<!-- $Date$ -->
+<HTML>
+<HEAD>
+<TITLE>
+    DwMsgId Man Page
+</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+<FONT COLOR="navy">
+<H2>NAME</H2>
+</FONT>
+DwMsgId -- Class representing a MIME msg-id
+<FONT COLOR="navy">
+<H2>SYNOPSIS</H2>
+</FONT>
+<PRE>
+class DwMsgId : public <A HREF="fieldbdy.html">DwFieldBody</A> {
+
+public:
+
+    <A HREF="msgid.html#DwMsgId">DwMsgId</A>();
+    <A HREF="msgid.html#DwMsgId">DwMsgId</A>(const DwMsgId&amp; aMsgId);
+    <A HREF="msgid.html#DwMsgId">DwMsgId</A>(const DwString&amp; aStr, DwMessageComponent* aParent=0);
+    virtual <A HREF="msgid.html#~DwMsgId">~DwMsgId</A>();
+    const DwMsgId&amp; <A HREF="msgid.html#op_eq">operator =</A> (const DwMsgId&amp; aMsgId);
+    virtual void <A HREF="msgid.html#Parse">Parse</A>();
+    virtual void <A HREF="msgid.html#Assemble">Assemble</A>();
+    virtual DwMessageComponent* <A HREF="msgid.html#Clone">Clone</A>() const;
+    virtual void <A HREF="msgid.html#CreateDefault">CreateDefault</A>();
+    const DwString&amp; <A HREF="msgid.html#LocalPart">LocalPart</A>() const;
+    void <A HREF="msgid.html#SetLocalPart">SetLocalPart</A>(const DwString&amp; aLocalPart);
+    const DwString&amp; <A HREF="msgid.html#Domain">Domain</A>() const;
+    void <A HREF="msgid.html#SetDomain">SetDomain</A>(const DwString&amp; aDomain);
+    static DwMsgId* <A HREF="msgid.html#NewMsgId">NewMsgId</A>(const DwString&amp; aStr,
+        DwMessageComponent* aParent);
+    static DwMsgId* (*<A HREF="msgid.html#sNewMsgId">sNewMsgId</A>)(const DwString&amp;, DwMessageComponent*);
+    static const char* <A HREF="msgid.html#sHostName">sHostName</A>;
+
+#if defined(DEBUG_VERSION)
+
+public:
+
+    virtual void <A HREF="msgid.html#PrintDebugInfo">PrintDebugInfo</A>(ostream&amp; aStrm, int aDepth=0) const;
+    virtual void <A HREF="msgid.html#CheckInvariants">CheckInvariants</A>() const;
+
+#endif // defined(DEBUG_VERSION)
+
+};
+</PRE>
+
+<FONT COLOR="navy">
+<H2>DESCRIPTION</H2>
+</FONT>
+<B><TT>DwMsgId</TT></B> represents a <I>msg-id</I> as described in RFC-822.
+
+<FONT COLOR="navy">
+<H2>
+Public Member Functions
+</H2>
+
+</FONT>
+<FONT COLOR="teal"><B>
+<A NAME="DwMsgId">DwMsgId</A>()
+<BR>
+DwMsgId(const DwMsgId&amp; aMsgId)
+<BR>
+DwMsgId(const DwString&amp; aStr, DwMessageComponent* aParent=0)
+</B></FONT><P>
+
+The first constructor is the default constructor, which sets the
+<B><TT>DwMsgId</TT></B> object's string representation to the empty string
+and sets its parent to NULL.
+<P>
+The second constructor is the copy constructor, which copies the
+string representation and all attributes from <B><TT>aMsgId</TT></B>.
+The parent of the new <B><TT>DwMsgId</TT></B> object is set to NULL.
+<P>
+The third constructor copies <B><TT>aStr</TT></B> to the <B><TT>DwMsgId</TT></B>
+object's string representation and sets <B><TT>aParent</TT></B> as its parent.
+The virtual member function <B><TT>Parse()</TT></B> should be called immediately
+after this constructor in order to parse the string representation.
+Unless it is NULL, <B><TT>aParent</TT></B> should point to an object of a class
+derived from <B><TT>DwField</TT></B>.
+
+<P>
+<FONT COLOR="teal"><B>
+virtual <A NAME="~DwMsgId">~DwMsgId</A>()
+</B></FONT><P>
+
+
+<P>
+<FONT COLOR="teal"><B>
+const DwMsgId&amp; <A NAME="op_eq">operator =</A> (const DwMsgId&amp; aMsgId)
+</B></FONT><P>
+
+This is the assignment operator, which follows regular semantics.
+
+<P>
+<FONT COLOR="teal"><B>
+virtual void <A NAME="Parse">Parse</A>()
+</B></FONT><P>
+
+This virtual function, inherited from <B><TT>DwMessageComponent</TT></B>,
+executes the parse method for <B><TT>DwMsgId</TT></B> objects.
+It should be called immediately after the string representation
+is modified and before the parts of the broken-down
+representation are accessed.
+
+<P>
+<FONT COLOR="teal"><B>
+virtual void <A NAME="Assemble">Assemble</A>()
+</B></FONT><P>
+
+This virtual function, inherited from <B><TT>DwMessageComponent</TT></B>,
+executes the assemble method for <B><TT>DwMsgId</TT></B> objects.
+It should be called whenever one of the object's attributes
+is changed in order to assemble the string representation from
+its broken-down representation.  It will be called
+automatically for this object by the parent object's
+<B><TT>Assemble()</TT></B> member function if the is-modified flag is set.
+
+<P>
+<FONT COLOR="teal"><B>
+virtual DwMessageComponent* <A NAME="Clone">Clone</A>() const
+</B></FONT><P>
+
+This virtual function, inherited from <B><TT>DwMessageComponent</TT></B>,
+creates a new <B><TT>DwMsgId</TT></B> on the free store that has the same
+value as this <B><TT>DwMsgId</TT></B> object.  The basic idea is that of
+a ``virtual copy constructor.''
+
+<P>
+<FONT COLOR="teal"><B>
+virtual void <A NAME="CreateDefault">CreateDefault</A>()
+</B></FONT><P>
+
+Creates a value for the <I>msg-id</I>.  Uses the current time,
+process id, and fully qualified domain name for the host.
+
+<P>
+<FONT COLOR="teal"><B>
+const DwString&amp; <A NAME="LocalPart">LocalPart</A>() const
+</B></FONT><P>
+
+Returns the <I>local-part</I> of the <I>msg-id</I> as described in
+RFC-822.
+
+<P>
+<FONT COLOR="teal"><B>
+void <A NAME="SetLocalPart">SetLocalPart</A>(const DwString&amp; aLocalPart)
+</B></FONT><P>
+
+Sets the <I>local-part</I> of the <I>msg-id</I> as described in
+RFC-822.
+
+<P>
+<FONT COLOR="teal"><B>
+const DwString&amp; <A NAME="Domain">Domain</A>() const
+</B></FONT><P>
+
+Returns the <I>domain</I> of the <I>msg-id</I> as described in
+RFC-822.
+
+<P>
+<FONT COLOR="teal"><B>
+void <A NAME="SetDomain">SetDomain</A>(const DwString&amp; aDomain)
+</B></FONT><P>
+
+Sets the <I>domain</I> of the <I>msg-id</I> as described in
+RFC-822.
+
+<P>
+<FONT COLOR="teal"><B>
+static DwMsgId* <A NAME="NewMsgId">NewMsgId</A>(const DwString&amp; aStr, DwMessageComponent* aParent)
+</B></FONT><P>
+
+Creates a new <B><TT>DwMsgId</TT></B> object on the free store.
+If the static data member <B><TT>sNewMsgId</TT></B> is NULL,
+this member function will create a new <B><TT>DwMsgId</TT></B>
+and return it.  Otherwise, <B><TT>NewMsgId()</TT></B> will call
+the user-supplied function pointed to by <B><TT>sNewMsgId</TT></B>,
+which is assumed to return an object from a class derived from
+<B><TT>DwMsgId</TT></B>, and return that object.
+
+<P>
+<FONT COLOR="teal"><B>
+virtual void <A NAME="PrintDebugInfo">PrintDebugInfo</A>(ostream&amp; aStrm, int aDepth=0) const
+</B></FONT><P>
+
+This virtual function, inherited from <B><TT>DwMessageComponent</TT></B>,
+prints debugging information about this object to <B><TT>aStrm</TT></B>.
+It will also call <B><TT>PrintDebugInfo()</TT></B> for any of its child
+components down to a level of <B><TT>aDepth</TT></B>.
+<P>
+This member function is available only in the debug version of
+the library.
+
+<P>
+<FONT COLOR="teal"><B>
+virtual void <A NAME="CheckInvariants">CheckInvariants</A>() const
+</B></FONT><P>
+
+Aborts if one of the invariants of the object fails.  Use this
+member function to track down bugs.
+<P>
+This member function is available only in the debug version of
+the library.
+
+<P>
+<FONT COLOR="navy">
+<H2>
+Public Data Members
+</H2>
+
+</FONT>
+<FONT COLOR="teal"><B>
+static DwMsgId* (*<A NAME="sNewMsgId">sNewMsgId</A>)(const DwString&amp;, DwMessageComponent*)
+</B></FONT><P>
+
+If <B><TT>sNewMsgId</TT></B> is not NULL, it is assumed to point to a
+user-supplied function that returns an object from a class derived from
+<B><TT>DwMsgId</TT></B>.
+
+<P>
+<FONT COLOR="teal"><B>
+static const char* <A NAME="sHostName">sHostName</A>
+</B></FONT><P>
+
+Host name of machine, used to create msg-id string.  This data member
+is ignored if the platform supports a gethostname() function call.
+
+<P>
+</BODY>
+</HTML>

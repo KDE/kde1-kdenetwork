@@ -1,0 +1,430 @@
+# Makefile.in generated automatically by automake 1.1o from Makefile.am
+
+# Copyright (C) 1994, 1995, 1996 Free Software Foundation, Inc.
+# This Makefile.in is free software; the Free Software Foundation
+# gives unlimited permission to copy, distribute and modify it.
+
+# UNIX makefile for MIME++ library and example programs
+
+# Choose a version to compile.  I recommend compiling development version,
+# which includes numerous assert macros to catch bad function arguments
+# and other safeguards.  The production version is designed to avoid
+# program aborts, such as will occur if an assertion fails.  The production
+# version tries to recover as best it can in the case of exceptional
+# conditions.  The debug version is designed to help you find bugs once
+# you know they exist.  The development version helps you out here just
+# a little, because it will dump core so you can examine the program
+# state with a debugger.
+#
+# Make sure you type 'make clean' after compiling one version before
+# compiling a different version.
+
+
+SHELL = /bin/sh
+
+srcdir = @srcdir@
+top_srcdir = @top_srcdir@
+VPATH = @srcdir@
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+
+bindir = @bindir@
+sbindir = @sbindir@
+libexecdir = @libexecdir@
+datadir = @datadir@
+sysconfdir = @sysconfdir@
+sharedstatedir = @sharedstatedir@
+localstatedir = @localstatedir@
+libdir = @libdir@
+infodir = @infodir@
+mandir = @mandir@
+includedir = @includedir@
+oldincludedir = /usr/include
+
+pkgdatadir = $(datadir)/@PACKAGE@
+pkglibdir = $(libdir)/@PACKAGE@
+pkgincludedir = $(includedir)/@PACKAGE@
+
+top_builddir = ..
+
+ACLOCAL = @ACLOCAL@
+AUTOCONF = @AUTOCONF@
+AUTOMAKE = @AUTOMAKE@
+AUTOHEADER = @AUTOHEADER@
+
+INSTALL = @INSTALL@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@
+INSTALL_DATA = @INSTALL_DATA@
+INSTALL_SCRIPT = @INSTALL_SCRIPT@
+transform = @program_transform_name@
+
+NORMAL_INSTALL = true
+PRE_INSTALL = true
+POST_INSTALL = true
+NORMAL_UNINSTALL = true
+PRE_UNINSTALL = true
+POST_UNINSTALL = true
+build_alias = @build_alias@
+build_triplet = @build@
+host_alias = @host_alias@
+host_triplet = @host@
+target_alias = @target_alias@
+target_triplet = @target@
+ACLOCAL = @ACLOCAL@
+AUTOCONF = @AUTOCONF@
+AUTOHEADER = @AUTOHEADER@
+AUTOMAKE = @AUTOMAKE@
+CC = @CC@
+CFLAGS = @CFLAGS@
+CPP = @CPP@
+CXX = @CXX@
+KDE_INCLUDES = @KDE_INCLUDES@
+KDE_LDFLAGS = @KDE_LDFLAGS@
+LDFLAGS = @LDFLAGS@
+LIBCOMPAT = @LIBCOMPAT@
+LIBTOOL = @LIBTOOL@
+LN_S = @LN_S@
+MAKEINFO = @MAKEINFO@
+MOC = @MOC@
+PACKAGE = @PACKAGE@
+QT_INCLUDES = @QT_INCLUDES@
+QT_LDFLAGS = @QT_LDFLAGS@
+RANLIB = @RANLIB@
+VERSION = @VERSION@
+X_INCLUDES = @X_INCLUDES@
+X_LDFLAGS = @X_LDFLAGS@
+all_includes = @all_includes@
+all_libraries = @all_libraries@
+kde_includes = @kde_includes@
+kde_libraries = @kde_libraries@
+qt_includes = @qt_includes@
+qt_libraries = @qt_libraries@
+topdir = @topdir@
+
+LIBVERSION = DW_DEVELOPMENT_VERSION
+# LIBVERSION = DW_PRODUCTION_VERSION
+# LIBVERSION = DW_DEBUG_VERSION
+
+lib_LTLIBRARIES = libmimelib.la
+
+libmimelib_la_SOURCES = \
+    protocol.cpp \
+    address.cpp \
+    addrlist.cpp \
+    body.cpp \
+    bodypart.cpp \
+    boyermor.cpp \
+    datetime.cpp \
+    disptype.cpp \
+    dw_cte.cpp \
+    dw_date.cpp \
+    dw_mime.cpp \
+    entity.cpp \
+    field.cpp \
+    fieldbdy.cpp \
+    group.cpp \
+    header.cpp \
+    mailbox.cpp \
+    mboxlist.cpp \
+    mechansm.cpp \
+    mediatyp.cpp \
+    message.cpp \
+    msgcmp.cpp \
+    msgid.cpp \
+    nntp.cpp \
+    param.cpp \
+    pop.cpp \
+    smtp.cpp \
+    string.cpp \
+    text.cpp \
+    token.cpp \
+    uuencode.cpp
+
+mimelib_headers = \
+   address.h \
+   addrlist.h \
+   body.h \
+   bodypart.h \
+   boyermor.h \
+   config.h \
+   datetime.h \
+   debug.h \
+   disptype.h \
+   entity.h \
+   enum.h \
+   field.h \
+   fieldbdy.h \
+   group.h \
+   header.h \
+   mailbox.h \
+   mboxlist.h \
+   mechansm.h \
+   mediatyp.h \
+   message.h \
+   mimepp.h \
+   msgcmp.h \
+   msgid.h \
+   nntp.h \
+   param.h \
+   pop.h \
+   protocol.h \
+   smtp.h \
+   string.h \
+   text.h \
+   token.h \
+   utility.h \
+   uuencode.h
+
+CXXFLAGS = -D$(LIBVERSION)  @CXXFLAGS@
+
+libmimelib_la_LDFLAGS = -version-info 0:1 -rpath $(libdir)
+mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
+CONFIG_HEADER = ../config.h
+CONFIG_CLEAN_FILES = 
+LTLIBRARIES =  $(lib_LTLIBRARIES)
+
+
+DEFS = @DEFS@ -I. -I$(srcdir) -I..
+CPPFLAGS = @CPPFLAGS@
+LIBS = @LIBS@
+libmimelib_la_LIBADD = 
+libmimelib_la_OBJECTS =  protocol.lo address.lo addrlist.lo body.lo \
+bodypart.lo boyermor.lo datetime.lo disptype.lo dw_cte.lo dw_date.lo \
+dw_mime.lo entity.lo field.lo fieldbdy.lo group.lo header.lo mailbox.lo \
+mboxlist.lo mechansm.lo mediatyp.lo message.lo msgcmp.lo msgid.lo \
+nntp.lo param.lo pop.lo smtp.lo string.lo text.lo token.lo uuencode.lo
+CXXCOMPILE = $(CXX) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
+LTCXXCOMPILE = $(LIBTOOL) --mode=compile $(CXX) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
+CXXLINK = $(LIBTOOL) --mode=link $(CXX) $(LDFLAGS) -o $@
+DIST_COMMON =  Makefile.am Makefile.in
+
+
+DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
+
+TAR = gtar
+GZIP = --best
+DEP_FILES =  .deps/address.P .deps/addrlist.P .deps/body.P \
+.deps/bodypart.P .deps/boyermor.P .deps/datetime.P .deps/disptype.P \
+.deps/dw_cte.P .deps/dw_date.P .deps/dw_mime.P .deps/entity.P \
+.deps/field.P .deps/fieldbdy.P .deps/group.P .deps/header.P \
+.deps/mailbox.P .deps/mboxlist.P .deps/mechansm.P .deps/mediatyp.P \
+.deps/message.P .deps/msgcmp.P .deps/msgid.P .deps/nntp.P .deps/param.P \
+.deps/pop.P .deps/protocol.P .deps/smtp.P .deps/string.P .deps/text.P \
+.deps/token.P .deps/uuencode.P
+CXXMKDEP = $(CXX) -M $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
+SOURCES = $(libmimelib_la_SOURCES)
+OBJECTS = $(libmimelib_la_OBJECTS)
+
+default: all
+
+.SUFFIXES:
+.SUFFIXES: .c .cpp .lo .o
+$(srcdir)/Makefile.in: Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4) 
+	cd $(top_srcdir) && $(AUTOMAKE) --gnu mimelib/Makefile
+
+Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status $(BUILT_SOURCES)
+	cd $(top_builddir) \
+	  && CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= $(SHELL) ./config.status
+
+
+mostlyclean-libLTLIBRARIES:
+
+clean-libLTLIBRARIES:
+	test -z "$(lib_LTLIBRARIES)" || rm -f $(lib_LTLIBRARIES)
+
+distclean-libLTLIBRARIES:
+
+maintainer-clean-libLTLIBRARIES:
+
+install-libLTLIBRARIES: $(lib_LTLIBRARIES)
+	@$(NORMAL_INSTALL)
+	$(mkinstalldirs) $(libdir)
+	@list='$(lib_LTLIBRARIES)'; for p in $$list; do \
+	  if test -f $$p; then \
+	    echo "$(LIBTOOL)  --mode=install $(INSTALL_PROGRAM) $$p $(libdir)/$$p"; \
+	    $(LIBTOOL)  --mode=install $(INSTALL_PROGRAM) $$p $(libdir)/$$p; \
+	  else :; fi; \
+	done
+
+uninstall-libLTLIBRARIES:
+	$(NORMAL_UNINSTALL)
+	list='$(lib_LTLIBRARIES)'; for p in $$list; do \
+	  $(LIBTOOL)  --mode=uninstall rm -f $(libdir)/$$p; \
+	done
+
+.c.o:
+	$(COMPILE) -c $<
+
+mostlyclean-compile:
+	rm -f *.o core
+
+clean-compile:
+
+distclean-compile:
+	rm -f *.tab.c
+
+maintainer-clean-compile:
+
+.c.lo:
+	$(LIBTOOL) --mode=compile $(COMPILE) -c $<
+
+mostlyclean-libtool:
+	rm -f *.lo
+
+clean-libtool:
+	rm -rf .libs
+
+distclean-libtool:
+
+maintainer-clean-libtool:
+
+libmimelib.la: $(libmimelib_la_OBJECTS) $(libmimelib_la_DEPENDENCIES)
+	$(CXXLINK) -rpath $(libdir) $(libmimelib_la_LDFLAGS) $(libmimelib_la_OBJECTS) $(libmimelib_la_LIBADD) $(LIBS)
+.cpp.o:
+	$(CXXCOMPILE) -c $<
+.cpp.lo:
+	$(LTCXXCOMPILE) -c $<
+
+tags: TAGS
+
+ID: $(HEADERS) $(SOURCES)
+	here=`pwd` && cd $(srcdir) && mkid -f$$here/ID $(SOURCES) $(HEADERS)
+
+TAGS:  $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES)
+	tags=; \
+	here=`pwd`; \
+	test -z "$(ETAGS_ARGS)$(SOURCES)$(HEADERS)$$tags" \
+	  || (cd $(srcdir) && etags $(ETAGS_ARGS) $$tags  $(SOURCES) $(HEADERS) -o $$here/TAGS)
+
+mostlyclean-tags:
+
+clean-tags:
+
+distclean-tags:
+	rm -f TAGS ID
+
+maintainer-clean-tags:
+
+distdir = $(top_builddir)/$(PACKAGE)-$(VERSION)/$(subdir)
+
+subdir = mimelib
+distdir: $(DISTFILES)
+	here=`cd $(top_builddir) && pwd`; top_distdir=`cd $$top_distdir && pwd` \
+	  && cd $(top_srcdir) \
+	  && $(AUTOMAKE) --include-deps --build-dir=$$here --srcdir-name=$(top_srcdir) --output-dir=$$top_distdir --gnu mimelib/Makefile
+	@for file in $(DISTFILES); do \
+	  d=$(srcdir); \
+	  test -f $(distdir)/$$file \
+	  || ln $$d/$$file $(distdir)/$$file 2> /dev/null \
+	  || cp -p $$d/$$file $(distdir)/$$file; \
+	done
+
+MKDEP = gcc -M $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CFLAGS)
+
+-include .deps/.P
+.deps/.P:
+	test -d .deps || mkdir .deps
+	echo > $@
+
+-include $(DEP_FILES)
+$(DEP_FILES): .deps/.P
+
+mostlyclean-depend:
+
+clean-depend:
+
+distclean-depend:
+
+maintainer-clean-depend:
+	rm -rf .deps
+
+.deps/%.P: $(srcdir)/%.c
+	@echo "Computing dependencies for $<..."
+	@o='o';				\
+	test -n "$o" && o='$$o';	\
+	$(MKDEP) $< | sed "s,^\(.*\)\.o:,\1.$$o \1.l$$o $@:," > $@
+
+.deps/%.P: $(srcdir)/%.cpp
+	@echo "Computing dependencies for $<..."
+	@o='o';				\
+	$(CXXMKDEP) $< | sed "s,^\(.*\)\.o:,\1.$$o \1.l$$o $@:," > $@
+info:
+dvi:
+check: all
+	$(MAKE)
+installcheck:
+install-exec: install-libLTLIBRARIES
+	@$(NORMAL_INSTALL)
+
+install-data: install-data-local
+	@$(NORMAL_INSTALL)
+
+install: install-exec install-data all
+	@:
+
+uninstall: uninstall-libLTLIBRARIES
+
+all: Makefile $(LTLIBRARIES)
+
+install-strip:
+	$(MAKE) INSTALL_PROGRAM='$(INSTALL_PROGRAM) -s' install
+installdirs:
+	$(mkinstalldirs)  $(libdir)
+
+
+mostlyclean-generic:
+	test -z "$(MOSTLYCLEANFILES)" || rm -f $(MOSTLYCLEANFILES)
+
+clean-generic:
+	test -z "$(CLEANFILES)" || rm -f $(CLEANFILES)
+
+distclean-generic:
+	rm -f Makefile $(DISTCLEANFILES)
+	rm -f config.cache config.log stamp-h
+	test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
+
+maintainer-clean-generic:
+	test -z "$(MAINTAINERCLEANFILES)" || rm -f $(MAINTAINERCLEANFILES)
+	test -z "$(BUILT_SOURCES)" || rm -f $(BUILT_SOURCES)
+mostlyclean:  mostlyclean-libLTLIBRARIES mostlyclean-compile \
+		mostlyclean-libtool mostlyclean-tags mostlyclean-depend \
+		mostlyclean-generic
+
+clean:  clean-libLTLIBRARIES clean-compile clean-libtool clean-tags \
+		clean-depend clean-generic mostlyclean
+
+distclean:  distclean-libLTLIBRARIES distclean-compile distclean-libtool \
+		distclean-tags distclean-depend distclean-generic clean
+	rm -f config.status
+	rm -f libtool
+
+maintainer-clean:  maintainer-clean-libLTLIBRARIES \
+		maintainer-clean-compile maintainer-clean-libtool \
+		maintainer-clean-tags maintainer-clean-depend \
+		maintainer-clean-generic distclean
+	@echo "This command is intended for maintainers to use;"
+	@echo "it deletes files that may require special tools to rebuild."
+
+.PHONY: default mostlyclean-libLTLIBRARIES distclean-libLTLIBRARIES \
+clean-libLTLIBRARIES maintainer-clean-libLTLIBRARIES \
+uninstall-libLTLIBRARIES install-libLTLIBRARIES mostlyclean-compile \
+distclean-compile clean-compile maintainer-clean-compile \
+mostlyclean-libtool distclean-libtool clean-libtool \
+maintainer-clean-libtool tags mostlyclean-tags distclean-tags \
+clean-tags maintainer-clean-tags distdir mostlyclean-depend \
+distclean-depend clean-depend maintainer-clean-depend info dvi \
+installcheck install-exec install-data install uninstall all \
+installdirs mostlyclean-generic distclean-generic clean-generic \
+maintainer-clean-generic clean mostlyclean distclean maintainer-clean
+
+
+install-data-local:
+	$(mkinstalldirs) $(includedir)/mimelib
+	@list='$(mimelib_headers)'; for p in $$list; do \
+	echo " $(INSTALL_DATA) ./mimelib/$$p $(includedir)/mimelib/$$p"; \
+	$(INSTALL_DATA) ./mimelib/$$p $(includedir)/mimelib/$$p; \
+	done
+
+# Tell versions [3.59,3.63) of GNU make to not export all variables.
+# Otherwise a system limit (for SysV at least) may be exceeded.
+.NOEXPORT:

@@ -1,0 +1,214 @@
+<!-- $Revision$ -->
+<!-- $Date$ -->
+<HTML>
+<HEAD>
+<TITLE>
+    DwEntity Man Page
+</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+<FONT COLOR="navy">
+<H2>NAME</H2>
+</FONT>
+DwEntity -- Abstract class representing a MIME entity
+<FONT COLOR="navy">
+<H2>SYNOPSIS</H2>
+</FONT>
+<PRE>
+class DwEntity : public <A HREF="msgcmp.html">DwMessageComponent</A> {
+
+public:
+
+    <A HREF="entity.html#DwEntity">DwEntity</A>();
+    <A HREF="entity.html#DwEntity">DwEntity</A>(const DwEntity&amp; aEntity);
+    <A HREF="entity.html#DwEntity">DwEntity</A>(const DwString&amp; aStr, DwMessageComponent* aParent=0);
+    virtual <A HREF="entity.html#~DwEntity">~DwEntity</A>();
+    const DwEntity&amp; <A HREF="entity.html#op_eq">operator =</A> (const DwEntity&amp; aEntity);
+    virtual void <A HREF="entity.html#Parse">Parse</A>();
+    virtual void <A HREF="entity.html#Assemble">Assemble</A>();
+    DwHeader&amp; <A HREF="entity.html#Header">Header</A>() const;
+    DwBody&amp; <A HREF="entity.html#Body">Body</A>() const;
+
+protected:
+
+    DwHeader* <A HREF="entity.html#mHeader">mHeader</A>;
+    DwBody*   <A HREF="entity.html#mBody">mBody</A>;
+
+#if defined(DEBUG_VERSION)
+
+public:
+
+    virtual void <A HREF="entity.html#PrintDebugInfo">PrintDebugInfo</A>(ostream&amp; aStrm, int aDepth=0) const;
+    virtual void <A HREF="entity.html#CheckInvariants">CheckInvariants</A>() const;
+
+#endif // defined(DEBUG_VERSION)
+
+};
+</PRE>
+
+<FONT COLOR="navy">
+<H2>DESCRIPTION</H2>
+</FONT>
+RFC-1521 defines an <I>entity</I> as either a <I>message</I> or a
+<I>body-part</I>, both of which have a <I>header</I> and a <I>body</I>.
+In the MIME++ class hierarchy, an <I>entity</I> is represented by the
+class <B><TT>DwEntity</TT></B>.  A <B><TT>DwEntity</TT></B> is characterized by the fact
+that it contains both a <B><TT>DwHeader</TT></B> and a <B><TT>DwBody</TT></B>, just like
+an <I>entity</I> has a <I>header</I> and a <I>body</I>.  These contained
+objects are the children of a <B><TT>DwEntity</TT></B> object.  (See the discussion
+in the entry for <B><TT>DwMessageComponent</TT></B>.)
+<P>
+Since <B><TT>DwEntity</TT></B> is an abstract base class, you may not
+instantiate objects of type
+<B><TT>DwEntity</TT></B>.  Instead, you must instantiate objects of a class
+derived from <B><TT>DwEntity</TT></B>.  Just as RFC-1521 specifies that both
+<I>messages</I> and <I>body-parts</I> are <I>entities</I>, so also MIME++
+provides classes <B><TT>DwMessage</TT></B> and <B><TT>DwBodyPart</TT></B> as subclasses
+of <B><TT>DwEntity</TT></B>.
+<P>
+See also: <B><TT>DwMessageComponent</TT></B>, <B><TT>DwMessage</TT></B>, <B><TT>DwBodyPart</TT></B>
+
+<FONT COLOR="navy">
+<H2>
+Public Member Functions
+</H2>
+
+</FONT>
+<FONT COLOR="teal"><B>
+<A NAME="DwEntity">DwEntity</A>()
+<BR>
+DwEntity(const DwEntity&amp; aEntity)
+<BR>
+DwEntity(const DwString&amp; aStr, DwMessageComponent* aParent=0)
+</B></FONT><P>
+
+The first constructor is the default constructor, which sets the
+<B><TT>DwEntity</TT></B> object's string representation to the empty string
+and sets its parent to NULL.
+<P>
+The second constructor is the copy constructor, which copies the
+string representation from <B><TT>aEntity</TT></B> and all of its children.
+The parent of the new <B><TT>DwEntity</TT></B> object is set to NULL.
+<P>
+The third constructor copies <B><TT>aStr</TT></B> to the <B><TT>DwEntity</TT></B>
+object's string representation and sets <B><TT>aParent</TT></B> as its parent.
+The virtual member function <B><TT>Parse()</TT></B> should be called immediately
+after this constructor in order to parse the string representation.
+
+<P>
+<FONT COLOR="teal"><B>
+virtual <A NAME="~DwEntity">~DwEntity</A>()
+</B></FONT><P>
+
+
+<P>
+<FONT COLOR="teal"><B>
+const DwEntity&amp; <A NAME="op_eq">operator =</A> (const DwEntity&amp; aEntity)
+</B></FONT><P>
+
+This is the assignment operator, which follows regular semantics.
+
+<P>
+<FONT COLOR="teal"><B>
+virtual void <A NAME="Parse">Parse</A>()
+</B></FONT><P>
+
+This virtual function, inherited from <B><TT>DwMessageComponent</TT></B>,
+executes the parse method for <B><TT>DwEntity</TT></B> objects.
+The parse method parses the string representation of
+the <B><TT>DwEntity</TT></B> object into its broken-down representation, which
+consists of a <I>header</I> and a <I>body</I>.  The broken-down
+representation is implemented as contained <B><TT>DwHeader</TT></B> and
+<B><TT>DwBody</TT></B> objects, which are the children of a <B><TT>DwEntity</TT></B>.
+(See the discussion in the entry for <B><TT>DwMessageComponent</TT></B>.)
+After the <I>header</I> and <I>body</I> are parsed, this member function
+calls the <B><TT>Parse()</TT></B> member function of the contained
+<B><TT>DwHeader</TT></B> and <B><TT>DwBody</TT></B> objects; you do not have to explicitly
+parse the <B><TT>DwHeader</TT></B> and <B><TT>DwBody</TT></B> objects.
+<P>
+This member function must be called after the string representation is
+set or modified, and before the <B><TT>header</TT></B> or {\tt body] of the entity are
+accessed.
+
+<P>
+<FONT COLOR="teal"><B>
+virtual void <A NAME="Assemble">Assemble</A>()
+</B></FONT><P>
+
+This virtual function, inherited from <B><TT>DwMessageComponent</TT></B>,
+executes the assemble method for <B><TT>DwEntity</TT></B> objects.
+The assemble method assembles the
+broken-down representation of the <B><TT>DwEntity</TT></B> object into its
+string representation.  The broken-down representation consists
+of a <I>header</I> and a <I>body</I>, and is implemented
+as contained <B><TT>DwHeader</TT></B> and
+<B><TT>DwBody</TT></B> objects, which are the children of a <B><TT>DwEntity</TT></B>.
+(See the discussion in the entry for <B><TT>DwMessageComponent</TT></B>.)
+Before the string representation is assembled, this member function
+will call the <B><TT>Assemble()</TT></B> member function of the contained
+<B><TT>DwHeader</TT></B> and <B><TT>DwBody</TT></B> objects; you do not have to explicitly
+assemble the <B><TT>DwHeader</TT></B> and <B><TT>DwBody</TT></B> objects.
+<P>
+This member function should be called after
+any component of the broken-down representation is set or changed
+and before the string representation is retrieved.
+
+<P>
+<FONT COLOR="teal"><B>
+Dw<A NAME="Header">Header</A>&amp; Header() const
+</B></FONT><P>
+
+This function returns the <B><TT>DwHeader</TT></B> contained by this object.
+
+<P>
+<FONT COLOR="teal"><B>
+Dw<A NAME="Body">Body</A>&amp; Body() const
+</B></FONT><P>
+
+This function returns the <B><TT>DwBody</TT></B> contained by this object.
+
+<P>
+<FONT COLOR="teal"><B>
+virtual void <A NAME="PrintDebugInfo">PrintDebugInfo</A>(ostream&amp; aStrm, int aDepth=0) const
+</B></FONT><P>
+
+This virtual function, inherited from <B><TT>DwMessageComponent</TT></B>,
+prints debugging information about this object to <B><TT>aStrm</TT></B>.
+It will also call <B><TT>PrintDebugInfo()</TT></B> for any of its child
+components down to a level of <B><TT>aDepth</TT></B>.
+<P>
+This member function is available only in the debug version of
+the library.
+
+<P>
+<FONT COLOR="teal"><B>
+virtual void <A NAME="CheckInvariants">CheckInvariants</A>() const
+</B></FONT><P>
+
+Aborts if one of the invariants of the object fails.  Use this
+member function to track down bugs.
+<P>
+This member function is available only in the debug version of
+the library.
+
+<P>
+<FONT COLOR="navy">
+<H2>
+Protected Data Members
+</H2>
+
+</FONT>
+<FONT COLOR="teal"><B>
+DwHeader* <A NAME="mHeader">mHeader</A>
+</B></FONT><P>
+
+
+<P>
+<FONT COLOR="teal"><B>
+DwBody* <A NAME="mBody">mBody</A>
+</B></FONT><P>
+
+
+<P>
+</BODY>
+</HTML>

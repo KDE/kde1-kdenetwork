@@ -1,0 +1,146 @@
+<!-- $Revision$ -->
+<!-- $Date$ -->
+<HTML>
+<HEAD>
+<TITLE>
+    DwMessage Man Page
+</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+<FONT COLOR="navy">
+<H2>NAME</H2>
+</FONT>
+DwMessage -- Class representing a MIME message
+<FONT COLOR="navy">
+<H2>SYNOPSIS</H2>
+</FONT>
+<PRE>
+class DwMessage : public <A HREF="entity.html">DwEntity</A> {
+
+public:
+
+    <A HREF="message.html#DwMessage">DwMessage</A>();
+    <A HREF="message.html#DwMessage">DwMessage</A>(const DwMessage&amp; aMessage);
+    <A HREF="message.html#DwMessage">DwMessage</A>(const DwString&amp; aStr, DwMessageComponent* aParent=0);
+    virtual <A HREF="message.html#~DwMessage">~DwMessage</A>();
+    const DwMessage&amp; <A HREF="message.html#op_eq">operator =</A> (const DwMessage&amp; aMessage);
+    virtual DwMessageComponent* <A HREF="message.html#Clone">Clone</A>() const;
+    static DwMessage* <A HREF="message.html#NewMessage">NewMessage</A>(const DwString&amp; aStr,
+        DwMessageComponent* aParent);
+    static DwMessage* (*<A HREF="message.html#sNewMessage">sNewMessage</A>)(const DwString&amp;, DwMessageComponent*);
+
+#if defined(DEBUG_VERSION)
+
+public:
+
+    virtual void <A HREF="message.html#PrintDebugInfo">PrintDebugInfo</A>(ostream&amp; aStrm, int aDepth=0) const;
+
+#endif // defined(DEBUG_VERSION)
+
+};
+</PRE>
+
+<FONT COLOR="navy">
+<H2>DESCRIPTION</H2>
+</FONT>
+<B><TT>DwMessage</TT></B> represents an RFC-1521/RFC-822 <I>message</I>.  Just as a
+<I>message</I> in RFC-1521 is a type of <I>entity</I>, so in MIME++
+<B><TT>DwMessage</TT></B> is a subclass of <B><TT>DwEntity</TT></B>.  Most of the functionality
+of <B><TT>DwMessage</TT></B> is implemented by the abstract class <B><TT>DwEntity</TT></B>.
+<P>
+See also: <B><TT>DwMessageComponent</TT></B>, <B><TT>DwEntity</TT></B>
+
+<FONT COLOR="navy">
+<H2>
+Public Member Functions
+</H2>
+
+</FONT>
+<FONT COLOR="teal"><B>
+<A NAME="DwMessage">DwMessage</A>()
+<BR>
+DwMessage(const DwMessage&amp; aMessage)
+<BR>
+DwMessage(const DwString&amp; aStr, DwMessageComponent* aParent=0)
+</B></FONT><P>
+
+The first constructor is the default constructor, which sets the
+<B><TT>DwMessage</TT></B> object's string representation to the empty string
+and sets its parent to NULL.
+<P>
+The second constructor is the copy constructor, which copies the
+string representation from <B><TT>aMessage</TT></B> and all of its children.
+The parent of the new <B><TT>DwMessage</TT></B> object is set to NULL.
+<P>
+The third constructor copies <B><TT>aStr</TT></B> to the <B><TT>DwMessage</TT></B>
+object's string representation and sets <B><TT>aParent</TT></B> as its parent.
+The virtual member function <B><TT>Parse()</TT></B> should be called immediately
+after this constructor in order to parse the string representation.
+
+<P>
+<FONT COLOR="teal"><B>
+virtual <A NAME="~DwMessage">~DwMessage</A>()
+</B></FONT><P>
+
+
+<P>
+<FONT COLOR="teal"><B>
+const DwMessage&amp; <A NAME="op_eq">operator =</A> (const DwMessage&amp; aMessage)
+</B></FONT><P>
+
+This is the assignment operator, which follows regular semantics.
+
+<P>
+<FONT COLOR="teal"><B>
+virtual DwMessageComponent* <A NAME="Clone">Clone</A>() const
+</B></FONT><P>
+
+This virtual function, inherited from <B><TT>DwMessageComponent</TT></B>,
+creates a new <B><TT>DwMessage</TT></B> on the free store that has the same
+value as this <B><TT>DwMessage</TT></B> object.  The basic idea is that of
+a ``virtual copy constructor.''
+
+<P>
+<FONT COLOR="teal"><B>
+static DwMessage* <A NAME="NewMessage">NewMessage</A>(const DwString&amp; aStr, DwMessageComponent* aParent)
+</B></FONT><P>
+
+Creates a new <B><TT>DwMessage</TT></B> object on the free store.
+If the static data member <B><TT>sNewMessage</TT></B> is NULL,
+this member function will create a new <B><TT>DwMessage</TT></B>
+and return it.  Otherwise, <B><TT>NewMessage()</TT></B> will call
+the user-supplied function pointed to by <B><TT>sNewMessage</TT></B>,
+which is assumed to return an object from a class derived from
+<B><TT>DwMessage</TT></B>, and return that object.
+
+<P>
+<FONT COLOR="teal"><B>
+virtual void <A NAME="PrintDebugInfo">PrintDebugInfo</A>(ostream&amp; aStrm, int aDepth=0) const
+</B></FONT><P>
+
+This virtual function, inherited from <B><TT>DwMessageComponent</TT></B>,
+prints debugging information about this object to <B><TT>aStrm</TT></B>.
+It will also call <B><TT>PrintDebugInfo()</TT></B> for any of its child
+components down to a level of <B><TT>aDepth</TT></B>.
+<P>
+This member function is available only in the debug version of
+the library.
+
+<P>
+<FONT COLOR="navy">
+<H2>
+Public Data Members
+</H2>
+
+</FONT>
+<FONT COLOR="teal"><B>
+static DwMessage* (*<A NAME="sNewMessage">sNewMessage</A>)(const DwString&amp;, DwMessageComponent*)
+</B></FONT><P>
+
+If <B><TT>sNewMessage</TT></B> is not NULL, it is assumed to point to a user
+supplied function that returns an object from a class derived from
+<B><TT>DwMessage</TT></B>.
+
+<P>
+</BODY>
+</HTML>
