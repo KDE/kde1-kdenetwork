@@ -219,7 +219,7 @@ int runTests() {
   else {
     if (geteuid() == 0) {
       if ((fd = open(_PATH_RESCONF, O_WRONLY|O_CREAT)) >= 0) {
-	// file will be owned by root and world readible
+	// file will be owned by root and world readable
 	fchown(fd, 0, 0);
 	fchmod(fd, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 	close (fd);

@@ -168,4 +168,14 @@ public:
   AboutWidget( QWidget *parent=0, const char *name=0 );
 };
 
+class SecurityWidget : public KGroupBox {
+  Q_OBJECT
+public:
+  SecurityWidget(QWidget *parent = 0, const char *name = 0);
+
+  
+};
+
 #endif
+
+

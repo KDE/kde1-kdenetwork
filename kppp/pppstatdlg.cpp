@@ -292,7 +292,7 @@ void PPPStatsDlg::paintGraph() {
     h_in = pm.height() - (int)((float)bin[idx]/max * (pm.height() - 8))-1;
     h_out = pm.height() - (int)((float)bout[idx]/max * (pm.height() - 8))-1;
     
-    p.setPen(out);
+    p.setPen(out);    
     if(bout[idx]!=-1)
       p.drawLine(x-1, last_h_out, x, h_out);
     p.setPen(in);
@@ -319,7 +319,7 @@ void PPPStatsDlg::updateGraph() {
  
   bin_last = ibytes;
   bout_last = obytes;
-  ringIdx++;
+  ringIdx = (ringIdx + 1) % MAX_GRAPH_WIDTH;
   paintGraph();
 }
 

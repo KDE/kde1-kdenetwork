@@ -36,6 +36,12 @@
 #include "groupbox.h"
 #include "newwidget.h"
 
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Widget containing misc. configuration options
+//
+/////////////////////////////////////////////////////////////////////////////
 GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
   : KGroupBox(i18n("kppp Setup"), parent, name)
 {
@@ -183,6 +189,11 @@ void GeneralWidget::pppdtimeoutchanged(const char *n) {
 }
 
 
+/////////////////////////////////////////////////////////////////////////////
+//
+// The About Dialog
+//
+/////////////////////////////////////////////////////////////////////////////
 AboutWidget::AboutWidget( QWidget *parent, const char *name)
   : KGroupBox(i18n("About kppp"), parent, name)
 {
@@ -691,6 +702,7 @@ GraphSetup::GraphSetup(QWidget *parent, const char *name) :
   tl->activate();
 
   setChecked(enable);
+  enableToggled(enable);
 }
 
 void GraphSetup::enableToggled(bool b) {

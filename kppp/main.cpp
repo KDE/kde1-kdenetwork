@@ -371,7 +371,7 @@ int main( int argc, char **argv ) {
   
   // Mario: testing
   if(TESTING) {
-    showNews();
+    gpppdata.open();
     exit(0);
   }
 
