@@ -135,11 +135,6 @@ static char copyright[] =
 # define S_IWUSR	S_IWRITE
 #endif
 
-#ifdef __hpux__
-#define USE_LOCKF 1
-#define USE_VSYSLOG 0
-#endif
-
 /*
  * If you don't have flock, you could try using lockf instead.
  */
