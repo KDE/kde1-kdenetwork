@@ -33,6 +33,7 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <netinet/in.h>
+#include <sys/ioctl.h>
 
 #include <errno.h>
 
@@ -205,9 +206,8 @@ void ConnectWidget::init() {
   if(opentty()){
     messg->setText(klocale->translate("Modem Ready"));
     app->processEvents();
-
     hangup();
-    
+
     app->processEvents();
 
     // this timer reads from the modem
@@ -219,6 +219,7 @@ void ConnectWidget::init() {
       
     // this timer will run the script etc.
     main_timer_ID = startTimer(1);
+    
   }
   else { 
     vmain = 20; // wait until cancel is pressed
@@ -970,7 +971,7 @@ void ConnectWidget::if_waiting_slot(){
 
 bool ConnectWidget::closetty(){
 
-  if(modemfd){
+  if(modemfd >=0 ){
     
     if(tcsetattr(modemfd, TCSANOW, &initial_tty) < 0){
     }
@@ -983,16 +984,25 @@ bool ConnectWidget::closetty(){
 
 bool ConnectWidget::opentty() {
 
+  int flags;
 
   if((modemfd = open(gpppdata.modemDevice(), O_RDWR|O_NDELAY)) < 0){
-    
     messg->setText(klocale->translate("Sorry, can't open modem."));
     return FALSE;
   }
 
+  ioctl( modemfd, TIOCMGET, &flags ); 
+  if ((flags&TIOCM_CD)==0) {
+    messg->setText(klocale->translate("Sorry, the modem is not ready."));
+    ::close(modemfd);
+    modemfd=-1;
+    return FALSE;
+  }
+	
   if(tcgetattr(modemfd, &tty) < 0){
-    
     messg->setText(klocale->translate("Sorry, the modem is busy."));
+    ::close(modemfd);
+    modemfd = -1;
     return FALSE;
   }
 
@@ -1032,6 +1042,8 @@ bool ConnectWidget::opentty() {
 
   if(tcsetattr(modemfd, TCSANOW, &tty) < 0){
     messg->setText(klocale->translate("Sorry, the modem is busy."));
+    ::close(modemfd);
+    modemfd=-1;
     return FALSE;
   }
 
