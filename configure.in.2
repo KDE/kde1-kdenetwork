@@ -3,27 +3,37 @@ if test ! -s ./inst-apps && test -s ./SUBDIRS; then
  cp ./SUBDIRS ./inst-apps
 fi
 
-if test -s ./inst-apps; then
-ac_topsubdirs="`cat ./inst-apps`"
-for i in $ac_topsubdirs; do
-if test ! "$i" = "po" && test ! "$i" = "CVS"; then
-TOPSUBDIRS="$TOPSUBDIRS $i"
-fi
-done
-else
-TOPSUBDIRS=""
+DO_NOT_COMPILE="$DO_NOT_COMPILE CVS"
+
+if ! test -s ./inst-apps; then
+  TOPSUBDIRS=""
 # this needs a good find. But only developers should need this case, since
 # distribution comes with SUBDIRS
-	dirs=`find . -type d -depth -maxdepth 1 -print | sed -e "s#./##" | sed -e "s/\.//"`
-	for i in $dirs; do 
-	  echo $i >> ./SUBDIRS
-	  if test ! "$i" = "po" && test ! "$i" = "CVS"; then
-	  TOPSUBDIRS="$TOPSUBDIRS $i"
-	  fi
-	done
-fi
-# we handle po separatly
-TOPSUBDIRS="$TOPSUBDIRS po"
+  files=`ls -1`
+  dirs=`for i in $files; do if test -d $i; then echo $i; fi; done`
+  for i in $dirs; do 
+    echo $i >> ./SUBDIRS
+  done
+  cp ./SUBDIRS ./inst-apps
+fi    
+
+if test -s ./inst-apps; then
+  ac_topsubdirs="`cat ./inst-apps`"
+fi  
+
+for i in $ac_topsubdirs; do
+  AC_MSG_CHECKING([if $i should be compiled])
+  install_it="yes"
+  for j in $DO_NOT_COMPILE; do 
+    if test $i = $j; then
+      install_it="no"
+    fi
+  done
+  AC_MSG_RESULT($install_it)
+  if test $install_it = "yes"; then 
+    TOPSUBDIRS="$TOPSUBDIRS $i"
+  fi
+done
 
 AC_SUBST(TOPSUBDIRS)
 

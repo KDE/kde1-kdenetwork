@@ -29,7 +29,6 @@ dnl I need to check for libsocket before testing X
 AC_CHECK_LIB(socket, socket, [LIBSOCKET="-lsocket -lnsl"]) dnl for Solaris
 AC_SUBST(LIBSOCKET)
 AC_PATH_KDE
-AC_CHECK_RPATH
 
 AC_LANG_C
 dnl Checks for libraries. 
@@ -47,7 +46,7 @@ AC_LANG_CPLUSPLUS
 dnl Checks for header files.
 AC_HEADER_DIRENT
 AC_HEADER_STDC
-AC_CHECK_HEADERS(fcntl.h sys/time.h unistd.h sys/types.h sys/stat.h re_comp.h net/errno.h )
+AC_CHECK_HEADERS(fcntl.h sys/time.h unistd.h sys/types.h sys/stat.h re_comp.h net/errno.h getopt.h)
 AC_CHECK_FUNCS(flock)
 
 dnl Checks for typedefs, structures, and compiler characteristics.
@@ -67,3 +66,39 @@ AC_SUBST(topdir)
 dnl Perform program name transformation
 AC_ARG_PROGRAM
 
+AC_MSG_CHECKING(if kppp's headers are installed)
+# this is a little piece of code out of kppp. If it doesn't compile,
+# kppp is not good for this system. It doesn't do anything, but enough
+# to fail ;)
+cat > conftest.C <<EOF
+#ifdef __svr4__
+  #include <sys/stropts.h>
+  #include <net/pppio.h>		/* SVR4, Solaris 2, etc. */
+
+#else
+  #include <sys/socket.h>
+  #include <net/if.h>
+
+  #ifndef STREAMS 
+
+    #if defined(linux) && !(__GLIBC__ >= 2)
+      #include <linux/if_ppp.h>
+    #else
+      #include <net/if_ppp.h>                /* BSD, Linux, NeXT, etc. */
+    #endif
+
+  #else				/* SunOS 4, AIX 4, OSF/1, etc. */
+    #include <sys/stream.h>
+    #include <net/ppp_str.h>
+  #endif
+#endif
+EOF
+
+AC_LANG_CPLUSPLUS
+if AC_TRY_EVAL(ac_compile); then
+  AC_MSG_RESULT(yes)
+else
+  DO_NOT_COMPILE="$DO_NOT_COMPILE kppp"
+  AC_MSG_RESULT(no)
+fi
+rm -r conftest.*
