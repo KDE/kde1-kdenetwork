@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1999-04-19 02:26+0200\n"
+"POT-Creation-Date: 1999-04-20 02:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: LinuxKorea Co. <kde@linuxkorea.co.kr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -619,7 +619,7 @@ msgstr "Pop 계정"
 msgid "Login:"
 msgstr "로그인:"
 
-#: kmacctpop.cpp:481 kmsettings.cpp:902
+#: kmacctpop.cpp:486 kmsettings.cpp:902
 msgid "Password:"
 msgstr "암호:"
 
@@ -1191,14 +1191,14 @@ msgstr ""
 msgid "Unknown command line option: %s"
 msgstr "알 수 없는 명령행 선택사항: %s"
 
-#: kmacctlocal.cpp:76
+#: kmacctlocal.cpp:77
 #, fuzzy
 msgid "Cannot open file:"
 msgstr ""
 "파일을 열 수 업음:\n"
 "%s"
 
-#: kmacctlocal.cpp:105
+#: kmacctlocal.cpp:113
 #, c-format
 msgid ""
 "Cannot remove mail from\n"
@@ -1221,7 +1221,7 @@ msgstr ""
 msgid "Incorrect Password"
 msgstr ""
 
-#: kmacctpop.cpp:184
+#: kmacctpop.cpp:185
 msgid ""
 "Please specify Host, Port  and\n"
 "destination folder in the settings\n"
@@ -1231,19 +1231,19 @@ msgstr ""
 "대상 폴더를 지정한 다음\n"
 "다시 시도하십시오."
 
-#: kmacctpop.cpp:286
+#: kmacctpop.cpp:291
 msgid "Pop Mail Error"
 msgstr "Pop 전자우편 오류"
 
-#: kmacctpop.cpp:291
+#: kmacctpop.cpp:296
 msgid "Pop Mail Network Error"
 msgstr "Pop 전자우편 네트웍 오류"
 
-#: kmacctpop.cpp:307
+#: kmacctpop.cpp:312
 msgid "Unknown error"
 msgstr "알 수 없는 오류"
 
-#: kmacctpop.cpp:312
+#: kmacctpop.cpp:317
 #, c-format
 msgid ""
 "Account: %s\n"
@@ -1254,7 +1254,7 @@ msgstr ""
 "In %s:\n"
 "%s"
 
-#: kmacctpop.cpp:472
+#: kmacctpop.cpp:477
 msgid "Login Name:"
 msgstr "로그인 이름:"
 
@@ -1403,11 +1403,11 @@ msgstr "지역 전자우편 상자"
 msgid "Pop3"
 msgstr "Pop3"
 
-#: kmfilteraction.cpp:93 kmfilteraction.cpp:191
+#: kmfilteraction.cpp:93 kmfilteraction.cpp:197
 msgid "transfer"
 msgstr "전달"
 
-#: kmfilteraction.cpp:160 kmfilteraction.cpp:193
+#: kmfilteraction.cpp:166 kmfilteraction.cpp:199
 msgid "skip rest"
 msgstr "나머지 제외"
 

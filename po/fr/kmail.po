@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1999-04-19 02:26+0200\n"
+"POT-Creation-Date: 1999-04-20 02:30+0200\n"
 "PO-Revision-Date: 1999-01-30 17:30 CET\n"
 "Last-Translator: Francois-Xavier DURANCEAU "
 "<Francois-Xavier.Duranceau@loria.fr>\n"
@@ -613,7 +613,7 @@ msgstr "Boîte aux lettres POP"
 msgid "Login:"
 msgstr "Utilisateur :"
 
-#: kmacctpop.cpp:481 kmsettings.cpp:902
+#: kmacctpop.cpp:486 kmsettings.cpp:902
 msgid "Password:"
 msgstr "Mot de passe :"
 
@@ -1183,11 +1183,11 @@ msgstr "Echec du chargement du carnet d'adresses"
 msgid "Unknown command line option: %s"
 msgstr "L'option %s de la ligne de commande est inconnue."
 
-#: kmacctlocal.cpp:76
+#: kmacctlocal.cpp:77
 msgid "Cannot open file:"
 msgstr "Impossible d'ouvrir le fichier :"
 
-#: kmacctlocal.cpp:105
+#: kmacctlocal.cpp:113
 #, c-format
 msgid ""
 "Cannot remove mail from\n"
@@ -1210,7 +1210,7 @@ msgstr "Nom d'utilisateur incorrect"
 msgid "Incorrect Password"
 msgstr "Mot de passe incorrect"
 
-#: kmacctpop.cpp:184
+#: kmacctpop.cpp:185
 msgid ""
 "Please specify Host, Port  and\n"
 "destination folder in the settings\n"
@@ -1220,19 +1220,19 @@ msgstr ""
 "le dossier de destination dans la section\n"
 "configuration, puis essayez de nouveau."
 
-#: kmacctpop.cpp:286
+#: kmacctpop.cpp:291
 msgid "Pop Mail Error"
 msgstr "Erreur dans un message POP"
 
-#: kmacctpop.cpp:291
+#: kmacctpop.cpp:296
 msgid "Pop Mail Network Error"
 msgstr "Erreur réseau dans un message POP"
 
-#: kmacctpop.cpp:307
+#: kmacctpop.cpp:312
 msgid "Unknown error"
 msgstr "Erreur inconnue"
 
-#: kmacctpop.cpp:312
+#: kmacctpop.cpp:317
 #, c-format
 msgid ""
 "Account: %s\n"
@@ -1243,7 +1243,7 @@ msgstr ""
 "Dans %s :\n"
 "%s"
 
-#: kmacctpop.cpp:472
+#: kmacctpop.cpp:477
 msgid "Login Name:"
 msgstr "Utilisateur :"
 
@@ -1391,11 +1391,11 @@ msgstr "Boîte aux lettres locale"
 msgid "Pop3"
 msgstr "Boîte aux lettres POP3"
 
-#: kmfilteraction.cpp:93 kmfilteraction.cpp:191
+#: kmfilteraction.cpp:93 kmfilteraction.cpp:197
 msgid "transfer"
 msgstr "transférer"
 
-#: kmfilteraction.cpp:160 kmfilteraction.cpp:193
+#: kmfilteraction.cpp:166 kmfilteraction.cpp:199
 msgid "skip rest"
 msgstr "ignorer le reste"
 

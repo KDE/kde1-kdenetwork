@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1999-04-19 02:26+0200\n"
+"POT-Creation-Date: 1999-04-20 02:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Kim Enkovaara <kim.enkovaara@iki.fi>\n"
 
@@ -603,7 +603,7 @@ msgstr "POP-osoite"
 msgid "Login:"
 msgstr "K‰ytt‰j‰tunnus:"
 
-#: kmacctpop.cpp:481 kmsettings.cpp:902
+#: kmacctpop.cpp:486 kmsettings.cpp:902
 msgid "Password:"
 msgstr "Salasana:"
 
@@ -1172,11 +1172,11 @@ msgstr "Osoitekirjan lataaminen ep‰onnistui"
 msgid "Unknown command line option: %s"
 msgstr "Tuntematon komentorivioptio: %s"
 
-#: kmacctlocal.cpp:76
+#: kmacctlocal.cpp:77
 msgid "Cannot open file:"
 msgstr "En voi avata tiedostoa:"
 
-#: kmacctlocal.cpp:105
+#: kmacctlocal.cpp:113
 #, c-format
 msgid ""
 "Cannot remove mail from\n"
@@ -1199,7 +1199,7 @@ msgstr "Virheellinen k‰ytt‰j‰nimi"
 msgid "Incorrect Password"
 msgstr "V‰‰r‰ salasana"
 
-#: kmacctpop.cpp:184
+#: kmacctpop.cpp:185
 msgid ""
 "Please specify Host, Port  and\n"
 "destination folder in the settings\n"
@@ -1209,19 +1209,19 @@ msgstr ""
 "l‰hetysparametrit asetuksista\n"
 "ja kokeile uudelleen"
 
-#: kmacctpop.cpp:286
+#: kmacctpop.cpp:291
 msgid "Pop Mail Error"
 msgstr "Pop-postivirhe"
 
-#: kmacctpop.cpp:291
+#: kmacctpop.cpp:296
 msgid "Pop Mail Network Error"
 msgstr "Pop-postin verkkovirhe"
 
-#: kmacctpop.cpp:307
+#: kmacctpop.cpp:312
 msgid "Unknown error"
 msgstr "Tuntematon virhe"
 
-#: kmacctpop.cpp:312
+#: kmacctpop.cpp:317
 #, c-format
 msgid ""
 "Account: %s\n"
@@ -1232,7 +1232,7 @@ msgstr ""
 "%s:\n"
 "%s"
 
-#: kmacctpop.cpp:472
+#: kmacctpop.cpp:477
 msgid "Login Name:"
 msgstr "K‰ytt‰j‰tunnus:"
 
@@ -1381,11 +1381,11 @@ msgstr "Paikallinen osoite"
 msgid "Pop3"
 msgstr "POP3"
 
-#: kmfilteraction.cpp:93 kmfilteraction.cpp:191
+#: kmfilteraction.cpp:93 kmfilteraction.cpp:197
 msgid "transfer"
 msgstr "siirr‰"
 
-#: kmfilteraction.cpp:160 kmfilteraction.cpp:193
+#: kmfilteraction.cpp:166 kmfilteraction.cpp:199
 msgid "skip rest"
 msgstr "ohita loput"
 

@@ -23,7 +23,8 @@ msgstr "&Redireccionar"
 
 #: main.cpp:70
 msgid "usage: kcmktalkd [-init | soundpage | answmachpage | forwmachpage ]\n"
-msgstr "utilização: kcmktalkd [-init | soundpage | answmachpage | formwmachpage ]\n"
+msgstr ""
+"utilização: kcmktalkd [-init | soundpage | answmachpage | formwmachpage ]\n"
 
 #: main.cpp:111
 msgid "KTalkd Configuration"
@@ -117,7 +118,8 @@ msgstr "&Primeira linha"
 #: answmachpage.cpp:64
 #, c-format
 msgid "Use first %s for caller name, and second %s for caller hostname"
-msgstr "Utilize %s primeiro para o nome da emissor, e em seguida para a máquina"
+msgstr ""
+"Utilize %s primeiro para o nome da emissor, e em seguida para a máquina"
 
 #: answmachpage.cpp:68
 msgid "&Receive a mail even if no message left"
@@ -173,8 +175,7 @@ msgid ""
 "See Help for further explanations.\n"
 msgstr ""
 "FWA : Enviar anuncio apenas. Ligação directa. Não recomendado\n"
-"FWR : Enviar tudo, fazendo modificações quando necessário. Ligação "
-"directa.\n"
+"FWR : Enviar tudo, fazendo modificações quando necessário. Ligação directa.\n"
 "FWT : Enviar todos os pedidos e assumir o talk. Sem ligação directa.\n"
 "Uso recomendado : FWT se estiver atrás de uma firewall (e se o ktalkd\n"
 "conseguir aceder a ambas as redes), e FWR nos outros casos.\n"

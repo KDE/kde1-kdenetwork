@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kdenetwork\n"
-"POT-Creation-Date: 1999-04-19 02:26+0200\n"
+"POT-Creation-Date: 1999-04-20 02:30+0200\n"
 "PO-Revision-Date: 1999-02-27 21:38+0200\n"
 "Last-Translator: Jaime Robles <ea4abw@amsat.org>\n"
 "Language-Team: Spanish <kde-es@kde.org>\n"
@@ -607,7 +607,7 @@ msgstr "Cuenta Pop"
 msgid "Login:"
 msgstr "Usuario:"
 
-#: kmacctpop.cpp:481 kmsettings.cpp:902
+#: kmacctpop.cpp:486 kmsettings.cpp:902
 msgid "Password:"
 msgstr "Contraseña:"
 
@@ -1177,11 +1177,11 @@ msgstr "Fallo en la carga del libro de direcciones"
 msgid "Unknown command line option: %s"
 msgstr "Comando desconocido: %s"
 
-#: kmacctlocal.cpp:76
+#: kmacctlocal.cpp:77
 msgid "Cannot open file:"
 msgstr "No puedo abrir archivo:"
 
-#: kmacctlocal.cpp:105
+#: kmacctlocal.cpp:113
 #, c-format
 msgid ""
 "Cannot remove mail from\n"
@@ -1204,7 +1204,7 @@ msgstr "Nombre de usuario incorrecto"
 msgid "Incorrect Password"
 msgstr "Contraseña incorrecta"
 
-#: kmacctpop.cpp:184
+#: kmacctpop.cpp:185
 msgid ""
 "Please specify Host, Port  and\n"
 "destination folder in the settings\n"
@@ -1214,19 +1214,19 @@ msgstr ""
 "carpeta de destino en las opciones\n"
 "e inténtelo de nuevo."
 
-#: kmacctpop.cpp:286
+#: kmacctpop.cpp:291
 msgid "Pop Mail Error"
 msgstr "Error de correo Pop"
 
-#: kmacctpop.cpp:291
+#: kmacctpop.cpp:296
 msgid "Pop Mail Network Error"
 msgstr "Error de red en correo Pop"
 
-#: kmacctpop.cpp:307
+#: kmacctpop.cpp:312
 msgid "Unknown error"
 msgstr "Error desconocido"
 
-#: kmacctpop.cpp:312
+#: kmacctpop.cpp:317
 #, c-format
 msgid ""
 "Account: %s\n"
@@ -1237,7 +1237,7 @@ msgstr ""
 "En %s:\n"
 "%s"
 
-#: kmacctpop.cpp:472
+#: kmacctpop.cpp:477
 msgid "Login Name:"
 msgstr "Usuario:"
 
@@ -1386,11 +1386,11 @@ msgstr "Buzón local"
 msgid "Pop3"
 msgstr "Pop3"
 
-#: kmfilteraction.cpp:93 kmfilteraction.cpp:191
+#: kmfilteraction.cpp:93 kmfilteraction.cpp:197
 msgid "transfer"
 msgstr "transferir"
 
-#: kmfilteraction.cpp:160 kmfilteraction.cpp:193
+#: kmfilteraction.cpp:166 kmfilteraction.cpp:199
 msgid "skip rest"
 msgstr "descartar resto"
 

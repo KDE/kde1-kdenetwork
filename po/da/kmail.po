@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE NETWORK/kmail\n"
-"POT-Creation-Date: 1999-04-19 02:26+0200\n"
+"POT-Creation-Date: 1999-04-20 02:30+0200\n"
 "PO-Revision-Date: 1999-02-17 17:00+CET-1\n"
 "Last-Translator: Erik Kjær Pedersen <erik@binghamton.edu>\n"
 "Language-Team: da <LL@li.org>\n"
@@ -611,7 +611,7 @@ msgstr "Pop Konto"
 msgid "Login:"
 msgstr "Login:"
 
-#: kmacctpop.cpp:481 kmsettings.cpp:902
+#: kmacctpop.cpp:486 kmsettings.cpp:902
 msgid "Password:"
 msgstr "Kodeord:"
 
@@ -1179,11 +1179,11 @@ msgstr "Indlæsning af adressebogen mislykkedes"
 msgid "Unknown command line option: %s"
 msgstr "Ukendt kommandolinie indgang: %s"
 
-#: kmacctlocal.cpp:76
+#: kmacctlocal.cpp:77
 msgid "Cannot open file:"
 msgstr "Kan ikke åbne fil:"
 
-#: kmacctlocal.cpp:105
+#: kmacctlocal.cpp:113
 #, c-format
 msgid ""
 "Cannot remove mail from\n"
@@ -1206,7 +1206,7 @@ msgstr "Forkert brugernavn"
 msgid "Incorrect Password"
 msgstr "Forkert kodeord"
 
-#: kmacctpop.cpp:184
+#: kmacctpop.cpp:185
 msgid ""
 "Please specify Host, Port  and\n"
 "destination folder in the settings\n"
@@ -1215,19 +1215,19 @@ msgstr ""
 "Angiv vært, port og målfolder i \n"
 "indstillinger og prøv igen."
 
-#: kmacctpop.cpp:286
+#: kmacctpop.cpp:291
 msgid "Pop Mail Error"
 msgstr "Pop post fejl"
 
-#: kmacctpop.cpp:291
+#: kmacctpop.cpp:296
 msgid "Pop Mail Network Error"
 msgstr "Pop post netværksfejl"
 
-#: kmacctpop.cpp:307
+#: kmacctpop.cpp:312
 msgid "Unknown error"
 msgstr "ukendt fejl"
 
-#: kmacctpop.cpp:312
+#: kmacctpop.cpp:317
 #, c-format
 msgid ""
 "Account: %s\n"
@@ -1238,7 +1238,7 @@ msgstr ""
 "In %s:\n"
 "%s"
 
-#: kmacctpop.cpp:472
+#: kmacctpop.cpp:477
 msgid "Login Name:"
 msgstr "Login navn:"
 
@@ -1386,11 +1386,11 @@ msgstr "Lokal postboks"
 msgid "Pop3"
 msgstr "Pop3"
 
-#: kmfilteraction.cpp:93 kmfilteraction.cpp:191
+#: kmfilteraction.cpp:93 kmfilteraction.cpp:197
 msgid "transfer"
 msgstr "overfør"
 
-#: kmfilteraction.cpp:160 kmfilteraction.cpp:193
+#: kmfilteraction.cpp:166 kmfilteraction.cpp:199
 msgid "skip rest"
 msgstr "glem resten"
 

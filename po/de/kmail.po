@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1999-04-19 02:26+0200\n"
+"POT-Creation-Date: 1999-04-20 02:30+0200\n"
 "PO-Revision-Date: 1999-03-20 11:26+MET\n"
 "Last-Translator: Matthias Kiefer <matthias.kiefer@gmx.de>\n"
 "Language-Team: German <kde-i18n@kde.org>\n"
@@ -608,7 +608,7 @@ msgstr "POP-Postfach"
 msgid "Login:"
 msgstr "Benutzer:"
 
-#: kmacctpop.cpp:481 kmsettings.cpp:902
+#: kmacctpop.cpp:486 kmsettings.cpp:902
 msgid "Password:"
 msgstr "Paßwort:"
 
@@ -1180,11 +1180,11 @@ msgstr "Laden des Adreßbuchs fehlgeschlagen"
 msgid "Unknown command line option: %s"
 msgstr "Unbekannter Befehlszeilen-Parameter: %s"
 
-#: kmacctlocal.cpp:76
+#: kmacctlocal.cpp:77
 msgid "Cannot open file:"
 msgstr "Konnte Datei nicht öffnen:"
 
-#: kmacctlocal.cpp:105
+#: kmacctlocal.cpp:113
 #, c-format
 msgid ""
 "Cannot remove mail from\n"
@@ -1207,7 +1207,7 @@ msgstr "Falscher Benutzername"
 msgid "Incorrect Password"
 msgstr "Falsches Paßwort"
 
-#: kmacctpop.cpp:184
+#: kmacctpop.cpp:185
 msgid ""
 "Please specify Host, Port  and\n"
 "destination folder in the settings\n"
@@ -1217,19 +1217,19 @@ msgstr ""
 "Ordner in den Einstellungen an, und\n"
 "versuchen Sie es noch einmal."
 
-#: kmacctpop.cpp:286
+#: kmacctpop.cpp:291
 msgid "Pop Mail Error"
 msgstr "POP-Mail Fehler"
 
-#: kmacctpop.cpp:291
+#: kmacctpop.cpp:296
 msgid "Pop Mail Network Error"
 msgstr "POP-Mail Netzwerkfehler"
 
-#: kmacctpop.cpp:307
+#: kmacctpop.cpp:312
 msgid "Unknown error"
 msgstr "Unbekannter Fehler"
 
-#: kmacctpop.cpp:312
+#: kmacctpop.cpp:317
 #, c-format
 msgid ""
 "Account: %s\n"
@@ -1240,7 +1240,7 @@ msgstr ""
 "In %s:\n"
 "%s"
 
-#: kmacctpop.cpp:472
+#: kmacctpop.cpp:477
 msgid "Login Name:"
 msgstr "Login-Name:"
 
@@ -1389,11 +1389,11 @@ msgstr "Lokales Postfach"
 msgid "Pop3"
 msgstr "POP3-Postfach"
 
-#: kmfilteraction.cpp:93 kmfilteraction.cpp:191
+#: kmfilteraction.cpp:93 kmfilteraction.cpp:197
 msgid "transfer"
 msgstr "übertragen"
 
-#: kmfilteraction.cpp:160 kmfilteraction.cpp:193
+#: kmfilteraction.cpp:166 kmfilteraction.cpp:199
 msgid "skip rest"
 msgstr "Rest überspringen"
 

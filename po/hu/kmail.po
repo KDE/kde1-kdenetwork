@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kdenetwork 1.1\n"
-"POT-Creation-Date: 1999-04-19 02:26+0200\n"
+"POT-Creation-Date: 1999-04-20 02:30+0200\n"
 "PO-Revision-Date: Tue Mar 9 1999 12:59:50+0100\n"
 "Last-Translator: Marcell Lengyel <miketkf@yahoo.com>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -659,7 +659,7 @@ msgstr "POP ügyfél"
 msgid "Login:"
 msgstr "Azonosító:"
 
-#: kmacctpop.cpp:481 kmsettings.cpp:902
+#: kmacctpop.cpp:486 kmsettings.cpp:902
 msgid "Password:"
 msgstr "Jelszó:"
 
@@ -1285,11 +1285,11 @@ msgid "Unknown command line option: %s"
 msgstr "Ismeretlen parancssori opció: %s"
 
 #
-#: kmacctlocal.cpp:76
+#: kmacctlocal.cpp:77
 msgid "Cannot open file:"
 msgstr "Nem lehet megnyitni a fájlt:"
 
-#: kmacctlocal.cpp:105
+#: kmacctlocal.cpp:113
 #, c-format
 msgid ""
 "Cannot remove mail from\n"
@@ -1313,7 +1313,7 @@ msgid "Incorrect Password"
 msgstr "Hibás jelszó"
 
 #
-#: kmacctpop.cpp:184
+#: kmacctpop.cpp:185
 msgid ""
 "Please specify Host, Port  and\n"
 "destination folder in the settings\n"
@@ -1323,19 +1323,19 @@ msgstr ""
 "a tárolási mappát a Beállításokban,\n"
 "majd próbálja újra."
 
-#: kmacctpop.cpp:286
+#: kmacctpop.cpp:291
 msgid "Pop Mail Error"
 msgstr "Pop üzenet hiba"
 
-#: kmacctpop.cpp:291
+#: kmacctpop.cpp:296
 msgid "Pop Mail Network Error"
 msgstr "Pop hálózati hiba"
 
-#: kmacctpop.cpp:307
+#: kmacctpop.cpp:312
 msgid "Unknown error"
 msgstr "Ismeretlen hiba"
 
-#: kmacctpop.cpp:312
+#: kmacctpop.cpp:317
 #, c-format
 msgid ""
 "Account: %s\n"
@@ -1347,7 +1347,7 @@ msgstr ""
 "%s"
 
 #
-#: kmacctpop.cpp:472
+#: kmacctpop.cpp:477
 msgid "Login Name:"
 msgstr "Azonosító:"
 
@@ -1502,11 +1502,11 @@ msgid "Pop3"
 msgstr "POP3"
 
 #
-#: kmfilteraction.cpp:93 kmfilteraction.cpp:191
+#: kmfilteraction.cpp:93 kmfilteraction.cpp:197
 msgid "transfer"
 msgstr "továbbítás"
 
-#: kmfilteraction.cpp:160 kmfilteraction.cpp:193
+#: kmfilteraction.cpp:166 kmfilteraction.cpp:199
 msgid "skip rest"
 msgstr "többi elvetése"
 
