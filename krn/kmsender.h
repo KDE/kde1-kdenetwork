@@ -8,7 +8,6 @@
 #include <mimelib/string.h>
 #include <mimelib/utility.h>
 #include <qstring.h>
-#include <NNTP.h>
 
 class KMMessage;
 class KMFolder;
@@ -21,7 +20,7 @@ class KMSender
 {
 public:
   enum Method { smUnknown=0, smSMTP=1, smMail=2 };
-  KMSender(NNTP *_nntp);
+
   KMSender();
   virtual ~KMSender();
 
@@ -34,7 +33,6 @@ public:
     Returns TRUE on success. */
   virtual bool send(KMMessage* msg, short sendNow=-1);
 
-  virtual bool sendNNTP(KMMessage* msg, short sendNow=-1);
   /** Send all queued messages. Returns TRUE on success. */
   virtual bool sendQueued(void);
 
@@ -88,7 +86,6 @@ private:
   QString mSmtpHost;
   int mSmtpPort;
   bool doSendSMTP(KMMessage *);
-  NNTP *nntp;
 };
 
 #endif /*kmsender_h*/

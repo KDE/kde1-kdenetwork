@@ -541,6 +541,7 @@ bool Artdlg::actions (int action)
             conf->writeEntry("headers",mShowHeaders);
 
             KMMessage *m=new KMMessage();
+            m->initHeader();
             m->setGroups(groupname);
 
             KMComposeWin *comp=new KMComposeWin(m);
@@ -564,6 +565,7 @@ bool Artdlg::actions (int action)
             mm->fromString(ts->data());
             delete ts;
             KMMessage *m=mm->createReply(true);
+            m->initHeader();
             QString refs=mm->references();
             refs+=" ";
             refs+=mm->id();
@@ -593,6 +595,7 @@ bool Artdlg::actions (int action)
             m->fromString(ts->data());
             delete ts;
             KMMessage *mm=m->createReply();
+            m->initHeader();
             mm->setGroups("");
             
             KMComposeWin *comp=new KMComposeWin(mm);
@@ -617,6 +620,7 @@ bool Artdlg::actions (int action)
             delete ts;
             
             KMMessage *mm=m->createForward();
+            m->initHeader();
             mm->setGroups("");
             
             KMComposeWin *comp=new KMComposeWin(mm);
@@ -640,6 +644,7 @@ bool Artdlg::actions (int action)
             mm->fromString(ts->data());
             delete ts;
             KMMessage *m=mm->createReply(true);
+            m->initHeader();
             QString refs=mm->references();
             refs+=" ";
             refs+=mm->id();

@@ -1,7 +1,15 @@
 // kmsender.cpp
 
 #include "kmsender.h"
+
+#ifndef KRN
+#include "kmfoldermgr.h"
+#include "kmglobal.h"
+#include "kmfolder.h"
+#endif
+
 #include "kmmessage.h"
+#include "kmidentity.h"
 
 #include <kconfig.h>
 #include <kapp.h>
@@ -12,51 +20,14 @@
 #include <assert.h>
 #include <stdio.h>
 
-#define SENDER_GROUP "sending mail"
 
+#ifdef KRN
+extern KApplication *app;
+extern KMIdentity *identity;
 extern KLocale *nls;
-extern QString outpath;
+#endif
 
-KMSender::KMSender(NNTP *_nntp)
-{
-    nntp=_nntp;
-    setMethod (smSMTP);
-    setSmtpPort(25);
-}
-
-bool KMSender::sendNNTP(KMMessage* aMsg, short sendNow=-1)
-{
-    //Basically, queing is just placing the message in the
-    //outgoing directory, no big deal.
-    
-    QFile f(outpath+aMsg->id());
-    if (f.exists())
-    {
-        warning ("There exists another message with this ID!\n That shouldn't happen!!!");
-        return FALSE;
-    }
-    if (!f.open (IO_WriteOnly))
-    {
-        warning ("I can't open for writing, so I can't spool this thing");
-        return FALSE;
-    }
-    debug ("Spooling the message");
-    f.writeBlock(aMsg->asString(),strlen(aMsg->asString()));
-    f.close();
-    
-    if (nntp)
-    {
-        if (sendNow)
-        {
-            if (nntp->postArticle(aMsg->id()))
-                return true;
-            else
-                return false;
-        }
-    }
-    return TRUE;
-}
-
+#define SENDER_GROUP "sending mail"
 
 //-----------------------------------------------------------------------------
 KMSender::KMSender()
@@ -78,7 +49,7 @@ KMSender::~KMSender()
 void KMSender::readConfig(void)
 {
   QString str;
-  KConfig* config = kapp->getConfig();
+  KConfig* config = app->getConfig();
 
   config->setGroup(SENDER_GROUP);
 
@@ -86,7 +57,7 @@ void KMSender::readConfig(void)
   mMailer = config->readEntry("Mailer", "/usr/sbin/sendmail");
   mSmtpHost = config->readEntry("Smtp Host", "localhost");
   mSmtpPort = config->readNumEntry("Smtp Port", 25);
-
+  
   str = config->readEntry("Method");
   if (str=="mail") mMethod = smMail;
   else if (str=="smtp") mMethod = smSMTP;
@@ -97,7 +68,7 @@ void KMSender::readConfig(void)
 //-----------------------------------------------------------------------------
 void KMSender::writeConfig(bool aWithSync)
 {
-  KConfig* config = kapp->getConfig();
+  KConfig* config = app->getConfig();
   config->setGroup(SENDER_GROUP);
 
   config->writeEntry("Immediate", mSendImmediate);
@@ -113,7 +84,20 @@ void KMSender::writeConfig(bool aWithSync)
 //-----------------------------------------------------------------------------
 bool KMSender::sendQueued(void)
 {
-  return false;
+  KMMessage* msg;
+  bool rc = TRUE;
+
+#ifndef KRN
+  outboxFolder->open();
+  while(outboxFolder->count() > 0)
+  {
+    msg = outboxFolder->getMsg(0);
+    rc = send(msg, TRUE);
+    if (!rc) break;
+  }
+  outboxFolder->close();
+#endif
+  return rc;
 }
 
 
@@ -121,9 +105,16 @@ bool KMSender::sendQueued(void)
 bool KMSender::send(KMMessage* aMsg, short sendNow)
 {
   bool sendOk = FALSE;
-  int rc=1;
+  int rc;
 
   assert(aMsg != NULL);
+  if (!identity->mailingAllowed())
+  {
+    warning(nls->translate("Please set the required fields in the\n"
+			   "identity settings:\n"
+			   "user-name and email-address"));
+    return FALSE;
+  }
   if (!aMsg->to() || aMsg->to()[0]=='\0') return FALSE;
 
   //aMsg->viewSource("KMSender::send()");
@@ -131,6 +122,10 @@ bool KMSender::send(KMMessage* aMsg, short sendNow)
   if (sendNow==-1) sendNow = mSendImmediate;
   if (!sendNow)
   {
+#ifndef KRN
+    rc = outboxFolder->addMsg(aMsg);
+    if (!rc) aMsg->setStatus(KMMsgStatusQueued);
+#endif
     return (rc==0);
   }
 
@@ -140,7 +135,12 @@ bool KMSender::send(KMMessage* aMsg, short sendNow)
 			      "and try again."));
   if (sendOk)
   {
+    aMsg->setStatus(KMMsgStatusSent);
+#ifndef KRN
+    sentFolder->addMsg(aMsg);
+#endif
   }
+
   return sendOk;
 }
 
@@ -187,21 +187,21 @@ bool KMSender::doSendSMTP(KMMessage* msg)
   replyCode = client.Helo(); // Send HELO command
   if(replyCode != 250) return smtpFailed(client, "HELO", replyCode);
 
-  replyCode = client.Mail(msg->from());
+  replyCode = client.Mail(identity->emailAddr());
   if(replyCode != 250) return smtpFailed(client, "FROM", replyCode);
 
   replyCode = client.Rcpt(msg->to()); // Send RCPT command
   if(replyCode != 250 && replyCode != 251) 
     return smtpFailed(client, "RCPT", replyCode);
 
-  if(!QString (msg->cc()).isEmpty())  // Check if cc is set.
+  if(!msg->cc().isEmpty())  // Check if cc is set.
   {
     replyCode = client.Rcpt(msg->cc()); // Send RCPT command
     if(replyCode != 250 && replyCode != 251)
       return smtpFailed(client, "RCPT", replyCode);
   }
 
-  if(!QString (msg->bcc()).isEmpty())  // Check if bcc ist set.
+  if(!msg->bcc().isEmpty())  // Check if bcc ist set.
   {
     replyCode = client.Rcpt(msg->bcc()); // Send RCPT command
     if(replyCode != 250 && replyCode != 251)

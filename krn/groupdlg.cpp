@@ -422,7 +422,6 @@ void Groupdlg::online()
     qApp->processEvents ();
     if (server->connect ())
     {
-        msgSender=new KMSender(server);
         if (server->isReadOnly ())
             statusBar ()->changeItem (klocale->translate("Connected to server - Posting not allowed"), 2);
         else
@@ -546,12 +545,14 @@ bool Groupdlg::actions (int action,NewsGroup *group)
             {
                 conf->setGroup("NNTP");
                 conf->writeEntry("NNTPServer",dlg.servername->text());
-                conf->writeEntry("SMTPServer",dlg.smtpserver->text());
                 conf->writeEntry("ConnectAtStart",dlg.connectatstart->isChecked());
                 conf->writeEntry("Authenticate",dlg.authenticate->isChecked());
                 conf->writeEntry("Username",dlg.username->text());
                 conf->writeEntry("Password",dlg.password->text());
+                conf->setGroup("sending mail");
+                conf->writeEntry("Smtp Host",dlg.smtpserver->text());
                 conf->sync();
+                msgSender->readConfig();
             }
             qApp->restoreOverrideCursor ();
             success = true;
@@ -656,8 +657,11 @@ bool Groupdlg::actions (int action,NewsGroup *group)
             conf->writeEntry("headers",mShowHeaders);
 
             KMMessage *m=new KMMessage();
+            m->initHeader();
+            debug ("from-->%s",m->from().data());
             m->setGroups(group->name);
 
+            debug("fulladdr-->%s",identity->fullEmailAddr().data());
             KMComposeWin *comp=new KMComposeWin(m);
             comp->show();
             success=true;

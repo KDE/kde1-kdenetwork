@@ -3,14 +3,17 @@ Changes made Nov 21
 -----------------------------------------------------------------------------
 
 * [Roberto] Adopted kpgp.
-            Handle URLs in messages. (mailto, ftp , http, and news).
-            Altavista recovery works again.
-            Hyperlinked references work again.
-            Composer support for NNTP headers.
-            Composer window have all the right data.
-            Force composer window to show the right fields. This is different
-            from kmail, where you are always composing mailm because sometimes
+* [Roberto] Handle URLs in messages. (mailto, ftp , http, and news).
+* [Roberto] Altavista recovery works again.
+* [Roberto] Hyperlinked references work again.
+* [Roberto] Composer support for NNTP headers.
+* [Roberto] Composer window have all the right data.
+* [Roberto] Force composer window to show the right fields. This is different
+            from kmail, where you are always composing mail because sometimes
             you are composing mail, sometimes news, sometimes both :-)
+* [Roberto] Imported last kmsender.
+            SMTP inmediate sending works.
+            Need to reimplement NNTP and delayed sending.
             
 -----------------------------------------------------------------------------
 Changes made Nov 20

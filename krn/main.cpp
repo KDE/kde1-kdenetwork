@@ -96,12 +96,14 @@ int main( int argc, char **argv )
 
     app=&a;
     conf=a.getConfig();
+
+    checkConf();
     nls=a.getLocale();
     keys = new KStdAccel(conf);
     kbp=new KBusyPtr();
+    msgSender=new KMSender();
+    msgSender->setMethod(KMSender::smSMTP);
     KMMessage::readConfig();
-
-    checkConf();
 
     QString pixdef=a.kdedir() + QString("/lib/pics/krn/");
     conf->setGroup("KDE Setup");
@@ -157,54 +159,40 @@ void checkConf()
 
     identity=new KMIdentity();
     
-    char *username = getpwuid(getuid())->pw_name;
-    char hostname[1024];
-    gethostname(hostname,1023);
-    char mailaddr[1024];
-    sprintf (mailaddr,"%s@%s",username,hostname);
-    char *realname = getpwuid(getuid())->pw_gecos;
-
     Asker ask;
     QString data;
-//    conf->setGroup("Identity");
+    conf->setGroup("Identity");
     
-//    data=conf->readEntry("Address");
-    data=identity->emailAddr();
+    data=conf->readEntry("Email Address");
     if (data.isEmpty())
     {
         ask.setCaption (klocale->translate("KRN-Missing Configuration info"));
         ask.label->setText(klocale->translate("Please enter your email adress"));
-        ask.entry->setText(mailaddr);
+        ask.entry->setText(identity->emailAddr());
         ask.exec();
         data=ask.entry->text();
-//        conf->writeEntry("Address",data);
-
         identity->setEmailAddr(data);
     }
 
 
-//    data=conf->readEntry("RealName");
-    data=identity->fullName();
+    data=conf->readEntry("Name");
     if (data.isEmpty())
     {
         ask.setCaption (klocale->translate("KRN-Missing Configuration info"));
         ask.label->setText(klocale->translate("Please enter your real name"));
-        ask.entry->setText(realname);
+        ask.entry->setText(identity->fullName());
         ask.exec();
         data=ask.entry->text();
-//        conf->writeEntry("RealName",data);
-
         identity->setFullName(data);
     }
 
 
-//    data=conf->readEntry("Organization");
     data=identity->organization();
     if (data.isEmpty())
     {
         ask.setCaption (klocale->translate("KRN-Missing Configuration info"));
         ask.label->setText(klocale->translate("Please enter your organization's name"));
-        ask.entry->setText("");
+        ask.entry->setText(getenv("ORGANIZATION"));
         ask.exec();
         data=ask.entry->text();
         conf->writeEntry("Organization",data);
@@ -223,6 +211,21 @@ void checkConf()
         data=ask.entry->text();
         conf->writeEntry("NNTPServer",data);
     }
+
+    conf->setGroup("sending mail");
+    data=conf->readEntry("Smtp Host");
+    if (data.isEmpty())
+    {
+        ask.setCaption (klocale->translate("KRN-Missing Configuration info"));
+        ask.label->setText(klocale->translate("Please enter your SMTP server name"));
+        QString add=identity->emailAddr();
+        add=add.right(add.length()-add.find('@')-1);
+        ask.entry->setText(add.data());
+        ask.exec();
+        data=ask.entry->text();
+        conf->writeEntry("Smtp Host",data);
+    }
+
     conf->sync();
     identity->writeConfig();
 }
