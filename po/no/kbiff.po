@@ -22,9 +22,8 @@ msgid "Profile:"
 msgstr "Profil:"
 
 #: setupdlg.cpp:84
-#, fuzzy
 msgid "&New..."
-msgstr "&Hjelp..."
+msgstr "&Ny..."
 
 #: setupdlg.cpp:91
 msgid "&Rename..."
@@ -78,7 +77,7 @@ msgstr "Bruk sesjonbehandling"
 
 #: setupdlg.cpp:496
 msgid "Icons:"
-msgstr "ikoner:"
+msgstr "Ikoner:"
 
 #: setupdlg.cpp:514
 msgid "No Mail:"
@@ -126,7 +125,11 @@ msgstr "Port:"
 
 #: setupdlg.cpp:841
 msgid "PREAUTH"
-msgstr ""
+msgstr "Foraut."
+
+#: setupdlg.cpp:935 setupdlg.cpp:964
+msgid "Mailbox:"
+msgstr "Postkasse:"
 
 #: setupdlg.cpp:945 setupdlg.cpp:1238
 msgid "New Mailbox"
@@ -169,14 +172,14 @@ msgid "KBiff"
 msgstr "KBiff"
 
 #: setupdlg.cpp:1452
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Version %s\n"
 "\n"
 "Copyright (C) 1998\n"
 "Kurt Granroth"
 msgstr ""
-"Versjon 1.1\n"
+"Versjon %s\n"
 "\n"
 "Copyright (C) 1998\n"
 "Kurt Granroth"
@@ -210,7 +213,6 @@ msgid "&Check mail now"
 msgstr "&Sjekk post nå"
 
 #: kbiff.cpp:479
-#, fuzzy
 msgid "&Read Mail now"
 msgstr "&Sjekk post nå"
 
@@ -220,14 +222,14 @@ msgstr "&Stopp"
 
 #: notify.cpp:28 notify.cpp:45
 msgid "You have new mail!"
-msgstr ""
+msgstr "Du har ny post!"
 
 #: notify.cpp:53
 #, c-format
 msgid "New Messages: %d"
-msgstr ""
+msgstr "Nye meldinger: %d"
 
 #: notify.cpp:58
-#, fuzzy, c-format
+#, c-format
 msgid "Mailbox: %s"
-msgstr "Postkasse:"
+msgstr "Postkasse: %s"
