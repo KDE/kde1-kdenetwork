@@ -217,7 +217,7 @@ void KMMessage::setStatusFields(void)
 }
 
 //----------------------------------------------------------------------------
-const QString KMMessage::headerAsString(void)
+const QString KMMessage::headerAsString(void) const
 {
   DwHeaders& header = mMsg->Headers();
   if(header.AsString() != "")

@@ -170,7 +170,7 @@ bool KMAcctPop::doProcessNewMail(KMIOStatus *wid)
   int tmout;
   int dummy;
   char dummyStr[32];
-  int replyCode; // ReplyCode need from User & Passwd call.
+  //int replyCode; // ReplyCode need from User & Passwd call.
   KMMessage* msg;
   gotMsgs = FALSE;
   bool doFetchMsg;

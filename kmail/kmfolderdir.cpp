@@ -108,7 +108,7 @@ const QString& KMFolderDir::path(void) const
 bool KMFolderDir::reload(void)
 {
   QDir      dir;
-  KMFolderDir* folderDir;
+  //KMFolderDir* folderDir;
   KMFolder* folder;
   QFileInfo* fileInfo;
   QFileInfoList* fiList;

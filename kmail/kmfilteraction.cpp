@@ -13,7 +13,7 @@
 #include <qlineedit.h>
 #include <signal.h>
 #include <stdlib.h>
-
+#include <unistd.h> //for alarm (sven)
 static QString resultStr;
 
 

@@ -73,6 +73,7 @@ bool KMFilter::matches(const KMMessage* msg)
 {
   bool matchesA, matchesB;
 
+cout << "," << endl;
   matchesA = mRuleA.matches(msg);
   if (mOperator==OpIgnore) return matchesA;
   if (matchesA && mOperator==OpOr) return TRUE;
@@ -294,7 +295,18 @@ bool KMFilterRule::matches(const KMMessage* msg)
   QString msgContents;
 
   assert(msg != NULL); // This assert seems to be important
-  msgContents = msg->headerField(mField);
+
+  if( mField == "<message>" ) {
+    // there´s msg->asString(), but this way we can keep msg const (dnaber, 1999-05-27)
+    msgContents = msg->headerAsString();
+    msgContents += msg->bodyDecoded();
+  } else if( mField == "<body>" ) {
+    msgContents = msg->bodyDecoded();
+  } else if( mField == "<any header>" ) {
+    msgContents = msg->headerAsString();
+  } else {
+    msgContents = msg->headerField(mField);
+  }
 
   switch (mFunction)
   {

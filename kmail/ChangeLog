@@ -1,3 +1,13 @@
+
+
+1999-05-29  Sven Radej <radej@kde.org> (KMail-1.0.24)
+
+        * Few "unused variable..." cleaned.
+        
+        * Patch from Daniel Naber <dnaber@mini.gt.owl.de>:
+          - Make <body>, <message> and <any header> filter work.
+         
+
 1999-05-28  Stefan Taferner  <taferner@kde.org> (KMail-1.0.24)
 
 	* Added delayed update of folder list. This fixes the drastical
