@@ -2,8 +2,8 @@
  *            kPPP: A pppd front end for the KDE project
  *
  * $Id$
- * 
- *            Copyright (C) 1997 Bernd Johannes Wuebben 
+ *
+ *            Copyright (C) 1997 Bernd Johannes Wuebben
  *                   wuebben@math.cornell.edu
  *
  *
@@ -64,20 +64,21 @@ PPPStatsDlg::PPPStatsDlg(QWidget *parent, const char *name, QWidget *)
   : QWidget(parent, name, 0 )
 {
   int i;
+  max = 1024;
 
   pixstate = PIXINIT;
   need_to_paint = true;
-  setCaption(i18n("kppp Statistics"));  
+  setCaption(i18n("kppp Statistics"));
 
   QVBoxLayout *tl = new QVBoxLayout(this, 10);
-  QGridLayout *l1 = new QGridLayout(3, 3);
+  QGridLayout *l1 = new QGridLayout(4, 4);
   tl->addLayout(l1, 1);
   box = new QGroupBox(i18n("Statistics"), this);
-  l1->addMultiCellWidget(box, 0, 2, 0, 2);
+  l1->addMultiCellWidget(box, 0, 3, 0, 3);
   l1->addRowSpacing(0, fontMetrics().lineSpacing() - 10);
   l1->setRowStretch(1, 1);
   l1->setColStretch(1, 1);
-  
+
   // inner part of the grid
   QVBoxLayout *l11 = new QVBoxLayout;
   l1->addLayout(l11, 1, 1);
@@ -101,7 +102,7 @@ PPPStatsDlg::PPPStatsDlg(QWidget *parent, const char *name, QWidget *)
   }
   */
 
-  QString pixdir = KApplication::kde_datadir() + "/kppp/pics/";  
+  QString pixdir = KApplication::kde_datadir() + "/kppp/pics/";
   QString tmp;
 
 #define PMERROR(pm) \
@@ -143,7 +144,7 @@ PPPStatsDlg::PPPStatsDlg(QWidget *parent, const char *name, QWidget *)
 
   QGridLayout *l1112 = new QGridLayout(3, 2);
   l111->addLayout(l1112);
-  
+
   ip_address_label1 = new QLabel(this);
   ip_address_label1->setText(i18n("Local Addr:"));
 
@@ -168,8 +169,8 @@ PPPStatsDlg::PPPStatsDlg(QWidget *parent, const char *name, QWidget *)
 
   // consumes space on bottom
   l1112->setRowStretch(2, 1);
-  
-  QGridLayout *l112 = new QGridLayout(5, 4);  
+
+  QGridLayout *l112 = new QGridLayout(5, 4);
   l11->addLayout(l112);
   for(i =0 ; i < 5; i++){
     labela1[i] = new QLabel(this);
@@ -222,18 +223,25 @@ PPPStatsDlg::PPPStatsDlg(QWidget *parent, const char *name, QWidget *)
   QHBoxLayout *l12 = new QHBoxLayout;
   tl->addLayout(l12);
   l12->addStretch(1);
-  
+
+  graph = new QFrame(this);
+  graph->setFrameStyle(QFrame::Box | QFrame::Sunken);
+  l1->addMultiCellWidget(graph, 2, 2, 1, 2);
+  graph->setMinimumWidth(300);
+  graph->setFixedHeight(76+4);
 
   cancelbutton = new QPushButton(this, "cancelbutton");
   cancelbutton->setText(i18n("Close"));
   cancelbutton->setFocus();
   connect(cancelbutton, SIGNAL(clicked()), this,SLOT(cancel()));
   FIXED_HEIGHT(cancelbutton);
-  cancelbutton->setMinimumWidth(QMAX(cancelbutton->sizeHint().width(), 70));   
+  cancelbutton->setMinimumWidth(QMAX(cancelbutton->sizeHint().width(), 70));
   l12->addWidget(cancelbutton);
 
   clocktimer = new QTimer(this);
   connect(clocktimer, SIGNAL(timeout()), SLOT(timeclick()));
+  graphTimer = new QTimer(this);
+  connect(graphTimer, SIGNAL(timeout()), SLOT(updateGraph()));
 
   tl->freeze();
 }
@@ -252,55 +260,132 @@ void PPPStatsDlg::cancel() {
 void PPPStatsDlg::take_stats() {
   init_stats();
   ips_set = false;
+  bin_last = ibytes;
+  bout_last = obytes;  
+  ringIdx = 0;
+  for(int i = 0; i < MAX_GRAPH_WIDTH; i++) {
+    bin[i] = -1;
+    bout[i] = -1;
+  }
   clocktimer->start(PPP_STATS_INTERVAL);
+  graphTimer->start(GRAPH_UPDATE_TIME);
+  updateGraph();
 }
 
 
 void PPPStatsDlg::stop_stats() {
   clocktimer->stop();
+  graphTimer->stop();
+}
+
+void PPPStatsDlg::paintGraph() {
+  // why draw that stuff if not visible?
+  if(!isVisible())
+    return;
+
+  QPixmap pm(graph->width() - 4, graph->height() - 4);
+  QPainter p;
+  pm.fill(graph->backgroundColor());
+  p.begin(&pm);
+
+  int x;
+  int idx = ringIdx - pm.width() + 1;
+  if(idx < 0)
+    idx += MAX_GRAPH_WIDTH;
+    
+  // find good scaling factor    
+  int last_h_in = pm.height() - 8;
+  int last_h_out = pm.height() - 8;
+  
+  // plot scale line
+  p.setPen(black);
+  p.setFont(QFont("fixed", 8));
+  QRect r;
+  QString s;
+  s.sprintf(i18n("%d kb/s"), max/1024);
+  p.drawText(0, 0, pm.width(), 2*8, AlignRight|AlignVCenter, s.data(), -1, &r);
+  p.drawLine(0, 8, r.left() - 8, 8);
+
+  // plot data
+  for(x = 1; x < pm.width(); x++) {
+    int h_in, h_out;
+    
+    h_in = pm.height() - (int)((float)bin[idx]/max * (pm.height() - 8))-1;
+    h_out = pm.height() - (int)((float)bout[idx]/max * (pm.height() - 8))-1;
+    
+    p.setPen(red);
+    if(bout[idx]!=-1)
+      p.drawLine(x-1, last_h_out, x, h_out);
+    p.setPen(blue);
+    if(bin[idx]!=-1)
+      p.drawLine(x-1, last_h_in, x, h_in);
+    last_h_in = h_in;
+    last_h_out = h_out;
+
+    idx = (idx + 1) % MAX_GRAPH_WIDTH;
+  }
+
+  p.end();
+  bitBlt(graph, 2, 2, &pm, 0, 0, pm.width(), pm.height(), CopyROP);
+}
+
+void PPPStatsDlg::updateGraph() {
+  bin[ringIdx] = ibytes - bin_last;
+  bout[ringIdx] = obytes - bout_last;
+  if(bin[ringIdx] > max)
+    max = ((bin[ringIdx] / 1024) + 1) * 1024;
+ 
+ if(bout[ringIdx] > max)
+    max = ((bout[ringIdx] / 1024) + 1) * 1024;
+ 
+  bin_last = ibytes;
+  bout_last = obytes;
+  ringIdx++;
+  paintGraph();
 }
 
 
 void PPPStatsDlg::paintEvent (QPaintEvent *) {
   need_to_paint = true;
   paintIcon();
+  paintGraph();
 }
 
 
 void PPPStatsDlg::paintIcon(){
 
     if((ibytes_last != ibytes) && (obytes_last != obytes)){
-      bitBlt( pixmap_l, 0, 0, &big_modem_both_pixmap );    
+      bitBlt( pixmap_l, 0, 0, &big_modem_both_pixmap );
       ibytes_last = ibytes;
       obytes_last = obytes;
       pixstate = PIXBOTH;
       return;
     }
-    
+
     if (ibytes_last != ibytes){
-      bitBlt( pixmap_l, 0, 0, &big_modem_left_pixmap );    
+      bitBlt( pixmap_l, 0, 0, &big_modem_left_pixmap );
       ibytes_last = ibytes;
       obytes_last = obytes;
       pixstate = PIXLEFT;
       return;
     }
-    
+
     if(obytes_last != obytes){
-      bitBlt( pixmap_l, 0, 0, &big_modem_right_pixmap );    
+      bitBlt( pixmap_l, 0, 0, &big_modem_right_pixmap );
       ibytes_last = ibytes;
       obytes_last = obytes;
       pixstate = PIXRIGHT;
       return;
     }
-    
-    bitBlt( pixmap_l,0,0, &big_modem_none_pixmap );    
+
+    bitBlt( pixmap_l,0,0, &big_modem_none_pixmap );
     ibytes_last = ibytes;
     obytes_last = obytes;
     pixstate = PIXNONE;
 
-} 
+}
 
- 
+
 void PPPStatsDlg::timeclick() {
   // volume accounting
   switch(gpppdata.VolAcctEnabled()) {
@@ -321,9 +406,9 @@ void PPPStatsDlg::timeclick() {
   }
 
   if( this->isVisible()){
-    update_data(do_stats());  
+    update_data(do_stats());
     paintIcon();
-  }  
+  }
 }
 
 
@@ -359,8 +444,8 @@ void PPPStatsDlg::update_data(bool) {
 
   if(ips_set == false){
 
-    // if I don't resort to this trick it is imposible to 
-    // copy/paste the ip out of the lineedits due to 
+    // if I don't resort to this trick it is imposible to
+    // copy/paste the ip out of the lineedits due to
     // reset of cursor position on setText()
 
     if( !local_ip_address.isEmpty() ){
@@ -382,3 +467,4 @@ void PPPStatsDlg::update_data(bool) {
 }
 
 #include "pppstatdlg.moc"
+

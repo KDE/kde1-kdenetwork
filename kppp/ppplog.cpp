@@ -27,6 +27,7 @@
  * Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
+#include <qdir.h>
 #include <qglobal.h>
 #include <qstring.h>
 #include <stdio.h>
@@ -40,7 +41,9 @@
 #include <qmultilinedit.h>
 #include <qlayout.h>
 #include <kapp.h>
+#include <kmsgbox.h>
 #include "macros.h"
+#include "pppdata.h"
 
 bool PPPL_is_pppd_line(const char *s) {
   char *p;
@@ -62,11 +65,20 @@ bool PPPL_is_pppd_line(const char *s) {
 }
 
 const char *PPPL_findLogFile() {
-  if(access("/var/log/messages", R_OK) == 0)
-    return "/var/log/messages";
+  FILE *f;
 
-  if(access("/var/log/syslog.ppp", R_OK) == 0)
+  // access() cannot be used here, because access also
+  // test the uid of the current user. So I use fopen()
+  // here as long as nothing better is found
+  if((f = fopen("/var/log/messages", "r")) != NULL) {
+    fclose(f);
+    return "/var/log/messages";
+  }
+
+  if((f = fopen("/var/log/syslog.ppp", "r")) == 0) {
+    fclose(f);
     return "/var/log/syslog.ppp";
+  }
 
   return 0;
 }
@@ -90,7 +102,7 @@ int PPPL_MakeLog(QStrList &list) {
 
   while(fgets(buffer, sizeof(buffer)-1, f) != 0) {
     if(!PPPL_is_pppd_line(buffer))
-      continue;
+      continue;    
 
     if(strlen(buffer) && buffer[strlen(buffer)-1] == '\n')
       buffer[strlen(buffer)-1] = '\0';
@@ -121,7 +133,7 @@ int PPPL_MakeLog(QStrList &list) {
 
       /* truncate list */
       if(newpid != pid) {
-	int cnt = list.at();
+	int cnt = list.at()+1;
 
 	for(int i = 0; i <= cnt; i++)
 	  list.removeFirst();
@@ -156,8 +168,72 @@ int PPPL_MakeLog(QStrList &list) {
 
 void PPPL_ShowLog() {
   QStrList sl;
-
+  int i;
   PPPL_MakeLog(sl);
+
+//   if(ret != 0 || sl.count() == 0) {
+//     KMsgBox::message(0,
+// 		     i18n("Error"),
+// 		     i18n("KPPP is not able to generate a PPP log.\n\nPossible reasons:\n   * the \"debug\" option has not been used\n   * an unusual syslogd configuration\n   * a KPPP bug"),
+// 		     KMsgBox::STOP);
+//     return;
+//   }
+
+  bool foundLCP = gpppdata.getPPPDebug();
+  for(i = 0; !foundLCP && i < (int)sl.count(); i++) {
+    fprintf(stderr, "LINE=%s\n", sl.at(i));
+    if(strstr("[LCP", sl.at(i)) == NULL)
+      foundLCP = TRUE;
+}
+
+  if(!foundLCP) {
+    int result = KMsgBox::yesNo(0,
+				i18n("Warnung"),
+				i18n("
+KPPP could not prepare a PPP log. It´s very likely
+that pppd was started without the \"debug\" option.\n
+Without this option it´s difficult to find out PPP
+problems, so you should turn on the debug option.\n
+Shall I turn it on now?"),
+				KMsgBox::QUESTION);
+
+    if(result != 0) {
+      gpppdata.setPPPDebug(TRUE);
+      KMsgBox::message(0,
+		       i18n("Information"),
+		       i18n("
+The \"debug\" option has been added. You
+should now try to reconnect. If that fails
+again, you will get a PPP log that may help
+you to track down the connection problem."),
+		       KMsgBox::INFORMATION);
+    }
+    
+    return;
+  }
+
+  // scan for remote messages
+  const char *rmsg = "Remote message: ";
+  for(i = sl.count()-1; i >=0 ; i--) {
+    char *p = strstr(sl.at(i), rmsg);
+
+    if(p) {
+      // found a remote message
+      QString msg(2048);
+      msg.sprintf(i18n("
+The remote system system has sent the following message:
+
+\"%s\"
+
+This may give you a hint why the connection has failed."), p + strlen(rmsg));
+      
+      KMsgBox::message(0,
+		       i18n("Error"),
+		       msg.data(),
+		       KMsgBox::STOP);
+    }
+  }
+
   QDialog *dlg = new QDialog(0, "", TRUE);
 
   dlg->setCaption(i18n("PPP log"));
@@ -166,8 +242,8 @@ void PPPL_ShowLog() {
   edit->setReadOnly(TRUE);
   KButtonBox *bbox = new KButtonBox(dlg);
   bbox->addStretch(1);
+  QPushButton *write = bbox->addButton(i18n("Write to file"));
   QPushButton *close = bbox->addButton(i18n("Close"));
-  bbox->addStretch(1);
   bbox->layout();
   edit->setMinimumSize(600, 250);
 
@@ -175,12 +251,28 @@ void PPPL_ShowLog() {
   tl->addWidget(bbox);
   tl->freeze();
 
-  for(unsigned i = 0; i < sl.count(); i++)
+  for(i = 0; i < (int)sl.count(); i++)
     edit->append(sl.at(i));
   
   dlg->connect(close, SIGNAL(clicked()),
+	       dlg, SLOT(reject()));
+  dlg->connect(write, SIGNAL(clicked()),
 	       dlg, SLOT(accept()));
 
-  dlg->exec();  
+  if(dlg->exec()) {
+    QDir d = QDir::home();
+    QString s = d.absPath() + "/PPP-logfile";
+    FILE *f = fopen(s.data(), "w");
+    for(i = 0; i < (int)sl.count(); i++)
+      fprintf(f, "%s\n", sl.at(i));
+    fclose(f);
+
+    QString msg;
+    msg.sprintf("The PPP log has been saved\nas \"%s\"!\n\nIf you want to send a bug report or have\nproblems connecting to the internet, please\nattach this file. It will help the maintainers\nto find the bug and to improve KPPP", s.data());
+    KMsgBox::message(0,
+		     i18n("Information"),
+		     msg.data(),
+		     KMsgBox::INFORMATION);
+  }
   delete dlg;
 }

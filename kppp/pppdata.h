@@ -126,6 +126,7 @@
 #define SCRIPTCOM_KEY      "ScriptCommands"
 #define SCRIPTARG_KEY      "ScriptArguments"
 #define PPPDARG_KEY        "pppdArguments"
+#define PPP_DEBUG_OPTION   "PPPDebug"
 #define ICONIFY_ON_CONNECT_KEY "iconifyOnConnect"
 #define DOCKING_KEY        "DockIntoPanel"
 #define TOTALCOSTS_KEY     "TotalCosts"
@@ -166,6 +167,9 @@ public:
 
   void set_xserver_exit_disconnect(bool set);
   const bool get_xserver_exit_disconnect();
+
+  void setPPPDebug(bool set);
+  const bool getPPPDebug();
 
   void set_quit_on_disconnect(bool);
   const bool quit_on_disconnect();

@@ -255,6 +255,14 @@ const bool PPPData::get_xserver_exit_disconnect() {
   
 };
 
+void PPPData::setPPPDebug(bool set) {
+  writeConfig(ACCOUNT_GRP, PPP_DEBUG_OPTION, (int)set);
+}
+
+const bool PPPData::getPPPDebug() {
+  return (bool)readNumConfig(ACCOUNT_GRP, PPP_DEBUG_OPTION, (int)TRUE);
+}
+
 void PPPData::set_xserver_exit_disconnect(bool set) {
 
   writeConfig(GENERAL_GRP, DISCONNECT_KEY, (int) set);

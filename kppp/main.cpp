@@ -42,6 +42,8 @@
 #include <getopt.h>
 #endif
 
+#include <kmsgbox.h>
+
 
 #include "acctselect.h"
 #include "main.h"
@@ -279,7 +281,12 @@ int main( int argc, char **argv ) {
   a.setTopWidget(&kppp);  
 
   // Mario: testing
-//   PPPL_ShowLog();
+//   PPPStatsDlg dlg(0);
+//   dlg.show();
+//   dlg.take_stats();
+//   kppp.hide();  
+//   a.exec();
+  //   PPPL_ShowLog();
 //   exit(0);
 
   // we really don't want to die accidentally, since that would leave the
@@ -696,9 +703,15 @@ void dieppp(int sig) {
 	    msg = "The pppd daemon died unexpectedly!";
 	  }
 	
-	QMessageBox::warning(0, i18n("Error"), 
-			     i18n(msg));
-  }
+	KMsgBox msgb(0, 
+		    i18n("Error"), 
+		    i18n(msg),
+		    KMsgBox::STOP | KMsgBox::DB_FIRST,
+		    i18n("Ok"),
+		    i18n("Details..."));
+	if(msgb.exec() == 2)
+	  PPPL_ShowLog();
+}
       else{/* reconnect on disconnect */
 #ifdef MY_DEBUG
   printf("Trying to reconnect ... \n");

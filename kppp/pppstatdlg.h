@@ -2,8 +2,8 @@
  *            kPPP: A pppd front end for the KDE project
  *
  * $Id$
- * 
- *            Copyright (C) 1997 Bernd Johannes Wuebben 
+ *
+ *            Copyright (C) 1997 Bernd Johannes Wuebben
  *                   wuebben@math.cornell.edu
  *
  *
@@ -32,16 +32,19 @@
 #include <qframe.h>
 #include <qgrpbox.h>
 #include <qevent.h>
-#include <qpixmap.h> 
-#include <qlined.h> 
+#include <qpixmap.h>
+#include <qlined.h>
 #include <qtimer.h>
 
+const int MAX_GRAPH_WIDTH   = 600;
+const int GRAPH_UPDATE_TIME = 1000;
+
 class PPPStatsDlg : public QWidget {
-  
+
   Q_OBJECT
 
 public:
-  
+
   PPPStatsDlg(QWidget *parent=0, const char *name=0,QWidget *main=0);
   ~PPPStatsDlg();
 
@@ -59,6 +62,7 @@ public slots:
   void take_stats();
   void stop_stats();
   void paintIcon();
+  void updateGraph();
 
 public:
 
@@ -66,6 +70,8 @@ public:
   void update_data(bool data_available);
 
 private:
+  void paintGraph();
+
   QLabel *pixmap_l;
   QWidget *main;
   QPushButton *cancelbutton;
@@ -77,7 +83,7 @@ private:
   QLabel *labela2[5];
   QLabel *labelb1[5];
   QLabel *labelb2[5];
-  
+
   QLabel *ip_address_label1;
   QLineEdit *ip_address_label2;
   QLabel *ip_address_label3;
@@ -109,8 +115,18 @@ private:
   QString 	packetsunc_string;
   QString 	packetsoutunc_string;
   QGroupBox    *box;
-  
+
+  // graph widget
+  QFrame *graph;
+  int bin[MAX_GRAPH_WIDTH];
+  int bout[MAX_GRAPH_WIDTH];
+  int bin_last;
+  int bout_last;
+  int ringIdx;
+  int max;
+  QTimer *graphTimer;
 };
 
 
 #endif
+
