@@ -261,7 +261,7 @@ void Article::toggleExpire()   // robert's cache stuff
 NewsGroup::NewsGroup(const char *name)
     :QString(name)
 {
-    isVisible=false;
+    isVisible=0;
     isTagged=false;
     lastArticle=0;
 }

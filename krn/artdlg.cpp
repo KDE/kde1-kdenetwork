@@ -78,7 +78,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     :Inherited (_group->data())
 {
     group=_group;
-    group->isVisible=true;
+    group->isVisible=this;
     setCaption (group->data());
     groupname=group->data();
 
@@ -290,9 +290,9 @@ void Artdlg::copyText(bool b)
 void Artdlg::closeEvent(QCloseEvent *)
 {
     debug ("close event");
-    group->isVisible=false;
     group->artList.clear();
     artList.clear();
+    group->isVisible=0;
     delete this;
 } 
 

@@ -1,4 +1,10 @@
 -----------------------------------------------------------------------------
+Changes made Sep 28
+-----------------------------------------------------------------------------
+
+* [Roberto] Fixed a segfault when exitting.
+
+-----------------------------------------------------------------------------
 Changes made Sep 26
 -----------------------------------------------------------------------------
 
@@ -11,6 +17,8 @@ Changes made Sep 26
 * [Roberto] Make composer remember its position. Size doesn't work, because
             it's adjusted manually somewhere.
 * [Roberto] Outgoing spool works, now only the network part is missing.
+* [Roberto] Played a bit with Krn's web site. New screenshot, showing the
+            composer, new toolbar look, new buttons, etc.
 
 -----------------------------------------------------------------------------
 Changes made Sep 25

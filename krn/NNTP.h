@@ -102,6 +102,8 @@ public:
     ArticleDict::ArticleDict ();
 };
 
+class Artdlg;
+
 class NewsGroup: public QString
 {
 public:
@@ -113,8 +115,9 @@ public:
     // Last article number of which the group has info.
     int lastArticle;
     
-    //Is this group's window visible?
-    bool isVisible;
+    //A pointer to the article window, or 0.
+    //used to be boolean, that's why the name is weird.
+    Artdlg *isVisible;
     //Is it tagged?
     bool isTagged;
     

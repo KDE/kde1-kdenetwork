@@ -208,18 +208,29 @@ Groupdlg::Groupdlg
         actions(CONNECT);
 
     readProperties();
+
+    show();
+    qApp->processEvents();
+    //Open group windows
 }
 
 Groupdlg::~Groupdlg ()
 {
     debug ("saving groupdlg's properties");
     saveProperties(false);
+    QStrList openwin;
     //check for all open groups, and close them
     for (NewsGroup *g=groups.first();g!=0;g=groups.next())
     {
         if (g->isVisible)
-            debug ("%s is open, remember it",g->data());
+        {
+            debug ("%s is open, closing it",g->data());
+            openwin.append (g->data());
+            delete g->isVisible;
+        }
     }
+    conf->setGroup("ArticleListOptions");
+    conf->writeEntry("OpenWindows",openwin);
 }
 
 void Groupdlg::openGroup (QString name)
