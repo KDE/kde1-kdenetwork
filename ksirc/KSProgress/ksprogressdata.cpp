@@ -35,7 +35,7 @@ ksprogressData::ksprogressData
 	dlgedit_PushButton_1->setMinimumSize( 10, 10 );
 	dlgedit_PushButton_1->setMaximumSize( 32767, 32767 );
 	connect( dlgedit_PushButton_1, SIGNAL(clicked()), SLOT(cancelPressed()) );
-	dlgedit_PushButton_1->setText( i18n("&Cancel") );
+	dlgedit_PushButton_1->setText( "&Cancel" );
 	dlgedit_PushButton_1->setAutoRepeat( FALSE );
 	dlgedit_PushButton_1->setAutoResize( FALSE );
 
@@ -43,7 +43,7 @@ ksprogressData::ksprogressData
 	fileName->setGeometry( 10, 10, 230, 20 );
 	fileName->setMinimumSize( 10, 10 );
 	fileName->setMaximumSize( 32767, 32767 );
-	fileName->setText( i18n("fileName") );
+	fileName->setText( "fileName" );
 	fileName->setAlignment( 289 );
 	fileName->setMargin( -1 );
 
@@ -51,7 +51,7 @@ ksprogressData::ksprogressData
 	transferStatus->setGeometry( 10, 35, 230, 20 );
 	transferStatus->setMinimumSize( 10, 10 );
 	transferStatus->setMaximumSize( 32767, 32767 );
-	transferStatus->setText( i18n("XferStatus") );
+	transferStatus->setText( "XferStatus" );
 	transferStatus->setAlignment( 289 );
 	transferStatus->setMargin( -1 );
 
