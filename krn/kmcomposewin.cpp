@@ -106,7 +106,7 @@ QWidget(parent, name)
     
     
     editor = new KEdit(0,this);
-    grid->addMultiCellWidget(editor,4,8,0,1);
+    grid->addMultiCellWidget(editor,4,9,0,1);
     grid->setRowStretch(4,100);
     
     // Setup attachmentListBox
@@ -118,7 +118,7 @@ QWidget(parent, name)
     attachmentListBox->setColumn(2,nls->translate("Size"),80);
     connect(attachmentListBox,SIGNAL(popupMenu(int,int)),
             SLOT(slotPopupMenu(int,int)));
-    grid->addMultiCellWidget(attachmentListBox,10,9,0,1);
+    grid->addMultiCellWidget(attachmentListBox,10,10,0,1);
     attachmentListBox->hide(); //Hide because no attachments present at startup  
     
     zone = new KDNDDropZone(editor,DndURL);
@@ -247,8 +247,8 @@ void KMComposeView::createAttachmentWidget()
 {
   // Obvious what this function does.
   attachmentListBox->show();
-  grid->setRowStretch(3,3);
-  grid->setRowStretch(9,1);  
+  grid->setRowStretch(4,3);
+  grid->setRowStretch(10,1);
   
 }
    
