@@ -25,7 +25,6 @@
  */
 
 #include <qdir.h>
-
 #include <unistd.h>
 #include <qregexp.h>
 #include <kapp.h> 
@@ -103,19 +102,17 @@ ModemTransfer::ModemTransfer(QWidget *parent, const char *name)
 }
 
 
-void ModemTransfer::ati_done_slot(){
-
+void ModemTransfer::ati_done_slot() {
   readtimer->stop();
   scripttimer->stop();
   timeout_timer->stop();
   closetty();
   unlockdevice();
   accept();
-
 }
 
-void ModemTransfer::time_out_slot() {
 
+void ModemTransfer::time_out_slot() {
   timeout_timer->stop();
   readtimer->stop();
   scripttimer->stop();
@@ -126,30 +123,31 @@ void ModemTransfer::time_out_slot() {
   reject();
 }
 
-void ModemTransfer::init() {
 
+void ModemTransfer::init() {
   inittimer->stop();
   expecting = false;
 
   kapp->processEvents();
 
   int lock = lockdevice();
-  if (lock == 1){
+  if (lock == 1) {
     
     statusBar->setText(i18n("Sorry, modem device is locked."));
     return;
   }
-  if (lock == -1){
+
+  if (lock == -1) {
     
     statusBar->setText(i18n("Sorry, can't create modem lock file."));
     return;
   }
 
 
-  if(opentty()){
-
+  if(opentty()) {
     writeline(gpppdata.modemHangupStr());
     usleep(100000);  // wait 0.1 secs
+
     if(hangup()) {
       usleep(100000);  // wait 0.1 secs
       writeline("ATE0Q1V1"); // E0 don't echo the commands I send ...
@@ -159,6 +157,12 @@ void ModemTransfer::init() {
 
       kapp->processEvents();
       scripttimer->start(1000);	 	// this one does the ati query
+
+      // clear modem buffer
+      char c;
+      while(read(modemfd, &c, 1) == 1);
+
+      return;
     }
   }
   
@@ -170,110 +174,67 @@ void ModemTransfer::init() {
 }                  
 
 
-
-
 void ModemTransfer::do_script() {
+  QString msg;
+  QString query;
 
-    if(step == 0) {
-      readtty();
-      statusBar->setText("ATI ...");
-      progressBar->advance(1);
-      writeline("ATI");
-      step ++;
-      return;
-    }
+  switch(step) {
+  case 0:
+    readtty();
+    statusBar->setText("ATI ...");
+    progressBar->advance(1);
+    writeline("ATI\n");
+    step++;
+    break;
 
-    if(step == 1) {
-      readtty();
-      statusBar->setText("ATI 1 ...");
-      progressBar->advance(1);
-      writeline("ATI1");
-      return;
-    }
+  case 1:
+  case 2:
+  case 3:
+  case 4:
+  case 5:
+  case 6:
+  case 7:
+    readtty();
+    msg.sprintf("ATI %d ...", step);
+    query.sprintf("ATI%d\n", step);
+    statusBar->setText(msg.data());
+    progressBar->advance(1);
+    writeline(query.data());
+    break;
 
-    if(step == 2) {
-      readtty();
-      statusBar->setText("ATI 2 ...");
-      progressBar->advance(1);
-      writeline("ATI2");
-      return;
-    }
-
-    if(step == 3) {
-      readtty();
-      statusBar->setText("ATI 3 ...");
-      progressBar->advance(1);
-      writeline("ATI3");
-      return;
-    }
-
-    if(step == 4) {
-      readtty();
-      statusBar->setText("ATI 4 ...");
-      progressBar->advance(1);
-      writeline("ATI4");
-      return;
-    }
-
-    if(step == 5) {
-      readtty();
-      statusBar->setText("ATI 5 ...");
-      progressBar->advance(1);
-      writeline("ATI5");
-      return;
-    }
-
-    if(step == 6) {
-      readtty();
-      statusBar->setText("ATI 6 ...");
-      progressBar->advance(1);
-      writeline("ATI6");
-      return;
-    }
-
-    if(step == 7) {
-      readtty();
-      statusBar->setText("ATI 7 ...");
-      progressBar->advance(1);
-      writeline("ATI7");
-      return;
-    }
+  default:
     readtty();
     emit ati_done();
-
+  }
 }
 
 
 void ModemTransfer::readtty() {
-
   char buffer[255];
 
-  memset(buffer,'\0',255);
-  read(modemfd, buffer, 254);
+  memset(buffer,'\0', sizeof(buffer));
+  read(modemfd, buffer, sizeof(buffer)-1);
 
   if (step == 0)
     return;
 
   readbuffer = buffer;
-
     
   readbuffer.replace("\n"," ");         // remove stray \n
   readbuffer.replace("\r","");          // remove stray \r
   readbuffer = readbuffer.stripWhiteSpace(); // strip of leading or trailing white
                                                  // space
 
-  if(step < NUM_OF_ATI + 1){
+  if(step <= NUM_OF_ATI)
     ati_query_strings[step-1] = readbuffer.copy();
-  }
-  readbuffer = "";
-  ati_counter ++;
-  step ++;
 
+  readbuffer = "";
+  ati_counter++;
+  step++;
 }
 
 
 void ModemTransfer::cancelbutton() {
-
   scripttimer->stop();
   readtimer->stop();
   timeout_timer->stop();
@@ -294,17 +255,13 @@ void ModemTransfer::cancelbutton() {
 
 
 void ModemTransfer::setExpect(const char *n) {
-
   expectstr = n;
   expecting = true;
-
 }
 
 
-void ModemTransfer::closeEvent( QCloseEvent *e ){
-
+void ModemTransfer::closeEvent( QCloseEvent *e ) {
   e->ignore();     // don't let the user close the window
-
 }
 
 
@@ -331,16 +288,17 @@ ModemInfo::ModemInfo(QWidget *parent, const char* name)
     MIN_SIZE(ati_label[i]);
     l1->addWidget(ati_label[i], i, 0);
 
-    ati_label_result[i] =  new QLineEdit(this);    
+    ati_label_result[i] =  new QLineEdit(this);
     ati_label_result[i]->setText(ati_query_strings[i]);
     MIN_SIZE(ati_label_result[i]);
+    ati_label_result[i]->setMinimumWidth(fontMetrics().width('H') * 24);
     FIXED_HEIGHT(ati_label_result[i]);
     l1->addWidget(ati_label_result[i], i, 1); 
   }
   //tl->addSpacing(1);
 
   QHBoxLayout *l2 = new QHBoxLayout;
-  ok = new QPushButton(i18n("Close"), this);
+  QPushButton *ok = new QPushButton(i18n("Close"), this);
   ok->setDefault(TRUE);
   ok->setFocus();
 
@@ -355,16 +313,10 @@ ModemInfo::ModemInfo(QWidget *parent, const char* name)
   tl->addLayout(l2);
   l2->addStretch(1);
 
-  connect(ok, SIGNAL(clicked()), SLOT(okbutton()));
+  connect(ok, SIGNAL(clicked()), SLOT(accept()));
   l2->addWidget(ok);
   
   tl->freeze();
-}
-
-void ModemInfo::okbutton() {
-
-  accept();  
-
 }
 
 #include "modeminfo.moc"

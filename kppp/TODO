@@ -1,10 +1,8 @@
 TODO
 ====
 o deal with interfaces different from ppp0
-o signal catching for accounting
 o button for clearing volume accounting
 o separate setup and dialer
-o help users with those "pppd died unexpected..." bugs
 o better FAQ
 o modem-setup wizard
 o provider-setup wizard
@@ -13,4 +11,6 @@ o provider-setup wizard
 Done/Removed
 ============
 o MS-CHAP support (since this relies on pppd, we cannot do it) (REMOVED)
+o signal catching for accounting
+o help users with those "pppd died unexpected..." bugs
 o CHAP support

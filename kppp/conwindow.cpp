@@ -2,8 +2,8 @@
  *            kPPP: A pppd front end for the KDE project
  *
  * $Id$
- * 
- *            Copyright (C) 1997 Bernd Johannes Wuebben 
+ *
+ *            Copyright (C) 1997 Bernd Johannes Wuebben
  *                   wuebben@math.cornell.edu
  *
  * This program is free software; you can redistribute it and/or
@@ -45,7 +45,7 @@ ConWindow::ConWindow(QWidget *parent, const char *name,QWidget *mainwidget)
 
   info2 = new QLabel(this,"infolabel");
   info2->setText("");
- 
+
   timelabel1 = new QLabel(this,"timelabel1");
   timelabel1->setText(i18n("Time connected:"));
 
@@ -87,12 +87,13 @@ ConWindow::~ConWindow() {
   stopClock();
 }
 
-void ConWindow::accounting(bool on) {
+
+void ConWindow::accounting(bool on, bool debug) {
   // delete old layout
   if(tl != 0)
     delete tl;
 
-  // add layout now  
+  // add layout now
   QVBoxLayout *tl1 = new QVBoxLayout(this, 10, 10);
   tl1->addSpacing(5);
   QHBoxLayout *tl = new QHBoxLayout;
@@ -125,7 +126,7 @@ void ConWindow::accounting(bool on) {
   session_bill->setAlignment(AlignRight|AlignVCenter);
   total_bill->setAlignment(AlignRight|AlignVCenter);
   volinfo->setAlignment(AlignRight|AlignVCenter);
- 
+
   // make sure that there's enough space for the bills
   QString s1 = session_bill->text();
   QString s2 = total_bill->text();
@@ -184,7 +185,7 @@ void ConWindow::accounting(bool on) {
   tl->addSpacing(10);
   QVBoxLayout *l2 = new QVBoxLayout(5);
   tl->addLayout(l2);
-  l2->addStretch(1);  
+  l2->addStretch(1);
   MIN_WIDTH(cancelbutton);
   FIXED_HEIGHT(cancelbutton);
   MIN_WIDTH(statsbutton);
@@ -194,7 +195,12 @@ void ConWindow::accounting(bool on) {
 
   l2->addStretch(1);
 
-  tl1->addSpacing(5); 
+  tl1->addSpacing(5);
+
+  // add loginterm-replacement here
+  if(debug)
+    ;
+
   tl1->freeze();
   setGeometry((QApplication::desktop()->width() - width()) / 2,
 	      (QApplication::desktop()->height() - height())/2,
@@ -203,23 +209,18 @@ void ConWindow::accounting(bool on) {
 }
 
 
-
-void ConWindow::stats(){
-
+void ConWindow::stats() {
   p_kppp->stats->show();
-
 }
 
+
 void ConWindow::dock() {
-
- dock_widget->dock();
- this->hide();
-
+  dock_widget->dock();
+  this->hide();
 }
 
 
 void ConWindow::startClock() {
-
   minutes = 0;
   seconds = 0;
   hours = 0;
@@ -228,30 +229,27 @@ void ConWindow::startClock() {
   title = gpppdata.accname();
 
   if(gpppdata.get_show_clock_on_caption()){
-    title += " 00:00" ; 
+    title += " 00:00" ;
   }
   this->setCaption(title);
 
   timelabel2->setText("00:00:00");
   clocktimer->start(1000);
-
 }
+
 
 void ConWindow::setConnectionSpeed(){
-
   if(p_kppp)
     info2->setText(p_kppp->con_speed);
-
 }
+
 
 void ConWindow::stopClock() {
-  
   clocktimer->stop();
-
 }
-  
-void ConWindow::timeclick() {
 
+
+void ConWindow::timeclick() {
   // volume accounting
   if(gpppdata.VolAcctEnabled()) {
     QString s;
@@ -266,7 +264,7 @@ void ConWindow::timeclick() {
   }
 
   seconds++;
-  
+
   if(seconds >= 60 ) {
     minutes ++;
     seconds = 0;
@@ -281,9 +279,9 @@ void ConWindow::timeclick() {
     days ++;
     hours = 0;
   }
-  
+
   time_string = "";
-  
+
 
   time_string.sprintf("%02d:%02d",hours,minutes);
 
@@ -300,29 +298,26 @@ void ConWindow::timeclick() {
   caption_string = gpppdata.accname();
   caption_string += " ";
   caption_string += time_string;
-  
+
 
   timelabel2->setText(time_string2);
 
   if(gpppdata.get_show_clock_on_caption() && (seconds == 1)){
     // we update the Caption only once per minute not every second
-    // otherwise I get a flickering icon 
+    // otherwise I get a flickering icon
     this->setCaption(caption_string);
   }
-
 }
 
+
 void ConWindow::closeEvent( QCloseEvent *e ){
-
   // we don't want to lose the
-  // conwindow since this is our last connection kppp. 
+  // conwindow since this is our last connection kppp.
   // if we lost it we could only kill the program by hand to get on with life.
-
   e->ignore();
 
   if(gpppdata.get_dock_into_panel())
     dock();
-
 }
 
 

@@ -6,12 +6,26 @@
 	* added debug switch to pppd command line when debugging
 	is turned on
 	* Improved the response time for modem output. Modem output is
-	polled in slower intervals, if data is pending the polling time
-	is reduced, otherwise the polling time is set back to it´s 
+	polled in longer intervals, if data is pending the polling time
+	is shortened, otherwise the polling time is set back to it´s 
 	original, rather high value
 	* re-worked the "About" widget. It was time to save poor old Bernd
 	from receiving bug-reports.
-
+	* miniterm.cpp: code cleanups
+	* improved responseness of MiniTerm, reduced CPU load
+	* MiniTerm adheres to KDE Standards now (Help-Menu, ...)
+	* The ATI query was broken. Fixed.
+	* Improved the ATI query result window
+	* modeminfo.cpp: code cleanups
+	* main.cpp: code cleanup, banner updated
+	* repaired the german "Tele-2" ruleset (was broken due to invalid
+	characters)
+	* added improved ruleset for Italy (thanks to Michele Manzato for
+	supplying this ruleset)
+	* fixed a few typos in the TEMPLATE
+	* prepared a replacement for the debug-window
+	* connwindow.cpp: code cleanups
+	
 1998-08-21  Harri Porten  <porten@kde.org>
 
 	* use SIGINT instead of SIGHUP to end a connection

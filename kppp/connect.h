@@ -55,19 +55,6 @@
 
 #define MAXLOOPNEST (MAX_SCRIPT_ENTRIES/2)
 
-// what a "meaningfull" class name
-class NewTimer : public QTimer {
-  Q_OBJECT
-public:
-  NewTimer(QObject *parent = 0, const char *name = 0);
-  int start(int msec, bool sshot = FALSE);
-  int interval() const;
-  void changeInterval(int msec);
-
-private:
-  int _interval;
-};
-
 class ConnectWidget : public QWidget, public Modem {
   Q_OBJECT
 public:  
@@ -125,7 +112,8 @@ private:
   bool expecting;
   QString expectstr;
   
-  NewTimer *readtimer;  
+  int readtimer_pri;
+  QTimer *readtimer;  
   QString readbuffer;
 
   void setScan(const char *);

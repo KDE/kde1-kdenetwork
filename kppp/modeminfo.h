@@ -56,75 +56,57 @@
 #define NUM_OF_ATI 8
 
 class ModemTransfer : public QDialog, public Modem {
-
   Q_OBJECT
-
 public:
-
-    ModemTransfer(QWidget *parent=0, const char *name=0);
+  ModemTransfer(QWidget *parent=0, const char *name=0);
   
-    QTimer *readModemTimer;
-    QTimer *initTimer;
+  QTimer *readModemTimer;
+  QTimer *initTimer;
 
-    QString answer;
-    KProgress *progressBar;
-    QLabel *statusBar;
-    QPushButton *cancel;
+  QString answer;
+  KProgress *progressBar;
+  QLabel *statusBar;
+  QPushButton *cancel;
 
-    void  setExpect(const char *n);
-    void closeEvent( QCloseEvent *e);
+  void  setExpect(const char *n);
+  void closeEvent( QCloseEvent *e);
 
 signals:
-
-    void ati_done();
+  void ati_done();
 
 public slots:
-
-    void init();
-    void readtty();
-    void do_script();
-    void time_out_slot();
-    void ati_done_slot();
-    void cancelbutton();
+  void init();
+  void readtty();
+  void do_script();
+  void time_out_slot();
+  void ati_done_slot();
+  void cancelbutton();
 
 protected:
-    
-    bool  expecting;
-    int 	step;
-    int   main_timer_ID;
-    int   ati_counter;
-    QString readbuffer;
-    QString expectstr;
+  bool  expecting;
+  int 	step;
+  int   main_timer_ID;
+  int   ati_counter;
+  QString readbuffer;
+  QString expectstr;
 
-    QTimer *inittimer;
-    QTimer *readtimer;
-    QTimer *timeout_timer;
-    QTimer *scripttimer;
+  QTimer *inittimer;
+  QTimer *readtimer;
+  QTimer *timeout_timer;
+  QTimer *scripttimer;
 
 };
-
 
 
 class ModemInfo : public QDialog {
-
- Q_OBJECT
-
+  Q_OBJECT
 public:
-
   ModemInfo(QWidget *parent=0, const char *name=0);
   ~ModemInfo() {}
 
-private slots:
-
-  void okbutton();
-
 private:
-
   QLabel *ati_label[NUM_OF_ATI];
   QLineEdit *ati_label_result[NUM_OF_ATI];
-  QGroupBox *box;  
-  QPushButton *ok;
 };
-
 
 #endif

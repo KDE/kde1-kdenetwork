@@ -69,7 +69,7 @@ bool 	reconnect_on_disconnect = false;
 bool    quit_on_disconnect = false;
 bool    terminate_connection = false;
 
-
+// this is needed for volume accounting and updated in pppstatdlg.cpp
 int totalbytes;
 
 QString old_hostname;
@@ -77,8 +77,7 @@ QString local_ip_address;
 QString remote_ip_address;
 QString pidfile;
 
-void usage(char* progname){
-
+void usage(char* progname) {
   fprintf(stderr, "%s -- valid command line options:\n", progname);
   fprintf(stderr, " -h : describe command line options\n");
   fprintf(stderr, " -c account_name : connect to account account_name\n");
@@ -86,23 +85,22 @@ void usage(char* progname){
   fprintf(stderr, " -q : quit after end of connection\n");
   fprintf(stderr, " -r rule_file: check syntax of rule_file\n");
   exit(1);
-
 }
 
 void banner(char* progname){
-
   fprintf(stderr,"%s version " KPPPVERSION "\n",progname); 
-  fprintf(stderr,"Copyright (c) 1997-1998 Bernd Johannes Wuebben ");
-  fprintf(stderr,"wuebben@math.cornell.edu\n");
-  fprintf(stderr,"Use -h for the list of valid command line options.\n");
+  fprintf(stderr,"(c) 1997-1998 Bernd Johannes Wuebben ");
+  fprintf(stderr,"<wuebben@kde.org>\n");
+  fprintf(stderr,"(c) 1997-1998 Mario Weilguni ");
+  fprintf(stderr,"<mweilguni@kde.org>\n");
+  fprintf(stderr,"(c) 1998 Harri Porten <porten@kde.org>\n");
+  fprintf(stderr,"Use -h for the list of valid command line options.\n\n");
   exit(0);
-
 }
 
 extern "C" {
 
-static int kppp_x_errhandler( Display *dpy, XErrorEvent *err )
-{
+static int kppp_x_errhandler( Display *dpy, XErrorEvent *err ) {
     char errstr[256];
 
     /*
@@ -120,26 +118,19 @@ static int kppp_x_errhandler( Display *dpy, XErrorEvent *err )
 }
 
 
-static int kppp_xio_errhandler( Display * ){
-
-
-  if(gpppdata.get_xserver_exit_disconnect()){
-
+static int kppp_xio_errhandler( Display * ) {
+  if(gpppdata.get_xserver_exit_disconnect()) {
     fprintf(stderr, "X11 Error!\n");
-    if(gpppdata.pppdpid() >= 0) {
-      kill(gpppdata.pppdpid(), SIGTERM);
-    }
+    if(gpppdata.pppdpid() >= 0)
+      kill(gpppdata.pppdpid(), SIGTERM);    
 
     p_kppp->stopAccounting();
     removedns();
-    unlockdevice();	
+    unlockdevice();
     return 0;
-  }
-  else{
-
+  } else{
     fatal( "%s: Fatal IO error: client killed", "kppp" );
     return 0;
-
   }
 }
 
@@ -147,7 +138,6 @@ static int kppp_xio_errhandler( Display * ){
 
 
 void make_directories(){
-
   QDir dir;
 
   QString d = KApplication::localkdedir();
@@ -462,7 +452,7 @@ KPPPWidget::KPPPWidget( QWidget *parent, const char *name )
   if(connect_b->sizeHint().width() > minw)
     minw = connect_b->sizeHint().width();
 
-  minw = QMAX(minw,70);
+  //  minw = QMAX(minw,70);
   quit_b->setMinimumWidth(minw);
   setup_b->setMinimumWidth(minw);
   help_b->setMinimumWidth(minw);
@@ -574,20 +564,17 @@ void KPPPWidget::log_window_toggled(bool on){
 }
 
 
-void KPPPWidget::setup()
-{
+void KPPPWidget::setup() {
   prepareSetupDialog();
 
   if(tabWindow->exec())
     gpppdata.save();
   else
     gpppdata.cancel();
-
 }
 
 
 void KPPPWidget::resetaccounts() {
-
   connectto_c->clear();
 
   if(gpppdata.count() == 0) {
@@ -633,11 +620,10 @@ void KPPPWidget::resetaccounts() {
 
   connect(PW_Edit, SIGNAL(textChanged(const char *)),
  	  this, SLOT(passwordChanged(const char *)));
-    
 }
 
-void sigint(int) {
 
+void sigint(int) {
 #ifdef MY_DEBUG
   printf("Received a SIGINT\n");
 #endif
@@ -649,16 +635,13 @@ void sigint(int) {
     emit p_kppp->con->cancelbutton();
 
   // disconnect if online
-
   if (gpppdata.pppdpid() != -1)
     emit p_kppp->disconnect();
-
 }
 
+
 //Note: this is a friend function of KPPPWidget class (kppp)
-
 void dieppp(int sig) {
-
   pid_t id;
   int st;
 
@@ -917,9 +900,7 @@ void KPPPWidget::connectbutton() {
 
 
 void KPPPWidget::disconnect() {
-
   if (strcmp(gpppdata.command_before_disconnect(), "") != 0) {
-
     con_win->hide();
     con->show();
     con->setCaption("Disconnecting ...");
@@ -969,19 +950,13 @@ void KPPPWidget::disconnect() {
 }
 
 
-
 void KPPPWidget::helpbutton() {
-
   kapp->invokeHTMLHelp("kppp/kppp.html","");
-
 }             
 
 
-
 void KPPPWidget::quitbutton() {
-
-  if(gpppdata.pppdpid() >= 0) {
-
+  if(gpppdata.pppdpid() >= 0) {    
     bool ok = QMessageBox::query(i18n("Quit kPPP?"), 
 				 i18n("Exiting kPPP will close your PPP Session."),
 				 i18n("Yes"),
@@ -994,20 +969,20 @@ void KPPPWidget::quitbutton() {
       unlockdevice();
       kapp->quit();
     }
-  }
-  else {
+  } else {
     if (strcmp(gpppdata.accname(), "") != 0 && !gpppdata.storePassword())
       gpppdata.setStoredPassword("");
     kapp->quit();
   }
-
 }
+
 
 void KPPPWidget::rulesetLoadError() {
   QMessageBox::warning(this, 
 		       i18n("Error"), 
 		       ruleset_load_errmsg.data());
 }
+
 
 void KPPPWidget::startAccounting() {
   // volume accounting
@@ -1027,15 +1002,11 @@ void KPPPWidget::startAccounting() {
     ruleset_load_errmsg = s;
     QTimer::singleShot(0, this, SLOT(rulesetLoadError()));
     return;
-    } 
-  else
-    {
+  } else
 	accounting.slotStart();
-    }
 }
 
 void KPPPWidget::stopAccounting() {
-
   // store volume accounting
   if(totalbytes != 0)
     gpppdata.setTotalBytes(totalbytes);
@@ -1046,25 +1017,24 @@ void KPPPWidget::stopAccounting() {
   accounting.slotStop();
 }
 
-void KPPPWidget::usernameChanged(const char *) {
 
+void KPPPWidget::usernameChanged(const char *) {
   // store username for later use
   gpppdata.setStoredUsername(ID_Edit->text());
 }
 
+
 void KPPPWidget::passwordChanged(const char *) {
-  
-  // store the password if so requested
+    // store the password if so requested
   if(gpppdata.storePassword())
     gpppdata.setStoredPassword(PW_Edit->text());
   else
     gpppdata.setStoredPassword("");
 }
 
+
 void KPPPWidget::setPW_Edit(const char *pw) {
-
   PW_Edit->setText(pw);
-
 }
 
 
@@ -1100,9 +1070,9 @@ void killpppd() {
 
 }
 
+
 pid_t execute_command (const char *command) {
-  
-  if(!command || strcmp(command, "") ==0 || strlen(command) > COMMAND_SIZE)
+    if(!command || strcmp(command, "") ==0 || strlen(command) > COMMAND_SIZE)
     return (pid_t) -1;
     
   pid_t id;
@@ -1131,9 +1101,7 @@ pid_t execute_command (const char *command) {
 
 // Create a file containing the current pid. Returns 0 on success, 
 // -1 on failure or the pid of an already running kppp process. 
-
 pid_t create_pidfile() {
-
   int fd = -1;
   char pidstr[40];
   
@@ -1183,8 +1151,8 @@ pid_t create_pidfile() {
   return 0;
 }
 
-bool remove_pidfile() {
 
+bool remove_pidfile() {
   struct stat st;
   
   // only remove regular files with user write permissions
@@ -1194,9 +1162,8 @@ bool remove_pidfile() {
       return true;
     }
 
-  printf("error removing pidfile.\n");
+  fprintf(stderr, "error removing pidfile.\n");
   return false;
-  
 }
 
 #include "main.moc"

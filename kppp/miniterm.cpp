@@ -27,8 +27,7 @@
 #include <sys/ioctl.h>
 #include <termios.h>
 #include <sys/types.h>
-
-
+#include <kapp.h>
 #include "pppdata.h"
 #include "miniterm.h"
 
@@ -38,20 +37,26 @@
 extern PPPData gpppdata;
 
 MiniTerm::MiniTerm(QWidget *parent, const char *name)
-  : QDialog(parent, name,TRUE, WStyle_Customize|WStyle_NormalBorder)
+  : QDialog(parent, name, TRUE)
 {
-
   col = line = col_start = line_start = 0;
   modemfd = -1;
 
   setCaption(i18n("Kppp Mini-Terminal"));
 
   m_file = new QPopupMenu;
-  m_file->insertItem( i18n("&Quit"),this, SLOT(cancelbutton()) );
+  m_file->insertItem( i18n("&Close"),this, SLOT(cancelbutton()) );
   m_options = new QPopupMenu;
   m_options->insertItem(i18n("&Reset Modem"),this,SLOT(resetModem()));
-  m_help = new QPopupMenu;
-  m_help->insertItem( i18n("&Help"),this, SLOT(help()) );
+  m_help = 
+    kapp->getHelpMenu(TRUE, 
+		      i18n("MiniTerm - A terminal emulation for KPPP\n\n"
+			   "(c) 1997 Bernd Johannes Wuebben <wuebben@kde.org>\n"
+			   "(c) 1998 Harri Porten <porten@kde.org>\n"
+			   "(c) 1998 Mario Weilguni <mweilguni@kde.org>\n\n" 
+			   "This program is published under the GNU GPL\n"
+			   "(GNU General Public License)"
+			   ));
   
   menubar = new QMenuBar( this );
   menubar->insertItem( i18n("&File"), m_file );
@@ -83,19 +88,17 @@ MiniTerm::MiniTerm(QWidget *parent, const char *name)
   inittimer = new QTimer(this);
   connect(inittimer,SIGNAL(timeout()),this,SLOT(init()));
   inittimer->start(500);
-
 }  
 
-MiniTerm::~MiniTerm() {
 
+MiniTerm::~MiniTerm() {
   delete toolbar;
   delete statusbar;
   delete statusbar2;
-
 }
 
-void MiniTerm::setupToolbar(){
 
+void MiniTerm::setupToolbar() {
   toolbar = new KToolBar( this );
 
   KIconLoader *loader = kapp->getIconLoader();
@@ -105,7 +108,7 @@ void MiniTerm::setupToolbar(){
   pixmap = loader->loadIcon("exit.xpm");
   toolbar->insertButton(pixmap, 0,
 		      SIGNAL(clicked()), this,
-		      SLOT(cancelbutton()), TRUE, i18n("Quit MiniTerm"));
+		      SLOT(cancelbutton()), TRUE, i18n("Close MiniTerm"));
 
   pixmap = loader->loadIcon("back.xpm");
   toolbar->insertButton(pixmap, 0,
@@ -118,53 +121,46 @@ void MiniTerm::setupToolbar(){
 		      SLOT(help()), TRUE, i18n("Help"));
 
   toolbar->setBarPos( KToolBar::Top );
-
 }
 
-void MiniTerm::process_line(){
 
+void MiniTerm::process_line() {
   QString newline;
   newline = terminal->textLine(line);
   newline = newline.remove(0,col_start);
   newline = newline.stripWhiteSpace();
   writeline(newline.data());
-
 }
 
-void MiniTerm::resizeEvent(QResizeEvent*){
 
+void MiniTerm::resizeEvent(QResizeEvent*) {
   menubar->setGeometry(0,0,width(),30);
-
   toolbar->setGeometry(0,menubar->height(),width(),toolbar->height());
-
   terminal->setGeometry(0, menubar->height() + toolbar->height() , 
-   width(),  height() - menubar->height() - toolbar->height() - statusbar->height());
-
+			width(),  height() - menubar->height() 
+			- toolbar->height() - statusbar->height());
   statusbar->setGeometry(0, height() - 20, width() - 70, 20);
   statusbar2->setGeometry(width() - 70, height() - 20, 70, 20);
-
 }
 
-void MiniTerm::init() {
 
+void MiniTerm::init() {
   inittimer->stop();
   statusbar->setText(i18n("Initializing Modem"));
   kapp->processEvents();
 
   int lock = lockdevice();
-  if (lock == 1){
-    
+  if (lock == 1) {
     statusbar->setText(i18n("Sorry, modem device is locked."));
     return;
   }
-  if (lock == -1){
-    
+
+  if (lock == -1) {
     statusbar->setText(i18n("Sorry, can't create modem lock file."));
     return;
   }
 
-  if(opentty()){
-
+  if(opentty()) {
     writeline(gpppdata.modemHangupStr());
     usleep(100000);  // wait 0.1 secs
     if(hangup()) {
@@ -176,7 +172,7 @@ void MiniTerm::init() {
       
       kapp->processEvents();
       kapp->processEvents();
-      readtimer->start(1);
+      readtimer->start(30);
 
       return;
     }
@@ -185,42 +181,36 @@ void MiniTerm::init() {
   // opentty() or hangup() failed 
   statusbar->setText(modemMessage());
   unlockdevice();
-  
 }                  
 
 
-
 void MiniTerm::readtty() {
+  char c = 0;
 
-  char c;
-
-  if(read(modemfd, &c, 1) == 1) {
+  while(read(modemfd, &c, 1) == 1) {
     c = ((int)c & 0x7F);
-    // printf("read:%x %c\n",c,c);
-    
-    // TODO sort this shit out
 
-    if(((int)c != 13)&& ((int)c != 10)&&((int)c != 8))
-      terminal->insertChar( c );
-
-    if((int)c == 8)
+    switch((int)c) {
+    case 8:
       terminal->backspace();
-    if((int)c == 127)
-      terminal->backspace();
-
-    if((int)c == 10)
+      return;
+    case 10:
       terminal->mynewline();
-
-    if((int)c == 13)
+      return;
+    case 13:
       terminal->myreturn();
+      return;
+    case 127:
+      terminal->backspace();
+      return;
+    default:
+      terminal->insertChar(c);
+    }
   }
-  
 }
 
 
 void MiniTerm::cancelbutton() {
-
-
   readtimer->stop();
   statusbar->setText(i18n("Hanging up ..."));
   kapp->processEvents();
@@ -239,9 +229,7 @@ void MiniTerm::cancelbutton() {
 }
 
 
-
-void MiniTerm::resetModem(){
- 
+void MiniTerm::resetModem() {
   statusbar->setText(i18n("Resetting Modem"));
   terminal->newLine();
   kapp->processEvents();
@@ -256,24 +244,19 @@ void MiniTerm::resetModem(){
 }
 
 
-bool MiniTerm::writeChar(char c){
-
-  write(modemfd,&c,1);
-  return true;
-
+bool MiniTerm::writeChar(char c) {
+  return write(modemfd,&c,1) == 1;
 }
 
 
-void MiniTerm::closeEvent( QCloseEvent *e ){
-
-  e->ignore();     // don't let the user close the window
-
+void MiniTerm::closeEvent( QCloseEvent *e ) {
+  cancelbutton();
+  e->accept();
 }
 
-void MiniTerm::help(){
 
+void MiniTerm::help() {
   kapp->invokeHTMLHelp("kppp/kppp.html","");
-
 }
 
 
@@ -281,68 +264,56 @@ MyTerm::MyTerm(QWidget *parent, const char* name)
   : QMultiLineEdit(parent, name)
 {
    p_parent = (MiniTerm*)parent;
-   this->setFont(QFont("courier",12,QFont::Normal));
-  
+   this->setFont(QFont("courier",12,QFont::Normal));  
 }
 
 void MyTerm::keyPressEvent(QKeyEvent *k) {
-
   // ignore meta keys
   if (k->ascii() == 0) return;
 
-  if(k->ascii() == 13){
+  if(k->ascii() == 13) {
     myreturn();
     p_parent->writeChar((char) k->ascii());
     return;
   }
 
-
   p_parent->writeChar((char) k->ascii());
-
 }
 
-void MyTerm::insertChar(char c) {
-  
+
+void MyTerm::insertChar(char c) {  
   QMultiLineEdit::insertChar(c);
-
 }
 
-void MyTerm::newLine() {
-  
+
+void MyTerm::newLine() {  
   QMultiLineEdit::newLine();
-
 }
+
 
 void MyTerm::del() {
-  
   QMultiLineEdit::del();
-
 }
+
 
 void MyTerm::backspace() {
-  
-  //  QMultiLineEdit::cursorLeft();
   QMultiLineEdit::backspace();
-
 }
+
 
 void MyTerm::myreturn() {
+  int column;
+  int line;
   
-    int column;
-    int line;
-
-    getCursorPosition(&line,&column);
-    for (int i = 0; i < column;i++)
-      QMultiLineEdit::cursorLeft();
-
+  getCursorPosition(&line,&column);
+  for (int i = 0; i < column;i++)
+    QMultiLineEdit::cursorLeft();
 }
 
+
 void MyTerm::mynewline() {
-  
-
-    QMultiLineEdit::end(FALSE);
-    QMultiLineEdit::newLine();
-
+  QMultiLineEdit::end(FALSE);
+  QMultiLineEdit::newLine();
 }
 
 #include "miniterm.moc"

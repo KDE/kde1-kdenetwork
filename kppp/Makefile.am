@@ -142,7 +142,7 @@ install-data-local:
 	@echo  "If you are concerned about the SETUID bit, create a modem"
 	@echo "group instead."
 	@echo ""
-	@echo "Happy Dialing! -- Bernd Wuebben"
+	@echo "Happy Dialing! -- the KPPP team"
 	@echo ""
 
 # remove ALL you have installed in install-data-local or install-exec-local

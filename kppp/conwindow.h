@@ -3,8 +3,8 @@
  *            kPPP: A pppd front end for the KDE project
  *
  * $Id$
- * 
- *            Copyright (C) 1997 Bernd Johannes Wuebben 
+ *
+ *            Copyright (C) 1997 Bernd Johannes Wuebben
  *                   wuebben@math.cornell.edu
  *
  * This program is free software; you can redistribute it and/or
@@ -59,8 +59,8 @@ public:
   void setConnectionSpeed();
   void startClock();
   void stopClock();
-  void accounting(bool); // show/ hide accounting info
-  
+  void accounting(bool, bool = FALSE); // show/ hide accounting info
+
 public slots:
   void slotAccounting(QString, QString);
 
@@ -92,6 +92,7 @@ private:
 
 
 #endif
+
 
 
 

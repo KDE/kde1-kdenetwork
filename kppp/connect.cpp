@@ -52,8 +52,7 @@
 #include "docking.h"
 #include "loginterm.h"
 
-#define FAST_READ_TIMER 1
-#define SLOW_READ_TIMER 20
+#define READ_TIMER 1
 
 const int MAX_ARGS = 100;
 
@@ -74,57 +73,28 @@ LoginTerm *termwindow = 0L;
 
 extern int totalbytes;
 
-
-NewTimer::NewTimer(QObject *parent, const char *name) :
-  QTimer(parent, name)
-{
-  _interval = -1;
-}
-
-int NewTimer::start(int msec, bool sshot) {
-  int ret = QTimer::start(msec, sshot);
-  _interval = msec;
-  return ret;
-}
-
-int NewTimer::interval() const {
-  return _interval;
-}
-
-void NewTimer::changeInterval(int msec) {
-  QTimer::changeInterval(msec);
-  _interval = msec;
-}
-
 ConnectWidget::ConnectWidget(QWidget *parent, const char *name)
-  : QWidget(parent, name)
+  : QWidget(parent, name),
+    // initialize some important variables
+    myreadbuffer(""),
+    main_timer_ID(0),
+    vmain(0),  
+    scriptindex(0),
+    loopnest(0),
+    loopend(false),
+    semaphore(false),
+    expecting(false),
+    readbuffer(""),
+    scanvar(""),
+    scanning(false),
+    pausing(false),
+    modem_in_connect_state(false),
+    dialnumber(0)
 {
-
-  QVBoxLayout *tl = new QVBoxLayout(this, 8, 10);
-
-  // initialize some important variables
-
-  vmain = 0;
-
-  expecting = false;
-
-  loopnest = 0;
-  loopend = false;
-
-  pausing = false;
-  modem_in_connect_state = false;
-  scriptindex = 0;
-  readbuffer = "";
-  myreadbuffer = "";
-  scanning = false;
-  scanvar = "";
-  main_timer_ID = 0;
   modemfd = -1;
-  semaphore = false;
-  modified_hostname = FALSE;
-
-  dialnumber = 0;
-
+  modified_hostname = false;
+  
+  QVBoxLayout *tl = new QVBoxLayout(this, 8, 10);
   QString tit = i18n("Connecting to: ");
   setCaption(tit);
 
@@ -172,7 +142,7 @@ ConnectWidget::ConnectWidget(QWidget *parent, const char *name)
 
   kapp->processEvents();
 
-  readtimer = new NewTimer(this);
+  readtimer = new QTimer(this);
   connect(readtimer, SIGNAL(timeout()), SLOT(readtty()));
 
   timeout_timer = new QTimer(this);
@@ -247,7 +217,6 @@ void ConnectWidget::init() {
     return;
   }
 
-
   if(opentty()) {
     messg->setText(modemMessage());
     kapp->processEvents();
@@ -257,7 +226,8 @@ void ConnectWidget::init() {
 
       // this timer reads from the modem
       semaphore = false;
-      readtimer->start(SLOW_READ_TIMER);
+      readtimer_pri = 0;
+      readtimer->start(READ_TIMER);
       
       // if we are stuck anywhere we will time out
       timeout_timer->start(atoi(gpppdata.modemTimeout())*1000); 
@@ -862,6 +832,11 @@ void ConnectWidget::readtty() {
   if(semaphore)
     return;
 
+  if(readtimer_pri > 0) {
+    readtimer_pri--;
+    return;
+  }
+
   char c = 0;
 
   if(read(modemfd, &c, 1) == 1) {
@@ -880,18 +855,9 @@ void ConnectWidget::readtty() {
     // ok, we received output from the modem, so it´s likely that we
     // will receive further output. So I reduce the timer interval
     // here to reduce latency
-    if(c == '\n' || c == '\r')
-      readtimer->changeInterval(SLOW_READ_TIMER);
-    else {
-      if(readtimer->interval() != FAST_READ_TIMER)
-	readtimer->changeInterval(FAST_READ_TIMER);
-    }
-  } else {
-    // since no output was received, let´s reduce the timer interval
-    // again to drop system load
-    if(readtimer->interval() != SLOW_READ_TIMER)
-      readtimer->changeInterval(SLOW_READ_TIMER);
-  }
+    readtimer_pri = 0;
+  } else
+    readtimer_pri = 10;
 
   // Let's check if we are finished with scanning:
   // The scanstring have to be in the buffer and the latest character
@@ -924,6 +890,7 @@ void ConnectWidget::readtty() {
       }
       return;
     }
+
     if (loopend && readbuffer.contains(loopstr[loopnest])) {
       expecting = false;
       readbuffer = "";
@@ -943,7 +910,6 @@ void ConnectWidget::pause() {
   pausing = false;
   pausetimer->stop();
 }
-
 
 
 void ConnectWidget::cancelbutton() {
@@ -1165,25 +1131,21 @@ bool ConnectWidget::execppp() {
   if(strcmp(gpppdata.ipaddr(), "0.0.0.0") != 0 ||
      strcmp(gpppdata.gateway(), "0.0.0.0") != 0) {
     if(strcmp(gpppdata.ipaddr(), "0.0.0.0") != 0) {
-
       command += " "; 
       command += gpppdata.ipaddr();
       command +=  ":";
     }
     else {
-
       command += " ";
       command += ":";
     }
 
     if(strcmp(gpppdata.gateway(), "0.0.0.0") != 0)
-
       command += gpppdata.gateway();
   }
 
 
   if(strcmp(gpppdata.subnetmask(), "0.0.0.0") != 0) {
-
     command += " ";
     command += "netmask";
     command += " ";
@@ -1194,12 +1156,10 @@ bool ConnectWidget::execppp() {
 
   if(strcmp(gpppdata.flowcontrol(), "None") != 0) {
     if(strcmp(gpppdata.flowcontrol(), "CRTSCTS") == 0) {
-
       command += " ";
       command +=  "crtscts";
     }
     else {
-
       command += " ";
       command += "xonxoff";
     }
@@ -1291,7 +1251,6 @@ bool ConnectWidget::execppp() {
   }
 
   return true;
-
 }	
 
 
