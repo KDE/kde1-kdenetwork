@@ -58,11 +58,6 @@
 #include "log.h"
 #include "modem.h"
 
-
-const int MAX_ARGS = 100;
-
-void parseargs(char* buf, char** args);
-
 extern KPPPWidget *p_kppp;
 extern int if_is_up();
 extern QString local_ip_address;
@@ -882,7 +877,7 @@ void ConnectWidget::cancelbutton() {
   
   kapp->processEvents();
 
-  killpppd();  
+  Requester::rq->killPPPDaemon();  
   Modem::modem->hangup();
 
   this->hide();
@@ -960,7 +955,7 @@ void ConnectWidget::if_waiting_timed_out() {
   gpppdata.setpppdError(E_IF_TIMEOUT);
 
   // let's kill the stuck pppd
-  killpppd();
+  Requester::rq->killPPPDaemon();
 
   emit stopAccounting();
   p_kppp->con_win->stopClock();
@@ -1043,13 +1038,7 @@ void ConnectWidget::if_waiting_slot() {
 
 
 bool ConnectWidget::execppp() {
-  pid_t id;
-
   QString command;
-  const unsigned int MAX_CMDLEN = 2024;
-  char buf[MAX_CMDLEN];
-  char *args[MAX_ARGS];
-
 
   command = "pppd";
 
@@ -1119,6 +1108,10 @@ bool ConnectWidget::execppp() {
     command = command + "\"" + gpppdata.storedUsername() + "\"";
   }
 
+  // check for debug
+  if(gpppdata.getPPPDebug())
+    command += " debug";
+
   if (command.length() > MAX_CMDLEN) {
     QMessageBox::warning(this, 
 			 i18n("Error"), 
@@ -1129,63 +1122,10 @@ bool ConnectWidget::execppp() {
 			 );	
     return false; // nonsensically long command which would bust my buffer buf.
   }
-  
-  // check for debug
-  if(gpppdata.getPPPDebug())
-    command += " debug";
-  
-  strcpy(buf,command.data());
-
-  // let's parse the arguments the user supplied into UNIX suitable form
-  // that is a list of pointers each pointing to exactly one word
-
-  parseargs(buf,args);
 
   kapp->flushX();
 
-  if((id = fork()) < 0)
-    { 
-      fprintf(stderr,"In parent: fork() failed\n");
-      return false;
-    }
-
-  if(id != 0) {
-    Debug("In parent: fork() %d\n",id);
-    
-    gpppdata.setpppdpid(id);
-    Debug("pppd pid %d\n",id);
-    return true;
-  }
-
-  if(id == 0) {
-    /*    printf("In child: fork() %d\n",id);*/
-    Debug("%s \n",command.data());
-
-//  #ifdef BSD
-//      setpgrp(0,0);    
-//  #else
-//      setpgrp();
-//  #endif
-    
-    // become a session leader and let /dev/ttySx
-    // be the controlling terminal.
-    int pgrpid = setsid();
-    int ttyfd = Modem::modem->fd();
-    // supplying '1' as 3rd argument would even steal the terminal from
-    // another session but we would need to have su rights then.
-    if(ioctl(ttyfd, TIOCSCTTY, 0)<0)
-      fprintf(stderr, "ioctl() failed.\n");
-    if(tcsetpgrp(ttyfd, pgrpid)<0)
-      fprintf(stderr, "tcsetpgrp() failed.\n");
-
-    dup2(ttyfd, 0);
-    dup2(ttyfd, 1);     
-
-    execve(gpppdata.pppdPath(), args, '\0');
-    _exit(0);
-  }
-
-  return true;
+  return Requester::rq->execPPPDaemon(command.data());
 }
 
 
@@ -1349,46 +1289,5 @@ void removedns() {
   }
 
 }  
-
-
-void parseargs(char* buf, char** args) {
-  int nargs = 0;
-  int quotes;
-
-  while(nargs < MAX_ARGS -1 && *buf != '\0') {
-    
-    quotes = 0;
-    
-    // Strip whitespace. Use nulls, so that the previous argument is
-    // terminated automatically.
-     
-    while ((*buf == ' ' ) || (*buf == '\t' ) || (*buf == '\n' ) )
-      *buf++ = '\0';
-    
-    // detect begin of quoted argument
-    if (*buf == '"' || *buf == '\'') {
-      quotes = *buf;
-      *buf++ = '\0';
-    }
-
-    // save the argument
-    if(*buf != '\0') {
-      *args++ = buf;
-      nargs++;
-    }
-    
-    if (!quotes)
-      while ((*buf != '\0') && (*buf != '\n') &&
-	     (*buf != '\t') && (*buf != ' '))
-	buf++;
-    else {
-      while ((*buf != '\0') && (*buf != quotes))
-	buf++;
-      *buf++ = '\0';
-    } 
-  }
- 
-  *args = 0L;
-}
 
 #include "connect.moc"

@@ -1,3 +1,10 @@
+1999-01-22  Harri Porten  <porten@kde.org>
+
+	* moved pppd call to the server process. It should be safer and
+	much more comfortable that pppd doesn't need to be installed SUID
+	root anymore. If I don't get any negative feedback I'll remove
+	some doubled code later. 
+
 1999-01-17  Harri Porten  <porten@kde.org>
 
 	* modeminfo.cpp: ATI1 was left out. Wait 0.1 secs to process the ATE0.

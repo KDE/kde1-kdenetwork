@@ -34,6 +34,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <sys/socket.h> 
+#include <sys/ioctl.h>
 #include <sys/un.h>
 #include <fcntl.h>
 #include <assert.h>
@@ -41,6 +42,8 @@
 #include <errno.h>
 #include <regex.h>
 #include <netinet/in.h>
+#include <signal.h>
+#include <wait.h>
 
 #include "kpppconfig.h"
 #include "opener.h"
@@ -55,7 +58,12 @@
 #define _PATH_RESCONF "/etc/resolv.conf"
 #endif
 
-Opener::Opener(int s) : socket(s) {
+static void sighandler(int);
+static pid_t pppdPid = -1;
+
+Opener::Opener(int s) : socket(s), ttyfd(-1) {
+  signal(SIGUSR1, SIG_IGN);
+  signal(SIGCHLD, sighandler);
   mainLoop();
 }
 
@@ -99,11 +107,14 @@ void Opener::mainLoop() {
       response.status = 0;
       if ((fd = open(device, O_RDWR|O_NDELAY|O_NOCTTY)) == -1) {
         Debug("error opening modem device !");
+        ttyfd = -1;
         fd = open(DEVNULL, O_RDONLY);
         response.status = -errno;
         sendFD(fd, &response);
-      } else
+      } else {
+        ttyfd = fd;
         sendFD(fd, &response);
+      }
       close(fd);
       break;
 
@@ -209,6 +220,20 @@ void Opener::mainLoop() {
       response.status = 0;
       if(sethostname(request.host.name, strlen(request.host.name)))
         response.status = -errno;
+      sendResponse(&response);
+      break;
+
+    case ExecPPPDaemon:
+      Debug("Opener: received ExecPPPDaemon");
+      assert(len == sizeof(struct ExecDaemonRequest));
+      response.status = execpppd(request.daemon.arguments);
+      sendResponse(&response);
+      break;
+
+    case KillPPPDaemon:
+      Debug("Opener: received KillPPPDaemon");
+      assert(len == sizeof(struct KillDaemonRequest));
+      response.status = killpppd();
       sendResponse(&response);
       break;
 
@@ -396,4 +421,153 @@ const char* Opener::authFile(int authMethod, int version) {
   default:
     return 0L;
   }
+}
+
+
+bool Opener::execpppd(const char *arguments) {
+  char buf[MAX_CMDLEN];
+  char *args[MaxArgs];
+  pid_t pgrpid;
+
+  if(ttyfd<0)
+    return false;
+
+  switch(pppdPid = fork())
+    {
+    case -1:
+      fprintf(stderr,"In parent: fork() failed\n");
+      return false;
+      break;
+
+    case 0:
+      // let's parse the arguments the user supplied into UNIX suitable form
+      // that is a list of pointers each pointing to exactly one word
+      strcpy(buf, arguments);
+      parseargs(buf, args);
+      // become a session leader and let /dev/ttySx
+      // be the controlling terminal.
+      pgrpid = setsid();
+      if(ioctl(ttyfd, TIOCSCTTY, 0)<0)
+      fprintf(stderr, "ioctl() failed.\n");
+      if(tcsetpgrp(ttyfd, pgrpid)<0)
+      fprintf(stderr, "tcsetpgrp() failed.\n");
+
+      dup2(ttyfd, 0);
+      dup2(ttyfd, 1);
+
+      execve(pppdPath(), args, 0L);
+      _exit(0);
+      break;
+
+    default:
+      Debug("In parent: pppd pid %d\n",pppdPid);
+      return true;
+      break;
+    }
+}
+
+
+bool Opener::killpppd() {
+  if(pppdPid > 0) {
+    Debug("In killpppd(): Sending SIGTERM to %d\n", pppdPid);    
+    if(kill(pppdPid, SIGTERM) < 0) {
+      Debug("Error terminating %d. Sending SIGKILL\n", pppdPid);
+      if(kill(pppdPid, SIGKILL) < 0) {
+        Debug("Error killing %d\n", pppdPid);
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+
+void Opener::parseargs(char* buf, char** args) {
+  int nargs = 0;
+  int quotes;
+
+  while(nargs < MaxArgs-1 && *buf != '\0') {
+    
+    quotes = 0;
+    
+    // Strip whitespace. Use nulls, so that the previous argument is
+    // terminated automatically.
+     
+    while ((*buf == ' ' ) || (*buf == '\t' ) || (*buf == '\n' ) )
+      *buf++ = '\0';
+    
+    // detect begin of quoted argument
+    if (*buf == '"' || *buf == '\'') {
+      quotes = *buf;
+      *buf++ = '\0';
+    }
+
+    // save the argument
+    if(*buf != '\0') {
+      *args++ = buf;
+      nargs++;
+    }
+    
+    if (!quotes)
+      while ((*buf != '\0') && (*buf != '\n') &&
+	     (*buf != '\t') && (*buf != ' '))
+	buf++;
+    else {
+      while ((*buf != '\0') && (*buf != quotes))
+	buf++;
+      *buf++ = '\0';
+    } 
+  }
+ 
+  *args = 0L;
+}
+
+
+const char* pppdPath() {
+  static char *PPPDPATH = 0L;
+  char *p;
+
+  if(PPPDPATH == 0L) {
+    // wasting a few bytes
+    PPPDPATH = new char[strlen(PPPDSEARCHPATH)+strlen(PPPDNAME)+1];
+    if(PPPDPATH == 0L) {
+      fprintf(stderr, "kppp: low memory\n");
+      exit(1);
+    }
+    const char *c = PPPDSEARCHPATH;
+    while(*c != '\0') {
+      while(*c == ':')
+        c++;
+      p = PPPDPATH;
+      while(*c != '\0' && *c != ':')
+        *p++ = *c++;
+      *p = '\0';
+      strcat(p, "/");
+      strcat(p, PPPDNAME);
+      if(access(PPPDPATH, F_OK) == 0)
+        return PPPDPATH;
+    }
+    delete PPPDPATH;
+    PPPDPATH = 0L;
+  }
+  return PPPDPATH;
+}
+
+
+void sighandler(int) {
+  pid_t pid;
+
+  signal(SIGCHLD, sighandler);
+  if(pppdPid>0) {
+    pid = waitpid(pppdPid, 0L, WNOHANG);
+    if(pid != pppdPid) {
+      fprintf(stderr, "received SIGCHLD from unknown origin.\n");
+    } else {
+      Debug("It was pppd that died");
+      pppdPid = -1;
+      Debug("Sending %i a SIGUSR1", getppid());
+      kill(getppid(), SIGUSR1);
+    }
+  } else
+    fprintf(stderr, "received unexpected SIGCHLD.\n");
 }

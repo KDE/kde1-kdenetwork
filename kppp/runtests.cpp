@@ -397,7 +397,7 @@ int runTests() {
 				    ));
     warning++;
   }
-
+#if 0
   // Test 2: check access to the pppd binary
   if(pppdFound) {
     if(access(f.data(), X_OK) != 0 /* && geteuid() != 0 */) {
@@ -437,7 +437,7 @@ int runTests() {
       }
     }
   }
-
+#endif
   // Test 4: check for undesired 'lock' option in /etc/ppp/options
   QFile opt(SYSOPTIONS);
   if (opt.open(IO_ReadOnly)) {

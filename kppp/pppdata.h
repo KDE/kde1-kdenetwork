@@ -374,8 +374,8 @@ public:
   void setpppdArgument(QStrList &);
 
   //functions to change/set the child pppd process info
-  pid_t pppdpid();
-  void setpppdpid(pid_t);
+  const bool pppdRunning();
+  void setpppdRunning(bool set);
 
   pid_t suidChildPid();
   void setSuidChildPid(pid_t);
@@ -417,7 +417,7 @@ private:
   KConfig* config;                       // configuration object   
 
   pid_t suidprocessid;                   // process ID of setuid child
-  pid_t pppdprocessid;                   // process ID of the child pppd
+  bool pppdisrunning;                    // pppd process
                                          // daemon
   int pppderror;                         // error encounterd running pppd
 

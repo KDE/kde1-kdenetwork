@@ -190,8 +190,8 @@ extern "C" {
   static int kppp_xio_errhandler( Display * ) {
     if(gpppdata.get_xserver_exit_disconnect()) {
       fprintf(stderr, "X11 Error!\n");
-      if(gpppdata.pppdpid() >= 0)
-	kill(gpppdata.pppdpid(), SIGTERM);    
+      if(gpppdata.pppdRunning())
+        Requester::rq->killPPPDaemon();
 
       p_kppp->stopAccounting();
       removedns();
@@ -446,7 +446,8 @@ int main( int argc, char **argv ) {
   signal(SIGINT, sigint);
   signal(SIGTERM, SIG_IGN);
   signal(SIGHUP, SIG_IGN);
-  signal(SIGCHLD, dieppp);
+  signal(SIGCHLD, sigchld);
+  signal(SIGUSR1, dieppp);
 
   XSetErrorHandler( kppp_x_errhandler );
   XSetIOErrorHandler( kppp_xio_errhandler );
@@ -799,37 +800,20 @@ void sigint(int) {
     emit p_kppp->con->cancelbutton();
 
   // disconnect if online
-  if (gpppdata.pppdpid() != -1)
+  if (gpppdata.pppdRunning())
     emit p_kppp->disconnect();
 }
 
 
 //Note: this is a friend function of KPPPWidget class (kppp)
-void dieppp(int sig) {
-  pid_t id;
-  int st;
+void dieppp(int) {
+  Debug("Received a SIGUSR1\n");
+  signal(SIGUSR1, dieppp);
 
-  Debug("Received a signal: %d\n",sig);
-
-  if(sig == SIGCHLD){    
-    Debug("The Signal received was a SIGCHLD\n");
-    signal(SIGCHLD, dieppp); // reinstall the sig handler
-    id = wait(&st);
-
-    // TODO
-//     if (id > 0) {
-//       if(WIFEXITED(st))
-//         Debug("process %i exited normally with return code %i\n", id, WEXITSTATUS(st));
-//       else
-//         Debug("process %i exited abnormally.\n", id);
-//     } else
-//       Debug("wait() returned error %i\n", errno);    
-    
     // if we are not connected pppdpid is -1 so have have to check for that
     // in the followin line to make sure that we don't raise a false alarm
     // such as would be the case when the log file viewer exits.
-    if((id == gpppdata.pppdpid() && gpppdata.pppdpid() != -1)
-       || gpppdata.pppdError()) { 
+    if(gpppdata.pppdRunning() || gpppdata.pppdError()) { 
       Debug("It was pppd that died\n");
 
       // when we killpppd() on Cancel in ConnectWidget 
@@ -840,7 +824,7 @@ void dieppp(int sig) {
       Requester::rq->removeSecret(AUTH_PAP);
       Requester::rq->removeSecret(AUTH_CHAP);
 
-      gpppdata.setpppdpid(-1);
+      gpppdata.setpppdRunning(false);
       
       Debug("Executing command on disconnect since pppd has died:\n");
       execute_command(gpppdata.command_on_disconnect());
@@ -864,7 +848,7 @@ void dieppp(int sig) {
 	p_kppp->con_win->hide();
 	p_kppp->con->hide();
 
-	gpppdata.setpppdpid(-1);
+        gpppdata.setpppdRunning(false);
 	
 	KApplication::beep();
 	QString msg;
@@ -900,24 +884,28 @@ void dieppp(int sig) {
 	p_kppp->con_win->hide();
 	p_kppp->con_win->stopClock();
 	p_kppp->stopAccounting();
-	gpppdata.setpppdpid(-1);
+	gpppdata.setpppdRunning(false);
 	KApplication::beep();
 	emit p_kppp->cmdl_start();
-      }
     }
+  }
+  gpppdata.setpppdError(0);
+}
 
-    if(id == gpppdata.suidChildPid() && gpppdata.suidChildPid() != -1) {
-      Debug("It was the setuid child that died");
-      gpppdata.setSuidChildPid(-1);
-      QString msg = i18n("Sorry. kppp's helper process just died.\n\n"
-                         "Since a further execution would be pointless, "
-                         "kppp will shut down right now.");
-      QMessageBox::critical(0L, i18n("Error"), msg);
-      remove_pidfile();
-      shutDown(1);
-    }
 
-    gpppdata.setpppdError(0);
+void sigchld(int) {
+  Debug("sigchld()");
+  pid_t id = wait(0L);
+
+  if(id == gpppdata.suidChildPid() && gpppdata.suidChildPid() != -1) {
+    Debug("It was the setuid child that died");
+    gpppdata.setSuidChildPid(-1);
+    QString msg = i18n("Sorry. kppp's helper process just died.\n\n"
+                       "Since a further execution would be pointless, "
+                       "kppp will shut down right now.");
+    QMessageBox::critical(0L, i18n("Error"), msg);
+    remove_pidfile();
+    shutDown(1);
   }
 }
 
@@ -957,7 +945,7 @@ void KPPPWidget::connectbutton() {
     QMessageBox::warning(this, i18n("Error"), string.data());
     return;
   }
-
+#if 0
   if(!info.isExecutable()){
 
     QString string;   
@@ -970,6 +958,7 @@ void KPPPWidget::connectbutton() {
     return;
 
   }
+#endif
 
   QFileInfo info2(gpppdata.modemDevice());
 
@@ -1094,7 +1083,7 @@ void KPPPWidget::disconnect() {
   kapp->processEvents();
 
   stats->stop_stats();
-  killpppd();
+  Requester::rq->killPPPDaemon();
 
   execute_command(gpppdata.command_on_disconnect());
   
@@ -1128,14 +1117,14 @@ void KPPPWidget::helpbutton() {
 
 
 void KPPPWidget::quitbutton() {
-  if(gpppdata.pppdpid() >= 0) {    
+  if(gpppdata.pppdRunning()) {    
     bool ok = QMessageBox::query(i18n("Quit kPPP?"), 
 				 i18n("Exiting kPPP will close your PPP Session."),
 				 i18n("Yes"),
 				 i18n("No"));
 
     if(ok) {
-      killpppd();
+      Requester::rq->killPPPDaemon();
       execute_command(gpppdata.command_on_disconnect());
       removedns();
       Modem::modem->unlockdevice();
@@ -1226,28 +1215,6 @@ void KPPPWidget::setPW_Edit(const char *pw) {
 
 void KPPPWidget::resetCosts(const char *s) {
   AccountingBase::resetCosts(s);
-}
-
-void killpppd() {
-  int stat;
-  pid_t pid = gpppdata.pppdpid();
-  
-  if(pid >= 0) {
-    gpppdata.setpppdpid(-1);
-
-    Debug("In killpppd(): Sending SIGTERM to %d\n", pid);    
-    if(kill(pid, SIGTERM) < 0) {
-      Debug("Error terminating %d. Sending SIGKILL\n", pid);
-      
-      if(kill(pid, SIGKILL) < 0)
-        Debug("Error killing %d\n", pid);
-      
-      KApplication::beep();
-      return;
-    }
-
-    waitpid(pid, &stat, WNOHANG);
-  }
 }
 
 

@@ -81,6 +81,7 @@ public:
 
   friend void dieppp(int);              // if the pppd daemon dies...
   friend void sigint(int);
+  friend void sigchld(int);
 
   void setPW_Edit(const char *);
 
@@ -156,6 +157,7 @@ private:
 void killpppd();
 void sigint(int);
 void dieppp(int);
+void sigchld(int);
 pid_t execute_command(const char *);
 void make_directories();
 pid_t create_pidfile();

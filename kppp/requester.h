@@ -16,6 +16,8 @@ public:
   bool setCHAPSecret(const char *name, const char *password);
   bool removeSecret(int authMethode);
   bool setHostname(const char *name);
+  bool execPPPDaemon(const char *arguments);
+  bool killPPPDaemon();
   bool stop();
 
 public:

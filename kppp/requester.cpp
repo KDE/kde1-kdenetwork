@@ -270,6 +270,30 @@ bool Requester::setHostname(const char *name) {
   return recvResponse();
 }
 
+
+bool Requester::execPPPDaemon(const char *arguments) {
+  struct ExecDaemonRequest req;
+  req.header.type = Opener::ExecPPPDaemon;
+  strncpy(req.arguments, arguments, MAX_CMDLEN);
+  req.arguments[MAX_CMDLEN] = '\0';
+  sendRequest((struct RequestHeader *) &req, sizeof(req));
+  if(recvResponse()==0) {
+    gpppdata.setpppdRunning(true);
+    return true;
+  } else
+    return false;
+}
+
+
+bool Requester::killPPPDaemon() {
+  struct KillDaemonRequest req;
+  req.header.type = Opener::KillPPPDaemon;
+  sendRequest((struct RequestHeader *) &req, sizeof(req));
+  gpppdata.setpppdRunning(false);
+  return recvResponse();
+}
+
+
 bool Requester::stop() {
 
   struct StopRequest req;

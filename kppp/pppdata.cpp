@@ -94,7 +94,7 @@ PPPData::PPPData() {
   cgroup = 0L;         // current group for config file
 
   suidprocessid = -1;  // process ID of setuid child 
-  pppdprocessid = -1;  // process ID of the child pppd daemon
+  pppdisrunning = false;
   pppderror = 0;       
 }
 
@@ -1192,12 +1192,12 @@ bool PPPData::graphingEnabled() {
 //
 //functions to change/set the child pppd process info
 //
-pid_t PPPData::pppdpid() {
-  return pppdprocessid;
+const bool PPPData::pppdRunning() {
+  return pppdisrunning;
 }
 
-void PPPData::setpppdpid(pid_t id) {
-  pppdprocessid = id;
+void PPPData::setpppdRunning(bool set) {
+  pppdisrunning = set;
 }
 
 pid_t PPPData::suidChildPid() {

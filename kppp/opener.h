@@ -16,6 +16,8 @@
 # define IOV_BASE_CAST (void *)
 #endif
 
+const char *pppdPath();
+
 class Opener {
 
 public:
@@ -28,9 +30,10 @@ public:
          OpenSysLog,
          SetSecret, RemoveSecret,
          SetHostname,
+         ExecPPPDaemon, KillPPPDaemon,
          Stop };
   enum { PAP = 1, CHAP };
-  enum { MaxPathLen = 30, MaxStrLen = 40 };
+  enum { MaxPathLen = 30, MaxStrLen = 40, MaxArgs = 100 };
 
 private:
   enum { Original=0x100, New=0x200, Old=0x400 } Version;
@@ -41,8 +44,13 @@ private:
   bool createAuthFile(int authMethod, char *username, char *password);
   bool removeAuthFile(int authMethod);
   const char* authFile(int authMethod, int version = Original);
+  bool execpppd(const char *arguments);
+  bool killpppd();
+  void parseargs(char* buf, char** args);
+  const char *findFileInPath(const char *fname, const char *extraPath);
 
   int socket;
+  int ttyfd;
   char lockfile[MaxPathLen+1];
 };
 
@@ -100,6 +108,15 @@ struct SetHostnameRequest {
   char   name[Opener::MaxStrLen+1];
 };
 
+struct ExecDaemonRequest {
+  struct RequestHeader header;
+  char   arguments[MAX_CMDLEN+1];
+};
+
+struct KillDaemonRequest {
+  struct RequestHeader header;
+};
+
 struct StopRequest {
   struct RequestHeader header;
 };
@@ -114,6 +131,8 @@ union AllRequests {
   struct RemoveSecretRequest remove;
   struct SetHostnameRequest host;
   struct OpenLogRequest log;
+  struct ExecDaemonRequest daemon;
+  struct ExecDaemonRequest kill;
   struct StopRequest stop;
 };
 
