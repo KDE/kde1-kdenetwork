@@ -1128,13 +1128,13 @@ void KPPPWidget::quitbutton() {
       execute_command(gpppdata.command_on_disconnect());
       removedns();
       Modem::modem->unlockdevice();
-      kapp->quit();
     }
   } else {
     if (strcmp(gpppdata.accname(), "") != 0 && !gpppdata.storePassword())
       gpppdata.setStoredPassword("");
-    kapp->quit();
   }
+  gpppdata.save();
+  kapp->quit();
 }
 
 

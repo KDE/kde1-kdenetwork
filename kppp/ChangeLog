@@ -1,3 +1,7 @@
+1999-01-23  Harri Porten  <porten@kde.org>
+
+	* main.cpp: config data wasn't saved on immediate exit.
+
 1999-01-22  Harri Porten  <porten@kde.org>
 
 	* moved pppd call to the server process. It should be safer and
