@@ -108,7 +108,7 @@ extern KApplication *kApp;
 extern KConfig *kConfig;
 extern global_config *kSircConfig;
 
-KSircProcess::KSircProcess( char *_server, QObject * parent, const char * name )
+KSircProcess::KSircProcess( char *_server, QObject * parent, const char * name ) /*fold00*/
   : QObject(parent, name)
 {
 
@@ -216,7 +216,7 @@ KSircProcess::KSircProcess( char *_server, QObject * parent, const char * name )
 
 }
 
-KSircProcess::~KSircProcess()
+KSircProcess::~KSircProcess() /*fold00*/
 {
   
   if(TopList["!default"]){
@@ -236,7 +236,7 @@ KSircProcess::~KSircProcess()
   delete server;
 }
 
-void KSircProcess::new_toplevel(QString str)
+void KSircProcess::new_toplevel(QString str) /*FOLD00*/
 {
   static time_t last_window_open = 0;
   static int number_open = 0;
@@ -293,7 +293,9 @@ void KSircProcess::new_toplevel(QString str)
     connect(wm, SIGNAL(currentWindow(KSircTopLevel *)),
 	    this,SLOT(default_window(KSircTopLevel *)));
     connect(wm, SIGNAL(changeChannel(QString, QString)),
-	    this,SLOT(recvChangeChannel(QString, QString)));
+            this,SLOT(recvChangeChannel(QString, QString)));
+    connect(wm, SIGNAL(objDestroyed(KSircTopLevel *)),
+            this,SLOT(clean_toplevel(KSircTopLevel *)));
     default_window(wm); // Set it to the default window.
     emit ProcMessage(QString(server), ProcCommand::addTopLevel, str);
     wm->show(); // Pop her up
@@ -303,7 +305,7 @@ void KSircProcess::new_toplevel(QString str)
   }
 }
 
-void KSircProcess::close_toplevel(KSircTopLevel *wm, char *name)
+void KSircProcess::close_toplevel(KSircTopLevel *wm, char *name) /*FOLD00*/
 {
 
   bool is_default = FALSE; // Assume it's no default
@@ -361,7 +363,30 @@ void KSircProcess::close_toplevel(KSircTopLevel *wm, char *name)
 		   QString(name));
 }
 
-void KSircProcess::default_window(KSircTopLevel *w)
+void KSircProcess::clean_toplevel(KSircTopLevel *clean){ /*FOLD00*/
+  if(clean == 0x0){
+    warning("Passed null to cleaner!!");
+    return;
+  }
+  bool cont = FALSE;
+  do{
+    cont = FALSE;
+    QDictIterator<KSircMessageReceiver> it(TopList);
+    while(it.current() != 0x0){
+      if(it.current() == clean){
+        char *key = strdup(it.currentKey());
+        while(TopList[key] != 0x0){
+          TopList.remove(key);
+        }
+        cont = TRUE;
+        break;
+      }
+      ++it;
+    }
+  } while(cont == TRUE);
+}
+
+void KSircProcess::default_window(KSircTopLevel *w) /*fold00*/
 {
 
   //
@@ -374,7 +399,7 @@ void KSircProcess::default_window(KSircTopLevel *w)
 
 }
 
-void KSircProcess::recvChangeChannel(QString old_chan, QString
+void KSircProcess::recvChangeChannel(QString old_chan, QString /*fold00*/
 				     new_chan)
 {
   //
@@ -388,7 +413,7 @@ void KSircProcess::recvChangeChannel(QString old_chan, QString
 		   old_chan + " " + new_chan);
 }
 
-void KSircProcess::filters_update()
+void KSircProcess::filters_update() /*fold00*/
 {
   QString command, next_part, key, data;
   command = "/crule\n";
@@ -443,17 +468,17 @@ void KSircProcess::filters_update()
 }
 
 
-void KSircProcess::notify_forw_online(QString nick)
+void KSircProcess::notify_forw_online(QString nick) /*fold00*/
 {
   emit ProcMessage(QString(server), ProcCommand::nickOnline, nick);
 }
 
-void KSircProcess::notify_forw_offline(QString nick)
+void KSircProcess::notify_forw_offline(QString nick) /*fold00*/
 {
   emit ProcMessage(QString(server), ProcCommand::nickOffline, nick);
 }
 
-void KSircProcess::ServMessage(QString dst_server, int command, QString args)
+void KSircProcess::ServMessage(QString dst_server, int command, QString args) /*fold00*/
 {
   if(dst_server.isEmpty() || (dst_server == QString(server))){
     switch(command){

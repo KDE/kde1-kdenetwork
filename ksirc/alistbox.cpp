@@ -35,7 +35,7 @@ void aListBox::clear() /*fold00*/
 }
 
 
-void aListBox::inSort ( nickListItem *lbi) /*fold00*/
+void aListBox::inSort ( nickListItem *lbi) /*FOLD00*/
 {
   int insert;
   bool found;
@@ -45,6 +45,10 @@ void aListBox::inSort ( nickListItem *lbi) /*fold00*/
     return;
   }
   insertItem(lbi, insert);
+//  for(uint index = 0; index < count(); index++){
+//    debug("%d is %s", index, text(index));
+//  }
+
 }
 
 void aListBox::inSort ( const char * text, bool top)  /*fold00*/
@@ -89,59 +93,66 @@ int aListBox::searchFor(QString nick, bool &found, bool top) /*FOLD00*/
       }
       else{
         min = sep;
-        max = count();
+        max = count() - 1;
       }
     }
     else
       current = -1;
 
-    debug("Top: %d min: %d max: %d", top, min, max);
-
-    delta = (max - min)/2;
-    current = min + delta + (max-min)%2;
+//    debug("Top: %d min: %d max: %d count: %d", top, min, max, count());
+    current = (min + max)/2; // + (max-min)%2;
     insert = current;
     int last_current = -1;
-    while(delta > 0){
-      delta = delta >> 1;
+    uint loop = 0;
+    do {
       if(current == last_current){
-        debug("Insert looping on %s", nick.data());
+//        debug("Insert looping on %s", nick.data());
         //      current++;
-        //      break; // we're looping, so stop
+        break; // we're looping, so stop
       }
       last_current = current;
-      insert = current;
-      //    compare = strncasecmp(text(current), lbi->text(),
-      //			  QMIN(strlen(text(current)),
-      //			       strlen(lbi->text())));
 
       compare = strcasecmp(text(current), nick.data());
       if(compare < 0){
-        debug("%s is greater than: %s, %d", nick.data(), text(current), delta);
-        current += delta;
-        insert = current+1;
+        min = current;
+        insert = current + 1;
+//	debug("1 < 0: %s is greater then: %s, min: %d max: %d current: %d", nick.data(), text(current), min, max, current);
       }
       else if(compare > 0){
-        debug("%s is less then: %s, %d", nick.data(), text(current), delta);
-        current -= delta;
-        insert = current;
+        max = current;
+ 	insert = current;
+//	debug("1 > 0: %s is less then: %s, min: %d max: %d current: %d", nick.data(), text(current), min, max, current);
       }
       else {// We got a match?
+        insert = current;
         found = TRUE;
         break;
       }
-    }
-    compare = strcasecmp(text(min), nick.data());
-    if(compare > 0)
-      insert = min;
-    else if(compare == 0){
-      found = TRUE;
-      insert = min;
+      current = (min + max)/2;
+      loop++; // Infinite loop detector increment
+    } while(max != min && loop < count());    
+
+    if(current == count() - 2){
+      compare = strcasecmp(text(count()-1), nick.data());
+      if(compare < 0){
+	min = current;
+	insert += 1;
+	debug("End check got one!");
+      }
+      else if (compare == 0){// We got a match?
+	insert = current;
+	found = TRUE;
+      }
     }
 
+    if(loop == count())
+    {
+        debug("Loop inifitly on: %s", nick.data());
+    }
 
     if(found == TRUE){
       debug("Found %s", nick.data());
-      return current;
+      return insert;
     }
   }
   debug("%s is at %d", nick.data(), insert);
