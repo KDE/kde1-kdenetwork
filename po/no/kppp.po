@@ -1,61 +1,62 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Free Software Foundation, Inc.
-# Theodore J. Soldatos <theodore@eexi.gr>, 1998.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 1998-03-19 22:13+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Theodore J. Soldatos <theodore@eexi.gr>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 1998-03-24 19:24+0100\n"
+"Last-Translator: Svein Olav Aasen <soaasen@online.no / svein.aasen@caa.no>\n"
+"Language-Team: no <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: ENCODING\n"
 
 #: accounts.cpp:53
 msgid "Account Setup"
-msgstr "Ρυθμίσεις λογαριασμού"
+msgstr "Konto oppsett"
 
 #: accounts.cpp:72
 msgid "Edit..."
-msgstr "Επεξεργασία..."
+msgstr "Rediger..."
 
 #: accounts.cpp:83
 msgid "New..."
-msgstr "Νέος..."
+msgstr "Ny..."
 
 #: accounts.cpp:105
 msgid "Phone Costs:"
-msgstr "Τηλεφωνικά κόστη:"
+msgstr "Telefon kostnader:"
 
 #: accounts.cpp:121
 msgid "Reset Costs"
-msgstr "Μηδενισμός κόστους"
+msgstr "Tilbakestill kostnader"
 
 #: accounts.cpp:128
 msgid "View Logs"
-msgstr "Προβολή αρχείου"
+msgstr "Se pε logger"
 
 #: accounts.cpp:213
 msgid "Reset Total"
-msgstr "Μηδενισμός συνόλων"
+msgstr "Tilbakestill total"
 
 #: accounts.cpp:214
 msgid ""
 "Are you sure you want to reset the accumulated\n"
 "telephone costs for the selected account to zero?"
 msgstr ""
-"Είστε σίγουρος ότι θέλετε να μηδενίσετε τα τηλεφωνικά\n"
-"κόστη γι αυτόν τον λογαριασμό;"
+"Er du sikker pε at du ψnsker ε resette akkumulerte\n"
+"telefonkostnder for valgte konto til null?"
 
 #: accounts.cpp:249 accounts.cpp:272
 msgid "Maximum number of accounts reached."
-msgstr "Υπάρχει ο μέγιστος επιτρεπόμενος αριθμός λογαριασμών."
+msgstr "Maksimum antall kontoer nεdd."
 
 #: accounts.cpp:278
 msgid "No account selected."
-msgstr "Δεν έχει επιλεγεί λογαριασμός"
+msgstr "Ingen konot valgt."
 
 #: accounts.cpp:294
 #, c-format
@@ -63,24 +64,24 @@ msgid ""
 "Are you sure you want to delete\n"
 "the account \"%s\"?"
 msgstr ""
-"Είστε σίγουρος ότι θέλετε να διαγράψετε\n"
-"τον λογαριασμό \"%s\";"
+"Er du sikker du ψnsker ε slette\n"
+"kontoen \"%s\"?"
 
 #: accounts.cpp:299
 msgid "Confirm"
-msgstr "Επιβεβαίωση"
+msgstr "Bekreft"
 
 #: accounts.cpp:321
 msgid "New Account"
-msgstr "Νέος λογαριασμός"
+msgstr "Ny konto"
 
 #: accounts.cpp:325
 msgid "Edit Account: "
-msgstr "Επεξεργασία λογαριασμού:"
+msgstr "Rediger konto:"
 
 #: accounts.cpp:345
 msgid "Dial"
-msgstr "Κλήση"
+msgstr "Slε nummer"
 
 #: accounts.cpp:346
 msgid "IP"
@@ -92,109 +93,108 @@ msgstr "DNS"
 
 #: accounts.cpp:348
 msgid "Gateway"
-msgstr "Πύλη"
+msgstr "Gateway"
 
 #: accounts.cpp:349
 msgid "Login Script"
-msgstr "Αρχείο εντολών σύνδεσης"
+msgstr "Innloggings script"
 
 #: accounts.cpp:350
 msgid "Accounting"
-msgstr "Λογιστικά"
+msgstr "Kontering"
 
 #: accounts.cpp:369
 msgid ""
 "You must enter a unique\n"
 "account name"
 msgstr ""
-"Πρέπει να εισάγετε ένα μοναδικό\n"
-"όνομα λογαριασμού"
+"Du mε oppgi et unikt\n"
+"konto navn"
 
 #: accounts.cpp:374
 msgid "Login script has unbalanced Loop Start/End"
-msgstr ""
-"Το αρχείο εντολών σύνδεσης περιέχει μη ισσοροπημένη ανακύκλωση Start/End"
+msgstr "Innloggings skriptet har ubalansert Loop Start/End"
 
 #: connect.cpp:98 connect.cpp:200 main.cpp:777
 msgid "Connecting to: "
-msgstr "Σύνδεση στο: "
+msgstr "Oppkopling til: "
 
 #: connect.cpp:107 connect.cpp:215 miniterm.cpp:162 modeminfo.cpp:63
 #: modeminfo.cpp:150
 msgid "Sorry, can't create modem lock file."
-msgstr "Συγγνώμη, δεν μπορώ να δημιουργήσω αρχείο κλειδώματος modem."
+msgstr "Beklager, kan ikke lage modem lεse fil."
 
 #: connect.cpp:112 connect.cpp:175 modeminfo.cpp:68
 msgid "Looking for Modem ..."
-msgstr "Ψάξιμο για modem..."
+msgstr "Ser etter modem ..."
 
 #: connect.cpp:121 debug.cpp:86 main.cpp:790
 msgid "Log"
-msgstr "Αρχείο"
+msgstr "Logg"
 
 #: connect.cpp:209 miniterm.cpp:157 modeminfo.cpp:145
 msgid "Sorry, modem device is locked."
-msgstr "Συγγνώμη, το modem είναι κλειδωμένο."
+msgstr "Beklager, modem enheten er lεst."
 
 #: connect.cpp:221 miniterm.cpp:176 miniterm.cpp:253 modeminfo.cpp:165
 msgid "Modem Ready"
-msgstr "Το modem είναι έτοιμο"
+msgstr "Modem klart"
 
 #: connect.cpp:253 connect.cpp:254
 msgid "Initializing Modem..."
-msgstr "Αρχικοποίηση modem..."
+msgstr "Initialiserer modem..."
 
 #: connect.cpp:274
 msgid "Dialing"
-msgstr "Κλήση εν εξελίξει"
+msgstr "Slεr nummer"
 
 #: connect.cpp:304
 msgid "Line Busy. Hanging up ..."
-msgstr "Η γραμή είναι απασχολημένη. Κλείσιμο ..."
+msgstr "Linjen opptatt. Legger pε ..."
 
 #: connect.cpp:310
 msgid "Line Busy. Waiting: "
-msgstr "Η γραμμή είναι απασχολημένη. Αναμονή: "
+msgstr "Linje opptatt. Venter: "
 
 #: connect.cpp:312 connect.cpp:411 connect.cpp:430
 msgid " seconds"
-msgstr " δευτερόλεπτα"
+msgstr " sekunder"
 
 #: connect.cpp:330
 msgid "No Dialtone"
-msgstr "Δεν υπάρχει ήχος γραμμής"
+msgstr "Ingen ringetone"
 
 #: connect.cpp:340
 msgid "No Carrier"
-msgstr "Απουσία σήματος"
+msgstr "Ingen bζrebψlge"
 
 #: connect.cpp:375
 msgid "Scanning "
-msgstr "Ανίχνευση "
+msgstr "Skanner"
 
 #: connect.cpp:386
 msgid "Sending "
-msgstr "Αποστολή "
+msgstr "Sender"
 
 #: connect.cpp:397
 msgid "Expecting "
-msgstr "Αναμονή "
+msgstr "Venter "
 
 #: connect.cpp:409
 msgid "Pause "
-msgstr "Παύση "
+msgstr "Pause "
 
 #: connect.cpp:428
 msgid "Timeout "
-msgstr "Τέλος χρόνου "
+msgstr "Tiden er ute "
 
 #: connect.cpp:442 connect.cpp:443
 msgid "Hangup"
-msgstr "Κλείσιμο"
+msgstr "Legger pε"
 
 #: connect.cpp:456 connect.cpp:457
 msgid "Answer"
-msgstr "Απάντηση"
+msgstr "Svar"
 
 #: connect.cpp:465
 msgid "ID "
@@ -202,147 +202,147 @@ msgstr "ID "
 
 #: connect.cpp:502
 msgid "Password "
-msgstr "Λέξη κλειδί "
+msgstr "Passord "
 
 #: connect.cpp:539
 msgid "Prompting "
-msgstr "Ζήτηση "
+msgstr "Prompting "
 
 #: connect.cpp:576
 msgid "PW Prompt "
-msgstr "Ζήτηση λέξης κλειδί "
+msgstr "PW Prompt "
 
 #: connect.cpp:602
 msgid "Loop Start "
-msgstr "Αρχή ανακύκλωσης "
+msgstr "Loop start "
 
 #: connect.cpp:606
 msgid "ERROR: Nested too deep, ignored."
-msgstr "ΣΦΑΛΜΑ: Επίπεδο ανακύκλωσης πολύ μεγάλο, αγνοείται."
+msgstr "Feil: Nested for dyp, ignorert."
 
 #: connect.cpp:611
 msgid "Loops nested too deeply!"
-msgstr "Πολύ μεγάλα βάθη ανακύκλωσης!"
+msgstr "Loops nested for dypt!"
 
 #: connect.cpp:629
 msgid "LoopEnd without mathing Start! Line: "
-msgstr "Τέλος ανακύκλωσης (LoopEnd) χωρίς αντίστοιχη γραμμή έναρξης (Start!)"
+msgstr "LoopEnd uten mathing Start! Line: "
 
 #: connect.cpp:706
 msgid "Starting pppd ..."
-msgstr "Εκκίνηση pppd ..."
+msgstr "Starter pppd ..."
 
 #: connect.cpp:766 connect.cpp:792
 msgid "unknown speed"
-msgstr "ταχύτητα άγνωστη"
+msgstr "ukjent hastighet"
 
 #: connect.cpp:830
 msgid "Scan Var: "
-msgstr "Μεταβλητή ανίχνευσης: "
+msgstr "Scan Var: "
 
 #: connect.cpp:841
 msgid "Found: "
-msgstr "Βρέθηκαν: "
+msgstr "Funnet: "
 
 #: connect.cpp:853
 msgid "Looping: "
-msgstr "Ανακύκλωση: "
+msgstr "Looping: "
 
 #: connect.cpp:884 modeminfo.cpp:333
 msgid "One Moment Please ..."
-msgstr "Μια στιγμή παρακαλώ ..."
+msgstr "Et ψyeblikk ...."
 
 #: connect.cpp:927
 msgid "Script timed out!"
-msgstr "Τέλος χρόνου αναμονής αρχείου εντολών!"
+msgstr "Skriptet gikk ut pε tid!"
 
 #: connect.cpp:952
 msgid "Scanning: "
-msgstr "Ανίχνευση: "
+msgstr "Skanner: "
 
 #: connect.cpp:963
 msgid "Expecting: "
-msgstr "Αναμονή για: "
+msgstr "Venter: "
 
 #: connect.cpp:997
 msgid "Logging on to Network ..."
-msgstr "Σύνδεση στο δίκτυο ..."
+msgstr "Logger pε nettverk ..."
 
 #: connect.cpp:1023
 msgid "Running Startup Command ..."
-msgstr "Εκτέλεση αρχικής εντολής ..."
+msgstr "Kjψrer oppstarts kommando ..."
 
 #: connect.cpp:1088
 msgid "Sorry, can't open modem."
-msgstr "Συγγνώμη, δεν μπορώ να χρησιμοποιήσω το modem."
+msgstr "Beklager, kan ikke εpne modem."
 
 #: connect.cpp:1095
 msgid "Sorry, the modem is not ready."
-msgstr "Συγγνώμη, το modem δεν είναι έτοιμο."
+msgstr "Beklager, modemet er ikke klart."
 
 #: connect.cpp:1103 connect.cpp:1144 modeminfo.cpp:375
 msgid "Sorry, the modem is busy."
-msgstr "Συγγνώμη, το modem είναι απασχολημένο."
+msgstr "Beklager, modemet er opptatt."
 
 #: connect.cpp:1375
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
 msgstr ""
-"Η εντολή pppd συν τα ορίσματά της ξεπερνούν\n"
-"τους 2024 χαρακτήρες σε μήκος. Τι προσπαθείτε να κάνετε;"
+"pppd kommando + kommandolinje argumenter overskredet\n"
+"2024 tegn i lengde. Hva gjψr du?"
 
 #: conwindow.cpp:44
 msgid "Connected at:"
-msgstr "Συνδεδεμένος στο:"
+msgstr "Tilkoplet:"
 
 #: conwindow.cpp:50
 msgid "Time connected:"
-msgstr "Χρόνος σύνδεσης:"
+msgstr "Tidspunkt tilkoplet:"
 
 #: conwindow.cpp:56
 msgid "Session Bill:"
-msgstr "Κόστος σύνδεσης:"
+msgstr "Sesjons regning:"
 
 #: conwindow.cpp:58
 msgid "Total Bill:"
-msgstr "Συνολικό κόστος:"
+msgstr "Total regning:"
 
 #: conwindow.cpp:64 docking.cpp:75
 msgid "Disconnect"
-msgstr "Αποσύνδεση"
+msgstr "Kople fra"
 
 #: conwindow.cpp:68 docking.cpp:73
 msgid "Details"
-msgstr "Λεπτομέρειες"
+msgstr "Detaljer"
 
 #: debug.cpp:49
 msgid "Login Script Debug Window"
-msgstr "Παράθυρο επίλυσης προβλημάτων αρχείου εντολών σύνδεσης"
+msgstr "Logginn skript debug vindu"
 
 #: debug.cpp:65
 msgid "Dismiss"
-msgstr "Κλείσιμο"
+msgstr "Avslut"
 
 #: edit.cpp:42
 msgid "Dial Setup"
-msgstr "Ρυθμίσεις κλήσης"
+msgstr "Oppsett for oppringing"
 
 #: edit.cpp:46
 msgid "Connection Name:"
-msgstr "Όνομα σύνδεσης:"
+msgstr "Oppkoplings navn:"
 
 #: edit.cpp:57
 msgid "Phone Number:"
-msgstr "Αριθμός τηλεφώνου:"
+msgstr "Telefonnummer:"
 
 #: edit.cpp:68
 msgid "Authentication:"
-msgstr "Πιστοποίηση:"
+msgstr "Autentisering:"
 
 #: edit.cpp:73
 msgid "Script-based"
-msgstr "Με αρχείο εντολών"
+msgstr "Basert pε skript"
 
 #: edit.cpp:74
 msgid "PAP"
@@ -350,158 +350,159 @@ msgstr "PAP"
 
 #: edit.cpp:75
 msgid "Terminal-based"
-msgstr "Μέσω τερματικού"
+msgstr "Terminal basert"
 
 #: edit.cpp:81
 msgid "Store password"
-msgstr "Αποθήκευση λέξης κλειδί"
+msgstr "Lagre passord"
 
 #: edit.cpp:87
 msgid ""
 "Execute program\n"
 "upon connect:"
 msgstr ""
-"Με την σύνδεση\n"
-"εκτέλεσε την εντολή:"
+"Utfψr program\n"
+"ved kontakt:"
 
 #: edit.cpp:99
 msgid ""
 "Execute program\n"
 "upon disconnect:"
 msgstr ""
-"Κατά την αποσύνδεση\n"
-"εκτέλεσε την εντολή:"
+"Utfψr program\n"
+"ved frakopling:"
 
 #: edit.cpp:111
 msgid "Edit pppd arguments:"
-msgstr "Επεξεργασία ορισμάτων pppd:"
+msgstr "Rediger pppd argumenter:"
 
 #: edit.cpp:117
 msgid "Arguments"
-msgstr "Ορίσματα"
+msgstr "Argumenter"
 
 #: edit.cpp:172
 msgid "IP Setup"
-msgstr "Ρυθμίσεις IP"
+msgstr "IP oppsett"
 
 #: edit.cpp:179
 msgid "IP Address:"
-msgstr "Διεύθυνση IP:"
+msgstr "IP adresse:"
 
 #: edit.cpp:184
 msgid "Subnet Mask:"
-msgstr "Μάσκα δικτύου:"
+msgstr "Subnet Mask:"
 
 #: edit.cpp:192
 msgid "Dynamic IP Address"
-msgstr "Δυναμική διεύθυνση IP"
+msgstr "Dynamisk IP adresse"
 
 #: edit.cpp:195
 msgid "Static IP Address"
-msgstr "Στατική διεύθυνση IP"
+msgstr "Statisk IP adresse"
 
 #: edit.cpp:199
 msgid "Auto-configure hostname from this IP"
-msgstr "Αυτόματη ρύθμιση ονόματος από αυτό το IP"
+msgstr "Auto-konfigurer vertsnavn fra denne IP"
 
 #: edit.cpp:313
 msgid "DNS Servers"
-msgstr "Εξυπηρετητές ονοματολογίας (DNS)"
+msgstr "DNS tjenere"
 
 #: edit.cpp:329
 msgid "Domain Name:"
-msgstr "Όνομα περιοχής:"
+msgstr "Domene navn:"
 
 #: edit.cpp:341
 msgid "DNS IP Address:"
-msgstr "Διεύθυνση IP του DNS:"
+msgstr "DNS IP adresse:"
 
 #: edit.cpp:374
 msgid "DNS Address List:"
-msgstr "Κατάλογος διευθύνσεων DNS"
+msgstr "DNS adresse liste:"
 
 #: edit.cpp:384
 msgid "Disable existing DNS Servers during Connection"
-msgstr ""
-"Απενεργοποίηση υπαρχόντων εξυπηρετητών DNS κατά την διάρκεια της σύνδεσης"
+msgstr "Ikke bruk eksisterende DNS tjenere ilψpet av oppkoplingsperioden"
 
 #: edit.cpp:437
 msgid "Gateway Setup"
-msgstr "Ρυθμίσεις πύλης"
+msgstr "Gateway oppsett"
 
 #: edit.cpp:446
 msgid "Default Gateway"
-msgstr "Πύλη εξ ορισμού"
+msgstr "Standard Gateway"
 
 #: edit.cpp:450
 msgid "Static Gateway"
-msgstr "Στατική πύλη"
+msgstr "Statisk Gateway"
 
 #: edit.cpp:456
 msgid ""
 "Gateway\n"
 "IP Address:"
-msgstr "IP διεύθυνση πύλης:"
+msgstr ""
+"Gateway\n"
+"IP adresse:"
 
 #: edit.cpp:458
 msgid "Assign the Default Route to this Gateway"
-msgstr "Ορισμός βασικής διαδρομής σε αυτήν την πύλη"
+msgstr "Assign the Default Route to this Gateway"
 
 #: edit.cpp:557
 msgid "Edit Script"
-msgstr "Επεξεργασία αρχείου εντολών"
+msgstr "Rediger skript"
 
 #: edit.cpp:563
 msgid "Use default script"
-msgstr "Χρήση βασικού αρχείου εντολών"
+msgstr "Bruk standard skript"
 
 #: edit.cpp:580
 msgid "Insert"
-msgstr "Εισαγωγή"
+msgstr "Sett inn"
 
 #: general.cpp:42
 msgid "kppp Setup"
-msgstr "Ρυθμίσεις kppp"
+msgstr "kppp oppsett"
 
 #: general.cpp:46
 msgid "pppd Path:"
-msgstr "Τοποθεσία pppd:"
+msgstr "pppd sti:"
 
 #: general.cpp:63
 msgid "pppd Timeout:"
-msgstr "Προθεσμία χρόνου pppd:"
+msgstr "Tid ute for pppd:"
 
 #: general.cpp:78 general.cpp:363 general.cpp:460
 msgid "Seconds"
-msgstr "Δευτερόλεπτα"
+msgstr "Sekunder"
 
 #: general.cpp:83
 msgid "Log Viewer:"
-msgstr "Εφαρμογή προβολής αρχείου:"
+msgstr "Logg Viewer:"
 
 #: general.cpp:98
 msgid "Automatic Redial on Disconnect"
-msgstr "Αυτόματη επανάκληση σε περίπτωση αποσύνδεσης"
+msgstr "Automatisk oppringing ved nedkopling"
 
 #: general.cpp:105
 msgid "Show Clock on Caption"
-msgstr "Εμφάνιση ρολογιού"
+msgstr "Vis ur ved Caption"
 
 #: general.cpp:112
 msgid "Disconnect on X-server shutdown"
-msgstr "Αποσύνδεση κατά την έξοδο από τα Windows"
+msgstr "Kople ned nεr X avsluttes"
 
 #: general.cpp:118
 msgid "Minimize Window on Connect"
-msgstr "Ελαχιστοποίηση παραθύρου κατά την σύνδεση"
+msgstr "Minimer vindu ved oppkopling"
 
 #: general.cpp:124
 msgid "Dock into Panel on Connect"
-msgstr "Τοποθέτηση στο πινακίδιο κατά την σύνδεση"
+msgstr "Dokk in i panel ved oppkopling"
 
 #: general.cpp:187
 msgid "About kppp"
-msgstr "Για το kppp"
+msgstr "OM kppp"
 
 #: general.cpp:195
 msgid ""
@@ -513,9 +514,9 @@ msgid ""
 "wuebben@math.cornell.edu"
 msgstr ""
 "\n"
-"Εφαρμογή τηλεφωνικών κλήσεων και γραφικής εμφάνισης του pppd\n"
+"A dialer and front-end to pppd\n"
 "\n"
-"Πνευματικά δικαιώματα (c) 1997\n"
+"Copyright (c) 1997\n"
 "Bernd Johannes Wuebben\n"
 "wuebben@math.cornell.edu"
 
@@ -529,7 +530,7 @@ msgid ""
 "Harri Porten\n"
 "Peter Silva"
 msgstr ""
-"Με συνεισφορές από τους:\n"
+"With contributions from:\n"
 "\n"
 "Mario Weilguni\n"
 "Markus Wuebben\n"
@@ -539,35 +540,35 @@ msgstr ""
 
 #: general.cpp:235
 msgid "Serial device"
-msgstr "Σειριακή συσκευή"
+msgstr "Seriell enhet"
 
 #: general.cpp:238
 msgid "Modem Device:"
-msgstr "Συσκευή modem:"
+msgstr "Modem enhet"
 
 #: general.cpp:258
 msgid "Flow Control:"
-msgstr "Έλεγχος ροής:"
+msgstr "Flyt kontroll"
 
 #: general.cpp:265
 msgid "None"
-msgstr "Κανένα"
+msgstr "Ingen"
 
 #: general.cpp:273
 msgid "Line Termination:"
-msgstr "Τερματισμός γραμμής:"
+msgstr "Linje slutt:"
 
 #: general.cpp:288
 msgid "Connection Speed:"
-msgstr "Ταχύτητα σύνδεσης:"
+msgstr "Oppkoplings hastighet:"
 
 #: general.cpp:331
 msgid "Modem Lock File:"
-msgstr "Αρχείο κλειδώματος modem:"
+msgstr "Modem lεse fil"
 
 #: general.cpp:348
 msgid "Modem Timeout:"
-msgstr "Προθεσμία χρόνου modem:"
+msgstr "Modem Timeout:"
 
 #: general.cpp:433 main.cpp:487
 msgid "Modem"
@@ -575,47 +576,47 @@ msgstr "Modem"
 
 #: general.cpp:445
 msgid "Busy Wait:"
-msgstr "Αναμονή απασχολημένης γραμμής:"
+msgstr "Opptatt vent:"
 
 #: general.cpp:473
 msgid "Modem Asserts CD Line."
-msgstr ""
+msgstr "Modem Asserts CD Line."
 
 #: general.cpp:489
 msgid "Modem Commands"
-msgstr "Εντολές modem"
+msgstr "Modem kommandoer"
 
 #: general.cpp:490
 msgid "Query Modem"
-msgstr "Ανάκριση modem"
+msgstr "Spψr modem"
 
 #: general.cpp:491
 msgid "Terminal"
-msgstr "Τερματικό"
+msgstr "Terminal"
 
 #: main.cpp:311
 msgid "Connect to: "
-msgstr "Σύνδεση στο: "
+msgstr "Oppkopling til:"
 
 #: main.cpp:322
 msgid "Login ID:"
-msgstr "Όνομα χρήστη:"
+msgstr "Innloggings ID:"
 
 #: main.cpp:334
 msgid "Password:"
-msgstr "Λέξη κλειδί:"
+msgstr "Passord:"
 
 #: main.cpp:351
 msgid "Show Log Window"
-msgstr "Εμφάνιση παραθύρου αρχείου"
+msgstr "Vis logg vindu"
 
 #: main.cpp:373
 msgid "Setup"
-msgstr "Ρυθμίσεις"
+msgstr "Oppsett"
 
 #: main.cpp:388
 msgid "Connect"
-msgstr "Σύνδεση"
+msgstr "Kopple opp"
 
 #: main.cpp:456
 #, c-format
@@ -623,20 +624,20 @@ msgid ""
 "No such Account:\n"
 "%s"
 msgstr ""
-"Δεν υπάρχει ο λογαριασμός:\n"
+"Ingen slik konto:\n"
 "%s"
 
 #: main.cpp:473
 msgid "kppp Configuration"
-msgstr "Ρυθμίσεις kppp"
+msgstr "kppp konfigurasjon"
 
 #: main.cpp:485
 msgid "Accounts"
-msgstr "Λογαριασμοί"
+msgstr "Kontoer"
 
 #: main.cpp:486
 msgid "Device"
-msgstr "Συσκευή"
+msgstr "Enhet"
 
 #: main.cpp:488
 msgid "PPP"
@@ -652,12 +653,11 @@ msgid ""
 "the setup dialog.\n"
 " Thank You"
 msgstr ""
-"Το kppp δεν μπορεί να βρει:\n"
+"kppp kan ikke finne:\n"
 " %s\n"
-"Παρακαλώ εγκαταστήστε σωστά τον pppd και/ή ρυθμίστε\n"
-" την τοποθεσία του εκτελέσιμου pppd στην ετικέττα PPP\n"
-" του διαλόγου ρυθμίσεων.\n"
-" Ευχαριστώ."
+"Vennligst installer pppd korrekt og/eller juster\n"
+"oppsetts dialogen.\n"
+"Takk"
 
 #: main.cpp:724
 #, c-format
@@ -667,10 +667,10 @@ msgid ""
 "Please make sure thatyou have given kppp setuid permission and that\n"
 "pppd is executable."
 msgstr ""
-"Το kppp δεν μπορεί να εκτελέσει:\n"
+"kppp kan ikke utfψre:\n"
 " %s\n"
-"Παρακαλώ βεβαιωθείτε ότι έχετε δώσει στο kppp άδεια setuid και ότι\n"
-"το pppd είναι εκτελέσιμο."
+"Vennligst forsikre deg om at du har gitt kppp setuid tillatelse og at\n"
+"pppd er utfψrbar."
 
 #: main.cpp:738
 #, c-format
@@ -684,12 +684,14 @@ msgid ""
 "the setup dialog.\n"
 " Thank You"
 msgstr ""
-"Το kppp δεν μπορεί να βρει:\n"
+"kppp kan ikke finne:\n"
 " %s\n"
-"Παρακαλώ βεβαιωθείτε ότι έχετε ρυθμίσει σωστά\n"
-"το modem σας και/ή ρυθμίστε την τοποθεσία της\n"
-"συσκευής modem στην ετικέττα modem του διαλόγου ρυθμίσεων.\n"
-" Ευχαριστώ."
+"Vennligst forsikre deg om at du har satt opp\n"
+"din modem enhet korrekt\n"
+"og/eller juster\n"
+" plassering av modem enheten pε modem tabben til\n"
+"oppsetts dialogen.\n"
+"Takk"
 
 #: main.cpp:758
 msgid ""
@@ -697,9 +699,9 @@ msgid ""
 "method PAP. This requires that you\n"
 "supply a username and a password!"
 msgstr ""
-"Έχετε επιλέξει την μέθοδο πιστοποίησης PAP.\n"
-"Αυτό προϋποθέτει την εισαγωγή ονόματος χρήστη\n"
-"και λέξης κλειδί!"
+"Du har valgt autetiserings\n"
+"metoden PAP. Dette krver at du\n"
+"oppgit et brukernavn og et passord!"
 
 #: main.cpp:765
 #, c-format
@@ -707,36 +709,36 @@ msgid ""
 "Cannot create PAP authentication\n"
 "file \"%s\""
 msgstr ""
-"Δεν μπορώ να δημιουργήσω το αρχείο \n"
-"πιστοποίησης PAP \"%s\""
+"Kan ikke lage PAP autentisering\n"
+"fil \"%s\""
 
 #: main.cpp:842
 msgid "Quit kPPP?"
-msgstr "Επιβεβαίωση εξόδου από το kPPP;"
+msgstr "Avslutte kppp?"
 
 #: main.cpp:843
 msgid "Exiting kPPP will close your PPP Session."
-msgstr "Η έξοδος από το kPPP θα κλεισει την σύνδεσή σας."
+msgstr "Gεr du ut av kppp vil dette lukke din PPP sesjon."
 
 #: main.cpp:876
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
 msgstr ""
-"Δεν μπορώ να φορτώσω το σύνολο κανόνων\n"
-"υπολογισμού κόστους \""
+"Kan ikke laste konto\n"
+"regelsettet \""
 
 #: modemcmds.cpp:40
 msgid "Edit Modem Commands"
-msgstr "Επεξεργασία εντολών modem"
+msgstr "Rediger modem kommandoer"
 
 #: modemcmds.cpp:54
 msgid "Initialization String:"
-msgstr "Σειρά χαρακτήρων αρχικοποίησης:"
+msgstr "Initialiserings streng:"
 
 #: modemcmds.cpp:61
 msgid "Init Response:"
-msgstr "Απόκριση αρχικοποίησης:"
+msgstr "Init response:"
 
 #: modemcmds.cpp:86
 msgid "Init Delay (sec/100):"
@@ -744,67 +746,67 @@ msgstr ""
 
 #: modemcmds.cpp:91
 msgid "Dial String:"
-msgstr "Σειρά χαρακτήρων κλήσης:"
+msgstr "Oppringings streng:"
 
 #: modemcmds.cpp:98
 msgid "Connect Response:"
-msgstr "Απόκριση σύνδεσης:"
+msgstr "Oppkoplings response:"
 
 #: modemcmds.cpp:105
 msgid "Busy Response:"
-msgstr "Απόκριση απασχολημένης γραμμής:"
+msgstr "Opptatt response:"
 
 #: modemcmds.cpp:112
 msgid "No Carrier Resonse:"
-msgstr "Απόκριση απουσίας σήματος:"
+msgstr "Ingen bζrebψlge response:"
 
 #: modemcmds.cpp:119
 msgid "No Dialtone Response:"
-msgstr "Απόκριση απουσίας ήχου γραμμής:"
+msgstr "Ingen ringetone response:"
 
 #: modemcmds.cpp:126
 msgid "Hangup String:"
-msgstr "Σειρά χαρακτήρων κλεισίματος γραμμής:"
+msgstr "Legge pε streng:"
 
 #: modemcmds.cpp:133
 msgid "Hangup Response:"
-msgstr "Απόκριση κλεισίματος γραμμής:"
+msgstr "Legge pε response:"
 
 #: modemcmds.cpp:140
 msgid "Answer String:"
-msgstr "Σειρά χαρακτήρων απάντησης σε κλήση:"
+msgstr "Svar streng:"
 
 #: modemcmds.cpp:147
 msgid "Ring Response:"
-msgstr "Απόκριση εισερχόμενης κλήσης:"
+msgstr "Ringe response:"
 
 #: modemcmds.cpp:154
 msgid "Answer Response:"
-msgstr "Απόκριση απάντησης σε κλήση:"
+msgstr "Svar respons"
 
 #: modemcmds.cpp:161
 msgid "Escape String:"
-msgstr "Σειρά χαρακτήρων escape:"
+msgstr "Escape streng:"
 
 #: modemcmds.cpp:168
 msgid "Escape Response:"
-msgstr "Απόκριση escape:"
+msgstr "Escape respons"
 
 #: modemcmds.cpp:195
 msgid "Guard Time (sec/50):"
-msgstr ""
+msgstr "Vakt tid (sec/50):"
 
 #: pppdargs.cpp:33
 msgid "Customize pppd Arguments"
-msgstr "Προσαρμογή ορισμάτων pppd"
+msgstr "Tilpass pppd argumenter"
 
 #: pppdargs.cpp:41
 msgid "Argument:"
-msgstr "Όρισμα:"
+msgstr "Argument:"
 
 #: pppdargs.cpp:58
 msgid "Restore Defaults"
-msgstr "Επαναφορά αρχικών τιμών"
+msgstr "Gjenopprett standard"
 
 #: pppdata.cpp:50
 msgid ""
@@ -812,76 +814,77 @@ msgid ""
 "could not be opened neither\n"
 "read-write nor read-only"
 msgstr ""
-"Το αρχείο ρυθμίσεων της συγκεκριμένης εφαρμογής\n"
-"δεν μπορεί να ανοιχτεί ούτε για ανάγνωση ούτε για εγγραφή."
+"Applikasjons spesifikk konfigurasjons fil\n"
+"kunne ikke εpnes hverken som\n"
+"les-skriv eller kun-les"
 
 #: modeminfo.cpp:46
 msgid "ATI Query"
-msgstr "Ανάκριση ATI"
+msgstr "ATI Query"
 
 #: modeminfo.cpp:131
 msgid "Modem Query timed out."
-msgstr "Τέλος χρόνου ανάκρισης modem."
+msgstr "Modem Query timed out."
 
 #: miniterm.cpp:277 modeminfo.cpp:369
 msgid "Can't open Modem"
-msgstr "Δεν μπορώ να ανοίξω το Modem"
+msgstr "Kan ikke εpne modem"
 
 #: modeminfo.cpp:415
 msgid "Sorry, the modem is busy"
-msgstr "Συγγνώμη, το modem είναι απασχολημένο"
+msgstr "Beklager, modemet er opptatt"
 
 #: modeminfo.cpp:534
 msgid "Modem Query Results"
-msgstr "Αποτελέσματα ανάκρισης modem"
+msgstr "Modem forespψrsel resultat"
 
 #: pppstatdlg.cpp:69
 msgid "kppp Statistics"
-msgstr "Στατιστικά kppp"
+msgstr "kppp statistikk"
 
 #: pppstatdlg.cpp:74
 msgid "Statistics"
-msgstr "Στατιστικά"
+msgstr "Statistikk"
 
 #: pppstatdlg.cpp:147
 msgid "Local Addr:"
-msgstr "Τοπική διεύθυνση:"
+msgstr "Lokal adr:"
 
 #: pppstatdlg.cpp:153
 msgid "Remote Addr:"
-msgstr "Απομακρυσμένη διεύθυνση:"
+msgstr "Fjern adr:"
 
 #: pppstatdlg.cpp:185
 msgid "bytes in"
-msgstr "bytes παρελήφθησαν"
+msgstr "bytes i"
 
 #: pppstatdlg.cpp:186
 msgid "bytes out"
-msgstr "bytes απεστάλησαν"
+msgstr "bytes ut"
 
 #: pppstatdlg.cpp:188
 msgid "packets in"
-msgstr "πακέτα παρελήφθησαν"
+msgstr "pakker inn"
 
 #: pppstatdlg.cpp:189
 msgid "packets out"
-msgstr "πακέτα απεστάλησαν"
+msgstr "pakker ut"
 
 #: pppstatdlg.cpp:191
 msgid "vjcomp in"
-msgstr "vjcomp παρελήφθησαν"
+msgstr "vjcomp inn"
 
 #: pppstatdlg.cpp:192
 msgid "vjcomp out"
-msgstr "vjcomp απεστάλησαν"
+msgstr "vjcomp ut"
 
 #: pppstatdlg.cpp:194
 msgid "vjunc in"
-msgstr "vjunc παρελήφθησαν"
+msgstr "vjunc inn"
 
 #: pppstatdlg.cpp:195
 msgid "vjunc out"
-msgstr "vjunc απεστάλησαν"
+msgstr "vjunc ut"
 
 #: pppstatdlg.cpp:197
 msgid "vjerr"
@@ -889,19 +892,19 @@ msgstr "vjerr"
 
 #: pppstatdlg.cpp:198
 msgid "non-vj"
-msgstr "non-vj"
+msgstr "ikke-vj"
 
 #: pppstatdlg.cpp:351 pppstatdlg.cpp:358
 msgid "unavailable"
-msgstr "μη διαθέσιμο"
+msgstr "ikke tilgjengelig"
 
 #: miniterm.cpp:52
 msgid "Kppp Mini-Terminal"
-msgstr "Kppp Mini-Terminal"
+msgstr "Kppp mini-terminal"
 
 #: miniterm.cpp:58
 msgid "&Reset Modem"
-msgstr "&Reset Modem"
+msgstr "&Resett modem"
 
 #: miniterm.cpp:64
 msgid "&Modem"
@@ -909,48 +912,48 @@ msgstr "&Modem"
 
 #: miniterm.cpp:107
 msgid "Quit MiniTerm"
-msgstr "'Εξοδος από το MiniTerm"
+msgstr "Avslutt MiniTerm"
 
 #: miniterm.cpp:113
 msgid "Reset Modem"
-msgstr "Reset Modem"
+msgstr "Resett modem"
 
 #: miniterm.cpp:151
 msgid "Initializing Modem"
-msgstr "Αρχικοποίηση Modem"
+msgstr "Initialiserer modem"
 
 #: miniterm.cpp:223
 msgid "Hanging up ..."
-msgstr "Κλείσιμο γραμμής..."
+msgstr "Legger pε ..."
 
 #: miniterm.cpp:243
 msgid "Resetting Modem"
-msgstr "Resseting Modem"
+msgstr "Resetter modem"
 
 #: miniterm.cpp:262
 msgid "Can't restore tty settings: tcsetattr()\n"
-msgstr "Δεν μπορώ να επαναφέρω τις ρυθμίσεις tty: tcsetattr()\n"
+msgstr "Kan ikke gjenopprette tty innstillinger: tcsetattr()\n"
 
 #: miniterm.cpp:283
 msgid "tcgetattr() failed\n"
-msgstr "Αποτυχία tcgetattr()\n"
+msgstr "tcgetattr() virket ikke\n"
 
 #: miniterm.cpp:330
 msgid "tcsetattr() failed\n"
-msgstr "Αποτυχία tcsetattr()\n"
+msgstr "tcsetattr() virket ikke\n"
 
 #: accounting.cpp:156
 #, c-format
 msgid "started PPP connection:%s:%s"
-msgstr "Η σύνδεση ppp:%s:%s ξεκίνησε"
+msgstr "startet PPP oppkopling:%s:%s"
 
 #: accounting.cpp:171
 msgid ""
 "terminated PPP connection\n"
 "COST OF SESSION: "
 msgstr ""
-"Τέλος σύνδεσης PPP\n"
-"Κόστος συγκεκριμένης σύνδεσης: "
+"Avsluttet PPP oppkopling\n"
+"SESJONENS KOSTNADER"
 
 #: accounting.cpp:174
 msgid ""
@@ -958,65 +961,65 @@ msgid ""
 "SUBTOTAL FOR:"
 msgstr ""
 "\n"
-"Υποσύνολο για:"
+"SUBTOTAL FOR:"
 
 #: acctselect.cpp:47
 msgid "Accounting Setup"
-msgstr "Ρυθμίσεις λογιστικών"
+msgstr "Konto oppsett"
 
 #: acctselect.cpp:55
 msgid "Enable accounting"
-msgstr "Ενεργοποίηση λογιστικών"
+msgstr "Tillat kontering"
 
 #: acctselect.cpp:73
 msgid "Selected:"
-msgstr "Επιλεγμένα:"
+msgstr "Valgt:"
 
 #: acctselect.cpp:147 acctselect.cpp:253
 msgid "Available rules"
-msgstr "Διαθέσιμοι κανόνες"
+msgstr "Tilgjengelige regler"
 
 #: ruleset.cpp:538
 msgid "kppp: no rulefile specified\n"
-msgstr "kppp: δεν προσδιορίστηκε αρχείο κανόνων\n"
+msgstr "kppp: ingen regelfil spesifisert\n"
 
 #: ruleset.cpp:544
 #, c-format
 msgid "kppp: rulefile \"%s\" not found\n"
-msgstr "kppp: Το αρχείο κανόνων \"%s\" δεν βρέθηκε\n"
+msgstr "kppp: regelfil \"%s\" ikke funnet\n"
 
 #: ruleset.cpp:549
 msgid "kppp: rulefiles must have the extension \".rst\"\n"
-msgstr "kppp: Τα αρχεία κανόνων πρέπει να έχουν επέκταση \".rst\"\n"
+msgstr "kppp: regelfiler mε ha etternavn \".rst\"\n"
 
 #: ruleset.cpp:558
 msgid "kppp: error parsing the ruleset\n"
-msgstr "kppp: σφάλμα κατά την επεξεργασία του αρχείου κανόνων\n"
+msgstr "kppp: feil ved analysering av regelsett\n"
 
 #: ruleset.cpp:563
 #, c-format
 msgid "kppp: parse error in line %d\n"
-msgstr "kppp: Σφάλμα στην γραμμή %d\n"
+msgstr "kppp: analyse feil i linje %d\n"
 
 #: ruleset.cpp:569
 msgid "kppp: rulefile does not contain a default rule\n"
-msgstr "kppp: Το αρχείο κανόνων δεν περιέχει βασικό κανόνα\n"
+msgstr "kppp: regelfil inneholder ikke en standard regel\n"
 
 #: ruleset.cpp:574
 msgid "kppp: rulefile does not contain a \"name=...\" line\n"
-msgstr "kppp: Το αρχείο κανόνων δεν περιέχει την γραμμή \"name=...\"\n"
+msgstr "kppp: regelfil inneholder ikke et \"navn=...\" linje\n"
 
 #: ruleset.cpp:578
 msgid "kppp: rulefile is ok\n"
-msgstr "kppp: Το αρχείο κανόνων είναι εντάξει\n"
+msgstr "kppp: regelfil er ok\n"
 
 #: docking.cpp:71 docking.cpp:223
 msgid "Restore"
-msgstr "Επαναφορά"
+msgstr "Gjenopprett"
 
 #: docking.cpp:221
 msgid "Minimize"
-msgstr "Ελαχιστοποίηση"
+msgstr "Minimer"
 
 #: runtests.cpp:98
 msgid ""
@@ -1025,10 +1028,10 @@ msgid ""
 "Make sure that pppd is installed and\n"
 "you have entered the correct path.\n"
 msgstr ""
-"Δεν μπορώ να βρώ την διαδικασία pppd!\n"
+"Kan ikke finne pppd-demon!\n"
 "\n"
-"Βεβαιωθείτε ότι το pppd είναι εγκατεστημένο\n"
-"και ότι έχετε ορίσει την σωστή τοποθεσία.\n"
+"Forsikre deg om at pppd er installert og\n"
+"at du har oppgitt korrekt sti.\n"
 
 #: runtests.cpp:110
 msgid ""
@@ -1038,10 +1041,11 @@ msgid ""
 "Contact your system administrator\n"
 "and ask to get access to pppd."
 msgstr ""
-"Δεν έχετε την άδεια να ξεκινήσετε το pppd!\n"
+"Du har ikke tillatelse\n"
+"til ε starte pppd!\n"
 "\n"
-"Επικοινωνήστε με το διαχειριστή του συστήματος\n"
-"και ζητήστε πρόσβαση στο pppd."
+"Kontakt din system administrator\n"
+"og spψr om adgang til pppd."
 
 #: runtests.cpp:121
 msgid ""
@@ -1051,11 +1055,11 @@ msgid ""
 "with the SUID bit set. Contact your\n"
 "system administrator."
 msgstr ""
-"Το pppd δεν είναι σωστά εγκατεστημένο!\n"
+"pppd er ikke korrekt installert!\n"
 "\n"
-"Το εκτελέσιμο pppd πρέπει να είναι εγκατεστημένο\n"
-"με ορισμένο το SUID bit. Επικοινωνήστε με τον\n"
-"διαχειριστή του συστήματός σας."
+"pppd binζr filen mε vζre installert\n"
+"med SUID bit satt. Kontakt din\n"
+"system administratror."
 
 #: runtests.cpp:142
 #, c-format
@@ -1064,9 +1068,9 @@ msgid ""
 "\n"
 "Setting default back to \"%s\"."
 msgstr ""
-"Η εφαρμογή προβολής αρχείου \"%s\" δεν βρέθηκε!\n"
+"Loggviewer \"%s\" ble ikke funnet!\n"
 "\n"
-"Χρήση του \"%s\"."
+"Setter standard tilbake til \"%s\"."
 
 #: runtests.cpp:166
 msgid ""
@@ -1077,4 +1081,4 @@ msgid ""
 msgstr ""
 
 #~ msgid "Modem sustains fast initialization."
-#~ msgstr "Το modem υποστηρίζει γρήγορη αρχικοποίηση."
+#~ msgstr "Modem stψtter hurtig initialisering."
