@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1999-04-16 03:07+0200\n"
+"POT-Creation-Date: 1999-04-19 02:26+0200\n"
 "PO-Revision-Date: 1998-12-31 07:09+07:00\n"
 "Last-Translator: Const Kaplinsky <const@ce.cctpu.edu.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=koi8-r\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: kmcomposewin.cpp:1516 kmmainwin.cpp:371 kpgp.cpp:546
+#: kmcomposewin.cpp:1516 kmmainwin.cpp:373 kpgp.cpp:546
 msgid ""
 "Sorry, but this feature\n"
 "is still missing"
@@ -21,31 +21,31 @@ msgstr ""
 "Извините, но данная возможность\n"
 "до сих пор отсутствует."
 
-#: kmmainwin.cpp:380
+#: kmmainwin.cpp:382
 msgid "New Folder"
 msgstr "Новая папка"
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:393 kmmainwin.cpp:427 main.cpp:484
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:395 kmmainwin.cpp:429 main.cpp:484
 msgid "KMail error"
 msgstr "Ошибка KMail"
 
-#: kmmainwin.cpp:394 kmmainwin.cpp:428
+#: kmmainwin.cpp:396 kmmainwin.cpp:430
 msgid "Already checking for mail!"
 msgstr "Проверка новой почты уже выполняется!"
 
-#: kmmainwin.cpp:404 kmmainwin.cpp:438
+#: kmmainwin.cpp:406 kmmainwin.cpp:440
 msgid "No new mail available"
 msgstr "Нет новой почты"
 
-#: kmmainwin.cpp:465
+#: kmmainwin.cpp:470
 msgid "Modify Folder"
 msgstr "Изменение свойств папки"
 
-#: kmmainwin.cpp:488
+#: kmmainwin.cpp:493
 msgid "Moved all messages into trash"
 msgstr "Все сообщения перенесены в папку trash"
 
-#: kmmainwin.cpp:507
+#: kmmainwin.cpp:512
 msgid ""
 "Cannot remove a\n"
 "system folder."
@@ -53,7 +53,7 @@ msgstr ""
 "Невозможно удалить\n"
 "системную папку."
 
-#: kmmainwin.cpp:511
+#: kmmainwin.cpp:516
 #, c-format
 msgid ""
 "Are you sure you want to remove the folder\n"
@@ -62,295 +62,295 @@ msgstr ""
 "Вы уверены, что желаете удалить папку\n"
 "\"%s\", очистив ее содержимое ?"
 
-#: kmmainwin.cpp:514
+#: kmmainwin.cpp:519
 msgid "Confirmation"
 msgstr "Подтверждение"
 
-#: kmmainwin.cpp:574
+#: kmmainwin.cpp:579
 msgid "KMail notification!"
 msgstr "Уведомление KMail!"
 
-#: kmmainwin.cpp:575
+#: kmmainwin.cpp:580
 msgid "Only messages in the outbox folder can be edited!"
 msgstr "Можно редактировать только сообщения из папки outbox!"
 
-#: kmmainwin.cpp:610
+#: kmmainwin.cpp:615
 msgid "Message as Plain Text"
 msgstr "Сообщение как чистый текст"
 
-#: kmmainwin.cpp:617 kmmainwin.cpp:637
+#: kmmainwin.cpp:622 kmmainwin.cpp:642
 msgid "Select Folder"
 msgstr "Выбор папки"
 
-#: kmmainwin.cpp:660
+#: kmmainwin.cpp:665
 msgid "Queued messages successfully sent."
 msgstr "Сообщения из очереди успешно отправлены."
 
-#: kmmainwin.cpp:662
+#: kmmainwin.cpp:667
 msgid "Failed to send (some) queued messages."
 msgstr "Ошибка отправки (некоторых) сообщений из очереди."
 
-#: kmmainwin.cpp:789
+#: kmmainwin.cpp:798
 msgid "Opening URL..."
 msgstr "Открытие URL..."
 
-#: kmmainwin.cpp:844
+#: kmmainwin.cpp:853
 msgid "Address added to addressbook."
 msgstr "Адрес добавлен в адресную книгу."
 
-#: kmmainwin.cpp:856
+#: kmmainwin.cpp:865
 msgid "Address copied to clipboard."
 msgstr "Адрес скопирован в буфер обмена."
 
-#: kmmainwin.cpp:861
+#: kmmainwin.cpp:870
 msgid "URL copied to clipboard."
 msgstr "URL скопирован в буфер обмена."
 
-#: kmmainwin.cpp:888
+#: kmmainwin.cpp:897
 msgid "Send to..."
 msgstr "Послать по адресу..."
 
-#: kmmainwin.cpp:890
+#: kmmainwin.cpp:899
 msgid "Send reply to..."
 msgstr "Ответить по адресу..."
 
-#: kmmainwin.cpp:892
+#: kmmainwin.cpp:901
 msgid "Forward to..."
 msgstr "Переслать по адресу..."
 
-#: kmmainwin.cpp:895
+#: kmmainwin.cpp:904
 msgid "Add to addressbook"
 msgstr "Добавить в адресную книгу"
 
-#: kmmainwin.cpp:897 kmmainwin.cpp:906
+#: kmmainwin.cpp:906 kmmainwin.cpp:915
 msgid "Copy to clipboard"
 msgstr "Скопировать в буфер обмена"
 
-#: kmmainwin.cpp:904
+#: kmmainwin.cpp:913
 msgid "Open URL..."
 msgstr "Открыть URL..."
 
-#: kmheaders.cpp:956 kmmainwin.cpp:914 kmmainwin.cpp:1031
+#: kmheaders.cpp:984 kmmainwin.cpp:923 kmmainwin.cpp:1040
 msgid "&Reply..."
 msgstr "&Ответить..."
 
-#: kmheaders.cpp:958 kmmainwin.cpp:916 kmmainwin.cpp:1033
+#: kmheaders.cpp:986 kmmainwin.cpp:925 kmmainwin.cpp:1042
 msgid "Reply &All..."
 msgstr "Ответить &всем..."
 
-#: kmheaders.cpp:960 kmmainwin.cpp:918 kmmainwin.cpp:1035
+#: kmheaders.cpp:988 kmmainwin.cpp:927 kmmainwin.cpp:1044
 msgid "&Forward..."
 msgstr "&Переслать..."
 
-#: kmheaders.cpp:963 kmmainwin.cpp:921 kmmainwin.cpp:1045
+#: kmheaders.cpp:991 kmmainwin.cpp:930 kmmainwin.cpp:1054
 msgid "&Move..."
 msgstr "Пере&местить..."
 
-#: kmheaders.cpp:965 kmmainwin.cpp:923 kmmainwin.cpp:1047
+#: kmheaders.cpp:993 kmmainwin.cpp:932 kmmainwin.cpp:1056
 msgid "&Copy..."
 msgstr "&Копировать..."
 
-#: kmmainwin.cpp:950
+#: kmmainwin.cpp:959
 msgid "New Composer"
 msgstr "Новое окно редактора"
 
-#: kmcomposewin.cpp:451 kmmainwin.cpp:952
+#: kmcomposewin.cpp:451 kmmainwin.cpp:961
 msgid "New Mailreader"
 msgstr "Новое окно просмотра"
 
-#: kmmainwin.cpp:955
+#: kmmainwin.cpp:964
 msgid "Save As..."
 msgstr "Сохранить как..."
 
-#: kmmainwin.cpp:957
+#: kmmainwin.cpp:966
 msgid "Print..."
 msgstr "Печать..."
 
-#: kmmainwin.cpp:960
+#: kmmainwin.cpp:969
 msgid "Check Mail..."
 msgstr "Проверить почту..."
 
-#: kmmainwin.cpp:969
+#: kmmainwin.cpp:978
 msgid "Check Mail in..."
 msgstr "Проверить почту в ящике..."
 
-#: kmmainwin.cpp:971
+#: kmmainwin.cpp:980
 msgid "Send Queued"
 msgstr "Отправить из очереди"
 
-#: kmmainwin.cpp:974
+#: kmmainwin.cpp:983
 msgid "&Settings..."
 msgstr "&Настройка..."
 
-#: kmcomposewin.cpp:443 kmmainwin.cpp:976
+#: kmcomposewin.cpp:443 kmmainwin.cpp:985
 msgid "&Addressbook..."
 msgstr "&Адресная книга..."
 
-#: kmmainwin.cpp:978
+#: kmmainwin.cpp:987
 msgid "&Filter..."
 msgstr "&Фильтр..."
 
-#: kmmainwin.cpp:992
+#: kmmainwin.cpp:1001
 msgid "&Find..."
 msgstr "&Поиск..."
 
-#: kmfoldertree.cpp:307 kmmainwin.cpp:997
+#: kmfoldertree.cpp:307 kmmainwin.cpp:1006
 msgid "&Create..."
 msgstr "&Создать..."
 
-#: kmfoldertree.cpp:309 kmmainwin.cpp:999
+#: kmfoldertree.cpp:309 kmmainwin.cpp:1008
 msgid "&Modify..."
 msgstr "&Изменить свойства..."
 
-#: kmfoldertree.cpp:311 kmmainwin.cpp:1001
+#: kmfoldertree.cpp:311 kmmainwin.cpp:1010
 msgid "C&ompact"
 msgstr "С&жать"
 
-#: kmfoldertree.cpp:314 kmmainwin.cpp:1004
+#: kmfoldertree.cpp:314 kmmainwin.cpp:1013
 msgid "&Empty"
 msgstr "&Очистить"
 
-#: kmfilterdlg.cpp:149 kmheaders.cpp:946 kmmainwin.cpp:1013
+#: kmfilterdlg.cpp:149 kmheaders.cpp:974 kmmainwin.cpp:1022
 msgid "New"
 msgstr "Создать"
 
-#: kmheaders.cpp:947 kmmainwin.cpp:1014
+#: kmheaders.cpp:975 kmmainwin.cpp:1023
 msgid "Unread"
 msgstr "Не прочитано"
 
-#: kmheaders.cpp:948 kmmainwin.cpp:1015
+#: kmheaders.cpp:976 kmmainwin.cpp:1024
 msgid "Read"
 msgstr "Прочитано"
 
-#: kmheaders.cpp:949 kmmainwin.cpp:1016
+#: kmheaders.cpp:977 kmmainwin.cpp:1025
 msgid "Replied"
 msgstr "Имеется ответ"
 
-#: kmheaders.cpp:950 kmmainwin.cpp:1017
+#: kmheaders.cpp:978 kmmainwin.cpp:1026
 msgid "Queued"
 msgstr "В очереди"
 
-#: kmheaders.cpp:951 kmmainwin.cpp:1018
+#: kmheaders.cpp:979 kmmainwin.cpp:1027
 msgid "Sent"
 msgstr "Отправлено"
 
-#: kmmainwin.cpp:1022
+#: kmmainwin.cpp:1031
 msgid "&Next"
 msgstr "&Следующее"
 
-#: kmmainwin.cpp:1024
+#: kmmainwin.cpp:1033
 msgid "Next unread"
 msgstr "Следующее непрочитанное"
 
-#: kmmainwin.cpp:1026
+#: kmmainwin.cpp:1035
 msgid "&Previous"
 msgstr "&Предыдущее"
 
-#: kmmainwin.cpp:1028
+#: kmmainwin.cpp:1037
 msgid "Previous unread"
 msgstr "Предыдущее непрочитанное"
 
-#: kmmainwin.cpp:1038
+#: kmmainwin.cpp:1047
 msgid "Edi&t..."
 msgstr "&Изменить..."
 
-#: kmmainwin.cpp:1041
+#: kmmainwin.cpp:1050
 msgid "&Set Status"
 msgstr "&Установить статус"
 
-#: kmmainwin.cpp:1043
+#: kmmainwin.cpp:1052
 msgid "Mar&k all"
 msgstr "&Пометить все"
 
-#: kmmainwin.cpp:1052
+#: kmmainwin.cpp:1061
 msgid "Send again..."
 msgstr "Отправить повторно..."
 
-#: kmmainwin.cpp:1054
+#: kmmainwin.cpp:1063
 msgid "Apply filters"
 msgstr "Применить фильтры"
 
-#: kmmainwin.cpp:1057
+#: kmmainwin.cpp:1066
 msgid "View Source..."
 msgstr "Просмотр источника..."
 
-#: kmmainwin.cpp:1064
+#: kmmainwin.cpp:1073
 msgid "&Brief Headers"
 msgstr "&Краткие заголовки"
 
-#: kmmainwin.cpp:1066
+#: kmmainwin.cpp:1075
 msgid "&Fancy Headers"
 msgstr "&Изящные заголовки"
 
-#: kmmainwin.cpp:1068
+#: kmmainwin.cpp:1077
 msgid "&Standard Headers"
 msgstr "&Стандартные заголовки"
 
-#: kmmainwin.cpp:1070
+#: kmmainwin.cpp:1079
 msgid "&Long Headers"
 msgstr "&Расширенные заголовки"
 
-#: kmmainwin.cpp:1072
+#: kmmainwin.cpp:1081
 msgid "&All Headers"
 msgstr "&Все заголовки"
 
-#: kmmainwin.cpp:1075
+#: kmmainwin.cpp:1084
 msgid "Iconic Attachments"
 msgstr "Подцепления в виде пиктограмм"
 
-#: kmmainwin.cpp:1076
+#: kmmainwin.cpp:1085
 msgid "Smart Attachments"
 msgstr "Разумное отображения подцеплений"
 
-#: kmmainwin.cpp:1077
+#: kmmainwin.cpp:1086
 msgid "Inlined Attachments"
 msgstr "Подцепления в тексте"
 
-#: kmmainwin.cpp:1088
+#: kmmainwin.cpp:1097
 msgid "F&older"
 msgstr "П&апка"
 
-#: kmmainwin.cpp:1089
+#: kmmainwin.cpp:1098
 msgid "&Message"
 msgstr "&Сообщение"
 
-#: kmcomposewin.cpp:573 kmmainwin.cpp:1108
+#: kmcomposewin.cpp:573 kmmainwin.cpp:1117
 msgid "Compose new message"
 msgstr "Написать новое сообщение"
 
-#: kmcomposewin.cpp:579 kmmainwin.cpp:1113
+#: kmcomposewin.cpp:579 kmmainwin.cpp:1122
 msgid "Save message to file"
 msgstr "Сохранить сообщение в файл"
 
-#: kmcomposewin.cpp:585 kmmainwin.cpp:1118
+#: kmcomposewin.cpp:585 kmmainwin.cpp:1127
 msgid "Print message"
 msgstr "Напечатать сообщение"
 
-#: kmmainwin.cpp:1125
+#: kmmainwin.cpp:1134
 msgid "Get new mail"
 msgstr "Доставить новую почту"
 
-#: kmmainwin.cpp:1131
+#: kmmainwin.cpp:1140
 msgid "Reply to author"
 msgstr "Ответить автору"
 
-#: kmmainwin.cpp:1136
+#: kmmainwin.cpp:1145
 msgid "Reply to all recipients"
 msgstr "Ответить всем получателям"
 
-#: kmmainwin.cpp:1141
+#: kmmainwin.cpp:1150
 msgid "Forward message"
 msgstr "Переслать сообщение"
 
-#: kmmainwin.cpp:1146
+#: kmmainwin.cpp:1155
 msgid "Delete message"
 msgstr "Удалить сообщение"
 
-#: kmcomposewin.cpp:609 kmmainwin.cpp:1152
+#: kmcomposewin.cpp:609 kmmainwin.cpp:1161
 msgid "Open addressbook..."
 msgstr "Открыть адресную книгу..."
 
-#: kmmainwin.cpp:1164
+#: kmmainwin.cpp:1173
 msgid "Initializing..."
 msgstr "Инициализация..."
 
@@ -723,11 +723,11 @@ msgstr "Сортировка сообщений по убыванию поля %s"
 msgid "Sorting messages ascending by %s"
 msgstr "Сортировка сообщений по возрастанию поля %s"
 
-#: kmheaders.cpp:455
+#: kmheaders.cpp:483
 msgid "Message(s) saved."
 msgstr "Сообщения сохранены."
 
-#: kmheaders.cpp:457
+#: kmheaders.cpp:485
 msgid "Failed to save message(s)."
 msgstr "Ошибка при сохранении сообщений."
 
@@ -965,7 +965,7 @@ msgstr ""
 msgid "pgp key"
 msgstr ""
 
-#: kmcomposewin.cpp:1297 kmreaderwin.cpp:902
+#: kmcomposewin.cpp:1297 kmreaderwin.cpp:906
 msgid "View..."
 msgstr "Просмотреть..."
 
@@ -973,7 +973,7 @@ msgstr "Просмотреть..."
 msgid "Save..."
 msgstr "Сохранить..."
 
-#: kmcomposewin.cpp:1299 kmreaderwin.cpp:905
+#: kmcomposewin.cpp:1299 kmreaderwin.cpp:909
 msgid "Properties..."
 msgstr "Свойства..."
 
@@ -981,7 +981,7 @@ msgstr "Свойства..."
 msgid "Attach..."
 msgstr "Подцепить..."
 
-#: kmcomposewin.cpp:1345 kmreaderwin.cpp:974 kmreaderwin.cpp:991
+#: kmcomposewin.cpp:1345 kmreaderwin.cpp:978 kmreaderwin.cpp:995
 msgid "View Attachment: "
 msgstr "Просмотр подцепления: "
 
@@ -1055,64 +1055,64 @@ msgstr "base 64"
 msgid "quoted printable"
 msgstr "quoted printable"
 
-#: kmreaderwin.cpp:398 kmreaderwin.cpp:411 kmreaderwin.cpp:430
-#: kmreaderwin.cpp:451
+#: kmreaderwin.cpp:402 kmreaderwin.cpp:415 kmreaderwin.cpp:434
+#: kmreaderwin.cpp:455
 msgid "Cc: "
 msgstr "Cc: "
 
-#: kmreaderwin.cpp:406 kmreaderwin.cpp:425 kmreaderwin.cpp:446
+#: kmreaderwin.cpp:410 kmreaderwin.cpp:429 kmreaderwin.cpp:450
 msgid "From: "
 msgstr "Отправитель: "
 
-#: kmreaderwin.cpp:408 kmreaderwin.cpp:427 kmreaderwin.cpp:448
+#: kmreaderwin.cpp:412 kmreaderwin.cpp:431 kmreaderwin.cpp:452
 msgid "To: "
 msgstr "Получатель: "
 
-#: kmreaderwin.cpp:415 kmreaderwin.cpp:436 kmreaderwin.cpp:461
+#: kmreaderwin.cpp:419 kmreaderwin.cpp:440 kmreaderwin.cpp:465
 msgid "References: "
 msgstr "Ссылки: "
 
-#: kmreaderwin.cpp:432 kmreaderwin.cpp:445
+#: kmreaderwin.cpp:436 kmreaderwin.cpp:449
 msgid "Date: "
 msgstr "Дата: "
 
-#: kmreaderwin.cpp:454
+#: kmreaderwin.cpp:458
 msgid "Bcc: "
 msgstr "Bcc: "
 
-#: kmreaderwin.cpp:457
+#: kmreaderwin.cpp:461
 msgid "Reply to: "
 msgstr "Адрес для ответа: "
 
-#: kmreaderwin.cpp:464
+#: kmreaderwin.cpp:468
 msgid "Groups: "
 msgstr "Группы: "
 
-#: kmreaderwin.cpp:502
+#: kmreaderwin.cpp:506
 msgid "Encrypted message"
 msgstr "Шифрованное сообщение"
 
-#: kmreaderwin.cpp:508
+#: kmreaderwin.cpp:512
 msgid "Cannot decrypt message:"
 msgstr "Невозможно дешифровать сообщение:"
 
-#: kmreaderwin.cpp:517
+#: kmreaderwin.cpp:521
 msgid "Message was signed by"
 msgstr "Сообщение было подписано"
 
-#: kmreaderwin.cpp:518
+#: kmreaderwin.cpp:522
 msgid "Warning: Bad signature from"
 msgstr "Предупреждение: Плохая подпись"
 
-#: kmreaderwin.cpp:528
+#: kmreaderwin.cpp:532
 msgid "unknown key ID"
 msgstr "неизвестный ID ключа"
 
-#: kmreaderwin.cpp:866
+#: kmreaderwin.cpp:870
 msgid "Attachment: "
 msgstr "Подцепление: "
 
-#: kmreaderwin.cpp:1080
+#: kmreaderwin.cpp:1084
 msgid "Could not save file"
 msgstr "Ошибка сохранения файла"
 
@@ -1605,35 +1605,35 @@ msgstr "Сохранить ключ"
 msgid "Always encrypt to self"
 msgstr "Всегда кодировать себе"
 
-#: kpgpbase.cpp:320
+#: kpgpbase.cpp:322
 msgid "Bad pass Phrase; couldn't sign"
 msgstr "Неверный ключ; поставить подпись невозможно"
 
-#: kpgpbase.cpp:359
+#: kpgpbase.cpp:361
 msgid "error running pgp"
 msgstr "ошибка выполнения pgp"
 
-#: kpgpbase.cpp:376 kpgpbase.cpp:667
+#: kpgpbase.cpp:378 kpgpbase.cpp:669
 msgid "Bad pass Phrase; couldn't decrypt"
 msgstr "Неверный ключ; расшифровать невозможно"
 
-#: kpgpbase.cpp:387 kpgpbase.cpp:678
+#: kpgpbase.cpp:389 kpgpbase.cpp:680
 msgid "Do not have the secret key for this message"
 msgstr "Закрытый ключ для данного сообщения отсутствует"
 
-#: kpgpbase.cpp:415
+#: kpgpbase.cpp:417
 msgid "unknown key ID "
 msgstr "неизвестный ID ключа"
 
-#: kpgpbase.cpp:435
+#: kpgpbase.cpp:437
 msgid "??? (file ~/.pgp/pubring.pgp not found)"
 msgstr "??? (файл ~/.pgp/pubring.pgp не найден)"
 
-#: kpgpbase.cpp:590
+#: kpgpbase.cpp:592
 msgid "The passphrase you entered is invalid."
 msgstr "Введенный Вами ключ неверен."
 
-#: kpgpbase.cpp:616
+#: kpgpbase.cpp:618
 msgid ""
 "The key(s) you wan't to encrypt your message\n"
 "to are not trusted. No encryption done."
@@ -1641,7 +1641,7 @@ msgstr ""
 "Ключи, для которых Вы желаете зашифровать сообщение,\n"
 "не внушают доверия. Шифрование не произведено."
 
-#: kpgpbase.cpp:619
+#: kpgpbase.cpp:621
 #, c-format
 msgid ""
 "The following key(s) are not trusted:\n"
@@ -1789,28 +1789,28 @@ msgstr "Сохранение адресной книги завершилось неудачей"
 msgid "&Abort"
 msgstr "&Прервать"
 
-#: kmnewiostatuswdg.cpp:24
+#: kmnewiostatuswdg.cpp:26
 #, fuzzy
 msgid "Abort"
 msgstr "&Прервать"
 
-#: kmnewiostatuswdg.cpp:41
+#: kmnewiostatuswdg.cpp:43
 msgid "Sending messages to "
 msgstr "Отправка сообщений для "
 
-#: kmnewiostatuswdg.cpp:44
+#: kmnewiostatuswdg.cpp:46
 msgid "Retrieving messages from "
 msgstr "Получение сообщений от "
 
-#: kmnewiostatuswdg.cpp:54
+#: kmnewiostatuswdg.cpp:56
 msgid "Preparing transmission..."
 msgstr "Подготовка передачи..."
 
-#: kmnewiostatuswdg.cpp:60
+#: kmnewiostatuswdg.cpp:62
 msgid "Transmission completed..."
 msgstr "Передача завершена..."
 
-#: kmnewiostatuswdg.cpp:95
+#: kmnewiostatuswdg.cpp:97
 msgid "Aborting transmission...\n"
 msgstr "Прерывание передачи...\n"
 

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1999-04-16 03:07+0200\n"
+"POT-Creation-Date: 1999-04-19 02:26+0200\n"
 "PO-Revision-Date: 1999-02-05 21:54+01:00\n"
 "Last-Translator: Karl Backstrom <backstrom@kde.org>\n"
 "Language-Team: Sv\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: ENCODING\n"
 
-#: kmcomposewin.cpp:1516 kmmainwin.cpp:371 kpgp.cpp:546
+#: kmcomposewin.cpp:1516 kmmainwin.cpp:373 kpgp.cpp:546
 msgid ""
 "Sorry, but this feature\n"
 "is still missing"
@@ -20,31 +20,31 @@ msgstr ""
 "Tyvärr, denna funktion\n"
 "fattas fortfarande."
 
-#: kmmainwin.cpp:380
+#: kmmainwin.cpp:382
 msgid "New Folder"
 msgstr "Ny mapp"
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:393 kmmainwin.cpp:427 main.cpp:484
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:395 kmmainwin.cpp:429 main.cpp:484
 msgid "KMail error"
 msgstr "KMail fel"
 
-#: kmmainwin.cpp:394 kmmainwin.cpp:428
+#: kmmainwin.cpp:396 kmmainwin.cpp:430
 msgid "Already checking for mail!"
 msgstr "Tittar redan efter brev!"
 
-#: kmmainwin.cpp:404 kmmainwin.cpp:438
+#: kmmainwin.cpp:406 kmmainwin.cpp:440
 msgid "No new mail available"
 msgstr "Inga nya brev tillgängliga"
 
-#: kmmainwin.cpp:465
+#: kmmainwin.cpp:470
 msgid "Modify Folder"
 msgstr "Modifiera mapp"
 
-#: kmmainwin.cpp:488
+#: kmmainwin.cpp:493
 msgid "Moved all messages into trash"
 msgstr "Flytta alla medelanden till papperskorgen"
 
-#: kmmainwin.cpp:507
+#: kmmainwin.cpp:512
 msgid ""
 "Cannot remove a\n"
 "system folder."
@@ -52,7 +52,7 @@ msgstr ""
 "Kan ej ta bort en\n"
 "systemmapp."
 
-#: kmmainwin.cpp:511
+#: kmmainwin.cpp:516
 #, c-format
 msgid ""
 "Are you sure you want to remove the folder\n"
@@ -61,295 +61,295 @@ msgstr ""
 "Är du säker att du vill ta bort mappen\n"
 "\"%s\" och slänga innehållet ?"
 
-#: kmmainwin.cpp:514
+#: kmmainwin.cpp:519
 msgid "Confirmation"
 msgstr "Bekräfta"
 
-#: kmmainwin.cpp:574
+#: kmmainwin.cpp:579
 msgid "KMail notification!"
 msgstr "KMail meddelande!"
 
-#: kmmainwin.cpp:575
+#: kmmainwin.cpp:580
 msgid "Only messages in the outbox folder can be edited!"
 msgstr "Bara meddelanden i utkorgen kan ändras!"
 
-#: kmmainwin.cpp:610
+#: kmmainwin.cpp:615
 msgid "Message as Plain Text"
 msgstr "Meddelandet som klartext"
 
-#: kmmainwin.cpp:617 kmmainwin.cpp:637
+#: kmmainwin.cpp:622 kmmainwin.cpp:642
 msgid "Select Folder"
 msgstr "Välj mapp"
 
-#: kmmainwin.cpp:660
+#: kmmainwin.cpp:665
 msgid "Queued messages successfully sent."
 msgstr "Köade meddelanden sända."
 
-#: kmmainwin.cpp:662
+#: kmmainwin.cpp:667
 msgid "Failed to send (some) queued messages."
 msgstr "Misslyckades sända köade meddelanden."
 
-#: kmmainwin.cpp:789
+#: kmmainwin.cpp:798
 msgid "Opening URL..."
 msgstr "Öppnar URL..."
 
-#: kmmainwin.cpp:844
+#: kmmainwin.cpp:853
 msgid "Address added to addressbook."
 msgstr "Adressen skrevs in i adressboken."
 
-#: kmmainwin.cpp:856
+#: kmmainwin.cpp:865
 msgid "Address copied to clipboard."
 msgstr "Adressen kopierad till klippbordet."
 
-#: kmmainwin.cpp:861
+#: kmmainwin.cpp:870
 msgid "URL copied to clipboard."
 msgstr "URLen kopierad till klippbordet."
 
-#: kmmainwin.cpp:888
+#: kmmainwin.cpp:897
 msgid "Send to..."
 msgstr "Sänd till..."
 
-#: kmmainwin.cpp:890
+#: kmmainwin.cpp:899
 msgid "Send reply to..."
 msgstr "Sänd svar till..."
 
-#: kmmainwin.cpp:892
+#: kmmainwin.cpp:901
 msgid "Forward to..."
 msgstr "Skicka vidare till..."
 
-#: kmmainwin.cpp:895
+#: kmmainwin.cpp:904
 msgid "Add to addressbook"
 msgstr "Lägg till i adressboken"
 
-#: kmmainwin.cpp:897 kmmainwin.cpp:906
+#: kmmainwin.cpp:906 kmmainwin.cpp:915
 msgid "Copy to clipboard"
 msgstr "Kopiera till klippbordet"
 
-#: kmmainwin.cpp:904
+#: kmmainwin.cpp:913
 msgid "Open URL..."
 msgstr "Öppna URL.."
 
-#: kmheaders.cpp:956 kmmainwin.cpp:914 kmmainwin.cpp:1031
+#: kmheaders.cpp:984 kmmainwin.cpp:923 kmmainwin.cpp:1040
 msgid "&Reply..."
 msgstr "&Svara..."
 
-#: kmheaders.cpp:958 kmmainwin.cpp:916 kmmainwin.cpp:1033
+#: kmheaders.cpp:986 kmmainwin.cpp:925 kmmainwin.cpp:1042
 msgid "Reply &All..."
 msgstr "Svara &alla..."
 
-#: kmheaders.cpp:960 kmmainwin.cpp:918 kmmainwin.cpp:1035
+#: kmheaders.cpp:988 kmmainwin.cpp:927 kmmainwin.cpp:1044
 msgid "&Forward..."
 msgstr "Skicka &vidare..."
 
-#: kmheaders.cpp:963 kmmainwin.cpp:921 kmmainwin.cpp:1045
+#: kmheaders.cpp:991 kmmainwin.cpp:930 kmmainwin.cpp:1054
 msgid "&Move..."
 msgstr "&Flytta..."
 
-#: kmheaders.cpp:965 kmmainwin.cpp:923 kmmainwin.cpp:1047
+#: kmheaders.cpp:993 kmmainwin.cpp:932 kmmainwin.cpp:1056
 msgid "&Copy..."
 msgstr "&Kopiera..."
 
-#: kmmainwin.cpp:950
+#: kmmainwin.cpp:959
 msgid "New Composer"
 msgstr "Nytt brev"
 
-#: kmcomposewin.cpp:451 kmmainwin.cpp:952
+#: kmcomposewin.cpp:451 kmmainwin.cpp:961
 msgid "New Mailreader"
 msgstr "Nytt &fönster"
 
-#: kmmainwin.cpp:955
+#: kmmainwin.cpp:964
 msgid "Save As..."
 msgstr "Spara som..."
 
-#: kmmainwin.cpp:957
+#: kmmainwin.cpp:966
 msgid "Print..."
 msgstr "Skriv ut..."
 
-#: kmmainwin.cpp:960
+#: kmmainwin.cpp:969
 msgid "Check Mail..."
 msgstr "Kolla efter brev..."
 
-#: kmmainwin.cpp:969
+#: kmmainwin.cpp:978
 msgid "Check Mail in..."
 msgstr "Kolla efter brev i..."
 
-#: kmmainwin.cpp:971
+#: kmmainwin.cpp:980
 msgid "Send Queued"
 msgstr "Sänd köande brev"
 
-#: kmmainwin.cpp:974
+#: kmmainwin.cpp:983
 msgid "&Settings..."
 msgstr "&Inställningar"
 
-#: kmcomposewin.cpp:443 kmmainwin.cpp:976
+#: kmcomposewin.cpp:443 kmmainwin.cpp:985
 msgid "&Addressbook..."
 msgstr "&Adressbok..."
 
-#: kmmainwin.cpp:978
+#: kmmainwin.cpp:987
 msgid "&Filter..."
 msgstr "&Filter..."
 
-#: kmmainwin.cpp:992
+#: kmmainwin.cpp:1001
 msgid "&Find..."
 msgstr "&Sök..."
 
-#: kmfoldertree.cpp:307 kmmainwin.cpp:997
+#: kmfoldertree.cpp:307 kmmainwin.cpp:1006
 msgid "&Create..."
 msgstr "&Skapa..."
 
-#: kmfoldertree.cpp:309 kmmainwin.cpp:999
+#: kmfoldertree.cpp:309 kmmainwin.cpp:1008
 msgid "&Modify..."
 msgstr "&Ändra..."
 
-#: kmfoldertree.cpp:311 kmmainwin.cpp:1001
+#: kmfoldertree.cpp:311 kmmainwin.cpp:1010
 msgid "C&ompact"
 msgstr "&Komprimera"
 
-#: kmfoldertree.cpp:314 kmmainwin.cpp:1004
+#: kmfoldertree.cpp:314 kmmainwin.cpp:1013
 msgid "&Empty"
 msgstr "T&öm"
 
-#: kmfilterdlg.cpp:149 kmheaders.cpp:946 kmmainwin.cpp:1013
+#: kmfilterdlg.cpp:149 kmheaders.cpp:974 kmmainwin.cpp:1022
 msgid "New"
 msgstr "Ny"
 
-#: kmheaders.cpp:947 kmmainwin.cpp:1014
+#: kmheaders.cpp:975 kmmainwin.cpp:1023
 msgid "Unread"
 msgstr "Oläst"
 
-#: kmheaders.cpp:948 kmmainwin.cpp:1015
+#: kmheaders.cpp:976 kmmainwin.cpp:1024
 msgid "Read"
 msgstr "Läst"
 
-#: kmheaders.cpp:949 kmmainwin.cpp:1016
+#: kmheaders.cpp:977 kmmainwin.cpp:1025
 msgid "Replied"
 msgstr "Besvarad"
 
-#: kmheaders.cpp:950 kmmainwin.cpp:1017
+#: kmheaders.cpp:978 kmmainwin.cpp:1026
 msgid "Queued"
 msgstr "Köande"
 
-#: kmheaders.cpp:951 kmmainwin.cpp:1018
+#: kmheaders.cpp:979 kmmainwin.cpp:1027
 msgid "Sent"
 msgstr "Skickad"
 
-#: kmmainwin.cpp:1022
+#: kmmainwin.cpp:1031
 msgid "&Next"
 msgstr "&Nästa"
 
-#: kmmainwin.cpp:1024
+#: kmmainwin.cpp:1033
 msgid "Next unread"
 msgstr "Nästa olästa"
 
-#: kmmainwin.cpp:1026
+#: kmmainwin.cpp:1035
 msgid "&Previous"
 msgstr "&Föregående"
 
-#: kmmainwin.cpp:1028
+#: kmmainwin.cpp:1037
 msgid "Previous unread"
 msgstr "Föregående olästa"
 
-#: kmmainwin.cpp:1038
+#: kmmainwin.cpp:1047
 msgid "Edi&t..."
 msgstr "Ändra..."
 
-#: kmmainwin.cpp:1041
+#: kmmainwin.cpp:1050
 msgid "&Set Status"
 msgstr "&Sätt status"
 
-#: kmmainwin.cpp:1043
+#: kmmainwin.cpp:1052
 msgid "Mar&k all"
 msgstr "Mar&kera alla"
 
-#: kmmainwin.cpp:1052
+#: kmmainwin.cpp:1061
 msgid "Send again..."
 msgstr "Skicka igen..."
 
-#: kmmainwin.cpp:1054
+#: kmmainwin.cpp:1063
 msgid "Apply filters"
 msgstr "Lägg till filter"
 
-#: kmmainwin.cpp:1057
+#: kmmainwin.cpp:1066
 msgid "View Source..."
 msgstr "Granska koden..."
 
-#: kmmainwin.cpp:1064
+#: kmmainwin.cpp:1073
 msgid "&Brief Headers"
 msgstr "&Kort huvud"
 
-#: kmmainwin.cpp:1066
+#: kmmainwin.cpp:1075
 msgid "&Fancy Headers"
 msgstr "&Snyggt huvud"
 
-#: kmmainwin.cpp:1068
+#: kmmainwin.cpp:1077
 msgid "&Standard Headers"
 msgstr "&Standardhuvud"
 
-#: kmmainwin.cpp:1070
+#: kmmainwin.cpp:1079
 msgid "&Long Headers"
 msgstr "&Långt huvud"
 
-#: kmmainwin.cpp:1072
+#: kmmainwin.cpp:1081
 msgid "&All Headers"
 msgstr "&Alla huvuden"
 
-#: kmmainwin.cpp:1075
+#: kmmainwin.cpp:1084
 msgid "Iconic Attachments"
 msgstr "Ikonifierade bilagor"
 
-#: kmmainwin.cpp:1076
+#: kmmainwin.cpp:1085
 msgid "Smart Attachments"
 msgstr "Smarta bilagor"
 
-#: kmmainwin.cpp:1077
+#: kmmainwin.cpp:1086
 msgid "Inlined Attachments"
 msgstr "Infogade bilagor"
 
-#: kmmainwin.cpp:1088
+#: kmmainwin.cpp:1097
 msgid "F&older"
 msgstr "K&org"
 
-#: kmmainwin.cpp:1089
+#: kmmainwin.cpp:1098
 msgid "&Message"
 msgstr "&Meddelande"
 
-#: kmcomposewin.cpp:573 kmmainwin.cpp:1108
+#: kmcomposewin.cpp:573 kmmainwin.cpp:1117
 msgid "Compose new message"
 msgstr "Skapa nytt meddelande"
 
-#: kmcomposewin.cpp:579 kmmainwin.cpp:1113
+#: kmcomposewin.cpp:579 kmmainwin.cpp:1122
 msgid "Save message to file"
 msgstr "Spara meddelande som fil"
 
-#: kmcomposewin.cpp:585 kmmainwin.cpp:1118
+#: kmcomposewin.cpp:585 kmmainwin.cpp:1127
 msgid "Print message"
 msgstr "Skriv ut meddelandet"
 
-#: kmmainwin.cpp:1125
+#: kmmainwin.cpp:1134
 msgid "Get new mail"
 msgstr "Hämta nya meddelanden"
 
-#: kmmainwin.cpp:1131
+#: kmmainwin.cpp:1140
 msgid "Reply to author"
 msgstr "Svara till avsändaren"
 
-#: kmmainwin.cpp:1136
+#: kmmainwin.cpp:1145
 msgid "Reply to all recipients"
 msgstr "Svara till alla mottagare"
 
-#: kmmainwin.cpp:1141
+#: kmmainwin.cpp:1150
 msgid "Forward message"
 msgstr "Skicka vidare meddelandet"
 
-#: kmmainwin.cpp:1146
+#: kmmainwin.cpp:1155
 msgid "Delete message"
 msgstr "Ta bort meddelandet"
 
-#: kmcomposewin.cpp:609 kmmainwin.cpp:1152
+#: kmcomposewin.cpp:609 kmmainwin.cpp:1161
 msgid "Open addressbook..."
 msgstr "Öppna adressboken..."
 
-#: kmmainwin.cpp:1164
+#: kmmainwin.cpp:1173
 msgid "Initializing..."
 msgstr "Initierar..."
 
@@ -721,11 +721,11 @@ msgstr "Sortera i fallande ordning på %s"
 msgid "Sorting messages ascending by %s"
 msgstr "Sortera i stigande ordning på %s"
 
-#: kmheaders.cpp:455
+#: kmheaders.cpp:483
 msgid "Message(s) saved."
 msgstr "Meddelande(na) sparade."
 
-#: kmheaders.cpp:457
+#: kmheaders.cpp:485
 msgid "Failed to save message(s)."
 msgstr "Misslyckades med att spara meddelande(n)."
 
@@ -961,7 +961,7 @@ msgstr "min PGP-nyckel"
 msgid "pgp key"
 msgstr "PGP-nyckel"
 
-#: kmcomposewin.cpp:1297 kmreaderwin.cpp:902
+#: kmcomposewin.cpp:1297 kmreaderwin.cpp:906
 msgid "View..."
 msgstr "Visa..."
 
@@ -969,7 +969,7 @@ msgstr "Visa..."
 msgid "Save..."
 msgstr "Spara..."
 
-#: kmcomposewin.cpp:1299 kmreaderwin.cpp:905
+#: kmcomposewin.cpp:1299 kmreaderwin.cpp:909
 msgid "Properties..."
 msgstr "Egenskaper..."
 
@@ -977,7 +977,7 @@ msgstr "Egenskaper..."
 msgid "Attach..."
 msgstr "Bifoga..."
 
-#: kmcomposewin.cpp:1345 kmreaderwin.cpp:974 kmreaderwin.cpp:991
+#: kmcomposewin.cpp:1345 kmreaderwin.cpp:978 kmreaderwin.cpp:995
 msgid "View Attachment: "
 msgstr "Visa bilaga: "
 
@@ -1050,64 +1050,64 @@ msgstr "base 64"
 msgid "quoted printable"
 msgstr "quoted printable"
 
-#: kmreaderwin.cpp:398 kmreaderwin.cpp:411 kmreaderwin.cpp:430
-#: kmreaderwin.cpp:451
+#: kmreaderwin.cpp:402 kmreaderwin.cpp:415 kmreaderwin.cpp:434
+#: kmreaderwin.cpp:455
 msgid "Cc: "
 msgstr "Kopia:"
 
-#: kmreaderwin.cpp:406 kmreaderwin.cpp:425 kmreaderwin.cpp:446
+#: kmreaderwin.cpp:410 kmreaderwin.cpp:429 kmreaderwin.cpp:450
 msgid "From: "
 msgstr "Från:"
 
-#: kmreaderwin.cpp:408 kmreaderwin.cpp:427 kmreaderwin.cpp:448
+#: kmreaderwin.cpp:412 kmreaderwin.cpp:431 kmreaderwin.cpp:452
 msgid "To: "
 msgstr "Till:"
 
-#: kmreaderwin.cpp:415 kmreaderwin.cpp:436 kmreaderwin.cpp:461
+#: kmreaderwin.cpp:419 kmreaderwin.cpp:440 kmreaderwin.cpp:465
 msgid "References: "
 msgstr "Referenser:"
 
-#: kmreaderwin.cpp:432 kmreaderwin.cpp:445
+#: kmreaderwin.cpp:436 kmreaderwin.cpp:449
 msgid "Date: "
 msgstr "Datum:"
 
-#: kmreaderwin.cpp:454
+#: kmreaderwin.cpp:458
 msgid "Bcc: "
 msgstr "Dold Kopia:"
 
-#: kmreaderwin.cpp:457
+#: kmreaderwin.cpp:461
 msgid "Reply to: "
 msgstr "Svara till:"
 
-#: kmreaderwin.cpp:464
+#: kmreaderwin.cpp:468
 msgid "Groups: "
 msgstr "Grupper:"
 
-#: kmreaderwin.cpp:502
+#: kmreaderwin.cpp:506
 msgid "Encrypted message"
 msgstr "Kryptera meddelande"
 
-#: kmreaderwin.cpp:508
+#: kmreaderwin.cpp:512
 msgid "Cannot decrypt message:"
 msgstr "Kan inte dekryptera meddelande:"
 
-#: kmreaderwin.cpp:517
+#: kmreaderwin.cpp:521
 msgid "Message was signed by"
 msgstr "Meddelandet var signerat av"
 
-#: kmreaderwin.cpp:518
+#: kmreaderwin.cpp:522
 msgid "Warning: Bad signature from"
 msgstr "Varning: Felaktig signatur av"
 
-#: kmreaderwin.cpp:528
+#: kmreaderwin.cpp:532
 msgid "unknown key ID"
 msgstr "okänt nyckel ID"
 
-#: kmreaderwin.cpp:866
+#: kmreaderwin.cpp:870
 msgid "Attachment: "
 msgstr "Bilaga:"
 
-#: kmreaderwin.cpp:1080
+#: kmreaderwin.cpp:1084
 msgid "Could not save file"
 msgstr "Kan inte spara filen"
 
@@ -1598,35 +1598,35 @@ msgstr "Spara lösenordsfrasen"
 msgid "Always encrypt to self"
 msgstr "Alltid kryptera till sig själv"
 
-#: kpgpbase.cpp:320
+#: kpgpbase.cpp:322
 msgid "Bad pass Phrase; couldn't sign"
 msgstr "Felaktig lösenordsfras; kunde inte signera"
 
-#: kpgpbase.cpp:359
+#: kpgpbase.cpp:361
 msgid "error running pgp"
 msgstr "fel vid körningen av pgp"
 
-#: kpgpbase.cpp:376 kpgpbase.cpp:667
+#: kpgpbase.cpp:378 kpgpbase.cpp:669
 msgid "Bad pass Phrase; couldn't decrypt"
 msgstr "Felaktig lösenordsfras; kunde inte dekryptera"
 
-#: kpgpbase.cpp:387 kpgpbase.cpp:678
+#: kpgpbase.cpp:389 kpgpbase.cpp:680
 msgid "Do not have the secret key for this message"
 msgstr "Har ingen hemlig nyckel för det här meddelandet"
 
-#: kpgpbase.cpp:415
+#: kpgpbase.cpp:417
 msgid "unknown key ID "
 msgstr "okänt nyckel ID "
 
-#: kpgpbase.cpp:435
+#: kpgpbase.cpp:437
 msgid "??? (file ~/.pgp/pubring.pgp not found)"
 msgstr "??? (filen ~/.pgp/pubring.pgp hittades inte)"
 
-#: kpgpbase.cpp:590
+#: kpgpbase.cpp:592
 msgid "The passphrase you entered is invalid."
 msgstr "Lösenordsfrasen är inte giltig."
 
-#: kpgpbase.cpp:616
+#: kpgpbase.cpp:618
 msgid ""
 "The key(s) you wan't to encrypt your message\n"
 "to are not trusted. No encryption done."
@@ -1634,7 +1634,7 @@ msgstr ""
 "Nyckeln/Nycklarna som du vill kryptera meddelandet\n"
 "med är inte säkra. Ingen kryptering var gjord."
 
-#: kpgpbase.cpp:619
+#: kpgpbase.cpp:621
 #, c-format
 msgid ""
 "The following key(s) are not trusted:\n"
@@ -1782,27 +1782,27 @@ msgstr "Spara adressboken misslyckades"
 msgid "&Abort"
 msgstr "&Om"
 
-#: kmnewiostatuswdg.cpp:24
+#: kmnewiostatuswdg.cpp:26
 msgid "Abort"
 msgstr "Avbryt"
 
-#: kmnewiostatuswdg.cpp:41
+#: kmnewiostatuswdg.cpp:43
 msgid "Sending messages to "
 msgstr "Skickar meddelanden till "
 
-#: kmnewiostatuswdg.cpp:44
+#: kmnewiostatuswdg.cpp:46
 msgid "Retrieving messages from "
 msgstr "Tar emot meddelanden från "
 
-#: kmnewiostatuswdg.cpp:54
+#: kmnewiostatuswdg.cpp:56
 msgid "Preparing transmission..."
 msgstr "Förbereder överföring..."
 
-#: kmnewiostatuswdg.cpp:60
+#: kmnewiostatuswdg.cpp:62
 msgid "Transmission completed..."
 msgstr "Överföringen färdig..."
 
-#: kmnewiostatuswdg.cpp:95
+#: kmnewiostatuswdg.cpp:97
 msgid "Aborting transmission...\n"
 msgstr "Avbryter skickningen...\n"
 
