@@ -79,7 +79,7 @@ msgstr "Notificação KMail"
 
 #: kmmainwin.cpp:477
 msgid "Only messages in the outbox folder can be edited!"
-msgstr ""
+msgstr "Somente mensagens da caixa de saída podem ser editadas!"
 
 #: kmmainwin.cpp:512
 msgid "Message as Plain Text"
@@ -555,7 +555,7 @@ msgstr "esvaziar lixeira ao sair"
 
 #: kmsettings.cpp:533
 msgid "Send Mail in outbox Folder on Check"
-msgstr ""
+msgstr "Mandar Mensagens da Caixa de Saída na Verificação"
 
 #: kmsettings.cpp:572
 msgid "Message Body Font"
@@ -1111,9 +1111,7 @@ msgstr "Opção desconhecida na linha de comando: %s"
 
 #: kmacctlocal.cpp:69
 msgid "Cannot open file:"
-msgstr ""
-"Não foi possível abrir o arquivo:\n"
-"%s"
+msgstr "Não foi possível abrir o arquivo:"
 
 #: kmacctlocal.cpp:95
 #, c-format
