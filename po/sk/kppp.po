@@ -957,7 +957,7 @@ msgid ""
 "COST OF SESSION: "
 msgstr ""
 "PPP spojenie ukonèené\n"
-"CENA SEANSY:"
+"CENA SEDENIA:"
 
 #: accounting.cpp:174
 msgid ""
@@ -980,29 +980,24 @@ msgid "Selected:"
 msgstr "Vybraných:"
 
 #: acctselect.cpp:88
-#, fuzzy
 msgid "Volume accounting:"
-msgstr "Prenosové úètovanie"
+msgstr "Prenosové úètovanie:"
 
 #: acctselect.cpp:92
-#, fuzzy
 msgid "No accounting"
-msgstr "Prenosové úètovanie"
+msgstr "®iadne úètovanie"
 
 #: acctselect.cpp:93
-#, fuzzy
 msgid "Bytes in"
-msgstr "prijatých bajtov"
+msgstr "Prijatých bajtov"
 
 #: acctselect.cpp:94
-#, fuzzy
 msgid "Bytes out"
-msgstr "odoslaných bajtov"
+msgstr "Odoslaných bajtov"
 
 #: acctselect.cpp:95
-#, fuzzy
 msgid "Bytes in and out"
-msgstr "odoslaných bajtov"
+msgstr "Prijatých a odoslaných bajtov"
 
 #: acctselect.cpp:165 acctselect.cpp:271
 msgid "Available rules"
@@ -1051,15 +1046,12 @@ msgid "Minimize"
 msgstr "Minimalizova»"
 
 #: runtests.cpp:122
-#, fuzzy
 msgid ""
 "You´re not allowed to dial out with kppp.\n"
 "Contact your system administrator."
 msgstr ""
-"Nemáte práva pre spustenie pppd!\n"
-"\n"
-"Kontaktujte svojho systémového administrátora,\n"
-"aby vám umo¾nil prístup k pppd."
+"Nemáte práva pre vytáèanie z pppd.\n"
+"Kontaktujte svojho systémového administrátora."
 
 #: runtests.cpp:148
 msgid ""
