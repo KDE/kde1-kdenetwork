@@ -3,6 +3,7 @@
 BinaryPattern=korn;
 Protocols=
 Comment=Multi-folder new mail monitor
+Comment[fr]=Indicateur de nouveaux messages (multi-boîte aux lettres)
 Comment[fi]=Monen kansion uutta postia seuraava ohjelma
 Exec=korn %f
 Icon=korn.xpm
@@ -13,3 +14,4 @@ Extensions=
 Type=Application
 Terminal=0
 Info=Multi-folder new mail monitor
+Info[fr]=Indicateur de nouveaux messages
