@@ -464,7 +464,7 @@ int runTests() {
 			  "The pppd binary must be installed\n"
 			  "with the SUID bit set. Contact your\n"
 			  "system administrator."));
-	return TEST_CRITICAL;
+        warning++;
       }
     }
   }
