@@ -24,16 +24,16 @@
 #ifndef _DEBUGWIDGET_
 #define _DEBUGWIDGET_
 
-#include<stdlib.h>
+#include <stdlib.h>
 
-#include<qdialog.h>
-#include<qfont.h>
-#include<qstring.h>
-#include<qpainter.h>
-#include<qpixmap.h>
-#include<qlabel.h>
-#include<qmlined.h>
-#include<qpushbt.h>
+#include <qdialog.h>
+#include <qfont.h>
+#include <qstring.h>
+#include <qpainter.h>
+#include <qpixmap.h>
+#include <qlabel.h>
+#include <qmlined.h>
+#include <qpushbt.h>
 
 
 class myMultiEdit : public QMultiLineEdit {

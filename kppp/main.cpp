@@ -132,9 +132,9 @@ void showNews() {
 			      "To activate it, simply click on a control like\n"
 			      "a button or a label with the right mouse button.\n"
 			      "If the item supports Quickhelp, a popup menu\n"
-			      "will appear leading to quickhelp.\n"
+			      "will appear leading to Quickhelp.\n"
 			      "\n"
-			      "To test it, right-click somewhere into this text."),
+			      "To test it, right-click somewhere in this text."),
 			 &dlg);
     
     QCheckBox *cb = new QCheckBox(i18n("Don't show this hint again"), &dlg);
@@ -373,7 +373,7 @@ int main( int argc, char **argv ) {
   // Mario: testing
   if(TESTING) {
     gpppdata.open();
-    exit(0);
+    return a.exec();
   }
 
   KPPPWidget kppp;
@@ -460,8 +460,8 @@ KPPPWidget::KPPPWidget( QWidget *parent, const char *name )
   KQuickHelp::add(ID_Edit,
 		  i18n("Type in the username that you got from your\n"
 		       "ISP. This is especially important for PAP\n"
-		       "and CHAP. You may ommit this when you use\n"
-		       "Terminal based or Script based authentication.\n"
+		       "and CHAP. You may omit this when you use\n"
+		       "terminal-based or script-based authentication.\n"
 		       "\n"
 		       "<b>Important</b>: case is important here:\n"
 		       "<i>myusername</i> is not the same as <i>MyUserName</i>!")));
@@ -483,8 +483,8 @@ KPPPWidget::KPPPWidget( QWidget *parent, const char *name )
   KQuickHelp::add(PW_Edit,
 		  i18n("Type in the password that you got from your\n"
 		       "ISP. This is especially important for PAP\n"
-		       "and CHAP. You may ommit this when you use\n"
-		       "Terminal based or Script based authentication.\n"
+		       "and CHAP. You may omit this when you use\n"
+		       "terminal-based or script-based authentication.\n"
 		       "\n"
 		       "<b>Important</b>: case is important here:\n"
 		       "<i>mypassword</i> is not the same as <i>MyPassword</i>!")));
@@ -505,9 +505,10 @@ KPPPWidget::KPPPWidget( QWidget *parent, const char *name )
 		  i18n("This controls whether a log window is shown.\n"
 		       "A log window shows the communication between\n"
 		       "<i>kppp</i> and your modem. This will help you\n"
-		       "to track down problems.\n"
+		       "in tracking down problems.\n"
 		       "\n"
-		       "Turn it off when <i>kppp</i> connects without problems"));
+		       "Turn it off if <i>kppp</i> routinely connects without\n"
+		       "problems"));
 
   fline = new QFrame(this);
   fline->setFrameStyle(QFrame::HLine |QFrame::Sunken);
@@ -817,7 +818,7 @@ void dieppp(int sig) {
 	switch (gpppdata.pppdError())
 	  {
 	  case E_IF_TIMEOUT:
-	    msg = "Timeout expired on waiting for the ppp interface ";
+	    msg = "Timeout expired while waiting for the PPP interface ";
 	    msg += "to come up!";
 	    break;
 	  
@@ -877,10 +878,13 @@ void KPPPWidget::connectbutton() {
 
   if(!info.exists()){
     QString string;   
-    string.sprintf(i18n("kppp can not find:\n %s\nPlease install pppd properly "
-				      "and/or adjust\n the location of the pppd executable on "
-				      "the PPP tab of\n"
-				      "the setup dialog.\n Thank You"),
+    string.sprintf(i18n("kppp can not find:\n %s\n"
+    			"Please install pppd properly and/or adjust\n"
+    			"the location of the pppd executable on\n"
+			"the PPP tab of the setup dialog.\n"
+			"This will insure that kppp can find the\n"
+			"PPP daemon.\n"
+			"Thank You"),
 		   gpppdata.pppdPath());
     QMessageBox::warning(this, i18n("Error"), string.data());
     return;
@@ -966,7 +970,7 @@ void KPPPWidget::connectbutton() {
   
   if (strlen(gpppdata.phonenumber()) == 0) {
     QString s;
-    s.sprintf(i18n("You have to specify a telephone "
+    s.sprintf(i18n("You must specify a telephone "
 		   "number!"));
     QMessageBox::warning(this, i18n("Error"), s.data());
     return;

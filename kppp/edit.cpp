@@ -87,7 +87,7 @@ DialWidget::DialWidget( QWidget *parent, bool isnewaccount, const char *name )
   tl->addWidget(auth, 4, 2);
   KQuickHelp::add(auth_l,
   KQuickHelp::add(auth,
-		  i18n("Specifies the method to identify yourself to\n"
+		  i18n("Specifies the method used to identify yourself to\n"
 		       "the PPP server. Most universities still use\n"
 		       "<b>Terminal</b>- or <b>Script</b>-based authtentication,\n"
 		       "while most ISP use <b>PAP</b> and/or <b>CHAP</b>. If\n"
@@ -242,8 +242,8 @@ IPWidget::IPWidget( QWidget *parent, bool isnewaccount, const char *name )
   ipaddress_label = newLabel(i18n("IP Address:"), this);
   KQuickHelp::add(ipaddress_label,
   KQuickHelp::add(ipaddress_l,
-		  i18n("If your computer has a permanent Internet\n"
-		       "address, you must supply this adress here")));
+		  i18n("If your computer has a permanent internet\n"
+		       "address, you must supply your IP address here")));
 
   subnetmask_l = new IPLineEdit(this);
 
@@ -266,12 +266,12 @@ IPWidget::IPWidget( QWidget *parent, bool isnewaccount, const char *name )
   dynamicadd_rb = new QRadioButton(this);
   dynamicadd_rb->setText(i18n("Dynamic IP Address"));
   KQuickHelp::add(dynamicadd_rb,
-		  i18n("Select this option when your computer gets a\n"
-		       "new internet address (IP) everytime when a\n"
+		  i18n("Select this option when your computer gets an\n"
+		       "internet address (IP) everytime a\n"
 		       "connection is made.\n"
 		       "\n"
-		       "Allmost every Internet Service uses this\n"
-		       "method, so this should be turned on."));
+		       "Almost every Internet Service Provider uses\n"
+		       "this method, so this should be turned on."));
 
   staticadd_rb = new QRadioButton(this);
   staticadd_rb->setText(i18n("Static IP Address"));
@@ -280,8 +280,8 @@ IPWidget::IPWidget( QWidget *parent, bool isnewaccount, const char *name )
   KQuickHelp::add(staticadd_rb,
 		  i18n("Select this option when your computer has a\n"
 		       "fixed internet address (IP). Most computers\n"
-		       "don't have this, so you should better select\n"
-		       "dynamic IP addresses unless you know what you\n"
+		       "don't have this, so you should probably select\n"
+		       "dynamic IP addressing unless you know what you\n"
 		       "are doing"));
 
   autoname = newCheckBox(i18n("Auto-configure hostname from this IP"), this);
@@ -293,10 +293,10 @@ IPWidget::IPWidget( QWidget *parent, bool isnewaccount, const char *name )
 		       "your hostname to match the IP address you\n"
 		       "got from the PPP server. This may be useful\n"
 		       "if you need to use a protocol which depends\n"
-		       "on this information, but it brings several\n"
-		       "<link kppp-7.html#autohostname>problems</link> with.\n"
+		       "on this information, but it can also cause several\n"
+		       "<link kppp-7.html#autohostname>problems</link>.\n"
 		       "\n"
-		       "Don't enable unless you really need it"));
+		       "Don't enable this unless you really need it"));
 
   //load info from gpppdata
   if(!isnewaccount) {
@@ -433,7 +433,7 @@ DNSWidget::DNSWidget( QWidget *parent, bool isnewaccount, const char *name )
   KQuickHelp::add(dnsdomain_label,
   KQuickHelp::add(dnsdomain, 
 		  i18n("If you enter a domain name here, this domain\n"
-		       "name is used for your computer while your are\n"
+		       "name is used for your computer while you are\n"
 		       "connected. When the connection is closed, the\n"
 		       "original domain name of your computer is\n"
 		       "restored.\n"
@@ -456,12 +456,12 @@ DNSWidget::DNSWidget( QWidget *parent, bool isnewaccount, const char *name )
   l110->addStretch(3);
   KQuickHelp::add(dns_label, 
   KQuickHelp::add(dnsipaddr, 
-		  i18n("Allows you to specify a new DNS server which\n"
-		       "is used while you are connected. When the\n"
+		  i18n("Allows you to specify a new DNS server to be\n"
+		       "used while you are connected. When the\n"
 		       "connection is closed, this DNS entry will be\n"
 		       "removed again.\n"
 		       "\n"
-		       "To add a DNS server type in the IP address of\n"
+		       "To add a DNS server, type in the IP address of\n"
 		       "of the DNS server here and click on <b>Add</b>")));
 
   QHBoxLayout *l111 = new QHBoxLayout;
@@ -487,8 +487,8 @@ DNSWidget::DNSWidget( QWidget *parent, bool isnewaccount, const char *name )
   remove->setMinimumWidth(width);
   l111->addWidget(remove);
   KQuickHelp::add(remove,
-		  i18n("Click this button to remove the DNS server\n"
-		       "from the list below"));
+		  i18n("Click this button to remove the selected DNS\n"
+		       "server entry from the list below"));
 
   servers_label = newLabel(i18n("DNS Address List:"), this);
   servers_label->setAlignment(AlignTop|AlignLeft);
@@ -515,12 +515,12 @@ DNSWidget::DNSWidget( QWidget *parent, bool isnewaccount, const char *name )
   KQuickHelp::add(exdnsdisabled_toggle,
 		  i18n("When this option is selected, all DNS\n"
 		       "servers specified in <i>/etc/resolv.conf</i> are\n"
-		       "temporary disabled while a connection\n"
+		       "temporary disabled while the dialup connection\n"
 		       "is established. After the connection is\n"
 		       "closed, the servers will be re-enabled\n"
 		       "\n"
 		       "Typically, there is no reason to use this\n"
-		       "option, but it may become usefull under \n"
+		       "option, but it may become useful under \n"
 		       "some circumstances"));
  
   // restore data if editing
@@ -596,12 +596,12 @@ GatewayWidget::GatewayWidget( QWidget *parent, bool isnewaccount, const char *na
   KQuickHelp::add(defaultgateway,
 		  i18n("This makes the PPP peer computer (the computer\n"
 		       "you are connected to with your modem) to act as\n"
-		       "gateway. Your computer will send all packets not\n"
+		       "a gateway. Your computer will send all packets not\n"
 		       "going to a computer inside your local net to this\n"
 		       "computer, which will route this packets.\n"
 		       "\n"
-		       "This is default for most ISP, so better leave this\n"
-		       "option on"));
+		       "This is the default for most ISPs, so you should\n"
+		       "probably leave this option on"));
 		  
 
   staticgateway = new QRadioButton(this);

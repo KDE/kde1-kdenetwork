@@ -67,7 +67,7 @@ GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
   KQuickHelp::add(pppdtimeout, 
 		  i18n("<i>kppp</i> will wait this number of seconds\n"
 		       "to see if a PPP connection is established.\n"
-		       "If after this time no connection is made,\n"
+		       "If no connection is made in this time frame,\n"
 		       "<i>kppp</i> will give up and kill pppd.")));
 
   labeltmp = newLabel(i18n("Seconds"), peer());
@@ -87,7 +87,7 @@ GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
   KQuickHelp::add(chkbox6, 
 		  i18n("After a connection is established, the\n"
 		       "window is minimized and a small icon\n"
-		       "in the panel represents this window.\n"
+		       "in the <i>kpanel</i> represents this window.\n"
 		       "\n"
 		       "Clicking on this icon will restore the\n"
 		       "window to it's original location and\n"
@@ -105,7 +105,7 @@ GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
   l3->addWidget(chkbox2);
   KQuickHelp::add(chkbox2, 
 		  i18n("When a connection is established and\n"
-		       "it gets somehow disconnected, <i>kppp</i>\n"
+		       "it somehow gets disconnected, <i>kppp</i>\n"
 		       "will try to reconnect to the same account.\n"
 		       "\n"
 		       "See <link #redial>here</link> for more on this topic."));
@@ -127,9 +127,9 @@ GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
 	  this, SLOT(xserver_toggled(bool)));
   l3->addWidget(chkbox4);
   KQuickHelp::add(chkbox4, 
-		  i18n("Checking this options will close any\n"
+		  i18n("Checking this option will close any\n"
 		       "open connection when the X-server is\n"
-		       "shutdown. You should enable this option\n"
+		       "shut down. You should enable this option\n"
 		       "unless you know what you are doing.\n"
 		       "\n"
 		       "See <link #disxserver>here</link> for more on this."));
@@ -300,8 +300,8 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
 
   KQuickHelp::add(label2,
   KQuickHelp::add(flowcontrol, 
-		  i18n("Specifies how the serial port and your modem\n"
-		       "talk with. You should not change this unless\n"
+		  i18n("Specifies how the serial port and modem\n"
+		       "communicate. You should not change this unless\n"
 		       "you know what you are doing.\n"
 		       "\n"
 		       "<b>Default</b>: CRTSCTS")));
@@ -400,7 +400,7 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   KQuickHelp::add(label4,
   KQuickHelp::add(modemlockdir, 
 		  i18n("To prevent other programs from accessing the\n"
-		       "modem while a connection is established, a \n"
+		       "modem while a connection is established, a\n"
 		       "file is created to indicate that the modem\n"
 		       "is in use. Here you can select the directory\n"
 		       "where this file is created.\n"
@@ -519,12 +519,12 @@ ModemWidget2::ModemWidget2( QWidget *parent, const char *name)
   KQuickHelp::add(label4,
   KQuickHelp::add(busywait, 
 		  i18n("Specifies the number of seconds to wait before\n"
-		       "redial if all dialed numbers were busy. This is\n"
-		       "necessary because some modems are stuck if the\n"
-		       "same number is too often busy.\n"
+		       "redial if all dialed numbers are busy. This is\n"
+		       "necessary because some modems get stuck if the\n"
+		       "same number is busy too often.\n"
 		       "\n"
 		       "The default is 0 seconds, you should not change\n"
-		       "this unless you need.")));
+		       "this unless you need to.")));
 
   // the checkboxes
   l1->addSpacing(10);
@@ -564,9 +564,9 @@ ModemWidget2::ModemWidget2( QWidget *parent, const char *name)
   l12->addStretch(1);
   l1->addStretch(1);
   KQuickHelp::add(chkbox1, 
-		  i18n("This controls how kppp detects that the modem\n"
-		       "is not responding. Unless you don't have any\n"
-		       "problems with this, do not modify this.\n"
+		  i18n("This controls how <i>kppp</i> detects that the modem\n"
+		       "is not responding. Unless you are having\n"
+		       "problems with this, do not modify this setting.\n"
 		       "\n"
 		       "<b>Default</b>: on"));
 
@@ -588,13 +588,14 @@ ModemWidget2::ModemWidget2( QWidget *parent, const char *name)
 		       "find out vendor and revision of your modem.\n"
 		       "\n"
 		       "Press this button to query your modem for\n"
-		       "this information"));
+		       "this information.  It can be useful to help\n"
+		       "you setup the modem"));
 
   terminal_button = new QPushButton(i18n("Terminal"), this);
   KQuickHelp::add(terminal_button, 
-		  i18n("Opens the built-in terminal program, if\n"
-		       "you want to play around with the AT\n"
-		       "command set"));
+		  i18n("Opens the built-in terminal program. You\n"
+		       "can use this if you want to play around\n"
+		       "with your modem's AT command set"));
 
   modemcmds->setMinimumWidth(modemcmds->sizeHint().width());
   modemcmds->setFixedHeight(modemcmds->sizeHint().height());

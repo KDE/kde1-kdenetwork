@@ -1,3 +1,8 @@
+1998-10-05  Mario Weilguni <mweilguni@kde.org>
+
+	* better QuickHelp text, proof-read by a native english
+	speaker. Thanks a lot to Martin A. Brown for doing this!
+
 1998-10-04  Harri Porten  <porten@kde.org>
 
 	* miniterm.cpp: fixed toolbar
@@ -15,6 +20,8 @@
 1998-10-02  Mario Weilguni <mweilguni@kde.org>
 
 	* fixed that stupid segfault combined with the throughput graph
+	* "make" did not set the suid bit anymore. Why? However, I fixed
+	that
 
 1998-09-29  Mario Weilguni <mweilguni@kde.org>
 

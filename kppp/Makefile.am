@@ -143,6 +143,7 @@ messages:
 # if you have more of them, create a subdirectory with an extra Makefile 
 install-data-local:	
 #	@(cd Rules && $(MAKE) install)
+	(chown root $(bindir)/kppp && chmod 4755 $(bindir)/kppp) || echo "Was not able to make kppp setuid root"
 	@echo ""
 	@echo "Don't forget to send me a phone tarif rules file for your"
 	@echo "telecom company/country/region. Thanks."
@@ -157,8 +158,7 @@ install-data-local:
 	@echo ""
 
 # kppp wants to be installed suid root
-install-exec-hook:
-	(chown root $(bindir)/kppp && chmod 4755 $(bindir)/kppp) || echo "Was not able to make kppp setuid root"
+#install-exec-hook:
 
 # remove ALL you have installed in install-data-local or install-exec-local
 #uninstall-local:

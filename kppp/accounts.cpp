@@ -83,7 +83,8 @@ AccountWidget::AccountWidget( QWidget *parent, const char *name )
   connect(new_b, SIGNAL(clicked()), SLOT(newaccount()));
   new_b->setMinimumSize(new_b->sizeHint());
   l111->addWidget(new_b);
-  KQuickHelp::add(new_b, i18n("Create a new internet connection"));
+  KQuickHelp::add(new_b, i18n("Create a new dialup connection\n"
+  			      "to the internet"));
 
   copy_b = new QPushButton(i18n("Copy"), this);
   connect(copy_b, SIGNAL(clicked()), SLOT(copyaccount()));
@@ -92,7 +93,7 @@ AccountWidget::AccountWidget( QWidget *parent, const char *name )
   KQuickHelp::add(copy_b, 
 		  i18n("Makes a copy of the selected account. All\n"
 		       "settings of the selected account are copied\n"
-		       "to a new account, that you modify to fit your\n"
+		       "to a new account, that you can modify to fit your\n"
 		       "needs"));
 
   delete_b = new QPushButton(i18n("Delete"), this);
@@ -139,9 +140,9 @@ AccountWidget::AccountWidget( QWidget *parent, const char *name )
   l121->addWidget(voledit);
   KQuickHelp::add(vollabel,
   KQuickHelp::add(voledit, 
-		  i18n("This shows the number of transferred bytes\n"
-		       "for the selected account (not for all your\n"
-		       "accounts. You can select what to display on\n"
+		  i18n("This shows the number of bytes transferred\n"
+		       "for the selected account (not for all of your\n"
+		       "accounts. You can select what to display in\n"
 		       "the accounting dialog.\n"
 		       "\n"
 		       "<link #volaccounting>More on volume accounting</link>")));
@@ -295,9 +296,9 @@ void AccountWidget::copyaccount() {
 void AccountWidget::deleteaccount() {
 
   QString s;
-  s.sprintf(i18n("Are you sure you want to delete\n"
+  s.sprintf(i18n("Are you sure you want to delete\n" 
 			       "the account \"%s\"?"),
-	    accountlist_l->text(accountlist_l->currentItem()));	    
+	    accountlist_l->text(accountlist_l->currentItem()));
 
   if(KMsgBox::yesNo(this, 
 		    i18n("Confirm"), 
@@ -375,7 +376,7 @@ int AccountWidget::doTab(){
 	 }
       } else {
 	      QMessageBox::warning(this, i18n("Error"), 
-				   i18n("Login script has unbalanced Loop Start/End") );
+				   i18n("Login script has unbalanced loop Start/End") );
 	      ok = false;
       }
     }
