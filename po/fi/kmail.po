@@ -51,6 +51,7 @@ msgstr ""
 "voi poistaa."
 
 #: kmmainwin.cpp:333
+#, c-format
 msgid ""
 "Are you sure you want to remove the folder\n"
 "\"%s\", discarding it's contents ?"
@@ -401,16 +402,13 @@ msgid "Indentation:"
 msgstr "Keskitys:"
 
 #: kmmessage.cpp:1102 kmsettings.cpp:302
+#, fuzzy
 msgid "On %D, you wrote:"
-msgstr ""
-"\n"
-"Viestissä %D kirjoitit:\n"
+msgstr "Viestissä %D, %F kirjoitti:"
 
 #: kmmessage.cpp:1103 kmsettings.cpp:306
 msgid "On %D, %F wrote:"
-msgstr ""
-"\n"
-"Viestissä %D, %F kirjoitti:\n"
+msgstr "Viestissä %D, %F kirjoitti:"
 
 #: kmmessage.cpp:1104 kmsettings.cpp:310
 msgid "Forwarded Message"
@@ -864,6 +862,7 @@ msgid "Unknown error"
 msgstr "Tuntematon virhe"
 
 #: kmacctpop.cpp:267
+#, c-format
 msgid ""
 "Account: %s\n"
 "In %s:\n"
@@ -896,6 +895,7 @@ msgstr ""
 "`%s'"
 
 #: kmfoldermgr.cpp:134
+#, c-format
 msgid ""
 "Cannot create folder `%s'\n"
 "in %s"
