@@ -57,7 +57,9 @@ void aListBox::inSort ( const QListBoxItem *lbi, bool top = FALSE)
     }
   }
   if(min < (int) count())
-    while((strcmp(text(min), lbi->text()) < 0) && (min < max))
+    while((strncasecmp(text(min), lbi->text(), 
+		       QMIN(strlen(text(min)), strlen(lbi->text()))) < 0) && 
+	   (min < max))
       min++;
   else
     min = -1;

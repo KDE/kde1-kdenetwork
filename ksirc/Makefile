@@ -3,8 +3,8 @@
 #######    linux-gcc-shared on Sun Oct 12 09:16:39 MDT 1997
 
 export INCDIR = /usr/local/lib/qt/include
-#export CFLAGS = -O3 -m486 -Wall -I/usr/X11R6/include -I$(HOME)/include -I/opt/kde/include
-export CFLAGS = -ggdb -g -Wall -I/usr/X11R6/include -I$(HOME)/include -I/opt/kde/include
+export CFLAGS = -O3 -m486 -Wall -I/usr/X11R6/include -I$(HOME)/include -I/opt/kde/include
+#export CFLAGS = -ggdb -g -Wall -I/usr/X11R6/include -I$(HOME)/include -I/opt/kde/include
 export LIBCFLAGS = -fPIC
 export YACCCFLAGS = -Wno-unused -Wno-parentheses
 export LFLAGS = -L/usr/local/lib/qt/lib -lqt -L/opt/kde/lib -lkdecore -lkdeui -L/usr/X11/lib -lXext
@@ -108,6 +108,18 @@ clean:
 	rm -f $(TARGET) ksirc-static
 	$(MAKE) -C KSProgress clean
 	$(MAKE) -C KSTicker clean
+
+dist: all static
+	strip ksirc
+	strip ksirc-static
+	cp ksirc ../ksirc-bin/ksirc-dynamic
+	cp ksirc-static ../ksirc-bin/ksirc
+	cp README ../ksirc-bin/
+	cp dsirc ../ksirc-bin/
+	cp filters.pl ../ksirc-bin/
+	tar -C .. -zcvvf ../ksirc-`arch`-`date +%y%m%d`.tar.gz ksirc-bin
+	tar -C .. --use-compress-program=bzip2 -cvvf ../ksirc-`arch`-`date +%y%m%d`.tar.bz2 ksirc-bin
+
 
 ####### BUILD RULES FOR SUB DIRS
 
