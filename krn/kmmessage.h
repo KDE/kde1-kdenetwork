@@ -74,14 +74,18 @@ public:
 
   /** Initialize header fields. Should be called on new messages
     if they are not set manually. E.g. before composing. Calling
-    if setAutomaticFields() is still required. */
+    of setAutomaticFields(), see below, is still required. */
   virtual void initHeader(void);
 
+  /** Removes empty fields from the header, e.g. an empty Cc: or Bcc: 
+    field. */
+  virtual void cleanupHeader(void);
+
   /** Set fields that are either automatically set (Message-id)
-   or that do not change from one message to another (MIME-Version).
-   Call this method before sending *after* all changes to the message
-   are done because this method does things different if there are
-   attachments / multiple body parts. */
+    or that do not change from one message to another (MIME-Version).
+    Call this method before sending *after* all changes to the message
+    are done because this method does things different if there are
+    attachments / multiple body parts. */
   virtual void setAutomaticFields(void);
     
   /** Get or set the 'Date' header field */
@@ -90,6 +94,9 @@ public:
   virtual time_t date(void) const;
   virtual void setDate(const QString str);
   virtual void setDate(time_t aUnixTime);
+
+  /** Set the 'Date' header field to the current date. */
+  virtual void setDateToday(void);
 
   /** Get or set the 'To' header field */
   virtual const QString to(void) const;
@@ -116,6 +123,10 @@ public:
   virtual const QString subject(void) const;
   virtual void setSubject(const QString aStr);
 
+  /** Get or set the 'X-Mark' header field */
+  virtual const QString xmark(void) const;
+  virtual void setXMark(const QString aStr);
+
   /** Get the groups it should be posted to (Added for krn)*/
   virtual const QString groups(void) const;
 
@@ -136,9 +147,6 @@ public:
 
   /** Returns the message ID, useful for followups (Added for krn)*/
   virtual const QString id(void) const;
-
-  /* End of functions added by KRN */
-
 
   /** Get or set header field with given name */
   virtual const QString headerField(const QString name) const;

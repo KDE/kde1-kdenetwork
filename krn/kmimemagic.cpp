@@ -22,6 +22,10 @@
 //#include "config-kfm.h"
 #include "kmimemagic.h"
 
+#ifdef KRN
+#define conf conf_
+#endif
+
 /*
  * data structures and related constants
  */
@@ -390,10 +394,6 @@ typedef struct {
 } config_rec;
 
 static int accuracy;
-
-#ifdef KRN
-#define conf conf_
-#endif
 
 config_rec *conf;
 

@@ -101,6 +101,7 @@ public slots:
 protected slots:
   /** Some attachment operations. */
   void slotAtmOpen();
+  void slotAtmView();
   void slotAtmPrint();
   void slotAtmSave();
   void slotAtmProperties();
@@ -122,10 +123,12 @@ protected:
     are set afterwards if they were not before. */
   virtual void writePartIcon(KMMessagePart* msgPart, int partNumber);
 
-  /** Convert given string to HTML. */
+  /** Convert given string to HTML. Converts blanks and tabs at
+    beginning of line to non-breakable spaces if preserveLeadingBlanks
+    is TRUE. */
   virtual const QString strToHtml(const QString str, 
-				  bool decodeQuotedPrintable=TRUE) const;
-
+				  bool decodeQuotedPrintable=TRUE,
+				  bool preserveLeadingBlanks=FALSE) const;
   /** HTML initialization. */
   virtual void initHtmlWidget(void);
 

@@ -167,10 +167,11 @@ const QString KMMsgBase::asIndexString(void) const
   int i, len;
   QString str(256);
 
-  str.sprintf("%c %-.9lu %-.9lu %-.9lu %-100.100s %-100.100s\n",
+  str.sprintf("%c %-.9lu %-.9lu %-.9lu %-3.3s %-100.100s %-100.100s\n",
 	      (char)status(), folderOffset(), msgSize(), (unsigned long)date(),
-	      (const char*)decodeQuotedPrintableString(from()),
-	      (const char*)decodeQuotedPrintableString(subject()));
+	      (const char*)xmark(),
+	      (const char*)decodeQuotedPrintableString(subject()),
+	      (const char*)decodeQuotedPrintableString(from()));
   len = str.length();
   for (i=0; i<len; i++)
     if (str[i] < ' ') str[i] = ' ';
@@ -197,6 +198,8 @@ int KMMsgBase::compareBySubject(const KMMsgBase* other) const
   otherSubjStr = skipKeyword(other->subject(), ':', &otherHasKeywd);
 
   rc = stricmp(subjStr, otherSubjStr);
+  //debug("\"%s\" =?= \"%s\": %d", subjStr, otherSubjStr, rc);
+
   if (rc) return rc;
 
   // If both are equal return the one with a keyword (Re: / Fwd: /...)
@@ -274,7 +277,7 @@ const char* KMMsgBase::skipKeyword(const QString aStr, char sepChar,
 const QString KMMsgBase::decodeQuotedPrintableString(const QString aStr)
 {
   static QString result;
-  int start, beg, mid, end=0;
+  int start, beg, mid, end;
 
   start = 0;
   result = "";

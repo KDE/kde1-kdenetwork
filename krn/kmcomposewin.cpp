@@ -86,11 +86,12 @@ KMComposeWin::KMComposeWin(KMMessage *aMsg) : KMComposeWinInherited(),
   mLblFrom(&mMainWidget), mLblReplyTo(&mMainWidget), mLblTo(&mMainWidget),
   mLblCc(&mMainWidget), mLblBcc(&mMainWidget), mLblSubject(&mMainWidget),
   mBtnTo("...",&mMainWidget), mBtnCc("...",&mMainWidget), 
-  mBtnBcc("...",&mMainWidget)
-    /* start added for KRN */
-    ,mEdtNewsgroups(&mMainWidget),mEdtFollowupTo(&mMainWidget),
-    mLblNewsgroups(&mMainWidget),mLblFollowupTo(&mMainWidget)
-    /* end added for KRN */
+  mBtnBcc("...",&mMainWidget),  mBtnFrom("...",&mMainWidget),
+  mBtnReplyTo("...",&mMainWidget)
+  /* start added for KRN */
+  ,mEdtNewsgroups(&mMainWidget),mEdtFollowupTo(&mMainWidget),
+  mLblNewsgroups(&mMainWidget),mLblFollowupTo(&mMainWidget)
+  /* end added for KRN */
 {
 
   mGrid = NULL;
@@ -98,12 +99,14 @@ KMComposeWin::KMComposeWin(KMMessage *aMsg) : KMComposeWinInherited(),
   mAtmList.setAutoDelete(TRUE);
   mAutoDeleteMsg = FALSE;
 
-#ifndef KRN
   setCaption(nls->translate("KMail Composer"));
-#else
-  setCaption(nls->translate("KRN Composer"));
-#endif
   setMinimumSize(200,200);
+
+  mBtnTo.setFocusPolicy(QWidget::NoFocus);
+  mBtnCc.setFocusPolicy(QWidget::NoFocus);
+  mBtnBcc.setFocusPolicy(QWidget::NoFocus);
+  mBtnFrom.setFocusPolicy(QWidget::NoFocus);
+  mBtnReplyTo.setFocusPolicy(QWidget::NoFocus);
 
   mAtmListBox = new KTabListBox(&mMainWidget, NULL, 5);
   mAtmListBox->setColumn(0, nls->translate("F"),16, KTabListBox::PixmapColumn);
@@ -128,6 +131,8 @@ KMComposeWin::KMComposeWin(KMMessage *aMsg) : KMComposeWinInherited(),
   connect(&mBtnTo,SIGNAL(clicked()),SLOT(slotAddrBookTo()));
   connect(&mBtnCc,SIGNAL(clicked()),SLOT(slotAddrBookCc()));
   connect(&mBtnBcc,SIGNAL(clicked()),SLOT(slotAddrBookBcc()));
+  connect(&mBtnReplyTo,SIGNAL(clicked()),SLOT(slotAddrBookReplyTo()));
+  connect(&mBtnFrom,SIGNAL(clicked()),SLOT(slotAddrBookFrom()));
 
   mDropZone = new KDNDDropZone(mEditor, DndURL);
   connect(mDropZone, SIGNAL(dropAction(KDNDDropZone *)), 
@@ -138,15 +143,12 @@ KMComposeWin::KMComposeWin(KMMessage *aMsg) : KMComposeWinInherited(),
   rethinkFields();
 
   mMsg = NULL;
-  if (aMsg) { 
-    setMsg(aMsg);
-    if(mEditor->text().isEmpty())
-      mEditor->toggleModified(FALSE);
-  }
+  if (aMsg) setMsg(aMsg);
 
-  if ( mAutoSign ) 
-    slotAppendSignature();
-
+#ifdef HAS_KSPELL
+  mKSpellConfig = new KSpellConfig;
+  mKSpell = NULL;
+#endif
 }
 
 
@@ -154,6 +156,11 @@ KMComposeWin::KMComposeWin(KMMessage *aMsg) : KMComposeWinInherited(),
 KMComposeWin::~KMComposeWin()
 {
   if (mAutoDeleteMsg && mMsg) delete mMsg;
+
+#ifdef HAS_KSPELL
+  if (mKSpellConfig) delete KSpellConfig;
+  if (mKSpell) delete mKSpell;
+#endif
 }
 
 
@@ -271,9 +278,9 @@ void KMComposeWin::rethinkFields(void)
 
   row = 0;
   rethinkHeaderLine(showHeaders,HDR_FROM, row, nls->translate("&From:"),
-		    &mLblFrom, &mEdtFrom);
+		    &mLblFrom, &mEdtFrom, &mBtnFrom);
   rethinkHeaderLine(showHeaders,HDR_REPLY_TO,row,nls->translate("&Reply to:"),
-		    &mLblReplyTo, &mEdtReplyTo);
+		    &mLblReplyTo, &mEdtReplyTo, &mBtnReplyTo);
   rethinkHeaderLine(showHeaders,HDR_TO, row, nls->translate("&To:"),
 		    &mLblTo, &mEdtTo, &mBtnTo);
   rethinkHeaderLine(showHeaders,HDR_CC, row, nls->translate("&Cc:"),
@@ -349,15 +356,22 @@ void KMComposeWin::setupMenuBar(void)
 
   //---------- Menu: File
   menu = new QPopupMenu();
-  menu->insertItem(nls->translate("Send"),this, SLOT(slotSend()));
-  menu->insertItem(nls->translate("Send &later"),this, SLOT(slotSendLater()));
+  menu->insertItem(nls->translate("&Send"),this, SLOT(slotSend()),
+		   CTRL+Key_Enter);
+  if (msgSender->sendImmediate())
+    menu->insertItem(nls->translate("S&end later"),this,SLOT(slotSendLater()));
+  else
+    menu->insertItem(nls->translate("S&end now"),this,SLOT(slotSendNow()));
   menu->insertSeparator();
-  menu->insertItem(nls->translate("Address &Book..."),this,
-		   SLOT(slotToDo()), ALT+Key_B);
+  menu->insertItem(nls->translate("&Insert File..."), this,
+		    SLOT(slotInsertFile()));
+  menu->insertSeparator();
+  menu->insertItem(nls->translate("&Addressbook..."),this,
+		   SLOT(slotToDo()));
   menu->insertItem(nls->translate("&Print..."),this, 
 		   SLOT(slotPrint()), keys->print());
   menu->insertSeparator();
-  menu->insertItem(nls->translate("New &Composer"),this,
+  menu->insertItem(nls->translate("&New Composer..."),this,
 		   SLOT(slotNewComposer()), keys->openNew());
   menu->insertSeparator();
   menu->insertItem(nls->translate("&Close"),this,
@@ -383,21 +397,20 @@ void KMComposeWin::setupMenuBar(void)
   menu->insertSeparator();
   menu->insertItem(nls->translate("Find..."), mEditor,
 		   SLOT(search()), keys->find());
-
-  menu = new QPopupMenu();
-  menu->insertItem(nls->translate("Recip&ients..."),this,
-		    SLOT(slotToDo()));
-  menu->insertItem(nls->translate("Insert &File"), this,
-		    SLOT(slotInsertFile()));
-  menu->insertSeparator();
-
-  subMenu = new QPopupMenu();
-  subMenu->insertItem(nls->translate("High"));
-  subMenu->insertItem(nls->translate("Normal"));
-  subMenu->insertItem(nls->translate("Low"));
-  menu->insertItem(nls->translate("Priority"),subMenu);
-  mMenuBar->insertItem(nls->translate("&Message"),menu);
 #endif //BROKEN
+
+  //---------- Menu: Options
+  menu = new QPopupMenu();
+  menu->setCheckable(TRUE);
+
+  mMnuIdUrgent = menu->insertItem(nls->translate("&Urgent"), this,
+				  SLOT(slotToggleUrgent()));
+  mMnuIdConfDeliver=menu->insertItem(nls->translate("&Confirm delivery"), this,
+				     SLOT(slotToggleConfirmDelivery()));
+  mMnuIdConfRead = menu->insertItem(nls->translate("&Confirm read"), this,
+				    SLOT(slotToggleConfirmRead()));
+  mMenuBar->insertItem(nls->translate("&Options"),menu);
+  mMnuOptions = menu;
 
   //---------- Menu: View
   menu = new QPopupMenu();
@@ -482,11 +495,17 @@ void KMComposeWin::setupToolBar(void)
   mToolBar->insertSeparator();
 #endif //BROKEN
   mToolBar->insertButton(loader->loadIcon("attach.xpm"),8,
-			SIGNAL(clicked()),this,
-			SLOT(slotAttachFile()),TRUE,"Attach file");
+			 SIGNAL(clicked()),this,
+			 SLOT(slotAttachFile()),TRUE,"Attach file");
   mToolBar->insertButton(loader->loadIcon("openbook.xpm"),7,
+			 SIGNAL(clicked()),this,
+			 SLOT(slotAddrBook()),TRUE,
+			 nls->translate("Open addressbook..."));
+#ifdef HAS_KSPELL
+  mToolBar->insertButton(loader->loadIcon("spellcheck.xpm"),7,
 			SIGNAL(clicked()),this,
-			SLOT(slotToDo()),TRUE,"Open addressbook");
+			SLOT(slotSpellcheck()),TRUE,"Spellcheck message");
+#endif
   mToolBar->insertSeparator();
   mBtnIdSign = 9;
   mToolBar->insertButton(loader->loadIcon("feather_white.xpm"), mBtnIdSign,
@@ -583,7 +602,7 @@ void KMComposeWin::setupEditor(void)
 
 
 //-----------------------------------------------------------------------------
-void KMComposeWin::setMsg(KMMessage* newMsg)
+void KMComposeWin::setMsg(KMMessage* newMsg, bool mayAutoSign)
 {
   KMMessagePart bodyPart, *msgPart;
   int i, num;
@@ -615,6 +634,7 @@ void KMComposeWin::setMsg(KMMessage* newMsg)
     }
   }
   else mEditor->setText(convertToLocal(mMsg->body(),mMsg->charset()));
+  if (mAutoSign && mayAutoSign) slotAppendSignature();
   mEditor->toggleModified(FALSE);
 }
 
@@ -623,30 +643,56 @@ void KMComposeWin::setMsg(KMMessage* newMsg)
 void KMComposeWin::applyChanges(void)
 {
   QString str, atmntStr;
-  QString temp;
+  QString temp, replyAddr;
   KMMessagePart bodyPart, *msgPart;
 
   assert(mMsg!=NULL);
 
-  if (!to().isEmpty()) mMsg->setTo(to());
-  if (!from().isEmpty()) mMsg->setFrom(from());
-  if (!cc().isEmpty()) mMsg->setCc(cc());
-  if (!subject().isEmpty()) mMsg->setSubject(subject());
-  if (!replyTo().isEmpty()) mMsg->setReplyTo(replyTo());
-  if (!bcc().isEmpty()) mMsg->setBcc(bcc());
-  if (!followupTo().isEmpty()) mMsg->setFollowup(followupTo());
-  if (!newsgroups().isEmpty()) mMsg->setGroups(newsgroups());
+  mMsg->setTo(to());
+  mMsg->setFrom(from());
+  mMsg->setCc(cc());
+  mMsg->setSubject(subject());
+  mMsg->setReplyTo(replyTo());
+  mMsg->setBcc(bcc());
+  mMsg->setFollowup(followupTo());
+  mMsg->setGroups(newsgroups());
+
+  if (!replyTo().isEmpty()) replyAddr = replyTo();
+  else replyAddr = from();
+
+  if (mMnuOptions->isItemChecked(mMnuIdConfDeliver))
+    mMsg->setHeaderField("Return-Receipt-To", replyAddr);
+
+  if (mMnuOptions->isItemChecked(mMnuIdConfRead))
+    mMsg->setHeaderField("X-Chameleon-Return-To", replyAddr);
+
+  if (mMnuOptions->isItemChecked(mMnuIdUrgent))
+  {
+    mMsg->setHeaderField("X-PRIORITY", "2 (High)");
+    mMsg->setHeaderField("Priority", "urgent");
+  }
 
   if(mAtmList.count() <= 0)
   {
     // If there are no attachments in the list waiting it is a simple 
     // text message.
-    QString charset=mMsg->charset();
-    const QString str=convertToSend(pgpProcessedMsg(),charset);
-    mMsg->setCharset(charset);
-    if (is8Bit(str)) mMsg->setCteStr(m8BitEncoding); 
-    else mMsg->setCteStr("7bit");
-    mMsg->setBodyEncoded(str);
+    if (msgSender->sendQuotedPrintable())
+    {
+      mMsg->setTypeStr("text");
+      mMsg->setSubtypeStr("plain");
+      mMsg->setCteStr("quoted-printable");
+      QString charset=mMsg->charset();
+      const QString str=convertToSend(pgpProcessedMsg(),charset);
+      mMsg->setCharset(charset);
+      if (is8Bit(str)) mMsg->setCteStr(m8BitEncoding); 
+      else mMsg->setCteStr("7bit");
+      mMsg->setBodyEncoded(str);
+
+    }
+    else
+    {
+      mMsg->setBody(pgpProcessedMsg());
+    }
   }
   else 
   { 
@@ -657,13 +703,17 @@ void KMComposeWin::applyChanges(void)
     mMsg->setBody("This message is in MIME format.\n\n");
 
     // create bodyPart for editor text.
+    if (msgSender->sendQuotedPrintable())
+         bodyPart.setCteStr("quoted-printable");
+    else bodyPart.setCteStr("8bit"); 
     bodyPart.setTypeStr("text");
     bodyPart.setSubtypeStr("plain");
+
     QString charset=bodyPart.charset();
     const QString str=convertToSend(pgpProcessedMsg(),charset);
     bodyPart.setCharset(charset);
     if (is8Bit(str)) bodyPart.setCteStr(m8BitEncoding); 
-    bodyPart.setEncodedBody(str);
+    bodyPart.setBodyEncoded(str);
     mMsg->addBodyPart(&bodyPart);
 
     // Since there is at least one more attachment create another bodypart
@@ -673,6 +723,9 @@ void KMComposeWin::applyChanges(void)
 
   mMsg->setAutomaticFields();
   if (!mAutoDeleteMsg) mEditor->toggleModified(FALSE);
+
+  // remove fields that contain no data (e.g. an empty Cc: or Bcc:)
+  mMsg->cleanupHeader();
 }
 
 
@@ -774,7 +827,7 @@ void KMComposeWin::addAttach(const QString aUrl)
   msgPart = new KMMessagePart;
   msgPart->setName(name);
   msgPart->setCteStr(mDefEncoding);
-  msgPart->setEncodedBody(str);
+  msgPart->setBodyEncoded(str);
   msgPart->magicSetType();
 
   // show properties dialog
@@ -875,6 +928,52 @@ void KMComposeWin::addrBookSelInto(KMLineEdit* aLineEdit)
     else txt += ' ';
   }
   aLineEdit->setText(txt + dlg.address());
+}
+
+
+//-----------------------------------------------------------------------------
+void KMComposeWin::slotToggleConfirmDelivery()
+{
+  mMnuOptions->setItemChecked(mMnuIdConfDeliver,
+			      !mMnuOptions->isItemChecked(mMnuIdConfDeliver));
+}
+
+
+//-----------------------------------------------------------------------------
+void KMComposeWin::slotToggleConfirmRead()
+{
+  mMnuOptions->setItemChecked(mMnuIdConfRead,
+			      !mMnuOptions->isItemChecked(mMnuIdConfRead));
+}
+
+
+//-----------------------------------------------------------------------------
+void KMComposeWin::slotToggleUrgent()
+{
+  mMnuOptions->setItemChecked(mMnuIdUrgent,
+			      !mMnuOptions->isItemChecked(mMnuIdUrgent));
+}
+
+
+//-----------------------------------------------------------------------------
+void KMComposeWin::slotAddrBook()
+{
+  KMAddrBookEditDlg dlg(addrBook);
+  dlg.exec();
+}
+
+
+//-----------------------------------------------------------------------------
+void KMComposeWin::slotAddrBookFrom()
+{
+  addrBookSelInto(&mEdtFrom);
+}
+
+
+//-----------------------------------------------------------------------------
+void KMComposeWin::slotAddrBookReplyTo()
+{
+  addrBookSelInto(&mEdtReplyTo);
 }
 
 
@@ -993,6 +1092,27 @@ void KMComposeWin::slotAttachProperties()
 //-----------------------------------------------------------------------------
 void KMComposeWin::slotAttachView()
 {
+  QString str, pname;
+  KMMessagePart* msgPart;
+  QMultiLineEdit* edt = new QMultiLineEdit;
+
+  int idx = mAtmListBox->currentItem();
+  if (idx < 0) return;
+
+  msgPart = mAtmList.at(idx);
+  pname = msgPart->name();
+  if (pname.isEmpty()) pname=msgPart->contentDescription();
+  if (pname.isEmpty()) pname="unnamed";
+
+  kbp->busy();
+  str = msgPart->bodyDecoded();
+
+  edt->setCaption(nls->translate("View Attachment: ") + pname);
+  edt->insertLine(str);
+  edt->setReadOnly(TRUE);
+  edt->show();
+
+  kbp->idle();
 }
 
 
@@ -1000,13 +1120,17 @@ void KMComposeWin::slotAttachView()
 void KMComposeWin::slotAttachSave()
 {
   KMMessagePart* msgPart;
-  QString fileName;
+  QString fileName, pname;
 
   int idx = mAtmListBox->currentItem();
   if (idx < 0) return;
 
   msgPart = mAtmList.at(idx);
-  fileName = QFileDialog::getSaveFileName(".", "*", NULL, msgPart->name());
+  pname = msgPart->name();
+  if (pname.isEmpty()) pname="unnamed";
+
+  fileName = QFileDialog::getSaveFileName(".", "*", NULL, pname);
+  if (fileName.isEmpty()) return;
   kStringToFile(msgPart->bodyDecoded(), fileName, TRUE);
 }
 
@@ -1095,7 +1219,9 @@ void KMComposeWin::slotToDo()
 //-----------------------------------------------------------------------------
 void KMComposeWin::slotUpdWinTitle(const char *text)
 {
-  setCaption(text);
+  if (!text || *text=='\0')
+       setCaption("("+QString(nls->translate("unnamed"))+")");
+  else setCaption(text);
 }
 
 
@@ -1176,6 +1302,20 @@ void KMComposeWin::slotSendLater()
 }
 
 
+//----------------------------------------------------------------------------
+void KMComposeWin::slotSendNow()
+{
+  kbp->busy();
+  applyChanges();
+  if(msgSender->send(mMsg,TRUE))
+  {
+    mAutoDeleteMsg = FALSE;
+    close();
+  }
+  kbp->idle();
+}
+
+
 //-----------------------------------------------------------------------------
 void KMComposeWin::slotAppendSignature()
 {
@@ -1197,6 +1337,7 @@ void KMComposeWin::slotAppendSignature()
 
   if (!sigText.isEmpty())
   {
+    mEditor->insertLine("--", -1);
     mEditor->insertLine(sigText, -1);
     mEditor->toggleModified(mod);
   }
@@ -1207,6 +1348,117 @@ void KMComposeWin::slotAppendSignature()
 void KMComposeWin::slotHelp()
 {
   app->invokeHTMLHelp("","");
+}
+
+//-----------------------------------------------------------------------------
+void KMComposeWin::slotSpellcheck()
+{
+#ifdef HAS_KSPELL
+  if (mKSpell) return;
+
+  mKSpell = new KSpell(this, nls->translate("KMail: Spellcheck"), this,
+		       SLOT(slotSpellcheck2(KSpell*)));
+#endif //HAS_KSPELL
+}
+
+
+//-----------------------------------------------------------------------------
+void KMComposeWin::slotSpellcheck2(KSpell*)
+{
+#ifdef HAS_KSPELL
+  if (mKSpell->isOk())
+  {
+    setReadOnly (TRUE);
+    
+    connect (mKSpell, SIGNAL (mispelling (char *, QStrList *, long)),
+	     this, SLOT (mispelling (char *, QStrList *, long)));
+    connect (mKSpell, SIGNAL (corrected (char *, char *, long)),
+	     this, SLOT (corrected (char *, char *, long)));
+    connect (mKSpell, SIGNAL (done(char *)), 
+	     this, SLOT (spellResult (char *)));
+    mKSpell->check (text().data());
+  }
+  else
+  {
+    warning(nls->translate("Error starting KSpell. Please make sure you have ISpell properly configured."));
+  }
+#endif //HAS_KSPELL
+}
+
+
+//-----------------------------------------------------------------------------
+void KMComposeWin::slotSpellResult(char* aNewText)
+{
+#ifdef HAS_KSPELL
+  mEditor->setText(aNewText);
+  mEditor->setReadOnly(FALSE);
+  delete mKSpell;
+  mKSpell = NULL; 
+#endif //HAS_KSPELL
+}
+
+
+//-----------------------------------------------------------------------------
+void KMComposeWin::slotSpellCorrected(char *originalword, 
+				      char *newword, long pos)
+{
+#ifdef HAS_KSPELL
+  //we'll reselect the original word in case the user has played with
+  //the selection in eframe or the word was auto-replaced
+
+  int line, cnt=0, l;
+
+  if(strcmp(newword,originalword)!=0)
+  {
+    for (line=0;line<numLines() && cnt<=pos;line++)
+      cnt+=lineLength(line)+1;
+    line--;
+
+    cnt=pos-cnt+ lineLength(line)+1;
+
+    //remove old word
+    setCursorPosition (line, cnt);
+    for(l = 0 ; l < (int)strlen(originalword); l++)
+      cursorRight(TRUE);
+    ///      setCursorPosition (line,
+    //       cnt+strlen(originalword),TRUE);
+    cut();
+
+    insertAt (newword, line, cnt);
+  }
+
+  deselect();
+#endif //HAS_KSPELL
+}
+
+
+//-----------------------------------------------------------------------------
+void KMComposeWin::slotSpellMispelling(char *word, QStrList *, long pos)
+{
+#ifdef HAS_KSPELL
+  int l, cnt=0;
+
+  for (l=0;l<numLines() && cnt<=pos;l++)
+    cnt+=strlen (textLine(l))+1;
+  l--;
+
+  cnt=pos-cnt+strlen (textLine (l))+1;
+
+  setCursorPosition (l, cnt);
+
+  //According to the Qt docs this could be done more quickly with
+  //setCursorPosition (l, cnt+strlen(word), TRUE);
+  //but that doesn't seem to work.
+  for(l = 0 ; l < (int)strlen(word); l++)
+    cursorRight(TRUE);
+  
+  if (cursorPoint().y()>height()/2)
+    mKSpell->moveDlg(10, height()/2 - mKSpell->heightDlg()-15);
+  else
+    mKSpell->moveDlg(10, height()/2 + 15);
+
+  //  setCursorPosition (line, cnt+strlen(word),TRUE);
+#endif //HAS_KSPELL
 }
 
 //-----------------------------------------------------------------------------
@@ -1265,6 +1517,11 @@ QString KMComposeWin::convertToSend(const QString str,QString& charset){
 
 //Class KMLineEdit ------------------------------------------------------------
 
+//=============================================================================
+//
+//   Class  KMLineEdit
+//
+//=============================================================================
 KMLineEdit::KMLineEdit(QWidget *parent, const char *name)
   :QLineEdit(parent,name)
 {

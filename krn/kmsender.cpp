@@ -1,6 +1,5 @@
 // kmsender.cpp
 
-#include "kmsender.h"
 
 #ifndef KRN
 #include "kmfoldermgr.h"
@@ -8,9 +7,16 @@
 #include "kmfolder.h"
 #endif
 
+#include "kmsender.h"
 #include "kmmessage.h"
 #include "kmidentity.h"
 #include "kmiostatusdlg.h"
+
+#include <kconfig.h>
+#include <kapp.h>
+#include <kprocess.h>
+#include <klocale.h>
+#include <qregexp.h>
 
 #ifdef KRN
 #include <kapp.h>
@@ -20,12 +26,6 @@ extern KLocale *nls;
 extern KMIdentity *identity;
 #endif
 
-#include <kconfig.h>
-#include <kapp.h>
-#include <kprocess.h>
-#include <klocale.h>
-#include <qregexp.h>
-
 #include <assert.h>
 #include <stdio.h>
 #include <sys/types.h>
@@ -34,7 +34,7 @@ extern KMIdentity *identity;
 #define SENDER_GROUP "sending mail"
 
 // uncomment the following line for SMTP debug output
-//#define SMTP_DEBUG_OUTPUT
+#define SMTP_DEBUG_OUTPUT
 
 //-----------------------------------------------------------------------------
 KMSender::KMSender()
@@ -66,6 +66,7 @@ void KMSender::readConfig(void)
   config->setGroup(SENDER_GROUP);
 
   mSendImmediate = (bool)config->readNumEntry("Immediate", TRUE);
+  mSendQuotedPrintable = (bool)config->readNumEntry("Quoted-Printable", FALSE);
   mMailer = config->readEntry("Mailer", "/usr/sbin/sendmail");
   mSmtpHost = config->readEntry("Smtp Host", "localhost");
   mSmtpPort = config->readNumEntry("Smtp Port", 25);
@@ -84,6 +85,7 @@ void KMSender::writeConfig(bool aWithSync)
   config->setGroup(SENDER_GROUP);
 
   config->writeEntry("Immediate", mSendImmediate);
+  config->writeEntry("Quoted-Printable", mSendQuotedPrintable);
   config->writeEntry("Mailer", mMailer);
   config->writeEntry("Smtp Host", mSmtpHost);
   config->writeEntry("Smtp Port", mSmtpPort);
@@ -116,6 +118,7 @@ bool KMSender::settingsOk(void) const
 //-----------------------------------------------------------------------------
 bool KMSender::send(KMMessage* aMsg, short sendNow)
 {
+
 #ifndef KRN
   int rc;
 
@@ -142,9 +145,10 @@ bool KMSender::send(KMMessage* aMsg, short sendNow)
   if (sendNow && !mSendInProgress) rc = sendQueued();
   else rc = TRUE;
   outboxFolder->close();
+
   return rc;
 #else
-  return FALSE;
+  return true;
 #endif
 }
 
@@ -178,7 +182,7 @@ bool KMSender::sendQueued(void)
   doSendMsg();
   return TRUE;
 #else
-  return FALSE;
+  return TRUE;
 #endif
 }
 
@@ -289,6 +293,13 @@ void KMSender::setMethod(Method aMethod)
 void KMSender::setSendImmediate(bool aSendImmediate)
 {
   mSendImmediate = aSendImmediate;
+}
+
+
+//-----------------------------------------------------------------------------
+void KMSender::setSendQuotedPrintable(bool aSendQuotedPrintable)
+{
+  mSendQuotedPrintable = aSendQuotedPrintable;
 }
 
 
@@ -553,31 +564,15 @@ bool KMSendSMTP::smtpSend(KMMessage* msg)
   smtpDebug("MAIL");
   if(replyCode != 250) return smtpFailed("MAIL", replyCode);
 
-  smtpInCmd("RCPT");
-  replyCode = mClient->Rcpt(msg->to()); // Send RCPT command
-  smtpDebug("RCPT");
-  if(replyCode != 250 && replyCode != 251) 
-    return smtpFailed("RCPT", replyCode);
+  if (!smtpSendRcptList(msg->to())) return FALSE;
 
-  if(!msg->cc().isEmpty())  // Check if cc is set.
-  {
-    smtpInCmd("RCPT");
-    replyCode = mClient->Rcpt(msg->cc()); // Send RCPT command
-    smtpDebug("RCPT");
-    if(replyCode != 250 && replyCode != 251)
-      return smtpFailed("RCPT", replyCode);
-  }
+  if(!msg->cc().isEmpty())
+    if (!smtpSendRcptList(msg->cc())) return FALSE;
 
-  if(!msg->bcc().isEmpty())  // Check if bcc ist set.
-  {
-    smtpInCmd("RCPT");
-    replyCode = mClient->Rcpt(msg->bcc()); // Send RCPT command
-    smtpDebug("RCPT");
-    if(replyCode != 250 && replyCode != 251)
-      return smtpFailed("RCPT", replyCode);
-  }
+  if(!msg->bcc().isEmpty())
+    if (!smtpSendRcptList(msg->bcc())) return FALSE;
 
-  app->processEvents(1000);
+  app->processEvents(500);
 
   smtpInCmd("DATA");
   replyCode = mClient->Data(); // Send DATA command
@@ -590,6 +585,42 @@ bool KMSendSMTP::smtpSend(KMMessage* msg)
   smtpDebug("<body>");
   if(replyCode != 250 && replyCode != 251)
     return smtpFailed("<body>", replyCode);
+
+  return TRUE;
+}
+
+
+//-----------------------------------------------------------------------------
+bool KMSendSMTP::smtpSendRcptList(const QString aRecipients)
+{
+  QString receiver;
+  int index, lastindex, replyCode, i, j;
+
+  lastindex = -1;
+  do
+  {
+    index = aRecipients.find(",",lastindex+1);
+    receiver = aRecipients.mid(lastindex+1, index<0 ? 255 : index-lastindex-1);
+    i = receiver.find('<');
+    if (i >= 0)
+    {
+      j = receiver.find('>', i+1);
+      receiver = receiver.mid(i+1, j-i-1);
+    }
+
+    if (!receiver.isEmpty())
+    {
+      smtpInCmd("RCPT");
+      replyCode = mClient->Rcpt(receiver);
+      smtpDebug("RCPT");
+
+      if(replyCode != 250 && replyCode != 251)
+	return smtpFailed("RCPT", replyCode);
+
+      lastindex = index;
+    }
+  }
+  while (lastindex > 0);
 
   return TRUE;
 }
