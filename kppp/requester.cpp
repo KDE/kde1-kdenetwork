@@ -43,6 +43,12 @@
 #include "pppdata.h"
 #include "requester.h"
 
+#ifdef linux
+#include <linux/version.h>
+#endif
+
+#include "log.h"
+
 Requester *Requester::rq = 0L;
 
 Requester::Requester(int s) : socket(s) {
@@ -57,7 +63,6 @@ Requester::~Requester() {
 // Receive file name and file descriptors from envoy
 //  
 int Requester::recvFD(char *filename, int size) {
-
   struct { struct cmsghdr cmsg; int fd; } control;
   struct msghdr	msg;
   struct ResponseHeader response;
@@ -77,7 +82,11 @@ int Requester::recvFD(char *filename, int size) {
   iov[1].iov_base = filename;
   iov[1].iov_len = size;
 
+#if defined(linux) && (LINUX_VERSION_CODE >= KERNEL_VERSION(2,1,0))
+  cmsglen = CMSG_LEN(sizeof(int));
+#else
   cmsglen = sizeof(struct cmsghdr) + sizeof(int);
+#endif
 
   fd = -1;
 
@@ -93,12 +102,16 @@ int Requester::recvFD(char *filename, int size) {
   if(len <= 0) {
     perror("recvmsg failed");
     return -1;
-  } else if (msg.msg_controllen != cmsglen) {
+  } else if (msg.msg_controllen != (unsigned)cmsglen) {
     perror("recvmsg: truncated message");
     exit(1);
   } else {
     filename[size-1] = '\0'; 
+#if defined(linux) && (LINUX_VERSION_CODE >= KERNEL_VERSION(2,1,0))
+    fd = *((int *)CMSG_DATA(&control));
+#else
     fd = *((int *) control.cmsg.cmsg_data);
+#endif
     printf("response.status: %i\n", response.status);
     assert(response.status <= 0);
     if(response.status < 0)
@@ -195,9 +208,11 @@ int Requester::openSysLog() {
 
 
 bool Requester::setPAPSecret(const char *name, const char *password) {
-
   if(gpppdata.authMethod() != AUTH_PAP)
     return false;
+
+  assert(name!=0);
+  assert(password!=0);
 
   struct SetSecretRequest req;
   req.header.type = Opener::SetSecret;
@@ -211,9 +226,11 @@ bool Requester::setPAPSecret(const char *name, const char *password) {
 }
 
 bool Requester::setCHAPSecret(const char *name, const char *password) {
-
   if(gpppdata.authMethod() != AUTH_CHAP)
     return false;
+
+  assert(name!=0);
+  assert(password!=0);
 
   struct SetSecretRequest req;
   req.header.type = Opener::SetSecret;
@@ -224,11 +241,11 @@ bool Requester::setCHAPSecret(const char *name, const char *password) {
   req.password[Opener::MaxStrLen] = '\0';
 
   sendRequest((struct RequestHeader *) &req, sizeof(req));
+
   return recvResponse();
 }
 
 bool Requester::removeSecret(int authMethod) {
-
   struct RemoveSecretRequest req;
   req.header.type = Opener::RemoveSecret;
   if(authMethod == AUTH_PAP && gpppdata.authMethod() == AUTH_PAP)

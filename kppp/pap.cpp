@@ -33,10 +33,6 @@
 #include "pap.h"
 #include "opener.h"
 
-bool PAP_UsePAP() {
-  //  return (bool)(gpppdata.authMethod() == AUTH_PAP);
-}
-
 bool createAuthFile(int authMethod, char *username, char *password) {
   QFile fin, fout;
   QString fname;
@@ -54,7 +50,7 @@ bool createAuthFile(int authMethod, char *username, char *password) {
     QString user = username;
     QString pass = password;
 
-    QRegExp r_user("\\s*" + user + "[ \t]");		
+    QRegExp r_user("\\s*" + user + "[ \t]");
     QRegExp r_user2("\\s*[\"\']" + user + "[\"\']");
 
     // copy old file
@@ -96,15 +92,14 @@ bool createAuthFile(int authMethod, char *username, char *password) {
   return TRUE;
 }
 
-bool removeAuthFile(int authMethod) {
 
+bool removeAuthFile(int authMethod) {
   char *authfile;
 
   if(!(authfile = authFile(authMethod)))
     return false;
 
   // FIX: Add check if we really modified the secrets file before
-
   QString oldName = authfile;
   oldName += ".old";
 
@@ -116,8 +111,8 @@ bool removeAuthFile(int authMethod) {
     return FALSE;
 }
 
+
 char *authFile(int authMethod) {
-  
   if(authMethod == Opener::PAP)
     return PAP_AUTH_FILE;
   else {

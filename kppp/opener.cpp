@@ -49,6 +49,10 @@
 #define _PATH_RESCONF "/etc/resolv.conf"
 #endif
 
+#ifdef linux
+#include <linux/version.h>
+#endif
+
 #define Debug(s) fprintf(stderr, s "\n");
 
 Opener::Opener(int s) : socket(s) {
@@ -171,15 +175,15 @@ void Opener::mainLoop() {
       Debug("Opener: received SetSecret");
       assert(len == sizeof(struct SetSecretRequest));
       response.status = !createAuthFile(request.secret.authMethod,
-                                       request.secret.username,
-                                       request.secret.password);
+					request.secret.username,
+					request.secret.password);
       sendResponse(&response);
       break;
 
     case RemoveSecret:
       Debug("Opener: received RemoveSecret");
       assert(len == sizeof(struct RemoveSecretRequest));
-      response.status = removeAuthFile(request.remove.authMethod);
+      response.status = !removeAuthFile(request.remove.authMethod);
       sendResponse(&response);
       break;
 
@@ -225,7 +229,24 @@ int Opener::sendFD(const char *ttypath, int ttyfd,
   control.cmsg.cmsg_type = SCM_RIGHTS;
   // What's the duplicating good for ?
   //  *((int *) &control.cmsg.cmsg_data) = dup(ttyfd);
+
+  /* if compilation fails here, it is very likely that you:
+   * a) have another OS than Linux, in which case you should
+   *    try to figure out how this works on your system, and
+   *    then tell me.
+   * b) You have an early Linux 2.1.X release. The handling of
+   *    "struct cmsg" changed in 2.1 release, but I did not check
+   *    which kernel version the change was introduced. Try to
+   *    set 2.1.0 to your kernel version +1, e.g. if you use 2.1.43,
+   *    change it to KERNEL_VERSION(2,1,44)
+   *
+   * In either case, please drop me a note.
+   */
+#if defined(linux) && (LINUX_VERSION_CODE >= KERNEL_VERSION(2,1,0))
+  *((int *)CMSG_DATA(&control)) = ttyfd;
+#else
   *((int *) &control.cmsg.cmsg_data) = ttyfd;
+#endif
 
   if (sendmsg(socket, &msg, 0) < 0) {
     perror("unable to send file descriptors");
@@ -258,4 +279,3 @@ int Opener::sendResponse(struct ResponseHeader *response) {
 
   return 0;
 }
-

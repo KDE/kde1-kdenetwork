@@ -32,7 +32,6 @@
 #include "kpppconfig.h"
 #include "auth.h"
 
-bool PAP_UsePAP();
 bool createAuthFile(int authMethod, char *username, char *password);
 bool removeAuthFile(int authMethod);
 char *authFile(int authMethod);

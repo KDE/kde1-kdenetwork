@@ -204,64 +204,6 @@ static int kppp_xio_errhandler( Display * ) {
 } /* extern "C" */
 
 
-void make_directories() {
-  QDir dir;
-
-  QString d = KApplication::localkdedir();
-
-  dir.setPath(d.data());
-  if(!dir.exists()){
-    dir.mkdir(d.data());
-    chown(d.data(),getuid(),getgid());
-    chmod(d.data(),S_IRUSR | S_IWUSR | S_IXUSR);
-  }
-
-  d += "/share";
-  dir.setPath(d.data());
-  if(!dir.exists()){
-    dir.mkdir(d.data());
-    chown(d.data(),getuid(),getgid());
-    chmod(d.data(),S_IRUSR | S_IWUSR | S_IXUSR);
-  }
-
-  d += "/apps";
-  dir.setPath(d.data());
-  if(!dir.exists()){
-    dir.mkdir(d.data());
-    chown(d.data(),getuid(),getgid());
-    chmod(d.data(),S_IRUSR | S_IWUSR | S_IXUSR);
-  }
-
-  d += "/kppp" ;
-
-  dir.setPath(d.data());
-  if(!dir.exists()){
-    dir.mkdir(d.data());
-    chown(d.data(),getuid(),getgid());
-    chmod(d.data(),S_IRUSR | S_IWUSR | S_IXUSR);
-  }
-
-  
-  d += "/Rules/";
-
-  dir.setPath(d.data());
-  if(!dir.exists()){
-    dir.mkdir(d.data());
-    chown(d.data(),getuid(),getgid());
-    chmod(d.data(),S_IRUSR | S_IWUSR | S_IXUSR);
-  }
-
-  QString logdir = QDir::homeDirPath() + "/";
-  logdir += ACCOUNTING_PATH "/Log";
-
-  dir.setPath(logdir.data());
-  if(!dir.exists()){
-    dir.mkdir(logdir.data());
-    chown(logdir.data(),getuid(),getgid());
-    chmod(logdir.data(),S_IRUSR | S_IWUSR | S_IXUSR);
-  }
-}
-
 #define MAX_NAME_LENGTH    64
 pid_t fpid; // TODO: use gpppdata.suidChildPid() instead
 
@@ -287,7 +229,7 @@ int main( int argc, char **argv ) {
     // make process leader of new group
     setsid();
     close(sockets[0]);
-    (void *) new Opener(sockets[1]);
+    (void) new Opener(sockets[1]);
     // we should never get here
     _exit(1);
   }
@@ -301,7 +243,7 @@ int main( int argc, char **argv ) {
   // end of setuid-dropping block.
   // 
 
-  (void *) new Requester(sockets[0]);
+  (void) new Requester(sockets[0]);
 
   if(securityTests() != TEST_OK)
     shutDown(1);
@@ -372,8 +314,7 @@ int main( int argc, char **argv ) {
     chown(configFile.data(), getuid(), getgid());
     chmod(configFile.data(), S_IRUSR | S_IWUSR);
   }
-  make_directories();
-  
+
   QString msg;
   int pid = create_pidfile();
   if(pid < 0) {
@@ -921,7 +862,8 @@ void KPPPWidget::connectbutton() {
 
   // make sure to connect to the account that is selected in the combo box
   // (exeption: an account given by a command line argument)
-  if(!have_cmdl_account) gpppdata.setAccount(connectto_c->currentText());
+  if(!have_cmdl_account) 
+    gpppdata.setAccount(connectto_c->currentText());
 
   QFileInfo info(gpppdata.pppdPath());
 
@@ -967,8 +909,6 @@ void KPPPWidget::connectbutton() {
     return;
   }
 
-  gpppdata.setPassword(PW_Edit->text());
-
   // if this is a PAP account, ensure that password and username are
   // supplied
   if(gpppdata.authMethod() == AUTH_PAP) {
@@ -980,7 +920,8 @@ void KPPPWidget::connectbutton() {
 			   "method PAP. This requires that you\n"
 			   "supply a username and a password!"));
       return;
-    } else {      
+    } else {
+      gpppdata.password = PW_Edit->text();
       if(!Requester::rq->setPAPSecret(gpppdata.storedUsername(),
                                       gpppdata.password.data())) {
 	QString s;
@@ -1005,7 +946,8 @@ void KPPPWidget::connectbutton() {
 			   "method CHAP. This requires that you\n"
 			   "supply a username and a password!"));
       return;
-    } else {      
+    } else {
+      gpppdata.password = PW_Edit->text();
       if(!Requester::rq->setCHAPSecret(gpppdata.storedUsername(),
                                        gpppdata.password.data())) {
 	QString s;

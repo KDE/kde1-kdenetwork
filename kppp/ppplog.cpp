@@ -69,6 +69,7 @@ int PPPL_MakeLog(QStrList &list) {
     fprintf(stderr, "Cannot open logfile!\n");
     return 1;
   }
+
   pbuf = buffer;
   i = 0;
   // while(fgets(buffer, sizeof(buffer), f) != 0) { 
@@ -87,7 +88,7 @@ int PPPL_MakeLog(QStrList &list) {
     if(p == 0)
       continue;
     pidp = p += strlen("pppd[");
-    while(isdigit(*p))
+    while(*p && isdigit(*p))
       p++;
     if(*p != ']')
       continue;

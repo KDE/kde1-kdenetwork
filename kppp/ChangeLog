@@ -1,3 +1,8 @@
+1998-11-24  Mario Weilguni <mweilguni@kde.org>
+
+	* fixed opener.cpp for Linux >= 2.1.0
+	* removed PAP_UsePAP(), no longer needed
+
 1998-11-23  Harri Porten  <porten@kde.org>
 
 	* requester.cpp: removed ancient #include "requester.moc"
@@ -28,6 +33,15 @@
 		- get ppp_available() running (presumably broken now)
 		- speed up reading the syslog (reading single chars now)
 		- Test, debug, test ....
+
+1998-11-17  Mario Weilguni <mweilguni@kde.org>
+
+	* another security hole fixed: the function make_directories() is
+	  no longer used, instead of a shell script make those directores.
+	  Since shell scripts do not run suid, this should be safe
+	* fixed a bug in the main.cpp, at the calls to setPAPSecret() and
+	  setCHAPSecret().
+	* fixed (void*)new Opener(...) to (void)new Opener(...)
 
 1998-11-17  Mario Weilguni <mweilguni@kde.org>
 

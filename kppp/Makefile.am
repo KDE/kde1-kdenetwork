@@ -63,7 +63,6 @@ kppp_SOURCES	= accounts.cpp \
 		log.cpp \
 		groupbox.cpp \
 		newwidget.cpp \
-		security.cpp \
 		requester.cpp \
 		opener.cpp 
 
@@ -109,8 +108,7 @@ noinst_HEADERS = accounts.h \
 		ppplog.h \
 		log.h \
 		groupbox.h \
-		newwidget.h \
-		security.h
+		newwidget.h 
 
 # just to make sure, automake makes them 
 BUILTSOURCES = accounts.moc \
@@ -131,8 +129,7 @@ BUILTSOURCES = accounts.moc \
 		acctselect.moc\
 		docking.moc \
 		setup.moc \
-		groupbox.moc \
-		security.moc
+		groupbox.moc
 
 # if you "make distclean", this files get removed. If you want to remove
 # them while "make clean", use CLEANFILES
@@ -164,6 +161,7 @@ install-data-local:
 # kppp wants to be installed suid root
 install-exec-local:
 	@(chown root $(bindir)/kppp && chmod 4755 $(bindir)/kppp) || echo "Was not able to make kppp setuid root"
+	@(mv $(bindir)/kppp $(bindir)/kppp.bin && install -m 755 kppp.sh $(bindir)/kppp)
 
 # remove ALL you have installed in install-data-local or install-exec-local
 #uninstall-local:
@@ -253,11 +251,10 @@ setup.cpp: setup.moc
 setup.moc: setup.h
 	$(MOC) setup.h -o setup.moc
 
-
 groupbox.cpp: groupbox.moc
 groupbox.moc: groupbox.h
 	$(MOC) groupbox.h -o groupbox.moc
 
-security.cpp: security.moc
-security.moc: security.h
-	$(MOC) security.h -o security.moc
+requester.cpp: requester.moc
+requester.moc: requester.h
+	$(MOC) requester.h -o requester.moc
