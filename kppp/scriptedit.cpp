@@ -27,14 +27,14 @@
 
 #include "scriptedit.h"
 #include <kapp.h>
+#include <qlayout.h>
 
 ScriptEdit::ScriptEdit( QWidget *parent, const char *name )
   : QWidget(parent, name)
 {
-  setFixedSize(300, 30);
+  QHBoxLayout *tl = new QHBoxLayout(this, 0, 10);
 
   st = new QComboBox(this, "st");
-  st->setGeometry(0, 5, 110, 25);
   st->insertItem("Expect");
   st->insertItem("Send");
   st->insertItem("Pause (sec)");
@@ -48,13 +48,22 @@ ScriptEdit::ScriptEdit( QWidget *parent, const char *name )
   st->insertItem("LoopStart");
   st->insertItem("LoopEnd");
   connect(st, SIGNAL(activated(int)), SLOT(setType(int)));
+  st->setMinimumSize(st->sizeHint());
+  st->setFixedHeight(st->sizeHint().height());
 
   se = new QLineEdit(this, "se");
   se->setGeometry(120, 5, 140, 25);
   se->setMaxLength(50);
   connect(se, SIGNAL(returnPressed()), SLOT(seReturnPressed()));
 
+  se->setFixedHeight(se->sizeHint().height());
+  se->setMinimumWidth(se->sizeHint().width());
+  tl->addWidget(st, 3);
+  tl->addWidget(se, 7);
+
   setType(0);
+
+  tl->activate();
 }
 
 
@@ -141,3 +150,5 @@ void ScriptEdit::setType(int i) {
   default: break;
   }
 }
+
+#include "scriptedit.moc"

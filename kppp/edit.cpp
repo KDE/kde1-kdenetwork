@@ -25,36 +25,56 @@
 
 #include "edit.h"
 #include "termios.h"
+#include <qlayout.h>
 
 extern bool isnewaccount;
+
+#define MIN_SIZE(w) w->setMinimumSize(w->sizeHint());
+#define FIXED_SIZE(w) w->setFixedSize(w->sizeHint());
+#define FIXED_HEIGHT(w) w->setFixedHeight(w->sizeHint().height());
+#define MIN_WIDTH(w) w->setMinimumWidth(w->sizeHint().width());
 
 DialWidget::DialWidget( QWidget *parent, const char *name )
   : QWidget(parent, name)
 {
+  const int GRIDROWS = 11;
 
+  QGridLayout *tl = new QGridLayout(this, GRIDROWS, 4, 10, 10);
+  tl->addRowSpacing(0, fontMetrics().lineSpacing() - 10);
   box = new QGroupBox(this,"box");
-  box->setGeometry(10,10,345,310);
   box->setTitle(klocale->translate("Dial Setup"));
+  tl->addMultiCellWidget(box, 0, GRIDROWS-1, 0, 3);
+
+  connect_label = new QLabel(this);
+  connect_label->setText(klocale->translate("Connection Name:"));
+  MIN_SIZE(connect_label);
+  tl->addWidget(connect_label, 1, 1);
 
   connectname_l = new QLineEdit(this, "connectname_l");
-  connectname_l->setGeometry(160, 50, 150, 25);
   connectname_l->setMaxLength(ACCNAME_SIZE);
+  FIXED_HEIGHT(connectname_l);
+  MIN_WIDTH(connectname_l);
+  tl->addWidget(connectname_l, 1, 2);
   
-  connect_label = new QLabel(this);
-  connect_label->setGeometry(30,50,120,30);
-  connect_label->setText(klocale->translate("Connection Name:"));
-
+  number_label = new QLabel(this);
+  number_label->setText(klocale->translate("Phone Number:"));
+  MIN_SIZE(number_label);
+  tl->addWidget(number_label, 2, 1);
 
   number_l = new QLineEdit(this, "number_l");
-  number_l->setGeometry(160, 80, 150, 25);
   number_l->setMaxLength(PHONENUMBER_SIZE);
+  MIN_WIDTH(number_l);
+  FIXED_HEIGHT(number_l);
+  tl->addWidget(number_l, 2, 2);
 
-  number_label = new QLabel(this);
-  number_label->setGeometry(30,80,120,30);
-  number_label->setText(klocale->translate("Phone Number:"));
+  baud_label = new QLabel(this);
+  baud_label->setText(klocale->translate("Connection Speed:"));
+  MIN_SIZE(baud_label);
+  tl->addWidget(baud_label, 4, 1);
 
+  QHBoxLayout *l1 = new QHBoxLayout;
+  tl->addLayout(l1, 4, 2);
   baud_c = new QComboBox(this, "baud_c");
-  baud_c->setGeometry(160, 120, 80, 30);
 
 #ifdef B460800 
   baud_c->insertItem("460800");
@@ -78,27 +98,36 @@ DialWidget::DialWidget( QWidget *parent, const char *name )
   baud_c->insertItem("2400");
   
   baud_c->setCurrentItem(3);
-
-  baud_label = new QLabel(this);
-  baud_label->setGeometry(30,120,120,30);
-  baud_label->setText(klocale->translate("Connection Speed:"));
-
-  command = new QLineEdit(this);
-  command->setGeometry(160, 200, 150, 25);
-  command->setMaxLength(COMMAND_SIZE);
+  FIXED_HEIGHT(baud_c);
+  MIN_WIDTH(baud_c);
+  l1->addWidget(baud_c);
+  l1->addStretch(1);
 
   command_label = new QLabel(this);
-  command_label->setGeometry(30,195,120,30);
   command_label->setText(klocale->translate("Execute Program\nupon Connect:"));
+  command_label->setAlignment(AlignVCenter);
+  MIN_SIZE(command_label);
+  tl->addWidget(command_label, 6, 1);
 
-  pppdargs = new QPushButton(klocale->translate("Arguments"), this);
-  pppdargs->setGeometry(160, 250, 100, 30);
-  connect(pppdargs, SIGNAL(clicked()), SLOT(pppdargsbutton()));
+  command = new QLineEdit(this);
+  command->setMaxLength(COMMAND_SIZE);
+  FIXED_HEIGHT(command);
+  MIN_WIDTH(command);
+  tl->addWidget(command, 6, 2);
 
   pppd_label = new QLabel(this);
-  pppd_label->setGeometry(30,250,120,30);
   pppd_label->setText(klocale->translate("Edit default pppd:"));
+  MIN_SIZE(pppd_label);
+  tl->addWidget(pppd_label, 8, 1);
 
+  QHBoxLayout *l2 = new QHBoxLayout;
+  tl->addLayout(l2, 8, 2);
+  pppdargs = new QPushButton(klocale->translate("Arguments"), this);
+  connect(pppdargs, SIGNAL(clicked()), SLOT(pppdargsbutton()));
+  MIN_SIZE(pppdargs);
+  FIXED_HEIGHT(pppdargs);
+  l2->addWidget(pppdargs);
+  l2->addStretch(3);
 
   // Set defaults if editing an exhisting connection
   if(!isnewaccount) {
@@ -113,6 +142,7 @@ DialWidget::DialWidget( QWidget *parent, const char *name )
   }
 
   //  this->setFixedSize(340,322);
+  tl->activate();
 }
 
 
@@ -249,50 +279,83 @@ void IPWidget::hitIPSelect( int i ) {
 DNSWidget::DNSWidget( QWidget *parent, const char *name )
   : QWidget(parent, name)
 {
-  
-  
+  QGridLayout *tl = new QGridLayout(this, 3, 3, 10, 10);
+  tl->addRowSpacing(0, fontMetrics().lineSpacing() - 10);
   box = new QGroupBox(this,"box");
-  box->setGeometry(10,70,345,250);
   box->setTitle(klocale->translate("DNS Servers"));
+  tl->addMultiCellWidget(box, 0, 2, 0, 2);
+  tl->setRowStretch(1, 1);
+  tl->setColStretch(1, 1);
+  tl->addColSpacing(0, 15);
+  tl->addColSpacing(2, 15);
+  tl->addRowSpacing(2, 10);
 
-  dnsdomain = new QLineEdit(this, "dnsdomain");
-  dnsdomain->setGeometry(160, 30, 147, 25);
-  dnsdomain->setMaxLength(DOMAIN_SIZE);
+  QVBoxLayout *l1 = new QVBoxLayout;
+  tl->addLayout(l1, 1, 1);
+  l1->addSpacing(10);
+
+  QGridLayout *l11 = new QGridLayout(5, 2);
+  l1->addLayout(l11);
 
   dnsdomain_label = new QLabel(this,"dnsdomainlabel");
-  dnsdomain_label->setGeometry(30,30,120,25);
   dnsdomain_label->setText(klocale->translate("Domain Name:"));
+  MIN_SIZE(dnsdomain_label);
+  l11->addWidget(dnsdomain_label, 0, 0);
 
-  dnsipaddr = new IPLineEdit(this, "dnsipaddr");
-  dnsipaddr->setGeometry(160, 95, 147, 25);
-  dnsipaddr->setMaxLength(IPADDR_SIZE);
-  connect(dnsipaddr, SIGNAL(returnPressed()), SLOT(adddns()));
+  dnsdomain = new QLineEdit(this, "dnsdomain");
+  dnsdomain->setMaxLength(DOMAIN_SIZE);
+  FIXED_HEIGHT(dnsdomain);
+  MIN_WIDTH(dnsdomain);
+  l11->addWidget(dnsdomain, 0, 1);
+  l11->addRowSpacing(1, 15);
 
   dns_label = new QLabel(this,"dnslabel");
-  dns_label->setGeometry(30,95,120,25);
   dns_label->setText(klocale->translate("DNS IP Address:"));
+  MIN_SIZE(dns_label);
+  l11->addWidget(dns_label, 2, 0);
 
+  QHBoxLayout *l110 = new QHBoxLayout;
+  l11->addLayout(l110, 2, 1);
+  dnsipaddr = new IPLineEdit(this, "dnsipaddr");
+  dnsipaddr->setMaxLength(IPADDR_SIZE);
+  connect(dnsipaddr, SIGNAL(returnPressed()), SLOT(adddns()));
+  FIXED_HEIGHT(dnsipaddr);
+  l110->addWidget(dnsipaddr, 4);
+  l110->addStretch(3);
+
+  QHBoxLayout *l111 = new QHBoxLayout;
+  l11->addLayout(l111, 3, 1);
   add = new QPushButton(klocale->translate("Add"), this, "add");
-  add->setGeometry(160, 140, 70, 25);
   connect(add, SIGNAL(clicked()), SLOT(adddns()));
+  FIXED_HEIGHT(add);
+  MIN_WIDTH(add);
+  l111->addWidget(add);
+  l111->addStretch(1);
 
   remove = new QPushButton(klocale->translate("Remove"), this, "remove");
-  remove->setGeometry(237, 140, 70, 25);
   connect(remove, SIGNAL(clicked()), SLOT(removedns()));
-  
-  dnsservers = new QListBox(this, "dnsservers");
-  dnsservers->setGeometry(160, 175, 147, 100);
+  FIXED_HEIGHT(remove);
+  MIN_WIDTH(remove);
+  l111->addWidget(remove);
 
   servers_label = new QLabel(this,"servers");
-  servers_label->setGeometry(30,175,120,25);
   servers_label->setText(klocale->translate("DNS Address List:"));
-  
-  exdnsdisabled_toggle=new QCheckBox(klocale->translate("Disable existing DNS Servers during Connection"), 
-				     this);
+  servers_label->setAlignment(AlignTop|AlignLeft);
+  MIN_SIZE(servers_label);
+  l11->addWidget(servers_label, 4, 0);
+ 
+  dnsservers = new QListBox(this, "dnsservers");
+  dnsservers->setMinimumSize(150, 100);
+  l11->addWidget(dnsservers, 4, 1);
 
-  exdnsdisabled_toggle->adjustSize();
-  exdnsdisabled_toggle->setGeometry(30,285,300,exdnsdisabled_toggle->height());
+  exdnsdisabled_toggle = new QCheckBox(klocale->translate(
+     "Disable existing DNS Servers during Connection"), 
+				       this);
+  MIN_SIZE(exdnsdisabled_toggle);
   exdnsdisabled_toggle->setChecked(gpppdata.exDNSDisabled());
+  l1->addStretch(2);
+  l1->addWidget(exdnsdisabled_toggle);
+  l1->addStretch(1);   
  
   // restore data if editing
   if(!isnewaccount) {
@@ -301,6 +364,8 @@ DNSWidget::DNSWidget( QWidget *parent, const char *name )
       dnsservers->insertItem(gpppdata.dns(i));
     dnsdomain->setText(gpppdata.domain());
   }
+
+  tl->activate();
 }
 
 void DNSWidget::save() {
@@ -423,42 +488,65 @@ void GatewayWidget::hitGatewaySelect( int i ) {
 ScriptWidget::ScriptWidget( QWidget *parent, const char *name )
   : QWidget(parent, name)
 { 
+  const int GRIDROWS = 3;
 
+  QGridLayout *tl = new QGridLayout(this, GRIDROWS, 3, 10, 10);
+  tl->addRowSpacing(0, fontMetrics().lineSpacing() - 10);
   box = new QGroupBox(this,"box");
-  box->setGeometry(10,10,345,310);
   box->setTitle(klocale->translate("Edit Script"));
+  tl->addMultiCellWidget(box, 0, GRIDROWS-1, 0, 2);
+
+  QVBoxLayout *l1 = new QVBoxLayout;
+  tl->addLayout(l1, 1, 1);
 
   se = new ScriptEdit(this, "se");
-  se->move(45, 40);
   connect(se, SIGNAL(returnPressed()), SLOT(addButton()));
+  l1->addWidget(se);
 
+  add = new QPushButton(klocale->translate("Add"), this, "add");
+  connect(add, SIGNAL(clicked()), SLOT(addButton()));
+  FIXED_HEIGHT(add);
+  MIN_WIDTH(add);
+
+  insert = new QPushButton(klocale->translate("Insert"), this, "insert");
+  connect(insert, SIGNAL(clicked()), SLOT(insertButton()));
+  FIXED_HEIGHT(insert);
+  MIN_WIDTH(insert);
+
+  remove = new QPushButton(klocale->translate("Remove"), this, "remove");
+  connect(remove, SIGNAL(clicked()), SLOT(removeButton()));
+  FIXED_HEIGHT(remove);
+  MIN_WIDTH(remove);
+
+  QHBoxLayout *l11 = new QHBoxLayout;
+  l1->addLayout(l11);
+  l11->addWidget(add);
+  l11->addStretch(1);
+  l11->addWidget(insert);
+  l11->addStretch(1);
+  l11->addWidget(remove);
+  
+  QHBoxLayout *l12 = new QHBoxLayout(0);
+  l1->addLayout(l12);
   stl = new QListBox(this, "stl");
-  stl->setGeometry(45, 150, 70, 150);
   stl->setSmoothScrolling(false);
   stl->setAutoScrollBar(false);
   connect(stl, SIGNAL(highlighted(int)), SLOT(stlhighlighted(int)));
+  stl->setMinimumSize(QSize(70, 140));
 
   sl = new QListBox(this, "sl");
-  sl->setGeometry(115, 150, 200, 150);
   sl->setSmoothScrolling(false);
   sl->setAutoScrollBar(false);
   connect(sl, SIGNAL(highlighted(int)), SLOT(slhighlighted(int)));
+  sl->setMinimumSize(QSize(150, 140));
 
   slb = new QScrollBar(this, "slb");
-  slb->setGeometry(315, 150, 15, 150);
+  slb->setFixedWidth(slb->sizeHint().width());
   connect(slb, SIGNAL(valueChanged(int)), SLOT(scrolling(int)));
 
-  add = new QPushButton(klocale->translate("Add"), this, "add");
-  add->setGeometry(45, 100, 70, 30);
-  connect(add, SIGNAL(clicked()), SLOT(addButton()));
-
-  insert = new QPushButton(klocale->translate("Insert"), this, "insert");
-  insert->setGeometry(145, 100, 70, 30);
-  connect(insert, SIGNAL(clicked()), SLOT(insertButton()));
-
-  remove = new QPushButton(klocale->translate("Remove"), this, "remove");
-  remove->setGeometry(240, 100, 70, 30);
-  connect(remove, SIGNAL(clicked()), SLOT(removeButton()));
+  l12->addWidget(stl, 1);
+  l12->addWidget(sl, 3);
+  l12->addWidget(slb, 0);
 
   //load data from gpppdata
   if(!isnewaccount) {
@@ -470,6 +558,8 @@ ScriptWidget::ScriptWidget( QWidget *parent, const char *name )
   }
 
   adjustScrollBar();
+
+  tl->activate();
 }
 
 
@@ -703,3 +793,5 @@ void ScriptWidget::removeButton() {
   adjustScrollBar();
 
 }
+
+#include "edit.moc"

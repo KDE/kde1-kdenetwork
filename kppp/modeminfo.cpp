@@ -50,8 +50,9 @@ ModemTransfer::ModemTransfer(QWidget *parent=0, const char *name=0)
   setMaximumSize(250,130);
   setMinimumSize(250,130);
   
-  progressBar = new Progress(0, 8, 0, Progress::Horizontal, this, "bar");
+  progressBar = new KProgress(0, 8, 0, KProgress::Horizontal, this, "bar");
   progressBar->setGeometry(20,20,210,25);
+  progressBar->setBarStyle(KProgress::Blocked);
 
   statusBar = new QLabel(this,"sBar");
   statusBar->setFrameStyle(QFrame::Panel|QFrame::Sunken);
@@ -552,30 +553,4 @@ void ModemInfo::okbutton() {
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#include "modeminfo.moc"

@@ -111,3 +111,4 @@ void PWEntry::hide() {
   return;
 }
 
+#include "pwentry.moc"

@@ -471,3 +471,5 @@ void Accounting::truncateLogFile() {
   }
 }
 */
+
+#include "accounting.moc"

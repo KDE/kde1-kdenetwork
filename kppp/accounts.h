@@ -40,7 +40,8 @@ public:
   AccountWidget( QWidget *parent=0, const char *name=0 );
   ~AccountWidget() {}
 
-private slots:
+  //private slots:
+ public slots:
   void editaccount();
   void copyaccount();
   void newaccount();

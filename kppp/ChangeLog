@@ -1,3 +1,25 @@
+Mon Jan  5 14:25:37 1998  Mario Weilguni  <mario@loki.valhalla.at>
+
+	* Makefile.in: removed the external moc_*.cpp files and
+	  included them directly with "#include". This saves 
+	  approx. 30 KB in the binary and greatly speeds up 
+	  compilation
+
+Mon Jan  5 13:59:20 1998  Mario Weilguni  <mweilguni@sime.com>
+
+	* Rules/TEMPLATE: fixed a typo: the extension of ruleset
+	  files is ".rst", not ".rts"
+
+Mon Jan  5 13:42:28 1998  Mario Weilguni  <mweilguni@sime.com>
+
+	* general.cpp: replaced the KIntLineEdit class with the
+	  class KIntegerLine from libkdeui. Replaced the progress
+	  widget with that from libkdeui.
+
+Mon Jan  5 12:51:43 1998  Mario Weilguni  <mweilguni@sime.com>
+
+	* edit.cpp: now all major dialogs use Qt layout
+
 Mon Jan  5 04:55:58 1998  Bernd Johannes Wuebben  <wuebben@petit.cornell.edu>
 
 	* fixed the while(*it) problem in pppdata.cpp it should be

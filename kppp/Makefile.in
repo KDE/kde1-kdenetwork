@@ -68,14 +68,12 @@ SOURCES =	accounts.cpp \
 		pppstatdlg.cpp\
 		pppstats.cpp\
 		miniterm.cpp\
-		kintedit.cpp \
 		accounting.cpp \
 		acctselect.cpp\
 		ruleset.cpp \
-		homedir.cpp\
-		progress.cpp
+		homedir.cpp
 
-HEADERS =		accounts.h \
+HEADERS =	accounts.h \
 		config.h \
 		connect.h \
 		conwindow.h \
@@ -92,14 +90,12 @@ HEADERS =		accounts.h \
 		modeminfo.h\
 		pppstatdlg.h\
 		miniterm.h\
-		kintedit.h \
 		accounting.h \
 		acctselect.h\
 		ruleset.h \
-		homedir.h\
-		progress.h
+		homedir.h
 
-OBJECTS =		accounts.o \
+OBJECTS =	accounts.o \
 		connect.o \
 		conwindow.o \
 		debug.o \
@@ -116,49 +112,27 @@ OBJECTS =		accounts.o \
 		pppstatdlg.o\
 		pppstats.o\
 		miniterm.o\
-		kintedit.o\
 		accounting.o\
 		acctselect.o\
 		ruleset.o\
-		homedir.o\
-		progress.o\
-		moc_accounts.o \
-		moc_connect.o \
-		moc_conwindow.o \
-		moc_debug.o \
-		moc_edit.o \
-		moc_general.o \
-		moc_main.o \
-		moc_modemcmds.o \
-		moc_pppdargs.o \
-		moc_scriptedit.o\
-		moc_pwentry.o\
-		moc_modeminfo.o\
-		moc_pppstatdlg.o\
-		moc_miniterm.o\
-		moc_kintedit.o \
-		moc_accounting.o\
-		moc_acctselect.o\
-		moc_progress.o
+		homedir.o
 
-SRCMETA =	moc_accounts.cpp \
-		moc_connect.cpp \
-		moc_conwindow.cpp \
-		moc_debug.cpp \
-		moc_edit.cpp \
-		moc_general.cpp \
-		moc_main.cpp \
-		moc_modemcmds.cpp \
-		moc_pppdargs.cpp \
-		moc_scriptedit.cpp\
-		moc_pwentry.cpp\
-		moc_modeminfo.cpp\
-		moc_pppstatdlg.cpp\
-		moc_miniterm.cpp\
-		moc_kintedit.cpp \
-		moc_accounting.cpp\
-		moc_acctselect.cpp\
-		moc_progress.cpp
+SRCMETA =	accounts.moc \
+		connect.moc \
+		conwindow.moc \
+		debug.moc \
+		edit.moc \
+		general.moc \
+		main.moc \
+		modemcmds.moc \
+		pppdargs.moc \
+		scriptedit.moc\
+		pwentry.moc\
+		modeminfo.moc\
+		pppstatdlg.moc\
+		miniterm.moc\
+		accounting.moc\
+		acctselect.moc
 
 TARGET	=	kppp
 
@@ -257,78 +231,3 @@ uninstall:
 #	rm -f $(DOCSDIR)/kppp.html
 #	rm -f $(DOCSDIR)/kppp.gif
 #	rm -f $(APPSDIR)/Applications/kppp.kdelnk
-
-
-
-moc_modemcmds.o: moc_modemcmds.cpp \
-		modemcmds.h \
-		pppdata.h \
-		config.h
-
-moc_pppdargs.o: moc_pppdargs.cpp \
-		pppdargs.h \
-		pppdata.h \
-		config.h
-
-moc_pppstatdlg.o: moc_pppstatdlg.cpp\
-		pppstatdlg.h
-
-moc_scriptedit.o: moc_scriptedit.cpp \
-		scriptedit.h \
-
-moc_pwentry.o: moc_pwentry.cpp \
-		pwentry.h \
-
-moc_miniterm.cpp : miniterm.cpp miniterm.h
-	$(MOC) miniterm.h -o moc_miniterm.cpp
-
-moc_pppstatdlg.cpp : pppstatdlg.cpp pppstatdlg.h
-	$(MOC) pppstatdlg.h -o moc_pppstatdlg.cpp
-
-moc_accounts.cpp: accounts.h
-	$(MOC) accounts.h -o moc_accounts.cpp
-
-moc_connect.cpp: connect.h
-	$(MOC) connect.h -o moc_connect.cpp
-
-moc_conwindow.cpp: conwindow.h
-	$(MOC) conwindow.h -o moc_conwindow.cpp
-
-moc_debug.cpp: debug.h
-	$(MOC) debug.h -o moc_debug.cpp
-
-moc_edit.cpp: edit.h
-	$(MOC) edit.h -o moc_edit.cpp
-
-moc_general.cpp: general.h
-	$(MOC) general.h -o moc_general.cpp
-
-moc_main.cpp: main.h
-	$(MOC) main.h -o moc_main.cpp
-
-moc_modemcmds.cpp: modemcmds.h
-	$(MOC) modemcmds.h -o moc_modemcmds.cpp
-
-moc_pppdargs.cpp: pppdargs.h
-	$(MOC) pppdargs.h -o moc_pppdargs.cpp
-
-moc_scriptedit.cpp: scriptedit.h
-	$(MOC) scriptedit.h -o moc_scriptedit.cpp
-
-moc_pwentry.cpp: pwentry.h
-	$(MOC) pwentry.h -o moc_pwentry.cpp
-
-moc_modeminfo.cpp: modeminfo.h
-	$(MOC) modeminfo.h -o moc_modeminfo.cpp
-
-moc_kintedit.cpp: kintedit.h
-	$(MOC) kintedit.h -o moc_kintedit.cpp
-
-moc_accounting.cpp: accounting.h
-	$(MOC) accounting.h -o moc_accounting.cpp
-
-moc_acctselect.cpp: acctselect.h
-	$(MOC) acctselect.h -o moc_acctselect.cpp
-
-moc_progress.cpp: progress.h
-	$(MOC) progress.h -o moc_progress.cpp

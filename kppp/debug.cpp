@@ -140,3 +140,4 @@ void DebugWidget::enter() {
 
 }
 
+#include "debug.moc"

@@ -241,3 +241,5 @@ void ConWindow::slotAccounting(QString total, QString session) {
   total_bill->setText(total.data());
   session_bill->setText(session.data());
 }
+
+#include "conwindow.moc"

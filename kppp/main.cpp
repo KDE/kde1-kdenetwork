@@ -721,3 +721,5 @@ printf("In terminatepppd(): I will attempt to kill pppd\n");
   gpppdata.setpppdpid(-1);
 
 }
+
+#include "main.moc"

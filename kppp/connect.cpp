@@ -1605,3 +1605,4 @@ void unlockdevice() {
 }  
 
 
+#include "connect.moc"

@@ -377,4 +377,3 @@ bool strioctl(int fd, int cmd, char* ptr, int ilen, int olen){
 }
 #endif /* __svr4__ */
 
-

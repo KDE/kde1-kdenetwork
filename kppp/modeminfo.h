@@ -50,8 +50,8 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-#include "progress.h"
 #include "pppdata.h"
+#include <kprogress.h>
 
 #define NUM_OF_ATI 8
 
@@ -67,7 +67,7 @@ public:
     QTimer *initTimer;
 
     QString answer;
-    Progress *progressBar;
+    KProgress *progressBar;
     QLabel *statusBar;
     QPushButton *cancel;
 
@@ -139,8 +139,3 @@ private:
 
 
 #endif
-
-
-
-
-

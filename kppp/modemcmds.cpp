@@ -242,3 +242,5 @@ void ModemCommands::okbutton() {
 void ModemCommands::cancelbutton() {
   reject();
 }
+
+#include "modemcmds.moc"

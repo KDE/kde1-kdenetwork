@@ -543,22 +543,4 @@ void MyTerm::mynewline() {
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#include "miniterm.moc"

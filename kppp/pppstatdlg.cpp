@@ -320,7 +320,4 @@ void PPPStatsDlg::update_data(bool data_available){
 
 }
 
-
-
-
-
+#include "pppstatdlg.moc"

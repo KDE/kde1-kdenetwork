@@ -115,8 +115,4 @@ void PPPdArguments::init() {
   }
 }
 
-
-
-
-
-
+#include "pppdargs.moc"

@@ -26,6 +26,7 @@
 
 #include "acctselect.h"
 #include <qgrpbox.h>
+#include <qlayout.h>
 #include <qdir.h>
 #include <kapp.h>
 #include <qregexp.h>
@@ -39,34 +40,44 @@ extern bool isnewaccount;
 AccountingSelector::AccountingSelector(QWidget *parent, const char *name)
   : QWidget(parent, name)
 {
-  const int WWIDTH=370;
- 
+  QGridLayout *l = new QGridLayout(this, 3, 3, 10, 10);
+  l->addRowSpacing(0, fontMetrics().lineSpacing() - 10);
   QGroupBox *box = new QGroupBox(this,"box");
-  box->setGeometry(10, 10, WWIDTH - 25, 310);
   box->setTitle(klocale->translate("Accounting Setup"));
+  l->addMultiCellWidget(box, 0, 2, 0, 2);
+
+  QVBoxLayout *l1 = new QVBoxLayout(0);
+  l->addLayout(l1, 1, 1);
+  l1->addSpacing(10);
 
   // checkbox for enabling/disabling accounting
   use = new QCheckBox(klocale->translate("Enable accounting"), this);
-
-  use->setGeometry(30, 30, 200, 32);
   use->setChecked(gpppdata.AcctEnabled());
-
+  use->setMinimumSize(use->sizeHint());
+  l1->addWidget(use, 0);
+  l1->addSpacing(10);
   connect(use, SIGNAL(toggled(bool)), this, SLOT(enableItems(bool)));
 
   // insert the tree widget
   tl = new KTreeList(this);
-  tl->setGeometry(30, 60, WWIDTH-60, 200);
   connect(tl, SIGNAL(selected(int)),
 	  this, SLOT(slotHighlighted(int)));
-
+  tl->setMinimumSize(220, 200);
+  l1->addWidget(tl, 1);
+  
   // label to display the currently selected ruleset
-  QLabel *l = new QLabel(klocale->translate("Selected:"), this);
-  l->setGeometry(30, 270, 60, 24);
+  QHBoxLayout *l11 = new QHBoxLayout;
+  l1->addSpacing(10);
+  l1->addLayout(l11);
+  QLabel *lsel = new QLabel(klocale->translate("Selected:"), this);
+  lsel->setMinimumSize(lsel->sizeHint());
   selected = new QLabel(this);
   selected->setFrameStyle(QFrame::Sunken | QFrame::WinPanel);
   selected->setLineWidth(1);
-  selected->setGeometry(90, 270, 250, 24);
-//  selected->setBackgroundColor(QColor("white"));
+  selected->setFixedHeight(selected->sizeHint().height() + 16);
+  l11->addWidget(lsel, 0);
+  l11->addSpacing(10);
+  l11->addWidget(selected, 1);
 
   // load the pmfolder pixmap from KDEdir
   QString fname = KApplication::kdedir().copy();
@@ -96,6 +107,13 @@ AccountingSelector::AccountingSelector(QWidget *parent, const char *name)
 
   setupTreeWidget();
 
+  l->setColStretch(0, 0);
+  l->setColStretch(2, 0);
+  l->setRowStretch(0, 0);
+  l->setRowStretch(2, 0);
+  l->setRowStretch(1, 1);
+  l->setColStretch(1, 1);
+  l->activate();
 }
 
 
@@ -316,3 +334,5 @@ bool AccountingSelector::save() {
   }
   return TRUE;
 }
+
+#include "acctselect.moc"

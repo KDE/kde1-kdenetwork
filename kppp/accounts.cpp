@@ -362,3 +362,4 @@ int AccountWidget::doTab(){
  return result;
 }
 
+#include "accounts.moc"

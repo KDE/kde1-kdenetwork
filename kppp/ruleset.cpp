@@ -50,7 +50,7 @@ RuleSet::RuleSet() {
 
 // this function is shamelessly stolen from pppcosts 0.5 :-)
 /* calculates the easter sunday in day_of_year style */
-QDate RuleSet::get_easter(int year){
+QDate RuleSet::get_easter(int year) {
   /* not optimized, I took the original names */
   signed int a,b,m,q,w,p,n,tt,mm; 
 	

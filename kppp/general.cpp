@@ -28,8 +28,7 @@
 #include <qlayout.h>
 #include "general.h"
 #include "version.h"
-#include "kintedit.h"
-
+#include <kintegerline.h>
 
 QString ati_query_strings[NUM_OF_ATI];
 extern KApplication*	app;
@@ -66,7 +65,7 @@ GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
   
   QHBoxLayout *l1 = new QHBoxLayout;
   tl->addLayout(l1, 2, 2);
-  pppdtimeout = new KIntLineEdit(this, "pppdtimeout");
+  pppdtimeout = new KIntegerLine(this, "pppdtimeout");
   pppdtimeout->setFixedHeight(pppdtimeout->sizeHint().height());
   pppdtimeout->setMaxLength(TIMEOUT_SIZE);
   pppdtimeout->setText(gpppdata.pppdTimeout());
@@ -292,7 +291,7 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   QHBoxLayout *l1 = new QHBoxLayout;
   tl->addLayout(l1, 5, 2);
 
-  modemtimeout = new KIntLineEdit(this, "modemtimeout");
+  modemtimeout = new KIntegerLine(this, "modemtimeout");
   modemtimeout->setFixedHeight(modemtimeout->sizeHint().height());
   modemtimeout->setMaxLength(TIMEOUT_SIZE);
   modemtimeout->setText(gpppdata.modemTimeout());
@@ -312,7 +311,7 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
   l1 = new QHBoxLayout;
   tl->addLayout(l1, 6, 2);
   
-  busywait = new KIntLineEdit(this, "busywait");
+  busywait = new KIntegerLine(this, "busywait");
   busywait->setFixedHeight(busywait->sizeHint().height());
   busywait->setMaxLength(TIMEOUT_SIZE);
   busywait->setText(gpppdata.busyWait());
@@ -456,3 +455,5 @@ void ModemWidget2::terminal(){
   terminal.exec();
 
 }
+
+#include "general.moc"
