@@ -536,9 +536,8 @@ bool Artdlg::actions (int action)
         }
     case POST:
         {
+            int mShowHeaders = 0xe0;
             conf->setGroup("Composer");
-            int mShowHeaders = conf->readNumEntry("headers", 0x60);
-            mShowHeaders = mShowHeaders & 0xfb;
             conf->writeEntry("headers",mShowHeaders);
 
             KMMessage *m=new KMMessage();
@@ -555,8 +554,11 @@ bool Artdlg::actions (int action)
             if(index < 0)
                 break;
             
+            int mShowHeaders = 0xe0;
+            conf->setGroup("Composer");
+            conf->writeEntry("headers",mShowHeaders);
+
             Article *art=artList.at(index);
-            
             KMMessage *mm=new KMMessage();
             QString *ts=server->article(art->ID.data());
             mm->fromString(ts->data());
@@ -570,10 +572,6 @@ bool Artdlg::actions (int action)
             m->setTo("");
             delete mm;
             
-            conf->setGroup("Composer");
-            int mShowHeaders = conf->readNumEntry("headers", 0x60);
-            mShowHeaders = mShowHeaders & 0xfb;
-            conf->writeEntry("headers",mShowHeaders);
             KMComposeWin *comp=new KMComposeWin(m);
             comp->show();
             break;
@@ -585,6 +583,10 @@ bool Artdlg::actions (int action)
             if(index < 0)
                 break;
             
+            int mShowHeaders  = 0x2c;
+            conf->setGroup("Composer");
+            conf->writeEntry("headers",mShowHeaders);
+
             Article *art=artList.at(index);
             KMMessage *m=new KMMessage();
             QString *ts=server->article(art->ID.data());
@@ -593,10 +595,6 @@ bool Artdlg::actions (int action)
             KMMessage *mm=m->createReply();
             mm->setGroups("");
             
-            conf->setGroup("Composer");
-            int mShowHeaders = conf->readNumEntry("headers", 0x60);
-            mShowHeaders = mShowHeaders | 0x04;
-            conf->writeEntry("headers",mShowHeaders);
             KMComposeWin *comp=new KMComposeWin(mm);
             comp->show();
             break;
@@ -607,6 +605,10 @@ bool Artdlg::actions (int action)
             
             if(index < 0)
                 break;
+
+            int mShowHeaders = 0x2c;
+            conf->setGroup("Composer");
+            conf->writeEntry("headers",mShowHeaders);
             
             Article *art=artList.at(index);
             KMMessage *m=new KMMessage();
@@ -617,10 +619,6 @@ bool Artdlg::actions (int action)
             KMMessage *mm=m->createForward();
             mm->setGroups("");
             
-            conf->setGroup("Composer");
-            int mShowHeaders = conf->readNumEntry("headers", 0x60);
-            mShowHeaders = mShowHeaders | 0x04;
-            conf->writeEntry("headers",mShowHeaders);
             KMComposeWin *comp=new KMComposeWin(mm);
             comp->show();
             break;
@@ -633,6 +631,10 @@ bool Artdlg::actions (int action)
                 break;
             Article *art=artList.at(index);
             
+            int mShowHeaders=0x6c;
+            conf->setGroup("Composer");
+            conf->writeEntry("headers",mShowHeaders);
+
             KMMessage *mm=new KMMessage();
             QString *ts=server->article(art->ID.data());
             mm->fromString(ts->data());
@@ -645,10 +647,6 @@ bool Artdlg::actions (int action)
             m->setGroups(mm->groups());
             delete mm;
             
-            conf->setGroup("Composer");
-            int mShowHeaders = conf->readNumEntry("headers", 0x60);
-            mShowHeaders = mShowHeaders & 0xfb;
-            conf->writeEntry("headers",mShowHeaders);
             KMComposeWin *comp=new KMComposeWin(m);
             comp->show();
             break;
