@@ -2,7 +2,6 @@
 # Copyright (C) YEAR Free Software Foundation, Inc.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -27,9 +26,8 @@ msgid "Host &resolution"
 msgstr "Verts &oppløsning"
 
 #: knu.cpp:163 knu.cpp:293
-#, fuzzy
 msgid "&Finger"
-msgstr "&Ping"
+msgstr "&Finger"
 
 #: knu.cpp:174
 msgid ""
@@ -104,10 +102,19 @@ msgid ""
 "Please use Edit->Preferences... menu\n"
 "to configure it again.\n"
 msgstr ""
+"\n"
+"Du har en feil i din\n"
+"%s/%src-\n"
+"konfigurasjonfil.\n"
+"I [%s]-gruppen,\n"
+"Kan ikke finne gyldig \"path=\"-oppføring.\n"
+"\n"
+"Vennligst bruk Rediger->Preferanser...-menyen\n"
+"for å konfigurere det på nytt.\n"
 
 #: CommandDlg.cpp:349
 msgid "Error in pathname"
-msgstr ""
+msgstr "Feil i sti"
 
 #: CommandDlg.cpp:482
 msgid "Binary"
@@ -119,7 +126,7 @@ msgstr "Sti&navn:"
 
 #: CommandDlg.cpp:499
 msgid "Additional &arguments:"
-msgstr "Tilleggs &argumenter:"
+msgstr "Tilleggs&argumenter:"
 
 #: CommandDlg.cpp:524
 msgid "This command had been disabled in the configuration file."
@@ -131,7 +138,7 @@ msgstr " - konfigurasjon"
 
 #: PingDlg.cpp:94 TracerouteDlg.cpp:95
 msgid "Make host &name resolution"
-msgstr "Lage verts &navne oppløsning"
+msgstr "Lage verts &navneoppløsning"
 
 #: TracerouteDlg.cpp:112
 msgid "&Maximum number of hops:"
@@ -147,11 +154,11 @@ msgstr "navn (PTR)"
 
 #: HostDlg.cpp:107
 msgid "name server (NS)"
-msgstr "navne tjener (NS)"
+msgstr "navnetjener (NS)"
 
 #: HostDlg.cpp:108
 msgid "mail exchanger (MX)"
-msgstr "post utveksler (MX)"
+msgstr "postutveksler (MX)"
 
 #: HostDlg.cpp:109
 msgid "alias (CNAME)"
@@ -171,7 +178,7 @@ msgstr "&Let etter:"
 
 #: HostDlg.cpp:129 HostDlg.cpp:268
 msgid "default server"
-msgstr "standard tjener"
+msgstr "standardtjener"
 
 #: HostDlg.cpp:138
 msgid "Ser&ver:"
@@ -179,19 +186,8 @@ msgstr "&Tjener:"
 
 #: FingerDlg.cpp:68
 msgid "User:"
-msgstr ""
+msgstr "Bruker:"
 
 #: FingerDlg.cpp:86
-#, fuzzy
 msgid "Server:"
-msgstr "&Tjener:"
-
-#~ msgid ""
-#~ "You have a problem in your ~/.kde/share/config/knurc configuration file.\n"
-#~ "In the ["
-#~ msgstr ""
-#~ "Du har et problem i din ~/.kde/share/config/knurc konfigurasjons fil.\n"
-#~ "I ["
-
-#~ msgid "] group, I cannotfind a correct \"path=\" entry."
-#~ msgstr "] gruppen kan jeg ikke finne en korrekt \"path=\" opplysning."
+msgstr "Tjener:"

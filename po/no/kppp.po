@@ -2,7 +2,6 @@
 # Copyright (C) YEAR Free Software Foundation, Inc.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -177,9 +176,8 @@ msgid "Scanning "
 msgstr "Skanner"
 
 #: connect.cpp:408
-#, fuzzy
 msgid "Saving "
-msgstr "Skanner"
+msgstr "Lagrer "
 
 #: connect.cpp:427
 msgid "Sending "
@@ -498,9 +496,8 @@ msgid "Disconnect on X-server shutdown"
 msgstr "Kople ned når X avsluttes"
 
 #: general.cpp:125
-#, fuzzy
 msgid "Quit on Disconnect"
-msgstr "Kople fra"
+msgstr "Avslutt ved frakobling"
 
 #: general.cpp:131
 msgid "Minimize Window on Connect"
@@ -719,23 +716,22 @@ msgstr ""
 "\"%s\""
 
 #: main.cpp:806
-#, fuzzy
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
 "supply a username and a password!"
 msgstr ""
 "Du har valgt autetiseringsmetoden\n"
-"PAP. Dette krver at du oppgitt\n"
+"PAP. Dette krver at du oppgir\n"
 "et brukernavn og et passord!"
 
 #: main.cpp:813
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
 "file \"%s\""
 msgstr ""
-"Kan ikke lage PAP-autentiseringsfil\n"
+"Kan ikke lage CHAP-autentiseringsfil\n"
 "\"%s\""
 
 #: main.cpp:825
@@ -985,29 +981,24 @@ msgid "Selected:"
 msgstr "Valgt:"
 
 #: acctselect.cpp:88
-#, fuzzy
 msgid "Volume accounting:"
-msgstr "Tillat kontering"
+msgstr "Volumkontering:"
 
 #: acctselect.cpp:92
-#, fuzzy
 msgid "No accounting"
-msgstr "Tillat kontering"
+msgstr "Ingen kontering"
 
 #: acctselect.cpp:93
-#, fuzzy
 msgid "Bytes in"
-msgstr "bytes i"
+msgstr "Byter inn"
 
 #: acctselect.cpp:94
-#, fuzzy
 msgid "Bytes out"
-msgstr "bytes ut"
+msgstr "Byter ut"
 
 #: acctselect.cpp:95
-#, fuzzy
 msgid "Bytes in and out"
-msgstr "bytes ut"
+msgstr "byter inng og ut"
 
 #: acctselect.cpp:165 acctselect.cpp:271
 msgid "Available rules"
@@ -1056,16 +1047,12 @@ msgid "Minimize"
 msgstr "Minimer"
 
 #: runtests.cpp:121
-#, fuzzy
 msgid ""
 "You´re not allowed to dial out with kppp.\n"
 "Contact your system administrator."
 msgstr ""
-"Du har ikke tillatelse\n"
-"til å starte pppd!\n"
-"\n"
-"Kontakt din system administrator\n"
-"og spør om adgang til pppd."
+"Du har ikke tillatelse til å ringe ut med kppp.\n"
+"Kontakt din systemadministrator.\n"
 
 #: runtests.cpp:137
 msgid ""
@@ -1115,6 +1102,10 @@ msgid ""
 "itself.\n"
 "Contact your system administrator."
 msgstr ""
+"kppp har oppdaget en 'lock'-innstilling i /etc/ppp/options.\n"
+"\n"
+"Denne opsjonen må fjernes siden kppp tar ansvar for enhetslåsing selv.\n"
+"Kontakt din systemadministratror."
 
 #: runtests.cpp:245
 msgid ""
@@ -1124,41 +1115,8 @@ msgid ""
 "a non-empty file that has appropriate\n"
 "read and write permissions."
 msgstr ""
-
-#~ msgid "pppd Path:"
-#~ msgstr "pppd-sti:"
-
-#~ msgid "Log Viewer:"
-#~ msgstr "Loggviser:"
-
-#~ msgid "started PPP connection:%s:%s"
-#~ msgstr "startet PPP-oppkopling:%s:%s"
-
-#~ msgid ""
-#~ "terminated PPP connection\n"
-#~ "COST OF SESSION: "
-#~ msgstr ""
-#~ "Avsluttet PPP-oppkopling\n"
-#~ "SESJONENSKOSTNADER"
-
-#~ msgid ""
-#~ "\n"
-#~ "SUBTOTAL FOR:"
-#~ msgstr ""
-#~ "\n"
-#~ "SUBTOTAL FOR:"
-
-#~ msgid ""
-#~ "The logviewer \"%s\" was not found!\n"
-#~ "\n"
-#~ "Setting default back to \"%s\"."
-#~ msgstr ""
-#~ "Loggviser \"%s\" ble ikke funnet!\n"
-#~ "\n"
-#~ "Setter standard tilbake til \"%s\"."
-
-#~ msgid "Dismiss"
-#~ msgstr "Avslut"
-
-#~ msgid "Modem sustains fast initialization."
-#~ msgstr "Modem støtter hurtiginitialisering."
+"/etc/resolv.conf mangler!\n"
+"\n"
+"Spør din systemadministrator om å lage\n"
+"en ikke-tom fil som har riktig lese- og\n"
+"skrivetillatelse."

@@ -2,7 +2,6 @@
 # Copyright (C) YEAR Free Software Foundation, Inc.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -44,9 +43,8 @@ msgid "Received %.2f Kb"
 msgstr "Mottatt %.2f kb"
 
 #: NNTP.cpp:555
-#, fuzzy
 msgid "Getting Article"
-msgstr "Henter artikkel liste"
+msgstr "Henter artikkel"
 
 #: NNTP.cpp:641
 msgid "Article Received"
@@ -377,7 +375,6 @@ msgid "Decode Article"
 msgstr "Dekod artikkel"
 
 #: artdlg.cpp:270
-#, fuzzy
 msgid "Mark UnRead"
 msgstr "Merk ulest"
 
@@ -640,25 +637,24 @@ msgid "Read:"
 msgstr ""
 
 #: expireDlg.cpp:47
-#, fuzzy
 msgid "Unread:"
-msgstr "Merk ulest"
+msgstr "Ulest:"
 
 #: expireDlg.cpp:50
 msgid "Article Bodies:"
-msgstr "Aricle Bodies:"
+msgstr "Meldingskropper:"
 
 #: expireDlg.cpp:55
 msgid "Article Headers:"
-msgstr "Article Headers:"
+msgstr "Meldingshoder:"
 
 #: printdlg.cpp:21
 msgid "KRN - Print Settings"
-msgstr "KRn - Skriver innstillinger"
+msgstr "KRN - Skriverinnstillinger"
 
 #: printdlg.cpp:26
 msgid "KRN - Printing Settings"
-msgstr "KRn - Skriver innstillinger"
+msgstr "KRN - Skriverinnstillinger"
 
 #: printdlg.cpp:33
 msgid "General"
@@ -666,7 +662,7 @@ msgstr "Generell"
 
 #: printdlg.cpp:37
 msgid "Use HTML Printing"
-msgstr "Bruk HTML utskrift"
+msgstr "Bruk HTML-utskrift"
 
 #: printdlg.cpp:40
 msgid "Use Direct Printing"
@@ -694,7 +690,7 @@ msgstr "Tekst"
 
 #: rulesDlg.cpp:38
 msgid "KRN - Scoring Rules Editor"
-msgstr "KRn - Scoring Rules Editor"
+msgstr "KRN - Scoring Rules Editor"
 
 #: rulesDlg.cpp:45
 msgid "Global Rules"

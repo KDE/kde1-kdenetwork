@@ -2,7 +2,6 @@
 # Copyright (C) YEAR Free Software Foundation, Inc.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -49,13 +48,13 @@ msgid "Modify Folder"
 msgstr "Endre mappe"
 
 #: kmmainwin.cpp:372
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Are you sure you want to discard the\n"
 "contents of the folder \"%s\" ?"
 msgstr ""
-"Er du sikker på at du ønsker å fjerne mappen\n"
-"\"%s\", og dermed slette dens innhold ?"
+"Er du sikker på at du ønsker å fjerne\n"
+"innholdet til mappen \"%s\" ?"
 
 #: kmmainwin.cpp:375 kmmainwin.cpp:413
 msgid "Confirmation"
