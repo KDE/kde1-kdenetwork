@@ -665,6 +665,10 @@ bool Artdlg::actions (int action)
 
 bool Artdlg::loadArt (QString id)
 {
+    setEnabled (false);
+    acc->setEnabled(false);
+    list->setEnabled(false);
+    messwin->setEnabled(false);
     qApp->setOverrideCursor (waitCursor);
 
     int i=list->currentItem();
@@ -679,6 +683,10 @@ bool Artdlg::loadArt (QString id)
             {
                 list->setCurrentItem(index);
                 qApp->restoreOverrideCursor ();
+                setEnabled (true);
+                acc->setEnabled(true);
+                list->setEnabled(true);
+                messwin->setEnabled(true);
                 return true;
                 break;
             }
@@ -726,6 +734,10 @@ bool Artdlg::loadArt (QString id)
     delete s;
 
     qApp->restoreOverrideCursor ();
+    setEnabled (true);
+    acc->setEnabled(true);
+    list->setEnabled(true);
+    messwin->setEnabled(true);
     return true;
 }
 
