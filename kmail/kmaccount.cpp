@@ -58,11 +58,11 @@ void KMAccount::setName(const QString& aName)
 void KMAccount::setFolder(KMFolder* aFolder)
 {
   if(!aFolder) 
-    {
+  {
     debug("KMAccount::setFolder() : aFolder == NULL");
     mFolder = NULL;
     return;
-    }
+  }
   mFolder = (KMAcctFolder*)aFolder;
 }
 
@@ -107,6 +107,12 @@ void KMAccount::sendReceipt(KMMessage* aMsg, const QString aReceiptTo) const
 {
   KMMessage* newMsg = new KMMessage;
   QString str, receiptTo;
+  KConfig* cfg = app->getConfig();
+  bool sendReceipts;
+
+  cfg->setGroup("General");
+  sendReceipts = cfg->readBoolEntry("send-receipts", true);
+  if (!sendReceipts) return;
 
   receiptTo = aReceiptTo;
   receiptTo.replace(QRegExp("\\n"),"");

@@ -5,6 +5,7 @@
 #include <qpixmap.h>
 #include <kapp.h>
 #include <kiconloader.h>
+#include <qtimer.h>
 
 #include "kmglobal.h"
 #include "kmdragdata.h"
@@ -27,6 +28,8 @@ KMFolderTree::KMFolderTree(QWidget *parent,const char *name) :
   int width;
 
   initMetaObject();
+
+  mUpdateTimer = NULL;
 
   mDropZone = new KDNDDropZone(this, DndRawData);
   connect(mDropZone, SIGNAL(dropAction(KDNDDropZone*)),
@@ -88,10 +91,11 @@ KMFolderTree::~KMFolderTree()
   disconnect(folderMgr, SIGNAL(changed()), this, SLOT(doFolderListChanged()));
 
   if (mDropZone) delete mDropZone;
+  if (mUpdateTimer) delete mUpdateTimer;
 }
 
 //-----------------------------------------------------------------------------
-void KMFolderTree::updateUnreadAll( )
+void KMFolderTree::updateUnreadAll()
 {
   KMFolderDir* fdir;
   KMFolder* folder;
@@ -144,23 +148,34 @@ void KMFolderTree::reload(void)
   if (upd) repaint();
 }
 
+
 //-----------------------------------------------------------------------------
-void KMFolderTree::refresh( KMFolder* aFolder )
+void KMFolderTree::refresh(KMFolder* aFolder)
 {
+  if (!mUpdateTimer)
+  {
+    mUpdateTimer = new QTimer(this);
+    connect(mUpdateTimer, SIGNAL(timeout()), this, SLOT(delayedUpdate()));
+  }
+  mUpdateTimer->changeInterval(200);
+}
+
+
+//-----------------------------------------------------------------------------
+void KMFolderTree::delayedUpdate()
+{
+  int i;
   KMFolder* folder;
   QString str;
-  int i;
   bool upd = autoUpdate();
   bool repaintRequired = false;
 
-  //  setAutoUpdate(FALSE);
+  setAutoUpdate(FALSE);
 
   for (i=0, folder = (KMFolder*)mList.first();
        folder != NULL;
        folder = (KMFolder*)mList.next(),i++)
   {
-    if (folder != aFolder) continue;
-
     str = QString("{") + folder->type() + "} " + folder->label();
     if (text(i) != str) {
        repaintRequired = true;
@@ -171,9 +186,12 @@ void KMFolderTree::refresh( KMFolder* aFolder )
           changeItemColor(app->textColor, i);
     }
   }
-  //  setAutoUpdate(upd);
-  //  if (upd && repaintRequired) repaint();
+  setAutoUpdate(upd);
+  if (upd && repaintRequired) repaint();
+
+  mUpdateTimer->stop();
 }
+
 
 //-----------------------------------------------------------------------------
 void KMFolderTree::doFolderListChanged()

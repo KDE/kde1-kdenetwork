@@ -1,7 +1,19 @@
+1999-05-28  Stefan Taferner  <taferner@kde.org> (KMail-1.0.24)
+
+	* Added delayed update of folder list. This fixes the drastical
+	performance loss by the display of the number of unread 
+	messages (when processing many messages).
+
+	* Added explanation of %_ to text in settings dialog.
+
+	* Added settings option to turn off automatic sending of
+	receive- / read confirmations (default on).
+
 1999-05-27  Sven Radej <radej@kde.org> (KMail-1.0.23)
 
         * Patch from Toivo Pedaste <toivo@ucs.uwa.edu.au> for displaying text
         formatted with spaces
+
         * Patches From Daniel Naber <dnaber@mini.gt.owl.de>:
           - Fix against deleteing two messages at once when in trash (bug 1037)
           - Corrected prepending of "--" before signature

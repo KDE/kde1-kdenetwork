@@ -441,6 +441,11 @@ selected.
 All messages queued in the outbox folder will be sent whenever you check your mail.
 </descrip>
 <p>
+<tag>Automatically send receive- and read confirmations</tag>
+If enabled, kmail will automatically send a receipt to the sender of the message 
+when it receives the message and/or you read it. Currently (KMail 1.0.24), only
+receive confirmation is implemented.
+<p>
 <sect1>PGP Tab
 <p>
 This tab controls the PGP features. At a minimum, you must fill in the <bf>PGP identity</bf> field so that Kmail

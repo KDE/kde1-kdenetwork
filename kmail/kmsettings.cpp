@@ -389,7 +389,7 @@ void KMSettings::createTabComposer(QWidget *parent)
 
   lbl = new QLabel(i18n(
         "The following placeholders are supported in the reply phrases:\n"
-	"%D=date, %S=subject, %F=sender, %%=percent sign"), grp);
+	"%D=date, %S=subject, %F=sender, %%=percent sign, %_=space"), grp);
   lbl->adjustSize();
   lbl->setMinimumSize(100,lbl->size().height());
   grid->setRowStretch(0,10);
@@ -537,7 +537,7 @@ void KMSettings::createTabMisc(QWidget *parent)
   //---------- group: folders
   grp = new QGroupBox(i18n("Folders"), tab);
   box->addWidget(grp);
-  grid = new QGridLayout(grp, 2, 3, 20, 4);
+  grid = new QGridLayout(grp, 3, 3, 20, 4);
 
   emptyTrashOnExit=new QCheckBox(i18n("empty trash on exit"),grp);
   emptyTrashOnExit->setMinimumSize(emptyTrashOnExit->sizeHint());
@@ -545,14 +545,19 @@ void KMSettings::createTabMisc(QWidget *parent)
 
   sendOnCheck = new QCheckBox(i18n("Send Mail in outbox Folder on Check"),grp);
   sendOnCheck->setMinimumSize(sendOnCheck->sizeHint());
-  grid->addMultiCellWidget(sendOnCheck,1,1,0,2);
+  grid->addMultiCellWidget(sendOnCheck, 1, 1, 0, 2);
+
+  sendReceipts = new QCheckBox(i18n("Automatically send receive- and read confirmations"),grp);
+  sendReceipts->setMinimumSize(sendReceipts->sizeHint());
+  grid->addMultiCellWidget(sendReceipts, 2, 2, 0, 2);
 
   grid->activate();
 
   //---------- set values
   config->setGroup("General");
-  emptyTrashOnExit->setChecked(config->readNumEntry("empty-trash-on-exit",0));
-  sendOnCheck->setChecked(config->readBoolEntry("sendOnCheck",false));
+  emptyTrashOnExit->setChecked(config->readNumEntry("empty-trash-on-exit", 0));
+  sendOnCheck->setChecked(config->readBoolEntry("sendOnCheck", false));
+  sendReceipts->setChecked(config->readBoolEntry("send-receipts", true));
 
   //---------- here we go
   box->addStretch(10);
@@ -831,7 +836,8 @@ void KMSettings::doApply()
   config->setGroup("General");
   config->writeEntry("empty-trash-on-exit", emptyTrashOnExit->isChecked());
   config->writeEntry("first-start", FALSE);
-  config->writeEntry("sendOnCheck",sendOnCheck->isChecked());
+  config->writeEntry("sendOnCheck", sendOnCheck->isChecked());
+  config->writeEntry("send-receipts", sendReceipts->isChecked());
 
   //-----
   config->sync();
