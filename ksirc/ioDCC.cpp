@@ -17,8 +17,9 @@ KSircIODCC::~KSircIODCC()
 {
 }
 
-void KSircIODCC::sirc_receive(QString str)
+void KSircIODCC::sirc_receive(const char *string, int len)
 {
+  QString str(string, len);
   // Parse the string to find out what type it is.
   // Note the order here.  
   // Most people tend to receive files, so let's
@@ -42,7 +43,7 @@ void KSircIODCC::sirc_receive(QString str)
     DCCInfo *stat = DCCStatus[filename];
     if(stat == 0){
       proc->getWindowList()["!default"]->sirc_receive(
-					"*E* DCC Premature Close");
+					"*E* DCC Premature Close", 22);
       //      proc->getWindowList()["!default"]->sirc_receive(str);
       return;
     }
@@ -78,7 +79,7 @@ void KSircIODCC::sirc_receive(QString str)
     DCCInfo *stat = DCCStatus[filename];
     if(stat == 0){
       proc->getWindowList()["!default"]->sirc_receive(
-					 "*E* DCC Premature Close - flushing buffers"
+					 "*E* DCC Premature Close - flushing buffers", 41
 					 );
       //      proc->getWindowList()["!default"]->sirc_receive(str);
       return;
@@ -221,7 +222,7 @@ void KSircIODCC::sirc_receive(QString str)
     DCCStatus.remove(filename);
   }
   else{
-    proc->getWindowList()["!default"]->sirc_receive(str);
+    proc->getWindowList()["!default"]->sirc_receive(str, strlen(str));
   }
   
 }

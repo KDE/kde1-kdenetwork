@@ -67,7 +67,7 @@ void KMDIMgr::slotWindowRestored(KMDIWindow *w)
     w->getFrame()->setFrameStyle( QFrame::Panel | QFrame::Raised );
     w->getFrame()->setLineWidth( 2 );
 
-    top_toolbar->removeItem(1);
     top_toolbar->removeItem(2);
     top_toolbar->removeItem(3);
+    top_toolbar->removeItem(4);
 }

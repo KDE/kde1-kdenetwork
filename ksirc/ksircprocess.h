@@ -58,6 +58,7 @@ private:
 
   bool running_window;
   bool default_follow_focus;
+  bool auto_create_really;
 
   char *server;
 

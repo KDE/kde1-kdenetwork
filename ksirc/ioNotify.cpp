@@ -23,8 +23,9 @@ KSircIONotify::~KSircIONotify()
 {
 }
 
-void KSircIONotify::sirc_receive(QString str)
+void KSircIONotify::sirc_receive(const char *string, int len)
 {
+  QString str(string, len);
   if(str.contains("*)*")){
     int s1, s2;
     s1 = str.find("Signon by") + 10;
@@ -48,7 +49,7 @@ void KSircIONotify::sirc_receive(QString str)
     emit notify_offline(nick);
   }
   else{
-    proc->getWindowList()["!default"]->sirc_receive(str);
+    proc->getWindowList()["!default"]->sirc_receive(string, len);
     cerr << "Nick Notifer got " << str << endl;
   }
 }

@@ -119,7 +119,9 @@ KSircProcess::KSircProcess( char *_server, QObject * parent, const char * name )
 
   QDict<KSircMessageReceiver> nTopList(17, FALSE);
   TopList = nTopList;
-  //  TopList.setAutoDelete(TRUE);
+  //  TopList.setAutoDelete(TRUE)
+
+  auto_create_really = FALSE;
 
   // Setup the environment for KSirc
   QString qsNick, qsRealname;
@@ -365,6 +367,8 @@ void KSircProcess::close_toplevel(KSircTopLevel *wm, char *name) /*FOLD00*/
 
   bool is_default = FALSE; // Assume it's no default
 
+  if(auto_create_really == TRUE)
+      turn_on_autocreate();
 
   // Do this now or we get junk left on the screen
   if(kSircConfig->MDIMode == TRUE && MDIMgr != 0x0){
@@ -424,13 +428,20 @@ void KSircProcess::close_toplevel(KSircTopLevel *wm, char *name) /*FOLD00*/
     }
   }
   // Let's let em know she's deleted!
-  emit ProcMessage(QString(server), ProcCommand::turnOffAutoCreate, QString());
-  QTimer::singleShot(5000, this, SLOT(turn_on_autocreate()));
-  emit ProcMessage(QString(server), ProcCommand::deleteTopLevel, 
-		   QString(name));
+  if(kSircConfig->AutoCreateWin == TRUE){
+      emit ProcMessage(QString(server), ProcCommand::turnOffAutoCreate, QString());
+      QTimer::singleShot(5000, this, SLOT(turn_on_autocreate()));
+      auto_create_really = TRUE;
+  }
+  else{
+      auto_create_really = FALSE;
+  }
+  
+  emit ProcMessage(QString(server), ProcCommand::deleteTopLevel,
+                   QString(name));
 }
 
-void KSircProcess::clean_toplevel(KSircTopLevel *clean){ /*fold00*/
+void KSircProcess::clean_toplevel(KSircTopLevel *clean){ /*FOLD00*/
   if(clean == 0x0){
     warning("Passed null to cleaner!!");
     return;
@@ -453,7 +464,7 @@ void KSircProcess::clean_toplevel(KSircTopLevel *clean){ /*fold00*/
   } while(cont == TRUE);
 }
 
-void KSircProcess::default_window(KSircTopLevel *w) /*fold00*/
+void KSircProcess::default_window(KSircTopLevel *w) /*FOLD00*/
 {
 
   //
@@ -561,5 +572,6 @@ void KSircProcess::ServMessage(QString dst_server, int command, QString args) /*
 
 void KSircProcess::turn_on_autocreate()
 {
-  emit ProcMessage(QString(server), ProcCommand::turnOnAutoCreate, QString());
+    emit ProcMessage(QString(server), ProcCommand::turnOnAutoCreate, QString());
+    auto_create_really = FALSE;
 }

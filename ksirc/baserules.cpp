@@ -7,7 +7,7 @@
 extern global_config *kSircConfig;
 extern KConfig *kConfig;
 
-void KSMBaseRules::sirc_receive(QString)
+void KSMBaseRules::sirc_receive(const char *, int)
 {
 }
 

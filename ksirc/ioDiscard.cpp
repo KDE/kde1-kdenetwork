@@ -15,7 +15,7 @@ KSircIODiscard::~KSircIODiscard()
 {
 }
 
-void KSircIODiscard::sirc_receive(QString)
+void KSircIODiscard::sirc_receive(const char *, int)
 {
 }
 

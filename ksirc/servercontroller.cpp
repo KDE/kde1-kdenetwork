@@ -124,6 +124,7 @@ servercontroller::servercontroller /*FOLD00*/
     connect(mdiWnd, SIGNAL(minimized(KMDIWindow *)),
             this, SLOT(MDIMinimized(KMDIWindow *)));
     mdiWnd->show();
+    setCaption("kSirc");
   }
 
   sci->setFrameStyle(QFrame::Box | QFrame::Raised);

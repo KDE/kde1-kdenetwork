@@ -27,8 +27,9 @@ KSircIOLAG::~KSircIOLAG()
   killTimers();
 }
 
-void KSircIOLAG::sirc_receive(QString str)
+void KSircIOLAG::sirc_receive(const char *string, int len)
 {
+  QString str(string, len);
   if(str.contains("*L*")){
     int s1, s2;
     s1 = str.find("*L* ") + 4;
