@@ -26,6 +26,7 @@
 #include <unistd.h>
 #include <qregexp.h>
 #include "pap.h"
+#include "chap.h"
 #include "pppdata.h"
 
 
@@ -33,9 +34,9 @@ bool PAP_UsePAP() {
   return (bool)(gpppdata.authMethod() == AUTH_PAP);
 }
 
-bool PAP_CreateAuthFile() {
+bool PAP_CreateAuthFile(char *authfile) {
   QFile fin, fout;
-  QString fname = PAP_AUTH_FILE;
+  QString fname = authfile;
   fname += ".new";
   
   // copy to new file pap-secrets  
@@ -48,7 +49,7 @@ bool PAP_CreateAuthFile() {
     QRegExp r_user2("\\s*[\"\']" + user + "[\"\']");
 
     // copy old file
-    fin.setName(PAP_AUTH_FILE);
+    fin.setName(authfile);
     if(fin.open(IO_ReadOnly)) {
       QTextStream t(&fin);
       QString line;
@@ -62,40 +63,44 @@ bool PAP_CreateAuthFile() {
 	fout.writeBlock("\n", 1);
       }
 
-      // append user/pass pair
-      line = "\"" + user + "\"\t*\t\"" + pass + "\"\n";
-      fout.writeBlock(line.data(), line.length());
-      fin.close();
+      fin.close();    
     }
+
+    // append user/pass pair
+    QString line = "\"" + user + "\"\t*\t\"" + pass + "\"\n";
+    fout.writeBlock(line.data(), line.length());
 
     fout.close();
   }
 
   QDir d;
-  QString oldName = PAP_AUTH_FILE;
+  QString oldName = authfile;
   oldName += ".old";
 
   // delete old file if any
   d.remove(oldName.data());
 
-  d.rename(PAP_AUTH_FILE, oldName.data());
-  d.rename(fname.data(), PAP_AUTH_FILE);
-  chmod(PAP_AUTH_FILE, 0600);
+  d.rename(authfile, oldName.data());
+  d.rename(fname.data(), authfile);
+  chmod(authfile, 0600);
 
   return TRUE;
 }
 
-bool PAP_RemoveAuthFile() {
-  if(!PAP_UsePAP())
+bool PAP_RemoveAuthFile(char *authfile) {
+  if(!PAP_UsePAP() && strcmp(authfile, PAP_AUTH_FILE) == 0)
     return FALSE;
 
-  QString oldName = PAP_AUTH_FILE;
+  if(!CHAP_UseCHAP() && strcmp(authfile, CHAP_AUTH_FILE) == 0)
+    return FALSE;
+
+  QString oldName = authfile;
   oldName += ".old";
 
   QDir d;
   if(d.exists(oldName.data())) {
-    d.remove(PAP_AUTH_FILE);
-    return d.rename(oldName.data(), PAP_AUTH_FILE);
+    d.remove(authfile);
+    return d.rename(oldName.data(), authfile);
   } else
     return FALSE;
 }

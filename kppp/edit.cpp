@@ -73,6 +73,7 @@ DialWidget::DialWidget( QWidget *parent, const char *name )
   auth->insertItem(klocale->translate("Script-based"));
   auth->insertItem(klocale->translate("PAP"));
   auth->insertItem(klocale->translate("Terminal-based"));
+  auth->insertItem(klocale->translate("CHAP"));
   MIN_WIDTH(auth);
   FIXED_HEIGHT(auth);
   tl->addWidget(auth, 4, 2);

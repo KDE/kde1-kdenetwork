@@ -38,6 +38,9 @@
 // file used for PAP authetication purposes
 #define PAP_AUTH_FILE "/etc/ppp/pap-secrets"
 
+// file used for CHAP authetication purposes
+#define CHAP_AUTH_FILE "/etc/ppp/chap-secrets"
+
 // Define the default modem response timeout
 #define MODEM_TIMEOUT "60"
 

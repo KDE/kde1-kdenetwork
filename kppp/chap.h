@@ -25,15 +25,15 @@
  */
 
 
-#ifndef _PAP_H_
-#define _PAP_H_
+#ifndef _CHAP_H_
+#define _CHAP_H_
 
 #include <qstring.h>
-#include "kpppconfig.h"
 #include "auth.h"
+#include "kpppconfig.h"
 
-bool PAP_UsePAP();
-bool PAP_CreateAuthFile(char *authfile = PAP_AUTH_FILE);
-bool PAP_RemoveAuthFile(char *authfile = PAP_AUTH_FILE);
+bool CHAP_UseCHAP();
+bool CHAP_CreateAuthFile();
+bool CHAP_RemoveAuthFile();
 
 #endif

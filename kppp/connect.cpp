@@ -40,6 +40,7 @@
 #include <errno.h>
 
 #include "pap.h"
+#include "chap.h"
 #include "connect.h"
 #include "main.h"
 #include "kpppconfig.h"
@@ -916,6 +917,7 @@ void ConnectWidget::cancelbutton() {
 
   // just to be sure
   PAP_RemoveAuthFile();
+  CHAP_RemoveAuthFile();
   
   app->processEvents();
   
@@ -1069,6 +1071,7 @@ void ConnectWidget::if_waiting_slot(){
 
   // remove the authentication file
   PAP_RemoveAuthFile();
+  CHAP_RemoveAuthFile();
 
   p_xppp->debugwindow->statusLabel(klocale->translate("Done"));
   set_con_speed_string();
@@ -1397,7 +1400,13 @@ bool ConnectWidget::execppp() {
 
   // PAP settings
   if(gpppdata.authMethod() == AUTH_PAP) {
-    command += " user ";
+    command += " -chap user ";
+    command = command + "\"" + gpppdata.storedUsername() + "\"";
+  }
+
+  // PAP settings
+  if(gpppdata.authMethod() == AUTH_CHAP) {
+    command += " -pap user ";
     command = command + "\"" + gpppdata.storedUsername() + "\"";
   }
 

@@ -1,11 +1,9 @@
 /*
  *
  *              kPPP: A pppd Front End for the KDE project
- *
- * $Id$
  *              Copyright (C) 1997 Bernd Johannes Wuebben
  *                      wuebben@math.cornell.edu
- *
+ * 
  * This file was contributed by Mario Weilguni <mweilguni@sime.com>
  * Thanks Mario!
  *
@@ -24,16 +22,19 @@
  * Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
+#include <qdir.h>
+#include "chap.h"
+#include "pppdata.h"
+#include "pap.h"
 
-#ifndef _PAP_H_
-#define _PAP_H_
+bool CHAP_UseCHAP() {
+  return (bool)(gpppdata.authMethod() == AUTH_CHAP);
+}
 
-#include <qstring.h>
-#include "kpppconfig.h"
-#include "auth.h"
+bool CHAP_CreateAuthFile() {
+  return PAP_CreateAuthFile(CHAP_AUTH_FILE);
+}
 
-bool PAP_UsePAP();
-bool PAP_CreateAuthFile(char *authfile = PAP_AUTH_FILE);
-bool PAP_RemoveAuthFile(char *authfile = PAP_AUTH_FILE);
-
-#endif
+bool CHAP_RemoveAuthFile() {
+  return PAP_RemoveAuthFile(CHAP_AUTH_FILE);
+}

@@ -44,6 +44,7 @@
 #include "version.h"
 #include "macros.h"
 #include "pap.h"
+#include "chap.h"
 #include "docking.h"
 #include "runtests.h"
 
@@ -274,6 +275,9 @@ int main( int argc, char **argv ) {
 
   a.setMainWidget(&xppp);
   a.setTopWidget(&xppp);
+
+//   CHAP_CreateAuthFile();
+//   exit(0);
 
   // we really don't want to die accidentally, since that would leave the
   // modem connected. If you really really want to kill me you must send 
@@ -623,6 +627,7 @@ void dieppp(int sig) {
 
       // just to be sure
       PAP_RemoveAuthFile();
+      CHAP_RemoveAuthFile();
 
       gpppdata.setpppdpid(-1);
 
@@ -687,6 +692,9 @@ void dieppp(int sig) {
 #endif
         if(PAP_UsePAP())
 	  PAP_CreateAuthFile();
+
+        if(CHAP_UseCHAP())
+	  CHAP_CreateAuthFile();
 
 	p_xppp->con_win->hide();
 	p_xppp->con_win->stopClock();
@@ -786,6 +794,30 @@ void XPPPWidget::connectbutton() {
       }
     }
   }
+
+  // if this is a CHAP account, ensure that password and username are
+  // supplied
+  if(CHAP_UseCHAP()) {
+    if(strlen(ID_Edit->text()) == 0 || strlen(PW_Edit->text()) == 0) {
+      QMessageBox::warning(this,
+			   klocale->translate("Error"),
+			   klocale->translate(
+                           "You have selected the authentication\n"
+			   "method CHAP. This requires that you\n"
+			   "supply a username and a password!"));
+      return;
+    } else {      
+      if(!CHAP_CreateAuthFile()) {
+	QString s;
+	s.sprintf(klocale->translate("Cannot create CHAP authentication\n"
+				     "file \"%s\""), CHAP_AUTH_FILE);
+	QMessageBox::warning(this,
+			     klocale->translate("Error"),
+			     s.data());
+	return;
+      }
+    }
+  }
   
   this->hide();
 
@@ -819,6 +851,7 @@ void XPPPWidget::disconnect() {
   gpppdata.setpppdpid(-1);
   
   PAP_RemoveAuthFile();
+  CHAP_RemoveAuthFile();
 
   removedns();
   unlockdevice();

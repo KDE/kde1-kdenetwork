@@ -24,16 +24,13 @@
  * Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
+#ifndef __AUTH__H__
+#define __AUTH__H__
 
-#ifndef _PAP_H_
-#define _PAP_H_
-
-#include <qstring.h>
-#include "kpppconfig.h"
-#include "auth.h"
-
-bool PAP_UsePAP();
-bool PAP_CreateAuthFile(char *authfile = PAP_AUTH_FILE);
-bool PAP_RemoveAuthFile(char *authfile = PAP_AUTH_FILE);
+#define AUTH_SCRIPT     0
+#define AUTH_PAP        1
+#define AUTH_TERMINAL   2
+#define AUTH_CHAP       3
+#define AUTH_MSCHAP     4
 
 #endif

@@ -50,6 +50,7 @@ kppp_SOURCES	= accounts.cpp \
 		acctselect.cpp\
 		ruleset.cpp \
 		pap.cpp \
+		chap.cpp \
 		docking.cpp \
 		runtests.cpp \
 		loginterm.cpp
@@ -83,9 +84,12 @@ noinst_HEADERS = accounts.h \
 		acctselect.h\
 		ruleset.h \
 		pap.h \
+		chap.h \
 		docking.h \
 		runtests.h \
-		loginterm.h
+		loginterm.h \
+		auth.h \
+		version.h
 
 # just to make sure, automake makes them 
 BUILTSOURCES = accounts.moc \
