@@ -195,24 +195,14 @@ void Article::load()
     Lines=strtok(NULL,"\n");
     From=strtok(NULL,"\n");
     Date=strtok(NULL,"\n");
+    
     s=strtok(NULL,"\n");
     if (s=="1")
         isread=true;
 
-    //
-    // robert's cache stuff
-
-    QString s2;
-
-    s2=strtok(NULL, "\n");
-
-    if(s2 == "1")
-      expire = true;
-    else
+    s=strtok(NULL, "\n");
+    if(s != "1")
       expire = false;
-
-    // end  robert's cache stuff
-    //
 
     char *p;
     while (1)

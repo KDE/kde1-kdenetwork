@@ -546,8 +546,9 @@ bool NNTP::postArticle (QString ID)
     QFile f(p);
     if (f.open (IO_ReadOnly))
     {
-        char *buffer=new char[f.size()];
+        char *buffer=new char[f.size()+1];
         f.readBlock(buffer,f.size());
+        buffer[f.size()]=0;
         int errcode=Post();
         if (errcode!=340)
         {
