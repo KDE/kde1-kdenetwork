@@ -27,6 +27,7 @@
 #include <qtstream.h>
 #include <qclipbrd.h>
 #include <qregexp.h>
+#include <qmsgbox.h>
 
 #include <kapp.h>
 #include <kfm.h>
@@ -959,20 +960,58 @@ void Artdlg::saveArt (QString id)
         {
             qApp->setOverrideCursor (arrowCursor);
             QString f=QFileDialog::getSaveFileName(0,"*",this);
-            qApp->restoreOverrideCursor ();
             if (!f.isEmpty())
             {
-                QFile fi(f);
-                if (fi.open(IO_WriteOnly))
+                int i=QMessageBox::Yes;
+                if (QFile::exists(f))
                 {
-                    fi.writeBlock(s->data(),s->length());
-                    fi.close();
+                    QMessageBox *box=new QMessageBox(klocale->translate("KRN - Existing File"),
+                                                     klocale->translate("The File you selected already exists"),
+                                                     QMessageBox::Information,
+                                                     QMessageBox::Yes,
+                                                     QMessageBox::No,
+                                                     QMessageBox::Abort);
+                    box->setButtonText(QMessageBox::Yes,
+                                       klocale->translate("OverWrite"));
+                    box->setButtonText(QMessageBox::No,
+                                       klocale->translate("Append"));
+                    box->setButtonText(QMessageBox::Abort,
+                                       klocale->translate("Cancel"));
+                    i=box->exec();
                 }
-                else
+
+                QFile fi(f);
+                switch (i)
                 {
-                    warning ("Can't open file for writing");
+                case QMessageBox::Yes:
+                    {
+                        if (fi.open(IO_WriteOnly))
+                        {
+                            fi.writeBlock(s->data(),s->length());
+                            fi.close();
+                        }
+                        else
+                        {
+                            warning ("Can't open file for writing");
+                        }
+                        break;
+                    }
+                case QMessageBox::No:
+                    {
+                        if (fi.open(IO_WriteOnly | IO_Append))
+                        {
+                            fi.writeBlock(s->data(),s->length());
+                            fi.close();
+                        }
+                        else
+                        {
+                            warning ("Can't open file for writing");
+                        }
+                        break;
+                    }
                 }
             }
+            qApp->restoreOverrideCursor ();
         }
         delete s;
     }

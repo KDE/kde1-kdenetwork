@@ -5,6 +5,9 @@ Changes made Jan 16
 * [Roberto] Fixed a bug that prevented compilation in gcc
 * [Roberto] Fixed a bug in article expiration (expiry?)
 * [Roberto] Added "tagged->print", fixed a little performance problem.
+* [Roberto] Added "tagged->not expire".
+* [Roberto] Implemented pine-style "Append/Overwrite" when saving to an
+            already existing file.
 
 -----------------------------------------------------------------------------
 Changes made Jan 15
