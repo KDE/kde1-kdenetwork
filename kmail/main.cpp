@@ -670,6 +670,15 @@ main(int argc, char *argv[])
       lock = fopen (lf, "r");
       fscanf (lock, "%d", &pId);
       fclose (lock);
+      // Check if pid is 0 - this would kill everything
+      if (pId == 0)
+      {
+        debug ("\nAccording to /tmp/.kmail%d.lck there is existing kmail", getuid());
+        debug ("process with pid 0, which is wrong. Please close running kmail");
+        debug ("(if any), and delete this file like this:\n rm -f /tmp/.kmail*");
+        debug ("Then restart kmail");
+        exit (0);
+      }
       sprintf (lf, "/tmp/.kmail%d.msg", getuid());
       msg = fopen (lf, "w");
       int i;
