@@ -105,9 +105,15 @@ void PPPData::cancel() {
 const char* PPPData::readConfig(const char* group, const char* key,
 				const char* defvalue = "") {
   if (config) {
+    // this is a strange hack, but the only way I get it to
+    // work
+    static QString s;
+
     config->setGroup(group);
-    if (!config->hasKey(key)) config->writeEntry(key, defvalue);
-    return config->readEntry(key);
+    if (!config->hasKey(key))
+      config->writeEntry(key, defvalue);
+    s = config->readEntry(key);
+    return s.data();
   } else
     return 0L;
   
@@ -176,8 +182,16 @@ bool PPPData::readWholeListConfig(const char* group, const char* key,
 void PPPData::writeConfig(const char* group, const char* key,
 			  const char* value) {
   if (config) {
+    // substiute dollar signs
+    QString s = "";
+    for(unsigned i = 0; i < strlen(value); i++)
+      if(value[i] == '$')
+	s += "$$";
+      else
+	s += value[i];
+
     config->setGroup(group);
-    config->writeEntry(key, value);
+    config->writeEntry(key, s.data());
   }
   
 }
@@ -496,7 +510,6 @@ void PPPData::setbusyWait(const char *n) {
 //Advanced "Modem" dialog
 //
 const char* PPPData::modemInitStr() {
-
   return readConfig(MODEM_GRP, INITSTR_KEY, "ATZ");
 
 }
