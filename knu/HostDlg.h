@@ -24,6 +24,13 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.3  1997/12/07 23:44:29  leconte
+ * - handle the binary's name modification dynamicaly (problem reported
+ *   by Conrad Sanderson)
+ * - added browse button to the option dialog (for binary selection)
+ * - code clean-up
+ * - better fallback to"nslookup" if "host" is not found
+ *
  * Revision 1.2  1997/11/23 22:28:09  leconte
  * - Id and Log added in the headers
  * - Patch from C.Czezatke applied (preparation of KProcess new version)
@@ -50,7 +57,7 @@ public:
  
 
 protected:
-  void         buildCommandLine(QString args);
+  bool         buildCommandLine(QString args);
 
   // additional widgets
   QLabel      *hostLbl1;

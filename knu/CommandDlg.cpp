@@ -23,6 +23,13 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.3  1997/12/07 23:44:16  leconte
+ * - handle the binary's name modification dynamicaly (problem reported
+ *   by Conrad Sanderson)
+ * - added browse button to the option dialog (for binary selection)
+ * - code clean-up
+ * - better fallback to"nslookup" if "host" is not found
+ *
  * Revision 1.2  1997/11/23 22:28:05  leconte
  * - Id and Log added in the headers
  * - Patch from C.Czezatke applied (preparation of KProcess new version)
@@ -266,13 +273,11 @@ CommandDlg::checkInput(QString *args)
 /**
  * build the command line from widgets
  */
-void
-CommandDlg::buildCommandLine(QString args)
+bool
+CommandDlg::buildCommandLine(QString)
 {
   warning("CommandDlg::buildCommandLine must be derived");
-  childProcess.clearArguments();
-  childProcess.setExecutable("echo");
-  childProcess << (const char *)args;
+  return FALSE;
 }
 
 
@@ -282,7 +287,7 @@ CommandDlg::buildCommandLine(QString args)
 void
 CommandDlg::slotLauchCommand()
 {
-  QString str;
+  //QString str;
   QString args;
 
   if (childProcess.isRunning()) {
@@ -320,7 +325,24 @@ CommandDlg::slotLauchCommand()
     }
 
     //  Process creation
-    buildCommandLine(args);
+    if (!buildCommandLine(args)) {
+      QString errorString;
+      debug("buildCommandLine = FALSE");
+      // Same message in MtrDlg.cpp
+      errorString.sprintf(_("\nYou have a problem in your\n" 
+			    "%s/%src\nconfiguration file.\n"
+			    "In the [%s] group,\nI can't "
+			    "find a valid \"path=\" entry.\n\n"
+			    "Please use Edit->Preferences... menu\n"
+			    "to configure it again.\n"), 
+			  (const char *)kapp->localconfigdir(), 
+			  (const char *)kapp->appName(), 
+			  (const char *)removeAmpersand(this->name()));
+      KMsgBox::message(this, _("Error in pathname"), 
+		       errorString, KMsgBox::STOP);
+      slotProcessDead(NULL);
+      return;
+    }
 
     connect(&childProcess, SIGNAL(processExited(KProcess *)), 
 	    SLOT(slotProcessDead(KProcess *)));
@@ -389,8 +411,14 @@ CommandDlg::slotCmdStdout(KProcess *, char *buffer, int buflen)
 {
   int  line, col;
   char *p;
-
-  buffer[buflen] = 0;		// mark eot
+  
+  if (buflen <= 0) {
+    buffer = "--- nothing ---\n";
+    buflen = strlen(buffer);
+  } else {
+    buffer[buflen] = 0;		// mark eot
+    //debug("stdout> %s", buffer);
+  }
 
   // goto end of data
   line = QMAX(commandTextArea->numLines() - 1, 0);

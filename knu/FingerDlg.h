@@ -1,6 +1,6 @@
 /* -*- C++ -*-
  *
- *   TracerouteDlg.cpp - Dialog for the traceroute command
+ *   FingerDlg.h - Dialog for the finger command
  * 
  *   part of knu: KDE network utilities
  *
@@ -24,52 +24,37 @@
  * $Id$
  *
  * $Log$
- * Revision 1.4  1997/12/12 17:55:51  denis
- * Q_OBJECT; again
- *
- * Revision 1.3  1997/12/07 23:44:26  leconte
- * - handle the binary's name modification dynamicaly (problem reported
- *   by Conrad Sanderson)
- * - added browse button to the option dialog (for binary selection)
- * - code clean-up
- * - better fallback to"nslookup" if "host" is not found
- *
- * Revision 1.2  1997/11/23 22:28:16  leconte
- * - Id and Log added in the headers
- * - Patch from C.Czezatke applied (preparation of KProcess new version)
- *
  */
 
-
-#ifndef __TracerouteDlg_h__
-#define __TracerouteDlg_h__
+#ifndef __FingerDlg_h__
+#define __FingerDlg_h__
 
 #include <qchkbox.h>
 #include <qlayout.h>
 
 #include "CommandDlg.h"
 
-class TracerouteDlg: public CommandDlg
+class FingerDlg: public CommandDlg
 {
   Q_OBJECT
 
 public:
-  TracerouteDlg(QString commandName, 
-		QWidget* parent = NULL, const char* name = NULL);
-  virtual ~TracerouteDlg();
+  FingerDlg(QString commandName, 
+	    QWidget* parent = NULL, const char* name = NULL);
+  virtual ~FingerDlg();
   
 
 protected:
   bool         buildCommandLine(QString);
 
-  // widgets
-  QCheckBox   *tracerouteCb1;
-  QLineEdit   *tracerouteLe2;
-  QLabel      *tracerouteLbl2;
+  // additional widgets
   QFrame      *frame1;
+  QLabel      *fingerLbl2;
+  QComboBox   *fingerCb2;
+ 
 
   // layout
   QBoxLayout  *layout3;
-
 };
-#endif // __TracerouteDlg_h__
+#endif // __FingerDlg_h__
+

@@ -23,6 +23,9 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.5  1998/01/03 16:40:05  kulow
+ * corrected typos
+ *
  * Revision 1.4  1997/12/07 23:44:23  leconte
  * - handle the binary's name modification dynamicaly (problem reported
  *   by Conrad Sanderson)
@@ -129,7 +132,7 @@ PingDlg::~PingDlg()
 /**
  * build the command line from widgets
  */
-void
+bool
 PingDlg::buildCommandLine(QString args)
 {
   QString s;
@@ -138,14 +141,7 @@ PingDlg::buildCommandLine(QString args)
   kc->setGroup(configGroupName);
   s = kc->readEntry("path");
   if (s.isNull()) {
-      childProcess.clearArguments();
-      childProcess.setExecutable("echo");
-      childProcess << _("You have a problem in your " 
-			"~/.kde/share/config/knurc configuration file.\n"
-			"In the [")
-		   << this->name() 
-		   << _("] group, I cannot"
-			"find a correct \"path=\" entry.");
+    return FALSE;
   } else {
     //debug("getExecutable = %s", (const char *)s);
     childProcess.clearArguments();
@@ -154,6 +150,7 @@ PingDlg::buildCommandLine(QString args)
       childProcess << "-n";
     }
     childProcess << (const char *)args;
+    return TRUE;
   }
 }
 

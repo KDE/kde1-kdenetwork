@@ -24,6 +24,13 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.3  1997/12/07 23:44:18  leconte
+ * - handle the binary's name modification dynamicaly (problem reported
+ *   by Conrad Sanderson)
+ * - added browse button to the option dialog (for binary selection)
+ * - code clean-up
+ * - better fallback to"nslookup" if "host" is not found
+ *
  * Revision 1.2  1997/11/23 22:28:06  leconte
  * - Id and Log added in the headers
  * - Patch from C.Czezatke applied (preparation of KProcess new version)
@@ -75,7 +82,7 @@ public:
 
 protected:
   virtual bool     checkInput(QString *);
-  virtual void     buildCommandLine(QString);
+  virtual bool     buildCommandLine(QString);
   
   // Widgets
   QLabel*          commandLbl1;
@@ -106,14 +113,14 @@ protected:
   QWidget *commandBinNonOK;
   
 public slots:
-  void slotCmdStdout(KProcess *, char *, int);
-  void slotProcessDead(KProcess *);
+  virtual void slotCmdStdout(KProcess *, char *, int);
+  virtual void slotProcessDead(KProcess *);
 
 
   /**
    * clear output window
    */
-  void clearOutput();
+  virtual void clearOutput();
 
   /**
    * select all in output window
@@ -121,9 +128,9 @@ public slots:
   void selectAll() {commandTextArea->selectAll();};
 
 protected slots:
-    void slotEnableGoBtn(const char *);
+    virtual void slotEnableGoBtn(const char *);
     void slotStopCommand();
-    void slotLauchCommand();
+    virtual void slotLauchCommand();
 };
 
 class CommandCfgDlg: public QWidget

@@ -1,5 +1,5 @@
 /*
- *   TracerouteDlg.cpp - Dialog for the traceroute command
+ *   FingerDlg.cpp - Dialog for the finger command
  * 
  *   part of knu: KDE network utilities
  *
@@ -23,28 +23,10 @@
  * $Id$
  *
  * $Log$
- * Revision 1.5  1998/01/03 16:40:06  kulow
- * corrected typos
- *
- * Revision 1.4  1997/12/07 23:44:25  leconte
- * - handle the binary's name modification dynamicaly (problem reported
- *   by Conrad Sanderson)
- * - added browse button to the option dialog (for binary selection)
- * - code clean-up
- * - better fallback to"nslookup" if "host" is not found
- *
- * Revision 1.3  1997/12/01 21:11:03  leconte
- * Patches by <neal@ctd.comsat.com>
- *
- * Revision 1.2  1997/11/23 22:28:15  leconte
- * - Id and Log added in the headers
- * - Patch from C.Czezatke applied (preparation of KProcess new version)
- *
  */
 
-#include <stdlib.h>
-#include "TracerouteDlg.h"
-#include "TracerouteDlg.moc"
+#include "FingerDlg.h"
+#include "FingerDlg.moc"
 
 
 // This is the unit used to separate widgets
@@ -55,63 +37,53 @@
 /*
  * Constructor
  */
-TracerouteDlg::TracerouteDlg(QString commandName,
-			     QWidget* parent, const char* name)
+FingerDlg::FingerDlg(QString commandName, 
+		     QWidget* parent, const char* name)
   : CommandDlg(commandName, parent, name)
 {
   KConfig *kc = kapp->getConfig();
-
-  layout1 = new QBoxLayout(commandBinOK, QBoxLayout::TopToBottom, SEPARATION);
+  
+  layout1 = new QBoxLayout(commandBinOK, 
+			   QBoxLayout::TopToBottom, SEPARATION);
   CHECK_PTR(layout1);
-    
+  
   layout2 = new QBoxLayout(QBoxLayout::LeftToRight, SEPARATION);
   CHECK_PTR(layout2);
   layout1->addLayout(layout2, 0);
-    
+  
   // Frame for options
   frame1 = new QFrame(commandBinOK, "frame_1");
   CHECK_PTR(frame1);
   frame1->setFrameStyle(QFrame::Box | QFrame::Sunken);
-  frame1->setMinimumSize(0, 2*fontMetrics().height());
   layout1->addWidget(frame1, 0);
   
   layout3 = new QBoxLayout(frame1, QBoxLayout::LeftToRight, SEPARATION/2);
   CHECK_PTR(layout3);
   
-  // Re-make the layout of CommandDlg
+  // Make the layout of CommandDlg
+  commandLbl1->setText(_("User:"));
+  commandLbl1->setFixedSize(commandLbl1->sizeHint());
   layout2->addWidget(commandLbl1);
   layout2->addWidget(commandArgs);
   layout2->addSpacing(2*SEPARATION);
   layout2->addWidget(commandGoBtn);
   layout2->addWidget(commandStopBtn);
-    
+  
   // Layout of options
   layout3->addStretch(10);
   
-  tracerouteCb1 = new QCheckBox(_("Make host &name resolution"), 
-				frame1, "cb_1");
-  tracerouteCb1->setChecked(TRUE);
-  tracerouteCb1->adjustSize();
-  tracerouteCb1->setFixedSize(tracerouteCb1->width(), 
-			      2*fontMetrics().height());
-  layout3->addWidget(tracerouteCb1, 0);
-  
-  layout3->addStretch(10);
-  
-  
-  tracerouteLe2 = new QLineEdit(frame1, "LineEdit_2");
-  tracerouteLe2->setMaxLength(3);
-  tracerouteLe2->setText("30");
-  tracerouteLe2->setFixedSize(fontMetrics().width("0000"), 
-			      (int)(1.75*fontMetrics().height()));
-  
-  tracerouteLbl2 = new QLabel(tracerouteLe2, _("&Maximum number of hops:"), 
-			      frame1, "Label_2"); 
-  tracerouteLbl2->adjustSize();
-  tracerouteLbl2->setFixedSize(tracerouteLbl2->size());
-  
-  layout3->addWidget(tracerouteLbl2, 0);
-  layout3->addWidget(tracerouteLe2, 0);
+  fingerCb2 = new QComboBox(TRUE, frame1, "cb_1");
+  fingerCb2->setMinimumSize(3*fontMetrics().width("----------"), 
+			    2*fontMetrics().height());
+  fingerCb2->setMaximumSize(QLayout::unlimited, 2*fontMetrics().height());
+
+  fingerCb2->insertItem("localhost");
+
+  fingerLbl2 = new QLabel(fingerCb2, _("Server:"), frame1, "Label_1");
+  fingerLbl2->setFixedSize(fingerLbl2->sizeHint());
+
+  layout3->addWidget(fingerLbl2, 0);
+  layout3->addWidget(fingerCb2, 10);
   
   layout3->addStretch(10);
   layout3->activate();
@@ -145,7 +117,7 @@ TracerouteDlg::TracerouteDlg(QString commandName,
 /*
  * Destructor
  */
-TracerouteDlg::~TracerouteDlg()
+FingerDlg::~FingerDlg()
 {
 }
 
@@ -153,10 +125,8 @@ TracerouteDlg::~TracerouteDlg()
  * build the command line from widgets
  */
 bool
-TracerouteDlg::buildCommandLine(QString args)
+FingerDlg::buildCommandLine(QString args)
 {
-  int     iMaxHops;
-  QString sMaxHops;
   QString s;
   KConfig *kc = kapp->getConfig();
   
@@ -165,22 +135,15 @@ TracerouteDlg::buildCommandLine(QString args)
   if (s.isEmpty()) {
     return FALSE;
   } else {
+    QString as;
+    //debug("getExecutable = %s", (const char *)s);
     childProcess.clearArguments();
     childProcess.setExecutable(s);
-    
-    // Check the Maximum hop count
-    iMaxHops = atoi(tracerouteLe2->text());
-    if (iMaxHops <=0) {
-      iMaxHops = 30;
-    }
-    sMaxHops.sprintf("%d", iMaxHops);
-    tracerouteLe2->setText(sMaxHops);
-    
-    if (!tracerouteCb1->isChecked()) {
-      childProcess << "-n";
-    }
-    childProcess << "-m" << sMaxHops;
-    childProcess << (const char *)args;
+
+    as.sprintf("%s@%s", (const char *)args, 
+	       (const char *)fingerCb2->currentText());
+
+    childProcess << (const char *)as;
     return TRUE;
   }
 }

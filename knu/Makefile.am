@@ -25,7 +25,7 @@ bin_PROGRAMS = 	knu
 
 # Which sources should be compiled for knu.
 knu_SOURCES	= knu.cpp CommandDlg.cpp OptionsDlg.cpp \
-			PingDlg.cpp TracerouteDlg.cpp HostDlg.cpp
+			PingDlg.cpp TracerouteDlg.cpp HostDlg.cpp FingerDlg.cpp
 
 # the library search path.
 knu_LDFLAGS = $(all_libraries) $(KDE_RPATH)
@@ -35,14 +35,14 @@ knu_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 knu_LDADD   = -lkdeui -lkdecore -lqt -lXext -lX11 $(LIBSOCKET)
 
 # this option you can leave out. Just, if you use "make dist", you need it
-noinst_HEADERS = knu.h CommandDlg.h OptionsDlg.h \
-                        PingDlg.h TracerouteDlg.h HostDlg.h
+noinst_HEADERS = knu.h CommandDlg.h OptionsDlg.h\
+                        PingDlg.h TracerouteDlg.h HostDlg.h FingerDlg.h
 
 EXTRA_DIST = version.h knu.kdelnk knu.xpm knu.lsm
 
 # just to make sure, automake makes them 
-BUILTSOURCES =	knu.moc CommandDlg.moc OptionsDlg.moc \
-			PingDlg.moc TracerouteDlg.moc HostDlg.moc
+BUILTSOURCES =	knu.moc CommandDlg.moc OptionsDlg.moc\
+			PingDlg.moc TracerouteDlg.moc HostDlg.moc FingerDlg.moc
 
 # if you "make distclean", this files get removed. If you want to remove
 # them while "make clean", use CLEANFILES
@@ -97,3 +97,7 @@ TracerouteDlg.moc: TracerouteDlg.h
 HostDlg.cpp: HostDlg.moc
 HostDlg.moc: HostDlg.h
 	$(MOC) HostDlg.h -o HostDlg.moc
+
+FingerDlg.cpp: FingerDlg.moc
+FingerDlg.moc: FingerDlg.h
+	$(MOC) FingerDlg.h -o FingerDlg.moc

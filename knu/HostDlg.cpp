@@ -23,6 +23,9 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.5  1998/01/03 16:40:03  kulow
+ * corrected typos
+ *
  * Revision 1.4  1997/12/07 23:44:28  leconte
  * - handle the binary's name modification dynamicaly (problem reported
  *   by Conrad Sanderson)
@@ -200,7 +203,7 @@ HostDlg::~HostDlg()
 /**
  * build the command line from widgets
  */
-void
+bool
 HostDlg::buildCommandLine(QString args)
 {
   QString s, queryType;
@@ -211,15 +214,8 @@ HostDlg::buildCommandLine(QString args)
   
   kc->setGroup(configGroupName);
   bin = kc->readEntry("path");
-  if (bin.isNull()) {
-      childProcess.clearArguments();
-      childProcess.setExecutable("echo");
-      childProcess << _("You have a problem in your " 
-			"~/.kde/share/config/knurc configuration file.\n"
-			"In the [")
-		   << this->name() 
-		   << _("] group, I cannot"
-			"find a correct \"path=\" entry.");
+  if (bin.isEmpty()) {
+    return FALSE;
   } else {
     
     bool nslookupBinary = FALSE;
@@ -269,6 +265,8 @@ HostDlg::buildCommandLine(QString args)
       // it's not the default server
       childProcess << hostCb2->currentText();
     }
+
+    return TRUE;
   }
 }
 

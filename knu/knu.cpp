@@ -21,6 +21,17 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.3  1997/12/07 23:44:14  leconte
+ * - handle the binary's name modification dynamicaly (problem reported
+ *   by Conrad Sanderson)
+ * - added browse button to the option dialog (for binary selection)
+ * - code clean-up
+<<<<<<<<<<<<<< variant A
+ * - better fallback to"nslookup" if "host" is not found
+>>>>>>>>>>>>>> variant B
+ * - better fallback to "nslookup" if "host" is not found
+======= end of combination
+ *
  * Revision 1.2  1997/11/23 22:28:17  leconte
  * - Id and Log added in the headers
  * - Patch from C.Czezatke applied (preparation of KProcess new version)
@@ -80,6 +91,7 @@ TopLevel::TopLevel(QWidget *, const char *name)
   PingDlg         *pd;
   TracerouteDlg   *td;
   HostDlg         *hd;
+  FingerDlg       *fd;
 
   windowList.setAutoDelete(FALSE);
   windowList.append(this);
@@ -139,6 +151,15 @@ TopLevel::TopLevel(QWidget *, const char *name)
     CHECK_PTR(hd);
     tabCtrl->addTab(hd, hd->name());
     pages[pagesNumber] = hd;
+    pagesNumber++;
+  }
+
+  // finger tab 
+  if (isTabEnabled("Finger", kc)) {
+    fd = new FingerDlg("finger", tabCtrl, _("&Finger"));
+    CHECK_PTR(fd);
+    tabCtrl->addTab(fd, fd->name());
+    pages[pagesNumber] = fd;
     pagesNumber++;
   }
 
@@ -240,6 +261,7 @@ TopLevel::slotConfig()
 {
   CommandCfgDlg   *configPages[10];
   OptionsDlg      *options;
+  int n = 0;
 
   /*
    * Create options dialogBox
@@ -248,19 +270,28 @@ TopLevel::slotConfig()
   /* ping */
   CommandCfgDlg *ccd = new CommandCfgDlg(_("&Ping"), 0, "ping_cfg");
   CHECK_PTR(ccd);
-  configPages[0] = ccd;
+  configPages[n] = ccd;
+  n++;
   
   /* traceroute */
   ccd = new CommandCfgDlg(_("&Traceroute"), 0, "traceroute_cfg");
   CHECK_PTR(ccd);
-  configPages[1] = ccd;
+  configPages[n] = ccd;
+  n++;
   
   /* host resolution */
   HostCfgDlg *hcd = new HostCfgDlg(_("Host &resolution"), 0, "host_cfg");
   CHECK_PTR(hcd);
-  configPages[2] = hcd;
+  configPages[n] = hcd;
+  n++;
 
-  options = new OptionsDlg(configPages, 3, 0);
+  /* finger */
+  ccd = new CommandCfgDlg(_("&Finger"), 0, "finger_cfg");
+  CHECK_PTR(ccd);
+  configPages[n] = ccd;
+  n++;
+
+  options = new OptionsDlg(configPages, n, 0);
   CHECK_PTR(options);
 
   if (options->exec()) {
