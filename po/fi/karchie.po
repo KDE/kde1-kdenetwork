@@ -23,24 +23,20 @@ msgid "&Open Dir"
 msgstr "&Avaa hakemisto"
 
 #: KAMenu.cpp:88 KAView.cpp:156
-#, fuzzy
 msgid "&Download..."
-msgstr "&Siirrä.."
+msgstr "&Siirrä..."
 
 #: KAMenu.cpp:91
-#, fuzzy
 msgid "&Load List..."
-msgstr "&Lataa lista.."
+msgstr "&Lataa lista..."
 
 #: KAMenu.cpp:92
-#, fuzzy
 msgid "&Save List..."
-msgstr "&Tallenna lista.."
+msgstr "&Tallenna lista..."
 
 #: KAMenu.cpp:93
-#, fuzzy
 msgid "Expor&t List..."
-msgstr "&Vie lista.."
+msgstr "&Vie lista..."
 
 #: KAMenu.cpp:95
 msgid "&Exit"
@@ -111,9 +107,8 @@ msgid "&Nicelevel"
 msgstr "&Kuormitus"
 
 #: KAMenu.cpp:143
-#, fuzzy
 msgid "&All..."
-msgstr "&Kaikki.."
+msgstr "&Kaikki..."
 
 #: KAMenu.cpp:150
 msgid "for &Filename"
@@ -178,27 +173,27 @@ msgstr "Tila: valmis                         "
 #: KAStatusBar.cpp:81
 #, c-format
 msgid "Status: %s"
-msgstr ""
+msgstr "Tila: %s"
 
 #: KAStatusBar.cpp:91
-#, fuzzy, c-format
+#, c-format
 msgid "Hosts: %s"
-msgstr "Isäntä:"
+msgstr "Isäntä: %s"
 
 #: KAStatusBar.cpp:101
 #, c-format
 msgid "%d hits"
-msgstr ""
+msgstr "%d osumaa"
 
 #: KAStatusBar.cpp:111
 #, c-format
 msgid "Progress: %d"
-msgstr ""
+msgstr "Edistyminen: %d"
 
 #: KAStatusBar.cpp:121
 #, c-format
 msgid "%d try."
-msgstr ""
+msgstr "%d yritys."
 
 #: KASettings.cpp:567
 msgid "Reset"
