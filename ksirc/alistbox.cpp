@@ -74,7 +74,7 @@ int aListBox::searchFor(QString nick, bool &found, bool top) /*FOLD00*/
 {
   int min = 0, max = 0;
   int current = 0, compare = 0;
-  int delta = 0;
+  int real_max = 0;
   int insert;
 
   found = FALSE;
@@ -99,7 +99,7 @@ int aListBox::searchFor(QString nick, bool &found, bool top) /*FOLD00*/
     else
       current = -1;
 
-//    debug("Top: %d min: %d max: %d count: %d", top, min, max, count());
+    real_max = max;
     current = (min + max)/2; // + (max-min)%2;
     insert = current;
     int last_current = -1;
@@ -132,7 +132,7 @@ int aListBox::searchFor(QString nick, bool &found, bool top) /*FOLD00*/
       loop++; // Infinite loop detector increment
     } while(max != min && loop < count());    
 
-    if(current == count() - 2){
+    if(current == real_max - 1){
       compare = strcasecmp(text(count()-1), nick.data());
       if(compare < 0){
 	min = current;
