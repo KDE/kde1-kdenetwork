@@ -17,6 +17,11 @@
     the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
     Boston, MA 02111-1307, USA.  */
 
+/** Warning to ktalkd hackers : this file is the definition of a
+ * generic interface for reading systemwide and user configuration.
+ * Two files implement it : readconf.cpp for non-KDE users
+ * and readcfg++.cpp for KDE users.
+ */
 
   /**
         * Initiate user-config-file reading.
@@ -47,15 +52,4 @@ void end_user_config();
   /**
         * Read all site-wide configuration in one pass
         */
-int process_config_file(void);
-
- /**
-        * Set $KDEBINDIR, which might be used by ktalkdrc files
-        */
-void setenv_kdebindir(void);
-
- /**
-        * Get KDE bin dir
-        */
-void get_kdebindir(char * buffer, int max);
-    
+int process_config_file(void);    

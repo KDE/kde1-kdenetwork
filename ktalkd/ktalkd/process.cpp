@@ -223,7 +223,7 @@ int do_announce(register NEW_CTL_MSG *mp, NEW_CTL_RESPONSE *rp, int usercfg)
                     syslog(LOG_ERR,"User unknown : %s.",mp->r_name);
                     syslog(LOG_ERR,"The caller is : %s.",mp->l_name);
                     
-                    switch (Options::NEU_behaviour) {
+                    switch (Options.NEU_behaviour) {
                         case 2: /* Paranoid setting. Do nothing. */
                             message("Paranoid setting. Do nothing.");
                             rp->answer = NOT_HERE;
@@ -234,7 +234,7 @@ int do_announce(register NEW_CTL_MSG *mp, NEW_CTL_RESPONSE *rp, int usercfg)
                             return PROC_REQ_ANSWMACH_NOT_HERE;
                         case 1: /* NEU_user will take the talk. */
                             message("Not here. I ll take the talk.");
-                            fwm = new ForwMachine(mp, Options::NEU_user, "FWR", mp->id_num);
+                            fwm = new ForwMachine(mp, Options.NEU_user, "FWR", mp->id_num);
                             /* store in table, because we'll receive the LOOK_UP */
                             ktable->insert_table(mp, 0L, fwm);
                             fwm->start(mp->id_num);
@@ -271,7 +271,7 @@ int do_announce(register NEW_CTL_MSG *mp, NEW_CTL_RESPONSE *rp, int usercfg)
             /* This is an explicit re-announce, so update the id_num
              * field to avoid duplicates and re-announce the talk. */
             int new_id_num = ktable->new_id();
-            if (Options::debug_mode)
+            if (Options.debug_mode)
                 syslog(LOG_WARNING, "reannounce : updating id %d to id %d",
                        ptr->id_num, new_id_num);
             ptr->id_num = new_id_num; /* update in the table */

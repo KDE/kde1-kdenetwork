@@ -60,53 +60,49 @@ int booleanresult(const char * s)
 }
 
 /*  User configuration file, ktalkdrc in localconfigdir(). */
-KConfig * cfg = 0;
+KConfig * ktalkdcfg = 0;
+/*  User config file for talk announces, ktalkannouncerc in localconfigdir(). */
+KConfig * ktkanncfg = 0;
 
 /*  Initiate user-config-file reading. */
 int init_user_config(char * l_name)
 {
   struct passwd * pw = getpwnam(l_name);
-  struct stat buf;
-  QString aFileName;
 
   if (!pw) return 0;
   else {
-#ifdef HAVE_FUNC_SETENV
-    setenv("HOME",pw->pw_dir,1 /* overwrite */); 
-/* Set $HOME, because localconfigdir() calls QDir::homeDirPath() */
-#else
-    QString envvar = QString("HOME=")+pw->pw_dir;
-    putenv(envvar);
-#endif
-    aFileName = KApplication::localconfigdir()+QString ("/ktalkdrc");
-    endpwent();
-  }
-  if (stat(aFileName,&buf)!=-1)
-      // check if it exists, 'cause otherwise it would be created empty with
-      // root as owner !
-  {
-    cfg = new KConfig( aFileName );
+      struct stat buf;
+      QString cfgFileName, tkannFileName;
 
-  // debug code, to print locale found :
-#if 0
-  const char *g_lang = getenv("LANG");
-  char syscmd[200];
-  if (!g_lang)
-    sprintf ( syscmd, "echo LANG : not set... >/tmp/readcfg++_debug");
-  else
-    sprintf ( syscmd, "echo LANG : %s >/tmp/readcfg++_debug", g_lang);
-  system(syscmd);
-  sprintf ( syscmd, "echo language : %s >>/tmp/readcfg++_debug",
-                  (const char *) kapp->getLocale()->language() );
-  system(syscmd);
-#endif 
-    cfg -> setGroup("ktalkd");
-    message("User config file ok");
-    return 1;
-  } else {
-      message("No user config file %s !",(const char*)aFileName);
-      return 0;
-    }
+#ifdef HAVE_FUNC_SETENV
+      setenv("HOME",pw->pw_dir,1 /* overwrite */); 
+      /* Set $HOME, because localconfigdir() calls QDir::homeDirPath() */
+#else
+      QString envvar = QString("HOME=")+pw->pw_dir;
+      putenv(envvar);
+#endif
+      cfgFileName = KApplication::localconfigdir()+QString ("/ktalkdrc");
+      tkannFileName = KApplication::localconfigdir()+QString ("/ktalkannouncerc");
+      endpwent();
+      if (stat(tkannFileName,&buf)!=-1) {
+          // check if it exists, 'cause otherwise it would be created empty with
+          // root as owner !
+          ktkanncfg = new KConfig(tkannFileName);
+          ktkanncfg -> setGroup("ktalkannounce");
+      } else ktkanncfg = 0L;
+      if (stat(cfgFileName,&buf)!=-1) {
+          // check if it exists, 'cause otherwise it would be created empty with
+          // root as owner !
+          ktalkdcfg = new KConfig(cfgFileName);
+          ktalkdcfg -> setGroup("ktalkd");
+          message("User config file ok");
+      } else {
+          ktalkdcfg = 0L;
+          message("No user config file %s !",(const char*)cfgFileName);
+      }
+      return ((ktkanncfg != 0L) || (ktalkdcfg != 0L));
+      /* Return true if at least one file exists */
+  }
 }
 
 /*
@@ -115,19 +111,26 @@ int init_user_config(char * l_name)
 
 int read_user_config(char * key, char * result, int max)
 {
-    if (!cfg) syslog(LOG_ERR,"PROGRAM ERROR, init_user_config NOT CALLED");
+    KConfig * cfg;
+    if (!strncmp(key,"Sound",5))
+        // Any key starting with Sound is in ktalkannouncerc
+        // talkprg is there too, but we don't care about it here
+        cfg = ktkanncfg;
+    else
+        cfg = ktalkdcfg;
 
+    if (!cfg) return 0; // file doesn't exist
     QString Qresult;
     if (!(Qresult = cfg -> readEntry(key)).isEmpty())
     {
         qstrncpy( result, Qresult, max);
 
-        if (Options::debug_mode) syslog(LOG_DEBUG,"User option %s : %s", key, result);
+        if (Options.debug_mode) syslog(LOG_DEBUG,"User option %s : %s", key, result);
         return 1;
     }
     else 
     {
-        if (Options::debug_mode) syslog(LOG_DEBUG,"User option %s NOT found", key);
+        message("User option %s NOT found", key);
         return 0;
     }
 }
@@ -144,32 +147,23 @@ int read_bool_user_config(char * key, int * result)
 
 void end_user_config()
 {
-  delete cfg;
-  cfg = 0;
-}
-
-// set KDEBINDIR
-void setenv_kdebindir(void)
-{
-#ifdef HAVE_FUNC_SETENV
-  setenv("KDEBINDIR", KApplication::kde_bindir (), 0/*don't overwrite*/);
-#else
-  QString env = QString("KDEBINDIR=") + KApplication::kde_bindir ();
-  putenv(env);
-#endif
-}
-
-// get KDE bin dir
-void get_kdebindir(char * buffer, int max)
-{
-  qstrncpy( buffer, KApplication::kde_bindir(), max);
+  if (ktalkdcfg) delete ktalkdcfg;
+  if (ktkanncfg) delete ktkanncfg;
+  ktalkdcfg = 0L;
+  ktkanncfg = 0L;
 }
 
 // System configuration file
 
 int process_config_file(void)
 { 
-  setenv_kdebindir(); // Has to be done, for any $KDEBINDIR in ktalkdrc.
+  // Has to be done, for any $KDEBINDIR in ktalkdrc.
+#ifdef HAVE_FUNC_SETENV
+  setenv("KDEBINDIR", KApplication::kde_bindir (), 0/*don't overwrite*/);
+#else
+  QString env = QString("KDEBINDIR=") + KApplication::kde_bindir ();
+  putenv(env);
+#endif
 
   QString aFileName = KApplication::kde_configdir()+QString ("/ktalkdrc");
   KConfig * syscfg = new KConfig( aFileName );
@@ -182,62 +176,61 @@ int process_config_file(void)
   //    QString cfgStr = cfgStr0.stripWhiteSpace();
   
   if (found("AnswMach")) {
-    Options::answmach=booleanresult(result); 
-    message("AnswMach : %d",Options::answmach);}
+    Options.answmach=booleanresult(result); 
+    message("AnswMach : %d",Options.answmach);}
   
   if (found("XAnnounce")) {
-    Options::XAnnounce=booleanresult(result); 
-    message("XAnnounce : %d",Options::XAnnounce); }
+    Options.XAnnounce=booleanresult(result); 
+    message("XAnnounce : %d",Options.XAnnounce); }
   
   if (found("Time")) { 
-    Options::time_before_answmach=atoi(result); 
-    message("Time : %d",Options::time_before_answmach); }
+    Options.time_before_answmach=atoi(result); 
+    message("Time : %d",Options.time_before_answmach); }
   
   if (found("Sound")) { 
-    Options::sound=booleanresult(result);
-    message("Sound : %d",Options::sound); }
+    Options.sound=booleanresult(result);
+    message("Sound : %d",Options.sound); }
   
   if (found("SoundFile")) { 
-    qstrncpy(Options::soundfile,result,S_CFGLINE);
-    message("SoundFile = %s",Options::soundfile); }
+    qstrncpy(Options.soundfile,result,S_CFGLINE);
+    message("SoundFile = %s",Options.soundfile); }
   
   if (found("SoundPlayer")) { 
-    qstrncpy(Options::soundplayer,result,S_CFGLINE); 
-    message("SoundPlayer = %s",Options::soundplayer); }
+    qstrncpy(Options.soundplayer,result,S_CFGLINE); 
+    message("SoundPlayer = %s",Options.soundplayer); }
   
   if (found("SoundPlayerOpt")) { 
-    qstrncpy(Options::soundplayeropt,result,S_CFGLINE);
-    message("SoundPlayerOpt = %s",Options::soundplayeropt); }
+    qstrncpy(Options.soundplayeropt,result,S_CFGLINE);
+    message("SoundPlayerOpt = %s",Options.soundplayeropt); }
   
   if (found("MailProg")) { 
-    qstrncpy(Options::mailprog,result,S_CFGLINE);
-    message("Mail prog = %s",Options::mailprog); }
+    qstrncpy(Options.mailprog,result,S_CFGLINE);
+    message("Mail prog = %s",Options.mailprog); }
   
   /* text based announcement */
-  if (found("Announce1")) { qstrncpy(Options::announce1,result,S_CFGLINE); }
-  if (found("Announce2")) { qstrncpy(Options::announce2,result,S_CFGLINE); }
-  if (found("Announce3")) { qstrncpy(Options::announce3,result,S_CFGLINE); }
+  if (found("Announce1")) { qstrncpy(Options.announce1,result,S_CFGLINE); }
+  if (found("Announce2")) { qstrncpy(Options.announce2,result,S_CFGLINE); }
+  if (found("Announce3")) { qstrncpy(Options.announce3,result,S_CFGLINE); }
 
   if (found("NEUUser"))   { 
-      qstrncpy(Options::NEU_user,result,S_INVITE_LINES); 
-      message(Options::NEU_user); 
+      qstrncpy(Options.NEU_user,result,S_INVITE_LINES); 
+      message("NEUUser = %s", Options.NEU_user); 
   }
   if (found("NEUBehaviour")) {
-      Options::NEU_behaviour=atoi(result); 
-      message("NEUBehaviour : %d",Options::NEU_behaviour); 
+      Options.NEU_behaviour=atoi(result); 
+      message("NEUBehaviour : %d",Options.NEU_behaviour); 
   }
   
   if (found("ExtPrg")) { 
-    qstrncpy(Options::extprg,result,S_CFGLINE);
-    message("Ext prg = %s",Options::extprg); }
+    qstrncpy(Options.extprg,result,S_CFGLINE);
+    message("Ext prg = %s",Options.extprg); }
   else {   /* has to work even without config file at all */
-      char buffer [250];
-      get_kdebindir(buffer, 250);
-      snprintf(Options::extprg,S_CFGLINE,"%s/ktalkdlg",buffer);
+      strncpy(Options.extprg, KApplication::kde_bindir().data(), S_CFGLINE-10);
+      strcat(Options.extprg,"ktalkdlg");
   }
 
   delete syscfg;
-  
+  message("End of global configuration");
   return 1;
 }
 

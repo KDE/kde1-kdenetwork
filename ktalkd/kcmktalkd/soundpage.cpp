@@ -24,9 +24,7 @@
 #include "soundpage.h"
 #include <config.h>
 
-#ifdef HAVE_FUNC_SETENV
 #include <stdlib.h> //for setenv
-#endif
 
 #include <qmsgbox.h> 
 #include <qstring.h>
@@ -35,6 +33,7 @@
 #include <kapp.h>
 
 extern KSimpleConfig *config;
+extern KSimpleConfig *announceconfig;
 
 /* Lots of stuff taken from syssound.cpp */
 
@@ -257,19 +256,18 @@ void KSoundPageConfig::defaultSettings() {
 void KSoundPageConfig::loadSettings() {
    
     config->setGroup("ktalkd");
+    announceconfig->setGroup("ktalkannounce");
 
-#ifdef HAVE_FUNC_SETENV
     setenv("KDEBINDIR",KApplication::kde_bindir(),false/*don't overwrite*/); 
            // for the first reading of  the config file
-#endif
 
     extprg_edit->setText(config->readEntry("ExtPrg",KApplication::kde_bindir()+"/ktalkdlg"));
-    client_edit->setText(config->readEntry("talkprg",KApplication::kde_bindir()+"/ktalk"));
+    client_edit->setText(announceconfig->readEntry("talkprg",KApplication::kde_bindir()+"/ktalk"));
 
-    bool b = config->readBoolEntry("Sound",true/*default value*/);
+    bool b = announceconfig->readBoolEntry("Sound",true/*default value*/);
     sound_cb->setChecked(b);
 
-    const QString soundFile = config->readEntry("SoundFile",0L);
+    const QString soundFile = announceconfig->readEntry("SoundFile",0L);
     if (soundFile != 0L)
     {
         int pos = findInSound_List(soundFile);
@@ -288,10 +286,12 @@ void KSoundPageConfig::saveSettings() {
 
     config->setGroup("ktalkd");
     config->writeEntry("ExtPrg", extprg_edit->text());
-    config->writeEntry("talkprg", client_edit->text());
-    config->writeEntry("Sound", sound_cb->isChecked());
-    config->writeEntry("SoundFile",sound_list->text(sound_list->currentItem()));
     config->sync();
+    announceconfig->setGroup("ktalkannounce");
+    announceconfig->writeEntry("talkprg", client_edit->text());
+    announceconfig->writeEntry("Sound", sound_cb->isChecked());
+    announceconfig->writeEntry("SoundFile",sound_list->text(sound_list->currentItem()));
+    announceconfig->sync();
 }
 
 void KSoundPageConfig::applySettings() {

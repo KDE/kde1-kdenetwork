@@ -52,11 +52,11 @@
 #include <errno.h>
 #include <syslog.h>
 #include <unistd.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <pwd.h>
 #include <netdb.h>
-#include <stdlib.h>
 #include "print.h"
 #include "announce.h"
 #include "readconf.h"
@@ -87,49 +87,59 @@ int announce(NEW_CTL_MSG *request, const char *remote_machine, char *disp, int
 
     int pid, status;
     int returncode;
+
+    if (strstr(remote_machine,"\033")) {
+        syslog(LOG_WARNING, 
+               "blocked VT100 FLASH BOMB to user: %s (from field in packet contains bomb)", 
+               request->r_name);
+    } else if (strstr(request->l_name,"\033")) {
+        syslog(LOG_WARNING,
+               "blocked VT100 FLASH BOMB to user: %s (apparently from: %s)", 
+               request->r_name, remote_machine);
+    } else {
+        if ((pid = fork())) {
+            /* we are the parent, so wait for the child */
+            if (pid == -1)		/* the fork failed */
+                return (FAILED);
+            status = wait_process(pid);
+            if ((status&0377) > 0)	/* we were killed by some signal */
+                return (FAILED);
+            /* Get the second byte, this is the exit/return code */
+            return ((status >> 8) & 0377);
+        }
+        /* we are the child, go and do it */
+
+        struct passwd * pw_buf;
+        /** Change our uid. Once and for all that follows. */
+        pw_buf = getpwnam(request->r_name);
+        if (setgid(pw_buf -> pw_gid) || setuid(pw_buf -> pw_uid))
+            syslog(LOG_WARNING, "Warning: setuid: %m");
+
+        /** Also set $HOME once and for all that follows (not used for text
+            announce, but doesn't harm) */
+#ifdef HAVE_FUNC_SETENV
+        setenv("HOME", pw_buf -> pw_dir, 1);
+#else
+        char env[256] = "HOME=";
+        strcat (env, pw_buf -> pw_dir);
+        putenv(env);
+#endif
+
+#ifdef HAVE_KDE
+        returncode = try_Xannounce(request, remote_machine, disp, usercfg, callee);
+        if (returncode != SUCCESS)
+#endif
+            returncode = print_std_mesg( request, remote_machine, usercfg, 0 );
+        _exit(returncode);
         
-     if ((strstr(request->l_name,"\033"))||(strstr(remote_machine,"\033")))
-	  {
-	       if (strstr(remote_machine,"\033"))
-		    {
-			 syslog(LOG_WARNING, 
-	      "blocked VT100 FLASH BOMB to user: %s (from field in packet contains bomb)", 
-				request->r_name);
-		    } else {
-			 syslog(LOG_WARNING,
-              "blocked VT100 FLASH BOMB to user: %s (apparently from: %s)", 
-				request->r_name, remote_machine);
-		    }
-	  } else {
-	    if ((pid = fork())) {
-		/* we are the parent, so wait for the child */
-		if (pid == -1)		/* the fork failed */
-                    return (FAILED);
-                status = wait_process(pid);
-		if ((status&0377) > 0)	/* we were killed by some signal */
-                    return (FAILED);
-		/* Get the second byte, this is the exit/return code */
-		return ((status >> 8) & 0377);
-	    }
-	    /* we are the child, go and do it */
-
-            returncode = announce_proc(request, remote_machine, disp, usercfg, callee);
-            _exit(returncode);
-
-	  }
-     return (FAILED); /* should never happen */
+    }
+    return (FAILED);
 }
-	
-/*
- * See if the user is accepting messages. If so, announce that 
- * a talk is requested.
- */
-
-int announce_proc(NEW_CTL_MSG *request, const char *remote_machine,
-                  char *disp, int usercfg, char * callee) {
 
 #ifdef HAVE_KDE
 
+int try_Xannounce(NEW_CTL_MSG *request, const char *remote_machine,
+                  char *disp, int usercfg, char * callee) {
   int readPipe[2];
   char ch_aux;
   int pid;
@@ -137,16 +147,15 @@ int announce_proc(NEW_CTL_MSG *request, const char *remote_machine,
   struct timezone zone;
   struct tm *localclock;
   char line_buf[N_CHARS];
-  struct passwd * pw_buf;
 
   char * adisp_begin, *disp_ptr, * disp_end;
   char extprg [S_MESSG]; /* Program used for notification. */
   int Xannounceok = 0; /* Set to 1 if at least one Xannounceok succeeded */
   
 #ifdef PROC_FIND_USER
-  if ((Options::XAnnounce) && (strlen(disp) >= 2)) {
+  if ((Options.XAnnounce) && (strlen(disp) >= 2)) {
 #else
-  if ((Options::XAnnounce) && ((int) request->r_tty[3] > (int) 'f')) {
+  if ((Options.XAnnounce) && ((int) request->r_tty[3] > (int) 'f')) {
 #endif /* PROC_FIND_USER */
 
     /*
@@ -170,7 +179,7 @@ int announce_proc(NEW_CTL_MSG *request, const char *remote_machine,
 #endif
     if ((!usercfg) || (!read_user_config("ExtPrg", extprg, S_MESSG)))
         /* try to read extprg from user config file, otherwise : */
-        strcpy(extprg,Options::extprg); /* take default */            
+        strcpy(extprg,Options.extprg); /* take default */            
 
     /* disp can be a LIST of displays, such as ":0 :1", or
          ":0 hostname:0". Let's announce on ALL displays found.
@@ -191,7 +200,7 @@ int announce_proc(NEW_CTL_MSG *request, const char *remote_machine,
         pipe( readPipe );
         switch (pid = fork()) {
             case -1: {
-                syslog(LOG_ERR,"Announce : Fork failed ! - %s",strerror(errno));
+                syslog(LOG_ERR,"Announce : Fork failed ! - %m");
                 return ( FAILED );
             }
             case 0: {                
@@ -205,7 +214,7 @@ int announce_proc(NEW_CTL_MSG *request, const char *remote_machine,
                 putenv(env);
 #endif
 
-                if (Options::debug_mode)
+                if (Options.debug_mode)
                 {
                     syslog(LOG_DEBUG, "Trying to run '%s' at '%s' as '%s'", extprg, 
                            getenv("DISPLAY"), request->r_name );
@@ -219,24 +228,7 @@ int announce_proc(NEW_CTL_MSG *request, const char *remote_machine,
                 dup( readPipe[1] );
                 close( 2 );
                 dup( readPipe[1] );
-                /* ===============================================
-                 * If the display uses Xauth, we will not be able to connect...
-                 * We try by changing the user ID...
-                 */
-                pw_buf = getpwnam(request->r_name);
-                if (setgid(pw_buf -> pw_gid) || setuid(pw_buf -> pw_uid))
-                    syslog(LOG_WARNING, "Warning: setuid: %m");
-                else
-		{
-#ifdef HAVE_FUNC_SETENV
-                    setenv("HOME", pw_buf -> pw_dir, 1);
-#else
-	        char env[256] = "HOME=";
-		strcat (env, pw_buf -> pw_dir);
-                putenv(env);
-#endif
-		}
-
+                /* =============================================== */
                 if (callee)
                     execl( extprg, extprg, line_buf, callee, 0 );
                 else
@@ -260,7 +252,7 @@ int announce_proc(NEW_CTL_MSG *request, const char *remote_machine,
                  * we can't wait the reaction of the user
                  */
                 read( readPipe[0], &ch_aux, 1 );
-                if (Options::debug_mode) syslog(LOG_DEBUG, "Child process sent : %c",ch_aux);  
+                if (Options.debug_mode) syslog(LOG_DEBUG, "Child process sent : %c",ch_aux);  
                 close( readPipe[0] );
                 close( readPipe[1] );
                 if (ch_aux == '#') {
@@ -288,19 +280,15 @@ int announce_proc(NEW_CTL_MSG *request, const char *remote_machine,
 #endif
         return (SUCCESS);
     }
-    else
-        return (print_std_mesg( request, remote_machine, usercfg, 0 ));
-        
-  } else {
-#else
-      {  /* non-KDE stuff here. None now. */
-#endif /* HAVE_KDE */
-    /*
-     * He is not in X, or X announces disabled -> print standard message
-     */
-    return( print_std_mesg( request, remote_machine, usercfg, 0 ) );
   }
+  return (FAILED);
 }
+#endif /* HAVE_KDE */
+
+/*
+ * See if the user is accepting messages. If so, announce that 
+ * a talk is requested.
+ */
 
 int print_std_mesg( NEW_CTL_MSG *request, const char *remote_machine, int
                     usercfg, int force_no_sound ) {
@@ -348,17 +336,16 @@ void print_mesg(FILE * tf, NEW_CTL_MSG * request, const char *
 	char *bptr, *lptr;
 	int i, j, max_size;
 
-	char *localname, *remotemach;
-	const char *remotename;
-
-	remotemach = strdup(remote_machine);
+	char * remotemach = new char[strlen(remote_machine)+1];
+	strcpy(remotemach,remote_machine);
 	/* We have to duplicate it because param_remote_machine is contained
 	   in the hostent structure, and will be erased by gethostbyname. */
 	
-	localname = strdup(gethostbyname(Options::hostname)->h_name);
+	char localname[SYS_NMLN];
+	strcpy(localname,gethostbyname(Options.hostname)->h_name);
 	/* We have to duplicate localname also. Same reasons as above ! */
 	
-	remotename = gethostbyname(remotemach)->h_name;
+	const char *remotename = gethostbyname(remotemach)->h_name;
 	
 	i = 0;
 	max_size = 0;
@@ -368,21 +355,21 @@ void print_mesg(FILE * tf, NEW_CTL_MSG * request, const char *
 	sizes[i] = strlen(line_buf[i]);
 	max_size = max(max_size, sizes[i]);
 	i++;
-	(void)snprintf(line_buf[i], N_CHARS, Options::announce1,
+	(void)snprintf(line_buf[i], N_CHARS, Options.announce1,
 		      localclock->tm_hour , localclock->tm_min );
 	sizes[i] = strlen(line_buf[i]);
 	max_size = max(max_size, sizes[i]);
 	i++;
 	snprintf(buffer, N_CHARS, "%s@%s", request->l_name, remotename);
-	snprintf(line_buf[i], N_CHARS, Options::announce2, buffer);
+	snprintf(line_buf[i], N_CHARS, Options.announce2, buffer);
 	sizes[i] = strlen(line_buf[i]);
 	max_size = max(max_size, sizes[i]);
 	i++;
 
 	if (!(strcmp(localname,remotename))) {
-	  snprintf(line_buf[i], N_CHARS, Options::announce3, request->l_name);
+	  snprintf(line_buf[i], N_CHARS, Options.announce3, request->l_name);
 	} else {
-	  snprintf(line_buf[i], N_CHARS, Options::announce3, buffer);
+	  snprintf(line_buf[i], N_CHARS, Options.announce3, buffer);
 	}
 
 	sizes[i] = strlen(line_buf[i]);
@@ -414,8 +401,7 @@ void print_mesg(FILE * tf, NEW_CTL_MSG * request, const char *
 	fprintf(tf, big_buf);
 	fflush(tf);
 	ioctl(fileno(tf), TIOCNOTTY, (struct sgttyb *) 0);
-        free(localname);
-        free(remotemach);
+        delete remotemach;
 }
 
 int play_sound(int usercfg)
@@ -426,13 +412,13 @@ int play_sound(int usercfg)
      /* We must absolutely read the configuration before forking,
         because the father will close the file soon !! */
      if ((!usercfg) || (!read_user_config("SoundPlayer",sSoundPlayer,S_CFGLINE)))
-         strcpy(sSoundPlayer,Options::soundplayer);
+         strcpy(sSoundPlayer,Options.soundplayer);
      message(sSoundPlayer);
      if ((!usercfg) || (!read_user_config("SoundPlayerOpt",sSoundPlayerOpt,S_CFGLINE)))
-         strcpy(sSoundPlayerOpt,Options::soundplayeropt);
+         strcpy(sSoundPlayerOpt,Options.soundplayeropt);
      message(sSoundPlayerOpt);
      if ((!usercfg) || (!read_user_config("SoundFile",sSoundFile,S_CFGLINE)))
-         strcpy(sSoundFile,Options::soundfile);
+         strcpy(sSoundFile,Options.soundfile);
      message(sSoundFile);
 
      if ((pid = fork())) {
@@ -473,7 +459,7 @@ int sound_or_beep(int usercfg)
      int bSound;
      int ret;
      if ((!usercfg) || (!read_bool_user_config("Sound",&bSound)))
-         bSound=Options::sound;
+         bSound=Options.sound;
      
      message("Sound option in sound_or_beep : %d",bSound);
      

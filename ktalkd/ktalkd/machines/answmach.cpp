@@ -83,9 +83,9 @@ AnswMachine::AnswMachine(struct in_addr r_addr,
     {
         /* The caller is trying to talk to somebody this system doesn't know.
            We can display a NEU banner (non-existent user) and take a message
-           for Options::NEU_user (root?). */                  
+           for Options.NEU_user (root?). */                  
         strncpy(NEUperson,local_user,NEW_NAME_SIZE); /* the person the talk was aimed to */
-        strncpy(local_user,Options::NEU_user,NEW_NAME_SIZE); /* for mail address, config file... */
+        strncpy(local_user,Options.NEU_user,NEW_NAME_SIZE); /* for mail address, config file... */
     } else *NEUperson='\0';
 }
 
@@ -113,7 +113,7 @@ void AnswMachine::start()
 
        If NEU/not logged, start quickly. (Wait just a little for the 
        LEAVE_INVITE to come.) */
-    sleep( (mode==PROC_REQ_ANSWMACH) ? Options::time_before_answmach : 1 );
+    sleep( (mode==PROC_REQ_ANSWMACH) ? Options.time_before_answmach : 1 );
     
     usercfg = init_user_config(local_user);
     
@@ -166,12 +166,12 @@ void AnswMachine::talk()
        strcpy(messg_myaddr,local_user);
 
 #ifdef OLD_POPEN_METHOD   // never defined
-     snprintf(command,S_COMMAND,"%s %s",Options::mailprog,messg_myaddr);
+     snprintf(command,S_COMMAND,"%s %s",Options.mailprog,messg_myaddr);
 
     fd = popen(command,"w");
     if (!fd) 
       {
-	snprintf(customline,S_CFGLINE,"Unable to open a pipe towards %s.",Options::mailprog);
+	snprintf(customline,S_CFGLINE,"Unable to open a pipe towards %s.",Options.mailprog);
 	TalkConnection::p_error(customline);
       }
 #else
@@ -200,14 +200,14 @@ void AnswMachine::talk()
 
     /* No user-config'ed banner */
     if (!usercfg)
-    { /* => Display Options::invitelines */
-         talkconn->write_banner(Options::invitelines);
+    { /* => Display Options.invitelines */
+         talkconn->write_banner(Options.invitelines);
     }
     else if (mode==PROC_REQ_ANSWMACH_NOT_HERE)
-    { /* => Display Options::NEUBanner* */
-         talkconn->write_banner(Options::NEUBanner1);
-         talkconn->write_banner(Options::NEUBanner2);
-         talkconn->write_banner(Options::NEUBanner3);
+    { /* => Display Options.NEUBanner* */
+         talkconn->write_banner(Options.NEUBanner1);
+         talkconn->write_banner(Options.NEUBanner2);
+         talkconn->write_banner(Options.NEUBanner3);
     } else {
 	 int linenr = 1; 
 	 /* number of the Msg[1-*] line. is set to 0 after displaying banner*/
@@ -233,7 +233,7 @@ void AnswMachine::talk()
     if (something_entered || emptymail)
     { /* Don't send empty message, except if 'EmptyMail' has been set */
         int retcode;
-	snprintf(command,S_COMMAND,"cat %s | %s %s",fname,Options::mailprog,messg_myaddr);
+	snprintf(command,S_COMMAND,"cat %s | %s %s",fname,Options.mailprog,messg_myaddr);
         retcode = system(command);
         if ((retcode==127) || (retcode==-1))
           syslog(LOG_ERR,"system() error : %m");
@@ -252,7 +252,7 @@ void AnswMachine::write_headers(FILE * fd, struct hostent * hp, char *
     char * r_user = talkconn->get_caller_name();
 
     /* if using mail.local, set 'Date:' and 'From:', because they will be missing otherwise */
-    int ismaillocal = (strstr(Options::mailprog,"mail.local")!=NULL);
+    int ismaillocal = (strstr(Options.mailprog,"mail.local")!=NULL);
     if (ismaillocal)
             /* should we check only the end of the name ? */
       {

@@ -38,7 +38,7 @@ int main (int argc, char **argv) {
     // argv[1] : user@host (caller)
     // argv[2] (optionnal) : callee, non existent
 
-    KApplication a (argc, argv, "ktalkd"); // we want to read ktalkdrc
+    KApplication a (argc, argv, "ktalkannounce"); // we want to read ktalkannouncerc
 
     struct timeval clock;
     struct timezone zone; 
@@ -70,22 +70,8 @@ int main (int argc, char **argv) {
 
     debug ("#"); // don't erase this! - ktalkd waits for it!
     
-// debug code, to print locale found :
-#if 0
-    const char *g_lang = getenv("LANG"); 
-    char syscmd[200];
-    if (!g_lang)
-        sprintf ( syscmd, "echo LANG : not set... >/tmp/atdlg_debug"); 
-    else
-        sprintf ( syscmd, "echo LANG : %s >/tmp/atdlg_debug", g_lang); 
-    system(syscmd);
-    sprintf ( syscmd, "echo language : %s >>/tmp/atdlg_debug", 
-              (const char *) a.getLocale()->language() );
-    system(syscmd);
-#endif
-
     KConfig *cfg = a.getConfig();
-    cfg->setGroup ("ktalkd");
+    cfg->setGroup ("ktalkannounce");
     bool bSound = cfg->readNumEntry ("Sound", 0);
     KAudio *audio = 0;
 

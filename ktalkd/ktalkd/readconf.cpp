@@ -37,7 +37,7 @@ int booleanresult(char * s)
 int read_user_config(char * key, char * result, int max)
 {
      char * value;
-     char * buff = (char *) malloc (max);
+     char * buff = new char[max];
      char * ret;
      fseek(fd,0,SEEK_SET);
      do {
@@ -49,7 +49,7 @@ int read_user_config(char * key, char * result, int max)
 	  strncpy(result,value,max);
 	  result[strlen(result)-1]='\0'; /* get rid of \n */
      }
-     free(buff);
+     delete buff;
      return (ret) ? 1 : 0;
 }
 
@@ -80,14 +80,6 @@ void end_user_config()
   fclose(fd);
 }
 
-void setenv_kdebindir(void)
-{ // nothing to do, not in KDE.
-}
-
-void get_kdebindir(char * buffer, int max)
-{ // nothing at all, never used outside KDE.
-}
-
 /* routine for reading talkd.conf */
 
 int process_config_file(void)
@@ -99,7 +91,7 @@ int process_config_file(void)
 
 #define found(k) (!strncasecmp(buff,k,strlen(k)))
 
-     if (!fd) { free(buff); return 0; }
+     if (!fd) { return 0; }
      do {
 	  ret = fgets(buff,S_CFGLINE,fd);
 	  if ((ret) && (*buff!='#') && ((result = strchr(buff,':')))) {
@@ -109,47 +101,47 @@ int process_config_file(void)
 	       result[strlen(result)-1]='\0'; /* get rid of \n */
 		 
 	       if (found("AnswMach:")) {
-		    Options::answmach=booleanresult(result); 
-		    message("AnswMach : %d",Options::answmach);}
+		    Options.answmach=booleanresult(result); 
+		    message("AnswMach : %d",Options.answmach);}
 		 
 	       if (found("XAnnounce:")) {
-		    Options::XAnnounce=booleanresult(result); 
-		    message("XAnnounce : %d",Options::XAnnounce); }
+		    Options.XAnnounce=booleanresult(result); 
+		    message("XAnnounce : %d",Options.XAnnounce); }
 	    
 	       if (found("Time:")) { 
-		    Options::time_before_answmach=atoi(result); 
-		    message("Time : %d",Options::time_before_answmach); }
+		    Options.time_before_answmach=atoi(result); 
+		    message("Time : %d",Options.time_before_answmach); }
 
 	       if (found("Sound:")) { 
-		    Options::sound=booleanresult(result);
-		    message("Sound : %d",Options::sound); }
+		    Options.sound=booleanresult(result);
+		    message("Sound : %d",Options.sound); }
 
 	       if (found("SoundFile:")) { 
-		    strncpy(Options::soundfile,result,S_CFGLINE);
-		    message("SoundFile =");message(Options::soundfile); }
+		    strncpy(Options.soundfile,result,S_CFGLINE);
+		    message("SoundFile =");message(Options.soundfile); }
 
 	       if (found("SoundPlayer:")) { 
-                   strncpy(Options::soundplayer,result,S_CFGLINE);
+                   strncpy(Options.soundplayer,result,S_CFGLINE);
 		    message("SoundPlayer ="); message(result); }
 
 	       if (found("SoundPlayerOpt:")) { 
-                    strncpy(Options::soundplayeropt,result,S_CFGLINE); 
+                    strncpy(Options.soundplayeropt,result,S_CFGLINE); 
 		    message("SoundPlayerOpt ="); message(result); }
 
 	       if (found("MailProg:")) { 
-		    strncpy(Options::mailprog,result,S_CFGLINE);
+		    strncpy(Options.mailprog,result,S_CFGLINE);
 		    message("Mail prog ="); message(result); }
 
                /* text based announcement */
-               if (found("Announce1")) { strncpy(Options::announce1,result,S_CFGLINE); }
-               if (found("Announce2")) { strncpy(Options::announce2,result,S_CFGLINE); }
-               if (found("Announce3")) { strncpy(Options::announce3,result,S_CFGLINE); }
+               if (found("Announce1")) { strncpy(Options.announce1,result,S_CFGLINE); }
+               if (found("Announce2")) { strncpy(Options.announce2,result,S_CFGLINE); }
+               if (found("Announce3")) { strncpy(Options.announce3,result,S_CFGLINE); }
                
-               if (found("NEUUser"))   { strncpy(Options::NEU_user,result,S_INVITE_LINES); }
-               if (found("NEUBehaviour")) { Options::NEU_behaviour=booleanresult(result); }
-               if (found("NEUBanner1")) { strncpy(Options::NEUBanner1,result,S_CFGLINE); }
-               if (found("NEUBanner2")) { strncpy(Options::NEUBanner2,result,S_CFGLINE); }
-               if (found("NEUBanner3")) { strncpy(Options::NEUBanner3,result,S_CFGLINE); }
+               if (found("NEUUser"))   { strncpy(Options.NEU_user,result,S_INVITE_LINES); }
+               if (found("NEUBehaviour")) { Options.NEU_behaviour=booleanresult(result); }
+               if (found("NEUBanner1")) { strncpy(Options.NEUBanner1,result,S_CFGLINE); }
+               if (found("NEUBanner2")) { strncpy(Options.NEUBanner2,result,S_CFGLINE); }
+               if (found("NEUBanner3")) { strncpy(Options.NEUBanner3,result,S_CFGLINE); }
 	  }
      } while (ret);
      fclose(fd);

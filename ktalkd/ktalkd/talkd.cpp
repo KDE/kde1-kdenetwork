@@ -78,7 +78,7 @@ void	timeout(int dummy);
 
 KTalkdTable * ktable;
 
-/* the following copies defaults values to 'Options::*' variables so that
+/* the following copies defaults values to 'Options.*' variables so that
  * configuration file can overwrite them */
 
 int main(int argc, char *argv[])
@@ -109,9 +109,9 @@ int main(int argc, char *argv[])
             syslog (LOG_ERR, "Unable to get name of local host : %m");
             _exit(1);
         }
-        strcpy(Options::hostname, buf.nodename);
+        strcpy(Options.hostname, buf.nodename);
 
-	/* if (gethostname(Options::hostname, sizeof (Options::hostname) - 1) < 0) {
+	/* if (gethostname(Options.hostname, sizeof (Options.hostname) - 1) < 0) {
 		syslog(LOG_ERR, "gethostname: %m");
 		_exit(1);
 	}*/
@@ -120,7 +120,7 @@ int main(int argc, char *argv[])
 		_exit(1);
 	}
 	if (argc > 1 && strcmp(argv[1], "-d") == 0)
-		Options::debug_mode = 1;
+		Options.debug_mode = 1;
 
         signal(SIGALRM, timeout);
         alarm(TIMEOUT);
@@ -129,7 +129,7 @@ int main(int argc, char *argv[])
 
 	for (;;) {
 
-                if (Options::answmach && (ret_value>=PROC_REQ_MIN_A))
+                if (Options.answmach && (ret_value>=PROC_REQ_MIN_A))
                 {
                     message("Launch answer machine, mode %d.", ret_value);
                     AnswMachine::launchAnswMach(request, ret_value);

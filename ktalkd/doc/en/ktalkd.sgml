@@ -8,8 +8,8 @@
 
 <title>The ktalkd Handbook
 <author>David Faure <tt/faure@kde.org/
-<date>Version 0.8.8, September 04, 1998
-<abstract>This Handbook describes ktalkd Version 0.8.8
+<date>Version 0.8.9, September 14, 1998
+<abstract>This Handbook describes ktalkd Version 0.8.9
 
 <!-- Table of contents -->
 <toc>
@@ -44,13 +44,16 @@ If desired, a sound is played with the announcement.
 <tag/X Announce/
 If compiled with KDE installed, ktalkd will use
 <bf/ktalkdlg/, a KDE dialog, for announcement.
-If ktalk is running, it will be asked to make the announcement 
+If <bf/ktalk/ is running, it will be asked to make the announcement 
 itself. (New since 0.8.8).
 
 <tag/Multiple displays annoucement/
 If you are logged remotely (e.g. with an
 <tt/"export DISPLAY=..."/ command), the X announcement will be made on
 this display too. Answer on the one you want !
+If you're also logged in a text terminal, and if you're NOT using xterms
+(internal restriction), then you'll see a text announce too, in case you're
+using the text terminal at the time of the announce.
 
 <tag/Forwarding   <it/(New since 0.8.0)//
 You can set up a forward to another user even to another host
@@ -88,7 +91,8 @@ My development platform. Fully tested on it.
 Should compile and run well.
 
 <tag/Solaris/
-It won't work until somebody makes a replacement for snprintf. Of course, one should be able to install another libc to solve this...
+It won't work until somebody makes a replacement for snprintf. 
+Of course, one should be able to install another libc to solve this...
 
 <tag/AIX/
 I've heard about problems about localtime, ctime, and assorted functions.
@@ -109,6 +113,7 @@ I've heard about problems about localtime, ctime, and assorted functions.
 
 <p>You can download <tt/ktalkd/ from the main ftp site of the KDE project,
 <url url="ftp://ftp.kde.org/pub/kde"> and from its mirrors.
+It's usually found in <url url="ftp://ftp.kde.org/pub/kde/stable/latest/apps/network"> 
 
 <sect1>Requirements
 <p>
@@ -264,12 +269,34 @@ ntalk  dgram   udp     wait    root    /usr/sbin/tcpd  /opt/kde/bin/ktalkd -d
 Finally, run a talk session and see the result in /var/log/all_messages
 
 When submitting a bug report, never forget to include the debugging output, but 
-also ktalkd's version number and the "./configure" output.
+also ktalkd's version number and the "./configure" output. Thanks.
 
 <sect>History
 <p>
 Here comes the <bf/ChangeLog/ :
 <verb>
+1998-09-13  David Faure  <faure@kde.org>
+
+	* ktalkd/find_user.cpp: Converted the get_display function to use
+	ifstream instead of read() and realloc()...
+
+	* ktalkd/announce.cpp: Do setuid from the beginning of announce().
+ 	Solves socket permissions for sendToKtalk and speeds up X announce.
+
+	* ktalkd/readcfg++.cpp: Handles two user config files : 
+	ktalkdrc & ktalkannouncerc
+
+	* ktalkd/read*: Removed *kdebindir from readconf.h and readconf.cpp.
+	Internal to readcfg++.cpp.
+
+	* ktalkd/options.*: Now a structure instead of a class.
+
+	* ktalkd/unixsock.cpp: Support for multiple-display ktalk.
+
+1998-09-07  David Faure  <faure@kde.org>
+
+	* ktalkd/announce.cpp: No text announce on a xterm if X announce was ok
+
 1998-09-03  David Faure  <faure@kde.org> (0.8.8)
 
 	* ktalkd/unixsock.cpp: Added chmod => ktalk can write to the socket.

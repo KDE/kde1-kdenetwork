@@ -27,6 +27,7 @@
 #include <ksimpleconfig.h>
 
 KSimpleConfig *config;
+KSimpleConfig *announceconfig;
 
 class KKTalkdApplication : public KControlApplication
 {
@@ -105,6 +106,7 @@ void KKTalkdApplication::apply()
 int main(int argc, char **argv)
 {
     config = new KSimpleConfig(KApplication::localconfigdir() + "/ktalkdrc");
+    announceconfig = new KSimpleConfig(KApplication::localconfigdir() + "/ktalkannouncerc");
     KKTalkdApplication app(argc, argv, "kcmktalkd");
     app.setTitle(i18n("KTalkd Configuration"));
 
@@ -115,5 +117,6 @@ int main(int argc, char **argv)
         ret = 0;
 
     delete config;
+    delete announceconfig;
     return ret;
 }

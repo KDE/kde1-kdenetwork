@@ -77,9 +77,7 @@ int sendToKtalk (const char *username, const char *announce)
 
   tempAddr.sun_family = AF_UNIX;
   if (tmpnam (tempAddr.sun_path) == 0 || 
-      bind (sock, (struct sockaddr *) &tempAddr, sizeof (tempAddr)) == -1 ||
-      chmod (tempAddr.sun_path,
-             S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH) ) {
+      bind (sock, (struct sockaddr *) &tempAddr, sizeof (tempAddr)) == -1) {
       close (sock);
       return 0;
   }

@@ -133,7 +133,7 @@ void KTalkdTable::insert_table(NEW_CTL_MSG *request, NEW_CTL_RESPONSE *response,
     message("Stored as id %d",request->id_num);
     if (response != 0L) response->id_num = htonl(request->id_num);
     /* insert a new entry into the top of the list */
-    ptr = (TABLE_ENTRY *)malloc(sizeof(TABLE_ENTRY));
+    ptr = new TABLE_ENTRY;
     if (ptr == NIL) {
         syslog(LOG_ERR, "insert_table: Out of memory");
         _exit(1);
@@ -197,7 +197,7 @@ void KTalkdTable::delete_entry(register TABLE_ENTRY *ptr)
         ptr->last->next = ptr->next;
     if (ptr->next != NIL)
         ptr->next->last = ptr->last;
-    free((char *)ptr);
+    delete ptr;
 }
 
 KTalkdTable::~KTalkdTable()

@@ -74,9 +74,9 @@ TalkConnection::TalkConnection(struct in_addr caller_machine_addr,
    protocol(_protocol), his_machine_addr(caller_machine_addr), ctl_sockt(-1), sockt(-1)
 {
     /* look up the address of the local host */
-    struct hostent *hp = gethostbyname(Options::hostname);
+    struct hostent *hp = gethostbyname(Options.hostname);
     if (!hp) {
-        syslog(LOG_ERR, "GetHostByName failed for %s.",Options::hostname);
+        syslog(LOG_ERR, "GetHostByName failed for %s.",Options.hostname);
         exit(-1);
     }
     memcpy(&my_machine_addr, hp->h_addr, hp->h_length);

@@ -48,7 +48,6 @@
 #include <syslog.h>
 #include <errno.h>
 #include <netdb.h>
-#include <malloc.h>
 #include <signal.h>
 #include "../print.h"
 #include "../defs.h"
@@ -108,7 +107,7 @@ ForwMachine::ForwMachine(const NEW_CTL_MSG * mp,
 
 ForwMachine::~ForwMachine()
 {
-    free(answ_machine_name);
+    delete answ_machine_name;
     delete tcAnsw;
     if (pid) kill(pid,SIGTERM);
 }
@@ -125,18 +124,21 @@ int ForwMachine::getNames(char * forward)
     if (*cp == '\0') {
         /* this is a forward to a local user */
         strncpy(answ_user, forward, NEW_NAME_SIZE);
-        answ_machine_name = strdup(Options::hostname); /* set by the daemon */
+        answ_machine_name = new char[strlen(Options.hostname)+1];
+	strcpy(answ_machine_name, Options.hostname); /* set by the daemon */
     } else {
         if (*cp == '@') {
             /* user@host */
             *cp++ = '\0';
             strncpy(answ_user, forward, NEW_NAME_SIZE);
-            answ_machine_name = strdup(cp);
+	    answ_machine_name = new char[strlen(cp)+1];
+	    strcpy(answ_machine_name, cp);
         } else {
             /* host.user or host!user or host:user */
             *cp++ = '\0';
             strncpy(answ_user, cp, NEW_NAME_SIZE);
-            answ_machine_name = strdup(forward);
+	    answ_machine_name = new char[strlen(forward)+1];
+	    strcpy(answ_machine_name, forward);
         }
     }
 
@@ -158,7 +160,7 @@ int ForwMachine::isLookupForMe(const NEW_CTL_MSG * mp)
         mp->addr.sin_addr is 0.0.0.0, can't be tested ...
         mp->ctl_addr.sin_addr could be tested but how ?
     */
-    if (Options::debug_mode)
+    if (Options.debug_mode)
     { 
         syslog(LOG_DEBUG,"-- mp->l_name : '%s' answerer : '%s' mp->r_name : '%s' caller : '%s'",
                mp->l_name, answ_user, mp->r_name, caller_username);
@@ -175,7 +177,7 @@ char * ForwMachine::findMatch(NEW_CTL_MSG * mp)
      * matching answerer = r_name and caller = l_name
      * Then return the initial callee (local_user), to display in ktalkdlg 
      * This is used by local forwards, and therefore also if NEUBehaviour=1 */
-    if (Options::debug_mode)
+    if (Options.debug_mode)
     { 
         syslog(LOG_DEBUG,"-- mp->l_name : '%s' caller : '%s' mp->r_name : '%s' answerer : '%s'",
                mp->l_name, caller_username, mp->r_name, answ_user);

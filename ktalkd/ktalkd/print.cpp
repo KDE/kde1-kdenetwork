@@ -55,7 +55,7 @@ static	char *answers[] =
  * @param mp the address of the NEW_CTL_MSG structure */
 void print_request(char *cp,register NEW_CTL_MSG *mp)
 {
-  if (Options::debug_mode)
+  if (Options.debug_mode)
     {
 	char tbuf[80], *tp;
 	
@@ -77,7 +77,7 @@ void print_request(char *cp,register NEW_CTL_MSG *mp)
  * @param mp the address of the NEW_CTL_RESPONSE structure */
 void print_response(char *cp,register NEW_CTL_RESPONSE *rp)
 {
-  if (Options::debug_mode)
+  if (Options.debug_mode)
     {
 	char tbuf[80], *tp, abuf[80], *ap;
 	
@@ -121,29 +121,29 @@ void print_addr(char *cp, struct sockaddr_in * addr)
 
 void message(const char *string)
 {
-  if (Options::debug_mode) syslog(LOG_DEBUG,string);
+  if (Options.debug_mode) syslog(LOG_DEBUG,string);
 }
 
 void message(const char *format,int value)
 {
-  if (Options::debug_mode)
+  if (Options.debug_mode)
     {
       int len = strlen(format)+10;
-      char * buf = (char *)malloc(len);
+      char * buf = new char[len];
       snprintf(buf,len,format,value);
       syslog(LOG_DEBUG,buf);
-      free(buf);
+      delete buf;
     }
 }
 
 void message(const char *format,const char *value)
 {
-  if (Options::debug_mode)
+  if (Options.debug_mode)
     {
       int len = strlen(format)+strlen(value);
-      char * buf = (char *)malloc(len);
+      char * buf = new char[len];
       snprintf(buf,len,format,value);
       syslog(LOG_DEBUG,buf);
-      free(buf);
+      delete buf;
     }
 }
