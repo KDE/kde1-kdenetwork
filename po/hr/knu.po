@@ -18,12 +18,11 @@ msgstr "&Traceroute"
 
 #: knu.cpp:150 knu.cpp:287
 msgid "Host &resolution"
-msgstr "&RazluŸenje doma†ina"
+msgstr "&Rezolucija raèunala"
 
 #: knu.cpp:163 knu.cpp:293
-#, fuzzy
 msgid "&Finger"
-msgstr "&Ping"
+msgstr "&Finger"
 
 #: knu.cpp:174
 msgid ""
@@ -33,9 +32,9 @@ msgid ""
 "So I can't do anything...\n"
 msgstr ""
 "Nijedna naredba nije omogu†ena\n"
-"u konfiguracijskoj datoteci.\n"
+"u postavnoj datoteci.\n"
 "\n"
-"Stoga ne mogu uŸiniti niçta...\n"
+"Stoga ne mogu uèiniti ni¹ta..."
 
 #: knu.cpp:219
 msgid "&New window"
@@ -51,11 +50,11 @@ msgstr "Iz&aberi sve"
 
 #: knu.cpp:236
 msgid "C&lear output window"
-msgstr "OŸisti iz&lazni prozor"
+msgstr "&Oèisti izlazni prozor"
 
 #: knu.cpp:239
 msgid "P&references..."
-msgstr "P&retpostavke..."
+msgstr "P&odesi..."
 
 #: knu.cpp:249
 msgid "About &Qt"
@@ -67,7 +66,7 @@ msgstr "O programu..."
 
 #: CommandDlg.cpp:116
 msgid "H&ost:"
-msgstr "D&oma†in:"
+msgstr "&Raèunalo:"
 
 #: CommandDlg.cpp:125
 msgid "&Go!"
@@ -82,8 +81,8 @@ msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
 msgstr ""
-"Ova naredbena datoteka nije naÐena. \n"
-"Mo§ete zadati stazu u izborniku Promijeni->Pretpostavke..."
+"Ova naredbena datoteka nije naðena. \n"
+"Mo¾ete zadati stazu u izborniku Uredi->Podesi..."
 
 #: CommandDlg.cpp:336
 #, c-format
@@ -98,14 +97,23 @@ msgid ""
 "Please use Edit->Preferences... menu\n"
 "to configure it again.\n"
 msgstr ""
+"\n"
+"Postoji problem u va¹oj\n"
+"%s/%src\n"
+"postavnoj datoteci.\n"
+"U [%s] grupi,\n"
+"ne mogu naæi ispravnu \"path=\" unos.\n"
+"\n"
+"Molim koristite Uredi->Podesi... i\n"
+"provjerite unesene vrijednosti.\n"
 
 #: CommandDlg.cpp:345
 msgid "Error in pathname"
-msgstr ""
+msgstr "Pogre¹na putanja"
 
 #: CommandDlg.cpp:478
 msgid "Binary"
-msgstr "Datoteka"
+msgstr "Binarna datoteka"
 
 #: CommandDlg.cpp:486
 msgid "Path&name:"
@@ -117,19 +125,19 @@ msgstr "Dodatni &argumenti:"
 
 #: CommandDlg.cpp:520
 msgid "This command had been disabled in the configuration file."
-msgstr "Ova naredba je onemogu†ena u konfiguracijskoj datoteci."
+msgstr "Ova naredba je onemoguæena u postavnoj datoteci."
 
 #: OptionsDlg.cpp:68
 msgid " - configuration"
-msgstr " - konfiguracija"
+msgstr " - postava"
 
 #: PingDlg.cpp:94 TracerouteDlg.cpp:95
 msgid "Make host &name resolution"
-msgstr "Izvedi razluŸenje &naziva doma†ina"
+msgstr "Izvr¹i rezoluciju raèunala"
 
 #: TracerouteDlg.cpp:112
 msgid "&Maximum number of hops:"
-msgstr "&Najve†i broj skokova:"
+msgstr "&Najveæi broj skokova:"
 
 #: HostDlg.cpp:105
 msgid "address (A)"
@@ -141,7 +149,7 @@ msgstr "naziv (PTR)"
 
 #: HostDlg.cpp:107
 msgid "name server (NS)"
-msgstr "poslu§itelj naziva (NS)"
+msgstr "poslu¾itelj naziva (NS)"
 
 #: HostDlg.cpp:108
 msgid "mail exchanger (MX)"
@@ -153,7 +161,7 @@ msgstr "zamjensko ime (CNAME)"
 
 #: HostDlg.cpp:110
 msgid "start of authority (SOA)"
-msgstr "poŸetak autoriteta (SOA)"
+msgstr "start of authority (SOA)"
 
 #: HostDlg.cpp:111
 msgid "any record (ANY)"
@@ -161,59 +169,20 @@ msgstr "bilo koji slog (ANY)"
 
 #: HostDlg.cpp:117
 msgid "Se&arch for:"
-msgstr "Potr&a§i:"
+msgstr "Tr&a¾i:"
 
 #: HostDlg.cpp:129 HostDlg.cpp:268
 msgid "default server"
-msgstr "podrazumijevani poslu§itelj"
+msgstr "podrazumijevani poslu¾itelj"
 
 #: HostDlg.cpp:138
 msgid "Ser&ver:"
-msgstr "Pos&lu§itelj:"
+msgstr "Pos&lu¾itelj:"
 
 #: FingerDlg.cpp:68
 msgid "User:"
-msgstr ""
+msgstr "Korisnik:"
 
 #: FingerDlg.cpp:86
-#, fuzzy
 msgid "Server:"
-msgstr "Pos&lu§itelj:"
-
-#~ msgid "&Quit"
-#~ msgstr "&Kraj"
-
-#~ msgid "&Copy"
-#~ msgstr "&Kopiraj"
-
-#~ msgid "&Contents"
-#~ msgstr "&Sadr§aj"
-
-#~ msgid "&About"
-#~ msgstr "O progr&amu"
-
-#~ msgid "&File"
-#~ msgstr "&Datoteka"
-
-#~ msgid "&Edit"
-#~ msgstr "Promij&eni"
-
-#~ msgid "&Help"
-#~ msgstr "&Pomo†"
-
-#~ msgid "&Ok"
-#~ msgstr "&U redu"
-
-#~ msgid "&Cancel"
-#~ msgstr "Pre&kini"
-
-#~ msgid ""
-#~ "You have a problem if your ~/.kderc/share/config/knurc configuration file.\n"
-#~ "In the ["
-#~ msgstr ""
-#~ "Imate problem u vaçoj ~/.kderc/share/config/knurc konfiguracijskoj "
-#~ "datoteci.\n"
-#~ "U ["
-
-#~ msgid "] group, I cannotfind a correct \"path=\" entry."
-#~ msgstr "] grupi, ne mogu na†i ispravnu stavku \"path=\"."
+msgstr "Poslu¾itelj:"

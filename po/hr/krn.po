@@ -43,14 +43,12 @@ msgid "Received %.2f Kb"
 msgstr "Primljeno %.2f Kb"
 
 #: NNTP.cpp:552
-#, fuzzy
 msgid "Getting Article"
-msgstr "Dohvaæanje popisa èlanaka"
+msgstr "Skidam èlanak"
 
 #: NNTP.cpp:638
-#, fuzzy
 msgid "Article Received"
-msgstr "Tijela èlanaka:"
+msgstr "Èlanak Primljen"
 
 #: groupdlg.cpp:125
 msgid "Connect to Server"
@@ -129,9 +127,8 @@ msgid "Expire Options..."
 msgstr "Odrednice o zastari"
 
 #: groupdlg.cpp:169
-#, fuzzy
 msgid "Printing Options..."
-msgstr "NNTP odrednice..."
+msgstr "Odrednice ispisa..."
 
 #: groupdlg.cpp:176
 msgid "About Krn..."
@@ -254,14 +251,12 @@ msgid "Download"
 msgstr "Preuzimanje datoteka"
 
 #: artdlg.cpp:138 artdlg.cpp:260
-#, fuzzy
 msgid "Mark Read"
-msgstr "Oznaèi sve"
+msgstr "Oznaèi proèitanim"
 
 #: artdlg.cpp:139
-#, fuzzy
 msgid "Mark Unread"
-msgstr "Oznaèi sve"
+msgstr "Oznaèi neproèitanim"
 
 #: artdlg.cpp:141 artdlg.cpp:155
 msgid "Print"
@@ -277,7 +272,7 @@ msgstr "Ne istièe"
 
 #: artdlg.cpp:153
 msgid "Lookup in Altavista"
-msgstr ""
+msgstr "Tra¾ite na Altavisti"
 
 #: artdlg.cpp:157 artdlg.cpp:244
 msgid "Reply by Mail"
@@ -316,17 +311,16 @@ msgid "Appearance..."
 msgstr "Pojava..."
 
 #: artdlg.cpp:185
-#, fuzzy
 msgid "Sorting..."
-msgstr "Stavljanje u nit..."
+msgstr "Sortiram..."
 
 #: artdlg.cpp:189
 msgid "Edit Rules"
-msgstr ""
+msgstr "Uredi Pravila"
 
 #: artdlg.cpp:190
 msgid "Update"
-msgstr ""
+msgstr "Osvje¾i"
 
 #: artdlg.cpp:199
 #, fuzzy
@@ -351,7 +345,7 @@ msgstr "Dohvati popis èlanaka"
 
 #: artdlg.cpp:217
 msgid "Refresh Display"
-msgstr ""
+msgstr "Osvje¾i Prikaz"
 
 #: artdlg.cpp:240
 msgid "Save Article"
@@ -382,9 +376,8 @@ msgid "Decode Article"
 msgstr "Dekodiraj èlanak"
 
 #: artdlg.cpp:262
-#, fuzzy
 msgid "Mark UnRead"
-msgstr "Oznaèi sve"
+msgstr "Oznaèi neproèitanim"
 
 #: artdlg.cpp:284 sortDlg.cpp:34
 msgid "Sender"
@@ -396,11 +389,11 @@ msgstr "Linija"
 
 #: artdlg.cpp:287 sortDlg.cpp:33
 msgid "Score"
-msgstr ""
+msgstr "Rezultat"
 
 #: artdlg.cpp:288 sortDlg.cpp:32
 msgid "Subject"
-msgstr "Subjekt"
+msgstr "Tema"
 
 #: artdlg.cpp:451
 msgid "Threading..."
@@ -427,7 +420,6 @@ msgid "Append"
 msgstr "Dodaj na kraj"
 
 #: artdlg.cpp:1317
-#, fuzzy
 msgid ""
 "From: Krn\n"
 "To: You\n"
@@ -435,6 +427,8 @@ msgid ""
 "Error getting article.\n"
 "Server said:\n"
 msgstr ""
+"Od: Krn\n"
+"Za: Vi\n"
 "\n"
 "Gre¹ka kod dohvaæanja èlanka.\n"
 "Poslu¾itelj je rekao:\n"
@@ -449,11 +443,11 @@ msgstr "KRN-Postava identiteta"
 
 #: identDlg.cpp:50
 msgid "Here you should enter your personal information"
-msgstr ""
+msgstr "Ovdje trebate unijesti osobne podatke"
 
 #: identDlg.cpp:52
 msgid "You should know what these are!"
-msgstr ""
+msgstr "Trebali bi znati ¹to su ovi!"
 
 #: identDlg.cpp:61
 msgid "Real Name"
@@ -461,7 +455,7 @@ msgstr "Stvarno ime"
 
 #: identDlg.cpp:67
 msgid "E-mail Address"
-msgstr "Adresa elektronske po¹te"
+msgstr "E-mail adresa"
 
 #: identDlg.cpp:73
 msgid "Organization"
@@ -472,9 +466,8 @@ msgid "KRN-NNTP configuration"
 msgstr "KRN-NNTP postava"
 
 #: NNTPConfigDlg.cpp:33
-#, fuzzy
 msgid "Servers"
-msgstr "NNTP poslu¾itelj"
+msgstr "Poslu¾itelji"
 
 #: NNTPConfigDlg.cpp:35
 msgid "SMTP server"
@@ -489,9 +482,8 @@ msgid "Connect on Startup"
 msgstr "Spoji kod pokretanja"
 
 #: NNTPConfigDlg.cpp:56
-#, fuzzy
 msgid "Connect without asking"
-msgstr "Spoji s poslu¾iteljem"
+msgstr "Spoji se bez pitanja"
 
 #: NNTPConfigDlg.cpp:60
 msgid "Authenticate"
@@ -515,12 +507,11 @@ msgstr "ID"
 
 #: decoderDlg.cpp:44
 msgid "Destination directory:"
-msgstr ""
+msgstr "Odredi¹ni direktorij:"
 
 #: decoderDlg.cpp:47
-#, fuzzy
 msgid "Decode All"
-msgstr "Dekodiraj"
+msgstr "Dekodiraj Sve"
 
 #: kdecode.cpp:29
 msgid "KRN-Decoder"
@@ -533,7 +524,7 @@ msgstr "Nepodr¾ani tip kodiranja: %s."
 
 #: aboutDlg.cpp:28
 msgid "About KRN"
-msgstr "O KRN"
+msgstr "O KRNu"
 
 #: aboutDlg.cpp:39
 msgid "Part of the KDE project."
@@ -548,51 +539,48 @@ msgid "And Many thanks to:"
 msgstr "I puno hvala:"
 
 #: fontsDlg.cpp:39
-#, fuzzy
 msgid "Message Display Settings"
-msgstr "Poruka prika¾i pismo"
+msgstr "Postava izgleda poruke"
 
 #: fontsDlg.cpp:46
 msgid "Header Style"
-msgstr ""
+msgstr "Stil Zaglavlja"
 
 #: fontsDlg.cpp:48
 msgid "Fancy"
-msgstr ""
+msgstr "Ukrasno"
 
 #: fontsDlg.cpp:49
 msgid "Brief"
-msgstr ""
+msgstr "Kratko"
 
 #: fontsDlg.cpp:50
-#, fuzzy
 msgid "Standard"
-msgstr "Standardno pismo"
+msgstr "Standardno"
 
 #: fontsDlg.cpp:51
 msgid "Long"
-msgstr ""
+msgstr "Dugo"
 
 #: fontsDlg.cpp:52
 msgid "All"
-msgstr ""
+msgstr "Cijelo"
 
 #: fontsDlg.cpp:56
-#, fuzzy
 msgid "Attachment Style"
-msgstr "Prilog: "
+msgstr "Stil Priloga: "
 
 #: fontsDlg.cpp:58
 msgid "Iconic"
-msgstr ""
+msgstr "Kao ikona"
 
 #: fontsDlg.cpp:59
 msgid "Smart"
-msgstr ""
+msgstr "Pametno"
 
 #: fontsDlg.cpp:60
 msgid "Inline"
-msgstr ""
+msgstr "Ugraðeno"
 
 #: fontsDlg.cpp:67
 msgid "Font Size:"
@@ -636,33 +624,31 @@ msgstr "Boja kori¹tene veze"
 
 #: fontsDlg.cpp:107
 msgid "Use only one window"
-msgstr ""
+msgstr "Koristi samo jedan prozor"
 
 #: fontsDlg.cpp:109
 msgid "Split window vertically"
-msgstr ""
+msgstr "Podijeli prozor uspravno"
 
 #: findArtDlg.cpp:22
-#, fuzzy
 msgid "KRN - Article Searcher"
-msgstr "Zaglavlja èlanaka:"
+msgstr "KRN - pretra¾ivaè èlanaka:"
 
 #: findArtDlg.cpp:29
-#, fuzzy
 msgid "Find Articles With:"
-msgstr "Pronaði èlanak"
+msgstr "Pronaði èlanake s:"
 
 #: findArtDlg.cpp:34 rulesDlg.cpp:106
 msgid "In Field:"
-msgstr ""
+msgstr "U Polju:"
 
 #: findArtDlg.cpp:56 rulesDlg.cpp:132
 msgid "Wildcard Mode"
-msgstr ""
+msgstr "Wildcard naèin"
 
 #: krnsender.cpp:48
 msgid "This server is read onlyyou can't post here!"
-msgstr ""
+msgstr "Ovaj poslu¾itelj dozvoljava samo èitanje!"
 
 #: expireDlg.cpp:22 expireDlg.cpp:27
 msgid "KRN - Expire Settings"
@@ -674,11 +660,11 @@ msgstr "Koliko dugo æemo dr¾ati ove stvari (u danima)?"
 
 #: expireDlg.cpp:46
 msgid "Read:"
-msgstr ""
+msgstr "Proèitane:"
 
 #: expireDlg.cpp:47
 msgid "Unread:"
-msgstr ""
+msgstr "Neproèitane:"
 
 #: expireDlg.cpp:50
 msgid "Article Bodies:"
@@ -689,48 +675,44 @@ msgid "Article Headers:"
 msgstr "Zaglavlja èlanaka:"
 
 #: printdlg.cpp:21
-#, fuzzy
 msgid "KRN - Print Settings"
-msgstr "KRN - Postava zastare"
+msgstr "KRN - Postava ispisa"
 
 #: printdlg.cpp:26
-#, fuzzy
 msgid "KRN - Printing Settings"
-msgstr "KRN - Postava zastare"
+msgstr "KRN - Postava ispisa"
 
 #: printdlg.cpp:33
-#, fuzzy
 msgid "General"
-msgstr "Po¹iljatelj"
+msgstr "Opæenito"
 
 #: printdlg.cpp:37
 msgid "Use HTML Printing"
-msgstr ""
+msgstr "Koristi HTML ispisivanje"
 
 #: printdlg.cpp:40
 msgid "Use Direct Printing"
-msgstr ""
+msgstr "Koristi izravno ispisivanje"
 
 #: printdlg.cpp:48
-#, fuzzy
 msgid "Print using:"
-msgstr "Ispi¹i poruku"
+msgstr "Ispi¹i koristeæi:"
 
 #: printdlg.cpp:52
 msgid "Feed it with:"
-msgstr ""
+msgstr "Puni ga s:"
 
 #: printdlg.cpp:54
 msgid "Postscript"
-msgstr ""
+msgstr "Postscript"
 
 #: printdlg.cpp:55
 msgid "HTML"
-msgstr ""
+msgstr "HTML"
 
 #: printdlg.cpp:56
 msgid "Text"
-msgstr ""
+msgstr "Tekst"
 
 #: rulesDlg.cpp:38
 msgid "KRN - Scoring Rules Editor"
@@ -738,587 +720,48 @@ msgstr ""
 
 #: rulesDlg.cpp:45
 msgid "Global Rules"
-msgstr ""
+msgstr "Globalna Pravila"
 
 #: rulesDlg.cpp:47
 msgid "All Rules"
-msgstr ""
+msgstr "Sva Pravila"
 
 #: rulesDlg.cpp:63
-#, fuzzy
 msgid "Active Rules"
-msgstr "Dohvati aktivnu datoteku"
+msgstr "Aktivna Pravila"
 
 #: rulesDlg.cpp:70
 msgid "Rule Editor"
-msgstr ""
+msgstr "Urednik Pravila"
 
 #: rulesDlg.cpp:87
 msgid "Save as"
-msgstr ""
+msgstr "Spremi pod drugim imenom"
 
 #: rulesDlg.cpp:101
-#, fuzzy
 msgid "Match Articles With:"
-msgstr "Dohvati popis èlanaka"
+msgstr "Usporedi èlanake s:"
 
 #: rulesDlg.cpp:126
 msgid "Negative"
-msgstr ""
+msgstr "Negativno"
 
 #: rulesDlg.cpp:189
-#, fuzzy
 msgid "Rule name:"
-msgstr "Stvarno ime"
+msgstr "Ime pravila:"
 
 #: sortDlg.cpp:23
-#, fuzzy
 msgid "KRN - Header Sorting"
-msgstr "KRN - Postava zastare"
+msgstr "KRN - Sortiranje Zaglavlja"
 
 #: sortDlg.cpp:37
 msgid "None"
-msgstr ""
+msgstr "Nijedan"
 
 #: sortDlg.cpp:39
 msgid "Sort by:"
-msgstr ""
+msgstr "Sortiraj po:"
 
 #: sortDlg.cpp:56
-#, fuzzy
 msgid "Use Threading"
-msgstr "Stavljanje u nit..."
-
-#~ msgid "Sorry!"
-#~ msgstr "®ao mi je!"
-
-#~ msgid ""
-#~ "That newsgroup is not in the current active file\n"
-#~ " Krn can't handle this gracefully right now"
-#~ msgstr ""
-#~ "Ta novinska grupa nije u trenutno aktivnoj datoteci\n"
-#~ " Krn ne mo¾e rije¹iti to dobrohotno trenutaèno"
-
-#~ msgid "menu"
-#~ msgstr "izbornik"
-
-#~ msgid "Date"
-#~ msgstr "Datum"
-
-#~ msgid "Name"
-#~ msgstr "Ime"
-
-#~ msgid "test"
-#~ msgstr "provjera"
-
-#~ msgid "On %D, you wrote:"
-#~ msgstr "Dana %D, napisali ste:"
-
-#~ msgid "On %D, %F wrote:"
-#~ msgstr "Dana %D, %F je napisao(la):"
-
-#~ msgid "Forwarded Message"
-#~ msgstr "Proslijeðena poruka"
-
-#~ msgid "KMail Composer"
-#~ msgstr "KMail kompozitor"
-
-#~ msgid "F"
-#~ msgstr "O"
-
-#~ msgid "Type"
-#~ msgstr "Tip"
-
-#~ msgid "&From:"
-#~ msgstr "&Od"
-
-#~ msgid "&Reply to:"
-#~ msgstr "&Odgovori na:"
-
-#~ msgid "&To:"
-#~ msgstr "&Za:"
-
-#~ msgid "&Cc:"
-#~ msgstr "&Cc:"
-
-#~ msgid "&Bcc:"
-#~ msgstr "&Bcc:"
-
-#~ msgid "&Subject:"
-#~ msgstr "&Subjekt:"
-
-#~ msgid "&Newsgroups:"
-#~ msgstr "&Novinske grupe:"
-
-#~ msgid "&Followup-To:"
-#~ msgstr "&Nastavak-Za:"
-
-#~ msgid "&Send"
-#~ msgstr "&Po¹alji"
-
-#~ msgid "S&end later"
-#~ msgstr "P&o¹alji kasnije"
-
-#~ msgid "S&end now"
-#~ msgstr "P&o¹alji sada"
-
-#~ msgid "&Insert File..."
-#~ msgstr "&Umetni datoteku..."
-
-#~ msgid "&Addressbook..."
-#~ msgstr "&Adresar..."
-
-#~ msgid "&New Composer..."
-#~ msgstr "&Novi kompozitor..."
-
-#~ msgid "Find..."
-#~ msgstr "Pronaði..."
-
-#~ msgid "&Urgent"
-#~ msgstr "&Hitno"
-
-#~ msgid "&Confirm delivery"
-#~ msgstr "&Potvrdi isporuku"
-
-#~ msgid "&Confirm read"
-#~ msgstr "&Potvrdi èitanje"
-
-#~ msgid "&All Fields"
-#~ msgstr "&Sva polja"
-
-#~ msgid "&From"
-#~ msgstr "&Od"
-
-#~ msgid "&Reply to"
-#~ msgstr "&Odgovori na"
-
-#~ msgid "&To"
-#~ msgstr "&Za"
-
-#~ msgid "&Cc"
-#~ msgstr "&Cc"
-
-#~ msgid "&Bcc"
-#~ msgstr "&Bcc"
-
-#~ msgid "&Subject"
-#~ msgstr "&Subjekt"
-
-#~ msgid "&Newsgroups"
-#~ msgstr "&Novinske grupe"
-
-#~ msgid "&Followup-To"
-#~ msgstr "&Nastavak-Za"
-
-#~ msgid "Append S&ignature"
-#~ msgstr "Dodaj potpis na kraj"
-
-#~ msgid "&Insert File"
-#~ msgstr "&Umetni datoteku"
-
-#~ msgid "&Attach..."
-#~ msgstr "&Pridru¾i..."
-
-#~ msgid "&Remove"
-#~ msgstr "&Ukloni"
-
-#~ msgid "&Save..."
-#~ msgstr "&Spremi..."
-
-#~ msgid "Pr&operties..."
-#~ msgstr "Sv&ojstva..."
-
-#~ msgid "&Attach"
-#~ msgstr "&Pridru¾i"
-
-#~ msgid "Compose new message"
-#~ msgstr "Komponiraj novu poruku"
-
-#~ msgid "Save message to file"
-#~ msgstr "Spremi poruku u datoteku"
-
-#~ msgid "Open addressbook..."
-#~ msgstr "Otvori adresar..."
-
-#~ msgid "sign message"
-#~ msgstr "potpi¹i poruku"
-
-#~ msgid "encrypt message"
-#~ msgstr "kriptiraj poruku"
-
-#~ msgid "Send now"
-#~ msgstr "Po¹alji sada"
-
-#~ msgid "Send later"
-#~ msgstr "Po¹alji kasnije"
-
-#~ msgid "Mark All"
-#~ msgstr "Oznaèi sve"
-
-#~ msgid "KMail Confirm"
-#~ msgstr "KMail potvrda"
-
-#~ msgid ""
-#~ "Close and discard\n"
-#~ "edited message?"
-#~ msgstr ""
-#~ "Zatvori i odbaci\n"
-#~ "ureðivanu poruku?"
-
-#~ msgid ""
-#~ "public key for %s not found.\n"
-#~ "This person will not be able to decrypt the message."
-#~ msgstr ""
-#~ "javni kljuè za %s nije pronaðen.\n"
-#~ "Ta osoba neæe moæi dekriptirati poruku."
-
-#~ msgid "Error during PGP:"
-#~ msgstr "Gre¹ka za izvr¹avanja PGP:"
-
-#~ msgid "Attach File"
-#~ msgstr "Pridru¾i datoteku"
-
-#~ msgid "View..."
-#~ msgstr "Pogled..."
-
-#~ msgid "Save..."
-#~ msgstr "Spremi..."
-
-#~ msgid "Properties..."
-#~ msgstr "Svojstva..."
-
-#~ msgid "Attach..."
-#~ msgstr "Pridru¾i..."
-
-#~ msgid "View Attachment: "
-#~ msgstr "Pogledaj prilog: "
-
-#~ msgid ""
-#~ "Sorry, but this feature\n"
-#~ "is still missing"
-#~ msgstr ""
-#~ "®ao mi je, ali ova moguænost\n"
-#~ "jo¹ nedostaje"
-
-#~ msgid "unnamed"
-#~ msgstr "bez_imena"
-
-#~ msgid "To:"
-#~ msgstr "Za:"
-
-#~ msgid "Subject:"
-#~ msgstr "Subjekt:"
-
-#~ msgid "Date:"
-#~ msgstr "Datum:"
-
-#~ msgid "Choose Signature File"
-#~ msgstr "Odaberite datoteku s potpisom"
-
-#~ msgid "KMail: Spellcheck"
-#~ msgstr "KMail: Provjera pravopisa"
-
-#~ msgid ""
-#~ "Error starting KSpell. Please make sure you have ISpell properly configured."
-#~ msgstr ""
-#~ "Gre¹ka kod pokretanja KSpell. Molim vas provjerite je li ISpell ispravno "
-#~ "pode¹en"
-
-#~ msgid ""
-#~ "Please specify a send\n"
-#~ "method in the settings\n"
-#~ "and try again."
-#~ msgstr ""
-#~ "Molim vas navedite postupak\n"
-#~ "slanja u postavi\n"
-#~ "and try again."
-
-#~ msgid ""
-#~ "Please set the required fields in the\n"
-#~ "identity settings:\n"
-#~ "user-name and email-address"
-#~ msgstr ""
-#~ "Molim vas popunite zahtijevana polja u\n"
-#~ "postavi identiteta:\n"
-#~ "korisnièko ime i adresa e-po¹te"
-
-#~ msgid "You must specify a receiver"
-#~ msgstr "Morate navesti primatelja"
-
-#~ msgid "Cannot add message to outbox folder"
-#~ msgstr "Ne mogu dodati poruku u "
-
-#~ msgid "Sending still in progress"
-#~ msgstr "Slanje jo¹ u tijeku"
-
-#~ msgid "Initiating sender process..."
-#~ msgstr "Iniciram postupak slanja..."
-
-#~ msgid "Sending message: "
-#~ msgstr "Slanje poruke: "
-
-#~ msgid "Done sending messages."
-#~ msgstr "Gotovo slanje poruka."
-
-#~ msgid "Sending failed:"
-#~ msgstr "Slanje nije uspjelo:"
-
-#~ msgid ""
-#~ "Please specify a mailer program\n"
-#~ "in the settings."
-#~ msgstr ""
-#~ "Molim vas navedite program za slanje po¹te\n"
-#~ "u postavi."
-
-#~ msgid "Failed to execute mailer program %s"
-#~ msgstr "Nisam uspio izvr¹iti progam za slanje po¹te %s"
-
-#~ msgid "Failed to pipe mail message into mailer program %s"
-#~ msgstr "Nisam uspio proslijediti po¹tu programu za slanje %s"
-
-#~ msgid "connecting to server"
-#~ msgstr "spajanje s poslu¾iteljem"
-
-#~ msgid ""
-#~ "Cannot open SMTP connection to\n"
-#~ "host %s for sending:\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Ne mogu otvoriti SMTP vezu s\n"
-#~ "raèunalom %s za slanje:\n"
-#~ "%s"
-
-#~ msgid "Cannot close SMTP connection."
-#~ msgstr "Ne mogu zatvoriti SNTP vezu."
-
-#~ msgid "transmitting message"
-#~ msgstr "prenosim poruke"
-
-#~ msgid "network error"
-#~ msgstr "gre¹ka na mre¾i"
-
-#~ msgid ""
-#~ "a SMTP error occured.\n"
-#~ "Command: %s\n"
-#~ "Response: %s\n"
-#~ "Return code: %d"
-#~ msgstr ""
-#~ "SMTP gre¹ka se pojavila.\n"
-#~ "Naredba: %s\n"
-#~ "Odgovor: %s\n"
-#~ "Povratni kod: %d"
-
-#~ msgid "Sending SMTP command: %s"
-#~ msgstr "©aljem SMTP naredbu: %s"
-
-#~ msgid ""
-#~ "Failed to execute signature script\n"
-#~ "%s\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Nisam uspio izvr¹iti scenarij potpisivanja\n"
-#~ "%s\n"
-#~ "%s"
-
-#~ msgid "File I/O Error"
-#~ msgstr "Datoteèna U/I gre¹ka"
-
-#~ msgid ""
-#~ "The specified file does not exist:\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Navedena datoteka ne postoji:\n"
-#~ "%s"
-
-#~ msgid ""
-#~ "This is a directory and not a file:\n"
-#~ "%s"
-#~ msgstr ""
-#~ "To je direktorij, a ne datoteka:\n"
-#~ "%s"
-
-#~ msgid ""
-#~ "You do not have read permissions to the file:\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Nemate dozvolu za èitanje datoteke:\n"
-#~ "%s"
-
-#~ msgid ""
-#~ "Could not read file:\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Nisam mogao èitati datoteku:\n"
-#~ "%s"
-
-#~ msgid ""
-#~ "Could not open file:\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Nisam mogao otvoriti datoteku:\n"
-#~ "%s"
-
-#~ msgid ""
-#~ "Error while reading file:\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Gre¹ka tijekom èitanja datoteke:\n"
-#~ "%s"
-
-#~ msgid "Could only read %u bytes of %u."
-#~ msgstr "Mogao sam proèitati samo %u bajtova od %u"
-
-#~ msgid ""
-#~ "File %s exists.\n"
-#~ "Do you want to replace it ?"
-#~ msgstr ""
-#~ "Datoteka %s postoji.\n"
-#~ "®elite li ju zamijeniti?"
-
-#~ msgid "&Ok"
-#~ msgstr "&Ok"
-
-#~ msgid ""
-#~ "Failed to make a backup copy of %s.\n"
-#~ "Continue anyway ?"
-#~ msgstr ""
-#~ "Nisam uspio napraviti sigurnosnu kopiju %s.\n"
-#~ "Nastaviti unatoè tome?"
-
-#~ msgid ""
-#~ "Could not write to file:\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Nisam mogao pisati u datoteku:\n"
-#~ "%s"
-
-#~ msgid ""
-#~ "Could not open file for writing:\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Nisam mogao otvoriti datoteku za pisanje:\n"
-#~ "%s"
-
-#~ msgid ""
-#~ "Error while writing file:\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Gre¹ka tijekom pisanja datoteke:\n"
-#~ "%s"
-
-#~ msgid "Could only write %d bytes of %d."
-#~ msgstr "Mogao sam zapisati samo %d bajtova od %d."
-
-#~ msgid "Message Part Properties"
-#~ msgstr "Svojstva dijela s porukom"
-
-#~ msgid "Name:"
-#~ msgstr "Ime:"
-
-#~ msgid "Description:"
-#~ msgstr "Opis:"
-
-#~ msgid "Encoding:"
-#~ msgstr "Kodiranje:"
-
-#~ msgid "none (8bit)"
-#~ msgstr "nikakvo (8bitno)"
-
-#~ msgid "base 64"
-#~ msgstr "base 64"
-
-#~ msgid "quoted printable"
-#~ msgstr "quoted printable"
-
-#~ msgid "From: "
-#~ msgstr "Od: "
-
-#~ msgid "To: "
-#~ msgstr "Za: "
-
-#~ msgid "References: "
-#~ msgstr "Reference: "
-
-#~ msgid "Cc: "
-#~ msgstr "Cc: "
-
-#~ msgid "Date: "
-#~ msgstr "Datum: "
-
-#~ msgid "Bcc: "
-#~ msgstr "Bcc: "
-
-#~ msgid "Reply to: "
-#~ msgstr "Odgovori na: "
-
-#~ msgid "Groups: "
-#~ msgstr "Grupe: "
-
-#~ msgid "Encrypted message"
-#~ msgstr "Kriptirana poruka"
-
-#~ msgid "Cannot decrypt message:"
-#~ msgstr "Ne mogu dekriptirati poruku:"
-
-#~ msgid "Message was signed by"
-#~ msgstr "Poruku je potpisao"
-
-#~ msgid "Warning: Bad signature from"
-#~ msgstr "Upozorenje: Lo¹ potpis od"
-
-#~ msgid "Could not create temporary file"
-#~ msgstr "Nisam mogao stvoriti privremenu datoteku"
-
-#~ msgid "Could not save temporary file %s"
-#~ msgstr "Nisam mogao spremiti privremenu datoteku %s"
-
-#~ msgid "Could not save file"
-#~ msgstr "Nisam mogao spremiti datoteku"
-
-#~ msgid ""
-#~ "Couldn't find PGP executable.\n"
-#~ "Please check your PATH is set correctly."
-#~ msgstr ""
-#~ "Nisam mogao naæi PGP izvr¹ni kod.\n"
-#~ "Molim vas provjerite je li PATH postavljen ispravno."
-
-#~ msgid ""
-#~ "Could not find PGP executable.\n"
-#~ "Please check your PATH is set correctly."
-#~ msgstr ""
-#~ "Nisam mogao naæi PGP izvr¹ni kod.\n"
-#~ "Molim vas provjerite je li PATH postavljen ispravno."
-
-#~ msgid "The pass phrase is missing."
-#~ msgstr "Izraz za propu¹tanje nedostaje."
-
-#~ msgid "Message signed by"
-#~ msgstr "Poruku je potpisao"
-
-#~ msgid "Message has a bad signature from"
-#~ msgstr "Poruka ima lo¹ potpis od"
-
-#~ msgid "End PGP signed message"
-#~ msgstr "Kraj PGP potpisane poruke"
-
-#~ msgid "Bad pass Phrase; couldn't decrypt"
-#~ msgstr "Lo¹ propusni izraz; nisam mogao dekriptirati"
-
-#~ msgid "Bad pass Phrase; couldn't sign"
-#~ msgstr "Lo¹ propusni izraz; nisam mogao potpisati"
-
-#~ msgid ""
-#~ "Please enter your\n"
-#~ "PGP passphrase"
-#~ msgstr ""
-#~ "Molim vas unesite va¹\n"
-#~ "PGP propusni izraz"
-
-#~ msgid "PGP Security Check"
-#~ msgstr "PGP provjera sigurnosti"
-
-#~ msgid "Addressbook"
-#~ msgstr "Adresar"
-
-#~ msgid "Addressbook Manager"
-#~ msgstr "Upravitelj adresara"
+msgstr "Koristi stavljanje u nit"
