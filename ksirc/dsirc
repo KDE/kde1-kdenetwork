@@ -237,7 +237,14 @@ sub gl {
 }
 
 sub sl {
-  &print("*\cbE\cb* Error writing to server: $!") unless print $S $_[0]."\n";
+  if(!print $S $_[0]."\n"){
+    &print("*\cbE\cb* Error writing to server: $!");
+    &tell("*\cbE\cb* Connection to server lost");
+    close($S);
+    delete $buffer{$S};
+    $connected=0;
+    &dohooks("disconnect");
+  }
 }
 
 sub dostatus {
@@ -1950,7 +1957,7 @@ while (1) {
       print "`#ssfe#t/m =$who \n" if $ssfe;
       print "`#ssfe#o=${who}= $what\n" if $ssfe;
       &dohooks("dcc_chat", $who, $what);
-      &tell("~${who}~=\cb${who}\cb= $what"); # KSIRC MOD
+      &tell("~=${who}~=\cb${who}\cb= $what"); # KSIRC MOD
       $silent='';
     }
   }

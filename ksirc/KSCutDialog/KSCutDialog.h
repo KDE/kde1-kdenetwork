@@ -29,14 +29,13 @@ public:
   virtual void setText(QString);
   virtual void scrollToBot();
   
-  static int open;
-
 protected:
   virtual void closeEvent(QCloseEvent *);
 
 protected slots:
       
-   virtual void terminate(){ close(1); }
+  virtual void terminate();
+  virtual void copy(); 
   
 private:
 };

@@ -21,7 +21,7 @@ protected:
   virtual void keyPressEvent ( QKeyEvent * );
   virtual void focusInEvent ( QFocusEvent * );
   virtual void focusOutEvent ( QFocusEvent * );
-  virtual void mouseReleaseEvent ( QMouseEvent * );
+  virtual void mousePressEvent ( QMouseEvent * );
 
 private:
   QStrList hist;

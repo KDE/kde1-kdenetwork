@@ -1,4 +1,20 @@
+1998-02-01  Andrew Stanley-Jones  <asj@chowtown.cban.com>
+
+	* KSCutDialog/KSCutDialog.cpp (scrollToBot): Added copy button,
+ 	and made it scroll to the bottom better.
+
+	* ahistlineedit.cpp (mousePressEvent): Fixed paste problem, added
+ 	copy button for poor soles who have problem with highlighting and
+ 	copying.
+
+	* dsirc (donumeric): Fixed dcc chat messages going to the wrong window.
+
 1998-01-30  Andrew Stanley-Jones  <asj@chowtown.cban.com>
+
+	* When talking to a nick doesn't show nick list.
+
+	* toplevel.cpp (KSircTopLevel): Fixed a few bugs with drawing and
+ 	reszing.
 
 	* New freeze slot for irc listitems, should speed up global
  	changes, etc.
@@ -191,6 +207,9 @@
 $Revision$
 	
 $Log$
+Revision 1.25  1998/01/31 03:42:49  asj
+Fixed minor bug in writing when not scrolling.
+
 Revision 1.24  1998/01/30 22:44:01  asj
 1998-01-30  Andrew Stanley-Jones  <asj@chowtown.cban.com>
 

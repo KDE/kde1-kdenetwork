@@ -141,7 +141,7 @@ void KSircIOController::stdout_read(KProcess *, char *_buffer, int buflen)
 
   int pos,pos2,pos3;
   QString name, line;
-
+  
   QString buffer(_buffer, buflen+1);
 
   name = "!default";
@@ -187,7 +187,9 @@ void KSircIOController::stdout_read(KProcess *, char *_buffer, int buflen)
 	  name = "!discard";
       }
     }
+
     ksircproc->TopList[name]->sirc_receive(line);
+
     pos = pos2+1;
   } while((uint) pos < buffer.length());
 

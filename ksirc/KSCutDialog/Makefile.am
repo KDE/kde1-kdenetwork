@@ -28,10 +28,12 @@ libkscutdialog_SOURCES = \
 KSCutDialog.cpp \
 mKSCutDialog.cpp \
 KSCutDialogData.cpp \
-mKSCutDialogData.cpp
+mKSCutDialogData.cpp \
+cutmle.cpp \
+mcutmle.cpp
 
 noinst_HEADERS = \
-KSCutDialog.h      KSCutDialogData.h 
+KSCutDialog.h      KSCutDialogData.h	cutmle.h
 
 libkscutdialogSOURCES = $(libkscutdialog_SOURCES)
 
@@ -39,7 +41,9 @@ libkscutdialogOBJECTS = \
 KSCutDialog.o \
 mKSCutDialog.o \
 KSCutDialogData.o \
-mKSCutDialogData.o
+mKSCutDialogData.o \
+cutmle.o \
+mcutmle.o
 
 libkscutdialog.c:
 	echo "Done"

@@ -41,6 +41,8 @@ public slots:
   virtual void notify_forw_offline(QString);
 
 private:
+  void base_filters();
+
   KSircIOController *iocontrol;
   KProcess *proc;
 

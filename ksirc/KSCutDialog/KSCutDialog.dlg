@@ -18,26 +18,39 @@ MinSize {0 0}
 MaxSize {32767 32767}
 Grid {10}
 
-MultiLineEdit {
-		Line {}
-		ReadOnly {FALSE}
-		OverwriteMode {FALSE}
-		Rect {5 5 580 315}
-		Name {MultiLineEdit_2}
+User {
+		UserClassHeader {cutmle.h}
+		UserClassName {KCutMLE}
+		Rect {5 5 580 320}
+		Name {User_1}
 		Variable {IrcMLE}
 		LayoutStatus {InLayout}
-		MinimumSize {10 10}
-		MaximumSize {32767 32767}
+		MinimumSize {10 320}
+		MaximumSize {32767 320}
 }
 PushButton {
 		ToggleButton {FALSE}
 		Default {FALSE}
-		AutoDefault {TRUE}
+		AutoDefault {FALSE}
+		Text {Cop&y}
+		AutoRepeat {FALSE}
+		AutoResize {FALSE}
+		Rect {370 5 100 30}
+		Name {PushButton_9}
+		Signal {[Protected]  clicked --> copy  ()}
+		LayoutStatus {InLayout}
+		MinimumSize {100 30}
+		MaximumSize {100 30}
+}
+PushButton {
+		ToggleButton {FALSE}
+		Default {FALSE}
+		AutoDefault {FALSE}
 		Text {&Close}
 		AutoRepeat {FALSE}
 		AutoResize {FALSE}
 		Rect {475 5 100 30}
-		Name {PushButton_3}
+		Name {PushButton_10}
 		Signal {[Protected]  clicked --> terminate  ()}
 		LayoutStatus {InLayout}
 		MinimumSize {100 30}
@@ -52,20 +65,28 @@ Box_Layout-1{
 		Strut {0}
 }
 Box_Widget-1.1{
-		Widget {MultiLineEdit_2}
+		Widget {User_1}
 		Stretch {1}
-		Alignment {36}
+		Alignment {9}
 }
 Box_Layout-1.2{
-		Direction {TopToBottom}
+		Direction {LeftToRight}
 		AutoBorder {5}
 		Name {}
-		Strut {40}
+		Strut {0}
+		Stretch {0}
+}
+Box_Stretch-1.2.1{
 		Stretch {1}
 }
-Box_Widget-1.2.1{
-		Widget {PushButton_3}
-		Stretch {1}
-		Alignment {18}
+Box_Widget-1.2.2{
+		Widget {PushButton_9}
+		Stretch {0}
+		Alignment {36}
+}
+Box_Widget-1.2.3{
+		Widget {PushButton_10}
+		Stretch {0}
+		Alignment {36}
 }
 }

@@ -121,8 +121,9 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
   QPopupMenu *file = new QPopupMenu();
   file->insertItem("&New Window...", this, SLOT(newWindow()), CTRL + Key_N);
   file->insertItem("&Ticker Mode", this, SLOT(showTicker()), CTRL + Key_T);
+  //  file->insertItem("&Root Window Mode", this, SLOT(toggleRootWindow()), CTRL + Key_Z);
   file->insertSeparator();
-  file->insertItem("&Quit", this, SLOT(terminate()), CTRL + Key_Q );
+  file->insertItem("&Close", this, SLOT(terminate()), CTRL + Key_Q );
 
   QFrame *menu_frame = ktool->getFrame(0);
   CHECK_PTR(menu_frame);
@@ -159,68 +160,51 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
    * The SLE is then fit bello.
    */
 
-  QFrame *f = new QFrame(this, "frame");
+  // kstInside does not setup fonts, etc, it simply handles sizing
+
+  f = new kstInside(this, "frame");
   setView(f);  // Tell the KApplication what the main widget is.
-
-  gm = new QVBoxLayout(f, 5); // Main top layout
-  gm2 = new QHBoxLayout(10);   // Layout for users text and users box
-  gm->addLayout(gm2, 10);
-
-  //  mainw = new QListBox(f, "mle");          // Make a flat QListBox.  I want the
 
   if(kSircConfig->colour_background == 0){
     kConfig->setGroup("Colours");
     kSircConfig->colour_background = new QColor(kConfig->readColorEntry("Background", new QColor(colorGroup().mid())));
   }
+  
+  // get basic variable
 
-  pan = new KNewPanner(f, "knewpanner", KNewPanner::Vertical,
-		       KNewPanner::Absolute, width()-1000);
-  gm2->addWidget(pan, 10);
+  mainw = f->mainw;
+  nicks = f->nicks;
+  pan = f->pan;
+  linee = f->linee;
 
-  mainw = new KSircListBox(pan, "mle");
-  mainw->setFocusPolicy(QWidget::NoFocus); // Background and base colour of
-  //mainw->setFocusPolicy(QWidget::StrongFocus); // Background and base colour of
-  mainw->setEnabled(FALSE);                // the lb to be the same as the main
-  mainw->setSmoothScrolling(TRUE);         // ColourGroup, but this is BAD BAD
-  mainw->setFont(kSircConfig->defaultfont);// Since we don't use KDE requested
+  if((channel_name[0] == '!') ||
+     (channel_name[0] == '&') ||
+     (channel_name[0] == '#')){
+  }
+  else{
+    pan->setSeparatorPos(100);
+  }
 
   connect(mainw, SIGNAL(updateSize()),
 	  this, SIGNAL(changeSize()));
+
+  mainw->setFont(kSircConfig->defaultfont);
+  nicks->setFont(kSircConfig->defaultfont);
+
   QColorGroup cg = QColorGroup(*kSircConfig->colour_text, colorGroup().mid(), 
     			       colorGroup().light(), colorGroup().dark(),
   			       colorGroup().midlight(), 
   			       *kSircConfig->colour_text, 
 			       *kSircConfig->colour_background); 
-  mainw->setPalette(QPalette(cg,cg,cg));   // colours.  Font it also hard coded
-  mainw->setMinimumWidth(width() - 100);
-  //  gm2->addWidget(mainw, 10);               // which is bad bad.
 
-  nicks = new aListBox(pan, "qlb");          // Make the users list box.
-  //nicks->setMaximumWidth(100);             // Would be nice if it was flat and
-  //  nicks->setMinimumWidth(100);             // matched the main text window
-  nicks->setFocusPolicy(QWidget::NoFocus);
+  mainw->setPalette(QPalette(cg,cg,cg));   // Font it also hard coded
   nicks->setPalette(QPalette(cg,cg,cg));   // HARD CODED COLOURS AGAIN!!!!
-  nicks->setFont(kSircConfig->defaultfont);
-  //  gm2->addWidget(nicks, 0);
+  linee->setPalette(QPalette(cg,cg,cg));   // HARD CODED COLOURS AGAIN!!!!
 
-  pan->activate(mainw, nicks);
-  // If we are talking to a single person, don't show nick list
-  if((channel_name[0] == '!') ||
-     (channel_name[0] == '#')){
-    pan->setAbsSeparatorPos(width() - 100);
-  }
-  else{
-    pan->setAbsSeparatorPos(width());
-  }
-  //  mainw->setMinimumWidth(0);             // matched the main text window
+  // setup line editor
 
-  linee = new aHistLineEdit(f, "qle");        // aHistEdit is a QLineEdit with 
-                                              // arrows for 
-  linee->setFocusPolicy(QWidget::StrongFocus); // scroll back abillity
-  linee->setPalette(QPalette(cg,cg,cg));   // HARD CODED COLOURS AGAIN!!!! (last time I hope!)
+  linee->setFocusPolicy(QWidget::StrongFocus);
   linee->setFont(kSircConfig->defaultfont);
-  linee->resize(width(), linee->fontMetrics().height() + 8);
-  linee->setMinimumHeight(linee->fontMetrics().lineSpacing()+8);
   connect(linee, SIGNAL(gotFocus()),
 	  this, SLOT(gotFocus()));
   connect(linee, SIGNAL(lostFocus()),
@@ -230,7 +214,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
   connect(linee, SIGNAL(textChanged(const char *)),
 	  this, SLOT(lineeTextChanged(const char *)));
 
-  gm->addWidget(linee, 0);                    // No special controls are needed.
+  //  gm->addWidget(linee, 0);                    // No special controls are needed.
 
   connect(linee, SIGNAL(returnPressed()), // Connect return in sle to send
   	  this, SLOT(sirc_line_return()));// the line to dsirc
@@ -248,6 +232,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
   opami = FALSE;
   continued_line = FALSE;
   prompt_active = FALSE;
+  on_root = FALSE;
 
   /*
    * Load basic pics and images
@@ -601,7 +586,9 @@ void KSircTopLevel::sirc_line_return()
       return;
     while(s[pos1] == ' ')
       pos1++;
-    int pos2 = s.length() - 1;
+    int pos2 = s.find(' ', pos1) - 1;
+    if(pos2 < 0)
+      pos2 = s.length() - 1; // -1 don't include the enter
     if(pos1 > 2){
       QString name = s.mid(pos1, pos2 - pos1); // make sure to remove line feed
       emit open_toplevel(name);
@@ -609,6 +596,7 @@ void KSircTopLevel::sirc_line_return()
 	linee->setText("");
 	return;
       }
+      // Finish sending /join
     }
   }
   else if(strncmp(s, "/server ", 6) == 0){
@@ -1300,30 +1288,21 @@ void KSircTopLevel::closeEvent(QCloseEvent *)
 void KSircTopLevel::resizeEvent(QResizeEvent *e)
 {
   bool update = mainw->autoUpdate();
-  emit freezeUpdates(TRUE);
   mainw->setAutoUpdate(FALSE);
   KTopLevelWidget::resizeEvent(e);
-//  cerr << "Updating list box\n";
-  //  mainw->setTopItem(mainw->count()-1);
-  if(mainw->maximumSize().width() > width()){
-    mainw->setMinimumWidth(width() - 100);
-  }
   // If we are talking too a person, don't show the nick list
   if((channel_name[0] == '!') ||
+     (channel_name[0] == '&') ||
      (channel_name[0] == '#')){
-    pan->setAbsSeparatorPos(width() - 100);
+    //    pan->setSeparatorPos(85);
   }
   else{
-    pan->setAbsSeparatorPos(width());
+    //    pan->setSeparatorPos(100);
   }
-  emit changeSize();
-  mainw->scrollToBottom();
-  mainw->setAutoUpdate(update);
-  emit freezeUpdates(FALSE);
-  emit changeSize();
-  repaint();
-  mainw->scrollToBottom();
 
+  mainw->setAutoUpdate(update);
+
+  // The ListBox will get an implicit size change
 }
 
 void KSircTopLevel::gotFocus()
@@ -1380,7 +1359,7 @@ void KSircTopLevel::control_message(int command, QString str)
     nicks->setFont(kSircConfig->defaultfont);
     linee->setFont(kSircConfig->defaultfont);
     linee->resize(width(), linee->fontMetrics().lineSpacing() + 8);
-    linee->setMinimumHeight(linee->fontMetrics().lineSpacing() + 8);
+    //    linee->setMinimumHeight(linee->fontMetrics().lineSpacing() + 8);
     resize(size()); // Make the Layout manager make everything fit right.
     //    emit changeSize();
     {
@@ -1495,18 +1474,16 @@ QString KSircTopLevel::findNick(QString part, uint which = 0)
 
 void KSircTopLevel::openCutWindow()
 {
-  static KSCutDialog *kscd;
-  if(!KSCutDialog::open){
-    kscd = new KSCutDialog();
-  }
+  KSCutDialog *kscd = new KSCutDialog();
   QString buffer;
   for(uint i = 0; i < mainw->count(); i++){
     buffer += mainw->text(i);
     buffer += "\n";
   }
   kscd->setText(buffer);
-  kscd->show();
   kscd->scrollToBot();
+  kscd->show();
+  // kscd deletes it self.
 }
 
 void KSircTopLevel::pasteToWindow()
@@ -1550,4 +1527,52 @@ void KSircTopLevel::pasteToWindow()
 void KSircTopLevel::lineeTextChanged(const char *)
 {
   tab_pressed = 0;
+}
+
+void KSircTopLevel::toggleRootWindow()
+{
+}
+
+kstInside::kstInside ( QWidget * parent=0, const char * name=0, WFlags
+		       f=0, bool allowLines=TRUE )
+  : QFrame(parent, name, f, allowLines)
+{
+  pan = new KNewPanner(this, "knewpanner", KNewPanner::Vertical);
+
+  mainw = new KSircListBox(pan, "mle");
+  mainw->setFocusPolicy(QWidget::NoFocus);
+  mainw->setEnabled(FALSE);              
+  mainw->setSmoothScrolling(TRUE);       
+
+  nicks = new aListBox(pan, "qlb");      
+  nicks->setFocusPolicy(QWidget::NoFocus);
+
+  linee = new aHistLineEdit(this, "qle");
+
+  pan->activate(mainw, nicks);
+
+  pan->setSeparatorPos(85);
+
+}
+
+kstInside::~kstInside()
+{
+  delete mainw;
+  delete nicks;
+  delete pan;
+  delete linee;
+}
+
+
+void kstInside::resizeEvent(QResizeEvent *e)
+{
+  QFrame::resizeEvent(e);
+
+  int linee_height =  linee->fontMetrics().height() + 8;
+  int real_height = this->height();
+  linee->setGeometry(5, real_height - linee_height - 5,
+		     width() - 10, linee_height);
+  pan->setGeometry(5, 5,
+		   width() - 10, real_height - linee_height - 15);
+  
 }

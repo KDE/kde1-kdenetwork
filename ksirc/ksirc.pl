@@ -222,5 +222,91 @@ for (@words) {
 return "@words";
 }
 
+&addhelp("follow",
+"~bAdded by KSirc.pl~b
+Usage: follow <nick>
+Highlight <nick> in colour when ever they say anything");
+
+&addhelp("unfollow",
+"~bAdded by KSirc.pl~b
+Usage: unfollow <nick>
+Stop highlighting the nick");
+
+&addhelp("showfollows",
+"~bAdded by KSirc.pl~b
+Usage: showfollows
+Shows who you are currently following");
+
+#### Start follow script from caracas
+
+&addcmd ('follow');
+&addcmd ('unfollow');
+&addcmd ('showfollows');
+
+
+@follow_colors = ( '~1', '~2', '~3', '~4', '~5', '~6', '~7', '~8', '~9', '~10', '~11', '~12', '~13', '~14', '~15' );
+undef %following;
+
+
+sub cmd_follow
+{
+   my ($fnick) = shift;
+   my ($color);
+
+   $fnick =~ s/^follow\s+//;
+   if (defined ($following {lc ($fnick)}))
+   {
+      &tell ("Already following " . $following {lc ($fnick)});
+   }
+   else
+   {
+      $color = $follow_colors [int (rand scalar (@follow_colors))];
+      &docommand ("^ksircappendrule DESC==Follow $fnick !!! " .
+                  "SEARCH==<\\S*$fnick\\S*> !!! FROM==<(?:~\\d{1,2},*\\d*)(\\S+)> !!! TO==\"<$color\$1~c>\"");
+      $following {lc ($fnick)} = "${color}${fnick}~c";
+      &tell ("Following ${color}$fnick~c ...");
+   }
+}
+
+
+sub cmd_unfollow
+{
+   my ($fnick) = shift;
+   my ($filter);
+
+   $fnick =~ s/^unfollow\s+//;
+   for ($filter = 0;   $filter <= $#KSIRC_FILTER;   $filter++)
+   {
+      if ($KSIRC_FILTER [$filter]{'DESC'} =~ /Follow $fnick/i)
+      {
+         &docommand ("^ksircdelrule $filter");
+         delete ($following {$fnick});
+         &tell ("$fnick no longer followed");
+         return;
+      }
+   }
+   &tell ("Wasn't following $fnick");
+}
+
+
+sub cmd_showfollows
+{
+   my ($fnick);
+
+   if (scalar (keys %following) > 0)
+   {
+      foreach $fnick (sort keys %following)
+      {
+         &tell ("Following " . $following {$fnick});
+      }
+   }
+   else
+   {
+      &tell ("Not currently following anyone");
+   }
+}
+
+#### End follow
+
 &tell("*** ~2,4~bLoaded KSirc.pl~c");
 &tell("*** ~13,3~bWith Super Willy Enhancements~c");

@@ -7,13 +7,14 @@
 
  *********************************************************************/
 
+// Notes:
+// We HAVE to delete outrselves, toplevel won't do it.
+
 #include "KSCutDialog.h"
 #include <qevent.h>
 #include <iostream.h>
 
 #define Inherited KSCutDialogData
-
-int KSCutDialog::open = 0;
 
 KSCutDialog::KSCutDialog
 (
@@ -24,13 +25,12 @@ KSCutDialog::KSCutDialog
 	Inherited( parent, name )
 {
 	setCaption( "Cut Window" );
-	open = 1;
+	IrcMLE->setFocus();
 }
 
 
 KSCutDialog::~KSCutDialog()
 {
-  open = 0;
 }
 
 void KSCutDialog::closeEvent(QCloseEvent *)
@@ -47,7 +47,15 @@ void KSCutDialog::setText(QString text)
 void KSCutDialog::scrollToBot()
 {
   IrcMLE->setFocus();
-  IrcMLE->setCursorPosition(IrcMLE->numLines(), 0);
+  IrcMLE->scrollToBottom();
 }
 
+void KSCutDialog::terminate()
+{
+  close(1);
+}
 
+void KSCutDialog::copy()
+{
+  IrcMLE->copyText();
+}

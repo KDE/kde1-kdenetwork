@@ -2,6 +2,7 @@
 #define KSIRCTOPLEVEL_H
 
 class KSircTopLevel;
+class kstInside;
 
 #include <unistd.h>
 #include <sys/types.h>
@@ -34,6 +35,26 @@ class KSircTopLevel;
 #include "KSTicker/ksticker.h"
 #include "usercontrolmenu.h"
 #include "irclistbox.h"
+
+class kstInside : QFrame 
+{
+  Q_OBJECT
+  friend class KSircTopLevel;
+ public:
+  kstInside ( QWidget * parent=0, const char * name=0, WFlags
+	     f=0, bool allowLines=TRUE );
+  ~kstInside();
+
+
+ protected:
+  virtual void resizeEvent ( QResizeEvent * );
+ private:
+  KNewPanner *pan;
+  KSircListBox *mainw;
+  aHistLineEdit *linee;
+  aListBox *nicks;
+
+};
 
 class KSircTopLevel : public KTopLevelWidget,
 		      public KSircMessageReceiver
@@ -196,6 +217,11 @@ protected slots:
      * Signals a Line Change in linee
      */
    void lineeTextChanged(const char *);
+   /**
+     *  Move the display to or from the root window
+     *
+     */
+   void toggleRootWindow();
 
 protected:
    /**
@@ -216,6 +242,7 @@ protected:
 
 private:
   bool continued_line;
+  kstInside *f;
   KNewPanner *pan;
   QMenuBar *kmenu;
   KToolBar *ktool;
@@ -224,8 +251,8 @@ private:
   KSircListBox *mainw;
   aHistLineEdit *linee;
   aListBox *nicks;
-  QVBoxLayout *gm;
-  QHBoxLayout *gm2;
+  //  QVBoxLayout *gm;
+  //  QHBoxLayout *gm2;
 
   KSircProcess *proc;
 
@@ -307,6 +334,12 @@ private:
     * Never open mmore then one dialog box
     */
   bool prompt_active;
+
+  /**
+    * True when we are on the root window, false otherwise
+    *
+    */
+  bool on_root;
 
 };
 
