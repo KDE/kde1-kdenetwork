@@ -186,7 +186,7 @@ Groupdlg::Groupdlg
     tool->insertButton (pixmap, CHECK_UNREAD, true, klocale->translate("Check for Unread Articles"));
     
     
-    list = new KTreeList (this, "");
+    list = new MyTreeList (this, "");
     QObject::connect (list, SIGNAL (selected (int)), this, SLOT (openGroup (int)));
     setView (list);
     RmbPop *filter=new RmbPop(list);
@@ -774,7 +774,7 @@ void Groupdlg::findGroup()
                 p.push (ss);
                 int index=list->itemIndex(list->itemAt(&p));
                 list->setCurrentItem(index);
-//                list->setTopCell(index);
+                list->setTopCell(index);
                 break;
             }
             else

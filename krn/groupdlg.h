@@ -25,7 +25,8 @@
 #include <qtimer.h>
 
 #include <ktopwidget.h>
-#include <ktreelist.h>
+//#include <ktreelist.h>
+#include "mytree.h"
 
 #include "NNTP.h"
 
@@ -64,7 +65,8 @@ private slots:
     void findGroup ();
 private:
     NNTP *server;
-    KTreeList *list;
+//    KTreeList *list;
+    MyTreeList *list;
     bool loadSubscribed();
     bool saveSubscribed();
     bool loadActive();
