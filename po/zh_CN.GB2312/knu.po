@@ -5,34 +5,34 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: knu 0.3.4\n"
-"POT-Creation-Date: 1998-07-20 15:18+0200\n"
+"POT-Creation-Date: 1998-10-01 13:40+0200\n"
 "PO-Revision-Date: 1998-06-12 08:33 MET DST\n"
 "Last-Translator: Wang Jian <lark@linux.ustc.edu.cn>\n"
 "Language-Team: zh_CN ( gb2312 )\n"
 
-#: knu.cpp:139 knu.cpp:300
+#: knu.cpp:140 knu.cpp:301
 msgid "&Ping"
 msgstr "&Ping"
 
-#: knu.cpp:148 knu.cpp:306
+#: knu.cpp:149 knu.cpp:307
 msgid "&Traceroute"
 msgstr "&Traceroute"
 
-#: knu.cpp:157 knu.cpp:312
+#: knu.cpp:158 knu.cpp:313
 msgid "Host &resolution"
 msgstr "域名解析[&R]"
 
 #
-#: knu.cpp:170
+#: knu.cpp:171
 msgid "F&inger"
 msgstr "F&inger"
 
 #
-#: knu.cpp:180 knu.cpp:325
+#: knu.cpp:181 knu.cpp:326
 msgid "&Matt's traceroute"
 msgstr "&Matt 的 traceroute"
 
-#: knu.cpp:192
+#: knu.cpp:193
 msgid ""
 "There is no command enabled\n"
 "in the configuration file.\n"
@@ -43,57 +43,61 @@ msgstr ""
 "执行.\n"
 "什么都不能做 ...\n"
 
-#: knu.cpp:237
+#: knu.cpp:238
 msgid "&New window"
 msgstr "打开新窗口[&N]"
 
-#: knu.cpp:240
+#: knu.cpp:241
 msgid "&Close window"
 msgstr "关闭窗口[&C]"
 
-#: knu.cpp:251
+#: knu.cpp:252
 msgid "Select &all"
 msgstr "选中所有的[&A]"
 
-#: knu.cpp:254
+#: knu.cpp:255
 msgid "C&lear output window"
 msgstr "清除输出窗口[&L]"
 
-#: knu.cpp:257
+#: knu.cpp:258
 msgid "P&references..."
 msgstr "偏好[&R]..."
 
+#: knu.cpp:269
+msgid "&Contents"
+msgstr ""
+
 # c-format
-#: knu.cpp:272
+#: knu.cpp:273
 #, c-format
 msgid "&About %s"
 msgstr "关于 %s[&A]"
 
-#: knu.cpp:274
+#: knu.cpp:275
 msgid "About &Qt"
 msgstr "关于 &Qt"
 
-#: knu.cpp:318
+#: knu.cpp:319
 msgid "&Finger"
 msgstr "&Finger"
 
-#: knu.cpp:465
+#: knu.cpp:466
 msgid "About..."
 msgstr "关于..."
 
-#: CommandDlg.cpp:120
+#: CommandDlg.cpp:121
 msgid "H&ost:"
 msgstr "主机[&O]:"
 
-#: CommandDlg.cpp:129
+#: CommandDlg.cpp:130
 msgid "&Go!"
 msgstr "开始![&G]"
 
-#: CommandDlg.cpp:139
+#: CommandDlg.cpp:140
 msgid "&Stop"
 msgstr "停止[&S]"
 
-#: CommandDlg.cpp:155
+#: CommandDlg.cpp:156
 msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
@@ -101,7 +105,7 @@ msgstr ""
 "这个命令没有找到.\n"
 "你可以在 编辑->偏好... 菜单中设置它的路径."
 
-#: CommandDlg.cpp:340
+#: CommandDlg.cpp:341
 #, c-format
 msgid ""
 "\n"
@@ -124,86 +128,86 @@ msgstr ""
 "请用 编辑->偏好... 菜单来\n"
 "重新配置.\n"
 
-#: CommandDlg.cpp:349
+#: CommandDlg.cpp:350
 msgid "Error in pathname"
 msgstr "在路径名中有错误"
 
-#: CommandDlg.cpp:482
+#: CommandDlg.cpp:483
 msgid "Binary"
 msgstr "程序"
 
-#: CommandDlg.cpp:490
+#: CommandDlg.cpp:491
 msgid "Path&name:"
 msgstr "路径名[&N]:"
 
-#: CommandDlg.cpp:499
+#: CommandDlg.cpp:500
 msgid "Additional &arguments:"
 msgstr "附加参数[&A]:"
 
-#: CommandDlg.cpp:524
+#: CommandDlg.cpp:525
 msgid "This command had been disabled in the configuration file."
 msgstr "在配置文件中此命令已经被禁止了."
 
-#: OptionsDlg.cpp:68
+#: OptionsDlg.cpp:69
 msgid " - configuration"
 msgstr " - 配置"
 
-#: PingDlg.cpp:96 TracerouteDlg.cpp:97
+#: PingDlg.cpp:97 TracerouteDlg.cpp:98
 msgid "Make host &name resolution"
 msgstr "进行域名解析[&N]"
 
-#: TracerouteDlg.cpp:114
+#: TracerouteDlg.cpp:115
 msgid "&Maximum number of hops:"
 msgstr "最大驿站数目[&M]:"
 
-#: HostDlg.cpp:111
+#: HostDlg.cpp:112
 msgid "address (A)"
 msgstr "地址 (A)"
 
-#: HostDlg.cpp:112
+#: HostDlg.cpp:113
 msgid "name (PTR)"
 msgstr "名字 (PTR)"
 
-#: HostDlg.cpp:113
+#: HostDlg.cpp:114
 msgid "name server (NS)"
 msgstr "名字服务器 (NS)"
 
-#: HostDlg.cpp:114
+#: HostDlg.cpp:115
 msgid "mail exchanger (MX)"
 msgstr "邮件交换服务器 (MX)"
 
-#: HostDlg.cpp:115
+#: HostDlg.cpp:116
 msgid "alias (CNAME)"
 msgstr "别名 (CNAME)"
 
-#: HostDlg.cpp:116
+#: HostDlg.cpp:117
 msgid "start of authority (SOA)"
 msgstr "权力声明开始 (SOA)"
 
-#: HostDlg.cpp:117
+#: HostDlg.cpp:118
 msgid "any record (ANY)"
 msgstr "任何记录 (ANY)"
 
-#: HostDlg.cpp:123
+#: HostDlg.cpp:124
 msgid "Se&arch for:"
 msgstr "搜索[&A]:"
 
-#: HostDlg.cpp:135 HostDlg.cpp:286
+#: HostDlg.cpp:136 HostDlg.cpp:287
 msgid "default server"
 msgstr "默认服务器"
 
-#: FingerDlg.cpp:94 HostDlg.cpp:144
+#: FingerDlg.cpp:95 HostDlg.cpp:145
 msgid "Ser&ver:"
 msgstr "服务器[&V]:"
 
-#: HostDlg.cpp:330
+#: HostDlg.cpp:331
 msgid "hos&t"
 msgstr "主机[&T]"
 
-#: HostDlg.cpp:334
+#: HostDlg.cpp:335
 msgid "ns&lookup"
 msgstr "ns&lookup"
 
-#: FingerDlg.cpp:76
+#: FingerDlg.cpp:77
 msgid "&User:"
 msgstr "用户[&U]:"

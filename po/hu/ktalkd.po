@@ -6,33 +6,37 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ktalkd \n"
-"POT-Creation-Date: 1998-03-25 00:02+0000\n"
+"POT-Creation-Date: 1998-07-08 16:36+0000\n"
 "PO-Revision-Date: 1998-06-11 23:01+0001\n"
 "Last-Translator: Tamas FEJOS <tms@rt.dunaferr.hu>\n"
 
 # atdlg.cpp:46
-#: ktalkdlg.cpp:52
+#: ktalkdlg.cpp:55
 #, fuzzy
 msgid "Message from talk demon at "
 msgstr "Üzenet a Talk_Daemon-tól %d:%02d-kor ...\n"
 
 # atdlg.cpp:50
-#: ktalkdlg.cpp:53
+#: ktalkdlg.cpp:56
 #, fuzzy
 msgid "Talk connection requested by "
 msgstr "talk: kapcsolat kérés %s által.\n"
 
+#: ktalkdlg.cpp:61
+msgid "for user "
+msgstr ""
+
 # atdlg.cpp:53
-#: ktalkdlg.cpp:56
+#: ktalkdlg.cpp:70
 msgid "Talk requested..."
 msgstr "Talk kérve..."
 
 # atdlg.cpp:57
-#: ktalkdlg.cpp:58
+#: ktalkdlg.cpp:72
 msgid "Respond"
 msgstr "Válasz"
 
 # atdlg.cpp:59
-#: ktalkdlg.cpp:58
+#: ktalkdlg.cpp:72
 msgid "Let it be"
 msgstr "Hadd legyen"
