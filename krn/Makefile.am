@@ -77,7 +77,10 @@ krn_SOURCES = 	main.cpp\
                 kmaddrbookdlg.cpp\
                 kmaddrbook.cpp\
                 ktreeview.cpp\
-                expireDlg.cpp
+                expireDlg.cpp\
+                tlform.cpp\
+                tlwidget.cpp\
+                typelayout.cpp
 
 noinst_HEADERS = 	NNTP.h\
                 kmmessage.h\
@@ -118,7 +121,10 @@ noinst_HEADERS = 	NNTP.h\
                 kmaddrbookdlg.h\
                 kmaddrbook.h\
                 ktreeview.h\
-                expireDlg.h
+                expireDlg.h\
+                tlform.h\
+                tlwidget.h\
+                typelayout.h
 
 
 SUBDIRS = docs pics
