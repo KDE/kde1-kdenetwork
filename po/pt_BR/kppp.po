@@ -1953,7 +1953,7 @@ msgstr ""
 
 #: ppplog.cpp:141
 msgid "You haven't started the PPP software on the peer system."
-msgstr ""
+msgstr "Você não iniciou o software PPP no sistema remoto."
 
 #: ppplog.cpp:144
 msgid "Check that you supplied the correct username and password!"
@@ -1979,7 +1979,8 @@ msgstr ""
 msgid ""
 "You have passed an invalid option to pppd. See `man pppd' for a complete "
 "list of valid arguments."
-msgstr ""
+msgstr "Você passou uma opção inválida para o pppd. Veja o manual do " 
+ "pppd para uma lista completa dos argumentos válidos."
 
 #: ppplog.cpp:170
 #, c-format
