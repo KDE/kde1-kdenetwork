@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
 "POT-Creation-Date: 1998-11-23 01:56+0100\n"
-"PO-Revision-Date: 1998-11-21 08:55 +0100\n"
-"Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
+"PO-Revision-Date: 1998-11-28 08:55 +0100\n"
 "Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
+"Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
 
 #: kmcomposewin.cpp:1458 kmmainwin.cpp:263 kpgp.cpp:546
 msgid ""
@@ -523,7 +523,7 @@ msgstr "Automatisch angehängte Signatur"
 
 #: kmsettings.cpp:436
 msgid "Automatically sign messages using PGP"
-msgstr "Nachrichten automatisch mit PGP unterschreiben"
+msgstr "Nachrichten automatisch mit PGP signieren"
 
 #: kmsettings.cpp:441
 msgid "Word wrap at column:"
@@ -766,7 +766,7 @@ msgstr "&Kopie:"
 
 #: kmcomposewin.cpp:351
 msgid "&Bcc:"
-msgstr "&Blindkope (Bcc):"
+msgstr "&Blindkopie (Bcc):"
 
 #: kmcomposewin.cpp:353
 msgid "&Subject:"
@@ -882,7 +882,7 @@ msgstr "&Datei einfügen"
 
 #: kmcomposewin.cpp:527
 msgid "Insert My &Public Key"
-msgstr ""
+msgstr "Ö&ffentlichen Schlüssel einfügen"
 
 #: kmcomposewin.cpp:532
 msgid "&Attach..."

@@ -2,13 +2,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kbiff\n"
 "POT-Creation-Date: 1998-11-23 01:56+0100\n"
-"PO-Revision-Date: 1998-11-15 13:10+0100\n"
-"Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
+"PO-Revision-Date: 1998-11-28 13:10+0100\n"
 "Language-Team: German <kde-i18n@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
-"Content-Transfer-Encoding: iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
 "Translator: Tobias Burnus <burnus@berlin1.netsurf.de>\n"
+"Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
 
 #: kbiff.cpp:470
 msgid "&UnDock"
@@ -27,14 +27,12 @@ msgid "&Help..."
 msgstr "&Hilfe..."
 
 #: kbiff.cpp:479
-#, fuzzy
 msgid "&Check Mail Now"
 msgstr "&Nach Mail sehen"
 
 #: kbiff.cpp:481
-#, fuzzy
 msgid "&Read Mail Now"
-msgstr "&Mail lesen"
+msgstr "&Mail jetzt lesen"
 
 #: kbiff.cpp:487
 msgid "&Stop"
@@ -170,7 +168,7 @@ msgstr "PREAUTH"
 
 #: setupdlg.cpp:874
 msgid "Keep Alive"
-msgstr ""
+msgstr "Verbindung aufrechterhalten"
 
 #: setupdlg.cpp:1000 setupdlg.cpp:1029
 msgid "Mailbox:"
