@@ -1,6 +1,18 @@
 -----------------------------------------------------------------------------
 Changes made Apr 25
 -----------------------------------------------------------------------------
+* [Roberto] Made kdecode a independent application.
+*           Trying to fix a bug that puts a empty line in a newsgroup's
+            article file, with dire consequences.
+*           I'm embedding read status in the key for the database.
+            This will make everything incompatible, but it makes the program
+            faster.
+*           Will move ref info into another database. This will decrease
+            memory usage and will be yet another speedup.
+*           Fixed bug in expiring. Body expire setting was read wrong.
+-----------------------------------------------------------------------------
+Changes made Apr 25
+-----------------------------------------------------------------------------
 * [Roberto] Still fixing MORE bugs in groupdlg.
             Fixed them all. (Who am I kidding? ;-)
 *           Implemented better "get active groups". Now it merges new groups

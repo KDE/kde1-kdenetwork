@@ -14,7 +14,7 @@
 #include <kconfig.h>
 #include <kapp.h>
 #include <uudeview.h>
-#include <mimelib/mimepp.h>
+//#include <mimelib/mimepp.h>
 #include "ktempfile.h"
 #include <kapp.h>
 
@@ -27,8 +27,6 @@ void MsgCallBack(void *,char *, int )
 KDecode::KDecode()
 {
     dialog=new decoderDlg (klocale->translate("KRN-Decoder"));
-
-    //XXXXX
     connect (dialog->list,SIGNAL(selected(int,int)),this,SLOT(decode(int,int)));
 }
 
@@ -169,48 +167,3 @@ void KDecode::decode(int line,const char *destName)
         }
     }
 }
-
-DwString* KDecode::decodeString(const char* data, QString type)
-{
-    type=type.lower();
-    DwString idata=data;
-    DwString* odata=new DwString;
-    if(type=="base64") DwDecodeBase64(idata,*odata);
-    else if(type=="quoted-printable") DwDecodeQuotedPrintable(idata,*odata);
-    else if(type=="8bit") *odata=idata;
-    else if(type=="7bit") *odata=idata;
-    else if(type!="7bit")  
-    {
-        KConfig* conf=kapp->getConfig();
-        conf->setGroup("Decoders");
-        if(conf->hasKey(type.data()))
-        {
-            KTempFile tempfile;
-            QString plugin=conf->readEntry(type);
-            int i=tempfile.create("decode_in","");
-            int o=tempfile.create("decode_out","");
-            QFile* f=tempfile.file(i);
-            f->open(IO_WriteOnly);
-            f->writeBlock(idata.c_str(),idata.length());
-            f->close();
-            system((plugin+" <"+tempfile.file(i)->name()+" >"+
-            tempfile.file(o)->name()).data());
-            f=tempfile.file(o);
-            f->open(IO_ReadOnly);
-            char* ndata=(char*)malloc(f->size());
-            f->readBlock(ndata,f->size());
-            f->close();
-            tempfile.remove(i);
-            tempfile.remove(o);
-            *odata=ndata;
-        }
-        else
-        {
-
-            warning(klocale->translate("Unsupported encoding type: %s."),
-                    type.data() );
-            *odata=idata;
-        }
-    }
-    return odata;
-}          

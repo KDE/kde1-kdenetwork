@@ -23,7 +23,6 @@
 #define DAY    HOUR*24
 
 extern GDBM_FILE artdb;
-extern GDBM_FILE old_artdb;
 extern KConfig *conf;
 extern QDict <NewsGroup> groupDict;
 
@@ -43,19 +42,21 @@ ExpireStatusDlg::ExpireStatusDlg()
 void ExpireStatusDlg::doExpire()
 {
     QDictIterator <NewsGroup> it(groupDict);
+    time_t threshold;
+    time_t threshold2;
     
     NewsGroup *iter;
 
     conf->setGroup("Cache");
-    int expireTime=conf->readNumEntry("ExpireBodies",5);
+    threshold=time(NULL)-DAY*conf->readNumEntry("ExpireReadBodies",5);
     
     QDir d(cachepath.data());
     d.setFilter(QDir::Files);
     QStrList *files=new QStrList (*d.entryList("*"));
     
     struct stat st;
-    time_t currenttime = time(NULL);
     char filename[255];
+
     
     for (char *fname=files->first();fname!=0;fname=files->next())
     {
@@ -66,7 +67,7 @@ void ExpireStatusDlg::doExpire()
         {
             debug("couldn't stat %s", filename);
         } else {
-            if((currenttime-st.st_atime) > DAY*expireTime)
+            if(st.st_atime<threshold)
             {
                 Article *art = new Article();
                 
@@ -91,52 +92,12 @@ void ExpireStatusDlg::doExpire()
     tl.setAutoDelete(true);
     QString t,s;
     
-    time_t threshold;
-    
-    // Expire old articles
-    conf->setGroup("Cache");
-    threshold=time(NULL)-DAY*conf->readNumEntry("ExpireReadHeaders",5);
-    key= gdbm_firstkey(old_artdb);
-    while (key.dptr)
-    {
-        nextkey=gdbm_nextkey (old_artdb,key);
-        
-        content=gdbm_fetch(old_artdb,key);
-        s=(char *)content.dptr;
-        
-        while (1)
-        {
-            index=s.find("\n");
-            if (index==-1)
-            {
-                tl.append(s);
-                break;
-            }
-            t=s.left (index);
-            s=s.right(s.length()-index-1);
-            if (t.isEmpty())
-                continue;
-            tl.append (t.data());
-        }
-        
-        if (!strcmp(tl.at(6),"1"))
-        {
-            time_t lastAccess=atol(tl.at(8));
-            
-            if (threshold>lastAccess)
-            {
-                gdbm_delete(old_artdb,key);
-                free (key.dptr);
-            }
-        }
-        tl.clear();
-        key=nextkey;
-    }
     
     // Expire new articles
     
     conf->setGroup("Cache");
     threshold=time(NULL)-DAY*conf->readNumEntry("ExpireUnreadHeaders",5);
+    threshold2=time(NULL)-DAY*conf->readNumEntry("ExpireReadHeaders",5);
     key= gdbm_firstkey(artdb);
     while (key.dptr)
     {
@@ -163,11 +124,22 @@ void ExpireStatusDlg::doExpire()
         if (!strcmp(tl.at(6),"1"))
         {
             time_t lastAccess=atol(tl.at(8));
-            
-            if (threshold>lastAccess)
+
+            if (key.dptr[0]!='R')
             {
-                gdbm_delete(artdb,key);
-                free (key.dptr);
+                if (threshold>lastAccess)
+                {
+                    gdbm_delete(artdb,key);
+                    free (key.dptr);
+                }
+            }
+            else
+            {
+                if (threshold2>lastAccess)
+                {
+                    gdbm_delete(artdb,key);
+                    free (key.dptr);
+                }
             }
         }
         tl.clear();

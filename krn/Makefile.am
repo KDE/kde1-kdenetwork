@@ -3,7 +3,10 @@ INCLUDES = $(all_includes)
 #DEFS += -DKRN
 DEFS += -DKRN -DCHARSETS
 
-LDADD = $(LIBCOMPAT) $(LIBSOCKET) $(all_libraries) -lkfm -lkhtmlw -ljscript -lkdeui -lkdecore -lkfile $(LIBJPEG) -lqt -lXext -lX11 -lmimelib -luulib -lgdbm $(KDE_RPATH)
+#LDADD = $(LIBCOMPAT) $(LIBSOCKET) $(all_libraries) -lkfm -lkhtmlw -ljscript -lkdeui -lkdecore -lkfile $(LIBJPEG) -lqt -lXext -lX11 -lmimelib -luulib -lgdbm $(KDE_RPATH)
+
+krn_LDFLAGS = $(LIBCOMPAT) $(LIBSOCKET) $(all_libraries) -lkfm -lkhtmlw -ljscript -lkdeui -lkdecore -lkfile $(LIBJPEG) -lqt -lXext -lX11 -lmimelib -luulib -lgdbm $(KDE_RPATH)
+kdecode_LDFLAGS = $(LIBCOMPAT) $(LIBSOCKET) $(all_libraries) -lkdeui -lkdecore -lkfile -lqt -lXext -lX11 -luulib $(KDE_RPATH)
 
 ICONDIR = $(kde_icondir)
 MINIDIR =  $(kde_minidir)
@@ -41,7 +44,11 @@ BUILTSOURCES =	groupdlg.moc \
 
 DISTCLEANFILES = $(BUILTSOURCES)
 
-bin_PROGRAMS =	krn
+bin_PROGRAMS =	krn kdecode
+
+kdecode_SOURCES = kdecodemain.cpp\
+                decoderDlg.cpp\
+                kdecode.cpp
 
 krn_SOURCES = 	main.cpp\
 		NNTP.cpp\
@@ -51,9 +58,7 @@ krn_SOURCES = 	main.cpp\
                 asker.cpp\
                 identDlg.cpp\
                 NNTPConfigDlg.cpp\
-                decoderDlg.cpp\
                 rmbpop.cpp\
-                kdecode.cpp\
                 aboutDlg.cpp\
                 ktempfile.cpp\
                 kscorer.cpp\

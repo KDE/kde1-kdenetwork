@@ -36,8 +36,8 @@
 extern QString krnpath,cachepath,artinfopath,groupinfopath;
 
 extern GDBM_FILE artdb;
-extern GDBM_FILE old_artdb;
 extern GDBM_FILE scoredb;
+extern GDBM_FILE refsdb;
 
 extern QDict <char> unreadDict;
 
@@ -58,13 +58,11 @@ int k4;
 Article::Article (const char *_ID)
 {
     lastScore=0;
-    isread=false;
     isavail=true;
     ismarked=false;
     threadDepth=0;
     expire=true;  // robert's cache stuff
-    refsLoaded=false;
-    Refs.setAutoDelete(true);
+    isread=false;
     ID=_ID;
     load();
 }
@@ -73,13 +71,22 @@ Article::Article (const char *_ID)
 Article::Article(void)
 {
     lastScore=0;
-    isread=false;
     isavail=true;
     ismarked=false;
     threadDepth=0;
     expire=true;  // robert's cache stuff
-    refsLoaded=false;
-    Refs.setAutoDelete(true);
+    isread=false;
+}
+
+bool Article::isRead(const char * ID)
+{
+    QString k=QString("R")+ID;
+
+    datum key;
+    key.dptr=k.data();
+    key.dsize=k.length()+1;
+
+    return gdbm_exists (artdb,key);
 }
 
 Article::~Article()
@@ -96,6 +103,41 @@ void Article::lookupAltavista()
     return;
 }
 
+QStrList *Article::Refs(const char *ID)
+{
+    datum key,content;
+    QString refsdata;
+    QString k(ID);
+    key.dptr=k.data();
+    key.dsize=k.length()+1;
+
+    content=gdbm_fetch(refsdb,key);
+
+    refsdata=content.dptr;
+
+    QStrList *Refs=new QStrList();
+    
+    if (!refsdata.isEmpty())
+    {
+        while (1)
+        {
+            int index=refsdata.find('>');
+            if (index==-1)
+            {
+                refsdata=refsdata.stripWhiteSpace();
+                Refs->append(refsdata.data());
+                break;
+            }
+            else
+            {
+                Refs->append(refsdata.left(index+1).stripWhiteSpace().data());
+                refsdata=refsdata.right(refsdata.length()-index-1);
+            }
+        }
+    }
+    free (content.dptr);
+    return Refs;
+}
 
 void Article::formHeader(QString *s)
 // Builds a nice header to put in the header list, which properly
@@ -104,7 +146,7 @@ void Article::formHeader(QString *s)
     s->setStr(" ");
     QString ss;
     
-    if (isRead())
+    if (isread)
     {
         ss.setStr("{R}");
     }
@@ -174,8 +216,12 @@ void Article::save()
 {
     
     datum key;
-    key.dptr=ID.data();
-    key.dsize=ID.length()+1;
+    QString k;
+    if (isread)
+        k="R";
+    k+=ID;
+    key.dptr=k.data();
+    key.dsize=k.length()+1;
     
     QString _content;
     _content+=Subject+"\n";
@@ -183,11 +229,9 @@ void Article::save()
     _content+=Lines+"\n";
     _content+=From+"\n";
     _content+=Date+"\n";
-    if (isRead())
-        _content+="1\n";
-    else
-        _content+="0\n";
-    
+
+    //This one does nothing, but I keep it for compatibility
+    _content+="1\n";
     //
     // robert's cache stuff
     
@@ -209,24 +253,25 @@ void Article::save()
     _content+=tt;
     _content+="\n";
     
-    for (char *iter=Refs.first();iter!=0;iter=Refs.next())
-    {
-        _content+=iter;
-        _content+="\n";
-    }
-    
     datum content;
     content.dptr=_content.data();
     content.dsize=_content.length()+1;
     
-    if (!isRead())
+    if (!isread)
     {
         gdbm_store(artdb,key,content,GDBM_REPLACE);
-        gdbm_delete(old_artdb,key);
+        QString k2("R");
+        k2+=ID;
+        key.dptr=k2.data();
+        key.dsize=k2.length()+1;
+        gdbm_delete(artdb,key);
     }
     else
     {
-        gdbm_store(old_artdb,key,content,GDBM_REPLACE);
+        gdbm_store(artdb,key,content,GDBM_REPLACE);
+        QString k2=ID;
+        key.dptr=k2.data();
+        key.dsize=k2.length()+1;
         gdbm_delete(artdb,key);
     }
     
@@ -235,17 +280,24 @@ bool Article::load()
 //gets the article info and data from the cache
 {
     QStrList tl;
+    QString k;
     tl.setAutoDelete(true);
     datum key;
     datum content;
+    isread=false;
+
+    k=ID;
+    key.dptr=k.data();
+    key.dsize=k.length() + 1;
     
-    key.dptr=ID.data();
-    key.dsize=ID.length() + 1;
-    
-    content=gdbm_fetch(old_artdb,key);
+    content=gdbm_fetch(artdb,key);
     if (!content.dptr)
     {
+        k=QString("R")+ID;
+        key.dptr=k.data();
+        key.dsize=k.length() + 1;
         content=gdbm_fetch(artdb,key);
+        isread=true;
     }
     if (!content.dptr)
     {
@@ -276,11 +328,14 @@ bool Article::load()
     Lines=tl.at(2);
     From=tl.at(3);
     Date=tl.at(4);
+
+    /*
     if (!strcmp(tl.at(5),"1"))
         isread=true;
     else
         isread=false;
-    
+        */
+        
     if (!strcmp(tl.at(6),"1"))
         expire=true;
     else
@@ -291,15 +346,7 @@ bool Article::load()
     else
         ismarked=false;
     
-    for (unsigned int i=9;i<tl.count();i++)
-    {
-        if(0<strlen(tl.at(i)))
-        {
-            Refs.append(tl.at(i));
-        }
-    }
     free (content.dptr);
-    refsLoaded=true;
     return true;
 }
 
@@ -345,7 +392,6 @@ void Article::reScore(RuleList rules)
 
 void Article::setRead(bool b)
 {
-    if (!refsLoaded) load();
     if (b)
         unreadDict.remove(ID.data());
     else
@@ -356,7 +402,6 @@ void Article::setRead(bool b)
 
 void Article::setAvailable(bool b)
 {
-    if (!refsLoaded) load();
     isavail = b;
     save();
 }
@@ -368,7 +413,6 @@ bool Article::canExpire()  // robert's cache stuff
 
 void Article::setExpire(bool b)   // robert's cache stuff
 {
-    if (!refsLoaded) load();
     expire = b;
     save();
 }
@@ -376,7 +420,6 @@ void Article::setExpire(bool b)   // robert's cache stuff
 
 void Article::toggleExpire()   // robert's cache stuff
 {
-    if (!refsLoaded) load();
     if(expire)
         expire = false;
     else
@@ -386,7 +429,6 @@ void Article::toggleExpire()   // robert's cache stuff
 
 void Article::setMarked(bool b)
 {
-    if (!refsLoaded) load();
     ismarked = b;
     save();
 }
@@ -588,7 +630,7 @@ void NewsGroup::catchup()
     for (Article *art=artList.first();art!=0;art=artList.next())
     {
         count++;
-        if (!art->isRead())
+        if (!art->isread)
         {
             art->setRead();
             if (!(count%5))
@@ -615,7 +657,7 @@ int NewsGroup::countNew(NNTP *server)
             count = server->last - lastArticle(server);
     }
     for(Article *art=artList.first(); art!=0; art=artList.next())
-        if(!art->isRead())
+        if(!art->isread)
             count++;
     artList.clear();
     return(count);
@@ -680,7 +722,8 @@ void do_insert(Article *art)
     assert (a->art==art);
     node *last=a;
     node *b=0;
-    QListIterator <char> iter(art->Refs);
+    QStrList *Refs=Article::Refs(art->ID);
+    QStrListIterator iter(*Refs);
     iter.toLast();
     char *ref;
     for (;iter.current();--iter)
@@ -706,6 +749,7 @@ void do_insert(Article *art)
             break;
         }
     }
+    delete Refs;
 }
 
 void addToList(node *n,int dep,ArticleList *l)
@@ -718,8 +762,6 @@ void addToList(node *n,int dep,ArticleList *l)
         if (child->art)
         {
             l->append(child->art);
-            child->art->Refs.clear();
-            child->art->refsLoaded=false;
             child->art->threadDepth=dep;
             addToList (child,dep+1,l);
         }
@@ -840,8 +882,6 @@ void ArticleList::thread(bool threaded,int key1,int key2,int key3,int key4)
     for (;artit.current();++artit)
     {
         iter=artit.current();
-        if (!(iter->refsLoaded))
-            iter->load();
         iter->threadDepth=0;
         do_insert(iter);
     }

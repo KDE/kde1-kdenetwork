@@ -38,7 +38,7 @@
 
 extern QString krnpath,cachepath,artinfopath;
 extern GDBM_FILE artdb;
-extern GDBM_FILE old_artdb;
+extern GDBM_FILE refsdb;
 extern QDict <char> unreadDict;
 
 #include <mimelib/mimepp.h>
@@ -376,7 +376,7 @@ int NNTP::listXover(int from,int to,NewsGroup *n)
                     key.dptr=art.ID.data();
                     key.dsize=art.ID.length()+1;
                     
-                    if ((!gdbm_exists(artdb,key)) && (!gdbm_exists(old_artdb,key)))
+                    if ((!gdbm_exists(artdb,key)))
                     {
                         art.Subject=templ.at(OffsetSubject);
                         art.From=templ.at(OffsetFrom);
@@ -384,10 +384,16 @@ int NNTP::listXover(int from,int to,NewsGroup *n)
                         art.Lines=templ.at(OffsetLines);
                         
                         //convert Refs to a strlist
-                        art.Refs.clear();
+
+//                        art.Refs.clear();
                         QString refsdata=templ.at(OffsetRef);
+                        datum refs;
+                        refs.dptr=refsdata.data();
+                        refs.dsize=refsdata.length();
                         
-                        if (!refsdata.isEmpty())
+                        gdbm_store(refsdb,key,refs,GDBM_REPLACE);
+
+/*                      if (!refsdata.isEmpty())
                         {
                             while (1)
                             {
@@ -405,6 +411,7 @@ int NNTP::listXover(int from,int to,NewsGroup *n)
                                 }
                             }
                         }
+*/
                         unreadDict.replace(art.ID.data(),art.ID.data());
                         art.save();
                     }

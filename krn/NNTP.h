@@ -70,9 +70,10 @@ public:
     QString From;
     QString ID;
     QString Date;
-    QStrList Refs;
+//    QStrList Refs;
     void formHeader(QString *s);
-    bool isRead() {return isread;};
+    static bool isRead(const char *ID);
+    static QStrList *Refs(const char *ID);
     void setRead(bool b=true);
     bool isAvailable() {return isavail;};
     void setAvailable(bool b=true);
@@ -85,7 +86,7 @@ public:
     int  score();
     void reScore(RuleList rules);
     void lookupAltavista();
-    bool refsLoaded;
+//    bool refsLoaded;
     KMMessage *createMessage();
     
     // robert's cache stuff
@@ -97,9 +98,9 @@ public:
     //This value is valid only for a few moments after running
     //thread() over an article list. It's not really meant to be used...
     int  threadDepth;
+    bool isread;
 private:
     int lastScore;
-    bool isread;
     bool isavail;
     bool ismarked;
     int refcount;

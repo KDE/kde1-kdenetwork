@@ -37,10 +37,10 @@
 #include <kkeyconf.h>
 #include <html.h>
 #include <kconfig.h>
+#include <kprocess.h>
 
 #include <mimelib/mimepp.h>
 
-#include "decoderDlg.h"
 #include "groupdlg.h"
 #include "kdecode.h"
 #include "rmbpop.h"
@@ -72,7 +72,7 @@
 #define SAVE_ARTICLE 10
 #define SCROLL_UP_ARTICLE 11
 #define SCROLL_DOWN_ARTICLE 12
-#define DECODE_ONE_ARTICLE 13
+#define DECODE 13
 #define NO_READ 14
 #define PRINT_ARTICLE 15
 #define CONFIG_FONTS 16
@@ -100,8 +100,6 @@
 
 extern QString pixpath,cachepath;
 
-extern KDecode *decoder;
-
 extern KConfig *conf;
 
 extern Groupdlg *main_widget;
@@ -110,9 +108,16 @@ extern QList <Rule> ruleList;
 
 QString MultiSavePath;
 
+QStrList artsToDecode;
+
 findArtDlg *FindDlg=0;
 rulesDlg *RulesDlg=0;
 sortDlg *SortDlg=0;
+
+void decode()
+{
+    debug ("should decode now");
+}
 
 Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     :Inherited (_group->name)
@@ -162,7 +167,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     article->insertItem(klocale->translate("Post & Reply"),POSTANDMAIL);
     article->insertItem(klocale->translate("Forward"),FORWARD);
     article->insertSeparator();
-    article->insertItem(klocale->translate("Decode"),DECODE_ONE_ARTICLE);
+    article->insertItem(klocale->translate("Decode"),DECODE);
     article->insertItem(klocale->translate("(Un)Tag"),TAG_ARTICLE);
     article->insertItem(klocale->translate("Don't expire"), TOGGLE_EXPIRE);  // robert's cache stuff
     article->insertSeparator();
@@ -258,7 +263,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     
     t2->insertButton (Icon("locked.xpm"), TOGGLE_EXPIRE, true, klocale->translate("Lock (keep in cache)"));
     
-    t2->insertButton (Icon("deco.xpm"), DECODE_ONE_ARTICLE, true, klocale->translate("Decode Article"));
+    t2->insertButton (Icon("deco.xpm"), DECODE_ARTICLE, true, klocale->translate("Decode Article"));
     
     t2->insertButton (Icon("red-bullet.xpm"), MARK_READ, true, klocale->translate("Mark Read"));
 
@@ -448,7 +453,7 @@ void Artdlg::fillTree ()
         thiscached=server->isCached(iter->ID.data())==PART_ALL;
         if(
            (((thiscached && showcached) || (!showcached)) &&
-            (!(unread && iter->isRead()))) ||
+            (!(unread && iter->isread))) ||
            (showlocked && (!iter->canExpire())))
         {
             artList.append(iter);
@@ -513,10 +518,6 @@ bool Artdlg::taggedActions (int action)
         action=MULTI_SAVE;
         MultiSavePath="";
     }
-    else if (action==DECODE_ONE_ARTICLE)
-    {
-        action=DECODE_ARTICLE;
-    }
     bool success=false;
     qApp->setOverrideCursor (waitCursor);
     list->setUpdatesEnabled(FALSE);
@@ -546,10 +547,9 @@ bool Artdlg::taggedActions (int action)
     qApp->restoreOverrideCursor ();
     list->setUpdatesEnabled(TRUE);
     list->update();
-    switch (action)
+    if (action==DECODE_ARTICLE)
     {
-    case DECODE_ARTICLE:
-        decoder->showWindow();
+        decode();
     }
     return success;
 }
@@ -561,10 +561,6 @@ bool Artdlg::readActions (int action)
         action=MULTI_SAVE;
         MultiSavePath="";
     }
-    else if (action==DECODE_ONE_ARTICLE)
-    {
-        action=DECODE_ARTICLE;
-    }
     bool success=false;
     qApp->setOverrideCursor (waitCursor);
     list->setUpdatesEnabled(FALSE);
@@ -577,7 +573,7 @@ bool Artdlg::readActions (int action)
     
     for (char *iter=IDList.first();iter!=0;iter=IDList.next())
     {
-        if (Article(iter).isRead())
+        if (Article::isRead(iter))
         {
             success=actions(action,c);
         }
@@ -594,10 +590,9 @@ bool Artdlg::readActions (int action)
     qApp->restoreOverrideCursor ();
     list->setUpdatesEnabled(TRUE);
     list->update();
-    switch (action)
+    if (action==DECODE_ARTICLE)
     {
-    case DECODE_ARTICLE:
-        decoder->showWindow();
+        decode();
     }
     return success;
 }
@@ -609,10 +604,6 @@ bool Artdlg::unreadActions (int action)
         action=MULTI_SAVE;
         MultiSavePath="";
     }
-    else if (action==DECODE_ONE_ARTICLE)
-    {
-        action=DECODE_ARTICLE;
-    }
     bool success=false;
     qApp->setOverrideCursor (waitCursor);
     list->setUpdatesEnabled(FALSE);
@@ -625,7 +616,7 @@ bool Artdlg::unreadActions (int action)
     
     for (char *iter=IDList.first();iter!=0;iter=IDList.next())
     {
-        if (!(Article(iter).isRead()))
+        if (!(Article::isRead(iter)))
         {
             success=actions(action,c);
         }
@@ -642,10 +633,9 @@ bool Artdlg::unreadActions (int action)
     qApp->restoreOverrideCursor ();
     list->setUpdatesEnabled(TRUE);
     list->update();
-    switch (action)
+    if (action==DECODE_ARTICLE)
     {
-    case DECODE_ARTICLE:
-        decoder->showWindow();
+        decode();
     }
     return success;
 }
@@ -656,10 +646,6 @@ bool Artdlg::allActions (int action)
     {
         action=MULTI_SAVE;
         MultiSavePath="";
-    }
-    else if (action==DECODE_ONE_ARTICLE)
-    {
-        action=DECODE_ARTICLE;
     }
     bool success=false;
     qApp->setOverrideCursor (waitCursor);
@@ -687,10 +673,9 @@ bool Artdlg::allActions (int action)
     qApp->restoreOverrideCursor ();
     list->setUpdatesEnabled(TRUE);
     list->update();
-    switch (action)
+    if (action==DECODE_ARTICLE)
     {
-    case DECODE_ARTICLE:
-        decoder->showWindow();
+        decode();
     }
     return success;
 }
@@ -887,10 +872,9 @@ bool Artdlg::actions (int action,int index)
             decArt(index,0);
             break;
         }
-    case DECODE_ONE_ARTICLE:
+    case DECODE:
         {
-            actions(DECODE_ARTICLE,index);
-            decoder->showWindow();
+            decode();
             break;
         }
     case TAG_ARTICLE:
@@ -1093,7 +1077,7 @@ bool Artdlg::actions (int action,int index)
             for (;iter.current();++iter)
             {
                 Article art(iter.current());
-                if (!art.isRead())
+                if (!art.isread)
                 {
                     art.setRead();
                 }
@@ -1514,8 +1498,10 @@ void Artdlg::decArt (int index,int)
     {
         if (!s->isEmpty())
         {
-            QString temp( cachepath+"/"+art.ID+".body" );
-            decoder->load ( temp.data());
+            QString temp( cachepath+"/"+art.ID+".head" );
+            artsToDecode.append( temp.data());
+            temp= cachepath+"/"+art.ID+".body" ;
+            artsToDecode.append( temp.data());
             art.setAvailable(true);
         }
         delete s;
@@ -1639,7 +1625,7 @@ void Artdlg::markReadArt (int index,int)
     if (index<0) return;
     Article art(IDList.at(index));
     art.threadDepth=*depths.at(index);
-    if (art.isRead())
+    if (art.isread)
     {
         art.setRead(false);
     }

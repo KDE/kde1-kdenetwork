@@ -35,7 +35,6 @@
 
 #include "rules.h"
 #include "asker.h"
-#include "kdecode.h"
 #include "krnsender.h"
 #include "kmidentity.h"
 #include "kbusyptr.h"
@@ -73,10 +72,8 @@ KSimpleConfig *ruleFile=0;
 
 QString krnpath,cachepath,artinfopath,groupinfopath,dbasepath,outpath;
 
-KDecode *decoder;
-
 GDBM_FILE artdb;
-GDBM_FILE old_artdb;
+GDBM_FILE refsdb;
 GDBM_FILE scoredb;
 
 void checkConf();
@@ -115,7 +112,6 @@ int main( int argc, char **argv )
     msgSender->setMethod(KMSender::smSMTP);
     KMMessage::readConfig();
 
-    decoder=new KDecode;
     addrBook=new KMAddrBook();
     addrBook->readConfig();
     addrBook->load();
@@ -166,8 +162,8 @@ int main( int argc, char **argv )
 
     artinfopath=krnpath+"/artinfo.db";
     artdb=gdbm_open(artinfopath.data(),0,GDBM_WRCREAT | GDBM_FAST,448,0);
-    artinfopath=krnpath+"/old_artinfo.db";
-    old_artdb=gdbm_open(artinfopath.data(),0,GDBM_WRCREAT | GDBM_FAST,448,0);
+    artinfopath=krnpath+"/refs.db";
+    refsdb=gdbm_open(artinfopath.data(),0,GDBM_WRCREAT | GDBM_FAST,448,0);
     artinfopath=krnpath+"/scores.db";
     scoredb=gdbm_open(artinfopath.data(),0,GDBM_WRCREAT | GDBM_FAST,448,0);
 
@@ -204,13 +200,9 @@ int main( int argc, char **argv )
 
     k.close();
     gdbm_sync(artdb);
-    gdbm_sync(old_artdb);
     gdbm_reorganize(artdb);
-    gdbm_reorganize(old_artdb);
     gdbm_sync(artdb);
-    gdbm_sync(old_artdb);
     gdbm_close(artdb);
-    gdbm_close(old_artdb);
     unlink((krnpath+"krn_lock").data());
 }
 
