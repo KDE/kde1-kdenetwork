@@ -13,7 +13,7 @@ extern KApplication *kApp;
 
 static const int fudge = 5;
 
-KSircListBox::KSircListBox(QWidget * parent, const char * name, WFlags f) : QListBox(parent,name,f) /*fold00*/
+KSircListBox::KSircListBox(QWidget * parent, const char * name, WFlags f) : QListBox(parent,name,f) /*FOLD00*/
 {
   setAutoScrollBar(FALSE);
   setAutoBottomScrollBar(FALSE);
@@ -39,6 +39,7 @@ KSircListBox::KSircListBox(QWidget * parent, const char * name, WFlags f) : QLis
   vertScroll->show();
   ScrollToBottom = TRUE;
   selectMode = FALSE;
+  waitForClear = FALSE;
 }
 
 KSircListBox::~KSircListBox() /*fold00*/
@@ -217,6 +218,9 @@ void KSircListBox::mousePressEvent(QMouseEvent *me){ /*FOLD00*/
   spoint.setY(me->y());
 //  cerr << "Mouse press event!\n";
   ScrollToBottom = FALSE; // Lock window
+  if(waitForClear == TRUE)
+      clearSelection();
+  cerr << "Got Press\n";
 }
 
 void KSircListBox::mouseReleaseEvent(QMouseEvent *me){ /*FOLD00*/
@@ -273,9 +277,11 @@ void KSircListBox::mouseReleaseEvent(QMouseEvent *me){ /*FOLD00*/
     kApp->clipboard()->setText(selected);
     debug("selected: %s", selected.data());
   }
+  waitForClear = TRUE;
+  cerr << "Got release\n";
 }
 
-void KSircListBox::clearSelection() {
+void KSircListBox::clearSelection() { /*FOLD00*/
   for(int i = min; i <= max; i++){
     ircListItem *it = (ircListItem *) item(i);
     if(it == 0x0){
@@ -287,6 +293,10 @@ void KSircListBox::clearSelection() {
     it->updateSize();
     updateItem(i, FALSE);
   }
+  min = 1; // Turns off repeated clears
+  max = 0;
+  waitForClear = FALSE;
+  cerr << "Got clear\n";
 }
 
 void KSircListBox::mouseMoveEvent(QMouseEvent *me){ /*FOLD00*/

@@ -70,7 +70,7 @@ QPixmap *KSircTopLevel::pix_bluep = 0L;
 QPixmap *KSircTopLevel::pix_madsmile = 0L;
 QPixmap *KSircTopLevel::pix_server = 0L;
 
-KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name)  /*FOLD00*/
+KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name)  /*fold00*/
   : KTopLevelWidget(name),
     KSircMessageReceiver(_proc)
    
@@ -458,7 +458,7 @@ void KSircTopLevel::TabNickCompletion()  /*fold00*/
 
 }
   
-void KSircTopLevel::sirc_receive(QString str) /*FOLD00*/
+void KSircTopLevel::sirc_receive(QString str) /*fold00*/
 {
 
   /* 
@@ -733,7 +733,11 @@ ircListItem *KSircTopLevel::parse_input(QString &string) /*FOLD00*/
     }
     return NULL;
   }
-
+  catch(estringOutOfBounds &err){
+      warning("esParsing failed on: %s", err.str.data());
+      return NULL;
+  }
+  
   /*
    * We've fallen out of the loop
    */
@@ -844,7 +848,7 @@ void KSircTopLevel::closeEvent(QCloseEvent *) /*fold00*/
   // This line is NEVER reached.
 }
 
-void KSircTopLevel::resizeEvent(QResizeEvent *e) /*FOLD00*/
+void KSircTopLevel::resizeEvent(QResizeEvent *e) /*fold00*/
 {
   bool update = mainw->autoUpdate();
   mainw->setAutoUpdate(FALSE);
@@ -868,7 +872,7 @@ void KSircTopLevel::resizeEvent(QResizeEvent *e) /*FOLD00*/
   //delete file;
 }
 
-void KSircTopLevel::gotFocus() /*FOLD00*/
+void KSircTopLevel::gotFocus() /*fold00*/
 {
   if(isVisible() == TRUE){
     if(have_focus == 0){
@@ -892,7 +896,7 @@ void KSircTopLevel::lostFocus() /*fold00*/
 
 }
 
-void KSircTopLevel::control_message(int command, QString str) /*FOLD00*/
+void KSircTopLevel::control_message(int command, QString str) /*fold00*/
 {
   switch(command){
   case CHANGE_CHANNEL: // 001 is defined as changeChannel
@@ -988,7 +992,7 @@ void KSircTopLevel::control_message(int command, QString str) /*FOLD00*/
   }
 }
 
-void KSircTopLevel::showTicker() /*FOLD00*/
+void KSircTopLevel::showTicker() /*fold00*/
 {
   myrect = geometry();
   mypoint = pos();
@@ -1073,7 +1077,7 @@ void KSircTopLevel::openCutWindow() /*fold00*/
   // kscd deletes it self.
 }
 
-void KSircTopLevel::pasteToWindow() /*FOLD00*/
+void KSircTopLevel::pasteToWindow() /*fold00*/
 {
   QString text = kApp->clipboard()->text();
   text += "\n";
@@ -1120,14 +1124,14 @@ void KSircTopLevel::toggleRootWindow() /*fold00*/
 {
 }
 
-void KSircTopLevel::iamDestroyed() /*FOLD00*/
+void KSircTopLevel::iamDestroyed() /*fold00*/
 {
   emit objDestroyed(this);
 }
 
 #undef BLAH
 #ifdef BLAH
-void KSircTopLevel::timerEvent( QTimerEvent * ){ /*FOLD00*/
+void KSircTopLevel::timerEvent( QTimerEvent * ){ /*fold00*/
 //  debug("Tick:  current size: %d %d, real size: %d %d",
 //	current_size.width(), current_size.height(),
 //	size().width(), size().height());
@@ -1145,7 +1149,7 @@ void KSircTopLevel::timerEvent( QTimerEvent * ){ /*FOLD00*/
 }
 #endif
 
-kstInside::kstInside ( QWidget * parent, const char * name, WFlags f,  /*FOLD00*/
+kstInside::kstInside ( QWidget * parent, const char * name, WFlags f,  /*fold00*/
 		       bool allowLines )
   : QFrame(parent, name, f, allowLines)
 {
@@ -1179,7 +1183,7 @@ kstInside::~kstInside() /*fold00*/
 }
 
 
-void kstInside::resizeEvent(QResizeEvent *e) /*FOLD00*/
+void kstInside::resizeEvent(QResizeEvent *e) /*fold00*/
 {
   QFrame::resizeEvent(e);
 

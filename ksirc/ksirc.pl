@@ -325,7 +325,7 @@ sub cmd_extnames #FOLD00
   &getarg;
   &sl("who :$newarg");
   $who_active++;  
-  $WHO_INFO{$newarg} = " ";
+  $WHO_INFO{$newarg} = "";
   $WHO_TIME{$newarg} = 0;
 }
 &addcmd("extnames");
@@ -342,7 +342,9 @@ sub hook_ksirc_who_end { #FOLD00
   # 2 Onwards: misc info
   chop($WHO_INFO{$info[1]}); # Remove trailing space
   my $c = $WHO_TIME{$info[1]} == 0 ? "C" : "!";
-  &print("~$info[1]~*$c* ExtUsers on $info[1]: $WHO_INFO{$info[1]}");
+  if(length($WHO_INFO{$info[1]}) > 0){
+    &print("~$info[1]~*$c* ExtUsers on $info[1]: $WHO_INFO{$info[1]}");
+  }
   &print("~!all~*c* Done Parsing Who");
 
   delete($WHO_INFO{$info[1]});

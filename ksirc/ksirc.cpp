@@ -122,7 +122,15 @@ int main( int argc, char ** argv )
     kApp->setMainWidget(control);
   }
 
-  kApp->exec();
+again:
+  try {
+      kApp->exec();
+  }
+  catch(...){
+      cerr << "Caught Unkown Exception, uhoh!!!\n";
+      cerr << "Dying!!!\n";
+      exit(10);
+  }
 
   kConfig->sync();
 

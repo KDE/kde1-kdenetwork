@@ -84,7 +84,7 @@ protected slots:
   /**
    * If we are selection this is true. otherwise it's false
    */
-  bool selectMode;
+  bool selectMode, waitForClear;
   QPoint spoint;
   int srow, sline, schar, lrow;
   int max, min;

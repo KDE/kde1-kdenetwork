@@ -267,8 +267,9 @@ void ChannelParser::parseINFONicks(QString in_string) /*FOLD00*/
   // Get the channel name portion of the string
   // Search for the first space, since : can be embeded into channel names.
   count = sscanf(string, "*!* ExtUsers on %100[^ ]", channel_name);
-  if(count < 1)
+  if(count < 1){
     throw(parseError(string, QString("Could not find channel name")));
+  }
 
   // Remove the : from the end.
   channel_name[strlen(channel_name)-1] = 0x0;
@@ -284,9 +285,13 @@ void ChannelParser::parseINFONicks(QString in_string) /*FOLD00*/
     top_item = top->nicks->topItem();
     top->nicks->clear();
   }
-  start = string.find(": ", 0, FALSE); // Find start of nicks
-  if(start < 0)
-    throw(parseError(string, QString("Could not find start of nicks")));
+  
+  try {
+      start = string.find(": ", 0, FALSE); // Find start of nicks
+  }
+  catch(estringOutOfBounds &err){
+      throw(parseError(string, QString("Could not find start of nicks")));
+  }
   
   place_holder = &string[start]+2;
   nick = strtok(place_holder, " ");
@@ -322,6 +327,7 @@ void ChannelParser::parseINFONicks(QString in_string) /*FOLD00*/
     top->nicks->inSort(irc);
     nick = strtok(NULL, " ");
   }
+  
   throw(parseSucc(QString("")));           // Parsing ok, don't print anything though
 }
 
@@ -334,7 +340,8 @@ void ChannelParser::parseINFOJoin(QString string) /*FOLD00*/
     if(strcasecmp(top->channel_name, chan) == 0)
       top->show();
     emit top->open_toplevel(chan);
-    emit top->outputLine((const QString) QString("/lag\n"));
+    QString cmd = "/lag\n";
+    emit top->outputLine(cmd);
     throw(parseSucc(" " + string, kSircConfig->colour_chan, top->pix_greenp));
   }
   else if(sscanf(string, "%100s %*s has joined channel %100s", nick, channel) > 0){
