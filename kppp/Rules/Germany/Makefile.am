@@ -1,6 +1,7 @@
 pkg_DATA =	Telekom_200km.rst \
 		Telekom_50km.rst \
 		Telekom_City.rst \
+		Telekom_City_Weekend.rst \
 		Telekom_Ferntarif.rst \
 		Telekom_Regio_Call.rst \
 		NetCologne_50km.rst NetCologne_Germany.rst \
