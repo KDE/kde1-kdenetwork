@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSIONPOT-Creation-Date: 1998-01-17 07:40+0100\n"
-"POT-Creation-Date: 1998-11-11 02:09+0100\n"
+"POT-Creation-Date: 1998-11-16 02:21+0100\n"
 "PO-Revision-Date: 1998-01-22 17:20+0100\n"
 "Last-Translator: Andrea Rizzi <BILIBAO@ouverture.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,15 +21,15 @@ msgstr ""
 msgid "New Folder"
 msgstr "Nuova Cartella"
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:284 kmmainwin.cpp:318 main.cpp:332
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:285 kmmainwin.cpp:318 main.cpp:332
 msgid "KMail error"
 msgstr "errore KMail"
 
-#: kmmainwin.cpp:285 kmmainwin.cpp:319
+#: kmmainwin.cpp:286 kmmainwin.cpp:319
 msgid "Already checking for mail!"
 msgstr "Controllo nuova posta già in corso"
 
-#: kmmainwin.cpp:295 kmmainwin.cpp:329
+#: kmmainwin.cpp:296 kmmainwin.cpp:329
 msgid "No new mail available"
 msgstr "Nessuna nuova lettera"
 
@@ -635,7 +635,7 @@ msgstr "Account POP"
 msgid "Login:"
 msgstr "Nome utente (login):"
 
-#: kmacctpop.cpp:464 kmsettings.cpp:889
+#: kmacctpop.cpp:468 kmsettings.cpp:889
 msgid "Password:"
 msgstr "Password:"
 
@@ -647,19 +647,24 @@ msgstr "Host:"
 msgid "Delete mail from server"
 msgstr "Elimina posta dal server"
 
-#: kmsettings.cpp:908
+#: kmsettings.cpp:906
+#, fuzzy
+msgid "Retrieve all mail from server"
+msgstr "Elimina posta dal server"
+
+#: kmsettings.cpp:918
 msgid "Enable interval Mail checking"
 msgstr ""
 
-#: kmsettings.cpp:922
+#: kmsettings.cpp:928
 msgid "Store new mail in account:"
 msgstr "Salva la nuova posta nell'account:"
 
-#: kmsettings.cpp:930
+#: kmsettings.cpp:936
 msgid "<none>"
 msgstr "<nessuno>"
 
-#: kmsettings.cpp:976
+#: kmsettings.cpp:983
 msgid "Choose Location"
 msgstr "Scelta locazione"
 
@@ -688,58 +693,58 @@ msgstr "Oggetto"
 msgid "Date"
 msgstr "Data:"
 
-#: kmheaders.cpp:187
+#: kmheaders.cpp:196
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d Messaggi, %d non letti."
 
-#: kmheaders.cpp:189
+#: kmheaders.cpp:198
 msgid "Folder is read-only."
 msgstr "La cartella è di sola lettura."
 
-#: kmheaders.cpp:234
+#: kmheaders.cpp:245
 msgid "Unknown"
 msgstr "Sconosciuto"
 
-#: kmheaders.cpp:237
+#: kmheaders.cpp:248
 msgid "No Subject"
 msgstr "Senza  Oggetto"
 
-#: kmheaders.cpp:297
+#: kmheaders.cpp:308
 msgid "order of arrival"
 msgstr "ordine di arrivo"
 
-#: kmheaders.cpp:306
+#: kmheaders.cpp:317
 msgid "subject"
 msgstr "oggetto"
 
-#: kmheaders.cpp:307
+#: kmheaders.cpp:318
 msgid "date"
 msgstr "data"
 
-#: kmheaders.cpp:308
+#: kmheaders.cpp:319
 msgid "sender"
 msgstr "mittente"
 
-#: kmheaders.cpp:309
+#: kmheaders.cpp:320
 msgid "status"
 msgstr "stato"
 
-#: kmheaders.cpp:311
+#: kmheaders.cpp:322
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr "Ordini i messaggi decrescenti per %s"
 
-#: kmheaders.cpp:313
+#: kmheaders.cpp:324
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr "Ordino i messaggi crescenti per %s"
 
-#: kmheaders.cpp:409
+#: kmheaders.cpp:420
 msgid "Message(s) saved."
 msgstr "Messaggio/i salvato/i"
 
-#: kmheaders.cpp:411
+#: kmheaders.cpp:422
 msgid "Failed to save message(s)."
 msgstr "Impossibile salvare i(l) messaggio/i"
 
@@ -1179,7 +1184,19 @@ msgstr ""
 "dalla casella postale `%s':\n"
 "%s"
 
-#: kmacctpop.cpp:113
+#: kmacctpop.cpp:100
+msgid "Please set Password and Username"
+msgstr ""
+
+#: kmacctpop.cpp:135
+msgid "Incorrect Username"
+msgstr ""
+
+#: kmacctpop.cpp:148
+msgid "Incorrect Password"
+msgstr ""
+
+#: kmacctpop.cpp:184
 msgid ""
 "Please specify Host, Port  and\n"
 "destination folder in the settings\n"
@@ -1189,19 +1206,19 @@ msgstr ""
 "cartella di destinazione nelle impostazioni,\n"
 "quindi riprova."
 
-#: kmacctpop.cpp:273
+#: kmacctpop.cpp:286
 msgid "Pop Mail Error"
 msgstr "Errore POP"
 
-#: kmacctpop.cpp:278
+#: kmacctpop.cpp:291
 msgid "Pop Mail Network Error"
 msgstr "Errore POP di rete"
 
-#: kmacctpop.cpp:294
+#: kmacctpop.cpp:307
 msgid "Unknown error"
 msgstr "Errore sconosciuto"
 
-#: kmacctpop.cpp:299
+#: kmacctpop.cpp:312
 #, c-format
 msgid ""
 "Account: %s\n"
@@ -1212,7 +1229,7 @@ msgstr ""
 "In %s:\n"
 "%s"
 
-#: kmacctpop.cpp:455
+#: kmacctpop.cpp:459
 msgid "Login Name:"
 msgstr "Nome utente (login):"
 

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail 0.4.4\n"
-"POT-Creation-Date: 1998-11-11 02:09+0100\n"
+"POT-Creation-Date: 1998-11-16 02:21+0100\n"
 "PO-Revision-Date: 1998-11-05 09:01+01:00\n"
 "Last-Translator: Miroslav Flídr <flidr@ky.zcu.cz>\n"
 "Language-Team: Czech <sc@li.org>\n"
@@ -25,15 +25,15 @@ msgstr ""
 msgid "New Folder"
 msgstr "Nový poøadaè"
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:284 kmmainwin.cpp:318 main.cpp:332
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:285 kmmainwin.cpp:318 main.cpp:332
 msgid "KMail error"
 msgstr "Chyba KMailu"
 
-#: kmmainwin.cpp:285 kmmainwin.cpp:319
+#: kmmainwin.cpp:286 kmmainwin.cpp:319
 msgid "Already checking for mail!"
 msgstr "Ji¾ probíhá kontrola, zda nedo¹la nová po¹ta!"
 
-#: kmmainwin.cpp:295 kmmainwin.cpp:329
+#: kmmainwin.cpp:296 kmmainwin.cpp:329
 msgid "No new mail available"
 msgstr "Není k dispozici ¾ádná nová po¹ta"
 
@@ -632,7 +632,7 @@ msgstr "Pop konto"
 msgid "Login:"
 msgstr "Login:"
 
-#: kmacctpop.cpp:464 kmsettings.cpp:889
+#: kmacctpop.cpp:468 kmsettings.cpp:889
 msgid "Password:"
 msgstr "Heslo:"
 
@@ -644,19 +644,24 @@ msgstr "Hostitel:"
 msgid "Delete mail from server"
 msgstr "Smazat po¹tu na serveru"
 
-#: kmsettings.cpp:908
+#: kmsettings.cpp:906
+#, fuzzy
+msgid "Retrieve all mail from server"
+msgstr "Smazat po¹tu na serveru"
+
+#: kmsettings.cpp:918
 msgid "Enable interval Mail checking"
 msgstr "Aktivovat intervalovou kontrolu nové po¹ty"
 
-#: kmsettings.cpp:922
+#: kmsettings.cpp:928
 msgid "Store new mail in account:"
 msgstr "Ulo¾it novou po¹tu na kontì:"
 
-#: kmsettings.cpp:930
+#: kmsettings.cpp:936
 msgid "<none>"
 msgstr "<¾ádný>"
 
-#: kmsettings.cpp:976
+#: kmsettings.cpp:983
 msgid "Choose Location"
 msgstr "Výbìr umístìní"
 
@@ -684,58 +689,58 @@ msgstr "Pøedmìt"
 msgid "Date"
 msgstr "Datum"
 
-#: kmheaders.cpp:187
+#: kmheaders.cpp:196
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d zpráv, %d nepøeèteno"
 
-#: kmheaders.cpp:189
+#: kmheaders.cpp:198
 msgid "Folder is read-only."
 msgstr "Poøadaè pøístupný pouze pro ètení."
 
-#: kmheaders.cpp:234
+#: kmheaders.cpp:245
 msgid "Unknown"
 msgstr "Neznámý"
 
-#: kmheaders.cpp:237
+#: kmheaders.cpp:248
 msgid "No Subject"
 msgstr "®ádný pøedmìt"
 
-#: kmheaders.cpp:297
+#: kmheaders.cpp:308
 msgid "order of arrival"
 msgstr "poøadí pøíchodu"
 
-#: kmheaders.cpp:306
+#: kmheaders.cpp:317
 msgid "subject"
 msgstr "pøedmìt"
 
-#: kmheaders.cpp:307
+#: kmheaders.cpp:318
 msgid "date"
 msgstr "datum"
 
-#: kmheaders.cpp:308
+#: kmheaders.cpp:319
 msgid "sender"
 msgstr "odesilatel"
 
-#: kmheaders.cpp:309
+#: kmheaders.cpp:320
 msgid "status"
 msgstr "status"
 
-#: kmheaders.cpp:311
+#: kmheaders.cpp:322
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr "Tøídím zprávy sestupnì podle %s"
 
-#: kmheaders.cpp:313
+#: kmheaders.cpp:324
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr "Tøídím zprávy vzestupnì podle %s"
 
-#: kmheaders.cpp:409
+#: kmheaders.cpp:420
 msgid "Message(s) saved."
 msgstr "Zpráva(y) ulo¾ena(y)"
 
-#: kmheaders.cpp:411
+#: kmheaders.cpp:422
 msgid "Failed to save message(s)."
 msgstr "Nepodaøilo se ulo¾it zprávu(y)."
 
@@ -1179,7 +1184,19 @@ msgstr ""
 "z po¹tovního boxu '%s':\n"
 "%s"
 
-#: kmacctpop.cpp:113
+#: kmacctpop.cpp:100
+msgid "Please set Password and Username"
+msgstr ""
+
+#: kmacctpop.cpp:135
+msgid "Incorrect Username"
+msgstr ""
+
+#: kmacctpop.cpp:148
+msgid "Incorrect Password"
+msgstr ""
+
+#: kmacctpop.cpp:184
 msgid ""
 "Please specify Host, Port  and\n"
 "destination folder in the settings\n"
@@ -1189,19 +1206,19 @@ msgstr ""
 "a cílový adresáø v nastaveních\n"
 "a zkuste provést akci znova."
 
-#: kmacctpop.cpp:273
+#: kmacctpop.cpp:286
 msgid "Pop Mail Error"
 msgstr "Chyba Pop po¹ty"
 
-#: kmacctpop.cpp:278
+#: kmacctpop.cpp:291
 msgid "Pop Mail Network Error"
 msgstr "Chyba sítì Pop po¹ty"
 
-#: kmacctpop.cpp:294
+#: kmacctpop.cpp:307
 msgid "Unknown error"
 msgstr "Neznámá chyba"
 
-#: kmacctpop.cpp:299
+#: kmacctpop.cpp:312
 #, c-format
 msgid ""
 "Account: %s\n"
@@ -1212,7 +1229,7 @@ msgstr ""
 "V %s:\n"
 "%s"
 
-#: kmacctpop.cpp:455
+#: kmacctpop.cpp:459
 msgid "Login Name:"
 msgstr "Login jméno:"
 

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-11-11 02:09+0100\n"
+"POT-Creation-Date: 1998-11-16 02:21+0100\n"
 "PO-Revision-Date: 1998-01-21 15:18+CET\n"
 "Last-Translator: Marcell Lengyel <mike.tkf@ibm.net>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -27,16 +27,16 @@ msgstr ""
 msgid "New Folder"
 msgstr "Új mappa"
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:284 kmmainwin.cpp:318 main.cpp:332
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:285 kmmainwin.cpp:318 main.cpp:332
 #, fuzzy
 msgid "KMail error"
 msgstr "hiba"
 
-#: kmmainwin.cpp:285 kmmainwin.cpp:319
+#: kmmainwin.cpp:286 kmmainwin.cpp:319
 msgid "Already checking for mail!"
 msgstr ""
 
-#: kmmainwin.cpp:295 kmmainwin.cpp:329
+#: kmmainwin.cpp:296 kmmainwin.cpp:329
 msgid "No new mail available"
 msgstr ""
 
@@ -672,7 +672,7 @@ msgstr "POP ügyfél"
 msgid "Login:"
 msgstr "Azonosító:"
 
-#: kmacctpop.cpp:464 kmsettings.cpp:889
+#: kmacctpop.cpp:468 kmsettings.cpp:889
 msgid "Password:"
 msgstr "Jelszó:"
 
@@ -684,19 +684,24 @@ msgstr "Kiszolgáló:"
 msgid "Delete mail from server"
 msgstr "Üzenetek törlése a kiszolgálóról"
 
-#: kmsettings.cpp:908
+#: kmsettings.cpp:906
+#, fuzzy
+msgid "Retrieve all mail from server"
+msgstr "Üzenetek törlése a kiszolgálóról"
+
+#: kmsettings.cpp:918
 msgid "Enable interval Mail checking"
 msgstr ""
 
-#: kmsettings.cpp:922
+#: kmsettings.cpp:928
 msgid "Store new mail in account:"
 msgstr "A beérkezõ üzenetek mappája:"
 
-#: kmsettings.cpp:930
+#: kmsettings.cpp:936
 msgid "<none>"
 msgstr "<üres>"
 
-#: kmsettings.cpp:976
+#: kmsettings.cpp:983
 msgid "Choose Location"
 msgstr "Adja meg az elérési útvonalat"
 
@@ -726,63 +731,63 @@ msgstr "Tárgy"
 msgid "Date"
 msgstr "Dátum"
 
-#: kmheaders.cpp:187
+#: kmheaders.cpp:196
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d üzenet, %d olvasatlan."
 
-#: kmheaders.cpp:189
+#: kmheaders.cpp:198
 msgid "Folder is read-only."
 msgstr "Mappa írásvédett."
 
-#: kmheaders.cpp:234
+#: kmheaders.cpp:245
 #, fuzzy
 msgid "Unknown"
 msgstr "Ismeretlen hiba"
 
-#: kmheaders.cpp:237
+#: kmheaders.cpp:248
 #, fuzzy
 msgid "No Subject"
 msgstr "Tárgy"
 
-#: kmheaders.cpp:297
+#: kmheaders.cpp:308
 msgid "order of arrival"
 msgstr ""
 
-#: kmheaders.cpp:306
+#: kmheaders.cpp:317
 #, fuzzy
 msgid "subject"
 msgstr "Tárgy"
 
-#: kmheaders.cpp:307
+#: kmheaders.cpp:318
 #, fuzzy
 msgid "date"
 msgstr "Dátum"
 
-#: kmheaders.cpp:308
+#: kmheaders.cpp:319
 #, fuzzy
 msgid "sender"
 msgstr "Feladó"
 
-#: kmheaders.cpp:309
+#: kmheaders.cpp:320
 msgid "status"
 msgstr ""
 
-#: kmheaders.cpp:311
+#: kmheaders.cpp:322
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr ""
 
-#: kmheaders.cpp:313
+#: kmheaders.cpp:324
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr ""
 
-#: kmheaders.cpp:409
+#: kmheaders.cpp:420
 msgid "Message(s) saved."
 msgstr "Üzenet(ek) elmentve."
 
-#: kmheaders.cpp:411
+#: kmheaders.cpp:422
 #, fuzzy
 msgid "Failed to save message(s)."
 msgstr "Nem sikerült elmenteni az üzenet(ek)et."
@@ -1273,7 +1278,19 @@ msgstr ""
 "nem távolítható el a(z)\n"
 "%s levelesládából"
 
-#: kmacctpop.cpp:113
+#: kmacctpop.cpp:100
+msgid "Please set Password and Username"
+msgstr ""
+
+#: kmacctpop.cpp:135
+msgid "Incorrect Username"
+msgstr ""
+
+#: kmacctpop.cpp:148
+msgid "Incorrect Password"
+msgstr ""
+
+#: kmacctpop.cpp:184
 #, fuzzy
 msgid ""
 "Please specify Host, Port  and\n"
@@ -1284,19 +1301,19 @@ msgstr ""
 "eljárást a Beállításokban,\n"
 "majd próbálja újra."
 
-#: kmacctpop.cpp:273
+#: kmacctpop.cpp:286
 msgid "Pop Mail Error"
 msgstr "Pop üzenet hiba"
 
-#: kmacctpop.cpp:278
+#: kmacctpop.cpp:291
 msgid "Pop Mail Network Error"
 msgstr "Pop hálózati hiba"
 
-#: kmacctpop.cpp:294
+#: kmacctpop.cpp:307
 msgid "Unknown error"
 msgstr "Ismeretlen hiba"
 
-#: kmacctpop.cpp:299
+#: kmacctpop.cpp:312
 #, fuzzy, c-format
 msgid ""
 "Account: %s\n"
@@ -1307,7 +1324,7 @@ msgstr ""
 "%s-ben:\n"
 "%s"
 
-#: kmacctpop.cpp:455
+#: kmacctpop.cpp:459
 #, fuzzy
 msgid "Login Name:"
 msgstr "Azonosító:"

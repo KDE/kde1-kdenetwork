@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1998-11-11 02:09+0100\n"
+"POT-Creation-Date: 1998-11-16 02:21+0100\n"
 "PO-Revision-Date: 1998-07-03 16:01+0100\n"
 "Last-Translator: Sebastià Pla <sastia@redestb.es>\n"
 "Language-Team: CATALAN <LL@li.org>\n"
@@ -25,15 +25,15 @@ msgstr ""
 msgid "New Folder"
 msgstr "Carpeta Nova"
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:284 kmmainwin.cpp:318 main.cpp:332
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:285 kmmainwin.cpp:318 main.cpp:332
 msgid "KMail error"
 msgstr "Error KMail"
 
-#: kmmainwin.cpp:285 kmmainwin.cpp:319
+#: kmmainwin.cpp:286 kmmainwin.cpp:319
 msgid "Already checking for mail!"
 msgstr "Ja estic comprovant el correu!"
 
-#: kmmainwin.cpp:295 kmmainwin.cpp:329
+#: kmmainwin.cpp:296 kmmainwin.cpp:329
 msgid "No new mail available"
 msgstr "No hi ha correu nou disponible"
 
@@ -637,7 +637,7 @@ msgstr "Compte POP"
 msgid "Login:"
 msgstr "Login:"
 
-#: kmacctpop.cpp:464 kmsettings.cpp:889
+#: kmacctpop.cpp:468 kmsettings.cpp:889
 msgid "Password:"
 msgstr "Paraula de pas:"
 
@@ -649,19 +649,24 @@ msgstr "Host:"
 msgid "Delete mail from server"
 msgstr "Esborrar el correu del servidor"
 
-#: kmsettings.cpp:908
+#: kmsettings.cpp:906
+#, fuzzy
+msgid "Retrieve all mail from server"
+msgstr "Esborrar el correu del servidor"
+
+#: kmsettings.cpp:918
 msgid "Enable interval Mail checking"
 msgstr ""
 
-#: kmsettings.cpp:922
+#: kmsettings.cpp:928
 msgid "Store new mail in account:"
 msgstr "Desar el correu nou al compte:"
 
-#: kmsettings.cpp:930
+#: kmsettings.cpp:936
 msgid "<none>"
 msgstr "<cap>"
 
-#: kmsettings.cpp:976
+#: kmsettings.cpp:983
 msgid "Choose Location"
 msgstr "Escollir localització"
 
@@ -690,58 +695,58 @@ msgstr "Assumpte"
 msgid "Date"
 msgstr "Data: "
 
-#: kmheaders.cpp:187
+#: kmheaders.cpp:196
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d Missatges, %d sense llegir."
 
-#: kmheaders.cpp:189
+#: kmheaders.cpp:198
 msgid "Folder is read-only."
 msgstr "La carpeta és de només lectura."
 
-#: kmheaders.cpp:234
+#: kmheaders.cpp:245
 msgid "Unknown"
 msgstr "Desconegut"
 
-#: kmheaders.cpp:237
+#: kmheaders.cpp:248
 msgid "No Subject"
 msgstr "Cap assumpte"
 
-#: kmheaders.cpp:297
+#: kmheaders.cpp:308
 msgid "order of arrival"
 msgstr "ordre d'arribada"
 
-#: kmheaders.cpp:306
+#: kmheaders.cpp:317
 msgid "subject"
 msgstr "assumpte"
 
-#: kmheaders.cpp:307
+#: kmheaders.cpp:318
 msgid "date"
 msgstr "data"
 
-#: kmheaders.cpp:308
+#: kmheaders.cpp:319
 msgid "sender"
 msgstr "remitent"
 
-#: kmheaders.cpp:309
+#: kmheaders.cpp:320
 msgid "status"
 msgstr "estat"
 
-#: kmheaders.cpp:311
+#: kmheaders.cpp:322
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr "S'estàn ordenant els missatges descendent per %s"
 
-#: kmheaders.cpp:313
+#: kmheaders.cpp:324
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr "S'estàn ordenant els missatges ascendent per %s"
 
-#: kmheaders.cpp:409
+#: kmheaders.cpp:420
 msgid "Message(s) saved."
 msgstr "Missatge(s) desat(s)."
 
-#: kmheaders.cpp:411
+#: kmheaders.cpp:422
 msgid "Failed to save message(s)."
 msgstr "S'ha fallat en desar el(s) missatge(s)."
 
@@ -1189,7 +1194,19 @@ msgstr ""
 "de la bústia `%s':\n"
 "%s"
 
-#: kmacctpop.cpp:113
+#: kmacctpop.cpp:100
+msgid "Please set Password and Username"
+msgstr ""
+
+#: kmacctpop.cpp:135
+msgid "Incorrect Username"
+msgstr ""
+
+#: kmacctpop.cpp:148
+msgid "Incorrect Password"
+msgstr ""
+
+#: kmacctpop.cpp:184
 msgid ""
 "Please specify Host, Port  and\n"
 "destination folder in the settings\n"
@@ -1199,19 +1216,19 @@ msgstr ""
 "carpeta de destí a l'arranjament\n"
 "i torneu a provar."
 
-#: kmacctpop.cpp:273
+#: kmacctpop.cpp:286
 msgid "Pop Mail Error"
 msgstr "Error de correu Pop"
 
-#: kmacctpop.cpp:278
+#: kmacctpop.cpp:291
 msgid "Pop Mail Network Error"
 msgstr "Error de xarxa de correu Pop"
 
-#: kmacctpop.cpp:294
+#: kmacctpop.cpp:307
 msgid "Unknown error"
 msgstr "Error desconegut"
 
-#: kmacctpop.cpp:299
+#: kmacctpop.cpp:312
 #, c-format
 msgid ""
 "Account: %s\n"
@@ -1222,7 +1239,7 @@ msgstr ""
 "A %s:\n"
 "%s"
 
-#: kmacctpop.cpp:455
+#: kmacctpop.cpp:459
 msgid "Login Name:"
 msgstr "Nom de login:"
 

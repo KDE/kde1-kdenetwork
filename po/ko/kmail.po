@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-11-11 02:09+0100\n"
+"POT-Creation-Date: 1998-11-16 02:21+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: LinuxKorea Co. <kde@linuxkorea.co.kr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,15 +26,15 @@ msgstr ""
 msgid "New Folder"
 msgstr "새 폴더"
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:284 kmmainwin.cpp:318 main.cpp:332
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:285 kmmainwin.cpp:318 main.cpp:332
 msgid "KMail error"
 msgstr "KMail 오류"
 
-#: kmmainwin.cpp:285 kmmainwin.cpp:319
+#: kmmainwin.cpp:286 kmmainwin.cpp:319
 msgid "Already checking for mail!"
 msgstr "이미 확인한 전자우편입니다!"
 
-#: kmmainwin.cpp:295 kmmainwin.cpp:329
+#: kmmainwin.cpp:296 kmmainwin.cpp:329
 msgid "No new mail available"
 msgstr "새로운 전자우편이 없습니다"
 
@@ -639,7 +639,7 @@ msgstr "Pop 계정"
 msgid "Login:"
 msgstr "로그인:"
 
-#: kmacctpop.cpp:464 kmsettings.cpp:889
+#: kmacctpop.cpp:468 kmsettings.cpp:889
 msgid "Password:"
 msgstr "암호:"
 
@@ -651,19 +651,24 @@ msgstr "호스트:"
 msgid "Delete mail from server"
 msgstr "서버의 전자우편 지우기"
 
-#: kmsettings.cpp:908
+#: kmsettings.cpp:906
+#, fuzzy
+msgid "Retrieve all mail from server"
+msgstr "서버의 전자우편 지우기"
+
+#: kmsettings.cpp:918
 msgid "Enable interval Mail checking"
 msgstr ""
 
-#: kmsettings.cpp:922
+#: kmsettings.cpp:928
 msgid "Store new mail in account:"
 msgstr "계정에 새 전자우편 저장:"
 
-#: kmsettings.cpp:930
+#: kmsettings.cpp:936
 msgid "<none>"
 msgstr "<없음>"
 
-#: kmsettings.cpp:976
+#: kmsettings.cpp:983
 msgid "Choose Location"
 msgstr "위치 선택"
 
@@ -692,58 +697,58 @@ msgstr "제목"
 msgid "Date"
 msgstr "날   짜: "
 
-#: kmheaders.cpp:187
+#: kmheaders.cpp:196
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d 개의 메시지, %d 개의 읽지 않은 메시지."
 
-#: kmheaders.cpp:189
+#: kmheaders.cpp:198
 msgid "Folder is read-only."
 msgstr "폴더가 읽기 전용입니다."
 
-#: kmheaders.cpp:234
+#: kmheaders.cpp:245
 msgid "Unknown"
 msgstr "알 수 없음"
 
-#: kmheaders.cpp:237
+#: kmheaders.cpp:248
 msgid "No Subject"
 msgstr "제목 없음"
 
-#: kmheaders.cpp:297
+#: kmheaders.cpp:308
 msgid "order of arrival"
 msgstr "도착 순서"
 
-#: kmheaders.cpp:306
+#: kmheaders.cpp:317
 msgid "subject"
 msgstr "제목"
 
-#: kmheaders.cpp:307
+#: kmheaders.cpp:318
 msgid "date"
 msgstr "날짜"
 
-#: kmheaders.cpp:308
+#: kmheaders.cpp:319
 msgid "sender"
 msgstr "보낸 사람"
 
-#: kmheaders.cpp:309
+#: kmheaders.cpp:320
 msgid "status"
 msgstr "상태"
 
-#: kmheaders.cpp:311
+#: kmheaders.cpp:322
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr "%s을(를) 내림차순으로 정렬"
 
-#: kmheaders.cpp:313
+#: kmheaders.cpp:324
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr "%s을(를) 오름차순으로 정렬"
 
-#: kmheaders.cpp:409
+#: kmheaders.cpp:420
 msgid "Message(s) saved."
 msgstr "메시지가 저장되었습니다."
 
-#: kmheaders.cpp:411
+#: kmheaders.cpp:422
 msgid "Failed to save message(s)."
 msgstr "메시지 저장에 실패했습니다."
 
@@ -1191,7 +1196,19 @@ msgstr ""
 "제거할 수 없습니다:\n"
 "%s"
 
-#: kmacctpop.cpp:113
+#: kmacctpop.cpp:100
+msgid "Please set Password and Username"
+msgstr ""
+
+#: kmacctpop.cpp:135
+msgid "Incorrect Username"
+msgstr ""
+
+#: kmacctpop.cpp:148
+msgid "Incorrect Password"
+msgstr ""
+
+#: kmacctpop.cpp:184
 msgid ""
 "Please specify Host, Port  and\n"
 "destination folder in the settings\n"
@@ -1201,19 +1218,19 @@ msgstr ""
 "대상 폴더를 지정한 다음\n"
 "다시 시도하십시오."
 
-#: kmacctpop.cpp:273
+#: kmacctpop.cpp:286
 msgid "Pop Mail Error"
 msgstr "Pop 전자우편 오류"
 
-#: kmacctpop.cpp:278
+#: kmacctpop.cpp:291
 msgid "Pop Mail Network Error"
 msgstr "Pop 전자우편 네트웍 오류"
 
-#: kmacctpop.cpp:294
+#: kmacctpop.cpp:307
 msgid "Unknown error"
 msgstr "알 수 없는 오류"
 
-#: kmacctpop.cpp:299
+#: kmacctpop.cpp:312
 #, c-format
 msgid ""
 "Account: %s\n"
@@ -1224,7 +1241,7 @@ msgstr ""
 "In %s:\n"
 "%s"
 
-#: kmacctpop.cpp:455
+#: kmacctpop.cpp:459
 msgid "Login Name:"
 msgstr "로그인 이름:"
 

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1998-11-11 02:09+0100\n"
+"POT-Creation-Date: 1998-11-16 02:21+0100\n"
 "PO-Revision-Date: 1998-02-23 08:05 +0100\n"
 "Last-Translator: Vatafu Valerica <wally@chuck.tlnet.de>\n"
 
@@ -17,16 +17,16 @@ msgstr ""
 msgid "New Folder"
 msgstr "Creeazã directory"
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:284 kmmainwin.cpp:318 main.cpp:332
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:285 kmmainwin.cpp:318 main.cpp:332
 #, fuzzy
 msgid "KMail error"
 msgstr "eroare fatalã"
 
-#: kmmainwin.cpp:285 kmmainwin.cpp:319
+#: kmmainwin.cpp:286 kmmainwin.cpp:319
 msgid "Already checking for mail!"
 msgstr ""
 
-#: kmmainwin.cpp:295 kmmainwin.cpp:329
+#: kmmainwin.cpp:296 kmmainwin.cpp:329
 msgid "No new mail available"
 msgstr ""
 
@@ -631,7 +631,7 @@ msgstr "POP-Account"
 msgid "Login:"
 msgstr "Login:"
 
-#: kmacctpop.cpp:464 kmsettings.cpp:889
+#: kmacctpop.cpp:468 kmsettings.cpp:889
 msgid "Password:"
 msgstr "Password:"
 
@@ -643,19 +643,24 @@ msgstr "Pop-Server:"
 msgid "Delete mail from server"
 msgstr "ªterge mesajele de pe server"
 
-#: kmsettings.cpp:908
+#: kmsettings.cpp:906
+#, fuzzy
+msgid "Retrieve all mail from server"
+msgstr "ªterge mesajele de pe server"
+
+#: kmsettings.cpp:918
 msgid "Enable interval Mail checking"
 msgstr ""
 
-#: kmsettings.cpp:922
+#: kmsettings.cpp:928
 msgid "Store new mail in account:"
 msgstr "Copiazã noul mesaj in account:"
 
-#: kmsettings.cpp:930
+#: kmsettings.cpp:936
 msgid "<none>"
 msgstr "<nimic>"
 
-#: kmsettings.cpp:976
+#: kmsettings.cpp:983
 msgid "Choose Location"
 msgstr "Alege fiºier"
 
@@ -683,63 +688,63 @@ msgstr "Subiect"
 msgid "Date"
 msgstr "Data"
 
-#: kmheaders.cpp:187
+#: kmheaders.cpp:196
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d Mesaje, %d necitite."
 
-#: kmheaders.cpp:189
+#: kmheaders.cpp:198
 msgid "Folder is read-only."
 msgstr "Fiºierul este read-only."
 
-#: kmheaders.cpp:234
+#: kmheaders.cpp:245
 #, fuzzy
 msgid "Unknown"
 msgstr "Eroare necunoscutã"
 
-#: kmheaders.cpp:237
+#: kmheaders.cpp:248
 #, fuzzy
 msgid "No Subject"
 msgstr "Subiect"
 
-#: kmheaders.cpp:297
+#: kmheaders.cpp:308
 msgid "order of arrival"
 msgstr ""
 
-#: kmheaders.cpp:306
+#: kmheaders.cpp:317
 #, fuzzy
 msgid "subject"
 msgstr "Subiect"
 
-#: kmheaders.cpp:307
+#: kmheaders.cpp:318
 #, fuzzy
 msgid "date"
 msgstr "Data"
 
-#: kmheaders.cpp:308
+#: kmheaders.cpp:319
 #, fuzzy
 msgid "sender"
 msgstr "Sender"
 
-#: kmheaders.cpp:309
+#: kmheaders.cpp:320
 msgid "status"
 msgstr ""
 
-#: kmheaders.cpp:311
+#: kmheaders.cpp:322
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr ""
 
-#: kmheaders.cpp:313
+#: kmheaders.cpp:324
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr ""
 
-#: kmheaders.cpp:409
+#: kmheaders.cpp:420
 msgid "Message(s) saved."
 msgstr "Mesaj(ele) salvat(e)."
 
-#: kmheaders.cpp:411
+#: kmheaders.cpp:422
 msgid "Failed to save message(s)."
 msgstr "Mesaj(ele) nu poate fi salvat(e)"
 
@@ -1190,7 +1195,19 @@ msgstr ""
 "din directory '%s'\n"
 "%s"
 
-#: kmacctpop.cpp:113
+#: kmacctpop.cpp:100
+msgid "Please set Password and Username"
+msgstr ""
+
+#: kmacctpop.cpp:135
+msgid "Incorrect Username"
+msgstr ""
+
+#: kmacctpop.cpp:148
+msgid "Incorrect Password"
+msgstr ""
+
+#: kmacctpop.cpp:184
 msgid ""
 "Please specify Host, Port  and\n"
 "destination folder in the settings\n"
@@ -1200,19 +1217,19 @@ msgstr ""
 "Directory de destinaþie in setare ºi\n"
 "Încearcã încã o datã."
 
-#: kmacctpop.cpp:273
+#: kmacctpop.cpp:286
 msgid "Pop Mail Error"
 msgstr "POP-Mail Eroare"
 
-#: kmacctpop.cpp:278
+#: kmacctpop.cpp:291
 msgid "Pop Mail Network Error"
 msgstr "POP-Mail Network Eroare"
 
-#: kmacctpop.cpp:294
+#: kmacctpop.cpp:307
 msgid "Unknown error"
 msgstr "Eroare necunoscutã"
 
-#: kmacctpop.cpp:299
+#: kmacctpop.cpp:312
 #, c-format
 msgid ""
 "Account: %s\n"
@@ -1223,7 +1240,7 @@ msgstr ""
 "În %s:\n"
 "%s"
 
-#: kmacctpop.cpp:455
+#: kmacctpop.cpp:459
 msgid "Login Name:"
 msgstr "Login Nume:"
 
