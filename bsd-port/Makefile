@@ -23,7 +23,7 @@ LIB_DEPENDS=	qt\\.1\\.3[0-9]:${PORTSDIR}/x11/qt \
 		jscript\\.0\\.9[0-9]:${PORTSDIR}/x11/kdelibs \
 		khtmlw\\.0\\.9[1-9]:${PORTSDIR}/x11/kdelibs \
 		kfm\\.0\\.9[0-9]:${PORTSDIR}/x11/kdelibs \
-		mediatool\\.0\\.9[1-9]:${PORTSDIR}/x11/kdelibs
+		mediatool\\.0\\.9[1-9]:${PORTSDIR}/x11/kdelibs \
 		mimelib\\.1\\.9[0-9]:${PORTSDIR}/converters/kdesupport \
 NO_MTREE=	yup
 USE_GMAKE=	"without a doubt"
@@ -37,30 +37,5 @@ CONFIGURE_ARGS=	"--prefix=$(PREFIX)" \
 		"--with-install-root=$(INSTALL_ROOT)" \
 		"--with-extra-includes=$(PREFIX)/include/giflib"
 
-CONFIGURE_ENV=	CXXFLAGS="$(CFLAGS)" \
-		install_root=$(INSTALL_ROOT) \
-		INSTALL_SCRIPT="install -c -m 555"
-
-# Since there's nothing to fetch, we might as well use a dummy target
-do-fetch:
-		@true
-# This should clean the KDE target pretty well
-pre-clean:
-		cd $(WRKSRC);$(GMAKE) clean   
-
-# We need to go through Makefile.cvs before anything else.
-pre-configure:
-		cd $(WRKSRC);rm -f config.cache;$(GMAKE) -f Makefile.cvs
-		rm -f $(PLIST)
-
-make-plist:
-		cd ${INSTALL_ROOT} && \
-			find . -type f|sed 's,^\./,,'|sort > $(PLIST)
-		cd ${INSTALL_ROOT} && \
-			find . -type l|sed 's,^\./,,'|sort > $(PLIST)
-		@echo "@exec /sbin/ldconfig -m %B" >> $(PLIST)
-		cd ${INSTALL_ROOT} && \
-			find . -type d|sed 's,^\./,@dirrm ,'|sort > $(PLIST)
-		@echo "@unexec /sbin/ldconfig -R" >> $(PLIST)
-
+.include "kde-snapshot.mk"
 .include <bsd.port.mk>
