@@ -275,7 +275,7 @@ int do_announce(register NEW_CTL_MSG *mp, NEW_CTL_RESPONSE *rp, int usercfg)
              * field to avoid duplicates and re-announce the talk. */
             int new_id_num = ktable->new_id();
             if (Options.debug_mode)
-                syslog(LOG_WARNING, "reannounce : updating id %d to id %d",
+                syslog(LOG_DEBUG, "reannounce : updating id %d to id %d",
                        ptr->id_num, new_id_num);
             ptr->id_num = new_id_num; /* update in the table */
             rp->id_num = htonl(ptr->id_num);
