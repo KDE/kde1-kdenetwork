@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1999-01-18 02:04+0100\n"
+"POT-Creation-Date: 1999-01-23 02:09+0100\n"
 "PO-Revision-Date: 1998-12-31 07:12+07:00\n"
 "Last-Translator: Const Kaplinsky <const@ce.cctpu.edu.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -163,168 +163,168 @@ msgstr ""
 msgid "Login script has unbalanced loop Start/End"
 msgstr "Сценарий регистрации содержит несбалансированный цикл Start/End"
 
-#: connect.cpp:97 connect.cpp:195 main.cpp:1053
+#: connect.cpp:92 connect.cpp:190 main.cpp:1042
 msgid "Connecting to: "
 msgstr "Установка соединения: "
 
-#: connect.cpp:106 connect.cpp:210 miniterm.cpp:146 modeminfo.cpp:54
+#: connect.cpp:101 connect.cpp:205 miniterm.cpp:146 modeminfo.cpp:54
 #: modeminfo.cpp:132
 msgid "Sorry, can't create modem lock file."
 msgstr "Извините, невозможно создать файл блокировки модема."
 
-#: connect.cpp:111 connect.cpp:168 modeminfo.cpp:59
+#: connect.cpp:106 connect.cpp:163 modeminfo.cpp:59
 msgid "Looking for Modem ..."
 msgstr "Поиск модема ..."
 
-#: connect.cpp:120 debug.cpp:80 main.cpp:1066
+#: connect.cpp:115 debug.cpp:80 main.cpp:1055
 msgid "Log"
 msgstr "Протокол"
 
-#: connect.cpp:204 miniterm.cpp:141 modeminfo.cpp:126
+#: connect.cpp:199 miniterm.cpp:141 modeminfo.cpp:126
 msgid "Sorry, modem device is locked."
 msgstr "Извините, устройство модема заблокировано."
 
-#: connect.cpp:256 connect.cpp:257
+#: connect.cpp:251 connect.cpp:252
 msgid "Initializing Modem..."
 msgstr "Инициализация модема..."
 
-#: connect.cpp:274 connect.cpp:275
+#: connect.cpp:269 connect.cpp:270
 msgid "Setting speaker volume..."
 msgstr ""
 
-#: connect.cpp:293
+#: connect.cpp:288
 msgid "Dialing"
 msgstr "Набор номера"
 
-#: connect.cpp:325
+#: connect.cpp:320
 msgid "Line Busy. Hanging up ..."
 msgstr "Линия занята. Завершение ..."
 
-#: connect.cpp:330
+#: connect.cpp:325
 msgid "Line Busy. Waiting: "
 msgstr "Линия занята. Ожидание: "
 
-#: connect.cpp:332 connect.cpp:452 connect.cpp:471
+#: connect.cpp:327 connect.cpp:447 connect.cpp:466
 msgid " seconds"
 msgstr " секунд"
 
-#: connect.cpp:350
+#: connect.cpp:345
 msgid "No Dialtone"
 msgstr "Нет зуммера"
 
-#: connect.cpp:359
+#: connect.cpp:354
 msgid "No Carrier"
 msgstr "Нет ответа"
 
-#: connect.cpp:397
+#: connect.cpp:392
 msgid "Scanning "
 msgstr "Сканирование "
 
-#: connect.cpp:408
+#: connect.cpp:403
 msgid "Saving "
 msgstr "Сохранение "
 
-#: connect.cpp:427
+#: connect.cpp:422
 msgid "Sending "
 msgstr "Посылка "
 
-#: connect.cpp:438
+#: connect.cpp:433
 msgid "Expecting "
 msgstr "Ожидание "
 
-#: connect.cpp:450
+#: connect.cpp:445
 msgid "Pause "
 msgstr "Пауза "
 
-#: connect.cpp:469
+#: connect.cpp:464
 msgid "Timeout "
 msgstr "Таймаут "
 
-#: connect.cpp:483 connect.cpp:484
+#: connect.cpp:478 connect.cpp:479
 msgid "Hangup"
 msgstr "Опускание трубки"
 
-#: connect.cpp:497 connect.cpp:498
+#: connect.cpp:492 connect.cpp:493
 msgid "Answer"
 msgstr "Ответ"
 
-#: connect.cpp:506
+#: connect.cpp:501
 msgid "ID "
 msgstr "ID "
 
-#: connect.cpp:543
+#: connect.cpp:538
 msgid "Password "
 msgstr "Пароль "
 
-#: connect.cpp:581
+#: connect.cpp:576
 msgid "Prompting "
 msgstr "Приглашения "
 
-#: connect.cpp:618
+#: connect.cpp:613
 msgid "PW Prompt "
 msgstr "Приглашение пароля "
 
-#: connect.cpp:644
+#: connect.cpp:639
 msgid "Loop Start "
 msgstr "Начало цикла "
 
-#: connect.cpp:648
+#: connect.cpp:643
 msgid "ERROR: Nested too deep, ignored."
 msgstr "ОШИБКА: Слишком глубокая вложенность, игнорируется."
 
-#: connect.cpp:653
+#: connect.cpp:648
 msgid "Loops nested too deeply!"
 msgstr "Слишком глубокая вложенность циклов!"
 
-#: connect.cpp:671
+#: connect.cpp:666
 msgid "LoopEnd without matching Start! Line: "
 msgstr ""
 
-#: connect.cpp:746
+#: connect.cpp:741
 msgid "Starting pppd ..."
 msgstr "Запуск pppd ..."
 
-#: connect.cpp:824
+#: connect.cpp:819
 msgid "Scan Var: "
 msgstr ""
 
-#: connect.cpp:834
+#: connect.cpp:829
 msgid "Found: "
 msgstr "Обнаружено: "
 
-#: connect.cpp:847
+#: connect.cpp:842
 msgid "Looping: "
 msgstr ""
 
-#: connect.cpp:877 modeminfo.cpp:224
+#: connect.cpp:872 modeminfo.cpp:224
 msgid "One Moment Please ..."
 msgstr "Одну секундочку, пожалуйста ..."
 
-#: connect.cpp:920
+#: connect.cpp:915
 msgid "Script timed out!"
 msgstr "Таймаут работы сценария!"
 
-#: connect.cpp:939
+#: connect.cpp:934
 msgid "Scanning: "
 msgstr "Сканирование: "
 
-#: connect.cpp:949
+#: connect.cpp:944
 msgid "Expecting: "
 msgstr "Ожидание: "
 
-#: connect.cpp:976
+#: connect.cpp:971
 msgid "Logging on to Network ..."
 msgstr "Регистрация в сети ..."
 
-#: connect.cpp:1002
+#: connect.cpp:997
 msgid "Running Startup Command ..."
 msgstr "Выполнение команды запуска ..."
 
-#: connect.cpp:1007 connect.cpp:1014
+#: connect.cpp:1002 connect.cpp:1009
 msgid "Done"
 msgstr "Сделано"
 
-#: connect.cpp:1126
+#: connect.cpp:1119
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
@@ -899,7 +899,7 @@ msgid ""
 "recommended value is 30 seconds."
 msgstr ""
 
-#: general.cpp:465 main.cpp:711
+#: general.cpp:465 main.cpp:712
 msgid "Modem"
 msgstr "Модем"
 
@@ -1053,15 +1053,15 @@ msgstr ""
 msgid "Exit"
 msgstr ""
 
-#: main.cpp:491
+#: main.cpp:492
 msgid "Connect to: "
 msgstr "Соединение: "
 
-#: main.cpp:503
+#: main.cpp:504
 msgid "Login ID:"
 msgstr "Имя пользователя:"
 
-#: main.cpp:516
+#: main.cpp:517
 msgid ""
 "Type in the username that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1072,11 +1072,11 @@ msgid ""
 "<i>myusername</i> is not the same as <i>MyUserName</i>!"
 msgstr ""
 
-#: main.cpp:525
+#: main.cpp:526
 msgid "Password:"
 msgstr "Пароль:"
 
-#: main.cpp:539
+#: main.cpp:540
 msgid ""
 "Type in the password that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1087,11 +1087,11 @@ msgid ""
 "<i>mypassword</i> is not the same as <i>MyPassword</i>!"
 msgstr ""
 
-#: main.cpp:553
+#: main.cpp:554
 msgid "Show Log Window"
 msgstr "Показать окно протокола"
 
-#: main.cpp:560
+#: main.cpp:561
 msgid ""
 "This controls whether a log window is shown.\n"
 "A log window shows the communication between\n"
@@ -1102,15 +1102,15 @@ msgid ""
 "problems"
 msgstr ""
 
-#: main.cpp:583
+#: main.cpp:584
 msgid "Setup"
 msgstr "Настройка"
 
-#: main.cpp:599
+#: main.cpp:600
 msgid "Connect"
 msgstr "Соединить"
 
-#: main.cpp:679
+#: main.cpp:680
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -1119,46 +1119,46 @@ msgstr ""
 "Нет такого соединения:\n"
 "%s"
 
-#: main.cpp:693
+#: main.cpp:694
 msgid "kppp Configuration"
 msgstr "Конфигурация kppp"
 
-#: main.cpp:709
+#: main.cpp:710
 msgid "Accounts"
 msgstr "Соединения"
 
-#: main.cpp:710
+#: main.cpp:711
 msgid "Device"
 msgstr "Устройство"
 
-#: main.cpp:712
+#: main.cpp:713
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:713
+#: main.cpp:714
 msgid "Graph"
 msgstr ""
 
-#: main.cpp:874
+#: main.cpp:858
 msgid "Timeout expired while waiting for the PPP interface to come up!"
 msgstr ""
 
-#: main.cpp:879
+#: main.cpp:863
 msgid "The pppd daemon died unexpectedly!"
 msgstr ""
 
-#: main.cpp:887
+#: main.cpp:871
 msgid "Details..."
 msgstr "Подробности..."
 
-#: main.cpp:912
+#: main.cpp:903
 msgid ""
 "Sorry. kppp's helper process just died.\n"
 "\n"
 "Since a further execution would be pointless, kppp will shut down right now."
 msgstr ""
 
-#: main.cpp:949
+#: main.cpp:937
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1178,7 +1178,7 @@ msgstr ""
 "Это поможет программе kppp найти демон PPP.\n"
 "Спасибо."
 
-#: main.cpp:964
+#: main.cpp:952
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1191,7 +1191,7 @@ msgstr ""
 "Пожалуйста, убедитесь, что файл kppp сделан исполняемым и имеет\n"
 "установленный бит смены идентификатора пользователя."
 
-#: main.cpp:978
+#: main.cpp:967
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1211,7 +1211,7 @@ msgstr ""
 "во вкладке Модем окна настройки программы.\n"
 " Спасибо."
 
-#: main.cpp:998
+#: main.cpp:987
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1221,7 +1221,7 @@ msgstr ""
 "Этот метод требует указания имени\n"
 "пользователя и пароля!"
 
-#: main.cpp:1007
+#: main.cpp:996
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1230,7 +1230,7 @@ msgstr ""
 "Не удается создать файл аутентификации\n"
 "PAP: \"%s\""
 
-#: main.cpp:1024
+#: main.cpp:1013
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -1240,7 +1240,7 @@ msgstr ""
 "Этот метод требует указания имени\n"
 "пользователя и пароля!"
 
-#: main.cpp:1033
+#: main.cpp:1022
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1249,19 +1249,19 @@ msgstr ""
 "Не удается создать файл аутентификации\n"
 "CHAP: \"%s\""
 
-#: main.cpp:1045
+#: main.cpp:1034
 msgid "You must specify a telephone number!"
 msgstr "Вы должны указать номер телефона!"
 
-#: main.cpp:1132
+#: main.cpp:1121
 msgid "Quit kPPP?"
 msgstr "Выйти из kPPP?"
 
-#: main.cpp:1133
+#: main.cpp:1122
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Выход из kPPP приведет к завершению сеанса PPP."
 
-#: main.cpp:1178
+#: main.cpp:1167
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: knu\n"
-"POT-Creation-Date: 1999-01-10 02:04+0100\n"
+"POT-Creation-Date: 1999-01-23 02:09+0100\n"
 "PO-Revision-Date: 1999-01-10 13:40+MET\n"
 "Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
 "Translator: Stephan Kulow <coolo@kde.org>\n"
@@ -92,19 +92,19 @@ msgstr "Über..."
 msgid "Network utilities"
 msgstr "Netzwerk Dienstprogramme"
 
-#: CommandDlg.cpp:128
+#: CommandDlg.cpp:131
 msgid "H&ost:"
 msgstr "&Rechner:"
 
-#: CommandDlg.cpp:137
+#: CommandDlg.cpp:140
 msgid "&Go!"
 msgstr "&Start"
 
-#: CommandDlg.cpp:147
+#: CommandDlg.cpp:150
 msgid "&Stop"
 msgstr "Sto&p"
 
-#: CommandDlg.cpp:163
+#: CommandDlg.cpp:166
 msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
@@ -112,7 +112,7 @@ msgstr ""
 "Das Programm für dieses Kommando wurde nicht gefunden.\n"
 "Der Pfad kann in \"Bearbeiten->Einstellungen\" geändert werden."
 
-#: CommandDlg.cpp:348
+#: CommandDlg.cpp:351
 #, c-format
 msgid ""
 "\n"
@@ -135,23 +135,23 @@ msgstr ""
 "Bitte benutzen Sie \"Bearbeiten->Einstellungen\",\n"
 "um neu zu konfigurieren.\n"
 
-#: CommandDlg.cpp:357
+#: CommandDlg.cpp:360
 msgid "Error in pathname"
 msgstr "Fehler im Pfadnamen"
 
-#: CommandDlg.cpp:511
+#: CommandDlg.cpp:516
 msgid "Binary"
 msgstr "Programm"
 
-#: CommandDlg.cpp:519
+#: CommandDlg.cpp:524
 msgid "Path&name:"
 msgstr "P&fad:"
 
-#: CommandDlg.cpp:528
+#: CommandDlg.cpp:533
 msgid "Additional &arguments:"
 msgstr "Zusätzliche &Argumente:"
 
-#: CommandDlg.cpp:553
+#: CommandDlg.cpp:558
 msgid "This command had been disabled in the configuration file."
 msgstr "Dieses Kommando wurde in der Konfigurationsdatei ausgeschaltet."
 
@@ -159,39 +159,39 @@ msgstr "Dieses Kommando wurde in der Konfigurationsdatei ausgeschaltet."
 msgid " - configuration"
 msgstr " -  Konfiguration"
 
-#: MtrDlg.cpp:83
+#: MtrDlg.cpp:87
 msgid "#"
 msgstr "#"
 
-#: MtrDlg.cpp:84
+#: MtrDlg.cpp:88
 msgid "Hostname"
 msgstr "Rechner"
 
-#: MtrDlg.cpp:85
+#: MtrDlg.cpp:89
 msgid "Loss"
 msgstr "Verlust"
 
-#: MtrDlg.cpp:87
+#: MtrDlg.cpp:91
 msgid "Rcv"
 msgstr "Empfangen"
 
-#: MtrDlg.cpp:89
+#: MtrDlg.cpp:93
 msgid "Snt"
 msgstr "Verschickt"
 
-#: MtrDlg.cpp:91
+#: MtrDlg.cpp:95
 msgid "Best"
 msgstr "Bestes"
 
-#: MtrDlg.cpp:93
+#: MtrDlg.cpp:97
 msgid "Avg"
 msgstr "Schnitt"
 
-#: MtrDlg.cpp:95
+#: MtrDlg.cpp:99
 msgid "Worst"
 msgstr "Schlechtestes"
 
-#: MtrDlg.cpp:138 PingDlg.cpp:100 TracerouteDlg.cpp:98
+#: MtrDlg.cpp:142 PingDlg.cpp:100 TracerouteDlg.cpp:98
 msgid "Make host &name resolution"
 msgstr "Löse Rechner-Namen auf"
 

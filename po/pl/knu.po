@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: knu \n"
-"POT-Creation-Date: 1999-01-10 02:04+0100\n"
+"POT-Creation-Date: 1999-01-23 02:09+0100\n"
 "PO-Revision-Date: 1998-01-10 17:32+0100\n"
 "Last-Translator: Jacek Stolarczyk <jacek@mer.chemia.polsl.pl>\n"
 "Content-Type: text/plain; charset=iso8859-2\n"
@@ -95,19 +95,19 @@ msgstr "Informacje o knu..."
 msgid "Network utilities"
 msgstr "Narzêdzia sieciowe"
 
-#: CommandDlg.cpp:128
+#: CommandDlg.cpp:131
 msgid "H&ost:"
 msgstr "&Komputer:"
 
-#: CommandDlg.cpp:137
+#: CommandDlg.cpp:140
 msgid "&Go!"
 msgstr "S&tart!"
 
-#: CommandDlg.cpp:147
+#: CommandDlg.cpp:150
 msgid "&Stop"
 msgstr "St&op"
 
-#: CommandDlg.cpp:163
+#: CommandDlg.cpp:166
 msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
@@ -115,7 +115,7 @@ msgstr ""
 "Nie odnaleziono polecenia. \n"
 "Proszê ustawiæ w³a¶ciw± ¶cie¿kê w menu Edycja -> Ustawienia."
 
-#: CommandDlg.cpp:348
+#: CommandDlg.cpp:351
 #, c-format
 msgid ""
 "\n"
@@ -137,23 +137,23 @@ msgstr ""
 "Proszê ustawiæ w³a¶ciw± ¶cie¿kê\n"
 "w menu Edycja->Ustawienia.\n"
 
-#: CommandDlg.cpp:357
+#: CommandDlg.cpp:360
 msgid "Error in pathname"
 msgstr "B³êdna ¶cie¿ka"
 
-#: CommandDlg.cpp:511
+#: CommandDlg.cpp:516
 msgid "Binary"
 msgstr "Polecenie"
 
-#: CommandDlg.cpp:519
+#: CommandDlg.cpp:524
 msgid "Path&name:"
 msgstr "¦&cie¿ka:"
 
-#: CommandDlg.cpp:528
+#: CommandDlg.cpp:533
 msgid "Additional &arguments:"
 msgstr "&Dodatkowe parametry:"
 
-#: CommandDlg.cpp:553
+#: CommandDlg.cpp:558
 msgid "This command had been disabled in the configuration file."
 msgstr "To polecenie zosta³o zablokowane w pliku konfiguracyjnym."
 
@@ -161,39 +161,39 @@ msgstr "To polecenie zosta³o zablokowane w pliku konfiguracyjnym."
 msgid " - configuration"
 msgstr " - konfiguracja"
 
-#: MtrDlg.cpp:83
+#: MtrDlg.cpp:87
 msgid "#"
 msgstr "#"
 
-#: MtrDlg.cpp:84
+#: MtrDlg.cpp:88
 msgid "Hostname"
 msgstr "Nazwa komputera"
 
-#: MtrDlg.cpp:85
+#: MtrDlg.cpp:89
 msgid "Loss"
 msgstr "Utraconych"
 
-#: MtrDlg.cpp:87
+#: MtrDlg.cpp:91
 msgid "Rcv"
 msgstr "Otrz"
 
-#: MtrDlg.cpp:89
+#: MtrDlg.cpp:93
 msgid "Snt"
 msgstr "Wys³"
 
-#: MtrDlg.cpp:91
+#: MtrDlg.cpp:95
 msgid "Best"
 msgstr "Najlepszy"
 
-#: MtrDlg.cpp:93
+#: MtrDlg.cpp:97
 msgid "Avg"
 msgstr "¦red"
 
-#: MtrDlg.cpp:95
+#: MtrDlg.cpp:99
 msgid "Worst"
 msgstr "Najgorszy"
 
-#: MtrDlg.cpp:138 PingDlg.cpp:100 TracerouteDlg.cpp:98
+#: MtrDlg.cpp:142 PingDlg.cpp:100 TracerouteDlg.cpp:98
 msgid "Make host &name resolution"
 msgstr "T³umacz a&dresy"
 

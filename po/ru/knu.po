@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: knu\n"
-"POT-Creation-Date: 1999-01-10 02:04+0100\n"
+"POT-Creation-Date: 1999-01-23 02:09+0100\n"
 "PO-Revision-Date: 1998-12-31 07:08+07:00\n"
 "Last-Translator: Const Kaplinsky <const@ce.cctpu.edu.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -95,19 +95,19 @@ msgstr "О программе..."
 msgid "Network utilities"
 msgstr ""
 
-#: CommandDlg.cpp:128
+#: CommandDlg.cpp:131
 msgid "H&ost:"
 msgstr "&Машина:"
 
-#: CommandDlg.cpp:137
+#: CommandDlg.cpp:140
 msgid "&Go!"
 msgstr "&Пуск!"
 
-#: CommandDlg.cpp:147
+#: CommandDlg.cpp:150
 msgid "&Stop"
 msgstr "&Стоп"
 
-#: CommandDlg.cpp:163
+#: CommandDlg.cpp:166
 msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
@@ -115,7 +115,7 @@ msgstr ""
 "Исполняемый файл этой программы не найден. Вы можете указать\n"
 "путь к программе, выбрав пункт меню Редактирование->Настройка..."
 
-#: CommandDlg.cpp:348
+#: CommandDlg.cpp:351
 #, c-format
 msgid ""
 "\n"
@@ -137,23 +137,23 @@ msgstr ""
 "Для изменения настроек выберите в меню\n"
 "пункт Редактирование->Настройка...\n"
 
-#: CommandDlg.cpp:357
+#: CommandDlg.cpp:360
 msgid "Error in pathname"
 msgstr "Ошибка в строке пути"
 
-#: CommandDlg.cpp:511
+#: CommandDlg.cpp:516
 msgid "Binary"
 msgstr "Исполняемый файл"
 
-#: CommandDlg.cpp:519
+#: CommandDlg.cpp:524
 msgid "Path&name:"
 msgstr "&Путь:"
 
-#: CommandDlg.cpp:528
+#: CommandDlg.cpp:533
 msgid "Additional &arguments:"
 msgstr "&Дополнительные аргументы:"
 
-#: CommandDlg.cpp:553
+#: CommandDlg.cpp:558
 msgid "This command had been disabled in the configuration file."
 msgstr "Эта команда запрещена в файле конфигурации."
 
@@ -161,39 +161,39 @@ msgstr "Эта команда запрещена в файле конфигурации."
 msgid " - configuration"
 msgstr " - конфигурация"
 
-#: MtrDlg.cpp:83
+#: MtrDlg.cpp:87
 msgid "#"
 msgstr "#"
 
-#: MtrDlg.cpp:84
+#: MtrDlg.cpp:88
 msgid "Hostname"
 msgstr "Имя машины"
 
-#: MtrDlg.cpp:85
+#: MtrDlg.cpp:89
 msgid "Loss"
 msgstr "Утеряно"
 
-#: MtrDlg.cpp:87
+#: MtrDlg.cpp:91
 msgid "Rcv"
 msgstr "Принято"
 
-#: MtrDlg.cpp:89
+#: MtrDlg.cpp:93
 msgid "Snt"
 msgstr "Послано"
 
-#: MtrDlg.cpp:91
+#: MtrDlg.cpp:95
 msgid "Best"
 msgstr "Лучшее"
 
-#: MtrDlg.cpp:93
+#: MtrDlg.cpp:97
 msgid "Avg"
 msgstr "Среднее"
 
-#: MtrDlg.cpp:95
+#: MtrDlg.cpp:99
 msgid "Worst"
 msgstr "Худшее"
 
-#: MtrDlg.cpp:138 PingDlg.cpp:100 TracerouteDlg.cpp:98
+#: MtrDlg.cpp:142 PingDlg.cpp:100 TracerouteDlg.cpp:98
 msgid "Make host &name resolution"
 msgstr "&Преобразование имен DNS"
 

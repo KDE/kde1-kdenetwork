@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE NETWORK/kppp\n"
-"POT-Creation-Date: 1999-01-18 02:04+0100\n"
+"POT-Creation-Date: 1999-01-23 02:09+0100\n"
 "PO-Revision-Date: 1999-01-13 17:00+CET-1\n"
 "Last-Translator: Erik Kjær Pedersen <erik@binghamton.edu>\n"
 "Language-Team: da <LL@li.org>\n"
@@ -185,168 +185,168 @@ msgstr ""
 "Login skriptet har en ubalanceret løkke\n"
 "Start/Slut"
 
-#: connect.cpp:97 connect.cpp:195 main.cpp:1053
+#: connect.cpp:92 connect.cpp:190 main.cpp:1042
 msgid "Connecting to: "
 msgstr "Forbinder til: "
 
-#: connect.cpp:106 connect.cpp:210 miniterm.cpp:146 modeminfo.cpp:54
+#: connect.cpp:101 connect.cpp:205 miniterm.cpp:146 modeminfo.cpp:54
 #: modeminfo.cpp:132
 msgid "Sorry, can't create modem lock file."
 msgstr "Kan desværre ikke oprette modem låsefil."
 
-#: connect.cpp:111 connect.cpp:168 modeminfo.cpp:59
+#: connect.cpp:106 connect.cpp:163 modeminfo.cpp:59
 msgid "Looking for Modem ..."
 msgstr "Leder efter modem ..."
 
-#: connect.cpp:120 debug.cpp:80 main.cpp:1066
+#: connect.cpp:115 debug.cpp:80 main.cpp:1055
 msgid "Log"
 msgstr "Log"
 
-#: connect.cpp:204 miniterm.cpp:141 modeminfo.cpp:126
+#: connect.cpp:199 miniterm.cpp:141 modeminfo.cpp:126
 msgid "Sorry, modem device is locked."
 msgstr "Desværre - modemet er låst."
 
-#: connect.cpp:256 connect.cpp:257
+#: connect.cpp:251 connect.cpp:252
 msgid "Initializing Modem..."
 msgstr "Initialiserer modem..."
 
-#: connect.cpp:274 connect.cpp:275
+#: connect.cpp:269 connect.cpp:270
 msgid "Setting speaker volume..."
 msgstr "Indstiller højtaler lydstyrke"
 
-#: connect.cpp:293
+#: connect.cpp:288
 msgid "Dialing"
 msgstr "Ringer"
 
-#: connect.cpp:325
+#: connect.cpp:320
 msgid "Line Busy. Hanging up ..."
 msgstr "Linien er optaget. Lægger på ..."
 
-#: connect.cpp:330
+#: connect.cpp:325
 msgid "Line Busy. Waiting: "
 msgstr "Linien er optaget. Venter: "
 
-#: connect.cpp:332 connect.cpp:452 connect.cpp:471
+#: connect.cpp:327 connect.cpp:447 connect.cpp:466
 msgid " seconds"
 msgstr "sekunder"
 
-#: connect.cpp:350
+#: connect.cpp:345
 msgid "No Dialtone"
 msgstr "Ingen ringetone"
 
-#: connect.cpp:359
+#: connect.cpp:354
 msgid "No Carrier"
 msgstr "Ingen klartone"
 
-#: connect.cpp:397
+#: connect.cpp:392
 msgid "Scanning "
 msgstr "Leder "
 
-#: connect.cpp:408
+#: connect.cpp:403
 msgid "Saving "
 msgstr "Gemmer "
 
-#: connect.cpp:427
+#: connect.cpp:422
 msgid "Sending "
 msgstr "Sender "
 
-#: connect.cpp:438
+#: connect.cpp:433
 msgid "Expecting "
 msgstr "Forventer "
 
-#: connect.cpp:450
+#: connect.cpp:445
 msgid "Pause "
 msgstr "Pause"
 
-#: connect.cpp:469
+#: connect.cpp:464
 msgid "Timeout "
 msgstr "Tiden løb ud"
 
-#: connect.cpp:483 connect.cpp:484
+#: connect.cpp:478 connect.cpp:479
 msgid "Hangup"
 msgstr "Lægger på"
 
-#: connect.cpp:497 connect.cpp:498
+#: connect.cpp:492 connect.cpp:493
 msgid "Answer"
 msgstr "Svar"
 
-#: connect.cpp:506
+#: connect.cpp:501
 msgid "ID "
 msgstr "ID"
 
-#: connect.cpp:543
+#: connect.cpp:538
 msgid "Password "
 msgstr "Kodeord "
 
-#: connect.cpp:581
+#: connect.cpp:576
 msgid "Prompting "
 msgstr "Login skærm"
 
-#: connect.cpp:618
+#: connect.cpp:613
 msgid "PW Prompt "
 msgstr "PW Login"
 
-#: connect.cpp:644
+#: connect.cpp:639
 msgid "Loop Start "
 msgstr "Løkke start"
 
-#: connect.cpp:648
+#: connect.cpp:643
 msgid "ERROR: Nested too deep, ignored."
 msgstr "Fejl: for dybt nede, ignoreret"
 
-#: connect.cpp:653
+#: connect.cpp:648
 msgid "Loops nested too deeply!"
 msgstr "Løkker for dybt nede!"
 
-#: connect.cpp:671
+#: connect.cpp:666
 msgid "LoopEnd without matching Start! Line: "
 msgstr "LoopEnd uden tilsvarende Start! Line: "
 
-#: connect.cpp:746
+#: connect.cpp:741
 msgid "Starting pppd ..."
 msgstr "Starter pppd ..."
 
-#: connect.cpp:824
+#: connect.cpp:819
 msgid "Scan Var: "
 msgstr "Undersøg Var:"
 
-#: connect.cpp:834
+#: connect.cpp:829
 msgid "Found: "
 msgstr "Fundet: "
 
-#: connect.cpp:847
+#: connect.cpp:842
 msgid "Looping: "
 msgstr "Løkker: "
 
-#: connect.cpp:877 modeminfo.cpp:224
+#: connect.cpp:872 modeminfo.cpp:224
 msgid "One Moment Please ..."
 msgstr "Et øjeblik ..."
 
-#: connect.cpp:920
+#: connect.cpp:915
 msgid "Script timed out!"
 msgstr "Tiden løb ud for skriptet"
 
-#: connect.cpp:939
+#: connect.cpp:934
 msgid "Scanning: "
 msgstr "Undersøger "
 
-#: connect.cpp:949
+#: connect.cpp:944
 msgid "Expecting: "
 msgstr "Forventer: "
 
-#: connect.cpp:976
+#: connect.cpp:971
 msgid "Logging on to Network ..."
 msgstr "Logger på netværket ..."
 
-#: connect.cpp:1002
+#: connect.cpp:997
 msgid "Running Startup Command ..."
 msgstr "Kører opstart kommando ..."
 
-#: connect.cpp:1007 connect.cpp:1014
+#: connect.cpp:1002 connect.cpp:1009
 msgid "Done"
 msgstr "Færdig"
 
-#: connect.cpp:1126
+#: connect.cpp:1119
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
@@ -1105,7 +1105,7 @@ msgstr ""
 "et <i>CONNECT</i> svar fra dit modem. Den anbefalede\n"
 "værdi er 30 sekunder."
 
-#: general.cpp:465 main.cpp:711
+#: general.cpp:465 main.cpp:712
 msgid "Modem"
 msgstr "Modem"
 
@@ -1311,15 +1311,15 @@ msgstr ""
 msgid "Exit"
 msgstr "Afslut"
 
-#: main.cpp:491
+#: main.cpp:492
 msgid "Connect to: "
 msgstr "Forbind med: "
 
-#: main.cpp:503
+#: main.cpp:504
 msgid "Login ID:"
 msgstr "Login ID:"
 
-#: main.cpp:516
+#: main.cpp:517
 msgid ""
 "Type in the username that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1338,11 +1338,11 @@ msgstr ""
 "<i>mitbrugernavn</i> er ikke det samme som\n"
 "<i>Mitbrugernavn</i>!"
 
-#: main.cpp:525
+#: main.cpp:526
 msgid "Password:"
 msgstr "Kodeord:"
 
-#: main.cpp:539
+#: main.cpp:540
 msgid ""
 "Type in the password that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1361,11 +1361,11 @@ msgstr ""
 "<i>mitkodeord</i> er ikke det samme som\n"
 "<i>Mitkodeord</i>!"
 
-#: main.cpp:553
+#: main.cpp:554
 msgid "Show Log Window"
 msgstr "Vis log vindue"
 
-#: main.cpp:560
+#: main.cpp:561
 msgid ""
 "This controls whether a log window is shown.\n"
 "A log window shows the communication between\n"
@@ -1383,15 +1383,15 @@ msgstr ""
 "Slå det fra hvis <i>kppp</i> virker rutinemæssigt\n"
 "uden problemer."
 
-#: main.cpp:583
+#: main.cpp:584
 msgid "Setup"
 msgstr "Indstillinger"
 
-#: main.cpp:599
+#: main.cpp:600
 msgid "Connect"
 msgstr "Ring op"
 
-#: main.cpp:679
+#: main.cpp:680
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -1400,39 +1400,39 @@ msgstr ""
 "Kontoen eksisterer ikke:\n"
 "%s"
 
-#: main.cpp:693
+#: main.cpp:694
 msgid "kppp Configuration"
 msgstr "kppp konfiguration"
 
-#: main.cpp:709
+#: main.cpp:710
 msgid "Accounts"
 msgstr "Konti"
 
-#: main.cpp:710
+#: main.cpp:711
 msgid "Device"
 msgstr "Enhed"
 
-#: main.cpp:712
+#: main.cpp:713
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:713
+#: main.cpp:714
 msgid "Graph"
 msgstr "Graf"
 
-#: main.cpp:874
+#: main.cpp:858
 msgid "Timeout expired while waiting for the PPP interface to come up!"
 msgstr "Tiden løb ud mens vi ventede på at PPP grænsesnittet kom op!"
 
-#: main.cpp:879
+#: main.cpp:863
 msgid "The pppd daemon died unexpectedly!"
 msgstr "pppd dæmonen døde uventet!"
 
-#: main.cpp:887
+#: main.cpp:871
 msgid "Details..."
 msgstr "Detaljer"
 
-#: main.cpp:912
+#: main.cpp:903
 msgid ""
 "Sorry. kppp's helper process just died.\n"
 "\n"
@@ -1442,7 +1442,7 @@ msgstr ""
 "\n"
 "Da det ville være meningløst at fortsætte vil kppp afslutte nu."
 
-#: main.cpp:949
+#: main.cpp:937
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1461,7 +1461,7 @@ msgstr ""
 "Dette vil sikre at kppp kan finde PPP dæmonen.\n"
 "Tak."
 
-#: main.cpp:964
+#: main.cpp:952
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1474,7 +1474,7 @@ msgstr ""
 "Undersøg om du har givet kppp setuid tilladelse\n"
 "og at pppd er eksekverbar."
 
-#: main.cpp:978
+#: main.cpp:967
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1494,7 +1494,7 @@ msgstr ""
 "på Modem-fanebladet\n"
 "i opsætningsdialogen."
 
-#: main.cpp:998
+#: main.cpp:987
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1504,7 +1504,7 @@ msgstr ""
 "Dette kræver at du skriver\n"
 "brugernavn og kodeord!"
 
-#: main.cpp:1007
+#: main.cpp:996
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1513,7 +1513,7 @@ msgstr ""
 "Kan ikke oprette PAP identifikationsfil\n"
 "\"%s\""
 
-#: main.cpp:1024
+#: main.cpp:1013
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -1523,7 +1523,7 @@ msgstr ""
 "Dette kræver at du skriver\n"
 "brugernavn og kodeord!"
 
-#: main.cpp:1033
+#: main.cpp:1022
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1532,19 +1532,19 @@ msgstr ""
 "Kan ikke oprette PAP identifikationsfil\n"
 "\"%s\""
 
-#: main.cpp:1045
+#: main.cpp:1034
 msgid "You must specify a telephone number!"
 msgstr "Du skal angive et telefonnummer!"
 
-#: main.cpp:1132
+#: main.cpp:1121
 msgid "Quit kPPP?"
 msgstr "Afslut kPPP"
 
-#: main.cpp:1133
+#: main.cpp:1122
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Hvis du afslutter kPPP vil det afbryde din PPP forbindelse."
 
-#: main.cpp:1178
+#: main.cpp:1167
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
