@@ -29,6 +29,7 @@
 #include <kapp.h>
 #include <kconfig.h>
 #include <kkeyconf.h>
+#include <kstdaccel.h> 
 
 #include "asker.h"
 #include "groupdlg.h" 
@@ -36,6 +37,7 @@
 #include "kdecode.h"
 #include "kmsender.h"
 #include "kmidentity.h"
+#include "kbusyptr.h"
 #include <mimelib/mimepp.h>
 
 #include <gdbm.h>
@@ -50,11 +52,14 @@
 #define HOUR   MINUTE*60
 #define DAY    HOUR*24
 
+KApplication *app;
 Groupdlg  *main_widget;
 KConfig *conf;
 KLocale *nls;
 KMSender *msgSender;
 KMIdentity *identity;
+KStdAccel* keys;
+KBusyPtr *kbp;
 
 ArticleDict artSpool;
 
@@ -88,8 +93,11 @@ int main( int argc, char **argv )
     KApplication a( argc, argv, "krn" );
     a.enableSessionManagement();
 
+    app=&a;
     conf=a.getConfig();
     nls=a.getLocale();
+    keys = new KStdAccel(conf);
+    kbp=new KBusyPtr();
 
     checkConf();
 

@@ -542,7 +542,7 @@ bool Artdlg::actions (int action)
         }
     case POST:
         {
-            KMComposeWin *comp=new KMComposeWin(0,"","",0,actFollowup,true,group->name,false);
+            KMComposeWin *comp=new KMComposeWin();
             comp->show();
             break;
         }
@@ -561,7 +561,7 @@ bool Artdlg::actions (int action)
             m->Parse();
             
             KMMessage *mm=new KMMessage(m);
-            KMComposeWin *comp=new KMComposeWin(0,"","",mm,actFollowup,true,"",false);
+            KMComposeWin *comp=new KMComposeWin();
             comp->show();
             break;
         }
@@ -580,7 +580,7 @@ bool Artdlg::actions (int action)
             m->Parse();
             
             KMMessage *mm=new KMMessage(m);
-            KMComposeWin *comp=new KMComposeWin(0,"","",mm,actReply);
+            KMComposeWin *comp=new KMComposeWin();
             comp->show();
             break;
         }
@@ -599,7 +599,7 @@ bool Artdlg::actions (int action)
             m->Parse();
             
             KMMessage *mm=new KMMessage(m);
-            KMComposeWin *comp=new KMComposeWin(0,"","",mm,actForward);
+            KMComposeWin *comp=new KMComposeWin();
             comp->show();
             break;
         }
@@ -618,7 +618,7 @@ bool Artdlg::actions (int action)
             m->Parse();
             
             KMMessage *mm=new KMMessage(m);
-            KMComposeWin *comp=new KMComposeWin(0,"",mm->from(),mm,actFollowup,true,"");
+            KMComposeWin *comp=new KMComposeWin();
             comp->show();
             break;
         }

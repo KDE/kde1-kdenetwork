@@ -648,7 +648,7 @@ bool Groupdlg::actions (int action,NewsGroup *group)
         {
             if (!group)
                 break;
-            KMComposeWin *comp=new KMComposeWin(0,"","",0,actFollowup,true,group->name,false);
+            KMComposeWin *comp=new KMComposeWin();
             comp->show();
             success=true;
             break;

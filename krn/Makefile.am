@@ -23,7 +23,10 @@ BUILTSOURCES =	groupdlg.moc \
                 fontsDlg.moc\
                 kmcomposewin.moc\
                 KEdit.moc\
-                findArtDlg.moc
+                findArtDlg.moc\
+                kmmsgpartdlg.moc\
+                kbusyptr.moc\
+                kalarmtimer.moc
 
 DISTCLEANFILES = $(BUILTSOURCES)
 
@@ -63,7 +66,10 @@ krn_SOURCES = 	main.cpp\
                 findArtDlg.cpp\
                 kmmsgbase.cpp\
                 kmidentity.cpp\
-                kfileio.cpp
+                kfileio.cpp\
+                kmmsgpartdlg.cpp\
+                kbusyptr.cpp\
+                kalarmtimer.cpp
 
 
 noinst_HEADERS = 	NNTP.h\
@@ -100,7 +106,10 @@ noinst_HEADERS = 	NNTP.h\
                 findArtDlg.h\
                 kmmsgbase.h\
                 kmidentity.h\
-                kfileio.h
+                kfileio.h\
+                kmmsgpartdlg.h\
+                kbusyptr.h\
+                kalarmtimer.h
 
 SUBDIRS = docs pics
 
@@ -180,3 +189,14 @@ kmcomposewin.cpp:kmcomposewin.moc
 kmcomposewin.moc: kmcomposewin.h
 	$(MOC) kmcomposewin.h -o kmcomposewin.moc
 
+kmmsgpartdlg.cpp:kmmsgpartdlg.moc
+kmmsgpartdlg.moc: kmmsgpartdlg.h
+	$(MOC) kmmsgpartdlg.h -o kmmsgpartdlg.moc
+
+kbusyptr.cpp:kbusyptr.moc
+kbusyptr.moc: kbusyptr.h
+	$(MOC) kbusyptr.h -o kbusyptr.moc
+
+kalarmtimer.cpp:kalarmtimer.moc
+kalarmtimer.moc: kalarmtimer.h
+	$(MOC) kalarmtimer.h -o kalarmtimer.moc
