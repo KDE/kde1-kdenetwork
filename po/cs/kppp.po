@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kppp 0.9.6\n"
 "POT-Creation-Date: 1998-04-16 18:10+0200\n"
-"PO-Revision-Date: 1998-03-28 23:21 MET\n"
+"PO-Revision-Date: 1998-04-17 15:52 MET DST\n"
 "Last-Translator: Miroslav Flídr <flidr@kky.zcu.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -31,7 +31,7 @@ msgstr "Telefonní náklady"
 
 #: accounts.cpp:116 conwindow.cpp:56
 msgid "Volume:"
-msgstr ""
+msgstr "Objem dat:"
 
 #: accounts.cpp:131
 msgid "Reset Costs"
@@ -176,9 +176,8 @@ msgid "Scanning "
 msgstr "Zkoumám "
 
 #: connect.cpp:397
-#, fuzzy
 msgid "Saving "
-msgstr "Zkoumám "
+msgstr "Ukládám "
 
 #: connect.cpp:416
 msgid "Sending "
@@ -981,29 +980,24 @@ msgid "Selected:"
 msgstr "Vybráno:"
 
 #: acctselect.cpp:88
-#, fuzzy
 msgid "Volume accounting:"
-msgstr "Zpøístupnit úètování"
+msgstr "Poèítání objemu dat:"
 
 #: acctselect.cpp:92
-#, fuzzy
 msgid "No accounting"
-msgstr "Zpøístupnit úètování"
+msgstr "Nepoèítat"
 
 #: acctselect.cpp:93
-#, fuzzy
 msgid "Bytes in"
-msgstr "do¹lých bytù"
+msgstr "Do¹lých bytù"
 
 #: acctselect.cpp:94
-#, fuzzy
 msgid "Bytes out"
-msgstr "odchozích bytù"
+msgstr "Odchozích bytù"
 
 #: acctselect.cpp:95
-#, fuzzy
 msgid "Bytes in and out"
-msgstr "odchozích bytù"
+msgstr "Odchozích a pøíchozích bytù"
 
 #: acctselect.cpp:165 acctselect.cpp:271
 msgid "Available rules"
@@ -1052,16 +1046,12 @@ msgid "Minimize"
 msgstr "Minimalizovat"
 
 #: runtests.cpp:122
-#, fuzzy
 msgid ""
 "You´re not allowed to dial out with kppp.\n"
 "Contact your system administrator."
 msgstr ""
-"Nemáte práva pro\n"
-"spu¹tìní pppd!\n"
-"\n"
-"Kontaktujte svého systémového administrátora,\n"
-"aby vám udìlil pøístup k pppd."
+"Nemáte práva pro vytáèení pomicí kppp.\n"
+"Kontaktujte svého systémového administrátora."
 
 #: runtests.cpp:148
 msgid ""
@@ -1115,7 +1105,6 @@ msgstr ""
 "Nastavuji zpìt na implicitní \"%s\"."
 
 #: runtests.cpp:216
-#, fuzzy
 msgid ""
 "kppp has detected a 'lock' option in /etc/ppp/options.\n"
 "\n"
@@ -1124,9 +1113,7 @@ msgid ""
 "Contact your system administrator."
 msgstr ""
 "kppp zjistilo nastavení 'lock' v souboru /etc/ppp/options.\n"
+"\n"
 "Toto nastavení musí být odstranìno, proto¾e se kppp stará \n"
 "samo zamykání zaøízení.\n"
 "Kontaktujte prosím administrátora systému."
-
-#~ msgid "Dismiss"
-#~ msgstr "Zavøít"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: krn\n"
 "POT-Creation-Date: 1998-04-16 18:09+0200\n"
-"PO-Revision-Date: 1998-03-12 20:11 MET\n"
+"PO-Revision-Date: 1998-04-17 15:56 MET DST\n"
 "Last-Translator: Miroslav Flídr <flidr@ky.zcu.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -43,9 +43,8 @@ msgid "Received %.2f Kb"
 msgstr "Pøijato %.2f Kb"
 
 #: NNTP.cpp:552
-#, fuzzy
 msgid "Getting Article"
-msgstr "Získávám sezanm èlánkù"
+msgstr "Získávám seznam èlánkù"
 
 #: NNTP.cpp:638
 msgid "Article Received"
@@ -345,7 +344,7 @@ msgstr "Získat seznam èlánkù"
 
 #: artdlg.cpp:217
 msgid "Refresh Display"
-msgstr ""
+msgstr "Obnovit zobrazení"
 
 #: artdlg.cpp:240
 msgid "Save Article"
@@ -376,7 +375,6 @@ msgid "Decode Article"
 msgstr "Dekódovat èlánek"
 
 #: artdlg.cpp:262
-#, fuzzy
 msgid "Mark UnRead"
 msgstr "Oznaèit jako nepøeètené"
 
@@ -661,12 +659,11 @@ msgstr "Po jakou dobu si pøejete uchovávat (dny)?"
 
 #: expireDlg.cpp:46
 msgid "Read:"
-msgstr ""
+msgstr "Pøeètené:"
 
 #: expireDlg.cpp:47
-#, fuzzy
 msgid "Unread:"
-msgstr "Oznaèit jako nepøeètené"
+msgstr "Nepøeètené:"
 
 #: expireDlg.cpp:50
 msgid "Article Bodies:"
@@ -767,22 +764,3 @@ msgstr "Tøídit podle:"
 #: sortDlg.cpp:56
 msgid "Use Threading"
 msgstr "Pou¾ívat tøídìní"
-
-#~ msgid "Sorry!"
-#~ msgstr "Lituji!"
-
-#~ msgid ""
-#~ "That newsgroup is not in the current active file\n"
-#~ " Krn can't handle this gracefully right now"
-#~ msgstr ""
-#~ "Tato diskusní skupina není v souèasném aktivním souboru\n"
-#~ " Krn tuto situaci zatím nemù¾e elegantnì zvládnout"
-
-#~ msgid "Date"
-#~ msgstr "Datum"
-
-#~ msgid "Name"
-#~ msgstr "Jnémo"
-
-#~ msgid "menu"
-#~ msgstr "menu"
