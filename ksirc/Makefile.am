@@ -78,12 +78,12 @@ ksircstaticLDFLAGS = --nostdlib $(ksirc_LDFLAGS)
 
 # the libraries to link against. Be aware of the order. First the libraries,
 # that depend on the following ones.
-ksirc_LDADD   = ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a ./KSColourPicker/libkscolourpicker.a puke/libpuke.la -lkdeui -lkdecore -lkfile -lkfm -lqt -lX11 -lXext @LIBSOCKET@ -ldl $(KDE_RPATH)
+ksirc_LDADD   = ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a ./KSColourPicker/libkscolourpicker.a puke/libpuke.la -lkdeui -lkdecore -lkfile -lkfm -lqt -lX11 -lXext @LIBSOCKET@  $(KDE_RPATH)
 
 ksircstaticLDADD = ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a ./KSColourPicker/libkscolourpicker.a ./puke/.libs/libpuke.a
 
 #if COMPILE_KSIRC_STATIC
-STATIC_LIBS = $(static_libkde) $(static_libqt) $(static_libstdc) $(static_pthread) -lX11 -lXext @LIBSOCKET@ -ldl -lm -lc
+STATIC_LIBS = $(static_libkde) $(static_libqt) $(static_libstdc) $(static_pthread) -lX11 -lXext @LIBSOCKET@ $(LIBDL) -lm -lc
 #endif
 
 kdoc:
