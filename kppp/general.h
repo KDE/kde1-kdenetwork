@@ -59,6 +59,7 @@ private slots:
   void  iconify_toggled(bool on); 
   void 	redial_toggled(bool on);
   void 	xserver_toggled(bool on);
+  void  docking_toggled(bool on);
 
 
 private:
@@ -77,6 +78,7 @@ private:
   QCheckBox 	*chkbox3;
   QCheckBox 	*chkbox4;
   QCheckBox 	*chkbox5;
+  QCheckBox 	*chkbox6;
 
   QLineEdit 	*pppdtimeout;
   QLineEdit 	*logviewer;

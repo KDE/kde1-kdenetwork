@@ -121,7 +121,8 @@
 #define SCRIPTCOM_KEY      "ScriptCommands"
 #define SCRIPTARG_KEY      "ScriptArguments"
 #define PPPDARG_KEY        "pppdArguments"
-#define ICONIFY_ON_CONNECT_KEY "iconifyOnConnect" 
+#define ICONIFY_ON_CONNECT_KEY "iconifyOnConnect"
+#define DOCKING_KEY        "DockIntoPanel"
 #define TOTALCOSTS_KEY     "TotalCosts"
 
 class PPPData {
@@ -169,6 +170,9 @@ public:
 
   void set_iconify_on_connect(bool set);
   const bool get_iconify_on_connect();
+
+  void set_dock_into_panel(bool set);
+  const bool get_dock_into_panel();
 
   const char* logViewer();
   void setlogViewer(const char*);

@@ -1,3 +1,10 @@
+Mon Jan 19 12:05:00 1998  Harri Porten  <hp@localhost>
+
+	* introduced docking. It allows kppp to be run as a small
+ 	  animated icon on the panel. Clicking on the icon with the left
+	  mouse button restores the regular window. The right button
+ 	  opens up a popup menu with other options.
+
 Mon Jan 19 04:46:39 1998  Bernd Johannes Wuebben  <wuebben@math.cornell.edu>
 
 	* reset PHONENUMBER_SIZE to 60. People with phone cards need lots

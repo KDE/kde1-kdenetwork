@@ -25,11 +25,10 @@ SUBDIRS = docs pixmaps icons
 # kppp wants to be installed suid root
 INSTALL_PROGRAM=$(INSTALL) -m 4755
 
-####### This part is very khexdit specific
-# you can add here more. This one gets installed 
+# This one gets installed 
 bin_PROGRAMS = 	kppp
 
-# Which sources should be compiled for khexdit.
+# Which sources should be compiled for kppp.
 kppp_SOURCES	= accounts.cpp \
 		connect.cpp \
 		conwindow.cpp \
@@ -51,7 +50,8 @@ kppp_SOURCES	= accounts.cpp \
 		acctselect.cpp\
 		ruleset.cpp \
 		homedir.cpp \
-		pap.cpp
+		pap.cpp \
+		docking.cpp
 
 # the library search path
 kppp_LDFLAGS = $(all_libraries) $(KDE_RPATH)
@@ -82,7 +82,8 @@ noinst_HEADERS = accounts.h \
 		acctselect.h\
 		ruleset.h \
 		homedir.h \
-		pap.h
+		pap.h \
+		docking.h
 
 # just to make sure, automake makes them 
 BUILTSOURCES = accounts.moc \
@@ -100,7 +101,8 @@ BUILTSOURCES = accounts.moc \
 		pppstatdlg.moc\
 		miniterm.moc\
 		accounting.moc\
-		acctselect.moc
+		acctselect.moc\
+		docking.moc
 
 # if you "make distclean", this files get removed. If you want to remove
 # them while "make clean", use CLEANFILES
@@ -158,6 +160,10 @@ conwindow.moc: conwindow.h
 debug.cpp: debug.moc;
 debug.moc: debug.h
 	$(MOC) debug.h -o debug.moc
+
+docking.cpp: docking.moc;
+docking.moc: docking.h
+	$(MOC) docking.h -o docking.moc
 
 edit.cpp: edit.moc;
 edit.moc: edit.h

@@ -49,8 +49,8 @@
 #include "kpppconfig.h"
 #include "debug.h"
 #include "pppdata.h"
-
 #include "pwentry.h"
+#include "docking.h"
 
 extern QApplication *qApp;
 
@@ -143,6 +143,8 @@ private:
   int modemfd;
   struct termios initial_tty;
   struct termios tty;
+
+
 };
 
 

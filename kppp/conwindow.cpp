@@ -29,6 +29,7 @@
 extern XPPPWidget *p_xppp;
 extern KApplication *app;
 extern PPPData gpppdata;
+extern DockWidget *dock_widget;
 
 ConWindow::ConWindow(QWidget *parent, const char *name,QWidget *mainwidget)
   : QWidget(parent, name,0 )
@@ -59,10 +60,13 @@ ConWindow::ConWindow(QWidget *parent, const char *name,QWidget *mainwidget)
 
   this->setCaption("kppp");
 
-  cancelbutton = new QPushButton(this,"cancelbutton");
+  dockbutton = new QPushButton(this,"dockbutton");
+  dockbutton->setText(klocale->translate("Dock"));
+  connect(dockbutton, SIGNAL(clicked()), this, SLOT(dock()));
 
+  cancelbutton = new QPushButton(this,"cancelbutton");
   cancelbutton->setText(klocale->translate("Disconnect"));
-  connect(cancelbutton, SIGNAL(clicked()), main,SLOT(disconnect()));
+  connect(cancelbutton, SIGNAL(clicked()), main, SLOT(disconnect()));
 
   statsbutton = new QPushButton(this,"statsbutton");
   statsbutton->setText(klocale->translate("Details"));
@@ -154,8 +158,12 @@ void ConWindow::accounting(bool on) {
   FIXED_HEIGHT(cancelbutton);
   MIN_WIDTH(statsbutton);
   FIXED_HEIGHT(statsbutton);
+  MIN_WIDTH(dockbutton);
+  FIXED_HEIGHT(dockbutton);
   l2->addWidget(statsbutton);
+  l2->addWidget(dockbutton);
   l2->addWidget(cancelbutton);
+
   l2->addStretch(1);
 
   tl1->addSpacing(5); 
@@ -171,6 +179,13 @@ void ConWindow::accounting(bool on) {
 void ConWindow::stats(){
 
   p_xppp->stats->show();
+
+}
+
+void ConWindow::dock() {
+
+ dock_widget->dock();
+ this->hide();
 
 }
 

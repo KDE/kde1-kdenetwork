@@ -265,6 +265,14 @@ void PPPData::set_iconify_on_connect(bool set) {
   writeConfig(GENERAL_GRP, ICONIFY_ON_CONNECT_KEY, (int) set);
 }
 
+const bool PPPData::get_dock_into_panel(){
+  return (bool) readNumConfig(GENERAL_GRP, DOCKING_KEY, TRUE);
+}
+
+void PPPData::set_dock_into_panel(bool set){
+  writeConfig(GENERAL_GRP, DOCKING_KEY, (int) set);
+}
+
 const char* PPPData::pppdPath() {
   return readConfig (GENERAL_GRP, PPPDPATH_KEY, "/usr/sbin/pppd");
 }

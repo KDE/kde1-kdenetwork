@@ -34,6 +34,7 @@
 #include <qevent.h>
 #include <qlayout.h>
 
+
 class ConWindow : public QWidget {
 Q_OBJECT
 
@@ -52,6 +53,7 @@ private slots:
 
   void timeclick();
   void stats();
+  void dock();
 
 public:
   void setConnectionSpeed();
@@ -69,6 +71,7 @@ private:
   QLabel *info2;
   QPushButton *cancelbutton;
   QPushButton *statsbutton;
+  QPushButton *dockbutton;
 
   int minutes;
   int seconds;
@@ -88,3 +91,7 @@ private:
 
 
 #endif
+
+
+
+

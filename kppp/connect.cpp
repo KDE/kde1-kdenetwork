@@ -43,6 +43,7 @@
 #include "main.h"
 #include "kpppconfig.h"
 #include "macros.h"
+#include "docking.h"
 
 #ifdef NO_USLEEP
 int usleep( long usec );
@@ -54,6 +55,7 @@ void parseargs(char* buf, char** args);
 
 extern XPPPWidget *p_xppp;
 extern KApplication *app;
+extern DockWidget *dock_widget;
 extern int if_is_up();
 extern bool pppd_has_died;
 extern bool reconnect_on_disconnect;
@@ -69,7 +71,7 @@ ConnectWidget::ConnectWidget(QWidget *parent, const char *name)
 
   QVBoxLayout *tl = new QVBoxLayout(this, 8, 10);
 
-  // initalize some important varibles
+  // initialize some important variables
 
   vmain = 0;
   expecting = false;
@@ -956,10 +958,17 @@ void ConnectWidget::if_waiting_slot(){
   // accounting / non-accounting mode
   p_xppp->con_win->accounting(p_xppp->accounting.running());
 
-  p_xppp->con_win->show();
+  if (gpppdata.get_dock_into_panel()) {
+    dock_widget->dock();
+    dock_widget->take_stats();
+    this->hide();
+  } 
+  else {
+    p_xppp->con_win->show();
     
-  if(gpppdata.get_iconify_on_connect()) {
+    if(gpppdata.get_iconify_on_connect()) {
       p_xppp->con_win->iconify();
+    }
   }
 
   closetty();

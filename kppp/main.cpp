@@ -42,11 +42,13 @@
 #include "homedir.h"
 #include "macros.h"
 #include "pap.h"
+#include "docking.h"
 
 #include <X11/Xlib.h>
 
 XPPPWidget*	p_xppp;
 KApplication*	app;
+DockWidget*     dock_widget;
 QString 	cmdl_account;
 
 bool	have_cmdl_account;
@@ -250,7 +252,6 @@ int main( int argc, char **argv ) {
   XPPPWidget xppp;
   p_xppp = &xppp;
 
-
   a.setMainWidget(&xppp);
   a.setTopWidget(&xppp);
 
@@ -431,6 +432,8 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
   stats = new PPPStatsDlg(0,"stats",this);
   stats->hide();
 
+  dock_widget = new DockWidget("dockw");
+
   debugwindow = new DebugWidget(0,"debugwindow");
   debugwindow->setGeometry(QApplication::desktop()->width()/2+190,
 		    QApplication::desktop()->height()/2-55,
@@ -486,7 +489,7 @@ void XPPPWidget::log_window_toggled(bool on){
 
 void XPPPWidget::setup()
 {
-  
+
   if(tabWindow->exec())
     gpppdata.save();
   else
@@ -606,6 +609,8 @@ void dieppp(int sig) {
 
       p_xppp->stopAccounting();
       p_xppp->con_win->stopClock();
+      dock_widget->stop_stats();
+      dock_widget->undock();
       
 
       pppd_has_died = true;
@@ -619,7 +624,7 @@ void dieppp(int sig) {
 	p_xppp->stopAccounting();
 	p_xppp->con_win->hide();
 	p_xppp->con->hide();
-	
+
 	gpppdata.setpppdpid(-1);
 	
 	app->beep();
@@ -768,6 +773,11 @@ void XPPPWidget::disconnect() {
   p_xppp->stopAccounting();
   con_win->hide();
   
+  if (dock_widget->isDocked()) {
+    dock_widget->stop_stats();
+    dock_widget->undock();
+  }
+
   if(quit_on_disconnect) {
     kapp->exit(0);
   } else {
