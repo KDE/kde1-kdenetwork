@@ -252,7 +252,8 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     
     
     status = new KStatusBar (this, "status");
-    status->insertItem ("", 1);
+    status->insertItem ("         ", 1);
+    status->insertItem ("", 2);
     status->show ();
     setStatusBar (status);
     
@@ -326,7 +327,7 @@ void Artdlg::fillTree ()
         currArt=artList.at(curr);
     
     qApp->setOverrideCursor(waitCursor);
-    statusBar()->changeItem("Reading Article List",1);
+    statusBar()->changeItem("Reading Article List",2);
     qApp->processEvents ();
     group->getList();
 
@@ -345,14 +346,14 @@ void Artdlg::fillTree ()
         }
     }
     
-    statusBar()->changeItem(klocale->translate("Threading..."),1);
+    statusBar()->changeItem(klocale->translate("Threading..."),2);
     qApp->processEvents ();
     artList.thread(true);
     
     //had to split this in two loops because the order of articles is not
     //the same in both article lists
     
-    statusBar()->changeItem(klocale->translate("Showing Article List"),1);
+    statusBar()->changeItem(klocale->translate("Showing Article List"),2);
     qApp->processEvents ();
     for (iter=artList.first();iter!=0;iter=artList.next())
     {
@@ -372,7 +373,10 @@ void Artdlg::fillTree ()
     list->setAutoUpdate(true);
     list->repaint();
     qApp->restoreOverrideCursor();
-    statusBar()->changeItem("",1);
+    statusBar()->changeItem("",2);
+    QString s;
+    s.sprintf ("%d/%d",list->currentItem()+1,artList.count());
+    statusBar()->changeItem(s.data(),1);
     qApp->processEvents ();
 }
 
@@ -700,6 +704,9 @@ bool Artdlg::loadArt (QString id)
                 acc->setEnabled(true);
                 list->setEnabled(true);
                 messwin->setEnabled(true);
+                QString s;
+                s.sprintf ("%d/%d",list->currentItem()+1,artList.count());
+                statusBar()->changeItem(s.data(),1);
                 return true;
                 break;
             }
@@ -751,6 +758,9 @@ bool Artdlg::loadArt (QString id)
     acc->setEnabled(true);
     list->setEnabled(true);
     messwin->setEnabled(true);
+    QString sb;
+    sb.sprintf ("%d/%d",list->currentItem()+1,artList.count());
+    statusBar()->changeItem(sb.data(),1);
     return true;
 }
 
@@ -891,18 +901,18 @@ void Artdlg::decArt (int index,int)
 void Artdlg::getSubjects()
 {
     qApp->setOverrideCursor(waitCursor);
-    statusBar ()->changeItem (klocale->translate("Getting Article List"), 1);
+    statusBar ()->changeItem (klocale->translate("Getting Article List"), 2);
     qApp->processEvents ();
     
     group->getSubjects(server);
     
-    statusBar ()->changeItem ("", 1);
+    statusBar ()->changeItem ("", 2);
     qApp->processEvents ();
     qApp->restoreOverrideCursor();
 }
 void Artdlg::updateCounter(char *s)
 {
-    statusBar()->changeItem (s, 1);
+    statusBar()->changeItem (s, 2);
     qApp->processEvents();
 }
 
