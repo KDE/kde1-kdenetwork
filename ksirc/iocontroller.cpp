@@ -70,8 +70,10 @@
 #include <iostream.h>
 #include "ksircprocess.h"
 #include "control_message.h"
+#include "config.h"
 
 extern KApplication *kApp;
+extern global_config *kSircConfig;
 
 int KSircIOController::counter = 0;
 
@@ -182,19 +184,24 @@ void KSircIOController::stdout_read(KProcess *, char *_buffer, int buflen)
       }
     }
     if(!(ksircproc->TopList)[name]){
-      name = "!default";
-      switch(line[0]){
-      case '`':
-	line.prepend("*** ");
-	break;
-      case '>':
-      case '[':
-      case '=':
-      case '|':
-	if(ksircproc->TopList["!messages"]){
-	  name = "!messages";
+      if(kSircConfig->autocreate == TRUE){
+	ksircproc->new_toplevel(name);
+      }
+      else{
+	name = "!default";
+	switch(line[0]){
+	case '`':
+	  line.prepend("*** ");
+	  break;
+	case '>':
+	case '[':
+	case '=':
+	case '|':
+	  if(ksircproc->TopList["!messages"]){
+	    name = "!messages";
+	  }
+	  break;
 	}
-	break;
       }
     }
     ksircproc->TopList[name]->sirc_receive(line);

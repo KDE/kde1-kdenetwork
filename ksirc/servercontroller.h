@@ -47,6 +47,7 @@ public slots:
     virtual void new_toplevel(QString str);
     virtual void recvChangeChannel(QString, QString, QString);
     virtual void reuse();
+    virtual void autocreate();
     virtual void colour_prefs();
     virtual void filter_rule_editor();
 
@@ -55,7 +56,7 @@ private:
     // name
   QDict<KSircProcess> proc_list;
   QPopupMenu *options, *connections;
-  int reuse_id, join_id, server_id;
+  int reuse_id, join_id, server_id, auto_id;
 
   int open_toplevels;
 

@@ -69,6 +69,7 @@
 #include "open_ksirc.h"
 #include "open_top.h"
 #include "KSircColour.h"
+#include "config.h"
 #include "FilterRuleEditor.h"
 #include <iostream.h>
 
@@ -77,6 +78,7 @@
 #define Inherited servercontrollerData
 extern KConfig *kConfig;
 extern KApplication *kApp;
+extern global_config *kSircConfig;
 
 servercontroller::servercontroller
 (
@@ -103,6 +105,11 @@ servercontroller::servercontroller
 			    this, SLOT(reuse()));
 	options->setItemChecked(reuse_id, 
 				! kConfig->readNumEntry("Reuse", TRUE));
+	auto_id = options->insertItem("Auto Create Windows", 
+			    this, SLOT(autocreate()));
+	options->setItemChecked(auto_id, 
+				kConfig->readNumEntry("AutoCreate", FALSE));
+	kSircConfig->autocreate = kConfig->readNumEntry("AutoCreate", FALSE);
 	options->insertItem("Colour Preferences...",
 			    this, SLOT(colour_prefs()));
 	options->insertItem("Filter Rule Editor...",
@@ -250,6 +257,22 @@ void servercontroller::reuse()
   else{
     options->setItemChecked(reuse_id, FALSE);
     kConfig->writeEntry("Reuse", TRUE);
+  }
+  kConfig->sync();
+}
+
+void servercontroller::autocreate()
+{
+  kConfig->setGroup("GlobalOptions");
+  if(kConfig->readNumEntry("AutoCreate", FALSE) == FALSE){
+    options->setItemChecked(auto_id, TRUE);
+    kConfig->writeEntry("AutoCreate", TRUE);
+    kSircConfig->autocreate = TRUE;
+  }
+  else{
+    options->setItemChecked(auto_id, FALSE);
+    kConfig->writeEntry("AutoCreate", FALSE);
+    kSircConfig->autocreate = FALSE;
   }
   kConfig->sync();
 }

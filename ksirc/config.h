@@ -9,6 +9,8 @@ class global_config {
   QColor *colour_info;
   QColor *colour_chan;
   QColor *colour_error;
+
+  bool autocreate;
 };
 
 extern global_config *kSircConfig;
