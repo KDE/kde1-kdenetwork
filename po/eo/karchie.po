@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: karchie\n"
-"POT-Creation-Date: 1998-11-03 10:19+0100\n"
+"POT-Creation-Date: 1998-12-08 02:14+0100\n"
 "PO-Revision-Date: 1998-12-08 18:00+0100\n"
 "Last-Translator: Wolfram Diestel <diestel@rzaix340.rz-uni-leipzig.de>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
@@ -154,6 +154,10 @@ msgstr "&Deziro"
 msgid "S&ort"
 msgstr "&Ordo"
 
+#: KASettings.cpp:567
+msgid "Reset"
+msgstr "Rezignu"
+
 #: KAStatusBar.cpp:50
 msgid "    0 hits"
 msgstr "    0 trovoj"
@@ -194,10 +198,6 @@ msgstr "Progreso: %d"
 #, c-format
 msgid "%d try."
 msgstr "%da provo."
-
-#: KASettings.cpp:567
-msgid "Reset"
-msgstr "Rezignu"
 
 #: KAView.cpp:69
 msgid "Search &Term"

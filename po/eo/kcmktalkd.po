@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kbiff\n"
-"POT-Creation-Date: 1998-07-20 15:16+0200\n"
+"POT-Creation-Date: 1998-12-12 15:20+0100\n"
 "PO-Revision-Date: 1998-12-08 18:00+0100\n"
 "Last-Translator: Wolfram Diestel <diestel@rzaix340.rz-uni-leipzig.de>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
@@ -14,58 +14,64 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-3\n"
 "Content-Transfer-Encoding: 8-bit\n"
 
-#: main.cpp:55
+#: main.cpp:58
 msgid "&Announcement"
 msgstr "&Anoncado"
 
-#: main.cpp:58
+#: main.cpp:61
 msgid "Ans&wering machine"
 msgstr "&Respondilo"
 
 #: main.cpp:64
-msgid "usage: kcmktalkd [-init | soundpage | answmachpage]\n"
+msgid "&Forward"
+msgstr ""
+
+#: main.cpp:70
+#, fuzzy
+msgid "usage: kcmktalkd [-init | soundpage | answmachpage | forwmachpage ]\n"
 msgstr "uzo: kcmtalkd [-init | soundpage | answmachpage]\n"
 
-#: main.cpp:100
+#: main.cpp:111
 msgid "KTalkd Configuration"
 msgstr "KTalkd-agorda¼o"
 
-#: soundpage.cpp:47
+#: soundpage.cpp:46
 msgid "&Announcement program"
 msgstr "&Anoncprogramo"
 
-#: soundpage.cpp:54
+#: soundpage.cpp:53
 msgid "&Talk client"
 msgstr "&Talk-kliento"
 
-#: soundpage.cpp:58
+#: soundpage.cpp:57
 msgid "&Play sound"
 msgstr "&Ludu sonoron"
 
-#: soundpage.cpp:60
-msgid "Sound &File"
+#: soundpage.cpp:59
+#, fuzzy
+msgid "&Sound File"
 msgstr "Sonor-&dosieron"
 
-#: soundpage.cpp:62
+#: soundpage.cpp:61
 msgid "Additional WAV files can be dropped onto the sound list."
 msgstr "Kromajn WAV-dosierojn vi povas permuse þovi sur la sonorliston."
 
-#: soundpage.cpp:77
+#: soundpage.cpp:76
 msgid "&Test"
 msgstr "&Testo"
 
-#: soundpage.cpp:157
+#: soundpage.cpp:156
 msgid "Unsupported URL"
 msgstr "Nesubtenita URL"
 
-#: soundpage.cpp:158
+#: soundpage.cpp:157
 msgid ""
 "Sorry, this type of URL is currently unsupportedby the KDE System Sound "
 "Module"
 msgstr ""
 "Pardonu, tiu tipo de URL momente ne estas subtenata de la KDEa sonsistemo"
 
-#: soundpage.cpp:165
+#: soundpage.cpp:164
 #, c-format
 msgid ""
 "Sorry, but \n"
@@ -76,11 +82,11 @@ msgstr ""
 "%s\n"
 "þajne ne estas WAV-dosiero."
 
-#: soundpage.cpp:168
+#: soundpage.cpp:167
 msgid "Improper File Extension"
 msgstr "Malgusta dosier-fina¼o"
 
-#: soundpage.cpp:176
+#: soundpage.cpp:175
 #, c-format
 msgid ""
 "The file\n"
@@ -91,7 +97,7 @@ msgstr ""
 "%s\n"
 "estas jam en la listo"
 
-#: soundpage.cpp:180
+#: soundpage.cpp:179
 msgid "File Already in List"
 msgstr "Dosiero ajm en la listo"
 
@@ -148,3 +154,29 @@ msgstr "Mesaøo de %s"
 #, c-format
 msgid "Message left in the answering machine, by %s@%s"
 msgstr "Mesaøo estas lasite en la respondilo, de %s@%s"
+
+#: forwmachpage.cpp:34
+msgid "Activate &forward"
+msgstr ""
+
+#: forwmachpage.cpp:39
+msgid "&Destination (user or user@host)"
+msgstr ""
+
+#: forwmachpage.cpp:49
+msgid "Forward &method"
+msgstr ""
+
+#: forwmachpage.cpp:54
+msgid ""
+"FWA : Forward announcement only. Direct connection. Not recommended.\n"
+"FWR : Forward all requests, changing info when necessary. Direct "
+"connection.\n"
+"FWT : Forward all requests and take the talk. No direct connection.\n"
+"\n"
+"Recommended use : FWT it you want to use it behind a firewall (and if "
+"ktalkd\n"
+"can access both networks), and FWR otherwise.\n"
+"\n"
+"See Help for further explanations.\n"
+msgstr ""

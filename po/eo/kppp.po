@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1998-12-01 01:56+0100\n"
+"POT-Creation-Date: 1998-12-22 02:11+0100\n"
 "PO-Revision-Date: 1998-12-07 18:00+0100\n"
 "Last-Translator: Wolfram Diestel <diestel@rzaix340.rz-uni-leipzig.de>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
@@ -14,23 +14,23 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-3\n"
 "Content-Transfer-Encoding: 8-bit\n"
 
-#: accounts.cpp:49
+#: accounts.cpp:45
 msgid "Account Setup"
 msgstr "Konto-konfigura¼o"
 
-#: accounts.cpp:68
+#: accounts.cpp:64
 msgid "Edit..."
 msgstr "Redaktu..."
 
-#: accounts.cpp:70
+#: accounts.cpp:66
 msgid "Allows you to modify the selected account"
 msgstr "Permesas al vi þanøi la elektitan konton"
 
-#: accounts.cpp:80
+#: accounts.cpp:75
 msgid "New..."
 msgstr "Nova..."
 
-#: accounts.cpp:84
+#: accounts.cpp:79
 msgid ""
 "Create a new dialup connection\n"
 "to the internet"
@@ -38,7 +38,7 @@ msgstr ""
 "Kreas novan alvok-kontakton\n"
 "al Interreto"
 
-#: accounts.cpp:92
+#: accounts.cpp:87
 msgid ""
 "Makes a copy of the selected account. All\n"
 "settings of the selected account are copied\n"
@@ -49,7 +49,7 @@ msgstr ""
 "konfigura¼oj de la elektita konto estas kopiataj\n"
 "al nova konto, kiun vi povas þanøi laý viaj bezonoj."
 
-#: accounts.cpp:102
+#: accounts.cpp:97
 msgid ""
 "Deletes the selected account\n"
 "\n"
@@ -59,11 +59,11 @@ msgstr ""
 "\n"
 "<red><b>Uzu kun zorgo!"
 
-#: accounts.cpp:111
+#: accounts.cpp:106
 msgid "Phone Costs:"
 msgstr "Telefonkostoj:"
 
-#: accounts.cpp:123
+#: accounts.cpp:118
 msgid ""
 "This shows the accumulated phone costs\n"
 "for the selected account.\n"
@@ -79,11 +79,11 @@ msgstr ""
 "konton - notu, ke tio <b>NE</b> estas la sumo\n"
 "de la telefonkostoj de æiuj viaj kontoj!"
 
-#: accounts.cpp:130 conwindow.cpp:54
+#: accounts.cpp:125 conwindow.cpp:54
 msgid "Volume:"
 msgstr "Laýteco:"
 
-#: accounts.cpp:141
+#: accounts.cpp:136
 msgid ""
 "This shows the number of bytes transferred\n"
 "for the selected account (not for all of your\n"
@@ -99,19 +99,19 @@ msgstr ""
 "\n"
 "<link #volaccounting>Pli pri volumena kontado</link>"
 
-#: accounts.cpp:153
+#: accounts.cpp:148
 msgid "Reset Costs"
 msgstr "Rekomencu kostokalkulon"
 
-#: accounts.cpp:159
+#: accounts.cpp:154
 msgid "View Logs"
 msgstr "Rigardu raportojn"
 
-#: accounts.cpp:224
+#: accounts.cpp:219
 msgid "Reset Total"
 msgstr "Rekomencu tutan kalkulon"
 
-#: accounts.cpp:225
+#: accounts.cpp:220
 msgid ""
 "Are you sure you want to reset the accumulated\n"
 "telephone costs for the selected account to zero?"
@@ -119,15 +119,15 @@ msgstr ""
 "Æu vi estas certa, ke vi volas rekomenci æe nulo\n"
 "la kalkulon de æiuj telefonkostoj por la elektita konto?"
 
-#: accounts.cpp:254 accounts.cpp:275
+#: accounts.cpp:249 accounts.cpp:270
 msgid "Maximum number of accounts reached."
 msgstr "Maksimuma nombro de kontoj atingita."
 
-#: accounts.cpp:281
+#: accounts.cpp:276
 msgid "No account selected."
 msgstr "Vi elektis neniun konton."
 
-#: accounts.cpp:296
+#: accounts.cpp:291
 #, c-format
 msgid ""
 "Are you sure you want to delete\n"
@@ -136,43 +136,43 @@ msgstr ""
 "Æu vi estas certa, ke vi volas\n"
 "forigi la konton \"%\"?"
 
-#: accounts.cpp:301
+#: accounts.cpp:296
 msgid "Confirm"
 msgstr "Konfirmu"
 
-#: accounts.cpp:322
+#: accounts.cpp:317
 msgid "New Account"
 msgstr "Nova konto"
 
-#: accounts.cpp:325
+#: accounts.cpp:320
 msgid "Edit Account: "
 msgstr "Redaktu konton: "
 
-#: accounts.cpp:347
+#: accounts.cpp:338
 msgid "Dial"
 msgstr "Alvoku"
 
-#: accounts.cpp:348
+#: accounts.cpp:339
 msgid "IP"
 msgstr "IP"
 
-#: accounts.cpp:349
+#: accounts.cpp:340
 msgid "DNS"
 msgstr "DNS"
 
-#: accounts.cpp:350
+#: accounts.cpp:341
 msgid "Gateway"
 msgstr "enkursigilo"
 
-#: accounts.cpp:351
+#: accounts.cpp:342
 msgid "Login Script"
 msgstr "Salutprogrameto"
 
-#: accounts.cpp:352
+#: accounts.cpp:343
 msgid "Accounting"
 msgstr "Kontinformoj"
 
-#: accounts.cpp:371
+#: accounts.cpp:362
 msgid ""
 "You must enter an unique\n"
 "account name"
@@ -180,11 +180,11 @@ msgstr ""
 "Vi devas entajpi unikan\n"
 "kontonomon"
 
-#: accounts.cpp:376
+#: accounts.cpp:367
 msgid "Login script has unbalanced loop Start/End"
 msgstr "Salutprogrameto havas nekongruan blokon Start/End"
 
-#: connect.cpp:97 connect.cpp:195 main.cpp:984
+#: connect.cpp:97 connect.cpp:195 main.cpp:982
 msgid "Connecting to: "
 msgstr "Kontaktita al: "
 
@@ -197,7 +197,7 @@ msgstr "Padonu, ne eblas krei þlosodosieron por modemo"
 msgid "Looking for Modem ..."
 msgstr "Rigardante je modemo..."
 
-#: connect.cpp:120 debug.cpp:80 main.cpp:997
+#: connect.cpp:120 debug.cpp:80 main.cpp:995
 msgid "Log"
 msgstr "Raporto"
 
@@ -317,35 +317,35 @@ msgstr "Trovis: "
 msgid "Looping: "
 msgstr "Maþo: "
 
-#: connect.cpp:876 modeminfo.cpp:225
+#: connect.cpp:877 modeminfo.cpp:225
 msgid "One Moment Please ..."
 msgstr "Momenton bonvolu ..."
 
-#: connect.cpp:918
+#: connect.cpp:920
 msgid "Script timed out!"
 msgstr "Programeto pasis tempolimon!"
 
-#: connect.cpp:937
+#: connect.cpp:939
 msgid "Scanning: "
 msgstr "Seræante: "
 
-#: connect.cpp:947
+#: connect.cpp:949
 msgid "Expecting: "
 msgstr "Atendante: "
 
-#: connect.cpp:974
+#: connect.cpp:976
 msgid "Logging on to Network ..."
 msgstr "Salutado en la reto ..."
 
-#: connect.cpp:1000
+#: connect.cpp:1002
 msgid "Running Startup Command ..."
 msgstr "Lanæante startkomandon ..."
 
-#: connect.cpp:1005 connect.cpp:1012
+#: connect.cpp:1007 connect.cpp:1014
 msgid "Done"
 msgstr "Farite"
 
-#: connect.cpp:1121
+#: connect.cpp:1123
 msgid ""
 "pppd command + command-line arguments exeed\n"
 "2024 characters in length. What are you doing?"
@@ -429,7 +429,7 @@ msgstr "per terminalo"
 msgid "CHAP"
 msgstr "per CHAP"
 
-#: edit.cpp:90
+#: edit.cpp:88
 msgid ""
 "Specifies the method used to identify yourself to\n"
 "the PPP server. Most universities still use\n"
@@ -449,11 +449,11 @@ msgstr ""
 "Se vi povas elekti inter PAP kaj CHAP,\n"
 "preferu CHAP, æar tio estas pli sekura."
 
-#: edit.cpp:99
+#: edit.cpp:97
 msgid "Store password"
 msgstr "Sekurigu pasvorton"
 
-#: edit.cpp:103
+#: edit.cpp:101
 msgid ""
 "When this is turned on, your ISP password\n"
 "will be saved in <i>kppp</i>'s config file, so\n"
@@ -472,7 +472,7 @@ msgstr ""
 "neæifrita en la dosiero legebla nur de vi mem.\n"
 "Certigu, ke neniu ajn povos akiri la dosieron!"
 
-#: edit.cpp:112
+#: edit.cpp:110
 msgid ""
 "Execute program\n"
 "upon connect:"
@@ -480,7 +480,7 @@ msgstr ""
 "Lanæu programon\n"
 "æe kontakto:"
 
-#: edit.cpp:123
+#: edit.cpp:121
 msgid ""
 "Allows you to run a program <b>after</b> a connection\n"
 "is established. When your program is called, all\n"
@@ -495,7 +495,7 @@ msgstr ""
 "nTre bone uzebla ekzemple por aýtomate ricevi retpoþton\n"
 "kaj diskutgrupajn afiþojn"
 
-#: edit.cpp:131
+#: edit.cpp:129
 msgid ""
 "Execute program\n"
 "before disconnect:"
@@ -503,7 +503,7 @@ msgstr ""
 "Lanæu programon\n"
 "antaý malkontakto:"
 
-#: edit.cpp:143
+#: edit.cpp:141
 msgid ""
 "Allows you to run a program <b>before</b> a connection\n"
 "is closed. The connection will stay open until\n"
@@ -513,7 +513,7 @@ msgstr ""
 "estos fermata. La kontakto ankoraý funkcios øis la programo\n"
 "finiøis."
 
-#: edit.cpp:147
+#: edit.cpp:145
 msgid ""
 "Execute program\n"
 "upon disconnect:"
@@ -521,7 +521,7 @@ msgstr ""
 "Lanæu programon\n"
 "æe malkontakto:"
 
-#: edit.cpp:159
+#: edit.cpp:157
 msgid ""
 "Allows you to run a program <b>after</b> a connection\n"
 "has been closed."
@@ -529,23 +529,23 @@ msgstr ""
 "Permesas al vi lanæi programon <b>post</b> kiam kontakto\n"
 "estas fermita."
 
-#: edit.cpp:163
+#: edit.cpp:161
 msgid "Edit pppd arguments:"
 msgstr "Redaktu pppd-argumentojn:"
 
-#: edit.cpp:168
+#: edit.cpp:166
 msgid "Arguments"
 msgstr "Argumentoj"
 
-#: edit.cpp:236
+#: edit.cpp:223
 msgid "IP Setup"
 msgstr "IP-konfigura¼o"
 
-#: edit.cpp:242
+#: edit.cpp:229
 msgid "IP Address:"
 msgstr "IP-adreso:"
 
-#: edit.cpp:245
+#: edit.cpp:232
 msgid ""
 "If your computer has a permanent internet\n"
 "address, you must supply your IP address here"
@@ -553,11 +553,11 @@ msgstr ""
 "Se via komputilo havas daýran Interret-adreson,\n"
 "vi devas indiki vian IP-adreson tie æi"
 
-#: edit.cpp:250
+#: edit.cpp:237
 msgid "Subnet Mask:"
 msgstr "Subreta masko:"
 
-#: edit.cpp:253
+#: edit.cpp:240
 msgid ""
 "If your computer has a static Internet address,\n"
 "you must supply a network mask here. In almost\n"
@@ -573,11 +573,11 @@ msgstr ""
 "\n"
 "Se vi ne estas certa, demandu vian Interet-Servo-Provizanton."
 
-#: edit.cpp:267
+#: edit.cpp:254
 msgid "Dynamic IP Address"
 msgstr "Dinamika IP-adreso"
 
-#: edit.cpp:269
+#: edit.cpp:256
 msgid ""
 "Select this option when your computer gets an\n"
 "internet address (IP) everytime a\n"
@@ -592,11 +592,11 @@ msgstr ""
 "La plej multaj Interret-Servo-Provizantoj uzas tiun metodon,\n"
 "do tiu opcio estu enþaltita."
 
-#: edit.cpp:277
+#: edit.cpp:264
 msgid "Static IP Address"
 msgstr "Fiksa IP-adreso"
 
-#: edit.cpp:281
+#: edit.cpp:268
 msgid ""
 "Select this option when your computer has a\n"
 "fixed internet address (IP). Most computers\n"
@@ -609,11 +609,11 @@ msgstr ""
 "ne havas tiun, do verþajne vi elektu dinamikan\n"
 "IP-adresadon krom vi scias certe, kion vi devas fari"
 
-#: edit.cpp:287
+#: edit.cpp:274
 msgid "Auto-configure hostname from this IP"
 msgstr "Aýtokonfiguru komputilnomon de tiu IP"
 
-#: edit.cpp:292
+#: edit.cpp:279
 msgid ""
 "Whenever you connect, this reconfigures\n"
 "your hostname to match the IP address you\n"
@@ -633,15 +633,15 @@ msgstr ""
 "\n"
 "Ne enþaltu tion, se vi ne bezonas øin."
 
-#: edit.cpp:409
+#: edit.cpp:396
 msgid "DNS Servers"
 msgstr "DNS-serviloj"
 
-#: edit.cpp:424
+#: edit.cpp:411
 msgid "Domain Name:"
 msgstr "domajnnomo:"
 
-#: edit.cpp:435
+#: edit.cpp:422
 msgid ""
 "If you enter a domain name here, this domain\n"
 "name is used for your computer while you are\n"
@@ -661,11 +661,11 @@ msgstr ""
 "Se vi lasas la kampon blanka, la domajnnomo\n"
 "restos neþangita."
 
-#: edit.cpp:444
+#: edit.cpp:431
 msgid "DNS IP Address:"
 msgstr "DNS IP-adreso:"
 
-#: edit.cpp:459
+#: edit.cpp:446
 msgid ""
 "Allows you to specify a new DNS server to be\n"
 "used while you are connected. When the\n"
@@ -682,7 +682,7 @@ msgstr ""
 "Por aldoni DNS-servilon, tajpu la IP-adreson de\n"
 "øi kaj premu <b>Aldonu</b>"
 
-#: edit.cpp:478
+#: edit.cpp:465
 msgid ""
 "Click this button to add the DNS server\n"
 "specified in the field above. The entry\n"
@@ -692,7 +692,7 @@ msgstr ""
 "donitan en la supra kampo. La ero estos aldonita\n"
 "al la malsupra listo"
 
-#: edit.cpp:490
+#: edit.cpp:477
 msgid ""
 "Click this button to remove the selected DNS\n"
 "server entry from the list below"
@@ -700,11 +700,11 @@ msgstr ""
 "Premu tiun æi butonon por forigi la elektitan\n"
 "DNS-servilon el la malsupra listo"
 
-#: edit.cpp:493
+#: edit.cpp:480
 msgid "DNS Address List:"
 msgstr "DNS-adres-listo:"
 
-#: edit.cpp:504
+#: edit.cpp:491
 msgid ""
 "This shows all defined DNS servers to use\n"
 "while you are connected. Use the <b>Add</b> and\n"
@@ -714,11 +714,11 @@ msgstr ""
 "uzatajn dum vi havos kontakton. Uzu la <b>Aldonu</b>-\n"
 "kaj <b>Forigu</b>-butonojn por þanøi la liston"
 
-#: edit.cpp:509
+#: edit.cpp:496
 msgid "Disable existing DNS Servers during Connection"
 msgstr "Malaktivigu ekzistantajn DNS-servilojn dum kontakto"
 
-#: edit.cpp:516
+#: edit.cpp:503
 msgid ""
 "When this option is selected, all DNS\n"
 "servers specified in <i>/etc/resolv.conf</i> are\n"
@@ -739,15 +739,15 @@ msgstr ""
 "Normal vi ne bezonas uzi tiun opcion, sed sub\n"
 "certaj kondiæoj øi povus esti utila."
 
-#: edit.cpp:585
+#: edit.cpp:572
 msgid "Gateway Setup"
 msgstr "Enkursigil-konfigura¼o"
 
-#: edit.cpp:594
+#: edit.cpp:581
 msgid "Default Gateway"
 msgstr "Implicita enkursigilo"
 
-#: edit.cpp:597
+#: edit.cpp:584
 msgid ""
 "This makes the PPP peer computer (the computer\n"
 "you are connected to with your modem) to act as\n"
@@ -766,11 +766,11 @@ msgstr ""
 "Tiel estas æe la plej multaj ISPoj, do vi\n"
 "supozeble lasu enþaltita tiun opcion"
 
-#: edit.cpp:608
+#: edit.cpp:595
 msgid "Static Gateway"
 msgstr "Fiksa enkursigilo"
 
-#: edit.cpp:611
+#: edit.cpp:598
 msgid ""
 "Allows you to specify which computer you want\n"
 "to use as gateway (see <i>Default Gateway</i> above"
@@ -779,7 +779,7 @@ msgstr ""
 "volas uzi kiel enkursigilo \n"
 "(vd. <i>Implica enkursigilo</i> supre)"
 
-#: edit.cpp:616
+#: edit.cpp:603
 msgid ""
 "Gateway\n"
 "IP Address:"
@@ -787,11 +787,11 @@ msgstr ""
 "Enkursigila\n"
 "IP-adreso:"
 
-#: edit.cpp:618
+#: edit.cpp:605
 msgid "Assign the Default Route to this Gateway"
 msgstr "La implicita kurso iru tra tiu enkursigilo"
 
-#: edit.cpp:621
+#: edit.cpp:608
 msgid ""
 "If this option is enabled, all packets not\n"
 "going to the local net are routed through\n"
@@ -805,19 +805,19 @@ msgstr ""
 "\n"
 "Normal vi enþaltas tion"
 
-#: edit.cpp:716
+#: edit.cpp:703
 msgid "Edit Script"
 msgstr "Redaktu programeton"
 
-#: general.cpp:49
+#: general.cpp:50
 msgid "kppp Setup"
 msgstr "kppp-konfigura¼o"
 
-#: general.cpp:55
+#: general.cpp:56
 msgid "pppd Timeout:"
 msgstr "pppd-tempolimo:"
 
-#: general.cpp:68
+#: general.cpp:69
 msgid ""
 "<i>kppp</i> will wait this number of seconds\n"
 "to see if a PPP connection is established.\n"
@@ -829,15 +829,15 @@ msgstr ""
 "Se dum tiu tempo la kontakto ne ekfunkciis,\n"
 "<i>kppp</i> rezignacios kaj finos pppd."
 
-#: general.cpp:73 general.cpp:428 general.cpp:517
+#: general.cpp:74 general.cpp:400 general.cpp:489
 msgid "Seconds"
 msgstr "sekundoj"
 
-#: general.cpp:86
+#: general.cpp:87
 msgid "Dock into Panel on Connect"
 msgstr "Doku en la panelo æe kontakto"
 
-#: general.cpp:88
+#: general.cpp:89
 msgid ""
 "After a connection is established, the\n"
 "window is minimized and a small icon\n"
@@ -855,11 +855,11 @@ msgstr ""
 "fenestron æe origina loko kaj je origina\n"
 "grandeco."
 
-#: general.cpp:101
+#: general.cpp:102
 msgid "Automatic Redial on Disconnect"
 msgstr "Aýtomata realvoko æe malkontakto"
 
-#: general.cpp:107
+#: general.cpp:108
 msgid ""
 "When a connection is established and\n"
 "it somehow gets disconnected, <i>kppp</i>\n"
@@ -873,11 +873,11 @@ msgstr ""
 "Vidu <link #redial>tie æi</link> por pli da informoj\n"
 "pri tiu temo."
 
-#: general.cpp:113
+#: general.cpp:114
 msgid "Show Clock on Caption"
 msgstr "Montru horloøon en la titolo"
 
-#: general.cpp:119
+#: general.cpp:120
 msgid ""
 "When this option is checked, the window\n"
 "title shows the time since a connection\n"
@@ -888,11 +888,11 @@ msgstr ""
 "titolo montros la tempon pasintan de la ekkontakto.\n"
 "Tre utila, do enþaltu!"
 
-#: general.cpp:124
+#: general.cpp:125
 msgid "Disconnect on X-server shutdown"
 msgstr "Malkontaktu æe fino de la X-servilo"
 
-#: general.cpp:130
+#: general.cpp:131
 msgid ""
 "Checking this option will close any\n"
 "open connection when the X-server is\n"
@@ -908,11 +908,11 @@ msgstr ""
 "Vidu <link #disxserver>tie æi</link> por pliaj\n"
 "informoj."
 
-#: general.cpp:137
+#: general.cpp:138
 msgid "Quit on Disconnect"
 msgstr "Finu æe malkontakto"
 
-#: general.cpp:143
+#: general.cpp:144
 msgid ""
 "When this option is turned on, <i>kppp</i>\n"
 "will be closed when you disconnect"
@@ -920,11 +920,11 @@ msgstr ""
 "Se tiu opcio estas enþaltita, <i>kppp</i>\n"
 "finiøos, se vi malkontaktos"
 
-#: general.cpp:146
+#: general.cpp:147
 msgid "Minimize Window on Connect"
 msgstr "Minimumigu fenestron æe kontakto"
 
-#: general.cpp:152
+#: general.cpp:153
 msgid ""
 "Iconifies <i>kppp</i>'s window when a\n"
 "connection is established"
@@ -932,11 +932,11 @@ msgstr ""
 "Piktogramigas la fenestron de <i>kppp</i>\n"
 "se kontakto ekfunkciis"
 
-#: general.cpp:201
+#: general.cpp:202
 msgid "About kppp"
 msgstr "Pri kppp"
 
-#: general.cpp:209
+#: general.cpp:210
 msgid ""
 "\n"
 "A dialer and front-end to pppd\n"
@@ -970,15 +970,15 @@ msgstr ""
 "Tiu æi programo estas disponigata sub la GNUa ØPL\n"
 "(GNU Øenerala Publika Licenzo)."
 
-#: general.cpp:237
+#: general.cpp:238
 msgid "Serial device"
 msgstr "Seria aparato"
 
-#: general.cpp:240
+#: general.cpp:241
 msgid "Modem Device:"
 msgstr "Modemaparato:"
 
-#: general.cpp:280
+#: general.cpp:255
 msgid ""
 "This specifies the serial port your modem is attached \n"
 "to. On Linux/x86, typically this is either /dev/ttyS0 \n"
@@ -996,15 +996,15 @@ msgstr ""
 "(plej multaj kartoj sub Linukso tion subtenas), vi\n"
 "elektu unu el la aparatoj /dev/ttyIx."
 
-#: general.cpp:289
+#: general.cpp:264
 msgid "Flow Control:"
 msgstr "Fluokontrolo:"
 
-#: general.cpp:295
+#: general.cpp:270
 msgid "None"
 msgstr "Neniu"
 
-#: general.cpp:304
+#: general.cpp:279
 msgid ""
 "Specifies how the serial port and modem\n"
 "communicate. You should not change this unless\n"
@@ -1018,11 +1018,11 @@ msgstr ""
 "\n"
 "<b>Implicite</b>: CRTSCTS"
 
-#: general.cpp:310
+#: general.cpp:285
 msgid "Line Termination:"
 msgstr "Liniofinsigno:"
 
-#: general.cpp:323
+#: general.cpp:298
 msgid ""
 "Specifies how AT commands are send to your\n"
 "modem. Most modems will work fine with the\n"
@@ -1039,11 +1039,11 @@ msgstr ""
 "\n"
 "<b>Implicite</b>: CR/LF"
 
-#: general.cpp:331
+#: general.cpp:306
 msgid "Connection Speed:"
 msgstr "Rapideco"
 
-#: general.cpp:374
+#: general.cpp:349
 msgid ""
 "Specifies the speed your modem and the serial\n"
 "port talk to each other. You should begin with\n"
@@ -1059,21 +1059,18 @@ msgstr ""
 "115200 bit/s (krom se vi scias, ke via seria pordo\n"
 "subtenas pli altajn rapidecojn)."
 
-#: general.cpp:389
-msgid "Lock File Directory:"
-msgstr "Dosierujo por þlosdosieroj:"
-
-#: general.cpp:403
+#: general.cpp:375
+#, fuzzy
 msgid ""
 "To prevent other programs from accessing the\n"
 "modem while a connection is established, a\n"
-"file is created to indicate that the modem\n"
-"is in use. Here you can select the directory\n"
-"where this file is created.\n"
+"file can be created to indicate that the modem\n"
+"is in use. On Linux an example file would be\n"
+"<i>/var/lock/LCK..ttyS1</i>\n"
+"Here you can select whether this locking will\n"
+"be done.\n"
 "\n"
-"Don't touch this unless you know what you are\n"
-"doing. There is no default because it depends\n"
-"on the operating system."
+"<b>Default</b>: On"
 msgstr ""
 "Por malebligi al aliaj programoj aliron al la\n"
 "modemo dum funkcianta kontakto, dosiero estos\n"
@@ -1085,11 +1082,11 @@ msgstr ""
 "Ne estas implica valoro, æar øi varias inter\n"
 "la operaciumoj."
 
-#: general.cpp:414
+#: general.cpp:386
 msgid "Modem Timeout:"
 msgstr "Modema tempolimo:"
 
-#: general.cpp:432
+#: general.cpp:404
 msgid ""
 "This specifies how long <i>kppp</i> waits for a\n"
 "<i>CONNECT</i> response from your modem. The\n"
@@ -1099,15 +1096,15 @@ msgstr ""
 "la modemrespondo <i>CONNECT</i>. La rekomendita\n"
 "valoro estas 30 sekundoj."
 
-#: general.cpp:493 main.cpp:646
+#: general.cpp:465 main.cpp:642
 msgid "Modem"
 msgstr "Modemo"
 
-#: general.cpp:504
+#: general.cpp:476
 msgid "Busy Wait:"
 msgstr "Atendo æe okupiteco:"
 
-#: general.cpp:522
+#: general.cpp:494
 msgid ""
 "Specifies the number of seconds to wait before\n"
 "redial if all dialed numbers are busy. This is\n"
@@ -1125,11 +1122,11 @@ msgstr ""
 "La implicita valoro estas 0 sekundoj, vi ne þanøu\n"
 "tion, sen bezono."
 
-#: general.cpp:536
+#: general.cpp:508
 msgid "Modem volume"
 msgstr "Modemlaýteco"
 
-#: general.cpp:548
+#: general.cpp:520
 msgid ""
 "Most modems have a speaker which makes\n"
 "a lot of noise when dialing. Here you can\n"
@@ -1146,38 +1143,39 @@ msgstr ""
 "Se tio ne funkcias æe via modemo, vi devas\n"
 "agordi la laýteckomandon por via modemo"
 
-#: general.cpp:560
+#: general.cpp:532
 msgid "Modem Asserts CD Line."
 msgstr "Modemo enþovas CD-signalojn"
 
-#: general.cpp:568
+#: general.cpp:540
+#, fuzzy
 msgid ""
 "This controls how <i>kppp</i> detects that the modem\n"
 "is not responding. Unless you are having\n"
 "problems with this, do not modify this setting.\n"
 "\n"
-"<b>Default</b>: on"
+"<b>Default</b>: off"
 msgstr ""
 "Tio indikas, kiel <i>kppp</i> rimarku, se la modemo\n"
 "ne respondas. Þanøu tion nur, se vi havas problemojn.\n"
 "\n"
 "<b>Implicite</b>: enþaltita"
 
-#: general.cpp:581
+#: general.cpp:553
 msgid "Modem Commands"
 msgstr "Modemokomandoj"
 
-#: general.cpp:583
+#: general.cpp:555
 msgid ""
 "Allows you to change the AT command for\n"
 "your modem."
 msgstr "Permesas þanøi la AT-komandon por via modemo."
 
-#: general.cpp:586
+#: general.cpp:558
 msgid "Query Modem"
 msgstr "Rekonu modemon"
 
-#: general.cpp:588
+#: general.cpp:560
 msgid ""
 "Most modems support the ATI command set to\n"
 "find out vendor and revision of your modem.\n"
@@ -1192,11 +1190,11 @@ msgstr ""
 "Premu tiun butonon por demandi tiun informon.\n"
 "Tio povas helpi vin dum la agordado."
 
-#: general.cpp:595
+#: general.cpp:567
 msgid "Terminal"
 msgstr "Terminalo"
 
-#: general.cpp:597
+#: general.cpp:569
 msgid ""
 "Opens the built-in terminal program. You\n"
 "can use this if you want to play around\n"
@@ -1206,23 +1204,23 @@ msgstr ""
 "Per øi vi povas elprovi la AT-komandojn\n"
 "de via modemo."
 
-#: general.cpp:661
+#: general.cpp:633
 msgid "Throughput graph"
 msgstr "Trasend-grafo"
 
-#: general.cpp:670
+#: general.cpp:642
 msgid "Background color"
 msgstr "Fonkoloro"
 
-#: general.cpp:677
+#: general.cpp:649
 msgid "Text color"
 msgstr "Tekstkoloro"
 
-#: general.cpp:684
+#: general.cpp:656
 msgid "Input bytes color"
 msgstr "Koloro por ricevitaj bitokoj"
 
-#: general.cpp:691
+#: general.cpp:663
 msgid "Output bytes color"
 msgstr "Koloro por senditaj bitokoj"
 
@@ -1268,7 +1266,7 @@ msgstr ""
 "Tiu æi fenestro restas malfermita øis\n"
 "vi premas musbutonon aý klavon.\n"
 
-#: main.cpp:333
+#: main.cpp:329
 #, c-format
 msgid ""
 "kppp can't create or read from\n"
@@ -1277,7 +1275,7 @@ msgstr ""
 "kppp ne povas krei aý legi de\n"
 "%s."
 
-#: main.cpp:349
+#: main.cpp:345
 #, c-format
 msgid ""
 "kppp has detected a %s file.\n"
@@ -1297,15 +1295,15 @@ msgstr ""
 "forigu la dosieron kun la procesnumero kaj\n"
 "relanæu kppp."
 
-#: main.cpp:423
+#: main.cpp:419
 msgid "Connect to: "
 msgstr "Kontaktu al:"
 
-#: main.cpp:434
+#: main.cpp:430
 msgid "Login ID:"
 msgstr "Salutnomo:"
 
-#: main.cpp:447
+#: main.cpp:443
 msgid ""
 "Type in the username that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1323,11 +1321,11 @@ msgstr ""
 "<b>Grave:</b>: uskleco gravas tie æi:\n"
 "<i>miasekreto</i> diferencas de <i>MiaSekreto</i>!"
 
-#: main.cpp:456
+#: main.cpp:452
 msgid "Password:"
 msgstr "Pasvorto:"
 
-#: main.cpp:470
+#: main.cpp:466
 msgid ""
 "Type in the password that you got from your\n"
 "ISP. This is especially important for PAP\n"
@@ -1345,11 +1343,11 @@ msgstr ""
 "<b>Grave:</b>: uskleco gravas tie æi:\n"
 "<i>miasekreto</i> diferencas de <i>MiaSekreto</i>!"
 
-#: main.cpp:484
+#: main.cpp:480
 msgid "Show Log Window"
 msgstr "Montru raportfenestron"
 
-#: main.cpp:491
+#: main.cpp:487
 msgid ""
 "This controls whether a log window is shown.\n"
 "A log window shows the communication between\n"
@@ -1367,15 +1365,15 @@ msgstr ""
 "Elþaltu, se <i>kppp</i> normale kontaktas sen\n"
 "problemoj"
 
-#: main.cpp:514
+#: main.cpp:510
 msgid "Setup"
 msgstr "Agordu"
 
-#: main.cpp:530
+#: main.cpp:526
 msgid "Connect"
 msgstr "Kontaktu"
 
-#: main.cpp:614
+#: main.cpp:610
 #, c-format
 msgid ""
 "No such Account:\n"
@@ -1384,31 +1382,31 @@ msgstr ""
 "Ne ekzistas tiu konto:\n"
 "%s"
 
-#: main.cpp:628
+#: main.cpp:624
 msgid "kppp Configuration"
 msgstr "kppp-agorda¼o"
 
-#: main.cpp:644
+#: main.cpp:640
 msgid "Accounts"
 msgstr "kontoj"
 
-#: main.cpp:645
+#: main.cpp:641
 msgid "Device"
 msgstr "aparato"
 
-#: main.cpp:647
+#: main.cpp:643
 msgid "PPP"
 msgstr "PPP"
 
-#: main.cpp:648
+#: main.cpp:644
 msgid "Graph"
 msgstr "Grafo"
 
-#: main.cpp:821
+#: main.cpp:818
 msgid "Details..."
 msgstr "Detaloj..."
 
-#: main.cpp:880
+#: main.cpp:878
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1429,7 +1427,7 @@ msgstr ""
 "servprogramon.\n"
 "Dankon"
 
-#: main.cpp:895
+#: main.cpp:893
 #, c-format
 msgid ""
 "kppp can not execute:\n"
@@ -1442,7 +1440,7 @@ msgstr ""
 "bonvolu certigi, ke vi donis al kppp SUID-permeson kaj ke\n"
 "pppd estas rulebla."
 
-#: main.cpp:909
+#: main.cpp:907
 #, c-format
 msgid ""
 "kppp can not find:\n"
@@ -1463,7 +1461,7 @@ msgstr ""
 "de la konfigurodialogo.\n"
 "Dankon"
 
-#: main.cpp:929
+#: main.cpp:927
 msgid ""
 "You have selected the authentication\n"
 "method PAP. This requires that you\n"
@@ -1472,7 +1470,7 @@ msgstr ""
 "Vi elektis la identigmetodon PAP. Tio\n"
 "necesigas, ke vi donas uzantonomon kaj pasvorton!"
 
-#: main.cpp:938
+#: main.cpp:936
 #, c-format
 msgid ""
 "Cannot create PAP authentication\n"
@@ -1481,7 +1479,7 @@ msgstr ""
 "Ne eblis krei PAP-identig-dosieron\n"
 "\"%s\""
 
-#: main.cpp:955
+#: main.cpp:953
 msgid ""
 "You have selected the authentication\n"
 "method CHAP. This requires that you\n"
@@ -1490,7 +1488,7 @@ msgstr ""
 "Vi elektis la identigmetodon CHAP. Tio\n"
 "necesigas, ke vi donas uzantonomon kaj pasvorton!"
 
-#: main.cpp:964
+#: main.cpp:962
 #, c-format
 msgid ""
 "Cannot create CHAP authentication\n"
@@ -1499,19 +1497,19 @@ msgstr ""
 "Ne eblis krei CHAP-identig-dosieron\n"
 "\"%s\""
 
-#: main.cpp:976
+#: main.cpp:974
 msgid "You must specify a telephone number!"
 msgstr "Vi devas doni telefonnumeron!"
 
-#: main.cpp:1063
+#: main.cpp:1061
 msgid "Quit kPPP?"
 msgstr "Æu fini kPPP?"
 
-#: main.cpp:1064
+#: main.cpp:1062
 msgid "Exiting kPPP will close your PPP Session."
 msgstr "Se vi finas kPPP ankaý finiøos via PPP-seanco."
 
-#: main.cpp:1099
+#: main.cpp:1097
 msgid ""
 "Can not load the accounting\n"
 "ruleset \""
@@ -1818,37 +1816,37 @@ msgstr "leg. k send. bitokoj"
 msgid "Available rules"
 msgstr "Uzeblaj reguloj"
 
-#: ruleset.cpp:538
+#: ruleset.cpp:544
 msgid "kppp: no rulefile specified\n"
 msgstr "kppp: Vi ne indikis reguldosieron\n"
 
-#: ruleset.cpp:544
+#: ruleset.cpp:550
 #, c-format
 msgid "kppp: rulefile \"%s\" not found\n"
 msgstr "kppp: reguldosiero \"%s\" ne trovebla\n"
 
-#: ruleset.cpp:549
+#: ruleset.cpp:555
 msgid "kppp: rulefiles must have the extension \".rst\"\n"
 msgstr "kppp: reguldosiero devas havi la fina¼on \".rst\"\n"
 
-#: ruleset.cpp:558
+#: ruleset.cpp:564
 msgid "kppp: error parsing the ruleset\n"
 msgstr "kppp: eraro dum analizo the regularo\n"
 
-#: ruleset.cpp:563
+#: ruleset.cpp:569
 #, c-format
 msgid "kppp: parse error in line %d\n"
 msgstr "kppp: analizeraro en linio %d\n"
 
-#: ruleset.cpp:569
+#: ruleset.cpp:575
 msgid "kppp: rulefile does not contain a default rule\n"
 msgstr "kppp: reguldosiero ne enhavas implicitan regulon\n"
 
-#: ruleset.cpp:574
+#: ruleset.cpp:580
 msgid "kppp: rulefile does not contain a \"name=...\" line\n"
 msgstr "kppp: reguldosiero ne enhavas linion \"name=...\"\n"
 
-#: ruleset.cpp:578
+#: ruleset.cpp:584
 msgid "kppp: rulefile is ok\n"
 msgstr "kppp: reguldosiero estas en ordo\n"
 
@@ -1856,7 +1854,7 @@ msgstr "kppp: reguldosiero estas en ordo\n"
 msgid "Minimize"
 msgstr "Minimumigu"
 
-#: runtests.cpp:354
+#: runtests.cpp:355
 msgid ""
 "You´re not allowed to dial out with kppp.\n"
 "Contact your system administrator."
@@ -1864,7 +1862,7 @@ msgstr ""
 "Vi ne havas permeson voki per kppp.\n"
 "Kontaktu vian sistemadministranton."
 
-#: runtests.cpp:369
+#: runtests.cpp:372
 msgid ""
 "This kernel has no PPP support, neither\n"
 "compiled in nor via the kernel module\n"
@@ -1883,7 +1881,7 @@ msgstr ""
 "aý\n"
 "  * instalu kernon kun PPP-subteno\n"
 
-#: runtests.cpp:391
+#: runtests.cpp:394
 msgid ""
 "Cannot find the pppd-daemon!\n"
 "\n"
@@ -1895,7 +1893,7 @@ msgstr ""
 "Certigu, ke pppd estas instalita kaj\n"
 "ke vi entajpis la øustan padon.\n"
 
-#: runtests.cpp:403
+#: runtests.cpp:406
 msgid ""
 "You do not have the permission\n"
 "to start pppd!\n"
@@ -1909,7 +1907,7 @@ msgstr ""
 "Kontaktu vian sistemadministranton\n"
 "kaj petu lin pri aliro al pppd."
 
-#: runtests.cpp:414 runtests.cpp:429
+#: runtests.cpp:417 runtests.cpp:432
 msgid ""
 "pppd is not properly installed!\n"
 "\n"
@@ -1923,7 +1921,7 @@ msgstr ""
 "kun SUID-bito. Kontaktu vian sistem-\n"
 "administranton."
 
-#: runtests.cpp:463
+#: runtests.cpp:466
 msgid ""
 "kppp has detected a 'lock' option in /etc/ppp/options.\n"
 "\n"
@@ -1936,7 +1934,7 @@ msgstr ""
 "Tiu opcio ne plu estas uzata, æar kppp mem atentas pri þlosado.\n"
 "Kontaktu vian sistem-administranton."
 
-#: runtests.cpp:487
+#: runtests.cpp:490
 msgid ""
 "is missing!\n"
 "\n"
@@ -1950,7 +1948,7 @@ msgstr ""
 "nemalplenan dosieron kun konvenaj lego-\n"
 "kaj skribo-permesoj."
 
-#: ppplog.cpp:149
+#: ppplog.cpp:136
 msgid ""
 "You have launched pppd before the remote server was ready to establish a PPP "
 "connection.\n"
@@ -1959,19 +1957,15 @@ msgstr ""
 "Vi lanæis pppd antaý kiam la fora servilo estis preta por PPP-kontakto.\n"
 "Bonvolu uzi la terminalbazitan legitimigmetodon por certiøi."
 
-#: ppplog.cpp:154
-msgid ""
-"Do you use /dev/modem ? If so, you should specify the real device instead, "
-"e.g. /dev/ttyS1 (COM2)."
+#: ppplog.cpp:141
+msgid "You haven't started the PPP software on the peer system."
 msgstr ""
-"Æu vi uzas /dev/modem? Se jes, prefere indiku la faktan aparaton,\n"
-"ekz. /dev/ttyS1 (COM2)."
 
-#: ppplog.cpp:158
+#: ppplog.cpp:144
 msgid "Check that you supplied the correct username and password!"
 msgstr "Certigu, ke vi indikis øustajn uzantnomon kaj pasvorton!"
 
-#: ppplog.cpp:161
+#: ppplog.cpp:147
 msgid ""
 "You shouldn't pass 'lock' as an argument to pppd. Check /etc/ppp/options and "
 "~/.ppprc"
@@ -1979,7 +1973,7 @@ msgstr ""
 "Vi ne donu 'lock' kiel argumento por pppd. Kontrolu /etc/ppp/options kaj "
 "~/.ppprc"
 
-#: ppplog.cpp:165
+#: ppplog.cpp:151
 msgid ""
 "The remote system does not seem to answer to\n"
 "configuration request! Contact your provider!"
@@ -1987,7 +1981,13 @@ msgstr ""
 "La fora sistemo þajnas ne respondi pri agord-deziro!\n"
 "Kontaktu vian servoprovizanton!"
 
-#: ppplog.cpp:180
+#: ppplog.cpp:155
+msgid ""
+"You have passed an invalid option to pppd. See `man pppd' for a complete "
+"list of valid arguments."
+msgstr ""
+
+#: ppplog.cpp:170
 #, c-format
 msgid ""
 "Notice that the remote system has sent the following message:\n"
@@ -1998,11 +1998,11 @@ msgstr ""
 "\"%s\"\n"
 "Tio povas helpi al vi trovi la kaýzon, ke la kontakto malsukcesis."
 
-#: ppplog.cpp:199
+#: ppplog.cpp:189
 msgid "Sorry. Can't help you here."
 msgstr "Padonu, ne povas helpi vin tie æi."
 
-#: ppplog.cpp:216
+#: ppplog.cpp:206
 msgid ""
 "KPPP could not prepare a PPP log. It´s very likely\n"
 "that pppd was started without the \"debug\" option.\n"
@@ -2020,7 +2020,7 @@ msgstr ""
 "\n"
 "Æu mi enþaltu?"
 
-#: ppplog.cpp:227
+#: ppplog.cpp:217
 msgid ""
 "The \"debug\" option has been added. You\n"
 "should now try to reconnect. If that fails\n"
@@ -2032,14 +2032,24 @@ msgstr ""
 "vi ricevos PPP-raporton kiu povus helpi \n"
 "trovi la kaýzon de la problemo."
 
-#: ppplog.cpp:242
+#: ppplog.cpp:232
 msgid "PPP log"
 msgstr "PPP-raporto"
 
-#: ppplog.cpp:246
+#: ppplog.cpp:236
 msgid "kppp's diagnosis (just guessing):"
 msgstr "La diagnoso de kppp (nur diveno):"
 
-#: ppplog.cpp:251
+#: ppplog.cpp:241
 msgid "Write to file"
 msgstr "Skribu al dosiero"
+
+#~ msgid "Lock File Directory:"
+#~ msgstr "Dosierujo por þlosdosieroj:"
+
+#~ msgid ""
+#~ "Do you use /dev/modem ? If so, you should specify the real device instead, "
+#~ "e.g. /dev/ttyS1 (COM2)."
+#~ msgstr ""
+#~ "Æu vi uzas /dev/modem? Se jes, prefere indiku la faktan aparaton,\n"
+#~ "ekz. /dev/ttyS1 (COM2)."

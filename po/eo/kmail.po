@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1998-12-02 01:55+0100\n"
+"POT-Creation-Date: 1998-12-19 02:18+0100\n"
 "PO-Revision-Date: 1998-12-09 18:00+0100\n"
 "Last-Translator: Wolfram Diestel <diestel@rzaix340.rz-uni-leipzig.de>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-3\n"
 "Content-Transfer-Encoding: 8-bit\n"
 
-#: kmcomposewin.cpp:1458 kmmainwin.cpp:263 kpgp.cpp:546
+#: kmcomposewin.cpp:1513 kmmainwin.cpp:263 kpgp.cpp:546
 msgid ""
 "Sorry, but this feature\n"
 "is still missing"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "New Folder"
 msgstr "Nova dosierujo"
 
-#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:285 kmmainwin.cpp:318 main.cpp:332
+#: kmaddrbookdlg.cpp:178 kmmainwin.cpp:285 kmmainwin.cpp:318 main.cpp:333
 msgid "KMail error"
 msgstr "KMail-eraro"
 
@@ -172,7 +172,7 @@ msgstr "&Kopiu..."
 msgid "New Composer"
 msgstr "Kreu mesaøon"
 
-#: kmcomposewin.cpp:449 kmmainwin.cpp:857
+#: kmcomposewin.cpp:450 kmmainwin.cpp:857
 msgid "New Mailreader"
 msgstr "Nova fenestro"
 
@@ -200,7 +200,7 @@ msgstr "Sendu atendantajn"
 msgid "&Settings..."
 msgstr "A&gorda¼o..."
 
-#: kmcomposewin.cpp:441 kmmainwin.cpp:881
+#: kmcomposewin.cpp:442 kmmainwin.cpp:881
 msgid "&Addressbook..."
 msgstr "&Adresaro..."
 
@@ -332,15 +332,15 @@ msgstr "&Dosierujo"
 msgid "&Message"
 msgstr "&Mesaøo"
 
-#: kmcomposewin.cpp:563 kmmainwin.cpp:1013
+#: kmcomposewin.cpp:572 kmmainwin.cpp:1013
 msgid "Compose new message"
 msgstr "Kreu novan mesaøon"
 
-#: kmcomposewin.cpp:568 kmmainwin.cpp:1018
+#: kmcomposewin.cpp:577 kmmainwin.cpp:1018
 msgid "Save message to file"
 msgstr "Sekurigu mesaøon al dosiero"
 
-#: kmcomposewin.cpp:573 kmmainwin.cpp:1023
+#: kmcomposewin.cpp:582 kmmainwin.cpp:1023
 msgid "Print message"
 msgstr "Presu mesaøon"
 
@@ -364,7 +364,7 @@ msgstr "Plusendu mesaøon"
 msgid "Delete message"
 msgstr "Forigu mesaøon"
 
-#: kmcomposewin.cpp:597 kmmainwin.cpp:1057
+#: kmcomposewin.cpp:606 kmmainwin.cpp:1057
 msgid "Open addressbook..."
 msgstr "Malfermu adresaron"
 
@@ -377,7 +377,7 @@ msgstr "Initante..."
 msgid "Name:"
 msgstr "Nomo:"
 
-#: kmcomposewin.cpp:1466 kmfolderdia.cpp:44 kmfolderdia.cpp:120
+#: kmcomposewin.cpp:1521 kmfolderdia.cpp:44 kmfolderdia.cpp:120
 msgid "unnamed"
 msgstr "sennoma"
 
@@ -388,6 +388,10 @@ msgstr "Kunligita kun"
 #: kmfolderdia.cpp:57
 msgid "Unassociated Accounts"
 msgstr "Neligitaj kontoj"
+
+#: kmfoldertree.cpp:47 kmsettings.cpp:529
+msgid "Folders"
+msgstr "Dosierujoj"
 
 #: kmsettings.cpp:54
 msgid "Settings"
@@ -409,7 +413,7 @@ msgstr "Respondadreso:"
 msgid "Signature File:"
 msgstr "Signaturdosiero:"
 
-#: kmsettings.cpp:192 kpgp.cpp:765
+#: kmsettings.cpp:192 kpgp.cpp:821
 msgid "Identity"
 msgstr "Identeco"
 
@@ -445,11 +449,11 @@ msgstr "Ricevado de poþta¼oj"
 msgid "Accounts:   (add at least one account!)"
 msgstr "Kontoj:    (aldonu almenaý unu konton!)"
 
-#: kmcomposewin.cpp:139 kmsettings.cpp:265
+#: kmcomposewin.cpp:140 kmsettings.cpp:265
 msgid "Name"
 msgstr "Nomo"
 
-#: kmcomposewin.cpp:142 kmsettings.cpp:266
+#: kmcomposewin.cpp:143 kmsettings.cpp:266
 msgid "Type"
 msgstr "Tipo"
 
@@ -513,15 +517,15 @@ msgstr "Plusendo:"
 msgid "Indentation:"
 msgstr "Signo por citado:"
 
-#: kmmessage.cpp:1313 kmsettings.cpp:411
+#: kmmessage.cpp:1340 kmsettings.cpp:411
 msgid "On %D, you wrote:"
 msgstr "Je %D, vi skribis:"
 
-#: kmmessage.cpp:1314 kmsettings.cpp:415
+#: kmmessage.cpp:1341 kmsettings.cpp:415
 msgid "On %D, %F wrote:"
 msgstr "Je %D, %F skribis:"
 
-#: kmmessage.cpp:1315 kmsettings.cpp:419
+#: kmmessage.cpp:1342 kmsettings.cpp:419
 msgid "Forwarded Message"
 msgstr "Plusendita mesaøo"
 
@@ -573,10 +577,6 @@ msgstr "MIME-kongrua (\"quoted printable\")"
 msgid "Composer"
 msgstr "Mesaøredaktilo"
 
-#: kmsettings.cpp:529
-msgid "Folders"
-msgstr "Dosierujoj"
-
 #: kmsettings.cpp:533
 msgid "empty trash on exit"
 msgstr "malplenigu rubujon je programfino"
@@ -613,7 +613,7 @@ msgstr "Sennoma"
 msgid "Choose Sendmail Location"
 msgstr "Elektu Sendmail-situon"
 
-#: kmcomposewin.cpp:1565 kmsettings.cpp:695
+#: kmcomposewin.cpp:1620 kmsettings.cpp:695
 msgid "Choose Signature File"
 msgstr "Elektu signaturdosieron"
 
@@ -673,282 +673,288 @@ msgstr "Ricevonto: "
 msgid "Failed to add message:"
 msgstr "Ne eblis aldoni mesaøon:"
 
-#: kmcomposewin.cpp:138 kmheaders.cpp:39
+#: kmcomposewin.cpp:139 kmheaders.cpp:40
 msgid "F"
 msgstr "S"
 
-#: kmheaders.cpp:40
+#: kmheaders.cpp:41
 msgid "Sender"
 msgstr "Sendinto"
 
-#: kmheaders.cpp:41
+#: kmheaders.cpp:42
 msgid "Subject"
 msgstr "Temo:"
 
-#: kmheaders.cpp:42
+#: kmheaders.cpp:43
 msgid "Date"
 msgstr "Dato"
 
-#: kmheaders.cpp:196
+#: kmheaders.cpp:215
 #, c-format
 msgid "%d Messages, %d unread."
 msgstr "%d mesaøoj, %d nelegitaj"
 
-#: kmheaders.cpp:198
+#: kmheaders.cpp:217
 msgid "Folder is read-only."
 msgstr "Dosierujo estas nurlega."
 
-#: kmheaders.cpp:245
+#: kmheaders.cpp:264
 msgid "Unknown"
 msgstr "Nekonata"
 
-#: kmheaders.cpp:248
+#: kmheaders.cpp:267
 msgid "No Subject"
 msgstr "sen temo"
 
-#: kmheaders.cpp:308
+#: kmheaders.cpp:327
 msgid "order of arrival"
 msgstr "vicordo de alveno"
 
-#: kmheaders.cpp:317
+#: kmheaders.cpp:336
 msgid "subject"
 msgstr "temo"
 
-#: kmheaders.cpp:318
+#: kmheaders.cpp:337
 msgid "date"
 msgstr "dato"
 
-#: kmheaders.cpp:319
+#: kmheaders.cpp:338
 msgid "sender"
 msgstr "sendinto"
 
-#: kmheaders.cpp:320
+#: kmheaders.cpp:339
 msgid "status"
 msgstr "stato"
 
-#: kmheaders.cpp:322
+#: kmheaders.cpp:341
 #, c-format
 msgid "Sorting messages descending by %s"
 msgstr "Ordignate mesaøojn descende je %s"
 
-#: kmheaders.cpp:324
+#: kmheaders.cpp:343
 #, c-format
 msgid "Sorting messages ascending by %s"
 msgstr "Ordigante mesaøojn ascende je %s"
 
-#: kmheaders.cpp:420
+#: kmheaders.cpp:439
 msgid "Message(s) saved."
 msgstr "Mesaøo(j) sekurigitaj."
 
-#: kmheaders.cpp:422
+#: kmheaders.cpp:441
 msgid "Failed to save message(s)."
 msgstr "Malsukcesis sekurigi mesaøo(j)n."
 
-#: kmcomposewin.cpp:127
+#: kmcomposewin.cpp:128
 msgid "KMail Composer"
 msgstr "KMail Mesaøredaktilo"
 
-#: kmcomposewin.cpp:140
+#: kmcomposewin.cpp:141
 msgid "Size"
 msgstr "Grandeco"
 
-#: kmcomposewin.cpp:141
+#: kmcomposewin.cpp:142
 msgid "Encoding"
 msgstr "Kodo"
 
-#: kmcomposewin.cpp:343
+#: kmcomposewin.cpp:344
 msgid "&From:"
 msgstr "&De:"
 
-#: kmcomposewin.cpp:345
+#: kmcomposewin.cpp:346
 msgid "&Reply to:"
 msgstr "&Respondo al:"
 
-#: kmcomposewin.cpp:347
+#: kmcomposewin.cpp:348
 msgid "&To:"
 msgstr "&Al:"
 
-#: kmcomposewin.cpp:349
+#: kmcomposewin.cpp:350
 msgid "&Cc:"
 msgstr "&Kopio"
 
-#: kmcomposewin.cpp:351
+#: kmcomposewin.cpp:352
 msgid "&Bcc:"
 msgstr "Kr&ome al:"
 
-#: kmcomposewin.cpp:353
+#: kmcomposewin.cpp:354
 msgid "&Subject:"
 msgstr "&Temo:"
 
-#: kmcomposewin.cpp:356
+#: kmcomposewin.cpp:357
 msgid "&Newsgroups:"
 msgstr "&Diskutgrupoj:"
 
-#: kmcomposewin.cpp:358
+#: kmcomposewin.cpp:359
 msgid "&Followup-To:"
 msgstr "&Reago al:"
 
-#: kmcomposewin.cpp:430
+#: kmcomposewin.cpp:431
 msgid "&Send"
 msgstr "&Sendu"
 
-#: kmcomposewin.cpp:433
+#: kmcomposewin.cpp:434
 msgid "S&end later"
 msgstr "Sendu p&oste"
 
-#: kmcomposewin.cpp:435
+#: kmcomposewin.cpp:436
 msgid "S&end now"
 msgstr "Sendu &tuj"
 
-#: kmcomposewin.cpp:437
+#: kmcomposewin.cpp:438
 msgid "&Insert File..."
 msgstr "E&nmetu dosieron..."
 
-#: kmcomposewin.cpp:446
+#: kmcomposewin.cpp:447
 msgid "&New Composer..."
 msgstr "Nova &redaktilo"
 
-#: kmcomposewin.cpp:469 kmcomposewin.cpp:693 kmcomposewin.cpp:1836
+#: kmcomposewin.cpp:470 kmcomposewin.cpp:702 kmcomposewin.cpp:1891
 msgid "Mark all"
 msgstr "Elektu æiujn"
 
-#: kmcomposewin.cpp:472 kmcomposewin.cpp:695
+#: kmcomposewin.cpp:473 kmcomposewin.cpp:704
 msgid "Find..."
 msgstr "Trovu..."
 
-#: kmcomposewin.cpp:474 kmcomposewin.cpp:696
+#: kmcomposewin.cpp:475 kmcomposewin.cpp:705
 msgid "Replace..."
 msgstr "Anstataýigu..."
 
-#: kmcomposewin.cpp:477
+#: kmcomposewin.cpp:478
 msgid "&Spellcheck..."
 msgstr "&Ortografia kontrolo"
 
-#: kmcomposewin.cpp:484
+#: kmcomposewin.cpp:485
 msgid "&Urgent"
 msgstr "&Urøe"
 
-#: kmcomposewin.cpp:486
+#: kmcomposewin.cpp:487
 msgid "&Confirm delivery"
 msgstr "Konfirmu &ricevon"
 
-#: kmcomposewin.cpp:488
+#: kmcomposewin.cpp:489
 msgid "&Confirm read"
 msgstr "Konfirmu &legon"
 
-#: kmcomposewin.cpp:491
+#: kmcomposewin.cpp:492
 msgid "&Spellchecker..."
 msgstr "Ortografia kontrolilo..."
 
-#: kmcomposewin.cpp:494
+#: kmcomposewin.cpp:495
 msgid "&Charsets..."
 msgstr "&Signaroj..."
 
-#: kmcomposewin.cpp:507
+#: kmcomposewin.cpp:508
 msgid "&All Fields"
 msgstr "Æ&iuj eroj"
 
-#: kmcomposewin.cpp:509
+#: kmcomposewin.cpp:510
 msgid "&From"
 msgstr "&De"
 
-#: kmcomposewin.cpp:510
+#: kmcomposewin.cpp:511
 msgid "&Reply to"
 msgstr "&Respondo al"
 
-#: kmcomposewin.cpp:511
+#: kmcomposewin.cpp:512
 msgid "&To"
 msgstr "&Al"
 
-#: kmcomposewin.cpp:512
+#: kmcomposewin.cpp:513
 msgid "&Cc"
 msgstr "&Kopio"
 
-#: kmcomposewin.cpp:513
+#: kmcomposewin.cpp:514
 msgid "&Bcc"
 msgstr "K&rome al"
 
-#: kmcomposewin.cpp:514
+#: kmcomposewin.cpp:515
 msgid "&Subject"
 msgstr "&Temo"
 
-#: kmcomposewin.cpp:516
+#: kmcomposewin.cpp:517
 msgid "&Newsgroups"
 msgstr "&Diskutgrupoj"
 
-#: kmcomposewin.cpp:517
+#: kmcomposewin.cpp:518
 msgid "&Followup-To"
 msgstr "&Reago al"
 
-#: kmcomposewin.cpp:523
+#: kmcomposewin.cpp:524
 msgid "Append S&ignature"
 msgstr "&Alpendigu signaturon"
 
-#: kmcomposewin.cpp:525
+#: kmcomposewin.cpp:526
 msgid "&Insert File"
 msgstr "E&nmetu dosieron"
 
-#: kmcomposewin.cpp:527
-msgid "Insert My &Public Key"
-msgstr "Aldonu mian &publikan þlosilon"
-
-#: kmcomposewin.cpp:532
+#: kmcomposewin.cpp:529
 msgid "&Attach..."
 msgstr "&Kunsendu..."
 
-#: kmcomposewin.cpp:535
+#: kmcomposewin.cpp:531
+#, fuzzy
+msgid "Attach &Public Key"
+msgstr "Aldonu mian &publikan þlosilon"
+
+#: kmcomposewin.cpp:533
+#, fuzzy
+msgid "Attach My &Public Key"
+msgstr "Aldonu mian &publikan þlosilon"
+
+#: kmcomposewin.cpp:544
 msgid "&Save..."
 msgstr "&Sekurigu..."
 
-#: kmcomposewin.cpp:536
+#: kmcomposewin.cpp:545
 msgid "Pr&operties..."
 msgstr "&Ecoj..."
 
-#: kmcomposewin.cpp:538
+#: kmcomposewin.cpp:547
 msgid "&Attach"
 msgstr "&Kunsendu"
 
-#: kmcomposewin.cpp:558
+#: kmcomposewin.cpp:567
 msgid "Send message"
 msgstr "Sendu mesaøon"
 
-#: kmcomposewin.cpp:582
+#: kmcomposewin.cpp:591
 msgid "Cut selection"
 msgstr "Eltondu elekton"
 
-#: kmcomposewin.cpp:585
+#: kmcomposewin.cpp:594
 msgid "Copy selection"
 msgstr "Kopiu elekton"
 
-#: kmcomposewin.cpp:588
+#: kmcomposewin.cpp:597
 msgid "Paste clipboard contents"
 msgstr "Enmetu enhavon de interdeponejo"
 
-#: kmcomposewin.cpp:593
+#: kmcomposewin.cpp:602
 msgid "Attach file"
 msgstr "Kunsendu dosieron"
 
-#: kmcomposewin.cpp:604
+#: kmcomposewin.cpp:613
 msgid "sign message"
 msgstr "Signaturu mesaøon"
 
-#: kmcomposewin.cpp:609
+#: kmcomposewin.cpp:618
 msgid "encrypt message"
 msgstr "Æifru mesaøon"
 
-#: kmcomposewin.cpp:626 kmcomposewin.cpp:642
+#: kmcomposewin.cpp:635 kmcomposewin.cpp:651
 msgid "Column"
 msgstr "Kolumno"
 
-#: kmcomposewin.cpp:627 kmcomposewin.cpp:640
+#: kmcomposewin.cpp:636 kmcomposewin.cpp:649
 msgid "Line"
 msgstr "Linio"
 
-#: kmcomposewin.cpp:908
+#: kmcomposewin.cpp:917
 msgid "KMail Confirm"
 msgstr "KMail konfirmo"
 
-#: kmcomposewin.cpp:909
+#: kmcomposewin.cpp:918
 msgid ""
 "Close and discard\n"
 "edited message?"
@@ -956,51 +962,59 @@ msgstr ""
 "Fermi kaj forigi\n"
 "la redaktitan mesaøon?"
 
-#: kmcomposewin.cpp:1182
+#: kmcomposewin.cpp:1191
 msgid "Attach File"
 msgstr "Kunsendu dosieron"
 
-#: kmcomposewin.cpp:1204
+#: kmcomposewin.cpp:1213
 msgid "Include File"
 msgstr "Enmetu dosieron"
 
-#: kmcomposewin.cpp:1239 kmreaderwin.cpp:736
+#: kmcomposewin.cpp:1245
+msgid "my pgp key"
+msgstr ""
+
+#: kmcomposewin.cpp:1273
+msgid "pgp key"
+msgstr ""
+
+#: kmcomposewin.cpp:1294 kmreaderwin.cpp:721
 msgid "View..."
 msgstr "Rigardu..."
 
-#: kmcomposewin.cpp:1240
+#: kmcomposewin.cpp:1295
 msgid "Save..."
 msgstr "Sekurigu..."
 
-#: kmcomposewin.cpp:1241 kmreaderwin.cpp:739
+#: kmcomposewin.cpp:1296 kmreaderwin.cpp:724
 msgid "Properties..."
 msgstr "Ecoj..."
 
-#: kmcomposewin.cpp:1245
+#: kmcomposewin.cpp:1300
 msgid "Attach..."
 msgstr "Kunsendu..."
 
-#: kmcomposewin.cpp:1287 kmreaderwin.cpp:781
+#: kmcomposewin.cpp:1342 kmreaderwin.cpp:766
 msgid "View Attachment: "
 msgstr "Montru kunsenda¼ojn: "
 
-#: kmcomposewin.cpp:1481
+#: kmcomposewin.cpp:1536
 msgid "To:"
 msgstr "Al:"
 
-#: kmcomposewin.cpp:1485
+#: kmcomposewin.cpp:1540
 msgid "Subject:"
 msgstr "Temo:"
 
-#: kmcomposewin.cpp:1488
+#: kmcomposewin.cpp:1543
 msgid "Date:"
 msgstr "Dato:"
 
-#: kmcomposewin.cpp:2018
+#: kmcomposewin.cpp:2073
 msgid "Spellcheck - KMail"
 msgstr "Ortografia kontrolo - KMail"
 
-#: kmcomposewin.cpp:2044
+#: kmcomposewin.cpp:2099
 msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
 msgstr "Eraro dum lanæo de KSpell. Certigu, ke vi øuste agordis ISpell."
@@ -1048,73 +1062,73 @@ msgstr "base 64"
 msgid "quoted printable"
 msgstr "quoted printable"
 
-#: kmreaderwin.cpp:320 kmreaderwin.cpp:333 kmreaderwin.cpp:352
-#: kmreaderwin.cpp:373
+#: kmreaderwin.cpp:305 kmreaderwin.cpp:318 kmreaderwin.cpp:337
+#: kmreaderwin.cpp:358
 msgid "Cc: "
 msgstr "Kopio: "
 
-#: kmreaderwin.cpp:328 kmreaderwin.cpp:347 kmreaderwin.cpp:368
+#: kmreaderwin.cpp:313 kmreaderwin.cpp:332 kmreaderwin.cpp:353
 msgid "From: "
 msgstr "De: "
 
-#: kmreaderwin.cpp:330 kmreaderwin.cpp:349 kmreaderwin.cpp:370
+#: kmreaderwin.cpp:315 kmreaderwin.cpp:334 kmreaderwin.cpp:355
 msgid "To: "
 msgstr "Al: "
 
-#: kmreaderwin.cpp:337 kmreaderwin.cpp:358 kmreaderwin.cpp:383
+#: kmreaderwin.cpp:322 kmreaderwin.cpp:343 kmreaderwin.cpp:368
 msgid "References: "
 msgstr "Referencoj: "
 
-#: kmreaderwin.cpp:354 kmreaderwin.cpp:367
+#: kmreaderwin.cpp:339 kmreaderwin.cpp:352
 msgid "Date: "
 msgstr "Dato: "
 
-#: kmreaderwin.cpp:376
+#: kmreaderwin.cpp:361
 msgid "Bcc: "
 msgstr "Krome al: "
 
-#: kmreaderwin.cpp:379
+#: kmreaderwin.cpp:364
 msgid "Reply to: "
 msgstr "Respondo al:"
 
-#: kmreaderwin.cpp:386
+#: kmreaderwin.cpp:371
 msgid "Groups: "
 msgstr "Grupoj: "
 
-#: kmreaderwin.cpp:424
+#: kmreaderwin.cpp:409
 msgid "Encrypted message"
 msgstr "Æifrita mesaøo"
 
-#: kmreaderwin.cpp:430
+#: kmreaderwin.cpp:415
 msgid "Cannot decrypt message:"
 msgstr "Ne eblas malæifri mesaøon:"
 
-#: kmreaderwin.cpp:439
+#: kmreaderwin.cpp:424
 msgid "Message was signed by"
 msgstr "Mesaøo signaturita de"
 
-#: kmreaderwin.cpp:440
+#: kmreaderwin.cpp:425
 msgid "Warning: Bad signature from"
 msgstr "Averto: Malbona signaturo de"
 
-#: kmreaderwin.cpp:450
+#: kmreaderwin.cpp:435
 msgid "unknown key ID"
 msgstr "nekonata þlosil-identigilo"
 
-#: kmreaderwin.cpp:700
+#: kmreaderwin.cpp:685
 msgid "Attachment: "
 msgstr "Kunsenda¼o: "
 
-#: kmreaderwin.cpp:812
+#: kmreaderwin.cpp:797
 msgid "Could not create temporary file"
 msgstr "Ne eblis krei provizoran dosieron"
 
-#: kmreaderwin.cpp:833
+#: kmreaderwin.cpp:818
 #, c-format
 msgid "Could not save temporary file %s"
 msgstr "Ne eblis sekurigi provizoran dosieron %s"
 
-#: kmreaderwin.cpp:862
+#: kmreaderwin.cpp:847
 msgid "Could not save file"
 msgstr "Ne eblis sekurigi dosieron"
 
@@ -1128,19 +1142,19 @@ msgstr ""
 "\"Reto\" de la agorda¼o por ricevi\n"
 "retpoþton."
 
-#: main.cpp:103 main.cpp:226
+#: main.cpp:104 main.cpp:227
 msgid "warning"
 msgstr "averto"
 
-#: main.cpp:110 main.cpp:111
+#: main.cpp:111 main.cpp:112
 msgid "fatal error"
 msgstr "grava eraro"
 
-#: main.cpp:161
+#: main.cpp:162
 msgid "KMail notification"
 msgstr "KMAil-sciigo"
 
-#: main.cpp:162
+#: main.cpp:163
 msgid ""
 "$HOME is not set!\n"
 "KMail cannot start without it.\n"
@@ -1148,7 +1162,7 @@ msgstr ""
 "$HOME ne estas difinita!\n"
 "KMail ne povas ruli sen øi.\n"
 
-#: main.cpp:228
+#: main.cpp:229
 msgid ""
 "The directory ~/KMail exists. From now on, KMail uses the\n"
 "directory ~/Mail for it's messages.\n"
@@ -1166,11 +1180,11 @@ msgstr ""
 "\n"
 "Æu KMail movu la mesaødosierujoj nun?"
 
-#: main.cpp:333
+#: main.cpp:334
 msgid "Loading addressbook failed"
 msgstr "Legado de la adresaro malsukcesis"
 
-#: main.cpp:403
+#: main.cpp:404
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr "Nekonata komandlinia opcio: %s"
@@ -1578,15 +1592,24 @@ msgstr ""
 msgid "PGP Security Check"
 msgstr "PGP-sekurec-kontrolo"
 
-#: kpgp.cpp:771
+#: kpgp.cpp:769
+msgid "Please select the public key to insert"
+msgstr ""
+
+#: kpgp.cpp:800
+#, fuzzy
+msgid "Select key"
+msgstr "Elektu dosierujon"
+
+#: kpgp.cpp:827
 msgid "PGP User Identity:"
 msgstr "PGPa uzanto-identeco"
 
-#: kpgp.cpp:782
+#: kpgp.cpp:838
 msgid "Store passphrase"
 msgstr "Sekurigu la pasfrazon"
 
-#: kpgp.cpp:788
+#: kpgp.cpp:844
 msgid "Always encrypt to self"
 msgstr "Æiam æifru la propran kopion"
 

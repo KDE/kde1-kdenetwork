@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kfinger\n"
-"POT-Creation-Date: 1998-10-12 14:17+0200\n"
+"POT-Creation-Date: 1998-12-19 02:18+0100\n"
 "PO-Revision-Date: 1998-12-08 18:00+0100\n"
 "Last-Translator: Wolfram Diestel <diestel@rzaix340.rz-uni-leipzig.de>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
@@ -14,69 +14,78 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-3\n"
 "Content-Transfer-Encoding: 8-bit\n"
 
-#: kfinger.C:8 kfinger.C:34
-msgid "KDE finger utility"
-msgstr "KDE-fingro-utila¼o"
-
-#: kfinger.C:14
-msgid "Finger Now"
+#: kfinger.C:30
+#, fuzzy
+msgid "F&inger Now"
 msgstr "Fingru nun"
 
-#: kfinger.C:15
-msgid "Talk.."
-msgstr "Parolu.."
+#: kfinger.C:31
+#, fuzzy
+msgid "&Talk..."
+msgstr "Parolu..."
 
-#: kfinger.C:18
+#: kfinger.C:35
 msgid "Setup"
 msgstr "Agordu"
 
-#: kfinger.C:19
-msgid "Save Options"
+#: kfinger.C:36
+#, fuzzy
+msgid "&Save Options"
 msgstr "Sekurigu opciojn"
 
 #: kfinger.C:38
+#, fuzzy
+msgid ""
+"kfinger 0.8.0\n"
+"\n"
+"(c) Andrea Rizzi (rizzi@kde.org)"
+msgstr ""
+"Kfinger 0.7.0\n"
+"(c) æe Andrea Rizzi\n"
+"rizzi@kde.org"
+
+#: kfinger.C:47
+msgid "KDE finger utility"
+msgstr "KDE-fingro-utila¼o"
+
+#: kfinger.C:50
 msgid "Finger"
 msgstr "Fingru"
 
-#: kfinger.C:39
+#: kfinger.C:51
 msgid "Stop current finger"
 msgstr "Haltigu fingradon"
 
-#: kfinger.C:41
+#: kfinger.C:53
 msgid "Talk..."
 msgstr "Parolu..."
 
-#: kfinger.C:42
+#: kfinger.C:54
 msgid "AutoFinger On/Off"
 msgstr "Aýtomata fingrado jes/ne"
 
-#: kfinger.C:54
-msgid ""
-"Welcome to KDE Finger \n"
-"program by A.Rizzi rizzi@kde.org\n"
-"18/09/1997 \n"
+#: kfinger.C:66
+msgid "Welcome to KDE Finger\n"
 msgstr ""
-"Bonvenon æe KDE-Fingro\n"
-"programo de A.Rizzi rizzi@kde.org\n"
-"18/09/1997 \n"
 
-#: kfinger.C:55
+#: kfinger.C:67
 msgid "Finger result"
 msgstr "Fingrorezulto"
 
-#: kfinger.C:266
+#: kfinger.C:269
 #, c-format
 msgid "Error on server : %s"
 msgstr "Eraro æe servilo: %s"
 
-#: kfinger.C:285
+#: kfinger.C:288
 #, c-format
-msgid "Finger result for : %s@%s"
-msgstr "Fingrorezulto por: %s@%s"
+msgid "Finger  %s@%s   --   %s"
+msgstr ""
 
-#: kfinger.C:301
+#: kfinger.C:305
+#, fuzzy
 msgid ""
-"Kfinger 0.7.0\n"
+"Kfinger 0.8.0\n"
 "(c) by Andrea Rizzi\n"
 "rizzi@kde.org"
 msgstr ""
@@ -84,123 +93,138 @@ msgstr ""
 "(c) æe Andrea Rizzi\n"
 "rizzi@kde.org"
 
-#: kfinger.C:345
+#: kfinger.C:351
 msgid "Kfinger Setup"
 msgstr "Kfinger-agorda¼o"
 
-#: kfinger.C:373 kfinger.C:413
+#: kfinger.C:379 kfinger.C:419
 msgid "&Add"
 msgstr "&Aldonu"
 
-#: kfinger.C:383
+#: kfinger.C:389
 msgid "Server Name"
 msgstr "Servilnomo"
 
-#: kfinger.C:387 kfinger.C:390
+#: kfinger.C:393 kfinger.C:396
 msgid "Server list"
 msgstr "Servillisto"
 
-#: kfinger.C:423
+#: kfinger.C:429
 msgid "User Name"
 msgstr "Uzantonomo"
 
-#: kfinger.C:427 kfinger.C:430
+#: kfinger.C:433 kfinger.C:436
 msgid "Users list"
 msgstr "Uzantolisto"
 
-#: kfinger.C:444
+#: kfinger.C:450
 msgid "Timed finger"
 msgstr "Prokrastita fingro"
 
-#: kfinger.C:459 kfinger.C:644
+#: kfinger.C:465 kfinger.C:652
 #, c-format
 msgid "Finger wait: %d\""
 msgstr "Fingro atendas: %d"
 
-#: kfinger.C:464
+#: kfinger.C:470
 msgid "Talk Command "
 msgstr "\"Talk\"-komando"
 
-#: kfinger.C:474
+#: kfinger.C:480
 msgid "Misc"
 msgstr "Div."
 
-#: kfinger.C:479 kfinger.C:491
+#: kfinger.C:485 kfinger.C:497
 msgid "Finger Output"
 msgstr "Fingro-eligo"
 
-#: kfinger.C:483
+#: kfinger.C:489
 msgid "Finger server"
 msgstr "Fingroservilo"
 
-#: kfinger.C:487 kfinger.C:499
+#: kfinger.C:493 kfinger.C:505
 msgid "Fixed"
 msgstr "Fiksa"
 
-#: kfinger.C:495
+#: kfinger.C:501
 msgid "Finger User"
 msgstr "Fingrouzanto"
 
-#: kfinger.C:515
+#: kfinger.C:521
 msgid "Lines to skip :"
 msgstr "Linio ignorendaj:"
 
-#: kfinger.C:523 kfinger.C:528
+#: kfinger.C:529 kfinger.C:534
 msgid "Format..."
 msgstr "Formo..."
 
-#: kfinger.C:535
+#: kfinger.C:541
 msgid "User"
 msgstr "Uzanto"
 
-#: kfinger.C:546
+#: kfinger.C:552
 msgid "Server"
 msgstr "Servilo"
 
-#: kfinger.C:558
+#: kfinger.C:564
 msgid "Talk"
 msgstr "Parolu"
 
-#: kfinger.C:691
+#: kfinger.C:699
 msgid "Talk with..."
 msgstr "Parolu kun..."
 
-#: kfinger.C:758
+#: kfinger.C:766
 msgid "Format string for var1(string)"
 msgstr "Formæeno por var1(string)"
 
-#: kfinger.C:764
+#: kfinger.C:772
 msgid "Fromat string for var2(int)"
 msgstr "Formæeno por var2(string)"
 
-#: kfinger.C:784 kfinger.C:790
+#: kfinger.C:792 kfinger.C:798
 msgid "Offset"
 msgstr "Deþovo"
 
-#: kfinger.C:803
+#: kfinger.C:811
 msgid "Only var1"
 msgstr "Nur var1"
 
-#: kfinger.C:809
+#: kfinger.C:817
 msgid "Only var2"
 msgstr "Nur var2"
 
-#: kfinger.C:815
+#: kfinger.C:823
 msgid "var1, var2"
 msgstr "var1, var2"
 
-#: kfinger.C:821
+#: kfinger.C:829
 msgid "var2, var1"
 msgstr "var2, var1"
 
-#: kfinger.C:834
+#: kfinger.C:842
 msgid "Output format string"
 msgstr "Eligu formæenon"
 
-#: kfinger.C:841
+#: kfinger.C:849
 msgid "Save & Quit"
 msgstr "Sekurigu kaj Finu"
 
-#: kfinger.C:851
+#: kfinger.C:859
 msgid "Output parameters "
 msgstr "Eligu parametrojn"
+
+#~ msgid "Talk.."
+#~ msgstr "Parolu.."
+
+#~ msgid ""
+#~ "Welcome to KDE Finger \n"
+#~ "program by A.Rizzi rizzi@kde.org\n"
+#~ "18/09/1997 \n"
+#~ msgstr ""
+#~ "Bonvenon æe KDE-Fingro\n"
+#~ "programo de A.Rizzi rizzi@kde.org\n"
+#~ "18/09/1997 \n"
+
+#~ msgid "Finger result for : %s@%s"
+#~ msgstr "Fingrorezulto por: %s@%s"

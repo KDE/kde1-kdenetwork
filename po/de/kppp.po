@@ -1,28 +1,28 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1998-12-21 02:10+0100\n"
+"POT-Creation-Date: 1998-12-22 02:11+0100\n"
 "PO-Revision-Date: 1998-11-21 15:12+0100\n"
 "Last-Translator: Thomas Diehl <th_diehl@csi.com>\n"
 "Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
 
-#: accounts.cpp:49
+#: accounts.cpp:45
 msgid "Account Setup"
 msgstr "Zugangseinstellungen"
 
-#: accounts.cpp:68
+#: accounts.cpp:64
 msgid "Edit..."
 msgstr "Bearbeiten..."
 
-#: accounts.cpp:70
+#: accounts.cpp:66
 msgid "Allows you to modify the selected account"
 msgstr "Erlaubt, den ausgewählten Account zu bearbeiten"
 
-#: accounts.cpp:80
+#: accounts.cpp:75
 msgid "New..."
 msgstr "Neu..."
 
-#: accounts.cpp:84
+#: accounts.cpp:79
 msgid ""
 "Create a new dialup connection\n"
 "to the internet"
@@ -30,7 +30,7 @@ msgstr ""
 "Erstelle eine neue Dialup-Verbindung\n"
 "zum Internet"
 
-#: accounts.cpp:92
+#: accounts.cpp:87
 msgid ""
 "Makes a copy of the selected account. All\n"
 "settings of the selected account are copied\n"
@@ -42,7 +42,7 @@ msgstr ""
 "mitkopiert. Sie können dann bearbeitet werden,\n"
 "um sie den jeweiligen Bedürnissen anzupassen."
 
-#: accounts.cpp:102
+#: accounts.cpp:97
 msgid ""
 "Deletes the selected account\n"
 "\n"
@@ -52,11 +52,11 @@ msgstr ""
 "\n"
 "<red><b>Vorsichtig benutzen!"
 
-#: accounts.cpp:111
+#: accounts.cpp:106
 msgid "Phone Costs:"
 msgstr "Telefonkosten:"
 
-#: accounts.cpp:123
+#: accounts.cpp:118
 msgid ""
 "This shows the accumulated phone costs\n"
 "for the selected account.\n"
@@ -72,11 +72,11 @@ msgstr ""
 "haben - denken Sie daran, dies ist <b>NICHT</b> die Summe\n"
 "der Kosten für Ihre sämtlichen Accounts!"
 
-#: accounts.cpp:130 conwindow.cpp:54
+#: accounts.cpp:125 conwindow.cpp:54
 msgid "Volume:"
 msgstr "Volumen:"
 
-#: accounts.cpp:141
+#: accounts.cpp:136
 msgid ""
 "This shows the number of bytes transferred\n"
 "for the selected account (not for all of your\n"
@@ -92,19 +92,19 @@ msgstr ""
 "\n"
 "<link #volaccounting>Mehr zum Thema Volumen-Abrechnung</link>"
 
-#: accounts.cpp:153
+#: accounts.cpp:148
 msgid "Reset Costs"
 msgstr "Kosten zurücksetzen"
 
-#: accounts.cpp:159
+#: accounts.cpp:154
 msgid "View Logs"
 msgstr "Logdateien ansehen"
 
-#: accounts.cpp:224
+#: accounts.cpp:219
 msgid "Reset Total"
 msgstr "Alle zurücksetzen"
 
-#: accounts.cpp:225
+#: accounts.cpp:220
 msgid ""
 "Are you sure you want to reset the accumulated\n"
 "telephone costs for the selected account to zero?"
@@ -112,15 +112,15 @@ msgstr ""
 "Sind Sie sicher, daß Sie die aufgelaufenen\n"
 "Telefonkosten für den gewählten Zugang zurücksetzen möchten?"
 
-#: accounts.cpp:254 accounts.cpp:275
+#: accounts.cpp:249 accounts.cpp:270
 msgid "Maximum number of accounts reached."
 msgstr "Maximale Anzahl von Zugängen erreicht."
 
-#: accounts.cpp:281
+#: accounts.cpp:276
 msgid "No account selected."
 msgstr "Kein Zugang ausgewählt"
 
-#: accounts.cpp:296
+#: accounts.cpp:291
 #, c-format
 msgid ""
 "Are you sure you want to delete\n"
@@ -129,43 +129,43 @@ msgstr ""
 "Sind Sie sicher, daß Sie den\n"
 "Zugang \"%s\" löschen möchten?"
 
-#: accounts.cpp:301
+#: accounts.cpp:296
 msgid "Confirm"
 msgstr "Bestätigen"
 
-#: accounts.cpp:322
+#: accounts.cpp:317
 msgid "New Account"
 msgstr "Neuer Zugang"
 
-#: accounts.cpp:325
+#: accounts.cpp:320
 msgid "Edit Account: "
 msgstr "Zugang bearbeiten: "
 
-#: accounts.cpp:347
+#: accounts.cpp:338
 msgid "Dial"
 msgstr "Wählen"
 
-#: accounts.cpp:348
+#: accounts.cpp:339
 msgid "IP"
 msgstr "IP"
 
-#: accounts.cpp:349
+#: accounts.cpp:340
 msgid "DNS"
 msgstr "DNS"
 
-#: accounts.cpp:350
+#: accounts.cpp:341
 msgid "Gateway"
 msgstr "Gateway"
 
-#: accounts.cpp:351
+#: accounts.cpp:342
 msgid "Login Script"
 msgstr "Login-Skript"
 
-#: accounts.cpp:352
+#: accounts.cpp:343
 msgid "Accounting"
 msgstr "Abrechnung"
 
-#: accounts.cpp:371
+#: accounts.cpp:362
 msgid ""
 "You must enter an unique\n"
 "account name"
@@ -173,7 +173,7 @@ msgstr ""
 "Sie müssen einen eindeutigen\n"
 "Zugangsnamen angeben"
 
-#: accounts.cpp:376
+#: accounts.cpp:367
 msgid "Login script has unbalanced loop Start/End"
 msgstr "In einer Schleife des Login-Skripts fehlt Anfang oder Ende"
 
@@ -422,7 +422,7 @@ msgstr "Terminal-basiert"
 msgid "CHAP"
 msgstr "CHAP"
 
-#: edit.cpp:90
+#: edit.cpp:88
 msgid ""
 "Specifies the method used to identify yourself to\n"
 "the PPP server. Most universities still use\n"
@@ -442,11 +442,11 @@ msgstr ""
 "Wenn Sie die Wahl zwischen PAP und CHAP haben,\n"
 "dann wählen Sie CHAP wegen der weit größeren Sicherheit."
 
-#: edit.cpp:99
+#: edit.cpp:97
 msgid "Store password"
 msgstr "Speichere Paßwort"
 
-#: edit.cpp:103
+#: edit.cpp:101
 msgid ""
 "When this is turned on, your ISP password\n"
 "will be saved in <i>kppp</i>'s config file, so\n"
@@ -466,7 +466,7 @@ msgstr ""
 "Sie lesbar ist. Stellen Sie sicher, daß niemand Zugang zu\n"
 "dieser Datei erhält!"
 
-#: edit.cpp:112
+#: edit.cpp:110
 msgid ""
 "Execute program\n"
 "upon connect:"
@@ -474,7 +474,7 @@ msgstr ""
 "Führe bei Verbindung\n"
 "Programm aus:"
 
-#: edit.cpp:123
+#: edit.cpp:121
 msgid ""
 "Allows you to run a program <b>after</b> a connection\n"
 "is established. When your program is called, all\n"
@@ -490,7 +490,7 @@ msgstr ""
 "\n"
 "Sehr nützlich, um Mail und News abzuholen."
 
-#: edit.cpp:131
+#: edit.cpp:129
 msgid ""
 "Execute program\n"
 "before disconnect:"
@@ -498,7 +498,7 @@ msgstr ""
 "Führe vor Trennung\n"
 "Programm aus:"
 
-#: edit.cpp:143
+#: edit.cpp:141
 msgid ""
 "Allows you to run a program <b>before</b> a connection\n"
 "is closed. The connection will stay open until\n"
@@ -508,7 +508,7 @@ msgstr ""
 "die Verbindung getrennt wird. Die Verbindung bleibt bestehen,\n"
 "bis das Programm beendet wird."
 
-#: edit.cpp:147
+#: edit.cpp:145
 msgid ""
 "Execute program\n"
 "upon disconnect:"
@@ -516,7 +516,7 @@ msgstr ""
 "Führe nach Trennung\n"
 "Programm aus:"
 
-#: edit.cpp:159
+#: edit.cpp:157
 msgid ""
 "Allows you to run a program <b>after</b> a connection\n"
 "has been closed."
@@ -524,23 +524,23 @@ msgstr ""
 "Erlaubt Ihnen, ein Programm zu starten, <b>nachdem</b>\n"
 "die Verbindung getrennt wurde."
 
-#: edit.cpp:163
+#: edit.cpp:161
 msgid "Edit pppd arguments:"
 msgstr "Bearbeite pppd-Argumente:"
 
-#: edit.cpp:168
+#: edit.cpp:166
 msgid "Arguments"
 msgstr "Argumente"
 
-#: edit.cpp:236
+#: edit.cpp:223
 msgid "IP Setup"
 msgstr "IP-Einrichtung"
 
-#: edit.cpp:242
+#: edit.cpp:229
 msgid "IP Address:"
 msgstr "IP-Adresse:"
 
-#: edit.cpp:245
+#: edit.cpp:232
 msgid ""
 "If your computer has a permanent internet\n"
 "address, you must supply your IP address here"
@@ -548,11 +548,11 @@ msgstr ""
 "Wenn Ihr Rechner eine statische Internet-Adresse\n"
 "besitzt, dann müssen Sie die IP-Adresse hier eintragen"
 
-#: edit.cpp:250
+#: edit.cpp:237
 msgid "Subnet Mask:"
 msgstr "Subnetz-Maske"
 
-#: edit.cpp:253
+#: edit.cpp:240
 msgid ""
 "If your computer has a static Internet address,\n"
 "you must supply a network mask here. In almost\n"
@@ -568,11 +568,11 @@ msgstr ""
 "\n"
 "Im Zweifel fragen Sie Ihren Internet Service Provider."
 
-#: edit.cpp:267
+#: edit.cpp:254
 msgid "Dynamic IP Address"
 msgstr "Dynamische IP-Adresse"
 
-#: edit.cpp:269
+#: edit.cpp:256
 msgid ""
 "Select this option when your computer gets an\n"
 "internet address (IP) everytime a\n"
@@ -588,11 +588,11 @@ msgstr ""
 "Fast jeder Internet Service Provider benutzt\n"
 "diese Methode; daher sollte es eingeschaltet sein."
 
-#: edit.cpp:277
+#: edit.cpp:264
 msgid "Static IP Address"
 msgstr "Statische IP-Adresse"
 
-#: edit.cpp:281
+#: edit.cpp:268
 msgid ""
 "Select this option when your computer has a\n"
 "fixed internet address (IP). Most computers\n"
@@ -606,11 +606,11 @@ msgstr ""
 "dynamische IP-Adressierung wählen sollten, wenn Sie\n"
 "nicht genau wissen, was Sie tun"
 
-#: edit.cpp:287
+#: edit.cpp:274
 msgid "Auto-configure hostname from this IP"
 msgstr "Konfiguriere Hostnamen automatisch von dieser IP"
 
-#: edit.cpp:292
+#: edit.cpp:279
 msgid ""
 "Whenever you connect, this reconfigures\n"
 "your hostname to match the IP address you\n"
@@ -630,15 +630,15 @@ msgstr ""
 "\n"
 "Aktivieren Sie die Option nicht, wenn sie nicht unbedingt gebraucht wird."
 
-#: edit.cpp:409
+#: edit.cpp:396
 msgid "DNS Servers"
 msgstr "DNS Server"
 
-#: edit.cpp:424
+#: edit.cpp:411
 msgid "Domain Name:"
 msgstr "Domain-Name:"
 
-#: edit.cpp:435
+#: edit.cpp:422
 msgid ""
 "If you enter a domain name here, this domain\n"
 "name is used for your computer while you are\n"
@@ -658,11 +658,11 @@ msgstr ""
 "Wenn Sie das Feld leer lassen, wird der Domain-Name\n"
 "nicht geändert."
 
-#: edit.cpp:444
+#: edit.cpp:431
 msgid "DNS IP Address:"
 msgstr "DNS IP-Adresse:"
 
-#: edit.cpp:459
+#: edit.cpp:446
 msgid ""
 "Allows you to specify a new DNS server to be\n"
 "used while you are connected. When the\n"
@@ -679,7 +679,7 @@ msgstr ""
 "Um einen DNS-Server hinzuzufügen, tippen Sie die IP-Adresse\n"
 "des DNS-Servers hier ein und klicken Sie auf <b>Hinzufügen</b>"
 
-#: edit.cpp:478
+#: edit.cpp:465
 msgid ""
 "Click this button to add the DNS server\n"
 "specified in the field above. The entry\n"
@@ -689,7 +689,7 @@ msgstr ""
 "im Feld darüber hinzuzufügen. Der Eintrag wird\n"
 "dann zu der Liste unten hinzugefügt."
 
-#: edit.cpp:490
+#: edit.cpp:477
 msgid ""
 "Click this button to remove the selected DNS\n"
 "server entry from the list below"
@@ -697,11 +697,11 @@ msgstr ""
 "Klicken Sie auf diesen Knopf, um den ausgewählten\n"
 "DNS-Server von der Liste unten zu entfernen."
 
-#: edit.cpp:493
+#: edit.cpp:480
 msgid "DNS Address List:"
 msgstr "DNS-Adreßliste:"
 
-#: edit.cpp:504
+#: edit.cpp:491
 msgid ""
 "This shows all defined DNS servers to use\n"
 "while you are connected. Use the <b>Add</b> and\n"
@@ -711,11 +711,11 @@ msgstr ""
 "Verbindung verwendet werden sollen. Benutzen Sie\n"
 "<b>Hinzufügen</b> und <b>Entfernen</b>, um die Liste zu ändern."
 
-#: edit.cpp:509
+#: edit.cpp:496
 msgid "Disable existing DNS Servers during Connection"
 msgstr "Schalte während Verbindung existierende DNS-Server aus"
 
-#: edit.cpp:516
+#: edit.cpp:503
 msgid ""
 "When this option is selected, all DNS\n"
 "servers specified in <i>/etc/resolv.conf</i> are\n"
@@ -737,15 +737,15 @@ msgstr ""
 "zu benutzen. Aber sie könnte unter manchen Umständen\n"
 "nützlich werden."
 
-#: edit.cpp:585
+#: edit.cpp:572
 msgid "Gateway Setup"
 msgstr "Gateway Einstellungen"
 
-#: edit.cpp:594
+#: edit.cpp:581
 msgid "Default Gateway"
 msgstr "Standard-Gateway"
 
-#: edit.cpp:597
+#: edit.cpp:584
 msgid ""
 "This makes the PPP peer computer (the computer\n"
 "you are connected to with your modem) to act as\n"
@@ -764,11 +764,11 @@ msgstr ""
 "Dies ist die Grundeinstellung für die meisten Service-Provider.\n"
 "Sie sollten die Option daher wahrscheinlich aktiviert lassen."
 
-#: edit.cpp:608
+#: edit.cpp:595
 msgid "Static Gateway"
 msgstr "Fester Gateway-Rechner"
 
-#: edit.cpp:611
+#: edit.cpp:598
 msgid ""
 "Allows you to specify which computer you want\n"
 "to use as gateway (see <i>Default Gateway</i> above"
@@ -776,7 +776,7 @@ msgstr ""
 "Erlaubt Ihnen die Angabe, welchen Rechner Sie als Gateway\n"
 "benutzen möchten (siehe oben, <i>Grundeinstellung für Gateway</i>)"
 
-#: edit.cpp:616
+#: edit.cpp:603
 msgid ""
 "Gateway\n"
 "IP Address:"
@@ -784,11 +784,11 @@ msgstr ""
 "Gateway\n"
 "IP-Adresse:"
 
-#: edit.cpp:618
+#: edit.cpp:605
 msgid "Assign the Default Route to this Gateway"
 msgstr "Setze die Standardroute auf diesen Gateway"
 
-#: edit.cpp:621
+#: edit.cpp:608
 msgid ""
 "If this option is enabled, all packets not\n"
 "going to the local net are routed through\n"
@@ -802,7 +802,7 @@ msgstr ""
 "\n"
 "Normalerweise sollten Sie das einschalten."
 
-#: edit.cpp:716
+#: edit.cpp:703
 msgid "Edit Script"
 msgstr "Bearbeite Skript"
 
