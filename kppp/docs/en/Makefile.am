@@ -11,8 +11,8 @@ pkgdir = $(kde_htmldir)/en/kppp
 EXTRA_DIST = $(pkg_DATA)
 
 install-data-local:
-	ln -sf $(kde_htmldir)/en/kppp/kppp.html \
-	       $(kde_htmldir)/en/kppp/index.html
+	rm -f $(pkgdir)/index.html
+	$(LN_S) kppp.html $(pkgdir)/index.html
 
 docs: kppp.sgml
 	ksgml2html kppp.sgml
