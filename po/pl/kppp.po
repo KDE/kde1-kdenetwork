@@ -5,8 +5,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kppp \n"
 "POT-Creation-Date: 1999-04-11 03:17+0200\n"
-"PO-Revision-Date: 1999-01-24 15:45+0100\n"
+"PO-Revision-Date: 1999-04-13 22:08+0200\n"
 "Last-Translator: Jacek Stolarczyk <jacek@mer.chemia.polsl.gliwice.pl>\n"
+"Language-Team: Polish <pl@li.org>\n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-2\n"
 
 #: accounts.cpp:45
@@ -1426,17 +1428,16 @@ msgstr ""
 "Dalsze wykonanie programu jest bezcelowe, dlatego kppp zostanie zamkniêty."
 
 #: main.cpp:950 runtests.cpp:400
-#, fuzzy
 msgid ""
 "Cannot find the PPP daemon!\n"
 "\n"
 "Make sure that pppd is installed and\n"
 "you have entered the correct path."
 msgstr ""
-"Nie mo¿na odnale¼æ demona pppd!\n"
+"Nie mo¿na odnale¼æ demona PPP!\n"
 "\n"
-"upewnij siê, ¿e pppd jest zainstalowy\n"
-"oraz czy wpisa³e¶ w³a¶ciw± ¶cie¿kê.\n"
+"Upewnij siê, ¿e pppd jest zainstalowany\n"
+"oraz czy wpisa³e¶ w³a¶ciw± ¶cie¿kê."
 
 #: main.cpp:959
 #, c-format

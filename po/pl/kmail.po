@@ -5,8 +5,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmail \n"
 "POT-Creation-Date: 1999-04-13 02:48+0200\n"
-"PO-Revision-Date: 1999-01-31 06:23+0100\n"
+"PO-Revision-Date: 1999-04-13 22:04+0200\n"
 "Last-Translator: Jacek Stolarczyk <jacek@mer.chemia.polsl.gliwice.pl>\n"
+"Language-Team: Polish <pl@li.org>\n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso8859-2\n"
 
 #: kmcomposewin.cpp:1516 kmmainwin.cpp:371 kpgp.cpp:546
@@ -617,7 +619,7 @@ msgstr "Serwer:"
 
 #: kmsettings.cpp:914
 msgid "Store POP password in config file"
-msgstr ""
+msgstr "Zapisz has³o POP w pliku konfiguracyjnym"
 
 #: kmsettings.cpp:919
 msgid "Delete mail from server"
@@ -1118,6 +1120,9 @@ msgid ""
 "Mail checking aborted\n"
 "Check your account settings!"
 msgstr ""
+"Dla konta %s nie ma zdefiniowanej skrzynki!\n"
+"Sprawdzanie poczty zosta³o przerwane.\n"
+"Sprawd¼ ustawienia konta!"
 
 #: kmacctmgr.cpp:207 kmacctmgr.cpp:264
 msgid ""
