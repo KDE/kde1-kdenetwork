@@ -16,7 +16,7 @@ BUILD_DEPENDS=	moc:${PORTSDIR}/x11/qt \
 INSTALL_ROOT?=	${.CURDIR}/${PKGNAME}
 LIB_DEPENDS=	qt\\.1\\.3[0-9]:${PORTSDIR}/x11/qt \
 		gif\\.[23]\\.:${PORTSDIR}/graphics/giflib \
-		jpeg\\.8\\.:${PORTSDIR}/graphics/jpeg \
+		jpeg\\.9\\.:${PORTSDIR}/graphics/jpeg \
 		uu\\.1\\.:${PORTSDIR}/converters/uulib \
 		kdecore\\.0\\.9[1-9]:${PORTSDIR}/x11/kdelibs \
 		kdeui\\.0\\.9[1-9]:${PORTSDIR}/x11/kdelibs \
@@ -24,7 +24,8 @@ LIB_DEPENDS=	qt\\.1\\.3[0-9]:${PORTSDIR}/x11/qt \
 		khtmlw\\.0\\.9[1-9]:${PORTSDIR}/x11/kdelibs \
 		kfm\\.0\\.9[0-9]:${PORTSDIR}/x11/kdelibs \
 		mediatool\\.0\\.9[1-9]:${PORTSDIR}/x11/kdelibs \
-		mimelib\\.1\\.9[0-9]:${PORTSDIR}/converters/kdesupport \
+		mimelib\\.1\\.[0-9]:${PORTSDIR}/converters/kdesupport \
+		gdbm\\.1\\\.7\\.:${PORTSDIR}/databases/gdbm
 NO_MTREE=	yup
 USE_GMAKE=	"without a doubt"
 NO_WRKDIR=	"Cause, you've obviously got the source in the parent directory"
