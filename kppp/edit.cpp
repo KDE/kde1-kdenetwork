@@ -594,11 +594,15 @@ void ScriptWidget::insertButton() {
 
 
 void ScriptWidget::removeButton() {
-  int i = sl->currentItem();
-  if(i < 0)
+
+ int stlc;
+
+  if(sl->currentItem() < 0)
     return;
 
-  sl->removeItem(i);
-  stl->removeItem(i);
+  stlc = stl->currentItem();
+  sl->removeItem(sl->currentItem());
+  stl->removeItem(stlc);
   adjustScrollBar();
+
 }
