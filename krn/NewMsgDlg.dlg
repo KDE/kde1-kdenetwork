@@ -1,0 +1,71 @@
+DlgEdit:v1.2:Dialog:
+Dialog {
+	ClassHeader {NewMsgDlg.h}
+	ClassSource {NewMsgDlg.cpp}
+	ClassName {NewMsgDlg}
+	DataHeader {NewMsgDlgData.h}
+	DataSource {NewMsgDlgData.cpp}
+	DataName {NewMsgDlgData}
+	WindowBaseClass {QDialog}
+	IsModal {TRUE}
+	WindowCaption {Add new message part}
+}
+WidgetLayout {
+		Rect {5 102 390 300}
+		Grid {10}
+
+ListBox {
+		DragSelect {TRUE}
+		AutoScroll {TRUE}
+		ScrollBar {FALSE}
+		AutoScrollBar {TRUE}
+		BottomScrollBar {FALSE}
+		AutoBottomScrollBar {TRUE}
+		SmoothScrolling {TRUE}
+		Style {51}
+		LineWidth {2}
+		Rect {10 40 260 250}
+		Name {ListBox_1}
+		Variable {typeList}
+		Signal {[Protected]  selected --> medit  (int)}
+}
+PushButton {
+		ToggleButton {FALSE}
+		Default {FALSE}
+		AutoDefault {FALSE}
+		Text {Edit}
+		AutoRepeat {FALSE}
+		AutoResize {FALSE}
+		Rect {280 40 100 30}
+		Name {EditButton}
+		Signal {[Protected]  clicked --> medit  ()}
+}
+PushButton {
+		ToggleButton {FALSE}
+		Default {FALSE}
+		AutoDefault {FALSE}
+		Text {Cancel}
+		AutoRepeat {FALSE}
+		AutoResize {FALSE}
+		Rect {280 260 100 30}
+		Name {CancelButton}
+		Signal {[Protected]  clicked --> cancel  ()}
+}
+Label {
+		Text {Editable types}
+		AutoResize {FALSE}
+		Margin {-1}
+		Rect {10 10 260 30}
+		Name {Label_1}
+}
+PushButton {
+		ToggleButton {FALSE}
+		Default {FALSE}
+		AutoDefault {FALSE}
+		Text {Read file}
+		AutoRepeat {FALSE}
+		AutoResize {FALSE}
+		Rect {280 80 100 30}
+		Name {PushButton_3}
+		Signal {[Protected]  clicked --> read  ()}
+}}

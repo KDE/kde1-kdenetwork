@@ -20,6 +20,7 @@ public:
     void load(char *filenames);
     void showWindow();
     static const char* decodeString(const char* data, QString type);
+    static const char* encodeString(const char* data, QString type);
 
 public slots:
     void decode(int ID,int);

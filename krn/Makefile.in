@@ -8,7 +8,7 @@ CXXFLAGS= @CXXFLAGS@ @all_includes@ -DHAVE_CONFIG_H -I..
 # @LDFLAGS@    : is set to -s (when not debuging) for stripping
 # @all_libra.@ : is set to all needed libraries paths for QT, KDE and X11
 # you need also @LIBSOCKET@, if you link with -lkfm
-LDFLAGS	= @LDFLAGS@ @all_libraries@ -lkdecore -lkdeui @LIBKHTMLW@ -lqt -lXext -lX11 -lmimelib -luulib
+LDFLAGS	= @LDFLAGS@ @all_libraries@ -lkdecore -lkdeui -lkfm @LIBKHTMLW@ -lqt -lXext -lX11 -lmimelib -luulib
 
 # both are clear, I think
 CXX     = @CXX@
@@ -43,40 +43,52 @@ APPSDIR = $(prefix)/apps
 
 OBJECTS = 	main.o\
 		NNTP.o\
-                mNNTP.o\
+		mNNTP.o\
 		groupdlg.o\
-                mgroupdlg.o\
+		mgroupdlg.o\
 		artdlg.o\
 		martdlg.o\
 		kmessage.o\
-                mkmessage.o\
+		mkmessage.o\
 		ktablistbox.o\
-                mktablistbox.o\
+		mktablistbox.o\
 		multipar.o\
-                basicmsg.o\
-                newsgroup.o\
-                kstrtable.o\
-                asker.o\
-                masker.o\
-                askerData.o\
-                identDlg.o\
-                midentDlg.o\
-                identDlgData.o\
-                NNTPConfigDlg.o\
-                mNNTPConfigDlg.o\
-                NNTPConfigDlgData.o\
-                decoderDlg.o\
-                mdecoderDlg.o\
-                kformatter.o\
-                mrmbpop.o\
-                rmbpop.o\
-                kdecode.o\
-                mkdecode.o\
-                aboutDlg.o\
-                maboutDlg.o\
-                aboutDlgData.o\
-                ktempfile.o\
-                kscorer.o
+		basicmsg.o\
+		newsgroup.o\
+		kstrtable.o\
+		asker.o\
+		masker.o\
+		askerData.o\
+		identDlg.o\
+		midentDlg.o\
+		identDlgData.o\
+		NNTPConfigDlg.o\
+		mNNTPConfigDlg.o\
+		NNTPConfigDlgData.o\
+		decoderDlg.o\
+		mdecoderDlg.o\
+		kformatter.o\
+		mrmbpop.o\
+		rmbpop.o\
+		kdecode.o\
+		mkdecode.o\
+		aboutDlg.o\
+		maboutDlg.o\
+		aboutDlgData.o\
+		ktempfile.o\
+		kscorer.o\
+		PostDialog.o\
+		mPostDialog.o\
+		PostDialogData.o\
+		mPostDialogData.o\
+		NewMsgDlg.o\
+		mNewMsgDlg.o\
+		NewMsgDlgData.o\
+		mNewMsgDlgData.o\
+		PartProps.o\
+		mPartProps.o\
+		PartPropsData.o\
+		mPartPropsData.o
 
 SRCMETA = 	mgroupdlg.o \
 		mNNTP.o \
@@ -87,10 +99,14 @@ SRCMETA = 	mgroupdlg.o \
                 masker.o\
                 midentDlg.o\
                 mNNTPConfigDlg.o\
-                mrmbpop.o\
-                mdecoderDlg.o\
-                mkdecode.o\
-                maboutDlg.o
+		mrmbpop.o\
+		mdecoderDlg.o\
+		mkdecode.o\
+		maboutDlg.o\
+		mPostDialog.o\
+		mNewMsgDlg.o\
+		mPartProps.o   
+
 
 METASRC =	mgroupdlg.cpp \
 		mNNTP.cpp \
@@ -104,7 +120,12 @@ METASRC =	mgroupdlg.cpp \
                 mrmbpop.cpp\
                 mdecoderDlg.cpp\
                 mkdecode.cpp\
-                maboutDlg.cpp
+                maboutDlg.cpp\
+                mPostDialog.cpp\
+                mNewMsgDlg.cpp\
+                mPartProps.cpp 
+
+
 
 TARGET	=	krn
 
@@ -136,7 +157,14 @@ SOURCES = 	main.cpp\
                 aboutDlg.cpp\
                 aboutDlgData.cpp\
                 ktempfile.cpp\
-                kscorer.cpp
+                kscorer.cpp\
+                PostDialog.cpp\
+                PostDialogData.cpp\
+                NewMsgDlg.cpp\
+                NewMsgDlgData.cpp\
+                PartProps.cpp\
+                PartPropsData.cpp
+
 
 HEADERS = 	NNTP.h\
 		basicmsg.h\
@@ -155,13 +183,20 @@ HEADERS = 	NNTP.h\
                 NNTPConfigDlg.h\
                 NNTPConfigDlgData.h\
                 decoderDlg.h\
-                kformatter.h\
-                rmbpop.h\
-                kdecode.h\
-                aboutDlg.h\
-                aboutDlgData.h\
-                ktempfile.h\
-                kscorer.h
+		kformatter.h\
+		rmbpop.h\
+		kdecode.h\
+		aboutDlg.h\
+		aboutDlgData.h\
+		ktempfile.h\
+		kscorer.h\
+		PostDialog.h\
+		PostDialogData.h\
+		NewMsgDlg.h\
+		NewMsgDlgData.h\
+		PartProps.h\
+		PartPropsData.h   
+
 
 
 
@@ -234,6 +269,24 @@ mkdecode.cpp: kdecode.h
 
 maboutDlg.cpp: aboutDlg.h
 	$(MOC) aboutDlg.h -o maboutDlg.cpp
+
+mPostDialog.cpp: PostDialog.h
+	$(MOC) PostDialog.h -o mPostDialog.cpp
+
+mPostDialogData.cpp: PostDialogData.h
+	$(MOC) PostDialogData.h -o mPostDialogData.cpp
+
+mNewMsgDlg.cpp: NewMsgDlg.h
+	$(MOC) NewMsgDlg.h -o mNewMsgDlg.cpp
+
+mNewMsgDlgData.cpp: NewMsgDlgData.h
+	$(MOC) NewMsgDlgData.h -o mNewMsgDlgData.cpp
+
+mPartProps.cpp: PartProps.h
+	$(MOC) PartProps.h -o mPartProps.cpp
+
+mPartPropsData.cpp: PartPropsData.h
+	$(MOC) PartPropsData.h -o mPartPropsData.cpp
 
 depend:
 	@makedepend -I$(INCDIR) $(SOURCES) 2> /dev/null

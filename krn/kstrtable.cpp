@@ -18,6 +18,7 @@
 #include "kstrtable.h"
 
 KStrTable::KStrTable()
+         :QCollection()
 {
 }
 
@@ -34,7 +35,7 @@ int KStrTable::read(QString text, QString titleSep=": ", QString lineSep="\n",
     text=text.mid(startpos, endpos);
     int pos=0, tend, cend;
 
-    while(pos<text.length()) {
+    while(pos<(int)text.length()) {
         //Find the end of the title field
         tend=text.find(titleSep, pos);
         if(tend==-1) break;
@@ -83,4 +84,15 @@ void KStrTable::remove(QString title)
 QStrList KStrTable::titles()
 {
     return Titles;
+}
+
+uint KStrTable::count() const
+{
+    return Titles.count();
+}
+
+void KStrTable::clear()
+{
+    Titles.clear();
+    Contents.clear();
 }

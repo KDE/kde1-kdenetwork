@@ -59,8 +59,10 @@ int main( int argc, char **argv )
 
     checkConf();
 
-
-    pixpath = a.kdedir() + QString("/lib/pics/krn/");
+    QString pixdef=a.kdedir() + QString("/lib/pics/krn/");
+    conf->setGroup("KDE Setup");
+    if(conf->hasKey("pixpath")) pixpath=conf->readEntry("pixpath",&pixdef);
+    else pixpath=pixdef;
 
     decoder=new KDecode;
     iconloader=new KIconLoader ();

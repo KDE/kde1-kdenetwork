@@ -30,6 +30,7 @@
 #include <qpixmap.h>
 #include <qlist.h>
 #include <Kconfig.h>
+#include <kfm.h>
 
 Kmessage::Kmessage
     (
@@ -38,10 +39,10 @@ Kmessage::Kmessage
     )
     :
     QWidget(parent,name)
-    
+
 {
     setFocusPolicy(QWidget::NoFocus);
-    
+
     view=new KHTMLWidget( parent, name,"/lib/pics/");
     view->begin();
     view->write ("<html><head><title>Krn message view</title></head>\n"
@@ -52,18 +53,27 @@ Kmessage::Kmessage
           "\"");
     view->end();
     view->parse();
-    
+
     view->setBackgroundColor(QColor("white"));
     kapp->processEvents();
-    
+
     KApplication::connect(view,SIGNAL(URLSelected(const char*,int)),this,SLOT(URLClicked(const char*,int)));
-    
+
+    saveWidgetName=tmpnam(NULL);
+    tmpFiles.append(saveWidgetName);
+    viewWidgetName=tmpnam(NULL);
+    tmpFiles.append(viewWidgetName);
+
+    renderWidgets();
+    KApplication::connect(kapp,SIGNAL(kdisplayPaletteChanged()),this, SLOT(renderWidgets()));
+    KApplication::connect(kapp,SIGNAL(kdisplayStyleChanged()),this, SLOT(renderWidgets()));
+    KApplication::connect(kapp,SIGNAL(kdisplayFontChanged()),this, SLOT(renderWidgets()));
     QObject::connect( view, SIGNAL( documentChanged() ), SLOT( adjustScrollers() ) );
     vertScroller=new QScrollBar(0, view->docHeight(), 16, height(), 0,
                                 QScrollBar::Vertical,this);
     CHECK_PTR(vertScroller);
     KApplication::connect(vertScroller, SIGNAL(valueChanged(int)), view, SLOT(slotScrollVert(int)));
-    
+
     horzScroller=new QScrollBar(0, view->docWidth(), 16, width(), 0,
                                 QScrollBar::Horizontal,this );
     CHECK_PTR(horzScroller);
@@ -79,11 +89,11 @@ Kmessage::~Kmessage()
     delete horzScroller;
 }
 
-void Kmessage::loadMessage( QString message )
+void Kmessage::loadMessage( QString message, bool complete=TRUE )
 {
-    format=new KFormatter(message);
+    format=new KFormatter(saveWidgetName,viewWidgetName,message,complete);
     CHECK_PTR(format);
-    
+
     view->begin();
     QString header=format->htmlHeader();
     view->write(header+"<hr>");
@@ -93,9 +103,9 @@ void Kmessage::loadMessage( QString message )
     view->end();
     view->repaint();
     view->show();
-    
+
     //debug("\n\nHTML body=\"%s\"",QString(header+body+"</html>").data());
-    
+
     view->slotScrollVert(0);
     view->slotScrollHorz(0);
 }
@@ -106,40 +116,40 @@ void Kmessage::adjustScrollers()
     //Trying to hide and show the scrollers won't work
     //because docHeight() anddocWidth() always return 0 at this
     //point. Why???? kdehelp seems to have the same problem.
-    
+
     vertScroller->setRange(0,view->docHeight()-height());
     vertScroller->resize(16,height()-16);
     vertScroller->move(width()-vertScroller->width(), 0);
     vertScroller->setValue(view->yOffset());
-    
+
     horzScroller->move(0, height() - horzScroller->height());
     horzScroller->resize(width()-16,16);
     horzScroller->setRange(0,view->docWidth()-width());
     horzScroller->setValue(view->xOffset());
 #endif
-    
+
     int x_amount = 0;
     int y_amount = 0;
-    
+
     if (view->docHeight() <= height()) vertScroller->hide();
     else
     {
         vertScroller->show();
         y_amount = 16;                  // Scrollbar cannot be full length
     }
-    
+
     if (view->docWidth() <= width()) horzScroller->hide();
     else
     {
         horzScroller->show();
         x_amount = 16;
     }
-    
+
     vertScroller->setRange(0, (view->docHeight() < height() ? height() : view->docHeight()-height()));
     vertScroller->resize(16,height()-x_amount);
     vertScroller->move(width()-vertScroller->width(), 0);
     vertScroller->setValue(view->yOffset());
-    
+
     horzScroller->move(0, height() - horzScroller->height());
     horzScroller->resize(width()-y_amount,16);
     horzScroller->setRange(0,(view->docWidth() < width() ? width() : view->docWidth()-width()));
@@ -199,7 +209,7 @@ void Kmessage::resizeEvent(QResizeEvent*)
 void Kmessage::URLClicked(const char* s,int)
 {
     debug("Got URL %s.",s);
-    
+
     KURL url(s);
     if( url.isMalformed() )
     {
@@ -208,7 +218,7 @@ void Kmessage::URLClicked(const char* s,int)
         //return;
         //It really should ;-)
     }
-    
+
     if(strcmp(url.protocol(),"news")==0)
     {
         debug ("path-->%s",url.path());
@@ -224,11 +234,11 @@ void Kmessage::URLClicked(const char* s,int)
     {
         QString name=QFileDialog::getSaveFileName();
         if(name.isEmpty()) return;
-        
+
         debug("saving url. protocol: %s, host part: %s, path part: %s",
               url.protocol(), url.host(), url.path() );
         dump(url.host(),name);
-        
+
     }
     else if(strcmp(url.protocol(),"view")==0)
     {
@@ -241,17 +251,23 @@ void Kmessage::URLClicked(const char* s,int)
             cmd.sprintf("metamail -b -c %s -m Krn -z %s",url.path(),name.data());
             system(cmd);
         }
-    }    
+    }
+    else
+    {
+        debug("Unknown URL type. Spawning KFM.");
+        KFM f;
+        f.openURL(s);
+    }
 }
 
 bool Kmessage::dump(char* part, QString fileName)
 {
-//    debug("Dumping part %s as %s",part, fileName.data());
-    
+//    debug("Dumping part %d as %s",part, fileName.data());
+
     QList<int> n=format->strToList(part);
     const char* data=format->rawPart(n);
     n.clear();
-    
+
     QFile file(fileName);
     if(!file.open(IO_WriteOnly)) return FALSE;
     if(file.writeBlock(data, strlen(data))!=(int)strlen(data))
@@ -261,4 +277,24 @@ bool Kmessage::dump(char* part, QString fileName)
     }
     file.close();
     return TRUE;
+}
+
+void Kmessage::renderWidgets()
+{
+    unlink(saveWidgetName);
+    QPushButton saveButton("save");
+    QPixmap* saveImage = new QPixmap(saveButton.size());
+
+    bitBlt(saveImage, QPoint(0,0), &saveButton, saveButton.rect(), CopyROP );
+    if(saveImage->isNull()) debug("Strange");
+    if(!saveImage->save(saveWidgetName,"XBM")) debug("Unable to save sW");
+    else debug("save widget saved as %s",saveWidgetName.data());
+
+    unlink(viewWidgetName);
+    QPushButton viewButton("view");
+    QPixmap* viewImage = new QPixmap(viewButton.size());
+
+    bitBlt(viewImage, QPoint(0,0), &viewButton, viewButton.rect(), CopyROP );
+    if(!viewImage->save(viewWidgetName,"XBM")) debug("Unable to save vW");
+    else debug("view widget saved as %s",viewWidgetName.data());
 }

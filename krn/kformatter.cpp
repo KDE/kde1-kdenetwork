@@ -9,18 +9,14 @@
 #include <qregexp.h>
 #include <kapp.h>
 #include <mimelib/mimepp.h>
-#include <qpushbt.h>
 
-KFormatter::KFormatter(QString s)
+KFormatter::KFormatter(QString sWN, QString vWN, QString s, bool c)
 {
-    saveWidgetNumber=tempfile.create("widget",".xpm");
-    saveWidgetName=tempfile.file(saveWidgetNumber)->name();
-    viewWidgetNumber=tempfile.create("widget",".xpm");
-    viewWidgetName=tempfile.file(viewWidgetNumber)->name();
-    renderWidgets();
+    saveWidgetName=sWN;
+    viewWidgetName=vWN;
     message=new DwMessage(s.data());
     message->Parse();
-    
+
     //Get the date format from the config
     QString *defFmt=new QString("%y%m%d %H:%M (%Z)");
     kapp->getConfig()->setGroup("Appearance");
@@ -31,6 +27,7 @@ KFormatter::KFormatter(QString s)
     else
         delete defFmt;
     debug("date format: %s",dateFmt->data());
+    mcomplete=c;
 }
 
 KFormatter::~KFormatter()
@@ -56,7 +53,7 @@ DwBodyPart* KFormatter::getPartPrim(QList<int> partno, DwBodyPart* body)
     //debug("Getting part number %d on this level",*(partno.first()));
     //The base case
     if(partno.count()==1) return ffwdPart(*(partno.first()),body);
-    
+
     DwBodyPart* curr;
     curr=ffwdPart(*(partno.first()),body);
     int dummy=0;
@@ -85,7 +82,7 @@ DwBodyPart* KFormatter::getPart(QList<int> partno)
             return NULL;
         }
     }
-    
+
     //debug("starting gPP");
     return getPartPrim(partno,iter);
 }
@@ -99,41 +96,25 @@ bool KFormatter::isMultiPart(QList<int> part)
 const char* KFormatter::rawPart(QList<int> partno)
 {
     DwBodyPart* body=getPart(partno);
-    const char* udata=body->Body().AsString().data();
-    if(udata==NULL)
-    {
-        warning("Could not read message part %s!",listToStr(partno).data());
-        return NULL;
-    }
-    
-    QString encoding;
-
-    if(body->Header().HasCte())
-    {
-        encoding=body->Header().ContentTransferEncoding().AsString().data();
-        encoding=encoding.lower();
-    }
-    else
-    {
-        debug("No encoding, assuming 7bit");
-        encoding="7bit";
-    }
-    
-    const char* data=KDecode::decodeString(udata,encoding);
-    if(data==NULL) warning("Could not decode data of type %s in part %s!",
-                           encoding.data(), listToStr(partno).data());
-
-    return udata;
-}   
+    const char* data=body->Body().AsString().data();
+    return data;
+}
 
 QString KFormatter::htmlAll()
 {
+    if(mcomplete==FALSE)
+    {
+        return "<b>The requested message could not be found either in the "
+                 "cache or on the server. Click on this link to try to "
+                 "search for it with Altavista.</b>"+
+                 searchLink("C Directory","comp.lang.c.moderated");
+    }
     QList<int> l;
     int i=0;
     bool done=FALSE;
     QString text;
     int dummy=0;
-    
+
     while(!done)
     {
         l.append(&i);
@@ -156,16 +137,16 @@ QString KFormatter::htmlPart(QList<int> partno)
     body=getPart(partno);
     CHECK_PTR(body);
     body->Parse();
-    
+
     //debug("Reading type");
-    QString baseType=body->Header().ContentType().TypeStr().data();
+    QString baseType=body->Headers().ContentType().TypeStr().data();
     baseType=baseType.lower();
     //debug("baseType=%s",baseType.data());
-    
-    QString subType=body->Header().ContentType().SubtypeStr().data();
+
+    QString subType=body->Headers().ContentType().SubtypeStr().data();
     subType=subType.lower();
     //debug("subType=%s",subType.data());
-    
+
     //Set a default type, just in case we lack a "content-type" header
     if (baseType.isEmpty())
     {
@@ -173,33 +154,33 @@ QString KFormatter::htmlPart(QList<int> partno)
         baseType="text";
         subType="plain";
     }
-    
+
     QString wholeType;
     wholeType=baseType.copy();
     if(!subType.isEmpty()) wholeType+="/"+subType;
-    
+
     //debug("Reading encoding type");
     QString encoding;
-    if(body->Header().HasCte())
+    if(body->Headers().HasCte())
     {
-        encoding=body->Header().ContentTransferEncoding().AsString().data();
+        encoding=body->Headers().ContentTransferEncoding().AsString().data();
         encoding=encoding.lower();
     }
     else{
         debug("No encoding, assuming 7bit");
         encoding="7bit";
     }
-    
+
     debug("Formatting part %s: baseType: %s subType: %s wholeType: %s, encoding=%s",listToStr(partno).data(), baseType.data(), subType.data(), wholeType.data(),encoding.data());
-    
+
     const char* udata=body->Body().AsString().data();
-    if(udata==NULL) debug("<b>This message part could not be read</b>");
-    //debug("udata: %s",udata);
-    
+    CHECK_PTR(udata);
+    debug("udata: %s",udata);
+
     const char* data=KDecode::decodeString(udata,encoding);
-    if(data==NULL) return "<b>This message part could not be decoded</b>";
-    //debug("data: %s",data);
-    
+    CHECK_PTR(data);
+    debug("data: %s",data);
+
     if (baseType=="text")
     {
         DwToLocalEol(data,data);
@@ -263,14 +244,14 @@ QString KFormatter::htmlPart(QList<int> partno)
                 int* j=new int;
                 *j=i;
                 partno.append(j);
-                //debug("Checking part: %s",listToStr(partno).data());                
+                //debug("Checking part: %s",listToStr(partno).data());
                 curr=getPart(partno);
                 //debug("* curr=%p",curr);
                 //debug("data: \"%s\"",curr->AsString().data());
                 if(curr!=NULL)
                 {
-                    baseType=curr->Header().ContentType().TypeStr().data();
-                    subType=curr->Header().ContentType().SubtypeStr().data();
+                    baseType=curr->Headers().ContentType().TypeStr().data();
+                    subType=curr->Headers().ContentType().SubtypeStr().data();
                     score=rateType(baseType,subType);
                     //debug("This part scored %d",score);
                     if(score>=max)
@@ -352,7 +333,7 @@ QString KFormatter::htmlPart(QList<int> partno)
             part.sprintf("<b>This type of multipart messages is not supported yet.</b>",subType.data());
             return part;
         }
-        
+
     }
     else
     {
@@ -370,22 +351,22 @@ QString KFormatter::htmlPart(QList<int> partno)
             f->open(IO_WriteOnly);
             f->writeBlock(data,strlen(data));
             f->close();
-            
+
             system(plugin+" <"+tempfile.file(i)->name()+" >"+
                    tempfile.file(o)->name());
-            
+
             f=tempfile.file(o);
             f->open(IO_ReadOnly);
             char* ndata=(char*)malloc(f->size());
             f->readBlock(ndata,f->size());
             f->close();
-            
+
             tempfile.remove(i);
             tempfile.remove(o);
-            
+
             return ndata;
         }
-        
+
         debug ("Found some part! (%s)",wholeType.data());
         QString part;
         part.sprintf("This message part consists of an attachment of an "
@@ -398,8 +379,8 @@ QString KFormatter::htmlPart(QList<int> partno)
 
 QString KFormatter::getType(QList<int> part)
 {
-    QString baseType=getPart(part)->Header().ContentType().TypeStr().data();
-    QString subType=getPart(part)->Header().ContentType().SubtypeStr().data();
+    QString baseType=getPart(part)->Headers().ContentType().TypeStr().data();
+    QString subType=getPart(part)->Headers().ContentType().SubtypeStr().data();
     QString wholeType=baseType;
     if(!subType.isEmpty()) baseType+=subType;
     return wholeType;
@@ -408,7 +389,7 @@ QString KFormatter::getType(QList<int> part)
 QString KFormatter::saveLink(QList<int> part, char* text)
 {
     QString type=getType(part);
-    
+
     QString link;
     link.sprintf("<a href=\"save://%d/%s\">%s<img src=%s alt=\"save\"></a>",
                  listToStr(part).data(), type.data(), text,
@@ -419,7 +400,7 @@ QString KFormatter::saveLink(QList<int> part, char* text)
 QString KFormatter::viewLink(QList<int> part, char* text)
 {
     QString type=getType(part);
-    
+
     QString link;
     link.sprintf("<a href=\"view://%d/%s\">%s<img src=%s alt=\"view\"></a>",
                  listToStr(part).data(), type.data(), text,
@@ -430,6 +411,16 @@ QString KFormatter::viewLink(QList<int> part, char* text)
 QString KFormatter::mailLink(QString reciptent, char* text)
 {
     return "<a href=\"mailto:" + reciptent + "\">" + text + "</a>";
+}
+
+QString KFormatter::searchLink(QString subj, QString group)
+{
+    subj.replace(QRegExp(" "),"+");
+
+    return "<a href=\"http://www.altavista.digital.com/cgi-bin/query?pg=aq"
+           "&kl=XX&what=news&fmt=d&q=%22" + subj + "%22+AND+" + group +
+           "&r=" + group + "&d0=" + "" + "&d1=" + "" + "\">"
+           "Search!</a>\n";
 }
 
 QString KFormatter::htmlHeader()
@@ -448,17 +439,17 @@ QString KFormatter::htmlHeader()
     visheaders.append("Followup-To");
     visheaders.append("Date");
     visheaders.append("References");
-    
+
     for (char *iter=visheaders.first();!iter==0;iter=visheaders.next())
     {
-        if (message->Header().HasField(iter))
+        if (message->Headers().HasField(iter))
         {
             QString headerName=iter;
             header+="<b>"+headerName+": </b>";
-            
+
             if(headerName=="Newsgroups" || headerName=="Followup-to")
             {
-                QString groups=message->Header().FieldBody(iter).AsString().data();
+                QString groups=message->Headers().FieldBody(iter).AsString().data();
                 groups.simplifyWhiteSpace();
                 groups+=',';
                 unsigned int index=0, len;
@@ -473,7 +464,7 @@ QString KFormatter::htmlHeader()
             }
             if(headerName=="References")
             {
-                QString articles=message->Header().FieldBody(iter).AsString().data();
+                QString articles=message->Headers().FieldBody(iter).AsString().data();
                 articles.simplifyWhiteSpace();
                 articles+=' ';
                 debug("header: %s",articles.data());
@@ -497,36 +488,54 @@ QString KFormatter::htmlHeader()
             else if(headerName=="Date")
             {
                 debug ("Date formatter:%s",dateFmt->data());
-                DwDateTime realDate(message->Header().FieldBody(iter).AsString().data());
+                DwDateTime realDate(message->Headers().FieldBody(iter).AsString().data());
+                debug("Real time: %s",realDate.AsString().data());
                 QString textDate="";
-                int ival;
-                QString sval;
-                debug("Looping %d chars", dateFmt->length());
+                QString temp;
+                //debug("Looping %d chars", dateFmt->length());
                 for(int pos=0; pos<(int)dateFmt->length(); pos++)
                 {
                     if( dateFmt->at(pos)=='%' && pos<(int)dateFmt->length() )
                     {
-                        ival=-1; sval="";
+                        debug("decoding control char %c",dateFmt->at(pos+1));
                         switch(dateFmt->at(pos+1))
                         {
-                        case '%' : sval='%';                 break;
-                        case 'd' : ival=realDate.Day();      break;
+                        case '%' : textDate+='%';
+                                   break;
+                        case 'd' : temp.setNum(realDate.Day());
+                                   textDate+=temp;
+                                   break;
                         case 'k' :
-                        case 'H' : ival=realDate.Hour();     break;
+                        case 'H' : temp.setNum(realDate.Hour());
+                                   textDate+=temp;
+                                   break;
                         case 'l' :
-                        case 'I' : ival=realDate.Hour()%12;  break;
-                        case 'M' : ival=realDate.Minute();   break;
-                        case 'm' : ival=realDate.Month();    break;
-                        case 'p' : sval=realDate.Hour()>11?"PM":"AM"; break;
-                        case 'S' : ival=realDate.Second();   break;
-                        case 'Y' : ival=realDate.Year();     break;
-                        case 'y' : ival=realDate.Year()%100; break;
-                        case 'Z' : ival=realDate.Zone();     break;
+                        case 'I' : temp.setNum(realDate.Hour()%12);
+                                   textDate+=temp;
+                                   break;
+                        case 'M' : temp.setNum(realDate.Minute());
+                                   textDate+=temp;
+                                   break;
+                        case 'm' : temp.setNum(realDate.Month());
+                                   textDate+=temp;
+                                   break;
+                        case 'p' : textDate+=realDate.Hour()>11?"PM":"AM";
+                                   break;
+                        case 'S' : temp.setNum(realDate.Second());
+                                   textDate+=temp;
+                                   break;
+                        case 'Y' : temp.setNum(realDate.Year());
+                                   textDate+=temp;
+                                   break;
+                        case 'y' : temp.setNum(realDate.Year()%100);
+                                   textDate+=temp;
+                                   break;
+                        case 'Z' : temp.setNum(realDate.Zone());
+                                   textDate+=temp;
+                                   break;
                         default  : warning("The format character %c is not"
                                            " yet supported.",dateFmt->at(pos+1));
                         }
-                        if(ival!=-1) textDate.sprintf("%s%02d",textDate.data(),ival);
-                        if(!sval.isEmpty()) textDate+=sval;
                         pos++;
                     }
                     else textDate+=dateFmt->at(pos);
@@ -537,12 +546,12 @@ QString KFormatter::htmlHeader()
                 // header without special formatting
                 // needs to escape < and >
             {
-                QString s(message->Header().FieldBody(iter).AsString().data());
+                QString s(message->Headers().FieldBody(iter).AsString().data());
                 s.replace(QRegExp("<"),"&lt;");
                 s.replace(QRegExp(">"),"&gt;");
                 header=header+s+"\n";
             }
-            
+
             header+=+"<br>\n";
         }
     }
@@ -552,14 +561,14 @@ QString KFormatter::htmlHeader()
 QString KFormatter::image_jpegFormatter(QByteArray data, QList<int> partno)
 {
     QString part;
-    int fn=tempfile.create("image",".jpg");
-    QFile* file=tempfile.file(fn);
-    file->open(IO_WriteOnly);
-    file->writeBlock(data.data(),data.size());
-    file->close();
+    QString name=tmpnam(NULL);
+    QFile file(name);
+    file.open(IO_WriteOnly);
+    file.writeBlock(data.data(),data.size());
+    file.close();
     QString link;
     link.sprintf("<img src=%s alt=\"%d kb image\">",
-                 file->name(), tempfile.info(fn)->size()/1024 );
+                 name.data(), QFileInfo(name).size()/1024 );
     part.sprintf("Attached jpeg image<br>\n %s",
                  saveLink(partno, link.data()).data() );
     /*
@@ -576,12 +585,12 @@ QString KFormatter::image_jpegFormatter(QByteArray data, QList<int> partno)
 
 QString KFormatter::text_plainFormatter(QString data, QList<int>)
 {
-    //debug("%s: working on \"%s\"",__FUNCTION__,data.data());
+    debug("%s: working on \"%s\"",__FUNCTION__,data.data());
     bool insig=false;
     QString st,sig,body;
     while (!data.isEmpty())
-    {	
-        
+    {
+
         int i=data.find("\n");
         if (i==-1)
         {
@@ -595,12 +604,12 @@ QString KFormatter::text_plainFormatter(QString data, QList<int>)
         };
         if (st.left(2)=="--")
         {
-            //If it's more than 8 lines of 80 chars, it prabably isn't a sig
-            if(st.length()<(8*80)) insig=true;
+            //If it's more than 8 lines, it prabably isn't a sig
+            if(st.contains('\n')<=8) insig=true;
         }
         st.replace(QRegExp("<"),"&lt;");
         st.replace(QRegExp(">"),"&gt;");
-        
+
         if (insig)
         {
             sig=sig+st+"\n";
@@ -611,14 +620,20 @@ QString KFormatter::text_plainFormatter(QString data, QList<int>)
             {
                 // This doesn't work. Why?
                 st="<i>"+st+"</i>";
-                
+
+            }
+            else if(st.contains('-') + st.contains('+') + st.contains('|') +
+                    st.contains('/') + st.contains('\\') > (int) st.length()/2)
+            {
+                //it's part of an ASCII drawing
+                st="<pre>"+st+"</pre>\n";
             }
             else
             {
                 int pos=0;
                 int* len=new int;
                 QRegExp re("_[a-z]*_",FALSE);
-                
+
                 while(pos<(int)st.length())
                 {
                     //debug("Searching for _word_ in \"%s\"",st.left(st.length()-pos).data());
@@ -636,12 +651,12 @@ QString KFormatter::text_plainFormatter(QString data, QList<int>)
                 }
                 delete len;
             }
-            
+
             if (st.isEmpty())    //Empty line (end of para)
                 st="<p>";
             else                      //Plain line
                 st=st+"<br>";
-            body=body+st+"\n";
+            body+=st+"\n";
         }
     }
     return body+"<pre>"+sig+"</pre>";
@@ -650,12 +665,12 @@ QString KFormatter::text_plainFormatter(QString data, QList<int>)
 QString KFormatter::text_x_vcardFormatter(QString data, QList<int>)
 {
     QString result;
-    
+
     KStrTable card;
     card.read(data);
-    
+
     result="<h3>This is the mozilla vcard of ";
-    
+
     QString name;
     if(card.hasItem("fn")) name=card.getItem("fn");
     else if(card.hasItem("n")) name=card.getItem("n");
@@ -664,12 +679,12 @@ QString KFormatter::text_x_vcardFormatter(QString data, QList<int>)
         result+=mailLink(card.getItem("email;internet").data(), name.data());
     else result+=name;
     result+="</h3><br>\n";
-    
+
     if(card.hasItem("n")) result+="<b>Name: </b>"+card.getItem("n")+"<br>\n";
     if(card.hasItem("fn")) result+="<b>Full name: </b>"+card.getItem("fn")+"<br>\n";
     if(card.hasItem("org")) result+="<b>Organization: </b>"+card.getItem("org")+"<br>\n";
     if(card.hasItem("title")) result+="<b>Title: </b>"+card.getItem("title")+"<br>\n";
-    
+
     if(card.hasItem("x-mozilla-html"))
     {
         result+="<string>The sender prefers ";
@@ -677,9 +692,9 @@ QString KFormatter::text_x_vcardFormatter(QString data, QList<int>)
         else result+="plaintext";
         result+=" emails.</strong><br>\n";
     }
-    
+
     if(card.hasItem("note")) result+="<b>Note: </b><blockquote>"+card.getItem("note") + "</blockquote><br>\n";
-    
+
     return result + "<hr>The rest of this vcard can not be shown yet. Work is being done at"
         "supporting more fileds. The raw card follows:<br>\n<pre>" + data + "</pre>\n";
 }
@@ -691,87 +706,86 @@ QString KFormatter::text_richtextFormatter(QString data, QList<int>)
     data.replace(QRegExp("<np>",FALSE),"<hr>");
     data.replace(">","&gt;");
     data.replace("\\n","<br>");
-    
+
     data.replace(QRegExp("<bold>",FALSE),"<b>");
     data.replace(QRegExp("</bold>",FALSE),"</b>");
-    
+
     data.replace(QRegExp("<italic>",FALSE),"<i>");
     data.replace(QRegExp("</italic>",FALSE),"</i>");
-    
+
     data.replace(QRegExp("<fixed>",FALSE),"<tt>");
     data.replace(QRegExp("</fixed>",FALSE),"</tt>");
-    
+
     data.replace(QRegExp("<flushleft>",FALSE),"<p align=left>");
     data.replace(QRegExp("</flushleft>",FALSE),"</p>");
-    
+
     data.replace(QRegExp("<flushright>",FALSE),"<p align=right>");
     data.replace(QRegExp("</flushright>",FALSE),"</p>");
-    
+
     data.replace(QRegExp("<bigger>",FALSE),"<big>");
     data.replace(QRegExp("</bigger>",FALSE),"</big>");
-    
+
     data.replace(QRegExp("<smaller>",FALSE),"<small>");
     data.replace(QRegExp("</smaller>",FALSE),"</small>");
-    
+
     data.replace(QRegExp("<subscript>",FALSE),"<sub>");
     data.replace(QRegExp("</subscript>",FALSE),"</sub>");
-    
+
     data.replace(QRegExp("<superscript>",FALSE),"<sup>");
     data.replace(QRegExp("</superscript>",FALSE),"</sup>");
-    
+
     data.replace(QRegExp("<excerpt>",FALSE),"<blockquote>");
     data.replace(QRegExp("</excerpt>",FALSE),"</blockquote>");
-    
+
     data.replace(QRegExp("<comment>.*</comment>",FALSE),"");
-    
+
     data.replace(QRegExp("<no-op>",FALSE),"");
     data.replace(QRegExp("</no-op>",FALSE),"");
-    
+
     data.replace(QRegExp("<Underline>",FALSE),"<em>");
     data.replace(QRegExp("</Underline>",FALSE),"</em>");
-    
+
     data.replace(QRegExp("<Indent>",FALSE),"");
     data.replace(QRegExp("</Indent>",FALSE),"");
-    
+
     data.replace(QRegExp("<IndentRight>",FALSE),"");
     data.replace(QRegExp("</IndentRight>",FALSE),"");
-    
+
     data.replace(QRegExp("<Outdent>",FALSE),"");
     data.replace(QRegExp("</Outdent>",FALSE),"");
-    
+
     data.replace(QRegExp("<OutdentRight>",FALSE),"");
     data.replace(QRegExp("</OutdentRight>",FALSE),"");
-    
+
     data.replace(QRegExp("<SamePage>",FALSE),"");
     data.replace(QRegExp("</SamePage>",FALSE),"");
-    
+
     data.replace(QRegExp("<Heading>",FALSE),"");
     data.replace(QRegExp("</Heading>",FALSE),"");
-    
+
     data.replace(QRegExp("<Footing>",FALSE),"");
     data.replace(QRegExp("</Footing>",FALSE),"");
-    
+
     data.replace(QRegExp("<ISO-8859-.*>",FALSE),"<b>Krn note: This text is incoded in another scharacter set, and may look wierd</b>");
     data.replace(QRegExp("</ISO-8859-.*>",FALSE),"<b>Krn note: Character set reset.</b>");
-    
+
     data.replace(QRegExp("<US-ASCII>",FALSE),"");
     data.replace(QRegExp("</US-ASCII>",FALSE),"");
-    
+
     data.replace(QRegExp("<Paragraph>",FALSE),"<p>");
     data.replace(QRegExp("</Paragraph>",FALSE),"</p>");
-    
+
     data.replace(QRegExp("<Signature>",FALSE),"<br><small><pre>");
     data.replace(QRegExp("</Signature>",FALSE),"</pre></small>>");
-    
+
     /*
      data.replace(QRegExp("<>,FALSE)","<>");
      data.replace(QRegExp("</>,FALSE)","</>");
      */
-    
-    return data;
-    
-}
 
+    return data;
+
+}
 QString KFormatter::text_htmlFormatter(QString data, QList<int> )
 {
     data.replace(QRegExp("<html>",FALSE),"");
@@ -783,7 +797,7 @@ QString KFormatter::text_htmlFormatter(QString data, QList<int> )
     data.replace(QRegExp("<title>",FALSE),"<b>Title: </b>");
     data.replace(QRegExp("</title>",FALSE),"");
 
-    return data;    
+    return data;
 }
 
 QString KFormatter::listToStr(QList<int> l)
@@ -821,7 +835,7 @@ bool KFormatter::dump(QList<int> part, QString fileName)
 {
     debug("Dumping part %s as %s",listToStr(part).data(), fileName.data());
     DwString src=getPart(part)->Body().AsString();
-    
+
     QFile file(fileName);
     if(!file.open(IO_WriteOnly)) return FALSE;
     if(file.writeBlock(src.data(), src.length()) != (int)src.length())
@@ -862,27 +876,6 @@ unsigned int KFormatter::rateType(QString baseType, QString subType)
         if(subType=="plain")	return 102;
         else			return 100;
     }
-    
-    else return 0;
-}
 
-void KFormatter::renderWidgets()
-{
-    QPushButton saveButton("save");
-    QPixmap* saveImage = new QPixmap(saveButton.size());
-    
-    bitBlt(saveImage, QPoint(0,0), &saveButton, saveButton.rect(), CopyROP );
-    if(saveImage->isNull()) debug("Strange");
-    if(!saveImage->save(saveWidgetName,"XBM"))
-        debug("Unable to save sW");
-    else
-        debug("save widget saved as %s", saveWidgetName.data());
-    QPushButton viewButton("view");
-    QPixmap* viewImage = new QPixmap(viewButton.size());
-    
-    bitBlt(viewImage, QPoint(0,0), &viewButton, viewButton.rect(), CopyROP );
-    if(!viewImage->save(viewWidgetName,"XBM"))
-        debug("Unable to save vW");
-    else
-        debug("view widget saved as %s",viewWidgetName.data());
+    else return 0;
 }

@@ -1,4 +1,30 @@
 -----------------------------------------------------------------------------
+Changes made Jul 29
+-----------------------------------------------------------------------------
+
+* [Roberto] Incorporated (I hope) all of Magnus's patch
+
+* [Roberto] Fixed it so it compiles with the latest mimelib
+
+-----------------------------------------------------------------------------
+Changes made Jul 28
+-----------------------------------------------------------------------------
+
+* [Roberto] Just returned, and krn is kinda broken :-( 
+
+* [Roberto] I'm looking at Coolo's patches for the new mime++. They look ok.
+
+* [Roberto] Working on patching for the new toolbar and the new html widget.
+
+-----------------------------------------------------------------------------
+Changes made Jul 19
+-----------------------------------------------------------------------------
+
+* [Magnus] Added article composing dialog (posting still not done)
+
+* [Magnus] Added a hook for searching for lost articles with Altavista
+
+-----------------------------------------------------------------------------
 Changes made Jul 11
 -----------------------------------------------------------------------------
 
@@ -12,6 +38,50 @@ Changes made Jul 9
 
 * [Magnus]  Fixed formatting of HTML parts
 
+* [Magnus]  Added support for plug-in decoders
+
+-----------------------------------------------------------------------------
+Changes made Jul 11
+-----------------------------------------------------------------------------
+
+* [Roberto] Made krn.kdelnk, and added icon by Nico Schirwing.
+
+* [Roberto] Now popup in article list works.
+
+-----------------------------------------------------------------------------
+Changes made Jul 9
+-----------------------------------------------------------------------------
+
+* [Magnus]  Added preliminary metamail support
+
+* [Magnus]  Fixed formatting of HTML parts
+  
+* [Magnus]  Added support for plug-in decoders
+
+-----------------------------------------------------------------------------
+Changes made Jul 19
+-----------------------------------------------------------------------------
+
+* [Magnus] Added article composing dialog (posting still not done)
+
+* [Magnus] Added a hook for searching for lost articles with Altavista
+
+-----------------------------------------------------------------------------
+Changes made Jul 11
+-----------------------------------------------------------------------------
+
+* [Roberto] Made krn.kdelnk, and added icon by Nico Schirwing.
+
+* [Roberto] Now popup in article list works.
+
+-----------------------------------------------------------------------------
+Changes made Jul 9
+-----------------------------------------------------------------------------
+
+* [Magnus]  Added preliminary metamail support
+
+* [Magnus]  Fixed formatting of HTML parts
+  
 * [Magnus]  Added support for plug-in decoders
 
 -----------------------------------------------------------------------------

@@ -40,9 +40,9 @@ public:
     virtual ~Kmessage();
 
 public slots:
-    void loadMessage (QString message);
+    void loadMessage (QString message, bool complete=TRUE);
     void pageUp();
-    void pageDown();     
+    void pageDown();
     void scrollUp();
     void scrollDown();
 
@@ -52,15 +52,17 @@ signals:
 
 private slots:
     void URLClicked(const char*,int);
+    void renderWidgets();
     void adjustScrollers();
 
 private:
     void resizeEvent(class QResizeEvent *e=NULL);
 
-    KFormatter* format;    
+    KFormatter* format;
 
     bool dump(char* part, QString fileName);
-    
+    QString saveWidgetName, viewWidgetName;
+
     QStrList tmpFiles;
 
     KHTMLWidget *view;

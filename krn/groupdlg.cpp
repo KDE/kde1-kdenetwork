@@ -28,6 +28,8 @@
 #include <kmsgbox.h>
 #include <Kconfig.h>
 
+#include "PostDialog.h"
+
 #include "artdlg.h"
 #include "identDlg.h"
 #include "NNTPConfigDlg.h"
@@ -142,20 +144,20 @@ Groupdlg::Groupdlg
     QObject::connect (tool, SIGNAL (clicked (int)), this, SLOT (actions (int)));
     
     pixmap.load (pixpath+"connected.xpm");
-    tool->insertItem (pixmap, CONNECT, true, "Connect to server");
+    tool->insertButton (pixmap, CONNECT, true, "Connect to server");
     pixmap.load (pixpath+"disconnected.xpm");
-    tool->insertItem (pixmap, DISCONNECT, false, "Disconnect from server");
+    tool->insertButton (pixmap, DISCONNECT, false, "Disconnect from server");
     tool->insertSeparator ();
     
     pixmap.load (pixpath+"previous.xpm");
-    tool->insertItem (pixmap, GET_ACTIVE, true, "Get list of active groups");
+    tool->insertButton (pixmap, GET_ACTIVE, true, "Get list of active groups");
     tool->insertSeparator ();
     
-    tool->insertItem (*sub_xpm, SUBSCRIBE, true, "(Un)Subscribe");
+    tool->insertButton (*sub_xpm, SUBSCRIBE, true, "(Un)Subscribe");
     addToolBar (tool);
     tool->insertSeparator ();
     pixmap.load (pixpath+"reload.xpm");
-    tool->insertItem (pixmap, CHECK_UNREAD, true, "Check for Unread Articles");
+    tool->insertButton (pixmap, CHECK_UNREAD, true, "Check for Unread Articles");
     tool->insertSeparator ();
     
     
@@ -666,3 +668,4 @@ void Groupdlg::checkUnread()
     list->repaint();
     
 }
+

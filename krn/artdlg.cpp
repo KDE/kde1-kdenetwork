@@ -31,6 +31,7 @@
 #include "decoderDlg.h"
 #include "kdecode.h"
 #include "rmbpop.h"
+#include "PostDialog.h"
 
 #define REP_MAIL 1
 #define FOLLOWUP 2
@@ -105,34 +106,34 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     
     
     pixmap.load(pixpath+"save.xpm");
-    tool->insertItem(pixmap,SAVE_ARTICLE,true,"Save file");
+    tool->insertButton(pixmap,SAVE_ARTICLE,true,"Save file");
     tool->insertSeparator ();
     
     //    pixmap=iconloader->loadIcon("filemail.xpm");
     pixmap.load(pixpath+"filemail.xpm");
-    tool->insertItem (pixmap, REP_MAIL, true, "Reply by Mail");
+    tool->insertButton (pixmap, REP_MAIL, true, "Reply by Mail");
     pixmap.load (pixpath+"txt.xpm");
-    tool->insertItem (pixmap, FOLLOWUP, true, "Post a Followup");
+    tool->insertButton (pixmap, FOLLOWUP, true, "Post a Followup");
     tool->insertSeparator ();
     
     //    pixmap=iconloader->loadIcon("left.xpm");
     pixmap.load(pixpath+"left.xpm");
-    tool->insertItem (pixmap, PREV, true, "Previous Message");
+    tool->insertButton (pixmap, PREV, true, "Previous Message");
     
     //    pixmap=iconloader->loadIcon ("right.xpm");
     pixmap.load(pixpath+"right.xpm");
-    tool->insertItem (pixmap, NEXT, true, "Next Message");
+    tool->insertButton (pixmap, NEXT, true, "Next Message");
     
     tool->insertSeparator ();
     //    pixmap=iconloader->loadIcon ("previous.xpm");
     pixmap.load(pixpath+"previous.xpm");
-    tool->insertItem (pixmap, ARTLIST, true, "Get Article List");
+    tool->insertButton (pixmap, ARTLIST, true, "Get Article List");
     
     pixmap.load(pixpath+"tagged.xpm");
-    tool->insertItem (pixmap, TAG_ARTICLE, true, "Tag Article");
+    tool->insertButton (pixmap, TAG_ARTICLE, true, "Tag Article");
     
     pixmap.load(pixpath+"deco.xpm");
-    tool->insertItem (pixmap, DECODE_ONE_ARTICLE, true, "Decode Article");
+    tool->insertButton (pixmap, DECODE_ONE_ARTICLE, true, "Decode Article");
     
     
     addToolBar (tool);
@@ -363,6 +364,11 @@ bool Artdlg::actions (int action)
             break;
         }
     case FOLLOWUP:
+        {
+            PostDialog p(groupname,"",this);
+            p.show();
+            break;
+        }
     case REP_MAIL:
         KMsgBox::message (0,"Sorry!","Not implemented");
     case SCROLL_UP_ARTICLE:

@@ -21,7 +21,7 @@
 #include <qstrlist.h>
 #include <qstring.h>
 
-class KStrTable
+class KStrTable : public QCollection
 {
 public:
     KStrTable();
@@ -34,6 +34,8 @@ public:
     void insert(QString title, QString content, bool overwrite=TRUE);
     void remove(QString title);
     QStrList titles();
+    uint count() const;
+    virtual void clear();
 
 private:
     QStrList Titles;
