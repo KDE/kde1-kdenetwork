@@ -1,3 +1,9 @@
+1999-06-20  Sven Radej <radej@kde.org> (KMail-1.0.25)
+
+        * Fix for references (Thanks, Waldo, Roberto, Rik and Peter):
+          References = original first + original last + original msg-id
+          i.e. references(n) = msgid(1) + msgid(n-2) + msgid(n-1)
+
 1999-06-18  Sven Radej <radej@kde.org> (KMail-1.0.25)
 
         * When replying:

@@ -478,19 +478,13 @@ KMMessage* KMMessage::createReply(bool replyToAll)
     msg->setTo(toStr);
   }
 
-  
+  refStr = getRefStr();
 
-  //References = original "In-Reply-To"
-  //should add  original "References" too but it would bloat the message
-  refStr = headerField("In-Reply-To"); // + " " + headerField("References");
-  refStr.stripWhiteSpace();
   if (!refStr.isEmpty())
     msg->setReferences(refStr);
-  //debug ("References: %s", refStr.data());
 
   //In-Reply-To = original msg-id
   msg->setHeaderField("In-Reply-To", headerField("Message-Id"));
-  //debug ("In-Reply-To: %s", headerField("Message-Id").data());
 
   if (replyToAll || !mailingListStr.isEmpty()) replyStr = sReplyAllStr;
   else replyStr = sReplyStr;
@@ -507,6 +501,44 @@ KMMessage* KMMessage::createReply(bool replyToAll)
   setStatus(KMMsgStatusReplied);
 
   return msg;
+}
+
+
+//-----------------------------------------------------------------------------
+const QString KMMessage::getRefStr()
+{
+  QString firstRef, lastRef, refStr, retRefStr;
+  int i, j;
+
+  refStr = headerField("References").stripWhiteSpace ();
+  debug("References = %s", refStr.data());
+  if (refStr.isEmpty())
+  {
+    //debug ("New references: %s", headerField("Message-Id").data());
+    return headerField("Message-Id");
+  }
+
+  i = refStr.find("<");
+  j = refStr.find(">");
+  firstRef = refStr.mid(i, j-i+1);
+  if (!firstRef.isEmpty())
+    retRefStr = firstRef + " ";
+
+  //debug ("firstRef = \"%s\"",  firstRef.data());
+
+  i = refStr.findRev("<");
+  j = refStr.findRev(">");
+
+  lastRef = refStr.mid(i, j-i+1);
+  if (!lastRef.isEmpty() && lastRef != firstRef)
+    retRefStr += lastRef + " ";
+
+  //debug ("lastRef  = \"%s\"", lastRef.data());
+
+  retRefStr += headerField("Message-Id");
+
+  //debug("New references = %s", retRefStr.data());
+  return retRefStr;
 }
 
 
