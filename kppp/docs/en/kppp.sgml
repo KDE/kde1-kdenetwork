@@ -65,7 +65,7 @@ Many thanks to the following people who have contributed code to <em/kppp/
 <item><url url="mailto:peter.silva@videotron.ca" name="Peter Silva"> for pop
 up dialogs
 and other contributions.
-<item><url url="mailto:MABrown@etcconnect.com" name="Martin A. Brown" for
+<item><url url="mailto:MABrown@etcconnect.com" name="Martin A. Brown"> for
 proofreading some English text in the program
 </itemize>
 <p>
@@ -171,9 +171,9 @@ The following sites may be of interest for further information about the
 ppp protocol, pppd and networking in general:
 <itemize>
 <item> Linux PPP FAQ: <url url="http://metalab.unc.edu/mdw/FAQ/PPP-FAQ.html">
+<item> Linux PPP HOWTO: <url url="http://metalab.unc.edu/mdw/HOWTO/PPP-HOWTO.html">
 <item> <url url="http://www.thoughtport.com:8080/PPP/index.html">
 <item> The Network Administrators' Guide: <url url="http://metalab.unc.edu/mdw/LDP/nag/nag.html">
-<p>
 </itemize>
 
 
@@ -929,7 +929,7 @@ didn't understand enough about Unix and device permissions.
 The <em/kppp/ team has lately done a lot of work to make <em/kppp/ setuid-safe. But it's
 up to you to decide if you install and how you install it.
 
-<sect2><em/kppp/ just sits there and waits: Expecting OK
+<sect2><em/kppp/ just sits there and waits: Expecting OK<p>
 
 <itemize>
 
@@ -949,9 +949,9 @@ Issuing <it>xhost +</it> before starting the connection would do the job, but be
 <p> 
 
 
-<sect2><em/kppp/ reports a successful connection, but Netscape just says "The
+<sect2><em/kppp/ reports a successful connection, but Netscape just says "The 
 server does not have a DNS entry"<p>
-Try pinging another server by its IP number, e.g. <tt>ping </tt>. If that
+Try pinging another server by its IP number, e.g. <tt>ping 195.0.254.76</tt>. If that
 works you should
 
 <itemize>
@@ -984,9 +984,8 @@ Send        ppp
 <p>
 
 This means that you don't have permissions to create a lock file.
-If for example you have specified '/var/lock/LCK..modem" on the
-modem dialog tab, you must have write permission to write
-to /var/lock/. This is of course no problem if you have
+If you chose to use a lock file you must have write permissions to the
+directory (typically /var/lock). This is of course no problem if you have
 given <em/kppp/ setuid permissions. Please read the section on <ref id="lock files">.
 
 <p>
@@ -1095,7 +1094,8 @@ Then send <url url="mailto:wuebben@math.cornell.edu" name="me"> the patches.
 Short answer: You haven't started the PPP software on the peer system.<p>
 See a posting from Al Longyear on <url url="http://www.dejanews.com/getdoc.xp?AN=184945314"> for a more detailed explanation.
 <p>
-<sect2>Signal 15</sect2>
+
+<sect2>Signal 15<p>
 If you see the following lines you've probably just received a timeout error
 from <em/kppp/, too. <em/kppp/ has been waiting for the PPP interface to
 come up and gave up after the specified timeout. pppd was signaled to shut
@@ -1107,12 +1107,31 @@ pppd[26921]: Connect: ppp0 <--> /dev/ttyS0
 pppd[26921]: Terminating on signal 15.
 pppd[26921]: Connection terminated.
 pppd[26921]: Exit.
-</tscreen></verb>
-<sect2>Receive serial link is not 8-bit clean</sect2>
+</verb></tscreen>
+
+<sect2>Receive serial link is not 8-bit clean<p>
 The PPP daemon is alarmed by the fact that all data it receives has bit 8 set
 to zero. In most cases this simply indicates that the remote PPP server isn't
 running yet. You might be still confronted with a login prompt that echoes
 back all data sent by your pppd.
+<p>
+
+<sect2>can't locate module ppp-compress<p>
+Do you get the following messages ?
+<tscreen><verb>
+modprobe: can't locate module ppp-compress-21 
+modprobe: can't locate module ppp-compress-26 
+modprobe: can't locate module ppp-compress-24
+</verb></tscreen>
+
+Just add the lines 
+
+<tscreen><verb>
+alias ppp-compress-21 bsd_comp 
+alias ppp-compress-24 ppp_deflate 
+alias ppp-compress-26 ppp_deflate 
+</verb></tscreen>
+to your /etc/conf.modules file. 
 <p>
 
 <sect>Appendix
