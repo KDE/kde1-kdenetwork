@@ -1139,7 +1139,6 @@ msgid "Modem Asserts CD Line."
 msgstr "Modem reconhece linha CD."
 
 #: general.cpp:540
-#, fuzzy
 msgid ""
 "This controls how <i>kppp</i> detects that the modem\n"
 "is not responding. Unless you are having\n"
@@ -1151,7 +1150,7 @@ msgstr ""
 "respondendo. A não ser que esteja tendo problemas com isso,\n"
 "não modifique esta configuração.\n"
 "\n"
-"<b>Padrão</b>: ligada"
+"<b>Padrão</b>: desligada"
 
 #: general.cpp:553
 msgid "Modem Commands"
