@@ -1,8 +1,9 @@
-pkg_DATA =	Poland.rst \
-		Poland_Local.rst \
+pkg_DATA =	Netia_Lokalne_Niebieska \
+		Netia_Lokalne_Zielona \
+		Netia_100km_Niebieska \
+		Netia_100km_Zielona \
 		TP_Lokalne.rst \
-		Netia_Lokalne_Niebieska \
-		Netia_Lokalne_Zielona
+		TP_100km.rst
 
 pkgdir = $(kde_datadir)/kppp/Rules/Poland
 
