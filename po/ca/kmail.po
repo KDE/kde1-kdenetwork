@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
 "POT-Creation-Date: 1999-04-26 03:29+0200\n"
-"PO-Revision-Date: 1999-02-05 22:52+0100\n"
+"PO-Revision-Date: 1999-08-20 00:11+02:00\n"
 "Last-Translator: Sebastià Pla <sastia@redestb.es>\n"
 "Language-Team: CATALAN <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -621,7 +621,7 @@ msgstr "Host:"
 
 #: kmsettings.cpp:914
 msgid "Store POP password in config file"
-msgstr ""
+msgstr "Desa la contrasenya POP a l'arxiu de configuració"
 
 #: kmsettings.cpp:919
 msgid "Delete mail from server"
@@ -1118,6 +1118,9 @@ msgid ""
 "Mail checking aborted\n"
 "Check your account settings!"
 msgstr ""
+"El compte %s no té definida cap bústia!\n"
+"S'ha aturat la comprovació de correu\n"
+"Comproveu la vostra configuració de comptes!"
 
 #: kmacctmgr.cpp:207 kmacctmgr.cpp:264
 msgid ""
