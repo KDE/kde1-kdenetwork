@@ -51,7 +51,7 @@ open_ksircData::open_ksircData
 		okButton->setFont( font );
 	}
 	connect( okButton, SIGNAL(clicked()), SLOT(create_toplevel()) );
-	okButton->setText( i18n("Ok") );
+	okButton->setText( i18n("OK") );
 	okButton->setAutoRepeat( FALSE );
 	okButton->setAutoResize( FALSE );
 	okButton->setAutoDefault( TRUE );

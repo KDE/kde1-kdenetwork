@@ -52,7 +52,7 @@ KornOptData::KornOptData
 	okButton = new QPushButton( this, "OkButton" );
 	okButton->setGeometry( 200, 320, 90, 30 );
 	connect( okButton, SIGNAL(clicked()), SLOT(okClicked()) );
-	okButton->setText( "&Ok" );
+	okButton->setText( "&OK" );
 	okButton->setAutoRepeat( FALSE );
 	okButton->setAutoResize( FALSE );
 

@@ -565,7 +565,7 @@ QString sstr;
     connect( quitButton, SIGNAL(clicked()), SLOT(quit()) );
     
 quitButton = new QPushButton( this, "OKButton" );
-    quitButton->setText( klocale->translate("Ok" ));
+    quitButton->setText( klocale->translate("OK" ));
     quitButton->setGeometry( 10,305, 65,30 );
     connect( quitButton, SIGNAL(clicked()), SLOT(save()) );
     tab->resize( 350, 300 );

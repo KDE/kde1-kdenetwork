@@ -87,7 +87,7 @@ KSircColourData::KSircColourData
 	dlgedit_PushButton_1->setMinimumSize( 10, 10 );
 	dlgedit_PushButton_1->setMaximumSize( 32767, 32767 );
 	connect( dlgedit_PushButton_1, SIGNAL(clicked()), SLOT(ok()) );
-	dlgedit_PushButton_1->setText( i18n("Ok") );
+	dlgedit_PushButton_1->setText( i18n("OK") );
 	dlgedit_PushButton_1->setAutoRepeat( FALSE );
 	dlgedit_PushButton_1->setAutoResize( FALSE );
 	dlgedit_PushButton_1->setAutoDefault( TRUE );

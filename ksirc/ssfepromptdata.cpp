@@ -48,7 +48,7 @@ ssfepromptdata::ssfepromptdata
 	dlgedit_PushButton_1->setMinimumSize( 10, 10 );
 	dlgedit_PushButton_1->setMaximumSize( 32767, 32767 );
 	connect( dlgedit_PushButton_1, SIGNAL(clicked()), SLOT(terminate()) );
-	dlgedit_PushButton_1->setText( "&Ok" );
+	dlgedit_PushButton_1->setText( "&OK" );
 	dlgedit_PushButton_1->setAutoRepeat( FALSE );
 	dlgedit_PushButton_1->setAutoResize( FALSE );
 	dlgedit_PushButton_1->setAutoDefault( TRUE );
