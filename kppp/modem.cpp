@@ -439,7 +439,7 @@ QString Modem::parseModemSpeed(const QString &s) {
 // a lock file can't be created ( permission problem )
 int Modem::lockdevice() {
   int fd;
-  char newlock[80]="";
+  char newlock[80]=""; // safe
 
   QDir lockdir(gpppdata.modemLockDir());
   
@@ -477,7 +477,7 @@ int Modem::lockdevice() {
   if ((fd = open(lockfile.data(), O_RDONLY)) >= 0) {
     // Mario: it's not necessary to read more than lets say 32 bytes. If
     // file has more than 32 bytes, skip the rest
-    char oldlock[33];
+    char oldlock[33]; // safe
     int sz = read(fd, &oldlock, 32);
     close (fd);
     if (sz <= 0)

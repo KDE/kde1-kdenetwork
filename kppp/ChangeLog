@@ -1,3 +1,19 @@
+1998-11-17  Mario Weilguni <mweilguni@kde.org>
+
+	* Security fix: fixed possible buffer overflow in findFileInPath()
+	* Security fixes: re-checked all char[] on stack to be suid-safe
+	  If it is considere to be safe, a comment was added to the end of
+	  line
+
+1998-11-17  Mario Weilguni <mweilguni@kde.org>	
+
+	* removed another "extern" by making Accounting::getCosts(...) static
+
+1998-11-17  Mario Weilguni <mweilguni@kde.org>
+
+	* further improvements in ppp-log wizard
+	* runtests.cpp: test for Qt >= 1.40 before include header files
+
 1998-11-11  Harri Porten  <porten@kde.org>
 
 	* connect.cpp: allow a little delay after sending the volume

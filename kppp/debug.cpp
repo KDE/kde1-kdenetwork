@@ -126,9 +126,7 @@ void DebugWidget::resizeEvent(QResizeEvent *e){
 
 
 void DebugWidget::enter() {
-  char character[3];
-  character = "\r\n";
-
+  char character[3] = "\r\n"; // safe
   text_window->append(character);
 }
 

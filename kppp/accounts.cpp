@@ -37,8 +37,6 @@
 //account combo box
 
 
-extern KPPPWidget *p_kppp;
-
 void parseargs(char* buf, char** args);
 
 AccountWidget::AccountWidget( QWidget *parent, const char *name )
@@ -189,8 +187,7 @@ void AccountWidget::slotListBoxSelect(int idx) {
     reset->setEnabled(TRUE);
     costlabel->setEnabled(TRUE);
     costedit->setEnabled(TRUE);
-    costedit->setText(p_kppp->accounting.getCosts(
-        		      accountlist_l->text(accountlist_l->currentItem())));
+    costedit->setText(Accounting::getCosts(accountlist_l->text(accountlist_l->currentItem())));
 
     vollabel->setEnabled(TRUE);
     voledit->setEnabled(TRUE);

@@ -39,27 +39,44 @@ QString findFileInPath( const char *fname, const char *extraPath) {
   if(_fname.find(' ') != -1)
     _fname = _fname.left(_fname.find(' '));
 
-  char path[4096] = "";
+  int psize = 0;
+  if(extraPath != 0)
+    psize += strlen(extraPath);
+  if(getenv("PATH") != 0)
+    psize += strlen(getenv("PATH"));
+
+  // psize for the path, 2 for ":" and one zero byte
+  char *path = new char[psize+3];
+  if(!path) {
+    fprintf(stderr, "malloc failed!\n");
+    exit(1);
+  }
+  path[0] = 0;
+
   if(extraPath != 0)
     strcpy(path, extraPath);
 
   // for absolute path
   strcat(path, ":");
 
-  if(getenv("PATH") != NULL)
-    strncat(path, getenv("PATH"), sizeof(path)-512);
+  if(getenv("PATH") != 0) {
+    strcat(path, ":");
+    strcat(path, getenv("PATH"));
+  }
 
   char *p = strtok(path, ":");
-  while(p != NULL) {
+  while(p != 0) {
     f = p;
     f += "/";
     f += _fname;
     if(access(f.data(), F_OK) == 0) {
+      delete path;
       return f;
     } else
-      p = strtok(NULL, ":");
-  }
+      p = strtok(0, ":");
+  }  
 
+  delete path;
   f = "";
   return f;
 }
@@ -334,6 +351,8 @@ const char* PPPData::pppdPath() {
       fprintf(stderr, "kppp: low memory\n");
       exit(1);
     }
+    
+    // safe to use strcpy here
     strcpy(PPPDPATH, s.data());
   }
   

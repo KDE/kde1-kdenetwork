@@ -38,12 +38,19 @@
 #include <qstrlist.h>
 #include <qdialog.h>
 #include <kbuttonbox.h>
-// use short form for compatibility to Qt 1.33
+
+#include <qglobal.h>
+#if QT_VERSION < 140
 #include <qmlined.h>
-// #include <qmultilinedit.h>
+#else
+#include <qmultilinedit.h>
+#endif
+
 #include <qlayout.h>
 #include <kapp.h>
 #include <kmsgbox.h>
+#include <qregexp.h>
+
 #include "macros.h"
 #include "pppdata.h"
 
@@ -70,7 +77,8 @@ const char *PPPL_findLogFile() {
 int PPPL_MakeLog(QStrList &list) {
   FILE *f;
   int pid = -1, newpid;
-  char buffer[1024], *p;
+  char buffer[1024];
+  char *p;
   const char *pidp;
 
   const char *fname = PPPL_findLogFile();
@@ -143,6 +151,36 @@ void PPPL_AnalyseLog(QStrList &list, QStrList &result) {
 
   result.clear();
 
+  // setup the analysis database
+  struct {
+    const char *regexp;
+    const char *answer;
+  } hints[] = {
+    {"Receive serial link is not 8-bit clean",
+     i18n("You have launched pppd before the remote server " \
+	  "was ready to establish a PPP connection.\n"
+	  "Please use the terminal-based login to verify") },
+
+    {"Serial line is looped back", 
+     i18n("Do you use /dev/modem ? If so, you should specify "
+	  "the real device instead, e.g. /dev/ttyS1 (COM2).") },
+    
+    {"AP authentication failed",
+     i18n("Check that you supplied the correct username and password!")} ,
+    
+    {"is locked by pid",
+     i18n("You shouldn't pass 'lock' as an argument to pppd. "
+	  "Check /etc/ppp/options and ~/.ppprc") },
+    
+    {"CP: timeout sending",
+     i18n("The remote system does not seem to answer to\n"
+	  "configuration request! Contact your provider!") },
+
+    // terminator
+    {0,0}
+  };
+    
+
   // scan the log for keywords and try to offer any help
   for(char *line = list.first(); line; line = list.next()) {
     // look for remote message      
@@ -156,19 +194,16 @@ void PPPL_AnalyseLog(QStrList &list, QStrList &result) {
         result.append(msg.data());
       }
     }
-    if(strstr(line, "Receive serial link is not 8-bit clean"))
-      result.append(i18n("You have launched pppd before the remote server "
-                         "was ready to establish a PPP connection.\n"
-                         "Please use the terminal-based login to verify "
-                         "your login procedure."));
-    if(strstr(line, "Serial line is looped back"))
-      result.append(i18n("Do you use /dev/modem ? If so, you should specify "
-                         "the real device instead, e.g. /dev/ttyS1 (COM2)."));
-    if(strstr(line, "PAP authentication failed"))
-      result.append(i18n("Verify your password."));
-    if(strstr(line, "is locked by pid"))
-      result.append(i18n("You shouldn't pass 'lock' as an argument to pppd. "
-                         "Check /etc/ppp/options and ~/.ppprc"));
+
+    // check in the hint database
+    for(uint k = 0; hints[k].regexp != 0; k++) {
+      QRegExp rx(hints[k].regexp);
+      QString l(line);
+      if(l.contains(rx)) {
+	result.append(hints[k].answer);
+	break;
+      }
+    }
   }
 
   if (result.isEmpty())
@@ -266,5 +301,3 @@ void PPPL_ShowLog() {
   }
   delete dlg;
 }
-
-

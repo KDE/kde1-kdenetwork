@@ -25,7 +25,6 @@
  * Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-
 #ifndef _PPPDATA_H_
 #define _PPPDATA_H_
 

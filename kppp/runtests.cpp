@@ -326,7 +326,7 @@ int runTests() {
     bool access = FALSE;
     FILE *f;
     if((f = fopen("/etc/kppp.allow", "r")) != NULL) {
-      char buf[2048];
+      char buf[2048]; // safe
       while(f != NULL && !feof(f)) {
 	if(fgets(buf, sizeof(buf), f) != NULL) {
 	  QString s(buf, sizeof(buf));

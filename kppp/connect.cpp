@@ -1193,15 +1193,15 @@ void ConnectWidget::writeline(const char *s) {
 
 // Set the hostname and domain from DNS Server
 void auto_hostname() {
-
   struct in_addr local_ip;
   struct hostent *hostname_entry;
   QString new_hostname;
   int    dot;
-  char   tmp_str[100];
+  char   tmp_str[100]; // buffer overflow safe
 
-  gethostname(tmp_str, 100);
-  old_hostname=tmp_str;
+  gethostname(tmp_str, sizeof(tmp_str));
+  tmp_str[sizeof(tmp_str-1)]=0; // panic
+  old_hostname=tmp_str; // copy to QString
 
   if (!local_ip_address.isEmpty() && gpppdata.autoname()) {
     local_ip.s_addr=inet_addr((const char*)local_ip_address);

@@ -166,20 +166,20 @@ void showNews() {
 extern "C" {
 
 static int kppp_x_errhandler( Display *dpy, XErrorEvent *err ) {
-    char errstr[256];
-
-    /*
+  char errstr[256]; // safe
+  
+  /*
     if(gpppdata.pppdpid() >= 0) {
-      kill(gpppdata.pppdpid(), SIGTERM);
+    kill(gpppdata.pppdpid(), SIGTERM);
     }
-
+    
     p_kppp->stopAccounting();
     removedns();
     unlockdevice();*/
-
-    XGetErrorText( dpy, err->error_code, errstr, 256 );
-    fatal( "X Error: %s\n  Major opcode:  %d", errstr, err->request_code );
-    return 0;
+  
+  XGetErrorText( dpy, err->error_code, errstr, 256 );
+  fatal( "X Error: %s\n  Major opcode:  %d", errstr, err->request_code );
+  return 0;
 }
 
 
@@ -199,10 +199,10 @@ static int kppp_xio_errhandler( Display * ) {
   }
 }
 
-} /* extern "C" */                                  
+} /* extern "C" */
 
 
-void make_directories(){
+void make_directories() {
   QDir dir;
 
   QString d = KApplication::localkdedir();
@@ -1188,7 +1188,7 @@ pid_t execute_command (const char *command) {
 // -1 on failure or the pid of an already running kppp process. 
 pid_t create_pidfile() {
   int fd = -1;
-  char pidstr[40];
+  char pidstr[40]; // safe
   
   pidfile = KApplication::localkdedir() + PIDFILE;
 

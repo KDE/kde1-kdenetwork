@@ -41,7 +41,6 @@ public:
 
   bool running();
   bool loadRuleSet(const char *name);
-  QString getCosts(const char* accountname);
   double total();
   double session();
 
@@ -68,6 +67,9 @@ private:
   double _lastlen;
   int acct_timer_id, update_timer_id;
 
+  // static members
+public:
+  static QString getCosts(const char* accountname);  
 };
 
 #endif

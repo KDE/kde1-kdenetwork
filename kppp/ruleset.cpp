@@ -108,7 +108,7 @@ int RuleSet::load(const char *filename) {
   if(!f.open(IO_ReadOnly))
     return -1;
 
-  char buffer[2048];
+  char buffer[2048]; // safe
   int lineno=0;
 
   while(!f.atEnd()) {
