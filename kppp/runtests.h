@@ -41,5 +41,9 @@ const int TEST_CRITICAL = 3;
 int securityTests();
 int runTests();
 
+#ifdef linux
+bool ppp_available(void);
+#endif
+
 #endif
 

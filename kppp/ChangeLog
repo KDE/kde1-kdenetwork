@@ -1,3 +1,11 @@
+1998-11-04  Mario Weilguni <mweilguni@kde.org>
+
+	* kppp now checks itself if the kernel supports PPP (Linux only
+	for now. If anyone wants this for another system - implement it!)
+	* before dialing out, the check for PPP support is repeated, if
+	the kernel module was unloaded between running the tests and the
+	actual dialing, it will reloaded again	
+
 1998-11-01  Harri Porten  <porten@kde.org>
 
 	* modemcmds.cpp: added a wait&CR&wait sequence before sending the

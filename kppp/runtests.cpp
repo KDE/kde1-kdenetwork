@@ -44,6 +44,238 @@
 #define _PATH_RESCONF "/etc/resolv.conf"
 #endif
 
+#ifdef linux
+#include <sys/ioctl.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <sys/time.h>
+#include <sys/errno.h>
+#include <sys/file.h>
+#include <sys/stat.h>
+#include <sys/utsname.h>
+
+#if __GLIBC__ >= 2
+#include <net/if.h>
+#include <net/if_arp.h>
+#include <net/route.h>
+#include <netinet/if_ether.h>
+#else
+#include <linux/if.h>
+#include <linux/if_arp.h>
+#include <linux/route.h>
+#include <linux/if_ether.h>
+#endif
+#include <linux/types.h>
+#include <linux/ppp_defs.h>
+#include "if_ppp.h"
+#endif
+
+
+#ifdef linux
+// shamelessly stolen from pppd-2.3.5
+
+/********************************************************************
+ *
+ * Procedure to determine if the PPP line discipline is registered.
+ */
+
+int ppp_disc = N_PPP;
+
+/********************************************************************
+ *
+ * Internal routine to decode the version.modification.patch level
+ */
+
+static void decode_version (char *buf, int *version,
+			    int *modification, int *patch)
+  {
+    *version      = (int) strtoul (buf, &buf, 10);
+    *modification = 0;
+    *patch        = 0;
+    
+    if (*buf == '.')
+      {
+	++buf;
+	*modification = (int) strtoul (buf, &buf, 10);
+	if (*buf == '.')
+	  {
+	    ++buf;
+	    *patch = (int) strtoul (buf, &buf, 10);
+	  }
+      }
+    
+    if (*buf != '\0')
+      {
+	*version      =
+	*modification =
+	*patch        = 0;
+      }
+  }
+
+
+bool ppp_registered(void) {
+  int local_fd;
+  int init_disc = -1;
+  int initfdflags;
+
+  local_fd = open(gpppdata.modemDevice(), O_NONBLOCK | O_RDWR, 0);
+  if (local_fd < 0)
+    {
+      return false;
+    }
+
+  initfdflags = fcntl(local_fd, F_GETFL);
+  if (initfdflags == -1)
+    {
+      close (local_fd);
+      return false;
+    }
+ 
+  initfdflags &= ~O_NONBLOCK;
+  fcntl(local_fd, F_SETFL, initfdflags);
+  /*
+   * Read the initial line dicipline and try to put the device into the
+   * PPP dicipline.
+   */
+  if (ioctl(local_fd, TIOCGETD, &init_disc) < 0)
+    {
+      close (local_fd);
+      return false;
+    }
+ 
+  if (ioctl(local_fd, TIOCSETD, &ppp_disc) < 0)
+    {
+      close (local_fd);
+      return false;
+    }
+ 
+  if (ioctl(local_fd, TIOCSETD, &init_disc) < 0)
+    {
+      close (local_fd);
+      return false;
+    }
+ 
+  close (local_fd);
+  return true;
+}
+
+/********************************************************************
+ *
+ * ppp_available - check whether the system has any ppp interfaces
+ * (in fact we check whether we can do an ioctl on ppp0).
+ *
+ *********************************************************************/
+bool ppp_available(void)
+{
+  int s, ok;
+  struct ifreq ifr;
+
+  /*
+   * Open a socket for doing the ioctl operations.
+   */
+  s = socket(AF_INET, SOCK_DGRAM, 0);
+  if (s < 0)
+    {
+      return false;
+    }
+ 
+  strncpy (ifr.ifr_name, "ppp0", sizeof (ifr.ifr_name));
+  ok = ioctl(s, SIOCGIFFLAGS, (caddr_t) &ifr) >= 0;
+  /*
+   * If the device did not exist then attempt to create one by putting the
+   * current tty into the PPP discipline. If this works then obtain the
+   * flags for the device again.
+   */
+  if (!ok)
+    {
+      if (ppp_registered())
+        {
+	  strncpy (ifr.ifr_name, "ppp0", sizeof (ifr.ifr_name));
+	  ok = ioctl(s, SIOCGIFFLAGS, (caddr_t) &ifr) >= 0;
+        }
+    }
+  /*
+   * Ensure that the hardware address is for PPP and not something else
+   */
+  if (ok)
+    {
+      ok = ioctl (s, SIOCGIFHWADDR, (caddr_t) &ifr) >= 0;
+    }
+ 
+  if (ok && ((ifr.ifr_hwaddr.sa_family & ~0xFF) != ARPHRD_PPP))
+    {
+      ok = 0;
+    }
+ 
+  if (!ok)
+    {
+      return false;
+    }
+  /*
+   *  This is the PPP device. Validate the version of the driver at this
+   *  point to ensure that this program will work with the driver.
+   */
+    else
+    {
+	char   abBuffer [1024];
+	int size;
+	int driver_version, driver_modification, driver_patch;
+	int my_version, my_modification, my_patch;
+
+	ifr.ifr_data = abBuffer;
+	size = ioctl (s, SIOCGPPPVER, (caddr_t) &ifr);
+	if (size < 0) {
+	    ok = 0;
+	} else {
+	    decode_version(abBuffer,
+			   &driver_version,
+			   &driver_modification,
+			   &driver_patch);
+	    /*
+	     * Validate the version of the driver against the version that we used.
+	     */
+#define PPPD_VERSION "2.3.5"
+	    decode_version(PPPD_VERSION,
+			   &my_version,
+			   &my_modification,
+			   &my_patch);
+
+	    /* The version numbers must match */
+	    if (driver_version != my_version)
+	    {
+		ok = 0;
+	    }
+
+	    // no need to check this number
+// 	    /* The modification levels must be legal */
+// 	    if (driver_modification < my_modification)
+// 	    {
+// 	      /*
+// 		if (driver_modification >= 2) {
+// 		    /* we can cope with 2.2.0 and above */
+// 		  driver_is_old = 1;
+// 		} else {
+// 		    ok = 0;
+// 		}
+// */
+// 	    }
+
+	    close (s);
+	    if (!ok)
+	    {
+	      /*		sprintf (route_buffer,
+			 "Sorry - PPP driver version %d.%d.%d is out of date\n",
+			 driver_version, driver_modification, driver_patch);
+
+			 no_ppp_msg = route_buffer;*/
+	    }
+	}
+    }
+  return (bool)ok;
+}
+#endif
+
+
 int uidFromName(const char *uname) {
   struct passwd *pw;
 
@@ -59,6 +291,7 @@ int uidFromName(const char *uname) {
   endpwent();
   return -1;
 }
+
 
 int securityTests() {
 
@@ -122,6 +355,27 @@ int runTests() {
     }
   }
 
+#ifdef linux
+  // Test linux-1: check if the the kernel has PPP support
+  if(!ppp_available()) {
+    // make sure that the problem does not come from missing permission to avoid false
+    // alarms
+    if(access(gpppdata.modemDevice(), W_OK) == 0) {
+      QMessageBox::warning(0,
+			   i18n("Error"),
+			   i18n("This kernel has no PPP support, neither\n"
+				"compiled in nor via the kernel module\n"
+				"loader.\n"
+				"\n"
+				"To solve this problem:\n"
+				"  * contact your system adminstrator\n"
+				"or\n"
+				"  * install a kernel with PPP support\n"));
+      exit(1);
+  }
+  }
+#endif
+
   // Test 1: search the pppd binary
   QString f = gpppdata.pppdPath();
   bool pppdFound = FALSE;
@@ -144,9 +398,9 @@ int runTests() {
       QMessageBox::critical(0,
 		   i18n("Error"),
 		   i18n("You do not have the permission\n"
-				      "to start pppd!\n\n"
-				      "Contact your system administrator\n"
-				      "and ask to get access to pppd."));
+			"to start pppd!\n\n"
+			"Contact your system administrator\n"
+			"and ask to get access to pppd."));
       return TEST_CRITICAL;
     } else {
       struct stat st;
@@ -155,9 +409,9 @@ int runTests() {
 	QMessageBox::warning(0,
 		     i18n("Error"),
 		     i18n("pppd is not properly installed!\n\n"
-					"The pppd binary must be installed\n"
-					"with the SUID bit set. Contact your\n"
-					"system administrator."));
+			  "The pppd binary must be installed\n"
+			  "with the SUID bit set. Contact your\n"
+			  "system administrator."));
 	warning++;
       }
     }
@@ -170,9 +424,9 @@ int runTests() {
 	QMessageBox::warning(0,
 		     i18n("Error"),
 		     i18n("pppd is not properly installed!\n\n"
-					"The pppd binary must be installed\n"
-					"with the SUID bit set. Contact your\n"
-					"system administrator."));
+			  "The pppd binary must be installed\n"
+			  "with the SUID bit set. Contact your\n"
+			  "system administrator."));
 	return TEST_CRITICAL;
       }
     }
@@ -242,3 +496,4 @@ int runTests() {
   else
     return TEST_WARNING;
 }
+

@@ -47,6 +47,10 @@
 #include <resolv.h>
 #endif
 
+#ifdef linux
+#include "runtests.h"
+#endif
+
 #include "pap.h"
 #include "chap.h"
 #include "connect.h"
@@ -218,6 +222,13 @@ void ConnectWidget::init() {
     vmain = 20; // wait until cancel is pressed
     return;
   }
+
+#ifdef linux
+  // re-check PPP support. This will load the kernel module if it was meanwhile unloaded. This will
+  // prevent us from the strange error "This kernel lacks ppp support" a lot of people had, though
+  // PPP support was available as kernel module. I think this is due to a timing problem
+  (void)ppp_available();
+#endif
 
   if(Modem::modem->opentty()) {
     messg->setText(Modem::modem->modemMessage());
