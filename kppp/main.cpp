@@ -95,11 +95,11 @@ void usage(char* progname) {
 
 void banner(char* progname){
   fprintf(stderr,"%s version " KPPPVERSION "\n",progname); 
-  fprintf(stderr,"(c) 1997-1998 Bernd Johannes Wuebben ");
+  fprintf(stderr,"(c) 1997-1999 Bernd Johannes Wuebben ");
   fprintf(stderr,"<wuebben@kde.org>\n");
-  fprintf(stderr,"(c) 1997-1998 Mario Weilguni ");
+  fprintf(stderr,"(c) 1997-1999 Mario Weilguni ");
   fprintf(stderr,"<mweilguni@kde.org>\n");
-  fprintf(stderr,"(c) 1998 Harri Porten <porten@kde.org>\n");
+  fprintf(stderr,"(c) 1998-1999 Harri Porten <porten@kde.org>\n");
   fprintf(stderr,"Use -h for the list of valid command line options.\n\n");
   shutDown(0);
 }
@@ -203,9 +203,6 @@ static int kppp_xio_errhandler( Display * ) {
 
 } /* extern "C" */
 
-
-#define MAX_NAME_LENGTH    64
-
 int main( int argc, char **argv ) {
 
   // Don't insert anything above this line unless you really know what
@@ -274,7 +271,7 @@ int main( int argc, char **argv ) {
 	shutDown(1);
       case 'c':
 	{
-	  // copy at most MAX_NAME_LENGTH bytes
+	  const int MAX_NAME_LENGTH = 64;
 	  char tmp[MAX_NAME_LENGTH];
 	  strncpy(tmp, optarg, MAX_NAME_LENGTH-1);
 	  
@@ -296,14 +293,8 @@ int main( int argc, char **argv ) {
 	quit_on_disconnect = true;
 	break;
       case 'r':
-	{
-	  // drop root
-	  setuid(getuid());
-          setgid(getgid());
-
-	  // we need a KAppliction for locales, create one
-	  shutDown(RuleSet::checkRuleFile(optarg));
-	}
+	shutDown(RuleSet::checkRuleFile(optarg));
+	break; // never reached
       case 't':
 	TESTING=true;
 	break;
@@ -341,6 +332,14 @@ int main( int argc, char **argv ) {
     shutDown(0);
   }
   
+  // Mario: testing
+  if(TESTING) {
+    gpppdata.open();
+    AccountingSelector *w = new AccountingSelector(0);
+    w->show();
+    return a.exec();
+  }
+
   if (pid > 0) {
     msg.sprintf(i18n("kppp has detected a %s file.\n\n"
                      "Another instance of kppp seems to be "
@@ -352,13 +351,6 @@ int main( int argc, char **argv ) {
     shutDown(1);
   }
   
-  // Mario: testing
-  if(TESTING) {
-    //    gpppdata.open();
-    //    PPPL_ShowLog();
-    //    return a.exec();
-  }
-
   KPPPWidget kppp;
   p_kppp = &kppp;
 
@@ -772,6 +764,7 @@ void dieppp(int sig) {
       Requester::rq->removeSecret(AUTH_CHAP);
 
       gpppdata.setpppdpid(-1);
+      gpppdata.setpppdError(0);
       
       Debug("Executing command on disconnect since pppd has died:\n");
       execute_command(gpppdata.command_on_disconnect());
@@ -1256,7 +1249,6 @@ bool remove_pidfile() {
 
 
 void shutDown(int status) {
-
   pid_t pid;
   // don't bother about SIGCHLDs anymore
   signal(SIGCHLD, SIG_IGN);

@@ -762,11 +762,6 @@ ScriptWidget::ScriptWidget( QWidget *parent, bool isnewaccount, const char *name
   l12->addWidget(sl, 3);
   l12->addWidget(slb, 0);
 
-  //  default_script->setChecked(true);
-  //  connect(default_script, SIGNAL(toggled(bool)),
-  //	  this, SLOT(default_script_toggled(bool)));
-  //  default_script_toggled(true);
-
   //load data from gpppdata
   if(!isnewaccount) {
     QStrList &comlist = gpppdata.scriptType();
@@ -776,24 +771,12 @@ ScriptWidget::ScriptWidget( QWidget *parent, bool isnewaccount, const char *name
       stl->insertItem(com);
       sl->insertItem(arg);
     }
-
-    //    default_script->setChecked( (bool) (comlist.count()==0));
   }
 
   adjustScrollBar();
 
   tl->activate();
 }
-
-
-// void ScriptWidget::default_script_toggled(bool b) {
-//  se->setEnabled(!b);
-//  add->setEnabled(!b);
-//  insert->setEnabled(!b);
-//  remove->setEnabled(!b);
-//  stl->setEnabled(!b);
-//  sl->setEnabled(!b);
-// }
 
 bool ScriptWidget::check() {
   uint lstart = 0;

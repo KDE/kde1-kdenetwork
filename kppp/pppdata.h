@@ -154,14 +154,12 @@ public:
   ~PPPData() {};
 
   // general functions
-
   bool open();
   void save();
   void cancel();
   int  access();       // read/write access
 
   // function to read/write date to configuration file
-
   const char* readConfig(const char *, const char *, const char *);
   int readNumConfig(const char *, const char *, int);
   bool readListConfig(const char *, const char *, QStrList &, char sep = ',');
@@ -170,7 +168,6 @@ public:
   void writeListConfig(const char *, const char *, QStrList &, char sep = ',');
 
   // functions to set/get general kppp info
-
   const char* Password();
   void setPassword(const char* );
 
@@ -248,7 +245,6 @@ public:
 
 
   // modem command strings/responses
-
   const char* modemInitStr();
   void setModemInitStr(const char *);
 
@@ -293,8 +289,8 @@ public:
 
   void setUseCDLine(const int n);
   int  UseCDLine();
-  // functions to set/get account information
 
+  // functions to set/get account information
   int count();
   bool setAccount(const char *);
   bool setAccountbyIndex(int);
@@ -378,7 +374,6 @@ public:
   void setpppdArgument(QStrList &);
 
   //functions to change/set the child pppd process info
-
   pid_t pppdpid();
   void setpppdpid(pid_t);
 
@@ -415,7 +410,6 @@ public:
   QString password;
 
 private:
-
   int highcount;                         // index of highest account
   int caccount;                          // index of the current account
   QString cgroup;                        // name of current config group
@@ -428,7 +422,6 @@ private:
   int pppderror;                         // error encounterd running pppd
 
   QStrList phonelist;
-
 };
 
 extern PPPData gpppdata;

@@ -133,8 +133,7 @@ messages:
 # use mkinstalldirs, not "install -d"
 # don't install a list of file. Just one file per install.
 # if you have more of them, create a subdirectory with an extra Makefile 
-install-data-local:	
-#	@(cd Rules && $(MAKE) install)
+install-data-local:
 	@echo ""
 	@echo "Don't forget to send me a phone tarif rules file for your"
 	@echo "telecom company/country/region. Thanks."
@@ -240,4 +239,3 @@ scriptedit.moc: scriptedit.h
 groupbox.cpp: groupbox.moc
 groupbox.moc: groupbox.h
 	$(MOC) groupbox.h -o groupbox.moc
-

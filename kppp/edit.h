@@ -192,7 +192,6 @@ private slots:
   void addButton();
   void insertButton();
   void removeButton();
-  //  void default_script_toggled(bool);
 
   //signals linked to the scroll bar
   void scrolling(int);
@@ -204,8 +203,6 @@ private slots:
 private:
   void adjustScrollBar();
   QGroupBox *box;
-
-  //  QCheckBox *default_script;
 
   ScriptEdit *se;
   QPushButton *add;
