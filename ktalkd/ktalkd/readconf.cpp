@@ -37,19 +37,27 @@ int booleanresult(char * s)
 int read_user_config(char * key, char * result, int max)
 {
      char * value;
-     char * buff = new char[max];
+     char * buff = new char[S_CFGLINE];
      char * ret;
      fseek(fd,0,SEEK_SET);
      do {
-	  ret = fgets(buff,max,fd);
+	  ret = fgets(buff,S_CFGLINE,fd);
      } while ((ret) && (strncasecmp(buff,key,strlen(key))));
      if (ret) {
 	  value = strchr(buff,':')+1;
 	  while (isspace(*value)) value++; /* get rid of spaces, tabs... */
 	  strncpy(result,value,max);
-	  result[strlen(result)-1]='\0'; /* get rid of \n */
+          result[max-1]='\0'; /* in case it was longer than max chars */
+          char * lastchar = result + strlen(result) - 1; /* points to last char */
+	  if (*lastchar=='\n') *lastchar = '\0'; /* get rid of \n */
      }
      delete buff;
+     if (Options.debug_mode) {
+	if (ret)
+          syslog(LOG_DEBUG,"read_user_config : %s, %s",key,result);
+        else 
+          syslog(LOG_DEBUG,"read_user_config : %s -> not found",key);
+     }
      return (ret) ? 1 : 0;
 }
 

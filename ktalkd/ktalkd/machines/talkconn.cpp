@@ -67,19 +67,18 @@
 
 #define CTL_WAIT 2	/* time to wait for a response, in seconds */
 
+struct in_addr TalkConnection::defaultReplyAddr;
+short int TalkConnection::talkDaemonPort;          // Port number of talk demon  (517)
+short int TalkConnection::ntalkDaemonPort;         // Port number of ntalk demon (518)
+
+
 TalkConnection::TalkConnection(struct in_addr caller_machine_addr, 
                                char * r_name,
                                char * local_user,
                                ProtocolType _protocol) : 
    protocol(_protocol), his_machine_addr(caller_machine_addr), ctl_sockt(-1), sockt(-1)
 {
-    /* look up the address of the local host */
-    struct hostent *hp = gethostbyname(Options.hostname);
-    if (!hp) {
-        syslog(LOG_ERR, "GetHostByName failed for %s.",Options.hostname);
-        exit(-1);
-    }
-    memcpy(&my_machine_addr, hp->h_addr, hp->h_length);
+    my_machine_addr = getReplyAddr(his_machine_addr);
 
     new_msg.vers = TALK_VERSION;
     new_msg.pid = htonl (getpid ()); // is it necessary ?
@@ -92,6 +91,23 @@ TalkConnection::TalkConnection(struct in_addr caller_machine_addr,
     strncpy(old_msg.l_name,local_user,OLD_NAME_SIZE);
     strncpy(old_msg.r_name,r_name,OLD_NAME_SIZE);
 
+}
+
+TalkConnection::~TalkConnection()
+{
+    close_sockets();
+}
+
+void TalkConnection::init()
+{
+    /* look up the address of the local host */
+    struct hostent *hp = gethostbyname(Options.hostname);
+    if (!hp) {
+        syslog(LOG_ERR, "GetHostByName failed for %s.",Options.hostname);
+        exit(-1);
+    }
+    memcpy(&defaultReplyAddr, hp->h_addr, hp->h_length);
+
     /* find the server's ports */
     struct servent * sp = getservbyname("talk", "udp");
     if (sp == 0)
@@ -102,11 +118,6 @@ TalkConnection::TalkConnection(struct in_addr caller_machine_addr,
     if (sp == 0)
         syslog(LOG_ERR, "talkconnection: ntalk/udp: service is not registered.\n");
     ntalkDaemonPort = sp->s_port; // already in network byte order
-}
-
-TalkConnection::~TalkConnection()
-{
-    close_sockets();
 }
 
 int TalkConnection::open_socket (struct sockaddr_in *addr, int type)
@@ -145,6 +156,67 @@ void TalkConnection::open_sockets()
     /* store its address */
     set_addr((const struct sockaddr *)&my_addr);
 }
+
+/* Tries to find out the correct IP address that the daemon at host
+  "destination" has to respond to - code borrowed from ktalk, thanks Burkhard ! */
+struct in_addr TalkConnection::getReplyAddr (struct in_addr destination) {
+
+  in_addr *result;
+  unsigned char *help1;
+  unsigned char *help2;
+
+ /* disabled caching - I don't have QIntDict ... 
+  result = replyAddrList [(long) destination.s_addr];
+  if (result) {
+    return *result;
+  }
+ */
+  int testsock, i;
+  result = new (struct in_addr);
+  struct sockaddr_in client, daemon;
+  for (i = 0; i < 2; i++) {
+    client.sin_family = daemon.sin_family = AF_INET;
+    client.sin_addr.s_addr = htonl (INADDR_ANY);
+    client.sin_port = htons (0);
+    daemon.sin_addr = destination;
+    daemon.sin_port = i ? ntalkDaemonPort : talkDaemonPort;
+ 
+    // Connect to the daemon socket address
+    // On some UNIXes (such as Linux) this works and sets the IP address queried
+    // by getsockname to the local machine address used to reach the daemon.
+    // If it doesn't work (e.g. on SunOS and Solaris), the default machine
+    // address is used instead.
+    ksize_t length = sizeof (daemon);
+    if ((testsock = socket (AF_INET, SOCK_DGRAM, 0)) >= 0 &&
+        bind (testsock, (struct sockaddr *) &client, sizeof (client)) == 0 &&
+        ::connect (testsock, (struct sockaddr *) &daemon,
+                             sizeof (daemon)) == 0 &&
+        getsockname (testsock, (struct sockaddr *) &client, &length) != -1 &&
+        client.sin_addr.s_addr != htonl (INADDR_ANY))
+    {
+      *result = client.sin_addr;
+      message ("Found reply address");
+      ::close (testsock);
+      break;
+    }
+    if (testsock >= 0) ::close (testsock);
+  }
+  if (i == 2) {
+    *result = defaultReplyAddr;
+    message ("Couldn't find reply address, using default");
+  }
+  if (Options.debug_mode) {
+      help1 = (unsigned char *) &destination;
+      help2 = (unsigned char *) result;
+      syslog ( LOG_DEBUG,
+               "detected reply address for %d.%d.%d.%d: %d.%d.%d.%d",
+               help1 [0], help1 [1], help1 [2], help1 [3],
+               help2 [0], help2 [1], help2 [2], help2 [3]);
+    /*   replyAddrList.insert ((long) destination.s_addr, result); disabled */
+  }
+  return *result;
+}
+/* QIntDict <in_addr> TalkConnection::replyAddrList; */
 
 /** Check the remote protocol. Result stored in <protocol>.
  * @return 1 if succeeded to find at least 1 protocol */

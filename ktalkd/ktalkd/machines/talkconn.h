@@ -41,6 +41,10 @@ enum ProtocolType {noProtocol, talkProtocol, ntalkProtocol};
 class TalkConnection
 {
   public:
+
+    /** Global initialization. To be called once. */
+    static void init();
+    
     /** Create a talk connection.
      * @param r_addr Remote machine IP address
      * @param r_name Remote user name
@@ -103,16 +107,20 @@ class TalkConnection
     int open_socket (struct sockaddr_in *addr, int type);
     /** Check remote protocol. Used by ctl_transact. */
     void findProtocol();
+    /** Find the correct IP address that the daemon at host
+        "destination" has to respond to */
+    static struct in_addr getReplyAddr (struct in_addr destination);
+    static struct  in_addr defaultReplyAddr;
 
+    static short int talkDaemonPort;          // Port number of talk demon  (517)
+    static short int ntalkDaemonPort;         // Port number of ntalk demon (518)
+   
     ProtocolType protocol;
     
     /* inet addresses of the two machines */
     struct  in_addr my_machine_addr;
     struct  in_addr his_machine_addr;
 
-    short int talkDaemonPort;          // Port number of talk demon  (517)
-    short int ntalkDaemonPort;         // Port number of ntalk demon (518)
-   
     int     ctl_sockt;
     int     sockt;
 
