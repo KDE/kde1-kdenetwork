@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: karchie-1.1\n"
-"POT-Creation-Date: 1999-01-13 01:58+0100\n"
+"POT-Creation-Date: 1999-03-05 02:18+0100\n"
 "PO-Revision-Date: 1999-03-19 09:48+0100\n"
 "Last-Translator: Jañ-Mai Drapier <jdrapier@club-internet.fr>\n"
 "Language-Team: Brezhoneg <Suav.Icb@wanadoo.fr>\n"
@@ -142,10 +142,15 @@ msgstr "dre z&eizad"
 msgid "by &Filesize"
 msgstr "dre &vent ar restr"
 
-#: KAMenu.cpp:177
-#, c-format
+#: KAMenu.cpp:169
+#, fuzzy
+msgid "KArchie ver. "
+msgstr "&Servijer archie"
+
+#: KAMenu.cpp:171
+#, fuzzy
 msgid ""
-"KArchie ver. %s\n"
+"\n"
 "\n"
 "by Jörg Habenicht <j.habenicht@europemail.com>\n"
 "\n"
@@ -171,15 +176,15 @@ msgstr ""
 "(Gwelit ar restroù README ha copyright.h).\n"
 "Ma kod zo hervez ar GPL"
 
-#: KAMenu.cpp:190
+#: KAMenu.cpp:184
 msgid "&Settings"
 msgstr "&Kefluniadur"
 
-#: KAMenu.cpp:191
+#: KAMenu.cpp:185
 msgid "&Query"
 msgstr "&Aters"
 
-#: KAMenu.cpp:192
+#: KAMenu.cpp:186
 msgid "S&ort"
 msgstr "&Rummañ"
 
