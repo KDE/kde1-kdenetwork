@@ -203,7 +203,7 @@ void Opener::mainLoop() {
 //
 // Send an open fd over a UNIX socket pair
 //
-int Opener::sendFD(const char *ttypath, int ttyfd,
+int Opener::sendFD(const char *path, int fd,
                        struct ResponseHeader *response) {
 
   struct { struct cmsghdr cmsg; int fd; } control;
@@ -220,8 +220,8 @@ int Opener::sendFD(const char *ttypath, int ttyfd,
   // Send data
   iov[0].iov_base = (void *) response;
   iov[0].iov_len = sizeof(struct ResponseHeader);
-  iov[1].iov_base = (void *) ttypath;
-  iov[1].iov_len = strlen(ttypath) + 1;
+  iov[1].iov_base = (void *) path;
+  iov[1].iov_len = strlen(path) + 1;
 
   // Send a (duplicate of) the file descriptor
   control.cmsg.cmsg_len = sizeof(struct cmsghdr) + sizeof(int);
@@ -242,10 +242,16 @@ int Opener::sendFD(const char *ttypath, int ttyfd,
    *
    * In either case, please drop me a note.
    */
-#if defined(linux) && (LINUX_VERSION_CODE >= KERNEL_VERSION(2,1,0))
-  *((int *)CMSG_DATA(&control)) = ttyfd;
+// #if defined(linux) && (LINUX_VERSION_CODE >= KERNEL_VERSION(2,1,0))
+//   *((int *)CMSG_DATA(&control)) = fd;
+// #else
+//   *((int *) &control.cmsg.cmsg_data) = fd;
+// #endif
+// Let's try it this way. Should work on FreeBSD, too.
+#ifdef CMSG_DATA
+  *((int *)CMSG_DATA(&control)) = fd;
 #else
-  *((int *) &control.cmsg.cmsg_data) = ttyfd;
+  *((int *) &control.cmsg.cmsg_data) = fd;
 #endif
 
   if (sendmsg(socket, &msg, 0) < 0) {

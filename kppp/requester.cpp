@@ -82,7 +82,8 @@ int Requester::recvFD(char *filename, int size) {
   iov[0].iov_len = sizeof(struct ResponseHeader);
   iov[1].iov_base = filename;
   iov[1].iov_len = size;
-#if defined(linux) && (LINUX_VERSION_CODE >= KERNEL_VERSION(2,1,0))
+// #if defined(linux) && (LINUX_VERSION_CODE >= KERNEL_VERSION(2,1,0))
+#ifdef CMSG_LEN
   cmsglen = CMSG_LEN(sizeof(int));
 #else
   cmsglen = sizeof(struct cmsghdr) + sizeof(int);
@@ -95,9 +96,9 @@ int Requester::recvFD(char *filename, int size) {
   alarm(2);
 
   len = recvmsg(socket, &msg, flags);
-  
+
   alarm(0);
-  signal(SIGALRM, SIG_IGN);
+  signal(SIGALRM, SIG_DFL);
   
   if(len <= 0) {
     perror("recvmsg failed");
@@ -107,7 +108,8 @@ int Requester::recvFD(char *filename, int size) {
     exit(1);
   } else {
     filename[size-1] = '\0'; 
-#if defined(linux) && (LINUX_VERSION_CODE >= KERNEL_VERSION(2,1,0))
+// #if defined(linux) && (LINUX_VERSION_CODE >= KERNEL_VERSION(2,1,0))
+#ifdef CMSG_DATA
     fd = *((int *)CMSG_DATA(&control));
 #else
     fd = *((int *) control.cmsg.cmsg_data);

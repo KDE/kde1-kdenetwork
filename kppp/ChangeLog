@@ -1,3 +1,7 @@
+1998-11-26  Harri Porten  <porten@kde.org>
+
+	* requester.cpp: made the ifdef's for cmsg_data more portable
+
 1998-11-25  Mario Weilguni <mweilguni@kde.org>
 
 	* fixed a lot of rulefiles. Pentecost Monday is NOT easter+60,
