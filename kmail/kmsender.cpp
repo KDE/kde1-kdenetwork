@@ -552,13 +552,22 @@ bool KMSendSendmail::finish(void)
 //-----------------------------------------------------------------------------
 bool KMSendSendmail::send(KMMessage* aMsg)
 {
-  mMsgStr = prepareStr(aMsg->asString());
+  QString bccStr;
 
   mMailerProc->clearArguments();
   *mMailerProc << mSender->mailer();
   addRecipients(aMsg->headerAddrField("To"));
   if (!aMsg->cc().isEmpty()) addRecipients(aMsg->headerAddrField("Cc"));
-  if (!aMsg->bcc().isEmpty()) addRecipients(aMsg->headerAddrField("Bcc"));
+
+  bccStr = aMsg->bcc();
+  if (!bccStr.isEmpty())
+  {
+    addRecipients(aMsg->headerAddrField("Bcc"));
+    aMsg->removeHeaderField("Bcc");
+  }
+
+  mMsgStr = prepareStr(aMsg->asString());
+  if (!bccStr.isEmpty()) aMsg->setBcc(bccStr);
 
   if (!mMailerProc->start(KProcess::NotifyOnExit,KProcess::All))
   {
@@ -706,12 +715,10 @@ bool KMSendSMTP::send(KMMessage *msg)
 //-----------------------------------------------------------------------------
 bool KMSendSMTP::smtpSend(KMMessage* aMsg)
 {
-  QString str, msgStr;
+  QString str, msgStr, bccStr;
   int replyCode;
 
   assert(aMsg != NULL);
-
-  msgStr = prepareStr(aMsg->asString(), TRUE);
 
   smtpInCmd("MAIL");
   replyCode = mClient->Mail(identity->emailAddr());
@@ -723,8 +730,12 @@ bool KMSendSMTP::smtpSend(KMMessage* aMsg)
   if (!aMsg->cc().isEmpty())
     if (!addRecipients(aMsg->headerAddrField("Cc"))) return FALSE;
 
-  if (!aMsg->bcc().isEmpty())
+  bccStr = aMsg->bcc();
+  if (!bccStr.isEmpty())
+  {
     if (!addRecipients(aMsg->headerAddrField("Bcc"))) return FALSE;
+    aMsg->removeHeaderField("Bcc");
+  }
 
   app->processEvents(500);
 
@@ -735,7 +746,10 @@ bool KMSendSMTP::smtpSend(KMMessage* aMsg)
     return smtpFailed("DATA", replyCode);
 
   smtpInCmd(i18n("transmitting message"));
+  msgStr = prepareStr(aMsg->asString(), TRUE);
   replyCode = mClient->SendData((const char*)msgStr);
+  if (!bccStr.isEmpty()) aMsg->setBcc(bccStr);
+
   smtpDebug("<body>");
   if(replyCode != 250 && replyCode != 251)
     return smtpFailed("<body>", replyCode);
