@@ -69,6 +69,8 @@ minimum_costs=0.0
 # whether you are connected for 1 second or 180 seconds.
 # This rule will take priority during the first 180 seconds
 # over any other rule, in particular the 'default' rule.
+# have a look at costgraphs.gif in the docs directory
+# of the kppp distribution for a graphic illustration.
 flat_init_costs=(0.74,180)
 
 # This is the default rule which is used when no other rule
