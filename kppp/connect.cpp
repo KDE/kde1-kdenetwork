@@ -200,6 +200,7 @@ void ConnectWidget::init() {
   p_xppp->con_speed = "";
 
   reconnect_on_disconnect = gpppdata.get_automatic_redial();
+  quit_on_disconnect = quit_on_disconnect || gpppdata.quit_on_disconnect(); 
 
   QString tit = klocale->translate("Connecting to: ");
   tit += gpppdata.accname();
@@ -376,7 +377,7 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
       timeout_timer->stop();
       timeout_timer->start(scriptTimeout);
 
-      if(!gpppdata.scriptType(scriptindex)) {
+      if(!gpppdata.scriptType(scriptindex) || !gpppdata.script(scriptindex)) {
 	vmain = 10;
         return;
       }
@@ -1284,7 +1285,7 @@ void ConnectWidget::hangup() {
     cfsetispeed(&temptty, B0);
     tcsetattr(modemfd, TCSAFLUSH, &temptty);
 
-    usleep(10000); // wait 0.01 secs 
+    usleep(gpppdata.modemInitDelay() * 10000); // 0.01 - 3.0 secs 
 
     cfsetospeed(&temptty, modemspeed());
     cfsetispeed(&temptty, modemspeed());

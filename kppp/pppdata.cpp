@@ -59,6 +59,9 @@ bool PPPData::open(const KApplication* app) {
 
   highcount = readNumConfig(GENERAL_GRP, NUMACCOUNTS_KEY, 0) - 1;
 
+  if (highcount > MAX_ACCOUNTS)
+    highcount = MAX_ACCOUNTS;
+
   if(highcount >= 0) {
     if(strcmp(defaultAccount(), "") == 0) {
       setAccountbyIndex(0);
@@ -221,6 +224,18 @@ const bool PPPData::get_xserver_exit_disconnect() {
 void PPPData::set_xserver_exit_disconnect(bool set) {
 
   writeConfig(GENERAL_GRP, DISCONNECT_KEY, (int) set);
+
+}
+
+const bool PPPData::quit_on_disconnect() {
+
+  return (bool) readNumConfig(GENERAL_GRP, QUITONDISCONNECT_KEY, false);
+  
+};
+
+void PPPData::set_quit_on_disconnect(bool set) {
+
+  writeConfig(GENERAL_GRP, QUITONDISCONNECT_KEY, (int) set);
 
 }
 
@@ -969,7 +984,10 @@ const bool PPPData::exDNSDisabled(){
 
 const char* PPPData::dns(int i) {
 
-  return readListConfig(cgroup, DNS_KEY, i);
+  if (i < MAX_DNS_ENTRIES)
+    return readListConfig(cgroup, DNS_KEY, i);
+  else
+    return 0L;
 
 }
 
@@ -983,7 +1001,7 @@ void PPPData::setDns(int i, const char *n) {
 const char* PPPData::domain() {
 
   return readConfig(cgroup, DOMAIN_KEY);
-
+  
 }
 
 void PPPData::setDomain(const char *n ) {
@@ -995,7 +1013,10 @@ void PPPData::setDomain(const char *n ) {
 
 const char* PPPData::scriptType(int i) {
 
-  return readListConfig(cgroup, SCRIPTCOM_KEY, i);
+  if (i < MAX_SCRIPT_ENTRIES)
+    return readListConfig(cgroup, SCRIPTCOM_KEY, i);
+  else
+    return 0L;
 
 }
 
@@ -1009,7 +1030,10 @@ void PPPData::setScriptType(int i, const char *n) {
 
 const char* PPPData::script(int i) {
 
-  return readListConfig(cgroup, SCRIPTARG_KEY, i);
+  if (i < MAX_SCRIPT_ENTRIES)
+    return readListConfig(cgroup, SCRIPTARG_KEY, i);
+  else 
+    return 0L;
 
 }
 

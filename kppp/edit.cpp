@@ -391,8 +391,7 @@ DNSWidget::DNSWidget( QWidget *parent, const char *name )
  
   // restore data if editing
   if(!isnewaccount) {
-    for(int i=0; gpppdata.dns(i) &&
-	  i <= MAX_DNS_ENTRIES-1; i++)
+    for(int i=0; gpppdata.dns(i); i++)
       dnsservers->insertItem(gpppdata.dns(i));
     dnsdomain->setText(gpppdata.domain());
   }

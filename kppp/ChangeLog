@@ -1,3 +1,10 @@
+1998-04-27  Harri Porten  <porten@tu-harburg.de>
+
+	* general.cpp (GeneralWidget): command line option "quit after
+	end of connection" is availabe via GUI, too.
+	* hangup(): made another usleep() adjustable to prevent hanging 
+	(thanks to A.D.Y. Cheng <adyc100@hkstar.com> for pointing that out)
+	
 Fri Apr 24 18:57:46 1998    Mario Weilguni <mweilguni@kde.org>
 
 	* general.cpp (GeneralWidget): removed the entry field for

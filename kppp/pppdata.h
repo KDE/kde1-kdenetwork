@@ -70,6 +70,7 @@
 #define SHOWLOGWIN_KEY     "ShowLogWindow"
 #define AUTOREDIAL_KEY     "AutomaticRedial"
 #define DISCONNECT_KEY     "DisconnectOnXServerExit"
+#define QUITONDISCONNECT_KEY "QuitOnDisconnect"
 #define NUMACCOUNTS_KEY    "NumberOfAccounts"
 #define ID_KEY		   "ID"
 
@@ -160,6 +161,9 @@ public:
 
   void set_xserver_exit_disconnect(bool set);
   const bool get_xserver_exit_disconnect();
+
+  void set_quit_on_disconnect(bool);
+  const bool quit_on_disconnect();
 
   void set_show_clock_on_caption(bool set);
   const bool get_show_clock_on_caption();

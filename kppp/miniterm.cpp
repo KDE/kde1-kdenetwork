@@ -419,7 +419,7 @@ void MiniTerm::hangup() {
     cfsetispeed(&temptty, B0);
     tcsetattr(modemfd, TCSAFLUSH, &temptty);
 
-    usleep(10000); // wait 0.01 secs 
+    usleep(gpppdata.modemInitDelay() * 10000); // 0.01 - 3.0 secs 
 
     cfsetospeed(&temptty, modemspeed());
     cfsetispeed(&temptty, modemspeed());
