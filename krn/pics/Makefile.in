@@ -1,3 +1,5 @@
+prefix = @prefix@
+
 FILES = black-bullet.xpm\
 	filemail.xpm\
 	previous.xpm\
@@ -27,7 +29,7 @@ FILES = black-bullet.xpm\
         send.xpm
 
 
-DESTDIR = @prefix@/share/apps/krn/toolbar
+DESTDIR = $(prefix)/share/apps/krn/toolbar
 INSTALL_DIR = @INSTALL@ -d -m 0755
 INSTALL_DATA = @INSTALL@ -m 644
 
