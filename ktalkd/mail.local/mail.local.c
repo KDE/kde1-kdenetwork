@@ -65,7 +65,28 @@ static char copyright[] =
 #ifdef EX_OK
 # undef EX_OK		/* unistd.h may have another use for this */
 #endif
+#ifdef _UNIXWARE
+#define EX_OK		0	/* successful termination */
+#define EX__BASE	64	/* base value for error messages */
+#define EX_USAGE	64	/* command line usage error */
+#define EX_DATAERR	65	/* data format error */
+#define EX_NOINPUT	66	/* cannot open input */
+#define EX_NOUSER	67	/* addressee unknown */
+#define EX_NOHOST	68	/* host name unknown */
+#define EX_UNAVAILABLE	69	/* service unavailable */
+#define EX_SOFTWARE	70	/* internal software error */
+#define EX_OSERR	71	/* system error (e.g., can't fork) */
+#define EX_OSFILE	72	/* critical OS file missing */
+#define EX_CANTCREAT	73	/* can't create (user) output file */
+#define EX_IOERR	74	/* input/output error */
+#define EX_TEMPFAIL	75	/* temp failure; user is invited to retry */
+#define EX_PROTOCOL	76	/* remote error in protocol */
+#define EX_NOPERM	77	/* permission denied */
+#define EX_CONFIG	78	/* configuration error */
+#define EX__MAX		78	/* maximum listed value */
+#else
 #include <sysexits.h>
+#endif
 #include <ctype.h>
 
 #if __STDC__
@@ -78,7 +99,7 @@ static char copyright[] =
 #include <sys/file.h>
 #endif
 
-#if (defined(sun) && defined(__svr4__)) || defined(__SVR4)
+#if (defined(sun) && defined(__svr4__)) || defined(__SVR4) || defined(_UNIXWARE)
 # define USE_LOCKF	1
 # define USE_SETEUID	1
 # define _PATH_MAILDIR	"/var/mail"
@@ -147,7 +168,7 @@ static char copyright[] =
 # define _BSD_VA_LIST_	va_list
 #endif
 
-#if !defined(BSD4_4) && !defined(linux)
+#if !defined(BSD4_4) && !defined(linux) && !defined(_UNIXWARE)
 extern char	*strerror __P((int));
 extern int	snprintf __P((char *, int, const char *, ...));
 extern FILE	*fdopen __P((int, const char *));
@@ -764,7 +785,7 @@ strerror(eno)
 
 # endif
 
-#if !defined(BSD4_4) && !defined(linux)
+#if !defined(BSD4_4) && !defined(linux) && !defined(_UNIXWARE)
 
 # if __STDC__
 snprintf(char *buf, int bufsiz, const char *fmt, ...)
@@ -789,7 +810,7 @@ snprintf(buf, bufsiz, fmt, va_alist)
 
 #endif
 
-#ifdef ultrix
+#if defined(ultrix) || defined(_UNIXWARE)
 
 /*
  * Copyright (c) 1987, 1993
