@@ -581,7 +581,10 @@ bool Artdlg::actions (int action)
             mm->fromString(ts->data());
             delete ts;
             KMMessage *m=mm->createReply(true);
-            m->initHeader();
+//            m->initHeader();
+            debug ("id1-->%s<--id2-->%s<--",
+                   m->id().data(),
+                   mm->id().data());
             QString refs=mm->references();
             refs+=" ";
             refs+=mm->id();
@@ -660,7 +663,6 @@ bool Artdlg::actions (int action)
             mm->fromString(ts->data());
             delete ts;
             KMMessage *m=mm->createReply(true);
-            m->initHeader();
             QString refs=mm->references();
             refs+=" ";
             refs+=mm->id();
