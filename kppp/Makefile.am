@@ -12,10 +12,13 @@
 # kde_toolbardir    Where general toolbar icons should go to.
 # kde_wallpaperdir  Where general wallpapers should go to.
 
-# just set the variable
-APPSDIR = $(kde_appsdir)/Internet
+# if you use a variable *dir and have *_DATA, it will be installed by
+# make install
+appsdir = $(kde_appsdir)/Internet
+apps_DATA = Kppp.kdelnk
+
 # set the include path for X, qt and KDE
-INCLUDES= @all_includes@
+INCLUDES= $(all_includes)
 # claim, which subdirectories you want to install
 SUBDIRS = docs pixmaps icons
 
@@ -51,11 +54,11 @@ kppp_SOURCES	= accounts.cpp \
 		pap.cpp
 
 # the library search path
-kppp_LDFLAGS = @all_libraries@
+kppp_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 
 # the libraries to link against. Be aware of the order. First the libraries,
 # that depend on the following ones.
-kppp_LDADD   = -lkdeui -lkdecore -lqt -lX11 -lXext @LIBSOCKET@
+kppp_LDADD   = -lkdeui -lkdecore -lqt -lXext -lX11 $(LIBSOCKET)
 
 # this option you can leave out. Just, if you use "make dist", you need it
 noinst_HEADERS = accounts.h \
@@ -105,7 +108,7 @@ DISTCLEANFILES = $(BUILTSOURCES)
 
 # make messages.po. Move this one to ../po/ and "make merge" in po
 messages:
-	$(XGETTEXT) -C -ktranslate $(kppp_SOURCES)
+	$(XGETTEXT) -C -ktranslate -x ../../kdelibs/po/kde.pot $(kppp_SOURCES) && mv messages.po ../po/kppp.pot
 
 # just install datas here. Use install-exec-data for scripts and etc.
 # the binary itself is already installed from automake
@@ -113,8 +116,6 @@ messages:
 # don't install a list of file. Just one file per install.
 # if you have more of them, create a subdirectory with an extra Makefile 
 install-data-local:	
-	$(mkinstalldirs) $(APPSDIR)
-	$(INSTALL_DATA) Kppp.kdelnk $(APPSDIR)
 	@(cd Rules && $(MAKE) install)
 	@echo ""
 	@echo "Don't forget to send me a phone tarif rules file for your"
@@ -131,7 +132,6 @@ install-data-local:
 
 # remove ALL you have installed in install-data-local or install-exec-local
 uninstall-local:
-	-rm -f $(APPSDIR)/Kppp.kdelnk
 	@(cd Rules && $(MAKE) uninstall)
 
 # MOC files
