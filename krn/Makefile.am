@@ -4,13 +4,13 @@ INCLUDES = $(all_includes)
 DEFS += -DKRN -DCHARSETS
 
 LDFLAGS = $(all_libraries) $(KDE_RPATH)
-krn_LDADD = -lkfile -lkfm $(LIB_KHTMLW)  $(LIB_KDEUI) \
+krn_LDADD =   $(LIB_KHTMLW)  $(LIB_KFILE) \
 	 -lmimelib -lgdbm $(LIBCOMPAT) 
 
-kdecode_LDADD = -lkfile -lkfm  $(LIB_KDEUI) \
+kdecode_LDADD =    $(LIB_KFILE) \
 	 $(LIBUU) $(LIBCOMPAT) 
 
-newkrn_LDADD = -lkfile -lkfm $(LIB_KHTMLW)  $(LIB_KDEUI) \
+newkrn_LDADD =   $(LIB_KHTMLW)  $(LIB_KFILE) \
 	 -lmimelib -lgdbm $(LIBCOMPAT) 
 
 
