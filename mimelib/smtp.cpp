@@ -31,7 +31,13 @@
 #include <mimelib/smtp.h>
 
 #if defined(DW_UNIX)
+#if defined(HAVE_UNISTD_H)
 #include <unistd.h>
+#endif
+
+#if defined(HAVE_SYSENT_H)
+#include <sysent.h>
+#endif
 #endif
 
 #define SMTP_PORT 25
