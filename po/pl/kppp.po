@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kppp \n"
 "POT-Creation-Date: 1999-04-25 03:13+0200\n"
-"PO-Revision-Date: 1999-04-13 22:08+0200\n"
+"PO-Revision-Date: 1999-06-14 01:07+0200\n"
 "Last-Translator: Jacek Stolarczyk <jacek@mer.chemia.polsl.gliwice.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -72,7 +72,7 @@ msgstr ""
 "Podaje ³±czne koszty po³±czeñ telefonicznych\n"
 "dla wybranego konta.\n"
 "\n"
-"<b>Important</b>: Je¶li masz wiêcej niz jedno \n"
+"<b>Important</b>: Je¶li masz wiêcej ni¿ jedno \n"
 "konto, zwróæ uwagê, ¿e to <b>NIE</b> jest suma \n"
 "kosztów po³±czeñ telefonicznych dla wszystkich kont"
 
@@ -442,7 +442,7 @@ msgstr ""
 "autentyfikacjê opart± na <b>Terminalu</b> lub <b>Skrypcie</b>,\n"
 "podczas gdy wiekszo¶æ ISP (dostarczycieli internetu) u¿ywa\n"
 "<b>PAP</b> i/lub <b>CHAP</b>. W razie w±tpliwo¶ci skontaktuj\n"
-"siê ze swoim ISP.Je¿eli mo¿esz wybraæ miêdzy PAP i CHAP,\n"
+"siê ze swoim ISP. Je¿eli mo¿esz wybraæ miêdzy PAP i CHAP,\n"
 "wybierz CHAP, poniewa¿ jest o wiele bezpieczniejsze."
 
 #: edit.cpp:97
@@ -461,12 +461,12 @@ msgid ""
 "gains access to this file!"
 msgstr ""
 "Kiedy ta opcja jest w³±czona, Twoje has³o u ISP\n"
-"bêdzie zapamietane w pliku konfiguracyjnym <i>kppp</i>,\n"
+"bêdzie zapamiêtane w pliku konfiguracyjnym <i>kppp</i>,\n"
 "zatem nie bêdzie potrzeby podawania go za ka¿dym razem.\n"
 "\n"
 "<b><red>Ostrze¿enie:<black> Twoje has³o bêdzie zapisane\n"
 "jako zwyk³y tekst w pliu konfiguracyjnym, który jest\n"
-"przezaczony do odczytu tylko dla Ciebie. Upewnij siê,\n"
+"przeznaczony do odczytu tylko dla Ciebie. Upewnij siê,\n"
 "¿e nikt inny nie uzyska dostêpu do tego pliku!"
 
 #: edit.cpp:110
@@ -527,7 +527,7 @@ msgstr "Zmiana opcji pppd:"
 
 #: edit.cpp:166
 msgid "Arguments"
-msgstr "Opcje..."
+msgstr "Argumenty"
 
 #: edit.cpp:223
 msgid "IP Setup"
@@ -558,7 +558,7 @@ msgid ""
 "\n"
 "If unsure, contact your Internet Service Provider"
 msgstr ""
-"Je¶li Jesli Twój komputer ma statyczny adres internetowy,\n"
+"Je¶li Jesli Twój komputer ma sta³y adres internetowy,\n"
 "(numer IP), musisz podaæ tu maskê podsieci. W prawie\n"
 "wszystkich wypadkach bêdzie to <b>255.255.255.0</b>,\n"
 "ale w Twoim przypadku mo¿e byæ inaczej.\n"
@@ -568,7 +568,7 @@ msgstr ""
 
 #: edit.cpp:254
 msgid "Dynamic IP Address"
-msgstr "Dynamiczny"
+msgstr "Zmienny adres"
 
 #: edit.cpp:256
 msgid ""
@@ -588,7 +588,7 @@ msgstr ""
 
 #: edit.cpp:264
 msgid "Static IP Address"
-msgstr "Statyczny"
+msgstr "Sta³y adres"
 
 #: edit.cpp:268
 msgid ""
@@ -601,7 +601,7 @@ msgstr ""
 "Wybierz tê opcjê, je¶li Twój komputer ma\n"
 "sta³y adres internetowy (IP). Wiekszo¶æ komputerów\n"
 "(szczególnie domowych) takowego nie posiada, wiêc\n"
-"powiniene¶ raczej wybraæ dynamiczny adres IP, chyba,\n"
+"powiniene¶ raczej wybraæ zmienny adres IP, chyba,\n"
 "¿e wiesz co robisz"
 
 #: edit.cpp:274
@@ -622,7 +622,7 @@ msgstr ""
 "Powoduje przy ka¿dym po³±czeniu rekonfiguracjê\n"
 "nazwy Twojego komputera, aby dopasowaæ siê do\n"
 "adresu IP uzyskanego z serwera PPP. Mo¿e to byæ\n"
-"u¿yteczne je¶li musisz u¿ywaæ protoko³u, który takiego\n"
+"u¿yteczne, je¶li musisz u¿ywaæ protoko³u, który takiego\n"
 "dopasowania wymaga, ale mo¿e te¿ wywo³aæ pewne\n"
 "<link kppp-7.html#autohostname>problemy</link>.\n"
 "\n"
@@ -884,7 +884,7 @@ msgstr ""
 
 #: general.cpp:125
 msgid "Disconnect on X-server shutdown"
-msgstr "Roz³±cz przy zamkniêciu KDE"
+msgstr "Roz³±cz przy zamkniêciu X-serwera"
 
 #: general.cpp:131
 msgid ""

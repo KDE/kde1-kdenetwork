@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kfinger\n"
 "POT-Creation-Date: 1999-04-15 03:01+0200\n"
-"PO-Revision-Date: 1999-01-10 18:32+0100\n"
+"PO-Revision-Date: 1999-06-114 00:34+0200\n"
 "Last-Translator: Jacek Stolarczyk <jacek@mer.chemia.polsl.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -25,13 +25,12 @@ msgid "&Save Options"
 msgstr "&Zachowaj opcje"
 
 #: kfinger.C:38
-#, fuzzy
 msgid ""
 "kfinger 0.8.1\n"
 "\n"
 "(c) Andrea Rizzi (rizzi@kde.org)"
 msgstr ""
-"kfinger 0.8.0\n"
+"kfinger 0.8.1\n"
 "\n"
 "(c) Andrea Rizzi (rizzi@kde.org)"
 
@@ -71,7 +70,7 @@ msgstr "B³±d serwera : %s"
 #: kfinger.C:284
 #, c-format
 msgid "Connection refused by  %s"
-msgstr ""
+msgstr "Serwer %s odmówi³ po³±czenia"
 
 #: kfinger.C:296
 #, c-format
@@ -79,13 +78,12 @@ msgid "Finger  %s@%s   --   %s"
 msgstr "Finger  %s@%s   --   %s"
 
 #: kfinger.C:317
-#, fuzzy
 msgid ""
 "Kfinger 0.8.1\n"
 "(c) by Andrea Rizzi\n"
 "rizzi@kde.org"
 msgstr ""
-"Kfinger 0.8.0\n"
+"Kfinger 0.8.1\n"
 "(c) napisane przez Andrea Rizzi\n"
 "rizzi@kde.org"
 
