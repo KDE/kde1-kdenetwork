@@ -29,6 +29,8 @@ sub new { #FOLD00
     $self->create();
   }
 
+  $self->installHandler($::PUKE_LISTBOX_SELECTED_ACK, sub{$self->selected(@_)});
+
   return $self;
 
 }

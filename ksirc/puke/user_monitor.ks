@@ -9,14 +9,18 @@
 &docommand("/load ppopmenu.pm");
 &docommand("/load pbutton.pm");
 &docommand("/load ppushbt.pm");
+&docommand("/load palistbox.pm");
+&docommand("/load plined.pm");
 
 use Net::SMTP;
 
 my $WHO = "$ENV{HOME}/who_online.pl";
 
 my %ALLOW_MULT = ();
-#$ALLOW_MULT{'asj'} = 1;
+$ALLOW_MULT{'asj'} = 1;
 $ALLOW_MULT{'administrator'} = 1;
+
+@PAGE_PPL = ('andrew', 'lee', 'william', 'seamus', 'gerry', 'jason');
 
 package UserList;
 
@@ -45,14 +49,29 @@ sub new {
   $event_list->setScrollBar(0);
   $gm->addWidget($event_list, 5);
 
+  my $gm_but = new PBoxLayout($PBoxLayout::LeftToRight, 5);
+  $gm->addLayout($gm_but, 5);
+
   my $refresh_but = new PPushButton($self);
   $refresh_but->setMaximumSize(25, 2000);
   $refresh_but->setMinimumSize(25, 25);
   $refresh_but->installHandler($::PUKE_BUTTON_PRESSED_ACK, sub { } );
   $refresh_but->installHandler($::PUKE_BUTTON_RELEASED_ACK, sub { } );
   $refresh_but->installHandler($::PUKE_BUTTON_CLICKED_ACK, sub { &::docommand("refresh_users"); } );
-  $refresh_but->setText("&Refresh User List");
-  $gm->addWidget($refresh_but, 5);
+  $refresh_but->setText("&Refresh Users");
+  $gm_but->addWidget($refresh_but, 5);
+
+  my $page_dialog = new pageDialog();
+  $page_dialog->resize(400, 250);
+  
+  my $page_but = new PPushButton($self);
+  $page_but->setMaximumSize(25, 2000);
+  $page_but->setMinimumSize(25, 25);
+  $page_but->installHandler($::PUKE_BUTTON_PRESSED_ACK, sub { } );
+  $page_but->installHandler($::PUKE_BUTTON_RELEASED_ACK, sub { } );
+  $page_but->installHandler($::PUKE_BUTTON_CLICKED_ACK, sub { $self->{'page_dialog'}->show(); } );
+  $page_but->setText("&Page");
+  $gm_but->addWidget($page_but, 5);
 
 
   my $user_count = new PLabel($self);
@@ -88,7 +107,7 @@ sub new {
 			      sub {$self->popdownMenu(@_)});
 
 
-  @$self{'gm', 'list_box', 'user_count', 'max', 'event_list', 'menu'} = ($gm, $list_box, $user_count, 0, $event_list, $menu);
+  @$self{'gm', 'list_box', 'user_count', 'max', 'event_list', 'menu', 'page_dialog', 'page_but', 'gm_but'} = ($gm, $list_box, $user_count, 0, $event_list, $menu, $page_dialog, $page_but, $gm_but);
 
   return $self;
 
@@ -97,8 +116,12 @@ sub new {
 sub DESTROY {
     #  $self->hide();
   $self->{'gm'}->DESTROY;
+  delete $self->{'gm'};
+  delete $self->{'gm2'};
   $self->{'list_box'}->DESTROY;
+  delete $self->{'list_box'};
   $self->{'use_count'}->DESTROY;
+  delete $self->{'use_count'};
 
   $self->SUPER::DESTROY();
 }
@@ -177,6 +200,68 @@ sub AUTOLOAD {
   return $self->{'list_box'}->$1(@_);
 }
 
+package pageDialog;
+
+@ISA = qw(PFrame);
+
+sub new {
+  my $class = shift;
+  my $self = $class->SUPER::new($class, @_);
+  $self->create();
+
+  my $gm = new PBoxLayout($self, $PBoxLayout::TopToBottom, 5);
+
+  my $ppl_label = new PLabel($self);
+  $ppl_label->setText("Person to page:");
+  $ppl_label->setMaximumSize(25, 2000);
+  $ppl_label->setMinimumSize(25, 25);
+  $gm->addWidget($ppl_label, 5);
+  
+  my $page_ppl = new PListBox($self);
+  $gm->addWidget($page_ppl, 5);
+
+  my $msg_label = new PLabel($self);
+  $msg_label->setText("Message to page:");
+  $msg_label->setMaximumSize(25, 2000);
+  $msg_label->setMinimumSize(25, 25);
+  $gm->addWidget($msg_label, 5);
+
+  my $page_msg = new PLineEdit($self);
+  $page_msg->setMaximumSize(25, 2000);
+  $page_msg->setMinimumSize(25, 25);
+  $gm->addWidget($page_msg, 5);
+  
+  my $send_but = new PPushButton($self);
+  $send_but->setMaximumSize(25, 2000);
+  $send_but->setMinimumSize(25, 25);
+  $send_but->installHandler($::PUKE_BUTTON_PRESSED_ACK, sub { } );
+  $send_but->installHandler($::PUKE_BUTTON_RELEASED_ACK, sub { } );
+  $send_but->installHandler($::PUKE_BUTTON_CLICKED_ACK, sub { &::docommand("msg #polarcom page " . $self->{'page_ppl'}->currentText() . " " . $self->{'page_msg'}->text()); $self->hide() } );
+  $send_but->setText("&Send");
+  $gm->addWidget($send_but, 5);
+
+  @$self{'gm', 'page_ppl', 'page_msg', 'send_but', 'msg_label', 'ppl_label'} =
+        ($gm,  $page_ppl,  $page_msg,  $send_but,  $msg_label, $ppl_label);
+
+  return $self;
+
+}
+
+sub show {
+  my $self = shift;
+  my $page_ppl = $self->{'page_ppl'};
+
+  $page_ppl->clear();
+  my $person;
+  foreach $person (@main::PAGE_PPL) {
+    $page_ppl->insertText($person, -1);
+  }
+
+  $self->SUPER::show();
+  
+}
+
+
 package main;
 
 
@@ -199,6 +284,7 @@ sub hook_online_mon {
     my $nick = $1;
     #return if $nick =~ /administrator/;
     $nick =~ s/(\S+)\@\S+/$1/g;
+    $online->addEvent("On: $nick");
     if($users_online{$nick} > 0){
       my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime(time);
       my $date;
@@ -231,14 +317,13 @@ sub hook_online_mon {
     # Make the list sorted
     my $i = 0;
     SEARCH: while($online->text($i) ne undef){
-      
+
       if(($online->text($i) cmp $nick) >= 0){
-        last SEARCH;
+	last SEARCH;
       }
       $i++;
     }
     $online->insertText($nick, $i);
-    $online->addEvent("On: $nick");
     $users_online{$nick}++;
   }
   elsif($msg =~ /ice: Logoff (\S+)/){
@@ -304,7 +389,7 @@ sub cmd_refresh_users {
     next if $user eq '';
     next if $user =~ /administrator/;
     $users_online{$user}++;
-  $online->insertText($user, -1);
+    $online->insertText($user, -1);
   }
 }
 
