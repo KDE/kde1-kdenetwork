@@ -1,3 +1,6 @@
+#ifndef KSIRCIRCLISTBOX_H
+#define KSIRCIRCLISTBOX_H
+
 #include <qobject.h>
 #include <qlistbox.h>
 #include <qscrbar.h>
@@ -97,3 +100,5 @@ protected slots:
   ircListItem *sit;
 
 };
+
+#endif

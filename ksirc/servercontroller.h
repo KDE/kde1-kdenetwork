@@ -151,6 +151,8 @@ public slots:
     virtual void ToggleAutoCreate();
     virtual void colour_prefs();
     virtual void font_prefs();
+    virtual void pws_prefs();
+    virtual void pws_delete(QObject *);
     /**
      * Action: Popup a general preferences window which allows various 
      * settings, etc.

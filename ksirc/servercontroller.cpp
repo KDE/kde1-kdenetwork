@@ -74,6 +74,8 @@
 
 #include "objFinder.h"
 
+#include "pws-0.5/pws/pws.h"
+
 #include <kfontdialog.h>
 #include <kiconloader.h>
 #include <kwm.h>
@@ -148,6 +150,8 @@ servercontroller::servercontroller /*FOLD00*/
 		      this, SLOT(font_prefs()));
   options->insertItem(i18n("&Filter Rule Editor..."),
 		      this, SLOT(filter_rule_editor()));
+  options->insertItem(i18n("&Web Server Configuration..."),
+                      this, SLOT(pws_prefs()));
   options->insertSeparator();
   options->insertItem(i18n("&Preferences..."),
 		      this, SLOT(general_prefs()));
@@ -333,13 +337,26 @@ void servercontroller::filter_rule_editor() /*fold00*/
   fe->show();
 }
 
-void servercontroller::font_prefs() /*fold00*/
+void servercontroller::font_prefs() /*FOLD00*/
 {
   KFontDialog *kfd = new KFontDialog();
   kfd->setFont(kSircConfig->defaultfont);
   connect(kfd, SIGNAL(fontSelected(const QFont &)),
 	  this, SLOT(font_update(const QFont &)));
   kfd->show();
+}
+
+void servercontroller::pws_prefs()
+{
+  PWS *widget = new PWS();
+  widget->show();
+  connect(widget, SIGNAL(quitPressed(QObject *)),
+          this, SLOT(pws_delete(QObject *)));
+}
+
+void servercontroller::pws_delete(QObject *widget)
+{
+    delete widget;
 }
 
 void servercontroller::font_update(const QFont &font) /*fold00*/
