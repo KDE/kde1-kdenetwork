@@ -11,7 +11,12 @@
 #define FIXED_SIZE(w) w->setFixedSize(w->sizeHint());
 #define FIXED_WIDTH(w) w->setFixedWidth(w->sizeHint().width());
 #define FIXED_HEIGHT(w) w->setFixedHeight(w->sizeHint().height());
+
+#ifndef MAX
 #define MAX(a,b) ((a) > (b) ? (a) : (b))
+#endif
+#ifndef MIN
 #define MIN(a,b) ((a) < (b) ? (a) : (b))
+#endif
 
 #endif
