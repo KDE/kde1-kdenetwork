@@ -210,7 +210,7 @@ int main( int argc, char **argv ) {
   // set portable locale for decimal point
   setlocale(LC_NUMERIC ,"C");
 
-  while ((c = getopt(argc, argv, "c:hvr:q")) != -1){
+  while ((c = getopt(argc, argv, "c:hvr:q")) != EOF){
     switch (c)
       {
 
@@ -243,6 +243,7 @@ int main( int argc, char **argv ) {
 	{
 	  // drop root
 	  setuid(getuid());
+          setgid(getgid());
 
 	  // we need a KAppliction for locales, create one
 	  exit(RuleSet::checkRuleFile(optarg));
@@ -269,6 +270,7 @@ int main( int argc, char **argv ) {
     chmod(configFile.data(), S_IRUSR | S_IWUSR);
 
   make_directories();
+
   KPPPWidget kppp;
   p_kppp = &kppp;
 
@@ -1053,8 +1055,12 @@ pid_t execute_command (const char *command) {
   if((id = fork()) == 0) {
     // don't bother dieppp()
     signal(SIGCHLD, SIG_IGN);
+    // close file descriptors
+    for (int fd = 3; fd < 20; fd++)
+      close(fd);
     // drop privileges if running setuid root
     setuid(getuid());
+    setgid(getgid());
     
     system(command);
     _exit(0);

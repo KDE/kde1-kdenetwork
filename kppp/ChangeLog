@@ -1,3 +1,8 @@
+1998-08-18  Harri Porten  <porten@kde.org>
+
+	* fixed security leak in execute_command(): drop setgid root and
+	close file descriptors
+
 1998-08-17  Mario Weilguni <mweilguni@kde.org>
 
 	* fixed a bug in runtest.cpp that caused a segfault (fclose()
