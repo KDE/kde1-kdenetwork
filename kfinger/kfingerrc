@@ -2,13 +2,14 @@
 Wait=60
 Time=1
 [Fserver]
-NumFserver=1
+NumFserver=2
 Server1=localhost
+Server2=ftp.kernel.org
 [Talk]
 TalkCom=ktalk
 SelectUser=1
-SelectServer=1
-StartLine=2
+SelectServer=3
+StartLine=1
 UserFormatStr=%s 
 ServerFormatStr=%s 
 StartServerStr=25

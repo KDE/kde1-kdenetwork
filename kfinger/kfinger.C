@@ -1,5 +1,20 @@
+/*
+    KFinger - ver 0.8.0
+    KDE project - kdenetwork
+    
+    kfinger.C : Main Widget
+    
+    (c) Andrea Rizzi <rizzi@kde.org>
+	5 Dec 1998
+    
+    License: GPL
+
+*/
+
 #include "kfinger.h"
 #include "kiconloader.h"
+#include <qdatetime.h>
+
 NetutilView::NetutilView(const char *name )
     : KTopLevelWidget( name )
 {    
@@ -25,15 +40,11 @@ protocol = 0L;
   menubar->insertSeparator();
   menubar->insertItem( klocale->translate("&Help"), help, ALT+Key_H );
 
-//   QPixmap pm;
+
     config->setGroup("Options");
-//   QString dir= KApplication::getKApplication()->kdedir()
-//     + QString("/share/toolbar/");   
     statusBar = new KStatusBar(this);
-//    statusBar->enable(1);
     statusBar->insertItem(klocale->translate("KDE finger utility"),1);
     toolBar = new KToolBar(this);
-//    toolBar->setFullWidth(TRUE);
  
 toolBar->insertButton(Icon("mini-connect.xpm"),0,SIGNAL(clicked()),this ,SLOT(button1Clicked()),1,klocale->translate("Finger"),-1);	
 toolBar->insertButton(Icon("stop.xpm"),1,SIGNAL(clicked()),this ,SLOT(stopIt()),1,klocale->translate("Stop current finger"),-1);	
@@ -51,34 +62,23 @@ toolBar->setToggle(5,TRUE);
 	font.setCharSet( (QFont::CharSet)0 );
 	le->setFont( font );
 	 
-  le->setText( klocale->translate("Welcome to KDE Finger \nprogram by A.Rizzi rizzi@kde.org\n18/09/1997 \n"));
+  le->setText( klocale->translate("Welcome to KDE Finger\n"));
     QToolTip::add( le, klocale->translate("Finger result" ));
 
 
 
-   toolBar->insertFrame(3,120);
-   QComboBox *combo = new   QComboBox(TRUE,toolBar->getFrame(3));
+
+   QComboBox *combo = new   QComboBox(TRUE,toolBar);
    connect(combo,SIGNAL(activated(const char *)), this,SLOT(button1Clicked()));  
-    combo->resize(120,24);
-    combo->show();
+   toolBar->insertWidget(3,120,combo);
 
-   toolBar->insertFrame(2,120);
-   QComboBox *combo1 = new   QComboBox(TRUE,toolBar->getFrame(2));
+   QComboBox *combo1 = new   QComboBox(TRUE,toolBar);
    connect(combo1,SIGNAL(activated(const char *)), this,SLOT(button1Clicked()));  
-    combo1->resize(120,24);
-    combo1->show();
+   toolBar->insertWidget(2,120,combo1);
 
-ed2Combo = combo1; //toolBar->getCombo(2);
+ed2Combo = combo1;
 ed3Combo = combo;
-/*
-toolBar->insertCombo("",3,true,SIGNAL(activated(const char *)), 
-		    this,SLOT(button1Clicked()),TRUE,klocale->translate("User"),120);
-toolBar->insertCombo("",2,true,SIGNAL(activated(const char *)), 
-		    this,SLOT(button1Clicked()),TRUE,klocale->translate("Server"),120);
 
-ed2Combo =toolBar->getCombo(2);
-ed3Combo =toolBar->getCombo(3);
-*/
 loadSettings();
 setStatusBar(statusBar);
 setMenu(menubar);
@@ -89,7 +89,7 @@ menubar->show();
 le->show();
 enableStatusBar(KStatusBar::Show);
 
-//adjustSize();
+
 show();
 
 }
@@ -247,43 +247,45 @@ ta->show();
 
 void NetutilView::button1Clicked()
 {
-if(protocol!=NULL)
-delete protocol;
-protocol = 0L;
-le->clear();
-toolBar->setItemEnabled(1,TRUE);
-warning("click");
-QString sstr,sstr2;
-sstr2.sprintf("%s",ed2Combo->currentText());  //server name
-sstr.sprintf("%s\n\r",ed3Combo->currentText()); //user name
-if (sstr[0]==0) sstr[0]=' ';
-//FingerProtocol *protocol;
-protocol=new FingerProtocol(sstr2,79,sstr1);  // 79 : finger port
-connect(protocol,SIGNAL(finish()),this,SLOT(stopIt()));
-connect(protocol,SIGNAL(update()),this,SLOT(writeIt()));
-if (protocol->broken) {
 
-sstr2.sprintf(klocale->translate("Error on server : %s"),ed2Combo->currentText());
-statusBar->changeItem((const char*)sstr2,1);
-if(protocol!=NULL)
-delete protocol;
-protocol = 0L;
-toolBar->setItemEnabled(1,FALSE);
-	} else {
-sstr2.sprintf("%s\n\r",ed3Combo->currentText());
+ if(protocol!=NULL)
+   delete protocol;
+  protocol = 0L;
+  le->clear();
+  toolBar->setItemEnabled(0,FALSE);
+  toolBar->setItemEnabled(1,TRUE);
+  QString sstr,sstr2;
+  sstr2.sprintf("%s",ed2Combo->currentText());  //server name
+  sstr.sprintf("%s\n\r",ed3Combo->currentText()); //user name
+  
+  if (sstr[0]==0) sstr[0]=' ';
+  protocol=new FingerProtocol(sstr2,79,sstr1);  // 79 : finger port
 
-protocol->writeString(sstr2);
+  connect(protocol,SIGNAL(finish()),this,SLOT(stopIt()));
+  connect(protocol,SIGNAL(update()),this,SLOT(writeIt()));
+
+  if (protocol->broken) {
+    sstr2.sprintf(klocale->translate("Error on server : %s"),ed2Combo->currentText());
+    statusBar->changeItem((const char*)sstr2,1);
+      if(protocol!=NULL)
+	    delete protocol;
+    protocol = 0L;
+    toolBar->setItemEnabled(1,FALSE);
+    toolBar->setItemEnabled(0,TRUE);
+  } else {
+    sstr2.sprintf("%s\n\r",ed3Combo->currentText());
+    protocol->writeString(sstr2);
  }
 
 }
 
 void NetutilView::writeIt()
 {
-warning("result");
-QString sstr;
-le->append(sstr1);
-sstr.sprintf(klocale->translate("Finger result for : %s@%s"),ed3Combo->currentText(),ed2Combo->currentText());
-statusBar->changeItem(sstr,1);
+ QString sstr;
+ le->append(sstr1);
+// QDateTime(QDateTime::currentDateTime()))     
+ sstr.sprintf(klocale->translate("Finger  %s@%s   --   %s"),ed3Combo->currentText(),ed2Combo->currentText(),(const char *)(QDateTime::currentDateTime()).toString());
+ statusBar->changeItem(sstr,1);
 }
 
 void NetutilView::stopIt()
@@ -291,15 +293,17 @@ void NetutilView::stopIt()
 if(protocol!=NULL)
 delete protocol;
 protocol = 0L;
+toolBar->setItemEnabled(0,TRUE);
 toolBar->setItemEnabled(1,FALSE);
 }
 
 
 
 void NetutilView::about()
-{
-KMsgBox::message(this,klocale->translate("About"),klocale->translate("Kfinger 0.7.0\n(c) by Andrea Rizzi\nrizzi@kde.org"));
-}
+ {
+  KMsgBox::message(this,klocale->translate("About"),klocale->translate("Kfinger 0.8.0\n(c) by Andrea Rizzi\nrizzi@kde.org"));
+ }
+
 void NetutilView::HtmlHelp()
 { 
  KApplication::getKApplication()->invokeHTMLHelp("kfinger/kfinger.html", "");
@@ -319,7 +323,8 @@ if( (tencount==10)&&(autofinger ))
 
 void NetutilView::setup()
 {
- new Setup();
+ if(new Setup() == 0L)
+   warning("Could not start setup");
  loadSettings();
 }
 
@@ -452,7 +457,7 @@ QString sstr;
 	tmpQSlider->setValue( va );
 	connect( tmpQSlider, SIGNAL(valueChanged(int)), SLOT(value(int)) );
 	FingerTime = new QLabel( w, "Label_3" );
-	FingerTime->setGeometry( 160, 30, 180, 30 );
+	FingerTime->setGeometry( 10, 100, 180, 30 );
 	
 		FingerTime->setFont( font );
 	
@@ -582,12 +587,14 @@ show();
 
 void Setup::format()
 {
-new Format(0,0,"FoUser");
+ if(new Format(0,0,"FoUser")==0)
+   warning("Could not open Format Dialog");
 }
+
 void Setup::format1()
 {
-new Format(0,0,"FoServer");
-
+ if(new Format(0,0,"FoServer")==0)
+   warning("Could not open Format Dialog");
 }
 
 void Setup::quit()

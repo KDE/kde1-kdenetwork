@@ -1,3 +1,16 @@
+/*
+    KFinger - ver 0.8.0
+    KDE project - kdenetwork
+    
+    finger.C : Internet Finger protocol
+    
+    (c) Andrea Rizzi <rizzi@kde.org>
+	5 Dec 1998
+    
+    License: GPL
+
+*/
+
 #include <stdlib.h>
 #include <time.h>
 #include <kapp.h>
