@@ -121,6 +121,9 @@ int main( int argc, char **argv )
 
     decoder=new KDecode;
     addrBook=new KMAddrBook();
+    addrBook->readConfig();
+    addrBook->load();
+
     
     // Create our directory. If it exists, no problem
     // Should do some checking, though
