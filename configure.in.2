@@ -3,7 +3,7 @@ if test ! -s ./inst-apps && test -s ./SUBDIRS; then
  cp ./SUBDIRS ./inst-apps
 fi
 
-DO_NOT_COMPILE="$DO_NOT_COMPILE CVS"
+DO_NOT_COMPILE="$DO_NOT_COMPILE CVS debian"
 
 if test ! -s ./inst-apps; then
   TOPSUBDIRS=""
