@@ -72,19 +72,19 @@ filterRuleList *KSMBaseRules::defaultRules()
     fr->search = "^(?:~\\S+~)<\\S+>";
     fr->from = "<(\\S+)>";
     if(kSircConfig->nickBHighlight >= 0)
-      snprintf(to, 100, "<~%d,%d$1~c>", kSircConfig->nickFHighlight,
+      sprintf(to, "<~%d,%d$1~c>", kSircConfig->nickFHighlight,
 	                          kSircConfig->nickBHighlight);
     else
-      snprintf(to, 100, "<~%d$1~c>", kSircConfig->nickFHighlight);
+      sprintf(to, "<~%d$1~c>", kSircConfig->nickFHighlight);
     fr->to = to;
     frl->append(fr);  
   }
   if( kSircConfig->usHighlight >= 0){
     kConfig->setGroup("StartUp");
     if(strlen(kConfig->readEntry("Nick", "")) > 0){
-      snprintf(match_us, 100, 
-	       "(?i)<\\S+>.*%s.*", kConfig->readEntry("Nick", "").data());
-      snprintf(to_us, 100,
+      sprintf(match_us,
+	       "(?i)<\\S+>.*%99s.*", kConfig->readEntry("Nick", "").data());
+      sprintf(to_us,
 	       "$1~%d", kSircConfig->usHighlight);
       fr = new filterRule();
       fr->desc = "Highlight our nick";

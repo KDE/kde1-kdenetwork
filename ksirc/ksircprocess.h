@@ -42,8 +42,11 @@ public slots:
   virtual void notify_forw_online(QString);
   virtual void notify_forw_offline(QString);
 
-  protected slots:
-    virtual void clean_toplevel(KSircTopLevel *clean);
+protected slots:
+  virtual void clean_toplevel(KSircTopLevel *clean);
+
+  virtual void turn_on_autocreate();
+      
   
 private:
   void base_filters();

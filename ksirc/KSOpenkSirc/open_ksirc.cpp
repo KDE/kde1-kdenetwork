@@ -199,7 +199,6 @@ void open_ksirc::setGroup( const char * group )
       ComboB_ServerPort->setEditText("6667");
       ComboB_ServerPort->insertItem("6667");
   }
-  clickConnect();
 }
 
 void open_ksirc::clickConnect()

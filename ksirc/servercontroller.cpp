@@ -219,7 +219,7 @@ servercontroller::servercontroller /*FOLD00*/
 }
 
 
-servercontroller::~servercontroller() /*FOLD00*/
+servercontroller::~servercontroller() /*fold00*/
 {
   delete PWSTopLevel;
   delete pic_icon;
@@ -313,7 +313,7 @@ void servercontroller::ToggleAutoCreate() /*FOLD00*/
   kConfig->sync();
 }
 
-void servercontroller::colour_prefs() /*FOLD00*/
+void servercontroller::colour_prefs() /*fold00*/
 {
   KSircColour *kc = new KSircColour();
   connect(kc, SIGNAL(update()),
@@ -338,7 +338,7 @@ void servercontroller::filter_rule_editor() /*fold00*/
   fe->show();
 }
 
-void servercontroller::font_prefs() /*FOLD00*/
+void servercontroller::font_prefs() /*fold00*/
 {
   KFontDialog *kfd = new KFontDialog();
   kfd->setFont(kSircConfig->defaultfont);
@@ -347,14 +347,14 @@ void servercontroller::font_prefs() /*FOLD00*/
   kfd->show();
 }
 
-void servercontroller::pws_prefs()
+void servercontroller::pws_prefs() /*fold00*/
 {
   PWSTopLevel->show();
   connect(PWSTopLevel, SIGNAL(quitPressed(QObject *)),
           this, SLOT(pws_delete(QObject *)));
 }
 
-void servercontroller::pws_delete(QObject *widget)
+void servercontroller::pws_delete(QObject *widget) /*fold00*/
 {
     PWSTopLevel->hide();
 }
@@ -530,6 +530,11 @@ void servercontroller::ProcMessage(QString server, int command, QString args) /*
       ToggleAutoCreate();
     }
     break;
+  case ProcCommand::turnOnAutoCreate:
+    if (!kSircConfig->AutoCreateWin) {
+      ToggleAutoCreate();
+    }
+    break;
   default:
     cerr << "Unkown command: " << command << " from " << server << " " << args << endl;
   }
@@ -540,7 +545,7 @@ void servercontroller::slot_filters_update() /*fold00*/
   emit ServMessage(QString(), ServCommand::updateFilters, QString());
 }
 
-void servercontroller::saveProperties(KConfig *ksc) /*FOLD00*/
+void servercontroller::saveProperties(KConfig *ksc) /*fold00*/
 {
   // ksc hos the K Session config
   // ksp == current KSircProcess
@@ -584,7 +589,7 @@ void servercontroller::readProperties(KConfig *ksc) /*fold00*/
   }
 }
 
-void servercontroller::toggleDocking(){ /*FOLD00*/
+void servercontroller::toggleDocking(){ /*fold00*/
   if(docked == FALSE){ // Currently not docked, have to dock
     this->hide();
     KWM::setDockWindow(dockWidget->winId());
@@ -599,7 +604,7 @@ void servercontroller::toggleDocking(){ /*FOLD00*/
   }
 }
 
-void servercontroller::endksirc(){
+void servercontroller::endksirc(){ /*fold00*/
   kConfig->sync();
   exit(0);
 
@@ -642,7 +647,7 @@ void scInside::resizeEvent ( QResizeEvent *e ) /*fold00*/
   
 }
 
-dockServerController::dockServerController(servercontroller *_sc, const char *_name) /*FOLD00*/
+dockServerController::dockServerController(servercontroller *_sc, const char *_name) /*fold00*/
 : QFrame(0x0, _name)
 {
   sc = _sc;
@@ -660,6 +665,8 @@ dockServerController::dockServerController(servercontroller *_sc, const char *_n
                   sc, SLOT(font_prefs()));
   pop->insertItem(i18n("&Filter Rule Editor..."),
                   sc, SLOT(filter_rule_editor()));
+  pop->insertItem(i18n("&Web Server Configuration..."),
+                  sc, SLOT(pws_prefs()));
   pop->insertItem(i18n("&Preferences..."),
                   sc, SLOT(general_prefs()));
   pop->insertSeparator();
@@ -671,13 +678,13 @@ dockServerController::dockServerController(servercontroller *_sc, const char *_n
   resize(24,24);
 }
 
-dockServerController::~dockServerController() /*FOLD00*/
+dockServerController::~dockServerController() /*fold00*/
 {
   sc = 0x0;
   delete pop;
 }
 
-void dockServerController::mousePressEvent(QMouseEvent *) /*FOLD00*/
+void dockServerController::mousePressEvent(QMouseEvent *) /*fold00*/
 {
 //  QPoint pt = this->cursor().pos();
 //  pt.setY(pt.y());

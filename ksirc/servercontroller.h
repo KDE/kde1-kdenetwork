@@ -43,7 +43,8 @@ class ProcCommand // ServerController message
     changeChannel,
     nickOnline,
     nickOffline,
-    turnOffAutoCreate
+    turnOffAutoCreate,
+    turnOnAutoCreate
   } command;
 };
 

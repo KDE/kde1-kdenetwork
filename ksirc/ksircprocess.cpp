@@ -403,6 +403,8 @@ void KSircProcess::close_toplevel(KSircTopLevel *wm, char *name) /*FOLD00*/
     }
   }
   // Let's let em know she's deleted!
+  emit ProcMessage(QString(server), ProcCommand::turnOffAutoCreate, QString());
+  QTimer::singleShot(10000, this, SLOT(turn_on_autocreate()));
   emit ProcMessage(QString(server), ProcCommand::deleteTopLevel, 
 		   QString(name));
 }
@@ -522,7 +524,7 @@ void KSircProcess::notify_forw_offline(QString nick) /*fold00*/
   emit ProcMessage(QString(server), ProcCommand::nickOffline, nick);
 }
 
-void KSircProcess::ServMessage(QString dst_server, int command, QString args) /*fold00*/
+void KSircProcess::ServMessage(QString dst_server, int command, QString args) /*FOLD00*/
 {
   if(dst_server.isEmpty() || (dst_server == QString(server))){
     switch(command){
@@ -534,4 +536,9 @@ void KSircProcess::ServMessage(QString dst_server, int command, QString args) /*
       break;
     }
   }
+}
+
+void KSircProcess::turn_on_autocreate()
+{
+  emit ProcMessage(QString(server), ProcCommand::turnOnAutoCreate, QString());
 }
