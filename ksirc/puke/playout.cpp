@@ -147,3 +147,4 @@ QBoxLayout *PLayout::widget()
 {
   return layout;
 }
+

@@ -131,3 +131,4 @@ PukeController *PObject::controller() { /*FOLD00*/
 void PObject::manTerm() {
   manualTerm = TRUE;
 }
+

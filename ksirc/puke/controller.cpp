@@ -652,14 +652,14 @@ void PukeController::closefd(int fd) /*FOLD00*/
        */
       if(it.current()->type == POBJECT_LAYOUT){
         po = it.current()->pwidget;
-        debug("Found Layout: %ld type %d id %d:", po, it.current()->type, it.currentKey());
+        debug("Found Layout: %p type %d id %ld:", po, it.current()->type, it.currentKey());
         break;
       }
       ++it;
     }
 
     if(po != 0x0){
-      debug("Deleting Layout: %ld", po);
+      debug("Deleting Layout: %p", po);
       po->manTerm();
       delete po;
       continue;
@@ -670,9 +670,9 @@ void PukeController::closefd(int fd) /*FOLD00*/
      */
     debug("Deleting Widget");
     it.toFirst();
-    debug("Found Widget: %ld type %d id %d:", po, it.current()->type, it.currentKey());
+    debug("Found Widget: %p type %d id %ld:", po, it.current()->type, it.currentKey());
     po = it.current()->pwidget;
-    debug("Deleting Widget: %ld", po);
+    debug("Deleting Widget: %p", po);
     po->manTerm();
     delete po;
     
