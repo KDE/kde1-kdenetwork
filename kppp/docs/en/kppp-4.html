@@ -26,14 +26,19 @@
 
 <P>
 <DL>
-<DT><B>Connection Name</B><DD><P>You must give the account a name
+<DT><B>Connection Name</B><DD><P>You must give the account a name.
 <P>
-<DT><B>Phone Number</B><DD><P>Specify the phone number to dial. You may use character such
-as ``-'' to make the number more legible.
+<DT><B>Phone Number</B><DD><P>Specify the phone number to dial. You may use characters such as ``-'' to make the number more legible.
+If you concatenate a series of numbers (separated by a colon) kppp will try these numbers in a cyclic order whenever it receives a busy signal.
+Example: "1111111:2222222:3333333"
 <P>
-<DT><B>Authentication</B><DD><P>To be written ...
+<DT><B>Authentication</B><DD><P>Choose the appropriate method of authentication
+that kppp should use to log into the server. Check with your provider
+whether he offers PAP or CHAP support or if you have to use a script
+or terminal-based login method.
 <P>
-<DT><B>Store password</B><DD><P>To be written ...
+<DT><B>Store password</B><DD><P>Check this option if you want kppp to remember
+your password at the next session. 
 <P>
 <DT><B>Execute Program upon Connect</B><DD><P>kppp will attempt to execute the command specified here once a ppp link has been set up. 
 <P>

@@ -247,7 +247,8 @@ This option overrides <em>Minimize Window on Connect</em>.
 <tag/Connection Name/ You must give the account a name.
 
 <tag/Phone Number/ Specify the phone number to dial. You may use characters such as ``-'' to make the number more legible.
-If you concatenate a series of numbers (separated by a colon) kppp will dial these numbers in a cyclic order whenever it receives a busy signal. Example: "111-2222:333-4444:555-6666"
+If you concatenate a series of numbers (separated by a colon) kppp will try these numbers in a cyclic order whenever it receives a busy signal.
+Example: "1111111:2222222:3333333"
 
 <tag/Authentication/ Choose the appropriate method of authentication
 that kppp should use to log into the server. Check with your provider
