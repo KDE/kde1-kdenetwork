@@ -81,6 +81,7 @@ public:
 
   void resetaccounts();
   friend void dieppp(int);              // if the pppd daemon dies...
+  friend void hangup(int);
 
   void startAccounting();
   void stopAccounting();
@@ -151,6 +152,7 @@ private:
 };
 
 void killpppd();
+void hangup(int);
 void dieppp(int);
 pid_t execute_command(const char *);
 

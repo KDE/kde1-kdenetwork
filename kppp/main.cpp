@@ -280,8 +280,8 @@ int main( int argc, char **argv ) {
   // me a SIGKILL.
   signal(SIGINT, SIG_IGN);
   signal(SIGTERM, SIG_IGN);
-  signal(SIGHUP, SIG_IGN);
 
+  signal(SIGHUP, hangup);
   signal(SIGCHLD, dieppp);
 
   XSetErrorHandler( kppp_x_errhandler );
@@ -582,6 +582,23 @@ void KPPPWidget::resetaccounts() {
     
 }
 
+void hangup(int) {
+
+#ifdef MY_DEBUG
+  printf("Received a SIGHUP\n");
+#endif
+
+  signal(SIGHUP, hangup); // reinstall the sig handler
+
+  // interrupt dial up
+  if (p_kppp->con->isVisible())
+    emit p_kppp->con->cancelbutton();
+
+  // disconnect if online
+  if (gpppdata.pppdpid() != -1)
+    emit p_kppp->disconnect();
+
+}
 
 //Note: this is a friend function of KPPPWidget class (kppp)
 

@@ -1,3 +1,8 @@
+1998-08-17  Harri Porten  <porten@tu-harburg.de>
+
+	* main.cpp: added SIGHUP handler that will cleanly disconnect an
+	existing connection.
+
 1998-08-09  Harri Porten  <porten@tu-harburg.de>
 
 	* miniterm.cpp: switched to QMenuBar, fixed memory leak
