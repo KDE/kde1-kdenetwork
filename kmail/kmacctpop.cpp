@@ -167,6 +167,7 @@ bool KMAcctPop::doProcessNewMail(KMIOStatus *wid)
   QString response, status;
   int num, size;	// number of all msgs / size of all msgs
   int id, i;		// id of message to read
+  int tmout;
   int dummy;
   char dummyStr[32];
   int replyCode; // ReplyCode need from User & Passwd call.
@@ -198,7 +199,7 @@ bool KMAcctPop::doProcessNewMail(KMIOStatus *wid)
   sscanf(response.data(), "%3s %d %d", dummyStr, &num, &size);
 
 //#warning "*** If client.Last() cannot be found then install the latest kdesupport"
-  if (client.Last() == '+' && !mRetrieveAll)
+  if (!mRetrieveAll && client.Last() == '+')
   {
     response = client.SingleLineResponse().c_str();
     sscanf(response.data(), "%3s %d", dummyStr, &id);
@@ -215,11 +216,13 @@ bool KMAcctPop::doProcessNewMail(KMIOStatus *wid)
   // do while there are mesages to take and last msg wass added succesfully
   while (id <= num && addedOk)
   {
+    client.SetReceiveTimeout(40);
+
     if(wid->abortRequested()) {
       client.Quit();
       return gotMsgs;
     }
-    wid->updateProgressBar(id,num);
+    wid->updateProgressBar(id, num);
     app->processEvents();
     if (client.List(id) != '+')
       return popError("LIST", client);
@@ -253,6 +256,11 @@ bool KMAcctPop::doProcessNewMail(KMIOStatus *wid)
 
     if (doFetchMsg)
     {
+      // set timeout depending on size
+      tmout = size >> 8;
+      if (tmout < 30) tmout = 30;
+      client.SetReceiveTimeout(tmout);
+
       if (client.Retr(id) != '+')
 	return popError("RETR", client);
       response = client.MultiLineResponse().c_str();

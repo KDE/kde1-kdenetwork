@@ -35,9 +35,10 @@ public:
   /** Apply changes in the edit fields to the current filter. */
   virtual void applyFilterChanges(void);
 
-  /** Methods for filter options, @see KMGFilterDlg */
+  /** Methods for filter options, @see KMGFilterDlg in kmfilteraction.h */
   virtual QPushButton* createDetailsButton(void);
-  virtual QComboBox* createFolderCombo(const QString curFolder=NULL);
+  virtual QComboBox* createFolderCombo(const QString curFolder=0);
+  virtual QLineEdit* createEdit(const QString txt=0);
 
 protected slots:
   void slotBtnUp();

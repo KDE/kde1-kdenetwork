@@ -6,9 +6,13 @@
 #include "kmfoldermgr.h"
 #include "kmfolder.h"
 #include "kmglobal.h"
+#include "kmsender.h"
 #include <kapp.h>
 #include <kconfig.h>
 #include <qcombo.h>
+#include <qlineedit.h>
+#include <signal.h>
+#include <stdlib.h>
 
 static QString resultStr;
 
@@ -144,6 +148,157 @@ const QString KMFilterActionMove::argsAsString(void) const
 
 
 //=============================================================================
+// Forward message to another user
+//=============================================================================
+class KMFilterActionForward: public KMFilterAction
+{
+public:
+  KMFilterActionForward();
+  virtual const QString label(void) const;
+  virtual bool process(KMMessage* msg, bool& stopIt);
+  virtual QWidget* createParamWidget(KMGFilterDlg* parent);
+  virtual void applyParamWidgetValue(QWidget* paramWidget);
+  virtual void argsFromString(const QString argsStr);
+  virtual const QString argsAsString(void) const;
+  static KMFilterAction* newAction(void);
+protected:
+  QString mTo;
+};
+
+
+KMFilterAction* KMFilterActionForward::newAction(void)
+{
+  return (new KMFilterActionForward);
+}
+
+const QString KMFilterActionForward::label(void) const
+{
+  return i18n("forward to");
+}
+
+KMFilterActionForward::KMFilterActionForward(): KMFilterAction("forward")
+{
+}
+
+bool KMFilterActionForward::process(KMMessage* aMsg, bool&stop)
+{
+  KMMessage* msg;
+
+  if (mTo.isEmpty()) return TRUE;
+  msg = aMsg->createForward();
+  msg->setTo(mTo);
+  if (!msgSender->send(msg))
+  {
+    debug("KMFilterActionForward: could not forward message (sending failed)");
+    return true; // error: couldn't send
+  }
+  return FALSE;
+}
+
+QWidget* KMFilterActionForward::createParamWidget(KMGFilterDlg* aParent)
+{
+  QLineEdit* edt;
+
+  edt = aParent->createEdit(mTo);
+  return edt;
+}
+
+void KMFilterActionForward::applyParamWidgetValue(QWidget* aParamWidget)
+{
+  QLineEdit* w = (QLineEdit*)aParamWidget;
+  mTo = w->text();
+}
+
+void KMFilterActionForward::argsFromString(const QString argsStr)
+{
+  mTo = argsStr;
+}
+
+const QString KMFilterActionForward::argsAsString(void) const
+{
+  return mTo;
+}
+
+
+//=============================================================================
+// Execute a shell command
+//=============================================================================
+class KMFilterActionExec:public KMFilterAction
+{
+public:
+  KMFilterActionExec();
+  virtual const QString label(void) const;
+  virtual bool process(KMMessage* msg, bool& stopIt);
+  virtual QWidget* createParamWidget(KMGFilterDlg* parent);
+  virtual void applyParamWidgetValue(QWidget* paramWidget);
+  virtual void argsFromString(const QString argsStr);
+  virtual const QString argsAsString(void) const;
+  static KMFilterAction* newAction(void);
+  static void dummySigHandler(int);
+protected:
+  QString mCmd;
+};
+
+
+KMFilterAction* KMFilterActionExec::newAction(void)
+{
+  return (new KMFilterActionExec);
+}
+
+const QString KMFilterActionExec::label(void) const
+{
+  return i18n("forward to");
+}
+
+KMFilterActionExec::KMFilterActionExec(): KMFilterAction("execute")
+{
+}
+
+void KMFilterActionExec::dummySigHandler(int)
+{
+}
+
+bool KMFilterActionExec::process(KMMessage* aMsg, bool&stop)
+{
+  void (*oldSigHandler)(int);
+  int rc;
+
+  if (mCmd.isEmpty()) return TRUE;
+
+  oldSigHandler = signal(SIGALRM, &KMFilterActionExec::dummySigHandler);
+  alarm(30);
+  rc = system(mCmd);
+  alarm(0);
+  signal(SIGALRM, oldSigHandler);
+  return !(rc & 255);
+}
+
+QWidget* KMFilterActionExec::createParamWidget(KMGFilterDlg* aParent)
+{
+  QLineEdit* edt;
+
+  edt = aParent->createEdit(mCmd);
+  return edt;
+}
+
+void KMFilterActionExec::applyParamWidgetValue(QWidget* aParamWidget)
+{
+  QLineEdit* w = (QLineEdit*)aParamWidget;
+  mCmd = w->text();
+}
+
+void KMFilterActionExec::argsFromString(const QString argsStr)
+{
+  mCmd = argsStr;
+}
+
+const QString KMFilterActionExec::argsAsString(void) const
+{
+  return mCmd;
+}
+
+
+//=============================================================================
 // Skip all other filter rules
 //=============================================================================
 class KMFilterActionSkip: public KMFilterAction
@@ -198,6 +353,10 @@ void KMFilterActionDict::init(void)
 	 KMFilterActionMove::newAction);
   insert("skip rest", i18n("skip rest"),
 	 KMFilterActionSkip::newAction);
+  insert("forward", i18n("forward to"),
+	 KMFilterActionForward::newAction);
+  insert("execute", i18n("execute"),
+	 KMFilterActionExec::newAction);
   // Register custom filter actions below this line.
 }
 

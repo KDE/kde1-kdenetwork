@@ -145,7 +145,7 @@ void KMFolderTree::reload(void)
 }
 
 //-----------------------------------------------------------------------------
-void KMFolderTree::refresh( KMFolder* )
+void KMFolderTree::refresh( KMFolder* aFolder )
 {
   KMFolder* folder;
   QString str;
@@ -153,12 +153,14 @@ void KMFolderTree::refresh( KMFolder* )
   bool upd = autoUpdate();
   bool repaintRequired = false;
 
-  setAutoUpdate(FALSE);
+  //  setAutoUpdate(FALSE);
 
   for (i=0, folder = (KMFolder*)mList.first();
        folder != NULL;
        folder = (KMFolder*)mList.next(),i++)
   {
+    if (folder != aFolder) continue;
+
     str = QString("{") + folder->type() + "} " + folder->label();
     if (text(i) != str) {
        repaintRequired = true;
@@ -169,8 +171,8 @@ void KMFolderTree::refresh( KMFolder* )
           changeItemColor(app->textColor, i);
     }
   }
-  setAutoUpdate(upd);
-  if (upd && repaintRequired) repaint();
+  //  setAutoUpdate(upd);
+  //  if (upd && repaintRequired) repaint();
 }
 
 //-----------------------------------------------------------------------------

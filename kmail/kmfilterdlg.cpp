@@ -232,9 +232,10 @@ void KMFilterDlg::clear(void)
 //-----------------------------------------------------------------------------
 void KMFilterDlg::showFilter(KMFilter* aFilter)
 {
-  int i;
+  int i, w;
   KMFilterAction* action;
   QWidget* pwidg;
+  QSize sz;
 
   assert(aFilter!=NULL); // Important assert
   clear();
@@ -279,6 +280,11 @@ void KMFilterDlg::showFilter(KMFilter* aFilter)
       {
 	QPoint pos = mFaType[i]->pos();
 	pos.setX(pos.x() + mFaType[i]->width() + 4);
+	w = width() - pos.x();
+	if (w > 300) w = 300;
+	sz.setWidth(w);
+	sz.setHeight(pwidg->height());
+	pwidg->resize(sz);
 	pwidg->move(pos);
 	pwidg->show();
       }
@@ -339,6 +345,16 @@ QPushButton* KMFilterDlg::createDetailsButton(void)
     mFaBtnDetails[mGridRow] = btn;
   }
   return btn;
+}
+
+
+//-----------------------------------------------------------------------------
+QLineEdit* KMFilterDlg::createEdit(const QString aTxt)
+{
+  QLineEdit* edt = new QLineEdit(this);
+
+  edt->setText(aTxt);
+  return edt;
 }
 
 

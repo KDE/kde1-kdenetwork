@@ -98,7 +98,10 @@ public:
 
   /** Creates a combobox with a list of folders for the current filter 
     action, with curFolder as the current entry (if given). */
-  virtual QComboBox* createFolderCombo(const QString curFolder=NULL) = 0;
+  virtual QComboBox* createFolderCombo(const QString curFolder=0) = 0;
+
+  /** Creates a line-edit field with txt in it. */
+  virtual QLineEdit* createEdit(const QString txt=0) = 0;
 };
 
 
