@@ -24,9 +24,8 @@ msgid "Setup"
 msgstr "Impostazioni"
 
 #: kfinger.C:19
-#, fuzzy
 msgid "Save Options"
-msgstr "&Opzioni"
+msgstr "Salva Impostazioni"
 
 #: kfinger.C:38
 msgid "Finger"
@@ -45,7 +44,6 @@ msgid "AutoFinger On/Off"
 msgstr ""
 
 #: kfinger.C:54
-#, fuzzy
 msgid ""
 "Welcome to KDE Finger \n"
 "program by A.Rizzi rizzi@kde.org\n"
@@ -70,15 +68,14 @@ msgid "Finger result for : %s@%s"
 msgstr "Risultato Finger per : %s@%s"
 
 #: kfinger.C:301
-#, fuzzy
 msgid ""
-"Kfinger 0.7.0\n"
+"Kfinger 0.8.0\n"
 "(c) by Andrea Rizzi\n"
 "rizzi@kde.org"
 msgstr ""
-"Kfinger 0.3.2\n"
+"Kfinger 0.8.2\n"
 "(c) di Andrea Rizzi\n"
-"Bilibao@ouverture.it"
+"rizzi@kde.org"
 
 #: kfinger.C:345
 msgid "Kfinger Setup"
@@ -115,11 +112,11 @@ msgstr "Attesa Finger : %d"
 
 #: kfinger.C:464
 msgid "Talk Command "
-msgstr ""
+msgstr "Comando talk"
 
 #: kfinger.C:474
 msgid "Misc"
-msgstr ""
+msgstr "Varie"
 
 #: kfinger.C:479 kfinger.C:491
 msgid "Finger Output"
@@ -139,7 +136,7 @@ msgstr "Utente KFinger"
 
 #: kfinger.C:515
 msgid "Lines to skip :"
-msgstr "Linee da slatare :"
+msgstr "Linee da saltare :"
 
 #: kfinger.C:523 kfinger.C:528
 msgid "Format..."
@@ -200,33 +197,3 @@ msgstr "Salva ed Esci"
 #: kfinger.C:851
 msgid "Output parameters "
 msgstr "Parametri in uscita "
-
-#~ msgid "Quit"
-#~ msgstr "Esci"
-
-#~ msgid "Help"
-#~ msgstr "Aiuto"
-
-#~ msgid "About"
-#~ msgstr "Info Su..."
-
-#~ msgid "&File"
-#~ msgstr "&File"
-
-#~ msgid "&Help"
-#~ msgstr "&Aiuto"
-
-#~ msgid "Settings"
-#~ msgstr "Impostazioni"
-
-#~ msgid "&Remove"
-#~ msgstr "&Rimuovi"
-
-#~ msgid "Time"
-#~ msgstr "Tempo"
-
-#~ msgid "Cancel"
-#~ msgstr "Annulla"
-
-#~ msgid "Ok"
-#~ msgstr "Ok"
