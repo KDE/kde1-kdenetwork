@@ -1,6 +1,7 @@
 ##############################################################################
 # Swedish rate ruleset for long distance calls /w Telebonus 1 (10% discount) #
 # Created 1998-04-26 by Anders Widell  <d95-awi@nada.kth.se>                 #
+# Updated 1999-02-02 by Anders Widell  <d95-awi@nada.kth.se>                 #
 # May be distributed freely. I take no responsibility for                    #
 # the correctness of the information in this file.                           #
 ##############################################################################
@@ -30,36 +31,36 @@ currency_digits=2
 per_connection=0.36
 minimum_costs=0.0
 
-# Låg taxa: 22,5 öre/min (räknat per sekund)
-default=(0.01125, 3)
+# Låg taxa: 18 öre/min (räknat per sekund)
+default=(0.009, 3)
 
-# Hög taxa: 45 öre/min måndag-fredag 8-18
-on (monday..friday) between (8:00..17:59) use (0.0225, 3)
+# Hög taxa: 34,2 öre/min måndag-fredag 8-18
+on (monday..friday) between (8:00..17:59) use (0.0171, 3)
 
 # Röda helgdagar (de som infaller på en lördag/söndag utelämnade)
 # nyårsdagen
-on (01/01) between () use (0.01125, 3)
+on (01/01) between () use (0.009, 3)
 # trettondag jul
-on (01/06) between () use (0.01125, 3)
+on (01/06) between () use (0.009, 3)
 # långfredagen
-on (easter-2) between () use (0.01125, 3)
+on (easter-2) between () use (0.009, 3)
 # annandag påsk
-on (easter+1) between () use (0.01125, 3)
+on (easter+1) between () use (0.009, 3)
 # första maj
-on (05/01) between () use (0.01125, 3)
+on (05/01) between () use (0.009, 3)
 # kristi himmelfärds dag
-on (easter+39) between () use (0.01125, 3)
+on (easter+39) between () use (0.009, 3)
 # annandag pingst
-on (easter+50) between () use (0.01125, 3)
+on (easter+50) between () use (0.009, 3)
 # juldagen
-on (12/25) between () use (0.01125, 3)
+on (12/25) between () use (0.009, 3)
 # annandag jul
-on (12/26) between () use (0.01125, 3)
+on (12/26) between () use (0.009, 3)
 
 # "aftnar" (osäkert om följande är korrekt & fullständigt)
 # trettondagsafton
-on (01/05) between () use (0.01125, 3)
+on (01/05) between () use (0.009, 3)
 # julafton
-on (12/24) between () use (0.01125, 3)
+on (12/24) between () use (0.009, 3)
 # nyårsafton
-on (12/31) between () use (0.01125, 3)
+on (12/31) between () use (0.009, 3)
