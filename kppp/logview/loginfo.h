@@ -20,7 +20,7 @@
 
 #ifndef __LOGINFO__H__
 #define __LOGINFO__H__
-#define MYDEBUG
+// #define MYDEBUG
 
 #include <qdatetm.h>
 #include <qstring.h>

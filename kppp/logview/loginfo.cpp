@@ -18,8 +18,13 @@
  * Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
+#include <config.h>
 #include "loginfo.h"
 #include <stdlib.h>
+
+#ifdef HAVE_STRING_H
+#include <string.h>
+#endif
 
 LogInfo::LogInfo(QString data) {
   parse(data);
