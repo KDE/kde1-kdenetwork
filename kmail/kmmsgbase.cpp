@@ -68,6 +68,7 @@ bool KMMsgBase::isMessage(void) const
 //-----------------------------------------------------------------------------
 void KMMsgBase::setStatus(KMMsgStatus aStatus)
 {
+  if (mParent) mParent->msgStatusChanged( mStatus, aStatus );
   mStatus = aStatus;
   mDirty = TRUE;
 #ifndef KRN

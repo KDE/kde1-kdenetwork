@@ -70,6 +70,7 @@ KMFolderTree::KMFolderTree(QWidget *parent,const char *name) :
   dict().insert("Tr", &pixTr);
 
   setAutoUpdate(TRUE);
+  updateUnreadAll( );
   reload();
 }
 
@@ -87,6 +88,26 @@ KMFolderTree::~KMFolderTree()
   if (mDropZone) delete mDropZone;
 }
 
+//-----------------------------------------------------------------------------
+void KMFolderTree::updateUnreadAll( )
+{
+  KMFolderDir* fdir;
+  KMFolder* folder;
+  debug( "KMFolderTree::updateUnreadAll" );
+  bool upd = autoUpdate();
+  setAutoUpdate(FALSE);
+
+  fdir = &folderMgr->dir();
+  for (folder = (KMFolder*)fdir->first();
+       folder != NULL;
+       folder = (KMFolder*)fdir->next())
+  {
+    folder->open();
+    folder->countUnread();
+    folder->close();
+  }
+  setAutoUpdate(upd);
+}
 
 //-----------------------------------------------------------------------------
 void KMFolderTree::reload(void)
@@ -94,11 +115,16 @@ void KMFolderTree::reload(void)
   KMFolderDir* fdir;
   KMFolder* folder;
   QString str;
+  KMFolder* cur;
+  debug( "KMFolderTree::reload" );
   bool upd = autoUpdate();
 
   setAutoUpdate(FALSE);
 
   clear();
+  for (cur=(KMFolder*)mList.first(); cur; cur=(KMFolder*)mList.next())
+    disconnect(cur,SIGNAL(numUnreadMsgsChanged(KMFolder*)),
+	  this,SLOT(refresh(KMFolder*)));
   mList.clear();
 
   fdir = &folderMgr->dir();
@@ -109,10 +135,41 @@ void KMFolderTree::reload(void)
   {
     inSort(folder);
   }
+  for (cur=(KMFolder*)mList.first(); cur; cur=(KMFolder*)mList.next())
+    connect(cur,SIGNAL(numUnreadMsgsChanged(KMFolder*)),
+	  this,SLOT(refresh(KMFolder*)));
   setAutoUpdate(upd);
   if (upd) repaint();
 }
 
+//-----------------------------------------------------------------------------
+void KMFolderTree::refresh( KMFolder* )
+{
+  KMFolder* folder;
+  QString str;
+  int i;
+  bool upd = autoUpdate();
+  bool repaintRequired = false;
+
+  setAutoUpdate(FALSE);
+
+  for (i=0, folder = (KMFolder*)mList.first();
+       folder != NULL;
+       folder = (KMFolder*)mList.next(),i++)
+  {
+    str = QString("{") + folder->type() + "} " + folder->label();
+    if (text(i) != str) {
+       repaintRequired = true;
+       changeItem(str, i);
+       if (folder->countUnread()>0)
+          changeItemColor(darkRed, i);
+       else
+          changeItemColor(app->textColor, i);
+    }
+  }
+  setAutoUpdate(upd);
+  if (upd && repaintRequired) repaint();
+}
 
 //-----------------------------------------------------------------------------
 void KMFolderTree::doFolderListChanged()
@@ -178,8 +235,10 @@ void KMFolderTree::inSort(KMFolder* aFolder)
   insertItem(str, i);
   mList.insert(i, aFolder);
 
-  if (aFolder->isOpened() && aFolder->countUnread()>0)
+  if (aFolder->countUnread()>0)
      changeItemColor(darkRed, i);
+  else
+     changeItemColor(app->textColor, i);
 }
 
 

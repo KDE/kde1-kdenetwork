@@ -33,7 +33,13 @@ protected slots:
   /** called when a drop occurs. */
   void doDropAction(KDNDDropZone*);
 
+  // Updates the folder tree only if some folder lable has changed
+  void refresh(KMFolder*);
+
 protected:
+  // Updates the number of unread messages for all folders
+  virtual void KMFolderTree::updateUnreadAll( );
+
   // Insert folder sorted by type and name
   virtual void inSort(KMFolder*);
 
