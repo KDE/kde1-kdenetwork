@@ -1,113 +1,104 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kdenetwork\n"
-"POT-Creation-Date: 1999-01-23 02:09+0100\n"
-"PO-Revision-Date: 1998-06-21 13:23+0200\n"
-"Last-Translator: Raimundo Alba <raimon@alcavia.net>\n"
+"POT-Creation-Date: 1998-12-01 01:56+0100\n"
+"PO-Revision-Date: 1999-01-31 00:05+0100\n"
+"Last-Translator: Jaime Robles <ea4abw@amsat.org>\n"
+"Language-Team: Spanish <kde-es@kde.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8-bit\n"
 
-#: knu.cpp:150 knu.cpp:309
+#: knu.cpp:147 knu.cpp:306
 msgid "&Ping"
 msgstr "&Ping"
 
-#: knu.cpp:159 knu.cpp:315
+#: knu.cpp:156 knu.cpp:312
 msgid "&Traceroute"
-msgstr "&Buscar ruta"
+msgstr "&Traceroute"
 
-#: knu.cpp:168 knu.cpp:321
+#: knu.cpp:165 knu.cpp:318
 msgid "Host &resolution"
-msgstr "&Resolver nombres"
+msgstr "&Resolución de la máquina"
 
-#: knu.cpp:181
+#: knu.cpp:178
 msgid "F&inger"
-msgstr "&Finger"
+msgstr "F&inger"
 
-#: knu.cpp:190 knu.cpp:333
+#: knu.cpp:187 knu.cpp:330
 msgid "&mtr"
-msgstr ""
+msgstr "&mtr"
 
-#: knu.cpp:201
+#: knu.cpp:198
 msgid ""
 "There is no command enabled\n"
 "in the configuration file.\n"
 "\n"
 "So I can't do anything...\n"
 msgstr ""
-"No hay ningún comando disponible\n"
+"No está el habilitado el comando\n"
 "en el fichero de configuración.\n"
 "\n"
-"Imposible realizar alguna operación.\n"
+"Así que no puedo hacer nada...\n"
 
-#: knu.cpp:246
+#: knu.cpp:243
 msgid "&New window"
 msgstr "&Nueva ventana"
 
-#: knu.cpp:249
+#: knu.cpp:246
 msgid "&Close window"
 msgstr "&Cerrar ventana"
 
-#: knu.cpp:260
+#: knu.cpp:257
 msgid "Select &all"
 msgstr "Seleccionar &todo"
 
-#: knu.cpp:263
+#: knu.cpp:260
 msgid "C&lear output window"
-msgstr "&Limpiar ventana de resultados"
+msgstr "Limpiar la ventana de sa&lida"
 
-#: knu.cpp:266
+#: knu.cpp:263
 msgid "P&references..."
 msgstr "P&referencias..."
 
-#: knu.cpp:281
+#: knu.cpp:278
 #, c-format
 msgid "&About %s"
-msgstr "Acerca de %s"
+msgstr "&Acerca de %s"
 
-#: knu.cpp:283
+#: knu.cpp:280
 msgid "About &Qt"
-msgstr "Acerca de &Qt"
+msgstr "Sobre &Qt"
 
-#: knu.cpp:327
+#: knu.cpp:324
 msgid "&Finger"
 msgstr "&Finger"
 
-#: knu.cpp:466
-#, c-format
-msgid ""
-"Knu\n"
-"Version %s\n"
-"\n"
-"Bertrand"
-msgstr ""
-
 #: knu.cpp:469
 msgid "About..."
-msgstr "Acerca de..."
+msgstr "Sobre..."
 
-#: knu.cpp:602
-msgid "Network utilities"
-msgstr ""
-
-#: CommandDlg.cpp:131
+#: CommandDlg.cpp:128
 msgid "H&ost:"
-msgstr "&Servidor:"
+msgstr "Servid&or"
 
-#: CommandDlg.cpp:140
+#: CommandDlg.cpp:137
 msgid "&Go!"
-msgstr "&Iniciar"
+msgstr "¡Adelante!"
 
-#: CommandDlg.cpp:150
+#: CommandDlg.cpp:147
 msgid "&Stop"
-msgstr "&Detener"
+msgstr "Parar"
 
-#: CommandDlg.cpp:166
+#: CommandDlg.cpp:163
 msgid ""
 "This command binary was not found. \n"
 "You can give its path in the Edit->Preferences... menu."
 msgstr ""
-"El ejecutable del comando no se encontró. \n"
-"Puede indicar su ubicación en el menú Editar->Preferencias..."
+"Este comando no fue encontrado. \n"
+"Debes dar el trayecto en el menú Editar->Preferencias...."
 
-#: CommandDlg.cpp:351
+#: CommandDlg.cpp:348
 #, c-format
 msgid ""
 "\n"
@@ -121,78 +112,76 @@ msgid ""
 "to configure it again.\n"
 msgstr ""
 "\n"
-"Tiene un problema en su fichero\n"
-"%s/%src\n"
-"No se pudo encontrar una linea\n"
-"\"path=\" válida en el grupo\n"
-"[%s]\n"
-"\n"
-"Use el menú Editar->Preferencias...\n"
-"para configurarlo de nuevo.\n"
+"Tienes un problema en tu\n"
+"fichero de configuración\n"
+"%s/src\n"
+"en el grupo [%s],\n"
+"No encuentro una entrada \"path=\" válida\n"
+"para configurarlo otra vez.\n"
 
-#: CommandDlg.cpp:360
+#: CommandDlg.cpp:357
 msgid "Error in pathname"
-msgstr "Error en el nombre de la ruta"
+msgstr "Error en el trayecto"
 
-#: CommandDlg.cpp:516
+#: CommandDlg.cpp:511
 msgid "Binary"
 msgstr "Binario"
 
-#: CommandDlg.cpp:524
+#: CommandDlg.cpp:519
 msgid "Path&name:"
-msgstr "&Directorio:"
+msgstr "Trayecto &nombre"
 
-#: CommandDlg.cpp:533
+#: CommandDlg.cpp:528
 msgid "Additional &arguments:"
 msgstr "&Argumentos adicionales:"
 
-#: CommandDlg.cpp:558
+#: CommandDlg.cpp:553
 msgid "This command had been disabled in the configuration file."
-msgstr "Este comando se ha inhabilitado en el fichero de configuración."
+msgstr "Este comando se ha deshabilitado en el fichero de configuración."
 
 #: OptionsDlg.cpp:69
 msgid " - configuration"
 msgstr " - configuración"
 
-#: MtrDlg.cpp:87
+#: MtrDlg.cpp:83
 msgid "#"
-msgstr ""
+msgstr "#"
 
-#: MtrDlg.cpp:88
+#: MtrDlg.cpp:84
 msgid "Hostname"
-msgstr ""
+msgstr "Nombre de máquina"
+
+#: MtrDlg.cpp:85
+msgid "Loss"
+msgstr "Pérdida"
+
+#: MtrDlg.cpp:87
+msgid "Rcv"
+msgstr "Rcb"
 
 #: MtrDlg.cpp:89
-msgid "Loss"
-msgstr ""
+msgid "Snt"
+msgstr "Env"
 
 #: MtrDlg.cpp:91
-msgid "Rcv"
-msgstr ""
+msgid "Best"
+msgstr "Mejor"
 
 #: MtrDlg.cpp:93
-msgid "Snt"
-msgstr ""
+msgid "Avg"
+msgstr "Media"
 
 #: MtrDlg.cpp:95
-msgid "Best"
-msgstr ""
-
-#: MtrDlg.cpp:97
-msgid "Avg"
-msgstr ""
-
-#: MtrDlg.cpp:99
 msgid "Worst"
-msgstr ""
+msgstr "Peor"
 
-#: MtrDlg.cpp:142 PingDlg.cpp:100 TracerouteDlg.cpp:98
+#: MtrDlg.cpp:138 PingDlg.cpp:100 TracerouteDlg.cpp:98
 msgid "Make host &name resolution"
-msgstr "Resolver el nombre del servidor"
+msgstr "Resolver el &nombre"
 
 #: HostDlg.cpp:331 PingDlg.cpp:227
 msgid "hos&t"
-msgstr "hos&t"
+msgstr "máquina"
 
 #: HostDlg.cpp:335 PingDlg.cpp:231
 msgid "ns&lookup"
@@ -200,7 +189,7 @@ msgstr "ns&lookup"
 
 #: TracerouteDlg.cpp:115
 msgid "&Maximum number of hops:"
-msgstr "Número máximo de intermediarios:"
+msgstr "&Máximo número de saltos:"
 
 #: HostDlg.cpp:112
 msgid "address (A)"
@@ -212,11 +201,11 @@ msgstr "nombre (PTR)"
 
 #: HostDlg.cpp:114
 msgid "name server (NS)"
-msgstr "servidor de nombres (NS)"
+msgstr "Servidor de nombres (NS)"
 
 #: HostDlg.cpp:115
 msgid "mail exchanger (MX)"
-msgstr "intercambiador de correo (MX)"
+msgstr "Gestor de correo (MX)"
 
 #: HostDlg.cpp:116
 msgid "alias (CNAME)"
@@ -224,7 +213,7 @@ msgstr "alias (CNAME)"
 
 #: HostDlg.cpp:117
 msgid "start of authority (SOA)"
-msgstr "inicio de autoridad (SOA)"
+msgstr "comienzo de autoridad (SOA)"
 
 #: HostDlg.cpp:118
 msgid "any record (ANY)"
@@ -232,11 +221,11 @@ msgstr "cualquier registro (ANY)"
 
 #: HostDlg.cpp:124
 msgid "Se&arch for:"
-msgstr "&Buscar:"
+msgstr "Busc&ar:"
 
 #: HostDlg.cpp:136 HostDlg.cpp:287
 msgid "default server"
-msgstr "servidor predeterminado"
+msgstr "servidor por defecto"
 
 #: FingerDlg.cpp:95 HostDlg.cpp:145
 msgid "Ser&ver:"
@@ -245,6 +234,3 @@ msgstr "Ser&vidor:"
 #: FingerDlg.cpp:77
 msgid "&User:"
 msgstr "&Usuario:"
-
-#~ msgid "&Matt's traceroute"
-#~ msgstr "B&uscar ruta (Matt)"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kdenetwork\n"
-"POT-Creation-Date: 1999-04-02 02:46+0200\n"
+"POT-Creation-Date: 1999-02-06 02:07+0100\n"
 "PO-Revision-Date: 1999-02-27 21:38+0200\n"
 "Last-Translator: Jaime Robles <ea4abw@amsat.org>\n"
 "Language-Team: Spanish <kde-es@kde.org>\n"
@@ -491,15 +491,15 @@ msgstr "Reenviar:"
 msgid "Indentation:"
 msgstr "Sangría márgenes:"
 
-#: kmmessage.cpp:1379 kmsettings.cpp:420
+#: kmmessage.cpp:1380 kmsettings.cpp:420
 msgid "On %D, you wrote:"
 msgstr "El %D, escribiste:"
 
-#: kmmessage.cpp:1380 kmsettings.cpp:424
+#: kmmessage.cpp:1381 kmsettings.cpp:424
 msgid "On %D, %F wrote:"
 msgstr "El %D, %F escribió:"
 
-#: kmmessage.cpp:1381 kmsettings.cpp:428
+#: kmmessage.cpp:1382 kmsettings.cpp:428
 msgid "Forwarded Message"
 msgstr "Mensaje Reenviado"
 
@@ -954,7 +954,7 @@ msgstr "my llave pgp"
 msgid "pgp key"
 msgstr "llave pgp"
 
-#: kmcomposewin.cpp:1297 kmreaderwin.cpp:840
+#: kmcomposewin.cpp:1297 kmreaderwin.cpp:811
 msgid "View..."
 msgstr "Ver..."
 
@@ -962,7 +962,7 @@ msgstr "Ver..."
 msgid "Save..."
 msgstr "Guardar..."
 
-#: kmcomposewin.cpp:1299 kmreaderwin.cpp:843
+#: kmcomposewin.cpp:1299 kmreaderwin.cpp:814
 msgid "Properties..."
 msgstr "Propiedades..."
 
@@ -970,7 +970,7 @@ msgstr "Propiedades..."
 msgid "Attach..."
 msgstr "Adjuntar..."
 
-#: kmcomposewin.cpp:1345 kmreaderwin.cpp:912 kmreaderwin.cpp:928
+#: kmcomposewin.cpp:1345 kmreaderwin.cpp:857
 msgid "View Attachment: "
 msgstr "Ver Adjuntos: "
 
@@ -1001,21 +1001,21 @@ msgstr ""
 "Error iniciando KSpell. Por favor asegúrese de que tiene \n"
 "ISpell instalado en el sistema y configurado correctamente."
 
-#: kmfolder.cpp:147
+#: kmfolder.cpp:146
 #, c-format
 msgid "Folder `%s' changed. Recreating index."
 msgstr "La carpeta `%s' ha cambiado. Regenerando índice."
 
-#: kmfolder.cpp:388
+#: kmfolder.cpp:387
 #, c-format
 msgid "Creating index file: %d messages done"
 msgstr "Creando archivo índice: %d mensajes procesados"
 
-#: kmfolder.cpp:477
+#: kmfolder.cpp:476
 msgid "Writing index file"
 msgstr "Escribiendo archivo de índice"
 
-#: kmfolder.cpp:934
+#: kmfolder.cpp:920
 #, c-format
 msgid "Compacting folder: %d messages done"
 msgstr "Compactando carpeta: %d mensajes procesados"
@@ -1044,64 +1044,64 @@ msgstr "base 64"
 msgid "quoted printable"
 msgstr "quoted printable"
 
-#: kmreaderwin.cpp:336 kmreaderwin.cpp:349 kmreaderwin.cpp:368
-#: kmreaderwin.cpp:389
+#: kmreaderwin.cpp:310 kmreaderwin.cpp:323 kmreaderwin.cpp:342
+#: kmreaderwin.cpp:363
 msgid "Cc: "
 msgstr "Cc: "
 
-#: kmreaderwin.cpp:344 kmreaderwin.cpp:363 kmreaderwin.cpp:384
+#: kmreaderwin.cpp:318 kmreaderwin.cpp:337 kmreaderwin.cpp:358
 msgid "From: "
 msgstr "De: "
 
-#: kmreaderwin.cpp:346 kmreaderwin.cpp:365 kmreaderwin.cpp:386
+#: kmreaderwin.cpp:320 kmreaderwin.cpp:339 kmreaderwin.cpp:360
 msgid "To: "
 msgstr "Para: "
 
-#: kmreaderwin.cpp:353 kmreaderwin.cpp:374 kmreaderwin.cpp:399
+#: kmreaderwin.cpp:327 kmreaderwin.cpp:348 kmreaderwin.cpp:373
 msgid "References: "
 msgstr "Referencias: "
 
-#: kmreaderwin.cpp:370 kmreaderwin.cpp:383
+#: kmreaderwin.cpp:344 kmreaderwin.cpp:357
 msgid "Date: "
 msgstr "Fecha: "
 
-#: kmreaderwin.cpp:392
+#: kmreaderwin.cpp:366
 msgid "Bcc: "
 msgstr "Bcc: "
 
-#: kmreaderwin.cpp:395
+#: kmreaderwin.cpp:369
 msgid "Reply to: "
 msgstr "Reply to: "
 
-#: kmreaderwin.cpp:402
+#: kmreaderwin.cpp:376
 msgid "Groups: "
 msgstr "Grupos de noticias: "
 
-#: kmreaderwin.cpp:440
+#: kmreaderwin.cpp:414
 msgid "Encrypted message"
 msgstr "Mensaje encriptado"
 
-#: kmreaderwin.cpp:446
+#: kmreaderwin.cpp:420
 msgid "Cannot decrypt message:"
 msgstr "No se pudo desencriptar mensaje:"
 
-#: kmreaderwin.cpp:455
+#: kmreaderwin.cpp:429
 msgid "Message was signed by"
 msgstr "Mensaje firmado por"
 
-#: kmreaderwin.cpp:456
+#: kmreaderwin.cpp:430
 msgid "Warning: Bad signature from"
 msgstr "Advertencia: Firma del emisor errónea"
 
-#: kmreaderwin.cpp:466
+#: kmreaderwin.cpp:440
 msgid "unknown key ID"
 msgstr "ID de llave desconocido"
 
-#: kmreaderwin.cpp:804
+#: kmreaderwin.cpp:775
 msgid "Attachment: "
 msgstr "Adjuntos: "
 
-#: kmreaderwin.cpp:1016
+#: kmreaderwin.cpp:945
 msgid "Could not save file"
 msgstr "No se pudo guardar archivo"
 
@@ -1168,7 +1168,7 @@ msgstr ""
 msgid "Loading addressbook failed"
 msgstr "Fallo en la carga del libro de direcciones"
 
-#: main.cpp:573 main.cpp:704
+#: main.cpp:554 main.cpp:630
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr "Comando desconocido: %s"
@@ -1548,8 +1548,7 @@ msgstr "Reintentar"
 msgid ""
 "Do you wan't to encrypt anyway, leave the\n"
 "message as is, or cancel the message?"
-msgstr ""
-"¿Quieres encriptar de todas formas, dejar\n"
+msgstr "¿Quieres encriptar de todas formas, dejar\n"
 "el mensaje como etá, o cancelar el mensaje?"
 
 #: kpgp.cpp:346
@@ -1831,3 +1830,4 @@ msgstr "ASCII es &7 bits"
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
 msgstr "&Citar caracteres desconocidos"
+
