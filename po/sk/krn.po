@@ -582,23 +582,23 @@ msgstr "Vlo¾ený"
 
 #: fontsDlg.cpp:67
 msgid "Font Size:"
-msgstr "Veµkos» fontu:"
+msgstr "Veµkos» písma:"
 
 #: fontsDlg.cpp:70
 msgid "Small"
-msgstr ""
+msgstr "Malé"
 
 #: fontsDlg.cpp:71
 msgid "Normal"
-msgstr ""
+msgstr "Normálne"
 
 #: fontsDlg.cpp:72
 msgid "Large"
-msgstr ""
+msgstr "Veµké"
 
 #: fontsDlg.cpp:73
 msgid "Huge"
-msgstr "Obrovský"
+msgstr "Obrovské"
 
 #: fontsDlg.cpp:78
 msgid "Standard Font"
@@ -642,11 +642,11 @@ msgstr "Rozdeli» okno vertikálne"
 
 #: kmmessage.cpp:1260
 msgid "On %D, you wrote:"
-msgstr ""
+msgstr "Dòa %D ste napísali:"
 
 #: kmmessage.cpp:1261
 msgid "On %D, %F wrote:"
-msgstr ""
+msgstr "Dòa %D, %F napísal:"
 
 #: kmmessage.cpp:1262
 msgid "Forwarded Message"
@@ -874,13 +874,15 @@ msgstr "Riadok"
 
 #: kmcomposewin.cpp:891
 msgid "KMail Confirm"
-msgstr ""
+msgstr "Potvrdenia KMailu"
 
 #: kmcomposewin.cpp:892
 msgid ""
 "Close and discard\n"
 "edited message?"
 msgstr ""
+"Zavrie» a zru¹i»\n"
+"editovanú správu?"
 
 #: kmcomposewin.cpp:937
 #, c-format
@@ -888,10 +890,12 @@ msgid ""
 "public key for %s not found.\n"
 "This person will not be able to decrypt the message."
 msgstr ""
+"verejný kµúè pre %s nebol nájdený.\n"
+"Táto osoba nebude schopná dekryptova» správu."
 
 #: kmcomposewin.cpp:958
 msgid "Error during PGP:"
-msgstr ""
+msgstr "Chyba pri behu PGP:"
 
 #: kmcomposewin.cpp:1178
 msgid "Attach File"
@@ -1187,6 +1191,8 @@ msgid ""
 "Could not write to file:\n"
 "%s"
 msgstr ""
+"Nemô¾em zapisova» do súboru:\n"
+"%s"
 
 #: kfileio.cpp:159
 #, c-format
@@ -1194,6 +1200,8 @@ msgid ""
 "Could not open file for writing:\n"
 "%s"
 msgstr ""
+"Nemô¾em otvori» súbor pre zápis:\n"
+"%s"
 
 #: kfileio.cpp:163 kmaddrbook.cpp:155
 #, c-format
@@ -1201,155 +1209,159 @@ msgid ""
 "Error while writing file:\n"
 "%s"
 msgstr ""
+"Chyba pri zapisovaní súboru:\n"
+"%s"
 
 #: kfileio.cpp:180
 #, c-format
 msgid "Could only write %d bytes of %d."
-msgstr ""
+msgstr "Zapísal som len %d bajtov z %d."
 
 #: kmmsgpartdlg.cpp:41
 msgid "Message Part Properties"
-msgstr ""
+msgstr "Vlastnosti èasti správy"
 
 #: kmmsgpartdlg.cpp:62
 msgid "Name:"
-msgstr ""
+msgstr "Meno:"
 
 #: kmmsgpartdlg.cpp:73
 msgid "Description:"
-msgstr ""
+msgstr "Popis:"
 
 #: kmmsgpartdlg.cpp:83
 msgid "Encoding:"
-msgstr ""
+msgstr "Kódovanie:"
 
 #: kmmsgpartdlg.cpp:89
 msgid "none (8bit)"
-msgstr ""
+msgstr "¾iadne (8bit)"
 
 #: kmmsgpartdlg.cpp:90
 msgid "base 64"
-msgstr ""
+msgstr "base 64"
 
 #: kmmsgpartdlg.cpp:91
 msgid "quoted printable"
-msgstr ""
+msgstr "quoted printable"
 
 #: kmreaderwin.cpp:309 kmreaderwin.cpp:322 kmreaderwin.cpp:341
 #: kmreaderwin.cpp:362
 msgid "Cc: "
-msgstr ""
+msgstr "Cc: "
 
 #: kmreaderwin.cpp:317 kmreaderwin.cpp:336 kmreaderwin.cpp:357
 msgid "From: "
-msgstr ""
+msgstr "Od: "
 
 #: kmreaderwin.cpp:319 kmreaderwin.cpp:338 kmreaderwin.cpp:359
 msgid "To: "
-msgstr ""
+msgstr "Pre: "
 
 #: kmreaderwin.cpp:326 kmreaderwin.cpp:347 kmreaderwin.cpp:372
 msgid "References: "
-msgstr ""
+msgstr "Referencie: "
 
 #: kmreaderwin.cpp:343 kmreaderwin.cpp:356
 msgid "Date: "
-msgstr ""
+msgstr "Dátum: "
 
 #: kmreaderwin.cpp:365
 msgid "Bcc: "
-msgstr ""
+msgstr "Bcc: "
 
 #: kmreaderwin.cpp:368
-#, fuzzy
 msgid "Reply to: "
-msgstr "Odpoveda» po¹tou"
+msgstr "Reply to: "
 
 #: kmreaderwin.cpp:375
 msgid "Groups: "
-msgstr ""
+msgstr "Skupiny: "
 
 #: kmreaderwin.cpp:412
 msgid "Encrypted message"
-msgstr ""
+msgstr "Kryptovaná správa"
 
 #: kmreaderwin.cpp:418
 msgid "Cannot decrypt message:"
-msgstr ""
+msgstr "Nemô¾em dekryptova» správu:"
 
 #: kmreaderwin.cpp:436
 msgid "Message was signed by"
-msgstr ""
+msgstr "Správu podpísal"
 
 #: kmreaderwin.cpp:437
 msgid "Warning: Bad signature from"
-msgstr ""
+msgstr "Varovanie: Zlá signatúra od"
 
 #: kmreaderwin.cpp:647
-#, fuzzy
 msgid "Attachment: "
-msgstr "©týl prílohy"
+msgstr "Príloha: "
 
 #: kmreaderwin.cpp:759
 msgid "Could not create temporary file"
-msgstr ""
+msgstr "Nemô¾em vytvori» doèasný súbor"
 
 #: kmreaderwin.cpp:780
 #, c-format
 msgid "Could not save temporary file %s"
-msgstr ""
+msgstr "Nemô¾em ulo¾i» doèasný súbor %s"
 
 #: kmreaderwin.cpp:809
-#, fuzzy
 msgid "Could not save file"
-msgstr "Spojenie so serverom sa zlyhalo"
+msgstr "Nemô¾em ulo¾i» súbor"
 
 #: kpgp.cpp:117
 msgid ""
 "Couldn't find PGP executable.\n"
 "Please check your PATH is set correctly."
 msgstr ""
+"Nemô¾em nájs» PGP program.\n"
+"Prosím skontrolujte, èi je cesta správne nastavná."
 
 #: kpgp.cpp:163
 msgid ""
 "Could not find PGP executable.\n"
 "Please check your PATH is set correctly."
 msgstr ""
+"Nemô¾em nájs» PGP program.\n"
+"Prosím skontrolujte, èi je cesta správne nastavná."
 
 #: kpgp.cpp:173
 msgid "The pass phrase is missing."
-msgstr ""
+msgstr "Chýba heslo."
 
 #: kpgp.cpp:445
 msgid "Message signed by"
-msgstr ""
+msgstr "Správu podpísal"
 
 #: kpgp.cpp:449
 msgid "Message has a bad signature from"
-msgstr ""
+msgstr "Správa má zlý podpis od"
 
 #: kpgp.cpp:457
 msgid "End PGP signed message"
-msgstr ""
+msgstr "Koniec podpísanej správy PGP"
 
 #: kpgp.cpp:622
 msgid "Bad pass Phrase; couldn't decrypt"
-msgstr ""
+msgstr "Zlé heslo; nemô¾em dekryptova»"
 
 #: kpgp.cpp:708
 msgid "Bad pass Phrase; couldn't sign"
-msgstr ""
+msgstr "Zlé heslo; nemô¾em podpísa»"
 
 #: kpgp.cpp:765
-#, fuzzy
 msgid ""
 "Please enter your\n"
 "PGP passphrase"
-msgstr "Prosím, zadajte va¹e skutoèné meno"
+msgstr ""
+"Prosím zadajte va¹e\n"
+"PGP heslo"
 
 #: kpgp.cpp:792
 msgid "PGP Security Check"
-msgstr ""
+msgstr "Bezpeènostná kontrola PGP"
 
 #: krnsender.cpp:59
 msgid "This server is read onlyyou can't post here!"
@@ -1357,27 +1369,27 @@ msgstr "Tento server je len na èítanie, nemô¾ete sem posiela»!"
 
 #: kmaddrbookdlg.cpp:20
 msgid "Addressbook"
-msgstr ""
+msgstr "Kniha adries"
 
 #: kmaddrbookdlg.cpp:95
 msgid "Addressbook Manager"
-msgstr ""
+msgstr "Mana¾ér knihy adries"
 
 #: kmaddrbookdlg.cpp:178
 msgid "KMail error"
-msgstr ""
+msgstr "Chyba KMail"
 
 #: kmaddrbookdlg.cpp:179
 msgid "Storing addressbook failed"
-msgstr ""
+msgstr "Ukladanie knihy adries zlyhalo"
 
 #: kmaddrbook.cpp:25
 msgid "KMail Error"
-msgstr ""
+msgstr "Chyba KMailu"
 
 #: kmaddrbook.cpp:26
 msgid "Storing the addressbook failed!\n"
-msgstr ""
+msgstr "Ukladanie knihy adries zlyhalo!\n"
 
 #: expireDlg.cpp:22 expireDlg.cpp:27
 msgid "KRN - Expire Settings"
@@ -1481,7 +1493,7 @@ msgstr "Porovna» príspevky s:"
 
 #: rulesDlg.cpp:124
 msgid "Weight:"
-msgstr ""
+msgstr "Váha:"
 
 #: rulesDlg.cpp:126
 msgid "Negative"
@@ -1497,7 +1509,7 @@ msgstr "KRN - Nastavenie expirácie"
 
 #: sortDlg.cpp:37
 msgid "None"
-msgstr ""
+msgstr "®iadny"
 
 #: sortDlg.cpp:39
 msgid "Sort by:"
@@ -1519,20 +1531,20 @@ msgstr "KRN - Nastavenie tlaèiarne"
 
 #: charsetsDlg.cpp:39
 msgid "Message charset"
-msgstr ""
+msgstr "Kódová stránka správy"
 
 #: charsetsDlg.cpp:57
 msgid "Composer charset"
-msgstr ""
+msgstr "Kódová stránka editora"
 
 #: charsetsDlg.cpp:75
 msgid "Set as &default"
-msgstr ""
+msgstr "Nastavi» ako ¹&tand."
 
 #: charsetsDlg.cpp:80
 msgid "&7 bit is ASCII"
-msgstr ""
+msgstr "&7 bit is ASCII"
 
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
-msgstr ""
+msgstr "&Zakódova» neznáme znaky"
