@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-01-13 23:06+0100\n"
+"POT-Creation-Date: 1998-01-14 15:58+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,107 +43,112 @@ msgstr "Por favor, introduzca el nombre de su servidor SMTP"
 msgid "Received %.2f Kb"
 msgstr "Recibidos %.2f Kb"
 
-#: groupdlg.cpp:119
+#: groupdlg.cpp:123
 msgid "Connect to Server"
 msgstr "Conectar con el Servidor"
 
-#: groupdlg.cpp:120
+#: groupdlg.cpp:124
 msgid "Disconnect From Server"
 msgstr "Desconectar del Servidor"
 
-#: groupdlg.cpp:121
+#: groupdlg.cpp:125
 msgid "Get Active File"
 msgstr "Obtener Fichero de Grupos Disponibles"
 
-#: groupdlg.cpp:123
+#: groupdlg.cpp:127
+#, fuzzy
+msgid "Post Queued Messages"
+msgstr "Mostrar mensajes con atributo -no expirar-"
+
+#: groupdlg.cpp:129
 msgid "Exit"
 msgstr "Salir"
 
-#: groupdlg.cpp:126
+#: groupdlg.cpp:132
 msgid "KRN - Group List"
 msgstr "KRN - Listado Grupos de Noticias"
 
-#: groupdlg.cpp:129 groupdlg.cpp:135
+#: groupdlg.cpp:135 groupdlg.cpp:141
 msgid "Get Subjects"
 msgstr "Obtener Encabezados"
 
-#: groupdlg.cpp:130 groupdlg.cpp:136
+#: groupdlg.cpp:136 groupdlg.cpp:142
 msgid "Get Articles"
 msgstr "Obtener Artículos"
 
-#: artdlg.cpp:216 groupdlg.cpp:131 groupdlg.cpp:139 groupdlg.cpp:147
+#: artdlg.cpp:216 groupdlg.cpp:137 groupdlg.cpp:145 groupdlg.cpp:153
 msgid "Catchup"
 msgstr "Marcar como leído"
 
-#: groupdlg.cpp:137 groupdlg.cpp:145
+#: groupdlg.cpp:143 groupdlg.cpp:151
 msgid "(un)Subscribe"
 msgstr "(de)Suscribir"
 
-#: artdlg.cpp:115 groupdlg.cpp:138
+#: artdlg.cpp:115 groupdlg.cpp:144
 msgid "Untag"
 msgstr "Desmarcar"
 
-#: artdlg.cpp:133 groupdlg.cpp:146
+#: artdlg.cpp:133 groupdlg.cpp:152
 msgid "(Un)Tag"
 msgstr "(Des)Marcar"
 
-#: artdlg.cpp:126 artdlg.cpp:186 groupdlg.cpp:149 groupdlg.cpp:204
+#: artdlg.cpp:126 artdlg.cpp:186 groupdlg.cpp:155 groupdlg.cpp:210
 msgid "Post New Article"
 msgstr "Nuevo Artículo para grupo de noticias"
 
-#: groupdlg.cpp:150
+#: groupdlg.cpp:156
 msgid "Post All Queued Articles"
 msgstr "Enviar Todos los Artículos en Cola"
 
-#: groupdlg.cpp:152
+#: groupdlg.cpp:158
 msgid "&Subscribed"
 msgstr "&Suscritos"
 
-#: artdlg.cpp:157 groupdlg.cpp:153
+#: artdlg.cpp:157 groupdlg.cpp:159
 msgid "&Tagged"
 msgstr "&Marcados"
 
-#: groupdlg.cpp:158
+#: groupdlg.cpp:164
 msgid "Identity..."
 msgstr "Identidad..."
 
-#: groupdlg.cpp:159
+#: groupdlg.cpp:165
 msgid "NNTP Options..."
 msgstr "Opciones del servidor..."
 
-#: groupdlg.cpp:165
+#: groupdlg.cpp:171
 msgid "About Krn..."
 msgstr "Acerca de Krn..."
 
-#: groupdlg.cpp:171
+#: groupdlg.cpp:177
 msgid "&Newsgroup"
 msgstr "&Grupo de Noticias"
 
-#: groupdlg.cpp:184
+#: groupdlg.cpp:190
 msgid "Connect to server"
 msgstr "Conectar al servidor"
 
-#: groupdlg.cpp:187
+#: groupdlg.cpp:193
 msgid "Disconnect from server"
 msgstr "Desconectar del servidor"
 
-#: groupdlg.cpp:191
+#: groupdlg.cpp:197
 msgid "Get list of active groups"
 msgstr "Obtener lista de grupos disponibles"
 
-#: groupdlg.cpp:193
+#: groupdlg.cpp:199
 msgid "Find group"
 msgstr "Buscar grupo"
 
-#: groupdlg.cpp:201
+#: groupdlg.cpp:207
 msgid "Check for Unread Articles"
 msgstr "Obtener Artículos no leídos"
 
-#: groupdlg.cpp:288
+#: groupdlg.cpp:294
 msgid "Sorry!"
 msgstr "¡Lo siento!"
 
-#: groupdlg.cpp:289
+#: groupdlg.cpp:295
 msgid ""
 "That newsgroup is not in the current active file\n"
 " Krn can't handle this gracefully right now"
@@ -151,53 +156,53 @@ msgstr ""
 "Ese grupo de noticias no esta en el fichero de grupos activos\n"
 " Krn no puede manejar eso muy bien por ahora"
 
-#: groupdlg.cpp:316 groupdlg.cpp:497 groupdlg.cpp:823
+#: groupdlg.cpp:322 groupdlg.cpp:503 groupdlg.cpp:824
 #, fuzzy
 msgid "All Newsgroups."
 msgstr "&Grupos de noticias"
 
-#: groupdlg.cpp:391 groupdlg.cpp:485
+#: groupdlg.cpp:397 groupdlg.cpp:491
 #, fuzzy
 msgid "Subscribed Newsgroups."
 msgstr "&Suscritos"
 
-#: groupdlg.cpp:440
+#: groupdlg.cpp:446
 msgid "Disconnected"
 msgstr "Desconectado"
 
-#: groupdlg.cpp:447
+#: groupdlg.cpp:453
 msgid "Connecting to server"
 msgstr "Conectando con el servidor"
 
-#: groupdlg.cpp:452
+#: groupdlg.cpp:458
 msgid "Connected to server - Posting not allowed"
 msgstr "Conectado al servidor - Envío no permitido"
 
-#: groupdlg.cpp:454
+#: groupdlg.cpp:460
 msgid "Connected to server - Posting allowed"
 msgstr "Conectado al servidor - Envío permitido"
 
-#: groupdlg.cpp:459
+#: groupdlg.cpp:465
 msgid "Can't connect to server"
 msgstr "No se puede conectar con el servidor"
 
-#: groupdlg.cpp:461
+#: groupdlg.cpp:467
 msgid "Connection to server failed"
 msgstr "La conexión con el servidor ha fallado"
 
-#: groupdlg.cpp:470
+#: groupdlg.cpp:476
 msgid "Authentication Failed"
 msgstr "Ha fallado la Autentificación"
 
-#: groupdlg.cpp:473
+#: groupdlg.cpp:479
 msgid "Connection to server failed: Authentication problem"
 msgstr "La conexión con el servidor ha fallado: Problema de Autentificación"
 
-#: groupdlg.cpp:510
+#: groupdlg.cpp:516
 msgid "Krn-Question"
 msgstr "Pregunta Krn"
 
-#: groupdlg.cpp:511
+#: groupdlg.cpp:517
 msgid ""
 "The operation you requested needs a connection to the News server\n"
 "Should I attempt one?"
@@ -205,7 +210,7 @@ msgstr ""
 "La operacin seleccionada requiere una conexión con el servidor de noticias\n"
 "¿Desea conectar ahora?"
 
-#: groupdlg.cpp:769
+#: groupdlg.cpp:770
 msgid ""
 "You don't have an active groups list.\n"
 " get it from server?"
@@ -213,31 +218,31 @@ msgstr ""
 "No tiene un listado de grupos disponibles.\n"
 " ¿desea obtenerlo ahora del servidor?"
 
-#: groupdlg.cpp:785
+#: groupdlg.cpp:786
 msgid "Listing active newsgroups"
 msgstr "Listando grupos activos"
 
-#: groupdlg.cpp:797
+#: groupdlg.cpp:798
 msgid "KRN - Find a Newsgroup"
 msgstr "KRN - Buscar un grupo de noticias"
 
-#: groupdlg.cpp:798
+#: groupdlg.cpp:799
 msgid "Enter the name of the Newsgroup"
 msgstr "Introduce el nombre del grupo de noticias"
 
-#: groupdlg.cpp:883
+#: groupdlg.cpp:884
 msgid "Krn - Message"
 msgstr "Krn - Mensaje"
 
-#: groupdlg.cpp:884
+#: groupdlg.cpp:885
 msgid "I can't find the group you want!"
 msgstr "¡No se pudo encontrar el grupo solicitado!"
 
-#: groupdlg.cpp:942
+#: groupdlg.cpp:976
 msgid "Getting messages in "
 msgstr "Obteniendo artículos en "
 
-#: groupdlg.cpp:955
+#: groupdlg.cpp:989
 msgid "Getting list of messages in "
 msgstr "Obteniendo listado de artículos en "
 

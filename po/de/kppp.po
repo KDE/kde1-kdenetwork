@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
 "POT-Creation-Date: 1998-01-13 23:06+0100\n"
-"PO-Revision-Date: 1998-01-05 13:44+0100\n"
+"PO-Revision-Date: 1998-01-14 15:44+0100\n"
 "Last-Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
 
 #: accounts.cpp:54
@@ -183,12 +183,10 @@ msgid "Prompting "
 msgstr "Frage nach "
 
 #: connect.cpp:546
-#, fuzzy
 msgid "PW Prompt "
 msgstr "Passwort-Nachfrage "
 
 #: connect.cpp:572
-#, fuzzy
 msgid "Loop Start "
 msgstr "Schleifenanfang "
 
@@ -245,9 +243,8 @@ msgid "Sorry, can't open modem."
 msgstr "Sorry, kann auf Modem nicht zugreifen."
 
 #: connect.cpp:996
-#, fuzzy
 msgid "Sorry, the modem is not ready."
-msgstr "Sorry, das Modem ist besetzt."
+msgstr "Sorry, das Modem ist nicht bereit."
 
 #: connect.cpp:1004 connect.cpp:1045 modeminfo.cpp:377
 msgid "Sorry, the modem is busy."
@@ -307,11 +304,11 @@ msgstr "Telefonnummer:"
 
 #: edit.cpp:68
 msgid "Authentication:"
-msgstr ""
+msgstr "Authentifizierung:"
 
 #: edit.cpp:73
 msgid "Script-based"
-msgstr ""
+msgstr "Skript-basiert"
 
 #: edit.cpp:74
 msgid "PAP"
@@ -322,7 +319,6 @@ msgid "Store password"
 msgstr "Speichere Passwort "
 
 #: edit.cpp:86
-#, fuzzy
 msgid ""
 "Execute program\n"
 "upon connect:"
@@ -331,18 +327,16 @@ msgstr ""
 "Programm aus:"
 
 #: edit.cpp:98
-#, fuzzy
 msgid ""
 "Execute program\n"
 "upon disconnect:"
 msgstr ""
-"Führe nach Verbindung\n"
+"Führe nach Trennung\n"
 "Programm aus:"
 
 #: edit.cpp:110
-#, fuzzy
 msgid "Edit pppd arguments:"
-msgstr "Bearbeite pppd-Argumente"
+msgstr "Bearbeite pppd-Argumente:"
 
 #: edit.cpp:116
 msgid "Arguments"
@@ -358,7 +352,7 @@ msgstr "IP-Adresse:"
 
 #: edit.cpp:183
 msgid "Subnet Mask:"
-msgstr "Unternetz-Maskierung"
+msgstr "Teilnetz-Maskierung"
 
 #: edit.cpp:191
 msgid "Dynamic IP Address"
@@ -422,7 +416,7 @@ msgstr "Bearbeite Skript"
 
 #: edit.cpp:562
 msgid "Use default script"
-msgstr ""
+msgstr "Standardskript verwenden"
 
 #: edit.cpp:579
 msgid "Insert"
@@ -469,7 +463,6 @@ msgid "About kppp"
 msgstr "Über kppp"
 
 #: general.cpp:183
-#, fuzzy
 msgid ""
 "\n"
 "A dialer and front-end to pppd\n"
@@ -479,14 +472,13 @@ msgid ""
 "wuebben@math.cornell.edu"
 msgstr ""
 "\n"
-"ein Wähler und Frontend für pppd\n"
+"Ein Wähler und Frontend für pppd\n"
 "\n"
 "Copyright (c) 1997\n"
 "\tBernd Johannes Wuebben\n"
 "\twuebben@math.cornell.edu"
 
 #: general.cpp:199
-#, fuzzy
 msgid ""
 "With contributions from:\n"
 "\n"
@@ -497,15 +489,16 @@ msgid ""
 "Peter Silva"
 msgstr ""
 "Mit Beigaben von:\n"
-"   Mario Weilguni\n"
-"   Markus Wuebben\n"
-"   Jesus Fuentes Saavedra\n"
-"   Harri Porten\n"
-"   Peter Silva"
+"\n"
+"Mario Weilguni\n"
+"Markus Wuebben\n"
+"Jesus Fuentes Saavedra\n"
+"Harri Porten\n"
+"Peter Silva"
 
 #: general.cpp:223
 msgid "Serial device"
-msgstr ""
+msgstr "Serielles Gerät"
 
 #: general.cpp:226
 msgid "Modem Device:"
@@ -549,7 +542,7 @@ msgstr "Modem erlaubt schnelle Initialisierung."
 
 #: general.cpp:472
 msgid "Modem Asserts CD Line."
-msgstr ""
+msgstr "Modem fügt Trägererkennung ein."
 
 #: general.cpp:488
 msgid "Modem Commands"
@@ -673,6 +666,9 @@ msgid ""
 "method PAP. This requires that you\n"
 "supply a username and a password!"
 msgstr ""
+"Sie haben tie Authetifikationsmethode\n"
+"PAP gewählt. Deshalb müssen Sie einen\n"
+"Benutzernamen und ein Passwort angeben!"
 
 #: main.cpp:707
 #, c-format
@@ -680,6 +676,8 @@ msgid ""
 "Cannot create PAP authentication\n"
 "file \"%s\""
 msgstr ""
+"Kann PAP-Authentifizierungsdatei\n"
+"\"%s\" nicht erzeugen"
 
 #: main.cpp:787
 msgid "Quit kPPP?"
@@ -707,7 +705,7 @@ msgstr "Initialisierungsfolge:"
 
 #: modemcmds.cpp:61
 msgid "Init Response:"
-msgstr "Initialisierungsmeldung:"
+msgstr "Initialisierungsantwort:"
 
 #: modemcmds.cpp:68
 msgid "Dial String:"
@@ -715,19 +713,19 @@ msgstr "Wählfolge:"
 
 #: modemcmds.cpp:75
 msgid "Connect Response:"
-msgstr "Verbindungsmeldung:"
+msgstr "Verbindungsantwort:"
 
 #: modemcmds.cpp:82
 msgid "Busy Response:"
-msgstr "Besetztmeldung:"
+msgstr "Besetztantwort:"
 
 #: modemcmds.cpp:89
 msgid "No Carrier Resonse:"
-msgstr "kein-Träger-Meldung:"
+msgstr "Kein-Träger-Antwort:"
 
 #: modemcmds.cpp:96
 msgid "No Dialtone Response:"
-msgstr "kein-Freizeichen-Meldung:"
+msgstr "Kein-Freizeichen-Antwort:"
 
 #: modemcmds.cpp:103
 msgid "Hangup String:"
@@ -735,7 +733,7 @@ msgstr "Auflegen-Folge:"
 
 #: modemcmds.cpp:110
 msgid "Hangup Response:"
-msgstr "Auflegen-Meldung:"
+msgstr "Auflegen-Antwort:"
 
 #: modemcmds.cpp:117
 msgid "Answer String:"
@@ -743,11 +741,11 @@ msgstr "Antwort-Folge:"
 
 #: modemcmds.cpp:124
 msgid "Ring Response:"
-msgstr "Klingel-Meldung:"
+msgstr "Klingel-Antwort:"
 
 #: modemcmds.cpp:131
 msgid "Answer Response:"
-msgstr "Antwort-Meldung"
+msgstr "Antwort-Meldung:"
 
 #: modemcmds.cpp:138
 msgid "Escape String:"
@@ -755,7 +753,7 @@ msgstr "Escapefolge:"
 
 #: modemcmds.cpp:145
 msgid "Escape Response:"
-msgstr "Escapemeldung:"
+msgstr "Escapeantwort:"
 
 #: modemcmds.cpp:172
 msgid "Guard Time (sec/50):"

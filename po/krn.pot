@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-01-13 23:06+0100\n"
+"POT-Creation-Date: 1998-01-14 15:58+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,193 +43,197 @@ msgstr ""
 msgid "Received %.2f Kb"
 msgstr ""
 
-#: groupdlg.cpp:119
+#: groupdlg.cpp:123
 msgid "Connect to Server"
 msgstr ""
 
-#: groupdlg.cpp:120
+#: groupdlg.cpp:124
 msgid "Disconnect From Server"
 msgstr ""
 
-#: groupdlg.cpp:121
+#: groupdlg.cpp:125
 msgid "Get Active File"
 msgstr ""
 
-#: groupdlg.cpp:123
+#: groupdlg.cpp:127
+msgid "Post Queued Messages"
+msgstr ""
+
+#: groupdlg.cpp:129
 msgid "Exit"
 msgstr ""
 
-#: groupdlg.cpp:126
+#: groupdlg.cpp:132
 msgid "KRN - Group List"
 msgstr ""
 
-#: groupdlg.cpp:129 groupdlg.cpp:135
+#: groupdlg.cpp:135 groupdlg.cpp:141
 msgid "Get Subjects"
 msgstr ""
 
-#: groupdlg.cpp:130 groupdlg.cpp:136
+#: groupdlg.cpp:136 groupdlg.cpp:142
 msgid "Get Articles"
 msgstr ""
 
-#: artdlg.cpp:216 groupdlg.cpp:131 groupdlg.cpp:139 groupdlg.cpp:147
+#: artdlg.cpp:216 groupdlg.cpp:137 groupdlg.cpp:145 groupdlg.cpp:153
 msgid "Catchup"
 msgstr ""
 
-#: groupdlg.cpp:137 groupdlg.cpp:145
+#: groupdlg.cpp:143 groupdlg.cpp:151
 msgid "(un)Subscribe"
 msgstr ""
 
-#: artdlg.cpp:115 groupdlg.cpp:138
+#: artdlg.cpp:115 groupdlg.cpp:144
 msgid "Untag"
 msgstr ""
 
-#: artdlg.cpp:133 groupdlg.cpp:146
+#: artdlg.cpp:133 groupdlg.cpp:152
 msgid "(Un)Tag"
 msgstr ""
 
-#: artdlg.cpp:126 artdlg.cpp:186 groupdlg.cpp:149 groupdlg.cpp:204
+#: artdlg.cpp:126 artdlg.cpp:186 groupdlg.cpp:155 groupdlg.cpp:210
 msgid "Post New Article"
 msgstr ""
 
-#: groupdlg.cpp:150
+#: groupdlg.cpp:156
 msgid "Post All Queued Articles"
 msgstr ""
 
-#: groupdlg.cpp:152
+#: groupdlg.cpp:158
 msgid "&Subscribed"
 msgstr ""
 
-#: artdlg.cpp:157 groupdlg.cpp:153
+#: artdlg.cpp:157 groupdlg.cpp:159
 msgid "&Tagged"
 msgstr ""
 
-#: groupdlg.cpp:158
+#: groupdlg.cpp:164
 msgid "Identity..."
 msgstr ""
 
-#: groupdlg.cpp:159
+#: groupdlg.cpp:165
 msgid "NNTP Options..."
 msgstr ""
 
-#: groupdlg.cpp:165
+#: groupdlg.cpp:171
 msgid "About Krn..."
 msgstr ""
 
-#: groupdlg.cpp:171
+#: groupdlg.cpp:177
 msgid "&Newsgroup"
 msgstr ""
 
-#: groupdlg.cpp:184
+#: groupdlg.cpp:190
 msgid "Connect to server"
 msgstr ""
 
-#: groupdlg.cpp:187
+#: groupdlg.cpp:193
 msgid "Disconnect from server"
 msgstr ""
 
-#: groupdlg.cpp:191
+#: groupdlg.cpp:197
 msgid "Get list of active groups"
 msgstr ""
 
-#: groupdlg.cpp:193
+#: groupdlg.cpp:199
 msgid "Find group"
 msgstr ""
 
-#: groupdlg.cpp:201
+#: groupdlg.cpp:207
 msgid "Check for Unread Articles"
 msgstr ""
 
-#: groupdlg.cpp:288
+#: groupdlg.cpp:294
 msgid "Sorry!"
 msgstr ""
 
-#: groupdlg.cpp:289
+#: groupdlg.cpp:295
 msgid ""
 "That newsgroup is not in the current active file\n"
 " Krn can't handle this gracefully right now"
 msgstr ""
 
-#: groupdlg.cpp:316 groupdlg.cpp:497 groupdlg.cpp:823
+#: groupdlg.cpp:322 groupdlg.cpp:503 groupdlg.cpp:824
 msgid "All Newsgroups."
 msgstr ""
 
-#: groupdlg.cpp:391 groupdlg.cpp:485
+#: groupdlg.cpp:397 groupdlg.cpp:491
 msgid "Subscribed Newsgroups."
 msgstr ""
 
-#: groupdlg.cpp:440
+#: groupdlg.cpp:446
 msgid "Disconnected"
 msgstr ""
 
-#: groupdlg.cpp:447
+#: groupdlg.cpp:453
 msgid "Connecting to server"
 msgstr ""
 
-#: groupdlg.cpp:452
+#: groupdlg.cpp:458
 msgid "Connected to server - Posting not allowed"
 msgstr ""
 
-#: groupdlg.cpp:454
+#: groupdlg.cpp:460
 msgid "Connected to server - Posting allowed"
 msgstr ""
 
-#: groupdlg.cpp:459
+#: groupdlg.cpp:465
 msgid "Can't connect to server"
 msgstr ""
 
-#: groupdlg.cpp:461
+#: groupdlg.cpp:467
 msgid "Connection to server failed"
 msgstr ""
 
-#: groupdlg.cpp:470
+#: groupdlg.cpp:476
 msgid "Authentication Failed"
 msgstr ""
 
-#: groupdlg.cpp:473
+#: groupdlg.cpp:479
 msgid "Connection to server failed: Authentication problem"
 msgstr ""
 
-#: groupdlg.cpp:510
+#: groupdlg.cpp:516
 msgid "Krn-Question"
 msgstr ""
 
-#: groupdlg.cpp:511
+#: groupdlg.cpp:517
 msgid ""
 "The operation you requested needs a connection to the News server\n"
 "Should I attempt one?"
 msgstr ""
 
-#: groupdlg.cpp:769
+#: groupdlg.cpp:770
 msgid ""
 "You don't have an active groups list.\n"
 " get it from server?"
 msgstr ""
 
-#: groupdlg.cpp:785
+#: groupdlg.cpp:786
 msgid "Listing active newsgroups"
 msgstr ""
 
-#: groupdlg.cpp:797
+#: groupdlg.cpp:798
 msgid "KRN - Find a Newsgroup"
 msgstr ""
 
-#: groupdlg.cpp:798
+#: groupdlg.cpp:799
 msgid "Enter the name of the Newsgroup"
 msgstr ""
 
-#: groupdlg.cpp:883
+#: groupdlg.cpp:884
 msgid "Krn - Message"
 msgstr ""
 
-#: groupdlg.cpp:884
+#: groupdlg.cpp:885
 msgid "I can't find the group you want!"
 msgstr ""
 
-#: groupdlg.cpp:942
+#: groupdlg.cpp:976
 msgid "Getting messages in "
 msgstr ""
 
-#: groupdlg.cpp:955
+#: groupdlg.cpp:989
 msgid "Getting list of messages in "
 msgstr ""
 

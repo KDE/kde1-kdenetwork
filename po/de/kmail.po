@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
 "POT-Creation-Date: 1998-01-13 23:05+0100\n"
-"PO-Revision-Date: 1998-01-05 14:55 +0100\n"
+"PO-Revision-Date: 1998-01-14 15:55 +0100\n"
 "Last-Translator: Oliver Hensel <oliver.hensel@gmx.de>\n"
 
 #: kmcomposewin.cpp:1050 kmmainwin.cpp:261 kpgp.cpp:351
@@ -68,46 +68,43 @@ msgstr "Wartende Nachrichten konnten nicht (vollständig) versant werden..."
 
 #: kmmainwin.cpp:537
 msgid "Opening URL..."
-msgstr ""
+msgstr "Öffne URL..."
 
 #: kmmainwin.cpp:598
 msgid "Address added to addressbook."
-msgstr ""
+msgstr "Adresse zum Adressbuch hinzugefügt"
 
 #: kmmainwin.cpp:610
 msgid "Address copied to clipboard."
-msgstr ""
+msgstr "Adresse in Zwischenablage kopiert"
 
 #: kmmainwin.cpp:615
 msgid "URL copied to clipboard."
-msgstr ""
+msgstr "URL in Zwischenablage kopiert"
 
 #: kmmainwin.cpp:642
-#, fuzzy
 msgid "Send to..."
-msgstr "Gleich senden"
+msgstr "Senden an..."
 
 #: kmmainwin.cpp:644
 msgid "Send reply to..."
-msgstr ""
+msgstr "Antwort senden an..."
 
 #: kmmainwin.cpp:646
-#, fuzzy
 msgid "Forward to..."
-msgstr "&Weiterleiten..."
+msgstr "Weiterleiten an..."
 
 #: kmmainwin.cpp:649
-#, fuzzy
 msgid "Add to addressbook"
-msgstr "Adreßbuch"
+msgstr "Zum Adreßbuch hinzufügen"
 
 #: kmmainwin.cpp:651 kmmainwin.cpp:660
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "In Zwischenablage kopieren"
 
 #: kmmainwin.cpp:658
 msgid "Open URL..."
-msgstr ""
+msgstr "Öffne URL..."
 
 #: kmmainwin.cpp:668 kmmainwin.cpp:764
 msgid "&Reply..."
@@ -231,11 +228,11 @@ msgstr "HTML-Code ansehen"
 
 #: kmmainwin.cpp:787
 msgid "&Brief Headers"
-msgstr "&Kurzer Header"
+msgstr "&Kurze Header"
 
 #: kmmainwin.cpp:789
 msgid "&Fancy Headers"
-msgstr "&Fancy Headers"
+msgstr "&Hübsche Header"
 
 #: kmmainwin.cpp:791
 msgid "&Standard Headers"
@@ -255,7 +252,7 @@ msgstr "Ikonifizierte Attachments"
 
 #: kmmainwin.cpp:799
 msgid "Smart Attachments"
-msgstr "elegante Attachments"
+msgstr "Elegante Attachments"
 
 #: kmmainwin.cpp:800
 msgid "Inlined Attachments"
@@ -302,9 +299,8 @@ msgid "Delete message"
 msgstr "Nachricht löschen"
 
 #: kmmainwin.cpp:875
-#, fuzzy
 msgid "Open addressbook..."
-msgstr "A&dreßbuch..."
+msgstr "Adreßbuch öffnen..."
 
 #: kmmainwin.cpp:887
 msgid "Initializing..."
@@ -345,12 +341,11 @@ msgstr "Antworten an:"
 
 #: kmsettings.cpp:135
 msgid "Signature File:"
-msgstr "Signatur-Datei:"
+msgstr "Unterschrift-Datei:"
 
 #: kmsettings.cpp:138
-#, fuzzy
 msgid "PGP User Identity:"
-msgstr "Identität"
+msgstr "PGP-Identität"
 
 #: kmsettings.cpp:147
 msgid "Identity"
@@ -458,11 +453,11 @@ msgstr "Erscheinung"
 
 #: kmsettings.cpp:327
 msgid "Automatically append signature"
-msgstr "Automatisch angehängte Signatur"
+msgstr "Automatisch angehängte Unterschrift"
 
 #: kmsettings.cpp:333
 msgid "Automatically sign messages using PGP"
-msgstr ""
+msgstr "Nachrichten automatisch mit PGP unterschreiben"
 
 #: kmsettings.cpp:338
 msgid "Word wrap at column:"
@@ -490,7 +485,7 @@ msgstr "Sendmail suchen"
 
 #: kmcomposewin.cpp:1149 kmsettings.cpp:446
 msgid "Choose Signature File"
-msgstr "Signatur-Datei auswählen"
+msgstr "Unterschrift-Datei auswählen"
 
 #: kmsettings.cpp:599
 msgid "Type:"
@@ -710,14 +705,12 @@ msgid "&Attach"
 msgstr "&Anhängen..."
 
 #: kmcomposewin.cpp:464
-#, fuzzy
 msgid "sign message"
-msgstr "Nachricht drucken"
+msgstr "Nachricht unterzeichnen"
 
 #: kmcomposewin.cpp:469
-#, fuzzy
 msgid "encrypt message"
-msgstr "Nachricht drucken"
+msgstr "Nachricht verschlüsseln"
 
 #: kmcomposewin.cpp:531
 msgid "Send now"
@@ -749,10 +742,12 @@ msgid ""
 "public key for %s not found.\n"
 "This person will not be able to decrypt the message."
 msgstr ""
+"öffentlicher Schlüssel für %s nicht gefunden.\n"
+"Diese Person kann keine Nachrichten entschlüsseln."
 
 #: kmcomposewin.cpp:706
 msgid "Error during PGP:"
-msgstr ""
+msgstr "Fehler bei PGP:"
 
 #: kmcomposewin.cpp:870 kmcomposewin.cpp:891
 msgid "Attach File"
@@ -845,28 +840,24 @@ msgid "Date: "
 msgstr "Datum: "
 
 #: kmreaderwin.cpp:298
-#, fuzzy
 msgid "Bcc: "
-msgstr "&Bcc:"
+msgstr "Bcc: "
 
 #: kmreaderwin.cpp:301
-#, fuzzy
 msgid "Reply to: "
-msgstr "&Antworten..."
+msgstr "Antworten an: "
 
 #: kmreaderwin.cpp:308
-#, fuzzy
 msgid "Groups: "
-msgstr "&Newsgroups:"
+msgstr "Newsgroups: "
 
 #: kmreaderwin.cpp:344
-#, fuzzy
 msgid "Encrypted message"
-msgstr "Nachricht drucken"
+msgstr "Entschlüsselte Nachricht"
 
 #: kmreaderwin.cpp:350
 msgid "Cannot decrypt message:"
-msgstr ""
+msgstr "Kann Nachricht nicht entschlüsseln:"
 
 #: kmreaderwin.cpp:367
 msgid "Message was signed by"
@@ -877,9 +868,8 @@ msgid "Warning: Bad signature from"
 msgstr "Warnung: Falsche Unterschrift von"
 
 #: kmreaderwin.cpp:533
-#, fuzzy
 msgid "Attachment: "
-msgstr "elegante Attachments"
+msgstr "Anlage: "
 
 #: kmreaderwin.cpp:593
 msgid "Could not create temporary file"
@@ -1029,17 +1019,15 @@ msgstr "Sende immernoch"
 
 #: kmsender.cpp:192
 msgid "Initiating sender process..."
-msgstr ""
+msgstr "Bereite Sendevorgang vor..."
 
 #: kmsender.cpp:208
-#, fuzzy
 msgid "Sending message: "
-msgstr "Senden fehlgeschlagen"
+msgstr "Sende Nachricht: "
 
 #: kmsender.cpp:230
-#, fuzzy
 msgid "Done sending messages."
-msgstr "Nachricht löschen"
+msgstr "Habe Nachrichten gesendet."
 
 #: kmsender.cpp:249
 msgid "Sending failed:"
@@ -1065,7 +1053,7 @@ msgstr "Fehler beim Übergeben der Mail-Nachricht an das Mailprogramm %s"
 
 #: kmsender.cpp:465
 msgid "connecting to server"
-msgstr ""
+msgstr "verbinde mit Server"
 
 #: kmsender.cpp:470
 #, c-format
@@ -1083,9 +1071,8 @@ msgid "Cannot close SMTP connection."
 msgstr "Kann SMPT-Verbindung nicht schließen"
 
 #: kmsender.cpp:565
-#, fuzzy
 msgid "transmitting message"
-msgstr "Nachricht drucken"
+msgstr "übertrage Nachricht"
 
 #: kmsender.cpp:583
 msgid "network error"
@@ -1099,11 +1086,15 @@ msgid ""
 "Response: %s\n"
 "Return code: %d"
 msgstr ""
+"es trat ein SMTP-Fehler auf.\n"
+"Befehl: %s\n"
+"Antwort: %s\n"
+"Rückgabecode: %d"
 
 #: kmsender.cpp:600
 #, c-format
 msgid "Sending SMTP command: %s"
-msgstr ""
+msgstr "Sende SMTP-Befehl: %s"
 
 #: kmacctseldlg.cpp:26
 msgid "Account Type"
@@ -1132,7 +1123,7 @@ msgid ""
 "%s\n"
 "%s"
 msgstr ""
-"Fehler beim Ausführen des Signaturprogramms\n"
+"Fehler beim Ausführen des Unterschriftprogramms\n"
 "%s\n"
 "%s"
 
@@ -1220,7 +1211,6 @@ msgstr ""
 "Bitte setzen Sie den PATH richtig."
 
 #: kpgp.cpp:157
-#, fuzzy
 msgid ""
 "Could not find PGP executable.\n"
 "Please check your PATH is set correctly."
@@ -1230,19 +1220,19 @@ msgstr ""
 
 #: kpgp.cpp:167
 msgid "The pass phrase is missing."
-msgstr ""
+msgstr "Das Passwort fehlt."
 
 #: kpgp.cpp:439
 msgid "Message signed by"
-msgstr "Nachricht signiert von"
+msgstr "Nachricht unterschrieben von"
 
 #: kpgp.cpp:443
 msgid "Message has a bad signature from"
-msgstr "Nachricht hat eine falsche Signatur von"
+msgstr "Nachricht hat eine falsche Unterschrift von"
 
 #: kpgp.cpp:451
 msgid "End PGP signed message"
-msgstr "Ende der PGP-signierten Nachricht"
+msgstr "Ende der PGP-unterschriebenen Nachricht"
 
 #: kpgp.cpp:649
 msgid "Bad pass Phrase; couldn't decrypt"
@@ -1250,18 +1240,19 @@ msgstr "Falsches Passwort; konnte nicht entschlüsseln"
 
 #: kpgp.cpp:738
 msgid "Bad pass Phrase; couldn't sign"
-msgstr "Falsches Passwort; konnte nicht signieren"
+msgstr "Falsches Passwort; konnte nicht unterschreiben"
 
 #: kpgp.cpp:795
-#, fuzzy
 msgid ""
 "Please enter your\n"
 "PGP passphrase"
-msgstr "Bitte Passwort eingeben"
+msgstr ""
+"Bitte geben Sie Ihr\n"
+"PGP-Passwort ein"
 
 #: kpgp.cpp:822
 msgid "PGP Security Check"
-msgstr ""
+msgstr "PGP-Sicherheitsüberprüfung"
 
 #: kfileio.cpp:26
 msgid "File I/O Error"
@@ -1389,31 +1380,9 @@ msgid "Addressbook"
 msgstr "Adreßbuch"
 
 #: kmaddrbookdlg.cpp:94
-#, fuzzy
 msgid "Addressbook Manager"
-msgstr "Adreßbuch"
+msgstr "Adreßbuch-Verwaltung"
 
 #: kmiostatusdlg.cpp:32
 msgid "&Abort"
 msgstr "&Abbrechen"
-
-#~ msgid ""
-#~ "Failed to send mail message\n"
-#~ "because a SMTP error occured\n"
-#~ "during the \"%s\" command.\n"
-#~ "\n"
-#~ "Return code: %d\n"
-#~ "Response: `%s'"
-#~ msgstr ""
-#~ "Fehler beim Senden der Nachricht\n"
-#~ "weil ein SMTP-Fehler während\n"
-#~ "des \"%s\"-Kommandos auftrat.\n"
-#~ "\n"
-#~ "Antwort-Code: %d\n"
-#~ "Antwort: `%s'"
-
-#~ msgid "No Pass Phrase. Couldn't decrypt."
-#~ msgstr "Kein Passwort. Konnte nicht entschlüsseln."
-
-#~ msgid "No Passphrase. Can't sign message"
-#~ msgstr "Kein Passwort. Kann Nachricht nicht signieren"
