@@ -59,10 +59,10 @@ int main( int argc, char **argv )
 
     checkConf();
 
-    decoder=new KDecode;
 
     pixpath = a.kdedir() + QString("/lib/pics/krn/");
 
+    decoder=new KDecode;
     iconloader=new KIconLoader ();
     
     // Create our directory. If it exists, no problem
