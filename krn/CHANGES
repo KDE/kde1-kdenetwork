@@ -1,4 +1,15 @@
 -----------------------------------------------------------------------------
+Changes made Oct 23
+-----------------------------------------------------------------------------
+
+* [Roberto] Changed the counter to KBytes, by popular request.
+* [Roberto] Faster saving when got many articles from listXover().
+            Now the only very slow part is threading (why??).
+* [Roberto] Made small incompatible change to the way articles are stored
+            Sorry!
+* [Roberto] Added more feedback, so krn doesn't look locked.
+
+-----------------------------------------------------------------------------
 Changes made Oct 22
 -----------------------------------------------------------------------------
 

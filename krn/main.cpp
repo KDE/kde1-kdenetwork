@@ -122,7 +122,7 @@ int main( int argc, char **argv )
     // Create the articles database
 
     artinfopath=krnpath+"/artinfo.db";
-    artdb=gdbm_open(artinfopath.data(),0,GDBM_WRCREAT,448,0);
+    artdb=gdbm_open(artinfopath.data(),0,GDBM_WRCREAT | GDBM_FAST,448,0);
     
     Groupdlg k;
     main_widget = &k;

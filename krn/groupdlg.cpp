@@ -193,7 +193,7 @@ Groupdlg::Groupdlg
     
     
     KStatusBar *status = new KStatusBar (this, "status");
-    status->insertItem (klocale->translate("Received 00000000 bytes"), 1);
+    status->insertItem ("                               ", 1);
     status->insertItem ("", 2);
     status->show ();
     setStatusBar (status);

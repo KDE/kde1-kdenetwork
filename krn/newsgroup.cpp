@@ -166,10 +166,17 @@ void Article::save()
     // end robert;s cache stuff
     //
 
-    for (char *iter=Refs.first();iter!=0;iter=Refs.next())
+    if (Refs.isEmpty())
     {
-        _content+=iter;
-        _content+="\n";
+            _content+="\n";
+    }
+    else
+    {
+        for (char *iter=Refs.first();iter!=0;iter=Refs.next())
+        {
+            _content+=iter;
+            _content+=" ";
+        }
     }
     datum content;
     content.dptr=_content.data();
@@ -207,7 +214,7 @@ void Article::load()
     char *p;
     while (1)
     {
-        p=strtok(NULL,"\n");
+        p=strtok(NULL," ");
         if (!p)
             break;
         Refs.append(p);
@@ -444,6 +451,7 @@ bool isParent(Article *parent,Article *child)
 
 void collectChildren(ArticleList *parentThread,QList<ArticleList> *children)
 {
+    qApp->processEvents();
     QListIterator <ArticleList> it(*children);
     for (;it.current();++it)
     {
@@ -467,7 +475,6 @@ void collectChildren(ArticleList *parentThread,QList<ArticleList> *children)
         }
     }
 }
-
 
 void ArticleList::thread(bool sortBySubject=false)
 {

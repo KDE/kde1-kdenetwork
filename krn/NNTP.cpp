@@ -55,7 +55,8 @@ void NNTPObserver::Notify()
     if (client->reportBytes && (client->byteCounter - oldbytes)>1024 )
     {
         char *buffer=new char[100];
-        sprintf (buffer,klocale->translate("Received %d bytes"),client->byteCounter);
+        sprintf (buffer,klocale->translate("Received %.2f Kb"),
+                 ((double)client->byteCounter)/1024);
         emit client->newStatus(buffer);
         delete[] buffer;
         qApp->processEvents();
@@ -285,6 +286,8 @@ int NNTP::setMode (char *mode)
 
 int NNTP::listXover(int from,int to)
 {
+    char buffer[1024];
+    int counter=0;
     DwString gi;
     reportCounters (true,false);
     from=from >? first;
@@ -347,16 +350,17 @@ int NNTP::listXover(int from,int to)
                     //Write the article ID to the newsgroup file
                     gi+=templ.at(OffsetID);
                     gi+="\n";
-//                    f.writeBlock(templ.at(OffsetID),strlen(templ.at(OffsetID)));
-//                    f.writeBlock("\n",1);
                     
                     art.Subject=templ.at(OffsetSubject);
                     art.From=templ.at(OffsetFrom);
                     art.Date=templ.at(OffsetDate);
                     art.Lines=templ.at(OffsetLines);
                     art.ID=templ.at(OffsetID);
+
                     //convert Refs to a strlist
+                    art.Refs.clear();
                     QString refsdata=templ.at(OffsetRef);
+
                     if (!refsdata.isEmpty())
                     {
                         while (1)
@@ -374,6 +378,10 @@ int NNTP::listXover(int from,int to)
                             }
                         }
                     }
+                    sprintf (buffer,"Stored %d articles",counter);
+                    emit newStatus(buffer);
+                    counter++;
+
                     art.save();
                     tok=strtok(NULL,"\n");
                 }
