@@ -154,7 +154,6 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     pixmap.load(pixpath+"deco.xpm");
     tool->insertButton (pixmap, DECODE_ONE_ARTICLE, true, "Decode Article");
     
-    
     addToolBar (tool);
     tool->setBarPos( KToolBar::Top );
     tool->show();
@@ -169,23 +168,26 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     list->clearTableFlags(Tbl_autoHScrollBar);
     list->setTableFlags(Tbl_autoVScrollBar);
     list->setSeparator('\n');
-    list->setNumCols(11);
-    list->setColumn(0, "",20,KTabListBox::PixmapColumn);
-    list->setColumn(1, "",5);
-    list->setColumn(2, "Sender", 150);
-    list->setColumn(3, "",5);
-    list->setColumn(4, "Lines", 50);
-    list->setColumn(5, "",5);
-    list->setColumn(6, "Score", 50);
-    list->setColumn(7, "",5);
-    list->setColumn(8, "Date", 50);
-    list->setColumn(9, "",5);
-    list->setColumn(10, "Subject", 50);
+    list->setNumCols(4);
+    list->setColumn(0, "Sender", 150);
+    list->setColumn(1, "Date", 75);
+    list->setColumn(2, "Lines", 50);
+    list->setColumn(3, "Subject", 50,KTabListBox::MixedColumn);
     
     list->dict().insert("N",new QPixmap(pixpath+"green-bullet.xpm"));  //Unread message
     list->dict().insert("R",new QPixmap(pixpath+"red-bullet.xpm"));    //Read message
     list->dict().insert("T",new QPixmap(pixpath+"black-bullet.xpm"));  //Unav. message
     list->dict().insert("M",new QPixmap(pixpath+"tagged.xpm"));  //Marked message
+
+    //and now the pixmap needed to make the tree
+
+    QPixmap *linepixmap=new QPixmap();
+    linepixmap->resize(16,16);
+    linepixmap->fill(QColor(white));
+    QPainter painter(linepixmap);
+    painter.drawLine(0,0,0,8);
+    painter.drawLine(0,8,15,8);
+    list->dict().insert("L",linepixmap);  //Marked message
 
     list->setTabWidth(25);
     

@@ -11,8 +11,6 @@
 
 #define INIT_MAX_ITEMS 16
 
-//#include "ktablistbox.moc"
-
 
 //=============================================================================
 //
@@ -126,30 +124,32 @@ void KTabListBoxColumn :: paintCell (QPainter* paint, int row,
     break;
 
   case KTabListBox::MixedColumn:
-    QString str;
+    QString pixName;
     for (x=0, beg=0; string[beg] == '\t'; x+=parent->tabPixels, beg++)
       ;
     end = beg-1;
 
-    if ((beg = string.find('{', beg)) >= 0)
+    while (string[beg] == '{')
     {
       end = string.find('}', beg+1);
-      if (end >= 0 &&
-	  (pix = parent->dict().find(string.mid(beg+1, end-beg-1))) != NULL)
+      if (end >= 0)
       {
+	pixName = string.mid(beg+1, end-beg-1);
+	pix = parent->dict().find(pixName);
+	if (!pix)
+	{
+	  warning("KTabListBox: no pixmap with name '"+pixName+
+		  "' registered. This is a program bug.\n");
+	} 
 	paint->drawPixmap (x, 0, *pix);
 	x += pix->width()+1;
+	beg = end+1;
       }
-      else 
-      {
-	if (end < 0) printf("KTabListBox: no '}' found.\n");
-	else printf("KTabListBox: no pixmap '%s' registered.\n",
-		    (const char*)string.mid(beg+1, end-beg-1));
-	end = beg-1;
-      }
+      else break;
     }
+
     paint->drawText (x+1, fm->ascent() + (fm->leading()), 
-		     (const char*)string.mid(end+1, string.length()-end+1)); 
+		     (const char*)string.mid(beg+1, string.length()-beg+1)); 
     break;
   }
 
@@ -195,7 +195,7 @@ KTabListBox :: KTabListBox (QWidget *parent, const char *name, int columns,
   current   = -1;
   colList   = NULL;
   itemList  = NULL;
-  sepChar   = '\t';
+  sepChar   = '\n';
   labelHeight = fm->height() + 4;
   columnPadding = fm->height() / 2;
   highlightColor = g.mid();

@@ -59,21 +59,24 @@ void Article::formHeader(QString *s)
 // Reflects the internal state of the message
 {
     const char *s1, *s2, *s3;
+    s->setStr(" ");
+    QString ss;
+    
     if (isRead())
     {
-        s->setStr("R\n \n");
+        ss.setStr("{R} ");
     }
     else
     {
-        s->setStr("N\n \n");
+        ss.setStr("{N} ");
     }
     if (!isAvailable())
     {
-        s->setStr("T\n \n");
+        ss.setStr("{T} ");
     }
     if (isMarked())
     {
-        s->setStr("M\n \n");
+        ss.setStr("{M} ");
     }
 
     char *tempbuf=new char[2048];
@@ -86,40 +89,40 @@ void Article::formHeader(QString *s)
         s1=fromaddr.FullName().c_str();
         s2=fromaddr.LocalPart().c_str();
         s3=fromaddr.Domain().c_str();
-        sprintf (tempbuf,"%s <%s@%s>",s1,s2,s3);
+        if (strlen(s1))
+            sprintf (tempbuf,"%s\n",s1);
+        else
+            sprintf (tempbuf,"<%s@%s>\n",s2,s3);
         s->append(tempbuf);
     }
     else
     {
-        s->append("Unkown Address");
+        s->append("Unkown Address\n");
     }
-    s->append("\n \n");
 
-    s->append(Lines);
-    s->append("\n \n");
-
-    QString t;
-    t.setNum(score());
-    s->append(t);
-    s->append("\n \n");
 
     if (Date.data())
     {
         DwDateTime date;
         date.FromString(Date.data());
         date.Parse();
-        sprintf(tempbuf,"%d/%d",date.Day(),date.Month());
+        sprintf(tempbuf,"%d/%d/%d",date.Day(),date.Month(),date.Year());
         s->append(tempbuf);
     }
     else
     {
-        s->append("0/0");
+        s->append("-/-/-");
     }
-    s->append("\n \n");
+    s->append("\n");
     delete[] tempbuf;
 
+    s->append(Lines);
+    s->append("\n");
+
+    
     for (int i=0;i<threadDepth;i++)
-        s->append("  ");
+        s->append("\t");
+    s->append(ss.data());
     s->append(Subject);
 }
 
