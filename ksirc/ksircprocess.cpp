@@ -35,7 +35,7 @@
 
      changeChannel(server, old_name, new_name)
        toplevel with old_name has been changed to new_name and all
-       future refrences will use new_name.
+      future refrences will use new_name.
 
    public slots:
      new_toplevel(window):
@@ -95,10 +95,16 @@
 #include "ioNotify.h"
 #include "iocontroller.h"
 #include "control_message.h"
+
+#include <qmsgbox.h>
+
+#include <stdlib.h>
+#include <time.h>
 #include <iostream.h>
 
 extern KApplication *kApp;
 extern KConfig *kConfig;
+extern global_config *kSircConfig;
 
 KSircProcess::KSircProcess( char *_server=0L, QObject * parent=0, const char * name=0 )
   : QObject(parent, name)
@@ -109,6 +115,23 @@ KSircProcess::KSircProcess( char *_server=0L, QObject * parent=0, const char * n
   QDict<KSircMessageReceiver> nTopList(17, FALSE);
   TopList = nTopList;
   //  TopList.setAutoDelete(TRUE);
+
+  // Setup the environment for KSirc
+  QString qsNick, qsRealname;
+  kConfig->setGroup("StartUp");
+  qsNick = kConfig->readEntry("Nick", "");
+  qsRealname = kConfig->readEntry("RealName", "");
+  // 
+  // I use qstrdup, I'm SURE THIS IS NOT NEEDED, but doesn't work otherwise!
+  //
+  if((qsNick.isEmpty() == FALSE)){
+    QString env = "SIRCNICK=" + qsNick;
+    putenv(qstrdup(env.data()));
+  }
+  if((qsRealname.isEmpty() == FALSE)){
+    QString env = "SIRCNAME=" + qsRealname;
+    putenv(qstrdup(env.data()));
+  }
 
   proc = new KProcess();
 
@@ -124,8 +147,11 @@ KSircProcess::KSircProcess( char *_server=0L, QObject * parent=0, const char * n
   command = "/load " + kSircConfig->kdedir + "/share/apps/ksirc/ksirc.pl\n";
   iocontrol->stdin_write(command);
 
+  // Write default commands
+
   running_window = TRUE;        // True so we do create the default
-  new_toplevel("!default");     // 
+  new_toplevel("!no_channel");  // 
+  //  TopList.insert("!default", TopList["!no_channel"]);
 
   //  kConfig->setGroup("GlobalOptions");
   //  if(kConfig->readNumEntry("Reuse", TRUE) == TRUE){
@@ -156,8 +182,21 @@ KSircProcess::KSircProcess( char *_server=0L, QObject * parent=0, const char * n
   TopList.insert("!notify", notify);
 
   filters_update();
-  
-  //  wm->show();
+
+  // We do this after filters_update() since filters_update loads the
+  // require notify filters, etc.
+
+  kConfig->setGroup("NotifyList");
+  QString cindex, nick;
+  int items = kConfig->readNumEntry("Number");
+  command = "/notify ";
+  for(int i = 0; i < items; i++){
+    cindex.setNum(i);
+    nick = "Notify-" + cindex;
+    command += kConfig->readEntry(nick) + " ";
+  }
+  command += "\n";
+  iocontrol->stdin_write(command);  
 
 }
 
@@ -183,13 +222,45 @@ KSircProcess::~KSircProcess()
 
 void KSircProcess::new_toplevel(QString str)
 {
+  static time_t last_window_open = 0;
+  static int number_open = 0;
+
   if(running_window == FALSE){ // If we're not fully running, reusing
 			       // !default window for next chan.
     running_window = TRUE;
-    TopList.insert(str, TopList["!default"]); 
-    TopList[str]->control_message(001, str);
+    TopList.insert(str, TopList["!no_channel"]); 
+    TopList.remove("!no_channel"); // We're no longer !no_channel
+    TopList[str]->control_message(CHANGE_CHANNEL, str);
   }
-  else if(!TopList[str]){  // If the window doesn't exist, continue
+  else if(!TopList[str]){ // If the window doesn't exist, continue
+    // If AutoCreate windows is on, let's make sure we're not being flooded.
+    if(kSircConfig->autocreate == TRUE){
+      time_t current_time = time(NULL);
+      if((current_time - last_window_open) < 5){
+	if(number_open > 4){
+	  switch(QMessageBox::warning(0, "Flood warning",
+				      "5 Channel windows were opened\n"
+				      "in less than 5 seconds.  Someone\n"
+				      "maybe trying to flood your X server\n"
+				      "with windows.\n\n"
+				      "Should I turn off AutoCreate windows?\n",
+				      "Yes", "No", (char *) 0, 0, 0)){
+
+          case 0:
+	    emit ProcMessage(QString(server), ProcCommand::turnOffAutoCreate, QString());
+	  }
+	  last_window_open = current_time;
+	  number_open = 0;
+	}
+	else{
+	  number_open++;
+	}
+      }
+      else{
+	last_window_open = current_time;
+      }
+    }
+
     // Create a new toplevel, and add it to the toplist.  
     // TopList is a list of KSircReceivers so we still need wm.
     KSircTopLevel *wm = new KSircTopLevel(this, str.data());
@@ -201,15 +272,12 @@ void KSircProcess::new_toplevel(QString str)
     connect(wm, SIGNAL(open_toplevel(QString)),
 	    this,SLOT(new_toplevel(QString)));
     connect(wm, SIGNAL(closing(KSircTopLevel *, char *)),
-	  this,SLOT(close_toplevel(KSircTopLevel *, char *)));
-    //    if(str != QString("!messages")){
-      connect(wm, SIGNAL(currentWindow(KSircTopLevel *)),
-	      this,SLOT(default_window(KSircTopLevel *)));
-      connect(wm, SIGNAL(changeChannel(QString, QString)),
-	      this,SLOT(recvChangeChannel(QString, QString)));
-      //    }
-      emit ProcMessage(QString(server), ProcCommand::addTopLevel, str);
-      //    emit made_toplevel(QString(server), str);
+	    this,SLOT(close_toplevel(KSircTopLevel *, char *)));
+    connect(wm, SIGNAL(currentWindow(KSircTopLevel *)),
+	    this,SLOT(default_window(KSircTopLevel *)));
+    connect(wm, SIGNAL(changeChannel(QString, QString)),
+	    this,SLOT(recvChangeChannel(QString, QString)));
+    emit ProcMessage(QString(server), ProcCommand::addTopLevel, str);
     wm->show(); // Pop her up
   }
   else{

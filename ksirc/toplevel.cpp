@@ -594,7 +594,6 @@ void KSircTopLevel::sirc_line_return()
     return;
   }
 
-
   // 
   // Look at the command, if we're assigned a channel name, default
   // messages, etc to the right place.  This include /me, etc
@@ -1330,7 +1329,7 @@ void KSircTopLevel::closeEvent(QCloseEvent *)
   //    emit outputLine(str);
   //  }
 
-  hide();
+  //  hide();
   // Let's say we're closing, what ever connects to this should delete us.
   emit closing(this, channel_name); // This should call "delete this".
   // This line is NEVER reached.
@@ -1384,12 +1383,12 @@ void KSircTopLevel::control_message(int command, QString str)
 {
   switch(command){
   case CHANGE_CHANNEL: // 001 is defined as changeChannel
+    emit changeChannel(channel_name, str.data());
     if(channel_name)
       delete channel_name;
     channel_name = qstrdup(str.data());
     have_focus = 0;
     setCaption(channel_name);
-    emit changeChannel("!default", channel_name);
     mainw->scrollToBottom();
     break;
   case STOP_UPDATES:

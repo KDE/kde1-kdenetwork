@@ -17,7 +17,7 @@ APPSDIR = $(kde_appsdir)/Internet
 # set the include path for X, qt and KDE
 INCLUDES= @all_includes@
 # claim, which subdirectories you want to install
-SUBDIRS = KSTicker KSProgress KSCutDialog img doc
+SUBDIRS = KSTicker KSProgress KSCutDialog KSPrefs img doc
 
 ####### This part is very khexdit specific
 # you can add here more. This one gets installed 
@@ -41,8 +41,7 @@ messageReceiver.cpp \
 ioBroadcast.cpp \
 ksircprocess.cpp mksircprocess.cpp \
 open_ksirc.cpp open_ksircData.cpp mopen_ksirc.cpp mopen_ksircData.cpp \
-servercontroller.cpp servercontrollerData.cpp mservercontroller.cpp mservercontrollerData.cpp \
-control.cpp mcontrol.cpp \
+servercontroller.cpp mservercontroller.cpp \
 KSircColour.cpp KSircColourData.cpp mKSircColour.cpp mKSircColourData.cpp \
 FilterRuleEditor.cpp FilterRuleEditorData.cpp mFilterRuleEditor.cpp mFilterRuleEditorData.cpp \
 ioDiscard.cpp \
@@ -55,13 +54,13 @@ ssfeprompt.cpp mssfeprompt.cpp ssfepromptdata.cpp mssfepromptdata.cpp
 ksircstatic_SOURCES = $(ksirc_SOURCES)
 
 # the library search path
-ksirc_LDFLAGS = @all_libraries@ -L./KSProgress/ -L./KSTicker/ -L./KSCutDialog/
+ksirc_LDFLAGS = @all_libraries@ -L./KSProgress/ -L./KSTicker/ -L./KSCutDialog/ -LKSPrefs
 
 ksircstatic_LDFLAGS = -static $(ksirc_LDFLAGS)
 
 # the libraries to link against. Be aware of the order. First the libraries,
 # that depend on the following ones.
-ksirc_LDADD   = -lksprogress -lksticker -lkscutdialog -lkdeui -lkdecore -lqt -lX11 -lXext @LIBSOCKET@     
+ksirc_LDADD   = -lksprogress -lksticker -lkscutdialog -lksprefs -lkdeui -lkdecore -lqt -lX11 -lXext @LIBSOCKET@     
 
 ksircstatic_LDADD = $(ksirc_LDADD)
 
@@ -81,9 +80,9 @@ KSircColourData.h         ioBroadcast.h             open_ksircData.h \
 UserMenuRef.h             ioDCC.h                   open_top.h \
 UserMenuRefData.h         ioDiscard.h               open_topData.h \
 ahistlineedit.h           iocontroller.h            servercontroller.h \
-alistbox.h                irclistbox.h              servercontrollerData.h \
+alistbox.h                irclistbox.h              \
 config.h                  irclistitem.h             toplevel.h \
-control.h                 ksircprocess.h            ksirc.kdelnk \
+ksircprocess.h            ksirc.kdelnk \
 ioLAG.h                   ioNotify.h                ssfeprompt.h \
 ssfepromptdata.h \
 dsirc                     filters.pl                ksirc.pl

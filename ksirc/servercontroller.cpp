@@ -73,6 +73,7 @@
 #include "control_message.h"
 #include "FilterRuleEditor.h"
 #include "../config.h"
+#include "KSPrefs/ksprefs.h"
 #include <iostream.h>
 
 #include <kfontdialog.h>
@@ -80,85 +81,99 @@
 
 #include <qkeycode.h>
 
-#define Inherited servercontrollerData
 extern KConfig *kConfig;
 extern KApplication *kApp;
 extern global_config *kSircConfig;
 
 servercontroller::servercontroller
 (
-	QWidget* parent,
-	const char* name
-)
-	:
-	Inherited( parent, name )
+ QWidget*,
+ const char* name
+ )
+  :
+  KTopLevelWidget( name )
 {
-	setCaption( "Server Control" );
-	QPopupMenu *file = new QPopupMenu();
-	file->insertItem("&Quit", kApp, SLOT(quit()), ALT + Key_F4);
-	MenuBar->insertItem("&File", file);
-	connections = new QPopupMenu();
-	server_id = connections->insertItem("&New Server...", this, SLOT(new_connection()), CTRL + Key_N );
-	join_id = connections->insertItem("&Join Channel...", this, SLOT(new_channel()), CTRL + Key_J);
-	connections->setItemEnabled(join_id, FALSE);
-	MenuBar->insertItem("&Connections", connections);
-	
-	
-	kConfig->setGroup("GlobalOptions");
-	options = new QPopupMenu();
-	options->setCheckable(TRUE);
-	//	reuse_id = options->insertItem("Seperate Message Window", 
-	//			    this, SLOT(reuse()));
-	//	reuse(); // Invert it
-	//	reuse(); // invert it again to what it should be.
-	auto_id = options->insertItem("Auto Create Windows", 
-			    this, SLOT(autocreate()));
-	options->setItemChecked(auto_id, 
-				kConfig->readNumEntry("AutoCreate", FALSE));
-	kSircConfig->autocreate = kConfig->readNumEntry("AutoCreate", FALSE);
-	nickc_id = options->insertItem("Nick Completion", 
-			    this, SLOT(nickcompletion()));
-	options->setItemChecked(nickc_id, 
-				kConfig->readNumEntry("NickCompletion", TRUE));
-	kSircConfig->nickcompletion = 
-	  kConfig->readNumEntry("NickCompletion", TRUE);
-	options->insertSeparator();
-	options->insertItem("&Colour Preferences...",
-			    this, SLOT(colour_prefs()));
-	options->insertItem("&Global Fonts...",
-			    this, SLOT(font_prefs()));
-	options->insertItem("&Filter Rule Editor...",
-			    this, SLOT(filter_rule_editor()));
-	MenuBar->insertItem("&Options", options);
 
-	QPopupMenu *help = new QPopupMenu();
-	help->insertItem("Help...",
-			 this, SLOT(help_general()));
-	help->insertItem("Help on Colours...",
-			 this, SLOT(help_colours()));
-	help->insertItem("Help on Filters...",
-			 this, SLOT(help_filters()));
-	help->insertItem("Help on Keys...",
-			 this, SLOT(help_keys()));
-	help->insertSeparator();
-	help->insertItem("About kSirc...",
-			 this, SLOT(about_ksirc()));
-	MenuBar->insertItem("&Help", help);
+  sci = new scInside(this, "mainview");
+  sci->setFrameStyle(QFrame::Box | QFrame::Raised);
+  ConnectionTree = sci->ConnectionTree;
 
-	setMenu(MenuBar);
-	setView(BaseBorder);
-	
-	ConnectionTree->setExpandLevel(2);
-	open_toplevels = 0;
+  MenuBar = new KMenuBar(this, "Menu");
 
-        KIconLoader *kicl = kApp->getIconLoader();
-        QStrList *strlist = kicl->getDirList();
-        kicl->insertDirectory(strlist->count(), kSircConfig->kdedir + "/share/apps/ksirc/icons"); 
-	pic_server = new QPixmap(kicl->loadIcon("mini-display.gif"));
-	pic_channel = new QPixmap(kicl->loadIcon("mini-edit.gif"));
-	pic_gf = new QPixmap(kicl->loadIcon("gf.gif"));
-	pic_run = new QPixmap(kicl->loadIcon("mini-run.gif"));
-	pic_ppl = new QPixmap(kicl->loadIcon("ppl.gif"));
+  setMenu(MenuBar);
+  setView(sci, TRUE);
+  setFrameBorderWidth(5);
+
+  setCaption( "Server Control" );
+  QPopupMenu *file = new QPopupMenu();
+  file->insertItem("&Quit", kApp, SLOT(quit()), ALT + Key_F4);
+  MenuBar->insertItem("&File", file);
+  connections = new QPopupMenu();
+  server_id = connections->insertItem("&New Server...", this, SLOT(new_connection()), CTRL + Key_N );
+  join_id = connections->insertItem("&Join Channel...", this, SLOT(new_channel()), CTRL + Key_J);
+  connections->setItemEnabled(join_id, FALSE);
+  MenuBar->insertItem("&Connections", connections);
+  
+  
+  kConfig->setGroup("GlobalOptions");
+  options = new QPopupMenu();
+  options->setCheckable(TRUE);
+  //	reuse_id = options->insertItem("Seperate Message Window", 
+  //			    this, SLOT(reuse()));
+  //	reuse(); // Invert it
+  //	reuse(); // invert it again to what it should be.
+  auto_id = options->insertItem("Auto Create Windows", 
+				this, SLOT(autocreate()));
+  options->setItemChecked(auto_id, 
+			  kConfig->readNumEntry("AutoCreate", FALSE));
+  kSircConfig->autocreate = kConfig->readNumEntry("AutoCreate", FALSE);
+  nickc_id = options->insertItem("Nick Completion", 
+				 this, SLOT(nickcompletion()));
+  options->setItemChecked(nickc_id, 
+			  kConfig->readNumEntry("NickCompletion", TRUE));
+  kSircConfig->nickcompletion = 
+    kConfig->readNumEntry("NickCompletion", TRUE);
+  options->insertSeparator();
+  options->insertItem("&Colour Preferences...",
+		      this, SLOT(colour_prefs()));
+  options->insertItem("&Global Fonts...",
+		      this, SLOT(font_prefs()));
+  options->insertItem("&Filter Rule Editor...",
+		      this, SLOT(filter_rule_editor()));
+  options->insertSeparator();
+  options->insertItem("&Preferences...",
+		      this, SLOT(general_prefs()));
+  
+  MenuBar->insertItem("&Options", options);
+  
+  
+  QPopupMenu *help = new QPopupMenu();
+  help->insertItem("Help...",
+		   this, SLOT(help_general()));
+  help->insertItem("Help on Colours...",
+		   this, SLOT(help_colours()));
+  help->insertItem("Help on Filters...",
+		   this, SLOT(help_filters()));
+  help->insertItem("Help on Keys...",
+		   this, SLOT(help_keys()));
+  help->insertSeparator();
+  help->insertItem("About kSirc...",
+		   this, SLOT(about_ksirc()));
+  MenuBar->insertItem("&Help", help);
+  
+  ConnectionTree->setExpandLevel(2);
+  open_toplevels = 0;
+  
+  KIconLoader *kicl = kApp->getIconLoader();
+  QStrList *strlist = kicl->getDirList();
+  kicl->insertDirectory(strlist->count(), kSircConfig->kdedir + "/share/apps/ksirc/icons"); 
+  pic_server = new QPixmap(kicl->loadIcon("mini-display.gif"));
+  pic_channel = new QPixmap(kicl->loadIcon("mini-edit.gif"));
+  pic_gf = new QPixmap(kicl->loadIcon("gf.gif"));
+  pic_run = new QPixmap(kicl->loadIcon("mini-run.gif"));
+  pic_ppl = new QPixmap(kicl->loadIcon("ppl.gif"));
+
+  resize( 450,200 );
 
 }
 
@@ -191,10 +206,11 @@ void servercontroller::new_ksircprocess(QString str)
   ConnectionTree->addChildItem(online.data(), pic_gf, &path);
   ConnectionTree->addChildItem(channels.data(), pic_ppl, &path);
 
-      
-  ProcMessage(str, ProcCommand::addTopLevel, QString("default"));
-  // level parent
-  //add_toplevel(str, QString("default"));                   // Set a dflt chan
+  // We do no_channel here since proc emits the signal in the
+  // constructor, and we can't connect to before then, so we have to
+  // do the dirty work here.
+  ProcMessage(str, ProcCommand::addTopLevel, QString("no_channel"));
+  
   KSircProcess *proc = new KSircProcess(str.data()); // Create proc
   proc_list.insert(str.data(), proc);                      // Add proc to hash
   connect(proc, SIGNAL(ProcMessage(QString, int, QString)),
@@ -270,6 +286,14 @@ void servercontroller::colour_prefs()
   connect(kc, SIGNAL(update()),
 	  this, SLOT(configChange()));
   kc->show();
+}
+
+void servercontroller::general_prefs()
+{
+  KSPrefs *kp = new KSPrefs();
+  connect(kp, SIGNAL(update()),
+	  this, SLOT(configChange()));
+  kp->show();
 }
 
 void servercontroller::filter_rule_editor()
@@ -470,6 +494,9 @@ void servercontroller::ProcMessage(QString server, int command, QString args)
     ConnectionTree->removeItem(&path);
     proc_list.remove(server); // Remove process entry while we are at it
     break;
+  case ProcCommand::turnOffAutoCreate:
+    autocreate();
+    break;
   default:
     cerr << "Unkown command: " << command << " from " << server << " " << args << endl;
   }
@@ -478,4 +505,47 @@ void servercontroller::ProcMessage(QString server, int command, QString args)
 void servercontroller::slot_filters_update()
 {
   emit ServMessage(QString(), ServCommand::updateFilters, QString());
+}
+
+scInside::scInside ( QWidget * parent=0, const char * name=0, WFlags
+		     f=0, bool allowLines=TRUE )
+  : QFrame(parent, name, f, allowLines)
+{
+  ASConn = new QLabel("Active Server Connections", this);
+  ASConn->move(10,10);
+  ASConn->setFixedWidth(width() - 20);
+  QColorGroup cg = QColorGroup(colorGroup().foreground(), 
+			       colorGroup().background(),
+                               colorGroup().light(), 
+			       colorGroup().dark(),
+                               colorGroup().mid(),
+                               QColor(128,0,0),
+                               colorGroup().base());
+  ASConn->setPalette(QPalette(cg,cg,cg));
+  QFont asfont = ASConn->font();
+  asfont.setBold(TRUE);
+  ASConn->setFont(asfont);
+  ASConn->setFixedHeight(ASConn->fontMetrics().height()+5);
+
+  ConnectionTree = new KTreeList(this, "connectiontree");
+  ConnectionTree->setGeometry(10, 10 + ASConn->height(),
+			      width(), height() - 10 - ASConn->height());
+  
+}
+
+scInside::~scInside()
+{
+  delete ASConn;
+  delete ConnectionTree;
+}
+
+void scInside::resizeEvent ( QResizeEvent *e )
+{
+  QFrame::resizeEvent(e);
+  ASConn->move(10,10);
+  ASConn->setFixedHeight(ASConn->fontMetrics().height()+5);
+  ASConn->setFixedWidth(width() - 20);
+  ConnectionTree->setGeometry(10, 10 + ASConn->height(),
+			      width() - 20, height() - 20 - ASConn->height());
+  
 }

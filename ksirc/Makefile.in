@@ -126,7 +126,7 @@ APPSDIR = $(kde_appsdir)/Internet
 # set the include path for X, qt and KDE
 INCLUDES= @all_includes@
 # claim, which subdirectories you want to install
-SUBDIRS = KSTicker KSProgress KSCutDialog img doc
+SUBDIRS = KSTicker KSProgress KSCutDialog KSPrefs img doc
 
 ####### This part is very khexdit specific
 # you can add here more. This one gets installed 
@@ -150,8 +150,7 @@ messageReceiver.cpp \
 ioBroadcast.cpp \
 ksircprocess.cpp mksircprocess.cpp \
 open_ksirc.cpp open_ksircData.cpp mopen_ksirc.cpp mopen_ksircData.cpp \
-servercontroller.cpp servercontrollerData.cpp mservercontroller.cpp mservercontrollerData.cpp \
-control.cpp mcontrol.cpp \
+servercontroller.cpp mservercontroller.cpp \
 KSircColour.cpp KSircColourData.cpp mKSircColour.cpp mKSircColourData.cpp \
 FilterRuleEditor.cpp FilterRuleEditorData.cpp mFilterRuleEditor.cpp mFilterRuleEditorData.cpp \
 ioDiscard.cpp \
@@ -164,13 +163,13 @@ ssfeprompt.cpp mssfeprompt.cpp ssfepromptdata.cpp mssfepromptdata.cpp
 ksircstatic_SOURCES = $(ksirc_SOURCES)
 
 # the library search path
-ksirc_LDFLAGS = @all_libraries@ -L./KSProgress/ -L./KSTicker/ -L./KSCutDialog/
+ksirc_LDFLAGS = @all_libraries@ -L./KSProgress/ -L./KSTicker/ -L./KSCutDialog/ -LKSPrefs
 
 ksircstatic_LDFLAGS = -static $(ksirc_LDFLAGS)
 
 # the libraries to link against. Be aware of the order. First the libraries,
 # that depend on the following ones.
-ksirc_LDADD   = -lksprogress -lksticker -lkscutdialog -lkdeui -lkdecore -lqt -lX11 -lXext @LIBSOCKET@     
+ksirc_LDADD   = -lksprogress -lksticker -lkscutdialog -lksprefs -lkdeui -lkdecore -lqt -lX11 -lXext @LIBSOCKET@     
 
 ksircstatic_LDADD = $(ksirc_LDADD)
 
@@ -186,9 +185,9 @@ KSircColourData.h         ioBroadcast.h             open_ksircData.h \
 UserMenuRef.h             ioDCC.h                   open_top.h \
 UserMenuRefData.h         ioDiscard.h               open_topData.h \
 ahistlineedit.h           iocontroller.h            servercontroller.h \
-alistbox.h                irclistbox.h              servercontrollerData.h \
+alistbox.h                irclistbox.h              \
 config.h                  irclistitem.h             toplevel.h \
-control.h                 ksircprocess.h            ksirc.kdelnk \
+ksircprocess.h            ksirc.kdelnk \
 ioLAG.h                   ioNotify.h                ssfeprompt.h \
 ssfepromptdata.h \
 dsirc                     filters.pl                ksirc.pl
@@ -215,8 +214,7 @@ mUserMenuRef.o mUserMenuRefData.o iocontroller.o miocontroller.o \
 open_top.o open_topData.o mopen_top.o mopen_topData.o messageReceiver.o \
 ioBroadcast.o ksircprocess.o mksircprocess.o open_ksirc.o \
 open_ksircData.o mopen_ksirc.o mopen_ksircData.o servercontroller.o \
-servercontrollerData.o mservercontroller.o mservercontrollerData.o \
-control.o mcontrol.o KSircColour.o KSircColourData.o mKSircColour.o \
+mservercontroller.o KSircColour.o KSircColourData.o mKSircColour.o \
 mKSircColourData.o FilterRuleEditor.o FilterRuleEditorData.o \
 mFilterRuleEditor.o mFilterRuleEditorData.o ioDiscard.o ioDCC.o \
 mioDCC.o dccDialog.o mdccDialog.o dccDialogData.o mdccDialogData.o \
@@ -230,8 +228,7 @@ mUserMenuRef.o mUserMenuRefData.o iocontroller.o miocontroller.o \
 open_top.o open_topData.o mopen_top.o mopen_topData.o messageReceiver.o \
 ioBroadcast.o ksircprocess.o mksircprocess.o open_ksirc.o \
 open_ksircData.o mopen_ksirc.o mopen_ksircData.o servercontroller.o \
-servercontrollerData.o mservercontroller.o mservercontrollerData.o \
-control.o mcontrol.o KSircColour.o KSircColourData.o mKSircColour.o \
+mservercontroller.o KSircColour.o KSircColourData.o mKSircColour.o \
 mKSircColourData.o FilterRuleEditor.o FilterRuleEditorData.o \
 mFilterRuleEditor.o mFilterRuleEditorData.o ioDiscard.o ioDCC.o \
 mioDCC.o dccDialog.o mdccDialog.o dccDialogData.o mdccDialogData.o \
@@ -252,24 +249,22 @@ GZIP = --best
 DEP_FILES =  .deps/FilterRuleEditor.P .deps/FilterRuleEditorData.P \
 .deps/KSircColour.P .deps/KSircColourData.P .deps/UserMenuRef.P \
 .deps/UserMenuRefData.P .deps/ahistlineedit.P .deps/alistbox.P \
-.deps/control.P .deps/dccDialog.P .deps/dccDialogData.P \
-.deps/ioBroadcast.P .deps/ioDCC.P .deps/ioDiscard.P .deps/ioLAG.P \
-.deps/ioNotify.P .deps/iocontroller.P .deps/irclistbox.P \
-.deps/irclistitem.P .deps/ksirc.P .deps/ksircprocess.P \
-.deps/linelistitem.P .deps/mFilterRuleEditor.P \
-.deps/mFilterRuleEditorData.P .deps/mKSircColour.P \
-.deps/mKSircColourData.P .deps/mUserMenuRef.P .deps/mUserMenuRefData.P \
-.deps/mahistlineedit.P .deps/malistbox.P .deps/mcontrol.P \
+.deps/dccDialog.P .deps/dccDialogData.P .deps/ioBroadcast.P \
+.deps/ioDCC.P .deps/ioDiscard.P .deps/ioLAG.P .deps/ioNotify.P \
+.deps/iocontroller.P .deps/irclistbox.P .deps/irclistitem.P \
+.deps/ksirc.P .deps/ksircprocess.P .deps/linelistitem.P \
+.deps/mFilterRuleEditor.P .deps/mFilterRuleEditorData.P \
+.deps/mKSircColour.P .deps/mKSircColourData.P .deps/mUserMenuRef.P \
+.deps/mUserMenuRefData.P .deps/mahistlineedit.P .deps/malistbox.P \
 .deps/mdccDialog.P .deps/mdccDialogData.P .deps/messageReceiver.P \
 .deps/mioDCC.P .deps/mioLAG.P .deps/mioNotify.P .deps/miocontroller.P \
 .deps/mirclistbox.P .deps/mirclistitem.P .deps/mksircprocess.P \
 .deps/mopen_ksirc.P .deps/mopen_ksircData.P .deps/mopen_top.P \
-.deps/mopen_topData.P .deps/mservercontroller.P \
-.deps/mservercontrollerData.P .deps/mssfeprompt.P \
+.deps/mopen_topData.P .deps/mservercontroller.P .deps/mssfeprompt.P \
 .deps/mssfepromptdata.P .deps/mtoplevel.P .deps/open_ksirc.P \
 .deps/open_ksircData.P .deps/open_top.P .deps/open_topData.P \
-.deps/servercontroller.P .deps/servercontrollerData.P \
-.deps/ssfeprompt.P .deps/ssfepromptdata.P .deps/toplevel.P
+.deps/servercontroller.P .deps/ssfeprompt.P .deps/ssfepromptdata.P \
+.deps/toplevel.P
 CXXMKDEP = $(CXX) -M $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
 SOURCES = $(ksirc_SOURCES) $(ksircstatic_SOURCES)
 OBJECTS = $(ksirc_OBJECTS) $(ksircstatic_OBJECTS)

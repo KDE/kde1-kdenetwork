@@ -16,11 +16,15 @@
 
 class servercontroller;
 class ServMessage;
+class ProcCommand;
 
 #include <qdict.h>
 #include <qpixmap.h> 
+#include <qlabel.h>
 
-#include "servercontrollerData.h"
+#include <ktreelist.h>
+#include <ktopwidget.h>
+#include <kmenubar.h>
 
 #include "ksircprocess.h"
 
@@ -34,7 +38,8 @@ class ProcCommand // ServerController message
     newChannel,
     changeChannel,
     nickOnline,
-    nickOffline
+    nickOffline,
+    turnOffAutoCreate
   } command;
 };
 
@@ -47,7 +52,25 @@ class ServCommand // ServerController message
   } command;
 };
 
-class servercontroller : public servercontrollerData
+class scInside : QFrame
+{
+  Q_OBJECT
+  friend class servercontroller;
+ public:
+  scInside ( QWidget * parent=0, const char * name=0, WFlags
+           f=0, bool allowLines=TRUE );
+  ~scInside();
+
+ protected:
+  virtual void resizeEvent ( QResizeEvent * );
+
+ private:
+  KTreeList *ConnectionTree;
+  QLabel *ASConn;  
+  
+};
+
+class servercontroller : public KTopLevelWidget
 {
     Q_OBJECT
 
@@ -110,6 +133,11 @@ public slots:
     virtual void autocreate();
     virtual void colour_prefs();
     virtual void font_prefs();
+    /**
+     * Action: Popup a general preferences window which allows various 
+     * settings, etc.
+     */
+    virtual void general_prefs();
     virtual void font_update(const QFont&);
     virtual void filter_rule_editor();
     virtual void configChange();
@@ -122,20 +150,32 @@ public slots:
 
     virtual void ProcMessage(QString server, int command, QString args);
 
+protected:
+
 private:
+
+    // La raison d'etre.  We don't run ConnectionTree outr selves, but
+    // we get it from out helper class scInside.
+    KTreeList *ConnectionTree;
+
+    scInside *sci;
+
+    // Menubar for the top.
+    KMenuBar *MenuBar;
+    
     // Hold a list of all KSircProcess's for access latter.  Index by server 
     // name
-  QDict<KSircProcess> proc_list;
-  QPopupMenu *options, *connections;
-  int reuse_id, join_id, server_id, auto_id, nickc_id;
-
-  int open_toplevels;
-
-  QPixmap *pic_channel;
-  QPixmap *pic_server;
-  QPixmap *pic_gf;
-  QPixmap *pic_run;
-  QPixmap *pic_ppl;
+    QDict<KSircProcess> proc_list;
+    QPopupMenu *options, *connections;
+    int reuse_id, join_id, server_id, auto_id, nickc_id;
+    
+    int open_toplevels;
+    
+    QPixmap *pic_channel;
+    QPixmap *pic_server;
+    QPixmap *pic_gf;
+    QPixmap *pic_run;
+    QPixmap *pic_ppl;
 
 };
 #endif // servercontroller_included

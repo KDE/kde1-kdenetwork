@@ -733,19 +733,23 @@ sub docommand {
   } elsif ($cmd eq 'NOTIFY' || $cmd eq 'N') {
     if ($args eq '-') {
       &tell("*** Notify list cleared");
+      my($value);
+      while(($_, $value) = each %notify){           # Remove all nicks
+	&tell("*\cb(\cb* Signoff by $_ detected!"); # KSIRC MOD
+      }      
       %notify=();
     } elsif ($args eq '') {
       local($l)='';
       foreach (grep($notify{$_}, keys %notify)) {
 	&tell("*** Currently present: $l"), $l='' if length($l)>450;
-	&tell("*\cb)\cb* Signon by $_ detected!");
+	&tell("*\cb)\cb* Signon by $_ detected!");  # KSIRC MOD
 	$l.=$_." ";
       }
       $l && &tell("*** Currently present: $l");
       $l='';
       foreach (grep(!$notify{$_}, keys %notify)) {
 	&tell("*** Currently absent: $l"), $l='' if length($l)>450;
-	&tell("*\cb(\cb* Signoff by $_ detected!");
+	&tell("*\cb(\cb* Signoff by $_ detected!"); # KSIRC MOD
 	$l.=$_." ";
       }
       $l && &tell("*** Currently absent: $l");
@@ -756,6 +760,7 @@ sub docommand {
 	  ($n)=(grep(&eq($_, $w), keys(%notify)), '');
 	  $n ne '' && delete $notify{$n};
 	  &tell("*** $w removed from notify list");
+	  &tell("*\cb(\cb* Signoff by $w detected!"); # KSIRC MOD
 	} else {
 	  $notify{$w}='0';
 	  &tell("*** $w added to notify list");
