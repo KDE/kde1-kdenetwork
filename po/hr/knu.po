@@ -1,0 +1,193 @@
+msgid ""
+msgstr ""
+"Date: 1997-10-28 22:45:13+0100\n"
+"From: Bertrand Leconte,,, <leconteb@arthur>\n"
+"Content-Type: text/plain; charset=\n"
+"Xgettext-Options: -C -k_\n"
+"Files: knu.cpp CommandDlg.cpp OptionsDlg.cpp ktabctl.cpp PingDlg.cpp TracerouteDlg.cpp HostDlg.cpp\n"
+
+#: knu.cpp:107 knu.cpp:242
+msgid "&Ping"
+msgstr "&Ping"
+
+#: knu.cpp:116 knu.cpp:247
+msgid "&Traceroute"
+msgstr "&Traceroute"
+
+#: knu.cpp:125 knu.cpp:252
+msgid "Host &resolution"
+msgstr "&RazluŸenje doma†ina"
+
+#: knu.cpp:140
+msgid ""
+"There is no command enabled\n"
+"in the configuration file.\n"
+"\n"
+"So I can't do anything...\n"
+msgstr "Nijedna naredba nije omogu†ena\n"
+"u konfiguracijskoj datoteci.\n"
+"\n"
+"Stoga ne mogu uŸiniti niçta...\n"
+
+#: knu.cpp:187
+msgid "&New window"
+msgstr "&Novi prozor"
+
+#: knu.cpp:190
+msgid "&Close window"
+msgstr "&Zatvori prozor"
+
+#: knu.cpp:193
+msgid "&Quit"
+msgstr "&Kraj"
+
+#: knu.cpp:198
+msgid "&Copy"
+msgstr "&Kopiraj"
+
+#: knu.cpp:201
+msgid "Select &all"
+msgstr "Iz&aberi sve"
+
+#: knu.cpp:204
+msgid "C&lear output window"
+msgstr "OŸisti iz&lazni prozor"
+
+#: knu.cpp:207
+msgid "P&references..."
+msgstr "P&retpostavke..."
+
+#: knu.cpp:212
+msgid "&Contents"
+msgstr "&Sadr§aj"
+
+#: knu.cpp:215
+msgid "&About"
+msgstr "O progr&amu"
+
+#: knu.cpp:217
+msgid "About &Qt"
+msgstr "O &Qt-u"
+
+#: knu.cpp:221
+msgid "&File"
+msgstr "&Datoteka"
+
+#: knu.cpp:222
+msgid "&Edit"
+msgstr "Promij&eni"
+
+#: OptionsDlg.cpp:83 knu.cpp:224
+msgid "&Help"
+msgstr "Pomo&†"
+
+#: knu.cpp:374
+msgid "About..."
+msgstr "O programu..."
+
+#: CommandDlg.cpp:115
+msgid "H&ost:"
+msgstr "D&oma†in:"
+
+#: CommandDlg.cpp:127
+msgid "&Go!"
+msgstr "&Idi!"
+
+#: CommandDlg.cpp:136
+msgid "&Stop"
+msgstr "&Stani"
+
+#: CommandDlg.cpp:151
+msgid ""
+"This command binary was not found. \n"
+"You can give its path in the Edit->Preferences... menu."
+msgstr "Ova naredbena datoteka nije naÐena. \n"
+"Mo§ete zadati stazu u izborniku Promijeni->Pretpostavke..."
+
+#: CommandDlg.cpp:421
+msgid "Binary"
+msgstr "Datoteka"
+
+#: CommandDlg.cpp:432
+msgid "Path&name:"
+msgstr "&Naziv staze"
+
+#: CommandDlg.cpp:444
+msgid "Additional &arguments:"
+msgstr "Dodatni &argumenti:"
+
+#: CommandDlg.cpp:466
+msgid "This command had been disabled in the configuration file."
+msgstr "Ova naredba je onemogu†ena u konfiguracijskoj datoteci."
+
+#: OptionsDlg.cpp:53
+msgid " - configuration"
+msgstr " - konfiguracija"
+
+#: OptionsDlg.cpp:77
+msgid "&Ok"
+msgstr "&U redu"
+
+#: OptionsDlg.cpp:88
+msgid "&Cancel"
+msgstr "Pre&kini"
+
+#: PingDlg.cpp:67 TracerouteDlg.cpp:68
+msgid "Make host &name resolution"
+msgstr "Izvedi razluŸenje &naziva doma†ina"
+
+#: HostDlg.cpp:171 PingDlg.cpp:102 TracerouteDlg.cpp:124
+msgid ""
+"You have a problem if your ~/.kderc/share/config/knurc configuration file.\n"
+"In the ["
+msgstr ""
+"Imate problem u vaçoj ~/.kderc/share/config/knurc konfiguracijskoj datoteci.\n"
+"U ["
+
+#: HostDlg.cpp:175 PingDlg.cpp:106 TracerouteDlg.cpp:128
+msgid "] group, I cannotfind a correct \"path=\" entry."
+msgstr "] grupi, ne mogu na†i ispravnu stavku \"path=\"."
+
+#: TracerouteDlg.cpp:85
+msgid "&Maximum number of hops:"
+msgstr "&Najve†i broj skokova:"
+
+#: HostDlg.cpp:94
+msgid "address (A)"
+msgstr "adresa (A)"
+
+#: HostDlg.cpp:95
+msgid "name (PTR)"
+msgstr "naziv (PTR)"
+
+#: HostDlg.cpp:96
+msgid "name server (NS)"
+msgstr "poslu§itelj naziva (NS)"
+
+#: HostDlg.cpp:97
+msgid "mail exchanger (MX)"
+msgstr "izmjenjivaŸ poçte (MX)"
+
+#: HostDlg.cpp:98
+msgid "alias (CNAME)"
+msgstr "zamjensko ime (CNAME)"
+
+#: HostDlg.cpp:99
+msgid "start of authority (SOA)"
+msgstr "poŸetak autoriteta (SOA)"
+
+#: HostDlg.cpp:100
+msgid "any record (ANY)"
+msgstr "bilo koji slog (ANY)"
+
+#: HostDlg.cpp:106
+msgid "Se&arch for:"
+msgstr "Potr&a§i:"
+
+#: HostDlg.cpp:118 HostDlg.cpp:222
+msgid "default server"
+msgstr "podrazumijevani poslu§itelj"
+
+#: HostDlg.cpp:127
+msgid "Ser&ver:"
+msgstr "Pos&lu§itelj:"
