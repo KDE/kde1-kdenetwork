@@ -1,0 +1,1116 @@
+# Esperantaj mesaøoj por "kppp"
+# Copyright (C) 1998 Free Software Foundation, Inc.
+# Wolfram Diestel <diestel@rzaix340.rz.uni-leipzig.de>, 1998.
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kppp 1.0pre2\n"
+"POT-Creation-Date: 1998-06-18 22:50+0200\n"
+"PO-Revision-Date: 1998-07-24 16:00+0100\n"
+"Last-Translator: Wolfram Diestel <diestel@rzaix340.rz-uni-leipzig.de>\n"
+"Language-Team: Esperanto <eo@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-3\n"
+"Content-Transfer-Encoding: 8-bit\n"
+
+#: accounts.cpp:53
+msgid "Account Setup"
+msgstr "Konto-konfigura¼o"
+
+#: accounts.cpp:72
+msgid "Edit..."
+msgstr "Redaktu..."
+
+#: accounts.cpp:83
+msgid "New..."
+msgstr "Nova..."
+
+#: accounts.cpp:105
+msgid "Phone Costs:"
+msgstr "Telefonkostoj:"
+
+#: accounts.cpp:116 conwindow.cpp:55
+msgid "Volume:"
+msgstr "Laýteco:"
+
+#: accounts.cpp:131
+msgid "Reset Costs"
+msgstr "Rekomencu kostokalkulon"
+
+#: accounts.cpp:138
+msgid "View Logs"
+msgstr "Rigardu raportojn"
+
+#: accounts.cpp:235
+msgid "Reset Total"
+msgstr "Rekomencu tutan kalkulon"
+
+#: accounts.cpp:236
+msgid ""
+"Are you sure you want to reset the accumulated\n"
+"telephone costs for the selected account to zero?"
+msgstr ""
+"Æu vi estas certa, ke vi volas rekomenci æe nulo\n"
+"la kalkulon de æiuj telefonkostoj por la elektita konto?"
+
+#: accounts.cpp:271 accounts.cpp:294
+msgid "Maximum number of accounts reached."
+msgstr "Maksimuma nombro de kontoj atingita."
+
+#: accounts.cpp:300
+msgid "No account selected."
+msgstr "Vi elektis neniun konton."
+
+#: accounts.cpp:316
+#, c-format
+msgid ""
+"Are you sure you want to delete\n"
+"the account \"%s\"?"
+msgstr ""
+"Æu vi estas certa, ke vi volas\n"
+"forigi la konton \"%\"?"
+
+#: accounts.cpp:321
+msgid "Confirm"
+msgstr "Konfirmu"
+
+#: accounts.cpp:343
+msgid "New Account"
+msgstr "Nova konto"
+
+#: accounts.cpp:347
+msgid "Edit Account: "
+msgstr "Redaktu konton: "
+
+#: accounts.cpp:367
+msgid "Dial"
+msgstr "Alvoku"
+
+#: accounts.cpp:368
+msgid "IP"
+msgstr "IP"
+
+#: accounts.cpp:369
+msgid "DNS"
+msgstr "DNS"
+
+#: accounts.cpp:370
+msgid "Gateway"
+msgstr "enkursigilo"
+
+#: accounts.cpp:371
+msgid "Login Script"
+msgstr "Salutprogrameto"
+
+#: accounts.cpp:372
+msgid "Accounting"
+msgstr "Kontinformoj"
+
+#: accounts.cpp:391
+msgid ""
+"You must enter a unique\n"
+"account name"
+msgstr ""
+"Vi devas entajpi unikan\n"
+"kontonomon"
+
+#: accounts.cpp:396
+msgid "Login script has unbalanced Loop Start/End"
+msgstr "Salutprogrameto havas nekongruan blokon Start/End"
+
+#: connect.cpp:108 connect.cpp:212 main.cpp:829
+msgid "Connecting to: "
+msgstr "Kontaktita al: "
+
+#: connect.cpp:117 connect.cpp:228 miniterm.cpp:162 modeminfo.cpp:62
+#: modeminfo.cpp:149
+msgid "Sorry, can't create modem lock file."
+msgstr "Padonu, ne eblas krei þlosodosieron por modemo"
+
+#: connect.cpp:122 connect.cpp:185 modeminfo.cpp:67
+msgid "Looking for Modem ..."
+msgstr "Rigardante je modemo..."
+
+#: connect.cpp:131 debug.cpp:86 main.cpp:842
+msgid "Log"
+msgstr "Raporto"
+
+#: connect.cpp:222 miniterm.cpp:157 modeminfo.cpp:144
+msgid "Sorry, modem device is locked."
+msgstr "Pardonu, modemaparato estas þlosita"
+
+#: connect.cpp:234 miniterm.cpp:176 miniterm.cpp:253 modeminfo.cpp:164
+msgid "Modem Ready"
+msgstr "Modemo preta"
+
+#: connect.cpp:266 connect.cpp:267
+msgid "Initializing Modem..."
+msgstr "Initante modemon"
+
+#: connect.cpp:292
+msgid "Dialing"
+msgstr "Alvokante"
+
+#: connect.cpp:325
+msgid "Line Busy. Hanging up ..."
+msgstr "Lineo okupito. Æesante..."
+
+#: connect.cpp:331
+msgid "Line Busy. Waiting: "
+msgstr "Lineo okupita. Atendante: "
+
+#: connect.cpp:333 connect.cpp:451 connect.cpp:470
+msgid " seconds"
+msgstr " sekundojn"
+
+#: connect.cpp:351
+msgid "No Dialtone"
+msgstr "Neniu lineosono"
+
+#: connect.cpp:361
+msgid "No Carrier"
+msgstr "Neniu tensono"
+
+#: connect.cpp:396
+msgid "Scanning "
+msgstr "Seræante "
+
+#: connect.cpp:407
+msgid "Saving "
+msgstr "Sekurigante "
+
+#: connect.cpp:426
+msgid "Sending "
+msgstr "Sendante "
+
+#: connect.cpp:437
+msgid "Expecting "
+msgstr "Atendante "
+
+#: connect.cpp:449
+msgid "Pause "
+msgstr "Paýzo "
+
+#: connect.cpp:468
+msgid "Timeout "
+msgstr "Tempolimo "
+
+#: connect.cpp:482 connect.cpp:483
+msgid "Hangup"
+msgstr "Malkontaktas"
+
+#: connect.cpp:496 connect.cpp:497
+msgid "Answer"
+msgstr "Respondo"
+
+#: connect.cpp:505
+msgid "ID "
+msgstr "ID"
+
+#: connect.cpp:542
+msgid "Password "
+msgstr "Pasvorto"
+
+#: connect.cpp:580
+msgid "Prompting "
+msgstr "Demandu"
+
+#: connect.cpp:617
+msgid "PW Prompt "
+msgstr "Demandu pasvorton"
+
+#: connect.cpp:643
+msgid "Loop Start "
+msgstr "Maþkomenco"
+
+#: connect.cpp:647
+msgid "ERROR: Nested too deep, ignored."
+msgstr "ERARO: tro multaj maþoj."
+
+#: connect.cpp:652
+msgid "Loops nested too deeply!"
+msgstr "Tro multaj maþniveloj!"
+
+#: connect.cpp:670
+msgid "LoopEnd without mathing Start! Line: "
+msgstr "Maþofino sen koresponda komenco! Linio: "
+
+#: connect.cpp:747
+msgid "Starting pppd ..."
+msgstr "Lanæante pppd ..."
+
+#: connect.cpp:807 connect.cpp:833
+msgid "unknown speed"
+msgstr "nekonata rapideco"
+
+#: connect.cpp:871
+msgid "Scan Var: "
+msgstr "Variablo: "
+
+#: connect.cpp:882
+msgid "Found: "
+msgstr "Trovis: "
+
+#: connect.cpp:894
+msgid "Looping: "
+msgstr "Maþo: "
+
+#: connect.cpp:925 modeminfo.cpp:332
+msgid "One Moment Please ..."
+msgstr "Momenton bonvolu ..."
+
+#: connect.cpp:969
+msgid "Script timed out!"
+msgstr "Programeto pasis tempolimon!"
+
+#: connect.cpp:995
+msgid "Scanning: "
+msgstr "Seræante: "
+
+#: connect.cpp:1006
+msgid "Expecting: "
+msgstr "Atendante: "
+
+#: connect.cpp:1040
+msgid "Logging on to Network ..."
+msgstr "Salutado en la reto ..."
+
+#: connect.cpp:1067
+msgid "Running Startup Command ..."
+msgstr "Lanæante startkomandon ..."
+
+#: connect.cpp:1133
+msgid "Sorry, can't open modem."
+msgstr "Padonu, ne eblas malfermi modemon."
+
+#: connect.cpp:1140
+msgid "Sorry, the modem is not ready."
+msgstr "Pardonu, la modemo ne estas preta."
+
+#: connect.cpp:1148 connect.cpp:1189 modeminfo.cpp:374
+msgid "Sorry, the modem is busy."
+msgstr "Pardonu, la modemo estas okupita."
+
+#: connect.cpp:1424
+msgid ""
+"pppd command + command-line arguments exeed\n"
+"2024 characters in length. What are you doing?"
+msgstr ""
+"pppd komando + argumento estas pli longaj\n"
+"ol 2024 signoj. Ne skribu romanon!"
+
+#: conwindow.cpp:44
+msgid "Connected at:"
+msgstr "Kontaktita al:"
+
+#: conwindow.cpp:50
+msgid "Time connected:"
+msgstr "Kontaktotempo:"
+
+#: conwindow.cpp:59
+msgid "Session Bill:"
+msgstr "Seancofakturo:"
+
+#: conwindow.cpp:61
+msgid "Total Bill:"
+msgstr "Entuta fakturo:"
+
+#: conwindow.cpp:67 docking.cpp:74
+msgid "Disconnect"
+msgstr "Malkontaktu"
+
+#: conwindow.cpp:71 docking.cpp:72
+msgid "Details"
+msgstr "Detaloj"
+
+#: debug.cpp:49
+msgid "Login Script Debug Window"
+msgstr "Sencimigofenestro por salutprogrameto"
+
+#: edit.cpp:42
+msgid "Dial Setup"
+msgstr "Alvokokonfigura¼o"
+
+#: edit.cpp:46
+msgid "Connection Name:"
+msgstr "Kontaktnomo:"
+
+#: edit.cpp:57
+msgid "Phone Number:"
+msgstr "Telefonnumero:"
+
+#: edit.cpp:68
+msgid "Authentication:"
+msgstr "Indentigo:"
+
+#: edit.cpp:73
+msgid "Script-based"
+msgstr "per programeto"
+
+#: edit.cpp:74
+msgid "PAP"
+msgstr "per PAP"
+
+#: edit.cpp:75
+msgid "Terminal-based"
+msgstr "per terminalo"
+
+#: edit.cpp:76
+msgid "CHAP"
+msgstr "per CHAP"
+
+#: edit.cpp:82
+msgid "Store password"
+msgstr "Sekurigu pasvorton"
+
+#: edit.cpp:88
+msgid ""
+"Execute program\n"
+"upon connect:"
+msgstr ""
+"Lanæu programon\n"
+"æe kontakto:"
+
+#: edit.cpp:100
+msgid ""
+"Execute program\n"
+"upon disconnect:"
+msgstr ""
+"Lanæu programon\n"
+"æe malkontakto:"
+
+#: edit.cpp:112
+msgid "Edit pppd arguments:"
+msgstr "Redaktu pppd-argumentojn:"
+
+#: edit.cpp:118
+msgid "Arguments"
+msgstr "Argumentoj"
+
+#: edit.cpp:173
+msgid "IP Setup"
+msgstr "IP-konfigura¼o"
+
+#: edit.cpp:180
+msgid "IP Address:"
+msgstr "IP-adreso:"
+
+#: edit.cpp:185
+msgid "Subnet Mask:"
+msgstr "Subreta masko:"
+
+#: edit.cpp:193
+msgid "Dynamic IP Address"
+msgstr "Dinamika IP-adreso"
+
+#: edit.cpp:196
+msgid "Static IP Address"
+msgstr "Fiksa IP-adreso"
+
+#: edit.cpp:200
+msgid "Auto-configure hostname from this IP"
+msgstr "Aýtokonfiguru komputilnomon de tiu IP"
+
+#: edit.cpp:314
+msgid "DNS Servers"
+msgstr "DNS-serviloj"
+
+#: edit.cpp:330
+msgid "Domain Name:"
+msgstr "domajnnomo:"
+
+#: edit.cpp:342
+msgid "DNS IP Address:"
+msgstr "DNS IP-adreso:"
+
+#: edit.cpp:375
+msgid "DNS Address List:"
+msgstr "DNS-adres-listo:"
+
+#: edit.cpp:385
+msgid "Disable existing DNS Servers during Connection"
+msgstr "Malaktivigu ekzistantajn DNS-servilojn dum kontakto"
+
+#: edit.cpp:437
+msgid "Gateway Setup"
+msgstr "Enkursigil-konfigura¼o"
+
+#: edit.cpp:446
+msgid "Default Gateway"
+msgstr "Implicita enkursigilo"
+
+#: edit.cpp:450
+msgid "Static Gateway"
+msgstr "Fiksa enkursigilo"
+
+#: edit.cpp:456
+msgid ""
+"Gateway\n"
+"IP Address:"
+msgstr ""
+"Enkursigila\n"
+"IP-adreso:"
+
+#: edit.cpp:458
+msgid "Assign the Default Route to this Gateway"
+msgstr "La implicita kurso iru tra tiu enkursigilo"
+
+#: edit.cpp:557
+msgid "Edit Script"
+msgstr "Redaktu programeton"
+
+#: edit.cpp:580
+msgid "Insert"
+msgstr "Enmetu"
+
+#: general.cpp:41
+msgid "kppp Setup"
+msgstr "kppp-konfigura¼o"
+
+#: general.cpp:62
+msgid "pppd Timeout:"
+msgstr "pppd-tempolimo:"
+
+#: general.cpp:78 general.cpp:390 general.cpp:487
+msgid "Seconds"
+msgstr "sekundoj"
+
+#: general.cpp:98
+msgid "Dock into Panel on Connect"
+msgstr "Moviøu al panelo æe kontakto"
+
+#: general.cpp:104
+msgid "Automatic Redial on Disconnect"
+msgstr "Aýtomata realvoko æe malkontakto"
+
+#: general.cpp:111
+msgid "Show Clock on Caption"
+msgstr "Montru horloøon en la titolo"
+
+#: general.cpp:118
+msgid "Disconnect on X-server shutdown"
+msgstr "Malkontaktu æe fino de la X-servilo"
+
+#: general.cpp:124
+msgid "Quit on Disconnect"
+msgstr "Finu æe malkontakto"
+
+#: general.cpp:130
+msgid "Minimize Window on Connect"
+msgstr "Minimumigu fenestron æe kontakto"
+
+#: general.cpp:199
+msgid "About kppp"
+msgstr "Pri kppp"
+
+#: general.cpp:207
+msgid ""
+"\n"
+"A dialer and front-end to pppd\n"
+"\n"
+"Copyright (c) 1997\n"
+"Bernd Johannes Wuebben\n"
+"wuebben@math.cornell.edu"
+msgstr ""
+"\n"
+"Alvokilo kaj fasado por pppd\n"
+"\n"
+"Kopirajto (c) 1997\n"
+"Bernd Johannes Wuebben\n"
+"wuebben@math.cornell.edu"
+
+#: general.cpp:224
+msgid ""
+"With contributions from:\n"
+"\n"
+"Mario Weilguni\n"
+"Markus Wuebben\n"
+"Jesus Fuentes Saavedra\n"
+"Harri Porten\n"
+"Peter Silva"
+msgstr ""
+"Kun kontribuoj de:\n"
+"\n"
+"Mario Weilguni\n"
+"Markus Wuebben\n"
+"Jesus Fuentes Saavedra\n"
+"Harri Porten\n"
+"Peter Silva"
+
+#: general.cpp:248
+msgid "Serial device"
+msgstr "Seria aparato"
+
+#: general.cpp:251
+msgid "Modem Device:"
+msgstr "Modemaparato:"
+
+#: general.cpp:285
+msgid "Flow Control:"
+msgstr "Fluokontrolo:"
+
+#: general.cpp:300
+msgid "Line Termination:"
+msgstr "Liniofinsigno:"
+
+#: general.cpp:315
+msgid "Connection Speed:"
+msgstr "Rapideco"
+
+#: general.cpp:358
+msgid "Modem Lock File:"
+msgstr "Modemþlosodosiero"
+
+#: general.cpp:375
+msgid "Modem Timeout:"
+msgstr "Modema tempolimo:"
+
+#: general.cpp:460 main.cpp:503
+msgid "Modem"
+msgstr "Modemo"
+
+#: general.cpp:472
+msgid "Busy Wait:"
+msgstr "Atendo æe okupiteco:"
+
+#: general.cpp:500
+msgid "Modem Asserts CD Line."
+msgstr "Modemo enþovas CD-signalojn"
+
+#: general.cpp:516
+msgid "Modem Commands"
+msgstr "Modemokomandoj"
+
+#: general.cpp:517
+msgid "Query Modem"
+msgstr "Rekonu modemon"
+
+#: general.cpp:518
+msgid "Terminal"
+msgstr "Terminalo"
+
+#: main.cpp:327
+msgid "Connect to: "
+msgstr "Kontaktu al:"
+
+#: main.cpp:338
+msgid "Login ID:"
+msgstr "Salutnomo:"
+
+#: main.cpp:350
+msgid "Password:"
+msgstr "Pasvorto:"
+
+#: main.cpp:367
+msgid "Show Log Window"
+msgstr "Montru raportfenestron"
+
+#: main.cpp:389
+msgid "Setup"
+msgstr "Konfiguru"
+
+#: main.cpp:404
+msgid "Connect"
+msgstr "Kontaktu"
+
+#: main.cpp:472
+#, c-format
+msgid ""
+"No such Account:\n"
+"%s"
+msgstr ""
+"Ne ekzistas tiu konto:\n"
+"%s"
+
+#: main.cpp:489
+msgid "kppp Configuration"
+msgstr "kppp-konfigura¼o"
+
+#: main.cpp:501
+msgid "Accounts"
+msgstr "kontoj"
+
+#: main.cpp:502
+msgid "Device"
+msgstr "aparato"
+
+#: main.cpp:504
+msgid "PPP"
+msgstr "PPP"
+
+#: main.cpp:732
+#, c-format
+msgid ""
+"kppp can not find:\n"
+" %s\n"
+"Please install pppd properly and/or adjust\n"
+" the location of the pppd executable on the PPP tab of\n"
+"the setup dialog.\n"
+" Thank You"
+msgstr ""
+"kppp ne povis trovi:\n"
+" %s\n"
+"Bonvolu instali pppd øuste kaj/aý aløustigu\n"
+"la situon de la pppd-programo sur la PPP-paøo de\n"
+"la konfigurodialogo.\n"
+"Dankon"
+
+#: main.cpp:744
+#, c-format
+msgid ""
+"kppp can not execute:\n"
+" %s\n"
+"Please make sure thatyou have given kppp setuid permission and that\n"
+"pppd is executable."
+msgstr ""
+"kppp ne povas lanæi:\n"
+" %s\n"
+"bonvolu certigi, ke vi donis al kppp SUID-permeson kaj ke\n"
+"pppd estas rulebla."
+
+#: main.cpp:758
+#, c-format
+msgid ""
+"kppp can not find:\n"
+" %s\n"
+"Please make sure you have setup\n"
+"your modem device properly\n"
+"and/or adjust\n"
+" the location of the modem device on the modem tab of\n"
+"the setup dialog.\n"
+" Thank You"
+msgstr ""
+"kppp ne povas trovi:\n"
+" %s\n"
+"Bonvolu certigi, ke vi konfiguris\n"
+"vian modemaparaton øuste\n"
+"kaj/aý aløustigu\n"
+"la situon de la modemaparato sur lapaøo modemo\n"
+"de la konfigurodialogo.\n"
+"Dankon"
+
+#: main.cpp:778
+msgid ""
+"You have selected the authentication\n"
+"method PAP. This requires that you\n"
+"supply a username and a password!"
+msgstr ""
+"Vi elektis la identigmetodon PAP. Tio\n"
+"necesigas, ke vi donas uzantonomon kaj pasvorton!"
+
+#: main.cpp:785
+#, c-format
+msgid ""
+"Cannot create PAP authentication\n"
+"file \"%s\""
+msgstr ""
+"Ne eblis krei PAP-identig-dosieron\n"
+"\"%s\""
+
+#: main.cpp:802
+msgid ""
+"You have selected the authentication\n"
+"method CHAP. This requires that you\n"
+"supply a username and a password!"
+msgstr ""
+"Vi elektis la identigmetodon CHAP. Tio\n"
+"necesigas, ke vi donas uzantonomon kaj pasvorton!"
+
+#: main.cpp:809
+#, c-format
+msgid ""
+"Cannot create CHAP authentication\n"
+"file \"%s\""
+msgstr ""
+"Ne eblis krei CHAP-identig-dosieron\n"
+"\"%s\""
+
+#: main.cpp:821
+msgid "You have to specify a telephone number !\n"
+msgstr "Vi devas doni telefonnumeron!\n"
+
+#: main.cpp:895
+msgid "Quit kPPP?"
+msgstr "Æu fini kPPP"
+
+#: main.cpp:896
+msgid "Exiting kPPP will close your PPP Session."
+msgstr "Se vi finas kPPP ankaý finiøos via PPP-seanco."
+
+#: main.cpp:931
+msgid ""
+"Can not load the accounting\n"
+"ruleset \""
+msgstr ""
+"Ne eblis legi la kontoregularo\n"
+"\""
+
+#: modemcmds.cpp:40
+msgid "Edit Modem Commands"
+msgstr "Redaktu modemkomandojn"
+
+#: modemcmds.cpp:54
+msgid "Initialization String:"
+msgstr "Inito-komando:"
+
+#: modemcmds.cpp:61
+msgid "Init Response:"
+msgstr "Inito-respondo:"
+
+#: modemcmds.cpp:86
+msgid "Init Delay (sec/100):"
+msgstr "Initoprokrasto (s/100):"
+
+#: modemcmds.cpp:91
+msgid "Dial String:"
+msgstr "Alvokkomando:"
+
+#: modemcmds.cpp:98
+msgid "Connect Response:"
+msgstr "Kontaktrespondo:"
+
+#: modemcmds.cpp:105
+msgid "Busy Response:"
+msgstr "Okupitecrespondo:"
+
+#: modemcmds.cpp:112
+msgid "No Carrier Resonse:"
+msgstr "Respondo æe manko de tensono"
+
+#: modemcmds.cpp:119
+msgid "No Dialtone Response:"
+msgstr "Respondo æe manko de linesono:"
+
+#: modemcmds.cpp:126
+msgid "Hangup String:"
+msgstr "Malkontaktkomando:"
+
+#: modemcmds.cpp:133
+msgid "Hangup Response:"
+msgstr "Malkontaktrespondo:"
+
+#: modemcmds.cpp:140
+msgid "Answer String:"
+msgstr "Respondkomando:"
+
+#: modemcmds.cpp:147
+msgid "Ring Response:"
+msgstr "Sonorrespondo:"
+
+#: modemcmds.cpp:154
+msgid "Answer Response:"
+msgstr "Respondrespondo:"
+
+#: modemcmds.cpp:161
+msgid "Escape String:"
+msgstr "Eskap-komando:"
+
+#: modemcmds.cpp:168
+msgid "Escape Response:"
+msgstr "Eskaprespondo:"
+
+#: modemcmds.cpp:195
+msgid "Guard Time (sec/50):"
+msgstr "Gardtempo (sek./50):"
+
+#: pppdargs.cpp:33
+msgid "Customize pppd Arguments"
+msgstr "Adpatu pppd-argumentojn"
+
+#: pppdargs.cpp:41
+msgid "Argument:"
+msgstr "Argumento:"
+
+#: pppdargs.cpp:58
+msgid "Restore Defaults"
+msgstr "Implicita¼ojn"
+
+#: pppdata.cpp:52
+msgid ""
+"The application-specific config file\n"
+"could not be opened neither\n"
+"read-write nor read-only"
+msgstr ""
+"La aplika¼specifa konfigurodosiero\n"
+"ne estis malfermebla, eæ\n"
+"ne nurlege"
+
+#: modeminfo.cpp:46
+msgid "ATI Query"
+msgstr "ATI-esploro"
+
+#: modeminfo.cpp:130
+msgid "Modem Query timed out."
+msgstr "Modemesploro daýris tro longe"
+
+#: miniterm.cpp:277 modeminfo.cpp:368
+msgid "Can't open Modem"
+msgstr "Ne eblis malfermi modemon"
+
+#: modeminfo.cpp:414
+msgid "Sorry, the modem is busy"
+msgstr "Pardonu, la modemo estas okupita"
+
+#: modeminfo.cpp:533
+msgid "Modem Query Results"
+msgstr "Rezulto de modemesploro"
+
+#: pppstatdlg.cpp:70
+msgid "kppp Statistics"
+msgstr "kppp-statistiko"
+
+#: pppstatdlg.cpp:75
+msgid "Statistics"
+msgstr "Statistiko"
+
+#: pppstatdlg.cpp:148
+msgid "Local Addr:"
+msgstr "Loka adreso:"
+
+#: pppstatdlg.cpp:154
+msgid "Remote Addr:"
+msgstr "fora adreso:"
+
+#: pppstatdlg.cpp:186
+msgid "bytes in"
+msgstr "ric. bitokoj"
+
+#: pppstatdlg.cpp:187
+msgid "bytes out"
+msgstr "send. bitokoj"
+
+#: pppstatdlg.cpp:189
+msgid "packets in"
+msgstr "ric. paketoj"
+
+#: pppstatdlg.cpp:190
+msgid "packets out"
+msgstr "send. paketoj"
+
+#: pppstatdlg.cpp:192
+msgid "vjcomp in"
+msgstr "riv. vjcomp"
+
+#: pppstatdlg.cpp:193
+msgid "vjcomp out"
+msgstr "send. vjcomp"
+
+#: pppstatdlg.cpp:195
+msgid "vjunc in"
+msgstr "ric. vjunc"
+
+#: pppstatdlg.cpp:196
+msgid "vjunc out"
+msgstr "send. vjunc"
+
+#: pppstatdlg.cpp:198
+msgid "vjerr"
+msgstr "vjerr"
+
+#: pppstatdlg.cpp:199
+msgid "non-vj"
+msgstr "ne-vj"
+
+#: pppstatdlg.cpp:370 pppstatdlg.cpp:377
+msgid "unavailable"
+msgstr "neatingebla"
+
+#: miniterm.cpp:52
+msgid "Kppp Mini-Terminal"
+msgstr "Kppp-Terminaleto"
+
+#: miniterm.cpp:58
+msgid "&Reset Modem"
+msgstr "&Remetu modemon"
+
+#: miniterm.cpp:64
+msgid "&Modem"
+msgstr "&Modemo"
+
+#: miniterm.cpp:107
+msgid "Quit MiniTerm"
+msgstr "Finu Terminalton"
+
+#: miniterm.cpp:113
+msgid "Reset Modem"
+msgstr "Remetu modemon"
+
+#: miniterm.cpp:151
+msgid "Initializing Modem"
+msgstr "Intante modemon"
+
+#: miniterm.cpp:223
+msgid "Hanging up ..."
+msgstr "Malkontaktante ..."
+
+#: miniterm.cpp:243
+msgid "Resetting Modem"
+msgstr "Remetante modemon"
+
+#: miniterm.cpp:262
+msgid "Can't restore tty settings: tcsetattr()\n"
+msgstr "Ne eblis restarigi tty-konfigura¼o: tcsetattr()\n"
+
+#: miniterm.cpp:283
+msgid "tcgetattr() failed\n"
+msgstr "tcgetattr() malsukcesis\n"
+
+#: miniterm.cpp:330
+msgid "tcsetattr() failed\n"
+msgstr "tcsetattr() malsukcesis\n"
+
+#: acctselect.cpp:48
+msgid "Accounting Setup"
+msgstr "Konotkonfigura¼o"
+
+#: acctselect.cpp:56
+msgid "Enable accounting"
+msgstr "Uzu kontojn"
+
+#: acctselect.cpp:74
+msgid "Selected:"
+msgstr "Elektita:"
+
+#: acctselect.cpp:88
+msgid "Volume accounting:"
+msgstr "kontado de bitokoj:"
+
+#: acctselect.cpp:92
+msgid "No accounting"
+msgstr "neniu kontado"
+
+#: acctselect.cpp:93
+msgid "Bytes in"
+msgstr "leg. bitokoj"
+
+#: acctselect.cpp:94
+msgid "Bytes out"
+msgstr "send. bitokoj"
+
+#: acctselect.cpp:95
+msgid "Bytes in and out"
+msgstr "leg. k send. bitokoj"
+
+#: acctselect.cpp:165 acctselect.cpp:271
+msgid "Available rules"
+msgstr "Uzeblaj reguloj"
+
+#: ruleset.cpp:541
+msgid "kppp: no rulefile specified\n"
+msgstr "kppp: Vi ne indikis reguldosieron\n"
+
+#: ruleset.cpp:547
+#, c-format
+msgid "kppp: rulefile \"%s\" not found\n"
+msgstr "kppp: reguldosiero \"%s\" ne trovebla\n"
+
+#: ruleset.cpp:552
+msgid "kppp: rulefiles must have the extension \".rst\"\n"
+msgstr "kppp: reguldosiero devas havi la fina¼on \".rst\"\n"
+
+#: ruleset.cpp:561
+msgid "kppp: error parsing the ruleset\n"
+msgstr "kppp: eraro dum analizo the regularo\n"
+
+#: ruleset.cpp:566
+#, c-format
+msgid "kppp: parse error in line %d\n"
+msgstr "kppp: analizeraro en linio %d\n"
+
+#: ruleset.cpp:572
+msgid "kppp: rulefile does not contain a default rule\n"
+msgstr "kppp: reguldosiero ne enhavas implicitan regulon\n"
+
+#: ruleset.cpp:577
+msgid "kppp: rulefile does not contain a \"name=...\" line\n"
+msgstr "kppp: reguldosiero ne enhavas linion \"name=...\"\n"
+
+#: ruleset.cpp:581
+msgid "kppp: rulefile is ok\n"
+msgstr "kppp: reguldosiero estas en ordo\n"
+
+#: docking.cpp:220
+msgid "Minimize"
+msgstr "Minimumigu"
+
+#: runtests.cpp:121
+msgid ""
+"You´re not allowed to dial out with kppp.\n"
+"Contact your system administrator."
+msgstr ""
+"Vi ne havas permeson voki per kppp.\n"
+"Kontaktu vian sistemadministranton."
+
+#: runtests.cpp:137
+msgid ""
+"Cannot find the pppd-daemon!\n"
+"\n"
+"Make sure that pppd is installed and\n"
+"you have entered the correct path.\n"
+msgstr ""
+"Ne eblis trovi la pppd-demonon!\n"
+"\n"
+"Certigu, ke pppd estas instalita kaj\n"
+"ke vi entajpis la øustan padon.\n"
+
+#: runtests.cpp:149
+msgid ""
+"You do not have the permission\n"
+"to start pppd!\n"
+"\n"
+"Contact your system administrator\n"
+"and ask to get access to pppd."
+msgstr ""
+"Vi ne havas permeson lanæi\n"
+"pppd!\n"
+"\n"
+"Kontaktu vian sistemadministranton\n"
+"kaj petu lin pri aliro al pppd."
+
+#: runtests.cpp:160 runtests.cpp:175
+msgid ""
+"pppd is not properly installed!\n"
+"\n"
+"The pppd binary must be installed\n"
+"with the SUID bit set. Contact your\n"
+"system administrator."
+msgstr ""
+"pppd ne estas øuste instalita!\n"
+"\n"
+"La pppd-programo devas esti instalita\n"
+"kun SUID-bito. Kontaktu vian sistem-\n"
+"administranton."
+
+#: runtests.cpp:220
+msgid ""
+"kppp has detected a 'lock' option in /etc/ppp/options.\n"
+"\n"
+"This option has to be removed since kppp takes care of device locking "
+"itself.\n"
+"Contact your system administrator."
+msgstr ""
+"kppp eltrovis, ke þloso-opcion ('lock') en /etc/ppp/options.\n"
+"\n"
+"Tiu opcio ne plu estas uzata, æar kppp mem atentas pri þlosado.\n"
+"Kontaktu vian sistem-administranton."
+
+#: runtests.cpp:245
+msgid ""
+"/etc/resolv.conf is missing!\n"
+"\n"
+"Ask your system administrator to create\n"
+"a non-empty file that has appropriate\n"
+"read and write permissions."
+msgstr ""
+"/etc/resolv.conf mankas!\n"
+"\n"
+"Demandu vian sistemadministranton por krei\n"
+"nemalplenan dosieron kun konvenaj lego-\n"
+"kaj skribo-permesoj."
+
+
+
+
+
+
