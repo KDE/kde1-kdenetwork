@@ -519,7 +519,10 @@ bool Artdlg::actions (int action)
         }
     case PAGE_DOWN_ARTICLE:
         {
+            int l1=messwin->getKHTMLWidget()->yOffset();
             messwin->slotVertAddPage();
+            int l2=messwin->getKHTMLWidget()->yOffset();
+            if (l2==l1)actions(NEXT);
             break;
         }
     case SCROLL_DOWN_ARTICLE:
