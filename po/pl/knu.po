@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: knu \n"
-"POT-Creation-Date: 1998-10-01 13:40+0200\n"
+"POT-Creation-Date: 1998-10-09 15:54+0200\n"
 "PO-Revision-Date: 1998-06-23 07:05+0200\n"
 "Last-Translator: Jacek Stolarczyk <jacek@mer.chemia.polsl.pl>\n"
 "Content-Type: text/plain; charset=iso8859-2\n"
@@ -62,10 +62,6 @@ msgstr "Wyczy¶æ &okno komunikatów"
 #: knu.cpp:258
 msgid "P&references..."
 msgstr "&Ustawienia..."
-
-#: knu.cpp:269
-msgid "&Contents"
-msgstr "Pomo&c"
 
 #: knu.cpp:273
 #, fuzzy, c-format
@@ -210,6 +206,9 @@ msgstr "ns&lookup"
 #: FingerDlg.cpp:77
 msgid "&User:"
 msgstr "&U¿ytkownik"
+
+#~ msgid "&Contents"
+#~ msgstr "Pomo&c"
 
 #, fuzzy
 #~ msgid "Server:"

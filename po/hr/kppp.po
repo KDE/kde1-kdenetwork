@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kdenetwork\n"
 "POT-Creation-Date: 1998-08-03 21:27+0200\n"
 "PO-Revision-Date: 1998-03-15 20:00-0500\n"
-"Last-Translator: Zoran Sokol <zoran.sokol@ci.tel.hr> \n"
+"Last-Translator: Vladimir Vuksan <vuksan@veus.hr> \n"
 "Language-Team: Croatian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-2\n"
@@ -19,7 +19,7 @@ msgstr "Postava korisnièkog raèuna"
 
 #: accounts.cpp:72
 msgid "Edit..."
-msgstr "Obrada..."
+msgstr "Promijeni..."
 
 #: accounts.cpp:83
 msgid "New..."
@@ -43,7 +43,7 @@ msgstr "Pregledaj dnevnike"
 
 #: accounts.cpp:235
 msgid "Reset Total"
-msgstr "Poni¹ti total"
+msgstr "Poni¹ti ukupno"
 
 #: accounts.cpp:236
 msgid ""
@@ -372,12 +372,11 @@ msgstr ""
 "izvr¹i program:"
 
 #: edit.cpp:100
-#, fuzzy
 msgid ""
 "Execute program\n"
 "before disconnect:"
 msgstr ""
-"Nakon odspajanja\n"
+"Prije odspajanja\n"
 "izvr¹i program:"
 
 #: edit.cpp:112
@@ -1119,15 +1118,3 @@ msgstr ""
 "Zamolite administratora da stvori\n"
 "dotiènu datoteku i da je otvori za\n"
 "èitanje svim korisnicima."
-
-#~ msgid "Modem Lock File:"
-#~ msgstr "Datoteka za zakljuèavanje modema"
-
-#~ msgid "Use default script"
-#~ msgstr "Koristi podrazumijevani scenarij"
-
-#~ msgid "None"
-#~ msgstr "Nikakva"
-
-#~ msgid "Restore"
-#~ msgstr "Vrati"

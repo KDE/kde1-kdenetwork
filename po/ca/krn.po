@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: krn\n"
-"POT-Creation-Date: 1998-08-03 21:27+0200\n"
+"POT-Creation-Date: 1998-10-09 15:54+0200\n"
 "PO-Revision-Date: 1998-07-24 20:20+0100\n"
 "Last-Translator: Sebastià Pla <sastia@redestb.es>\n"
 "Language-Team: CATALAN <LL@li.org>\n"
@@ -13,27 +13,27 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8-bit\n"
 
-#: main.cpp:214 main.cpp:227 main.cpp:241 main.cpp:259 main.cpp:274
+#: main.cpp:213 main.cpp:226 main.cpp:240 main.cpp:258 main.cpp:273
 msgid "KRN-Missing Configuration info"
 msgstr "KRN-Manca la informació de configuració"
 
-#: main.cpp:215
+#: main.cpp:214
 msgid "Please enter your email adress"
 msgstr "Si us plau, entreu la vostra adreça de correu"
 
-#: main.cpp:228
+#: main.cpp:227
 msgid "Please enter your real name"
 msgstr "Si us plau, entreu el vostre nom"
 
-#: main.cpp:242
+#: main.cpp:241
 msgid "Please enter your organization's name"
 msgstr "Si us plau, entreu el nom de la vostra organització"
 
-#: main.cpp:260
+#: main.cpp:259
 msgid "Please enter your NNTP server name"
 msgstr "Si us plau, entreu el nom del vostre servidor NNTP"
 
-#: main.cpp:275
+#: main.cpp:274
 msgid "Please enter your SMTP server name"
 msgstr "Si us plau, entreu el nom del vostre servidor SMTP"
 
@@ -50,164 +50,168 @@ msgstr "S'està llegint l'article"
 msgid "Article Received"
 msgstr "S'ha rebut l'article"
 
-#: groupdlg.cpp:129
+#: groupdlg.cpp:128
 msgid "Connect to Server"
 msgstr "Connectar al servidor"
 
-#: groupdlg.cpp:130
+#: groupdlg.cpp:129
 msgid "Disconnect From Server"
 msgstr "Desconnectar del servidor"
 
-#: groupdlg.cpp:131
+#: groupdlg.cpp:130
 msgid "Get Active File"
 msgstr "Rebre el fitxer actiu"
 
-#: groupdlg.cpp:133
+#: groupdlg.cpp:132
 msgid "Post Queued Messages"
 msgstr "Anunciar la cua de missatges"
 
-#: groupdlg.cpp:135
+#: groupdlg.cpp:134
 msgid "Exit"
 msgstr "Sortir"
 
-#: groupdlg.cpp:138
+#: groupdlg.cpp:137
 msgid "KRN - Group List"
 msgstr "KRN - Llista de grups"
 
-#: groupdlg.cpp:141 groupdlg.cpp:147
+#: groupdlg.cpp:140 groupdlg.cpp:146
 msgid "Get Subjects"
 msgstr "Rebre assumptes"
 
-#: groupdlg.cpp:142 groupdlg.cpp:148
+#: groupdlg.cpp:141 groupdlg.cpp:147
 msgid "Get Articles"
 msgstr "Rebre articles"
 
-#: groupdlg.cpp:143 groupdlg.cpp:151 groupdlg.cpp:159
+#: groupdlg.cpp:142 groupdlg.cpp:150 groupdlg.cpp:158
 msgid "Catchup"
 msgstr "Catchup"
 
-#: groupdlg.cpp:149 groupdlg.cpp:157
+#: groupdlg.cpp:148 groupdlg.cpp:156
 msgid "(un)Subscribe"
 msgstr "(Des)Subscriure"
 
-#: artdlg.cpp:151 groupdlg.cpp:150
+#: artdlg.cpp:150 groupdlg.cpp:149
 msgid "Untag"
 msgstr "Desmarcar"
 
-#: artdlg.cpp:171 groupdlg.cpp:158
+#: artdlg.cpp:159 findArtDlg.cpp:65 groupdlg.cpp:155
+msgid "Find"
+msgstr ""
+
+#: artdlg.cpp:170 groupdlg.cpp:157
 msgid "(Un)Tag"
 msgstr "(Des)Marcar"
 
-#: artdlg.cpp:164 artdlg.cpp:221 groupdlg.cpp:161 groupdlg.cpp:213
+#: artdlg.cpp:163 artdlg.cpp:220 groupdlg.cpp:160 groupdlg.cpp:212
 msgid "Post New Article"
 msgstr "Anunciar article nou"
 
-#: groupdlg.cpp:162
+#: groupdlg.cpp:161
 msgid "Post All Queued Articles"
 msgstr "Anunciar tota la cua d'articles"
 
-#: groupdlg.cpp:164
+#: groupdlg.cpp:163
 msgid "&Subscribed"
 msgstr "&Subscrits"
 
-#: artdlg.cpp:205 groupdlg.cpp:165
+#: artdlg.cpp:204 groupdlg.cpp:164
 msgid "&Tagged"
 msgstr "Marca&ts"
 
-#: groupdlg.cpp:170
+#: groupdlg.cpp:169
 msgid "Identity..."
 msgstr "Identitat..."
 
-#: groupdlg.cpp:171
+#: groupdlg.cpp:170
 msgid "NNTP Options..."
 msgstr "Opcions NNTP..."
 
-#: groupdlg.cpp:172
+#: groupdlg.cpp:171
 msgid "Expire Options..."
 msgstr "Opcions de caducitat..."
 
-#: groupdlg.cpp:173
+#: groupdlg.cpp:172
 msgid "Printing Options..."
 msgstr "Opcions d'impressió"
 
-#: groupdlg.cpp:180
+#: groupdlg.cpp:179
 msgid "About Krn..."
 msgstr "Quant a Krn..."
 
-#: groupdlg.cpp:192
+#: groupdlg.cpp:191
 msgid "&Newsgroup"
 msgstr "Grup de &notícies"
 
-#: groupdlg.cpp:199
+#: groupdlg.cpp:198
 msgid "Connect to server"
 msgstr "Connectar al servidor"
 
-#: groupdlg.cpp:201
+#: groupdlg.cpp:200
 msgid "Disconnect from server"
 msgstr "Desconnectar del servidor"
 
-#: groupdlg.cpp:204
+#: groupdlg.cpp:203
 msgid "Get list of active groups"
 msgstr "Rebre la llista dels grups actius"
 
-#: groupdlg.cpp:205
+#: groupdlg.cpp:204
 msgid "Find group"
 msgstr "Trobar grup"
 
-#: groupdlg.cpp:208
+#: groupdlg.cpp:207
 #, fuzzy
 msgid "(Un)Subscribe"
 msgstr "(Des)Subscriure"
 
-#: groupdlg.cpp:211
+#: groupdlg.cpp:210
 msgid "Check for Unread Articles"
 msgstr "Comprovar els articles sense llegir"
 
-#: groupdlg.cpp:362 groupdlg.cpp:584 groupdlg.cpp:925
+#: groupdlg.cpp:361 groupdlg.cpp:583 groupdlg.cpp:924
 msgid "All Newsgroups."
 msgstr "Tots els grups de notícies."
 
-#: groupdlg.cpp:472 groupdlg.cpp:566
+#: groupdlg.cpp:471 groupdlg.cpp:565
 msgid "Subscribed Newsgroups."
 msgstr "Grups de notícies subscrits."
 
-#: groupdlg.cpp:521
+#: groupdlg.cpp:520
 msgid "Disconnected"
 msgstr "Desconnectat"
 
-#: groupdlg.cpp:528
+#: groupdlg.cpp:527
 msgid "Connecting to server"
 msgstr "S'està connectant al servidor"
 
-#: groupdlg.cpp:533
+#: groupdlg.cpp:532
 msgid "Connected to server - Posting not allowed"
 msgstr "S'ha connectat al servidor - No es permès d'anunciar"
 
-#: groupdlg.cpp:535
+#: groupdlg.cpp:534
 msgid "Connected to server - Posting allowed"
 msgstr "S'ha connectat al servidor - Es permès d'anunciar"
 
-#: groupdlg.cpp:541
+#: groupdlg.cpp:540
 msgid "Can't connect to server"
 msgstr "No es pot connectar al servidor"
 
-#: groupdlg.cpp:543
+#: groupdlg.cpp:542
 msgid "Connection to server failed"
 msgstr "Ha fallat la connexió al servidor"
 
-#: groupdlg.cpp:552
+#: groupdlg.cpp:551
 msgid "Authentication Failed"
 msgstr "Ha fallat l'autenticació"
 
-#: groupdlg.cpp:555
+#: groupdlg.cpp:554
 msgid "Connection to server failed: Authentication problem"
 msgstr "Ha fallat la connexió al servidor: problema d'autenticació"
 
-#: groupdlg.cpp:604
+#: groupdlg.cpp:603
 msgid "Krn-Question"
 msgstr "Krn-Pregunta"
 
-#: groupdlg.cpp:605
+#: groupdlg.cpp:604
 msgid ""
 "The operation you requested needs a connection to the News server\n"
 "Should I attempt one?"
@@ -215,7 +219,7 @@ msgstr ""
 "A l'operació que heu demanat li cal una connexió al servidor de notícies\n"
 "He d'intentar-ne una?"
 
-#: groupdlg.cpp:868
+#: groupdlg.cpp:867
 msgid ""
 "You don't have an active groups list.\n"
 " get it from server?"
@@ -223,221 +227,229 @@ msgstr ""
 "No teniu una llista de grups actius.\n"
 " he d'obtenir-la del servidor?"
 
-#: groupdlg.cpp:884
+#: groupdlg.cpp:883
 msgid "Listing active newsgroups"
 msgstr "S'estan llistant els grups de notícies actius"
 
-#: groupdlg.cpp:899
+#: groupdlg.cpp:898
 msgid "KRN - Find a Newsgroup"
 msgstr "KRN - Trobar un grup de notícies"
 
-#: groupdlg.cpp:900
+#: groupdlg.cpp:899
 msgid "Enter the name of the Newsgroup"
 msgstr "Entreu el nom del grup de notícies"
 
-#: groupdlg.cpp:984
+#: groupdlg.cpp:983
 msgid "Krn - Message"
 msgstr "Krn - Missatge"
 
-#: groupdlg.cpp:985
+#: groupdlg.cpp:984
 msgid "I can't find the group you want!"
 msgstr "No puc trobar el grup que voleu!"
 
-#: groupdlg.cpp:1078
+#: groupdlg.cpp:1077
 msgid "Getting messages in "
 msgstr "S'estan llegint els missatges "
 
-#: groupdlg.cpp:1091
+#: groupdlg.cpp:1090
 msgid "Getting list of messages in "
 msgstr "S'està llegint la llista de missatges "
 
-#: artdlg.cpp:144 artdlg.cpp:159
+#: artdlg.cpp:143 artdlg.cpp:158
 msgid "Download"
 msgstr "Baixar"
 
-#: artdlg.cpp:146 artdlg.cpp:268
+#: artdlg.cpp:145 artdlg.cpp:267
 msgid "Mark Read"
 msgstr "Marcar llegit"
 
-#: artdlg.cpp:147
+#: artdlg.cpp:146
 msgid "Mark Unread"
 msgstr "Marcar sense llegir"
 
-#: artdlg.cpp:150 artdlg.cpp:170
+#: artdlg.cpp:149 artdlg.cpp:169
 msgid "Decode"
 msgstr "Decodificar"
 
-#: artdlg.cpp:152 artdlg.cpp:172
+#: artdlg.cpp:151 artdlg.cpp:171
 msgid "Don't expire"
 msgstr "No caducar"
 
-#: artdlg.cpp:161
+#: artdlg.cpp:160
 msgid "Lookup in Altavista"
 msgstr "Cercar a Altavista"
 
-#: artdlg.cpp:165 artdlg.cpp:252
+#: artdlg.cpp:164 artdlg.cpp:251
 msgid "Reply by Mail"
 msgstr "Resposta per correu"
 
-#: artdlg.cpp:166
+#: artdlg.cpp:165
 msgid "Post Followup"
 msgstr "Anunciar segona carta"
 
-#: artdlg.cpp:167
+#: artdlg.cpp:166
 msgid "Post & Reply"
 msgstr "Anunciar i respondre"
 
-#: artdlg.cpp:174 artdlg.cpp:242
+#: artdlg.cpp:167 artdlg.cpp:257
+msgid "Forward"
+msgstr ""
+
+#: artdlg.cpp:173 artdlg.cpp:241
 msgid "Tagged"
 msgstr "Marcat"
 
-#: artdlg.cpp:185
+#: artdlg.cpp:184
 msgid "Show Only Unread Messages"
 msgstr "Mostrar només el missatges sense llegir"
 
-#: artdlg.cpp:187
+#: artdlg.cpp:186
 msgid "Show Only Cached Messages"
 msgstr "Mostrar només els missatges del cau"
 
-#: artdlg.cpp:189
+#: artdlg.cpp:188
 msgid "Show Locked Messages"
 msgstr "Mostrar els missatges bloquejats"
 
-#: artdlg.cpp:191
+#: artdlg.cpp:190
 msgid "Expunge"
 msgstr "Esborrar"
 
-#: artdlg.cpp:192
+#: artdlg.cpp:191
 msgid "Appearance..."
 msgstr "Aparença..."
 
-#: artdlg.cpp:193
+#: artdlg.cpp:192
 msgid "Sorting..."
 msgstr "S'està ordenant..."
 
-#: artdlg.cpp:197
+#: artdlg.cpp:196
 msgid "Edit Rules"
 msgstr "Regles d'edició"
 
-#: artdlg.cpp:198
+#: artdlg.cpp:197
 msgid "Update"
 msgstr "Actualització"
 
-#: artdlg.cpp:207
+#: artdlg.cpp:206
 msgid "&Scoring"
 msgstr "&Puntuació"
 
-#: artdlg.cpp:214
+#: artdlg.cpp:213
 msgid "Previous Message"
 msgstr "Missatge previ"
 
-#: artdlg.cpp:216
+#: artdlg.cpp:215
 msgid "Next Message"
 msgstr "Missatge següent"
 
-#: artdlg.cpp:218
+#: artdlg.cpp:217
 msgid "Find Article"
 msgstr "Trobar article"
 
-#: artdlg.cpp:223
+#: artdlg.cpp:222
 msgid "Get Article List"
 msgstr "Llegir llista d'articles"
 
-#: artdlg.cpp:225
+#: artdlg.cpp:224
 msgid "Refresh Display"
 msgstr "Refrescar la pantalla"
 
-#: artdlg.cpp:241
+#: artdlg.cpp:240
 msgid "Current"
 msgstr ""
 
-#: artdlg.cpp:243 fontsDlg.cpp:52
+#: artdlg.cpp:242 fontsDlg.cpp:52
 msgid "All"
 msgstr "Totes"
 
-#: artdlg.cpp:244
+#: artdlg.cpp:243
 #, fuzzy
 msgid "Read"
 msgstr "Llegits:"
 
-#: artdlg.cpp:245
+#: artdlg.cpp:244
 #, fuzzy
 msgid "UnRead"
 msgstr "Sense llegir:"
 
-#: artdlg.cpp:248
+#: artdlg.cpp:247
 msgid "Save Article"
 msgstr "Desar article"
 
-#: artdlg.cpp:250
+#: artdlg.cpp:249
 msgid "Print Article"
 msgstr "Imprimir article"
 
-#: artdlg.cpp:254
+#: artdlg.cpp:253
 msgid "Post a Followup"
 msgstr "Anunciar una segona carta"
 
-#: artdlg.cpp:256
+#: artdlg.cpp:255
 msgid "Post & Mail"
 msgstr "Anunciar i enviar"
 
-#: artdlg.cpp:262
+#: artdlg.cpp:261
 msgid "Tag Article"
 msgstr "Marcar article"
 
-#: artdlg.cpp:264
+#: artdlg.cpp:263
 msgid "Lock (keep in cache)"
 msgstr "Bloquejar (guardar al cau)"
 
-#: artdlg.cpp:266
+#: artdlg.cpp:265
 msgid "Decode Article"
 msgstr "Decodificar article"
 
-#: artdlg.cpp:270
+#: artdlg.cpp:269
 msgid "Mark UnRead"
 msgstr "Marcar sense llegir"
 
-#: artdlg.cpp:292 sortDlg.cpp:34
+#: artdlg.cpp:291 sortDlg.cpp:34
 msgid "Sender"
 msgstr "Remitent"
 
-#: artdlg.cpp:294 sortDlg.cpp:36
+#: artdlg.cpp:292 sortDlg.cpp:35
+msgid "Date"
+msgstr ""
+
+#: artdlg.cpp:293 sortDlg.cpp:36
 msgid "Lines"
 msgstr "Línies"
 
-#: artdlg.cpp:295 sortDlg.cpp:33
+#: artdlg.cpp:294 sortDlg.cpp:33
 msgid "Score"
 msgstr "Puntuació"
 
-#: artdlg.cpp:296 sortDlg.cpp:32
+#: artdlg.cpp:295 sortDlg.cpp:32
 msgid "Subject"
 msgstr "Assumpte"
 
-#: artdlg.cpp:462
+#: artdlg.cpp:461
 msgid "Threading..."
 msgstr "Fils..."
 
-#: artdlg.cpp:471
+#: artdlg.cpp:470
 msgid "Showing Article List"
 msgstr "S'està mostrant la llista d'articles"
 
-#: artdlg.cpp:1316
+#: artdlg.cpp:1315
 msgid "KRN - Existing File"
 msgstr "KRN - Fitxer existent"
 
-#: artdlg.cpp:1317
+#: artdlg.cpp:1316
 msgid "The File you selected already exists"
 msgstr "El fitxer que heu seleccionat ja existeix"
 
-#: artdlg.cpp:1323
+#: artdlg.cpp:1322
 msgid "OverWrite"
 msgstr "Sobreescriure"
 
-#: artdlg.cpp:1325
+#: artdlg.cpp:1324
 msgid "Append"
 msgstr "Afegir"
 
-#: artdlg.cpp:1360 artdlg.cpp:1425
+#: artdlg.cpp:1359 artdlg.cpp:1424
 msgid ""
 "From: Krn\n"
 "To: You\n"
@@ -451,7 +463,7 @@ msgstr ""
 "Error en llegir l'article.\n"
 "El servidor ha dit:\n"
 
-#: artdlg.cpp:1527
+#: artdlg.cpp:1526
 msgid "Getting Article List"
 msgstr "S'està llegint la llista d'articles"
 
@@ -575,6 +587,18 @@ msgstr "Immediat"
 msgid "Font Size:"
 msgstr "Mida de font:"
 
+#: fontsDlg.cpp:70
+msgid "Small"
+msgstr ""
+
+#: fontsDlg.cpp:71
+msgid "Normal"
+msgstr ""
+
+#: fontsDlg.cpp:72
+msgid "Large"
+msgstr ""
+
 #: fontsDlg.cpp:73
 msgid "Huge"
 msgstr "Enorme"
@@ -621,6 +645,439 @@ msgstr "Usar només una finestra"
 msgid "Split window vertically"
 msgstr "Partir la finestra verticalment"
 
+#: kmmessage.cpp:1260
+msgid "On %D, you wrote:"
+msgstr ""
+
+#: kmmessage.cpp:1261
+msgid "On %D, %F wrote:"
+msgstr ""
+
+#: kmmessage.cpp:1262
+#, fuzzy
+msgid "Forwarded Message"
+msgstr "Mostrar els missatges bloquejats"
+
+#: kmcomposewin.cpp:122
+msgid "KMail Composer"
+msgstr ""
+
+#: kmcomposewin.cpp:133
+msgid "F"
+msgstr ""
+
+#: kmcomposewin.cpp:134
+#, fuzzy
+msgid "Name"
+msgstr "Nom real"
+
+#: kmcomposewin.cpp:135
+msgid "Size"
+msgstr ""
+
+#: kmcomposewin.cpp:136
+#, fuzzy
+msgid "Encoding"
+msgstr "&Puntuació"
+
+#: kmcomposewin.cpp:137
+msgid "Type"
+msgstr ""
+
+#: kmcomposewin.cpp:344
+msgid "&From:"
+msgstr ""
+
+#: kmcomposewin.cpp:346
+msgid "&Reply to:"
+msgstr ""
+
+#: kmcomposewin.cpp:348
+msgid "&To:"
+msgstr ""
+
+#: kmcomposewin.cpp:350
+msgid "&Cc:"
+msgstr ""
+
+#: kmcomposewin.cpp:352
+msgid "&Bcc:"
+msgstr ""
+
+#: kmcomposewin.cpp:354
+#, fuzzy
+msgid "&Subject:"
+msgstr "Assumpte"
+
+#: kmcomposewin.cpp:357
+#, fuzzy
+msgid "&Newsgroups:"
+msgstr "Grup de &notícies"
+
+#: kmcomposewin.cpp:359
+#, fuzzy
+msgid "&Followup-To:"
+msgstr "Anunciar segona carta"
+
+#: kmcomposewin.cpp:431
+#, fuzzy
+msgid "&Send"
+msgstr "Remitent"
+
+#: kmcomposewin.cpp:434
+#, fuzzy
+msgid "S&end later"
+msgstr "Remitent"
+
+#: kmcomposewin.cpp:436
+msgid "S&end now"
+msgstr ""
+
+#: kmcomposewin.cpp:438
+msgid "&Insert File..."
+msgstr ""
+
+#: kmcomposewin.cpp:441
+msgid "&Addressbook..."
+msgstr ""
+
+#: kmcomposewin.cpp:446
+msgid "&New Composer..."
+msgstr ""
+
+#: kmcomposewin.cpp:449
+msgid "New Mailreader"
+msgstr ""
+
+#: kmcomposewin.cpp:469 kmcomposewin.cpp:678 kmcomposewin.cpp:1917
+#, fuzzy
+msgid "Mark all"
+msgstr "Marcar llegit"
+
+#: kmcomposewin.cpp:472 kmcomposewin.cpp:680
+msgid "Find..."
+msgstr ""
+
+#: kmcomposewin.cpp:474 kmcomposewin.cpp:681
+#, fuzzy
+msgid "Replace..."
+msgstr "Aparença..."
+
+#: kmcomposewin.cpp:481
+msgid "&Urgent"
+msgstr ""
+
+#: kmcomposewin.cpp:483
+msgid "&Confirm delivery"
+msgstr ""
+
+#: kmcomposewin.cpp:485
+msgid "&Confirm read"
+msgstr ""
+
+#: kmcomposewin.cpp:488
+msgid "&Charsets..."
+msgstr ""
+
+#: kmcomposewin.cpp:501
+msgid "&All Fields"
+msgstr ""
+
+#: kmcomposewin.cpp:503
+msgid "&From"
+msgstr ""
+
+#: kmcomposewin.cpp:504
+msgid "&Reply to"
+msgstr ""
+
+#: kmcomposewin.cpp:505
+msgid "&To"
+msgstr ""
+
+#: kmcomposewin.cpp:506
+msgid "&Cc"
+msgstr ""
+
+#: kmcomposewin.cpp:507
+msgid "&Bcc"
+msgstr ""
+
+#: kmcomposewin.cpp:508
+#, fuzzy
+msgid "&Subject"
+msgstr "Assumpte"
+
+#: kmcomposewin.cpp:510
+#, fuzzy
+msgid "&Newsgroups"
+msgstr "Grup de &notícies"
+
+#: kmcomposewin.cpp:511
+#, fuzzy
+msgid "&Followup-To"
+msgstr "Anunciar segona carta"
+
+#: kmcomposewin.cpp:516
+msgid "Append S&ignature"
+msgstr ""
+
+#: kmcomposewin.cpp:518
+msgid "&Insert File"
+msgstr ""
+
+#: kmcomposewin.cpp:520
+msgid "&Attach..."
+msgstr ""
+
+#: kmcomposewin.cpp:523
+msgid "&Save..."
+msgstr ""
+
+#: kmcomposewin.cpp:524
+msgid "Pr&operties..."
+msgstr ""
+
+#: kmcomposewin.cpp:526
+msgid "&Attach"
+msgstr ""
+
+#: kmcomposewin.cpp:551
+msgid "Compose new message"
+msgstr ""
+
+#: kmcomposewin.cpp:556
+msgid "Save message to file"
+msgstr ""
+
+#: kmcomposewin.cpp:561
+#, fuzzy
+msgid "Print message"
+msgstr "Krn - Missatge"
+
+#: kmcomposewin.cpp:570
+msgid "Cut selection"
+msgstr ""
+
+#: kmcomposewin.cpp:573
+msgid "Copy selection"
+msgstr ""
+
+#: kmcomposewin.cpp:576
+msgid "Paste clipboard contents"
+msgstr ""
+
+#: kmcomposewin.cpp:581
+#, fuzzy
+msgid "Attach file"
+msgstr "Estil dels adjunts"
+
+#: kmcomposewin.cpp:585
+msgid "Open addressbook..."
+msgstr ""
+
+#: kmcomposewin.cpp:594
+#, fuzzy
+msgid "sign message"
+msgstr "Krn - Missatge"
+
+#: kmcomposewin.cpp:599
+#, fuzzy
+msgid "encrypt message"
+msgstr "Missatge següent"
+
+#: kmcomposewin.cpp:611 kmcomposewin.cpp:627
+msgid "Column"
+msgstr ""
+
+#: kmcomposewin.cpp:612 kmcomposewin.cpp:625
+#, fuzzy
+msgid "Line"
+msgstr "Línies"
+
+#: kmcomposewin.cpp:891
+msgid "KMail Confirm"
+msgstr ""
+
+#: kmcomposewin.cpp:892
+msgid ""
+"Close and discard\n"
+"edited message?"
+msgstr ""
+
+#: kmcomposewin.cpp:937
+#, c-format
+msgid ""
+"public key for %s not found.\n"
+"This person will not be able to decrypt the message."
+msgstr ""
+
+#: kmcomposewin.cpp:958
+msgid "Error during PGP:"
+msgstr ""
+
+#: kmcomposewin.cpp:1178
+#, fuzzy
+msgid "Attach File"
+msgstr "Estil dels adjunts"
+
+#: kmcomposewin.cpp:1200
+msgid "Include File"
+msgstr ""
+
+#: kmcomposewin.cpp:1223 kmreaderwin.cpp:683
+msgid "View..."
+msgstr ""
+
+#: kmcomposewin.cpp:1224
+msgid "Save..."
+msgstr ""
+
+#: kmcomposewin.cpp:1225 kmreaderwin.cpp:686
+#, fuzzy
+msgid "Properties..."
+msgstr "S'està ordenant..."
+
+#: kmcomposewin.cpp:1229
+msgid "Attach..."
+msgstr ""
+
+#: kmcomposewin.cpp:1271 kmreaderwin.cpp:728
+#, fuzzy
+msgid "View Attachment: "
+msgstr "Estil dels adjunts"
+
+#: kmcomposewin.cpp:1442 kpgp.cpp:357
+msgid ""
+"Sorry, but this feature\n"
+"is still missing"
+msgstr ""
+
+#: kmcomposewin.cpp:1450
+msgid "unnamed"
+msgstr ""
+
+#: kmcomposewin.cpp:1465
+msgid "To:"
+msgstr ""
+
+#: kmcomposewin.cpp:1469
+#, fuzzy
+msgid "Subject:"
+msgstr "Assumpte"
+
+#: kmcomposewin.cpp:1472
+msgid "Date:"
+msgstr ""
+
+#: kmcomposewin.cpp:1549
+msgid "Choose Signature File"
+msgstr ""
+
+#: kmcomposewin.cpp:1579
+msgid "KMail: Spellcheck"
+msgstr ""
+
+#: kmcomposewin.cpp:1603
+msgid ""
+"Error starting KSpell. Please make sure you have ISpell properly configured."
+msgstr ""
+
+#: kmsender.cpp:108
+msgid ""
+"Please specify a send\n"
+"method in the settings\n"
+"and try again."
+msgstr ""
+
+#: kmsender.cpp:114
+msgid ""
+"Please set the required fields in the\n"
+"identity settings:\n"
+"user-name and email-address"
+msgstr ""
+
+#: kmsender.cpp:139
+msgid "You must specify a receiver"
+msgstr ""
+
+#: kmsender.cpp:150
+msgid "Cannot add message to outbox folder"
+msgstr ""
+
+#: kmsender.cpp:173
+msgid "Sending still in progress"
+msgstr ""
+
+#: kmsender.cpp:225
+msgid "Initiating sender process..."
+msgstr ""
+
+#: kmsender.cpp:241
+#, fuzzy
+msgid "Sending message: "
+msgstr "S'estan llegint els missatges "
+
+#: kmsender.cpp:269
+#, fuzzy
+msgid "Done sending messages."
+msgstr "S'estan llegint els missatges "
+
+#: kmsender.cpp:288
+msgid "Sending failed:"
+msgstr ""
+
+#: kmsender.cpp:441
+msgid ""
+"Please specify a mailer program\n"
+"in the settings."
+msgstr ""
+
+#: kmsender.cpp:481
+#, c-format
+msgid "Failed to execute mailer program %s"
+msgstr ""
+
+#: kmsender.cpp:569
+#, fuzzy
+msgid "connecting to server"
+msgstr "S'està connectant al servidor"
+
+#: kmsender.cpp:574
+#, c-format
+msgid ""
+"Cannot open SMTP connection to\n"
+"host %s for sending:\n"
+"%s"
+msgstr ""
+
+#: kmsender.cpp:603
+msgid "Cannot close SMTP connection."
+msgstr ""
+
+#: kmsender.cpp:653
+#, fuzzy
+msgid "transmitting message"
+msgstr "S'estan llegint els missatges "
+
+#: kmsender.cpp:687
+msgid "network error"
+msgstr ""
+
+#: kmsender.cpp:689
+#, c-format
+msgid ""
+"a SMTP error occured.\n"
+"Command: %s\n"
+"Response: %s\n"
+"Return code: %d"
+msgstr ""
+
+#: kmsender.cpp:704
+#, c-format
+msgid "Sending SMTP command: %s"
+msgstr ""
+
 #: findArtDlg.cpp:22
 msgid "KRN - Article Searcher"
 msgstr "KRN - Buscador d'articles"
@@ -633,13 +1090,288 @@ msgstr "Cercar articles amb:"
 msgid "In Field:"
 msgstr "En camp:"
 
+#: findArtDlg.cpp:53 rulesDlg.cpp:131
+msgid "Case Sensitive"
+msgstr ""
+
 #: findArtDlg.cpp:56 rulesDlg.cpp:132
 msgid "Wildcard Mode"
 msgstr "Mode comodí"
 
+#: findArtDlg.cpp:66 rulesDlg.cpp:144
+msgid "Done"
+msgstr ""
+
+#: kmidentity.cpp:162
+#, c-format
+msgid ""
+"Failed to execute signature script\n"
+"%s\n"
+"%s"
+msgstr ""
+
+#: kfileio.cpp:26 kmaddrbook.cpp:159
+msgid "File I/O Error"
+msgstr ""
+
+#: kfileio.cpp:47
+#, c-format
+msgid ""
+"The specified file does not exist:\n"
+"%s"
+msgstr ""
+
+#: kfileio.cpp:54
+#, c-format
+msgid ""
+"This is a directory and not a file:\n"
+"%s"
+msgstr ""
+
+#: kfileio.cpp:61
+#, c-format
+msgid ""
+"You do not have read permissions to the file:\n"
+"%s"
+msgstr ""
+
+#: kfileio.cpp:72 kmaddrbook.cpp:149
+#, c-format
+msgid ""
+"Could not read file:\n"
+"%s"
+msgstr ""
+
+#: kfileio.cpp:75 kmaddrbook.cpp:152
+#, c-format
+msgid ""
+"Could not open file:\n"
+"%s"
+msgstr ""
+
+#: kfileio.cpp:78
+#, c-format
+msgid ""
+"Error while reading file:\n"
+"%s"
+msgstr ""
+
+#: kfileio.cpp:95
+#, c-format
+msgid "Could only read %u bytes of %u."
+msgstr ""
+
+#: kfileio.cpp:124
+#, c-format
+msgid ""
+"File %s exists.\n"
+"Do you want to replace it ?"
+msgstr ""
+
+#: kfileio.cpp:144
+#, c-format
+msgid ""
+"Failed to make a backup copy of %s.\n"
+"Continue anyway ?"
+msgstr ""
+
+#: kfileio.cpp:156 kfileio.cpp:174
+#, c-format
+msgid ""
+"Could not write to file:\n"
+"%s"
+msgstr ""
+
+#: kfileio.cpp:159
+#, c-format
+msgid ""
+"Could not open file for writing:\n"
+"%s"
+msgstr ""
+
+#: kfileio.cpp:163 kmaddrbook.cpp:155
+#, c-format
+msgid ""
+"Error while writing file:\n"
+"%s"
+msgstr ""
+
+#: kfileio.cpp:180
+#, c-format
+msgid "Could only write %d bytes of %d."
+msgstr ""
+
+#: kmmsgpartdlg.cpp:41
+msgid "Message Part Properties"
+msgstr ""
+
+#: kmmsgpartdlg.cpp:62
+msgid "Name:"
+msgstr ""
+
+#: kmmsgpartdlg.cpp:73
+msgid "Description:"
+msgstr ""
+
+#: kmmsgpartdlg.cpp:83
+msgid "Encoding:"
+msgstr ""
+
+#: kmmsgpartdlg.cpp:89
+msgid "none (8bit)"
+msgstr ""
+
+#: kmmsgpartdlg.cpp:90
+msgid "base 64"
+msgstr ""
+
+#: kmmsgpartdlg.cpp:91
+msgid "quoted printable"
+msgstr ""
+
+#: kmreaderwin.cpp:309 kmreaderwin.cpp:322 kmreaderwin.cpp:341
+#: kmreaderwin.cpp:362
+msgid "Cc: "
+msgstr ""
+
+#: kmreaderwin.cpp:317 kmreaderwin.cpp:336 kmreaderwin.cpp:357
+msgid "From: "
+msgstr ""
+
+#: kmreaderwin.cpp:319 kmreaderwin.cpp:338 kmreaderwin.cpp:359
+msgid "To: "
+msgstr ""
+
+#: kmreaderwin.cpp:326 kmreaderwin.cpp:347 kmreaderwin.cpp:372
+msgid "References: "
+msgstr ""
+
+#: kmreaderwin.cpp:343 kmreaderwin.cpp:356
+msgid "Date: "
+msgstr ""
+
+#: kmreaderwin.cpp:365
+msgid "Bcc: "
+msgstr ""
+
+#: kmreaderwin.cpp:368
+#, fuzzy
+msgid "Reply to: "
+msgstr "Resposta per correu"
+
+#: kmreaderwin.cpp:375
+msgid "Groups: "
+msgstr ""
+
+#: kmreaderwin.cpp:412
+msgid "Encrypted message"
+msgstr ""
+
+#: kmreaderwin.cpp:418
+msgid "Cannot decrypt message:"
+msgstr ""
+
+#: kmreaderwin.cpp:436
+msgid "Message was signed by"
+msgstr ""
+
+#: kmreaderwin.cpp:437
+msgid "Warning: Bad signature from"
+msgstr ""
+
+#: kmreaderwin.cpp:647
+#, fuzzy
+msgid "Attachment: "
+msgstr "Estil dels adjunts"
+
+#: kmreaderwin.cpp:759
+msgid "Could not create temporary file"
+msgstr ""
+
+#: kmreaderwin.cpp:780
+#, c-format
+msgid "Could not save temporary file %s"
+msgstr ""
+
+#: kmreaderwin.cpp:809
+#, fuzzy
+msgid "Could not save file"
+msgstr "Ha fallat la connexió al servidor"
+
+#: kpgp.cpp:117
+msgid ""
+"Couldn't find PGP executable.\n"
+"Please check your PATH is set correctly."
+msgstr ""
+
+#: kpgp.cpp:163
+msgid ""
+"Could not find PGP executable.\n"
+"Please check your PATH is set correctly."
+msgstr ""
+
+#: kpgp.cpp:173
+msgid "The pass phrase is missing."
+msgstr ""
+
+#: kpgp.cpp:445
+msgid "Message signed by"
+msgstr ""
+
+#: kpgp.cpp:449
+msgid "Message has a bad signature from"
+msgstr ""
+
+#: kpgp.cpp:457
+msgid "End PGP signed message"
+msgstr ""
+
+#: kpgp.cpp:622
+msgid "Bad pass Phrase; couldn't decrypt"
+msgstr ""
+
+#: kpgp.cpp:708
+msgid "Bad pass Phrase; couldn't sign"
+msgstr ""
+
+#: kpgp.cpp:765
+#, fuzzy
+msgid ""
+"Please enter your\n"
+"PGP passphrase"
+msgstr "Si us plau, entreu el vostre nom"
+
+#: kpgp.cpp:792
+msgid "PGP Security Check"
+msgstr ""
+
 #: krnsender.cpp:59
 msgid "This server is read onlyyou can't post here!"
 msgstr "Aquest servidor és només de lectura, no podeu anunciar aquí!"
+
+#: kmaddrbookdlg.cpp:20
+msgid "Addressbook"
+msgstr ""
+
+#: kmaddrbookdlg.cpp:95
+msgid "Addressbook Manager"
+msgstr ""
+
+#: kmaddrbookdlg.cpp:178
+msgid "KMail error"
+msgstr ""
+
+#: kmaddrbookdlg.cpp:179
+msgid "Storing addressbook failed"
+msgstr ""
+
+#: kmaddrbook.cpp:25
+msgid "KMail Error"
+msgstr ""
+
+#: kmaddrbook.cpp:26
+msgid "Storing the addressbook failed!\n"
+msgstr ""
 
 #: expireDlg.cpp:22 expireDlg.cpp:27
 msgid "KRN - Expire Settings"
@@ -742,6 +1474,10 @@ msgstr "Desar com"
 msgid "Match Articles With:"
 msgstr "Aparellar articles amb:"
 
+#: rulesDlg.cpp:124
+msgid "Weight:"
+msgstr ""
+
 #: rulesDlg.cpp:126
 msgid "Negative"
 msgstr "Negatiu"
@@ -754,6 +1490,10 @@ msgstr "Nom de regla:"
 msgid "KRN - Header Sorting"
 msgstr "KRN - Ordenació de capçaleres"
 
+#: sortDlg.cpp:37
+msgid "None"
+msgstr ""
+
 #: sortDlg.cpp:39
 msgid "Sort by:"
 msgstr "Ordenar per:"
@@ -761,3 +1501,33 @@ msgstr "Ordenar per:"
 #: sortDlg.cpp:56
 msgid "Use Threading"
 msgstr "Usar fils"
+
+#: charsetsDlg.cpp:27
+#, fuzzy
+msgid "KRN - Charset Settings"
+msgstr "KRN - Arranjament d'impressió"
+
+#: charsetsDlg.cpp:29
+#, fuzzy
+msgid "KMail - Charset Settings"
+msgstr "KRN - Arranjament d'impressió"
+
+#: charsetsDlg.cpp:39
+msgid "Message charset"
+msgstr ""
+
+#: charsetsDlg.cpp:57
+msgid "Composer charset"
+msgstr ""
+
+#: charsetsDlg.cpp:75
+msgid "Set as &default"
+msgstr ""
+
+#: charsetsDlg.cpp:80
+msgid "&7 bit is ASCII"
+msgstr ""
+
+#: charsetsDlg.cpp:84
+msgid "&Qute unknonw characters"
+msgstr ""

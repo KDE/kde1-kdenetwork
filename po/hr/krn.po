@@ -1,39 +1,39 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Kppp prijevod
+# Copyright (C) 1998 Free Software Foundation, Inc.
+# Zoran Sokol <zoran.sokol@ci.tel.hr>, 1998
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-08-03 21:27+0200\n"
+"Project-Id-Version: kdenetwork\n"
+"POT-Creation-Date: 1998-10-09 15:54+0200\n"
 "PO-Revision-Date: 1998-03-15 20:00-0500\n"
-"Last-Translator: Zoran Sokol <zoran.sokol@ci.tel.hr> \n"
+"Last-Translator: Vladimir Vuksan <vuksan@veus.hr> \n"
 "Language-Team: Croatian\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
-"Content-Transfer-Encoding: iso-8859-2\n"
+"Content-Type: text/plain; charset=iso-8859-2\n"
+"Content-Transfer-Encoding: 8bit\n"
 
-#: main.cpp:214 main.cpp:227 main.cpp:241 main.cpp:259 main.cpp:274
+#: main.cpp:213 main.cpp:226 main.cpp:240 main.cpp:258 main.cpp:273
 msgid "KRN-Missing Configuration info"
 msgstr "KRN-Nedostaje info o postavi"
 
-#: main.cpp:215
+#: main.cpp:214
 msgid "Please enter your email adress"
 msgstr "Molim unesite va¹u adresu elektronske po¹te"
 
-#: main.cpp:228
+#: main.cpp:227
 msgid "Please enter your real name"
 msgstr "Molim unesite va¹e stvarno ime"
 
-#: main.cpp:242
+#: main.cpp:241
 msgid "Please enter your organization's name"
 msgstr "Molim unesite ime va¹e organizacije"
 
-#: main.cpp:260
+#: main.cpp:259
 msgid "Please enter your NNTP server name"
 msgstr "Molim unesite ime va¹eg NNTP poslu¾itelja"
 
-#: main.cpp:275
+#: main.cpp:274
 msgid "Please enter your SMTP server name"
 msgstr "Molim unesite ime va¹eg SMPT poslu¾itelja"
 
@@ -50,164 +50,167 @@ msgstr "Skidam èlanak"
 msgid "Article Received"
 msgstr "Èlanak Primljen"
 
-#: groupdlg.cpp:129
+#: groupdlg.cpp:128
 msgid "Connect to Server"
 msgstr "Spoji s poslu¾iteljem"
 
-#: groupdlg.cpp:130
+#: groupdlg.cpp:129
 msgid "Disconnect From Server"
 msgstr "Odspoji od poslu¾itelja"
 
-#: groupdlg.cpp:131
+#: groupdlg.cpp:130
 msgid "Get Active File"
 msgstr "Dohvati aktivnu datoteku"
 
-#: groupdlg.cpp:133
+#: groupdlg.cpp:132
 msgid "Post Queued Messages"
 msgstr "Oglasi poruke iz reda"
 
-#: groupdlg.cpp:135
+#: groupdlg.cpp:134
 msgid "Exit"
 msgstr "Izlaz"
 
-#: groupdlg.cpp:138
+#: groupdlg.cpp:137
 msgid "KRN - Group List"
 msgstr "KRN - lista grupa"
 
-#: groupdlg.cpp:141 groupdlg.cpp:147
+#: groupdlg.cpp:140 groupdlg.cpp:146
 msgid "Get Subjects"
 msgstr "Dohvati subjekte"
 
-#: groupdlg.cpp:142 groupdlg.cpp:148
+#: groupdlg.cpp:141 groupdlg.cpp:147
 msgid "Get Articles"
 msgstr "Dohvati èlanke"
 
-#: groupdlg.cpp:143 groupdlg.cpp:151 groupdlg.cpp:159
+#: groupdlg.cpp:142 groupdlg.cpp:150 groupdlg.cpp:158
 msgid "Catchup"
 msgstr "Izjednaèi"
 
-#: groupdlg.cpp:149 groupdlg.cpp:157
+#: groupdlg.cpp:148 groupdlg.cpp:156
 msgid "(un)Subscribe"
 msgstr "(od)Pretplati"
 
-#: artdlg.cpp:151 groupdlg.cpp:150
+#: artdlg.cpp:150 groupdlg.cpp:149
 msgid "Untag"
 msgstr "Odznaèi"
 
-#: artdlg.cpp:171 groupdlg.cpp:158
+#: artdlg.cpp:159 findArtDlg.cpp:65 groupdlg.cpp:155
+msgid "Find"
+msgstr ""
+
+#: artdlg.cpp:170 groupdlg.cpp:157
 msgid "(Un)Tag"
 msgstr "O(d)znaèi"
 
-#: artdlg.cpp:164 artdlg.cpp:221 groupdlg.cpp:161 groupdlg.cpp:213
+#: artdlg.cpp:163 artdlg.cpp:220 groupdlg.cpp:160 groupdlg.cpp:212
 msgid "Post New Article"
 msgstr "Oglasi novi èlanak"
 
-#: groupdlg.cpp:162
+#: groupdlg.cpp:161
 msgid "Post All Queued Articles"
 msgstr "Oglasi sve èlanke iz reda"
 
-#: groupdlg.cpp:164
+#: groupdlg.cpp:163
 msgid "&Subscribed"
 msgstr "&Pretplaæen"
 
-#: artdlg.cpp:205 groupdlg.cpp:165
+#: artdlg.cpp:204 groupdlg.cpp:164
 msgid "&Tagged"
 msgstr "&Oznaèen"
 
-#: groupdlg.cpp:170
+#: groupdlg.cpp:169
 msgid "Identity..."
 msgstr "Identitet..."
 
-#: groupdlg.cpp:171
+#: groupdlg.cpp:170
 msgid "NNTP Options..."
 msgstr "NNTP odrednice..."
 
-#: groupdlg.cpp:172
+#: groupdlg.cpp:171
 msgid "Expire Options..."
 msgstr "Odrednice o zastari"
 
-#: groupdlg.cpp:173
+#: groupdlg.cpp:172
 msgid "Printing Options..."
 msgstr "Odrednice ispisa..."
 
-#: groupdlg.cpp:180
+#: groupdlg.cpp:179
 msgid "About Krn..."
 msgstr "O Krn..."
 
-#: groupdlg.cpp:192
+#: groupdlg.cpp:191
 msgid "&Newsgroup"
 msgstr "&Novinska grupa"
 
-#: groupdlg.cpp:199
+#: groupdlg.cpp:198
 msgid "Connect to server"
 msgstr "Spoji s poslu¾iteljem"
 
-#: groupdlg.cpp:201
+#: groupdlg.cpp:200
 msgid "Disconnect from server"
 msgstr "Odspoji od poslu¾itelja"
 
-#: groupdlg.cpp:204
+#: groupdlg.cpp:203
 msgid "Get list of active groups"
 msgstr "Dohvati popis aktivnih grupa"
 
-#: groupdlg.cpp:205
+#: groupdlg.cpp:204
 msgid "Find group"
 msgstr "Pronaði grupu"
 
-#: groupdlg.cpp:208
-#, fuzzy
+#: groupdlg.cpp:207
 msgid "(Un)Subscribe"
 msgstr "(od)Pretplati"
 
-#: groupdlg.cpp:211
+#: groupdlg.cpp:210
 msgid "Check for Unread Articles"
 msgstr "Potra¾i neproèitane èlanke "
 
-#: groupdlg.cpp:362 groupdlg.cpp:584 groupdlg.cpp:925
+#: groupdlg.cpp:361 groupdlg.cpp:583 groupdlg.cpp:924
 msgid "All Newsgroups."
 msgstr "Sve novinske grupe"
 
-#: groupdlg.cpp:472 groupdlg.cpp:566
+#: groupdlg.cpp:471 groupdlg.cpp:565
 msgid "Subscribed Newsgroups."
 msgstr "Pretplaæene novinske grupe"
 
-#: groupdlg.cpp:521
+#: groupdlg.cpp:520
 msgid "Disconnected"
 msgstr "Odspojen"
 
-#: groupdlg.cpp:528
+#: groupdlg.cpp:527
 msgid "Connecting to server"
 msgstr "Spajanje s poslu¾iteljem"
 
-#: groupdlg.cpp:533
+#: groupdlg.cpp:532
 msgid "Connected to server - Posting not allowed"
 msgstr "Spojen s poslu¾iteljem - ogla¹avanje nije dozvoljeno"
 
-#: groupdlg.cpp:535
+#: groupdlg.cpp:534
 msgid "Connected to server - Posting allowed"
 msgstr "Spojen s poslu¾iteljem - ogla¹avanje dozvoljeno"
 
-#: groupdlg.cpp:541
+#: groupdlg.cpp:540
 msgid "Can't connect to server"
 msgstr "Ne mogu spojiti se s poslu¾iteljem"
 
-#: groupdlg.cpp:543
+#: groupdlg.cpp:542
 msgid "Connection to server failed"
 msgstr "Spajanje s poslu¾iteljem nije uspjelo"
 
-#: groupdlg.cpp:552
+#: groupdlg.cpp:551
 msgid "Authentication Failed"
 msgstr "Provjera neuspje¹na"
 
-#: groupdlg.cpp:555
+#: groupdlg.cpp:554
 msgid "Connection to server failed: Authentication problem"
 msgstr "Spajanje s poslu¾iteljem neuspje¹no: problem s provjerom"
 
-#: groupdlg.cpp:604
+#: groupdlg.cpp:603
 msgid "Krn-Question"
 msgstr "Krn-pitanje"
 
-#: groupdlg.cpp:605
+#: groupdlg.cpp:604
 msgid ""
 "The operation you requested needs a connection to the News server\n"
 "Should I attempt one?"
@@ -215,7 +218,7 @@ msgstr ""
 "Zatra¾ena operacija zahtijeva vezu sa novinskim poslu¾iteljem\n"
 "Da ju poku¹am ostvariti?"
 
-#: groupdlg.cpp:868
+#: groupdlg.cpp:867
 msgid ""
 "You don't have an active groups list.\n"
 " get it from server?"
@@ -223,221 +226,227 @@ msgstr ""
 "Nemate aktivnih grupa u popisu.\n"
 " dohvatiti ih s poslu¾itelja?"
 
-#: groupdlg.cpp:884
+#: groupdlg.cpp:883
 msgid "Listing active newsgroups"
 msgstr "Ispisujem aktivne novinske grupe"
 
-#: groupdlg.cpp:899
+#: groupdlg.cpp:898
 msgid "KRN - Find a Newsgroup"
 msgstr "KRN - Pronaði novinsku grupu"
 
-#: groupdlg.cpp:900
+#: groupdlg.cpp:899
 msgid "Enter the name of the Newsgroup"
 msgstr "Unesi ime novinske grupe"
 
-#: groupdlg.cpp:984
+#: groupdlg.cpp:983
 msgid "Krn - Message"
 msgstr "Krn - poruka"
 
-#: groupdlg.cpp:985
+#: groupdlg.cpp:984
 msgid "I can't find the group you want!"
 msgstr "Ne mogu pronaæi grupu koju ¾elite!"
 
-#: groupdlg.cpp:1078
+#: groupdlg.cpp:1077
 msgid "Getting messages in "
 msgstr "Dohvaæam poruke u "
 
-#: groupdlg.cpp:1091
+#: groupdlg.cpp:1090
 msgid "Getting list of messages in "
 msgstr "Dohvaæam popis poruka u "
 
-#: artdlg.cpp:144 artdlg.cpp:159
+#: artdlg.cpp:143 artdlg.cpp:158
 msgid "Download"
 msgstr "Preuzimanje datoteka"
 
-#: artdlg.cpp:146 artdlg.cpp:268
+#: artdlg.cpp:145 artdlg.cpp:267
 msgid "Mark Read"
 msgstr "Oznaèi proèitanim"
 
-#: artdlg.cpp:147
+#: artdlg.cpp:146
 msgid "Mark Unread"
 msgstr "Oznaèi neproèitanim"
 
-#: artdlg.cpp:150 artdlg.cpp:170
+#: artdlg.cpp:149 artdlg.cpp:169
 msgid "Decode"
 msgstr "Dekodiraj"
 
-#: artdlg.cpp:152 artdlg.cpp:172
+#: artdlg.cpp:151 artdlg.cpp:171
 msgid "Don't expire"
 msgstr "Ne istièe"
 
-#: artdlg.cpp:161
+#: artdlg.cpp:160
 msgid "Lookup in Altavista"
 msgstr "Tra¾ite na Altavisti"
 
-#: artdlg.cpp:165 artdlg.cpp:252
+#: artdlg.cpp:164 artdlg.cpp:251
 msgid "Reply by Mail"
 msgstr "Odgovori po¹tom"
 
-#: artdlg.cpp:166
+#: artdlg.cpp:165
 msgid "Post Followup"
 msgstr "Oglasi nastavak"
 
-#: artdlg.cpp:167
+#: artdlg.cpp:166
 msgid "Post & Reply"
 msgstr "Oglasi i Odgovori"
 
-#: artdlg.cpp:174 artdlg.cpp:242
+#: artdlg.cpp:167 artdlg.cpp:257
+msgid "Forward"
+msgstr ""
+
+#: artdlg.cpp:173 artdlg.cpp:241
 msgid "Tagged"
 msgstr "Oznaèen"
 
-#: artdlg.cpp:185
+#: artdlg.cpp:184
 msgid "Show Only Unread Messages"
 msgstr "Prika¾i samo neproèitane poruke"
 
-#: artdlg.cpp:187
+#: artdlg.cpp:186
 msgid "Show Only Cached Messages"
 msgstr "Prika¾i samo poruke pri ruci"
 
-#: artdlg.cpp:189
+#: artdlg.cpp:188
 msgid "Show Locked Messages"
 msgstr "Prika¾i zakljuèane poruke"
 
-#: artdlg.cpp:191
+#: artdlg.cpp:190
 msgid "Expunge"
 msgstr "Obri¹i"
 
-#: artdlg.cpp:192
+#: artdlg.cpp:191
 msgid "Appearance..."
 msgstr "Pojava..."
 
-#: artdlg.cpp:193
+#: artdlg.cpp:192
 msgid "Sorting..."
 msgstr "Sortiram..."
 
-#: artdlg.cpp:197
+#: artdlg.cpp:196
 msgid "Edit Rules"
 msgstr "Uredi Pravila"
 
-#: artdlg.cpp:198
+#: artdlg.cpp:197
 msgid "Update"
 msgstr "Osvje¾i"
 
-#: artdlg.cpp:207
+#: artdlg.cpp:206
 msgid "&Scoring"
 msgstr "&Bodovanje"
 
-#: artdlg.cpp:214
+#: artdlg.cpp:213
 msgid "Previous Message"
 msgstr "Prethodna poruka"
 
-#: artdlg.cpp:216
+#: artdlg.cpp:215
 msgid "Next Message"
 msgstr "Slijedeæa poruka"
 
-#: artdlg.cpp:218
+#: artdlg.cpp:217
 msgid "Find Article"
 msgstr "Pronaði èlanak"
 
-#: artdlg.cpp:223
+#: artdlg.cpp:222
 msgid "Get Article List"
 msgstr "Dohvati popis èlanaka"
 
-#: artdlg.cpp:225
+#: artdlg.cpp:224
 msgid "Refresh Display"
 msgstr "Osvje¾i Prikaz"
 
-#: artdlg.cpp:241
+#: artdlg.cpp:240
 msgid "Current"
-msgstr ""
+msgstr "Tekuæi"
 
-#: artdlg.cpp:243 fontsDlg.cpp:52
+#: artdlg.cpp:242 fontsDlg.cpp:52
 msgid "All"
 msgstr "Cijelo"
 
-#: artdlg.cpp:244
-#, fuzzy
+#: artdlg.cpp:243
 msgid "Read"
-msgstr "Proèitane:"
+msgstr "Proèitane"
 
-#: artdlg.cpp:245
-#, fuzzy
+#: artdlg.cpp:244
 msgid "UnRead"
-msgstr "Neproèitane:"
+msgstr "Neproèitane"
 
-#: artdlg.cpp:248
+#: artdlg.cpp:247
 msgid "Save Article"
 msgstr "Spremi èlanak"
 
-#: artdlg.cpp:250
+#: artdlg.cpp:249
 msgid "Print Article"
 msgstr "Ispi¹i èlanak"
 
-#: artdlg.cpp:254
+#: artdlg.cpp:253
 msgid "Post a Followup"
 msgstr "Oglasi nastavak"
 
-#: artdlg.cpp:256
+#: artdlg.cpp:255
 msgid "Post & Mail"
 msgstr "Oglasi i po¹alji po¹tom"
 
-#: artdlg.cpp:262
+#: artdlg.cpp:261
 msgid "Tag Article"
 msgstr "Oznaèi èlanak"
 
-#: artdlg.cpp:264
+#: artdlg.cpp:263
 msgid "Lock (keep in cache)"
 msgstr "Zakljuèaj (dr¾i pri ruci)"
 
-#: artdlg.cpp:266
+#: artdlg.cpp:265
 msgid "Decode Article"
 msgstr "Dekodiraj èlanak"
 
-#: artdlg.cpp:270
+#: artdlg.cpp:269
 msgid "Mark UnRead"
 msgstr "Oznaèi neproèitanim"
 
-#: artdlg.cpp:292 sortDlg.cpp:34
+#: artdlg.cpp:291 sortDlg.cpp:34
 msgid "Sender"
 msgstr "Po¹iljatelj"
 
-#: artdlg.cpp:294 sortDlg.cpp:36
+#: artdlg.cpp:292 sortDlg.cpp:35
+msgid "Date"
+msgstr ""
+
+#: artdlg.cpp:293 sortDlg.cpp:36
 msgid "Lines"
 msgstr "Linija"
 
-#: artdlg.cpp:295 sortDlg.cpp:33
+#: artdlg.cpp:294 sortDlg.cpp:33
 msgid "Score"
 msgstr "Rezultat"
 
-#: artdlg.cpp:296 sortDlg.cpp:32
+#: artdlg.cpp:295 sortDlg.cpp:32
 msgid "Subject"
 msgstr "Tema"
 
-#: artdlg.cpp:462
+#: artdlg.cpp:461
 msgid "Threading..."
 msgstr "Stavljanje u nit..."
 
-#: artdlg.cpp:471
+#: artdlg.cpp:470
 msgid "Showing Article List"
 msgstr "Prikazivanje popisa èlanaka"
 
-#: artdlg.cpp:1316
+#: artdlg.cpp:1315
 msgid "KRN - Existing File"
 msgstr "KRN - Postojeæa datoteka"
 
-#: artdlg.cpp:1317
+#: artdlg.cpp:1316
 msgid "The File you selected already exists"
 msgstr "Datoteka koju ste odabrali veæ postoji"
 
-#: artdlg.cpp:1323
+#: artdlg.cpp:1322
 msgid "OverWrite"
 msgstr "Zapi¹i preko"
 
-#: artdlg.cpp:1325
+#: artdlg.cpp:1324
 msgid "Append"
 msgstr "Dodaj na kraj"
 
-#: artdlg.cpp:1360 artdlg.cpp:1425
+#: artdlg.cpp:1359 artdlg.cpp:1424
 msgid ""
 "From: Krn\n"
 "To: You\n"
@@ -451,7 +460,7 @@ msgstr ""
 "Gre¹ka kod dohvaæanja èlanka.\n"
 "Poslu¾itelj je rekao:\n"
 
-#: artdlg.cpp:1527
+#: artdlg.cpp:1526
 msgid "Getting Article List"
 msgstr "Dohvaæanje popisa èlanaka"
 
@@ -575,6 +584,18 @@ msgstr "Ugraðeno"
 msgid "Font Size:"
 msgstr "Velièina pisma:"
 
+#: fontsDlg.cpp:70
+msgid "Small"
+msgstr "Malo"
+
+#: fontsDlg.cpp:71
+msgid "Normal"
+msgstr ""
+
+#: fontsDlg.cpp:72
+msgid "Large"
+msgstr "Veliko"
+
 #: fontsDlg.cpp:73
 msgid "Huge"
 msgstr "Jako veliko"
@@ -584,18 +605,16 @@ msgid "Standard Font"
 msgstr "Standardno pismo"
 
 #: fontsDlg.cpp:84
-#, fuzzy
 msgid "Standard Font Test"
-msgstr "Standardno pismo"
+msgstr "Testiraj standardno pismo"
 
 #: fontsDlg.cpp:86
 msgid "Fixed Font"
 msgstr "Pismo stalne ¹irine"
 
 #: fontsDlg.cpp:91
-#, fuzzy
 msgid "Fixed Font Test"
-msgstr "Pismo stalne ¹irine"
+msgstr "Testiraj pismo stalne ¹irine"
 
 #: fontsDlg.cpp:94
 msgid "Background Color"
@@ -621,6 +640,439 @@ msgstr "Koristi samo jedan prozor"
 msgid "Split window vertically"
 msgstr "Podijeli prozor uspravno"
 
+#: kmmessage.cpp:1260
+msgid "On %D, you wrote:"
+msgstr ""
+
+#: kmmessage.cpp:1261
+msgid "On %D, %F wrote:"
+msgstr ""
+
+#: kmmessage.cpp:1262
+#, fuzzy
+msgid "Forwarded Message"
+msgstr "Prika¾i zakljuèane poruke"
+
+#: kmcomposewin.cpp:122
+msgid "KMail Composer"
+msgstr ""
+
+#: kmcomposewin.cpp:133
+msgid "F"
+msgstr ""
+
+#: kmcomposewin.cpp:134
+#, fuzzy
+msgid "Name"
+msgstr "Stvarno ime"
+
+#: kmcomposewin.cpp:135
+msgid "Size"
+msgstr ""
+
+#: kmcomposewin.cpp:136
+#, fuzzy
+msgid "Encoding"
+msgstr "&Bodovanje"
+
+#: kmcomposewin.cpp:137
+msgid "Type"
+msgstr ""
+
+#: kmcomposewin.cpp:344
+msgid "&From:"
+msgstr ""
+
+#: kmcomposewin.cpp:346
+msgid "&Reply to:"
+msgstr ""
+
+#: kmcomposewin.cpp:348
+msgid "&To:"
+msgstr ""
+
+#: kmcomposewin.cpp:350
+msgid "&Cc:"
+msgstr ""
+
+#: kmcomposewin.cpp:352
+msgid "&Bcc:"
+msgstr ""
+
+#: kmcomposewin.cpp:354
+#, fuzzy
+msgid "&Subject:"
+msgstr "Tema"
+
+#: kmcomposewin.cpp:357
+#, fuzzy
+msgid "&Newsgroups:"
+msgstr "&Novinska grupa"
+
+#: kmcomposewin.cpp:359
+#, fuzzy
+msgid "&Followup-To:"
+msgstr "Oglasi nastavak"
+
+#: kmcomposewin.cpp:431
+#, fuzzy
+msgid "&Send"
+msgstr "Po¹iljatelj"
+
+#: kmcomposewin.cpp:434
+#, fuzzy
+msgid "S&end later"
+msgstr "Po¹iljatelj"
+
+#: kmcomposewin.cpp:436
+msgid "S&end now"
+msgstr ""
+
+#: kmcomposewin.cpp:438
+msgid "&Insert File..."
+msgstr ""
+
+#: kmcomposewin.cpp:441
+msgid "&Addressbook..."
+msgstr ""
+
+#: kmcomposewin.cpp:446
+msgid "&New Composer..."
+msgstr ""
+
+#: kmcomposewin.cpp:449
+msgid "New Mailreader"
+msgstr ""
+
+#: kmcomposewin.cpp:469 kmcomposewin.cpp:678 kmcomposewin.cpp:1917
+#, fuzzy
+msgid "Mark all"
+msgstr "Oznaèi proèitanim"
+
+#: kmcomposewin.cpp:472 kmcomposewin.cpp:680
+msgid "Find..."
+msgstr ""
+
+#: kmcomposewin.cpp:474 kmcomposewin.cpp:681
+#, fuzzy
+msgid "Replace..."
+msgstr "Pojava..."
+
+#: kmcomposewin.cpp:481
+msgid "&Urgent"
+msgstr ""
+
+#: kmcomposewin.cpp:483
+msgid "&Confirm delivery"
+msgstr ""
+
+#: kmcomposewin.cpp:485
+msgid "&Confirm read"
+msgstr ""
+
+#: kmcomposewin.cpp:488
+msgid "&Charsets..."
+msgstr ""
+
+#: kmcomposewin.cpp:501
+msgid "&All Fields"
+msgstr ""
+
+#: kmcomposewin.cpp:503
+msgid "&From"
+msgstr ""
+
+#: kmcomposewin.cpp:504
+msgid "&Reply to"
+msgstr ""
+
+#: kmcomposewin.cpp:505
+msgid "&To"
+msgstr ""
+
+#: kmcomposewin.cpp:506
+msgid "&Cc"
+msgstr ""
+
+#: kmcomposewin.cpp:507
+msgid "&Bcc"
+msgstr ""
+
+#: kmcomposewin.cpp:508
+#, fuzzy
+msgid "&Subject"
+msgstr "Tema"
+
+#: kmcomposewin.cpp:510
+#, fuzzy
+msgid "&Newsgroups"
+msgstr "&Novinska grupa"
+
+#: kmcomposewin.cpp:511
+#, fuzzy
+msgid "&Followup-To"
+msgstr "Oglasi nastavak"
+
+#: kmcomposewin.cpp:516
+msgid "Append S&ignature"
+msgstr ""
+
+#: kmcomposewin.cpp:518
+msgid "&Insert File"
+msgstr ""
+
+#: kmcomposewin.cpp:520
+msgid "&Attach..."
+msgstr ""
+
+#: kmcomposewin.cpp:523
+msgid "&Save..."
+msgstr ""
+
+#: kmcomposewin.cpp:524
+msgid "Pr&operties..."
+msgstr ""
+
+#: kmcomposewin.cpp:526
+msgid "&Attach"
+msgstr ""
+
+#: kmcomposewin.cpp:551
+msgid "Compose new message"
+msgstr ""
+
+#: kmcomposewin.cpp:556
+msgid "Save message to file"
+msgstr ""
+
+#: kmcomposewin.cpp:561
+#, fuzzy
+msgid "Print message"
+msgstr "Krn - poruka"
+
+#: kmcomposewin.cpp:570
+msgid "Cut selection"
+msgstr ""
+
+#: kmcomposewin.cpp:573
+msgid "Copy selection"
+msgstr ""
+
+#: kmcomposewin.cpp:576
+msgid "Paste clipboard contents"
+msgstr ""
+
+#: kmcomposewin.cpp:581
+#, fuzzy
+msgid "Attach file"
+msgstr "Stil Priloga: "
+
+#: kmcomposewin.cpp:585
+msgid "Open addressbook..."
+msgstr ""
+
+#: kmcomposewin.cpp:594
+#, fuzzy
+msgid "sign message"
+msgstr "Krn - poruka"
+
+#: kmcomposewin.cpp:599
+#, fuzzy
+msgid "encrypt message"
+msgstr "Slijedeæa poruka"
+
+#: kmcomposewin.cpp:611 kmcomposewin.cpp:627
+msgid "Column"
+msgstr ""
+
+#: kmcomposewin.cpp:612 kmcomposewin.cpp:625
+#, fuzzy
+msgid "Line"
+msgstr "Linija"
+
+#: kmcomposewin.cpp:891
+msgid "KMail Confirm"
+msgstr ""
+
+#: kmcomposewin.cpp:892
+msgid ""
+"Close and discard\n"
+"edited message?"
+msgstr ""
+
+#: kmcomposewin.cpp:937
+#, c-format
+msgid ""
+"public key for %s not found.\n"
+"This person will not be able to decrypt the message."
+msgstr ""
+
+#: kmcomposewin.cpp:958
+msgid "Error during PGP:"
+msgstr ""
+
+#: kmcomposewin.cpp:1178
+#, fuzzy
+msgid "Attach File"
+msgstr "Stil Priloga: "
+
+#: kmcomposewin.cpp:1200
+msgid "Include File"
+msgstr ""
+
+#: kmcomposewin.cpp:1223 kmreaderwin.cpp:683
+msgid "View..."
+msgstr ""
+
+#: kmcomposewin.cpp:1224
+msgid "Save..."
+msgstr ""
+
+#: kmcomposewin.cpp:1225 kmreaderwin.cpp:686
+#, fuzzy
+msgid "Properties..."
+msgstr "Sortiram..."
+
+#: kmcomposewin.cpp:1229
+msgid "Attach..."
+msgstr ""
+
+#: kmcomposewin.cpp:1271 kmreaderwin.cpp:728
+#, fuzzy
+msgid "View Attachment: "
+msgstr "Stil Priloga: "
+
+#: kmcomposewin.cpp:1442 kpgp.cpp:357
+msgid ""
+"Sorry, but this feature\n"
+"is still missing"
+msgstr ""
+
+#: kmcomposewin.cpp:1450
+msgid "unnamed"
+msgstr ""
+
+#: kmcomposewin.cpp:1465
+msgid "To:"
+msgstr ""
+
+#: kmcomposewin.cpp:1469
+#, fuzzy
+msgid "Subject:"
+msgstr "Tema"
+
+#: kmcomposewin.cpp:1472
+msgid "Date:"
+msgstr ""
+
+#: kmcomposewin.cpp:1549
+msgid "Choose Signature File"
+msgstr ""
+
+#: kmcomposewin.cpp:1579
+msgid "KMail: Spellcheck"
+msgstr ""
+
+#: kmcomposewin.cpp:1603
+msgid ""
+"Error starting KSpell. Please make sure you have ISpell properly configured."
+msgstr ""
+
+#: kmsender.cpp:108
+msgid ""
+"Please specify a send\n"
+"method in the settings\n"
+"and try again."
+msgstr ""
+
+#: kmsender.cpp:114
+msgid ""
+"Please set the required fields in the\n"
+"identity settings:\n"
+"user-name and email-address"
+msgstr ""
+
+#: kmsender.cpp:139
+msgid "You must specify a receiver"
+msgstr ""
+
+#: kmsender.cpp:150
+msgid "Cannot add message to outbox folder"
+msgstr ""
+
+#: kmsender.cpp:173
+msgid "Sending still in progress"
+msgstr ""
+
+#: kmsender.cpp:225
+msgid "Initiating sender process..."
+msgstr ""
+
+#: kmsender.cpp:241
+#, fuzzy
+msgid "Sending message: "
+msgstr "Dohvaæam poruke u "
+
+#: kmsender.cpp:269
+#, fuzzy
+msgid "Done sending messages."
+msgstr "Dohvaæam poruke u "
+
+#: kmsender.cpp:288
+msgid "Sending failed:"
+msgstr ""
+
+#: kmsender.cpp:441
+msgid ""
+"Please specify a mailer program\n"
+"in the settings."
+msgstr ""
+
+#: kmsender.cpp:481
+#, c-format
+msgid "Failed to execute mailer program %s"
+msgstr ""
+
+#: kmsender.cpp:569
+#, fuzzy
+msgid "connecting to server"
+msgstr "Spajanje s poslu¾iteljem"
+
+#: kmsender.cpp:574
+#, c-format
+msgid ""
+"Cannot open SMTP connection to\n"
+"host %s for sending:\n"
+"%s"
+msgstr ""
+
+#: kmsender.cpp:603
+msgid "Cannot close SMTP connection."
+msgstr ""
+
+#: kmsender.cpp:653
+#, fuzzy
+msgid "transmitting message"
+msgstr "Dohvaæam poruke u "
+
+#: kmsender.cpp:687
+msgid "network error"
+msgstr ""
+
+#: kmsender.cpp:689
+#, c-format
+msgid ""
+"a SMTP error occured.\n"
+"Command: %s\n"
+"Response: %s\n"
+"Return code: %d"
+msgstr ""
+
+#: kmsender.cpp:704
+#, c-format
+msgid "Sending SMTP command: %s"
+msgstr ""
+
 #: findArtDlg.cpp:22
 msgid "KRN - Article Searcher"
 msgstr "KRN - pretra¾ivaè èlanaka:"
@@ -633,13 +1085,289 @@ msgstr "Pronaði èlanake s:"
 msgid "In Field:"
 msgstr "U Polju:"
 
+#: findArtDlg.cpp:53 rulesDlg.cpp:131
+msgid "Case Sensitive"
+msgstr ""
+
 #: findArtDlg.cpp:56 rulesDlg.cpp:132
 msgid "Wildcard Mode"
 msgstr "Wildcard naèin"
 
+#: findArtDlg.cpp:66 rulesDlg.cpp:144
+#, fuzzy
+msgid "Done"
+msgstr "Nijedan"
+
+#: kmidentity.cpp:162
+#, c-format
+msgid ""
+"Failed to execute signature script\n"
+"%s\n"
+"%s"
+msgstr ""
+
+#: kfileio.cpp:26 kmaddrbook.cpp:159
+msgid "File I/O Error"
+msgstr ""
+
+#: kfileio.cpp:47
+#, c-format
+msgid ""
+"The specified file does not exist:\n"
+"%s"
+msgstr ""
+
+#: kfileio.cpp:54
+#, c-format
+msgid ""
+"This is a directory and not a file:\n"
+"%s"
+msgstr ""
+
+#: kfileio.cpp:61
+#, c-format
+msgid ""
+"You do not have read permissions to the file:\n"
+"%s"
+msgstr ""
+
+#: kfileio.cpp:72 kmaddrbook.cpp:149
+#, c-format
+msgid ""
+"Could not read file:\n"
+"%s"
+msgstr ""
+
+#: kfileio.cpp:75 kmaddrbook.cpp:152
+#, c-format
+msgid ""
+"Could not open file:\n"
+"%s"
+msgstr ""
+
+#: kfileio.cpp:78
+#, c-format
+msgid ""
+"Error while reading file:\n"
+"%s"
+msgstr ""
+
+#: kfileio.cpp:95
+#, c-format
+msgid "Could only read %u bytes of %u."
+msgstr ""
+
+#: kfileio.cpp:124
+#, c-format
+msgid ""
+"File %s exists.\n"
+"Do you want to replace it ?"
+msgstr ""
+
+#: kfileio.cpp:144
+#, c-format
+msgid ""
+"Failed to make a backup copy of %s.\n"
+"Continue anyway ?"
+msgstr ""
+
+#: kfileio.cpp:156 kfileio.cpp:174
+#, c-format
+msgid ""
+"Could not write to file:\n"
+"%s"
+msgstr ""
+
+#: kfileio.cpp:159
+#, c-format
+msgid ""
+"Could not open file for writing:\n"
+"%s"
+msgstr ""
+
+#: kfileio.cpp:163 kmaddrbook.cpp:155
+#, c-format
+msgid ""
+"Error while writing file:\n"
+"%s"
+msgstr ""
+
+#: kfileio.cpp:180
+#, c-format
+msgid "Could only write %d bytes of %d."
+msgstr ""
+
+#: kmmsgpartdlg.cpp:41
+msgid "Message Part Properties"
+msgstr ""
+
+#: kmmsgpartdlg.cpp:62
+msgid "Name:"
+msgstr ""
+
+#: kmmsgpartdlg.cpp:73
+msgid "Description:"
+msgstr ""
+
+#: kmmsgpartdlg.cpp:83
+msgid "Encoding:"
+msgstr ""
+
+#: kmmsgpartdlg.cpp:89
+msgid "none (8bit)"
+msgstr ""
+
+#: kmmsgpartdlg.cpp:90
+msgid "base 64"
+msgstr ""
+
+#: kmmsgpartdlg.cpp:91
+msgid "quoted printable"
+msgstr ""
+
+#: kmreaderwin.cpp:309 kmreaderwin.cpp:322 kmreaderwin.cpp:341
+#: kmreaderwin.cpp:362
+msgid "Cc: "
+msgstr ""
+
+#: kmreaderwin.cpp:317 kmreaderwin.cpp:336 kmreaderwin.cpp:357
+msgid "From: "
+msgstr ""
+
+#: kmreaderwin.cpp:319 kmreaderwin.cpp:338 kmreaderwin.cpp:359
+msgid "To: "
+msgstr ""
+
+#: kmreaderwin.cpp:326 kmreaderwin.cpp:347 kmreaderwin.cpp:372
+msgid "References: "
+msgstr ""
+
+#: kmreaderwin.cpp:343 kmreaderwin.cpp:356
+msgid "Date: "
+msgstr ""
+
+#: kmreaderwin.cpp:365
+msgid "Bcc: "
+msgstr ""
+
+#: kmreaderwin.cpp:368
+#, fuzzy
+msgid "Reply to: "
+msgstr "Odgovori po¹tom"
+
+#: kmreaderwin.cpp:375
+msgid "Groups: "
+msgstr ""
+
+#: kmreaderwin.cpp:412
+msgid "Encrypted message"
+msgstr ""
+
+#: kmreaderwin.cpp:418
+msgid "Cannot decrypt message:"
+msgstr ""
+
+#: kmreaderwin.cpp:436
+msgid "Message was signed by"
+msgstr ""
+
+#: kmreaderwin.cpp:437
+msgid "Warning: Bad signature from"
+msgstr ""
+
+#: kmreaderwin.cpp:647
+#, fuzzy
+msgid "Attachment: "
+msgstr "Stil Priloga: "
+
+#: kmreaderwin.cpp:759
+msgid "Could not create temporary file"
+msgstr ""
+
+#: kmreaderwin.cpp:780
+#, c-format
+msgid "Could not save temporary file %s"
+msgstr ""
+
+#: kmreaderwin.cpp:809
+#, fuzzy
+msgid "Could not save file"
+msgstr "Spajanje s poslu¾iteljem nije uspjelo"
+
+#: kpgp.cpp:117
+msgid ""
+"Couldn't find PGP executable.\n"
+"Please check your PATH is set correctly."
+msgstr ""
+
+#: kpgp.cpp:163
+msgid ""
+"Could not find PGP executable.\n"
+"Please check your PATH is set correctly."
+msgstr ""
+
+#: kpgp.cpp:173
+msgid "The pass phrase is missing."
+msgstr ""
+
+#: kpgp.cpp:445
+msgid "Message signed by"
+msgstr ""
+
+#: kpgp.cpp:449
+msgid "Message has a bad signature from"
+msgstr ""
+
+#: kpgp.cpp:457
+msgid "End PGP signed message"
+msgstr ""
+
+#: kpgp.cpp:622
+msgid "Bad pass Phrase; couldn't decrypt"
+msgstr ""
+
+#: kpgp.cpp:708
+msgid "Bad pass Phrase; couldn't sign"
+msgstr ""
+
+#: kpgp.cpp:765
+#, fuzzy
+msgid ""
+"Please enter your\n"
+"PGP passphrase"
+msgstr "Molim unesite va¹e stvarno ime"
+
+#: kpgp.cpp:792
+msgid "PGP Security Check"
+msgstr ""
+
 #: krnsender.cpp:59
 msgid "This server is read onlyyou can't post here!"
 msgstr "Ovaj poslu¾itelj dozvoljava samo èitanje!"
+
+#: kmaddrbookdlg.cpp:20
+msgid "Addressbook"
+msgstr ""
+
+#: kmaddrbookdlg.cpp:95
+msgid "Addressbook Manager"
+msgstr ""
+
+#: kmaddrbookdlg.cpp:178
+msgid "KMail error"
+msgstr ""
+
+#: kmaddrbookdlg.cpp:179
+msgid "Storing addressbook failed"
+msgstr ""
+
+#: kmaddrbook.cpp:25
+msgid "KMail Error"
+msgstr ""
+
+#: kmaddrbook.cpp:26
+msgid "Storing the addressbook failed!\n"
+msgstr ""
 
 #: expireDlg.cpp:22 expireDlg.cpp:27
 msgid "KRN - Expire Settings"
@@ -679,7 +1407,7 @@ msgstr "Opæenito"
 
 #: printdlg.cpp:35
 msgid "Printing System"
-msgstr ""
+msgstr "Sustav za ispis"
 
 #: printdlg.cpp:37
 msgid "Use HTML Printing"
@@ -690,9 +1418,8 @@ msgid "Use Direct Printing"
 msgstr "Koristi izravno ispisivanje"
 
 #: printdlg.cpp:45
-#, fuzzy
 msgid "Direct Printing"
-msgstr "Koristi izravno ispisivanje"
+msgstr "Izravno ispisivanje"
 
 #: printdlg.cpp:48
 msgid "Print using:"
@@ -742,6 +1469,10 @@ msgstr "Spremi pod drugim imenom"
 msgid "Match Articles With:"
 msgstr "Usporedi èlanake s:"
 
+#: rulesDlg.cpp:124
+msgid "Weight:"
+msgstr ""
+
 #: rulesDlg.cpp:126
 msgid "Negative"
 msgstr "Negativno"
@@ -754,6 +1485,10 @@ msgstr "Ime pravila:"
 msgid "KRN - Header Sorting"
 msgstr "KRN - Sortiranje Zaglavlja"
 
+#: sortDlg.cpp:37
+msgid "None"
+msgstr "Nijedan"
+
 #: sortDlg.cpp:39
 msgid "Sort by:"
 msgstr "Sortiraj po:"
@@ -762,17 +1497,38 @@ msgstr "Sortiraj po:"
 msgid "Use Threading"
 msgstr "Koristi stavljanje u nit"
 
+#: charsetsDlg.cpp:27
+#, fuzzy
+msgid "KRN - Charset Settings"
+msgstr "KRN - Postava ispisa"
+
+#: charsetsDlg.cpp:29
+#, fuzzy
+msgid "KMail - Charset Settings"
+msgstr "KRN - Postava ispisa"
+
+#: charsetsDlg.cpp:39
+msgid "Message charset"
+msgstr ""
+
+#: charsetsDlg.cpp:57
+msgid "Composer charset"
+msgstr ""
+
+#: charsetsDlg.cpp:75
+msgid "Set as &default"
+msgstr ""
+
+#: charsetsDlg.cpp:80
+msgid "&7 bit is ASCII"
+msgstr ""
+
+#: charsetsDlg.cpp:84
+msgid "&Qute unknonw characters"
+msgstr ""
+
 #~ msgid "Print"
 #~ msgstr "Ispis"
-
-#~ msgid "Small"
-#~ msgstr "Malo"
-
-#~ msgid "Large"
-#~ msgstr "Veliko"
-
-#~ msgid "None"
-#~ msgstr "Nijedan"
 
 #~ msgid "KRN - Decoder"
 #~ msgstr "KRN - Dekoder"

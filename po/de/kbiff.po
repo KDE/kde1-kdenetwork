@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kbiff\n"
-"POT-Creation-Date: 1998-08-03 21:27+0200\n"
+"POT-Creation-Date: 1998-10-09 15:54+0200\n"
 "PO-Revision-Date: 1998-06-04 13:10+0200\n"
 "Last-Translator: Tobias Burnus <burnus@berlin1.netsurf.de>\n"
 "Language-Team: German <kde-i18n@kde.org>\n"
@@ -9,177 +9,160 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: iso-8859-1\n"
 
-#: kbiff.cpp:224
-msgid "&UnDock"
-msgstr "&Nicht andocken"
-
-#: kbiff.cpp:226
-msgid "&Dock"
-msgstr "An&docken"
-
-#: kbiff.cpp:227
-msgid "&Setup..."
-msgstr "&Einstellungen..."
-
-#: kbiff.cpp:229
-msgid "&Help..."
-msgstr "&Hilfe..."
-
-#: kbiff.cpp:233
-msgid "&Check mail now"
-msgstr "Mails über&prüfen"
-
-#: kbiff.cpp:237
-msgid "&Stop"
-msgstr "&Stop"
-
-#: setupdlg.cpp:50
+#: setupdlg.cpp:66
 msgid "KBiff Setup"
 msgstr "KBiff Einstellungen"
 
-#: setupdlg.cpp:53
+#: setupdlg.cpp:69
 msgid "Profile:"
 msgstr "Profil:"
 
-#: setupdlg.cpp:76
+#: setupdlg.cpp:92
 msgid "&Rename..."
 msgstr "&Umbenennen..."
 
-#: setupdlg.cpp:109
+#: setupdlg.cpp:126
 msgid "General"
 msgstr "Allgemein"
 
-#: setupdlg.cpp:110
+#: setupdlg.cpp:127
 msgid "New Mail"
 msgstr "Neue Email"
 
-#: setupdlg.cpp:111
+#: setupdlg.cpp:128
 msgid "Mailbox"
 msgstr "Mailbox"
 
-#: setupdlg.cpp:243
+#: setupdlg.cpp:336
 msgid "New Profile"
 msgstr "Neues Profil"
 
-#: setupdlg.cpp:272
+#: setupdlg.cpp:368
+#, c-format
 msgid "Rename Profile: %s"
 msgstr "Profil umbennen: %s"
 
-#: setupdlg.cpp:314
+#: setupdlg.cpp:408
+#, c-format
 msgid "Delete Profile: %s"
 msgstr "Lösche Profil: %s"
 
-#: setupdlg.cpp:315
+#: setupdlg.cpp:409
 msgid "Are you sure you wish to delete this profile?\n"
 msgstr "Sind Sie sicher, daß Sie diese Profil löschen wollen?\n"
 
-#: setupdlg.cpp:361
+#: setupdlg.cpp:469
 msgid "Poll (sec):"
 msgstr "Nachsehen (sec):"
 
-#: setupdlg.cpp:366
+#: setupdlg.cpp:474
 msgid "Mail client:"
 msgstr "Email-Client"
 
-#: setupdlg.cpp:379
+#: setupdlg.cpp:487
 msgid "Dock in panel"
 msgstr "Am Panel andocken"
 
-#: setupdlg.cpp:384
+#: setupdlg.cpp:492
 msgid "Use session management"
 msgstr "Benutze Sitzungs-Management"
 
-#: setupdlg.cpp:389
+#: setupdlg.cpp:497
 msgid "Icons:"
 msgstr "Symbole:"
 
-#: setupdlg.cpp:409
+#: setupdlg.cpp:515
 msgid "No Mail:"
 msgstr "Keine Email:"
 
-#: setupdlg.cpp:418
+#: setupdlg.cpp:524
 msgid "Old Mail"
 msgstr "Alte Email"
 
-#: setupdlg.cpp:428
+#: setupdlg.cpp:534
 msgid "New Mail:"
 msgstr "Neue Email:"
 
-#: setupdlg.cpp:605
+#: setupdlg.cpp:671
 msgid "Run Command"
 msgstr "Starte Befehl"
 
-#: setupdlg.cpp:612 setupdlg.cpp:625 setupdlg.cpp:937
+#: setupdlg.cpp:678 setupdlg.cpp:691 setupdlg.cpp:988
 msgid "Browse"
 msgstr "Durchsuchen"
 
-#: setupdlg.cpp:618
+#: setupdlg.cpp:684
 msgid "Play Sound"
 msgstr "Spiele Klang"
 
-#: setupdlg.cpp:631
+#: setupdlg.cpp:697
 msgid "System Beep"
 msgstr "System-Ton"
 
-#: setupdlg.cpp:636
+#: setupdlg.cpp:702
 msgid "Notify"
 msgstr "Benachrichtung"
 
-#: setupdlg.cpp:794
+#: setupdlg.cpp:830
 msgid "Advanced Options"
 msgstr "Erweiterte Optionen"
 
-#: setupdlg.cpp:798
+#: setupdlg.cpp:834
 msgid "Mailbox URL:"
 msgstr "Mailbox URL:"
 
-#: setupdlg.cpp:802
+#: setupdlg.cpp:838
 msgid "Port:"
 msgstr "Port:"
 
-#: setupdlg.cpp:882 setupdlg.cpp:914
+#: setupdlg.cpp:842
+msgid "PREAUTH"
+msgstr ""
+
+#: setupdlg.cpp:935 setupdlg.cpp:964
 msgid "Mailbox:"
 msgstr "Mailbox"
 
-#: setupdlg.cpp:898 setupdlg.cpp:1197
+#: setupdlg.cpp:948 setupdlg.cpp:1247
 msgid "New Mailbox"
 msgstr "Neue Email"
 
-#: setupdlg.cpp:905
+#: setupdlg.cpp:955
 msgid "Delete Mailbox"
 msgstr "Lösche Mailbox"
 
-#: setupdlg.cpp:911
+#: setupdlg.cpp:961
 msgid "Protocol:"
 msgstr "Protokol:"
 
-#: setupdlg.cpp:917
+#: setupdlg.cpp:967
 msgid "Server:"
 msgstr "Server:"
 
-#: setupdlg.cpp:920
+#: setupdlg.cpp:970
 msgid "User:"
 msgstr "Benutzer:"
 
-#: setupdlg.cpp:923
+#: setupdlg.cpp:973
 msgid "Password:"
 msgstr "Passwort:"
 
-#: setupdlg.cpp:954
+#: setupdlg.cpp:1005
 msgid "Store password"
 msgstr "Speichere Passwort"
 
-#: setupdlg.cpp:959
+#: setupdlg.cpp:1008
 msgid "Advanced"
 msgstr "Erweitert"
 
-#: setupdlg.cpp:1336
+#: setupdlg.cpp:1436
 msgid "KBiff"
 msgstr "KBiff"
 
-#: setupdlg.cpp:1357
+#: setupdlg.cpp:1458
+#, fuzzy, c-format
 msgid ""
-"Version 1.1\n"
+"Version %s\n"
 "\n"
 "Copyright (C) 1998\n"
 "Kurt Granroth"
@@ -189,13 +172,56 @@ msgstr ""
 "Copyright (C) 1998\n"
 "Kurt Granroth"
 
-#: setupdlg.cpp:1404
+#: setupdlg.cpp:1506
 msgid "New Name:"
 msgstr "Neuer Profilname:"
 
-#: setupdlg.cpp:1430
+#: setupdlg.cpp:1532
 msgid "New Name"
 msgstr "Neuer Profilname"
+
+#: kbiff.cpp:468
+msgid "&UnDock"
+msgstr "&Nicht andocken"
+
+#: kbiff.cpp:470
+msgid "&Dock"
+msgstr "An&docken"
+
+#: kbiff.cpp:471
+msgid "&Setup..."
+msgstr "&Einstellungen..."
+
+#: kbiff.cpp:473
+msgid "&Help..."
+msgstr "&Hilfe..."
+
+#: kbiff.cpp:477
+msgid "&Check mail now"
+msgstr "Mails über&prüfen"
+
+#: kbiff.cpp:479
+#, fuzzy
+msgid "&Read Mail now"
+msgstr "Mails über&prüfen"
+
+#: kbiff.cpp:485
+msgid "&Stop"
+msgstr "&Stop"
+
+#: notify.cpp:28 notify.cpp:45
+msgid "You have new mail!"
+msgstr ""
+
+#: notify.cpp:53
+#, c-format
+msgid "New Messages: %d"
+msgstr ""
+
+#: notify.cpp:58
+#, fuzzy, c-format
+msgid "Mailbox: %s"
+msgstr "Mailbox"
 
 #~ msgid "E&xit"
 #~ msgstr "Be&enden"
