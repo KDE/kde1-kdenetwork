@@ -5,9 +5,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kppp\n"
-"POT-Creation-Date: 1999-01-14 02:07+0100\n"
+"POT-Creation-Date: 1999-01-18 02:04+0100\n"
 "PO-Revision-Date: 1999-01-16 14:00 CET\n"
-"Last-Translator: Francois-Xavier DURANCEAU <Francois-xavier.Duranceau@loria.fr>\n"
+"Last-Translator: Francois-Xavier DURANCEAU "
+"<Francois-xavier.Duranceau@loria.fr>\n"
 "Language-Team: Français\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; \n"
@@ -317,7 +318,7 @@ msgstr "Trouvé : "
 msgid "Looping: "
 msgstr "Répétition : "
 
-#: connect.cpp:877 modeminfo.cpp:225
+#: connect.cpp:877 modeminfo.cpp:224
 msgid "One Moment Please ..."
 msgstr "Veuillez patienter..."
 
@@ -1684,7 +1685,7 @@ msgstr "L'interrogation du modem a dépassé le temps imparti."
 msgid "Modem Ready"
 msgstr "Le modem est prêt"
 
-#: modeminfo.cpp:247
+#: modeminfo.cpp:246
 msgid "Modem Query Results"
 msgstr "Résultats de l'interrogation du modem"
 
@@ -1841,6 +1842,10 @@ msgstr "Octets entrants et sortants"
 msgid "Available rules"
 msgstr "Règles disponibles"
 
+#: acctselect.cpp:305
+msgid "(none)"
+msgstr ""
+
 #: ruleset.cpp:544
 msgid "kppp: no rulefile specified\n"
 msgstr "kppp: aucun fichier de règles spécifié\n"
@@ -1976,14 +1981,23 @@ msgstr ""
 "la création d'un fichier non vide de ce nom\n"
 "avec les permissions en lecture et écriture."
 
+#: loginterm.cpp:120
+msgid "Ca&ncel"
+msgstr ""
+
+#: loginterm.cpp:125
+#, fuzzy
+msgid "&Continue"
+msgstr "Connecter"
+
 #: ppplog.cpp:136
 msgid ""
 "You have launched pppd before the remote server was ready to establish a PPP "
 "connection.\n"
 "Please use the terminal-based login to verify"
 msgstr ""
-"Vous avez lancé pppd avant que le serveur distant soit prêt à établir "
-"une connexion PPP.\n"
+"Vous avez lancé pppd avant que le serveur distant soit prêt à établir une "
+"connexion PPP.\n"
 "Veuillez utiliser la connexion basée sur un terminal pour contrôler"
 
 #: ppplog.cpp:141
@@ -1992,15 +2006,16 @@ msgstr "Vous n'avez pas lancé le logiciel PPP sur le système opposé."
 
 #: ppplog.cpp:144
 msgid "Check that you supplied the correct username and password!"
-msgstr "Vérifiez que vous avez donné les bons nom d'utilisateur et mot de passe !"
+msgstr ""
+"Vérifiez que vous avez donné les bons nom d'utilisateur et mot de passe !"
 
 #: ppplog.cpp:147
 msgid ""
 "You shouldn't pass 'lock' as an argument to pppd. Check /etc/ppp/options and "
 "~/.ppprc"
 msgstr ""
-"Vous ne devriez pas passer 'lock' comme argument à pppd. Vérifiez /etc/ppp/options et "
-"~/.ppprc"
+"Vous ne devriez pas passer 'lock' comme argument à pppd. Vérifiez "
+"/etc/ppp/options et ~/.ppprc"
 
 #: ppplog.cpp:151
 msgid ""
@@ -2027,7 +2042,8 @@ msgid ""
 msgstr ""
 "Notez que le système distant a envoyé le message suivant :\n"
 "\"%s\"\n"
-"Cela pourrait vous donner une idée de ce qui a provoqué l'échec de la connexion."
+"Cela pourrait vous donner une idée de ce qui a provoqué l'échec de la "
+"connexion."
 
 #: ppplog.cpp:189
 msgid "Sorry. Can't help you here."
@@ -2080,18 +2096,16 @@ msgid "Select modem type..."
 msgstr "Sélection du type de modem..."
 
 #: modemdb.cpp:48
+#, fuzzy
 msgid ""
-"To setup your modem, first choose it´s vendor in thelist to the left, and "
-"the select the model from theright list. If you don´t know which modem you "
-"have,you can try out one of the \"Generic\" modems."
+"To setup your modem, first choose its vendor in the list to the left, and "
+"then select the model from the right list. If you don´t know which modem you "
+"have, you can try out one of the \"Generic\" modems."
 msgstr ""
-"Pour configurer votre modem, choisissez d'abord son fabricant dans la liste de gauche, et "
-"sélectionnez le modèle dans la liste de droite. Si vous ne savez pas quel modem vous avez, "
-"vous pouvez toujours essayer un des modems \"Génériques\"."
-
-#: modemdb.cpp:71
-msgid "Ok"
-msgstr "Ok"
+"Pour configurer votre modem, choisissez d'abord son fabricant dans la liste "
+"de gauche, et sélectionnez le modèle dans la liste de droite. Si vous ne "
+"savez pas quel modem vous avez, vous pouvez toujours essayer un des modems "
+"\"Génériques\"."
 
 #: modemdb.cpp:151 modemdb.cpp:153 modemdb.cpp:223 modemdb.cpp:238
 msgid "<Generic>"
@@ -2101,4 +2115,5 @@ msgstr "<Générique>"
 msgid "Hayes(tm) compatible modem"
 msgstr "modem compatible Hayes(tm)"
 
-
+#~ msgid "Ok"
+#~ msgstr "Ok"

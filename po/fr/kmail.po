@@ -5,9 +5,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kmail\n"
-"POT-Creation-Date: 1999-01-15 02:07+0100\n"
+"POT-Creation-Date: 1999-01-18 02:04+0100\n"
 "PO-Revision-Date: 1999-01-16 17:31 CET\n"
-"Last-Translator: Francois-Xavier DURANCEAU <Francois-Xavier.Duranceau@loria.fr>\n"
+"Last-Translator: Francois-Xavier DURANCEAU "
+"<Francois-Xavier.Duranceau@loria.fr>\n"
 "Language-Team: Français\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain;\n"
@@ -605,7 +606,7 @@ msgstr "Police de la liste de messages"
 msgid "Select Account"
 msgstr "Choisir la boîte aux lettres"
 
-#: kmaccount.cpp:76 kmfilterdlg.cpp:457 kmsettings.cpp:667
+#: kmaccount.cpp:76 kmfilterdlg.cpp:458 kmsettings.cpp:667
 msgid "Unnamed"
 msgstr "Sans nom"
 
@@ -976,7 +977,7 @@ msgstr "ma clé pgp"
 msgid "pgp key"
 msgstr "clé pgp"
 
-#: kmcomposewin.cpp:1295 kmreaderwin.cpp:721
+#: kmcomposewin.cpp:1295 kmreaderwin.cpp:784
 msgid "View..."
 msgstr "Afficher..."
 
@@ -984,7 +985,7 @@ msgstr "Afficher..."
 msgid "Save..."
 msgstr "Enregistrer..."
 
-#: kmcomposewin.cpp:1297 kmreaderwin.cpp:724
+#: kmcomposewin.cpp:1297 kmreaderwin.cpp:787
 msgid "Properties..."
 msgstr "Propriétés..."
 
@@ -992,7 +993,7 @@ msgstr "Propriétés..."
 msgid "Attach..."
 msgstr "Joindre..."
 
-#: kmcomposewin.cpp:1343 kmreaderwin.cpp:766
+#: kmcomposewin.cpp:1343 kmreaderwin.cpp:829
 msgid "View Attachment: "
 msgstr "Afficher les pièces jointes :"
 
@@ -1064,73 +1065,64 @@ msgstr "base 64"
 msgid "quoted printable"
 msgstr "quoted printable"
 
-#: kmreaderwin.cpp:305 kmreaderwin.cpp:318 kmreaderwin.cpp:337
-#: kmreaderwin.cpp:358
+#: kmreaderwin.cpp:308 kmreaderwin.cpp:321 kmreaderwin.cpp:340
+#: kmreaderwin.cpp:361
 msgid "Cc: "
 msgstr "Cc : "
 
-#: kmreaderwin.cpp:313 kmreaderwin.cpp:332 kmreaderwin.cpp:353
+#: kmreaderwin.cpp:316 kmreaderwin.cpp:335 kmreaderwin.cpp:356
 msgid "From: "
 msgstr "De : "
 
-#: kmreaderwin.cpp:315 kmreaderwin.cpp:334 kmreaderwin.cpp:355
+#: kmreaderwin.cpp:318 kmreaderwin.cpp:337 kmreaderwin.cpp:358
 msgid "To: "
 msgstr "A : "
 
-#: kmreaderwin.cpp:322 kmreaderwin.cpp:343 kmreaderwin.cpp:368
+#: kmreaderwin.cpp:325 kmreaderwin.cpp:346 kmreaderwin.cpp:371
 msgid "References: "
 msgstr "Références : "
 
-#: kmreaderwin.cpp:339 kmreaderwin.cpp:352
+#: kmreaderwin.cpp:342 kmreaderwin.cpp:355
 msgid "Date: "
 msgstr "Date : "
 
-#: kmreaderwin.cpp:361
+#: kmreaderwin.cpp:364
 msgid "Bcc: "
 msgstr "Bcc : "
 
-#: kmreaderwin.cpp:364
+#: kmreaderwin.cpp:367
 msgid "Reply to: "
 msgstr "Répondre à : "
 
-#: kmreaderwin.cpp:371
+#: kmreaderwin.cpp:374
 msgid "Groups: "
 msgstr "Groupes : "
 
-#: kmreaderwin.cpp:409
+#: kmreaderwin.cpp:412
 msgid "Encrypted message"
 msgstr "Message crypté"
 
-#: kmreaderwin.cpp:415
+#: kmreaderwin.cpp:418
 msgid "Cannot decrypt message:"
 msgstr "Impossible de décrypter le message :"
 
-#: kmreaderwin.cpp:424
+#: kmreaderwin.cpp:427
 msgid "Message was signed by"
 msgstr "Le message a été signé par"
 
-#: kmreaderwin.cpp:425
+#: kmreaderwin.cpp:428
 msgid "Warning: Bad signature from"
 msgstr "Attention : mauvaise signature de"
 
-#: kmreaderwin.cpp:435
+#: kmreaderwin.cpp:438
 msgid "unknown key ID"
 msgstr "ID de clé inconnu"
 
-#: kmreaderwin.cpp:685
+#: kmreaderwin.cpp:748
 msgid "Attachment: "
 msgstr "Pièces jointes : "
 
-#: kmreaderwin.cpp:797
-msgid "Could not create temporary file"
-msgstr "Impossible de créer un fichier temporaire"
-
-#: kmreaderwin.cpp:818
-#, c-format
-msgid "Could not save temporary file %s"
-msgstr "Impossible d'enregistrer le fichier temporaire %s"
-
-#: kmreaderwin.cpp:847
+#: kmreaderwin.cpp:916
 msgid "Could not save file"
 msgstr "Impossible d'enregistrer le fichier"
 
@@ -1186,7 +1178,7 @@ msgstr ""
 msgid "Loading addressbook failed"
 msgstr "Echec du chargement du carnet d'adresses"
 
-#: main.cpp:405
+#: main.cpp:411
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr "L'option %s de la ligne de commande est inconnue."
@@ -1445,55 +1437,55 @@ msgstr "Vers le haut"
 msgid "Down"
 msgstr "Vers la bas"
 
-#: kmfilterdlg.cpp:529
+#: kmfilterdlg.cpp:530
 msgid "<nothing>"
 msgstr "<rien>"
 
-#: kmfilterdlg.cpp:540
+#: kmfilterdlg.cpp:541
 msgid "ignore"
 msgstr "ignorer"
 
-#: kmfilterdlg.cpp:541
+#: kmfilterdlg.cpp:542
 msgid "and"
 msgstr "et"
 
-#: kmfilterdlg.cpp:542
+#: kmfilterdlg.cpp:543
 msgid "unless"
 msgstr "à moins que"
 
-#: kmfilterdlg.cpp:543
+#: kmfilterdlg.cpp:544
 msgid "or"
 msgstr "ou"
 
-#: kmfilterdlg.cpp:549
+#: kmfilterdlg.cpp:550
 msgid "equals"
 msgstr "égal à"
 
-#: kmfilterdlg.cpp:550
+#: kmfilterdlg.cpp:551
 msgid "not equal"
 msgstr "différent de"
 
-#: kmfilterdlg.cpp:551
+#: kmfilterdlg.cpp:552
 msgid "contains"
 msgstr "contient"
 
-#: kmfilterdlg.cpp:552
+#: kmfilterdlg.cpp:553
 msgid "doesn't contain"
 msgstr "ne contient pas"
 
-#: kmfilterdlg.cpp:553
+#: kmfilterdlg.cpp:554
 msgid "regular expression"
 msgstr "expression régulière"
 
-#: kmfilterdlg.cpp:560
+#: kmfilterdlg.cpp:561
 msgid "<message>"
 msgstr "<message>"
 
-#: kmfilterdlg.cpp:561
+#: kmfilterdlg.cpp:562
 msgid "<body>"
 msgstr "<corps>"
 
-#: kmfilterdlg.cpp:562
+#: kmfilterdlg.cpp:563
 msgid "<any header>"
 msgstr "<n'importe quel en-tête>"
 
@@ -1787,6 +1779,11 @@ msgstr "Echec de l'enregistrement du carnet d'adresses"
 msgid "&Abort"
 msgstr "&Abandonner"
 
+#: kmnewiostatuswdg.cpp:24
+#, fuzzy
+msgid "Abort"
+msgstr "&Abandonner"
+
 #: kmnewiostatuswdg.cpp:41
 msgid "Sending messages to "
 msgstr "Envoi des messages à "
@@ -1835,4 +1832,8 @@ msgstr "&7 bits ASCII"
 msgid "&Qute unknonw characters"
 msgstr "Echapper les caractères inconnus"
 
+#~ msgid "Could not create temporary file"
+#~ msgstr "Impossible de créer un fichier temporaire"
 
+#~ msgid "Could not save temporary file %s"
+#~ msgstr "Impossible d'enregistrer le fichier temporaire %s"

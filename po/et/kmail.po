@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1999-01-02 02:11+0100\n"
+"POT-Creation-Date: 1999-01-18 02:04+0100\n"
 "PO-Revision-Date: 1999-01-14 HO:MI+ZONE\n"
 "Last-Translator: Hasso C. Tepper <heathcliff@iname.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -604,7 +604,7 @@ msgstr "Sõnumi nimekirja font"
 msgid "Select Account"
 msgstr "Vali konto"
 
-#: kmaccount.cpp:76 kmfilterdlg.cpp:457 kmsettings.cpp:667
+#: kmaccount.cpp:76 kmfilterdlg.cpp:458 kmsettings.cpp:667
 msgid "Unnamed"
 msgstr "Nimetu"
 
@@ -975,7 +975,7 @@ msgstr "minu pgp võti"
 msgid "pgp key"
 msgstr "pgp võti"
 
-#: kmcomposewin.cpp:1295 kmreaderwin.cpp:721
+#: kmcomposewin.cpp:1295 kmreaderwin.cpp:784
 msgid "View..."
 msgstr "Vaata..."
 
@@ -983,7 +983,7 @@ msgstr "Vaata..."
 msgid "Save..."
 msgstr "Salvesta..."
 
-#: kmcomposewin.cpp:1297 kmreaderwin.cpp:724
+#: kmcomposewin.cpp:1297 kmreaderwin.cpp:787
 msgid "Properties..."
 msgstr "Omadused..."
 
@@ -991,7 +991,7 @@ msgstr "Omadused..."
 msgid "Attach..."
 msgstr "Kaasa..."
 
-#: kmcomposewin.cpp:1343 kmreaderwin.cpp:766
+#: kmcomposewin.cpp:1343 kmreaderwin.cpp:829
 msgid "View Attachment: "
 msgstr "Vaata kaasatud faili: "
 
@@ -1060,73 +1060,64 @@ msgstr "base 64"
 msgid "quoted printable"
 msgstr "quoted printable"
 
-#: kmreaderwin.cpp:305 kmreaderwin.cpp:318 kmreaderwin.cpp:337
-#: kmreaderwin.cpp:358
+#: kmreaderwin.cpp:308 kmreaderwin.cpp:321 kmreaderwin.cpp:340
+#: kmreaderwin.cpp:361
 msgid "Cc: "
 msgstr "Cc: "
 
-#: kmreaderwin.cpp:313 kmreaderwin.cpp:332 kmreaderwin.cpp:353
+#: kmreaderwin.cpp:316 kmreaderwin.cpp:335 kmreaderwin.cpp:356
 msgid "From: "
 msgstr "Kellelt: "
 
-#: kmreaderwin.cpp:315 kmreaderwin.cpp:334 kmreaderwin.cpp:355
+#: kmreaderwin.cpp:318 kmreaderwin.cpp:337 kmreaderwin.cpp:358
 msgid "To: "
 msgstr "Kellele: "
 
-#: kmreaderwin.cpp:322 kmreaderwin.cpp:343 kmreaderwin.cpp:368
+#: kmreaderwin.cpp:325 kmreaderwin.cpp:346 kmreaderwin.cpp:371
 msgid "References: "
 msgstr "Viited: "
 
-#: kmreaderwin.cpp:339 kmreaderwin.cpp:352
+#: kmreaderwin.cpp:342 kmreaderwin.cpp:355
 msgid "Date: "
 msgstr "Kuupäev: "
 
-#: kmreaderwin.cpp:361
+#: kmreaderwin.cpp:364
 msgid "Bcc: "
 msgstr "Bcc: "
 
-#: kmreaderwin.cpp:364
+#: kmreaderwin.cpp:367
 msgid "Reply to: "
 msgstr "Vastus: "
 
-#: kmreaderwin.cpp:371
+#: kmreaderwin.cpp:374
 msgid "Groups: "
 msgstr "Grupid: "
 
-#: kmreaderwin.cpp:409
+#: kmreaderwin.cpp:412
 msgid "Encrypted message"
 msgstr "Kodeeritud sõnum"
 
-#: kmreaderwin.cpp:415
+#: kmreaderwin.cpp:418
 msgid "Cannot decrypt message:"
 msgstr "Sõnumit pole võimalik dekodeerida:"
 
-#: kmreaderwin.cpp:424
+#: kmreaderwin.cpp:427
 msgid "Message was signed by"
 msgstr "Sõnumi oli signeerinud"
 
-#: kmreaderwin.cpp:425
+#: kmreaderwin.cpp:428
 msgid "Warning: Bad signature from"
 msgstr "Hoiatus: Vigane signatuuri vorm"
 
-#: kmreaderwin.cpp:435
+#: kmreaderwin.cpp:438
 msgid "unknown key ID"
 msgstr "tundmatu võtme ID"
 
-#: kmreaderwin.cpp:685
+#: kmreaderwin.cpp:748
 msgid "Attachment: "
 msgstr "Kaasatud fail: "
 
-#: kmreaderwin.cpp:797
-msgid "Could not create temporary file"
-msgstr "Ajutist faili pole võimalik luua"
-
-#: kmreaderwin.cpp:818
-#, c-format
-msgid "Could not save temporary file %s"
-msgstr "Ajutist faili pole võimalik salvestada %s"
-
-#: kmreaderwin.cpp:847
+#: kmreaderwin.cpp:916
 msgid "Could not save file"
 msgstr "Faili pole võimalik salvestada"
 
@@ -1182,7 +1173,7 @@ msgstr ""
 msgid "Loading addressbook failed"
 msgstr "Aadressiraamatu laadimine ebaõnnestus"
 
-#: main.cpp:405
+#: main.cpp:411
 #, c-format
 msgid "Unknown command line option: %s"
 msgstr "Tundmatu käsurea võti: %s"
@@ -1439,55 +1430,55 @@ msgstr "Üles"
 msgid "Down"
 msgstr "Alla"
 
-#: kmfilterdlg.cpp:527
+#: kmfilterdlg.cpp:530
 msgid "<nothing>"
 msgstr "<puudub>"
 
-#: kmfilterdlg.cpp:538
+#: kmfilterdlg.cpp:541
 msgid "ignore"
 msgstr "ignoreeri"
 
-#: kmfilterdlg.cpp:539
+#: kmfilterdlg.cpp:542
 msgid "and"
 msgstr "ja"
 
-#: kmfilterdlg.cpp:540
+#: kmfilterdlg.cpp:543
 msgid "unless"
 msgstr "ilma, et"
 
-#: kmfilterdlg.cpp:541
+#: kmfilterdlg.cpp:544
 msgid "or"
 msgstr "või"
 
-#: kmfilterdlg.cpp:547
+#: kmfilterdlg.cpp:550
 msgid "equals"
 msgstr "võrdub"
 
-#: kmfilterdlg.cpp:548
+#: kmfilterdlg.cpp:551
 msgid "not equal"
 msgstr "ei võrdu"
 
-#: kmfilterdlg.cpp:549
+#: kmfilterdlg.cpp:552
 msgid "contains"
 msgstr "sisaldab"
 
-#: kmfilterdlg.cpp:550
+#: kmfilterdlg.cpp:553
 msgid "doesn't contain"
 msgstr "ei sisalda"
 
-#: kmfilterdlg.cpp:551
+#: kmfilterdlg.cpp:554
 msgid "regular expression"
 msgstr "regulaaravaldis"
 
-#: kmfilterdlg.cpp:558
+#: kmfilterdlg.cpp:561
 msgid "<message>"
 msgstr "<sõnum>"
 
-#: kmfilterdlg.cpp:559
+#: kmfilterdlg.cpp:562
 msgid "<body>"
 msgstr "<keha>"
 
-#: kmfilterdlg.cpp:560
+#: kmfilterdlg.cpp:563
 msgid "<any header>"
 msgstr "<suvaline päis>"
 
@@ -1791,6 +1782,11 @@ msgstr "Aadressiraamatu säilitamine ebaõnnestus"
 msgid "&Abort"
 msgstr "K&atkesta"
 
+#: kmnewiostatuswdg.cpp:24
+#, fuzzy
+msgid "Abort"
+msgstr "K&atkesta"
+
 #: kmnewiostatuswdg.cpp:41
 msgid "Sending messages to "
 msgstr "Sõnumi saatmine "
@@ -1838,3 +1834,9 @@ msgstr "&7 bitti on ASCII"
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
 msgstr "&Märgi tundamtud sümbolid"
+
+#~ msgid "Could not create temporary file"
+#~ msgstr "Ajutist faili pole võimalik luua"
+
+#~ msgid "Could not save temporary file %s"
+#~ msgstr "Ajutist faili pole võimalik salvestada %s"
