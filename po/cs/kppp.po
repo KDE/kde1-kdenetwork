@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kppp 0.9.6\n"
 "POT-Creation-Date: 1998-12-26 02:00+0100\n"
-"PO-Revision-Date: 1998-12-25 18:56 CET\n"
+"PO-Revision-Date: 1998-12-26 20:50 CET\n"
 "Last-Translator: Miroslav Flídr <flidr@kky.zcu.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1062,7 +1062,7 @@ msgstr ""
 
 #: general.cpp:364
 msgid "Use Lock File"
-msgstr ""
+msgstr "Pou¾ívat zámkový soubor"
 
 #: general.cpp:375
 msgid ""
@@ -1427,6 +1427,9 @@ msgid ""
 "\n"
 "Since a further execution would be pointless, kppp will shut down right now."
 msgstr ""
+"Lituli, pomocný proces programu kppp právì skonèil.\n"
+"\n"
+"Proto¾e dal¹í práce by byla zbyteèná, ukonèí se okam¾itì kppp."
 
 #: main.cpp:878
 #, c-format
@@ -2081,12 +2084,3 @@ msgstr "Diagnostika kppp (pouze hádám):"
 #: ppplog.cpp:241
 msgid "Write to file"
 msgstr "Zapsat do souboru"
-
-#~ msgid ""
-#~ "The application-specific config file\n"
-#~ "could not be opened neither\n"
-#~ "read-write nor read-only"
-#~ msgstr ""
-#~ "Konfiguraèní soubor aplikace\n"
-#~ "není mo¾né otevøít a to ani\n"
-#~ "pro zapis ani pro ètení."
