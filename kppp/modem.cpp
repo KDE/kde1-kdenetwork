@@ -223,7 +223,7 @@ void Modem::readtty(int) {
     if(sn != 0 && (c == '\n' || c == '\r')) {
       sn->setEnabled(false);
       //      Debug("QSocketNotifier disabled!");
-      QTimer::singleShot(20, this, SLOT(startNotifier()));
+      QTimer::singleShot(20, this, SLOT(resumeNotifier()));
     }
   }
 }
@@ -262,6 +262,14 @@ void Modem::stopNotifier() {
     delete sn;
     sn = 0;
     Debug("QSocketNotifier stopped!");
+  }
+}
+
+
+void Modem::resumeNotifier() {
+  if(sn != 0) {
+    sn->setEnabled(true);
+    Debug("QSocketNotifier resumed operation.");
   }
 }
 

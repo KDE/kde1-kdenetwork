@@ -1,3 +1,8 @@
+1999-04-09  Harri Porten  <porten@kde.org>
+
+	* modem.cpp: improved protection against socket notifier zombie as
+	suggested by Brian Fisher <fisherb@hotdog.ccs.queensu.ca>.
+
 1999-04-06  Harri Porten  <porten@kde.org>
 	* modem.cpp: set modemfd to -1 in closetty().
 	* modem.cpp: block attempts to start the socket notfier if modemfd < 0.

@@ -72,6 +72,7 @@ signals:
 private slots:
   void startNotifier();
   void stopNotifier();
+  void resumeNotifier();
   void readtty(int);  
 
 private:
