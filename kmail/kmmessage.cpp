@@ -443,7 +443,7 @@ KMMessage* KMMessage::createReply(bool replyToAll)
       pos1 = ccStr.findRev(", ", i);
       if( pos1 == -1 ) pos1 = 0;
       pos2 = ccStr.find(", ", i);
-      ccStr = ccStr.left(pos1) + toStr.right(toStr.size() - pos2 - 1);
+      ccStr = ccStr.left(pos1) + toStr.right(ccStr.size() - pos2 - 1); //Daniel
     }
     ccStr.truncate(ccStr.length()-2);
     msg->setCc(ccStr);
@@ -451,7 +451,7 @@ KMMessage* KMMessage::createReply(bool replyToAll)
   else
   {
     if (!replyToStr.isEmpty()) toStr = replyToStr;
-    else if (!loopToStr.isEmpty()) toStr = loopToStr;
+    else if (!loopToStr.isEmpty()) toStr = loopToStr; // move this down? sven
     else if (!from().isEmpty()) toStr = from();
   }
 
@@ -460,7 +460,7 @@ KMMessage* KMMessage::createReply(bool replyToAll)
   if (replyToAll || !loopToStr.isEmpty()) replyStr = sReplyAllStr;
   else replyStr = sReplyStr;
 
-  debug("msg-id: %s", headerField("Message-Id").data());
+  //debug("msg-id: %s", headerField("Message-Id").data());
   msg->setReferences(headerField("Message-Id"));
   msg->setBody(asQuotedString(replyStr, sIndentPrefixStr));
 
