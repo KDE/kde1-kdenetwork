@@ -169,7 +169,7 @@ int main(int argc, char *argv[])
                     if (cc != sizeof (response))
 			syslog(LOG_WARNING, "sendto: %m");
                 } else {
-                    new_process();  // fork() in forwarding machine
+                    new_process();  /* fork() in forwarding machine */
                 }
         }
 }
@@ -177,7 +177,7 @@ int main(int argc, char *argv[])
 void timeout(int dummy)
 {
     int ok_exit = ack_process();
-    (void)dummy; // to avoid warning
+    (void)dummy; /* to avoid warning */
     if (ok_exit && (time(0) - lastmsgtime >= MAXIDLE))
     {
         /* We clean the table here - to avoid memory leaks */

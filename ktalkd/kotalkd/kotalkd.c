@@ -118,7 +118,7 @@ int main(int argc, char *argv[])
 
 void timeout(int dummy)
 {
-    (void)dummy; // to avoid warning
+    (void)dummy; /* to avoid warning */
     if (time(0) - lastmsgtime >= MAXIDLE)
     {
         close_local_socket();

@@ -47,7 +47,7 @@ void open_local_socket(char * hostname)
         syslog(LOG_ERR, "talk: ntalk/udp: service is not registered.");
         exit(-1);
     }
-    daemon_port = sp->s_port; // already in network byte order
+    daemon_port = sp->s_port; /* already in network byte order */
 
     /* look up the address of the local host */
     hp = gethostbyname(hostname);
