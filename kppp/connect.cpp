@@ -171,7 +171,7 @@ ConnectWidget::~ConnectWidget() {
 }
 
 void ConnectWidget::preinit() {
-  
+
   // this is all just to keep the GUI nice and snappy ....
   // you have to see to believe ...
 
@@ -264,7 +264,6 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
 //     usleep(gpppdata.modemInitDelay() * 10000); // 0.01 - 3.0 sec
 
     writeline(gpppdata.modemInitStr());
-    printf("sending %s\n", gpppdata.modemInitStr());
 
     usleep(gpppdata.modemInitDelay() * 10000); // 0.01 - 3.0 sec 
 

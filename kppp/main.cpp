@@ -30,6 +30,7 @@
 #include <unistd.h>
 #include <kmsgbox.h>
 #include <stdio.h>
+#include <locale.h>
 
 #ifdef BSD
 #include <stdlib.h>
@@ -204,6 +205,9 @@ int main( int argc, char **argv ) {
 
 
   KApplication a(argc, argv,"kppp");
+
+  // set portable locale for decimal point
+  setlocale(LC_NUMERIC ,"C");
 
   while ((c = getopt(argc, argv, "c:hvr:q")) != -1){
     switch (c)

@@ -1,3 +1,8 @@
+Thu Apr 16 21:21:03 1998  Harri Porten  <porten@tu-harburg.de>
+
+	* main.cpp: set portable locale settings for numerical values,
+	since the rulefiles will always have a point as decimal delimiter.
+
 1998-04-15  Harri Porten  <porten@tu-harburg.de>
 
 	* connect.cpp: extended parseargs() to deal with quoted arguments
