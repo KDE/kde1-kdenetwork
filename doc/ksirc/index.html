@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>kSirc Help</title>
+  </head>
+
+  <body bgcolor=#FFFFFF>
+<center>
+<H1><img src="ksirc.gif" width=400 height=100 alt="kSirc"></H1>
+</center>
+<center>
+[
+<A HREF="index.html">General Help</A> | 
+<A HREF="colours.html">Colours</A> |
+<A HREF="filters.html">Filters</A> 
+]
+</CENTER>
+<HR>
+<H2>Contents:</H2>
+
+<OL>
+<LI><A HREF="#install">Install</A>
+<LI><A HREF="#why">Why Should I use KSirc?</A>
+<LI><A HREF="#req">System requirements</A>
+<LI><A HREF="#credits">Credits</A>
+</OL>
+
+<OL>
+<H3><LI><A NAME="install">How Do I install it?</H3></A>
+
+    <OL>
+    <LI> <H4>Binary Install</H4>
+
+<OL>
+    <LI> <B>IF YOU DO _NOT_ HAVE THE KDE</B>
+
+<PRE>
+	cd /usr/local/
+	tar -zxvvf ksirc.tgz
+</PRE>
+
+	You can then run ksirc by typing "ksirc".
+	Remember, you do need to have perl5 installed.<P>
+
+    <LI><B>For those with KDE</B>
+<PRE>
+	cd $KDEDIR/..
+	tar -zxvvf ksirc.tgz
+</PRE>
+	
+	You can then run ksirc by typeing "ksirc".
+</OL>
+
+    <H4><LI>Source Install</H4>
+<PRE>
+	./configure
+	make 
+        make install
+</PRE>
+</UL>
+
+<H3><LI><A NAME="why">Why should I use KSirc?</A></H3>
+
+<OL>
+
+    <LI>You're looking for a powerful, and reasonably easy to use irc
+    client that works well under X, support multiple windows, filter
+    rules, colours, etc.
+
+    <LI>ircII has a pretty poor scripting language.  Sirc's perl scripting
+    is flexible and reasonably secure.  Combined with #1.1 gives you an X
+    irc client with good scripting.
+</OL>
+
+<H3><LI><A NAME="req">System requirements</A></H3>
+
+    For the static binaries you don't need anything except a working
+    X, and perl 5.00X (4.039 might work, it's never been tested though)<P>
+
+    To compile and run the source you'll need:
+<UL>
+
+	<LI>g++ 2.7.2.3
+        <LI>KDE Support and KDE Libraries > 971220
+	<LI>QT Libraries 1.31
+	<LI>Perl 5.00X
+</UL>
+<P>
+     Platforms so-far tested with gcc/g++ 2.7.x:
+<UL>
+	<LI>Linux
+	<LI>FreeBSD/OpenBSD
+	<LI>SunOS
+	<LI>Solaris
+</UL>
+
+<H3><LI><A NAME="credits">Credits</A></H3>
+
+<OL>
+     <H4><LI>KSirc Developed by</H4>
+<UL>
+	<LI>Boren/Andrew Stanley-Jones  (C++ code)
+	<LI>Isando (constant feedback, ideas, and support)
+        <LI>Maelcum (constant feedback, ideas, and support)
+	<LI>KernAk (web pages)
+	<LI>Innocent1 (feedback and comments)
+	<LI>Wilton Wong, aka Super Willy, aka [Wilton] (C++ Code and patches, 
+	bug fixes, and other wonerfull things)
+	<LI>dalnet #linux (testing and patience)
+</UL><P>
+        if I missed anyone, let me know!
+
+	
+    <H4><LI>Credit where credit it due:</H4>
+<P>
+        KSirc uses sirc for all the irc server interaction, scripting
+        etc.  The excellent sirc client is orabidoo
+        <roger.espel.llima@pobox.com>.  For more information on sirc
+        have a look at it's home page:
+
+        <A HREF="http://www.eleves.ens.fr:8080/home/espel/sirc.html">http://www.eleves.ens.fr:8080/home/espel/sirc.html</A>
+
+
+</UL>
+</UL>
+
+
+    <hr>
+    <address><a href="mailto:asj@chowtown.cban.com">Andrew Stanley-Jones</a></address>
+<!-- Created: Sun Jan 11 11:25:14 MST 1998 -->
+<!-- hhmts start -->
+Last modified: Sun Jan 11 11:45:56 MST 1998
+<!-- hhmts end -->
+  </body>
+</html>

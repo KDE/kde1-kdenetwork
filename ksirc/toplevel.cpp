@@ -334,7 +334,6 @@ KSircTopLevel::~KSircTopLevel()
 
   if((channel_name[0] == '#') || (channel_name[0] == '&')){
     QString str = QString("/part ") + channel_name + "\n";
-    cerr << "Quiting channel: " << str;
     emit outputLine(str);
   }
 
@@ -1168,8 +1167,18 @@ void KSircTopLevel::initPopUpMenu()
   if(items == 0){
 
     user_menu.setAutoDelete(TRUE);
+    user_menu.append(new UserControlMenu("Whois", 
+					 "/whois %s",
+					 0, UserControlMenu::Text));
+    user_menu.append(new UserControlMenu("Ping", 
+					 "/ping %s",
+					 0, UserControlMenu::Text));
+    user_menu.append(new UserControlMenu("Version", 
+					 "/ctcp %s VERSION",
+					 0, UserControlMenu::Text));
+    user_menu.append(new UserControlMenu); // Defaults to a seperator
     user_menu.append(new UserControlMenu("Abuse", 
-					 "/me slaps %s arround with a small 50lb Unix Manual",
+					 "/me slaps %s around with a small 50lb Unix Manual",
 					 0, UserControlMenu::Text));
     user_menu.append(new UserControlMenu); // Defaults to a seperator
     user_menu.append(new UserControlMenu("Kick",
@@ -1275,13 +1284,16 @@ void KSircTopLevel::newWindow()
 
 void KSircTopLevel::closeEvent(QCloseEvent *)
 {
-  emit closing(this, channel_name);
-  if((channel_name[0] == '#') || (channel_name[0] == '&')){
-    QString str = QString("/part ") + channel_name + "\n";
-    emit outputLine(str);
-  }
+  // Let's not part the channel till we are acutally delete.
+  // We should always get a close event, *BUT* we will always be deleted.
+  //  if((channel_name[0] == '#') || (channel_name[0] == '&')){
+  //    QString str = QString("/part ") + channel_name + "\n";
+  //    emit outputLine(str);
+  //  }
 
-  //  delete this;
+  // Let's say we're closing, what ever connects to this should delete us.
+  emit closing(this, channel_name); // This should call "delete this".
+  // This line is NEVER reached.
 }
 
 void KSircTopLevel::resizeEvent(QResizeEvent *e)

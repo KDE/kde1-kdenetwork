@@ -185,28 +185,33 @@ void KSircIOController::stdout_read(KProcess *, char *_buffer, int buflen)
       }
     }
     if(!(ksircproc->TopList)[name]){
-      if((kSircConfig->message_window == TRUE) &&
-	 !ksircproc->TopList["!messages"]){
-	ksircproc->new_toplevel("!messages");
-      }
+      //      if((kSircConfig->message_window == TRUE) &&
+      //	 !ksircproc->TopList["!messages"]){
+      //	ksircproc->new_toplevel("!messages");
+      //      }
       if(kSircConfig->autocreate == TRUE){
 	ksircproc->new_toplevel(name);
       }
       else{
 	name = "!default";
-	switch(line[0]){
-	case '`':
+	if(line[0] == '`')
+	  name = "!discard";
+	/*
+	  switch(line[0]){
+	  case '`':
 	  name = "!discard";
 	  break;
-	case '>':
-	case '[':
-	case '=':
-	case '|':
+	  
+	  case '>':
+	  case '[':
+	  case '=':
+	  case '|':
 	  if(ksircproc->TopList["!messages"]){
-	    name = "!messages";
+	     name = "!messages";
 	  }
 	  break;
 	}
+	*/
       }
     }
     ksircproc->TopList[name]->sirc_receive(line);

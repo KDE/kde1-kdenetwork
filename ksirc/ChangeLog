@@ -1,5 +1,7 @@
 1998-01-10  Andrew Stanley-Jones  <asj@chowtown.cban.com>
 
+	* toplevel.cpp (KSircTopLevel): Menus updated and working correctly.
+
 	* filters.pl (hook_ctcp_lag): Added feature for lag monitoring up
  	in the upper right hand corner.  Menus are broken though :(
 
@@ -73,6 +75,9 @@
 $Revision$
 	
 $Log$
+Revision 1.12  1998/01/10 18:34:41  asj
+Updated filters.pl to do better searching for SYS_gettimeofday
+
 Revision 1.11  1998/01/10 17:46:51  asj
 Added lag-o-meter.
 

@@ -124,13 +124,13 @@ KSircProcess::KSircProcess( char *_server=0L, QObject * parent=0, const char * n
   running_window = TRUE;        // True so we do create the default
   new_toplevel("!default");     // 
 
-  kConfig->setGroup("GlobalOptions");
-  if(kConfig->readNumEntry("Reuse", TRUE) == TRUE){
-  }
-  else{
-    running_window = TRUE;        // True so we do create the a new message
-    new_toplevel("!messages");
-  }
+  //  kConfig->setGroup("GlobalOptions");
+  //  if(kConfig->readNumEntry("Reuse", TRUE) == TRUE){
+  //  }
+  //  else{
+  //    running_window = TRUE;        // True so we do create the a new message
+  //    new_toplevel("!messages");
+  //  }
 
   running_window = FALSE;       // set false so next changes the first name
   default_follow_focus = TRUE;
@@ -155,16 +155,15 @@ KSircProcess::~KSircProcess()
 {
   
   if(TopList["!default"]){
-    delete TopList["!default"];
-    TopList.remove("!default");
+    TopList.remove("!default"); // remove default so we don't delete it twice.
   }
-  /*
+
   QDictIterator<KSircMessageReceiver> it(TopList);
   while(it.current()){
     delete it.current();
     ++it;
   }
-  */
+
   delete proc;               // Delete process, seems to kill sirc, good.
   delete iocontrol;          // Take out io controller
   emit delete_toplevel(QString(server), QString()); // Say we're closing.
@@ -184,7 +183,7 @@ void KSircProcess::new_toplevel(QString str)
     // TopList is a list of KSircReceivers so we still need wm.
     KSircTopLevel *wm = new KSircTopLevel(this, str.data());
     TopList.insert(str, wm);
-    // Connect needed signals.  For a !message window we never want it
+    // Connect needed signals.  For a message window we never want it
     // becomming the default so we ignore focusIn events into it.
     connect(wm, SIGNAL(outputLine(QString&)), 
 	    iocontrol, SLOT(stdin_write(QString&)));
@@ -192,12 +191,12 @@ void KSircProcess::new_toplevel(QString str)
 	    this,SLOT(new_toplevel(QString)));
     connect(wm, SIGNAL(closing(KSircTopLevel *, char *)),
 	  this,SLOT(close_toplevel(KSircTopLevel *, char *)));
-    if(str != QString("!messages")){
+    //    if(str != QString("!messages")){
       connect(wm, SIGNAL(currentWindow(KSircTopLevel *)),
 	      this,SLOT(default_window(KSircTopLevel *)));
       connect(wm, SIGNAL(changeChannel(QString, QString)),
 	      this,SLOT(recvChangeChannel(QString, QString)));
-    }
+      //    }
     emit made_toplevel(QString(server), str);
     wm->show(); // Pop her up
   }
@@ -246,9 +245,11 @@ void KSircProcess::close_toplevel(KSircTopLevel *wm, char *name)
 
     if(it.current())
       TopList.replace("!default", it.current());
-    else
+    else{
       cerr << "NO MORE WINDOWS?\n"; // We're out of windows with > 3
 				    // huh open, huh?
+      TopList.remove("!default");   // let's not blow up to badly
+    }
   }
   // Let's let em know she's deleted!
   emit delete_toplevel(QString(server), QString(name));

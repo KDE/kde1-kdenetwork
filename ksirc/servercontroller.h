@@ -111,6 +111,9 @@ public slots:
     virtual void filter_rule_editor();
     virtual void configChange();
     virtual void nickcompletion();
+    virtual void help_general();
+    virtual void help_colours();
+    virtual void help_filters();
     virtual void about_ksirc();
 
 private:

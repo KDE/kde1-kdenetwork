@@ -107,10 +107,10 @@ servercontroller::servercontroller
 	kConfig->setGroup("GlobalOptions");
 	options = new QPopupMenu();
 	options->setCheckable(TRUE);
-	reuse_id = options->insertItem("Seperate Message Window", 
-			    this, SLOT(reuse()));
-	reuse(); // Invert it
-	reuse(); // invert it again to what it should be.
+	//	reuse_id = options->insertItem("Seperate Message Window", 
+	//			    this, SLOT(reuse()));
+	//	reuse(); // Invert it
+	//	reuse(); // invert it again to what it should be.
 	auto_id = options->insertItem("Auto Create Windows", 
 			    this, SLOT(autocreate()));
 	options->setItemChecked(auto_id, 
@@ -132,6 +132,13 @@ servercontroller::servercontroller
 	MenuBar->insertItem("&Options", options);
 
 	QPopupMenu *help = new QPopupMenu();
+	help->insertItem("Help...",
+			 this, SLOT(help_general()));
+	help->insertItem("Help on Colours...",
+			 this, SLOT(help_colours()));
+	help->insertItem("Help on Filters",
+			 this, SLOT(help_filters()));
+	help->insertSeparator();
 	help->insertItem("About kSirc...",
 			 this, SLOT(about_ksirc()));
 	MenuBar->insertItem("&Help", help);
@@ -220,6 +227,8 @@ void servercontroller::add_toplevel(QString parent, QString child)
   // Add new channel, first add the parent to the path
   KPath path;
   path.push(&parent);
+  if(child[0] == '!')
+    child.remove(0, 1); // If the first char is !, it's control, remove it
   // add a new child item with parent as it's parent
   ConnectionTree->addChildItem(child.data(), pic_channel, &path);
   //cerr << "Added child for: " << parent << "->" << child << endl;
@@ -241,12 +250,16 @@ void servercontroller::delete_toplevel(QString parent, QString child)
   }
   else
     proc_list.remove(parent); // Remove process entry while we are at it
+  
 
   ConnectionTree->removeItem(&path); // Remove the item
   //cerr << "Removed child for: " << parent << "->" << child << endl;
   open_toplevels--;
   if(open_toplevels <= 0)
     connections->setItemEnabled(join_id, FALSE);
+
+  if(proc_list.count() == 0)
+    ConnectionTree->clear();
 
 }
 
@@ -374,3 +387,19 @@ void servercontroller::about_ksirc()
   caption += "\n\n(c) Copyright 1997, Andrew Stanley-Jones (asj@ksirc.org)\n\nkSirc Irc Client";
   QMessageBox::about(this, "About kSirc", caption);
 }
+
+void servercontroller::help_general()
+{
+  kApp->invokeHTMLHelp("ksirc/index.html", "");
+}
+
+void servercontroller::help_colours()
+{
+  kApp->invokeHTMLHelp("ksirc/colours.html", "");
+}
+
+void servercontroller::help_filters()
+{
+  kApp->invokeHTMLHelp("ksirc/filters.html", "");
+}
+
