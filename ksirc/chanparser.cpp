@@ -51,6 +51,8 @@ ChannelParser::ChannelParser(KSircTopLevel *_top) /*FOLD00*/
 
 void ChannelParser::parse(QString string) /*fold00*/
 {
+  string.detach(); // for older Qts
+
   parseFunc *pf;
   if(string.length() < 3){
     throw(parseError(string, QString("Dumb string, too short")));
@@ -75,7 +77,6 @@ void ChannelParser::parse(QString string) /*fold00*/
           break;
         }
       }
-      string.detach();
       string.remove(0, space);
       string.prepend("` ");
       string.prepend(s);
@@ -105,6 +106,7 @@ void ChannelParser::parse(QString string) /*fold00*/
 
 void ChannelParser::parseSSFEClear(QString string) /*FOLD00*/
 {
+  string.detach();
   top->mainw->clear();
   top->mainw->repaint(TRUE);
   string.truncate(0);
@@ -113,6 +115,7 @@ void ChannelParser::parseSSFEClear(QString string) /*FOLD00*/
 
 void ChannelParser::parseSSFEStatus(QString string) /*fold00*/
 {
+  string.detach();
   string.remove(0, 4); // strip off the first 4 characters
   char *status;
   if(string.length() < 8)
@@ -342,6 +345,7 @@ void ChannelParser::parseINFONicks(QString in_string) /*FOLD00*/
 void ChannelParser::parseINFOJoin(QString string) /*FOLD00*/
 {
   char nick[101], channel[101];
+  string.detach();
   string.remove(0, 4);                   // strip *>* to save a few compares
   if(sscanf(string, "You have joined channel %100s", channel) > 0){
     QString chan = QString(channel).lower();
@@ -365,7 +369,8 @@ void ChannelParser::parseINFOJoin(QString string) /*FOLD00*/
 void ChannelParser::parseINFOPart(QString string) /*fold00*/
 {
   char nick[101], channel[101];
-  
+ 
+  string.detach();
   string.remove(0, 4);                // clear junk
 
   // Multiple type of parts, a signoff or a /part
@@ -468,6 +473,7 @@ void ChannelParser::parseINFOPart(QString string) /*fold00*/
 void ChannelParser::parseINFOChangeNick(QString string) /*fold00*/
 {
   char old_nick[101], new_nick[101];
+  string.detach();
   string.remove(0, 4); // Remove the leading *N* and space
   int found = sscanf(string, "%100s is now known as %100s", old_nick, new_nick);
   if(found < 0){
@@ -523,6 +529,7 @@ void ChannelParser::parseINFOMode(QString string) /*fold00*/
   // we should handle it in any special way.
 
   // Strip off leading sirc info
+  string.detach();
   string.remove(0, 4);
 
 
@@ -676,6 +683,7 @@ void ChannelParser::parseINFOMode(QString string) /*fold00*/
 
 void ChannelParser::parseCTCPAction(QString string) /*fold00*/
 {
+  string.detach();
   string.remove(0, 2);      // * <something> use fancy * pixmap. Remove 2, leave one for space after te *
                             // why? looks cool for dorks
   throw(parseSucc(string, kSircConfig->colour_text, top->pix_star));

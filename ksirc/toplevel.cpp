@@ -973,6 +973,7 @@ void KSircTopLevel::control_message(int command, QString str) /*fold00*/
   case SET_LAG:
     if(str.isNull() == FALSE){
       bool ok = TRUE;
+      str.detach();
       str.truncate(6);
       double lag = str.toDouble(&ok);
       if(ok == TRUE){
