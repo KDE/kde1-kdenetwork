@@ -880,10 +880,10 @@ void dieppp(int sig) {
 
         if(gpppdata.authMethod() == AUTH_PAP)
           Requester::rq->setPAPSecret(gpppdata.storedUsername(),
-                                      gpppdata.password);
+                                      gpppdata.password.data());
         if(gpppdata.authMethod() == AUTH_CHAP)
           Requester::rq->setCHAPSecret(gpppdata.storedUsername(),
-                                       gpppdata.password);
+                                       gpppdata.password.data());
 
 	p_kppp->con_win->hide();
 	p_kppp->con_win->stopClock();
@@ -982,7 +982,7 @@ void KPPPWidget::connectbutton() {
       return;
     } else {      
       if(!Requester::rq->setPAPSecret(gpppdata.storedUsername(),
-                                      gpppdata.password)) {
+                                      gpppdata.password.data())) {
 	QString s;
 	s.sprintf(i18n("Cannot create PAP authentication\n"
 				     "file \"%s\""), PAP_AUTH_FILE);
@@ -1007,7 +1007,7 @@ void KPPPWidget::connectbutton() {
       return;
     } else {      
       if(!Requester::rq->setCHAPSecret(gpppdata.storedUsername(),
-                                       gpppdata.password)) {
+                                       gpppdata.password.data())) {
 	QString s;
 	s.sprintf(i18n("Cannot create CHAP authentication\n"
 				     "file \"%s\""), CHAP_AUTH_FILE);
@@ -1207,7 +1207,7 @@ void killpppd() {
       return;
     }
 
-    wait(&stat);
+    waitpid(pid, &stat, WNOHANG);
   }
 }
 

@@ -1,3 +1,11 @@
+1998-11-22  Harri Porten  <porten@kde.org>
+
+	* main.cpp: fixed freeze on disconnect by using waitpid(...,
+	WNOHANG) instead of wait()
+	* main.cpp: forgot to convert gpppdata.password to char*
+	* opener.cpp: close file descriptors after being sent. Left out
+	dup() call. Did it serve any special purpose ?
+		
 1998-11-20  Harri Porten  <porten@kde.org>
 
 	* First draft of a client&server archicture consisting of setuid

@@ -101,6 +101,7 @@ void Opener::mainLoop() {
         sendFD(DEVNULL, fd, &response);
       } else
         sendFD(filename, fd, &response);
+      close(fd);
       break;
 
     case OpenLock:
@@ -123,6 +124,7 @@ void Opener::mainLoop() {
         sendFD(DEVNULL, fd, &response);
       } else
         sendFD(lockfile, fd, &response);
+      close(fd);
       break;
 
     case RemoveLock:
@@ -145,6 +147,7 @@ void Opener::mainLoop() {
         sendFD(DEVNULL, fd, &response);
       } else
         sendFD(filename, fd, &response);
+      close(fd);
       break;
 
     case OpenSysLog:
@@ -161,6 +164,7 @@ void Opener::mainLoop() {
           sendFD("/var/log/syslog.ppp", fd, &response);
       } else
         sendFD("/var/log/messages", fd, &response);
+      close(fd);
       break;
 
     case SetSecret:
@@ -219,7 +223,9 @@ int Opener::sendFD(const char *ttypath, int ttyfd,
   control.cmsg.cmsg_len = sizeof(struct cmsghdr) + sizeof(int);
   control.cmsg.cmsg_level = SOL_SOCKET;
   control.cmsg.cmsg_type = SCM_RIGHTS;
-  *((int *) &control.cmsg.cmsg_data) = dup(ttyfd);
+  // What's the duplicating good for ?
+  //  *((int *) &control.cmsg.cmsg_data) = dup(ttyfd);
+  *((int *) &control.cmsg.cmsg_data) = ttyfd;
 
   if (sendmsg(socket, &msg, 0) < 0) {
     perror("unable to send file descriptors");
