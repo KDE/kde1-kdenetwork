@@ -44,7 +44,7 @@ BUILTSOURCES =	kfinger.moc finger.moc
 DISTCLEANFILES = $(BUILTSOURCES)
 
 messages:
-	$(XGETTEXT) -C -ktranslate -ki18n -x $(includedir)/kde.pot $(kfinger_SOURCES) && mv messages.po ../kfinger.pot
+	$(XGETTEXT) -C -ktranslate -ki18n -x $(includedir)/kde.pot $(kfinger_SOURCES) && mv messages.po ../po/kfinger.pot
 
 # just install datas here. Use install-exec-local for scripts and etc.
 # the binary itself is already installed from automake
