@@ -20,7 +20,7 @@
 
 #include "NNTP.h"
 
-#include <ktopwidget.h>
+#include <ktmainwindow.h>
 #include <qdir.h>
 #include <qlistbox.h>
 #include <qstrlist.h>
@@ -35,7 +35,7 @@
 class KMReaderWin;
 class KNumericSpinBox;
 
-class Artdlg : public KTopLevelWidget
+class Artdlg : public KTMainWindow
 {
     Q_OBJECT
         

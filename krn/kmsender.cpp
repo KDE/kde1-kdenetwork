@@ -34,6 +34,14 @@ extern KMIdentity *identity;
 #include <sys/stat.h>
 #include <sys/wait.h>
 
+#ifdef HAVE_PATHS_H
+#include <paths.h>
+#endif
+
+#ifndef _PATH_SENDMAIL
+#define _PATH_SENDMAIL  "/usr/sbin/sendmail"
+#endif
+
 #define SENDER_GROUP "sending mail"
 
 /** uncomment the following line for SMTP debug output */
@@ -72,7 +80,7 @@ void KMSender::readConfig(void)
 
   mSendImmediate = (bool)config->readNumEntry("Immediate", TRUE);
   mSendQuotedPrintable = (bool)config->readNumEntry("Quoted-Printable", FALSE);
-  mMailer = config->readEntry("Mailer", "/usr/sbin/sendmail");
+  mMailer = config->readEntry("Mailer",  _PATH_SENDMAIL);
   mSmtpHost = config->readEntry("Smtp Host", "localhost");
   mSmtpPort = config->readNumEntry("Smtp Port", 25);
 
@@ -162,6 +170,14 @@ bool KMSender::send(KMMessage* aMsg, short sendNow)
 }
 
 
+bool KMSender::sendSingleMail( KMMessage *aMsg) 
+{
+
+  return true;
+
+}
+
+
 //-----------------------------------------------------------------------------
 bool KMSender::sendQueued(void)
 {
@@ -174,10 +190,13 @@ bool KMSender::sendQueued(void)
     return FALSE;
   }
 
+
   // open necessary folders
   outboxFolder->open();
-  sentFolder->open();
   mCurrentMsg = NULL;
+
+  sentFolder->open();
+
 
   // create a sender
   if (mSendProc) delete mSendProc;
@@ -197,18 +216,19 @@ bool KMSender::sendQueued(void)
 
 
 //-----------------------------------------------------------------------------
-void KMSender::doSendMsg(void)
+void KMSender::doSendMsg()
 {
 #ifndef KRN
   assert(mSendProc != NULL);
 
   // Move previously sent message to folder "sent"
   if (mCurrentMsg)
-  {
-    mCurrentMsg->setStatus(KMMsgStatusSent);
-    sentFolder->moveMsg(mCurrentMsg);
-    mCurrentMsg = NULL;
-  }
+    {
+      mCurrentMsg->setStatus(KMMsgStatusSent);
+      sentFolder->moveMsg(mCurrentMsg);
+      mCurrentMsg = NULL;
+    }
+  
 
   // See if there is another queued message
   mCurrentMsg = outboxFolder->getMsg(0);

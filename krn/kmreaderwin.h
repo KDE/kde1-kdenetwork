@@ -96,6 +96,7 @@ public slots:
   void slotScrollNext();
   void slotDocumentChanged();
   void slotDocumentDone();
+  void slotTextSelected(bool);
 
   /** An URL has been activate with a click. */
   void slotUrlOpen(const char* url, int button);
@@ -141,6 +142,11 @@ protected:
   virtual const QString strToHtml(const QString str, 
 				  bool decodeQuotedPrintable=TRUE,
 				  bool preserveLeadingBlanks=FALSE) const;
+
+  /** Change the string to `quoted' html (meaning, that the quoted
+    part of the message get italized */
+  QString quotedHTML(char * pos);
+
   /** HTML initialization. */
   virtual void initHtmlWidget(void);
 

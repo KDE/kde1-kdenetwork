@@ -19,18 +19,18 @@
 #ifndef kmtopwidget_h
 #define kmtopwidget_h
 
-#include <ktopwidget.h>
+#include <ktmainwindow.h>
 
 class KMTopLevelWidget;
 
 // easier declarations of function prototypes for forEvery type functions
 typedef void (KMTopLevelWidget::*KForEvery)(void);
 
-/** Top level window that offers methods to be called on every 
+/** Top level window that offers methods to be called on every
  * existing top level window.
  */
-#define KMTopLevelWidgetInherited KTopLevelWidget
-class KMTopLevelWidget: public KTopLevelWidget
+#define KMTopLevelWidgetInherited KTMainWindow
+class KMTopLevelWidget: public KTMainWindow
 {
   Q_OBJECT
 
@@ -48,12 +48,16 @@ public:
   virtual void writeConfig(void);
 
   /** Closes the widget and the app if no other top level widget
-    is opened. Returns TRUE if the widget was closed, otherwise 
+    is opened. Returns TRUE if the widget was closed, otherwise
     FALSE. Call with forceKill==TRUE to delete the widget also. */
-  virtual bool close(bool forceKill=FALSE);
+    //  virtual bool close(bool forceKill=FALSE);
 
 protected:
   virtual void closeEvent(QCloseEvent*);
+
+private:
+  // app->quit() is called when sWindowCount<=0 in destructor
+  static int sWindowCount;
 };
 
 #endif /*kmtopwidget_h*/

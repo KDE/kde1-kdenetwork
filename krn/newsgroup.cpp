@@ -64,6 +64,7 @@ Article::Article (const char *_ID)
     expire=true;  // robert's cache stuff
     isread=false;
     ID=_ID;
+    desperate="";
     load();
 }
 
@@ -76,6 +77,7 @@ Article::Article(void)
     threadDepth=0;
     expire=true;  // robert's cache stuff
     isread=false;
+    desperate="";
 }
 
 bool Article::isRead(const char * ID)
@@ -230,6 +232,7 @@ void Article::save()
     _content+=Lines+"\n";
     _content+=From+"\n";
     _content+=Date+"\n";
+    _content+=desperate+"\n";
 
     //This one does nothing, but I keep it for compatibility
     _content+="1\n";
@@ -298,13 +301,13 @@ bool Article::load()
         key.dptr=k.data();
         key.dsize=k.length() + 1;
         content=gdbm_fetch(artdb,key);
+        if (!content.dptr)
+        {
+            return false; //Couldn't load it
+        }
         isread=true;
     }
-    if (!content.dptr)
-    {
-        return false; //Couldn't load it
-    }
-    
+
     QString s=(char *)content.dptr;
     
     int index=0;
@@ -329,6 +332,8 @@ bool Article::load()
     Lines=tl.at(2);
     From=tl.at(3);
     Date=tl.at(4);
+    desperate=tl.at(5);
+
 
     /*
     if (!strcmp(tl.at(5),"1"))
@@ -337,12 +342,12 @@ bool Article::load()
         isread=false;
         */
         
-    if (!strcmp(tl.at(6),"1"))
+    if (!strcmp(tl.at(7),"1"))
         expire=true;
     else
         expire=false;
     
-    if (!strcmp(tl.at(7),"1"))
+    if (!strcmp(tl.at(8),"1"))
         ismarked=true;
     else
         ismarked=false;
@@ -475,15 +480,19 @@ void NewsGroup::clean()
     QString s;
     if (artList.isEmpty())
         s="\n";
-    else for (iter=artList.first();iter!=0;iter=artList.next())
+    else
     {
-        s+=iter->ID;
-        s+="\n";
+        QListIterator <Article> ite (artList);
+        for (ite.toFirst();ite.current();++ite)
+        {
+            iter=ite.current();
+            s+=iter->ID;
+            s+="\n";
+        }
     }
     QString ac=krnpath+name;
-    unlink(ac);
+    unlink(ac.data());
     kStringToFile (s,ac,false,false);
-    
     dirty=false;
 }
 
@@ -508,7 +517,9 @@ void NewsGroup::addArticle(QString ID,bool onlyUnread)
         Article *art=new Article();
         art->ID=ID;
         if(art->load())
+        {
             artList.append(art);
+        }
         else
         {
             dirty=true;
@@ -538,13 +549,16 @@ void NewsGroup::getList(Artdlg *dialog)
     
     int artCount=buffer.contains('\n');
     debug ("There are %d articles",artCount);
+    buffer+="\n";
     while (1)
     {
         index=buffer.find ('\n',oldindex);
-        ID=buffer.mid(oldindex,index-oldindex);
-        if (ID.isEmpty())
+        if (index==-1)
             break;
+        ID=buffer.mid(oldindex,index-oldindex);
         oldindex=index+1;
+        if (ID.isEmpty())
+            continue;
         addArticle (ID,onlyUnread);
         if (dialog && !(artList.count()%10))
         {
@@ -595,12 +609,11 @@ void NewsGroup::saveLastArticle(NNTP *server,int i)
 
 void NewsGroup::getSubjects(NNTP *server)
 {
-    load();
     server->setGroup(name);
     if (server->last>lastArticle(server))
     {
         debug ("xover from %d to %d",lastArticle(server)+1,server->last+5);
-        server->artList(lastArticle(server),server->last,this);
+        server->artList(lastArticle(server)+1,server->last,this);
         saveLastArticle(server,server->last);
         save();
     }
@@ -700,7 +713,6 @@ void do_insert(Article *art)
             a->art=art;
             if (a->parent)
             {
-                debug ("marker 1");
                 debug ("ID-->%s",art->ID.data());
                 //                ((node *)a->parent)->children.removeRef(a);
                 //                a->parent=0;

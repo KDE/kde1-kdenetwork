@@ -92,7 +92,6 @@ int i;
     QPushButton *b2=new QPushButton(i18n("Cancel"),this,"b2");
     buttonsl->addWidget(b2);
 
-    b1->setDefault(true);
     connect (b1,SIGNAL(clicked()),SLOT(save()));
     connect (b2,SIGNAL(clicked()),SLOT(reject()));
 

@@ -22,9 +22,9 @@
 
 #include <qlined.h>
 #include "kmtopwidget.h"
-#ifdef HAS_KSPELL
+
 #include <kspell.h>
-#endif
+
 
 
 class QLineEdit;
@@ -56,11 +56,27 @@ public:
 	 const char *name=NULL, const char *filename=NULL);
   virtual ~KMEdit();
 
+  /**
+   * Start the spell checker.
+   **/
+  void spellcheck();
+
+signals:
+  void spellcheck_done();
+public slots:
+  void slotSpellCorrected (char *originalword, char *newword, unsigned pos);
+  void slotSpellMisspelling (char *word, QStrList *, unsigned pos);
+  void slotSpellcheck2(KSpell*);
+  void slotSpellResult (char *newtext);
+  void slotSpellDone();
+
 protected:
   /** Event filter that does Tab-key handling. */
   virtual bool eventFilter(QObject*, QEvent*);
 
   KMComposeWin* mComposer;
+private:
+  KSpell *mKSpell; 
 };
 
 
@@ -92,6 +108,7 @@ public slots:
 protected:
   virtual bool eventFilter(QObject*, QEvent*);
   KMComposeWin* mComposer;
+protected:
 };
 
 
@@ -159,6 +176,9 @@ public slots:
   /** Insert a file to the end of the text in the editor. */
   void slotInsertFile();
 
+  /** Insert sender's public key block in the editor. */
+  void slotInsertMyPublicKey();
+
   /** Popup a nice "not implemented" message. */
   void slotToDo();
 
@@ -195,10 +215,9 @@ public slots:
 
   /** Check spelling of text. */
   void slotSpellcheck();
-  void slotSpellcheck2(KSpell*);
-  void slotSpellResult(char* newtext);
-  void slotSpellCorrected(char *originalword, char *newword, long pos);
-  void slotSpellMispelling (char *word, QStrList *, long pos);
+  void slotSpellcheckConfig();
+//  void slotSpellConfigure();
+  void slotSpellcheckDone();
 
   /** Append current message to ~/dead.letter */
   virtual void deadLetter(void);
@@ -288,6 +307,7 @@ protected:
   KMLineEdit mEdtFrom, mEdtReplyTo, mEdtTo, mEdtCc, mEdtBcc, mEdtSubject;
   QLabel    mLblFrom, mLblReplyTo, mLblTo, mLblCc, mLblBcc, mLblSubject;
   QPushButton mBtnTo, mBtnCc, mBtnBcc, mBtnFrom, mBtnReplyTo;
+  bool mSpellCheckInProgress;
   /* start Added for KRN */
   KMLineEdit mEdtNewsgroups, mEdtFollowupTo;
   QLabel     mLblNewsgroups, mLblFollowupTo;
@@ -313,11 +333,9 @@ protected:
   short mMnuIdUrgent, mMnuIdConfDeliver, mMnuIdConfRead;
   QString mForeColor, mBackColor, mBodyFont;
   QList<QLineEdit> mEdtList;
-  QString mPathAttach;
-#ifdef HAS_KSPELL
-  KSpell* mKSpell;
-  KSpellConfig* mKSpellConfig;
-#endif
+  static QString mPathAttach;
+
+
 #if defined CHARSETS
   int m7BitAscii;
   QString mDefaultCharset;

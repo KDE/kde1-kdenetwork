@@ -24,13 +24,13 @@
 #include <qpopmenu.h>
 #include <qtimer.h>
 
-#include <ktopwidget.h>
+#include <ktmainwindow.h>
 #include "ktreeview.h"
 #include "mytree.h"
 
 #include "NNTP.h"
 
-class Groupdlg : public KTopLevelWidget 
+class Groupdlg : public KTMainWindow
 {
     Q_OBJECT
 

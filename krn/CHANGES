@@ -1,4 +1,46 @@
 -----------------------------------------------------------------------------
+Changes made Dec 15
+-----------------------------------------------------------------------------
+* [Roberto] Long time no sein'! ;-)
+            In honour of the upcoming 1.1, here are some fixes.
+            Fixed the "lost last subscribed group" bug.
+            Added a desperate way to get articles from servers that
+            don't support "article <ID>". Those servers are broken,
+            but krn should now work with them...
+            ...as long as you don't try to read the same group from TWO
+            broken servers, which will cause minor havoc.
+            Databases are (again) incompatible, sorry!
+            Restored artdlg's geometry memory.
+            Made "show only unread messages" the default, which seems more
+            reasonable.
+            Imported whole bunch of new files from kmail, which should
+            include a lot of bugfixes and new features, in particular
+            this should fix the bug with pgp and comp.os.linux.announce.
+            Switched artdlg and groupdlg to ktmainwindow, not
+            completely yet.
+            Trying to make binary decoding work again (this last worked in
+            beta 3!)
+            Made krnsender remove empty unneeded headers.
+            Removed strtok from listXover, which should make it a tad more
+            robust.
+            Simplified NNTP::PGetTextResponse, removing the observer
+            nonsense. KRN should block a bit less now, and the code be
+            cleaner.
+
+            IMPORTANT------------------------------------------------------
+            There is a bug that I can't track:
+                 1) open a group.
+                 2) get article list.
+                 3) post.
+                 4) get article list.
+                 5) post.
+                 6) get article list.
+            In my test system, it will not show the second post, which will
+            be missing forever! But I have no access to a real newsserver
+            that let me post, so I would LOVE some help here.
+            END-IMPORTANT--------------------------------------------------
+
+-----------------------------------------------------------------------------
 Changes made Jul 31
 -----------------------------------------------------------------------------
 * [Roberto] Changes to let old krn build with the latest shortcut changes.

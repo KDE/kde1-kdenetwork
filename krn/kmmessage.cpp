@@ -7,6 +7,7 @@
 #include "kmmessage.h"
 #include "kmmsgpart.h"
 #include "kmmsginfo.h"
+#include "kpgp.h"
 #ifndef KRN
 #include "kmfolder.h"
 #include "kmversion.h"
@@ -233,14 +234,14 @@ void KMMessage::fromString(const QString aStr, bool aSetStatus)
 
   // copy string and throw out obsolete control characters
   len = aStr.length();
-  result.resize(len);
+  result.resize(len +1);
   for (i=0,j=0; i<len; i++)
   {
-    if (aStr[i]>=' ' || aStr[i]=='\t' || aStr[i]=='\n')
+    if (aStr[i]>=' ' || aStr[i]=='\t' || aStr[i]=='\n' || aStr[i]<='\0')
       result[j++] = aStr[i];
   }
-
-  mMsg->FromString((const char*)aStr);
+  result[j++] = '\0'; // terminate zero for casting
+  mMsg->FromString((const char*)result);
   mMsg->Parse();
 
   if (aSetStatus)
@@ -252,7 +253,8 @@ void KMMessage::fromString(const QString aStr, bool aSetStatus)
 
 //-----------------------------------------------------------------------------
 const QString KMMessage::asQuotedString(const QString aHeaderStr,
-					const QString aIndentStr) const
+					const QString aIndentStr,
+					bool aIncludeAttach) const
 {
   QString headerStr(256);
   KMMessagePart msgPart;
@@ -303,8 +305,16 @@ const QString KMMessage::asQuotedString(const QString aHeaderStr,
   // type than "text".
   if (numBodyParts() == 0)
   {
-    result = QString(bodyDecoded()).stripWhiteSpace()
-                .replace(reNL,nlIndentStr) + '\n';
+     Kpgp* pgp = Kpgp::getKpgp();
+     assert(pgp != NULL);
+     if (pgp->setMessage(bodyDecoded()) && pgp->isEncrypted() &&
+         pgp->decrypt())
+     {
+       result = QString(pgp->message()).stripWhiteSpace();
+     }
+     else result = QString(bodyDecoded()).stripWhiteSpace();
+
+     result.replace(reNL,nlIndentStr) + '\n';
   }
   else
   {
@@ -322,13 +332,26 @@ const QString KMMessage::asQuotedString(const QString aHeaderStr,
 	    stricmp(msgPart.typeStr(),"message")==0)
 	{
 	  result += aIndentStr;
-	  result += QString(msgPart.bodyDecoded()).copy()
-	    .replace(reNL,(const char*)nlIndentStr);
-	  result += '\n';
+          Kpgp* pgp = Kpgp::getKpgp();
+          assert(pgp != NULL);
+	  QString part;
+          if ((pgp->setMessage(msgPart.bodyDecoded())) &&
+              (pgp->isEncrypted()) &&
+              (pgp->decrypt()))
+	  {
+	    part = QString(pgp->message());
+	    part = part.replace(reNL,nlIndentStr);
+	  }
+          else
+	  {
+	    part = QString(msgPart.bodyDecoded());
+	    part = part.replace(reNL,(const char*)nlIndentStr);
+	  }
+	  result += part + '\n';
 	}
 	else isInline = FALSE;
       }
-      if (!isInline)
+      if (!isInline && aIncludeAttach)
       {
 	result += QString("\n----------------------------------------") +
 	  "\nContent-Type: " + msgPart.typeStr() + "/" + msgPart.subtypeStr();
@@ -361,11 +384,38 @@ KMMessage* KMMessage::createReply(bool replyToAll)
 
   if (replyToAll)
   {
+    int i;
     if (!replyToStr.isEmpty()) toStr += replyToStr + ", ";
     else if (!loopToStr.isEmpty()) toStr = loopToStr + ", ";
     if (!from().isEmpty()) toStr += from() + ", ";
+    if (!to().isEmpty()) toStr += to() + ", ";
+    toStr = toStr.simplifyWhiteSpace() + " ";
+
+    // now try to strip my own e-mail adress:
+    QString f = msg->from();
+    if((i = f.find("<")) != -1) // just keep <foo@bar.com>
+      f = f.right(f.size() - i);
+    if((i = toStr.find(f)) != -1)
+    {
+      int pos1, pos2;
+      pos1 = toStr.findRev(", ", i);
+      if( pos1 == -1 ) pos1 = 0;
+      pos2 = toStr.find(", ", i);
+      toStr = toStr.left(pos1) + toStr.right(toStr.size() - pos2 - 1); 
+    }
     toStr.truncate(toStr.length()-2);
-    msg->setCc(cc());
+    // same for the cc field
+    QString ccStr = cc().simplifyWhiteSpace() + ", ";
+    if((i = ccStr.find(f)) != -1)
+    {
+      int pos1, pos2;
+      pos1 = ccStr.findRev(", ", i);
+      if( pos1 == -1 ) pos1 = 0;
+      pos2 = ccStr.find(", ", i);
+      ccStr = ccStr.left(pos1) + toStr.right(toStr.size() - pos2 - 1);
+    }
+    ccStr.truncate(ccStr.length()-2);
+    msg->setCc(ccStr);
   }
   else
   {
@@ -400,7 +450,9 @@ KMMessage* KMMessage::createReply(bool replyToAll)
 KMMessage* KMMessage::createForward(void)
 {
   KMMessage* msg = new KMMessage;
+  KMMessagePart msgPart;
   QString str;
+  int i;
 
   msg->initHeader();
 
@@ -409,7 +461,30 @@ KMMessage* KMMessage::createForward(void)
   str += "Date: " + dateStr() + "\n";
   str += "From: " + from() + "\n";
   str += "\n";
-  msg->setBody(asQuotedString(str, ""));
+  str = asQuotedString(str, "", FALSE);
+
+  if (numBodyParts() <= 0)
+  {
+    msg->setBody(str);
+  }
+  else
+  {
+    msgPart.setBody(str);
+    msgPart.setTypeStr("text");
+    msgPart.setSubtypeStr("plain");
+    msg->addBodyPart(&msgPart);
+
+    for (i = 1; i < numBodyParts(); i++)
+    {
+      bodyPart(i, &msgPart);
+      if (stricmp(msgPart.contentDisposition(),"inline")!=0 ||
+	  (stricmp(msgPart.typeStr(),"text")!=0 &&
+	   stricmp(msgPart.typeStr(),"message")!=0))
+      {
+	msg->addBodyPart(&msgPart);
+      }
+    }
+  }
 
   if (strnicmp(subject(), "Fwd:", 4)!=0)
     msg->setSubject("Fwd: " + subject());
@@ -438,10 +513,15 @@ void KMMessage::initHeader(void)
   else
     setReplyTo(identity->replyToAddr());
 
+  if (identity->organization().isEmpty())
+    removeHeaderField("Organization");
+  else
+    setHeaderField("Organization", identity->organization());
+
   setTo("");
   setSubject("");
   setDateToday();
-  if (!identity->replyToAddr().isEmpty()) setReplyTo(identity->replyToAddr());
+
 #ifdef KRN
   setHeaderField("X-NewsReader", "KRN http://ultra7.unl.edu.ar");
 #else
@@ -875,6 +955,7 @@ const QString KMMessage::body(void) const
 const QString KMMessage::bodyDecoded(void) const
 {
   DwString dwsrc, dwstr;
+  QString result;
 
   dwsrc = mMsg->Body().AsString().c_str();
   switch (cte())
@@ -889,8 +970,7 @@ const QString KMMessage::bodyDecoded(void) const
     dwstr = dwsrc;
     break;
   }
-
-  return QString(dwstr.c_str(), dwsrc.size());
+  return QString(dwstr.c_str(), dwstr.size()+1);
 }
 
 

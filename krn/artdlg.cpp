@@ -18,7 +18,7 @@
 #include "artdlg.h"
 
 
-#define Inherited KTopLevelWidget
+#define Inherited KTMainWindow
 
 
 #include <kapp.h>
@@ -134,7 +134,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     key4=conf->readNumEntry("key4",KEY_SENDER);
 
     conf->setGroup("ArticleListOptions");
-    unread=conf->readNumEntry("ShowOnlyUnread");
+    unread=conf->readNumEntry("ShowOnlyUnread",1);
     showlocked=conf->readNumEntry("ShowLockedArticles");
     showcached=conf->readNumEntry("ShowCachedArticles");
 
@@ -1742,6 +1742,12 @@ void Artdlg::setTarget(int target)
 
 void Artdlg::closeEvent (QCloseEvent *e)
 {
+    conf->setGroup("Geometry");
+    conf->writeEntry("ArtX",x());
+    conf->writeEntry("ArtY",y());
+    conf->writeEntry("ArtW",width());
+    conf->writeEntry("ArtH",height());
+    conf->sync();
     group->isVisible=0;
-    KTopLevelWidget::closeEvent(e);
+    KTMainWindow::closeEvent(e);
 }

@@ -30,6 +30,7 @@
 #include <kapp.h>
 #include <kconfig.h>
 #include <kmsgbox.h>
+#include <kstdaccel.h>
 
 #include "rules.h"
 #include "asker.h"
@@ -61,6 +62,7 @@ KRNSender *msgSender;
 KMIdentity *identity;
 KBusyPtr *kbp;
 KMAddrBook *addrBook;
+KStdAccel* keys;
 QDict <char> unreadDict(17,TRUE);
 QDict <NewsGroup> groupDict(17,TRUE);
 
@@ -94,14 +96,15 @@ int main( int argc, char **argv )
     // Initialize the mime++ library
     DwInitialize();
 
-    KApplication a( argc, argv, "krn" );
+    KApplication *a=new KApplication ( argc, argv, "krn" );
     //a.enableSessionManagement();
 
-    app=&a;
-    conf=a.getConfig();
+    app=a;
+    conf=a->getConfig();
 
     checkConf();
-    nls=a.getLocale();
+    nls=a->getLocale();
+    keys = new KStdAccel(conf);
     kbp=new KBusyPtr();
     msgSender=new KRNSender();
     msgSender->readConfig();
@@ -112,7 +115,7 @@ int main( int argc, char **argv )
     addrBook->readConfig();
     addrBook->load();
 
-    
+
     // Create our directory. If it exists, no problem
     // Should do some checking, though
 
@@ -125,7 +128,7 @@ int main( int argc, char **argv )
     testDir( "/share/apps/krn/outgoing" );
 
     krnpath = KApplication::localkdedir() + "/share/apps/krn/";
-    
+
     mkdir (krnpath.data(),S_IREAD|S_IWRITE|S_IEXEC);
     cachepath=krnpath+"/cache/";
     mkdir (cachepath.data(),S_IREAD|S_IWRITE|S_IEXEC);
@@ -170,28 +173,39 @@ int main( int argc, char **argv )
     Rule::updateGlobals();
 
 
-    Groupdlg k;
-    main_widget = &k;
+    Groupdlg *k=new Groupdlg();
+    main_widget = k;
 
     //insert this:
-    if (a.isRestored())
-        k.restore(1);     
+    if (a->isRestored())
+        k->restore(1);
 
-    a.setMainWidget( &k );
-    
-    k.setMinimumSize( 250, 250 );
-    k.show();
+    a->setMainWidget( k );
+    a->setTopWidget( k );
 
-    a.exec();
+    k->setMinimumSize( 250, 250 );
+    k->show();
 
-    
+    a->exec();
+
     expireCache();
 
-    k.close();
+    k->close();
     gdbm_sync(artdb);
     gdbm_reorganize(artdb);
     gdbm_sync(artdb);
     gdbm_close(artdb);
+
+    gdbm_sync(refsdb);
+    gdbm_reorganize(refsdb);
+    gdbm_sync(refsdb);
+    gdbm_close(refsdb);
+
+    gdbm_sync(scoredb);
+    gdbm_reorganize(scoredb);
+    gdbm_sync(scoredb);
+    gdbm_close(scoredb);
+    delete k;
 //    exit(0);
 }
 

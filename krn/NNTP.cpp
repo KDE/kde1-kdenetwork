@@ -54,34 +54,6 @@ KAlarmTimer *refreshGUI;
 extern KConfig *conf;
 extern QDict <NewsGroup> groupDict;
 
-// NNTPObserver class. Used to get feedback from NNTP
-
-NNTPObserver::NNTPObserver (NNTP *_client)
-{
-    client=_client;
-}
-
-int oldbytes;
-
-void NNTPObserver::Notify()
-{
-    client->byteCounter+=client->mTextResponse.length();
-    client->partialResponse+=client->mTextResponse;
-    qApp->processEvents();
-
-    if (client->reportBytes && (client->byteCounter - oldbytes)>1024 )
-    {
-
-        char *buffer=new char[100];
-        sprintf (buffer,klocale->translate("Received %.2f Kb"),
-                 ((double)client->byteCounter)/1024);
-        emit client->newStatus(buffer);
-        qApp->processEvents();
-        delete[] buffer;
-        oldbytes=client->byteCounter;
-    }
-
-}
 
 /////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
@@ -102,24 +74,56 @@ NNTP::NNTP(char *host): DwNntpClient()
     reportCommands=false;
     byteCounter=0;
     commandCounter=0;
-    extendPartialResponse=new NNTPObserver (this);
-//    SetObserver(extendPartialResponse);
 }
 
 void NNTP::PGetTextResponse()
 {
-//    refreshGUI=new KAlarmTimer();
-//    QObject::connect (refreshGUI,SIGNAL(timeout(int)),SLOT(refresh()));
-//    refreshGUI->start(100,TRUE);
-    SetObserver(extendPartialResponse);
-    partialResponse.clear();
-    qApp->processEvents();
-    DwNntpClient::PGetTextResponse();
-    mTextResponse=partialResponse;
-    partialResponse.clear();
-    SetObserver(NULL);
-//    refreshGUI->stop();
-//    delete refreshGUI;
+    mTextResponse = "";
+
+    // Get a line at a time until we get CR LF . CR LF
+
+    while (1) {
+        char* ptr=0;
+        int len;
+        int err = PGetLine(&ptr, &len);
+
+        // Check for an error
+
+        if (err) {
+            mReplyCode = 0;
+            return;
+        }
+        if (!ptr) {
+            mReplyCode = 0;
+            return;
+        }
+
+        // Check for '.' on a line by itself, which indicates end of multiline
+        // response
+
+        if (len >= 3 && ptr[0] == '.' && ptr[1] == '\r' && ptr[2] == '\n') {
+            break;
+        }
+
+        // Remove '.' at beginning of line
+
+        if (*ptr == '.') ++ptr;
+
+        mTextResponse.append(ptr, len);
+        byteCounter=mTextResponse.length();
+        qApp->processEvents();
+
+        if (reportBytes && (byteCounter - oldbytes)>1024 )
+        {
+            char *buffer=new char[100];
+            sprintf (buffer,klocale->translate("Received %.2f Kb"),
+                    ((double)byteCounter)/1024);
+            emit newStatus(buffer);
+            qApp->processEvents();
+            delete[] buffer;
+            oldbytes=byteCounter;
+         }
+    }
 }
 
 void NNTP::resetCounters( bool byte,bool command)
@@ -314,20 +318,32 @@ int NNTP::listXover(int from,int to,NewsGroup *n)
     datum key;
     char *buffer=new char[1024];
     unsigned int counter=0;
-    if (n) counter=n->artList.count();
+    counter=n->artList.count();
     DwString gi;
     reportCounters (true,false);
-    from=from >? first;
-    to=to <? last;
+    setGroup(n->name);
+    debug ("first-->%d,last-->%d,from-->%d,to-->%d",first,last,from,to);
+    if (from <first)
+        from=first;
+    if (to > last)
+        to=last;
+    if (to<from)
+    {
+        debug ("weird xover with to <from");
+        to=from;
+    }
+
     if (to)
-        sprintf(mSendBuffer, "xover %d-%d\r\n",from,to);
+        sprintf(mSendBuffer, "xover %d-%d\r\n",from-1,to);
     else
-        sprintf(mSendBuffer, "xover %d-\r\n",from);
+        sprintf(mSendBuffer, "xover %d-\r\n",from-1);
     
     // for debugging
     cout << "C: " << mSendBuffer << endl;
     
-    mReplyCode = -1;
+    mReplyCode = 0;
+    mStatusResponse = mTextResponse = "";
+
     int bufferLen = strlen(mSendBuffer);
     int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen)
@@ -353,12 +369,24 @@ int NNTP::listXover(int from,int to,NewsGroup *n)
                 }
                 //First break it up in an article list
                 class Article art;
-                char *tok=strtok((char *)mTextResponse.c_str(),"\n");
-                while (tok)
+                QString xoverdata(mTextResponse.c_str());
+                debug ("xover data-->%s<--",xoverdata.data());
+                int index=0;
+                int oldindex=0;
+//                char *tok=strtok((char *)mTextResponse.c_str(),"\n");
+                while (1)
                 {
+                    index=xoverdata.find('\n',oldindex);
+                    if (index==-1)
+                        break;
+                    QString line=xoverdata.mid (oldindex,index-oldindex);
+                    oldindex=index+1;
+                    if (line.isEmpty())
+                        continue;
+//                    debug ("line-->%s<--",line.data());
                     QStrList templ;
                     templ.setAutoDelete (true);
-                    qit=tok;
+                    qit=line;
                     int index;
                     do
                     {
@@ -389,7 +417,10 @@ int NNTP::listXover(int from,int to,NewsGroup *n)
                             art.From=templ.at(OffsetFrom);
                             art.Date=templ.at(OffsetDate);
                             art.Lines=templ.at(OffsetLines);
-                            
+                            art.desperate=group();
+                            art.desperate+="@";
+                            art.desperate+=templ.at(0);
+
                             QString refsdata=templ.at(OffsetRef);
                             datum refs;
                             refs.dptr=refsdata.data();
@@ -401,17 +432,13 @@ int NNTP::listXover(int from,int to,NewsGroup *n)
                             art.save();
                         }
                     }
-                    if (n)
-                    {
-                        if (!art.ID.data())
-                            debug ("broken article in listXover");
-                        n->addArticle(art.ID);
-                    }
+                    if (!art.ID.data())
+                        debug ("broken article in listXover");
+                    n->addArticle(art.ID);
                     counter++;
                     //Write the article ID to the newsgroup file
                     gi+=templ.at(OffsetID);
                     gi+="\n";
-                    tok=strtok(NULL,"\n");
                     if (!(counter%10))
                         sprintf (buffer,"Received %d articles",counter);
                     emit newStatus(buffer);
@@ -584,7 +611,7 @@ QString *NNTP::article(const char *_id)
             emit lostServer();
             return data;
         }
-        
+
         debug ("status-->%d",status);
         if (status==220)
         {
@@ -617,6 +644,63 @@ QString *NNTP::article(const char *_id)
             }
             else success=false;
         }
+        if (!success) //desperate way to get articles from broken servers
+                      //that don't support "article <ID>"
+        {
+            class Article artie(_id);
+            artie.load();
+            debug ("desper->%s",artie.desperate.data());
+            if (artie.desperate.isEmpty())
+            {
+                 success=false;
+            }
+            else
+            {
+                 int sep=artie.desperate.find('@');
+                 if (sep==-1)
+                 {
+                     success=false;
+                 }
+                 else
+                 {
+                     QString g=artie.desperate.left(sep);
+                     QString ind=artie.desperate.right(artie.desperate.length()-sep-1);
+                     debug ("q-->%s+++ind-->%s+++",g.data(),ind.data());
+                     //if not in the right group and can't go to it
+                     //we're screwed
+                     if (GroupName!=g && (!setGroup(g)))
+                     {
+                             success=false;
+                     }
+                     else //I got to the right group, soI get it by number
+                     {
+                         int status=Article (ind);
+
+                         if (!status)
+                         {
+                             emit lostServer();
+                             return data;
+                         }
+
+                         debug ("status-->%d",status);
+                         if (status==220)
+                         {
+                             QString a(TextResponse().c_str());
+                             int limit=a.find("\r\n\r\n");
+                             debug ("limit-->%d",limit);
+                             kStringToFile(a.left(limit),p+".head",FALSE,FALSE,TRUE);
+                             kStringToFile(a.right(a.length()-limit-4),p+".body",FALSE,FALSE,TRUE);
+                             delete data;
+                             data=article(id);
+                             success=true;
+                         }
+                         else
+                             success=false;
+                     }
+                 }
+            }
+
+        }
         if (!success)
         {
             warning ("error getting data\nserver said %s\n",StatusResponse().c_str());
@@ -637,7 +721,6 @@ QString *NNTP::article(const char *_id)
         debug ("has body, getting head");
         data=head(id);
         delete data;
-        data=article(id);
     }
     
     emit newStatus(klocale->translate("Article Received"));

@@ -34,7 +34,7 @@ aboutDlg::aboutDlg
 
     l->addButton ("logo",p);
     l->newLine();
-    l->addLabel("l3","0.4.8");
+    l->addLabel("l3","0.6.0");
     l->newLine();
     l->addLabel("l1",klocale->translate("Part of the KDE project."));
     l->newLine();
@@ -70,6 +70,7 @@ aboutDlg::aboutDlg
     tmpQListBox->insertItem( "Bernd Wuebben <wuebben@math.cornell.edu>" );
     tmpQListBox->insertItem( "All KDE developers" );
     tmpQListBox->insertItem( "Troll Tech" );
+    tmpQListBox->insertItem( "Chuck, for helping in time of need");
     tmpQListBox->insertItem( "All testers" );
     tmpQListBox->setScrollBar( TRUE );
 

@@ -33,9 +33,15 @@
 #include <ctype.h>
 #include <string.h>
 #include <qbitmap.h>
+#include <qclipboard.h>
 #include <qcursor.h>
 #include <qmlined.h>
 #include <qregexp.h>
+
+// for selection
+#include <X11/X.h>
+#include <X11/Xlib.h>
+#include <X11/Xatom.h>
 
 
 #define hand_width 16
@@ -154,6 +160,8 @@ void KMReaderWin::initHtmlWidget(void)
 	  SLOT(slotUrlOn(const char *)));
   connect(mViewer,SIGNAL(popupMenu(const char *, const QPoint &)),  
 	  SLOT(slotUrlPopup(const char *, const QPoint &)));
+  connect(mViewer,SIGNAL(textSelected(bool)), 
+	  SLOT(slotTextSelected(bool)));
 
   mSbVert = new QScrollBar(0, 110, 12, height()-110, 0, 
 			   QScrollBar::Vertical, this);
@@ -257,6 +265,9 @@ void KMReaderWin::parseMsg(KMMessage* aMsg)
       type = msgPart.typeStr();
       subtype = msgPart.subtypeStr();
       contDisp = msgPart.contentDisposition();
+      debug("type: %s",type.data());
+      debug("subtye: %s",subtype.data());
+      debug("contDisp %s",contDisp.data());
       
       if (i <= 0) asIcon = FALSE;
       else switch (mAttachmentStyle)
@@ -287,7 +298,7 @@ void KMReaderWin::parseMsg(KMMessage* aMsg)
       }
     }
   }
-  else
+  else // if numBodyParts <= 0
   {
     writeBodyStr(aMsg->bodyDecoded());
   }
@@ -387,25 +398,27 @@ void KMReaderWin::writeMsgHeader(void)
     warning("Unsupported header style %d", mHeaderStyle);
   }
   mViewer->write("<BR>\n");
+  return;
 }
 
 
 //-----------------------------------------------------------------------------
 void KMReaderWin::writeBodyStr(const QString aStr)
 {
-  char ch, *pos, *beg;
-  bool atStart = TRUE;
-  bool quoted = FALSE;
-  bool lastQuoted = FALSE;
-  QString line(256), sig, htmlStr;
+  QString line(256), sig, htmlStr = "";
   Kpgp* pgp = Kpgp::getKpgp();
   assert(pgp != NULL);
   assert(!aStr.isNull());
+  bool pgpMessage = false;
 
   if (pgp->setMessage(aStr))
   {
+    QString str = pgp->frontmatter();
+    if(!str.isEmpty()) htmlStr += quotedHTML(str.data());
+    htmlStr += "<BR>";
     if (pgp->isEncrypted())
     {      
+      pgpMessage = true;
       if(pgp->decrypt())
       {
 	line.sprintf("<B>%s</B><BR>",
@@ -420,9 +433,50 @@ void KMReaderWin::writeBodyStr(const QString aStr)
 	htmlStr += line;
       }
     }
-    pos = pgp->message().data();
+    // check for PGP signing
+    if (pgp->isSigned())
+    {
+      pgpMessage = true;
+      if (pgp->goodSignature()) sig = i18n("Message was signed by");
+      else sig = i18n("Warning: Bad signature from");
+      
+      /* HTMLize signedBy data */
+      QString *sdata=new QString(pgp->signedBy());
+      sdata->replace(QRegExp("\""), "&quot;");
+      sdata->replace(QRegExp("<"), "&lt;");
+      sdata->replace(QRegExp(">"), "&gt;");
+
+      if (sdata->contains(QRegExp("unknown key ID")))
+      {
+      sdata->replace(QRegExp("unknown key ID"), i18n("unknown key ID"));
+      line.sprintf("<B>%s %s</B><BR>",sig.data(), sdata->data());
+      } 
+      else
+      line.sprintf("<B>%s <A HREF=\"mailto:%s\">%s</A></B><BR>", sig.data(), 
+		   sdata->data(),sdata->data());
+
+      delete sdata;
+      htmlStr += line;
+    }
+    htmlStr += quotedHTML(pgp->message().data());
+    if(pgpMessage) htmlStr += "<BR><B>End pgp message</B><BR><BR>";
+    str = pgp->backmatter();
+    if(!str.isEmpty()) htmlStr += quotedHTML(str.data());
   }
-  else pos = aStr.data();
+  else htmlStr += quotedHTML(aStr.data());
+
+  mViewer->write(htmlStr);
+}
+
+QString KMReaderWin::quotedHTML(char * pos)
+{
+  QString htmlStr, line;
+  char ch, *beg;
+  bool quoted = FALSE;
+  bool lastQuoted = FALSE;
+  bool atStart = TRUE;
+
+  htmlStr = "";
 
   // skip leading empty lines
   for (beg=pos; *pos && *pos<=' '; pos++)
@@ -430,30 +484,26 @@ void KMReaderWin::writeBodyStr(const QString aStr)
     if (*pos=='\n') beg = pos+1;
   }
 
-  // check for PGP encryption/signing
-  if (pgp->isSigned())
-  {
-    if (pgp->goodSignature()) sig = i18n("Message was signed by");
-    else sig = i18n("Warning: Bad signature from");
-    
-    line.sprintf("<B>%s %s</B><BR>", sig.data(), 
-		 pgp->signedBy().data());
-    htmlStr += line;
-  }
-
   pos = beg;
+  int tcnt = 0;
+  QString tmpStr;
+
   while (1)
   {
     ch = *pos;
     if (ch=='\n' || ch=='\0')
     {
+      tcnt ++;
       *pos = '\0';
       line = strToHtml(beg,TRUE,TRUE);
       *pos = ch;
       if (quoted && !lastQuoted) line.prepend("<I>");
       else if (!quoted && lastQuoted) line.prepend("</I>");
-      htmlStr += line + "<BR>\n";
-
+      tmpStr += line + "<BR>\n";
+      if (!(tcnt % 100)) {
+	htmlStr += tmpStr;
+	tmpStr.truncate(0);
+      }
       beg = pos+1;
       atStart = TRUE;
       lastQuoted = quoted;
@@ -467,21 +517,25 @@ void KMReaderWin::writeBodyStr(const QString aStr)
     if (!ch) break;
     pos++;
   }
-
-  mViewer->write(htmlStr);
+  htmlStr += tmpStr;
+  return htmlStr;
 }
-
 
 //-----------------------------------------------------------------------------
 void KMReaderWin::writePartIcon(KMMessagePart* aMsgPart, int aPartNum)
 {
   QString iconName, href(255), label, comment;
 
-  assert(aMsgPart!=NULL);
+  if(aMsgPart == NULL) {
+    debug("writePartIcon: aMsgPart == NULL\n");
+    return;
+  }
+
+  debug("writePartIcon: PartNum: %i",aPartNum);
 
   label = aMsgPart->name();
   comment = aMsgPart->contentDescription();
-  href.sprintf("part:%d", aPartNum+1);
+  href.sprintf("part://%i", aPartNum+1);
 
   iconName = aMsgPart->iconName();
   if (iconName.left(11)=="unknown.xpm")
@@ -605,8 +659,8 @@ void KMReaderWin::printMsg(void)
 //-----------------------------------------------------------------------------
 int KMReaderWin::msgPartFromUrl(const char* aUrl)
 {
-  if (!aUrl || !mMsg || strncmp(aUrl,"part:",5)) return -1;
-  return (aUrl ? atoi(aUrl+5) : 0);
+  if (!aUrl || !mMsg || strncmp(aUrl,"part://",7)) return -1;
+  return (aUrl ? atoi(aUrl+7) : 0);
 }
 
 
@@ -894,6 +948,18 @@ void KMReaderWin::slotDocumentChanged()
     mSbHorz->setRange(0, 0);
 }
 
+
+//-----------------------------------------------------------------------------
+void KMReaderWin::slotTextSelected(bool)
+{
+  QString temp;
+
+  mViewer->getSelectedText(temp);
+  kapp->clipboard()->setText(temp);
+}
+
+
+//-----------------------------------------------------------------------------
 QString KMReaderWin::copyText()
 {
   QString temp;

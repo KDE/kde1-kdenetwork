@@ -121,15 +121,16 @@ void ExpireStatusDlg::doExpire()
             tl.append (t.data());
         }
 
-        if (!strcmp(tl.at(6),"1"))
+        if (!strcmp(tl.at(7),"1"))
         {
-            time_t lastAccess=atol(tl.at(8));
+            time_t lastAccess=atol(tl.at(9));
 
             if (key.dptr[0]!='R')
             {
                 if (threshold>lastAccess)
                 {
                     gdbm_delete(artdb,key);
+                    debug ("expire 1");
                     free (key.dptr);
                 }
             }
@@ -138,6 +139,7 @@ void ExpireStatusDlg::doExpire()
                 if (threshold2>lastAccess)
                 {
                     gdbm_delete(artdb,key);
+                    debug ("expire 1");
                     free (key.dptr);
                 }
             }

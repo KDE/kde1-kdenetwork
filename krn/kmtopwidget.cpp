@@ -19,47 +19,55 @@
 #include "kmtopwidget.h"
 #include <kapp.h>
 
+int KMTopLevelWidget::sWindowCount = 0;
 
 //-----------------------------------------------------------------------------
 KMTopLevelWidget::KMTopLevelWidget(const char* aName):
   KMTopLevelWidgetInherited(aName)
 {
   initMetaObject();
+  sWindowCount++;
 }
 
 
 //-----------------------------------------------------------------------------
 KMTopLevelWidget::~KMTopLevelWidget()
 {
+  sWindowCount--;
+#ifndef KRN
+  if (sWindowCount <= 0) kapp->quit();
+#endif
 }
 
 
 //-----------------------------------------------------------------------------
 void KMTopLevelWidget::closeEvent(QCloseEvent* e)
 {
-  KMTopLevelWidgetInherited::closeEvent(e);
-
-  if (e->isAccepted())
-  {
     writeConfig();
-    e->ignore();
-    delete this;
-  }
+    KMTopLevelWidgetInherited::closeEvent(e);
+
+//   if (e->isAccepted())
+//   {
+//     writeConfig();
+//     e->ignore();
+//     //delete this;
+//   }
 }
 
 
 //-----------------------------------------------------------------------------
-bool KMTopLevelWidget::close(bool aForceKill)
-{
-  static bool rc;
-  rc = KMTopLevelWidgetInherited::close(aForceKill);
-  if (!rc) return FALSE;
+// bool KMTopLevelWidget::close(bool aForceKill)
+// {
+//   static bool rc;
+//   rc = KMTopLevelWidgetInherited::close(aForceKill);
+//   if (!rc) return FALSE;
 
-  if (KTopLevelWidget::memberList && KTopLevelWidget::memberList->isEmpty())
-    kapp->quit();
+//   if (KMTopLevelWidgetInherited::memberList &&
+//       KMTopLevelWidgetInherited::memberList->isEmpty())
+//     kapp->quit();
 
-  return TRUE;
-}
+//   return TRUE;
+// }
 
 
 //-----------------------------------------------------------------------------
@@ -67,14 +75,15 @@ void KMTopLevelWidget::forEvery(KForEvery func)
 {
   KMTopLevelWidget* w;
 
-  if (KTopLevelWidget::memberList)
+  if (KMTopLevelWidgetInherited::memberList)
   {
-    for (w = (KMTopLevelWidget*)KTopLevelWidget::memberList->first(); w;
-	 w = (KMTopLevelWidget*)KTopLevelWidget::memberList->next())
+    for (w=(KMTopLevelWidget*)KMTopLevelWidgetInherited::memberList->first();
+	 w;
+	 w=(KMTopLevelWidget*)KMTopLevelWidgetInherited::memberList->next())
     {
       if (w->inherits("KMTopLevelWidget")) (w->*func)();
     }
-  } 
+  }
 }
 
 

@@ -42,6 +42,7 @@ bool KRNSender::doSendNNTP (KMMessage *msg)
 {
     QString str, msgStr;
     assert(msg != NULL);
+    msg->cleanupHeader();
 
     //Empty bodies make news servers and readers go insane
     if (msg->body().isEmpty())

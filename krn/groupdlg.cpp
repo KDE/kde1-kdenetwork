@@ -20,7 +20,7 @@
 
 #include "groupdlg.h"
 
-#define Inherited KTopLevelWidget
+#define Inherited KTMainWindow
 
 #include <qapp.h>
 #include <qfile.h>
@@ -264,9 +264,11 @@ Groupdlg::~Groupdlg ()
         g=iter.current();
         if (g->isVisible)
         {
-            openwin.append (g->name);
-            delete g->isVisible;
+//            openwin.append (g->name);
+//            delete g->isVisible;
         }
+        if (g->dirty)
+            g->clean();
         ++iter;
     }
     conf->setGroup("ArticleListOptions");
@@ -810,7 +812,7 @@ bool Groupdlg::loadSubscribed()
         while (1)
         {
             ac=st.readLine ();
-            if (st.eof())
+            if (ac.isEmpty())
                 break;
 
             if (!(groupDict.find(ac.data())))

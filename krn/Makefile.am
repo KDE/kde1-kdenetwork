@@ -4,7 +4,7 @@ INCLUDES = $(all_includes)
 DEFS += -DKRN -DCHARSETS
 
 LDFLAGS = $(all_libraries) $(KDE_RPATH)
-krn_LDADD =   $(LIB_KHTMLW)  $(LIB_KFILE) \
+krn_LDADD =  -lkspell  $(LIB_KHTMLW)  $(LIB_KFILE) \
 	 -lmimelib -lgdbm $(LIBCOMPAT) 
 
 kdecode_LDADD =    $(LIB_KFILE) \
@@ -105,7 +105,8 @@ krn_SOURCES = 	main.cpp\
 		charsetsDlg.cpp\
                 expirestatusdlg.cpp\
                 kfontutils.cpp \
-                kmtopwidget.cpp
+                kmtopwidget.cpp\
+                kpgpbase.cpp
 
 
 noinst_HEADERS = 	NNTP.h\
@@ -153,7 +154,8 @@ noinst_HEADERS = 	NNTP.h\
                 expirestatusdlg.h\
                 kfontutils.h\
                 kmtopwidget.h\
-				kmiostatusdlg.h
+		kmiostatusdlg.h\
+		kpgpbase.h
 
 
 

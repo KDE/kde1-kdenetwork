@@ -65,6 +65,7 @@ public:
     Article (const char *ID);
     ~Article ();
     QString Number;
+    QString desperate;
     QString Subject;
     QString Lines;
     QString From;
@@ -180,14 +181,6 @@ protected:
 };
 
 
-class NNTPObserver:public DwObserver
-{
-public:
-    NNTPObserver (NNTP *_client);
-    virtual void Notify();
-private:
-    NNTP *client;
-};
 
 
 
@@ -197,7 +190,6 @@ class NNTP: public QObject, public DwNntpClient
     Q_OBJECT
         
 public:
-    friend class NNTPObserver;
     NNTP(char *hostname=0);
     ~NNTP();
     
@@ -224,7 +216,8 @@ public:
     bool    reConnect();
     void    resetCounters( bool byte=true,bool command=true);
     void    reportCounters (bool byte=true,bool command=true);
-    int     byteCounter;
+    long     byteCounter;
+    long     oldbytes;
     int     commandCounter;
 signals:
     void newStatus(const char *status);
@@ -256,7 +249,6 @@ private:
     FILE      	*server;
     KSocket    	*sock;
     DwString     partialResponse;
-    NNTPObserver  *extendPartialResponse;
     void        PGetTextResponse();
     QString saneID(const char *id);
 };
