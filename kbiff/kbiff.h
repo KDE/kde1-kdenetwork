@@ -14,6 +14,8 @@
 #include <config.h>
 #endif 
 
+#include <qlist.h>
+
 #include <kbiffmonitor.h>
 
 #include <kurl.h>
@@ -34,7 +36,7 @@ public:
 	KBiff(QWidget *parent = 0);
 	virtual ~KBiff();
 
-	void setMailbox(const KURL& new_mailbox);
+	void setMailboxList(const QList<KURL>& mailbox_list);
 
 protected:
 	void mousePressEvent(QMouseEvent *);
@@ -58,8 +60,6 @@ private:
 	KAudio audioServer;
 	
 	// General settings
-	unsigned int poll;
-	KURL         mailbox;
 	QString      mailClient;
 
 	// New mail
@@ -68,6 +68,7 @@ private:
 	QString runCommandPath;
 	bool    playSound;
 	QString playSoundPath;
+	bool    notify;
 
 	bool isDocked;
 

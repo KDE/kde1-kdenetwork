@@ -22,9 +22,16 @@
 #include <qcombobox.h>
 #include <qlistview.h>
 #include <qdict.h>
+#include <qlist.h>
 
 #include <kiconloaderdialog.h>
 #include <kurl.h>
+
+struct KBiffMailbox
+{
+	KURL url;
+	bool store;
+};
 
 class KBiffGeneralTab;
 class KBiffNewMailTab;
@@ -39,7 +46,8 @@ public:
 	KBiffSetup(const char *name = 0);
 	virtual ~KBiffSetup();
 
-	KURL getMailbox() const;
+	KURL getCurrentMailbox() const;
+	QList<KURL> getMailboxList() const;
 
 public slots:
 	void invokeHelp();
@@ -178,20 +186,27 @@ public:
 
 	void setMailbox(const KURL& url);
 	KURL getMailbox() const;
+	QList<KURL> getMailboxList() const;
 
 public slots:
 	void readConfig(const char *profile);
 	void saveConfig(const char *profile);
 
 protected slots:
+	void slotDeleteMailbox();
+	void slotNewMailbox();
 	void slotMailboxSelected(QListViewItem *item);
+	void slotStoreChecked(bool checked);
 
 	void protocolSelected(int protocol);
 	void browse();
 	void advanced();
 
+protected:
+	const char* scramble(const char* password, bool encode = true);
+
 private:
-	QDict<char> mailboxHash;
+	QDict<KBiffMailbox> *mailboxHash;
 
 	unsigned int port;
 	QComboBox   *comboProtocol;

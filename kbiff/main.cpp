@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 
 	if (setup.exec())
 	{
-		kbiff.setMailbox(setup.getMailbox());
+		kbiff.setMailboxList(setup.getMailboxList());
 	}
 	else
 		return 0;

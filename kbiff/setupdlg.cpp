@@ -35,10 +35,6 @@
 #include <kprocess.h>  // KBiffAboutTab
 #include <stdlib.h>    // KBiffAboutTab
 
-// macros are a Bad Thing(tm), but layouts are too much of a pain for
-// now and I got sick of typing this
-#define MIN_HEIGHT QMAX(fontMetrics().lineSpacing() + (fontMetrics().descent() * 3), 25)
-
 ///////////////////////////////////////////////////////////////////////////
 // KBiffSetup
 ///////////////////////////////////////////////////////////////////////////
@@ -153,9 +149,14 @@ KBiffSetup::~KBiffSetup()
 {
 }
 
-KURL KBiffSetup::getMailbox() const
+KURL KBiffSetup::getCurrentMailbox() const
 {
 	return mailboxTab->getMailbox();
+}
+
+QList<KURL> KBiffSetup::getMailboxList() const
+{
+	return mailboxTab->getMailboxList();
 }
 
 void KBiffSetup::invokeHelp()
@@ -866,9 +867,12 @@ void KBiffMailboxAdvanced::portModified(const char *text)
 }
 
 KBiffMailboxTab::KBiffMailboxTab(const char* profile, QWidget *parent)
-	: QWidget(parent)
+	: QWidget(parent), mailboxHash(new QDict<KBiffMailbox>)
 {
 TRACEINIT("KBiffMailboxTab::KBiffMailboxTab()");
+	if (mailboxHash)
+		mailboxHash->setAutoDelete(true);
+
 	QHBoxLayout *top_layout = new QHBoxLayout(this, 12, 5);
 
 	QGridLayout *list_layout = new QGridLayout(this, 2, 2);
@@ -876,26 +880,28 @@ TRACEINIT("KBiffMailboxTab::KBiffMailboxTab()");
 
 	mailboxes = new QListView(this);
 	mailboxes->addColumn(i18n("Mailbox:"));
-	mailboxes->setColumnWidth(0, 60);
+	mailboxes->setColumnWidth(0, 66);
 	mailboxes->setColumnWidthMode(0, QListView::Maximum);
 
 	list_layout->addMultiCellWidget(mailboxes, 0, 0, 0, 1);
 	list_layout->setRowStretch(0, 1);
 
-	mailboxes->setFixedWidth(60);
+	mailboxes->setMinimumWidth(66);
 
 	connect(mailboxes, SIGNAL(selectionChanged(QListViewItem *)),
 	                   SLOT(slotMailboxSelected(QListViewItem *)));
 
 	QPushButton *new_mailbox = new QPushButton(this);
-	new_mailbox->setPixmap(QPixmap("mail.xpm"));
-	new_mailbox->setFixedSize(30, 20);
+	new_mailbox->setPixmap(kapp->getIconLoader()->loadIcon("mailbox.xpm"));
+	new_mailbox->setFixedSize(33, 20);
+	connect(new_mailbox, SIGNAL(clicked()), SLOT(slotNewMailbox()));
 	QToolTip::add(new_mailbox, i18n("New Mailbox"));
 	list_layout->addWidget(new_mailbox, 1, 0); 
 
 	QPushButton *delete_mailbox = new QPushButton(this);
-	delete_mailbox->setPixmap(QPixmap("mini-cross.xpm"));
-	delete_mailbox->setFixedSize(30, 20);
+	delete_mailbox->setPixmap(kapp->getIconLoader()->loadIcon("delete.xpm"));
+	delete_mailbox->setFixedSize(33, 20);
+	connect(delete_mailbox, SIGNAL(clicked()), SLOT(slotDeleteMailbox()));
 	QToolTip::add(delete_mailbox, i18n("Delete Mailbox"));
 	list_layout->addWidget(delete_mailbox, 1, 1); 
 
@@ -947,6 +953,8 @@ TRACEINIT("KBiffMailboxTab::KBiffMailboxTab()");
 
 	checkStorePassword = new QCheckBox(i18n("Store password"), this);
 	checkStorePassword->setMinimumSize(checkStorePassword->sizeHint());
+	connect(checkStorePassword, SIGNAL(toggled(bool)),
+	                            SLOT(slotStoreChecked(bool)));
 
 	QPushButton *advanced_button = new QPushButton(i18n("Advanced"), this);
 	advanced_button->setMinimumSize(75, 25);
@@ -978,6 +986,8 @@ TRACEINIT("KBiffMailboxTab::KBiffMailboxTab()");
 
 KBiffMailboxTab::~KBiffMailboxTab()
 {
+TRACEINIT("KBiffMailboxTab::~KBiffMailboxTab()");
+	delete mailboxHash;
 }
 
 void KBiffMailboxTab::readConfig(const char* profile)
@@ -989,7 +999,7 @@ TRACEINIT("KBiffMailboxTab::readConfig()");
 	KSimpleConfig *config = new KSimpleConfig(config_file);
 
 	mailboxes->clear();
-	mailboxHash.clear();
+	mailboxHash->clear();
 
 	config->setGroup(profile);
 
@@ -999,16 +1009,25 @@ TRACEINIT("KBiffMailboxTab::readConfig()");
 
 	if (number_of_mailboxes > 0)
 	{
-		for (unsigned int i = 0; i < mailbox_list.count(); i+=2)
+		for (unsigned int i = 0; i < mailbox_list.count(); i+=3)
 		{
-			QString key = mailbox_list.at(i);
-			QString url = mailbox_list.at(i+1);
+			KBiffMailbox *mailbox = new KBiffMailbox();
+			QString *key = new QString(mailbox_list.at(i));
+			mailbox->url = KURL(mailbox_list.at(i+1));
+			QString *password = new QString(scramble(mailbox_list.at(i+2), false));
+			if (password->isEmpty())
+				mailbox->store = false;
+			else
+			{
+				mailbox->store = true;
+				mailbox->url.setPassword(password->data());
+			}
 
-			QListViewItem *item = new QListViewItem(mailboxes, key);
-			item->setPixmap(0, QPixmap("mail.xpm"));
+			QListViewItem *item = new QListViewItem(mailboxes, *key);
+			item->setPixmap(0, QPixmap(kapp->getIconLoader()->loadIcon("mailbox.xpm")));
 
-TRACEF("Inserting %s into %s", (const char*)url, (const char*)key);
-			mailboxHash.insert(key, url);
+TRACEF("Inserting %s into %s", (const char*)mailbox->url.url(), (const char*)*key);
+			mailboxHash->insert(key->data(), mailbox);
 		}
 	}
 	else
@@ -1021,17 +1040,20 @@ TRACEF("Inserting %s into %s", (const char*)url, (const char*)key);
 			mailbox_info.setFile(s);
 		}
 
+		KBiffMailbox *mailbox = new KBiffMailbox();
+		mailbox->store = false;
 		QString default_path("mbox:");
 		default_path += mailbox_info.absFilePath();
 
+		mailbox->url = KURL(default_path);
 TRACEF("Inserting %s into Default", (const char*)default_path);
-		mailboxHash.insert("Default", default_path);
+		mailboxHash->insert("Default", mailbox);
 
 		QListViewItem *item = new QListViewItem(mailboxes, "Default");
-		item->setPixmap(0, QPixmap("mail.xpm"));
-		mailboxes->setSelected(item, true);
+		item->setPixmap(0, QPixmap(kapp->getIconLoader()->loadIcon("mailbox.xpm")));
 	}
 
+	mailboxes->setSelected(mailboxes->firstChild(), true);
 	delete config;
 }
 
@@ -1051,10 +1073,18 @@ TRACEINIT("KBiffMailboxTab::saveConfig()");
 	     item;
 		  item = item->nextSibling())
 	{
-TRACEF("mailbox: %s -> %s", item->text(0), mailboxHash["Default"]);
-mailboxHash.statistics();
+TRACEF("mailbox: %s -> %s", item->text(0), mailboxHash->find(item->text(0))->url.url().data());
+		KBiffMailbox *mailbox = new KBiffMailbox();
+		mailbox = mailboxHash->find(item->text(0));
+		QString password(scramble(mailbox->url.passwd()));
+		mailbox->url.setPassword("");
+
+		if (mailbox->store == false)
+			password = "";
+	
 		mailbox_list.append(item->text(0));
-		mailbox_list.append(mailboxHash[item->text(0)]);
+		mailbox_list.append(mailbox->url.url());
+		mailbox_list.append(password);
 	}
 
 	config->writeEntry("Mailboxes", mailbox_list);
@@ -1110,8 +1140,7 @@ KURL KBiffMailboxTab::getMailbox() const
 	if (editServer->isEnabled())
 		url.setHost(editServer->text());
 
-	if (port != 0)
-		url.setPort(port);
+	url.setPort(port);
 
 	if (editMailbox->isEnabled())
 	{
@@ -1123,12 +1152,82 @@ KURL KBiffMailboxTab::getMailbox() const
 	return url;
 }
 
+QList<KURL> KBiffMailboxTab::getMailboxList() const
+{
+	QList<KURL> url_list;
+
+	for (QListViewItem *item = mailboxes->firstChild();
+	     item;
+		  item = item->nextSibling())
+	{
+		KBiffMailbox *mailbox = new KBiffMailbox();
+		mailbox = mailboxHash->find(item->text(0));
+		KURL *url = new KURL(mailbox->url);
+		url_list.append(url);
+	}
+	return url_list;
+}
+
+void KBiffMailboxTab::slotDeleteMailbox()
+{
+TRACEINIT("KBiffMailboxTab::slotDeleteMailbox()");
+	/* I can't believe QListView doesn't have a 'count' member! */
+	int count = 0;
+	for (QListViewItem *it = mailboxes->firstChild();
+	     it;
+		  it = it->nextSibling(), count++);
+	if (count == 1)
+		return;
+
+	/* need some "Are you sure?" code here */
+	QListViewItem *item = mailboxes->currentItem();
+
+	mailboxHash->remove(item->text(0));
+	delete item;
+
+	mailboxes->setSelected(mailboxes->firstChild(), true);
+}
+
+void KBiffMailboxTab::slotNewMailbox()
+{
+TRACEINIT("KBiffMailboxTab::slotNewMailbox()");
+	KBiffNewDlg dlg;
+
+	// popup the name chooser
+	dlg.setCaption(i18n("New Mailbox"));
+	if (dlg.exec())
+	{
+		QString mailbox_name = dlg.getName();
+
+		// continue only if we received a decent name
+		if (mailbox_name.isNull() == false)
+		{
+			QListViewItem *item = new QListViewItem(mailboxes, mailbox_name);
+			item->setPixmap(0, QPixmap("mail.xpm"));
+
+			KBiffMailbox *mailbox = new KBiffMailbox();
+			mailbox->store = false;
+			mailboxHash->insert(mailbox_name.data(), mailbox);
+			mailboxes->setSelected(item, true);
+		}
+	}
+}
+
 void KBiffMailboxTab::slotMailboxSelected(QListViewItem *item)
 {
 TRACEINIT("KBiffMailboxTab::slotMailboxSelected()");
-TRACEF("mailbox = %s", item->text(0));
-TRACEF("url = %s", mailboxHash[item->text(0)]);
-	setMailbox(KURL(mailboxHash[item->text(0)]));
+	setMailbox(mailboxHash->find(item->text(0))->url);
+	checkStorePassword->setChecked(mailboxHash->find(item->text(0))->store);
+}
+
+void KBiffMailboxTab::slotStoreChecked(bool checked)
+{
+TRACEINIT("KBiffMailboxTab::slotStoreChecked()");
+	QListViewItem *item = mailboxes->currentItem();
+TRACEF("item->text(0) = %s\n", item->text(0));
+TRACEF("url = %s\n", getMailbox().url().data());
+	mailboxHash->find(item->text(0))->store = checked;
+	mailboxHash->find(item->text(0))->url = getMailbox();
 }
 
 void KBiffMailboxTab::protocolSelected(int protocol)
@@ -1203,6 +1302,18 @@ void KBiffMailboxTab::advanced()
 		port = advanced_dlg.getPort();
 		setMailbox(advanced_dlg.getMailbox());
 	}
+}
+
+const char* KBiffMailboxTab::scramble(const char* password, bool encode)
+{
+	char *ptr = new char[strlen(password)];
+	char *ret_ptr = ptr;
+
+	while (*password)
+		*ptr++ = encode ? (*(password++) - 4) : (*(password++) + 4);
+	*ptr = '\0';
+
+	return ret_ptr;
 }
 
 //////////////////////////////////////////////////////////////////////

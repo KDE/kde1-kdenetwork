@@ -32,9 +32,6 @@ TRACEINIT("KBiff::KBiff()");
 
 	reset();
 
-	monitor.setMailbox(mailbox);
-	monitor.setPollInterval(poll);
-
 	connect(&monitor, SIGNAL(signal_newMail()), this, SLOT(haveNewMail()));
 	connect(&monitor, SIGNAL(signal_noMail()), this, SLOT(displayPixmap()));
 	connect(&monitor, SIGNAL(signal_oldMail()), this, SLOT(displayPixmap()));
@@ -44,10 +41,9 @@ KBiff::~KBiff()
 {
 }
 
-void KBiff::setMailbox(const KURL& new_mailbox)
+void KBiff::setMailboxList(const QList<KURL>& mailbox_list)
 {
-	mailbox = new_mailbox;
-	monitor.setMailbox(mailbox);
+	monitor.setMailbox(*mailbox_list.getFirst());
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -141,6 +137,12 @@ void KBiff::displayPixmap()
 void KBiff::haveNewMail()
 {
 	displayPixmap();
+	// notify if we must
+	if (notify)
+	{
+		// do notify
+	}
+
 	// beep if we are allowed to
 	if (systemBeep)
 	{
@@ -248,22 +250,20 @@ void KBiff::popupMenu()
 void KBiff::reset()
 {
 	// reset all the member variables
-	poll    = 15;
-	mailbox = "imap4://granroth:letmein@localhost/Mail/testbox";
-
 	systemBeep     = true;
 	runCommand     = false;
 	runCommandPath = "";
 	playSound      = false;
 	playSoundPath  = "";
+	notify         = false;
 
 	noMailIcon  = "nomail.xpm";
 	newMailIcon = "newmail.xpm";
 	oldMailIcon = "oldmail.xpm";
 
-	isDocked   = false;
+	isDocked    = false;
 
-	mailClient = "xmutt";
+	mailClient  = "xmutt";
 
 	displayPixmap();
 }
