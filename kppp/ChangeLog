@@ -1,3 +1,16 @@
+Tue Jan 20 03:10:35 1998  Bernd Johannes Wuebben  <wuebben@math.cornell.edu>
+
+	* tried to get the docking window to display tooltip with transfer
+	bytes statistice. Failed. Need to contact Matthias about it.
+       
+	* Removed the 'Dock' button. It is superfluous. Use the window
+	close button to hide the window.
+
+	* fixed the flicker problem that was reintroduced in pppstatdlg.cpp
+
+	* fixed ( hopefully ) a hangup problem on busy redial caused
+	by the  modem_in_connect_state varible in connect.cpp
+
 Mon Jan 19 17:51:16 1998  Mario Weilguni  <mweilguni@sime.com>
 
 	* main.cpp: the setup dialog is now created on demand. Since in

@@ -643,7 +643,7 @@ void dieppp(int sig) {
       }
       else{/* reconnect on disconnect */
 #ifdef MY_DEBUG
-  printf("Trying to reconnect\n");
+  printf("Trying to reconnect ... \n");
 #endif
         if(PAP_UsePAP())
 	  PAP_CreateAuthFile();
@@ -801,14 +801,6 @@ void XPPPWidget::disconnect() {
 void XPPPWidget::helpbutton() {
 
   app->invokeHTMLHelp("kppp/kppp.html","");
-
-  /*  if ( fork() == 0 )
-        {
-                QString path = DOCS_PATH;
-                path += "/kppp.html";
-                execlp( "kdehelp", "kdehelp", path.data(), 0 );
-                exit( 1 );
-        }*/
 
 }             
 

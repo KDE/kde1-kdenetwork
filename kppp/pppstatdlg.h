@@ -45,6 +45,8 @@ public:
   PPPStatsDlg(QWidget *parent=0, const char *name=0,QWidget *main=0);
   ~PPPStatsDlg();
 
+  enum {PIXLEFT, PIXNONE,PIXRIGHT,PIXBOTH, PIXINIT};
+
 protected:
 
   void closeEvent( QCloseEvent *e );
@@ -69,6 +71,7 @@ private:
   QPushButton *cancelbutton;
   QTimer *clocktimer;
   bool left;
+  int pixstate;
 
   QLabel *labela1[5];
   QLabel *labela2[5];
@@ -93,6 +96,7 @@ private:
   bool ips_set; /* are the ip linedits filled in already?*/
   int ibytes_last;
   int obytes_last;
+  bool need_to_paint;
 
   QString 	ibytes_string;
   QString 	ipackets_string;

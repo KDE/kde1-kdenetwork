@@ -75,6 +75,7 @@ private:
 
   QPopupMenu *popup_m;
   QTimer     *clocktimer;
+  QString    statstring;
 
   QPixmap dock_none_pixmap;
   QPixmap dock_left_pixmap;

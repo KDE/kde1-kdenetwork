@@ -182,6 +182,7 @@ void ConnectWidget::init() {
   firstrunID = true;
   firstrunPW = true;
 
+
   p_xppp->con_speed = "";
   
   reconnect_on_disconnect = gpppdata.get_automatic_redial();
@@ -311,7 +312,7 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
 	pausetimer->start(atoi(gpppdata.busyWait())*1000, true);
 	timeout_timer->stop();
       }
-
+      modem_in_connect_state=false; 
       vmain = 0;
       return;
     }

@@ -24,6 +24,7 @@
  * Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
+#include <qtooltip.h>
 #include <qdir.h>
 #include <kwm.h>
 #include <kapp.h>
@@ -73,6 +74,10 @@ DockWidget::DockWidget(const char *name)
   popup_m->insertSeparator();
   popup_m->insertItem(klocale->translate("Disconnect"), 
 		      this, SLOT(disconnect()));
+
+  statstring = statstring.sprintf("In: %.2f Out %.2f",
+				  (float)ibytes/1000,(float)obytes/1000);
+  //  QToolTip::add( this, statstring.data() );
 
   // timer for little modem animation
   clocktimer = new QTimer(this);
@@ -138,6 +143,10 @@ void DockWidget::paintIcon () {
     bitBlt(this, 0, 0, &dock_both_pixmap);    
     ibytes_last = ibytes;
     obytes_last = obytes;
+    /*    QToolTip::remove(this);
+    statstring = statstring.sprintf("In: %.2f Out %.2f",
+				    (float)ibytes/1000,(float)obytes/1000);
+    QToolTip::add( this, statstring.data() );*/
     return;
   }
 
@@ -145,6 +154,10 @@ void DockWidget::paintIcon () {
     bitBlt(this, 0, 0, &dock_left_pixmap);    
     ibytes_last = ibytes;
     obytes_last = obytes;
+    /*    QToolTip::remove(this);
+    statstring = statstring.sprintf("In: %.2f Out %.2f",
+				    (float)ibytes/1000,(float)obytes/1000);
+    QToolTip::add( this, statstring.data() );*/
     return;
   }
 
@@ -152,6 +165,10 @@ void DockWidget::paintIcon () {
     bitBlt(this, 0, 0, &dock_right_pixmap);    
     ibytes_last = ibytes;
     obytes_last = obytes;
+    /*    QToolTip::remove(this);
+    statstring = statstring.sprintf("In: %.2f Out %.2f",
+				    (float)ibytes/1000,(float)obytes/1000);
+    QToolTip::add( this, statstring.data() );*/
     return;
   }
 

@@ -60,9 +60,9 @@ ConWindow::ConWindow(QWidget *parent, const char *name,QWidget *mainwidget)
 
   this->setCaption("kppp");
 
-  dockbutton = new QPushButton(this,"dockbutton");
-  dockbutton->setText(klocale->translate("Dock"));
-  connect(dockbutton, SIGNAL(clicked()), this, SLOT(dock()));
+  //  dockbutton = new QPushButton(this,"dockbutton");
+  //dockbutton->setText(klocale->translate("Dock"));
+  //connect(dockbutton, SIGNAL(clicked()), this, SLOT(dock()));
 
   cancelbutton = new QPushButton(this,"cancelbutton");
   cancelbutton->setText(klocale->translate("Disconnect"));
@@ -158,10 +158,10 @@ void ConWindow::accounting(bool on) {
   FIXED_HEIGHT(cancelbutton);
   MIN_WIDTH(statsbutton);
   FIXED_HEIGHT(statsbutton);
-  MIN_WIDTH(dockbutton);
-  FIXED_HEIGHT(dockbutton);
+  //  MIN_WIDTH(dockbutton);
+  //  FIXED_HEIGHT(dockbutton);
   l2->addWidget(statsbutton);
-  l2->addWidget(dockbutton);
+  //  l2->addWidget(dockbutton);
   l2->addWidget(cancelbutton);
 
   l2->addStretch(1);
@@ -272,11 +272,14 @@ void ConWindow::timeclick() {
 
 void ConWindow::closeEvent( QCloseEvent *e ){
 
-        e->ignore();                            
-	
-	// we don't want to lose the
-	// conwindow since this is our last connection kppp. 
-	// if we lost it we could only kill the program by hand to get on with life.
+  // we don't want to lose the
+  // conwindow since this is our last connection kppp. 
+  // if we lost it we could only kill the program by hand to get on with life.
+
+  e->ignore();
+
+  if(gpppdata.get_dock_into_panel())
+    dock();
 
 }
 

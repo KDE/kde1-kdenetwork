@@ -64,6 +64,8 @@ PPPStatsDlg::PPPStatsDlg(QWidget *parent, const char *name, QWidget *)
 {
   int i;
 
+  pixstate = PIXINIT;
+  need_to_paint = true;
   setCaption(klocale->translate("kppp Statistics"));  
 
   QVBoxLayout *tl = new QVBoxLayout(this, 10);
@@ -259,6 +261,7 @@ void PPPStatsDlg::stop_stats() {
 
 
 void PPPStatsDlg::paintEvent (QPaintEvent *) {
+  need_to_paint = true;
   paintIcon();
 }
 
@@ -266,30 +269,33 @@ void PPPStatsDlg::paintEvent (QPaintEvent *) {
 void PPPStatsDlg::paintIcon(){
 
     if((ibytes_last != ibytes) && (obytes_last != obytes)){
-      //      bitBlt( box, 35,25, &modem_both_pixmap );    
-      pixmap_l->setPixmap(big_modem_both_pixmap);
+      bitBlt( pixmap_l, 0, 0, &big_modem_both_pixmap );    
       ibytes_last = ibytes;
       obytes_last = obytes;
+      pixstate = PIXBOTH;
       return;
     }
     
     if (ibytes_last != ibytes){
-      pixmap_l->setPixmap(big_modem_left_pixmap);
+      bitBlt( pixmap_l, 0, 0, &big_modem_left_pixmap );    
       ibytes_last = ibytes;
       obytes_last = obytes;
+      pixstate = PIXLEFT;
       return;
     }
     
     if(obytes_last != obytes){
-      pixmap_l->setPixmap(big_modem_right_pixmap);
+      bitBlt( pixmap_l, 0, 0, &big_modem_right_pixmap );    
       ibytes_last = ibytes;
       obytes_last = obytes;
+      pixstate = PIXRIGHT;
       return;
     }
     
-    pixmap_l->setPixmap(big_modem_none_pixmap);
+    bitBlt( pixmap_l,0,0, &big_modem_none_pixmap );    
     ibytes_last = ibytes;
     obytes_last = obytes;
+    pixstate = PIXNONE;
 
 } 
 
