@@ -167,7 +167,7 @@ signals:
 	/**
 	 * This will get <CODE>emit</CODE>ed when new mail arrives
 	 */
-	void signal_newMail(const char* mailbox);
+	void signal_newMail(const int num_new, const char* mailbox);
 
 	/**
 	 * This will get <CODE>emit</CODE>ed when no mail exists
@@ -209,7 +209,7 @@ protected:
 	void determineState(unsigned int size, const QDateTime& last_read,
 	                    const QDateTime& last_modified);
 	void determineState(unsigned int size);
-	void determineState(KBiffMailState state);
+	void determineState(KBiffMailState state, const int num = -1);
 
 private:
 	// General stuff

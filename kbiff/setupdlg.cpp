@@ -8,7 +8,6 @@
  * $Id$
  */
 #include "setupdlg.h"
-#include "setupdlg.moc"
 
 #include "Trace.h"
 
@@ -156,82 +155,82 @@ KBiffSetup::~KBiffSetup()
 {
 }
 
-inline const QString KBiffSetup::getProfile() const
+const QString KBiffSetup::getProfile() const
 {
 	return comboProfile->currentText();
 }
 
-inline const KURL KBiffSetup::getCurrentMailbox() const
+const KURL KBiffSetup::getCurrentMailbox() const
 {
 	return mailboxTab->getMailbox();
 }
 
-inline const QList<KURL> KBiffSetup::getMailboxList() const
+const QList<KURL> KBiffSetup::getMailboxList() const
 {
 	return mailboxTab->getMailboxList();
 }
 
-inline const char* KBiffSetup::getMailClient() const
+const char* KBiffSetup::getMailClient() const
 {
 	return generalTab->getMailClient();
 }
 
-inline const char* KBiffSetup::getNoMailIcon() const
+const char* KBiffSetup::getNoMailIcon() const
 {
 	return generalTab->getButtonNoMail();
 }
 
-inline const char* KBiffSetup::getNewMailIcon() const
+const char* KBiffSetup::getNewMailIcon() const
 {
 	return generalTab->getButtonNewMail();
 }
 
-inline const char* KBiffSetup::getOldMailIcon() const
+const char* KBiffSetup::getOldMailIcon() const
 {
 	return generalTab->getButtonOldMail();
 }
 
-inline const bool KBiffSetup::getSessionManagement() const
+const bool KBiffSetup::getSessionManagement() const
 {
 	return generalTab->getSessionManagement();
 }
 
-inline const bool KBiffSetup::getDock() const
+const bool KBiffSetup::getDock() const
 {
 	return generalTab->getDock();
 }
 
-inline const unsigned int KBiffSetup::getPoll() const
+const unsigned int KBiffSetup::getPoll() const
 {
 	return generalTab->getPoll();
 }
 
-inline const char* KBiffSetup::getRunCommandPath() const
+const char* KBiffSetup::getRunCommandPath() const
 {
 	return newmailTab->getRunCommandPath();
 }
 
-inline const char* KBiffSetup::getPlaySoundPath() const
+const char* KBiffSetup::getPlaySoundPath() const
 {
 	return newmailTab->getPlaySoundPath();
 }
 
-inline const bool KBiffSetup::getRunCommand() const
+const bool KBiffSetup::getRunCommand() const
 {
 	return newmailTab->getRunCommand();
 }
 
-inline const bool KBiffSetup::getPlaySound() const
+const bool KBiffSetup::getPlaySound() const
 {
 	return newmailTab->getPlaySound();
 }
 
-inline const bool KBiffSetup::getSystemBeep() const
+const bool KBiffSetup::getSystemBeep() const
 {
 	return newmailTab->getSystemBeep();
 }
 
-inline const bool KBiffSetup::getNotify() const
+const bool KBiffSetup::getNotify() const
 {
 	return newmailTab->getNotify();
 }
@@ -539,37 +538,37 @@ KBiffGeneralTab::~KBiffGeneralTab()
 {
 }
 
-inline const bool KBiffGeneralTab::getSessionManagement() const
+const bool KBiffGeneralTab::getSessionManagement() const
 {
 	return checkNoSession->isChecked();
 }
 
-inline const bool KBiffGeneralTab::getDock() const
+const bool KBiffGeneralTab::getDock() const
 {
 	return checkDock->isChecked();
 }
 
-inline const char* KBiffGeneralTab::getButtonOldMail() const
+const char* KBiffGeneralTab::getButtonOldMail() const
 {
 	return buttonOldMail->icon();
 }
 
-inline const char* KBiffGeneralTab::getButtonNewMail() const
+const char* KBiffGeneralTab::getButtonNewMail() const
 {
 	return buttonNewMail->icon();
 }
 
-inline const char* KBiffGeneralTab::getButtonNoMail() const
+const char* KBiffGeneralTab::getButtonNoMail() const
 {
 	return buttonNoMail->icon();
 }
 
-inline const char* KBiffGeneralTab::getMailClient() const
+const char* KBiffGeneralTab::getMailClient() const
 {
 	return editCommand->text();
 }
 
-inline const int KBiffGeneralTab::getPoll() const
+const int KBiffGeneralTab::getPoll() const
 {
 	return QString(editPoll->text()).toInt();
 }
@@ -666,7 +665,6 @@ TRACEINIT("KBiffNewMailTab::KBiffNewMailTab()");
 	// setup the System Sound stuff
 	checkNotify = new QCheckBox(i18n("Notify"), this);
 	checkNotify->setMinimumSize(checkNotify->sizeHint());
-	checkNotify->setEnabled(false);
 	top_layout->addWidget(checkNotify);
 
 	top_layout->addStretch(1);
@@ -727,32 +725,32 @@ TRACEINIT("KBiffNewMailTab::saveConfig()");
 	delete config;
 }
 
-inline const bool KBiffNewMailTab::getRunCommand() const
+const bool KBiffNewMailTab::getRunCommand() const
 {
 	return checkRunCommand->isChecked();
 }
 
-inline const char* KBiffNewMailTab::getRunCommandPath() const
+const char* KBiffNewMailTab::getRunCommandPath() const
 {
 	return editRunCommand->text();
 }
 
-inline const bool KBiffNewMailTab::getPlaySound() const
+const bool KBiffNewMailTab::getPlaySound() const
 {
 	return checkPlaySound->isChecked();
 }
 
-inline const char* KBiffNewMailTab::getPlaySoundPath() const
+const char* KBiffNewMailTab::getPlaySoundPath() const
 {
 	return editPlaySound->text();
 }
 
-inline const bool KBiffNewMailTab::getSystemBeep() const
+const bool KBiffNewMailTab::getSystemBeep() const
 {
 	return checkBeep->isChecked();
 }
 
-inline const bool KBiffNewMailTab::getNotify() const
+const bool KBiffNewMailTab::getNotify() const
 {
 	return checkNotify->isChecked();
 }
@@ -835,14 +833,14 @@ KBiffMailboxAdvanced::~KBiffMailboxAdvanced()
 {
 }
 
-inline const KURL KBiffMailboxAdvanced::getMailbox() const
+const KURL KBiffMailboxAdvanced::getMailbox() const
 {
 	KURL url(mailbox->text());
 	url.setPassword(password);
 	return url;
 }
 
-inline const unsigned int KBiffMailboxAdvanced::getPort() const
+const unsigned int KBiffMailboxAdvanced::getPort() const
 {
 	return QString(port->text()).toInt();
 }
@@ -1120,7 +1118,7 @@ TRACEINIT("KBiffMailboxTab::setMailbox()");
 		editPassword->setText(url.passwd());
 }
 
-inline const KURL KBiffMailboxTab::getMailbox() const
+const KURL KBiffMailboxTab::getMailbox() const
 {
 	KURL url;
 
@@ -1147,7 +1145,7 @@ inline const KURL KBiffMailboxTab::getMailbox() const
 	return url;
 }
 
-inline const QList<KURL> KBiffMailboxTab::getMailboxList() const
+const QList<KURL> KBiffMailboxTab::getMailboxList() const
 {
 TRACEINIT("KBiffMailboxTab::getMailboxList()");	
 	QList<KURL> url_list;
@@ -1318,7 +1316,7 @@ void KBiffMailboxTab::advanced()
 	}
 }
 
-inline const char* KBiffMailboxTab::scramble(const char* password, bool encode)
+const char* KBiffMailboxTab::scramble(const char* password, bool encode)
 {
 	char *ptr = new char[strlen(password)];
 	char *ret_ptr = ptr;
@@ -1330,7 +1328,7 @@ inline const char* KBiffMailboxTab::scramble(const char* password, bool encode)
 	return ret_ptr;
 }
 
-inline const KURL KBiffMailboxTab::defaultMailbox() const
+const KURL KBiffMailboxTab::defaultMailbox() const
 {
 	QFileInfo mailbox_info(getenv("MAIL"));
 	if (mailbox_info.exists() == false)
@@ -1385,7 +1383,9 @@ TRACEINIT("KBiffAboutTab::KBiffAboutTab()");
 
 	QLabel *version = new QLabel(this);
 	version->setFont(QFont("helvetica", 12));
-	version->setText(i18n("Version 1.1.1\n\nCopyright (C) 1998\nKurt Granroth"));
+	QString ver_str;
+	ver_str.sprintf(i18n("Version %s\n\nCopyright (C) 1998\nKurt Granroth"), "1.1.2");
+	version->setText(ver_str);
 	version->setAutoResize(true);
 	version->move(x, y);
 	version->adjustSize();

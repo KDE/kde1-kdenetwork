@@ -8,7 +8,6 @@
  * $Id$
  */
 #include "kbiff.h"
-#include "kbiff.moc"
 
 #include "Trace.h"
 
@@ -19,6 +18,7 @@
 #include <kwm.h>
 
 #include "setupdlg.h"
+#include "notify.h"
 
 KBiff::KBiff(QWidget *parent)
 	: QLabel(parent)
@@ -92,7 +92,8 @@ TRACEINIT("KBiff::setMailboxList");
 		KBiffMonitor *monitor = new KBiffMonitor();
 		monitor->setMailbox(*url);
 		monitor->setPollInterval(poll);
-		connect(monitor, SIGNAL(signal_newMail()), this, SLOT(haveNewMail()));
+		connect(monitor, SIGNAL(signal_newMail(const int, const char*)),
+		        this, SLOT(haveNewMail(const int, const char*)));
 		connect(monitor, SIGNAL(signal_noMail()), this, SLOT(displayPixmap()));
 		connect(monitor, SIGNAL(signal_oldMail()), this, SLOT(displayPixmap()));
 		monitorList.append(monitor);
@@ -100,7 +101,7 @@ TRACEINIT("KBiff::setMailboxList");
 	myMUTEX = false;
 }
 
-inline const bool KBiff::isDocked() const
+const bool KBiff::isDocked() const
 {
 	return docked;
 }
@@ -298,15 +299,10 @@ TRACEINIT("KBiff::displayPixmap()");
 	adjustSize();
 }
 
-void KBiff::haveNewMail()
+void KBiff::haveNewMail(const int num, const char* the_mailbox)
 {
 TRACEINIT("KBiff::haveNewMail()");
 	displayPixmap();
-	// notify if we must
-	if (notify)
-	{
-		// do notify
-	}
 
 	// beep if we are allowed to
 	if (systemBeep)
@@ -335,6 +331,13 @@ TRACEINIT("KBiff::haveNewMail()");
 			audioServer.play(playSoundPath);
 			audioServer.sync();
 		}
+	}
+
+	// notify if we must
+	if (notify)
+	{
+		KBiffNotify notify_dlg(num, the_mailbox);
+		notify_dlg.exec();
 	}
 }
 

@@ -46,23 +46,23 @@ public:
 	KBiffSetup(const char *name = 0);
 	virtual ~KBiffSetup();
 
-	inline const QString getProfile() const;
-	inline const KURL getCurrentMailbox() const;
-	inline const QList<KURL> getMailboxList() const;
+	const QString getProfile() const;
+	const KURL getCurrentMailbox() const;
+	const QList<KURL> getMailboxList() const;
 
-	inline const char* getMailClient() const;
-	inline const char* getRunCommandPath() const;
-	inline const char* getPlaySoundPath() const;
-	inline const char* getNoMailIcon() const;
-	inline const char* getNewMailIcon() const;
-	inline const char* getOldMailIcon() const;
-	inline const bool getSystemBeep() const;
-	inline const bool getRunCommand() const;
-	inline const bool getPlaySound() const;
-	inline const bool getNotify() const;
-	inline const bool getDock() const;
-	inline const bool getSessionManagement() const;
-	inline const unsigned int getPoll() const;
+	const char* getMailClient() const;
+	const char* getRunCommandPath() const;
+	const char* getPlaySoundPath() const;
+	const char* getNoMailIcon() const;
+	const char* getNewMailIcon() const;
+	const char* getOldMailIcon() const;
+	const bool getSystemBeep() const;
+	const bool getRunCommand() const;
+	const bool getPlaySound() const;
+	const bool getNotify() const;
+	const bool getDock() const;
+	const bool getSessionManagement() const;
+	const unsigned int getPoll() const;
 
 public slots:
 	void invokeHelp();
@@ -97,13 +97,13 @@ public:
 	KBiffGeneralTab(const char* profile = 0, QWidget *parent=0);
 	virtual ~KBiffGeneralTab();
 
-	inline const char* getButtonNewMail() const;
-	inline const char* getButtonOldMail() const;
-	inline const char* getButtonNoMail() const;
-	inline const char* getMailClient() const;
-	inline const int   getPoll() const;
-	inline const bool  getDock() const;
-	inline const bool  getSessionManagement() const;
+	const char* getButtonNewMail() const;
+	const char* getButtonOldMail() const;
+	const char* getButtonNoMail() const;
+	const char* getMailClient() const;
+	const int   getPoll() const;
+	const bool  getDock() const;
+	const bool  getSessionManagement() const;
 
 public slots:
 	void readConfig(const char *profile);
@@ -127,12 +127,12 @@ public:
 	KBiffNewMailTab(const char* profile = 0, QWidget *parent=0);
 	virtual ~KBiffNewMailTab();
 
-	inline const bool getRunCommand() const;
-	inline const char* getRunCommandPath() const;
-	inline const bool getPlaySound() const;
-	inline const char* getPlaySoundPath() const;
-	inline const bool getSystemBeep() const;
-	inline const bool getNotify() const;
+	const bool getRunCommand() const;
+	const char* getRunCommandPath() const;
+	const bool getPlaySound() const;
+	const char* getPlaySoundPath() const;
+	const bool getSystemBeep() const;
+	const bool getNotify() const;
 
 public slots:
 	void readConfig(const char *profile);
@@ -164,8 +164,8 @@ public:
 	KBiffMailboxAdvanced();
 	virtual ~KBiffMailboxAdvanced();
 
-	inline const KURL getMailbox() const;
-	inline const unsigned int getPort() const;
+	const KURL getMailbox() const;
+	const unsigned int getPort() const;
 
 	void setPort(unsigned int the_port, bool enable = true);
 	void setMailbox(const KURL& url);
@@ -188,8 +188,8 @@ public:
 
 	void setMailbox(const KURL& url);
 
-	inline const KURL getMailbox() const;
-	inline const QList<KURL> getMailboxList() const;
+	const KURL getMailbox() const;
+	const QList<KURL> getMailboxList() const;
 
 public slots:
 	void readConfig(const char *profile);
@@ -205,8 +205,8 @@ protected slots:
 	void advanced();
 
 protected:
-	inline const char* scramble(const char* password, bool encode = true);
-	inline const KURL defaultMailbox() const;
+	const char* scramble(const char* password, bool encode = true);
+	const KURL defaultMailbox() const;
 
 private:
 	QDict<KBiffMailbox> *mailboxHash;

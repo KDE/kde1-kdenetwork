@@ -8,7 +8,6 @@
  * $Id$
  */
 #include "kbiffmonitor.h"
-#include "kbiffmonitor.moc"
 
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -217,7 +216,7 @@ TRACEINIT("KBiffMonitor::checkImap()");
 	else
 	{
 		if (imap.numberOfNewMessages() > 0)
-			determineState(NewMail);
+			determineState(NewMail, imap.numberOfNewMessages());
 		else
 			determineState(OldMail);
 	}
@@ -248,7 +247,7 @@ TRACEINIT("KBiffMonitor::determineState()");
 			mailState = NewMail;
 			lastSize  = size;
 			emit(signal_newMail());
-			emit(signal_newMail(mailbox));
+			emit(signal_newMail(size - lastSize, mailbox));
 		}
 
 		return;
@@ -279,13 +278,14 @@ TRACEINIT("KBiffMonitor::determineState()");
 	}
 }
 
-void KBiffMonitor::determineState(KBiffMailState state)
+void KBiffMonitor::determineState(KBiffMailState state, const int num)
 {
 TRACEINIT("KBiffMonitor::determineState()");
 	if ((state == NewMail) && (mailState != NewMail))
 	{
 		mailState = NewMail;
 		emit(signal_newMail());
+		emit(signal_newMail(num, mailbox));
 	}
 	else
 	if ((state == NoMail) && (mailState != NoMail))
@@ -337,7 +337,7 @@ TRACEINIT("KBiffMonitor::determineState()");
 
 		// Let the world know of the new state
 		emit(signal_newMail());
-		emit(signal_newMail(mailbox));
+		emit(signal_newMail(1, mailbox));
 
 		return;
 	}
@@ -391,7 +391,7 @@ TRACEINIT("KBiffMonitor::checkMaildir()");
 			// all messages in 'new' are new
 			if (new_count > 0)
 			{
-				determineState(NewMail);
+				determineState(NewMail, new_count);
 			}
 			// failing that, we look for any old ones
 			else if (cur_count > 0)

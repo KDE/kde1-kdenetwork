@@ -37,7 +37,7 @@ public:
 	KBiff(QWidget *parent = 0);
 	virtual ~KBiff();
 
-	inline const bool isDocked() const;
+	const bool isDocked() const;
 
 	void processSetup(const KBiffSetup* setup, bool start);
 	void readSessionConfig();
@@ -57,7 +57,7 @@ protected slots:
 	void saveYourself();
 	void invokeHelp();
 	void displayPixmap();
-	void haveNewMail();
+	void haveNewMail(const int, const char*);
 	void dock();
 	void setup();
 	void checkMailNow();

@@ -12,7 +12,9 @@ CXXFLAGS = -ansi @CXXFLAGS@
 bin_PROGRAMS = 	kbiff
 
 # Which sources should be compiled for kbiff.
-kbiff_SOURCES	= setupdlg.cpp kbiff.cpp main.cpp kbiffmonitor.cpp Trace.cpp
+kbiff_SOURCES	= setupdlg.cpp kbiff.cpp main.cpp kbiffmonitor.cpp notify.cpp Trace.cpp
+
+kbiff_METASOURCES = USE_AUTOMOC
 
 # the library search path
 kbiff_LDFLAGS = $(all_libraries) $(KDE_RPATH)
@@ -22,14 +24,11 @@ kbiff_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 kbiff_LDADD   = -lkfile -lkfm -lkdeui -lkdecore -lmediatool -lqt -lX11 -lXext $(LIBSOCKET)
 
 # this option you can leave out. Just, if you use "make dist", you need it
-noinst_HEADERS = setupdlg.h kbiff.h kbiffmonitor.h Trace.h
-
-# just to make sure, automake makes them 
-BUILTSOURCES =	kbiff.moc setupdlg.moc kbiffmonitor.moc
+noinst_HEADERS = setupdlg.h kbiff.h kbiffmonitor.h notify.h Trace.h
 
 # if you "make distclean", this files get removed. If you want to remove
 # them while "make clean", use CLEANFILES
-DISTCLEANFILES = $(BUILTSOURCES)
+DISTCLEANFILES = $(kbiff_METASOURCES)
 
 # make messages.po. Move this one to ../po/ and "make merge" in po
 messages:
@@ -53,17 +52,3 @@ uninstall-local:
 	-rm -f $(APPSDIR)/kbiff.kdelnk
 	-rm -f $(kde_icondir)/kbiff.xpm
 	-rm -f $(kde_minidir)/kbiff.xpm
-
-# add a dependency for every moc file to be full portable
-kbiff.cpp:kbiff.moc
-kbiff.moc: kbiff.h
-	$(MOC) kbiff.h -o kbiff.moc
-
-setupdlg.cpp:setupdlg.moc
-setupdlg.moc: setupdlg.h
-	$(MOC) setupdlg.h -o setupdlg.moc
-
-kbiffmonitor.cpp:kbiffmonitor.moc
-kbiffmonitor.moc: kbiffmonitor.h
-	$(MOC) kbiffmonitor.h -o kbiffmonitor.moc
-
