@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 1998-10-09 15:54+0200\n"
 "PO-Revision-Date: 1998-03-19 00:00+0100\n"
-"Last-Translator: Svein Olav Aasen <svein.aasen@caa.no / soaasen@online.no>\n"
+"Last-Translator: Hans Petter Bieker <zerium@webindex.no>\n"
 "Language-Team: no <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO_8859-1\n"
@@ -96,7 +96,7 @@ msgstr "Umerk"
 
 #: artdlg.cpp:159 findArtDlg.cpp:65 groupdlg.cpp:155
 msgid "Find"
-msgstr ""
+msgstr "Finn"
 
 #: artdlg.cpp:170 groupdlg.cpp:157
 msgid "(Un)Tag"
@@ -292,7 +292,7 @@ msgstr "Post & svar"
 
 #: artdlg.cpp:167 artdlg.cpp:257
 msgid "Forward"
-msgstr ""
+msgstr "Forover"
 
 #: artdlg.cpp:173 artdlg.cpp:241
 msgid "Tagged"
@@ -408,7 +408,7 @@ msgstr "Avsender"
 
 #: artdlg.cpp:292 sortDlg.cpp:35
 msgid "Date"
-msgstr ""
+msgstr "Dato"
 
 #: artdlg.cpp:293 sortDlg.cpp:36
 msgid "Lines"
@@ -586,15 +586,15 @@ msgstr "Skrifttypestørrelse:"
 
 #: fontsDlg.cpp:70
 msgid "Small"
-msgstr ""
+msgstr "Liten"
 
 #: fontsDlg.cpp:71
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 #: fontsDlg.cpp:72
 msgid "Large"
-msgstr ""
+msgstr "Stor"
 
 #: fontsDlg.cpp:73
 msgid "Huge"
@@ -642,11 +642,11 @@ msgstr "Del vindu vertikalt"
 
 #: kmmessage.cpp:1260
 msgid "On %D, you wrote:"
-msgstr ""
+msgstr "%D, skrev du:"
 
 #: kmmessage.cpp:1261
 msgid "On %D, %F wrote:"
-msgstr ""
+msgstr "%D, %F skrev:"
 
 #: kmmessage.cpp:1262
 msgid "Forwarded Message"
@@ -654,11 +654,11 @@ msgstr "Vidresend melding"
 
 #: kmcomposewin.cpp:122
 msgid "KMail Composer"
-msgstr ""
+msgstr "KMail komponist"
 
 #: kmcomposewin.cpp:133
 msgid "F"
-msgstr ""
+msgstr "F"
 
 #: kmcomposewin.cpp:134
 msgid "Name"
@@ -666,12 +666,11 @@ msgstr "Navn"
 
 #: kmcomposewin.cpp:135
 msgid "Size"
-msgstr ""
+msgstr "Størrelse"
 
 #: kmcomposewin.cpp:136
-#, fuzzy
 msgid "Encoding"
-msgstr "&Poengsetting"
+msgstr "Koder"
 
 #: kmcomposewin.cpp:137
 msgid "Type"
@@ -731,11 +730,11 @@ msgstr "&Adressebok..."
 
 #: kmcomposewin.cpp:446
 msgid "&New Composer..."
-msgstr ""
+msgstr "&Ny komponist"
 
 #: kmcomposewin.cpp:449
 msgid "New Mailreader"
-msgstr ""
+msgstr "Ny postleser"
 
 #: kmcomposewin.cpp:469 kmcomposewin.cpp:678 kmcomposewin.cpp:1917
 msgid "Mark all"
@@ -751,43 +750,43 @@ msgstr "Erstatt..."
 
 #: kmcomposewin.cpp:481
 msgid "&Urgent"
-msgstr ""
+msgstr "&Viktig"
 
 #: kmcomposewin.cpp:483
 msgid "&Confirm delivery"
-msgstr ""
+msgstr "&Bekreft levering"
 
 #: kmcomposewin.cpp:485
 msgid "&Confirm read"
-msgstr ""
+msgstr "&Bekreft lesing"
 
 #: kmcomposewin.cpp:488
 msgid "&Charsets..."
-msgstr ""
+msgstr "&Tegnsett..."
 
 #: kmcomposewin.cpp:501
 msgid "&All Fields"
-msgstr ""
+msgstr "&Alle felter"
 
 #: kmcomposewin.cpp:503
 msgid "&From"
-msgstr ""
+msgstr "&Fra"
 
 #: kmcomposewin.cpp:504
 msgid "&Reply to"
-msgstr ""
+msgstr "&Svar til"
 
 #: kmcomposewin.cpp:505
 msgid "&To"
-msgstr ""
+msgstr "&Til"
 
 #: kmcomposewin.cpp:506
 msgid "&Cc"
-msgstr ""
+msgstr "&Cc"
 
 #: kmcomposewin.cpp:507
 msgid "&Bcc"
-msgstr ""
+msgstr "&Bcc"
 
 #: kmcomposewin.cpp:508
 msgid "&Subject"
@@ -807,31 +806,31 @@ msgstr "Legg til s&ignatur"
 
 #: kmcomposewin.cpp:518
 msgid "&Insert File"
-msgstr ""
+msgstr "&Sett inn fil"
 
 #: kmcomposewin.cpp:520
 msgid "&Attach..."
-msgstr ""
+msgstr "&Vedlegg..."
 
 #: kmcomposewin.cpp:523
 msgid "&Save..."
-msgstr ""
+msgstr "&Lagre..."
 
 #: kmcomposewin.cpp:524
 msgid "Pr&operties..."
-msgstr ""
+msgstr "&Egenskaper..."
 
 #: kmcomposewin.cpp:526
 msgid "&Attach"
-msgstr ""
+msgstr "&Vedlegg"
 
 #: kmcomposewin.cpp:551
 msgid "Compose new message"
-msgstr ""
+msgstr "Komponer ny melding"
 
 #: kmcomposewin.cpp:556
 msgid "Save message to file"
-msgstr ""
+msgstr "Lagre melding til fil"
 
 #: kmcomposewin.cpp:561
 msgid "Print message"
@@ -862,28 +861,28 @@ msgid "sign message"
 msgstr "signer melding"
 
 #: kmcomposewin.cpp:599
-#, fuzzy
 msgid "encrypt message"
-msgstr "Neste melding"
+msgstr "kyrptert melding"
 
 #: kmcomposewin.cpp:611 kmcomposewin.cpp:627
 msgid "Column"
-msgstr ""
+msgstr "Kolonne"
 
 #: kmcomposewin.cpp:612 kmcomposewin.cpp:625
-#, fuzzy
 msgid "Line"
-msgstr "Linjer"
+msgstr "Linje"
 
 #: kmcomposewin.cpp:891
 msgid "KMail Confirm"
-msgstr ""
+msgstr "KMail-bekreftelse"
 
 #: kmcomposewin.cpp:892
 msgid ""
 "Close and discard\n"
 "edited message?"
 msgstr ""
+"Lukk og forkast\n"
+"redigert melding?"
 
 #: kmcomposewin.cpp:937
 #, c-format
@@ -891,77 +890,79 @@ msgid ""
 "public key for %s not found.\n"
 "This person will not be able to decrypt the message."
 msgstr ""
+"offentlig nøkkel for %s ble ikke funnet.\n"
+"Denne personen vil ikke kunne dekryptere meldingen."
 
 #: kmcomposewin.cpp:958
 msgid "Error during PGP:"
-msgstr ""
+msgstr "Feil under PGP:"
 
 #: kmcomposewin.cpp:1178
-#, fuzzy
 msgid "Attach File"
-msgstr "Vedleggsstil"
+msgstr "Legg ved fil"
 
 #: kmcomposewin.cpp:1200
 msgid "Include File"
-msgstr ""
+msgstr "Inkluder fil"
 
 #: kmcomposewin.cpp:1223 kmreaderwin.cpp:683
 msgid "View..."
-msgstr ""
+msgstr "Vis..."
 
 #: kmcomposewin.cpp:1224
 msgid "Save..."
-msgstr ""
+msgstr "Lagre..."
 
 #: kmcomposewin.cpp:1225 kmreaderwin.cpp:686
-#, fuzzy
 msgid "Properties..."
-msgstr "Sorterer..."
+msgstr "Egenskaper..."
 
 #: kmcomposewin.cpp:1229
 msgid "Attach..."
-msgstr ""
+msgstr "Legg ved..."
 
 #: kmcomposewin.cpp:1271 kmreaderwin.cpp:728
-#, fuzzy
 msgid "View Attachment: "
-msgstr "Vedleggsstil"
+msgstr "Vis vedlegg: "
 
 #: kmcomposewin.cpp:1442 kpgp.cpp:357
 msgid ""
 "Sorry, but this feature\n"
 "is still missing"
 msgstr ""
+"Beklager, men denne egenskapen\n"
+"mangler fortsatt"
 
 #: kmcomposewin.cpp:1450
 msgid "unnamed"
-msgstr ""
+msgstr "uten navn"
 
 #: kmcomposewin.cpp:1465
 msgid "To:"
-msgstr ""
+msgstr "Til:"
 
 #: kmcomposewin.cpp:1469
-#, fuzzy
 msgid "Subject:"
-msgstr "Subjekt"
+msgstr "Subjekt:"
 
 #: kmcomposewin.cpp:1472
 msgid "Date:"
-msgstr ""
+msgstr "Dato:"
 
 #: kmcomposewin.cpp:1549
 msgid "Choose Signature File"
-msgstr ""
+msgstr "Velg signaturfil"
 
 #: kmcomposewin.cpp:1579
 msgid "KMail: Spellcheck"
-msgstr ""
+msgstr "KMail: Stavekontroll"
 
 #: kmcomposewin.cpp:1603
 msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
 msgstr ""
+"Feil under starting av KSpell. Vennligst forviss deg om at ISpell er "
+"riktig konfigurert."
 
 #: kmsender.cpp:108
 msgid ""
@@ -969,6 +970,8 @@ msgid ""
 "method in the settings\n"
 "and try again."
 msgstr ""
+"Vennligst oppgi en sendemetode\n"
+"i innstillingene og prøv igjen."
 
 #: kmsender.cpp:114
 msgid ""
@@ -976,52 +979,54 @@ msgid ""
 "identity settings:\n"
 "user-name and email-address"
 msgstr ""
+"Vennligst sett de påkrevde feltene i\n"
+"identitetinnstillingene:\n"
+"brukernanv og epostadresse"
 
 #: kmsender.cpp:139
 msgid "You must specify a receiver"
-msgstr ""
+msgstr "Du må oppgi en mottager"
 
 #: kmsender.cpp:150
 msgid "Cannot add message to outbox folder"
-msgstr ""
+msgstr "Kan ikke legge til melding til utboks-mappen"
 
 #: kmsender.cpp:173
 msgid "Sending still in progress"
-msgstr ""
+msgstr "Sender fortsatt i fremgang"
 
 #: kmsender.cpp:225
 msgid "Initiating sender process..."
-msgstr ""
+msgstr "Gjør klart sendeprosess..."
 
 #: kmsender.cpp:241
-#, fuzzy
 msgid "Sending message: "
-msgstr "Motta melding i "
+msgstr "Sender melding: "
 
 #: kmsender.cpp:269
-#, fuzzy
 msgid "Done sending messages."
-msgstr "Motta melding i "
+msgstr "Fullført sending av melding."
 
 #: kmsender.cpp:288
 msgid "Sending failed:"
-msgstr ""
+msgstr "Sending mislyktes:"
 
 #: kmsender.cpp:441
 msgid ""
 "Please specify a mailer program\n"
 "in the settings."
 msgstr ""
+"Vennligst oppgi et epostprogram\n"
+"i innstillingene."
 
 #: kmsender.cpp:481
 #, c-format
 msgid "Failed to execute mailer program %s"
-msgstr ""
+msgstr "Mislyktes å utføre postprogram %s"
 
 #: kmsender.cpp:569
-#, fuzzy
 msgid "connecting to server"
-msgstr "Kopler til tjener"
+msgstr "forbindelse til tjener"
 
 #: kmsender.cpp:574
 #, c-format
@@ -1030,19 +1035,21 @@ msgid ""
 "host %s for sending:\n"
 "%s"
 msgstr ""
+"Kan ikke åpne SMTP-forbindelse til\n"
+"vert %s for sending:\n"
+"%s"
 
 #: kmsender.cpp:603
 msgid "Cannot close SMTP connection."
-msgstr ""
+msgstr "Kan ikke lukke SMTP-forbindelse."
 
 #: kmsender.cpp:653
-#, fuzzy
 msgid "transmitting message"
-msgstr "Motta melding i "
+msgstr "overfører melding"
 
 #: kmsender.cpp:687
 msgid "network error"
-msgstr ""
+msgstr "nettverksfeil"
 
 #: kmsender.cpp:689
 #, c-format
@@ -1056,7 +1063,7 @@ msgstr ""
 #: kmsender.cpp:704
 #, c-format
 msgid "Sending SMTP command: %s"
-msgstr ""
+msgstr "Sender SMTP-kommando: %s"
 
 #: findArtDlg.cpp:22
 msgid "KRN - Article Searcher"
@@ -1072,7 +1079,7 @@ msgstr "I felt:"
 
 #: findArtDlg.cpp:53 rulesDlg.cpp:131
 msgid "Case Sensitive"
-msgstr ""
+msgstr "Avhengig av bokstavstørrelse"
 
 #: findArtDlg.cpp:56 rulesDlg.cpp:132
 msgid "Wildcard Mode"
@@ -1080,7 +1087,7 @@ msgstr "Wildcard-modus"
 
 #: findArtDlg.cpp:66 rulesDlg.cpp:144
 msgid "Done"
-msgstr ""
+msgstr "Ferdig"
 
 #: kmidentity.cpp:162
 #, c-format
@@ -1089,10 +1096,13 @@ msgid ""
 "%s\n"
 "%s"
 msgstr ""
+"Mislyktes å utføre signaturfilskript\n"
+"%s\n"
+"%s"
 
 #: kfileio.cpp:26 kmaddrbook.cpp:159
 msgid "File I/O Error"
-msgstr ""
+msgstr "Fil-I/U-feil"
 
 #: kfileio.cpp:47
 #, c-format
@@ -1100,6 +1110,8 @@ msgid ""
 "The specified file does not exist:\n"
 "%s"
 msgstr ""
+"Den oppgitte filen eksisterer ikke:\n"
+"%s"
 
 #: kfileio.cpp:54
 #, c-format
@@ -1107,6 +1119,8 @@ msgid ""
 "This is a directory and not a file:\n"
 "%s"
 msgstr ""
+"Dette er en katalog og ikke en fil:\n"
+"%s"
 
 #: kfileio.cpp:61
 #, c-format
@@ -1139,7 +1153,7 @@ msgstr ""
 #: kfileio.cpp:95
 #, c-format
 msgid "Could only read %u bytes of %u."
-msgstr ""
+msgstr "Kunne bare lese %u byter av %u."
 
 #: kfileio.cpp:124
 #, c-format
@@ -1147,6 +1161,9 @@ msgid ""
 "File %s exists.\n"
 "Do you want to replace it ?"
 msgstr ""
+
+"Filen %s eksisterer.\n"
+"Vil du overskrive?"
 
 #: kfileio.cpp:144
 #, c-format
@@ -1183,100 +1200,97 @@ msgstr ""
 
 #: kmmsgpartdlg.cpp:41
 msgid "Message Part Properties"
-msgstr ""
+msgstr "Meldingsdelegenskaper"
 
 #: kmmsgpartdlg.cpp:62
 msgid "Name:"
-msgstr ""
+msgstr "Navn:"
 
 #: kmmsgpartdlg.cpp:73
 msgid "Description:"
-msgstr ""
+msgstr "Beskrivelse:"
 
 #: kmmsgpartdlg.cpp:83
 msgid "Encoding:"
-msgstr ""
+msgstr "Koder:"
 
 #: kmmsgpartdlg.cpp:89
 msgid "none (8bit)"
-msgstr ""
+msgstr "intet (8bit)"
 
 #: kmmsgpartdlg.cpp:90
 msgid "base 64"
-msgstr ""
+msgstr "base 64"
 
 #: kmmsgpartdlg.cpp:91
 msgid "quoted printable"
-msgstr ""
+msgstr "quoted printable"
 
 #: kmreaderwin.cpp:309 kmreaderwin.cpp:322 kmreaderwin.cpp:341
 #: kmreaderwin.cpp:362
 msgid "Cc: "
-msgstr ""
+msgstr "Cc: "
 
 #: kmreaderwin.cpp:317 kmreaderwin.cpp:336 kmreaderwin.cpp:357
 msgid "From: "
-msgstr ""
+msgstr "From: "
 
 #: kmreaderwin.cpp:319 kmreaderwin.cpp:338 kmreaderwin.cpp:359
 msgid "To: "
-msgstr ""
+msgstr "Til: "
 
 #: kmreaderwin.cpp:326 kmreaderwin.cpp:347 kmreaderwin.cpp:372
 msgid "References: "
-msgstr ""
+msgstr "Referanser: "
 
 #: kmreaderwin.cpp:343 kmreaderwin.cpp:356
 msgid "Date: "
-msgstr ""
+msgstr "Dato: "
 
 #: kmreaderwin.cpp:365
 msgid "Bcc: "
-msgstr ""
+msgstr "Bcc: "
 
 #: kmreaderwin.cpp:368
-#, fuzzy
 msgid "Reply to: "
-msgstr "Svar med post"
+msgstr "Svar til: "
 
 #: kmreaderwin.cpp:375
 msgid "Groups: "
-msgstr ""
+msgstr "Grupper: "
 
 #: kmreaderwin.cpp:412
 msgid "Encrypted message"
-msgstr ""
+msgstr "Kyrptert melding"
 
 #: kmreaderwin.cpp:418
 msgid "Cannot decrypt message:"
-msgstr ""
+msgstr "Kan ikke dekryptere melding:"
 
 #: kmreaderwin.cpp:436
 msgid "Message was signed by"
-msgstr ""
+msgstr "Melding var signert av"
 
 #: kmreaderwin.cpp:437
 msgid "Warning: Bad signature from"
-msgstr ""
+msgstr "Varsel: Feil signatur fra"
 
 #: kmreaderwin.cpp:647
-#, fuzzy
 msgid "Attachment: "
-msgstr "Vedleggsstil"
+msgstr "Vedlegg:"
 
 #: kmreaderwin.cpp:759
 msgid "Could not create temporary file"
-msgstr ""
+msgstr "Kunne ikke opprette mildlertidig fil"
 
 #: kmreaderwin.cpp:780
 #, c-format
 msgid "Could not save temporary file %s"
-msgstr ""
+msgstr "Kunne ikke lagre midlertidig fil %s"
 
 #: kmreaderwin.cpp:809
-#, fuzzy
 msgid "Could not save file"
-msgstr "Oppkopling til tjener slo feil"
+msgstr "Kunne ikke lagre fil"
 
 #: kpgp.cpp:117
 msgid ""
@@ -1292,38 +1306,39 @@ msgstr ""
 
 #: kpgp.cpp:173
 msgid "The pass phrase is missing."
-msgstr ""
+msgstr "Passfrasen mangler."
 
 #: kpgp.cpp:445
 msgid "Message signed by"
-msgstr ""
+msgstr "Melding signert av"
 
 #: kpgp.cpp:449
 msgid "Message has a bad signature from"
-msgstr ""
+msgstr "Melding har feil signatur fra"
 
 #: kpgp.cpp:457
 msgid "End PGP signed message"
-msgstr ""
+msgstr "Slutt PGP-signert melding"
 
 #: kpgp.cpp:622
 msgid "Bad pass Phrase; couldn't decrypt"
-msgstr ""
+msgstr "Feil passfrase; kunne ikke dekryptere"
 
 #: kpgp.cpp:708
 msgid "Bad pass Phrase; couldn't sign"
-msgstr ""
+msgstr "Feil passfrase; kunne ikke signere"
 
 #: kpgp.cpp:765
-#, fuzzy
 msgid ""
 "Please enter your\n"
 "PGP passphrase"
-msgstr "Vennligst oppgi ditt virkelig navn"
+msgstr ""
+"Vennligst skriv inn din\n"
+"PGP-passfrase"
 
 #: kpgp.cpp:792
 msgid "PGP Security Check"
-msgstr ""
+msgstr "PGP-sikkerhetssjekk"
 
 #: krnsender.cpp:59
 msgid "This server is read onlyyou can't post here!"
@@ -1331,27 +1346,27 @@ msgstr "Denne tjeneren kan du kun lese fra, du kan ikke poste her!"
 
 #: kmaddrbookdlg.cpp:20
 msgid "Addressbook"
-msgstr ""
+msgstr "Adressebok"
 
 #: kmaddrbookdlg.cpp:95
 msgid "Addressbook Manager"
-msgstr ""
+msgstr "Adressebokbehandler"
 
 #: kmaddrbookdlg.cpp:178
 msgid "KMail error"
-msgstr ""
+msgstr "KMail-feil"
 
 #: kmaddrbookdlg.cpp:179
 msgid "Storing addressbook failed"
-msgstr ""
+msgstr "Lagring av adressebok mislyktes"
 
 #: kmaddrbook.cpp:25
 msgid "KMail Error"
-msgstr ""
+msgstr "KMail-feil"
 
 #: kmaddrbook.cpp:26
 msgid "Storing the addressbook failed!\n"
-msgstr ""
+msgstr "Lagring av adresseboken mislyktes!\n"
 
 #: expireDlg.cpp:22 expireDlg.cpp:27
 msgid "KRN - Expire Settings"
@@ -1455,7 +1470,7 @@ msgstr "Pass artikler med:"
 
 #: rulesDlg.cpp:124
 msgid "Weight:"
-msgstr ""
+msgstr "Bredde:"
 
 #: rulesDlg.cpp:126
 msgid "Negative"
@@ -1471,7 +1486,7 @@ msgstr "KRn - Meldingshodesortering"
 
 #: sortDlg.cpp:37
 msgid "None"
-msgstr ""
+msgstr "Ingen"
 
 #: sortDlg.cpp:39
 msgid "Sort by:"
@@ -1482,30 +1497,28 @@ msgid "Use Threading"
 msgstr "Bruk tråder"
 
 #: charsetsDlg.cpp:27
-#, fuzzy
 msgid "KRN - Charset Settings"
-msgstr "KRN - Skriverinnstillinger"
+msgstr "KRN - Tegnsettinnstillinger"
 
 #: charsetsDlg.cpp:29
-#, fuzzy
 msgid "KMail - Charset Settings"
-msgstr "KRN - Skriverinnstillinger"
+msgstr "KRN - Tegnsettinnstillinger"
 
 #: charsetsDlg.cpp:39
 msgid "Message charset"
-msgstr ""
+msgstr "Meldingstegnsett"
 
 #: charsetsDlg.cpp:57
 msgid "Composer charset"
-msgstr ""
+msgstr "Komponeringstegnsett"
 
 #: charsetsDlg.cpp:75
 msgid "Set as &default"
-msgstr ""
+msgstr "Sett som &standard"
 
 #: charsetsDlg.cpp:80
 msgid "&7 bit is ASCII"
-msgstr ""
+msgstr "&7-bitt er ASCII"
 
 #: charsetsDlg.cpp:84
 msgid "&Qute unknonw characters"
