@@ -2,7 +2,12 @@
 
 int Trace::traceIndent = 0;
 int Trace::tabStop = 2;
-bool Trace::traceOn = true;
+bool Trace::traceOn = false;
+
+Trace::Trace(bool do_trace)
+{
+	traceOn = do_trace;
+}
 
 Trace::Trace(const QString& function_name)
 {

@@ -7,22 +7,21 @@
 
 int main(int argc, char *argv[])
 {
-TRACEINIT("main()");
 	KApplication app(argc, argv, "kbiff");
 	KBiff kbiff;
 	KBiffSetup* setup;
 	bool have_profile = false;
-	bool do_debug = false;
 
 	app.setMainWidget(&kbiff);
 
 	// parse the args for the -debug option
 	if (argc == 2)
 	{
-		// do something with this later
 		if (QString(argv[1]) == "-debug")
-			do_debug = true;
+			TRACEON(true);
 	}
+
+TRACEINIT("main()");
 
 	// parse the args to see if there is the -profile option
 	if (argc == 3)

@@ -48,7 +48,7 @@
 #	define TRACEINIT         Trace __trace
 #	define TRACE             __trace.output
 #	define TRACEF            __trace.outputf
-#	define TRACEON           __trace.setTraceOn
+#	define TRACEON           Trace __trace
 #	define TRACETAB          __trace.setTabStop
 #else
 #	define TRACEINIT(x)
@@ -61,6 +61,7 @@
 class Trace
 {
 public:
+	Trace(bool do_trace);
 	Trace(const QString& function_name);
 	virtual ~Trace();
 

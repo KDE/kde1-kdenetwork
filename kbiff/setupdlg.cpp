@@ -92,6 +92,7 @@ TRACEINIT("KBiffSetup::KBiffSetup()");
 	//  add the profile name stuff into the main layout
 	QBoxLayout *main_layout = new QBoxLayout(this, QBoxLayout::Down);
 	main_layout->addWidget(profile_groupbox, 1);
+	main_layout->addSpacing(5);
 
 	// setup the tabs
 	KTabCtl *tabctl = new KTabCtl(this);
@@ -116,16 +117,19 @@ TRACEINIT("KBiffSetup::KBiffSetup()");
 	// add the tab control to the main layout
 	main_layout->addWidget(tabctl, 2);
 
-	QBoxLayout *bottom_layout = new QBoxLayout(QBoxLayout::LeftToRight, 10);
+	QBoxLayout *bottom_layout = new QBoxLayout(QBoxLayout::LeftToRight, 12);
 
 	// and add the bottom buttons to the main layout
+	main_layout->addSpacing(5);
 	main_layout->addLayout(bottom_layout, 1);
+	main_layout->addSpacing(5);
 	main_layout->activate();
 
 	// help button
 	help = new QPushButton(i18n("Help"), this);
 	help->setMinimumSize(help->sizeHint());
 	connect(help, SIGNAL(clicked()), SLOT(invokeHelp()));
+	bottom_layout->addSpacing(5);
 	bottom_layout->addWidget(help);
 	bottom_layout->addSpacing(50);
 
@@ -141,8 +145,7 @@ TRACEINIT("KBiffSetup::KBiffSetup()");
 	cancel->setMinimumSize(cancel->sizeHint());
 	connect(cancel, SIGNAL(clicked()), SLOT(reject()));
 	bottom_layout->addWidget(cancel);
-
-	resize(350, 400);
+	bottom_layout->addSpacing(5);
 
 	readConfig(profile);
 }
@@ -419,7 +422,11 @@ KBiffGeneralTab::KBiffGeneralTab(const char* profile, QWidget *parent)
 {
 TRACEINIT("KBiffGeneralTab::KBiffGeneralTab()");
 TRACEF("profile = %s", profile);
-	QGridLayout *top_grid = new QGridLayout(this, 5, 3, 12, 5, "top_grid");
+	QVBoxLayout *top_layout = new QVBoxLayout(this, 12, 5);
+	QGridLayout *top_grid = new QGridLayout(4, 3);
+	top_layout->addLayout(top_grid);
+
+	top_grid->setColStretch(2, 1);
 
 	// the poll time (in seconds)
 	QLabel* poll_label = new QLabel(i18n("Poll (sec):"), this);
@@ -451,22 +458,20 @@ TRACEF("profile = %s", profile);
 
 	// group box to hold the icons together
 	QGroupBox* icons_groupbox = new QGroupBox(i18n("Icons:"), this);
-	top_grid->addMultiCellWidget(icons_groupbox, 4, 4, 0, 2);
-	top_grid->setRowStretch(4, 1);
+	top_layout->addWidget(icons_groupbox);
 
 	// layout to hold the icons inside the groupbox
-	QBoxLayout *icon_layout = new QBoxLayout(icons_groupbox,
-	                                         QBoxLayout::Down, 12, 5, "icon");
+	QVBoxLayout *icon_layout = new QVBoxLayout(icons_groupbox, 8);
 	icon_layout->addSpacing(8);
 
-	QGridLayout *icon_grid = new QGridLayout(2, 3, 12, "icon_grid");
+	QGridLayout *icon_grid = new QGridLayout(2, 3);
 	icon_layout->addLayout(icon_grid);
 
 	icon_grid->setColStretch(0, 1);
 	icon_grid->setColStretch(1, 1);
 	icon_grid->setColStretch(2, 1);
 
-	QBoxLayout *no_layout1 = new QBoxLayout(QBoxLayout::LeftToRight, 12, "no1");
+	QBoxLayout *no_layout1 = new QBoxLayout(QBoxLayout::LeftToRight);
 	icon_grid->addLayout(no_layout1, 0, 0);
 
 	// "no mail" pixmap button
@@ -476,7 +481,7 @@ TRACEF("profile = %s", profile);
 	no_layout1->addWidget(nomail_label);
 	no_layout1->addStretch(1);
 
-	QBoxLayout *old_layout1 = new QBoxLayout(QBoxLayout::LeftToRight, 12, "old1");
+	QBoxLayout *old_layout1 = new QBoxLayout(QBoxLayout::LeftToRight);
 	icon_grid->addLayout(old_layout1, 0, 1);
 	// "old mail" pixmap button
 	QLabel* oldmail_label = new QLabel(i18n("Old Mail"), icons_groupbox);
@@ -485,7 +490,7 @@ TRACEF("profile = %s", profile);
 	old_layout1->addWidget(oldmail_label);
 	old_layout1->addStretch(1);
 
-	QBoxLayout *new_layout1 = new QBoxLayout(QBoxLayout::LeftToRight, 12, "new1");
+	QBoxLayout *new_layout1 = new QBoxLayout(QBoxLayout::LeftToRight);
 	icon_grid->addLayout(new_layout1, 0, 2);
 
 	// "new mail" pixmap button
@@ -495,7 +500,7 @@ TRACEF("profile = %s", profile);
 	new_layout1->addWidget(newmail_label);
 	new_layout1->addStretch(1);
 
-	QBoxLayout *no_layout = new QBoxLayout(QBoxLayout::LeftToRight, 12, "no");
+	QBoxLayout *no_layout = new QBoxLayout(QBoxLayout::LeftToRight);
 	icon_grid->addLayout(no_layout, 1, 0);
 
 	buttonNoMail = new KIconLoaderButton(icons_groupbox);
@@ -504,7 +509,7 @@ TRACEF("profile = %s", profile);
 	no_layout->addWidget(buttonNoMail);
 	no_layout->addStretch(1);
 
-	QBoxLayout *old_layout = new QBoxLayout(QBoxLayout::LeftToRight, 12, "old");
+	QBoxLayout *old_layout = new QBoxLayout(QBoxLayout::LeftToRight);
 	icon_grid->addLayout(old_layout, 1, 1);
 
 	buttonOldMail = new KIconLoaderButton(icons_groupbox);
@@ -513,7 +518,7 @@ TRACEF("profile = %s", profile);
 	old_layout->addWidget(buttonOldMail);
 	old_layout->addStretch(1);
 
-	QBoxLayout *new_layout = new QBoxLayout(QBoxLayout::LeftToRight, 12, "new");
+	QBoxLayout *new_layout = new QBoxLayout(QBoxLayout::LeftToRight);
 	icon_grid->addLayout(new_layout, 1, 2);
 
 	buttonNewMail = new KIconLoaderButton(icons_groupbox);
@@ -522,7 +527,8 @@ TRACEF("profile = %s", profile);
 	new_layout->addWidget(buttonNewMail);
 	new_layout->addStretch(1);
 
-	top_grid->activate();
+	icon_layout->activate();
+	top_layout->activate();
 
 	readConfig(profile);
 }
@@ -585,11 +591,11 @@ TRACEINIT("KBiffGeneralTab::readConfig()");
 	new_mail = config->readEntry("NewMailPixmap", "newmail.xpm");
 
 	buttonOldMail->setIcon(old_mail);
-	buttonOldMail->setPixmap(kapp->getIconLoader()->loadIcon(old_mail));
+	buttonOldMail->setPixmap(ICON(old_mail));
 	buttonNewMail->setIcon(new_mail);
-	buttonNewMail->setPixmap(kapp->getIconLoader()->loadIcon(new_mail));
+	buttonNewMail->setPixmap(ICON(new_mail));
 	buttonNoMail->setIcon(no_mail);
-	buttonNoMail->setPixmap(kapp->getIconLoader()->loadIcon(no_mail));
+	buttonNoMail->setPixmap(ICON(no_mail));
 
 	delete config;
 }
@@ -621,7 +627,7 @@ KBiffNewMailTab::KBiffNewMailTab(const char* profile, QWidget *parent)
 TRACEINIT("KBiffNewMailTab::KBiffNewMailTab()");
 	QBoxLayout *top_layout = new QBoxLayout(this, QBoxLayout::Down, 12, 5);
 
-	QGridLayout *grid = new QGridLayout(4, 2, 12);
+	QGridLayout *grid = new QGridLayout(4, 2);
 	top_layout->addLayout(grid);
 
 	// setup the Run Command stuff
@@ -873,32 +879,28 @@ TRACEINIT("KBiffMailboxTab::KBiffMailboxTab()");
 
 	mailboxes = new QListView(this);
 	mailboxes->addColumn(i18n("Mailbox:"));
-	mailboxes->setColumnWidth(0, 66);
-	mailboxes->setColumnWidthMode(0, QListView::Maximum);
 
 	list_layout->addMultiCellWidget(mailboxes, 0, 0, 0, 1);
 	list_layout->setRowStretch(0, 1);
-
-	mailboxes->setMinimumWidth(66);
 
 	connect(mailboxes, SIGNAL(selectionChanged(QListViewItem *)),
 	                   SLOT(slotMailboxSelected(QListViewItem *)));
 
 	QPushButton *new_mailbox = new QPushButton(this);
-	new_mailbox->setPixmap(kapp->getIconLoader()->loadIcon("mailbox.xpm"));
+	new_mailbox->setPixmap(ICON("mailbox.xpm"));
 	new_mailbox->setFixedSize(33, 20);
 	connect(new_mailbox, SIGNAL(clicked()), SLOT(slotNewMailbox()));
 	QToolTip::add(new_mailbox, i18n("New Mailbox"));
 	list_layout->addWidget(new_mailbox, 1, 0); 
 
 	QPushButton *delete_mailbox = new QPushButton(this);
-	delete_mailbox->setPixmap(kapp->getIconLoader()->loadIcon("delete.xpm"));
+	delete_mailbox->setPixmap(ICON("delete.xpm"));
 	delete_mailbox->setFixedSize(33, 20);
 	connect(delete_mailbox, SIGNAL(clicked()), SLOT(slotDeleteMailbox()));
 	QToolTip::add(delete_mailbox, i18n("Delete Mailbox"));
 	list_layout->addWidget(delete_mailbox, 1, 1); 
 
-	QGridLayout *grid = new QGridLayout(8, 4, 12);
+	QGridLayout *grid = new QGridLayout(8, 4);
 	top_layout->addLayout(grid);
 
 	QLabel *protocol_label = new QLabel(i18n("Protocol:"), this);
@@ -932,16 +934,16 @@ TRACEINIT("KBiffMailboxTab::KBiffMailboxTab()");
 	connect(buttonBrowse, SIGNAL(clicked()), SLOT(browse()));
 
 	editMailbox = new QLineEdit(this);
-	editMailbox->setMinimumHeight(25);
+	editMailbox->setMinimumHeight(editMailbox->sizeHint().height());
 
 	editServer = new QLineEdit(this);
-	editServer->setMinimumHeight(25);
+	editServer->setMinimumHeight(editServer->sizeHint().height());
 
 	editUser = new QLineEdit(this);
-	editUser->setMinimumHeight(25);
+	editUser->setMinimumHeight(editUser->sizeHint().height());
 
 	editPassword = new QLineEdit(this);
-	editPassword->setMinimumHeight(25);
+	editPassword->setMinimumHeight(editPassword->sizeHint().height());
 	editPassword->setEchoMode(QLineEdit::Password);
 
 	checkStorePassword = new QCheckBox(i18n("Store password"), this);
@@ -965,10 +967,6 @@ TRACEINIT("KBiffMailboxTab::KBiffMailboxTab()");
 	grid->addMultiCellWidget(editPassword, 5, 5, 2, 3);
 	grid->addMultiCellWidget(checkStorePassword, 6, 6, 2, 3);
 	grid->addWidget(advanced_button, 7, 3);
-
-	grid->setColStretch(1, 0);
-	grid->setColStretch(2, 3);
-	grid->setColStretch(3, 1);
 
 	top_layout->activate();
 
@@ -1019,7 +1017,7 @@ TRACE("After clears");
 			}
 
 			QListViewItem *item = new QListViewItem(mailboxes, key);
-			item->setPixmap(0, QPixmap(kapp->getIconLoader()->loadIcon("mailbox.xpm")));
+			item->setPixmap(0, QPixmap(ICON("mailbox.xpm")));
 
 			mailboxHash->insert(key.data(), mailbox);
 		}
@@ -1032,7 +1030,7 @@ TRACE("After clears");
 		mailboxHash->insert("Default", mailbox);
 
 		QListViewItem *item = new QListViewItem(mailboxes, "Default");
-		item->setPixmap(0, QPixmap(kapp->getIconLoader()->loadIcon("mailbox.xpm")));
+		item->setPixmap(0, QPixmap(ICON("mailbox.xpm")));
 	}
 
 	TRACEF("Selecting item: %s", mailboxes->firstChild()->text(0));
@@ -1197,7 +1195,7 @@ TRACEINIT("KBiffMailboxTab::slotNewMailbox()");
 		if (mailbox_name.isNull() == false)
 		{
 			QListViewItem *item = new QListViewItem(mailboxes, mailbox_name);
-			item->setPixmap(0, QPixmap(kapp->getIconLoader()->loadIcon("mailbox.xpm")));
+			item->setPixmap(0, QPixmap(ICON("mailbox.xpm")));
 
 			KBiffMailbox *mailbox = new KBiffMailbox();
 			mailbox->store = false;
