@@ -1,41 +1,44 @@
 msgid ""
 msgstr ""
 "POT-Creation-Date: 1999-01-10 14:26+0100\n"
-"PO-Revision-Date: 1998-10-18 19:23+0200\n"
-"Last-Translator: Alonso Lara <jlaram@nexo.es>\n"
-"First-Translator: Alonso Lara <jlaram@nexo.es>\n"
+"PO-Revision-Date: 1999-02-22 12:00+0100\n"
+"Last-Translator: Jaime Robles <ea4abw@amsat.org>\n"
+"Language-Team: Spanish <kde-es@kde.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8-bit\n"
 
 #: kmailbox.cpp:150
 msgid "countMail: file open error"
-msgstr ""
+msgstr "countMail: error al abrir el fichero"
 
 #: korn.cpp:51
-#, fuzzy
 msgid "&Setup"
 msgstr "&Configuración..."
 
 #: korn.cpp:54
-#, fuzzy
 msgid "&About"
-msgstr "&Sobre..."
+msgstr "&Sobre"
 
 #: korn.cpp:109
 msgid "korn: configure now?"
-msgstr ""
+msgstr "korn: ¿configurar ahora?"
 
 #: korn.cpp:110
 msgid ""
 "you have not yet configured korn.\n"
 "would you like to do this now?"
 msgstr ""
+"no has configurado korn aun.\n"
+"¿Quieres hacerlo ahora?"
 
 #: korn.cpp:114
 msgid "No - Quit"
-msgstr ""
+msgstr "No - Quitar"
 
 #: korn.cpp:119
 msgid "personal"
-msgstr ""
+msgstr "personal"
 
 #: korn.cpp:120
 msgid "Inbox"
@@ -49,69 +52,70 @@ msgid ""
 "\n"
 "The K Desktop Environment"
 msgstr ""
+"Korn %s -- Sirtaj Singh Kang\n"
+"taj@kde.org, 1997\n"
+"\n"
+"The K Desktop Environment"
 
 #: korn.cpp:249
-#, fuzzy
 msgid "About kOrn"
 msgstr "Sobre KOrn"
 
 #: korn.cpp:257
 msgid "korn: no config set"
-msgstr ""
+msgstr "korn: no hay configuración"
 
 #: korn.cpp:258
 msgid ""
 "Would you like to restart korn with\n"
 "the automatically generated configuration?"
 msgstr ""
+"¿Quieres reiniciar korn con\n"
+"la configuración generada automáticamente?"
 
 #: korn.cpp:261
 msgid "Yes, Restart"
-msgstr ""
+msgstr "Si, reiniciar"
 
 #: korn.cpp:261
 msgid "No, Exit"
 msgstr "No, Salir"
 
 #: kornopt.cpp:24
-#, fuzzy
 msgid "korn options"
 msgstr "Korn: Opciones"
 
 #: optdata.cpp:76
-#, fuzzy
 msgid "&New"
-msgstr "Noticias"
+msgstr "Nuevo"
 
 #: optdata.cpp:89
-#, fuzzy
 msgid "Boxes"
 msgstr "&Buzones"
 
 #: optdata.cpp:118
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: optdata.cpp:124
 msgid "Caption"
-msgstr "Captura"
+msgstr "Título"
 
 #: optdata.cpp:138
-#, fuzzy
 msgid "Path"
-msgstr "Ruta buzón de correo"
+msgstr "Ruta"
 
 #: optdata.cpp:152
 msgid "Poll time (sec)"
-msgstr ""
+msgstr "Tiempo de llamada (seg)"
 
 #: optdata.cpp:158
 msgid "Notify Command"
-msgstr ""
+msgstr "Comando de notificación"
 
 #: optdata.cpp:180
 msgid "Click Command"
-msgstr ""
+msgstr "Comando pulsar"
 
 #~ msgid "Welcome to KOrn"
 #~ msgstr "Bienvenido a KOrn"
@@ -124,7 +128,7 @@ msgstr ""
 #~ "creada para usted?"
 
 #~ msgid "Can't find mailbox"
-#~ msgstr "No se puede encontrar el buz€n de correo"
+#~ msgstr "No se puede encontrar el buzón de correo"
 
 #~ msgid ""
 #~ "Unable to find $MAIL environment variable. You'll have to configure the "
@@ -149,22 +153,22 @@ msgstr ""
 #~ msgstr "Vertical"
 
 #~ msgid "Docked"
-#~ msgstr "Detenido"
+#~ msgstr "Fijo"
 
 #~ msgid "&Layout"
 #~ msgstr "&Disponible"
 
 #~ msgid "&Modify Box"
-#~ msgstr "Buzón &Modificados"
+#~ msgstr "Buzón &Modificado"
 
 #~ msgid "&New Box"
-#~ msgstr "&Nuevo buzón"
+#~ msgstr "Buzón &Nuevo"
 
 #~ msgid "&Delete Box"
 #~ msgstr "&Suprimir buzón"
 
 #~ msgid "&Clone Box"
-#~ msgstr "&Clonar buzón"
+#~ msgstr "&Copiar buzón"
 
 #~ msgid "New Monitor"
 #~ msgstr "Nuevo Monitor"
@@ -182,7 +186,7 @@ msgstr ""
 #~ msgstr "General"
 
 #~ msgid "Poll"
-#~ msgstr "Urna"
+#~ msgstr "Bajar"
 
 #~ msgid "Check Frequency (sec)"
 #~ msgstr "Frecuencia Chequeo (seg)"
