@@ -370,50 +370,37 @@ int NNTP::listXover(int from,int to,NewsGroup *n)
                         qit=qit.right(qit.length()-index-1);
                     }
                     while (!qit.isEmpty());
-                    
-                    
                     art.ID=templ.at(OffsetID);
-                    key.dptr=art.ID.data();
-                    key.dsize=art.ID.length()+1;
-                    
+
+                    // check if it exists read
+                    QString k="R";
+                    k+=art.ID;
+                    key.dptr=k.data();
+                    key.dsize=k.length()+1;
                     if ((!gdbm_exists(artdb,key)))
                     {
-                        art.Subject=templ.at(OffsetSubject);
-                        art.From=templ.at(OffsetFrom);
-                        art.Date=templ.at(OffsetDate);
-                        art.Lines=templ.at(OffsetLines);
-                        
-                        //convert Refs to a strlist
-
-//                        art.Refs.clear();
-                        QString refsdata=templ.at(OffsetRef);
-                        datum refs;
-                        refs.dptr=refsdata.data();
-                        refs.dsize=refsdata.length();
-                        
-                        gdbm_store(refsdb,key,refs,GDBM_REPLACE);
-
-/*                      if (!refsdata.isEmpty())
+                        key.dptr=art.ID.data();
+                        key.dsize=art.ID.length()+1;
+                        if ((!gdbm_exists(artdb,key)))
                         {
-                            while (1)
-                            {
-                                int index=refsdata.find('>');
-                                if (index==-1)
-                                {
-                                    refsdata=refsdata.stripWhiteSpace();
-                                    art.Refs.append(refsdata.data());
-                                    break;
-                                }
-                                else
-                                {
-                                    art.Refs.append(refsdata.left(index+1).stripWhiteSpace().data());
-                                    refsdata=refsdata.right(refsdata.length()-index-1);
-                                }
-                            }
+                            art.Subject=templ.at(OffsetSubject);
+                            art.From=templ.at(OffsetFrom);
+                            art.Date=templ.at(OffsetDate);
+                            art.Lines=templ.at(OffsetLines);
+                            
+                            //convert Refs to a strlist
+                            
+                            //                        art.Refs.clear();
+                            QString refsdata=templ.at(OffsetRef);
+                            datum refs;
+                            refs.dptr=refsdata.data();
+                            refs.dsize=refsdata.length();
+                            
+                            gdbm_store(refsdb,key,refs,GDBM_REPLACE);
+                            
+                            unreadDict.replace(art.ID.data(),art.ID.data());
+                            art.save();
                         }
-*/
-                        unreadDict.replace(art.ID.data(),art.ID.data());
-                        art.save();
                     }
                     if (n)
                     {
