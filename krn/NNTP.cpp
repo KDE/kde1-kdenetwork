@@ -377,7 +377,7 @@ int NNTP::listXover(int from,int to,NewsGroup *n)
                                 }
                                 else
                                 {
-                                    art.Refs.append(refsdata.stripWhiteSpace().left(index+1).data());
+                                    art.Refs.append(refsdata.left(index+1).stripWhiteSpace().data());
                                     refsdata=refsdata.right(refsdata.length()-index-1);
                                 }
                             }

@@ -214,7 +214,7 @@ Inherited (name)
     server = new NNTP (sname.data());
     server->reportCounters (true,false);
     
-    connect (server,SIGNAL(newStatus(char *)),this,SLOT(updateCounter(char *)));
+    connect (server,SIGNAL(newStatus(const char *)),this,SLOT(updateCounter(const char *)));
     show();
     actions (LOAD_FILES);
     fillTree();
@@ -946,7 +946,7 @@ void Groupdlg::checkUnread()
 }
 
 
-void Groupdlg::updateCounter(char *s)
+void Groupdlg::updateCounter(const char *s)
 {
     statusBar()->changeItem (s, 1);
     qApp->processEvents();

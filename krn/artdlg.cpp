@@ -100,8 +100,8 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     showlocked=conf->readNumEntry("ShowLockedArticles");
     
     server = _server;
-    QObject::connect (server,SIGNAL(newStatus(char *)),
-                      this,SLOT(updateCounter(char *)));
+    QObject::connect (server,SIGNAL(newStatus(const char *)),
+                      this,SLOT(updateCounter(const char *)));
     
     taggedArticle=new QPopupMenu;
     taggedArticle->insertItem(klocale->translate("Save"),SAVE_ARTICLE);
@@ -248,7 +248,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     messwin=new KMReaderWin(panner->child1(),"messwin");
     messwin->setMsg(0);
     gl->addWidget( messwin, 0, 0 );
-    QObject::connect(messwin,SIGNAL(textSelected(bool)),this,SLOT(copyText(bool)));
+    QObject::connect(messwin,SIGNAL(urlClicked(const char *,int)),this,SLOT(openURL(const char*)));
     
     RmbPop *filter2=new RmbPop(messwin);
     delete (filter2->pop);
@@ -283,7 +283,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     acc->insertItem(CTRL+Key_F, FIND_ARTICLE);
     
     QObject::connect (acc,SIGNAL(activated(int)),this,SLOT(actions(int)));
-    QObject::connect (messwin,SIGNAL(spawnArticle(QString)),this,SLOT(loadArt(QString)));
+    QObject::connect (messwin,SIGNAL(statusMsg(const char*)),this,SLOT(updateCounter(const char*)));
     show();
 
     qApp->processEvents ();
@@ -732,7 +732,33 @@ bool Artdlg::loadArt (QString id)
     s=server->article(id.data());
     if (s->isEmpty())
     {
-//        messwin->getFromWeb(id);
+        debug ("entered get from web");
+        QString buffer;
+        QString urldata("http://ww2.altavista.digital.com/cgi-bin/news.cgi?id@");
+        id=id.mid(1,id.length()-2);
+        //    KURL::encodeURL(id);
+        debug ("encoded?-->%s",id.data());
+        urldata+=id;
+        debug ("urldata-->%s",urldata.data());
+        KURL url(urldata.data());
+        debug ("url-->%s",url.url().data());
+        buffer.sprintf("From: KRN\n"
+                       "To: You\n"
+                       "Date: now\n"
+                       "Subject: Problem getting article\n"
+                       "ID: <00@00>\n"
+                       "\n"
+                       "This article seems to have expired or be missing from both"
+                       "your news server and Krn's local cache\n"
+                       "However, if you have a functional Internet connection, you may"
+                       "be able to find it at Altavista following this link:\n"
+                       "http://%s\n",url.url().data());
+
+        //Now, lets create a phony article with this data.
+        KMMessage *m=new KMMessage();
+        m->fromString(qstrdup(buffer));
+        messwin->setMsg(m);
+        debug ("exited get from web");
     }
     else
     {
@@ -917,7 +943,7 @@ void Artdlg::getSubjects()
     qApp->processEvents ();
     qApp->restoreOverrideCursor();
 }
-void Artdlg::updateCounter(char *s)
+void Artdlg::updateCounter(const char *s)
 {
     statusBar()->changeItem (s, 2);
     qApp->processEvents();
@@ -1010,4 +1036,25 @@ void Artdlg::markReadArt (int index,int)
     QString formatted;
     art->formHeader(&formatted);
     list->changeItem (formatted.data(),index);
+}
+
+void Artdlg::openURL (const char *s)
+{
+    KURL url(s);
+    if( url.isMalformed() )
+    {
+        warning("Invalid URL clicked!");
+    };
+    debug ("protocolo-->%s",url.protocol());
+    if(strcmp(url.protocol(),"news")==0)
+    {
+        if(strchr(url.path(),'@')!=NULL)
+        {
+            QString s=url.path();
+            s="<"+s.right(s.length()-1)+">";
+            debug ("loading-->%s",s.data());
+            loadArt(s);
+        }
+        else emit spawnGroup(url.path());
+    }
 }

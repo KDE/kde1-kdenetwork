@@ -103,19 +103,11 @@ void Article::formHeader(QString *s)
     }
 
     ss.append(" ");
-    char *tempbuf=new char[2048];
-    if (From.data())
-    {
-        DwMailbox fromaddr;
-        fromaddr.FromString (From.data());
-        fromaddr.Parse();
 
-        if (fromaddr.FullName().length()>0)
-            sprintf (tempbuf,"%s\n",fromaddr.FullName().c_str());
-        else
-            sprintf (tempbuf,"%s@%s\n",fromaddr.LocalPart().c_str(),
-                            fromaddr.Domain().c_str());
-        s->append(tempbuf);
+    if (!From.isEmpty())
+    {
+        s->append(KMMessage::stripEmailAddr(From));
+        s->append("\n");
     }
     else
     {
@@ -123,12 +115,13 @@ void Article::formHeader(QString *s)
     }
 
 
+    QString tempbuf;
     if (Date.data())
     {
         DwDateTime date;
         date.FromString(Date.data());
         date.Parse();
-        sprintf(tempbuf,"%d/%d/%d",date.Day(),date.Month(),date.Year());
+        tempbuf.sprintf("%d/%d/%d",date.Day(),date.Month(),date.Year());
         s->append(tempbuf);
     }
     else
@@ -136,7 +129,6 @@ void Article::formHeader(QString *s)
         s->append("-/-/-");
     }
     s->append("\n");
-    delete[] tempbuf;
 
     s->append(Lines);
     s->append(" ");
@@ -290,7 +282,11 @@ void Article::toggleExpire()   // robert's cache stuff
   save();
 }
 
-
+KMMessage *Article::createMessage ()
+{
+    KMMessage *m=new KMMessage();
+    return m;
+}
 
 ////////////////////////////////////////////////////////////////////
 // NewsGroup class. Represents a newsgroup

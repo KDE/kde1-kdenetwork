@@ -63,6 +63,7 @@ public:
     void load();
     int  score();
     bool refsLoaded;
+    KMMessage *createMessage();
     
     // robert's cache stuff
     bool canExpire();
@@ -192,7 +193,7 @@ public:
     int     byteCounter;
     int     commandCounter;
 signals:
-    void newStatus(char *status);
+    void newStatus(const char *status);
     
 private:
     bool    reportBytes;

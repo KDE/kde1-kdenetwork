@@ -47,7 +47,8 @@ protected:
     virtual void closeEvent (QCloseEvent *e);
 
 public slots:
-    void updateCounter(char *);
+    void updateCounter(const char *);
+    void openURL(const char *);
     
 private slots:
     bool actions(int);
@@ -67,7 +68,8 @@ private slots:
         
 signals:
     void needConnection ();
-        
+    void spawnGroup (QString name);
+    
 private:
     NNTP *server;
     KTabListBox *list;
