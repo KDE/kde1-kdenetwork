@@ -24,6 +24,13 @@
 #include <kapp.h>
 #include <kiconloader.h>
 
+#ifdef HAVE_PATHS_H
+#include <paths.h>
+#endif
+
+#ifndef _PATH_TMP
+#define _PATH_TMP "/tmp/"
+#endif
 
 static void
 pgpSigHandler(int)
@@ -545,7 +552,7 @@ Kpgp::runPGP(int action, const char* args)
   }
   cmd += " -f";
 
-  tmpName.sprintf("/tmp/.kmail-");
+  tmpName.sprintf(_PATH_TMP".kmail-");
   inName  = tmpName + "in";
   outName = tmpName + "out";
   errName = tmpName + "err";
