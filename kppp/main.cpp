@@ -291,6 +291,8 @@ int main( int argc, char **argv ) {
   }
   
   if (terminate_connection) {
+    setuid(getuid());
+    setgid(getgid());
     if (pid > 0)
       kill(pid, SIGINT);
     else
