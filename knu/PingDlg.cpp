@@ -23,6 +23,11 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.8  1998/06/28 13:15:19  kalle
+ * Fixing...
+ * Improved RPM spec file
+ * bumped package version number to 1.0pre
+ *
  * Revision 1.7  1998/06/09 21:18:01  leconte
  * Bertrand: correction of bug #745 (reported by Duncan Haldane):
  * 	arguments are now added to the command line
@@ -49,8 +54,6 @@
 
 // This is the unit used to separate widgets
 #define SEPARATION 10
-
-#define _(_s) klocale->translate(_s)
 
 /*
  * Constructor
@@ -88,7 +91,7 @@ PingDlg::PingDlg(QString commandName,
   // Layout of options
   layout3->addStretch(10);
   
-  pingCb1 = new QCheckBox(_("Make host &name resolution"), frame1, "cb_1");
+  pingCb1 = new QCheckBox(i18n("Make host &name resolution"), frame1, "cb_1");
   pingCb1->setChecked(TRUE);
   pingCb1->adjustSize();
   pingCb1->setFixedSize(pingCb1->width(), 2*fontMetrics().height());

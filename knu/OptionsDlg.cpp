@@ -23,6 +23,13 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.3  1997/12/07 23:44:19  leconte
+ * - handle the binary's name modification dynamicaly (problem reported
+ *   by Conrad Sanderson)
+ * - added browse button to the option dialog (for binary selection)
+ * - code clean-up
+ * - better fallback to"nslookup" if "host" is not found
+ *
  * Revision 1.2  1997/11/23 22:28:10  leconte
  * - Id and Log added in the headers
  * - Patch from C.Czezatke applied (preparation of KProcess new version)
@@ -37,8 +44,6 @@
 
 // This is the unit used to separate widgets
 #define SEPARATION 10
-
-#define _(_s) klocale->translate(_s)
 
 // This is the caption string of the main application
 extern QString CaptionString;
@@ -58,7 +63,7 @@ OptionsDlg::OptionsDlg(CommandCfgDlg **cp, int pn,
   // Get the caption of the main program and add configuration to it
   QString cs;
   cs += CaptionString;
-  cs += _(" - configuration");
+  cs += i18n(" - configuration");
   setCaption(cs);
 
   // Layout
@@ -81,18 +86,18 @@ OptionsDlg::OptionsDlg(CommandCfgDlg **cp, int pn,
    */
   
   // widgets
-  bBtnOk = new QPushButton(_("&OK"), this, "button_ok");
+  bBtnOk = new QPushButton(i18n("&OK"), this, "button_ok");
   CHECK_PTR(bBtnOk);
   connect(bBtnOk, SIGNAL(clicked()), SLOT(slotOkBtn()));
   bBtnOk->setFixedSize(70, 30);
   bBtnOk->setDefault(TRUE);
 
-  bBtnHelp = new QPushButton(_("&Help"), this, "button_help");
+  bBtnHelp = new QPushButton(i18n("&Help"), this, "button_help");
   CHECK_PTR(bBtnHelp);
   connect(bBtnHelp, SIGNAL(clicked()), SLOT(slotHelpBtn()));
   bBtnHelp->setFixedSize(70, 30);
 
-  bBtnCancel = new QPushButton(_("&Cancel"), this, "button_cancel");
+  bBtnCancel = new QPushButton(i18n("&Cancel"), this, "button_cancel");
   CHECK_PTR(bBtnCancel);
   connect(bBtnCancel, SIGNAL(clicked()), SLOT(slotCancelBtn()));
   bBtnCancel->setFixedSize(70, 30);

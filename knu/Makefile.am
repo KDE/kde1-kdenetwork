@@ -49,7 +49,7 @@ BUILTSOURCES =	knu.moc CommandDlg.moc OptionsDlg.moc \
 DISTCLEANFILES = $(BUILTSOURCES)
 
 messages:
-	$(XGETTEXT) -C -k_ -ki18n -x $(includedir)/kde.pot $(knu_SOURCES) && mv messages.po ../po/knu.pot
+	$(XGETTEXT) -C -ki18n -x $(includedir)/kde.pot $(knu_SOURCES) && mv messages.po ../po/knu.pot
 
 # just install datas here. Use install-exec-local for scripts and etc.
 # the binary itself is already installed from automake

@@ -21,6 +21,10 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.6  1998/06/11 19:20:36  leconte
+ * - some accelerators added
+ * - strings added to i18n
+ *
  * Revision 1.5  1998/06/09 21:18:05  leconte
  * Bertrand: correction of bug #745 (reported by Duncan Haldane):
  * 	arguments are now added to the command line
@@ -66,8 +70,6 @@ QList<TopLevel>  TopLevel::windowList;
 QString   CaptionString;
 
 void quit();
-
-#define _(_s) klocale->translate(_s)
 
 
 /**
@@ -132,7 +134,7 @@ TopLevel::TopLevel(QWidget *, const char *name)
 
   // ping tab
   if (isTabEnabled("Ping", kc)) {
-    pd = new PingDlg("ping", tabCtrl, _("&Ping"));
+    pd = new PingDlg("ping", tabCtrl, i18n("&Ping"));
     CHECK_PTR(pd);
     tabCtrl->addTab(pd, pd->name());
     pages[pagesNumber] = pd;
@@ -141,7 +143,7 @@ TopLevel::TopLevel(QWidget *, const char *name)
 
   // traceroute tab 
   if (isTabEnabled("Traceroute", kc)) {
-    td = new TracerouteDlg("traceroute", tabCtrl, _("&Traceroute"));
+    td = new TracerouteDlg("traceroute", tabCtrl, i18n("&Traceroute"));
     CHECK_PTR(td);
     tabCtrl->addTab(td, td->name());
     pages[pagesNumber] = td;
@@ -150,7 +152,7 @@ TopLevel::TopLevel(QWidget *, const char *name)
 
   // host tab
   if (isTabEnabled("Host resolution", kc)) {
-    hd = new HostDlg("host", tabCtrl, _("Host &resolution"));
+    hd = new HostDlg("host", tabCtrl, i18n("Host &resolution"));
     /* 
      * the "host" command name can be modified by 
      * HostDlg::search_for_binary if host is not found
@@ -163,7 +165,7 @@ TopLevel::TopLevel(QWidget *, const char *name)
 
   // finger tab 
   if (isTabEnabled("Finger", kc)) {
-    fd = new FingerDlg("finger", tabCtrl, _("F&inger"));
+    fd = new FingerDlg("finger", tabCtrl, i18n("F&inger"));
     CHECK_PTR(fd);
     tabCtrl->addTab(fd, fd->name());
     pages[pagesNumber] = fd;
@@ -173,7 +175,7 @@ TopLevel::TopLevel(QWidget *, const char *name)
 #ifdef MTR
   // mtr tab 
   if (isTabEnabled("Mtr", kc)) {
-    md = new MtrDlg("mtr", tabCtrl, _("&Matt's traceroute"));
+    md = new MtrDlg("mtr", tabCtrl, i18n("&Matt's traceroute"));
     CHECK_PTR(md);
     tabCtrl->addTab(md, md->name());
     pages[pagesNumber] = md;
@@ -185,7 +187,7 @@ TopLevel::TopLevel(QWidget *, const char *name)
     // There is *no* command enabled ! 
 
     QMessageBox::critical(this, caption(),
-			  _("There is no command enabled\n"
+			  i18n("There is no command enabled\n"
 			  "in the configuration file.\n\n"
 			  "So I can't do anything...\n"));
     exit(-1);
@@ -230,27 +232,27 @@ TopLevel::createMenu()
 
   fileMenu = new QPopupMenu;
   CHECK_PTR(fileMenu);
-  fileMenu->insertItem(_("&New window"), 
+  fileMenu->insertItem(i18n("&New window"), 
 		       this, SLOT(slotNew()), key.openNew());
   fileMenu->insertSeparator();
-  closeIndex = fileMenu->insertItem(_("&Close window"), 
+  closeIndex = fileMenu->insertItem(i18n("&Close window"), 
 				    this, SLOT(slotClose()), 
 				    key.close());
-  fileMenu->insertItem(_("&Quit"), this, SLOT(slotQuit()), 
+  fileMenu->insertItem(i18n("&Quit"), this, SLOT(slotQuit()), 
 		       key.quit());
   
   editMenu = new QPopupMenu;
   CHECK_PTR(editMenu);
-  mi = editMenu->insertItem(_("&Copy"), this, SLOT(slotCopy()), 
+  mi = editMenu->insertItem(i18n("&Copy"), this, SLOT(slotCopy()), 
 			    key.copy());
   editMenu->setItemEnabled(mi, FALSE);
-  editMenu->insertItem(_("Select &all"), 
+  editMenu->insertItem(i18n("Select &all"), 
 		       this, SLOT(slotSelectAll()));
   editMenu->insertSeparator();
-  editMenu->insertItem(_("C&lear output window"), 
+  editMenu->insertItem(i18n("C&lear output window"), 
 		       this, SLOT(slotClear()));
   editMenu->insertSeparator();
-  configIndex = editMenu->insertItem(_("P&references..."), 
+  configIndex = editMenu->insertItem(i18n("P&references..."), 
 				     this, SLOT(slotConfig()));
 
   
@@ -261,20 +263,20 @@ TopLevel::createMenu()
 
   helpMenu = new QPopupMenu;
   CHECK_PTR(helpMenu);
-  helpMenu->insertItem(_("&Contents"),
+  helpMenu->insertItem(i18n("&Contents"),
 		       this, SLOT(slotHelp()), key.help());
   helpMenu->insertSeparator();
   QString str;
-  str.sprintf(_("&About %s"), KNU_APPNAME);
+  str.sprintf(i18n("&About %s"), KNU_APPNAME);
   helpMenu->insertItem(str, this, SLOT(slotAbout()), SHIFT+Key_F1);
-  helpMenu->insertItem(_("About &Qt"), this, SLOT(slotAboutQt()));
+  helpMenu->insertItem(i18n("About &Qt"), this, SLOT(slotAboutQt()));
   
   menuBar = new KMenuBar(this);
   CHECK_PTR(menuBar);
-  menuBar->insertItem(_("&File"), fileMenu);
-  menuBar->insertItem(_("&Edit"), editMenu);
+  menuBar->insertItem(i18n("&File"), fileMenu);
+  menuBar->insertItem(i18n("&Edit"), editMenu);
   menuBar->insertSeparator();
-  menuBar->insertItem(_("&Help"), helpMenu);
+  menuBar->insertItem(i18n("&Help"), helpMenu);
 }
 
 
@@ -293,32 +295,32 @@ TopLevel::slotConfig()
    */
   
   /* ping */
-  CommandCfgDlg *ccd = new CommandCfgDlg(_("&Ping"), 0, "ping_cfg");
+  CommandCfgDlg *ccd = new CommandCfgDlg(i18n("&Ping"), 0, "ping_cfg");
   CHECK_PTR(ccd);
   configPages[n] = ccd;
   n++;
   
   /* traceroute */
-  ccd = new CommandCfgDlg(_("&Traceroute"), 0, "traceroute_cfg");
+  ccd = new CommandCfgDlg(i18n("&Traceroute"), 0, "traceroute_cfg");
   CHECK_PTR(ccd);
   configPages[n] = ccd;
   n++;
   
   /* host resolution */
-  HostCfgDlg *hcd = new HostCfgDlg(_("Host &resolution"), 0, "host_cfg");
+  HostCfgDlg *hcd = new HostCfgDlg(i18n("Host &resolution"), 0, "host_cfg");
   CHECK_PTR(hcd);
   configPages[n] = hcd;
   n++;
 
   /* finger */
-  ccd = new CommandCfgDlg(_("&Finger"), 0, "finger_cfg");
+  ccd = new CommandCfgDlg(i18n("&Finger"), 0, "finger_cfg");
   CHECK_PTR(ccd);
   configPages[n] = ccd;
   n++;
 
 #ifdef MTR
   /* mtr */
-  ccd = new CommandCfgDlg(_("&Matt's traceroute"), 0, "mtr_cfg");
+  ccd = new CommandCfgDlg(i18n("&Matt's traceroute"), 0, "mtr_cfg");
   CHECK_PTR(ccd);
   configPages[n] = ccd;
   n++;
@@ -458,7 +460,7 @@ TopLevel::slotAbout()
     str += "\n("; str += KNU_CAPTION; str += ")";
   }
 
-  QMessageBox::about( this, _("About..."),
+  QMessageBox::about( this, i18n("About..."),
 		      str +
 		      "\n"
 		      "Version " + KNU_VERSION + "\n\n"

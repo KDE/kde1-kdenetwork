@@ -23,6 +23,11 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.9  1998/06/28 13:15:15  kalle
+ * Fixing...
+ * Improved RPM spec file
+ * bumped package version number to 1.0pre
+ *
  * Revision 1.8  1998/06/11 19:20:37  leconte
  * - some accelerators added
  * - strings added to i18n
@@ -58,8 +63,6 @@ extern bool test_for_exec(QString);
 
 // This is the unit used to separate widgets
 #define SEPARATION 10
-
-#define _(_s) klocale->translate(_s)
 
 /**
  * Constructor
@@ -103,19 +106,19 @@ HostDlg::HostDlg(QString commandName,
   // This is the array of what is the search for ComboBox.
   // Warning: member buildCommandLine use index=1 for PTR and index=0 for A
   static const char *queryTypes[] 
-    = { _("address (A)"), 
-	_("name (PTR)"), 
-	_("name server (NS)"), 
-	_("mail exchanger (MX)"), 
-	_("alias (CNAME)"), 
-	_("start of authority (SOA)"), 
-	_("any record (ANY)"),
+    = { i18n("address (A)"), 
+	i18n("name (PTR)"), 
+	i18n("name server (NS)"), 
+	i18n("mail exchanger (MX)"), 
+	i18n("alias (CNAME)"), 
+	i18n("start of authority (SOA)"), 
+	i18n("any record (ANY)"),
 	0};
   hostCb1->insertStrList(queryTypes);
   hostCb1->adjustSize();
   hostCb1->setFixedSize(hostCb1->size());
   
-  hostLbl1 = new QLabel(hostCb1, _("Se&arch for:"), frame1, "Label_1");
+  hostLbl1 = new QLabel(hostCb1, i18n("Se&arch for:"), frame1, "Label_1");
   CHECK_PTR(hostLbl1);
   hostLbl1->adjustSize();
   hostLbl1->setFixedSize(hostLbl1->width(), 2*fontMetrics().height());
@@ -127,7 +130,7 @@ HostDlg::HostDlg(QString commandName,
   
   hostCb2 = new QComboBox(TRUE, frame1, "ComboBox_2");
   CHECK_PTR(hostCb2);
-  hostCb2->insertItem(_("default server"));
+  hostCb2->insertItem(i18n("default server"));
   hostCb2->insertItem("888.888.888.888");
   hostCb2->adjustSize();
   hostCb2->setFixedSize(hostCb2->size());
@@ -136,7 +139,7 @@ HostDlg::HostDlg(QString commandName,
   // in next version maybe?
   hostCb2->setInsertionPolicy(QComboBox::AtTop);
   
-  hostLbl2 = new QLabel(hostCb2, _("Ser&ver:"), frame1, "Label_2");
+  hostLbl2 = new QLabel(hostCb2, i18n("Ser&ver:"), frame1, "Label_2");
   CHECK_PTR(hostLbl2);
   hostLbl2->adjustSize();
   hostLbl2->setFixedSize(hostLbl2->size());
@@ -278,7 +281,7 @@ HostDlg::buildCommandLine(QString args)
     childProcess << args;
     
     // server: combobox
-    if (strcmp(_("default server"), hostCb2->currentText())) {
+    if (strcmp(i18n("default server"), hostCb2->currentText())) {
       // it's not the default server
       childProcess << hostCb2->currentText();
     }
@@ -322,11 +325,11 @@ HostCfgDlg::makeWidget(QWidget *parent, bool makeLayouts)
   cfgBG = new QButtonGroup(cfgWidget);
   CHECK_PTR(cfgBG);
   
-  cfgHostBtn = new QRadioButton(_("hos&t"), cfgBG);
+  cfgHostBtn = new QRadioButton(i18n("hos&t"), cfgBG);
   CHECK_PTR(cfgHostBtn);
   SET_ADJUSTED_FIXED_SIZE(cfgHostBtn);
 
-  cfgNslookupBtn = new QRadioButton(_("ns&lookup"), cfgBG);
+  cfgNslookupBtn = new QRadioButton(i18n("ns&lookup"), cfgBG);
   CHECK_PTR(cfgNslookupBtn);
   SET_ADJUSTED_FIXED_SIZE(cfgNslookupBtn);
 

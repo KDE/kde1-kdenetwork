@@ -23,6 +23,9 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.5  1998/04/17 21:20:12  leconte
+ * Bertrand: french translation update
+ *
  * Revision 1.4  1998/03/01 19:30:11  leconte
  * - added a finger tab
  * - internal mods
@@ -61,8 +64,6 @@
 #ifdef HAVE_CONFIG
 #include <config.h>
 #endif
-
-#define _(_s) klocale->translate(_s)
 
 // This is the unit used to separate widgets
 #define SEPARATION 10
@@ -114,7 +115,7 @@ CommandDlg::CommandDlg(QString,
   commandArgs->setEchoMode(QLineEdit::Normal);
   commandArgs->setFrame(TRUE);
   
-  commandLbl1 = new QLabel(commandArgs, _("H&ost:"), commandBinOK);
+  commandLbl1 = new QLabel(commandArgs, i18n("H&ost:"), commandBinOK);
   CHECK_PTR(commandLbl1);
   commandLbl1->setFixedSize(commandLbl1->sizeHint());
     
@@ -123,7 +124,7 @@ CommandDlg::CommandDlg(QString,
   commandGoBtn->setFixedSize(70, widgetHeight);
   connect(commandGoBtn, SIGNAL(clicked()),
 	  this, SLOT(slotLauchCommand()));
-  commandGoBtn->setText( _("&Go!") );
+  commandGoBtn->setText( i18n("&Go!") );
   commandGoBtn->setEnabled(FALSE);
   commandGoBtn->setAutoDefault(TRUE);
   isGoBtnEnabled=FALSE;
@@ -133,7 +134,7 @@ CommandDlg::CommandDlg(QString,
   commandStopBtn->setFixedSize(70, widgetHeight);
   connect(commandStopBtn, SIGNAL(clicked()), 
 	  this, SLOT(slotStopCommand()));
-  commandStopBtn->setText(_("&Stop"));
+  commandStopBtn->setText(i18n("&Stop"));
   commandStopBtn->setEnabled(FALSE);
   
   commandTextArea = new QMultiLineEdit(commandBinOK, "multilineedit_1" );
@@ -149,7 +150,7 @@ CommandDlg::CommandDlg(QString,
 			       QBoxLayout::TopToBottom, SEPARATION);
   CHECK_PTR(layoutNoBin);
   
-  commandLblNoBin = new QLabel(_("This command binary was not found. \n"
+  commandLblNoBin = new QLabel(i18n("This command binary was not found. \n"
 				 "You can give its path "
 				 "in the Edit->Preferences... menu."),
 			       commandBinNonOK);
@@ -334,7 +335,7 @@ CommandDlg::slotLauchCommand()
       QString errorString;
       debug("buildCommandLine = FALSE");
       // Same message in MtrDlg.cpp
-      errorString.sprintf(_("\nYou have a problem in your\n" 
+      errorString.sprintf(i18n("\nYou have a problem in your\n" 
 			    "%s/%src\nconfiguration file.\n"
 			    "In the [%s] group,\nI can't "
 			    "find a valid \"path=\" entry.\n\n"
@@ -343,7 +344,7 @@ CommandDlg::slotLauchCommand()
 			  (const char *)kapp->localconfigdir(), 
 			  (const char *)kapp->appName(), 
 			  (const char *)removeAmpersand(this->name()));
-      KMsgBox::message(this, _("Error in pathname"), 
+      KMsgBox::message(this, i18n("Error in pathname"), 
 		       errorString, KMsgBox::STOP);
       slotProcessDead(NULL);
       return;
@@ -476,7 +477,7 @@ CommandCfgDlg::makeWidget(QWidget *parent, bool makeLayouts)
   kc->setGroup(configGroupName);
 
   // Widgets creation
-  cfgBinGB = new QGroupBox(_("Binary"), cfgWidget);
+  cfgBinGB = new QGroupBox(i18n("Binary"), cfgWidget);
   CHECK_PTR(cfgBinGB);
 
   cfgBinNameLE = new QLineEdit(cfgBinGB);
@@ -484,7 +485,7 @@ CommandCfgDlg::makeWidget(QWidget *parent, bool makeLayouts)
   cfgBinNameLE->setMinimumSize(widgetWidth, widgetHeight);
   cfgBinNameLE->setMaximumSize(QLayout::unlimited, widgetHeight);
   
-  cfgBinNameLbl = new QLabel(cfgBinNameLE, _("Path&name:"), cfgBinGB);
+  cfgBinNameLbl = new QLabel(cfgBinNameLE, i18n("Path&name:"), cfgBinGB);
   CHECK_PTR(cfgBinNameLbl);
   SET_ADJUSTED_FIXED_SIZE(cfgBinNameLbl);
 
@@ -493,12 +494,12 @@ CommandCfgDlg::makeWidget(QWidget *parent, bool makeLayouts)
   cfgBinArgLE->setMinimumSize(widgetWidth, widgetHeight);
   cfgBinArgLE->setMaximumSize(QLayout::unlimited, widgetHeight);
   
-  cfgBinArgLbl = new QLabel(cfgBinArgLE, _("Additional &arguments:"),
+  cfgBinArgLbl = new QLabel(cfgBinArgLE, i18n("Additional &arguments:"),
 			    cfgBinGB);
   CHECK_PTR(cfgBinArgLbl);
   SET_ADJUSTED_FIXED_SIZE(cfgBinArgLbl);
 
-  cfgBinNameBrowse = new QPushButton(_("Browse..."), cfgBinGB);
+  cfgBinNameBrowse = new QPushButton(i18n("Browse..."), cfgBinGB);
   CHECK_PTR(cfgBinNameBrowse);
   cfgBinNameBrowse->setFixedSize(70, widgetHeight);
   connect(cfgBinNameBrowse, SIGNAL(clicked()), SLOT(slotBrowse()));
@@ -518,7 +519,7 @@ CommandCfgDlg::makeWidget(QWidget *parent, bool makeLayouts)
 						      style()));
     SET_ADJUSTED_FIXED_SIZE(cfgWarningPm);
 
-    cfgWarningLbl = new QLabel(_("This command had been disabled in "
+    cfgWarningLbl = new QLabel(i18n("This command had been disabled in "
 				 "the configuration file."), cfgWarning);
     CHECK_PTR(cfgWarningLbl);
     SET_ADJUSTED_FIXED_SIZE(cfgWarningLbl);

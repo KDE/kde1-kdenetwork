@@ -23,6 +23,11 @@
  * $Id$
  *
  * $Log$
+ * Revision 1.8  1998/06/28 13:15:21  kalle
+ * Fixing...
+ * Improved RPM spec file
+ * bumped package version number to 1.0pre
+ *
  * Revision 1.7  1998/06/09 21:18:00  leconte
  * Bertrand: correction of bug #745 (reported by Duncan Haldane):
  * 	arguments are now added to the command line
@@ -50,8 +55,6 @@
 
 // This is the unit used to separate widgets
 #define SEPARATION 10
-
-#define _(_s) klocale->translate(_s)
 
 /*
  * Constructor
@@ -89,7 +92,7 @@ TracerouteDlg::TracerouteDlg(QString commandName,
   // Layout of options
   layout3->addStretch(10);
   
-  tracerouteCb1 = new QCheckBox(_("Make host &name resolution"), 
+  tracerouteCb1 = new QCheckBox(i18n("Make host &name resolution"), 
 				frame1, "cb_1");
   tracerouteCb1->setChecked(TRUE);
   tracerouteCb1->adjustSize();
@@ -106,7 +109,7 @@ TracerouteDlg::TracerouteDlg(QString commandName,
   tracerouteLe2->setFixedSize(fontMetrics().width("0000"), 
 			      (int)(1.75*fontMetrics().height()));
   
-  tracerouteLbl2 = new QLabel(tracerouteLe2, _("&Maximum number of hops:"), 
+  tracerouteLbl2 = new QLabel(tracerouteLe2, i18n("&Maximum number of hops:"), 
 			      frame1, "Label_2"); 
   tracerouteLbl2->adjustSize();
   tracerouteLbl2->setFixedSize(tracerouteLbl2->size());
