@@ -214,12 +214,12 @@ servercontroller::~servercontroller() /*FOLD00*/
   }
 }
 
-void servercontroller::new_connection() /*fold00*/
+void servercontroller::new_connection() /*FOLD00*/
 {
-  open_ksirc *w = new open_ksirc();              // Create new ksirc popup
-  connect(w, SIGNAL(open_ksircprocess(QString)), // connected ok to process
-          this, SLOT(new_ksircprocess(QString)));// start
-  w->show();                                     // show the sucker!
+  open_ksirc w;                                   // Create new ksirc popup
+  connect(&w, SIGNAL(open_ksircprocess(QString)), // connected ok to process
+          this, SLOT(new_ksircprocess(QString))); // start
+  w.exec();                                       // show the sucker!
 }
 
 void servercontroller::new_ksircprocess(QString str) /*FOLD00*/
@@ -246,6 +246,7 @@ void servercontroller::new_ksircprocess(QString str) /*FOLD00*/
   KSircProcess *proc = new KSircProcess(str.data(), 0, QString(name()) + "_" + str + "_ksp"); // Create proc
   //this->insertChild(proc);                           // Add it to out inheritance tree so we can retreive child widgets from it.
   objFinder::insert(proc);
+  debug("Done objFinder::insert");
   proc_list.insert(str.data(), proc);                      // Add proc to hash
   connect(proc, SIGNAL(ProcMessage(QString, int, QString)),
 	  this, SLOT(ProcMessage(QString, int, QString)));
@@ -257,14 +258,16 @@ void servercontroller::new_ksircprocess(QString str) /*FOLD00*/
   }
 
   connections->setItemEnabled(join_id, TRUE);
+
+  debug("Done new_ksircprocess");
 }
 
-void servercontroller::new_channel() /*fold00*/
+void servercontroller::new_channel() /*FOLD00*/
 {
-  open_top *w = new open_top();                // Create new channel popup
-  connect(w, SIGNAL(open_toplevel(QString)),   // Connect ok to right slot
+  open_top w;                                   // Create new channel popup
+  connect(&w, SIGNAL(open_toplevel(QString)),   // Connect ok to right slot
 	  this, SLOT(new_toplevel(QString)));
-  w->show();                                   // Show me baby!
+  w.exec();                                     // Show me baby!
 }
 
 void servercontroller::new_toplevel(QString str) /*fold00*/
@@ -348,7 +351,7 @@ void servercontroller::configChange() /*fold00*/
   }
 }
 
-void servercontroller::about_ksirc() /*FOLD00*/
+void servercontroller::about_ksirc() /*fold00*/
 {
   QString caption = PACKAGE;
   caption += "-";

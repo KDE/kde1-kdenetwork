@@ -226,7 +226,9 @@ KSircProcess::KSircProcess( char *_server, QObject * parent, const char * name )
     command += kConfig->readEntry(nick) + " ";
   }
   command += "\n";
-  iocontrol->stdin_write(command);  
+  iocontrol->stdin_write(command);
+
+  debug("Done ksircprocess");
 
 }
 

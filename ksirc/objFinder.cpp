@@ -22,6 +22,11 @@ objFinder::~objFinder()
 void objFinder::insert(QObject *obj, const char *key = 0){
   const char *name;
 
+  if(obj == 0x0){
+    warning("objFinder: Passed Null Object");
+    return;
+  }
+  
   if(key != 0){
     name = key;
   }

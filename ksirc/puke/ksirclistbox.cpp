@@ -1,4 +1,6 @@
 #include "ksirclistbox.h"
+#include "../config.h"
+#include "../irclistitem.h"
 
 PObject *createWidget(CreateArgs &ca) /*FOLD00*/
 {
@@ -51,7 +53,7 @@ void PKSircListBox::messageHandler(int fd, PukeMessage *pm) /*FOLD00*/
     if(!checkWidget())
       return;
 
-    widget()->insertItem(pm->cArg, pm->iArg);
+    widget()->insertItem(new ircListItem(pm->cArg, kSircConfig->colour_text, widget()), pm->iArg);
     pmRet.iCommand = - pm->iCommand;
     pmRet.iWinId = pm->iWinId;
     pmRet.iArg = widget()->count();

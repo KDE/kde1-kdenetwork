@@ -69,6 +69,6 @@ void open_top::create_toplevel()
   if(strlen(nameSLE->currentText()) > 0)
     emit open_toplevel( ((QString) nameSLE->currentText()).lower());
 
-  close(TRUE);
+//  close(TRUE);
 
 }

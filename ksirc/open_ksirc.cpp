@@ -73,7 +73,7 @@ void open_ksirc::create_toplevel()
   if(strlen(nameSLE->currentText()) > 0)
     emit open_ksircprocess( (QString) nameSLE->currentText());
 
-  close(TRUE);
+  //  close(TRUE);
 
 }
 
