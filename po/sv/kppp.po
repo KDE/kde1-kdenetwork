@@ -1,0 +1,1105 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 1998-06-18 22:50+0200\n"
+"PO-Revision-Date: 1998-07-27 18:50+0200\n"
+"Last-Translator: Anders Bengtsson <d96-abe@nada.kth.se>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ENCODING\n"
+
+#: accounts.cpp:53
+msgid "Account Setup"
+msgstr "Kontoinställningar"
+
+#: accounts.cpp:72
+msgid "Edit..."
+msgstr "Ändra..."
+
+#: accounts.cpp:83
+msgid "New..."
+msgstr "Ny..."
+
+#: accounts.cpp:105
+msgid "Phone Costs:"
+msgstr "Telekostnader:"
+
+#: accounts.cpp:116 conwindow.cpp:55
+msgid "Volume:"
+msgstr "Volym:"
+
+#: accounts.cpp:131
+msgid "Reset Costs"
+msgstr "Nollställ kostnader"
+
+#: accounts.cpp:138
+msgid "View Logs"
+msgstr "Visa loggar"
+
+#: accounts.cpp:235
+msgid "Reset Total"
+msgstr "Nollställ total"
+
+#: accounts.cpp:236
+msgid ""
+"Are you sure you want to reset the accumulated\n"
+"telephone costs for the selected account to zero?"
+msgstr ""
+"Är du säker på att du vill nollställa de totala\n"
+"telekostnaderna för det valda kontot?"
+
+#: accounts.cpp:271 accounts.cpp:294
+msgid "Maximum number of accounts reached."
+msgstr "Maximalt antal konton nått."
+
+#: accounts.cpp:300
+msgid "No account selected."
+msgstr "Inget konto valt."
+
+#: accounts.cpp:316
+#, c-format
+msgid ""
+"Are you sure you want to delete\n"
+"the account \"%s\"?"
+msgstr ""
+"Är du säker på att du vill ta bort\n"
+"kontot \"%s\"?"
+
+#: accounts.cpp:321
+msgid "Confirm"
+msgstr "Bekräfta"
+
+#: accounts.cpp:343
+msgid "New Account"
+msgstr "Nytt konto"
+
+#: accounts.cpp:347
+msgid "Edit Account: "
+msgstr "Ändra kontot: "
+
+#: accounts.cpp:367
+msgid "Dial"
+msgstr "Uppringning"
+
+#: accounts.cpp:368
+msgid "IP"
+msgstr "IP"
+
+#: accounts.cpp:369
+msgid "DNS"
+msgstr "DNS"
+
+#: accounts.cpp:370
+msgid "Gateway"
+msgstr "Gateway"
+
+#: accounts.cpp:371
+msgid "Login Script"
+msgstr "Inloggningsscript"
+
+#: accounts.cpp:372
+msgid "Accounting"
+msgstr "Kostnader"
+
+#: accounts.cpp:391
+msgid ""
+"You must enter a unique\n"
+"account name"
+msgstr ""
+"Du måste ange ett unikt\n"
+"kontonamn"
+
+#: accounts.cpp:396
+msgid "Login script has unbalanced Loop Start/End"
+msgstr "Inloggningscriptet har obalanserade Loop Start/End"
+
+#: connect.cpp:108 connect.cpp:212 main.cpp:829
+msgid "Connecting to: "
+msgstr "Ansluter till: "
+
+#: connect.cpp:117 connect.cpp:228 miniterm.cpp:162 modeminfo.cpp:62
+#: modeminfo.cpp:149
+msgid "Sorry, can't create modem lock file."
+msgstr "Kan inte skapa en låsfil för modemet."
+
+#: connect.cpp:122 connect.cpp:185 modeminfo.cpp:67
+msgid "Looking for Modem ..."
+msgstr "Letar efter modem ..."
+
+#: connect.cpp:131 debug.cpp:86 main.cpp:842
+msgid "Log"
+msgstr "Logg"
+
+#: connect.cpp:222 miniterm.cpp:157 modeminfo.cpp:144
+msgid "Sorry, modem device is locked."
+msgstr "Modemet är låst av ett annat program."
+
+#: connect.cpp:234 miniterm.cpp:176 miniterm.cpp:253 modeminfo.cpp:164
+msgid "Modem Ready"
+msgstr "Modemet klart"
+
+#: connect.cpp:266 connect.cpp:267
+msgid "Initializing Modem..."
+msgstr "Initierar modemet..."
+
+#: connect.cpp:292
+msgid "Dialing"
+msgstr "Ringer"
+
+#: connect.cpp:325
+msgid "Line Busy. Hanging up ..."
+msgstr "Upptaget. Lägger på ..."
+
+#: connect.cpp:331
+msgid "Line Busy. Waiting: "
+msgstr "Upptaget. Väntar: "
+
+#: connect.cpp:333 connect.cpp:451 connect.cpp:470
+msgid " seconds"
+msgstr " sekunder"
+
+#: connect.cpp:351
+msgid "No Dialtone"
+msgstr ""
+
+#: connect.cpp:361
+msgid "No Carrier"
+msgstr ""
+
+#: connect.cpp:396
+msgid "Scanning "
+msgstr "Skannar "
+
+#: connect.cpp:407
+msgid "Saving "
+msgstr "Lagrar "
+
+#: connect.cpp:426
+msgid "Sending "
+msgstr "Sänder "
+
+#: connect.cpp:437
+msgid "Expecting "
+msgstr "Förväntar "
+
+#: connect.cpp:449
+msgid "Pause "
+msgstr "Paus "
+
+#: connect.cpp:468
+msgid "Timeout "
+msgstr "Tiden är ute "
+
+#: connect.cpp:482 connect.cpp:483
+msgid "Hangup"
+msgstr "Lägger på"
+
+#: connect.cpp:496 connect.cpp:497
+msgid "Answer"
+msgstr "Svar"
+
+#: connect.cpp:505
+msgid "ID "
+msgstr "ID "
+
+#: connect.cpp:542
+msgid "Password "
+msgstr "Lösenord "
+
+#: connect.cpp:580
+msgid "Prompting "
+msgstr "Frågar "
+
+#: connect.cpp:617
+msgid "PW Prompt "
+msgstr "Frågar efter lösenord "
+
+#: connect.cpp:643
+msgid "Loop Start "
+msgstr "Loopstart "
+
+#: connect.cpp:647
+msgid "ERROR: Nested too deep, ignored."
+msgstr "FEL: Loopar för djupt nästade, ignorerar."
+
+#: connect.cpp:652
+msgid "Loops nested too deeply!"
+msgstr "Loopar för djupt nästade"
+
+#: connect.cpp:670
+msgid "LoopEnd without mathing Start! Line: "
+msgstr "Loopslut utan matchande start-rad: "
+
+#: connect.cpp:747
+msgid "Starting pppd ..."
+msgstr "Startar pppd ..."
+
+#: connect.cpp:807 connect.cpp:833
+msgid "unknown speed"
+msgstr "okänd hastighet"
+
+#: connect.cpp:871
+msgid "Scan Var: "
+msgstr "Skanningsvariabel: "
+
+#: connect.cpp:882
+msgid "Found: "
+msgstr "Hittade: "
+
+#: connect.cpp:894
+msgid "Looping: "
+msgstr "Loopar: "
+
+#: connect.cpp:925 modeminfo.cpp:332
+msgid "One Moment Please ..."
+msgstr "Ett ögonblick ..."
+
+#: connect.cpp:969
+msgid "Script timed out!"
+msgstr "Scriptets tid tog slut!"
+
+#: connect.cpp:995
+msgid "Scanning: "
+msgstr "Skannar: "
+
+#: connect.cpp:1006
+msgid "Expecting: "
+msgstr "Förväntar: "
+
+#: connect.cpp:1040
+msgid "Logging on to Network ..."
+msgstr "Ansluter till nätverket ..."
+
+#: connect.cpp:1067
+msgid "Running Startup Command ..."
+msgstr "Kör startkommando ..."
+
+#: connect.cpp:1133
+msgid "Sorry, can't open modem."
+msgstr "Kan tyvärr inte komma åt modemet."
+
+#: connect.cpp:1140
+msgid "Sorry, the modem is not ready."
+msgstr "Modemet är tyvärr inte klart."
+
+#: connect.cpp:1148 connect.cpp:1189 modeminfo.cpp:374
+msgid "Sorry, the modem is busy."
+msgstr "Modemet är tyvärr upptaget."
+
+#: connect.cpp:1424
+msgid ""
+"pppd command + command-line arguments exeed\n"
+"2024 characters in length. What are you doing?"
+msgstr ""
+"pppd-kommandot + argumenten till det är över\n"
+"2024 tecken långt. Vad håller du på med?"
+
+#: conwindow.cpp:44
+msgid "Connected at:"
+msgstr "Ansluten med:"
+
+#: conwindow.cpp:50
+msgid "Time connected:"
+msgstr "Ansluten tid:"
+
+#: conwindow.cpp:59
+msgid "Session Bill:"
+msgstr "Uppkopplingens kostnad:"
+
+#: conwindow.cpp:61
+msgid "Total Bill:"
+msgstr "Total kostnad:"
+
+#: conwindow.cpp:67 docking.cpp:74
+msgid "Disconnect"
+msgstr "Koppla ifrån"
+
+#: conwindow.cpp:71 docking.cpp:72
+msgid "Details"
+msgstr "Detaljer"
+
+#: debug.cpp:49
+msgid "Login Script Debug Window"
+msgstr "Inloggningsscript - debugfönster"
+
+#: edit.cpp:42
+msgid "Dial Setup"
+msgstr "Uppringningsinställningar"
+
+#: edit.cpp:46
+msgid "Connection Name:"
+msgstr "Anslutningens namn:"
+
+#: edit.cpp:57
+msgid "Phone Number:"
+msgstr "Telefonnummer:"
+
+#: edit.cpp:68
+msgid "Authentication:"
+msgstr "Autentisering:"
+
+#: edit.cpp:73
+msgid "Script-based"
+msgstr "Script-baserad"
+
+#: edit.cpp:74
+msgid "PAP"
+msgstr "PAP"
+
+#: edit.cpp:75
+msgid "Terminal-based"
+msgstr "Terminal-baserad"
+
+#: edit.cpp:76
+msgid "CHAP"
+msgstr "CHAP"
+
+#: edit.cpp:82
+msgid "Store password"
+msgstr "Spara lösenordet"
+
+#: edit.cpp:88
+msgid ""
+"Execute program\n"
+"upon connect:"
+msgstr ""
+"Kör program\n"
+"vid anslutning:"
+
+#: edit.cpp:100
+msgid ""
+"Execute program\n"
+"upon disconnect:"
+msgstr ""
+"Kör program\n"
+"vid frånkoppling:"
+
+#: edit.cpp:112
+msgid "Edit pppd arguments:"
+msgstr "Ändra pppd-parametrar"
+
+#: edit.cpp:118
+msgid "Arguments"
+msgstr "Parametrar"
+
+#: edit.cpp:173
+msgid "IP Setup"
+msgstr "IP-inställningar"
+
+#: edit.cpp:180
+msgid "IP Address:"
+msgstr "IP-adress:"
+
+#: edit.cpp:185
+msgid "Subnet Mask:"
+msgstr "Subnätsmask:"
+
+#: edit.cpp:193
+msgid "Dynamic IP Address"
+msgstr "Dynamisk IP-adress"
+
+#: edit.cpp:196
+msgid "Static IP Address"
+msgstr "Fast IP-adress"
+
+#: edit.cpp:200
+msgid "Auto-configure hostname from this IP"
+msgstr "Ändra automatiskt 'hostname' till det för IP-adressen"
+
+#: edit.cpp:314
+msgid "DNS Servers"
+msgstr "DNS-servrar"
+
+#: edit.cpp:330
+msgid "Domain Name:"
+msgstr "Domännamn:"
+
+#: edit.cpp:342
+msgid "DNS IP Address:"
+msgstr "DNS IP-adress:"
+
+#: edit.cpp:375
+msgid "DNS Address List:"
+msgstr "DNS-adresslista:"
+
+#: edit.cpp:385
+msgid "Disable existing DNS Servers during Connection"
+msgstr "Använd inte redan existerande DNS-servrar under anslutningen"
+
+#: edit.cpp:437
+msgid "Gateway Setup"
+msgstr "Gateway-inställningar"
+
+#: edit.cpp:446
+msgid "Default Gateway"
+msgstr "Standard-gateway"
+
+#: edit.cpp:450
+msgid "Static Gateway"
+msgstr "Fast gateway"
+
+#: edit.cpp:456
+msgid ""
+"Gateway\n"
+"IP Address:"
+msgstr ""
+"IP-adress för\n"
+"gateway:"
+
+#: edit.cpp:458
+msgid "Assign the Default Route to this Gateway"
+msgstr "Sätt 'default route' till denna gateway"
+
+#: edit.cpp:557
+msgid "Edit Script"
+msgstr "Ändra script"
+
+#: edit.cpp:580
+msgid "Insert"
+msgstr "Sätt in"
+
+#: general.cpp:41
+msgid "kppp Setup"
+msgstr "Kppp-inställningar"
+
+#: general.cpp:62
+msgid "pppd Timeout:"
+msgstr "tidsgräns för pppd:"
+
+#: general.cpp:78 general.cpp:390 general.cpp:487
+msgid "Seconds"
+msgstr "sekunder"
+
+#: general.cpp:98
+msgid "Dock into Panel on Connect"
+msgstr "Docka i panelen vid anslutning"
+
+#: general.cpp:104
+msgid "Automatic Redial on Disconnect"
+msgstr "Ring automatiskt upp igen vid frånkoppling"
+
+#: general.cpp:111
+msgid "Show Clock on Caption"
+msgstr "Visa klocka i rubriken"
+
+#: general.cpp:118
+msgid "Disconnect on X-server shutdown"
+msgstr "Koppla ifrån om X-servern avslutas"
+
+#: general.cpp:124
+msgid "Quit on Disconnect"
+msgstr "Avsluta kppp vid frånkoppling"
+
+#: general.cpp:130
+msgid "Minimize Window on Connect"
+msgstr "Minimera fönstret vid anslutning"
+
+#: general.cpp:199
+msgid "About kppp"
+msgstr "Om kppp"
+
+#: general.cpp:207
+msgid ""
+"\n"
+"A dialer and front-end to pppd\n"
+"\n"
+"Copyright (c) 1997\n"
+"Bernd Johannes Wuebben\n"
+"wuebben@math.cornell.edu"
+msgstr ""
+"\n"
+"En uppringare och ett användargränssnitt\n"
+"till pppd\n"
+"\n"
+"Copyright (c) 1997\n"
+"Bernd Johannes Wuebben\n"
+"wuebben@math.cornell.edu"
+
+#: general.cpp:224
+msgid ""
+"With contributions from:\n"
+"\n"
+"Mario Weilguni\n"
+"Markus Wuebben\n"
+"Jesus Fuentes Saavedra\n"
+"Harri Porten\n"
+"Peter Silva"
+msgstr ""
+"Med bidrag från:\n"
+"\n"
+"Mario Weilguni\n"
+"Markus Wuebben\n"
+"Jesus Fuentes Saavedra\n"
+"Harri Porten\n"
+"Peter Silva"
+
+#: general.cpp:248
+msgid "Serial device"
+msgstr "Seriell device"
+
+#: general.cpp:251
+msgid "Modem Device:"
+msgstr "Modem-device:"
+
+#: general.cpp:285
+msgid "Flow Control:"
+msgstr "Flödeskontroll:"
+
+#: general.cpp:300
+msgid "Line Termination:"
+msgstr "Radbrytning:"
+
+#: general.cpp:315
+msgid "Connection Speed:"
+msgstr "Anslutningshastighet:"
+
+#: general.cpp:358
+msgid "Modem Lock File:"
+msgstr "Låsningsfil för modemet:"
+
+#: general.cpp:375
+msgid "Modem Timeout:"
+msgstr "Tidsgräns för modem:"
+
+#: general.cpp:460 main.cpp:503
+msgid "Modem"
+msgstr "Modem"
+
+#: general.cpp:472
+msgid "Busy Wait:"
+msgstr "Vänta vid upptaget:"
+
+#: general.cpp:500
+msgid "Modem Asserts CD Line."
+msgstr ""
+
+#: general.cpp:516
+msgid "Modem Commands"
+msgstr "Modemkommandon"
+
+#: general.cpp:517
+msgid "Query Modem"
+msgstr ""
+
+#: general.cpp:518
+msgid "Terminal"
+msgstr "Terminal"
+
+#: main.cpp:327
+msgid "Connect to: "
+msgstr "Anslut till: "
+
+#: main.cpp:338
+msgid "Login ID:"
+msgstr "Användarnamn:"
+
+#: main.cpp:350
+msgid "Password:"
+msgstr "Lösenord:"
+
+#: main.cpp:367
+msgid "Show Log Window"
+msgstr "Visa loggfönster"
+
+#: main.cpp:389
+msgid "Setup"
+msgstr "Inställningar"
+
+#: main.cpp:404
+msgid "Connect"
+msgstr "Anslut"
+
+#: main.cpp:472
+#, c-format
+msgid ""
+"No such Account:\n"
+"%s"
+msgstr ""
+"Kontot saknas:\n"
+"%s"
+
+#: main.cpp:489
+msgid "kppp Configuration"
+msgstr "kppp inställningar"
+
+#: main.cpp:501
+msgid "Accounts"
+msgstr "Konton"
+
+#: main.cpp:502
+msgid "Device"
+msgstr "Device"
+
+#: main.cpp:504
+msgid "PPP"
+msgstr "PPP"
+
+#: main.cpp:732
+#, c-format
+msgid ""
+"kppp can not find:\n"
+" %s\n"
+"Please install pppd properly and/or adjust\n"
+" the location of the pppd executable on the PPP tab of\n"
+"the setup dialog.\n"
+" Thank You"
+msgstr ""
+"Installera pppd korrekt och/eller ändra\n"
+"sökvägen till 'pppd' i PPP-fliken\n"
+"bland inställningarna."
+
+#: main.cpp:744
+#, c-format
+msgid ""
+"kppp can not execute:\n"
+" %s\n"
+"Please make sure thatyou have given kppp setuid permission and that\n"
+"pppd is executable."
+msgstr ""
+"Var god kontrollera att du har gett kppp setuid-rättigheter och att\n"
+"pppd är körbar."
+
+#: main.cpp:758
+#, c-format
+msgid ""
+"kppp can not find:\n"
+" %s\n"
+"Please make sure you have setup\n"
+"your modem device properly\n"
+"and/or adjust\n"
+" the location of the modem device on the modem tab of\n"
+"the setup dialog.\n"
+" Thank You"
+msgstr ""
+"kppp kan inte hitta:\n"
+" %s\n"
+"Var god kontrollera att du har ställt\n"
+"in modem-devicen korrekt och/eller\n"
+"ändra modem-device på modem-fliken\n"
+"bland inställningarna."
+
+#: main.cpp:778
+msgid ""
+"You have selected the authentication\n"
+"method PAP. This requires that you\n"
+"supply a username and a password!"
+msgstr ""
+"Du har valt autentiseringsmetoden\n"
+"PAP. Den kräver att du anger ett\n"
+"användarnamn och lösenord!"
+
+#: main.cpp:785
+#, c-format
+msgid ""
+"Cannot create PAP authentication\n"
+"file \"%s\""
+msgstr ""
+"Kan inte skapa PAP-autentiseringsfil\n"
+"\"%s\""
+
+#: main.cpp:802
+msgid ""
+"You have selected the authentication\n"
+"method CHAP. This requires that you\n"
+"supply a username and a password!"
+msgstr ""
+"Du har valt autentiseringsmetoden\n"
+"CHAP. Den kräver att du anger ett\n"
+"användarnamn och lösenord!"
+
+#: main.cpp:809
+#, c-format
+msgid ""
+"Cannot create CHAP authentication\n"
+"file \"%s\""
+msgstr ""
+"Kan inte skapa CHAP-autentiseringsfil\n"
+"\"%s\""
+
+#: main.cpp:821
+msgid "You have to specify a telephone number !\n"
+msgstr "Du måste ange ett telefonnummer!"
+
+#: main.cpp:895
+msgid "Quit kPPP?"
+msgstr "Avsluta kPPP?"
+
+#: main.cpp:896
+msgid "Exiting kPPP will close your PPP Session."
+msgstr "Om du avslutar kPPP så avslutas din PPP-anslutning."
+
+#: main.cpp:931
+msgid ""
+"Can not load the accounting\n"
+"ruleset \""
+msgstr ""
+"Kan inte ladda regler för\n"
+"kostnadsberäkning \""
+
+#: modemcmds.cpp:40
+msgid "Edit Modem Commands"
+msgstr "Ändra modemkommandon"
+
+#: modemcmds.cpp:54
+msgid "Initialization String:"
+msgstr ""
+
+#: modemcmds.cpp:61
+msgid "Init Response:"
+msgstr ""
+
+#: modemcmds.cpp:86
+msgid "Init Delay (sec/100):"
+msgstr ""
+
+#: modemcmds.cpp:91
+msgid "Dial String:"
+msgstr ""
+
+#: modemcmds.cpp:98
+msgid "Connect Response:"
+msgstr ""
+
+#: modemcmds.cpp:105
+msgid "Busy Response:"
+msgstr ""
+
+#: modemcmds.cpp:112
+msgid "No Carrier Resonse:"
+msgstr ""
+
+#: modemcmds.cpp:119
+msgid "No Dialtone Response:"
+msgstr ""
+
+#: modemcmds.cpp:126
+msgid "Hangup String:"
+msgstr ""
+
+#: modemcmds.cpp:133
+msgid "Hangup Response:"
+msgstr ""
+
+#: modemcmds.cpp:140
+msgid "Answer String:"
+msgstr ""
+
+#: modemcmds.cpp:147
+msgid "Ring Response:"
+msgstr ""
+
+#: modemcmds.cpp:154
+msgid "Answer Response:"
+msgstr ""
+
+#: modemcmds.cpp:161
+msgid "Escape String:"
+msgstr ""
+
+#: modemcmds.cpp:168
+msgid "Escape Response:"
+msgstr ""
+
+#: modemcmds.cpp:195
+msgid "Guard Time (sec/50):"
+msgstr ""
+
+#: pppdargs.cpp:33
+msgid "Customize pppd Arguments"
+msgstr "Anpassa pppd-parametrar"
+
+#: pppdargs.cpp:41
+msgid "Argument:"
+msgstr "Parameter:"
+
+#: pppdargs.cpp:58
+msgid "Restore Defaults"
+msgstr "Standard"
+
+#: pppdata.cpp:52
+msgid ""
+"The application-specific config file\n"
+"could not be opened neither\n"
+"read-write nor read-only"
+msgstr ""
+"Den applikationsspecifika konfigurationsfilen\n"
+"kunde varken öppnas som läs/skrivbar eller\n"
+"enbart läsbar"
+
+#: modeminfo.cpp:46
+msgid "ATI Query"
+msgstr "ATI-förfrågan"
+
+#: modeminfo.cpp:130
+msgid "Modem Query timed out."
+msgstr "Modemförfrågningens tid tog slut."
+
+#: miniterm.cpp:277 modeminfo.cpp:368
+msgid "Can't open Modem"
+msgstr "Kan inte öppna modemet"
+
+#: modeminfo.cpp:414
+msgid "Sorry, the modem is busy"
+msgstr "Modemet är upptaget"
+
+#: modeminfo.cpp:533
+msgid "Modem Query Results"
+msgstr "Resultat av modemförfrågan"
+
+#: pppstatdlg.cpp:70
+msgid "kppp Statistics"
+msgstr "kppp statistik"
+
+#: pppstatdlg.cpp:75
+msgid "Statistics"
+msgstr "Statistik"
+
+#: pppstatdlg.cpp:148
+msgid "Local Addr:"
+msgstr "Lokal adr:"
+
+#: pppstatdlg.cpp:154
+msgid "Remote Addr:"
+msgstr "Fjärradr:"
+
+#: pppstatdlg.cpp:186
+msgid "bytes in"
+msgstr "byte in"
+
+#: pppstatdlg.cpp:187
+msgid "bytes out"
+msgstr "byte ut"
+
+#: pppstatdlg.cpp:189
+msgid "packets in"
+msgstr "paket in"
+
+#: pppstatdlg.cpp:190
+msgid "packets out"
+msgstr "paket ut"
+
+#: pppstatdlg.cpp:192
+msgid "vjcomp in"
+msgstr "vjcomp in"
+
+#: pppstatdlg.cpp:193
+msgid "vjcomp out"
+msgstr "jvcomp ut"
+
+#: pppstatdlg.cpp:195
+msgid "vjunc in"
+msgstr "vjunc in"
+
+#: pppstatdlg.cpp:196
+msgid "vjunc out"
+msgstr "vjunc ut"
+
+#: pppstatdlg.cpp:198
+msgid "vjerr"
+msgstr "vjerr"
+
+#: pppstatdlg.cpp:199
+msgid "non-vj"
+msgstr "icke-vj"
+
+#: pppstatdlg.cpp:370 pppstatdlg.cpp:377
+msgid "unavailable"
+msgstr "ej tillgängligt"
+
+#: miniterm.cpp:52
+msgid "Kppp Mini-Terminal"
+msgstr ""
+
+#: miniterm.cpp:58
+msgid "&Reset Modem"
+msgstr ""
+
+#: miniterm.cpp:64
+msgid "&Modem"
+msgstr ""
+
+#: miniterm.cpp:107
+msgid "Quit MiniTerm"
+msgstr ""
+
+#: miniterm.cpp:113
+msgid "Reset Modem"
+msgstr ""
+
+#: miniterm.cpp:151
+msgid "Initializing Modem"
+msgstr ""
+
+#: miniterm.cpp:223
+msgid "Hanging up ..."
+msgstr ""
+
+#: miniterm.cpp:243
+msgid "Resetting Modem"
+msgstr ""
+
+#: miniterm.cpp:262
+msgid "Can't restore tty settings: tcsetattr()\n"
+msgstr "Kan inte återställa tty-inställningar: tcsetattr()\n"
+
+#: miniterm.cpp:283
+msgid "tcgetattr() failed\n"
+msgstr "tcgetattr() misslyckades\n"
+
+#: miniterm.cpp:330
+msgid "tcsetattr() failed\n"
+msgstr "tcsetattr() misslyckades\n"
+
+#: acctselect.cpp:48
+msgid "Accounting Setup"
+msgstr "Kostnadsberäkning"
+
+#: acctselect.cpp:56
+msgid "Enable accounting"
+msgstr "Använd kostnadsberäkning"
+
+#: acctselect.cpp:74
+msgid "Selected:"
+msgstr "Vald:"
+
+#: acctselect.cpp:88
+msgid "Volume accounting:"
+msgstr "Volymberäkning:"
+
+#: acctselect.cpp:92
+msgid "No accounting"
+msgstr "Ingen volymberäkning"
+
+#: acctselect.cpp:93
+msgid "Bytes in"
+msgstr "Byte in"
+
+#: acctselect.cpp:94
+msgid "Bytes out"
+msgstr "Byte ut"
+
+#: acctselect.cpp:95
+msgid "Bytes in and out"
+msgstr "Byte in och ut"
+
+#: acctselect.cpp:165 acctselect.cpp:271
+msgid "Available rules"
+msgstr "Tillgängliga regler"
+
+#: ruleset.cpp:541
+msgid "kppp: no rulefile specified\n"
+msgstr "kppp: ingen regelfil angiven\n"
+
+#: ruleset.cpp:547
+#, c-format
+msgid "kppp: rulefile \"%s\" not found\n"
+msgstr "kppp: regelfilen \"%s\" hittades inte\n"
+
+#: ruleset.cpp:552
+msgid "kppp: rulefiles must have the extension \".rst\"\n"
+msgstr "kppp: regelfiler måste ha extensionen \".rst\"\n"
+
+#: ruleset.cpp:561
+msgid "kppp: error parsing the ruleset\n"
+msgstr "kppp: fel vid tolkning av regeluppsättningen\n"
+
+#: ruleset.cpp:566
+#, c-format
+msgid "kppp: parse error in line %d\n"
+msgstr "kppp: parse-fel på rad %d\n"
+
+#: ruleset.cpp:572
+msgid "kppp: rulefile does not contain a default rule\n"
+msgstr "kppp: regelfilen innehåller inte en standardregel\n"
+
+#: ruleset.cpp:577
+msgid "kppp: rulefile does not contain a \"name=...\" line\n"
+msgstr "kppp: regelfilen innehåller inte en rad \"name=...\"\n"
+
+#: ruleset.cpp:581
+msgid "kppp: rulefile is ok\n"
+msgstr "kppp: regelfilen är ok\n"
+
+#: docking.cpp:220
+msgid "Minimize"
+msgstr "Minimera"
+
+#: runtests.cpp:121
+msgid ""
+"You´re not allowed to dial out with kppp.\n"
+"Contact your system administrator."
+msgstr ""
+"Du har inte rättigheter för att ringa ut med kppp.\n"
+"Kontakta systemansvarig."
+
+#: runtests.cpp:137
+msgid ""
+"Cannot find the pppd-daemon!\n"
+"\n"
+"Make sure that pppd is installed and\n"
+"you have entered the correct path.\n"
+msgstr ""
+"Hittade inte pppd-daemonen!\n"
+"\n"
+"Kontrollera att pppd är installerat och\n"
+"att du har angett rätt sökväg.\n"
+
+#: runtests.cpp:149
+msgid ""
+"You do not have the permission\n"
+"to start pppd!\n"
+"\n"
+"Contact your system administrator\n"
+"and ask to get access to pppd."
+msgstr ""
+"Du har inte rättigheter för att\n"
+"starta pppd!\n"
+"\n"
+"Kontakta systemansvarig och\n"
+"be att få tillgång till pppd."
+
+#: runtests.cpp:160 runtests.cpp:175
+msgid ""
+"pppd is not properly installed!\n"
+"\n"
+"The pppd binary must be installed\n"
+"with the SUID bit set. Contact your\n"
+"system administrator."
+msgstr ""
+"pppd är inte korrekt installerad!\n"
+"\n"
+"pppd-programmet måste vara installerat\n"
+"med SUIT-biten satt. Kontakta\n"
+"systemansvarig."
+
+#: runtests.cpp:220
+msgid ""
+"kppp has detected a 'lock' option in /etc/ppp/options.\n"
+"\n"
+"This option has to be removed since kppp takes care of device locking "
+"itself.\n"
+"Contact your system administrator."
+msgstr ""
+"kppp har hittat ett 'lock'-alternativ i /etc/ppp/options.\n"
+"\n"
+"Detta har tagits bort, eftersom kppp själv hanterar device-låsning.\n"
+"Kontakta systemansvarig."
+
+#: runtests.cpp:245
+msgid ""
+"/etc/resolv.conf is missing!\n"
+"\n"
+"Ask your system administrator to create\n"
+"a non-empty file that has appropriate\n"
+"read and write permissions."
+msgstr ""
+"/etc/resolv.conf saknas!\n"
+"\n"
+"Be systemansvarig att skapa en\n"
+"icke-tom fil med lämpliga läs-\n"
+"och skrivrättigheter."
