@@ -7,7 +7,7 @@ LDADD = $(LIBCOMPAT) $(LIBSOCKET) $(all_libraries) -lkfm -lkhtmlw -ljscript -lkd
 ICONDIR = $(kde_icondir)
 MINIDIR =  $(kde_minidir)
 # better would be Internet
-UTILSDIR = $(kde_appsdir)/Utilities
+APPSDIR = $(kde_appsdir)/Internet
 
 BUILTSOURCES =	groupdlg.moc \
 		NNTP.moc \
@@ -114,18 +114,18 @@ noinst_HEADERS = 	NNTP.h\
 
 SUBDIRS = docs pics
 
-install-local-data: 
-	$(INSTALL_DIR) $(ICONDIR)
+install-data-local: 
+	$(mkinstalldirs) $(ICONDIR)
 	$(INSTALL_DATA) krn.xpm $(ICONDIR)
-	$(INSTALL_DIR) $(MINIDIR)
+	$(mkinstalldirs) $(MINIDIR)
 	$(INSTALL_DATA) mini-krn.xpm $(MINIDIR)/krn.xpm
-	$(INSTALL_DIR) $(UTILSDIR)
-	$(INSTALL_DATA) Krn.kdelnk $(UTILSDIR)
+	$(mkinstalldirs) $(APPSDIR)
+	$(INSTALL_DATA) Krn.kdelnk $(APPSDIR)
 
 uninstall-local:
 	rm -f $(ICONDIR)/krn.xpm
 	rm -f $(MINIDIR)/krn.xpm
-	rm -f $(UTILSDIR)/Krn.kdelnk
+	rm -f $(APPSDIR)/Krn.kdelnk
 
 
 # moc rules
