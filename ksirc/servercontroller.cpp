@@ -82,6 +82,14 @@
 
 #include "puke/controller.h"
 
+#ifdef HAVE_PATHS_H
+#include <paths.h>
+#endif
+
+#ifndef _PATH_TMP
+#define _PATH_TMP "/tmp/"
+#endif
+
 extern KConfig *kConfig;
 extern KApplication *kApp;
 extern global_config *kSircConfig;
@@ -186,7 +194,7 @@ servercontroller::servercontroller /*FOLD00*/
 
   // Server Controller is done setting up, create Puke interface.
 
-  kSircConfig->pukeSocket = getenv("HOME") ? getenv("HOME") : "/tmp";
+  kSircConfig->pukeSocket = getenv("HOME") ? getenv("HOME") : _PATH_TMP;
   QString pfile;
   pfile.sprintf("/.ksirc.socket.%d", getpid());
   kSircConfig->pukeSocket += pfile;
