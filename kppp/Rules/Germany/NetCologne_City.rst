@@ -3,11 +3,11 @@
 # ------------------------------
 # (probably only usefull for anybody living in Cologne)
 # Does NOT cover NetColognes "Time-Line" or "Power-Line" Internet
-# service package !
+# Internet package !
 #
 # *** for City calls *** - Use at your own risk.
 #
-# erstellt am 6.5.98 von Roland Pabel (Roland.Pabel@FH-Koeln.de)
+# edited 20.5.99 <Roland Pabel (pabel@cip.physik.uni-bonn.de)>
 #
 # Obwohl NetCologne sekundengenau abrechnet, ist es viel einfacher
 # in 6 Sekundenschritten abzurechnen. Der errechnete Betrag duerfte
@@ -24,11 +24,11 @@ currency_position=right
 currency_digits=2
 per_connection=0.0
 
-# default : Cost of 6 seconds in the time periods (Monday..Friday, 8:00..18:00)
+# default : Cost of 6 seconds in the time periods (Monday..Friday, 8:00..17:59)
 default=(0.006, 6)
 
 # (other time periods / Weekend)
-on (monday..friday)   between (18:00..8:00)  use (0.0035, 6)
+on (monday..friday)   between (18:00..7:59)  use (0.0035, 6)
 on (saturday..sunday) between (00:00..23:59) use (0.0035, 6)
 
 # Spezialtarif an bundeseinheitlichen Feiertagen
