@@ -258,7 +258,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     
     t2->insertButton (Icon("locked.xpm"), TOGGLE_EXPIRE, true, klocale->translate("Lock (keep in cache)"));
     
-    t2->insertButton (Icon("deco.xpm"), DECODE_ARTICLE, true, klocale->translate("Decode Article"));
+    t2->insertButton (Icon("deco.xpm"), DECODE_ONE_ARTICLE, true, klocale->translate("Decode Article"));
     
     t2->insertButton (Icon("red-bullet.xpm"), MARK_READ, true, klocale->translate("Mark Read"));
 
@@ -513,6 +513,10 @@ bool Artdlg::taggedActions (int action)
         action=MULTI_SAVE;
         MultiSavePath="";
     }
+    else if (action==DECODE_ONE_ARTICLE)
+    {
+        action=DECODE_ARTICLE;
+    }
     bool success=false;
     qApp->setOverrideCursor (waitCursor);
     list->setUpdatesEnabled(FALSE);
@@ -556,6 +560,10 @@ bool Artdlg::readActions (int action)
     {
         action=MULTI_SAVE;
         MultiSavePath="";
+    }
+    else if (action==DECODE_ONE_ARTICLE)
+    {
+        action=DECODE_ARTICLE;
     }
     bool success=false;
     qApp->setOverrideCursor (waitCursor);
@@ -601,6 +609,10 @@ bool Artdlg::unreadActions (int action)
         action=MULTI_SAVE;
         MultiSavePath="";
     }
+    else if (action==DECODE_ONE_ARTICLE)
+    {
+        action=DECODE_ARTICLE;
+    }
     bool success=false;
     qApp->setOverrideCursor (waitCursor);
     list->setUpdatesEnabled(FALSE);
@@ -644,6 +656,10 @@ bool Artdlg::allActions (int action)
     {
         action=MULTI_SAVE;
         MultiSavePath="";
+    }
+    else if (action==DECODE_ONE_ARTICLE)
+    {
+        action=DECODE_ARTICLE;
     }
     bool success=false;
     qApp->setOverrideCursor (waitCursor);

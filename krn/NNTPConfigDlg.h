@@ -7,6 +7,7 @@ class QPushButton;
 class QLineEdit;
 class QCheckBox;
 class QLineEdit;
+class QComboBox;
 
 class NNTPConfigDlg : public QDialog
 {
@@ -19,7 +20,7 @@ public:
 
     QPushButton* b1;
     QPushButton* b2;
-    QLineEdit* servername;
+    QComboBox* servername;
     QCheckBox* connectatstart;
     QCheckBox* authenticate;
     QCheckBox* silentconnect;

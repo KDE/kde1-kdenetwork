@@ -6,6 +6,7 @@
 #include <qlined.h>
 #include <qpushbt.h>
 #include <qchkbox.h>
+#include <qcombo.h>
 
 
 #include <kconfig.h>
@@ -40,7 +41,20 @@ NNTPConfigDlg::NNTPConfigDlg(QWidget* parent, const char* name):Inherited( paren
     l->addLabel("l2", klocale->translate("NNTP Server"));
     l->newLine();
     conf->setGroup("NNTP");
-    servername=(QLineEdit *)(l->addLineEdit("servername",conf->readEntry("NNTPServer"))->widget);;
+    //    servername=(QLineEdit *)(l->addLineEdit("servername",conf->readEntry("NNTPServer"))->widget);;
+    QStrList servlist;
+    int i=servlist.find(conf->readEntry("NNTPServer"));
+    if (i!=-1)
+        servlist.remove(i);
+    conf->readListEntry("NNTPServerList",servlist);
+    servername=(QComboBox *)(l->addComboBox("servername",0,true)->widget);
+    servername->insertItem(conf->readEntry("NNTPServer"),0);
+    for (char *serv=servlist.first();serv!=0;serv=servlist.next())
+    {
+        servername->insertItem(serv);
+    }
+    servername->setCurrentItem(0);
+    l->setAlign("servername",AlignLeft|AlignRight);
     l->endGroup();
 
     l->newLine();
@@ -93,7 +107,12 @@ NNTPConfigDlg::~NNTPConfigDlg()
 void NNTPConfigDlg::save()
 {
     conf->setGroup("NNTP");
-    conf->writeEntry("NNTPServer",servername->text());
+    conf->writeEntry("NNTPServer",servername->currentText());
+    QStrList l;
+    conf->readListEntry("NNTPServerList",l);
+    if (l.find(servername->currentText())==-1)
+        l.append(servername->currentText());
+    conf->writeEntry("NNTPServerList",l);
     conf->writeEntry("ConnectAtStart",connectatstart->isChecked());
     conf->writeEntry("SilentConnect",silentconnect->isChecked());
     conf->writeEntry("Authenticate",authenticate->isChecked());

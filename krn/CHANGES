@@ -1,4 +1,14 @@
 -----------------------------------------------------------------------------
+Changes made Apr 22
+-----------------------------------------------------------------------------
+* [Roberto] Fixed bug reported by TheQ ("Current"->decode didn't work).
+-----------------------------------------------------------------------------
+Changes made Apr 21
+-----------------------------------------------------------------------------
+* [Roberto] Combobox that remembers server names.
+            This also caused a bugfix in typelayout (there was no way to
+            create a rw combobox).
+-----------------------------------------------------------------------------
 Changes made Apr 20
 -----------------------------------------------------------------------------
 * [Roberto] Implementing faster sort. This is so HUMBLING ;-)

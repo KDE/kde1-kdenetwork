@@ -133,9 +133,10 @@ public:
 
      /**
       Similar to addListBox, but creates a QComboBox instead of a QListBox
+      if rw=TRUE, it's a editable QComboBox
       */
      
-     TLObj *addComboBox (const char *ID,QStrList *contents=0);
+     TLObj *addComboBox (const char *ID,QStrList *contents=0,bool rw=FALSE);
 
     /** Ends a line of widgets, and starts a new one. Think about it
      as pressing "return" in a word processor

@@ -383,10 +383,10 @@ TLObj *KTypeLayout::addListBox (const char *ID,QStrList *contents,int minRows)
     return addWidget(ID,g);
 }
 
-TLObj *KTypeLayout::addComboBox (const char *ID,QStrList *contents)
+TLObj *KTypeLayout::addComboBox (const char *ID,QStrList *contents,bool rw)
 {
     QWidget *g;
-    QComboBox *l=new QComboBox(windowStack.top()->widget);
+    QComboBox *l=new QComboBox(rw,windowStack.top()->widget);
     g=l;
 
     int w=0;
