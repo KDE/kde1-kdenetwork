@@ -699,6 +699,17 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	  pos = string.find("Signoff: ") + 9;
 	  s3 = string.mid(pos, string.find(' ', pos) - pos);
 	}
+	else if(string.contains("You have left channel ")){
+	  pos = string.find("channel ", 0) + 8;
+	  int end = string.length();
+	  s3 = string.mid(pos, end - pos);
+	  if(strcmp(channel_name, s3.data()) == 0){
+	    no_output = 1;
+	    string.truncate(0);
+	    QApplication::postEvent(this, new QCloseEvent()); // WE'RE DEAD
+	  }
+	  s3 = "";
+	}
 	else if(string.contains("has left")) // part
 	  s3 = string.mid(1, string.find(' ', 1) - 1);
 	else if(string.contains("kicked off")) // kick
