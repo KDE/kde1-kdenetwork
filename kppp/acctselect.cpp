@@ -302,7 +302,7 @@ void AccountingSelector::enableItems(bool) {
   tl->setEnabled(use->isChecked());
 
   if(!use->isChecked() || (choice == -1))
-    selected->setText("(none)");
+    selected->setText(i18n("(none)"));
   else {
     // replace underscores
     QString s = indexToFileName(choice);
