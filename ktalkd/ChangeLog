@@ -1,4 +1,8 @@
-1999-02-02  David Faure  <faure@kde.org> (1.5.1)
+1999-02-03  David Faure  <faure@kde.org> (1.5.1)
+
+	* readcfg++.cpp : Fixed answmach message stopping at first empty line
+
+1999-02-02  David Faure  <faure@kde.org>
 
 	* kotalkd/vsnprintf.c, SNPRINTF_MISSING : new files for systems
 	without snprintf (e.g. Solaris). vsnprintf.c is _not_ to be
