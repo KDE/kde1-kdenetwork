@@ -43,7 +43,6 @@ BUILTSOURCES =	kfinger.moc finger.moc
 # them while "make clean", use CLEANFILES
 DISTCLEANFILES = $(BUILTSOURCES)
 
-# make ../po/kfinger.pot. do make merge in ../po after that
 messages:
 	$(XGETTEXT) -C -ktranslate -ki18n -x $(includedir)/kde.pot $(kfinger_SOURCES) && mv messages.po ../kfinger.pot
 

@@ -48,9 +48,8 @@ BUILTSOURCES =	knu.moc CommandDlg.moc OptionsDlg.moc \
 # them while "make clean", use CLEANFILES
 DISTCLEANFILES = $(BUILTSOURCES)
 
-# make messages.po. Move this one to ../po/ and "make merge" in po
 messages:
-	$(XGETTEXT) -C -k_ $(knu_SOURCES) -x ../../kdelibs/po/kde.pot && mv messages.po ../po/knu.pot
+	$(XGETTEXT) -C -k_ -ki18n -x $(includedir)/kde.pot $(knu_SOURCES) && mv messages.po ../po/knu.pot
 
 # just install datas here. Use install-exec-local for scripts and etc.
 # the binary itself is already installed from automake

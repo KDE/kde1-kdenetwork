@@ -17,7 +17,6 @@ endif
 #for extra warnings during compilation :
 #DEFS		+=	-ansi -pedantic -D_POSIX_SOURCE -D_BSD_SOURCE
 
-# make messages.po. Move this one to ../../po/ and "make merge" in po
 messages:
-	$(XGETTEXT) -C -ki18n -x$(includedir)/kde.pot $(ktalkdlg_SOURCES) && mv messages.po ../../po/ktalkd.pot
+	$(XGETTEXT) -C -ki18n -x $(includedir)/kde.pot $(ktalkdlg_SOURCES) && mv messages.po ../../po/ktalkd.pot
 

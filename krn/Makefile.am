@@ -302,4 +302,4 @@ new_groupdlg.moc: new_groupdlg.h
 
 
 messages:
-	@XGETTEXT@ -ktranslate -C -x../../kdelibs/po/kde.pot $(krn_SOURCES)  && mv messages.po ../po/krn.pot
+	$(XGETTEXT) -C -ktranslate -ki18n -x $(includedir)/kde.pot $(krn_SOURCES) && mv messages.po ../po/krn.pot

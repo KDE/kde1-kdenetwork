@@ -63,9 +63,8 @@ mcutmle.cpp
 # them while "make clean", use CLEANFILES
 DISTCLEANFILES = $(BUILTSOURCES)
 
-# make messages.po. Move this one to ../po/ and "make merge" in po
 messages:
-	$(XGETTEXT) -C -ktranslate $(khexdit_SOURCES)
+	$(XGETTEXT) -C -ktranslate -ki18n -x $(includedir)/kde.pot $(libkscutdialog_a_SOURCES)
 
 # just install datas here. Use install-exec-data for scripts and etc.
 # the binary itself is already installed from automake

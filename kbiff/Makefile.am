@@ -30,7 +30,6 @@ noinst_HEADERS = setupdlg.h kbiff.h kbiffmonitor.h notify.h Trace.h
 # them while "make clean", use CLEANFILES
 DISTCLEANFILES = $(kbiff_METASOURCES)
 
-# make messages.po. Move this one to ../po/ and "make merge" in po
 messages:
 	$(XGETTEXT) -C -ki18n -x $(includedir)/kde.pot $(kbiff_SOURCES) && mv messages.po ../po/kbiff.pot
 

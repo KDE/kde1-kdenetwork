@@ -190,9 +190,8 @@ data_DATA = commands-handler.pl commands-perl.pl convert_commands.pl \
 # Where to install them
 datadir = $(kde_datadir)/ksirc
 
-# make messages.po. Move this one to ../po/ and "make merge" in po
 messages:
-	$(XGETTEXT) -C -ktranslate $(khexdit_SOURCES)
+	$(XGETTEXT) -C -ktranslate -ki18n -x $(includedir)/kde.pot $(libpuke_la_SOURCES)
 
 #
 # add a dependency for every moc file to be full portable
