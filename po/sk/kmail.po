@@ -361,9 +361,8 @@ msgstr "Inicializujem..."
 
 #: kmfolderdia.cpp:38 kmmsgpartdlg.cpp:62 kmsettings.cpp:176
 #: kmsettings.cpp:869
-#, fuzzy
 msgid "Name:"
-msgstr "Prihl. meno:"
+msgstr "Meno:"
 
 #: kmcomposewin.cpp:1451 kmfolderdia.cpp:44 kmfolderdia.cpp:120
 msgid "unnamed"
@@ -439,7 +438,7 @@ msgstr "Kontá:  (zalo¾te aspoò jedno konto)"
 
 #: kmcomposewin.cpp:135 kmsettings.cpp:269
 msgid "Name"
-msgstr ""
+msgstr "Meno"
 
 #: kmcomposewin.cpp:138 kmsettings.cpp:270
 msgid "Type"
@@ -579,7 +578,7 @@ msgstr "Pri kontrole zasla» po¹tu z prieèinku outbox"
 
 #: kmsettings.cpp:556
 msgid "Misc"
-msgstr ""
+msgstr "Rôzne"
 
 #: kmsettings.cpp:580
 msgid "Message Body Font"
@@ -606,9 +605,8 @@ msgid "Choose Signature File"
 msgstr "Výber súboru s podpisom"
 
 #: kmsettings.cpp:861
-#, fuzzy
 msgid "Type:"
-msgstr "Typ"
+msgstr "Typ:"
 
 #: kmsettings.cpp:874
 msgid "Local Account"
@@ -636,7 +634,7 @@ msgstr "Zmaza» po¹tu na serveri"
 
 #: kmsettings.cpp:907
 msgid "Enable interval Mail checking"
-msgstr ""
+msgstr "Povoli» kontrolu po¹ty v intervaloch"
 
 #: kmsettings.cpp:921
 msgid "Store new mail in account:"
@@ -671,9 +669,8 @@ msgid "Subject"
 msgstr "Predmet"
 
 #: kmheaders.cpp:42
-#, fuzzy
 msgid "Date"
-msgstr "Dátum:"
+msgstr "Dátum"
 
 #: kmheaders.cpp:187
 #, c-format
@@ -736,7 +733,7 @@ msgstr "KMail -- Editor správ"
 
 #: kmcomposewin.cpp:136
 msgid "Size"
-msgstr ""
+msgstr "Veµkos»"
 
 #: kmcomposewin.cpp:137
 msgid "Encoding"
@@ -883,9 +880,8 @@ msgid "&Attach"
 msgstr "&Prilo¾i»"
 
 #: kmcomposewin.cpp:547
-#, fuzzy
 msgid "Send message"
-msgstr "Odosla» správy:"
+msgstr "Odosla» správu"
 
 #: kmcomposewin.cpp:571
 msgid "Cut selection"
@@ -981,7 +977,6 @@ msgid "Subject:"
 msgstr "Predmet:"
 
 #: kmcomposewin.cpp:1473
-#, fuzzy
 msgid "Date:"
 msgstr "Dátum:"
 
@@ -1495,18 +1490,17 @@ msgid "Bad pass Phrase; couldn't decrypt"
 msgstr "Zlé heslo; nemô¾em rozkódova»"
 
 #: kpgp.cpp:836
-#, fuzzy, c-format
 msgid ""
 "Could not find public keys matching the\n"
 "userid(s) %s. These persons won't be able\n"
 "to read the message."
 msgstr ""
-"verejný kµúè pre %s nenájdený.\n"
+"Verejný kµúè pre %s nenájdený.\n"
 "Táto osoba nebude schopná de¹ifrova» správu."
 
 #: kpgp.cpp:848
 msgid "Could not find public keys for some persons.\n"
-msgstr ""
+msgstr "Nemô¾em nájs» verejné kµúèe pre niektorých µudí.\n"
 
 #: kpgp.cpp:861
 msgid "Bad pass Phrase; couldn't sign"
@@ -1518,7 +1512,7 @@ msgid ""
 "PGP passphrase"
 msgstr ""
 "Prosím vlo¾te\n"
-"vá¹e PGP heslo"
+"va¹e PGP heslo"
 
 #: kpgp.cpp:946
 msgid "PGP Security Check"
