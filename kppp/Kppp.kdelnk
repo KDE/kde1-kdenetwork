@@ -1,6 +1,6 @@
 # KDE Config File
 [KDE Desktop Entry]
-Comment[C]=Internet dial-up tool
+Comment=Internet dial-up tool
 Comment[is_IS]=kppp:  Tól til að tengjast Netinu með PPP
 Comment[es]=Herramienta de conexion a Internet
 Comment[de]=Internet Wahlhilfe
@@ -19,11 +19,11 @@ Comment[ro]=Program de conectare prin modem la Internet (PPP)
 Comment[ca]=Connexió telefònica a Internet
 BinaryPattern=kppp;
 Protocols=
-Name[C]=Kppp
+Name=Kppp
 Name[is_IS]=PPP tengiforrit
 Name[es]=Conexión a Internet
 Name[pl]=Kppp
-Name[no]=Kppp
+Name[no]=Internett-forbindelse
 Name[fr]=Numéroteur
 Name[hu]=Tárcsázó
 Name[pt]=Kppp
