@@ -50,27 +50,29 @@ public:
 //. {\tt DwProtocolClient} is the base class for other classes that implement
 //. specific protocols, such as SMTP, POP, and NNTP.  {\tt DwProtocolClient}
 //. serves two purposes.  First, It combines operations common to all its
-//. derived classes, such as opening a TCP connection to the server, into a
-//. single base class.  Second, it provides a platform-independent interface
-//. to its derived classes.
+//. derived classes, such as opening a TCP connection to the server.  Second,
+//. it provides a platform-independent interface to the network services
+//. required by its subclasses.
 //.
 //. There are two separate implementations of {\tt DwProtocolClient}: one for
-//. Berkeley sockets under UNIX, and one for Winsock under WIN32.  The
+//. Berkeley sockets under UNIX, and one for Winsock under Win32.  The
 //. interface is the same for both implementations, thus providing platform
 //. independence.
 //.
-//. There is one platform-specific detail that you should be aware of.
-//. If you are writing a UNIX program, you should be sure to catch the
-//. SIGPIPE signal.  This signal is raised when a program tries to write
+//. There are two platform-specific details that you should be aware of.
+//. First, if you are writing a UNIX program, you should be sure to handle
+//. the SIGPIPE signal.  This signal is raised when a program tries to write
 //. to a TCP connection that was shutdown by the remote host.  The default
 //. action for this signal is to terminate the program.  To prevent this
-//. happening in your program, you should either catch the signal or
-//. tell the operating system to ignore it.
-//.
-//. It is possible that the constructor may fail.  To verify that the
-//. constructor has succeeded, call the member function {\tt LastError()}
-//. and check that it returns zero.  (In the WIN32 implementation, the
-//. constructor calls the Winsock function {\tt WSAStartup()}.)
+//. from happening in your program, you should either catch the signal or
+//. tell the operating system to ignore it.  Second, if you are writing a
+//. Win32 application for Windows NT or Windows95, you should be aware of
+//. the fact that the constructor calls the Winsock function
+//. {\tt WSAStartup()} to initialize the Winsock DLL.  (The destructor
+//. calls {\tt WSACleanup()}.)  Because it is possible for {\tt WSAStartup()}
+//. to fail, it is also possible that the constructor may fail.  To verify
+//. that the constructor has succeeded, call the member function
+//. {\tt LastError()} and check that it returns zero.
 //.
 //. To open a connection to a server, call {\tt Open()} with the server name
 //. and TCP port number as arguments.  {\tt Open()} is declared virtual;
@@ -87,14 +89,12 @@ public:
 //. new value as an argument.
 //.
 //. Whenever {\tt DwProtocolClient} cannot complete an operation, it is because
-//. an error has occurred.  All member functions indicate that an error has
+//. an error has occurred.  Most member functions indicate that an error has
 //. occurred via their return values.  For most member functions, a return
 //. value of -1 indicates an error.  To get the specific error that has
 //. occurred, call {\tt LastError()}, which returns either the system error
-//. code or a MIME++ defined error code.  To get an English language text
-//. string that describes the error, call {\tt LastErrorStr()}.
-//. [Note: A future version will provide a way for developers to substitute
-//. translations of these strings into other languages.]
+//. code or a MIME++ defined error code.  To get a text string that describes
+//. the error, call {\tt LastErrorStr()}.
 //.
 //. Some errors are also considered "failures."  A failure occurs when an
 //. operation cannot be completed because of conditions external to the
@@ -104,12 +104,16 @@ public:
 //. you should call {\tt LastError()} to determine the error, but you should
 //. also call {\tt LastFailure()} to determine if a failure occurred.  In
 //. interactive applications, failures should always be reported to the
-//. application's user. Most often, errors that are not failures should
-//. not be reported to the application's user.  To get an English language
-//. text string that describes a failure, call {\tt LastFailureStr()}.
-//. [Note: A future version will provide a way for developers to substitute
-//. translations of these strings into other languages.]
+//. application's user.  To get a text string that describes a failure,
+//. call {\tt LastFailureStr()}.
+//.
+//. It is possible to translate the error and failure message strings to a
+//. language other than English.  To do this, you may override the virtual
+//. function {\tt HandleError()}.
 //=============================================================================
+
+//+ Noentry mFailureCode mFailureStr mErrorCode mErrorStr mLastCommand
+//+ Noentry mIsDllOpen mIsOpen mSocket mPort mServerName mReceiveTimeout
 
 
 class DwProtocolClient {
@@ -142,46 +146,53 @@ protected:
 
     DwProtocolClient();
     //. Initializes the {\tt DwProtocolClient} object.
-    //.
-    //. In a WIN32 environment, this constructor also calls {\tt WSAStartup()}
-    //. to open the Winsock DLL. To verify that the DLL was opened okay, call
-    //. the member function {\tt LastError()} and verify that it returns zero.
+    //. In a Win32 environment, this constructor calls {\tt WSAStartup()}
+    //. to initialize the Winsock DLL. To verify that the DLL was initialized
+    //. successfully, call the member function {\tt LastError()} and verify
+    //. that it returns zero.
 
 public:
 
     virtual ~DwProtocolClient();
     //. Frees the resources used by this object.
-    //.
-    //. In a WIN32 environment, the destructor calls {\tt WSACleanup()}.
+    //. In a Win32 environment, the destructor calls {\tt WSACleanup()}.
 
     virtual int Open(const char* aServer, DwUint16 aPort);
-    //. Opens a connection to the server {\tt aServer} at TCP port {\tt aPort}.
+    //. Opens a TCP connection to the server {\tt aServer} at port {\tt aPort}.
     //. {\tt aServer} may be either a host name, such as "smtp.acme.com" or an
-    //. IP number in dotted decimal format, such as "129.32.20.16".  If the
-    //. connection attempt succeeds, {\tt Open()} returns 0; othewise, it returns
-    //. -1.  To determine what error occurred when the connection attempt fails,
-    //. call the member function {\tt LastError()}. To determine if a failure
-    //. also occurred, call the member function {\tt LastFailure()}.
+    //. IP number in dotted decimal format, such as "147.81.64.59".  If the
+    //. connection attempt succeeds, {\tt Open()} returns 0; othewise, it
+    //. returns -1.  To determine what error occurred when the connection
+    //. attempt fails, call the member function {\tt LastError()}. To
+    //. determine if a failure also occurred, call the member function
+    //. {\tt LastFailure()}.
 
     DwBool IsOpen() const;
-    //. Returns true value if the connection to the server is open.
+    //. Returns true value if a connection to the server is open.
     //. {\tt IsOpen()} will return a true value if a call to {\tt Open()} was
     //. successful;  it will not detect failure in the network or a close
     //. operation by the remote host.
 
     int Close();
-    //. Closes the connection to the server.
+    //. Closes the connection to the server.  Returns 0 if successful, or
+    //. returns -1 if unsuccessful.
 
     int SetReceiveTimeout(int aSecs);
     //. Changes the default timeout for receive operations on the socket to
-    //. {\tt aSecs} seconds.  The default value is 90 seconds.
+    //. {\tt aSecs} seconds.
+    //. The default value is 90 seconds.
+
+    int LastCommand() const;
+    //. Returns an enumerated value indicating the last command sent to
+    //. the server. Enumerated values are defined in subclasses of
+    //. {\tt DwProtocolClient}.
 
     int LastFailure() const;
     //. Returns an enumerated value indicating what failure last occurred.
 
     const char* LastFailureStr() const;
-    //. Returns a failure message string associated with the failure code returned
-    //. by {\tt LastFailure()}.
+    //. Returns a failure message string associated with the failure code
+    //. returned by {\tt LastFailure()}.
 
     int LastError() const;
     //. Returns an error code for the last error that occurred.  Normally, the
@@ -214,29 +225,35 @@ protected:
     DwUint16    mPort;
     char*       mServerName;
     int         mReceiveTimeout;
+    int         mLastCommand;
     int         mFailureCode;
     const char* mFailureStr;
     int         mErrorCode;
     const char* mErrorStr;
 
-    void HandleError(int aCode, int aFunc);
-    //. Determines if an error code returned by a system call should be considered
-	//. a failure code.  If so, the failure code is set.  {\tt aCode} is the
-    //. system error code.  {\tt aFunc} is an enumerated value that indicates
-    //. the system call that returned the error code.
+    virtual void HandleError(int aErrorCode, int aSystemCall);
+    //. Interprets error codes.  {\tt aErrorCode} is an error code,
+    //. which may be a system error code, or an error code defined by
+    //. {\tt DwProtocolClient}.  {\tt aSystemCall} is an enumerated value
+    //. defined by {\tt DwProtocolClient} that indicates the last system
+    //. call made, which should be the system call that set the error code.
+    //. {\tt HandleError()} sets values for {\tt mErrorStr},
+	//. {\tt mFailureCode}, and {\tt mFailureStr}.
 
     int PSend(const char* aBuf, int aBufLen);
     //. Sends {\tt aBufLen} characters from the buffer {\tt aBuf}.  Returns
     //. the number of characters sent.  If the number of characters sent
     //. is less than the number of characters specified in {\tt aBufLen},
     //. the caller should call {\tt LastError()} to determine what, if any,
-    //. error occurred.
+    //. error occurred.  To determine if a failure also occurred, call the
+    //. member function {\tt LastFailure()}.
 
     int PReceive(char* aBuf, int aBufSize);
     //. Receives up to {\tt aBufSize} characters into the buffer {\tt aBuf}.
     //. Returns the number of characters received.  If zero is returned, the
     //. caller should call the member function {\tt LastError()} to determine
-    //. what, if any, error occurred.
+    //. what, if any, error occurred. To determine if a failure also occurred,
+    //. call the member function {\tt LastFailure()}.
 
 };
 

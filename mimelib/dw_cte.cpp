@@ -123,7 +123,7 @@ int DwEncodeBase64(const DwString& aSrcStr, DwString& aDestStr)
     size_t srcLen = aSrcStr.length();
     const char* srcBuf = aSrcStr.data();
     size_t destSize = (srcLen+2)/3*4;
-    destSize += destSize/72 + 2;
+    destSize += strlen(DW_EOL)*destSize/72 + 2;
     destSize += 64;  // a little extra room
 
     // Allocate destination buffer
@@ -402,12 +402,13 @@ static int encode_base64(const char* aIn, size_t aInLen, char* aOut,
     size_t inLen = aInLen;
     char* out = aOut;
     size_t outSize = (inLen+2)/3*4;     /* 3:4 conversion ratio */
-    outSize += outSize/MAXLINE + 2;  /* Space for newlines and NUL */
+    outSize += strlen(DW_EOL)*outSize/MAXLINE + 2;  /* Space for newlines and NUL */
     if (aOutSize < outSize)
         return -1;
     size_t inPos  = 0;
     size_t outPos = 0;
     int c1, c2, c3;
+    int lineLen = 0;
     /* Get three characters at a time and encode them. */
     for (size_t i=0; i < inLen/3; ++i) {
         c1 = aIn[inPos++] & 0xFF;
@@ -417,14 +418,25 @@ static int encode_base64(const char* aIn, size_t aInLen, char* aOut,
         out[outPos++] = base64tab[((c1 & 0x03) << 4) | ((c2 & 0xF0) >> 4)];
         out[outPos++] = base64tab[((c2 & 0x0F) << 2) | ((c3 & 0xC0) >> 6)];
         out[outPos++] = base64tab[c3 & 0x3F];
-        if ((outPos+1) % (MAXLINE+1) == 0) {
-            out[outPos++] = '\n';
+		lineLen += 4;
+        if (lineLen >= MAXLINE-3) {
+			char* cp = DW_EOL;
+            out[outPos++] = *cp++;
+			if (*cp) {
+				out[outPos++] = *cp;
+			}
+			lineLen = 0;
         }
     }
     /* Encode the remaining one or two characters. */
+	char* cp;
     switch (inLen % 3) {
     case 0:
-        out[outPos++] = '\n';
+		cp = DW_EOL;
+        out[outPos++] = *cp++;
+		if (*cp) {
+			out[outPos++] = *cp;
+		}
         break;
     case 1:
         c1 = aIn[inPos] & 0xFF;
@@ -432,7 +444,11 @@ static int encode_base64(const char* aIn, size_t aInLen, char* aOut,
         out[outPos++] = base64tab[((c1 & 0x03) << 4)];
         out[outPos++] = '=';
         out[outPos++] = '=';
-        out[outPos++] = '\n';
+		cp = DW_EOL;
+        out[outPos++] = *cp++;
+		if (*cp) {
+			out[outPos++] = *cp;
+		}
         break;
     case 2:
         c1 = aIn[inPos++] & 0xFF;
@@ -441,7 +457,11 @@ static int encode_base64(const char* aIn, size_t aInLen, char* aOut,
         out[outPos++] = base64tab[((c1 & 0x03) << 4) | ((c2 & 0xF0) >> 4)];
         out[outPos++] = base64tab[((c2 & 0x0F) << 2)];
         out[outPos++] = '=';
-        out[outPos++] = '\n';
+		cp = DW_EOL;
+        out[outPos++] = *cp++;
+		if (*cp) {
+			out[outPos++] = *cp;
+		}
         break;
     }
     out[outPos] = 0;
@@ -574,8 +594,9 @@ static int encode_qp(const char* aIn, size_t aInLen, char* aOut,
     size_t inPos, outPos, lineLen;
     int ch;
 
-    if (!aIn || !aOut || !aOutLen)
+    if (!aIn || !aOut || !aOutLen) {
         return -1;
+    }
     inPos  = 0;
     outPos = 0;
     lineLen = 0;
@@ -605,23 +626,48 @@ static int encode_qp(const char* aIn, size_t aInLen, char* aOut,
         /* Space */
         else if (ch == ' ') {
             /* Space at end of line or end of input must be encoded */
+#if defined(DW_EOL_LF)
             if (inPos >= aInLen           /* End of input? */
                 || aIn[inPos] == '\n') {  /* End of line? */
+
                 aOut[outPos++] = '=';
                 aOut[outPos++] = '2';
                 aOut[outPos++] = '0';
                 lineLen += 3;
             }
+#elif defined(DW_EOL_CRLF)
+			if (inPos >= aInLen           /* End of input? */
+				|| (inPos < aInLen-1      /* End of line? */
+				    && aIn[inPos  ] == '\r' 
+					&& aIn[inPos+1] == '\n') ) {
+
+                aOut[outPos++] = '=';
+                aOut[outPos++] = '2';
+                aOut[outPos++] = '0';
+                lineLen += 3;
+			}
+#else
+# error Must define DW_EOL_LF or DW_EOL_CRLF
+#endif
             else {
                 aOut[outPos++] = ' ';
                 ++lineLen;
             }
         }
         /* Hard line break */
+#if defined(DW_EOL_LF)
         else if (ch == '\n') {
             aOut[outPos++] = '\n';
             lineLen = 0;
         }
+#elif defined(DW_EOL_CRLF)
+        else if (inPos < aInLen && ch == '\r' && aIn[inPos] == '\n') {
+            ++inPos;
+            aOut[outPos++] = '\r';
+            aOut[outPos++] = '\n';
+            lineLen = 0;
+        }
+#endif
         /* Non-printable char */
         else if (ch & 0x80        /* 8-bit char */
                  || !(ch & 0xE0)  /* control char */
@@ -633,11 +679,22 @@ static int encode_qp(const char* aIn, size_t aInLen, char* aOut,
             lineLen += 3;
         }
         /* Soft line break */
+#if defined(DW_EOL_LF)
         if (lineLen >= MAXLINE-3 && inPos < aInLen && aIn[inPos] != '\n') {
             aOut[outPos++] = '=';
             aOut[outPos++] = '\n';
             lineLen = 0;
         }
+#elif defined(DW_EOL_CRLF)
+        if (lineLen >= MAXLINE-3 && !(inPos < aInLen-1 && 
+			aIn[inPos] == '\r' && aIn[inPos+1] == '\n')) {
+
+            aOut[outPos++] = '=';
+            aOut[outPos++] = '\r';
+            aOut[outPos++] = '\n';
+            lineLen = 0;
+        }
+#endif
     }
     aOut[outPos] = 0;
     *aOutLen = outPos;
@@ -649,7 +706,7 @@ static int decode_qp(const char* aIn, size_t aInLen, char* aOut,
     size_t /* aOutSize */, size_t* aOutLen)
 {
     size_t i, inPos, outPos, lineLen, nextLineStart, numChars, charsEnd;
-    int foundNewline, softLineBrk, isError;
+    int isEolFound, softLineBrk, isError;
     int ch, c1, c2;
 
     if (!aIn || !aOut || !aOutLen)
@@ -671,20 +728,20 @@ static int decode_qp(const char* aIn, size_t aInLen, char* aOut,
     while (inPos < aInLen) {
         /* Get line */
         lineLen = 0;
-        foundNewline = 0;
-        while (!foundNewline && lineLen < aInLen - inPos) {
-            ch = aIn[inPos+lineLen] & 0x7F;
+        isEolFound = 0;
+        while (!isEolFound && lineLen < aInLen - inPos) {
+            ch = aIn[inPos+lineLen];
             ++lineLen;
             if (ch == '\n') {
-                foundNewline = 1;
+                isEolFound = 1;
             }
         }
         nextLineStart = inPos + lineLen;
-        numChars = (foundNewline) ? lineLen - 1 : lineLen;
+        numChars = lineLen;
         /* Remove white space from end of line */
         while (numChars > 0) {
             ch = aIn[inPos+numChars-1] & 0x7F;
-            if (ch != ' ' && ch != '\t') {
+            if (ch != '\n' && ch != '\r' && ch != ' ' && ch != '\t') {
                 break;
             }
             --numChars;
@@ -698,7 +755,7 @@ static int decode_qp(const char* aIn, size_t aInLen, char* aOut,
                 /* Normal printable char */
                 aOut[outPos++] = ch;
             }
-            else {
+            else /* if (ch == '=') */ {
                 /* Soft line break */
                 if (inPos >= charsEnd) {
                     softLineBrk = 1;
@@ -706,7 +763,7 @@ static int decode_qp(const char* aIn, size_t aInLen, char* aOut,
                 }
                 /* Non-printable char */
                 else if (inPos < charsEnd-1) {
-                    c1 = aIn[inPos++];
+                    c1 = aIn[inPos++] & 0x7F;
                     if ('0' <= c1 && c1 <= '9')
                         c1 -= '0';
                     else if ('A' <= c1 && c1 <= 'F')
@@ -715,7 +772,7 @@ static int decode_qp(const char* aIn, size_t aInLen, char* aOut,
                         c1 = c1 - 'a' + 10;
                     else
                         isError = 1;
-                    c2 = aIn[inPos++];
+                    c2 = aIn[inPos++] & 0x7F;
                     if ('0' <= c2 && c2 <= '9')
                         c2 -= '0';
                     else if ('A' <= c2 && c2 <= 'F')
@@ -726,13 +783,17 @@ static int decode_qp(const char* aIn, size_t aInLen, char* aOut,
                         isError = 1;
                     aOut[outPos++] = (c1 << 4) + c2;
                 }
-                else {
+                else /* if (inPos == charsEnd-1) */ {
                     isError = 1;
                 }
             }
         }
-        if (foundNewline && !softLineBrk) {
-            aOut[outPos++] = '\n';
+        if (isEolFound && !softLineBrk) {
+            const char* cp = DW_EOL;
+            aOut[outPos++] = *cp++;
+            if (*cp) {
+                aOut[outPos++] = *cp;
+            }
         }
         inPos = nextLineStart;
     }
@@ -777,21 +838,43 @@ static size_t calc_qp_buff_size(const char* aIn, size_t aInLen)
         /* Space */
         else if (ch == ' ') {
             /* Space at end of line or end of input must be encoded */
+#if defined(DW_EOL_LF)
             if (inPos >= aInLen           /* End of input? */
                 || aIn[inPos] == '\n') {  /* End of line? */
+
                 outLen += 3;
                 lineLen += 3;
             }
+#elif defined(DW_EOL_CRLF)
+			if (inPos >= aInLen           /* End of input? */
+				|| (inPos < aInLen-1      /* End of line? */
+				    && aIn[inPos  ] == '\r' 
+					&& aIn[inPos+1] == '\n') ) {
+
+                outLen += 3;
+                lineLen += 3;
+			}
+#else
+# error Must define DW_EOL_LF or DW_EOL_CRLF
+#endif
             else {
                 ++outLen;
                 ++lineLen;
             }
         }
         /* Hard line break */
+#if defined(DW_EOL_LF)
         else if (ch == '\n') {
             ++outLen;
             lineLen = 0;
         }
+#elif defined(DW_EOL_CRLF)
+        else if (inPos < aInLen && ch == '\r' && aIn[inPos] == '\n') {
+            ++inPos;
+            outLen += 2;
+            lineLen = 0;
+        }
+#endif
         /* Non-printable char */
         else if (ch & 0x80        /* 8-bit char */
                  || !(ch & 0xE0)  /* control char */
@@ -801,10 +884,19 @@ static size_t calc_qp_buff_size(const char* aIn, size_t aInLen)
             lineLen += 3;
         }
         /* Soft line break */
+#if defined(DW_EOL_LF)
         if (lineLen >= MAXLINE-3 && inPos < aInLen && aIn[inPos] != '\n') {
             outLen += 2;
             lineLen = 0;
         }
+#elif defined(DW_EOL_CRLF)
+        if (lineLen >= MAXLINE-3 && !(inPos < aInLen-1 && 
+			aIn[inPos] == '\r' && aIn[inPos+1] == '\n')) {
+
+            outLen += 3;
+            lineLen = 0;
+        }
+#endif
     }
     return outLen;
 }

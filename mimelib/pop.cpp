@@ -47,7 +47,7 @@ DwPopClient::DwPopClient()
     mRecvBuffer = new char[RECV_BUFFER_SIZE];
     mNumRecvBufferChars = 0;
     mRecvBufferPos = 0;
-    mReplyCode = 0;
+    mStatusCode = 0;
     mObserver = 0;
 }
 
@@ -67,14 +67,14 @@ DwPopClient::~DwPopClient()
 
 int DwPopClient::Open(const char* aServer, DwUint16 aPort)
 {
-    mReplyCode = 0;
+    mStatusCode = 0;
     mSingleLineResponse.clear();
     mMultiLineResponse.clear();
     int err = DwProtocolClient::Open(aServer, aPort);
     if (! err) {
         PGetSingleLineResponse();
     }
-    return mReplyCode;
+    return mStatusCode;
 }
 
 
@@ -86,9 +86,9 @@ DwObserver* DwPopClient::SetObserver(DwObserver* aObserver)
 }
 
 
-int DwPopClient::ReplyCode() const
+int DwPopClient::StatusCode() const
 {
-    return mReplyCode;
+    return mStatusCode;
 }
 
 
@@ -106,256 +106,274 @@ const DwString& DwPopClient::MultiLineResponse() const
 
 int DwPopClient::User(const char* aName)
 {
-    mReplyCode = 0;
+    mStatusCode = 0;
     mSingleLineResponse.clear();
     mMultiLineResponse.clear();
+    mLastCommand = kCmdUser;
     strcpy(mSendBuffer, "USER ");
-    strcat(mSendBuffer, aName);
+    strncat(mSendBuffer, aName, SEND_BUFFER_SIZE-32);
     strcat(mSendBuffer, "\r\n");
-    DBG_POP_STMT(cout << "C: " << mSendBuffer << endl;)
+    DBG_POP_STMT(cout << "C: " << mSendBuffer << flush;)
     int bufferLen = strlen(mSendBuffer);
     int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
     }
-    return mReplyCode;
+    return mStatusCode;
 }
 
 
 int DwPopClient::Pass(const char* aPasswd)
 {
-    mReplyCode = 0;
+    mStatusCode = 0;
     mSingleLineResponse.clear();
     mMultiLineResponse.clear();
+    mLastCommand = kCmdPass;
     strcpy(mSendBuffer, "PASS ");
-    strcat(mSendBuffer, aPasswd);
+    strncat(mSendBuffer, aPasswd, SEND_BUFFER_SIZE-32);
     strcat(mSendBuffer, "\r\n");
-    DBG_POP_STMT(cout << "C: " << mSendBuffer << endl;)
+    DBG_POP_STMT(cout << "C: " << mSendBuffer << flush;)
     int bufferLen = strlen(mSendBuffer);
     int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
     }
-    return mReplyCode;
+    return mStatusCode;
 }
 
 
 int DwPopClient::Quit()
 {
-    mReplyCode = 0;
+    mStatusCode = 0;
     mSingleLineResponse.clear();
     mMultiLineResponse.clear();
+    mLastCommand = kCmdQuit;
     strcpy(mSendBuffer, "QUIT\r\n");
-    DBG_POP_STMT(cout << "C: " << mSendBuffer << endl;)
+    DBG_POP_STMT(cout << "C: " << mSendBuffer << flush;)
     int bufferLen = strlen(mSendBuffer);
     int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
     }
-    return mReplyCode;
+    return mStatusCode;
 }
 
 
 int DwPopClient::Stat()
 {
-    mReplyCode = 0;
+    mStatusCode = 0;
     mSingleLineResponse.clear();
     mMultiLineResponse.clear();
+    mLastCommand = kCmdStat;
     strcpy(mSendBuffer, "STAT\r\n");
-    DBG_POP_STMT(cout << "C: " << mSendBuffer << endl;)
+    DBG_POP_STMT(cout << "C: " << mSendBuffer << flush;)
     int bufferLen = strlen(mSendBuffer);
     int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
     }
-    return mReplyCode;
+    return mStatusCode;
 }
 
 
 int DwPopClient::List()
 {
-    mReplyCode = 0;
+    mStatusCode = 0;
     mSingleLineResponse.clear();
     mMultiLineResponse.clear();
+    mLastCommand = kCmdList;
     strcpy(mSendBuffer, "LIST\r\n");
-    DBG_POP_STMT(cout << "C: " << mSendBuffer << endl;)
+    DBG_POP_STMT(cout << "C: " << mSendBuffer << flush;)
     int bufferLen = strlen(mSendBuffer);
     int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
-        if (mReplyCode == '+') {
+        if (mStatusCode == '+') {
             PGetMultiLineResponse();
         }
     }
-    return mReplyCode;
+    return mStatusCode;
 }
 
 
 int DwPopClient::List(int aMsg)
 {
-    mReplyCode = 0;
+    mStatusCode = 0;
     mSingleLineResponse.clear();
     mMultiLineResponse.clear();
+    mLastCommand = kCmdList;
     sprintf(mSendBuffer, "LIST %d\r\n", aMsg);
-    DBG_POP_STMT(cout << "C: " << mSendBuffer << endl;)
+    DBG_POP_STMT(cout << "C: " << mSendBuffer << flush;)
     int bufferLen = strlen(mSendBuffer);
     int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
     }
-    return mReplyCode;
+    return mStatusCode;
 }
 
 
 int DwPopClient::Retr(int aMsg)
 {
-    mReplyCode = 0;
+    mStatusCode = 0;
     mSingleLineResponse.clear();
     mMultiLineResponse.clear();
+    mLastCommand = kCmdRetr;
     sprintf(mSendBuffer, "RETR %d\r\n", aMsg);
-    DBG_POP_STMT(cout << "C: " << mSendBuffer << endl;)
+    DBG_POP_STMT(cout << "C: " << mSendBuffer << flush;)
     int bufferLen = strlen(mSendBuffer);
     int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
-        if (mReplyCode == '+') {
+        if (mStatusCode == '+') {
             PGetMultiLineResponse();
         }
     }
-    return mReplyCode;
+    return mStatusCode;
 }
 
 
 int DwPopClient::Dele(int aMsg)
 {
-    mReplyCode = 0;
+    mStatusCode = 0;
     mSingleLineResponse.clear();
     mMultiLineResponse.clear();
+    mLastCommand = kCmdDele;
     sprintf(mSendBuffer, "DELE %d\r\n", aMsg);
-    DBG_POP_STMT(cout << "C: " << mSendBuffer << endl;)
+    DBG_POP_STMT(cout << "C: " << mSendBuffer << flush;)
     int bufferLen = strlen(mSendBuffer);
     int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
     }
-    return mReplyCode;
+    return mStatusCode;
 }
 
 
 int DwPopClient::Noop()
 {
-    mReplyCode = 0;
+    mStatusCode = 0;
     mSingleLineResponse.clear();
     mMultiLineResponse.clear();
+    mLastCommand = kCmdNoop;
     strcpy(mSendBuffer, "NOOP\r\n");
-    DBG_POP_STMT(cout << "C: " << mSendBuffer << endl;)
+    DBG_POP_STMT(cout << "C: " << mSendBuffer << flush;)
     int bufferLen = strlen(mSendBuffer);
     int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
     }
-    return mReplyCode;
+    return mStatusCode;
 }
 
 
 int DwPopClient::Rset()
 {
-    mReplyCode = 0;
+    mStatusCode = 0;
     mSingleLineResponse.clear();
     mMultiLineResponse.clear();
+    mLastCommand = kCmdRset;
     strcpy(mSendBuffer, "RSET\r\n");
-    DBG_POP_STMT(cout << "C: " << mSendBuffer << endl;)
+    DBG_POP_STMT(cout << "C: " << mSendBuffer << flush;)
     int bufferLen = strlen(mSendBuffer);
     int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
     }
-    return mReplyCode;
+    return mStatusCode;
 }
 
 
 int DwPopClient::Apop(const char* aName, const char* aDigest)
 {
-    mReplyCode = 0;
+    mStatusCode = 0;
     mSingleLineResponse.clear();
     mMultiLineResponse.clear();
-    sprintf(mSendBuffer, "APOP %s %s\r\n", aName, aDigest);
-    DBG_POP_STMT(cout << "C: " << mSendBuffer << endl;)
+    mLastCommand = kCmdApop;
+    strcpy(mSendBuffer, "APOP ");
+    strncat(mSendBuffer, aName, 256);
+    strcat(mSendBuffer, " ");
+    strncat(mSendBuffer, aDigest, 256);
+    strcat(mSendBuffer, "\r\n");
+    DBG_POP_STMT(cout << "C: " << mSendBuffer << flush;)
     int bufferLen = strlen(mSendBuffer);
     int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
     }
-    return mReplyCode;
+    return mStatusCode;
 }
 
 
 int DwPopClient::Top(int aMsg, int aNumLines)
 {
-    mReplyCode = 0;
+    mStatusCode = 0;
     mSingleLineResponse.clear();
     mMultiLineResponse.clear();
+    mLastCommand = kCmdTop;
     sprintf(mSendBuffer, "TOP %d %d\r\n", aMsg, aNumLines);
-    DBG_POP_STMT(cout << "C: " << mSendBuffer << endl;)
+    DBG_POP_STMT(cout << "C: " << mSendBuffer << flush;)
     int bufferLen = strlen(mSendBuffer);
     int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
-        if (mReplyCode == '+') {
+        if (mStatusCode == '+') {
             PGetMultiLineResponse();
         }
     }
-    return mReplyCode;
+    return mStatusCode;
 }
 
 
 int DwPopClient::Uidl()
 {
-    mReplyCode = 0;
+    mStatusCode = 0;
     mSingleLineResponse.clear();
     mMultiLineResponse.clear();
+    mLastCommand = kCmdUidl;
     strcpy(mSendBuffer, "UIDL\r\n");
-    DBG_POP_STMT(cout << "C: " << mSendBuffer << endl;)
+    DBG_POP_STMT(cout << "C: " << mSendBuffer << flush;)
     int bufferLen = strlen(mSendBuffer);
     int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
-        if (mReplyCode == '+') {
+        if (mStatusCode == '+') {
             PGetMultiLineResponse();
         }
     }
-    return mReplyCode;
+    return mStatusCode;
 }
 
 
 int DwPopClient::Uidl(int aMsg)
 {
-    mReplyCode = 0;
+    mStatusCode = 0;
     mSingleLineResponse.clear();
     mMultiLineResponse.clear();
+    mLastCommand = kCmdUidl;
     sprintf(mSendBuffer, "UIDL %d\r\n", aMsg);
-    DBG_POP_STMT(cout << "C: " << mSendBuffer << endl);
+    DBG_POP_STMT(cout << "C: " << mSendBuffer << flush);
     int bufferLen = strlen(mSendBuffer);
     int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
         PGetSingleLineResponse();
-        if (mReplyCode == '+') {
+        if (mStatusCode == '+') {
             PGetMultiLineResponse();
         }
     }
-    return mReplyCode;
+    return mStatusCode;
 }
 
 
 void DwPopClient::PGetSingleLineResponse()
 {
-    mReplyCode = 0;
+    mStatusCode = 0;
     mSingleLineResponse.clear();
     char* ptr;
     int len;
     int err = PGetLine(&ptr, &len);
     if (! err) {
-        mReplyCode = ptr[0];
+        mStatusCode = ptr[0];
         mSingleLineResponse.assign(ptr, len);
         DBG_POP_STMT(char buffer[256];)
         DBG_POP_STMT(strncpy(buffer, ptr, len);)
@@ -379,7 +397,7 @@ void DwPopClient::PGetMultiLineResponse()
         // Check for an error
 
         if (err) {
-            mReplyCode = 0;
+            mStatusCode = 0;
             return;
         }
 
@@ -418,8 +436,8 @@ int DwPopClient::PGetLine(char** aPtr, int* aLen)
     int pos = mRecvBufferPos;
     int lastChar = -1;
 
-    // Keep trying until we get a complete line, detect an error, or determine that
-    // the connection has been closed
+    // Keep trying until we get a complete line, detect an error, or
+    // determine that the connection has been closed
 
     int isEndOfLineFound = 0;
     while (1) {
@@ -443,13 +461,28 @@ int DwPopClient::PGetLine(char** aPtr, int* aLen)
             return 0;
         }
 
-        // Replenish the buffer
+        // If the buffer has no room, return without an error; otherwise,
+        // replenish the buffer.
 
-        memmove(mRecvBuffer, &mRecvBuffer[startPos], mNumRecvBufferChars-startPos);
+        // Implementation note: The standard does not allow long lines,
+        // however, that does not mean that they won't occur.  The way
+        // this function deals with long lines is to return a full buffer's
+        // worth of characters as a line.  The next call to this function
+        // will start where this call left off.  In essence, we have
+        // *forced* a line break, but without putting in CR LF characters.
+
+        if (startPos == 0 && pos == RECV_BUFFER_SIZE) {
+            *aPtr = mRecvBuffer;
+            *aLen = RECV_BUFFER_SIZE;
+            mRecvBufferPos = pos;
+            return 0;
+        }
+        memmove(mRecvBuffer, &mRecvBuffer[startPos],
+            mNumRecvBufferChars-startPos);
         mNumRecvBufferChars -= startPos;
         mRecvBufferPos = mNumRecvBufferChars;
-        int bufLen = RECV_BUFFER_SIZE - mRecvBufferPos;
-        int n = PReceive(&mRecvBuffer[mRecvBufferPos], bufLen);
+        int bufFreeSpace = RECV_BUFFER_SIZE - mRecvBufferPos;
+        int n = PReceive(&mRecvBuffer[mRecvBufferPos], bufFreeSpace);
         if (n == 0) {
             // The connection has been closed or an error occurred
             return -1;

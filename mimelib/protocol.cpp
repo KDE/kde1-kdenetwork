@@ -29,13 +29,12 @@
 // 2. The recv() and send() system calls are *not* restarted if they are
 //    interrupted by a signal. This behavior is necessary if we want to
 //    be able to timeout a blocked call.
-//
-// 3. Should we set the SO_SNDTIMEO or SO_RCVTIMEO socket options?
 
 #define DW_IMPLEMENTATION
 
 #include <mimelib/config.h>
 #include <mimelib/protocol.h>
+#include <assert.h>
 #include <stdio.h>
 #include <string.h>
 #include <iostream.h>
@@ -43,6 +42,7 @@
 #include <netdb.h>
 #include <arpa/inet.h>
 #include <errno.h>
+#include <sys/time.h>
 
 #ifndef INADDR_NONE
 #define INADDR_NONE (-1)
@@ -62,6 +62,7 @@ DwProtocolClient::DwProtocolClient()
     mPort           = 0;
     mServerName     = 0;
     mReceiveTimeout = 90;
+    mLastCommand    = 0;
     mFailureCode    = 0;
     mFailureStr     = 0;
     mErrorCode      = 0;
@@ -76,6 +77,7 @@ DwProtocolClient::~DwProtocolClient()
     }
     if (mServerName) {
         delete [] mServerName;
+        mServerName = 0;
     }
 }
 
@@ -103,33 +105,8 @@ int DwProtocolClient::Open(const char* aServer, DwUint16 aPort)
     strcpy(mServerName, aServer);
     mPort = aPort;
 
-    // Complete the server name structure.
-    // First assume address is in dotted-decimal notation.  If that fails, do
-    // a hostname lookup.
-
-    struct sockaddr_in serverAddr;
-    memset(&serverAddr, 0, sizeof(struct sockaddr_in));
-    serverAddr.sin_family = AF_INET;
-    serverAddr.sin_port = htons(mPort);
-    serverAddr.sin_addr.s_addr = inet_addr(mServerName);
-    if (serverAddr.sin_addr.s_addr != INADDR_NONE) {
-        DBG_PROTO_STMT(cout << "Opening connection to " << mServerName << endl;)
-    }
-    else {
-        struct hostent* hostentp = gethostbyname(mServerName);
-        if (hostentp == NULL) {
-            // error!
-            int err = h_errno;
-            HandleError(err, kgethostbyname);
-            return -1;
-        }
-        struct in_addr* in_addrp = (struct in_addr*)*hostentp->h_addr_list;
-        memcpy(&serverAddr.sin_addr.s_addr, in_addrp, sizeof(struct in_addr));
-        DBG_PROTO_STMT(cout << "Opening connection to " << mServerName;)
-        DBG_PROTO_STMT(cout << " (" << inet_ntoa(*in_addrp) << ')' << endl;)
-    }
-
     // Open the socket
+
     mSocket = socket(PF_INET, SOCK_STREAM, 0);
     if (mSocket == -1) {
         // error!
@@ -138,21 +115,54 @@ int DwProtocolClient::Open(const char* aServer, DwUint16 aPort)
         return -1;
     }
 
-    // Set socket option to timeout on receives
-    int millisecs = mReceiveTimeout * 1000;
-    int err = setsockopt(mSocket, SOL_SOCKET, SO_RCVTIMEO,
-        (const char*)&millisecs, sizeof(millisecs));
-    if (err == -1) {
-        // error!
-        int err = errno;
-        HandleError(err, ksetsockopt);
-        return -1;
+    // If the server is specified by an IP number in dotted decimal form,
+    // then try to connect to that IP number.
+
+    int err = -1;
+    struct sockaddr_in serverAddr;
+    memset(&serverAddr, 0, sizeof(struct sockaddr_in));
+    serverAddr.sin_family = AF_INET;
+    serverAddr.sin_port = htons(mPort);
+    serverAddr.sin_addr.s_addr = inet_addr(mServerName);
+    if (serverAddr.sin_addr.s_addr != INADDR_NONE) {
+        DBG_PROTO_STMT(cout << "Trying connection to " << mServerName << endl;)
+        err = connect(mSocket, (struct sockaddr*)&serverAddr,
+            sizeof(struct sockaddr_in));
     }
 
-    // Establish a connection to the server
-    err = connect(mSocket, (struct sockaddr*)&serverAddr,
-        sizeof(struct sockaddr_in));
+    // Otherwise, do a host name lookup.
+
+    else {
+        struct hostent* hostentp = gethostbyname(mServerName);
+        if (hostentp == NULL) {
+            close(mSocket);
+            mSocket = -1;
+            // error!
+            int err = h_errno;
+            HandleError(err, kgethostbyname);
+            return -1;
+        }
+
+        // Connect to the server.  Try each IP number until one succeeds.
+
+        char** addr_list = hostentp->h_addr_list;
+        while (*addr_list) {
+            struct in_addr* in_addrp = (struct in_addr*)*addr_list;
+            memcpy(&serverAddr.sin_addr.s_addr, in_addrp, sizeof(struct in_addr));
+            DBG_PROTO_STMT(cout << "Trying connection to " << mServerName;)
+            DBG_PROTO_STMT(cout << " (" << inet_ntoa(*in_addrp) << ')' << endl;)
+            err = connect(mSocket, (struct sockaddr*)&serverAddr,
+                sizeof(struct sockaddr_in));
+            if (err != -1) {
+                break;
+            }
+            ++addr_list;
+        }
+    }
+
     if (err == -1) {
+        close(mSocket);
+        mSocket = -1;
         // error!
         mErrorCode = errno;
         HandleError(err, kconnect);
@@ -194,23 +204,14 @@ int DwProtocolClient::Close()
 
 int DwProtocolClient::SetReceiveTimeout(int aSecs)
 {
-    // Receive timeout must not be so large that we get an integer overflow when
-    // we multiply by 1000.
-    mReceiveTimeout = (int)(0x80000000u/1000);
-    mReceiveTimeout = (aSecs < mReceiveTimeout) ? aSecs : mReceiveTimeout;
-    if (mIsOpen) {
-        // Set socket option to timeout on receives
-        int millisecs = mReceiveTimeout * 1000;
-        int err = setsockopt(mSocket, SOL_SOCKET, SO_RCVTIMEO,
-            (const char*)&millisecs, sizeof(millisecs));
-        if (err == -1) {
-            // error!
-            int err = errno;
-            HandleError(err, ksetsockopt);
-            return -1;
-        }
-    }
+    mReceiveTimeout = aSecs;
     return 0;
+}
+
+
+int DwProtocolClient::LastCommand() const
+{
+    return mLastCommand;
 }
 
 
@@ -278,23 +279,47 @@ int DwProtocolClient::PReceive(char* aBuf, int aBufSize)
         mErrorCode = kErrBadUsage;
         return 0;
     }
-    // To do: if SO_RCVTIMEO is not implemented, should we use select here?
-    int numReceived;
-    int ret = recv(mSocket, aBuf, aBufSize, 0);
-    if (ret == -1) {
-        // error!
-        int err = errno;
-        HandleError(err, krecv);
+
+    // Suspend until there's input to read
+
+    fd_set readfds;
+    FD_ZERO(&readfds);
+    FD_SET(mSocket, &readfds);
+    struct timeval timeout;
+    timeout.tv_sec = mReceiveTimeout;
+    timeout.tv_usec = 0;
+    int numFds = select(mSocket+1, &readfds, 0, 0, &timeout);
+
+    // Read the input, if available
+
+    int numReceived = 0;
+    if (numFds == 1) {
+        int ret = recv(mSocket, aBuf, aBufSize, 0);
+        if (ret == -1) {
+            // error!
+            int err = errno;
+            HandleError(err, krecv);
+            numReceived = 0;
+        }
+        else /* if (ret != -1) */ {
+            numReceived = ret;
+        }
+    }
+
+    // Otherwise, there was a timeout, error, or an interruption by a signal
+
+    else /* if (numFds != 1)*/ {
+        if (numFds == 0) {
+            DBG_PROTO_STMT(cout << "Receive timed out" << endl;)
+        }
         numReceived = 0;
     }
-    else {
-        numReceived = ret;
-    }
+
     return numReceived;
 }
 
 
-void DwProtocolClient::HandleError(int aErrorCode, int aFunc)
+void DwProtocolClient::HandleError(int aErrorCode, int aSystemCall)
 {
     // To do: this function is not finished
     mErrorCode = aErrorCode;

@@ -113,8 +113,24 @@
 #include <mimelib/msgid.h>
 #endif
 
+#ifndef DW_NNTP_H
+#include <mimelib/nntp.h>
+#endif
+
 #ifndef DW_PARAM_H
 #include <mimelib/param.h>
+#endif
+
+#ifndef DW_POP_H
+#include <mimelib/pop.h>
+#endif
+
+#ifndef DW_PROTOCOL_H
+#include <mimelib/protocol.h>
+#endif
+
+#ifndef DW_SMTP_H
+#include <mimelib/smtp.h>
 #endif
 
 #ifndef DW_TEXT_H

@@ -227,8 +227,8 @@ void DwStringRep::operator delete(void* aRep, size_t)
 //--------------------------------------------------------------------------
 
 const size_t DwString::kEmptyBufferSize = 4;
-char DwString::sEmptyBuffer[DwString::kEmptyBufferSize];
-DwStringRep* DwString::sEmptyRep = 0;
+char DW_EXPORT DwString::sEmptyBuffer[kEmptyBufferSize];
+DwStringRep* DW_EXPORT DwString::sEmptyRep = 0;
 #if defined(DW_V080_STRING)
 DwString DwString::sEmptyString;
 #endif //  defined(DW_V080_STRING)
@@ -501,7 +501,10 @@ DwString& DwString::assign(const DwString& aStr, size_t aPos, size_t aLen)
         mLength = len;
     }
     else {
-        _replace(0, mLength, &aStr.mRep->mBuffer[aStr.mStart+pos], len);
+        delete_rep_safely(mRep);
+        mRep = new_rep_reference(aStr.mRep);
+        mStart = aStr.mStart + pos;
+        mLength = len;
     }
     return *this;
 }

@@ -71,10 +71,10 @@ DwSmtpClient::~DwSmtpClient()
 int DwSmtpClient::Open(const char* aServer, DwUint16 aPort)
 {
     mReplyCode = 0;
-    mSingleLineResponse.clear();
+    mResponse.clear();
     int err = DwProtocolClient::Open(aServer, aPort);
     if (! err) {
-        PGetSingleLineResponse();
+        PGetResponse();
     }
     return mReplyCode;
 }
@@ -86,24 +86,25 @@ int DwSmtpClient::ReplyCode() const
 }
 
 
-const DwString& DwSmtpClient::SingleLineResponse() const
+const DwString& DwSmtpClient::Response() const
 {
-    return mSingleLineResponse;
+    return mResponse;
 }
 
 
 int DwSmtpClient::Helo()
 {
     mReplyCode = 0;
-    mSingleLineResponse.clear();
+    mResponse.clear();
+    mLastCommand = kCmdHelo;
     strcpy(mSendBuffer, "HELO ");
-    gethostname(&mSendBuffer[5], SEND_BUFFER_SIZE-8);
+    gethostname(&mSendBuffer[5], SEND_BUFFER_SIZE-32);
     strcat(mSendBuffer, "\r\n");
-    DBG_SMTP_STMT(cout << "C: " << mSendBuffer << endl;)
+    DBG_SMTP_STMT(cout << "C: " << mSendBuffer << flush;)
     int bufferLen = strlen(mSendBuffer);
     int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
-        PGetSingleLineResponse();
+        PGetResponse();
     }
     return mReplyCode;
 }
@@ -112,15 +113,16 @@ int DwSmtpClient::Helo()
 int DwSmtpClient::Mail(const char* aFrom)
 {
     mReplyCode = 0;
-    mSingleLineResponse.clear();
+    mResponse.clear();
+    mLastCommand = kCmdMail;
     strcpy(mSendBuffer, "MAIL FROM:<");
-    strcat(mSendBuffer, aFrom);
+    strncat(mSendBuffer, aFrom, SEND_BUFFER_SIZE-32);
     strcat(mSendBuffer, ">\r\n");
-    DBG_SMTP_STMT(cout << "C: " << mSendBuffer << endl;)
+    DBG_SMTP_STMT(cout << "C: " << mSendBuffer << flush;)
     int bufferLen = strlen(mSendBuffer);
     int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
-        PGetSingleLineResponse();
+        PGetResponse();
     }
     return mReplyCode;
 }
@@ -129,15 +131,16 @@ int DwSmtpClient::Mail(const char* aFrom)
 int DwSmtpClient::Rcpt(const char* aTo)
 {
     mReplyCode = 0;
-    mSingleLineResponse.clear();
+    mResponse.clear();
+    mLastCommand = kCmdRcpt;
     strcpy(mSendBuffer, "RCPT TO:<");
-    strcat(mSendBuffer, aTo);
+    strncat(mSendBuffer, aTo, SEND_BUFFER_SIZE-32);
     strcat(mSendBuffer, ">\r\n");
-    DBG_SMTP_STMT(cout << "C: " << mSendBuffer << endl;)
+    DBG_SMTP_STMT(cout << "C: " << mSendBuffer << flush;)
     int bufferLen = strlen(mSendBuffer);
     int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
-        PGetSingleLineResponse();
+        PGetResponse();
     }
     return mReplyCode;
 }
@@ -146,13 +149,14 @@ int DwSmtpClient::Rcpt(const char* aTo)
 int DwSmtpClient::Data()
 {
     mReplyCode = 0;
-    mSingleLineResponse.clear();
+    mResponse.clear();
+    mLastCommand = kCmdData;
     strcpy(mSendBuffer, "DATA\r\n");
-    DBG_SMTP_STMT(cout << "C: " << mSendBuffer << endl;)
+    DBG_SMTP_STMT(cout << "C: " << mSendBuffer << flush;)
     int bufferLen = strlen(mSendBuffer);
     int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
-        PGetSingleLineResponse();
+        PGetResponse();
     }
     return mReplyCode;
 }
@@ -161,13 +165,14 @@ int DwSmtpClient::Data()
 int DwSmtpClient::Rset()
 {
     mReplyCode = 0;
-    mSingleLineResponse.clear();
+    mResponse.clear();
+    mLastCommand = kCmdRset;
     strcpy(mSendBuffer, "RSET\r\n");
-    DBG_SMTP_STMT(cout << "C: " << mSendBuffer << endl;)
+    DBG_SMTP_STMT(cout << "C: " << mSendBuffer << flush;)
     int bufferLen = strlen(mSendBuffer);
     int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
-        PGetSingleLineResponse();
+        PGetResponse();
     }
     return mReplyCode;
 }
@@ -176,15 +181,16 @@ int DwSmtpClient::Rset()
 int DwSmtpClient::Send(const char* aFrom)
 {
     mReplyCode = 0;
-    mSingleLineResponse.clear();
+    mResponse.clear();
+    mLastCommand = kCmdSend;
     strcpy(mSendBuffer, "SEND FROM:<");
-    strcat(mSendBuffer, aFrom);
+    strncat(mSendBuffer, aFrom, SEND_BUFFER_SIZE-32);
     strcat(mSendBuffer, ">\r\n");
-    DBG_SMTP_STMT(cout << "C: " << mSendBuffer << endl;)
+    DBG_SMTP_STMT(cout << "C: " << mSendBuffer << flush;)
     int bufferLen = strlen(mSendBuffer);
     int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
-        PGetSingleLineResponse();
+        PGetResponse();
     }
     return mReplyCode;
 }
@@ -193,15 +199,16 @@ int DwSmtpClient::Send(const char* aFrom)
 int DwSmtpClient::Soml(const char* aFrom)
 {
     mReplyCode = 0;
-    mSingleLineResponse.clear();
+    mResponse.clear();
+    mLastCommand = kCmdSoml;
     strcpy(mSendBuffer, "SOML FROM:<");
-    strcat(mSendBuffer, aFrom);
+    strncat(mSendBuffer, aFrom, SEND_BUFFER_SIZE-32);
     strcat(mSendBuffer, ">\r\n");
-    DBG_SMTP_STMT(cout << "C: " << mSendBuffer << endl;)
+    DBG_SMTP_STMT(cout << "C: " << mSendBuffer << flush;)
     int bufferLen = strlen(mSendBuffer);
     int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
-        PGetSingleLineResponse();
+        PGetResponse();
     }
     return mReplyCode;
 }
@@ -210,15 +217,16 @@ int DwSmtpClient::Soml(const char* aFrom)
 int DwSmtpClient::Saml(const char* aFrom)
 {
     mReplyCode = 0;
-    mSingleLineResponse.clear();
+    mResponse.clear();
+    mLastCommand = kCmdSaml;
     strcpy(mSendBuffer, "SAML FROM:<");
-    strcat(mSendBuffer, aFrom);
+    strncat(mSendBuffer, aFrom, SEND_BUFFER_SIZE-32);
     strcat(mSendBuffer, ">\r\n");
-    DBG_SMTP_STMT(cout << "C: " << mSendBuffer << endl;)
+    DBG_SMTP_STMT(cout << "C: " << mSendBuffer << flush;)
     int bufferLen = strlen(mSendBuffer);
     int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
-        PGetSingleLineResponse();
+        PGetResponse();
     }
     return mReplyCode;
 }
@@ -227,15 +235,16 @@ int DwSmtpClient::Saml(const char* aFrom)
 int DwSmtpClient::Vrfy(const char* aName)
 {
     mReplyCode = 0;
-    mSingleLineResponse.clear();
+    mResponse.clear();
+    mLastCommand = kCmdVrfy;
     strcpy(mSendBuffer, "VRFY ");
-    strcat(mSendBuffer, aName);
+    strncat(mSendBuffer, aName, SEND_BUFFER_SIZE-32);
     strcat(mSendBuffer, "\r\n");
-    DBG_SMTP_STMT(cout << "C: " << mSendBuffer << endl;)
+    DBG_SMTP_STMT(cout << "C: " << mSendBuffer << flush;)
     int bufferLen = strlen(mSendBuffer);
     int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
-        PGetSingleLineResponse();
+        PGetResponse();
     }
     return mReplyCode;
 }
@@ -244,15 +253,16 @@ int DwSmtpClient::Vrfy(const char* aName)
 int DwSmtpClient::Expn(const char* aName)
 {
     mReplyCode = 0;
-    mSingleLineResponse.clear();
+    mResponse.clear();
+    mLastCommand = kCmdExpn;
     strcpy(mSendBuffer, "EXPN ");
-    strcat(mSendBuffer, aName);
+    strncat(mSendBuffer, aName, SEND_BUFFER_SIZE-32);
     strcat(mSendBuffer, "\r\n");
-    DBG_SMTP_STMT(cout << "C: " << mSendBuffer << endl;)
+    DBG_SMTP_STMT(cout << "C: " << mSendBuffer << flush;)
     int bufferLen = strlen(mSendBuffer);
     int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
-        PGetSingleLineResponse();
+        PGetResponse();
     }
     return mReplyCode;
 }
@@ -261,18 +271,19 @@ int DwSmtpClient::Expn(const char* aName)
 int DwSmtpClient::Help(const char* aArg)
 {
     mReplyCode = 0;
-    mSingleLineResponse.clear();
+    mResponse.clear();
+    mLastCommand = kCmdHelp;
     strcpy(mSendBuffer, "HELP");
     if (aArg) {
         strcat(mSendBuffer, " ");
-        strcat(mSendBuffer, aArg);
+        strncat(mSendBuffer, aArg, SEND_BUFFER_SIZE-32);
     }
     strcat(mSendBuffer, "\r\n");
-    DBG_SMTP_STMT(cout << "C: " << mSendBuffer << endl;)
+    DBG_SMTP_STMT(cout << "C: " << mSendBuffer << flush;)
     int bufferLen = strlen(mSendBuffer);
     int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
-        PGetSingleLineResponse();
+        PGetResponse();
     }
     return mReplyCode;
 }
@@ -281,13 +292,14 @@ int DwSmtpClient::Help(const char* aArg)
 int DwSmtpClient::Noop()
 {
     mReplyCode = 0;
-    mSingleLineResponse.clear();
+    mResponse.clear();
+    mLastCommand = kCmdNoop;
     strcpy(mSendBuffer, "NOOP\r\n");
-    DBG_SMTP_STMT(cout << "C: " << mSendBuffer << endl;)
+    DBG_SMTP_STMT(cout << "C: " << mSendBuffer << flush;)
     int bufferLen = strlen(mSendBuffer);
     int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
-        PGetSingleLineResponse();
+        PGetResponse();
     }
     return mReplyCode;
 }
@@ -296,13 +308,30 @@ int DwSmtpClient::Noop()
 int DwSmtpClient::Quit()
 {
     mReplyCode = 0;
-    mSingleLineResponse.clear();
+    mResponse.clear();
+    mLastCommand = kCmdQuit;
     strcpy(mSendBuffer, "QUIT\r\n");
-    DBG_SMTP_STMT(cout << "C: " << mSendBuffer << endl;)
+    DBG_SMTP_STMT(cout << "C: " << mSendBuffer << flush;)
     int bufferLen = strlen(mSendBuffer);
     int numSent = PSend(mSendBuffer, bufferLen);
     if (numSent == bufferLen) {
-        PGetSingleLineResponse();
+        PGetResponse();
+    }
+    return mReplyCode;
+}
+
+
+int DwSmtpClient::Turn()
+{
+    mReplyCode = 0;
+    mResponse.clear();
+    mLastCommand = kCmdTurn;
+    strcpy(mSendBuffer, "TURN\r\n");
+    DBG_SMTP_STMT(cout << "C: " << mSendBuffer << flush;)
+    int bufferLen = strlen(mSendBuffer);
+    int numSent = PSend(mSendBuffer, bufferLen);
+    if (numSent == bufferLen) {
+        PGetResponse();
     }
     return mReplyCode;
 }
@@ -317,7 +346,7 @@ int DwSmtpClient::SendData(const DwString& aStr)
 int DwSmtpClient::SendData(const char* aBuf, int aBufLen)
 {
     mReplyCode = 0;
-    mSingleLineResponse.clear();
+    mResponse.clear();
 
     int pos = 0;
     int len = 0;
@@ -406,26 +435,35 @@ int DwSmtpClient::SendData(const char* aBuf, int aBufLen)
 
     // Get the server's response
 
-    PGetSingleLineResponse();
+    PGetResponse();
     return mReplyCode;
 }
 
 
-void DwSmtpClient::PGetSingleLineResponse()
+void DwSmtpClient::PGetResponse()
 {
     mReplyCode = 0;
-    mSingleLineResponse.clear();
-    char* ptr;
-    int len;
-    int err = PGetLine(&ptr, &len);
+    mResponse.clear();
+    char* ptr = 0;
+    int len = 0;
+    int err = 0;
+    int done = 0;
+    while (! done) {
+        err = PGetLine(&ptr, &len);
+        if (! err) {
+            mResponse.append(ptr, len);
+            if (len <= 3 || ptr[3] != '-') {
+                done = 1;
+            }
+        }
+        else {
+            done = 1;
+        }
+    }
     if (! err) {
         mReplyCode = strtol(ptr, NULL, 10);
-        mSingleLineResponse.assign(ptr, len);
-        DBG_SMTP_STMT(char buffer[256];)
-        DBG_SMTP_STMT(strncpy(buffer, ptr, len);)
-        DBG_SMTP_STMT(buffer[len] = 0;)
-        DBG_SMTP_STMT(cout << "S: " << buffer;)
     }
+    DBG_SMTP_STMT(cout << "S: " << mResponse << flush;)
 }
 
 
@@ -437,8 +475,8 @@ int DwSmtpClient::PGetLine(char** aPtr, int* aLen)
     int pos = mRecvBufferPos;
     int lastChar = -1;
 
-    // Keep trying until we get a complete line, detect an error, or determine that
-    // the connection has been closed
+    // Keep trying until we get a complete line, detect an error, or
+    // determine that the connection has been closed
 
     int isEndOfLineFound = 0;
     while (1) {
@@ -462,13 +500,28 @@ int DwSmtpClient::PGetLine(char** aPtr, int* aLen)
             return 0;
         }
 
-        // Replenish the buffer
+        // If the buffer has no room, return without an error; otherwise,
+        // replenish the buffer.
 
-        memmove(mRecvBuffer, &mRecvBuffer[startPos], mNumRecvBufferChars-startPos);
+        // Implementation note: The standard does not allow long lines,
+        // however, that does not mean that they won't occur.  The way
+        // this function deals with long lines is to return a full buffer's
+        // worth of characters as a line.  The next call to this function
+        // will start where this call left off.  In essence, we have
+        // *forced* a line break, but without putting in CR LF characters.
+
+        if (startPos == 0 && pos == RECV_BUFFER_SIZE) {
+            *aPtr = mRecvBuffer;
+            *aLen = RECV_BUFFER_SIZE;
+            mRecvBufferPos = pos;
+            return 0;
+        }
+        memmove(mRecvBuffer, &mRecvBuffer[startPos],
+            mNumRecvBufferChars-startPos);
         mNumRecvBufferChars -= startPos;
         mRecvBufferPos = mNumRecvBufferChars;
-        int bufLen = RECV_BUFFER_SIZE - mRecvBufferPos;
-        int n = PReceive(&mRecvBuffer[mRecvBufferPos], bufLen);
+        int bufFreeSpace = RECV_BUFFER_SIZE - mRecvBufferPos;
+        int n = PReceive(&mRecvBuffer[mRecvBufferPos], bufFreeSpace);
         if (n == 0) {
             // The connection has been closed or an error occurred
             return -1;

@@ -95,6 +95,6 @@ install-data-local:
 	$(INSTALL_DATA) ./mimelib/$$p $(includedir)/mimelib/$$p; \
 	done
  
-libmimelib_la_LDFLAGS = -version-info 0:1 -rpath $(libdir)
+libmimelib_la_LDFLAGS = -version-info 0:2 -rpath $(libdir)
 
 

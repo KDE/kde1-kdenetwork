@@ -329,118 +329,125 @@ DwFieldBody* DwField::_CreateFieldBody(const DwString& aFieldName,
     const DwString& aFieldBody, DwMessageComponent* aParent)
 {
     enum {
-        eAddressList,
-        eMediaType,
-        eMechanism,
-        eDateTime,
-        eMailbox,
-        eMailboxList,
-        eMsgId,
-        eText
+        kAddressList,
+        kDispositionType,
+        kDateTime,
+        kMailbox,
+        kMailboxList,
+        kMechanism,
+        kMediaType,
+        kMsgId,
+        kText
     } fieldBodyType;
     // Default field type is 'text'
-    fieldBodyType = eText;
+    fieldBodyType = kText;
     int ch = aFieldName[0];
     ch = tolower(ch);
     switch (ch) {
     case 'b':
         if (DwStrcasecmp(aFieldName, "bcc") == 0) {
-            fieldBodyType = eAddressList;
+            fieldBodyType = kAddressList;
         }
         break;
     case 'c':
         if (DwStrcasecmp(aFieldName, "cc") == 0) {
-            fieldBodyType = eAddressList;
+            fieldBodyType = kAddressList;
         }
         else if (DwStrcasecmp(aFieldName, "content-id") == 0) {
-            fieldBodyType = eMsgId;
+            fieldBodyType = kMsgId;
         }
         else if (DwStrcasecmp(aFieldName, "content-transfer-encoding") == 0) {
-            fieldBodyType = eMechanism;
+            fieldBodyType = kMechanism;
         }
         else if (DwStrcasecmp(aFieldName, "content-type") == 0) {
-            fieldBodyType = eMediaType;
+            fieldBodyType = kMediaType;
+        }
+        else if (DwStrcasecmp(aFieldName, "content-disposition") == 0) {
+            fieldBodyType = kDispositionType;
         }
         break;
     case 'd':
         if (DwStrcasecmp(aFieldName, "date") == 0) {
-            fieldBodyType = eDateTime;
+            fieldBodyType = kDateTime;
         }
         break;
     case 'f':
         if (DwStrcasecmp(aFieldName, "from") == 0) {
-            fieldBodyType = eMailboxList;
+            fieldBodyType = kMailboxList;
         }
         break;
     case 'm':
         if (DwStrcasecmp(aFieldName, "message-id") == 0) {
-            fieldBodyType = eMsgId;
+            fieldBodyType = kMsgId;
         }
         break;
     case 'r':
         if (DwStrcasecmp(aFieldName, "reply-to") == 0) {
-            fieldBodyType = eAddressList;
+            fieldBodyType = kAddressList;
         }
         else if (DwStrcasecmp(aFieldName, "resent-bcc") == 0) {
-            fieldBodyType = eAddressList;
+            fieldBodyType = kAddressList;
         }
         else if (DwStrcasecmp(aFieldName, "resent-cc") == 0) {
-            fieldBodyType = eAddressList;
+            fieldBodyType = kAddressList;
         }
         else if (DwStrcasecmp(aFieldName, "resent-date") == 0) {
-            fieldBodyType = eDateTime;
+            fieldBodyType = kDateTime;
         }
         else if (DwStrcasecmp(aFieldName, "resent-from") == 0) {
-            fieldBodyType = eMailboxList;
+            fieldBodyType = kMailboxList;
         }
         else if (DwStrcasecmp(aFieldName, "resent-message-id") == 0) {
-            fieldBodyType = eMsgId;
+            fieldBodyType = kMsgId;
         }
         else if (DwStrcasecmp(aFieldName, "resent-reply-to") == 0) {
-            fieldBodyType = eAddressList;
+            fieldBodyType = kAddressList;
         }
         else if (DwStrcasecmp(aFieldName, "resent-sender") == 0) {
-            fieldBodyType = eMailbox;
+            fieldBodyType = kMailbox;
         }
         else if (DwStrcasecmp(aFieldName, "return-path") == 0) {
-            fieldBodyType = eMailbox;
+            fieldBodyType = kMailbox;
         }
         break;
     case 's':
         if (DwStrcasecmp(aFieldName, "sender") == 0) {
-            fieldBodyType = eMailbox;
+            fieldBodyType = kMailbox;
         }
         break;
     case 't':
         if (DwStrcasecmp(aFieldName, "to") == 0) {
-            fieldBodyType = eAddressList;
+            fieldBodyType = kAddressList;
         }
         break;
     }
     DwFieldBody* fieldBody;
     switch (fieldBodyType) {
-    case eAddressList:
+    case kAddressList:
         fieldBody = DwAddressList::NewAddressList(aFieldBody, aParent);
         break;
-    case eMediaType:
+    case kDispositionType:
+        fieldBody = DwDispositionType::NewDispositionType(aFieldBody, aParent);
+        break;
+    case kMediaType:
         fieldBody = DwMediaType::NewMediaType(aFieldBody, aParent);
         break;
-    case eMechanism:
+    case kMechanism:
         fieldBody = DwMechanism::NewMechanism(aFieldBody, aParent);
         break;
-    case eDateTime:
+    case kDateTime:
         fieldBody = DwDateTime::NewDateTime(aFieldBody, aParent);
         break;
-    case eMailbox:
+    case kMailbox:
         fieldBody = DwMailbox::NewMailbox(aFieldBody, aParent);
         break;
-    case eMailboxList:
+    case kMailboxList:
         fieldBody = DwMailboxList::NewMailboxList(aFieldBody, aParent);
         break;
-    case eMsgId:
+    case kMsgId:
         fieldBody = DwMsgId::NewMsgId(aFieldBody, aParent);
         break;
-    case eText:
+    case kText:
     default:
         fieldBody = DwText::NewText(aFieldBody, aParent);
         break;
