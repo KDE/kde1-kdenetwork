@@ -56,6 +56,7 @@ open_ksirc::~open_ksirc()
 
 void open_ksirc::create_toplevel()
 {
+  hide();
   int item_found = 0;
   for(int i = 0; i < nameSLE->count() ; i++){
     if(strcmp(nameSLE->currentText(), nameSLE->text(i)) == 0){

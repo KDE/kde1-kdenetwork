@@ -108,7 +108,7 @@ extern KApplication *kApp;
 extern KConfig *kConfig;
 extern global_config *kSircConfig;
 
-KSircProcess::KSircProcess( char *_server, QObject * parent, const char * name ) /*fold00*/
+KSircProcess::KSircProcess( char *_server, QObject * parent, const char * name ) /*FOLD00*/
   : QObject(parent, name)
 {
 
@@ -240,6 +240,9 @@ void KSircProcess::new_toplevel(QString str) /*FOLD00*/
 {
   static time_t last_window_open = 0;
   static int number_open = 0;
+  static bool flood_dlg = FALSE;
+
+  debug("Creating toplevel for: -%s-", str.data());
 
   if(running_window == FALSE){ // If we're not fully running, reusing
 			       // !default window for next chan.
@@ -249,12 +252,13 @@ void KSircProcess::new_toplevel(QString str) /*FOLD00*/
     // TopList.remove("!no_channel"); // We're no longer !no_channel
     TopList["!no_channel"]->control_message(CHANGE_CHANNEL, str);
   }
-  else if(!TopList[str]){ // If the window doesn't exist, continue
+  else if(TopList.find(str.data()) == 0x0){ // If the window doesn't exist, continue
     // If AutoCreate windows is on, let's make sure we're not being flooded.
     if(kSircConfig->autocreate == TRUE){
       time_t current_time = time(NULL);
       if((current_time - last_window_open) < 5){
-	if(number_open > 4){
+        if(number_open > 4 && flood_dlg == FALSE){
+          flood_dlg = TRUE;
 	  switch(QMessageBox::warning(0, "Flood warning",
 				      "5 Channel windows were opened\n"
 				      "in less than 5 seconds.  Someone\n"
@@ -271,7 +275,8 @@ void KSircProcess::new_toplevel(QString str) /*FOLD00*/
 	}
 	else{
 	  number_open++;
-	}
+        }
+        flood_dlg = FALSE;
       }
       else{
 	last_window_open = current_time;
@@ -280,8 +285,13 @@ void KSircProcess::new_toplevel(QString str) /*FOLD00*/
 
     // Create a new toplevel, and add it to the toplist.  
     // TopList is a list of KSircReceivers so we still need wm.
+//    KSircMessageReceiver *faker = new KSircMessageReceiver(this);
+    //    TopList.insert(str, faker); // Insert place holder since the constructor for kSircTopLevel may parse the event queue which will cause us to try and create trhe window several times!!!
+    debug("Calling new toplevel for: -%s-", str.data());
     KSircTopLevel *wm = new KSircTopLevel(this, str.data());
     TopList.insert(str, wm);
+//    TopList.replace(str, wm);
+//    delete faker;
     // Connect needed signals.  For a message window we never want it
     // becomming the default so we ignore focusIn events into it.
     connect(wm, SIGNAL(outputLine(QString&)), 
@@ -301,7 +311,7 @@ void KSircProcess::new_toplevel(QString str) /*FOLD00*/
     wm->show(); // Pop her up
   }
   else{
-    //    cerr << "Window " << str << " already exists\n";
+    debug("Window %s already exists", str.data());
   }
 }
 
@@ -399,7 +409,7 @@ void KSircProcess::default_window(KSircTopLevel *w) /*fold00*/
 
 }
 
-void KSircProcess::recvChangeChannel(QString old_chan, QString /*fold00*/
+void KSircProcess::recvChangeChannel(QString old_chan, QString /*FOLD00*/
 				     new_chan)
 {
   //

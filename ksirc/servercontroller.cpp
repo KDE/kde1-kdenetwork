@@ -351,7 +351,7 @@ void servercontroller::about_ksirc()
   QString caption = PACKAGE;
   caption += "-";
   caption += VERSION;
-  caption += "\n\n(c) Copyright 1997, Andrew Stanley-Jones (asj@ksirc.org)\n\nkSirc Irc Client";
+  caption += "\n\n(c) Copyright 1997,1998, Andrew Stanley-Jones (asj@ksirc.org)\n\nkSirc Irc Client";
   QMessageBox::about(this, "About kSirc", caption);
 }
 

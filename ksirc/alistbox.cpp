@@ -35,7 +35,7 @@ void aListBox::clear() /*fold00*/
 }
 
 
-void aListBox::inSort ( nickListItem *lbi) /*FOLD00*/
+void aListBox::inSort ( nickListItem *lbi) /*fold00*/
 {
   int insert;
   bool found;
@@ -70,7 +70,7 @@ int aListBox::findSep() /*fold00*/
   return i;
 
 }
-int aListBox::searchFor(QString nick, bool &found, bool top) /*FOLD00*/
+int aListBox::searchFor(QString nick, bool &found, bool top) /*fold00*/
 {
   int min = 0, max = 0;
   int current = 0, compare = 0;
@@ -126,7 +126,8 @@ int aListBox::searchFor(QString nick, bool &found, bool top) /*FOLD00*/
 //	debug("1 > 0: %s is less then: %s, min: %d max: %d current: %d", nick.data(), text(current), min, max, current);
       }
       else {// We got a match?
-        insert = current;
+	insert = current;
+        min = current;
         found = TRUE;
         break;
       }
@@ -142,7 +143,8 @@ int aListBox::searchFor(QString nick, bool &found, bool top) /*FOLD00*/
 //	debug("End check got one!");
       }
       else if (compare == 0){// We got a match
-	insert = current;
+	insert = real_max + 1;
+	min = real_max;
 	found = TRUE;
       }
     }
@@ -160,7 +162,7 @@ int aListBox::searchFor(QString nick, bool &found, bool top) /*FOLD00*/
 
     if(found == TRUE){
 //      debug("Found %s", nick.data());
-      return insert;
+      return min; // We found one, so return the number found
     }
   }
 //  debug("%s is at %d", nick.data(), insert);
@@ -182,7 +184,7 @@ void aListBox:: setPalette ( const QPalette &p ) /*fold00*/
   ((QScrollBar*) QTableView::horizontalScrollBar())->setPalette(p_scroll);
 }
 
-int aListBox::findNick(QString str) /*fold00*/
+int aListBox::findNick(QString str) /*FOLD00*/
 {
   bool found;
   int index;
@@ -192,6 +194,7 @@ int aListBox::findNick(QString str) /*fold00*/
   index = searchFor(str, found, FALSE);
   if(found == TRUE)
     return index;
+  debug("Did not find: %s", str.data());
   return -1;
 }
 

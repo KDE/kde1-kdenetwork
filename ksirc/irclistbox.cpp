@@ -185,6 +185,7 @@ void KSircListBox::insertItem ( const QPixmap & pixmap, int index )
 void KSircListBox::removeItem ( int index ) 
 {
   theightCache -= item(index)->height(this);
+  thDirty = TRUE;
   QListBox::removeItem(index);
   //  thDirty = TRUE;
 }

@@ -22,7 +22,7 @@ SUBDIRS = KSTicker KSProgress KSCutDialog KSPrefs puke img doc
 
 ####### This part is very khexdit specific
 # you can add here more. This one gets installed 
-bin_PROGRAMS = time ksirc ksircstatic
+bin_PROGRAMS = getdate ksirc ksircstatic
 
 # Which sources should be compiled for khexdit.
 ksirc_SOURCES	= toplevel.cpp \
@@ -74,12 +74,12 @@ STATIC_LIBS = /opt/kde/lib/libkdeui.a /opt/kde/lib/libkdecore.a /usr/local/lib/q
 kdoc:
 	kdoc -ddoc ksirc *.h
 
-time.c:
-	touch time.c
+getdate: getdate.c
+	$(COMPILE) -c getdate.c
+	$(LINK) getdate.o
 
-time:
-	echo -n "#define COMPILE_DATE " > cdate.h
-	date +%s >> cdate.h
+cdate.h: $(ksirc_SOURCES) getdate
+	./getdate > cdate.h
 
 ksircstatic: dummy
 	@rm -f ksircstatic

@@ -131,7 +131,7 @@ SUBDIRS = KSTicker KSProgress KSCutDialog KSPrefs puke img doc
 
 ####### This part is very khexdit specific
 # you can add here more. This one gets installed 
-bin_PROGRAMS = time ksirc ksircstatic
+bin_PROGRAMS = getdate ksirc ksircstatic
 
 # Which sources should be compiled for khexdit.
 ksirc_SOURCES	= toplevel.cpp \
@@ -213,10 +213,10 @@ PROGRAMS =  $(bin_PROGRAMS)
 
 CPPFLAGS = @CPPFLAGS@
 LIBS = @LIBS@
-time_SOURCES = time.c
-time_OBJECTS =  time.o
-time_LDADD = $(LDADD)
-time_LDFLAGS = 
+getdate_SOURCES = getdate.c
+getdate_OBJECTS =  getdate.o
+getdate_LDADD = $(LDADD)
+getdate_LDFLAGS = 
 ksirc_OBJECTS =  toplevel.o ksirc.o irclistbox.o mirclistbox.o \
 irclistitem.o mirclistitem.o alistbox.o mtoplevel.o ahistlineedit.o \
 mahistlineedit.o malistbox.o iocontroller.o miocontroller.o open_top.o \
@@ -261,25 +261,25 @@ GZIP = --best
 DEP_FILES =  .deps/FilterRuleEditor.P .deps/FilterRuleEditorData.P \
 .deps/KSircColour.P .deps/KSircColourData.P .deps/ahistlineedit.P \
 .deps/alistbox.P .deps/baserules.P .deps/chanparser.P .deps/dccDialog.P \
-.deps/dccDialogData.P .deps/estring.P .deps/ioBroadcast.P .deps/ioDCC.P \
-.deps/ioDiscard.P .deps/ioLAG.P .deps/ioNotify.P .deps/iocontroller.P \
-.deps/irclistbox.P .deps/irclistitem.P .deps/ksirc.P \
-.deps/ksircprocess.P .deps/kspainter.P .deps/linelistitem.P \
-.deps/mFilterRuleEditor.P .deps/mFilterRuleEditorData.P \
-.deps/mKSircColour.P .deps/mKSircColourData.P .deps/mahistlineedit.P \
-.deps/malistbox.P .deps/mdccDialog.P .deps/mdccDialogData.P \
-.deps/messageReceiver.P .deps/mioDCC.P .deps/mioLAG.P .deps/mioNotify.P \
-.deps/miocontroller.P .deps/mirclistbox.P .deps/mirclistitem.P \
-.deps/mksircprocess.P .deps/mopen_ksirc.P .deps/mopen_ksircData.P \
-.deps/mopen_top.P .deps/mopen_topData.P .deps/mservercontroller.P \
-.deps/mssfeprompt.P .deps/mssfepromptdata.P .deps/mtoplevel.P \
-.deps/open_ksirc.P .deps/open_ksircData.P .deps/open_top.P \
-.deps/open_topData.P .deps/servercontroller.P .deps/ssfeprompt.P \
-.deps/ssfepromptdata.P .deps/time.P .deps/toplevel.P \
-.deps/usercontrolmenu.P
+.deps/dccDialogData.P .deps/estring.P .deps/getdate.P \
+.deps/ioBroadcast.P .deps/ioDCC.P .deps/ioDiscard.P .deps/ioLAG.P \
+.deps/ioNotify.P .deps/iocontroller.P .deps/irclistbox.P \
+.deps/irclistitem.P .deps/ksirc.P .deps/ksircprocess.P \
+.deps/kspainter.P .deps/linelistitem.P .deps/mFilterRuleEditor.P \
+.deps/mFilterRuleEditorData.P .deps/mKSircColour.P \
+.deps/mKSircColourData.P .deps/mahistlineedit.P .deps/malistbox.P \
+.deps/mdccDialog.P .deps/mdccDialogData.P .deps/messageReceiver.P \
+.deps/mioDCC.P .deps/mioLAG.P .deps/mioNotify.P .deps/miocontroller.P \
+.deps/mirclistbox.P .deps/mirclistitem.P .deps/mksircprocess.P \
+.deps/mopen_ksirc.P .deps/mopen_ksircData.P .deps/mopen_top.P \
+.deps/mopen_topData.P .deps/mservercontroller.P .deps/mssfeprompt.P \
+.deps/mssfepromptdata.P .deps/mtoplevel.P .deps/open_ksirc.P \
+.deps/open_ksircData.P .deps/open_top.P .deps/open_topData.P \
+.deps/servercontroller.P .deps/ssfeprompt.P .deps/ssfepromptdata.P \
+.deps/toplevel.P .deps/usercontrolmenu.P
 CXXMKDEP = $(CXX) -M $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
-SOURCES = time.c $(ksirc_SOURCES) $(ksircstatic_SOURCES)
-OBJECTS = time.o $(ksirc_OBJECTS) $(ksircstatic_OBJECTS)
+SOURCES = getdate.c $(ksirc_SOURCES) $(ksircstatic_SOURCES)
+OBJECTS = getdate.o $(ksirc_OBJECTS) $(ksircstatic_OBJECTS)
 
 default: all
 
@@ -543,12 +543,12 @@ maintainer-clean
 kdoc:
 	kdoc -ddoc ksirc *.h
 
-time.c:
-	touch time.c
+getdate: getdate.c
+	$(COMPILE) -c getdate.c
+	$(LINK) getdate.o
 
-time:
-	echo -n "#define COMPILE_DATE " > cdate.h
-	date +%s >> cdate.h
+cdate.h: $(ksirc_SOURCES) getdate
+	./getdate > cdate.h
 
 ksircstatic: dummy
 	@rm -f ksircstatic

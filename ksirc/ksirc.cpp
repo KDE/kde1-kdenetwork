@@ -103,8 +103,9 @@ int main( int argc, char ** argv )
   kSircConfig->kdedir = getenv("KDEDIR");
   if(kSircConfig->kdedir.isEmpty()){
     kSircConfig->kdedir = "/usr/local/kde";
-    kApp->kdedir() =  kSircConfig->kdedir;
-    cerr << "KDEDIR set to: " << kApp->kdedir() << endl;
+    //    kApp->kdedir() =  kSircConfig->kdedir;
+    warning("KDEDIR information not found, online help will not work\n");
+    //    cerr << "KDEDIR set to: " << kApp->kdedir() << endl;
   }
   QString ld_path = getenv("LD_LIBRARY_PATH");
   ld_path += ":" + kSircConfig->kdedir + "/share/apps/ksirc/:";
