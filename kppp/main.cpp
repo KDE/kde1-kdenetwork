@@ -764,7 +764,6 @@ void dieppp(int sig) {
       Requester::rq->removeSecret(AUTH_CHAP);
 
       gpppdata.setpppdpid(-1);
-      gpppdata.setpppdError(0);
       
       Debug("Executing command on disconnect since pppd has died:\n");
       execute_command(gpppdata.command_on_disconnect());
@@ -840,6 +839,8 @@ void dieppp(int sig) {
       remove_pidfile();
       shutDown(1);
     }
+
+    gpppdata.setpppdError(0);
   }
 }
 

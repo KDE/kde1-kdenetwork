@@ -1,3 +1,7 @@
+1998-12-27  Mario Weilguni <mweilguni@kde.org>
+
+	* moved gpppdata.setpppdError(0) to end of dieppp()
+
 1998-12-26  Mario Weilguni <mweilguni@kde.org>
 
 	* gpppdata.pppdError() was never reset, causing a bunch of error
