@@ -39,7 +39,7 @@
 ///////////////////////////////////////////////////////////////////////////
 // KBiffSetup
 ///////////////////////////////////////////////////////////////////////////
-KBiffSetup::KBiffSetup(const char *profile)
+KBiffSetup::KBiffSetup(const char *profile, bool secure)
 	: QDialog(0, 0, true, 0)
 {
 TRACEINIT("KBiffSetup::KBiffSetup()");
@@ -148,11 +148,19 @@ TRACEINIT("KBiffSetup::KBiffSetup()");
 	bottom_layout->addWidget(cancel);
 	bottom_layout->addSpacing(5);
 
+	// are we secure
+	isSecure = secure;
+
 	readConfig(profile);
 }
 
 KBiffSetup::~KBiffSetup()
 {
+}
+
+const bool KBiffSetup::getSecure() const
+{
+	return isSecure;
 }
 
 const QString KBiffSetup::getProfile() const
@@ -1318,7 +1326,7 @@ void KBiffMailboxTab::advanced()
 
 const char* KBiffMailboxTab::scramble(const char* password, bool encode)
 {
-	char *ptr = new char[strlen(password)];
+	char *ptr = new char[strlen(password) + 1];
 	char *ret_ptr = ptr;
 
 	while (*password)

@@ -1,2 +1,11 @@
+09-19-98 - Kurt Granroth
+	o Added -secure option
+	o Added "Read Mail" menu item.  This will set the flags to OldMail if it
+	  was New.  This also disables checking for new mail until the "current"
+	  new mail becomes old!
+
+09-18-98 - Kurt Granroth
+	o Fixed bug in 'scramble'
+
 08-26-08 - Kurt Granroth
 	o Added isGIF8x to facilitate animated gifs.

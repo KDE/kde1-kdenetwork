@@ -43,7 +43,7 @@ class KBiffSetup : public QDialog
 {
 	Q_OBJECT
 public:
-	KBiffSetup(const char *name = 0);
+	KBiffSetup(const char *name = 0, bool secure = false);
 	virtual ~KBiffSetup();
 
 	const QString getProfile() const;
@@ -62,6 +62,7 @@ public:
 	const bool getNotify() const;
 	const bool getDock() const;
 	const bool getSessionManagement() const;
+	const bool getSecure() const;
 	const unsigned int getPoll() const;
 
 public slots:
@@ -77,6 +78,8 @@ protected slots:
 	void slotDeleteProfile();
 
 private:
+	bool isSecure;
+
 	// "outer" dialog
 	QComboBox   *comboProfile;
 	QPushButton *help;

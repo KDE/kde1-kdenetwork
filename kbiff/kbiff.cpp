@@ -45,6 +45,7 @@ void KBiff::processSetup(const KBiffSetup* setup, bool run)
 {
 TRACEINIT("KBiff::processSetup()");
 	// General settings
+	isSecure    = setup->getSecure();
 	profile     = setup->getProfile();
 	mailClient  = setup->getMailClient();
 	sessions    = setup->getSessionManagement();
@@ -307,6 +308,7 @@ TRACEINIT("KBiff::haveNewMail()");
 	// beep if we are allowed to
 	if (systemBeep)
 	{
+		TRACE("Beep!");
 		kapp->beep();
 	}
 
@@ -316,6 +318,7 @@ TRACEINIT("KBiff::haveNewMail()");
 		// make sure the command exists
 		if (!runCommandPath.isEmpty())
 		{
+			TRACEF("Running %s", runCommandPath.data());
 			KProcess command;
 			command << runCommandPath;
 			command.start(KProcess::DontCare);
@@ -336,6 +339,7 @@ TRACEINIT("KBiff::haveNewMail()");
 	// notify if we must
 	if (notify)
 	{
+		TRACEF("Notifying %d in %s", num, the_mailbox);
 		KBiffNotify notify_dlg(num, the_mailbox);
 		notify_dlg.exec();
 	}
@@ -396,6 +400,18 @@ TRACEINIT("KBiff::checkMailNow()");
 	}
 }
 
+void KBiff::readMailNow()
+{
+TRACEINIT("KBiff::readMailNow()");
+	KBiffMonitor *monitor;
+	for (monitor = monitorList.first();
+	     monitor != 0;
+		  monitor = monitorList.next())
+	{
+		monitor->setMailboxIsRead();
+	}
+}
+
 void KBiff::stop()
 {
 TRACEINIT("KBiff::stop()");
@@ -431,30 +447,38 @@ void KBiff::popupMenu()
 TRACEINIT("KBiff::popupMenu()");
 	QPopupMenu *popup = new QPopupMenu(0, "popup");
 
-	if (docked)
-		popup->insertItem(i18n("&UnDock"), this, SLOT(dock()));
-	else
-		popup->insertItem(i18n("&Dock"), this, SLOT(dock()));
-	popup->insertItem(i18n("&Setup..."), this, SLOT(setup()));
-	popup->insertSeparator();
-	popup->insertItem(i18n("&Help..."), this, SLOT(invokeHelp()));
-	popup->insertSeparator();
-
-	int check_id;
-	check_id = popup->insertItem(i18n("&Check mail now"), this, SLOT(checkMailNow()));
-
-	if (isRunning())
+	// if secure, disable everything but exit
+	if (isSecure == false)
 	{
-		popup->setItemEnabled(check_id, true);
-		popup->insertItem(i18n("&Stop"), this, SLOT(stop()));
-	}
-	else
-	{
-		popup->setItemEnabled(check_id, false);
-		popup->insertItem(i18n("&Start"), this, SLOT(start()));
+		if (docked)
+			popup->insertItem(i18n("&UnDock"), this, SLOT(dock()));
+		else
+			popup->insertItem(i18n("&Dock"), this, SLOT(dock()));
+		popup->insertItem(i18n("&Setup..."), this, SLOT(setup()));
+		popup->insertSeparator();
+		popup->insertItem(i18n("&Help..."), this, SLOT(invokeHelp()));
+		popup->insertSeparator();
+
+		int check_id;
+		check_id = popup->insertItem(i18n("&Check mail now"), this, SLOT(checkMailNow()));
+		int read_id;
+		read_id = popup->insertItem(i18n("&Read Mail now"), this, SLOT(readMailNow()));
+
+		if (isRunning())
+		{
+			popup->setItemEnabled(check_id, true);
+			popup->setItemEnabled(read_id, true);
+			popup->insertItem(i18n("&Stop"), this, SLOT(stop()));
+		}
+		else
+		{
+			popup->setItemEnabled(check_id, false);
+			popup->setItemEnabled(read_id, false);
+			popup->insertItem(i18n("&Start"), this, SLOT(start()));
+		}
+		popup->insertSeparator();
 	}
 
-	popup->insertSeparator();
 	popup->insertItem(i18n("E&xit"), kapp, SLOT(quit()));
 
 	popup->popup(QCursor::pos());
@@ -476,6 +500,7 @@ TRACEINIT("KBiff::reset()");
 	oldMailIcon = "oldmail.xpm";
 
 	docked    = false;
+	isSecure  = false;
 
 	mailClient  = "xmutt";
 

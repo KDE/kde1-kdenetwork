@@ -134,7 +134,11 @@ void KBiffMonitor::setMailboxIsRead()
 {
 TRACEINIT("KBiffMonitor::setMailboxIsRead()");
 	lastRead  = QDateTime::currentDateTime();
-	determineState(OldMail);
+	if (mailState == NewMail)
+	{
+		determineState(OldMail);
+		mailState = NewMail;
+	}
 }
 
 void KBiffMonitor::checkMailNow()

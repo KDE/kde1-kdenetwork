@@ -61,6 +61,7 @@ protected slots:
 	void dock();
 	void setup();
 	void checkMailNow();
+	void readMailNow();
 	void stop();
 	void start();
 
@@ -86,6 +87,8 @@ private:
 
 	bool    docked;
 	bool    sessions;
+
+	bool    isSecure;
 
 	QString noMailIcon;
 	QString newMailIcon;

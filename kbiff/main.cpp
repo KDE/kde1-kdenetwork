@@ -10,26 +10,37 @@ int main(int argc, char *argv[])
 	KApplication app(argc, argv, "kbiff");
 	KBiff kbiff;
 	KBiffSetup* setup;
+	bool is_secure = false;
 	bool have_profile = false;
+	QString profile;
 
 	app.setMainWidget(&kbiff);
 
-	// parse the args for the -debug option
-	if (argc == 2)
+	if (argc > 1)
 	{
-		if (QString(argv[1]) == "-debug")
-			TRACEON(true);
+		for (int i = 1; i < argc; i++)
+		{
+			QString arg(argv[i]);
+			if (arg == "-debug")
+				TRACEON(true);
+			else
+			if (arg == "-secure")
+				is_secure = true;
+			else
+			if (arg == "-profile")
+			{
+				// make sure there is at least one more arg
+				if ((i + 1) <= argc)
+				{
+					profile = argv[i+1];
+					have_profile = true;
+					i++;
+				}
+			}
+		}
 	}
 
 TRACEINIT("main()");
-
-	// parse the args to see if there is the -profile option
-	if (argc == 3)
-	{
-		// check if this is the argument we are looking for
-		if (QString(argv[1]) == "-profile")
-			have_profile = true;
-	}      
 
 	// restore this app if it is
 	if (kapp->isRestored())
@@ -42,7 +53,7 @@ TRACEINIT("main()");
 		TRACE("notRestored()");
 		// do we have the profile option?
 		if (have_profile)
-			setup = new KBiffSetup(argv[2]);
+			setup = new KBiffSetup(profile, is_secure);
 		else
 		{
 			setup = new KBiffSetup();
