@@ -32,7 +32,8 @@ endif
 bin_PROGRAMS = ${KSIRC_PROGRAM} ${KSIRCSTATIC_PROGRAM}
 
 # Which sources should be compiled for ksirc.
-ksirc_SOURCES	= toplevel.cpp \
+ksirc_SOURCES = \
+toplevel.cpp \
 ksirc.cpp \
 irclistbox.cpp \
 mirclistbox.cpp \
@@ -86,13 +87,12 @@ kdoc:
 	kdoc -ddoc ksirc *.h
 
 getdate: getdate.c
-	$(COMPILE) -c getdate.c
-	$(LINK) getdate.o
+	$(CC) -o getdate getdate.c
 
 cdate.h: getdate
 	./getdate > cdate.h
 
-ksircstatic: $(ksircstatic_OBJECTS) $(ksircstatic_DEPENDENCIES) $(static_libkde) $(static_libqt)
+ksircstatic: cdate.h $(ksircstatic_OBJECTS) $(ksircstatic_DEPENDENCIES) $(static_libkde) $(static_libqt)
 	@rm -f ksircstatic
 	$(LINK) $(ksircstatic_LDFLAGS) $(ksircstatic_OBJECTS) $(ksircstatic_LDADD) $(STATIC_LIBS) $(LIBS)
 
@@ -179,4 +179,11 @@ uninstall-local:
 # I've added a key binding to emacs for this. 
 m%.cpp: %.h
 	moc $< -o $@
+
+.deps/ksirc.P: ksirc.cpp cdate.h
+	@echo "Computing dependencies for $<..."
+	@o='o'; \
+	$(CXXMKDEP) $< >$@.tmp \
+	  && sed "s,^\(.*\)\.o:,\1.$$o \1.l$$o $@:," < $@.tmp > $@ \
+	  && rm -f $@.tmp
 
