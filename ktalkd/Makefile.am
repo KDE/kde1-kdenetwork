@@ -21,7 +21,7 @@ install-data-local:
 	@echo "Alternatively, you can use the script post-install.sh, to do the job"
 	@echo
 	@echo "Anyway, you'll have to restart inetd after this."
-	@echo "On most linux system, do a  'killall -HUP inetd'
+	@echo "On most linux system, do a  'killall -HUP inetd'"
 	@echo
 	@echo "**************************************************************************"
 
