@@ -48,6 +48,17 @@
 #include <unistd.h>  // for access and getpid
 //--- Sven's save attachments to /tmp end ---
 
+// Do the tmp stuff correctly - thanks to Harri Porten for
+// reminding me (sven)
+
+#ifdef HAVE_PATHS_H
+#include <paths.h>
+#endif
+
+#ifndef _PATH_TMP
+#define _PATH_TMP "/tmp/"
+#endif
+
 #ifdef KRN
 extern KApplication *app;
 extern KLocale *nls;
@@ -587,8 +598,8 @@ void KMReaderWin::writePartIcon(KMMessagePart* aMsgPart, int aPartNum)
   label = fileName;
 
 //--- Sven's save attachments to /tmp start ---
-  QString fname("/tmp/kmail");
-  fname.sprintf ("/tmp/kmail%d", getpid());
+  QString fname;
+  fname.sprintf ("%skmail%d", _PATH_TMP, getpid());
   bool ok = true;
 
   if (access(fname.data(), W_OK) != 0) // Not there or not writable
@@ -777,7 +788,7 @@ int KMReaderWin::msgPartFromUrl(const char* aUrl)
   if (!aUrl || !mMsg) return -1;
   
   QString url;
-  url.sprintf("file:/tmp/kmail%d/part", getpid());
+  url.sprintf("file:%skmail%d/part", _PATH_TMP, getpid());
   int s = url.length();
   if (strncmp(aUrl, url.data(), s) == 0)
   {
@@ -946,8 +957,9 @@ void KMReaderWin::slotAtmView()
       //image
       QString linkName;
       // Attachment is saved already; this is the file:
-      linkName.sprintf ("<img src=\"file:/tmp/kmail%d/part%d/%s\" border=0>",
-                        getpid(), mAtmCurrent+1, pname.data()); // set linkname
+      linkName.sprintf ("<img src=\"file:%skmail%d/part%d/%s\" border=0>",
+                        _PATH_TMP, getpid(), mAtmCurrent+1,
+                        pname.data()); // set linkname
       win->mViewer->begin(mPicsDir);
       win->mViewer->write("<HTML><BODY>");
       win->mViewer->write(linkName.data());
@@ -985,7 +997,8 @@ void KMReaderWin::slotAtmOpen()
   if (pname.isEmpty()) pname="unnamed";
   //--- Sven's save attachments to /tmp start ---
   // Sven added:
-  fileName.sprintf ("/tmp/kmail%d/part%d/%s", getpid(), mAtmCurrent+1, pname.data());
+  fileName.sprintf ("%skmail%d/part%d/%s", _PATH_TMP, getpid(), mAtmCurrent+1,
+                    pname.data());
   // Sven commented out:
   //tmpName = tempnam(NULL, NULL);
   //if (!tmpName)
