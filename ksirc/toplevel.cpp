@@ -904,8 +904,20 @@ void KSircTopLevel::control_message(int command, QString str) /*FOLD00*/
       QString server, chan;
       int bang;
       bang = str.find("!!!");
-      server = str.mid(0, bang);
-      chan = str.mid(bang + 3, str.length() - (bang + 3));
+      if(bang < 0){
+          chan = str;
+          QString mname = name();
+          int end = mname.find('_');
+          if(end < 0){
+              warning("Change channel message was invalid: %s", str.data());
+              break;
+          }
+          server = mname.mid(0, end);
+      }
+      else{
+          server = str.mid(0, bang);
+          chan = str.mid(bang + 3, str.length() - (bang + 3));
+      }
       emit changeChannel(channel_name, chan.data());
       if(channel_name)
 	delete channel_name;

@@ -10,7 +10,7 @@
 #include <errno.h>
 #include <sys/stat.h>
 
-#include <dlfcn.h>
+//#include <dlfcn.h>
 
 #include <qobjcoll.h>
 
@@ -112,7 +112,7 @@ PukeController::~PukeController() /*FOLD00*/
   unlink(qsPukeSocket);
 }
 
-void PukeController::NewConnect(int) /*fold00*/
+void PukeController::NewConnect(int) /*FOLD00*/
 {
   int cfd;
   int len = 0;
@@ -147,7 +147,7 @@ void PukeController::NewConnect(int) /*fold00*/
 }
 
 
-void PukeController::Writeable(int fd) /*fold00*/
+void PukeController::Writeable(int fd) /*FOLD00*/
 {
   if(qidConnectFd[fd]){
     qidConnectFd[fd]->writeable = TRUE;
@@ -161,7 +161,7 @@ void PukeController::Writeable(int fd) /*fold00*/
   }
 }
 
-void PukeController::writeBuffer(int fd, PukeMessage *message) /*fold00*/
+void PukeController::writeBuffer(int fd, PukeMessage *message) /*FOLD00*/
 {
   if(qidConnectFd[fd]){
     //    if(qidConnectFd[fd]->writeable == FALSE){
@@ -282,7 +282,7 @@ void PukeController::MessageDispatch(int fd, PukeMessage *pm) /*fold00*/
     }
 }
 
-void PukeController::initHdlr() /*fold00*/
+void PukeController::initHdlr() /*FOLD00*/
 {
 
   widgetCreate *wc;
@@ -595,7 +595,7 @@ void PukeController::insertPObject(int fd, int iWinId, WidgetS *obj){ /*fold00*/
     WidgetList[fd]->insert(iWinId, obj);
 }
 
-void PukeController::messageHandler(int fd, PukeMessage *pm) { /*fold00*/
+void PukeController::messageHandler(int fd, PukeMessage *pm) { /*FOLD00*/
   widgetId wI, wIret;
   wI.fd = fd;
   wI.iWinId = pm->iWinId;
@@ -647,24 +647,29 @@ void PukeController::messageHandler(int fd, PukeMessage *pm) { /*fold00*/
   }
   else if(pm->iCommand == PUKE_WIDGET_LOAD){
     PukeMessage pmRet = *pm;
-    void *handle;
-    const char *error;
+    KDynamicHandle handle;
+//    const char *error;
     PObject *(*wc)(CreateArgs &ca);
     widgetCreate *wC;
 
     pm->cArg[49] = 0;
-    handle = dlopen(kSircConfig->kdedir + "/lib/lib" + QString(pm->cArg), RTLD_LAZY|RTLD_GLOBAL);
+    handle = KDynamicLibrary::loadLibrary(kSircConfig->kdedir + "/lib/lib" + QString(pm->cArg), KDynamicLibrary::ResolveLazy);
+//    handle = dlopen(kSircConfig->kdedir + "/lib/lib" + QString(pm->cArg), RTLD_LAZY|RTLD_GLOBAL);
     if (!handle) {
-      fputs(dlerror(), stderr);
-      fputs("\n", stderr);
+//      fputs(dlerror(), stderr);
+//      fputs("\n", stderr);
       emit(errorCommandFailed(-pm->iCommand, 1));
+      return;
     }
+//    wc =  (PObject *(*)(CreateArgs &ca) )
+    //      dlsym(handle, "createWidget");
     wc =  (PObject *(*)(CreateArgs &ca) )
-      dlsym(handle, "createWidget");
-    if ((error = dlerror()) != NULL)  {
-      fputs(error, stderr);
-      emit(errorCommandFailed(-pm->iCommand, 1));
-    }
+        KDynamicLibrary::getSymbol(handle, "createWidget");
+
+//    if ((error = dlerror()) != NULL)  {
+//      fputs(error, stderr);
+//      emit(errorCommandFailed(-pm->iCommand, 1));
+//    }
     wC = new widgetCreate;
     wC->wc = wc;
     wC->dlhandle = handle;
@@ -674,8 +679,9 @@ void PukeController::messageHandler(int fd, PukeMessage *pm) { /*fold00*/
     emit outputMessage(fd, &pmRet);
   }
   else if(pm->iCommand == PUKE_WIDGET_UNLOAD){
-    const char *error;
+//    const char *error;
     if(widgetCF[pm->iArg]){
+        /*
       dlclose(widgetCF[pm->iArg]->dlhandle);
       if ((error = dlerror()) != NULL)  {
 	fputs(error, stderr);
@@ -683,7 +689,9 @@ void PukeController::messageHandler(int fd, PukeMessage *pm) { /*fold00*/
 	pm->iArg = -1;
 	emit outputMessage(fd, pm);
 	return;
-      }
+        }
+        */
+      KDynamicLibrary::unloadLibrary(widgetCF[pm->iArg]->dlhandle);
       widgetCF.remove(pm->iArg);
       pm->iCommand = -pm->iCommand;
       emit outputMessage(fd, pm);

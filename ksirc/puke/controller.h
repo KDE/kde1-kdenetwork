@@ -23,6 +23,8 @@ class PukeController;
 #include "pobject.h"
 #include "pwidget.h"
 
+#include "kdynlib.h"
+
 typedef struct {
   QString server;
   bool writeable;

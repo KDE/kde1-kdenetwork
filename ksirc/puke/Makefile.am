@@ -37,54 +37,76 @@ mpwidget.cpp \
 pobject.cpp \
 mpobject.cpp \
 playout.cpp \
-mplayout.cpp 
+mplayout.cpp \
+kdynlib.cpp
 
-libpuke_la_LDFLAGS = -version-info 0:1:0
+libpuke_la_LDFLAGS = -version-info 0:1:0 -export-dynamic
 
 libpframe_la_SOURCES = \
 pframe.cpp \
 mpframe.cpp
 
+libpframe_la_LDFLAGS = -export-dynamic
+
 libplined_la_SOURCES = \
 plined.cpp \
 mplined.cpp
+
+libplined_la_LDFLAGS = -export-dynamic
 
 libpbutton_la_SOURCES = \
 pbutton.cpp \
 mpbutton.cpp
 
+libpbutton_la_LDFLAGS = -export-dynamic
+
 libppushbt_la_SOURCES = \
 ppushbt.cpp \
 mppushbt.cpp
+
+libppushbt_la_LDFLAGS = -export-dynamic
 
 libpprogress_la_SOURCES = \
 pprogress.cpp \
 mpprogress.cpp
 
+libpprogress_la_LDFLAGS = -export-dynamic
+
 libptablevw_la_SOURCES = \
 ptablevw.cpp \
 mptablevw.cpp
+
+libptablevw_la_LDFLAGS = -export-dynamic
 
 libplistbox_la_SOURCES = \
 plistbox.cpp \
 mplistbox.cpp
 
+libplistbox_la_LDFLAGS = -export-dynamic
+
 libplabel_la_SOURCES = \
 plabel.cpp \
 mplabel.cpp
+
+libplabel_la_LDFLAGS = -export-dynamic
 
 libpmenudta_la_SOURCES = \
 pmenudta.cpp \
 mpmenudta.cpp
 
+libpmenudta_la_LDFLAGS = -export-dynamic
+
 libppopmenu_la_SOURCES = \
 ppopmenu.cpp  \
 mppopmenu.cpp
+
+libppopmenu_la_LDFLAGS = -export-dynamic
 
 libpalistbox_la_SOURCES = \
 palistbox.cpp \
 mpalistbox.cpp
 
+libpalistbox_la_LDFLAGS = -export-dynamic
 
 HOWTO-PUKE.txt: HOWTO-PUKE.pod
 	pod2text HOWTO-PUKE.pod > HOWTO-PUKE.txt
