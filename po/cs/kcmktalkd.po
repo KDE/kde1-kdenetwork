@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kcmktalkd\n"
-"POT-Creation-Date: 1998-07-20 15:16+0200\n"
+"POT-Creation-Date: 1998-12-12 15:20+0100\n"
 "PO-Revision-Date: 1998-10-28 20:39 CET\n"
 "Last-Translator: Miroslav Flídr <flidr@kky.zcu.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -13,51 +13,57 @@ msgstr ""
 "Content-Type: text/plain; charset=iso8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: main.cpp:55
+#: main.cpp:58
 msgid "&Announcement"
 msgstr "&Oznámení"
 
-#: main.cpp:58
+#: main.cpp:61
 msgid "Ans&wering machine"
 msgstr "&Záznamník"
 
 #: main.cpp:64
-msgid "usage: kcmktalkd [-init | soundpage | answmachpage]\n"
+msgid "&Forward"
+msgstr ""
+
+#: main.cpp:70
+#, fuzzy
+msgid "usage: kcmktalkd [-init | soundpage | answmachpage | forwmachpage ]\n"
 msgstr "Pou¾ití: kcmktalkd [-init | soundpage | answmachpage]\n"
 
-#: main.cpp:100
+#: main.cpp:111
 msgid "KTalkd Configuration"
 msgstr "Nastavení programu KTalkd"
 
-#: soundpage.cpp:47
+#: soundpage.cpp:46
 msgid "&Announcement program"
 msgstr "&Oznamovací program"
 
-#: soundpage.cpp:54
+#: soundpage.cpp:53
 msgid "&Talk client"
 msgstr "&Talk klient"
 
-#: soundpage.cpp:58
+#: soundpage.cpp:57
 msgid "&Play sound"
 msgstr "&Pøehrávat zvuk"
 
-#: soundpage.cpp:60
-msgid "Sound &File"
+#: soundpage.cpp:59
+#, fuzzy
+msgid "&Sound File"
 msgstr "Z&vukový soubor"
 
-#: soundpage.cpp:62
+#: soundpage.cpp:61
 msgid "Additional WAV files can be dropped onto the sound list."
 msgstr "Dal¹í WAV soubory je mo¾no upustit nad seznamem zvukù"
 
-#: soundpage.cpp:77
+#: soundpage.cpp:76
 msgid "&Test"
 msgstr "T&est"
 
-#: soundpage.cpp:157
+#: soundpage.cpp:156
 msgid "Unsupported URL"
 msgstr "Nepodporované URL"
 
-#: soundpage.cpp:158
+#: soundpage.cpp:157
 msgid ""
 "Sorry, this type of URL is currently unsupportedby the KDE System Sound "
 "Module"
@@ -65,7 +71,7 @@ msgstr ""
 "Lituji, ale tento typ URL není momentálnì podporován modulem systémových "
 "zvukù"
 
-#: soundpage.cpp:165
+#: soundpage.cpp:164
 #, c-format
 msgid ""
 "Sorry, but \n"
@@ -76,11 +82,11 @@ msgstr ""
 "%s\n"
 "byl WAv souborem"
 
-#: soundpage.cpp:168
+#: soundpage.cpp:167
 msgid "Improper File Extension"
 msgstr "Nesprávná koncovka souborù"
 
-#: soundpage.cpp:176
+#: soundpage.cpp:175
 #, c-format
 msgid ""
 "The file\n"
@@ -90,7 +96,7 @@ msgstr ""
 "Soubor\n"
 "%s je ji¾ v seznamu"
 
-#: soundpage.cpp:180
+#: soundpage.cpp:179
 msgid "File Already in List"
 msgstr "Soubor je ji¾ v seznamu"
 
@@ -147,3 +153,29 @@ msgstr "Zpráva od %s"
 #, c-format
 msgid "Message left in the answering machine, by %s@%s"
 msgstr "Zprávu zanechál v záznamníku %s@%s"
+
+#: forwmachpage.cpp:34
+msgid "Activate &forward"
+msgstr ""
+
+#: forwmachpage.cpp:39
+msgid "&Destination (user or user@host)"
+msgstr ""
+
+#: forwmachpage.cpp:49
+msgid "Forward &method"
+msgstr ""
+
+#: forwmachpage.cpp:54
+msgid ""
+"FWA : Forward announcement only. Direct connection. Not recommended.\n"
+"FWR : Forward all requests, changing info when necessary. Direct "
+"connection.\n"
+"FWT : Forward all requests and take the talk. No direct connection.\n"
+"\n"
+"Recommended use : FWT it you want to use it behind a firewall (and if "
+"ktalkd\n"
+"can access both networks), and FWR otherwise.\n"
+"\n"
+"See Help for further explanations.\n"
+msgstr ""
