@@ -361,7 +361,7 @@ ModemWidget::ModemWidget( QWidget *parent, const char *name)
 
 
   //Modem Lock File
-  modemlockfile = newCheckBox("Use Lock File", this);
+  modemlockfile = newCheckBox(i18n("Use Lock File"), this);
 
   modemlockfile->setChecked(gpppdata.modemLockFile());
   connect(modemlockfile, SIGNAL(toggled(bool)),

@@ -1,3 +1,9 @@
+1998-12-25  Harri Porten  <porten@kde.org>
+
+	* kpppconfig.h: include <sys/param.h> to get the BSD define.
+	#include <config.h> was missing too. This prevented several #ifdefs
+	from doing the right thing.
+
 1998-12-24  Harri Porten  <porten@kde.org>
 
 	* runtests.cpp: relaxed my previously enforced suid check for pppd

@@ -41,13 +41,13 @@
 #include <errno.h>
 #include <regex.h>
 
+#include "kpppconfig.h"
+#include "opener.h"
+#include "devices.h"
+
 #ifdef HAVE_RESOLV_H
 #include <resolv.h>
 #endif
-
-#include "opener.h"
-#include "kpppconfig.h"
-#include "devices.h"
 
 #ifndef _PATH_RESCONF
 #define _PATH_RESCONF "/etc/resolv.conf"

@@ -10,7 +10,7 @@
 # define MY_SCM_RIGHTS SCM_RIGHTS
 #endif
 
-#ifdef __FreeBSD__
+#ifdef BSD
 # define IOV_BASE_CAST (char *)
 #else
 # define IOV_BASE_CAST (void *)

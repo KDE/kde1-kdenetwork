@@ -23,9 +23,14 @@
  */
 
 
-#ifndef _CONFIG_H_
-#define _CONFIG_H_
+#ifndef _KPPPCONFIG_H_
+#define _KPPPCONFIG_H_
 
+#include <config.h>
+
+#ifdef HAVE_SYS_PARAM_H
+#include <sys/param.h>
+#endif
 
 // Warning: If you fiddle with the following directories you have
 // to adjust make_directories() in main.cpp()
@@ -85,7 +90,7 @@
 #ifdef __linux__
 # define LOCK_DIR "/var/lock"
 #else /* linux */
-# ifdef __BSD__
+# ifdef BSD
 #  define	LOCK_DIR "/var/spool/lock"
 # else  /* BSD */
 #  define	LOCK_DIR "/usr/spool/locks"
