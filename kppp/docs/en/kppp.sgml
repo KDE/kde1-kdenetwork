@@ -215,9 +215,6 @@ Otherwise kppp will not function properly.
 and starting pppd for pppd to establish a valid ppp link before giving up
 and killing pppd.
 
-<tag/Log Viewer/
-To be written ....
-
 <tag/Automatic Redial on Disconnect/ Selecting this will have kppp try to 
 reconnect in case you inadvertently got disconnected while online.
 
@@ -247,14 +244,18 @@ This option overrides <em>Minimize Window on Connect</em>.
 <sect>Configuring an Account<p>
 <sect1>Dial<p>
 <descrip>
-<tag/Connection Name/ You must give the account a name
+<tag/Connection Name/ You must give the account a name.
 
-<tag/Phone Number/ Specify the phone number to dial. You may use character such
-as ``-'' to make the number more legible.
+<tag/Phone Number/ Specify the phone number to dial. You may use characters such as ``-'' to make the number more legible.
+If you concatenate a series of numbers (separated by a colon) kppp will dial these numbers in a cyclic order whenever it receives a busy signal. Example: "111-2222:333-4444:555-6666"
 
-<tag/Authentication/ To be written ...
+<tag/Authentication/ Choose the appropriate method of authentication
+that kppp should use to log into the server. Check with your provider
+whether he offers PAP or CHAP support or if you have to use a script
+or terminal-based login method.
 
-<tag/Store password/ To be written ...
+<tag/Store password/ Check this option if you want kppp to remember
+your password at the next session. 
 
 <tag/Execute Program upon Connect/ kppp will attempt to execute the command specified here once a ppp link has been set up. 
 
