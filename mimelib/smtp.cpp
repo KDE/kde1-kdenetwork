@@ -24,10 +24,6 @@
 
 #define DW_IMPLEMENTATION
 
-#ifdef HAVE_CONFIG_H
-#include "../config.h"
-#endif
-
 #include <mimelib/config.h>
 #include <assert.h>
 #include <string.h>
@@ -37,6 +33,10 @@
 #if defined(DW_UNIX)
 #include <unistd.h>
 #endif
+
+#ifdef HAVE_CONFIG_H
+#include "../config.h"
+#endif  
 
 #define SMTP_PORT 25
 #define RECV_BUFFER_SIZE  8192
