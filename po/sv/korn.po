@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-10-01 18:13+0200\n"
+"POT-Creation-Date: 1999-01-10 14:26+0100\n"
 "PO-Revision-Date: 1998-12-29 21:53+0100\n"
 "Last-Translator: Karl Backstrom <backstrom@kde.org>\n"
 "Language-Team: Sv <LL@li.org>\n"
@@ -12,177 +12,213 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: ENCODING\n"
 
-#: shell.cpp:226
-msgid "About KOrn"
-msgstr "Om KOrn"
+#: kmailbox.cpp:150
+msgid "countMail: file open error"
+msgstr ""
 
-#: optdlg.cpp:113 shell.cpp:236
-msgid "&Setup.."
+#: korn.cpp:51
+#, fuzzy
+msgid "&Setup"
 msgstr "&Inställningar.."
 
-#: shell.cpp:239
-msgid "&About.."
+#: korn.cpp:54
+#, fuzzy
+msgid "&About"
 msgstr "&Om.."
 
-#: shell.cpp:250
-msgid "Welcome to KOrn"
-msgstr "Välkommen till KOrn"
-
-#: shell.cpp:251
-msgid ""
-"You do not appear to have used KOrn before. Would you like a basic "
-"configuration created for you?"
+#: korn.cpp:109
+msgid "korn: configure now?"
 msgstr ""
-"Det verkar inte som du har använt KOrn förut. Skulle du vilja ha "
-"en standardkonfiguration?"
 
-#: shell.cpp:253
-msgid "No, Exit"
-msgstr "Nej, avsluta"
+#: korn.cpp:110
+msgid ""
+"you have not yet configured korn.\n"
+"would you like to do this now?"
+msgstr ""
 
-#: dropman.cpp:185
+#: korn.cpp:114
+msgid "No - Quit"
+msgstr ""
+
+#: korn.cpp:119
+msgid "personal"
+msgstr ""
+
+#: korn.cpp:120
 msgid "Inbox"
 msgstr "Inkorgen"
 
-#: dropman.cpp:191
-msgid "Can't find mailbox"
-msgstr "Kan inte hitta brevlådorna"
-
-#: dropman.cpp:192
+#: korn.cpp:245
+#, c-format
 msgid ""
-"Unable to find $MAIL environment variable. You'll have to configure the "
-"mailboxes yourself."
+"Korn %s -- Sirtaj Singh Kang\n"
+"taj@kde.org, 1997\n"
+"\n"
+"The K Desktop Environment"
 msgstr ""
-"Hittade inte $MAIL-variabeln. Du måste konfigurera brevlådorna själv."
 
-#: dropman.cpp:254
-msgid " (clone)"
-msgstr " (klon)"
+#: korn.cpp:249
+#, fuzzy
+msgid "About kOrn"
+msgstr "Om KOrn"
 
-#: typedlg.cpp:28
-msgid "Select a mailbox type..."
-msgstr "Välj brevlådetyp..."
+#: korn.cpp:257
+msgid "korn: no config set"
+msgstr ""
 
-#: typedlg.cpp:44
-msgid "O&K"
-msgstr "O&K"
+#: korn.cpp:258
+msgid ""
+"Would you like to restart korn with\n"
+"the automatically generated configuration?"
+msgstr ""
 
-#: optdlg.cpp:30
-msgid "Korn: Options"
+#: korn.cpp:261
+msgid "Yes, Restart"
+msgstr ""
+
+#: korn.cpp:261
+msgid "No, Exit"
+msgstr "Nej, avsluta"
+
+#: kornopt.cpp:24
+#, fuzzy
+msgid "korn options"
 msgstr "Korn: Inställningar"
 
-#: optdlg.cpp:42
-msgid "Horizontal"
-msgstr "Horisontell"
+#: optdata.cpp:76
+#, fuzzy
+msgid "&New"
+msgstr "Nyheter"
 
-#: optdlg.cpp:45
-msgid "Vertical"
-msgstr "Vertikal"
-
-#: optdlg.cpp:48
-msgid "Docked"
-msgstr "Dockad"
-
-#: optdlg.cpp:51
-msgid "&Layout"
-msgstr "&Layout"
-
-#: optdlg.cpp:80
-msgid "&Modify Box"
-msgstr "&Ändra lådan"
-
-#: optdlg.cpp:89
-msgid "&New Box"
-msgstr "&Ny låda"
-
-#: optdlg.cpp:95
-msgid "&Delete Box"
-msgstr "&Ta bort lådan"
-
-#: optdlg.cpp:104
-msgid "&Clone Box"
-msgstr "&Stäng lådan"
-
-#: optdlg.cpp:121
-msgid "&Boxes"
+#: optdata.cpp:89
+#, fuzzy
+msgid "Boxes"
 msgstr "&Lådor"
 
-#: optdlg.cpp:243
-msgid "New Monitor"
-msgstr "Ny Monitor"
+#: optdata.cpp:118
+msgid "Name"
+msgstr ""
 
-#: dropdlg.cpp:22
-msgid "Korn Monitor"
-msgstr "Korn Monitor"
-
-#: gencfg.cpp:28
+#: optdata.cpp:124
 msgid "Caption"
 msgstr "Titel"
 
-#: gencfg.cpp:31
-msgid "On Receipt"
-msgstr "Vid mottagande"
-
-#: gencfg.cpp:34
-msgid "On Click"
-msgstr "Vid mustryckning"
-
-#: gencfg.cpp:42
-msgid "General"
-msgstr "Allmänt"
-
-#: pollcfg.cpp:26
-msgid "Poll"
-msgstr "Ta ur"
-
-#: pollcfg.cpp:40
-msgid "Check Frequency (sec)"
-msgstr "Tid mellan kollar (sek)"
-
-#: unixcfg.cpp:26
-msgid "Mailbox"
-msgstr "Brevlåda"
-
-#: unixcfg.cpp:41
-msgid "Mbox Path"
+#: optdata.cpp:138
+#, fuzzy
+msgid "Path"
 msgstr "Brevlådans sökväg"
 
-#: qmailcfg.cpp:26
-msgid "Maildir"
-msgstr "Brevkatalogen"
+#: optdata.cpp:152
+msgid "Poll time (sec)"
+msgstr ""
 
-#: qmailcfg.cpp:38
-msgid "Maildir Path"
-msgstr "Brevkatalogens sökväg"
+#: optdata.cpp:158
+msgid "Notify Command"
+msgstr ""
 
-#: newscfg.cpp:38 popcfg.cpp:44
-msgid "Server"
-msgstr "Server"
+#: optdata.cpp:180
+msgid "Click Command"
+msgstr ""
 
-#: popcfg.cpp:49
-msgid "Port"
-msgstr "Port"
+#~ msgid "Welcome to KOrn"
+#~ msgstr "Välkommen till KOrn"
 
-#: popcfg.cpp:52
-msgid "Username"
-msgstr "Avändaridentitet"
+#~ msgid ""
+#~ "You do not appear to have used KOrn before. Would you like a basic "
+#~ "configuration created for you?"
+#~ msgstr ""
+#~ "Det verkar inte som du har använt KOrn förut. Skulle du vilja ha en "
+#~ "standardkonfiguration?"
 
-#: popcfg.cpp:55
-msgid "Password"
-msgstr "Lösenord"
+#~ msgid "Can't find mailbox"
+#~ msgstr "Kan inte hitta brevlådorna"
 
-#: popcfg.cpp:60
-msgid "Save Password"
-msgstr "Spara lösenordet"
+#~ msgid ""
+#~ "Unable to find $MAIL environment variable. You'll have to configure the "
+#~ "mailboxes yourself."
+#~ msgstr ""
+#~ "Hittade inte $MAIL-variabeln. Du måste konfigurera brevlådorna själv."
 
-#: newscfg.cpp:26
-msgid "News"
-msgstr "Nyheter"
+#~ msgid " (clone)"
+#~ msgstr " (klon)"
 
-#: newscfg.cpp:41
-msgid "Group"
-msgstr "Grupp"
+#~ msgid "Select a mailbox type..."
+#~ msgstr "Välj brevlådetyp..."
 
-#: kfbrowsebtn.cpp:18
-msgid "Browse.."
-msgstr "Bläddra.."
+#~ msgid "O&K"
+#~ msgstr "O&K"
+
+#~ msgid "Horizontal"
+#~ msgstr "Horisontell"
+
+#~ msgid "Vertical"
+#~ msgstr "Vertikal"
+
+#~ msgid "Docked"
+#~ msgstr "Dockad"
+
+#~ msgid "&Layout"
+#~ msgstr "&Layout"
+
+#~ msgid "&Modify Box"
+#~ msgstr "&Ändra lådan"
+
+#~ msgid "&New Box"
+#~ msgstr "&Ny låda"
+
+#~ msgid "&Delete Box"
+#~ msgstr "&Ta bort lådan"
+
+#~ msgid "&Clone Box"
+#~ msgstr "&Stäng lådan"
+
+#~ msgid "New Monitor"
+#~ msgstr "Ny Monitor"
+
+#~ msgid "Korn Monitor"
+#~ msgstr "Korn Monitor"
+
+#~ msgid "On Receipt"
+#~ msgstr "Vid mottagande"
+
+#~ msgid "On Click"
+#~ msgstr "Vid mustryckning"
+
+#~ msgid "General"
+#~ msgstr "Allmänt"
+
+#~ msgid "Poll"
+#~ msgstr "Ta ur"
+
+#~ msgid "Check Frequency (sec)"
+#~ msgstr "Tid mellan kollar (sek)"
+
+#~ msgid "Mailbox"
+#~ msgstr "Brevlåda"
+
+#~ msgid "Maildir"
+#~ msgstr "Brevkatalogen"
+
+#~ msgid "Maildir Path"
+#~ msgstr "Brevkatalogens sökväg"
+
+#~ msgid "Server"
+#~ msgstr "Server"
+
+#~ msgid "Port"
+#~ msgstr "Port"
+
+#~ msgid "Username"
+#~ msgstr "Avändaridentitet"
+
+#~ msgid "Password"
+#~ msgstr "Lösenord"
+
+#~ msgid "Save Password"
+#~ msgstr "Spara lösenordet"
+
+#~ msgid "Group"
+#~ msgstr "Grupp"
+
+#~ msgid "Browse.."
+#~ msgstr "Bläddra.."

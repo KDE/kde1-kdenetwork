@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-10-01 18:13+0200\n"
+"POT-Creation-Date: 1999-01-10 14:26+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,176 +13,214 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: ENCODING\n"
 
-#: shell.cpp:226
-msgid "About KOrn"
-msgstr "Sobre o KOrn"
+#: kmailbox.cpp:150
+msgid "countMail: file open error"
+msgstr ""
 
-#: optdlg.cpp:113 shell.cpp:236
-msgid "&Setup.."
+#: korn.cpp:51
+#, fuzzy
+msgid "&Setup"
 msgstr "&Configuração..."
 
-#: shell.cpp:239
-msgid "&About.."
+#: korn.cpp:54
+#, fuzzy
+msgid "&About"
 msgstr "&Sobre..."
 
-#: shell.cpp:250
-msgid "Welcome to KOrn"
-msgstr "Bem-vindo ao KOrn"
+#: korn.cpp:109
+msgid "korn: configure now?"
+msgstr ""
 
-#: shell.cpp:251
+#: korn.cpp:110
 msgid ""
-"You do not appear to have used KOrn before. Would you like a basic "
-"configuration created for you?"
-msgstr "Aparentemente, você nunca usou o KOrn antes. Você gostaria que lhe "
-       "fosse criada uma configuração básica ?"
+"you have not yet configured korn.\n"
+"would you like to do this now?"
+msgstr ""
 
-#: shell.cpp:253
-msgid "No, Exit"
-msgstr "Não, sair"
+#: korn.cpp:114
+msgid "No - Quit"
+msgstr ""
 
-#: dropman.cpp:185
+#: korn.cpp:119
+msgid "personal"
+msgstr ""
+
+#: korn.cpp:120
 msgid "Inbox"
 msgstr "Caixa de entrada"
 
-#: dropman.cpp:191
-msgid "Can't find mailbox"
-msgstr "Caixa não encontrada"
-
-#: dropman.cpp:192
+#: korn.cpp:245
+#, c-format
 msgid ""
-"Unable to find $MAIL environment variable. You'll have to configure the "
-"mailboxes yourself."
-msgstr "Variável de ambiente $MAIL não encontrada. Você terá de configurar "
-       "as caixas de correio por si."
+"Korn %s -- Sirtaj Singh Kang\n"
+"taj@kde.org, 1997\n"
+"\n"
+"The K Desktop Environment"
+msgstr ""
 
-#: dropman.cpp:254
-msgid " (clone)"
-msgstr " (clone)"
+#: korn.cpp:249
+#, fuzzy
+msgid "About kOrn"
+msgstr "Sobre o KOrn"
 
-#: typedlg.cpp:28
-msgid "Select a mailbox type..."
-msgstr "Selecione um tipo de caixa de correio..."
+#: korn.cpp:257
+msgid "korn: no config set"
+msgstr ""
 
-#: typedlg.cpp:44
-msgid "O&K"
-msgstr "&OK"
+#: korn.cpp:258
+msgid ""
+"Would you like to restart korn with\n"
+"the automatically generated configuration?"
+msgstr ""
 
-#: optdlg.cpp:30
-msgid "Korn: Options"
+#: korn.cpp:261
+msgid "Yes, Restart"
+msgstr ""
+
+#: korn.cpp:261
+msgid "No, Exit"
+msgstr "Não, sair"
+
+#: kornopt.cpp:24
+#, fuzzy
+msgid "korn options"
 msgstr "Korn: Opções"
 
-#: optdlg.cpp:42
-msgid "Horizontal"
-msgstr "Horizontal"
+#: optdata.cpp:76
+#, fuzzy
+msgid "&New"
+msgstr "Notícias"
 
-#: optdlg.cpp:45
-msgid "Vertical"
-msgstr "Vertical"
-
-#: optdlg.cpp:48
-msgid "Docked"
-msgstr "Embutido"
-
-#: optdlg.cpp:51
-msgid "&Layout"
-msgstr "&Disposição"
-
-#: optdlg.cpp:80
-msgid "&Modify Box"
-msgstr "&Modificar caixa"
-
-#: optdlg.cpp:89
-msgid "&New Box"
-msgstr "&Nova caixa"
-
-#: optdlg.cpp:95
-msgid "&Delete Box"
-msgstr "&Apagar caixa"
-
-#: optdlg.cpp:104
-msgid "&Clone Box"
-msgstr "&Clonar caixa"
-
-#: optdlg.cpp:121
-msgid "&Boxes"
+#: optdata.cpp:89
+#, fuzzy
+msgid "Boxes"
 msgstr "&Caixas"
 
-#: optdlg.cpp:243
-msgid "New Monitor"
-msgstr "Novo Monitor"
+#: optdata.cpp:118
+msgid "Name"
+msgstr ""
 
-#: dropdlg.cpp:22
-msgid "Korn Monitor"
-msgstr "Monitor do Korn"
-
-#: gencfg.cpp:28
+#: optdata.cpp:124
 msgid "Caption"
 msgstr "Nome"
 
-#: gencfg.cpp:31
-msgid "On Receipt"
-msgstr "Ao Receber"
-
-#: gencfg.cpp:34
-msgid "On Click"
-msgstr "Ao Clicar"
-
-#: gencfg.cpp:42
-msgid "General"
-msgstr "Geral"
-
-#: pollcfg.cpp:26
-msgid "Poll"
-msgstr "Teste"
-
-#: pollcfg.cpp:40
-msgid "Check Frequency (sec)"
-msgstr "Freqüêncua de checagem (seg)"
-
-#: unixcfg.cpp:26
-msgid "Mailbox"
-msgstr "Caixa postal"
-
-#: unixcfg.cpp:41
-msgid "Mbox Path"
+#: optdata.cpp:138
+#, fuzzy
+msgid "Path"
 msgstr "Caminho da caixa postal"
 
-#: qmailcfg.cpp:26
-msgid "Maildir"
-msgstr "Maildir"
+#: optdata.cpp:152
+msgid "Poll time (sec)"
+msgstr ""
 
-#: qmailcfg.cpp:38
-msgid "Maildir Path"
-msgstr "Caminho do Maildir"
+#: optdata.cpp:158
+msgid "Notify Command"
+msgstr ""
 
-#: newscfg.cpp:38 popcfg.cpp:44
-msgid "Server"
-msgstr "Servidor"
+#: optdata.cpp:180
+msgid "Click Command"
+msgstr ""
 
-#: popcfg.cpp:49
-msgid "Port"
-msgstr "Porta"
+#~ msgid "Welcome to KOrn"
+#~ msgstr "Bem-vindo ao KOrn"
 
-#: popcfg.cpp:52
-msgid "Username"
-msgstr "Nome de usuário"
+#~ msgid ""
+#~ "You do not appear to have used KOrn before. Would you like a basic "
+#~ "configuration created for you?"
+#~ msgstr ""
+#~ "Aparentemente, você nunca usou o KOrn antes. Você gostaria que lhe fosse "
+#~ "criada uma configuração básica ?"
 
-#: popcfg.cpp:55
-msgid "Password"
-msgstr "Senha"
+#~ msgid "Can't find mailbox"
+#~ msgstr "Caixa não encontrada"
 
-#: popcfg.cpp:60
-msgid "Save Password"
-msgstr "Salvar Senha"
+#~ msgid ""
+#~ "Unable to find $MAIL environment variable. You'll have to configure the "
+#~ "mailboxes yourself."
+#~ msgstr ""
+#~ "Variável de ambiente $MAIL não encontrada. Você terá de configurar as caixas "
+#~ "de correio por si."
 
-#: newscfg.cpp:26
-msgid "News"
-msgstr "Notícias"
+#~ msgid " (clone)"
+#~ msgstr " (clone)"
 
-#: newscfg.cpp:41
-msgid "Group"
-msgstr "Grupo"
+#~ msgid "Select a mailbox type..."
+#~ msgstr "Selecione um tipo de caixa de correio..."
 
-#: kfbrowsebtn.cpp:18
-msgid "Browse.."
-msgstr "Navegar..."
+#~ msgid "O&K"
+#~ msgstr "&OK"
+
+#~ msgid "Horizontal"
+#~ msgstr "Horizontal"
+
+#~ msgid "Vertical"
+#~ msgstr "Vertical"
+
+#~ msgid "Docked"
+#~ msgstr "Embutido"
+
+#~ msgid "&Layout"
+#~ msgstr "&Disposição"
+
+#~ msgid "&Modify Box"
+#~ msgstr "&Modificar caixa"
+
+#~ msgid "&New Box"
+#~ msgstr "&Nova caixa"
+
+#~ msgid "&Delete Box"
+#~ msgstr "&Apagar caixa"
+
+#~ msgid "&Clone Box"
+#~ msgstr "&Clonar caixa"
+
+#~ msgid "New Monitor"
+#~ msgstr "Novo Monitor"
+
+#~ msgid "Korn Monitor"
+#~ msgstr "Monitor do Korn"
+
+#~ msgid "On Receipt"
+#~ msgstr "Ao Receber"
+
+#~ msgid "On Click"
+#~ msgstr "Ao Clicar"
+
+#~ msgid "General"
+#~ msgstr "Geral"
+
+#~ msgid "Poll"
+#~ msgstr "Teste"
+
+#~ msgid "Check Frequency (sec)"
+#~ msgstr "Freqüêncua de checagem (seg)"
+
+#~ msgid "Mailbox"
+#~ msgstr "Caixa postal"
+
+#~ msgid "Maildir"
+#~ msgstr "Maildir"
+
+#~ msgid "Maildir Path"
+#~ msgstr "Caminho do Maildir"
+
+#~ msgid "Server"
+#~ msgstr "Servidor"
+
+#~ msgid "Port"
+#~ msgstr "Porta"
+
+#~ msgid "Username"
+#~ msgstr "Nome de usuário"
+
+#~ msgid "Password"
+#~ msgstr "Senha"
+
+#~ msgid "Save Password"
+#~ msgstr "Salvar Senha"
+
+#~ msgid "Group"
+#~ msgstr "Grupo"
+
+#~ msgid "Browse.."
+#~ msgstr "Navegar..."

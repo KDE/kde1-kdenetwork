@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KORN\n"
-"POT-Creation-Date: 1998-10-01 18:13+0200\n"
+"POT-Creation-Date: 1999-01-10 14:26+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Kim Enkovaara <kim.enkovaara@iki.fi>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,178 +14,213 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: ENCODING\n"
 
-#: shell.cpp:226
-msgid "About KOrn"
-msgstr "tietoja KOrn:ta"
+#: kmailbox.cpp:150
+msgid "countMail: file open error"
+msgstr ""
 
-#: optdlg.cpp:113 shell.cpp:236
-msgid "&Setup.."
+#: korn.cpp:51
+#, fuzzy
+msgid "&Setup"
 msgstr "&Asetukset.."
 
-#: shell.cpp:239
-msgid "&About.."
+#: korn.cpp:54
+#, fuzzy
+msgid "&About"
 msgstr "&Tietoja.."
 
-#: shell.cpp:250
-msgid "Welcome to KOrn"
-msgstr "Tervetuloa KOrn:n"
-
-#: shell.cpp:251
-msgid ""
-"You do not appear to have used KOrn before. Would you like a basic "
-"configuration created for you?"
+#: korn.cpp:109
+msgid "korn: configure now?"
 msgstr ""
-"Et ole käyttänyt KOrn:a ennemmin. Haluatko että sinulle luodaan "
-"perusasetukset?"
 
-#: shell.cpp:253
-msgid "No, Exit"
-msgstr "Ei, Lopeta"
+#: korn.cpp:110
+msgid ""
+"you have not yet configured korn.\n"
+"would you like to do this now?"
+msgstr ""
 
-#: dropman.cpp:185
+#: korn.cpp:114
+msgid "No - Quit"
+msgstr ""
+
+#: korn.cpp:119
+msgid "personal"
+msgstr ""
+
+#: korn.cpp:120
 msgid "Inbox"
 msgstr "Tulevat"
 
-#: dropman.cpp:191
-msgid "Can't find mailbox"
-msgstr "En löydä postilaatikkoa"
-
-#: dropman.cpp:192
+#: korn.cpp:245
+#, c-format
 msgid ""
-"Unable to find $MAIL environment variable. You'll have to configure the "
-"mailboxes yourself."
+"Korn %s -- Sirtaj Singh Kang\n"
+"taj@kde.org, 1997\n"
+"\n"
+"The K Desktop Environment"
 msgstr ""
-"En löydä $MAIL ympäristömuuttujaa. Sinun täytyy asettaa postilaatikot "
-"itse."
 
-#: dropman.cpp:254
-msgid " (clone)"
-msgstr " (klooni)"
+#: korn.cpp:249
+#, fuzzy
+msgid "About kOrn"
+msgstr "tietoja KOrn:ta"
 
-#: typedlg.cpp:28
-msgid "Select a mailbox type..."
-msgstr "Valitse postilaatikon tyyppi..."
+#: korn.cpp:257
+msgid "korn: no config set"
+msgstr ""
 
-#: typedlg.cpp:44
-msgid "O&K"
-msgstr "&OK"
+#: korn.cpp:258
+msgid ""
+"Would you like to restart korn with\n"
+"the automatically generated configuration?"
+msgstr ""
 
-#: optdlg.cpp:30
-msgid "Korn: Options"
+#: korn.cpp:261
+msgid "Yes, Restart"
+msgstr ""
+
+#: korn.cpp:261
+msgid "No, Exit"
+msgstr "Ei, Lopeta"
+
+#: kornopt.cpp:24
+#, fuzzy
+msgid "korn options"
 msgstr "Korn: Asetukset"
 
-#: optdlg.cpp:42
-msgid "Horizontal"
-msgstr "Vaakasuuntainen"
+#: optdata.cpp:76
+#, fuzzy
+msgid "&New"
+msgstr "Uutiset"
 
-#: optdlg.cpp:45
-msgid "Vertical"
-msgstr "Pystysuuntainen"
-
-#: optdlg.cpp:48
-msgid "Docked"
-msgstr "Nielaistu"
-
-#: optdlg.cpp:51
-msgid "&Layout"
-msgstr "&Ulkonäkö"
-
-#: optdlg.cpp:80
-msgid "&Modify Box"
-msgstr "&Muokkaa laatikkoa"
-
-#: optdlg.cpp:89
-msgid "&New Box"
-msgstr "&Uusi laatikko"
-
-#: optdlg.cpp:95
-msgid "&Delete Box"
-msgstr "&Tuhoa laatikko"
-
-#: optdlg.cpp:104
-msgid "&Clone Box"
-msgstr "&Kloobaa laatikko"
-
-#: optdlg.cpp:121
-msgid "&Boxes"
+#: optdata.cpp:89
+#, fuzzy
+msgid "Boxes"
 msgstr "&Laatikot"
 
-#: optdlg.cpp:243
-msgid "New Monitor"
-msgstr "Uusi valvonta"
+#: optdata.cpp:118
+msgid "Name"
+msgstr ""
 
-#: dropdlg.cpp:22
-msgid "Korn Monitor"
-msgstr "Korn valvonta"
-
-#: gencfg.cpp:28
+#: optdata.cpp:124
 msgid "Caption"
 msgstr "Otsikko"
 
-#: gencfg.cpp:31
-msgid "On Receipt"
-msgstr "Vastaanotettaessa"
-
-#: gencfg.cpp:34
-msgid "On Click"
-msgstr "Klikattaessa"
-
-#: gencfg.cpp:42
-msgid "General"
-msgstr "Yleiset"
-
-#: pollcfg.cpp:26
-msgid "Poll"
-msgstr "Pollaa"
-
-#: pollcfg.cpp:40
-msgid "Check Frequency (sec)"
-msgstr "Tarkistustaajuus (sek)"
-
-#: unixcfg.cpp:26
-msgid "Mailbox"
-msgstr "Postilaatikko"
-
-#: unixcfg.cpp:41
-msgid "Mbox Path"
+#: optdata.cpp:138
+#, fuzzy
+msgid "Path"
 msgstr "Mbox polku"
 
-#: qmailcfg.cpp:26
-msgid "Maildir"
-msgstr "Postihakemisto"
+#: optdata.cpp:152
+msgid "Poll time (sec)"
+msgstr ""
 
-#: qmailcfg.cpp:38
-msgid "Maildir Path"
-msgstr "Postihakemiston polku"
+#: optdata.cpp:158
+msgid "Notify Command"
+msgstr ""
 
-#: newscfg.cpp:38 popcfg.cpp:44
-msgid "Server"
-msgstr "Palvelin"
+#: optdata.cpp:180
+msgid "Click Command"
+msgstr ""
 
-#: popcfg.cpp:49
-msgid "Port"
-msgstr "Portti"
+#~ msgid "Welcome to KOrn"
+#~ msgstr "Tervetuloa KOrn:n"
 
-#: popcfg.cpp:52
-msgid "Username"
-msgstr "Käyttäjänimi"
+#~ msgid ""
+#~ "You do not appear to have used KOrn before. Would you like a basic "
+#~ "configuration created for you?"
+#~ msgstr ""
+#~ "Et ole käyttänyt KOrn:a ennemmin. Haluatko että sinulle luodaan "
+#~ "perusasetukset?"
 
-#: popcfg.cpp:55
-msgid "Password"
-msgstr "Salasana"
+#~ msgid "Can't find mailbox"
+#~ msgstr "En löydä postilaatikkoa"
 
-#: popcfg.cpp:60
-msgid "Save Password"
-msgstr "Tallenna salasana"
+#~ msgid ""
+#~ "Unable to find $MAIL environment variable. You'll have to configure the "
+#~ "mailboxes yourself."
+#~ msgstr ""
+#~ "En löydä $MAIL ympäristömuuttujaa. Sinun täytyy asettaa postilaatikot itse."
 
-#: newscfg.cpp:26
-msgid "News"
-msgstr "Uutiset"
+#~ msgid " (clone)"
+#~ msgstr " (klooni)"
 
-#: newscfg.cpp:41
-msgid "Group"
-msgstr "Ryhmä"
+#~ msgid "Select a mailbox type..."
+#~ msgstr "Valitse postilaatikon tyyppi..."
 
-#: kfbrowsebtn.cpp:18
-msgid "Browse.."
-msgstr "Selaa.."
+#~ msgid "O&K"
+#~ msgstr "&OK"
+
+#~ msgid "Horizontal"
+#~ msgstr "Vaakasuuntainen"
+
+#~ msgid "Vertical"
+#~ msgstr "Pystysuuntainen"
+
+#~ msgid "Docked"
+#~ msgstr "Nielaistu"
+
+#~ msgid "&Layout"
+#~ msgstr "&Ulkonäkö"
+
+#~ msgid "&Modify Box"
+#~ msgstr "&Muokkaa laatikkoa"
+
+#~ msgid "&New Box"
+#~ msgstr "&Uusi laatikko"
+
+#~ msgid "&Delete Box"
+#~ msgstr "&Tuhoa laatikko"
+
+#~ msgid "&Clone Box"
+#~ msgstr "&Kloobaa laatikko"
+
+#~ msgid "New Monitor"
+#~ msgstr "Uusi valvonta"
+
+#~ msgid "Korn Monitor"
+#~ msgstr "Korn valvonta"
+
+#~ msgid "On Receipt"
+#~ msgstr "Vastaanotettaessa"
+
+#~ msgid "On Click"
+#~ msgstr "Klikattaessa"
+
+#~ msgid "General"
+#~ msgstr "Yleiset"
+
+#~ msgid "Poll"
+#~ msgstr "Pollaa"
+
+#~ msgid "Check Frequency (sec)"
+#~ msgstr "Tarkistustaajuus (sek)"
+
+#~ msgid "Mailbox"
+#~ msgstr "Postilaatikko"
+
+#~ msgid "Maildir"
+#~ msgstr "Postihakemisto"
+
+#~ msgid "Maildir Path"
+#~ msgstr "Postihakemiston polku"
+
+#~ msgid "Server"
+#~ msgstr "Palvelin"
+
+#~ msgid "Port"
+#~ msgstr "Portti"
+
+#~ msgid "Username"
+#~ msgstr "Käyttäjänimi"
+
+#~ msgid "Password"
+#~ msgstr "Salasana"
+
+#~ msgid "Save Password"
+#~ msgstr "Tallenna salasana"
+
+#~ msgid "Group"
+#~ msgstr "Ryhmä"
+
+#~ msgid "Browse.."
+#~ msgstr "Selaa.."
