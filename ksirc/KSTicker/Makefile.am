@@ -57,7 +57,12 @@ ksticker_LDADD   = -lkdeui -lkdecore -lqt -lX11 -lXext @LIBSOCKET@
 noinst_HEADERS = ksticker.h          main.h              speeddialog.h       speeddialogData.h kspainter.h
 
 # just to make sure, automake makes them 
-BUILTSOURCES =	
+BUILTSOURCES =	\
+mksticker.cpp \
+mmain.cpp \
+mspeeddialog.cpp \
+mspeeddialogData.cpp
+
 
 # if you "make distclean", this files get removed. If you want to remove
 # them while "make clean", use CLEANFILES

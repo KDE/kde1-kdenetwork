@@ -116,6 +116,10 @@ kde_toolbardir = @kde_toolbardir@
 kde_wallpaperdir = @kde_wallpaperdir@
 qt_includes = @qt_includes@
 qt_libraries = @qt_libraries@
+static_libkde = @static_libkde@
+static_libqt = @static_libqt@
+static_libstdc = @static_libstdc@
+static_pthread = @static_pthread@
 x_includes = @x_includes@
 x_libraries = @x_libraries@
 

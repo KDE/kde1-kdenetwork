@@ -34,7 +34,9 @@ noinst_HEADERS = \
 ksprogress.h      ksprogressdata.h
 
 # just to make sure, automake makes them 
-BUILTSOURCES =	
+BUILTSOURCES = \
+mksprogress.cpp \
+mksprogressdata.cpp
 
 # if you "make distclean", this files get removed. If you want to remove
 # them while "make clean", use CLEANFILES

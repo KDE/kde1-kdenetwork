@@ -9,7 +9,7 @@
 
 #include "defaultfilters.h"
 #include "../config.h"
-#include "kspainter.h"
+#include "../kspainter.h"
 #include <qpixmap.h>
 
 #include <kconfig.h>

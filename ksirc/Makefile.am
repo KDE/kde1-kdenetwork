@@ -20,11 +20,18 @@ DEFS = @DEFS@ -I. -I$(srcdir) -I..
 # claim, which subdirectories you want to install
 SUBDIRS = KSTicker KSProgress KSCutDialog KSPrefs KSColourPicker puke img doc
 
-####### This part is very khexdit specific
+####### This part is very ksirc specific
 # you can add here more. This one gets installed 
-bin_PROGRAMS = getdate ksirc ksircstatic
+if COMPILE_KSIRC_SHARED
+KSIRC_PROGRAM = ksirc
+endif
+if COMPILE_KSIRC_STATIC
+KSIRCSTATIC_PROGRAM = ksircstatic
+endif
 
-# Which sources should be compiled for khexdit.
+bin_PROGRAMS = ${KSIRC_PROGRAM} ${KSIRCSTATIC_PROGRAM}
+
+# Which sources should be compiled for ksirc.
 ksirc_SOURCES	= toplevel.cpp \
 ksirc.cpp \
 irclistbox.cpp \
@@ -71,7 +78,9 @@ ksirc_LDADD   = ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDia
 
 ksircstatic_LDADD = ./KSProgress/libksprogress.a ./KSTicker/libksticker.a ./KSCutDialog/libkscutdialog.a ./KSPrefs/libksprefs.a ./KSColourPicker/libkscolourpicker.a ./puke/.libs/libpuke.a
 
-STATIC_LIBS = /opt/kde/lib/libkdeui.a /opt/kde/lib/libkdecore.a /usr/lib/libqt.a /usr/local/lib/libstdc++.a -lpthread -lX11 -lXext @LIBSOCKET@ -ldl
+if COMPILE_KSIRC_STATIC
+STATIC_LIBS = $(static_libkde) $(static_libqt) $(static_libstdc) $(static_pthread) -lX11 -lXext @LIBSOCKET@ -ldl
+endif
 
 kdoc:
 	kdoc -ddoc ksirc *.h
@@ -80,17 +89,14 @@ getdate: getdate.c
 	$(COMPILE) -c getdate.c
 	$(LINK) getdate.o
 
-cdate.h: $(ksirc_SOURCES) getdate
+cdate.h: getdate
 	./getdate > cdate.h
 
-ksircstatic: dummy
+ksircstatic: $(ksircstatic_OBJECTS) $(ksircstatic_DEPENDENCIES) $(static_libkde) $(static_libqt)
 	@rm -f ksircstatic
-	@echo "*** Ignore any failures ***"        
-	$(LINK) $(ksircstatic_LDFLAGS) $(ksircstatic_OBJECTS) $(ksircstatic_LDADD) $(STATIC_LIBS) $(LIBS) || true
-	@touch ksircstatic
-	@echo "*** Ignore previous failure, if any ***"
+	$(LINK) $(ksircstatic_LDFLAGS) $(ksircstatic_OBJECTS) $(ksircstatic_LDADD) $(STATIC_LIBS) $(LIBS)
 
-dummy:
+#dummy:
 
 
 # this option you can leave out. Just, if you use "make dist", you need it
@@ -115,7 +121,31 @@ sirc.help.gz              baserules.h               estring.h
 
 
 # just to make sure, automake makes them 
-BUILTSOURCES =	
+BUILTSOURCES = \
+mFilterRuleEditor.cpp \
+mFilterRuleEditorData.cpp \
+mKSircColour.cpp \
+mKSircColourData.cpp \
+mahistlineedit.cpp \
+malistbox.cpp \
+mdccDialog.cpp \
+mdccDialogData.cpp \
+mioDCC.cpp \
+mioLAG.cpp \
+mioNotify.cpp \
+miocontroller.cpp \
+mirclistbox.cpp \
+mirclistitem.cpp \
+mksircprocess.cpp \
+mobjFinder.cpp \
+mopen_ksirc.cpp \
+mopen_ksircData.cpp \
+mopen_top.cpp \
+mopen_topData.cpp \
+mservercontroller.cpp \
+mssfeprompt.cpp \
+mssfepromptdata.cpp \
+mtoplevel.cpp
 
 # if you "make distclean", this files get removed. If you want to remove
 # them while "make clean", use CLEANFILES
@@ -123,7 +153,7 @@ DISTCLEANFILES = $(BUILTSOURCES)
 
 # make messages.po. Move this one to ../po/ and "make merge" in po
 messages:
-	$(XGETTEXT) -C -ktranslate $(khexdit_SOURCES)
+	$(XGETTEXT) -C -ktranslate $(ksirc_SOURCES)
 
 # just install datas here. Use install-exec-data for scripts and etc.
 # the binary itself is already installed from automake

@@ -43,8 +43,8 @@ UserMenuRef.cpp \
 mUserMenuRef.cpp \
 UserMenuRefData.cpp \
 mUserMenuRefData.cpp \
-kspainter.cpp \
-mkspainter.cpp \
+../kspainter.cpp \
+../mkspainter.cpp \
 defaultfilters.cpp \
 mdefaultfilters.cpp \
 defaultfiltersdata.cpp \
@@ -60,12 +60,24 @@ general.h \
 startup.h \
 UserMenuRef.h \
 UserMenuRefData.h \
-kspainter.h \
+../kspainter.h \
 defaultfilters.h \
 defaultfiltersdata.h
 
 # just to make sure, automake makes them 
-BUILTSOURCES =	
+BUILTSOURCES = \
+mUserMenuRef.cpp \
+mUserMenuRefData.cpp \
+mdefaultfilters.cpp \
+mdefaultfiltersdata.cpp \
+mgeneral.cpp \
+mgeneralData.cpp \
+mkspainter.cpp \
+mksprefs.cpp \
+mserverchannel.cpp \
+mserverchanneldata.cpp \
+mstartup.cpp \
+mstartupdata.cpp
 
 # if you "make distclean", this files get removed. If you want to remove
 # them while "make clean", use CLEANFILES

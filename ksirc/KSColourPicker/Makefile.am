@@ -38,7 +38,10 @@ kscolourpickerData.h \
 kspainter.h
 
 # just to make sure, automake makes them 
-BUILTSOURCES =	
+BUILTSOURCES = \
+mkscolourpicker.cpp \
+mkscolourpickerData.cpp \
+mkspainter.cpp	
 
 # if you "make distclean", this files get removed. If you want to remove
 # them while "make clean", use CLEANFILES

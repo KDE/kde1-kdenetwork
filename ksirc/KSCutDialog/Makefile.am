@@ -53,7 +53,11 @@ libkscutdialog: $(libkscutdialogOBJECTS)
 	ranlib libkscutdialog.a || true
 
 # just to make sure, automake makes them 
-BUILTSOURCES =	
+BUILTSOURCES =	\
+mKSCutDialog.cpp \
+mKSCutDialogData.cpp \
+mcutmle.cpp
+
 
 # if you "make distclean", this files get removed. If you want to remove
 # them while "make clean", use CLEANFILES

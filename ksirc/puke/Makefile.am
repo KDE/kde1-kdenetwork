@@ -149,7 +149,24 @@ ptabdialog.h \
 ksirclistbox.h
 
 # just to make sure, automake makes them 
-BUILTSOURCES =	
+BUILTSOURCES = \
+mcontroller.cpp \
+mksirclistbox.cpp \
+mpalistbox.cpp \
+mpbutton.cpp \
+mpframe.cpp \
+mplabel.cpp \
+mplayout.cpp \
+mplined.cpp \
+mplistbox.cpp \
+mpmenudta.cpp \
+mpobject.cpp \
+mppopmenu.cpp \
+mpprogress.cpp \
+mppushbt.cpp \
+mptabdialog.cpp \
+mptablevw.cpp \
+mpwidget.cpp
 
 # if you "make distclean", this files get removed. If you want to remove
 # them while "make clean", use CLEANFILES
