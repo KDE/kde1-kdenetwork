@@ -232,13 +232,13 @@ int main( int argc, char **argv ) {
     perror("fork() failed");
     exit(1);
   }
-  
+
   // parent process
   close(sockets[1]);
 
   // drop setuid status
-  setuid(getuid());
   setgid(getgid());
+  setuid(getuid());
   //
   // end of setuid-dropping block.
   // 
@@ -325,8 +325,8 @@ int main( int argc, char **argv ) {
   }
   
   if (terminate_connection) {
-    setuid(getuid());
     setgid(getgid());
+    setuid(getuid());
     if (pid > 0)
       kill(pid, SIGINT);
     else
@@ -1175,8 +1175,8 @@ pid_t execute_command (const char *command) {
       close(fd);
 
     // drop privileges if running setuid root
-    setuid(getuid());
     setgid(getgid());
+    setuid(getuid());
     
     system(command);
     _exit(0);
@@ -1260,7 +1260,6 @@ void shutDown(int status) {
   if(pid > 0) {
     gpppdata.setSuidChildPid(-1);
     Debug("killing child process %i", pid);
-    //   kill(pid, SIGTERM);
     kill(pid, SIGKILL);
   }
   exit(status);

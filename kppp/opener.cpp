@@ -40,6 +40,7 @@
 #include <string.h>
 #include <errno.h>
 #include <regex.h>
+#include <netinet/in.h>
 
 #include "kpppconfig.h"
 #include "opener.h"
@@ -105,9 +106,9 @@ void Opener::mainLoop() {
         Debug("error opening modem device !");
         fd = open(DEVNULL, O_RDONLY);
         response.status = -errno;
-        sendFD(DEVNULL, fd, &response);
+        sendFD(fd, &response);
       } else
-        sendFD(device, fd, &response);
+        sendFD(fd, &response);
       close(fd);
       break;
 
@@ -143,10 +144,10 @@ void Opener::mainLoop() {
         lockfile[0] = '\0';
         fd = open(DEVNULL, O_RDONLY);
         response.status = -errno;
-        sendFD(DEVNULL, fd, &response);
+        sendFD(fd, &response);
       } else {
 	fchown(fd, 0, 0);
-        sendFD(lockfile, fd, &response);
+        sendFD(fd, &response);
       }
       close(fd);
       break;
@@ -168,9 +169,9 @@ void Opener::mainLoop() {
         Debug("error opening resolv.conf!");
         fd = open(DEVNULL, O_RDONLY);
         response.status = -errno;
-        sendFD(DEVNULL, fd, &response);
+        sendFD(fd, &response);
       } else
-        sendFD(_PATH_RESCONF, fd, &response);
+        sendFD(fd, &response);
       close(fd);
       break;
 
@@ -183,11 +184,11 @@ void Opener::mainLoop() {
           Debug("error opening syslog file !");
           fd = open(DEVNULL, O_RDONLY);
           response.status = -errno;
-          sendFD(DEVNULL, fd, &response);
+          sendFD(fd, &response);
         } else
-          sendFD("/var/log/syslog.ppp", fd, &response);
+          sendFD(fd, &response);
       } else
-        sendFD("/var/log/messages", fd, &response);
+        sendFD(fd, &response);
       close(fd);
       break;
 
@@ -223,23 +224,20 @@ void Opener::mainLoop() {
 //
 // Send an open fd over a UNIX socket pair
 //
-int Opener::sendFD(const char *path, int fd,
-                       struct ResponseHeader *response) {
+int Opener::sendFD(int fd, struct ResponseHeader *response) {
 
   struct { struct cmsghdr cmsg; int fd; } control;
   struct msghdr	msg;
-  struct iovec iov[2];
+  struct iovec iov;
 
   msg.msg_name = 0L;
   msg.msg_namelen = 0;
-  msg.msg_iov = &iov[0];
-  msg.msg_iovlen = 2;
+  msg.msg_iov = &iov;
+  msg.msg_iovlen = 1;
 
   // Send data
-  iov[0].iov_base = IOV_BASE_CAST response;
-  iov[0].iov_len = sizeof(struct ResponseHeader);
-  iov[1].iov_base = IOV_BASE_CAST path;
-  iov[1].iov_len = strlen(path) + 1;
+  iov.iov_base = IOV_BASE_CAST response;
+  iov.iov_len = sizeof(struct ResponseHeader);
 
   // Send a (duplicate of) the file descriptor
   control.cmsg.cmsg_len = sizeof(struct cmsghdr) + sizeof(int);

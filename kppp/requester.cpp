@@ -60,23 +60,21 @@ Requester::~Requester() {
 // 
 // Receive file name and file descriptors from envoy
 //  
-int Requester::recvFD(char *filename, int size) {
+int Requester::recvFD() {
   struct { struct cmsghdr cmsg; int fd; } control;
   struct msghdr	msg;
   struct ResponseHeader response;
 
-  struct iovec iov[2];
+  struct iovec iov;
   int flags = 0, fd, cmsglen, len;
 
   msg.msg_name = 0L;
   msg.msg_namelen = 0;
-  msg.msg_iov = &iov[0];
-  msg.msg_iovlen = 2;
+  msg.msg_iov = &iov;
+  msg.msg_iovlen = 1;
 
-  iov[0].iov_base = IOV_BASE_CAST &response;
-  iov[0].iov_len = sizeof(struct ResponseHeader);
-  iov[1].iov_base = IOV_BASE_CAST filename;
-  iov[1].iov_len = size;
+  iov.iov_base = IOV_BASE_CAST &response;
+  iov.iov_len = sizeof(struct ResponseHeader);
 #ifdef CMSG_LEN
   cmsglen = CMSG_LEN(sizeof(int));
 #else
@@ -107,7 +105,6 @@ int Requester::recvFD(char *filename, int size) {
     perror("recvmsg: truncated message");
     exit(1);
   } else {
-    filename[size-1] = '\0';
 #ifdef CMSG_DATA
     fd = *((int *)CMSG_DATA(&control.cmsg));
 #else
@@ -158,7 +155,7 @@ int Requester::openModem(const char *dev) {
     return -1;
 
   sendRequest((struct RequestHeader *) &req, sizeof(req));
-  return recvFD(buffer, sizeof(buffer));
+  return recvFD();
 }
 
 
@@ -172,7 +169,7 @@ int Requester::openLockfile(const char *dev, int flags) {
   req.flags = flags;
 
   sendRequest((struct RequestHeader *) &req, sizeof(req));
-  return recvFD(buffer, sizeof(buffer));
+  return recvFD();
 }
 
 
@@ -194,7 +191,7 @@ int Requester::openResolv(int flags) {
   req.header.type = Opener::OpenResolv;
   req.flags = flags;
   sendRequest((struct RequestHeader *) &req, sizeof(req));
-  return recvFD(buffer, sizeof(buffer));
+  return recvFD();
 }
 
 
@@ -204,7 +201,7 @@ int Requester::openSysLog() {
 
   req.header.type = Opener::OpenSysLog;
   sendRequest((struct RequestHeader *) &req, sizeof(req));
-  return recvFD(buffer, sizeof(buffer));
+  return recvFD();
 }
 
 

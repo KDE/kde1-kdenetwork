@@ -1,3 +1,12 @@
+1998-12-28  Harri Porten  <porten@kde.org>
+
+        * opener.cpp: netinet/in.h is needed on FreeBSD
+	* reverse order of dropping suid rights (first setgid, then
+	setuid) to avoid an EPERM error (doesn't make a difference on Linux)
+	* requester/opener: removed transmission of filename. I discovered
+	problems with the variable string length and it wasn't used
+	anyway.
+	
 1998-12-27  Mario Weilguni <mweilguni@kde.org>
 
 	* moved gpppdata.setpppdError(0) to end of dieppp()

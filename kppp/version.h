@@ -1,3 +1,3 @@
 #ifndef KPPPVERSION
-#define KPPPVERSION "1.5.28 (Release 165)"
+#define KPPPVERSION "1.5.29 (Release 166)"
 #endif

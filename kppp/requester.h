@@ -23,10 +23,9 @@ public:
 private:
   bool sendRequest(struct RequestHeader *request, int len);
   bool recvResponse();
-  int  recvFD(char *filename, int size);
+  int  recvFD();
   int  indexDevice(const char *dev);
   int  socket;
-  char buffer[100];
   bool expect_alarm;
 };
 

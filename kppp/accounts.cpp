@@ -205,6 +205,7 @@ void AccountWidget::slotListBoxSelect(int idx) {
 
 void AccountWidget::viewLogClicked(){
     if(fork() == 0) {
+      setgid(getgid());
       setuid(getuid());
       system("kppplogview -kppp");
       exit(0);
