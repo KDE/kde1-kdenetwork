@@ -61,7 +61,7 @@ mobjFinder.cpp
 ksircstatic_SOURCES = $(ksirc_SOURCES)
 
 # the library search path
-ksirc_LDFLAGS = -export-dynamic @all_libraries@ # -L$(srcdir)/KSProgress -L$(srcdir)/KSTicker -L$(srcdir)/KSCutDialog -L$(srcdir)/KSPrefs -L$(srcdir)/puke
+ksirc_LDFLAGS = -export-dynamic @all_libraries@ $(KDE_RPATH)# -L$(srcdir)/KSProgress -L$(srcdir)/KSTicker -L$(srcdir)/KSCutDialog -L$(srcdir)/KSPrefs -L$(srcdir)/puke
 
 ksircstatic_LDFLAGS = $(ksirc_LDFLAGS)
 

@@ -4,12 +4,14 @@ use Fcntl;
 #
 # Clean up if this is the second load.
 #
-if($PUKEFd != undef){
-  &remsel($PUKEFd);
-  close($PUKEFd);
-  sleep(1);
-  $PUKEFd = undef;
-}
+# Don't close anything so we can be loaded twice.
+#
+#if($PUKEFd != undef){
+#  &remsel($PUKEFd);
+#  close($PUKEFd);
+#  sleep(1);
+#  $PUKEFd = undef;
+#}
 
 #
 # Setup flag fo syncronous operation
@@ -59,14 +61,16 @@ else {
     $sock = $ENV{'PUKE_SOCKET'};
 }
 
-$PUKEFd = &newfh;
-$proto = getprotobyname('tcp');
-socket($PUKEFd, PF_UNIX, SOCK_STREAM, 0) || print "PUKE: Sock failed: $!\n";
-$sun = sockaddr_un($sock);
-print "PUKE: Connecting to $sock\n";
-connect($PUKEFd,$sun) || (die "Puke: Connect failed: $!\n",$PUKEFailed=1);
-select($PUKEFd); $| = 1; select(STDOUT);
-#fcntl($PUKEFd, F_SETFL, O_NONBLOCK);
+if($PUKEFd == undef){
+    $PUKEFd = &newfh;
+    $proto = getprotobyname('tcp');
+    socket($PUKEFd, PF_UNIX, SOCK_STREAM, 0) || print "PUKE: Sock failed: $!\n";
+    $sun = sockaddr_un($sock);
+    print "*P* PUKE: Connecting to $sock\n";
+    connect($PUKEFd,$sun) || (die "Puke: Connect failed: $!\n",$PUKEFailed=1);
+    select($PUKEFd); $| = 1; select(STDOUT);
+    #fcntl($PUKEFd, F_SETFL, O_NONBLOCK);
+}
 
 # Arg1: Command
 # Arg2: WinId
@@ -210,6 +214,6 @@ sub sel_PukeRecvMessage {
 my(%ARG) = &PukeSendMessage($PUKE_SETUP, $::PUKE_CONTROLLER, 0, $server, undef, 1);
 
 $PukeMSize = $ARG{'iArg'};
-print "*I* Puke: Initial Setup complete\n";
-print "*I* Puke: Communications operational\n";
+print "*P* Puke: Initial Setup complete\n";
+print "*P* Puke: Communications operational\n";
 

@@ -9,4 +9,5 @@
 &docommand("/load ptablevw.pm");
 &docommand("/load plistbox.pm");
 &docommand("/load pmenudta.pm");
-&docommand("/load ppopmenu.pm");  
+&docommand("/load ppopmenu.pm");
+&docommand("/load ptabdialog.pm");  

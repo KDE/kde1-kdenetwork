@@ -922,7 +922,7 @@ void KSircTopLevel::control_message(int command, QString str) /*FOLD00*/
       if(channel_name)
 	delete channel_name;
       channel_name = qstrdup(chan.data());
-      setName(server + "_" + "toplevel");
+      setName(server + "_" + QString(channel_name) + "_" + "toplevel");
       f->setName(QString(QString(QObject::name()) + "_" + "kstIFrame"));
       ktool->getFrame(10)->setName(QString(QObject::name()) + "_ktoolframe");
       lagmeter->setName(QString(QObject::name()) + "_lagmeter");
@@ -992,7 +992,7 @@ void KSircTopLevel::control_message(int command, QString str) /*FOLD00*/
   }
 }
 
-void KSircTopLevel::showTicker() /*fold00*/
+void KSircTopLevel::showTicker() /*FOLD00*/
 {
   myrect = geometry();
   mypoint = pos();
@@ -1149,7 +1149,7 @@ void KSircTopLevel::timerEvent( QTimerEvent * ){ /*FOLD00*/
 }
 #endif
 
-kstInside::kstInside ( QWidget * parent, const char * name, WFlags f,  /*fold00*/
+kstInside::kstInside ( QWidget * parent, const char * name, WFlags f,  /*FOLD00*/
 		       bool allowLines )
   : QFrame(parent, name, f, allowLines)
 {

@@ -64,20 +64,20 @@ int main( int argc, char ** argv )
     // This is a development version
     // 4 week timeout, warn after 2
     int ntime = time(NULL);
-    if(ntime - COMPILE_DATE > 2419200){
+    if(ntime - COMPILE_DATE > 4838400){
       // To Old
       QMessageBox::critical(0, "kSirc",
-			    QString("kSirc Alpha releases have a 4 week\n") +
+			    QString("kSirc Alpha releases have an 8 week\n") +
 			    QString("expiry date.\n\n") +
 			    QString("kSirc-ALPHA HAS EXPIRED!!\n") +
 			    QString("Please upgrade or use a beta release"));
       exit(1);
     }
-    else if(ntime - COMPILE_DATE > 1209600){
+    else if(ntime - COMPILE_DATE > 2419200){
       QMessageBox::warning(0, "kSirc",
-			   QString("kSirc Alpha release have a 4 week\n") +
+			   QString("kSirc Alpha release have an 8 week\n") +
 			   QString("expiry date.\n\n") +
-			   QString("THIS VERSION WILL EXPIRE IN UNDER 2 WEEKS"));
+			   QString("THIS VERSION WILL EXPIRE IN UNDER 4 WEEKS"));
     }
   }
 

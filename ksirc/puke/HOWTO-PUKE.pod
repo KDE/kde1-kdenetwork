@@ -11,23 +11,28 @@ under Linux.
 Puke's a generic protocol allowing dsirc to communicate with ksirc.
 Communications works over a unix domain socket between multiple
 client dsirc process's to a single ksirc process.  All communications
-is done via a fixed length 64 byte message with the following layout:
+is done via a variable length message with the following layout:
 
 =begin text
 
 struct PukeMessage {
+unsigned int iHeader;
 int iCommand;
 int iWinId;
 int iArg;
-char cArg[50];
+int iTextSize;
+char *cArg;
 }
 
 =end text
 
-None of the fields except for iCommand and iWinId have any restrictions
+None of the fields except for iCommand, iWinId and iHeader have any restrictions
 on their content and may contain arbitrary values.  iCommand and iWinId must
 contain an int and it used by ksirc to determine the destination and
-handler of the actual command. (and of course it's meaning).
+handler of the actual command. (and of course it's meaning).  iHeader is a
+fixed pattern used to identify the start of a header message should it loose
+syncronization.  The current pattern used it 2863311530, which is:
+10101010101010101010101010101010.
 
 =item Internal handling by kSirc:
 

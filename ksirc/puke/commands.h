@@ -868,6 +868,22 @@
 // cArg: not defined
 #define PUKE_ALISTBOX_FIND_NICK_ACK -1915
 
+// -----------------------------------------------------------------------
+// PTabDialog
+
+// Desc: add Widget defined by iArg's widget id
+// iWinId: window id
+// iArg: widget to add, widget id, in current fd
+// cArg: not defined
+#define PUKE_TABDIALOG_ADDTAB 2001
+
+// Desc: ack for istop
+// iWinId: window id
+// iArg: 1 for failure, 0 for success
+// cArg: not defined
+#define PUKE_TABDIALOG_ADDTAB_ACK -2001
+
+
 // ***********************************************************************
 // ***********************************************************************
 
@@ -919,6 +935,9 @@
 
 #define PWIDGET_ALISTBOX 14
 
+// PTabDialog
+
+#define PWIDGET_TABDIALOG 16
 
 // Group layout commands exist between 10000 and 11000
 

@@ -27,7 +27,7 @@ INCLUDES= @all_includes@
 
 lib_LTLIBRARIES = libpuke.la libpframe.la libplined.la libpbutton.la libppushbt.la \
                   libpprogress.la libptablevw.la libplistbox.la libplabel.la \
-                  libpmenudta.la libppopmenu.la libpalistbox.la
+                  libpmenudta.la libppopmenu.la libpalistbox.la libptabdialog.la
 
 libpuke_la_SOURCES = \
 controller.cpp \
@@ -108,6 +108,12 @@ mpalistbox.cpp
 
 libpalistbox_la_LDFLAGS = -export-dynamic
 
+libptabdialog_la_SOURCES = \
+ptabdialog.cpp  \
+mptabdialog.cpp
+
+libptabdialog_la_LDFLAGS = -export-dynamic
+
 HOWTO-PUKE.txt: HOWTO-PUKE.pod
 	pod2text HOWTO-PUKE.pod > HOWTO-PUKE.txt
 
@@ -128,7 +134,9 @@ plabel.h \
 pobject.h \
 playout.h \
 pmenudta.h \
-ppopmenu.h
+ppopmenu.h \
+kdynlib.h \
+palistbox.h
 
 # just to make sure, automake makes them 
 BUILTSOURCES =	

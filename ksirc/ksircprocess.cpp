@@ -97,6 +97,7 @@
 #include "iocontroller.h"
 #include "control_message.h"
 #include "config.h"
+#include "../config.h"
 #include "objFinder.h"
 
 #include <qmsgbox.h>
@@ -195,12 +196,16 @@ KSircProcess::KSircProcess( char *_server, QObject * parent, const char * name )
   // turn on sirc ssfe mode
   QString command = "/eval $ssfe=1\n";
   iocontrol->stdin_write(command);
-  command = "/eval $version .= \"+4KSIRC\"\n";
+  
+  command = "/eval $version .= \"+4KSIRC/" + QString(VERSION) + "\"\n";
   iocontrol->stdin_write(command);
   command = "/load " + kSircConfig->kdedir + "/share/apps/ksirc/filters.pl\n";
   iocontrol->stdin_write(command);
   command = "/load " + kSircConfig->kdedir + "/share/apps/ksirc/ksirc.pl\n";
   iocontrol->stdin_write(command);
+  command = "/load " + kSircConfig->kdedir + "/share/apps/ksirc/puke.pl\n";
+  iocontrol->stdin_write(command);
+
 
   // Load all the filter rules.  Must be after /load filtes.pl so all
   // the functions are available
@@ -300,7 +305,7 @@ void KSircProcess::new_toplevel(QString str) /*FOLD00*/
 //    KSircMessageReceiver *faker = new KSircMessageReceiver(this);
     //    TopList.insert(str, faker); // Insert place holder since the constructor for kSircTopLevel may parse the event queue which will cause us to try and create trhe window several times!!!
     debug("Calling new toplevel for: -%s-", str.data());
-    KSircTopLevel *wm = new KSircTopLevel(this, str.data(), QString(server) + "_" + str);
+    KSircTopLevel *wm = new KSircTopLevel(this, str.data(), QString(server) +"_" + str + "_" + str);
     //    insertChild(wm); // Keep ineheratence going so we can find children
     objFinder::insert(wm);
     installEventFilter(wm);
@@ -330,7 +335,7 @@ void KSircProcess::new_toplevel(QString str) /*FOLD00*/
   }
 }
 
-void KSircProcess::close_toplevel(KSircTopLevel *wm, char *name) /*fold00*/
+void KSircProcess::close_toplevel(KSircTopLevel *wm, char *name) /*FOLD00*/
 {
 
   bool is_default = FALSE; // Assume it's no default
