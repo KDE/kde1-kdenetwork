@@ -32,6 +32,7 @@
 #include <qlabel.h>
 #include <qlayout.h>
 #include <qlist.h>
+#include <qfont.h>
 #include <qpainter.h>
 #include <qpixmap.h>
 #include <qregexp.h>
@@ -211,6 +212,10 @@ void KMComposeWin::readConfig(void)
   mBackColor = config->readEntry( "Back-Color","#ffffff");
   mForeColor = config->readEntry( "Fore-Color","#000000");
   mAutoPgpSign = config->readNumEntry("pgp-auto-sign", 0);
+
+  config->setGroup("Fonts");
+  mBodyFont = config->readEntry("body-font", "helvetica");
+
 #ifdef CHARSETS  
   m7BitAscii = config->readNumEntry("7bit-is-ascii",1);
   mQuoteUnknownCharacters = config->readNumEntry("quote-unknown",0);
@@ -641,7 +646,7 @@ void KMComposeWin::setupEditor(void)
 
 
   // Font setup
-
+  mEditor->setFont(QFont(mBodyFont));
 
   // Color setup
   if( mForeColor.isEmpty())
@@ -1569,8 +1574,11 @@ void KMComposeWin::slotSpellcheck2(KSpell*)
 
 
 //-----------------------------------------------------------------------------
-void KMComposeWin::slotSpellResult(char* aNewText)
+void KMComposeWin::slotSpellResult(char *aNewText)
 {
+  // prevent warning
+  (void)aNewText;
+
 #ifdef HAS_KSPELL
   mEditor->setText(aNewText);
   mEditor->setReadOnly(FALSE);
@@ -1584,6 +1592,11 @@ void KMComposeWin::slotSpellResult(char* aNewText)
 void KMComposeWin::slotSpellCorrected(char *originalword, 
 				      char *newword, long pos)
 {
+  // prevent warning
+  (void)originalword;
+  (void)newword;
+  (void)pos;
+
 #ifdef HAS_KSPELL
   //we'll reselect the original word in case the user has played with
   //the selection in eframe or the word was auto-replaced
@@ -1617,6 +1630,10 @@ void KMComposeWin::slotSpellCorrected(char *originalword,
 //-----------------------------------------------------------------------------
 void KMComposeWin::slotSpellMispelling(char *word, QStrList *, long pos)
 {
+  // prevent warning
+  (void)word;
+  (void)pos;
+
 #ifdef HAS_KSPELL
   int l, cnt=0;
 
@@ -1663,6 +1680,13 @@ void KMComposeWin::slotConfigureCharsets()
 void KMComposeWin::slotSetCharsets(const char *message,const char *composer,
                                    bool ascii,bool quote,bool def)
 {
+  // prevent warning
+  (void)message;
+  (void)composer;
+  (void)ascii;
+  (void)quote;
+  (void)def;
+
 #ifdef CHARSETS
   mCharset=message;
   m7BitAscii=ascii;

@@ -262,10 +262,12 @@ const char* KMMsgBase::skipKeyword(const QString aStr, char sepChar,
 				   bool* hasKeyword)
 {
   int i, maxChars=3;
-  const char *pos, *str;
+  const char *pos, *str = aStr.data();
 
-  for (str=aStr.data(); *str && *str==' '; str++)
-    ;
+  if (!str) return 0;
+
+  while (*str==' ')
+    str++;
   if (hasKeyword) *hasKeyword=FALSE;
 
   for (i=0,pos=str; *pos && i<maxChars; pos++,i++)
@@ -275,7 +277,7 @@ const char* KMMsgBase::skipKeyword(const QString aStr, char sepChar,
 
   if (i>1 && *pos == sepChar) // skip following spaces too
   {
-    for (pos++; *pos && *pos==' '; pos++)
+    for (pos++; *pos==' '; pos++)
       ;
     if (hasKeyword) *hasKeyword=TRUE;
     return pos;
@@ -459,8 +461,10 @@ const QString KMMsgBase::decodeQuotedPrintableString(const QString aStr)
 {
   static QString result;
   int start, beg, mid, end;
+  end = 0; // Remove compiler warning;
 
   start = 0;
+  end = 0;
   result = "";
 
   while (1)

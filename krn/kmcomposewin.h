@@ -4,7 +4,7 @@
 #ifndef __KMComposeWin
 #define __KMComposeWin
 
-#include <ktopwidget.h>
+
 #include <qstring.h>
 #include <qlined.h>
 #include <qlabel.h>
@@ -14,13 +14,17 @@
 #include <qpushbt.h>
 #include <qclipbrd.h>
 #include <qpalette.h>
+#include <keditcl.h>
+
 #include <kmsgbox.h>
 #include "kmmsgpart.h"
-#include <keditcl.h>
+
 #include <klined.h>
+#include <ktopwidget.h>
 #ifdef HAS_KSPELL
 #include <kspell.h>
 #endif
+
 
 class QLineEdit;
 class QGridLayout;
@@ -291,7 +295,7 @@ protected:
   int mWordWrap;
   short mBtnIdSign, mBtnIdEncrypt;
   short mMnuIdUrgent, mMnuIdConfDeliver, mMnuIdConfRead;
-  QString mForeColor, mBackColor;
+  QString mForeColor, mBackColor, mBodyFont;
   QList<QLineEdit> mEdtList;
 #ifdef HAS_KSPELL
   KSpell* mKSpell;
