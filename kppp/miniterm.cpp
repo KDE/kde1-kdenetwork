@@ -82,9 +82,6 @@ MiniTerm::MiniTerm(QWidget *parent, const char *name)
   terminal->setGeometry(0, menubar->height() + toolbar->height() , 
    T_WIDTH,  T_HEIGHT - menubar->height() - toolbar->height() - statusbar->height());
  
-  readtimer = new QTimer(this);
-  connect(readtimer,SIGNAL(timeout()),this,SLOT(readtty()));
-
   inittimer = new QTimer(this);
   connect(inittimer,SIGNAL(timeout()),this,SLOT(init()));
   inittimer->start(500);
@@ -172,8 +169,9 @@ void MiniTerm::init() {
       
       kapp->processEvents();
       kapp->processEvents();
-      readtimer->start(30);
-
+      sn = new QSocketNotifier(modemfd, QSocketNotifier::Read, this);
+      connect(sn, SIGNAL(activated(int)),
+	      this, SLOT(readtty(int)));
       return;
     }
   }
@@ -184,25 +182,25 @@ void MiniTerm::init() {
 }                  
 
 
-void MiniTerm::readtty() {
+void MiniTerm::readtty(int) {
   char c = 0;
 
-  while(read(modemfd, &c, 1) == 1) {
+  if(read(modemfd, &c, 1) == 1) {
     c = ((int)c & 0x7F);
 
     switch((int)c) {
     case 8:
       terminal->backspace();
-      return;
+      break;
     case 10:
       terminal->mynewline();
-      return;
+      break;
     case 13:
       terminal->myreturn();
-      return;
+      break;
     case 127:
       terminal->backspace();
-      return;
+      break;
     default:
       terminal->insertChar(c);
     }
@@ -210,8 +208,12 @@ void MiniTerm::readtty() {
 }
 
 
-void MiniTerm::cancelbutton() {
-  readtimer->stop();
+void MiniTerm::cancelbutton() {  
+  if(sn) {
+    delete sn;
+    sn = 0;
+  }
+
   statusbar->setText(i18n("Hanging up ..."));
   kapp->processEvents();
   kapp->flushX();

@@ -55,7 +55,7 @@
 #include "runtests.h"
 #include "modem.h"
 #include "ppplog.h"
-
+#include "log.h"
 #include <X11/Xlib.h>
 
 KPPPWidget*	p_kppp;
@@ -65,12 +65,14 @@ QPixmap *miniIcon = 0;
 
 bool	have_cmdl_account;
 bool 	pppd_has_died = false;
-bool 	reconnect_on_disconnect = false;
 bool    quit_on_disconnect = false;
 bool    terminate_connection = false;
 
 // this is needed for volume accounting and updated in pppstatdlg.cpp
 int totalbytes;
+
+// for testing purposes
+bool TESTING=0;
 
 QString old_hostname;
 QString local_ip_address;
@@ -206,7 +208,7 @@ int main( int argc, char **argv ) {
   // set portable locale for decimal point
   setlocale(LC_NUMERIC ,"C");
 
-  while ((c = getopt(argc, argv, "c:khvr:q")) != EOF){
+  while ((c = getopt(argc, argv, "c:khvr:qt")) != EOF) {
     switch (c)
       {
 
@@ -214,7 +216,7 @@ int main( int argc, char **argv ) {
 	fprintf(stderr, "%s: unknown option \"%s\"\n", 
 		argv[0], argv[optind-1]);
 	usage(argv[0]);
-	exit(1);	
+	exit(1);
       case 'c':
 	{
 	  // copy at most MAX_NAME_LENGTH bytes
@@ -247,17 +249,15 @@ int main( int argc, char **argv ) {
 	  // we need a KAppliction for locales, create one
 	  exit(RuleSet::checkRuleFile(optarg));
 	}
+      case 't':
+	TESTING=true;
+	break;
       }
   }
 
-  if(!cmdl_account.isEmpty()){
-
-   have_cmdl_account = true;
-
-#ifdef MY_DEBUG
-    printf("cmdl_account:%s:\n",cmdl_account.data());
-#endif
-
+  if(!cmdl_account.isEmpty()) {
+    have_cmdl_account = true;
+    Debug("cmdl_account:%s:\n",cmdl_account.data());
   }
 
   // load mini-icon
@@ -309,13 +309,13 @@ int main( int argc, char **argv ) {
   a.setTopWidget(&kppp);  
 
   // Mario: testing
-//   PPPStatsDlg dlg(0);
-//   dlg.show();
-//   dlg.take_stats();
-//   kppp.hide();  
-//   a.exec();
-  //   PPPL_ShowLog();
-//   exit(0);
+  if(TESTING) {
+    MiniTerm *w = new MiniTerm(0);
+    a.setMainWidget(w);
+    a.setTopWidget(w);
+    w->exec();
+    exit(0);
+  }
 
   // we really don't want to die accidentally, since that would leave the
   // modem connected. If you really really want to kill me you must send 
@@ -502,6 +502,20 @@ KPPPWidget::KPPPWidget( QWidget *parent, const char *name )
   con->setGeometry(QApplication::desktop()->width()/2-175,
 		    QApplication::desktop()->height()/2-55,
 		    350,110);
+
+  // connect the ConnectWidgets various signals
+  connect(con, SIGNAL(debugMessage(const char *)),
+	  debugwindow, SLOT(statusLabel(const char *)));
+  connect(con, SIGNAL(debugMessage(QString)),
+	  debugwindow, SLOT(statusLabel(QString)));
+  connect(con, SIGNAL(toggleDebugWindow()),
+	  debugwindow, SLOT(toggleVisibility()));
+  connect(con, SIGNAL(debugPutChar(char)),
+	  debugwindow, SLOT(addChar(char)));
+  connect(con, SIGNAL(startAccounting()),
+	  this, SLOT(startAccounting()));
+  connect(con, SIGNAL(stopAccounting()),
+	  this, SLOT(stopAccounting()));
     
   setGeometry(QApplication::desktop()->width()/2 - width()/2,
 	      QApplication::desktop()->height()/2 - height()/2,
@@ -516,15 +530,12 @@ KPPPWidget::KPPPWidget( QWidget *parent, const char *name )
       QMessageBox::warning(this, i18n("Error"), string.data());
       have_cmdl_account = false;
       this->show();
-    }
-    else {
-      emit cmdl_start();
-    }
-  }
-  else{
-    this->show();
-  }
+    } else
+      emit cmdl_start();    
+  } else
+    show();
 }
+
 
 void KPPPWidget::prepareSetupDialog() {
   if(tabWindow == 0) {
@@ -532,10 +543,13 @@ void KPPPWidget::prepareSetupDialog() {
     tabWindow->setCaption( i18n("kppp Configuration") );
     tabWindow->setOkButton(i18n("OK"));
     tabWindow->setCancelButton(i18n("Cancel"));
-    tabWindow->resize( 355, 350 );
     tabWindow->setFixedSize( 355, 350 ); // this doesn't seem to work in Qt 1.1
 
     accounts = new AccountWidget(tabWindow,"accounts");
+    connect(accounts, SIGNAL(resetaccounts()),
+	    this, SLOT(resetaccounts()));
+    connect(accounts, SIGNAL(resetCosts(const char *)),
+	    &accounting, SLOT(resetCosts(const char *)));
     modem = new ModemWidget(tabWindow,"modem");
     modem2 = new ModemWidget2(tabWindow,"modem2");
     general = new GeneralWidget(tabWindow,"general");
@@ -549,13 +563,16 @@ void KPPPWidget::prepareSetupDialog() {
   }
 }
 
+
 void KPPPWidget::enterPressedInID() {
   PW_Edit->setFocus();
 }
 
+
 void KPPPWidget::enterPressedInPW() {
   connect_b->setFocus();
 }
+
 
 void KPPPWidget::log_window_toggled(bool on){
   
@@ -624,10 +641,7 @@ void KPPPWidget::resetaccounts() {
 
 
 void sigint(int) {
-#ifdef MY_DEBUG
-  printf("Received a SIGINT\n");
-#endif
-
+  Debug("Received a SIGINT\n");
   signal(SIGINT, sigint); // reinstall the sig handler
 
   // interrupt dial up
@@ -645,40 +659,28 @@ void dieppp(int sig) {
   pid_t id;
   int st;
 
-#ifdef MY_DEBUG
-  printf("Received a signal: %d\n",sig);
-#endif
+  Debug("Received a signal: %d\n",sig);
 
-  if(sig == SIGCHLD){
-
-#ifdef MY_DEBUG
-    printf("The Signal received was a SIGCHLD\n");
-#endif
-
+  if(sig == SIGCHLD){    
+    Debug("The Signal received was a SIGCHLD\n");
     signal(SIGCHLD, dieppp); // reinstall the sig handler
     id = wait(&st);
 
-#ifdef MY_DEBUG
-    if (id > 0)
-      if(WIFEXITED(st))
-        printf("process %i exited normally with return code %i\n",
-               id, WEXITSTATUS(st));
-      else
-        printf("process %i exited abnormally.\n", id);
-    else
-      printf("wait() returned error %i\n", errno);
+    // TODO
+//     if (id > 0) {
+//       if(WIFEXITED(st))
+//         Debug("process %i exited normally with return code %i\n", id, WEXITSTATUS(st));
+//       else
+//         Debug("process %i exited abnormally.\n", id);
+//     } else
+//       Debug("wait() returned error %i\n", errno);    
     
-#endif
-
     // if we are not connected pppdpid is -1 so have have to check for that
     // in the followin line to make sure that we don't raise a false alarm
     // such as would be the case when the log file viewer exits.
-
     if(id == gpppdata.pppdpid() && gpppdata.pppdpid() != -1) { 
-      
-#ifdef MY_DEBUG
-  printf("It was pppd that died\n");
-#endif
+      Debug("It was pppd that died\n");
+
       // when we killpppd() on Cancel in ConnectWidget 
       // we set pppid to -1 so we won't 
       // enter this block
@@ -688,10 +690,8 @@ void dieppp(int sig) {
       CHAP_RemoveAuthFile();
 
       gpppdata.setpppdpid(-1);
-
-#ifdef MY_DEBUG
-      printf("Executing command on disconnect since pppd has died:\n");
-#endif
+      
+      Debug("Executing command on disconnect since pppd has died:\n");
       execute_command(gpppdata.command_on_disconnect());
 
       p_kppp->stopAccounting();
@@ -704,7 +704,7 @@ void dieppp(int sig) {
       removedns();
       unlockdevice();      
       
-      if(!reconnect_on_disconnect) {
+      if(!gpppdata.automatic_redial()) {
 	p_kppp->quit_b->setFocus();
 	p_kppp->show();
 	p_kppp->con_win->stopClock();
@@ -735,11 +735,9 @@ void dieppp(int sig) {
 		    i18n("Details..."));
 	if(msgb.exec() == 2)
 	  PPPL_ShowLog();
-}
-      else{/* reconnect on disconnect */
-#ifdef MY_DEBUG
-  printf("Trying to reconnect ... \n");
-#endif
+      } else { /* reconnect on disconnect */
+	Debug("Trying to reconnect ... \n");
+
         if(PAP_UsePAP())
 	  PAP_CreateAuthFile();
 
@@ -1039,35 +1037,25 @@ void KPPPWidget::setPW_Edit(const char *pw) {
 
 
 void killpppd() {
-  
   int stat;
   pid_t pid = gpppdata.pppdpid();
   
   if(pid >= 0) {
-    
     gpppdata.setpppdpid(-1);
 
-#ifdef MY_DEBUG
-    printf("In killpppd(): Sending SIGTERM to %d\n", pid);
-#endif // MY_DEBUG
-    
+    Debug("In killpppd(): Sending SIGTERM to %d\n", pid);    
     if(kill(pid, SIGTERM) < 0) {
-#ifdef MY_DEBUG
-      printf("Error terminating %d. Sending SIGKILL\n", pid);
-#endif // MY_DEBUG
+      Debug("Error terminating %d. Sending SIGKILL\n", pid);
       
       if(kill(pid, SIGKILL) < 0)
-#ifdef MY_DEBUG
-        printf("Error killing %d\n", pid);
-#endif // MY_DEBUG
+        Debug("Error killing %d\n", pid);
+      
       KApplication::beep();
       return;
     }
-      
+
     wait(&stat);
-
   }
-
 }
 
 
@@ -1077,16 +1065,16 @@ pid_t execute_command (const char *command) {
     
   pid_t id;
     
-#ifdef MY_DEBUG
-  printf("Executing command: %s\n", command);
-#endif
+  Debug("Executing command: %s\n", command);
 
   if((id = fork()) == 0) {
     // don't bother dieppp()
     signal(SIGCHLD, SIG_IGN);
+
     // close file descriptors
     for (int fd = 3; fd < 20; fd++)
       close(fd);
+
     // drop privileges if running setuid root
     setuid(getuid());
     setgid(getgid());
@@ -1096,8 +1084,8 @@ pid_t execute_command (const char *command) {
   }	 
 
   return id;
-
 }
+
 
 // Create a file containing the current pid. Returns 0 on success, 
 // -1 on failure or the pid of an already running kppp process. 
@@ -1118,9 +1106,8 @@ pid_t create_pidfile() {
     if (sz <= 0)
       return -1;
     pidstr[sz] = '\0';
-#ifdef MY_DEBUG
-    printf("found kppp.pid containing: %s\n", pidstr);
-#endif
+
+    Debug("found kppp.pid containing: %s\n", pidstr);
 
     int oldpid;
     int match = sscanf(pidstr, "%d", &oldpid);
@@ -1133,9 +1120,7 @@ pid_t create_pidfile() {
     if (kill((pid_t)oldpid, 0) == 0 || errno != ESRCH)
       return oldpid;
 
-#ifdef MY_DEBUG
-    printf("pidfile is stale\n");
-#endif
+    Debug("pidfile is stale\n");
   }
 
   if((fd = open(pidfile.data(), O_WRONLY | O_CREAT,

@@ -27,32 +27,29 @@
 #include <errno.h>
 #include <sys/ioctl.h>
 #include <setjmp.h>
+#include <qregexp.h>
 
 #include "modem.h"
 #include "pppdata.h"
+#include "log.h"
 
 QString lockfile;
-bool    modem_is_locked = false;
 bool    expect_alarm = false;
 static jmp_buf jmp_buffer;
+bool modem_is_locked = false;
+
 
 Modem::Modem() {
-
   modemfd = -1;
   modem_in_connect_state = false;
-
 }
 
 
 speed_t Modem::modemspeed() {
-
-  int i;
-
   // convert the string modem speed int the gpppdata object to a t_speed type
   // to set the modem.  The constants here should all be ifdef'd because
   // other systems may not have them
-
-  i = atoi(gpppdata.speed())/100;
+  int i = atoi(gpppdata.speed())/100;
 
   switch(i) {
   case 24:
@@ -92,14 +89,13 @@ speed_t Modem::modemspeed() {
 #endif
 
   default:            
-    return B9600;
+    return B38400;
     break;
   }
 }
 
 
 bool Modem::opentty() {
-
   int flags;
 
   if((modemfd = open(gpppdata.modemDevice(), O_RDWR|O_NDELAY)) < 0){
@@ -109,10 +105,10 @@ bool Modem::opentty() {
   
   if(gpppdata.UseCDLine()) {
     ioctl( modemfd, TIOCMGET, &flags ); 
-    if ((flags&TIOCM_CD)==0) {
+    if ((flags&TIOCM_CD) == 0) {
       errmsg = i18n("Sorry, the modem is not ready.");
       ::close(modemfd);
-      modemfd=-1;
+      modemfd = -1;
       return false;
     }
   }
@@ -171,10 +167,8 @@ bool Modem::opentty() {
 }
 
 
-bool Modem::closetty(){
-
-  if(modemfd >=0 ){
-
+bool Modem::closetty() {
+  if(modemfd >=0 ) {
     /* discard data not read or transmitted */
     tcflush(modemfd, TCIOFLUSH);
     
@@ -186,15 +180,12 @@ bool Modem::closetty(){
   }
 
   return true;
-  
 }
 
 bool Modem::writeline(const char *buf) {
-
   // TODO check return code and think out how to proceed
   // in case of trouble.
-
-   write(modemfd, buf, strlen(buf));
+  write(modemfd, buf, strlen(buf));
 
   // Let's send an "enter"
   // which enter we send depends on what the user has selected
@@ -202,7 +193,6 @@ bool Modem::writeline(const char *buf) {
   // necessary. I have tested this with two different modems and 
   // one needed an CR the other a CR/LF. Am i hallucinating ?
   // If you know what the scoop is on this please let me know. 
-
   if(strcmp(gpppdata.enter(), "CR/LF") == 0)
     write(modemfd, "\r\n", 2);
   else if(strcmp(gpppdata.enter(), "LF") == 0)
@@ -215,13 +205,11 @@ bool Modem::writeline(const char *buf) {
 
 
 bool Modem::hangup() {
-
   // this should really get the modem to hang up and go into command mode
   // If anyone sees a fault in the following please let me know, since
   // this is probably the most imporant snippet of code in the whole of
   // kppp. If people complain about kppp being stuck, this piece of code
   // is most likely the reason.
-
   struct termios temptty;
 
   if(modemfd >= 0) {
@@ -264,24 +252,21 @@ bool Modem::hangup() {
     tcsetattr(modemfd, TCSAFLUSH, &temptty);
    
     return true;
-
   } else
     return false;
-
 }
 
 
 void Modem::escape_to_command_mode() {
-
-// Send Properly bracketed escape code to put the modem back into command state.
-// A modem will accept AT commands only when it is in command state.
-// When a modem sends the host the CONNECT string, that signals
-// that the modem is now in the connect state (no long accepts AT commands.)
-// Need to send properly timed escape sequence to put modem in command state.
-// Escape codes and guard times are controlled by S2 and S12 values.
-// 
-
+  // Send Properly bracketed escape code to put the modem back into command state.
+  // A modem will accept AT commands only when it is in command state.
+  // When a modem sends the host the CONNECT string, that signals
+  // that the modem is now in the connect state (no long accepts AT commands.)
+  // Need to send properly timed escape sequence to put modem in command state.
+  // Escape codes and guard times are controlled by S2 and S12 values.
+  // 
   tcflush(modemfd,TCOFLUSH);
+
   // +3 because quiet time must be greater than guard time.
   usleep((gpppdata.modemEscapeGuardTime()+3)*20000);
   write(modemfd, gpppdata.modemEscapeStr(), strlen(gpppdata.modemEscapeStr()) );  
@@ -289,30 +274,94 @@ void Modem::escape_to_command_mode() {
   usleep((gpppdata.modemEscapeGuardTime()+3)*20000);
 
   modem_in_connect_state = false;   // side-effect?
-
 }
+
 
 char *Modem::modemMessage() {
-
   return errmsg.data();
-
 }
+
+
+QString Modem::parseModemSpeed(QString s) {
+  // this is a small (and bad) parser for modem speeds
+  int rx = -1;
+  int tx = -1;
+  int i;
+  QString result;
+
+  Debug("Modem reported result string: %s", s.data());
+
+  const int RXMAX = 7;
+  const int TXMAX = 2;
+  QRegExp rrx[RXMAX] = {
+    QRegExp("[0-9]+[:/ ]RX", false),
+    QRegExp("[0-9]+RX", false),
+    QRegExp("[/: -][0-9]+[/: ]", false),
+    QRegExp("[/: -][0-9]+$", false),
+    QRegExp("CARRIER [^0-9]*[0-9]+", false),
+    QRegExp("CONNECT [^0-9]*[0-9]+", false),
+    QRegExp("[0-9]+") // panic mode
+  };
+
+  QRegExp trx[TXMAX] = {
+    QRegExp("[0-9]+[:/ ]TX", false),
+    QRegExp("[0-9]+TX", false)
+  };
+
+  for(i = 0; i < RXMAX; i++) {
+    int len, idx, result;
+    if((idx = rrx[i].match(s.data(), 0, &len)) > -1) {
+      // find first digit
+      QString sub = s.mid(idx, len);
+      sub = sub.mid(sub.find(QRegExp("[0-9]")), 255);
+      sscanf(sub.data(), "%d", &result);
+      if(result > 0) {
+	rx = result;
+	break;
+      }
+    }	
+  }
+  
+  for(i = 0; i < TXMAX; i++) {
+    int len, idx, result;
+    if((idx = trx[i].match(s.data(), 0, &len)) > -1) {
+      // find first digit
+      QString sub = s.mid(idx, len);
+      sub = sub.mid(sub.find(QRegExp("[0-9]")), 255);
+      sscanf(sub.data(), "%d", &result);
+      if(result > 0) {
+	tx = result;
+	break;
+      }
+    }	
+  }
+
+  if(rx == -1 && tx == -1)
+    result = i18n("Unknown speed");
+  else if(tx == -1)
+    result.sprintf("%d", rx);
+  else if(rx == -1) // should not happen
+    result.sprintf("%d", tx);
+  else
+    result.sprintf("%d/%d", rx, tx);
+
+  Debug("The parsed result is: %s\n", result.data());
+  
+  return result;
+}
+
 
 // Lock modem device. Returns 0 on success 1 if the modem is locked and -1 if
 // a lock file can't be created ( permission problem )
-
 int lockdevice() {
-
   int fd;
   char newlock[80]="";
 
   QDir lockdir(gpppdata.modemLockDir());
   
   if(lockdir == ".") {
-#ifdef MY_DEBUG
-  printf("gpppdata.modemLockDir is empty ..."\
+    Debug("gpppdata.modemLockDir is empty ..."\
 	   "assuming the user doesn't want a lockfile.\n");
-#endif
     return 0;
   }
 
@@ -342,7 +391,6 @@ int lockdevice() {
 
 
   if ((fd = open(lockfile.data(), O_RDONLY)) >= 0) {
-
     // Mario: it's not necessary to read more than lets say 32 bytes. If
     // file has more than 32 bytes, skip the rest
     char oldlock[33];
@@ -352,9 +400,7 @@ int lockdevice() {
       return 1;
     oldlock[sz] = '\0';
       
-#ifdef MY_DEBUG
-    printf("Device is locked by: %s\n", &oldlock);
-#endif
+    Debug("Device is locked by: %s\n", &oldlock);
       
     int oldpid;
     int match = sscanf(oldlock, "%d", &oldpid);
@@ -369,17 +415,12 @@ int lockdevice() {
     if (errno != ESRCH)
       return 1;
       
-#ifdef MY_DEBUG
-    printf("lockfile is stale\n");
-#endif
+    Debug("lockfile is stale\n");
   }
 
   if((fd = open(lockfile.data(), O_WRONLY|O_TRUNC|O_CREAT,0644)) >= 0) {
     sprintf(newlock,"%05d %s %s\n", getpid(), "kppp", "user" );
-
-#ifdef MY_DEBUG
-    printf("Locking Device: %s\n",newlock);
-#endif
+    Debug("Locking Device: %s\n",newlock);
 
     write(fd, newlock, strlen(newlock));
     close(fd);
@@ -394,31 +435,20 @@ int lockdevice() {
   
 
 // UnLock modem device
-
 void unlockdevice() {
-
   if (modem_is_locked) {
     unlink(lockfile);
     modem_is_locked=false;
-
-#ifdef MY_DEBUG
-   printf("UnLocking Modem Device\n");
-#endif
-
+    Debug("UnLocking Modem Device\n");
   }
-
 }  
 
 void alarm_handler(int) {
-
-#ifdef MY_DEBUG
-  printf("alarm_handler(): Received SIGALRM\n");
-#endif
+  Debug("alarm_handler(): Received SIGALRM\n");
 
   // jump 
   if (expect_alarm)
     longjmp(jmp_buffer, 1);
-
 }
 
 

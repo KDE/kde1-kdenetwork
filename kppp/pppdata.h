@@ -101,6 +101,10 @@
 #define ESCAPERESP_KEY     "EscapeResponse"
 #define ESCAPEGUARDTIME_KEY "EscapeGuardTime"
 #define USECDLINE_KEY      "UseCDLine"
+#define VOLUME_HIGH        "VolumeHigh"
+#define VOLUME_MEDIUM      "VolumeMedium"
+#define VOLUME_OFF         "VolumeOff"
+#define VOLUME_KEY         "Volume"
 
 // account
 #define NAME_KEY           "Name"
@@ -181,7 +185,7 @@ public:
   const bool get_show_log_window();
 
   void set_automatic_redial(bool set);
-  const bool get_automatic_redial();
+  const bool automatic_redial();
 
   void set_iconify_on_connect(bool set);
   const bool get_iconify_on_connect();
@@ -224,6 +228,20 @@ public:
 
   const char * modemTimeout();
   void setModemTimeout(const char *);
+
+  const char *volumeOff();
+  void setVolumeOff(const char *);
+
+  const char *volumeMedium();
+  void setVolumeMedium(const char *);
+
+  const char *volumeHigh();
+  void setVolumeHigh(const char *);
+
+  const char *volumeInitString();
+  int volume();
+  void setVolume(int);  
+
 
   // modem command strings/responses
 

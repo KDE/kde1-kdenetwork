@@ -86,6 +86,8 @@
 #endif
 #endif
 
+#include "log.h"
+
 #define V(offset) (line % 20? cur.offset - old.offset: cur.offset)
 #define W(offset) (line % 20? ccs.offset - ocs.offset: ccs.offset)
 #define CRATE(comp, inc, unc) ((unc) == 0? 0.0: 1.0 - (double)((comp) + (inc)) / (unc))
@@ -130,8 +132,7 @@ bool get_ppp_cstats(struct ppp_comp_stats *csp);
 bool strioctl( int fd, int cmd, char* ptr,int ilen, int olen);
 
 
-int if_is_up(){
-
+int if_is_up() {
   int is_up;
 
 #ifdef __svr4__
@@ -156,16 +157,11 @@ int if_is_up(){
     
     if ((ifr.ifr_flags  & IFF_UP ) != 0){
 	is_up = 1;
-#ifdef MY_DEBUG
-	printf("Interface is up\n");
-#endif
-    }
-    else{
+	Debug("Interface is up\n");
+    } else{
       is_up = 0;
       ::close(s);
-#ifdef MY_DEBUG
-      printf("Interface is down\n");
-#endif
+      Debug("Interface is down\n");
     }
     
     return is_up;
@@ -203,21 +199,18 @@ bool init_stats(){
     local_ip_address = inet_ntoa(sinp->sin_addr);	
   else
     local_ip_address = "";
-#ifdef MY_DEBUG 
-  printf("Local IP: %s\n",local_ip_address.data());
-#endif
-  if (ioctl(s, SIOCGIFDSTADDR, &ifr) < 0) {	 
-  }
+  Debug("Local IP: %s\n",local_ip_address.data());
+
+  if (ioctl(s, SIOCGIFDSTADDR, &ifr) < 0)
+    ;  
 
   sinp = (struct sockaddr_in*)&ifr.ifr_dstaddr;	
 
   if(sinp->sin_addr.s_addr)
     remote_ip_address = inet_ntoa(sinp->sin_addr);	
   else
-    remote_ip_address = "";
-#ifdef MY_DEBUG
-  printf("Remote IP: %s\n",remote_ip_address.data());    
-#endif
+    remote_ip_address = "";  
+  Debug("Remote IP: %s\n",remote_ip_address.data());    
 
   memset(&old, 0, sizeof(old));
   memset(&ocs, 0, sizeof(ocs));

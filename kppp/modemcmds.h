@@ -4,8 +4,8 @@
  *            kPPP: A front end for pppd for the KDE project
  *
  * $Id$
- * 
- * Copyright (C) 1997 Bernd Johannes Wuebben 
+ *
+ * Copyright (C) 1997 Bernd Johannes Wuebben
  * wuebben@math.cornell.edu
  *
  * based on EzPPP:
@@ -31,7 +31,7 @@
 #ifndef _MODEMCMDS_H_
 #define _MODEMCMDS_H_
 
-#include <qgrpbox.h> 
+#include <qgrpbox.h>
 #include <qdialog.h>
 #include <qlined.h>
 #include <qpushbt.h>
@@ -57,7 +57,7 @@ private slots:
 private:
 
   QGroupBox *box;
-  
+
   QPushButton *ok;
   QPushButton *cancel;
 
@@ -108,7 +108,10 @@ private:
 
   QLabel *lslider;
   QLabel *label16;
+
+  QLineEdit *volume_off, *volume_medium, *volume_high;
 };
 #endif
+
 
 

@@ -29,16 +29,13 @@ private:
 
 public slots:
   void readtty();
-
 };
 
+
 class LoginTerm : public QDialog {
-
   Q_OBJECT
-
 public:
   LoginTerm(QWidget *parent, const char *name, const int fd);
-  ~LoginTerm();
 
   bool pressedContinue();
 
@@ -47,7 +44,7 @@ public slots:
   void continuebutton();
 
 private:
-  LoginMultiLineEdit *text_window; 
+  LoginMultiLineEdit *text_window;
   QPushButton *cancel_b;
   QPushButton *continue_b;
 
@@ -55,5 +52,6 @@ private:
 };
 
 #endif
+
 
 

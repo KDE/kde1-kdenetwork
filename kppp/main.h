@@ -79,12 +79,9 @@ public:
   KPPPWidget( QWidget *parent=0, const char *name=0 );
   ~KPPPWidget() {}
 
-  void resetaccounts();
   friend void dieppp(int);              // if the pppd daemon dies...
   friend void sigint(int);
 
-  void startAccounting();
-  void stopAccounting();
   void setPW_Edit(const char *);
 
 private slots:
@@ -101,8 +98,11 @@ private slots:
   void enterPressedInPW();
 
 public slots:
+  void resetaccounts();
   void disconnect();
   void log_window_toggled(bool on);
+  void startAccounting();
+  void stopAccounting();
 
 signals:
   void begin_connect();

@@ -31,8 +31,6 @@
 #include "modeminfo.h"
 #include "macros.h"
 
-extern QString ati_query_strings[NUM_OF_ATI];
-
 
 ModemTransfer::ModemTransfer(QWidget *parent, const char *name)
   : QDialog(parent, name,TRUE, WStyle_Customize|WStyle_NormalBorder)
@@ -73,7 +71,8 @@ ModemTransfer::ModemTransfer(QWidget *parent, const char *name)
   l1->addStretch(1);
   l1->addWidget(cancel);
 
-  connect(this, SIGNAL(ati_done()),SLOT(ati_done_slot()));
+  connect(this, SIGNAL(ati_done()),
+	  SLOT(ati_done_slot()));
 
   modemfd = -1;
   expecting = false;
@@ -108,6 +107,14 @@ void ModemTransfer::ati_done_slot() {
   timeout_timer->stop();
   closetty();
   unlockdevice();
+
+  // open the result window
+  ModemInfo *mi = new ModemInfo(this);
+  for(int i = 0; i < NUM_OF_ATI; i++)
+    mi->setAtiString(i, ati_query_strings[i]);
+  mi->exec();
+  delete mi;
+
   accept();
 }
 
@@ -289,7 +296,6 @@ ModemInfo::ModemInfo(QWidget *parent, const char* name)
     l1->addWidget(ati_label[i], i, 0);
 
     ati_label_result[i] =  new QLineEdit(this);
-    ati_label_result[i]->setText(ati_query_strings[i]);
     MIN_SIZE(ati_label_result[i]);
     ati_label_result[i]->setMinimumWidth(fontMetrics().width('H') * 24);
     FIXED_HEIGHT(ati_label_result[i]);
@@ -317,6 +323,12 @@ ModemInfo::ModemInfo(QWidget *parent, const char* name)
   l2->addWidget(ok);
   
   tl->freeze();
+}
+
+
+void ModemInfo::setAtiString(int i, QString s) {
+  if(i < NUM_OF_ATI)
+    ati_label_result[i]->setText(s.data());
 }
 
 #include "modeminfo.moc"

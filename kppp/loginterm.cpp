@@ -36,59 +36,49 @@ extern KPPPWidget *p_kppp;
 
 LoginMultiLineEdit::LoginMultiLineEdit(QWidget *parent, const char *name,
 				       const int fd)
-  : QMultiLineEdit(parent, name){
-
+  : QMultiLineEdit(parent, name)
+{
   modemfd = fd;
 
   readtimer = new QTimer(this);
   connect(readtimer, SIGNAL(timeout()), this, SLOT(readtty()));
-
 }
+
 
 LoginMultiLineEdit::~LoginMultiLineEdit() {
-
   stopTimer();
-
 }
+
 
 void LoginMultiLineEdit::startTimer() {
-
   readtimer->start(1);
-
 }
+
 
 void LoginMultiLineEdit::stopTimer() {
-
   readtimer->stop();
-
 }
 
-void LoginMultiLineEdit::insertChar(char c){
-
+void LoginMultiLineEdit::insertChar(char c) {
   QMultiLineEdit::insertChar(c);
-
-  p_kppp->debugwindow->readchar(c);
-
+  p_kppp->debugwindow->addChar(c);
 }
+
 
 void LoginMultiLineEdit::myreturn() {
-
   QMultiLineEdit::home();
-
 }
 
-void LoginMultiLineEdit::mynewline() {
 
+void LoginMultiLineEdit::mynewline() {
   QMultiLineEdit::end(FALSE);
   QMultiLineEdit::newLine();
 
-  p_kppp->debugwindow->readchar('\n');
-
+    p_kppp->debugwindow->addChar('\n');
 }
 
 
 void LoginMultiLineEdit::keyPressEvent(QKeyEvent *k) {
-
   char c = (char) k->ascii();
 
   if ((int)c == 0) return;
@@ -109,22 +99,23 @@ void LoginMultiLineEdit::keyPressEvent(QKeyEvent *k) {
 
 }
 
+
 void LoginMultiLineEdit::readtty() {
   char c;
   if(read(modemfd, &c, 1) == 1) {
     c = ((int)c & 0x7F);
 
     if(((int)c != 13) && ((int)c != 10) && ((int)c != 8))
-      this->insertChar(c);
+      insertChar(c);      
 
     if((int)c == 8)
-      this->backspace();
+      backspace();
     if((int)c == 127)
-      this->backspace();
+      backspace();
     if((int)c == 10)
-      this->mynewline();
+      mynewline();
     if((int)c == 13)
-      this->myreturn();
+      myreturn();
   }
 
 }
@@ -176,30 +167,22 @@ LoginTerm::LoginTerm (QWidget *parent, const char *name, const int fd)
   cont = false;
 
   text_window->startTimer();
-
 }
 
-LoginTerm::~LoginTerm() {
-
-}
 
 void LoginTerm::cancelbutton () {
-
   hide();
-
 }
+
 
 void LoginTerm::continuebutton() {
-
   cont = true;
   hide();
-
 }
 
+
 bool LoginTerm::pressedContinue() {
-
   return cont;
-
 }
 
 

@@ -42,6 +42,7 @@
 	* removed tons of "#ifdef MY_DEBUG" and replaced them with
 	functions "Debug", which is provided in log.cpp and is a
 	"printf()" like function
+	* added modem volume selector to the setup.
 	
 1998-08-21  Harri Porten  <porten@kde.org>
 

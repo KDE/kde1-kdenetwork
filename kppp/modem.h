@@ -36,15 +36,13 @@
 
 #include <config.h>
 
+void    alarm_handler(int);
 int     lockdevice();
 void    unlockdevice();
-void    alarm_handler(int);
 
 class Modem {
-
 public:
   Modem();
-  ~Modem() {}
 
 public:
   bool    opentty();
@@ -53,16 +51,18 @@ public:
   bool    writeline(const char *);
   bool    hangup();
   void    escape_to_command_mode();
-  char    *modemMessage();
+  char    *modemMessage();  
+
   // private:
   bool    modem_in_connect_state; 
   int     modemfd;
+
+  static QString parseModemSpeed(QString);
 
 private:
   QString errmsg;
   struct termios initial_tty;
   struct termios tty;
-
 };
 
 #ifndef HAVE_USLEEP

@@ -45,17 +45,15 @@
 #include <ktoolbar.h>
 #include <kmenubar.h>
 #include <kiconloader.h>
+#include <qsocknot.h>
 
 #include "modem.h"
 
 class MiniTerm;
 
 class MyTerm : public QMultiLineEdit, public Modem {
-
   Q_OBJECT
-
 public:
-
   MyTerm(QWidget *parent=0, const char *name=0);
 
   void keyPressEvent (QKeyEvent*);
@@ -67,47 +65,39 @@ public:
   void mynewline();
   
 signals:
-
   void got_a_line();
+
 private:
   MiniTerm *p_parent;
-
-
-  
 };
 
 
 class MiniTerm : public QDialog, public Modem {
-
   Q_OBJECT
-
 public:
 
   MiniTerm(QWidget *parent=0, const char *name=0);
   ~MiniTerm();
 
-
-void closeEvent( QCloseEvent *e );
-void resizeEvent(QResizeEvent *e);
+  void closeEvent( QCloseEvent *e );
+  void resizeEvent(QResizeEvent *e);
 
 public slots:
-
   void cancelbutton();
   void init();
-  void readtty();
+  void readtty(int);
   void process_line();
   void help();
   void resetModem();
   bool writeChar(char c);
 
 protected:
-
   void setupToolbar();
 
   QPushButton *cancel;
   MyTerm *terminal;
   QTimer *inittimer;
-  QTimer *readtimer;
+  QSocketNotifier *sn;
 
   QMenuBar    * menubar;
   KToolBar     * toolbar;
@@ -127,8 +117,6 @@ protected:
   QPixmap pb3_pixmap;
   QPixmap pb4_pixmap;
 
-
-
 public:
   int line;
   int col;
@@ -138,8 +126,3 @@ public:
 
 
 #endif
-
-
-
-
-

@@ -39,7 +39,7 @@ ModemCommands::ModemCommands(QWidget *parent, const char *name)
 {
   setCaption(i18n("Edit Modem Commands"));
 
-  const int GRIDROWS = 18;
+  const int GRIDROWS = 19;
 
   // toplevel layout
   QVBoxLayout *tl = new QVBoxLayout(this, 10, 4);
@@ -195,6 +195,23 @@ ModemCommands::ModemCommands(QWidget *parent, const char *name)
   label16 = new QLabel(i18n("Guard Time (sec/50):"), this);
   ADJUSTLABEL(label16);  
   l1->addWidget(label16, 16, 1);
+  
+  QLabel *l = new QLabel(i18n("Volume off/low/high"), this);
+  l1->addWidget(l, 17, 1);
+  QHBoxLayout *l4 = new QHBoxLayout;
+  l1->addLayout(l4, 17, 2);
+  volume_off = new QLineEdit(this);
+  volume_off->setFixedHeight(volume_off->sizeHint().height());
+  volume_off->setMinimumWidth((int)(volume_off->sizeHint().width() / 2));
+  volume_medium = new QLineEdit(this);
+  volume_medium->setFixedHeight(volume_medium->sizeHint().height());
+  volume_medium->setMinimumWidth((int)(volume_medium->sizeHint().width() / 2));
+  volume_high = new QLineEdit(this);
+  volume_high->setFixedHeight(volume_high->sizeHint().height());
+  volume_high->setMinimumWidth((int)(volume_high->sizeHint().width() / 2));
+  l4->addWidget(volume_off);
+  l4->addWidget(volume_medium);
+  l4->addWidget(volume_high);
 
   KButtonBox *bbox = new KButtonBox(this);
   bbox->addStretch();
@@ -236,6 +253,9 @@ ModemCommands::ModemCommands(QWidget *parent, const char *name)
   ringresp->setText(gpppdata.modemRingResp());
   answerresp->setText(gpppdata.modemAnswerResp());
 
+  volume_off->setText(gpppdata.volumeOff());
+  volume_medium->setText(gpppdata.volumeMedium());
+  volume_high->setText(gpppdata.volumeHigh());
 }
 
 
@@ -258,7 +278,11 @@ void ModemCommands::okbutton() {
 
   gpppdata.setModemAnswerStr(answerstr->text());
   gpppdata.setModemRingResp(ringresp->text());
-  gpppdata.setModemAnswerResp(answerresp->text());
+  gpppdata.setModemAnswerResp(answerresp->text());  
+
+  gpppdata.setVolumeHigh(volume_high->text());
+  gpppdata.setVolumeMedium(volume_medium->text());
+  gpppdata.setVolumeOff(volume_off->text());
 
   gpppdata.save();
   accept();

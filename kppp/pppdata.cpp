@@ -28,6 +28,44 @@
 #include "runtests.h"
 #include "kpppconfig.h"
 
+QString findFileInPath( const char *fname, const char *extraPath) {
+  QString f;
+
+  if(access(fname, F_OK) == 0)
+    return QString(fname);
+
+  // strip arguments
+  QString _fname = fname;
+  if(_fname.find(' ') != -1)
+    _fname = _fname.left(_fname.find(' '));
+
+  char path[4096] = "";
+  if(extraPath != 0)
+    strcpy(path, extraPath);
+
+  // for absolute path
+  strcat(path, ":");
+
+  if(getenv("PATH") != NULL)
+    strncat(path, getenv("PATH"), sizeof(path)-512);
+
+  char *p = strtok(path, ":");
+  while(p != NULL) {
+    f = p;
+    f += "/";
+    f += _fname;
+    if(access(f.data(), F_OK) == 0) {
+      return f;
+    } else
+      p = strtok(NULL, ":");
+  }
+
+  f = "";
+  return f;
+}
+
+
+
 PPPData gpppdata;
 
 PPPData::PPPData() {
@@ -295,7 +333,7 @@ void PPPData::set_show_log_window(bool set){
 }
 
 
-const bool PPPData::get_automatic_redial() {
+const bool PPPData::automatic_redial() {
   return (bool) readNumConfig(GENERAL_GRP, AUTOREDIAL_KEY, FALSE);
 };
 
@@ -627,6 +665,60 @@ const char* PPPData::modemAnswerStr() {
 
   return readConfig(MODEM_GRP, ANSWERSTR_KEY, "ATA");
 
+}
+
+
+const char *PPPData::volumeOff() {
+  return readConfig(MODEM_GRP, VOLUME_OFF, "M0L0");
+}
+
+void PPPData::setVolumeOff(const char *s) {
+  writeConfig(MODEM_GRP, VOLUME_OFF, s);
+}
+
+const char *PPPData::volumeMedium() {
+ return readConfig(MODEM_GRP, VOLUME_MEDIUM, "M1L1");
+}
+
+void PPPData::setVolumeMedium(const char *s) {
+  writeConfig(MODEM_GRP, VOLUME_MEDIUM, s);
+}
+
+const char *PPPData::volumeHigh() {
+  return readConfig(MODEM_GRP, VOLUME_HIGH, "M1L4");
+}
+
+void PPPData::setVolumeHigh(const char *s) {
+ writeConfig(MODEM_GRP, VOLUME_HIGH, s);
+}
+
+
+const char *PPPData::volumeInitString() {
+  char *s;
+
+  switch(volume()) {
+  case 0:
+    s = volumeOff();
+    break;
+  case 1:
+    s = volumeMedium();
+    break;
+  case 2:
+    s = volumeHigh();
+    break;
+  default:
+    s = volumeMedium();
+  }
+
+  return s;
+}
+
+int PPPData::volume() {
+  return readNumConfig(MODEM_GRP, VOLUME_KEY, 0);
+}
+
+void PPPData::setVolume(int i) {
+  writeConfig(MODEM_GRP, VOLUME_KEY, i);
 }
 
 void PPPData::setModemAnswerStr(const char *n) {

@@ -2,10 +2,10 @@
  *            kPPP: A pppd front end for the KDE project
  *
  * $Id$
- * 
- *            Copyright (C) 1997 Bernd Johannes Wuebben 
+ *
+ *            Copyright (C) 1997 Bernd Johannes Wuebben
  *                   wuebben@math.cornell.edu
- * 
+ *
  * This file was contributed by Mario Weilguni <mweilguni@sime.com>
  * Thanks Mario !
  *
@@ -30,9 +30,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <qfile.h>
-#include "ruleset.h"
 #include <math.h>
 #include <kapp.h>
+#include "ruleset.h"
+#include "log.h"
 
 RuleSet::RuleSet() {
   default_costs = -1;
@@ -44,7 +45,7 @@ RuleSet::RuleSet() {
   flat_init_costs = 0.0;
   flat_init_duration = 0;
   have_flat_init_costs = false;
-  
+
   pcf = 0.0;
 }
 
@@ -52,9 +53,9 @@ RuleSet::RuleSet() {
 /* calculates the easter sunday in day_of_year style */
 QDate RuleSet::get_easter(int year) {
   /* not optimized, I took the original names */
-  signed int a,b,m,q,w,p,n,tt,mm; 
-	
-  /* calculating easter is really funny */	
+  signed int a,b,m,q,w,p,n,tt,mm;
+
+  /* calculating easter is really funny */
   /* this is O'Beirne's algorithm, only valid 1900-2099 */
   n = year - 1900;
   a = n % 19;
@@ -69,7 +70,7 @@ QDate RuleSet::get_easter(int year) {
   else
     {tt=p+31;
     mm=3;}
-  
+
   return QDate(year, mm, tt);
 }
 
@@ -101,7 +102,7 @@ int RuleSet::load(const char *filename) {
   if(strlen(filename) == 0)
     return 0;
 
-  if(!f.exists()) 
+  if(!f.exists())
     return -1;
 
   if(!f.open(IO_ReadOnly))
@@ -134,9 +135,7 @@ int RuleSet::load(const char *filename) {
     // parse line
     if(!parseLine(line)) {
       f.close();
-#ifdef MY_DEBUG
-    fprintf(stderr, "ERROR IN LINE %d\n", lineno);
-#endif
+      Debug("ERROR IN LINE %d\n", lineno);
       return lineno;
     }
   }
@@ -146,16 +145,14 @@ int RuleSet::load(const char *filename) {
   if(_name.length() > 0)
     return 0;
   else {
-#ifdef MY_DEBUG
-    fprintf(stderr, "NO NAME DEFINED\n");
-#endif
+    Debug("NO NAME DEFINED\n");
     return -1;
   }
-}   
+}
 
 void RuleSet::addRule(RULE r) {
   // check for a default rule
-  if((r.type == 2) && 
+  if((r.type == 2) &&
      (r.weekday.from == 0) && (r.weekday.until == 6) &&
      (r.from == midnight()) &&
      (r.until == beforeMidnight()))
@@ -164,8 +161,8 @@ void RuleSet::addRule(RULE r) {
       default_len = r.len;
       return;
     }
-  
-  // if from < until (i.e on (monday..friday) 
+
+  // if from < until (i.e on (monday..friday)
   // from (21:00..05:00) use (0.2,16)
   // split it into two rules
   // ... between (21:00..23:59) use ...
@@ -179,11 +176,11 @@ void RuleSet::addRule(RULE r) {
     rules.resize(rules.size()+2);
     rules[rules.size()-2] = r1;
     rules[rules.size()-1] = r2;
-  } else {						
+  } else {
     rules.resize(rules.size()+1);
     rules[rules.size()-1] = r;
   }
-}  
+}
 
 bool RuleSet::parseEntry(RULE &ret, QString s, int year) {
   if(s.contains(QRegExp("^[0-9]+/[0-9]+$"))) {
@@ -212,7 +209,7 @@ bool RuleSet::parseEntry(RULE &ret, QString s, int year) {
     QString val = s.mid(6, 1000);
     if(val.length() == 0)
       off = 0;
-    else 
+    else
       off = val.toInt(&ok);
 
     if(ok) {
@@ -222,7 +219,7 @@ bool RuleSet::parseEntry(RULE &ret, QString s, int year) {
       ret.date.until = d;
       return TRUE;
     }
-  } 
+  }
 
   ret.type = 0;
   return FALSE;
@@ -230,18 +227,18 @@ bool RuleSet::parseEntry(RULE &ret, QString s, int year) {
 
 
 
-bool RuleSet::parseEntries(QString s, int year, 
+bool RuleSet::parseEntries(QString s, int year,
 			   QTime t1, QTime t2,
-			   double costs, double len) 
+			   double costs, double len)
 {
   // special rule: on() is the same as on(monday..sunday)
   if(s == "")
     s = "monday..sunday";
-  
+
   while(s.length()) {
     int pos = s.find(',');
     QString token;
-    if(pos == -1) {      
+    if(pos == -1) {
       token = s;
       s = "";
     } else {
@@ -275,7 +272,7 @@ bool RuleSet::parseEntries(QString s, int year,
     } else
       if(!parseEntry(r, token, year))
 	return FALSE;
-    
+
     r.costs = costs;
     r.len = len;
     r.from = t1;
@@ -311,10 +308,10 @@ bool RuleSet::parseLine(QString &s) {
   // for our french friends -- Bernd
   if(s.contains(QRegExp("flat_init_costs=(.*"))) {
     // parse the time fields
-    QString token = s.mid(s.find("flat_init_costs=(") + 17, 
+    QString token = s.mid(s.find("flat_init_costs=(") + 17,
 			  s.find(")")-s.find("flat_init_costs=(") - 17);
     //    printf("TOKEN=%s\n",token.data());
-    
+
     if(!parseRate(flat_init_costs,flat_init_duration,token))
       return FALSE;
 
@@ -332,27 +329,27 @@ bool RuleSet::parseLine(QString &s) {
 
   if(s.contains(QRegExp("on(.*)between(.*)use(.*)"))) {
     // parse the time fields
-    QString token = s.mid(s.find("between(") + 8, 
+    QString token = s.mid(s.find("between(") + 8,
 			  s.find(")use")-s.find("between(") - 8);
-    QTime t1, t2;    
+    QTime t1, t2;
     if(!parseTime(t1, t2, token))
       return FALSE;
 
     // parse the rate fields
-    token = s.mid(s.find("use(") + 4, 
+    token = s.mid(s.find("use(") + 4,
 			  s.findRev(")")-s.find("use(") - 4);
     double costs;
     double len;
     if(!parseRate(costs, len, token))
       return FALSE;
-    
+
     // parse the days
-    token = s.mid(s.find("on(") + 3, 
+    token = s.mid(s.find("on(") + 3,
 		  s.find(")betw")-s.find("on(") - 3);
     if(!parseEntries(token, QDate::currentDate().year(),
 		     t1, t2, costs, len))
       return FALSE;
-    
+
     return TRUE;
   }
 
@@ -377,7 +374,7 @@ bool RuleSet::parseLine(QString &s) {
     _minimum_costs = token.toDouble(&ok);
     return ok;
   }
-  
+
   // check currency settings
   if(s.contains(QRegExp("currency_symbol=.*"))) {
      _currency_symbol = s.mid(16, s.length()-16);
@@ -401,12 +398,12 @@ bool RuleSet::parseLine(QString &s) {
       _currency_position = CURRENCY_RIGHT;
       return TRUE;
     }
-  }  
+  }
 
   // check per connection fee
   if(s.contains(QRegExp("per_connection="))) {
     QString token = s.mid(15, s.length()-15);
-    bool ok;    
+    bool ok;
     pcf = token.toDouble(&ok);
     return ok;
   }
@@ -459,7 +456,7 @@ void RuleSet::getActiveRule(QDateTime dt, double &costs, double &len) {
     break;
 
     case 2: // one or more weekdays
-      // check if the range overlaps sunday. 
+      // check if the range overlaps sunday.
       // (i.e. "on(saturday..monday)")
       if(r.weekday.from <= r.weekday.until) {
 	if((r.weekday.from <= dt.date().dayOfWeek() - 1) &&
@@ -476,16 +473,16 @@ void RuleSet::getActiveRule(QDateTime dt, double &costs, double &len) {
 	   (dt.date().dayOfWeek() - 1 <= r.weekday.until))
 	  {
 	    // check time
-	    if((r.from <= dt.time()) && (dt.time() <= r.until)) {	
+	    if((r.from <= dt.time()) && (dt.time() <= r.until)) {
 	      costs = r.costs;
 	      len = r.len;
 	    }
-	  }     
+	  }
       }
     }
   }
 }
-  
+
 
 double round(double d, int digits) {
   d *= pow(10, digits);
@@ -498,16 +495,16 @@ QString RuleSet::currencySymbol() {
   return _currency_symbol.copy();
 }
 
-QString RuleSet::currencyString(double f) {  
+QString RuleSet::currencyString(double f) {
   QString s, fmt;
 
   if(_currency_position == CURRENCY_RIGHT) {
     fmt.sprintf("%%0.%df %%s", _currency_digits);
-    s.sprintf(fmt.data(), round(f, _currency_digits), 
+    s.sprintf(fmt.data(), round(f, _currency_digits),
 	      _currency_symbol.data());
   } else {
     fmt.sprintf("%%s %%0.%df", _currency_digits);
-    s.sprintf(fmt.data(), _currency_symbol.data(), 
+    s.sprintf(fmt.data(), _currency_symbol.data(),
 	      round(f, _currency_digits));
   }
   return s;
@@ -581,3 +578,4 @@ int RuleSet::checkRuleFile(const char *rulefile) {
   fprintf(stderr, i18n("kppp: rulefile is ok\n"));
   return 0;
 }
+

@@ -37,42 +37,6 @@
 #include <sys/wait.h>
 #include <pwd.h>
 
-QString findFileInPath( const char *fname, const char *extraPath) {
-  QString f;
-
-  if(access(fname, F_OK) == 0)
-    return QString(fname);
-
-  // strip arguments
-  QString _fname = fname;
-  if(_fname.find(' ') != -1)
-    _fname = _fname.left(_fname.find(' '));
-
-  char path[4096] = "";
-  if(extraPath != 0)
-    strcpy(path, extraPath);
-
-  // for absolute path
-  strcat(path, ":");
-
-  if(getenv("PATH") != NULL)
-    strncat(path, getenv("PATH"), sizeof(path)-512);
-
-  char *p = strtok(path, ":");
-  while(p != NULL) {
-    f = p;
-    f += "/";
-    f += _fname;
-    if(access(f.data(), F_OK) == 0) {
-      return f;
-    } else
-      p = strtok(NULL, ":");
-  }
-
-  f = "";
-  return f;
-}
-
 int uidFromName(const char *uname) {
   struct passwd *pw;
 

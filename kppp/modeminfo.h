@@ -42,6 +42,7 @@
 #include <qmsgbox.h>
 #include <qrangect.h>
 #include <qfont.h>
+#include <kprogress.h>
 
 #include <unistd.h>
 #include <termios.h>
@@ -49,11 +50,13 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+
 #include "pppdata.h"
 #include "modem.h"
-#include <kprogress.h>
+
 
 #define NUM_OF_ATI 8
+
 
 class ModemTransfer : public QDialog, public Modem {
   Q_OBJECT
@@ -94,7 +97,7 @@ protected:
   QTimer *readtimer;
   QTimer *timeout_timer;
   QTimer *scripttimer;
-
+  QString ati_query_strings[NUM_OF_ATI];
 };
 
 
@@ -102,7 +105,9 @@ class ModemInfo : public QDialog {
   Q_OBJECT
 public:
   ModemInfo(QWidget *parent=0, const char *name=0);
-  ~ModemInfo() {}
+
+public:
+  void setAtiString(int num, QString s);
 
 private:
   QLabel *ati_label[NUM_OF_ATI];

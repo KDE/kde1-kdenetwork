@@ -1,4 +1,4 @@
-/*
+/* -*- C++ -*-
  *            kPPP: A pppd front end for the KDE project
  *
  * $Id$
@@ -6,8 +6,8 @@
  *            Copyright (C) 1997 Bernd Johannes Wuebben
  *                   wuebben@math.cornell.edu
  *
- * This file was contributed by Mario Weilguni <mweilguni@sime.com>
- * Thanks Mario !
+ * This file contributed by: Mario Weilguni, <mweilguni@sime.com>
+ *
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -24,21 +24,21 @@
  * Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-#ifndef __RUNTESTS__H__
-#define __RUNTESTS__H__
+#ifndef __LOG__H__
+#define __LOG__H__
 
-#include <qstring.h>
-#include "pppdata.h"
+#include <assert.h>
+#include <stdarg.h>
 
-#define SYSOPTIONS "/etc/ppp/options"
+extern void PRINTDEBUG(char *, int, const char *, ...);
 
-const int TEST_OK = 0;
-const int TEST_WARNING = 1;
-const int TEST_NOCONNECT = 2;
-const int TEST_CRITICAL = 3;
+#define Fatal(fmt, args...) { PRINTDEBUG(__FILE__, __LINE__, fmt, ##args); exit(1); }
 
-// Various tests to be run at starttime
-int runTests();
-
+//#define MY_DEBUG
+#ifndef MY_DEBUG
+#define Debug(fmt, args...) ((void)0);
+#else
+#define Debug(fmt, args...) PRINTDEBUG(__FILE__, __LINE__, fmt, ##args);
 #endif
 
+#endif
