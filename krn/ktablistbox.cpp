@@ -11,7 +11,6 @@
 
 #define INIT_MAX_ITEMS 16
 
-
 //=============================================================================
 //
 //  C L A S S   KTabListBoxItem
@@ -93,10 +92,18 @@ void KTabListBoxColumn :: setType (KTabListBox::ColumnType lbt)
 
 
 //-----------------------------------------------------------------------------
-void KTabListBoxColumn :: paintCell (QPainter* paint, const QString& string)
+void KTabListBoxColumn :: paintCell (QPainter* paint, int row, 
+				     const QString& string, bool marked)
 {
   const QFontMetrics* fm = &paint->fontMetrics();
   QPixmap* pix;
+
+  // p->fillRect (0, 0, cellWidth(col), cellHeight(row), bg);
+  if (marked)
+  {
+    paint->fillRect (0, 0, iwidth, parent->cellHeight(row), 
+		     parent->highlightColor);
+  }
 
   switch (colType)
   {
@@ -117,7 +124,10 @@ void KTabListBoxColumn :: paintCell (QPainter* paint, const QString& string)
     break;
   }
 
-  paint->eraseRect(iwidth-6,0,iwidth,1024);
+  if (marked) 
+    paint->fillRect (iwidth-6, 0, iwidth, 128, parent->highlightColor);
+  else
+    paint->eraseRect (iwidth-6, 0, iwidth, 128);
 }
 
 
@@ -142,6 +152,7 @@ KTabListBox :: KTabListBox (QWidget *parent, const char *name, int columns,
 {
   const QFontMetrics* fm = &fontMetrics();
   QString f;
+  QColorGroup g = colorGroup();
 
   initMetaObject();
 
@@ -156,11 +167,12 @@ KTabListBox :: KTabListBox (QWidget *parent, const char *name, int columns,
   itemList = NULL;
   sepChar  = '\t';
   labelHeight = fm->height() + 4;
-  
+  columnPadding = fm->height() / 2;
+  highlightColor = g.mid();
+
   lbox.setGeometry(0, labelHeight, width(), height()-labelHeight);
 
   if (columns > 0) setNumCols(columns);
-  pixDict.setAutoDelete(true);
 }
 
 
@@ -457,7 +469,6 @@ void KTabListBox :: paintEvent (QPaintEvent* e)
   QPainter paint;
   QWMatrix matrix;
   QRect    clipR;
-  QColorGroup colGrp;
 
   ih = numCols();
   x  = -lbox.xOffset();
@@ -580,22 +591,13 @@ KTabListBoxTable :: ~KTabListBoxTable()
 //-----------------------------------------------------------------------------
 void KTabListBoxTable :: paintCell (QPainter* p, int row, int col)
 {
-  QColor bg;
-  QColorGroup g = colorGroup();
-  KTabListBox* owner = (KTabListBox*)parentWidget();
-  KTabListBoxItem* item = owner->getItem(row);
+  KTabListBox*     owner = (KTabListBox*)parentWidget();
+  KTabListBoxItem* item  = owner->getItem(row);
 
   if (!item) return;
-
-  if (item->marked()==-1)
-  {
-    bg = g.background();
-    p->fillRect (0, 0, cellWidth(col), cellHeight(row), bg);
-  }
   p->setPen (item->foreground());
-  p->setBackgroundColor (g.base());
 
-  owner->colList[col].paintCell (p, item->text(col));
+  owner->colList[col].paintCell(p, row, item->text(col), (item->marked()==-1));
 }
 
 
@@ -647,19 +649,29 @@ void KTabListBoxTable :: doItemSelection (QMouseEvent* e, int idx)
 void KTabListBoxTable :: mousePressEvent (QMouseEvent* e)
 {
   KTabListBox* owner = (KTabListBox*)parentWidget();
-  int idx;
+  int row, col;
+
+  row = findRow(e->pos().y());
+  col = findCol(e->pos().x());
+
+  if (e->button() == RightButton)
+  {
+    // handle popup menu
+    if (row >= 0 && col >= 0) emit owner->popupMenu(row, col);
+    return;
+  }
+  else if (e->button() == MidButton) return;
 
   // arm for possible dragging
   dragStartPos = e->pos();
-  dragCol = findCol(e->pos().x());
-  dragRow = findRow(e->pos().y());
+  dragCol = col;
+  dragRow = row;
 
   // handle item highlighting
-  idx = findRow(e->pos().y());
-  if (idx >= 0 && owner->getItem(idx)->marked() < -1)
+  if (row >= 0 && owner->getItem(row)->marked() < -1)
   {
-    doItemSelection(e, idx);
-    selIdx = idx;
+    doItemSelection(e, row);
+    selIdx = row;
   }
   else selIdx = -1;
 }
@@ -670,6 +682,8 @@ void KTabListBoxTable :: mouseReleaseEvent (QMouseEvent* e)
 {
   KTabListBox* owner = (KTabListBox*)parentWidget();
   int idx;
+
+  if (e->button() != LeftButton) return;
 
   if (dragging)
   {

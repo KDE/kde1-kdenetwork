@@ -56,6 +56,8 @@ class KTabListBox : public KDNDWidget
 {
   Q_OBJECT;
   friend KTabListBoxTable;
+  friend KTabListBoxColumn;
+
 public:
   enum ColumnType { TextColumn, PixmapColumn };
 
@@ -141,9 +143,6 @@ public:
 
   QPixmap& dndPixmap(void) { return dndDefaultPixmap; }
 
-  KTabListBoxItem* getItem (int idx);
-
-  
 signals:
   void highlighted (int Index, int column);
 	// emited when the current item changes (either via setCurrentItem()
@@ -151,6 +150,9 @@ signals:
 
   void selected (int Index, int column);
 	// emitted when the user double-clicks into a line
+
+  void popupMenu (int Index, int column);
+	// emitted when the user presses the right mouse button over a line
 
 protected slots:
   void horSbValue(int val);
@@ -161,6 +163,7 @@ protected:
   void updateItem (int idx, bool clear = TRUE);
   bool needsUpdate (int id) { return (lbox.autoUpdate() && itemVisible(id)); }
 
+  KTabListBoxItem* getItem (int idx);
 
   virtual void resizeEvent (QResizeEvent*);
   virtual void paintEvent (QPaintEvent*);
@@ -182,6 +185,8 @@ protected:
   KTabListBoxTable	lbox;
   int			labelHeight;
   QPixmap		dndDefaultPixmap;
+  int			columnPadding;
+  QColor		highlightColor;
 
 private:		// Disabled copy constructor and operator=
   KTabListBox (const KTabListBox &) {}
@@ -234,7 +239,8 @@ public:
   virtual void setType (KTabListBox::ColumnType);
   KTabListBox::ColumnType type (void) const { return colType; }
 
-  virtual void paintCell (QPainter*, const QString& string);
+  virtual void paintCell (QPainter*, int row, const QString& string, 
+			  bool marked);
   virtual void paint (QPainter*);
 protected:
   int iwidth;
