@@ -1,5 +1,8 @@
 1998-01-02  Andrew Stanley-Jones  <asj@chowtown.cban.com>
 
+	* alistbox.cpp (inSort): Fixed sorting routine.  Stripped it made
+ 	it work, it's faster, etc.  SHould work better.
+
 	* toplevel.cpp: Added new Willy power tab completion.
 
 1998-01-01  Andrew Stanley-Jones  <asj@chowtown.cban.com>
@@ -61,6 +64,13 @@
 $Revision$
 	
 $Log$
+Revision 1.9  1998/01/03 01:44:11  asj
+Applied wilton's patch, made it work to my taste.  We need to edit the
+ksiticker and add it's own colour support, this looks real shitty on my
+machine.
+
+I think the list box's ordering works seemy corretly now.
+
 Revision 1.8  1998/01/01 21:02:11  asj
 Various bug fixed all over the place.  Added ksirc.pl, documentation update, etc.
 
