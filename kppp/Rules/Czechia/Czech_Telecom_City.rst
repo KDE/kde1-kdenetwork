@@ -1,7 +1,7 @@
 ################################################################
 # Czech Telecom rate ruleset
 #
-# created 98/01/29 by Miroslav Flídr <flidr@kky.zcu.cz>
+# created 98/06/18 by Miroslav Flídr <flidr@kky.zcu.cz>
 #
 # no extensive testing...
 ################################################################
@@ -14,5 +14,4 @@ per_connection=0.0
 minimum_costs=0.0
 default=(2.40, 360)
 
-# (for CITY Tarif)
 on (monday..friday)   between (7:00..19:00)  use (2.40, 180)
