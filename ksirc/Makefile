@@ -71,7 +71,7 @@ showfiles:
 
 clean:
 	rm -f *.o *.bak *~ *% core *.orig log.flood
-	rm -f $(TARGET)
+	rm -f $(TARGET) ksirc-static
 
 ####### Meta classes
 
