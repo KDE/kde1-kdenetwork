@@ -685,6 +685,7 @@ void Artdlg::updateScores()
     Article art;
     int i=0;
     QString s;
+    Rule::updateGlobals(); 
     for (char *ID=IDList.first();ID!=0;ID=IDList.next(),i++)
     {
         art.ID=ID;
