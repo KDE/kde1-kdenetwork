@@ -85,7 +85,7 @@ PPPdArguments::PPPdArguments(QWidget *parent, const char *name)
 
   KButtonBox *bbox = new KButtonBox(this);
   bbox->addStretch(1);
-  closebtn = bbox->addButton("Ok");
+  closebtn = bbox->addButton("OK");
   connect(closebtn, SIGNAL(clicked()), SLOT(closebutton()));
   QPushButton *cancel = bbox->addButton("Cancel");
   connect(cancel, SIGNAL(clicked()),
