@@ -40,16 +40,16 @@
 class Artdlg : public KTopLevelWidget 
 {
     Q_OBJECT
-
+        
 public:
-
+    
     Artdlg (NewsGroup *_group, NNTP* server);
     virtual ~Artdlg();
-
+    
     Kmessage *messwin;
 protected:
     virtual void closeEvent (QCloseEvent *e);
-
+    
 private slots:
     bool actions(int);
     bool taggedActions(int);
@@ -60,10 +60,11 @@ private slots:
     void markArt (int index,int column);
     void decArt (int index,int column);
     void saveArt (QString id);
-
+    void copyText(bool b);
+        
 signals:
     void needConnection ( );
-    
+        
 private:
     NNTP *server;
     KTabListBox *list;
@@ -72,12 +73,12 @@ private:
     NewsGroup *group;
     ArticleList artList;
     KMenuBar *menu;
-	QPopupMenu *article;
+    QPopupMenu *article;
     KToolBar *tool;
     KPanner *panner;
     QGridLayout *gl;
     KStatusBar *status;
-	bool unread;
+    bool unread;
 };
 
 #endif // Artdlg_included

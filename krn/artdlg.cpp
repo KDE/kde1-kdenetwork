@@ -23,8 +23,10 @@
 #include <qstring.h>
 #include <qtstream.h>
 #include <qfiledlg.h>
+#include <qclipbrd.h>
 
 #include <kmsgbox.h>
+#include <html.h>
 
 #include <mimelib/mimepp.h>
 
@@ -47,7 +49,7 @@
 #define SCROLL_DOWN_ARTICLE 12
 #define DECODE_ONE_ARTICLE 13
 #define NO_READ 14
-
+#define PRINT_ARTICLE 15
 
 extern KIconLoader *iconloader;
 
@@ -74,6 +76,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     article->setCheckable(true);
     article->insertItem("Save",SAVE_ARTICLE);
     article->insertSeparator();
+    article->insertItem("Print",PRINT_ARTICLE);
     article->insertItem("Reply by Mail",REP_MAIL);
     article->insertItem("Post Followup",FOLLOWUP);
     article->insertSeparator();
@@ -83,7 +86,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     article->insertItem("Only unread messages", NO_READ);
     article->setItemChecked(NO_READ,unread);
     connect (article,SIGNAL(activated(int)),SLOT(actions(int)));
-    
+
     QPopupMenu *taggedArticle=new QPopupMenu;
     taggedArticle->insertItem("Save",SAVE_ARTICLE);
     taggedArticle->insertSeparator();
@@ -175,6 +178,7 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     gl = new QGridLayout( panner->child1(), 1, 1 ); 
     messwin=new Kmessage(panner->child1(),"messwin");
     gl->addWidget( messwin, 0, 0 );
+    QObject::connect(messwin,SIGNAL(textSelected(bool)),this,SLOT(copyText(bool)));
     
     RmbPop *filter2=new RmbPop(messwin);
     delete (filter2->pop);
@@ -217,6 +221,20 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     else
     {
         fillTree();
+    }
+}
+
+void Artdlg::copyText(bool b)
+{
+    debug ("copyText");
+    if (b)
+    {
+        //this is copied from kdehelp
+        QString text;
+        messwin->getKHTMLWidget()->getSelectedText( text );
+        debug ("copying %s",text.data());
+        QClipboard *cb = kapp->clipboard();
+        cb->setText( text ); 
     }
 }
 
@@ -312,6 +330,13 @@ bool Artdlg::actions (int action)
     qApp->setOverrideCursor (waitCursor);
     switch (action)
     {
+    case PRINT_ARTICLE:
+        {
+            qApp->setOverrideCursor (arrowCursor);
+            debug ("printing");
+            messwin->getKHTMLWidget()->print();
+            qApp->restoreOverrideCursor ();
+        }
     case ARTLIST:
         {
             emit needConnection();
