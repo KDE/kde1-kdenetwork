@@ -824,11 +824,11 @@ bool Artdlg::actions (int action,int index)
                 cmd+=cachepath;
                 cmd+="/";
                 cmd.replace(QRegExp("//"),"/");
-                cmd+=IDList.at(list->currentItem());
+                cmd+=IDList.at(index);
                 cmd+="\"";
                 debug ("print command: %s",cmd.data());
                 QString s;
-                s.sprintf("Printing %s",IDList.at(list->currentItem()));
+                s.sprintf("Printing %s",IDList.at(index));
                 qApp->processEvents ();
                 statusBar()->changeItem(s.data(),2);
                 system(cmd.data());
@@ -848,29 +848,27 @@ bool Artdlg::actions (int action,int index)
         }
     case PREV:
         {
-            int i=list->currentItem();
-            if (i>0)
+            if (index>0)
             {
-                i--;
-                list->setCurrentItem(i);
+                index--;
+                list->setCurrentItem(index);
             }
             success=true;
             break;
         }
     case NEXT:
         {
-            unsigned int i=list->currentItem();
-            if (i<list->count())
+            if (index<list->count())
             {
-                i++;
-                list->setCurrentItem(i);
+                index++;
+                list->setCurrentItem(index);
             }
             success=true;
             break;
         }
     case DECODE_ARTICLE:
         {
-            decArt(list->currentItem(),0);
+            decArt(index,0);
             break;
         }
     case DECODE_ONE_ARTICLE:
@@ -881,7 +879,7 @@ bool Artdlg::actions (int action,int index)
         }
     case TAG_ARTICLE:
         {
-            markArt(list->currentItem(),0);
+            markArt(index,0);
             break;
         }
     case SAVE_ARTICLE:
