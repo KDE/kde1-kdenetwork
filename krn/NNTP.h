@@ -60,7 +60,7 @@ public:
     void incref();
     void decref();
     void save();
-    void load(bool onlyUnread=false);
+    void load();
     int  score();
     bool refsLoaded;
     KMMessage *createMessage();

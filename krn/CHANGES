@@ -12,6 +12,8 @@ Changes made Jan 16
 * [Roberto] New dialog to customize expiration times.
 * [Roberto] Changed the "Article" menu to "File" to be more consistent with
             other KDE apps.
+* [Roberto] Plugged a rather largish memory leak while at the same time
+            speeding up group opening by 500%. Those 5 lines really payed off!
 
 -----------------------------------------------------------------------------
 Changes made Jan 15

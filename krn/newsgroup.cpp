@@ -198,7 +198,7 @@ void Article::save()
     }
     
 }
-void Article::load( bool onlyUnread)
+void Article::load()
 //gets the article info and data from the cache
 {
     QStrList tl;
@@ -215,16 +215,10 @@ void Article::load( bool onlyUnread)
     }
     else
     {
-        if (onlyUnread)
-        {
-            ID="";
-            return;
-        }
-        else
-        {
-            content=gdbm_fetch(old_artdb,key);
-        }
+        content=gdbm_fetch(old_artdb,key);
     }
+    if (!content.dptr)
+        return; //Couldn't load it
     
     QString s=(char *)content.dptr;
     
@@ -354,11 +348,14 @@ void NewsGroup::addArticle(QString ID,bool onlyUnread)
     Article *spart=artSpool.find(ID.data());
     if (spart==NULL)
     {
-        Article *art=new Article();
-        art->ID=ID;
-        art->load(onlyUnread);
-        if (!(art->ID.isEmpty()))
-            artList.append(art);
+        if (onlyUnread)
+            if (unreadDict.find(ID.data()))
+            {
+                Article *art=new Article();
+                art->ID=ID;
+                art->load();
+                artList.append(art);
+            }
 }
 else
 {
@@ -386,7 +383,9 @@ void NewsGroup::getList(Artdlg *dialog)
     int index=0;
     int oldindex=0;
     int counter=0;
-    
+
+    int artCount=buffer.contains('\n');
+    debug ("There are %d articles",artCount);
     while (1)
     {
         index=buffer.find ('\n',oldindex);
