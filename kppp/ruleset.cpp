@@ -229,7 +229,7 @@ bool RuleSet::parseEntry(RULE &ret, QString s, int year) {
 
 bool RuleSet::parseEntries(QString s, int year,
 			   QTime t1, QTime t2,
-			   double costs, double len)
+			   double costs, double len, double after)
 {
   // special rule: on() is the same as on(monday..sunday)
   if(s == "")
@@ -275,6 +275,7 @@ bool RuleSet::parseEntries(QString s, int year,
 
     r.costs = costs;
     r.len = len;
+    r.after = after;
     r.from = t1;
     r.until = t2;
     addRule(r);
@@ -299,8 +300,10 @@ bool RuleSet::parseTime(QTime &t1, QTime &t2, QString s) {
   }
 }
 
-bool RuleSet::parseRate(double &costs, double &len, QString s) {
-  return (sscanf(s.data(), "%lf,%lf", &costs, &len) == 2);
+bool RuleSet::parseRate(double &costs, double &len, double &after, QString s) {
+  after = 0;
+  int fields = sscanf(s.data(), "%lf,%lf,%lf", &costs, &len, &after);
+  return (fields == 2) || (fields == 3);
 }
 
 bool RuleSet::parseLine(QString &s) {
@@ -312,7 +315,8 @@ bool RuleSet::parseLine(QString &s) {
 			  s.find(")")-s.find("flat_init_costs=(") - 17);
     //    printf("TOKEN=%s\n",token.data());
 
-    if(!parseRate(flat_init_costs,flat_init_duration,token))
+    double after;
+    if(!parseRate(flat_init_costs, flat_init_duration, after, token))
       return FALSE;
 
     //printf("COST %f DURATION %f\n",flat_init_costs,flat_init_duration);
@@ -340,14 +344,15 @@ bool RuleSet::parseLine(QString &s) {
 			  s.findRev(")")-s.find("use(") - 4);
     double costs;
     double len;
-    if(!parseRate(costs, len, token))
+    double after;
+    if(!parseRate(costs, len, after, token))
       return FALSE;
 
     // parse the days
     token = s.mid(s.find("on(") + 3,
 		  s.find(")betw")-s.find("on(") - 3);
     if(!parseEntries(token, QDate::currentDate().year(),
-		     t1, t2, costs, len))
+		     t1, t2, costs, len, after))
       return FALSE;
 
     return TRUE;
@@ -363,7 +368,8 @@ bool RuleSet::parseLine(QString &s) {
   // check default entry
   if(s.contains(QRegExp("default=(.*)"))) {
     QString token = s.mid(9, s.length() - 10);
-    if(parseRate(default_costs, default_len, token))
+    double after;
+    if(parseRate(default_costs, default_len, after, token))
       return TRUE;
   }
 
@@ -417,7 +423,7 @@ void RuleSet::setStartTime(QDateTime dt){
 
 }
 
-void RuleSet::getActiveRule(QDateTime dt, double &costs, double &len) {
+void RuleSet::getActiveRule(QDateTime dt, double connect_time, double &costs, double &len) {
   // use default costs first
   costs = default_costs;
   len = default_len;
@@ -447,7 +453,7 @@ void RuleSet::getActiveRule(QDateTime dt, double &costs, double &len) {
 	until.setYMD(dt.date().year(), until.month(), until.day());
 	if((from <= dt.date()) && (dt.date() <= until)) {
 	  // check time
-	  if((r.from <= dt.time()) && (dt.time() <= r.until)) {
+	  if((r.from <= dt.time()) && (dt.time() <= r.until) && (connect_time >= r.after)) {
 	    costs = r.costs;
 	    len = r.len;
 	  }
@@ -463,7 +469,7 @@ void RuleSet::getActiveRule(QDateTime dt, double &costs, double &len) {
 	   (r.weekday.until >= dt.date().dayOfWeek() - 1))
 	  {
 	    // check time
-	    if((r.from <= dt.time()) && (dt.time() <= r.until)) {
+	    if((r.from <= dt.time()) && (dt.time() <= r.until) && (connect_time >= r.after)) {
 	      costs = r.costs;
 	      len = r.len;
 	    }
@@ -473,7 +479,7 @@ void RuleSet::getActiveRule(QDateTime dt, double &costs, double &len) {
 	   (dt.date().dayOfWeek() - 1 <= r.weekday.until))
 	  {
 	    // check time
-	    if((r.from <= dt.time()) && (dt.time() <= r.until)) {
+	    if((r.from <= dt.time()) && (dt.time() <= r.until) && (connect_time >= r.after)) {
 	      costs = r.costs;
 	      len = r.len;
 	    }

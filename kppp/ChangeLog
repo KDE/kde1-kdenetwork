@@ -1,3 +1,11 @@
+1998-12-16  Mario Weilguni <mweilguni@kde.org>
+
+	* added Indonesia rule files
+	* added some new Denmark rule files
+	* added a patch from Filip Larsen <filip@post4.tele.dk> to allow a
+	  rule to be dependent on connection time. See Rules/TEMPLATE for
+	  an example. This will allow much better danish rulesets
+
 1998-12-14  Harri Porten  <porten@kde.org>
 
 	* runtests.cpp: fixed test for pppd's suid bit

@@ -40,6 +40,7 @@ typedef struct RULE {
   int type;
   double costs;
   double len;
+  double after;
   QTime from, until;
   struct {
     QDate from, until;
@@ -92,7 +93,7 @@ public:
   double minimumCosts();
 
   /// returns the currently valid rule settings
-  void getActiveRule(QDateTime dt, double &costs, double &len);
+  void getActiveRule(QDateTime dt, double connect_time, double &costs, double &len);
 
   /// checks if a rulefile is ok (no parse errors...)
   static int checkRuleFile(const char *);
@@ -115,13 +116,13 @@ protected:
   /// parses the "on(...)" fields
   bool parseEntries(QString s, int year, 
 		    QTime t1, QTime t2,
-		    double costs, double len);
+		    double costs, double len, double after);
 
   /// parses the "between(...)" time fields
   bool parseTime(QTime &t1, QTime &t2, QString s);
 
   /// parses the "use(...)" fields
-  bool parseRate(double &costs, double &len, QString s);
+  bool parseRate(double &costs, double &len, double &after, QString s);
 
   /// parses a whole line
   bool parseLine(QString &line);

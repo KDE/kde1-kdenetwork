@@ -91,8 +91,9 @@ void Accounting::timerEvent(QTimerEvent *t) {
 
     double newCosts;
     double newLen;
+    double connect_time = difftime(time(0), start_time);
 
-    rules.getActiveRule(QDateTime::currentDateTime(), newCosts, newLen);
+    rules.getActiveRule(QDateTime::currentDateTime(), connect_time, newCosts, newLen);
     if(newLen < 1) { // changed to < 1
       slotStop();
       return; // no default rule found
@@ -151,8 +152,9 @@ void Accounting::slotStart() {
      if(UPDATE_TIME > 0)
        update_timer_id = startTimer(UPDATE_TIME);
 
+    start_time = time(0); 
     QString s;
-    s = timet2qstring(time(0));
+    s = timet2qstring(start_time);
     s += ":";
     s += gpppdata.accname();
     s += ":";

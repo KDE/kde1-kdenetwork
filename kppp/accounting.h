@@ -64,6 +64,7 @@ private:
   double _lastcosts;
   double _lastlen;
   int acct_timer_id, update_timer_id;
+  time_t start_time;
 
   // static members
 public:
