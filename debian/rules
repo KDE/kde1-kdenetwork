@@ -2,29 +2,31 @@
 # Made with the aid of debmake, by Christoph Lameter,
 # based on the sample debian/rules file for GNU hello by Ian Jackson.
 
-BUILDDIR = ../build_kdenetwork
+BUILDDIR = ./build
 
-build: $(BUILDDIR)/build
+build: $(BUILDDIR)/build-stamp
 
-$(BUILDDIR)/build:
+$(BUILDDIR)/build-stamp:
 	dh_testdir
 	if test ! -f configure; then \
 	  $(MAKE) -f admin/Makefile.common ;\
 	fi 
-	pwd=`pwd` ;\
 	test -d $(BUILDDIR) || mkdir $(BUILDDIR) ;\
 	cd $(BUILDDIR) ;\
 	CFLAGS="-O2 -g -Wall" \
 	 CXXFLAGS="-O2 -g -Wall" \
-	$$pwd/configure --enable-debug --with-install-root=`pwd`/debian/tmp \
+	../configure --enable-debug --with-install-root=`pwd`/../debian/tmp \
 	--disable-rpath \
 	--includedir="\$$(prefix)/include/kde" \
-	--libdir="\$$(prefix)/X11R6/lib" && make
+	--libdir="\$$(prefix)/X11R6/lib" 
 
-	touch $(BUILDDIR)/build
+	make -C $(BUILDDIR)
+
+	touch $(BUILDDIR)/build-stamp
 
 clean: debian-clean
 	-rm -rf $(BUILDDIR)
+	dh_clean -k
 
 debian-clean:
 	dh_testdir
@@ -40,12 +42,7 @@ binary-arch: build
 	dh_testdir
 	dh_testroot
 	dh_clean -k
-	rm -rf $(BUILDDIR)/debian
-	cp -ra debian $(BUILDDIR)/debian
-	(cd $(BUILDDIR) && $(MAKE) -f debian/rules binary-arch2)
-
-binary-arch2:
-	make prefix=`pwd`/debian/tmp/usr install 
+	make -C $(BUILDDIR) prefix=`pwd`/../debian/tmp/usr install 
 	echo "# KDE Config File"          > debian/tmp/etc/kde/knurc
 	echo "[Traceroute]"              >> debian/tmp/etc/kde/knurc
 	echo "path=/usr/sbin/traceroute" >> debian/tmp/etc/kde/knurc
