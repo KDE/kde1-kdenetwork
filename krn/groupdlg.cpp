@@ -313,7 +313,7 @@ void Groupdlg::openGroup (int index)
     {
         if (!it->hasChild())
         {
-            if (!strcmp("All Newsgroups.",it->getText()))
+            if (!strcmp(klocale->translate("All Newsgroups."),it->getText()))
             {
                 base="";
             }
@@ -388,7 +388,7 @@ void Groupdlg::subscribe (NewsGroup *group)
     if (-1 != index)
     {
         subscr.remove ();
-        path.push (new QString ("Subscribed Newsgroups."));
+        path.push (new QString (klocale->translate("Subscribed Newsgroups.")));
         path.push (new QString (group->name));
         int l=list->currentItem();
         list->setCurrentItem(0);
@@ -482,7 +482,7 @@ void Groupdlg::fillTree ()
 {
     QPixmap p;
     p=kapp->getIconLoader()->loadIcon("krnfolder.xpm");
-    list->insertItem ("Subscribed Newsgroups.", &p);
+    list->insertItem (klocale->translate("Subscribed Newsgroups."), &p);
     QListIterator <NewsGroup> it(subscr);
     it.toFirst();
     NewsGroup *g;
@@ -494,7 +494,7 @@ void Groupdlg::fillTree ()
     }
 
     p=kapp->getIconLoader()->loadIcon("krnfolder.xpm");
-    list->insertItem ("All Newsgroups.", &p);
+    list->insertItem (klocale->translate("All Newsgroups."), &p);
 }
 
 bool Groupdlg::needsConnect()
@@ -820,7 +820,7 @@ void Groupdlg::findGroup()
         
         KPath p;
         
-        p.push (new QString("All Newsgroups."));
+        p.push (new QString(klocale->translate("All Newsgroups.")));
         
         if (!list->itemAt(&p)->isExpanded())
             openGroup(list->itemIndex(list->itemAt(&p)));
