@@ -37,6 +37,10 @@ findArtDlg::findArtDlg (QWidget* parent,const char* name):Inherited( parent, nam
     QStrList *fields=new QStrList;
     fields->append( "Subject" );
     fields->append( "Sender" );
+    fields->append( "Cached Article" );
+    fields->append( "Article" );
+    fields->append( "Cached Header" );
+    fields->append( "Header" );
     fields->append( "Cached Body" );
     fields->append( "Body" );
     field=(QComboBox *)(l->addComboBox("field",fields)->widget);

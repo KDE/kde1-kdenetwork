@@ -47,6 +47,13 @@
 
 class NNTP;
 
+#define PART_NONE 0
+#define PART_HEAD 1
+#define PART_BODY 2
+#define PART_ALL (PART_HEAD | PART_BODY)
+
+enum MessageParts {Nopart=PART_NONE,Head=PART_HEAD,Body=PART_BODY,All=PART_ALL};
+
 class Article
 {
 public:
@@ -196,8 +203,11 @@ public:
     bool    setGroup( const char *groupname);
     char    *group() {return GroupName.data();};
     bool    artList(int from=0,int to=0,NewsGroup *n=0);
-    QString *article(char *id);
-    bool    isCached(char *id);
+    bool    getMissingParts(MessageParts parts,const char *id);
+    QString *article(const char *id);
+    QString *head(const char *id);
+    QString *body(const char *id);
+    MessageParts isCached(const char *id);
     int     authinfo(const char *username,const char *password);
     int     setMode (char *mode);
     QString    	hostname;
@@ -239,6 +249,7 @@ private:
     DwString     partialResponse;
     NNTPObserver  *extendPartialResponse;
     void        PGetTextResponse();
+    QString saneID(const char *id);
 };
 
 #endif

@@ -150,12 +150,12 @@ int main( int argc, char **argv )
     //Check for a lock file before I break things
     if (QFile::exists(krnpath+"krn_lock"))
     {
-        KMsgBox::message(0,"KRN - Error",
-                         "I have detected another Krn running\n"
-                         "If you are sure there isn't one\n"
-                         "remove ~/.kde/share/apps/krn/krn_lock\n"
-                         "and restart Krn");
-        exit(1);
+        int i=KMsgBox::yesNo(0,"KRN - Error",
+                             "I have detected another Krn running\n"
+                             "Do you REALLY want to continue?\n"
+                             "If you are sure there isn't one, press \"Yes\"\n"
+                             "But if there *is* another one, it's going to be UGLY\n");
+        if (i!=1) exit(1);
     }
     else
     {

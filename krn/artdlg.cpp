@@ -46,6 +46,7 @@
 #include "findArtDlg.h"
 #include "rulesDlg.h"
 #include "sortDlg.h"
+#include "rules.h"
 
 #include "kmcomposewin.h"
 #include "kmreaderwin.h"
@@ -421,7 +422,7 @@ void Artdlg::fillTree ()
     bool thiscached;
     for (iter=group->artList.first();iter!=0;iter=group->artList.next())
     {
-        thiscached=server->isCached(iter->ID.data());
+        thiscached=server->isCached(iter->ID.data())==PART_ALL;
         if(
            (((thiscached && showcached) || (!showcached)) &&
             (!(unread && iter->isRead()))) ||
@@ -448,7 +449,7 @@ void Artdlg::fillTree ()
         QString formatted;
         iter->formHeader(&formatted);
         list->insertItem (formatted.data());
-        if (server->isCached(iter->ID.data()))
+        if (server->isCached(iter->ID.data())==PART_ALL)
             list->changeItemColor(QColor(0,0,255),i);
         IDList.append(iter->ID.data());
         depths.append(new int(iter->threadDepth));
@@ -542,7 +543,7 @@ bool Artdlg::actions (int action)
             QString formatted;
             art.formHeader(&formatted);
             list->changeItem (formatted.data(),index);
-            if (server->isCached(art.ID.data()))
+            if (server->isCached(art.ID.data())==PART_ALL)
                 list->changeItemColor(QColor(0,0,255),index);
             break;
         }
@@ -555,7 +556,7 @@ bool Artdlg::actions (int action)
             QString formatted;
             art.formHeader(&formatted);
             list->changeItem (formatted.data(),index);
-            if (server->isCached(art.ID.data()))
+            if (server->isCached(art.ID.data())==PART_ALL)
                 list->changeItemColor(QColor(0,0,255),index);
             break;
         }
@@ -909,7 +910,7 @@ bool Artdlg::actions (int action)
             QString formatted;
             art.formHeader(&formatted);
             list->changeItem (formatted.data(),index);
-            if (server->isCached(art.ID.data()))
+            if (server->isCached(art.ID.data())==PART_ALL)
                 list->changeItemColor(QColor(0,0,255),index);
             
             break;
@@ -934,7 +935,7 @@ bool Artdlg::actions (int action)
             QString id=IDList.at(index);
             if (!server->isConnected())
             {
-                if (!server->isCached(id.data()))
+                if (!(server->isCached(id.data())==PART_ALL))
                 {
                     emit needConnection();
                     if (!server->isConnected())
@@ -1000,7 +1001,7 @@ bool Artdlg::loadArt (QString id)
     
     if (!server->isConnected())
     {
-        if (!server->isCached(id.data()))
+        if (!(server->isCached(id.data())==PART_ALL))
         {
             emit needConnection();
             if (!server->isConnected())
@@ -1082,7 +1083,7 @@ void Artdlg::saveArt (QString id)
 {
     if (!server->isConnected())
     {
-        if (!server->isCached(id.data()))
+        if (!(server->isCached(id.data())==PART_ALL))
         {
             emit needConnection();
             if (!server->isConnected())
@@ -1121,24 +1122,16 @@ void Artdlg::saveArt (QString id)
                     i=box->exec();
                 }
                 
-                QFile fi(f);
                 switch (i)
                 {
                 case QMessageBox::Yes:
                     {
-                        if (fi.open(IO_WriteOnly))
-                        {
-                            fi.writeBlock(s->data(),s->length());
-                            fi.close();
-                        }
-                        else
-                        {
-                            warning ("Can't open file for writing");
-                        }
+                        kStringToFile(*s,f,false,true);
                         break;
                     }
                 case QMessageBox::No:
                     {
+                        QFile fi(f);
                         if (fi.open(IO_WriteOnly | IO_Append))
                         {
                             fi.writeBlock(s->data(),s->length());
@@ -1188,7 +1181,7 @@ void Artdlg::loadArt (int index,int)
         QString formatted;
         art.formHeader(&formatted);
         list->changeItem (formatted.data(),index);
-        if (server->isCached(art.ID.data()))
+        if (server->isCached(art.ID.data())==PART_ALL)
             list->changeItemColor(QColor(0,0,255),index);
         article->setItemChecked(TOGGLE_EXPIRE, !art.canExpire());  // robert's cache stuff
     }
@@ -1211,7 +1204,7 @@ void Artdlg::markArt (int index,int)
     QString formatted;
     art.formHeader(&formatted);
     list->changeItem (formatted.data(),index);
-    if (server->isCached(ID))
+    if (server->isCached(ID)==PART_ALL)
         list->changeItemColor(QColor(0,0,255),index);
 }
 
@@ -1224,7 +1217,7 @@ void Artdlg::decArt (int index,int)
     
     if (!server->isConnected())
     {
-        if (!server->isCached(art.ID.data()))
+        if (!(server->isCached(art.ID.data())==PART_ALL))
         {
             emit needConnection();
             if (!server->isConnected())
@@ -1255,7 +1248,7 @@ void Artdlg::decArt (int index,int)
     QString formatted;
     art.formHeader(&formatted);
     list->changeItem (formatted.data(),index);
-    if (server->isCached(art.ID.data()))
+    if (server->isCached(art.ID.data())==PART_ALL)
         list->changeItemColor(QColor(0,0,255),index);
 }
 
@@ -1292,6 +1285,8 @@ void Artdlg::FindThis (const char *expr,const char *field,
     static QString lastfield="";
     static bool lastwmode=false;
     static bool lastcsen=false;
+
+    Rule rule("temprule",expr,field,casesen,wildmode);
     
     bool sameQuery=false;
     
@@ -1326,80 +1321,39 @@ void Artdlg::FindThis (const char *expr,const char *field,
     }
     if (lastfound >-1)
     {
-        if (server->isCached(IDList.at(lastfound)))
+        if (server->isCached(IDList.at(lastfound))==PART_ALL)
             list->changeItemColor(QColor(0,0,255),lastfound);
         else
             list->changeItemColor(QColor(0,0,0),lastfound);
     }
+
+    int p1=rule.missingParts();
+    bool needsConn=false;
     
-    if (!strcmp(field,"Subject"))
+    disconnect (list,SIGNAL(highlighted(int,int)),this,SLOT(loadArt(int,int)));
+    for (;iter.current();++iter,++index)
     {
-        for (;iter.current();++iter,++index)
+        int p2=server->isCached(iter.current());
+        if ((p1&PART_HEAD) > (p2&PART_HEAD)
+            ||
+            (p1&PART_BODY) > (p2&PART_BODY))
+            needsConn=true;
+
+        if (needsConn && (!server->isConnected()))
+            emit needConnection ();
+
+        if (needsConn && (!server->isConnected()))
+            break;
+        
+        goTo(index);
+        if (rule.match(Article (iter.current()),server))
         {
-            Article art(iter.current());
-            if (regex.match(art.Subject.data())>-1)
-            {
-                list->changeItemColor(QColor(255,0,0),index);
-                goTo(index);
-                lastfound=index;
-                break;
-            }
-        }
-        return;
-    }
-    else if (!strcmp(field,"Sender"))
-    {
-        for (;iter.current();++iter,++index)
-        {
-            Article art(iter.current());
-            if (regex.match(art.From.data())>-1)
-            {
-                list->changeItemColor(QColor(255,0,0),index);
-                goTo(index);
-                lastfound=index;
-                break;
-            }
-        }
-        return;
-    }
-    else if (!strcmp(field,"Cached Body" ))
-    {
-        for (;iter.current();++iter,++index)
-        {
-            if (server->isCached(iter.current()))
-            {
-                if (regex.match(kFileToString(cachepath+"/"+iter.current()).data())>-1)
-                {
-                    list->changeItemColor(QColor(255,0,0),index);
-                    goTo(index);
-                    lastfound=index;
-                    break;
-                }
-            }
+            list->changeItemColor(QColor(255,0,0),index);
+            lastfound=index;
+            break;
         }
     }
-    else if (!strcmp(field,"Body" ))
-    {
-        debug ("looking in body");
-        for (;iter.current();++iter,++index)
-        {
-            if (!server->isCached(iter.current()))
-            {
-                emit needConnection();
-            }
-            QString *a=server->article(iter.current());
-            list->changeItemColor(QColor(0,0,255),index);
-            goTo(index);
-            int i=regex.match(a->data());
-            delete a;
-            if (i>-1)
-            {
-                list->changeItemColor(QColor(255,0,0),index);
-                lastfound=index;
-                break;
-            }
-        }
-    }
+    connect (list,SIGNAL(highlighted(int,int)),this,SLOT(loadArt(int,int)));
 }
 void Artdlg::markReadArt (int index,int)
 {
@@ -1417,7 +1371,7 @@ void Artdlg::markReadArt (int index,int)
     QString formatted;
     art.formHeader(&formatted);
     list->changeItem (formatted.data(),index);
-    if (server->isCached(art.ID.data()))
+    if (server->isCached(art.ID.data())==PART_ALL)
         list->changeItemColor(QColor(0,0,255),index);
 }
 

@@ -1,4 +1,24 @@
 -----------------------------------------------------------------------------
+Changes made Feb 13
+-----------------------------------------------------------------------------
+
+* [Roberto] More work done on making rules be nice and find it's target.
+            Added a chance to pass the "krn locked" dialog.
+            Of course if somebody manages to have two Krn's he will mess
+            his cache so badly it will never work again, but everybody
+            seems to want that ;-)
+            Adopting latest files from kmail.
+
+-----------------------------------------------------------------------------
+Changes made Feb 12
+-----------------------------------------------------------------------------
+
+* [Roberto] Now Krn stores headers and bodies separately.
+            But fear not! It still works with the old style cache, too.
+* [Roberto] Small fixes and a few extra functions. Now I only need to finish
+            the Rule class and scoring is 90% done.
+
+-----------------------------------------------------------------------------
 Changes made Feb 11
 -----------------------------------------------------------------------------
 
@@ -7,6 +27,8 @@ Changes made Feb 11
 * [Roberto] Added "article/lookup in altavista" menu option. It is at least
             useful for testing, and as soon as I find exactly how DejaNews
             works it can have very nifty uses...
+* [Roberto] Created NNTP::isHeadCached and isBodyCached. (useful for more
+            sofisticated yet bandwidth saving search/scoring).
 
 -----------------------------------------------------------------------------
 Changes made Feb 10

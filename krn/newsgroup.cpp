@@ -500,7 +500,7 @@ void NewsGroup::getMessages(NNTP *server)
     server->reportCounters (false,true);
     for (Article *art=artList.first();art!=0;art=artList.next())
     {
-        if (!server->isCached(art->ID.data()))
+        if (!(server->isCached(art->ID.data())&PART_ALL))
             server->article(art->ID.data());
         qApp->processEvents();
     }

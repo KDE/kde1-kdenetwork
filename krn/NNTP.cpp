@@ -29,6 +29,7 @@
 #include <qfile.h>
 #include <qtstream.h>
 #include <qapp.h>
+#include <qregexp.h>
 
 #include <gdbm.h>
 
@@ -40,6 +41,8 @@ extern QDict <char> unreadDict;
 #include <mimelib/mimepp.h>
 
 char debugbuf[1024];
+
+#include "kfileio.h"
 
 #include "NNTP.moc"
 
@@ -445,10 +448,9 @@ void NNTP::groupList(QList <NewsGroup> *grouplist, bool fromserver)
             grouplist->clear();
             return;
         }
-        if(f.open (IO_WriteOnly))
+        
+        if(kStringToFile(mTextResponse.c_str(),ac.data(),false,true))
         {
-            f.writeBlock(mTextResponse.data(),mTextResponse.length());
-            f.close();
             QString command="sort <";
             command=command+ac+">"+ac+"1; mv "+ac+"1 "+ac;
             system (command.data());
@@ -466,7 +468,6 @@ void NNTP::groupList(QList <NewsGroup> *grouplist, bool fromserver)
                 QString s=st.readLine();
                 if (s.isEmpty())
                     break;
-                // I hope no group has over 2000 chars in it's name ;-)
                 NewsGroup *gr=new NewsGroup(s.left(s.find(' ')));
                 grouplist->append(gr);
             };
@@ -519,41 +520,53 @@ bool NNTP::artList(int from,int to,NewsGroup *n)
     return (status>199);
 }
 
-bool NNTP::isCached (char *id)
+MessageParts NNTP::isCached (const char *_id)
 {
+    QString id=saneID(_id);
+    int result=0;
     QString path=cachepath+"/"+id;
     if (QFile::exists(path.data()))
-        return true;
-    else
-        return false;
+        result=result|PART_ALL;
+    path=cachepath+"/"+id+".head";
+    if (QFile::exists(path.data()))
+        result=result|PART_HEAD;
+    path=cachepath+"/"+id+".body";
+    if (QFile::exists(path.data()))
+        result=result|PART_BODY;
+    return (MessageParts)result;
 }
 
-QString *NNTP::article(char *id)
+QString *NNTP::article(const char *_id)
 {
+    QString id=saneID(_id);
     QString p=cachepath;
     QString *data=new QString("");
     p=p+id;
-    QFile f(p.data());
-    if (isCached (id))//it exists so it's cached
+    if (isCached (id) == PART_ALL)//it exists and is fully cached
     {
-        if(f.open (IO_ReadOnly))
+        debug ("has all, getting nothing");
+        if (QFile::exists(p)) //old style cache
+            data->setStr(kFileToString(p).data());
+        else
         {
-            char *buffer=new char[f.size()+1];
-            f.readBlock(buffer,f.size());
-            buffer[f.size()]=0;
-            data->setStr(buffer);
-            f.close();
-            delete[] buffer;
+            data->setStr(kFileToString(p+".head"));
+            data->append("\n\n");
+            data->append(kFileToString(p+".body"));
         }
+        return data;
     }
-    else if(f.open (IO_WriteOnly))//get it, write it and return it
+
+    else if (isCached (id)==PART_NONE) //get all of it, write it and return it
     {
+        debug ("has nothing, getting all");
         bool success=false;
         int status=Article (id);
         if (status==220)
         {
-            f.writeBlock(TextResponse().data(),TextResponse().length());
-            f.close();
+            QString a(TextResponse().c_str());
+            int limit=a.find("\r\n\r\n");
+            kStringToFile(a.left(limit),p+".head",FALSE,FALSE,TRUE);
+            kStringToFile(a.right(a.length()-limit-4),p+".body",FALSE,FALSE,TRUE);
             delete data;
             data=article(id);
             success=true;
@@ -565,24 +578,79 @@ QString *NNTP::article(char *id)
             status=Head(id);
             if (status==221)
             {
-                f.writeBlock(TextResponse().data(),TextResponse().length());
+                QString s(TextResponse().c_str());
+                kStringToFile(s,p+".head",FALSE,FALSE,TRUE);
                 status=Body(id);
                 if (status==222)
                 {
-                    f.writeBlock(TextResponse().data(),TextResponse().length());
+                    s=(TextResponse().c_str());
+                    kStringToFile(s,p+".body",FALSE,FALSE,TRUE);
                 }
-                else success=false;
+                else
+                    success=false;
             }
             else success=false;
         }
         if (!success)
         {
             warning ("error getting data\nserver said %s\n",StatusResponse().c_str());
-            f.close();
             unlink (p.data());
         }
     }
-    emit newStatus("Article Received");
+
+    else if (isCached(id)==PART_HEAD)
+    {
+        debug ("has head, getting body");
+        data=body(id);
+        delete data;
+        data=article(id);
+    }
+
+    else if (isCached(id)==PART_BODY)
+    {
+        debug ("has body, getting head");
+        data=head(id);
+        delete data;
+        data=article(id);
+    }
+    
+    emit newStatus(klocale->translate("Article Received"));
+    return data;
+}
+QString *NNTP::head(const char *_id)
+{
+    QString id=saneID(_id);
+    QString *data=new QString ("");
+    QString p=cachepath+id;
+    if (isCached(id) & PART_HEAD)
+        data->append(kFileToString(p+".head"));
+    else
+    {
+        int status=Head(id);
+        if (status==221)
+        {
+            data->append(TextResponse().c_str());
+            kStringToFile(*data,p+".head",FALSE,FALSE,TRUE);
+        }
+    }
+    return data;
+}
+QString *NNTP::body(const char *_id)
+{
+    QString id=saneID(_id);
+    QString *data=new QString ("");
+    QString p=cachepath+id;
+    if (isCached(id) & PART_BODY)
+        data->append(kFileToString(p+".body"));
+    else
+    {
+        int status=Body(id);
+        if (status==222)
+        {
+            data->append(TextResponse().c_str());
+            kStringToFile(*data,p+".body",FALSE,FALSE,TRUE);
+        }
+    }
     return data;
 }
 
@@ -614,4 +682,42 @@ int  NNTP::myPost()
         cout <<"S: " << StatusResponse() << endl;
     }
     return mReplyCode;
+}
+
+bool NNTP::getMissingParts(MessageParts parts,const char *id)
+{
+    bool success=false;
+
+    if (parts & PART_NONE)
+        return true;
+    QString *data=0;
+    if (parts == PART_ALL)
+    {
+        if (isCached(id)!=PART_ALL)
+            data=article(id);
+    }
+    
+    else if (parts == PART_BODY)
+    {
+        if (!(isCached(id)&PART_BODY))
+            data=body(id);
+    }
+    else if (parts == PART_HEAD)
+    {
+        if (!(isCached(id)&PART_HEAD))
+            data=head(id);
+    }
+    if (data)
+        success=true;
+    delete data;
+    return success;
+}
+
+
+QString NNTP::saneID(const char *id)
+{
+    QString r(id);
+    // Why some braindead newsreader create ID's with slashes?????
+    // A virtual cookie to who guess which one does this...
+    return r.replace (QRegExp("/"),"\\#slash#\\");
 }

@@ -123,6 +123,7 @@ bool KMSender::settingsOk(void) const
 //-----------------------------------------------------------------------------
 bool KMSender::send(KMMessage* aMsg, short sendNow)
 {
+#ifndef KRN
   int rc;
 
   assert(aMsg != NULL);
@@ -134,7 +135,6 @@ bool KMSender::send(KMMessage* aMsg, short sendNow)
     return FALSE;
   }
 
-#ifndef KRN
   if (sendNow==-1) sendNow = mSendImmediate;
 
   outboxFolder->open();
@@ -194,9 +194,9 @@ bool KMSender::sendQueued(void)
 //-----------------------------------------------------------------------------
 void KMSender::doSendMsg(void)
 {
+#ifndef KRN
   assert(mSendProc != NULL);
 
-#ifndef KRN
   // Move previously sent message to folder "sent"
   if (mCurrentMsg)
   {
@@ -204,7 +204,7 @@ void KMSender::doSendMsg(void)
     sentFolder->moveMsg(mCurrentMsg);
     mCurrentMsg = NULL;
   }
-  
+
   // See if there is another queued message
   mCurrentMsg = outboxFolder->getMsg(0);
   if (!mCurrentMsg)
@@ -213,7 +213,7 @@ void KMSender::doSendMsg(void)
     cleanup();
     return;
   }
-#endif
+
   // start the sender process or initialize communication
   if (!mSendProcStarted)
   {
@@ -241,6 +241,7 @@ void KMSender::doSendMsg(void)
   }
   // Do *not* add code here, after send(). It can happen that this method
   // is called recursively if send() emits the idle signal directly.
+#endif
 }
 
 
