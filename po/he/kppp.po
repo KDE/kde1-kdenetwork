@@ -1,0 +1,1084 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# Erez Nir <erez-n@actcom.co.il>, 1998.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 1998-06-18 22:50+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Erez Nir <erez-n@actcom.co.il>\n"
+"Language-Team: LANGUAGE <He@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso8859-8\n"
+"Content-Transfer-Encoding: ENCODING\n"
+
+#: accounts.cpp:53
+msgid "Account Setup"
+msgstr "ןובשח תרדגה"
+
+#: accounts.cpp:72
+msgid "Edit..."
+msgstr "...ךורע"
+
+#: accounts.cpp:83
+msgid "New..."
+msgstr "...שדח"
+
+#: accounts.cpp:105
+msgid "Phone Costs:"
+msgstr "ןופלט תויולע"
+
+#: accounts.cpp:116 conwindow.cpp:55
+msgid "Volume:"
+msgstr "תוחיש רפסמ"
+
+#: accounts.cpp:131
+msgid "Reset Costs"
+msgstr "תויולע ספא"
+
+#: accounts.cpp:138
+msgid "View Logs"
+msgstr "םושירב הפצ"
+
+#: accounts.cpp:235
+msgid "Reset Total"
+msgstr "לכה ספא"
+
+#: accounts.cpp:236
+msgid ""
+"Are you sure you want to reset the accumulated\n"
+"telephone costs for the selected account to zero?"
+msgstr ""
+"תא ספאל ןיינועמ התאש חוטב התא םאה\n"
+"? לנה ןובשחל תויולעה םושיר"
+
+#: accounts.cpp:271 accounts.cpp:294
+msgid "Maximum number of accounts reached."
+msgstr "תונובשח לש יברימה רפסמה"
+
+#: accounts.cpp:300
+msgid "No account selected."
+msgstr ""
+
+#: accounts.cpp:316
+#, c-format
+msgid ""
+"Are you sure you want to delete\n"
+"the account \"%s\"?"
+msgstr ""
+"קוחמל ןיינועמ התאש חוטב התא םאה\n"
+"? \"%s\"  ןובשחה תא"
+
+#: accounts.cpp:321
+msgid "Confirm"
+msgstr "רושא"
+
+#: accounts.cpp:343
+msgid "New Account"
+msgstr "שדח ןובשח"
+
+#: accounts.cpp:347
+msgid "Edit Account: "
+msgstr ":ןובשח יוניש"
+
+#: accounts.cpp:367
+msgid "Dial"
+msgstr "גויח"
+
+#: accounts.cpp:368
+msgid "IP"
+msgstr "תבותכ"
+
+#: accounts.cpp:369
+msgid "DNS"
+msgstr "תומש תרש"
+
+#: accounts.cpp:370
+msgid "Gateway"
+msgstr "רעש"
+
+#: accounts.cpp:371
+msgid "Login Script"
+msgstr "רוביח"
+
+#: accounts.cpp:372
+msgid "Accounting"
+msgstr "בקעמ"
+
+#: accounts.cpp:391
+msgid ""
+"You must enter a unique\n"
+"account name"
+msgstr ""
+"םש ןיזהל ךילע\n"
+"הז ןובשחל ידוחיי רוביח"
+#: accounts.cpp:396
+msgid "Login script has unbalanced Loop Start/End"
+msgstr "רוביחה טירסתב תואלול ימויסו תולחתה לש ןזואמ אל רפסמ"
+
+#: connect.cpp:108 connect.cpp:212 main.cpp:829
+msgid "Connecting to: "
+msgstr "ל רבחתמ:"
+
+#: connect.cpp:117 connect.cpp:228 miniterm.cpp:162 modeminfo.cpp:62
+#: modeminfo.cpp:149
+msgid "Sorry, can't create modem lock file."
+msgstr "םדומל הליענ ץבוק רוציל תורשפא ןיא"
+
+#: connect.cpp:122 connect.cpp:185 modeminfo.cpp:67
+msgid "Looking for Modem ..."
+msgstr "... םדומה תא שפחמ"
+
+#: connect.cpp:131 debug.cpp:86 main.cpp:842
+msgid "Log"
+msgstr "טוריפ"
+
+#: connect.cpp:222 miniterm.cpp:157 modeminfo.cpp:144
+msgid "Sorry, modem device is locked."
+msgstr ".שומישב אוהו ןכתי .לוענ םדומה"
+
+#: connect.cpp:234 miniterm.cpp:176 miniterm.cpp:253 modeminfo.cpp:164
+msgid "Modem Ready"
+msgstr "ןכומ םדומה"
+
+#: connect.cpp:266 connect.cpp:267
+msgid "Initializing Modem..."
+msgstr "...םדומה תא לחתאמ"
+
+#: connect.cpp:292
+msgid "Dialing"
+msgstr "...גייחמ"
+
+#: connect.cpp:325
+msgid "Line Busy. Hanging up ..."
+msgstr ".קתנתמ .סופת ןופלטה וק"
+
+#: connect.cpp:331
+msgid "Line Busy. Waiting: "
+msgstr ":ןיתממ .סופת ןופלטה וק"
+
+#: connect.cpp:333 connect.cpp:451 connect.cpp:470
+msgid " seconds"
+msgstr "תוינש "
+
+#: connect.cpp:351
+msgid "No Dialtone"
+msgstr "גויח לילצ ןיא"
+
+#: connect.cpp:361
+msgid "No Carrier"
+msgstr "הנוע וניא בשחמה"
+
+#: connect.cpp:396
+msgid "Scanning "
+msgstr "  שפחמ"
+
+#: connect.cpp:407
+msgid "Saving "
+msgstr " רמוש"
+
+#: connect.cpp:426
+msgid "Sending "
+msgstr " חלוש"
+
+#: connect.cpp:437
+msgid "Expecting "
+msgstr " ל הפצמ"
+
+#: connect.cpp:449
+msgid "Pause "
+msgstr " ןיתממ "
+
+#: connect.cpp:468
+msgid "Timeout "
+msgstr " ןמז"
+
+#: connect.cpp:482 connect.cpp:483
+msgid "Hangup"
+msgstr "קתנתמ"
+
+#: connect.cpp:496 connect.cpp:497
+msgid "Answer"
+msgstr "הנוע"
+
+#: connect.cpp:505
+msgid "ID "
+msgstr "שמתשמ םש"
+
+#: connect.cpp:542
+msgid "Password "
+msgstr "המסיס"
+
+#: connect.cpp:580
+msgid "Prompting "
+msgstr ""
+
+#: connect.cpp:617
+msgid "PW Prompt "
+msgstr ""
+
+#: connect.cpp:643
+msgid "Loop Start "
+msgstr ""
+
+#: connect.cpp:647
+msgid "ERROR: Nested too deep, ignored."
+msgstr ""
+
+#: connect.cpp:652
+msgid "Loops nested too deeply!"
+msgstr ""
+
+#: connect.cpp:670
+msgid "LoopEnd without mathing Start! Line: "
+msgstr ""
+
+#: connect.cpp:747
+msgid "Starting pppd ..."
+msgstr "PPP ה רוביח תא ליעפמ"
+
+#: connect.cpp:807 connect.cpp:833
+msgid "unknown speed"
+msgstr "העודי אל תוריהמ"
+
+#: connect.cpp:871
+msgid "Scan Var: "
+msgstr ""
+
+#: connect.cpp:882
+msgid "Found: "
+msgstr ""
+
+#: connect.cpp:894
+msgid "Looping: "
+msgstr ""
+
+#: connect.cpp:925 modeminfo.cpp:332
+msgid "One Moment Please ..."
+msgstr ""
+
+#: connect.cpp:969
+msgid "Script timed out!"
+msgstr ""
+
+#: connect.cpp:995
+msgid "Scanning: "
+msgstr ""
+
+#: connect.cpp:1006
+msgid "Expecting: "
+msgstr ""
+
+#: connect.cpp:1040
+msgid "Logging on to Network ..."
+msgstr "...תשרל רבחמ"
+
+#: connect.cpp:1067
+msgid "Running Startup Command ..."
+msgstr "...הלחתה תדוקפ ץירמ"
+
+#: connect.cpp:1133
+msgid "Sorry, can't open modem."
+msgstr "םדומה םע רשק רוציל חילצמ אל"
+
+#: connect.cpp:1140
+msgid "Sorry, the modem is not ready."
+msgstr "ןכומ וניא םדומה"
+
+#: connect.cpp:1148 connect.cpp:1189 modeminfo.cpp:374
+msgid "Sorry, the modem is busy."
+msgstr ".שומישב םדומה"
+
+#: connect.cpp:1424
+msgid ""
+"pppd command + command-line arguments exeed\n"
+"2024 characters in length. What are you doing?"
+msgstr ""
+
+#: conwindow.cpp:44
+msgid "Connected at:"
+msgstr ":רוביח תעש"
+
+#: conwindow.cpp:50
+msgid "Time connected:"
+msgstr ":רוביחה ןמז"
+
+#: conwindow.cpp:59
+msgid "Session Bill:"
+msgstr ":רשקה תולע"
+
+#: conwindow.cpp:61
+msgid "Total Bill:"
+msgstr ":תללוכ תולע"
+
+#: conwindow.cpp:67 docking.cpp:74
+msgid "Disconnect"
+msgstr "קתנתה"
+
+#: conwindow.cpp:71 docking.cpp:72
+msgid "Details"
+msgstr "םיטרפ"
+
+#: debug.cpp:49
+msgid "Login Script Debug Window"
+msgstr "רוביחה טירסתב םיגאב רתא"
+
+#: edit.cpp:42
+msgid "Dial Setup"
+msgstr "גויח ינייפאמ"
+
+#: edit.cpp:46
+msgid "Connection Name:"
+msgstr ":רוביחה םש"
+
+#: edit.cpp:57
+msgid "Phone Number:"
+msgstr ":ןופלט רפסמ"
+
+#: edit.cpp:68
+msgid "Authentication:"
+msgstr ":רוביח תטיש"
+
+#: edit.cpp:73
+msgid "Script-based"
+msgstr "רוביח טירסת ססובמ"
+
+#: edit.cpp:74
+msgid "PAP"
+msgstr "PAP ב שומיש"
+
+#: edit.cpp:75
+msgid "Terminal-based"
+msgstr "לנימרט ססובמ"
+
+#: edit.cpp:76
+msgid "CHAP"
+msgstr "CHAP ב שומיש"
+
+#: edit.cpp:82
+msgid "Store password"
+msgstr "המסיס רומש"
+
+#: edit.cpp:88
+msgid ""
+"Execute program\n"
+"upon connect:"
+msgstr ""
+"ץירהל תינכת\n"
+":רוביחה רחאל"
+#: edit.cpp:100
+msgid ""
+"Execute program\n"
+"upon disconnect:"
+msgstr ""
+"ץירהל תינכת\n"
+":קותינה ינפל"
+#: edit.cpp:112
+msgid "Edit pppd arguments:"
+msgstr "pppd ינתשמ ךורע"
+
+#: edit.cpp:118
+msgid "Arguments"
+msgstr "םינתשמ"
+
+#: edit.cpp:173
+msgid "IP Setup"
+msgstr "IP תבותכ"
+
+#: edit.cpp:180
+msgid "IP Address:"
+msgstr "IP תבותכ"
+
+#: edit.cpp:185
+msgid "Subnet Mask:"
+msgstr "הנשמה תשר תינבת"
+
+#: edit.cpp:193
+msgid "Dynamic IP Address"
+msgstr "הצקמ תרשהש IP תבותכ"
+
+#: edit.cpp:196
+msgid "Static IP Address"
+msgstr "העובק IP תבותכ"
+
+#: edit.cpp:200
+msgid "Auto-configure hostname from this IP"
+msgstr "תבותכהמ תרש םש תיטמוטוא םאתה"
+
+#: edit.cpp:314
+msgid "DNS Servers"
+msgstr "תומש יתרש"
+
+#: edit.cpp:330
+msgid "Domain Name:"
+msgstr "הדובע תצובק"
+
+#: edit.cpp:342
+msgid "DNS IP Address:"
+msgstr "תומשה תרש תבותכ"
+
+#: edit.cpp:375
+msgid "DNS Address List:"
+msgstr "שומישב תומש יתרש"
+
+#: edit.cpp:385
+msgid "Disable existing DNS Servers during Connection"
+msgstr "רוביחה ןמזב יחכונ תומש תרשב שומיש לטב"
+
+#: edit.cpp:437
+msgid "Gateway Setup"
+msgstr "רעשה תורדגה"
+
+#: edit.cpp:446
+msgid "Default Gateway"
+msgstr "לדחמה תרירב רעש"
+
+#: edit.cpp:450
+msgid "Static Gateway"
+msgstr "עובק רעש"
+
+#: edit.cpp:456
+msgid ""
+"Gateway\n"
+"IP Address:"
+msgstr ""
+"IP תבותכ\n"
+"רעשה לש"
+
+#: edit.cpp:458
+msgid "Assign the Default Route to this Gateway"
+msgstr "רעשל לדחמה תרירב ביתנ תא הנפה"
+
+#: edit.cpp:557
+msgid "Edit Script"
+msgstr "טירסת ךורע"
+
+#: edit.cpp:580
+msgid "Insert"
+msgstr "ףסוה"
+
+#: general.cpp:41
+msgid "kppp Setup"
+msgstr "kppp תנקתה"
+
+#: general.cpp:62
+msgid "pppd Timeout:"
+msgstr "pppd לש הנתמה ןמז"
+
+#: general.cpp:78 general.cpp:390 general.cpp:487
+msgid "Seconds"
+msgstr "תוינש"
+
+#: general.cpp:98
+msgid "Dock into Panel on Connect"
+msgstr "רוביחה םע תומישמ תרושב תורוא גצה"
+
+#: general.cpp:104
+msgid "Automatic Redial on Disconnect"
+msgstr "קתנתמ וקהשכ תיטמוטוא שדחמ גייח"
+
+#: general.cpp:111
+msgid "Show Clock on Caption"
+msgstr "תרתוכה לע ןועש גצה"
+
+#: general.cpp:118
+msgid "Disconnect on X-server shutdown"
+msgstr "X תביבסמ האיצי שי רשאכ קתנת"
+
+#: general.cpp:124
+msgid "Quit on Disconnect"
+msgstr "קותינ רחאל תינכתהמ אצ"
+
+#: general.cpp:130
+msgid "Minimize Window on Connect"
+msgstr "רוביחה עגרב רעזמ"
+
+#: general.cpp:199
+msgid "About kppp"
+msgstr "kppp תודוא"
+
+#: general.cpp:207
+msgid ""
+"\n"
+"A dialer and front-end to pppd\n"
+"\n"
+"Copyright (c) 1997\n"
+"Bernd Johannes Wuebben\n"
+"wuebben@math.cornell.edu"
+msgstr ""
+"\n"
+"PPP ה ןגייח"
+"\n"
+"(c) 1997 תורומש תויוכזה לכ\n"
+"ןבוו סנהוי דנרב\n"
+"wuebben@math.cornell.edu"
+#: general.cpp:224
+msgid ""
+"With contributions from:\n"
+"\n"
+"Mario Weilguni\n"
+"Markus Wuebben\n"
+"Jesus Fuentes Saavedra\n"
+"Harri Porten\n"
+"Peter Silva"
+msgstr ""
+" :םירבחמ הרזע תצק םע\n"
+"ינוגליו וירמ\n"
+"ןבוו סוקרמ\n"
+"הרדווס סטנאופ סוסח\n"
+"ןטרופ יראה\n"
+"הבליס רטפ\n"
+#: general.cpp:248
+msgid "Serial device"
+msgstr "ילאירס םאתמ"
+
+#: general.cpp:251
+msgid "Modem Device:"
+msgstr "םדומ"
+
+#: general.cpp:285
+msgid "Flow Control:"
+msgstr "המירז תרקב"
+
+#: general.cpp:300
+msgid "Line Termination:"
+msgstr "וק תרדגה"
+
+#: general.cpp:315
+msgid "Connection Speed:"
+msgstr "רוביח תוריהמ"
+
+#: general.cpp:358
+msgid "Modem Lock File:"
+msgstr "םדומ תליענ ץבוק"
+
+#: general.cpp:375
+msgid "Modem Timeout:"
+msgstr "םדומל הנתמה ןמז"
+
+#: general.cpp:460 main.cpp:503
+msgid "Modem"
+msgstr "םדומ"
+
+#: general.cpp:472
+msgid "Busy Wait:"
+msgstr "סופתב הנתמה"
+
+#: general.cpp:500
+msgid "Modem Asserts CD Line."
+msgstr "וקב הנעמ לש הקידב"
+
+#: general.cpp:516
+msgid "Modem Commands"
+msgstr "םדומ תודוקפ"
+
+#: general.cpp:517
+msgid "Query Modem"
+msgstr "םדומל התליאש"
+
+#: general.cpp:518
+msgid "Terminal"
+msgstr "לנימרט"
+
+#: main.cpp:327
+msgid "Connect to: "
+msgstr "לא רבחתה"
+
+#: main.cpp:338
+msgid "Login ID:"
+msgstr "שמתשמ םש"
+
+#: main.cpp:350
+msgid "Password:"
+msgstr "המסיס"
+
+#: main.cpp:367
+msgid "Show Log Window"
+msgstr "רוביח יטרפ גצה"
+
+#: main.cpp:389
+msgid "Setup"
+msgstr "תורדגה"
+
+#: main.cpp:404
+msgid "Connect"
+msgstr "רבחתה"
+
+#: main.cpp:472
+#, c-format
+msgid ""
+"No such Account:\n"
+"%s"
+msgstr ""
+"רכומ אל ןובשח םש\n"
+"%s"
+#: main.cpp:489
+msgid "kppp Configuration"
+msgstr "ןובשח תורדגה"
+
+#: main.cpp:501
+msgid "Accounts"
+msgstr "ןובשח"
+
+#: main.cpp:502
+msgid "Device"
+msgstr "ןקתה"
+
+#: main.cpp:504
+msgid "PPP"
+msgstr "PPP"
+
+#: main.cpp:732
+#, c-format
+msgid ""
+"kppp can not find:\n"
+" %s\n"
+"Please install pppd properly and/or adjust\n"
+" the location of the pppd executable on the PPP tab of\n"
+"the setup dialog.\n"
+" Thank You"
+msgstr ""
+"תא אוצמל ןתינ אל\n"
+"%s\n"
+"הנש וא תואיכ pppd תא ןקתה אנא\n"
+"PPP ףדב ,ולש םוקימה תרדגה תא\n"
+"תורדגהה לש"
+#: main.cpp:744
+#, c-format
+msgid ""
+"kppp can not execute:\n"
+" %s\n"
+"Please make sure thatyou have given kppp setuid permission and that\n"
+"pppd is executable."
+msgstr ""
+"הצרה תואשרה שי pppd ל יכ אדוו אנא\n"
+"תדחוימ setuid תאשרה תחת ץרומ אוהו"
+#: main.cpp:758
+#, c-format
+msgid ""
+"kppp can not find:\n"
+" %s\n"
+"Please make sure you have setup\n"
+"your modem device properly\n"
+"and/or adjust\n"
+" the location of the modem device on the modem tab of\n"
+"the setup dialog.\n"
+" Thank You"
+msgstr ""
+"תא אוצמל חילצמ וניא תשרל גויח\n"
+"%s\n"
+"ןכו הרושכ םדומה תא תנקתה יכ אדוו אנא\n"
+"םדומה ףדב םדומה רובע ןוכנ ןקתה תמשר יכ\n"
+"תורדגהב רשא"
+
+#: main.cpp:778
+msgid ""
+"You have selected the authentication\n"
+"method PAP. This requires that you\n"
+"supply a username and a password!"
+msgstr ""
+
+#: main.cpp:785
+#, c-format
+msgid ""
+"Cannot create PAP authentication\n"
+"file \"%s\""
+msgstr ""
+"PAP תורדגה ץבוק תא רוציל ןתינ אל\n"
+" \"%s\" "
+#: main.cpp:802
+msgid ""
+"You have selected the authentication\n"
+"method CHAP. This requires that you\n"
+"supply a username and a password!"
+msgstr ""
+"CHAP רוביחה ןונגנמב תרחב\n"
+"!המסיסו שמתשמ םש קפסל ןכל ביוחמ התא\n"
+
+#: main.cpp:809
+#, c-format
+msgid ""
+"Cannot create CHAP authentication\n"
+"file \"%s\""
+msgstr ""
+"CHAP תורדגה ץבוק תא רוציל ןתינ אל\n"
+" \"%s\" "
+#: main.cpp:821
+msgid "You have to specify a telephone number !\n"
+msgstr "!ןופלט רפסמ ןייצל ךיילע"
+
+#: main.cpp:895
+msgid "Quit kPPP?"
+msgstr "? האיצי"
+
+#: main.cpp:896
+msgid "Exiting kPPP will close your PPP Session."
+msgstr "תרציש PPP ה רשק קותינל םורגת תשרל גויחמ האיצי"
+
+#: main.cpp:931
+msgid ""
+"Can not load the accounting\n"
+"ruleset \""
+msgstr ""
+"יקוח ץבוק תא ןועטל ןתינ אל\n"
+"בקעמה"
+#: modemcmds.cpp:40
+msgid "Edit Modem Commands"
+msgstr "םדומ תודוקפ יוניש"
+
+#: modemcmds.cpp:54
+msgid "Initialization String:"
+msgstr "לוחתיא תזורחמ"
+
+#: modemcmds.cpp:61
+msgid "Init Response:"
+msgstr "לוחתיא תבוגת"
+
+#: modemcmds.cpp:86
+msgid "Init Delay (sec/100):"
+msgstr "('נש/100) הבוגתל הנתמה"
+
+#: modemcmds.cpp:91
+msgid "Dial String:"
+msgstr "גויח תזורחמ"
+
+#: modemcmds.cpp:98
+msgid "Connect Response:"
+msgstr "רוביח תבוגת"
+
+#: modemcmds.cpp:105
+msgid "Busy Response:"
+msgstr "סופת תבוגת"
+
+#: modemcmds.cpp:112
+msgid "No Carrier Resonse:"
+msgstr "הבושת ןיא תבוגת"
+
+#: modemcmds.cpp:119
+msgid "No Dialtone Response:"
+msgstr "גויח לילצ ןיא תבוגת"
+
+#: modemcmds.cpp:126
+msgid "Hangup String:"
+msgstr "קותינ תזורחמ"
+
+#: modemcmds.cpp:133
+msgid "Hangup Response:"
+msgstr "קותינ תבוגת"
+
+#: modemcmds.cpp:140
+msgid "Answer String:"
+msgstr "הנעמ תזורחמ"
+
+#: modemcmds.cpp:147
+msgid "Ring Response:"
+msgstr "גויח תבוגת"
+
+#: modemcmds.cpp:154
+msgid "Answer Response:"
+msgstr "הנעמ תבוגת"
+
+#: modemcmds.cpp:161
+msgid "Escape String:"
+msgstr ""
+
+#: modemcmds.cpp:168
+msgid "Escape Response:"
+msgstr "החירבה תזורחמ"
+
+#: modemcmds.cpp:195
+msgid "Guard Time (sec/50):"
+msgstr ""
+
+#: pppdargs.cpp:33
+msgid "Customize pppd Arguments"
+msgstr "pppd ל םיטנמוגראב שמתשה"
+
+#: pppdargs.cpp:41
+msgid "Argument:"
+msgstr "טנמוגרא"
+
+#: pppdargs.cpp:58
+msgid "Restore Defaults"
+msgstr "לדחמה תרירב רזחש"
+
+#: pppdata.cpp:52
+msgid ""
+"The application-specific config file\n"
+"could not be opened neither\n"
+"read-write nor read-only"
+msgstr ""
+"לש לוחתיאה ץבוק תא חותפל ןתינ אל\n"
+"האירקל אלו ,הביתכ-האירקל אל ,תינכתה\n"
+"דבלב"
+#: modeminfo.cpp:46
+msgid "ATI Query"
+msgstr "םדומ םע תרושקת םייקמ"
+
+#: modeminfo.cpp:130
+msgid "Modem Query timed out."
+msgstr "לשכנ םדומ םע רשק"
+
+#: miniterm.cpp:277 modeminfo.cpp:368
+msgid "Can't open Modem"
+msgstr "םדומ םע רשק םייקל ןתינ אל"
+
+#: modeminfo.cpp:414
+msgid "Sorry, the modem is busy"
+msgstr "רשק ןמע רוציל ןתינ אל ,שומישב םדומה"
+
+#: modeminfo.cpp:533
+msgid "Modem Query Results"
+msgstr "םדומ תתליאש תואצות"
+
+#: pppstatdlg.cpp:70
+msgid "kppp Statistics"
+msgstr "תשרל רוביח לש הקיטסיטטס"
+
+#: pppstatdlg.cpp:75
+msgid "Statistics"
+msgstr "הקיטסיטטס"
+
+#: pppstatdlg.cpp:148
+msgid "Local Addr:"
+msgstr "תימוקמ תבותכ"
+
+#: pppstatdlg.cpp:154
+msgid "Remote Addr:"
+msgstr "תרשה תבותכ"
+
+#: pppstatdlg.cpp:186
+msgid "bytes in"
+msgstr "םיסנכנ םיטייב"
+
+#: pppstatdlg.cpp:187
+msgid "bytes out"
+msgstr "םיאצוי םיטייב"
+
+#: pppstatdlg.cpp:189
+msgid "packets in"
+msgstr "וסנכנ תונמ"
+
+#: pppstatdlg.cpp:190
+msgid "packets out"
+msgstr "ואצי תונמ"
+
+#: pppstatdlg.cpp:192
+msgid "vjcomp in"
+msgstr "vjcomp  תסינכ"
+
+#: pppstatdlg.cpp:193
+msgid "vjcomp out"
+msgstr "vjcomp  האיצי"
+
+#: pppstatdlg.cpp:195
+msgid "vjunc in"
+msgstr "vjunc  הסינכ"
+
+#: pppstatdlg.cpp:196
+msgid "vjunc out"
+msgstr "vjunc  האיצי"
+
+#: pppstatdlg.cpp:198
+msgid "vjerr"
+msgstr "vjerr"
+
+#: pppstatdlg.cpp:199
+msgid "non-vj"
+msgstr "vj אלל"
+
+#: pppstatdlg.cpp:370 pppstatdlg.cpp:377
+msgid "unavailable"
+msgstr "ןימז אל"
+
+#: miniterm.cpp:52
+msgid "Kppp Mini-Terminal"
+msgstr "תשרל גויח לש לנימרט ינימ"
+
+#: miniterm.cpp:58
+msgid "&Reset Modem"
+msgstr "םדומ לוחתא"
+
+#: miniterm.cpp:64
+msgid "&Modem"
+msgstr "םדומ"
+
+#: miniterm.cpp:107
+msgid "Quit MiniTerm"
+msgstr "לנימרט ינימהמ אצ"
+
+#: miniterm.cpp:113
+msgid "Reset Modem"
+msgstr "םדומ לוחתא"
+
+#: miniterm.cpp:151
+msgid "Initializing Modem"
+msgstr "םדומ לחתאמ"
+
+#: miniterm.cpp:223
+msgid "Hanging up ..."
+msgstr "....קתנתמ"
+
+#: miniterm.cpp:243
+msgid "Resetting Modem"
+msgstr "םדומ לחתאמ"
+
+#: miniterm.cpp:262
+msgid "Can't restore tty settings: tcsetattr()\n"
+msgstr "tty תורדגה רזחשל ןתינ אל"
+
+#: miniterm.cpp:283
+msgid "tcgetattr() failed\n"
+msgstr "tcgetattr()  :ב האיגש\n"
+
+#: miniterm.cpp:330
+msgid "tcsetattr() failed\n"
+msgstr "tcsetattr()  :ב האיגש"
+
+#: acctselect.cpp:48
+msgid "Accounting Setup"
+msgstr "בקעמ תורדגה"
+
+#: acctselect.cpp:56
+msgid "Enable accounting"
+msgstr "בקעמ רשפא"
+
+#: acctselect.cpp:74
+msgid "Selected:"
+msgstr "הריחב"
+
+#: acctselect.cpp:88
+msgid "Volume accounting:"
+msgstr "תרושקית חפנ בקעמ"
+
+#: acctselect.cpp:92
+msgid "No accounting"
+msgstr "בקעמ אלל"
+
+#: acctselect.cpp:93
+msgid "Bytes in"
+msgstr "םיסנכנ םיתב"
+
+#: acctselect.cpp:94
+msgid "Bytes out"
+msgstr "םיאצוי םיתב"
+
+#: acctselect.cpp:95
+msgid "Bytes in and out"
+msgstr "םיסנכנו םיאצוי םיתב"
+
+#: acctselect.cpp:165 acctselect.cpp:271
+msgid "Available rules"
+msgstr "םינימז בקעמ יקוח"
+
+#: ruleset.cpp:541
+msgid "kppp: no rulefile specified\n"
+msgstr "בקעמ יקוח לש ץבוק רדגוה אל"
+
+#: ruleset.cpp:547
+#, c-format
+msgid "kppp: rulefile \"%s\" not found\n"
+msgstr "אצמינ אל \"%s\" בקעמה יקוח ץבוק"
+
+#: ruleset.cpp:552
+msgid "kppp: rulefiles must have the extension \".rst\"\n"
+msgstr ".rst תמויסב שמתשהל שי בקעמ יקוח ץבוקל\n"
+
+#: ruleset.cpp:561
+msgid "kppp: error parsing the ruleset\n"
+msgstr "בקעמה יללכ חונעיפב האיגש\n"
+
+#: ruleset.cpp:566
+#, c-format
+msgid "kppp: parse error in line %d\n"
+msgstr " %d :הרושב חונעיפ תאיגש"
+
+#: ruleset.cpp:572
+msgid "kppp: rulefile does not contain a default rule\n"
+msgstr "לדחמ תרירב ללכ ליכמ וניא םיללכה ץבוק"
+
+#: ruleset.cpp:577
+msgid "kppp: rulefile does not contain a \"name=...\" line\n"
+msgstr "name=...  תרוש ליכמ אל םיללכה ץבוק"
+
+#: ruleset.cpp:581
+msgid "kppp: rulefile is ok\n"
+msgstr "חנעופ םיללכה ץבוק"
+
+#: docking.cpp:220
+msgid "Minimize"
+msgstr "רעזמ"
+
+#: runtests.cpp:121
+msgid ""
+"You´re not allowed to dial out with kppp.\n"
+"Contact your system administrator."
+msgstr ""
+"תשרל גויח רוציל תואשרה ךל ןיא\n"
+"תואשרה תלבקל תכרעמה להנמל הנפ אנא\n"
+#: runtests.cpp:137
+msgid ""
+"Cannot find the pppd-daemon!\n"
+"\n"
+"Make sure that pppd is installed and\n"
+"you have entered the correct path.\n"
+msgstr ""
+"pppd תא אוצמל חילצמ אל\n"
+"\n"
+"תקפיס יכו ןקתומ אוה יכ אדו אנא\n"
+"תורדגהב ורובע ןוכנה םוקימה תא"
+#: runtests.cpp:149
+msgid ""
+"You do not have the permission\n"
+"to start pppd!\n"
+"\n"
+"Contact your system administrator\n"
+"and ask to get access to pppd."
+msgstr ""
+"pppd תלעפהל תואשרה ךל ןיא\n"
+"\n"
+"תואשרה תלבקל תכרעמה להנמל הנפ אנא\n"
+"pppd תלעפהל"
+
+#: runtests.cpp:160 runtests.cpp:175
+msgid ""
+"pppd is not properly installed!\n"
+"\n"
+"The pppd binary must be installed\n"
+"with the SUID bit set. Contact your\n"
+"system administrator."
+msgstr ""
+"הכלהכ ןקתומ וניא pppd\n"
+"\n"
+"suid תאשרה םע ןקתומ תויהל רומא אוה\n"
+"תכרעמה להנמל הנפ אנא"
+#: runtests.cpp:220
+msgid ""
+"kppp has detected a 'lock' option in /etc/ppp/options.\n"
+"\n"
+"This option has to be removed since kppp takes care of device locking "
+"itself.\n"
+"Contact your system administrator."
+msgstr ""
+"ץבוקב lock תיצפוא הליג תשרל גויח\n"
+"תאז היצפוא דירוהל ךילע /etc/ppp/options\n"
+"ומצעב םדומה תליענב לפטמ תשרל גויחו תויה\n"
+"...ול רבסהו תכרעמה להנמל הנפ אנא"
+#: runtests.cpp:245
+msgid ""
+"/etc/resolv.conf is missing!\n"
+"\n"
+"Ask your system administrator to create\n"
+"a non-empty file that has appropriate\n"
+"read and write permissions."
+msgstr ""
+"ץבוקה יכ הליג תשרל גויח\n"
+"להנממ שקב אנא רסח /etc/resolv.conf\n"
+"תא אל שיש קיר אל ץבוק רוציל תכרעמה\n"
+"תונוכנה הביתכהו האירקה תואשרה"
+
+
+
+
