@@ -40,6 +40,10 @@ QList<UserControlMenu> *UserControlMenu::parseKConfig()
     // We found nothing, so let's use some defaults.
 
     UserMenu.setAutoDelete(TRUE);
+    UserMenu.append(new UserControlMenu("Refresh Nicks", 
+					 "refresh",
+					 0, UserControlMenu::Text));
+    UserMenu.append(new UserControlMenu);
     UserMenu.append(new UserControlMenu("Follow", 
 					 "follow $$dest_nick",
 					 0, UserControlMenu::Text));

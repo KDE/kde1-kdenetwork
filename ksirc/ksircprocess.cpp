@@ -318,7 +318,8 @@ void KSircProcess::close_toplevel(KSircTopLevel *wm, char *name)
 
   if(TopList[name]){  // Delete window
     delete TopList[name];
-    TopList.remove(name);
+    while(TopList[name]) // In case multiple copies exist remove them all
+      TopList.remove(name); // Though, this should never happend....
   }
   else // If the window wasn't found warn, something's going wrong.
     cerr << "DID NOT DELETE THE WINDOW: " << name << " !!!!\n";

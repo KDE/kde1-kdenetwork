@@ -87,6 +87,8 @@ void KSircListBox::resizeEvent(QResizeEvent *e)
   thDirty = TRUE;
   emit updateSize();
   
+  updateTableSize();
+  thDirty = TRUE;
   scrollToBottom(TRUE);
 }
 
@@ -193,4 +195,10 @@ void KSircListBox::clear()
   thDirty = TRUE;
   QListBox::clear();
   
+}
+
+void KSircListBox::updateTableSize()
+{
+  thDirty = TRUE;
+  QTableView::updateTableSize();
 }

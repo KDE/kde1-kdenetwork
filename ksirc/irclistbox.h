@@ -28,6 +28,7 @@ class KSircListBox : public QListBox
 
  public slots:
   virtual void updateScrollBars();
+  virtual void updateTableSize();
   virtual void setTopItem(int);
 
   virtual void scrollTo(int);

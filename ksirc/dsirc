@@ -471,7 +471,7 @@ sub ctcp {
   $to = (&eq($towho, $nick) ? "you" : $towho);
   
   &tell("~$to~*** $who$puh1 did a CTCP $what$a to $to")
-    unless $what =~ /^(ACTION|PING|DCC)$/;
+    unless $what =~ /^(ACTION|PING|DCC|VERSION)$/;
   if ($what eq 'ACTION') {
     &dohooks("action", $towho, $args);
     if (&eq($towho, $nick)) {
@@ -494,6 +494,12 @@ sub ctcp {
     $u =~ s/^\+//;
     $u =~ s/\+/ + /g;
     $u=" -- using $u" if $u;
+    if($to eq 'you'){
+      &tell("~$who~*** $who$puh1 did a CTCP $what$a to $to")
+    }
+    else {
+      &tell("~$to~*** $who$puh1 did a CTCP $what$a to $to")
+    }
     &reply("VERSION sirc $version, a \cbperl\cb client$u");
   } elsif ($what eq 'PING') {
     &reply("PING $args");

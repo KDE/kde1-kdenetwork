@@ -1,12 +1,46 @@
 #ifndef ALISTBOX_H
 #define ALISTBOX_H
 
+class aListBox;
+class nickListItem;
+
 #include <qobject.h>
 #include <qwidget.h>
 #include <qlistbox.h>
 #include <qevent.h>
 
 #include "irclistitem.h"
+
+class nickListItem : public QListBoxItem
+{
+ public:
+  nickListItem();
+  ~nickListItem();
+
+  int height ( const QListBox * ) const;
+  int width ( const QListBox * ) const;
+  const char* text () const;
+  const QPixmap* pixmap () const;
+  
+  bool op();
+  bool voice();
+
+  void setOp(bool _op = FALSE);
+  void setVoice(bool _voice = FALSE);
+
+  void setText(const char *str);
+
+  nickListItem &operator= ( const nickListItem & nli );
+  
+ protected:
+  virtual void paint ( QPainter * );
+
+ private:
+  bool is_op;
+  bool is_voice;
+
+  QString string;
+};
 
 class aListBox : public QListBox
 {
@@ -21,12 +55,16 @@ public:
 
   void clear();
 
-  void inSort ( const QListBoxItem *, bool top = false);
-  void inSort ( const char * text, bool top = false);
+  void inSort ( nickListItem *);
+  void inSort ( const char * text, bool top=FALSE);
+
+  nickListItem *item(int index);
 
   bool isTop(int index);
 
   virtual void setPalette ( const QPalette & );
+
+  int findNick(QString str);
 
 signals:
    void rightButtonPress(int index);

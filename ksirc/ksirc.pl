@@ -53,7 +53,7 @@ sub cmd_wallop {
     $args = $newarg." ".$args;
     $newarg = $talkchannel;
   }
-  &msg("\@$newarg","[KSirc-Wall/$newarg]: $args"); 
+  &notice("\@$newarg","[KSirc-Wall/$newarg]: $args"); 
 }
 &addcmd("wallop");
 
@@ -280,7 +280,7 @@ sub cmd_unfollow
       if ($KSIRC_FILTER [$filter]{'DESC'} =~ /Follow $fnick/i)
       {
          &docommand ("^ksircdelrule $filter");
-         delete ($following {$fnick});
+         delete ($following{ lc $fnick});
          &tell ("$fnick no longer followed");
          return;
       }
@@ -307,6 +307,13 @@ sub cmd_showfollows
 }
 
 #### End follow
+
+sub cmd_refresh
+{
+  &say("*** Refresh nick list");
+  &docommand("names *");
+}
+&addcmd("refresh");
 
 &tell("*** ~2,4~bLoaded KSirc.pl~c");
 &tell("*** ~13,3~bWith Super Willy Enhancements~c");

@@ -700,6 +700,7 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
   int pos, pos2;
   QColor *color = kSircConfig->colour_text;
   QPixmap *pixmap = NULL;
+  int offset; // Used for nicks->findNick() operations
 
   /*
    * No-output get's set to 1 if we should ignore the line
@@ -903,18 +904,16 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	  s3 = string.mid(pos+1, pos2 - pos - 1); // Get nick
 	  if(s3[0] == '@'){    // Remove the op part if set
 	    s3.remove(0, 1);
-	    ircListItem *irc = new ircListItem(s3, 
-					       kSircConfig->colour_error, 
-					       nicks);
-	    irc->setWrapping(FALSE);
-	    nicks->inSort(irc, TRUE);
+	    nickListItem *irc = new nickListItem();
+	    irc->setText(s3);
+	    irc->setOp(TRUE);
+	    nicks->inSort(irc);
 	  }
 	  else if(s3[0] == '+'){
 	    s3.remove(0, 1);
-	    ircListItem *irc = new ircListItem(s3, 
-					       kSircConfig->colour_chan, 
-					       nicks);
-	    irc->setWrapping(FALSE);
+	    nickListItem *irc = new nickListItem();
+	    irc->setVoice(TRUE);
+	    irc->setText(s3);
 	    nicks->inSort(irc);	    
 	  }
 	  else{
@@ -985,10 +984,11 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	  cerr << "String sucks: " << string << endl;
 	  s3 = "";
 	}
-	no_output = 1;
-	for(uint i = 0; i < nicks->count(); i++){ // Search and remove the nick
-	  if(strcmp(s3, nicks->text(i)) == 0){
-	    nicks->removeItem(i);
+	{ // Allows me to define index
+	  no_output = 1;
+	  int index = nicks->findNick(s3);
+	  if(index >= 0){
+	    nicks->removeItem(index);
 	    no_output = 0;
 	  }
 	}
@@ -1029,22 +1029,24 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	// search the list for the nick and remove it
 	// since the list is source we should do a binary search...
 	no_output = 1;            // don't display unless we find the nick
-	for(uint i = 0; i < nicks->count(); i++){
-	  if(strcmp(s3, nicks->text(i)) == 0){
-	    no_output = 0;        // nick is in out list, so print the message
-	    bool isOp = nicks->isTop(i); // Are they an op?
-	    nicks->removeItem(i);        // remove old nick
-	    if(isOp == TRUE){
-	      ircListItem *irc = new ircListItem(s4, &red, nicks);
-	      irc->setWrapping(FALSE);
-	      nicks->inSort(irc, isOp);
-	    }
-	    else{
-	      nicks->inSort(s4);     // add new nick in sorted poss
-	                             // can't use changeItem since it
-				     // doesn't maintain sort order
-	    }
+	offset = nicks->findNick(s3);
+	if(offset >= 0){
+	  no_output = 0;        // nick is in out list, so print the message
+	  bool isOp = nicks->isTop(offset); // Are they an op?
+	  nicks->setAutoUpdate(FALSE);
+	  nicks->removeItem(offset);        // remove old nick
+	  if(isOp == TRUE){
+	    nickListItem *irc  = new nickListItem();
+	    irc->setText(s4);
+	    irc->setOp(isOp);
+	    nicks->inSort(irc);
 	  }
+	  else{
+	    nicks->inSort(s4);     // add new nick in sorted poss
+	                           // can't use changeItem since it
+				   // doesn't maintain sort order
+	  }
+	  nicks->setAutoUpdate(TRUE);
 	}
 	break;
       case ' ':
@@ -1099,53 +1101,57 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	    // looking at each mode seeing if we should handle it.
 	    for(uint i = 0; i < mode.count(); i++){
 	      if(strcasecmp(mode.at(i), "+o") == 0){
-		for(uint j = 0; j < nicks->count(); j++){
-		  if(strcmp(arg.at(i), nicks->text(j)) == 0){
-		    nicks->setAutoUpdate(FALSE);
-		    nicks->removeItem(j);           // remove old nick
-		    ircListItem *irc = new ircListItem(arg.at(i), kSircConfig->colour_error, nicks);
-		    irc->setWrapping(FALSE);
-		    // add new nick in sorted pass,with colour
-		    nicks->inSort(irc, TRUE);
-		    nicks->setAutoUpdate(TRUE);
-		    nicks->repaint();
-		  }
+		offset = nicks->findNick(arg.at(i));
+		if(offset >= 0){
+		  nicks->setAutoUpdate(FALSE);
+		  nickListItem *irc = new nickListItem();
+		  *irc = *nicks->item(offset);
+		  nicks->removeItem(offset);           // remove old nick
+		  irc->setOp(TRUE);
+		  // add new nick in sorted pass,with colour
+		  nicks->inSort(irc);
+		  nicks->setAutoUpdate(TRUE);
+		  nicks->repaint();
 		}
 	      }
 	      else if(strcasecmp(mode.at(i), "-o") == 0){
-		for(uint j = 0; j < nicks->count(); j++){
-		  if(strcmp(arg.at(i), nicks->text(j)) == 0){
-		    nicks->setAutoUpdate(FALSE);
-		    nicks->removeItem(j);     // remove old nick
-		    nicks->inSort(arg.at(i)); // add new nick in sorted pass,with colour
-		    nicks->setAutoUpdate(TRUE);
-		    nicks->repaint();
-		  }
+		offset = nicks->findNick(arg.at(i));
+		if(offset >= 0){
+		  nicks->setAutoUpdate(FALSE);
+		  nickListItem *irc = new nickListItem();
+		  *irc = *nicks->item(offset);
+		  nicks->removeItem(offset);     // remove old nick
+		  irc->setOp(FALSE);
+		  nicks->inSort(irc); // add new nick in sorted pass,with colour
+		  nicks->setAutoUpdate(TRUE);
+		  nicks->repaint();
 		}
 	      }
 	      else if(strcasecmp(mode.at(i), "+v") == 0){
-		for(uint j = 0; j < nicks->count(); j++){
-		  if(strcmp(arg.at(i), nicks->text(j)) == 0){
-		    nicks->setAutoUpdate(FALSE);
-		    nicks->removeItem(j);           // remove old nick
-		    ircListItem *irc = new ircListItem(arg.at(i), kSircConfig->colour_chan, nicks);
-		    irc->setWrapping(FALSE);
-		    // add new nick in sorted pass,with colour
-		    nicks->inSort(irc);
-		    nicks->setAutoUpdate(TRUE);
-		    nicks->repaint();
-		  }
+		offset = nicks->findNick(arg.at(i));
+		if(offset >= 0){
+		  nicks->setAutoUpdate(FALSE);
+		  nickListItem *irc = new nickListItem();
+		  *irc = *nicks->item(offset);
+		  nicks->removeItem(offset);           // remove old nick
+		  irc->setVoice(TRUE);
+		  // add new nick in sorted pass,with colour
+		  nicks->inSort(irc);
+		  nicks->setAutoUpdate(TRUE);
+		  nicks->repaint();
 		}
 	      }
 	      else if(strcasecmp(mode.at(i), "-v") == 0){
-		for(uint j = 0; j < nicks->count(); j++){
-		  if(strcmp(arg.at(i), nicks->text(j)) == 0){
-		    nicks->setAutoUpdate(FALSE);
-		    nicks->removeItem(j);     // remove old nick
-		    nicks->inSort(arg.at(i)); // add new nick in sorted pass,with colour
-		    nicks->setAutoUpdate(TRUE);
-		    nicks->repaint();
-		  }
+		offset = nicks->findNick(arg.at(i));
+		if(offset >= 0){
+		  nicks->setAutoUpdate(FALSE);
+		  nickListItem *irc = new nickListItem();
+		  *irc = *nicks->item(offset);
+		  nicks->removeItem(offset);     // remove old nick
+		  irc->setVoice(FALSE);
+		  nicks->inSort(irc); // add new nick in sorted pass,with colour
+		  nicks->setAutoUpdate(TRUE);
+		  nicks->repaint();
 		}
 	      }
 	      else{
@@ -1349,6 +1355,7 @@ void KSircTopLevel::control_message(int command, QString str)
     linee->setUpdatesEnabled(FALSE);
     setUpdatesEnabled(FALSE);
     mainw->setFont(kSircConfig->defaultfont);
+    mainw->updateTableSize();
     nicks->setFont(kSircConfig->defaultfont);
     linee->setFont(kSircConfig->defaultfont);
     linee->resize(width(), linee->fontMetrics().lineSpacing() + 8);
