@@ -1,14 +1,14 @@
 # KDE Config File
 [KDE Desktop Entry]
-Protocols=NNTP
-Comment=News Reader
-Comment[pl]=Program do obs³ugi News'ów
-Name=KRN
+BinaryPattern=
+Comment=Newsreader
+Comment[es]=Lector de Noticias
+MimeType=
 Exec=krn
-Icon=krn.xpm
 TerminalOptions=
+Icon=krn.xpm
 Path=
-DocPath=krn/krn.html
-Extensions=
 Type=Application
+Name=Krn
+Name[es]=Krn
 Terminal=0
