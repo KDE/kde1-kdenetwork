@@ -15,7 +15,7 @@ msgstr ""
 
 #: FilterRuleEditor.cpp:29
 msgid "Edit Filter Rules"
-msgstr ""
+msgstr "Endre filtreringsregler"
 
 #: FilterRuleEditor.cpp:58 FilterRuleEditor.cpp:79
 #: FilterRuleEditorData.cpp:105
@@ -24,13 +24,15 @@ msgstr "&Rediger"
 
 #: FilterRuleEditor.cpp:74
 msgid "Missing Arguments"
-msgstr ""
+msgstr "Mangler argumenter"
 
 #: FilterRuleEditor.cpp:75
 msgid ""
 "Cannot create a Rule since not\n"
 "all the fields are filled in."
 msgstr ""
+"Kan ikke skape en regen ettersom\n"
+"alle felter ikke er fylt inn."
 
 #: FilterRuleEditorData.cpp:33
 msgid "Description:"
@@ -62,7 +64,7 @@ msgstr "Ned"
 
 #: KSircColour.cpp:33
 msgid "Colour Settings"
-msgstr ""
+msgstr "Fargeinnstillinger"
 
 #: KSircColourData.cpp:33
 msgid "Generic Text"
@@ -86,7 +88,7 @@ msgstr "Bakgrunn"
 
 #: dccDialog.cpp:22
 msgid "DCC Files Offered"
-msgstr ""
+msgstr "DCC-filer tilbudt"
 
 #: dccDialogData.cpp:38
 msgid "&Get"
@@ -124,7 +126,7 @@ msgstr ""
 
 #: open_top.cpp:26
 msgid "New Window For"
-msgstr ""
+msgstr "Nytt vindu for"
 
 #: open_topData.cpp:39
 msgid "Channel/Nick:"
@@ -205,7 +207,7 @@ msgstr "&Udokk"
 
 #: ssfeprompt.cpp:24
 msgid "Prompt"
-msgstr ""
+msgstr "Ledetekst"
 
 #: toplevel.cpp:140
 msgid "Lag in seconds to the server"
@@ -225,7 +227,7 @@ msgstr "&Brukere"
 
 #: welcomeWin.cpp:30
 msgid "Welcome to kSirc"
-msgstr ""
+msgstr "Velkommen til kSirc"
 
 #: welcomeWinData.cpp:35
 msgid "Show Again"
@@ -237,7 +239,7 @@ msgstr "Forkast"
 
 #: KSColourPicker/kscolourpicker.cpp:28
 msgid "kSirc Colour Picker"
-msgstr ""
+msgstr "kSirc Fargevelger"
 
 #: KSColourPicker/kscolourpickerData.cpp:30
 msgid "Pick"
@@ -248,9 +250,8 @@ msgid "Sample Colour"
 msgstr "Eksempelfarge"
 
 #: KSCutDialog/KSCutDialog.cpp:27
-#, fuzzy
 msgid "Cut Window"
-msgstr "&Klipp ut vindu..."
+msgstr "Utklippsvindu"
 
 #: KSCutDialog/KSCutDialogData.cpp:39
 msgid "Cop&y"
@@ -258,11 +259,11 @@ msgstr "&Kopier"
 
 #: KSOpenkSirc/open_ksirc.cpp:38
 msgid "Connect to Server"
-msgstr ""
+msgstr "Kobler opp mot tjener"
 
 #: KSOpenkSirc/open_ksirc.cpp:186
 msgid "Not Avalable"
-msgstr ""
+msgstr "Ikke tilgjenglig"
 
 #: KSOpenkSirc/open_ksircData.cpp:37
 msgid "&Connect"
@@ -310,77 +311,75 @@ msgstr "Rediger"
 
 #: KSPrefs/defaultfiltersdata.cpp:34
 msgid "Highlight Your Nick"
-msgstr ""
+msgstr "Lyst opp ditt kallenavn"
 
 #: KSPrefs/defaultfiltersdata.cpp:43
 msgid "Colour Nicks in Channels"
-msgstr ""
+msgstr "Farge kallenavn i kanaler"
 
 #: KSPrefs/defaultfiltersdata.cpp:52
 msgid "Allow External Colours"
-msgstr ""
+msgstr "Godta eksterne farger"
 
 #: KSPrefs/defaultfiltersdata.cpp:59
 msgid "Allow &kSirc Colour codes"
-msgstr ""
+msgstr "Godta bruk av &kSircs fargekoder"
 
 #: KSPrefs/defaultfiltersdata.cpp:68
 msgid "&Allow &mirc Colour codes"
-msgstr ""
+msgstr "&Godta &mircs fargekoder"
 
 #: KSPrefs/defaultfiltersdata.cpp:86
 msgid "Foreground"
-msgstr ""
+msgstr "Forgrunn"
 
 #: KSPrefs/defaultfiltersdata.cpp:95
-#, fuzzy
 msgid "Colour"
-msgstr "Eksempelfarge"
+msgstr "Farge"
 
 #: KSPrefs/defaultfiltersdata.cpp:103 KSPrefs/defaultfiltersdata.cpp:112
-#, fuzzy
 msgid "Sample"
-msgstr "Eksempelfarge"
+msgstr "Eksempel"
 
 #: KSPrefs/generalData.cpp:50
 msgid "Auto Create Windows"
-msgstr ""
+msgstr "Lag vindu automatisk"
 
 #: KSPrefs/generalData.cpp:59
 msgid "Beep on Notify"
-msgstr ""
+msgstr "Pip ved kungjøring"
 
 #: KSPrefs/generalData.cpp:68
 msgid "Nick Completion"
-msgstr ""
+msgstr "Kallenavnfullføring"
 
 #: KSPrefs/generalData.cpp:77
 msgid "Colour Picker Popup"
-msgstr ""
+msgstr "Flytende meny for fargevelger"
 
 #: KSPrefs/generalData.cpp:86
 msgid "Auto Rejoin"
-msgstr ""
+msgstr "Automatisk gjenforening"
 
 #: KSPrefs/generalData.cpp:95
 msgid "Enable Background Pixmap"
-msgstr ""
+msgstr "Slå på bakgrunns-pixmap"
 
 #: KSPrefs/generalData.cpp:112
 msgid "Browse"
-msgstr ""
+msgstr "Bla gjennom"
 
 #: KSPrefs/generalData.cpp:120
 msgid "Display Topic in Caption"
-msgstr ""
+msgstr "Vis tema i tittel"
 
 #: KSPrefs/generalData.cpp:129
 msgid "Use MDI Mode (Must restart to take effect, experimental!!)"
-msgstr ""
+msgstr "Bruk MDI-modus (må restarte for å fungere, eksperimentell!!!)"
 
 #: KSPrefs/generalData.cpp:144
 msgid "Window History Length"
-msgstr ""
+msgstr "Lengde på vinduhistorie"
 
 #: KSPrefs/ksprefs.cpp:9
 msgid "kSirc Prefrences"
@@ -407,35 +406,32 @@ msgid "&Default Filters"
 msgstr "&Standardfilter"
 
 #: KSPrefs/serverchanneldata.cpp:43
-#, fuzzy
 msgid "Servers"
-msgstr "Tjenerbeskrivelse:"
+msgstr "Tjenere"
 
 #: KSPrefs/startupdata.cpp:35
 msgid "Notify List"
-msgstr ""
+msgstr "Kungjøringsliste"
 
 #: KSPrefs/startupdata.cpp:43
-#, fuzzy
 msgid "Nick"
-msgstr "Velg"
+msgstr "Kallenavn"
 
 #: KSPrefs/startupdata.cpp:52
-#, fuzzy
 msgid "Real Name"
-msgstr "Menynavn"
+msgstr "Virkelig navn"
 
 #: KSPrefs/startupdata.cpp:97
 msgid "&Add"
-msgstr ""
+msgstr "&Legg til"
 
 #: KSProgress/ksprogressdata.cpp:46
 msgid "fileName"
-msgstr ""
+msgstr "filnavn"
 
 #: KSProgress/ksprogressdata.cpp:54
 msgid "XferStatus"
-msgstr ""
+msgstr "Overføringsstatus"
 
 #: KSTicker/speeddialogData.cpp:79
 msgid "Tick Interval"

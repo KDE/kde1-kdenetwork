@@ -1848,7 +1848,7 @@ msgstr "Tilgjengelige regler"
 
 #: acctselect.cpp:305
 msgid "(none)"
-msgstr ""
+msgstr "(ingen)"
 
 #: ruleset.cpp:544
 msgid "kppp: no rulefile specified\n"
@@ -1984,12 +1984,11 @@ msgstr ""
 
 #: loginterm.cpp:120
 msgid "Ca&ncel"
-msgstr ""
+msgstr "A&vbryt"
 
 #: loginterm.cpp:125
-#, fuzzy
 msgid "&Continue"
-msgstr "Kopple opp"
+msgstr "F&ortsett"
 
 #: ppplog.cpp:136
 msgid ""
@@ -2094,7 +2093,6 @@ msgid "Select modem type..."
 msgstr "Velg modemtype..."
 
 #: modemdb.cpp:48
-#, fuzzy
 msgid ""
 "To setup your modem, first choose its vendor in the list to the left, and "
 "then select the model from the right list. If you don´t know which modem you "
