@@ -956,6 +956,11 @@ void ConnectWidget::if_waiting_slot(){
   p_xppp->con_win->accounting(p_xppp->accounting.running());
 
   p_xppp->con_win->show();
+  
+  if(gpppdata.get_iconify_on_connect()) {
+      p_xppp->con_win->iconify();
+  }
+
   closetty();
 	
 }

@@ -36,10 +36,10 @@ extern KApplication*	app;
 GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
   : QWidget(parent, name)
 {
-  QGridLayout *tl = new QGridLayout(this, 9, 4, 10, 10);
+  QGridLayout *tl = new QGridLayout(this, 10, 4, 10, 10);
   tl->addRowSpacing(0, fontMetrics().lineSpacing() - 10); // magic
   box = new QGroupBox(klocale->translate("kppp Setup"), this,"box");
-  tl->addMultiCellWidget(box, 0, 8, 0, 3);
+  tl->addMultiCellWidget(box, 0, 9, 0, 3);
   
   label1 = new QLabel(this,"path");
   label1->setText(klocale->translate("pppd Path:"));
@@ -114,11 +114,20 @@ GeneralWidget::GeneralWidget( QWidget *parent, const char *name)
   connect(chkbox4,SIGNAL(toggled(bool)),this,SLOT(xserver_toggled(bool)));
   tl->addMultiCellWidget(chkbox4, 7, 7, 1, 2);
 
+  chkbox5 = new QCheckBox(klocale->translate("Minimize Window on Connect"),this,"iconifybox");
+  chkbox5->setMinimumSize(chkbox5->sizeHint());
+  chkbox5->setChecked(gpppdata.get_iconify_on_connect());
+  connect(chkbox5,SIGNAL(toggled(bool)),this,SLOT(iconify_toggled(bool)));
+  tl->addMultiCellWidget(chkbox5, 8, 8, 1, 2);
+
   tl->activate();
 }
 
+void GeneralWidget::iconify_toggled(bool on){
+  gpppdata.set_iconify_on_connect(on);
+}
+ 
 void GeneralWidget::caption_toggled(bool on){
-
   gpppdata.set_show_clock_on_caption(on);
 
 }

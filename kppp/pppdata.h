@@ -115,6 +115,7 @@
 #define SCRIPTCOM_KEY      "ScriptCommands"
 #define SCRIPTARG_KEY      "ScriptArguments"
 #define PPPDARG_KEY        "pppdArguments"
+#define ICONIFY_ON_CONNECT_KEY "iconifyOnConnect" 
 #define TOTALCOSTS_KEY     "TotalCosts"
 
 class PPPData {
@@ -159,6 +160,9 @@ public:
 
   void set_automatic_redial(bool set);
   const bool get_automatic_redial();
+
+  void set_iconify_on_connect(bool set);
+  const bool get_iconify_on_connect();
 
   const char* logViewer();
   void setlogViewer(const char*);

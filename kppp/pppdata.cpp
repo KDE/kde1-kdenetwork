@@ -250,28 +250,27 @@ void PPPData::set_show_log_window(bool set){
 
 
 const bool PPPData::get_automatic_redial() {
-
   return (bool) readNumConfig(GENERAL_GRP, AUTOREDIAL_KEY, FALSE);
-
 };
 
 void PPPData::set_automatic_redial(bool set) {
-
   writeConfig(GENERAL_GRP, AUTOREDIAL_KEY, (int) set);
-
 }
 
+const bool PPPData::get_iconify_on_connect() {
+  return (bool) readNumConfig(GENERAL_GRP, ICONIFY_ON_CONNECT_KEY, TRUE);
+};
+
+void PPPData::set_iconify_on_connect(bool set) {
+  writeConfig(GENERAL_GRP, ICONIFY_ON_CONNECT_KEY, (int) set);
+}
 
 const char* PPPData::pppdPath() {
-  
   return readConfig (GENERAL_GRP, PPPDPATH_KEY, "/usr/sbin/pppd");
-
 }
 
 void PPPData::setpppdPath(const char *n) {
-
   writeConfig(GENERAL_GRP, PPPDPATH_KEY, n);
-
 }
 
 
