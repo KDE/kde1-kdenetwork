@@ -106,9 +106,11 @@ bool PPPData::open() {
 
   if (kapp->getConfigState() == KApplication::APPCONFIG_NONE) {
     QMessageBox::warning(0L, kapp->appName().data(),
-                       i18n("The application-specific config file\n"
-                       "could not be opened neither\n"
-                       "read-write nor read-only"));
+                       i18n("The application-specific config file could "
+                       "not be\nopened neither read-write nor read-only.\n\n"
+                       "The superuser might have to change its ownership\n"
+                       "by issuing the following command in your home directory:\n\n"
+                       "chown {YourUsername} .kde/share/config/kppprc"));
     return false;
   }
 

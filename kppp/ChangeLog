@@ -1,3 +1,8 @@
+1998-12-22  Harri Porten  <porten@kde.org>
+
+	* pppdata.cpp: Give users upgrading from KDE 1.0 instructions how
+	to modify their kppprc if it is owned by root (KConfig bug back then).
+
 1998-12-21  Mario Weilguni <mweilguni@kde.org>
 
 	* opener.cpp: using umask now instead of chmod (more safe)

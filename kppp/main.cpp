@@ -355,7 +355,7 @@ int main( int argc, char **argv ) {
   // Mario: testing
   if(TESTING) {
     //    gpppdata.open();
-    PPPL_ShowLog();
+    //    PPPL_ShowLog();
     //    return a.exec();
   }
 
