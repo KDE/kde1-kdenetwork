@@ -1,3 +1,15 @@
+1999-01-05  Harri Porten  <porten@kde.org>
+
+	* opener.cpp: set O_NOCTTY flag when opening the modem device to
+	hinder the server process from being assigned a controlling terminal
+        (and 'stealing' it from pppd ?)
+	* pppdata.h: renamed "LockFile" key to "UseLockFile" to prevent a
+	clash with kppprc's from KDE 1.0. (reported by Seth Rothberg
+	<sethr@crocker.com>)
+        * umask(0) in suid child to avoid permission conflicts with lock file.
+	* connect.cpp,opener.*,requester.*: moved call to sethostname()
+	into Opener. Bug discovered by Matthew Ando <ando@math.jhu.edu>
+
 1999-01-04
 	
 	* began to add a modem database. See README.ModemDB for details

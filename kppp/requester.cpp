@@ -258,6 +258,16 @@ bool Requester::removeSecret(int authMethod) {
   return recvResponse();
 }
 
+bool Requester::setHostname(const char *name) {
+  if(!name || !strlen(name))
+    return false;
+  struct SetHostnameRequest req;
+  req.header.type = Opener::SetHostname;
+  strncpy(req.name, name, Opener::MaxStrLen);
+  req.name[Opener::MaxStrLen] = '\0';
+  sendRequest((struct RequestHeader *) &req, sizeof(req));
+  return recvResponse();
+}
 
 bool Requester::stop() {
 

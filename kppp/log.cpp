@@ -36,7 +36,7 @@ void PRINTDEBUG(char *file, int line, const char *fmt, ...) {
   int len = strlen(fmt);
   char *sfmt = (char*)malloc(len+1);
   strcpy(sfmt, fmt);
-  while(len && sfmt[len-1] == '\0')
+  while(len && sfmt[len-1] == '\n')
     sfmt[--len] = 0;
 
   fprintf(stderr, "[%s:%s:%d]: ", "kppp", file, line);

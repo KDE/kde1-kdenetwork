@@ -97,7 +97,7 @@ void Opener::mainLoop() {
       assert(len == sizeof(struct OpenModemRequest));
       device = deviceByIndex(request.modem.deviceNum);
       response.status = 0;
-      if ((fd = open(device, O_RDWR|O_NDELAY)) == -1) {
+      if ((fd = open(device, O_RDWR|O_NDELAY|O_NOCTTY)) == -1) {
         Debug("error opening modem device !");
         fd = open(DEVNULL, O_RDONLY);
         response.status = -errno;
@@ -108,7 +108,7 @@ void Opener::mainLoop() {
       break;
 
     case OpenLock:
-      Debug("Opener: received OpenLock");
+      Debug("Opener: received OpenLock\n");
       assert(len == sizeof(struct OpenLockRequest));
       flags = request.lock.flags;
       assert(flags == O_RDONLY || flags == O_WRONLY|O_TRUNC|O_CREAT); 
@@ -200,6 +200,15 @@ void Opener::mainLoop() {
       Debug("Opener: received RemoveSecret");
       assert(len == sizeof(struct RemoveSecretRequest));
       response.status = !removeAuthFile(request.remove.authMethod);
+      sendResponse(&response);
+      break;
+
+    case SetHostname:
+      Debug("Opener: received SetHostname");
+      assert(len == sizeof(struct SetHostnameRequest));
+      response.status = 0;
+      if(sethostname(request.host.name, strlen(request.host.name)))
+        response.status = -errno;
       sendResponse(&response);
       break;
 

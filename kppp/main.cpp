@@ -222,6 +222,7 @@ int main( int argc, char **argv ) {
     // child process
     // make process leader of new group
     setsid();
+    umask(0);
     close(sockets[0]);
     signal(SIGHUP, SIG_IGN);
     (void) new Opener(sockets[1]);
@@ -832,7 +833,7 @@ void dieppp(int sig) {
     }
 
     if(id == gpppdata.suidChildPid() && gpppdata.suidChildPid() != -1) {
-      Debug("It was the setuid child that died\n");
+      Debug("It was the setuid child that died");
       gpppdata.setSuidChildPid(-1);
       QString msg = i18n("Sorry. kppp's helper process just died.\n\n"
                          "Since a further execution would be pointless, "

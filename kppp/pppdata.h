@@ -76,7 +76,7 @@
 
 // modem
 #define MODEMDEV_KEY       "Device"
-#define LOCKFILE_KEY       "LockFile"
+#define LOCKFILE_KEY       "UseLockFile"
 #define FLOWCONTROL_KEY    "FlowControl"
 #define SPEED_KEY          "Speed"
 #define TIMEOUT_KEY        "Timeout"

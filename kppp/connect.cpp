@@ -1206,7 +1206,7 @@ void auto_hostname() {
       new_hostname=hostname_entry->h_name;
       dot=new_hostname.find('.');
       new_hostname=new_hostname.remove(dot,new_hostname.length()-dot);
-      sethostname (new_hostname,new_hostname.length());
+      Requester::rq->setHostname(new_hostname.data());
       modified_hostname = TRUE;
 
       new_hostname=hostname_entry->h_name;
@@ -1327,7 +1327,7 @@ void removedns() {
   }
 
   if (  modified_hostname ) {
-    sethostname ((const char*)old_hostname,old_hostname.length());
+    Requester::rq->setHostname(old_hostname.data());
     modified_hostname = FALSE;
   }
 

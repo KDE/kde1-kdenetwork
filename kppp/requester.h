@@ -15,6 +15,7 @@ public:
   bool setPAPSecret(const char *name, const char *password);
   bool setCHAPSecret(const char *name, const char *password);
   bool removeSecret(int authMethode);
+  bool setHostname(const char *name);
   bool stop();
 
 public:

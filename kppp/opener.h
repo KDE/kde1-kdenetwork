@@ -27,6 +27,7 @@ public:
          OpenResolv,
          OpenSysLog,
          SetSecret, RemoveSecret,
+         SetHostname,
          Stop };
   enum { PAP = 1, CHAP };
   enum { MaxPathLen = 30, MaxStrLen = 40 };
@@ -94,6 +95,11 @@ struct RemoveSecretRequest {
   int    authMethod;   // PAP or CHAP
 };
 
+struct SetHostnameRequest {
+  struct RequestHeader header;
+  char   name[Opener::MaxStrLen+1];
+};
+
 struct StopRequest {
   struct RequestHeader header;
 };
@@ -106,6 +112,7 @@ union AllRequests {
   struct OpenResolvRequest resolv;
   struct SetSecretRequest secret;
   struct RemoveSecretRequest remove;
+  struct SetHostnameRequest host;
   struct OpenLogRequest log;
   struct StopRequest stop;
 };
