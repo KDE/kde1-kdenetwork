@@ -184,8 +184,6 @@ KMComposeWin::KMComposeWin(KMMessage *aMsg) : KMComposeWinInherited(),
 //-----------------------------------------------------------------------------
 KMComposeWin::~KMComposeWin()
 {
-  printf("~KMComposeWin\n");
-
   if (mAutoDeleteMsg && mMsg) delete mMsg;
 #ifdef HAS_KSPELL
   if (mKSpellConfig) delete KSpellConfig;
@@ -694,7 +692,12 @@ void KMComposeWin::setMsg(KMMessage* newMsg, bool mayAutoSign)
   KMMessagePart bodyPart, *msgPart;
   int i, num;
 
-  assert(newMsg!=NULL);
+  //assert(newMsg!=NULL);
+  if(!newMsg)
+    {
+      debug("KMComposeWin::setMsg() : newMsg == NULL!\n");
+      return;
+    }
   mMsg = newMsg;
 
   mEdtTo.setText(mMsg->to());
@@ -771,7 +774,13 @@ void KMComposeWin::applyChanges(void)
   QString temp, replyAddr;
   KMMessagePart bodyPart, *msgPart;
 
-  assert(mMsg!=NULL);
+  //assert(mMsg!=NULL);
+  if(!mMsg)
+    {
+      debug("KMComposeWin::applyChanges() : mMsg == NULL!\n");
+      return;
+    }
+	    
 
   mMsg->setTo(to());
   mMsg->setFrom(from());
@@ -1064,7 +1073,12 @@ void KMComposeWin::addrBookSelInto(KMLineEdit* aLineEdit)
   KMAddrBookSelDlg dlg(addrBook);
   QString txt;
 
-  assert(aLineEdit!=NULL);
+  //assert(aLineEdit!=NULL);
+  if(!aLineEdit)
+    {
+      debug("KMComposeWin::addrBookSelInto() : aLineEdit == NULL\n");
+      return;
+    }
   if (dlg.exec()==QDialog::Rejected) return;
   txt = QString(aLineEdit->text()).stripWhiteSpace();
   if (!txt.isEmpty())
@@ -1385,8 +1399,7 @@ void KMComposeWin::slotMarkAll()
 //-----------------------------------------------------------------------------
 void KMComposeWin::slotClose()
 {
-  // we should check here if there were any changes...
-  close(TRUE);
+  close(FALSE);
 }
 
 
@@ -1965,14 +1978,23 @@ void KMLineEdit::slotCompletion()
     return;
   }
   
-  QPopupMenu *pop = new QPopupMenu;
+  QPopupMenu pop;
   int n;
   
   KMAddrBook adb;
   adb.readConfig();
-  adb.load();
+
+  if(adb.load() == IO_FatalError)
+    return;
 
   QString s(text());
+  QString prevAddr;
+  n = s.findRev(',');
+  if (n>=0)
+  {
+    prevAddr = s.left(n+1) + ' ';
+    s = s.mid(n+1,255).stripWhiteSpace();
+  }
   s.append("*");
   QRegExp regexp(s.data(), FALSE, TRUE);
   
@@ -1983,37 +2005,32 @@ void KMLineEdit::slotCompletion()
     t.setStr(a);
     if (t.contains(regexp))
     {
-      pop->insertItem(a);
+      pop.insertItem(a);
       n++;
     }
   }
   
-  if (n>1)
+  if (n > 1)
   {
     int id;
-    pop->popup(parentWidget()->mapToGlobal(QPoint(x(), y()+height())));
-    pop->setActiveItem(pop->idAt(0));
-    id=pop->exec();
+    pop.popup(parentWidget()->mapToGlobal(QPoint(x(), y()+height())));
+    pop.setActiveItem(pop.idAt(0));
+    id = pop.exec();
     
     if (id!=-1)
     {
-      setText(pop->text(id));
-      delete pop;
-      mComposer->focusNextPrevEdit(this,TRUE);
+      setText(prevAddr + pop.text(id));
+      //mComposer->focusNextPrevEdit(this,TRUE);
     }
   }
   else if (n==1)
   {
-    setText(pop->text(pop->idAt(0)));
-    delete pop;
-    mComposer->focusNextPrevEdit(this,TRUE);
+    setText(prevAddr + pop.text(pop.idAt(0)));
+    //mComposer->focusNextPrevEdit(this,TRUE);
   }
-  else
-  {
-    delete pop;
-    cursorAtEnd();
-    setFocus();
-  }
+
+  setFocus();
+  cursorAtEnd();
 }
 
 

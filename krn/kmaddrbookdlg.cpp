@@ -5,7 +5,7 @@
 #include "kmaddrbook.h"
 #include <assert.h>
 #include <kapp.h>
-#include <kapp.h>
+#include <kmsgbox.h>
 
 //-----------------------------------------------------------------------------
 KMAddrBookSelDlg::KMAddrBookSelDlg(KMAddrBook* aAddrBook, const char* aCap):
@@ -171,11 +171,13 @@ void KMAddrBookEditDlg::slotOk()
   for(idx=0; idx<num; idx++)
   {
     addr = mListBox.text(idx);
-    debug("addressbook: %s", addr);
     mAddrBook->insert(addr);
   }
-  mAddrBook->store();
-
+  if(mAddrBook->store() == IO_FatalError)
+    {
+      KMsgBox::message(0,i18n("KMail error"),
+		       i18n("Storing addressbook failed"));
+    }
   accept();
 }
 
@@ -204,7 +206,7 @@ void KMAddrBookEditDlg::slotRemove()
   int idx = mListBox.currentItem();
   mIndex = -1;
   if (idx >= 0) mListBox.removeItem(idx);
-  if (idx >= mListBox.count()) idx--;
+  if (idx >= (int)mListBox.count()) idx--;
   mListBox.setCurrentItem(idx);
 }
 

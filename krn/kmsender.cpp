@@ -36,8 +36,8 @@ extern KMIdentity *identity;
 
 #define SENDER_GROUP "sending mail"
 
-// uncomment the following line for SMTP debug output
-#define SMTP_DEBUG_OUTPUT
+/** uncomment the following line for SMTP debug output */
+//#define SMTP_DEBUG_OUTPUT
 
 #define MSG_BLOCK_SIZE 1024
 
@@ -126,7 +126,12 @@ bool KMSender::send(KMMessage* aMsg, short sendNow)
 #ifndef KRN
   int rc;
 
-  assert(aMsg != NULL);
+  //assert(aMsg != NULL);
+  if(!aMsg)
+    {
+      debug("KMSender::send() : aMsg == NULL\n");
+      return false;
+    }
   if (!settingsOk()) return FALSE;
 
   if (!aMsg->to() || aMsg->to()[0]=='\0')
@@ -269,7 +274,6 @@ void KMSender::cleanup(void)
 //-----------------------------------------------------------------------------
 void KMSender::slotIdle()
 {
-  debug("sender idle");
   assert(mSendProc != NULL);
   //assert(!mSendProc->sending());
   if (mSendProc->sendOk())
@@ -395,11 +399,8 @@ bool KMSendProc::addRecipients(const QStrList& aRecipientList)
   int i, j;
   bool rc;
 
-  debug("recipients: %d", aRecipientList.count());
-  
   for (receiver=recpList->first(); !receiver.isNull(); receiver=recpList->next())
   {
-    debug("receiver: %s", receiver.data());
     i = receiver.find('<');
     if (i >= 0)
     {
@@ -409,7 +410,6 @@ bool KMSendProc::addRecipients(const QStrList& aRecipientList)
 
     if (!receiver.isEmpty()) 
     {
-      debug("KMSendProc::addRecipients: adding %s", receiver.data());
       rc = addOneRecipient(receiver);
       if (!rc) return FALSE;
     }

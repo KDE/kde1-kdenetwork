@@ -19,7 +19,13 @@ KMAddrBook::KMAddrBook(): KMAddrBookInherited()
 //-----------------------------------------------------------------------------
 KMAddrBook::~KMAddrBook()
 {
-  if (mModified) store();
+  if (mModified) 
+    {
+      if(store() == IO_FatalError)
+	KMsgBox::message(0,i18n("KMail Error"),
+			     i18n("Storing the addressbook failed!\n"));
+    }
+      
   writeConfig(FALSE);
 }
 
@@ -72,8 +78,6 @@ void KMAddrBook::readConfig(void)
   mDefaultFileName = config->readEntry("default");
   if (mDefaultFileName.isEmpty())
     mDefaultFileName = kapp->localkdedir()+"/share/apps/kmail/addressbook";
-
-  debug("addressbook: %s", mDefaultFileName.data());
 }
 
 
@@ -85,7 +89,9 @@ int KMAddrBook::load(const char* aFileName)
   QFile file(fname);
   int rc;
 
-  assert(fname != NULL);
+  //assert(fname != NULL);
+  if(!fname)
+    return IO_FatalError;
 
   if (!file.open(IO_ReadOnly)) return file.status();
   clear();
@@ -110,7 +116,10 @@ int KMAddrBook::store(const char* aFileName)
   const char* fname = (aFileName ? aFileName : (const char*)mDefaultFileName);
   QFile file(fname);
 
-  assert(fname != NULL);
+
+  //assert(fname != NULL);
+  if(!fname)
+    return IO_FatalError;
 
   if (!file.open(IO_ReadWrite|IO_Truncate)) return fileError(file.status());
 

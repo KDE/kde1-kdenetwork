@@ -218,7 +218,9 @@ void KMReaderWin::setMsg(KMMessage* aMsg)
 //-----------------------------------------------------------------------------
 void KMReaderWin::parseMsg(void)
 {
-  assert(mMsg!=NULL);
+  //assert(mMsg!=NULL);
+  if(mMsg == NULL)
+    return;
 
   mViewer->begin(mPicsDir);
   mViewer->write("<HTML><BODY>");
@@ -484,11 +486,9 @@ void KMReaderWin::writePartIcon(KMMessagePart* aMsgPart, int aPartNum)
   iconName = aMsgPart->iconName();
   if (iconName.left(11)=="unknown.xpm")
   {
-    debug("determining magic type");
     aMsgPart->magicSetType();
     iconName = aMsgPart->iconName();
   }
-  debug("href: "+href);
   mViewer->write("<TABLE><TR><TD><A HREF=\"" + href + "\"><IMG SRC=\"" + 
 		 iconName + "\">" + label + "</A></TD></TR></TABLE>" +
 		 comment + "<BR>");
@@ -784,7 +784,6 @@ void KMReaderWin::slotAtmOpen()
   cmd = "kfmclient openURL \'";
   cmd += fileName;
   cmd += "\'";
-  debug(cmd);
   system(cmd);
 }
 
@@ -800,7 +799,6 @@ void KMReaderWin::slotAtmSave()
   
   mMsg->bodyPart(mAtmCurrent, &msgPart);
   fileName.append(msgPart.name());
-  debug (fileName.data());
   
   fileName = KFileDialog::getSaveFileName(fileName.data(), "*", this);
   if(fileName.isEmpty()) return;
