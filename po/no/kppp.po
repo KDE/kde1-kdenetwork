@@ -1397,11 +1397,11 @@ msgstr "Graf"
 
 #: main.cpp:805
 msgid "Timeout expired while waiting for the PPP interface to come up!"
-msgstr ""
+msgstr "Tiden gikk ut mens vi ventet på at PPP-grensesnittet skulle komme opp!"
 
 #: main.cpp:810
 msgid "The pppd daemon died unexpectedly!"
-msgstr ""
+msgstr "pppd-daemonen døde uventet!"
 
 #: main.cpp:818
 msgid "Details..."
@@ -1650,6 +1650,14 @@ msgid ""
 "\n"
 "chown {YourUsername} .kde/share/config/kppprc"
 msgstr ""
+"Den applikasjonspesifikke konfigurasjonsfilen kunne\n"
+"ikke bli åpnet hverken i lese- og skrivmodus eller i\n"
+"bare lesemodus.\n"
+"\n"
+"Det kan hende superbrukeren blir nødt til å endre et\n"
+"eierskap ved hjelp av følgende kommando i hjemmeområdet:\n"
+"\n"
+"chown {DittBrukernavn} .kde/share/config/kppprc"
 
 #: modeminfo.cpp:38
 msgid "ATI Query"
