@@ -85,12 +85,12 @@ KAMenu::KAMenu( QWidget *parent, const char *name )
   CHECK_PTR( file );
   file->insertItem( i18n("O&pen in editor"), this, SLOT(slotFileOpen()), CTRL+Key_O );
   file->insertItem( i18n("&Open Dir"), this, SLOT(slotFileOpenDir()), CTRL+Key_D );
-  file->insertItem( i18n("&Download.."), this, SLOT(slotFileGet()), CTRL+Key_G );
+  file->insertItem( i18n("&Download..."), this, SLOT(slotFileGet()), CTRL+Key_G );
 
   file->insertSeparator();
-  file->insertItem( i18n("&Load List.."), this, SLOT(slotFileLoad()), CTRL+Key_L );
-  file->insertItem( i18n("&Save List.."), this, SLOT(slotFileSave()), CTRL+Key_S );
-  file->insertItem( i18n("Expor&t List.."), this, SLOT(slotFileWrite()), CTRL+Key_R );
+  file->insertItem( i18n("&Load List..."), this, SLOT(slotFileLoad()), CTRL+Key_L );
+  file->insertItem( i18n("&Save List..."), this, SLOT(slotFileSave()), CTRL+Key_S );
+  file->insertItem( i18n("Expor&t List..."), this, SLOT(slotFileWrite()), CTRL+Key_R );
   file->insertSeparator();
   file->insertItem( i18n("&Exit"), qApp, SLOT(quit()), CTRL+Key_Q );
  
@@ -140,7 +140,7 @@ KAMenu::KAMenu( QWidget *parent, const char *name )
   settings->insertItem( i18n("Search&mode"), searchmode );
   settings->insertItem( i18n("&Nicelevel"), nicelevel );
   settings->insertSeparator();
-  settings->insertItem( i18n("&All.."), this, SLOT( slotSettingsAll() ));
+  settings->insertItem( i18n("&All..."), this, SLOT( slotSettingsAll() ));
 
   //  settings->insertSeparator();
   //  settings->insertItem( i18n("&Save"), this, SLOT( slotSettingsSave() ));

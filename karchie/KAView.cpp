@@ -153,7 +153,7 @@ KAViewList::KAViewList(QWidget *parent, const char *name, WFlags f)
   CHECK_PTR( filemenu );
   //  filemenu->insertItem( i18n("O&pen in editor"), SLOT(slotFileOpen()) );
   filemenu->insertItem( i18n("&Open Dir"), SLOT(slotFileOpenDir()) );
-  filemenu->insertItem( i18n("&Download.."), SLOT(slotFileGet()) );
+  filemenu->insertItem( i18n("&Download..."), SLOT(slotFileGet()) );
 
   connect ( this, SIGNAL(popupMenu(int,int)), SLOT(slotPopupMenu(int, int)));
   //  connect ( this, SIGNAL(selected(int,int)), SLOT(slotPopupMenu(int, int)));
