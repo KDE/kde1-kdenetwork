@@ -37,11 +37,13 @@
 #include "kmmessage.h"
 
 
-#define KEY_SUBJECT 1
-#define KEY_SCORE 2
+//These MUST match the "allkeys" combobox in sortDlg.cpp
+#define KEY_SUBJECT 0
+#define KEY_SCORE 1
+#define KEY_SENDER 2
 #define KEY_DATE 3
-#define KEY_SENDER 4
-#define KEY_STATUS 5
+#define KEY_LINES 4
+#define KEY_NONE 5
 
 class NNTP;
 
@@ -108,6 +110,18 @@ class ArticleDict: public ArticleDictBase
 {
 public:
     ArticleDict::ArticleDict ();
+};
+
+typedef QListT<ArticleList> ThreadListBase;
+
+class ThreadList: public ThreadListBase
+{
+public:
+    int key1;
+    int key2;
+    int key3;
+    int key4;
+    int compareItems(GCI,GCI);
 };
 
 class Artdlg;

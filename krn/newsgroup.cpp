@@ -23,6 +23,7 @@
 #include <qbuffer.h>
 
 #include <gdbm.h>
+#include <mimelib/mimepp.h>
 
 #include <assert.h>
 
@@ -97,12 +98,12 @@ void Article::formHeader(QString *s)
     if (isMarked())
     {
         ss.append("{M}");
-//        ss.setStr("{M}");
+        //        ss.setStr("{M}");
     }
     if (!canExpire())
     {
         ss.append("{L}");
-//        ss.setStr("{L}");
+        //        ss.setStr("{L}");
     }
     
     if (!From.isEmpty())
@@ -171,12 +172,12 @@ void Article::save()
     
     // end robert's cache stuff
     //
-
+    
     if(isMarked())
         _content+="1\n";
     else
         _content+="0\n";
-
+    
     QString tt;
     tt.setNum(lastAccess);
     _content+=tt;
@@ -187,7 +188,7 @@ void Article::save()
         _content+=iter;
         _content+="\n";
     }
-
+    
     datum content;
     content.dptr=_content.data();
     content.dsize=_content.length()+1;
@@ -214,7 +215,7 @@ void Article::load()
     
     key.dptr=ID.data();
     key.dsize=ID.length() + 1;
-
+    
     content=gdbm_fetch(old_artdb,key);
     if (!content.dptr)
     {
@@ -259,12 +260,12 @@ void Article::load()
         expire=true;
     else
         expire=false;
-
+    
     if (!strcmp(tl.at(7),"1"))
         ismarked=true;
     else
         ismarked=false;
-
+    
     lastAccess=atoi(tl.at(8));
     
     for (unsigned int i=9;i<tl.count();i++)
@@ -405,7 +406,7 @@ void NewsGroup::getList(Artdlg *dialog)
     int index=0;
     int oldindex=0;
     int counter=0;
-
+    
     int artCount=buffer.contains('\n');
     debug ("There are %d articles",artCount);
     while (1)
@@ -539,9 +540,7 @@ QString noRe(QString subject)
 {
     if (subject.left(3)=="Re:")
         subject=subject.right(subject.length()-3);
-    if (subject.left(1)==" ")
-        subject=subject.right(subject.length()-1);
-    return subject;
+    return subject.stripWhiteSpace();
 }
 
 
@@ -569,9 +568,9 @@ void do_insert(Article *art)
             {
                 debug ("marker 1");
                 debug ("ID-->%s",art->ID.data());
-//                ((node *)a->parent)->children.removeRef(a);
-//                a->parent=0;
-//                return;
+                //                ((node *)a->parent)->children.removeRef(a);
+                //                a->parent=0;
+                //                return;
             }
         }
         else
@@ -610,8 +609,8 @@ void do_insert(Article *art)
         }
         else
         {
-//            if (-1==b->children.findRef(last))
-                b->children.append(last);
+            //            if (-1==b->children.findRef(last))
+            b->children.append(last);
             last->parent=b;
             break;
         }
@@ -638,9 +637,89 @@ void addToList(node *n,int dep,ArticleList *l)
     }
 }
 
+
+int compareArticles (Article *a1,Article *a2, int key)
+{
+    int i=0;
+    switch (key)
+    {
+    case KEY_SUBJECT:
+        {
+            i=strcmp(noRe(a1->Subject).lower().data(),
+                     noRe(a2->Subject).lower().data());
+            break;
+        }
+    case KEY_SENDER:
+        {
+            i=strcmp(a1->From.lower().data(),
+                     a2->From.lower().data());
+            break;
+        }
+    case KEY_LINES:
+        {
+            int l1=a1->Lines.stripWhiteSpace().toInt();
+            int l2=a2->Lines.stripWhiteSpace().toInt();
+            if (l1<l2)
+            {
+                i=-1;
+                break;
+            }
+            if (l2>l1)
+            {
+                i=1;
+                break;
+            }
+            break;
+        }
+    case KEY_DATE:
+        {
+            DwDateTime d1;
+            d1.FromString(a1->Date.data());
+            d1.Parse();
+            DwDateTime d2;
+            d2.FromString(a2->Date.data());
+            d2.Parse();
+            time_t t1=d1.AsUnixTime();
+            time_t t2=d2.AsUnixTime();
+            if (t1<t2)
+            {
+                i=-1;
+                break;
+            }
+            if (t2>t1)
+            {
+                i=1;
+                break;
+            }
+            break;
+        }
+    }
+    return i;
+}
+
+int ThreadList::compareItems(GCI t1,GCI t2)
+{
+    int i=0;
+    i=compareArticles(((ArticleList *)t1)->first(),
+                      ((ArticleList *)t2)->first(),key1);
+    if (i)
+        return i;
+    i=compareArticles(((ArticleList *)t1)->first(),
+                      ((ArticleList *)t2)->first(),key2);
+    if (i)
+        return i;
+    i=compareArticles(((ArticleList *)t1)->first(),
+                      ((ArticleList *)t2)->first(),key3);
+    if (i)
+        return i;
+    i=compareArticles(((ArticleList *)t1)->first(),
+                      ((ArticleList *)t2)->first(),key4);
+    return i;
+}
+
 void ArticleList::thread(bool threaded,int key1,int key2,int key3,int key4)
 {
-    debug ("entered with-->%d",count());
+    debug ("threaded %d,%d,%d,%d,%d",threaded,key1,key2,key3,key4);
     d=new QDict <node> (10271);
     d->setAutoDelete(true);
     QListIterator <Article> artit(*this);
@@ -653,45 +732,60 @@ void ArticleList::thread(bool threaded,int key1,int key2,int key3,int key4)
         iter->threadDepth=0;
         do_insert(iter);
     }
-
-    QList <ArticleList> threads;
+    
+    ThreadList threads;
+    threads.key1=key1;
+    threads.key2=key2;
+    threads.key3=key3;
+    threads.key4=key4;
+    
     QDictIterator <node> it(*d);
-
-    while (it.current())
+    
+    if (threaded)
     {
-        if (!(it.current()->parent))
+        while (it.current())
         {
-            ArticleList *thr=new ArticleList();
-            if (it.current()->art)
-                thr->append(it.current()->art);
-            addToList(it.current(),0,thr);
-            threads.append(thr);
+            if (!(it.current()->parent))
+            {
+                ArticleList *thr=new ArticleList();
+                if (it.current()->art)
+                    thr->append(it.current()->art);
+                addToList(it.current(),0,thr);
+                
+                threads.inSort(thr);
+            }
+            ++it;
         }
-        ++it;
     }
-    debug ("has %d threads",threads.count());
+    else
+    {
+        while (it.current())
+        {
+            if (it.current()->art)
+            {
+                ArticleList *thr=new ArticleList();
+                thr->append(it.current()->art);
+                it.current()->art->threadDepth=0;
+                threads.inSort(thr);
+            }
+            ++it;
+        }
+    }
     this->clear();
-
-
+    
     QListIterator <ArticleList> thriter(threads);
     while (thriter.current())
     {
         QListIterator <Article> artiter(*thriter.current());
         while (artiter.current())
         {
-//            if(-1==findRef(artiter.current()))
-                this->append(artiter.current());
-//            else
-//                debug("repeated article!!! %s",artiter.current()->ID.data());
+            this->append(artiter.current());
             ++artiter;
         }
         thriter.current()->clear();
         ++thriter;
     }
-
-
     delete d;
-    debug ("exited with-->%d",count());
 }
 
 ArticleList::ArticleList()

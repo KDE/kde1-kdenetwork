@@ -115,17 +115,18 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     if (!SortDlg)
         SortDlg=new sortDlg();
     
+    conf->setGroup("Sorting");
+    threaded=conf->readNumEntry("Threaded",true);
+    key1=conf->readNumEntry("key1",KEY_SUBJECT);
+    key2=conf->readNumEntry("key2",KEY_SCORE);
+    key3=conf->readNumEntry("key3",KEY_DATE);
+    key4=conf->readNumEntry("key4",KEY_SENDER);
+
     conf->setGroup("ArticleListOptions");
     unread=conf->readNumEntry("ShowOnlyUnread");
     showlocked=conf->readNumEntry("ShowLockedArticles");
     showcached=conf->readNumEntry("ShowCachedArticles");
 
-    threaded=conf->readNumEntry("Threaded",true);
-    key1=conf->readNumEntry("SortKey1");
-    key2=conf->readNumEntry("SortKey2");
-    key3=conf->readNumEntry("SortKey3");
-    key4=conf->readNumEntry("SortKey4");
-    
     taggedArticle=new QPopupMenu;
     taggedArticle->insertItem(klocale->translate("Save"),SAVE_ARTICLE);
     taggedArticle->insertItem(klocale->translate("Download"),DOWNLOAD_ARTICLE);
@@ -440,7 +441,7 @@ void Artdlg::fillTree ()
     
     statusBar()->changeItem(klocale->translate("Threading..."),2);
     qApp->processEvents ();
-    artList.thread(true,key1,key2,key3,key4);
+    artList.thread(threaded,key1,key2,key3,key4);
     
     //had to split this in two loops because the order of articles is not
     //the same in both article lists
@@ -566,7 +567,18 @@ bool Artdlg::actions (int action)
         }
     case CONFIG_SORTING:
         {
-            SortDlg->show();
+            qApp->setOverrideCursor (arrowCursor);
+            if (SortDlg->exec()==1)
+            {
+                conf->setGroup("Sorting");
+                threaded=conf->readNumEntry("Threaded",true);
+                key1=conf->readNumEntry("key1",KEY_SUBJECT);
+                key2=conf->readNumEntry("key2",KEY_SCORE);
+                key3=conf->readNumEntry("key3",KEY_DATE);
+                key4=conf->readNumEntry("key4",KEY_SENDER);
+                fillTree();
+            }
+            qApp->restoreOverrideCursor ();
             break;
         }
     case CONFIG_FONTS:
@@ -992,6 +1004,7 @@ bool Artdlg::loadArt (QString id)
         debug ("entered get from web");
         QString buffer(2048);
         QString urldata("http://ww2.altavista.digital.com/cgi-bin/news.cgi?id@");
+        debug ("id-->%s",id.data());
         id=id.mid(1,id.length()-2);
         //    KURL::encodeURL(id);
         urldata+=id;
@@ -1440,5 +1453,34 @@ void Artdlg::openURL (const char *s)
 
 void Artdlg::sortHeaders(int column)
 {
-    debug ("should sort");
+    key1=KEY_NONE;
+    key2=KEY_NONE;
+    key3=KEY_NONE;
+    key4=KEY_NONE;
+    threaded=false;
+    
+    switch (column)
+    {
+    case 0:
+        {
+            key1=KEY_SENDER;
+            break;
+        }
+    case 1:
+        {
+            key1=KEY_DATE;
+            break;
+        }
+    case 2:
+        {
+            key1=KEY_LINES;
+            break;
+        }
+    case 3:
+        {
+            key1=KEY_SUBJECT;
+            break;
+        }
+    }
+    fillTree();
 }

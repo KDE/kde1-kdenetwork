@@ -1,4 +1,15 @@
 -----------------------------------------------------------------------------
+Changes made Feb 10
+-----------------------------------------------------------------------------
+
+* [Roberto] Fixed a bug in KMMessage::refsAsAnchor() that broke altavista
+            lookup.
+* [Roberto] Sorting works, except when threading is enabled.
+            In that case, it still works, but an ugly threading side effect
+            hides it.
+            Clicking in a header will sort (unthreaded) by that field.
+
+-----------------------------------------------------------------------------
 Changes made Feb 9
 -----------------------------------------------------------------------------
 
@@ -9,6 +20,7 @@ Changes made Feb 9
 * [Roberto] Added "mark tagged as read" and "as unread". Sometimes I wonder
             how I forget to implement these silly features.
             Sometimes I know :-)
+* [Roberto] Sorting is *this* close from working.
 
 -----------------------------------------------------------------------------
 Changes made Feb 8
