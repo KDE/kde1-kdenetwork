@@ -278,6 +278,8 @@ Groupdlg::~Groupdlg ()
     conf->writeEntry("GroupY",y());
     conf->writeEntry("GroupW",width());
     conf->writeEntry("GroupH",height());
+    conf->sync();
+    debug ("in destructor!");
 }
 
 void Groupdlg::openGroup (QString name)

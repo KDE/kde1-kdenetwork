@@ -193,7 +193,7 @@ int main( int argc, char **argv )
     gdbm_reorganize(artdb);
     gdbm_sync(artdb);
     gdbm_close(artdb);
-    exit(0);
+//    exit(0);
 }
 
 void checkConf()

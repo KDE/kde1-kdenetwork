@@ -93,7 +93,8 @@ krn_SOURCES = 	main.cpp\
                 sortDlg.cpp\
                 rules.cpp\
 		charsetsDlg.cpp\
-                expirestatusdlg.cpp
+                expirestatusdlg.cpp\
+                kfontutils.cpp
 
 
 noinst_HEADERS = 	NNTP.h\
@@ -138,7 +139,8 @@ noinst_HEADERS = 	NNTP.h\
                 sortDlg.h\
                 rules.h\
 		charsetsDlg.h\
-                expirestatusdlg.h
+                expirestatusdlg.h\
+                kfontutils.h
 
 
 

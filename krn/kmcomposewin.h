@@ -297,6 +297,7 @@ protected:
   short mMnuIdUrgent, mMnuIdConfDeliver, mMnuIdConfRead;
   QString mForeColor, mBackColor, mBodyFont;
   QList<QLineEdit> mEdtList;
+  QString mPathAttach;
 #ifdef HAS_KSPELL
   KSpell* mKSpell;
   KSpellConfig* mKSpellConfig;
