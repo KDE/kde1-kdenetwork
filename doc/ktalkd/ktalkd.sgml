@@ -178,7 +178,7 @@ ftp://ftp.kde.org. It should be in
 <p>The configuration dialog should be rather straight forward, except for setting up a
 forward to another user (or even to another host).
 
-<sect1>Choosing a forwarding method
+<sect1>Choosing a Forwarding Method
 <p>
 None is perfect, they all have pros (+) and cons (-).
 
@@ -205,9 +205,9 @@ direct contact one with the other (e.g. firewall).
 <p>In short, use <bf/FWT/ it you want to use it behind a firewall (and if ktalkd
 can access both networks), and <bf/FWR/ otherwise.
 
-<sect>Questions and answers
+<sect>Questions and Answers
 <p>
-<sect1>Why doesn't root receive KDE announcements ?
+<sect1>Why Doesn't Root Receive KDE Announcements ?
 <p>
 Because this would be security hole, with the current user detection.
 You can bypass the limitation by adding two lines in xdm config files
