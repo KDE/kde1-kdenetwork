@@ -1,3 +1,19 @@
+1999-01-04  Sven Radej <radej@kde.org> (KMail-1.0.18)
+        * Patch from Don Sanders <dsanders@cch.com.au> cleared
+          bugs 614, 1019 and 941. Also, folders show number of unread
+          messages. From him also a patch to KTabListBox which does...
+          something I forgot but is usefull :-)
+
+        * Fix for If-I-View-more-HTML-attachments-inline-I-see-only-first
+          Done by stripping off </body> and </html> tags from end of them
+
+        * View images inline if you want!
+
+        * In iconic style you can RMB->view, text, html, and images
+          in html window.
+
+        * I think Warwick fixed memory leak in kpgp.
+
 1999-02-06  Sven Radej <radej@kde.org> (KMail-1.0.17)
 
         * Server-client method - no more locking problems, lost instead

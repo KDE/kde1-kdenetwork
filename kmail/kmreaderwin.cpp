@@ -243,6 +243,8 @@ void KMReaderWin::parseMsg(KMMessage* aMsg)
   QString type, subtype, str, contDisp;
   bool asIcon = false;
 
+  inlineImage=false;
+  
   assert(aMsg!=NULL);
   writeMsgHeader();
 
@@ -277,9 +279,33 @@ void KMReaderWin::parseMsg(KMMessage* aMsg)
 	  str = msgPart.bodyDecoded();
 	  if (i>0) mViewer->write("<BR><HR><BR>");
 
-	  if (stricmp(subtype, "html")==0) mViewer->write(str);
+          if (stricmp(subtype, "html")==0)
+          {
+            // ---Sven's strip </BODY> and </HTML> from end of attachment start-
+            // We must fo this, or else we will see only 1st inlined html attachment
+            // It is IMHO enough to search only for </BODY> and put \0 there.
+            int i;
+            i = str.findRev("</body>", -1, false); //case insensitive
+            if (i>0)
+              str.truncate(i);
+            else // just in case - search for </html>
+            {
+              i = str.findRev("</html>", -1, false); //case insensitive
+              if (i>0) str.truncate(i);
+            }
+            // ---Sven's strip </BODY> and </HTML> from end of attachment end-
+            mViewer->write(str);
+          }
 	  else writeBodyStr(str);
-	}
+        }
+        // ---Sven's view smart or inline image attachments in kmail start---
+        else if (stricmp(type, "image")==0)
+        {
+          inlineImage=true;
+          writePartIcon(&msgPart, i);
+          inlineImage=false;
+        }
+        // ---Sven's view smart or inline image attachments in kmail end---
 	else asIcon = TRUE;
       }
       if (asIcon)
@@ -577,8 +603,11 @@ void KMReaderWin::writePartIcon(KMMessagePart* aMsgPart, int aPartNum)
   else
 //--- Sven's save attachments to /tmp end ---
   href.sprintf("part://%i", aPartNum+1);
-  
-  iconName = aMsgPart->iconName();
+  // sven: for viewing images inline
+  if (inlineImage)
+    iconName = href;
+  else
+    iconName = aMsgPart->iconName();
   if (iconName.left(11)=="unknown.xpm")
   {
     aMsgPart->magicSetType();
@@ -837,8 +866,11 @@ void KMReaderWin::slotAtmView()
 {
   QString str, pname;
   KMMessagePart msgPart;
-  QMultiLineEdit* edt = new QMultiLineEdit;
-
+  // ---Sven's view text, html and image attachments in html widget start ---
+  // Sven commented out
+  //QMultiLineEdit* edt = new QMultiLineEdit;
+  // ---Sven's view text, html and image attachments in html widget end ---
+  
   mMsg->bodyPart(mAtmCurrent, &msgPart);
   pname = msgPart.fileName();
   if (pname.isEmpty()) pname=msgPart.name();
@@ -852,13 +884,52 @@ void KMReaderWin::slotAtmView()
   }
 
   kbp->busy();
-  str = msgPart.bodyDecoded();
+  // ---Sven's view text, html and image attachments in html widget start ---
+  // ***start commenting out old stuff
+  //str = msgPart.bodyDecoded();
 
-  edt->setCaption(i18n("View Attachment: ") + pname);
-  edt->insertLine(str);
-  edt->setReadOnly(TRUE);
-  edt->show();
+  //edt->setCaption(i18n("View Attachment: ") + pname);
+  //edt->insertLine(str);
+  //edt->setReadOnly(TRUE);
+  //edt->show();
+  // *** end commenting out old stuff
+  {
 
+    KMReaderWin* win = new KMReaderWin; //new reader
+    
+    if (stricmp(msgPart.typeStr(), "text")==0)
+    {
+      win->mViewer->begin(mPicsDir);
+      win->mViewer->write("<HTML><BODY>");
+      QString str = msgPart.bodyDecoded();
+      if (stricmp(msgPart.subtypeStr(), "html")==0)
+        win->mViewer->write(str);
+      else  //plain text
+        win->writeBodyStr(str);
+      win->mViewer->write("</BODY></HTML>");
+      win->mViewer->end();
+      win->mViewer->parse();
+      win->setCaption(i18n("View Attachment: ") + pname);
+      win->show();
+    }
+    else if (stricmp(msgPart.typeStr(), "image")==0)
+    {
+      //image
+      QString linkName;
+      // Attachment is saved already; this is the file:
+      linkName.sprintf ("<img src=\"file:/tmp/kmail%d/part%d/%s\" border=0>",
+                        getpid(), mAtmCurrent+1, pname.data()); // set linkname
+      win->mViewer->begin(mPicsDir);
+      win->mViewer->write("<HTML><BODY>");
+      win->mViewer->write(linkName.data());
+      win->mViewer->write("</BODY></HTML>");
+      win->mViewer->end();
+      win->mViewer->parse();
+      win->setCaption(i18n("View Attachment: ") + pname);
+      win->show();
+    }
+  }
+  // ---Sven's view text, html and image attachments in html widget end ---
   kbp->idle();
 }
 

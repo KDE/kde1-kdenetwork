@@ -171,6 +171,7 @@ protected:
   AttachmentStyle mAttachmentStyle;
   bool mAutoDelete;
   QString mBodyFont;
+  bool inlineImage;
 };
 
 
