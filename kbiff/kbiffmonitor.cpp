@@ -317,7 +317,7 @@ TRACEINIT("KBiffMonitor::checkImap()");
 	}
 
 	// this will quite nicely get us the number of new messages
-	command = QString().setNum(seq) + " STATUS " + mailbox + " (messages recent)\r\n";
+	command = QString().setNum(seq) + " STATUS " + mailbox + " (messages unseen)\r\n";
 	if (imap.command(command, seq) == false)
 		return;
 	seq++;
@@ -812,7 +812,7 @@ TRACEINIT("KBiffIMap::command()");
 			messages = response.mid(match + 9, len - 9).toInt();
 
 		// check for new mail
-		QRegExp recent_re("RECENT [0-9]*");
+		QRegExp recent_re("UNSEEN [0-9]*");
 		if ((match = recent_re.match(response, 0, &len)) > -1)
 			newMessages = response.mid(match + 7, len - 7).toInt();
 	}
