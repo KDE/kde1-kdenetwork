@@ -12,6 +12,9 @@ Changes made Apr 25
 *           Fixed bug in expiring. Body expire setting was read wrong.
 *           Fixed small bug that caused some repeated articles when
             crossposted.
+*           Adopted the "non-loop" patch from kmail. Seems to work (passed
+            200 messages ok).
+*           Removed unneeded -luulib in krn, since kdecode does that now.
 -----------------------------------------------------------------------------
 Changes made Apr 25
 -----------------------------------------------------------------------------

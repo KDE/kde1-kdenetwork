@@ -1,7 +1,7 @@
 // kmreaderwin.cpp
 // Author: Markus Wuebben <markus.wuebben@kde.org>
 
-#include <kfiledialog.h>
+#include <qfiledlg.h>
 #include <stdlib.h>
 #include <sys/stat.h>
 
@@ -99,8 +99,7 @@ void KMReaderWin::readConfig(void)
   mViewer->setStandardFont(config->readEntry("StandardFont",
                                            QString("helvetica").data()));
   mViewer->setFixedFont(config->readEntry("FixedFont",
-                                          QString("courier").data()));
-  mViewer->parse();
+                                        QString("courier").data()));
 #endif
 
 }
@@ -230,7 +229,7 @@ void KMReaderWin::parseMsg(KMMessage* aMsg)
   KMMessagePart msgPart;
   int i, numParts;
   QString type, subtype, str, contDisp;
-  bool asIcon;
+  bool asIcon = false;
 
   assert(aMsg!=NULL);
   writeMsgHeader();
@@ -530,23 +529,25 @@ const QString KMReaderWin::strToHtml(const QString aStr, bool aDecodeQP,
       htmlStr += str;
       htmlStr += "</A>";
     }
-/*
     else if (ch=='@')
     {
+      char *startpos = pos;
       for (i=0; *pos && (isalnum(*pos) || *pos=='@' || *pos=='.' ||
-			 *pos=='_'||*pos=='-') && i<255; i++, pos--)
+			 *pos=='_'||*pos=='-' || *pos=='*' || *pos=='[' || *pos==']') 
+	     && i<255; i++, pos--)
       {
       }
       i1 = i;
       pos++; 
       for (i=0; *pos && (isalnum(*pos)||*pos=='@'||*pos=='.'||
-			 *pos=='_'||*pos=='-') && i<255; i++, pos++)
+			 *pos=='_'||*pos=='-' || *pos=='*'  || *pos=='[' || *pos==']') 
+	     && i<255; i++, pos++)
       {
 	iStr += *pos;
       }
       pos--;
       len = iStr.length();
-      while (len>2 && ispunct(*pos))
+      while (len>2 && ispunct(*pos) && (pos > startpos))
       {
 	len--;
 	pos--;
@@ -559,7 +560,7 @@ const QString KMReaderWin::strToHtml(const QString aStr, bool aDecodeQP,
       else htmlStr += iStr;
       iStr = "";
     }
-*/
+
     else htmlStr += ch;
   }
 
@@ -771,7 +772,7 @@ void KMReaderWin::slotAtmSave()
   mMsg->bodyPart(mAtmCurrent, &msgPart);
   
   fileName = msgPart.name();
-  fileName = KFileDialog::getSaveFileName(NULL, "*", this);
+  fileName = QFileDialog::getSaveFileName(NULL, "*", this);
   if(fileName.isEmpty()) return;
 
   kbp->busy();

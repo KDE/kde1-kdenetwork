@@ -5,7 +5,7 @@ DEFS += -DKRN -DCHARSETS
 
 #LDADD = $(LIBCOMPAT) $(LIBSOCKET) $(all_libraries) -lkfm -lkhtmlw -ljscript -lkdeui -lkdecore -lkfile $(LIBJPEG) -lqt -lXext -lX11 -lmimelib -luulib -lgdbm $(KDE_RPATH)
 
-krn_LDFLAGS = $(LIBCOMPAT) $(LIBSOCKET) $(all_libraries) -lkfm -lkhtmlw -ljscript -lkdeui -lkdecore -lkfile $(LIBJPEG) -lqt -lXext -lX11 -lmimelib -luulib -lgdbm $(KDE_RPATH)
+krn_LDFLAGS = $(LIBCOMPAT) $(LIBSOCKET) $(all_libraries) -lkfm -lkhtmlw -ljscript -lkdeui -lkdecore -lkfile $(LIBJPEG) -lqt -lXext -lX11 -lmimelib -lgdbm $(KDE_RPATH)
 kdecode_LDFLAGS = $(LIBCOMPAT) $(LIBSOCKET) $(all_libraries) -lkdeui -lkdecore -lkfile -lqt -lXext -lX11 -luulib $(KDE_RPATH)
 
 ICONDIR = $(kde_icondir)
