@@ -747,7 +747,6 @@ msgid "&New Composer..."
 msgstr "&Nový editor správ..."
 
 #: kmcomposewin.cpp:469 kmcomposewin.cpp:678 kmcomposewin.cpp:1917
-#, fuzzy
 msgid "Mark all"
 msgstr "Oznaèi» v¹etky"
 
@@ -1561,13 +1560,12 @@ msgid "Could only write %d bytes of %d."
 msgstr "Nemô¾em zapísa» %d bajtov z %d."
 
 #: kmaddrbook.cpp:25
-#, fuzzy
 msgid "KMail Error"
 msgstr "Chyba KMailu"
 
 #: kmaddrbook.cpp:26
 msgid "Storing the addressbook failed!\n"
-msgstr ""
+msgstr "Ukladanie knihy adries zlyhalo!\n"
 
 #: kmaddrbookdlg.cpp:20
 msgid "Addressbook"
@@ -1578,9 +1576,8 @@ msgid "Addressbook Manager"
 msgstr "Správca knihy adries"
 
 #: kmaddrbookdlg.cpp:179
-#, fuzzy
 msgid "Storing addressbook failed"
-msgstr "Prida» do knihy adries"
+msgstr "Ukladanie knihy adries zlyhalo"
 
 #: kmiostatusdlg.cpp:32
 msgid "&Abort"
