@@ -739,12 +739,16 @@ const QString KMReaderWin::strToHtml(const QString aStr, bool aDecodeQP,
     ch = *pos;
     if (aPreserveBlanks)
     {
-      if (ch==' ' && pos[1]==' ')
+      if (ch==' ')
       {
-	HTML_ADD(" &nbsp;", 7);
-	for (pos++, x++; pos[1]==' '; pos++, x++)
-	  HTML_ADD(" &nbsp;", 7);
-	continue;
+        while (*pos==' ')
+        {
+          HTML_ADD("&nbsp;", 6);
+          pos++, x++;
+        }
+        pos--, x--;
+
+        continue;
       }
       else if (ch=='\t')
       {

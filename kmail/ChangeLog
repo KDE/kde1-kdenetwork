@@ -1,3 +1,13 @@
+1999-05-27  Sven Radej <radej@kde.org> (KMail-1.0.23)
+
+        * Patch from Toivo Pedaste <toivo@ucs.uwa.edu.au> for displaying text
+        formatted with spaces
+        * Patches From Daniel Naber <dnaber@mini.gt.owl.de>:
+          - Fix against deleteing two messages at once when in trash (bug 1037)
+          - Corrected prepending of "--" before signature
+          - Button "Help" works now in filter dialog
+
+
 1999-05-25  Stefan Taferner  <taferner@kde.org> (KMail-1.0.23)
 
 	* Updated documentation about PGP5 and new filter actions.
@@ -10,6 +20,8 @@
 	* New filter actions: execute (a shell command), forward-to.
 	* Proper resizing of filter-action specific widgets (list of 
 	folders, entry fields) when filter is selected.
+
+      ******************* release kde 1.1.1 *******************
 
 1999-04-25  Stefan Taferner  <taferner@kde.org> (KMail-1.0.21)
 

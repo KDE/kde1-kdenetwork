@@ -1632,7 +1632,7 @@ void KMComposeWin::slotAppendSignature()
 
   if (!sigText.isEmpty())
   {
-    mEditor->insertLine("--", -1);
+    mEditor->insertLine("-- ", -1);
     mEditor->insertLine(sigText, -1);
     mEditor->toggleModified(mod);
   }

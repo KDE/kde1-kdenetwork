@@ -582,10 +582,14 @@ void KMHeaders::moveMsgToFolder (KMFolder* destFolder, int msgId)
 
   for (rc=0, msg=msgList->first(); msg && !rc; msg=msgList->next())
   {
-    if (destFolder) rc = destFolder->moveMsg(msg);
+    if (destFolder) {
+      // "deleting" messages means moving them into the trash folder
+      rc = destFolder->moveMsg(msg);
+    }
     else
     {
-      if (!doUpd) removeItem(cur);
+      // really delete messages that are already in the trash folder
+      if (doUpd) removeItem(cur);
       mFolder->removeMsg(msg);
       delete msg;
     }
