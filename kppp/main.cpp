@@ -268,11 +268,11 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
   connected = false;
 
   ID_Label = new QLabel(this,"lableid");
-  ID_Label->setText("ID:");
+  ID_Label->setText("Login ID:");
   ID_Label->setGeometry(30,27,70,20);
 
   ID_Edit = new QLineEdit(this,"idedit");
-  ID_Edit->setGeometry(120,25,179,24);
+  ID_Edit->setGeometry(120,25,189,24);
   ID_Edit->setText(gpppdata.Id());
 
   PW_Label = new QLabel(this,"lablepw");
@@ -281,7 +281,7 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
 
 
   PW_Edit= new QLineEdit(this,"pwedit");
-  PW_Edit->setGeometry(120,60,179,24);
+  PW_Edit->setGeometry(120,60,189,24);
   PW_Edit->setEchoMode(QLineEdit::Password);
 
   label1 = new QLabel(this,"lable1");
@@ -289,13 +289,13 @@ XPPPWidget::XPPPWidget( QWidget *parent, const char *name )
   label1->setGeometry(30,100,70,20);
 
   connectto_c = new QComboBox(true,this, "connectto_c");
-  connectto_c->setGeometry(120, 97, 180, 28);
+  connectto_c->setGeometry(120, 97, 190, 28);
   connect(connectto_c, SIGNAL(activated(int)), SLOT(newdefaultaccount(int)));
 
 
   fline = new QFrame(this,"line");
   fline->setFrameStyle(QFrame::HLine |QFrame::Sunken);
-  fline->setGeometry(10,170,360,10);
+  fline->setGeometry(15,170,327,3);
 
   quit_b = new QPushButton("Quit", this, "quit");
   quit_b->setGeometry(15, 187, 70, 25);
