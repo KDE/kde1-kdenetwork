@@ -28,7 +28,7 @@ KMSender::KMSender(NNTP *_nntp)
     nntp=_nntp;
 }
 
-KMSender::KMSender(KMFolderMgr* aFolderMgr)
+KMSender::KMSender(KMFolderMgr* /*aFolderMgr*/)
 {
 }
 
