@@ -16,7 +16,9 @@
 #include <termios.h>
 #include <unistd.h>
 #include <string.h>
+
 #include <knewpanner.h>
+#include <kiconloader.h>
 
 extern KConfig *kConfig;
 extern KApplication *kApp;
@@ -178,12 +180,15 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
    */
 
   if(pix_info == 0){
-    pix_info = new QPixmap("./img/info.gif");
-    pix_star = new QPixmap("./img/star.gif");
-    pix_bball = new QPixmap("./img/blueball.gif");
-    pix_greenp = new QPixmap("./img/greenpin.gif");
-    pix_bluep = new QPixmap("./img/bluepin.gif");
-    pix_madsmile = new QPixmap("./img/madsmiley.gif");
+    KIconLoader *kicl = kApp->getIconLoader();
+    QStrList *strlist = kicl->getDirList();
+    kicl->insertDirectory(strlist->count(), kApp->kde_datadir() + "/ksirc/icons");
+    pix_info = new QPixmap(kicl->loadIcon("info.gif"));
+    pix_star = new QPixmap(kicl->loadIcon("star.gif"));
+    pix_bball = new QPixmap(kicl->loadIcon(".blueball.gif"));
+    pix_greenp = new QPixmap(kicl->loadIcon("greenpin.gif"));
+    pix_bluep = new QPixmap(kicl->loadIcon("bluepin.gif"));
+    pix_madsmile = new QPixmap(kicl->loadIcon("madsmiley.gif"));
   }
 
   /* 
@@ -800,75 +805,76 @@ ircListItem *KSircTopLevel::parse_input(QString &string)
 	// assign each mode a + or a - and an argument or "" if there is
 	// none.  After that each mode change it looked at to see if
 	// we should handle it in any special way.  
-	pos = string.find("Mode change \"", 0);
-	if(pos > 0){
-	  QStrList mode, arg;
-	  char plus[] = "+";
-	  pos += 13;
-	  int endmode = string.find(" ", pos);
-	  if(string[endmode-1] == '"')
-	    endmode--;
-	  int nextarg = endmode + 1;
-	  for(; pos < endmode; pos++){
-	    switch(string[pos]){
-	    case '+':
-	    case '-':
-	      plus[0] = string[pos];
-	      break;
-	    case 'o':
-	    case 'v':
-	    case 'b':
-	    case 'l':
-	    case 'k':
-	      mode.append(plus + string.mid(pos, 1));
-	      {
-		int end = string.find(" ", nextarg);
-		if(end == -1){
-		  cerr << "No arg: " << string << endl;
-		  arg.append("");
-		  break;
+	if(!string.contains("for user")){
+	  pos = string.find("Mode change \"", 0);
+	  if(pos > 0){
+	    QStrList mode, arg;
+	    char plus[] = "+";
+	    pos += 13;
+	    int endmode = string.find(" ", pos);
+	    if(string[endmode-1] == '"')
+	      endmode--;
+	    int nextarg = endmode + 1;
+	    for(; pos < endmode; pos++){
+	      switch(string[pos]){
+	      case '+':
+	      case '-':
+		plus[0] = string[pos];
+		break;
+	      case 'o':
+	      case 'v':
+	      case 'b':
+	      case 'l':
+	      case 'k':
+		mode.append(plus + string.mid(pos, 1));
+		{
+		  int end = string.find(" ", nextarg);
+		  if(end == -1){
+		    cerr << "No arg: " << string << endl;
+		    arg.append("");
+		  }
+		  else if(string[end-1] == '"')
+		    end--;
+		  arg.append(string.mid(nextarg, end - nextarg));
+		  nextarg = end+1;
 		}
-		if(string[end-1] == '"')
-		  end--;
-		arg.append(string.mid(nextarg, end - nextarg));
-		nextarg = end+1;
-	      }
-	      break;
-	    default:
-	      mode.append(plus + string.mid(pos, 1));
-	      arg.append("");
-	    }
-	  }
-	  // We have the modes set in mode and arg, now we go though
-	  // looking at each mode seeing if we should handle it.
-	  for(uint i = 0; i < mode.count(); i++){
-	    if(strcasecmp(mode.at(i), "+o") == 0){
-	      for(uint j = 0; j < nicks->count(); j++){
-		if(strcmp(arg.at(i), nicks->text(j)) == 0){
-		  nicks->setAutoUpdate(FALSE);
-		  nicks->removeItem(j);           // remove old nick
-		  ircListItem *irc = new ircListItem(arg.at(i), &red, nicks);
-		  irc->setWrapping(FALSE);
-		  // add new nick in sorted pass,with colour
-		  nicks->inSort(irc, TRUE);
-		  nicks->setAutoUpdate(TRUE);
-		  nicks->repaint();
-		}
+		break;
+	      default:
+		mode.append(plus + string.mid(pos, 1));
+		arg.append("");
 	      }
 	    }
-	    else if(strcasecmp(mode.at(i), "-o") == 0){
-	      for(uint j = 0; j < nicks->count(); j++){
-		if(strcmp(arg.at(i), nicks->text(j)) == 0){
-		  nicks->setAutoUpdate(FALSE);
-		  nicks->removeItem(j);     // remove old nick
-		  nicks->inSort(arg.at(i)); // add new nick in sorted pass,with colour
-		  nicks->setAutoUpdate(TRUE);
-		  nicks->repaint();
+	    // We have the modes set in mode and arg, now we go though
+	    // looking at each mode seeing if we should handle it.
+	    for(uint i = 0; i < mode.count(); i++){
+	      if(strcasecmp(mode.at(i), "+o") == 0){
+		for(uint j = 0; j < nicks->count(); j++){
+		  if(strcmp(arg.at(i), nicks->text(j)) == 0){
+		    nicks->setAutoUpdate(FALSE);
+		    nicks->removeItem(j);           // remove old nick
+		    ircListItem *irc = new ircListItem(arg.at(i), &red, nicks);
+		    irc->setWrapping(FALSE);
+		    // add new nick in sorted pass,with colour
+		    nicks->inSort(irc, TRUE);
+		    nicks->setAutoUpdate(TRUE);
+		    nicks->repaint();
+		  }
 		}
 	      }
-	    }
-	    else{
-	      //	      cerr << "Did not handle: " << mode.at(i) << " arg: " << arg.at(i)<<endl;
+	      else if(strcasecmp(mode.at(i), "-o") == 0){
+		for(uint j = 0; j < nicks->count(); j++){
+		  if(strcmp(arg.at(i), nicks->text(j)) == 0){
+		    nicks->setAutoUpdate(FALSE);
+		    nicks->removeItem(j);     // remove old nick
+		    nicks->inSort(arg.at(i)); // add new nick in sorted pass,with colour
+		    nicks->setAutoUpdate(TRUE);
+		    nicks->repaint();
+		  }
+		}
+	      }
+	      else{
+		//	      cerr << "Did not handle: " << mode.at(i) << " arg: " << arg.at(i)<<endl;
+	      }
 	    }
 	  }
 	}
