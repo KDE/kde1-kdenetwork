@@ -1,6 +1,6 @@
 SUBDIRS = Austria England France Germany Greece Hungary Italy Netherlands \
 	Norway Poland Portugal Romania Spain Sweden Switzerland Czechia \
-	HongKong SouthAfrika Japan
+	HongKong SouthAfrika Japan Brasil
 
 pkg_DATA = TEMPLATE
 
