@@ -2,7 +2,7 @@
 
 #define Inherited QDialog
 
-#include <Kconfig.h>
+#include <kconfig.h>
 
 #include "NNTPConfigDlg.moc"
 
@@ -21,12 +21,12 @@ NNTPConfigDlg::NNTPConfigDlg
 {
     setCaption( "KRN-NNTP configuration" );
     conf->setGroup("NNTP");
-    servername->setText(conf->readEntry("NNTPServer").data());
-    smtpserver->setText(conf->readEntry("SMTPServer").data());
+    servername->setText(conf->readEntry("NNTPServer"));
+    smtpserver->setText(conf->readEntry("SMTPServer"));
     connectatstart->setChecked(conf->readNumEntry("ConnectAtStart"));
     authenticate->setChecked(conf->readNumEntry("Authenticate"));
-    username->setText(conf->readEntry("Username").data());
-    password->setText(conf->readEntry("Password").data());
+    username->setText(conf->readEntry("Username"));
+    password->setText(conf->readEntry("Password"));
 
     connect (b1,SIGNAL(clicked()),SLOT(accept()));
     connect (b2,SIGNAL(clicked()),SLOT(reject()));

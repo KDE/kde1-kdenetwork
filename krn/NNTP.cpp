@@ -22,7 +22,7 @@
 #include "NNTP.h"
 
 #include <kmsgbox.h>
-#include <Kconfig.h>
+#include <kconfig.h>
 
 #include <qlist.h>
 #include <qfile.h>

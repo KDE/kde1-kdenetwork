@@ -28,7 +28,7 @@
 
 #include <ksock.h>
 #include <ktreelist.h>
-#include <Kconfig.h>
+#include <kconfig.h>
 
 
 #include <mimelib/mimepp.h>

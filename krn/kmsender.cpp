@@ -3,7 +3,7 @@
 #include "kmsender.h"
 #include "kmmessage.h"
 
-#include <Kconfig.h>
+#include <kconfig.h>
 #include <kapp.h>
 #include <kprocess.h>
 #include <klocale.h>

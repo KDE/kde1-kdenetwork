@@ -30,7 +30,7 @@
 
 #include <kapp.h>
 #include <kmsgbox.h>
-#include <Kconfig.h>
+#include <kconfig.h>
 #include <kkeyconf.h>
 
 #include "artdlg.h"

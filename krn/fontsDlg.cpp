@@ -2,7 +2,7 @@
 
 #define Inherited QDialog
 
-#include <Kconfig.h>
+#include <kconfig.h>
 #include <qfont.h>
 #include <qstrlist.h>
 #include <X11/Xlib.h>

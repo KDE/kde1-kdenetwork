@@ -7,7 +7,7 @@
 #include <qfile.h>
 #include <qstring.h>
 #include <qstrlist.h>
-#include <Kconfig.h>
+#include <kconfig.h>
 #include <kapp.h>
 #include <uudeview.h>
 #include <mimelib/mimepp.h>

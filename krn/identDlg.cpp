@@ -16,7 +16,7 @@
 //                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 #include "identDlg.h"
-#include <Kconfig.h>
+#include <kconfig.h>
 
 extern KConfig *conf;
 
@@ -35,9 +35,9 @@ IdentDlg::IdentDlg
 {
     setCaption( "KRN-Identity Configuration" );
     conf->setGroup("Identity");
-    address->setText(conf->readEntry("Address").data());
-    realname->setText(conf->readEntry("RealName").data());
-    organization->setText(conf->readEntry("Organization").data());
+    address->setText(conf->readEntry("Address"));
+    realname->setText(conf->readEntry("RealName"));
+    organization->setText(conf->readEntry("Organization"));
     QObject::connect (b1,SIGNAL(clicked()),SLOT(accept()));
     QObject::connect (b2,SIGNAL(clicked()),SLOT(reject()));
 }

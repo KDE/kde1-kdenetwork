@@ -30,7 +30,7 @@
 #include <kmsgbox.h>
 #include <kkeyconf.h>
 #include <html.h>
-#include <Kconfig.h>
+#include <kconfig.h>
 
 #include <mimelib/mimepp.h>
 

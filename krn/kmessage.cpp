@@ -32,7 +32,7 @@
 #include <unistd.h>
 #include <qpixmap.h>
 #include <qlist.h>
-#include <Kconfig.h>
+#include <kconfig.h>
 #include <kfm.h>
 #include <kurl.h>
 
