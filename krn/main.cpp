@@ -64,6 +64,18 @@ GDBM_FILE artdb;
 void checkConf();
 void expireCache();
 
+void testDir( const char *_name )
+{
+    DIR *dp;
+    QString c = getenv( "HOME" );
+    c += _name;
+    dp = opendir( c.data() );
+    if ( dp == NULL )
+	::mkdir( c.data(), S_IRWXU );
+    else
+	closedir( dp );
+}
+
 int main( int argc, char **argv )
 {
     msgSender=0;
@@ -86,11 +98,18 @@ int main( int argc, char **argv )
     
     // Create our directory. If it exists, no problem
     // Should do some checking, though
-    
-    QString c=getenv ("HOME");
-    c=c+"/.kde";
-    mkdir (c.data(),S_IREAD|S_IWRITE|S_IEXEC);
-    krnpath=c+"/krn/";
+
+    testDir( "/.kde" );
+    testDir( "/.kde/share" );    
+    testDir( "/.kde/share/config" );
+    testDir( "/.kde/share/apps" );
+    testDir( "/.kde/share/apps/krn" );
+    testDir( "/.kde/share/apps/krn/cache" );    
+    testDir( "/.kde/share/apps/krn/groupinfo" );    
+    testDir( "/.kde/share/apps/krn/outgoing" );    
+
+    QString c = getenv ("HOME");
+    krnpath=c+"/.kde/share/apps/krn/";
     mkdir (krnpath.data(),S_IREAD|S_IWRITE|S_IEXEC);
     cachepath=krnpath+"/cache/";
     mkdir (cachepath.data(),S_IREAD|S_IWRITE|S_IEXEC);
