@@ -188,14 +188,20 @@ void KMHeaders::setFolder (KMFolder *aFolder)
       sort();
     }
 
-    updateMessageList();
-
     if (mFolder)
     {
       id = findUnread(TRUE, 0, TRUE);
       if (id >= 0)
+	      setMsgRead(id);
+	  else
+          setMsgRead(mCurrentItem);			
+    }
+    updateMessageList();
+
+    if (mFolder)
+    {
+      if (id >= 0)
       {
-	setMsgRead(id);
 	setCurrentItem(id);
 	makeHeaderVisible();
 	updateItem(id, FALSE);
@@ -204,7 +210,6 @@ void KMHeaders::setFolder (KMFolder *aFolder)
       {
 	setTopItem(mTopItem);
 	setCurrentItem(mCurrentItem);
-	setMsgRead(mCurrentItem);
 	updateItem(mCurrentItem, FALSE);
       }
     }
