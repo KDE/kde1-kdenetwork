@@ -440,24 +440,24 @@ msgid "Network"
 msgstr "&Sie»"
 
 #: kmsettings.cpp:311
-#, fuzzy
 msgid "Fonts"
-msgstr "obsahuje"
+msgstr "Písma"
 
 #: kmsettings.cpp:316
 msgid "Message Body Font:"
-msgstr ""
+msgstr "Písmo tela správy:"
 
 #: kmsettings.cpp:321
-#, fuzzy
 msgid "Message List Font:"
-msgstr "Jednoduchá textová správa"
+msgstr "Písmo zoznamu správ:"
 
 #: kmsettings.cpp:325
 msgid ""
 "Changing fonts currently only occurs when a new\n"
 "window is opened or kmail is restarted"
 msgstr ""
+"Zmena fontu momentálne nastane len pri zovuotvorení\n"
+"okna alebo znovuspustení kmailu"
 
 #: kmsettings.cpp:341 kmsettings.cpp:411
 msgid "Appearance"
@@ -561,12 +561,11 @@ msgstr "vyprázdni» kô¹ pri ukonèení"
 
 #: kmsettings.cpp:556
 msgid "Message Body Font"
-msgstr ""
+msgstr "Písmo tela správy"
 
 #: kmsettings.cpp:568
-#, fuzzy
 msgid "Message List Font"
-msgstr "Jednoduchá textová správa"
+msgstr "Písmo zoznamu správ"
 
 #: kmsettings.cpp:618
 msgid "Select Account"
@@ -641,14 +640,12 @@ msgid "Subject"
 msgstr "Predmet"
 
 #: kmheaders.cpp:209
-#, fuzzy
 msgid "Unknown"
-msgstr "Neznáma chyba"
+msgstr "Neznámy"
 
 #: kmheaders.cpp:212
-#, fuzzy
 msgid "No Subject"
-msgstr "Predmet"
+msgstr "Bez predmetu"
 
 #: kmheaders.cpp:259
 msgid "order of arrival"
@@ -950,10 +947,8 @@ msgstr ""
 "nastavený ISpell."
 
 #: kmfolder.cpp:144
-#, fuzzy, c-format
 msgid "Folder `%s' changed. Recreating index."
-msgstr ""
-"Obsah prieèinka '%s' sa zmenil.\n"
+msgstr "Prieèinok '%s' sa zmenil.\n"
 "Vytváram znovu indexový súbor."
 
 #: kmfolder.cpp:351
@@ -1303,7 +1298,6 @@ msgstr ""
 "%s"
 
 #: kmfolderseldlg.cpp:29
-#, fuzzy
 msgid "Select folder"
 msgstr "Vybra» prieèinok"
 
