@@ -187,8 +187,8 @@ install: all
 	$(INSTALL_DATA) krn.xpm $(prefix)/share/icons
 	$(INSTALL_DIR) $(BINDIR)
 	$(INSTALL) $(TARGET) $(BINDIR)
-	$(INSTALL_DIR) $(prefix)/share/applnk
-	$(INSTALL_DATA) Krn.kdelnk $(prefix)/share/applnk
+	$(INSTALL_DIR) $(prefix)/share/applnk/Utilities
+	$(INSTALL_DATA) Krn.kdelnk $(prefix)/share/applnk/Utilities
 	(cd pics && $(MAKE) install)
 	(cd docs && $(MAKE) install)
 
