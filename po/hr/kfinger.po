@@ -1,13 +1,16 @@
+# Copyright (C) 1998 Free Software Foundation, Inc.
+# Vladimir Vuksan <vuksan@veus.hr>, 1998
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-10-12 14:17+0200\n"
-"PO-Revision-Date: 1998-03-15 20:00-0500\n"
+"Project-Id-Version: kdenetwork\n"
+"POT-Creation-Date: 1998-05-13 12:05+0200\n"
+"PO-Revision-Date: 1998-10-15 15:00-0500\n"
 "Last-Translator: Vladimir Vuksan <vuksan@veus.hr>\n"
 "Language-Team: Croatian\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
-"Content-Transfer-Encoding: iso-8859-2\n"
+"Content-Type: text/plain; charset=iso-8859-2\n"
+"Content-Transfer-Encoding: 8bit\n"        
 "Xgettext-Options: -ktranslate\n"
 "Files: finger.cpp kfinger.cpp\n"
 
@@ -28,9 +31,8 @@ msgid "Setup"
 msgstr "Postava"
 
 #: kfinger.C:19
-#, fuzzy
 msgid "Save Options"
-msgstr "&Opcije"
+msgstr "Spremi opcije"
 
 #: kfinger.C:38
 msgid "Finger"
@@ -46,10 +48,9 @@ msgstr "Razgovaraj..."
 
 #: kfinger.C:42
 msgid "AutoFinger On/Off"
-msgstr ""
+msgstr "Uklj./isklj. AutoFinger"
 
 #: kfinger.C:54
-#, fuzzy
 msgid ""
 "Welcome to KDE Finger \n"
 "program by A.Rizzi rizzi@kde.org\n"
@@ -74,13 +75,12 @@ msgid "Finger result for : %s@%s"
 msgstr "Rezultat fingera za : %s@%s"
 
 #: kfinger.C:301
-#, fuzzy
 msgid ""
 "Kfinger 0.7.0\n"
 "(c) by Andrea Rizzi\n"
 "rizzi@kde.org"
 msgstr ""
-"Kfinger 0.3.2\n"
+"Kfinger 0.7.0\n"
 "(c) Andrea Rizzi\n"
 "bilibao@ouverture.it"
 
@@ -113,17 +113,17 @@ msgid "Timed finger"
 msgstr "Mjereni finger"
 
 #: kfinger.C:459 kfinger.C:644
-#, fuzzy, c-format
+#, c-format
 msgid "Finger wait: %d\""
 msgstr "Finger èekanje: %d"
 
 #: kfinger.C:464
 msgid "Talk Command "
-msgstr ""
+msgstr "Naredba za razgovor"
 
 #: kfinger.C:474
 msgid "Misc"
-msgstr ""
+msgstr "Razno"
 
 #: kfinger.C:479 kfinger.C:491
 msgid "Finger Output"
@@ -135,7 +135,7 @@ msgstr "Finger poslu¾itelj"
 
 #: kfinger.C:487 kfinger.C:499
 msgid "Fixed"
-msgstr "Fiksni "
+msgstr "Jednoliki"
 
 #: kfinger.C:495
 msgid "Finger User"
@@ -204,33 +204,3 @@ msgstr "Spremi & Zavr¹i"
 #: kfinger.C:851
 msgid "Output parameters "
 msgstr "Izlazni parametri "
-
-#~ msgid "Quit"
-#~ msgstr "Zavr¹i"
-
-#~ msgid "Help"
-#~ msgstr "Pomoæ"
-
-#~ msgid "About"
-#~ msgstr "O programu"
-
-#~ msgid "&File"
-#~ msgstr "&Datoteka"
-
-#~ msgid "&Help"
-#~ msgstr "&Pomoæ"
-
-#~ msgid "Settings"
-#~ msgstr "Postava"
-
-#~ msgid "&Remove"
-#~ msgstr "&Ukloni"
-
-#~ msgid "Time"
-#~ msgstr "Vrijeme"
-
-#~ msgid "Cancel"
-#~ msgstr "Poni¹ti"
-
-#~ msgid "Ok"
-#~ msgstr "U redu"

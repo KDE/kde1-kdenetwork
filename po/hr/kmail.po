@@ -229,7 +229,7 @@ msgstr "I&sprazni"
 
 #: kmfilterdlg.cpp:147 kmmainwin.cpp:917
 msgid "New"
-msgstr ""
+msgstr "Nova"
 
 #: kmmainwin.cpp:918
 msgid "Unread"
@@ -253,16 +253,15 @@ msgstr "Poslana"
 
 #: kmmainwin.cpp:926
 msgid "&Next"
-msgstr ""
+msgstr "&Slijedeæa"
 
 #: kmmainwin.cpp:928
 msgid "Next unread"
 msgstr "Slijedeæa neproèitana"
 
 #: kmmainwin.cpp:930
-#, fuzzy
 msgid "&Previous"
-msgstr "Prethodna neproèitana"
+msgstr "&Prethodna"
 
 #: kmmainwin.cpp:932
 msgid "Previous unread"
@@ -374,9 +373,8 @@ msgstr "Inicijalizacija..."
 
 #: kmfolderdia.cpp:38 kmmsgpartdlg.cpp:62 kmsettings.cpp:176
 #: kmsettings.cpp:869
-#, fuzzy
 msgid "Name:"
-msgstr "Korisnièko Ime:"
+msgstr "Ime:"
 
 #: kmcomposewin.cpp:1456 kmfolderdia.cpp:44 kmfolderdia.cpp:120
 msgid "unnamed"
@@ -452,7 +450,7 @@ msgstr "Korisnièki raèuni: (dodajte barem jedan!)"
 
 #: kmcomposewin.cpp:135 kmsettings.cpp:269
 msgid "Name"
-msgstr ""
+msgstr "Ime"
 
 #: kmcomposewin.cpp:138 kmsettings.cpp:270
 msgid "Type"
@@ -592,7 +590,7 @@ msgstr "Po¹alji odlazeæe poruke prilikom provjere po¹te"
 
 #: kmsettings.cpp:556
 msgid "Misc"
-msgstr ""
+msgstr "Razno"
 
 #: kmsettings.cpp:580
 msgid "Message Body Font"
@@ -619,9 +617,8 @@ msgid "Choose Signature File"
 msgstr "Odaberite datoteku s potpisom"
 
 #: kmsettings.cpp:861
-#, fuzzy
 msgid "Type:"
-msgstr "Vrsta"
+msgstr "Vrsta:"
 
 #: kmsettings.cpp:874
 msgid "Local Account"
@@ -649,7 +646,7 @@ msgstr "Pobri¹i po¹tu sa poslu¾itelja"
 
 #: kmsettings.cpp:907
 msgid "Enable interval Mail checking"
-msgstr ""
+msgstr "Podesi interval za provjeru po¹te"
 
 #: kmsettings.cpp:921
 msgid "Store new mail in account:"
@@ -684,9 +681,8 @@ msgid "Subject"
 msgstr "Tema"
 
 #: kmheaders.cpp:42
-#, fuzzy
 msgid "Date"
-msgstr "Datum: "
+msgstr "Datum"
 
 #: kmheaders.cpp:187
 #, c-format
@@ -745,11 +741,11 @@ msgstr "Ne mogu spremiti poruku(e)."
 
 #: kmcomposewin.cpp:123
 msgid "KMail Composer"
-msgstr "KMail Sastavljaè Poruka"
+msgstr "Sastavljaè Poruka"
 
 #: kmcomposewin.cpp:136
 msgid "Size"
-msgstr ""
+msgstr "Velièina"
 
 #: kmcomposewin.cpp:137
 msgid "Encoding"
@@ -896,9 +892,8 @@ msgid "&Attach"
 msgstr "&Prikvaèi"
 
 #: kmcomposewin.cpp:549
-#, fuzzy
 msgid "Send message"
-msgstr "Slanje poruka:"
+msgstr "Po¹alji poruku"
 
 #: kmcomposewin.cpp:573
 msgid "Cut selection"
@@ -994,9 +989,8 @@ msgid "Subject:"
 msgstr "Tema:"
 
 #: kmcomposewin.cpp:1478
-#, fuzzy
 msgid "Date:"
-msgstr "Datum: "
+msgstr "Datum:"
 
 #: kmcomposewin.cpp:1587
 msgid "KMail: Spellcheck"
@@ -1507,18 +1501,18 @@ msgid "Bad pass Phrase; couldn't decrypt"
 msgstr "Lo¹a Lozinka; ne mogu de¹ifrirati"
 
 #: kpgp.cpp:873
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not find public keys matching the\n"
 "userid(s) %s. These persons won't be able\n"
 "to read the message."
 msgstr ""
-"javni kljuè za %s nije prnaðen.\n"
+"Javni kljuè za %s nije pronaðen.\n"
 "Primaoc neæe moæi de¹ifrirati poruku."
 
 #: kpgp.cpp:885
 msgid "Could not find public keys for some persons.\n"
-msgstr ""
+msgstr "Nisam mogao naæi javne kljuèeve za neke primaoce.\n"
 
 #: kpgp.cpp:898
 msgid "Bad pass Phrase; couldn't sign"
