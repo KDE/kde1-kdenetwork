@@ -36,6 +36,7 @@
 #include "kdecode.h"
 #include <mimelib/mimepp.h>
 
+#include <gdbm.h>
 
 Groupdlg  *main_widget;
 KConfig *conf;
@@ -47,6 +48,8 @@ ArticleDict artSpool;
 QString krnpath,cachepath,artinfopath,groupinfopath,pixpath,dbasepath;
 
 KDecode *decoder;
+
+GDBM_FILE artdb;
 
 void checkConf();
 
@@ -77,17 +80,18 @@ int main( int argc, char **argv )
     mkdir (c.data(),S_IREAD|S_IWRITE|S_IEXEC);
     krnpath=c+"/krn/";
     mkdir (krnpath.data(),S_IREAD|S_IWRITE|S_IEXEC);
-    artinfopath=krnpath+"/artinfo/";
-    mkdir (artinfopath.data(),S_IREAD|S_IWRITE|S_IEXEC);
     cachepath=krnpath+"/cache/";
     mkdir (cachepath.data(),S_IREAD|S_IWRITE|S_IEXEC);
     groupinfopath=krnpath+"/groupinfo/";
     mkdir (groupinfopath.data(),S_IREAD|S_IWRITE|S_IEXEC);
 
+    // Create the articles database
+
+    artinfopath=krnpath+"/artinfo.db";
+    artdb=gdbm_open(artinfopath.data(),0,GDBM_WRCREAT,448,0);
+    
     Groupdlg k;
     main_widget = &k;
-
-    
     
     a.setMainWidget( (QWidget *) &k );
     
@@ -97,6 +101,8 @@ int main( int argc, char **argv )
     k.show();
     
     a.exec();
+
+    gdbm_close(artdb);
 
 }
 

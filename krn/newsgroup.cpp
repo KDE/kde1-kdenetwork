@@ -21,9 +21,13 @@
 #include <qstrlist.h>
 #include <qlist.h>
 
+#include <gdbm.h>
+
 extern ArticleDict artSpool;
 
 extern QString krnpath,cachepath,artinfopath,groupinfopath;
+
+extern GDBM_FILE artdb;
 
 ////////////////////////////////////////////////////////////////////
 // Article class. Represents an article
@@ -130,58 +134,58 @@ void Article::formHeader(QString *s)
 void Article::save()
 //stores the article info and data into the cache
 {
-    QString p=artinfopath+ID;
-    QFile f(p.data());
-    if(f.open (IO_WriteOnly))
+
+    datum key;
+    key.dptr=ID.data();
+    key.dsize=ID.length()+1;
+
+    QString _content;
+    _content+=Subject+"\n";
+    _content+=Lines+"\n";
+    _content+=From+"\n";
+    _content+=Date+"\n";
+    if (isRead())
+        _content+="1\n";
+    else
+        _content+="0\n";
+    for (char *iter=Refs.first();iter!=0;iter=Refs.next())
     {
-        QTextStream st(&f);
-        st<<ID<<"\n";
-        st<<Subject<<"\n";
-        st<<Lines<<"\n";
-        st<<From<<"\n";
-        st<<ID<<"\n";
-        st<<Date<<"\n";
-        st<<isRead()<<"\n";
-        st<<isAvailable()<<"\n";
-        for (char *iter=Refs.first();iter!=0;iter=Refs.next())
-        {
-            st<<iter<<"\n";
-        }
-        f.close();
+        _content+=iter;
+        _content+="\n";
     }
+    datum content;
+    content.dptr=_content.data();
+    content.dsize=_content.length()+1;
+    gdbm_store(artdb,key,content,GDBM_REPLACE);
+    
 }
 void Article::load()
 //gets the article info and data from the cache
 {
+    datum key;
+    datum content;
+
+    key.dptr=ID.data();
+    key.dsize=ID.length()+1;
+
+    content=gdbm_fetch(artdb,key);
+
     QString s;
-    QString p=artinfopath+ID;
-    QFile f(p.data());
-    if(f.open (IO_ReadOnly))
+
+    Subject=strtok ((char *)content.dptr,"\n");
+    Lines=strtok(NULL,"\n");
+    From=strtok(NULL,"\n");
+    Date=strtok(NULL,"\n");
+    s=strtok(NULL,"\n");
+    if (s=="1")
+        isread=true;
+    char *p;
+    while (1)
     {
-        QTextStream st(&f);
-        ID=st.readLine();
-        Subject=st.readLine();
-        Lines=st.readLine();
-        From=st.readLine();
-        ID=st.readLine();
-        Date=st.readLine();
-        if (st.readLine()=="1")
-            isread=true;
-        else
-            isread=false;
-        if (st.readLine()=="1")
-            isavail=true;
-        else
-            isavail=false;
-        Refs.clear();
-        while (1)
-        {
-            s=st.readLine();
-            if (s.isEmpty())
-                break;
-            Refs.append(s.data());
-        }
-        f.close();
+        p=strtok(NULL,"\n");
+        if (!p)
+            break;
+        Refs.append(p);
     }
 }
 

@@ -23,6 +23,7 @@
 #include <qlist.h>
 #include <qfile.h>
 #include <qtstream.h>
+#include <qapp.h>
 
 extern QString krnpath,cachepath,artinfopath;
 
@@ -43,7 +44,6 @@ void NNTPObserver::Notify()
     client->partialResponse+=client->mTextResponse.c_str();
     if (client->reportBytes)
     {
-        debug ("emitting newStatus bytes");
         char *buffer=new char[100];
         sprintf (buffer,"Received %d bytes",client->byteCounter);
         emit client->newStatus(buffer);
