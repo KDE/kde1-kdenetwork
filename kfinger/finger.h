@@ -1,23 +1,27 @@
 #ifndef __PROTOCOL
 #define __PROTOCOL
 #include <qstring.h>
+#include <qsocketnotifier.h>
 #include <qobject.h>
 #include <ksock.h>
 class FingerProtocol : public QObject {
 Q_OBJECT
 	public:
-                FingerProtocol(QString host,int port,char * buff);
+                FingerProtocol(char * buff);
 		~FingerProtocol();
-		int broken;
-                void writeString(QString s);
+                int  writeString(QString st);
+		bool stopFlag;
+		bool connection(  const char * host,int port); 
+
 	protected:
+                QSocketNotifier *sockNotif;
 		char *s;
-		KSocket *socket;    
+		int  sock;          
 	signals:
 	  void update();
           void finish();	
         public slots:
-          void readBuff(KSocket *);
+          void readBuff( int);
       };
 
 #endif

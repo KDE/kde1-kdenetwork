@@ -1,11 +1,11 @@
 /*
-    KFinger - ver 0.8.0
+    KFinger - ver 0.8.1
     KDE project - kdenetwork
     
     kfinger.C : Main Widget
     
     (c) Andrea Rizzi <rizzi@kde.org>
-	5 Dec 1998
+	14 Apr 1999
     
     License: GPL
 
@@ -35,7 +35,7 @@ protocol = 0L;
     options->insertItem(klocale->translate("Setup"), this, SLOT(setup()) );
     options->insertItem(klocale->translate("&Save Options"), this, SLOT(save()));
    QPopupMenu *help = kapp->getHelpMenu( TRUE,
-    i18n("kfinger 0.8.0\n\n(c) Andrea Rizzi (rizzi@kde.org)"));
+    i18n("kfinger 0.8.1\n\n(c) Andrea Rizzi (rizzi@kde.org)"));
   menubar->insertItem( klocale->translate("&File"), file );
   menubar->insertItem( klocale->translate("&Options"), options  );
   menubar->insertSeparator();
@@ -255,17 +255,20 @@ void NetutilView::button1Clicked()
   le->clear();
   toolBar->setItemEnabled(0,FALSE);
   toolBar->setItemEnabled(1,TRUE);
+      qApp->processEvents();
+      qApp->flushX();
+
   QString sstr,sstr2;
   sstr2.sprintf("%s",ed2Combo->currentText());  //server name
   sstr.sprintf("%s\n\r",ed3Combo->currentText()); //user name
   
   if (sstr[0]==0) sstr[0]=' ';
-  protocol=new FingerProtocol(sstr2,79,sstr1);  // 79 : finger port
-
+  protocol=new FingerProtocol( sstr1);  
+  
   connect(protocol,SIGNAL(finish()),this,SLOT(stopIt()));
   connect(protocol,SIGNAL(update()),this,SLOT(writeIt()));
-
-  if (protocol->broken) {
+ if (!protocol->connection((const char *)sstr2,79)) // 79 : finger port
+  {
     sstr2.sprintf(klocale->translate("Error on server : %s"),ed2Combo->currentText());
     statusBar->changeItem((const char*)sstr2,1);
       if(protocol!=NULL)
@@ -275,7 +278,13 @@ void NetutilView::button1Clicked()
     toolBar->setItemEnabled(0,TRUE);
   } else {
     sstr2.sprintf("%s\n\r",ed3Combo->currentText());
-    protocol->writeString(sstr2);
+    if( protocol->writeString(sstr2)==111) 
+    {
+    
+    sstr2.sprintf(klocale->translate("Connection refused by  %s"),ed2Combo->currentText());
+    statusBar->changeItem((const char*)sstr2,1);
+    
+    }
  }
 
 }
@@ -283,8 +292,7 @@ void NetutilView::button1Clicked()
 void NetutilView::writeIt()
 {
  QString sstr;
- le->append(sstr1);
-// QDateTime(QDateTime::currentDateTime()))     
+ le->setText(sstr1);
  sstr.sprintf(klocale->translate("Finger  %s@%s   --   %s"),ed3Combo->currentText(),ed2Combo->currentText(),(const char *)(QDateTime::currentDateTime()).toString());
  statusBar->changeItem(sstr,1);
 }
@@ -292,8 +300,12 @@ void NetutilView::writeIt()
 void NetutilView::stopIt()
 {
 if(protocol!=NULL)
-delete protocol;
+{ 
+protocol->stopFlag=FALSE;
+//delete protocol;
+}
 protocol = 0L;
+
 toolBar->setItemEnabled(0,TRUE);
 toolBar->setItemEnabled(1,FALSE);
 }
@@ -302,7 +314,7 @@ toolBar->setItemEnabled(1,FALSE);
 
 void NetutilView::about()
  {
-  KMsgBox::message(this,klocale->translate("About"),klocale->translate("Kfinger 0.8.0\n(c) by Andrea Rizzi\nrizzi@kde.org"));
+  KMsgBox::message(this,klocale->translate("About"),klocale->translate("Kfinger 0.8.1\n(c) by Andrea Rizzi\nrizzi@kde.org"));
  }
 
 void NetutilView::HtmlHelp()
@@ -906,7 +918,7 @@ close();
 
 int main( int argc, char **argv )
 {
-    sstr1=(char *) malloc(5000);  // Try to change it if you recieve a segmentation fault
+    sstr1=(char *) malloc(8000);  // Try to change it if you recieve a segmentation fault
     KApplication *a=new KApplication(argc,argv,QString("kfinger"));
     NetutilView  *w = new NetutilView;
     a->setMainWidget( w );
