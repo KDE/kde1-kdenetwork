@@ -87,6 +87,7 @@ ConnectWidget::ConnectWidget(QWidget *parent, const char *name)
   pausing = false;
   modem_in_connect_state = false;
   scriptindex = 0;
+  readbuffer = "";
   myreadbuffer = "";
   scanning = false;
   scanvar = "";
@@ -841,8 +842,8 @@ void ConnectWidget::readtty() {
       scanning = false;
 
       int vstart = scanbuffer.find( scanstr ) + scanstr.length();
-      QString tmp = scanbuffer.mid( vstart, readbuffer.length() - vstart);
-      scanvar = tmp.stripWhiteSpace().copy();
+      scanvar = scanbuffer.mid( vstart, scanbuffer.length() - vstart);
+      scanvar = scanvar.stripWhiteSpace();
 
       // Show the Variabel content in the debug window
       QString sv = klocale->translate("Scan Var: ");
@@ -966,6 +967,7 @@ void ConnectWidget::debugbutton() {
 void ConnectWidget::setScan(const char *n) {
   scanning = true;
   scanstr = n;
+  scanbuffer = "";
 
   QString ts = klocale->translate("Scanning: ");
   ts += n;
