@@ -12,9 +12,9 @@ Dialog {
 }
 WidgetLayout {
 InitialPos {-1 -1}
-Size {230 210}
-MinSize {230 210}
-MaxSize {230 210}
+Size {230 250}
+MinSize {230 250}
+MaxSize {230 250}
 Grid {10}
 
 Label {
@@ -104,7 +104,7 @@ PushButton {
 		Text {Ok}
 		AutoRepeat {FALSE}
 		AutoResize {FALSE}
-		Rect {120 170 100 30}
+		Rect {120 210 100 30}
 		Name {PushButton_1}
 		Signal {[Protected]  clicked --> ok  ()}
 		LayoutStatus {NoLayout}
@@ -118,9 +118,29 @@ PushButton {
 		Text {Cancel}
 		AutoRepeat {FALSE}
 		AutoResize {FALSE}
-		Rect {10 170 100 30}
+		Rect {10 210 100 30}
 		Name {PushButton_2}
 		Signal {[Protected]  clicked --> cancel  ()}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+User {
+		UserClassHeader {kcolorbtn.h}
+		UserClassName {KColorButton}
+		Rect {120 170 100 30}
+		Name {User_5}
+		Variable {ColourBackground}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+Label {
+		Text {Background}
+		AutoResize {FALSE}
+		Margin {-1}
+		Rect {10 170 100 30}
+		Name {Label_5}
 		LayoutStatus {NoLayout}
 		MinimumSize {10 10}
 		MaximumSize {32767 32767}

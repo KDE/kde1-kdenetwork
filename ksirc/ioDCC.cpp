@@ -226,7 +226,7 @@ void KSircIODCC::sirc_receive(QString str)
   
 }
 
-void KSircIODCC::control_message(QString)
+void KSircIODCC::control_message(int, QString)
 {
 }
 

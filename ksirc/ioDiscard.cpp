@@ -19,6 +19,6 @@ void KSircIODiscard::sirc_receive(QString)
 {
 }
 
-void KSircIODiscard::control_message(QString)
+void KSircIODiscard::control_message(int, QString)
 {
 }

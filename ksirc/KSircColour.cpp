@@ -39,6 +39,22 @@ KSircColour::KSircColour
 	ColourInfo->setColor( *kSircConfig->colour_info );
 	ColourChan->setColor( *kSircConfig->colour_chan );
 	ColourError->setColor( *kSircConfig->colour_error );
+	if(kSircConfig->colour_background == 0){
+	  kConfig->setGroup("Colours");
+	  kSircConfig->colour_background = new QColor(kConfig->readColorEntry("Background", new QColor(colorGroup().mid())));
+	}
+	ColourBackground->setColor( *kSircConfig->colour_background );
+
+	connect(ColourText, SIGNAL(changed(const QColor &)),
+		this, SLOT(colourChange(const QColor &)));
+	connect(ColourInfo, SIGNAL(changed(const QColor &)),
+		this, SLOT(colourChange(const QColor &)));
+	connect(ColourChan, SIGNAL(changed(const QColor &)),
+		this, SLOT(colourChange(const QColor &)));
+	connect(ColourError, SIGNAL(changed(const QColor &)),
+		this, SLOT(colourChange(const QColor &)));
+	connect(ColourBackground, SIGNAL(changed(const QColor &)),
+		this, SLOT(colourChange(const QColor &)));
 }
 
 
@@ -56,12 +72,14 @@ void KSircColour::ok()
   *kSircConfig->colour_info = ColourInfo->color();
   *kSircConfig->colour_chan = ColourChan->color();
   *kSircConfig->colour_error = ColourError->color();
+  *kSircConfig->colour_background = ColourBackground->color();
   close(1);
   kConfig->setGroup("Colours");
   kConfig->writeEntry("text", *kSircConfig->colour_text);
   kConfig->writeEntry("info", *kSircConfig->colour_info);
   kConfig->writeEntry("chan", *kSircConfig->colour_chan);
   kConfig->writeEntry("error", *kSircConfig->colour_error);
+  kConfig->writeEntry("Background", *kSircConfig->colour_background);
   kConfig->sync();
 
 }
@@ -69,4 +87,14 @@ void KSircColour::ok()
 void KSircColour::cancel()
 {
   close(1);
+}
+
+void KSircColour::colourChange(const QColor &)
+{
+  *kSircConfig->colour_text = ColourText->color();
+  *kSircConfig->colour_info = ColourInfo->color();
+  *kSircConfig->colour_chan = ColourChan->color();
+  *kSircConfig->colour_error = ColourError->color();
+  *kSircConfig->colour_background = ColourBackground->color();
+  emit update();
 }

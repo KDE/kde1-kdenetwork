@@ -39,7 +39,7 @@ public:
   virtual ~KSircIODCC();
 
   virtual void sirc_receive(QString);
-  virtual void control_message(QString);
+  virtual void control_message(int, QString);
 
 protected slots:
   void cancelTransfer(QString);

@@ -289,7 +289,10 @@ void servercontroller::autocreate()
 
 void servercontroller::colour_prefs()
 {
-  (new KSircColour())->show();
+  KSircColour *kc = new KSircColour();
+  connect(kc, SIGNAL(update()),
+	  this, SLOT(configChange()));
+  kc->show();
 }
 
 void servercontroller::filter_rule_editor()
@@ -312,14 +315,17 @@ void servercontroller::font_prefs()
 void servercontroller::font_update(const QFont &font)
 {
   kSircConfig->defaultfont = font;
-  QString message;
-  message.setNum(REREAD_CONFIG);
-  QDictIterator<KSircProcess> it( proc_list );
-  while(it.current()){
-    it.current()->getWindowList()["!all"]->control_message(message);
-    ++it;
-  }
+  configChange();
   kConfig->setGroup("GlobalOptions");
   kConfig->writeEntry("MainFont", kSircConfig->defaultfont);
   kConfig->sync();
+}
+
+void servercontroller::configChange()
+{
+  QDictIterator<KSircProcess> it( proc_list );
+  while(it.current()){
+    it.current()->getWindowList()["!all"]->control_message(REREAD_CONFIG, "");
+    ++it;
+  }
 }

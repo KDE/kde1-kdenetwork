@@ -76,7 +76,7 @@ public slots:
 //  void sirc_stop(bool STOP = FALSE);
   void sirc_line_return(); 
 
-  void control_message(QString str); 
+  void control_message(int, QString); 
 
 protected slots:
    void URLSelected(const char *, int); 

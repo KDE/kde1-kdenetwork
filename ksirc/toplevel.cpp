@@ -96,6 +96,11 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
 
   //  mainw = new QListBox(f, "mle");          // Make a flat QListBox.  I want the
 
+  if(kSircConfig->colour_background == 0){
+    kConfig->setGroup("Colours");
+    kSircConfig->colour_background = new QColor(kConfig->readColorEntry("Background", new QColor(colorGroup().mid())));
+  }
+
   pan = new KNewPanner(f, "knewpanner", KNewPanner::Vertical,
 		       KNewPanner::Absolute, width()-1000);
   gm2->addWidget(pan, 10);
@@ -111,7 +116,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname=0L, const char * n
   QColorGroup cg = QColorGroup(colorGroup().foreground(), colorGroup().mid(), 
     			       colorGroup().light(), colorGroup().dark(),
   			       colorGroup().midlight(), 
-  			       colorGroup().text(), colorGroup().mid()); 
+  			       colorGroup().text(), *kSircConfig->colour_background); 
   mainw->setPalette(QPalette(cg,cg,cg));   // colours.  Font it also hard coded
   mainw->setMinimumWidth(width() - 100);
   //  gm2->addWidget(mainw, 10);               // which is bad bad.
@@ -1004,48 +1009,40 @@ void KSircTopLevel::lostFocus()
 
 }
 
-void KSircTopLevel::control_message(QString str)
+void KSircTopLevel::control_message(int command, QString str)
 {
-  QString num;
-  int command;
-
-  num = str.mid(0, 3);
-  command = num.toInt();
-
-  if(command){
-    int pos2;
-    QString s;
-    switch(command){
-    case CHANGE_CHANNEL: // 001 is defined as changeChannel
-      s = str.mid(3, str.length() - 3);
-      //      s.remove(s.length()-1, 1);
-      pos2 = s.find(' ', 0);
-      if(pos2 > 0)
-	channel_name = qstrdup(s.mid(0, pos2).data());
-      else
-	channel_name = qstrdup(s.data());
-      //cerr << "Channel name now: " << channel_name << endl;
-      have_focus = 0;
-      setCaption(channel_name);
-      emit changeChannel("!default", channel_name);
-      mainw->scrollToBottom();
-      break;
-    case STOP_UPDATES:
-      Buffer = TRUE;
-      break;
-    case RESUME_UPDATES:
-      Buffer = FALSE;
-      if(LineBuffer->isEmpty() == FALSE)
-	sirc_receive(QString(""));
-      break;
-    case REREAD_CONFIG:
-      mainw->setFont(kSircConfig->defaultfont);
-      emit changeSize();
-      repaint(TRUE);
-      break;
-    default:
-      cerr << "Unkown control message: " << str << endl;
+  switch(command){
+  case CHANGE_CHANNEL: // 001 is defined as changeChannel
+    channel_name = qstrdup(str.data());
+    have_focus = 0;
+    setCaption(channel_name);
+    emit changeChannel("!default", channel_name);
+    mainw->scrollToBottom();
+    break;
+  case STOP_UPDATES:
+    Buffer = TRUE;
+    break;
+  case RESUME_UPDATES:
+    Buffer = FALSE;
+    if(LineBuffer->isEmpty() == FALSE)
+      sirc_receive(QString(""));
+    break;
+  case REREAD_CONFIG:
+    mainw->setFont(kSircConfig->defaultfont);
+    emit changeSize();
+    {
+      QColorGroup cg = QColorGroup(colorGroup().foreground(), colorGroup().mid(), 
+				   colorGroup().light(), colorGroup().dark(),
+				   colorGroup().midlight(), 
+				   colorGroup().text(), *kSircConfig->colour_background); 
+      mainw->setPalette(QPalette(cg, cg, cg));
+      nicks->setPalette(QPalette(cg, cg, cg));
+      linee->setPalette(QPalette(cg, cg, cg));
     }
+    repaint(TRUE);
+    break;
+  default:
+    cerr << "Unkown control message: " << str << endl;
   }
 }
 

@@ -10,7 +10,7 @@ class global_config {
   QColor *colour_chan;
   QColor *colour_error;
 
-  QColor *background;
+  QColor *colour_background;
 
   QFont defaultfont;
 

@@ -18,7 +18,7 @@ public:
 
   virtual void sirc_receive(QString str) = 0;
 
-  virtual void control_message(QString str) = 0;
+  virtual void control_message(int, QString) = 0;
 
   bool getBroadcast();
   void setBroadcast(bool bd);

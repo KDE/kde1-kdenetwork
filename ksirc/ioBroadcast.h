@@ -19,7 +19,7 @@ public:
   virtual ~KSircIOBroadcast();
 
   virtual void sirc_receive(QString str);
-  virtual void control_message(QString str);
+  virtual void control_message(int, QString);
 
 private:
   KSircProcess *proc;

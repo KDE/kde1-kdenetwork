@@ -65,6 +65,8 @@ int main( int argc, char ** argv )
   kSircConfig->colour_chan = new QColor(kConfig->readColorEntry("chan", &green));
   kSircConfig->colour_error = new QColor(kConfig->readColorEntry("error", &red));
 
+  kSircConfig->colour_background = 0;
+
   kConfig->setGroup("GlobalOptions");
   kSircConfig->defaultfont = kConfig->readFontEntry("MainFont", new QFont("fixed"));
 

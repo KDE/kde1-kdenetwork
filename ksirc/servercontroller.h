@@ -53,6 +53,7 @@ public slots:
     virtual void font_prefs();
     virtual void font_update(const QFont&);
     virtual void filter_rule_editor();
+    virtual void configChange();
 
 private:
     // Hold a list of all KSircProcess's for access latter.  Index by server 

@@ -165,9 +165,7 @@ void KSircIOController::stdout_read(KProcess *, char *_buffer, int buflen)
   }
 
   pos = pos2 = 0;
-  QString control;
-  control.setNum(STOP_UPDATES);
-  ksircproc->TopList["!all"]->control_message(control);
+  ksircproc->TopList["!all"]->control_message(STOP_UPDATES, "");
   do{
     pos2 = buffer.find('\n', pos);
     
@@ -208,9 +206,7 @@ void KSircIOController::stdout_read(KProcess *, char *_buffer, int buflen)
     pos = pos2+1;
   } while((uint) pos < buffer.length());
 
-  control.truncate(0);
-  control.setNum(RESUME_UPDATES);
-  ksircproc->TopList["!all"]->control_message(control);
+  ksircproc->TopList["!all"]->control_message(RESUME_UPDATES, "");
 
 }
 

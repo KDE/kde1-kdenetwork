@@ -17,7 +17,7 @@ public:
   virtual ~KSircIODiscard();
 
   virtual void sirc_receive(QString);
-  virtual void control_message(QString);
+  virtual void control_message(int, QString);
 
 private:
 };

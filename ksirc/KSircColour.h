@@ -26,9 +26,13 @@ public:
 
     virtual ~KSircColour();
 
+signals:
+    void update();
+
 protected slots:
     virtual void ok();
     virtual void cancel(); 
+    virtual void colourChange(const QColor &);
 
 
 };

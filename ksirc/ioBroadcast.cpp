@@ -42,7 +42,7 @@ void KSircIOBroadcast::sirc_receive(QString str)
 
 }
 
-void KSircIOBroadcast::control_message(QString str)
+void KSircIOBroadcast::control_message(int command, QString str)
 {
 
   QDictIterator<KSircMessageReceiver> it(proc->getWindowList());
@@ -51,7 +51,7 @@ void KSircIOBroadcast::control_message(QString str)
 
   while(it.current()){
     if(it.current() != this)
-      it.current()->control_message(QString(qstrdup(str.data())));
+      it.current()->control_message(command, QString(qstrdup(str.data())));
     ++it;
   }
 }

@@ -153,7 +153,7 @@ void KSircProcess::new_toplevel(QString str)
 			       // !default window for next chan.
     running_window = TRUE;
     TopList.insert(str, TopList["!default"]); 
-    TopList[str]->control_message(QString("001") + str);
+    TopList[str]->control_message(001, str);
   }
   else if(!TopList[str]){  // If the window doesn't exist, continue
     // Create a new toplevel, and add it to the toplist.  
