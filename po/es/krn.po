@@ -1,19 +1,3 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
-msgid ""
-msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-01-31 15:51+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
-"Content-Transfer-Encoding: ENCODING\n"
-
 #: main.cpp:214 main.cpp:226 main.cpp:238 main.cpp:253 main.cpp:265
 msgid "KRN-Missing Configuration info"
 msgstr "Configuración Inicial del KRN"
@@ -407,11 +391,11 @@ msgstr "KRN - Configuración Identidad"
 
 #: identDlg.cpp:50
 msgid "Here you should enter your personal information"
-msgstr ""
+msgstr "Aquí debería de introducir su información personal"
 
 #: identDlg.cpp:52
 msgid "You should know what these are!"
-msgstr ""
+msgstr "¡Debería de saber estos datos!"
 
 #: identDlg.cpp:61
 msgid "Real Name"
@@ -430,9 +414,8 @@ msgid "KRN-NNTP configuration"
 msgstr "KRN - Configuración del servidor de noticias"
 
 #: NNTPConfigDlg.cpp:33
-#, fuzzy
 msgid "Servers"
-msgstr "Servidor de noticias"
+msgstr "Servidores"
 
 #: NNTPConfigDlg.cpp:35
 msgid "SMTP server"
@@ -604,43 +587,36 @@ msgid "&Followup-To:"
 msgstr "&Respuesta a:"
 
 #: kmcomposewin.cpp:339
-#, fuzzy
 msgid "&Send"
-msgstr "Enviar"
+msgstr "&Enviar"
 
 #: kmcomposewin.cpp:342
-#, fuzzy
 msgid "S&end later"
-msgstr "Enviar después"
+msgstr "Enviar d&espués"
 
 #: kmcomposewin.cpp:344
-#, fuzzy
 msgid "S&end now"
-msgstr "Enviar ahora"
+msgstr "Enviar &inmediatamente"
 
 #: kmcomposewin.cpp:346
-#, fuzzy
 msgid "&Insert File..."
 msgstr "&Insertar Fichero..."
 
 #: kmcomposewin.cpp:349
-#, fuzzy
 msgid "&Addressbook..."
-msgstr "Libreta de Direcciones..."
+msgstr "Libret&a de Direcciones..."
 
 #: kmcomposewin.cpp:354
-#, fuzzy
 msgid "&New Composer..."
-msgstr "&Nuevo Mensaje..."
+msgstr "&Nuevo Compositor..."
 
 #: kmcomposewin.cpp:374 kmcomposewin.cpp:1493
 msgid "Mark all"
 msgstr "Marcar todo"
 
 #: kmcomposewin.cpp:376
-#, fuzzy
 msgid "Replace..."
-msgstr "Apariencia..."
+msgstr "Reemplazar..."
 
 #: kmcomposewin.cpp:380
 msgid "Find..."
@@ -652,11 +628,11 @@ msgstr "&Urgente"
 
 #: kmcomposewin.cpp:389
 msgid "&Confirm delivery"
-msgstr ""
+msgstr "Confirmar &entrega"
 
 #: kmcomposewin.cpp:391
 msgid "&Confirm read"
-msgstr ""
+msgstr "Confirmar &lectura"
 
 #: kmcomposewin.cpp:403
 msgid "&All Fields"
@@ -735,9 +711,8 @@ msgid "Print message"
 msgstr "Imprimir mensaje"
 
 #: kmcomposewin.cpp:486
-#, fuzzy
 msgid "Open addressbook..."
-msgstr "Li&breta de direcciones..."
+msgstr "Abrir Libreta de Direcciones..."
 
 #: kmcomposewin.cpp:495
 msgid "sign message"
@@ -805,9 +780,8 @@ msgid "Attach..."
 msgstr "Adjuntos..."
 
 #: kmcomposewin.cpp:1080 kmreaderwin.cpp:636
-#, fuzzy
 msgid "View Attachment: "
-msgstr "Adjuntos: "
+msgstr "Ver Adjuntos: "
 
 #: kmcomposewin.cpp:1214 kpgp.cpp:351
 msgid ""
@@ -819,7 +793,7 @@ msgstr ""
 
 #: kmcomposewin.cpp:1222
 msgid "unnamed"
-msgstr ""
+msgstr "sin nombre"
 
 #: kmcomposewin.cpp:1237
 msgid "To:"
@@ -839,12 +813,14 @@ msgstr "Selecciona Fichero de Firma"
 
 #: kmcomposewin.cpp:1359
 msgid "KMail: Spellcheck"
-msgstr ""
+msgstr "KMail: Corrector Ortográfico"
 
 #: kmcomposewin.cpp:1383
 msgid ""
 "Error starting KSpell. Please make sure you have ISpell properly configured."
 msgstr ""
+"Error al iniciar KSpell. Por favor, asegurese de\n"
+"que tiene ISpell configurado correctamente."
 
 #: kmsender.cpp:108
 msgid ""
@@ -953,19 +929,16 @@ msgid "Sending SMTP command: %s"
 msgstr "Comando de envio SMTP: %s"
 
 #: findArtDlg.cpp:21
-#, fuzzy
 msgid "KRN - Article Searcher"
-msgstr "Cabezeras Artículos:"
+msgstr "KRN - Buscar Artículos"
 
 #: findArtDlg.cpp:28
-#, fuzzy
 msgid "Find Articles With:"
-msgstr "Buscar Artículo"
+msgstr "Buscar Artículos con:"
 
 #: findArtDlg.cpp:33
-#, fuzzy
 msgid "In Field:"
-msgstr "&Todos los Campos"
+msgstr "En el Campo:"
 
 #: kmidentity.cpp:162
 #, c-format
@@ -1263,30 +1236,3 @@ msgstr "Cuerpos Artículos:"
 #: expireDlg.cpp:49
 msgid "Article Headers:"
 msgstr "Cabezeras Artículos:"
-
-#~ msgid "Failed to pipe mail message into mailer program %s"
-#~ msgstr "Fallo al pasarle el mensaje al programa de envio de correo %s"
-
-#~ msgid "KRN Composer"
-#~ msgstr "KRN Compositor"
-
-#~ msgid "Send &later"
-#~ msgstr "Enviar &después"
-
-#~ msgid "Recip&ients..."
-#~ msgstr "Dest&inatarios..."
-
-#~ msgid "Insert &File"
-#~ msgstr "Adjuntar &Fichero"
-
-#~ msgid "High"
-#~ msgstr "Alta"
-
-#~ msgid "Low"
-#~ msgstr "Baja"
-
-#~ msgid "Priority"
-#~ msgstr "Prioridad"
-
-#~ msgid "&Message"
-#~ msgstr "&Mensaje"

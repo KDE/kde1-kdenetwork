@@ -1,18 +1,3 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
-msgid ""
-msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1998-01-25 13:25+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
-"Content-Transfer-Encoding: ENCODING\n"
 
 #: kmcomposewin.cpp:1177 kmmainwin.cpp:261 kpgp.cpp:351
 msgid ""
@@ -470,7 +455,7 @@ msgstr "Añadir firma automáticamente"
 
 #: kmsettings.cpp:333
 msgid "Automatically sign messages using PGP"
-msgstr "Firmar automáticamente mensajes usando PGP"
+msgstr "Firmar mensajes automáticamente usando PGP"
 
 #: kmsettings.cpp:338
 msgid "Word wrap at column:"
@@ -481,53 +466,48 @@ msgid "Use monospaced font"
 msgstr "Usar fuente monoespaciada"
 
 #: kmsettings.cpp:360
-#, fuzzy
 msgid "When sending mail"
-msgstr "Envío Correo"
+msgstr "Al Enviar Correo"
 
 #: kmsettings.cpp:363
 msgid "Default sending:"
-msgstr ""
+msgstr "Cuando enviarlos:"
 
 #: kmsettings.cpp:366
-#, fuzzy
 msgid "send now"
-msgstr "Enviar ahora"
+msgstr "enviar inmediatamente"
 
 #: kmsettings.cpp:370
-#, fuzzy
 msgid "send later"
-msgstr "Enviar después"
+msgstr "enviar después"
 
 #: kmsettings.cpp:375
-#, fuzzy
 msgid "Send messages:"
-msgstr "Enviando mensaje: "
+msgstr "Codificación de los mensajes:"
 
 #: kmsettings.cpp:378
 msgid "Allow 8-bit"
-msgstr ""
+msgstr "Permitir 8-bit"
 
 #: kmsettings.cpp:383
 msgid "MIME Compilant (Quoted Printable)"
-msgstr ""
+msgstr "Compatible MIME (Quoted Printable)"
 
 #: kmsettings.cpp:409
 msgid "Composer"
 msgstr "Compositor"
 
 #: kmsettings.cpp:426
-#, fuzzy
 msgid "Folders"
-msgstr "Carpeta"
+msgstr "Carpetas"
 
 #: kmsettings.cpp:430
 msgid "empty trash on exit"
-msgstr ""
+msgstr "vaciar papelera al salir"
 
 #: kmsettings.cpp:443
 msgid "Misc"
-msgstr ""
+msgstr "Varios"
 
 #: kmsettings.cpp:505
 msgid "Select Account"
@@ -671,14 +651,12 @@ msgid "&Send"
 msgstr "&Enviar"
 
 #: kmcomposewin.cpp:338
-#, fuzzy
 msgid "S&end later"
-msgstr "Enviar después"
+msgstr "Enviar d&espués"
 
 #: kmcomposewin.cpp:340
-#, fuzzy
 msgid "S&end now"
-msgstr "Enviar ahora"
+msgstr "Enviar &ahora"
 
 #: kmcomposewin.cpp:342
 msgid "&Insert File..."
