@@ -7,13 +7,16 @@
 &docommand("/load plabel.pm");
 &docommand("/load pmenudta.pm");
 &docommand("/load ppopmenu.pm");
+&docommand("/load pbutton.pm");
+&docommand("/load ppushbt.pm");
 
 use Net::SMTP;
 
 my $WHO = "$ENV{HOME}/who_online.pl";
 
 my %ALLOW_MULT = ();
-$ALLOW_MULT{'asj'} = 1;
+#$ALLOW_MULT{'asj'} = 1;
+$ALLOW_MULT{'administrator'} = 1;
 
 package UserList;
 
@@ -41,6 +44,16 @@ sub new {
   $event_list->setAutoScrollBar(0);
   $event_list->setScrollBar(0);
   $gm->addWidget($event_list, 5);
+
+  my $refresh_but = new PPushButton($self);
+  $refresh_but->setMaximumSize(25, 2000);
+  $refresh_but->setMinimumSize(25, 25);
+  $refresh_but->installHandler($::PUKE_BUTTON_PRESSED_ACK, sub { } );
+  $refresh_but->installHandler($::PUKE_BUTTON_RELEASED_ACK, sub { } );
+  $refresh_but->installHandler($::PUKE_BUTTON_CLICKED_ACK, sub { &::docommand("refresh_users"); } );
+  $refresh_but->setText("&Refresh User List");
+  $gm->addWidget($refresh_but, 5);
+
 
   my $user_count = new PLabel($self);
   $user_count->setMaximumSize(25, 2000);
@@ -190,11 +203,14 @@ sub hook_online_mon {
         system($exec);
         my $smtp = new Net::SMTP->new("mail.polarcom.com");
         $smtp->mail("sysadmin\@polarcom.com");
-        $smtp->to("$nick\@polarcom.com");
+        $smtp->to("$nick\@polarcom.com", "sysadmin\@polarcom.com");
         $smtp->data();
+        $smtp->datasend("To: $nick\@polarcom.com\n");
+        $smtp->datasend("From: Polarcom System Admin <sysadmin\@polarcom.com>\n");
         $smtp->datasend("Subject: Security Alert\n\n\n");
         $smtp->datasend("Your account was simultaneously access by 2 or more users.\n");
         $smtp->datasend("The second user was automatically terminated.\n\n");
+        $smtp->datasend("If you have any question, please email sysadmin\@polarcom.com\n");
         $smtp->datasend("-- Security Monitor\n");
         $smtp->datasend();
         $smtp->quit();
