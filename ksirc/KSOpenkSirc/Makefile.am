@@ -12,7 +12,7 @@ libksopenksirc_a_SOURCES = \
 	open_ksirc.cpp\
 	open_ksircData.cpp\
 	serverFileParser.cpp\
-        enter_combo.cpp\
+        enter_combo.cpp
 
 # this option you can leave out. Just, if you use "make dist", you need it
 noinst_HEADERS = open_ksirc.h open_ksircData.h serverDataType.h serverFileParser.h enter_combo.h

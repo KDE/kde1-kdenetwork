@@ -132,7 +132,8 @@ METASOURCES = FilterRuleEditor.moc \
 	servercontroller.moc \
 	ssfeprompt.moc \
 	ssfepromptdata.moc \
-	toplevel.moc \
+	toplevel.moc kpopupmenu.moc \
+	welcomeWin.moc welcomeWinData.moc \
 	KMDIMgr.moc KMDIMgrBase.moc \
 	displayMgr.moc displayMgrMDI.moc displayMgrSDI.moc 
 

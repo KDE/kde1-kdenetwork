@@ -1,5 +1,5 @@
 #ifndef PTABLEVIEW_H
-#define PTABLWVIEW_H
+#define PTABLEVIEW_H
 
 class PTableView;
 

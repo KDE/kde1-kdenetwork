@@ -389,4 +389,5 @@ QString KAPopupMenu::keyToString(int key) /*fold00*/
   }
 }
 
+#include "kpopupmenu.moc"
 

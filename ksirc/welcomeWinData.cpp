@@ -57,3 +57,5 @@ welcomeWinData::~welcomeWinData()
 void welcomeWinData::dismiss()
 {
 }
+#include "welcomeWinData.moc"
+

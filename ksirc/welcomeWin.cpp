@@ -61,3 +61,6 @@ void welcomeWin::show()
   Inherited::show();
 //  DisplayDialog->setTopItem(0);
 }
+
+#include "welcomeWin.moc"
+
