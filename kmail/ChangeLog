@@ -1,5 +1,15 @@
 1999-06-18  Sven Radej <radej@kde.org> (KMail-1.0.25)
 
+        * When replying:
+          In-Reply-To = original msg-id
+          References = original In-Reply-To
+
+        * Don't use X-Loop string as reply to in any case! Thanks to Daniel
+          Naber for detecting this.
+
+        * Use X-Mailing-List instead of X-Loop to determine if we are replying
+          to the list.
+          
         * Fix from Daniel Naber against corrupted Cc: when replying-to-all
 
 1999-06-17  Sven Radej <radej@kde.org> (KMail-1.0.25)
