@@ -1,0 +1,715 @@
+msgid ""
+msgstr ""
+"Date: 1997-10-22 14:24:58-0300\n"
+"From: Roberto Alsina <ralsina@ultra7>\n"
+"Content-Type: text/plain; charset=\n"
+"Xgettext-Options: --keyword=translate -C\n"
+"Files: KEdit.cpp NNTP.cpp NNTPConfigDlg.cpp NNTPConfigDlgData.cpp aboutDlg.cpp aboutDlgData.cpp artdlg.cpp asker.cpp askerData.cpp decoderDlg.cpp fontsDlg.cpp fontsDlgData.cpp groupdlg.cpp identDlg.cpp identDlgData.cpp kdecode.cpp kformatter.cpp kmcomposewin.cpp kmessage.cpp kmfolder.cpp kmfolderdir.cpp kmfoldernode.cpp kmimemagic.cpp kmmessage.cpp kmmsginfo.cpp kmmsgpart.cpp kmsender.cpp kscorer.cpp kstrtable.cpp ktempfile.cpp main.cpp newsgroup.cpp rmbpop.cpp visheadDlg.cpp visheadDlgData.cpp\n"
+
+#: NNTP.cpp:58
+msgid "Received %d bytes"
+msgstr ""
+
+#: NNTP.cpp:502
+msgid ""
+"\n"
+"\n"
+"Error reading Article!"
+msgstr ""
+
+#: NNTP.cpp:536
+msgid "received %d article(s)"
+msgstr ""
+
+#: NNTPConfigDlg.cpp:23
+msgid "KRN-NNTP configuration"
+msgstr ""
+
+#: NNTPConfigDlgData.cpp:16 aboutDlgData.cpp:21 askerData.cpp:38 fontsDlgData.cpp:14 identDlgData.cpp:38
+msgid "OK"
+msgstr ""
+
+#: NNTPConfigDlgData.cpp:21 fontsDlgData.cpp:18 identDlgData.cpp:43
+msgid "Cancel"
+msgstr ""
+
+#: NNTPConfigDlgData.cpp:30
+msgid "NNTP Server"
+msgstr ""
+
+#: NNTPConfigDlgData.cpp:34
+msgid "Connect on Startup"
+msgstr ""
+
+#: NNTPConfigDlgData.cpp:38
+msgid "Authenticate"
+msgstr ""
+
+#: NNTPConfigDlgData.cpp:42
+msgid "User Name"
+msgstr ""
+
+#: NNTPConfigDlgData.cpp:46
+msgid "Password"
+msgstr ""
+
+#: NNTPConfigDlgData.cpp:58
+msgid "SMTP server"
+msgstr ""
+
+#: aboutDlg.cpp:18
+msgid "About KRN"
+msgstr ""
+
+#: aboutDlgData.cpp:27
+msgid "Part of the KDE project."
+msgstr ""
+
+#: aboutDlgData.cpp:49
+msgid "And Many thanks to:"
+msgstr ""
+
+#: aboutDlgData.cpp:61
+msgid "Credits & Thanks"
+msgstr ""
+
+#: artdlg.cpp:92 artdlg.cpp:101
+msgid "Save"
+msgstr ""
+
+#: artdlg.cpp:94 artdlg.cpp:110
+msgid "Decode"
+msgstr ""
+
+#: artdlg.cpp:95 groupdlg.cpp:127
+msgid "Untag"
+msgstr ""
+
+#: artdlg.cpp:103
+msgid "Print"
+msgstr ""
+
+#: artdlg.cpp:104 artdlg.cpp:158
+msgid "Post New Article"
+msgstr ""
+
+#: artdlg.cpp:105 artdlg.cpp:161
+msgid "Reply by Mail"
+msgstr ""
+
+#: artdlg.cpp:106
+msgid "Post Followup"
+msgstr ""
+
+#: artdlg.cpp:107
+msgid "Post & Reply"
+msgstr ""
+
+#: artdlg.cpp:108 artdlg.cpp:170
+msgid "Forward"
+msgstr ""
+
+#: artdlg.cpp:111 groupdlg.cpp:134
+msgid "(Un)Tag"
+msgstr ""
+
+#: artdlg.cpp:113
+msgid "Tagged"
+msgstr ""
+
+#: artdlg.cpp:115
+msgid "Don't expire"
+msgstr ""
+
+#: artdlg.cpp:123
+msgid "Show Only Unread Messages"
+msgstr ""
+
+#: artdlg.cpp:125
+msgid "Show Locked Messages"
+msgstr ""
+
+#: artdlg.cpp:127
+msgid "Appearance"
+msgstr ""
+
+#: artdlg.cpp:130
+msgid "menu"
+msgstr ""
+
+#: artdlg.cpp:131
+msgid "&Article"
+msgstr ""
+
+#: artdlg.cpp:132 groupdlg.cpp:138
+msgid "&Tagged"
+msgstr ""
+
+#: artdlg.cpp:133 groupdlg.cpp:157
+msgid "&Options"
+msgstr ""
+
+#: artdlg.cpp:143
+msgid "Previous Message"
+msgstr ""
+
+#: artdlg.cpp:146
+msgid "Next Message"
+msgstr ""
+
+#: artdlg.cpp:151
+msgid "Save Article"
+msgstr ""
+
+#: artdlg.cpp:154
+msgid "Print Article"
+msgstr ""
+
+#: artdlg.cpp:164
+msgid "Post a Followup"
+msgstr ""
+
+#: artdlg.cpp:167
+msgid "Post & Mail"
+msgstr ""
+
+#: artdlg.cpp:176
+msgid "Get Article List"
+msgstr ""
+
+#: artdlg.cpp:179
+msgid "Tag Article"
+msgstr ""
+
+#: artdlg.cpp:182
+msgid "Lock (keep in cache)"
+msgstr ""
+
+#: artdlg.cpp:185
+msgid "Decode Article"
+msgstr ""
+
+#: artdlg.cpp:188 groupdlg.cpp:120 groupdlg.cpp:128 groupdlg.cpp:135
+msgid "Catchup"
+msgstr ""
+
+#: artdlg.cpp:208
+msgid "Sender"
+msgstr ""
+
+#: artdlg.cpp:209
+msgid "Date"
+msgstr ""
+
+#: artdlg.cpp:210
+msgid "Lines"
+msgstr ""
+
+#: artdlg.cpp:211
+msgid "Subject"
+msgstr ""
+
+#: artdlg.cpp:327
+msgid "Threading..."
+msgstr ""
+
+#: artdlg.cpp:335
+msgid "Showing Article List"
+msgstr ""
+
+#: artdlg.cpp:663 artdlg.cpp:722
+msgid ""
+"\n"
+"Error getting article.\n"
+"Server said:\n"
+msgstr ""
+
+#: artdlg.cpp:815
+msgid "Getting Article List"
+msgstr ""
+
+#: decoderDlg.cpp:20
+msgid "KRN - Decoder"
+msgstr ""
+
+#: decoderDlg.cpp:24
+msgid "ID"
+msgstr ""
+
+#: decoderDlg.cpp:26 kmcomposewin.cpp:125
+msgid "Size"
+msgstr ""
+
+#: decoderDlg.cpp:27
+msgid "Name"
+msgstr ""
+
+#: fontsDlg.cpp:29
+msgid "Message Display Fonts"
+msgstr ""
+
+#: fontsDlgData.cpp:23
+msgid "Small"
+msgstr ""
+
+#: fontsDlgData.cpp:24 kmcomposewin.cpp:924
+msgid "Normal"
+msgstr ""
+
+#: fontsDlgData.cpp:25
+msgid "Large"
+msgstr ""
+
+#: fontsDlgData.cpp:26
+msgid "Huge"
+msgstr ""
+
+#: fontsDlgData.cpp:31
+msgid "Font Size:"
+msgstr ""
+
+#: fontsDlgData.cpp:35 fontsDlgData.cpp:39
+msgid "test"
+msgstr ""
+
+#: fontsDlgData.cpp:51
+msgid "Standard Font"
+msgstr ""
+
+#: fontsDlgData.cpp:55
+msgid "Fixed Font"
+msgstr ""
+
+#: fontsDlgData.cpp:67
+msgid "Background Color"
+msgstr ""
+
+#: fontsDlgData.cpp:71
+msgid "Foreground Color"
+msgstr ""
+
+#: fontsDlgData.cpp:75
+msgid "Link Color"
+msgstr ""
+
+#: fontsDlgData.cpp:79
+msgid "Followed Color"
+msgstr ""
+
+#: groupdlg.cpp:108
+msgid "Connect to Server"
+msgstr ""
+
+#: groupdlg.cpp:109
+msgid "Disconnect From Server"
+msgstr ""
+
+#: groupdlg.cpp:110
+msgid "Get Active File"
+msgstr ""
+
+#: groupdlg.cpp:112
+msgid "Exit"
+msgstr ""
+
+#: groupdlg.cpp:115
+msgid "KRN - Group List"
+msgstr ""
+
+#: groupdlg.cpp:118 groupdlg.cpp:124
+msgid "Get Subjects"
+msgstr ""
+
+#: groupdlg.cpp:119 groupdlg.cpp:125
+msgid "Get Articles"
+msgstr ""
+
+#: groupdlg.cpp:126 groupdlg.cpp:133
+msgid "(un)Subscribe"
+msgstr ""
+
+#: groupdlg.cpp:132
+msgid "Open"
+msgstr ""
+
+#: groupdlg.cpp:137
+msgid "&Subscribed"
+msgstr ""
+
+#: groupdlg.cpp:143
+msgid "Identity"
+msgstr ""
+
+#: groupdlg.cpp:144
+msgid "NNTP Options"
+msgstr ""
+
+#: groupdlg.cpp:148
+msgid "Contents"
+msgstr ""
+
+#: groupdlg.cpp:150 kmcomposewin.cpp:956 kmcomposewin.cpp:1039
+msgid "About"
+msgstr ""
+
+#: groupdlg.cpp:155
+msgid "&File"
+msgstr ""
+
+#: groupdlg.cpp:156
+msgid "&Newsgroup"
+msgstr ""
+
+#: groupdlg.cpp:159
+msgid "&Help"
+msgstr ""
+
+#: groupdlg.cpp:169
+msgid "Connect to server"
+msgstr ""
+
+#: groupdlg.cpp:172
+msgid "Disconnect from server"
+msgstr ""
+
+#: groupdlg.cpp:176
+msgid "Get list of active groups"
+msgstr ""
+
+#: groupdlg.cpp:184
+msgid "Check for Unread Articles"
+msgstr ""
+
+#: groupdlg.cpp:196
+msgid "Received 00000000 bytes"
+msgstr ""
+
+#: groupdlg.cpp:260
+msgid "Sorry!"
+msgstr ""
+
+#: groupdlg.cpp:261
+msgid ""
+"That newsgroup is not in the current active file\n"
+" Krn can't handle this gracefully right now"
+msgstr ""
+
+#: groupdlg.cpp:409
+msgid "Disconnected"
+msgstr ""
+
+#: groupdlg.cpp:416
+msgid "Connecting to server"
+msgstr ""
+
+#: groupdlg.cpp:422
+msgid "Connected to server - Posting not allowed"
+msgstr ""
+
+#: groupdlg.cpp:424
+msgid "Connected to server - Posting allowed"
+msgstr ""
+
+#: groupdlg.cpp:429 groupdlg.cpp:441 groupdlg.cpp:715
+msgid "Error"
+msgstr ""
+
+#: groupdlg.cpp:429
+msgid "Can't connect to server"
+msgstr ""
+
+#: groupdlg.cpp:431
+msgid "Connection to server failed"
+msgstr ""
+
+#: groupdlg.cpp:441
+msgid "Authentication Failed"
+msgstr ""
+
+#: groupdlg.cpp:444
+msgid "Connection to server failed: Authentication problem"
+msgstr ""
+
+#: groupdlg.cpp:479
+msgid "Krn-Question"
+msgstr ""
+
+#: groupdlg.cpp:480
+msgid ""
+"The operation you requested needs a connection to the News server\n"
+"Should I attempt one?"
+msgstr ""
+
+#: groupdlg.cpp:565
+msgid "Question"
+msgstr ""
+
+#: groupdlg.cpp:565
+msgid "Do you REALLY wanna exit KRN?"
+msgstr ""
+
+#: groupdlg.cpp:716
+msgid ""
+"You don't have an active groups list.\n"
+" get it from server?"
+msgstr ""
+
+#: groupdlg.cpp:730
+msgid "Listing active newsgroups"
+msgstr ""
+
+#: groupdlg.cpp:800
+msgid "Getting messages in "
+msgstr ""
+
+#: groupdlg.cpp:814
+msgid "Getting list of messages in "
+msgstr ""
+
+#: identDlg.cpp:37
+msgid "KRN-Identity Configuration"
+msgstr ""
+
+#: identDlgData.cpp:14
+msgid "Real Name"
+msgstr ""
+
+#: identDlgData.cpp:22
+msgid "E-mail Address"
+msgstr ""
+
+#: identDlgData.cpp:30
+msgid "Organization"
+msgstr ""
+
+#: kdecode.cpp:26
+msgid "KRN-Decoder"
+msgstr ""
+
+#: kdecode.cpp:198
+msgid "Unsupported encoding type: %s."
+msgstr ""
+
+#: kmcomposewin.cpp:41
+msgid "&To:"
+msgstr ""
+
+#: kmcomposewin.cpp:61
+msgid "&Cc:"
+msgstr ""
+
+#: kmcomposewin.cpp:75
+msgid "&Subject:"
+msgstr ""
+
+#: kmcomposewin.cpp:121
+msgid "F"
+msgstr ""
+
+#: kmcomposewin.cpp:123
+msgid "Filename"
+msgstr ""
+
+#: kmcomposewin.cpp:179 kmcomposewin.cpp:543
+msgid "To:"
+msgstr ""
+
+#: kmcomposewin.cpp:183 kmcomposewin.cpp:545
+msgid "Subject:"
+msgstr ""
+
+#: kmcomposewin.cpp:186 kmcomposewin.cpp:541
+msgid "Date:"
+msgstr ""
+
+#: kmcomposewin.cpp:205
+msgid "Attach File"
+msgstr ""
+
+#: kmcomposewin.cpp:349
+msgid "No recipients or groups defined."
+msgstr ""
+
+#: kmcomposewin.cpp:534
+msgid "Fwd: %s"
+msgstr ""
+
+#: kmcomposewin.cpp:539
+msgid "Forwarded message"
+msgstr ""
+
+#: kmcomposewin.cpp:542
+msgid "From:"
+msgstr ""
+
+#: kmcomposewin.cpp:544
+msgid "Cc:"
+msgstr ""
+
+#: kmcomposewin.cpp:567 kmcomposewin.cpp:602 kmcomposewin.cpp:639
+msgid "Re: %s"
+msgstr ""
+
+#: kmcomposewin.cpp:572 kmcomposewin.cpp:606 kmcomposewin.cpp:643
+msgid ""
+"\n"
+"On %s %s wrote:\n"
+msgstr ""
+
+#: kmcomposewin.cpp:742 kmcomposewin.cpp:1068
+msgid ""
+"Sorry, but this feature\n"
+"is still missing"
+msgstr ""
+
+#: kmcomposewin.cpp:805 kmcomposewin.cpp:814
+msgid "Composer"
+msgstr ""
+
+#: kmcomposewin.cpp:883
+msgid "Send"
+msgstr ""
+
+#: kmcomposewin.cpp:885
+msgid "Send &later"
+msgstr ""
+
+#: kmcomposewin.cpp:888
+msgid "Address &Book..."
+msgstr ""
+
+#: kmcomposewin.cpp:890
+msgid "&Print..."
+msgstr ""
+
+#: kmcomposewin.cpp:893
+msgid "&Close"
+msgstr ""
+
+#: kmcomposewin.cpp:895
+msgid "File"
+msgstr ""
+
+#: kmcomposewin.cpp:899
+msgid "Undo"
+msgstr ""
+
+#: kmcomposewin.cpp:902
+msgid "Cut"
+msgstr ""
+
+#: kmcomposewin.cpp:904
+msgid "Copy"
+msgstr ""
+
+#: kmcomposewin.cpp:906
+msgid "Paste"
+msgstr ""
+
+#: kmcomposewin.cpp:908
+msgid "Mark all"
+msgstr ""
+
+#: kmcomposewin.cpp:911
+msgid "Find..."
+msgstr ""
+
+#: kmcomposewin.cpp:913
+msgid "Edit"
+msgstr ""
+
+#: kmcomposewin.cpp:916
+msgid "Recip&ients..."
+msgstr ""
+
+#: kmcomposewin.cpp:918
+msgid "Insert &File"
+msgstr ""
+
+#: kmcomposewin.cpp:923
+msgid "High"
+msgstr ""
+
+#: kmcomposewin.cpp:925
+msgid "Low"
+msgstr ""
+
+#: kmcomposewin.cpp:926
+msgid "Priority"
+msgstr ""
+
+#: kmcomposewin.cpp:927
+msgid "Message"
+msgstr ""
+
+#: kmcomposewin.cpp:930
+msgid "&File..."
+msgstr ""
+
+#: kmcomposewin.cpp:932
+msgid "Si&gnature"
+msgstr ""
+
+#: kmcomposewin.cpp:937
+msgid "Base 64"
+msgstr ""
+
+#: kmcomposewin.cpp:939
+msgid "Quoted Printable"
+msgstr ""
+
+#: kmcomposewin.cpp:941
+msgid "Encoding"
+msgstr ""
+
+#: kmcomposewin.cpp:942
+msgid "Attach"
+msgstr ""
+
+#: kmcomposewin.cpp:945
+msgid "Toggle T&oolbar"
+msgstr ""
+
+#: kmcomposewin.cpp:947
+msgid "Change &Font"
+msgstr ""
+
+#: kmcomposewin.cpp:950
+msgid "Options"
+msgstr ""
+
+#: kmcomposewin.cpp:954 kmcomposewin.cpp:957
+msgid "Help"
+msgstr ""
+
+#: kmfolder.cpp:556
+msgid ""
+"KMFolder::addMsg():\n"
+"message contains no data !"
+msgstr ""
+
+#: kmsender.cpp:311
+msgid ""
+"Please specify a mailer program\n"
+"in the settings."
+msgstr ""
+
+#: main.cpp:152 main.cpp:164 main.cpp:176 main.cpp:188
+msgid "KRN-Missing Configuration info"
+msgstr ""
+
+#: main.cpp:153
+msgid "Please enter your email adress"
+msgstr ""
+
+#: main.cpp:165
+msgid "Please enter your real name"
+msgstr ""
+
+#: main.cpp:177
+msgid "Please enter your organization's name"
+msgstr ""
+
+#: main.cpp:189
+msgid "Please enter your NNTP server name"
+msgstr ""
