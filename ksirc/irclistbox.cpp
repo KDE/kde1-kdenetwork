@@ -43,12 +43,12 @@ KSircListBox::KSircListBox(QWidget * parent, const char * name, WFlags f) : QLis
   waitForClear = FALSE;
 }
 
-KSircListBox::~KSircListBox() /*fold00*/
+KSircListBox::~KSircListBox() /*FOLD00*/
 {
   delete vertScroll;
 }
 
-bool KSircListBox::scrollToBottom(bool force) /*fold00*/
+bool KSircListBox::scrollToBottom(bool force) /*FOLD00*/
 {
   if(force == TRUE)
     ScrollToBottom = TRUE;
@@ -72,7 +72,7 @@ bool KSircListBox::scrollToBottom(bool force) /*fold00*/
     return FALSE;
 }
 
-void KSircListBox::updateScrollBars() /*fold00*/
+void KSircListBox::updateScrollBars() /*FOLD00*/
 {
   int wheight = height();
   int theight = totalHeight();
@@ -101,7 +101,7 @@ void KSircListBox::resizeEvent(QResizeEvent *e) /*FOLD00*/
   scrollToBottom(TRUE);
 }
 
-void KSircListBox::setTopItem(int index) /*fold00*/
+void KSircListBox::setTopItem(int index) /*FOLD00*/
 {
   QListBox::setTopItem(index);
   updateScrollBars();
@@ -117,7 +117,7 @@ void KSircListBox::scrollTo(int index) /*fold00*/
    //   setYOffset(yoff);
 }
 
-void KSircListBox::pageUp() /*fold00*/
+void KSircListBox::pageUp() /*FOLD00*/
 {
   setYOffset(QMAX(0, yOffset()-height()));
   updateScrollBars();
@@ -125,20 +125,20 @@ void KSircListBox::pageUp() /*fold00*/
   
 }
 
-void KSircListBox::pageDown() /*fold00*/
+void KSircListBox::pageDown() /*FOLD00*/
 {
   setYOffset(imin(totalHeight()-height()+fudge, yOffset()+height()));
   updateScrollBars();
 }
 
-void KSircListBox::lineUp() /*fold00*/
+void KSircListBox::lineUp() /*FOLD00*/
 {
   setYOffset(QMAX(0, yOffset()-itemHeight(topItem())));
   updateScrollBars();
   ScrollToBottom = FALSE;
 }
 
-void KSircListBox::lineDown() /*fold00*/
+void KSircListBox::lineDown() /*FOLD00*/
 {
   setYOffset(imin(totalHeight()-height()+fudge, yOffset()+itemHeight(topItem())));
   updateScrollBars();
@@ -555,4 +555,29 @@ void KSircListBox::mouseSelScrollDown(){
       QTimer::singleShot(250, this, SLOT(mouseSelScrollDown()));  // carefull this could lead to a "recursive" type pattern
     }
   }
+}
+
+void KSircListBox::paintEvent(QPaintEvent *e){
+  if(kSircConfig->transparent == true && kSircConfig->BackgroundPix == true){
+    static QString file;
+    static QPixmap bg;
+    static int skip = 0;
+
+    if((bg.isNull()) || (kSircConfig->BackgroundFile != file)){
+      bg.load(kSircConfig->BackgroundFile);
+      file = kSircConfig->BackgroundFile;
+    }
+    if(skip == 0){
+      setBackgroundPixmap(bg);
+      skip++;
+    }
+    else{
+      //      skip = skip > 10 ? 0 : skip+1;
+      skip = 0;
+    }
+    QListBox::paintEvent(e);
+  }
+  else
+    QListBox::paintEvent(e);
+
 }

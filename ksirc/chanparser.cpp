@@ -552,7 +552,7 @@ void ChannelParser::parseINFOChangeNick(QString string) /*fold00*/
 
 }
 
-void ChannelParser::parseINFOMode(QString string) /*fold00*/
+void ChannelParser::parseINFOMode(QString string) /*FOLD00*/
 {
   // Basic idea here is simple, go through the mode change and
   // assign each mode a + or a - and an argument or "" if there is
@@ -630,6 +630,7 @@ void ChannelParser::parseINFOMode(QString string) /*fold00*/
     case 's': // Secret
     case 't': // Topic setable by ops
     case 'R': // (Dalnet) only registered may join
+    case 'r': // (Dalnet) only registered may join or something
       /*
        * Mode changes which don't take args
        */

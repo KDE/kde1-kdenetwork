@@ -107,7 +107,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
   else
     caption = "";
 
-  LineBuffer = new("QStrList") QStrList(TRUE);
+  LineBuffer = new("QStrListTopLevel") QStrList(TRUE);
   Buffer = FALSE;
 
   have_focus = 0;
@@ -139,7 +139,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
   lagmeter->display("      ");
   QToolTip::add(lagmeter, i18n("Lag in seconds to the server"));
   
-  file = new("QPopupMenu") QPopupMenu(0x0, QString(QObject::name()) + "_popup_file");
+  file = new("QPopupMenuFile") QPopupMenu(0x0, QString(QObject::name()) + "_popup_file");
   file->insertItem(i18n("&New Window..."), this, SLOT(newWindow()), CTRL + Key_N);
   file->insertItem(i18n("&Ticker Mode"), this, SLOT(showTicker()), CTRL + Key_T);
   //  file->insertItem("&Root Window Mode", this, SLOT(toggleRootWindow()), CTRL + Key_Z);
@@ -162,7 +162,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
   kmenu->insertItem(i18n("&File"), file, 2, -1);
   kmenu->setAccel(Key_F, 2);
 
-  edit = new("QPopupMenu") QPopupMenu();
+  edit = new("QPopupMenuEdit") QPopupMenu();
   edit->insertItem(i18n("&Cut Window..."), this, SLOT(openCutWindow()), CTRL + Key_X);
   edit->insertItem(i18n("&Paste"), this, SLOT(pasteToWindow()), CTRL + Key_V);
   kmenu->insertItem(i18n("&Edit"), edit, -1, -1);
@@ -293,7 +293,7 @@ KSircTopLevel::KSircTopLevel(KSircProcess *_proc, char *cname, const char * name
   if(user_menu == 0)
     user_menu = UserControlMenu::parseKConfig();
 
-  user_controls = new("QPopupMenu") QPopupMenu();
+  user_controls = new("QPopupMenuUserControls") QPopupMenu();
   kmenu->insertItem(i18n("&Users"), user_controls);
 
   connect(user_controls, SIGNAL(activated(int)), 
@@ -388,6 +388,8 @@ KSircTopLevel::~KSircTopLevel() /*FOLD00*/
   //  delete linee; // ditto
   delete LineBuffer;
   delete user_controls;
+  delete file;
+  delete edit;
 
   QToolTip::remove(lagmeter);
 
@@ -549,10 +551,10 @@ void KSircTopLevel::sirc_receive(QString str) /*FOLD00*/
     }
     LineBuffer->clear(); // Clear it since it's been added
 
-    if(mainw->count() > 200){
+    if(mainw->count() > (1.25*kSircConfig->WindowLength)){
         mainw->setAutoUpdate(FALSE);
         update = TRUE;
-        while(mainw->count() > 100)
+        while(mainw->count() > kSircConfig->WindowLength)
            mainw->removeItem(0);
     }
 

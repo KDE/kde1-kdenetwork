@@ -20,7 +20,7 @@ ButtonGroup {
 		Title {}
 		Alignment {Left}
 		Style {49}
-		Rect {10 10 430 140}
+		Rect {10 10 430 170}
 		Name {ButtonGroup_4}
 		LayoutStatus {NoLayout}
 		MinimumSize {10 10}
@@ -30,7 +30,7 @@ ButtonGroup {
 		Title {}
 		Alignment {Left}
 		Style {49}
-		Rect {10 160 430 120}
+		Rect {10 190 430 90}
 		Name {ButtonGroup_3}
 		LayoutStatus {NoLayout}
 		MinimumSize {10 10}
@@ -89,7 +89,7 @@ CheckBox {
 		Text {Auto Rejoin}
 		AutoRepeat {FALSE}
 		AutoResize {FALSE}
-		Rect {240 80 170 30}
+		Rect {240 90 160 20}
 		Name {CheckBox_6}
 		Variable {CB_AutoRejoin}
 		LayoutStatus {NoLayout}
@@ -101,7 +101,7 @@ CheckBox {
 		Text {Enable Background Pixmap}
 		AutoRepeat {FALSE}
 		AutoResize {FALSE}
-		Rect {20 180 190 30}
+		Rect {20 200 190 30}
 		Name {CheckBox_8}
 		Variable {CB_BackgroundPix}
 		LayoutStatus {NoLayout}
@@ -113,7 +113,7 @@ LineEdit {
 		EchoMode {Normal}
 		MaxLength {32767}
 		FrameShown {TRUE}
-		Rect {20 220 260 30}
+		Rect {20 240 260 30}
 		Name {LineEdit_6}
 		Variable {SLE_BackgroundFile}
 		LayoutStatus {NoLayout}
@@ -127,7 +127,7 @@ PushButton {
 		Text {Browse}
 		AutoRepeat {FALSE}
 		AutoResize {FALSE}
-		Rect {290 220 90 30}
+		Rect {290 240 90 30}
 		Name {PushButton_7}
 		Variable {PB_BackgroundBrowse}
 		LayoutStatus {NoLayout}
@@ -154,6 +154,26 @@ CheckBox {
 		Rect {20 110 410 30}
 		Name {CheckBox_10}
 		Variable {CB_MDIMode}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+User {
+		UserClassHeader {kintegerline.h}
+		UserClassName {KIntegerLine}
+		Rect {20 140 150 30}
+		Name {KILWindowLength}
+		Variable {KIL_WindowLength}
+		LayoutStatus {NoLayout}
+		MinimumSize {10 10}
+		MaximumSize {32767 32767}
+}
+Label {
+		Text {Window History Length}
+		AutoResize {FALSE}
+		Margin {-1}
+		Rect {180 140 250 30}
+		Name {ScrollBackLineLabel}
 		LayoutStatus {NoLayout}
 		MinimumSize {10 10}
 		MaximumSize {32767 32767}

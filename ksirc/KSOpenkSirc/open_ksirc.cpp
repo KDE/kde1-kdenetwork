@@ -49,7 +49,8 @@ open_ksirc::open_ksirc
     filename = KApplication::kde_datadir()+"/ksirc/servers.txt";
     serverFileParser::readDatafile( filename );
   }
-  
+
+  Groups.setAutoDelete(TRUE);
   
   // TODO add "Recent" to global listing servers here..
   // Now we read in the Recent group from the config file
@@ -270,5 +271,6 @@ void open_ksirc::clickEdit()
 
 open_ksirc::~open_ksirc()
 {
+  Groups.clear();
 }
 

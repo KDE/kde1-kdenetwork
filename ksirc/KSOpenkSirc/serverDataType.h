@@ -23,7 +23,9 @@ class Server
 public:
   Server( const char *group, const char *server, QList<port> ports, 
           const char *serverdesc, const char *script ) {
-          g=group; s=server; p=ports; sd=serverdesc; sc=script; }
+          g=group; s=server; p=ports; sd=serverdesc; sc=script;
+          p.setAutoDelete(TRUE);
+          }
   const char *group() const      { return g; }
   const char *server() const     { return s; }
   QList<port> ports() const      { return p; }

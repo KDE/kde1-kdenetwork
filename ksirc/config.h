@@ -25,6 +25,7 @@ class global_config {
   bool transparent;
   bool DisplayTopic;
   int DisplayMode;
+  int WindowLength;
 
   bool filterKColour;
   bool filterMColour;

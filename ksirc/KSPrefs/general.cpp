@@ -10,7 +10,7 @@
 #include "general.h"
 #include "../config.h"
 #include <kconfig.h>
-//#include <kfiledialog.h>
+#include <kfiledialog.h>
 
 extern KConfig *kConfig;
 extern global_config *kSircConfig;
@@ -44,17 +44,21 @@ general::general
 
   CB_DisplayTopic->setChecked(kSircConfig->DisplayTopic);
   CB_MDIMode->setChecked(kSircConfig->DisplayMode);
+
+  KIL_WindowLength->setValue(kSircConfig->WindowLength);
+  
   
   // not yet =P
-  CB_BackgroundPix->hide();
+//*  CB_BackgroundPix->hide();
   CB_BackgroundPix->setChecked(kConfig->readNumEntry("BackgroundPix", FALSE));
   kSircConfig->BackgroundPix = kConfig->readNumEntry("BackgroundPix", FALSE);
   SLE_BackgroundFile->setText(kConfig->readEntry("BackgroundFile"));
-  SLE_BackgroundFile->hide();
+//  SLE_BackgroundFile->hide();
   kSircConfig->BackgroundFile = kConfig->readEntry("BackgroundFile");
   connect(PB_BackgroundBrowse, SIGNAL(clicked()), 
           this, SLOT(slot_openBrowser()));
-  PB_BackgroundBrowse->hide();
+  //PB_BackgroundBrowse->hide();
+
 
 }
 
@@ -64,12 +68,10 @@ general::~general()
 
 void general::slot_openBrowser()
 {
-  /*
   KFileDialog *FileDialog = new("KFileDialog") KFileDialog( ".", "*.gif");
   connect(FileDialog, SIGNAL(fileSelected(const char*)),
-          this, SLOT(slot_setBackgroundFile(const char*)));
-          FileDialog->show();
-          */
+	  this, SLOT(slot_setBackgroundFile(const char*)));
+  FileDialog->show();
 }
 
 void general::slot_setBackgroundFile(const char* filename)
@@ -85,9 +87,13 @@ void general::slot_apply()
   kSircConfig->ColourPicker = CB_ColourPicker->isChecked();
   kSircConfig->AutoRejoin = CB_AutoRejoin->isChecked();
   kSircConfig->BackgroundPix = CB_BackgroundPix->isChecked();
+  kSircConfig->transparent = CB_BackgroundPix->isChecked();
   kSircConfig->BackgroundFile = SLE_BackgroundFile->text();
   kSircConfig->DisplayTopic = CB_DisplayTopic->isChecked();
   kSircConfig->DisplayMode = CB_MDIMode->isChecked();
+  kSircConfig->WindowLength = KIL_WindowLength->value();
+  if(kSircConfig->WindowLength < 25)
+      kSircConfig->WindowLength = 25;
 
   kConfig->setGroup("General");
   kConfig->writeEntry("AutoCreateWin", kSircConfig->AutoCreateWin);
@@ -96,8 +102,10 @@ void general::slot_apply()
   kConfig->writeEntry("ColourPicker", kSircConfig->ColourPicker);
   kConfig->writeEntry("AutoRejoin", kSircConfig->AutoRejoin);
   kConfig->writeEntry("BackgroundPix", kSircConfig->BackgroundPix);
+  kConfig->writeEntry("transparent", kSircConfig->transparent);
   kConfig->writeEntry("BackgroundFile", kSircConfig->BackgroundFile);
   kConfig->writeEntry("DisplayTopic", kSircConfig->DisplayTopic);
   kConfig->writeEntry("DisplayMode", kSircConfig->DisplayMode);
+  kConfig->writeEntry("WindowLength", kSircConfig->WindowLength);
   kConfig->sync();
 }

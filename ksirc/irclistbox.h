@@ -61,7 +61,7 @@ protected slots:
   bool xlateToText(int x, int y, int *rrow, int *rline, int *rchar, ircListItem **);
 
 
-//  virtual void paintEvent ( QPaintEvent * );
+  virtual void paintEvent ( QPaintEvent * );
 
  private:
 

@@ -41,7 +41,7 @@ ircListItem::ircListItem(QString s, const QColor *c, QListBox *lb, QPixmap *p)
   revOne = revTwo = -1;
   forceClear = FALSE;
 
-  paint_text = new("QStrList") QStrList();
+  paint_text = new("QStrListIrcListItem") QStrList();
 
 //  dbuffer = new("QPixmap") QPixmap();
   need_update = TRUE;

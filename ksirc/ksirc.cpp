@@ -130,6 +130,10 @@ int main( int argc, char ** argv )
   kSircConfig->defaultfont = kConfig->readFontEntry("MainFont", new("QFont") QFont("fixed"));
   kConfig->setGroup("General");
   kSircConfig->DisplayMode = kConfig->readNumEntry("DisplayMode", 0);
+  kSircConfig->WindowLength = kConfig->readNumEntry("WindowLength", 200);
+  kSircConfig->transparent = kConfig->readNumEntry("transparent", 0);
+  kSircConfig->BackgroundPix = kConfig->readNumEntry("BackgroundPix", 0);
+  kSircConfig->BackgroundFile = kConfig->readEntry("BackgroundFile", "");
 
   kConfig->setGroup("ReleaseNotes");
   if(kConfig->readNumEntry("LastRunRelease", 0) < COMPILE_DATE){

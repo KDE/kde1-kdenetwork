@@ -35,7 +35,7 @@ int serverFileParser::readDatafile( const char *fileName )
 
     QString buf;
     QString portbuff;
-
+    
     for( uint loc = 0; loc <= str.length(); loc++ ) {
       if ( str[loc] == ':' || loc == str.length()) {
         switch(pos) {
