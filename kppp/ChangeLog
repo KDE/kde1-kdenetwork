@@ -1,5 +1,9 @@
 Mon Jan  5 14:25:37 1998  Mario Weilguni  <mario@loki.valhalla.at>
 
+	* main.cpp: added the "-q" command line switch. This is very
+	  usefull in combination with "-c". Instead of returning to
+	  the kppp main window kppp will exit after disconnecting.
+
 	* Makefile.in: removed the external moc_*.cpp files and
 	  included them directly with "#include". This saves 
 	  approx. 30 KB in the binary and greatly speeds up 

@@ -52,7 +52,7 @@ extern bool pppd_has_died;
 extern bool reconnect_on_disconnect;
 extern QString old_hostname;
 extern QString local_ip_address;
-
+extern bool quit_on_disconnect;
 
 bool modified_hostname;
 
@@ -792,6 +792,9 @@ printf( "ConnectWidget::cancelbutton() \n" );
   	prompt->hide();
   }
   prompt->setConsumed();
+
+  if(quit_on_disconnect) 
+    kapp->exit(0);
 }
 
 

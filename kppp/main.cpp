@@ -51,6 +51,7 @@ bool	have_cmdl_account;
 bool 	pppd_has_died = false;
 bool 	reconnect_on_disconnect = false;
 bool 	modem_is_locked = false;
+bool    quit_on_disconnect = false;
 
 QString old_hostname;
 QString local_ip_address;
@@ -63,6 +64,7 @@ void usage(char* progname){
   fprintf(stderr, "%s -- valid command line options:\n", progname);
   fprintf(stderr, " -h describe command line options\n");
   fprintf(stderr, " -c account_name : connect to account account_name\n");
+  fprintf(stderr, " -q : quit after end of connection\n");
   fprintf(stderr, " -r rule_file: check syntax of rule_file\n");
   exit(1);
 
@@ -193,7 +195,7 @@ int main( int argc, char **argv ) {
   int c;
   opterr = 0;
 
-  while ((c = getopt(argc, argv, "c:hvr:")) != -1){
+  while ((c = getopt(argc, argv, "c:hvr:q")) != -1){
     switch (c)
       {
 
@@ -210,6 +212,9 @@ int main( int argc, char **argv ) {
 	break;
       case 'v':
 	banner(argv[0]);
+	break;
+      case 'q':
+	quit_on_disconnect = TRUE;
 	break;
       case 'r':
 	RuleSet::checkRuleFile(optarg);
@@ -628,8 +633,13 @@ void XPPPWidget::disconnect() {
   con_win->stopClock();
   p_xppp->stopAccounting();
   con_win->hide();
-  p_xppp->quit_b->setFocus();
-  p_xppp->show();
+  
+  if(quit_on_disconnect) {
+    kapp->exit(0);
+  } else {
+    p_xppp->quit_b->setFocus();
+    p_xppp->show();
+  }
 }
 
 
