@@ -282,13 +282,9 @@ void KBiffSetup::readConfig(const char* profile)
 	QStrList profile_list;
 
 	// open the config file
-	KSimpleConfig *config = new KSimpleConfig(CONFIG_FILE);
+	KSimpleConfig *config = new KSimpleConfig(CONFIG_FILE, true);
 
 	config->setGroup("General");
-
-	// see if we have the new mailboxes
-//	ConvertWizard *wizard = new ConvertWizard;
-//	wizard->exec();
 
 	// read in the mailboxes
 	int number_of_mailboxes = config->readListEntry("Profiles", profile_list);
@@ -633,7 +629,7 @@ void KBiffGeneralTab::readConfig(const char* profile)
 {
 TRACEINIT("KBiffGeneralTab::readConfig()");
 	// open the config file
-	KSimpleConfig *config = new KSimpleConfig(CONFIG_FILE);
+	KSimpleConfig *config = new KSimpleConfig(CONFIG_FILE, true);
 
 	config->setGroup(profile);
 
@@ -746,7 +742,7 @@ void KBiffNewMailTab::readConfig(const char* profile)
 {
 TRACEINIT("KBiffNewMailTab::readConfig()");
 	// open the config file
-	KSimpleConfig *config = new KSimpleConfig(CONFIG_FILE);
+	KSimpleConfig *config = new KSimpleConfig(CONFIG_FILE, true);
 
 	TRACEF("profile = %s", profile);
 	config->setGroup(profile);
@@ -1105,7 +1101,7 @@ TRACEINIT("KBiffMailboxTab::readConfig()");
 	oldItem = 0;
 
 	// open the config file
-	KSimpleConfig *config = new KSimpleConfig(CONFIG_FILE);
+	KSimpleConfig *config = new KSimpleConfig(CONFIG_FILE, true);
 
 TRACE("Before clears");
 	mailboxHash->clear();
@@ -1527,7 +1523,7 @@ TRACEINIT("KBiffAboutTab::KBiffAboutTab()");
 	QLabel *version = new QLabel(this);
 	version->setFont(QFont("helvetica", 12));
 	QString ver_str;
-	ver_str.sprintf(i18n("Version %s\n\nCopyright (C) 1998\nKurt Granroth"), "2.1");
+	ver_str.sprintf(i18n("Version %s\n\nCopyright (C) 1998\nKurt Granroth"), "2.11");
 	version->setText(ver_str);
 	version->setAutoResize(true);
 	version->move(x, y);

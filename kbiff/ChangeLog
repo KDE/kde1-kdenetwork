@@ -1,25 +1,29 @@
-02-01-98 - Kurt Granroth
+04-18-99 - Kurt Granroth
+   o KBiff now reads the config files in read-only mode.  This should prevent
+     the "empty" files race condition
+
+02-01-99 - Kurt Granroth
    o Changed imap code to use 'unseen' flag instead of 'recent'
-	o Slightly modified Trace.cpp code to compile on NetBSD (tip o' the hat
-	  to Jaromir Dolecek <jdolecek@per4mance.cz> for that).  Apparently,
-	  the va_start() macro on NetBSD does NOT like the (const char*)
-	  overloaded method for QString
+   o Slightly modified Trace.cpp code to compile on NetBSD (tip o' the hat
+      to Jaromir Dolecek <jdolecek@per4mance.cz> for that).  Apparently,
+      the va_start() macro on NetBSD does NOT like the (const char*)
+      overloaded method for QString
    o Small change to kbiffmonitor.cpp so that pop3 doesn't produce hundreds
-	  of new 'notify' boxes (patch by Martin Hill <mjhill@home.com>)
+      of new 'notify' boxes (patch by Martin Hill <mjhill@home.com>)
 
-01-30-98 - Kurt Granroth
+01-30-99 - Kurt Granroth
    o Thanks to David Barth (dbarth@videotron.ca) for pointing out that
-	  older POP3 servers (ones that don't support UIDL) will cause KBiff
-	  to fail even though there is code to get around that...(patched)
+      older POP3 servers (ones that don't support UIDL) will cause KBiff
+      to fail even though there is code to get around that...(patched)
 
-01-13-98 - Kurt Granroth
+01-13-99 - Kurt Granroth
    o Put KProcess handling code by itself so that all executing code passes
-	  through it.
-	o Added profile name to tooltip
-	  
+      through it.
+    o Added profile name to tooltip
+      
 11-11-98 - Kurt Granroth
    o Added patch by Martin ? <spirk@kla.pvt.cz> to handle arguments for
-	  mail client better
+      mail client better
 
 11-10-98 - Kurt Granroth
    o Removed Qt 1.33 compatibility from CVS version and put back AUTOMOC
@@ -29,62 +33,62 @@
 
 10-26-98 - Kurt Granroth
    o Changed width of Advanced button so that certain translations will
-	  fit.
+      fit.
 
 10-24-98 - Kurt Granroth
    o Fixed bug in POP3 code where it would *never* go back to "no mail"
-	  state if it ever received new mail.
+      state if it ever received new mail.
 
 10-13-98 - Kurt Granroth
    o Hideously mangled KTreeView to look exactly like QListView... at least
-	  as far as kbiff is concerned.  It is *very* ugly.. but it works!  And
-	  the cool thing is when I decide to go with QListView (the real one)
-	  exclusively, well, I just have to nuke ktreeview.[cpp|h] and remove
-	  a few #ifs.
+      as far as kbiff is concerned.  It is *very* ugly.. but it works!  And
+      the cool thing is when I decide to go with QListView (the real one)
+      exclusively, well, I just have to nuke ktreeview.[cpp|h] and remove
+      a few #ifs.
 
 10-10-98 - Kurt Granroth
    o Replaced QListView with KTreeView.  QListView isn't cool enough to
-	  require all kbiff users to upgrade to Qt 1.40.  Maybe after KDE 1.1
-	  is released, I'll put it back...
+      require all kbiff users to upgrade to Qt 1.40.  Maybe after KDE 1.1
+      is released, I'll put it back...
 
 10-06-98 - Kurt Granroth
-	o Added patch from Ian Denton to use POP3 UIDL to check number of new
-	  messages.  Doesn't quite work perfectly, but it's almost there!  Still
-	  problems with knowing when POP3 mailbox was "read", though...
-	  POP3 code now will attempt to figure out the number of new messages
-	  by checking UIDL, then if that fails, it checks STAT, then if that
-	  fails, it checks LIST.
+    o Added patch from Ian Denton to use POP3 UIDL to check number of new
+      messages.  Doesn't quite work perfectly, but it's almost there!  Still
+      problems with knowing when POP3 mailbox was "read", though...
+      POP3 code now will attempt to figure out the number of new messages
+      by checking UIDL, then if that fails, it checks STAT, then if that
+      fails, it checks LIST.
 
 10-04-98 - Kurt Granroth
    o Checking for new messages in mbox breaks the code!  Added a work-around
-	  that may or may not work (didn't test yet).  This will also break
-	  random file monitoring (file *must* be in mbox format), so I added
-	  a new protocol: "file"
-	o Modified Trace class so that it will work with egcs.
+      that may or may not work (didn't test yet).  This will also break
+      random file monitoring (file *must* be in mbox format), so I added
+      a new protocol: "file"
+    o Modified Trace class so that it will work with egcs.
 
 09-25-98 - Kurt Granroth
    o Changed POP3 code back to using STAT.  Apparently some servers don't
-	  return the number of messages with a successful USER/PASS
+      return the number of messages with a successful USER/PASS
 
 09-24-98 - Kurt Granroth
    o Added code from 'korn' to check number of new messages in mbox.  'Notify'
-	  should not correctly list the number of new messages in all four
-	  mailbox types.
+      should not correctly list the number of new messages in all four
+      mailbox types.
    o Changed 'getlogin()' to more general form.  Hopefully doesn't break on
-	  non-Linux systems.
+      non-Linux systems.
    o Some bug fixes.
 
 09-23-98 - Kurt Granroth
    o Quite a few bug fixes.
 
 09-19-98 - Kurt Granroth
-	o Added -secure option
-	o Added "Read Mail" menu item.  This will set the flags to OldMail if it
-	  was New.  This also disables checking for new mail until the "current"
-	  new mail becomes old!
+    o Added -secure option
+    o Added "Read Mail" menu item.  This will set the flags to OldMail if it
+      was New.  This also disables checking for new mail until the "current"
+      new mail becomes old!
 
 09-18-98 - Kurt Granroth
-	o Fixed bug in 'scramble'
+    o Fixed bug in 'scramble'
 
 08-26-08 - Kurt Granroth
-	o Added isGIF8x to facilitate animated gifs.
+    o Added isGIF8x to facilitate animated gifs.
