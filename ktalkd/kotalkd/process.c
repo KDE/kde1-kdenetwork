@@ -75,7 +75,7 @@ void open_local_socket(char * hostname)
     }
 
     /* Fill the msg structure (ntalk protocol) */
-    new_msg.vers = 0; // TALK_VERSION for ntalk is 1. Let's assign 0 to otalk.
+    new_msg.vers = 0; /* TALK_VERSION for ntalk is 1. Let's assign 0 to otalk. */
 }
 
 void close_local_socket()
