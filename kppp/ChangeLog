@@ -1,3 +1,8 @@
+1998-11-28  Harri Porten  <porten@kde.org>
+
+	* main.cpp: restored accidentally deleted line (setPassword())
+	* connect.cpp: suppress warnings from QStrList
+
 1998-11-26  Harri Porten  <porten@kde.org>
 
 	* included errno.h in opener.cpp and modified CMSG_DATA()'s

@@ -912,6 +912,8 @@ void KPPPWidget::connectbutton() {
     return;
   }
 
+  gpppdata.setPassword(PW_Edit->text());
+
   // if this is a PAP account, ensure that password and username are
   // supplied
   if(gpppdata.authMethod() == AUTH_PAP) {

@@ -384,10 +384,11 @@ void ConnectWidget::timerEvent(QTimerEvent *) {
       timeout_timer->stop();
       timeout_timer->start(scriptTimeout);
 
-      scriptCommand = comlist->at(scriptindex);
-      scriptArgument = arglist->at(scriptindex);
-
-      if(!scriptCommand || !scriptArgument) {
+      if((unsigned) scriptindex < comlist->count()) {
+        scriptCommand = comlist->at(scriptindex);
+        scriptArgument = arglist->at(scriptindex);
+      } else {
+        Debug("End of script\n");
 	vmain = 10;
         return;
       }
