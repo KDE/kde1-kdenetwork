@@ -381,6 +381,12 @@ const QString KMAcctPop::decryptStr(const QString aStr)
 
 
 //-----------------------------------------------------------------------------
+void KMAcctPop::setStorePasswd(bool b)
+{
+  mStorePasswd = b;
+}
+
+//-----------------------------------------------------------------------------
 void KMAcctPop::setLeaveOnServer(bool b)
 {
   mLeaveOnServer = b;
@@ -398,6 +404,13 @@ void KMAcctPop::setRetrieveAll(bool b)
 void KMAcctPop::setLogin(const QString& aLogin)
 {
   mLogin = aLogin;
+}
+
+
+//-----------------------------------------------------------------------------
+const QString KMAcctPop::passwd(void) const
+{
+  return decryptStr(mPasswd);
 }
 
 

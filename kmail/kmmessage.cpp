@@ -21,6 +21,7 @@
 #define protected public
 #include <mimelib/body.h>
 #undef protected
+#include <mimelib/field.h>
 
 #include <mimelib/mimepp.h>
 #include <qregexp.h>
@@ -335,11 +336,14 @@ const QString KMMessage::asQuotedString(const QString aHeaderStr,
   {
      Kpgp* pgp = Kpgp::getKpgp();
      assert(pgp != NULL);
-     pgp->setMessage(bodyDecoded());
-     if( pgp->isEncrypted() )
-         pgp->decrypt();
-
-     result = QString(pgp->message()).stripWhiteSpace();
+	  result = bodyDecoded();
+     pgp->setMessage(result);
+     if(pgp->isEncrypted()) 
+	  {
+		  pgp->decrypt();
+		  result = QString(pgp->message()).stripWhiteSpace();
+	  }
+	  else result = result.stripWhiteSpace();
 
      result.replace(reNL,nlIndentStr) + '\n';
   }
@@ -825,12 +829,12 @@ const QStrList KMMessage::headerAddrField(const QString aName) const
 const QString KMMessage::headerField(const QString aName) const
 {
   DwHeaders& header = mMsg->Headers();
+  DwField* field;
 
-  if (aName.isEmpty())
+  if (aName.isEmpty() || !(field = header.FindField((const char*)aName)))
     result = "";
   else 
-    result = decodeRFC1522String(header.FieldBody((const char*)aName).
-                                 AsString().c_str());
+    result = decodeRFC1522String(field->FieldBody()->AsString().c_str());
   result.detach();
   return result;
 }

@@ -1,3 +1,16 @@
+1999-04-11  Stefan Taferner  <taferner@kde.org> (KMail-1.0.19)
+
+	* Added missing index-7.html and index-8.html to doc/Makefile.am
+	
+	* Fixed broken composer: message bodies did not show up upon
+	  reply.
+	
+	* Added store-pop-password-in-config option, from Michael 
+	  Rendell <michael@cs.mun.ca>
+	
+	* KMMessage::headerField() no longer creates an empty header
+	  field when field with given name does not exist.
+
 1999-01-04  Sven Radej <radej@kde.org> (KMail-1.0.18)
         * Patch from Don Sanders <dsanders@cch.com.au> cleared
           bugs 614, 1019 and 941. Also, folders show number of unread

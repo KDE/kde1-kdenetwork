@@ -27,11 +27,12 @@ public:
   virtual void setLogin(const QString&);
 
   /** Pop user password */
-  const QString& passwd(void) const { return mPasswd; }
+  const QString passwd(void) const;
   virtual void setPasswd(const QString&, bool storeInConfig=FALSE);
 
   /** Will the password be stored in the config file ? */
   bool storePasswd(void) const { return mStorePasswd; }
+  virtual void setStorePasswd(bool);
 
   /** Pop host */
   const QString& host(void) const { return mHost; }

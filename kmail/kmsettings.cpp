@@ -869,7 +869,7 @@ KMAccountSettings::KMAccountSettings(QWidget *parent, const char *name,
   acctType = mAcct->type();
 
   setCaption("Configure Account");
-  grid = new QGridLayout(this, 16, 3, 8, 4);
+  grid = new QGridLayout(this, 18, 3, 8, 4);
   grid->setColStretch(1, 5);
 
   lbl = new QLabel(i18n("Type:"), this);
@@ -906,20 +906,25 @@ KMAccountSettings::KMAccountSettings(QWidget *parent, const char *name,
     mEdtHost = createLabeledEntry(this, grid, i18n("Host:"),
 				  ((KMAcctPop*)mAcct)->host(), 4, 0);
 
-    QString tmpStr(32);
+    QString tmpStr;
     tmpStr.sprintf("%d",((KMAcctPop*)mAcct)->port());
     mEdtPort = createLabeledEntry(this, grid, i18n("Port:"),
 				  tmpStr, 5, 0);
 
+    mStorePasswd = new QCheckBox(i18n("Store POP password in config file"), this);
+    mStorePasswd->setMinimumSize(mStorePasswd->sizeHint());
+    mStorePasswd->setChecked(((KMAcctPop*)mAcct)->storePasswd());
+    grid->addMultiCellWidget(mStorePasswd, 6, 6, 1, 2);
+
     mChkDelete = new QCheckBox(i18n("Delete mail from server"), this);
     mChkDelete->setMinimumSize(mChkDelete->sizeHint());
     mChkDelete->setChecked(!((KMAcctPop*)mAcct)->leaveOnServer());
-    grid->addMultiCellWidget(mChkDelete, 6, 6, 1, 2);
+    grid->addMultiCellWidget(mChkDelete, 7, 7, 1, 2);
 
     mChkRetrieveAll=new QCheckBox(i18n("Retrieve all mail from server"), this);
     mChkRetrieveAll->setMinimumSize(mChkRetrieveAll->sizeHint());
     mChkRetrieveAll->setChecked(((KMAcctPop*)mAcct)->retrieveAll());
-    grid->addMultiCellWidget(mChkRetrieveAll, 7, 7, 1, 2);
+    grid->addMultiCellWidget(mChkRetrieveAll, 8, 8, 1, 2);
 
   }
   else 
@@ -931,7 +936,7 @@ KMAccountSettings::KMAccountSettings(QWidget *parent, const char *name,
   mChkInterval = new QCheckBox(i18n("Enable interval Mail checking"), this);
   mChkInterval->setMinimumSize(mChkInterval->sizeHint());
   mChkInterval->setChecked(mAcct->checkInterval() > 0);
-  grid->addMultiCellWidget(mChkInterval, 8, 8, 1, 2);
+  grid->addMultiCellWidget(mChkInterval, 9, 9, 1, 2);
 
   // label with "Local Account" or "Pop Account" created previously
   lbl->adjustSize();
@@ -941,7 +946,7 @@ KMAccountSettings::KMAccountSettings(QWidget *parent, const char *name,
   lbl = new QLabel(i18n("Store new mail in account:"), this);
   lbl->adjustSize();
   lbl->setMinimumSize(lbl->sizeHint());
-  grid->addMultiCellWidget(lbl, 10, 10, 0, 2);
+  grid->addMultiCellWidget(lbl, 11, 11, 0, 2);
 
   // combobox of all folders with current account folder selected
   acctFolder = mAcct->folder();
@@ -966,7 +971,7 @@ KMAccountSettings::KMAccountSettings(QWidget *parent, const char *name,
   mFolders->adjustSize();
   mFolders->setMinimumSize(100, mEdtName->minimumSize().height());
   mFolders->setMaximumSize(500, mEdtName->minimumSize().height());
-  grid->addWidget(mFolders, 11, 1);
+  grid->addWidget(mFolders, 12, 1);
 
 
   // buttons at bottom
@@ -987,7 +992,7 @@ KMAccountSettings::KMAccountSettings(QWidget *parent, const char *name,
 
   btnBox->setMinimumSize(230, ok->size().height()+10);
   btnBox->setMaximumSize(2048, ok->size().height()+10);
-  grid->addMultiCellWidget(btnBox, 14, 14, 0, 2);
+  grid->addMultiCellWidget(btnBox, 15, 15, 0, 2);
 
   resize(350,350);
   grid->activate();
@@ -1035,7 +1040,9 @@ void KMAccountSettings::accept()
     ((KMAcctPop*)mAcct)->setHost(mEdtHost->text());
     ((KMAcctPop*)mAcct)->setPort(atoi(mEdtPort->text()));
     ((KMAcctPop*)mAcct)->setLogin(mEdtLogin->text());
-    ((KMAcctPop*)mAcct)->setPasswd(mEdtPasswd->text(), true);
+    ((KMAcctPop*)mAcct)->setStorePasswd(mStorePasswd->isChecked());
+    ((KMAcctPop*)mAcct)->setPasswd(mEdtPasswd->text(),
+				   ((KMAcctPop*)mAcct)->storePasswd());
     ((KMAcctPop*)mAcct)->setLeaveOnServer(!mChkDelete->isChecked());
     ((KMAcctPop*)mAcct)->setRetrieveAll(mChkRetrieveAll->isChecked());
   }
