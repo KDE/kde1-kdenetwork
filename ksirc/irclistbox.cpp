@@ -2,8 +2,14 @@
 #include <iostream.h>
 
 #include <qevent.h>
+#include <qregexp.h>
+#include <kapp.h>
+#include <qclipboard.h>
 
 #include "KSCutDialog/KSCutDialog.h"
+#include "irclistitem.h"
+
+extern KApplication *kApp;
 
 static const int fudge = 5;
 
@@ -32,6 +38,7 @@ KSircListBox::KSircListBox(QWidget * parent, const char * name, WFlags f) : QLis
 	  SLOT(pageUp()));
   vertScroll->show();
   ScrollToBottom = TRUE;
+  selectMode = FALSE;
 }
 
 KSircListBox::~KSircListBox()
@@ -202,4 +209,108 @@ void KSircListBox::updateTableSize()
 {
   thDirty = TRUE;
   QTableView::updateTableSize();
+}
+
+void KSircListBox::mousePressEvent(QMouseEvent *me){
+  int srow, sline, schar;
+  ircListItem *sit;
+  if(!xlateToText(me->x(), me->y(),&srow, &sline, &schar, &sit))
+    return;
+  sit->setRevOne(schar);
+  sit->setRevTwo(schar+1);
+  sit->updateSize();
+  repaint(true);
+  cerr << "Mouse press event!\n";
+  selectMode = TRUE;
+}
+
+void KSircListBox::mouseReleaseEvent(QMouseEvent *me){
+  cerr << "Mouse release event!\n";
+  selectMode = FALSE;
+  int row, line, rchar;
+  ircListItem *it;
+  if(!xlateToText(me->x(), me->y(), &row, &line, &rchar, &it))
+    return;
+  debug("Selected: %s", it->getRev().data());
+  kApp->clipboard()->setText(it->getRev());
+  it->setRevOne(-1);
+  it->setRevTwo(-1);
+  it->updateSize();
+  repaint(true);
+
+
+}
+
+void KSircListBox::mouseMoveEvent(QMouseEvent *me){
+  int row, line, rchar;
+  ircListItem *it;
+  if(!xlateToText(me->x(), me->y(), &row, &line, &rchar, &it))
+    return;
+  it->setRevTwo(rchar);
+  it->updateSize();
+  updateItem(row, TRUE);
+}
+
+bool KSircListBox::xlateToText(int x, int y,
+                               int *rrow, int *rline, int *rchar, ircListItem **rit){
+  int row, line;
+  if(x < 0)
+    x = 0;
+  else if(x > width())
+    x = width();
+  if(y < 0)
+    y = 0;
+  else if(y > height())
+    y = height();
+  cerr << "Selected: " << selectMode << " x: " << x << " y: " << y << endl;
+  int top = topItem();
+  setTopItem(top);
+  int lineheight = fontMetrics().lineSpacing();
+  int yoff = y;
+  if(item(top) == 0x0)
+    return FALSE;
+  for(row = top; yoff > item(row)->height(this); row++) {
+    yoff -= item(row)->height(this);
+    if(item(row+1) == 0x0)
+      break;
+  }
+  for(line = 0; yoff > lineheight; line++) {
+    yoff -= lineheight;
+  }
+  cerr << "Row: " << row << " Line: " << line << endl;
+  ircListItem *it = (ircListItem *) item(row);
+  if(it == 0x0){
+    warning("Row out of range: %d", row);
+    return FALSE;
+  }
+  cerr << "Line: " << it->paintText()->at(line) << endl;
+  QString sline = it->paintText()->at(line);
+  if(sline.isNull()){
+    warning("No such line: %d", line);
+    return FALSE;
+  }
+  QFontMetrics fm = fontMetrics();
+  int xoff = x, cchar = 0;
+  if(it->pixmap() != 0x0)
+    xoff -= (it->pixmap()->width() + 5);
+  sline.replace(QRegExp("[~\003][0-9]+,*[0-9]*"), "");
+  sline.replace(QRegExp("~[burci]"), ""); // Doesn't work for escaped things well
+  sline.replace(QRegExp("~~"), "~");
+  cerr << "Line: " << sline << endl;
+  for(;  xoff > fm.width(sline[0]); cchar++){
+    xoff -= fm.width(sline[0]);
+    sline.remove(0, 1);
+    if(sline.isEmpty())
+      return FALSE;
+  }
+  // Give abolute pos from start of the line
+  for(int l = line-1;  l >= 0; l --){
+    cchar += strlen(it->paintText()->at(line));
+  }
+  cerr << "On char: " << sline[0] << " Index: " << cchar << endl;
+  *rrow = row;
+  *rchar = cchar;
+  *rline = line;
+  *rit = it;
+  return TRUE;
 }

@@ -5,6 +5,7 @@
 
 #include <qbitmap.h>
 #include <qimage.h>
+#include <qregexp.h>
 
 #include "config.h"
 
@@ -14,19 +15,22 @@ ircListItem::ircListItem(QString s, const QColor *c, QListBox *lb, QPixmap *p)
     
 {
 
-  itext = s.data();
+  rtext = s.data();
   setText(s);
   colour = c;
   pm = p;
   parent_lb = lb;
 
-
+  
   Wrapping = TRUE;
   frozen = FALSE;
 
   rows = 1;
   linewidth = 0;
   totalheight = 0;
+
+  revOne = revTwo = -1;
+  forceClear = FALSE;
 
   paint_text = new QStrList();
 
@@ -43,7 +47,7 @@ ircListItem::~ircListItem()
 {
   delete paint_text;
   delete dbuffer;
-  itext.truncate(0);
+  rtext.truncate(0);
   
 }
 
@@ -103,8 +107,11 @@ void ircListItem::setupPainterText()
   // We skip over all !<>,<> time constructs.
   
 
+  itext = rtext;
+  itext.detach();
   paint_text->clear();
   int max_width = parent_lb->width()-35;
+  int realIndex = 0;
   if((fm.width(itext) > max_width) && (Wrapping == TRUE)){
     int lastp = 0;
     int width = xPos - fm.width(itext[0]);
@@ -137,7 +144,8 @@ void ircListItem::setupPainterText()
 	}
       }
       else{
-	width += fm.width(itext[i]);
+        width += fm.width(itext[i]);
+        realIndex++;
 	if(width >= max_width){
 	  int newi = i;
 	  for(; (newi > 0) &&
@@ -150,7 +158,15 @@ void ircListItem::setupPainterText()
 	  ig = 0;
 	  width = xPos;
 	  lastp = i;
-	}
+        }
+        if(realIndex == revOne){
+          itext.insert(i, "~r");
+          i+=2; // Steps ahead over the ~r, we move a total of 3 since we'll count the current itext[i] twice if we only more two
+        }
+        if(realIndex == revTwo){
+          itext.insert(i, "~r");
+          i+=2; // ditto
+        }
       }
     }
     paint_text->append(itext.mid(lastp, i-lastp));
@@ -159,6 +175,10 @@ void ircListItem::setupPainterText()
   else{
     rows = 1;
     //    linewidth = fm.width(itext);
+    if(revOne > 0)
+      itext.insert(revOne, "~r");
+    if(revOne > 0 && revOne > 0)
+      itext.insert(revTwo > revOne ? revTwo + 2 : revTwo, "~r");
     paint_text->append(itext);
   }
   linewidth = parent_lb->width()-35; // set out width to the parent width.
@@ -170,11 +190,14 @@ void ircListItem::setupPainterText()
   // EVER call width and height before this point.
 
   if((old_width != width(0)) ||
-     (old_height != height(0))){
+     (old_height != height(0)) ||
+     (forceClear == TRUE)
+    ){
     old_width = width(0);
     old_height = height(0);
     dbuffer->resize(old_width + 35, old_height);
     dbuffer->fill(parent_lb->backgroundColor());
+    forceClear = FALSE;
   }
   
   // Print everything to the pixmap so when a paint() comes along
@@ -231,8 +254,12 @@ void ircListItem::setupPainterText()
     dbuffer->resize(1,1);
     need_update = TRUE;
   }
-    
-    
+
+  if(revOne != -1 || revTwo != -1){
+    debug("itext: %s", itext.data());
+    debug("rtext: %s", rtext.data());
+
+  }
 }
 
 void ircListItem::updateSize(){
@@ -250,4 +277,19 @@ void ircListItem::setWrapping(bool _wrap){
 
 inline bool ircListItem::wrapping(){
   return Wrapping;
+}
+
+QString ircListItem::getRev(){
+    if(revOne == -1 ||
+       revTwo == -1)
+      return QString();
+    QString seltext = rtext;
+    seltext.detach();
+    seltext.replace(QRegExp("[~\003][0-9]+,*[0-9]*"), "");
+    seltext.replace(QRegExp("[~][burci]"), ""); // Doesn't work for escaped things well
+    seltext.replace(QRegExp("~~"), "~");
+    if(revOne < revTwo)
+      return seltext.mid(revOne, revTwo - revOne);
+    else
+      return seltext.mid(revTwo, revOne - revTwo);
 }

@@ -21,7 +21,11 @@ class ircListItem : public QObject,
   virtual int row();
 
   QString getText(){
-    return itext;
+    return rtext;
+  }
+
+  virtual const QPixmap* pixmap(){
+    return pm;
   }
 
   void setWrapping(bool);
@@ -30,6 +34,24 @@ class ircListItem : public QObject,
   const QColor *defcolour(){
     return colour;
   }
+
+  QStrList *paintText(){
+    return paint_text;
+  }
+
+  void setRevOne(int r){
+    need_update = TRUE;
+    forceClear = TRUE;
+    revOne = r;
+  }
+
+  void setRevTwo(int r){
+    need_update = TRUE;
+    forceClear = TRUE;
+    revTwo = r;
+  }
+
+  QString getRev();
 
 public slots:
   virtual void updateSize();
@@ -49,7 +71,7 @@ private:
   bool need_update;
   int old_height, old_width;
   const QColor *colour;
-  QString itext;
+  QString itext, rtext;
 
   int rows;
 
@@ -64,6 +86,9 @@ private:
 
   bool Wrapping;
   bool frozen;
+
+  int revOne, revTwo;
+  bool forceClear;
 
 
 };

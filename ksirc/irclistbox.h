@@ -2,6 +2,8 @@
 #include <qlistbox.h>
 #include <qscrbar.h>
 
+#include "irclistitem.h"
+
 class KSircListBox : public QListBox
 {
  Q_OBJECT;
@@ -42,6 +44,13 @@ class KSircListBox : public QListBox
   virtual void resizeEvent(QResizeEvent *);
   virtual int totalHeight ();
 
+  virtual void mousePressEvent(QMouseEvent *);
+  virtual void mouseReleaseEvent(QMouseEvent *);
+  virtual void mouseMoveEvent(QMouseEvent *);
+
+  bool xlateToText(int x, int y, int *rrow, int *rline, int *rchar, ircListItem **);
+
+
 //  virtual void paintEvent ( QPaintEvent * );
 
  private:
@@ -68,5 +77,10 @@ class KSircListBox : public QListBox
     * set scroll to bottom true.
     */
   int imin(int, int);
+
+  /**
+   * If we are selection this is true. otherwise it's false
+   */
+  bool selectMode;
 
 };

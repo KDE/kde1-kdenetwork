@@ -1077,7 +1077,7 @@ void KSircTopLevel::openCutWindow() /*fold00*/
   // kscd deletes it self.
 }
 
-void KSircTopLevel::pasteToWindow() /*fold00*/
+void KSircTopLevel::pasteToWindow() /*FOLD00*/
 {
   QString text = kApp->clipboard()->text();
   text += "\n";
@@ -1158,7 +1158,7 @@ kstInside::kstInside ( QWidget * parent, const char * name, WFlags f,  /*FOLD00*
 
   mainw = new KSircListBox(pan, "");
   mainw->setFocusPolicy(QWidget::NoFocus);
-  mainw->setEnabled(FALSE);              
+//  mainw->setEnabled(FALSE);
   mainw->setSmoothScrolling(TRUE);       
 
   nicks = new aListBox(pan, "");

@@ -94,15 +94,15 @@ void PObject::setWidgetId(widgetId *pwI) /*fold00*/
   //  debug("PObject: set widget id %d", wI.iWinId);
 }
 
-widgetId PObject::widgetIden() /*fold00*/
+widgetId PObject::widgetIden() /*FOLD00*/
 {
   //  debug("PObject: called widget id %d", wI.iWinId);
   return wI;
 }
 
-void PObject::swidgetDestroyed(){ /*fold00*/
+void PObject::swidgetDestroyed(){ /*FOLD00*/
   //  debug("PObject: got destroy %d", widgetIden().iWinId);
-  emit widgetDestroyed(widgetIden());
+  emit widgetDestroyed(wI);
 }
 
 PukeController *PObject::controller() { /*fold00*/

@@ -23,7 +23,7 @@
 
 uint PukeController::uiBaseWinId = 10; // Gives a little seperation from the controller id
 
-PukeController::PukeController(QString sock, QObject *parent=0, const char *name=0) /*FOLD00*/
+PukeController::PukeController(QString sock, QObject *parent=0, const char *name=0) /*fold00*/
   : PObject(parent, name)
 {
   int len, prev_umask;
@@ -114,7 +114,7 @@ PukeController::~PukeController() /*fold00*/
   unlink(qsPukeSocket);
 }
 
-void PukeController::NewConnect(int) /*FOLD00*/
+void PukeController::NewConnect(int) /*fold00*/
 {
   int cfd;
   int len = 0;
@@ -163,7 +163,7 @@ void PukeController::Writeable(int fd) /*fold00*/
   }
 }
 
-void PukeController::writeBuffer(int fd, PukeMessage *message) /*FOLD00*/
+void PukeController::writeBuffer(int fd, PukeMessage *message) /*fold00*/
 {
   if(qidConnectFd[fd]){
     //    if(qidConnectFd[fd]->writeable == FALSE){
@@ -235,7 +235,7 @@ void PukeController::writeBuffer(int fd, PukeMessage *message) /*FOLD00*/
   }
 }
 
-void PukeController::Traffic(int fd) /*FOLD00*/
+void PukeController::Traffic(int fd) /*fold00*/
 {
   PukeMessage pm;
   int bytes = -1;
@@ -301,7 +301,7 @@ void PukeController::ServMessage(QString, int, QString) /*fold00*/
 // Message Dispatcher is in messagedispatcher.cpp
 
 
-void PukeController::MessageDispatch(int fd, PukeMessage *pm) /*FOLD00*/
+void PukeController::MessageDispatch(int fd, PukeMessage *pm) /*fold00*/
 {
     try {
 
@@ -335,7 +335,7 @@ void PukeController::MessageDispatch(int fd, PukeMessage *pm) /*FOLD00*/
     }
 }
 
-void PukeController::initHdlr() /*FOLD00*/
+void PukeController::initHdlr() /*fold00*/
 {
 
   widgetCreate *wc;
@@ -406,7 +406,7 @@ void PukeController::hdlrPukeInvalid(int fd, PukeMessage *) /*fold00*/
 }
 
 
-void PukeController::hdlrPukeSetup(int fd, PukeMessage *pm) /*FOLD00*/
+void PukeController::hdlrPukeSetup(int fd, PukeMessage *pm) /*fold00*/
 {
   PukeMessage pmOut;
   memset(&pmOut, 0, sizeof(pmOut));
@@ -445,7 +445,7 @@ void PukeController::hdlrPukeDumpTree(int fd, PukeMessage *pm) /*fold00*/
 }
 
 
-void PukeController::hdlrPukeFetchWidget(int fd, PukeMessage *pm) /*FOLD00*/
+void PukeController::hdlrPukeFetchWidget(int fd, PukeMessage *pm) /*fold00*/
 {
   widgetId wIret;
   
@@ -529,7 +529,7 @@ void PukeController::hdlrPukeFetchWidget(int fd, PukeMessage *pm) /*FOLD00*/
   emit outputMessage(fd, &pmRet);
 
 }
-void PukeController::closefd(int fd) /*FOLD00*/
+void PukeController::closefd(int fd) /*fold00*/
 {
   if(bClosing == TRUE)
     return;
@@ -640,16 +640,16 @@ PWidget *PukeController::id2pwidget(widgetId *pwi){ /*fold00*/
   else
     throw(errorNoSuchWidget(*pwi));
 }
-void PukeController::insertPObject(int fd, int iWinId, WidgetS *obj){ /*fold00*/
+void PukeController::insertPObject(int fd, int iWinId, WidgetS *obj){ /*FOLD00*/
     if(WidgetList[fd] == NULL){
         QIntDict<WidgetS> *qidWS = new QIntDict<WidgetS>;
-        qidWS->setAutoDelete(TRUE);
+        qidWS->setAutoDelete(FALSE);
         WidgetList.insert(fd, qidWS);
     }
     WidgetList[fd]->insert(iWinId, obj);
 }
 
-void PukeController::messageHandler(int fd, PukeMessage *pm) { /*FOLD00*/
+void PukeController::messageHandler(int fd, PukeMessage *pm) { /*fold00*/
   widgetId wI, wIret;
   wI.fd = fd;
   wI.iWinId = pm->iWinId;
@@ -767,7 +767,7 @@ void PukeController::messageHandler(int fd, PukeMessage *pm) { /*FOLD00*/
   }
 }
 
-widgetId PukeController::createWidget(widgetId wI, PukeMessage *pm) /*FOLD00*/
+widgetId PukeController::createWidget(widgetId wI, PukeMessage *pm) /*fold00*/
 {
   widgetId wIret;
   PWidget *parent = 0; // Defaults to no parent
@@ -823,12 +823,13 @@ widgetId PukeController::createWidget(widgetId wI, PukeMessage *pm) /*FOLD00*/
   return wIret;
 }
 
-void PukeController::closeWidget(widgetId wI){ /*fold00*/
+void PukeController::closeWidget(widgetId wI){ /*FOLD00*/
   // Check to make sure we have a valid widget
   // Then remove it from the list.
   // Don't delete it since well, we're being called since it's already 
   // being deleted.
-//  debug("Want to delete: %d", wI.iWinId);
+  //  debug("Want to delete: %d", wI.iWinId);
+  
   if(checkWidgetId(&wI) == TRUE){
     WidgetList[wI.fd]->remove(wI.iWinId);
 
