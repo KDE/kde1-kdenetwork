@@ -17,6 +17,7 @@ SUBDIRS =	Argentina \
 		Japan \
 		Kazakhstan \
 		Luxembourg \
+		Mauritius \
 		Malaysia \
 		Netherlands \
 		Norway \
