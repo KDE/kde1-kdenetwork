@@ -4,7 +4,8 @@ FILES = index.html\
 	articles.html\
         groups.html\
         offline.html\
-        overview.html
+        overview.html\
+        groups.gif
 
 DESTDIR = $(prefix)/share/doc/HTML/en/krn/
 INSTALL_DIR = @INSTALL@ -d -m 0755

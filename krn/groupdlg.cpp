@@ -140,14 +140,14 @@ Groupdlg::Groupdlg
     connect (newsgroup,SIGNAL(activated(int)),SLOT(currentActions(int)));
     
     QPopupMenu *options = new QPopupMenu;
-    options->insertItem(klocale->translate("Identity"),CHANGE_IDENTITY);
-    options->insertItem(klocale->translate("NNTP Options"),CONFIG_NNTP);
+    options->insertItem(klocale->translate("Identity..."),CHANGE_IDENTITY);
+    options->insertItem(klocale->translate("NNTP Options..."),CONFIG_NNTP);
     connect (options,SIGNAL(activated(int)),SLOT(currentActions(int)));
 
     QPopupMenu *help = new QPopupMenu;
     help->insertItem(klocale->translate("Contents"),HELP_CONTENTS);
     help->insertSeparator();
-    help->insertItem(klocale->translate("About"),HELP_ABOUT);
+    help->insertItem(klocale->translate("About Krn..."),HELP_ABOUT);
     connect (help,SIGNAL(activated(int)),SLOT(currentActions(int)));
 
     KMenuBar *menu = new KMenuBar (this, "menu");
