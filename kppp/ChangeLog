@@ -1,3 +1,10 @@
+1999-03-05  Harri Porten  <porten@kde.org>
+
+	* requester.cpp: relaxed check for msg_controllen due to alignment
+	problems on different hardware architectures (eg. Alphas). Proposed
+	by Martin Ostermann <ost@comnets.rwth-aachen.de>
+	* removed unused or doubled code
+
 1999-02-04  Harri Porten  <porten@kde.org>
 
 	* main.cpp: remove stale pidfile before creating new the

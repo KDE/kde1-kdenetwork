@@ -164,11 +164,9 @@ void Opener::mainLoop() {
 	  lockfile[0] = '\0';
 	  fd = open(DEVNULL, O_RDONLY);
 	  response.status = -errno;
-	  sendFD(fd, &response);
-	} else {
+	} else
 	  fchown(fd, 0, 0);
-	  sendFD(fd, &response);
-	}
+        sendFD(fd, &response);
 	close(fd);
 	break;
 
@@ -191,9 +189,8 @@ void Opener::mainLoop() {
 	  Debug("error opening resolv.conf!");
 	  fd = open(DEVNULL, O_RDONLY);
 	  response.status = -errno;
-	  sendFD(fd, &response);
-	} else
-	  sendFD(fd, &response);
+	}
+        sendFD(fd, &response);
 	close(fd);
 	break;
 
@@ -206,11 +203,9 @@ void Opener::mainLoop() {
 	    Debug("error opening syslog file !");
 	    fd = open(DEVNULL, O_RDONLY);
 	    response.status = -errno;
-	    sendFD(fd, &response);
-	  } else
-	    sendFD(fd, &response);
-	} else
-	  sendFD(fd, &response);
+	  }
+        }
+        sendFD(fd, &response);
 	close(fd);
 	break;
 

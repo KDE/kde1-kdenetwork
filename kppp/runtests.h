@@ -38,7 +38,6 @@ const int TEST_NOCONNECT = 2;
 const int TEST_CRITICAL = 3;
 
 // Various tests to be run at starttime
-int securityTests();
 int runTests();
 const char *getHomeDir();
 

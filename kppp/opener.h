@@ -47,7 +47,6 @@ private:
   bool execpppd(const char *arguments);
   bool killpppd();
   void parseargs(char* buf, char** args);
-  const char *findFileInPath(const char *fname, const char *extraPath);
 
   int socket;
   int ttyfd;

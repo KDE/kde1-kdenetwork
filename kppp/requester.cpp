@@ -102,7 +102,7 @@ int Requester::recvFD() {
   if(len <= 0) {
     perror("recvmsg failed");
     return -1;
-  } else if (msg.msg_controllen != cmsglen) {
+  } else if (msg.msg_controllen < cmsglen) {
     perror("recvmsg: truncated message");
     exit(1);
   } else {

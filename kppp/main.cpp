@@ -33,15 +33,10 @@
 #include <locale.h>
 #include <errno.h>
 #include <fcntl.h>
+#include <stdlib.h>
 
 #ifdef HAVE_SYS_PARAM_H
 #include <sys/param.h>
-#endif
-
-#ifdef BSD
-#include <stdlib.h>
-#else
-#include <getopt.h>
 #endif
 
 #include <kmsgbox.h>
@@ -328,9 +323,6 @@ int main( int argc, char **argv ) {
     setenv("HOME", getHomeDir(), 1); 
 
   (void) new Requester(sockets[0]);
-
-  if(securityTests() != TEST_OK)
-    shutDown(1);
 
   KApplication a(argc, argv, "kppp");
 
@@ -955,16 +947,10 @@ void KPPPWidget::connectbutton() {
   QFileInfo info(gpppdata.pppdPath());
 
   if(!info.exists()){
-    QString string;   
-    string.sprintf(i18n("kppp can not find:\n %s\n"
-    			"Please install pppd properly and/or adjust\n"
-    			"the location of the pppd executable on\n"
-			"the PPP tab of the setup dialog.\n"
-			"This will insure that kppp can find the\n"
-			"PPP daemon.\n"
-			"Thank You"),
-		   gpppdata.pppdPath());
-    QMessageBox::warning(this, i18n("Error"), string.data());
+    QMessageBox::warning(this, i18n("Error"),
+                         i18n("Cannot find the PPP daemon!\n\n"
+                              "Make sure that pppd is installed and\n"
+                              "you have entered the correct path."));
     return;
   }
 #if 0

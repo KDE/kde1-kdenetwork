@@ -1,7 +1,7 @@
 #ifndef _DEVICES_H_
 #define _DEVICES_H_
 
-static char *devices[] = {
+static const char *devices[] = {
 #ifdef __FreeBSD__
   "/dev/cuaa0",
   "/dev/cuaa1",
@@ -26,5 +26,8 @@ static char *devices[] = {
 #endif
 #endif
   0};
+
+// default device number from the list above
+const int DEV_DEFAULT = 0;
 
 #endif
