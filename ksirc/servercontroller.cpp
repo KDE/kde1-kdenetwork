@@ -56,6 +56,10 @@
       Action:
           Changes the old window name to the new window name in the tree
           list box.  Call for all name change!
+   reuse()
+      Action:
+          Toggles the Global option to reuse the !default window on each
+          call.  Sets the menu item.   
  
  *********************************************************************/
 
@@ -69,6 +73,7 @@
 #include <qkeycode.h>
 
 #define Inherited servercontrollerData
+extern KConfig *kConfig;
 
 servercontroller::servercontroller
 (
@@ -80,10 +85,19 @@ servercontroller::servercontroller
 {
 	setCaption( "Server Control" );
 	QPopupMenu *connections = new QPopupMenu();
-	connections->insertItem("New Server...", this, SLOT(new_connection()), CTRL + Key_N );
+	connections->insertItem("&New Server...", this, SLOT(new_connection()), CTRL + Key_N );
 	connections->insertSeparator();
-	connections->insertItem("Join Channel...", this, SLOT(new_channel()), CTRL + Key_J);
-	MenuBar->insertItem("Connections", connections);
+	connections->insertItem("&Join Channel...", this, SLOT(new_channel()), CTRL + Key_J);
+	MenuBar->insertItem("&Connections", connections);
+	
+	kConfig->setGroup("GlobalOptions");
+	options = new QPopupMenu();
+	reuse_id = options->insertItem("Seperate Message Window", 
+			    this, SLOT(reuse()));
+	options->setItemChecked(reuse_id, 
+				kConfig->readNumEntry("Reuse", TRUE));
+	MenuBar->insertItem("&Options", options);
+
 	setMenu(MenuBar);
 	
 	ConnectionTree->setExpandLevel(2);
@@ -204,4 +218,18 @@ void servercontroller::recvChangeChannel(QString parent, QString old_chan, QStri
   path.pop();
   // Add new child.  Delete/creates wrecks the "random" sort order though.
   ConnectionTree->addChildItem(new_chan.data(), NULL, &path);
+}
+
+void servercontroller::reuse()
+{
+  kConfig->setGroup("GlobalOptions");
+  if(kConfig->readNumEntry("Reuse", TRUE) == TRUE){
+    options->setItemChecked(reuse_id, FALSE);
+    kConfig->writeEntry("Reuse", FALSE);
+  }
+  else{
+    options->setItemChecked(reuse_id, TRUE);
+    kConfig->writeEntry("Reuse", TRUE);
+  }
+  kConfig->sync();
 }

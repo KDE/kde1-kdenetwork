@@ -43,6 +43,7 @@ private:
   QDict<KSircMessageReceiver> TopList;
 
   bool running_window;
+  bool default_follow_focus;
 
   char *server;
 

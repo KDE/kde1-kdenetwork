@@ -43,11 +43,14 @@ public slots:
     virtual void new_channel();
     virtual void new_toplevel(QString str);
     virtual void recvChangeChannel(QString, QString, QString);
+    virtual void reuse();
 
 private:
     // Hold a list of all KSircProcess's for access latter.  Index by server 
     // name
-    QDict<KSircProcess> proc_list;
+  QDict<KSircProcess> proc_list;
+  QPopupMenu *options;
+  int reuse_id;
 
 };
 #endif // servercontroller_included

@@ -23,7 +23,15 @@ KSircProcess::KSircProcess( char *_server=0L, QObject * parent=0, const char * n
 
   running_window = TRUE;        // True so we do create the default
   new_toplevel("!default");     // 
-  running_window = FALSE;       // set false so next changes the first name
+
+  kConfig->setGroup("GlobalOptions");
+  if(kConfig->readNumEntry("Reuse", TRUE) == TRUE){
+    running_window = FALSE;       // set false so next changes the first name
+    default_follow_focus = TRUE;
+  }
+  else{
+    default_follow_focus = FALSE;
+  }
 
   TopList.insert("!all", new KSircIOBroadcast(this));
   
@@ -112,7 +120,7 @@ void KSircProcess::close_toplevel(KSircTopLevel *wm, char *name)
 
 void KSircProcess::default_window(KSircTopLevel *w){
 
-  if(w)
+  if(w && (default_follow_focus == TRUE))
     TopList.replace("!default", w);
 
 }
