@@ -181,13 +181,14 @@ AboutWidget::AboutWidget( QWidget *parent, const char *name)
   QString string;
   string = "kppp "KPPPVERSION;
   string += klocale->translate("\nA dialer and front-end to pppd\n\n"
-			       "Copyright (c) 1997\n\tBernd Johannes Wuebben\n"
-			       "\twuebben@math.cornell.edu");
+			       "Copyright (c) 1997\nBernd Johannes Wuebben\n"
+			       "wuebben@math.cornell.edu");
   label1->setText(string);
   label1->setMinimumSize(label1->sizeHint());
   tl->addMultiCellWidget(label1, 1, 1, 1, 2);
 
   QString pixdir = app->kdedir() + QString("/share/apps/kppp/pics/");  
+
   QPixmap pm((pixdir + "kppplogo.xpm").data());
   QLabel *logo = new QLabel(this);
   logo->setPixmap(pm);
@@ -195,12 +196,12 @@ AboutWidget::AboutWidget( QWidget *parent, const char *name)
   tl->addWidget(logo, 2, 1);
 
   QString string2 = 
-    klocale->translate("With contributions from:\n"
-		       "   Mario Weilguni\n"
-		       "   Markus Wuebben\n"
-		       "   Jesus Fuentes Saavedra\n"
-		       "   Harri Porten\n"
-		       "   Peter Silva");
+    klocale->translate("With contributions from:\n\n"
+		       "Mario Weilguni\n"
+		       "Markus Wuebben\n"
+		       "Jesus Fuentes Saavedra\n"
+		       "Harri Porten\n"
+		       "Peter Silva");
   
   label2 = new QLabel(this,"About2");
   label2->setAlignment(AlignLeft|ExpandTabs);

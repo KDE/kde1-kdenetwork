@@ -106,6 +106,7 @@
 #define STORED_USERNAME_KEY "Username"
 #define STORE_PASSWORD_KEY "StorePassword"
 #define COMMAND_KEY        "Command"
+#define DISCONNECT_COMMAND_KEY "DisconnectCommand"
 #define IPADDR_KEY         "IPAddr"
 #define SUBNETMASK_KEY     "SubnetMask"
 #define ACCTENABLED_KEY    "AccountingEnabled"
@@ -278,8 +279,11 @@ public:
   const char* speed();
   void setSpeed(const char *);
 
-  const char* command();
-  void setCommand(const char*);
+  const char* command_on_connect();
+  void setCommand_on_connect(const char*);
+
+  const char* command_on_disconnect();
+  void setCommand_on_disconnect(const char*);
 
   const char* ipaddr();
   void setIpaddr(const char *);

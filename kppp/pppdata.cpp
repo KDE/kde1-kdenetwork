@@ -818,18 +818,29 @@ void PPPData::setStorePassword(bool b) {
 }
 
 
-const char* PPPData::command() {
+const char* PPPData::command_on_connect() {
 
   return readConfig(cgroup, COMMAND_KEY);
 
 }
 
-void PPPData::setCommand( const char *n ) {
+void PPPData::setCommand_on_connect( const char *n ) {
 
   writeConfig(cgroup, COMMAND_KEY, n);
 
 }
 
+const char* PPPData::command_on_disconnect() {
+
+  return readConfig(cgroup, DISCONNECT_COMMAND_KEY);
+
+}
+
+void PPPData::setCommand_on_disconnect( const char *n ) {
+
+  writeConfig(cgroup, DISCONNECT_COMMAND_KEY, n);
+
+}
 
 const char* PPPData::ipaddr() {
 

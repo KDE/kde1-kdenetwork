@@ -568,6 +568,17 @@ void dieppp(int sig) {
       // just to be sure
       PAP_RemoveAuthFile();
 
+      if(gpppdata.command_on_disconnect()) {
+    
+	pid_t id;
+
+	if((id = fork()) == 0) {
+	  setuid(getuid());
+	  system(gpppdata.command_on_disconnect());
+	  exit(0);
+	}	 
+      }
+
       p_xppp->stopAccounting();
       p_xppp->con_win->stopClock();
       
@@ -840,6 +851,17 @@ printf("In terminatepppd(): I will attempt to kill pppd\n");
   int stat;
 
   if(gpppdata.pppdpid() >= 0) {
+
+    if(gpppdata.command_on_disconnect()) {
+      
+      pid_t id;
+      
+      if((id = fork()) == 0) {
+	setuid(getuid());
+	system(gpppdata.command_on_disconnect());
+	exit(0);
+      }	 
+    }
 
     if(kill(gpppdata.pppdpid(), SIGTERM) < 0)
       qApp->beep();

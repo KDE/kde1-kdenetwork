@@ -73,6 +73,9 @@ private:
   QLineEdit *command;
   QLabel *command_label;
 
+  QLineEdit *discommand;
+  QLabel *discommand_label;
+
   QPushButton *pppdargs;
   QLabel *pppd_label;
 

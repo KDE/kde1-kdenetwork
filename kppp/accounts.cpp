@@ -28,6 +28,7 @@
 #include <qfiledlg.h>
 #include <kmsgbox.h>
 
+#include "macros.h"
 #include "homedir.h"
 #include "accounts.h"
 #include "main.h"
@@ -45,6 +46,8 @@ void parseargs(char* buf, char** args);
 AccountWidget::AccountWidget( QWidget *parent, const char *name )
   : QWidget( parent, name )
 {
+
+  int min = 0;
   QGridLayout *tl = new QGridLayout(this, 3, 3, 10, 10);  
   tl->addRowSpacing(0, fontMetrics().lineSpacing() - 10); // magic
   box = new QGroupBox(this,"box");
@@ -69,7 +72,13 @@ AccountWidget::AccountWidget( QWidget *parent, const char *name )
   l11->addLayout(l111, 1);  
   edit_b = new QPushButton(klocale->translate("Edit..."), this, "edit_b");
   connect(edit_b, SIGNAL(clicked()), SLOT(editaccount()));
-  edit_b->setMinimumSize(edit_b->sizeHint());
+
+  min = edit_b->sizeHint().width();
+  min = QMAX(70,min);
+  MIN_HEIGHT(edit_b);
+  edit_b->setMinimumWidth(min);
+
+  //  edit_b->setMinimumSize(edit_b->sizeHint());
   l111->addWidget(edit_b);
 
   new_b = new QPushButton(klocale->translate("New..."), this, "new_b");

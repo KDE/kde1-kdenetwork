@@ -83,7 +83,7 @@ DialWidget::DialWidget( QWidget *parent, const char *name )
   tl->addMultiCellWidget(store_password, 5, 5, 1, 2);
 
   command_label = new QLabel(this);
-  command_label->setText(klocale->translate("Execute Program\nupon Connect:"));
+  command_label->setText(klocale->translate("Execute program\nupon connect:"));
   command_label->setAlignment(AlignVCenter);
   MIN_SIZE(command_label);
   tl->addWidget(command_label, 6, 1);
@@ -94,13 +94,25 @@ DialWidget::DialWidget( QWidget *parent, const char *name )
   MIN_WIDTH(command);
   tl->addWidget(command, 6, 2);
 
+  discommand_label = new QLabel(this);
+  discommand_label->setText(klocale->translate("Execute program\nupon disconnect:"));
+  discommand_label->setAlignment(AlignVCenter);
+  MIN_SIZE(discommand_label);
+  tl->addWidget(discommand_label, 8, 1);
+
+  discommand = new QLineEdit(this);
+  discommand->setMaxLength(COMMAND_SIZE);
+  FIXED_HEIGHT(discommand);
+  MIN_WIDTH(discommand);
+  tl->addWidget(discommand, 8, 2);
+
   pppd_label = new QLabel(this);
-  pppd_label->setText(klocale->translate("Edit default pppd:"));
+  pppd_label->setText(klocale->translate("Edit pppd arguments:"));
   MIN_SIZE(pppd_label);
-  tl->addWidget(pppd_label, 8, 1);
+  tl->addWidget(pppd_label, 9, 1);
 
   QHBoxLayout *l2 = new QHBoxLayout;
-  tl->addLayout(l2, 8, 2);
+  tl->addLayout(l2, 9, 2);
   pppdargs = new QPushButton(klocale->translate("Arguments"), this);
   connect(pppdargs, SIGNAL(clicked()), SLOT(pppdargsbutton()));
   MIN_SIZE(pppdargs);
@@ -112,7 +124,8 @@ DialWidget::DialWidget( QWidget *parent, const char *name )
   if(!isnewaccount) {
     connectname_l->setText(gpppdata.accname());
     number_l->setText(gpppdata.phonenumber());
-    command->setText(gpppdata.command());
+    command->setText(gpppdata.command_on_connect());
+    discommand->setText(gpppdata.command_on_disconnect());
     auth->setCurrentItem(gpppdata.authMethod());
     store_password->setChecked(gpppdata.storePassword());
   }
@@ -132,7 +145,8 @@ bool DialWidget::save() {
   else {
     gpppdata.setAccname(connectname_l->text());
     gpppdata.setPhonenumber(number_l->text());
-    gpppdata.setCommand(command->text());
+    gpppdata.setCommand_on_connect(command->text());
+    gpppdata.setCommand_on_disconnect(discommand->text());
     gpppdata.setAuthMethod(auth->currentItem());
     gpppdata.setStorePassword(store_password->isChecked());
     return true;
@@ -224,7 +238,7 @@ void IPWidget::resizeEvent(QResizeEvent *) {
   // resize the frame
   int box_x = (width() - minw)/2;
   int box_y = (height() - minh)/2 - 20;
-  box->setGeometry(box_x, box_y, minw, minh);
+  box->setGeometry(box_x -15, box_y, minw +30, minh +15);
 
   // now move the lineedits into the frame
   ipaddress_l->resize(ipaddress_l->sizeHint());
@@ -340,14 +354,19 @@ DNSWidget::DNSWidget( QWidget *parent, const char *name )
   add = new QPushButton(klocale->translate("Add"), this, "add");
   connect(add, SIGNAL(clicked()), SLOT(adddns()));
   FIXED_HEIGHT(add);
-  MIN_WIDTH(add);
+  int width = add->sizeHint().width();
+  width = MAX(width,60);
+  add->setMinimumWidth(width);
   l111->addWidget(add);
   l111->addStretch(1);
 
   remove = new QPushButton(klocale->translate("Remove"), this, "remove");
   connect(remove, SIGNAL(clicked()), SLOT(removedns()));
   FIXED_HEIGHT(remove);
-  MIN_WIDTH(remove);
+  width = remove->sizeHint().width();
+  width = MAX(width,60);
+  remove->setMinimumWidth(width);
+
   l111->addWidget(remove);
 
   servers_label = new QLabel(this,"servers");
@@ -552,17 +571,24 @@ ScriptWidget::ScriptWidget( QWidget *parent, const char *name )
   add = new QPushButton(klocale->translate("Add"), this, "add");
   connect(add, SIGNAL(clicked()), SLOT(addButton()));
   FIXED_HEIGHT(add);
-  MIN_WIDTH(add);
+  int width = add->sizeHint().width();
+  width = MAX(width,60);
+  add->setMinimumWidth(width);
+
 
   insert = new QPushButton(klocale->translate("Insert"), this, "insert");
   connect(insert, SIGNAL(clicked()), SLOT(insertButton()));
   FIXED_HEIGHT(insert);
-  MIN_WIDTH(insert);
+  width = insert->sizeHint().width();
+  width = MAX(width,60);
+  insert->setMinimumWidth(width);
 
   remove = new QPushButton(klocale->translate("Remove"), this, "remove");
   connect(remove, SIGNAL(clicked()), SLOT(removeButton()));
   FIXED_HEIGHT(remove);
-  MIN_WIDTH(remove);
+  width = remove->sizeHint().width();
+  width = MAX(width,60);
+  remove->setMinimumWidth(width);
 
   QHBoxLayout *l11 = new QHBoxLayout;
   l1->addLayout(l11);

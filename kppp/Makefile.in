@@ -211,7 +211,9 @@ install: $(TARGET)
 	$(INSTALL_DATA) ./Rules/Spain/*.rst $(RULESDIR)/Spain
 	$(INSTALL_DIR) $(RULESDIR)/Sweden
 	$(INSTALL_DATA) ./Rules/Sweden/*.rst $(RULESDIR)/Sweden
-	$(INSTALL_DATA) ./Rules/TEMPLATE $(DOCSDIR)
+	$(INSTALL_DIR) $(RULESDIR)/Switzerland
+	$(INSTALL_DATA) ./Rules/Switzerland/*.rst $(RULESDIR)/Switzerland
+	$(INSTALL_DATA) ./Rules/TEMPLATE $(DOCSDIR)	
 	chmod u+s $(BINDIR)/kppp
 	@echo ""
 	@echo "Dont't forget to send me a phone tarif rules file for your"

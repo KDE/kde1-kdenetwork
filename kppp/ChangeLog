@@ -1,3 +1,10 @@
+Tue Jan 13 02:48:55 1998  Bernd Johannes Wuebben  <wuebben@math.cornell.edu>
+
+	* various fixes and geometry improvements
+
+	* added a linedit for a command to be executed on disconnect
+	
+
 Mon Jan 12 17:18:41 1998  Mario Weilguni  <mweilguni@sime.com>
 
 	* username and password are now remembered between
@@ -17,8 +24,8 @@ Mon Jan 12 17:18:41 1998  Mario Weilguni  <mweilguni@sime.com>
 
 Sun Jan 11 21:03:00 1998  Bernd Johannes Wuebben  <wuebben@math.cornell.edu>
 
-	* lslisder in modemcmd.cpp wasn't updated correctely on widget
-	  creating. 
+	* lslisder in modemcmd.cpp wasn't set correctely on widget
+	  creation. 
 
 
 Thu Jan 11 14:58:29 1998  Peter Silva <peter.silva@videotron.ca>

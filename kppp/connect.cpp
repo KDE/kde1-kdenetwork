@@ -151,6 +151,7 @@ ConnectWidget::ConnectWidget(QWidget *parent, const char *name)
 
 ConnectWidget::~ConnectWidget() {
 
+  delete prompt;
 }
 
 void ConnectWidget::preinit() {
@@ -538,7 +539,7 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
       }
 
       if(strcmp(gpppdata.scriptType(scriptindex), "PWPrompt") == 0) {
-	QString bm = klocale->translate("PW prompt ");
+	QString bm = klocale->translate("PW Prompt ");
 	bm += gpppdata.script(scriptindex);
 	messg->setText(bm);
 	p_xppp->debugwindow->statusLabel(bm);
@@ -564,7 +565,7 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
 
       if(strcmp(gpppdata.scriptType(scriptindex), "LoopStart") == 0) {
 
-        QString bm = klocale->translate("LoopStart ");
+        QString bm = klocale->translate("Loop Start ");
         bm += gpppdata.script(scriptindex);
 
 	if ( loopnest > (MAXLOOPNEST-2) ) {
@@ -588,7 +589,7 @@ void ConnectWidget::timerEvent(QTimerEvent *t) {
       }
 
       if(strcmp(gpppdata.scriptType(scriptindex), "LoopEnd") == 0) {
-        QString bm = "LoopEnd ";
+        QString bm = "Loop End ";
         bm += gpppdata.script(scriptindex);
 	if ( loopnest <= 0 ) {
 		bm = klocale->translate("LoopEnd without mathing Start! Line: ") + bm ;
@@ -923,36 +924,27 @@ void ConnectWidget::if_waiting_slot(){
   p_xppp->stats->take_stats(); // start taking ppp statistics
   auto_hostname();
 
-  if(!gpppdata.command()) {
-    
-    // let's fish the connection speed out of the read buffer.
-    // so that we can say Connected at 115200 or similar.
-    p_xppp->debugwindow->statusLabel(klocale->translate("Done"));
-    
-       
-  }
-  else { // need to run a command
+  if(gpppdata.command_on_connect()) {
     
     pid_t id;
     messg->setText(klocale->translate("Running Startup Command ..."));
 
     app->flushX(); /* make sure that we don't get any asyn errors*/
 
-    // remove the authenticion file
+    // remove the authentication file
     PAP_RemoveAuthFile();
 
     if((id = fork()) == 0) {
       setuid(getuid());
-      system(gpppdata.command());
+      system(gpppdata.command_on_connect());
       exit(0);
     }	 
     
     messg->setText(klocale->translate("Done"));
-    p_xppp->debugwindow->statusLabel(klocale->translate("Done"));
-    
       
   }
 
+  p_xppp->debugwindow->statusLabel(klocale->translate("Done"));
   set_con_speed_string();
 
   p_xppp->con_win->setConnectionSpeed();
@@ -1269,10 +1261,13 @@ bool ConnectWidget::execppp() {
   }
 
   if (command.length() > 2023){
-    QMessageBox::warning(this, klocale->translate("Error"), 
-		     klocale->translate("pppd command + command-line arguments exeed\n"
-					"2024 characters in length. What are you doing?"));	
-
+    QMessageBox::warning(this, 
+			 klocale->translate("Error"), 
+			 klocale->translate(
+			      "pppd command + command-line arguments exeed\n"
+			      "2024 characters in length. What are you doing?"
+			      )
+			 );	
     return false; // nonsensically long command which would bust my buffer buf.
   }
   
@@ -1287,9 +1282,7 @@ bool ConnectWidget::execppp() {
 
   if((id = fork()) < 0)
     { 
-#ifdef MY_DEBUG
       fprintf(stderr,"In parent: fork() failed\n");
-#endif
       return false;
     }
 
