@@ -1,14 +1,14 @@
 #ifndef RULES_DLG_H
 #define RULES_DLG_H
 
-#include <qwidget.h>
+#include <qdialog.h>
 
 class QPushButton;
 class QComboBox;
 class QCheckBox;
 class QLineEdit;
 
-class rulesDlg : public QWidget
+class rulesDlg : public QDialog
 {
     Q_OBJECT
         

@@ -562,7 +562,11 @@ bool Artdlg::actions (int action)
         }
     case EDIT_RULES:
         {
-            RulesDlg->show();
+            qApp->setOverrideCursor (arrowCursor);
+            if (RulesDlg->exec()==1)
+            {
+            }
+            qApp->restoreOverrideCursor ();
             break;
         }
     case CONFIG_SORTING:
