@@ -48,6 +48,10 @@
 #include "docking.h"
 #include "loginterm.h"
 
+#ifdef HAVE_SYS_PARAM_H
+#include <sys/param.h>
+#endif
+
 #ifdef NO_USLEEP
 int usleep( long usec );
 #endif 
