@@ -56,14 +56,15 @@ void NNTPObserver::Notify()
 {
     client->byteCounter+=client->mTextResponse.length();
     client->partialResponse+=client->mTextResponse;
+    qApp->processEvents();
     if (client->reportBytes && (client->byteCounter - oldbytes)>1024 )
     {
         char *buffer=new char[100];
         sprintf (buffer,klocale->translate("Received %.2f Kb"),
                  ((double)client->byteCounter)/1024);
         emit client->newStatus(buffer);
-        delete[] buffer;
         qApp->processEvents();
+        delete[] buffer;
         oldbytes=client->byteCounter;
     }
 }
