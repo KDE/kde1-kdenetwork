@@ -26,32 +26,22 @@
 
 #include "log.h"
 #include <stdio.h>
-#include <ctype.h>
-#include <kapp.h>
-
-const char *prgname() {
-  if(kapp==0)
-    return "kppp";
-  else {
-    char *p = kapp->argv()[0];
-    if(strrchr(p, '/'))
-      return strrchr(p, '/')+1;
-    else
-      return p;
-  }
-}
+#include <stdlib.h>
 
 void PRINTDEBUG(char *file, int line, const char *fmt, ...) {
   va_list ap;
   va_start(ap, fmt);
   
   // strip newlines
-  QString s(fmt);
-  while(s.length() && s.right(1) == "\n")
-    s = s.left(s.length() - 1);
+  int len = strlen(fmt);
+  char *sfmt = malloc(len+1);
+  strcpy(sfmt, fmt);
+  while(len && sfmt[len-1] == '\0')
+    sfmt[--len] = 0;
 
-  fprintf(stderr, "[%s:%s:%d]: ", prgname(), file, line);
-  vfprintf(stderr, s.data(), ap);
+  fprintf(stderr, "[%s:%s:%d]: ", "kppp", file, line);
+  vfprintf(stderr, sfmt, ap);
   fprintf(stderr, "\n");
+  free(sfmt);
   va_end(ap);
 }

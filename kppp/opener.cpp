@@ -45,6 +45,7 @@
 #include "kpppconfig.h"
 #include "opener.h"
 #include "devices.h"
+#include "log.h"
 
 #ifdef HAVE_RESOLV_H
 #include <resolv.h>
@@ -52,12 +53,6 @@
 
 #ifndef _PATH_RESCONF
 #define _PATH_RESCONF "/etc/resolv.conf"
-#endif
-
-#ifndef MY_DEBUG
-#define Debug(s) ((void)0);
-#else
-#define Debug(s) fprintf(stderr, s "\n");
 #endif
 
 Opener::Opener(int s) : socket(s) {
@@ -314,7 +309,7 @@ bool Opener::createAuthFile(int authMethod, char *username, char *password) {
           username,username);
   assert(regcomp(&preg, regexp, 0) == 0);
 
-  // copy to new file pap-secrets
+  // copy to new file pap- or chap-secrets
   int old_umask = umask(0077);
   FILE *fout = fopen(newName, "w");
   if(fout) {
