@@ -328,6 +328,7 @@ void KSircTopLevel::sirc_line_return()
 
   if(strncmp(s, "/join ", 6) == 0){
     cerr << "Got a join\n";
+    s = s.lower();
     int pos2 = s.find(' ', 6);
     if(pos2 == -1)
       pos2 = s.length() - 1;

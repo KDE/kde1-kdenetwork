@@ -13,6 +13,9 @@ KSircProcess::KSircProcess( char *_server=0L, QObject * parent=0, const char * n
 
   server = _server;
 
+  QDict<KSircMessageReceiver> nTopList(17, FALSE);
+  TopList = nTopList;
+
   proc = new KProcess();
 
   proc->setExecutable("perl");

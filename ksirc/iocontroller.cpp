@@ -49,17 +49,14 @@ void KSircIOController::stdout_read(KProcess *, char *_buffer, int buflen)
   name = "!default";
 
   if(buf[buflen-1] != '\n'){
-    cerr << "End not Enter" << endl;
     pos2 = buffer.length();
     pos = buffer.findRev('\n', pos2);
     if(pos != -1){
       tmp = buffer.mid(pos+1, pos2-pos-1);
       buffer.truncate(pos);
-      //	cerr << "Now Holding: " << tmp << endl;
     }
   }
   if(holder.length() > 0){
-    //      cerr << "Prepending: " << holder << endl;
     buffer.prepend(holder);
     holder.truncate(0);
   }
@@ -69,7 +66,6 @@ void KSircIOController::stdout_read(KProcess *, char *_buffer, int buflen)
   ksircproc->TopList["!all"]->control_message(control);
   do{
     pos2 = buffer.find('\n', pos);
-    //      cerr << "Pos1/2: " << pos << '/' << pos2 << endl;
     
     if(pos2 == -1)
       pos2 = buffer.length();
@@ -82,11 +78,9 @@ void KSircIOController::stdout_read(KProcess *, char *_buffer, int buflen)
 	name = name.lower();
 	line.remove(0, pos3+1);
       }
-      //	cerr << "Dest: " << name << endl;
     }
     if(!(ksircproc->TopList)[name]){
       name = "!default";
-      cerr << line[0] << endl;
       switch(line[0]){
       case '`':
 	line.prepend("*** ");
@@ -101,7 +95,6 @@ void KSircIOController::stdout_read(KProcess *, char *_buffer, int buflen)
 	break;
       }
     }
-    //    cerr << "Output: " << line << endl;
     ksircproc->TopList[name]->sirc_receive(line);
     pos = pos2+1;
   } while((uint) pos < buffer.length());
