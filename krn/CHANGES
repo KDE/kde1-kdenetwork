@@ -6,6 +6,9 @@ Changes made Feb 9
             headers when posting to a newsgroup.
 * [Roberto] Fixed a braino (I #ifdef'd the whole mail sending code in kmsender
             with obvious results).
+* [Roberto] Added "mark tagged as read" and "as unread". Sometimes I wonder
+            how I forget to implement these silly features.
+            Sometimes I know :-)
 
 -----------------------------------------------------------------------------
 Changes made Feb 8

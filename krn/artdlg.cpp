@@ -82,6 +82,8 @@
 #define EDIT_RULES 27
 #define UPDATE_SCORES 28
 #define CONFIG_SORTING 29
+#define MARK_READ 30
+#define MARK_UNREAD 31
 
 extern QString pixpath,cachepath;
 
@@ -127,6 +129,9 @@ Artdlg::Artdlg (NewsGroup *_group, NNTP* _server)
     taggedArticle=new QPopupMenu;
     taggedArticle->insertItem(klocale->translate("Save"),SAVE_ARTICLE);
     taggedArticle->insertItem(klocale->translate("Download"),DOWNLOAD_ARTICLE);
+    taggedArticle->insertSeparator();
+    taggedArticle->insertItem(klocale->translate("Mark Read"),MARK_READ);
+    taggedArticle->insertItem(klocale->translate("Mark Unread"),MARK_UNREAD);
     taggedArticle->insertSeparator();
     taggedArticle->insertItem(klocale->translate("Print"),PRINT_ARTICLE);
     taggedArticle->insertItem(klocale->translate("Decode"),DECODE_ARTICLE);
@@ -528,6 +533,32 @@ bool Artdlg::actions (int action)
     qApp->setOverrideCursor (waitCursor);
     switch (action)
     {
+    case MARK_READ:
+        {
+            int index=list->currentItem();
+            Article art(IDList.at(index));
+            art.threadDepth=*depths.at(index);
+            art.setRead(true);
+            QString formatted;
+            art.formHeader(&formatted);
+            list->changeItem (formatted.data(),index);
+            if (server->isCached(art.ID.data()))
+                list->changeItemColor(QColor(0,0,255),index);
+            break;
+        }
+    case MARK_UNREAD:
+        {
+            int index=list->currentItem();
+            Article art(IDList.at(index));
+            art.threadDepth=*depths.at(index);
+            art.setRead(false);
+            QString formatted;
+            art.formHeader(&formatted);
+            list->changeItem (formatted.data(),index);
+            if (server->isCached(art.ID.data()))
+                list->changeItemColor(QColor(0,0,255),index);
+            break;
+        }
     case EDIT_RULES:
         {
             RulesDlg->show();
