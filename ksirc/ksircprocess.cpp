@@ -108,13 +108,13 @@ KSircProcess::KSircProcess( char *_server=0L, QObject * parent=0, const char * n
   proc = new KProcess();
 
   proc->setExecutable("perl");
-  *proc << kApp->kde_bindir() + QString("/dsirc") << "-8" << "-r" << "-s" << server;
+  *proc << kSircConfig->kdedir + QString("/bin/dsirc") << "-8" << "-r" << "-s" << server;
   proc->start(KProcess::NotifyOnExit, KProcess::All);
 
   iocontrol = new KSircIOController(proc, this);
   QString command = "/eval $version .= \"+9KSIRC\"\n";
   iocontrol->stdin_write(command);
-  command = "/load " + kApp->kde_datadir() + "/ksirc/filters.pl\n";
+  command = "/load " + kSircConfig->kdedir + "/share/apps/ksirc/filters.pl\n";
   iocontrol->stdin_write(command);
 
   running_window = TRUE;        // True so we do create the default

@@ -16,6 +16,8 @@ class global_config {
 
   bool message_window;
   bool autocreate;
+
+  QString kdedir;
 };
 
 extern global_config *kSircConfig;

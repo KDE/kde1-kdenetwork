@@ -67,6 +67,11 @@ int main( int argc, char ** argv )
 
   kSircConfig->colour_background = 0;
 
+  kSircConfig->kdedir = getenv("KDEDIR");
+  if(kSircConfig->kdedir.isEmpty()){
+    kSircConfig->kdedir = "/usr/local/kde";
+  }
+
   kConfig->setGroup("GlobalOptions");
   kSircConfig->defaultfont = kConfig->readFontEntry("MainFont", new QFont("fixed"));
 
