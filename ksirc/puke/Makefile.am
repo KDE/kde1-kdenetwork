@@ -178,22 +178,15 @@ mpwidget.cpp
 # them while "make clean", use CLEANFILES
 DISTCLEANFILES = $(BUILTSOURCES)
 
+# Datafiles to install / uninstall 
+data_DATA = *.pl *.pm
+
+# Where to install them
+datadir = $(kde_datadir)/ksirc
+
 # make messages.po. Move this one to ../po/ and "make merge" in po
 messages:
 	$(XGETTEXT) -C -ktranslate $(khexdit_SOURCES)
-
-# just install datas here. Use install-exec-data for scripts and etc.
-# the binary itself is already installed from automake
-# use mkinstalldirs, not "install -d"
-# don't install a list of file. Just one file per install.
-# if you have more of them, create a subdirectory with an extra Makefile 
-install-data-local: 
-	$(mkinstalldirs) $(kde_datadir)/ksirc
-	$(INSTALL_DATA) *.pl *.pm $(kde_datadir)/ksirc
-
-#
-# remove ALL you have installed in install-data-local or install-exec-local
-uninstall-local:
 
 #
 # add a dependency for every moc file to be full portable
