@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1999-01-13 01:58+0100\n"
+"POT-Creation-Date: 1999-03-05 02:18+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Elvis Pfützenreuter <epx@netville.com.br>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -141,10 +141,15 @@ msgstr "por D&ata"
 msgid "by &Filesize"
 msgstr "por taman&ho de arquivo"
 
-#: KAMenu.cpp:177
-#, c-format
+#: KAMenu.cpp:169
+#, fuzzy
+msgid "KArchie ver. "
+msgstr "&Servidor Archie"
+
+#: KAMenu.cpp:171
+#, fuzzy
 msgid ""
-"KArchie ver. %s\n"
+"\n"
 "\n"
 "by Jörg Habenicht <j.habenicht@europemail.com>\n"
 "\n"
@@ -170,15 +175,15 @@ msgstr ""
 "(Veja arquivos README e copyright.h).\n"
 "Meu próprio código é baseado no GPL"
 
-#: KAMenu.cpp:190
+#: KAMenu.cpp:184
 msgid "&Settings"
 msgstr "&Configurações"
 
-#: KAMenu.cpp:191
+#: KAMenu.cpp:185
 msgid "&Query"
 msgstr "Cons&ulta"
 
-#: KAMenu.cpp:192
+#: KAMenu.cpp:186
 msgid "S&ort"
 msgstr "C&lassificar"
 

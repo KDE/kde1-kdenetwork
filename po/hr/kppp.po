@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kdenetwork\n"
-"POT-Creation-Date: 1999-01-23 02:09+0100\n"
+"POT-Creation-Date: 1999-02-05 02:06+0100\n"
 "PO-Revision-Date: 1998-11-22 20:00-0500\n"
 "Last-Translator: Igor Èunko <cunac@cogeco.ca> \n"
 "Language-Team: Croatian\n"
@@ -45,8 +45,8 @@ msgid ""
 "needs"
 msgstr ""
 "Kreira kopiju izabranog korisnièkog raèuna.\n"
-"Sve postavke æe biti kopirane u novi korisnièki\n" 
-"raèun koji mo¾ete prilagoditi svojim\n" 
+"Sve postavke æe biti kopirane u novi korisnièki\n"
+"raèun koji mo¾ete prilagoditi svojim\n"
 "potrebama."
 
 #: accounts.cpp:99
@@ -78,7 +78,6 @@ msgstr ""
 "<b>Va¾no</b>:Ako imate vi¹e od jednog korisnièkog\n"
 "raèuna - oprez , ovo <b>NIJE<b> suma svih telefonskih\n"
 "tro¹kova za sve korisnièke raèune!"
- 
 
 #: accounts.cpp:128 conwindow.cpp:54
 msgid "Volume:"
@@ -447,8 +446,7 @@ msgstr ""
 "Ako niste sigurni kontaktirajte svojeg ISP-a\n"
 "\n"
 "Ako mo¾ete birati izmeðu PAP i CHAP izaberite\n"
-"CHAP jer je sigurnija" 
-
+"CHAP jer je sigurnija"
 
 #: edit.cpp:97
 msgid "Store password"
@@ -473,7 +471,6 @@ msgstr ""
 "kao obièan tekst u konfiguracijskoj datoteci , koja je\n"
 "èitljiva samo vama. Osigurajte se da nitko nema \n"
 "pristup toj datoteci !"
-
 
 #: edit.cpp:110
 msgid ""
@@ -1806,10 +1803,9 @@ msgid ""
 "connection.\n"
 "Please use the terminal-based login to verify"
 msgstr ""
-"Pokrenuli ste pppd prije nego ¹to je udaljeno raèunalo bilo spremno"
-" uspostaviti PPP vezu.\n"
+"Pokrenuli ste pppd prije nego ¹to je udaljeno raèunalo bilo spremno "
+"uspostaviti PPP vezu.\n"
 "Molim upotrijebite terminalski login da potvrdite"
-
 
 #: ppplog.cpp:141
 msgid "You haven't started the PPP software on the peer system."
@@ -1840,8 +1836,8 @@ msgid ""
 "You have passed an invalid option to pppd. See `man pppd' for a complete "
 "list of valid arguments."
 msgstr ""
-"Poslali ste neispravnu opciju pppd-u. Pogledajte `man pppd' za kompletnu"
-"listu va¾eæih argumenata."
+"Poslali ste neispravnu opciju pppd-u. Pogledajte `man pppd' za "
+"kompletnulistu va¾eæih argumenata."
 
 #: ppplog.cpp:170
 #, c-format
@@ -1852,7 +1848,7 @@ msgid ""
 msgstr ""
 "Informacija da je udaljeno raèunalo poslalo slijedeæu poruku:\n"
 "\"%s\"\n"
-"To vam mo¾e pomoæi da utvrdite za¹to spajanje nije uspjelo."  
+"To vam mo¾e pomoæi da utvrdite za¹to spajanje nije uspjelo."
 
 #: ppplog.cpp:189
 msgid "Sorry. Can't help you here."
@@ -1888,7 +1884,6 @@ msgstr ""
 "dobiti æete PPP dnevnik koji vam mo¾e pomoæi\n"
 "da utvrdite razloge neuspje¹nom spajanju."
 
-
 #: ppplog.cpp:232
 msgid "PPP log"
 msgstr "PPP dnevnik"
@@ -1911,9 +1906,9 @@ msgid ""
 "then select the model from the right list. If you don´t know which modem you "
 "have, you can try out one of the \"Generic\" modems."
 msgstr ""
-"Da bi konfigurirali svoj modem , prvo izaberite proizvoðaèa u listi s lijeve"
-"strane, a onda izaberite modem iz liste s desne strane. Ako ne znate koji"
-"modem imate, mo¾ete isprobati jedan od \"Generièkih\" modema."
+"Da bi konfigurirali svoj modem , prvo izaberite proizvoðaèa u listi s "
+"lijevestrane, a onda izaberite modem iz liste s desne strane. Ako ne znate "
+"kojimodem imate, mo¾ete isprobati jedan od \"Generièkih\" modema."
 
 #: modemdb.cpp:151 modemdb.cpp:153 modemdb.cpp:223 modemdb.cpp:238
 msgid "<Generic>"

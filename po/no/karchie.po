@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE NETWORK/karchie\n"
-"POT-Creation-Date: 1999-01-13 01:58+0100\n"
+"POT-Creation-Date: 1999-03-05 02:18+0100\n"
 "PO-Revision-Date: 1998-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Hans Petter Bieker <zerium@webindex.no>\n"
 "Language-Team: no <LL@li.org>\n"
@@ -141,10 +141,15 @@ msgstr "med d&ato"
 msgid "by &Filesize"
 msgstr "med &filstørrelse"
 
-#: KAMenu.cpp:177
-#, c-format
+#: KAMenu.cpp:169
+#, fuzzy
+msgid "KArchie ver. "
+msgstr "Archie-&tjener"
+
+#: KAMenu.cpp:171
+#, fuzzy
 msgid ""
-"KArchie ver. %s\n"
+"\n"
 "\n"
 "by Jörg Habenicht <j.habenicht@europemail.com>\n"
 "\n"
@@ -170,15 +175,15 @@ msgstr ""
 "(Se README-filene og copyright.h).\n"
 "Min egen kode er basert på GPL"
 
-#: KAMenu.cpp:190
+#: KAMenu.cpp:184
 msgid "&Settings"
 msgstr "&Innstillinger"
 
-#: KAMenu.cpp:191
+#: KAMenu.cpp:185
 msgid "&Query"
 msgstr "&Spørring"
 
-#: KAMenu.cpp:192
+#: KAMenu.cpp:186
 msgid "S&ort"
 msgstr "S&orter"
 

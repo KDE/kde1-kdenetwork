@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: karchie\n"
-"POT-Creation-Date: 1999-01-13 01:58+0100\n"
+"POT-Creation-Date: 1999-03-05 02:18+0100\n"
 "PO-Revision-Date: 1999-01-29 12:51+0000\n"
 "Last-Translator: Richard Allen <ra@hp.is>\n"
 "Language-Team: is <kde-isl@mmedia.is>\n"
@@ -142,10 +142,14 @@ msgstr "eftir d&agsetningu"
 msgid "by &Filesize"
 msgstr "eftir skrá&arstærð"
 
-#: KAMenu.cpp:177
-#, c-format
+#: KAMenu.cpp:169
+#, fuzzy
+msgid "KArchie ver. "
+msgstr "Archi&e-þjónn"
+
+#: KAMenu.cpp:171
 msgid ""
-"KArchie ver. %s\n"
+"\n"
 "\n"
 "by Jörg Habenicht <j.habenicht@europemail.com>\n"
 "\n"
@@ -159,15 +163,15 @@ msgid ""
 "My own code is based on the GPL"
 msgstr ""
 
-#: KAMenu.cpp:190
+#: KAMenu.cpp:184
 msgid "&Settings"
 msgstr "&Stillingar"
 
-#: KAMenu.cpp:191
+#: KAMenu.cpp:185
 msgid "&Query"
 msgstr "&Leita"
 
-#: KAMenu.cpp:192
+#: KAMenu.cpp:186
 msgid "S&ort"
 msgstr "Röð&un"
 

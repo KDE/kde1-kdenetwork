@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: karchie\n"
-"POT-Creation-Date: 1999-01-13 01:58+0100\n"
+"POT-Creation-Date: 1999-03-05 02:18+0100\n"
 "Last-Translator: Juraj Bednar <bednar@isternet.sk>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -140,10 +140,15 @@ msgstr "podµa dá&tumu"
 msgid "by &Filesize"
 msgstr "podµa &veµkosti"
 
-#: KAMenu.cpp:177
-#, c-format
+#: KAMenu.cpp:169
+#, fuzzy
+msgid "KArchie ver. "
+msgstr "Archie&server"
+
+#: KAMenu.cpp:171
+#, fuzzy
 msgid ""
-"KArchie ver. %s\n"
+"\n"
 "\n"
 "by Jörg Habenicht <j.habenicht@europemail.com>\n"
 "\n"
@@ -169,15 +174,15 @@ msgstr ""
 "(Preèítajte si súbory README a copyright.h).\n"
 "Môj vlastný kód ej zalo¾ený na GPL"
 
-#: KAMenu.cpp:190
+#: KAMenu.cpp:184
 msgid "&Settings"
 msgstr "&Nastavenie"
 
-#: KAMenu.cpp:191
+#: KAMenu.cpp:185
 msgid "&Query"
 msgstr "&Otázka"
 
-#: KAMenu.cpp:192
+#: KAMenu.cpp:186
 msgid "S&ort"
 msgstr "T&riedenie"
 

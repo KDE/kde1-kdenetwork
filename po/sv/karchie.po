@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1999-01-13 01:58+0100\n"
+"POT-Creation-Date: 1999-03-05 02:18+0100\n"
 "PO-Revision-Date: 1998-12-29 22:13+0100\n"
 "Last-Translator: Karl Backström <backstrom@kde.org>\n"
 "Language-Team: Sv <LL@li.org>\n"
@@ -140,10 +140,14 @@ msgstr "med d&atum"
 msgid "by &Filesize"
 msgstr "med &filstorlek"
 
-#: KAMenu.cpp:177
-#, c-format
+#: KAMenu.cpp:169
+#, fuzzy
+msgid "KArchie ver. "
+msgstr "Archie&server"
+
+#: KAMenu.cpp:171
 msgid ""
-"KArchie ver. %s\n"
+"\n"
 "\n"
 "by Jörg Habenicht <j.habenicht@europemail.com>\n"
 "\n"
@@ -157,15 +161,15 @@ msgid ""
 "My own code is based on the GPL"
 msgstr ""
 
-#: KAMenu.cpp:190
+#: KAMenu.cpp:184
 msgid "&Settings"
 msgstr "&Inställningar"
 
-#: KAMenu.cpp:191
+#: KAMenu.cpp:185
 msgid "&Query"
 msgstr "&Fråga"
 
-#: KAMenu.cpp:192
+#: KAMenu.cpp:186
 msgid "S&ort"
 msgstr "S&ortera"
 
