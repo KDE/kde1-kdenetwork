@@ -20,8 +20,6 @@ QDict <QButtonGroup> bgroupDict;
 KTypeLayout::KTypeLayout(TLForm *_parent)
 {
     objDict.insert(_parent->ID,parent);
-    debug ("New typelayout");
-    debug ("Parent is %s",_parent->ID.data());
     outBorder=3;
     inBorder=4;
     parent=_parent;
@@ -52,8 +50,6 @@ void KTypeLayout::endGroup()
 
 void KTypeLayout::end()
 {
-    debug ("ending layout inside of %s",parent->ID.data());
-    
     QList <TLObj> *row;
     TLObj *o;
     
@@ -62,7 +58,6 @@ void KTypeLayout::end()
 
     
     uint maxw=0;
-    debug ("rows-->%d",rows.count());
     
     //First lets see if wee need aditional rows
     int slacky=0;
@@ -154,7 +149,6 @@ void KTypeLayout::end()
 
 TLObj *KTypeLayout::addWidget(const char *ID,QWidget *w)
 {
-    debug ("Adding %s as child of %s",ID,windowStack.top()->ID.data());
     TLObj *o;
     o=new TLObj(ID);
     o->widget=w;
@@ -333,6 +327,7 @@ TLObj *KTypeLayout::addLineEdit(const char *ID,const char *text,int maxlen)
 
     g->show();
     g->setFixedHeight(l->fontMetrics().height()+10);
+    g->setMinimumWidth(l->fontMetrics().width(text)+10);
     if (maxlen>0)
         g->setMaximumWidth(10+maxlen*l->fontMetrics().maxWidth());
     return addWidget(ID,g);
@@ -350,6 +345,7 @@ TLObj *KTypeLayout::addIntLineEdit(const char *ID,const char *text,int maxlen)
 
     g->show();
     g->setFixedHeight(l->fontMetrics().height()+10);
+    g->setMinimumWidth(l->fontMetrics().width(text)+10);
     if (maxlen>0)
         g->setMaximumWidth(10+maxlen*l->fontMetrics().width("8"));
     return addWidget(ID,g);
@@ -370,10 +366,8 @@ TLObj *KTypeLayout::addListBox (const char *ID,const QStrList *contents=0,int mi
 
 void KTypeLayout::newLine()
 {
-    debug ("newline in %s",windowStack.top()->ID.data());
     KTypeLayout *l=windowStack.top()->layout;
     l->rows.append(new QList <TLObj>);
-    debug ("%d rows now",l->rows.count());
 }
 
 void KTypeLayout::skip()
@@ -440,8 +434,6 @@ QWidget *KTypeLayout::findWidget(const char *_ID)
 KBookLayout::KBookLayout(TLForm *_parent)
 {
     objDict.insert(_parent->ID,parent);
-    debug ("New typelayout");
-    debug ("Parent is %s",_parent->ID.data());
     outBorder=3;
     inBorder=4;
     parent=_parent;

@@ -18,7 +18,11 @@
 #include "identDlg.h"
 #include <kconfig.h>
 #include <kapp.h>
+#include <qlabel.h>
+#include <qpushbt.h>
 
+#include "tlform.h"
+#include "typelayout.h"
 #include "kmidentity.h"
 
 //extern KConfig *conf;
@@ -29,19 +33,59 @@ extern KMIdentity *identity;
 #define Inherited QDialog
 
 IdentDlg::IdentDlg
-(
-	QWidget* parent,
-	const char* name
-)
-	:
-	Inherited( parent, name, TRUE ),
-	identDlgData( this )
+    ( QWidget* parent,const char* name): Inherited( parent, name, TRUE )
 {
-    setCaption(klocale->translate("KRN-Identity Configuration") );
-//    conf->setGroup("Identity");
-    address->setText(identity->emailAddr());
-    realname->setText(identity->fullName());
-    organization->setText(identity->organization());
+    
+    
+    TLForm *f=new TLForm("identity",
+                         klocale->translate("KRN-Identity Configuration"),
+                         this);
+    
+    KTypeLayout *l=f->layout;
+
+    //The skips/newline are to give some extra room and the title don't look
+    //too cramped.
+    l->skip();
+    l->newLine();
+    l->addLabel("l1",klocale->translate("Here you should enter your personal information"));
+    l->newLine();
+    l->addLabel("l11",klocale->translate("You should know what these are!"));
+    ((QLabel *)l->findWidget("l1"))->setAlignment(AlignCenter);
+    ((QLabel *)l->findWidget("l11"))->setAlignment(AlignCenter);
+    l->newLine();
+    l->skip();
+    l->newLine();
+
+    l->addGroup("entries","",true);
+    
+    l->addLabel("l2",klocale->translate("Real Name"));
+    l->newLine();
+    realname =(QLineEdit *)(l->addLineEdit("realname",
+                                           identity->fullName())->widget);
+    l->newLine();
+    
+    l->addLabel("l3",klocale->translate("E-mail Address"));
+    l->newLine();
+    address =(QLineEdit *)(l->addLineEdit("address",
+                                          identity->emailAddr())->widget);
+    l->newLine();
+    
+    l->addLabel("l4",klocale->translate("Organization"));
+    l->newLine();
+    organization =(QLineEdit *)(l->addLineEdit("organization",
+                                               identity->organization())->widget);
+    
+    l->endGroup();
+    
+    l->newLine();
+    
+    l->addGroup("buttons","",false);
+    b1=(QPushButton *)(l->addButton("b1",klocale->translate("OK"))->widget);
+    b2=(QPushButton *)(l->addButton("b2",klocale->translate("Cancel"))->widget);
+    l->endGroup();
+    
+    l->activate();
+    
     QObject::connect (b1,SIGNAL(clicked()),SLOT(accept()));
     QObject::connect (b2,SIGNAL(clicked()),SLOT(reject()));
 }

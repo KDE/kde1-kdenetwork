@@ -3,10 +3,10 @@
 
 #include <qdialog.h>
 
-#include "identDlgData.h"
+class QLineEdit;
+class QPushButton;
 
-class IdentDlg : public QDialog,
-			public identDlgData
+class IdentDlg : public QDialog
 {
     Q_OBJECT
 
@@ -19,6 +19,12 @@ public:
     );
 
     virtual ~IdentDlg();
+
+    QLineEdit* realname;
+    QLineEdit* address;
+    QLineEdit* organization;
+    QPushButton* b1;
+    QPushButton* b2;
 
 };
 #endif // IdentDlg_included
