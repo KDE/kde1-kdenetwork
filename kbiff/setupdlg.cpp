@@ -35,6 +35,8 @@
 #include <kprocess.h>  // KBiffAboutTab
 #include <stdlib.h>    // KBiffAboutTab
 
+#define CONFIG_FILE QString(KApplication::localconfigdir() + "/kbiffrc")
+
 ///////////////////////////////////////////////////////////////////////////
 // KBiffSetup
 ///////////////////////////////////////////////////////////////////////////
@@ -149,6 +151,11 @@ KBiffSetup::~KBiffSetup()
 {
 }
 
+inline const QString KBiffSetup::getProfile() const
+{
+	return comboProfile->currentText();
+}
+
 inline const KURL KBiffSetup::getCurrentMailbox() const
 {
 	return mailboxTab->getMailbox();
@@ -234,9 +241,7 @@ void KBiffSetup::readConfig(const char* profile)
 	QStrList profile_list;
 
 	// open the config file
-	QString config_file(KApplication::localconfigdir());
-	config_file += "/kbiff2rc";
-	KSimpleConfig *config = new KSimpleConfig(config_file);
+	KSimpleConfig *config = new KSimpleConfig(CONFIG_FILE);
 
 	config->setGroup("General");
 
@@ -269,9 +274,7 @@ void KBiffSetup::readConfig(const char* profile)
 void KBiffSetup::saveConfig()
 {
 	// open the config file for writing
-	QString config_file(KApplication::localconfigdir());
-	config_file += "/kbiff2rc";
-	KSimpleConfig *config = new KSimpleConfig(config_file);
+	KSimpleConfig *config = new KSimpleConfig(CONFIG_FILE);
 
 	config->setGroup("General");
 
@@ -355,9 +358,7 @@ void KBiffSetup::slotRenameProfile()
 			comboProfile->insertItem(profile_name, 0);
 
 			// remove the reference from the config file
-			QString config_file(KApplication::localconfigdir());
-			config_file += "/kbiff2rc";
-			KSimpleConfig *config = new KSimpleConfig(config_file);
+			KSimpleConfig *config = new KSimpleConfig(CONFIG_FILE);
 			// nuke the group
 			config->deleteGroup(old_profile, true);
 			delete config;
@@ -391,9 +392,7 @@ void KBiffSetup::slotDeleteProfile()
 			saveConfig();
 
 			// remove the reference from the config file
-			QString config_file(KApplication::localconfigdir());
-			config_file += "/kbiff2rc";
-			KSimpleConfig *config = new KSimpleConfig(config_file);
+			KSimpleConfig *config = new KSimpleConfig(CONFIG_FILE);
 			// nuke the group
 			config->deleteGroup(profile, true);
 			delete config;
@@ -420,7 +419,7 @@ KBiffGeneralTab::KBiffGeneralTab(const char* profile, QWidget *parent)
 {
 TRACEINIT("KBiffGeneralTab::KBiffGeneralTab()");
 TRACEF("profile = %s", profile);
-	QGridLayout *top_grid = new QGridLayout(this, 5, 3, 12, 5);
+	QGridLayout *top_grid = new QGridLayout(this, 5, 3, 12, 5, "top_grid");
 
 	// the poll time (in seconds)
 	QLabel* poll_label = new QLabel(i18n("Poll (sec):"), this);
@@ -457,17 +456,17 @@ TRACEF("profile = %s", profile);
 
 	// layout to hold the icons inside the groupbox
 	QBoxLayout *icon_layout = new QBoxLayout(icons_groupbox,
-	                                         QBoxLayout::Down, 12, 5);
+	                                         QBoxLayout::Down, 12, 5, "icon");
 	icon_layout->addSpacing(8);
 
-	QGridLayout *icon_grid = new QGridLayout(this, 2, 3, 12, 5);
+	QGridLayout *icon_grid = new QGridLayout(2, 3, 12, "icon_grid");
 	icon_layout->addLayout(icon_grid);
 
 	icon_grid->setColStretch(0, 1);
 	icon_grid->setColStretch(1, 1);
 	icon_grid->setColStretch(2, 1);
 
-	QBoxLayout *no_layout1 = new QBoxLayout(QBoxLayout::LeftToRight, 12);
+	QBoxLayout *no_layout1 = new QBoxLayout(QBoxLayout::LeftToRight, 12, "no1");
 	icon_grid->addLayout(no_layout1, 0, 0);
 
 	// "no mail" pixmap button
@@ -477,7 +476,7 @@ TRACEF("profile = %s", profile);
 	no_layout1->addWidget(nomail_label);
 	no_layout1->addStretch(1);
 
-	QBoxLayout *old_layout1 = new QBoxLayout(QBoxLayout::LeftToRight, 12);
+	QBoxLayout *old_layout1 = new QBoxLayout(QBoxLayout::LeftToRight, 12, "old1");
 	icon_grid->addLayout(old_layout1, 0, 1);
 	// "old mail" pixmap button
 	QLabel* oldmail_label = new QLabel(i18n("Old Mail"), icons_groupbox);
@@ -486,7 +485,7 @@ TRACEF("profile = %s", profile);
 	old_layout1->addWidget(oldmail_label);
 	old_layout1->addStretch(1);
 
-	QBoxLayout *new_layout1 = new QBoxLayout(QBoxLayout::LeftToRight, 12);
+	QBoxLayout *new_layout1 = new QBoxLayout(QBoxLayout::LeftToRight, 12, "new1");
 	icon_grid->addLayout(new_layout1, 0, 2);
 
 	// "new mail" pixmap button
@@ -496,7 +495,7 @@ TRACEF("profile = %s", profile);
 	new_layout1->addWidget(newmail_label);
 	new_layout1->addStretch(1);
 
-	QBoxLayout *no_layout = new QBoxLayout(QBoxLayout::LeftToRight, 12);
+	QBoxLayout *no_layout = new QBoxLayout(QBoxLayout::LeftToRight, 12, "no");
 	icon_grid->addLayout(no_layout, 1, 0);
 
 	buttonNoMail = new KIconLoaderButton(icons_groupbox);
@@ -505,7 +504,7 @@ TRACEF("profile = %s", profile);
 	no_layout->addWidget(buttonNoMail);
 	no_layout->addStretch(1);
 
-	QBoxLayout *old_layout = new QBoxLayout(QBoxLayout::LeftToRight, 12);
+	QBoxLayout *old_layout = new QBoxLayout(QBoxLayout::LeftToRight, 12, "old");
 	icon_grid->addLayout(old_layout, 1, 1);
 
 	buttonOldMail = new KIconLoaderButton(icons_groupbox);
@@ -514,7 +513,7 @@ TRACEF("profile = %s", profile);
 	old_layout->addWidget(buttonOldMail);
 	old_layout->addStretch(1);
 
-	QBoxLayout *new_layout = new QBoxLayout(QBoxLayout::LeftToRight, 12);
+	QBoxLayout *new_layout = new QBoxLayout(QBoxLayout::LeftToRight, 12, "new");
 	icon_grid->addLayout(new_layout, 1, 2);
 
 	buttonNewMail = new KIconLoaderButton(icons_groupbox);
@@ -571,9 +570,7 @@ void KBiffGeneralTab::readConfig(const char* profile)
 {
 TRACEINIT("KBiffGeneralTab::readConfig()");
 	// open the config file
-	QString config_file(KApplication::localconfigdir());
-	config_file += "/kbiff2rc";
-	KSimpleConfig *config = new KSimpleConfig(config_file);
+	KSimpleConfig *config = new KSimpleConfig(CONFIG_FILE);
 
 	config->setGroup(profile);
 
@@ -599,10 +596,9 @@ TRACEINIT("KBiffGeneralTab::readConfig()");
 
 void KBiffGeneralTab::saveConfig(const char *profile)
 {
+TRACEINIT("KBiffGeneralTab::saveConfig()");
 	// open the config file for writing
-	QString config_file(KApplication::localconfigdir());
-	config_file += "/kbiff2rc";
-	KSimpleConfig *config = new KSimpleConfig(config_file);
+	KSimpleConfig *config = new KSimpleConfig(CONFIG_FILE);
 
 	config->setGroup(profile);
 
@@ -625,7 +621,7 @@ KBiffNewMailTab::KBiffNewMailTab(const char* profile, QWidget *parent)
 TRACEINIT("KBiffNewMailTab::KBiffNewMailTab()");
 	QBoxLayout *top_layout = new QBoxLayout(this, QBoxLayout::Down, 12, 5);
 
-	QGridLayout *grid = new QGridLayout(this, 4, 2, 12, 5);
+	QGridLayout *grid = new QGridLayout(4, 2, 12);
 	top_layout->addLayout(grid);
 
 	// setup the Run Command stuff
@@ -687,10 +683,9 @@ void KBiffNewMailTab::readConfig(const char* profile)
 {
 TRACEINIT("KBiffNewMailTab::readConfig()");
 	// open the config file
-	QString config_file(KApplication::localconfigdir());
-	config_file += "/kbiff2rc";
-	KSimpleConfig *config = new KSimpleConfig(config_file);
+	KSimpleConfig *config = new KSimpleConfig(CONFIG_FILE);
 
+	TRACEF("profile = %s", profile);
 	config->setGroup(profile);
 
 	checkRunCommand->setChecked(config->readBoolEntry("RunCommand", false));
@@ -709,9 +704,7 @@ TRACEINIT("KBiffNewMailTab::readConfig()");
 void KBiffNewMailTab::saveConfig(const char *profile)
 {
 TRACEINIT("KBiffNewMailTab::saveConfig()");
-	QString config_file(KApplication::localconfigdir());
-	config_file += "/kbiff2rc";
-	KSimpleConfig *config = new KSimpleConfig(config_file);
+	KSimpleConfig *config = new KSimpleConfig(CONFIG_FILE);
 
 	config->setGroup(profile);
 
@@ -875,7 +868,7 @@ TRACEINIT("KBiffMailboxTab::KBiffMailboxTab()");
 
 	QHBoxLayout *top_layout = new QHBoxLayout(this, 12, 5);
 
-	QGridLayout *list_layout = new QGridLayout(this, 2, 2);
+	QGridLayout *list_layout = new QGridLayout(2, 2);
 	top_layout->addLayout(list_layout);
 
 	mailboxes = new QListView(this);
@@ -905,7 +898,7 @@ TRACEINIT("KBiffMailboxTab::KBiffMailboxTab()");
 	QToolTip::add(delete_mailbox, i18n("Delete Mailbox"));
 	list_layout->addWidget(delete_mailbox, 1, 1); 
 
-	QGridLayout *grid = new QGridLayout(this, 8, 4, 12, 5);
+	QGridLayout *grid = new QGridLayout(8, 4, 12);
 	top_layout->addLayout(grid);
 
 	QLabel *protocol_label = new QLabel(i18n("Protocol:"), this);
@@ -977,7 +970,7 @@ TRACEINIT("KBiffMailboxTab::KBiffMailboxTab()");
 	grid->setColStretch(2, 3);
 	grid->setColStretch(3, 1);
 
-	grid->activate();
+	top_layout->activate();
 
 	readConfig(profile);
 }
@@ -995,9 +988,7 @@ TRACEINIT("KBiffMailboxTab::readConfig()");
 	oldItem = 0;
 
 	// open the config file
-	QString config_file(KApplication::localconfigdir());
-	config_file += "/kbiff2rc";
-	KSimpleConfig *config = new KSimpleConfig(config_file);
+	KSimpleConfig *config = new KSimpleConfig(CONFIG_FILE);
 
 TRACE("Before clears");
 	mailboxHash->clear();
@@ -1053,9 +1044,7 @@ void KBiffMailboxTab::saveConfig(const char *profile)
 {
 TRACEINIT("KBiffMailboxTab::saveConfig()");
 	// open the config file
-	QString config_file(KApplication::localconfigdir());
-	config_file += "/kbiff2rc";
-	KSimpleConfig *config = new KSimpleConfig(config_file);
+	KSimpleConfig *config = new KSimpleConfig(CONFIG_FILE);
 
 	config->setGroup(profile);
 
@@ -1350,10 +1339,11 @@ inline const KURL KBiffMailboxTab::defaultMailbox() const
 		mailbox_info.setFile(s);
 	}
 
-	QString default_path("mbox:");
-	default_path += mailbox_info.absFilePath();
+	QString *default_path = mailbox_info.isDir() ? new QString("maildir:") :
+	                                               new QString("mbox:");
+	default_path->append(mailbox_info.absFilePath());
 
-	return KURL(default_path);
+	return KURL(*default_path);
 }
 
 //////////////////////////////////////////////////////////////////////

@@ -70,9 +70,12 @@ TRACEINIT("KBiffMonitor::setPollInterval()");
 		killTimer(oldTimer);
 
 		// Start a new timer will the specified time
-		oldTimer = startTimer(interval * 1000);
+		if (started)
+		{
+			oldTimer = startTimer(interval * 1000);
 
-		emit(signal_checkMail());
+			emit(signal_checkMail());
+		}
 	}
 }
 

@@ -29,6 +29,9 @@ TRACEINIT("KBiff::KBiff()");
 	// Init the audio server.  serverStatus return 0 when it is ok
 	hasAudio = (audioServer.serverStatus() == 0) ? true : false;
 
+	// enable the session management stuff
+	connect(kapp, SIGNAL(saveYourself()), this, SLOT(saveYourself()));
+
 	reset();
 }
 
@@ -36,12 +39,12 @@ KBiff::~KBiff()
 {
 }
 
-void KBiff::processSetup(const KBiffSetup* setup)
+void KBiff::processSetup(const KBiffSetup* setup, bool run)
 {
 TRACEINIT("KBiff::processSetup()");
 	// General settings
+	profile     = setup->getProfile();
 	mailClient  = setup->getMailClient();
-	docked      = setup->getDock();
 	sessions    = setup->getSessionManagement();
 	noMailIcon  = setup->getNoMailIcon();
 	newMailIcon = setup->getNewMailIcon();
@@ -55,7 +58,17 @@ TRACEINIT("KBiff::processSetup()");
 	playSoundPath  = setup->getPlaySoundPath();
 	notify         = setup->getNotify();
 
+	// set all the new mailboxes
 	setMailboxList(setup->getMailboxList(), setup->getPoll());
+
+	// change the dock state if necessary
+TRACEF("docked = %d", docked);
+TRACEF("setup->getDock() = %d", setup->getDock());
+	if (docked != setup->getDock())
+		dock();
+
+	if (run)
+		start();
 
 	delete setup;
 }
@@ -65,9 +78,11 @@ void KBiff::setMailboxList(const QList<KURL>& mailbox_list, unsigned int poll)
 TRACEINIT("KBiff::setMailboxList");
 	QList<KURL> tmp_list = mailbox_list;
 
+	myMUTEX = true;
+	if (isRunning())
+		stop();
 	monitorList.clear();
 	
-	myMUTEX = true;
 	KURL *url;
 	for (url = tmp_list.first(); url != 0; url = tmp_list.next())
 	{
@@ -95,8 +110,11 @@ TRACEINIT("KBiff::readSesionConfig()");
 
 	config->setGroup("KBiff");
 
-	processSetup(new KBiffSetup(config->readEntry("Profile")));
-	docked = config->readBoolEntry("IsDocked");
+	profile = config->readEntry("Profile", "Inbox");
+	docked = config->readBoolEntry("IsDocked", false);
+	bool run = config->readBoolEntry("IsRunning", true);
+
+	processSetup(new KBiffSetup(profile), run);
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -113,19 +131,20 @@ TRACEINIT("KBiff::mousePressEvent()");
 	}
 	else
 	{
-		// force a "read"
-		KBiffMonitor *monitor;
-		for (unsigned int i = 0; i < monitorList.count(); i++)
-		{
-			monitor = monitorList.at(i);
-			monitor->setMailboxIsRead();
-		}
-
 		// execute the command
 		if (!mailClient.isEmpty())
 		{
 			KProcess client;
-			client << mailClient;
+			// we need to munge mailClient to have client + params
+			int index;
+			QString cmd(mailClient.simplifyWhiteSpace());
+			while ((index = cmd.find(' ')) > 0)
+			{
+				client << cmd.left(index);
+				cmd = cmd.mid(index+1, cmd.length());
+			}
+			client << cmd;
+
 			client.start(KProcess::DontCare);
 		}
 	}
@@ -134,6 +153,24 @@ TRACEINIT("KBiff::mousePressEvent()");
 ///////////////////////////////////////////////////////////////////////////
 // Protected Slots
 ///////////////////////////////////////////////////////////////////////////
+void KBiff::saveYourself()
+{
+TRACEINIT("KBiff::saveYourself()");
+	if (sessions)
+	{
+		KConfig *config = kapp->getSessionConfig();
+		config->setGroup("KBiff");
+
+		config->writeEntry("Profile", profile);
+		config->writeEntry("IsDocked", docked);
+		config->writeEntry("IsRunning", isRunning());
+
+		config->sync();
+
+		TRACEF("Saving session profile: %s", profile.data());
+	}
+}
+
 void KBiff::invokeHelp()
 {
 	kapp->invokeHTMLHelp("kbiff/kbiff.html", "");
@@ -144,6 +181,7 @@ void KBiff::displayPixmap()
 TRACEINIT("KBiff::displayPixmap()");
 	if (myMUTEX)
 		return;
+	TRACE("After MUTEX");
 
 	// we will try to deduce the pixmap (or gif) name now.  it will
 	// vary depending on the dock and mail state
@@ -290,10 +328,10 @@ TRACEINIT("KBiff::dock()");
 void KBiff::setup()
 {
 TRACEINIT("KBiff::setup()");
-	KBiffSetup* setup_dlg = new KBiffSetup;
+	KBiffSetup* setup_dlg = new KBiffSetup(profile);
 
 	if (setup_dlg->exec())
-		processSetup(setup_dlg);
+		processSetup(setup_dlg, true);
 }
 
 void KBiff::checkMailNow()
@@ -332,15 +370,7 @@ TRACEINIT("KBiff::start()");
 		monitor->start();
 	}
 	myMUTEX = false;
-
 	displayPixmap();
-}
-
-void KBiff::show()
-{
-	if (!isRunning())
-		start();
-	QLabel::show();
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -400,8 +430,6 @@ TRACEINIT("KBiff::reset()");
 	mailClient  = "xmutt";
 
 	myMUTEX = false;
-
-	displayPixmap();
 }
 
 bool KBiff::isRunning()

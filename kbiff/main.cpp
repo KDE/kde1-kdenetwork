@@ -1,11 +1,13 @@
 #include "kbiff.h"
-#include<kwm.h>
+#include <kwm.h>
 #include <kapp.h>
 
 #include "setupdlg.h"
+#include "Trace.h"
 
 int main(int argc, char *argv[])
 {
+TRACEINIT("main()");
 	KApplication app(argc, argv, "kbiff");
 	KBiff kbiff;
 	KBiffSetup* setup;
@@ -30,16 +32,26 @@ int main(int argc, char *argv[])
 			have_profile = true;
 	}      
 
-	// do we have the profile option?
-	if (have_profile)
-		setup = new KBiffSetup(argv[2]);
+	// restore this app if it is
+	if (kapp->isRestored())
+	{
+		TRACE("isRestored()");
+		kbiff.readSessionConfig();
+	}
 	else
 	{
-		setup = new KBiffSetup();
-		if (!setup->exec())
-			return 0;
+		TRACE("notRestored()");
+		// do we have the profile option?
+		if (have_profile)
+			setup = new KBiffSetup(argv[2]);
+		else
+		{
+			setup = new KBiffSetup();
+			if (!setup->exec())
+				return 0;
+		}
+		kbiff.processSetup(setup, true);
 	}
-	kbiff.processSetup(setup);
 
 	// check if we are docked (only if restored)
 	if (kbiff.isDocked())

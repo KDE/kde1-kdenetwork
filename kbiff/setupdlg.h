@@ -46,6 +46,7 @@ public:
 	KBiffSetup(const char *name = 0);
 	virtual ~KBiffSetup();
 
+	inline const QString getProfile() const;
 	inline const KURL getCurrentMailbox() const;
 	inline const QList<KURL> getMailboxList() const;
 

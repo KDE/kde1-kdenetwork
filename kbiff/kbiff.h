@@ -39,12 +39,10 @@ public:
 
 	inline const bool isDocked() const;
 
-	void processSetup(const KBiffSetup* setup);
+	void processSetup(const KBiffSetup* setup, bool start);
 	void readSessionConfig();
 
 	void setMailboxList(const QList<KURL>& mailbox_list, unsigned int poll = 60);
-
-	virtual void show();
 
 protected:
 	void mousePressEvent(QMouseEvent *);
@@ -55,6 +53,7 @@ protected:
 	bool isRunning();
 
 protected slots:
+	void saveYourself();
 	void invokeHelp();
 	void displayPixmap();
 	void haveNewMail();
@@ -73,6 +72,7 @@ private:
 	KAudio  audioServer;
 	
 	// General settings
+	QString profile;
 	QString mailClient;
 
 	// New mail
