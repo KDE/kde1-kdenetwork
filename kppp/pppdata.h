@@ -134,6 +134,15 @@
 #define TOTALCOSTS_KEY     "TotalCosts"
 #define TOTALBYTES_KEY     "TotalBytes"
 
+
+// graph colors
+#define GENABLED           "Enabled"
+#define GCOLOR_BG          "Background"
+#define GCOLOR_TEXT        "Text"
+#define GCOLOR_IN          "InBytes"
+#define GCOLOR_OUT         "OutBytes"
+
+
 // pppd errors
 #define E_IF_TIMEOUT       1
 
@@ -379,6 +388,19 @@ public:
 
   int totalBytes();
   void  setTotalBytes(int);
+
+  // graphing widget
+  void setGraphingOptions(bool enabled, 
+			  QColor bg,
+			  QColor text,
+			  QColor in,
+			  QColor out);
+  void graphingOptions(bool &enabled,
+		       QColor &bg,
+		       QColor &text,
+		       QColor &in,
+		       QColor &out);
+  bool graphingEnabled();
 
 public:
   QString password;

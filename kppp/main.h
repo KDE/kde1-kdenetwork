@@ -148,6 +148,7 @@ private:
   GeneralWidget *general;
   ModemWidget *modem;
   ModemWidget2 *modem2;
+  GraphSetup *graph;
   AboutWidget *about;
 };
 

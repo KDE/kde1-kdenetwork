@@ -30,6 +30,7 @@
 #include <qregexp.h>
 
 #include "macros.h"
+#include "newwidget.h"
 
 DialWidget::DialWidget( QWidget *parent, bool isnewaccount, const char *name )
   : QWidget(parent, name)
@@ -42,9 +43,7 @@ DialWidget::DialWidget( QWidget *parent, bool isnewaccount, const char *name )
   box->setTitle(i18n("Dial Setup"));
   tl->addMultiCellWidget(box, 0, GRIDROWS-1, 0, 3);
 
-  connect_label = new QLabel(this);
-  connect_label->setText(i18n("Connection Name:"));
-  MIN_SIZE(connect_label);
+  connect_label = newLabel(i18n("Connection Name:"), this);
   tl->addWidget(connect_label, 1, 1);
 
   connectname_l = new QLineEdit(this);
@@ -57,9 +56,7 @@ DialWidget::DialWidget( QWidget *parent, bool isnewaccount, const char *name )
 		  "Type in a unique name for this connection"));
 
   
-  number_label = new QLabel(this);
-  number_label->setText(i18n("Phone Number:"));
-  MIN_SIZE(number_label);
+  number_label = newLabel(i18n("Phone Number:"), this);
   tl->addWidget(number_label, 2, 1);
 
   number_l = new QLineEdit(this);
@@ -75,9 +72,7 @@ DialWidget::DialWidget( QWidget *parent, bool isnewaccount, const char *name )
   FIXED_HEIGHT(number_l);
   tl->addWidget(number_l, 2, 2);
 
-  auth_l = new QLabel(this);
-  auth_l->setText(i18n("Authentication:"));
-  MIN_SIZE(auth_l);
+  auth_l = newLabel(i18n("Authentication:"), this);
   tl->addWidget(auth_l, 4, 1);
 
   auth = new QComboBox(this);
@@ -101,16 +96,21 @@ DialWidget::DialWidget( QWidget *parent, bool isnewaccount, const char *name )
 		  "If you can choose between PAP and CHAP,\n"
 		  "choose CHAP, because it's much safer."));
 
-  store_password = new QCheckBox(this);
-  store_password->setText(i18n("Store password"));
-  MIN_SIZE(store_password);
+  store_password = newCheckBox(i18n("Store password"), this);
   store_password->setChecked(true);
   tl->addMultiCellWidget(store_password, 5, 5, 1, 2);
+  KQuickHelp::add(store_password,
+		  "When this is turned on, your ISP password\n"
+		  "will be saved in <i>kppp</i>'s config file, so\n"
+		  "you do not need to type it in everytime.\n"
+		  "\n"
+		  "<b><red>Warning:<black> your password will be stored as\n"
+		  "plain text in the config file, which is\n"
+		  "readable only to you. Make sure nobody\n"
+		  "gains access to this file!");
 
-  command_label = new QLabel(this);
-  command_label->setText(i18n("Execute program\nupon connect:"));
+  command_label = newLabel(i18n("Execute program\nupon connect:"), this);
   command_label->setAlignment(AlignVCenter);
-  MIN_SIZE(command_label);
   tl->addWidget(command_label, 6, 1);
 
   command = new QLineEdit(this);
@@ -128,10 +128,9 @@ DialWidget::DialWidget( QWidget *parent, bool isnewaccount, const char *name )
 		  "Very usefull for fetching mail and news"));
 
 
-  predisconnect_label = new QLabel(this);
-  predisconnect_label->setText(i18n("Execute program\nbefore disconnect:"));
+  predisconnect_label = newLabel(i18n("Execute program\nbefore disconnect:"),
+				 this);
   predisconnect_label->setAlignment(AlignVCenter);
-  MIN_SIZE(predisconnect_label);
   tl->addWidget(predisconnect_label, 7, 1);
 
   predisconnect = new QLineEdit(this);
@@ -145,10 +144,9 @@ DialWidget::DialWidget( QWidget *parent, bool isnewaccount, const char *name )
 		  "is closed. The connection will stay open until\n"
 		  "the program exits."));
 
-  discommand_label = new QLabel(this);
-  discommand_label->setText(i18n("Execute program\nupon disconnect:"));
+  discommand_label = newLabel(i18n("Execute program\nupon disconnect:"),
+			      this);
   discommand_label->setAlignment(AlignVCenter);
-  MIN_SIZE(discommand_label);
   tl->addWidget(discommand_label, 8, 1);
 
   discommand = new QLineEdit(this);
@@ -159,12 +157,10 @@ DialWidget::DialWidget( QWidget *parent, bool isnewaccount, const char *name )
   KQuickHelp::add(discommand_label,
   KQuickHelp::add(discommand,
 		  "Allows you to run a program <b>after</b> a connection\n"
-		  "is closed."));
+		  "has been closed."));
 
 
-  pppd_label = new QLabel(this);
-  pppd_label->setText(i18n("Edit pppd arguments:"));
-  MIN_SIZE(pppd_label);
+  pppd_label = newLabel(i18n("Edit pppd arguments:"), this);
   tl->addWidget(pppd_label, 9, 1);
 
   QHBoxLayout *l2 = new QHBoxLayout;
@@ -186,6 +182,7 @@ DialWidget::DialWidget( QWidget *parent, bool isnewaccount, const char *name )
     auth->setCurrentItem(gpppdata.authMethod());
     store_password->setChecked(gpppdata.storePassword());
   } else {
+    // select PAP as default
     auth->setCurrentItem(1);
   }
 
@@ -242,8 +239,7 @@ IPWidget::IPWidget( QWidget *parent, bool isnewaccount, const char *name )
 
   ipaddress_l = new IPLineEdit(this);
 
-  ipaddress_label = new QLabel(this);
-  ipaddress_label->setText(i18n("IP Address:"));
+  ipaddress_label = newLabel(i18n("IP Address:"), this);
   KQuickHelp::add(ipaddress_label,
   KQuickHelp::add(ipaddress_l,
 		  "If your computer has a static Internet address,\n"
@@ -251,8 +247,7 @@ IPWidget::IPWidget( QWidget *parent, bool isnewaccount, const char *name )
 
   subnetmask_l = new IPLineEdit(this);
 
-  sub_label = new QLabel(this);
-  sub_label->setText(i18n("Subnet Mask:"));
+  sub_label = newLabel(i18n("Subnet Mask:"), this);
   KQuickHelp::add(sub_label,
   KQuickHelp::add(subnetmask_l,
 		  "If your computer has a static Internet address,\n"
@@ -289,7 +284,10 @@ IPWidget::IPWidget( QWidget *parent, bool isnewaccount, const char *name )
 		  "dynamic IP addresses unless you know what you\n"
 		  "are doing");
 
-  autoname=new QCheckBox(i18n("Auto-configure hostname from this IP"), this);
+  autoname = newCheckBox(i18n("Auto-configure hostname from this IP"), this);
+  autoname->setChecked(gpppdata.autoname());
+  connect(autoname,SIGNAL(toggled(bool)),
+	  this,SLOT(autoname_t(bool)));
   KQuickHelp::add(autoname,
 		  "Whenever you connect, this reconfigures\n"
 		  "your hostname to match the IP address you\n"
@@ -299,11 +297,7 @@ IPWidget::IPWidget( QWidget *parent, bool isnewaccount, const char *name )
 		  "<link kppp-7.html#autohostname>problems</link> with.\n"
 		  "\n"
 		  "Don't enable unless you really need it");
-  
-  autoname->adjustSize();
-  autoname->setChecked(gpppdata.autoname());
-  connect(autoname,SIGNAL(toggled(bool)),
-	  this,SLOT(autoname_t(bool)));
+
 
   //load info from gpppdata
   if(!isnewaccount) {
@@ -428,9 +422,7 @@ DNSWidget::DNSWidget( QWidget *parent, bool isnewaccount, const char *name )
   QGridLayout *l11 = new QGridLayout(5, 2);
   l1->addLayout(l11);
 
-  dnsdomain_label = new QLabel(this);
-  dnsdomain_label->setText(i18n("Domain Name:"));
-  MIN_SIZE(dnsdomain_label);
+  dnsdomain_label = newLabel(i18n("Domain Name:"), this);
   l11->addWidget(dnsdomain_label, 0, 0);
 
   dnsdomain = new QLineEdit(this);
@@ -450,9 +442,7 @@ DNSWidget::DNSWidget( QWidget *parent, bool isnewaccount, const char *name )
 		  "If you leave this field blank, no changes are\n"
 		  "made to the domain name."));
 
-  dns_label = new QLabel(this);
-  dns_label->setText(i18n("DNS IP Address:"));
-  MIN_SIZE(dns_label);
+  dns_label = newLabel(i18n("DNS IP Address:"), this);
   l11->addWidget(dns_label, 2, 0);
 
   QHBoxLayout *l110 = new QHBoxLayout;
@@ -501,10 +491,8 @@ DNSWidget::DNSWidget( QWidget *parent, bool isnewaccount, const char *name )
 		  "Click this button to remove the DNS server\n"
 		  "from the list below");
 
-  servers_label = new QLabel(this);
-  servers_label->setText(i18n("DNS Address List:"));
+  servers_label = newLabel(i18n("DNS Address List:"), this);
   servers_label->setAlignment(AlignTop|AlignLeft);
-  MIN_SIZE(servers_label);
   l11->addWidget(servers_label, 4, 0);
  
   dnsservers = new QListBox(this);
@@ -518,10 +506,9 @@ DNSWidget::DNSWidget( QWidget *parent, bool isnewaccount, const char *name )
 		  "while you are connected. Use the <b>Add</b> and\n"
 		  "<b>Remove</b> buttons to modify the list"));
 
-  exdnsdisabled_toggle = new QCheckBox(i18n(
+  exdnsdisabled_toggle = newCheckBox(i18n(
      "Disable existing DNS Servers during Connection"),
 				       this);
-  MIN_SIZE(exdnsdisabled_toggle);
   exdnsdisabled_toggle->setChecked(gpppdata.exDNSDisabled());
   l1->addStretch(2);
   l1->addWidget(exdnsdisabled_toggle);
@@ -627,12 +614,10 @@ GatewayWidget::GatewayWidget( QWidget *parent, bool isnewaccount, const char *na
 
   gatewayaddr = new IPLineEdit(this);
 
-  gate_label = new QLabel(this);
-  gate_label->setText(i18n("Gateway\nIP Address:"));
+  gate_label = newLabel(i18n("Gateway\nIP Address:"), this);
 
-  defaultroute=new QCheckBox(i18n("Assign the Default Route to this Gateway"),
+  defaultroute = newCheckBox(i18n("Assign the Default Route to this Gateway"),
 			     this);
-  defaultroute->adjustSize();
   KQuickHelp::add(defaultroute,
 		  "If this option is enabled, all packets not\n"
 		  "going to the local net are routed through\n"
@@ -734,11 +719,6 @@ ScriptWidget::ScriptWidget( QWidget *parent, bool isnewaccount, const char *name
 
   QVBoxLayout *l1 = new QVBoxLayout;
   tl->addLayout(l1, 1, 1);
-  //  default_script = 
-  //    new QCheckBox(i18n("Use default script"), this);
-  //  MIN_SIZE(default_script);
-  //  l1->addWidget(default_script);
-  //  l1->addStretch(1);
 
   se = new ScriptEdit(this);
   connect(se, SIGNAL(returnPressed()), SLOT(addButton()));

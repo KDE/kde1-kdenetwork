@@ -2,8 +2,8 @@
  *            kPPP: A pppd front end for the KDE project
  *
  * $Id$
- * 
- *            Copyright (C) 1997 Bernd Johannes Wuebben 
+ *
+ *            Copyright (C) 1997 Bernd Johannes Wuebben
  *                   wuebben@math.cornell.edu
  *
  * based on EzPPP:
@@ -49,10 +49,12 @@ private slots:
   void removebutton();
   void defaultsbutton();
   void closebutton();
+  void textChanged(const char *);
+  void itemSelected(int);
 
 private:
   void init();
-  
+
   QLabel *argument_label;
 
   QLineEdit *argument;
@@ -66,6 +68,7 @@ private:
   QPushButton *closebtn;
 };
 #endif
+
 
 
 

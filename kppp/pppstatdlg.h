@@ -125,6 +125,7 @@ private:
   int ringIdx;
   int max;
   QTimer *graphTimer;
+  QColor bg, text, in, out;
 };
 
 #endif

@@ -56,6 +56,8 @@
 #include "modem.h"
 #include "ppplog.h"
 #include "log.h"
+#include "groupbox.h"
+
 #include <X11/Xlib.h>
 
 KPPPWidget*	p_kppp;
@@ -303,7 +305,8 @@ int main( int argc, char **argv ) {
   
   // Mario: testing
   if(TESTING) {
-    a.exec();
+    PPPdArguments d(0);
+    d.exec();
     exit(0);
   }
 
@@ -454,7 +457,8 @@ KPPPWidget::KPPPWidget( QWidget *parent, const char *name )
     minw = quit_b->sizeHint().width();
 
   setup_b = new QPushButton(i18n("Setup"), this);
-  connect( setup_b, SIGNAL(clicked()), SLOT(expandbutton()));
+  connect( setup_b, SIGNAL(clicked()), 
+	   SLOT(expandbutton()));
   MIN_HEIGHT(setup_b);
   if(setup_b->sizeHint().width() > minw)
     minw = setup_b->sizeHint().width();
@@ -574,15 +578,17 @@ void KPPPWidget::prepareSetupDialog() {
 	    this, SLOT(resetaccounts()));
     connect(accounts, SIGNAL(resetCosts(const char *)),
 	    &accounting, SLOT(resetCosts(const char *)));
-    modem = new ModemWidget(tabWindow,"modem");
-    modem2 = new ModemWidget2(tabWindow,"modem2");
-    general = new GeneralWidget(tabWindow,"general");
-    about  = new AboutWidget(tabWindow,"about");
+    modem = new ModemWidget(tabWindow);
+    modem2 = new ModemWidget2(tabWindow);
+    general = new GeneralWidget(tabWindow);
+    graph = new GraphSetup(tabWindow);
+    about  = new AboutWidget(tabWindow);
     
     tabWindow->addTab( accounts, i18n("Accounts") );
     tabWindow->addTab( modem, i18n("Device") );
     tabWindow->addTab( modem2, i18n("Modem") );
     tabWindow->addTab( general, i18n("PPP") );
+    tabWindow->addTab( graph, i18n("Graph") );
     tabWindow->addTab( about, i18n("About") );
   }
 }
@@ -598,10 +604,8 @@ void KPPPWidget::enterPressedInPW() {
 }
 
 
-void KPPPWidget::log_window_toggled(bool on){
-  
+void KPPPWidget::log_window_toggled(bool on) {
   gpppdata.set_show_log_window(on);
-  
 }
 
 

@@ -36,16 +36,18 @@
 #include <qradiobt.h>
 #include <qchkbox.h>
 #include <kslider.h>
+#include <kcolorbtn.h>
 
 #include "modemcmds.h"
 #include "pppdata.h"
 #include "modeminfo.h"
 #include "miniterm.h"
+#include "groupbox.h"
 
-class GeneralWidget : public QWidget {
+class GeneralWidget : public KGroupBox {
   Q_OBJECT
 public:
-    GeneralWidget( QWidget *parent=0, const char *name=0 );
+  GeneralWidget( QWidget *parent=0, const char *name=0 );
 
 private slots:
   void 	pppdtimeoutchanged(const char *n);
@@ -137,16 +139,33 @@ private:
   KSlider       *volume;
 };
 
-class AboutWidget : public QWidget {
+class GraphSetup : public KCheckGroupBox {
   Q_OBJECT
 public:
-    AboutWidget( QWidget *parent=0, const char *name=0 );
+  GraphSetup(QWidget *parent = 0, const char *name = 0);
+
+private slots:
+  void enableToggled(bool);
+  void colorChanged(const QColor &);
 
 private:
-    QGroupBox 	*box;
-  QLabel 	*label1;
-  QLabel 	*label2;
-  QLabel 	*label3;
+  void save();
+
+  KColorButton *bg_color;
+  KColorButton *text_color;
+  KColorButton *in_color;
+  KColorButton *out_color;
+
+  QLabel *bg_text;
+  QLabel *text_text;
+  QLabel *in_text;
+  QLabel *out_text;
+};
+
+class AboutWidget : public KGroupBox {
+  Q_OBJECT
+public:
+  AboutWidget( QWidget *parent=0, const char *name=0 );
 };
 
 #endif

@@ -26,49 +26,84 @@
  */
 
 #include "pppdargs.h"
+#include <qlayout.h>
+#include "macros.h"
+#include "newwidget.h"
+#include <kbuttonbox.h>
 
 PPPdArguments::PPPdArguments(QWidget *parent, const char *name)
   : QDialog(parent, name, TRUE)
 {
-  setCaption(i18n("Customize pppd Arguments"));
+  setCaption(i18n("Customize pppd Arguments"));  
+  QVBoxLayout *l = new QVBoxLayout(this, 10, 10);
+  QHBoxLayout *tl = new QHBoxLayout(10);
+  l->addLayout(tl);
+  QVBoxLayout *l1 = new QVBoxLayout();
+  QVBoxLayout *l2 = new QVBoxLayout();
+  tl->addLayout(l1, 1);
+  tl->addLayout(l2, 0);
 
-  argument = new QLineEdit(this);
-  argument->setGeometry(95, 15, 170, 25);
-  connect(argument, SIGNAL(returnPressed()), SLOT(addbutton()));
+  QHBoxLayout *l11 = new QHBoxLayout(10);
+  l1->addLayout(l11);
 
-  argument_label = new QLabel(this);
-  argument_label->setGeometry(15,15,65,25);
-  argument_label->setText(i18n("Argument:"));
+  argument_label = newLabel(i18n("Argument:"), this);
+  l11->addWidget(argument_label);
 
-  add = new QPushButton(i18n("Add"), this);
-  add->setGeometry(15, 55, 110, add->sizeHint().height());
-  connect(add, SIGNAL(clicked()), SLOT(addbutton()));
-
-  remove = new QPushButton(i18n("Remove"), this);
-  remove->setGeometry(155, 55, 110, remove->sizeHint().height());
-  connect(remove, SIGNAL(clicked()), SLOT(removebutton()));
+  argument = newLineEdit(0, this);
+  connect(argument, SIGNAL(returnPressed()), 
+	  SLOT(addbutton()));
+  l11->addWidget(argument);
+  connect(argument, SIGNAL(textChanged(const char *)),
+	  this, SLOT(textChanged(const char *)));
 
   arguments = new QListBox(this);
-  arguments->setGeometry(15, 105, 250, 100);
+  arguments->setMinimumSize(1, fontMetrics().lineSpacing()*10);
+  connect(arguments, SIGNAL(highlighted(int)),
+	  this, SLOT(itemSelected(int)));
+  l1->addWidget(arguments, 1);
 
-  closebtn = new QPushButton(i18n("Close"), this);
-  closebtn->setGeometry(15, 225, 110, closebtn->sizeHint().height());
-  connect(closebtn, SIGNAL(clicked()), SLOT(closebutton()));
+  add = new QPushButton(i18n("Add"), this);
+  FIXED_HEIGHT(add);
+  MIN_WIDTH(add);
+  connect(add, SIGNAL(clicked()), SLOT(addbutton()));
+  l2->addWidget(add);
+  l2->addStretch(1);  
 
-  defaults = new QPushButton(i18n("Restore Defaults"), this);
-  defaults->setGeometry(155, 225, 110, defaults->sizeHint().height());
+  remove = new QPushButton(i18n("Remove"), this);
+  FIXED_HEIGHT(remove);
+  MIN_WIDTH(remove);
+  connect(remove, SIGNAL(clicked()), SLOT(removebutton()));
+  l2->addWidget(remove);
+
+  defaults = new QPushButton(i18n("Defaults"), this);
+  FIXED_HEIGHT(defaults);
+  MIN_WIDTH(defaults);
   connect(defaults, SIGNAL(clicked()), SLOT(defaultsbutton()));
+  l2->addWidget(defaults);
+  
+  l->addSpacing(5);
 
-  setFixedSize(280,270);
+  KButtonBox *bbox = new KButtonBox(this);
+  bbox->addStretch(1);
+  closebtn = bbox->addButton("Ok");
+  connect(closebtn, SIGNAL(clicked()), SLOT(closebutton()));
+  QPushButton *cancel = bbox->addButton("Cancel");
+  connect(cancel, SIGNAL(clicked()),
+	  this, SLOT(reject()));
+  bbox->layout();
+  l->addWidget(bbox);
+
+  l->freeze();
+
   //load info from gpppdata
   init();
+
+  add->setEnabled(false);
+  remove->setEnabled(false);
+  argument->setFocus();
 }
 
 
-
-//
-//private slots
-//
 void PPPdArguments::addbutton() {
   if(strcmp(argument->text(), "") != 0 &&
      arguments->count() < MAX_PPPD_ARGUMENTS) {
@@ -99,16 +134,24 @@ void PPPdArguments::closebutton() {
   done(0);
 }
 
-//
-//private funcitons
-//
 
 void PPPdArguments::init() {
-  arguments->clear();
+  while(arguments->count())
+    arguments->removeItem(0);
 
   QStrList &arglist = gpppdata.pppdArgument();
   for(char *arg = arglist.first(); arg; arg = arglist.next())
     arguments->insertItem(arg);
+}
+
+
+void PPPdArguments::textChanged(const char *s) {
+  add->setEnabled(strlen(s) > 0);
+}
+
+
+void PPPdArguments::itemSelected(int idx) {
+  remove->setEnabled(idx != -1);
 }
 
 #include "pppdargs.moc"

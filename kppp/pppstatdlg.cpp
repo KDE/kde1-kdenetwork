@@ -188,13 +188,18 @@ PPPStatsDlg::PPPStatsDlg(QWidget *parent, const char *name, QWidget *)
   tl->addLayout(l12);
   l12->addStretch(1);
 
-#ifndef NO_GRAPH
-  graph = new QFrame(this);
-  graph->setFrameStyle(QFrame::Box | QFrame::Sunken);
-  l1->addMultiCellWidget(graph, 2, 2, 1, 2);
-  graph->setMinimumWidth(300);
-  graph->setFixedHeight(76+4);
-#endif
+  if(gpppdata.graphingEnabled()) {
+    bool dummy;
+
+    gpppdata.graphingOptions(dummy, bg, text, in, out);
+
+    graph = new QFrame(this);
+    graph->setFrameStyle(QFrame::Box | QFrame::Sunken);
+    l1->addMultiCellWidget(graph, 2, 2, 1, 2);
+    graph->setMinimumWidth(300);
+    graph->setFixedHeight(76+4);
+    graph->setBackgroundColor(bg);
+  }
 
   cancelbutton = new QPushButton(this, "cancelbutton");
   cancelbutton->setText(i18n("Close"));
@@ -207,10 +212,10 @@ PPPStatsDlg::PPPStatsDlg(QWidget *parent, const char *name, QWidget *)
   clocktimer = new QTimer(this);
   connect(clocktimer, SIGNAL(timeout()), SLOT(timeclick()));
 
-#ifndef NO_GRAPH
-  graphTimer = new QTimer(this);
-  connect(graphTimer, SIGNAL(timeout()), SLOT(updateGraph()));
-#endif
+  if(gpppdata.graphingEnabled()) {
+    graphTimer = new QTimer(this);
+    connect(graphTimer, SIGNAL(timeout()), SLOT(updateGraph()));
+  }
 
   tl->freeze();
 }
@@ -248,7 +253,6 @@ void PPPStatsDlg::stop_stats() {
 }
 
 void PPPStatsDlg::paintGraph() {
-#ifndef NO_GRAPH
   // why draw that stuff if not visible?
   if(!isVisible())
     return;
@@ -270,7 +274,7 @@ void PPPStatsDlg::paintGraph() {
     pm.height() - (int)((float)bout[idx]/max * (pm.height() - 8))-1;
   
   // plot scale line
-  p.setPen(black);
+  p.setPen(text);
   p.setFont(QFont("fixed", 8));
   QRect r;
   QString s;
@@ -285,10 +289,10 @@ void PPPStatsDlg::paintGraph() {
     h_in = pm.height() - (int)((float)bin[idx]/max * (pm.height() - 8))-1;
     h_out = pm.height() - (int)((float)bout[idx]/max * (pm.height() - 8))-1;
     
-    p.setPen(red);
+    p.setPen(out);
     if(bout[idx]!=-1)
       p.drawLine(x-1, last_h_out, x, h_out);
-    p.setPen(blue);
+    p.setPen(in);
     if(bin[idx]!=-1)
       p.drawLine(x-1, last_h_in, x, h_in);
     last_h_in = h_in;
@@ -299,11 +303,9 @@ void PPPStatsDlg::paintGraph() {
 
   p.end();
   bitBlt(graph, 2, 2, &pm, 0, 0, pm.width(), pm.height(), CopyROP);
-#endif
 }
 
 void PPPStatsDlg::updateGraph() {
-#ifndef NO_GRAPH
   bin[ringIdx] = ibytes - bin_last;
   bout[ringIdx] = obytes - bout_last;
   if(bin[ringIdx] > max)
@@ -316,7 +318,6 @@ void PPPStatsDlg::updateGraph() {
   bout_last = obytes;
   ringIdx++;
   paintGraph();
-#endif
 }
 
 

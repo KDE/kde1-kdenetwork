@@ -1219,12 +1219,55 @@ void PPPData::setpppdArgument(QStrList &args) {
 }
 
 void PPPData::setpppdArgumentDefaults() {
-
   QStrList args;
+  
   // no default arguments currently
   setpppdArgument(args);
-
 }
+
+
+// graphing widget
+void PPPData::setGraphingOptions(bool enable,
+				 QColor bg,
+				 QColor text,
+				 QColor in,
+				 QColor out) 
+{
+  config->setGroup("Graph");
+  config->writeEntry(GENABLED, enable);
+  config->writeEntry(GCOLOR_BG, bg);
+  config->writeEntry(GCOLOR_TEXT, text);
+  config->writeEntry(GCOLOR_IN, in);
+  config->writeEntry(GCOLOR_OUT, out);
+}
+
+void PPPData::graphingOptions(bool &enable,
+			      QColor &bg,
+			      QColor &text,
+			      QColor &in,
+			      QColor &out) 
+{
+  QColor c;
+
+  config->setGroup("Graph");
+  enable = config->readBoolEntry(GENABLED, true);
+  c = white;
+  bg = config->readColorEntry(GCOLOR_BG, &c);
+  c = black;
+  text = config->readColorEntry(GCOLOR_TEXT, &c);
+  c = blue;
+  in = config->readColorEntry(GCOLOR_IN, &c);
+  c = red;
+  out = config->readColorEntry(GCOLOR_OUT, &c);
+}
+
+
+bool PPPData::graphingEnabled() {
+  config->setGroup("Graph");
+  return config->readBoolEntry(GENABLED, true);
+}
+
+
 
 //
 //functions to change/set the child pppd process info

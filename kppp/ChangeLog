@@ -1,3 +1,14 @@
+1998-09-20  Mario Weilguni <mweilguni@kde.org>
+
+	* PPP-arguments dialog reworked	
+
+1998-09-19  Mario Weilguni <mweilguni@kde.org>
+
+	* more QuickHelp
+	* began to clean up layout management, it's a mess
+	* added setup widget for the throughput graph
+	* some code cleanups
+
 1998-09-16  Mario Weilguni <mweilguni@kde.org>
 
 	* Added some more QuickHelp
@@ -588,7 +599,7 @@ Mon Jan 12 17:18:41 1998  Mario Weilguni  <mweilguni@sime.com>
 	session. Remembering the password can be switched off for each
 	account.
 
-	* connect.cpp: fixed 2 security bugs in lockfile(). Not it's
+	* connect.cpp: fixed 2 security bugs in lockfile(). Now it's
 	checked if the lockfile is a regular file and no more than
 	32 characters are read from this file, no matter how long it is.
 
